@@ -18,7 +18,8 @@
     "peso": "15 kg no total"
   },
   "locomocao": {
-    "terra": 2
+    "terra": 2,
+    "natacao": 2
   },
   "centelha": 0,
   "attrs": {

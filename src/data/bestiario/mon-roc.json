@@ -18,7 +18,8 @@
     "peso": "1,2 t"
   },
   "locomocao": {
-    "voo": 8
+    "voo": 8,
+    "terra": 2
   },
   "centelha": 0,
   "attrs": {

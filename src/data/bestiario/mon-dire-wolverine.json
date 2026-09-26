@@ -18,7 +18,8 @@
     "peso": "até 900 kg"
   },
   "locomocao": {
-    "terra": 3
+    "terra": 3,
+    "escalada": 1
   },
   "centelha": 0,
   "attrs": {

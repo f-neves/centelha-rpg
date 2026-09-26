@@ -21,7 +21,8 @@
     "peso": "360 kg"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "voo": 6
   },
   "centelha": 9,
   "attrs": {
@@ -50,9 +51,11 @@
   "willpower": 12,
   "aparencia": -1,
   "arte": {
-    "morte": 3,
+    "fogo": 6,
+    "fortuna": 6,
+    "fascinacao": 5,
     "espirito": 4,
-    "fogo": 4
+    "conjuracao": 6
   },
   "ataques": [
     {
@@ -75,7 +78,7 @@
         "arte": "morte",
         "nivel": 3
       },
-      "resiste": "corpo",
+      "resiste": "mente",
       "efeito": "Resiste ao entrar, 1 vez por cena.",
       "usos": {
         "periodo": "passivo",

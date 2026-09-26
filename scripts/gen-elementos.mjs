@@ -77,15 +77,18 @@ const POR_TAG = {
 // dela para resolver o `material` de uma criatura sua sem uma segunda passada.
 
 // De que a criatura é feita. Só quem não é de carne precisa aparecer aqui.
+// mon-gargula (B14 fase 3): saiu daqui, ganhou bonus.absorcao na ficha em vez de resistência de
+// material (a fonte não dá as três resistências que o material "pedra" geral daria).
+// mon-elemental-da-terra-grande (B14 fase 3): saiu daqui, a ficha agora se descreve sozinha
+// (campo `material`), então o script pula ela (CUSTOM_IDS) e não pode mais citá-la aqui.
 const MATERIAL_DE = {
-  'mon-stone-golem': 'pedra', 'mon-gargula': 'pedra', 'mon-clay-golem': 'pedra',
+  'mon-stone-golem': 'pedra', 'mon-clay-golem': 'pedra',
   'mon-iron-golem': 'metal', 'mon-iron-cobra': 'metal', 'mon-retriever': 'metal',
-  'mon-treant': 'madeira',
   'mon-ice-golem': 'gelo',
   'mon-flesh-golem': 'carne animada', 'mon-homunculus': 'carne animada',
   'mon-small-fire-elemental': 'fogo', 'mon-salamandra': 'fogo', 'mon-efreeti': 'fogo',
   'mon-small-water-elemental': 'agua', 'mon-marid': 'agua',
-  'mon-small-earth-elemental': 'terra', 'mon-elemental-da-terra-grande': 'terra',
+  'mon-small-earth-elemental': 'terra',
   'mon-shaitan': 'terra', 'mon-xorn': 'terra',
   'mon-small-air-elemental': 'ar', 'mon-djinn': 'ar', 'mon-invisible-stalker': 'ar',
 };
@@ -101,6 +104,17 @@ const EXCECOES = {
   // Osso solto: a ponta e o fio passam entre as costelas, a maça não
   'mon-esqueleto-humano': { fraquezas: ['luz', 'sagrado'], resistencias: ['perfuracao', 'corte'] },
   'mon-skeletal-champion': { fraquezas: ['luz', 'sagrado'], resistencias: ['perfuracao', 'corte'] },
+  // Tronco vivo: a ponta entra e não acha órgão (perfuração), o impacto amortece na
+  // madeira elástica; o corte do machado é o que funciona (B14 fase 3, decisoes-fase3.md).
+  'mon-treant': { fraquezas: ['fogo'], resistencias: ['perfuracao', 'impacto'] },
+  // Gigante do Fogo (B14 fase 3): forjado no calor da fornalha, sofre no gelo.
+  'mon-gigante-do-fogo': { fraquezas: ['gelo'], resistencias: ['fogo'] },
+  // Montão Tropeçante (B14 fase 3): "imune a raio" na fonte; aqui vira resistência, e o dano que
+  // a resistência cortaria pela metade vira cura na mesma proporção (texto na habilidade).
+  'mon-montao-tropecante': { fraquezas: ['fogo'], resistencias: ['perfuracao', 'raio'] },
+  // Rakshasa (B14 fase 3): a fonte não sustenta imunidade total, e sim resistência a corte e
+  // impacto; perfurante passa.
+  'mon-rakshasa': { resistencias: ['corte', 'impacto'] },
 
   // Dragões: o bicho resiste ao que ele mesmo cospe
   'mon-dragao-vermelho-adulto': { resistencias: ['fogo'] },

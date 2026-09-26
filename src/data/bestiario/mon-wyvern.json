@@ -18,7 +18,8 @@
     "peso": "250 kg"
   },
   "locomocao": {
-    "voo": 6
+    "voo": 6,
+    "terra": 2
   },
   "centelha": 3,
   "attrs": {

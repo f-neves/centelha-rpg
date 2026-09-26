@@ -19,7 +19,10 @@
     "peso": "700 kg"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "voo": 15,
+    "natacao": 6,
+    "escavacao": 3
   },
   "centelha": 4,
   "attrs": {

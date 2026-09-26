@@ -18,7 +18,8 @@
     "peso": "menos de 1 kg"
   },
   "locomocao": {
-    "voo": 4
+    "voo": 4,
+    "terra": 1
   },
   "centelha": 1,
   "attrs": {

@@ -50,8 +50,10 @@
   "willpower": 11,
   "aparencia": 0,
   "arte": {
-    "fortuna": 4,
-    "conjuracao": 4
+    "fortuna": 6,
+    "forcas": 6,
+    "fascinacao": 5,
+    "protecao": 5
   },
   "ataques": [
     {

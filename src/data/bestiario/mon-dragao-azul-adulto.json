@@ -19,7 +19,9 @@
     "peso": "7,5 t"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "voo": 20,
+    "escavacao": 2
   },
   "centelha": 6,
   "attrs": {

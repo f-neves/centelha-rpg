@@ -20,7 +20,8 @@
     "peso": "55 kg"
   },
   "locomocao": {
-    "voo": 8
+    "voo": 8,
+    "terra": 2
   },
   "centelha": 2,
   "attrs": {

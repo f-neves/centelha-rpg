@@ -19,7 +19,9 @@
     "peso": "140 t"
   },
   "locomocao": {
-    "natacao": 4
+    "natacao": 4,
+    "terra": 1,
+    "jato": 28
   },
   "centelha": 7,
   "attrs": {
@@ -48,7 +50,8 @@
   "willpower": 12,
   "aparencia": 5,
   "arte": {
-    "agua": 4
+    "vento": 6,
+    "fascinacao": 5
   },
   "tech": {
     "abraco-do-tita": true

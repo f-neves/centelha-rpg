@@ -19,7 +19,8 @@
     "peso": "2,7 t"
   },
   "locomocao": {
-    "natacao": 6
+    "natacao": 6,
+    "terra": 1
   },
   "centelha": 5,
   "attrs": {

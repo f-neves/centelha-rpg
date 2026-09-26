@@ -48,8 +48,11 @@
   "willpower": 10,
   "aparencia": 8,
   "arte": {
-    "fascinacao": 3,
-    "agua": 3
+    "agua": 4,
+    "natureza": 4,
+    "vida": 3,
+    "raio": 3,
+    "cura": 2
   },
   "tech": {
     "beleza-inebriante": true
@@ -71,7 +74,7 @@
       "id": "beleza-cegante",
       "nome": "Beleza cegante",
       "tipo": "natural",
-      "resiste": "corpo",
+      "resiste": "mente",
       "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
       "usos": {
         "periodo": "cena"

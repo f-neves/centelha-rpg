@@ -28,6 +28,9 @@ export const ataqueSchema = z.object({
   dado: naoNeg,
   mao: z.union([z.literal(1), z.literal(2)]).optional(),
   distancia: z.boolean().optional(),
+  /** Arma de arremesso (pedra, lança): à distância mas soma Força, ao contrário de
+   *  um disparo comum (arco, sopro). B14 fase 3. */
+  arremesso: z.boolean().optional(),
   tipo: texto,
   acerto: inteiro.optional(),
   perf: naoNeg.optional(),
@@ -76,7 +79,9 @@ const poderLegadoSchema = z.object({
 
 export const poderSchema = z.union([poderNaturalSchema, poderLegadoSchema]);
 
-const velocidade = z.number().int().min(1).max(20);
+// Teto subiu de 20 para 30 na B14 fase 3: dragões anciãos e o jato do Kraken passam de 20 m/Tick
+// (250 ft e 280 ft na fonte, ÷10).
+const velocidade = z.number().int().min(1).max(30);
 const valorOriginal = z.union([z.number(), z.literal('-'), z.null()]);
 
 /** Forma do corpo, para as três medidas (B14 fase 2, item A.1). A forma comum
@@ -116,6 +121,9 @@ export const criaturaSchema = z.object({
   locomocao: z.object({
     terra: velocidade.optional(), voo: velocidade.optional(), natacao: velocidade.optional(),
     escalada: velocidade.optional(), escavacao: velocidade.optional(),
+    /** Jato de propulsão (B14 fase 3): só para trás, em linha reta, consome a ação
+     *  inteira. Uso restrito ao Kraken; não generalizar sem pedido novo. */
+    jato: velocidade.optional(),
   }).strict(),
   centelha: naoNeg,
   attrs: z.object({

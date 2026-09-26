@@ -172,5 +172,11 @@
     {
       "caminho": "agarrao-do-urso"
     }
-  ]
+  ],
+  "arte": {
+    "forcas": 4,
+    "fascinacao": 5,
+    "protecao": 3,
+    "conjuracao": 6
+  }
 }

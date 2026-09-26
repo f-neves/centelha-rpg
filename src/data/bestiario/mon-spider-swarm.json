@@ -18,7 +18,8 @@
     "peso": "insignificante por indivíduo"
   },
   "locomocao": {
-    "terra": 2
+    "terra": 2,
+    "escalada": 2
   },
   "centelha": 0,
   "attrs": {

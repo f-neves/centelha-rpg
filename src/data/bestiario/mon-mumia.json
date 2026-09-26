@@ -85,7 +85,7 @@
         "arte": "morte",
         "nivel": 3
       },
-      "resiste": "corpo",
+      "resiste": "mente",
       "efeito": "Resiste ao entrar, 1 vez por cena.",
       "usos": {
         "periodo": "passivo",

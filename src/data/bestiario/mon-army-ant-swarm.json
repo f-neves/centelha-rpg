@@ -18,7 +18,8 @@
     "peso": "poucos gramas por indivíduo"
   },
   "locomocao": {
-    "terra": 2
+    "terra": 2,
+    "escalada": 3
   },
   "centelha": 0,
   "attrs": {

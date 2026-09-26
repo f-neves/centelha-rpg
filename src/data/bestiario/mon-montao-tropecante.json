@@ -63,12 +63,13 @@
     "fogo"
   ],
   "resistencias": [
-    "perfuracao"
+    "perfuracao",
+    "raio"
   ],
   "habilidades": [
     {
       "nome": "Absorve raio",
-      "descricao": "dano elétrico recebido cura PV em vez de feri-lo"
+      "descricao": "resiste a raio (dano pela metade); o valor que a resistência cortaria vira cura em PV, em vez de dano"
     },
     {
       "nome": "Constrição",

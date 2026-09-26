@@ -18,7 +18,8 @@
     "peso": "1,8 t"
   },
   "locomocao": {
-    "natacao": 5
+    "natacao": 5,
+    "terra": 2
   },
   "centelha": 0,
   "attrs": {

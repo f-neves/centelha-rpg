@@ -21,7 +21,8 @@
     "peso": "68 kg"
   },
   "locomocao": {
-    "terra": 3
+    "terra": 3,
+    "voo": 5
   },
   "centelha": 5,
   "attrs": {
@@ -39,7 +40,8 @@
     "briga": 5,
     "esquiva": 2,
     "prontidao": 2,
-    "integridade": 6
+    "integridade": 6,
+    "atirador": 4
   },
   "virtues": {
     "compaixao": 0,
@@ -63,6 +65,19 @@
       "tipo": "corte",
       "acerto": 0,
       "ticks": 5
+    },
+    {
+      "nome": "Arco longo",
+      "atrib": "percepcao",
+      "pericia": "atirador",
+      "dado": 1,
+      "distancia": true,
+      "arremesso": true,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "perf": 1,
+      "ticks": 6,
+      "notas": "catálogo Arco Longo (armas.json); soma Força pela mesma regra do catálogo"
     }
   ],
   "fraquezas": [
@@ -70,10 +85,6 @@
     "sagrado"
   ],
   "habilidades": [
-    {
-      "nome": "Arco certeiro",
-      "descricao": "proeza; ataque à distância de alcance longo, ignora parte da Absorção"
-    },
     {
       "nome": "Corda de comando",
       "descricao": "feitiçaria; à distância, Agarra o alvo e, se a Vontade falhar, o obriga a obedecer uma ordem simples"

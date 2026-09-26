@@ -19,7 +19,8 @@
     "peso": "320 kg"
   },
   "locomocao": {
-    "terra": 2
+    "terra": 2,
+    "voo": 4
   },
   "centelha": 4,
   "attrs": {
@@ -72,7 +73,7 @@
         "arte": "fogo",
         "nivel": 4
       },
-      "resiste": "corpo",
+      "resiste": "nenhum",
       "efeito": "Resiste ao entrar, 1 vez por cena.",
       "usos": {
         "periodo": "passivo",

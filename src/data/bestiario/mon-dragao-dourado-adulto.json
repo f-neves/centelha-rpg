@@ -19,7 +19,9 @@
     "peso": "9 t"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "voo": 25,
+    "natacao": 6
   },
   "centelha": 7,
   "attrs": {
@@ -48,10 +50,10 @@
   "willpower": 12,
   "aparencia": 9,
   "arte": {
-    "fogo": 4,
-    "fascinacao": 3,
-    "protecao": 4,
-    "materia": 3
+    "protecao": 3,
+    "fortuna": 3,
+    "cura": 2,
+    "luz": 2
   },
   "ataques": [
     {

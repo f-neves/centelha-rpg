@@ -19,7 +19,8 @@
     "peso": "3 kg"
   },
   "locomocao": {
-    "voo": 6
+    "voo": 6,
+    "terra": 2
   },
   "centelha": 4,
   "attrs": {
@@ -60,6 +61,16 @@
       "tipo": "perfurante",
       "acerto": 0,
       "ticks": 5
+    },
+    {
+      "nome": "Flechas do sono",
+      "atrib": "percepcao",
+      "pericia": "atirador",
+      "dado": 1,
+      "distancia": true,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
     }
   ],
   "poderes": [
@@ -76,24 +87,23 @@
       "usos": {
         "periodo": "avontade"
       }
+    },
+    {
+      "id": "flecha-do-sono-ou-amnesia",
+      "nome": "Efeito da flecha (sono ou amnésia)",
+      "tipo": "natural",
+      "resiste": "mente",
+      "efeito": "À escolha da pixie: sono (Inconsciente até o fim da cena) ou amnésia (perde as memórias da última hora). A flecha do esquecimento é narrativa.",
+      "ataque": "Flechas do sono",
+      "usos": {
+        "periodo": "golpe"
+      }
     }
   ],
   "habilidades": [
     {
-      "nome": "Invisibilidade à vontade",
-      "descricao": "ação livre; fica invisível até atacar, +3d6 em Furtividade enquanto oculta"
-    },
-    {
       "nome": "Voo veloz",
       "descricao": "desloca 12m voando; ignora terreno difícil, +1 Esquiva contra ataques corpo a corpo"
-    },
-    {
-      "nome": "Flecha do sono",
-      "descricao": "alcance 18m; falha em Vontade: Inconsciente até o fim da cena"
-    },
-    {
-      "nome": "Flecha da amnésia",
-      "descricao": "alcance 18m; falha em Vontade: perde as memórias da última hora"
     },
     {
       "nome": "Corpo minúsculo",

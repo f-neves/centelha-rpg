@@ -75,7 +75,7 @@ export function stat(b) {
     const acerto = (a.acerto || 0) + C * (D.ataque?.centelhaMult ?? 0);
     const pool = `${dados}d6${bonus ? '+2' : ''}${acerto ? ` +${acerto}` : ''}`;
     const fm = D.danoForca; const forcaAp = a.mao === 2 ? at.forca * fm.duasMaos : at.forca * fm.umaMao;
-    const fa = a.distancia ? 0 : forcaAp;
+    const fa = (a.distancia && !a.arremesso) ? 0 : forcaAp;
     const perf = a.perf ?? a.pen;
     const dano = `${a.dado}d6${fa ? ` +${fa}` : ''} ${a.tipo}${perf != null ? ` · perf. ${perf}` : ''}`;
     // O NÍVEL DE PERFURAÇÃO como campo numérico, e não só dentro da string do

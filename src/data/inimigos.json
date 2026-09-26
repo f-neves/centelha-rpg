@@ -1744,6 +1744,14 @@
         "dano": "2d6 +10 impacto",
         "perfArma": null,
         "ticks": 6
+      },
+      {
+        "nome": "Arremessar rocha",
+        "pool": "7d6+2 +1",
+        "dano": "2d6 +10 impacto",
+        "perfArma": null,
+        "ticks": 6,
+        "notas": "dado pelo porte Grande (B14 fase 3)"
       }
     ],
     "tecnicas": [],
@@ -1821,7 +1829,7 @@
     "tipo": "chefe",
     "categoria": "Gigante",
     "ameaca": 5,
-    "centelha": 1,
+    "centelha": 2,
     "conceito": "humanoide Enorme (gigante)",
     "descricao": "Colosso humanoide, força bruta em escala descomunal.",
     "tags": [
@@ -1830,14 +1838,14 @@
       "mágico"
     ],
     "pv": 75,
-    "defesa": 9,
-    "defesaSocial": 11,
-    "defesaMental": 16,
+    "defesa": 10,
+    "defesaSocial": 12,
+    "defesaMental": 17,
     "vontade": 6,
     "soak": {
-      "impacto": 9,
-      "corte": 9,
-      "perfuracao": 9
+      "impacto": 10,
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 6",
@@ -1855,21 +1863,53 @@
     "ataques": [
       {
         "nome": "Pancada descomunal",
-        "pool": "8d6+2 +1",
+        "pool": "8d6+2 +2",
         "dano": "3d6 +12 impacto",
         "perfArma": null,
         "ticks": 7
+      },
+      {
+        "nome": "Arremessar rocha",
+        "pool": "8d6+2 +2",
+        "dano": "3d6 +12 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "notas": "dado pelo porte Enorme (B14 fase 3)"
       }
     ],
     "tecnicas": [],
     "artes": [
       {
         "id": "vento",
-        "nivel": 1
+        "nivel": 2
       }
     ],
     "notas": "Habilidades notáveis: Prontidão 3, Ofícios 2.",
     "pendente": true,
+    "poderes": [
+      {
+        "id": "levitar",
+        "nome": "Levitar",
+        "tipo": "natural",
+        "resiste": "nenhum",
+        "efeito": "Levita a si e até 900 kg, sem limite de tempo.",
+        "usos": {
+          "periodo": "avontade"
+        }
+      },
+      {
+        "id": "nevoa",
+        "nome": "Névoa",
+        "tipo": "natural",
+        "resiste": "nenhum",
+        "area": "raio de 9 m",
+        "efeito": "Névoa espessa que cobre a visão e concede Furtividade a aliados, dificultando Ataques à distância contra eles.",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 1
+        }
+      }
+    ],
     "pericias": {
       "prontidao": 2,
       "esquiva": 1,
@@ -1884,7 +1924,7 @@
     "tipo": "chefe",
     "categoria": "Gigante",
     "ameaca": 5,
-    "centelha": 3,
+    "centelha": 4,
     "conceito": "humanoide Enorme (gigante)",
     "descricao": "Colosso humanoide, força bruta em escala descomunal.",
     "tags": [
@@ -1893,14 +1933,14 @@
       "mágico"
     ],
     "pv": 80,
-    "defesa": 13,
-    "defesaSocial": 13,
-    "defesaMental": 21,
+    "defesa": 14,
+    "defesaSocial": 14,
+    "defesaMental": 22,
     "vontade": 8,
     "soak": {
-      "impacto": 12,
-      "corte": 11,
-      "perfuracao": 11
+      "impacto": 13,
+      "corte": 12,
+      "perfuracao": 12
     },
     "resistPerf": 1,
     "iniciativa": "1d6 + 8",
@@ -1918,7 +1958,7 @@
     "ataques": [
       {
         "nome": "Pancada descomunal",
-        "pool": "9d6 +3",
+        "pool": "9d6 +4",
         "dano": "3d6 +13 impacto",
         "perfArma": null,
         "ticks": 7
@@ -1928,19 +1968,33 @@
     "artes": [
       {
         "id": "vento",
-        "nivel": 3
+        "nivel": 4
       },
       {
         "id": "raio",
-        "nivel": 3
+        "nivel": 4
       },
       {
-        "id": "adivinhacao",
-        "nivel": 2
+        "id": "agua",
+        "nivel": 3
       }
     ],
     "notas": "Habilidades notáveis: Prontidão 4, Conhecimentos 2.",
     "pendente": true,
+    "poderes": [
+      {
+        "id": "comandar-o-clima",
+        "nome": "Comandar o clima",
+        "tipo": "natural",
+        "resiste": "nenhum",
+        "area": "convoca tempestade sobre uma área",
+        "efeito": "Leva 10 minutos para conjurar; dura a cena. Reduz visibilidade e Ataques à distância de inimigos; a critério do Mestre, raios caem ao acaso na área.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 1
+        }
+      }
+    ],
     "pericias": {
       "prontidao": 3,
       "esquiva": 1,
@@ -3169,9 +3223,9 @@
     "defesaMental": 11,
     "vontade": 6,
     "soak": {
-      "impacto": 6,
-      "corte": 3,
-      "perfuracao": 3
+      "impacto": 9,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -3364,12 +3418,34 @@
         "dano": "2d6 +7 perfurante",
         "perfArma": 0,
         "ticks": 6
+      },
+      {
+        "nome": "Espinhos de cauda",
+        "pool": "6d6 +1",
+        "dano": "1d6 +7 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "Habilidades notáveis: Prontidão 2, Atletismo 1.",
     "pendente": true,
+    "poderes": [
+      {
+        "id": "espinhos-de-cauda",
+        "nome": "Espinhos de cauda",
+        "tipo": "natural",
+        "resiste": "esquiva",
+        "efeito": "Rajada de 4 espinhos, pode dividir entre até 2 alvos na mesma rodada.",
+        "ataque": "Espinhos de cauda",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 6,
+          "recarga": "24 espinhos ao todo, 4 por rajada"
+        }
+      }
+    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
@@ -5287,7 +5363,7 @@
           "arte": "morte",
           "nivel": 3
         },
-        "resiste": "corpo",
+        "resiste": "mente",
         "efeito": "Resiste ao entrar, 1 vez por cena.",
         "usos": {
           "periodo": "passivo",
@@ -5560,12 +5636,20 @@
     "tecnicas": [],
     "artes": [
       {
-        "id": "protecao",
-        "nivel": 3
+        "id": "morte",
+        "nivel": 6
       },
       {
-        "id": "morte",
-        "nivel": 3
+        "id": "fogo",
+        "nivel": 4
+      },
+      {
+        "id": "gelo",
+        "nivel": 4
+      },
+      {
+        "id": "protecao",
+        "nivel": 4
       }
     ],
     "notas": "Habilidades notáveis: Ocultismo 5, Conhecimentos 5, Prontidão 3.",
@@ -5593,7 +5677,7 @@
           "arte": "morte",
           "nivel": 3
         },
-        "resiste": "corpo",
+        "resiste": "mente",
         "efeito": "Resiste ao entrar, 1 vez por cena.",
         "usos": {
           "periodo": "passivo",
@@ -6066,11 +6150,19 @@
     "artes": [
       {
         "id": "fortuna",
-        "nivel": 4
+        "nivel": 6
       },
       {
-        "id": "conjuracao",
-        "nivel": 4
+        "id": "forcas",
+        "nivel": 6
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 5
+      },
+      {
+        "id": "protecao",
+        "nivel": 5
       }
     ],
     "notas": "Habilidades notáveis: Ocultismo 4, Persuasão 4, Prontidão 4.",
@@ -6131,7 +6223,24 @@
     "tecnicas": [
       "aperto-esmagador"
     ],
-    "artes": [],
+    "artes": [
+      {
+        "id": "forcas",
+        "nivel": 4
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 5
+      },
+      {
+        "id": "protecao",
+        "nivel": 3
+      },
+      {
+        "id": "conjuracao",
+        "nivel": 6
+      }
+    ],
     "notas": "Habilidades notáveis: Armas 5, Prontidão 4, Liderança 4. Centelha acima do teto mortal (entidade).",
     "pendente": true,
     "pericias": {
@@ -6210,7 +6319,7 @@
           "arte": "fogo",
           "nivel": 4
         },
-        "resiste": "corpo",
+        "resiste": "nenhum",
         "efeito": "Resiste ao entrar, 1 vez por cena.",
         "usos": {
           "periodo": "passivo",
@@ -6547,6 +6656,14 @@
         "dano": "1d6 +6 corte",
         "perfArma": null,
         "ticks": 5
+      },
+      {
+        "nome": "Arco longo",
+        "pool": "4d6+2 +5",
+        "dano": "1d6 +6 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "notas": "catálogo Arco Longo (armas.json); soma Força pela mesma regra do catálogo"
       }
     ],
     "tecnicas": [],
@@ -6721,11 +6838,19 @@
     "artes": [
       {
         "id": "gelo",
-        "nivel": 3
+        "nivel": 5
+      },
+      {
+        "id": "conjuracao",
+        "nivel": 6
       },
       {
         "id": "protecao",
         "nivel": 3
+      },
+      {
+        "id": "tempo",
+        "nivel": 2
       }
     ],
     "notas": "Habilidades notáveis: Armas 5, Ocultismo 4, Liderança 4.",
@@ -6739,7 +6864,7 @@
           "arte": "gelo",
           "nivel": 3
         },
-        "resiste": "corpo",
+        "resiste": "nenhum",
         "efeito": "Resiste ao entrar, 1 vez por cena.",
         "usos": {
           "periodo": "passivo",
@@ -6772,7 +6897,7 @@
     "pv": 40,
     "defesa": 17,
     "defesaSocial": 13,
-    "defesaMental": 22,
+    "defesaMental": 26,
     "vontade": 10,
     "soak": {
       "impacto": 10,
@@ -6841,7 +6966,7 @@
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
-      "integridade": 4,
+      "integridade": 8,
       "sociabilidade": 0,
       "furtividade": 2
     }
@@ -6895,16 +7020,24 @@
     "tecnicas": [],
     "artes": [
       {
-        "id": "morte",
-        "nivel": 3
+        "id": "fogo",
+        "nivel": 6
+      },
+      {
+        "id": "fortuna",
+        "nivel": 6
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 5
       },
       {
         "id": "espirito",
         "nivel": 4
       },
       {
-        "id": "fogo",
-        "nivel": 4
+        "id": "conjuracao",
+        "nivel": 6
       }
     ],
     "notas": "Habilidades notáveis: Ocultismo 5, Liderança 5, Prontidão 5, Persuasão 5. Centelha acima do teto mortal (entidade).",
@@ -6918,7 +7051,7 @@
           "arte": "morte",
           "nivel": 3
         },
-        "resiste": "corpo",
+        "resiste": "mente",
         "efeito": "Resiste ao entrar, 1 vez por cena.",
         "usos": {
           "periodo": "passivo",
@@ -7035,7 +7168,7 @@
           "arte": "fascinacao",
           "nivel": 2
         },
-        "resiste": "corpo",
+        "resiste": "mente",
         "efeito": "Resiste ao entrar, 1 vez por cena.",
         "usos": {
           "periodo": "passivo",
@@ -7100,16 +7233,24 @@
     "tecnicas": [],
     "artes": [
       {
-        "id": "raio",
-        "nivel": 3
+        "id": "cura",
+        "nivel": 4
       },
       {
-        "id": "fascinacao",
-        "nivel": 2
+        "id": "protecao",
+        "nivel": 5
       },
       {
-        "id": "materia",
-        "nivel": 2
+        "id": "luz",
+        "nivel": 4
+      },
+      {
+        "id": "forcas",
+        "nivel": 4
+      },
+      {
+        "id": "conjuracao",
+        "nivel": 5
       }
     ],
     "notas": "Habilidades notáveis: Armas 4, Ocultismo 4, Persuasão 4, Prontidão 4.",
@@ -7189,12 +7330,24 @@
     ],
     "artes": [
       {
-        "id": "morte",
+        "id": "cura",
+        "nivel": 6
+      },
+      {
+        "id": "fogo",
+        "nivel": 5
+      },
+      {
+        "id": "terra",
         "nivel": 4
       },
       {
         "id": "protecao",
-        "nivel": 4
+        "nivel": 5
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 5
       }
     ],
     "notas": "Habilidades notáveis: Armas 5, Ocultismo 5, Persuasão 4, Prontidão 5. Centelha acima do teto mortal (entidade).",
@@ -7208,7 +7361,7 @@
           "arte": "protecao",
           "nivel": 4
         },
-        "resiste": "corpo",
+        "resiste": "mente",
         "efeito": "Resiste ao entrar, 1 vez por cena.",
         "usos": {
           "periodo": "passivo",
@@ -7279,26 +7432,57 @@
         "dano": "2d6 +10 corte",
         "perfArma": null,
         "ticks": 6
+      },
+      {
+        "nome": "Arco de luz",
+        "pool": "6d6+2 +9",
+        "dano": "2d6 +10 perfurante · perf. 2",
+        "perfArma": 2,
+        "ticks": 6
       }
     ],
     "tecnicas": [],
     "artes": [
       {
-        "id": "morte",
-        "nivel": 5
-      },
-      {
-        "id": "espirito",
-        "nivel": 5
-      },
-      {
         "id": "cura",
+        "nivel": 6
+      },
+      {
+        "id": "fortuna",
+        "nivel": 6
+      },
+      {
+        "id": "morte",
+        "nivel": 6
+      },
+      {
+        "id": "luz",
+        "nivel": 5
+      },
+      {
+        "id": "protecao",
         "nivel": 5
       }
     ],
     "notas": "Habilidades notáveis: Armas 5, Ocultismo 5, Oratória 5, Prontidão 5. Centelha acima do teto mortal (entidade).",
     "pendente": true,
     "poderes": [
+      {
+        "id": "arco-que-mata",
+        "nome": "Efeito do arco (mata)",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 5
+        },
+        "resiste": "corpo",
+        "efeito": "Alvo maligno que falha sofre dano letal imediato.",
+        "ataque": "Arco de luz",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 1
+        }
+      },
       {
         "id": "convocar-anjos",
         "nome": "Convocar anjos",
@@ -7372,8 +7556,20 @@
     "tecnicas": [],
     "artes": [
       {
-        "id": "materia",
-        "nivel": 2
+        "id": "conjuracao",
+        "nivel": 5
+      },
+      {
+        "id": "ofuscacao",
+        "nivel": 3
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 3
+      },
+      {
+        "id": "protecao",
+        "nivel": 3
       },
       {
         "id": "adivinhacao",
@@ -7467,12 +7663,24 @@
     "tecnicas": [],
     "artes": [
       {
-        "id": "espirito",
-        "nivel": 3
+        "id": "raio",
+        "nivel": 4
       },
       {
-        "id": "raio",
-        "nivel": 3
+        "id": "luz",
+        "nivel": 4
+      },
+      {
+        "id": "protecao",
+        "nivel": 4
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 4
+      },
+      {
+        "id": "cura",
+        "nivel": 4
       }
     ],
     "notas": "Habilidades notáveis: Ocultismo 4, Oratória 4, Prontidão 4.",
@@ -7660,7 +7868,7 @@
           "arte": "fogo",
           "nivel": 4
         },
-        "resiste": "corpo",
+        "resiste": "nenhum",
         "efeito": "Resiste ao entrar, 1 vez por cena.",
         "usos": {
           "periodo": "passivo",
@@ -7742,7 +7950,7 @@
           "arte": "fogo",
           "nivel": 2
         },
-        "resiste": "corpo",
+        "resiste": "nenhum",
         "efeito": "Resiste ao entrar, 1 vez por cena.",
         "usos": {
           "periodo": "passivo",
@@ -8056,12 +8264,24 @@
     ],
     "artes": [
       {
-        "id": "fascinacao",
+        "id": "agua",
+        "nivel": 4
+      },
+      {
+        "id": "natureza",
+        "nivel": 4
+      },
+      {
+        "id": "vida",
         "nivel": 3
       },
       {
-        "id": "agua",
+        "id": "raio",
         "nivel": 3
+      },
+      {
+        "id": "cura",
+        "nivel": 2
       }
     ],
     "notas": "Habilidades notáveis: Ocultismo 3, Furtividade 4, Persuasão 3.",
@@ -8071,7 +8291,7 @@
         "id": "beleza-cegante",
         "nome": "Beleza cegante",
         "tipo": "natural",
-        "resiste": "corpo",
+        "resiste": "mente",
         "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
         "usos": {
           "periodo": "cena"
@@ -8210,6 +8430,13 @@
         "dano": "1d6 +1 perfurante",
         "perfArma": 0,
         "ticks": 5
+      },
+      {
+        "nome": "Flechas do sono",
+        "pool": "2d6 +4",
+        "dano": "1d6 perfurante",
+        "perfArma": 0,
+        "ticks": 6
       }
     ],
     "tecnicas": [],
@@ -8234,6 +8461,17 @@
         "efeito": "Invisibilidade natural",
         "usos": {
           "periodo": "avontade"
+        }
+      },
+      {
+        "id": "flecha-do-sono-ou-amnesia",
+        "nome": "Efeito da flecha (sono ou amnésia)",
+        "tipo": "natural",
+        "resiste": "mente",
+        "efeito": "À escolha da pixie: sono (Inconsciente até o fim da cena) ou amnésia (perde as memórias da última hora). A flecha do esquecimento é narrativa.",
+        "ataque": "Flechas do sono",
+        "usos": {
+          "periodo": "golpe"
         }
       }
     ],
@@ -8788,12 +9026,16 @@
     "tecnicas": [],
     "artes": [
       {
-        "id": "forcas",
-        "nivel": 2
+        "id": "adivinhacao",
+        "nivel": 5
       },
       {
-        "id": "adivinhacao",
-        "nivel": 2
+        "id": "fascinacao",
+        "nivel": 4
+      },
+      {
+        "id": "protecao",
+        "nivel": 3
       }
     ],
     "notas": "Habilidades notáveis: Conhecimentos 5, Ocultismo 4, Prontidão 4.",
@@ -8873,7 +9115,19 @@
     "artes": [
       {
         "id": "fascinacao",
+        "nivel": 5
+      },
+      {
+        "id": "fogo",
+        "nivel": 4
+      },
+      {
+        "id": "ofuscacao",
         "nivel": 3
+      },
+      {
+        "id": "cura",
+        "nivel": 1
       }
     ],
     "notas": "Habilidades notáveis: Ocultismo 4, Persuasão 3, Prontidão 4.",
@@ -8887,7 +9141,7 @@
           "arte": "fascinacao",
           "nivel": 3
         },
-        "resiste": "corpo",
+        "resiste": "mente",
         "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
         "usos": {
           "periodo": "cena"
@@ -9128,11 +9382,19 @@
     "tecnicas": [],
     "artes": [
       {
+        "id": "ofuscacao",
+        "nivel": 3
+      },
+      {
+        "id": "natureza",
+        "nivel": 3
+      },
+      {
         "id": "morte",
         "nivel": 2
       },
       {
-        "id": "fascinacao",
+        "id": "metamorfose",
         "nivel": 2
       }
     ],
@@ -9213,8 +9475,12 @@
     ],
     "artes": [
       {
-        "id": "agua",
-        "nivel": 4
+        "id": "vento",
+        "nivel": 6
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 5
       }
     ],
     "notas": "Habilidades notáveis: Prontidão 5, Ocultismo 4. Centelha acima do teto mortal (entidade).",
@@ -9493,8 +9759,12 @@
     ],
     "artes": [
       {
-        "id": "fogo",
-        "nivel": 3
+        "id": "protecao",
+        "nivel": 1
+      },
+      {
+        "id": "fortuna",
+        "nivel": 1
       }
     ],
     "notas": "Habilidades notáveis: Prontidão 4, Manha 3, Ocultismo 2.",
@@ -9585,12 +9855,24 @@
     "tecnicas": [],
     "artes": [
       {
-        "id": "fogo",
+        "id": "fascinacao",
         "nivel": 4
       },
       {
-        "id": "morte",
+        "id": "tempo",
         "nivel": 3
+      },
+      {
+        "id": "ofuscacao",
+        "nivel": 3
+      },
+      {
+        "id": "protecao",
+        "nivel": 3
+      },
+      {
+        "id": "fogo",
+        "nivel": 2
       }
     ],
     "notas": "Habilidades notáveis: Prontidão 5, Persuasão 4, Ocultismo 3.",
@@ -9620,7 +9902,7 @@
           "arte": "fogo",
           "nivel": 4
         },
-        "resiste": "corpo",
+        "resiste": "nenhum",
         "efeito": "Resiste ao entrar, 1 vez por cena.",
         "usos": {
           "periodo": "passivo",
@@ -9701,15 +9983,23 @@
     "artes": [
       {
         "id": "fogo",
-        "nivel": 5
-      },
-      {
-        "id": "morte",
         "nivel": 4
       },
       {
         "id": "fascinacao",
         "nivel": 4
+      },
+      {
+        "id": "protecao",
+        "nivel": 5
+      },
+      {
+        "id": "forcas",
+        "nivel": 4
+      },
+      {
+        "id": "conjuracao",
+        "nivel": 6
       }
     ],
     "notas": "Habilidades notáveis: Prontidão 5, Ocultismo 5, Persuasão 5, Conhecimentos 4. Centelha acima do teto mortal (entidade).",
@@ -9804,15 +10094,23 @@
     "tecnicas": [],
     "artes": [
       {
+        "id": "tempo",
+        "nivel": 6
+      },
+      {
+        "id": "protecao",
+        "nivel": 6
+      },
+      {
         "id": "fogo",
         "nivel": 5
       },
       {
-        "id": "tempo",
-        "nivel": 4
+        "id": "fascinacao",
+        "nivel": 5
       },
       {
-        "id": "morte",
+        "id": "adivinhacao",
         "nivel": 5
       }
     ],
@@ -10211,20 +10509,20 @@
     "tecnicas": [],
     "artes": [
       {
-        "id": "fogo",
-        "nivel": 4
-      },
-      {
-        "id": "fascinacao",
-        "nivel": 3
-      },
-      {
         "id": "protecao",
-        "nivel": 4
+        "nivel": 3
       },
       {
-        "id": "materia",
+        "id": "fortuna",
         "nivel": 3
+      },
+      {
+        "id": "cura",
+        "nivel": 2
+      },
+      {
+        "id": "luz",
+        "nivel": 2
       }
     ],
     "notas": "Habilidades notáveis: Ocultismo 5, Persuasão 5, Prontidão 5, Conhecimentos 5. Centelha acima do teto mortal (entidade).",

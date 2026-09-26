@@ -75,7 +75,7 @@
         "arte": "fogo",
         "nivel": 4
       },
-      "resiste": "corpo",
+      "resiste": "nenhum",
       "efeito": "Resiste ao entrar, 1 vez por cena.",
       "usos": {
         "periodo": "passivo",

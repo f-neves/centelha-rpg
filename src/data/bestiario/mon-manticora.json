@@ -57,16 +57,35 @@
       "tipo": "perfurante",
       "acerto": 0,
       "ticks": 6
+    },
+    {
+      "nome": "Espinhos de cauda",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "distancia": true,
+      "arremesso": true,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "perf": 1,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "id": "espinhos-de-cauda",
+      "nome": "Espinhos de cauda",
+      "tipo": "natural",
+      "resiste": "esquiva",
+      "efeito": "Rajada de 4 espinhos, pode dividir entre até 2 alvos na mesma rodada.",
+      "ataque": "Espinhos de cauda",
+      "usos": { "periodo": "dia", "quantidade": 6, "recarga": "24 espinhos ao todo, 4 por rajada" }
     }
   ],
   "habilidades": [
     {
       "nome": "Voo",
       "descricao": "combate e persegue livremente pelo ar"
-    },
-    {
-      "nome": "Saraivada de espinhos",
-      "descricao": "dispara vários espinhos da cauda a até 18m; pode atingir dois alvos na mesma rodada"
     },
     {
       "nome": "Garras de leão",

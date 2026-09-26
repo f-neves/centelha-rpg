@@ -49,8 +49,11 @@
   "willpower": 12,
   "aparencia": 11,
   "arte": {
-    "morte": 4,
-    "protecao": 4
+    "cura": 6,
+    "fogo": 5,
+    "terra": 4,
+    "protecao": 5,
+    "fascinacao": 5
   },
   "tech": {
     "regeneracao": true
@@ -76,7 +79,7 @@
         "arte": "protecao",
         "nivel": 4
       },
-      "resiste": "corpo",
+      "resiste": "mente",
       "efeito": "Resiste ao entrar, 1 vez por cena.",
       "usos": {
         "periodo": "passivo",

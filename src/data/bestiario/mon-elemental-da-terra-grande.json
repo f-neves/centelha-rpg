@@ -19,7 +19,8 @@
     "peso": "2 t"
   },
   "locomocao": {
-    "terra": 3
+    "terra": 3,
+    "escavacao": 2
   },
   "centelha": 3,
   "attrs": {
@@ -81,11 +82,11 @@
       }
     }
   ],
-  "fraquezas": [
-    "agua"
-  ],
+  "material": "pedra",
   "resistencias": [
-    "fogo"
+    "fogo",
+    "corte",
+    "perfuracao"
   ],
   "habilidades": [
     {
@@ -95,10 +96,6 @@
     {
       "nome": "Empurrão",
       "descricao": "golpe pode derrubar ou arremessar o alvo para trás"
-    },
-    {
-      "nome": "Corpo de terra",
-      "descricao": "+1d de Absorção contra armas físicas"
     },
     {
       "nome": "Imunidade mental e a venenos",
@@ -166,7 +163,8 @@
   "ameacaLegada": 4,
   "proezaFutura": [
     {
-      "caminho": "pele-de-pedra"
+      "caminho": "pele-de-pedra",
+      "tecnica": "carne-de-granito"
     }
   ]
 }

@@ -50,8 +50,10 @@
   "willpower": 9,
   "aparencia": 8,
   "arte": {
+    "ofuscacao": 3,
+    "natureza": 3,
     "morte": 2,
-    "fascinacao": 2
+    "metamorfose": 2
   },
   "ataques": [
     {

@@ -82,6 +82,13 @@
       }
     }
   ],
+  "bonus": {
+    "defesaMental": 4
+  },
+  "resistencias": [
+    "corte",
+    "impacto"
+  ],
   "habilidades": [
     {
       "nome": "Garras traiçoeiras",
@@ -100,12 +107,8 @@
       "descricao": "feitiçaria; cria imagens sensoriais convincentes para enganar ou distrair"
     },
     {
-      "nome": "Só arma benta fere",
-      "descricao": "resistência mágica; imune a quase todo dano, exceto de armas abençoadas"
-    },
-    {
       "nome": "Magia reversa",
-      "descricao": "alguns feitiços lançados contra ele produzem o efeito oposto ao pretendido"
+      "descricao": "alguns feitiços lançados contra ele produzem o efeito oposto ao pretendido; +4 na Defesa Mental e nas resistências contra Artes"
     }
   ],
   "lore": [

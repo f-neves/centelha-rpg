@@ -19,7 +19,9 @@
     "peso": "7 t"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "voo": 20,
+    "natacao": 4
   },
   "centelha": 6,
   "attrs": {

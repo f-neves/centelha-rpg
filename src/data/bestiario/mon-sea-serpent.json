@@ -18,7 +18,8 @@
     "peso": "dezenas de t"
   },
   "locomocao": {
-    "natacao": 6
+    "natacao": 6,
+    "terra": 2
   },
   "centelha": 5,
   "attrs": {

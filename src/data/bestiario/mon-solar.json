@@ -38,7 +38,8 @@
     "briga": 5,
     "esquiva": 2,
     "prontidao": 4,
-    "integridade": 8
+    "integridade": 8,
+    "atirador": 5
   },
   "virtues": {
     "compaixao": 5,
@@ -49,9 +50,11 @@
   "willpower": 12,
   "aparencia": 12,
   "arte": {
-    "morte": 5,
-    "espirito": 5,
-    "cura": 5
+    "cura": 6,
+    "fortuna": 6,
+    "morte": 6,
+    "luz": 5,
+    "protecao": 5
   },
   "ataques": [
     {
@@ -63,9 +66,37 @@
       "tipo": "corte",
       "acerto": 0,
       "ticks": 6
+    },
+    {
+      "nome": "Arco de luz",
+      "atrib": "percepcao",
+      "pericia": "atirador",
+      "dado": 2,
+      "distancia": true,
+      "arremesso": true,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "perf": 2,
+      "ticks": 6
     }
   ],
   "poderes": [
+    {
+      "id": "arco-que-mata",
+      "nome": "Efeito do arco (mata)",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 5
+      },
+      "resiste": "corpo",
+      "efeito": "Alvo maligno que falha sofre dano letal imediato.",
+      "ataque": "Arco de luz",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 1
+      }
+    },
     {
       "id": "convocar-anjos",
       "nome": "Convocar anjos",
@@ -87,20 +118,12 @@
   ],
   "habilidades": [
     {
-      "nome": "Arco da aurora",
-      "descricao": "flecha a distância; alvo maligno que falhar em Resistência sofre dano letal imediato"
-    },
-    {
       "nome": "Espada afiada",
       "descricao": "crítico pode decepar um membro ou matar em um só golpe"
     },
     {
       "nome": "Ressurreição",
       "descricao": "1x por história traz um aliado morto de volta à vida"
-    },
-    {
-      "nome": "Convocar anjos",
-      "descricao": "chama 1d6 celestiais menores para lutar ao seu lado"
     },
     {
       "nome": "Aura protetora suprema",

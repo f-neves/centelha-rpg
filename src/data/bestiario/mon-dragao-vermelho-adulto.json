@@ -19,7 +19,8 @@
     "peso": "7,3 t"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "voo": 20
   },
   "centelha": 6,
   "attrs": {
@@ -48,8 +49,11 @@
   "willpower": 11,
   "aparencia": 9,
   "arte": {
-    "fogo": 4,
-    "morte": 3
+    "fascinacao": 4,
+    "tempo": 3,
+    "ofuscacao": 3,
+    "protecao": 3,
+    "fogo": 2
   },
   "ataques": [
     {
@@ -88,7 +92,7 @@
         "arte": "fogo",
         "nivel": 4
       },
-      "resiste": "corpo",
+      "resiste": "nenhum",
       "efeito": "Resiste ao entrar, 1 vez por cena.",
       "usos": {
         "periodo": "passivo",

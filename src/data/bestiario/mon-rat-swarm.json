@@ -18,7 +18,9 @@
     "peso": "variável, conforme o número de ratos"
   },
   "locomocao": {
-    "terra": 2
+    "terra": 2,
+    "natacao": 2,
+    "escalada": 2
   },
   "centelha": 0,
   "attrs": {

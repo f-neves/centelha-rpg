@@ -120,7 +120,16 @@ function build(c) {
       ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
     },
     habilidades: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao })),
-    poderes: (c.poderes || []).map((p) => ({ efeito: p.efeito, tipo: p.tipo, alvo: p.alvo, ...(p.caminho ? { caminho: p.caminho } : {}), ...(p.arte ? { arte: p.arte } : {}) })),
+    // Dois formatos de poder convivem desde o B14 fase 2 (ver criatura-schema.mjs,
+    // poderSchema): o natural novo, com id/nome/resiste/usos/base/area/ataque, e o
+    // legado (efeito/tipo/alvo/arte/caminho). Copiar só os campos do legado aqui
+    // apagava nome/resiste/usos/ataque de todo poder natural novo, calado; achado
+    // e corrigido na B14 fase 3.
+    poderes: (c.poderes || []).map((p) => (p.id
+      ? { id: p.id, nome: p.nome, tipo: p.tipo, resiste: p.resiste, efeito: p.efeito,
+          ...(p.base ? { base: p.base } : {}), ...(p.area ? { area: p.area } : {}),
+          ...(p.ataque ? { ataque: p.ataque } : {}), usos: p.usos }
+      : { efeito: p.efeito, tipo: p.tipo, alvo: p.alvo, ...(p.caminho ? { caminho: p.caminho } : {}), ...(p.arte ? { arte: p.arte } : {}) })),
     tecnicas: c.tecnicas || [],
     artes: (c.artes || []).map((a) => ({ id: a.id && a.id.id ? a.id.id : a.id, nivel: a.nivel })),
     notas: c.notas || '',

@@ -332,7 +332,9 @@ export function cardCriaturaHTML(m: any): string {
     ? `<div class="besta-elem">${elFraq.map((f: string) => `<span class="el el-fraco" title="Fraqueza">▼ ${esc(f)}</span>`).join('')}${elRes.map((r: string) => `<span class="el el-forte" title="Resistência">▲ ${esc(r)}</span>`).join('')}</div>` : '';
   const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: <b>${esc(a.pool)}</b> · Dano <b>${fmtDano(esc(a.dano))}</b> · Velocidade ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
   const habs = (m.habilidades || []).length ? `<h4 class="cc-h">Habilidades</h4><ul class="ib-hab">${m.habilidades.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}</li>`).join('')}</ul>` : '';
-  const pods = (m.poderes || []).length ? `<h4 class="cc-h">Poderes <span class="muted">(sistema)</span></h4><ul class="ib-pod">${m.poderes.map((p: any) => `<li><span class="pw-ef">${esc(p.efeito)}</span> → <span class="pw-alvo">${esc(p.alvo)}</span></li>`).join('')}</ul>` : '';
+  const pods = (m.poderes || []).length ? `<h4 class="cc-h">Poderes <span class="muted">(sistema)</span></h4><ul class="ib-pod">${m.poderes.map((p: any) => p.id
+    ? `<li><span class="pw-ef">${esc(p.nome)}</span> → <span class="pw-alvo">${esc(p.efeito)}${p.resiste !== 'nenhum' ? ` (resiste ${esc(p.resiste)})` : ''}</span></li>`
+    : `<li><span class="pw-ef">${esc(p.efeito)}</span> → <span class="pw-alvo">${esc(p.alvo)}</span></li>`).join('')}</ul>` : '';
   // A TÉCNICA JÁ VEM RESOLVIDA (`{ id, nome, caminho }`), do `gen-monsters.mjs`
   // e do endpoint por criatura. Antes esta linha era o único uso do
   // `tecnicas.json` neste módulo, e por causa dela 179 KB de catálogo (26,3 KB

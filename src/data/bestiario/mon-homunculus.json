@@ -5,7 +5,9 @@
   "nomeIngles": "Homunculus",
   "categoria": "Construto",
   "categoriaLegada": "Monstro",
-  "constructo": { "semVida": true },
+  "constructo": {
+    "semVida": true
+  },
   "papel": "soldado",
   "conceito": "monstro Médio",
   "descricao": "Autômato sem vida, movido por magia alheia.",
@@ -21,7 +23,8 @@
     "peso": "3 kg"
   },
   "locomocao": {
-    "voo": 5
+    "voo": 5,
+    "terra": 2
   },
   "centelha": 1,
   "attrs": {

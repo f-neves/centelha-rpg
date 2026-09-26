@@ -21,7 +21,8 @@
     "peso": "360 kg"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "voo": 6
   },
   "centelha": 6,
   "attrs": {
@@ -50,8 +51,10 @@
   "willpower": 11,
   "aparencia": 0,
   "arte": {
-    "gelo": 3,
-    "protecao": 3
+    "gelo": 5,
+    "conjuracao": 6,
+    "protecao": 3,
+    "tempo": 2
   },
   "ataques": [
     {
@@ -74,7 +77,7 @@
         "arte": "gelo",
         "nivel": 3
       },
-      "resiste": "corpo",
+      "resiste": "nenhum",
       "efeito": "Resiste ao entrar, 1 vez por cena.",
       "usos": {
         "periodo": "passivo",

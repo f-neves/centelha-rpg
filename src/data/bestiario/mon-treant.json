@@ -69,6 +69,7 @@
     "fogo"
   ],
   "resistencias": [
+    "impacto",
     "perfuracao"
   ],
   "habilidades": [

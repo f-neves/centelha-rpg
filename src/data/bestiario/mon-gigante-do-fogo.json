@@ -56,17 +56,27 @@
       "tipo": "impacto",
       "acerto": 0,
       "ticks": 6
+    },
+    {
+      "nome": "Arremessar rocha",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "distancia": true,
+      "arremesso": true,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 6,
+      "notas": "dado pelo porte Grande (B14 fase 3)"
     }
   ],
+  "fraquezas": [
+    "gelo"
+  ],
+  "resistencias": [
+    "fogo"
+  ],
   "habilidades": [
-    {
-      "nome": "Imune a fogo",
-      "descricao": "não sofre dano de fogo"
-    },
-    {
-      "nome": "Arremesso de rocha",
-      "descricao": "ataque à distância de até 36m, dano alto"
-    },
     {
       "nome": "Armadura da forja",
       "descricao": "Absorção muito alta com armadura pesada forjada por eles mesmos"

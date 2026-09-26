@@ -48,7 +48,10 @@
   "willpower": 10,
   "aparencia": 1,
   "arte": {
-    "fascinacao": 3
+    "fascinacao": 5,
+    "fogo": 4,
+    "ofuscacao": 3,
+    "cura": 1
   },
   "ataques": [
     {
@@ -71,7 +74,7 @@
         "arte": "fascinacao",
         "nivel": 3
       },
-      "resiste": "corpo",
+      "resiste": "mente",
       "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
       "usos": {
         "periodo": "cena"

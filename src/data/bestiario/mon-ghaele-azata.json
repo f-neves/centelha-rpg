@@ -49,8 +49,11 @@
   "willpower": 11,
   "aparencia": 12,
   "arte": {
-    "espirito": 3,
-    "raio": 3
+    "raio": 4,
+    "luz": 4,
+    "protecao": 4,
+    "fascinacao": 4,
+    "cura": 4
   },
   "ataques": [
     {

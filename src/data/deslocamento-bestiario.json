@@ -7,10 +7,10 @@
   "origem": "tabela"
  },
  "mon-aboleth": {
-  "batalha": 6,
-  "arranque": 10,
-  "corrida": 14,
-  "ft": 60,
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 10,
   "origem": "fonte",
   "nota": "nado 60; em terra 10, e o aboleth não sai da água"
  },
@@ -368,10 +368,10 @@
   "origem": "fonte"
  },
  "mon-cloaker": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
-  "ft": 40,
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 10,
   "origem": "fonte",
   "nota": "voo 40; em terra 10, e o manto vive no ar"
  },
@@ -390,10 +390,10 @@
   "origem": "fonte"
  },
  "mon-cocatriz": {
-  "batalha": 6,
-  "arranque": 10,
-  "corrida": 14,
-  "ft": 60,
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
   "origem": "fonte",
   "nota": "voo 60; em terra 20: a cocatriz é bicho de asa"
  },
@@ -412,10 +412,10 @@
   "origem": "fonte"
  },
  "mon-raven": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
-  "ft": 40,
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 10,
   "origem": "fonte",
   "nota": "voo 40; em terra 10"
  },
@@ -540,10 +540,10 @@
   "origem": "fonte"
  },
  "mon-diabrete-imp": {
-  "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
-  "ft": 50,
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
   "origem": "fonte",
   "nota": "voo 50 (perfeito); em terra 20"
  },
@@ -681,10 +681,10 @@
   "origem": "fonte"
  },
  "mon-elasmosaurus": {
-  "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
-  "ft": 50,
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
   "origem": "fonte",
   "nota": "nado 50; em terra 20, e ele quase não sai da água"
  },
@@ -863,10 +863,10 @@
   "origem": "fonte"
  },
  "mon-hawk": {
-  "batalha": 6,
-  "arranque": 10,
-  "corrida": 14,
-  "ft": 60,
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 10,
   "origem": "fonte",
   "nota": "voo 60; em terra 10"
  },
@@ -1139,10 +1139,10 @@
   "origem": "fonte"
  },
  "mon-harpia": {
-  "batalha": 8,
-  "arranque": 13,
-  "corrida": 18,
-  "ft": 80,
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
   "origem": "fonte",
   "nota": "voo 80; em terra 20, e a harpia caça no ar"
  },
@@ -1203,10 +1203,10 @@
   "origem": "tabela"
  },
  "mon-homunculus": {
-  "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
-  "ft": 50,
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
   "origem": "fonte",
   "nota": "voo 50; em terra 20, e o bichinho é feito para voar"
  },
@@ -1260,12 +1260,12 @@
   "origem": "fonte"
  },
  "mon-kraken": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
-  "ft": 40,
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 10,
   "origem": "fonte",
-  "nota": "nado 40: em terra o kraken se arrasta 10 ft"
+  "nota": "em terra o kraken se arrasta 10 ft; nada a 40 ft (locomocao.natacao)"
  },
  "mon-kyton": {
   "batalha": 3,
@@ -1524,10 +1524,10 @@
   "nota": "voo 40; em terra o morcego se arrasta 5 ft"
  },
  "mon-dire-bat": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
-  "ft": 40,
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
   "origem": "fonte",
   "nota": "voo 40; em terra 20"
  },
@@ -1681,10 +1681,10 @@
   "origem": "fonte"
  },
  "mon-pixie": {
-  "batalha": 6,
-  "arranque": 10,
-  "corrida": 14,
-  "ft": 60,
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
   "origem": "fonte",
   "nota": "voo 60; em terra 20"
  },
@@ -1717,18 +1717,18 @@
   "origem": "fonte"
  },
  "mon-pseudodragon": {
-  "batalha": 6,
-  "arranque": 10,
-  "corrida": 14,
-  "ft": 60,
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 15,
   "origem": "fonte",
   "nota": "voo 60; em terra 15"
  },
  "mon-pteranodon": {
-  "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
-  "ft": 50,
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 10,
   "origem": "fonte",
   "nota": "voo 50; em terra 10, e o pterossauro não caça a pé"
  },
@@ -1740,10 +1740,10 @@
   "origem": "fonte"
  },
  "mon-quasit": {
-  "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
-  "ft": 50,
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
   "origem": "fonte",
   "nota": "voo 50 (perfeito); em terra 20"
  },
@@ -1811,10 +1811,10 @@
   "origem": "fonte"
  },
  "mon-roc": {
-  "batalha": 8,
-  "arranque": 13,
-  "corrida": 18,
-  "ft": 80,
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
   "origem": "fonte",
   "nota": "voo 80; em terra 20"
  },
@@ -1862,10 +1862,10 @@
   "origem": "fonte"
  },
  "mon-sea-serpent": {
-  "batalha": 6,
-  "arranque": 10,
-  "corrida": 14,
-  "ft": 60,
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
   "origem": "fonte",
   "nota": "nado 60; em terra 20, e ela não sai do mar"
  },
@@ -1941,10 +1941,10 @@
   "nota": "voo 40: incorpórea"
  },
  "mon-stirge": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
-  "ft": 40,
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 10,
   "origem": "fonte",
   "nota": "voo 40; em terra 10"
  },
@@ -2120,10 +2120,10 @@
   "origem": "fonte"
  },
  "mon-giant-wasp": {
-  "batalha": 6,
-  "arranque": 10,
-  "corrida": 14,
-  "ft": 60,
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
   "origem": "fonte",
   "nota": "voo 60; em terra 20"
  },
@@ -2163,10 +2163,10 @@
   "origem": "fonte"
  },
  "mon-wyvern": {
-  "batalha": 6,
-  "arranque": 10,
-  "corrida": 14,
-  "ft": 60,
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 20,
   "origem": "fonte",
   "nota": "voo 60; em terra 20"
  },

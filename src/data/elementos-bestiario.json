@@ -208,14 +208,6 @@
    "fogo"
   ]
  },
- "mon-elemental-da-terra-grande": {
-  "fraquezas": [
-   "agua"
-  ],
-  "resistencias": [
-   "fogo"
-  ]
- },
  "mon-small-earth-elemental": {
   "fraquezas": [
    "agua"
@@ -289,13 +281,6 @@
    "perfuracao"
   ]
  },
- "mon-gargula": {
-  "resistencias": [
-   "corte",
-   "fogo",
-   "perfuracao"
-  ]
- },
  "mon-ochre-jelly": {
   "resistencias": [
    "corte",
@@ -323,6 +308,14 @@
   ],
   "resistencias": [
    "perfuracao"
+  ]
+ },
+ "mon-gigante-do-fogo": {
+  "fraquezas": [
+   "gelo"
+  ],
+  "resistencias": [
+   "fogo"
   ]
  },
  "mon-glabrezu": {
@@ -470,7 +463,8 @@
    "fogo"
   ],
   "resistencias": [
-   "perfuracao"
+   "perfuracao",
+   "raio"
   ]
  },
  "mon-mumia": {
@@ -535,6 +529,12 @@
   "fraquezas": [
    "luz",
    "sagrado"
+  ]
+ },
+ "mon-rakshasa": {
+  "resistencias": [
+   "corte",
+   "impacto"
   ]
  },
  "mon-retriever": {
@@ -606,6 +606,7 @@
    "fogo"
   ],
   "resistencias": [
+   "impacto",
    "perfuracao"
   ]
  },

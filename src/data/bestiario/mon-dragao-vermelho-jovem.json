@@ -19,7 +19,8 @@
     "peso": "900 kg"
   },
   "locomocao": {
-    "terra": 4
+    "terra": 4,
+    "voo": 20
   },
   "centelha": 5,
   "attrs": {
@@ -48,7 +49,8 @@
   "willpower": 10,
   "aparencia": 9,
   "arte": {
-    "fogo": 3
+    "protecao": 1,
+    "fortuna": 1
   },
   "tech": {
     "temor-reverente": true

@@ -97,7 +97,7 @@
   "habilidades": [
     {
       "nome": "Carapaça reflete magia",
-      "descricao": "feitiços dirigidos a ela podem ricochetear de volta ao conjurador"
+      "descricao": "Arte de raio, linha ou cone que a mira: role 1d6; em 1 ou 2, o efeito volta para quem conjurou"
     },
     {
       "nome": "Regeneração implacável",

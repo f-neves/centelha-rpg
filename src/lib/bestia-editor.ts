@@ -51,6 +51,7 @@ export interface Ataque {
   dado: number;
   mao: number;          // 1 ou 2; ignorado quando `distancia`
   distancia?: boolean;
+  arremesso?: boolean;  // à distância mas soma Força (pedra, lança), ao contrário de um disparo comum
   tipo: string;         // corte | perfurante | impacto
   acerto: number;
   perf: number;
@@ -138,7 +139,7 @@ export function rolagemAtaque(c: CriaturaEdit, a: Ataque) {
   const dados = Math.floor(soma / 2), mais = soma % 2 === 1 ? 2 : 0;
   const acerto = nz(a.acerto) + nz(c.centelha) * ((regras as any).derivados?.ataque?.centelhaMult ?? 0);
   const fm = (regras as any).derivados.danoForca;
-  const forca = a.distancia ? 0 : nz(at.forca) * (Number(a.mao) === 2 ? fm.duasMaos : fm.umaMao);
+  const forca = (a.distancia && !a.arremesso) ? 0 : nz(at.forca) * (Number(a.mao) === 2 ? fm.duasMaos : fm.umaMao);
   return {
     pool: `${dados}d6${mais ? '+2' : ''}${acerto ? ` +${acerto}` : ''}`,
     dano: `${nz(a.dado)}d6${forca ? ` +${forca}` : ''} ${a.tipo}${nz(a.perf) ? ` · perf. ${nz(a.perf)}` : ''}`,

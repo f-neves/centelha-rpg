@@ -197,9 +197,9 @@
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 7",
    "deslocamento": {
-    "batalha": 6,
-    "arranque": 10,
-    "corrida": 14
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
    },
    "ataques": [
     {
@@ -252,12 +252,34 @@
   ],
   "poderes": [
    {
+    "id": "muco-que-transforma-pele",
+    "nome": "Muco que transforma pele",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "tipo": "natural"
+    "base": {
+     "arte": "materia",
+     "nivel": 3
+    },
+    "ataque": "Garras e presas",
+    "usos": {
+     "periodo": "golpe"
+    }
    },
    {
+    "id": "dominio-psiquico",
+    "nome": "Domínio psíquico",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Defesa Mental; dura enquanto o aboleth mantiver contato.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fascinacao",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "dia",
+     "quantidade": 3
+    }
    }
   ],
   "tecnicas": [],
@@ -789,8 +811,18 @@
   ],
   "poderes": [
    {
+    "id": "salto-etereo",
+    "nome": "Salto etéreo",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Salto etéreo",
-    "tipo": "natural"
+    "base": {
+     "arte": "espirito",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
@@ -921,12 +953,29 @@
   ],
   "poderes": [
    {
+    "id": "teia",
+    "nome": "Teia",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 3,
+     "recarga": "1 hora"
+    }
    },
    {
+    "id": "mordida-venenosa",
+    "nome": "Mordida venenosa",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-    "tipo": "natural"
+    "ataque": "Garras e presas",
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 3,
+     "recarga": "1 hora"
+    }
    }
   ],
   "tecnicas": [],
@@ -1069,8 +1118,19 @@
   ],
   "poderes": [
    {
+    "id": "aura-de-menaca",
+    "nome": "Aura de menaça",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Resiste ao entrar, 1 vez por cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fascinacao",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    }
   ],
   "tecnicas": [],
@@ -1742,12 +1802,33 @@
   ],
   "poderes": [
    {
+    "id": "dreno-de-constituicao",
+    "nome": "Dreno de Constituição",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 2
+    },
+    "ataque": "Toque dilacerante",
+    "usos": {
+     "periodo": "golpe"
+    }
    },
    {
+    "id": "incorporeo",
+    "nome": "Incorpóreo",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Incorpóreo",
-    "tipo": "natural"
+    "base": {
+     "arte": "espirito",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
@@ -2162,12 +2243,33 @@
   ],
   "poderes": [
    {
+    "id": "aura-de-fogo",
+    "nome": "Aura de fogo",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Resiste ao entrar, 1 vez por cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fogo",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    },
    {
+    "id": "morte-explosiva",
+    "nome": "Morte explosiva",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Morte explosiva",
-    "tipo": "natural"
+    "base": {
+     "arte": "fogo",
+     "nivel": 5
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
@@ -2683,8 +2785,18 @@
   ],
   "poderes": [
    {
+    "id": "olhar-petrificante",
+    "nome": "Olhar petrificante",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
-    "tipo": "natural"
+    "base": {
+     "arte": "materia",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "cena"
+    }
    }
   ],
   "tecnicas": [],
@@ -2963,8 +3075,20 @@
   ],
   "poderes": [
    {
+    "id": "sopro-eletrico",
+    "nome": "Sopro elétrico",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Cone ou linha. Esquiva para metade.",
-    "tipo": "natural"
+    "base": {
+     "arte": "raio",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "ticks",
+     "quantidade": 1,
+     "recarga": "24 ticks"
+    }
    }
   ],
   "tecnicas": [],
@@ -3347,8 +3471,18 @@
   ],
   "poderes": [
    {
+    "id": "deslocamento",
+    "nome": "Deslocamento",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Deslocamento",
-    "tipo": "natural"
+    "base": {
+     "arte": "fascinacao",
+     "nivel": 1
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [
@@ -3624,8 +3758,18 @@
   ],
   "poderes": [
    {
+    "id": "olhar-mortal",
+    "nome": "Olhar mortal",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 5
+    },
+    "usos": {
+     "periodo": "cena"
+    }
    }
   ],
   "tecnicas": [],
@@ -4524,18 +4668,36 @@
   ],
   "poderes": [
    {
+    "id": "fraqueza-mistica",
+    "nome": "Fraqueza mística",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "golpe"
+    }
    }
   ],
   "tecnicas": [],
   "artes": [
    {
+    "id": "ofuscacao",
+    "nivel": 3
+   },
+   {
+    "id": "natureza",
+    "nivel": 3
+   },
+   {
     "id": "morte",
     "nivel": 2
    },
    {
-    "id": "fascinacao",
+    "id": "metamorfose",
     "nivel": 2
    }
   ],
@@ -6856,9 +7018,9 @@
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "deslocamento": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
    },
    "ataques": [
     {
@@ -7241,9 +7403,9 @@
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
-    "batalha": 6,
-    "arranque": 10,
-    "corrida": 14
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
    },
    "ataques": [
     {
@@ -7276,8 +7438,19 @@
   ],
   "poderes": [
    {
+    "id": "toque-que-petrifica",
+    "nome": "Toque que petrifica",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "tipo": "natural"
+    "base": {
+     "arte": "materia",
+     "nivel": 3
+    },
+    "ataque": "Garras e presas",
+    "usos": {
+     "periodo": "golpe"
+    }
    }
   ],
   "tecnicas": [],
@@ -7638,9 +7811,9 @@
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
    },
    "ataques": [
     {
@@ -7797,19 +7970,49 @@
   ],
   "poderes": [
    {
+    "id": "constricao-venenosa",
+    "nome": "Constrição venenosa",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 3,
+     "recarga": "1 hora"
+    }
    },
    {
+    "id": "mudar-de-forma",
+    "nome": "Mudar de forma",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Mudar de forma",
-    "tipo": "natural"
+    "base": {
+     "arte": "materia",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
   "artes": [
    {
-    "id": "materia",
-    "nivel": 2
+    "id": "conjuracao",
+    "nivel": 5
+   },
+   {
+    "id": "ofuscacao",
+    "nivel": 3
+   },
+   {
+    "id": "fascinacao",
+    "nivel": 3
+   },
+   {
+    "id": "protecao",
+    "nivel": 3
    },
    {
     "id": "adivinhacao",
@@ -9092,23 +9295,41 @@
   ],
   "poderes": [
    {
+    "id": "mudar-de-forma",
+    "nome": "Mudar de forma",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Mudar de forma",
-    "tipo": "natural"
+    "base": {
+     "arte": "materia",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
   "artes": [
    {
-    "id": "raio",
-    "nivel": 3
+    "id": "cura",
+    "nivel": 4
    },
    {
-    "id": "fascinacao",
-    "nivel": 2
+    "id": "protecao",
+    "nivel": 5
    },
    {
-    "id": "materia",
-    "nivel": 2
+    "id": "luz",
+    "nivel": 4
+   },
+   {
+    "id": "forcas",
+    "nivel": 4
+   },
+   {
+    "id": "conjuracao",
+    "nivel": 5
    }
   ],
   "notas": "Habilidades notáveis: Armas 4, Ocultismo 4, Persuasão 4, Prontidão 4.",
@@ -9253,12 +9474,29 @@
   ],
   "poderes": [
    {
+    "id": "doenca-infernal",
+    "nome": "Doença infernal",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "golpe"
+    }
    },
    {
+    "id": "trava-a-ferida",
+    "nome": "Trava a ferida",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    }
   ],
   "tecnicas": [],
@@ -9541,19 +9779,38 @@
   ],
   "poderes": [
    {
+    "id": "aura-de-frio",
+    "nome": "Aura de frio",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Resiste ao entrar, 1 vez por cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "gelo",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    }
   ],
   "tecnicas": [],
   "artes": [
    {
     "id": "gelo",
-    "nivel": 3
+    "nivel": 5
+   },
+   {
+    "id": "conjuracao",
+    "nivel": 6
    },
    {
     "id": "protecao",
     "nivel": 3
+   },
+   {
+    "id": "tempo",
+    "nivel": 2
    }
   ],
   "notas": "Habilidades notáveis: Armas 5, Ocultismo 4, Liderança 4.",
@@ -9706,31 +9963,71 @@
   ],
   "poderes": [
    {
+    "id": "aura-de-medo",
+    "nome": "Aura de medo",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Resiste ao entrar, 1 vez por cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    },
    {
+    "id": "convocar-diabos",
+    "nome": "Convocar diabos",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Convocar diabos",
-    "tipo": "natural"
+    "base": {
+     "arte": "espirito",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "dia",
+     "quantidade": 1
+    }
    },
    {
+    "id": "doenca",
+    "nome": "Doença",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "golpe"
+    }
    }
   ],
   "tecnicas": [],
   "artes": [
    {
-    "id": "morte",
-    "nivel": 3
+    "id": "fogo",
+    "nivel": 6
+   },
+   {
+    "id": "fortuna",
+    "nivel": 6
+   },
+   {
+    "id": "fascinacao",
+    "nivel": 5
    },
    {
     "id": "espirito",
     "nivel": 4
    },
    {
-    "id": "fogo",
-    "nivel": 4
+    "id": "conjuracao",
+    "nivel": 6
    }
   ],
   "notas": "Habilidades notáveis: Ocultismo 5, Liderança 5, Prontidão 5, Persuasão 5. Centelha acima do teto mortal (entidade).",
@@ -10005,12 +10302,32 @@
   ],
   "poderes": [
    {
+    "id": "ferrao-que-enfraquece",
+    "nome": "Ferrão que enfraquece",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "golpe"
+    }
    },
    {
+    "id": "invisibilidade",
+    "nome": "Invisibilidade",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Invisibilidade",
-    "tipo": "natural"
+    "base": {
+     "arte": "fascinacao",
+     "nivel": 1
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
@@ -10123,9 +10440,9 @@
    ],
    "iniciativa": "1d6 + 4",
    "deslocamento": {
-    "batalha": 5,
-    "arranque": 8,
-    "corrida": 12
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
    },
    "ataques": [
     {
@@ -10166,12 +10483,30 @@
   ],
   "poderes": [
    {
+    "id": "forma-alternativa",
+    "nome": "Forma alternativa",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Forma alternativa",
-    "tipo": "natural"
+    "base": {
+     "arte": "materia",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    },
    {
+    "id": "ferrao-venenoso",
+    "nome": "Ferrão venenoso",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 3,
+     "recarga": "1 hora"
+    }
    }
   ],
   "tecnicas": [],
@@ -10328,8 +10663,18 @@
   ],
   "poderes": [
    {
+    "id": "forma-de-redemoinho",
+    "nome": "Forma de redemoinho",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Forma de redemoinho",
-    "tipo": "natural"
+    "base": {
+     "arte": "vento",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
@@ -10599,8 +10944,14 @@
   ],
   "poderes": [
    {
+    "id": "mudar-de-forma",
+    "nome": "Mudar de forma",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Mudar de forma",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
@@ -10891,12 +11242,35 @@
   ],
   "poderes": [
    {
+    "id": "sopro-eletrico",
+    "nome": "Sopro elétrico",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Cone ou linha. Esquiva para metade.",
-    "tipo": "natural"
+    "base": {
+     "arte": "raio",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "ticks",
+     "quantidade": 1,
+     "recarga": "24 ticks"
+    }
    },
    {
+    "id": "presenca",
+    "nome": "Presença",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Área; quem resiste fica imune na cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 1
+    }
    }
   ],
   "tecnicas": [],
@@ -11063,16 +11437,49 @@
   ],
   "poderes": [
    {
+    "id": "sopro-de-frio",
+    "nome": "Sopro de frio",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Cone ou linha. Esquiva para metade.",
-    "tipo": "natural"
+    "base": {
+     "arte": "gelo",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "ticks",
+     "quantidade": 1,
+     "recarga": "24 ticks"
+    }
    },
    {
+    "id": "andar-no-gelo-e-nevasca",
+    "nome": "Andar no gelo e nevasca",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Anda no gelo sem cair; nevasca vira Arte se for conjurada.",
-    "tipo": "natural"
+    "base": {
+     "arte": "gelo",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "passivo"
+    }
    },
    {
+    "id": "presenca",
+    "nome": "Presença",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Área; quem resiste fica imune na cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 1
+    }
    }
   ],
   "tecnicas": [],
@@ -11241,35 +11648,69 @@
   ],
   "poderes": [
    {
+    "id": "sopro-de-fogo",
+    "nome": "Sopro de fogo",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Cone ou linha. Esquiva para metade.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fogo",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "ticks",
+     "quantidade": 1,
+     "recarga": "24 ticks"
+    }
    },
    {
+    "id": "sopro-debilitante",
+    "nome": "Sopro debilitante",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Cone ou linha. Esquiva para metade.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fascinacao",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "ticks",
+     "quantidade": 1,
+     "recarga": "24 ticks"
+    }
    },
    {
+    "id": "mudar-de-forma",
+    "nome": "Mudar de forma",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Mudar de forma",
-    "tipo": "natural"
+    "base": {
+     "arte": "materia",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
   "artes": [
    {
-    "id": "fogo",
-    "nivel": 4
-   },
-   {
-    "id": "fascinacao",
-    "nivel": 3
-   },
-   {
     "id": "protecao",
-    "nivel": 4
+    "nivel": 3
    },
    {
-    "id": "materia",
+    "id": "fortuna",
     "nivel": 3
+   },
+   {
+    "id": "cura",
+    "nivel": 2
+   },
+   {
+    "id": "luz",
+    "nivel": 2
    }
   ],
   "notas": "Habilidades notáveis: Ocultismo 5, Persuasão 5, Prontidão 5, Conhecimentos 5. Centelha acima do teto mortal (entidade).",
@@ -11424,8 +11865,20 @@
   ],
   "poderes": [
    {
+    "id": "sopro-de-gas",
+    "nome": "Sopro de gás",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Cone ou linha. Esquiva para metade.",
-    "tipo": "natural"
+    "base": {
+     "arte": "agua",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "ticks",
+     "quantidade": 1,
+     "recarga": "24 ticks"
+    }
    }
   ],
   "tecnicas": [],
@@ -11589,27 +12042,73 @@
   ],
   "poderes": [
    {
+    "id": "sopro-de-fogo",
+    "nome": "Sopro de fogo",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Cone ou linha. Esquiva para metade.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fogo",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "ticks",
+     "quantidade": 1,
+     "recarga": "24 ticks"
+    }
    },
    {
+    "id": "aura-de-fogo",
+    "nome": "Aura de fogo",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Resiste ao entrar, 1 vez por cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fogo",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    },
    {
+    "id": "presenca-aterradora",
+    "nome": "Presença aterradora",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Área; quem resiste fica imune na cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 1
+    }
    }
   ],
   "tecnicas": [],
   "artes": [
    {
-    "id": "fogo",
+    "id": "fascinacao",
     "nivel": 4
    },
    {
-    "id": "morte",
+    "id": "tempo",
     "nivel": 3
+   },
+   {
+    "id": "ofuscacao",
+    "nivel": 3
+   },
+   {
+    "id": "protecao",
+    "nivel": 3
+   },
+   {
+    "id": "fogo",
+    "nivel": 2
    }
   ],
   "notas": "Habilidades notáveis: Prontidão 5, Persuasão 4, Ocultismo 3.",
@@ -11763,27 +12262,58 @@
   ],
   "poderes": [
    {
+    "id": "sopro-de-fogo",
+    "nome": "Sopro de fogo",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Cone ou linha. Esquiva para metade.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fogo",
+     "nivel": 5
+    },
+    "usos": {
+     "periodo": "ticks",
+     "quantidade": 1,
+     "recarga": "24 ticks"
+    }
    },
    {
+    "id": "presenca-que-paralisa",
+    "nome": "Presença que paralisa",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Área; quem resiste fica imune na cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 1
+    }
    }
   ],
   "tecnicas": [],
   "artes": [
    {
     "id": "fogo",
-    "nivel": 5
-   },
-   {
-    "id": "morte",
     "nivel": 4
    },
    {
     "id": "fascinacao",
     "nivel": 4
+   },
+   {
+    "id": "protecao",
+    "nivel": 5
+   },
+   {
+    "id": "forcas",
+    "nivel": 4
+   },
+   {
+    "id": "conjuracao",
+    "nivel": 6
    }
   ],
   "notas": "Habilidades notáveis: Prontidão 5, Ocultismo 5, Persuasão 5, Conhecimentos 4. Centelha acima do teto mortal (entidade).",
@@ -11932,12 +12462,31 @@
   ],
   "poderes": [
    {
+    "id": "sopro-de-fogo",
+    "nome": "Sopro de fogo",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Cone ou linha. Esquiva para metade.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fogo",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "ticks",
+     "quantidade": 1,
+     "recarga": "24 ticks"
+    }
    },
    {
+    "id": "presenca-aterradora",
+    "nome": "Presença aterradora",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Área; quem resiste fica imune na cena.",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 1
+    }
    }
   ],
   "tecnicas": [
@@ -11945,8 +12494,12 @@
   ],
   "artes": [
    {
-    "id": "fogo",
-    "nivel": 3
+    "id": "protecao",
+    "nivel": 1
+   },
+   {
+    "id": "fortuna",
+    "nivel": 1
    }
   ],
   "notas": "Habilidades notáveis: Prontidão 4, Manha 3, Ocultismo 2.",
@@ -12227,8 +12780,18 @@
   ],
   "poderes": [
    {
+    "id": "fundir-se-a-arvore",
+    "nome": "Fundir-se à árvore",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Fundir-se à árvore",
-    "tipo": "natural"
+    "base": {
+     "arte": "materia",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
@@ -13012,8 +13575,19 @@
   ],
   "poderes": [
    {
+    "id": "corpo-em-chamas",
+    "nome": "Corpo em chamas",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Resiste ao entrar, 1 vez por cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fogo",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    }
   ],
   "tecnicas": [],
@@ -13120,9 +13694,9 @@
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
-    "batalha": 5,
-    "arranque": 8,
-    "corrida": 12
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
    },
    "ataques": [
     {
@@ -13362,11 +13936,10 @@
     "perfuracao": 8
    },
    "resistenciaPerfuracao": 0,
-   "fraquezas": [
-    "agua"
-   ],
    "resistencias": [
-    "fogo"
+    "fogo",
+    "corte",
+    "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
@@ -13395,10 +13968,6 @@
     "descricao": "golpe pode derrubar ou arremessar o alvo para trás"
    },
    {
-    "nome": "Corpo de terra",
-    "descricao": "+1d de Absorção contra armas físicas"
-   },
-   {
     "nome": "Imunidade mental e a venenos",
     "descricao": "sem efeito de veneno, doença ou efeitos mentais"
    },
@@ -13409,8 +13978,18 @@
   ],
   "poderes": [
    {
+    "id": "deslizar-na-pedra-e-empurrao",
+    "nome": "Deslizar na pedra e empurrão",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Deslizar na pedra e empurrão",
-    "tipo": "natural"
+    "base": {
+     "arte": "terra",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [
@@ -14979,14 +15558,19 @@
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
+    },
+    {
+     "nome": "Arco longo",
+     "pool": "4d6+2 +5",
+     "dano": "1d6 +6 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "distancia",
+     "notas": "catálogo Arco Longo (armas.json); soma Força pela mesma regra do catálogo"
     }
    ]
   },
   "habilidades": [
-   {
-    "nome": "Arco certeiro",
-    "descricao": "proeza; ataque à distância de alcance longo, ignora parte da Absorção"
-   },
    {
     "nome": "Corda de comando",
     "descricao": "feitiçaria; à distância, Agarra o alvo e, se a Vontade falhar, o obriga a obedecer uma ordem simples"
@@ -15144,8 +15728,17 @@
   ],
   "poderes": [
    {
+    "id": "ferrao-venenoso",
+    "nome": "Ferrão venenoso",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-    "tipo": "natural"
+    "ataque": "Garras e presas",
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 3,
+     "recarga": "1 hora"
+    }
    }
   ],
   "tecnicas": [],
@@ -15289,19 +15882,34 @@
   ],
   "poderes": [
    {
+    "id": "rugido",
+    "nome": "Rugido",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Área; quem resiste fica imune na cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "forcas",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 1
+    }
    }
   ],
   "tecnicas": [],
   "artes": [
    {
-    "id": "forcas",
-    "nivel": 2
+    "id": "adivinhacao",
+    "nivel": 5
    },
    {
-    "id": "adivinhacao",
-    "nivel": 2
+    "id": "fascinacao",
+    "nivel": 4
+   },
+   {
+    "id": "protecao",
+    "nivel": 3
    }
   ],
   "notas": "Habilidades notáveis: Conhecimentos 5, Ocultismo 4, Prontidão 4.",
@@ -15566,12 +16174,33 @@
   ],
   "poderes": [
    {
+    "id": "dreno-de-nivel",
+    "nome": "Dreno de nível",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 3
+    },
+    "ataque": "Toque dilacerante",
+    "usos": {
+     "periodo": "golpe"
+    }
    },
    {
+    "id": "voo-e-incorporeo",
+    "nome": "Voo e incorpóreo",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Voo e incorpóreo",
-    "tipo": "natural"
+    "base": {
+     "arte": "espirito",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
@@ -16287,9 +16916,9 @@
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
-    "batalha": 6,
-    "arranque": 10,
-    "corrida": 14
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
    },
    "ataques": [
     {
@@ -16847,12 +17476,35 @@
   ],
   "poderes": [
    {
+    "id": "sopro-de-fogo",
+    "nome": "Sopro de fogo",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Cone ou linha. Esquiva para metade.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fogo",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "ticks",
+     "quantidade": 1,
+     "recarga": "24 ticks"
+    }
    },
    {
+    "id": "presenca-medonha",
+    "nome": "Presença medonha",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Área; quem resiste fica imune na cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 1
+    }
    }
   ],
   "tecnicas": [],
@@ -17004,8 +17656,18 @@
   ],
   "poderes": [
    {
+    "id": "invisibilidade-natural",
+    "nome": "Invisibilidade natural",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Invisibilidade natural",
-    "tipo": "natural"
+    "base": {
+     "arte": "fascinacao",
+     "nivel": 1
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
@@ -17465,16 +18127,11 @@
    "defesaSocial": 5,
    "defesaMental": 11,
    "absorcao": {
-    "impacto": 6,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 9,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
-   "resistencias": [
-    "corte",
-    "fogo",
-    "perfuracao"
-   ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 4,
@@ -17898,19 +18555,41 @@
   ],
   "poderes": [
    {
+    "id": "forma-de-globo-de-luz",
+    "nome": "Forma de globo de luz",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Forma de globo de luz",
-    "tipo": "natural"
+    "base": {
+     "arte": "espirito",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
   "artes": [
    {
-    "id": "espirito",
-    "nivel": 3
+    "id": "raio",
+    "nivel": 4
    },
    {
-    "id": "raio",
-    "nivel": 3
+    "id": "luz",
+    "nivel": 4
+   },
+   {
+    "id": "protecao",
+    "nivel": 4
+   },
+   {
+    "id": "fascinacao",
+    "nivel": 4
+   },
+   {
+    "id": "cura",
+    "nivel": 4
    }
   ],
   "notas": "Habilidades notáveis: Ocultismo 4, Oratória 4, Prontidão 4.",
@@ -18055,8 +18734,19 @@
   ],
   "poderes": [
    {
+    "id": "paralisia-e-fedor",
+    "nome": "Paralisia e fedor",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "Resiste ao entrar, 1 vez por cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    }
   ],
   "tecnicas": [],
@@ -18204,8 +18894,18 @@
   ],
   "poderes": [
    {
+    "id": "paralisia",
+    "nome": "Paralisia",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "golpe"
+    }
    }
   ],
   "tecnicas": [
@@ -18642,7 +19342,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 3,
+  "centelha": 4,
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
@@ -18689,13 +19389,13 @@
   },
   "combate": {
    "pv": 80,
-   "defesa": 13,
-   "defesaSocial": 13,
-   "defesaMental": 21,
+   "defesa": 14,
+   "defesaSocial": 14,
+   "defesaMental": 22,
    "absorcao": {
-    "impacto": 12,
-    "corte": 11,
-    "perfuracao": 11
+    "impacto": 13,
+    "corte": 12,
+    "perfuracao": 12
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 8",
@@ -18707,7 +19407,7 @@
    "ataques": [
     {
      "nome": "Pancada descomunal",
-     "pool": "9d6 +3",
+     "pool": "9d6 +4",
      "dano": "3d6 +13 impacto",
      "perfArma": null,
      "speed": 7,
@@ -18716,14 +19416,6 @@
    ]
   },
   "habilidades": [
-   {
-    "nome": "Comandar o clima",
-    "descricao": "convoca tempestade sobre uma área, reduzindo visibilidade e Ataques à distância inimigos"
-   },
-   {
-    "nome": "Ver e ouvir à distância",
-    "descricao": "observa e escuta eventos a quilômetros, quase impossível de emboscar"
-   },
    {
     "nome": "Imune a raios",
     "descricao": "não sofre dano elétrico"
@@ -18739,26 +19431,35 @@
    {
     "nome": "Presença régia",
     "descricao": "falha de inimigos em teste de Vontade contra ele causa Abalado"
-   },
-   {
-    "nome": "Ver e ouvir à distância",
-    "descricao": "Sentido passivo."
    }
   ],
-  "poderes": [],
+  "poderes": [
+   {
+    "id": "comandar-o-clima",
+    "nome": "Comandar o clima",
+    "tipo": "natural",
+    "resiste": "nenhum",
+    "efeito": "Leva 10 minutos para conjurar; dura a cena. Reduz visibilidade e Ataques à distância de inimigos; a critério do Mestre, raios caem ao acaso na área.",
+    "area": "convoca tempestade sobre uma área",
+    "usos": {
+     "periodo": "dia",
+     "quantidade": 1
+    }
+   }
+  ],
   "tecnicas": [],
   "artes": [
    {
     "id": "vento",
-    "nivel": 3
+    "nivel": 4
    },
    {
     "id": "raio",
-    "nivel": 3
+    "nivel": 4
    },
    {
-    "id": "adivinhacao",
-    "nivel": 2
+    "id": "agua",
+    "nivel": 3
    }
   ],
   "notas": "Habilidades notáveis: Prontidão 4, Conhecimentos 2.",
@@ -18795,7 +19496,7 @@
    "mágico"
   ],
   "ameaca": 5,
-  "centelha": 1,
+  "centelha": 2,
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
@@ -18842,13 +19543,13 @@
   },
   "combate": {
    "pv": 75,
-   "defesa": 9,
-   "defesaSocial": 11,
-   "defesaMental": 16,
+   "defesa": 10,
+   "defesaSocial": 12,
+   "defesaMental": 17,
    "absorcao": {
-    "impacto": 9,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 10,
+    "corte": 10,
+    "perfuracao": 10
    },
    "resistenciaPerfuracao": 1,
    "iniciativa": "1d6 + 6",
@@ -18860,27 +19561,24 @@
    "ataques": [
     {
      "nome": "Pancada descomunal",
-     "pool": "8d6+2 +1",
+     "pool": "8d6+2 +2",
      "dano": "3d6 +12 impacto",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
+    },
+    {
+     "nome": "Arremessar rocha",
+     "pool": "8d6+2 +2",
+     "dano": "3d6 +12 impacto",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "arremesso",
+     "notas": "dado pelo porte Enorme (B14 fase 3)"
     }
    ]
   },
   "habilidades": [
-   {
-    "nome": "Névoa oculta",
-    "descricao": "conjura névoa espessa num raio de 9m; concede Furtividade a aliados e dificulta Ataques à distância contra eles"
-   },
-   {
-    "nome": "Arremesso de rocha",
-    "descricao": "ataque à distância de até 36m, dano alto"
-   },
-   {
-    "nome": "Passos no vento",
-    "descricao": "flutua e plana por curtas distâncias, ignora dano de queda"
-   },
    {
     "nome": "Telepatia",
     "descricao": "comunica-se mentalmente com aliados a até 18m"
@@ -18894,12 +19592,35 @@
     "descricao": "conhece rotas aéreas e pode convocar servos alados em seu domínio"
    }
   ],
-  "poderes": [],
+  "poderes": [
+   {
+    "id": "levitar",
+    "nome": "Levitar",
+    "tipo": "natural",
+    "resiste": "nenhum",
+    "efeito": "Levita a si e até 900 kg, sem limite de tempo.",
+    "usos": {
+     "periodo": "avontade"
+    }
+   },
+   {
+    "id": "nevoa",
+    "nome": "Névoa",
+    "tipo": "natural",
+    "resiste": "nenhum",
+    "efeito": "Névoa espessa que cobre a visão e concede Furtividade a aliados, dificultando Ataques à distância contra eles.",
+    "area": "raio de 9 m",
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 1
+    }
+   }
+  ],
   "tecnicas": [],
   "artes": [
    {
     "id": "vento",
-    "nivel": 1
+    "nivel": 2
    }
   ],
   "notas": "Habilidades notáveis: Prontidão 3, Ofícios 2.",
@@ -18991,6 +19712,12 @@
     "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "gelo"
+   ],
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 4,
@@ -19005,18 +19732,19 @@
      "perfArma": null,
      "speed": 6,
      "classe": "media"
+    },
+    {
+     "nome": "Arremessar rocha",
+     "pool": "7d6+2 +1",
+     "dano": "2d6 +10 impacto",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "arremesso",
+     "notas": "dado pelo porte Grande (B14 fase 3)"
     }
    ]
   },
   "habilidades": [
-   {
-    "nome": "Imune a fogo",
-    "descricao": "não sofre dano de fogo"
-   },
-   {
-    "nome": "Arremesso de rocha",
-    "descricao": "ataque à distância de até 36m, dano alto"
-   },
    {
     "nome": "Armadura da forja",
     "descricao": "Absorção muito alta com armadura pesada forjada por eles mesmos"
@@ -19436,11 +20164,19 @@
   "artes": [
    {
     "id": "fortuna",
-    "nivel": 4
+    "nivel": 6
    },
    {
-    "id": "conjuracao",
-    "nivel": 4
+    "id": "forcas",
+    "nivel": 6
+   },
+   {
+    "id": "fascinacao",
+    "nivel": 5
+   },
+   {
+    "id": "protecao",
+    "nivel": 5
    }
   ],
   "notas": "Habilidades notáveis: Ocultismo 4, Persuasão 4, Prontidão 4.",
@@ -20573,8 +21309,20 @@
   ],
   "poderes": [
    {
+    "id": "sopro-petrificante",
+    "nome": "Sopro petrificante",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Cone ou linha. Esquiva para metade.",
-    "tipo": "natural"
+    "base": {
+     "arte": "materia",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "ticks",
+     "quantidade": 1,
+     "recarga": "24 ticks"
+    }
    }
   ],
   "tecnicas": [],
@@ -20857,26 +21605,57 @@
   ],
   "poderes": [
    {
+    "id": "sopro-cataclismico",
+    "nome": "Sopro cataclísmico",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Cone ou linha. Esquiva para metade.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fogo",
+     "nivel": 5
+    },
+    "usos": {
+     "periodo": "ticks",
+     "quantidade": 1,
+     "recarga": "24 ticks"
+    }
    },
    {
+    "id": "presenca-divina",
+    "nome": "Presença divina",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Área; quem resiste fica imune na cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 5
+    },
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 1
+    }
    }
   ],
   "tecnicas": [],
   "artes": [
    {
+    "id": "tempo",
+    "nivel": 6
+   },
+   {
+    "id": "protecao",
+    "nivel": 6
+   },
+   {
     "id": "fogo",
     "nivel": 5
    },
    {
-    "id": "tempo",
-    "nivel": 4
+    "id": "fascinacao",
+    "nivel": 5
    },
    {
-    "id": "morte",
+    "id": "adivinhacao",
     "nivel": 5
    }
   ],
@@ -21461,9 +22240,9 @@
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
-    "batalha": 8,
-    "arranque": 13,
-    "corrida": 18
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
    },
    "ataques": [
     {
@@ -21500,8 +22279,18 @@
   ],
   "poderes": [
    {
+    "id": "cancao-cativante",
+    "nome": "Canção cativante",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Defesa Mental; área de audição.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fascinacao",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "cena"
+    }
    }
   ],
   "tecnicas": [],
@@ -21649,8 +22438,19 @@
   ],
   "poderes": [
    {
+    "id": "fedor-nauseante",
+    "nome": "Fedor nauseante",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "Resiste ao entrar, 1 vez por cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "vento",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    }
   ],
   "tecnicas": [],
@@ -21790,8 +22590,15 @@
   ],
   "poderes": [
    {
+    "id": "cabecas-que-rebrotam",
+    "nome": "Cabeças que rebrotam",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    }
   ],
   "tecnicas": [],
@@ -22630,9 +23437,9 @@
    ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
-    "batalha": 5,
-    "arranque": 8,
-    "corrida": 12
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
    },
    "ataques": [
     {
@@ -23641,9 +24448,9 @@
    "resistenciaPerfuracao": 3,
    "iniciativa": "1d6 + 9",
    "deslocamento": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
    },
    "ataques": [
     {
@@ -23696,8 +24503,20 @@
   ],
   "poderes": [
    {
+    "id": "tinta-e-tempestade",
+    "nome": "Tinta e tempestade",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
-    "tipo": "natural"
+    "base": {
+     "arte": "agua",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 3,
+     "recarga": "1 hora"
+    }
    }
   ],
   "tecnicas": [
@@ -23705,8 +24524,12 @@
   ],
   "artes": [
    {
-    "id": "agua",
-    "nivel": 4
+    "id": "vento",
+    "nivel": 6
+   },
+   {
+    "id": "fascinacao",
+    "nivel": 5
    }
   ],
   "notas": "Habilidades notáveis: Prontidão 5, Ocultismo 4. Centelha acima do teto mortal (entidade).",
@@ -24224,8 +25047,18 @@
   ],
   "poderes": [
    {
+    "id": "dreno-de-sabedoria",
+    "nome": "Dreno de Sabedoria",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "golpe"
+    }
    }
   ],
   "tecnicas": [],
@@ -24625,8 +25458,15 @@
   ],
   "poderes": [
    {
+    "id": "regeneracao-fraca",
+    "nome": "Regeneração fraca",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    }
   ],
   "tecnicas": [
@@ -25044,23 +25884,52 @@
   ],
   "poderes": [
    {
+    "id": "toque-paralisante",
+    "nome": "Toque paralisante",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "golpe"
+    }
    },
    {
+    "id": "aura-de-medo",
+    "nome": "Aura de medo",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Resiste ao entrar, 1 vez por cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    }
   ],
   "tecnicas": [],
   "artes": [
    {
-    "id": "protecao",
-    "nivel": 3
+    "id": "morte",
+    "nivel": 6
    },
    {
-    "id": "morte",
-    "nivel": 3
+    "id": "fogo",
+    "nivel": 4
+   },
+   {
+    "id": "gelo",
+    "nivel": 4
+   },
+   {
+    "id": "protecao",
+    "nivel": 4
    }
   ],
   "notas": "Habilidades notáveis: Ocultismo 5, Conhecimentos 5, Prontidão 3.",
@@ -26690,6 +27559,14 @@
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
+    },
+    {
+     "nome": "Espinhos de cauda",
+     "pool": "6d6 +1",
+     "dano": "1d6 +7 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -26697,10 +27574,6 @@
    {
     "nome": "Voo",
     "descricao": "combate e persegue livremente pelo ar"
-   },
-   {
-    "nome": "Saraivada de espinhos",
-    "descricao": "dispara vários espinhos da cauda a até 18m; pode atingir dois alvos na mesma rodada"
    },
    {
     "nome": "Garras de leão",
@@ -26711,7 +27584,21 @@
     "descricao": "Prontidão 2 e Atletismo 1; raramente perde o alvo de vista"
    }
   ],
-  "poderes": [],
+  "poderes": [
+   {
+    "id": "espinhos-de-cauda",
+    "nome": "Espinhos de cauda",
+    "tipo": "natural",
+    "resiste": "esquiva",
+    "efeito": "Rajada de 4 espinhos, pode dividir entre até 2 alvos na mesma rodada.",
+    "ataque": "Espinhos de cauda",
+    "usos": {
+     "periodo": "dia",
+     "quantidade": 6,
+     "recarga": "24 espinhos ao todo, 4 por rajada"
+    }
+   }
+  ],
   "tecnicas": [],
   "artes": [],
   "notas": "Habilidades notáveis: Prontidão 2, Atletismo 1.",
@@ -26997,7 +27884,24 @@
   "tecnicas": [
    "aperto-esmagador"
   ],
-  "artes": [],
+  "artes": [
+   {
+    "id": "forcas",
+    "nivel": 4
+   },
+   {
+    "id": "fascinacao",
+    "nivel": 5
+   },
+   {
+    "id": "protecao",
+    "nivel": 3
+   },
+   {
+    "id": "conjuracao",
+    "nivel": 6
+   }
+  ],
   "notas": "Habilidades notáveis: Armas 5, Prontidão 4, Liderança 4. Centelha acima do teto mortal (entidade).",
   "lore": [
    {
@@ -27249,12 +28153,30 @@
   ],
   "poderes": [
    {
+    "id": "olhar-petrificante",
+    "nome": "Olhar petrificante",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
-    "tipo": "natural"
+    "base": {
+     "arte": "materia",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "cena"
+    }
    },
    {
+    "id": "cabelos-serpente",
+    "nome": "Cabelos-serpente",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 3,
+     "recarga": "1 hora"
+    }
    }
   ],
   "tecnicas": [],
@@ -27643,12 +28565,26 @@
   ],
   "poderes": [
    {
+    "id": "assumir-forma-de-objeto",
+    "nome": "Assumir forma de objeto",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Assumir forma de objeto",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "avontade"
+    }
    },
    {
+    "id": "cola-aderente",
+    "nome": "Cola aderente",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 3,
+     "recarga": "1 hora"
+    }
    }
   ],
   "tecnicas": [],
@@ -28177,8 +29113,19 @@
   ],
   "poderes": [
    {
+    "id": "corroi-metal",
+    "nome": "Corrói metal",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "tipo": "natural"
+    "base": {
+     "arte": "materia",
+     "nivel": 2
+    },
+    "ataque": "Garras e presas",
+    "usos": {
+     "periodo": "golpe"
+    }
    }
   ],
   "tecnicas": [],
@@ -28278,7 +29225,8 @@
     "fogo"
    ],
    "resistencias": [
-    "perfuracao"
+    "perfuracao",
+    "raio"
    ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
@@ -28300,7 +29248,7 @@
   "habilidades": [
    {
     "nome": "Absorve raio",
-    "descricao": "dano elétrico recebido cura PV em vez de feri-lo"
+    "descricao": "resiste a raio (dano pela metade); o valor que a resistência cortaria vira cura em PV, em vez de dano"
    },
    {
     "nome": "Constrição",
@@ -28528,9 +29476,9 @@
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
    },
    "ataques": [
     {
@@ -28952,12 +29900,33 @@
   ],
   "poderes": [
    {
+    "id": "podridao-da-mumia",
+    "nome": "Podridão da múmia",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "golpe"
+    }
    },
    {
+    "id": "aura-de-desespero",
+    "nome": "Aura de desespero",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Resiste ao entrar, 1 vez por cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    }
   ],
   "tecnicas": [],
@@ -29233,19 +30202,50 @@
   ],
   "poderes": [
    {
+    "id": "olhar-encantador",
+    "nome": "Olhar encantador",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fascinacao",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "cena"
+    }
    },
    {
+    "id": "cuspe-venenoso",
+    "nome": "Cuspe venenoso",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-    "tipo": "natural"
+    "ataque": "Garras e presas",
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 3,
+     "recarga": "1 hora"
+    }
    }
   ],
   "tecnicas": [],
   "artes": [
    {
     "id": "fascinacao",
+    "nivel": 5
+   },
+   {
+    "id": "fogo",
+    "nivel": 4
+   },
+   {
+    "id": "ofuscacao",
     "nivel": 3
+   },
+   {
+    "id": "cura",
+    "nivel": 1
    }
   ],
   "notas": "Habilidades notáveis: Ocultismo 4, Persuasão 3, Prontidão 4.",
@@ -30003,8 +31003,14 @@
   ],
   "poderes": [
    {
+    "id": "beleza-cegante",
+    "nome": "Beleza cegante",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "cena"
+    }
    }
   ],
   "tecnicas": [
@@ -30012,12 +31018,24 @@
   ],
   "artes": [
    {
-    "id": "fascinacao",
+    "id": "agua",
+    "nivel": 4
+   },
+   {
+    "id": "natureza",
+    "nivel": 4
+   },
+   {
+    "id": "vida",
     "nivel": 3
    },
    {
-    "id": "agua",
+    "id": "raio",
     "nivel": 3
+   },
+   {
+    "id": "cura",
+    "nivel": 2
    }
   ],
   "notas": "Habilidades notáveis: Ocultismo 3, Furtividade 4, Persuasão 3.",
@@ -30418,8 +31436,15 @@
   ],
   "poderes": [
    {
+    "id": "regeneracao",
+    "nome": "Regeneração",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    }
   ],
   "tecnicas": [
@@ -30577,8 +31602,14 @@
   ],
   "poderes": [
    {
+    "id": "vitalidade",
+    "nome": "Vitalidade",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "+Vigor de PV extra, sempre.",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "passivo"
+    }
    }
   ],
   "tecnicas": [],
@@ -31434,9 +32465,9 @@
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "deslocamento": {
-    "batalha": 6,
-    "arranque": 10,
-    "corrida": 14
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
    },
    "ataques": [
     {
@@ -31446,25 +32477,21 @@
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
+    },
+    {
+     "nome": "Flechas do sono",
+     "pool": "2d6 +4",
+     "dano": "1d6 perfurante",
+     "perfArma": 0,
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Invisibilidade à vontade",
-    "descricao": "ação livre; fica invisível até atacar, +3d6 em Furtividade enquanto oculta"
-   },
-   {
     "nome": "Voo veloz",
     "descricao": "desloca 12m voando; ignora terreno difícil, +1 Esquiva contra ataques corpo a corpo"
-   },
-   {
-    "nome": "Flecha do sono",
-    "descricao": "alcance 18m; falha em Vontade: Inconsciente até o fim da cena"
-   },
-   {
-    "nome": "Flecha da amnésia",
-    "descricao": "alcance 18m; falha em Vontade: perde as memórias da última hora"
    },
    {
     "nome": "Corpo minúsculo",
@@ -31481,8 +32508,29 @@
   ],
   "poderes": [
    {
+    "id": "invisibilidade-natural",
+    "nome": "Invisibilidade natural",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Invisibilidade natural",
-    "tipo": "natural"
+    "base": {
+     "arte": "fascinacao",
+     "nivel": 1
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
+   },
+   {
+    "id": "flecha-do-sono-ou-amnesia",
+    "nome": "Efeito da flecha (sono ou amnésia)",
+    "tipo": "natural",
+    "resiste": "mente",
+    "efeito": "À escolha da pixie: sono (Inconsciente até o fim da cena) ou amnésia (perde as memórias da última hora). A flecha do esquecimento é narrativa.",
+    "ataque": "Flechas do sono",
+    "usos": {
+     "periodo": "golpe"
+    }
    }
   ],
   "tecnicas": [],
@@ -31637,12 +32685,30 @@
   ],
   "poderes": [
    {
+    "id": "aura-sagrada",
+    "nome": "Aura sagrada",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Resiste ao entrar, 1 vez por cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "protecao",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    },
    {
+    "id": "regeneracao",
+    "nome": "Regeneração",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    }
   ],
   "tecnicas": [
@@ -31650,12 +32716,24 @@
   ],
   "artes": [
    {
-    "id": "morte",
+    "id": "cura",
+    "nivel": 6
+   },
+   {
+    "id": "fogo",
+    "nivel": 5
+   },
+   {
+    "id": "terra",
     "nivel": 4
    },
    {
     "id": "protecao",
-    "nivel": 4
+    "nivel": 5
+   },
+   {
+    "id": "fascinacao",
+    "nivel": 5
    }
   ],
   "notas": "Habilidades notáveis: Armas 5, Ocultismo 5, Persuasão 4, Prontidão 5. Centelha acima do teto mortal (entidade).",
@@ -32098,9 +33176,9 @@
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
-    "batalha": 6,
-    "arranque": 10,
-    "corrida": 14
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
    },
    "ataques": [
     {
@@ -32220,9 +33298,9 @@
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
-    "batalha": 5,
-    "arranque": 8,
-    "corrida": 12
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
    },
    "ataques": [
     {
@@ -32463,9 +33541,9 @@
    ],
    "iniciativa": "1d6 + 4",
    "deslocamento": {
-    "batalha": 5,
-    "arranque": 8,
-    "corrida": 12
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
    },
    "ataques": [
     {
@@ -32506,8 +33584,18 @@
   ],
   "poderes": [
    {
+    "id": "forma-alternativa",
+    "nome": "Forma alternativa",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Forma alternativa",
-    "tipo": "natural"
+    "base": {
+     "arte": "materia",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
@@ -32659,8 +33747,20 @@
   ],
   "poderes": [
    {
+    "id": "sopro-draconico",
+    "nome": "Sopro dracônico",
+    "tipo": "natural",
+    "resiste": "esquiva",
     "efeito": "Cone ou linha. Esquiva para metade.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fogo",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "ticks",
+     "quantidade": 1,
+     "recarga": "24 ticks"
+    }
    }
   ],
   "tecnicas": [],
@@ -32971,7 +34071,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 8,
    "sociabilidade": 0,
    "furtividade": 2
   },
@@ -32987,13 +34087,17 @@
    "pv": 40,
    "defesa": 17,
    "defesaSocial": 13,
-   "defesaMental": 22,
+   "defesaMental": 26,
    "absorcao": {
     "impacto": 10,
     "corte": 7,
     "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "corte",
+    "impacto"
+   ],
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 4,
@@ -33029,18 +34133,24 @@
     "descricao": "feitiçaria; cria imagens sensoriais convincentes para enganar ou distrair"
    },
    {
-    "nome": "Só arma benta fere",
-    "descricao": "resistência mágica; imune a quase todo dano, exceto de armas abençoadas"
-   },
-   {
     "nome": "Magia reversa",
-    "descricao": "alguns feitiços lançados contra ele produzem o efeito oposto ao pretendido"
+    "descricao": "alguns feitiços lançados contra ele produzem o efeito oposto ao pretendido; +4 na Defesa Mental e nas resistências contra Artes"
    }
   ],
   "poderes": [
    {
+    "id": "mudar-de-forma",
+    "nome": "Mudar de forma",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Mudar de forma",
-    "tipo": "natural"
+    "base": {
+     "arte": "materia",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
@@ -33780,9 +34890,9 @@
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
-    "batalha": 8,
-    "arranque": 13,
-    "corrida": 18
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
    },
    "ataques": [
     {
@@ -34225,8 +35335,19 @@
   ],
   "poderes": [
    {
+    "id": "calor-corporal",
+    "nome": "Calor corporal",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Resiste ao entrar, 1 vez por cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fogo",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    }
   ],
   "tecnicas": [
@@ -34606,8 +35727,19 @@
   ],
   "poderes": [
    {
+    "id": "flautas-encantadas",
+    "nome": "Flautas encantadas",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Sono, medo ou encanto, à escolha; Defesa Mental.",
-    "tipo": "natural"
+    "base": {
+     "arte": "fascinacao",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 1
+    }
    }
   ],
   "tecnicas": [],
@@ -34712,9 +35844,9 @@
    "resistenciaPerfuracao": 2,
    "iniciativa": "1d6 + 2",
    "deslocamento": {
-    "batalha": 6,
-    "arranque": 10,
-    "corrida": 14
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
    },
    "ataques": [
     {
@@ -35750,14 +36882,18 @@
      "perfArma": null,
      "speed": 6,
      "classe": "media"
+    },
+    {
+     "nome": "Arco de luz",
+     "pool": "6d6+2 +9",
+     "dano": "2d6 +10 perfurante · perf. 2",
+     "perfArma": 2,
+     "speed": 6,
+     "classe": "distancia"
     }
    ]
   },
   "habilidades": [
-   {
-    "nome": "Arco da aurora",
-    "descricao": "flecha a distância; alvo maligno que falhar em Resistência sofre dano letal imediato"
-   },
    {
     "nome": "Espada afiada",
     "descricao": "crítico pode decepar um membro ou matar em um só golpe"
@@ -35765,10 +36901,6 @@
    {
     "nome": "Ressurreição",
     "descricao": "1x por história traz um aliado morto de volta à vida"
-   },
-   {
-    "nome": "Convocar anjos",
-    "descricao": "chama 1d6 celestiais menores para lutar ao seu lado"
    },
    {
     "nome": "Aura protetora suprema",
@@ -35793,22 +36925,57 @@
   ],
   "poderes": [
    {
+    "id": "arco-que-mata",
+    "nome": "Efeito do arco (mata)",
+    "tipo": "natural",
+    "resiste": "corpo",
+    "efeito": "Alvo maligno que falha sofre dano letal imediato.",
+    "base": {
+     "arte": "morte",
+     "nivel": 5
+    },
+    "ataque": "Arco de luz",
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 1
+    }
+   },
+   {
+    "id": "convocar-anjos",
+    "nome": "Convocar anjos",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Convocar anjos",
-    "tipo": "natural"
+    "base": {
+     "arte": "espirito",
+     "nivel": 5
+    },
+    "usos": {
+     "periodo": "dia",
+     "quantidade": 1
+    }
    }
   ],
   "tecnicas": [],
   "artes": [
    {
-    "id": "morte",
-    "nivel": 5
-   },
-   {
-    "id": "espirito",
-    "nivel": 5
-   },
-   {
     "id": "cura",
+    "nivel": 6
+   },
+   {
+    "id": "fortuna",
+    "nivel": 6
+   },
+   {
+    "id": "morte",
+    "nivel": 6
+   },
+   {
+    "id": "luz",
+    "nivel": 5
+   },
+   {
+    "id": "protecao",
     "nivel": 5
    }
   ],
@@ -36080,12 +37247,33 @@
   ],
   "poderes": [
    {
+    "id": "dreno-de-forca",
+    "nome": "Dreno de Força",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 1
+    },
+    "ataque": "Toque dilacerante",
+    "usos": {
+     "periodo": "golpe"
+    }
    },
    {
+    "id": "incorporeo",
+    "nome": "Incorpóreo",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Incorpóreo",
-    "tipo": "natural"
+    "base": {
+     "arte": "espirito",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
@@ -36190,9 +37378,9 @@
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
    "deslocamento": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
    },
    "ataques": [
     {
@@ -36364,8 +37552,18 @@
   ],
   "poderes": [
    {
+    "id": "mudar-de-forma",
+    "nome": "Mudar de forma",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Mudar de forma",
-    "tipo": "natural"
+    "base": {
+     "arte": "materia",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [
@@ -36751,7 +37949,7 @@
   "habilidades": [
    {
     "nome": "Carapaça reflete magia",
-    "descricao": "feitiços dirigidos a ela podem ricochetear de volta ao conjurador"
+    "descricao": "Arte de raio, linha ou cone que a mira: role 1d6; em 1 ou 2, o efeito volta para quem conjurou"
    },
    {
     "nome": "Regeneração implacável",
@@ -36784,12 +37982,30 @@
   ],
   "poderes": [
    {
+    "id": "regeneracao-implacavel",
+    "nome": "Regeneração implacável",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    },
    {
+    "id": "bramido-de-panico",
+    "nome": "Bramido de pânico",
+    "tipo": "natural",
+    "resiste": "mente",
     "efeito": "Área; quem resiste fica imune na cena.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 1
+    }
    }
   ],
   "tecnicas": [
@@ -37508,6 +38724,7 @@
     "fogo"
    ],
    "resistencias": [
+    "impacto",
     "perfuracao"
    ],
    "iniciativa": "1d6 + 6",
@@ -38068,8 +39285,15 @@
   ],
   "poderes": [
    {
+    "id": "regeneracao",
+    "nome": "Regeneração",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    }
   ],
   "tecnicas": [],
@@ -38448,8 +39672,17 @@
   ],
   "poderes": [
    {
+    "id": "imune-a-veneno-e-encanto",
+    "nome": "Imune a veneno e encanto",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-    "tipo": "natural"
+    "ataque": "Garras e presas",
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 3,
+     "recarga": "1 hora"
+    }
    }
   ],
   "tecnicas": [
@@ -38988,20 +40221,54 @@
   ],
   "poderes": [
    {
+    "id": "forma-gasosa",
+    "nome": "Forma gasosa",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Forma gasosa",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "avontade"
+    }
    },
    {
+    "id": "filhos-da-noite-convoca",
+    "nome": "Filhos da noite (convoca)",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Filhos da noite (convoca)",
-    "tipo": "natural"
+    "base": {
+     "arte": "espirito",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "dia",
+     "quantidade": 1
+    }
    },
    {
+    "id": "regeneracao",
+    "nome": "Regeneração",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "passivo",
+     "recarga": "contínua"
+    }
    },
    {
+    "id": "dreno-de-sangue",
+    "nome": "Dreno de sangue",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 1
+    },
+    "usos": {
+     "periodo": "golpe"
+    }
    }
   ],
   "tecnicas": [
@@ -39498,9 +40765,9 @@
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
-    "batalha": 6,
-    "arranque": 10,
-    "corrida": 14
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
    },
    "ataques": [
     {
@@ -39919,8 +41186,15 @@
   ],
   "poderes": [
    {
+    "id": "esporos-e-danca-da-ruina",
+    "nome": "Esporos e dança da ruína",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "Esporos em quem está colado; dança exige 3 vrocks.",
-    "tipo": "natural"
+    "usos": {
+     "periodo": "dia",
+     "quantidade": 1
+    }
    }
   ],
   "tecnicas": [],
@@ -40072,8 +41346,18 @@
   ],
   "poderes": [
    {
+    "id": "dreno-de-energia",
+    "nome": "Dreno de energia",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "tipo": "natural"
+    "base": {
+     "arte": "morte",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "golpe"
+    }
    }
   ],
   "tecnicas": [],
@@ -40300,9 +41584,9 @@
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
-    "batalha": 6,
-    "arranque": 10,
-    "corrida": 14
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
    },
    "ataques": [
     {
@@ -40339,8 +41623,17 @@
   ],
   "poderes": [
    {
+    "id": "ferrao-venenoso",
+    "nome": "Ferrão venenoso",
+    "tipo": "natural",
+    "resiste": "corpo",
     "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-    "tipo": "natural"
+    "ataque": "Garras e mordida",
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 3,
+     "recarga": "1 hora"
+    }
    }
   ],
   "tecnicas": [],
@@ -40618,8 +41911,18 @@
   ],
   "poderes": [
    {
+    "id": "deslizar-pela-pedra",
+    "nome": "Deslizar pela pedra",
+    "tipo": "natural",
+    "resiste": "nenhum",
     "efeito": "Deslizar pela pedra",
-    "tipo": "natural"
+    "base": {
+     "arte": "terra",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],

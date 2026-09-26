@@ -22,7 +22,7 @@
     "terra": 5,
     "natacao": 4
   },
-  "centelha": 3,
+  "centelha": 4,
   "attrs": {
     "forca": 13,
     "destreza": 4,
@@ -49,9 +49,9 @@
   "willpower": 8,
   "aparencia": 4,
   "arte": {
-    "vento": 3,
-    "raio": 3,
-    "adivinhacao": 2
+    "vento": 4,
+    "raio": 4,
+    "agua": 3
   },
   "ataques": [
     {
@@ -65,15 +65,18 @@
       "ticks": 7
     }
   ],
-  "habilidades": [
+  "poderes": [
     {
+      "id": "comandar-o-clima",
       "nome": "Comandar o clima",
-      "descricao": "convoca tempestade sobre uma área, reduzindo visibilidade e Ataques à distância inimigos"
-    },
-    {
-      "nome": "Ver e ouvir à distância",
-      "descricao": "observa e escuta eventos a quilômetros, quase impossível de emboscar"
-    },
+      "tipo": "natural",
+      "resiste": "nenhum",
+      "area": "convoca tempestade sobre uma área",
+      "efeito": "Leva 10 minutos para conjurar; dura a cena. Reduz visibilidade e Ataques à distância de inimigos; a critério do Mestre, raios caem ao acaso na área.",
+      "usos": { "periodo": "dia", "quantidade": 1 }
+    }
+  ],
+  "habilidades": [
     {
       "nome": "Imune a raios",
       "descricao": "não sofre dano elétrico"
@@ -89,10 +92,6 @@
     {
       "nome": "Presença régia",
       "descricao": "falha de inimigos em teste de Vontade contra ele causa Abalado"
-    },
-    {
-      "nome": "Ver e ouvir à distância",
-      "descricao": "Sentido passivo."
     }
   ],
   "lore": [

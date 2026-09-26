@@ -49,9 +49,11 @@
   "willpower": 12,
   "aparencia": 9,
   "arte": {
+    "tempo": 6,
+    "protecao": 6,
     "fogo": 5,
-    "tempo": 4,
-    "morte": 5
+    "fascinacao": 5,
+    "adivinhacao": 5
   },
   "ataques": [
     {

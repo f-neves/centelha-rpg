@@ -49,7 +49,10 @@
   "willpower": 10,
   "aparencia": 9,
   "arte": {
-    "materia": 2,
+    "conjuracao": 5,
+    "ofuscacao": 3,
+    "fascinacao": 3,
+    "protecao": 3,
     "adivinhacao": 2
   },
   "ataques": [

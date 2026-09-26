@@ -60,11 +60,9 @@
       "ticks": 5
     }
   ],
-  "resistencias": [
-    "corte",
-    "fogo",
-    "perfuracao"
-  ],
+  "bonus": {
+    "absorcao": 3
+  },
   "habilidades": [
     {
       "nome": "Pele de pedra",

@@ -19,7 +19,8 @@
     "peso": "90 kg"
   },
   "locomocao": {
-    "terra": 5
+    "terra": 5,
+    "voo": 10
   },
   "centelha": 6,
   "attrs": {
@@ -48,9 +49,11 @@
   "willpower": 11,
   "aparencia": 10,
   "arte": {
-    "raio": 3,
-    "fascinacao": 2,
-    "materia": 2
+    "cura": 4,
+    "protecao": 5,
+    "luz": 4,
+    "forcas": 4,
+    "conjuracao": 5
   },
   "ataques": [
     {

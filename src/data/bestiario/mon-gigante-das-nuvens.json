@@ -21,7 +21,7 @@
   "locomocao": {
     "terra": 5
   },
-  "centelha": 1,
+  "centelha": 2,
   "attrs": {
     "forca": 12,
     "destreza": 3,
@@ -48,7 +48,7 @@
   "willpower": 6,
   "aparencia": 4,
   "arte": {
-    "vento": 1
+    "vento": 2
   },
   "ataques": [
     {
@@ -60,21 +60,40 @@
       "tipo": "impacto",
       "acerto": 0,
       "ticks": 7
+    },
+    {
+      "nome": "Arremessar rocha",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "distancia": true,
+      "arremesso": true,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 7,
+      "notas": "dado pelo porte Enorme (B14 fase 3)"
+    }
+  ],
+  "poderes": [
+    {
+      "id": "levitar",
+      "nome": "Levitar",
+      "tipo": "natural",
+      "resiste": "nenhum",
+      "efeito": "Levita a si e até 900 kg, sem limite de tempo.",
+      "usos": { "periodo": "avontade" }
+    },
+    {
+      "id": "nevoa",
+      "nome": "Névoa",
+      "tipo": "natural",
+      "resiste": "nenhum",
+      "area": "raio de 9 m",
+      "efeito": "Névoa espessa que cobre a visão e concede Furtividade a aliados, dificultando Ataques à distância contra eles.",
+      "usos": { "periodo": "cena", "quantidade": 1 }
     }
   ],
   "habilidades": [
-    {
-      "nome": "Névoa oculta",
-      "descricao": "conjura névoa espessa num raio de 9m; concede Furtividade a aliados e dificulta Ataques à distância contra eles"
-    },
-    {
-      "nome": "Arremesso de rocha",
-      "descricao": "ataque à distância de até 36m, dano alto"
-    },
-    {
-      "nome": "Passos no vento",
-      "descricao": "flutua e plana por curtas distâncias, ignora dano de queda"
-    },
     {
       "nome": "Telepatia",
       "descricao": "comunica-se mentalmente com aliados a até 18m"

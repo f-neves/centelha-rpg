@@ -179,9 +179,11 @@ const FONTE = {
   'mon-giant-moray-eel': { ft: 30, nota: 'nado 30: sem velocidade em terra' },
   'mon-electric-eel': { ft: 30, nota: 'nado 30; em terra a enguia se arrasta 5 ft' },
   'mon-merfolk': { ft: 50, nota: 'nado 50: em terra o povo do mar se arrasta 5 ft' },
-  'mon-elasmosaurus': { ft: 50, nota: 'nado 50; em terra 20, e ele quase não sai da água' },
-  'mon-kraken': { ft: 40, nota: 'nado 40: em terra o kraken se arrasta 10 ft' },
-  'mon-aboleth': { ft: 60, nota: 'nado 60; em terra 10, e o aboleth não sai da água' },
+  'mon-elasmosaurus': { ft: 20, nota: 'nado 50; em terra 20, e ele quase não sai da água' },
+  // B14 fase 3: terra e natação viraram campos próprios na ficha (locomocao.terra=1,
+  // locomocao.natacao=4, locomocao.jato=28); a peça anda pela terra (arrasta 10 ft).
+  'mon-kraken': { ft: 10, nota: 'em terra o kraken se arrasta 10 ft; nada a 40 ft (locomocao.natacao)' },
+  'mon-aboleth': { ft: 10, nota: 'nado 60; em terra 10, e o aboleth não sai da água' },
 
   // -------------------------------------------------------------- dinossauros
   'mon-tyrannosaurus': { ft: 40 },        // Tyrannosaurus 40
@@ -190,21 +192,21 @@ const FONTE = {
   'mon-stegosaurus': { ft: 30 },          // Stegosaurus 30
   'mon-ankylosaurus': { ft: 30 },         // Ankylosaurus 30
   'mon-brachiosaurus': { ft: 30 },        // Brachiosaurus 30
-  'mon-pteranodon': { ft: 50, nota: 'voo 50; em terra 10, e o pterossauro não caça a pé' },
+  'mon-pteranodon': { ft: 10, nota: 'voo 50; em terra 10, e o pterossauro não caça a pé' },
 
   // ------------------------------------------------------------------ do ar
   'mon-aguia-gigante': { ft: 80, nota: 'voo 80; em terra a águia salta 10 ft' },
-  'mon-hawk': { ft: 60, nota: 'voo 60; em terra 10' },
-  'mon-raven': { ft: 40, nota: 'voo 40; em terra 10' },
+  'mon-hawk': { ft: 10, nota: 'voo 60; em terra 10' },
+  'mon-raven': { ft: 10, nota: 'voo 40; em terra 10' },
   'mon-bat': { ft: 40, nota: 'voo 40; em terra o morcego se arrasta 5 ft' },
-  'mon-dire-bat': { ft: 40, nota: 'voo 40; em terra 20' },
-  'mon-stirge': { ft: 40, nota: 'voo 40; em terra 10' },
-  'mon-pixie': { ft: 60, nota: 'voo 60; em terra 20' },
-  'mon-diabrete-imp': { ft: 50, nota: 'voo 50 (perfeito); em terra 20' },
-  'mon-quasit': { ft: 50, nota: 'voo 50 (perfeito); em terra 20' },
-  'mon-harpia': { ft: 80, nota: 'voo 80; em terra 20, e a harpia caça no ar' },
-  'mon-roc': { ft: 80, nota: 'voo 80; em terra 20' },
-  'mon-wyvern': { ft: 60, nota: 'voo 60; em terra 20' },
+  'mon-dire-bat': { ft: 20, nota: 'voo 40; em terra 20' },
+  'mon-stirge': { ft: 10, nota: 'voo 40; em terra 10' },
+  'mon-pixie': { ft: 20, nota: 'voo 60; em terra 20' },
+  'mon-diabrete-imp': { ft: 20, nota: 'voo 50 (perfeito); em terra 20' },
+  'mon-quasit': { ft: 20, nota: 'voo 50 (perfeito); em terra 20' },
+  'mon-harpia': { ft: 20, nota: 'voo 80; em terra 20, e a harpia caça no ar' },
+  'mon-roc': { ft: 20, nota: 'voo 80; em terra 20' },
+  'mon-wyvern': { ft: 20, nota: 'voo 60; em terra 20' },
   'mon-couatl': { ft: 60, nota: 'voo 60; a serpente alada rasteja 20 e não é assim que ela vai' },
   'mon-lantern-archon': { ft: 60, nota: 'voo 60 (perfeito): a esfera de luz não tem passo' },
   'mon-fogo-fatuo': { ft: 50, nota: 'voo 50 (perfeito): o fogo-fátuo não tem corpo que pise' },
@@ -352,12 +354,12 @@ const FONTE = {
   'mon-mimico': { ft: 10 },               // Mimic 10: ele espera, não persegue
   'mon-choker': { ft: 20 },               // Choker 20, escalada 10
   'mon-darkmantle': { ft: 20 },           // Darkmantle 20, voo 30 (ruim): ele cai do teto
-  'mon-cloaker': { ft: 40, nota: 'voo 40; em terra 10, e o manto vive no ar' },
+  'mon-cloaker': { ft: 10, nota: 'voo 40; em terra 10, e o manto vive no ar' },
   'mon-drider': { ft: 30 },               // Drider 30, escalada 20
   'mon-aranha-das-fases': { ft: 40 },     // Phase Spider 40
   'mon-ettercap': { ft: 30 },             // Ettercap 30, escalada 30
   'mon-gargula': { ft: 40 },              // Gargoyle 40 a pé, voo 60
-  'mon-homunculus': { ft: 50, nota: 'voo 50; em terra 20, e o bichinho é feito para voar' },
+  'mon-homunculus': { ft: 20, nota: 'voo 50; em terra 20, e o bichinho é feito para voar' },
   'mon-intellect-devourer': { ft: 40 },   // Intellect Devourer 40
   'mon-invisible-stalker': { ft: 30 },    // Invisible Stalker 30, voo 30 (perfeito)
   'mon-shoggoth': { ft: 50 },             // Shoggoth 50: rápido demais para o tamanho, e é o susto dele
@@ -402,11 +404,11 @@ const FONTE = {
   'mon-iron-cobra': { ft: 40 },           // Iron Cobra 40
   'mon-ice-golem': { ft: 30 },            // Ice Golem 30
   'mon-phoenix': { ft: 30 },              // Phoenix 30 a pé, voo 90
-  'mon-giant-wasp': { ft: 60, nota: 'voo 60; em terra 20' },
-  'mon-cocatriz': { ft: 60, nota: 'voo 60; em terra 20: a cocatriz é bicho de asa' },
-  'mon-pseudodragon': { ft: 60, nota: 'voo 60; em terra 15' },
+  'mon-giant-wasp': { ft: 20, nota: 'voo 60; em terra 20' },
+  'mon-cocatriz': { ft: 20, nota: 'voo 60; em terra 20: a cocatriz é bicho de asa' },
+  'mon-pseudodragon': { ft: 15, nota: 'voo 60; em terra 15' },
   'mon-giant-leech': { ft: 20, nota: 'nado 20; em terra a sanguessuga se arrasta 5' },
-  'mon-sea-serpent': { ft: 60, nota: 'nado 60; em terra 20, e ela não sai do mar' },
+  'mon-sea-serpent': { ft: 20, nota: 'nado 60; em terra 20, e ela não sai do mar' },
   'mon-bat-swarm': { ft: 40, nota: 'voo 40: a nuvem de morcegos não pousa' },
   'mon-wasp-swarm': { ft: 40, nota: 'voo 40: a nuvem de vespas não pousa' },
   'mon-leech-swarm': { ft: 30, nota: 'nado 30: o enxame de sanguessugas vive na água' },
