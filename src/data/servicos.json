@@ -4,6 +4,12 @@
     {
       "perfil": "Braçal",
       "soma": 4,
+      "livre": {
+        "por": "semana",
+        "preco": {
+          "pc": 7
+        }
+      },
       "tarifas": [
         {
           "por": "semana",
@@ -29,21 +35,21 @@
           "por": "hora",
           "oficio": "leve",
           "preco": {
-            "pc": 2.5
+            "pc": 3
           }
         },
         {
           "por": "hora",
           "oficio": "artesao",
           "preco": {
-            "pc": 1.9
+            "pc": 2
           }
         },
         {
           "por": "hora",
           "oficio": "bracal",
           "preco": {
-            "pc": 1.5
+            "pc": 2
           }
         }
       ]
@@ -51,6 +57,12 @@
     {
       "perfil": "Destreinado",
       "soma": 5,
+      "livre": {
+        "por": "semana",
+        "preco": {
+          "pc": 10
+        }
+      },
       "tarifas": [
         {
           "por": "semana",
@@ -62,7 +74,7 @@
           "por": "dia",
           "regime": "contrato",
           "preco": {
-            "pc": 16.7
+            "pc": 17
           }
         },
         {
@@ -76,21 +88,21 @@
           "por": "hora",
           "oficio": "leve",
           "preco": {
-            "pc": 4.2
+            "pc": 4
           }
         },
         {
           "por": "hora",
           "oficio": "artesao",
           "preco": {
-            "pc": 3.1
+            "pc": 3
           }
         },
         {
           "por": "hora",
           "oficio": "bracal",
           "preco": {
-            "pc": 2.5
+            "pc": 3
           }
         }
       ]
@@ -98,6 +110,12 @@
     {
       "perfil": "Oficial",
       "soma": 6,
+      "livre": {
+        "por": "semana",
+        "preco": {
+          "pc": 12
+        }
+      },
       "tarifas": [
         {
           "por": "semana",
@@ -109,35 +127,88 @@
           "por": "dia",
           "regime": "contrato",
           "preco": {
-            "pc": 21.7
+            "pc": 22
           }
         },
         {
           "por": "dia",
           "regime": "avulso",
           "preco": {
-            "pc": 32.5
+            "pc": 33
           }
         },
         {
           "por": "hora",
           "oficio": "leve",
           "preco": {
-            "pc": 5.4
+            "pc": 5
           }
         },
         {
           "por": "hora",
           "oficio": "artesao",
           "preco": {
-            "pc": 4.1
+            "pc": 4
           }
         },
         {
           "por": "hora",
           "oficio": "bracal",
           "preco": {
-            "pc": 3.2
+            "pc": 3
+          }
+        }
+      ]
+    },
+    {
+      "perfil": "Oficial experiente (soma 7)",
+      "soma": 7,
+      "livre": {
+        "por": "semana",
+        "preco": {
+          "pc": 16
+        }
+      },
+      "tarifas": [
+        {
+          "por": "semana",
+          "preco": {
+            "pc": 200
+          }
+        },
+        {
+          "por": "dia",
+          "regime": "contrato",
+          "preco": {
+            "pc": 33
+          }
+        },
+        {
+          "por": "dia",
+          "regime": "avulso",
+          "preco": {
+            "pc": 50
+          }
+        },
+        {
+          "por": "hora",
+          "oficio": "leve",
+          "preco": {
+            "pc": 8
+          }
+        },
+        {
+          "por": "hora",
+          "oficio": "artesao",
+          "preco": {
+            "pc": 6
+          }
+        },
+        {
+          "por": "hora",
+          "oficio": "bracal",
+          "preco": {
+            "pc": 5
           }
         }
       ]
@@ -145,6 +216,12 @@
     {
       "perfil": "Profissional (soma 8)",
       "soma": 8,
+      "livre": {
+        "por": "semana",
+        "preco": {
+          "pc": 19
+        }
+      },
       "tarifas": [
         {
           "por": "semana",
@@ -156,7 +233,7 @@
           "por": "dia",
           "regime": "contrato",
           "preco": {
-            "pc": 43.3
+            "pc": 43
           }
         },
         {
@@ -170,21 +247,21 @@
           "por": "hora",
           "oficio": "leve",
           "preco": {
-            "pc": 10.8
+            "pc": 11
           }
         },
         {
           "por": "hora",
           "oficio": "artesao",
           "preco": {
-            "pc": 8.1
+            "pc": 8
           }
         },
         {
           "por": "hora",
           "oficio": "bracal",
           "preco": {
-            "pc": 6.5
+            "pc": 7
           }
         }
       ]
@@ -192,46 +269,52 @@
     {
       "perfil": "Perito (soma 9)",
       "soma": 9,
+      "livre": {
+        "por": "semana",
+        "preco": {
+          "pc": 22
+        }
+      },
       "tarifas": [
         {
           "por": "semana",
           "preco": {
-            "pc": 334.3
+            "pc": 330
           }
         },
         {
           "por": "dia",
           "regime": "contrato",
           "preco": {
-            "pc": 55.7
+            "pc": 55
           }
         },
         {
           "por": "dia",
           "regime": "avulso",
           "preco": {
-            "pc": 83.6
+            "pc": 83
           }
         },
         {
           "por": "hora",
           "oficio": "leve",
           "preco": {
-            "pc": 13.9
+            "pc": 14
           }
         },
         {
           "por": "hora",
           "oficio": "artesao",
           "preco": {
-            "pc": 10.4
+            "pc": 10
           }
         },
         {
           "por": "hora",
           "oficio": "bracal",
           "preco": {
-            "pc": 8.4
+            "pc": 8
           }
         }
       ]
@@ -239,46 +322,52 @@
     {
       "perfil": "Especialista (soma 10)",
       "soma": 10,
+      "livre": {
+        "por": "semana",
+        "preco": {
+          "pc": 26
+        }
+      },
       "tarifas": [
         {
           "por": "semana",
           "preco": {
-            "pc": 434.6
+            "pc": 430
           }
         },
         {
           "por": "dia",
           "regime": "contrato",
           "preco": {
-            "pc": 72.4
+            "pc": 72
           }
         },
         {
           "por": "dia",
           "regime": "avulso",
           "preco": {
-            "pc": 108.6
+            "pc": 108
           }
         },
         {
           "por": "hora",
           "oficio": "leve",
           "preco": {
-            "pc": 18.1
+            "pc": 18
           }
         },
         {
           "por": "hora",
           "oficio": "artesao",
           "preco": {
-            "pc": 13.6
+            "pc": 13
           }
         },
         {
           "por": "hora",
           "oficio": "bracal",
           "preco": {
-            "pc": 10.9
+            "pc": 11
           }
         }
       ]
@@ -286,46 +375,52 @@
     {
       "perfil": "Especialista (soma 11)",
       "soma": 11,
+      "livre": {
+        "por": "semana",
+        "preco": {
+          "pc": 31
+        }
+      },
       "tarifas": [
         {
           "por": "semana",
           "preco": {
-            "pc": 568.3
+            "pc": 570
           }
         },
         {
           "por": "dia",
           "regime": "contrato",
           "preco": {
-            "pc": 94.7
+            "pc": 95
           }
         },
         {
           "por": "dia",
           "regime": "avulso",
           "preco": {
-            "pc": 142.1
+            "pc": 143
           }
         },
         {
           "por": "hora",
           "oficio": "leve",
           "preco": {
-            "pc": 23.7
+            "pc": 24
           }
         },
         {
           "por": "hora",
           "oficio": "artesao",
           "preco": {
-            "pc": 17.8
+            "pc": 18
           }
         },
         {
           "por": "hora",
           "oficio": "bracal",
           "preco": {
-            "pc": 14.2
+            "pc": 14
           }
         }
       ]
@@ -333,46 +428,52 @@
     {
       "perfil": "Mestre (soma 12)",
       "soma": 12,
+      "livre": {
+        "por": "semana",
+        "preco": {
+          "pc": 35
+        }
+      },
       "tarifas": [
         {
           "por": "semana",
           "preco": {
-            "pc": 668.6
+            "pc": 670
           }
         },
         {
           "por": "dia",
           "regime": "contrato",
           "preco": {
-            "pc": 111.4
+            "pc": 112
           }
         },
         {
           "por": "dia",
           "regime": "avulso",
           "preco": {
-            "pc": 167.1
+            "pc": 168
           }
         },
         {
           "por": "hora",
           "oficio": "leve",
           "preco": {
-            "pc": 27.9
+            "pc": 28
           }
         },
         {
           "por": "hora",
           "oficio": "artesao",
           "preco": {
-            "pc": 20.9
+            "pc": 21
           }
         },
         {
           "por": "hora",
           "oficio": "bracal",
           "preco": {
-            "pc": 16.7
+            "pc": 17
           }
         }
       ]
@@ -412,10 +513,10 @@
       "nome": "Artesão (oficial) avulso",
       "por": "dia",
       "preco": {
-        "pc": 35
+        "pc": 33
       },
       "calculado": {
-        "pc": 32.5
+        "pc": 33
       },
       "base": "Oficial: 130 / 6 x 1,5"
     },
@@ -425,10 +526,10 @@
       "nome": "Artesão perito avulso",
       "por": "dia",
       "preco": {
-        "pc": 85
+        "pc": 83
       },
       "calculado": {
-        "pc": 83.6
+        "pc": 83
       },
       "base": "Soma 9"
     },
@@ -438,10 +539,10 @@
       "nome": "Mestre de ofício avulso",
       "por": "dia",
       "preco": {
-        "pc": 170
+        "pc": 168
       },
       "calculado": {
-        "pc": 167.1
+        "pc": 168
       },
       "base": "Soma 12"
     },
@@ -454,7 +555,7 @@
         "pc": 2
       },
       "calculado": {
-        "pc": 1.5
+        "pc": 2
       },
       "base": "Uma hora de braçal"
     },
@@ -467,7 +568,7 @@
         "pc": 2
       },
       "calculado": {
-        "pc": 2.1
+        "pc": 2
       },
       "base": "Meia hora, destreinado"
     },
@@ -490,10 +591,10 @@
       "nome": "Guia local",
       "por": "dia",
       "preco": {
-        "pc": 35
+        "pc": 33
       },
       "calculado": {
-        "pc": 32.5
+        "pc": 33
       },
       "base": "Sobrevivência de oficial, avulso"
     },
@@ -503,10 +604,10 @@
       "nome": "Guia de expedição (contrato)",
       "por": "dia",
       "preco": {
-        "pc": 45
+        "pc": 43
       },
       "calculado": {
-        "pc": 43.3
+        "pc": 43
       },
       "base": "Soma 8, contrato, mais comida"
     },
@@ -636,7 +737,7 @@
         "pc": 8
       },
       "calculado": {
-        "pc": 8.4
+        "pc": 8
       },
       "base": "Uma hora de escrivão e uma folha"
     },
@@ -675,7 +776,7 @@
         "pc": 11
       },
       "calculado": {
-        "pc": 10.8
+        "pc": 11
       },
       "base": "Uma hora, soma 8"
     },
@@ -688,7 +789,7 @@
         "pc": 18
       },
       "calculado": {
-        "pc": 18.1
+        "pc": 18
       },
       "base": "Direito, soma 10"
     },
@@ -701,7 +802,7 @@
         "pc": 430
       },
       "calculado": {
-        "pc": 434.6
+        "pc": 430
       },
       "base": "Contrato semanal, soma 10"
     },
@@ -760,10 +861,10 @@
       "nome": "Parteira",
       "por": "atendimento",
       "preco": {
-        "pc": 35
+        "pc": 33
       },
       "calculado": {
-        "pc": 32.5
+        "pc": 33
       },
       "base": "Uma jornada de oficial"
     },
@@ -812,10 +913,10 @@
       "nome": "Músico ou artista, noite de taverna",
       "por": "noite",
       "preco": {
-        "pc": 35
+        "pc": 33
       },
       "calculado": {
-        "pc": 32.5
+        "pc": 33
       },
       "base": "Performance de oficial"
     },
@@ -825,10 +926,10 @@
       "nome": "Menestrel de corte, apresentação",
       "por": "apresentacao",
       "preco": {
-        "pc": 110
+        "pc": 108
       },
       "calculado": {
-        "pc": 108.6
+        "pc": 108
       },
       "base": "Soma 10"
     },
@@ -838,10 +939,10 @@
       "nome": "Adestrar cavalo para sela",
       "por": "animal",
       "preco": {
-        "pc": 1000
+        "pc": 1056
       },
       "calculado": {
-        "pc": 1040
+        "pc": 1056
       },
       "base": "8 semanas de adestrador oficial; explica rocim 2.400 - potro 1.300"
     },
@@ -851,10 +952,10 @@
       "nome": "Adestrar cavalo de guerra",
       "por": "animal",
       "preco": {
-        "pc": 8000
+        "pc": 7920
       },
       "calculado": {
-        "pc": 8022.9
+        "pc": 7920
       },
       "base": "24 semanas de perito sobre um rocim robusto (~3.100): o par dá o cavalo de guerra de escudeiro (11.200)"
     },
@@ -881,10 +982,10 @@
       "prof_soma": 6,
       "por": "ponto",
       "preco": {
-        "pc": 130
+        "pc": 132
       },
       "calculado": {
-        "pc": 130
+        "pc": 132
       }
     },
     {
@@ -895,7 +996,7 @@
       "prof_soma": 8,
       "por": "ponto",
       "preco": {
-        "pc": 330
+        "pc": 325
       },
       "calculado": {
         "pc": 325
@@ -909,10 +1010,10 @@
       "prof_soma": 9,
       "por": "ponto",
       "preco": {
-        "pc": 500
+        "pc": 498
       },
       "calculado": {
-        "pc": 501.4
+        "pc": 498
       }
     },
     {
@@ -923,10 +1024,10 @@
       "prof_soma": 11,
       "por": "ponto",
       "preco": {
-        "pc": 990
+        "pc": 1001
       },
       "calculado": {
-        "pc": 994.5
+        "pc": 1001
       }
     },
     {
@@ -937,7 +1038,7 @@
       "prof_soma": 8,
       "por": "ponto",
       "preco": {
-        "pc": 160
+        "pc": 163
       },
       "calculado": {
         "pc": 162.5
@@ -965,10 +1066,10 @@
       "prof_soma": 9,
       "por": "ponto",
       "preco": {
-        "pc": 1000
+        "pc": 1038
       },
       "calculado": {
-        "pc": 1044.6
+        "pc": 1037.5
       }
     },
     {
@@ -979,10 +1080,10 @@
       "prof_soma": 11,
       "por": "ponto",
       "preco": {
-        "pc": 2100
+        "pc": 2145
       },
       "calculado": {
-        "pc": 2131.1
+        "pc": 2145
       }
     },
     {
@@ -993,10 +1094,10 @@
       "prof_soma": 9,
       "por": "ponto",
       "preco": {
-        "pc": 500
+        "pc": 498
       },
       "calculado": {
-        "pc": 501.4
+        "pc": 498
       }
     }
   ],
@@ -1013,7 +1114,7 @@
       "custo_total": {
         "por": "semana",
         "preco": {
-          "pc": 18.6
+          "pc": 19
         }
       }
     },
@@ -1023,13 +1124,13 @@
       "salario": {
         "por": "semana",
         "preco": {
-          "pc": 17.5
+          "pc": 18
         }
       },
       "custo_total": {
         "por": "semana",
         "preco": {
-          "pc": 48.8
+          "pc": 49
         }
       }
     },
@@ -1039,13 +1140,13 @@
       "salario": {
         "por": "semana",
         "preco": {
-          "pc": 17.5
+          "pc": 18
         }
       },
       "custo_total": {
         "por": "semana",
         "preco": {
-          "pc": 48.8
+          "pc": 49
         }
       }
     },
@@ -1055,13 +1156,13 @@
       "salario": {
         "por": "semana",
         "preco": {
-          "pc": 29.2
+          "pc": 29
         }
       },
       "custo_total": {
         "por": "semana",
         "preco": {
-          "pc": 60.5
+          "pc": 60
         }
       }
     },
@@ -1071,13 +1172,13 @@
       "salario": {
         "por": "semana",
         "preco": {
-          "pc": 52.6
+          "pc": 53
         }
       },
       "custo_total": {
         "por": "semana",
         "preco": {
-          "pc": 118.4
+          "pc": 118
         }
       }
     },
@@ -1087,13 +1188,13 @@
       "salario": {
         "por": "semana",
         "preco": {
-          "pc": 30.4
+          "pc": 30
         }
       },
       "custo_total": {
         "por": "semana",
         "preco": {
-          "pc": 61.7
+          "pc": 62
         }
       }
     },
@@ -1103,13 +1204,13 @@
       "salario": {
         "por": "semana",
         "preco": {
-          "pc": 35.1
+          "pc": 35
         }
       },
       "custo_total": {
         "por": "semana",
         "preco": {
-          "pc": 100.9
+          "pc": 101
         }
       }
     },
@@ -1119,13 +1220,13 @@
       "salario": {
         "por": "semana",
         "preco": {
-          "pc": 175.3
+          "pc": 175
         }
       },
       "custo_total": {
         "por": "semana",
         "preco": {
-          "pc": 241.2
+          "pc": 241
         }
       }
     },
@@ -1135,13 +1236,13 @@
       "salario": {
         "por": "semana",
         "preco": {
-          "pc": 140.3
+          "pc": 140
         }
       },
       "custo_total": {
         "por": "semana",
         "preco": {
-          "pc": 206.1
+          "pc": 206
         }
       }
     }
@@ -1199,7 +1300,7 @@
   "escravo_sustento": {
     "por": "semana",
     "preco": {
-      "pc": 14.5
+      "pc": 15
     }
   }
 }

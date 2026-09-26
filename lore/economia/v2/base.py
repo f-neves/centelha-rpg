@@ -35,6 +35,12 @@ def arred(pc):
         return r(pc, 10)
     return r(pc, 100)
 
+def inteiro(pc):
+    """Taxa (renda por perfil, diária, hora, salário e custo de criado, Livre dos perfis): pc inteiro, meio
+    para cima. Rodada 114: o `arred` de degraus (5, 10, 100) é só para preço de loja."""
+    import math
+    return int(math.floor(pc + 0.5))
+
 def fmt(pc):
     """Formata pc em po/pp/pc como no livro."""
     pc = int(round(pc))

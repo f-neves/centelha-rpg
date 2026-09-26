@@ -85,7 +85,7 @@ FAIXAS = [  # nome, recursos, renda/sem (mantida), soma de referência / origem
     ("Abastado", 4, 1400, "renda de capital: oficina com empregados, comércio"),
     ("Rico", 4, 2700, "capital e posição"),
     ("Aristocrata", 5, 4200, "terra, cargo, título"),
-    ("Nobreza", 5, 10000, "senhorio de terras e rendas"),
+    ("Nobreza", 6, 10000, "senhorio de terras e rendas"),
 ]
 import math
 LIVRE_A, LIVRE_B = 0.12, 0.02   # curva D (decisão do autor): 12% no braçal, 2% na nobreza
@@ -203,7 +203,7 @@ for nome, rec, renda, orig in FAIXAS:
     tabela_renda.append(dict(faixa=nome, recursos=rec, renda=renda, origem=orig, livre_frac=f, livre=livre,
                              custo=custo, pacote=pac, pacote_total=base, estilo=custo - base,
                              estilo_frac=(custo - base) / custo, renda_mes=renda * 4, renda_ano=renda * 48,
-                             livre_mes=livre * 4, livre_ano=livre * 48))
+                             livre_mes=livre * 4, livre_ano=livre * (SEMANAS_ANO - 4 * rec)))   # Imprevistos (rodada 114)
 OUT["renda"] = tabela_renda
 
 # ---- Níveis de vida por pessoa (NPC viajante, personagem sem casa; e regra de viver abaixo do nível)
@@ -320,13 +320,16 @@ OUT["viagens"] = dict(vel=VELOCIDADES, **viagens)
 def diaria(soma, bonus=0, hab=None):
     r, _ = renda_ficha(soma, hab, bonus)
     return r / JORNADAS_SEMANA
-PERFIS = [("Braçal", 4), ("Destreinado", 5), ("Oficial", 6), ("Profissional (soma 8)", 8), ("Perito (soma 9)", 9),
+PERFIS = [("Braçal", 4), ("Destreinado", 5), ("Oficial", 6), ("Oficial experiente (soma 7)", 7), ("Profissional (soma 8)", 8), ("Perito (soma 9)", 9),
           ("Especialista (soma 10)", 10), ("Especialista (soma 11)", 11), ("Mestre (soma 12)", 12)]
 tarifas = []
 for nome, s in PERFIS:
-    d = diaria(s)
-    tarifas.append(dict(perfil=nome, soma=s, semana=renda_ficha(s)[0], contrato=d, avulsa=d * 1.5,
-                        hora_leve=d * 1.5 / 6, hora_artesao=d * 1.5 / 8, hora_bracal=d * 1.5 / 10))
+    sem = arred(renda_ficha(s)[0])          # o valor publicado no livro (curva_por_soma)
+    av = sem / 4                            # avulsa = contrato x 1,5 = semana / 4
+    tarifas.append(dict(perfil=nome, soma=s, semana=sem, contrato=inteiro(sem / JORNADAS_SEMANA), avulsa=inteiro(av),
+                        hora_leve=inteiro(av / 6), hora_artesao=inteiro(av / 8), hora_bracal=inteiro(av / 10),
+                        livre=inteiro(sem * livre_frac(sem))))
+T_PERFIL = {t["soma"]: t for t in tarifas}
 MILITAR_HIST = [("Arqueiro a pé", 3), ("Lanceiro galês", 2), ("Arqueiro montado, hobelar", 6), ("Homem de armas, escudeiro", 12),
                 ("Cavaleiro", 24), ("Cavaleiro bandeirado", 48), ("Conde", 80)]
 OUT["servicos"] = dict(tarifas=tarifas, militar=[(n, d, d2pc(d)) for n, d in MILITAR_HIST])
@@ -341,7 +344,7 @@ for tipo, novo, prof_soma in [("Habilidade primária", 2, 6), ("Habilidade prim�
                               ("Atributo", 4, 9), ("Atributo", 5, 11), ("Especialidade primária", 1, 9)]:
     xp = XP[tipo](novo)
     jornadas = xp / 2
-    preco = jornadas * diaria(prof_soma) * 1.5
+    preco = jornadas * T_PERFIL[prof_soma]["avulsa"]
     aulas.append(dict(tipo=tipo, novo=novo, xp=xp, jornadas=jornadas, prof_soma=prof_soma, preco=preco))
 OUT["aulas"] = aulas
 

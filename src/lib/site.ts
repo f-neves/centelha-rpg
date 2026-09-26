@@ -45,7 +45,18 @@ export const NAV = [
   { slug: 'regras/defesas', titulo: 'As Três Defesas', numeral: 'XI' },
   { slug: 'regras/quase-acerto', titulo: 'Quase-Acerto', numeral: 'XII' },
   { slug: 'regras/armas-e-armaduras', titulo: 'Armas & Armaduras', numeral: 'XIII' },
-  { slug: 'regras/custo-de-servico-e-itens', titulo: 'Custo de Serviço & Itens', numeral: 'XIV' },
+  {
+    // O XIV são cinco páginas desde a rodada 114, no padrão do VIII: o link do capítulo abre a
+    // primeira (moeda, renda e custo de vida, que as outras quatro usam).
+    slug: 'regras/custo-de-servico-e-itens', titulo: 'Custo de Serviço & Itens', numeral: 'XIV',
+    sub: [
+      { slug: 'regras/custo-de-servico-e-itens', titulo: 'Moeda, Renda e Custo de Vida' },
+      { slug: 'regras/custo-servicos', titulo: 'Serviços e Contratação' },
+      { slug: 'regras/custo-mercadorias', titulo: 'Mercadorias' },
+      { slug: 'regras/custo-qualidade-e-equipamento', titulo: 'Qualidade e Equipamento' },
+      { slug: 'regras/custo-montarias-e-viagens', titulo: 'Montarias, Veículos e Viagens' },
+    ],
+  },
   { slug: 'caminhos', titulo: 'As Proezas', numeral: 'XV' },
   { slug: 'arcano', titulo: 'O Arcano', numeral: 'XVI' },
   {

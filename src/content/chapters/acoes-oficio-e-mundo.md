@@ -79,7 +79,7 @@ A peça sai **Comum** por padrão. A régua vai para os dois lados, e cada grau 
 | Dificuldade **+3** | Dificuldade **−3**, nunca abaixo de 1 |
 | Montagem e Peça **× 1,5** | Montagem e Peça **× 0,5** |
 | Intervalo sobe um degrau **a cada dois graus** | o Mestre pode descer um degrau em −2 |
-| Preço fixo por grau: Boa **5×**, Ótima **30×**, Excelente **70×** a Comum ([Qualidade de Itens](/regras/custo-de-servico-e-itens)) | Tosca até **⅓**, Sucata até **⅙** |
+| Preço fixo por grau: Boa **5×**, Ótima **30×**, Excelente **70×** a Comum ([Qualidade de Itens](/regras/custo-qualidade-e-equipamento)) | Tosca até **⅓**, Sucata até **⅙** |
 | **+1** num número da peça | **−1** num número da peça |
 
 O "número da peça" é o que aquela peça tem para dar: acerto, defesa da arma, dado de dano, Absorção de uma categoria, penalidade reduzida em 1, um degrau a menos de peso. No máximo **+2 ou −2 no mesmo número**, para que uma Excelente espalhe o ganho em vez de empilhar.

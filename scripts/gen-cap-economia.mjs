@@ -1,5 +1,6 @@
-// Regera as tabelas da economia mundana nos capítulos `custo-de-servico-e-itens.md` e (a curva de
-// ganhar a vida com o ofício, rodada 113) `acoes-oficio-e-mundo.md`, a partir dos
+// Regera as tabelas da economia mundana nas páginas do capítulo XIV (cinco desde a rodada 114; o
+// mapa está em ONDE, perto do fim) e (a curva de ganhar a vida com o ofício, rodada 113)
+// `acoes-oficio-e-mundo.md`, a partir dos
 // JSONs de src/data que saem do modelo de lore/economia/v2/gerar.py: renda.json,
 // custo-de-vida.json, servicos.json, mercadorias.json, montarias-veiculos.json, viagens.json e
 // pacotes-equipamento.json.
@@ -19,7 +20,6 @@ import path from 'node:path';
 
 const raiz = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const ler = (p) => JSON.parse(fs.readFileSync(path.join(raiz, 'src/data', p), 'utf8'));
-const CAP = path.join(raiz, 'src/content/chapters/custo-de-servico-e-itens.md');
 
 const RENDA = ler('renda.json');
 const VIDA = ler('custo-de-vida.json');
@@ -30,21 +30,13 @@ const VIAG = ler('viagens.json');
 const PAC = ler('pacotes-equipamento.json').pacotes;
 
 const milhar = (n) => n.toLocaleString('pt-BR');
-// cobre → a maior moeda exata (po/pp/pc), como no catálogo de equipamento; acima de 1 po sem moeda
-// exata, a forma mista; fração de cobre com vírgula.
+// Tudo em pc, com ponto de milhar (rodada 114): a conversão de moeda fica só na tabela de Moedas &
+// Conversão. Preço com fração não deve chegar aqui (a fonte arredonda); se chegar, sai com vírgula e
+// a varredura do dist/ acusa.
 function fmt(pc) {
   if (pc == null) return '·';
   if (!Number.isInteger(pc)) return `${String(Math.round(pc * 10) / 10).replace('.', ',')} pc`;
-  if (pc === 0) return '0';
-  if (pc % 100 === 0) return `${milhar(pc / 100)} po`;
-  if (pc % 10 === 0 && pc < 100) return `${pc / 10} pp`;
-  if (pc >= 100) return fmtMisto(pc);
-  return `${pc} pc`;
-}
-// cobre → forma mista "X po Y pp Z pc".
-function fmtMisto(pc) {
-  const po = Math.floor(pc / 100), pp = Math.floor((pc % 100) / 10), c = pc % 10;
-  return [po && `${milhar(po)} po`, pp && `${pp} pp`, c && `${c} pc`].filter(Boolean).join(' ') || '0';
+  return `${milhar(pc)} pc`;
 }
 const num = (n) => String(n).replace('.', ',');
 const bolas = (n) => '●'.repeat(n);
@@ -72,9 +64,9 @@ const blocos = {};
 
 // ----------------------------------------------------------------- renda
 blocos.renda = envolve(tabela(
-  ['Recursos', 'Faixa', 'Renda/Sem', 'Renda/Mês', 'Livre/Sem', 'Livre/Mês', 'Livre/Ano', 'Custo/Sem', 'Nível de vida'],
-  ['c', 'l', 'c', 'c', 'c', 'c', 'c', 'c', 'l'],
-  RENDA.faixas.map((f) => [bolas(f.recursos), f.faixa, fmt(de(f.renda, 'semana')), fmt(de(f.renda, 'mes')), fmt(de(f.livre, 'semana')), fmt(de(f.livre, 'mes')), fmt(de(f.livre, 'ano')), fmt(de(f.custo, 'semana')), f.nivel_de_vida]),
+  ['Recursos', 'Faixa', 'Renda/Sem', 'Custo/Sem', 'Livre/Sem', 'Livre/Ano'],
+  ['c', 'l', 'c', 'c', 'c', 'c'],
+  RENDA.faixas.map((f) => [bolas(f.recursos), f.faixa, fmt(de(f.renda, 'semana')), fmt(de(f.custo, 'semana')), fmt(de(f.livre, 'semana')), fmt(de(f.livre, 'ano'))]),
 ));
 
 // ------------------------------------------------------------ custo de vida
@@ -93,9 +85,9 @@ blocos['pacote-familia'] = envolve(tabela(
 
 // --------------------------------------------------------------- serviços
 blocos.tarifas = envolve(tabela(
-  ['Perfil', 'Soma', 'Renda/Sem', 'Diária (contrato)', 'Diária avulsa', 'Hora, serviço leve', 'Hora, artesão', 'Hora, braçal'],
-  ['l', 'c', 'c', 'c', 'c', 'c', 'c', 'c'],
-  SERV.tarifas_por_perfil.map((t) => [t.perfil, t.soma, fmt(de(t.tarifas, 'semana')), fmt(de(t.tarifas, 'dia', { regime: 'contrato' })), fmt(de(t.tarifas, 'dia', { regime: 'avulso' })),
+  ['Perfil', 'Soma', 'Renda/Sem', 'Livre/Sem', 'Diária (contrato)', 'Diária avulsa', 'Hora, serviço leve', 'Hora, artesão', 'Hora, braçal'],
+  ['l', 'c', 'c', 'c', 'c', 'c', 'c', 'c', 'c'],
+  SERV.tarifas_por_perfil.map((t) => [t.perfil, t.soma, fmt(de(t.tarifas, 'semana')), fmt(pcDe(t.livre)), fmt(de(t.tarifas, 'dia', { regime: 'contrato' })), fmt(de(t.tarifas, 'dia', { regime: 'avulso' })),
     fmt(de(t.tarifas, 'hora', { oficio: 'leve' })), fmt(de(t.tarifas, 'hora', { oficio: 'artesao' })), fmt(de(t.tarifas, 'hora', { oficio: 'bracal' }))]),
 ));
 const grupos = [...new Set(SERV.servicos.map((s) => s.grupo))];
@@ -157,7 +149,7 @@ blocos.viagens = envolve(tabela(
 const porId = Object.fromEntries(MERC.map((m) => [m.id, m]));
 blocos.pacotes = Object.entries(PAC).map(([nome, p]) => {
   const itens = p.itens.map(([id, q]) => { const m = porId[id]; if (!m) throw new Error(`pacote ${nome}: item ${id} não existe em mercadorias.json`); return q > 1 ? `${m.nome} ×${q}` : m.nome; });
-  return `- **${nome} (${fmtMisto(p.total.pc)})**: ${itens.join(', ')}.`;
+  return `- **${nome} (${fmt(p.total.pc)})**: ${itens.join(', ')}.`;
 }).join('\n');
 
 // ------------------------------------------- ganhar a vida com o ofício (rodada 113)
@@ -166,7 +158,7 @@ blocos.pacotes = Object.entries(PAC).map(([nome, p]) => {
 // exemplo é a curva por soma nos três perfis da tabela de fabricação (oficial 6, perito 9, mestre 12).
 const FAIXA_VALOR = { dif4: ['Serviço simples', 4], dif7: ['Ofício', 7], dif11: ['Arte rara', 11] };
 for (const k of Object.keys(RENDA.valor_por_ponto)) if (!FAIXA_VALOR[k]) throw new Error(`faixa sem rótulo em gen-cap-economia.mjs: ${k}`);
-const emPc = (pc) => `${milhar(Math.round(pc))} pc`;
+const emPc = (pc) => fmt(Math.round(pc));
 const PERFIL = { 6: 'Oficial', 9: 'Perito', 12: 'Mestre' };
 const curva = Object.fromEntries(RENDA.curva_por_soma.map((c) => [c.soma, c]));
 const TETO = { aldeia: 'Aldeia', vila: 'Vila', cidade: 'Cidade', capital: 'Capital' };
@@ -192,7 +184,20 @@ const blocosOficio = {
 const CAP_OFICIO = path.join(raiz, 'src/content/chapters/acoes-oficio-e-mundo.md');
 
 // ------------------------------------------------------------------ escrever
-const ALVOS = [[CAP, blocos], [CAP_OFICIO, blocosOficio]];
+// Desde a rodada 114 o capítulo XIV são cinco páginas; cada bloco mora numa delas.
+const pagina = (slug) => path.join(raiz, `src/content/chapters/${slug}.md`);
+const ONDE = {
+  'custo-de-servico-e-itens': ['renda', 'custo-de-vida', 'pacote-familia'],
+  'custo-servicos': ['tarifas', 'servicos', 'aulas', 'criados', 'escravos'],
+  'custo-mercadorias': ['mercadorias', 'pacotes'],
+  'custo-montarias-e-viagens': ['montarias', 'viagens'],
+};
+const semCasa = Object.keys(blocos).filter((b) => !Object.values(ONDE).flat().includes(b));
+if (semCasa.length) throw new Error(`bloco sem página em gen-cap-economia.mjs: ${semCasa.join(', ')}`);
+const ALVOS = [
+  ...Object.entries(ONDE).map(([slug, bs]) => [pagina(slug), Object.fromEntries(bs.map((b) => [b, blocos[b]]))]),
+  [CAP_OFICIO, blocosOficio],
+];
 const montar = (arq, bl) => {
   let md = fs.readFileSync(arq, 'utf8');
   for (const [b, corpo] of Object.entries(bl)) {
@@ -203,7 +208,7 @@ const montar = (arq, bl) => {
   }
   return md;
 };
-const resumo = `${Object.keys(blocos).length + Object.keys(blocosOficio).length} blocos em 2 capítulos: ${RENDA.faixas.length} faixas de renda, ${MERC.length} mercadorias, ${MONT.length} montarias e veículos, ${SERV.servicos.length} serviços, ${Object.keys(PAC).length} pacotes, a curva de ganhar a vida`;
+const resumo = `${Object.keys(blocos).length + Object.keys(blocosOficio).length} blocos em ${ALVOS.length} páginas: ${RENDA.faixas.length} faixas de renda, ${MERC.length} mercadorias, ${MONT.length} montarias e veículos, ${SERV.servicos.length} serviços, ${Object.keys(PAC).length} pacotes, a curva de ganhar a vida`;
 
 if (process.argv.includes('--check')) {
   const fora = ALVOS.filter(([arq, bl]) => fs.readFileSync(arq, 'utf8') !== montar(arq, bl)).map(([arq]) => path.relative(raiz, arq));

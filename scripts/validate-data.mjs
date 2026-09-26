@@ -936,7 +936,7 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
     }).strict()) }).strict(),
     'servicos.json': z.object({
       _nota: nota,
-      tarifas_por_perfil: z.array(z.object({ perfil: z.string(), soma: z.number(), tarifas: z.array(valor({ regime: z.enum(['contrato', 'avulso']).optional(), oficio: z.enum(['leve', 'artesao', 'bracal']).optional() })).min(1) }).strict()),
+      tarifas_por_perfil: z.array(z.object({ perfil: z.string(), soma: z.number(), livre: valor(), tarifas: z.array(valor({ regime: z.enum(['contrato', 'avulso']).optional(), oficio: z.enum(['leve', 'artesao', 'bracal']).optional() })).min(1) }).strict()),
       servicos: z.array(z.object({ grupo: z.string(), id: z.string(), nome: z.string(), por: POR, regime: z.enum(['contrato', 'avulso']).optional(), preco: preco.nullable(), calculado: preco.nullable(), base: z.string(), ver: z.literal('aulas').optional() }).strict()
         .refine((s) => (s.preco === null) === (s.ver !== undefined), { message: 'preco null exige ver, e ver só existe com preco null' })),
       aulas: z.array(z.object({ tipo: z.string(), novo: z.number(), xp: z.number(), jornadas: z.number(), prof_soma: z.number(), por: POR, preco, calculado: preco }).strict()),

@@ -1,5 +1,5 @@
 ---
-ordem: 26
+ordem: 27
 numeral: "XX"
 titulo: "Fôlego"
 resumo: "O corpo que cansa: módulo opcional que acrescenta gestão de cansaço ao combate, gasto em rajadas e reposto no respiro."

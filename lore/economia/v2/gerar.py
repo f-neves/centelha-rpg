@@ -53,7 +53,7 @@ def formato_site(nome, o):
             if texto: d["ver"] = "aulas"
             return d
         return {"_nota": o["_nota"],
-                "tarifas_por_perfil": [{"perfil": t["perfil"], "soma": t["soma"], "tarifas": [
+                "tarifas_por_perfil": [{"perfil": t["perfil"], "soma": t["soma"], "livre": P(t["livre"], "semana"), "tarifas": [
                     P(t["semana"], "semana"), P(t["contrato"], "dia", regime="contrato"), P(t["avulsa"], "dia", regime="avulso"),
                     P(t["hora_leve"], "hora", oficio="leve"), P(t["hora_artesao"], "hora", oficio="artesao"), P(t["hora_bracal"], "hora", oficio="bracal")]}
                     for t in o["tarifas_por_perfil"]],
@@ -133,8 +133,8 @@ cv = {"_nota": "PROPOSTA. Semana de Uldun (8 dias). Cestas por adulto-equivalent
       "niveis_pessoa": [{"nivel": n["nivel"], "pc_semana": n["proposto"], "composicao": n["comp"], "estalagem_semana": n["estalagem"]} for n in O["niveis"]],
       "cestas_semana": {k: {"nome": v["nome"], "pc": round(v["semana"], 1)} for k, v in m.CESTAS.items()},
       "moradia_semana": {k: {"nome": n, "pc": round(m.mor[k], 1)} for k, (n, _) in m.MORADIA.items()},
-      "criados": [{"id": c["id"], "nome": c["nome"], "salario_semana": round(c["salario_sem"], 1), "custo_total_semana": round(c["custo_sem"], 1)} for c in O["criados"]],
-      "cavalo_manutencao_semana": round(m.CAVALO_SEM, 1), "cavalo_guerra_manutencao_semana": round(m.CAVALO_GUERRA_SEM),
+      "criados": [{"id": c["id"], "nome": c["nome"], "salario_semana": inteiro(c["salario_sem"]), "custo_total_semana": inteiro(c["custo_sem"])} for c in O["criados"]],
+      "cavalo_manutencao_semana": inteiro(m.CAVALO_SEM), "cavalo_guerra_manutencao_semana": round(m.CAVALO_GUERRA_SEM),
       "pacotes_familia": {r["faixa"]: {"itens": [{"item": n, "pc_semana": round(v, 1)} for n, v in r["pacote"]],
                                        "pacote": round(r["pacote_total"], 1), "estilo_de_vida": round(r["estilo"], 1)} for r in O["renda"]}}
 dump("custo-de-vida.json", cv)
@@ -184,17 +184,23 @@ SERVICOS = [
  ("Animais", "adestrar-guerra", "Adestrar cavalo de guerra", "cavalo", T[9]["contrato"] * 6 * 24, "24 semanas de perito sobre um rocim robusto (~3.100): o par dá o cavalo de guerra de escudeiro (11.200)"),
  ("Animais", "ferrar", "Ferrar um cavalo", "vez", 40, "Ver arreios"),
 ]
+# Rodada 114: estes saem da tabela de perfis (av, hora, T[...]), que já é inteira, e ficam em pc
+# inteiro; os outros (valor histórico fixo, linha de fabricação) seguem o `arred` de preço.
+DO_PERFIL = {"carregador", "bracal-contrato", "artesao-dia", "artesao-perito-dia", "mestre-dia", "lavadeira", "barbeiro",
+             "guia-local", "guia-expedicao", "mensageiro-pe", "mensageiro-cavalo", "guarda-costas", "escrivao-carta",
+             "leitura", "advogado-consulta", "advogado-causa", "parteira", "menestrel-taverna", "menestrel-corte",
+             "adestrar-sela", "adestrar-guerra"}
 serv = []
 for g, iid, nome, un, v, base in SERVICOS:
-    pc = arred(v) if isinstance(v, (int, float)) else v
+    pc = (inteiro(v) if iid in DO_PERFIL else arred(v)) if isinstance(v, (int, float)) else v
     serv.append({"grupo": g, "id": iid, "nome": nome, "unidade": un, "pc": pc, "base": base, "pc_calculado": r1(v) if isinstance(v, (int, float)) else None})
 dump("servicos.json", {"_nota": "PROPOSTA. Preço de contratar. Diária por contrato = renda semanal / 6; avulsa x 1,5; hora = avulsa / jornada do ofício (leve 6 h, artesão 8 h, braçal 10 h).",
                        "tarifas_por_perfil": [{k: (r1(v) if isinstance(v, float) else v) for k, v in t.items()} for t in O["servicos"]["tarifas"]],
                        "servicos": serv,
-                       "aulas": [{k: (r1(v) if isinstance(v, float) else v) for k, v in a.items()} | {"pc": arred(a["preco"])} for a in O["aulas"]],
+                       "aulas": [{k: (r1(v) if isinstance(v, float) else v) for k, v in a.items()} | {"pc": inteiro(a["preco"])} for a in O["aulas"]],
                        "criados": cv["criados"],
                        "escravos": [{"nome": e["nome"], "pc": e["pc"], "pc_catalogo_atual": e["atual"]} for e in O["escravos"]["lista"]],
-                       "escravo_sustento_semana": round(O["escravos"]["sustento"], 1)})
+                       "escravo_sustento_semana": inteiro(O["escravos"]["sustento"])})
 SERV = serv
 
 # ---------------- viagens
@@ -269,7 +275,7 @@ MD["tarifas"] = tab(["Perfil", "Soma", "Renda/sem", "Diária (contrato)", "Diár
 MD["servicos"] = tab(["Grupo", "Serviço", "pc", "Unidade", "Base"], [(x["grupo"], x["nome"], x["pc"], x["unidade"], x["base"]) for x in SERV])
 MD["militar"] = tab(["Posto (1340s)", "Pagamento", "pc/dia"], [(a, f"{b} d", n(c)) for a, b, c in O["servicos"]["militar"]])
 MD["aulas"] = tab(["Ponto", "Novo nível", "XP", "Jornadas de aula", "Professor (soma)", "Preço (pc)"],
-    [(a["tipo"], a["novo"], a["xp"], n(a["jornadas"]), a["prof_soma"], n(arred(a["preco"]))) for a in O["aulas"]])
+    [(a["tipo"], a["novo"], a["xp"], n(a["jornadas"]), a["prof_soma"], n(inteiro(a["preco"]))) for a in O["aulas"]])
 MD["escravos"] = tab(["Condição", "Preço proposto", "Catálogo", "Renda do trabalho/sem", "Nota"],
     [(e["nome"], fmt(e["pc"]), fmt(e["atual"]) if e["atual"] else "", n(e["renda_trab"]), e["nota"]) for e in O["escravos"]["lista"]])
 q = []

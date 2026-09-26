@@ -1,4 +1,4 @@
-// Regera a tabela de "Catálogo de Equipamento" do capítulo `custo-de-servico-e-itens.md`
+// Regera a tabela de "Catálogo de Equipamento" do capítulo XIV (página `custo-qualidade-e-equipamento.md`)
 // a partir de armas.json / armaduras.json / escudos.json / municao.json.
 //
 // POR QUE. A tabela era escrita à mão, com nomes genéricos por tamanho/material (Espada
@@ -9,7 +9,7 @@
 //
 // O script reescreve só o miolo entre os marcadores
 //   <!-- gen:catalogo-equipamento --> … <!-- /gen:catalogo-equipamento -->
-// em custo-de-servico-e-itens.md, e não toca em mais nada da página. Item sem `preco`
+// em custo-qualidade-e-equipamento.md, e não toca em mais nada da página. Item sem `preco`
 // decidido (ver §3/§12: adiado pro balanceamento final) some da tabela em vez de
 // mostrar "a definir" — a fonte não tem número, a tabela gerada não inventa um.
 //
@@ -21,20 +21,17 @@ import { achataCatalogo } from './lib-equip.mjs';
 
 const raiz = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const ler = (p) => JSON.parse(fs.readFileSync(path.join(raiz, 'src/data', p), 'utf8'));
-const CAP = path.join(raiz, 'src/content/chapters/custo-de-servico-e-itens.md');
+const CAP = path.join(raiz, 'src/content/chapters/custo-qualidade-e-equipamento.md'); // página do XIV desde a rodada 114
 
 const ARMAS = achataCatalogo(ler('armas.json'));
 const ARMADURAS = achataCatalogo(ler('armaduras.json'));
 const ESCUDOS = achataCatalogo(ler('escudos.json'));
 const MUNICAO = achataCatalogo(ler('municao.json'));
 
-// cobre → string legível na maior moeda exata (po/pp/pc). Mesma conta de scripts/precos.mjs.
+// cobre → pc com ponto de milhar: a conversão de moeda fica só na tabela de Moedas & Conversão.
 function fmt(pc) {
   if (pc == null) return null;
-  if (pc === 0) return '0';
-  if (pc % 100 === 0) return `${pc / 100} po`;
-  if (pc % 10 === 0) return `${pc / 10} pp`;
-  return `${pc} pc`;
+  return `${pc.toLocaleString('pt-BR')} pc`; // tudo em pc, com ponto de milhar (rodada 114)
 }
 
 const CLASSE_ARMA = { leve: 'leve', media: 'media', pesada: 'pesada', haste: 'haste', distancia: 'distancia', arremesso: 'arremesso' };
