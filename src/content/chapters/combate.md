@@ -423,7 +423,7 @@ Quando muitos capangas iguais avançam juntos, não role um por um: trate o band
 
 Na prática, um lutador resistente abre caminho por ~**20 Comuns**, ~**8 Treinados** ou ~**5 Elites** antes de correr risco real, mas uma maré de **30 ou 40** afoga até ele. É o pilar do sistema: um herói vence vários fracos e, ainda assim, **perde para a multidão**.
 
-<p class="muted">Uma sugestão, não um gatilho automático: a partir de **2 capangas por personagem do grupo**, considere tratar o bando como Horda em vez de rolar um por um. É o Mestre quem decide, cena a cena, se aquele número de inimigos já pesa o bastante para valer a simplificação.</p>
+<p class="muted">Uma sugestão, não um gatilho automático: a partir de <strong>2 capangas por personagem do grupo</strong>, considere tratar o bando como Horda em vez de rolar um por um. É o Mestre quem decide, cena a cena, se aquele número de inimigos já pesa o bastante para valer a simplificação.</p>
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Sora encara <strong>20 recrutas</strong> (Comuns). Magnitude <strong>4</strong>: o PV do esquadrão é 20 × 5 = <strong>100</strong>, e o ataque deles é <strong>1d6 + 4d6</strong> no acerto e <strong>+4d6</strong> no dano. No 1º golpe Sora rola o montante e causa 19 de dano: 19 ÷ 5 = <strong>3 baixas</strong> (sobram 4 acumulados). Restam 17: ainda Magnitude 4. Ela ceifa ~4–5 a cada 6 Ticks; ao chegar a 15 membros a Magnitude cai para 3 e a horda morde menos.</div>
 
