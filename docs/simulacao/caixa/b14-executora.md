@@ -168,6 +168,15 @@ e menção em comentário também não. Um exemplo: o `gen-deslocamento.mjs` cit
     `gen-elementos.mjs` passou a reconhecer como "sua" a ficha que declara material, para não semear
     por cima.
 
+13. **O passo da criatura da caixa (achado depois do `6b7d2a7`, consertado no commit seguinte).**
+    - A criatura colada no `inimigos-custom.json` sem `deslocamento` não tem `locomocao`. No
+      `6b7d2a7` ela caía no passo do soldado (3 · 5 · 7), enquanto a semente dava o da tabela
+      (um Animal Grande anda 4 · 6 · 9). O `test-deslocamento` acusaria a diferença.
+    - Antes do B14, ela tomava o passo da semente. O `gen-monsters.mjs` voltou a fazer isso só
+      para ficha sem `locomocao`, o que hoje quer dizer só a caixa.
+    - Prova: um urso de teste na caixa, regerado na ordem de sempre, saiu 4 · 6 · 9 e o teste
+      ficou verde. Depois os arquivos voltaram, e os três JSON seguem iguais por `cmp`.
+
 ## Fora da conta, mas no mesmo commit
 
 - **`regras.json`, nota da couraça de porte:** "Porte lido de `dimensoes-bestiario.json`" virou

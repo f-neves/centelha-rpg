@@ -22,6 +22,11 @@ const read = (f) => JSON.parse(readFileSync(join(data, f), 'utf8'));
 
 const inim = read('inimigos.json');
 const FICHA = Object.fromEntries(lerCriaturas().map((f) => [f.id, f]));
+// A semente do deslocamento, só para a criatura da caixa de entrada que não
+// declara o seu: ela ainda não tem `locomocao`, e o gen-deslocamento.mjs a semeia
+// pela tabela de tipo e porte, como antes do B14 (sem isto ela cairia no passo do
+// soldado e o test-deslocamento acusaria a diferença com a semente).
+const DESL = read('deslocamento-bestiario.json');
 
 // ------------------------------------------------- a classe de tempo do ataque
 // A régua P/G/R (e o sistema simultâneo) precisa saber COMO a criatura ataca:
@@ -104,11 +109,12 @@ function build(c) {
       ...(elem.resistencias.length ? { resistencias: elem.resistencias } : {}),
       iniciativa: c.iniciativa,
       // Quantos metros a criatura cobre em um Tick, nas três marchas, a partir do
-      // passo da `locomocao` da ficha. Sem nenhum, cai no passo do soldado
+      // passo da `locomocao` da ficha. Sem ele (só a criatura da caixa), vale a
+      // semente do gen-deslocamento.mjs; sem nenhum dos dois, o passo do soldado
       // (3 · 5 · 7), porque uma peça sem deslocamento não anda no Grid.
       deslocamento: (() => {
         const passo = passoDaPeca(f.locomocao);
-        const d = f.deslocamentoDeclarado ?? (passo ? tres(passo) : { batalha: 3, arranque: 5, corrida: 7 });
+        const d = f.deslocamentoDeclarado ?? (passo ? tres(passo) : DESL[c.id] ?? { batalha: 3, arranque: 5, corrida: 7 });
         return { batalha: d.batalha, arranque: d.arranque, corrida: d.corrida };
       })(),
       ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),

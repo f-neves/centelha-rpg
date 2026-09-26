@@ -8,3 +8,4 @@
 - **09:09** · `docs/bestiario/ficha-criatura.md` escrito; nota de mudança de fonte no `Bestiario_Centelha.md` e a linha do `conversao-monstros.html` no `docs/MAPA.md`. Rodando `validate`.
 - **09:10** · `reapontar` moveu 4 citações; as 3 que apontavam `COURACA` e `const ini` no `gen-bestiario.mjs` foram para o `lib-bestiario.mjs` à mão (o mapa do diff não segue código que muda de arquivo). `npm run validate` verde. Rodando `build`.
 - **09:14** · `build` de novo verde, a nota nova da couraça em `dist/mesa/referencia/`, os três JSON ainda iguais por `cmp`; `test-editor-bestiario` verde. Relato `b14-executora.md` escrito. Commit.
+- **09:18** · achado depois do `6b7d2a7`: criatura da caixa sem `deslocamento` caía no passo do soldado em vez da semente. `gen-monsters` voltou a usar a semente para ficha sem `locomocao`; urso de teste na caixa deu 4 · 6 · 9 e `test-deslocamento` verde; arquivos devolvidos, três JSON iguais por `cmp`. Doc e relato (item 13) atualizados.

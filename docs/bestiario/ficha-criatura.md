@@ -111,6 +111,10 @@ O botão "copiar JSON" do editor do /bestiario ainda entrega o formato antigo, p
 objeto dela numa ficha na leitura (`deCustom`). Para virar ficha de verdade, o objeto sai da caixa
 e vira `src/data/bestiario/<id>.json`. Id repetido entre a pasta e a caixa para o gerador.
 
+A criatura da caixa ainda não tem `locomocao`. Se ela não declarar `deslocamento`, o passo vem da
+semente do `gen-deslocamento.mjs` (tabela por tipo e porte), como antes do B14, e a ordem para
+regerar é a de sempre: `gen-bestiario`, `gen-monsters`, `gen-deslocamento`, `gen-monsters` de novo.
+
 ## O que é padrão por categoria, e onde mora
 
 Nas 309 fichas da migração estes valores estão escritos. O padrão só vale para criatura nova, e é
