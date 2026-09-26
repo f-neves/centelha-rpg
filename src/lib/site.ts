@@ -95,6 +95,7 @@ export const FERRAMENTAS = [
   { slug: 'bestiario', titulo: 'Bestiário & NPCs' },
   { slug: 'equipamentos', titulo: 'Equipamentos' },
   { slug: 'rolador', titulo: 'Rolador de Dados' },
+  { slug: 'recompensa', titulo: 'Calculadora de Recompensa' },
   { slug: 'tecnicas', titulo: 'Técnicas (filtros)' },
   { slug: 'arvore', titulo: 'Árvores de Técnicas' },
   { slug: 'glossario', titulo: 'Glossário' },

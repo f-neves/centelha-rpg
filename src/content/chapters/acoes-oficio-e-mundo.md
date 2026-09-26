@@ -251,7 +251,7 @@ A média é a da Longa, a mesma da fabricação. Cada faixa paga um valor por po
 
 **O teto limita o ganho, e não a venda.** O teto do lugar é o quanto o trabalho pode render por semana ali (o valor do trabalho, já sem o material), e não o quanto se vende em bruto. É o que faz o mestre armeiro se mudar para a cidade.
 
-**A semana de trabalho** tem 6 jornadas em 8 dias: 7 ou 8 na guerra e na colheita, e pode cair a 5 fora de estação. A renda é proporcional aos dias trabalhados na semana, e o que acontece com ela enquanto se aventura está em [Semanas de aventura](/regras/custo-de-servico-e-itens#semanas-de-aventura).
+**A semana de trabalho** tem 6 jornadas em 8 dias: 7 ou 8 na guerra e na colheita, e pode cair a 5 fora de estação. A renda é proporcional aos dias trabalhados na semana, e o que acontece com ela enquanto se aventura está em [Recursos durante a aventura](/regras/custo-de-servico-e-itens#recursos-durante-a-aventura).
 
 ## Mundo e viagem
 

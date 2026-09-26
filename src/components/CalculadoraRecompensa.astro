@@ -1,0 +1,80 @@
+---
+// A calculadora da recompensa de caça (rodada 115). As listas vêm de src/data/recompensas.json e a
+// conta de src/lib/recompensa.ts; nenhum número da regra mora aqui.
+import REC from '../data/recompensas.json';
+---
+<div class="recompensa panel">
+  <div class="rc-campos">
+    <label>Desafio da mais forte<input type="number" min="1" value="5" data-rc="desafio" /></label>
+    <label>Centelha<input type="number" min="0" value="5" data-rc="centelha" /></label>
+    <label>Criaturas fortes<input type="number" min="1" value="1" data-rc="fortes" /></label>
+    <label>Criaturas fracas<input type="number" min="0" value="0" data-rc="fracas" /></label>
+    <label>Semanas de caçada<input type="number" min="0" step="0.5" value="1" data-rc="cacadaSemanas" /></label>
+    <label>Dias de viagem (ida e volta)<input type="number" min="0" value="16" data-rc="viagemDias" /></label>
+    <label>Tipo de tarefa
+      <select data-rc="tarefa">{REC.tarefas.map((t) => <option value={t.id} selected={t.id === 'matar'}>{t.nome} (×{String(t.mult).replace('.', ',')})</option>)}</select>
+    </label>
+    <label>Risco
+      <select data-rc="risco">{REC.riscos.map((r) => <option value={r.id}>{r.nome} (×{String(r.mult).replace('.', ',')})</option>)}</select>
+    </label>
+    <label>Outro × (opcional)<input type="number" min="0" step="0.05" value="1" data-rc="outro" /></label>
+    <label>Tom da campanha
+      <select data-rc="tom">{REC.tons.map((t) => <option value={t.id} selected={t.id === 'padrao'}>{t.nome} (×{String(t.mult).replace('.', ',')})</option>)}</select>
+    </label>
+    <label>Tamanho real do grupo<input type="number" min="1" value="3" data-rc="grupo" /></label>
+  </div>
+  <div class="rc-saida">
+    <p class="rc-bolsa"><span data-rc="bolsa"></span></p>
+    <ol class="rc-recibo" data-rc="recibo"></ol>
+  </div>
+</div>
+
+<!-- is:global: o recibo é montado por JS -->
+<style is:global>
+  .recompensa .rc-campos { display: flex; gap: .7rem; flex-wrap: wrap; }
+  .recompensa label { display: flex; flex-direction: column; font-size: var(--fs-micro); color: var(--ink-soft); font-family: 'Cinzel'; gap: .2rem; }
+  .recompensa input, .recompensa select { width: 11rem; padding: .35rem .4rem; border: 1px solid var(--panel-border); border-radius: var(--r-sm); background: var(--bg); color: var(--ink); font-size: var(--fs-aux); }
+  .recompensa input[type='number'] { width: 7rem; }
+  .rc-saida { margin-top: .9rem; padding-top: .8rem; border-top: 1px solid var(--rule); }
+  .rc-bolsa { font-family: 'Cinzel'; font-size: var(--fs-h3); color: var(--accent-texto); margin: 0 0 .4rem; }
+  .rc-recibo { margin: 0; padding-left: 1.3rem; }
+  .rc-recibo li { margin: .15rem 0; }
+</style>
+
+<script>
+  import REC from '../data/recompensas.json';
+  import { calcularRecompensa, type EntradaRecompensa } from '../lib/recompensa';
+  const ptNum = (n: number, casas = 0) => n.toLocaleString('pt-BR', { minimumFractionDigits: casas, maximumFractionDigits: casas });
+  const pc = (n: number) => `${ptNum(n)} pc`;
+  const m = (x: number) => x.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
+  document.querySelectorAll<HTMLElement>('.recompensa').forEach((root) => {
+    const campo = (k: string) => root.querySelector<HTMLInputElement | HTMLSelectElement>(`[data-rc="${k}"]`)!;
+    const n = (k: string) => { const v = parseFloat(campo(k).value.replace(',', '.')); return Number.isFinite(v) ? v : 0; };
+    const bolsaEl = root.querySelector<HTMLElement>('[data-rc="bolsa"]')!;
+    const recibo = root.querySelector<HTMLElement>('[data-rc="recibo"]')!;
+    const atualizar = () => {
+      const e: EntradaRecompensa = {
+        desafio: Math.max(1, Math.round(n('desafio'))), centelha: Math.max(0, Math.round(n('centelha'))),
+        fortes: Math.max(1, Math.round(n('fortes'))), fracas: Math.max(0, Math.round(n('fracas'))),
+        cacadaSemanas: Math.max(0, n('cacadaSemanas')), viagemDias: Math.max(0, n('viagemDias')),
+        tarefa: campo('tarefa').value, risco: campo('risco').value, tom: campo('tom').value,
+        outro: campo('outro').value.trim() === '' ? 1 : Math.max(0, n('outro')), grupo: Math.max(1, Math.round(n('grupo'))),
+      };
+      const r = calcularRecompensa(e, REC as any);
+      bolsaEl.textContent = `Bolsa: ${pc(r.bolsa)} · por caçador: ${pc(r.porCacador)} (grupo de ${e.grupo})`;
+      const itens = [
+        `Quantidade efetiva: ${ptNum(e.fortes)} forte(s) + ${ptNum(e.fracas)} fraca(s) × ${ptNum(REC.fracas_contam, 1)} = ${ptNum(r.quantidadeEfetiva, 1)} → +${r.passoQuantidade} (cada vez que o número dobra)`,
+        `Centelha ${e.centelha} ÷ ${REC.centelha_passo} → +${r.passoCentelha}`,
+        `Degrau = desafio ${e.desafio} + quantidade ${r.passoQuantidade} + Centelha ${r.passoCentelha} = ${r.degrau}`,
+        `Valor do degrau ${r.degrau}: ${pc(r.valor)} por caçador, por semana`,
+        `Semanas = caçada ${ptNum(Math.max(1, e.cacadaSemanas), 1)} + metade da viagem (${ptNum(e.viagemDias)} dias ÷ 2 ÷ ${REC.dias_semana}) = ${ptNum(r.semanas, 1)}`,
+        `Tom: ${r.tom.nome} ×${m(r.tom.mult)} · Tarefa: ${r.tarefa.nome} ×${m(r.tarefa.mult)} · Risco: ${r.risco.nome} ×${m(r.risco.mult)} · Outro ×${m(r.outro)}`,
+        `Bolsa = ${pc(r.valor)} × ${m(r.tom.mult)} × ${ptNum(r.semanas, 1)} × ${m(r.tarefa.mult)} × ${m(r.risco.mult)} × ${m(r.outro)} × ${r.grupoReferencia} = ${ptNum(r.exata, r.exata % 1 ? 1 : 0)} pc, arredondada: ${pc(r.bolsa)}`,
+        `Por caçador = ${pc(r.bolsa)} ÷ ${e.grupo} = ${pc(r.porCacador)}`,
+      ];
+      recibo.innerHTML = itens.map((t) => `<li>${t}</li>`).join('');
+    };
+    root.querySelectorAll('input, select').forEach((el) => { el.addEventListener('input', atualizar); el.addEventListener('change', atualizar); });
+    atualizar();
+  });
+</script>

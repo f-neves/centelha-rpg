@@ -40,7 +40,7 @@ está na seção 3.
 | Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados | DECIDIR | FAZER | AUTOR | CONSERTAR | Outra marca | Adiados |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 30 | 20 | 1 | 9 | 13 | 4 | 4 | 0 | 0 | 0 |
-| B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 14 | 9 | 0 | 5 | 4 | 5 | 0 | 0 | 0 | 0 |
+| B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 15 | 10 | 0 | 5 | 5 | 5 | 0 | 0 | 0 | 0 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 8 | 5 | 0 | 3 | 2 | 1 | 0 | 0 | 0 | 2 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 10 | 7 | 0 | 3 | 5 | 1 | 0 | 1 | 0 | 0 |
@@ -51,7 +51,7 @@ está na seção 3.
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 17 | 14 | 0 | 3 | 6 | 3 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 32 | 18 | 1 | 13 | 14 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **325** | **223** | **4** | **98** | **83** | **38** | **8** | **10** | **81** | **7** |
+| | **Total** | | **326** | **224** | **4** | **98** | **84** | **38** | **8** | **10** | **81** | **7** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -355,6 +355,7 @@ Fechados (9): A12, A17, A18, A22, A23, A27, A21, A22, A20.
 | B8 | aberto | FAZER | O modal não edita poderes, técnicas nem artes. |
 | B9 | aberto | DECIDIR | Onde a criatura editada mora. |
 | B11 | aberto | FAZER | Palavra nova de fraqueza precisa de rito para virar oficial. |
+| B14 | aberto | DECIDIR | Recalibrar nível de desafio e Centelha das criaturas, e revisar as fichas do bestiário. |
 
 Fechados (5): B12, B1, B1b, B10, B13.
 

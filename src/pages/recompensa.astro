@@ -1,0 +1,27 @@
+---
+// A calculadora de recompensa de caça (rodada 115). A capacidade de quem paga sai de renda.json
+// (Livre/Ano da faixa) e das urgências de recompensas.json, para o Mestre comparar com a bolsa.
+import Base from '../layouts/Base.astro';
+import CalculadoraRecompensa from '../components/CalculadoraRecompensa.astro';
+import REC from '../data/recompensas.json';
+import RENDA from '../data/renda.json';
+import { url } from '../lib/site';
+const pc = (n: number) => `${n.toLocaleString('pt-BR')} pc`;
+const mult = (m: number) => String(m).replace('.', ',');
+const anoDe = (f: any) => f.livre.find((v: any) => v.por === 'ano').preco.pc;
+---
+<Base title="Calculadora de Recompensa" descricao="Quanto vale uma caçada: a bolsa pelo desafio, a quantidade, a Centelha, as semanas, a tarefa e o risco, com a conta passo a passo.">
+  <h1>Calculadora de Recompensa</h1>
+  <p class="lead">A bolsa de um trabalho de caça, combinada antes: <strong>Valor do degrau × Semanas × Tarefa × Risco × 3</strong>. Ela paga um grupo de 3, e é o Livre de quem caça (o custo de vida já está descontado). A regra inteira está em <a href={url('regras/custo-servicos') + '#caça-e-recompensas'}>Caça e recompensas</a>.</p>
+  <CalculadoraRecompensa />
+  <h2>Quanto quem paga consegue juntar</h2>
+  <p class="muted">Quem paga junta até o seu Livre/Ano × urgência. Uma comunidade soma as casas. Se a bolsa passar disso, não há contrato.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Faixa</th><th>Livre/Ano</th>{REC.urgencias.map((u) => <th>{u.nome} ×{mult(u.mult)}</th>)}</tr></thead>
+      <tbody>
+        {RENDA.faixas.map((f: any) => <tr><td>{f.faixa}</td><td>{pc(anoDe(f))}</td>{REC.urgencias.map((u) => <td>{pc(anoDe(f) * u.mult)}</td>)}</tr>)}
+      </tbody>
+    </table>
+  </div>
+</Base>

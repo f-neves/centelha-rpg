@@ -64,14 +64,11 @@ O nível de **Recursos** é a faixa social do trabalho. **Renda** é o bruto que
 
 Uma **semana de trabalho** vale 6 dos 8 dias da semana de Uldun. Na guerra e na colheita trabalha-se 7 ou 8; fora de estação, conforme o ofício, pode cair para 5. A renda da semana é proporcional aos dias trabalhados: **(renda da faixa ÷ 6) × dias**. O custo de vida **não cai**: uma família de braçal numa semana de 5 dias ganha 50 pc e gasta 53 pc, e come a poupança. É por isso que o inverno é tempo de dívida.
 
-### Semanas de aventura
+### Recursos durante a aventura
 
-- **Semana de aventura não tem renda:** o personagem não trabalhou.
-- **O custo de vida da faixa continua** se ele tem casa ou família: aluguel, criados, a família que ficou.
-- **Quem não tem casa fixa não paga o custo da faixa:** paga o que gasta na estrada (ração, estalagem, estábulo).
-- **Semana parcial:** a renda é proporcional aos dias trabalhados, como acima.
-
-Aventurar custa caro para quem tem vida estabelecida, e o saque precisa pagar a ausência.
+1. O personagem recebe Livre de uma fonte por semana, ou nenhuma. Nunca paga o custo de vida à parte.
+2. Recursos 1 a 3 é trabalho próprio: na semana de aventura não paga, e entra o Livre do contrato, se houver.
+3. Recursos 4 a 6 é renda de propriedade: continua pagando.
 
 ## Custo de Vida
 

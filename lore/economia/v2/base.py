@@ -23,17 +23,16 @@ def media(soma):
     return 3.5 * (soma // 2) + (2 if soma % 2 else 0)
 
 # ---------------- Arredondamento ----------------
+# A régua do `arred` em tabela (rodada 115): (abaixo de, passo), a última sem teto. O site recebe a
+# mesma tabela em recompensas.json, para a calculadora arredondar igual ao modelo.
+ARRED_DEGRAUS = [(20, 1), (100, 5), (1000, 10), (None, 100)]
 def arred(pc):
     """< 20: inteiro (mínimo 1) · 20-99: múltiplo de 5 · 100-999: múltiplo de 10 · >= 1000: múltiplo de 100."""
     import math
     def r(x, passo): return int(math.floor(x / passo + 0.5) * passo)   # meio para cima
-    if pc < 20:
-        return max(1, r(pc, 1))
-    if pc < 100:
-        return r(pc, 5)
-    if pc < 1000:
-        return r(pc, 10)
-    return r(pc, 100)
+    for teto, passo in ARRED_DEGRAUS:
+        if teto is None or pc < teto:
+            return max(1, r(pc, passo)) if passo == 1 else r(pc, passo)
 
 def inteiro(pc):
     """Taxa (renda por perfil, diária, hora, salário e custo de criado, Livre dos perfis): pc inteiro, meio

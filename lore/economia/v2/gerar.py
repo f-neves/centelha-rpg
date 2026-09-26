@@ -224,6 +224,22 @@ viag = {"_nota": "PROPOSTA. Distâncias em km.",
         ]}
 dump("viagens.json", viag)
 
+# ---------------- recompensas.json (rodada 115)
+RC = O["recompensas"]
+dump("recompensas.json", {
+    "_nota": "Recompensa de caça.",
+    "base": RC["base"], "fator": RC["fator"],
+    "degraus": [{"degrau": n + 1, "por": "semana", "preco": {"pc": v}} for n, v in enumerate(RC["degraus"])],
+    "centelha_passo": RC["centelha_passo"], "centelha_max": RC["centelha_max"],
+    "fracas_contam": RC["fracas_contam"], "fracas_abaixo": RC["fracas_abaixo"],
+    "dias_semana": RC["dias_semana"], "grupo": RC["grupo"],
+    "tarefas": [{"id": i, "nome": n, "mult": x, "descricao": d} for i, n, x, d in RC["tarefas"]],
+    "riscos": [{"id": i, "nome": n, "mult": x, "descricao": d} for i, n, x, d in RC["riscos"]],
+    "tons": [{"id": i, "nome": n, "mult": x} for i, n, x in RC["tons"]],
+    "urgencias": [{"id": i, "nome": n, "mult": x} for i, n, x in RC["urgencias"]],
+    "arredondamento": [{"abaixo_de": teto, "passo": passo} for teto, passo in ARRED_DEGRAUS],
+})
+
 # ---------------- tabelas em Markdown
 def tab(cab, linhas):
     s = "| " + " | ".join(cab) + " |\n|" + "|".join("---" for _ in cab) + "|\n"

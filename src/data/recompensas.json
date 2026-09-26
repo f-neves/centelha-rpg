@@ -1,0 +1,213 @@
+{
+  "_nota": "Recompensa de caça: Bolsa = Valor do degrau × Semanas × Tarefa × Risco × 3 (o grupo de referência); degrau = desafio + quantidade + Centelha ÷ 4; o valor do degrau é o Livre por caçador por semana, base × fator^(degrau − 1), arredondado pela régua em `arredondamento` (a mesma do `arred` de lore/economia/v2/base.py). Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
+  "base": 15,
+  "fator": 1.75,
+  "degraus": [
+    {
+      "degrau": 1,
+      "por": "semana",
+      "preco": {
+        "pc": 15
+      }
+    },
+    {
+      "degrau": 2,
+      "por": "semana",
+      "preco": {
+        "pc": 25
+      }
+    },
+    {
+      "degrau": 3,
+      "por": "semana",
+      "preco": {
+        "pc": 45
+      }
+    },
+    {
+      "degrau": 4,
+      "por": "semana",
+      "preco": {
+        "pc": 80
+      }
+    },
+    {
+      "degrau": 5,
+      "por": "semana",
+      "preco": {
+        "pc": 140
+      }
+    },
+    {
+      "degrau": 6,
+      "por": "semana",
+      "preco": {
+        "pc": 250
+      }
+    },
+    {
+      "degrau": 7,
+      "por": "semana",
+      "preco": {
+        "pc": 430
+      }
+    },
+    {
+      "degrau": 8,
+      "por": "semana",
+      "preco": {
+        "pc": 750
+      }
+    },
+    {
+      "degrau": 9,
+      "por": "semana",
+      "preco": {
+        "pc": 1300
+      }
+    },
+    {
+      "degrau": 10,
+      "por": "semana",
+      "preco": {
+        "pc": 2300
+      }
+    },
+    {
+      "degrau": 11,
+      "por": "semana",
+      "preco": {
+        "pc": 4000
+      }
+    },
+    {
+      "degrau": 12,
+      "por": "semana",
+      "preco": {
+        "pc": 7100
+      }
+    }
+  ],
+  "centelha_passo": 4,
+  "centelha_max": 12,
+  "fracas_contam": 0.5,
+  "fracas_abaixo": 2,
+  "dias_semana": 8,
+  "grupo": 3,
+  "tarefas": [
+    {
+      "id": "afugentar",
+      "nome": "Afugentar ou expulsar",
+      "mult": 0.75,
+      "descricao": "Tirar a criatura do lugar, sem precisar matá-la."
+    },
+    {
+      "id": "matar",
+      "nome": "Matar",
+      "mult": 1,
+      "descricao": "Abater a criatura."
+    },
+    {
+      "id": "trazer-parte",
+      "nome": "Trazer parte ou prova",
+      "mult": 1,
+      "descricao": "Trazer uma parte da criatura, ou a prova de que ela morreu."
+    },
+    {
+      "id": "recuperar",
+      "nome": "Recuperar",
+      "mult": 1,
+      "descricao": "Recuperar alguém ou algo levado pela criatura."
+    },
+    {
+      "id": "capturar-vivo",
+      "nome": "Capturar vivo",
+      "mult": 1.5,
+      "descricao": "Trazer a criatura viva."
+    },
+    {
+      "id": "capturar-intacto",
+      "nome": "Capturar vivo e sem ferimentos, ou domar",
+      "mult": 2,
+      "descricao": "Trazer a criatura viva e inteira, ou domada."
+    }
+  ],
+  "riscos": [
+    {
+      "id": "normal",
+      "nome": "Normal",
+      "mult": 1,
+      "descricao": "O que o desafio já prevê."
+    },
+    {
+      "id": "alto",
+      "nome": "Alto",
+      "mult": 1.5,
+      "descricao": "Um agravante sério: terreno hostil, alvo desconhecido, prazo curto, civis para proteger."
+    },
+    {
+      "id": "muito-alto",
+      "nome": "Muito alto",
+      "mult": 2,
+      "descricao": "Dois ou mais agravantes."
+    },
+    {
+      "id": "extremo",
+      "nome": "Extremo",
+      "mult": 3,
+      "descricao": "Alguém provavelmente morre mesmo dando certo."
+    }
+  ],
+  "tons": [
+    {
+      "id": "curto",
+      "nome": "Dinheiro curto",
+      "mult": 0.5
+    },
+    {
+      "id": "padrao",
+      "nome": "Padrão",
+      "mult": 1
+    },
+    {
+      "id": "heroico",
+      "nome": "Heroico",
+      "mult": 2
+    }
+  ],
+  "urgencias": [
+    {
+      "id": "normal",
+      "nome": "Normal",
+      "mult": 1
+    },
+    {
+      "id": "grave",
+      "nome": "Grave",
+      "mult": 3
+    },
+    {
+      "id": "desespero",
+      "nome": "Desespero",
+      "mult": 10
+    }
+  ],
+  "arredondamento": [
+    {
+      "abaixo_de": 20,
+      "passo": 1
+    },
+    {
+      "abaixo_de": 100,
+      "passo": 5
+    },
+    {
+      "abaixo_de": 1000,
+      "passo": 10
+    },
+    {
+      "abaixo_de": null,
+      "passo": 100
+    }
+  ]
+}

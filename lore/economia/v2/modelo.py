@@ -439,6 +439,33 @@ def reparo_v3(mont, peca, dano):
 OUT["reparo_v2"] = {nome: {d: (reparo_v3(mo, pe, d), reparo_v3(mo, pe, d)) for d in ("leve", "pesado", "arruinado")}
                     for nome, mo, pe in (("Faca", 6, 3), ("Espada", 12, 10), ("Placa completa", 6, 24))}
 
+# =====================================================================
+# RECOMPENSAS DE CAÇA (rodada 115)
+# =====================================================================
+# Bolsa = Valor do degrau × Semanas × Tarefa × Risco × 3 (o grupo de referência). O valor do degrau é
+# o Livre por caçador por semana: base 15, fator 1,75 por degrau, arredondado pelo `arred`.
+REC_BASE, REC_FATOR = 15, 1.75
+REC_DEGRAUS = [arred(REC_BASE * REC_FATOR ** (n - 1)) for n in range(1, 13)]
+REC_TAREFAS = [
+    ("afugentar", "Afugentar ou expulsar", 0.75, "Tirar a criatura do lugar, sem precisar matá-la."),
+    ("matar", "Matar", 1, "Abater a criatura."),
+    ("trazer-parte", "Trazer parte ou prova", 1, "Trazer uma parte da criatura, ou a prova de que ela morreu."),
+    ("recuperar", "Recuperar", 1, "Recuperar alguém ou algo levado pela criatura."),
+    ("capturar-vivo", "Capturar vivo", 1.5, "Trazer a criatura viva."),
+    ("capturar-intacto", "Capturar vivo e sem ferimentos, ou domar", 2, "Trazer a criatura viva e inteira, ou domada."),
+]
+REC_RISCOS = [
+    ("normal", "Normal", 1, "O que o desafio já prevê."),
+    ("alto", "Alto", 1.5, "Um agravante sério: terreno hostil, alvo desconhecido, prazo curto, civis para proteger."),
+    ("muito-alto", "Muito alto", 2, "Dois ou mais agravantes."),
+    ("extremo", "Extremo", 3, "Alguém provavelmente morre mesmo dando certo."),
+]
+REC_TONS = [("curto", "Dinheiro curto", 0.5), ("padrao", "Padrão", 1), ("heroico", "Heroico", 2)]
+REC_URGENCIAS = [("normal", "Normal", 1), ("grave", "Grave", 3), ("desespero", "Desespero", 10)]
+OUT["recompensas"] = dict(base=REC_BASE, fator=REC_FATOR, degraus=REC_DEGRAUS, centelha_passo=4, centelha_max=12,
+                          fracas_contam=0.5, fracas_abaixo=2, dias_semana=DIAS_SEMANA, grupo=3,
+                          tarefas=REC_TAREFAS, riscos=REC_RISCOS, tons=REC_TONS, urgencias=REC_URGENCIAS)
+
 if __name__ == "__main__":
     import json
     print(json.dumps({k: OUT[k] for k in ("municao", "linhas_novas", "moeda", "curva")}, ensure_ascii=False, indent=1, default=str)[:6000])

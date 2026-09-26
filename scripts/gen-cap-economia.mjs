@@ -28,6 +28,7 @@ const MERC = ler('mercadorias.json').itens;
 const MONT = ler('montarias-veiculos.json').itens;
 const VIAG = ler('viagens.json');
 const PAC = ler('pacotes-equipamento.json').pacotes;
+const REC = ler('recompensas.json');
 
 const milhar = (n) => n.toLocaleString('pt-BR');
 // Tudo em pc, com ponto de milhar (rodada 114): a conversão de moeda fica só na tabela de Moedas &
@@ -152,6 +153,18 @@ blocos.pacotes = Object.entries(PAC).map(([nome, p]) => {
   return `- **${nome} (${fmt(p.total.pc)})**: ${itens.join(', ')}.`;
 }).join('\n');
 
+// ------------------------------------------------ recompensas de caça (rodada 115)
+// O valor do degrau (por caçador, por semana) e a capacidade de quem paga (Livre/Ano da faixa ×
+// urgência), lidos de recompensas.json e renda.json.
+blocos.recompensas = envolve(tabela(
+  ['Degrau', ...REC.degraus.map((d) => String(d.degrau))], ['l', ...REC.degraus.map(() => 'c')],
+  [['Valor (pc)', ...REC.degraus.map((d) => milhar(pcDe(d)))]],
+));
+blocos['recompensas-capacidade'] = envolve(tabela(
+  ['Faixa', 'Livre/Ano', ...REC.urgencias.map((u) => `${u.nome} ×${num(u.mult)}`)], ['l', 'c', ...REC.urgencias.map(() => 'c')],
+  RENDA.faixas.map((f) => { const ano = de(f.livre, 'ano'); return [f.faixa, fmt(ano), ...REC.urgencias.map((u) => fmt(ano * u.mult))]; }),
+));
+
 // ------------------------------------------- ganhar a vida com o ofício (rodada 113)
 // Vai para o capítulo de Ofícios, e não para o de custo: é a regra da decisão B2, com os números de
 // renda.json. `valor_por_ponto` guarda o valor da faixa por Dificuldade (dif4, dif7, dif11); o
@@ -188,7 +201,7 @@ const CAP_OFICIO = path.join(raiz, 'src/content/chapters/acoes-oficio-e-mundo.md
 const pagina = (slug) => path.join(raiz, `src/content/chapters/${slug}.md`);
 const ONDE = {
   'custo-de-servico-e-itens': ['renda', 'custo-de-vida', 'pacote-familia'],
-  'custo-servicos': ['tarifas', 'servicos', 'aulas', 'criados', 'escravos'],
+  'custo-servicos': ['tarifas', 'recompensas', 'recompensas-capacidade', 'servicos', 'aulas', 'criados', 'escravos'],
   'custo-mercadorias': ['mercadorias', 'pacotes'],
   'custo-montarias-e-viagens': ['montarias', 'viagens'],
 };

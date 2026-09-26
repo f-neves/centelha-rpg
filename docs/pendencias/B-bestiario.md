@@ -106,4 +106,20 @@ limitações conhecidas, que são as três de baixo.
   total rolado, outra somada de novo por `flatDeExpr`. Não corrigido ainda; a Executora contornou
   no teste novo usando um pool com dado de verdade (`3d6+21`) em vez de reproduzir o caso "0d6".
   **Fechado na revisão da rodada 94 (23/09/2026), com prova:** `888a196` (22/09/2026), "roladaManual dobrava o bonus fixo de qualquer golpe com o bolo em zero dado", com asserção em `scripts/test-rolada-manual.mjs`.
-
+- [ ] **B14 · [DECIDIR] Recalibrar nível de desafio e Centelha das criaturas, e revisar as fichas do
+  bestiário.** Registrado em 26/09/2026, na rodada 115, a partir da proposta do autor, que segue
+  abaixo como ele escreveu. **Achado, e não decisão:** no dado vivo, o desafio é o campo `ameaca` de
+  `src/data/inimigos.json`, de 1 a 6 nas 309 criaturas; a `centelha` vai de 0 a 10 (só a
+  `mon-tarrasque` está em 10). O fator da recompensa de caça é `REC_FATOR` em
+  `lore/economia/v2/modelo.py:447`.
+  - **Proposta do autor (DECIDIR):**
+    > Escalas desejadas pelo autor: nível de desafio de 1 a 12 (hoje 1 a 6, os losangos, campo
+    > `ameaca`) e Centelha da criatura de 0 a 12 (hoje 0 a 10, campo `centelha`).
+    > Definição do autor: nível de desafio X é feito para um grupo de 3 personagens de Centelha X, com
+    > habilidades variadas, passarem dificuldade para vencer, gastando recursos e se ferindo. É
+    > absoluto, não relativo ao grupo que joga.
+    > Personagem sem Centelha fere criatura com Centelha, e o inverso também.
+    > Revisar todas as fichas do bestiário por essa definição.
+    > Dependência: a recompensa de caça usa o desafio. Se a nova escala cobrir o mesmo perigo em passos
+    > menores, o fator da recompensa passa de 1,75 para cerca de 1,32 (um parâmetro em `modelo.py`).
+    > Revisar junto.

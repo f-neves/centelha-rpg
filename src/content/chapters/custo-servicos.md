@@ -33,6 +33,76 @@ A renda é o que o contratante gasta com quem trabalha. Quando o personagem trab
 
 <!-- /gen:economia-tarifas -->
 
+### Caça e recompensas
+
+Trabalhos pontuais, como abater uma colônia de aranhas, recuperar um hipogrifo ou buscar partes de uma criatura para um mago, pagam uma bolsa pelo trabalho, combinada antes. O valor é o Livre: o custo de vida de quem caça já está descontado. É esse o número do cartaz da recompensa.
+
+<p class="formula">Bolsa = Valor do degrau × Semanas × Tarefa × Risco × 3</p>
+
+A bolsa paga um grupo de 3, que é o grupo para o qual o nível de desafio é pensado. O grupo divide como quiser: se forem mais, cada um leva menos; se forem menos, levam mais e arriscam mais.
+
+A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa).
+
+1. **Degrau** = desafio + quantidade + Centelha
+   - a) Desafio: o da criatura mais forte.
+   - b) Quantidade: +1 cada vez que o número dobra (2 criaturas +1, 4 +2, 8 +3, 16 +4). Conte só as que têm desafio até 2 abaixo da mais forte; as mais fracas contam metade.
+   - c) Centelha da criatura: +1 a cada 4 pontos (0 a 3 +0, 4 a 7 +1, 8 a 11 +2, 12 +3).
+2. **Valor do degrau** (por caçador, por semana):
+
+<!-- gen:economia-recompensas -->
+
+<div class="table-wrap">
+
+| Degrau | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Valor (pc) | 15 | 25 | 45 | 80 | 140 | 250 | 430 | 750 | 1.300 | 2.300 | 4.000 | 7.100 |
+
+</div>
+
+<!-- /gen:economia-recompensas -->
+
+   Acima de 12: 15 × 1,75^(degrau − 1), arredondado.
+
+3. **Semanas** = caçada estimada (mínimo 1) + metade da viagem de ida e volta. A semana tem 8 dias. É estimativa de contrato: se levar mais, azar de quem caça; se levar menos, sorte.
+4. **Tipo de tarefa** (exemplos): afugentar ou expulsar ×0,75; matar ×1; trazer parte ou prova ×1; recuperar alguém ou algo levado ×1; capturar vivo ×1,5; capturar vivo e sem ferimentos, ou domar ×2.
+5. **Risco**, além do que o desafio já prevê (exemplos): normal ×1; alto, um agravante sério (terreno hostil, alvo desconhecido, prazo curto, civis para proteger) ×1,5; muito alto, dois ou mais agravantes ×2; extremo, alguém provavelmente morre mesmo dando certo ×3.
+
+**Tom da campanha:** numa campanha de dinheiro curto, o Valor do degrau vale metade; numa campanha heroica, o dobro.
+
+**Três testes antes de fechar o valor:**
+
+1. **Prejuízo:** ninguém paga mais do que o problema custa até ser resolvido (ovelhas, colheita, estrada fechada, o preço do animal perdido). Se a bolsa passar disso, não há contrato, e o problema continua.
+2. **Capacidade:** quem paga junta até o seu Livre/Ano × urgência (normal ×1, grave ×3, desespero ×10). Uma comunidade soma as casas: uma aldeia de 40 casas de Braçal junta cerca de 12.000 pc por ano.
+
+<!-- gen:economia-recompensas-capacidade -->
+
+<div class="table-wrap">
+
+| Faixa | Livre/Ano | Normal ×1 | Grave ×3 | Desespero ×10 |
+|---|:---:|:---:|:---:|:---:|
+| Braçal | 308 pc | 308 pc | 924 pc | 3.080 pc |
+| Destreinado | 440 pc | 440 pc | 1.320 pc | 4.400 pc |
+| Treinado | 760 pc | 760 pc | 2.280 pc | 7.600 pc |
+| Especialista | 1.080 pc | 1.080 pc | 3.240 pc | 10.800 pc |
+| Doutor | 1.404 pc | 1.404 pc | 4.212 pc | 14.040 pc |
+| Abastado | 1.792 pc | 1.792 pc | 5.376 pc | 17.920 pc |
+| Rico | 2.720 pc | 2.720 pc | 8.160 pc | 27.200 pc |
+| Aristocrata | 3.192 pc | 3.192 pc | 9.576 pc | 31.920 pc |
+| Nobreza | 4.800 pc | 4.800 pc | 14.400 pc | 48.000 pc |
+
+</div>
+
+<!-- /gen:economia-recompensas-capacidade -->
+
+3. **Oferta:** o Mestre decide quantos trabalhos existem. Referência: aldeia, 1 por ano; vila, 1 por estação; cidade, 1 por mês; fronteira e terra selvagem, o dobro. Caçar só vira profissão onde há trabalho de sobra.
+
+**Despesas e partes:**
+
+1. Comida e pouso na estrada já estão no custo de vida e não se cobram à parte. Munição, cura, reparo, transporte, iscas e cães saem da bolsa.
+2. Se a bolsa é pela parte da criatura, a parte é de quem pagou. Parte avulsa vende no mercado pela metade do que um encomendante pagaria.
+
+O que acontece com o Livre de cada um durante a caçada está em <a href="/centelha-rpg/regras/custo-de-servico-e-itens#recursos-durante-a-aventura">Recursos durante a aventura</a>.
+
 <!-- gen:economia-servicos -->
 
 <p class="cat-cap">Trabalho</p>
