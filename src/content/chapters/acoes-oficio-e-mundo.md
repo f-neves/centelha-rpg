@@ -128,11 +128,13 @@ A condução **herda os modificadores**. Oficina e material são circunstâncias
 
 Quem pensa é o mestre; o ajudante executa serviço simples, e serviço simples é Dificuldade 4 em qualquer obra. Cada supervisor dirige até **dez** ajudantes, e passar disso exige contramestres, que é como as obras grandes de fato se organizavam. O ajudante nunca contribui para a qualidade. Na fabricação, a Dificuldade 4 não vale: quem ajuda trabalha sob condução, contra a Dificuldade da peça.
 
-**Apressar.** Dobrar as horas rende um intervalo extra a cada dois, e custa **+2 na Dificuldade** pelo cansaço e pela pressa. Vale a pena em peça fácil e é ruinoso em peça fina.
+**Apressar.** Dobrar a jornada do próprio ofício rende um intervalo extra a cada dois, e custa **+2 na Dificuldade** pelo cansaço e pela pressa. Vale a pena em peça fácil e é ruinoso em peça fina.
 
 ## As tabelas de referência
 
 O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6, média 10,5), para uma unidade, sem ajuda, em qualidade Comum. O perito é soma 9 e o mestre é soma 12.
+
+**A jornada é do ofício.** O "dia" destas tabelas é uma **jornada** daquele ofício: **6 horas** no ofício leve (escrivão, acadêmico), **8** no artesão, **10** no braçal e no trabalho pesado. A linha em escala de horas converte pela jornada do próprio ofício, e **meia jornada é meio intervalo**.
 
 ### Escala de horas
 
@@ -204,11 +206,52 @@ Uma Espada Longa Ótima remendada no acampamento volta a cortar como uma espada 
 
 ## Ganhar a vida com o ofício
 
-No tempo morto entre aventuras, o artesão trabalha. É uma **Longa** de intervalo **semana** contra a demanda do lugar, e o que ela produz é dinheiro em vez de peça.
+No tempo morto entre aventuras, o artesão trabalha. É uma **Longa** de intervalo **semana**, sem jogada, e o que ela produz é dinheiro em vez de peça.
 
-<p class="formula">Ganho por semana = (média − 4) × 10 pc, limitado pela demanda do lugar</p>
+<p class="formula">Ganho por semana = o <b>melhor</b> (média − Dificuldade) × valor da faixa, entre as faixas cujo Requisito a Habilidade alcança</p>
 
-O oficial tira 65 pc por semana, o perito 120, o mestre 170. O teto é o mercado: uma aldeia absorve talvez 50 pc por semana de qualquer ofício, uma vila 150, uma cidade 500, e uma capital não tem teto prático. É o que faz o mestre armeiro se mudar para a cidade.
+A média é a da Longa, a mesma da fabricação. Cada faixa paga um valor por ponto de média acima da Dificuldade dela, e o artesão fica com a faixa que lhe rende mais:
+
+<!-- gen:economia-ganhar-a-vida -->
+
+<div class="table-wrap">
+
+| Faixa | Dificuldade | Valor por ponto de média acima dela, por semana |
+|---|:---:|:---:|
+| Serviço simples | 4 | 20 pc |
+| Ofício | 7 | 37 pc |
+| Arte rara | 11 | 67 pc |
+
+</div>
+
+<div class="table-wrap">
+
+| Quem | Soma | Média | Melhor faixa (Dificuldade) | Ganho por semana |
+|---|:---:|:---:|:---:|:---:|
+| Oficial | 6 | 10,5 | 4 | 130 pc |
+| Perito | 9 | 16 | 7 | 330 pc |
+| Mestre | 12 | 21 | 11 | 670 pc |
+
+</div>
+
+<div class="table-wrap">
+
+| Lugar | Teto do ganho, por semana |
+|---|:---:|
+| Aldeia | 100 pc |
+| Vila | 300 pc |
+| Cidade | 1.000 pc |
+| Capital | sem teto |
+
+</div>
+
+<!-- /gen:economia-ganhar-a-vida -->
+
+**O bônus.** A Habilidade mais alta que cobre o trabalho entra no pool; a mais alta entre as **restantes** soma como bônus fixo, e só uma. A **Firula não conta**: a renda é Longa, sem jogada, e a Firula é bônus de jogada.
+
+**O teto limita o ganho, e não a venda.** O teto do lugar é o quanto o trabalho pode render por semana ali (o valor do trabalho, já sem o material), e não o quanto se vende em bruto. É o que faz o mestre armeiro se mudar para a cidade.
+
+**A semana de trabalho** tem 6 jornadas em 8 dias: 7 ou 8 na guerra e na colheita, e pode cair a 5 fora de estação. A renda é proporcional aos dias trabalhados na semana, e o que acontece com ela enquanto se aventura está em [Semanas de aventura](/regras/custo-de-servico-e-itens#semanas-de-aventura).
 
 ## Mundo e viagem
 

@@ -1,4 +1,5 @@
-// Regera as tabelas da economia mundana no capítulo `custo-de-servico-e-itens.md` a partir dos
+// Regera as tabelas da economia mundana nos capítulos `custo-de-servico-e-itens.md` e (a curva de
+// ganhar a vida com o ofício, rodada 113) `acoes-oficio-e-mundo.md`, a partir dos
 // JSONs de src/data que saem do modelo de lore/economia/v2/gerar.py: renda.json,
 // custo-de-vida.json, servicos.json, mercadorias.json, montarias-veiculos.json, viagens.json e
 // pacotes-equipamento.json.
@@ -159,27 +160,54 @@ blocos.pacotes = Object.entries(PAC).map(([nome, p]) => {
   return `- **${nome} (${fmtMisto(p.total.pc)})**: ${itens.join(', ')}.`;
 }).join('\n');
 
+// ------------------------------------------- ganhar a vida com o ofício (rodada 113)
+// Vai para o capítulo de Ofícios, e não para o de custo: é a regra da decisão B2, com os números de
+// renda.json. `valor_por_ponto` guarda o valor da faixa por Dificuldade (dif4, dif7, dif11); o
+// exemplo é a curva por soma nos três perfis da tabela de fabricação (oficial 6, perito 9, mestre 12).
+const FAIXA_VALOR = { dif4: ['Serviço simples', 4], dif7: ['Ofício', 7], dif11: ['Arte rara', 11] };
+for (const k of Object.keys(RENDA.valor_por_ponto)) if (!FAIXA_VALOR[k]) throw new Error(`faixa sem rótulo em gen-cap-economia.mjs: ${k}`);
+const emPc = (pc) => `${milhar(Math.round(pc))} pc`;
+const PERFIL = { 6: 'Oficial', 9: 'Perito', 12: 'Mestre' };
+const curva = Object.fromEntries(RENDA.curva_por_soma.map((c) => [c.soma, c]));
+const TETO = { aldeia: 'Aldeia', vila: 'Vila', cidade: 'Cidade', capital: 'Capital' };
+for (const k of Object.keys(RENDA.tetos_demanda)) if (!TETO[k]) throw new Error(`teto sem rótulo em gen-cap-economia.mjs: ${k}`);
+const blocosOficio = {
+  'ganhar-a-vida': envolve(tabela(
+    ['Faixa', 'Dificuldade', 'Valor por ponto de média acima dela, por semana'], ['l', 'c', 'c'],
+    Object.entries(RENDA.valor_por_ponto).map(([k, v]) => [FAIXA_VALOR[k][0], FAIXA_VALOR[k][1], emPc(pcDe(v))]),
+  )) + '\n\n' + envolve(tabela(
+    ['Quem', 'Soma', 'Média', 'Melhor faixa (Dificuldade)', 'Ganho por semana'], ['l', 'c', 'c', 'c', 'c'],
+    Object.entries(PERFIL).map(([s, nome]) => { const c = curva[s]; if (!c) throw new Error(`curva_por_soma sem a soma ${s}`); return [nome, s, num(c.media), c.faixa_dificuldade, emPc(pcDe(c.renda))]; }),
+  )) + '\n\n' + envolve(tabela(
+    ['Lugar', 'Teto do ganho, por semana'], ['l', 'c'],
+    Object.entries(RENDA.tetos_demanda).map(([k, v]) => [TETO[k], v.preco ? emPc(v.preco.pc) : 'sem teto']),
+  )),
+};
+const CAP_OFICIO = path.join(raiz, 'src/content/chapters/acoes-oficio-e-mundo.md');
+
 // ------------------------------------------------------------------ escrever
-const montar = () => {
-  let md = fs.readFileSync(CAP, 'utf8');
-  for (const [b, corpo] of Object.entries(blocos)) {
+const ALVOS = [[CAP, blocos], [CAP_OFICIO, blocosOficio]];
+const montar = (arq, bl) => {
+  let md = fs.readFileSync(arq, 'utf8');
+  for (const [b, corpo] of Object.entries(bl)) {
     const marca = `economia-${b}`;
     const re = new RegExp(`(<!-- gen:${marca} -->)[\\s\\S]*?(<!-- /gen:${marca} -->)`);
-    if (!re.test(md)) throw new Error(`marcador gen:${marca} não encontrado em ${CAP}`);
+    if (!re.test(md)) throw new Error(`marcador gen:${marca} não encontrado em ${arq}`);
     md = md.replace(re, () => `<!-- gen:${marca} -->\n\n${corpo}\n\n<!-- /gen:${marca} -->`);
   }
   return md;
 };
-const resumo = `${Object.keys(blocos).length} blocos: ${RENDA.faixas.length} faixas de renda, ${MERC.length} mercadorias, ${MONT.length} montarias e veículos, ${SERV.servicos.length} serviços, ${Object.keys(PAC).length} pacotes`;
+const resumo = `${Object.keys(blocos).length + Object.keys(blocosOficio).length} blocos em 2 capítulos: ${RENDA.faixas.length} faixas de renda, ${MERC.length} mercadorias, ${MONT.length} montarias e veículos, ${SERV.servicos.length} serviços, ${Object.keys(PAC).length} pacotes, a curva de ganhar a vida`;
 
 if (process.argv.includes('--check')) {
-  if (fs.readFileSync(CAP, 'utf8') !== montar()) {
-    console.error(`✘ ${path.relative(raiz, CAP)} está fora de sincronia com a economia (marcadores gen:economia-*).\n`
+  const fora = ALVOS.filter(([arq, bl]) => fs.readFileSync(arq, 'utf8') !== montar(arq, bl)).map(([arq]) => path.relative(raiz, arq));
+  if (fora.length) {
+    console.error(`✘ ${fora.join(', ')} fora de sincronia com a economia (marcadores gen:economia-*).\n`
       + '  Rode: node scripts/gen-cap-economia.mjs');
     process.exit(1);
   }
   console.log(`✓ tabelas da economia em dia com a fonte (${resumo})`);
   process.exit(0);
 }
-fs.writeFileSync(CAP, montar());
+for (const [arq, bl] of ALVOS) fs.writeFileSync(arq, montar(arq, bl));
 console.log(`economia regerada: ${resumo}`);

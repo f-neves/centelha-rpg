@@ -213,7 +213,7 @@ de inventar uma medida própria.
 | **Semana** | uma empreitada | forjar a espada, a viagem entre cidades, o treino |
 | **Estação** | uma obra | erguer o muro, administrar a terra, o cortejo longo |
 
-Os degraus estão longe uns dos outros de propósito (o salto vai de dez a sessenta vezes em tempo
+Os degraus estão longe uns dos outros de propósito (o salto vai de oito a sessenta vezes em tempo
 real), e é isso que faz a escolha ser fácil: **nenhuma tarefa fica entre dois degraus**. O Mestre
 narra quarenta minutos ou uma hora e meia à vontade; o que a ficha declara é o degrau.
 
@@ -1112,11 +1112,11 @@ lados, e cada grau mexe em tudo:
 
 | Por grau **acima** de Comum | Por grau **abaixo** |
 |---|---|
-| Requisito **+1** | Requisito **−1**, nunca abaixo de **1** |
+| Requisito **+1**, no máximo **6**: cada ponto acima vira **+3** na Dificuldade | Requisito **−1**, nunca abaixo de **1** |
 | Dificuldade **+3** | Dificuldade **−3**, nunca abaixo de **1** |
 | Montagem e Peça **× 1,5** | Montagem e Peça **× 0,5** |
 | Intervalo sobe um degrau **a cada dois graus** | o Mestre **pode** descer um degrau em −2 |
-| Preço **dobra** | Preço **cai pela metade** |
+| Preço fixo por grau: Boa **5×**, Ótima **30×**, Excelente **70×** a Comum | Tosca até **⅓**, Sucata até **⅙** |
 | **+1** num número da peça | **−1** num número da peça |
 
 Seis graus, e o eixo inteiro cabe numa linha:
@@ -1124,6 +1124,10 @@ Seis graus, e o eixo inteiro cabe numa linha:
 | Grau | −2 | −1 | 0 | +1 | +2 | +3 |
 |---|---|---|---|---|---|---|
 | | **Sucata** | **Tosca** | **Comum** | **Boa** | **Ótima** | **Excelente** |
+
+**Relíquia não é grau, é rótulo.** O valor dela não está na função, e sim nos adornos, no lavor e no
+valor sentimental: o preço é o da peça pela qualidade que ela tiver, mais os adornos, com **piso de
+100×** a peça Comum. Uma Relíquia pode ser Comum por dentro.
 
 O "número da peça" é o que aquela peça tem para dar: acerto, defesa da arma, dado de dano,
 Absorção de uma categoria, penalidade reduzida em 1, um degrau a menos de peso. No máximo **+2 ou
@@ -1222,7 +1226,7 @@ que é como as obras grandes de fato se organizavam. O ajudante nunca contribui 
 **qualidade**, só para o Acúmulo. Na fabricação, a Dificuldade 4 não vale: quem ajuda trabalha
 sob condução, contra a Dificuldade da peça.
 
-**Apressar.** Dobrar as horas rende **um intervalo extra** a cada dois, e custa **+2 na
+**Apressar.** Dobrar a jornada do próprio ofício rende **um intervalo extra** a cada dois, e custa **+2 na
 Dificuldade** pelo cansaço e pela pressa. Vale a pena em peça fácil e é ruinoso em peça fina.
 
 ### 7.7 Tabela de referência
@@ -1230,6 +1234,8 @@ Dificuldade** pelo cansaço e pela pressa. Vale a pena em peça fácil e é ruin
 O oficial da tabela é o artesão comum de vila (soma 6, média 10,5). O perito é soma 9 (média 16)
 e o mestre é soma 12 (média 21). Os tempos da última coluna são do **oficial**, uma unidade, sem
 ajuda, em qualidade Comum.
+
+**A jornada é do ofício.** O "dia" destas tabelas é uma **jornada** daquele ofício: **6 horas** no ofício leve (escrivão, acadêmico), **8** no artesão, **10** no braçal e no trabalho pesado. A linha em escala de horas converte pela jornada do próprio ofício, e **meia jornada é meio intervalo**.
 
 #### Escala de horas
 
@@ -1256,6 +1262,7 @@ ajuda, em qualidade Comum.
 | Móvel bem-acabado, arca | Carpintaria | 3 | 7 | 3 | 8 | 3 dias |
 | **Espada, machado de guerra, arma marcial** | Ferraria | 3 | 7 | 12 | 10 | 6,3 dias |
 | Arco longo, besta (madeira já curada) | Arcos, Carpintaria | 3 | 7 | 4 | 12 | 4,5 dias |
+| Carroça | Carpintaria | 3 | 7 | 4 | 20 | 6,9 dias |
 | Anel, broche, peça de joalheria | Joalheria | 4 | 11 | 3 | 6 | fechada ao oficial |
 | Fechadura, engenho, autômato de corda | Serralheria | 5 | 11 | 4 | 10 | fechada ao oficial |
 
@@ -1267,10 +1274,12 @@ ajuda, em qualidade Comum.
 | Cota de malha | Armaria | 2 | 8 | 2 | 12 | 3 | 6 semanas |
 | Brigandina | Armaria | 2 | 6 | 3 | 10 | 2 | 3 semanas |
 | Lamelar | Armaria | 3 | 9 | 3 | 10 | 3 | 9 semanas |
-| Carroça, barco de pesca | Carpintaria | 3 | 7 | 4 | 20 | 2 | 7 semanas |
+| Barco de pesca | Carpintaria | 3 | 7 | 4 | 20 | 2 | 7 semanas |
 | Forja, moinho, oficina montada | Alvenaria | 3 | 7 | 6 | 40 | 4 | 13 semanas |
 | Placa de munição | Armaria | 4 | 8 | 4 | 14 | 3 | 7 semanas |
 | Placa completa sob medida | Armaria | 5 | 11 | 6 | 24 | 6 | fechada ao oficial |
+
+<p class="muted">A <strong>carroça</strong> sai em dias: avulsa, cerca de 267 pc em 6,9 dias do oficial; em lote de três, cerca de 238 pc cada. O catálogo a vende a 300 pc, 1,12 vez o avulso. O <strong>barco de pesca</strong>, do mesmo ofício e dos mesmos números, fica na escala de semanas, a cerca de 1.600 pc.</p>
 
 #### Escala de estações
 
@@ -1288,9 +1297,7 @@ de Acúmulo 23 sai numa estação de trabalho e sai da obra na segunda, que é o
 
 ### 7.8 Reparar, melhorar, improvisar, desmontar
 
-**Reparar.** Mesma Dificuldade e mesmo intervalo da peça, com o Acúmulo cortado: **um quarto** do
-Acúmulo da peça para dano leve, **metade** para dano pesado, **inteiro** para peça arruinada que
-ainda tem material aproveitável. A Montagem se paga igual. E há uma distinção que vale a pena:
+**Reparar.** Mesma Dificuldade e mesmo intervalo da peça, com o Acúmulo cortado. **Dano leve:** sem Montagem e um quarto da Peça; dá para fazer no campo, sem oficina, com Ofícios Gerais ou o ofício. **Dano pesado:** metade da Montagem e metade da Peça, e precisa de oficina. **Arruinada**, com material aproveitável: Montagem e Peça inteiras. Por encomenda, o reparo custa cerca de **1/10 do preço** da peça no dano leve, **1/3** no pesado e **2/3 mais o material que faltar** na arruinada. E há uma distinção que vale a pena:
 
 <p class="formula">Ofícios Gerais devolve a peça ao <b>uso</b> · só o ofício devolve a <b>qualidade</b></p>
 
@@ -1313,13 +1320,42 @@ com uma Margem, recupera tudo o que era aproveitável. Falhando, recupera sucata
 ### 7.9 Ganhar a vida com o ofício
 
 No tempo morto entre aventuras, o artesão trabalha. Não se rola: é uma **Longa** de intervalo
-**semana** contra a demanda do lugar, e o que ela produz é dinheiro em vez de peça.
+**semana**, e o que ela produz é dinheiro em vez de peça.
 
-<p class="formula">Ganho por semana = (média − 4) × 10 pc, limitado pela demanda do lugar</p>
+<p class="formula">Ganho por semana = o <b>melhor</b> (média − Dificuldade) × valor da faixa, entre as faixas cujo Requisito a Habilidade alcança</p>
 
-O oficial (média 10,5) tira 65 pc por semana, o perito 120, o mestre 170. O teto é o mercado:
-uma aldeia absorve talvez 50 pc por semana de qualquer ofício, uma vila 150, uma cidade 500, e uma
-capital não tem teto prático. É o que faz o mestre armeiro se mudar para a cidade.
+| Faixa | Dificuldade | Valor por ponto de média acima dela, por semana |
+|---|:---:|:---:|
+| Serviço simples | 4 | 20 pc |
+| Ofício | 7 | 37 pc |
+| Arte rara | 11 | 67 pc |
+
+| Quem | Soma | Média | Melhor faixa (Dificuldade) | Ganho por semana |
+|---|:---:|:---:|:---:|:---:|
+| Oficial | 6 | 10,5 | 4 | 130 pc |
+| Perito | 9 | 16 | 7 | 330 pc |
+| Mestre | 12 | 21 | 11 | 670 pc |
+
+| Lugar | Teto do ganho, por semana |
+|---|:---:|
+| Aldeia | 100 pc |
+| Vila | 300 pc |
+| Cidade | 1.000 pc |
+| Capital | sem teto |
+
+Os números saem de `src/data/renda.json` (`valor_por_ponto`, `curva_por_soma`, `tetos_demanda`), que
+o capítulo publica por `scripts/gen-cap-economia.mjs`; aqui estão copiados do capítulo.
+
+**O bônus.** A Habilidade mais alta que cobre o trabalho entra no pool; a mais alta entre as
+**restantes** soma como bônus fixo, e só uma. A **Firula não conta**: a renda é Longa, sem jogada,
+e a Firula é bônus de jogada.
+
+**O teto limita o ganho, e não a venda.** O teto do lugar é o quanto o trabalho pode render por
+semana ali (o valor do trabalho, já sem o material), e não o quanto se vende em bruto. É o que faz o
+mestre armeiro se mudar para a cidade.
+
+**A semana de trabalho** tem 6 jornadas em 8 dias: 7 ou 8 na guerra e na colheita, e pode cair a 5
+fora de estação. A renda é proporcional aos dias trabalhados na semana.
 
 ### 7.10 O que falta nesta família
 

@@ -1,0 +1,4 @@
+# Rodada 113 · Executora · progresso
+
+- **01:47** · rodada aberta: `status` vazio, `fetch`, `merge-base --is-ancestor` verdadeiro, `switch -C executora origin/main` em `8d0b281`. Despacho lido.
+- **01:52** · feito na árvore: seção "Ganhar a vida" reescrita com o bloco gerado novo `economia-ganhar-a-vida` (o `gen-cap-economia.mjs` passou a escrever também em `acoes-oficio-e-mundo.md`); jornada por ofício e Apressar no capítulo; `Acoes_Sistema.md` alinhado (§7.5, §7.8, carroça, §7.7 jornada, §7.9, e o salto "de oito a sessenta" na `:216`), com os textos copiados do capítulo por script e as 16 linhas das tabelas de §7.9 conferidas iguais às do bloco gerado. A carroça do capítulo já estava em 6,9 dias (`63897c6`). `reapontar`: 0 citações a mover. Build verde; os 3 exemplos, os 4 tetos e as 3 faixas lidos no `dist/`, a fórmula velha ausente, e o link para Semanas de aventura resolve. Commitando.
