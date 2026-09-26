@@ -197,7 +197,7 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 | Malha completa | Pesada | 18 po |
 | Peitoral reforçado | Pesada | 9 po |
 | Placa articulada | Pesada | 14 po |
-| Placa completa | Pesada | 26 po |
+| Placa completa | Pesada | 36 po |
 | Placa de munição | Pesada | 14 po |
 | Placa de transição | Pesada | 21 po |
 

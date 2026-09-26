@@ -2,11 +2,11 @@
 ordem: 9
 numeral: "VII"
 titulo: "Antecedentes"
-resumo: "O capital externo do personagem: dinheiro, aliados, fama, um mentor, uma relíquia, um segredo. O que ele tem no mundo, além do próprio corpo."
+resumo: "O capital externo do personagem: dinheiro, aliados, fama, um mentor, um artefato, um segredo. O que ele tem no mundo, além do próprio corpo."
 ---
 
 Os Antecedentes são o **capital externo** do personagem: o que ele tem no mundo além do próprio
-corpo e da própria mente. Dinheiro, aliados, fama, um mentor, uma relíquia, um esconderijo, um
+corpo e da própria mente. Dinheiro, aliados, fama, um mentor, um artefato, um esconderijo, um
 segredo guardado. Atributos, Habilidades, Virtudes e Proezas descrevem **quem você é**; os
 Antecedentes descrevem **o que você tem** e **quem te conhece**. É a camada que enraíza o
 personagem numa história, e é dela que sai metade das tramas.
@@ -50,7 +50,7 @@ quando a ficção os entrega.
 
 ## Tetos de bom senso
 
-**Recursos** e **Relíquia** são os dois que mais facilmente quebram o jogo, porque dinheiro compra
+**Recursos** e **Artefato** são os dois que mais facilmente quebram o jogo, porque dinheiro compra
 equipamento e artefato compra poder. Na criação, os dois param no **3**; acima disso, só com
 curadoria do Mestre.
 
@@ -200,20 +200,20 @@ disso.
 
 **Amarra com:** um **desconto nos passos que separam do Neutro** na Régua de Relação, no contexto em que a fama pesa (ver "Onde a régua já começa"): o nível do traço tira esse tanto dos três passos, vale com quem conhece aquela reputação, soma com os outros Antecedentes até +6, e **não** buffa o Combate Social nem Habilidades soltas. Uma boa reputação **acelera romper o Neutro** com quem já ouviu falar bem de você; uma temível dá o mesmo desconto a quem quer coagir quem a conhece, e atrapalha a passar despercebido. Alimenta Proezas como Lenda Viva e Presença Aterradora.
 
-### Relíquia
+### Artefato
 
-*Nomeado (teto 3 na criação).* Um item **além do mundano**: uma arma encantada, uma joia de poder, um foco de Arte, uma peça de armadura que não devia existir. Para um mortal (Centelha 0), é a única forma de tocar o sobrenatural. Cada relíquia é nomeada; o nível mede a potência.
+*Nomeado (teto 3 na criação).* Um item **além do mundano**: uma arma encantada, uma joia de poder, um foco de Arte, uma peça de armadura que não devia existir. Para um mortal (Centelha 0), é a única forma de tocar o sobrenatural. Cada artefato é nomeado; o nível mede a potência.
 
 | Nível | O que significa |
 |:---:|---|
 | **1** | Um toque de magia: uma lâmina que nunca cega, um amuleto que aquece, um bônus pequeno e confiável. |
 | **2** | Um item notável: uma arma que dá vantagem real, uma peça com uma propriedade útil por cena. |
 | **3** | Um artefato de nome: efeito forte, cobiçado, reconhecível. Teto do que se começa tendo. |
-| **4** | Uma relíquia de lenda: rivaliza com uma Proeza de tier médio; gente mata por ela. |
+| **4** | Um artefato de lenda: rivaliza com uma Proeza de tier médio; gente mata por ele. |
 | **5** | Um tesouro do mundo: poder de semideus preso num objeto; a sua existência é um evento. |
-| **6** | Uma relíquia única e divina: rivaliza com uma Proeza de tier alto; nações guerreiam por ela. |
+| **6** | Um artefato único e divino: rivaliza com uma Proeza de tier alto; nações guerreiam por ele. |
 
-**Amarra com:** equipamento e Arcano. Uma Relíquia pode conceder uma Arte ou uma Proeza que o portador não teria, dentro do nível. **Pode ser roubada ou quebrada** (é volátil por natureza): por isso o XP volta como crédito se ela se perde.
+**Amarra com:** equipamento e Arcano. Um Artefato pode conceder uma Arte ou uma Proeza que o portador não teria, dentro do nível. **Pode ser roubado ou quebrado** (é volátil por natureza): por isso o XP volta como crédito se ele se perde.
 
 ### Refúgio
 
@@ -312,13 +312,13 @@ disso.
 - **Escala 1 a 6**, tudo por **XP a ×3 por ponto**, na criação e em jogo, do mesmo orçamento.
 - **Únicos:** Recursos, Linhagem, Fé. **Nomeados** (várias instâncias, cada uma de 1 a 6): os
   outros onze.
-- **Teto 3 na criação** para Recursos e Relíquia.
+- **Teto 3 na criação** para Recursos e Artefato.
 - **Bônus:** Aparência é geral em toda jogada social; a Firula entra em qualquer jogada. O
   Antecedente não soma a jogada nenhuma: ele **desconta passos do Neutro** na Régua de Relação, o
   nível do traço por passo, somando entre os traços até +6.
 - **Voláteis:** sobem e caem na ficção, e o XP perdido volta como crédito.
 - **Pessoas** (Aliados, Contatos, Mentor, Séquito, Fé) vivem na Régua de Relação e esfriam se
   maltratadas. **Reputação** desconta passos do Neutro com quem a conhece, e não soma na jogada. **Segredo** e **Dívida** são meio
-  consumíveis. **Relíquia** e **Aliado Animal** têm ficha própria por nível.
+  consumíveis. **Artefato** e **Aliado Animal** têm ficha própria por nível.
 - **A regra de ouro:** o número compra a **capacidade e a disposição inicial**, nunca a obediência
   eterna. O mundo continua vivo por baixo do Antecedente.

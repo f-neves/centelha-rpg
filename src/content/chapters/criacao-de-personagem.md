@@ -49,7 +49,7 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 | Virtude | 4 + (novo × 2) | 1→2 = 8 · 2→3 = 10 · 5→6 = 16 |
 | Força de Vontade | novo × 2 | piso 0 · 0→1 = 2 · 5→6 = 12 · 11→12 = 24 |
 | Aparência | novo × 2 | piso 0 · mesma trilha da Vontade |
-| Antecedente | novo × 3 | 0→1 = 3 · 2→3 = 9 · 5→6 = 18 · teto **3** na criação em Recursos e Relíquia |
+| Antecedente | novo × 3 | 0→1 = 3 · 2→3 = 9 · 5→6 = 18 · teto **3** na criação em Recursos e Artefato |
 | Centelha | **grátis** | o tier vem do Mestre, não do XP |
 | Técnica de Proeza | 5 + (nível × 5) | 10 · 15 · 20 · 25 · 30 · 35 · **não acumula** |
 | Nível de Arte (Arcano) | 10 + (nível × 5) | 0→1 = 15 · 2→3 = 25 · 5→6 = 40 |

@@ -345,6 +345,15 @@ export function montarFicha(opts: FichaOpts) {
       }
     } S.budget ??= 1500; S.derivCol ??= true; delete S.modo;   // o modo Criacao/Evolucao foi removido
     S.ante ??= {}; S.anteNom ??= {};
+    // Migração: Antecedentes renomeados. A chave de S.ante/S.anteNom é o id do JSON, e o
+    // laço abaixo só lê os ids de hoje: uma chave velha ficaria órfã, sem XP e sem linha.
+    // A Relíquia virou Artefato porque "Relíquia" passou a ser rótulo de qualidade de item.
+    const RENOMES_ANTE: [string, string][] = [['reliquia', 'artefato']];
+    for (const [velho, novo] of RENOMES_ANTE) {
+      if (S.ante[velho] != null && S.ante[novo] == null) S.ante[novo] = S.ante[velho];
+      if (S.anteNom[velho] != null && S.anteNom[novo] == null) S.anteNom[novo] = S.anteNom[velho];
+      delete S.ante[velho]; delete S.anteNom[velho];
+    }
     // Cada Nomeado é uma lista; entrada sem uid ganha um, senão a linha não tem chave estável.
     for (const a of ANTE_NOM) {
       const arr = Array.isArray(S.anteNom[a.id]) ? S.anteNom[a.id] : [];
@@ -2387,7 +2396,7 @@ export function montarFicha(opts: FichaOpts) {
    * com nome e régua própria. Por isso a chave do Nomeado é "id~uid" e não o id: o uid
    * sobrevive a reordenar e a apagar a linha de cima, e o índice não.
    *
-   * O teto de criação (3 em Recursos e Relíquia) aparece como aviso e NÃO trava a
+   * O teto de criação (3 em Recursos e Artefato) aparece como aviso e NÃO trava a
    * bolinha: o modo Criação/Evolução saiu do motor, e travar aqui seria a única
    * trava de criação da ficha inteira.
    */

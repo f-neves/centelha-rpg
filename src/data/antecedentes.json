@@ -249,11 +249,11 @@
     "amarra": "um **desconto nos passos que separam do Neutro** na Régua de Relação, no contexto em que a fama pesa (ver \"Onde a régua já começa\"): o nível do traço tira esse tanto dos três passos, vale com quem conhece aquela reputação, soma com os outros Antecedentes até +6, e **não** buffa o Combate Social nem Habilidades soltas. Uma boa reputação **acelera romper o Neutro** com quem já ouviu falar bem de você; uma temível dá o mesmo desconto a quem quer coagir quem a conhece, e atrapalha a passar despercebido. Alimenta Proezas como Lenda Viva e Presença Aterradora."
   },
   {
-    "id": "reliquia",
+    "id": "artefato",
     "ordem": 8,
-    "nome": "Relíquia",
+    "nome": "Artefato",
     "formato": "nomeado",
-    "descricao": "Um item **além do mundano**: uma arma encantada, uma joia de poder, um foco de Arte, uma peça de armadura que não devia existir. Para um mortal (Centelha 0), é a única forma de tocar o sobrenatural. Cada relíquia é nomeada; o nível mede a potência.",
+    "descricao": "Um item **além do mundano**: uma arma encantada, uma joia de poder, um foco de Arte, uma peça de armadura que não devia existir. Para um mortal (Centelha 0), é a única forma de tocar o sobrenatural. Cada artefato é nomeado; o nível mede a potência.",
     "niveis": [
       {
         "nivel": 1,
@@ -269,7 +269,7 @@
       },
       {
         "nivel": 4,
-        "texto": "Uma relíquia de lenda: rivaliza com uma Proeza de tier médio; gente mata por ela."
+        "texto": "Um artefato de lenda: rivaliza com uma Proeza de tier médio; gente mata por ele."
       },
       {
         "nivel": 5,
@@ -277,11 +277,11 @@
       },
       {
         "nivel": 6,
-        "texto": "Uma relíquia única e divina: rivaliza com uma Proeza de tier alto; nações guerreiam por ela."
+        "texto": "Um artefato único e divino: rivaliza com uma Proeza de tier alto; nações guerreiam por ele."
       }
     ],
     "notaFormato": "Nomeado (teto 3 na criação)",
-    "amarra": "equipamento e Arcano. Uma Relíquia pode conceder uma Arte ou uma Proeza que o portador não teria, dentro do nível. **Pode ser roubada ou quebrada** (é volátil por natureza): por isso o XP volta como crédito se ela se perde.",
+    "amarra": "equipamento e Arcano. Um Artefato pode conceder uma Arte ou uma Proeza que o portador não teria, dentro do nível. **Pode ser roubado ou quebrado** (é volátil por natureza): por isso o XP volta como crédito se ele se perde.",
     "tetoCriacao": 3
   },
   {
