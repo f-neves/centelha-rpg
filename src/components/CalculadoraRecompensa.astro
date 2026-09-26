@@ -61,7 +61,8 @@ import REC from '../data/recompensas.json';
         outro: campo('outro').value.trim() === '' ? 1 : Math.max(0, n('outro')), grupo: Math.max(1, Math.round(n('grupo'))),
       };
       const r = calcularRecompensa(e, REC as any);
-      bolsaEl.textContent = `Bolsa: ${pc(r.bolsa)} · Parte por caçador: ${pc(r.porCacador)} (grupo de ${e.grupo})`;
+      const sobra = r.sobra > 0 ? ` (sobram ${pc(r.sobra)}, divida como quiser)` : '';
+      bolsaEl.textContent = `Bolsa: ${pc(r.bolsa)} · Parte por caçador (grupo de ${e.grupo}): ${pc(r.porCacador)}${sobra}`;
       const itens = [
         `Quantidade efetiva: ${ptNum(e.fortes)} forte(s) + ${ptNum(e.fracas)} fraca(s) × ${ptNum(REC.fracas_contam, 1)} = ${ptNum(r.quantidadeEfetiva, 1)} → +${r.passoQuantidade} (cada vez que o número dobra)`,
         `Centelha ${e.centelha} ÷ ${REC.centelha_passo} → +${r.passoCentelha}`,
@@ -70,7 +71,7 @@ import REC from '../data/recompensas.json';
         `Semanas = caçada ${ptNum(Math.max(1, e.cacadaSemanas), 1)} + metade da viagem (${ptNum(e.viagemDias)} dias ÷ 2 ÷ ${REC.dias_semana}) = ${ptNum(r.semanas, 1)}`,
         `Tom: ${r.tom.nome} ×${m(r.tom.mult)} · Tarefa: ${r.tarefa.nome} ×${m(r.tarefa.mult)} · Risco: ${r.risco.nome} ×${m(r.risco.mult)} · Outro ×${m(r.outro)}`,
         `Bolsa = ${pc(r.valor)} × ${m(r.tom.mult)} × ${ptNum(r.semanas, 1)} × ${m(r.tarefa.mult)} × ${m(r.risco.mult)} × ${m(r.outro)} × ${r.grupoReferencia} = ${ptNum(r.exata, r.exata % 1 ? 1 : 0)} pc, arredondada: ${pc(r.bolsa)}`,
-        `Parte por caçador = ${pc(r.bolsa)} ÷ ${e.grupo} = ${pc(r.porCacador)}`,
+        `Parte por caçador = ${pc(r.bolsa)} ÷ ${e.grupo}, para baixo = ${pc(r.porCacador)}${sobra}`,
       ];
       recibo.innerHTML = itens.map((t) => `<li>${t}</li>`).join('');
     };

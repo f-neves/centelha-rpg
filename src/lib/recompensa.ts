@@ -54,6 +54,9 @@ export function calcularRecompensa(e: EntradaRecompensa, P: ParamRecompensa) {
   const semanas = Math.max(1, e.cacadaSemanas) + Math.max(0, e.viagemDias) / 2 / P.dias_semana;
   const exata = valor * tom.mult * semanas * tarefa.mult * risco.mult * outro * P.grupo;
   const bolsa = arred(exata, P.arredondamento);
-  const porCacador = Math.floor(bolsa / Math.max(1, e.grupo) + 0.5);
-  return { quantidadeEfetiva, passoQuantidade, passoCentelha, degrau, valor, semanas, tarefa, risco, tom, outro, exata, bolsa, porCacador, grupoReferencia: P.grupo };
+  // a Parte por caçador arredonda para baixo, e o que sobra fica explícito (rodada 118): as partes
+  // nunca somam mais que a bolsa
+  const porCacador = Math.floor(bolsa / Math.max(1, e.grupo));
+  const sobra = bolsa - porCacador * Math.max(1, e.grupo);
+  return { quantidadeEfetiva, passoQuantidade, passoCentelha, degrau, valor, semanas, tarefa, risco, tom, outro, exata, bolsa, porCacador, sobra, grupoReferencia: P.grupo };
 }

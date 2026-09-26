@@ -2,7 +2,8 @@
 // calculadora usa (src/lib/recompensa.ts), com os parâmetros de src/data/recompensas.json.
 // Os cinco casos são os do despacho da rodada 115 (tom padrão, outro ×1, grupo de 3), com o degrau,
 // as semanas e a bolsa de cada um. O caso 2 espera 2.300 (2.250 exato, pelo arred), como o autor
-// decidiu depois do despacho: a bolsa segue sempre a régua do arred.
+// decidiu depois do despacho: a bolsa segue sempre a régua do arred. Desde a rodada 118 a Parte por
+// caçador é a bolsa ÷ o grupo PARA BAIXO, e a sobra é o que as partes não cobrem.
 import { build } from 'esbuild';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -27,16 +28,26 @@ const ok = (c, m) => { if (c) { passou++; console.log('  ✓ ' + m); } else { fa
 console.log('\n· os cinco casos do despacho da rodada 115');
 const base = { fracas: 0, tom: 'padrao', outro: 1, grupo: 3 };
 const CASOS = [
-  [{ desafio: 5, centelha: 5, fortes: 1, cacadaSemanas: 1, viagemDias: 16, tarefa: 'matar', risco: 'normal' }, 6, 2, 1500],
-  [{ desafio: 5, centelha: 5, fortes: 1, cacadaSemanas: 1, viagemDias: 16, tarefa: 'capturar-vivo', risco: 'normal' }, 6, 2, 2300],
-  [{ desafio: 2, centelha: 0, fortes: 8, cacadaSemanas: 1, viagemDias: 0, tarefa: 'matar', risco: 'alto' }, 5, 1, 630],
-  [{ desafio: 3, centelha: 0, fortes: 1, cacadaSemanas: 2, viagemDias: 8, tarefa: 'capturar-intacto', risco: 'normal' }, 3, 2.5, 680],
-  [{ desafio: 2, centelha: 0, fortes: 1, cacadaSemanas: 1, viagemDias: 0, tarefa: 'trazer-parte', risco: 'normal' }, 2, 1, 75],
+  [{ desafio: 5, centelha: 5, fortes: 1, cacadaSemanas: 1, viagemDias: 16, tarefa: 'matar', risco: 'normal' }, 6, 2, 1500, 500, 0],
+  [{ desafio: 5, centelha: 5, fortes: 1, cacadaSemanas: 1, viagemDias: 16, tarefa: 'capturar-vivo', risco: 'normal' }, 6, 2, 2300, 766, 2],
+  [{ desafio: 2, centelha: 0, fortes: 8, cacadaSemanas: 1, viagemDias: 0, tarefa: 'matar', risco: 'alto' }, 5, 1, 630, 210, 0],
+  [{ desafio: 3, centelha: 0, fortes: 1, cacadaSemanas: 2, viagemDias: 8, tarefa: 'capturar-intacto', risco: 'normal' }, 3, 2.5, 680, 226, 2],
+  [{ desafio: 2, centelha: 0, fortes: 1, cacadaSemanas: 1, viagemDias: 0, tarefa: 'trazer-parte', risco: 'normal' }, 2, 1, 75, 25, 0],
 ];
-CASOS.forEach(([e, degrau, semanas, bolsa], i) => {
+CASOS.forEach(([e, degrau, semanas, bolsa, parte, sobra], i) => {
   const r = R.calcularRecompensa({ ...base, ...e }, R.P);
   ok(r.degrau === degrau && r.semanas === semanas && r.bolsa === bolsa,
     `caso ${i + 1}: degrau ${r.degrau} (esperado ${degrau}), semanas ${r.semanas} (${semanas}), bolsa ${r.bolsa} pc (${bolsa}), exata ${r.exata}`);
+  ok(r.porCacador === parte && r.sobra === sobra,
+    `caso ${i + 1}: parte por caçador ${r.porCacador} pc (esperado ${parte}), sobra ${r.sobra} (${sobra})`);
+});
+
+console.log('\n· a Parte por caçador arredonda para baixo, e a sobra fecha a bolsa (rodada 118)');
+const caso5 = CASOS[4][0];
+[[CASOS[1][0], 3, 2300, 766, 2], [caso5, 4, 75, 18, 3], [CASOS[0][0], 3, 1500, 500, 0]].forEach(([e, grupo, bolsa, parte, sobra]) => {
+  const r = R.calcularRecompensa({ ...base, ...e, grupo }, R.P);
+  ok(r.bolsa === bolsa && r.porCacador === parte && r.sobra === sobra && r.porCacador * grupo + r.sobra === r.bolsa,
+    `${bolsa} ÷ ${grupo}: parte ${r.porCacador} pc (esperado ${parte}), sobra ${r.sobra} (${sobra}), bolsa ${r.bolsa}`);
 });
 
 console.log('\n· a tabela de degraus é a fórmula arredondada, e acima dela a fórmula continua');

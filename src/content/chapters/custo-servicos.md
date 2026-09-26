@@ -96,7 +96,7 @@ A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa
 
 3. **Oferta:** o Mestre decide quantos trabalhos existem. Referência: aldeia, 1 por ano; vila, 1 por estação; cidade, 1 por mês; fronteira e terra selvagem, o dobro. Caçar só vira profissão onde há trabalho de sobra.
 
-A bolsa por semana é alta de propósito: paga o risco e o tempo sem trabalho entre uma caçada e outra. Compare com os pares do grupo, não com um trabalhador: o degrau 6 paga 250 pc por semana, perto do Livre de uma Nobreza (200). O que impede todo mundo de virar caçador são os três testes, principalmente a oferta.
+A bolsa por semana é alta de propósito: paga o risco e o tempo sem trabalho entre uma caçada e outra. Compare com personagens de Centelha parecida, não com um trabalhador: o degrau 6 paga 250 pc por semana, perto do Livre de uma Nobreza (200). O que impede todo mundo de virar caçador são os três testes, principalmente a oferta.
 
 **Despesas e partes:**
 
