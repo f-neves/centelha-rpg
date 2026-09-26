@@ -159,7 +159,7 @@ O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6,
 | Móvel bem-acabado, arca | Carpintaria | 3 | 7 | 3 | 8 | 3 dias |
 | **Espada, machado de guerra, arma marcial** | Ferreiro | 3 | 7 | 12 | 10 | 6,3 dias |
 | Arco longo, besta (madeira já curada) | Arcos, Carpintaria | 3 | 7 | 4 | 12 | 4,5 dias |
-| Carroça | Carpintaria | 3 | 7 | 4 | 20 | 6,3 dias |
+| Carroça | Carpintaria | 3 | 7 | 4 | 20 | 6,9 dias |
 | Anel, broche, peça de joalheria | Joalheria | 4 | 11 | 3 | 6 | fechada ao oficial |
 | Fechadura, engenho, autômato de corda | Serralheria | 5 | 11 | 4 | 10 | fechada ao oficial |
 
@@ -176,7 +176,7 @@ O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6,
 | Placa de munição | Armaria | 4 | 8 | 4 | 14 | 3 | 7 semanas |
 | Placa completa sob medida | Armaria | 5 | 11 | 6 | 24 | 6 | fechada ao oficial |
 
-<p class="muted">A <strong>carroça</strong> sai em dias: avulsa, cerca de 267 pc em 6,3 dias do oficial; em lote de três, cerca de 238 pc cada. O catálogo a vende a 300 pc, 1,12 vez o avulso. O <strong>barco de pesca</strong>, do mesmo ofício e dos mesmos números, fica na escala de semanas, a cerca de 1.600 pc.</p>
+<p class="muted">A <strong>carroça</strong> sai em dias: avulsa, cerca de 267 pc em 6,9 dias do oficial; em lote de três, cerca de 238 pc cada. O catálogo a vende a 300 pc, 1,12 vez o avulso. O <strong>barco de pesca</strong>, do mesmo ofício e dos mesmos números, fica na escala de semanas, a cerca de 1.600 pc.</p>
 
 ### Escala de estações
 
