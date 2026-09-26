@@ -1359,8 +1359,8 @@ fora de estação. A renda é proporcional aos dias trabalhados na semana.
 
 ### 7.10 O que falta nesta família
 
-- **Preço da peça pronta.** A tabela de `precos.json` cobre equipamento de aventura e não cobre
-  armas, armaduras nem obra. Enquanto não cobrir, o material é o terço de um preço que o Mestre
+- **Preço da peça pronta.** A tabela de `mercadorias.json` cobre equipamento de aventura e não
+  cobre armas, armaduras nem obra. Enquanto não cobrir, o material é o terço de um preço que o Mestre
   arbitra.
 - **Peças mágicas e material sobrenatural**, que é a ponte com Artes e com o bestiário (couro,
   osso e escama de criatura como material de grau alto).
