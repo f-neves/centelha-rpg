@@ -449,7 +449,7 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
 - [ ] **G69 · [DECIDIDO, APLICAR DEPOIS] E5 · Pacote inicial pelo Recursos.** Documento §E5 (`:767`).
   Bolsa de 4 semanas de Livre na criação (regra do Jogador). Afeta `criacao-de-personagem.md` e
   `antecedentes.md:92` (Recursos).
-- [ ] **G70 · [DECIDIDO, APLICAR DEPOIS] E6 · Os arquivos do site.** Documento §E6 (`:771`).
+- [x] ~~**G70 · [DECIDIDO, APLICAR DEPOIS] E6 · Os arquivos do site.**~~ **Aplicado em 25 e 26/09/2026, rodadas 110 e 111** (`3ee18df` e o commit da F4 da 111): os sete arquivos próprios em `src/data` (`mercadorias.json`, `montarias-veiculos.json`, `servicos.json`, `pacotes-equipamento.json`, `renda.json`, `custo-de-vida.json`, `viagens.json`), o `precos.json` apagado, e a procedência em `lore/economia/mercadorias.procedencia.json` e `lore/economia/montarias.procedencia.json`, com a pasta versionada (`lore/economia/README.md`). O catálogo de mercadorias é gerado por `scripts/gen-cap-economia.mjs`, e não pelo `gen-cap-itens.mjs`. Registro original: Documento §E6 (`:771`).
   `src/data/mercadorias.json` próprio (o `precos.json` deixa de ser a fonte do preço dos itens gerais,
   com os ids mantidos); a procedência vai para `lore/economia/mercadorias.procedencia.json`, fora do
   site; as tarifas em arquivos próprios (`custo-de-vida.json`, `renda.json`, `servicos.json`,

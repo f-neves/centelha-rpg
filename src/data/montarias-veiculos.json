@@ -1,5 +1,5 @@
 {
-  "_nota": "Montarias, animais, arreios e veículos, preço em cobre (pc). Os animais não têm peso. A procedência de cada preço fica fora do site, com o modelo. Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
+  "_nota": "Montarias, animais, arreios e veículos, preço em cobre (pc). Os animais não têm peso. A procedência de cada preço está em lore/economia/montarias.procedencia.json. Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
   "itens": [
     {
       "id": "ponei",

@@ -1,0 +1,313 @@
+{
+  "_nota": "Procedência dos preços de montarias-veiculos.json (tirada do arquivo do site na rodada 110, F4). Lore, não dado de jogo.",
+  "itens": [
+    {
+      "id": "ponei",
+      "fonte": "Derivado",
+      "confianca": "C",
+      "nota": "Abaixo do cavalo de carga; montaria de criança e de terreno difícil.",
+      "pc_catalogo_atual": 400
+    },
+    {
+      "id": "burro",
+      "fonte": "Derivado",
+      "confianca": "C",
+      "nota": "Abaixo do cavalo de carga (a MtD dá 100 d, acima dele). O catálogo tem 12 pp.",
+      "pc_catalogo_atual": 120
+    },
+    {
+      "id": "cavalo-carga",
+      "fonte": "Hodges",
+      "confianca": "B",
+      "nota": "5 a 10s (séc. XIII).",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "cavalo-tracao",
+      "fonte": "Langdon",
+      "confianca": "A",
+      "nota": "Farmer 1276-1300: compra média 16s 10d.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "boi-tracao",
+      "fonte": "Langdon",
+      "confianca": "A",
+      "nota": "Farmer 1276-1300: 11s 6,5d.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "mula",
+      "fonte": "Derivado",
+      "confianca": "C",
+      "nota": "Montaria de clérigo e mercador; valia como um rocim.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "rocim",
+      "fonte": "Derivado",
+      "confianca": "C",
+      "nota": "Entre o cavalo de tração (16s) e o palafrém (£4-5); £1 10s. É o 'Cavalo' do catálogo.",
+      "pc_catalogo_atual": 600
+    },
+    {
+      "id": "palafrem",
+      "fonte": "Hodges",
+      "confianca": "B",
+      "nota": "£4 a 5.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "corcel",
+      "fonte": "Hodges",
+      "confianca": "B",
+      "nota": "Cavalo de montaria de alta classe, £10 (séc. XIII).",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "cavalo-guerra",
+      "fonte": "Ayton",
+      "confianca": "A",
+      "nota": "Cavalo de escudeiro ~£7 (1282); avaliação mínima de campanha £5; a média dos homens de armas ia de £7,6 a £16,4 (1282-1364).",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "destrier",
+      "fonte": "Ayton",
+      "confianca": "A",
+      "nota": "£30 (típico de cavaleiro: £15 a £40; excepcionais £60 a £100).",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "camelo",
+      "fonte": "Derivado",
+      "confianca": "C",
+      "nota": "Sem fonte europeia. Posto entre o rocim e o palafrém; região de origem com modificador forte para baixo.",
+      "pc_catalogo_atual": 500
+    },
+    {
+      "id": "elefante",
+      "fonte": "Derivado",
+      "confianca": "C",
+      "nota": "Presente de reis. Sem fonte: posto no dobro de um destrier. Na região de origem, modificador forte para baixo.",
+      "pc_catalogo_atual": 2800
+    },
+    {
+      "id": "cao-comum",
+      "fonte": "Derivado",
+      "confianca": "C",
+      "nota": "Vira-lata ou cão de pastor sem treino.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "cao-guarda",
+      "fonte": "Derivado",
+      "confianca": "C",
+      "nota": "Cão comum (20) mais uma semana de adestrador oficial (130). A MtD dá ~1.300 pc, preço de cão de raça.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "cao-caca",
+      "fonte": "Derivado",
+      "confianca": "C",
+      "nota": "Luxo de senhor.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "cao-guerra",
+      "fonte": "Derivado",
+      "confianca": "C",
+      "nota": "",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "falcao",
+      "fonte": "MtD",
+      "confianca": "B",
+      "nota": "Luxo nobre; falcoaria.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "pombo",
+      "fonte": "MtD",
+      "confianca": "B",
+      "nota": "",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "galinha",
+      "fonte": "Hodges",
+      "confianca": "A",
+      "nota": "2 por 1 d (séc. XIV).",
+      "pc_catalogo_atual": 2
+    },
+    {
+      "id": "ganso",
+      "fonte": "Hodges",
+      "confianca": "A",
+      "nota": "Preço legal em Londres, 1375.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "porco",
+      "fonte": "Hodges",
+      "confianca": "A",
+      "nota": "2s em Somerset, 3s em Londres (1338).",
+      "pc_catalogo_atual": 30
+    },
+    {
+      "id": "ovelha",
+      "fonte": "Hodges",
+      "confianca": "A",
+      "nota": "1s 5d (meados do séc. XIV).",
+      "pc_catalogo_atual": 30
+    },
+    {
+      "id": "carneiro",
+      "fonte": "MtD",
+      "confianca": "B",
+      "nota": "9 a 10 d em Somerset, 1s 5d em Londres.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "cabra",
+      "fonte": "MtD",
+      "confianca": "B",
+      "nota": "",
+      "pc_catalogo_atual": 50
+    },
+    {
+      "id": "vaca",
+      "fonte": "Hodges",
+      "confianca": "A",
+      "nota": "9s 5d (meados do séc. XIV).",
+      "pc_catalogo_atual": 160
+    },
+    {
+      "id": "touro",
+      "fonte": "Derivado",
+      "confianca": "C",
+      "nota": "1301: touro 8s contra vaca 6s; aplicada a mesma razão (4/3) à vaca de 9s 5d.",
+      "pc_catalogo_atual": 100
+    },
+    {
+      "id": "potro",
+      "fonte": "Langdon",
+      "confianca": "B",
+      "nota": "É o cavalo de tração vendido como gado. Com 8 semanas de adestramento (1.000) vira rocim (2.400).",
+      "pc_catalogo_atual": 140
+    },
+    {
+      "id": "sela",
+      "fonte": "Tabela do jogo",
+      "confianca": "B",
+      "nota": "Linha 'Sela, arreio, bota' (Curtume, Req 2, Dif 7, Mont 3, Peça 9) avulsa: ~134.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "sela-guerra",
+      "fonte": "Tabela do jogo",
+      "confianca": "C",
+      "nota": "Sela Boa pela régua de qualidade (~2,2x).",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "arreio",
+      "fonte": "Derivado",
+      "confianca": "C",
+      "nota": "Metade da sela.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "cangalha",
+      "fonte": "Derivado",
+      "confianca": "C",
+      "nota": "",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "ferradura",
+      "fonte": "Hodges",
+      "confianca": "B",
+      "nota": "4 ferraduras a ~1,2 d, 32 cravos (20 d o milheiro, 1299-1300) e o ferrador: ~5,6 d. Langdon: 14 d por ano num cavalo de carroça (já incluído na manutenção semanal).",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "racao-cavalo",
+      "fonte": "Langdon",
+      "confianca": "A",
+      "nota": "6,65 quarters de aveia por ano a 2s 4d: ~3,4 pc por dia, mais feno.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "estabulo",
+      "fonte": "Hodges",
+      "confianca": "B",
+      "nota": "Fodder de estalagem, 1331.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "carroca",
+      "fonte": "Catálogo",
+      "confianca": "B",
+      "nota": "Hodges: carroça ferrada 4s (c. 1350) = 320. Mantido 3 po (decisão do autor). A linha de fabricação que dá ~1.600 precisa ser recalibrada.",
+      "pc_catalogo_atual": 300
+    },
+    {
+      "id": "carro-quatro-rodas",
+      "fonte": "Derivado",
+      "confianca": "C",
+      "nota": "Dobro de peças e eixos da carroça, com margem.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "carruagem",
+      "fonte": "Hodges",
+      "confianca": "B",
+      "nota": "'Chariot' £8 (1381). O catálogo tem 20 po.",
+      "pc_catalogo_atual": 2000
+    },
+    {
+      "id": "carruagem-luxo",
+      "fonte": "Hodges",
+      "confianca": "B",
+      "nota": "Carruagem de rainha, £400. Tesouro, não mercadoria.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "treno",
+      "fonte": "Catálogo",
+      "confianca": "B",
+      "nota": "Mantido.",
+      "pc_catalogo_atual": 100
+    },
+    {
+      "id": "barco-remo",
+      "fonte": "Derivado",
+      "confianca": "C",
+      "nota": "Sem fonte. Uma semana de carpinteiro naval e madeira.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "barco-pesca",
+      "fonte": "Tabela do jogo",
+      "confianca": "B",
+      "nota": "Linha de barco de pesca (acoes-oficio-e-mundo.md:173), avulso ~1.600.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "coca",
+      "fonte": "Derivado",
+      "confianca": "C",
+      "nota": "Sem preço direto antes de 1450; posto perto das galeras reais de 1295.",
+      "pc_catalogo_atual": null
+    },
+    {
+      "id": "galera",
+      "fonte": "Exchequer 1295",
+      "confianca": "A",
+      "nota": "£321 a £540 cada (1295); média ~£430.",
+      "pc_catalogo_atual": null
+    }
+  ]
+}
