@@ -1,0 +1,8 @@
+# Progresso da Revisora · rodada 114
+
+- 26/09 06:18 · aviso é a mensagem do Arquiteto (54510af, 61c1a84, c1ce3ee, 90ad9f0, relato 8710f28). Reancorada em `8710f28` pelo §0.1 (merge-base passou). Passo 0: toplevel certo, branch `revisora`, árvore limpa.
+- 06:19 · leitura do Livre (ponto 2): testei as duas; faixas pelo arred dão os 9 Livre/Ano esperados (inteiro erra Doutor, Abastado, Aristocrata); perfis pelo inteiro dão os 9 Livre esperados (arred erra somas 9, 10, 11). A leitura dela é a única que fecha as duas listas. Lendo o diff do modelo.
+- 06:21 · valores 113→114 listados folha a folha: serviços mudados são exatamente os 10 do relato, mais as 8 aulas, criados, sustento e cavalo; renda só Livre/Ano e a Nobreza 6; viagens, pacotes, montarias e mercadorias sem mudança. dist das cinco páginas: zero vírgula em pc, zero po/pp. Conferindo a tarefa 1.
+- 06:21 · tarefa 1: as linhas do Apêndice estão verbatim nas pendências (1d dividido em A4 e A29 pela frase, com a linha reflowed). ACHADO: o título da A28 diz que a Cura mundana não tem número fora do combate, e vida-ferimentos-cura.md:90 tem os 10% por nível desde a 110. Textos de Recursos 0, Imprevistos e Serviços: verbatim. Conferindo a divisão.
+- 06:22 · divisão: 15 títulos antes e depois; das 59 passagens de prosa, só 5 mudaram e são as esperadas (frontmatter, abertura, e as três conversões em pc); 5 páginas no dist, 'Parte do capítulo' nas 4, 5 links na barra de cada, as 5 no pagefind (111 fragmentos); citações da 110 reapontadas caem no conteúdo; as históricas ficaram fora do arquivo, como o relato diz. Rodando checks e CI.
+- 06:33 · CI dos 5 success. Veredito escrito: PROCEDE, CORRIGE (título da A28), PERGUNTA (duas regras de arredondamento para o Livre). Commitando.
