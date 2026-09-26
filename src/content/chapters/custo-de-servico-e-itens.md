@@ -44,10 +44,10 @@ O nível de **Recursos** é a faixa social do trabalho. **Renda** é o bruto que
 | ● | Destreinado | 100 pc | 90 pc | 10 pc | 440 pc |
 | ●● | Treinado | 270 pc | 251 pc | 19 pc | 760 pc |
 | ●●● | Especialista | 550 pc | 520 pc | 30 pc | 1.080 pc |
-| ●●● | Doutor | 820 pc | 780 pc | 40 pc | 1.440 pc |
-| ●●●● | Abastado | 1.400 pc | 1.345 pc | 55 pc | 1.760 pc |
+| ●●● | Doutor | 820 pc | 781 pc | 39 pc | 1.404 pc |
+| ●●●● | Abastado | 1.400 pc | 1.344 pc | 56 pc | 1.792 pc |
 | ●●●● | Rico | 2.700 pc | 2.615 pc | 85 pc | 2.720 pc |
-| ●●●●● | Aristocrata | 4.200 pc | 4.090 pc | 110 pc | 3.080 pc |
+| ●●●●● | Aristocrata | 4.200 pc | 4.086 pc | 114 pc | 3.192 pc |
 | ●●●●●● | Nobreza | 10.000 pc | 9.800 pc | 200 pc | 4.800 pc |
 
 </div>
@@ -109,10 +109,10 @@ O **Custo** da tabela de Renda é o de uma casa inteira (três adultos-equivalen
 | Destreinado | 90 pc | 73 pc | 17 pc | 3 AE, cesta modesta (64 pc); Choupana (9 pc) |
 | Treinado | 251 pc | 178 pc | 73 pc | 3 AE, cesta respeitável (94 pc); Casa de artesão (35 pc); Aprendiz (19 pc); Roupa de artesão nova para o casal, por ano (10 pc); Mula ou cavalo dividido (meio) (21 pc) |
 | Especialista | 520 pc | 362 pc | 158 pc | 3 AE, cesta respeitável (94 pc); Casa de mercador (88 pc); 2 criados (98 pc); Um cavalo (42 pc); Roupa fina para o casal, por ano (42 pc) |
-| Doutor | 780 pc | 537 pc | 243 pc | 3 AE, cesta farta (198 pc); Casa de mercador (88 pc); 2 criados e 1 cozinheiro (158 pc); Um cavalo (42 pc); Roupa fina para o casal, por ano (42 pc); Livros, um por ano (10 pc) |
-| Abastado | 1.345 pc | 1.019 pc | 326 pc | 3 AE, cesta farta (198 pc); Casa senhorial pequena (351 pc); 4 criados, cozinheiro, cavalariço (305 pc); Dois cavalos (83 pc); Roupa fina, 2 por adulto por ano (83 pc) |
+| Doutor | 781 pc | 537 pc | 244 pc | 3 AE, cesta farta (198 pc); Casa de mercador (88 pc); 2 criados e 1 cozinheiro (158 pc); Um cavalo (42 pc); Roupa fina para o casal, por ano (42 pc); Livros, um por ano (10 pc) |
+| Abastado | 1.344 pc | 1.019 pc | 325 pc | 3 AE, cesta farta (198 pc); Casa senhorial pequena (351 pc); 4 criados, cozinheiro, cavalariço (305 pc); Dois cavalos (83 pc); Roupa fina, 2 por adulto por ano (83 pc) |
 | Rico | 2.615 pc | 1.890 pc | 725 pc | 3 AE, cesta de luxo (693 pc); Casa senhorial pequena (351 pc); Valete, 4 criados, cozinheiro, 2 cavalariços (472 pc); Quatro cavalos (166 pc); Roupa de corte, 1 por adulto por ano (208 pc) |
-| Aristocrata | 4.090 pc | 3.049 pc | 1.041 pc | 3 AE, cesta de luxo (693 pc); Casa senhorial (351 pc); Mordomo, 2 valetes, 6 criados, cozinheiro, 2 cavalariços (929 pc); 4 guardas (247 pc); Cavalo de guerra e 3 cavalos (413 pc); Roupa de corte, 2 por adulto por ano (417 pc) |
+| Aristocrata | 4.086 pc | 3.049 pc | 1.037 pc | 3 AE, cesta de luxo (693 pc); Casa senhorial (351 pc); Mordomo, 2 valetes, 6 criados, cozinheiro, 2 cavalariços (929 pc); 4 guardas (247 pc); Cavalo de guerra e 3 cavalos (413 pc); Roupa de corte, 2 por adulto por ano (417 pc) |
 | Nobreza | 9.800 pc | 7.500 pc | 2.300 pc | 3 AE, cesta de luxo (693 pc); Paço (1.753 pc); Casa: mordomo, capelão, 2 escudeiros, 6 valetes, 12 criados, 3 cozinheiros, 4 cavalariços (2.322 pc); 12 guardas (740 pc); 2 cavalos de guerra e 8 cavalos (909 pc); Roupa de corte 2 e gala 1 por adulto por ano (1.083 pc) |
 
 </div>

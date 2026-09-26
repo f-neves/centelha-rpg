@@ -244,19 +244,19 @@
         {
           "por": "semana",
           "preco": {
-            "pc": 40
+            "pc": 39
           }
         },
         {
           "por": "mes",
           "preco": {
-            "pc": 160
+            "pc": 156
           }
         },
         {
           "por": "ano",
           "preco": {
-            "pc": 1440
+            "pc": 1404
           }
         }
       ],
@@ -264,7 +264,7 @@
         {
           "por": "semana",
           "preco": {
-            "pc": 780
+            "pc": 781
           }
         }
       ],
@@ -298,19 +298,19 @@
         {
           "por": "semana",
           "preco": {
-            "pc": 55
+            "pc": 56
           }
         },
         {
           "por": "mes",
           "preco": {
-            "pc": 220
+            "pc": 224
           }
         },
         {
           "por": "ano",
           "preco": {
-            "pc": 1760
+            "pc": 1792
           }
         }
       ],
@@ -318,7 +318,7 @@
         {
           "por": "semana",
           "preco": {
-            "pc": 1345
+            "pc": 1344
           }
         }
       ],
@@ -406,19 +406,19 @@
         {
           "por": "semana",
           "preco": {
-            "pc": 110
+            "pc": 114
           }
         },
         {
           "por": "mes",
           "preco": {
-            "pc": 440
+            "pc": 456
           }
         },
         {
           "por": "ano",
           "preco": {
-            "pc": 3080
+            "pc": 3192
           }
         }
       ],
@@ -426,7 +426,7 @@
         {
           "por": "semana",
           "preco": {
-            "pc": 4090
+            "pc": 4086
           }
         }
       ],

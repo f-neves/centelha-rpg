@@ -197,7 +197,7 @@ PACOTES = {
 tabela_renda = []
 for nome, rec, renda, orig in FAIXAS:
     f = livre_frac(renda)
-    livre = arred(renda * f)
+    livre = inteiro(renda * f)
     custo = renda - livre
     pac = PACOTES[nome]; base = sum(v for _, v in pac)
     tabela_renda.append(dict(faixa=nome, recursos=rec, renda=renda, origem=orig, livre_frac=f, livre=livre,
