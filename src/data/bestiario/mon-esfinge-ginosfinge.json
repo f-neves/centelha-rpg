@@ -1,0 +1,172 @@
+{
+  "ordem": 123,
+  "id": "mon-esfinge-ginosfinge",
+  "nome": "Esfinge (Ginosfinge)",
+  "nomeIngles": "Sphinx (Gynosphinx)",
+  "categoria": "Besta mágica",
+  "papel": "chefe",
+  "conceito": "besta mágica Grande",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/esfinge-ginosfinge.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "corpo 3 m, envergadura 6 m",
+    "peso": "230 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 7,
+    "destreza": 4,
+    "vigor": 6,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 10,
+  "aparencia": 5,
+  "arte": {
+    "forcas": 2,
+    "adivinhacao": 2
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Feitiços arcanos (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "várias · N3–N4"
+    },
+    {
+      "efeito": "Rugido (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Forças · N2 / Vento",
+      "arte": "forcas"
+    },
+    {
+      "efeito": "Ver o invisível",
+      "tipo": "feiticaria",
+      "alvo": "Adivinhação · N2",
+      "arte": "adivinhacao"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Feitiços arcanos",
+      "descricao": "lança magias de dano e controle, mais de uma vez por cena"
+    },
+    {
+      "nome": "Ver o invisível",
+      "descricao": "enxerga criaturas ocultas ou invisíveis sem teste"
+    },
+    {
+      "nome": "Voo",
+      "descricao": "asas leoninas, desloca 12m voando"
+    },
+    {
+      "nome": "Garras devastadoras",
+      "descricao": "ataque corpo a corpo com dano alto"
+    },
+    {
+      "nome": "Sabedoria ancestral",
+      "descricao": "+3d6 em testes de Conhecimentos"
+    },
+    {
+      "nome": "Enigma mortal",
+      "descricao": "propõe um enigma; falha em Vontade causa dano ou deixa o alvo Abalado"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Guarda ruínas e tesouros de saber antigo, desafiando qualquer intruso com enigmas antes de cogitar o combate, e respeita quem responde com inteligência mais do que com força."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Ocupa templos esquecidos, criptas de sábios e ruínas soterradas no deserto ou nas montanhas."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Solitária por hábito, mas mantém laços telepáticos e troca conhecimento com outras esfinges distantes, quase como uma irmandade invisível."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Paciente e orgulhosa do próprio intelecto, mais interessada em testar do que em destruir."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Guardiã de um saber anterior à Grande Guerra, do tipo que a Tecelã protege e que as igrejas supressoras temem; suas ruínas talvez escondam respostas sobre a Fenda que ninguém mais ousa procurar."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Desert",
+      "Ruins"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Conhecimentos 5, Ocultismo 4, Prontidão 4.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Esfinge (Ginosfinge)",
+    "cr": "8",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 14,
+      "con": 19,
+      "int": 18,
+      "sab": 19,
+      "car": 19
+    },
+    "pericias": [
+      "Conhecimentos 5",
+      "Ocultismo 4",
+      "Prontidão 4"
+    ],
+    "nota": "Guardadora de enigmas, magia arcana: Centelha 4.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

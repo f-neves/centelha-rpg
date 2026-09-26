@@ -1004,6 +1004,70 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
   }
 }
 
+// ------------------------------------------- B14 · a ficha de criatura
+//
+// UMA FICHA POR CRIATURA em src/data/bestiario/<id>.json, no esquema de
+// criatura-schema.mjs (`.strict()`: chave desconhecida para o build), mais as
+// referências que o esquema sozinho não pega: perícia, Arte, Técnica, armadura e
+// material que não existem no catálogo viram zero ou nada em silêncio na conta.
+//
+// E A CONCORDÂNCIA COM AS SEMENTES. As fraquezas e o deslocamento estão escritos
+// na ficha, e os satélites que os semeavam (gen-elementos, gen-deslocamento)
+// continuam no validate. Enquanto os dois existirem, eles têm de dizer o mesmo:
+// mexer num sem o outro para aqui, em vez de o livro e a semente divergirem
+// calados. (O deslocamento é conferido pelo test-deslocamento.mjs, que compara o
+// monsters.json com o satélite.)
+{
+  const { criaturaSchema, PERICIAS_LEGADAS } = await import('./criatura-schema.mjs');
+  const PASTA = path.join(DIR, 'bestiario');
+  const SEC = new Set((data['habilidades-secundarias'] || []).map((x) => x.id));
+  const ARMD = new Set((data.armaduras || []).map((x) => x.id));
+  const ELE = fs.existsSync(path.join(DIR, 'elementos-bestiario.json')) ? read('elementos-bestiario.json') : {};
+  const ordens = new Map();
+  const arqs = fs.readdirSync(PASTA).filter((f) => f.endsWith('.json'));
+  for (const f of arqs) {
+    const onde = `bestiario/${f}`;
+    let c;
+    try { c = JSON.parse(fs.readFileSync(path.join(PASTA, f), 'utf8')); } catch (e) { fail(`${onde}: JSON inválido (${e.message})`); continue; }
+    const r = criaturaSchema.safeParse(c);
+    if (!r.success) { for (const i of r.error.issues) fail(`${onde}: ${i.path.join('.') || '(raiz)'} · ${i.message}`); continue; }
+    if (`${c.id}.json` !== f) fail(`${onde}: o id "${c.id}" não bate com o nome do arquivo`);
+    if (c.centelha > TETO_CENTELHA) fail(`${onde}: Centelha ${c.centelha} acima da escalaCentelha (${TETO_CENTELHA})`);
+    if (c.ordem != null) {
+      if (ordens.has(c.ordem)) fail(`${onde}: ordem ${c.ordem} repetida (também em ${ordens.get(c.ordem)})`);
+      ordens.set(c.ordem, f);
+    }
+    for (const k of Object.keys(c.skills)) if (!H.has(k) && !PERICIAS_LEGADAS[k]) fail(`${onde}: skills.${k} não é Habilidade primária${SEC.has(k) ? ' (é secundária: vai em skills2)' : ''}`);
+    for (const k of Object.keys(c.skills2 || {})) if (!SEC.has(k)) fail(`${onde}: skills2.${k} não é Habilidade secundária`);
+    for (const a of c.ataques) {
+      if (!A.has(a.atrib)) fail(`${onde}: ataque "${a.nome}" usa o atributo inexistente "${a.atrib}"`);
+      if (!H.has(a.pericia) && !SEC.has(a.pericia) && !PERICIAS_LEGADAS[a.pericia]) fail(`${onde}: ataque "${a.nome}" usa a perícia inexistente "${a.pericia}"`);
+    }
+    for (const id of Object.keys(c.arte || {})) if (!ART.has(id)) fail(`${onde}: arte inexistente "${id}"`);
+    for (const id of Object.keys(c.tech || {})) if (!T.has(id)) fail(`${onde}: técnica inexistente "${id}"`);
+    for (const p of c.poderes || []) {
+      if (p.arte && !ART.has(p.arte)) fail(`${onde}: poder cita a arte inexistente "${p.arte}"`);
+      if (p.caminho && !C.has(p.caminho)) fail(`${onde}: poder cita o caminho inexistente "${p.caminho}"`);
+    }
+    for (const p of c.equip?.armaduras || []) {
+      const base = typeof p === 'string' ? p : p?.base;
+      if (base && !ARMD.has(base)) fail(`${onde}: armadura inexistente "${base}"`);
+    }
+    if (c.material && !MATERIAIS[String(c.material).toLowerCase()]) fail(`${onde}: material desconhecido "${c.material}"`);
+    const fr = c.fraquezas || [], rs = c.resistencias || [];
+    for (const k of [...fr, ...rs]) if (!ELEM_VOCAB.has(k)) fail(`${onde}: palavra fora do vocabulário "${k}"`);
+    const choque = fr.filter((x) => rs.includes(x));
+    if (choque.length) fail(`${onde}: "${choque.join(', ')}" é fraqueza e resistência ao mesmo tempo`);
+    if (!c.material) {
+      const s = ELE[c.id] || {};
+      if (JSON.stringify(fr) !== JSON.stringify(s.fraquezas || []) || JSON.stringify(rs) !== JSON.stringify(s.resistencias || [])) {
+        fail(`${onde}: fraquezas/resistências diferentes das do elementos-bestiario.json (a semente do gen-elementos.mjs). Mude as duas juntas`);
+      }
+    }
+  }
+  if (!arqs.length) fail('src/data/bestiario/: nenhuma ficha de criatura');
+}
+
 if (erros.length) {
   console.error(`\n✘ Validação de dados FALHOU (${erros.length} erro(s)):`);
   for (const e of erros) console.error('  • ' + e);

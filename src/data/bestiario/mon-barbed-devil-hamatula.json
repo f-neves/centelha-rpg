@@ -1,0 +1,136 @@
+{
+  "ordem": 181,
+  "id": "mon-barbed-devil-hamatula",
+  "nome": "Diabo Espinhoso",
+  "nomeIngles": "Devil, Barbed",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Diabo",
+  "papel": "chefe",
+  "conceito": "exterior (diabo) Médio",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Tirano leal do Inferno, calculista e cruel.",
+  "tags": [
+    "diabo",
+    "centelha"
+  ],
+  "imagem": "bestiario/barbed-devil-hamatula.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2,1 m de altura",
+    "peso": "135 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 7,
+    "destreza": 7,
+    "vigor": 7,
+    "influencia": 5,
+    "perspicacia": 4,
+    "compostura": 5,
+    "percepcao": 4,
+    "inteligencia": 3,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 2,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 5,
+    "temperanca": 5,
+    "valor": 5
+  },
+  "willpower": 10,
+  "aparencia": 0,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Defesa Espinhosa",
+      "descricao": "Seu corpo é coberto de espinhos afiados; quem o golpeia corpo a corpo ou desarmado sofre dano perfurante dos próprios espinhos, a menos que ataque com arma de alcance."
+    },
+    {
+      "nome": "Empalar",
+      "descricao": "Ao manter um inimigo agarrado, pode cravar suas garras ainda mais fundo, causando dano perfurante severo adicional."
+    },
+    {
+      "nome": "Pavor pelo Toque",
+      "descricao": "Suas garras espalham terror; quem é ferido por elas pode fugir amedrontado por vários instantes, a menos que resista com força de vontade."
+    },
+    {
+      "nome": "Visão nas Trevas",
+      "descricao": "Enxerga perfeitamente até em escuridão mágica absoluta."
+    },
+    {
+      "nome": "Resistências Infernais",
+      "descricao": "Resiste a ácido e frio, é imune a fogo e veneno, e uma proteção sobrenatural absorve boa parte de qualquer dano que não venha de arma boa."
+    },
+    {
+      "nome": "Poderes Ígneos",
+      "descricao": "Pode criar chamas, lançar raios ofuscantes de luz, projetar ilusões elaboradas ou desaparecer para outro lugar à vontade."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Guardião dos Cárceres Infernais",
+      "texto": "Sentinela dos calabouços do Inferno, zela pelas correntes dos condenados e os tesouros escondidos de demônios maiores, sentindo prazer perverso no calor do sangue sobre seus próprios espinhos."
+    },
+    {
+      "titulo": "Colecionador de Troféus",
+      "texto": "Costuma pendurar restos perfurados de suas vítimas nas paredes de seu covil, como um colecionador macabro de despojos de guerra."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Barbed Devil (Hamatula)",
+    "cr": "11",
+    "tipo": "exterior (diabo) Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 23,
+      "des": 23,
+      "con": 22,
+      "int": 12,
+      "sab": 15,
+      "car": 18
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

@@ -1,0 +1,123 @@
+{
+  "ordem": 200,
+  "id": "mon-electric-eel",
+  "nome": "Enguia Elétrica",
+  "nomeIngles": "Electric Eel",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Pequeno",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/electric-eel.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "1,8 metro de comprimento",
+    "peso": "20 kg"
+  },
+  "locomocao": {
+    "natacao": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 3,
+    "destreza": 4,
+    "vigor": 5,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Choque elétrico",
+      "descricao": "Golpeia com a cauda descarregando eletricidade; um acerto certeiro pode atordoar o alvo por alguns instantes."
+    },
+    {
+      "nome": "Resistência a eletricidade",
+      "descricao": "A própria carga que produz o protege parcialmente contra choques e raios externos."
+    },
+    {
+      "nome": "Nadador ágil",
+      "descricao": "Desliza pela água com folga e escapa de mãos e cordas com facilidade graças ao corpo escorregadio."
+    },
+    {
+      "nome": "Respira ar",
+      "descricao": "Ao contrário da maioria dos peixes, precisa subir à superfície de tempos em tempos para respirar."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Rio que morde e queima",
+      "texto": "Habita águas doces quentes e paradas, onde emboscada presas com uma descarga que paralisa antes mesmo da mordida."
+    },
+    {
+      "titulo": "Curiosidade traiçoeira",
+      "texto": "Apesar do temperamento curioso, poucos predadores se arriscam a perturbá-lo duas vezes."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Electric Eel",
+    "cr": "2",
+    "tipo": "animal Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 13,
+      "des": 14,
+      "con": 19,
+      "int": 1,
+      "sab": 10,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte",
+      "nota": "nado 30; em terra a enguia se arrasta 5 ft"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

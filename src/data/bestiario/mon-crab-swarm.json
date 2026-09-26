@@ -1,0 +1,123 @@
+{
+  "ordem": 173,
+  "id": "mon-crab-swarm",
+  "nome": "Enxame de Caranguejo",
+  "nomeIngles": "Swarm, Crab",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/crab-swarm.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "enxame de 3 m de diâmetro",
+    "peso": "15 kg no total"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 0,
+    "destreza": 4,
+    "vigor": 3,
+    "influencia": 0,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Enxame Cortante",
+      "descricao": "Centenas de caranguejos avançam como uma massa só, cortando e beliscando tudo que estiver dentro da área ocupada pelo enxame."
+    },
+    {
+      "nome": "Distração",
+      "descricao": "Qualquer criatura que sofra dano do enxame corre o risco de perder a concentração e ficar momentaneamente atordoada."
+    },
+    {
+      "nome": "Imune a Armas",
+      "descricao": "Por ser formado por centenas de indivíduos minúsculos, armas comuns de corte ou perfuração não conseguem feri-lo de forma eficaz."
+    },
+    {
+      "nome": "Imunidade Mental",
+      "descricao": "Não possui mente unificada, sendo imune a efeitos que dependem de compreensão ou emoção."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Maré de Pinças",
+      "texto": "Mais de mil caranguejos comuns se lançam sobre suas vítimas ao mesmo tempo, arrancando pedaços de carne com incontáveis pinças famintas."
+    },
+    {
+      "titulo": "Sinal das Marés",
+      "texto": "Pescadores locais atribuem o fenômeno às fases da lua, jurando que certas marés trazem à superfície esse mar vivo de cascos e garras."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Crab Swarm",
+    "cr": "4",
+    "tipo": "praga Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 14,
+      "con": 13,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

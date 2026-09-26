@@ -1,0 +1,119 @@
+{
+  "ordem": 5,
+  "id": "arqueiro",
+  "nome": "Arqueiro",
+  "nomeIngles": "Archer",
+  "categoria": "Humanoide",
+  "categoriaLegada": "Humano",
+  "papel": "soldado",
+  "conceito": "fogo à distância",
+  "descricao": "Domina o campo antes do contato; recua se cercado.",
+  "tags": [
+    "humano"
+  ],
+  "imagem": "bestiario/arqueiro.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,73 m de altura",
+    "peso": "70 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 2,
+    "destreza": 4,
+    "vigor": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "atirador": 4,
+    "esquiva": 2,
+    "prontidao": 3,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "equip": {
+    "armaduras": [
+      "couro"
+    ]
+  },
+  "ataques": [
+    {
+      "nome": "Arco",
+      "atrib": "destreza",
+      "pericia": "atirador",
+      "dado": 2,
+      "distancia": true,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 1,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Arco",
+      "descricao": "ataque à distância com Perfuração nível 1: fura couro e malha, resvala em placa (Resistência 2)"
+    },
+    {
+      "nome": "Mira",
+      "descricao": "gasta uma ação para mirar e ganha +2 no próximo disparo"
+    },
+    {
+      "nome": "Domina o campo",
+      "descricao": "prioriza alvos antes que cheguem ao corpo a corpo"
+    },
+    {
+      "nome": "Recuo tático",
+      "descricao": "recua e reposiciona se for cercado"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Escolhe o terreno alto ou a distância antes de qualquer coisa, abre o combate com flechas e recua se a linha inimiga o alcança, pois sabe que corpo a corpo não é seu jogo."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Cuida do arco e das flechas com mais atenção do que da própria armadura; caça é tanto sustento quanto treino."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Comum entre milícias de Calin e caçadores dos ermos de Syl e Mére, onde dominar o arco é sobrevivência tanto contra bestas quanto contra bandidos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Urban",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Perfurante perf. 1: fura couro e malha, mas resvala na placa (Resist. 2). Mira (+2) quando pode.",
+  "pendente": false,
+  "fonte": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

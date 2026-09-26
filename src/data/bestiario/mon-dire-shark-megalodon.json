@@ -1,0 +1,128 @@
+{
+  "ordem": 283,
+  "id": "mon-dire-shark-megalodon",
+  "nome": "Tubarão Atroz",
+  "nomeIngles": "Dire Shark",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "chefe",
+  "conceito": "animal Imenso",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/dire-shark-megalodon.webp",
+  "porte": "Imenso",
+  "dimensoes": {
+    "medida": "18 metros de comprimento",
+    "peso": "45000 kg"
+  },
+  "locomocao": {
+    "natacao": 6
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 12,
+    "destreza": 4,
+    "vigor": 8,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Mordida devastadora",
+      "descricao": "Ataca com mandíbulas capazes de abrir feridas profundas, causando dano contínuo de Sangramento, e pode agarrar a presa para tragá-la."
+    },
+    {
+      "nome": "Engolir por inteiro",
+      "descricao": "Pode tragar uma presa já agarrada, causando dano contínuo por dentro de seu estômago até ela escapar ou perecer."
+    },
+    {
+      "nome": "Olfato sanguinário",
+      "descricao": "Percebe sangue na água a quilômetros e sente presas próximas mesmo sem vê-las."
+    },
+    {
+      "nome": "Sentidos aguçados",
+      "descricao": "Sua percepção excepcional torna quase impossível surpreendê-lo."
+    },
+    {
+      "nome": "Nadador colossal",
+      "descricao": "Move-se na água com grande velocidade apesar do tamanho monstruoso."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "O terror ancestral do oceano",
+      "texto": "Onde tubarões comuns já inspiram pavor, o megalodon representa o ápice dessa linhagem, um predador capaz de engolir um cavalo inteiro sem esforço."
+    },
+    {
+      "titulo": "Lendas de navios devorados",
+      "texto": "Muitas histórias de embarcações que desaparecem no mar aberto encontram nesse gigante das profundezas sua explicação mais provável."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Shark (Megalodon)",
+    "cr": "9",
+    "tipo": "animal Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 30,
+      "des": 15,
+      "con": 17,
+      "int": 1,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "nado 60, como o tubarão comum"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

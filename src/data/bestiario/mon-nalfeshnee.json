@@ -1,0 +1,132 @@
+{
+  "ordem": 179,
+  "id": "mon-nalfeshnee",
+  "nome": "Nalfeshnee",
+  "nomeIngles": "Demon, Nalfeshnee",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Demônio",
+  "papel": "chefe",
+  "conceito": "exterior (demônio) Enorme",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "tags": [
+    "demonio",
+    "centelha"
+  ],
+  "imagem": "bestiario/nalfeshnee.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "6 m de altura",
+    "peso": "3.600 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 6,
+  "attrs": {
+    "forca": 12,
+    "destreza": 3,
+    "vigor": 11,
+    "influencia": 6,
+    "perspicacia": 7,
+    "compostura": 6,
+    "percepcao": 7,
+    "inteligencia": 7,
+    "raciocinio": 7
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 3,
+    "integridade": 6
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 6
+  },
+  "willpower": 11,
+  "aparencia": -1,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Nimbo Profano",
+      "descricao": "Três vezes por dia, gera um brilho de luzes nauseantes ao redor do corpo que, um instante depois, explode em uma grande área; criaturas não demoníacas atingidas ficam atordoadas por visões de loucura."
+    },
+    {
+      "nome": "Aura Profana",
+      "descricao": "Irradia constantemente uma presença profana que enfraquece e perturba criaturas de bem próximas a ele."
+    },
+    {
+      "nome": "Visão Verdadeira",
+      "descricao": "Enxerga através de ilusões, disfarces e invisibilidade constantemente, sem qualquer esforço."
+    },
+    {
+      "nome": "Resistências Infernais",
+      "descricao": "Resiste a fogo, frio e ácido; é imune a eletricidade e veneno, e uma proteção sobrenatural absorve boa parte de qualquer dano que não venha de arma abençoada."
+    },
+    {
+      "nome": "Poderes Arcanos",
+      "descricao": "Pode invocar relâmpagos, embotar a mente de um inimigo, anular magias, retardar movimentos ou desaparecer para outro lugar à vontade."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Administrador do Caos",
+      "texto": "Poucos demônios compreendem o funcionamento íntimo do Abismo como ele, que muitas vezes governa domínios inteiros ou vigia locais de importância secreta no plano."
+    },
+    {
+      "titulo": "Intelecto Cobiçado",
+      "texto": "Invocadores mortais o buscam por sua inteligência vasta e perturbada, embora todo trato com ele esconda sempre consequências ocultas que servem aos desígnios do Abismo."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Nalfeshnee",
+    "cr": "14",
+    "tipo": "exterior (demônio) Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 32,
+      "des": 13,
+      "con": 29,
+      "int": 23,
+      "sab": 22,
+      "car": 20
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

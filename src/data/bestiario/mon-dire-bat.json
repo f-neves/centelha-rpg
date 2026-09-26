@@ -1,0 +1,125 @@
+{
+  "ordem": 153,
+  "id": "mon-dire-bat",
+  "nome": "Morcego Atroz",
+  "nomeIngles": "Dire Bat",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/dire-bat.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "4,5 m de envergadura",
+    "peso": "90 kg"
+  },
+  "locomocao": {
+    "voo": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 6,
+    "destreza": 4,
+    "vigor": 4,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Ecolocalização",
+      "descricao": "Percebe o que está ao seu redor através do som, mesmo no escuro total ou contra alvos invisíveis, dentro de um raio considerável."
+    },
+    {
+      "nome": "Voo Ágil",
+      "descricao": "Voa com boa velocidade e manobrabilidade, perfeito para caçar à noite ou fugir de perigos."
+    },
+    {
+      "nome": "Mordida Forte",
+      "descricao": "Ataca com uma mordida capaz de ferir gravemente mesmo presas de grande porte."
+    },
+    {
+      "nome": "Caçador Furtivo",
+      "descricao": "Move-se com discrição incomum para seu tamanho, surpreendendo presas antes que percebam sua chegada."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Habitat",
+      "texto": "O morcego atroz costuma se abrigar em cavernas e áreas desoladas durante o dia, saindo à noite para caçar. Sua envergadura chega a quase cinco metros."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Raramente forma colônias grandes, preferindo viver sozinho ou em pequenos grupos, e prefere caçar gado e animais de rebanho quando disponíveis."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Underground",
+      "Forest"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Bat",
+    "cr": "2",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 17,
+      "des": 15,
+      "con": 13,
+      "int": 2,
+      "sab": 14,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "voo 40; em terra 20"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

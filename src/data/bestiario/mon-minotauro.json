@@ -1,0 +1,157 @@
+{
+  "ordem": 52,
+  "id": "mon-minotauro",
+  "nome": "Minotauro",
+  "nomeIngles": "Minotaur",
+  "categoria": "Humanoide monstruoso",
+  "categoriaLegada": "Monstro",
+  "papel": "soldado",
+  "conceito": "humanoide monstruoso Grande",
+  "descricao": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha"
+  ],
+  "imagem": "bestiario/minotauro.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,4 m de altura",
+    "peso": "250 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 6,
+    "destreza": 2,
+    "vigor": 5,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "tech": {
+    "faro": true
+  },
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Faro no labirinto (Su)",
+      "tipo": "proeza",
+      "alvo": "Caçador · Faro (b2)",
+      "caminho": "cacador"
+    },
+    {
+      "efeito": "Investida chifruda",
+      "tipo": "proeza",
+      "alvo": "Sangue Fervente · Investida Furiosa (b5)",
+      "caminho": "sangue-fervente"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Investida chifruda",
+      "descricao": "move 4m ou mais antes de atacar; dano extra com os chifres e pode Derrubar"
+    },
+    {
+      "nome": "Faro no labirinto (Su)",
+      "descricao": "nunca se perde e sempre sabe o caminho de volta em passagens e labirintos"
+    },
+    {
+      "nome": "Fúria de touro",
+      "descricao": "quando Abalado, ganha bônus de dano mas penalidade em Defesa"
+    },
+    {
+      "nome": "Machado duplo",
+      "descricao": "ataque corpo a corpo pesado com dano alto"
+    },
+    {
+      "nome": "Casco firme",
+      "descricao": "resistente a Derrubar e terrenos difíceis"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Força bruta e fúria primitiva guiam o minotauro em combate; carrega machado enorme e não recua diante de nada, confiando no instinto e na violência para resolver qualquer impasse."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Vive isolado ou em pequenos clãs dentro de labirintos, ruínas e complexos de túneis que conhece de cor, guardando tesouro ou território com posse quase religiosa."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Orgulhoso e vingativo, guarda rancor de intrusos por anos; sob a brutalidade esconde uma memória apurada para cada corredor e cada rosto que já invadiu seu domínio."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "As selvas de Mére escondem cidades e complexos labirínticos antigos demais para qualquer mapa comum, e é lá, entre pedra esquecida e cultos caídos, que os minotauros mais temidos ainda vivem, isolados do resto do mundo."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 3, Sobrevivência 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Minotauro",
+    "cr": "4",
+    "tipo": "humanoide monstruoso Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 10,
+      "con": 15,
+      "int": 7,
+      "sab": 10,
+      "car": 8
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Sobrevivência 2"
+    ],
+    "nota": "Astúcia natural (labirinto, Su): Centelha 1.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

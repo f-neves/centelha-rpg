@@ -1,0 +1,128 @@
+{
+  "ordem": 271,
+  "id": "mon-otyugh",
+  "nome": "Otyugh",
+  "nomeIngles": "Otyugh",
+  "categoria": "Aberração",
+  "papel": "soldado",
+  "conceito": "aberração Grande",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha"
+  ],
+  "imagem": "bestiario/otyugh.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,4 m de altura, tentáculos alcançam até 4,5 m",
+    "peso": "500 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 6,
+    "destreza": 2,
+    "vigor": 4,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão no escuro e faro",
+      "descricao": "Enxerga no escuro e localiza presas e imundície pelo cheiro."
+    },
+    {
+      "nome": "Imune a doenças",
+      "descricao": "Vivendo entre dejetos e carniça, seu corpo não sofre com pragas e infecções."
+    },
+    {
+      "nome": "Mordida contaminada",
+      "descricao": "Transmite pela mordida uma febre imunda que drena Vigor da vítima com o passar dos dias."
+    },
+    {
+      "nome": "Tentáculos que agarram",
+      "descricao": "Dois tentáculos prendem e esmagam continuamente quem está por perto."
+    },
+    {
+      "nome": "Camuflagem no covil",
+      "descricao": "Entre a própria sujeira e lixo, torna-se muito mais difícil de detectar."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Devoradora de imundície",
+      "texto": "Vive em cloacas, fossas e pântanos tóxicos; quanto mais imundo o lugar, mais atrai a criatura para se instalar."
+    },
+    {
+      "titulo": "Aliança de conveniência",
+      "texto": "Certos povos subterrâneos alimentam otyughs com refugo e carne crua em troca de que a criatura os deixe em paz, às vezes até agindo como guardiã."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground",
+      "Swamp",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Otyugh",
+    "cr": "4",
+    "tipo": "aberração Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 10,
+      "con": 13,
+      "int": 5,
+      "sab": 13,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

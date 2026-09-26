@@ -1,0 +1,141 @@
+{
+  "ordem": 66,
+  "id": "mon-monstro-da-ferrugem",
+  "nome": "Monstro da Ferrugem",
+  "nomeIngles": "Rust Monster",
+  "categoria": "Aberração",
+  "papel": "soldado",
+  "conceito": "aberração Médio",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/monstro-da-ferrugem.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,5 m de comprimento",
+    "peso": "120 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 2,
+    "destreza": 5,
+    "vigor": 3,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 1,
+  "arte": {
+    "materia": 1
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Corrói metal (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Matéria · N2",
+      "arte": "materia"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Corrói metal",
+      "descricao": "toque das antenas enferruja e destrói armas e armaduras metálicas (reduz a Absorção do alvo)"
+    },
+    {
+      "nome": "Faro por metal",
+      "descricao": "Prontidão 3; localiza objetos metálicos a distância"
+    },
+    {
+      "nome": "Mordida fraca",
+      "descricao": "ataque secundário de pouco dano"
+    },
+    {
+      "nome": "Fuga cautelosa",
+      "descricao": "prefere recuar a enfrentar quem já perdeu o metal"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Criatura de antenas sensíveis que fareja metal a distância e se lança sobre ele com fome irresistível, mais interessada em devorar espadas e armaduras do que em ferir quem as carrega."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Vive em tocas subterrâneas e ruínas, remoendo tudo de ferro que encontra; é dócil até ser cercado ou impedido de alcançar seu alvo, e só então usa as antenas para enferrujar quem estiver no caminho."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Ferreiros e aventureiros contam histórias de covis inteiros enferrujados até o pó, e muitos juram que a praga chegou pela Fenda, arrastada de um plano onde nada de metal resiste."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Monstro da Ferrugem",
+    "cr": "3",
+    "tipo": "aberração Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 10,
+      "des": 17,
+      "con": 13,
+      "int": 2,
+      "sab": 13,
+      "car": 8
+    },
+    "pericias": [
+      "Prontidão 3"
+    ],
+    "nota": "Corrói metal (Su): Centelha 1.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

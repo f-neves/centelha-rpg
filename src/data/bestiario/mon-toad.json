@@ -1,0 +1,116 @@
+{
+  "ordem": 213,
+  "id": "mon-toad",
+  "nome": "Sapo",
+  "nomeIngles": "Toad",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/toad.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "10 centímetros de comprimento",
+    "peso": "poucos gramas"
+  },
+  "locomocao": {
+    "terra": 1
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 0,
+    "destreza": 3,
+    "vigor": 1,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 1,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Pele áspera e discreta",
+      "descricao": "Sua textura e coloração a escondem bem entre folhas e lama, tornando-a quase invisível quando imóvel."
+    },
+    {
+      "nome": "Visão na penumbra",
+      "descricao": "Enxerga bem mesmo com pouca luz e sente cheiros no ar úmido ao redor."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Inofensiva",
+      "texto": "Anfíbio de pele rugosa e hábitos discretos, não representa perigo algum além de ser presa fácil para muitos predadores."
+    },
+    {
+      "titulo": "Coro noturno",
+      "texto": "Aparece aos montes perto de brejos e poças, enchendo as noites úmidas com seu coaxar."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Swamp",
+      "Forest"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Toad",
+    "cr": "1/8",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 12,
+      "con": 6,
+      "int": 1,
+      "sab": 15,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 5,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

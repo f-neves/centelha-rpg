@@ -1,0 +1,122 @@
+{
+  "ordem": 185,
+  "id": "mon-deinonychus",
+  "nome": "Deinonychus",
+  "nomeIngles": "Dinosaur, Deinonychus",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/deinonychus.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "3 metros de comprimento",
+    "peso": "70 kg"
+  },
+  "locomocao": {
+    "terra": 6
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 4,
+    "destreza": 4,
+    "vigor": 5,
+    "influencia": 4,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão penumbra e faro",
+      "descricao": "Enxerga bem no escuro parcial e fareja presas com facilidade."
+    },
+    {
+      "nome": "Investida saltada",
+      "descricao": "Pode se lançar sobre a presa em um único movimento veloz, golpeando com garras e presas ao mesmo tempo, sem que o alvo tenha tempo de reagir."
+    },
+    {
+      "nome": "Caçador em bando",
+      "descricao": "Caça em grupos coordenados, cercando presas muito maiores do que um indivíduo sozinho conseguiria abater."
+    },
+    {
+      "nome": "Agilidade extrema",
+      "descricao": "Salta e equilibra-se com uma facilidade impressionante, usando isso tanto para perseguir quanto para emboscar."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Predador em alcateia",
+      "texto": "Corre com vários de sua espécie para cercar a presa e retalhá-la com as garras cortantes das patas traseiras."
+    },
+    {
+      "titulo": "Parentes próximos",
+      "texto": "Indivíduos menores e ainda mais ágeis são conhecidos como velociraptors; os maiores e mais avançados, como megaraptors."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Deinonychus",
+    "cr": "3",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": 19,
+      "int": 2,
+      "sab": 12,
+      "car": 14
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

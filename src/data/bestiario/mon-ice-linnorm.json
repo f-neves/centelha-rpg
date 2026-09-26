@@ -1,0 +1,144 @@
+{
+  "ordem": 249,
+  "id": "mon-ice-linnorm",
+  "nome": "Ice Linnorm",
+  "nomeIngles": "Ice Linnorm",
+  "categoria": "Dragão",
+  "papel": "chefe",
+  "conceito": "dragão Colossal",
+  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "tags": [
+    "dragao",
+    "centelha"
+  ],
+  "imagem": "bestiario/ice-linnorm.webp",
+  "porte": "Colossal",
+  "dimensoes": {
+    "medida": "24 m de comprimento",
+    "peso": "14.000 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 6,
+  "attrs": {
+    "forca": 15,
+    "destreza": 7,
+    "vigor": 13,
+    "influencia": 7,
+    "perspicacia": 4,
+    "compostura": 7,
+    "percepcao": 6,
+    "inteligencia": 1,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 2,
+    "prontidao": 3,
+    "integridade": 7
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 5,
+    "temperanca": 3,
+    "valor": 6
+  },
+  "willpower": 11,
+  "aparencia": 9,
+  "ataques": [
+    {
+      "nome": "Garras e mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 4,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "fraquezas": [
+    "fogo"
+  ],
+  "resistencias": [
+    "gelo"
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro Gélido",
+      "descricao": "Expele um cone de geleia congelante que gruda na pele e, um round depois, endurece em blocos de gelo, prendendo quem foi atingido no lugar e causando dano gelado contínuo até se libertar."
+    },
+    {
+      "nome": "Maldição do Gelo",
+      "descricao": "Quem o mata é amaldiçoado com vulnerabilidade permanente ao frio."
+    },
+    {
+      "nome": "Liberdade de Movimento",
+      "descricao": "Nunca é imobilizado, agarrado ou paralisado, como se estivesse sempre livre para agir."
+    },
+    {
+      "nome": "Veneno Gélido",
+      "descricao": "A mordida injeta um frio venenoso que continua drenando o Vigor da vítima por vários rounds até duas curas seguidas."
+    },
+    {
+      "nome": "Regeneração",
+      "descricao": "Cura feridas continuamente; apenas ferro frio interrompe essa recuperação."
+    },
+    {
+      "nome": "Visão Verdadeira",
+      "descricao": "Enxerga através de ilusões e trevas sem esforço."
+    },
+    {
+      "nome": "Imune ao Frio e Resistente a Magia",
+      "descricao": "O gelo não o afeta, feitiços hostis enfrentam grande resistência, e é imune a veneno, sono, paralisia e maldições comuns."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Senhor das Geleiras",
+      "texto": "Habita fendas glaciais e picos varridos pelo vento, onde nada mais sobrevive ao frio absoluto."
+    },
+    {
+      "titulo": "Mais Temido que seu Primo",
+      "texto": "Maior e mais antigo que o linorme das crostas, é lenda entre povos do norte, contada para explicar avalanches e frotas desaparecidas."
+    },
+    {
+      "titulo": "Prisão de Gelo",
+      "texto": "Suas vítimas às vezes são encontradas anos depois, perfeitamente preservadas dentro de blocos de gelo que nunca derretem no lugar certo."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Mountain"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Ice Linnorm",
+    "cr": "17",
+    "tipo": "dragão Colossal",
+    "tamanho": "colossal",
+    "valores": {
+      "for": 38,
+      "des": 22,
+      "con": 29,
+      "int": 5,
+      "sab": 20,
+      "car": 23
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

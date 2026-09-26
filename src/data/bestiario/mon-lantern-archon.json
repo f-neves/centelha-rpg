@@ -1,0 +1,131 @@
+{
+  "ordem": 145,
+  "id": "mon-lantern-archon",
+  "nome": "Arconte Lanterna",
+  "nomeIngles": "Archon, Lantern",
+  "categoria": "Celestial",
+  "papel": "soldado",
+  "conceito": "exterior (anjo) Pequeno",
+  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
+  "tags": [
+    "celestial",
+    "centelha"
+  ],
+  "imagem": "bestiario/lantern-archon.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "1 m de diâmetro",
+    "peso": "5 kg"
+  },
+  "locomocao": {
+    "voo": 6
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 0,
+    "destreza": 2,
+    "vigor": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 5,
+    "conviccao": 5,
+    "temperanca": 4,
+    "valor": 4
+  },
+  "willpower": 7,
+  "aparencia": 10,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "profano"
+  ],
+  "habilidades": [
+    {
+      "nome": "Raios de Luz",
+      "descricao": "Dispara feixes de luz pura à distância que atravessam qualquer proteção sobrenatural do alvo."
+    },
+    {
+      "nome": "Absorção Contra o Mal",
+      "descricao": "Sua forma luminosa reduz drasticamente qualquer dano físico infligido por criaturas malignas."
+    },
+    {
+      "nome": "Imunidades Celestiais",
+      "descricao": "É imune a eletricidade e a efeitos que transformam em pedra."
+    },
+    {
+      "nome": "Voo Perfeito",
+      "descricao": "Flutua e voa com controle impecável, praticamente sem esforço."
+    },
+    {
+      "nome": "Fusão",
+      "descricao": "Nove desses seres podem se fundir numa única entidade de vento e luz muito mais poderosa, permanecendo unidos por alguns instantes antes de se separar novamente."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Natureza",
+      "texto": "São globos de pureza espiritual e luz pálida, curiosos e amistosos, sempre dispostos a conversar e ajudar viajantes, embora sua força seja fraca demais para tarefas físicas comuns."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Brilham constantemente, controlando a cor e a intensidade da própria luz por prazer, e costumam modular esse brilho ao ritmo de música ou conversa."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Celestial",
+    "terreno": [
+      "Sky",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Lantern Archon",
+    "cr": "2",
+    "tipo": "exterior (anjo) Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 1,
+      "des": 11,
+      "con": 12,
+      "int": 6,
+      "sab": 11,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60 (perfeito): a esfera de luz não tem passo"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

@@ -1,0 +1,127 @@
+{
+  "ordem": 295,
+  "id": "mon-tengu",
+  "nome": "Tengu",
+  "nomeIngles": "Tengu",
+  "categoria": "Humanoide",
+  "papel": "capanga",
+  "conceito": "humanoide Médio",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+    "humanoide",
+    "centelha"
+  ],
+  "imagem": "bestiario/tengu.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,75 metro de altura",
+    "peso": "55 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 3,
+    "destreza": 5,
+    "vigor": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 4,
+    "inteligencia": 2,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentidos de corvo",
+      "descricao": "Enxerga bem em pouca luz e percebe detalhes que passam despercebidos à maioria, refletindo sua natureza alerta e aviária."
+    },
+    {
+      "nome": "Golpe certeiro",
+      "descricao": "Quando ataca um alvo distraído ou em desvantagem, seu golpe rápido causa dano extra antes que a vítima perceba o ataque."
+    },
+    {
+      "nome": "Bico afiado",
+      "descricao": "Além das armas, pode atacar com uma bicada rápida, um reflexo de sua ascendência de ave."
+    },
+    {
+      "nome": "Talento com espadas",
+      "descricao": "Nasce treinado no manejo de lâminas de todo tipo, empunhando-as com naturalidade incomum para um humanoide tão jovem."
+    },
+    {
+      "nome": "Dom para línguas",
+      "descricao": "Aprende idiomas com facilidade extraordinária, absorvendo o dobro do que outros povos conseguem no mesmo tempo."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Sociedade fechada",
+      "texto": "Vivem entre outros povos nas cidades, mas guardam seus costumes e assuntos internos longe de olhos estranhos."
+    },
+    {
+      "titulo": "Ninhos urbanos",
+      "texto": "Armazéns abandonados e prédios condenados viram poleiros e esconderijos, muitas vezes confundidos com covis de ladrões, e a confusão nem sempre é infundada."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Mountain",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Tengu",
+    "cr": "1/2",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 12,
+      "des": 17,
+      "con": 12,
+      "int": 10,
+      "sab": 15,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

@@ -1,0 +1,132 @@
+{
+  "ordem": 275,
+  "id": "mon-rat-swarm",
+  "nome": "Enxame de Ratos",
+  "nomeIngles": "Swarm, Rat",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/rat-swarm.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "enxame ocupa cerca de 3 metros de área, formado por centenas de ratos",
+    "peso": "variável, conforme o número de ratos"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 1,
+    "destreza": 4,
+    "vigor": 3,
+    "influencia": 0,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Massa enxameante",
+      "descricao": "Ocupa e ataca toda uma área ao mesmo tempo; armas comuns pouco fazem contra a multidão, só dano em área a afeta bem."
+    },
+    {
+      "nome": "Mordida doentia",
+      "descricao": "Espalha a mesma febre imunda dos ratos comuns; falhar num teste de Vigor causa dano contínuo debilitante."
+    },
+    {
+      "nome": "Distração",
+      "descricao": "Estar cercado por centenas de corpos minúsculos quebra a concentração de quem tenta usar Compostura para se focar ou conjurar."
+    },
+    {
+      "nome": "Trepador e nadador",
+      "descricao": "Sobe e nada tão rápido quanto se arrasta pelo chão."
+    },
+    {
+      "nome": "Sentidos aguçados",
+      "descricao": "Enxerga na penumbra e sente cheiros a distância, guiando o enxame até presas escondidas."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Fome que vira massacre",
+      "texto": "Centenas de ratos doentios se juntam num único organismo faminto, capaz de reduzir um adulto saudável a ossos em poucos minutos."
+    },
+    {
+      "titulo": "Presságio nos esgotos",
+      "texto": "Onde um enxame emerge, moradores sabem que a peste não está longe, pois os ratos parecem nascer da própria podridão acumulada nas profundezas das cidades."
+    },
+    {
+      "titulo": "Sem rosto, sem piedade",
+      "texto": "Não há líder nem inteligência guiando o enxame, apenas fome coletiva e instinto, o que o torna ainda mais aterrorizante para quem se vê cercado."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Urban",
+      "Underground",
+      "Swamp"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Rat Swarm",
+    "cr": "2",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 2,
+      "des": 15,
+      "con": 13,
+      "int": 2,
+      "sab": 13,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 15,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

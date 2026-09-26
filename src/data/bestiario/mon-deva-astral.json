@@ -1,0 +1,177 @@
+{
+  "ordem": 103,
+  "id": "mon-deva-astral",
+  "nome": "Deva Astral",
+  "nomeIngles": "Angel, Astral Deva",
+  "categoria": "Celestial",
+  "papel": "chefe",
+  "conceito": "exterior Médio (anjo)",
+  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
+  "tags": [
+    "celestial",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/deva-astral.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2 m de altura, envergadura 3,6 m",
+    "peso": "90 kg"
+  },
+  "locomocao": {
+    "terra": 5
+  },
+  "centelha": 6,
+  "attrs": {
+    "forca": 8,
+    "destreza": 5,
+    "vigor": 6,
+    "influencia": 7,
+    "perspicacia": 6,
+    "compostura": 6,
+    "percepcao": 5,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 6
+  },
+  "virtues": {
+    "compaixao": 5,
+    "conviccao": 5,
+    "temperanca": 4,
+    "valor": 5
+  },
+  "willpower": 11,
+  "aparencia": 10,
+  "arte": {
+    "raio": 3,
+    "fascinacao": 2,
+    "materia": 2
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Feitiços celestiais (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Cura / Proteção / Raio · N3–N4",
+      "arte": "raio"
+    },
+    {
+      "efeito": "Maça estonteante",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N2",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Mudar de forma",
+      "tipo": "feiticaria",
+      "alvo": "Matéria · N2",
+      "arte": "materia"
+    }
+  ],
+  "fraquezas": [
+    "profano"
+  ],
+  "habilidades": [
+    {
+      "nome": "Maça estonteante",
+      "descricao": "crítico atordoa o alvo, que perde a próxima ação"
+    },
+    {
+      "nome": "Golpe sagrado",
+      "descricao": "dano extra em ataques corpo a corpo contra criaturas malignas"
+    },
+    {
+      "nome": "Mudar de forma",
+      "descricao": "assume forma humana ou animal por cena"
+    },
+    {
+      "nome": "Feitiços celestiais",
+      "descricao": "1x por cena cura ferimentos, remove doença/maldição ou abençoa um aliado"
+    },
+    {
+      "nome": "Teleporte sem erro",
+      "descricao": "desloca-se a qualquer distância dentro do mesmo plano"
+    },
+    {
+      "nome": "Aura protetora",
+      "descricao": "aliados a 6m ganham +1d de Defesa contra o mal"
+    },
+    {
+      "nome": "Voo e imunidade",
+      "descricao": "voa livremente; imune a doença e veneno"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Conselheira serena e guerreira paciente, prefere curar e guiar a lutar, mas não hesita quando o mal ataca primeiro."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Viaja sozinha ou em pequenos grupos, muitas vezes disfarçada de peregrina ou curandeira entre os mortais que protege."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Compassiva, quase materna, mas com um fundo inflexível de justiça que não perdoa a crueldade deliberada."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "A Lei impede os deuses de tocar mortais, então uma deva astral é o mais próximo que uma vila esquecida chega de ver a face do sagrado; ainda assim ela evita revelar sua natureza, pois a Supressão ensinou os povos a temer até a bondade sobrenatural."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Celestial",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Armas 4, Ocultismo 4, Persuasão 4, Prontidão 4.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Deva Astral",
+    "cr": "14",
+    "tipo": "exterior Médio (anjo)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 26,
+      "des": 19,
+      "con": 21,
+      "int": 18,
+      "sab": 18,
+      "car": 23
+    },
+    "pericias": [
+      "Armas 4",
+      "Ocultismo 4",
+      "Persuasão 4",
+      "Prontidão 4"
+    ],
+    "nota": "Anjo mensageiro: Centelha 5.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

@@ -1,0 +1,133 @@
+{
+  "ordem": 19,
+  "id": "mon-orc",
+  "nome": "Orc",
+  "nomeIngles": "Orc",
+  "categoria": "Humanoide",
+  "papel": "capanga",
+  "conceito": "humanoide Médio",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+    "humanoide"
+  ],
+  "imagem": "bestiario/orc.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2 m de altura",
+    "peso": "95 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 5,
+    "destreza": 2,
+    "vigor": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 1,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Fúria de combate",
+      "descricao": "ataca com força bruta; dano corpo a corpo acima do humano"
+    },
+    {
+      "nome": "Visão no escuro",
+      "descricao": "enxerga sem penalidade no escuro"
+    },
+    {
+      "nome": "Alerta",
+      "descricao": "Prontidão 1; raramente é pego de surpresa"
+    },
+    {
+      "nome": "Selvagem",
+      "descricao": "luta até PV baixos, sem recuar"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Guerreiros ferozes que só respeitam força bruta e coragem provada em combate, e desprezam abertamente qualquer sinal de fraqueza."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Vivem em hordas ou tribos lideradas por quem vence em duelo direto; a lealdade dura só enquanto o chefe segue vencendo."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Têm vida curta e violenta, geram filhos cedo e marcham em bandos que saqueiam fronteiras e postos avançados isolados."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Assim como os goblins, são filhos ásperos moldados pelos anões a partir da própria rocha da montanha; livres desde o nascimento, nunca escravizados, cresceram bárbaros e sem lugar fixo, e por isso vagam pelas fronteiras selvagens de Mére e do White Wall perdido."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Plains",
+      "Mountain",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Orc",
+    "cr": "1/3",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 11,
+      "con": 12,
+      "int": 7,
+      "sab": 8,
+      "car": 6
+    },
+    "pericias": [
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

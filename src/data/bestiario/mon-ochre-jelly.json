@@ -1,0 +1,131 @@
+{
+  "ordem": 268,
+  "id": "mon-ochre-jelly",
+  "nome": "Geleia Ocre",
+  "nomeIngles": "Ochre Jelly",
+  "categoria": "Limo",
+  "papel": "elite",
+  "conceito": "limo Grande",
+  "descricao": "Massa informe que digere tudo que toca.",
+  "tags": [
+    "limo",
+    "centelha"
+  ],
+  "imagem": "bestiario/ochre-jelly.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "15 cm de altura em repouso, alastrando-se muito mais quando ativa",
+    "peso": "230 kg"
+  },
+  "locomocao": {
+    "terra": 1
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 5,
+    "destreza": 0,
+    "vigor": 8,
+    "influencia": 0,
+    "perspicacia": 0,
+    "compostura": 0,
+    "percepcao": 0,
+    "inteligencia": 0,
+    "raciocinio": 0
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 0,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 6,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Pseudópode",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "resistencias": [
+    "corte",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentido cego",
+      "descricao": "Percebe o ambiente ao redor sem depender de olhos, o que compensa sua quase completa cegueira."
+    },
+    {
+      "nome": "Corpo imune a golpes cortantes e perfurantes",
+      "descricao": "Armas de corte, de perfuração e eletricidade não a ferem, apenas a fazem se dividir; nada que afete a mente a atinge."
+    },
+    {
+      "nome": "Divisão",
+      "descricao": "Ao ser cortada, perfurada ou eletrocutada, racha-se em duas massas idênticas, cada uma com metade da vitalidade da original, até ficarem pequenas demais para se dividir de novo."
+    },
+    {
+      "nome": "Ácido que só dissolve carne",
+      "descricao": "Seu toque secreta um ácido que corrói apenas tecido vivo, deixando ossos e materiais inertes intactos."
+    },
+    {
+      "nome": "Abraço constritor",
+      "descricao": "Agarra e aperta a vítima continuamente, somando o ácido ao esmagamento."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Massa amarelo-alaranjada",
+      "texto": "Em repouso é uma poça baixa e pulsante; quando ativa, enrola-se numa bola trêmula e quase rola pelo chão ao se mover."
+    },
+    {
+      "titulo": "Costume funerário sombrio",
+      "texto": "Certos povos seguem um rito antigo de selar cadáveres com uma dessas criaturas dentro de sarcófagos, deixando-a dissolver a carne até restar apenas um esqueleto polido."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Ooze",
+    "terreno": [
+      "Underground",
+      "Swamp"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Ochre Jelly",
+    "cr": "5",
+    "tipo": "limo Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 14,
+      "des": 1,
+      "con": 22,
+      "int": "-",
+      "sab": 1,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 10,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

@@ -1,0 +1,133 @@
+{
+  "ordem": 23,
+  "id": "mon-homem-lagarto",
+  "nome": "Homem-lagarto",
+  "nomeIngles": "Lizardfolk",
+  "categoria": "Humanoide",
+  "papel": "soldado",
+  "conceito": "humanoide Médio (reptiliano)",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+    "humanoide"
+  ],
+  "imagem": "bestiario/homem-lagarto.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura (cerca de 2,4 m de comprimento com a cauda)",
+    "peso": "90 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 3,
+    "destreza": 2,
+    "vigor": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Nadador nato",
+      "descricao": "nada sem penalidade e prende a respiração por longos períodos"
+    },
+    {
+      "nome": "Rabada",
+      "descricao": "ataque de cauda além da arma principal"
+    },
+    {
+      "nome": "Atlético",
+      "descricao": "Atletismo 1; escala e salta bem"
+    },
+    {
+      "nome": "Sobrevivente do pântano",
+      "descricao": "Sobrevivência 1; rastreia e se camufla em áreas alagadas"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Frios e pragmáticos, avaliam cada situação apenas por sobrevivência e proveito, sem a noção humana de bem e mal."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Caçam nos pântanos e alagados, comem o que caem e guardam ovos em ninhos comunais aquecidos pelo sol."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Tribos lideradas por quem é mais capaz na caça ou na guerra, com decisões tomadas em consenso frio pelos mais velhos."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Prosperam nos brejos e deltas de Mére, onde a selva esconde tanto perigo quanto cidade escondida; para eles humanos e elfos são só mais uma presa ou aliança passageira, sem o peso das rixas antigas que outras raças carregam."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Swamp",
+      "Jungle"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Atletismo 1, Sobrevivência 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Homem-lagarto",
+    "cr": "1",
+    "tipo": "humanoide Médio (reptiliano)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 10,
+      "con": 13,
+      "int": 9,
+      "sab": 12,
+      "car": 10
+    },
+    "pericias": [
+      "Atletismo 1",
+      "Sobrevivência 1"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

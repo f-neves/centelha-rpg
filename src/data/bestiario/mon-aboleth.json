@@ -1,0 +1,184 @@
+{
+  "ordem": 73,
+  "id": "mon-aboleth",
+  "nome": "Aboleth",
+  "nomeIngles": "Aboleth",
+  "categoria": "Aberração",
+  "papel": "elite",
+  "conceito": "aberração Enorme",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/aboleth.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "6,5 m de comprimento, corpo alongado com tentáculos",
+    "peso": "2,7 t"
+  },
+  "locomocao": {
+    "natacao": 6
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 10,
+    "destreza": 3,
+    "vigor": 8,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 10,
+  "aparencia": 1,
+  "arte": {
+    "materia": 3,
+    "agua": 3,
+    "fascinacao": 4,
+    "adivinhacao": 2
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Muco que transforma pele (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Matéria · N3 + Água · N3",
+      "arte": "materia"
+    },
+    {
+      "efeito": "Domínio psíquico",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N4",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Telepatia",
+      "tipo": "feiticaria",
+      "alvo": "Adivinhação · N2",
+      "arte": "adivinhacao"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Muco transmutador",
+      "descricao": "toque de tentáculo transforma a pele do alvo, permitindo respirar água mas exigindo umidade constante (senão dano contínuo em terra seca)"
+    },
+    {
+      "nome": "Domínio psíquico",
+      "descricao": "falha em teste de Vontade torna o alvo Dominado, obedece ordens simples por cena"
+    },
+    {
+      "nome": "Telepatia",
+      "descricao": "comunica-se mentalmente com qualquer criatura em alcance amplo, sem barreira de idioma"
+    },
+    {
+      "nome": "Tentáculos múltiplos",
+      "descricao": "até quatro ataques secundários na mesma rodada"
+    },
+    {
+      "nome": "Memória ancestral",
+      "descricao": "bônus em Conhecimentos e Ocultismo por lembranças de eras esquecidas"
+    },
+    {
+      "nome": "Pele antiga e escamosa",
+      "descricao": "Absorção alta"
+    },
+    {
+      "nome": "Respiração aquática obrigatória",
+      "descricao": "fora d'água por muito tempo fica Enfraquecido progressivamente"
+    },
+    {
+      "nome": "Presença alienígena",
+      "descricao": "quem falha ao resistir ao domínio também fica Abalado pelo contato mental"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Paciente além de qualquer medida mortal, prefere manipular e escravizar a atacar diretamente. Fala dentro da mente das vítimas, sem precisar abrir a boca."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Vive em colônias antigas nas profundezas aquáticas, servido por escravos transformados: o limo de seu toque converte lentamente a vítima em criatura submissa e adaptada à água."
+    },
+    {
+      "titulo": "Hábitat e ecologia",
+      "texto": "Domina lagos subterrâneos, mares internos e ruínas afundadas, raramente emergindo à superfície. Suas memórias passam de geração em geração, e cada aboleth carrega dentro de si as lembranças de todos os seus ancestrais."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Arrogante e desdenhoso, considera-se herdeiro legítimo de um mundo que pertencia à sua espécie muito antes de elfos, anões ou homens caminharem sobre ele."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Os aboleths parecem mais velhos que a própria Fenda, talvez até mais velhos que a divisão da Primeira Luz em Centelhas individuais. Os sábios de Syl sussurram que são restos de uma era que o mundo esqueceu de matar."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground",
+      "Water"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Conhecimentos 4, Ocultismo 3, Percepção 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Aboleth",
+    "cr": "7",
+    "tipo": "aberração Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 26,
+      "des": 12,
+      "con": 20,
+      "int": 18,
+      "sab": 17,
+      "car": 17
+    },
+    "pericias": [
+      "Conhecimentos 4",
+      "Ocultismo 3",
+      "Percepção 3"
+    ],
+    "nota": "Poderes psíquicos e magia ancestral: Centelha 4.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "nado 60; em terra 10, e o aboleth não sai da água"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

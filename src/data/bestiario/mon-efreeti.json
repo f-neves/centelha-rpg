@@ -1,0 +1,178 @@
+{
+  "ordem": 109,
+  "id": "mon-efreeti",
+  "nome": "Efreeti",
+  "nomeIngles": "Genie, Efreeti",
+  "categoria": "Elemental",
+  "papel": "chefe",
+  "conceito": "exterior Grande (fogo)",
+  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+    "elemental",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/efreeti.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,6 m de altura",
+    "peso": "320 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 8,
+    "destreza": 5,
+    "vigor": 6,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4,
+    "percepcao": 4,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 9,
+  "aparencia": 5,
+  "arte": {
+    "fortuna": 4,
+    "fogo": 4
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Conceder desejos (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Fortuna · N4 / Matéria",
+      "arte": "fortuna"
+    },
+    {
+      "efeito": "Muralha de fogo",
+      "tipo": "feiticaria",
+      "alvo": "Fogo · N3",
+      "arte": "fogo"
+    },
+    {
+      "efeito": "Corpo em chamas",
+      "tipo": "feiticaria",
+      "alvo": "Fogo · N4",
+      "arte": "fogo"
+    }
+  ],
+  "fraquezas": [
+    "agua"
+  ],
+  "resistencias": [
+    "fogo"
+  ],
+  "habilidades": [
+    {
+      "nome": "Corpo em chamas",
+      "descricao": "quem acertar em combate corpo a corpo sofre dano de fogo"
+    },
+    {
+      "nome": "Muralha de fogo",
+      "descricao": "cria parede que causa dano a quem a atravessa"
+    },
+    {
+      "nome": "Conceder desejos",
+      "descricao": "pode realizar um desejo poderoso como favor, com custo narrativo"
+    },
+    {
+      "nome": "Imunidade a fogo",
+      "descricao": "sem efeito de dano de fogo; vulnerável a frio (dano aumentado)"
+    },
+    {
+      "nome": "Invisibilidade e viagem planar",
+      "descricao": "some de vista ou desloca-se entre planos"
+    },
+    {
+      "nome": "Voo",
+      "descricao": "desloca-se livremente pelos ares"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Tirano do fogo, constrói impérios de escravos e queima quem desafia sua autoridade, cumprindo tratos com prazer sádico pela letra fria do acordo."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Governa cidades inteiras de bronze e chamas no plano elemental, erguidas à custa de mãos escravizadas."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Cruel e orgulhoso, rival eterno dos djinns, vê a submissão alheia como prova viva de sua grandeza."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Reina sobre cidades como a lendária Cidade de Bronze, no coração do fogo elemental."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Efreets povoam as lendas de Mère como senhores de fornalhas antigas, e alguns forjadores desesperados ainda arriscam pactos com um deles para acender fornos que a Supressão proibiu de reacender por meios arcanos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Desert"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Ofícios 4, Manha 3, Prontidão 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Efreeti",
+    "cr": "8",
+    "tipo": "exterior Grande (fogo)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 17,
+      "con": 18,
+      "int": 14,
+      "sab": 15,
+      "car": 15
+    },
+    "pericias": [
+      "Ofícios 4",
+      "Manha 3",
+      "Prontidão 3"
+    ],
+    "nota": "Gênio do fogo, desejos: Centelha 3.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

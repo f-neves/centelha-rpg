@@ -1,0 +1,137 @@
+{
+  "ordem": 307,
+  "id": "mon-yellow-musk-creeper",
+  "nome": "Trepadeira de Almíscar Amarelo",
+  "nomeIngles": "Yellow Musk Creeper",
+  "categoria": "Planta",
+  "papel": "soldado",
+  "conceito": "planta Médio",
+  "descricao": "Vegetal desperto, lento e implacável.",
+  "tags": [
+    "planta"
+  ],
+  "imagem": "bestiario/yellow-musk-creeper.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "trepadeira que se estende por até 3 m ao redor do caule central",
+    "peso": "100 kg de massa vegetal"
+  },
+  "locomocao": {
+    "terra": 1
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 5,
+    "destreza": 4,
+    "vigor": 5,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 2,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 3,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "fogo"
+  ],
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Tremorsentido",
+      "descricao": "Percebe vibrações no solo ao redor, dispensando a visão para detectar presas próximas."
+    },
+    {
+      "nome": "Traços de planta",
+      "descricao": "Como planta, é imune a efeitos mentais, veneno, sono e outras aflições que dependem de uma mente vulnerável."
+    },
+    {
+      "nome": "Névoa de pólen",
+      "descricao": "Lança uma nuvem de pólen amarelo sobre um alvo à distância; se falhar em um teste de Compostura, a vítima fica enfeitiçada por vários instantes e caminha sozinha até o alcance da criatura."
+    },
+    {
+      "nome": "Criação de zumbi-de-almíscar",
+      "descricao": "Enterra tendrilhos no cérebro de uma vítima indefesa, corroendo sua mente aos poucos até a morte; horas depois, o corpo se ergue como um zumbi-de-almíscar a serviço da planta."
+    },
+    {
+      "nome": "Tendrilhos longos",
+      "descricao": "Seus vinhas alcançam alvos a boa distância mesmo sem a planta se mover, já que seu deslocamento é quase nulo."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Jardim de cadáveres",
+      "texto": "Cresce em cemitérios assombrados, campos de batalha e outros lugares onde a morte impregna o solo."
+    },
+    {
+      "titulo": "Procriação macabra",
+      "texto": "Mata os vivos, infesta seus corpos com sementes e pólen, e os anima como zumbis para espalhar sua prole."
+    },
+    {
+      "titulo": "Guardas descartáveis",
+      "texto": "Os zumbis-de-almíscar protegem a planta por alguns dias; quando surgem novos servos, os antigos vagueiam e se decompõem, semeando novas trepadeiras."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Plant",
+    "terreno": [
+      "Forest",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Yellow Musk Creeper",
+    "cr": "2",
+    "tipo": "planta Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 15,
+      "con": 16,
+      "int": "-",
+      "sab": 11,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 5,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

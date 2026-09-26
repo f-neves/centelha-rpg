@@ -1,0 +1,132 @@
+{
+  "ordem": 309,
+  "id": "mon-yeti",
+  "nome": "Yeti",
+  "nomeIngles": "Yeti",
+  "categoria": "Humanoide monstruoso",
+  "categoriaLegada": "Monstro",
+  "papel": "soldado",
+  "conceito": "humanoide monstruoso Grande",
+  "descricao": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha"
+  ],
+  "imagem": "bestiario/yeti.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,7 m de altura, coberto por pelagem branca e espessa",
+    "peso": "360 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 6,
+    "destreza": 3,
+    "vigor": 5,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Imunidade ao gelo",
+      "descricao": "Não sofre dano de frio, mas o fogo o fere com força redobrada."
+    },
+    {
+      "nome": "Corpo gélido",
+      "descricao": "Todo contato com suas garras ou golpes desarmados soma dano de frio adicional."
+    },
+    {
+      "nome": "Investida das garras",
+      "descricao": "Quando acerta com as duas garras no mesmo instante, causa um dano extra brutal, dilacerando a vítima."
+    },
+    {
+      "nome": "Olhar paralisante",
+      "descricao": "Quem cruza seu olhar a curta distância deve ter sucesso num teste de Compostura ou fica paralisado de terror por um instante; quem resiste fica imune a esse olhar específico pelo resto do dia."
+    },
+    {
+      "nome": "Escalador nato e furtivo na neve",
+      "descricao": "Sobe encostas íngremes com a mesma facilidade que caminha, e se torna quase invisível contra a neve."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Abomináveis das montanhas",
+      "texto": "Moradores das encostas baixas contam lendas de homens das neves que descem para roubar gado ou até pessoas, deixando apenas pegadas descalças no sangue sobre a neve."
+    },
+    {
+      "titulo": "Tribos isoladas",
+      "texto": "Vivem em pequenos clãs no alto das montanhas, isolados do contato com outras raças; os mais violentos são expulsos e se tornam saqueadores solitários."
+    },
+    {
+      "titulo": "Fronteira com o alheio",
+      "texto": "Suas moradas erguem-se onde o véu entre este mundo e outros se afina, e ninguém sabe dizer se os yetis vieram de lá ou apenas foram corrompidos pela proximidade."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Mountain",
+      "Cold"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Yeti",
+    "cr": "4",
+    "tipo": "humanoide monstruoso Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 12,
+      "con": 15,
+      "int": 9,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

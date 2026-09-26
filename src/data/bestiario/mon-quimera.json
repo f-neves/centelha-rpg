@@ -1,0 +1,159 @@
+{
+  "ordem": 58,
+  "id": "mon-quimera",
+  "nome": "Quimera",
+  "nomeIngles": "Chimera",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Grande",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/quimera.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "corpo e cauda 4,5 m, altura ao ombro 1,8 m, envergadura 6 m",
+    "peso": "600 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 6,
+    "destreza": 3,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 8,
+  "aparencia": 5,
+  "arte": {
+    "fogo": 2
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Sopro dracônico",
+      "tipo": "feiticaria",
+      "alvo": "Fogo · N2",
+      "arte": "fogo"
+    },
+    {
+      "efeito": "Voo",
+      "tipo": "natural",
+      "alvo": "asas (natural)"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro dracônico",
+      "descricao": "cone de 9m; dano alto, metade se Esquivar"
+    },
+    {
+      "nome": "Voo",
+      "descricao": "combate e persegue livremente pelo ar"
+    },
+    {
+      "nome": "Três cabeças, três mordidas",
+      "descricao": "ataca com leão, cabra e dragão no mesmo turno"
+    },
+    {
+      "nome": "Chifrada de cabra",
+      "descricao": "pode derrubar o alvo atingido"
+    },
+    {
+      "nome": "Sentidos triplos",
+      "descricao": "Prontidão 3; quase imune a emboscadas"
+    },
+    {
+      "nome": "Passo leve",
+      "descricao": "Furtividade 1 apesar do porte"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Três cabeças, três vontades: o leão comanda o corpo e a fúria, a cabra teima e desconfia, o dragão cospe o sopro que decide as caçadas. A criatura ruge, bale e queima quase ao mesmo tempo, e essa desarmonia interna a torna imprevisível até para quem a estuda de longe."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Vive em picos e desfiladeiros isolados, onde disputa território com grifos e mantícoras. Caça rebanhos e viajantes solitários, arrastando a presa para o ninho antes que as outras cabeças brigem pela parte maior."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Não há um só temperamento, há três presos ao mesmo fôlego: a soberba do leão, a obstinação da cabra, o apetite frio do dragão. Isso a torna cruel sem ser exatamente astuta, perigosa por impulso e não por plano."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Para o povo comum é prova viva de que a era anterior à Supressão gerava monstros que ninguém hoje sabe explicar; camponeses erguem capelas nas encostas onde uma foi avistada, pedindo à Verdejante que mantenha a fera longe do rebanho."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Mountain"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 3, Furtividade 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Quimera",
+    "cr": "7",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 13,
+      "con": 17,
+      "int": 4,
+      "sab": 13,
+      "car": 10
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Furtividade 1"
+    ],
+    "nota": "Sopro dracônico: Centelha 2.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

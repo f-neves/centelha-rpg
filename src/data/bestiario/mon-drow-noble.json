@@ -1,0 +1,130 @@
+{
+  "ordem": 198,
+  "id": "mon-drow-noble",
+  "nome": "Drow Noble",
+  "nomeIngles": "Drow Noble",
+  "categoria": "Humanoide",
+  "papel": "soldado",
+  "conceito": "humanoide Médio",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+    "humanoide",
+    "centelha"
+  ],
+  "imagem": "bestiario/drow-noble.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,6 metro de altura",
+    "peso": "55 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 3,
+    "destreza": 5,
+    "vigor": 3,
+    "influencia": 3,
+    "perspicacia": 2,
+    "compostura": 4,
+    "percepcao": 5,
+    "inteligencia": 2,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão no escuro",
+      "descricao": "Enxerga no escuro absoluto a uma distância considerável."
+    },
+    {
+      "nome": "Sensibilidade à luz",
+      "descricao": "Luzes muito fortes a atrapalham, deixando-a momentaneamente ofuscada."
+    },
+    {
+      "nome": "Toque sangrento",
+      "descricao": "Um toque que provoca Sangramento na vítima, um dano contínuo que persiste até ser tratado; pode fazer isso algumas vezes por cena."
+    },
+    {
+      "nome": "Canalizar energia negativa",
+      "descricao": "Emite uma onda de energia corruptora que fere todos ao redor, algumas vezes por cena."
+    },
+    {
+      "nome": "Toque do caos",
+      "descricao": "Um toque que introduz o acaso no destino do alvo: o próximo resultado importante que ele obtiver é sorteado de novo, para melhor ou para pior."
+    },
+    {
+      "nome": "Bênçãos sombrias",
+      "descricao": "Serve divindades das trevas e recebe delas poderes menores, como criar escuridão, iludir os sentidos alheios ou lançar favores divinos em batalha."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Sacerdotisa da noite eterna",
+      "texto": "Serve deusas do caos e da morte, liderando rituais sombrios nas profundezas das cidades drow."
+    },
+    {
+      "titulo": "Nobreza implacável",
+      "texto": "Nasceu em uma das grandes casas nobres, treinada desde cedo para intrigar, seduzir e eliminar rivais sem hesitar."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Drow Noble",
+    "cr": "3",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 12,
+      "des": 17,
+      "con": 12,
+      "int": 10,
+      "sab": 17,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

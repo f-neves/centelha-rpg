@@ -1,0 +1,123 @@
+{
+  "ordem": 172,
+  "id": "mon-giant-crab",
+  "nome": "Caranguejo Gigante",
+  "nomeIngles": "Giant Crab",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/giant-crab.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "largura 1,5 m",
+    "peso": "180 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 4,
+    "destreza": 3,
+    "vigor": 4,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Constrição",
+      "descricao": "Suas pinças agarram e esmagam a presa, causando dano contínuo enquanto o agarrão se mantém."
+    },
+    {
+      "nome": "Dependência de Água",
+      "descricao": "Suporta ficar fora d'água por um tempo limitado antes de correr risco de sufocar, como se estivesse se afogando."
+    },
+    {
+      "nome": "Casco Resistente",
+      "descricao": "Seu exoesqueleto grosso oferece proteção natural considerável contra golpes."
+    },
+    {
+      "nome": "Imunidade Mental",
+      "descricao": "Por não possuir mente articulada, é imune a efeitos que dependem de compreensão ou emoção."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Predador Costeiro",
+      "texto": "Alimenta-se tanto de algas e fungos quanto de peixes, aves marinhas e incautos que se aproximam demais da maré."
+    },
+    {
+      "titulo": "Variação da Espécie",
+      "texto": "Existem variedades de todos os tamanhos, da pequena caranguejeira de coco ao monstruoso naufragador de navios, cada uma adaptando cor e força ao ambiente onde vive."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Crab",
+    "cr": "2",
+    "tipo": "praga Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 13,
+      "con": 14,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

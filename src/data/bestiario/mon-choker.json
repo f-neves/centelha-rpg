@@ -1,0 +1,123 @@
+{
+  "ordem": 169,
+  "id": "mon-choker",
+  "nome": "Estrangulador",
+  "nomeIngles": "Choker",
+  "categoria": "Aberração",
+  "papel": "soldado",
+  "conceito": "aberração Pequeno",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha"
+  ],
+  "imagem": "bestiario/choker.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "1 m de altura",
+    "peso": "16 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 5,
+    "destreza": 4,
+    "vigor": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Estrangulamento",
+      "descricao": "Seus braços elásticos enroscam a garganta do alvo agarrado, impedindo que ele fale ou conjure poderes que exigem palavras de comando."
+    },
+    {
+      "nome": "Constrição",
+      "descricao": "Enquanto mantém o agarrão, aperta a vítima com força crescente, causando dano contínuo a cada instante em que ela permanece presa."
+    },
+    {
+      "nome": "Rapidez Sobrenatural",
+      "descricao": "Move-se com velocidade antinatural, agindo duas vezes em sequência dentro do mesmo turno."
+    },
+    {
+      "nome": "Visão no Escuro",
+      "descricao": "Enxerga perfeitamente na escuridão total, mesmo em túneis sem qualquer fonte de luz."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Caçador das Sombras",
+      "texto": "Vive nos limites de ruínas subterrâneas e postos abandonados, agarrando viajantes solitários com seus longos braços de borracha. Prefere isolar presas fracas antes de atacar."
+    },
+    {
+      "titulo": "Fascínio Doentio",
+      "texto": "Apesar da inteligência quase animal, guarda um fascínio estranho por objetos da civilização: anéis, broches e moedas roubadas de suas vítimas enchem seu covil."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Choker",
+    "cr": "2",
+    "tipo": "aberração Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 16,
+      "des": 14,
+      "con": 13,
+      "int": 4,
+      "sab": 13,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

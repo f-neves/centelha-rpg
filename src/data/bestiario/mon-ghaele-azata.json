@@ -1,0 +1,174 @@
+{
+  "ordem": 107,
+  "id": "mon-ghaele-azata",
+  "nome": "Ghaele (azata)",
+  "nomeIngles": "Ghaele",
+  "categoria": "Celestial",
+  "papel": "chefe",
+  "conceito": "exterior Médio (celestial)",
+  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
+  "tags": [
+    "celestial",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/ghaele-azata.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura",
+    "peso": "90 kg"
+  },
+  "locomocao": {
+    "terra": 5
+  },
+  "centelha": 6,
+  "attrs": {
+    "forca": 6,
+    "destreza": 6,
+    "vigor": 5,
+    "influencia": 7,
+    "perspicacia": 7,
+    "compostura": 7,
+    "percepcao": 6,
+    "inteligencia": 6,
+    "raciocinio": 6
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 2,
+    "prontidao": 3,
+    "integridade": 7
+  },
+  "virtues": {
+    "compaixao": 5,
+    "conviccao": 5,
+    "temperanca": 4,
+    "valor": 5
+  },
+  "willpower": 11,
+  "aparencia": 12,
+  "arte": {
+    "espirito": 3,
+    "raio": 3
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Forma de globo de luz (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Espírito · N3 + Fogo (luz)",
+      "arte": "espirito"
+    },
+    {
+      "efeito": "Raio de luz",
+      "tipo": "feiticaria",
+      "alvo": "Raio · N3",
+      "arte": "raio"
+    },
+    {
+      "efeito": "Feitiços",
+      "tipo": "feiticaria",
+      "alvo": "várias · N3–N4"
+    }
+  ],
+  "fraquezas": [
+    "profano"
+  ],
+  "habilidades": [
+    {
+      "nome": "Raio de luz",
+      "descricao": "ataque a 9m que cega o alvo se falhar em Resistência"
+    },
+    {
+      "nome": "Forma de globo de luz",
+      "descricao": "vira esfera luminosa, ganhando voo e Absorção alta contra ataques físicos"
+    },
+    {
+      "nome": "Feitiços feéricos",
+      "descricao": "lança livremente magias de ilusão, encantamento e proteção"
+    },
+    {
+      "nome": "Detectar pensamentos e o mal",
+      "descricao": "percebe intenções e alinhamento a até 18m"
+    },
+    {
+      "nome": "Resistência a magia",
+      "descricao": "chance de anular feitiços dirigidos a ela"
+    },
+    {
+      "nome": "Aura de beleza",
+      "descricao": "quem a encarar e falhar em Vontade fica Abalado ou fascinado"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Campeã caótica do bem, ágil e etérea, aparece para socorrer causas justas e some antes de ser agradecida."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Viaja com cortejos de fadas e heróis mortais que jurou proteger, sem hierarquia fixa, movida por afinidade e capricho."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Apaixonada e artística, ama a beleza tanto quanto a justiça e não vê contradição nenhuma nisso."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Vem de um plano de liberdade selvagem, atravessando o véu de espíritos quando sente um chamado justo."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Por vir de um plano ligado ao véu feérico, uma ghaele às vezes é confundida com espírito da natureza pelos animistas de Syl, que a recebem com reverência sem saber que lidam com uma potência muito além dos kami locais."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Celestial",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Ocultismo 4, Oratória 4, Prontidão 4.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Ghaele (azata)",
+    "cr": "13",
+    "tipo": "exterior Médio (celestial)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 20,
+      "des": 21,
+      "con": 18,
+      "int": 20,
+      "sab": 20,
+      "car": 24
+    },
+    "pericias": [
+      "Ocultismo 4",
+      "Oratória 4",
+      "Prontidão 4"
+    ],
+    "nota": "Cavaleiro-estrela: Centelha 5.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

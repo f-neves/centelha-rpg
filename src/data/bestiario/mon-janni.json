@@ -1,0 +1,128 @@
+{
+  "ordem": 220,
+  "id": "mon-janni",
+  "nome": "Janni",
+  "nomeIngles": "Janni",
+  "categoria": "Outsider",
+  "categoriaLegada": "Exterior",
+  "papel": "soldado",
+  "conceito": "exterior Médio",
+  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha"
+  ],
+  "imagem": "bestiario/janni.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura",
+    "peso": "80 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 5,
+    "destreza": 4,
+    "vigor": 3,
+    "influencia": 3,
+    "perspicacia": 4,
+    "compostura": 4,
+    "percepcao": 4,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 4,
+    "temperanca": 3,
+    "valor": 4
+  },
+  "willpower": 7,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sangue Elemental",
+      "descricao": "Absorve parte de qualquer dano de fogo e enxerga perfeitamente no escuro mais absoluto."
+    },
+    {
+      "nome": "Voo e Fuga",
+      "descricao": "Voa com perfeita destreza mesmo vestindo armadura pesada, e pode desaparecer da visão de todos à vontade para escapar de combates perdidos."
+    },
+    {
+      "nome": "Mudar o Tamanho",
+      "descricao": "Duas vezes por cena, pode encolher ou ampliar o corpo de um alvo com um gesto, a menos que ele resista com um teste de Compostura."
+    },
+    {
+      "nome": "Passagem entre Mundos",
+      "descricao": "Pode abrir uma passagem para os planos elementais ou para o plano material, levando consigo quem estiver disposto a atravessar."
+    },
+    {
+      "nome": "Resistência do Deserto",
+      "descricao": "Suporta longos períodos nos planos elementais sem sofrer dano, desde que retorne ao mundo material antes que o tempo se esgote."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "O mais humano dos gênios",
+      "texto": "Alguns dizem que o janni é o gênio mais próximo dos mortais, insulto que a maioria deles responde na ponta da espada."
+    },
+    {
+      "titulo": "Guardiões do oásis",
+      "texto": "Vivem isolados em desertos profundos, protegendo poços e oásis raros de saqueadores e viajantes imprudentes."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Monitor",
+    "terreno": [
+      "Desert"
+    ],
+    "clima": [
+      "Tropical",
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Janni",
+    "cr": "4",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 16,
+      "des": 15,
+      "con": 12,
+      "int": 14,
+      "sab": 15,
+      "car": 13
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

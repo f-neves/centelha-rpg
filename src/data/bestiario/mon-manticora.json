@@ -1,0 +1,147 @@
+{
+  "ordem": 57,
+  "id": "mon-manticora",
+  "nome": "Mantícora",
+  "nomeIngles": "Manticore",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Grande",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/manticora.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "Comprimento total 3,5 m (corpo e cauda)",
+    "peso": "380 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 7,
+    "destreza": 4,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Espinhos de cauda",
+      "tipo": "natural",
+      "alvo": "ataque natural (Atirador)"
+    },
+    {
+      "efeito": "Voo",
+      "tipo": "natural",
+      "alvo": "asas (natural)"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Voo",
+      "descricao": "combate e persegue livremente pelo ar"
+    },
+    {
+      "nome": "Saraivada de espinhos",
+      "descricao": "dispara vários espinhos da cauda a até 18m; pode atingir dois alvos na mesma rodada"
+    },
+    {
+      "nome": "Garras de leão",
+      "descricao": "ataque secundário logo após a mordida"
+    },
+    {
+      "nome": "Perseguição implacável",
+      "descricao": "Prontidão 2 e Atletismo 1; raramente perde o alvo de vista"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Caça sozinha, atacando de longe com uma saraivada de espinhos disparados da cauda antes de fechar a distância com garras e mandíbulas; prefere ferir e cansar a presa a arriscar-se em briga direta."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Astuta e vaidosa, com rosto quase humano que a torna ainda mais perturbadora; gosta de conversar com a presa antes de matá-la, saboreando o medo tanto quanto a carne."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Devora qualquer animal grande, mas prefere gente, o que a torna terror lendário de estradas e vilarejos isolados perto de seu território."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Vive nas franjas mais selvagens de Mére, onde a fama de território bárbaro esconde perigos antigos; comerciantes evitam certas trilhas havia gerações só por causa de histórias de mantícoras que falam antes de matar."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Mountain",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 2, Atletismo 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Mantícora",
+    "cr": "5",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 20,
+      "des": 15,
+      "con": 18,
+      "int": 7,
+      "sab": 12,
+      "car": 9
+    },
+    "pericias": [
+      "Prontidão 2",
+      "Atletismo 1"
+    ],
+    "nota": "Espinhos de cauda: Centelha 1.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

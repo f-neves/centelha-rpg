@@ -1,0 +1,126 @@
+{
+  "ordem": 159,
+  "id": "mon-giant-stag-beetle",
+  "nome": "Besouro-Veado Gigante",
+  "nomeIngles": "Giant Stag Beetle",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/giant-stag-beetle.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3 m de comprimento",
+    "peso": "400 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 6,
+    "destreza": 2,
+    "vigor": 5,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Mandíbulas Colossais",
+      "descricao": "Usa suas enormes mandíbulas em forma de galhada tanto para disputar território com rivais quanto para despedaçar inimigos."
+    },
+    {
+      "nome": "Atropelamento",
+      "descricao": "Ao avançar sobre um grupo de inimigos pequenos, pode simplesmente passar por cima deles, esmagando quem estiver no caminho."
+    },
+    {
+      "nome": "Visão no Escuro",
+      "descricao": "Enxerga perfeitamente mesmo na escuridão total."
+    },
+    {
+      "nome": "Voo Pesado",
+      "descricao": "Consegue voar por curtos trechos, embora de forma lenta e desengonçada."
+    },
+    {
+      "nome": "Mente Vazia",
+      "descricao": "Imune a efeitos que dependam de mente ou raciocínio."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Com quase três metros de comprimento, esses besouros gigantes viram um perigo sério quando invadem acampamentos de lenhadores atrás de madeira em decomposição, seu alimento favorito."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "O nome vem das mandíbulas enormes, parecidas com galhadas de cervo, usadas para disputar rivais na época de acasalamento e para afastar qualquer ameaça com igual ferocidade."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Stag Beetle",
+    "cr": "4",
+    "tipo": "praga Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 10,
+      "con": 15,
+      "int": "-",
+      "sab": 10,
+      "car": 9
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

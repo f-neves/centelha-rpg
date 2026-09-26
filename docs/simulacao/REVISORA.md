@@ -1193,7 +1193,7 @@ o commit são **seus**, e você decide. A Alabarda passando a bater de corte **n
    Três casos numa semana (04/09/2026), e **eles não têm a mesma forma**, o que
    muda como se procura:
 
-   - `gen-monsters.mjs:269` · `CAMPOS_MESA` · afirma GARANTIA, em letras: "esquecer disso aparece
+   - `gen-monsters.mjs:160` · `CAMPOS_MESA` · afirma GARANTIA, em letras: "esquecer disso aparece
      na hora: o valor chega `undefined` na tela". Chegou `null`, calado. É o caso
      puro, e é o que palavra de garantia acha;
    - `.github/workflows/validate.yml:54` · declarava TOLERÂNCIA com uma desculpa

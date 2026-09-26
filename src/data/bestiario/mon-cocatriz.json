@@ -1,0 +1,143 @@
+{
+  "ordem": 62,
+  "id": "mon-cocatriz",
+  "nome": "Cocatriz",
+  "nomeIngles": "Cockatrice",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Pequeno",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/cocatriz.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "60 cm de comprimento, envergadura 90 cm",
+    "peso": "11 kg"
+  },
+  "locomocao": {
+    "voo": 6
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 1,
+    "destreza": 5,
+    "vigor": 2,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 5,
+  "arte": {
+    "materia": 2
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Toque que petrifica (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Matéria · N3",
+      "arte": "materia"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Toque que petrifica",
+      "descricao": "bicada que petrifica em teste de Resistência falho"
+    },
+    {
+      "nome": "Voo ágil",
+      "descricao": "pequeno e veloz no ar; bônus de Esquiva contra ataques"
+    },
+    {
+      "nome": "Bicadas rápidas",
+      "descricao": "dois ataques de bico no mesmo turno"
+    },
+    {
+      "nome": "Sentidos de ave",
+      "descricao": "Prontidão 2"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Pequeno, ágil e agressivo para o tamanho, ataca em bando como galinhas ciumentas de seu terreiro, bicando com um toque que petrifica aos poucos quem não recua a tempo."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Vive em bandos que lembram criação de aves, com ninhos, ovos e disputa de hierarquia entre os machos de crista mais vistosa; defende o ninho com uma fúria desproporcional ao tamanho."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "É o pesadelo dos criadores de aves em Calin: um cocatriz solto num galinheiro é contado como praga e maldição, e caçá-lo virou ofício de aldeia, quase um rito de passagem para jovens caçadores."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Forest",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Cocatriz",
+    "cr": "3",
+    "tipo": "besta mágica Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 6,
+      "des": 17,
+      "con": 11,
+      "int": 2,
+      "sab": 13,
+      "car": 8
+    },
+    "pericias": [
+      "Prontidão 2"
+    ],
+    "nota": "Toque que petrifica: Centelha 2.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60; em terra 20: a cocatriz é bicho de asa"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

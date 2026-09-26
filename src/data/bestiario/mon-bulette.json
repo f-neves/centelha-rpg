@@ -1,0 +1,142 @@
+{
+  "ordem": 72,
+  "id": "mon-bulette",
+  "nome": "Bulette",
+  "nomeIngles": "Bulette",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Enorme",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/bulette.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "2,7 m de altura no dorso, cerca de 6 m do focinho à cauda",
+    "peso": "1,4 t"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 10,
+    "destreza": 3,
+    "vigor": 9,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Salto de emboscada",
+      "descricao": "emerge do solo e salta até 9m sobre a presa; bônus de Iniciativa na primeira rodada"
+    },
+    {
+      "nome": "Mordida trituradora",
+      "descricao": "dano alto corpo a corpo; acerto forte derruba o alvo (Caído)"
+    },
+    {
+      "nome": "Couraça de placas",
+      "descricao": "Absorção elevada, natural"
+    },
+    {
+      "nome": "Escavação veloz",
+      "descricao": "desloca-se sob a terra ignorando terreno difícil, some e reaparece em cena"
+    },
+    {
+      "nome": "Sentido de tremor",
+      "descricao": "localiza presas pelo contato com o solo mesmo sem visão"
+    },
+    {
+      "nome": "Fúria voraz",
+      "descricao": "bônus de dano contra alvos já Feridos ou Caídos"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Predador solitário que emerge do solo sem aviso e ataca por puro instinto voraz, sem malícia real. Devora quase tudo que se move e depois volta a cavar, indiferente ao que deixou para trás."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Vive sob campos, charnecas e bosques abertos, sentindo vibrações do solo a grande distância. Prefere terrenos macios onde possa se deslocar sob a terra com facilidade."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Não caça em bando nem forma qualquer laço, defendendo sozinha um território vasto. Nada além de comer e cavar parece lhe interessar."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "É uma fera relíquia de um mundo mais mágico que a Supressão tentou apagar. Camponeses de Calin e Mére contam histórias de campos que engolem gado inteiro, e as igrejas supressoras usam o bulette como prova viva de que a magia selvagem ainda espreita sob os pés de todos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Underground",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Atletismo 3, Prontidão 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Bulette",
+    "cr": "7",
+    "tipo": "besta mágica Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 27,
+      "des": 13,
+      "con": 23,
+      "int": 2,
+      "sab": 13,
+      "car": 6
+    },
+    "pericias": [
+      "Atletismo 3",
+      "Prontidão 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

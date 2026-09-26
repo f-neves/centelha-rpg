@@ -1,0 +1,128 @@
+{
+  "ordem": 267,
+  "id": "mon-cauchemar",
+  "nome": "Cauchemar",
+  "nomeIngles": "Cauchemar",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Exterior",
+  "papel": "chefe",
+  "conceito": "exterior Enorme",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha"
+  ],
+  "imagem": "bestiario/cauchemar.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "4 m de comprimento",
+    "peso": "1.600 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 11,
+    "destreza": 4,
+    "vigor": 8,
+    "influencia": 3,
+    "perspicacia": 4,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 5,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 6
+  },
+  "willpower": 10,
+  "aparencia": 0,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão no escuro",
+      "descricao": "Enxerga perfeitamente na escuridão total."
+    },
+    {
+      "nome": "Voo veloz",
+      "descricao": "Voa com grande velocidade e destreza no ar."
+    },
+    {
+      "nome": "Fumaça sufocante intensa",
+      "descricao": "Sua fumaça é ainda mais tóxica que a de um cavalo comum das trevas, cegando e enjoando quem não resistir em um teste de Vigor."
+    },
+    {
+      "nome": "Passeio etéreo e salto entre mundos",
+      "descricao": "Pode se tornar etéreo e cruzar planos de existência com frequência, sempre levando consigo um único cavaleiro."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Variante mais temível",
+      "texto": "Versão maior e mais perigosa dos corcéis das trevas, capaz de atravessar o Plano Etéreo junto de seu cavaleiro além de saltar entre realidades."
+    },
+    {
+      "titulo": "Cavalo de fogo infernal",
+      "texto": "Enorme, com pele de negrume absoluto, fogo escorrendo da crina e faíscas nos cascos; olhos onde ferve um brilho infernal."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Cauchemar",
+    "cr": "11",
+    "tipo": "exterior Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 31,
+      "des": 15,
+      "con": 21,
+      "int": 16,
+      "sab": 12,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

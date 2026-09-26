@@ -1,0 +1,169 @@
+{
+  "ordem": 70,
+  "id": "mon-treant",
+  "nome": "Treant",
+  "nomeIngles": "Treant",
+  "categoria": "Planta",
+  "papel": "chefe",
+  "conceito": "planta Enorme",
+  "descricao": "Vegetal desperto, lento e implacável.",
+  "tags": [
+    "planta",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/treant.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "7,5 m de altura",
+    "peso": "2 t"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 11,
+    "destreza": 2,
+    "vigor": 8,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 4,
+    "percepcao": 5,
+    "inteligencia": 3,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 2,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 8,
+  "aparencia": 3,
+  "arte": {
+    "vida": 2
+  },
+  "tech": {
+    "pele-de-pedra": true
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Animar árvores (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Vida · N2",
+      "arte": "vida"
+    },
+    {
+      "efeito": "Casca / RD",
+      "tipo": "proeza",
+      "alvo": "Pele de Pedra · Pele de Pedra (b4)",
+      "caminho": "pele-de-pedra"
+    }
+  ],
+  "fraquezas": [
+    "fogo"
+  ],
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Animar árvores",
+      "descricao": "transforma árvores próximas em aliados temporários que lutam ao seu lado"
+    },
+    {
+      "nome": "Casca reforçada",
+      "descricao": "Absorção alta contra golpes físicos"
+    },
+    {
+      "nome": "Braços longos",
+      "descricao": "alcance de 3m no ataque corpo a corpo; dano alto"
+    },
+    {
+      "nome": "Vulnerável ao fogo",
+      "descricao": "sofre dano adicional de ataques flamejantes"
+    },
+    {
+      "nome": "Guardião da floresta",
+      "descricao": "Persuasão 2 e Sobrevivência 3; negocia com plantas e animais"
+    },
+    {
+      "nome": "Confunde-se com a mata",
+      "descricao": "parece árvore comum quando imóvel, dificultando ser notado"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Árvore desperta há séculos, move-se e fala devagar, do jeito de quem pensa em estações e não em instantes; quando enfim decide agir, esmaga com a força bruta de um carvalho ancestral."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Guardião solitário de florestas antigas, aceita a companhia de dríades, sátiros e druidas, e trata madeireiros e incendiários como a pior ameaça que existe."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Paciente quase além da compreensão mortal, lento para confiar e mais lento ainda para esquecer um dano feito à sua floresta; uma vez irritado, carrega a raiva por gerações inteiras."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Em Syl é reverenciado quase como um kami de carne e casca, guardião físico do que os espíritos protegem de forma sutil; sua ligação antiga com os elfos, povo nascido do véu feérico, faz dele um dos poucos seres que ainda lembra o mundo antes da Queda e da Supressão."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Plant",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Persuasão 2, Sobrevivência 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Treant",
+    "cr": "8",
+    "tipo": "planta Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 29,
+      "des": 8,
+      "con": 21,
+      "int": 12,
+      "sab": 16,
+      "car": 13
+    },
+    "pericias": [
+      "Persuasão 2",
+      "Sobrevivência 3"
+    ],
+    "nota": "Animar árvores (Su): Centelha 2.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

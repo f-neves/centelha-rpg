@@ -1,0 +1,132 @@
+{
+  "ordem": 227,
+  "id": "mon-flesh-golem",
+  "nome": "Golem de Carne",
+  "nomeIngles": "Golem, Flesh",
+  "categoria": "Construto",
+  "categoriaLegada": "Monstro",
+  "papel": "elite",
+  "conceito": "constructo Grande",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricaoLegada": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha"
+  ],
+  "imagem": "bestiario/flesh-golem.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,4 m de altura",
+    "peso": "225 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 7,
+    "destreza": 2,
+    "vigor": 1,
+    "influencia": 0,
+    "perspicacia": 0,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 3,
+    "valor": 3
+  },
+  "willpower": 8,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Corpo Costurado",
+      "descricao": "Absorve parte de qualquer dano físico comum e é imune a quase toda magia que tentar afetá-lo diretamente."
+    },
+    {
+      "nome": "Fúria Descontrolada",
+      "descricao": "A cada instante de combate, cresce a chance de seu espírito preso se libertar e ele atacar tudo ao redor sem distinção, entrando em uma fúria que só seu criador talvez consiga acalmar."
+    },
+    {
+      "nome": "Fraqueza ao Frio e ao Fogo",
+      "descricao": "Dano de frio ou fogo deixa seu corpo lento e desajeitado por vários instantes."
+    },
+    {
+      "nome": "Vigor pela Centelha Elétrica",
+      "descricao": "Um choque elétrico bem direcionado na verdade restaura parte de sua vitalidade em vez de feri-lo."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Costurado da morte",
+      "texto": "Um amálgama grotesco de partes de cadáveres roubados, costurado em um único corpo de pele amarelada e cicatrizes grosseiras."
+    },
+    {
+      "titulo": "Passos rígidos",
+      "texto": "Move-se com um andar travado e desajeitado, como se nunca tivesse total controle sobre o próprio corpo emprestado."
+    },
+    {
+      "titulo": "Memórias que restam",
+      "texto": "Raramente, rumores falam de golens de carne que guardam fragmentos da memória de quem forneceu a cabeça usada em sua criação."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Construct",
+    "terreno": [
+      "Ruins",
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Flesh Golem",
+    "cr": "7",
+    "tipo": "constructo Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 20,
+      "des": 9,
+      "con": "-",
+      "int": "-",
+      "sab": 11,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

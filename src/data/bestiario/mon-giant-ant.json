@@ -1,0 +1,123 @@
+{
+  "ordem": 143,
+  "id": "mon-giant-ant",
+  "nome": "Formiga Gigante",
+  "nomeIngles": "Giant Ant",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/giant-ant.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2 m de comprimento",
+    "peso": "150 kg"
+  },
+  "locomocao": {
+    "terra": 5
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 4,
+    "destreza": 2,
+    "vigor": 5,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Mandíbulas Prensoras",
+      "descricao": "A mordida da formiga gigante pode prender a vítima no lugar, facilitando golpes seguintes."
+    },
+    {
+      "nome": "Ferrão Venenoso",
+      "descricao": "O ferrão injeta um veneno que enfraquece o corpo da vítima a cada rodada, drenando sua força física até ser tratado."
+    },
+    {
+      "nome": "Mente Simples",
+      "descricao": "Sendo um inseto, a formiga gigante é imune a efeitos que manipulam ou perturbam a mente."
+    },
+    {
+      "nome": "Escaladora Ágil",
+      "descricao": "Move-se com a mesma facilidade no chão e em superfícies verticais, perseguindo presas por paredes e barrancos."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Sociedade",
+      "texto": "Assim como suas primas minúsculas, as formigas gigantes vivem em colônias organizadas, com operárias, soldados, zangões e uma rainha, tudo em escala aterrorizante."
+    },
+    {
+      "titulo": "Caçada",
+      "texto": "Trabalham em conjunto, cercando presas maiores e usando o número para compensar qualquer desvantagem individual."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Any",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Ant",
+    "cr": "2",
+    "tipo": "praga Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 10,
+      "con": 17,
+      "int": "-",
+      "sab": 13,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

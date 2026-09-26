@@ -1,0 +1,126 @@
+{
+  "ordem": 296,
+  "id": "mon-tiefling",
+  "nome": "Tiefling",
+  "nomeIngles": "Tiefling",
+  "categoria": "Humanoide",
+  "categoriaLegada": "Exterior",
+  "papel": "capanga",
+  "conceito": "exterior Médio",
+  "descricao": "Mortal marcado por sangue infernal, vive à margem dos povos.",
+  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha"
+  ],
+  "imagem": "bestiario/tiefling.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,75 metro de altura",
+    "peso": "68 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 3,
+    "destreza": 5,
+    "vigor": 4,
+    "influencia": 1,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 3,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão no escuro",
+      "descricao": "Enxerga no breu quase tão bem quanto na penumbra, herança de seu sangue infernal."
+    },
+    {
+      "nome": "Sangue resistente",
+      "descricao": "Sua ascendência abissal ou infernal confere resistência parcial a frio, eletricidade e fogo."
+    },
+    {
+      "nome": "Manto de trevas",
+      "descricao": "Uma vez por dia pode envolver uma área em escuridão sobrenatural, útil para escapar ou emboscar."
+    },
+    {
+      "nome": "Golpe certeiro",
+      "descricao": "Ataca com precisão traiçoeira quando o alvo está distraído ou em desvantagem, causando dano adicional."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Marca do sangue estranho",
+      "texto": "Chifres pequenos, uma cauda farpada ou pupilas rasgadas denunciam a ascendência amaldiçoada que carregam desde o nascimento."
+    },
+    {
+      "titulo": "Vida à margem",
+      "texto": "Perseguidos pela aparência e fama que não escolheram, muitos escondem sua natureza ou vivem nas franjas da sociedade."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Urban",
+      "Plains",
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Tiefling",
+    "cr": "1/2",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 17,
+      "con": 14,
+      "int": 12,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

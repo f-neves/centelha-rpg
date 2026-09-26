@@ -1,0 +1,166 @@
+{
+  "ordem": 110,
+  "id": "mon-salamandra",
+  "nome": "Salamandra",
+  "nomeIngles": "Salamander",
+  "categoria": "Elemental",
+  "papel": "elite",
+  "conceito": "exterior Médio (fogo)",
+  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+    "elemental",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/salamandra.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2,7 m de comprimento total",
+    "peso": "100 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 5,
+    "destreza": 3,
+    "vigor": 5,
+    "influencia": 3,
+    "perspicacia": 4,
+    "compostura": 4,
+    "percepcao": 4,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 8,
+  "aparencia": 5,
+  "arte": {
+    "fogo": 2
+  },
+  "tech": {
+    "imobilizar": true
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Calor corporal (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Fogo · N2",
+      "arte": "fogo"
+    },
+    {
+      "efeito": "Constrição de cauda",
+      "tipo": "proeza",
+      "alvo": "Agarrão do Urso · Imobilizar (b2)",
+      "caminho": "agarrao-do-urso"
+    }
+  ],
+  "fraquezas": [
+    "agua"
+  ],
+  "resistencias": [
+    "fogo"
+  ],
+  "habilidades": [
+    {
+      "nome": "Calor corporal",
+      "descricao": "quem lutar corpo a corpo com ela sofre dano de fogo por rodada"
+    },
+    {
+      "nome": "Constrição de cauda",
+      "descricao": "agarra e esmaga o alvo, causando dano contínuo"
+    },
+    {
+      "nome": "Lança flamejante",
+      "descricao": "ataque corpo a corpo com alcance estendido"
+    },
+    {
+      "nome": "Imunidade a fogo",
+      "descricao": "sem efeito de dano de fogo; vulnerável a frio"
+    },
+    {
+      "nome": "Resistente a calor extremo",
+      "descricao": "move-se e sobrevive livremente em lava"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Guerreiro e ferreiro do fogo, torso serpentino terminando em cauda que crepita como brasa, ficando mais cruel quanto mais quente fica sua ira."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Serve efreets como soldado e artesão, forjando armas em fornalhas que nenhum mortal suportaria tocar."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Vive entre lava e brasas do plano elemental do fogo, raramente cruzando ao mundo material sem ser convocada."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Quando um culto ou um efreeti abre uma fresta para o plano do fogo, é comum que salamandras sejam as primeiras a atravessar, sempre a serviço de um senhor maior, nunca por conta própria."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Mountain",
+      "Desert"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Ofícios 3, Armas 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Salamandra",
+    "cr": "6",
+    "tipo": "exterior Médio (fogo)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 16,
+      "des": 13,
+      "con": 18,
+      "int": 14,
+      "sab": 15,
+      "car": 13
+    },
+    "pericias": [
+      "Ofícios 3",
+      "Armas 2"
+    ],
+    "nota": "Calor corporal, linhagem elemental: Centelha 2.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

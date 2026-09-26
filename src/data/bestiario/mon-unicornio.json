@@ -1,0 +1,170 @@
+{
+  "ordem": 121,
+  "id": "mon-unicornio",
+  "nome": "Unicórnio",
+  "nomeIngles": "Unicorn",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Grande",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/unicornio.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "corpo 2,4 m, altura 1,7 m aos ombros",
+    "peso": "350 kg"
+  },
+  "locomocao": {
+    "terra": 6
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 6,
+    "destreza": 5,
+    "vigor": 6,
+    "influencia": 7,
+    "perspicacia": 5,
+    "compostura": 7,
+    "percepcao": 6,
+    "inteligencia": 2,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 3,
+    "integridade": 7
+  },
+  "virtues": {
+    "compaixao": 3,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 10,
+  "arte": {
+    "cura": 3,
+    "conjuracao": 2
+  },
+  "tech": {
+    "imunidade": true
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Cura pelo chifre (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Cura · N3",
+      "arte": "cura"
+    },
+    {
+      "efeito": "Teleporte",
+      "tipo": "feiticaria",
+      "alvo": "Conjuração · N2",
+      "arte": "conjuracao"
+    },
+    {
+      "efeito": "Imune a veneno e encanto",
+      "tipo": "proeza",
+      "alvo": "Sangue Imune · Imunidade (b7)",
+      "caminho": "sangue-imune"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Toque curativo do chifre",
+      "descricao": "toque, 1x por cena por alvo: remove uma condição negativa ou restaura PV"
+    },
+    {
+      "nome": "Teleporte",
+      "descricao": "1x por cena, desloca-se instantaneamente até 12m ignorando obstáculos"
+    },
+    {
+      "nome": "Imune a veneno e encanto",
+      "descricao": "venenos e efeitos de encantamento não afetam o unicórnio"
+    },
+    {
+      "nome": "Chifre perfurante",
+      "descricao": "investida de ao menos 6m antes do golpe: dano alto"
+    },
+    {
+      "nome": "Sentidos aguçados",
+      "descricao": "+2d6 em Prontidão"
+    },
+    {
+      "nome": "Presença pura",
+      "descricao": "criaturas de má índole falham em Vontade para se aproximar dela"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Guarda sozinho florestas intocadas, fugindo ao mínimo sinal de corrupção ou mentira, mas defende com fúria total quem estiver sob seu cuidado."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Alimenta-se de ervas raras e água de nascentes puras; seu chifre, ao toque, purifica veneno e cura doença."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Sereno e incorruptível, julga o coração de quem se aproxima antes de qualquer palavra ser dita."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Encarna a pureza rara de uma Centelha alta; em Syl é quase reverenciado como um kami, e para as igrejas supressoras de Calin é uma prova incômoda de que nem toda magia é ameaça, prova que muitas vezes preferem esconder do povo."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fey",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Sobrevivência 4, Prontidão 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Unicórnio",
+    "cr": "3",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 17,
+      "con": 16,
+      "int": 11,
+      "sab": 21,
+      "car": 24
+    },
+    "pericias": [
+      "Sobrevivência 4",
+      "Prontidão 3"
+    ],
+    "nota": "Cura, teletransporte, naturalmente mágico: Centelha 3. Sab 21 → Percepção 6; Car 24 → Influência 7.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

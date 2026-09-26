@@ -1,0 +1,172 @@
+{
+  "ordem": 96,
+  "id": "mon-diabo-barbado",
+  "nome": "Diabo Barbado",
+  "nomeIngles": "Devil, Bearded (Barbazu)",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Diabo",
+  "papel": "elite",
+  "conceito": "exterior Médio (diabo)",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Tirano leal do Inferno, calculista e cruel.",
+  "tags": [
+    "diabo",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/diabo-barbado.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2,1 m de altura",
+    "peso": "90 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 4,
+    "destreza": 4,
+    "vigor": 5,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 5,
+    "temperanca": 5,
+    "valor": 4
+  },
+  "willpower": 9,
+  "aparencia": 1,
+  "arte": {
+    "morte": 2,
+    "conjuracao": 3
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Doença infernal (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N2",
+      "arte": "morte"
+    },
+    {
+      "efeito": "Teleporte",
+      "tipo": "feiticaria",
+      "alvo": "Conjuração · N3",
+      "arte": "conjuracao"
+    },
+    {
+      "efeito": "Trava a ferida (Ex)",
+      "tipo": "natural",
+      "alvo": "natural"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Glaive serrilhada",
+      "descricao": "ataque corpo a corpo com alcance, dano alto"
+    },
+    {
+      "nome": "Mordida com doença infernal",
+      "descricao": "falha em Fortitude = Enfermo, perde PV máximo até ser curado"
+    },
+    {
+      "nome": "Barba viva",
+      "descricao": "ao ser atacada corpo a corpo, pode Agarrar o atacante com a barba como reação"
+    },
+    {
+      "nome": "Trava a ferida",
+      "descricao": "reduz a cura recebida pelo alvo ferido por ela até o fim da cena"
+    },
+    {
+      "nome": "Teleporte",
+      "descricao": "feitiçaria, 1x por cena; desloca-se instantaneamente até 60m"
+    },
+    {
+      "nome": "Regeneração",
+      "descricao": "recupera PV toda rodada, exceto se ferida por arma benta ou de prata"
+    },
+    {
+      "nome": "Sangue infernal",
+      "descricao": "imune a fogo; resistente a ácido e frio"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Ataca na linha de frente com uma glaive brutal e uma barba viva que infecta feridas, avançando em formação disciplinada como soldado experiente."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Ocupa a base da tropa de combate infernal, invejoso dos diabos superiores e sempre em busca de provar valor suficiente para subir na hierarquia rígida do Inferno."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Quando exércitos vindos da Fenda avançam em formação e não em horda, os veteranos sabem: não é o caos do Abismo que chegou, é a disciplina fria do Inferno."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Armas 3, Prontidão 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Diabo Barbado",
+    "cr": "5",
+    "tipo": "exterior Médio (diabo)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": 17,
+      "int": 6,
+      "sab": 12,
+      "car": 10
+    },
+    "pericias": [
+      "Armas 3",
+      "Prontidão 3"
+    ],
+    "nota": "Teletransporte, doença infernal: Centelha 3.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

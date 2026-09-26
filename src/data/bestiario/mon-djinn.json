@@ -1,0 +1,175 @@
+{
+  "ordem": 108,
+  "id": "mon-djinn",
+  "nome": "Djinn",
+  "nomeIngles": "Djinn",
+  "categoria": "Elemental",
+  "papel": "elite",
+  "conceito": "exterior Grande (ar)",
+  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+    "elemental",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/djinn.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3 m de altura",
+    "peso": "200 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 6,
+    "destreza": 5,
+    "vigor": 5,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4,
+    "percepcao": 4,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 5,
+  "arte": {
+    "agua": 2,
+    "materia": 2,
+    "fascinacao": 1,
+    "vento": 4
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Ilusão, água e comida (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Água · N2 + Matéria · N2 + Fascinação · N1",
+      "arte": "agua"
+    },
+    {
+      "efeito": "Forma de redemoinho",
+      "tipo": "feiticaria",
+      "alvo": "Vento · N4",
+      "arte": "vento"
+    },
+    {
+      "efeito": "Voo",
+      "tipo": "feiticaria",
+      "alvo": "Vento · N5",
+      "arte": "vento"
+    }
+  ],
+  "resistencias": [
+    "corte",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Forma de redemoinho",
+      "descricao": "vira tornado que arrasta e derruba quem estiver a 3m"
+    },
+    {
+      "nome": "Voo veloz",
+      "descricao": "desloca-se pelos ares com grande velocidade"
+    },
+    {
+      "nome": "Véu",
+      "descricao": "muda a própria aparência ou a de uma área pequena"
+    },
+    {
+      "nome": "Criar água e comida",
+      "descricao": "conjura recursos do nada sem gastar ação em combate"
+    },
+    {
+      "nome": "Invisibilidade",
+      "descricao": "some da visão por uma cena"
+    },
+    {
+      "nome": "Domínio do vento",
+      "descricao": "ganha +1d de Esquiva contra ataques à distância"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Nobre do ar, orgulhoso e honrado, cumpre acordos ao pé da letra mas adora explorar as brechas na redação de um pedido."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Vive em palácios flutuantes cheios de música, dança e banquetes, cercado de servos e cortesãos de vento."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Vaidoso e prazeroso, valoriza etiqueta e boa companhia acima de qualquer riqueza material."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Um djinn preso numa lamparina ou anel é lenda recorrente nos contos de Mère e nas rotas de comércio de Calin; poucos mercadores confiam nessas histórias, mas todo aventureiro que encontra um sabe que barganhar com um ser do ar exige mais cautela do que qualquer contrato humano."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Sky",
+      "Desert"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Ofícios 3, Persuasão 3, Prontidão 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Djinn",
+    "cr": "5",
+    "tipo": "exterior Grande (ar)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 19,
+      "con": 14,
+      "int": 14,
+      "sab": 15,
+      "car": 15
+    },
+    "pericias": [
+      "Ofícios 3",
+      "Persuasão 3",
+      "Prontidão 2"
+    ],
+    "nota": "Gênio do ar, magia inata: Centelha 3.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

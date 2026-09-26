@@ -1,0 +1,120 @@
+{
+  "ordem": 209,
+  "id": "mon-cat",
+  "nome": "Gato",
+  "nomeIngles": "Cat",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/cat.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "45 centímetros de comprimento",
+    "peso": "4 a 7 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 1,
+    "destreza": 4,
+    "vigor": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 1,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Garras e presas",
+      "descricao": "Ataca com duas garras rápidas seguidas de uma mordida certeira."
+    },
+    {
+      "nome": "Mestra do disfarce",
+      "descricao": "Esconde-se e escala com uma facilidade que poucos animais de seu tamanho conseguem igualar."
+    },
+    {
+      "nome": "Faro e visão na penumbra",
+      "descricao": "Localiza presas pelo cheiro e enxerga bem mesmo com pouca luz."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Caçadora silenciosa",
+      "texto": "Pequena e independente, caça sozinha tanto em vilarejos quanto em campos abertos, sem se prender a dono algum."
+    },
+    {
+      "titulo": "Companhia incerta",
+      "texto": "Alguns a adotam como guardiã de celeiros; outros a temem como presságio quando cruza o caminho à noite."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Cat",
+    "cr": "1/4",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 3,
+      "des": 15,
+      "con": 8,
+      "int": 2,
+      "sab": 12,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

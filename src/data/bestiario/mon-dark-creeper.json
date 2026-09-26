@@ -1,0 +1,127 @@
+{
+  "ordem": 174,
+  "id": "mon-dark-creeper",
+  "nome": "Dark Creeper",
+  "nomeIngles": "Dark Creeper",
+  "categoria": "Humanoide",
+  "papel": "soldado",
+  "conceito": "humanoide Pequeno",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+    "humanoide",
+    "centelha"
+  ],
+  "imagem": "bestiario/dark-creeper.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "1,2 m de altura",
+    "peso": "36 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 2,
+    "destreza": 5,
+    "vigor": 4,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Explosão Mortal",
+      "descricao": "Ao morrer, seu corpo explode em um clarão branco ofuscante; todos próximos podem ficar cegos por vários instantes, e outros de sua espécie nas redondezas são cegados automaticamente."
+    },
+    {
+      "nome": "Ataque Furtivo",
+      "descricao": "Golpeia com precisão mortal quando pega o alvo desprevenido ou desprotegido, causando dano extra."
+    },
+    {
+      "nome": "Visão Perfeita no Escuro",
+      "descricao": "Enxerga com clareza total em qualquer escuridão, incluindo trevas mágicas mais densas."
+    },
+    {
+      "nome": "Uso de Veneno",
+      "descricao": "Manipula venenos com destreza absoluta, nunca correndo o risco de se intoxicar acidentalmente ao aplicá-los em suas lâminas."
+    },
+    {
+      "nome": "Cegueira pela Luz",
+      "descricao": "A luz forte ofusca e prejudica seus sentidos, tornando-o vulnerável fora da escuridão."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Ladrões das Trevas",
+      "texto": "Vivem em camadas subterrâneas profundas, saindo à noite para roubar e espalhar caos nas cidades vizinhas quando a fome de bagunça se torna irresistível."
+    },
+    {
+      "titulo": "Trapos e Fedor",
+      "texto": "Cobertos por infinitas camadas de pano imundo, nunca trocam as roupas, apenas empilham novas sobre as antigas, exalando um cheiro de suor e comida estragada."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dark Creeper",
+    "cr": "2",
+    "tipo": "humanoide Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 11,
+      "des": 17,
+      "con": 14,
+      "int": 9,
+      "sab": 10,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

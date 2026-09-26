@@ -1,0 +1,138 @@
+{
+  "ordem": 308,
+  "id": "mon-yeth-hound",
+  "nome": "Yeth Hound",
+  "nomeIngles": "Yeth Hound",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Exterior",
+  "papel": "soldado",
+  "conceito": "exterior Médio",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha"
+  ],
+  "imagem": "bestiario/yeth-hound.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,2 m de altura na cernelha, com asas membranosas como as de um morcego",
+    "peso": "180 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 5,
+    "destreza": 4,
+    "vigor": 4,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 5
+  },
+  "willpower": 7,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentidos noturnos",
+      "descricao": "Enxerga no escuro e fareja presas com precisão, jamais perdendo um rastro durante a caçada."
+    },
+    {
+      "nome": "Pele resistente a lâminas comuns",
+      "descricao": "Reduz muito o dano de armas convencionais; apenas prata consegue feri-lo com facilidade."
+    },
+    {
+      "nome": "Voo silencioso",
+      "descricao": "Cruza o céu noturno com asas invisíveis, podendo pousar ou alçar voo a qualquer instante sem esforço."
+    },
+    {
+      "nome": "Uivo apavorante",
+      "descricao": "Seu latido espalha terror numa grande área; quem falha um teste de Compostura fica em pânico por vários instantes, uma vez por cena para cada vítima."
+    },
+    {
+      "nome": "Mordida sinistra",
+      "descricao": "Seu ataque conta como corrompido para atravessar proteções contra o mal e pode deixar um alvo abalado ou, se já apavorado, paralisado de medo por um instante."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Caçadores da noite",
+      "texto": "Perseguem presas inteligentes por quilômetros através do céu noturno, temendo e evitando a luz do sol acima de tudo."
+    },
+    {
+      "titulo": "Companhia sinistra",
+      "texto": "Costumam ser vistos ao lado de bruxas da noite e caçadores cruéis, servindo como batedores alados."
+    },
+    {
+      "titulo": "Inimigos dos cães selvagens",
+      "texto": "Odeiam outras criaturas caninas, como worgs e barghests, e os atacam sempre que têm vantagem numérica."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Sky",
+      "Any"
+    ],
+    "clima": [
+      "Temperate",
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Yeth Hound",
+    "cr": "3",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 15,
+      "con": 15,
+      "int": 6,
+      "sab": 14,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

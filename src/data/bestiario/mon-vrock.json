@@ -1,0 +1,171 @@
+{
+  "ordem": 89,
+  "id": "mon-vrock",
+  "nome": "Vrock",
+  "nomeIngles": "Demon, Vrock",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Demônio",
+  "papel": "chefe",
+  "conceito": "exterior Grande (demônio)",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "tags": [
+    "demonio",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/vrock.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,4 m de altura (envergadura 4,5 m)",
+    "peso": "230 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 7,
+    "destreza": 4,
+    "vigor": 9,
+    "influencia": 5,
+    "perspicacia": 4,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 6
+  },
+  "willpower": 10,
+  "aparencia": 0,
+  "arte": {
+    "morte": 3,
+    "espirito": 4
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Esporos e dança da ruína (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Vida (esporos) + Morte · N3",
+      "arte": "morte"
+    },
+    {
+      "efeito": "Convocar demônios (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Espírito · N4",
+      "arte": "espirito"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Esporos entorpecentes",
+      "descricao": "explosão de 6m ao ficar Agonizante; falha em Fortitude = Enfraquecido"
+    },
+    {
+      "nome": "Dança da ruína",
+      "descricao": "se dois ou mais Vrocks dançarem 3 rodadas seguidas, liberam explosão de área grande com dano alto"
+    },
+    {
+      "nome": "Convocar demônios",
+      "descricao": "feitiçaria, 1x por cena; traz 1d4 dretches ou outro vrock para a luta"
+    },
+    {
+      "nome": "Garras e bico",
+      "descricao": "três ataques corpo a corpo na mesma ação, dano baixo cada"
+    },
+    {
+      "nome": "Grito ensurdecedor",
+      "descricao": "cone de 6m, 1x por cena; falha em Fortitude = Atordoado por 1 rodada"
+    },
+    {
+      "nome": "Voo",
+      "descricao": "asas de abutre, deslocamento de voo alto e ágil"
+    },
+    {
+      "nome": "Imagem espelhada",
+      "descricao": "feitiçaria; cria duplicatas ilusórias que dão bônus de Esquiva até serem atingidas"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Ataca em bando como abutres de guerra, gritando um chamado que atrai mais demônios e, quando cercado, dança um ritual frenético que espalha esporos venenosos sobre aliados e inimigos."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Prefere campos de batalha e ruínas cobertas de cadáveres, onde caça carniça tanto quanto combate."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Serve como tropa de choque descartável nas legiões do Abismo, mandado à frente para desgastar o inimigo antes que os demônios de comando entrem em ação."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Quando exércitos antigos entram em colapso perto da Fenda, dizem os veteranos, os corpos empilhados atraem algo com asas negras e cheiro de carniça: sinal de que os abutres do Abismo encontraram seu banquete."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 4, Atletismo 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Vrock",
+    "cr": "9",
+    "tipo": "exterior Grande (demônio)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 15,
+      "con": 25,
+      "int": 14,
+      "sab": 16,
+      "car": 16
+    },
+    "pericias": [
+      "Prontidão 4",
+      "Atletismo 3"
+    ],
+    "nota": "Esporos, dança da ruína: Centelha 4.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

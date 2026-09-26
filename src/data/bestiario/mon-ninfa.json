@@ -1,0 +1,176 @@
+{
+  "ordem": 114,
+  "id": "mon-ninfa",
+  "nome": "Ninfa",
+  "nomeIngles": "Nymph",
+  "categoria": "Fada",
+  "papel": "elite",
+  "conceito": "fada Médio",
+  "descricao": "Espírito da natureza, belo e caprichoso.",
+  "tags": [
+    "fada",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/ninfa.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,7 m de altura",
+    "peso": "55 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 2,
+    "destreza": 6,
+    "vigor": 3,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 2,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 3,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 10,
+  "aparencia": 8,
+  "arte": {
+    "fascinacao": 3,
+    "agua": 3
+  },
+  "tech": {
+    "beleza-inebriante": true
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Beleza cegante (Su)",
+      "tipo": "proeza",
+      "alvo": "Beleza Cativante · Beleza Inebriante (b8)",
+      "caminho": "beleza-cativante"
+    },
+    {
+      "efeito": "(alternativa mágica)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N3",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Feitiços druídicos",
+      "tipo": "feiticaria",
+      "alvo": "Vida / Água · N3",
+      "arte": "agua"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Beleza cegante",
+      "descricao": "quem a encarar e falhar em Vontade fica cego ou Abalado"
+    },
+    {
+      "nome": "Feitiços druídicos",
+      "descricao": "convoca natureza, cura ou controla plantas e água"
+    },
+    {
+      "nome": "Graça sobrenatural",
+      "descricao": "+1d de Esquiva e Defesa"
+    },
+    {
+      "nome": "Afinidade com água",
+      "descricao": "nada e respira debaixo d'água livremente"
+    },
+    {
+      "nome": "Fascínio",
+      "descricao": "quem a observar por mais de uma rodada pode ficar Enfeitiçado"
+    },
+    {
+      "nome": "Furtividade natural",
+      "descricao": "quase invisível em ambiente selvagem"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Guarda um recanto isolado (uma nascente, uma cachoeira, um bosque intocado) e reage à intrusão com humor imprevisível: pode acolher o viajante com graça ou desvelar sua beleza terrível até cegá-lo ou paralisá-lo de espanto."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Vive em clareiras, poças de água limpa e quedas d'água afastadas de qualquer caminho batido, lugares que ninguém mais visita há gerações."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Vaidosa e caprichosa, oscila entre a generosidade de uma protetora da natureza e a crueldade fria de quem não reconhece limites morais mortais."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Solitária por natureza, quando muito divide seu retiro com sátiros e dríades, cercada por poucos admiradores encantados que nunca mais partem."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "É eco vivo do véu de espíritos ligado à origem feérica dos elfos; em Syl é venerada como um kami das águas, enquanto as igrejas supressoras de Calin a tratam como tentação perigosa de um mundo mais mágico que devia ter ficado no passado."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fey",
+    "terreno": [
+      "Forest",
+      "Water"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Ocultismo 3, Furtividade 4, Persuasão 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Ninfa",
+    "cr": "7",
+    "tipo": "fada Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 10,
+      "des": 21,
+      "con": 13,
+      "int": 16,
+      "sab": 17,
+      "car": 19
+    },
+    "pericias": [
+      "Ocultismo 3",
+      "Furtividade 4",
+      "Persuasão 3"
+    ],
+    "nota": "Beleza cegante, magia druídica: Centelha 4.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

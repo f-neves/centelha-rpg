@@ -1,0 +1,179 @@
+{
+  "ordem": 97,
+  "id": "mon-erinia",
+  "nome": "Erínia",
+  "nomeIngles": "Erinyes",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Diabo",
+  "papel": "chefe",
+  "conceito": "exterior Médio (diabo)",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Tirano leal do Inferno, calculista e cruel.",
+  "tags": [
+    "diabo",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/erinia.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura (envergadura 4,5 m)",
+    "peso": "68 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 6,
+    "destreza": 7,
+    "vigor": 6,
+    "influencia": 6,
+    "perspicacia": 5,
+    "compostura": 6,
+    "percepcao": 5,
+    "inteligencia": 4,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 2,
+    "prontidao": 2,
+    "integridade": 6
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 6
+  },
+  "willpower": 10,
+  "aparencia": 0,
+  "arte": {
+    "fascinacao": 2,
+    "conjuracao": 4
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Corda de comando (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N2 / Forças",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Teleporte",
+      "tipo": "feiticaria",
+      "alvo": "Conjuração · N4",
+      "arte": "conjuracao"
+    },
+    {
+      "efeito": "Arco certeiro",
+      "tipo": "proeza",
+      "alvo": "Olho de Águia / Atirador",
+      "caminho": "olho-de-aguia"
+    },
+    {
+      "efeito": "Voo",
+      "tipo": "natural",
+      "alvo": "asas"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Arco certeiro",
+      "descricao": "proeza; ataque à distância de alcance longo, ignora parte da Absorção"
+    },
+    {
+      "nome": "Corda de comando",
+      "descricao": "feitiçaria; à distância, Agarra o alvo e, se a Vontade falhar, o obriga a obedecer uma ordem simples"
+    },
+    {
+      "nome": "Espada flamejante",
+      "descricao": "ataque corpo a corpo alternativo com dano extra"
+    },
+    {
+      "nome": "Teleporte",
+      "descricao": "feitiçaria, 1x por cena; desloca-se instantaneamente até 60m"
+    },
+    {
+      "nome": "Voo",
+      "descricao": "asas emplumadas, deslocamento de voo alto e combate aéreo"
+    },
+    {
+      "nome": "Visão verdadeira",
+      "descricao": "enxerga através de ilusões, disfarces e invisibilidade"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Combate com arco e corda que prende a alma tanto quanto o corpo, elegante e calculista, escolhendo alvos que rendem mais como almas contratadas do que como inimigos mortos."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Recruta mortais para o Inferno através de pactos e contratos sedutores, aparecendo como anjo caído de beleza terrível para conquistar a confiança antes de fechar o acordo."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Fria, disciplinada e vaidosa, guarda um resquício da glória celestial que um dia teve antes de cair, e despreza quem se rende fácil demais."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "As ortodoxias de Calin pregam que ela é a prova de que até um celestial pode ceder à tentação da Fenda, e usam sua lenda para justificar a desconfiança até dos anjos que dizem servir a Lei."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Atirador 4, Persuasão 3, Prontidão 4.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Erínia",
+    "cr": "8",
+    "tipo": "exterior Médio (diabo)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 20,
+      "des": 23,
+      "con": 21,
+      "int": 14,
+      "sab": 18,
+      "car": 21
+    },
+    "pericias": [
+      "Atirador 4",
+      "Persuasão 3",
+      "Prontidão 4"
+    ],
+    "nota": "Corda de comando, teletransporte, voo: Centelha 4.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

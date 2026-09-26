@@ -1,0 +1,138 @@
+{
+  "ordem": 45,
+  "id": "mon-cobra-constritora",
+  "nome": "Cobra Constritora",
+  "nomeIngles": "Constrictor Snake",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/cobra-constritora.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "Comprimento total 3,5 m",
+    "peso": "40 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 5,
+    "destreza": 5,
+    "vigor": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Constrição",
+      "tipo": "proeza",
+      "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
+      "caminho": "agarrao-do-urso"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Constrição",
+      "descricao": "após morder e agarrar, causa dano contínuo por rodada até o alvo se soltar (Atletismo)"
+    },
+    {
+      "nome": "Corpo flexível",
+      "descricao": "desliza por espaços apertados; bônus em Esquiva"
+    },
+    {
+      "nome": "Sentido térmico",
+      "descricao": "detecta presas pelo calor mesmo no escuro total"
+    },
+    {
+      "nome": "Sem membros",
+      "descricao": "resistente a Derrubar"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Não usa veneno: enrosca o corpo em torno da presa e aperta a cada expiração dela, até sufocar, depois engole inteiro. Ataca só quando faminta ou encurralada."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Prefere selvas úmidas e ribeirinhas quentes, comuns nas florestas fechadas de Mére e nos brejos do interior de Syl."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Predadora solitária e paciente, caça por emboscada em galhos baixos ou tocas alheias; sua pele grossa e seu tamanho a deixam quase sem inimigos naturais adultos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Jungle",
+      "Swamp"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 2, Atletismo 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Cobra Constritora",
+    "cr": "2",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 17,
+      "con": 13,
+      "int": 1,
+      "sab": 12,
+      "car": 2
+    },
+    "pericias": [
+      "Furtividade 2",
+      "Atletismo 2"
+    ],
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

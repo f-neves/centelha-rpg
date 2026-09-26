@@ -74,7 +74,7 @@ tabela por mais que algumas semanas.
 | `armaduras_escudos_centelha.txt` | **ARQUIVADO** em 08/09/2026 → `legacy/raiz/armaduras_escudos_centelha.txt` | zero citação; motivo em `legacy/raiz/README.md` |
 | `arremesso-bench.html` | TRABALHO | citado por `Pendencias.md`; bancada do arremesso, régua já aplicada |
 | `combate-tempo-bench.html` | TRABALHO | citado por `scripts/test-bench-tempo.mjs`, `scripts/gen-bench-tempo.mjs`, `scripts/lib-tempo.mjs` (código real) |
-| `conversao-monstros.html` | TRABALHO | citado por `scripts/gen-bestiario.mjs`, `scripts/shot-conv.mjs` (código real) |
+| `conversao-monstros.html` | TRABALHO | citado por `scripts/shot-conv.mjs` (código real); desde o B14 não é mais fonte do bestiário (o `scripts/migrar-bestiario.mjs` o lê no git, no commit da migração) |
 | `ficha-xp-2.html` | RESTO, mas citado | só `XP_revisao.md` cita (que é ele mesmo candidato a arquivar). Os dois têm o mesmo destino |
 | `ficha-xp.html` | RESTO, mas citado | só `REVISAR.md` cita, que já é histórico por natureza. Consumidor fraco: não é código nem doc vivo |
 | `luas-bench.html` | TRABALHO | citado por `scripts/test-luas.mjs` (código real) |

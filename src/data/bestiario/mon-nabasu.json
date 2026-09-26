@@ -1,0 +1,132 @@
+{
+  "ordem": 178,
+  "id": "mon-nabasu",
+  "nome": "Nabasu",
+  "nomeIngles": "Demon, Nabasu",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Demônio",
+  "papel": "chefe",
+  "conceito": "exterior (demônio) Médio",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "tags": [
+    "demonio",
+    "centelha"
+  ],
+  "imagem": "bestiario/nabasu.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura",
+    "peso": "90 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 7,
+    "destreza": 5,
+    "vigor": 7,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 4,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 6
+  },
+  "willpower": 9,
+  "aparencia": 0,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Roubo de Vida",
+      "descricao": "Cada vítima transformada em morto-vivo por seu olhar o fortalece: ganha mais vigor, precisão e poder mágico a cada alma consumida, até amadurecer em algo ainda pior."
+    },
+    {
+      "nome": "Olhar que Rouba a Morte",
+      "descricao": "Uma vez por dia, fixa os olhos em todos ao redor; quem falha em resistir perde vitalidade permanentemente, e um humano morto dessa forma se levanta como morto-vivo sob seu comando."
+    },
+    {
+      "nome": "Ataque Furtivo",
+      "descricao": "Golpeia com precisão extra quando ataca um alvo desprevenido."
+    },
+    {
+      "nome": "Resistências Infernais",
+      "descricao": "Resiste a fogo, frio e ácido; é imune a eletricidade, veneno, paralisia e efeitos de morte."
+    },
+    {
+      "nome": "Poderes Sombrios",
+      "descricao": "Pode enfraquecer inimigos à distância, imobilizar vários de uma vez, silenciar uma área ou drenar vida com um toque vampírico."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Nascido da Gula",
+      "texto": "Formado a partir das almas de glutões perversos, nasce diretamente no mundo material para se alimentar de inocentes até saciar sua fome insaciável."
+    },
+    {
+      "titulo": "Ciclo Sem Fim",
+      "texto": "Rumores sugerem que mesmo depois de retornar ao Abismo saciado, seu crescimento jamais cessa, e que formas ainda mais terríveis aguardam em seu futuro."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Nabasu",
+    "cr": "8",
+    "tipo": "exterior (demônio) Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 22,
+      "des": 17,
+      "con": 22,
+      "int": 15,
+      "sab": 16,
+      "car": 19
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

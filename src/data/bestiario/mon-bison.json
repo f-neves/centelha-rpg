@@ -1,0 +1,123 @@
+{
+  "ordem": 236,
+  "id": "mon-bison",
+  "nome": "Bisão",
+  "nomeIngles": "Bison",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/bison.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "até 2,1 m de altura no ombro e 3,6 m de comprimento",
+    "peso": "1.000 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 9,
+    "destreza": 2,
+    "vigor": 6,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Chifrada poderosa",
+      "descricao": "Sua marrada acerta com força brutal, capaz de arremessar um adversário para trás."
+    },
+    {
+      "nome": "Debandada em manada",
+      "descricao": "Junto de outros bisões, atropela tudo à frente com ainda mais força quando em grupo."
+    },
+    {
+      "nome": "Atropelamento",
+      "descricao": "Pode simplesmente passar por cima de inimigos menores em sua carga."
+    },
+    {
+      "nome": "Sentidos de manada",
+      "descricao": "Faro e visão adaptados à penumbra ajudam a detectar perigo à distância."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Gigante das pradarias",
+      "texto": "Pesando mais de uma tonelada, o bisão pasta livre nas planícies frias e temperadas, formando manadas imensas."
+    },
+    {
+      "titulo": "Fúria de cio",
+      "texto": "Na época de acasalamento, touros adultos se enfrentam com violência, por vezes até a morte, disputando fêmeas."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Cold",
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Bison",
+    "cr": "4",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 27,
+      "des": 10,
+      "con": 19,
+      "int": 2,
+      "sab": 11,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

@@ -1,0 +1,179 @@
+{
+  "ordem": 104,
+  "id": "mon-planetar",
+  "nome": "Planetar",
+  "nomeIngles": "Angel, Planetar",
+  "categoria": "Celestial",
+  "papel": "chefe",
+  "conceito": "exterior Grande (anjo)",
+  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
+  "tags": [
+    "celestial",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/planetar.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,7 m de altura, envergadura 6 m",
+    "peso": "225 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 7,
+  "attrs": {
+    "forca": 9,
+    "destreza": 5,
+    "vigor": 8,
+    "influencia": 7,
+    "perspicacia": 7,
+    "compostura": 8,
+    "percepcao": 8,
+    "inteligencia": 7,
+    "raciocinio": 7
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 4,
+    "integridade": 8
+  },
+  "virtues": {
+    "compaixao": 5,
+    "conviccao": 5,
+    "temperanca": 4,
+    "valor": 5
+  },
+  "willpower": 12,
+  "aparencia": 11,
+  "arte": {
+    "morte": 4,
+    "protecao": 4
+  },
+  "tech": {
+    "regeneracao": true
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Feitiços de clérigo (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Cura / Vida / Proteção / Morte · N4",
+      "arte": "morte"
+    },
+    {
+      "efeito": "Aura sagrada",
+      "tipo": "feiticaria",
+      "alvo": "Proteção · N4",
+      "arte": "protecao"
+    },
+    {
+      "efeito": "Regeneração",
+      "tipo": "proeza",
+      "alvo": "Cerne Vital · Regeneração (b9)",
+      "caminho": "cerne-vital"
+    }
+  ],
+  "fraquezas": [
+    "profano"
+  ],
+  "habilidades": [
+    {
+      "nome": "Espada de luz cegante",
+      "descricao": "acerto forte pode cegar o alvo se falhar em Vontade"
+    },
+    {
+      "nome": "Aura sagrada",
+      "descricao": "aliados a 9m ganham +1d de Absorção e Defesa contra malignos"
+    },
+    {
+      "nome": "Regeneração",
+      "descricao": "recupera PV toda rodada; só dano de origem maligna interrompe"
+    },
+    {
+      "nome": "Feitiços de clérigo supremo",
+      "descricao": "1x por cena cura em massa, dissipa magia ou concede proteção"
+    },
+    {
+      "nome": "Verbo verdadeiro",
+      "descricao": "compreende e fala qualquer idioma, mesmo mensagens mentais"
+    },
+    {
+      "nome": "Teleporte instantâneo",
+      "descricao": "desloca-se sem gastar ação extra dentro da cena"
+    },
+    {
+      "nome": "Voo e imunidade",
+      "descricao": "voa livremente; imune a doença e veneno"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Soldado de elite da guerra eterna contra o mal, age com determinação sombria e reserva a compaixão para depois da batalha."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Comanda hostes de archons e devas em campanhas específicas, sempre sob ordens de potências maiores."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Grave, quase taciturno, carrega o peso de eras de conflito e não se ilude sobre o custo real da guerra."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Um planetar só pisa em Uldun quando um mal antigo desperta, seja um horror vindo da Fenda ou um culto que rasga a Supressão; sua presença costuma ser o primeiro sinal de que a crise é grave demais para mortais resolverem sozinhos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Celestial",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Armas 5, Ocultismo 5, Persuasão 4, Prontidão 5. Centelha acima do teto mortal (entidade).",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Planetar",
+    "cr": "16",
+    "tipo": "exterior Grande (anjo)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 27,
+      "des": 19,
+      "con": 24,
+      "int": 22,
+      "sab": 25,
+      "car": 24
+    },
+    "pericias": [
+      "Armas 5",
+      "Ocultismo 5",
+      "Persuasão 4",
+      "Prontidão 5"
+    ],
+    "nota": "Anjo guerreiro: Centelha 6.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

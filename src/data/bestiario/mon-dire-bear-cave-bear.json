@@ -1,0 +1,131 @@
+{
+  "ordem": 156,
+  "id": "mon-dire-bear-cave-bear",
+  "nome": "Urso Atroz",
+  "nomeIngles": "Dire Bear",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/dire-bear-cave-bear.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,5 m de comprimento",
+    "peso": "900 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 9,
+    "destreza": 3,
+    "vigor": 7,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Garras Devastadoras",
+      "descricao": "Rasga o alvo com as duas garras e pode agarrá-lo, mantendo-o preso para continuar o ataque com a mordida."
+    },
+    {
+      "nome": "Mordida Selvagem",
+      "descricao": "Uma vez com a presa agarrada, prefere abandonar as garras e cravar as presas repetidamente, muito mais disposto a isso do que um urso comum."
+    },
+    {
+      "nome": "Reflexos Fulminantes",
+      "descricao": "Reage com uma rapidez impressionante para um animal de seu tamanho, quase sempre agindo antes do adversário."
+    },
+    {
+      "nome": "Vontade Inabalável",
+      "descricao": "Resiste com firmeza a medo, ilusões e tentativas de dominar sua mente."
+    },
+    {
+      "nome": "Faro e Visão Crepuscular",
+      "descricao": "Sente o cheiro de presas a distância e enxerga bem mesmo com pouca luz."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Natureza",
+      "texto": "Maior, mais agressivo e muito mais letal que seus primos comuns, o urso das cavernas é um horror primitivo que sobreviveu desde eras esquecidas."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Evita as regiões mais civilizadas do mundo, preferindo os recantos mais remotos da natureza selvagem; é curto de temperamento e rápido a se enfurecer com qualquer intruso em seu território."
+    },
+    {
+      "titulo": "Caçada",
+      "texto": "Avistar um urso das cavernas é raro e aterrorizante, mesmo para quem já conhece ursos comuns."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Mountain"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Bear (Cave Bear)",
+    "cr": "7",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 25,
+      "des": 13,
+      "con": 21,
+      "int": 2,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

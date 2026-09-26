@@ -1,0 +1,128 @@
+{
+  "ordem": 233,
+  "id": "mon-hell-hound",
+  "nome": "Cão Infernal",
+  "nomeIngles": "Hell Hound",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Elemental",
+  "papel": "soldado",
+  "conceito": "exterior (fogo) Médio",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+    "elemental",
+    "centelha"
+  ],
+  "imagem": "bestiario/hell-hound.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,2 a 1,5 m de altura no ombro",
+    "peso": "54 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 3,
+    "destreza": 3,
+    "vigor": 4,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 5
+  },
+  "willpower": 7,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro de fogo",
+      "descricao": "Solta um cone de chamas a cada poucos turnos; quem se esquiva a tempo sofre apenas metade do dano."
+    },
+    {
+      "nome": "Faro apurado",
+      "descricao": "Rastreia presas pelo cheiro e enxerga no escuro sem dificuldade."
+    },
+    {
+      "nome": "Imune a fogo, vulnerável a frio",
+      "descricao": "As chamas não o ferem, mas o frio penetra fundo em seu corpo, causando dano maior que o normal."
+    },
+    {
+      "nome": "Caçador em matilha",
+      "descricao": "Move-se com passos furtivos, ideal para cercar presas em grupo antes de atacar."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Matilha infernal",
+      "texto": "Cães de pelagem em brasa que caçam em bando, cercando a presa em silêncio antes de atacar com fogo e presas afiadas."
+    },
+    {
+      "titulo": "Servos leais",
+      "texto": "Gigantes do fogo os criam como guardiões, compartilhando o mesmo gosto pela crueldade com intrusos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Hell Hound",
+    "cr": "3",
+    "tipo": "exterior (fogo) Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 13,
+      "con": 15,
+      "int": 6,
+      "sab": 10,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

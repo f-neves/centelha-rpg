@@ -1,0 +1,140 @@
+{
+  "ordem": 71,
+  "id": "mon-verme-purpura",
+  "nome": "Verme Púrpura",
+  "nomeIngles": "Purple Worm",
+  "categoria": "Besta mágica",
+  "papel": "chefe",
+  "conceito": "besta mágica Imenso",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/verme-purpura.webp",
+  "porte": "Imenso",
+  "dimensoes": {
+    "medida": "24 m de comprimento",
+    "peso": "36 t"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 13,
+    "destreza": 2,
+    "vigor": 11,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 6,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Mordida colossal",
+      "descricao": "ataque corpo a corpo com dano muito alto, ignora parte da Absorção por ser Imenso"
+    },
+    {
+      "nome": "Engole inteiro",
+      "descricao": "acerto crítico prende o alvo dentro do corpo; dano contínuo automático a cada rodada até escapar"
+    },
+    {
+      "nome": "Ferrão de cauda venenoso",
+      "descricao": "ataque secundário na mesma rodada; veneno causa Enfraquecido e dano contínuo se falhar em Resistência"
+    },
+    {
+      "nome": "Escavador implacável",
+      "descricao": "atravessa terra e rocha sem perder deslocamento, pode emergir sob um alvo com bônus de Iniciativa"
+    },
+    {
+      "nome": "Sentido de tremor",
+      "descricao": "percebe qualquer criatura em contato com o solo em 18m, ignora invisibilidade e escuridão nesse alcance"
+    },
+    {
+      "nome": "Cego além do tremor",
+      "descricao": "sem visão real; sofre penalidade contra alvos voando ou flutuando fora do alcance do tremor"
+    },
+    {
+      "nome": "Carapaça anelada",
+      "descricao": "Absorção altíssima, resistente a esmagamento e queda"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Verme titânico que escava túneis inteiros com a boca, engolindo o que encontra pela frente e usando o ferrão da cauda contra o que escapa da mordida."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Vive nas profundezas do subsolo, longe da luz, cavando novas galerias sempre que a comida escasseia; sua passagem pode desabar minas inteiras sem que ele perceba o dano feito acima."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "É um dos poucos monstros grandes o bastante para assustar até os anões do White Wall, e mineradores contam sua chegada como um desastre natural, não como uma caçada: quando um verme púrpura escava perto, a única defesa é fugir da rota."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Verme Púrpura",
+    "cr": "12",
+    "tipo": "besta mágica Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 35,
+      "des": 10,
+      "con": 25,
+      "int": 1,
+      "sab": 8,
+      "car": 8
+    },
+    "pericias": [
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

@@ -1,0 +1,132 @@
+{
+  "ordem": 177,
+  "id": "mon-babau",
+  "nome": "Babau",
+  "nomeIngles": "Demon, Babau",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Demônio",
+  "papel": "elite",
+  "conceito": "exterior (demônio) Médio",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "tags": [
+    "demonio",
+    "centelha"
+  ],
+  "imagem": "bestiario/babau.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura",
+    "peso": "80 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 6,
+    "destreza": 3,
+    "vigor": 6,
+    "influencia": 5,
+    "perspicacia": 4,
+    "compostura": 4,
+    "percepcao": 3,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 5
+  },
+  "willpower": 9,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Limo Protetor",
+      "descricao": "Uma camada de baba ácida cobre sua pele; quem o acerta com arma corpo a corpo ou ataque desarmado sofre queimaduras ácidas, e a própria arma do agressor pode se corroer e quebrar."
+    },
+    {
+      "nome": "Ataque Furtivo",
+      "descricao": "Quando surpreende o inimigo, golpeia com precisão de assassino, causando dano extra considerável."
+    },
+    {
+      "nome": "Ver o Invisível",
+      "descricao": "Enxerga criaturas e objetos invisíveis constantemente, sem qualquer esforço."
+    },
+    {
+      "nome": "Resistências Infernais",
+      "descricao": "Resiste a fogo, frio e ácido, é imune a veneno e eletricidade, e uma pele coriácea absorve parte de qualquer dano físico que não seja de ferro abençoado ou arma boa."
+    },
+    {
+      "nome": "Manto de Trevas",
+      "descricao": "Pode envolver a área ao redor em escuridão, anular magias inimigas ou desaparecer instantaneamente para outro lugar levando poucos pertences."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Assassino do Abismo",
+      "texto": "Paciente e metódico, pode esperar décadas em emboscada por um único assassinato perfeito, deixando sempre uma assinatura sinistra em suas vítimas."
+    },
+    {
+      "titulo": "Lâmina Longa",
+      "texto": "Prefere lutar com lança comprida quando pode escolher a distância, mas encontra prazer verdadeiro em rasgar inimigos com garras e presas."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Babau",
+    "cr": "6",
+    "tipo": "exterior (demônio) Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 21,
+      "des": 13,
+      "con": 20,
+      "int": 14,
+      "sab": 13,
+      "car": 16
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

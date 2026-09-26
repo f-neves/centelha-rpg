@@ -1,11 +1,19 @@
-// Unifica os 5 arquivos de dados do bestiário num único src/data/monsters.json.
-// Fonte: inimigos.json (stat block, GERADO por gen-bestiario.mjs) + os satélites
-// habilidades / dimensoes / lore / imagens / ecologia / elementos, todos por id.
-// Rodar: node scripts/gen-monsters.mjs   (rode gen-bestiario.mjs antes se mexeu nas builds)
+// Junta o stat block (src/data/inimigos.json, GERADO por gen-bestiario.mjs) com o
+// resto da ficha de cada criatura (src/data/bestiario/<id>.json) num único
+// src/data/monsters.json, e recorta dele o monsters-mesa.json.
+//
+// Desde o B14 (fase 1, 26/09/2026) o card não vem mais de satélite por id
+// (habilidades, dimensões, lore, imagens, ecologia, categoria-extra): vem da
+// ficha, que já traz a categoria, a descrição, a Aparência e as Virtudes
+// ESCRITAS, sem conta pelo desafio. As fraquezas e o deslocamento também vêm da
+// ficha; os satélites que os semeiam (gen-elementos, gen-deslocamento) continuam
+// e o validate confere que a ficha e a semente concordam.
+// Rodar: node scripts/gen-monsters.mjs   (rode gen-bestiario.mjs antes se mexeu nas fichas)
 import { readFileSync, writeFileSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { elementosDoMaterial } from './lib-materiais.mjs';
 import { achataCatalogo } from './lib-equip.mjs';
+import { lerCriaturas, passoDaPeca, tres } from './lib-bestiario.mjs';
 import { dirname, join } from 'node:path';
 
 const dir = dirname(fileURLToPath(import.meta.url));
@@ -13,47 +21,7 @@ const data = join(dir, '..', 'src', 'data');
 const read = (f) => JSON.parse(readFileSync(join(data, f), 'utf8'));
 
 const inim = read('inimigos.json');
-const HAB = read('habilidades-bestiario.json');
-const DIM = read('dimensoes-bestiario.json');
-const LORE = read('lore-bestiario.json');
-const IMG = read('imagens-bestiario.json');
-const ECO = read('ecologia-bestiario.json'); // tipo (PF2e) + terreno + clima, por id
-const ELE = read('elementos-bestiario.json'); // fraquezas e resistencias, por id (gen-elementos.mjs)
-// As três velocidades em m/Tick, por id (gen-deslocamento.mjs). O `ft` e a
-// `origem` que moram no satélite são metadados da SEMEADURA, e ficam de fora do
-// monsters.json: a mesa quer saber quantos metros a peça anda, não de que página
-// do Bestiary o número saiu.
-const DESL = read('deslocamento-bestiario.json');
-// Criaturas suas: o arquivo é a fonte ÚNICA delas, então os satélites vêm dentro
-// do próprio objeto em vez de morarem nos seis arquivos por id.
-const CUSTOM = Object.fromEntries((() => {
-  try { return JSON.parse(readFileSync(join(data, 'inimigos-custom.json'), 'utf8')); }
-  catch (e) { if (e.code === 'ENOENT') return []; throw e; }
-})().filter((c) => c && c.id).map((c) => [c.id, c]));
-
-// Categoria = tipo de criatura no molde do Bestiary 1 (Pathfinder 1e, pág. 318 "Monsters by Type"),
-// derivada do ecologia.tipo + ajustes por criatura. Vai para o badge de Categoria.
-const CAT_LABEL = {
-  Aberration: 'Aberração', Animal: 'Animal', Beast: 'Besta mágica', Celestial: 'Celestial',
-  Construct: 'Construto', Dragon: 'Dragão', Elemental: 'Elemental', Fey: 'Fada', Fiend: 'Corruptor',
-  Giant: 'Gigante', Humanoid: 'Humanoide', Ooze: 'Limo', Plant: 'Planta', Undead: 'Morto-vivo',
-  Monitor: 'Outsider', Spirit: 'Espírito',
-};
-const CAT_OVERRIDE = {
-  // Humanoide monstruoso (PF1e Monstrous Humanoid)
-  'mon-bruxa-verde-hag': 'Humanoide monstruoso', 'mon-gargula': 'Humanoide monstruoso',
-  'mon-harpia': 'Humanoide monstruoso', 'mon-lamia': 'Humanoide monstruoso',
-  'mon-medusa': 'Humanoide monstruoso', 'mon-minotauro': 'Humanoide monstruoso',
-  // Outsider nativo (PF1e Outsider native)
-  'mon-couatl': 'Outsider', 'mon-rakshasa': 'Outsider',
-  // Oni é do tipo gigante
-  'mon-ogro-mago-oni': 'Gigante',
-  // ajustes pontuais
-  'mon-doppelganger': 'Aberração', 'mon-unicornio': 'Besta mágica',
-};
-// criaturas importadas do Bestiary 1: categoria calculada do tipo PF (categoria-extra.json)
-try { Object.assign(CAT_OVERRIDE, read('categoria-extra.json')); } catch { /* sem extras */ }
-const catDe = (id, tipo) => CAT_OVERRIDE[id] || CAT_LABEL[tipo] || tipo || null;
+const FICHA = Object.fromEntries(lerCriaturas().map((f) => [f.id, f]));
 
 // ------------------------------------------------- a classe de tempo do ataque
 // A régua P/G/R (e o sistema simultâneo) precisa saber COMO a criatura ataca:
@@ -86,119 +54,43 @@ function classeDoAtaque(id, nome, ticks) {
   return v <= 5 ? 'leve' : v === 6 ? 'media' : 'pesada';
 }
 
-// Aparência (traço próprio 1–10 do sistema; para criaturas liberamos extremos <0 ou >10)
-// e Virtudes (Compaixão · Convicção · Temperança · Valor), derivadas da NATUREZA (ecologia.tipo
-// + categoria). É um ponto de partida por categoria — o Mestre afina caso a caso pela descrição.
-// A Aparência é INDEPENDENTE da Compostura: um corruptor pode ter Aparência baixa (feio) e
-// Compostura alta (postura que intimida e amedronta).
-const AP_BASE = {
-  Celestial: 10, Positive: 9, Fey: 8, Dragon: 8, Astral: 6, Monitor: 6, Dream: 6, Spirit: 5,
-  Elemental: 5, Beast: 5, Time: 5, Animal: 4, Construct: 4, Ethereal: 4, Humanoid: 4, Petitioner: 4,
-  Plant: 3, Shadow: 3, Undead: 2, Fungus: 2, Fiend: 1, Aberration: 1, Ooze: 1, Negative: 1,
-};
-// exceções notáveis (belezas fora da curva do tipo, e feiuras extremas)
-const AP_OVER = {
-  'mon-solar': 12, 'mon-planetar': 11, 'mon-deva-astral': 10, 'mon-couatl': 9, 'mon-unicornio': 10,
-  'mon-sucubo': 9, 'mon-medusa': 7, 'mon-balor': -2, 'mon-vrock': 0, 'mon-nalfeshnee': -1,
-};
-function aparenciaDe(id, tipo, ameaca) {
-  if (AP_OVER[id] !== undefined) return AP_OVER[id];
-  let ap = AP_BASE[tipo] ?? 4;
-  if (tipo === 'Fiend') ap = 1 - Math.max(0, ameaca - 4);   // corruptores maiores, mais horrendos (até negativo)
-  else if (tipo === 'Celestial') ap += ameaca >= 5 ? 2 : 0; // alto escalão celestial, deslumbrante
-  else if (tipo === 'Dragon') ap += ameaca >= 5 ? 1 : 0;    // dragões anciãos, mais imponentes
-  return ap;
-}
-// Virtudes por tipo: [Compaixão, Convicção, Temperança, Valor]. Animais e seres animalescos ficam
-// baixos nas virtudes "de ser pensante" (Compaixão/Temperança), coerente com Perspicácia/Int baixas.
-const V_BASE = {
-  Celestial: [5, 5, 4, 4], Positive: [5, 4, 3, 3], Fey: [3, 3, 2, 3], Dragon: [2, 5, 3, 5],
-  Monitor: [2, 4, 3, 4], Humanoid: [2, 3, 2, 3], Giant: [1, 3, 2, 4], Spirit: [1, 3, 2, 3],
-  Elemental: [1, 3, 2, 3], Beast: [1, 3, 2, 3], Animal: [1, 2, 2, 2], Construct: [0, 3, 3, 3],
-  Fiend: [0, 5, 2, 4], Undead: [0, 4, 2, 3], Aberration: [0, 3, 2, 3], Plant: [0, 2, 1, 2],
-  Fungus: [0, 1, 1, 2], Ooze: [0, 1, 1, 2], Negative: [0, 4, 2, 3],
-};
-function virtudesDe(tipo, categoria, ameaca, en) {
-  let [co, cv, te, va] = V_BASE[tipo] || [2, 2, 2, 2];
-  const devil = categoria === 'Diabo' || /devil/i.test(en || '');
-  const demon = !devil && (categoria === 'Demônio' || tipo === 'Fiend');
-  if (devil) { co = 1; cv = 5; te = 5; va = Math.max(va, 3); }   // diabos: lei fria e implacável
-  else if (demon) { co = 0; cv = 5; te = 1; va = 5; }            // demônios: fúria caótica
-  va = Math.min(6, va + (ameaca >= 5 ? 1 : 0));                  // mais temível → mais Valor
-  return { compaixao: co, conviccao: cv, temperanca: te, valor: va };
-}
-
-// Descrição-flavor: o gen-bestiario grava uma linha genérica pela categoria CRUA (categoriaDe),
-// que às vezes destoa da categoria FINAL (ex.: um Construto que saiu com texto de "aberração
-// humanoide"). Aqui, quando a descrição é uma das genéricas conhecidas, trocamos pela linha da
-// categoria FINAL. Exceções por criatura (categoria certa, mas a linha genérica não cabe).
-const CAT_DESC = {
-  'Aberração': 'Coisa de forma errada, de pesadelos e profundezas.', 'Animal': 'Animal selvagem, perigo puro sem malícia.',
-  'Besta mágica': 'Fera tocada pela magia, além do reino natural.', 'Celestial': 'Servo do bem, luz encarnada em guerra contra as trevas.',
-  'Construto': 'Autômato sem vida, movido por magia alheia.', 'Dragão': 'Predador alado e mágico, orgulho e ganância feitos carne.',
-  'Elemental': 'Ser de um único elemento, sem alma mortal.', 'Fada': 'Espírito da natureza, belo e caprichoso.',
-  'Corruptor': 'Nativo dos planos infernais, feito de crueldade e corrupção.', 'Gigante': 'Colosso humanoide, força bruta em escala descomunal.',
-  'Humanoide': 'Povo civilizado ou selvagem, do tamanho de um homem.', 'Humanoide monstruoso': 'Aberração humanoide de lendas antigas.',
-  'Limo': 'Massa informe que digere tudo que toca.', 'Planta': 'Vegetal desperto, lento e implacável.',
-  'Morto-vivo': 'Um morto que não descansa, movido por magia ou ódio.', 'Outsider': 'Nativo de outro plano, alheio às leis mortais.',
-  'Demônio': 'Horror caótico do Abismo, feito de fúria e corrupção.', 'Diabo': 'Tirano leal do Inferno, calculista e cruel.',
-  'Exterior': 'Nativo de outro plano, alheio às leis mortais.', 'Espírito': 'Presença sem corpo, eco de vontade além da morte.',
-};
-const GEN_DESC = new Set([...Object.values(CAT_DESC), 'Fera tocada pela magia, além do reino natural.']);
-const DESC_OVER = {
-  'mon-mite': 'Fada mesquinha e degenerada das cavernas, covarde e vingativa.',
-  'mon-lemure': 'Alma condenada derretida na forma mais baixa do Inferno, sem mente própria.',
-  'mon-goblin': 'Humanoide pequeno e covarde, perigoso mesmo assim em bando.',
-  'mon-tiefling': 'Mortal marcado por sangue infernal, vive à margem dos povos.',
-};
-
 function build(c) {
-  const cu = CUSTOM[c.id];
-  // Fraqueza e resistência, na ordem: o que a criatura declara explicitamente
-  // vence o `material` dela, que vence o satélite do bestiário.
-  const doMat = cu ? elementosDoMaterial(cu.material) : null;
+  const f = FICHA[c.id];
+  if (!f) throw new Error(`${c.id}: está no inimigos.json e não tem ficha (rode gen-bestiario.mjs)`);
+  // Fraqueza e resistência, na ordem: o que a ficha declara vence o `material` dela.
+  const doMat = elementosDoMaterial(f.material);
   const elem = {
-    fraquezas: cu?.fraquezas ?? doMat?.fraquezas ?? ELE[c.id]?.fraquezas ?? [],
-    resistencias: cu?.resistencias ?? doMat?.resistencias ?? ELE[c.id]?.resistencias ?? [],
+    fraquezas: f.fraquezas ?? doMat?.fraquezas ?? [],
+    resistencias: f.resistencias ?? doMat?.resistencias ?? [],
   };
-  // Para a criatura sua, o satélite vem de dentro dela. Assim ela não precisa de
-  // uma linha em cada um dos seis arquivos só para passar no portão de integridade.
-  const h = cu ? { en: cu.nomeIngles || null, hab: (cu.habilidades || []).map((x) => ({ n: x.nome, d: x.descricao })) } : (HAB[c.id] || {});
-  const d = cu ? { porte: cu.porte || 'Médio', medida: cu.dimensoes?.medida || 'sem medida', peso: cu.dimensoes?.peso || 'sem peso' } : (DIM[c.id] || {});
-  const l = cu ? { secoes: (cu.lore || []).map((s) => ({ t: s.titulo, d: s.texto })) } : (LORE[c.id] || {});
-  const e = cu ? { tipo: cu.ecologia?.tipo || 'Construct', terreno: cu.ecologia?.terreno || [], clima: cu.ecologia?.clima || [] } : (ECO[c.id] || {});
-  const categoria = catDe(c.id, e.tipo) || c.categoria || null;
-  let descricao = c.descricao || '';
-  if (DESC_OVER[c.id]) descricao = DESC_OVER[c.id];
-  else if (GEN_DESC.has(descricao.trim()) && CAT_DESC[categoria]) descricao = CAT_DESC[categoria];
+  const e = f.ecologia || {};
   return {
     id: c.id,
     nome: c.nome,
-    nomeIngles: h.en || null,
-    categoria,
+    nomeIngles: f.nomeIngles || null,
+    categoria: f.categoria || c.categoria || null,
     tipo: c.tipo,
     conceito: c.conceito,
-    descricao,
+    descricao: f.descricao || '',
     tags: c.tags || [],
     ameaca: c.ameaca,
     centelha: c.centelha,
     pendente: !!c.pendente,
-    porte: d.porte || null,
-    dimensoes: { medida: d.medida || null, peso: d.peso || null },
+    porte: f.porte || null,
+    dimensoes: { medida: f.dimensoes?.medida || null, peso: f.dimensoes?.peso || null },
     ecologia: { tipo: e.tipo || null, terreno: e.terreno || [], clima: e.clima || [] },
-    imagem: IMG[c.id] || null,
-    semImagem: !IMG[c.id],
+    imagem: f.imagem || null,
+    semImagem: !f.imagem,
     atributos: c.atributos,
     // AS PERICIAS, desde 04/09/2026. Quatro vem da conta invertida dos derivados
-    // (o gerador do bestiario as consumia e descartava) e a Furtividade vem da
-    // tabela por porte e categoria. Elas nao entram em conta nenhuma daqui: o
-    // motor continua lendo ,  e . Existem para
-    // as catorze regras de oposicao que pedem a PERICIA pelo nome, e sao
-    // OMITIDAS quando a conta nao fecha, em vez de zeradas.
+    // e a Furtividade vem da tabela por porte e categoria (lib-bestiario.mjs).
+    // Elas nao entram em conta nenhuma daqui: o motor continua lendo `defesa`,
+    // `defesaMental` e `iniciativa`. Existem para as catorze regras de oposicao
+    // que pedem a PERICIA pelo nome, e sao OMITIDAS quando a conta nao fecha.
     ...(c.pericias && Object.keys(c.pericias).length ? { pericias: c.pericias } : {}),
     vontade: c.vontade ?? 5,
-    aparencia: aparenciaDe(c.id, e.tipo, c.ameaca),
-    virtudes: virtudesDe(e.tipo, categoria, c.ameaca, h.en),
+    aparencia: f.aparencia,
+    virtudes: f.virtues,
     combate: {
       pv: c.pv,
       defesa: c.defesa,
@@ -211,23 +103,22 @@ function build(c) {
       ...(elem.fraquezas.length ? { fraquezas: elem.fraquezas } : {}),
       ...(elem.resistencias.length ? { resistencias: elem.resistencias } : {}),
       iniciativa: c.iniciativa,
-      // Quantos metros a criatura cobre em um Tick, nas três marchas. Vem do
-      // satélite; a criatura sua pode declarar as dela dentro do próprio objeto.
-      // Sem nenhum dos dois, cai no passo do soldado (3 · 5 · 7), porque uma
-      // peça sem deslocamento não anda no Grid, e uma criatura nova não pode
-      // travar o tabuleiro só por ainda não ter passado pela semeadura.
+      // Quantos metros a criatura cobre em um Tick, nas três marchas, a partir do
+      // passo da `locomocao` da ficha. Sem nenhum, cai no passo do soldado
+      // (3 · 5 · 7), porque uma peça sem deslocamento não anda no Grid.
       deslocamento: (() => {
-        const d = cu?.deslocamento ?? DESL[c.id] ?? { batalha: 3, arranque: 5, corrida: 7 };
+        const passo = passoDaPeca(f.locomocao);
+        const d = f.deslocamentoDeclarado ?? (passo ? tres(passo) : { batalha: 3, arranque: 5, corrida: 7 });
         return { batalha: d.batalha, arranque: d.arranque, corrida: d.corrida };
       })(),
       ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
     },
-    habilidades: (h.hab || []).map((x) => ({ nome: x.n, descricao: x.d })),
+    habilidades: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao })),
     poderes: (c.poderes || []).map((p) => ({ efeito: p.efeito, tipo: p.tipo, alvo: p.alvo, ...(p.caminho ? { caminho: p.caminho } : {}), ...(p.arte ? { arte: p.arte } : {}) })),
     tecnicas: c.tecnicas || [],
     artes: (c.artes || []).map((a) => ({ id: a.id && a.id.id ? a.id.id : a.id, nivel: a.nivel })),
     notas: c.notas || '',
-    lore: (l.secoes || []).map((s) => ({ titulo: s.t, texto: s.d })),
+    lore: (f.lore || []).map((s) => ({ titulo: s.titulo, texto: s.texto })),
   };
 }
 

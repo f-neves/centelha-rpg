@@ -1,0 +1,133 @@
+{
+  "ordem": 222,
+  "id": "mon-shaitan",
+  "nome": "Shaitan",
+  "nomeIngles": "Shaitan",
+  "categoria": "Elemental",
+  "papel": "elite",
+  "conceito": "exterior (terra) Grande",
+  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+    "elemental",
+    "centelha"
+  ],
+  "imagem": "bestiario/shaitan.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,4 m de altura",
+    "peso": "2270 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 7,
+    "destreza": 3,
+    "vigor": 6,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4,
+    "percepcao": 4,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "fraquezas": [
+    "agua"
+  ],
+  "resistencias": [
+    "fogo"
+  ],
+  "habilidades": [
+    {
+      "nome": "Domínio da Pedra",
+      "descricao": "Golpeia com mais força quando ambos, ele e o inimigo, tocam o solo, mas luta pior contra alvos no ar ou na água."
+    },
+    {
+      "nome": "Deslizar pela Rocha",
+      "descricao": "Atravessa pedra, terra, cristal e até metal como se fossem água, sem deixar rastro algum."
+    },
+    {
+      "nome": "Maldição da Pedra",
+      "descricao": "Ao vencer um embate de força e empurrar o inimigo contra uma parede de pedra, pode selá-lo dentro da própria rocha até que ele consiga um teste de Vigor para se libertar."
+    },
+    {
+      "nome": "Metamorfose do Metal",
+      "descricao": "Ao tocar um objeto de metal, pode transformá-lo em outro metal por um dia inteiro."
+    },
+    {
+      "nome": "Imune a Choques",
+      "descricao": "Absorve por completo qualquer dano elétrico que sofreria."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Carne de pedra e gema",
+      "texto": "Orgulhosos e vaidosos, os shaitans têm pele que lembra metal polido, pedra ou gemas cintilantes."
+    },
+    {
+      "titulo": "Nobreza subterrânea",
+      "texto": "Entre eles existem os chamados pashás, shaitans nobres muito mais poderosos, capazes de conceder desejos e abalar a terra a distância."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Underground",
+      "Mountain"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Shaitan",
+    "cr": "7",
+    "tipo": "exterior (terra) Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 20,
+      "des": 13,
+      "con": 19,
+      "int": 14,
+      "sab": 14,
+      "car": 15
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

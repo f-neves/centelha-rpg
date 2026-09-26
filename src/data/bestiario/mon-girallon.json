@@ -1,0 +1,127 @@
+{
+  "ordem": 225,
+  "id": "mon-girallon",
+  "nome": "Girallon",
+  "nomeIngles": "Girallon",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Grande",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/girallon.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,4 m de altura",
+    "peso": "360 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 6,
+    "destreza": 5,
+    "vigor": 6,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Quatro Braços Ferozes",
+      "descricao": "Ataca com quatro garras musculosas ao mesmo tempo, cada uma capaz de rasgar profundamente a carne da presa."
+    },
+    {
+      "nome": "Garras que Dilaceram",
+      "descricao": "Ao acertar múltiplas garras no mesmo alvo, causa dano contínuo adicional pelo rasgo profundo dos ferimentos."
+    },
+    {
+      "nome": "Sentidos da Selva",
+      "descricao": "Enxerga no escuro, sente o cheiro da presa a distância e se move com perfeita agilidade entre galhos e trepadeiras."
+    },
+    {
+      "nome": "Trepador Nato",
+      "descricao": "Escala árvores e paredes com a mesma velocidade com que corre em terreno aberto."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Fera branca da selva",
+      "texto": "Coberto de pelo espesso e alvo, esse predador territorial ataca tudo que invade seu domínio, incluindo outros de sua espécie."
+    },
+    {
+      "titulo": "Lendas de origem sombria",
+      "texto": "Antigos entalhes sugerem que os primeiros girallons foram homens que invocaram deuses-demônio para obter força, perdendo a humanidade no processo."
+    },
+    {
+      "titulo": "Os que ainda pensam",
+      "texto": "Diz a lenda que alguns girallons mantiveram a inteligência antiga e se tornaram líderes cruéis, escondidos nas partes mais fundas da selva."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Jungle",
+      "Forest"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Girallon",
+    "cr": "6",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 17,
+      "con": 18,
+      "int": 2,
+      "sab": 12,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

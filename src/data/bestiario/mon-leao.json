@@ -1,0 +1,147 @@
+{
+  "ordem": 38,
+  "id": "mon-leao",
+  "nome": "Leão",
+  "nomeIngles": "Lion",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/leao.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,5 m de comprimento, com cauda",
+    "peso": "190 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 7,
+    "destreza": 5,
+    "vigor": 5,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 3,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Bote (pounce)",
+      "tipo": "proeza",
+      "alvo": "Sangue Fervente · Investida Furiosa (b5)",
+      "caminho": "sangue-fervente"
+    },
+    {
+      "efeito": "Emboscar",
+      "tipo": "proeza",
+      "alvo": "Sombra · Esgueirar (b3)",
+      "caminho": "sombra"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Bote",
+      "descricao": "ao correr até o alvo, ataca com garras e mordida na mesma ação"
+    },
+    {
+      "nome": "Emboscar",
+      "descricao": "bônus de dano no primeiro ataque saindo de Furtividade"
+    },
+    {
+      "nome": "Mordida no pescoço",
+      "descricao": "alvo derrubado sofre dano extra em ataques seguintes"
+    },
+    {
+      "nome": "Passo silencioso",
+      "descricao": "Furtividade alta em vegetação alta e savana"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Vive em bando liderado por fêmeas caçadoras, enquanto o macho protege o território e disputa domínio com rivais de fora."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Divide o cuidado dos filhotes entre as fêmeas do bando, um arranjo social raro entre os grandes felinos."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Prefere savanas e planícies abertas, típicas das terras mais quentes de Mére."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Nas planícies de Mére é símbolo de realeza e coragem para diversos povos locais, caçado tanto por respeito quanto como prova de valentia."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Leão",
+    "cr": "3",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 17,
+      "con": 15,
+      "int": 2,
+      "sab": 15,
+      "car": 10
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Prontidão 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

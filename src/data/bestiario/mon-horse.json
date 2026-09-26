@@ -1,0 +1,122 @@
+{
+  "ordem": 238,
+  "id": "mon-horse",
+  "nome": "Cavalo",
+  "nomeIngles": "Horse",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/horse.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "1,5 a 1,8 m de altura no ombro",
+    "peso": "450 a 680 kg"
+  },
+  "locomocao": {
+    "terra": 5
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 6,
+    "destreza": 4,
+    "vigor": 6,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Coice duplo",
+      "descricao": "Golpeia com os dois cascos dianteiros; sem treino de combate, o ataque conta apenas como reforço secundário."
+    },
+    {
+      "nome": "Fôlego de estrada",
+      "descricao": "Corre por longas distâncias sem se cansar facilmente."
+    },
+    {
+      "nome": "Sentidos de manada",
+      "descricao": "Faro e visão na penumbra ajudam a perceber perigos à distância."
+    },
+    {
+      "nome": "Dócil por natureza",
+      "descricao": "Só briga de fato quando adestrado para o combate; do contrário prefere fugir."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Companheiro de estrada",
+      "texto": "Criados para cavalgar, puxar carroças ou arar campos, os cavalos servem lado a lado com quase todos os povos do mundo."
+    },
+    {
+      "titulo": "Duas linhagens",
+      "texto": "Cavalos leves de montaria e cavalos pesados de tração diferem em porte e resistência, mas compartilham o mesmo temperamento dócil."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Horse",
+    "cr": "1",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 16,
+      "des": 14,
+      "con": 17,
+      "int": 2,
+      "sab": 13,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

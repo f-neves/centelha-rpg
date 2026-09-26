@@ -1,0 +1,112 @@
+{
+  "ordem": 1,
+  "id": "camponis-assustado",
+  "nome": "Camponês Assustado",
+  "nomeIngles": "Frightened Peasant",
+  "categoria": "Humanoide",
+  "categoriaLegada": "Humano",
+  "papel": "capanga",
+  "conceito": "civil sem treino",
+  "descricao": "Gente comum empurrada à briga. Foge ao primeiro sangue.",
+  "tags": [
+    "humano"
+  ],
+  "imagem": "bestiario/camponis-assustado.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,65 m de altura",
+    "peso": "65 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 2,
+    "destreza": 2,
+    "vigor": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 1,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 4,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Forcado/Pancada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 2,
+      "tipo": "impacto",
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sem treino",
+      "descricao": "ataques e Defesa em nível mínimo, quase sempre erra"
+    },
+    {
+      "nome": "Testa de ferro frágil",
+      "descricao": "poucos PV, cai com um golpe qualquer"
+    },
+    {
+      "nome": "Pavor de sangue",
+      "descricao": "foge do combate assim que sofre o primeiro ferimento"
+    },
+    {
+      "nome": "Horda",
+      "descricao": "em grupo, use a regra de Horda em vez de rolar cada um"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Não escolheu lutar: foi arrastado por um senhor, um bando ou o desespero da fome. Segura a foice ou o cajado tremendo, grita mais do que golpeia, e corre ao primeiro sangue, seu ou alheio."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Vive de plantio, de criação de porcos e do medo de tudo que vem de fora da aldeia: soldados, bandidos, feiticeiros, monstros."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "É a face mais comum do povo de Uldun: Centelha zero, sem treino, criado sob o tabu da Supressão a temer qualquer coisa que cheire a magia. Quando pega em armas, é sinal de que algo já deu muito errado na região."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Plains",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Testa de ferro frágil. Em grupo, use a regra de Horda.",
+  "pendente": false,
+  "fonte": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

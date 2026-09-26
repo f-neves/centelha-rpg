@@ -1,0 +1,122 @@
+{
+  "ordem": 191,
+  "id": "mon-dog",
+  "nome": "Cachorro",
+  "nomeIngles": "Dog",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Pequeno",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/dog.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "60 centímetros de comprimento",
+    "peso": "de 9 a 23 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 3,
+    "destreza": 3,
+    "vigor": 4,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 1,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão penumbra e faro",
+      "descricao": "Enxerga em pouca luz e depende muito do faro para localizar o que procura."
+    },
+    {
+      "nome": "Faro rastreador",
+      "descricao": "Segue trilhas de cheiro que passariam despercebidas por quase qualquer outra criatura."
+    },
+    {
+      "nome": "Salto",
+      "descricao": "Pula com uma desenvoltura incomum para o tamanho, útil tanto para perseguir quanto para fugir."
+    },
+    {
+      "nome": "Raiva",
+      "descricao": "Um cão raivoso transmite pela mordida uma doença que, ao longo de semanas, desgasta o Vigor e a Compostura da vítima, a menos que ela se recupere em duas ocasiões seguidas."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Companheiro e ameaça",
+      "texto": "O mesmo cão que é fiel companheiro doméstico pode, em matilha selvagem e territorial, tornar-se um perigo real."
+    },
+    {
+      "titulo": "A sombra da raiva",
+      "texto": "Poucas coisas transformam tanto um bicho amigável quanto a doença que o torna violento e capaz de espalhar o próprio mal pela mordida."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dog",
+    "cr": "1/3",
+    "tipo": "animal Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 13,
+      "des": 13,
+      "con": 15,
+      "int": 2,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

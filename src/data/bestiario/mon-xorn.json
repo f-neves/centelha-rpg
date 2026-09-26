@@ -1,0 +1,162 @@
+{
+  "ordem": 112,
+  "id": "mon-xorn",
+  "nome": "Xorn",
+  "nomeIngles": "Xorn",
+  "categoria": "Elemental",
+  "papel": "elite",
+  "conceito": "exterior Médio (terra)",
+  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+    "elemental",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/xorn.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,5 m de altura, corpo esférico",
+    "peso": "450 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 6,
+    "destreza": 3,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 8,
+  "aparencia": 5,
+  "arte": {
+    "terra": 3
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Deslizar pela pedra (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Terra · N3",
+      "arte": "terra"
+    },
+    {
+      "efeito": "Devorar metal e gema",
+      "tipo": "natural",
+      "alvo": "natural (Ex)"
+    }
+  ],
+  "fraquezas": [
+    "agua"
+  ],
+  "resistencias": [
+    "fogo"
+  ],
+  "habilidades": [
+    {
+      "nome": "Deslizar pela pedra",
+      "descricao": "atravessa rocha sólida como se fosse água"
+    },
+    {
+      "nome": "Garras e mordida",
+      "descricao": "Três golpes de garra e uma mordida na mesma rodada, com a boca única e enorme."
+    },
+    {
+      "nome": "Devorar metal e gema",
+      "descricao": "engole e destrói itens metálicos ou preciosos em um turno"
+    },
+    {
+      "nome": "Sentido sísmico",
+      "descricao": "percebe movimento através da pedra, ignora escuridão e invisibilidade"
+    },
+    {
+      "nome": "Faro para tesouro",
+      "descricao": "detecta metais e gemas a até 18m"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Nada pela rocha sólida como um peixe na água, alheio a quase tudo que acontece na superfície do mundo."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Devora metais e pedras preciosas com prazer genuíno, ignorando carne, ouro cunhado ou qualquer coisa que não seja mineral puro."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Eremita e desinteressado, sua lógica é tão estranha à mente mortal quanto a pedra é estranha ao peixe."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Mineiros anões do White Wall contam histórias antigas de tesouros que somem dentro da própria rocha; poucos sabem que um xorn satisfeito apenas passou por ali e comeu o que interessava, sem notar sequer que havia alguém cavando ao lado."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate",
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 3, Furtividade 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Xorn",
+    "cr": "6",
+    "tipo": "exterior Médio (terra)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 21,
+      "des": 13,
+      "con": 21,
+      "int": 10,
+      "sab": 11,
+      "car": 10
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Furtividade 2"
+    ],
+    "nota": "Deslizar pela pedra (Su): Centelha 2.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

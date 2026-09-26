@@ -1,0 +1,182 @@
+{
+  "ordem": 135,
+  "id": "mon-dragao-branco-jovem",
+  "nome": "Dragão Branco Jovem",
+  "nomeIngles": "Dragon, Young White",
+  "categoria": "Dragão",
+  "papel": "elite",
+  "conceito": "dragão Grande",
+  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "tags": [
+    "dragao",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/dragao-branco-jovem.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "4,3 m de comprimento, com a cauda",
+    "peso": "700 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 7,
+    "destreza": 2,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 5,
+    "temperanca": 3,
+    "valor": 5
+  },
+  "willpower": 9,
+  "aparencia": 8,
+  "arte": {
+    "gelo": 3,
+    "morte": 3
+  },
+  "ataques": [
+    {
+      "nome": "Garras e mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Sopro de frio (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Gelo · N3",
+      "arte": "gelo"
+    },
+    {
+      "efeito": "Andar no gelo e nevasca",
+      "tipo": "feiticaria",
+      "alvo": "Gelo · N2",
+      "arte": "gelo"
+    },
+    {
+      "efeito": "Presença",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N3",
+      "arte": "morte"
+    }
+  ],
+  "fraquezas": [
+    "fogo"
+  ],
+  "resistencias": [
+    "gelo"
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro de frio",
+      "descricao": "cone de 9m; 6d6 de dano, metade se Esquivar"
+    },
+    {
+      "nome": "Andar no gelo e nevasca",
+      "descricao": "move-se sem penalidade sobre gelo e neve; pode gerar nevasca que reduz a Prontidão dos inimigos"
+    },
+    {
+      "nome": "Presença",
+      "descricao": "falha no teste de Vontade = Abalado (raio de 12m)"
+    },
+    {
+      "nome": "Voo em mergulho",
+      "descricao": "ataca vindo de cima com bônus de Iniciativa"
+    },
+    {
+      "nome": "Multiataque",
+      "descricao": "garra, garra e mordida no mesmo turno"
+    },
+    {
+      "nome": "Imune a frio",
+      "descricao": "ignora todo dano de frio"
+    },
+    {
+      "nome": "Sentidos no gelo",
+      "descricao": "visão no escuro e faro apurado; inimigos não conseguem emboscá-lo sob neve"
+    },
+    {
+      "nome": "Escamas gélidas",
+      "descricao": "Absorção +2d6 contra ataques físicos"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Menos astuto e mais selvagem que seus parentes, o dragão branco jovem caça por instinto puro, guiado pela fome e pelo território, atacando quase tudo o que se move em seu gelo sem muito cálculo."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Vive em cavernas de gelo, glaciares e fendas congeladas, onde talha seu covil escavando através de rocha e neve com garras e sopro gélido."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Primitivo mesmo para um dragão, reage mais por raiva e posse do que por orgulho refinado, e confia quase inteiramente nos próprios sentidos afiados para sobreviver."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "No gelo do White Wall e nas ilhas do Neck, onde anões exilados e humanos supersticiosos já temem o que espreita sob a neve, um dragão branco jovem é mais uma prova de que aquelas terras continuam hostis, ainda que sua origem nada tenha a ver com os horrores que saíram da Fenda."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Cold",
+      "Mountain"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 3, Furtividade 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Dragão Branco Jovem",
+    "cr": "6",
+    "tipo": "dragão Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 10,
+      "con": 17,
+      "int": 8,
+      "sab": 11,
+      "car": 10
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Furtividade 3"
+    ],
+    "nota": "Sopro de frio, o mais feral dos cromáticos: Centelha 3.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

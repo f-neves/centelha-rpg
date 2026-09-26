@@ -1,0 +1,158 @@
+{
+  "ordem": 79,
+  "id": "mon-wight",
+  "nome": "Wight",
+  "nomeIngles": "Wight",
+  "categoria": "Morto-vivo",
+  "papel": "soldado",
+  "conceito": "morto-vivo Médio",
+  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "tags": [
+    "morto-vivo",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/wight.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,75 m de altura",
+    "peso": "60 kg, corpo dessecado"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 3,
+    "destreza": 3,
+    "vigor": 4,
+    "influencia": 4,
+    "perspicacia": 3,
+    "compostura": 4,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 4,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 2,
+  "arte": {
+    "morte": 2
+  },
+  "ataques": [
+    {
+      "nome": "Golpe",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Dreno de energia (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N2",
+      "arte": "morte"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Toque de dreno vital",
+      "descricao": "acerto causa dano e reduz o máximo de PV do alvo até um descanso completo"
+    },
+    {
+      "nome": "Criação de súditos",
+      "descricao": "humanoide morto pelo dreno pode se levantar como novo Wight na cena seguinte"
+    },
+    {
+      "nome": "Constituição de morto-vivo",
+      "descricao": "imune a veneno, doença e efeitos mentais"
+    },
+    {
+      "nome": "Garras cortantes",
+      "descricao": "ataque corpo a corpo padrão"
+    },
+    {
+      "nome": "Faro de vida",
+      "descricao": "percebe criaturas vivas próximas mesmo sem visão direta"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Odeia os vivos com uma ferocidade fria e calculada, atacando para drenar a força vital da presa; se ela morre assim, ele a ergue como sua própria serva."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Cerca-se de zumbis e outros wights que ele mesmo criou, comandando-os com uma vontade que ainda lembra, de longe, a de quem foi em vida."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Costuma nascer de alguém que morreu consumido por ódio ou traição, e essa raiva o prende ao mundo em vez de deixá-lo seguir adiante."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "O wight é a prova mais literal de que uma Centelha pode ser roubada aos poucos: cada vítima que ele drena alimenta a sua própria e cria um novo servo faminto. As igrejas de Calin apontam esse ciclo como o motivo pelo qual a necromancia nunca deve ser tolerada."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Undead",
+    "terreno": [
+      "Ruins",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Wight",
+    "cr": "3",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 12,
+      "des": 12,
+      "con": "-",
+      "int": 11,
+      "sab": 13,
+      "car": 15
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Prontidão 2"
+    ],
+    "nota": "Dreno de energia (Su): Centelha 2.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

@@ -1,0 +1,123 @@
+{
+  "ordem": 186,
+  "id": "mon-elasmosaurus",
+  "nome": "Elasmossauro",
+  "nomeIngles": "Dinosaur, Elasmosaurus",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Enorme",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/elasmosaurus.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "14 metros de comprimento",
+    "peso": "1,8 t"
+  },
+  "locomocao": {
+    "natacao": 5
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 10,
+    "destreza": 4,
+    "vigor": 8,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão penumbra e faro",
+      "descricao": "Enxerga bem em pouca luz e localiza presas pelo cheiro."
+    },
+    {
+      "nome": "Nadadora poderosa",
+      "descricao": "Desliza pela água com uma velocidade muito maior do que consegue alcançar em terra."
+    },
+    {
+      "nome": "Pescoço serpentino",
+      "descricao": "O pescoço longo permite atacar alvos a uma distância bem maior do que o corpo sugere, surpreendendo quem julga estar fora de alcance."
+    },
+    {
+      "nome": "Mordida poderosa",
+      "descricao": "Fecha as mandíbulas com força suficiente para esmagar ossos e carne de uma só vez."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Réptil das profundezas",
+      "texto": "Pescoço longo e corpo esguio permitem deslizar pelas águas com uma ferocidade traiçoeira, escondida sob a superfície calma."
+    },
+    {
+      "titulo": "Não é um dinossauro verdadeiro",
+      "texto": "Convive com dinossauros em lagos e mares quentes, mas pertence a uma linhagem distinta de répteis aquáticos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Elasmosaurus",
+    "cr": "7",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 26,
+      "des": 15,
+      "con": 20,
+      "int": 2,
+      "sab": 13,
+      "car": 9
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte",
+      "nota": "nado 50; em terra 20, e ele quase não sai da água"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

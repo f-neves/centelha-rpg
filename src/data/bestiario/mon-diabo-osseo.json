@@ -1,0 +1,174 @@
+{
+  "ordem": 98,
+  "id": "mon-diabo-osseo",
+  "nome": "Diabo Ósseo",
+  "nomeIngles": "Devil, Bone (Osyluth)",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Diabo",
+  "papel": "chefe",
+  "conceito": "exterior Grande (diabo)",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Tirano leal do Inferno, calculista e cruel.",
+  "tags": [
+    "diabo",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/diabo-osseo.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,7 m de altura",
+    "peso": "230 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 8,
+    "destreza": 5,
+    "vigor": 7,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 5,
+    "temperanca": 5,
+    "valor": 5
+  },
+  "willpower": 10,
+  "aparencia": 0,
+  "arte": {
+    "morte": 2,
+    "gelo": 2,
+    "fascinacao": 1
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Ferrão que enfraquece (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N2",
+      "arte": "morte"
+    },
+    {
+      "efeito": "Parede de gelo (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Gelo · N2",
+      "arte": "gelo"
+    },
+    {
+      "efeito": "Invisibilidade",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N1",
+      "arte": "fascinacao"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Ferrão que enfraquece",
+      "descricao": "ataque de cauda; falha em Fortitude = Enfraquecido"
+    },
+    {
+      "nome": "Garras ósseas",
+      "descricao": "dois ataques corpo a corpo na mesma ação, dano médio cada"
+    },
+    {
+      "nome": "Parede de gelo",
+      "descricao": "feitiçaria, 1x por cena; ergue parede de 6m que bloqueia passagem ou visão"
+    },
+    {
+      "nome": "Invisibilidade",
+      "descricao": "feitiçaria; fica invisível à vontade"
+    },
+    {
+      "nome": "Carapaça óssea",
+      "descricao": "Absorção alta contra ataques físicos"
+    },
+    {
+      "nome": "Sangue infernal",
+      "descricao": "imune a fogo e veneno; resistente a frio e ácido"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Age como fiscal cruel da burocracia infernal, verificando contratos, punindo desvios e garantindo que nenhum pacto seja quebrado sem o preço devido."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Meticuloso, frio e implacável com regras, prefere a tortura lenta e calculada ao confronto direto, saboreando o momento em que encontra uma falha no acordo de alguém."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Serve como fiscal e mensageiro entre camadas do Inferno, respeitado pela competência burocrática mais do que pela força bruta."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Os escribas heréticos que estudam a Fenda em segredo dizem que, se o Inferno tem cobradores de dívida, o diabo ósseo é quem bate à porta quando alguém tenta escapar de um pacto."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 4, Furtividade 3, Ocultismo 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Diabo Ósseo",
+    "cr": "9",
+    "tipo": "exterior Grande (diabo)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 19,
+      "con": 21,
+      "int": 16,
+      "sab": 18,
+      "car": 18
+    },
+    "pericias": [
+      "Prontidão 4",
+      "Furtividade 3",
+      "Ocultismo 3"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

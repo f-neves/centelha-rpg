@@ -4,6 +4,12 @@
 > verdade da régua de Centelha das criaturas: o que aconteceu, o que foi decidido e como o conserto
 > se sustenta sozinho daqui para a frente.
 
+> **Desde 26/09/2026 (B14, fase 1) a fonte mudou de lugar.** A Centelha de cada criatura está
+> escrita na ficha dela, em `src/data/bestiario/<id>.json`, e não mais nos builds inline do
+> `gen-bestiario.mjs` nem no `conversao-monstros.html` / `conversao-extra.json` que este documento
+> cita. O formato está em `docs/bestiario/ficha-criatura.md`. O `--check` continua no build, agora
+> contra a pasta.
+
 ## 1. O que aconteceu
 
 Em 10/08/2026 o `inimigos.json` foi regerado, e **148 criaturas mudaram de Centelha, todas em −1**,

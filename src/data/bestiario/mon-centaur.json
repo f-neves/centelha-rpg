@@ -1,0 +1,132 @@
+{
+  "ordem": 166,
+  "id": "mon-centaur",
+  "nome": "Centauro",
+  "nomeIngles": "Centaur",
+  "categoria": "Humanoide monstruoso",
+  "categoriaLegada": "Monstro",
+  "papel": "soldado",
+  "conceito": "humanoide monstruoso Grande",
+  "descricao": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha"
+  ],
+  "imagem": "bestiario/centaur.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,1 m de altura",
+    "peso": "900 kg"
+  },
+  "locomocao": {
+    "terra": 5
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 5,
+    "destreza": 4,
+    "vigor": 5,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 3,
+    "percepcao": 4,
+    "inteligencia": 2,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Ataque Duplo",
+      "descricao": "Combina golpes de arma com coices das patas traseiras, atacando com as duas frentes ao mesmo tempo."
+    },
+    {
+      "nome": "Lançador Certeiro",
+      "descricao": "Arremessa lanças com grande precisão mesmo em movimento, unindo a mira humana à velocidade equina."
+    },
+    {
+      "nome": "Visão no Escuro",
+      "descricao": "Enxerga perfeitamente mesmo na escuridão total."
+    },
+    {
+      "nome": "Rastreador Nato",
+      "descricao": "Possui um talento natural para rastrear presas e sobreviver em território selvagem."
+    },
+    {
+      "nome": "Armas de Porte Humano",
+      "descricao": "Apesar do corpo grande, empunha armas feitas para humanos, um tamanho abaixo do que o próprio corpo permitiria, sem qualquer perda de destreza no manejo."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Sociedade",
+      "texto": "Caçadores lendários e guerreiros habilidosos, os centauros são metade homem, metade cavalo; costumam viver nas fronteiras da civilização, em tribos que vagam por vastas planícies ou pelas margens de florestas ancestrais."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Distantes das outras raças e até mesmo entre si, são um povo antigo que só lentamente aceita o mundo moderno; alguns abandonam o isolamento ancestral para viver nas cidades mais cosmopolitas, tornando-se muitas vezes párias entre a própria tribo."
+    },
+    {
+      "titulo": "Natureza",
+      "texto": "Em raros casos, tribos inteiras sob líderes progressistas chegam a negociar ou firmar alianças com outros povos, sobretudo elfos, e mais raramente gnomos, humanos ou anões; vivem em média sessenta anos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Forest",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Centaur",
+    "cr": "3",
+    "tipo": "humanoide monstruoso Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 15,
+      "des": 14,
+      "con": 15,
+      "int": 11,
+      "sab": 14,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

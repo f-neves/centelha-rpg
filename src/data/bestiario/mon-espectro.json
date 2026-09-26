@@ -1,0 +1,177 @@
+{
+  "ordem": 81,
+  "id": "mon-espectro",
+  "nome": "Espectro",
+  "nomeIngles": "Spectre",
+  "categoria": "Morto-vivo",
+  "papel": "elite",
+  "conceito": "morto-vivo Médio (incorpóreo)",
+  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "tags": [
+    "morto-vivo",
+    "centelha",
+    "incorpóreo",
+    "mágico"
+  ],
+  "imagem": "bestiario/espectro.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura, silhueta humanoide flutuante",
+    "peso": "sem peso, forma incorpórea"
+  },
+  "locomocao": {
+    "voo": 8
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 0,
+    "destreza": 5,
+    "vigor": 5,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 4,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 4,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 2,
+  "arte": {
+    "morte": 3,
+    "espirito": 3
+  },
+  "ataques": [
+    {
+      "nome": "Toque dilacerante",
+      "atrib": "influencia",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "necrótico (vs Def. Mental)",
+      "ticks": 5,
+      "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Dreno de nível (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N3",
+      "arte": "morte"
+    },
+    {
+      "efeito": "Voo e incorpóreo",
+      "tipo": "feiticaria",
+      "alvo": "Espírito · N3",
+      "arte": "espirito"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "resistencias": [
+    "corte",
+    "impacto",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Incorpóreo",
+      "descricao": "ignora armaduras físicas, atravessa paredes e obstáculos"
+    },
+    {
+      "nome": "Dreno de nível",
+      "descricao": "toque impõe penalidade duradoura em testes do alvo até ser removida por magia"
+    },
+    {
+      "nome": "Voo veloz",
+      "descricao": "desloca-se voando em alta velocidade mesmo perseguindo fugitivos"
+    },
+    {
+      "nome": "Terror sepulcral",
+      "descricao": "presença próxima força teste de Vontade; falha deixa Abalado"
+    },
+    {
+      "nome": "Regenera-se com o dreno",
+      "descricao": "recupera PV ao drenar uma vítima"
+    },
+    {
+      "nome": "Cria espectros subordinados",
+      "descricao": "vítimas mortas pelo dreno podem ressurgir sob seu comando"
+    },
+    {
+      "nome": "Frio sobrenatural",
+      "descricao": "sua aproximação é sentida como queda brusca de temperatura"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Incorpóreo e implacável, persegue os vivos com uma velocidade e um ódio que não conhecem descanso nem piedade."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "É o ódio puro do que restou de uma pessoa, sem nenhum traço de quem foi além da fúria de ter sido morto."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Cada vítima que mata sob certas condições se ergue como novo espectro, multiplicando essa fúria de tumba em tumba."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Os sacerdotes da Ceifadora ensinam que um espectro nasce quando uma alma morre com tanto ódio que a própria deusa da morte se recusa a recebê-la, deixando-a presa entre o mundo e o além. É considerada a mais pura expressão de uma Centelha que apodreceu por dentro."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Undead",
+    "terreno": [
+      "Ruins",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 4, Prontidão 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Espectro",
+    "cr": "7",
+    "tipo": "morto-vivo Médio (incorpóreo)",
+    "tamanho": "medio",
+    "valores": {
+      "for": "-",
+      "des": 16,
+      "con": "-",
+      "int": 14,
+      "sab": 14,
+      "car": 17
+    },
+    "pericias": [
+      "Furtividade 4",
+      "Prontidão 3"
+    ],
+    "nota": "Dreno de nível, voo, incorpóreo: Centelha 3.",
+    "deslocamento": {
+      "ft": 80,
+      "origem": "fonte",
+      "nota": "voo 80 (perfeito): incorpóreo"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

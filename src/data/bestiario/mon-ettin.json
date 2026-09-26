@@ -1,0 +1,137 @@
+{
+  "ordem": 26,
+  "id": "mon-ettin",
+  "nome": "Ettin",
+  "nomeIngles": "Ettin",
+  "categoria": "Gigante",
+  "papel": "elite",
+  "conceito": "humanoide Grande (gigante)",
+  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "tags": [
+    "gigante"
+  ],
+  "imagem": "bestiario/ettin.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "4 m de altura",
+    "peso": "1,8 t"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 8,
+    "destreza": 2,
+    "vigor": 5,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Pancada descomunal",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Duas cabeças, dois ataques",
+      "descricao": "ataca com duas armas diferentes na mesma rodada, cada golpe mirando um alvo distinto"
+    },
+    {
+      "nome": "Vigilância dupla",
+      "descricao": "nunca é Surpreendido e ignora bônus de flanco ou emboscada contra si"
+    },
+    {
+      "nome": "Golpe brutal",
+      "descricao": "dano alto de arma grande em cada acerto"
+    },
+    {
+      "nome": "Visão no escuro",
+      "descricao": "enxerga normalmente no escuro até 18m"
+    },
+    {
+      "nome": "Couro calejado",
+      "descricao": "Absorção alta contra impactos"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "As duas cabeças discutem entre si sobre quase tudo, da direção a seguir a quem come primeiro, o que o torna imprevisível em combate."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Vive em cavernas isoladas nas montanhas, ataca viajantes por fome ou irritação, e guarda o que caça sem dividir com ninguém."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Burro e rabugento, mas as duas mentes tornam difícil pegá-lo desprevenido."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Outra relíquia gigante que sobrou nas serras despovoadas perto do White Wall, o ettin discutindo consigo mesmo virou folclore recorrente entre caçadores e viajantes de Mére, sinal certo de perigo duplo pela frente."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Giant",
+    "terreno": [
+      "Mountain",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 3, Sobrevivência 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Ettin",
+    "cr": "6",
+    "tipo": "humanoide Grande (gigante)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 8,
+      "con": 15,
+      "int": 6,
+      "sab": 10,
+      "car": 11
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Sobrevivência 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

@@ -1,0 +1,146 @@
+{
+  "ordem": 46,
+  "id": "mon-aranha-gigante",
+  "nome": "Aranha Gigante",
+  "nomeIngles": "Giant Spider",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/aranha-gigante.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "Corpo 0,6 m, envergadura das pernas 1,8 m",
+    "peso": "25 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 2,
+    "destreza": 5,
+    "vigor": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Teia",
+      "tipo": "natural",
+      "alvo": "natural (Ex)"
+    },
+    {
+      "efeito": "Mordida venenosa",
+      "tipo": "natural",
+      "alvo": "veneno natural"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Teia",
+      "descricao": "dispara teia a 6m; alvo preso precisa de Atletismo para se soltar"
+    },
+    {
+      "nome": "Mordida venenosa",
+      "descricao": "acerto injeta veneno; falha em Vigor causa dano contínuo e Abalado"
+    },
+    {
+      "nome": "Andar em teias",
+      "descricao": "move sobre teias e superfícies verticais sem penalidade"
+    },
+    {
+      "nome": "Emboscada",
+      "descricao": "bônus de Furtividade ao atacar de surpresa"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Tece teias densas entre árvores ou em bocas de caverna e espera vibrarem; injeta veneno paralisante e embrulha a presa para comer com calma, ou guardar para depois."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Infesta florestas fechadas e grutas escuras, praga comum nas matas profundas de Mére e nas cavernas do White Wall."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Vive em ninhadas: onde há uma, costuma haver dezenas de filhotes crescendo depressa, o que torna um ninho descoberto tarde um perigo sério para vilarejos próximos."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "O povo comum, temperado pela Supressão a desconfiar de qualquer coisa fora do natural, vê um ninho de aranhas do tamanho de um cão como maldição ou praga enviada, não como mero acidente da natureza."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 3, Atletismo 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Aranha Gigante",
+    "cr": "1",
+    "tipo": "praga Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 11,
+      "des": 17,
+      "con": 12,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Atletismo 3"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

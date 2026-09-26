@@ -1,0 +1,124 @@
+{
+  "ordem": 141,
+  "id": "mon-ankheg",
+  "nome": "Ankheg",
+  "nomeIngles": "Ankheg",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Grande",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/ankheg.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3 m de comprimento",
+    "peso": "450 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 6,
+    "destreza": 2,
+    "vigor": 6,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Escavador",
+      "descricao": "O ankheg abre túneis no solo macio com rapidez incomum e sente vibrações no chão, localizando presas mesmo sem vê-las."
+    },
+    {
+      "nome": "Cuspe Ácido",
+      "descricao": "Uma vez por cena, o ankheg cospe um jato de ácido em linha reta; quem estiver no caminho sofre dano ácido considerável, reduzido pela metade com um teste de Vigor bem-sucedido."
+    },
+    {
+      "nome": "Mordida e Prensa",
+      "descricao": "As mandíbulas do ankheg injetam ácido a cada mordida e podem prender a vítima, arrastando-a para dentro da terra."
+    },
+    {
+      "nome": "Casca Endurecida",
+      "descricao": "O exoesqueleto do ankheg absorve parte de qualquer golpe físico recebido."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Praga Rural",
+      "texto": "O ankheg assola campos e fazendas, atraído pela terra solta que facilita suas escavações. Evita cidades grandes, mas devora gado e viajantes descuidados sem hesitar."
+    },
+    {
+      "titulo": "Caçada",
+      "texto": "Prefere emboscar de baixo do solo, agarrar a presa com a mordida e recuar para seus túneis, onde a vítima é devorada antes que qualquer socorro chegue."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Plains",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Ankheg",
+    "cr": "3",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 16,
+      "des": 10,
+      "con": 17,
+      "int": 1,
+      "sab": 13,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

@@ -1,0 +1,127 @@
+{
+  "ordem": 171,
+  "id": "mon-cloaker",
+  "nome": "Cloaker",
+  "nomeIngles": "Cloaker",
+  "categoria": "Aberração",
+  "papel": "elite",
+  "conceito": "aberração Grande",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha"
+  ],
+  "imagem": "bestiario/cloaker.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,4 m de envergadura",
+    "peso": "45 kg"
+  },
+  "locomocao": {
+    "voo": 4
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 7,
+    "destreza": 5,
+    "vigor": 6,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4,
+    "percepcao": 4,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Envolver",
+      "descricao": "Lança-se sobre um oponente de porte igual ou menor, envolvendo-o completamente no próprio corpo; parte do dano que a vítima causaria a ele recai sobre o próprio corpo enquanto ela está presa."
+    },
+    {
+      "nome": "Gemido Sônico",
+      "descricao": "Emite um lamento infrassônico com efeitos variados: espalha pavor que deixa os alvos em pânico, causa náusea e queda, mergulha um único inimigo em torpor paralisante, ou impõe penalidades de combate a todos ao redor."
+    },
+    {
+      "nome": "Manipulação de Sombras",
+      "descricao": "Em penumbra, distorce as sombras ao seu redor para se tornar borrado, criar duplicatas ilusórias de si mesmo ou projetar imagens falsas."
+    },
+    {
+      "nome": "Camuflagem",
+      "descricao": "Consegue se disfarçar como um manto, lençol ou objeto similar, quase indistinguível quando imóvel."
+    },
+    {
+      "nome": "Imune ao Próprio Gemido",
+      "descricao": "Não é afetado pelos efeitos sônicos ou mentais de seu próprio lamento."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Terror das Profundezas",
+      "texto": "Parecendo uma arraia diabólica voadora, o cloaker desliza silenciosamente pelos túneis, imitando objetos inertes até o momento de atacar."
+    },
+    {
+      "titulo": "Motivos Obscuros",
+      "texto": "Suas intenções permanecem um mistério até para quem estuda a espécie; fala apenas a língua das profundezas e raramente se associa a outras criaturas."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Cloaker",
+    "cr": "5",
+    "tipo": "aberração Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 16,
+      "con": 19,
+      "int": 14,
+      "sab": 15,
+      "car": 14
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "voo 40; em terra 10, e o manto vive no ar"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

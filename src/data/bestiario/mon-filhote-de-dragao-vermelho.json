@@ -1,0 +1,170 @@
+{
+  "ordem": 130,
+  "id": "mon-filhote-de-dragao-vermelho",
+  "nome": "Filhote de Dragão Vermelho",
+  "nomeIngles": "Dragon, Wyrmling Red",
+  "categoria": "Dragão",
+  "papel": "elite",
+  "conceito": "dragão Médio",
+  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "tags": [
+    "dragao",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/filhote-de-dragao-vermelho.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2,7 m de comprimento, com a cauda",
+    "peso": "90 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 6,
+    "destreza": 2,
+    "vigor": 5,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 4,
+    "percepcao": 4,
+    "inteligencia": 3,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 5,
+    "temperanca": 3,
+    "valor": 5
+  },
+  "willpower": 9,
+  "aparencia": 8,
+  "arte": {
+    "fogo": 2,
+    "morte": 3
+  },
+  "ataques": [
+    {
+      "nome": "Garras e mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Sopro de fogo (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Fogo · N2",
+      "arte": "fogo"
+    },
+    {
+      "efeito": "Presença medonha",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N3",
+      "arte": "morte"
+    }
+  ],
+  "resistencias": [
+    "fogo"
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro de fogo",
+      "descricao": "cone de 9m; dano alto, metade se Esquivar"
+    },
+    {
+      "nome": "Presença medonha",
+      "descricao": "quem vê o dragão falha em Vontade: Abalado"
+    },
+    {
+      "nome": "Voo",
+      "descricao": "desloca 12m voando"
+    },
+    {
+      "nome": "Garras e mordida",
+      "descricao": "dois ataques corpo a corpo no mesmo turno"
+    },
+    {
+      "nome": "Imune a fogo",
+      "descricao": "não sofre dano de fogo, nem do próprio sopro"
+    },
+    {
+      "nome": "Sentidos aguçados",
+      "descricao": "+2d6 em Prontidão, enxerga no escuro"
+    },
+    {
+      "nome": "Orgulho e ganância",
+      "descricao": "+2d6 em Persuasão ao negociar ou intimidar em torno de seu tesouro"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Ainda recém-saído do ovo, o filhote de dragão vermelho já nasce arrogante e impulsivo, atacando por orgulho ferido antes mesmo de entender o próprio perigo, e testando garras e sopro de fogo em presas fáceis perto do ninho."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Vive escondido perto do covil da mãe ou sozinho em fendas vulcânicas e cavernas quentes, começando a juntar as primeiras moedas e relíquias de um tesouro que só vai crescer com os anos."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Vaidoso desde cedo, adora ser temido mais do que compreendido, e reage com fúria desproporcional a qualquer sinal de desrespeito, mesmo vindo de criaturas que mal representam ameaça."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Quando um filhote é avistado, aldeias vizinhas já tratam o caso como presságio: dragões são lembranças vivas de uma era mais mágica que a Supressão tentou apagar, e ver um nascer é sinal, para muitos sacerdotes, de que a vigilância dos deuses está falhando."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Mountain"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 3, Atletismo 2, Manha 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Filhote de Dragão Vermelho",
+    "cr": "7",
+    "tipo": "dragão Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 21,
+      "des": 10,
+      "con": 19,
+      "int": 12,
+      "sab": 15,
+      "car": 12
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Atletismo 2",
+      "Manha 2"
+    ],
+    "nota": "Já nasce mágico, sopro de fogo: Centelha 3.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

@@ -1,0 +1,174 @@
+{
+  "ordem": 80,
+  "id": "mon-assombracao-wraith",
+  "nome": "Assombração",
+  "nomeIngles": "Wraith",
+  "categoria": "Morto-vivo",
+  "papel": "elite",
+  "conceito": "morto-vivo Médio (incorpóreo)",
+  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "tags": [
+    "morto-vivo",
+    "centelha",
+    "incorpóreo",
+    "mágico"
+  ],
+  "imagem": "bestiario/assombracao-wraith.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura, silhueta humanoide flutuante",
+    "peso": "sem peso, forma incorpórea"
+  },
+  "locomocao": {
+    "voo": 6
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 0,
+    "destreza": 5,
+    "vigor": 6,
+    "influencia": 6,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 4,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 4,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 8,
+  "aparencia": 2,
+  "arte": {
+    "morte": 2,
+    "espirito": 3
+  },
+  "ataques": [
+    {
+      "nome": "Toque dilacerante",
+      "atrib": "influencia",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "necrótico (vs Def. Mental)",
+      "ticks": 5,
+      "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Dreno de Constituição (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N2",
+      "arte": "morte"
+    },
+    {
+      "efeito": "Incorpóreo",
+      "tipo": "feiticaria",
+      "alvo": "Espírito · N3",
+      "arte": "espirito"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "resistencias": [
+    "corte",
+    "impacto",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Incorpórea",
+      "descricao": "atravessa paredes e objetos; imune a ataques não mágicos"
+    },
+    {
+      "nome": "Toque drenante",
+      "descricao": "reduz Constituição/PV máximo do alvo e cura a Assombração pelo valor drenado"
+    },
+    {
+      "nome": "Voo silencioso",
+      "descricao": "desloca-se voando sem ruído, bônus de Furtividade"
+    },
+    {
+      "nome": "Presença sepulcral",
+      "descricao": "quem se aproxima faz teste de Vontade; falha deixa Abalado"
+    },
+    {
+      "nome": "Cria súditos",
+      "descricao": "vítima morta pelo dreno pode ressurgir como Assombração subordinada"
+    },
+    {
+      "nome": "Frio da morte",
+      "descricao": "o ar ao redor esfria, delatando sua presença a quem for sensível"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Mais inteligente e implacável que a sombra comum, paira sobre suas vítimas como uma capa negra e rouba a vida com um toque gelado."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Muitas vezes comanda sombras e outros mortos-vivos incorpóreos menores, impondo-se como senhor de uma tumba ou ruína."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Costuma surgir de uma morte particularmente cruel, sobretudo às mãos de outro morto-vivo, ou de massacres esquecidos pela história."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Uma assombração é uma Centelha que não apenas se recusou a partir, mas se voltou contra a própria vida. Ruínas de batalhas da Grande Guerra, onde milhares morreram de uma só vez, são os lugares onde mais se relatam essas presenças."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Undead",
+    "terreno": [
+      "Ruins",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 4, Persuasão 3, Prontidão 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Assombração (Wraith)",
+    "cr": "5",
+    "tipo": "morto-vivo Médio (incorpóreo)",
+    "tamanho": "medio",
+    "valores": {
+      "for": "-",
+      "des": 16,
+      "con": "-",
+      "int": 14,
+      "sab": 14,
+      "car": 21
+    },
+    "pericias": [
+      "Furtividade 4",
+      "Persuasão 3",
+      "Prontidão 3"
+    ],
+    "nota": "Dreno de Constituição, incorpóreo (Car 21 → Vigor 6): Centelha 2.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60: incorpórea, não pisa"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

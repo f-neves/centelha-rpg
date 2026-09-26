@@ -1,0 +1,158 @@
+{
+  "ordem": 77,
+  "id": "mon-ghast",
+  "nome": "Ghast",
+  "nomeIngles": "Ghast",
+  "categoria": "Morto-vivo",
+  "papel": "soldado",
+  "conceito": "morto-vivo Médio",
+  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "tags": [
+    "morto-vivo",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/ghast.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura",
+    "peso": "65 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 5,
+    "destreza": 5,
+    "vigor": 5,
+    "influencia": 5,
+    "perspicacia": 4,
+    "compostura": 4,
+    "percepcao": 4,
+    "inteligencia": 3,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 4,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 2,
+  "arte": {
+    "morte": 2
+  },
+  "ataques": [
+    {
+      "nome": "Golpe",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Paralisia e fedor (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N2 + Vento (fedor)",
+      "arte": "morte"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Fedor nauseante",
+      "descricao": "aura de 3m; falha em Resistência deixa o alvo Enjoado (Abalado) até se afastar"
+    },
+    {
+      "nome": "Toque paralisante",
+      "descricao": "mais potente que o do ghoul comum, dificuldade maior no teste de Vontade"
+    },
+    {
+      "nome": "Garras afiadas",
+      "descricao": "dano superior ao de um ghoul comum"
+    },
+    {
+      "nome": "Constituição de morto-vivo",
+      "descricao": "imune a veneno e doença"
+    },
+    {
+      "nome": "Faro do carniçal",
+      "descricao": "localiza carne morta ou moribunda pelo cheiro"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Mais astuto e forte que um ghoul comum, costuma liderar pequenas matilhas de ghouls, preferindo emboscadas a ataques cegos."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Prefere criptas fétidas e ossários, onde o próprio fedor de sua presença enjoa e atordoa quem se aproxima."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Alimenta-se com mais requinte cruel que os ghouls que comanda, guardando as melhores presas para si antes de dividir os restos."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Um ghast é o que sobra quando a fome de um ghoul amadurece por séculos. Em regiões de Mére, onde os mortos de guerras antigas nunca foram todos recolhidos, ainda se encontram ossários inteiros liderados por um só ghast paciente."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Undead",
+    "terreno": [
+      "Underground",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Ghast",
+    "cr": "2",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 17,
+      "con": "-",
+      "int": 13,
+      "sab": 14,
+      "car": 16
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Prontidão 2"
+    ],
+    "nota": "Fedor e paralisia: Centelha 2.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

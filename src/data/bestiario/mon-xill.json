@@ -1,0 +1,138 @@
+{
+  "ordem": 306,
+  "id": "mon-xill",
+  "nome": "Xill",
+  "nomeIngles": "Xill",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Exterior",
+  "papel": "elite",
+  "conceito": "exterior Médio",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha"
+  ],
+  "imagem": "bestiario/xill.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura, corpo humanoide com mandíbulas alienígenas",
+    "peso": "80 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 5,
+    "destreza": 5,
+    "vigor": 4,
+    "influencia": 2,
+    "perspicacia": 3,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 5
+  },
+  "willpower": 9,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Resistência a magia",
+      "descricao": "Feitiços e efeitos mágicos hostis frequentemente falham em afetá-lo, exigindo insistência do conjurador."
+    },
+    {
+      "nome": "Implante de ovos",
+      "descricao": "Pode depositar dezenas de ovos dentro de uma vítima indefesa; ao eclodir, as larvas consomem o hospedeiro por dentro até a morte, a menos que sejam removidas cirurgicamente ou curadas."
+    },
+    {
+      "nome": "Ferrão paralisante",
+      "descricao": "A mordida injeta um veneno que paralisa o alvo por horas caso ele falhe em um teste de Vigor."
+    },
+    {
+      "nome": "Maestria com várias armas",
+      "descricao": "Luta com espadas curtas e garras ao mesmo tempo sem perder precisão, tratando as garras como ataques principais."
+    },
+    {
+      "nome": "Passagem entre planos",
+      "descricao": "Pode deslizar do Plano Etéreo para o Material como ação rápida; a transição inversa é lenta e o deixa parcialmente incorpóreo, dificultando ser atingido, podendo levar consigo uma vítima disposta ou indefesa."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Raça só de fêmeas",
+      "texto": "Todas as xill são fêmeas capazes de fertilizar os próprios ovos, mas precisam de hospedeiros vivos para incubá-los."
+    },
+    {
+      "titulo": "Flagelo etéreo",
+      "texto": "Vagueiam pelo Plano Etéreo conquistando tudo em seu caminho, movidas pelo único propósito de perpetuar a espécie às custas de outros."
+    },
+    {
+      "titulo": "Cultura alheia",
+      "texto": "Possuem inteligência aguçada e uma sociedade totalitária e militarista completamente estranha às demais raças que encontram."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Ruins",
+      "Underground",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Xill",
+    "cr": "6",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 18,
+      "con": 14,
+      "int": 15,
+      "sab": 12,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

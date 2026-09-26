@@ -1,0 +1,138 @@
+{
+  "ordem": 28,
+  "id": "mon-gigante-da-colina",
+  "nome": "Gigante da Colina",
+  "nomeIngles": "Giant, Hill",
+  "categoria": "Gigante",
+  "papel": "elite",
+  "conceito": "humanoide Grande (gigante)",
+  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "tags": [
+    "gigante",
+    "centelha"
+  ],
+  "imagem": "bestiario/gigante-da-colina.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "4,3 m de altura",
+    "peso": "590 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 9,
+    "destreza": 2,
+    "vigor": 6,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Pancada descomunal",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Arremesso de rocha",
+      "descricao": "ataque à distância de até 36m, dano de arma grande"
+    },
+    {
+      "nome": "Marretada",
+      "descricao": "acerto forte pode derrubar alvo Médio ou menor"
+    },
+    {
+      "nome": "Brutalidade cega",
+      "descricao": "continua lutando normalmente mesmo Abalado"
+    },
+    {
+      "nome": "Couro grosso",
+      "descricao": "Absorção alta"
+    },
+    {
+      "nome": "Faro de caçador",
+      "descricao": "Prontidão alta para notar emboscadas e presas"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Guloso e pouco esperto, resolve tudo com força e mau humor, e ataca rebanhos e vilarejos atrás de comida fácil."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Pastoreia animais roubados, vive em cavernas ou fortes de pedra crua nas colinas, e come em excesso e sem modos."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Bandos familiares soltos, onde o respeito se conquista apenas pela força do braço."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "O mais rude entre os gigantes, ainda segue à sua maneira grosseira a velha ordem que coloca a tempestade e o Senhor da Guerra e da Tempestade acima de todos eles; para o povo comum de Mére e do White Wall é só mais um monstro faminto descendo da colina."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Giant",
+    "terreno": [
+      "Plains",
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Atletismo 2, Prontidão 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Gigante da Colina",
+    "cr": "7",
+    "tipo": "humanoide Grande (gigante)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 25,
+      "des": 8,
+      "con": 19,
+      "int": 6,
+      "sab": 10,
+      "car": 7
+    },
+    "pericias": [
+      "Atletismo 2",
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

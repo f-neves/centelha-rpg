@@ -1,0 +1,124 @@
+{
+  "ordem": 168,
+  "id": "mon-centipede-swarm",
+  "nome": "Enxame de Centopéia",
+  "nomeIngles": "Swarm, Centipede",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/centipede-swarm.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "2 cm de comprimento (por indivíduo)",
+    "peso": "enxame de milhares de indivíduos, poucos kg ao todo"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 0,
+    "destreza": 5,
+    "vigor": 2,
+    "influencia": 0,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Enxame Venenoso",
+      "descricao": "Centenas de centopeias atacam como uma única massa; armas comuns de corte ou perfuração quase não fazem efeito contra o enxame, mas o veneno de suas mordidas continua a corroer a agilidade de quem é atingido por várias rodadas."
+    },
+    {
+      "nome": "Sentido Vibratório",
+      "descricao": "Percebe presas por vibrações no solo, além de enxergar perfeitamente na escuridão total."
+    },
+    {
+      "nome": "Perturbação",
+      "descricao": "O emaranhado de patas e picadas constantes atrapalha a concentração de quem está dentro do enxame."
+    },
+    {
+      "nome": "Escalador Veloz",
+      "descricao": "Sobe paredes e tetos com a mesma velocidade com que se move pelo chão."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Uma massa ondulante de patas e mandíbulas venenosas avança pelo chão como uma onda só, pulsando com fome incessante."
+    },
+    {
+      "titulo": "Habitat",
+      "texto": "Encontrado nos mesmos lugares que suas primas solitárias, florestas temperadas ou quentes e cavernas subterrâneas, mas em número muito maior e muito mais perigoso."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Centipede Swarm",
+    "cr": "4",
+    "tipo": "praga Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 19,
+      "con": 8,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

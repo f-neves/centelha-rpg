@@ -1,0 +1,127 @@
+{
+  "ordem": 299,
+  "id": "mon-violet-fungus",
+  "nome": "Fungo Violeta",
+  "nomeIngles": "Violet Fungus",
+  "categoria": "Planta",
+  "papel": "soldado",
+  "conceito": "planta Médio",
+  "descricao": "Vegetal desperto, lento e implacável.",
+  "tags": [
+    "planta"
+  ],
+  "imagem": "bestiario/violet-fungus.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,2 metro de altura",
+    "peso": "23 kg"
+  },
+  "locomocao": {
+    "terra": 1
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 3,
+    "destreza": 2,
+    "vigor": 5,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 2,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 3,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "fogo"
+  ],
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Tentáculos podres",
+      "descricao": "Ataca com quatro tentáculos longos cujo toque infecta a carne com um apodrecimento rápido, corroendo Força e Vigor do alvo."
+    },
+    {
+      "nome": "Imóvel por natureza",
+      "descricao": "Só se move para caçar ou atacar; enquanto tiver carne podre por perto para se alimentar, permanece parado, quase invisível entre a decomposição."
+    },
+    {
+      "nome": "Corpo fúngico",
+      "descricao": "Como planta, é imune a venenos e efeitos que dependem de fisiologia animal, e não precisa respirar."
+    },
+    {
+      "nome": "Alcance amplo",
+      "descricao": "Seus tentáculos alcançam bem além do próprio corpo, surpreendendo quem se aproxima pensando estar a salvo."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Guardião de covis",
+      "texto": "Trogloditas e vegepygmies cultivam fungos violeta em entradas e cruzamentos de suas tocas, alimentando-os com carniça para mantê-los satisfeitos e parados no posto."
+    },
+    {
+      "titulo": "Marcas do encontro",
+      "texto": "Sobreviventes carregam cicatrizes fundas onde a carne foi consumida até o osso, prova silenciosa de um encontro quase fatal."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Plant",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Violet Fungus",
+    "cr": "3",
+    "tipo": "planta Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 12,
+      "des": 8,
+      "con": 16,
+      "int": "-",
+      "sab": 11,
+      "car": 9
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 10,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

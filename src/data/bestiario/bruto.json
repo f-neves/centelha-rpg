@@ -1,0 +1,118 @@
+{
+  "ordem": 6,
+  "id": "bruto",
+  "nome": "Bruto",
+  "nomeIngles": "Brute",
+  "categoria": "Humanoide",
+  "categoriaLegada": "Humano",
+  "papel": "soldado",
+  "conceito": "músculo pesado",
+  "descricao": "Lento, mas cada golpe derruba. Mira em quebrar a guarda.",
+  "tags": [
+    "humano"
+  ],
+  "imagem": "bestiario/bruto.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,9 m de altura",
+    "peso": "110 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 5,
+    "destreza": 2,
+    "vigor": 4,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "armas-duas-maos": 3,
+    "esquiva": 1,
+    "resistencia": 3,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "equip": {
+    "armaduras": [
+      "couro"
+    ]
+  },
+  "ataques": [
+    {
+      "nome": "Martelo de guerra",
+      "atrib": "forca",
+      "pericia": "armas-duas-maos",
+      "dado": 3,
+      "mao": 2,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 7,
+      "notas": "Impacto: a armadura quase não absorve (anti-placa)"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Golpe pesado",
+      "descricao": "dano alto por acerto, mira em quebrar a guarda do alvo"
+    },
+    {
+      "nome": "Passo lento",
+      "descricao": "Velocidade 7, age com atraso e reage mal a cercos"
+    },
+    {
+      "nome": "Força bruta",
+      "descricao": "ignora parte da Absorção leve ao acertar"
+    },
+    {
+      "nome": "Vulnerável ao cerco",
+      "descricao": "perde eficácia quando flanqueado por vários oponentes"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Lento para se mover, rápido para golpear: cada ataque busca quebrar a guarda ou derrubar de vez. Não se importa em levar um corte se puder devolver um esmagamento."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Direto, pouco dado a estratégia, confia no próprio tamanho e na intimidação que ele causa."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "O músculo pesado de bandos e milícias por toda Uldun; sem Centelha alguma, vive da força bruta num mundo onde poder mágico é raro e temido."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Velocidade 7 (age pouco). Cerque-o e explore a lentidão.",
+  "pendente": false,
+  "fonte": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

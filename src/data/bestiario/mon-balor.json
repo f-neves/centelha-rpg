@@ -1,0 +1,203 @@
+{
+  "ordem": 93,
+  "id": "mon-balor",
+  "nome": "Balor",
+  "nomeIngles": "Demon, Balor",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Demônio",
+  "papel": "chefe",
+  "conceito": "exterior Grande (demônio)",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "tags": [
+    "demonio",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/balor.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,7 m de altura",
+    "peso": "3,6 t"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 9,
+  "attrs": {
+    "forca": 11,
+    "destreza": 8,
+    "vigor": 12,
+    "influencia": 8,
+    "perspicacia": 8,
+    "compostura": 8,
+    "percepcao": 7,
+    "inteligencia": 7,
+    "raciocinio": 7
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 2,
+    "prontidao": 3,
+    "integridade": 8
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 6
+  },
+  "willpower": 12,
+  "aparencia": -2,
+  "arte": {
+    "fogo": 5,
+    "conjuracao": 4
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Espada e chicote flamejantes",
+      "tipo": "feiticaria",
+      "alvo": "Fogo · N4",
+      "arte": "fogo"
+    },
+    {
+      "efeito": "Aura de fogo (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Fogo · N4 / Proteção",
+      "arte": "fogo"
+    },
+    {
+      "efeito": "Morte explosiva",
+      "tipo": "feiticaria",
+      "alvo": "Fogo · N5",
+      "arte": "fogo"
+    },
+    {
+      "efeito": "Comandar legiões",
+      "tipo": "proeza",
+      "alvo": "Comando / Estandarte",
+      "caminho": "estandarte"
+    },
+    {
+      "efeito": "Teleporte",
+      "tipo": "feiticaria",
+      "alvo": "Conjuração · N4",
+      "arte": "conjuracao"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Espada flamejante",
+      "descricao": "ataque corpo a corpo com dano extra de fogo"
+    },
+    {
+      "nome": "Chicote de energia",
+      "descricao": "alcance 9m; acerto puxa o alvo para perto ou o derruba (Caído)"
+    },
+    {
+      "nome": "Aura de fogo",
+      "descricao": "quem chega a até 3m sofre dano de fogo automático toda rodada"
+    },
+    {
+      "nome": "Morte explosiva",
+      "descricao": "ao cair a 0 PV, explode em 12m; falha em Reflexos = dano alto"
+    },
+    {
+      "nome": "Comandar legiões",
+      "descricao": "proeza; concede ação extra ou Iniciativa a demônios aliados na área"
+    },
+    {
+      "nome": "Teleporte",
+      "descricao": "feitiçaria; desloca-se instantaneamente, ignorando prisões e paredes"
+    },
+    {
+      "nome": "Voo",
+      "descricao": "asas flamejantes, deslocamento de voo alto"
+    },
+    {
+      "nome": "Sangue abissal",
+      "descricao": "imune a fogo; vulnerável a frio (sofre dano extra)"
+    },
+    {
+      "nome": "Visão verdadeira",
+      "descricao": "enxerga através de ilusões, disfarces e invisibilidade"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Comanda hordas inteiras com chicote flamejante numa mão e espada em outra, avançando através do campo de batalha como uma calamidade viva."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Explode em chamas ao morrer, arrastando quem estiver por perto para a destruição junto com ele, um último ato de fúria abissal."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Está entre os poucos demônios fortes o bastante para comandar exércitos e disputar territórios no Abismo com senhores demoníacos menores."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Orgulhoso e cruel, vê mortais como brinquedos frágeis e outros demônios como ferramentas a serem gastas sem hesitação."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "As lendas do White Wall falam do rei de fogo da fenda, figura tão terrível que os anões exilados juram que sua chegada, séculos atrás, foi o verdadeiro motivo da queda das montanhas."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Armas 5, Ocultismo 5, Prontidão 5, Liderança 5. Centelha acima do teto mortal (entidade).",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Balor",
+    "cr": "20",
+    "tipo": "exterior Grande (demônio)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 35,
+      "des": 25,
+      "con": 36,
+      "int": 24,
+      "sab": 24,
+      "car": 27
+    },
+    "pericias": [
+      "Armas 5",
+      "Ocultismo 5",
+      "Prontidão 5",
+      "Liderança 5"
+    ],
+    "nota": "Senhor demoníaco: extrapola o teto mortal, Centelha 8. Str 35 → curva 10 +1 tamanho = Força 11; Con 36 → Vigor 11.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

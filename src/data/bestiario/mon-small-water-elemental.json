@@ -1,0 +1,128 @@
+{
+  "ordem": 205,
+  "id": "mon-small-water-elemental",
+  "nome": "Elemental da Água (Pequeno)",
+  "nomeIngles": "Elemental, Water",
+  "categoria": "Elemental",
+  "papel": "soldado",
+  "conceito": "exterior (água) Pequeno",
+  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+    "elemental",
+    "centelha"
+  ],
+  "imagem": "bestiario/small-water-elemental.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "1,2 metro de altura, corpo líquido em constante fluxo",
+    "peso": "100 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 4,
+    "destreza": 2,
+    "vigor": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "raio"
+  ],
+  "resistencias": [
+    "fogo"
+  ],
+  "habilidades": [
+    {
+      "nome": "Nado veloz",
+      "descricao": "Move-se pela água com grande velocidade e controle, muito mais ágil do que em terra firme."
+    },
+    {
+      "nome": "Vórtice",
+      "descricao": "Uma vez por cena pode se transformar em um pequeno redemoinho, sugando e desorientando quem estiver próximo."
+    },
+    {
+      "nome": "Encharcar",
+      "descricao": "Seu toque encharca tochas, pergaminhos e outros itens sensíveis à água, e pode apagar fogo pequeno."
+    },
+    {
+      "nome": "Domínio da água",
+      "descricao": "Quase impossível de afogar ou arrastar, e ataques contra ele em meio líquido perdem força."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Onda com vontade",
+      "texto": "Convocado das águas de outro plano, assume forma líquida que nunca para de se mover, mesmo em repouso aparente."
+    },
+    {
+      "titulo": "Frieza sem malícia",
+      "texto": "Não odeia nem ama; apenas cumpre a vontade de quem o trouxe até se libertar do vínculo."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Small Water Elemental",
+    "cr": "1",
+    "tipo": "exterior (água) Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 14,
+      "des": 10,
+      "con": 13,
+      "int": 4,
+      "sab": 11,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

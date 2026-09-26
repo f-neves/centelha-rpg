@@ -1,0 +1,124 @@
+{
+  "ordem": 206,
+  "id": "mon-mastodon",
+  "nome": "Mastodonte",
+  "nomeIngles": "Mastodon",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "chefe",
+  "conceito": "animal Enorme",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/mastodon.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "4 metros de altura",
+    "peso": "6 t"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 12,
+    "destreza": 3,
+    "vigor": 8,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Investida arrasadora",
+      "descricao": "Pode atropelar quem estiver em seu caminho; o teste de Vigor para não cair é severo dado seu peso monumental."
+    },
+    {
+      "nome": "Presas e patas",
+      "descricao": "Ataca com marradas das presas curvas e pisões que esmagam ossos."
+    },
+    {
+      "nome": "Faro apurado",
+      "descricao": "Localiza predadores e presas pelo cheiro a grande distância, mesmo sem enxergá-los."
+    },
+    {
+      "nome": "Vigilância constante",
+      "descricao": "Percebe o que se aproxima com uma atenção fora do comum para um animal desse porte."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Gigante das eras frias",
+      "texto": "Primo ancestral dos elefantes, de presas longas e curvas que se erguem e se voltam uma para a outra nas pontas."
+    },
+    {
+      "titulo": "Manada que não foge",
+      "texto": "Vive em grandes rebanhos que enfrentam lobos, cultistas e até coisas piores sem recuar, protegendo os filhotes no centro do grupo."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Plains"
+    ],
+    "clima": [
+      "Cold",
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Mastodon",
+    "cr": "9",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 34,
+      "des": 12,
+      "con": 21,
+      "int": 2,
+      "sab": 13,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

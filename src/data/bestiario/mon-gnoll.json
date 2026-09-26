@@ -1,0 +1,133 @@
+{
+  "ordem": 21,
+  "id": "mon-gnoll",
+  "nome": "Gnoll",
+  "nomeIngles": "Gnoll",
+  "categoria": "Humanoide",
+  "papel": "soldado",
+  "conceito": "humanoide Médio",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+    "humanoide"
+  ],
+  "imagem": "bestiario/gnoll.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2,15 m de altura",
+    "peso": "135 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 4,
+    "destreza": 2,
+    "vigor": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Mordida selvagem",
+      "descricao": "ataque de mordida além da arma"
+    },
+    {
+      "nome": "Caçador em matilha",
+      "descricao": "bônus ao atacar acompanhado de outro gnoll"
+    },
+    {
+      "nome": "Alerta",
+      "descricao": "Prontidão 1; raramente é pego de surpresa"
+    },
+    {
+      "nome": "Visão no escuro",
+      "descricao": "enxerga sem penalidade no escuro"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Caçam em bando uivante, devoram o que matam sem cerimônia e atacam tanto por fome quanto pelo puro prazer de destruir."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Seguem manadas e caravanas como predadores oportunistas, e marcam território com ossos e restos do que caçaram."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Bandos soltos, sem hierarquia estável além de quem estiver mais faminto ou mais violento no momento."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Gnolls não nascem, eles rasgam caminho para fora de carcaças tocadas por uma fome vinda de além mundo; corre entre os caçadores de Mére o boato de que os primeiros bandos surgiram perto da Fenda, e desde então toda alcateia carrega um cheiro de coisa que não deveria existir neste plano."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Desert",
+      "Plains"
+    ],
+    "clima": [
+      "Tropical",
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Gnoll",
+    "cr": "1",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 10,
+      "con": 13,
+      "int": 8,
+      "sab": 11,
+      "car": 8
+    },
+    "pericias": [
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

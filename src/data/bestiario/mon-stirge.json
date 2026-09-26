@@ -1,0 +1,124 @@
+{
+  "ordem": 293,
+  "id": "mon-stirge",
+  "nome": "Stirge",
+  "nomeIngles": "Stirge",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Minúsculo",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/stirge.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "30 centímetros de comprimento, envergadura de 45 centímetros",
+    "peso": "menos de 1 kg"
+  },
+  "locomocao": {
+    "voo": 4
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 1,
+    "destreza": 5,
+    "vigor": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Voo errático",
+      "descricao": "Voa com agilidade surpreendente para seu tamanho, perseguindo presas quentes por cima de pântanos e ruínas."
+    },
+    {
+      "nome": "Fixação",
+      "descricao": "Ao acertar com a probóscide, prende-se firmemente ao alvo; retirar a criatura exige força ou destreza consideráveis."
+    },
+    {
+      "nome": "Sangramento",
+      "descricao": "Enquanto presa, drena sangue continuamente a cada rodada, causando dano contínuo que só cessa quando ela se solta saciada ou é removida."
+    },
+    {
+      "nome": "Sentidos aguçados",
+      "descricao": "Enxerga no escuro e sente o cheiro de sangue quente a distância, guiando-se até presas escondidas."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Praga dos pântanos",
+      "texto": "Viajantes que atravessam brejos aprendem a temer o zumbido leve que precede o ataque de um enxame de stirges."
+    },
+    {
+      "titulo": "Carcaças ressecadas",
+      "texto": "Quando encontram um corpo esvaído, os habitantes locais sabem: os stirges já vieram e já se foram."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Swamp"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Stirge",
+    "cr": "1/2",
+    "tipo": "besta mágica Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 3,
+      "des": 19,
+      "con": 10,
+      "int": 1,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "voo 40; em terra 10"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

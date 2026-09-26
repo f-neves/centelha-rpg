@@ -1,0 +1,157 @@
+{
+  "ordem": 30,
+  "id": "mon-gigante-do-fogo",
+  "nome": "Gigante do Fogo",
+  "nomeIngles": "Giant, Fire",
+  "categoria": "Gigante",
+  "papel": "chefe",
+  "conceito": "humanoide Grande (gigante)",
+  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "tags": [
+    "gigante",
+    "centelha"
+  ],
+  "imagem": "bestiario/gigante-do-fogo.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "4,5 m de altura",
+    "peso": "3,2 t"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 10,
+    "destreza": 2,
+    "vigor": 8,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 4,
+    "inteligencia": 2,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 2,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 5
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Pancada descomunal",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Imune a fogo",
+      "tipo": "proeza",
+      "alvo": "Sangue Imune · Imunidade (b7)",
+      "caminho": "sangue-imune"
+    },
+    {
+      "efeito": "Arremessar rocha",
+      "tipo": "proeza",
+      "alvo": "Atlas / Quebra-Muralhas",
+      "caminho": "quebra-muralhas"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Imune a fogo",
+      "descricao": "não sofre dano de fogo"
+    },
+    {
+      "nome": "Arremesso de rocha",
+      "descricao": "ataque à distância de até 36m, dano alto"
+    },
+    {
+      "nome": "Armadura da forja",
+      "descricao": "Absorção muito alta com armadura pesada forjada por eles mesmos"
+    },
+    {
+      "nome": "Golpe de espadão",
+      "descricao": "dano altíssimo corpo a corpo, mas ataque mais lento (perde a Iniciativa no turno seguinte)"
+    },
+    {
+      "nome": "Sangue de forja",
+      "descricao": "Vontade alta, resiste a Abalado"
+    },
+    {
+      "nome": "Presença marcial",
+      "descricao": "comanda tropas próximas; aliados a até 9m ganham +1d em Ataque"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Disciplinado e militarista, obedece a uma hierarquia rígida em que só a força bruta decide quem manda. Não questiona ordens do superior mais forte, e usa a mesma lógica para tratar todos abaixo dele."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Vive em fortalezas erguidas sobre fendas vulcânicas, onde forja armaduras e armas em placas do tamanho de portões. Mantém escravos, orcs e ogros em geral, para o trabalho pesado das minas e fornalhas."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Cavernas de lava e crateras ainda quentes, onde o calor extremo não incomoda nem a ele nem ao ferro que trabalha."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Sua forja é vista como um eco grosseiro e violento da tradição sagrada do Forjador, uma cópia bárbara do ofício dos anões feita a fogo e chicote. Para o povo comum, é lenda de fornalha de uma era mais mágica que a Supressão preferiria esquecida."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Giant",
+    "terreno": [
+      "Mountain",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Ofícios 2, Prontidão 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Gigante do Fogo",
+    "cr": "10",
+    "tipo": "humanoide Grande (gigante)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 31,
+      "des": 9,
+      "con": 22,
+      "int": 10,
+      "sab": 14,
+      "car": 11
+    },
+    "pericias": [
+      "Ofícios 2",
+      "Prontidão 2"
+    ],
+    "nota": "Imunidade a fogo (Ex/Su) tênue: Centelha 1.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

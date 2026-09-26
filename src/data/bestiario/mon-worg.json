@@ -1,0 +1,131 @@
+{
+  "ordem": 304,
+  "id": "mon-worg",
+  "nome": "Worg",
+  "nomeIngles": "Worg",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Médio",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/worg.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "90 cm de altura na cernelha",
+    "peso": "135 kg"
+  },
+  "locomocao": {
+    "terra": 5
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 5,
+    "destreza": 4,
+    "vigor": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentidos de caçador",
+      "descricao": "Enxerga no escuro, tem visão penumbra e faro apurado, o que torna quase impossível se esconder ou fugir dele à noite."
+    },
+    {
+      "nome": "Mordida derrubadora",
+      "descricao": "Sua mordida pode jogar a vítima ao chão, deixando-a vulnerável ao restante da alcateia."
+    },
+    {
+      "nome": "Corredor incansável",
+      "descricao": "Pode disparar em perseguições longas sem se cansar, superando presas em fuga."
+    },
+    {
+      "nome": "Caçada em bando",
+      "descricao": "Coordena ataques com outros worgs, inclusive usando um deles como isca fingindo ser um humanoide pedindo ajuda."
+    },
+    {
+      "nome": "Fala",
+      "descricao": "Entende e fala línguas como Comum e Goblin, permitindo alianças e comandos táticos com aliados humanoides."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Montaria e mestre",
+      "texto": "Quando cavalgado por goblins, é quase sempre o worg quem manda, não o cavaleiro."
+    },
+    {
+      "titulo": "A isca",
+      "texto": "Um membro da alcateia finge ser um viajante em apuros para atrair presas inteligentes a uma emboscada."
+    },
+    {
+      "titulo": "Pelagem cinzenta",
+      "texto": "Ronda florestas e campos temperados em bandos de até onze, sempre próximo de tocas de goblins ou raças selvagens."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Forest",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Worg",
+    "cr": "2",
+    "tipo": "besta mágica Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 15,
+      "con": 13,
+      "int": 6,
+      "sab": 14,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

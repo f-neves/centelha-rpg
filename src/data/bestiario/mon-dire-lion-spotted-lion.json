@@ -1,0 +1,129 @@
+{
+  "ordem": 251,
+  "id": "mon-dire-lion-spotted-lion",
+  "nome": "Leão Atroz",
+  "nomeIngles": "Dire Lion",
+  "categoria": "Animal",
+  "categoriaLegada": "Monstro",
+  "papel": "elite",
+  "conceito": "monstro Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricaoLegada": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha"
+  ],
+  "imagem": "bestiario/dire-lion-spotted-lion.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2,5 m de comprimento",
+    "peso": "300 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 8,
+    "destreza": 4,
+    "vigor": 5,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 9,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Investida Avassaladora",
+      "descricao": "Ao avançar em carga, ataca com a mordida e as duas garras no mesmo movimento, derrubando a presa antes que ela reaja."
+    },
+    {
+      "nome": "Garras Rasgando",
+      "descricao": "Agarra o alvo com a mordida e crava as garras traseiras repetidamente enquanto o segura, rasgando a carne a cada rodada."
+    },
+    {
+      "nome": "Faro e Visão Noturna",
+      "descricao": "Enxerga bem na penumbra e fareja presas mesmo escondidas ou distantes."
+    },
+    {
+      "nome": "Predador Furtivo",
+      "descricao": "Move-se com grande agilidade e quase sem ruído entre a vegetação densa, perfeito para emboscadas."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Leão das Cavernas",
+      "texto": "Também chamado de leão-manchado, este predador imenso pode medir mais de quatro metros e pesar toneladas."
+    },
+    {
+      "titulo": "Crueldade Selvagem",
+      "texto": "Ao contrário de outros grandes felinos, parece extrair prazer perverso em atormentar a presa antes de matá-la, brincando com seu terror."
+    },
+    {
+      "titulo": "Prole de Deuses Cruéis",
+      "texto": "Muitas tribos creem que estes leões descendem de divindades malignas e caçam a fera assim que percebem sua presença nas redondezas."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains",
+      "Mountain"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Lion (Spotted Lion)",
+    "cr": "5",
+    "tipo": "monstro Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 25,
+      "des": 15,
+      "con": 17,
+      "int": 2,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

@@ -1,0 +1,138 @@
+{
+  "ordem": 146,
+  "id": "mon-trumpet-archon",
+  "nome": "Arconte Trombeta",
+  "nomeIngles": "Archon, Trumpet",
+  "categoria": "Celestial",
+  "papel": "chefe",
+  "conceito": "exterior (anjo) Médio",
+  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
+  "tags": [
+    "celestial",
+    "centelha"
+  ],
+  "imagem": "bestiario/trumpet-archon.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2 m de altura",
+    "peso": "100 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 6,
+  "attrs": {
+    "forca": 6,
+    "destreza": 5,
+    "vigor": 8,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 6,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 3,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 5,
+    "conviccao": 5,
+    "temperanca": 4,
+    "valor": 5
+  },
+  "willpower": 11,
+  "aparencia": 12,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "profano"
+  ],
+  "habilidades": [
+    {
+      "nome": "Espadão Celestial",
+      "descricao": "Empunha uma espada de duas mãos abençoada, capaz de golpes devastadores contra qualquer inimigo."
+    },
+    {
+      "nome": "Trombeta Paralisante",
+      "descricao": "Uma vez por cena, sopra sua trombeta mágica e todos ao redor, exceto seus aliados celestiais, devem passar num teste de Compostura ou ficam paralisados por alguns instantes."
+    },
+    {
+      "nome": "Círculo Contra o Mal",
+      "descricao": "Está sempre envolto por uma proteção que dificulta ataques e possessões de criaturas malignas."
+    },
+    {
+      "nome": "Resistência Mágica",
+      "descricao": "Feitiços hostis frequentemente falham ao atingi-lo, como se sua vontade repelisse a magia."
+    },
+    {
+      "nome": "Voo Excelente",
+      "descricao": "Voa com grande velocidade e agilidade, mesmo carregando armadura e arma pesadas."
+    },
+    {
+      "nome": "Magias Sagradas",
+      "descricao": "Domina uma vasta gama de bênçãos e curas, lançando-as em batalha para apoiar aliados e afastar o mal."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Papel",
+      "texto": "Mensageiros das divindades do bem, os arautos-trombeta lideram exércitos celestiais e servem como intermediários quando um deus precisa falar diretamente com mortais."
+    },
+    {
+      "titulo": "Aparência",
+      "texto": "Têm pele da cor do mármore, olhos brancos sem pupila e vozes cristalinas, quase musicais."
+    },
+    {
+      "titulo": "Símbolo",
+      "texto": "Todo arauto-trombeta carrega um chifre ou trombeta encantada, adornada com o brasão de seu senhor, usada tanto para comunicação quanto como arma."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Celestial",
+    "terreno": [
+      "Sky",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Trumpet Archon",
+    "cr": "14",
+    "tipo": "exterior (anjo) Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 20,
+      "des": 17,
+      "con": 25,
+      "int": 16,
+      "sab": 20,
+      "car": 17
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

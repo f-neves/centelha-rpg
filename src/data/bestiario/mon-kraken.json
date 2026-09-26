@@ -1,0 +1,177 @@
+{
+  "ordem": 128,
+  "id": "mon-kraken",
+  "nome": "Kraken",
+  "nomeIngles": "Kraken",
+  "categoria": "Besta mágica",
+  "papel": "chefe",
+  "conceito": "besta mágica Colossal",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/kraken.webp",
+  "porte": "Colossal",
+  "dimensoes": {
+    "medida": "35 m de comprimento total, entre corpo e tentáculos",
+    "peso": "140 t"
+  },
+  "locomocao": {
+    "natacao": 4
+  },
+  "centelha": 7,
+  "attrs": {
+    "forca": 14,
+    "destreza": 2,
+    "vigor": 13,
+    "influencia": 6,
+    "perspicacia": 6,
+    "compostura": 6,
+    "percepcao": 6,
+    "inteligencia": 6,
+    "raciocinio": 6
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 3,
+    "integridade": 6
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 12,
+  "aparencia": 5,
+  "arte": {
+    "agua": 4
+  },
+  "tech": {
+    "abraco-do-tita": true
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 4,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Constrição e afundar (Ex)",
+      "tipo": "proeza",
+      "alvo": "Agarrão do Urso · Abraço do Titã (b14)",
+      "caminho": "agarrao-do-urso"
+    },
+    {
+      "efeito": "Tinta e tempestade (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Água · N4",
+      "arte": "agua"
+    },
+    {
+      "efeito": "Feitiços",
+      "tipo": "feiticaria",
+      "alvo": "várias · N4"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Tentáculos múltiplos",
+      "descricao": "vários ataques por rodada, cada um pode agarrar um alvo diferente"
+    },
+    {
+      "nome": "Constrição",
+      "descricao": "alvo agarrado sofre dano alto por rodada e fica Imobilizado"
+    },
+    {
+      "nome": "Afundar embarcações",
+      "descricao": "dano automático alto contra estruturas e navios"
+    },
+    {
+      "nome": "Nuvem de tinta",
+      "descricao": "raio 18m; obscurece a visão, penalidade em ataques à distância contra ele"
+    },
+    {
+      "nome": "Convocar tempestade",
+      "descricao": "agita o mar numa grande área, dificulta movimento e visão dos inimigos"
+    },
+    {
+      "nome": "Feitiços arcanos",
+      "descricao": "repertório de magias de dano e controle em larga escala"
+    },
+    {
+      "nome": "Sentidos das profundezas",
+      "descricao": "percebe vibrações na água, não pode ser surpreendido"
+    },
+    {
+      "nome": "Escala colossal",
+      "descricao": "alcance de ataque muito maior que o normal, +2 Absorção"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "O kraken é o predador supremo dos abismos oceânicos: solitário, territorial e imprevisível, prefere emboscar baleias, leviatãs menores e navios que cruzam suas águas antes de recolher-se de novo às profundezas onde nunca chega luz."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Domina léguas de mar como um reino próprio; cardumes, polvos e criaturas abissais o evitam ou seguem à distância para se alimentar dos restos de suas caçadas, e rotas inteiras de migração se desviam de seu território."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Por trás dos olhos frios há uma inteligência antiquíssima: alguns marujos juram que o kraken barganha, poupando quem lhe oferece tributo, mas a maioria só encontra silêncio e depois os tentáculos."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Nas rotas marítimas de Calin, capitães fazem oferendas ao Senhor do Mar e das Estradas antes de cruzar certas águas marcadas nos mapas antigos como domínio do afogado. O kraken é tido como relíquia viva de um mundo mais mágico, anterior à Supressão, prova de que o fundo do mar guarda segredos que nem a Lei alcança."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 5, Ocultismo 4. Centelha acima do teto mortal (entidade).",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Kraken",
+    "cr": "18",
+    "tipo": "besta mágica Colossal",
+    "tamanho": "colossal",
+    "valores": {
+      "for": 34,
+      "des": 10,
+      "con": 28,
+      "int": 21,
+      "sab": 20,
+      "car": 21
+    },
+    "pericias": [
+      "Prontidão 5",
+      "Ocultismo 4"
+    ],
+    "nota": "Leviatã dos mares, magia: Centelha 6. Str 34 → curva 10 +4 tamanho = Força 14.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "nado 40: em terra o kraken se arrasta 10 ft"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

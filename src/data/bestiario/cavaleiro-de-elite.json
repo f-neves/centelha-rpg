@@ -1,0 +1,130 @@
+{
+  "ordem": 11,
+  "id": "cavaleiro-de-elite",
+  "nome": "Cavaleiro de Elite",
+  "nomeIngles": "Elite Knight",
+  "categoria": "Humanoide",
+  "categoriaLegada": "Humano",
+  "papel": "elite",
+  "conceito": "tanque tocado pela Centelha",
+  "descricao": "Muralha de aço e pele de pedra; aguenta o que poucos aguentam.",
+  "tags": [
+    "humano",
+    "centelha"
+  ],
+  "imagem": "bestiario/cavaleiro-de-elite.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,85 m de altura",
+    "peso": "95 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 4,
+    "destreza": 3,
+    "vigor": 5,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "armas-duas-maos": 4,
+    "esquiva": 3,
+    "escudos": 3,
+    "resistencia": 4,
+    "prontidao": 3,
+    "integridade": 6
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "tech": {
+    "pele-curtida": true,
+    "aguentar-o-tranco": true,
+    "tensionar": true
+  },
+  "equip": {
+    "armaduras": [
+      "placa-completa"
+    ]
+  },
+  "ataques": [
+    {
+      "nome": "Montante",
+      "atrib": "forca",
+      "pericia": "armas-duas-maos",
+      "dado": 3,
+      "mao": 2,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Placa",
+      "descricao": "Absorção alta, Esquiva reduzida pelo peso da armadura"
+    },
+    {
+      "nome": "Pele de Pedra",
+      "descricao": "Absorção altíssima contra dano de corte"
+    },
+    {
+      "nome": "Falha de Impacto",
+      "descricao": "vulnerável a dano de Impacto, que a placa quase não absorve"
+    },
+    {
+      "nome": "Falha de perfuração",
+      "descricao": "perfuração nível 2+ ou uma Proeza atravessa sua defesa"
+    },
+    {
+      "nome": "Muralha de aço",
+      "descricao": "aguenta punição prolongada sem cair"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Avança como muralha, absorve golpes que derrubariam outro soldado e segura posições que ninguém mais aguentaria segurar."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Disciplinado e confiável, o tipo de guerreiro em quem um comandante apoia toda a linha de batalha."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Foi tocado pela Centelha o bastante para que sua pele resista como pedra, um dom raro entre humanos que o eleva acima da tropa comum e desperta tanto respeito quanto desconfiança."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Urban",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Placa + Pele de Pedra: Absorção altíssima contra corte. Vença-o com Impacto (a placa quase não absorve), perfuração nível 2+ ou Proeza.",
+  "pendente": false,
+  "fonte": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

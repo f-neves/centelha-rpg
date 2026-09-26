@@ -1,0 +1,128 @@
+{
+  "ordem": 292,
+  "id": "mon-giant-squid",
+  "nome": "Lula Gigante",
+  "nomeIngles": "Giant Squid",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "chefe",
+  "conceito": "animal Enorme",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/giant-squid.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "13,7 metros de comprimento",
+    "peso": "680 kg"
+  },
+  "locomocao": {
+    "natacao": 6
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 10,
+    "destreza": 5,
+    "vigor": 7,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Nuvem de tinta ampla",
+      "descricao": "Uma vez por cena libera uma grande nuvem de tinta que oculta totalmente a área ao seu redor, permitindo emboscadas ou fuga."
+    },
+    {
+      "nome": "Jato de água",
+      "descricao": "Pode disparar em linha reta pela água numa velocidade impressionante, sem abrir brechas para ataques de oportunidade."
+    },
+    {
+      "nome": "Constrição",
+      "descricao": "Os tentáculos, uma vez agarrados ao alvo, apertam e esmagam continuamente, causando dano contínuo enquanto mantêm a presa presa."
+    },
+    {
+      "nome": "Múltiplos apêndices",
+      "descricao": "Ataca com o bico, dois braços e os tentáculos na mesma rodada, sobrecarregando a defesa de quem enfrenta."
+    },
+    {
+      "nome": "Visão em pouca luz e sentidos aguçados",
+      "descricao": "Percebe presas e ameaças à distância mesmo em águas escuras."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Lenda das profundezas",
+      "texto": "Marujos veneram e temem igualmente o monstro que emerge das fossas abissais quando a fome supera o medo da luz do sol."
+    },
+    {
+      "titulo": "Fome sem limites",
+      "texto": "Quando a caça escasseia nas profundezas, a criatura sobe à superfície e devora tudo que encontra, navios inclusive."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Cold",
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Squid",
+    "cr": "9",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 25,
+      "des": 17,
+      "con": 19,
+      "int": 2,
+      "sab": 12,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "nado 60 (o jato de 260 é fuga)"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

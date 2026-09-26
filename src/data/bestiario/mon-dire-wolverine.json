@@ -1,0 +1,123 @@
+{
+  "ordem": 303,
+  "id": "mon-dire-wolverine",
+  "nome": "Carcaju Atroz",
+  "nomeIngles": "Dire Wolverine",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/dire-wolverine.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "até 3,7 metros de comprimento",
+    "peso": "até 900 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 6,
+    "destreza": 5,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Fúria ao ferimento",
+      "descricao": "Ao sofrer dano em combate, entra em fúria na rodada seguinte, ganhando força e resistência muito maiores ao custo da própria defesa, e não consegue conter a fúria por vontade própria."
+    },
+    {
+      "nome": "Sentidos aguçados",
+      "descricao": "Enxerga bem em pouca luz e sente o cheiro da presa a grande distância."
+    },
+    {
+      "nome": "Escaladora ágil",
+      "descricao": "Sobe superfícies íngremes com facilidade surpreendente para seu tamanho descomunal."
+    },
+    {
+      "nome": "Presença aterradora",
+      "descricao": "Do tamanho de um urso, sua simples aproximação já basta para aterrorizar presas e rivais."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Fúria territorial",
+      "texto": "Ainda mais territorial que seus parentes menores, não hesita em atacar até vilarejos inteiros construídos em suas terras."
+    },
+    {
+      "titulo": "Gigante das terras frias",
+      "texto": "Cresce até 12 pés de comprimento e chega a pesar quase uma tonelada, um pesadelo peludo das florestas geladas."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Mountain"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Wolverine",
+    "cr": "4",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 17,
+      "con": 17,
+      "int": 2,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

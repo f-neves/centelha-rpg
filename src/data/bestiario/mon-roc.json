@@ -1,0 +1,150 @@
+{
+  "ordem": 49,
+  "id": "mon-roc",
+  "nome": "Roc",
+  "nomeIngles": "Roc",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "chefe",
+  "conceito": "animal Imenso",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/roc.webp",
+  "porte": "Imenso",
+  "dimensoes": {
+    "medida": "9 m de comprimento, 18 m de envergadura",
+    "peso": "1,2 t"
+  },
+  "locomocao": {
+    "voo": 8
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 13,
+    "destreza": 3,
+    "vigor": 9,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 3,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "couraca": {
+    "couraca": 0,
+    "resistPerf": 0
+  },
+  "habilidades": [
+    {
+      "nome": "Voo colossal",
+      "descricao": "desloca no ar a grande velocidade, mesmo carregando presas enormes"
+    },
+    {
+      "nome": "Garras que erguem",
+      "descricao": "agarra uma criatura Grande ou menor e a ergue nos ares, podendo soltá-la para dano de queda"
+    },
+    {
+      "nome": "Mergulho esmagador",
+      "descricao": "ataque após mergulho causa dano alto e pode Derrubar"
+    },
+    {
+      "nome": "Bico devastador",
+      "descricao": "ataque corpo a corpo com dano alto"
+    },
+    {
+      "nome": "Grito ensurdecedor",
+      "descricao": "grito em área de 9m; falha em Vontade causa Abalado"
+    },
+    {
+      "nome": "Visão de predador ápice",
+      "descricao": "enxerga presas a quilômetros, ignora penalidades por distância"
+    },
+    {
+      "nome": "Corpo colossal",
+      "descricao": "PV muito altos e Absorção alta contra ataques físicos"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Predador solitário de força descomunal, capaz de erguer um elefante nas garras; caça o que encontra nos ares e no chão sem se preocupar com tamanho da presa."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Faz ninho em picos isolados e inacessíveis, longe de qualquer povoado, quase sempre nas cordilheiras mais remotas de Mére ou do White Wall."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Não tem predadores naturais adultos; sua raridade e o tamanho do território que exige mantêm poucos exemplares espalhados pelo continente."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "É relíquia viva de um mundo mais mágico do que o de hoje; quando um roc sobrevoa uma vila, a Supressão faz o povo rezar antes de correr, certo de ter visto um presságio dos deuses."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Mountain",
+      "Sky"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Roc",
+    "cr": "9",
+    "tipo": "animal Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 34,
+      "des": 13,
+      "con": 21,
+      "int": 2,
+      "sab": 15,
+      "car": 11
+    },
+    "pericias": [
+      "Prontidão 3"
+    ],
+    "deslocamento": {
+      "ft": 80,
+      "origem": "fonte",
+      "nota": "voo 80; em terra 20"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

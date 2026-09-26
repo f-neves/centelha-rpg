@@ -1,0 +1,125 @@
+{
+  "ordem": 214,
+  "id": "mon-viper",
+  "nome": "Víbora",
+  "nomeIngles": "Viper",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/viper.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "60 cm de comprimento",
+    "peso": "500 g"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 1,
+    "destreza": 5,
+    "vigor": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 1,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentidos de Caçadora",
+      "descricao": "Enxerga bem no escuro parcial e sente o cheiro do sangue e do medo à distância; quase nunca é surpreendida."
+    },
+    {
+      "nome": "Trepadora e Nadadora",
+      "descricao": "Desliza por galhos, pedras e água com a mesma facilidade com que rasteja pelo chão."
+    },
+    {
+      "nome": "Presa Venenosa",
+      "descricao": "A mordida injeta um veneno que corrói aos poucos: a vítima sofre dano contínuo por vários instantes, exigindo um teste de Vigor para debelar o veneno antes que ele a esgote."
+    },
+    {
+      "nome": "Camuflagem entre Folhas",
+      "descricao": "Seu corpo fino e as escamas foscas a tornam quase invisível quando parada entre raízes e folhagem."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Silêncio antes da mordida",
+      "texto": "Não caça pelo terror, mas pela paciência: a víbora espera imóvel horas a fio até que o descuido do alvo a alimente."
+    },
+    {
+      "titulo": "Presságio nas aldeias",
+      "texto": "Camponeses supersticiosos evitam matar víboras dentro de casa, temendo que o veneno derramado atraia a atenção de espíritos famintos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Swamp",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Viper",
+    "cr": "1/2",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 4,
+      "des": 17,
+      "con": 8,
+      "int": 1,
+      "sab": 13,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

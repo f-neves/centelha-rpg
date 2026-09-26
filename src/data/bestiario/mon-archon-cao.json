@@ -1,0 +1,168 @@
+{
+  "ordem": 102,
+  "id": "mon-archon-cao",
+  "nome": "Arconte Cão",
+  "nomeIngles": "Archon, Hound",
+  "categoria": "Celestial",
+  "papel": "soldado",
+  "conceito": "exterior Médio (celestial)",
+  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
+  "tags": [
+    "celestial",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/archon-cao.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura",
+    "peso": "100 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 5,
+    "destreza": 4,
+    "vigor": 5,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 3,
+    "percepcao": 4,
+    "inteligencia": 3,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 5,
+    "conviccao": 5,
+    "temperanca": 4,
+    "valor": 4
+  },
+  "willpower": 9,
+  "aparencia": 10,
+  "arte": {
+    "fascinacao": 2,
+    "conjuracao": 2,
+    "adivinhacao": 1
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Aura de menaça (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N2 (temor sagrado)",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Teleporte",
+      "tipo": "feiticaria",
+      "alvo": "Conjuração · N2",
+      "arte": "conjuracao"
+    },
+    {
+      "efeito": "Farejar o mal",
+      "tipo": "feiticaria",
+      "alvo": "Adivinhação · N1",
+      "arte": "adivinhacao"
+    }
+  ],
+  "fraquezas": [
+    "profano"
+  ],
+  "habilidades": [
+    {
+      "nome": "Aura de ameaça",
+      "descricao": "inimigos em 6m que falharem em Vontade ficam Abalados"
+    },
+    {
+      "nome": "Teleporte",
+      "descricao": "desloca-se instantaneamente até 12m, 1x por cena"
+    },
+    {
+      "nome": "Farejar o mal",
+      "descricao": "detecta criaturas malignas em até 18m, mesmo ocultas"
+    },
+    {
+      "nome": "Forma canina",
+      "descricao": "vira cão ou lobo de guerra, trocando arma pela mordida e ganhando movimento extra"
+    },
+    {
+      "nome": "Círculo protetor",
+      "descricao": "aliados a 3m ganham +1d de Absorção contra ataques malignos"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Guerreiro leal e disciplinado, patrulha fronteiras do bem com cabeça de cão sempre alerta e faro apurado para a mentira."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Serve em matilhas organizadas sob comando de arautos maiores, cumprindo sua função sem jamais questionar a ordem recebida."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Honesto até a rigidez, desconfia de artimanhas e de quem fala demais; prefere o combate franco a qualquer estratagema."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Contido pela Lei que impede os deuses de agir direto, um archon cão só cruza ao mundo mortal em raros chamados desesperados, e mesmo assim evita ser visto: para o povo da Supressão, um anjo com cara de cão seria mais um monstro a temer do que um salvador."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Celestial",
+    "terreno": [
+      "Mountain",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 3, Atletismo 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Archon Cão",
+    "cr": "4",
+    "tipo": "exterior Médio (celestial)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 18,
+      "des": 14,
+      "con": 16,
+      "int": 13,
+      "sab": 14,
+      "car": 12
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Atletismo 2"
+    ],
+    "nota": "Teletransporte, aura de menaça: Centelha 3.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

@@ -1,0 +1,123 @@
+{
+  "ordem": 301,
+  "id": "mon-wasp-swarm",
+  "nome": "Enxame de Vespas",
+  "nomeIngles": "Swarm, Wasp",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/wasp-swarm.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "vespas individuais do tamanho de um dedo, enxame ocupando cerca de 3 metros",
+    "peso": "insignificante por indivíduo"
+  },
+  "locomocao": {
+    "voo": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 0,
+    "destreza": 3,
+    "vigor": 2,
+    "influencia": 0,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 0,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Enxame",
+      "descricao": "Milhares de vespas cobrem qualquer criatura na área ao mesmo tempo; armas comuns pouco afetam a massa, apenas fogo ou dano em área."
+    },
+    {
+      "nome": "Picadas incessantes",
+      "descricao": "Estar dentro do enxame exige concentração; uma vítima ocupada com outra tarefa pode falhar por causa das picadas constantes."
+    },
+    {
+      "nome": "Veneno coletivo",
+      "descricao": "Cada picada injeta veneno que corrói a Destreza da vítima a cada rodada."
+    },
+    {
+      "nome": "Voo em massa",
+      "descricao": "Move-se pelo ar como uma nuvem só, perseguindo qualquer criatura viva que cruze seu caminho."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Fúria sem fim",
+      "texto": "Uma vez provocado, um enxame de vespas pode perder de vista a origem de sua raiva e seguir atacando qualquer novo alvo que encontrar, sem parar até ser disperso."
+    },
+    {
+      "titulo": "Zumbido da morte",
+      "texto": "Um zumbido grave e constante anuncia a aproximação de milhares de vespas furiosas antes que alguém as veja."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Wasp Swarm",
+    "cr": "3",
+    "tipo": "praga Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 13,
+      "con": 10,
+      "int": "-",
+      "sab": 12,
+      "car": 9
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "voo 40: a nuvem de vespas não pousa"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

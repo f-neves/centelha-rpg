@@ -44,8 +44,8 @@
 //
 // -------------------------------------------------------------- as camadas
 // Duas, e a segunda vence a primeira:
-//   1. TABELA, por tipo (vocabulário PF do ecologia-bestiario.json) e porte
-//      (dimensoes-bestiario.json). É a regra do sistema de origem, não chute:
+//   1. TABELA, por tipo (vocabulário PF de `ecologia.tipo`) e porte
+//      (`porte`), lidos do monsters.json. É a regra do sistema de origem, não chute:
 //      humanoide Médio 30 ft, Pequeno 20, animal quadrúpede 40, gigante 40,
 //      dragão 40 em terra, limo 10 a 20, e por aí.
 //   2. FONTE, à mão, com o número colhido de Archives of Nethys (aonprd.com) ou

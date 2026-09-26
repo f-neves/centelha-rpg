@@ -16,16 +16,17 @@
 //   node scripts/converter-imagens.mjs           # mostra o que faria
 //   node scripts/converter-imagens.mjs --gravar  # converte e apaga o original
 //
-// Depois de gravar, `imagens-bestiario.json` precisa apontar para .webp e o
-// `gen-monsters.mjs` precisa rodar para levar isso ao monsters.json. As duas
-// coisas o `--gravar` já faz.
+// Depois de gravar, o campo `imagem` de cada ficha (src/data/bestiario/<id>.json)
+// precisa apontar para .webp, e o `gen-monsters.mjs` precisa rodar para levar isso
+// ao monsters.json. O `--gravar` faz a primeira; a segunda ele pede. Até o B14
+// (26/09/2026) o caminho morava no imagens-bestiario.json, que foi apagado.
 import sharp from 'sharp';
 import fs from 'node:fs';
 import path from 'node:path';
 
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const DIR = path.join(ROOT, 'public/bestiario');
-const MAPA = path.join(ROOT, 'src/data/imagens-bestiario.json');
+const FICHAS = path.join(ROOT, 'src/data/bestiario');
 const GRAVAR = process.argv.includes('--gravar');
 
 // O PNG vem de fonte sem perda e aguenta 82 sem aparecer. O JPG já perdeu uma
@@ -59,10 +60,15 @@ if (!GRAVAR) {
   process.exit(0);
 }
 
-// O mapa de imagens é a fonte: `gen-monsters.mjs` lê dele para preencher o campo
-// `imagem` de cada criatura.
-const mapa = JSON.parse(fs.readFileSync(MAPA, 'utf8'));
-for (const k of Object.keys(mapa)) mapa[k] = String(mapa[k]).replace(/\.(jpe?g|png)$/i, '.webp');
-fs.writeFileSync(MAPA, JSON.stringify(mapa, null, 2) + '\n');
-console.log(`\n✓ ${Object.keys(mapa).length} caminhos atualizados em src/data/imagens-bestiario.json`);
+// A ficha de cada criatura é a fonte: `gen-monsters.mjs` lê dela o campo `imagem`.
+let n = 0;
+for (const f of fs.readdirSync(FICHAS).filter((x) => x.endsWith('.json'))) {
+  const arq = path.join(FICHAS, f);
+  const c = JSON.parse(fs.readFileSync(arq, 'utf8'));
+  if (!c.imagem || !/\.(jpe?g|png)$/i.test(c.imagem)) continue;
+  c.imagem = c.imagem.replace(/\.(jpe?g|png)$/i, '.webp');
+  fs.writeFileSync(arq, JSON.stringify(c, null, 2) + '\n');
+  n++;
+}
+console.log(`\n✓ ${n} fichas apontadas para .webp em src/data/bestiario/`);
 console.log('  falta rodar: node scripts/gen-monsters.mjs');

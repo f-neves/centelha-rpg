@@ -1,0 +1,135 @@
+{
+  "ordem": 260,
+  "id": "mon-mohrg",
+  "nome": "Mohrg",
+  "nomeIngles": "Mohrg",
+  "categoria": "Morto-vivo",
+  "papel": "chefe",
+  "conceito": "morto-vivo Médio",
+  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "tags": [
+    "morto-vivo",
+    "centelha"
+  ],
+  "imagem": "bestiario/mohrg.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,75 m de altura",
+    "peso": "70 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 6,
+    "destreza": 5,
+    "vigor": 4,
+    "influencia": 4,
+    "perspicacia": 3,
+    "compostura": 3,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 4,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 9,
+  "aparencia": 2,
+  "ataques": [
+    {
+      "nome": "Golpe",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão no escuro",
+      "descricao": "Enxerga perfeitamente em total escuridão."
+    },
+    {
+      "nome": "Corpo morto imune a fraquezas da carne",
+      "descricao": "Não sofre venenos, doenças, cansaço nem qualquer efeito que dependa de um corpo vivo."
+    },
+    {
+      "nome": "Língua paralisante",
+      "descricao": "Um toque de sua língua apodrecida paralisa a vítima por vários minutos se ela falhar em um teste de Vigor."
+    },
+    {
+      "nome": "Cria servos ao matar",
+      "descricao": "Todo humanoide morto por ele levanta-se imediatamente como um morto-vivo veloz sob seu comando, e a explosão de energia negra cura e acelera o mohrg por um instante."
+    },
+    {
+      "nome": "Garras que agarram",
+      "descricao": "Golpeia com as duas mãos ossudas, prendendo o alvo para impedir fuga."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Restos de assassinos",
+      "texto": "Surge dos corpos de serial killers e carrascos executados antes de expiar seus crimes, guardando ainda a memória e o prazer de ouvir gritos."
+    },
+    {
+      "titulo": "Caçador solitário",
+      "texto": "Prefere isolar suas vítimas, paralisando uma a uma, e às vezes retorna aos antigos cenários de seus crimes, repetindo hábitos de quando ainda respirava."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Undead",
+    "terreno": [
+      "Any",
+      "Ruins",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Mohrg",
+    "cr": "8",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 21,
+      "des": 19,
+      "con": "-",
+      "int": 11,
+      "sab": 10,
+      "car": 14
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

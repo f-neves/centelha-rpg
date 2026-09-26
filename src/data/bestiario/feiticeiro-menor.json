@@ -1,0 +1,120 @@
+{
+  "ordem": 10,
+  "id": "feiticeiro-menor",
+  "nome": "Feiticeiro Menor",
+  "nomeIngles": "Minor Sorcerer",
+  "categoria": "Humanoide",
+  "categoriaLegada": "Conjurador",
+  "papel": "elite",
+  "conceito": "conjurador iniciante",
+  "descricao": "Frágil no corpo a corpo, perigoso à distância com fogo.",
+  "tags": [
+    "humano",
+    "centelha",
+    "arcano"
+  ],
+  "imagem": "bestiario/feiticeiro-menor.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,68 m de altura",
+    "peso": "60 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 2,
+    "destreza": 3,
+    "vigor": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 4,
+    "inteligencia": 4,
+    "raciocinio": 2
+  },
+  "skills": {
+    "ocultismo": 3,
+    "esquiva": 2,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "skills2": {
+    "acerto-arcano": 3
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "arte": {
+    "fogo": 2
+  },
+  "ataques": [
+    {
+      "nome": "Dardo flamejante (Fogo 1)",
+      "atrib": "percepcao",
+      "pericia": "acerto-arcano",
+      "dado": 1,
+      "distancia": true,
+      "tipo": "fogo",
+      "ticks": 6,
+      "notas": "Custa 1 Mana; resistido por Absorção/Esquiva"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Reserva de Mana",
+      "descricao": "Mana = Centelha×2 + Vontade, total 8"
+    },
+    {
+      "nome": "Labareda",
+      "descricao": "magia nível 2, 2d6 de dano à distância, custa 2 Mana"
+    },
+    {
+      "nome": "Frágil no corpo a corpo",
+      "descricao": "Defesa e Absorção baixas, evita combate direto"
+    },
+    {
+      "nome": "Mantém distância",
+      "descricao": "reposiciona para conjurar fora do alcance do inimigo"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Evita o corpo a corpo, onde é frágil, e prefere abrir distância para golpear com fogo antes que o inimigo chegue perto."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Inseguro quanto ao próprio poder, ainda descobrindo os limites da centelha que desperta em si."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "É exatamente o tipo de figura que a Supressão ensinou o povo a temer: um conjurador iniciante, tocado por um poder que as igrejas ortodoxas de Calin chamam de herança da Tecelã e pregam contra."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Mana = Centelha×2 + Vontade = 8. Nível 2 (Labareda, 2d6) custa 2 Mana.",
+  "pendente": false,
+  "fonte": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

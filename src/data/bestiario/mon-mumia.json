@@ -1,0 +1,172 @@
+{
+  "ordem": 82,
+  "id": "mon-mumia",
+  "nome": "Múmia",
+  "nomeIngles": "Mummy",
+  "categoria": "Morto-vivo",
+  "papel": "elite",
+  "conceito": "morto-vivo Médio",
+  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "tags": [
+    "morto-vivo",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/mumia.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura",
+    "peso": "85 kg, corpo dessecado e ataduras"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 7,
+    "destreza": 2,
+    "vigor": 4,
+    "influencia": 4,
+    "perspicacia": 2,
+    "compostura": 4,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 4,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 2,
+  "arte": {
+    "morte": 3
+  },
+  "ataques": [
+    {
+      "nome": "Golpe",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Podridão da múmia (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N2",
+      "arte": "morte"
+    },
+    {
+      "efeito": "Aura de desespero (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N3 (medo) / Lenda Viva · Temor Reverente (b5)",
+      "arte": "morte"
+    }
+  ],
+  "fraquezas": [
+    "fogo",
+    "luz",
+    "sagrado"
+  ],
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Toque da podridão",
+      "descricao": "acerto contamina o alvo com maldição que impede cura mágica até tratada por ritual"
+    },
+    {
+      "nome": "Aura de desespero",
+      "descricao": "quem se aproxima em 9m faz teste de Vontade; falha deixa Abalado"
+    },
+    {
+      "nome": "Passo lento porém implacável",
+      "descricao": "Iniciativa baixa, mas nunca perde o alvo numa perseguição"
+    },
+    {
+      "nome": "Vulnerável ao fogo",
+      "descricao": "sofre dano extra de chamas (Absorção reduzida)"
+    },
+    {
+      "nome": "Ataduras enroladas",
+      "descricao": "Absorção elevada contra cortes e perfurações"
+    },
+    {
+      "nome": "Constituição de morto-vivo",
+      "descricao": "imune a veneno e efeitos mentais"
+    },
+    {
+      "nome": "Golpe esmagador",
+      "descricao": "ataque corpo a corpo com dano consistente mesmo sem talento extra"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Metódica e implacável, avança devagar mas sem parar, e seu toque carrega uma podridão que consome quem sobrevive ao encontro."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Quase sempre foi alguém embalsamado por rituais sagrados para guardar eternamente um túmulo, um templo ou um tesouro específico."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Dorme séculos dentro de câmaras seladas, despertando apenas quando intrusos profanam o local que jurou proteger."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Os ritos que criam múmias sobrevivem sobretudo nas cidades mágicas escondidas de Mére, onde reis e sacerdotes de antes da Supressão se fizeram guardiões eternos de suas próprias tumbas. Abrir uma dessas câmaras é acordar uma promessa selada há gerações."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Undead",
+    "terreno": [
+      "Ruins",
+      "Desert"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Múmia",
+    "cr": "5",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 24,
+      "des": 10,
+      "con": "-",
+      "int": 6,
+      "sab": 15,
+      "car": 15
+    },
+    "pericias": [
+      "Prontidão 3"
+    ],
+    "nota": "Podridão e aura de desespero (Su): Centelha 3. Str 24 → Força 7.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

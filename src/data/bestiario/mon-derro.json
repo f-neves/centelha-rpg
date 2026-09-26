@@ -1,0 +1,130 @@
+{
+  "ordem": 180,
+  "id": "mon-derro",
+  "nome": "Derro",
+  "nomeIngles": "Derro",
+  "categoria": "Humanoide",
+  "papel": "soldado",
+  "conceito": "humanoide Pequeno",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+    "humanoide",
+    "centelha"
+  ],
+  "imagem": "bestiario/derro.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "1,2 m de altura",
+    "peso": "36 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 2,
+    "destreza": 4,
+    "vigor": 5,
+    "influencia": 5,
+    "perspicacia": 3,
+    "compostura": 2,
+    "percepcao": 1,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 0,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Ataque Furtivo",
+      "descricao": "Golpeia com precisão extra quando pega o inimigo despreparado."
+    },
+    {
+      "nome": "Loucura Inata",
+      "descricao": "Sua mente já está tão fraturada que se torna imune a efeitos de insanidade e confusão, resistindo com força de espírito onde outros usariam a sabedoria."
+    },
+    {
+      "nome": "Uso de Veneno",
+      "descricao": "Aplica veneno de aranha em suas armas sem correr risco de se intoxicar."
+    },
+    {
+      "nome": "Vulnerabilidade ao Sol",
+      "descricao": "Sofre dano físico gradual a cada hora exposto à luz do sol."
+    },
+    {
+      "nome": "Poderes Menores",
+      "descricao": "Pode criar trevas, sons ilusórios, atordoar um inimigo à distância ou emitir um estrondo atordoante algumas vezes ao dia."
+    },
+    {
+      "nome": "Resistência Mágica",
+      "descricao": "Seu corpo naturalmente dificulta que magias inimigas o afetem."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Loucura Ancestral",
+      "texto": "Descendentes de fadas esquecidas que um dia se refugiaram nas profundezas, cobiçam os confortos da superfície, mas a luz do sol queima e mata os de sua raça."
+    },
+    {
+      "titulo": "Experimentos Cruéis",
+      "texto": "Sequestram moradores da superfície para experimentos macabros na eterna e fútil busca por entender o que protege os outros da morte solar, condenados sempre ao fracasso por sua própria insanidade."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Derro",
+    "cr": "3",
+    "tipo": "humanoide Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 11,
+      "des": 15,
+      "con": 18,
+      "int": 10,
+      "sab": 5,
+      "car": 16
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

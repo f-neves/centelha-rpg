@@ -1,0 +1,146 @@
+{
+  "ordem": 65,
+  "id": "mon-aranha-das-fases",
+  "nome": "Aranha das Fases",
+  "nomeIngles": "Phase Spider",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Grande",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/aranha-das-fases.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "corpo 1,5 m, envergadura de pernas 3 m",
+    "peso": "160 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 6,
+    "destreza": 5,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 8,
+  "aparencia": 5,
+  "arte": {
+    "espirito": 2
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Salto etéreo (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Espírito · N2 / Conjuração",
+      "arte": "espirito"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Salto etéreo",
+      "descricao": "desaparece e reaparece a até 9m, ignorando obstáculos e ataques de oportunidade"
+    },
+    {
+      "nome": "Mordida venenosa",
+      "descricao": "falha em Resistência causa veneno debilitante"
+    },
+    {
+      "nome": "Fio de teia",
+      "descricao": "prende o alvo, reduzindo sua Esquiva até se soltar"
+    },
+    {
+      "nome": "Emboscada etérea",
+      "descricao": "Furtividade 3; surge do Plano Etéreo sem aviso"
+    },
+    {
+      "nome": "Retirada instantânea",
+      "descricao": "foge para o Etéreo assim que gravemente ferida"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Aranha gigante que some e reaparece piscando entre este mundo e um véu etéreo logo abaixo dele, usando essa passagem para emboscar presas sem aviso e escapar de perseguições impossíveis."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Tece teias tanto no mundo material quanto no véu que o espelha, e arrasta presas paralisadas por seu veneno para o lado etéreo, onde devora em paz, longe de qualquer resgate."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "É tratada como parente distante dos horrores que atravessam a Fenda: não vem de lá, mas cruza um véu do mesmo jeito, e isso basta para que caçadores de Syl a tratem com o mesmo respeito assustado que dão a um espírito hostil fora de lugar."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Forest",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Aranha das Fases",
+    "cr": "5",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 17,
+      "des": 17,
+      "con": 16,
+      "int": 7,
+      "sab": 13,
+      "car": 11
+    },
+    "pericias": [
+      "Furtividade 3"
+    ],
+    "nota": "Salto etéreo: Centelha 2.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

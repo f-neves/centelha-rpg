@@ -1,0 +1,126 @@
+{
+  "ordem": 294,
+  "id": "mon-svirfneblin",
+  "nome": "Svirfneblin",
+  "nomeIngles": "Svirfneblin",
+  "categoria": "Humanoide",
+  "papel": "soldado",
+  "conceito": "humanoide Pequeno",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+    "humanoide",
+    "centelha"
+  ],
+  "imagem": "bestiario/svirfneblin.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "90 centímetros de altura",
+    "peso": "18 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 3,
+    "destreza": 4,
+    "vigor": 4,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão no escuro profunda",
+      "descricao": "Enxerga no breu total das profundezas muito além do alcance comum, essencial para uma vida inteira sob a terra."
+    },
+    {
+      "nome": "Resistência a magia",
+      "descricao": "Seu sangue feérico dificulta que magias hostis o afetem, exigindo mais poder do lançador para superar essa resistência natural."
+    },
+    {
+      "nome": "Inconspícuo",
+      "descricao": "Permanece constantemente difícil de detectar por magia de adivinhação, um dom natural de seu povo."
+    },
+    {
+      "nome": "Disfarce e sombra",
+      "descricao": "Pode nublar a própria forma ou assumir outra aparência algumas vezes ao dia, além de se ocultar em sombra instantânea."
+    },
+    {
+      "nome": "Furtividade nas profundezas",
+      "descricao": "Move-se em silêncio quase perfeito entre pedras e túneis, quase invisível quando parado contra a rocha."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Cidades escondidas",
+      "texto": "Os svirfneblin escavaram cidades inteiras longe do alcance de elfos negros e outras ameaças da superfície, protegidas por décadas de desconfiança."
+    },
+    {
+      "titulo": "Sangue feérico distante",
+      "texto": "O laço com o mundo feérico que corre em seu sangue os torna estranhos até para os próprios parentes gnomos da superfície."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Svirfneblin",
+    "cr": "1",
+    "tipo": "humanoide Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 13,
+      "des": 15,
+      "con": 14,
+      "int": 10,
+      "sab": 10,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

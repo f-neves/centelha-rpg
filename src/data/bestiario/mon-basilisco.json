@@ -1,0 +1,147 @@
+{
+  "ordem": 61,
+  "id": "mon-basilisco",
+  "nome": "Basilisco",
+  "nomeIngles": "Basilisk",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Médio",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/basilisco.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de comprimento, do focinho à cauda",
+    "peso": "135 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 5,
+    "destreza": 2,
+    "vigor": 4,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 8,
+  "aparencia": 5,
+  "arte": {
+    "materia": 3
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Olhar petrificante (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Matéria · N3 (carne → pedra)",
+      "arte": "materia"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Olhar petrificante",
+      "descricao": "quem encara falha em Resistência vira pedra; sucesso causa Abalado"
+    },
+    {
+      "nome": "Mordida reptiliana",
+      "descricao": "ataque físico simples além do olhar"
+    },
+    {
+      "nome": "Emboscada nas pedras",
+      "descricao": "Furtividade 2; camufla-se entre rochas"
+    },
+    {
+      "nome": "Sentidos aguçados",
+      "descricao": "Prontidão 3 compensa a visão fraca"
+    },
+    {
+      "nome": "Reflexo traidor",
+      "descricao": "espelho ou superfície reflexiva pode virar o próprio olhar contra ele"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Réptil solitário e paciente, ataca de emboscada e depende do olhar petrificante para vencer presas maiores que ele. Não persegue longe: prefere esperar a vítima se aproximar de sua toca."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Faz covil em ruínas, cavernas e minas abandonadas, cercado de estátuas de pedra que já foram gente ou animal. Come devagar, às vezes só depois que a presa petrificada começa a rachar e esfarelar, séculos depois."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Muitas de suas tocas ficam em ruínas da Grande Guerra, e o povo comum jura que as estátuas ao redor são soldados daquele tempo, presos como aviso do preço de mexer com magia."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Underground",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 2, Prontidão 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Basilisco",
+    "cr": "5",
+    "tipo": "besta mágica Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 16,
+      "des": 8,
+      "con": 15,
+      "int": 2,
+      "sab": 13,
+      "car": 11
+    },
+    "pericias": [
+      "Furtividade 2",
+      "Prontidão 3"
+    ],
+    "nota": "Naturalmente mágico, olhar petrificante: Centelha 2.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

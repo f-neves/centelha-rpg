@@ -1,0 +1,185 @@
+{
+  "ordem": 136,
+  "id": "mon-dragao-azul-adulto",
+  "nome": "Dragão Azul Adulto",
+  "nomeIngles": "Dragon, Adult Blue",
+  "categoria": "Dragão",
+  "papel": "chefe",
+  "conceito": "dragão Enorme",
+  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "tags": [
+    "dragao",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/dragao-azul-adulto.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "9,5 m de comprimento, envergadura de 14 m",
+    "peso": "7,5 t"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 6,
+  "attrs": {
+    "forca": 11,
+    "destreza": 2,
+    "vigor": 9,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 5,
+    "temperanca": 3,
+    "valor": 6
+  },
+  "willpower": 11,
+  "aparencia": 9,
+  "arte": {
+    "raio": 4,
+    "fascinacao": 3,
+    "morte": 3
+  },
+  "ataques": [
+    {
+      "nome": "Garras e mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Sopro elétrico (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Raio · N4",
+      "arte": "raio"
+    },
+    {
+      "efeito": "Miragem no deserto (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N3",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Presença",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N3",
+      "arte": "morte"
+    }
+  ],
+  "resistencias": [
+    "raio"
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro elétrico",
+      "descricao": "linha de 18m; 9d6 de dano, metade se Esquivar"
+    },
+    {
+      "nome": "Miragem no deserto",
+      "descricao": "cria ilusão que engana a Prontidão do alvo, escondendo sua posição real por 1 turno"
+    },
+    {
+      "nome": "Presença",
+      "descricao": "falha no teste de Vontade = Abalado (raio de 18m)"
+    },
+    {
+      "nome": "Enterrar e emergir",
+      "descricao": "some sob a areia e ressurge para atacar de surpresa, com bônus de Iniciativa"
+    },
+    {
+      "nome": "Voo",
+      "descricao": "manobra excelente sobre dunas e terreno aberto"
+    },
+    {
+      "nome": "Multiataque",
+      "descricao": "garra, garra, mordida e cauda no mesmo turno"
+    },
+    {
+      "nome": "Imune a eletricidade",
+      "descricao": "ignora todo dano elétrico"
+    },
+    {
+      "nome": "Sentidos do deserto",
+      "descricao": "percebe vibrações no chão a longa distância; dificulta Furtividade contra ele"
+    },
+    {
+      "nome": "Escamas azuis",
+      "descricao": "Absorção +3d6 contra ataques físicos"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "O dragão azul adulto é caçador paciente e territorial ao extremo, capaz de se enterrar na areia por dias esperando a presa certa antes de golpear com o sopro de raios e as garras afiadas."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Domina desertos e ermos áridos, marcando cada duna e rocha de seu território com um senso quase obsessivo de posse, atacando qualquer intruso, mágico ou não, sem hesitar."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Mais orgulhoso do próprio domínio do que do tesouro em si, encara qualquer pegada estranha em suas terras como insulto pessoal, e pode perseguir um intruso por léguas só para provar um ponto."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Nas fronteiras áridas de Mére, tribos locais aprenderam a ler as tempestades de areia como aviso de que um dragão azul está caçando, e evitam certas rotas havia gerações, muito antes de qualquer igreja supressora inventar nome para o medo."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Desert",
+      "Mountain"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 4, Prontidão 4, Manha 4.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Dragão Azul Adulto",
+    "cr": "13",
+    "tipo": "dragão Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 29,
+      "des": 10,
+      "con": 23,
+      "int": 16,
+      "sab": 17,
+      "car": 16
+    },
+    "pericias": [
+      "Furtividade 4",
+      "Prontidão 4",
+      "Manha 4"
+    ],
+    "nota": "Sopro elétrico, ilusionista do deserto: Centelha 5.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

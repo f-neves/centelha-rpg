@@ -1,0 +1,131 @@
+{
+  "ordem": 162,
+  "id": "mon-boggard",
+  "nome": "Boggard",
+  "nomeIngles": "Boggard",
+  "categoria": "Humanoide",
+  "papel": "soldado",
+  "conceito": "humanoide Médio",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+    "humanoide",
+    "centelha"
+  ],
+  "imagem": "bestiario/boggard.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,5 m de altura",
+    "peso": "70 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 4,
+    "destreza": 2,
+    "vigor": 4,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Língua Grudenta",
+      "descricao": "Atinge o alvo à distância com a língua pegajosa, prendendo-o e impedindo que se afaste mais do que alguns passos até que a língua seja arrancada ou cortada."
+    },
+    {
+      "nome": "Grito Aterrorizante",
+      "descricao": "Uma vez por cena, solta um coaxar alto e horripilante que ameaça amedrontar todas as criaturas próximas que não sejam da sua espécie."
+    },
+    {
+      "nome": "Andar do Pântano",
+      "descricao": "Move-se por qualquer terreno difícil natural de um pântano em sua velocidade normal, sem ser atrapalhado pela lama ou vegetação."
+    },
+    {
+      "nome": "Fôlego Longo",
+      "descricao": "Prende a respiração por muito mais tempo que um humano, podendo permanecer submerso por longos períodos sem se afogar."
+    },
+    {
+      "nome": "Nadador Ágil e Visão no Escuro",
+      "descricao": "Nada com grande facilidade e enxerga tanto no escuro quanto em pouca luz."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Aparência",
+      "texto": "Lembram sapos ou rãs andando eretos, com mãos e pés palmados, olhos enormes e bocas largas demais; vivem perto de grandes rios ou nas profundezas de pântanos."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Erguem pequenas aldeias de montículos de lama nas margens; começam a vida como girinos em lagoas de reprodução, crescendo até um metro antes de ganhar braços e pernas e se tornarem capazes de viver em terra firme."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "A aceitação de um jovem no clã depende de como ele se desenvolve durante essa transformação, tornando a chegada à vida adulta um verdadeiro rito de passagem."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Swamp",
+      "Water"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Boggard",
+    "cr": "2",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 9,
+      "con": 14,
+      "int": 8,
+      "sab": 11,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

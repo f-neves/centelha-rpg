@@ -1,0 +1,132 @@
+{
+  "ordem": 24,
+  "id": "mon-trogloditas",
+  "nome": "Trogloditas",
+  "nomeIngles": "Troglodyte",
+  "categoria": "Humanoide",
+  "papel": "soldado",
+  "conceito": "humanoide Médio (reptiliano)",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+    "humanoide"
+  ],
+  "imagem": "bestiario/trogloditas.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,7 m de altura",
+    "peso": "75 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 3,
+    "destreza": 2,
+    "vigor": 4,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Pele camaleão",
+      "descricao": "camuflagem natural contra pedra; Furtividade 1 elevada em cavernas"
+    },
+    {
+      "nome": "Fedor nauseante",
+      "descricao": "quem chega perto e falha em Vigor fica Abalado por enjoo"
+    },
+    {
+      "nome": "Garras",
+      "descricao": "ataque corpo a corpo além da arma primitiva"
+    },
+    {
+      "nome": "Visão no escuro",
+      "descricao": "enxerga sem luz em cavernas"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Agressivos e territoriais, atacam por instinto puro quando encurralados ou famintos."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Liberam de si um fedor nauseante que atordoa intrusos, e vivem em cavernas úmidas onde caçam morcegos, fungos e o que cai nas galerias."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Pequenos clãs primitivos sem ambição além de defender a própria toca, quase sem contato com a superfície."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Parentes distantes e degenerados dos lagartos, multiplicaram-se nas profundezas abandonadas do White Wall depois que a Fenda expulsou os anões, reivindicando túneis que antes eram forja e hoje são só caverna."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Trogloditas",
+    "cr": "1",
+    "tipo": "humanoide Médio (reptiliano)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 9,
+      "con": 14,
+      "int": 8,
+      "sab": 11,
+      "car": 10
+    },
+    "pericias": [
+      "Furtividade 1"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

@@ -1,0 +1,136 @@
+{
+  "ordem": 36,
+  "id": "mon-lobo-atroz",
+  "nome": "Lobo Atroz",
+  "nomeIngles": "Dire Wolf",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/lobo-atroz.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,7 m de comprimento",
+    "peso": "350 kg"
+  },
+  "locomocao": {
+    "terra": 5
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 9,
+    "destreza": 4,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Mordida esmagadora",
+      "descricao": "dano alto, pode derrubar alvo Médio"
+    },
+    {
+      "nome": "Faro de longa distância",
+      "descricao": "rastreia presas a quilômetros pelo cheiro"
+    },
+    {
+      "nome": "Caça em matilha",
+      "descricao": "ganha bônus de Ataque lutando ao lado de outro lobo contra o mesmo alvo"
+    },
+    {
+      "nome": "Porte avantajado",
+      "descricao": "Absorção e PV acima do normal para uma fera"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Como o lobo comum, mas maior e mais audacioso, ataca presas e grupos de viajantes que uma matilha comum evitaria."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Por vezes é domesticado por orcs e goblins, que o usam como montaria de guerra ou guarda de acampamento."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Prefere florestas profundas e regiões frias, territórios ainda pouco pisados por gente."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Encontrado nos ermos mais selvagens de Mére e nas bordas do White Wall, muitas vezes adestrado pelos clãs ásperos que os anões um dia moldaram da rocha."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Mountain",
+      "Plains"
+    ],
+    "clima": [
+      "Cold",
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 2, Furtividade 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Lobo Atroz",
+    "cr": "3",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 25,
+      "des": 15,
+      "con": 17,
+      "int": 2,
+      "sab": 12,
+      "car": 10
+    },
+    "pericias": [
+      "Prontidão 2",
+      "Furtividade 2"
+    ],
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

@@ -1,0 +1,165 @@
+{
+  "ordem": 111,
+  "id": "mon-elemental-da-terra-grande",
+  "nome": "Elemental da Terra (Grande)",
+  "nomeIngles": "Elemental, Large Earth",
+  "categoria": "Elemental",
+  "papel": "elite",
+  "conceito": "exterior Grande (terra)",
+  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+    "elemental",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/elemental-da-terra-grande.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3 m de altura",
+    "peso": "2 t"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 9,
+    "destreza": 2,
+    "vigor": 7,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 8,
+  "aparencia": 5,
+  "arte": {
+    "terra": 2
+  },
+  "tech": {
+    "pele-de-pedra": true
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Deslizar na pedra e empurrão",
+      "tipo": "feiticaria",
+      "alvo": "Terra · N2",
+      "arte": "terra"
+    },
+    {
+      "efeito": "Corpo de terra",
+      "tipo": "proeza",
+      "alvo": "Pele de Pedra · Carne de Granito (b7)",
+      "caminho": "pele-de-pedra"
+    }
+  ],
+  "fraquezas": [
+    "agua"
+  ],
+  "resistencias": [
+    "fogo"
+  ],
+  "habilidades": [
+    {
+      "nome": "Deslizar na pedra",
+      "descricao": "move-se através de terra e rocha sem deixar rastro"
+    },
+    {
+      "nome": "Empurrão",
+      "descricao": "golpe pode derrubar ou arremessar o alvo para trás"
+    },
+    {
+      "nome": "Corpo de terra",
+      "descricao": "+1d de Absorção contra armas físicas"
+    },
+    {
+      "nome": "Imunidade mental e a venenos",
+      "descricao": "sem efeito de veneno, doença ou efeitos mentais"
+    },
+    {
+      "nome": "Não precisa respirar",
+      "descricao": "imune a afogamento e gases"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Força bruta da terra viva, avança em linha reta esmagando o que encontra, sem malícia nem hesitação."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Não come, não dorme, não envelhece; existe apenas enquanto o propósito de sua invocação ou a vontade do seu plano o sustentam."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Nasce das profundezas rochosas do plano elemental da terra, movendo-se pela pedra sólida como se fosse água."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Raramente visto fora de rituais antigos ou minas profundas do White Wall, um elemental da terra desperto é tomado pelo povo comum como sinal de que a montanha acordou zangada, mais um argumento das igrejas supressoras contra quem ainda ousa invocar tais forças."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Underground",
+      "Mountain"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Atletismo 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Elemental da Terra (Grande)",
+    "cr": "5",
+    "tipo": "exterior Grande (terra)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 26,
+      "des": 8,
+      "con": 21,
+      "int": 6,
+      "sab": 11,
+      "car": 11
+    },
+    "pericias": [
+      "Atletismo 2"
+    ],
+    "nota": "Ser de pura terra: Centelha 2.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

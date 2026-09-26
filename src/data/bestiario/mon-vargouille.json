@@ -1,0 +1,134 @@
+{
+  "ordem": 297,
+  "id": "mon-vargouille",
+  "nome": "Vargouille",
+  "nomeIngles": "Vargouille",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Exterior",
+  "papel": "soldado",
+  "conceito": "exterior Pequeno",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha"
+  ],
+  "imagem": "bestiario/vargouille.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "entre 30 e 51 centímetros de altura, envergadura entre 38 e 89 centímetros",
+    "peso": "2 kg"
+  },
+  "locomocao": {
+    "voo": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 2,
+    "destreza": 3,
+    "vigor": 3,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 5
+  },
+  "willpower": 7,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Beijo transformador",
+      "descricao": "Um beijo de suas presas em alvo indefeso pode iniciar uma transformação horrível que, se não interrompida, converte a vítima em um novo vargouille em questão de horas."
+    },
+    {
+      "nome": "Veneno persistente",
+      "descricao": "A mordida injeta um veneno cujo dano só pode ser curado por magia; sem tratamento adequado, o ferimento simplesmente não fecha."
+    },
+    {
+      "nome": "Grito paralisante",
+      "descricao": "Em vez de morder, pode soltar um grito agudo que paralisa quem o ouve e vê claramente, a menos que resista; quem resiste fica imune a esse grito por um dia."
+    },
+    {
+      "nome": "Voo ágil",
+      "descricao": "Move-se pelo ar com boa agilidade, adequado para emboscadas em ruínas e campos de batalha esquecidos."
+    },
+    {
+      "nome": "Visão no escuro",
+      "descricao": "Enxerga perfeitamente no escuro dos túmulos e criptas onde costuma se esconder."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Cabeça viva",
+      "texto": "Pouco maior que uma cabeça humana, com asas de couro e tentáculos no lugar de cabelo, o vargouille é um pesadelo em miniatura."
+    },
+    {
+      "titulo": "Praga de cemitérios",
+      "texto": "Não pertence a este mundo, mas se multiplica nele através de suas vítimas, transformando cada beijo em uma sentença de morte lenta e grotesca."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Ruins",
+      "Underground"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Vargouille",
+    "cr": "2",
+    "tipo": "exterior Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 10,
+      "des": 13,
+      "con": 13,
+      "int": 5,
+      "sab": 12,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte",
+      "nota": "voo 30: a cabeça alada não tem passo"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

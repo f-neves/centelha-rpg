@@ -1,0 +1,129 @@
+{
+  "ordem": 43,
+  "id": "mon-gorila",
+  "nome": "Gorila",
+  "nomeIngles": "Gorilla",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/gorila.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "1,7 m de altura em pé, envergadura de braços 2,4 m",
+    "peso": "180 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 6,
+    "destreza": 4,
+    "vigor": 5,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Força brutal",
+      "descricao": "golpe corpo a corpo com dano alto"
+    },
+    {
+      "nome": "Escalada natural",
+      "descricao": "sobe superfícies verticais sem penalidade de deslocamento"
+    },
+    {
+      "nome": "Arremesso",
+      "descricao": "agarra e lança objetos ou inimigos pequenos a até 4m"
+    },
+    {
+      "nome": "Pelagem espessa",
+      "descricao": "Absorção moderada"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Vive em grupos familiares liderados por um macho dominante, geralmente pacífico a menos que provocado ou defendendo o grupo."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Habita florestas densas e encostas montanhosas, raramente se afastando da cobertura das árvores."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Encontrado nas selvas mais remotas de Mére, raramente avistado por forasteiros, e tratado pelas lendas locais como guardião silencioso da mata."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Jungle",
+      "Forest"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Atletismo 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Gorila",
+    "cr": "2",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 15,
+      "con": 14,
+      "int": 2,
+      "sab": 13,
+      "car": 7
+    },
+    "pericias": [
+      "Atletismo 3"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

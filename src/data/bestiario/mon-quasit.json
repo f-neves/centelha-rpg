@@ -1,0 +1,175 @@
+{
+  "ordem": 87,
+  "id": "mon-quasit",
+  "nome": "Quasit",
+  "nomeIngles": "Demon, Quasit",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Demônio",
+  "papel": "soldado",
+  "conceito": "exterior Minúsculo (demônio)",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "tags": [
+    "demonio",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/quasit.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "30 cm de altura",
+    "peso": "3,5 kg"
+  },
+  "locomocao": {
+    "voo": 5
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 2,
+    "destreza": 5,
+    "vigor": 2,
+    "influencia": 4,
+    "perspicacia": 3,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 5
+  },
+  "willpower": 7,
+  "aparencia": 1,
+  "arte": {
+    "fascinacao": 1,
+    "adivinhacao": 1,
+    "materia": 2
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Invisibilidade e susto (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N1",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Adivinhação",
+      "tipo": "feiticaria",
+      "alvo": "Adivinhação · N1",
+      "arte": "adivinhacao"
+    },
+    {
+      "efeito": "Forma alternativa",
+      "tipo": "feiticaria",
+      "alvo": "Matéria · N2",
+      "arte": "materia"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Invisibilidade",
+      "descricao": "feitiçaria; fica invisível à vontade como ação livre"
+    },
+    {
+      "nome": "Susto",
+      "descricao": "feitiçaria, 1x por cena; falha no teste de Vontade = Abalado"
+    },
+    {
+      "nome": "Adivinhação",
+      "descricao": "feitiçaria, 1x por cena; vislumbra o futuro próximo e ganha vantagem no próximo teste"
+    },
+    {
+      "nome": "Forma alternativa",
+      "descricao": "feitiçaria; vira morcego, centopeia gigante ou lobo, ganhando voo ou deslocamento extra"
+    },
+    {
+      "nome": "Garra e ferrão venenosos",
+      "descricao": "ataque corpo a corpo; crítico = alvo Envenenado"
+    },
+    {
+      "nome": "Regeneração",
+      "descricao": "recupera PV toda rodada, exceto se ferido por arma benta ou de prata"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Cruel e covarde em doses iguais, prefere torturar os fracos e fugir dos fortes, trocando de forma (morcego, gato, rato, sapo) para espiar sem ser notado."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Vive para servir um mestre mais poderoso, seja um senhor demoníaco, seja um mago mortal incauto que aceitou seu serviço em troca de favores obscuros."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Sarcástico e mentiroso, deleita se com o sofrimento alheio; obedece apenas enquanto teme o dono e trai no instante em que enxerga vantagem."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Circula disfarçado nas cidades de Calin como familiar de hereges que flertam com o tabu antimagia, sussurrando segredos e semeando pequenas desgraças no dia a dia de quem confia demais nele."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 4, Manha 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Quasit",
+    "cr": "2",
+    "tipo": "exterior Minúsculo (demônio)",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 8,
+      "des": 17,
+      "con": 11,
+      "int": 11,
+      "sab": 12,
+      "car": 14
+    },
+    "pericias": [
+      "Furtividade 4",
+      "Manha 2"
+    ],
+    "nota": "Invisibilidade, forma alternativa: Centelha 2.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte",
+      "nota": "voo 50 (perfeito); em terra 20"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

@@ -1,0 +1,132 @@
+{
+  "ordem": 221,
+  "id": "mon-marid",
+  "nome": "Marid",
+  "nomeIngles": "Marid",
+  "categoria": "Elemental",
+  "papel": "chefe",
+  "conceito": "exterior (água) Grande",
+  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+    "elemental",
+    "centelha"
+  ],
+  "imagem": "bestiario/marid.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "4,9 m de altura",
+    "peso": "1130 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 8,
+    "destreza": 5,
+    "vigor": 6,
+    "influencia": 5,
+    "perspicacia": 4,
+    "compostura": 5,
+    "percepcao": 4,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 10,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "fraquezas": [
+    "raio"
+  ],
+  "resistencias": [
+    "fogo"
+  ],
+  "habilidades": [
+    {
+      "nome": "Domínio das Águas",
+      "descricao": "Golpeia com mais força quando ambos, ele e o inimigo, estão em contato com água, mas luta pior em terra firme."
+    },
+    {
+      "nome": "Fúria das Marés",
+      "descricao": "Uma vez por cena, dispara um jato de água capaz de ferir e cegar temporariamente quem for atingido, a menos que resista com um teste de Reação."
+    },
+    {
+      "nome": "Vórtice Aquático",
+      "descricao": "Uma vez por cena, transforma-se em um redemoinho de água turbulenta, mas só enquanto estiver submerso."
+    },
+    {
+      "nome": "Forma Mutável",
+      "descricao": "Pode assumir a forma de um elemental de água, de um humano ou de um gigante, mudando de aparência à vontade."
+    },
+    {
+      "nome": "Nadador Incansável",
+      "descricao": "Move-se pela água com velocidade muito maior do que a maioria das criaturas em terra."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Os mais poderosos gênios",
+      "texto": "Ditos possuir a força das correntes oceânicas e dentes de pérola, os marides são os mais fortes de todos os gênios conhecidos."
+    },
+    {
+      "titulo": "Almas de artista",
+      "texto": "Muitos abandonam a guerra para se tornarem dançarinos, contadores de histórias e artistas, para desgosto dos gênios mais sóbrios da terra."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Marid",
+    "cr": "9",
+    "tipo": "exterior (água) Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 19,
+      "con": 18,
+      "int": 14,
+      "sab": 15,
+      "car": 16
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

@@ -1,0 +1,124 @@
+{
+  "ordem": 176,
+  "id": "mon-darkmantle",
+  "nome": "Darkmantle",
+  "nomeIngles": "Darkmantle",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Pequeno",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/darkmantle.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "envergadura de tentáculos 1,5 m",
+    "peso": "18 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 2,
+    "destreza": 4,
+    "vigor": 4,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Constrição",
+      "descricao": "Envolve a presa com seus tentáculos membranosos e aperta continuamente, causando dano a cada instante que a mantém presa."
+    },
+    {
+      "nome": "Escuridão Instintiva",
+      "descricao": "Uma vez por dia, envolve a área ao redor em trevas mágicas, cegando a visão comum dos que dependem de luz."
+    },
+    {
+      "nome": "Camuflagem de Estalactite",
+      "descricao": "Pendurado no teto por ganchos nos tentáculos, confunde-se com uma estalactite comum até o momento de atacar."
+    },
+    {
+      "nome": "Ecolocalização",
+      "descricao": "Percebe o ambiente ao redor mesmo sem enxergar, detectando movimento por vibração no ar em curto alcance."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Emboscada do Teto",
+      "texto": "Agarrado ao teto de cavernas como um morcego gigante, aguarda em silêncio até que uma presa passe por baixo, quando então se solta e ataca."
+    },
+    {
+      "titulo": "Vida Breve, Evolução Rápida",
+      "texto": "Cresce e envelhece em poucos meses, e essa rapidez faz suas populações mudarem de geração em geração conforme o ambiente da caverna que habitam."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Underground",
+      "Ruins",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Darkmantle",
+    "cr": "1",
+    "tipo": "besta mágica Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 11,
+      "des": 15,
+      "con": 14,
+      "int": 2,
+      "sab": 11,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

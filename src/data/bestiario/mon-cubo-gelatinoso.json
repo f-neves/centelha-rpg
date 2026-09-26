@@ -1,0 +1,134 @@
+{
+  "ordem": 67,
+  "id": "mon-cubo-gelatinoso",
+  "nome": "Cubo Gelatinoso",
+  "nomeIngles": "Gelatinous Cube",
+  "categoria": "Limo",
+  "papel": "soldado",
+  "conceito": "limo Grande",
+  "descricao": "Massa informe que digere tudo que toca.",
+  "tags": [
+    "limo",
+    "centelha"
+  ],
+  "imagem": "bestiario/cubo-gelatinoso.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "cubo de 3 m de lado",
+    "peso": "14 t (massa gelatinosa densa, bem acima do normal para o porte)"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 3,
+    "destreza": 0,
+    "vigor": 9,
+    "influencia": 0,
+    "perspicacia": 0,
+    "compostura": 0,
+    "percepcao": 0,
+    "inteligencia": 0,
+    "raciocinio": 0
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 0,
+    "prontidao": 0,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 6,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Pseudópode",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "resistencias": [
+    "corte",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Corpo transparente",
+      "descricao": "quase invisível parado; exige Prontidão alta para notar antes do contato"
+    },
+    {
+      "nome": "Engolfa",
+      "descricao": "encosta e envolve o alvo, causando dano contínuo enquanto Agarrado"
+    },
+    {
+      "nome": "Ácido corrosivo",
+      "descricao": "dano extra por rodada a quem estiver dentro do cubo; corrói equipamento exposto"
+    },
+    {
+      "nome": "Mente vazia",
+      "descricao": "imune a efeitos mentais e a Abalado"
+    },
+    {
+      "nome": "Preenche o corredor",
+      "descricao": "ocupa toda a passagem; difícil de contornar ou escapar"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Massa transparente e quase invisível que desliza por corredores e câmaras subterrâneas, dissolvendo lentamente tudo que toca; não persegue, apenas avança e engole o que estiver em seu caminho."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Limpa dungeons e ruínas por acidente, carregando dentro de si moedas, ossos e fivelas de metal que sobrevivem à digestão lenta, um arquivo grotesco de todos que morreram ali antes."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Exploradores de ruínas da Grande Guerra o temem mais pela surpresa que pelo perigo: é fácil de evitar se visto a tempo, e quase sempre fatal para quem não percebe a diferença entre corredor vazio e gelatina viva."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Ooze",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Cubo Gelatinoso",
+    "cr": "3",
+    "tipo": "limo Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 10,
+      "des": 1,
+      "con": 26,
+      "int": "-",
+      "sab": 1,
+      "car": 1
+    },
+    "nota": "Mente vazia: Int/Rac 0. Con 26 + tamanho = Vigor 9. Centelha 1.",
+    "deslocamento": {
+      "ft": 15,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

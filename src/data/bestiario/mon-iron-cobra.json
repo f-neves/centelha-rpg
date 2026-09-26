@@ -1,0 +1,143 @@
+{
+  "ordem": 244,
+  "id": "mon-iron-cobra",
+  "nome": "Cobra de Ferro",
+  "nomeIngles": "Iron Cobra",
+  "categoria": "Construto",
+  "categoriaLegada": "Monstro",
+  "papel": "soldado",
+  "conceito": "constructo Pequeno",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricaoLegada": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro"
+  ],
+  "imagem": "bestiario/iron-cobra.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "1,2 m de comprimento",
+    "peso": "18 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 3,
+    "destreza": 4,
+    "vigor": 0,
+    "influencia": 0,
+    "perspicacia": 0,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 3,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "raio"
+  ],
+  "resistencias": [
+    "corte",
+    "fogo",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentidos Metálicos",
+      "descricao": "Enxerga no escuro e em penumbra como se fosse luz plena, sem perder precisão."
+    },
+    {
+      "nome": "Casco de Ferro",
+      "descricao": "Placas de metal absorvem grande parte dos golpes comuns, e a cobra é imune a veneno, doença e qualquer efeito que dependa de mente ou vontade, por não possuir nenhuma."
+    },
+    {
+      "nome": "Resistência a Magia",
+      "descricao": "Feitiços hostis precisam vencer uma resistência natural antes de fazerem efeito sobre ela."
+    },
+    {
+      "nome": "Farejar Alvo",
+      "descricao": "Uma vez por dia, o criador pode ordenar que a cobra localize e mate uma criatura específica a quilômetros de distância, desde que tenha visto o alvo ou segure um objeto que lhe pertenceu."
+    },
+    {
+      "nome": "Picada Envenenada",
+      "descricao": "A mordida injeta veneno de um reservatório interno; a vítima sofre dano contínuo por vários rounds a menos que resista, e após três picadas o veneno se esgota, restando apenas o dano da mordida."
+    },
+    {
+      "nome": "Deslizar Silencioso",
+      "descricao": "Move-se tão silenciosamente quanto uma cobra de verdade, ideal para vigiar tesouros sem ser notada."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Guardiã sem Alma",
+      "texto": "Forjada para vigiar tesouros e câmaras secretas, não dorme, não hesita e não sente medo."
+    },
+    {
+      "titulo": "Assassina Encomendada",
+      "texto": "Por conseguir rastrear um alvo específico a qualquer distância, magos e nobres a usam como arma certeira contra inimigos que julgavam estar a salvo longe dali."
+    },
+    {
+      "titulo": "Veneno à Escolha do Dono",
+      "texto": "O reservatório pode ser preenchido com peçonhas variadas, ácido ou substâncias alquímicas, tornando cada cobra uma arma talhada para um propósito específico."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Construct",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Iron Cobra",
+    "cr": "2",
+    "tipo": "constructo Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 12,
+      "des": 15,
+      "con": "-",
+      "int": "-",
+      "sab": 11,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

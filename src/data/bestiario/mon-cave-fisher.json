@@ -1,0 +1,130 @@
+{
+  "ordem": 165,
+  "id": "mon-cave-fisher",
+  "nome": "Pescador das Cavernas",
+  "nomeIngles": "Cave Fisher",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/cave-fisher.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,2 m de comprimento",
+    "peso": "40 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 5,
+    "destreza": 3,
+    "vigor": 5,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Filamento Pegajoso",
+      "descricao": "Dispara um fio de seda grudenta a boa distância, prendendo o alvo no lugar; a vítima pode se libertar com força bruta ou destreza, mas o fio é difícil de cortar."
+    },
+    {
+      "nome": "Puxão Certeiro",
+      "descricao": "Recolhe o fio com grande força, arrastando a presa presa para perto de si."
+    },
+    {
+      "nome": "Escalador Nato",
+      "descricao": "Sobe paredes de pedra com extrema facilidade, preferindo se instalar em saliências altas para caçar."
+    },
+    {
+      "nome": "Visão no Escuro",
+      "descricao": "Enxerga perfeitamente mesmo na escuridão total."
+    },
+    {
+      "nome": "Mente Vazia",
+      "descricao": "Imune a efeitos que dependam de mente ou raciocínio."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Caçada",
+      "texto": "Predador especializado que se instala em uma saliência ou fenda de caverna, tipicamente a uma boa altura do chão; espera a presa se aproximar antes de disparar seu fio de seda com velocidade impressionante."
+    },
+    {
+      "titulo": "Habitat",
+      "texto": "Prefere saliências que dominem pontes ou abismos, arrastando a refeição presa até sua posição elevada, onde pode comer sem ser incomodado por eventuais aliados da vítima."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Ossos espalhados e restos de fios abandonados são sinais claros de que uma dessas criaturas habita as redondezas; o fio colhido de um exemplar vivo é leve e resistente, servindo como corda de excelente qualidade."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Cave Fisher",
+    "cr": "2",
+    "tipo": "praga Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 12,
+      "con": 17,
+      "int": "-",
+      "sab": 10,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

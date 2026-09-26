@@ -1,0 +1,170 @@
+{
+  "ordem": 119,
+  "id": "mon-doppelganger",
+  "nome": "Doppelganger",
+  "nomeIngles": "Doppelganger",
+  "categoria": "Aberração",
+  "categoriaLegada": "Monstro",
+  "papel": "soldado",
+  "conceito": "humanoide monstruoso Médio",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricaoLegada": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/doppelganger.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura na forma humana padrão",
+    "peso": "70 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 3,
+    "destreza": 3,
+    "vigor": 4,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 4,
+    "percepcao": 4,
+    "inteligencia": 3,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "arte": {
+    "materia": 2,
+    "adivinhacao": 1
+  },
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Mudar de forma (Su)",
+      "tipo": "proeza",
+      "alvo": "Camaleão / Máscara",
+      "caminho": "camaleao"
+    },
+    {
+      "efeito": "(alternativa mágica)",
+      "tipo": "feiticaria",
+      "alvo": "Matéria · N2",
+      "arte": "materia"
+    },
+    {
+      "efeito": "Ler pensamentos (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Adivinhação · N1 / Empatia",
+      "arte": "adivinhacao"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Mudar de forma",
+      "descricao": "1 ação, assume a aparência de qualquer humanoide já visto"
+    },
+    {
+      "nome": "Ler pensamentos",
+      "descricao": "perto do alvo, sonda a mente; falha em Vontade revela um segredo"
+    },
+    {
+      "nome": "Mímica perfeita",
+      "descricao": "+3d6 em Manha ao se passar por outra pessoa"
+    },
+    {
+      "nome": "Mente protegida",
+      "descricao": "imune a efeitos simples de leitura ou controle mental"
+    },
+    {
+      "nome": "Reflexos ágeis",
+      "descricao": "+1 Esquiva, prefere fugir a lutar quando desmascarado"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Elimina ou substitui alguém e assume sua forma e memórias, infiltrando-se em vilas e cortes para viver anos a fio sem ser notado."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Age sozinho por segurança, evitando até os de sua própria espécie, mas negocia informações com quem paga bem e mantém segredo."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Estuda a vítima antes de roubar seu rosto, memoriza trejeitos e voz, e foge ao menor sinal de suspeita."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Pragmático e frio, sobrevivente acima de tudo, sente-se mais seguro na pele alheia do que na própria."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Prospera na desconfiança generalizada que a Supressão semeou, pois ninguém espera magia tão sutil e silenciosa; em Calin, onde caçam 'possuídos' com fervor, aprendeu a apontar o dedo primeiro para desviar suspeita de si."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Manha 4, Empatia 3, Furtividade 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Doppelganger",
+    "cr": "3",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 12,
+      "des": 13,
+      "con": 14,
+      "int": 13,
+      "sab": 14,
+      "car": 13
+    },
+    "pericias": [
+      "Manha 4",
+      "Empatia 3",
+      "Furtividade 2"
+    ],
+    "nota": "Mudar de forma, ler a mente: Centelha 2.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

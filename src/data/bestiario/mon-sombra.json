@@ -1,0 +1,168 @@
+{
+  "ordem": 78,
+  "id": "mon-sombra",
+  "nome": "Sombra",
+  "nomeIngles": "Shadow",
+  "categoria": "Morto-vivo",
+  "papel": "soldado",
+  "conceito": "morto-vivo Médio (incorpóreo)",
+  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "tags": [
+    "morto-vivo",
+    "centelha",
+    "incorpóreo",
+    "mágico"
+  ],
+  "imagem": "bestiario/sombra.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura, silhueta humanoide difusa",
+    "peso": "sem peso, forma incorpórea sem massa"
+  },
+  "locomocao": {
+    "voo": 4
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 0,
+    "destreza": 4,
+    "vigor": 4,
+    "influencia": 4,
+    "perspicacia": 2,
+    "compostura": 4,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 4,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 2,
+  "arte": {
+    "morte": 1,
+    "espirito": 2
+  },
+  "ataques": [
+    {
+      "nome": "Toque dilacerante",
+      "atrib": "influencia",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "necrótico (vs Def. Mental)",
+      "ticks": 5,
+      "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Dreno de Força (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N1",
+      "arte": "morte"
+    },
+    {
+      "efeito": "Incorpóreo",
+      "tipo": "feiticaria",
+      "alvo": "Espírito · N2 / Sombra · Manto de Sombras (b5)",
+      "arte": "espirito"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "resistencias": [
+    "corte",
+    "impacto",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Incorpórea",
+      "descricao": "atravessa paredes e objetos; só pode ser ferida por armas mágicas ou de prata"
+    },
+    {
+      "nome": "Toque drenante",
+      "descricao": "acerto reduz Atletismo/Força do alvo temporariamente (Enfraquecido) e cura a sombra"
+    },
+    {
+      "nome": "Camuflagem nas trevas",
+      "descricao": "bônus alto de Furtividade em ambientes escuros"
+    },
+    {
+      "nome": "Deslize silencioso",
+      "descricao": "move-se sem ruído, surpreende com bônus de Iniciativa"
+    },
+    {
+      "nome": "Reduzida à sombra",
+      "descricao": "pode se achatar e escoar por frestas mínimas"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Incorpórea e silenciosa, desliza pela escuridão e ataca com um toque que rouba força e vigor, sem palavras nem propósito além de se alimentar."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Habita lugares sem luz: cavernas profundas, criptas seladas e ruínas onde o sol nunca chega."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Não guarda memória de quem foi, apenas um vazio faminto que imita vagamente a forma humana."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Alguns eruditos de Syl dizem que a sombra é o que resta quando uma Centelha se apaga perto demais da Fenda, um resquício escuro do plano de pesadelo colado à alma extinta. Onde uma sombra aparece, os camponeses juram sentir o mesmo frio das histórias sobre a fenda do White Wall."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Undead",
+    "terreno": [
+      "Ruins",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 4.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Sombra",
+    "cr": "3",
+    "tipo": "morto-vivo Médio (incorpóreo)",
+    "tamanho": "medio",
+    "valores": {
+      "for": "-",
+      "des": 14,
+      "con": "-",
+      "int": 6,
+      "sab": 12,
+      "car": 15
+    },
+    "pericias": [
+      "Furtividade 4"
+    ],
+    "nota": "Str — → Força 0. Dreno de Força e incorpóreo: Centelha 2.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "voo 40: incorpórea"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

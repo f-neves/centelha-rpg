@@ -1,0 +1,131 @@
+{
+  "ordem": 139,
+  "id": "mon-aasimar",
+  "nome": "Aasimar",
+  "nomeIngles": "Aasimar",
+  "categoria": "Outsider",
+  "categoriaLegada": "Exterior",
+  "papel": "capanga",
+  "conceito": "exterior Médio",
+  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha"
+  ],
+  "imagem": "bestiario/aasimar.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,75 m de altura",
+    "peso": "70 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 2,
+    "destreza": 2,
+    "vigor": 4,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 3,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 0,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 4,
+    "temperanca": 3,
+    "valor": 4
+  },
+  "willpower": 6,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sangue Celestial",
+      "descricao": "O aasimar enxerga no escuro como se fosse dia e resiste a ácido, frio e eletricidade, absorvendo parte do dano dessas fontes."
+    },
+    {
+      "nome": "Canalizar Luz",
+      "descricao": "Uma vez por cena, o aasimar libera uma pulsação de energia sagrada que cura aliados próximos ou queima mortos-vivos."
+    },
+    {
+      "nome": "Repúdio da Morte",
+      "descricao": "Ao tocar um aliado moribundo, o aasimar pode estabilizá-lo e devolver um pouco de vitalidade, algumas vezes por cena."
+    },
+    {
+      "nome": "Toque do Bem",
+      "descricao": "O toque do aasimar fortalece brevemente a resolução de um aliado, dando vantagem no próximo teste que ele fizer."
+    },
+    {
+      "nome": "Luz do Dia",
+      "descricao": "Uma vez por cena, o aasimar convoca uma radiância que ilumina uma grande área e ofusca criaturas sensíveis à luz."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Origem",
+      "texto": "Aasimares carregam, sem saber, o sangue distante de um ser celestial em sua linhagem. Essa herança pode ficar adormecida por gerações até se manifestar de repente no filho de pais comuns."
+    },
+    {
+      "titulo": "Aparência",
+      "texto": "Fora um detalhe sutil (cabelo com brilho metálico, olhos incomuns, ou uma leve auréola dourada), um aasimar é indistinguível de um humano. Comunidades costumam interpretar seu nascimento como um bom presságio."
+    },
+    {
+      "titulo": "Temperamento",
+      "texto": "Nem todo aasimar é virtuoso, mas a maioria sente atração natural por causas justas e organizações devotadas ao bem, ainda que muitos escondam sua origem por medo ou modéstia."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Monitor",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Aasimar",
+    "cr": "1/2",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 8,
+      "des": 10,
+      "con": 14,
+      "int": 13,
+      "sab": 17,
+      "car": 14
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

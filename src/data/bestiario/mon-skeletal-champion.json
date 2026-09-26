@@ -1,0 +1,140 @@
+{
+  "ordem": 286,
+  "id": "mon-skeletal-champion",
+  "nome": "Skeletal Champion",
+  "nomeIngles": "Skeletal Champion",
+  "categoria": "Morto-vivo",
+  "papel": "soldado",
+  "conceito": "morto-vivo Médio",
+  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "tags": [
+    "morto-vivo",
+    "centelha"
+  ],
+  "imagem": "bestiario/skeletal-champion.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 metro de altura",
+    "peso": "25 kg de ossos e armadura"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 5,
+    "destreza": 3,
+    "vigor": 3,
+    "influencia": 3,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 4,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 2,
+  "ataques": [
+    {
+      "nome": "Golpe",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "resistencias": [
+    "corte",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Redução de dano",
+      "descricao": "Sua estrutura óssea resiste a golpes comuns, sofrendo menos dano de armas que não sejam contundentes."
+    },
+    {
+      "nome": "Traços de morto-vivo",
+      "descricao": "Imune ao frio, a doenças e venenos; não respira, não sente fadiga nem a maioria dos efeitos que afetam seres vivos."
+    },
+    {
+      "nome": "Resistência a rituais",
+      "descricao": "É mais difícil de destruir ou controlar com rituais que afastam ou comandam mortos-vivos."
+    },
+    {
+      "nome": "Guerreiro treinado",
+      "descricao": "Luta com arma e armadura como um veterano, mantendo a disciplina de quando ainda era vivo."
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "Enxerga perfeitamente no escuro."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Memória que sobrevive à morte",
+      "texto": "Ao contrário dos esqueletos comuns, guiados apenas por instinto residual, o campeão esquelético mantém a disciplina e a técnica que possuía em vida."
+    },
+    {
+      "titulo": "Guerreiro que não descansa",
+      "texto": "Erguido por rituais sombrios, continua a empunhar sua espada com a mesma determinação de outrora, ainda que o coração há muito tenha parado de bater."
+    },
+    {
+      "titulo": "Comandante de hostes ossudas",
+      "texto": "Frequentemente posto à frente de esqueletos comuns, lidera pelotões inteiros de mortos-vivos em campanhas que a maioria dos vivos prefere nem imaginar."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Undead",
+    "terreno": [
+      "Any",
+      "Ruins",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Skeletal Champion",
+    "cr": "2",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 13,
+      "con": "-",
+      "int": 9,
+      "sab": 10,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

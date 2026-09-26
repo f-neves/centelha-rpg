@@ -1,0 +1,132 @@
+{
+  "ordem": 278,
+  "id": "mon-roper",
+  "nome": "Roper",
+  "nomeIngles": "Roper",
+  "categoria": "Aberração",
+  "papel": "chefe",
+  "conceito": "aberração Grande",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha"
+  ],
+  "imagem": "bestiario/roper.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3 metros de altura",
+    "peso": "várias centenas de kg"
+  },
+  "locomocao": {
+    "terra": 1
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 11,
+    "destreza": 3,
+    "vigor": 10,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 4,
+    "percepcao": 5,
+    "inteligencia": 3,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 10,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Filamentos pegajosos",
+      "descricao": "Lança até seis fios grudentos a distância; quem é atingido testa Vigor ou sofre dano contínuo de Físico e pode ser puxado para perto."
+    },
+    {
+      "nome": "Camuflagem de pedra",
+      "descricao": "Assume a forma de uma estalagmite ou pilar, quase indistinguível de rocha ou gelo até o momento do ataque."
+    },
+    {
+      "nome": "Resistência a magia",
+      "descricao": "Uma proteção natural dificulta que feitiços o afetem."
+    },
+    {
+      "nome": "Frio e fogo",
+      "descricao": "Resiste ao frio intenso, mas seu corpo pétreo queima com facilidade incomum diante do fogo."
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "Enxerga no escuro e na penumbra, percebendo tudo ao redor mesmo em cavernas sem luz."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Estátua que espera",
+      "texto": "Imóvel como uma coluna de pedra ou gelo, o roper aguarda pacientemente, disfarçado entre estalagmites, até que uma presa se aproxime o bastante para seus filamentos."
+    },
+    {
+      "titulo": "Filósofo das profundezas",
+      "texto": "Apesar da forma monstruosa, é uma das criaturas mais inteligentes dos abismos subterrâneos, capaz de discutir por horas sobre a morte e as religiões mais sombrias do mundo."
+    },
+    {
+      "titulo": "Vizinho incômodo",
+      "texto": "Prefere viver em pequenos grupos isolados, mas às vezes tolera a companhia de outros horrores subterrâneos, unidos por um interesse mútuo em segredos antigos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground",
+      "Cold"
+    ],
+    "clima": [
+      "Cold",
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Roper",
+    "cr": "12",
+    "tipo": "aberração Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 34,
+      "des": 13,
+      "con": 29,
+      "int": 13,
+      "sab": 16,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 10,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

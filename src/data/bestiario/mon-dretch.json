@@ -1,0 +1,156 @@
+{
+  "ordem": 86,
+  "id": "mon-dretch",
+  "nome": "Dretch",
+  "nomeIngles": "Demon, Dretch",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Demônio",
+  "papel": "soldado",
+  "conceito": "exterior Pequeno (demônio)",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "tags": [
+    "demonio",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/dretch.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "90 cm de altura",
+    "peso": "27 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 3,
+    "destreza": 2,
+    "vigor": 4,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 5
+  },
+  "willpower": 7,
+  "aparencia": 1,
+  "arte": {
+    "vento": 2,
+    "fascinacao": 1
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Fedor e telepatia (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Vento · N2 (fedor) + Fascinação · N1",
+      "arte": "vento"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Fedor nauseante",
+      "descricao": "aura de 3m; falha no teste de Fortitude = Enjoado por 1 rodada"
+    },
+    {
+      "nome": "Telepatia",
+      "descricao": "comunica-se mentalmente com qualquer criatura em até 30m"
+    },
+    {
+      "nome": "Duas garras",
+      "descricao": "dois ataques corpo a corpo na mesma ação, dano baixo cada"
+    },
+    {
+      "nome": "Susto",
+      "descricao": "feitiçaria, 1x por cena; falha no teste de Vontade = Abalado"
+    },
+    {
+      "nome": "Sangue abissal",
+      "descricao": "resistente a fogo, frio e ácido; imune a veneno"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Covardes quando sozinhos, mas ganham fúria cega em enxame: mordem, arranham e rasgam tudo o que está ao alcance, inclusive uns aos outros quando a fome aperta."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Ocupam o degrau mais baixo entre os demônios do Abismo, tratados como bucha de canhão pelos demônios maiores; não têm lealdade nem hierarquia própria, só medo do que vem depois deles na cadeia de comando."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Comem qualquer coisa orgânica, viva ou podre, e se multiplicam onde há morte e desespero acumulados."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Quando a Fenda cospe algo pequeno e numeroso, é quase sempre um enxame de dretches; camponeses do White Wall os chamam de vermes da fenda e sabem que, se aparecem aos montes, algo maior os empurrou para fora."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Dretch",
+    "cr": "2",
+    "tipo": "exterior Pequeno (demônio)",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 12,
+      "des": 10,
+      "con": 14,
+      "int": 6,
+      "sab": 11,
+      "car": 11
+    },
+    "pericias": [
+      "Prontidão 1"
+    ],
+    "nota": "Poderes mágicos: Centelha 2.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

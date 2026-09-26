@@ -1,0 +1,140 @@
+{
+  "ordem": 277,
+  "id": "mon-retriever",
+  "nome": "Retriever",
+  "nomeIngles": "Retriever",
+  "categoria": "Construto",
+  "categoriaLegada": "Monstro",
+  "papel": "chefe",
+  "conceito": "constructo Enorme",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricaoLegada": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro"
+  ],
+  "imagem": "bestiario/retriever.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "corpo do tamanho de um elefante, cerca de 4,5 metros de comprimento",
+    "peso": "várias t"
+  },
+  "locomocao": {
+    "terra": 5
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 9,
+    "destreza": 5,
+    "vigor": 2,
+    "influencia": 0,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 3,
+    "valor": 4
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "fraquezas": [
+    "raio"
+  ],
+  "resistencias": [
+    "corte",
+    "fogo",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Raios oculares",
+      "descricao": "Dispara um raio diferente a cada rodada (fogo, frio, eletricidade ou petrificação), cada um recarregando por alguns turnos; o alvo testa Vigor ou Compostura conforme o efeito."
+    },
+    {
+      "nome": "Corpo de construto",
+      "descricao": "Não respira, não come nem dorme, e é imune a doenças, venenos e à maioria dos efeitos que exigem Vontade."
+    },
+    {
+      "nome": "Escalada e travessia da água",
+      "descricao": "Efeitos permanentes que não podem ser desfeitos lhe permitem subir qualquer superfície e caminhar sobre a água como se fosse terra firme."
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "Enxerga no escuro e na penumbra, quase nunca perdendo o rastro de sua presa."
+    },
+    {
+      "nome": "Presa implacável",
+      "descricao": "Rastreia o alvo designado com determinação sobrenatural, sem desistir até completar sua tarefa."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Carne moldada no Abismo",
+      "texto": "Nascido não da matéria morta, mas da carne viva e amorfa dos planos infernais, o coletor prova que até os demônios sabem esculpir monstros sob medida."
+    },
+    {
+      "titulo": "Caçador sem vontade própria",
+      "texto": "Servo perfeito de senhores demoníacos, busca fugitivos e objetos roubados com uma obediência tão completa que nunca hesita nem questiona suas ordens."
+    },
+    {
+      "titulo": "Símbolo de lealdade forçada",
+      "texto": "A simples presença de um coletor no covil de um demônio já basta para manter súditos menores na linha, temerosos do que aguarda quem tenta desertar."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Construct",
+    "terreno": [
+      "Any",
+      "Ruins"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Retriever",
+    "cr": "11",
+    "tipo": "constructo Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 22,
+      "des": 16,
+      "con": "-",
+      "int": 3,
+      "sab": 11,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

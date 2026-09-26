@@ -1,0 +1,182 @@
+{
+  "ordem": 131,
+  "id": "mon-dragao-vermelho-jovem",
+  "nome": "Dragão Vermelho Jovem",
+  "nomeIngles": "Dragon, Young Red",
+  "categoria": "Dragão",
+  "papel": "chefe",
+  "conceito": "dragão Grande",
+  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "tags": [
+    "dragao",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/dragao-vermelho-jovem.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "4,9 m de comprimento, com a cauda",
+    "peso": "900 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 9,
+    "destreza": 3,
+    "vigor": 6,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 3,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 5,
+    "temperanca": 3,
+    "valor": 6
+  },
+  "willpower": 10,
+  "aparencia": 9,
+  "arte": {
+    "fogo": 3
+  },
+  "tech": {
+    "temor-reverente": true
+  },
+  "ataques": [
+    {
+      "nome": "Garras e mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Sopro de fogo (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Fogo · N3",
+      "arte": "fogo"
+    },
+    {
+      "efeito": "Presença aterradora",
+      "tipo": "proeza",
+      "alvo": "Lenda Viva · Temor Reverente (b5)",
+      "caminho": "lenda-viva"
+    },
+    {
+      "efeito": "Feitiços iniciais",
+      "tipo": "feiticaria",
+      "alvo": "Fogo · N2",
+      "arte": "fogo"
+    }
+  ],
+  "resistencias": [
+    "fogo"
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro de fogo",
+      "descricao": "cone de 9m; 6d6 de dano, metade se Esquivar (recarrega após 1d6 turnos)"
+    },
+    {
+      "nome": "Presença aterradora",
+      "descricao": "falha no teste de Vontade = Abalado (raio de 18m)"
+    },
+    {
+      "nome": "Voo veloz",
+      "descricao": "manobra alta no ar; pode atacar em mergulho com +1d6 na Iniciativa"
+    },
+    {
+      "nome": "Multiataque",
+      "descricao": "garra, garra e mordida no mesmo turno"
+    },
+    {
+      "nome": "Imune a fogo",
+      "descricao": "ignora todo dano de fogo"
+    },
+    {
+      "nome": "Sentidos dracônicos",
+      "descricao": "visão no escuro e faro apurado; inimigos não conseguem Furtividade contra ele"
+    },
+    {
+      "nome": "Escamas rígidas",
+      "descricao": "Absorção +2d6 contra ataques físicos"
+    },
+    {
+      "nome": "Feitiços iniciais",
+      "descricao": "lança 1 truque arcano por cena (feiticaria) sem gastar ação extra"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "O dragão vermelho jovem já defende um território definido com violência calculada, atacando quem se aproxima do covil e usando o sopro de fogo tanto para caçar quanto para impor respeito às vizinhanças."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Solitário por natureza, tolera no máximo servos amedrontados ou cultistas dispostos a trazer tributo, tratando qualquer aliança como relação de posse, nunca de igualdade."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Orgulhoso e ávido por elogios, guarda rancor de humilhações reais ou imaginadas, e mede seu valor pelo tamanho do tesouro que consegue empilhar sob as próprias garras."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Nas fronteiras selvagens de Mére, onde o povo já convive com monstros mais estranhos que em Calin, um dragão jovem que reivindica uma montanha vira lenda local quase da noite para o dia, tema de canções de aviso e oferendas deixadas na entrada de covis."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Mountain"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 4, Manha 3, Ocultismo 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Dragão Vermelho Jovem",
+    "cr": "10",
+    "tipo": "dragão Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 25,
+      "des": 12,
+      "con": 19,
+      "int": 12,
+      "sab": 13,
+      "car": 12
+    },
+    "pericias": [
+      "Prontidão 4",
+      "Manha 3",
+      "Ocultismo 2"
+    ],
+    "nota": "Sopro e feitiços iniciais: Centelha 4.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

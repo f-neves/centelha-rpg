@@ -1,0 +1,131 @@
+{
+  "ordem": 276,
+  "id": "mon-remorhaz",
+  "nome": "Remorhaz",
+  "nomeIngles": "Remorhaz",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Enorme",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/remorhaz.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "7,5 metros de comprimento",
+    "peso": "4500 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 9,
+    "destreza": 3,
+    "vigor": 8,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Calor abrasador",
+      "descricao": "Seu corpo arde por dentro; quem a toca ou a golpeia sem arma sofre dano contínuo de queimadura, e até armas podem derreter no contato prolongado."
+    },
+    {
+      "nome": "Sentidos de gelo",
+      "descricao": "Enxerga no escuro e na penumbra, e sente vibrações através da neve e do gelo mesmo sem ver o que se aproxima."
+    },
+    {
+      "nome": "Escavação",
+      "descricao": "Abre túneis derretendo gelo e neve com o próprio calor, movendo-se sob a superfície congelada."
+    },
+    {
+      "nome": "Imune a fogo e frio",
+      "descricao": "Os extremos térmicos que matariam qualquer criatura comum não a afetam."
+    },
+    {
+      "nome": "Engolir por inteiro",
+      "descricao": "Pode agarrar e tragar uma presa menor, causando dano contínuo enquanto ela luta dentro de suas entranhas quentes."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Fogo sob o gelo",
+      "texto": "Nas terras congeladas correm lendas de uma serpente gigante cujo corpo arde por dentro, escavando túneis de gelo que brilham em vermelho quando ela desperta."
+    },
+    {
+      "titulo": "Aliada relutante dos gigantes",
+      "texto": "Tribos de gigantes de gelo buscam a companhia dessas criaturas, oferecendo-lhes carne em troca de um poder que só o fogo vivo de um remorhaz pode conceder contra seus inimigos."
+    },
+    {
+      "titulo": "Predador solitário",
+      "texto": "Apesar de sua fereza, raramente se junta a outros de sua espécie, preferindo caçar sozinho pelos labirintos gelados que ela mesma esculpe."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Cold",
+      "Underground"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Remorhaz",
+    "cr": "7",
+    "tipo": "besta mágica Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 22,
+      "des": 13,
+      "con": 21,
+      "int": 5,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

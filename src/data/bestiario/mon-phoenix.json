@@ -1,0 +1,131 @@
+{
+  "ordem": 272,
+  "id": "mon-phoenix",
+  "nome": "Fênix",
+  "nomeIngles": "Phoenix",
+  "categoria": "Besta mágica",
+  "papel": "chefe",
+  "conceito": "besta mágica Imenso",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/phoenix.webp",
+  "porte": "Imenso",
+  "dimensoes": {
+    "medida": "envergadura de cerca de 15 m",
+    "peso": "1.000 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 6,
+  "attrs": {
+    "forca": 11,
+    "destreza": 8,
+    "vigor": 9,
+    "influencia": 7,
+    "perspicacia": 7,
+    "compostura": 7,
+    "percepcao": 7,
+    "inteligencia": 7,
+    "raciocinio": 7
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 2,
+    "prontidao": 3,
+    "integridade": 7
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 11,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentidos apurados",
+      "descricao": "Enxerga no escuro, detecta magia e veneno à distância, tem visão em pouca luz e enxerga através de invisibilidade."
+    },
+    {
+      "nome": "Manto de chamas",
+      "descricao": "Pode incendiar as próprias penas, causando dano contínuo extra em seus golpes e queimando quem chegar perto demais sem escapar a tempo."
+    },
+    {
+      "nome": "Regeneração constante",
+      "descricao": "Cura seus próprios ferimentos continuamente, exceto os causados por frio ou pelo mal."
+    },
+    {
+      "nome": "Autorressurreição",
+      "descricao": "Se morrer, seu corpo permanece destruído só por alguns instantes antes de renascer curado das próprias cinzas, uma vez por ano; renascer assim custa parte de sua força vital."
+    },
+    {
+      "nome": "Imune ao fogo, vulnerável ao frio",
+      "descricao": "Chamas não a ferem e resiste bem à maioria das magias, mas o frio a machuca com facilidade incomum."
+    },
+    {
+      "nome": "Poderes de cura e fogo",
+      "descricao": "Domina magias de cura poderosas e comanda paredes e tempestades de fogo à vontade."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Ave de chama viva",
+      "texto": "Parece feita inteiramente de fogo, solta um grito melodioso ao alçar voo e é associada a forças do bem."
+    },
+    {
+      "titulo": "Renascida das próprias cinzas",
+      "texto": "Vive em desertos quentes e colinas isoladas, e sua lenda de morte e renascimento a torna quase sagrada entre quem a avista."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Desert",
+      "Mountain"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Phoenix",
+    "cr": "15",
+    "tipo": "besta mágica Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 27,
+      "des": 25,
+      "con": 20,
+      "int": 23,
+      "sab": 22,
+      "car": 22
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

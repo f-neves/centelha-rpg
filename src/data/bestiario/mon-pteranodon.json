@@ -1,0 +1,120 @@
+{
+  "ordem": 187,
+  "id": "mon-pteranodon",
+  "nome": "Pteranodonte",
+  "nomeIngles": "Dinosaur, Pteranodon",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/pteranodon.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "envergadura de 9 metros",
+    "peso": "18 kg"
+  },
+  "locomocao": {
+    "voo": 5
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 6,
+    "destreza": 5,
+    "vigor": 5,
+    "influencia": 3,
+    "perspicacia": 1,
+    "compostura": 4,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão penumbra e faro",
+      "descricao": "Enxerga bem em pouca luz e fareja presas."
+    },
+    {
+      "nome": "Voo desajeitado",
+      "descricao": "Voa razoavelmente rápido, mas sem manobra alguma; prefere pousar no chão para lutar com presas que não consegue carregar pelos ares."
+    },
+    {
+      "nome": "Bicada",
+      "descricao": "Golpeia com o bico comprido e pontudo, sem dentes, perfurando pelo impacto."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Réptil alado, não dinossauro",
+      "texto": "É um réptil voador que convive com dinossauros nas regiões costeiras quentes, mas não pertence à mesma linhagem."
+    },
+    {
+      "titulo": "Caçador costeiro",
+      "texto": "Voa em bandos sobre litorais e recifes, mergulhando para arrancar presas da água ou da praia."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Coast",
+      "Sky"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Pteranodon",
+    "cr": "3",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 16,
+      "des": 19,
+      "con": 15,
+      "int": 2,
+      "sab": 15,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte",
+      "nota": "voo 50; em terra 10, e o pterossauro não caça a pé"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

@@ -1,0 +1,127 @@
+{
+  "ordem": 262,
+  "id": "mon-dark-naga",
+  "nome": "Naga Negra",
+  "nomeIngles": "Naga, Dark",
+  "categoria": "Aberração",
+  "papel": "chefe",
+  "conceito": "aberração Grande",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha"
+  ],
+  "imagem": "bestiario/dark-naga.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,6 m de comprimento",
+    "peso": "mais de 136 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 5,
+    "destreza": 6,
+    "vigor": 6,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 4,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 2,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 9,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Leitura de pensamentos",
+      "descricao": "Lê constantemente os pensamentos de quem está perto, a menos que a mente esteja protegida."
+    },
+    {
+      "nome": "Mente blindada",
+      "descricao": "É imune a qualquer leitura ou intrusão mental e resiste melhor a encantos e dominações."
+    },
+    {
+      "nome": "Ferrão peçonhento",
+      "descricao": "Seu ferrão injeta um veneno que corrói o corpo da vítima, causando dano contínuo de Vigor (Constituição) se ela falhar num teste de Vigor."
+    },
+    {
+      "nome": "Feitiçaria treinada",
+      "descricao": "Domina um repertório de magias arcanas, de mísseis mágicos a raios e relâmpagos."
+    },
+    {
+      "nome": "Corpo imune a peçonhas",
+      "descricao": "Nenhum veneno a afeta."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Serpente cobiçosa",
+      "texto": "De escamas negras e brilhantes, desliza por terras esquecidas e ruínas abandonadas atrás de tesouros e joias mórbidas."
+    },
+    {
+      "titulo": "Língua bifurcada, só mentiras",
+      "texto": "Manipula quem não consegue subjugar, e destrói com veneno e magia quem resiste; odeia sobretudo as de sua própria espécie."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dark Naga",
+    "cr": "8",
+    "tipo": "aberração Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 14,
+      "des": 21,
+      "con": 18,
+      "int": 16,
+      "sab": 15,
+      "car": 17
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

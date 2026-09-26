@@ -1,0 +1,125 @@
+{
+  "ordem": 289,
+  "id": "mon-venomous-snake",
+  "nome": "Serpente Venenosa",
+  "nomeIngles": "Venomous Snake",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/venomous-snake.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2,5 metros de comprimento",
+    "peso": "18 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 2,
+    "destreza": 3,
+    "vigor": 4,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão no escuro parcial",
+      "descricao": "Enxerga bem em pouca luz e sente vibrações e cheiros no ar, dificilmente é surpreendida à espreita."
+    },
+    {
+      "nome": "Trepadora e nadadora",
+      "descricao": "Desloca-se com igual destreza pelo chão, por troncos e na água, perseguindo a presa em qualquer terreno."
+    },
+    {
+      "nome": "Picada venenosa",
+      "descricao": "A mordida injeta um veneno que corrói o Vigor da vítima a cada rodada por várias rodadas, a menos que ela resista ou receba cura."
+    },
+    {
+      "nome": "Corpo flexível",
+      "descricao": "Não pode ser derrubada com facilidade: sua estrutura sem pernas ignora tentativas comuns de desequilíbrio."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Serpentes das profundezas",
+      "texto": "Estas cobras crescem muito além do tamanho comum, e dizem que as maiores nascem onde a terra foi maldita por magia antiga."
+    },
+    {
+      "titulo": "Presságio",
+      "texto": "Camponeses evitam matar serpentes grandes por medo de atrair a ira de espíritos da mata que as consideram guardiãs."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Jungle",
+      "Swamp"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Venomous Snake",
+    "cr": "1",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 8,
+      "des": 13,
+      "con": 14,
+      "int": 1,
+      "sab": 13,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

@@ -1,0 +1,120 @@
+{
+  "ordem": 7,
+  "id": "capitao-da-guarda",
+  "nome": "Capitão da Guarda",
+  "nomeIngles": "Captain of the Guard",
+  "categoria": "Humanoide",
+  "categoriaLegada": "Humano",
+  "papel": "elite",
+  "conceito": "comandante mortal",
+  "descricao": "Líder competente; coordena subordinados e segura a linha.",
+  "tags": [
+    "humano"
+  ],
+  "imagem": "bestiario/capitao-da-guarda.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura",
+    "peso": "85 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 3,
+    "destreza": 4,
+    "vigor": 4,
+    "influencia": 3,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "armas-uma-mao": 4,
+    "esquiva": 3,
+    "escudos": 3,
+    "prontidao": 4,
+    "oratoria": 3,
+    "tatica": 3,
+    "integridade": 6
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "equip": {
+    "armaduras": [
+      "placa-completa"
+    ]
+  },
+  "ataques": [
+    {
+      "nome": "Espada longa",
+      "atrib": "destreza",
+      "pericia": "armas-uma-mao",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Placa",
+      "descricao": "Absorção +6, mas Esquiva −2 e movimento lento"
+    },
+    {
+      "nome": "Escudo",
+      "descricao": "bônus adicional ao Bloqueio"
+    },
+    {
+      "nome": "Comando de tropa",
+      "descricao": "coordena subordinados, dando-lhes bônus de ataque ou Defesa"
+    },
+    {
+      "nome": "Pico do mortal",
+      "descricao": "melhores números que um humano comum alcança sem Centelha"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Coordena subordinados, distribui posições e mantém a linha mesmo sob pressão; prefere vencer pela disciplina do grupo a arriscar um duelo pessoal."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Responde a um magistrado, senhor ou às ortodoxias supressoras, e carrega a autoridade de decidir quando chamar reforços ou declarar um alarme."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Encarna o comando mortal das cidades de Calin: sem faísca divina, apenas competência, experiência e a confiança de quem já segurou a linha antes."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Placa (Absorção +6, Esquiva −2, lento) + escudo. Pico do que um mortal alcança.",
+  "pendente": false,
+  "fonte": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

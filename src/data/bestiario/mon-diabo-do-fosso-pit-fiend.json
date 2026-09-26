@@ -1,0 +1,203 @@
+{
+  "ordem": 101,
+  "id": "mon-diabo-do-fosso-pit-fiend",
+  "nome": "Diabo do Fosso (Pit Fiend)",
+  "nomeIngles": "Pit Fiend",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Diabo",
+  "papel": "chefe",
+  "conceito": "exterior Grande (diabo)",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Tirano leal do Inferno, calculista e cruel.",
+  "tags": [
+    "diabo",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/diabo-do-fosso-pit-fiend.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,7 m de altura, envergadura 4 m",
+    "peso": "360 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 9,
+  "attrs": {
+    "forca": 12,
+    "destreza": 9,
+    "vigor": 11,
+    "influencia": 8,
+    "perspicacia": 8,
+    "compostura": 9,
+    "percepcao": 9,
+    "inteligencia": 8,
+    "raciocinio": 9
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 3,
+    "prontidao": 4,
+    "integridade": 8
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 6
+  },
+  "willpower": 12,
+  "aparencia": -1,
+  "arte": {
+    "morte": 3,
+    "espirito": 4,
+    "fogo": 4
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Aura de medo (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N3 / Lenda Viva",
+      "arte": "morte"
+    },
+    {
+      "efeito": "Feitiços e desejo",
+      "tipo": "feiticaria",
+      "alvo": "várias · N4–N5"
+    },
+    {
+      "efeito": "Convocar diabos",
+      "tipo": "feiticaria",
+      "alvo": "Espírito · N4",
+      "arte": "espirito"
+    },
+    {
+      "efeito": "Labareda",
+      "tipo": "feiticaria",
+      "alvo": "Fogo · N4",
+      "arte": "fogo"
+    },
+    {
+      "efeito": "Doença (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N3",
+      "arte": "morte"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Aura de medo",
+      "descricao": "quem entrar em 12m e falhar em Vontade fica Abalado"
+    },
+    {
+      "nome": "Labareda",
+      "descricao": "bola de fogo em área de 6m; dano alto, metade se Esquivar"
+    },
+    {
+      "nome": "Convocar diabos",
+      "descricao": "1x por cena chama 1d6 diabos menores para lutar ao seu lado"
+    },
+    {
+      "nome": "Mordida com doença infernal",
+      "descricao": "acerto injeta doença; falha em Resistência reduz Vigor até ser curado"
+    },
+    {
+      "nome": "Ferrão de cauda venenoso",
+      "descricao": "ataque extra na rodada; veneno causa dano contínuo"
+    },
+    {
+      "nome": "Feitiços supremos",
+      "descricao": "1x por história lança um feitiço de qualquer nível."
+    },
+    {
+      "nome": "Regeneração",
+      "descricao": "recupera PV toda rodada; só armas sagradas ou de prata interrompem"
+    },
+    {
+      "nome": "Imunidade a fogo e veneno",
+      "descricao": "sem efeito de dano de fogo ou venenos comuns"
+    },
+    {
+      "nome": "Visão verdadeira",
+      "descricao": "ignora ilusão e invisibilidade; voa livremente"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "General absoluto, comanda legiões inteiras do Inferno com disciplina fria, usando contratos e juramentos como arma tanto quanto garras e fogo."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Ocupa o topo da hierarquia infernal, logo abaixo dos Arquiduques; diabos menores o temem e obedecem sem hesitar."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Calculista e paciente, cruel por princípio e não por impulso; encara a corrupção de uma alma como obra de longo prazo, quase artesanal."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Governa a partir de fortalezas do Inferno, só cruzando ao mundo material quando um pacto o convoca ou um culto abre a porta certa."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Pactos com diabos são o pesadelo que as igrejas supressoras mais pregam contra: cada contrato assinado em desespero, seja por dívida, guerra ou fome, é uma fresta que nem a Supressão fecha. Muitos clérigos suspeitam que a própria Fenda tenha atraído a atenção de senhores do Inferno como este."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Ocultismo 5, Liderança 5, Prontidão 5, Persuasão 5. Centelha acima do teto mortal (entidade).",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Diabo do Fosso (Pit Fiend)",
+    "cr": "20",
+    "tipo": "exterior Grande (diabo)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 37,
+      "des": 29,
+      "con": 35,
+      "int": 26,
+      "sab": 30,
+      "car": 26
+    },
+    "pericias": [
+      "Ocultismo 5",
+      "Liderança 5",
+      "Prontidão 5",
+      "Persuasão 5"
+    ],
+    "nota": "Príncipe infernal: Centelha 8. Str 37 → curva 11 +1 = Força 12; Con 35 → Vigor 11; Sab 30 → Percepção 9.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

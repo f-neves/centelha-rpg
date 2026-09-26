@@ -1,0 +1,119 @@
+{
+  "ordem": 218,
+  "id": "mon-poison-frog",
+  "nome": "Rã Venenosa",
+  "nomeIngles": "Poison Frog",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/poison-frog.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "35 cm de comprimento",
+    "peso": "4,5 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 1,
+    "destreza": 3,
+    "vigor": 2,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 1,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Pele e Presa Tóxicas",
+      "descricao": "A mordida (por vezes o mero toque da pele) injeta um veneno que causa dano contínuo, exigindo um teste de Vigor para ser debelado."
+    },
+    {
+      "nome": "Cores de Aviso",
+      "descricao": "As manchas vivas em sua pele avisam predadores de que ela é perigosa demais para valer a pena comer."
+    },
+    {
+      "nome": "Saltos Precisos",
+      "descricao": "Salta com surpreendente precisão mesmo em terreno irregular ou molhado."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Veneno de guerra",
+      "texto": "Tribos do brejo colhem a secreção de sua pele para untar flechas e dardos de caça."
+    },
+    {
+      "titulo": "Beleza que mata",
+      "texto": "As cores vibrantes da pele já seduziram muitos incautos a pegá-la com as mãos nuas, um erro raramente repetido."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Swamp",
+      "Water"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Poison Frog",
+    "cr": "1/2",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 2,
+      "des": 12,
+      "con": 11,
+      "int": 1,
+      "sab": 9,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

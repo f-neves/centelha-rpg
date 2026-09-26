@@ -1,0 +1,147 @@
+{
+  "ordem": 68,
+  "id": "mon-mimico",
+  "nome": "Mímico",
+  "nomeIngles": "Mimic",
+  "categoria": "Aberração",
+  "papel": "soldado",
+  "conceito": "aberração Médio",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha"
+  ],
+  "imagem": "bestiario/mimico.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,2 m de altura na forma de baú",
+    "peso": "150 kg"
+  },
+  "locomocao": {
+    "terra": 1
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 5,
+    "destreza": 3,
+    "vigor": 5,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Assumir forma de objeto (Su)",
+      "tipo": "proeza",
+      "alvo": "Camaleão",
+      "caminho": "camaleao"
+    },
+    {
+      "efeito": "Cola aderente",
+      "tipo": "natural",
+      "alvo": "natural (Ex)"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Disfarce de objeto",
+      "descricao": "parece um baú ou móvel comum; exige teste de Prontidão para perceber o engano"
+    },
+    {
+      "nome": "Cola aderente",
+      "descricao": "quem toca fica Agarrado até se soltar com Atletismo"
+    },
+    {
+      "nome": "Mordida de emboscada",
+      "descricao": "dano extra no primeiro ataque contra alvo desavisado"
+    },
+    {
+      "nome": "Imóvel e paciente",
+      "descricao": "Furtividade 4 enquanto disfarçado"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Disfarça-se de baú, porta ou móvel e espera com paciência absoluta até que alguém confie o bastante para tocar; então prende e devora a vítima antes que ela perceba o engano."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Vive sozinho em dungeons, ruínas e cavernas, sempre perto de rotas que aventureiros e saqueadores costumam seguir; raramente se move enquanto não precisa caçar de novo."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Mais esperto do que a maioria das criaturas de forma estranha, observa os hábitos de quem passa por seu território e ajusta o disfarce ao que tem mais chance de atrair uma mão incauta."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "É contado entre as coisas de forma errada que o povo acredita terem origem na Fenda, e nenhuma história assusta mais um caçador de tesouros do que a certeza de que o próximo baú pode ser o último que ele abre."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 4.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Mímico",
+    "cr": "4",
+    "tipo": "aberração Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 19,
+      "des": 12,
+      "con": 17,
+      "int": 10,
+      "sab": 13,
+      "car": 10
+    },
+    "pericias": [
+      "Furtividade 4"
+    ],
+    "nota": "Mudar de forma (disfarce): Centelha 1.",
+    "deslocamento": {
+      "ft": 10,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

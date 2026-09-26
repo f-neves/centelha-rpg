@@ -1,0 +1,159 @@
+{
+  "ordem": 64,
+  "id": "mon-besta-deslocadora",
+  "nome": "Besta Deslocadora",
+  "nomeIngles": "Displacer Beast",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Grande",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/besta-deslocadora.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,7 m de comprimento, cauda tentacular incluída",
+    "peso": "230 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 6,
+    "destreza": 4,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 3,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 5,
+  "arte": {
+    "fascinacao": 1
+  },
+  "tech": {
+    "imobilizar": true
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Deslocamento (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N1 (ilusão) / Proteção",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Tentáculos",
+      "tipo": "proeza",
+      "alvo": "Agarrão do Urso · Imobilizar (b2)",
+      "caminho": "agarrao-do-urso"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Deslocamento",
+      "descricao": "imagem ilusória faz o primeiro ataque de cada oponente contra ela errar automaticamente"
+    },
+    {
+      "nome": "Tentáculos gêmeos",
+      "descricao": "dois ataques de tentáculo além da mordida no mesmo turno"
+    },
+    {
+      "nome": "Resistência à magia",
+      "descricao": "vantagem em testes de Resistência contra feitiços dirigidos a ela"
+    },
+    {
+      "nome": "Emboscadora",
+      "descricao": "Furtividade 3; ataca das sombras antes de ser notada"
+    },
+    {
+      "nome": "Prontidão felina",
+      "descricao": "Prontidão 2"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Predador felino de seis membros e dois tentáculos nos ombros, caça em grupo e usa uma distorção natural ao redor do corpo para parecer estar sempre um passo fora de onde realmente está; o golpe certeiro vem exatamente desse engano."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Caça em bandos organizados por florestas densas e cavernas, coordenando emboscadas com uma disciplina que surpreende quem espera fera comum. Carrega um ódio natural e antigo por cães teleportadores (os blink dogs) e criaturas semelhantes, instinto que nenhum estudioso soube explicar por completo."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Sorrateira, paciente e cruel, prefere isolar um alvo do grupo antes de atacar; a distorção visual que a cerca a torna quase impossível de acertar no primeiro golpe."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Sábios de Calin suspeitam que a besta deslocadora não é totalmente deste mundo, que carrega em si um resquício de outro plano, torto como os horrores da Fenda; ninguém provou a origem, mas o medo já bastou para render um lugar entre os monstros mais temidos dos ermos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Besta Deslocadora",
+    "cr": "4",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 15,
+      "con": 16,
+      "int": 12,
+      "sab": 12,
+      "car": 8
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Prontidão 2"
+    ],
+    "nota": "Deslocamento (Su): Centelha 2.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

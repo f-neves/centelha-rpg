@@ -1,0 +1,129 @@
+{
+  "ordem": 41,
+  "id": "mon-rinoceronte",
+  "nome": "Rinoceronte",
+  "nomeIngles": "Rhinoceros",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/rinoceronte.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,6 m de comprimento",
+    "peso": "2 t"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 8,
+    "destreza": 3,
+    "vigor": 7,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Investida",
+      "descricao": "corre 6m ou mais antes de atacar; dano extra e Reflexos ou Caído"
+    },
+    {
+      "nome": "Couro espesso",
+      "descricao": "Absorção alta contra golpes cortantes e perfurantes"
+    },
+    {
+      "nome": "Chifre perfurante",
+      "descricao": "ataque corpo a corpo com dano alto"
+    },
+    {
+      "nome": "Fúria cega",
+      "descricao": "quando Abalado, carrega contra o alvo mais próximo sem hesitar"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Solitário e de vista curta, geralmente pacato se não provocado, mas carrega com violência total quando se sente ameaçado."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Ocupa savanas abertas e áreas de vegetação rasteira, longe de florestas fechadas."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Habita as planícies mais amplas de Mére, respeitado pelos povos locais como símbolo de resistência bruta e teimosia."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains",
+      "Jungle"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Rinoceronte",
+    "cr": "4",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 24,
+      "des": 12,
+      "con": 20,
+      "int": 2,
+      "sab": 13,
+      "car": 6
+    },
+    "pericias": [
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

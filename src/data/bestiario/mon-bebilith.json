@@ -1,0 +1,144 @@
+{
+  "ordem": 157,
+  "id": "mon-bebilith",
+  "nome": "Bebilith",
+  "nomeIngles": "Bebilith",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Exterior",
+  "papel": "chefe",
+  "conceito": "exterior Enorme",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha"
+  ],
+  "imagem": "bestiario/bebilith.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "7 m de comprimento",
+    "peso": "2.700 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 11,
+    "destreza": 3,
+    "vigor": 9,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 6
+  },
+  "willpower": 10,
+  "aparencia": 0,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Teia Abissal",
+      "descricao": "Dispara um fio de teia grudenta a distância, prendendo a presa no lugar até que ela se liberte pela força."
+    },
+    {
+      "nome": "Mordida Apodrecedora",
+      "descricao": "A mordida injeta uma podridão que continua a consumir a carne e drenar o Vigor da vítima por várias rodadas após o ataque, um efeito que só cede a curas poderosas."
+    },
+    {
+      "nome": "Desarme Brutal",
+      "descricao": "Acertando com as duas garras ao mesmo tempo, arranca e destroça a armadura e o escudo do inimigo, deixando-os quebrados no chão."
+    },
+    {
+      "nome": "Golpe que Atravessa",
+      "descricao": "Suas garras e presas ultrapassam quase qualquer proteção sobrenatural comum, sendo especialmente devastadoras contra demônios."
+    },
+    {
+      "nome": "Passagem entre Planos",
+      "descricao": "Uma vez por cena, pode abrir uma fenda para outro plano e desaparecer com o corpo inteiro, escapando ou emboscando à vontade."
+    },
+    {
+      "nome": "Sentidos do Abismo",
+      "descricao": "Enxerga no escuro absoluto e fareja presas ocultas mesmo através de névoas e fumaças abissais."
+    },
+    {
+      "nome": "Escalador Nato",
+      "descricao": "Sobe superfícies verticais e tetos com a mesma facilidade com que se move no chão."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Natureza",
+      "texto": "Mesmo no Abismo, existem predadores que caçam os próprios demônios: o bebilith é o mais temido deles, uma criatura evoluída para farejar e destruir a horda demoníaca."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "É mais inteligente do que sua forma verminosa e monstruosa sugere; ainda bem que seu único interesse é a caça, pois se tivesse ambição de conquista, sua capacidade de cruzar planos o tornaria um flagelo sem igual."
+    },
+    {
+      "titulo": "Caçada",
+      "texto": "Não precisa se alimentar para sobreviver, mas mesmo assim aprecia mastigar carne demoníaca, tecendo suas teias em fendas e cavernas do Abismo à espera da próxima presa."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Bebilith",
+    "cr": "10",
+    "tipo": "exterior Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 28,
+      "des": 12,
+      "con": 24,
+      "int": 11,
+      "sab": 13,
+      "car": 13
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

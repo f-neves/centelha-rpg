@@ -1,0 +1,167 @@
+{
+  "ordem": 113,
+  "id": "mon-driade",
+  "nome": "Dríade",
+  "nomeIngles": "Dryad",
+  "categoria": "Fada",
+  "papel": "soldado",
+  "conceito": "fada Médio",
+  "descricao": "Espírito da natureza, belo e caprichoso.",
+  "tags": [
+    "fada",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/driade.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,65 m de altura",
+    "peso": "50 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 2,
+    "destreza": 5,
+    "vigor": 3,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 4,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 3,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 8,
+  "arte": {
+    "fascinacao": 2,
+    "conjuracao": 2,
+    "materia": 2
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Passo-arbóreo e enfeitiço (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N2 + Conjuração · N2",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Fundir-se à árvore",
+      "tipo": "feiticaria",
+      "alvo": "Matéria · N2 / Espírito",
+      "arte": "materia"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Enfeitiçar",
+      "descricao": "alvo que falhar em Vontade fica Encantado e obedece ordens pacíficas"
+    },
+    {
+      "nome": "Passo-arbóreo",
+      "descricao": "teleporta-se de árvore em árvore dentro da floresta"
+    },
+    {
+      "nome": "Fundir-se à árvore",
+      "descricao": "esconde-se por completo dentro do tronco de uma árvore"
+    },
+    {
+      "nome": "Vínculo com a árvore-lar",
+      "descricao": "sofre dano se sua árvore for destruída"
+    },
+    {
+      "nome": "Furtividade natural",
+      "descricao": "+2d em Furtividade dentro de florestas"
+    },
+    {
+      "nome": "Empatia selvagem",
+      "descricao": "acalma e comanda animais próximos"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Guardiã caprichosa de uma única árvore, encanta viajantes que se aproximam demais e os afasta ou os prende conforme o humor do momento."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Vive isolada, ligada para sempre ao destino do seu carvalho ou salgueiro; se a árvore morre, ela morre junto."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Bela, sedutora e imprevisível: pode ser aliada gentil de quem protege a floresta ou inimiga implacável de quem traz o machado."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Nunca se afasta de sua clareira além do que a magia que a une à árvore permite."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "As dríades carregam a marca da origem feérica dos elfos, sendo primas distantes desse povo caído; entre os animistas de Syl são veneradas como kami de carne e seiva, guardiãs vivas de bosques que a Supressão jamais conseguiu tornar mundanos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fey",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Persuasão 3, Furtividade 3, Sobrevivência 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Dríade",
+    "cr": "3",
+    "tipo": "fada Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 10,
+      "des": 19,
+      "con": 13,
+      "int": 14,
+      "sab": 15,
+      "car": 18
+    },
+    "pericias": [
+      "Persuasão 3",
+      "Furtividade 3",
+      "Sobrevivência 3"
+    ],
+    "nota": "Naturalmente mágica, enfeitiçar: Centelha 3.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

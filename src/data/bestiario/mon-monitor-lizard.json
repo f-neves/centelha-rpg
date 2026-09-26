@@ -1,0 +1,127 @@
+{
+  "ordem": 252,
+  "id": "mon-monitor-lizard",
+  "nome": "Lagarto-Monitor",
+  "nomeIngles": "Monitor Lizard",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/monitor-lizard.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "3 m de comprimento",
+    "peso": "160 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 5,
+    "destreza": 4,
+    "vigor": 5,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Nado Ágil",
+      "descricao": "Desliza pela água quase tão bem quanto em terra firme, perfeito para emboscar presas perto de rios e pântanos."
+    },
+    {
+      "nome": "Mordida Envenenada",
+      "descricao": "A mordida injeta um veneno de ação lenta que, passado um tempo, começa a corroer a agilidade da vítima por várias horas até ser tratado."
+    },
+    {
+      "nome": "Fisgar com a Boca",
+      "descricao": "Ao morder, prende a presa com as mandíbulas fortes, arrastando-a ou impedindo sua fuga."
+    },
+    {
+      "nome": "Sentidos Apurados",
+      "descricao": "Enxerga bem na penumbra, fareja presas ocultas e nota o menor movimento nas redondezas."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Confundido com Dragão",
+      "texto": "Em algumas terras, o tamanho e as escamas deste lagarto fazem os moradores locais confundi-lo com filhotes de dragão."
+    },
+    {
+      "titulo": "Predador de Rio e Mata",
+      "texto": "Caça sozinho, à espreita nas margens de rios e no sub-bosque, onde sua pele se confunde com raízes e lama."
+    },
+    {
+      "titulo": "Companheiro Domado",
+      "texto": "Caçadores por vezes capturam filhotes e os criam como guardiões e companheiros de caça leais."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Monitor Lizard",
+    "cr": "2",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 15,
+      "con": 17,
+      "int": 2,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

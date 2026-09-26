@@ -1,0 +1,131 @@
+{
+  "ordem": 243,
+  "id": "mon-invisible-stalker",
+  "nome": "Invisible Stalker",
+  "nomeIngles": "Invisible Stalker",
+  "categoria": "Elemental",
+  "papel": "elite",
+  "conceito": "exterior (ar) Médio",
+  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+    "elemental",
+    "centelha"
+  ],
+  "imagem": "bestiario/invisible-stalker.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura",
+    "peso": "70 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 5,
+    "destreza": 5,
+    "vigor": 7,
+    "influencia": 2,
+    "perspicacia": 3,
+    "compostura": 3,
+    "percepcao": 4,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "resistencias": [
+    "corte",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Invisibilidade natural",
+      "descricao": "Permanece invisível o tempo todo, mesmo enquanto ataca, e não pode ser revelado por meios comuns de dissipação."
+    },
+    {
+      "nome": "Rastreador implacável",
+      "descricao": "Segue pistas e presas em fuga sem nunca perder o rastro, não importa a velocidade."
+    },
+    {
+      "nome": "Voo perfeito",
+      "descricao": "Desloca-se voando com controle impecável, além de poder caminhar."
+    },
+    {
+      "nome": "Sentidos na escuridão",
+      "descricao": "Enxerga no escuro sem qualquer dificuldade."
+    },
+    {
+      "nome": "Fúria contida",
+      "descricao": "Golpeia com dois socos etéreos de força considerável."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Servo do Plano do Ar",
+      "texto": "Convocado de um plano distante, o perseguidor invisível cumpre tarefas de guardião, assassino ou rastreador para quem o invoca."
+    },
+    {
+      "titulo": "Letra da lei, não da vontade",
+      "texto": "Ressentido com a servidão, busca brechas em ordens mal formuladas, cumprindo o pedido ao pé da letra de formas que traem a intenção de quem o convocou."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Sky",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Invisible Stalker",
+    "cr": "7",
+    "tipo": "exterior (ar) Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 18,
+      "des": 19,
+      "con": 22,
+      "int": 14,
+      "sab": 15,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

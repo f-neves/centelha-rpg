@@ -1,0 +1,128 @@
+{
+  "ordem": 231,
+  "id": "mon-gray-ooze",
+  "nome": "Limo Cinzento",
+  "nomeIngles": "Gray Ooze",
+  "categoria": "Limo",
+  "papel": "soldado",
+  "conceito": "limo Médio",
+  "descricao": "Massa informe que digere tudo que toca.",
+  "tags": [
+    "limo",
+    "centelha"
+  ],
+  "imagem": "bestiario/gray-ooze.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1 m de diâmetro",
+    "peso": "150 kg"
+  },
+  "locomocao": {
+    "terra": 1
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 5,
+    "destreza": 0,
+    "vigor": 8,
+    "influencia": 0,
+    "perspicacia": 0,
+    "compostura": 0,
+    "percepcao": 0,
+    "inteligencia": 0,
+    "raciocinio": 0
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 0,
+    "prontidao": 0,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 6,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Pseudópode",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "resistencias": [
+    "corte",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Ácido corrosivo",
+      "descricao": "Seu toque banha metal e matéria orgânica em ácido: cada golpe causa dano contínuo adicional, e armas ou armaduras que a atingem podem se corroer no processo."
+    },
+    {
+      "nome": "Presa transparente",
+      "descricao": "Sua coloração baça a torna quase invisível no ambiente; quem não a percebe e a pisa sofre um ataque surpresa e pode ser agarrado."
+    },
+    {
+      "nome": "Sentido cego",
+      "descricao": "Percebe o mundo ao redor sem depender da visão, dispensando olhos por completo."
+    },
+    {
+      "nome": "Imunidades",
+      "descricao": "Insensível a frio e fogo."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Poça enganosa",
+      "texto": "Deslizando por pântanos gelados e masmorras úmidas, a gosma cinzenta se confunde com poças d'água e lama, à espera de que algo incauto a pise."
+    },
+    {
+      "titulo": "Origem incerta",
+      "texto": "Sábios discordam se ela nasce de experimentos alquímicos fracassados ou de um poço de detritos mágicos que ganhou vida própria."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Ooze",
+    "terreno": [
+      "Swamp",
+      "Underground"
+    ],
+    "clima": [
+      "Cold",
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Gray Ooze",
+    "cr": "4",
+    "tipo": "limo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 16,
+      "des": 1,
+      "con": 26,
+      "int": "-",
+      "sab": 1,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 10,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

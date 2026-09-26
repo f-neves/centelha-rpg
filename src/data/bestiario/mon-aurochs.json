@@ -1,0 +1,122 @@
+{
+  "ordem": 235,
+  "id": "mon-aurochs",
+  "nome": "Aurochs",
+  "nomeIngles": "Aurochs",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/aurochs.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "1,8 m de altura no ombro",
+    "peso": "900 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 8,
+    "destreza": 2,
+    "vigor": 6,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Chifrada",
+      "descricao": "Acerta com uma marrada capaz de derrubar um homem adulto com um só golpe."
+    },
+    {
+      "nome": "Debandada em manada",
+      "descricao": "Quando três ou mais aurochs avançam lado a lado, atropelam tudo em seu caminho com força redobrada."
+    },
+    {
+      "nome": "Atropelamento",
+      "descricao": "Pode simplesmente passar por cima de inimigos menores, esmagando-os sob os cascos."
+    },
+    {
+      "nome": "Sentidos de manada",
+      "descricao": "Faro apurado e visão adaptada à pouca luz ajudam a detectar predadores à distância."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Boi selvagem ancestral",
+      "texto": "Parente robusto do gado domesticado, o aurochs vive em manadas que pastam livres pelas planícies abertas."
+    },
+    {
+      "titulo": "Fúria coletiva",
+      "texto": "Quando ameaçada, a manada inteira avança em bloco, transformando dezenas de chifres e cascos numa muralha destrutiva."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Aurochs",
+    "cr": "2",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 10,
+      "con": 17,
+      "int": 2,
+      "sab": 11,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

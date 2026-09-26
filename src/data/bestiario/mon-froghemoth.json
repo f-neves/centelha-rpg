@@ -1,0 +1,123 @@
+{
+  "ordem": 219,
+  "id": "mon-froghemoth",
+  "nome": "Froghemoth",
+  "nomeIngles": "Froghemoth",
+  "categoria": "Aberração",
+  "papel": "chefe",
+  "conceito": "aberração Enorme",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha"
+  ],
+  "imagem": "bestiario/froghemoth.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "6,7 m de altura",
+    "peso": "3000 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 11,
+    "destreza": 3,
+    "vigor": 9,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 10,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Três Olhos, Visão Total",
+      "descricao": "Enxerga em todas as direções ao mesmo tempo, sente pela água ao redor e vê no escuro absoluto: jamais pode ser pego de surpresa por flancos."
+    },
+    {
+      "nome": "Absorção contra Choques",
+      "descricao": "Absorve grande parte do dano elétrico que sofreria, mas o choque a deixa lenta e desajeitada por um instante."
+    },
+    {
+      "nome": "Tentáculos Constritores",
+      "descricao": "Os tentáculos prendem e esmagam a presa, causando dano contínuo enquanto ela luta para se libertar."
+    },
+    {
+      "nome": "Engole Inteiro",
+      "descricao": "Consegue tragar uma presa inteira, causando dano contínuo grave por esmagamento e digestão até que ela corte caminho para fora."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Terror do brejo profundo",
+      "texto": "Capaz de devorar até dragões jovens, essa criatura passa a maior parte da vida submersa, apenas os olhos à mostra na superfície da lama."
+    },
+    {
+      "titulo": "Nunca em paz",
+      "texto": "Estudiosos notam que ela parece sempre inquieta, como se o pântano não fosse seu verdadeiro lar, vagando por vezes para muito longe de qualquer charco conhecido."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Swamp",
+      "Water"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Froghemoth",
+    "cr": "13",
+    "tipo": "aberração Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 30,
+      "des": 13,
+      "con": 24,
+      "int": 2,
+      "sab": 13,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

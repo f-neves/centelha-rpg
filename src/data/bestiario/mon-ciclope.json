@@ -1,0 +1,146 @@
+{
+  "ordem": 34,
+  "id": "mon-ciclope",
+  "nome": "Ciclope",
+  "nomeIngles": "Cyclops",
+  "categoria": "Gigante",
+  "papel": "elite",
+  "conceito": "humanoide Grande (gigante)",
+  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "tags": [
+    "gigante",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/ciclope.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,2 m de altura",
+    "peso": "400 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 9,
+    "destreza": 2,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "arte": {
+    "fortuna": 1
+  },
+  "ataques": [
+    {
+      "nome": "Pancada descomunal",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Lampejo de premonição (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Fortuna · N1 / Adivinhação",
+      "arte": "fortuna"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Lampejo de premonição",
+      "descricao": "gasta Centelha para pressentir um golpe certeiro e evitá-lo por completo"
+    },
+    {
+      "nome": "Olho único",
+      "descricao": "campo de visão limitado; sofre penalidade contra flanco e ataques furtivos"
+    },
+    {
+      "nome": "Clava colossal",
+      "descricao": "dano alto corpo a corpo"
+    },
+    {
+      "nome": "Força ciclópica",
+      "descricao": "arremessa rochedos ou derruba estruturas pequenas"
+    },
+    {
+      "nome": "Couro grosso",
+      "descricao": "Absorção alta"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Solitário e desconfiado, vive por instinto e reage com hostilidade a qualquer estranho que se aproxime de sua toca."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Pastoreia rebanhos ou caça sozinho, e habita cavernas isoladas bem longe de qualquer povoado."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Costuma ocupar ruínas esquecidas de uma era anterior à Supressão, tomando templos e torres em decadência como sua toca. Para os pastores de Mére e Syl, é a figura por trás das velhas histórias de assombração de montanha."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Giant",
+    "terreno": [
+      "Mountain"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Ofícios 2, Prontidão 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Ciclope",
+    "cr": "5",
+    "tipo": "humanoide Grande (gigante)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 25,
+      "des": 8,
+      "con": 18,
+      "int": 9,
+      "sab": 12,
+      "car": 9
+    },
+    "pericias": [
+      "Ofícios 2",
+      "Prontidão 2"
+    ],
+    "nota": "Lampejo de premonição (Su): Centelha 1.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

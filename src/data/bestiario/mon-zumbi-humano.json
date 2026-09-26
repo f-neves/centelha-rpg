@@ -1,0 +1,133 @@
+{
+  "ordem": 75,
+  "id": "mon-zumbi-humano",
+  "nome": "Zumbi Humano",
+  "nomeIngles": "Human Zombie",
+  "categoria": "Morto-vivo",
+  "papel": "capanga",
+  "conceito": "morto-vivo Médio",
+  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "tags": [
+    "morto-vivo",
+    "centelha"
+  ],
+  "imagem": "bestiario/zumbi-humano.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,7 m de altura",
+    "peso": "75 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 5,
+    "destreza": 2,
+    "vigor": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 4,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 2,
+  "ataques": [
+    {
+      "nome": "Golpe",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Sem carne",
+      "descricao": "imune a veneno, doença e efeitos mentais"
+    },
+    {
+      "nome": "Golpe pesado e lento",
+      "descricao": "dano alto mas Iniciativa reduzida"
+    },
+    {
+      "nome": "Últimos estertores",
+      "descricao": "uma vez por cena, um golpe que zeraria seus PV o deixa com 1 PV"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Lento, desajeitado e obtuso, mas incansável: avança direto ao alvo mais próximo, sem tática, medo ou hesitação."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "A carne apodrece aos poucos mesmo animada, e o zumbi mal nota o próprio corpo se desfazendo. Não sente dor, fome ou fadiga como um vivo sentiria."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Costuma se acumular onde os mortos não foram enterrados a tempo, como covas rasas de batalhas antigas ou vilarejos assolados por pragas."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Aqui a Centelha já partiu, e o cadáver é reanimado por uma compulsão bruta imposta de fora. Erguer um zumbi é um dos atos mais reprimidos pelas ortodoxias de Calin, prova imediata de necromancia ativa numa comunidade."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Undead",
+    "terreno": [
+      "Ruins",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Zumbi Humano",
+    "cr": "1/2",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 10,
+      "con": "-",
+      "int": "-",
+      "sab": 10,
+      "car": 10
+    },
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

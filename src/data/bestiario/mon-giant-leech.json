@@ -1,0 +1,133 @@
+{
+  "ordem": 246,
+  "id": "mon-giant-leech",
+  "nome": "Sanguessuga Gigante",
+  "nomeIngles": "Giant Leech",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/giant-leech.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "3 m de comprimento",
+    "peso": "80 kg"
+  },
+  "locomocao": {
+    "natacao": 2
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 2,
+    "destreza": 3,
+    "vigor": 4,
+    "influencia": 0,
+    "perspicacia": 0,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentir sem Ver",
+      "descricao": "Percebe vibrações e calor à sua volta sem depender da visão, e fareja sangue à distância."
+    },
+    {
+      "nome": "Mente Vazia",
+      "descricao": "Imune a qualquer efeito que dependa de pensamento ou vontade, por não possuir intelecto algum."
+    },
+    {
+      "nome": "Fisgar e Sugar",
+      "descricao": "Ao morder com sucesso, prende-se com força bruta ao alvo e continua a drená-lo automaticamente a cada rodada, até ser arrancada ou vencer o alvo numa disputa de Força."
+    },
+    {
+      "nome": "Drenar Sangue",
+      "descricao": "Enquanto grudada, suga o sangue da vítima, causando dano contínuo de Vigor além do dano da mordida."
+    },
+    {
+      "nome": "Fraqueza ao Sal",
+      "descricao": "Uma pitada de sal queima sua carne mole como ácido puro, causando dano severo imediato."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Águas Paradas",
+      "texto": "Vive à espreita em pântanos estagnados e rios lentos, imóvel até sentir o calor de uma presa se aproximando."
+    },
+    {
+      "titulo": "Parente Monstruosa",
+      "texto": "Prima gigantesca das sanguessugas comuns, cresceu o bastante para arrastar um homem para debaixo d'água."
+    },
+    {
+      "titulo": "Remédio de Viajante",
+      "texto": "Quem cruza pântanos sempre carrega um saquinho de sal, sabendo ser a defesa mais simples contra essa mordida pegajosa."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Swamp",
+      "Water"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Leech",
+    "cr": "2",
+    "tipo": "praga Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 11,
+      "des": 12,
+      "con": 14,
+      "int": "-",
+      "sab": 10,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte",
+      "nota": "nado 20; em terra a sanguessuga se arrasta 5"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

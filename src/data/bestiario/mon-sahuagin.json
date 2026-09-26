@@ -1,0 +1,133 @@
+{
+  "ordem": 279,
+  "id": "mon-sahuagin",
+  "nome": "Sahuagin",
+  "nomeIngles": "Sahuagin",
+  "categoria": "Humanoide monstruoso",
+  "categoriaLegada": "Monstro",
+  "papel": "soldado",
+  "conceito": "humanoide monstruoso Médio",
+  "descricao": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha"
+  ],
+  "imagem": "bestiario/sahuagin.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2,1 metros de altura",
+    "peso": "113 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 4,
+    "destreza": 3,
+    "vigor": 4,
+    "influencia": 2,
+    "perspicacia": 3,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Fúria sanguinária",
+      "descricao": "Uma vez por cena, ao ser ferido em combate, entra em fúria e ganha Físico e Vigor extras à custa da própria Defesa enquanto durar a luta."
+    },
+    {
+      "nome": "Fala com tubarões",
+      "descricao": "Comunica-se telepaticamente com tubarões próximos, comandando-os como aliados em conceitos simples."
+    },
+    {
+      "nome": "Cegueira pela luz",
+      "descricao": "Luz forte incomoda seus olhos adaptados às profundezas, prejudicando sua pontaria e percepção."
+    },
+    {
+      "nome": "Sentidos aquáticos",
+      "descricao": "Percebe vibrações na água e enxerga no escuro, orientando-se mesmo em total escuridão submersa."
+    },
+    {
+      "nome": "Nadador nato",
+      "descricao": "Desloca-se na água com a mesma facilidade de um predador marinho nascido para caçar."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Impérios sob as ondas",
+      "texto": "Cidades inteiras erguidas nas trincheiras oceânicas atestam a prosperidade cruel dos sahuagin, que lançam incursões constantes contra quem vive perto da costa."
+    },
+    {
+      "titulo": "Irmandade com os tubarões",
+      "texto": "Vendo nos tubarões um reflexo de sua própria natureza implacável, os sahuagin os tratam como parentes, comandando-os em batalha através de uma ligação silenciosa da mente."
+    },
+    {
+      "titulo": "Sangue que desperta fúria",
+      "texto": "Ferido em combate, um sahuagin pode entrar num frenesi sanguinário, ficando momentaneamente mais forte e resistente, ainda que descuidado com a própria guarda."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Sahuagin",
+    "cr": "2",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 13,
+      "con": 14,
+      "int": 14,
+      "sab": 13,
+      "car": 9
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

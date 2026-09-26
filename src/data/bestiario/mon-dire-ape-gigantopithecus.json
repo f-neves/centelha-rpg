@@ -1,0 +1,126 @@
+{
+  "ordem": 144,
+  "id": "mon-dire-ape-gigantopithecus",
+  "nome": "Símio Atroz",
+  "nomeIngles": "Dire Ape",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/dire-ape-gigantopithecus.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,7 m de altura",
+    "peso": "550 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 6,
+    "destreza": 4,
+    "vigor": 6,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Garras e Presas",
+      "descricao": "Ataca com mordida e duas garras poderosas, típicas de um grande primata selvagem."
+    },
+    {
+      "nome": "Dilacerar",
+      "descricao": "Se as duas garras acertam o mesmo alvo ao mesmo tempo, o dire ape rasga a carne com força extra, causando dano adicional."
+    },
+    {
+      "nome": "Trepador Nato",
+      "descricao": "Escala árvores e penhascos com a mesma velocidade com que corre pelo chão."
+    },
+    {
+      "nome": "Faro Aguçado",
+      "descricao": "Sente cheiros a grande distância e enxerga bem mesmo em pouca luz, raramente sendo pego de surpresa."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Território",
+      "texto": "O dire ape ataca sem aviso qualquer coisa que invada seu território, incluindo outros de sua espécie fora do próprio bando, e só recua quando o intruso está morto ou fugiu."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Contra oponentes bem protegidos, prefere agarrar e imobilizar o alvo no chão antes de dilacerá-lo com as garras."
+    },
+    {
+      "titulo": "Aparência",
+      "texto": "Um macho adulto chega a quase três metros de altura, com testa protuberante, olhos fundos e braços musculosos que quase tocam o chão."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Ape (Gigantopithecus)",
+    "cr": "3",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 15,
+      "con": 16,
+      "int": 2,
+      "sab": 12,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

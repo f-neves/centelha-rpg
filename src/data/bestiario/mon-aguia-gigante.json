@@ -1,0 +1,156 @@
+{
+  "ordem": 48,
+  "id": "mon-aguia-gigante",
+  "nome": "Águia Gigante",
+  "nomeIngles": "Giant Eagle",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Grande",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/aguia-gigante.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "1,2 m de altura, envergadura 4,5 m",
+    "peso": "180 kg"
+  },
+  "locomocao": {
+    "voo": 8
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 6,
+    "destreza": 4,
+    "vigor": 5,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 4,
+    "percepcao": 4,
+    "inteligencia": 2,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 5,
+  "tech": {
+    "sentidos-apurados": true
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Visão aguçada",
+      "tipo": "proeza",
+      "alvo": "Olho Aguçado · Sentidos Apurados (b1)",
+      "caminho": "olho-agucado"
+    },
+    {
+      "efeito": "Voo",
+      "tipo": "natural",
+      "alvo": "asas (natural)"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Voo veloz",
+      "descricao": "desloca no ar com grande alcance e velocidade"
+    },
+    {
+      "nome": "Visão aguçada",
+      "descricao": "detecta alvos a centenas de metros, ignora penalidades de distância em Prontidão"
+    },
+    {
+      "nome": "Mergulho predatório",
+      "descricao": "ataque após mergulho de altura causa dano extra"
+    },
+    {
+      "nome": "Garras que agarram",
+      "descricao": "ergue e carrega presas de tamanho Pequeno ou menor"
+    },
+    {
+      "nome": "Nobreza selvagem",
+      "descricao": "imune a Medo de criaturas menores que ela"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Caça em pares ou pequenos bandos, mergulhando de grandes alturas para arrebatar a presa com as garras; é orgulhosa, territorial e nada tolerante com invasores em seu domínio."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Fala sua própria língua sonora, feita de gritos e assobios, e vive em ninhos-fortaleza no alto de penhascos, geralmente em bandos familiares que duram gerações."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Domina os picos e correntes de ar quente do White Wall e das montanhas que cercam Syl, longe do alcance de quase todo predador."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Em Syl, onde tudo carrega um espírito, dizem que a águia gigante é kami de vento e altura em corpo de ave, e recusar-se a caçá-la é sinal comum de respeito local."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Mountain",
+      "Sky"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 3, Atletismo 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Águia Gigante",
+    "cr": "3",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 15,
+      "con": 15,
+      "int": 10,
+      "sab": 14,
+      "car": 13
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Atletismo 2"
+    ],
+    "nota": "Besta mágica inteligente: Centelha 1.",
+    "deslocamento": {
+      "ft": 80,
+      "origem": "fonte",
+      "nota": "voo 80; em terra a águia salta 10 ft"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

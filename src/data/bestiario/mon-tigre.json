@@ -1,0 +1,130 @@
+{
+  "ordem": 39,
+  "id": "mon-tigre",
+  "nome": "Tigre",
+  "nomeIngles": "Tiger",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/tigre.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,9 m de comprimento, com cauda",
+    "peso": "220 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 8,
+    "destreza": 4,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 3,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Bote e dilaceramento",
+      "descricao": "ao correr até o alvo, ataca com garras e mordida; garras presas causam dano extra a cada rodada"
+    },
+    {
+      "nome": "Caçador solitário",
+      "descricao": "bônus de Furtividade emboscando presas sozinho"
+    },
+    {
+      "nome": "Mordida no pescoço",
+      "descricao": "agarra o alvo e reduz seu deslocamento enquanto preso"
+    },
+    {
+      "nome": "Nadador ágil",
+      "descricao": "atravessa rios e lagos sem penalidade, ataca normalmente na água"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Solitário e territorial, caça por emboscada silenciosa e evita confronto que não seja estritamente necessário."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Vive em florestas densas e junglosas, sempre perto de fontes de água."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Ronda as selvas mais fechadas de Mére, onde as histórias locais o descrevem quase como espírito da mata, muito por causa do respeito quase religioso da região aos grandes predadores, embora seja apenas um animal comum."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Jungle",
+      "Forest"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 3, Atletismo 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Tigre",
+    "cr": "4",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 15,
+      "con": 17,
+      "int": 2,
+      "sab": 15,
+      "car": 10
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Atletismo 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

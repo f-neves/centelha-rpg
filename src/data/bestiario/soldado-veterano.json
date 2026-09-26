@@ -1,0 +1,120 @@
+{
+  "ordem": 4,
+  "id": "soldado-veterano",
+  "nome": "Soldado Veterano",
+  "nomeIngles": "Veteran Soldier",
+  "categoria": "Humanoide",
+  "categoriaLegada": "Humano",
+  "papel": "soldado",
+  "conceito": "lâmina experiente",
+  "descricao": "Anos de guerra; lê o combate e explora aberturas.",
+  "tags": [
+    "humano"
+  ],
+  "imagem": "bestiario/soldado-veterano.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,78 m de altura",
+    "peso": "82 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 3,
+    "destreza": 4,
+    "vigor": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "armas-uma-mao": 4,
+    "esquiva": 3,
+    "escudos": 2,
+    "prontidao": 3,
+    "tatica": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "equip": {
+    "armaduras": [
+      "malha"
+    ]
+  },
+  "ataques": [
+    {
+      "nome": "Espada longa",
+      "atrib": "destreza",
+      "pericia": "armas-uma-mao",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Olho de guerra",
+      "descricao": "lê a luta e nunca é pego de surpresa fácil"
+    },
+    {
+      "nome": "Explora aberturas",
+      "descricao": "converte Quase Acerto do alvo em bônus de dano no contra-ataque"
+    },
+    {
+      "nome": "Foco no isolado",
+      "descricao": "prioriza e ganha bônus de ataque contra quem está sem apoio"
+    },
+    {
+      "nome": "Golpe calculado",
+      "descricao": "ataque básico confiável, poucos desperdícios"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Não desperdiça movimento: lê a postura do inimigo, espera a abertura e responde com economia. Anos de campanha ensinaram que bravura sem cálculo mata cedo."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Cansado, pragmático, sem ilusões sobre glória; trata recrutas com uma mistura de desprezo e cuidado paternal."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Homens assim sobraram das guerras de fronteira de Calin e das campanhas contra os horrores da Fenda no White Wall: sobreviveram por saber quando não lutar."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Urban",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Aproveita Quase Acerto e foca alvos isolados.",
+  "pendente": false,
+  "fonte": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

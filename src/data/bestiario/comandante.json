@@ -1,0 +1,134 @@
+{
+  "ordem": 13,
+  "id": "comandante",
+  "nome": "Comandante Tocado",
+  "nomeIngles": "Touched Commander",
+  "categoria": "Humanoide",
+  "categoriaLegada": "Humano",
+  "papel": "elite",
+  "conceito": "líder de guerra",
+  "descricao": "Inspira tropas e quebra a moral inimiga; luta bem, mas comanda melhor.",
+  "tags": [
+    "humano",
+    "centelha"
+  ],
+  "imagem": "bestiario/comandante.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,85 m de altura",
+    "peso": "88 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 3,
+    "destreza": 4,
+    "vigor": 4,
+    "influencia": 5,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "armas-uma-mao": 4,
+    "esquiva": 3,
+    "escudos": 3,
+    "oratoria": 4,
+    "tatica": 4,
+    "prontidao": 3,
+    "integridade": 6
+  },
+  "skills2": {
+    "intimidacao": 4
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "tech": {
+    "voz-de-lider": true,
+    "coordenar": true,
+    "tom-de-autoridade": true
+  },
+  "equip": {
+    "armaduras": [
+      "placa-completa"
+    ]
+  },
+  "ataques": [
+    {
+      "nome": "Espada longa",
+      "atrib": "destreza",
+      "pericia": "armas-uma-mao",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Estandarte de Comando",
+      "descricao": "concede ação extra ou bônus de ataque/Defesa a aliados próximos"
+    },
+    {
+      "nome": "Inspira tropas",
+      "descricao": "gasta Influência para erguer a moral do próprio lado"
+    },
+    {
+      "nome": "Quebra de moral",
+      "descricao": "pode forçar teste de Vontade em inimigos, deixando-os Abalados"
+    },
+    {
+      "nome": "Comanda melhor que luta",
+      "descricao": "combate competente, mas seu real poder é coordenar outros"
+    },
+    {
+      "nome": "Ponto de colapso",
+      "descricao": "a queda do comandante abala a moral de toda a tropa que lidera"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Luta bem, mas comanda melhor: sua presença no campo reorganiza tropas em pânico e quebra a moral do lado inimigo antes mesmo do choque das lâminas."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Lidera exércitos ou bandos de guerra, respeitado por soldados que confiam mais na sua palavra do que na própria espada."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Foi tocado pela Centelha o suficiente para liderar como poucos líderes mortais conseguem, um dom que faz dele figura central em qualquer conflito de Uldun, de Calin a Mére."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Urban",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Concede ações e bônus aos aliados (Estandarte/Comando). Some Influência quando inspira. Mate-o e a tropa vacila.",
+  "pendente": false,
+  "fonte": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

@@ -1,0 +1,118 @@
+{
+  "ordem": 3,
+  "id": "guarda-da-cidade",
+  "nome": "Guarda da Cidade",
+  "nomeIngles": "City Guard",
+  "categoria": "Humanoide",
+  "categoriaLegada": "Humano",
+  "papel": "soldado",
+  "conceito": "milícia treinada",
+  "descricao": "Patrulha disciplinada, luta em formação com escudo.",
+  "tags": [
+    "humano"
+  ],
+  "imagem": "bestiario/guarda-da-cidade.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,75 m de altura",
+    "peso": "78 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 3,
+    "destreza": 3,
+    "vigor": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "armas-uma-mao": 3,
+    "esquiva": 2,
+    "escudos": 2,
+    "prontidao": 3,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "equip": {
+    "armaduras": [
+      "malha"
+    ]
+  },
+  "ataques": [
+    {
+      "nome": "Espada curta",
+      "atrib": "destreza",
+      "pericia": "armas-uma-mao",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 2,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Malha",
+      "descricao": "Absorção +4, mas Esquiva −1"
+    },
+    {
+      "nome": "Escudo",
+      "descricao": "+2 ao Bloqueio"
+    },
+    {
+      "nome": "Formação",
+      "descricao": "ganha bônus de Defesa lutando lado a lado com outro guarda"
+    },
+    {
+      "nome": "Chamar reforço",
+      "descricao": "grita por apoio; mais guardas chegam em poucas rodadas"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Patrulha em duplas ou pequenos pelotões, luta em formação fechada com escudo e lança curta, e prioriza conter o problema até chegar reforço."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Serve às ordens de um capitão e, em última instância, às ortodoxias supressoras que mandam nas grandes cidades de Calin."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "É a disciplina greco-romana de Calin em carne e osso: milícia treinada, hierárquica, que enxerga em qualquer sinal de magia um problema a ser reportado à igreja antes de ser combatido."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Malha (Absorção +4, Esquiva −1) + escudo (+2 ao Bloqueio). Chama reforço.",
+  "pendente": false,
+  "fonte": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

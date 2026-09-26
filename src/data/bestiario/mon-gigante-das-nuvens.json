@@ -1,0 +1,161 @@
+{
+  "ordem": 32,
+  "id": "mon-gigante-das-nuvens",
+  "nome": "Gigante das Nuvens",
+  "nomeIngles": "Giant, Cloud",
+  "categoria": "Gigante",
+  "papel": "chefe",
+  "conceito": "humanoide Enorme (gigante)",
+  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "tags": [
+    "gigante",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/gigante-das-nuvens.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "7 m de altura",
+    "peso": "8 t"
+  },
+  "locomocao": {
+    "terra": 5
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 12,
+    "destreza": 3,
+    "vigor": 8,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 3,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 5
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "arte": {
+    "vento": 1
+  },
+  "ataques": [
+    {
+      "nome": "Pancada descomunal",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Névoa e poderes do ar (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Vento · N2",
+      "arte": "vento"
+    },
+    {
+      "efeito": "Arremessar rocha",
+      "tipo": "proeza",
+      "alvo": "Atlas",
+      "caminho": "atlas"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Névoa oculta",
+      "descricao": "conjura névoa espessa num raio de 9m; concede Furtividade a aliados e dificulta Ataques à distância contra eles"
+    },
+    {
+      "nome": "Arremesso de rocha",
+      "descricao": "ataque à distância de até 36m, dano alto"
+    },
+    {
+      "nome": "Passos no vento",
+      "descricao": "flutua e plana por curtas distâncias, ignora dano de queda"
+    },
+    {
+      "nome": "Telepatia",
+      "descricao": "comunica-se mentalmente com aliados a até 18m"
+    },
+    {
+      "nome": "Couro nas alturas",
+      "descricao": "Absorção alta"
+    },
+    {
+      "nome": "Castelo entre nuvens",
+      "descricao": "conhece rotas aéreas e pode convocar servos alados em seu domínio"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Caprichoso e vaidoso, trata mortais como curiosidades ou peças de um jogo, e prefere enigmas e caçadas a guerra direta."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Forma uma espécie de nobreza aérea, vivendo em castelos flutuantes sustentados por magia antiga, servida por ogros e águias gigantes."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Coleciona curiosidades trazidas de baixo e organiza banquetes suntuosos e caçadas como passatempo."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Seus castelos no céu são relíquia viva de um tempo em que a magia domava até o vento, prova de que o mundo já foi diferente antes da Supressão. Poucos mortais os avistam, e quem avista raramente é acreditado."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Giant",
+    "terreno": [
+      "Sky",
+      "Mountain"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 3, Ofícios 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Gigante das Nuvens",
+    "cr": "11",
+    "tipo": "humanoide Enorme (gigante)",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 35,
+      "des": 12,
+      "con": 21,
+      "int": 12,
+      "sab": 16,
+      "car": 15
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Ofícios 2"
+    ],
+    "nota": "Poderes mágicos inatos (Sp): Centelha 1.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

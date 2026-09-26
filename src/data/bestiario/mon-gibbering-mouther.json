@@ -1,0 +1,130 @@
+{
+  "ordem": 224,
+  "id": "mon-gibbering-mouther",
+  "nome": "Gibbering Mouther",
+  "nomeIngles": "Gibbering Mouther",
+  "categoria": "Aberração",
+  "papel": "elite",
+  "conceito": "aberração Médio",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha"
+  ],
+  "imagem": "bestiario/gibbering-mouther.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,5 m de diâmetro",
+    "peso": "80 kg"
+  },
+  "locomocao": {
+    "terra": 1
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 2,
+    "destreza": 5,
+    "vigor": 7,
+    "influencia": 3,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Olhos por Todo Lado",
+      "descricao": "Enxerga em todas as direções ao mesmo tempo e vê perfeitamente no escuro: jamais pode ser pego de surpresa por flancos."
+    },
+    {
+      "nome": "Massa Amorfa",
+      "descricao": "Seu corpo disforme absorve golpes certeiros e ataques furtivos sem sofrer mais do que o normal, e se espreme por qualquer fresta."
+    },
+    {
+      "nome": "Sugar o Sangue",
+      "descricao": "Ao prender uma vítima entre suas bocas, drena sangue dela a cada instante, causando dano contínuo enquanto a segura."
+    },
+    {
+      "nome": "Engolir em Vida",
+      "descricao": "Pode tragar um inimigo de seu tamanho ou menor para dentro de si, onde várias bocas continuam a se alimentar até que ele corte caminho para fora."
+    },
+    {
+      "nome": "Coro Enlouquecedor",
+      "descricao": "Livremente, emite um coro de vozes desconexas que confunde a mente de todos ao redor, a menos que resistam com um teste de Compostura."
+    },
+    {
+      "nome": "Terreno Lodoso",
+      "descricao": "Pode amolecer o chão sob si à vontade, transformando pedra e terra em lama que atrapalha qualquer um menos ela."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Bocas sem rosto",
+      "texto": "Uma massa disforme de olhos e bocas que balbuciam sem parar, como se mil vozes tentassem falar ao mesmo tempo e nenhuma conseguisse."
+    },
+    {
+      "titulo": "Origem nas profundezas",
+      "texto": "Sábios especulam que nasceram de magia corrompida nas profundezas do mundo, criaturas que a natureza jamais pretendeu existir."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Gibbering Mouther",
+    "cr": "5",
+    "tipo": "aberração Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 10,
+      "des": 17,
+      "con": 24,
+      "int": 4,
+      "sab": 13,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 10,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

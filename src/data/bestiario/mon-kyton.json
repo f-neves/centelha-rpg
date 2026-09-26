@@ -1,0 +1,141 @@
+{
+  "ordem": 245,
+  "id": "mon-kyton",
+  "nome": "Kyton",
+  "nomeIngles": "Kyton",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Exterior",
+  "papel": "elite",
+  "conceito": "exterior Médio",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha"
+  ],
+  "imagem": "bestiario/kyton.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura",
+    "peso": "90 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 4,
+    "destreza": 5,
+    "vigor": 4,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 5
+  },
+  "willpower": 9,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Regeneração",
+      "descricao": "Fecha feridas continuamente; apenas armas boas ou de prata deixam cortes que não se fecham sozinhos."
+    },
+    {
+      "nome": "Pele Curtida",
+      "descricao": "Sua carne resiste a golpes comuns, sendo vulnerável apenas a armas prateadas ou abençoadas; também é imune ao frio."
+    },
+    {
+      "nome": "Resistência a Magia",
+      "descricao": "Feitiços hostis enfrentam uma resistência natural antes de fazer efeito."
+    },
+    {
+      "nome": "Correntes Dançantes",
+      "descricao": "Controla até quatro correntes farpadas num raio de seis metros, fazendo-as atacar como extensões de si mesmo; quem tenta arrancar uma corrente de sua posse precisa vencer um teste de Compostura ou permanece sob seu controle."
+    },
+    {
+      "nome": "Armadura de Correntes",
+      "descricao": "As correntes que o cobrem funcionam como uma armadura viva, sem pesar nem atrapalhar seus movimentos."
+    },
+    {
+      "nome": "Olhar Perturbador",
+      "descricao": "Transforma o próprio rosto no de um ente querido morto ou inimigo odiado da vítima; quem falha um teste de Compostura fica tomado de pavor por vários instantes."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Prazer na Dor",
+      "texto": "Cultiva o sofrimento como uma arte, infligindo e recebendo tormento com o mesmo êxtase perverso."
+    },
+    {
+      "titulo": "Exilado de Toda Hierarquia",
+      "texto": "Confundido com um diabo por quem não sabe, o kyton não obedece a nenhuma ordem infernal e vaga por planos sombrios, sobretudo o das Sombras, em busca de novos parceiros de suplício."
+    },
+    {
+      "titulo": "Ferreiro de Si Mesmo",
+      "texto": "Cada corrente que veste foi forjada e afiada por ele próprio, numa devoção obsessiva ao corpo transformado em arma."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Ruins",
+      "Underground"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Kyton",
+    "cr": "6",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 17,
+      "con": 14,
+      "int": 11,
+      "sab": 12,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

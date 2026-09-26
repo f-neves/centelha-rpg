@@ -1,0 +1,137 @@
+{
+  "ordem": 18,
+  "id": "mon-kobold",
+  "nome": "Kobold",
+  "nomeIngles": "Kobold",
+  "categoria": "Humanoide",
+  "papel": "capanga",
+  "conceito": "humanoide Pequeno (reptiliano)",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+    "humanoide"
+  ],
+  "imagem": "bestiario/kobold.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "0,75 m de altura",
+    "peso": "16 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 2,
+    "destreza": 3,
+    "vigor": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 1,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão no escuro",
+      "descricao": "enxerga bem em túneis e cavernas sem luz"
+    },
+    {
+      "nome": "Armadilheiro",
+      "descricao": "Ofícios 1; monta armadilhas simples antes do combate"
+    },
+    {
+      "nome": "Furtivo",
+      "descricao": "Furtividade 1 para se esconder e vigiar"
+    },
+    {
+      "nome": "Alerta",
+      "descricao": "Prontidão 1; dificilmente é surpreendido"
+    },
+    {
+      "nome": "Corpo frágil",
+      "descricao": "poucos PV; prefere lutar em grupo ou de dentro de armadilhas"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Covardes em combate direto, letais quando podem escolher o momento, através de armadilhas, túneis colapsáveis e emboscadas planejadas com paciência."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Escavam warrens labirínticos cheios de engenhocas, chocam ovos em câmaras aquecidas e veneram ou imitam qualquer dragão que aceite protegê-los."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Clãs pequenos e disciplinados, com hierarquia rígida em que o mais fraco serve ao mais forte sem questionar."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Primos distantes dos lagartos e trogloditas que povoam as profundezas de Mére e das ruínas do White Wall, os kobolds prosperam nos túneis abandonados desde que a Fenda expulsou os anões, ocupando galerias que ninguém mais ousa reclamar."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Ofícios 1, Furtividade 1, Prontidão 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Kobold",
+    "cr": "1/4",
+    "tipo": "humanoide Pequeno (reptiliano)",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 9,
+      "des": 13,
+      "con": 10,
+      "int": 10,
+      "sab": 9,
+      "car": 8
+    },
+    "pericias": [
+      "Ofícios 1",
+      "Furtividade 1",
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

@@ -1,0 +1,122 @@
+{
+  "ordem": 142,
+  "id": "mon-army-ant-swarm",
+  "nome": "Enxame de Formigas",
+  "nomeIngles": "Swarm, Army Ant",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/army-ant-swarm.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "3 m de diâmetro (massa do enxame)",
+    "peso": "poucos gramas por indivíduo"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 0,
+    "destreza": 4,
+    "vigor": 2,
+    "influencia": 0,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Massa Viva",
+      "descricao": "O enxame cobre toda uma área ao redor de suas vítimas e é praticamente imune a ataques de arma isolados, já que ferir algumas formigas não detém as milhares restantes."
+    },
+    {
+      "nome": "Aderência",
+      "descricao": "Ao tentar fugir do enxame, a vítima continua sendo mordida por formigas que se agarram a ela, sofrendo dano contínuo até conseguir arrancá-las."
+    },
+    {
+      "nome": "Devorar",
+      "descricao": "Contra alvos indefesos ou incapacitados, o enxame os consome em questão de instantes, causando dano descomunal."
+    },
+    {
+      "nome": "Pânico e Distração",
+      "descricao": "Estar dentro do enxame dificulta enormemente a concentração, podendo interromper feitiços ou ações que exijam foco."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Natureza",
+      "texto": "Um enxame de formigas-soldado nunca para. Ele avança como uma maré viva, consumindo tudo (plantas, animais, o que for) que encontra pelo caminho."
+    },
+    {
+      "titulo": "Habitat",
+      "texto": "Comum nas selvas quentes, o enxame se desloca em marchas constantes, obrigando comunidades próximas a fugir ou se trancar até a passagem da praga."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Jungle"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Army Ant Swarm",
+    "cr": "5",
+    "tipo": "praga Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 15,
+      "con": 10,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

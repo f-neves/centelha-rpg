@@ -1,0 +1,129 @@
+{
+  "ordem": 152,
+  "id": "mon-basidirond",
+  "nome": "Basidirond",
+  "nomeIngles": "Basidirond",
+  "categoria": "Planta",
+  "papel": "elite",
+  "conceito": "planta Médio",
+  "descricao": "Vegetal desperto, lento e implacável.",
+  "tags": [
+    "planta",
+    "centelha"
+  ],
+  "imagem": "bestiario/basidirond.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2 m de altura",
+    "peso": "180 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 6,
+    "destreza": 3,
+    "vigor": 5,
+    "influencia": 0,
+    "perspicacia": 0,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 2,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 6,
+  "aparencia": 3,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "fogo"
+  ],
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Nuvem de Alucinação",
+      "descricao": "Uma vez por minuto, libera uma nuvem invisível de esporos numa área ao redor; quem respira esses esporos passa a sofrer visões terríveis e desorientadoras enquanto permanecer perto."
+    },
+    {
+      "nome": "Esporos Parasitas",
+      "descricao": "Seu golpe cobre a vítima de esporos que, se não forem tratados, criam raízes nos pulmões, causando dano contínuo à Vigor por vários instantes."
+    },
+    {
+      "nome": "Letargia pelo Frio",
+      "descricao": "Embora seja imune a dano de frio, qualquer efeito gelado o deixa lento e incapaz de usar seus poderes de esporo por um tempo."
+    },
+    {
+      "nome": "Sentidos Vibratórios",
+      "descricao": "Percebe tudo que se move ao seu redor através de vibrações no solo, mesmo sem enxergar."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Natureza",
+      "texto": "Fungo carnívoro que se alimenta de umidade rica em minerais, seja escorrendo das paredes de cavernas ou vinda de sangue fresco."
+    },
+    {
+      "titulo": "Uso",
+      "texto": "Habitantes das profundezas mais espertos chegam a manter basidironds como guardiões de suas tocas, desde que evitem cruzar as rotas de caça da criatura."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Plant",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Basidirond",
+    "cr": "5",
+    "tipo": "planta Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 20,
+      "des": 13,
+      "con": 16,
+      "int": "-",
+      "sab": 11,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

@@ -1,0 +1,131 @@
+{
+  "ordem": 226,
+  "id": "mon-clay-golem",
+  "nome": "Golem de Argila",
+  "nomeIngles": "Golem, Clay",
+  "categoria": "Construto",
+  "categoriaLegada": "Monstro",
+  "papel": "chefe",
+  "conceito": "constructo Grande",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricaoLegada": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha"
+  ],
+  "imagem": "bestiario/clay-golem.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,4 m de altura",
+    "peso": "270 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 8,
+    "destreza": 2,
+    "vigor": 1,
+    "influencia": 0,
+    "perspicacia": 0,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 3,
+    "valor": 4
+  },
+  "willpower": 8,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "resistencias": [
+    "corte",
+    "fogo",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Corpo de Argila Endurecida",
+      "descricao": "Absorve grande parte de qualquer dano físico comum e é imune a quase toda magia que tentar afetá-lo diretamente."
+    },
+    {
+      "nome": "Fúria Descontrolada",
+      "descricao": "A cada instante de combate, cresce a chance de seu espírito preso se libertar e ele atacar tudo ao redor sem distinção, sem que ninguém consiga voltar a controlá-lo."
+    },
+    {
+      "nome": "Investida Acelerada",
+      "descricao": "Uma vez por cena, pode acelerar os próprios movimentos por alguns instantes depois de já estar em combate."
+    },
+    {
+      "nome": "Ferida Amaldiçoada",
+      "descricao": "Os golpes que desfere deixam feridas que não cicatrizam por conta própria e resistem até à cura mágica mais poderosa."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Escultura que respira",
+      "texto": "Esculpido de um único bloco de argila e imbuído de um espírito preso à força, o golem de argila obedece cegamente até o momento em que deixa de obedecer."
+    },
+    {
+      "titulo": "Guardião silencioso",
+      "texto": "Muitas vezes posicionado como sentinela de cripta ou torre, permanece imóvel por décadas até que alguém desperte sua fúria."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Construct",
+    "terreno": [
+      "Ruins",
+      "Underground",
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Clay Golem",
+    "cr": "10",
+    "tipo": "constructo Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 24,
+      "des": 9,
+      "con": "-",
+      "int": "-",
+      "sab": 11,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

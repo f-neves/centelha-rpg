@@ -1,0 +1,123 @@
+{
+  "ordem": 184,
+  "id": "mon-brachiosaurus",
+  "nome": "Braquiossauro",
+  "nomeIngles": "Dinosaur, Brachiosaurus",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "chefe",
+  "conceito": "animal Imenso",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/brachiosaurus.webp",
+  "porte": "Imenso",
+  "dimensoes": {
+    "medida": "24 metros de comprimento",
+    "peso": "29 t"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 14,
+    "destreza": 2,
+    "vigor": 9,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão penumbra e faro",
+      "descricao": "Enxerga bem mesmo com pouca luz e localiza presas por cheiro a boa distância."
+    },
+    {
+      "nome": "Pisoteio",
+      "descricao": "Ao avançar sobre criaturas menores, pode esmagá-las sob as patas; quem não escapa a tempo sofre dano grave, mas um teste de Vigor reduz o estrago."
+    },
+    {
+      "nome": "Rabada",
+      "descricao": "Golpeia com a cauda longa e pesada como um chicote de carne e osso, atingindo alvos mesmo a certa distância do corpo."
+    },
+    {
+      "nome": "Corpo colossal",
+      "descricao": "Seu peso e vigor tornam quase impossível derrubá-lo ou empurrá-lo à força."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Gigante pacífico",
+      "texto": "Apesar do tamanho descomunal, é herbívoro e só ataca quando ameaçado ou para proteger a manada."
+    },
+    {
+      "titulo": "Manadas errantes",
+      "texto": "Vive solitário, em pares ou em manadas de até doze indivíduos, migrando entre florestas e planícies quentes."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Brachiosaurus",
+    "cr": "10",
+    "tipo": "animal Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 37,
+      "des": 10,
+      "con": 21,
+      "int": 2,
+      "sab": 13,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

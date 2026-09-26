@@ -1,0 +1,133 @@
+{
+  "ordem": 247,
+  "id": "mon-leech-swarm",
+  "nome": "Enxame de Sanguessugas",
+  "nomeIngles": "Swarm, Leech",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/leech-swarm.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "3 m de diâmetro (enxame)",
+    "peso": "15 kg (total)"
+  },
+  "locomocao": {
+    "natacao": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 0,
+    "destreza": 5,
+    "vigor": 4,
+    "influencia": 0,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Nuvem Viva",
+      "descricao": "Ocupa o espaço da vítima e a ataca de todos os lados ao mesmo tempo; armas comuns apenas espalham o enxame sem feri-lo de verdade."
+    },
+    {
+      "nome": "Sentir sem Ver",
+      "descricao": "Percebe presas próximas por vibração e calor, sem depender da visão."
+    },
+    {
+      "nome": "Drenar Sangue em Massa",
+      "descricao": "Qualquer criatura que comece o turno dentro do enxame é drenada, sofrendo dano contínuo de Vigor."
+    },
+    {
+      "nome": "Distração pelo Nojo",
+      "descricao": "A sensação de centenas de corpos mordendo ao mesmo tempo exige um teste de Compostura para manter o foco em qualquer ação delicada."
+    },
+    {
+      "nome": "Fraqueza ao Sal",
+      "descricao": "Um punhado de sal lançado sobre o enxame queima dezenas de corpos de uma vez, como um banho de ácido."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Maré Negra",
+      "texto": "Onde uma sanguessuga é um perigo isolado, um enxame inteiro é uma maré viva de bocas famintas que consome tudo em segundos."
+    },
+    {
+      "titulo": "Fim Silencioso",
+      "texto": "Vítimas encontradas após um ataque de enxame aparecem esvaídas em sangue, sem marca de luta, só a pele flácida e pálida."
+    },
+    {
+      "titulo": "Infestação",
+      "texto": "Onde existe uma colônia raramente há apenas uma nuvem; várias se formam nos mesmos pântanos estagnados, alimentando-se juntas."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Swamp",
+      "Water"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Leech Swarm",
+    "cr": "4",
+    "tipo": "praga Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 18,
+      "con": 15,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte",
+      "nota": "nado 30: o enxame de sanguessugas vive na água"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

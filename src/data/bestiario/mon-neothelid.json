@@ -1,0 +1,134 @@
+{
+  "ordem": 264,
+  "id": "mon-neothelid",
+  "nome": "Neothelid",
+  "nomeIngles": "Neothelid",
+  "categoria": "Aberração",
+  "papel": "chefe",
+  "conceito": "aberração Imenso",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha"
+  ],
+  "imagem": "bestiario/neothelid.webp",
+  "porte": "Imenso",
+  "dimensoes": {
+    "medida": "12 m de comprimento",
+    "peso": "6.000 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 6,
+  "attrs": {
+    "forca": 12,
+    "destreza": 1,
+    "vigor": 10,
+    "influencia": 6,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 4,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 11,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentido cego e rastro planar",
+      "descricao": "Percebe tudo ao redor sem depender da visão e sente por um instante o destino de qualquer criatura que se teleporte perto dela."
+    },
+    {
+      "nome": "Sopro ácido",
+      "descricao": "Expele um cone de ácido corrosivo, causando dano contínuo em quem não escapar a tempo."
+    },
+    {
+      "nome": "Golpe mental",
+      "descricao": "Concentra uma rajada de energia psíquica capaz de ferir gravemente qualquer criatura pensante à distância, algumas vezes por cena."
+    },
+    {
+      "nome": "Esmagamento da mente",
+      "descricao": "Tenta colapsar a mente de um alvo à distância; se ele falhar em um teste de Compostura, desmaia à beira da morte."
+    },
+    {
+      "nome": "Engole inteiro",
+      "descricao": "Prende presas nas línguas tentaculares e as engole vivas, dilacerando-as por dentro com ácido."
+    },
+    {
+      "nome": "Casca resistente e mente protegida",
+      "descricao": "Sua pele absorve parte dos golpes de armas comuns, exceto ferro frio, e resiste à maioria das magias."
+    },
+    {
+      "nome": "Poderes mentais constantes",
+      "descricao": "Voa sem esforço e usa à vontade encantos, sugestões, telecinesia e teletransporte para dominar ou escapar."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Império esquecido nas profundezas",
+      "texto": "Já governou impérios inteiros no fundo do mundo subterrâneo, mas foi superado por raças mais férteis e hoje sobrevive apenas em lendas de horror."
+    },
+    {
+      "titulo": "Terror sussurrado",
+      "texto": "Poucos que cruzaram seu caminho viveram para contar, e mesmo esses carregam a marca da mente esmagada pela presença da criatura."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Neothelid",
+    "cr": "15",
+    "tipo": "aberração Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 30,
+      "des": 7,
+      "con": 24,
+      "int": 16,
+      "sab": 15,
+      "car": 21
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

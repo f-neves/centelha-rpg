@@ -1,0 +1,157 @@
+{
+  "ordem": 125,
+  "id": "mon-behir",
+  "nome": "Behir",
+  "nomeIngles": "Behir",
+  "categoria": "Besta mágica",
+  "papel": "chefe",
+  "conceito": "besta mágica Enorme",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/behir.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "9 m de comprimento",
+    "peso": "3,6 t"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 10,
+    "destreza": 3,
+    "vigor": 8,
+    "influencia": 3,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 6,
+  "aparencia": 5,
+  "arte": {
+    "raio": 1
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Sopro elétrico (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Raio · N3",
+      "arte": "raio"
+    },
+    {
+      "efeito": "Engolir inteiro (Ex)",
+      "tipo": "proeza",
+      "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
+      "caminho": "agarrao-do-urso"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro elétrico",
+      "descricao": "linha de 18m; dano alto, metade se Esquivar"
+    },
+    {
+      "nome": "Engolir inteiro",
+      "descricao": "alvo já agarrado pode ser engolido; dano contínuo por rodada preso dentro"
+    },
+    {
+      "nome": "Escalada serpentina",
+      "descricao": "sobe paredes e rochas na mesma velocidade do chão"
+    },
+    {
+      "nome": "Sentidos aguçados",
+      "descricao": "+2d6 em Prontidão em cavernas"
+    },
+    {
+      "nome": "Corpo blindado",
+      "descricao": "+1 Absorção contra ataques físicos"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Emboscada em passagens estreitas, enrosca o corpo serpentino para esmagar a presa e crivá-la de raio caso tente fugir."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Habita cavernas profundas, desfiladeiros rochosos e tocas escavadas nas montanhas."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Predador solitário e ferozmente territorial, disputa caça e covis com dragões azuis quando os encontra, sem nunca ceder terreno de bom grado."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Fera das profundezas que ainda vive nos ermos onde nem os anões se aventuram mais, mais um motivo para o povo comum temer o que se move sob a terra desde que a Fenda se abriu."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Mountain",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 3, Prontidão 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Behir",
+    "cr": "8",
+    "tipo": "besta mágica Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 26,
+      "des": 13,
+      "con": 21,
+      "int": 7,
+      "sab": 14,
+      "car": 12
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Prontidão 3"
+    ],
+    "nota": "Sopro elétrico: Centelha 1.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

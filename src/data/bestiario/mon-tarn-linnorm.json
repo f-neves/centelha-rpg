@@ -1,0 +1,139 @@
+{
+  "ordem": 250,
+  "id": "mon-tarn-linnorm",
+  "nome": "Tarn Linnorm",
+  "nomeIngles": "Tarn Linnorm",
+  "categoria": "Dragão",
+  "papel": "chefe",
+  "conceito": "dragão Colossal",
+  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "tags": [
+    "dragao",
+    "centelha"
+  ],
+  "imagem": "bestiario/tarn-linnorm.webp",
+  "porte": "Colossal",
+  "dimensoes": {
+    "medida": "27 m de comprimento",
+    "peso": "16.000 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 6,
+  "attrs": {
+    "forca": 16,
+    "destreza": 8,
+    "vigor": 14,
+    "influencia": 8,
+    "perspicacia": 5,
+    "compostura": 8,
+    "percepcao": 8,
+    "inteligencia": 1,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 2,
+    "prontidao": 4,
+    "integridade": 8
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 5,
+    "temperanca": 3,
+    "valor": 6
+  },
+  "willpower": 11,
+  "aparencia": 9,
+  "ataques": [
+    {
+      "nome": "Garras e mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 4,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Duas Cabeças, Visão Total",
+      "descricao": "Com duas cabeças vigiando em todas as direções, não pode ser pego de surpresa nem cercado."
+    },
+    {
+      "nome": "Sopro Ácido",
+      "descricao": "Cospe uma nuvem ou linha de ácido corrosivo que queima tudo o que toca; a fumaça tóxica que sobe do ácido consumindo carne ainda corrói quem respira perto no round seguinte."
+    },
+    {
+      "nome": "Maldição da Morte",
+      "descricao": "Quem o mata é amaldiçoado a nunca mais ser curado por magia nem se recuperar descansando, definhando aos poucos pelo resto da vida."
+    },
+    {
+      "nome": "Liberdade de Movimento",
+      "descricao": "Jamais é imobilizado, agarrado ou paralisado."
+    },
+    {
+      "nome": "Veneno Corrosivo",
+      "descricao": "A mordida injeta ácido que continua a queimar por dentro da vítima e corrói seu Vigor por vários rounds até duas curas seguidas."
+    },
+    {
+      "nome": "Anfíbio e Regenerativo",
+      "descricao": "Vive tanto na água quanto em terra e cura feridas continuamente, exceto as causadas por ferro frio."
+    },
+    {
+      "nome": "Imune a Ácido e Resistente a Magia",
+      "descricao": "Seu próprio veneno não o machuca, feitiços hostis enfrentam grande resistência, e é imune a sono, paralisia, veneno e maldições comuns."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "O Mais Terrível dos Linormes",
+      "texto": "Entre os linormes, o das águas escuras é o mais antigo e mortal, dono de lagos gelados que ninguém ousa navegar."
+    },
+    {
+      "titulo": "Duas Fúrias, uma Só Fera",
+      "texto": "Suas duas cabeças raramente concordam sobre qual pedaço da presa comer primeiro, mas nunca discordam sobre atacar."
+    },
+    {
+      "titulo": "Morte que Não Cura",
+      "texto": "Sobreviventes que abateram este linorme carregam a maldição de nunca mais sarar direito, lembrete vivo do preço da vitória."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Water",
+      "Swamp"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Tarn Linnorm",
+    "cr": "20",
+    "tipo": "dragão Colossal",
+    "tamanho": "colossal",
+    "valores": {
+      "for": 42,
+      "des": 26,
+      "con": 32,
+      "int": 7,
+      "sab": 25,
+      "car": 27
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

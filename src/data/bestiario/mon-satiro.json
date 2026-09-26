@@ -1,0 +1,161 @@
+{
+  "ordem": 115,
+  "id": "mon-satiro",
+  "nome": "Sátiro",
+  "nomeIngles": "Satyr",
+  "categoria": "Fada",
+  "papel": "soldado",
+  "conceito": "fada Médio",
+  "descricao": "Espírito da natureza, belo e caprichoso.",
+  "tags": [
+    "fada",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/satiro.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,5 m de altura",
+    "peso": "65 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 4,
+    "destreza": 4,
+    "vigor": 4,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 4,
+    "inteligencia": 3,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 3,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 8,
+  "arte": {
+    "fascinacao": 2
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Flautas encantadas (Su)",
+      "tipo": "proeza",
+      "alvo": "Musa / Beleza Cativante",
+      "caminho": "beleza-cativante"
+    },
+    {
+      "efeito": "(alternativa mágica)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N2",
+      "arte": "fascinacao"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Flautas do medo",
+      "descricao": "quem ouvir e falhar em Vontade fica Abalado e foge"
+    },
+    {
+      "nome": "Flautas do encanto",
+      "descricao": "pode enfeitiçar ou acalmar ouvintes com a melodia certa"
+    },
+    {
+      "nome": "Chifres",
+      "descricao": "ataque de cabeçada corpo a corpo"
+    },
+    {
+      "nome": "Furtividade natural",
+      "descricao": "esconde-se facilmente em florestas"
+    },
+    {
+      "nome": "Passos ágeis",
+      "descricao": "+1d de Esquiva e sem penalidade em terreno difícil"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Viaja em bandos festivos, recebendo forasteiros com música, vinho e brincadeiras, e prefere fugir a enfrentar perigo sério, salvo quando embriagado de coragem."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Vive para o vinho, a flauta e a dança, colecionando histórias e amantes com o mesmo entusiasmo displicente."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Reúne-se em bandos soltos, sem chefia fixa, sempre nos claros de floresta onde ninfas e outras fadas também se abrigam."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Despreocupado e sensual, é generoso com quem lhe agrada e covarde diante de ameaças reais."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Parente da mesma origem feérica que deu nascimento aos elfos, é tomado em Syl por travessura de algum kami da mata, e visto com desconfiança pelas ortodoxias de Calin como resquício pagão de antes da Supressão."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fey",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Oratória 3, Persuasão 4, Furtividade 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Sátiro",
+    "cr": "4",
+    "tipo": "fada Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 15,
+      "con": 15,
+      "int": 12,
+      "sab": 14,
+      "car": 19
+    },
+    "pericias": [
+      "Oratória 3",
+      "Persuasão 4",
+      "Furtividade 2"
+    ],
+    "nota": "Flautas encantadas (Su): Centelha 2.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

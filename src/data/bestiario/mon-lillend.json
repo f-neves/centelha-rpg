@@ -1,0 +1,134 @@
+{
+  "ordem": 149,
+  "id": "mon-lillend",
+  "nome": "Lillend",
+  "nomeIngles": "Lillend",
+  "categoria": "Celestial",
+  "papel": "elite",
+  "conceito": "exterior (anjo) Grande",
+  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
+  "tags": [
+    "celestial",
+    "centelha"
+  ],
+  "imagem": "bestiario/lillend.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "6 m de comprimento",
+    "peso": "1.700 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 7,
+    "destreza": 5,
+    "vigor": 7,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 5,
+    "conviccao": 5,
+    "temperanca": 4,
+    "valor": 4
+  },
+  "willpower": 9,
+  "aparencia": 10,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "fraquezas": [
+    "profano"
+  ],
+  "habilidades": [
+    {
+      "nome": "Canto Encantado",
+      "descricao": "Sua música pode inspirar coragem em aliados, prender a atenção de inimigos ou até convencê-los a agir contra a própria vontade, por um bom tempo a cada cena."
+    },
+    {
+      "nome": "Cauda Constritora",
+      "descricao": "O corpo inferior serpentino termina numa cauda forte, capaz de golpear e depois esmagar quem for agarrado."
+    },
+    {
+      "nome": "Magias da Musa",
+      "descricao": "Domina pequenas magias de encantamento e cura, como enfeitiçar um alvo, conversar com animais e plantas, ou criar luz e escuridão à vontade."
+    },
+    {
+      "nome": "Corpo Resistente",
+      "descricao": "É imune a eletricidade, veneno e a efeitos que transformam em pedra."
+    },
+    {
+      "nome": "Voo Constante",
+      "descricao": "Voa com facilidade mesmo tendo um corpo longo e pesado."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Papel",
+      "texto": "Entre os espíritos do bem, as lillends são as contadoras de histórias, reunindo lendas e registrando-as em poemas e canções épicas."
+    },
+    {
+      "titulo": "Temperamento",
+      "texto": "Geralmente pacíficas, tornam-se ferozes na defesa de uma obra de arte rara ou de um artista talentoso sob sua proteção."
+    },
+    {
+      "titulo": "Devoção",
+      "texto": "Não precisam de alimento mortal, mas se alimentam simbolicamente da alegria da música e da performance, visitando o mundo material para zelar por suas obras e artistas favoritos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Celestial",
+    "terreno": [
+      "Forest",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Lillend",
+    "cr": "7",
+    "tipo": "exterior (anjo) Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 20,
+      "des": 17,
+      "con": 21,
+      "int": 14,
+      "sab": 16,
+      "car": 19
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

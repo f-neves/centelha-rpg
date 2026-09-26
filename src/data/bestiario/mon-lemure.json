@@ -1,0 +1,143 @@
+{
+  "ordem": 94,
+  "id": "mon-lemure",
+  "nome": "Lêmure",
+  "nomeIngles": "Lemure",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Diabo",
+  "papel": "soldado",
+  "conceito": "exterior Médio (diabo)",
+  "descricao": "Alma condenada derretida na forma mais baixa do Inferno, sem mente própria.",
+  "descricaoLegada": "Tirano leal do Inferno, calculista e cruel.",
+  "tags": [
+    "diabo",
+    "centelha"
+  ],
+  "imagem": "bestiario/lemure.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,5 m de altura",
+    "peso": "45 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 3,
+    "destreza": 2,
+    "vigor": 4,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 1,
+    "inteligencia": 0,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 0,
+    "prontidao": 0,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 5
+  },
+  "willpower": 6,
+  "aparencia": 1,
+  "tech": {
+    "recuperacao-acelerada": true
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Regeneração fraca (Ex)",
+      "tipo": "proeza",
+      "alvo": "Cerne Vital · Recuperação Acelerada (b1)",
+      "caminho": "cerne-vital"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Regeneração fraca",
+      "descricao": "recupera 1 PV por rodada, exceto se ferido por arma benta ou fogo"
+    },
+    {
+      "nome": "Massa amorfa",
+      "descricao": "imune a Medo e a efeitos que dependam de mente própria"
+    },
+    {
+      "nome": "Garras rudimentares",
+      "descricao": "ataque corpo a corpo simples, dano baixo"
+    },
+    {
+      "nome": "Carne infernal",
+      "descricao": "resistente a fogo"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Vaga sem rumo, gemendo e obedecendo ordens de forma mecânica, incapaz de pensar além do instinto de atacar o que lhe é apontado."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "É o que resta de uma alma condenada derretida na forma mais baixa do Inferno, usado como massa de manobra descartável pelos diabos superiores, que os reformam em tropas melhores quando convém."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Onde a Supressão fala em almas perdidas devoradas pela Fenda, os lêmures são a prova viva: rostos quase humanos, apagados, arrastando se sem memória do que foram."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Lêmure",
+    "cr": "1",
+    "tipo": "exterior Médio (diabo)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 12,
+      "des": 10,
+      "con": 14,
+      "int": "-",
+      "sab": 5,
+      "car": 11
+    },
+    "nota": "Massa infernal sem mente: Int/Rac 0, mas natureza extraplanar dá Centelha 1.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

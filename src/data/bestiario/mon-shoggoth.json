@@ -1,0 +1,139 @@
+{
+  "ordem": 285,
+  "id": "mon-shoggoth",
+  "nome": "Shoggoth",
+  "nomeIngles": "Shoggoth",
+  "categoria": "Limo",
+  "papel": "chefe",
+  "conceito": "limo Enorme",
+  "descricao": "Massa informe que digere tudo que toca.",
+  "tags": [
+    "limo"
+  ],
+  "imagem": "bestiario/shoggoth.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "corpo de cerca de 4,5 metros de diâmetro, capaz de se esticar bem além disso",
+    "peso": "massa disforme de várias t"
+  },
+  "locomocao": {
+    "terra": 5
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 13,
+    "destreza": 7,
+    "vigor": 11,
+    "influencia": 3,
+    "perspicacia": 2,
+    "compostura": 5,
+    "percepcao": 7,
+    "inteligencia": 1,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 2,
+    "prontidao": 3,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Pseudópode",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "resistencias": [
+    "corte",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Cacofonia enlouquecedora",
+      "descricao": "Emite sons que a mente sã não deveria ouvir; quem falha num teste de Compostura numa área ampla fica confuso e sofre dano contínuo de Mente a cada rodada exposta."
+    },
+    {
+      "nome": "Tragar múltiplo",
+      "descricao": "Pode agarrar e tragar várias criaturas ao mesmo tempo, dissolvendo-as lentamente em ácido dentro de seu corpo amorfo."
+    },
+    {
+      "nome": "Visão total",
+      "descricao": "Seus incontáveis olhos e órgãos sensoriais percebem tudo ao redor, tornando quase impossível pegá-lo desprevenido."
+    },
+    {
+      "nome": "Regeneração acelerada",
+      "descricao": "Cura ferimentos numa velocidade assombrosa, quase se recompondo diante dos olhos de quem o enfrenta."
+    },
+    {
+      "nome": "Imunidades e resistências",
+      "descricao": "Imune a cegueira, surdez, frio e efeitos de encantamento; resiste a ácido, eletricidade, fogo e é fortemente protegido contra magia."
+    },
+    {
+      "nome": "Anfíbio e multiforme",
+      "descricao": "Nada, escala e se desloca em qualquer terreno graças ao corpo maleável de limo."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Criação de eras esquecidas",
+      "texto": "Moldado muito antes dos primeiros deuses voltarem sua atenção ao mundo, o shoggoth é obra de mãos mais antigas e mais estranhas do que qualquer registro histórico."
+    },
+    {
+      "titulo": "Loucura que ecoa nas trincheiras",
+      "texto": "Emerge raramente de oceanos gelados e cavernas esquecidas, e quando o faz, deixa atrás de si apenas destruição e mentes despedaçadas."
+    },
+    {
+      "titulo": "Massa que nunca dorme",
+      "texto": "Sem forma fixa, gera olhos e bocas onde bem entende, um lembrete vivo de que nem tudo que existe deveria ter sido criado."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Ooze",
+    "terreno": [
+      "Water",
+      "Underground",
+      "Cold"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Shoggoth",
+    "cr": "19",
+    "tipo": "limo Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 40,
+      "des": 24,
+      "con": 31,
+      "int": 5,
+      "sab": 22,
+      "car": 13
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

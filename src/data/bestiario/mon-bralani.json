@@ -1,0 +1,132 @@
+{
+  "ordem": 148,
+  "id": "mon-bralani",
+  "nome": "Bralani",
+  "nomeIngles": "Bralani",
+  "categoria": "Outsider",
+  "categoriaLegada": "Exterior",
+  "papel": "elite",
+  "conceito": "exterior Médio",
+  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha"
+  ],
+  "imagem": "bestiario/bralani.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura",
+    "peso": "80 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 6,
+    "destreza": 5,
+    "vigor": 5,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4,
+    "percepcao": 4,
+    "inteligencia": 3,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 4,
+    "temperanca": 3,
+    "valor": 4
+  },
+  "willpower": 9,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Forma de Vento",
+      "descricao": "Pode alternar entre um corpo élfico e uma forma de vento e névoa, ganhando voo e maior mobilidade nessa segunda forma."
+    },
+    {
+      "nome": "Rajada Cortante",
+      "descricao": "Em forma de vento, lança uma lâmina de ar capaz de ferir todos numa linha à sua frente, com dano reduzido a quem resistir num teste de Vigor."
+    },
+    {
+      "nome": "Pele ao Vento",
+      "descricao": "Sua natureza etérea absorve boa parte de golpes de ferro comum e de ataques malignos."
+    },
+    {
+      "nome": "Resistência Mágica",
+      "descricao": "Magias hostis muitas vezes escorregam por seu corpo sem efeito."
+    },
+    {
+      "nome": "Ventos a Serviço",
+      "descricao": "Comanda pequenos truques de vento e luz: ofusca a visão dos inimigos, cria rajadas e ilusões passageiras, e cura ferimentos graves algumas vezes por cena."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Temperamento",
+      "texto": "Entre os espíritos do bem, os bralanis são os mais selvagens e ariscos, vivendo o momento e sempre em busca de uma boa luta ou uma tempestade para atravessar."
+    },
+    {
+      "titulo": "Aparência",
+      "texto": "Assumem forma élfica ou de um redemoinho de poeira, neve ou areia, sendo às vezes confundidos com espíritos do vento."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Não precisam comer, mas apreciam boa comida e vinho especiado, e gostam de mediar disputas entre mortais, espíritos da natureza e seres elementais, ainda que prefiram deixar a negociação final para os próprios interessados."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Monitor",
+    "terreno": [
+      "Sky",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Bralani",
+    "cr": "6",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 20,
+      "des": 18,
+      "con": 19,
+      "int": 13,
+      "sab": 14,
+      "car": 15
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

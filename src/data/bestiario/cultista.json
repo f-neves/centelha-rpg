@@ -1,0 +1,122 @@
+{
+  "ordem": 14,
+  "id": "cultista",
+  "nome": "Cultista Sombrio",
+  "nomeIngles": "Dark Cultist",
+  "categoria": "Humanoide",
+  "categoriaLegada": "Conjurador",
+  "papel": "elite",
+  "conceito": "feiticeiro da morte",
+  "descricao": "Servo de poderes proibidos; drena a vida e ergue os mortos.",
+  "tags": [
+    "humano",
+    "centelha",
+    "arcano"
+  ],
+  "imagem": "bestiario/cultista.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,7 m de altura",
+    "peso": "62 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 2,
+    "destreza": 3,
+    "vigor": 3,
+    "influencia": 4,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 3,
+    "raciocinio": 2
+  },
+  "skills": {
+    "ocultismo": 4,
+    "esquiva": 2,
+    "prontidao": 2,
+    "manha": 3,
+    "integridade": 3
+  },
+  "skills2": {
+    "acerto-arcano": 4
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "arte": {
+    "morte": 2
+  },
+  "ataques": [
+    {
+      "nome": "Toque mórbido (Morte 1)",
+      "atrib": "percepcao",
+      "pericia": "acerto-arcano",
+      "dado": 1,
+      "distancia": true,
+      "tipo": "necrótico",
+      "ticks": 6,
+      "notas": "Dreno: cura o cultista"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Drenar vida",
+      "descricao": "toque corpo a corpo causa dano e cura o cultista no mesmo tanto"
+    },
+    {
+      "nome": "Ritual da morte",
+      "descricao": "em poucos minutos ergue um morto-vivo (Morte 3) para lutar ao seu lado"
+    },
+    {
+      "nome": "Maldição do apodrecer",
+      "descricao": "toque ou olhar; quem falha em Vontade fica Abalado e sofre penalidade em Vigor na cena"
+    },
+    {
+      "nome": "Frágil no corpo a corpo",
+      "descricao": "Absorção e Defesa baixas em combate direto; prefere manter distância e usar mortos-vivos como escudo"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Serve poderes que a maioria teme nomear, drenando a vida de vítimas e erguendo os mortos para servir sua vontade."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Opera em seitas escondidas, longe da vista das ortodoxias supressoras, atraindo desesperados e ambiciosos com promessas de poder proibido."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Aprendeu a colher a Centelha dos mortos em vez de deixá-la voltar à Primeira Luz, um crime que a Ceifadora e as igrejas de Calin igualmente condenam; muitos desses cultos rastreiam sua doutrina até horrores vindos da Fenda, no White Wall."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Urban",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Mana 9. Em ritual, ergue um morto-vivo (Morte nível 3). Frágil no corpo a corpo.",
+  "pendente": false,
+  "fonte": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

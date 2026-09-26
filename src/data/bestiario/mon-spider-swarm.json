@@ -1,0 +1,129 @@
+{
+  "ordem": 290,
+  "id": "mon-spider-swarm",
+  "nome": "Enxame de Aranhas",
+  "nomeIngles": "Swarm, Spider",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/spider-swarm.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "aranhas individuais do tamanho de uma moeda, enxame ocupando cerca de 3 metros",
+    "peso": "insignificante por indivíduo"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 0,
+    "destreza": 5,
+    "vigor": 2,
+    "influencia": 0,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Enxame",
+      "descricao": "Centenas de aranhas cobrem qualquer criatura na área, atacando todas ao mesmo tempo; armas comuns quase não afetam a massa, só fogo ou dano em área."
+    },
+    {
+      "nome": "Visão no escuro e percepção por vibração",
+      "descricao": "Sente movimento pelo tato de suas incontáveis patas, mesmo sem enxergar, e nada escapa de sua atenção coletiva."
+    },
+    {
+      "nome": "Mordida distraidora",
+      "descricao": "Estar dentro do enxame exige concentração: uma criatura ocupada com outra tarefa pode falhar por causa das picadas constantes."
+    },
+    {
+      "nome": "Veneno em massa",
+      "descricao": "Cada contato injeta um veneno fraco que desgasta a Força da vítima ao longo de algumas rodadas."
+    },
+    {
+      "nome": "Imune a efeitos mentais",
+      "descricao": "Sem mente unificada, o enxame não pode ser enganado, amedrontado ou dominado por magias mentais."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Tapete vivo",
+      "texto": "Vista de longe, a massa de aranhas parece um tecido escuro se arrastando pelo chão da caverna, silencioso até estar perto demais."
+    },
+    {
+      "titulo": "Ninho comum",
+      "texto": "As teias que produzem não prendem presas grandes, servem apenas de abrigo: o enxame caça pela quantidade, não pela armadilha."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Underground",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Spider Swarm",
+    "cr": "1",
+    "tipo": "praga Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 17,
+      "con": 10,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

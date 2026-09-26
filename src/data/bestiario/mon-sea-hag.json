@@ -1,0 +1,132 @@
+{
+  "ordem": 280,
+  "id": "mon-sea-hag",
+  "nome": "Bruxa do Mar",
+  "nomeIngles": "Hag, Sea",
+  "categoria": "Humanoide monstruoso",
+  "categoriaLegada": "Monstro",
+  "papel": "soldado",
+  "conceito": "humanoide monstruoso Médio",
+  "descricao": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha"
+  ],
+  "imagem": "bestiario/sea-hag.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 metro de altura",
+    "peso": "68 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 5,
+    "destreza": 5,
+    "vigor": 5,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4,
+    "percepcao": 3,
+    "inteligencia": 3,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Olho maligno",
+      "descricao": "Até três vezes por cena, lança um olhar amaldiçoado; se o alvo falhar num teste de Compostura, fica paralisado de terror, e se atingido de novo enquanto amaldiçoado pode cair em coma por dias."
+    },
+    {
+      "nome": "Aparência horrenda",
+      "descricao": "Sua simples visão é tão repulsiva que quem a encara de perto deve testar Vigor ou ser enfraquecido instantaneamente."
+    },
+    {
+      "nome": "Resistência a magia",
+      "descricao": "Uma proteção sobrenatural dificulta que feitiços a atinjam."
+    },
+    {
+      "nome": "Anfíbia",
+      "descricao": "Respira tanto na água quanto no ar, nadando com grande destreza."
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "Enxerga perfeitamente no escuro."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "O rosto que ninguém suporta ver",
+      "texto": "Tão repulsiva é a aparência da bruxa do mar que sua simples presença enfraquece quem ousa encará-la de perto."
+    },
+    {
+      "titulo": "Maldição no olhar",
+      "texto": "Seu olhar amaldiçoado condena vítimas a um pavor paralisante, e quem já sofreu essa maldição corre o risco de mergulhar num sono comatoso do qual poucos despertam."
+    },
+    {
+      "titulo": "Covens entre as ondas",
+      "texto": "Como outras bruxas de sua laia, reúnem-se em conluios de três, escolhendo portos e enseadas afastadas para tramar contra marinheiros e povoados costeiros."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Sea Hag",
+    "cr": "4",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 19,
+      "des": 16,
+      "con": 18,
+      "int": 12,
+      "sab": 13,
+      "car": 15
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

@@ -1,0 +1,166 @@
+{
+  "ordem": 90,
+  "id": "mon-hezrou",
+  "nome": "Hezrou",
+  "nomeIngles": "Demon, Hezrou",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Demônio",
+  "papel": "chefe",
+  "conceito": "exterior Grande (demônio)",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "tags": [
+    "demonio",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/hezrou.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3 m de altura",
+    "peso": "320 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 9,
+    "destreza": 4,
+    "vigor": 9,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 6
+  },
+  "willpower": 10,
+  "aparencia": 0,
+  "arte": {
+    "vento": 2,
+    "espirito": 4
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Fedor nauseante (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Vento · N2 / Morte",
+      "arte": "vento"
+    },
+    {
+      "efeito": "Convocar (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Espírito · N4",
+      "arte": "espirito"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Fedor nauseante",
+      "descricao": "aura de 6m; falha em Fortitude = Enjoado enquanto permanecer perto"
+    },
+    {
+      "nome": "Mordida e garras",
+      "descricao": "ataque corpo a corpo; crítico permite Agarrar o alvo"
+    },
+    {
+      "nome": "Convocar",
+      "descricao": "feitiçaria, 1x por cena; traz outro demônio para reforçar a luta"
+    },
+    {
+      "nome": "Corpo maciço",
+      "descricao": "Absorção alta e força suficiente para arrombar portas e objetos"
+    },
+    {
+      "nome": "Teleporte",
+      "descricao": "feitiçaria, 1x por cena; desloca-se instantaneamente, podendo levar um alvo Agarrado"
+    },
+    {
+      "nome": "Sangue abissal",
+      "descricao": "resistente a fogo, frio, ácido e eletricidade"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Brutal e direto, ataca com força bruta e mordidas, envolto no próprio fedor nauseante, sem tática nem paciência, apenas fome de destruição."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Exala um fedor nauseante que enfraquece quem chega perto, e se banha em imundície e carcaça como parte natural de sua existência."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Serve como músculo intermediário nas hostes demoníacas, forte demais para ser bucha de canhão mas sem inteligência para comandar."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Onde a Fenda vaza mais fundo, sacerdotes contam de sapos gigantes fedorentos que arrasam vilarejos inteiros antes de qualquer exército conseguir reagir."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 4, Atletismo 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Hezrou",
+    "cr": "11",
+    "tipo": "exterior Grande (demônio)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 27,
+      "des": 15,
+      "con": 25,
+      "int": 14,
+      "sab": 16,
+      "car": 18
+    },
+    "pericias": [
+      "Prontidão 4",
+      "Atletismo 3"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

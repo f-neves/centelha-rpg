@@ -1,0 +1,130 @@
+{
+  "ordem": 196,
+  "id": "mon-drider",
+  "nome": "Drider",
+  "nomeIngles": "Drider",
+  "categoria": "Aberração",
+  "papel": "elite",
+  "conceito": "aberração Grande",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha"
+  ],
+  "imagem": "bestiario/drider.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3 metros de altura",
+    "peso": "180 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 5,
+    "destreza": 4,
+    "vigor": 6,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 4,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão no escuro",
+      "descricao": "Enxerga no escuro absoluto a uma distância considerável."
+    },
+    {
+      "nome": "Absorção mágica",
+      "descricao": "Uma parte da magia lançada contra ela é simplesmente absorvida sem efeito, graças a uma resistência inata."
+    },
+    {
+      "nome": "Teia",
+      "descricao": "Dispara fios de teia grudenta contra um alvo à distância, prendendo-o no lugar."
+    },
+    {
+      "nome": "Mordida venenosa",
+      "descricao": "A mordida injeta um veneno que corrói a força física da vítima ao longo de vários instantes, a menos que ela resista com um teste de Vigor."
+    },
+    {
+      "nome": "Feitiçaria residual",
+      "descricao": "Ainda guarda parte da magia que possuía antes da transformação: cria luzes dançantes, escuridão e fogo féerico, entre outros efeitos menores."
+    },
+    {
+      "nome": "Imune ao sono",
+      "descricao": "Não pode ser posta para dormir por magia ou efeito algum."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Maldição da teia negra",
+      "texto": "É o que resta de um drow punido por seus deuses aracnídeos: um corpo fundido ao de uma aranha gigante, metade humanoide, metade monstro."
+    },
+    {
+      "titulo": "Caçadora nas profundezas",
+      "texto": "Emboscar viajantes nos túneis é sua forma preferida de caça, envolvendo a presa em teias antes de se aproximar."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Drider",
+    "cr": "7",
+    "tipo": "aberração Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": 18,
+      "int": 15,
+      "sab": 16,
+      "car": 16
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

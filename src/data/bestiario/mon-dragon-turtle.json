@@ -1,0 +1,131 @@
+{
+  "ordem": 195,
+  "id": "mon-dragon-turtle",
+  "nome": "Tartaruga-Dragão",
+  "nomeIngles": "Dragon Turtle",
+  "categoria": "Dragão",
+  "papel": "chefe",
+  "conceito": "dragão Enorme",
+  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "tags": [
+    "dragao",
+    "centelha"
+  ],
+  "imagem": "bestiario/dragon-turtle.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "9 metros de comprimento",
+    "peso": "4 t"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 10,
+    "destreza": 2,
+    "vigor": 7,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 3,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 5,
+    "temperanca": 3,
+    "valor": 6
+  },
+  "willpower": 10,
+  "aparencia": 9,
+  "ataques": [
+    {
+      "nome": "Garras e mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro de vapor escaldante",
+      "descricao": "Expele uma nuvem de vapor fervente sobre uma área considerável, tanto na superfície quanto debaixo d'água; quem é atingido sofre queimaduras graves, reduzidas à metade com um teste de Vigor bem-sucedido. Não pode repetir o sopro em sequência, precisando de uma pausa antes de usá-lo de novo."
+    },
+    {
+      "nome": "Imune a fogo e a efeitos que dominam a mente",
+      "descricao": "Não sofre dano de fogo e não pode ser posta para dormir ou paralisada."
+    },
+    {
+      "nome": "Afunda embarcações",
+      "descricao": "Pode investir contra um barco ou navio para virá-lo, arrastando tripulação e carga para o fundo."
+    },
+    {
+      "nome": "Mordida e garras poderosas",
+      "descricao": "Ataca com a boca e as duas garras dianteiras, mesmo submersa."
+    },
+    {
+      "nome": "Furtividade aquática",
+      "descricao": "Move-se pela água quase sem ruído, surpreendendo embarcações antes que percebam o perigo."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Senhora dos mares",
+      "texto": "Reivindica vastos territórios oceânicos e afunda quem ousa navegar por eles sem prestar tributo."
+    },
+    {
+      "titulo": "Tesouros afundados",
+      "texto": "Guarda em seu covil os destroços e a carga valiosa de todos os navios que já capsizou."
+    },
+    {
+      "titulo": "Carapaça lendária",
+      "texto": "O casco varia de marrom ferrugem a verde-azulado com reflexos prateados, e a cabeça e a cauda mostram estrias douradas."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dragon Turtle",
+    "cr": "9",
+    "tipo": "dragão Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 27,
+      "des": 10,
+      "con": 19,
+      "int": 12,
+      "sab": 13,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

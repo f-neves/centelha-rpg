@@ -1,0 +1,138 @@
+{
+  "ordem": 12,
+  "id": "campeao",
+  "nome": "Campeão (herói inimigo)",
+  "nomeIngles": "Champion (Minor Demigod)",
+  "categoria": "Humanoide",
+  "categoriaLegada": "Humano",
+  "papel": "chefe",
+  "conceito": "herói inimigo",
+  "descricao": "Um adversário à altura dos PJs: rápido, forte e com Técnicas de herói.",
+  "tags": [
+    "humano",
+    "centelha"
+  ],
+  "imagem": "bestiario/campeao.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,9 m de altura",
+    "peso": "90 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 4,
+    "destreza": 5,
+    "vigor": 4,
+    "influencia": 4,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "armas-uma-mao": 5,
+    "esquiva": 4,
+    "escudos": 3,
+    "prontidao": 5,
+    "oratoria": 3,
+    "integridade": 6
+  },
+  "skills2": {
+    "intimidacao": 4
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 8,
+  "aparencia": 4,
+  "tech": {
+    "golpe-pesado": true,
+    "quebrar-guarda": true,
+    "soco-trovejante": true
+  },
+  "equip": {
+    "armaduras": [
+      "malha"
+    ]
+  },
+  "ataques": [
+    {
+      "nome": "Espada longa (golpe duplo)",
+      "atrib": "destreza",
+      "pericia": "armas-uma-mao",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 6,
+      "notas": "Pode dividir em 2 ataques (−1d6/−2d6)"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Reserva de Energia",
+      "descricao": "Energia ≈ Centelha×3 + Virtudes + Vontade"
+    },
+    {
+      "nome": "Técnica de herói",
+      "descricao": "pode gastar Energia em Técnicas de nível 1 a 3 em combate"
+    },
+    {
+      "nome": "Velocidade sobre-humana",
+      "descricao": "age antes da maioria dos oponentes na Iniciativa"
+    },
+    {
+      "nome": "Golpe de herói",
+      "descricao": "dano bem acima do de um humano comum"
+    },
+    {
+      "nome": "Resistência tocada",
+      "descricao": "Absorção e PV muito acima do normal para um mortal"
+    },
+    {
+      "nome": "Adversário à altura",
+      "descricao": "pensado para desafiar diretamente um grupo de PJs"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Luta como poucos: rápido, forte, e capaz de golpes que vão além do treino mortal comum, um adversário à altura de heróis."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Convicto da própria causa, seja ela nobre ou perversa; não se vê como vilão, mas como o obstáculo necessário."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "É um herói de verdade, alguém que ascendeu na escala da Centelha o bastante para manifestar Técnicas de herói, algo raríssimo em Uldun e que marca seu portador para sempre aos olhos do povo e das igrejas supressoras."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Urban",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Energia ≈ Centelha×3 + Virtudes + Vontade. Reservar para Técnicas de nível 1 a 3.",
+  "pendente": false,
+  "fonte": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

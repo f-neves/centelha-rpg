@@ -1,0 +1,148 @@
+{
+  "ordem": 51,
+  "id": "mon-corujurso",
+  "nome": "Corujurso",
+  "nomeIngles": "Owlbear",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Grande",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/corujurso.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,4 m de altura",
+    "peso": "230 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 7,
+    "destreza": 3,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 5,
+  "tech": {
+    "imobilizar": true
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Abraço (agarrar)",
+      "tipo": "proeza",
+      "alvo": "Agarrão do Urso · Imobilizar (b2)",
+      "caminho": "agarrao-do-urso"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Abraço esmagador",
+      "descricao": "após acertar com as duas garras, agarra o alvo e causa dano contínuo por rodada"
+    },
+    {
+      "nome": "Garras furiosas",
+      "descricao": "dois ataques de garra por rodada com dano alto"
+    },
+    {
+      "nome": "Bico cortante",
+      "descricao": "ataque extra de bico quando o alvo já está agarrado"
+    },
+    {
+      "nome": "Sentidos apurados",
+      "descricao": "audição e olfato detectam presas escondidas mesmo contra Furtividade"
+    },
+    {
+      "nome": "Fúria descontrolada",
+      "descricao": "gravemente ferido, ganha bônus de dano mas ataca sem distinguir aliados"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Fera de temperamento péssimo e fome constante, ataca por puro instinto assim que percebe uma presa, sem calcular perigo nem recuar até matar ou ser morta."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Marca território com garras nas árvores e uivos guturais que misturam o grito da coruja ao rugido do urso; caça sozinha, dia ou noite, e devora quase tudo que caça."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Vive nas profundezas de florestas densas, sobretudo nas matas fechadas de Mére e nos bosques selvagens do interior de Syl, onde poucos predadores ousam disputar seu espaço."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Ninguém sabe dizer se o corujurso nasceu da natureza ou de algum experimento arcano perdido da Grande Guerra; para o povo comum, pouco importa, é só mais uma fera tocada por magia a evitar."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 4.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Corujurso",
+    "cr": "4",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 12,
+      "con": 18,
+      "int": 2,
+      "sab": 12,
+      "car": 10
+    },
+    "pericias": [
+      "Prontidão 4"
+    ],
+    "nota": "Besta mágica: Centelha 1.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

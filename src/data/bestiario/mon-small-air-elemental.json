@@ -1,0 +1,128 @@
+{
+  "ordem": 202,
+  "id": "mon-small-air-elemental",
+  "nome": "Elemental do Ar (Pequeno)",
+  "nomeIngles": "Elemental, Air",
+  "categoria": "Elemental",
+  "papel": "soldado",
+  "conceito": "exterior (ar) Pequeno",
+  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+    "elemental",
+    "centelha"
+  ],
+  "imagem": "bestiario/small-air-elemental.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "1,2 metro de diâmetro, em constante redemoinho",
+    "peso": "praticamente sem peso"
+  },
+  "locomocao": {
+    "voo": 10
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 3,
+    "destreza": 5,
+    "vigor": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "resistencias": [
+    "corte",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Voo perfeito",
+      "descricao": "Flutua e manobra no ar com controle total, sem risco de perder equilíbrio ou cair."
+    },
+    {
+      "nome": "Redemoinho",
+      "descricao": "Uma vez por cena pode se transformar em um pequeno tornado, arrastando quem estiver perto para dentro dele."
+    },
+    {
+      "nome": "Domínio do ar",
+      "descricao": "Ataques feitos à distância contra ele perdem força, como se o vento desviasse os projéteis."
+    },
+    {
+      "nome": "Corpo imaterial de vento",
+      "descricao": "Não sente cansaço, veneno ou doença; é feito de puro elemento, não de carne."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Sopro vivo",
+      "texto": "Convocado de planos distantes, o elemental do ar é um turbilhão com vontade própria, sempre em movimento, nunca em repouso."
+    },
+    {
+      "titulo": "Servo relutante",
+      "texto": "Obedece a quem o convocou apenas enquanto o vínculo mágico se sustenta; rompido o elo, volta furioso ao próprio plano."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Sky",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Small Air Elemental",
+    "cr": "1",
+    "tipo": "exterior (ar) Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 12,
+      "des": 17,
+      "con": 12,
+      "int": 4,
+      "sab": 11,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 100,
+      "origem": "fonte",
+      "nota": "voo 100 (perfeito): o ar não tem pé"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

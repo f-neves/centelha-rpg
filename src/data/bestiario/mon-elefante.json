@@ -1,0 +1,147 @@
+{
+  "ordem": 42,
+  "id": "mon-elefante",
+  "nome": "Mamute",
+  "nomeIngles": "Mammoth",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Enorme",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/elefante.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "3,5 m de altura no ombro, 6 m de comprimento",
+    "peso": "6 t"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 11,
+    "destreza": 2,
+    "vigor": 8,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Pisoteio",
+      "tipo": "proeza",
+      "alvo": "Quebra-Muralhas · Demolidor (b1)",
+      "caminho": "quebra-muralhas"
+    },
+    {
+      "efeito": "Agarrar com a tromba",
+      "tipo": "proeza",
+      "alvo": "Agarrão do Urso · Imobilizar (b2)",
+      "caminho": "agarrao-do-urso"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Pisoteio",
+      "descricao": "área de 3m sob as patas; dano alto e Reflexos ou Caído"
+    },
+    {
+      "nome": "Agarrar com a tromba",
+      "descricao": "agarra um alvo Médio ou menor; pode arremessá-lo 4m causando dano"
+    },
+    {
+      "nome": "Couro grosso",
+      "descricao": "Absorção alta contra cortes e perfurações"
+    },
+    {
+      "nome": "Investida avassaladora",
+      "descricao": "moveu antes de atacar: dano extra e empurra o alvo 2m"
+    },
+    {
+      "nome": "Corpo enorme",
+      "descricao": "PV muito altos, dificilmente é Derrubado"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Vive em manadas matriarcais, com forte laço social entre fêmeas e crias e uma memória apurada para rotas e perigos."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Herbívoro que migra por longas distâncias em busca de água e pasto, moldando a paisagem por onde passa."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "As manadas cruzam as savanas e florestas de Mére, tratadas por alguns povos locais como animais quase sagrados pela sabedoria aparente e a longevidade, sem qualquer laço real com magia."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains",
+      "Jungle"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Elefante",
+    "cr": "7",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 30,
+      "des": 10,
+      "con": 21,
+      "int": 2,
+      "sab": 13,
+      "car": 7
+    },
+    "pericias": [
+      "Prontidão 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

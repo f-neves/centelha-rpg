@@ -1,0 +1,134 @@
+{
+  "ordem": 254,
+  "id": "mon-wererat-human-form",
+  "nome": "Homem-Rato (forma humana)",
+  "nomeIngles": "Lycanthrope, Wererat",
+  "categoria": "Humanoide",
+  "papel": "soldado",
+  "conceito": "humanoide Médio",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+    "humanoide",
+    "centelha"
+  ],
+  "imagem": "bestiario/wererat-human-form.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,7 m de altura",
+    "peso": "65 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 3,
+    "destreza": 4,
+    "vigor": 4,
+    "influencia": 1,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 5,
+    "inteligencia": 2,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Forma Mutável",
+      "descricao": "Pode assumir forma humana, híbrida ou de rato gigante à vontade, cada uma com vantagens diferentes em combate ou disfarce."
+    },
+    {
+      "nome": "Ataque Furtivo",
+      "descricao": "Golpeia com precisão cirúrgica quando a vítima está distraída ou cercada, causando dano extra."
+    },
+    {
+      "nome": "Esquiva Sobrenatural",
+      "descricao": "Evita quase por completo efeitos de área ao tentar escapar, saindo praticamente ileso onde outros se feririam gravemente."
+    },
+    {
+      "nome": "Pele Resistente em Forma Híbrida",
+      "descricao": "Na forma de meio-rato, sua pele grossa absorve boa parte dos golpes comuns; apenas prata a fere por completo."
+    },
+    {
+      "nome": "Mordida Maldita",
+      "descricao": "Em forma híbrida, a mordida transmite uma doença sombria; se não for curada, a vítima corre o risco de se tornar uma nova criatura amaldiçoada como ela."
+    },
+    {
+      "nome": "Afinidade com Ratos",
+      "descricao": "Entende e se comunica com ratos comuns e gigantes, que raramente atacam um dos seus."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Sociedade nas Sombras",
+      "texto": "Vivem em guildas escondidas sob cidades, misturados entre ladrões e contrabandistas comuns."
+    },
+    {
+      "titulo": "Maldição que se Espalha",
+      "texto": "Cada mordida não curada é uma sentença: a vítima pode em breve se tornar outra criatura como ela, sem nunca ter escolhido esse destino."
+    },
+    {
+      "titulo": "Disfarce Perfeito",
+      "texto": "Durante o dia, muitos vivem vidas comuns como mercadores, ladrões ou guardas, escondendo a fera sob a pele humana."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Wererat (Human Form)",
+    "cr": "2",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 15,
+      "con": 14,
+      "int": 10,
+      "sab": 16,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

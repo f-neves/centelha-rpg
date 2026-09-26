@@ -1,0 +1,118 @@
+{
+  "ordem": 188,
+  "id": "mon-stegosaurus",
+  "nome": "Estegossauro",
+  "nomeIngles": "Dinosaur, Stegosaurus",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Enorme",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/stegosaurus.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "9 metros de comprimento e 4,3 metros de altura",
+    "peso": "2,3 t"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 10,
+    "destreza": 4,
+    "vigor": 7,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão penumbra e faro",
+      "descricao": "Enxerga bem em pouca luz e fareja o que se aproxima."
+    },
+    {
+      "nome": "Rabada espinhosa",
+      "descricao": "Golpeia com a cauda armada de espinhos ósseos, capaz de derrubar o oponente pelo próprio impacto."
+    },
+    {
+      "nome": "Placas dorsais",
+      "descricao": "Duas fileiras de placas ósseas cobrem o dorso, absorvendo parte do impacto de golpes vindos de cima."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Placas e espinhos",
+      "texto": "Duas fileiras de placas ósseas ao longo do dorso e uma cauda repleta de espinhos bastam para fazer qualquer predador pensar duas vezes."
+    },
+    {
+      "titulo": "Herbívoro imponente",
+      "texto": "Vive em manadas nas planícies quentes, pastando tranquilo até ser provocado."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Stegosaurus",
+    "cr": "7",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 27,
+      "des": 14,
+      "con": 17,
+      "int": 2,
+      "sab": 13,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

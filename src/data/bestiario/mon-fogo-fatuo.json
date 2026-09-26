@@ -1,0 +1,173 @@
+{
+  "ordem": 117,
+  "id": "mon-fogo-fatuo",
+  "nome": "Fogo-fátuo",
+  "nomeIngles": "Will-o'-Wisp",
+  "categoria": "Aberração",
+  "papel": "elite",
+  "conceito": "aberração Pequeno",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/fogo-fatuo.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "diâmetro 30 cm (orbe de luz flutuante)",
+    "peso": "0,5 kg, quase sem massa"
+  },
+  "locomocao": {
+    "voo": 5
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 0,
+    "destreza": 9,
+    "vigor": 2,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4,
+    "percepcao": 5,
+    "inteligencia": 4,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 3,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 1,
+  "arte": {
+    "fascinacao": 1,
+    "raio": 1,
+    "vento": 3
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Invisibilidade natural (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N1",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Choque elétrico",
+      "tipo": "feiticaria",
+      "alvo": "Raio · N1",
+      "arte": "raio"
+    },
+    {
+      "efeito": "Pairar e voar",
+      "tipo": "feiticaria",
+      "alvo": "Vento · N3",
+      "arte": "vento"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Difícil de acertar",
+      "descricao": "Globo de matéria translúcida do tamanho de um punho: some no ar e é quase impossível de atingir (Defesa altíssima). Feitiços de mira raramente o alcançam."
+    },
+    {
+      "nome": "Invisibilidade natural",
+      "descricao": "some de vista até atacar ou se revelar; +3d6 em Furtividade"
+    },
+    {
+      "nome": "Toque elétrico",
+      "descricao": "corpo a corpo; dano alto ao alvo tocado"
+    },
+    {
+      "nome": "Voo flutuante",
+      "descricao": "desloca 12m voando, passa por frestas e grades finas"
+    },
+    {
+      "nome": "Luz enganosa",
+      "descricao": "brilha como uma tocha distante para atrair vítimas ao perigo"
+    },
+    {
+      "nome": "Evasiva",
+      "descricao": "+2 Esquiva contra ataques à distância"
+    },
+    {
+      "nome": "Imune a eletricidade",
+      "descricao": "ignora dano de choques e raios"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Paira sobre pântanos e charcos imitando a luz de uma fogueira distante ou lanterna amiga, guiando viajantes perdidos para longe da segurança até a morte lenta."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Alimenta-se do medo e da força vital de suas vítimas antes de consumir o que resta delas, solitário e territorial em seu brejo."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Frio, calculista e infinitamente paciente, saboreia o pânico de quem ainda acredita estar sendo salvo."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Diz-se que nasce de uma Centelha corrompida, quase uma ponta avançada do horror que vaza da Fenda; em Syl e Mére contam-se histórias de luzes que levam quem as segue para nunca mais voltar."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Swamp"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 5, Prontidão 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Fogo-fátuo",
+    "cr": "6",
+    "tipo": "aberração Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 1,
+      "des": 29,
+      "con": 10,
+      "int": 15,
+      "sab": 16,
+      "car": 14
+    },
+    "pericias": [
+      "Furtividade 5",
+      "Prontidão 3"
+    ],
+    "nota": "Str 1 → Força 0. Dex 29 → Destreza 10. Ser de pura energia: Centelha 3.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte",
+      "nota": "voo 50 (perfeito): o fogo-fátuo não tem corpo que pise"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

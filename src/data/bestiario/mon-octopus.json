@@ -1,0 +1,120 @@
+{
+  "ordem": 269,
+  "id": "mon-octopus",
+  "nome": "Polvo",
+  "nomeIngles": "Octopus",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Pequeno",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/octopus.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "60 cm de envergadura",
+    "peso": "4,5 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 3,
+    "destreza": 5,
+    "vigor": 4,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão em pouca luz",
+      "descricao": "Enxerga bem mesmo com pouca iluminação."
+    },
+    {
+      "nome": "Nuvem de tinta",
+      "descricao": "Libera uma nuvem de tinta que oculta totalmente sua posição na água por cerca de um minuto."
+    },
+    {
+      "nome": "Jato propulsor",
+      "descricao": "Pode disparar para trás em linha reta a uma velocidade impressionante, sem se expor a golpes enquanto foge."
+    },
+    {
+      "nome": "Mordida venenosa",
+      "descricao": "Sua mordida injeta um veneno que enfraquece a força da vítima ao longo de vários instantes."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Caçadora astuta",
+      "texto": "Usa táticas surpreendentemente complexas para emboscar e capturar suas presas nas águas costeiras."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Temperate",
+      "Cold"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Octopus",
+    "cr": "1",
+    "tipo": "animal Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 12,
+      "des": 17,
+      "con": 14,
+      "int": 2,
+      "sab": 13,
+      "car": 3
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

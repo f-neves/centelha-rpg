@@ -1,0 +1,196 @@
+{
+  "ordem": 134,
+  "id": "mon-grande-wyrm-vermelho",
+  "nome": "Grande Wyrm Vermelho",
+  "nomeIngles": "Dragon, Great Wyrm Red",
+  "categoria": "Dragão",
+  "papel": "chefe",
+  "conceito": "dragão Colossal",
+  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "tags": [
+    "dragao",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/grande-wyrm-vermelho.webp",
+  "porte": "Colossal",
+  "dimensoes": {
+    "medida": "20 m de comprimento, com a cauda",
+    "peso": "88 t"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 9,
+  "attrs": {
+    "forca": 16,
+    "destreza": 2,
+    "vigor": 14,
+    "influencia": 7,
+    "perspicacia": 7,
+    "compostura": 7,
+    "percepcao": 8,
+    "inteligencia": 7,
+    "raciocinio": 7
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 4,
+    "integridade": 7
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 5,
+    "temperanca": 3,
+    "valor": 6
+  },
+  "willpower": 12,
+  "aparencia": 9,
+  "arte": {
+    "fogo": 5,
+    "tempo": 4,
+    "morte": 5
+  },
+  "ataques": [
+    {
+      "nome": "Garras e mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 4,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Sopro cataclísmico",
+      "tipo": "feiticaria",
+      "alvo": "Fogo · N5",
+      "arte": "fogo"
+    },
+    {
+      "efeito": "Dobrar o tempo",
+      "tipo": "feiticaria",
+      "alvo": "Tempo · N4",
+      "arte": "tempo"
+    },
+    {
+      "efeito": "Feitiços supremos",
+      "tipo": "feiticaria",
+      "alvo": "várias · N5"
+    },
+    {
+      "efeito": "Presença divina",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N5 + Lenda Viva · Ícone (b15)",
+      "arte": "morte"
+    }
+  ],
+  "resistencias": [
+    "fogo"
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro cataclísmico",
+      "descricao": "cone de 18m; 15d6 de dano, metade se Esquivar (ainda deixa Abalado mesmo com sucesso)"
+    },
+    {
+      "nome": "Dobrar o tempo",
+      "descricao": "age duas vezes na mesma rodada, uma ação extra completa (1x por cena)"
+    },
+    {
+      "nome": "Feitiços supremos",
+      "descricao": "lança feitiços de centelha altíssima, incluindo cura própria e efeitos em área"
+    },
+    {
+      "nome": "Presença divina",
+      "descricao": "falha no teste de Vontade = Abalado; falha por 5 ou mais = Paralisado de terror por 1 turno"
+    },
+    {
+      "nome": "Voo perfeito",
+      "descricao": "manobra máxima no ar, ignora qualquer obstáculo aéreo"
+    },
+    {
+      "nome": "Multiataque total",
+      "descricao": "garra, garra, mordida, cauda e golpe de asas no mesmo turno"
+    },
+    {
+      "nome": "Imune a fogo",
+      "descricao": "e resistente à maioria dos feitiços (exige sucesso duplo para afetá-lo)"
+    },
+    {
+      "nome": "Escamas lendárias",
+      "descricao": "Absorção +5d6 contra ataques físicos"
+    },
+    {
+      "nome": "Sentidos supremos",
+      "descricao": "ignora Furtividade e ilusões comuns; nada passa despercebido"
+    },
+    {
+      "nome": "Vontade de wyrm",
+      "descricao": "nunca fica Abalado por efeitos de medo comuns; só presenças divinas o afetam"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Tão antigo que já não distingue mais súditos de brinquedos, o grande wyrm vermelho raramente se move: prefere que o mundo venha até ele, e pune com fogo e desdém qualquer intrusão em seu domínio milenar."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Seu covil se tornou, ao longo dos séculos, um ecossistema próprio, com criaturas menores vivendo à sombra do tesouro e do medo que ele projeta sobre a região inteira."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Sua arrogância beira a certeza divina: viu impérios nascerem e caírem, e trata mortais, mesmo reis, como curiosidades passageiras diante da própria permanência."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Sábios sussurram que um grande wyrm vermelho guarda em sua Centelha ecos de eras anteriores à Grande Guerra, quase alcançando o patamar de semideus; para as igrejas supressoras, ele é o argumento final contra quem sonha reacender os poderes antigos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Mountain",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 6, Ocultismo 6, Persuasão 5, Conhecimentos 5. Centelha acima do teto mortal (entidade).",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Grande Wyrm Vermelho",
+    "cr": "22",
+    "tipo": "dragão Colossal",
+    "tamanho": "colossal",
+    "valores": {
+      "for": 45,
+      "des": 10,
+      "con": 33,
+      "int": 22,
+      "sab": 25,
+      "car": 22
+    },
+    "pericias": [
+      "Prontidão 6",
+      "Ocultismo 6",
+      "Persuasão 5",
+      "Conhecimentos 5"
+    ],
+    "nota": "Lenda encarnada: Centelha 8. Str 45 → curva 12 +4 = Força 16; perícias podem passar de 5.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

@@ -1,0 +1,179 @@
+{
+  "ordem": 92,
+  "id": "mon-marilith",
+  "nome": "Marilith",
+  "nomeIngles": "Demon, Marilith",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Demônio",
+  "papel": "chefe",
+  "conceito": "exterior Grande (demônio)",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "tags": [
+    "demonio",
+    "centelha"
+  ],
+  "imagem": "bestiario/marilith.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "6 m de comprimento",
+    "peso": "1,8 t"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 7,
+  "attrs": {
+    "forca": 10,
+    "destreza": 8,
+    "vigor": 9,
+    "influencia": 8,
+    "perspicacia": 7,
+    "compostura": 7,
+    "percepcao": 5,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 2,
+    "prontidao": 2,
+    "integridade": 7
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 6
+  },
+  "willpower": 12,
+  "aparencia": -1,
+  "tech": {
+    "aperto-esmagador": true
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Seis lâminas (Ex)",
+      "tipo": "proeza",
+      "alvo": "Dança da Lâmina + Mão Veloz",
+      "caminho": "danca-da-lamina"
+    },
+    {
+      "efeito": "Constrição",
+      "tipo": "proeza",
+      "alvo": "Agarrão do Urso · Aperto Esmagador (b10)",
+      "caminho": "agarrao-do-urso"
+    },
+    {
+      "efeito": "Feitiços (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "várias · N3"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Seis lâminas",
+      "descricao": "proeza; ataca com seis espadas na mesma rodada, um golpe independente por lâmina"
+    },
+    {
+      "nome": "Cauda constritora",
+      "descricao": "proeza; ataque de cauda que Agarra e esmaga o alvo a cada rodada de aperto"
+    },
+    {
+      "nome": "Feitiços",
+      "descricao": "feitiçaria; lança Teleporte, Telecinesia e Paralisar como conjuradora nata"
+    },
+    {
+      "nome": "Visão verdadeira",
+      "descricao": "enxerga através de ilusões, disfarces e invisibilidade"
+    },
+    {
+      "nome": "Tática de guerra",
+      "descricao": "concede Iniciativa extra a aliados demoníacos próximos"
+    },
+    {
+      "nome": "Corpo de serpente",
+      "descricao": "desloca-se sobre o chão ignorando terreno difícil"
+    },
+    {
+      "nome": "Regeneração",
+      "descricao": "recupera PV toda rodada, exceto se ferida por arma benta ou fogo"
+    },
+    {
+      "nome": "Presença aterradora",
+      "descricao": "falha no teste de Vontade = Abalado ao vê-la em combate"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Comanda com disciplina rara entre os demônios, planeja campanhas inteiras e usa suas seis espadas em combinações mortais que nenhum mortal treina para enfrentar."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Ambiciosa e implacável, despreza o caos desorganizado dos demônios inferiores e sonha em um dia rivalizar com os próprios senhores do Abismo."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Serve como generala de exércitos demoníacos, impondo ordem tática a hordas que normalmente só sabem destruir."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Contam os poucos sobreviventes de invasões vindas da Fenda que, entre o caos de horrores desgovernados, às vezes surge algo pior: uma vontade fria que organiza o massacre."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Armas 5, Prontidão 4, Liderança 4. Centelha acima do teto mortal (entidade).",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Marilith",
+    "cr": "17",
+    "tipo": "exterior Grande (demônio)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 29,
+      "des": 25,
+      "con": 25,
+      "int": 18,
+      "sab": 18,
+      "car": 25
+    },
+    "pericias": [
+      "Armas 5",
+      "Prontidão 4",
+      "Liderança 4"
+    ],
+    "nota": "General demoníaca de seis braços: Centelha 6. Dex 25 → Destreza 8.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

@@ -1,0 +1,122 @@
+{
+  "ordem": 239,
+  "id": "mon-pony",
+  "nome": "Pônei",
+  "nomeIngles": "Pony",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/pony.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "0,9 a 1,2 m de altura no ombro",
+    "peso": "270 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 3,
+    "destreza": 3,
+    "vigor": 4,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 1,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Coice duplo",
+      "descricao": "Golpeia com os dois cascos dianteiros quando ameaçado."
+    },
+    {
+      "nome": "Passo resistente",
+      "descricao": "Caminha por longas distâncias carregando cargas moderadas sem se cansar."
+    },
+    {
+      "nome": "Sentidos de manada",
+      "descricao": "Faro e visão na penumbra alertam para predadores próximos."
+    },
+    {
+      "nome": "Dócil por natureza",
+      "descricao": "Raramente entra em combate a menos que treinado para tal."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Montaria dos pequenos povos",
+      "texto": "Menor que o cavalo comum, o pônei serve de bom grado a halflings, gnomos e anões, além de crianças humanas."
+    },
+    {
+      "titulo": "Carga e afeto",
+      "texto": "Apesar do porte modesto, arrasta cargas surpreendentemente pesadas e cria laços afetuosos com quem o cria."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Pony",
+    "cr": "1/2",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 13,
+      "con": 14,
+      "int": 2,
+      "sab": 11,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

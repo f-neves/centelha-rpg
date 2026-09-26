@@ -1,0 +1,136 @@
+{
+  "ordem": 288,
+  "id": "mon-giant-slug",
+  "nome": "Lesma Gigante",
+  "nomeIngles": "Giant Slug",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "chefe",
+  "conceito": "praga Enorme",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/giant-slug.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "6 a 9 metros de comprimento",
+    "peso": "várias t de massa viscosa"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 10,
+    "destreza": 1,
+    "vigor": 7,
+    "influencia": 0,
+    "perspicacia": 0,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Cuspir ácido",
+      "descricao": "Pode cuspir um jato de ácido em um alvo a distância, causando dano severo sem chance de esquiva."
+    },
+    {
+      "nome": "Língua ácida",
+      "descricao": "Sua língua raspadora impregna a vítima com ácido corrosivo a cada mordida."
+    },
+    {
+      "nome": "Redução de dano",
+      "descricao": "Sua carne mole absorve grande parte dos golpes cortantes e perfurantes."
+    },
+    {
+      "nome": "Corpo maleável",
+      "descricao": "Consegue se espremer por passagens muito mais estreitas do que seu tamanho sugeriria."
+    },
+    {
+      "nome": "Vulnerabilidade ao sal",
+      "descricao": "Sal comum queima sua carne como se fosse ácido puro."
+    },
+    {
+      "nome": "Sentido sísmico",
+      "descricao": "Percebe vibrações ao redor mesmo sem enxergar, sendo imune a efeitos que afetam a mente."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Devoradora de pântanos",
+      "texto": "Vilarejos próximos a pântanos aprendem a temer as lesmas gigantes, que devoram gado e lavouras inteiras em sua busca incessante por carne."
+    },
+    {
+      "titulo": "Ritual de reprodução monstruoso",
+      "texto": "Uma vez por ano, fêmeas depositam centenas de ovos, defendendo o ninho com uma fúria que surpreende quem só conhece a lentidão natural da espécie."
+    },
+    {
+      "titulo": "Montaria das profundezas",
+      "texto": "Certas raças subterrâneas domesticam lesmas gigantes como bestas de guerra e carga, embora mantê-las dóceis exija cuidado e fartura constante de alimento."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Swamp",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Slug",
+    "cr": "8",
+    "tipo": "praga Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 27,
+      "des": 2,
+      "con": 18,
+      "int": "-",
+      "sab": 10,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

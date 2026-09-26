@@ -1,0 +1,124 @@
+{
+  "ordem": 192,
+  "id": "mon-riding-dog",
+  "nome": "Cão de Montaria",
+  "nomeIngles": "Riding Dog",
+  "categoria": "Animal",
+  "categoriaLegada": "Monstro",
+  "papel": "capanga",
+  "conceito": "monstro Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricaoLegada": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha"
+  ],
+  "imagem": "bestiario/riding-dog.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "90 centímetros de comprimento",
+    "peso": "35 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 4,
+    "destreza": 4,
+    "vigor": 4,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão penumbra e faro",
+      "descricao": "Enxerga em pouca luz e depende do faro para rastrear."
+    },
+    {
+      "nome": "Mordida derrubante",
+      "descricao": "Morde e, no mesmo movimento, desequilibra o oponente, derrubando-o no chão."
+    },
+    {
+      "nome": "Faro rastreador",
+      "descricao": "Segue trilhas de cheiro por longas distâncias, mesmo trilhas antigas."
+    },
+    {
+      "nome": "Monta de guerra",
+      "descricao": "Consegue lutar mesmo carregando um cavaleiro nas costas, embora isso limite a ação de quem o monta."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Raças robustas",
+      "texto": "Vem de linhagens maiores e mais fortes, como huskies, mastins e wolfhounds, criadas para suportar o peso e o ritmo de longas cavalgadas."
+    },
+    {
+      "titulo": "Parceiro de estrada",
+      "texto": "Comum entre povos menores, como halflings e gnomos, que o usam como montaria confiável em vez de cavalos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Riding Dog",
+    "cr": "1/2",
+    "tipo": "monstro Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": 15,
+      "int": 2,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

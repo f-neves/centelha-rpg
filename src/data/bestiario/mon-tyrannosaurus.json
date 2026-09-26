@@ -1,0 +1,123 @@
+{
+  "ordem": 189,
+  "id": "mon-tyrannosaurus",
+  "nome": "Tiranossauro",
+  "nomeIngles": "Dinosaur, Tyrannosaurus",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "chefe",
+  "conceito": "animal Imenso",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/tyrannosaurus.webp",
+  "porte": "Imenso",
+  "dimensoes": {
+    "medida": "12 metros de comprimento",
+    "peso": "6,4 t"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 13,
+    "destreza": 3,
+    "vigor": 8,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 3,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Faro e visão apurados",
+      "descricao": "Localiza presas feridas a grande distância, mesmo em pouca luz, pelo cheiro de sangue no vento."
+    },
+    {
+      "nome": "Mordida devastadora",
+      "descricao": "Sua força bruta se concentra quase toda nas mandíbulas: a mordida causa um dano muito maior do que o esperado para o tamanho da boca."
+    },
+    {
+      "nome": "Engolir inteiro",
+      "descricao": "Depois de prender a presa entre os dentes, pode engoli-la viva; lá dentro, ela sofre dano contínuo até escapar ou morrer."
+    },
+    {
+      "nome": "Golpe certeiro",
+      "descricao": "Seus acertos mais precisos abrem feridas que sangram continuamente, agravando o estrago já causado."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Ápice da cadeia alimentar",
+      "texto": "Nenhum outro predador das florestas e planícies quentes ousa disputar território com um exemplar adulto."
+    },
+    {
+      "titulo": "Faro de caçador",
+      "texto": "Rastreia presas feridas a quilômetros de distância, atraído pelo cheiro de sangue."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Tyrannosaurus",
+    "cr": "9",
+    "tipo": "animal Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 32,
+      "des": 13,
+      "con": 19,
+      "int": 2,
+      "sab": 15,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

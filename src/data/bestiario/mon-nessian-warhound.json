@@ -1,0 +1,128 @@
+{
+  "ordem": 234,
+  "id": "mon-nessian-warhound",
+  "nome": "Nessian Warhound",
+  "nomeIngles": "Nessian Warhound",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Elemental",
+  "papel": "chefe",
+  "conceito": "exterior (fogo) Grande",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+    "elemental",
+    "centelha"
+  ],
+  "imagem": "bestiario/nessian-warhound.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "tamanho de um cavalo de tração, cerca de 2,1 m de comprimento",
+    "peso": "450 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 9,
+    "destreza": 4,
+    "vigor": 7,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 6
+  },
+  "willpower": 10,
+  "aparencia": 0,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro de fogo",
+      "descricao": "Expele um cone de fogo devastador a cada poucos turnos; quem se esquiva a tempo sofre apenas metade do dano."
+    },
+    {
+      "nome": "Mordida crítica",
+      "descricao": "Sua mordida rasga com facilidade incomum, ameaçando ferimentos graves a cada ataque bem-sucedido."
+    },
+    {
+      "nome": "Faro incansável",
+      "descricao": "Rastreia presas sem descanso, guiado pelo olfato apurado e pela visão no escuro."
+    },
+    {
+      "nome": "Imune a fogo, vulnerável a frio",
+      "descricao": "As chamas não o afetam, mas o frio o fere com intensidade maior que o normal."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Matilha de Asmodeus",
+      "texto": "Guardados nos canis do Príncipe das Trevas sob seu palácio em Nessus, esses cães vestem couraças chamuscadas e obedecem cegamente ao mestre."
+    },
+    {
+      "titulo": "Caçadores implacáveis",
+      "texto": "Perseguem os inimigos de Asmodeus até os confins do Inferno e além, sem parar até completar a missão ou morrer tentando."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Nessian Warhound",
+    "cr": "9",
+    "tipo": "exterior (fogo) Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 27,
+      "des": 15,
+      "con": 21,
+      "int": 4,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

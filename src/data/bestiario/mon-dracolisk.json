@@ -1,0 +1,127 @@
+{
+  "ordem": 232,
+  "id": "mon-dracolisk",
+  "nome": "Dracolisk",
+  "nomeIngles": "Dracolisk",
+  "categoria": "Dragão",
+  "papel": "elite",
+  "conceito": "dragão Médio",
+  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "tags": [
+    "dragao",
+    "centelha"
+  ],
+  "imagem": "bestiario/dracolisk.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2,4 m de comprimento",
+    "peso": "180 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 7,
+    "destreza": 2,
+    "vigor": 6,
+    "influencia": 3,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 5,
+    "temperanca": 3,
+    "valor": 5
+  },
+  "willpower": 9,
+  "aparencia": 8,
+  "ataques": [
+    {
+      "nome": "Garras e mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro ácido",
+      "descricao": "Expele uma linha de ácido que castiga todos em sua trajetória; quem se esquiva a tempo sofre apenas metade do dano."
+    },
+    {
+      "nome": "Olhar petrificante",
+      "descricao": "Seu olhar de basilisco ameaça transformar em pedra quem encara seus olhos, exigindo um teste de Compostura para resistir."
+    },
+    {
+      "nome": "Sentidos aguçados",
+      "descricao": "Enxerga no escuro e com pouca luz, além de perceber o entorno com atenção incomum."
+    },
+    {
+      "nome": "Imunidades",
+      "descricao": "Insensível a ácido, sono e paralisia."
+    },
+    {
+      "nome": "Voo instável",
+      "descricao": "Desloca-se voando em ritmo mediano, além de caminhar sobre patas curtas."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Herança dracônica acidental",
+      "texto": "Nascido de experimentos ou cruzamentos raros entre dragões negros e basiliscos, o dracolisco reproduz sua linhagem sem precisar de outro dragão por perto."
+    },
+    {
+      "titulo": "Predador de dupla ameaça",
+      "texto": "Combina o veneno visual do basilisco com o sopro corrosivo dracônico, tornando-se perigoso tanto de longe quanto de perto."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Swamp",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dracolisk",
+    "cr": "7",
+    "tipo": "dragão Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 24,
+      "des": 8,
+      "con": 21,
+      "int": 4,
+      "sab": 13,
+      "car": 13
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

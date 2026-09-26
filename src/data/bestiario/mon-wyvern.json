@@ -1,0 +1,151 @@
+{
+  "ordem": 59,
+  "id": "mon-wyvern",
+  "nome": "Wyvern",
+  "nomeIngles": "Wyvern",
+  "categoria": "Dragão",
+  "papel": "elite",
+  "conceito": "dragão Grande",
+  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "tags": [
+    "dragao",
+    "centelha"
+  ],
+  "imagem": "bestiario/wyvern.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "5,5 m da cabeça à ponta da cauda, envergadura 6 m",
+    "peso": "250 kg"
+  },
+  "locomocao": {
+    "voo": 6
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 6,
+    "destreza": 3,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 5,
+    "temperanca": 3,
+    "valor": 5
+  },
+  "willpower": 8,
+  "aparencia": 8,
+  "ataques": [
+    {
+      "nome": "Garras e mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Ferrão venenoso",
+      "tipo": "natural",
+      "alvo": "veneno natural"
+    },
+    {
+      "efeito": "Voo",
+      "tipo": "natural",
+      "alvo": "asas (natural)"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Voo veloz",
+      "descricao": "domina o ar, ataca em mergulho"
+    },
+    {
+      "nome": "Ferrão venenoso",
+      "descricao": "ataque de cauda; falha em Resistência causa veneno debilitante (penalidade cumulativa por rodada)"
+    },
+    {
+      "nome": "Investida em mergulho",
+      "descricao": "dano extra ao atacar descendo em voo"
+    },
+    {
+      "nome": "Garras que prendem",
+      "descricao": "agarra alvos pequenos e os carrega no ar"
+    },
+    {
+      "nome": "Predador alado",
+      "descricao": "Prontidão 2, Furtividade 1; ataca de surpresa vindo do alto"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Caçador aéreo territorial, ataca em mergulho e finaliza a presa com o ferrão da cauda, que carrega um veneno lento e cruel. Prefere gado, cavalos e alvos isolados a combate direto com grupos armados."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Faz ninho em falésias e torres de pedra abandonadas, empilhando ossos e couro do que trouxe ao covil. É menos raciocinado que um dragão verdadeiro, mas aprende rápido a evitar armadilhas que já o feriram antes."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Orcs, goblins e mercenários sem escrúpulos às vezes capturam filhotes e os domam como montaria de guerra, trocando carne farta por obediência relutante; a lealdade dura só enquanto durar a comida."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "É contado entre os dragões, e como todo dragão carrega o peso da Supressão: aldeias inteiras erguem sinos de alarme e recompensas quando um se instala por perto, lembrando que o mundo antigo era mais selvagem e mais mágico do que o de hoje."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Mountain"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 2, Furtividade 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Wyvern",
+    "cr": "6",
+    "tipo": "dragão Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 12,
+      "con": 17,
+      "int": 7,
+      "sab": 12,
+      "car": 11
+    },
+    "pericias": [
+      "Prontidão 2",
+      "Furtividade 1"
+    ],
+    "nota": "Veneno e linhagem dracônica: Centelha 2.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60; em terra 20"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

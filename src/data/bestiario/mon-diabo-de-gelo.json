@@ -1,0 +1,178 @@
+{
+  "ordem": 99,
+  "id": "mon-diabo-de-gelo",
+  "nome": "Diabo de Gelo",
+  "nomeIngles": "Devil, Ice (Gelugon)",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Diabo",
+  "papel": "chefe",
+  "conceito": "exterior Grande (diabo)",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Tirano leal do Inferno, calculista e cruel.",
+  "tags": [
+    "diabo",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/diabo-de-gelo.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,3 m de altura",
+    "peso": "360 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 6,
+  "attrs": {
+    "forca": 9,
+    "destreza": 6,
+    "vigor": 9,
+    "influencia": 6,
+    "perspicacia": 6,
+    "compostura": 6,
+    "percepcao": 6,
+    "inteligencia": 7,
+    "raciocinio": 6
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 2,
+    "prontidao": 3,
+    "integridade": 6
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 5,
+    "temperanca": 5,
+    "valor": 5
+  },
+  "willpower": 11,
+  "aparencia": 0,
+  "arte": {
+    "gelo": 3,
+    "protecao": 3
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Aura de frio (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Gelo · N3",
+      "arte": "gelo"
+    },
+    {
+      "efeito": "Lança e muralha de gelo",
+      "tipo": "feiticaria",
+      "alvo": "Gelo · N2–N3",
+      "arte": "gelo"
+    },
+    {
+      "efeito": "Feitiços",
+      "tipo": "feiticaria",
+      "alvo": "Gelo / Proteção · N3–N4",
+      "arte": "protecao"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Lança de gelo",
+      "descricao": "ataque corpo a corpo com alcance, dano alto de frio"
+    },
+    {
+      "nome": "Aura de frio",
+      "descricao": "quem chega a até 3m sofre dano de frio automático toda rodada"
+    },
+    {
+      "nome": "Ferrão de cauda venenoso",
+      "descricao": "ataque extra na mesma ação; falha em Fortitude = Enfraquecido"
+    },
+    {
+      "nome": "Muralha de gelo",
+      "descricao": "feitiçaria, 1x por cena; ergue parede de 9m que bloqueia passagem"
+    },
+    {
+      "nome": "Feitiços",
+      "descricao": "feitiçaria; lança Teleporte e outros efeitos como conjurador experiente"
+    },
+    {
+      "nome": "Sangue infernal",
+      "descricao": "imune a frio, fogo e veneno; resistente a ácido"
+    },
+    {
+      "nome": "Visão verdadeira",
+      "descricao": "enxerga através de ilusões, disfarces e invisibilidade"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Comanda tropas com precisão militar impecável, usando frio absoluto e uma lança perfurante para congelar a vontade de lutar do inimigo antes mesmo do combate."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Ocupa posição de general nas hostes infernais, respeitado por disciplina e histórico de vitórias, treinando diabos menores com rigor implacável."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Habita as camadas geladas do Inferno, confortável em temperaturas que matariam qualquer mortal em minutos."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "No White Wall gelado, onde a Fenda mais se aproxima, os poucos que sobrevivem a um encontro com algo assim juram que o próprio ar ficou mais frio antes de vê lo, como se o gelo chegasse primeiro que o diabo."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Cold",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Armas 5, Ocultismo 4, Liderança 4.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Diabo de Gelo",
+    "cr": "13",
+    "tipo": "exterior Grande (diabo)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 27,
+      "des": 21,
+      "con": 25,
+      "int": 22,
+      "sab": 20,
+      "car": 20
+    },
+    "pericias": [
+      "Armas 5",
+      "Ocultismo 4",
+      "Liderança 4"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

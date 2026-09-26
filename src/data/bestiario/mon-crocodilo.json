@@ -1,0 +1,130 @@
+{
+  "ordem": 44,
+  "id": "mon-crocodilo",
+  "nome": "Crocodilo",
+  "nomeIngles": "Crocodile",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/crocodilo.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "Comprimento total 3,5 m (corpo e cauda)",
+    "peso": "450 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 6,
+    "destreza": 3,
+    "vigor": 5,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Mordida e rolamento",
+      "descricao": "após morder e agarrar, rola na água causando dano contínuo até o alvo escapar (Atletismo)"
+    },
+    {
+      "nome": "Emboscada aquática",
+      "descricao": "submerso, ganha bônus de Furtividade e surpresa no primeiro ataque"
+    },
+    {
+      "nome": "Nado",
+      "descricao": "desloca na água na mesma velocidade que em terra, sem penalidade"
+    },
+    {
+      "nome": "Couro escamoso",
+      "descricao": "Absorção alta contra golpes cortantes"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Caçador de emboscada: fica imóvel por horas, quase todo submerso, até fechar as mandíbulas sobre a presa e arrastá-la para debaixo d'água. Não tem malícia nem plano, só fome e paciência."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Vive em rios lentos, pântanos e mangues, sobretudo nas terras baixas e alagadas de Mére e nas margens quentes do sul de Calin."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Topo da cadeia alimentar de sua lagoa: come peixes, aves, mamíferos que vêm beber água e, sem hesitar, gente descuidada na beira do rio."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water",
+      "Swamp"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 2, Atletismo 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Crocodilo",
+    "cr": "2",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 12,
+      "con": 15,
+      "int": 1,
+      "sab": 12,
+      "car": 2
+    },
+    "pericias": [
+      "Furtividade 2",
+      "Atletismo 2"
+    ],
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

@@ -1,0 +1,160 @@
+{
+  "ordem": 53,
+  "id": "mon-harpia",
+  "nome": "Harpia",
+  "nomeIngles": "Harpy",
+  "categoria": "Humanoide monstruoso",
+  "categoriaLegada": "Monstro",
+  "papel": "soldado",
+  "conceito": "humanoide monstruoso Médio",
+  "descricao": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/harpia.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,6 m de altura, envergadura 4,5 m",
+    "peso": "55 kg"
+  },
+  "locomocao": {
+    "voo": 8
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 3,
+    "destreza": 5,
+    "vigor": 2,
+    "influencia": 5,
+    "perspicacia": 3,
+    "compostura": 4,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "arte": {
+    "fascinacao": 2
+  },
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Canção cativante (Su)",
+      "tipo": "proeza",
+      "alvo": "Beleza Cativante · Olhar Cativante (b5)",
+      "caminho": "beleza-cativante"
+    },
+    {
+      "efeito": "(alternativa mágica)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N2",
+      "arte": "fascinacao"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Canção cativante (Su)",
+      "descricao": "quem ouve e falha em Vontade fica Enfeitiçado, caminhando até a harpia e ignorando perigos"
+    },
+    {
+      "nome": "Garras aviformes",
+      "descricao": "dois ataques de garra por rodada com dano moderado"
+    },
+    {
+      "nome": "Voo rasante",
+      "descricao": "desloca no ar em baixa altura, ideal para emboscadas em penhascos"
+    },
+    {
+      "nome": "Feitiçaria (alternativa mágica)",
+      "descricao": "pode substituir a canção por um pequeno efeito mágico de controle ou ilusão"
+    },
+    {
+      "nome": "Ninho no penhasco",
+      "descricao": "bônus de Furtividade e Prontidão em terrenos rochosos e alturas"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Caça em bandos usando o canto encantador para atrair viajantes e marinheiros para perto, então cerca e despedaça a presa hipnotizada com garras e dentes."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Faz ninho em penhascos costeiros e ruínas à beira-mar, acumulando ossos e pertences de vítimas antigas ao redor do covil como um monturo macabro."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Cruel e vaidosa, tira prazer em ludibriar antes de matar; despreza presas que resistem ao canto e reserva ódio especial para quem escapa uma vez."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Nos portos de Mére e nas costas ásperas do Neck, marinheiros confundem seu grito com os horrores de crânio de ave que se conta terem escapado da Fenda, e poucos se dão ao trabalho de corrigir o engano."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Coast",
+      "Mountain",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Oratória 2, Furtividade 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Harpia",
+    "cr": "4",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 12,
+      "des": 17,
+      "con": 10,
+      "int": 7,
+      "sab": 12,
+      "car": 17
+    },
+    "pericias": [
+      "Oratória 2",
+      "Furtividade 2"
+    ],
+    "nota": "Canção cativante (Su): Centelha 2.",
+    "deslocamento": {
+      "ft": 80,
+      "origem": "fonte",
+      "nota": "voo 80; em terra 20, e a harpia caça no ar"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

@@ -1,0 +1,198 @@
+{
+  "ordem": 138,
+  "id": "mon-dragao-dourado-adulto",
+  "nome": "Dragão Dourado Adulto",
+  "nomeIngles": "Dragon, Adult Gold",
+  "categoria": "Dragão",
+  "papel": "chefe",
+  "conceito": "dragão Enorme (metálico)",
+  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "tags": [
+    "dragao",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/dragao-dourado-adulto.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "9,5 m de comprimento, envergadura de 15 m",
+    "peso": "9 t"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 7,
+  "attrs": {
+    "forca": 12,
+    "destreza": 2,
+    "vigor": 10,
+    "influencia": 7,
+    "perspicacia": 7,
+    "compostura": 7,
+    "percepcao": 6,
+    "inteligencia": 7,
+    "raciocinio": 7
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 3,
+    "integridade": 7
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 5,
+    "temperanca": 3,
+    "valor": 6
+  },
+  "willpower": 12,
+  "aparencia": 9,
+  "arte": {
+    "fogo": 4,
+    "fascinacao": 3,
+    "protecao": 4,
+    "materia": 3
+  },
+  "ataques": [
+    {
+      "nome": "Garras e mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Sopro de fogo (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Fogo · N4",
+      "arte": "fogo"
+    },
+    {
+      "efeito": "Sopro debilitante",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N3",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Feitiços divinos",
+      "tipo": "feiticaria",
+      "alvo": "Cura / Proteção · N4",
+      "arte": "protecao"
+    },
+    {
+      "efeito": "Mudar de forma",
+      "tipo": "feiticaria",
+      "alvo": "Matéria · N3",
+      "arte": "materia"
+    }
+  ],
+  "resistencias": [
+    "fogo"
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro de fogo",
+      "descricao": "cone de 12m; 9d6 de dano, metade se Esquivar"
+    },
+    {
+      "nome": "Sopro debilitante",
+      "descricao": "cone alternativo de gás sem dano; falha em teste de Vigor deixa o alvo Enfraquecido por 1 turno"
+    },
+    {
+      "nome": "Feitiços divinos",
+      "descricao": "lança feitiços de cura e proteção (feiticaria) em si ou em aliados"
+    },
+    {
+      "nome": "Mudar de forma",
+      "descricao": "assume forma humana ou animal pequena, mantendo parte dos sentidos dracônicos"
+    },
+    {
+      "nome": "Presença",
+      "descricao": "falha no teste de Vontade = Abalado"
+    },
+    {
+      "nome": "Voo dominante",
+      "descricao": "domina os céus com grande manobra"
+    },
+    {
+      "nome": "Multiataque",
+      "descricao": "garra, garra e mordida no mesmo turno"
+    },
+    {
+      "nome": "Imune a fogo",
+      "descricao": "e resistente a efeitos de medo; não fica Abalado por presenças de centelha menor"
+    },
+    {
+      "nome": "Sentidos e sabedoria dracônica",
+      "descricao": "detecta mentiras e ignora ilusões simples"
+    },
+    {
+      "nome": "Escamas douradas",
+      "descricao": "Absorção +4d6 contra ataques físicos"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Ao contrário dos parentes cromáticos, o dragão dourado adulto raramente impõe medo por escolha: prefere assumir forma mortal e caminhar disfarçado entre vilas e cidades, testando o caráter das pessoas antes de revelar quem realmente é."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Sábio, paciente e movido por senso de justiça, aprecia enigmas, música e atos de bondade genuína, e não hesita em confrontar tiranos, inclusive dragões cromáticos, quando a ocasião exige."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Costuma agir sozinho ou em segredo, evitando reconhecimento, e prefere guiar mortais com pequenos gestos a governar abertamente qualquer território."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Mesmo sendo uma força do bem, o dragão dourado não escapa do preconceito da Supressão: para as igrejas de Calin, magia é magia, e um sábio disfarçado de mendigo ou de mercador generoso corre o risco de ser denunciado e caçado só por existir, ironia amarga com a qual aprendeu a conviver havia séculos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Mountain",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Ocultismo 5, Persuasão 5, Prontidão 5, Conhecimentos 5. Centelha acima do teto mortal (entidade).",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Dragão Dourado Adulto",
+    "cr": "17",
+    "tipo": "dragão Enorme (metálico)",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 35,
+      "des": 10,
+      "con": 27,
+      "int": 22,
+      "sab": 21,
+      "car": 22
+    },
+    "pericias": [
+      "Ocultismo 5",
+      "Persuasão 5",
+      "Prontidão 5",
+      "Conhecimentos 5"
+    ],
+    "nota": "O mais nobre dos dragões: Centelha 6. Str 35 → curva 10 +2 = Força 12.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

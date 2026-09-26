@@ -1,0 +1,208 @@
+{
+  "ordem": 84,
+  "id": "mon-vampiro",
+  "nome": "Vampiro",
+  "nomeIngles": "Vampire",
+  "categoria": "Morto-vivo",
+  "papel": "chefe",
+  "conceito": "morto-vivo Médio",
+  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "tags": [
+    "morto-vivo",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/vampiro.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,75 m de altura",
+    "peso": "75 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 5,
+    "destreza": 5,
+    "vigor": 8,
+    "influencia": 8,
+    "perspicacia": 6,
+    "compostura": 6,
+    "percepcao": 5,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 6
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 4,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 10,
+  "aparencia": 2,
+  "arte": {
+    "fascinacao": 3,
+    "vento": 3,
+    "espirito": 2,
+    "morte": 1
+  },
+  "tech": {
+    "regeneracao": true
+  },
+  "ataques": [
+    {
+      "nome": "Golpe",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Dominar (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N3",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Forma gasosa",
+      "tipo": "feiticaria",
+      "alvo": "Espírito / Vento · N3",
+      "arte": "vento"
+    },
+    {
+      "efeito": "Filhos da noite (convoca)",
+      "tipo": "feiticaria",
+      "alvo": "Espírito · N2",
+      "arte": "espirito"
+    },
+    {
+      "efeito": "Regeneração",
+      "tipo": "proeza",
+      "alvo": "Cerne Vital · Regeneração (b9)",
+      "caminho": "cerne-vital"
+    },
+    {
+      "efeito": "Dreno de sangue",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N1",
+      "arte": "morte"
+    }
+  ],
+  "fraquezas": [
+    "fogo",
+    "luz",
+    "prata",
+    "sagrado",
+    "sol"
+  ],
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Olhar dominador",
+      "descricao": "teste de Vontade; falha torna o alvo Dominado, obedece ordens simples por cena"
+    },
+    {
+      "nome": "Forma gasosa",
+      "descricao": "transforma-se em névoa, imune a dano físico e passa por frestas"
+    },
+    {
+      "nome": "Filhos da noite",
+      "descricao": "convoca um enxame de morcegos, ratos ou um bando de lobos para auxiliar no combate"
+    },
+    {
+      "nome": "Regeneração",
+      "descricao": "recupera PV a cada rodada; só é impedida por dano de prata, fogo ou luz solar"
+    },
+    {
+      "nome": "Mordida drenante",
+      "descricao": "dano corpo a corpo que cura o vampiro pelo valor causado"
+    },
+    {
+      "nome": "Força sobre-humana",
+      "descricao": "bônus em Atletismo e Acrobacia"
+    },
+    {
+      "nome": "Fraquezas clássicas",
+      "descricao": "sofre dano grave sob luz solar direta, água corrente e estaca no coração"
+    },
+    {
+      "nome": "Sem reflexo nem sombra",
+      "descricao": "passa despercebido em espelhos e retratos"
+    },
+    {
+      "nome": "Sedução vampírica",
+      "descricao": "bônus em Persuasão e Manha ao encantar vítimas antes de atacar"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Sedutor, calculista e paciente, prefere manipular e seduzir a atacar abertamente, alimentando-se do sangue dos vivos para manter sua existência roubada."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Costuma se infiltrar entre a nobreza e a alta sociedade, tecendo teias de influência que duram gerações inteiras enquanto finge envelhecer como qualquer mortal."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Conserva fragmentos de quem foi em vida, mas distorcidos por uma fome que nunca se sacia e por séculos de solidão."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Um vampiro é alguém que recusou devolver sua Centelha à Primeira Luz e a manteve à força, roubando um pouco da Centelha alheia a cada mordida. Nos salões dourados de Calin, onde a Supressão prega o medo da magia, nenhuma figura é mais temida ou mais fascinante que um nobre que nunca envelhece."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Undead",
+    "terreno": [
+      "Urban",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Manha 5, Persuasão 4, Furtividade 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Vampiro",
+    "cr": "9",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 16,
+      "des": 18,
+      "con": "-",
+      "int": 14,
+      "sab": 16,
+      "car": 26
+    },
+    "pericias": [
+      "Manha 5",
+      "Persuasão 4",
+      "Furtividade 3"
+    ],
+    "nota": "Dominar, forma gasosa, filhos da noite: Centelha 4. Car 26 → Vigor 8, Influência 8.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

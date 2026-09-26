@@ -1,0 +1,177 @@
+{
+  "ordem": 127,
+  "id": "mon-bruxa-verde-hag",
+  "nome": "Bruxa Verde",
+  "nomeIngles": "Hag, Green",
+  "categoria": "Humanoide monstruoso",
+  "categoriaLegada": "Monstro",
+  "papel": "elite",
+  "conceito": "humanoide monstruoso Médio",
+  "descricao": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/bruxa-verde-hag.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,5 m de altura",
+    "peso": "80 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 6,
+    "destreza": 3,
+    "vigor": 5,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4,
+    "percepcao": 3,
+    "inteligencia": 3,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 3,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 8,
+  "arte": {
+    "morte": 2,
+    "fascinacao": 2
+  },
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Fraqueza mística (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N2",
+      "arte": "morte"
+    },
+    {
+      "efeito": "Mímica e ilusão (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N2",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Feitiços",
+      "tipo": "feiticaria",
+      "alvo": "várias · N3"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Toque da fraqueza",
+      "descricao": "corpo a corpo; falha em Fortitude: força reduzida (Abalado)"
+    },
+    {
+      "nome": "Mímica de voz",
+      "descricao": "+3d6 em Manha ao imitar qualquer voz já ouvida"
+    },
+    {
+      "nome": "Disfarce ilusório",
+      "descricao": "parece bela ou inofensiva até revelar a forma verdadeira"
+    },
+    {
+      "nome": "Feitiços arcanos",
+      "descricao": "lança magias menores de maldição e controle"
+    },
+    {
+      "nome": "Garras",
+      "descricao": "ataque corpo a corpo secundário"
+    },
+    {
+      "nome": "Fôlego anfíbio",
+      "descricao": "respira e nada debaixo d'água sem penalidade"
+    },
+    {
+      "nome": "Sentidos do pântano",
+      "descricao": "+2d6 em Prontidão em pântanos e florestas"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Usa metamorfose para parecer uma velha camponesa ou donzela indefesa, atraindo vítimas para o pântano antes de revelar garras e magia sombria."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Vive em pântanos, brejos e florestas apodrecidas, longe de estradas vigiadas."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Prefere a solidão, mas às vezes forma covens com outras bruxas para trocar segredos e maldições."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Invejosa e cruel, ressente a beleza e a felicidade alheia, e as corrompe sempre que pode."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Figura do folclore rural em Syl e no Neck, confundida por camponeses supersticiosos com espírito maligno da mata; para as igrejas de Calin é prova viva de que magia sem lei corrompe quem a possui."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fey",
+    "terreno": [
+      "Swamp",
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Ocultismo 3, Manha 3, Furtividade 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Bruxa Verde (Hag)",
+    "cr": "5",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 21,
+      "des": 12,
+      "con": 18,
+      "int": 13,
+      "sab": 13,
+      "car": 14
+    },
+    "pericias": [
+      "Ocultismo 3",
+      "Manha 3",
+      "Furtividade 2"
+    ],
+    "nota": "Fraqueza mística, mímica, feitiços: Centelha 3.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

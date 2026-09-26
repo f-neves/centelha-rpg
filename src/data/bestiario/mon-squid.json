@@ -1,0 +1,125 @@
+{
+  "ordem": 291,
+  "id": "mon-squid",
+  "nome": "Lula",
+  "nomeIngles": "Squid",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/squid.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,2 metro de comprimento de manto",
+    "peso": "12 kg"
+  },
+  "locomocao": {
+    "natacao": 6
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 4,
+    "destreza": 4,
+    "vigor": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Nado veloz e jato",
+      "descricao": "Impulsiona-se pela água com um jato de água, disparando em linha reta a uma velocidade muito maior que seu nado normal."
+    },
+    {
+      "nome": "Nuvem de tinta",
+      "descricao": "Uma vez por cena libera uma nuvem de tinta que cega qualquer criatura próxima, ocultando totalmente sua posição enquanto foge ou ataca."
+    },
+    {
+      "nome": "Tentáculos agarradores",
+      "descricao": "Seus tentáculos podem prender um alvo, mantendo-o preso enquanto o bico dilacera."
+    },
+    {
+      "nome": "Visão em pouca luz",
+      "descricao": "Enxerga bem mesmo nas profundezas escuras do oceano."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Predador oceânico",
+      "texto": "As lulas grandes não hesitam em atacar presas maiores que elas mesmas, guiadas por fome constante e instinto agressivo."
+    },
+    {
+      "titulo": "Sombra na água",
+      "texto": "Marinheiros contam histórias de vultos vermelhos que cruzam sob os barcos antes de uma tempestade, sinal de que as lulas se aproximam."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Squid",
+    "cr": "1",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": 11,
+      "int": 2,
+      "sab": 12,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "nado 60 (o jato de 240 é fuga, não deslocamento)"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

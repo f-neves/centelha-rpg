@@ -1,0 +1,192 @@
+{
+  "ordem": 85,
+  "id": "mon-lich",
+  "nome": "Lich",
+  "nomeIngles": "Lich",
+  "categoria": "Morto-vivo",
+  "papel": "chefe",
+  "conceito": "morto-vivo Médio",
+  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "tags": [
+    "morto-vivo",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/lich.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,75 m de altura",
+    "peso": "40 kg, esqueleto e vestes"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 6,
+  "attrs": {
+    "forca": 2,
+    "destreza": 4,
+    "vigor": 5,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 4,
+    "percepcao": 4,
+    "inteligencia": 7,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 4,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 11,
+  "aparencia": 2,
+  "arte": {
+    "protecao": 3,
+    "morte": 3
+  },
+  "ataques": [
+    {
+      "nome": "Golpe",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Feitiços de mago (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Fogo / Gelo / Morte / Proteção · N3–N5",
+      "arte": "protecao"
+    },
+    {
+      "efeito": "Toque paralisante (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N2",
+      "arte": "morte"
+    },
+    {
+      "efeito": "Aura de medo (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N3",
+      "arte": "morte"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Feitiços de arcanista",
+      "descricao": "conjura magias de dano, controle e ilusão como um mago experiente, com grande variedade de efeitos"
+    },
+    {
+      "nome": "Toque paralisante",
+      "descricao": "acerto desarmado exige teste de Fortitude; falha torna o alvo Paralisado"
+    },
+    {
+      "nome": "Aura de medo",
+      "descricao": "presença em 9m força teste de Vontade; falha deixa Abalado"
+    },
+    {
+      "nome": "Filactério",
+      "descricao": "se destruído, sua essência retorna ao filactério e reforma o corpo após um tempo, dificultando a morte permanente"
+    },
+    {
+      "nome": "Constituição de morto-vivo",
+      "descricao": "imune a frio, veneno, doença e efeitos mentais"
+    },
+    {
+      "nome": "Toque gélido",
+      "descricao": "pode substituir o toque paralisante por dreno de energia fria, causando dano extra"
+    },
+    {
+      "nome": "Mente arquivista",
+      "descricao": "séculos de estudo garantem bônus altíssimo em Ocultismo e Conhecimentos"
+    },
+    {
+      "nome": "Comando sobre mortos-vivos",
+      "descricao": "pode dominar e comandar mortos-vivos inferiores nas proximidades"
+    },
+    {
+      "nome": "Corpo ressecado",
+      "descricao": "imune a efeitos que exijam respiração ou fluxo sanguíneo"
+    },
+    {
+      "nome": "Presença de poder",
+      "descricao": "sua simples chegada é sentida como distorção mágica no ambiente"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Frio, calculista e obcecado por conhecimento e poder, trata a própria morte como um mero obstáculo que a magia soube contornar."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Isola-se em torres, criptas ou bibliotecas esquecidas, cercado de servos e mortos-vivos menores que protegem seu segredo mais precioso."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Prendeu a própria Centelha a um objeto selado, o falso coração que o mantém preso ao mundo mesmo com o corpo reduzido a ossos secos. Destruir apenas o corpo nunca é o bastante."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Um lich é quase sempre um mago de antes da Supressão, alguém que se recusou a aceitar o tabu antimagia e trocou sua própria alma pela imortalidade. Para as ortodoxias de Calin, ele é a prova viva do que aconteceria se o mundo voltasse a permitir o poder desenfreado que quase o destruiu na Grande Guerra."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Undead",
+    "terreno": [
+      "Ruins",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Ocultismo 5, Conhecimentos 5, Prontidão 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Lich",
+    "cr": "12",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 10,
+      "des": 14,
+      "con": "-",
+      "int": 22,
+      "sab": 14,
+      "car": 16
+    },
+    "pericias": [
+      "Ocultismo 5",
+      "Conhecimentos 5",
+      "Prontidão 3"
+    ],
+    "nota": "Arquimago imortal: Centelha 5. Int 20 → Inteligência 6.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

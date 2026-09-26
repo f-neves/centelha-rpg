@@ -1,0 +1,150 @@
+{
+  "ordem": 63,
+  "id": "mon-gorgona-touro-de-ferro",
+  "nome": "Górgona (touro de ferro)",
+  "nomeIngles": "Gorgon (Iron Bull)",
+  "categoria": "Besta mágica",
+  "papel": "chefe",
+  "conceito": "besta mágica Grande",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/gorgona-touro-de-ferro.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,5 m de comprimento, 1,8 m ao ombro",
+    "peso": "1,8 t (pele de ferro maciço, bem acima do normal para o porte)"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 8,
+    "destreza": 2,
+    "vigor": 8,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 3,
+    "percepcao": 5,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 2,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 8,
+  "aparencia": 5,
+  "arte": {
+    "materia": 3
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Sopro petrificante (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Matéria · N4",
+      "arte": "materia"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro petrificante",
+      "descricao": "cone de 9m; falha em Resistência petrifica, sucesso causa Abalado"
+    },
+    {
+      "nome": "Couraça de ferro",
+      "descricao": "Absorção alta; ignora a maior parte dos golpes cortantes e perfurantes"
+    },
+    {
+      "nome": "Investida de chifre",
+      "descricao": "carga corrida causa dano extra e pode derrubar o alvo"
+    },
+    {
+      "nome": "Pisoteio",
+      "descricao": "atropela e fere alvos menores no caminho"
+    },
+    {
+      "nome": "Corpo metálico",
+      "descricao": "imune a veneno e doença"
+    },
+    {
+      "nome": "Guardiã atenta",
+      "descricao": "Prontidão 4"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Touro couraçado de placas que parecem metal vivo, carrega em linha reta contra qualquer ameaça e usa o bafo que solidifica os pulmões da presa como arma tão certeira quanto os chifres."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Pasta em charnecas e campos abertos como um touro comum até ser provocado; então nada o detém, e sua passagem deixa vítimas transformadas em estátuas cinzentas atrás de si."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Muitos acreditam que a górgona nasceu de um touro comum tocado pelos experimentos da Grande Guerra, quando magia e engenho de metal se misturavam sem controle; hoje é citada como aviso vivo do que a Supressão jurou nunca mais permitir."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Plains",
+      "Mountain"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 4.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Górgona (touro de ferro)",
+    "cr": "8",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 24,
+      "des": 10,
+      "con": 24,
+      "int": 2,
+      "sab": 16,
+      "car": 9
+    },
+    "pericias": [
+      "Prontidão 4"
+    ],
+    "nota": "Sopro que petrifica (Su): Centelha 2. Não confundir com a Medusa.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

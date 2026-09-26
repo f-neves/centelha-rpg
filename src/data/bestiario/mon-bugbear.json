@@ -1,0 +1,133 @@
+{
+  "ordem": 22,
+  "id": "mon-bugbear",
+  "nome": "Bugbear",
+  "nomeIngles": "Bugbear",
+  "categoria": "Humanoide",
+  "papel": "soldado",
+  "conceito": "humanoide Médio",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+    "humanoide"
+  ],
+  "imagem": "bestiario/bugbear.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2,15 m de altura",
+    "peso": "113 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 5,
+    "destreza": 3,
+    "vigor": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Furtividade surpreendente",
+      "descricao": "Furtividade 3 apesar do porte; emboscadas eficazes"
+    },
+    {
+      "nome": "Golpe surpresa",
+      "descricao": "dano extra ao acertar um alvo desprevenido"
+    },
+    {
+      "nome": "Alerta",
+      "descricao": "Prontidão 2; dificilmente é surpreendido"
+    },
+    {
+      "nome": "Visão no escuro",
+      "descricao": "enxerga sem luz"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Predadores furtivos apesar do tamanho avantajado, preferem emboscar na escuridão a enfrentar qualquer inimigo de frente."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Movem-se com um silêncio antinatural para o porte que têm e escondem seus covis perto de rotas usadas por viajantes."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Convivem em pequenos bandos junto a goblins e hobgoblins, impondo-se pela força sempre que querem a melhor parte da presa."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Mais um ramo dos povos ásperos saídos da forja incompleta dos anões, os bugbears cresceram grandes e sorrateiros o bastante para aterrorizar sozinhos vilarejos isolados nas bordas de Mére e do The Neck."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground",
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Bugbear",
+    "cr": "2",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 16,
+      "des": 13,
+      "con": 13,
+      "int": 10,
+      "sab": 10,
+      "car": 9
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Prontidão 2"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

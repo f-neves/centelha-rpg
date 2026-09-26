@@ -1,0 +1,130 @@
+{
+  "ordem": 160,
+  "id": "mon-black-pudding",
+  "nome": "Pudim Negro",
+  "nomeIngles": "Black Pudding",
+  "categoria": "Limo",
+  "papel": "elite",
+  "conceito": "limo Enorme",
+  "descricao": "Massa informe que digere tudo que toca.",
+  "tags": [
+    "limo",
+    "centelha"
+  ],
+  "imagem": "bestiario/black-pudding.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "4,5 m de comprimento",
+    "peso": "1.800 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 7,
+    "destreza": 0,
+    "vigor": 9,
+    "influencia": 0,
+    "perspicacia": 0,
+    "compostura": 0,
+    "percepcao": 0,
+    "inteligencia": 0,
+    "raciocinio": 0
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 0,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 6,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Pseudópode",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "resistencias": [
+    "corte",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Ácido Devorador",
+      "descricao": "Seu toque secreta um ácido que dissolve carne, tecido e metal rapidamente; quem é atingido vê suas roupas e armadura se corroerem junto com a pele, e armas que a acertam também sofrem o mesmo dano."
+    },
+    {
+      "nome": "Divisão Corrosiva",
+      "descricao": "Armas de corte ou perfuração não a ferem: em vez disso, o golpe racha a poça em duas, cada metade com a metade da vitalidade restante. Poças pequenas demais não conseguem mais se dividir."
+    },
+    {
+      "nome": "Aderência Total",
+      "descricao": "Gruda-se com força a qualquer superfície, inclusive paredes e tetos, permitindo atacar de ângulos inesperados; enquanto usa essa aderência, move-se mais devagar, mas se torna quase impossível de arrastar ou derrubar."
+    },
+    {
+      "nome": "Sentido Vibratório",
+      "descricao": "Percebe o ambiente por vibração, dispensando completamente a visão, e sente a presença de carne e metal a certa distância."
+    },
+    {
+      "nome": "Corpo Amorfo",
+      "descricao": "Não possui mente, órgãos vitais ou pontos fracos: é imune a golpes críticos, flanqueamentos e qualquer efeito que dependa de raciocínio."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Natureza",
+      "texto": "É uma das grandes carniceiras do subterrâneo, sempre à espreita de uma refeição; sente carne ou metal a certa distância e ataca sem descanso até dissolver a presa ou ser destruída."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Reproduz-se destacando um pedaço do próprio corpo, que cresce até o tamanho adulto em cerca de um mês; algumas das criaturas mais astutas do subterrâneo mantêm poças negras em fossos de pedra, usando-as como lixeiras vivas."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Ooze",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Black Pudding",
+    "cr": "7",
+    "tipo": "limo Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 16,
+      "des": 1,
+      "con": 22,
+      "int": "-",
+      "sab": 1,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

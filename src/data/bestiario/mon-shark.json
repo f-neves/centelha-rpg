@@ -1,0 +1,124 @@
+{
+  "ordem": 282,
+  "id": "mon-shark",
+  "nome": "Tubarão",
+  "nomeIngles": "Shark",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/shark.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3 metros de comprimento",
+    "peso": "136 kg"
+  },
+  "locomocao": {
+    "natacao": 6
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 6,
+    "destreza": 3,
+    "vigor": 4,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Olfato sanguinário",
+      "descricao": "Sente cheiro de sangue na água a quilômetros de distância e percebe presas próximas mesmo sem enxergá-las."
+    },
+    {
+      "nome": "Mordida voraz",
+      "descricao": "Ataca com mandíbulas cheias de dentes, tornando-se ainda mais agressivo quando há sangue na água."
+    },
+    {
+      "nome": "Nadador incansável",
+      "descricao": "Move-se na água com grande velocidade, mas é incapaz de se deslocar fora dela."
+    },
+    {
+      "nome": "Sentidos aquáticos",
+      "descricao": "Percebe vibrações e movimento próximos mesmo sem visão direta, guiando-se pela água ao redor."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Máquina de caçar perfeita",
+      "texto": "Moldado por eras de evolução para uma única função, o tubarão é visto por povos do mar como a fúria dos próprios deuses das profundezas."
+    },
+    {
+      "titulo": "Sangue no ar",
+      "texto": "Capaz de sentir uma única gota de sangue a quilômetros de distância, raramente ignora um ferido que se aventura em suas águas."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Shark",
+    "cr": "2",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 17,
+      "des": 12,
+      "con": 13,
+      "int": 1,
+      "sab": 12,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "nado 60: o tubarão não tem passo em terra"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

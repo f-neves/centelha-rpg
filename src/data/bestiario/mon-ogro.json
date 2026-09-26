@@ -1,0 +1,135 @@
+{
+  "ordem": 25,
+  "id": "mon-ogro",
+  "nome": "Ogro",
+  "nomeIngles": "Ogre",
+  "categoria": "Gigante",
+  "papel": "soldado",
+  "conceito": "humanoide Grande (gigante)",
+  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "tags": [
+    "gigante"
+  ],
+  "imagem": "bestiario/ogro.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,9 m de altura",
+    "peso": "290 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 7,
+    "destreza": 2,
+    "vigor": 5,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Pancada descomunal",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Golpe brutal",
+      "descricao": "ataque corpo a corpo de dano alto com clava ou machado gigante"
+    },
+    {
+      "nome": "Força de gigante",
+      "descricao": "derruba portas, arremessa objetos e desequilibra oponentes menores"
+    },
+    {
+      "nome": "Atlético",
+      "descricao": "Atletismo 1; escala e corre melhor do que o esperado para o tamanho"
+    },
+    {
+      "nome": "Alvo grande",
+      "descricao": "tamanho Grande facilita ser acertado, mas aguenta mais dano graças à massa"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Age por impulso e fome, resolve qualquer problema no porrete antes de pensar; fácil de enganar, mas perigoso quando irritado."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Vive sozinho ou em pequeno grupo familiar, guarda cavernas ou ruínas cheias de ossos e tralha roubada, e come praticamente qualquer coisa, gente inclusive."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Sem organização além do bando doméstico; obedece a quem for mais forte ou esperto o bastante para enganá-lo."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Relíquia bruta de um mundo mais selvagem, o ogro é hoje pesadelo comum dos caminhos isolados de Mére e das terras altas do White Wall, temido por camponeses que já não sabem dizer se é besta, gigante caído ou coisa pior escapada da Fenda."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Giant",
+    "terreno": [
+      "Mountain",
+      "Forest",
+      "Swamp"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Atletismo 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Ogro",
+    "cr": "3",
+    "tipo": "humanoide Grande (gigante)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 8,
+      "con": 15,
+      "int": 6,
+      "sab": 10,
+      "car": 7
+    },
+    "pericias": [
+      "Atletismo 1"
+    ],
+    "nota": "Força 21 dá curva 6; +1 de tamanho (Grande) = Força 7. É assim que o brutamontes fica acima do pico humano. Centelha 0: pura massa, nada mágico.",
+    "exemplo": true,
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

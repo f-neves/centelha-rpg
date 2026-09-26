@@ -1,0 +1,134 @@
+{
+  "ordem": 15,
+  "id": "mago-de-batalha",
+  "nome": "Mago de Batalha",
+  "nomeIngles": "War Mage",
+  "categoria": "Humanoide",
+  "categoriaLegada": "Conjurador",
+  "papel": "chefe",
+  "conceito": "artilharia arcana",
+  "descricao": "Conjura fogo e força sobre o campo; perigoso a qualquer distância.",
+  "tags": [
+    "humano",
+    "centelha",
+    "arcano"
+  ],
+  "imagem": "bestiario/mago-de-batalha.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,75 m de altura",
+    "peso": "75 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 2,
+    "destreza": 3,
+    "vigor": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 5,
+    "inteligencia": 5,
+    "raciocinio": 2
+  },
+  "skills": {
+    "ocultismo": 5,
+    "esquiva": 3,
+    "prontidao": 3,
+    "conhecimentos": 3,
+    "integridade": 5
+  },
+  "skills2": {
+    "acerto-arcano": 5
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 8,
+  "aparencia": 4,
+  "arte": {
+    "fogo": 3,
+    "forcas": 2
+  },
+  "ataques": [
+    {
+      "nome": "Bola de fogo (Fogo 3)",
+      "atrib": "percepcao",
+      "pericia": "acerto-arcano",
+      "dado": 3,
+      "distancia": true,
+      "tipo": "fogo (área)",
+      "ticks": 6,
+      "notas": "3 Mana; explosão em área. O pool vale enquanto a pendência 25 do Arcano não fechar: área talvez não tenha pontaria"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Bola de fogo",
+      "descricao": "explosão numa área; dano alto a todos dentro, metade se Esquivar"
+    },
+    {
+      "nome": "Escudo de força",
+      "descricao": "camada extra de Absorção (Forças) que bloqueia golpes até se esgotar"
+    },
+    {
+      "nome": "Concentração arcana",
+      "descricao": "se sofrer dano em corpo a corpo, arrisca perder a conjuração seguinte"
+    },
+    {
+      "nome": "Raio de energia",
+      "descricao": "ataque à distância confiável que ignora cobertura leve"
+    },
+    {
+      "nome": "Grande reserva arcana",
+      "descricao": "Mana 12 sustenta múltiplas magias ativas na mesma cena"
+    },
+    {
+      "nome": "Mantém distância",
+      "descricao": "evita corpo a corpo; reposiciona-se para conjurar com segurança"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Mantém distância do combate corpo a corpo, usa o terreno a seu favor e abre o confronto com rajadas de fogo e força para quebrar formações antes de qualquer aproximação."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Carrega grimórios e focos raros como bens mais preciosos que a própria armadura, e trata cada magia preparada como recurso escasso a ser gasto com cálculo."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Frio e calculista, vê tropas comuns como escudo descartável e tem orgulho quase arrogante do próprio dom arcano."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "A Supressão tornou a arte arcana tabu e temida em Calin e no The Neck, então um mago de guerra deste calibre só floresce longe da vista das igrejas supressoras, formado nas escolas escondidas de Mére ou a soldo de um senhor de guerra disposto a arriscar a fúria do povo em troca de vantagem no campo de batalha."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Mana 12. Escudo de Força (Forças) o protege; Bola de Fogo atinge grupos. Feche a distância e quebre a concentração.",
+  "pendente": false,
+  "fonte": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

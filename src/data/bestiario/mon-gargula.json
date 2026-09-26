@@ -1,0 +1,158 @@
+{
+  "ordem": 54,
+  "id": "mon-gargula",
+  "nome": "Gárgula",
+  "nomeIngles": "Gargoyle",
+  "categoria": "Humanoide monstruoso",
+  "categoriaLegada": "Monstro",
+  "papel": "soldado",
+  "conceito": "humanoide monstruoso Médio",
+  "descricao": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha"
+  ],
+  "imagem": "bestiario/gargula.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,5 m de altura",
+    "peso": "180 kg (pedra densa)"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 4,
+    "destreza": 4,
+    "vigor": 5,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Pele de pedra / RD",
+      "tipo": "proeza",
+      "alvo": "Pele de Pedra · Pele de Pedra (b4)",
+      "caminho": "pele-de-pedra"
+    },
+    {
+      "efeito": "Imobilidade (freeze)",
+      "tipo": "proeza",
+      "alvo": "Máscara / Sombra",
+      "caminho": "mascara"
+    }
+  ],
+  "resistencias": [
+    "corte",
+    "fogo",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Pele de pedra",
+      "descricao": "Absorção alta contra ataques físicos e mágicos"
+    },
+    {
+      "nome": "Imobilidade (freeze)",
+      "descricao": "finge ser estátua parada; bônus enorme de Furtividade"
+    },
+    {
+      "nome": "Voo silencioso",
+      "descricao": "desloca no ar sem ruído, surpreendendo presas"
+    },
+    {
+      "nome": "Garras e chifres",
+      "descricao": "múltiplos ataques corpo a corpo na mesma rodada"
+    },
+    {
+      "nome": "Corpo pétreo",
+      "descricao": "imune a Veneno e não precisa respirar"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Fica imóvel como estátua de pedra por dias, esperando o momento certo, e desperta em silêncio para emboscar quem profanou o local que guarda."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Não precisa comer nem dormir como criatura viva; existe para vigiar, e isso a torna um guardião paciente onde qualquer sentinela de carne e osso desistiria havia muito."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Fria e metódica, sem ódio nem prazer no ataque, apenas cumprindo o propósito para o qual foi talhada ou invocada, geração após geração de intrusos."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Muitas gárgulas ainda montam guarda em templos e bibliotecas caídas da Tecelã, de antes da Supressão; encontrar uma viva reforça no povo comum o medo antigo de que pedra também possa trair."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Ruins",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Gárgula",
+    "cr": "4",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 14,
+      "con": 18,
+      "int": 6,
+      "sab": 11,
+      "car": 7
+    },
+    "pericias": [
+      "Furtividade 3"
+    ],
+    "nota": "Congelar/RD mágica: Centelha 1.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

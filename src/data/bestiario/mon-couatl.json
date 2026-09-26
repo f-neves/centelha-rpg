@@ -1,0 +1,180 @@
+{
+  "ordem": 106,
+  "id": "mon-couatl",
+  "nome": "Couatl",
+  "nomeIngles": "Couatl",
+  "categoria": "Outsider",
+  "categoriaLegada": "Exterior",
+  "papel": "chefe",
+  "conceito": "exterior Médio",
+  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/couatl.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "3 m de comprimento, envergadura 2,4 m",
+    "peso": "115 kg"
+  },
+  "locomocao": {
+    "voo": 6
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 4,
+    "destreza": 6,
+    "vigor": 5,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 6,
+    "percepcao": 6,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 2,
+    "prontidao": 3,
+    "integridade": 6
+  },
+  "virtues": {
+    "compaixao": 5,
+    "conviccao": 5,
+    "temperanca": 4,
+    "valor": 5
+  },
+  "willpower": 10,
+  "aparencia": 9,
+  "arte": {
+    "materia": 2,
+    "adivinhacao": 2
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Feitiços (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "várias · N3–N4"
+    },
+    {
+      "efeito": "Constrição venenosa",
+      "tipo": "proeza",
+      "alvo": "Agarrão do Urso + veneno",
+      "caminho": "agarrao-do-urso"
+    },
+    {
+      "efeito": "Mudar de forma",
+      "tipo": "feiticaria",
+      "alvo": "Matéria · N2",
+      "arte": "materia"
+    },
+    {
+      "efeito": "Telepatia",
+      "tipo": "feiticaria",
+      "alvo": "Adivinhação · N2",
+      "arte": "adivinhacao"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Constrição venenosa",
+      "descricao": "agarra e esmaga; vítima sofre dano contínuo e, se falhar em Resistência, fica Abalada"
+    },
+    {
+      "nome": "Mudar de forma",
+      "descricao": "assume forma humanoide ou animal por cena"
+    },
+    {
+      "nome": "Telepatia",
+      "descricao": "comunica-se mentalmente com qualquer criatura em até 18m"
+    },
+    {
+      "nome": "Viagem planar",
+      "descricao": "1x por cena desloca-se entre planos ou realidades"
+    },
+    {
+      "nome": "Feitiços arcanos e divinos",
+      "descricao": "acesso amplo a magias de cura, proteção e ataque"
+    },
+    {
+      "nome": "Voo",
+      "descricao": "voa com asas emplumadas"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Guardiã antiga e telepata, observa mais do que age, e protege o equilíbrio entre o conhecimento útil e o conhecimento perigoso."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Solitária por natureza, mas mantém pactos silenciosos com outras couatls espalhadas por templos esquecidos."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Sábia e paciente, comunica-se por imagens e sensações diretamente na mente de quem se aproxima com respeito."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Dorme enrolada em ruínas de pirâmides e templos monumentais, quase invisível entre as pedras."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "A serpente emplumada encontra em Mère seu lar mais natural, entre as cidades mágicas escondidas atrás da fachada dita bárbara; anciãos de Mère juram que uma couatl ensinou aos primeiros sacerdotes os ritos que sobreviveram à Supressão, guardados em segredo sob as pirâmides."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Celestial",
+    "terreno": [
+      "Jungle",
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Ocultismo 4, Persuasão 3, Prontidão 4.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Couatl",
+    "cr": "10",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 21,
+      "con": 17,
+      "int": 18,
+      "sab": 20,
+      "car": 19
+    },
+    "pericias": [
+      "Ocultismo 4",
+      "Persuasão 3",
+      "Prontidão 4"
+    ],
+    "nota": "Serpente emplumada mágica: Centelha 4.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60; a serpente alada rasteja 20 e não é assim que ela vai"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

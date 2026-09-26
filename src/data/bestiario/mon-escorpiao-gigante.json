@@ -1,0 +1,139 @@
+{
+  "ordem": 47,
+  "id": "mon-escorpiao-gigante",
+  "nome": "Escorpião Gigante",
+  "nomeIngles": "Giant Scorpion",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/escorpiao-gigante.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "Comprimento total 3 m (com cauda)",
+    "peso": "350 kg"
+  },
+  "locomocao": {
+    "terra": 5
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 6,
+    "destreza": 3,
+    "vigor": 6,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Ferrão venenoso",
+      "tipo": "natural",
+      "alvo": "veneno natural (tag da arma)"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Ferrão venenoso",
+      "descricao": "ataque de cauda; acerto força Vigor ou dano contínuo e Fraqueza"
+    },
+    {
+      "nome": "Garras duplas",
+      "descricao": "dois ataques de agarrar por rodada, podem prender o alvo"
+    },
+    {
+      "nome": "Carapaça quitinosa",
+      "descricao": "Absorção alta"
+    },
+    {
+      "nome": "Sentido vibratório",
+      "descricao": "percebe movimento no chão mesmo às cegas"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Ataca com as pinças para prender a presa e crava o ferrão por cima, injetando veneno que paralisa ou mata aos poucos. É territorial e reage com violência a qualquer intrusão em sua toca."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Cava tocas em solo seco e pedregoso; comum nas terras áridas do interior de Mére e nas ruínas quentes que pontilham a fronteira sul."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Solitário fora da época de acasalamento, come praticamente qualquer coisa que se mova perto demais de sua toca, de roedores a viajantes desavisados."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Caravaneiros de Mére contam histórias de escorpiões do tamanho de um boi como sinal de terra amaldiçoada, reforçando o medo supersticioso que a Supressão semeou por toda parte fora da magia comum."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Desert"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Escorpião Gigante",
+    "cr": "3",
+    "tipo": "praga Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 12,
+      "con": 16,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "pericias": [
+      "Furtividade 1"
+    ],
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

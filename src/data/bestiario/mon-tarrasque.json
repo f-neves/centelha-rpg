@@ -1,0 +1,177 @@
+{
+  "ordem": 129,
+  "id": "mon-tarrasque",
+  "nome": "Tarrasque",
+  "nomeIngles": "Tarrasque",
+  "categoria": "Besta mágica",
+  "papel": "chefe",
+  "conceito": "besta mágica Colossal",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/tarrasque.webp",
+  "porte": "Colossal",
+  "dimensoes": {
+    "medida": "27 m de comprimento, chegando a 15 m de altura quando se ergue",
+    "peso": "450 t"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 10,
+  "attrs": {
+    "forca": 16,
+    "destreza": 2,
+    "vigor": 14,
+    "influencia": 4,
+    "perspicacia": 2,
+    "compostura": 4,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 12,
+  "aparencia": 5,
+  "arte": {
+    "protecao": 4,
+    "morte": 3
+  },
+  "tech": {
+    "imortalidade-tenue": true
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 4,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Carapaça reflete magia (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Proteção · N4",
+      "arte": "protecao"
+    },
+    {
+      "efeito": "Regeneração implacável (Su)",
+      "tipo": "proeza",
+      "alvo": "Cerne Vital · Imortalidade Tênue (b15)",
+      "caminho": "cerne-vital"
+    },
+    {
+      "efeito": "Bramido de pânico (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N3 / Lenda Viva · Ícone (b15)",
+      "arte": "morte"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Carapaça reflete magia",
+      "descricao": "feitiços dirigidos a ela podem ricochetear de volta ao conjurador"
+    },
+    {
+      "nome": "Regeneração implacável",
+      "descricao": "recupera grande quantidade de PV a cada rodada"
+    },
+    {
+      "nome": "Bramido de pânico",
+      "descricao": "raio 18m; falha em Vontade: Abalado e foge por uma rodada"
+    },
+    {
+      "nome": "Múltiplos ataques",
+      "descricao": "morde, arranha e golpeia com a cauda no mesmo turno, cada um com dano alto"
+    },
+    {
+      "nome": "Investida destruidora",
+      "descricao": "atropela tudo em seu caminho, ignora terreno e estruturas leves"
+    },
+    {
+      "nome": "Quase imune",
+      "descricao": "resiste a veneno, doença e à maioria dos efeitos mentais"
+    },
+    {
+      "nome": "Fúria implacável",
+      "descricao": "abaixo de metade dos PV, ganha um ataque extra por rodada"
+    },
+    {
+      "nome": "Escala colossal",
+      "descricao": "alcance e Absorção muito acima do normal"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "A Tarrasca não caça por fome nem conquista por ambição: desperta de seu sono milenar apenas para destruir, devorar e voltar a dormir, ignorando dor, fogo e feitiço enquanto arrasa tudo em seu caminho."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Nenhum predador a ameaça e nenhum ecossistema a contém; sua passagem deixa terra estéril por gerações, e reinos inteiros aprenderam a ler os sinais de seu despertar como quem lê o fim do mundo."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Não há malícia nela, só fúria pura e instinto: é uma força da natureza, não uma vilã que pensa, o que a torna ainda mais aterradora para quem tenta negociar ou fugir."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "As lendas dizem que a Tarrasca desperta quando o orgulho e o poder dos mortais crescem demais, um eco distante da Grande Guerra que quase destruiu Uldun. As igrejas supressoras de Calin usam sua história como sermão vivo: prova de que magia e tecnologia desenfreadas convocam monstros que nem os deuses sobreviventes ousam despertar de novo."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 4. Centelha acima do teto mortal (entidade).",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Tarrasque",
+    "cr": "20",
+    "tipo": "besta mágica Colossal",
+    "tamanho": "colossal",
+    "valores": {
+      "for": 45,
+      "des": 8,
+      "con": 35,
+      "int": 3,
+      "sab": 14,
+      "car": 14
+    },
+    "pericias": [
+      "Prontidão 4"
+    ],
+    "nota": "Cataclismo vivo, quase indestrutível: Centelha 9. Str 45 → curva 12 +4 = Força 16.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

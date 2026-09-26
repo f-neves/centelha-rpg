@@ -1,0 +1,127 @@
+{
+  "ordem": 274,
+  "id": "mon-dire-rat",
+  "nome": "Rato Atroz",
+  "nomeIngles": "Dire Rat",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Pequeno",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/dire-rat.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "60 cm de comprimento",
+    "peso": "até 11 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 2,
+    "destreza": 5,
+    "vigor": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 1,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentidos aguçados",
+      "descricao": "Enxerga na penumbra e sente cheiros com precisão incomum, raramente sendo pego de surpresa."
+    },
+    {
+      "nome": "Mordida doentia",
+      "descricao": "Sua saliva carrega uma febre imunda; quem é mordido deve testar Vigor ou sofrer dano contínuo de fraqueza até se curar."
+    },
+    {
+      "nome": "Trepador e nadador",
+      "descricao": "Escala paredes e nada com a mesma facilidade com que corre, escapando por qualquer fresta."
+    },
+    {
+      "nome": "Vive em bando",
+      "descricao": "Raramente age sozinho; costuma atacar em número, cercando presas maiores."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Praga dos becos e esgotos",
+      "texto": "Ratos-selvagens se multiplicam onde há lixo, cadáveres e descuido, tornando-se um flagelo tanto em masmorras quanto nas ruas mais pobres das cidades."
+    },
+    {
+      "titulo": "Mordida que apodrece",
+      "texto": "Sua saliva carrega uma febre imunda que corrói lentamente o corpo de quem sobrevive à mordida, prova de que nem toda ameaça precisa de presas grandes."
+    },
+    {
+      "titulo": "Companheiro de necessidade",
+      "texto": "Alguns batedores e ladrões criam ratos-selvagens como aliados leais, aproveitando sua agilidade para escalar paredes e vasculhar túneis estreitos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Urban",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Rat",
+    "cr": "1/3",
+    "tipo": "animal Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 10,
+      "des": 17,
+      "con": 13,
+      "int": 2,
+      "sab": 13,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

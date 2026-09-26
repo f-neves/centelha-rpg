@@ -1,0 +1,131 @@
+{
+  "ordem": 284,
+  "id": "mon-shocker-lizard",
+  "nome": "Shocker Lizard",
+  "nomeIngles": "Shocker Lizard",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Pequeno",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/shocker-lizard.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "90 cm de comprimento",
+    "peso": "11 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 2,
+    "destreza": 4,
+    "vigor": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentido elétrico",
+      "descricao": "Detecta qualquer descarga elétrica num raio considerável, incluindo a de outros lagartos-choque próximos."
+    },
+    {
+      "nome": "Choque elétrico",
+      "descricao": "Descarrega eletricidade em um alvo próximo, causando dano não letal; vários lagartos juntos podem gerar um choque letal em área."
+    },
+    {
+      "nome": "Trepador e nadador",
+      "descricao": "Sobe e nada com a mesma facilidade com que caminha pelo chão."
+    },
+    {
+      "nome": "Imune à eletricidade",
+      "descricao": "Seu próprio corpo não sofre com choques, sejam os seus ou os de outro lagarto."
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "Enxerga no escuro e na penumbra."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Poder que cresce em grupo",
+      "texto": "Sozinho, um lagarto-choque é tímido e foge após descarregar sua eletricidade, mas em colônia se tornam capazes de eletrocutar presas muito maiores que eles."
+    },
+    {
+      "titulo": "Territoriais junto às águas",
+      "texto": "Estabelecem colônias sempre perto de fontes de água, defendendo ferozmente seu território contra qualquer intruso que se aproxime demais."
+    },
+    {
+      "titulo": "Difíceis de domesticar",
+      "texto": "Poucos conseguem manter um lagarto-choque em cativeiro, pois isolado da companhia de outros de sua espécie ele definha e morre com facilidade."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Swamp"
+    ],
+    "clima": [
+      "Tropical",
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Shocker Lizard",
+    "cr": "2",
+    "tipo": "besta mágica Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 10,
+      "des": 15,
+      "con": 13,
+      "int": 2,
+      "sab": 13,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

@@ -1,0 +1,128 @@
+{
+  "ordem": 204,
+  "id": "mon-small-fire-elemental",
+  "nome": "Elemental do Fogo (Pequeno)",
+  "nomeIngles": "Elemental, Fire",
+  "categoria": "Elemental",
+  "papel": "soldado",
+  "conceito": "exterior (fogo) Pequeno",
+  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+    "elemental",
+    "centelha"
+  ],
+  "imagem": "bestiario/small-fire-elemental.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "1,2 metro de altura, silhueta de chamas",
+    "peso": "praticamente sem peso"
+  },
+  "locomocao": {
+    "terra": 5
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 2,
+    "destreza": 3,
+    "vigor": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "agua"
+  ],
+  "resistencias": [
+    "fogo"
+  ],
+  "habilidades": [
+    {
+      "nome": "Toque em chamas",
+      "descricao": "Seu golpe deixa a vítima queimando, sofrendo dano contínuo até que alguém apague o fogo ou o efeito passe."
+    },
+    {
+      "nome": "Corpo incandescente",
+      "descricao": "Imune ao próprio fogo e a queimaduras, mas a água fria e o gelo o enfraquecem visivelmente."
+    },
+    {
+      "nome": "Veloz como labareda",
+      "descricao": "Corre e se espalha com rapidez incomum, quase como o próprio fogo se alastrando."
+    },
+    {
+      "nome": "Feito de chama pura",
+      "descricao": "Não sente cansaço, veneno ou doença; é feito de puro elemento, não de carne."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Fragmento do incêndio eterno",
+      "texto": "Arrancado de um plano onde tudo arde sem se consumir, deixa um rastro de fumaça e cinzas por onde passa."
+    },
+    {
+      "titulo": "Fome de queimar",
+      "texto": "Não distingue amigo de inimigo quando solto perto de algo inflamável; sua natureza é simplesmente consumir."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Small Fire Elemental",
+    "cr": "1",
+    "tipo": "exterior (fogo) Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 10,
+      "des": 13,
+      "con": 10,
+      "int": 4,
+      "sab": 11,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

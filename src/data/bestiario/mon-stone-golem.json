@@ -1,0 +1,131 @@
+{
+  "ordem": 230,
+  "id": "mon-stone-golem",
+  "nome": "Golem de Pedra",
+  "nomeIngles": "Golem, Stone",
+  "categoria": "Construto",
+  "categoriaLegada": "Monstro",
+  "papel": "chefe",
+  "conceito": "constructo Grande",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricaoLegada": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha"
+  ],
+  "imagem": "bestiario/stone-golem.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,7 m de altura",
+    "peso": "900 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 10,
+    "destreza": 2,
+    "vigor": 1,
+    "influencia": 0,
+    "perspicacia": 0,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 3,
+    "valor": 4
+  },
+  "willpower": 8,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "resistencias": [
+    "corte",
+    "fogo",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Onda de lentidão",
+      "descricao": "Pode invocar ao seu redor um campo que deixa qualquer um por perto lento por vários turnos, sem chance de resistência."
+    },
+    {
+      "nome": "Imunidade a magia",
+      "descricao": "Incólume à maioria das magias. Encantamentos de transmutação de pedra o afetam de forma diferente, podendo lentificá-lo ou restaurar seus ferimentos por completo."
+    },
+    {
+      "nome": "Casco pétreo",
+      "descricao": "Seu corpo de pedra maciça resiste bem a golpes comuns, cedendo apenas a armas de adamantina."
+    },
+    {
+      "nome": "Passos silenciosos",
+      "descricao": "Não fala nem produz som algum além do ranger da pedra quando se move."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Guardião esculpido",
+      "texto": "Talhado num único bloco de granito, o golem de pedra veste a forma que seu criador escolheu, com frequência a de um guerreiro arcaico e armado."
+    },
+    {
+      "titulo": "Inabalável",
+      "texto": "Avança com passos pesados e implacáveis, sem pressa e sem hesitação, como se o tempo não lhe dissesse respeito."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Construct",
+    "terreno": [
+      "Ruins",
+      "Underground",
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Stone Golem",
+    "cr": "11",
+    "tipo": "constructo Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 28,
+      "des": 9,
+      "con": "-",
+      "int": "-",
+      "sab": 11,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

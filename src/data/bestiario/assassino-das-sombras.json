@@ -1,0 +1,128 @@
+{
+  "ordem": 8,
+  "id": "assassino-das-sombras",
+  "nome": "Assassino das Sombras",
+  "nomeIngles": "Shadow Assassin",
+  "categoria": "Humanoide",
+  "categoriaLegada": "Humano",
+  "papel": "elite",
+  "conceito": "lâmina silenciosa",
+  "descricao": "Surge das sombras, aplica um golpe e some.",
+  "tags": [
+    "humano",
+    "centelha"
+  ],
+  "imagem": "bestiario/assassino-das-sombras.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,7 m de altura",
+    "peso": "65 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 3,
+    "destreza": 5,
+    "vigor": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 4,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "armas-uma-mao": 4,
+    "furtividade": 5,
+    "esquiva": 4,
+    "prontidao": 4,
+    "manha": 3,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "tech": {
+    "pisar-leve": true,
+    "esgueirar": true,
+    "bote-silencioso": true,
+    "manto-de-sombras": true
+  },
+  "equip": {
+    "armaduras": [
+      "couro"
+    ]
+  },
+  "ataques": [
+    {
+      "nome": "Adaga (Ágil)",
+      "atrib": "destreza",
+      "pericia": "armas-uma-mao",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 2,
+      "perf": 0,
+      "ticks": 5,
+      "notas": "Ágil: usa Destreza no dano. Perf. 0: contra armadura, mira na fresta ou no alvo desprevenido"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Bote Silencioso",
+      "descricao": "+2d6 de dano contra alvo desavisado (que já sofre penalidade de Defesa por surpresa)"
+    },
+    {
+      "nome": "Andar nas sombras",
+      "descricao": "esconde-se e aproxima-se sem ser notado"
+    },
+    {
+      "nome": "Golpe e sumiço",
+      "descricao": "ataca e desaparece de cena antes da reação do alvo"
+    },
+    {
+      "nome": "Lâmina precisa",
+      "descricao": "ataques confiáveis mesmo sem o bônus de surpresa"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Estuda o alvo, espera o momento de menor atenção, ataca uma vez e desaparece antes que alguém reaja."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Trabalha sozinho ou para uma guilda discreta, vendido a quem paga bem e não faz perguntas."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Carrega Centelha suficiente para se mover como sombra entre sombras, um talento raro que o torna valioso (e temido) tanto para nobres de Calin quanto para cultos escusos de Mére."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Bote Silencioso: +2d6 de dano contra alvo desavisado (que já sofre a penalidade de Defesa por surpresa).",
+  "pendente": false,
+  "fonte": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

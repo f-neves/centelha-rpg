@@ -1,0 +1,123 @@
+{
+  "ordem": 170,
+  "id": "mon-chuul",
+  "nome": "Chuul",
+  "nomeIngles": "Chuul",
+  "categoria": "Aberração",
+  "papel": "elite",
+  "conceito": "aberração Grande",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha"
+  ],
+  "imagem": "bestiario/chuul.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,7 m de comprimento",
+    "peso": "160 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 9,
+    "destreza": 5,
+    "vigor": 6,
+    "influencia": 1,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 4,
+    "inteligencia": 2,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Tentáculos Paralisantes",
+      "descricao": "Transfere a vítima presa das pinças para os tentáculos, que não cortam mas secretam veneno: quem fica preso deve resistir a cada instante ou fica paralisado por muito tempo."
+    },
+    {
+      "nome": "Mandíbulas Devoradoras",
+      "descricao": "Enquanto segura a presa nos tentáculos, crava as mandíbulas nela repetidamente, causando dano constante até que ela se solte ou morra."
+    },
+    {
+      "nome": "Imunidade a Veneno",
+      "descricao": "Seu corpo crustáceo é completamente imune a venenos de qualquer origem."
+    },
+    {
+      "nome": "Anfíbio",
+      "descricao": "Nada e respira tanto na água quanto fora dela, arrastando presas capturadas para as profundezas para afogá-las."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Emboscada nos Pântanos",
+      "texto": "Blindado como um caranguejo gigante, espreita sob a superfície de charcos e águas rasas, explodindo da escuridão para agarrar quem se aproxima demais da margem."
+    },
+    {
+      "titulo": "Inteligência Inquietante",
+      "texto": "Ao contrário de meras bestas, fala uma língua gutural própria e decora seu covil com troféus das presas devoradas, alimentando especulações sobre sua origem."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Swamp",
+      "Water"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Chuul",
+    "cr": "7",
+    "tipo": "aberração Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 25,
+      "des": 16,
+      "con": 18,
+      "int": 10,
+      "sab": 14,
+      "car": 5
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

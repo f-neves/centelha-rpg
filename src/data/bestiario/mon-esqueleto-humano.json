@@ -1,0 +1,134 @@
+{
+  "ordem": 74,
+  "id": "mon-esqueleto-humano",
+  "nome": "Esqueleto Humano",
+  "nomeIngles": "Human Skeleton",
+  "categoria": "Morto-vivo",
+  "papel": "capanga",
+  "conceito": "morto-vivo Médio",
+  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "tags": [
+    "morto-vivo"
+  ],
+  "imagem": "bestiario/esqueleto-humano.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,7 m de altura",
+    "peso": "15 kg, apenas ossos"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 4,
+    "destreza": 4,
+    "vigor": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 1,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 4,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 2,
+  "ataques": [
+    {
+      "nome": "Golpe",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "resistencias": [
+    "corte",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Sem carne",
+      "descricao": "imune a veneno, doença e efeitos mentais, nunca fica Abalado por medo"
+    },
+    {
+      "nome": "Ossos frágeis a impacto",
+      "descricao": "sofre dano extra de armas de concussão (Absorção reduzida contra elas)"
+    },
+    {
+      "nome": "Ataque de arma simples",
+      "descricao": "golpe corpo a corpo com espada ou lança sem talento especial"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Não pensa nem sente, apenas obedece à vontade de quem o ergueu. Move-se com a rigidez de ossos secos e ataca sem hesitação, medo ou cansaço."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Não come, não dorme e não apodrece mais, pois já não há carne a apodrecer. Sobrevive enquanto a magia que o sustenta não for desfeita."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Guarda criptas, masmorras e campos de batalha esquecidos, imóvel por anos até que algo desperte sua ordem."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "A Centelha deste corpo já se foi há muito, reciclada à Primeira Luz ou levada a um além; o que resta é um casco vazio movido por vontade alheia. Por isso as igrejas supressoras o veem menos como uma alma amaldiçoada que como um insulto grosseiro à ordem natural da morte."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Undead",
+    "terreno": [
+      "Ruins",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Esqueleto Humano",
+    "cr": "1/3",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 14,
+      "con": "-",
+      "int": "-",
+      "sab": 10,
+      "car": 10
+    },
+    "nota": "Con — → Vigor vem do Carisma (2). Mente vazia: Int/Rac 0. Casca inerte: Centelha 0.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

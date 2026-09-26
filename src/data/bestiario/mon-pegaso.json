@@ -1,0 +1,165 @@
+{
+  "ordem": 120,
+  "id": "mon-pegaso",
+  "nome": "Pégaso",
+  "nomeIngles": "Pegasus",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Grande",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/pegaso.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "corpo 2,7 m, envergadura 9 m",
+    "peso": "450 kg"
+  },
+  "locomocao": {
+    "terra": 6
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 6,
+    "destreza": 4,
+    "vigor": 6,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 5,
+  "arte": {
+    "adivinhacao": 1
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Detectar o bem e o mal (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Adivinhação · N1",
+      "arte": "adivinhacao"
+    },
+    {
+      "efeito": "Voo",
+      "tipo": "natural",
+      "alvo": "asas"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Voo majestoso",
+      "descricao": "desloca 15m voando, alta manobrabilidade mesmo em espaços apertados"
+    },
+    {
+      "nome": "Detectar o bem e o mal",
+      "descricao": "sente intenções morais num raio de 18m"
+    },
+    {
+      "nome": "Coice poderoso",
+      "descricao": "ataque corpo a corpo com dano alto"
+    },
+    {
+      "nome": "Sentidos aguçados",
+      "descricao": "+2d6 em Prontidão, dificilmente é surpreendido"
+    },
+    {
+      "nome": "Coração nobre",
+      "descricao": "imune a Medo"
+    },
+    {
+      "nome": "Só o puro cavalga",
+      "descricao": "só aceita cavaleiros de intenções verdadeiramente boas"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Voa livre em bandos pelos céus altos, evitando toda civilização, e só se deixa montar por quem prova, ao longo de anos, um coração puro."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Vive em manadas soltas lideradas por um garanhão ou égua mais velha, defendendo os potros com ferocidade absoluta."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Ocupa planaltos altos e picos isolados, bem longe de estradas e cidades."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Nobre e altivo, leal a quem conquista sua confiança, e implacável com qualquer traição."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Relíquia viva de um mundo mais mágico, cultuada por alguns como sinal do Sol; camponeses que nunca viram Centelha tão alta a encaram com o mesmo temor supersticioso reservado a dragões."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Sky",
+      "Plains",
+      "Mountain"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 3, Atletismo 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Pégaso",
+    "cr": "3",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 15,
+      "con": 16,
+      "int": 10,
+      "sab": 13,
+      "car": 13
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Atletismo 2"
+    ],
+    "nota": "Naturalmente mágico, detectar o bem/mal (Su): Centelha 3.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

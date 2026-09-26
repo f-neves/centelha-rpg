@@ -1,0 +1,136 @@
+{
+  "ordem": 265,
+  "id": "mon-night-hag",
+  "nome": "Bruxa Noturna",
+  "nomeIngles": "Hag, Night",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Exterior",
+  "papel": "chefe",
+  "conceito": "exterior Médio",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha"
+  ],
+  "imagem": "bestiario/night-hag.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "entre 1,68 m e 2,13 m de altura",
+    "peso": "70 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 6,
+    "destreza": 5,
+    "vigor": 7,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 6
+  },
+  "willpower": 10,
+  "aparencia": 0,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão no escuro",
+      "descricao": "Enxerga perfeitamente na escuridão total."
+    },
+    {
+      "nome": "Pele curtida e mente imune",
+      "descricao": "Sua carne absorve golpes comuns, exceto ferro frio e armas mágicas, e ela é imune a encantos, medo, sono, fogo e frio, além de resistir bem à maioria das magias."
+    },
+    {
+      "nome": "Mordida doentia",
+      "descricao": "Sua mordida transmite uma febre que drena Vigor da vítima dia após dia até ela ser curada ou sucumbir."
+    },
+    {
+      "nome": "Assombra sonhos",
+      "descricao": "Usando sua pedra do coração, torna-se etérea e cavalga sobre um alvo adormecido a noite inteira, drenando um pouco de sua vitalidade a cada despertar."
+    },
+    {
+      "nome": "Rosto de empréstimo",
+      "descricao": "Pode assumir a forma de qualquer humanoide à vontade."
+    },
+    {
+      "nome": "Pedra do coração",
+      "descricao": "Carrega uma gema mágica que cura suas doenças, reforça sua resistência a provações, e sem ela perde o poder de virar fantasma ou aprisionar almas."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Corretora de almas",
+      "texto": "Caça mortais nos momentos de maior vulnerabilidade, prolongando a agonia noite após noite até prender a alma torturada em gemas escuras."
+    },
+    {
+      "titulo": "Rosto mutável, fome antiga",
+      "texto": "Sua aparência varia muito de uma para outra, mas todas compartilham o mesmo apetite por sofrimento alheio e mercados sombrios de almas."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Night Hag",
+    "cr": "9",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 21,
+      "des": 19,
+      "con": 22,
+      "int": 18,
+      "sab": 16,
+      "car": 17
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

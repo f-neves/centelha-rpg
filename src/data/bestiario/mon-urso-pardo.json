@@ -1,0 +1,131 @@
+{
+  "ordem": 37,
+  "id": "mon-urso-pardo",
+  "nome": "Urso-pardo",
+  "nomeIngles": "Brown Bear",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/urso-pardo.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,4 m de altura, quando ereto",
+    "peso": "400 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 9,
+    "destreza": 3,
+    "vigor": 6,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Garras destroçadoras",
+      "descricao": "dois ataques de garra na mesma rodada"
+    },
+    {
+      "nome": "Abraço esmagador",
+      "descricao": "agarra o alvo e causa dano contínuo enquanto preso"
+    },
+    {
+      "nome": "Fúria ferida",
+      "descricao": "ferido grave, ganha +1d em Ataque e Dano"
+    },
+    {
+      "nome": "Couro grosso",
+      "descricao": "Absorção alta"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Solitário e territorial, hiberna no inverno e defende ferozmente qualquer filhote ou pedaço de território que considere seu."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Onívoro oportunista, pesca, forrageia e caça conforme a estação e o que a terra oferece."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Habita as florestas e montanhas de Syl e o interior denso de Mére, temido por caçadores apesar de não carregar nenhuma marca de magia, só a força bruta da natureza."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Mountain"
+    ],
+    "clima": [
+      "Temperate",
+      "Cold"
+    ]
+  },
+  "notas": "Habilidades notáveis: Atletismo 3, Prontidão 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Urso-pardo",
+    "cr": "4",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 27,
+      "des": 13,
+      "con": 19,
+      "int": 2,
+      "sab": 12,
+      "car": 6
+    },
+    "pericias": [
+      "Atletismo 3",
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

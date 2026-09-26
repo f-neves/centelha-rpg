@@ -1,0 +1,133 @@
+{
+  "ordem": 20,
+  "id": "mon-hobgoblin",
+  "nome": "Hobgoblin",
+  "nomeIngles": "Hobgoblin",
+  "categoria": "Humanoide",
+  "papel": "capanga",
+  "conceito": "humanoide Médio",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+    "humanoide"
+  ],
+  "imagem": "bestiario/hobgoblin.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,7 m de altura",
+    "peso": "73 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 4,
+    "destreza": 4,
+    "vigor": 5,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 1,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Disciplina militar",
+      "descricao": "ganha bônus ao lutar em formação ao lado de aliados"
+    },
+    {
+      "nome": "Furtivo",
+      "descricao": "Furtividade 2; coordena emboscadas em silêncio"
+    },
+    {
+      "nome": "Alerta",
+      "descricao": "Prontidão 1; evita surpresas"
+    },
+    {
+      "nome": "Visão no escuro",
+      "descricao": "enxerga sem luz"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Disciplinados e metódicos, lutam em formação fechada e valorizam hierarquia militar acima de tudo, ao contrário dos goblins soltos."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Organizam-se em legiões com postos e patentes claras, obediência estrita e ambição constante de conquista territorial."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Erguem fortificações duráveis, treinam diariamente e tratam goblins e outros povos ásperos como recrutas ou escravos de guerra."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Entre os filhos que os anões moldaram da rocha, os hobgoblins foram os que melhor herdaram o senso de ordem da forja; erguem acampamentos fortificados nas terras selvagens de Mére, disciplinados o bastante para preocupar até exércitos humanos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Forest",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 2, Prontidão 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Hobgoblin",
+    "cr": "1/2",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": 16,
+      "int": 10,
+      "sab": 12,
+      "car": 8
+    },
+    "pericias": [
+      "Furtividade 2",
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

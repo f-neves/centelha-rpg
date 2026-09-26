@@ -1,0 +1,134 @@
+{
+  "ordem": 237,
+  "id": "mon-homunculus",
+  "nome": "Homunculus",
+  "nomeIngles": "Homunculus",
+  "categoria": "Construto",
+  "categoriaLegada": "Monstro",
+  "papel": "soldado",
+  "conceito": "monstro Médio",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricaoLegada": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha"
+  ],
+  "imagem": "bestiario/homunculus.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "75 cm de envergadura",
+    "peso": "3 kg"
+  },
+  "locomocao": {
+    "voo": 5
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 2,
+    "destreza": 4,
+    "vigor": 1,
+    "influencia": 1,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 3,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Vínculo telepático",
+      "descricao": "Está ligado à mente de seu criador e pode compartilhar tudo o que vê e ouve a centenas de metros de distância."
+    },
+    {
+      "nome": "Ferrão sonífero",
+      "descricao": "Sua mordida injeta um veneno que induz sono profundo, repetindo o efeito por vários minutos até ser curado ou o veneno se esgotar."
+    },
+    {
+      "nome": "Voo ágil",
+      "descricao": "Desloca-se voando com grande destreza, além de poder caminhar."
+    },
+    {
+      "nome": "Sentidos na escuridão",
+      "descricao": "Enxerga no escuro e com pouca luz sem dificuldade."
+    },
+    {
+      "nome": "Eco de dano",
+      "descricao": "Um golpe que destrua o homúnculo também fere gravemente seu criador em algum lugar distante."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Servo de sangue",
+      "texto": "Moldado com argila, cinzas, raiz de mandrágora e uma dose do próprio sangue do criador, o homúnculo nasce como extensão da vontade de seu mestre."
+    },
+    {
+      "titulo": "Loucura da orfandade",
+      "texto": "Se o criador morre, o homúnculo perde a razão e passa a atacar cegamente qualquer um que se aproxime de seu covil."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Construct",
+    "terreno": [
+      "Urban",
+      "Ruins",
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Homunculus",
+    "cr": "1",
+    "tipo": "monstro Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 8,
+      "des": 15,
+      "con": "-",
+      "int": 10,
+      "sab": 12,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte",
+      "nota": "voo 50; em terra 20, e o bichinho é feito para voar"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

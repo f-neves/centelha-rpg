@@ -1,0 +1,126 @@
+{
+  "ordem": 207,
+  "id": "mon-ettercap",
+  "nome": "Ettercap",
+  "nomeIngles": "Ettercap",
+  "categoria": "Aberração",
+  "papel": "soldado",
+  "conceito": "aberração Médio",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha"
+  ],
+  "imagem": "bestiario/ettercap.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 metro de altura",
+    "peso": "90 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 4,
+    "destreza": 5,
+    "vigor": 5,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 3,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Mordida venenosa",
+      "descricao": "O veneno da mordida corrói a destreza da vítima a cada rodada, exigindo dois testes de Vigor seguidos para se livrar do efeito."
+    },
+    {
+      "nome": "Teia arremessada",
+      "descricao": "Lança fios pegajosos que prendem o alvo a distância, dificultando muito qualquer movimento."
+    },
+    {
+      "nome": "Mestre de armadilhas",
+      "descricao": "Constrói armadilhas de teia (fossos, laços, lanças ocultas) sem precisar de nada além de tempo e paciência."
+    },
+    {
+      "nome": "Empatia com aranhas",
+      "descricao": "Consegue se comunicar e comandar aranhas gigantes, usando-as como sentinelas e guardiãs de seu covil."
+    },
+    {
+      "nome": "Sentidos aguçados",
+      "descricao": "Enxerga no escuro e com pouca luz, e raramente é pego de surpresa."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Rosto de aranha",
+      "texto": "Corpo ereto e quase humano, mas o rosto é o de uma aranha e as mãos terminam em foices quitinosas."
+    },
+    {
+      "titulo": "Tecelão solitário",
+      "texto": "Vive isolado nas copas das florestas, longe até dos de sua espécie, cercado apenas pelas teias e pelas aranhas que domestica."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Ettercap",
+    "cr": "3",
+    "tipo": "aberração Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 17,
+      "con": 17,
+      "int": 6,
+      "sab": 15,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

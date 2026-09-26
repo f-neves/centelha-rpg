@@ -1,0 +1,175 @@
+{
+  "ordem": 124,
+  "id": "mon-naga-espirita",
+  "nome": "Naga Espírita",
+  "nomeIngles": "Naga, Spirit",
+  "categoria": "Aberração",
+  "papel": "chefe",
+  "conceito": "aberração Grande",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/naga-espirita.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "6 m de comprimento",
+    "peso": "320 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 6,
+    "destreza": 3,
+    "vigor": 6,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 10,
+  "aparencia": 1,
+  "arte": {
+    "fascinacao": 3
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Olhar encantador (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N3",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Cuspe venenoso",
+      "tipo": "natural",
+      "alvo": "natural"
+    },
+    {
+      "efeito": "Feitiços",
+      "tipo": "feiticaria",
+      "alvo": "várias · N3"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Olhar encantador",
+      "descricao": "quem cruza o olhar falha em Vontade: Enfeitiçado, obedece por uma cena"
+    },
+    {
+      "nome": "Cuspe venenoso",
+      "descricao": "alcance 9m; acerto injeta veneno, falha em Fortitude: dano contínuo e Abalado"
+    },
+    {
+      "nome": "Feitiços arcanos",
+      "descricao": "repertório de magias de dano e controle"
+    },
+    {
+      "nome": "Corpo serpentino",
+      "descricao": "rasteja e nada com igual facilidade, +2d6 em Furtividade em água ou vegetação"
+    },
+    {
+      "nome": "Imune ao próprio veneno",
+      "descricao": "o veneno da naga não a afeta"
+    },
+    {
+      "nome": "Sentidos aguçados",
+      "descricao": "+2d6 em Prontidão, difícil de emboscar"
+    },
+    {
+      "nome": "Presa envenenada",
+      "descricao": "mordida corpo a corpo como ataque secundário"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Enrosca-se sobre tesouros e ruínas esquecidas, atacando com veneno e feitiços antes mesmo de considerar negociar, e só o faz quando lhe convém."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Vive em templos afundados, pântanos antigos e ruínas de civilizações que ela própria viu cair."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Isolada como uma pequena rainha decadente, cercada quando muito por poucos servos ou cultistas atraídos por promessas de poder."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Arrogante e longeva, vê os mortais como efêmeros demais para merecer qualquer respeito."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Relíquia de eras anteriores à Grande Guerra, guarda segredos de magia que a Supressão tentou apagar; em Mére, onde cidades mágicas se escondem sob a selva, é temida como guardiã de um passado que devia ter ficado enterrado."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Jungle",
+      "Swamp",
+      "Water"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Ocultismo 4, Persuasão 3, Prontidão 4.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Naga Espírita",
+    "cr": "9",
+    "tipo": "aberração Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 17,
+      "des": 13,
+      "con": 17,
+      "int": 16,
+      "sab": 19,
+      "car": 17
+    },
+    "pericias": [
+      "Ocultismo 4",
+      "Persuasão 3",
+      "Prontidão 4"
+    ],
+    "nota": "Olhar encantador e conjuração: Centelha 4.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

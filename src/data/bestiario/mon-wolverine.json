@@ -1,0 +1,123 @@
+{
+  "ordem": 302,
+  "id": "mon-wolverine",
+  "nome": "Carcaju",
+  "nomeIngles": "Wolverine",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/wolverine.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1 metro de comprimento",
+    "peso": "18 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 4,
+    "destreza": 4,
+    "vigor": 4,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Fúria ao ferimento",
+      "descricao": "Ao sofrer dano em combate, entra em fúria na rodada seguinte, lutando com força e resistência maiores, mas descuidando da própria defesa até um dos lados cair."
+    },
+    {
+      "nome": "Sentidos aguçados",
+      "descricao": "Enxerga bem em pouca luz e sente o cheiro da presa a distância, difícil de emboscar."
+    },
+    {
+      "nome": "Escaladora e escavadora",
+      "descricao": "Move-se com igual facilidade escalando troncos e rochas ou abrindo caminho por baixo da terra."
+    },
+    {
+      "nome": "Corpo firme",
+      "descricao": "Sua estrutura compacta dificulta que a derrubem em combate."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Território sagrado",
+      "texto": "Defende sua caça até contra predadores muito maiores, sem nunca recuar diante de urso ou lobo."
+    },
+    {
+      "titulo": "Cheiro de fúria",
+      "texto": "Quando irritada, exala um odor forte e desagradável, aviso claro de que o ataque está próximo."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Mountain"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Wolverine",
+    "cr": "2",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": 15,
+      "int": 2,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

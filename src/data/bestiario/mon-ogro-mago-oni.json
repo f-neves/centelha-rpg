@@ -1,0 +1,188 @@
+{
+  "ordem": 122,
+  "id": "mon-ogro-mago-oni",
+  "nome": "Ogro Mago (Oni)",
+  "nomeIngles": "Ogre Mage (Oni)",
+  "categoria": "Gigante",
+  "categoriaLegada": "Exterior",
+  "papel": "chefe",
+  "conceito": "exterior Grande",
+  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/ogro-mago-oni.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,7 m de altura",
+    "peso": "290 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 7,
+    "destreza": 4,
+    "vigor": 6,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 4,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 6
+  },
+  "willpower": 10,
+  "aparencia": 0,
+  "arte": {
+    "vento": 5,
+    "fascinacao": 1,
+    "materia": 3,
+    "gelo": 2
+  },
+  "tech": {
+    "regeneracao": true
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Regeneração (Su)",
+      "tipo": "proeza",
+      "alvo": "Cerne Vital · Regeneração (b9)",
+      "caminho": "cerne-vital"
+    },
+    {
+      "efeito": "Voo, invisibilidade, forma (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Vento · N5 + Fascinação · N1 + Matéria · N3",
+      "arte": "vento"
+    },
+    {
+      "efeito": "Cone de frio",
+      "tipo": "feiticaria",
+      "alvo": "Gelo · N2",
+      "arte": "gelo"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Regeneração",
+      "descricao": "recupera PV a cada rodada; só dano de fogo ou ácido impede a regeneração"
+    },
+    {
+      "nome": "Voo",
+      "descricao": "desloca 12m voando"
+    },
+    {
+      "nome": "Invisibilidade à vontade",
+      "descricao": "1x por cena, some de vista por até uma cena inteira"
+    },
+    {
+      "nome": "Forma gasosa",
+      "descricao": "vira névoa por uma rodada, imune a dano físico e passa por frestas"
+    },
+    {
+      "nome": "Cone de frio",
+      "descricao": "cone de 9m; dano alto, metade se Esquivar"
+    },
+    {
+      "nome": "Sono",
+      "descricao": "alvo em alcance falha em Vontade: cai Inconsciente"
+    },
+    {
+      "nome": "Força de ogro",
+      "descricao": "dano corpo a corpo elevado, arremessa objetos pesados"
+    },
+    {
+      "nome": "Rosto humano",
+      "descricao": "+2d6 em Manha ao se passar por humano"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Usa metamorfose e invisibilidade para se passar por humano sedutor ou nobre elegante, iludindo vilas inteiras antes de revelar sua verdadeira forma monstruosa."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Prefere agir sozinho ou como senhor de um bando de ogros e goblins menores, tratando-os como servos descartáveis."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Arma esquemas de engano que levam anos para florescer, acumulando riqueza e favores como quem tece uma teia paciente."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Cruel e orgulhoso da própria astúcia, despreza a força bruta como recurso de último caso."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Nativo de um plano distante, contido em teoria pela Lei que impede os deuses de agir direto, mas ele próprio escapa a essa contenção; sussurra-se que atravessa por rasgos como a Fenda, ou por portais mais antigos e esquecidos nas selvas de Mére."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Mountain",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Ocultismo 3, Manha 3, Persuasão 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Ogro Mago (Oni)",
+    "cr": "8",
+    "tipo": "exterior Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 15,
+      "con": 16,
+      "int": 14,
+      "sab": 14,
+      "car": 18
+    },
+    "pericias": [
+      "Ocultismo 3",
+      "Manha 3",
+      "Persuasão 3"
+    ],
+    "nota": "Regeneração, voo, feitiços, mudar de forma: Centelha 4.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

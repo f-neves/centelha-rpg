@@ -1,0 +1,136 @@
+{
+  "ordem": 261,
+  "id": "mon-morlock",
+  "nome": "Morlock",
+  "nomeIngles": "Morlock",
+  "categoria": "Humanoide monstruoso",
+  "categoriaLegada": "Monstro",
+  "papel": "soldado",
+  "conceito": "humanoide monstruoso Médio",
+  "descricao": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha"
+  ],
+  "imagem": "bestiario/morlock.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "pouco mais de 1,50 m de altura",
+    "peso": "68 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 4,
+    "destreza": 5,
+    "vigor": 4,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão no escuro e faro",
+      "descricao": "Enxerga no escuro a grande distância e localiza presas pelo cheiro."
+    },
+    {
+      "nome": "Cego pela luz",
+      "descricao": "Luz repentina e intensa o deixa cego por um instante."
+    },
+    {
+      "nome": "Escalador perfeito",
+      "descricao": "Sobe paredes e tetos de pedra como se tivesse ventosas nas mãos, contanto que haja fendas e saliências."
+    },
+    {
+      "nome": "Imune a veneno e doença",
+      "descricao": "Décadas debaixo da terra tornaram seu corpo resistente a toxinas e pragas."
+    },
+    {
+      "nome": "Salto certeiro",
+      "descricao": "Pode golpear um alvo em pleno salto, atacando no início, no meio ou no fim do pulo sem se expor a golpes de oportunidade."
+    },
+    {
+      "nome": "Ataque furtivo",
+      "descricao": "Quando pega o inimigo desprevenido ou distraído, acerta um ponto vital para dano extra."
+    },
+    {
+      "nome": "Luta em enxame",
+      "descricao": "Dois morlocks cabem no mesmo espaço apertado e, atacando juntos o mesmo alvo, lutam como se o cercassem."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Humanos degenerados",
+      "texto": "Descendentes de povos que se refugiaram no subsolo há gerações, perderam a fala civilizada e viraram feras rastejantes de quatro membros."
+    },
+    {
+      "titulo": "Cultuam os próprios ancestrais",
+      "texto": "Vivem nas ruínas de antigas cidades e veneram como deuses as estátuas deixadas por quem construiu aqueles salões, hoje esquecidos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Morlock",
+    "cr": "2",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 19,
+      "con": 15,
+      "int": 5,
+      "sab": 14,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

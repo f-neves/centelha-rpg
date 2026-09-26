@@ -1,0 +1,119 @@
+{
+  "ordem": 263,
+  "id": "mon-guardian-naga",
+  "nome": "Naga Guardiã",
+  "nomeIngles": "Naga, Guardian",
+  "categoria": "Aberração",
+  "papel": "chefe",
+  "conceito": "aberração Grande",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha"
+  ],
+  "imagem": "bestiario/guardian-naga.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "4,3 m de comprimento",
+    "peso": "159 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 7,
+    "destreza": 7,
+    "vigor": 7,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 2,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 10,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Veneno debilitante",
+      "descricao": "A mordida ou o cuspe injetam um veneno que corrói a vitalidade da vítima ao longo de vários instantes, a menos que ela resista em testes de Vigor sucessivos."
+    },
+    {
+      "nome": "Cuspe à distância",
+      "descricao": "Consegue cuspir seu veneno com precisão em um alvo a até 9 metros."
+    },
+    {
+      "nome": "Magias sagradas e arcanas",
+      "descricao": "Lança tanto feitiços arcanos quanto orações de cura e proteção, incomum entre as serpentes de sua espécie."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Guardiã de lugares sagrados",
+      "texto": "De escamas radiantes e capuz de cobra, protege cachoeiras, picos e templos que considera dignos de reverência."
+    },
+    {
+      "titulo": "Linhagem de sentinelas",
+      "texto": "Um casal costuma se instalar perto de um local que julga precisar de proteção, criando a ninhada ali; os filhotes escolhem partir ou assumir a guarda do ancestral."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Plains",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Guardian Naga",
+    "cr": "10",
+    "tipo": "aberração Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 23,
+      "con": 20,
+      "int": 16,
+      "sab": 19,
+      "car": 18
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

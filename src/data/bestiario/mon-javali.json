@@ -1,0 +1,128 @@
+{
+  "ordem": 40,
+  "id": "mon-javali",
+  "nome": "Javali",
+  "nomeIngles": "Boar",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/javali.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,5 m de comprimento",
+    "peso": "110 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 4,
+    "destreza": 2,
+    "vigor": 5,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Investida",
+      "descricao": "ataque após correr em linha reta causa dano extra ao acertar"
+    },
+    {
+      "nome": "Presas afiadas",
+      "descricao": "corte que sangra, causando dano leve contínuo"
+    },
+    {
+      "nome": "Couro grosso",
+      "descricao": "Absorção contra ataques leves"
+    },
+    {
+      "nome": "Teimosia selvagem",
+      "descricao": "resiste a Abalado, luta normalmente até ferido grave"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Pouco medroso apesar do tamanho, carrega com agressividade direta quando se sente encurralado."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Vive em grupos familiares e forrageia raízes, tubérculos e frutos caídos no solo da floresta."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Comum nas florestas de Syl e nos campos cultivados de Calin, caçado tanto como praga agrícola quanto como prova de coragem entre jovens caçadores."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Javali",
+    "cr": "2",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 10,
+      "con": 17,
+      "int": 2,
+      "sab": 13,
+      "car": 4
+    },
+    "pericias": [
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

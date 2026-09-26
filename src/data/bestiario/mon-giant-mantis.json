@@ -1,0 +1,134 @@
+{
+  "ordem": 256,
+  "id": "mon-giant-mantis",
+  "nome": "Louva-a-Deus Gigante",
+  "nomeIngles": "Giant Mantis",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/giant-mantis.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3 m de comprimento",
+    "peso": "200 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 6,
+    "destreza": 3,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Alcance Estendido",
+      "descricao": "Pode atacar com as garras a até o dobro do alcance normal, surpreendendo quem julga estar fora de perigo."
+    },
+    {
+      "nome": "Mandíbulas Famintas",
+      "descricao": "Se prender a vítima com as garras, ainda morde com as mandíbulas como ataque extra."
+    },
+    {
+      "nome": "Golpe Surpresa",
+      "descricao": "Quando ataca de surpresa, age com velocidade sobrenatural, realizando muito mais do que uma ação normal permitiria naquele instante."
+    },
+    {
+      "nome": "Camuflagem na Mata",
+      "descricao": "Em meio à vegetação densa, torna-se quase invisível, esperando parada por horas até a presa se aproximar."
+    },
+    {
+      "nome": "Mente de Inseto",
+      "descricao": "Imune a efeitos que dependem de pensamento ou emoção, por não possuir intelecto como o conhecemos."
+    },
+    {
+      "nome": "Voo Trôpego",
+      "descricao": "Consegue voar por curtos trechos, ainda que de forma instável e desajeitada."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Mensageira da Morte",
+      "texto": "Em muitas culturas selvagens, é vista como arauto enviado por deuses irados para colher almas."
+    },
+    {
+      "titulo": "Terror das Trilhas",
+      "texto": "Caravanas que cruzam florestas densas temem esta criatura, cuja espera silenciosa e ataque repentino já dizimou muitos incautos."
+    },
+    {
+      "titulo": "Cultos da Louva-a-Deus",
+      "texto": "Dizem existir seitas de assassinos que veneram uma mantis gigantesca como divindade, imitando seu estilo de emboscada mortal."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Mantis",
+    "cr": "3",
+    "tipo": "praga Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 16,
+      "des": 13,
+      "con": 16,
+      "int": "-",
+      "sab": 14,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

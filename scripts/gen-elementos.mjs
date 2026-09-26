@@ -29,12 +29,19 @@ import { POR_MATERIAL } from './lib-materiais.mjs';
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const p = (f) => path.join(ROOT, 'src/data', f);
 const TODAS = JSON.parse(fs.readFileSync(p('monsters.json'), 'utf8'));
-// Criatura sua se descreve sozinha, no próprio objeto do inimigos-custom.json
-// (por `material` ou por `fraquezas`/`resistencias`). Este satélite é só do livro.
-const CUSTOM_IDS = new Set((() => {
-  const f = p('inimigos-custom.json');
-  return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')).filter((c) => c && c.id).map((c) => c.id) : [];
-})());
+// Criatura sua se descreve sozinha, pelo `material` da ficha ou no próprio objeto
+// da caixa inimigos-custom.json. Este satélite é só do livro. Desde o B14 a
+// criatura da caixa que já virou ficha (src/data/bestiario/) é reconhecida pelo
+// `material` que ela declara.
+const CUSTOM_IDS = new Set([
+  ...(() => {
+    const f = p('inimigos-custom.json');
+    return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')).filter((c) => c && c.id).map((c) => c.id) : [];
+  })(),
+  ...fs.readdirSync(p('bestiario')).filter((f) => f.endsWith('.json'))
+    .map((f) => JSON.parse(fs.readFileSync(p(`bestiario/${f}`), 'utf8')))
+    .filter((c) => c.material).map((c) => c.id),
+]);
 const M = TODAS.filter((m) => !CUSTOM_IDS.has(m.id));
 
 // Vocabulário fechado. Mistura três eixos de propósito, porque as três coisas

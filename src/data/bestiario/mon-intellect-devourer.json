@@ -1,0 +1,130 @@
+{
+  "ordem": 242,
+  "id": "mon-intellect-devourer",
+  "nome": "Intellect Devourer",
+  "nomeIngles": "Intellect Devourer",
+  "categoria": "Aberração",
+  "papel": "chefe",
+  "conceito": "aberração Pequeno",
+  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "tags": [
+    "aberracao",
+    "centelha"
+  ],
+  "imagem": "bestiario/intellect-devourer.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "60 cm de altura",
+    "peso": "18 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 3,
+    "destreza": 7,
+    "vigor": 6,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 4,
+    "percepcao": 2,
+    "inteligencia": 5,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 2,
+    "prontidao": 1,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 9,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Ladrão de corpos",
+      "descricao": "Pode encolher, rastejar para dentro da boca de uma vítima indefesa ou morta e devorar seu cérebro, tomando o controle total do corpo como se fosse seu."
+    },
+    {
+      "nome": "Sentido cego e detecção mágica",
+      "descricao": "Percebe o ambiente sem depender da visão e sente a presença constante de magia ao redor."
+    },
+    {
+      "nome": "Resistências arcanas",
+      "descricao": "Seu corpo resiste bem a fogo e a efeitos que afetam a mente, além de amortecer frio, eletricidade e som."
+    },
+    {
+      "nome": "Vulnerabilidade sagrada",
+      "descricao": "Proteções contra o mal o afetam como se fosse uma criatura convocada, ferindo-o com mais facilidade."
+    },
+    {
+      "nome": "Ataque furtivo",
+      "descricao": "Golpeia com precisão mortal quando pega o alvo desprevenido, causando dano extra."
+    },
+    {
+      "nome": "Poderes psíquicos",
+      "descricao": "Pode confundir, atordoar, ferir a distância e se tornar invisível usando puro poder mental."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Devorador de mentes",
+      "texto": "Criatura vinda de outro plano ou de um mundo distante, o devorador de intelecto se alimenta de cérebros e memórias alheias."
+    },
+    {
+      "titulo": "Máscara perfeita",
+      "texto": "Ao tomar um corpo, sustenta a fachada da vítima por dias, falando suas línguas e imitando seus modos sem guardar suas lembranças."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Aberration",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Intellect Devourer",
+    "cr": "8",
+    "tipo": "aberração Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 12,
+      "des": 23,
+      "con": 21,
+      "int": 16,
+      "sab": 10,
+      "car": 17
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

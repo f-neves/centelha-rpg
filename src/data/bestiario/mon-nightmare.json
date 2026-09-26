@@ -1,0 +1,128 @@
+{
+  "ordem": 266,
+  "id": "mon-nightmare",
+  "nome": "Pesadelo",
+  "nomeIngles": "Nightmare",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Exterior",
+  "papel": "elite",
+  "conceito": "exterior Grande",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha"
+  ],
+  "imagem": "bestiario/nightmare.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,7 m de comprimento",
+    "peso": "800 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 6,
+    "destreza": 4,
+    "vigor": 6,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 3,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 5
+  },
+  "willpower": 9,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão no escuro",
+      "descricao": "Enxerga bem mesmo sem luz alguma."
+    },
+    {
+      "nome": "Voo veloz",
+      "descricao": "Voa com grande destreza e velocidade, superando até cavalos em terra firme."
+    },
+    {
+      "nome": "Fumaça sufocante",
+      "descricao": "Exala uma nuvem de fumaça que cega e enjoa quem respirar o bastante dela, a menos que resista em um teste de Vigor."
+    },
+    {
+      "nome": "Salto entre mundos",
+      "descricao": "Uma vez por dia, pode se teleportar para outro plano de existência levando consigo um único cavaleiro."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Corcel do mal",
+      "texto": "Feito de fogo e trevas, só aceita ser montado pelos mais cruéis, agindo como parceiro voluntário na destruição, nunca como simples montaria."
+    },
+    {
+      "titulo": "Cascos de brasa",
+      "texto": "Deixa rastros de fumaça e faíscas por onde passa, e seus olhos ardem como brasas quando pressente uma alma corrompida por perto."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Nightmare",
+    "cr": "5",
+    "tipo": "exterior Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 15,
+      "con": 16,
+      "int": 13,
+      "sab": 13,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

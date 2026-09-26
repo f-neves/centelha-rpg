@@ -1,0 +1,136 @@
+{
+  "ordem": 17,
+  "id": "mon-goblin",
+  "nome": "Goblin",
+  "nomeIngles": "Goblin",
+  "categoria": "Humanoide",
+  "papel": "capanga",
+  "conceito": "humanoide Pequeno",
+  "descricao": "Humanoide pequeno e covarde, perigoso mesmo assim em bando.",
+  "descricaoLegada": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+    "humanoide"
+  ],
+  "imagem": "bestiario/goblin.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "0,95 m de altura",
+    "peso": "18 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 2,
+    "destreza": 4,
+    "vigor": 3,
+    "influencia": 1,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 1,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Pequeno e furtivo",
+      "descricao": "Furtividade 2; some entre sombras e vegetação com facilidade"
+    },
+    {
+      "nome": "Visão no escuro",
+      "descricao": "enxerga sem penalidade em ambientes escuros"
+    },
+    {
+      "nome": "Emboscada em bando",
+      "descricao": "ataca em grupo e flanqueia presas maiores"
+    },
+    {
+      "nome": "Faro de sobrevivente",
+      "descricao": "Sobrevivência 1; rastreia e se orienta no território"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Covardes quando sozinhos ou em desvantagem, cruéis com qualquer coisa mais fraca, preferem emboscada e armadilha a luta franca."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Vivem em bandos numerosos e barulhentos, liderados pelo mais forte ou mais esperto do momento, em guerra territorial constante com tribos vizinhas."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Fazem ninho em cavernas, ruínas e esgotos, acumulam tralha furtada sem valor aparente e domam lobos ou ratos gigantes quando conseguem."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "São um dos povos ásperos que os anões moldaram da própria rocha da montanha, usando técnicas aprendidas pela metade dos elfos; sem a lapidação que os anões deram a si mesmos, os goblins saíram numerosos, de vida curta e sempre à margem das cidades humanas."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Forest",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 2, Sobrevivência 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Goblin",
+    "cr": "1/3",
+    "tipo": "humanoide Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 11,
+      "des": 15,
+      "con": 12,
+      "int": 10,
+      "sab": 9,
+      "car": 6
+    },
+    "pericias": [
+      "Furtividade 2",
+      "Sobrevivência 1"
+    ],
+    "nota": "Mundano, sem nada sobrenatural: Centelha 0. O +4 racial em Furtividade vira especialidade.",
+    "exemplo": true,
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

@@ -1,0 +1,138 @@
+{
+  "ordem": 31,
+  "id": "mon-gigante-do-gelo",
+  "nome": "Gigante do Gelo",
+  "nomeIngles": "Giant, Frost",
+  "categoria": "Gigante",
+  "papel": "chefe",
+  "conceito": "humanoide Grande (gigante)",
+  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "tags": [
+    "gigante",
+    "centelha"
+  ],
+  "imagem": "bestiario/gigante-do-gelo.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "4,3 m de altura",
+    "peso": "2,8 t"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 10,
+    "destreza": 2,
+    "vigor": 7,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 5
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Pancada descomunal",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Imune ao frio",
+      "descricao": "não sofre dano de frio"
+    },
+    {
+      "nome": "Arremesso de rocha",
+      "descricao": "ataque à distância de até 36m, dano alto"
+    },
+    {
+      "nome": "Camuflagem branca",
+      "descricao": "Furtividade alta em neve e gelo"
+    },
+    {
+      "nome": "Machado descomunal",
+      "descricao": "dano alto corpo a corpo"
+    },
+    {
+      "nome": "Vigor ártico",
+      "descricao": "Absorção alta e imune a exaustão pelo frio"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Violento e orgulhoso, vive para o saque e a guerra, e só respeita quem o supera em combate direto."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Organiza-se em clãs liderados por um jarl, cujo poder dura enquanto ninguém o derrota; os clãs vivem em salões compridos, entre fogueiras e banquetes ruidosos."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Caça em bando com lobos adestrados e guarda o tesouro saqueado como prova de status diante dos outros gigantes."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Disputa as montanhas geladas do White Wall tanto com os anões exilados quanto com os horrores que saíram da Fenda, e para o povo supersticioso do Neck é a lenda de inverno que rouba gado e crianças."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Giant",
+    "terreno": [
+      "Cold",
+      "Mountain"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "Habilidades notáveis: Atletismo 2, Prontidão 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Gigante do Gelo",
+    "cr": "9",
+    "tipo": "humanoide Grande (gigante)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 29,
+      "des": 9,
+      "con": 21,
+      "int": 10,
+      "sab": 12,
+      "car": 11
+    },
+    "pericias": [
+      "Atletismo 2",
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

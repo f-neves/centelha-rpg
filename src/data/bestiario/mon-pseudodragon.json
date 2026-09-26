@@ -1,0 +1,127 @@
+{
+  "ordem": 273,
+  "id": "mon-pseudodragon",
+  "nome": "Pseudodragon",
+  "nomeIngles": "Pseudodragon",
+  "categoria": "Dragão",
+  "papel": "soldado",
+  "conceito": "dragão Minúsculo",
+  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "tags": [
+    "dragao",
+    "centelha"
+  ],
+  "imagem": "bestiario/pseudodragon.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "corpo de cerca de 30 cm mais cauda de 60 cm",
+    "peso": "3,2 kg"
+  },
+  "locomocao": {
+    "voo": 6
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 1,
+    "destreza": 4,
+    "vigor": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 5,
+    "temperanca": 3,
+    "valor": 5
+  },
+  "willpower": 6,
+  "aparencia": 8,
+  "ataques": [
+    {
+      "nome": "Garras e mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentidos de dragão em miniatura",
+      "descricao": "Enxerga no escuro, sente presença próxima mesmo sem ver e tem visão aguçada em pouca luz."
+    },
+    {
+      "nome": "Resistência a magia",
+      "descricao": "Feitiços comuns lançados contra ele muitas vezes simplesmente falham."
+    },
+    {
+      "nome": "Imune a paralisia e sono",
+      "descricao": "Nenhum efeito que paralise ou induza sono o afeta."
+    },
+    {
+      "nome": "Ferrão sonífero",
+      "descricao": "Seu ferrão injeta um veneno que faz a vítima adormecer por vários minutos, repetindo o efeito enquanto ela permanecer perto."
+    },
+    {
+      "nome": "Telepatia",
+      "descricao": "Comunica-se diretamente com a mente de qualquer criatura inteligente próxima, sem precisar falar."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Primo pequeno dos dragões",
+      "texto": "Brincalhão e tímido, prefere se comunicar por gestos, ronronados e telepatia a arriscar conversa com estranhos."
+    },
+    {
+      "titulo": "Amigo leal, nunca bicho de estimação",
+      "texto": "Recusa ser tratado como animal domesticado, mas segue de bom grado quem o trata como igual, às vezes por uma vida inteira."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Pseudodragon",
+    "cr": "1",
+    "tipo": "dragão Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 7,
+      "des": 15,
+      "con": 13,
+      "int": 10,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60; em terra 15"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

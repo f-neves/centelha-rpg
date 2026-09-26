@@ -1,0 +1,138 @@
+{
+  "ordem": 60,
+  "id": "mon-hidra-5-cabecas",
+  "nome": "Hidra (5 cabeças)",
+  "nomeIngles": "Hydra (5-headed)",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Enorme",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/hidra-5-cabecas.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "corpo e pescoços 9 m de comprimento",
+    "peso": "4 t"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 8,
+    "destreza": 3,
+    "vigor": 8,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Cabeças que rebrotam (Su)",
+      "tipo": "proeza",
+      "alvo": "Cerne Vital · Regeneração (b9)",
+      "caminho": "cerne-vital"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Cabeças que rebrotam",
+      "descricao": "recupera PV perdidos a cada rodada, a menos que sofra dano de fogo na mesma rodada"
+    },
+    {
+      "nome": "Cinco mordidas",
+      "descricao": "ataca com uma mordida por cabeça viva no mesmo turno"
+    },
+    {
+      "nome": "Muitos olhos",
+      "descricao": "Prontidão 3; quase impossível de surpreender"
+    },
+    {
+      "nome": "Corpo descomunal",
+      "descricao": "porte Enorme; resiste a ser derrubado ou Abalado"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Ecologia",
+      "texto": "Vive em pântanos, lagos e cavernas úmidas, onde a fartura de presas sustenta suas cinco cabeças famintas. Cada cabeça morde por conta própria, e cortar uma sem cauterizar o coto só multiplica o problema."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Não caça por estratégia, caça por fome: ataca tudo que se move perto demais do território e raramente recua, porque uma cabeça perdida é rapidamente substituída por duas. Prefere emboscar na água ou na lama, onde a fuga da presa é mais lenta."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "É citada como prova de que a magia da era antiga ainda respira nos pântanos esquecidos; em Syl, quem se aventura perto de um covil de hidra deixa oferendas aos kami do lugar antes, achando que a besta é castigo por um espírito da água ofendido."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Swamp",
+      "Water"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Hidra (5 cabeças)",
+    "cr": "4",
+    "tipo": "besta mágica Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 21,
+      "des": 12,
+      "con": 20,
+      "int": 2,
+      "sab": 10,
+      "car": 6
+    },
+    "pericias": [
+      "Prontidão 3"
+    ],
+    "nota": "Cabeças que rebrotam (Su): Centelha 1.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

@@ -1,0 +1,124 @@
+{
+  "ordem": 201,
+  "id": "mon-giant-moray-eel",
+  "nome": "Moreia Gigante",
+  "nomeIngles": "Giant Moray Eel",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/giant-moray-eel.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,5 metros de comprimento",
+    "peso": "90 kg"
+  },
+  "locomocao": {
+    "natacao": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 8,
+    "destreza": 4,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Mordida e agarrão",
+      "descricao": "Prende a presa entre os dentes e não solta, imobilizando-a para os ataques seguintes."
+    },
+    {
+      "nome": "Segunda goela",
+      "descricao": "Enquanto segura um inimigo agarrado, um segundo par de mandíbulas na garganta desfere outra dentada, sem gastar mais esforço."
+    },
+    {
+      "nome": "Faro na água",
+      "descricao": "Localiza presas pelo cheiro mesmo em água turva ou escura, além de enxergar bem com pouca luz."
+    },
+    {
+      "nome": "Furtiva nas profundezas",
+      "descricao": "Desliza e se esconde entre corais e rochas com facilidade incomum para o tamanho."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Terror dos recifes",
+      "texto": "Vive à espreita em fendas e cavernas submersas dos mares quentes, atacando quem se aproxima demais da toca."
+    },
+    {
+      "titulo": "Mandíbulas duplas",
+      "texto": "Marinheiros contam histórias de morays que mastigam suas vítimas por dentro, engolindo pedaço a pedaço."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Moray Eel",
+    "cr": "5",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 22,
+      "des": 14,
+      "con": 16,
+      "int": 1,
+      "sab": 12,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte",
+      "nota": "nado 30: sem velocidade em terra"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

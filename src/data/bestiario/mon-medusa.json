@@ -1,0 +1,163 @@
+{
+  "ordem": 118,
+  "id": "mon-medusa",
+  "nome": "Medusa",
+  "nomeIngles": "Medusa",
+  "categoria": "Humanoide monstruoso",
+  "categoriaLegada": "Monstro",
+  "papel": "elite",
+  "conceito": "humanoide monstruoso Médio",
+  "descricao": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/medusa.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,75 m de altura",
+    "peso": "55 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 3,
+  "attrs": {
+    "forca": 2,
+    "destreza": 4,
+    "vigor": 5,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4,
+    "percepcao": 3,
+    "inteligencia": 3,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 8,
+  "aparencia": 7,
+  "arte": {
+    "materia": 3
+  },
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Olhar petrificante (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Matéria · N3",
+      "arte": "materia"
+    },
+    {
+      "efeito": "Cabelos-serpente",
+      "tipo": "natural",
+      "alvo": "veneno natural"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Olhar petrificante",
+      "descricao": "quem encara a medusa em combate faz Vontade; falha: Petrificado (imóvel, morre em falhas seguidas)"
+    },
+    {
+      "nome": "Cabelos-serpente",
+      "descricao": "ataque adicional corpo a corpo; acerto injeta veneno, falha em Fortitude: Abalado"
+    },
+    {
+      "nome": "Véu do olhar",
+      "descricao": "pode cobrir o rosto para não petrificar aliados sem querer"
+    },
+    {
+      "nome": "Imune a petrificação e veneno",
+      "descricao": "a própria magia e venenos de serpente não afetam a medusa"
+    },
+    {
+      "nome": "Tiro traiçoeiro",
+      "descricao": "ataque à distância adicional com arco, ignora parte da Absorção"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Evita ser vista, cobrindo o rosto e as serpentes que lhe cobrem a cabeça, e só ataca quando encurralada ou traída, transformando o intruso em estátua de pedra com um único olhar."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Vive em ruínas isoladas e cavernas esquecidas, muitas vezes cercada por um jardim macabro de estátuas: os que ousaram encará-la."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Amarga e solitária, fruto de uma maldição antiga, alterna desprezo pelos mortais com um desejo secreto e nunca admitido de companhia."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Raramente convive com outras de sua espécie, e quando o faz é numa desconfiança mútua entre irmãs da mesma sentença."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Sua maldição é mais antiga que a Grande Guerra, relíquia de um tempo mais mágico; o povo comum, sob o peso da Supressão, só enxerga o monstro e nunca a tragédia por trás do véu."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Ruins",
+      "Underground",
+      "Desert"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 3, Atirador 2, Manha 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Medusa",
+    "cr": "7",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 10,
+      "des": 15,
+      "con": 18,
+      "int": 12,
+      "sab": 13,
+      "car": 15
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Atirador 2",
+      "Manha 2"
+    ],
+    "nota": "Olhar petrificante (Su): Centelha 2.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

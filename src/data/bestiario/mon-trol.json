@@ -1,0 +1,147 @@
+{
+  "ordem": 27,
+  "id": "mon-trol",
+  "nome": "Trol",
+  "nomeIngles": "Troll",
+  "categoria": "Gigante",
+  "papel": "elite",
+  "conceito": "humanoide Grande (gigante)",
+  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "tags": [
+    "gigante",
+    "centelha"
+  ],
+  "imagem": "bestiario/trol.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3 m de altura",
+    "peso": "200 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 7,
+    "destreza": 4,
+    "vigor": 8,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Pancada descomunal",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Regeneração",
+      "tipo": "proeza",
+      "alvo": "Cerne Vital · Regeneração (b9)",
+      "caminho": "cerne-vital"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Regeneração",
+      "descricao": "recupera PV todo turno mesmo ferido grave; só fogo ou ácido interrompem"
+    },
+    {
+      "nome": "Fraqueza ao fogo",
+      "descricao": "sofre dano extra e não regenera contra fogo ou ácido"
+    },
+    {
+      "nome": "Garras e mordida",
+      "descricao": "dois ataques de garra mais mordida na mesma rodada"
+    },
+    {
+      "nome": "Braços longos",
+      "descricao": "alcance de 3m, ataca sem precisar se aproximar"
+    },
+    {
+      "nome": "Faro aguçado",
+      "descricao": "detecta inimigos escondidos ou invisíveis pelo cheiro a curta distância"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Caça por fome insaciável, ataca sem tática além de rasgar e devorar, e só recua quando o fogo entra em cena."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Regenera qualquer ferimento a olhos vistos, teme apenas brasa e chama, e vive perto de pântanos e pontes à espreita de quem passa."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Quase sem raciocínio além do apetite, mas com uma astúcia animal de emboscada."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "O trol ecoa direto o folclore nórdico do The Neck, onde velhas histórias já avisavam para levar tocha acesa perto de pontes e pântanos; hoje o povo supersticioso das ilhas trata qualquer ataque de trol como prova viva de que os contos antigos nunca foram só contos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Giant",
+    "terreno": [
+      "Swamp",
+      "Mountain"
+    ],
+    "clima": [
+      "Cold",
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Trol",
+    "cr": "5",
+    "tipo": "humanoide Grande (gigante)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 14,
+      "con": 23,
+      "int": 6,
+      "sab": 9,
+      "car": 6
+    },
+    "pericias": [
+      "Prontidão 1"
+    ],
+    "nota": "Regeneração sobrenatural desperta a Centelha 1.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

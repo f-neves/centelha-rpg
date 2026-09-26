@@ -1,0 +1,177 @@
+{
+  "ordem": 100,
+  "id": "mon-rakshasa",
+  "nome": "Rakshasa",
+  "nomeIngles": "Rakshasa",
+  "categoria": "Outsider",
+  "categoriaLegada": "Exterior",
+  "papel": "chefe",
+  "conceito": "exterior Médio",
+  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/rakshasa.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura",
+    "peso": "80 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 4,
+    "destreza": 5,
+    "vigor": 5,
+    "influencia": 5,
+    "perspicacia": 4,
+    "compostura": 4,
+    "percepcao": 3,
+    "inteligencia": 3,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 6
+  },
+  "willpower": 10,
+  "aparencia": 0,
+  "arte": {
+    "fascinacao": 4,
+    "adivinhacao": 2,
+    "materia": 3,
+    "protecao": 4
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Ilusões e ler pensamentos (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N4 + Adivinhação · N2",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Mudar de forma",
+      "tipo": "feiticaria",
+      "alvo": "Matéria · N3",
+      "arte": "materia"
+    },
+    {
+      "efeito": "Só arma benta fere (RM)",
+      "tipo": "feiticaria",
+      "alvo": "Proteção · N4",
+      "arte": "protecao"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Garras traiçoeiras",
+      "descricao": "dois ataques corpo a corpo na mesma ação, dano médio cada"
+    },
+    {
+      "nome": "Mudar de forma",
+      "descricao": "feitiçaria; assume qualquer forma humanoide à vontade, indistinguível sem magia"
+    },
+    {
+      "nome": "Ler pensamentos",
+      "descricao": "feitiçaria; sonda a mente de um alvo próximo e revela intenções ou segredos"
+    },
+    {
+      "nome": "Ilusões",
+      "descricao": "feitiçaria; cria imagens sensoriais convincentes para enganar ou distrair"
+    },
+    {
+      "nome": "Só arma benta fere",
+      "descricao": "resistência mágica; imune a quase todo dano, exceto de armas abençoadas"
+    },
+    {
+      "nome": "Magia reversa",
+      "descricao": "alguns feitiços lançados contra ele produzem o efeito oposto ao pretendido"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Predador social por excelência: disfarça-se de nobre, mercador ou sacerdote e manipula suas vítimas ao longo de anos, satisfazendo apetites cruéis sob uma máscara de refinamento impecável."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Raramente forma grupos; quando vários se reúnem, tecem intrigas de corte que se estendem por gerações, cada um fingindo servir ao outro enquanto trama a própria ascensão."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Vaidoso e epicurista, saboreia o luxo e o sofrimento alheio em doses iguais; despreza a violência bruta e prefere a ruína lenta, quase artística."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Veste as melhores sedas, come e bebe com refinamento obsceno, e mantém as palmas viradas ao contrário sempre escondidas sob luvas."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "As igrejas supressoras vigiam feitiços óbvios, mas não a sedução e a mentira: um rakshasa entrincheirado numa corte de Calin ou nas cidades ocultas de Mère passa décadas sem ser descoberto. A Lei que barra os deuses de tocar mortais nunca o alcançou, pois ele jamais foi mortal."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Jungle",
+      "Urban"
+    ],
+    "clima": [
+      "Tropical",
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Manha 5, Furtividade 4, Persuasão 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Rakshasa",
+    "cr": "10",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 18,
+      "con": 16,
+      "int": 13,
+      "sab": 13,
+      "car": 17
+    },
+    "pericias": [
+      "Manha 5",
+      "Furtividade 4",
+      "Persuasão 3"
+    ],
+    "nota": "Ilusões, mudar de forma, resistência à magia: Centelha 4.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

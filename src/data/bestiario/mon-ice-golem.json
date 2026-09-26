@@ -1,0 +1,132 @@
+{
+  "ordem": 228,
+  "id": "mon-ice-golem",
+  "nome": "Golem de Gelo",
+  "nomeIngles": "Golem, Ice",
+  "categoria": "Construto",
+  "categoriaLegada": "Monstro",
+  "papel": "elite",
+  "conceito": "constructo Médio",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricaoLegada": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha"
+  ],
+  "imagem": "bestiario/ice-golem.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2,1 m de altura",
+    "peso": "225 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 5,
+    "destreza": 2,
+    "vigor": 0,
+    "influencia": 0,
+    "perspicacia": 0,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 3,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "fogo"
+  ],
+  "resistencias": [
+    "gelo",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Corpo de Gelo Vivo",
+      "descricao": "Absorve parte de qualquer dano físico comum, é imune ao frio e a quase toda magia que tentar afetá-lo diretamente, mas racha com facilidade diante do fogo."
+    },
+    {
+      "nome": "Frio Cortante",
+      "descricao": "O simples toque de seu corpo gélido causa dano por frio, e quem golpeá-lo com as próprias mãos ou garras sofre o mesmo frio de volta."
+    },
+    {
+      "nome": "Sopro Congelante",
+      "descricao": "Uma vez a cada poucos instantes, exala um cone de frio brutal que castiga todos à frente, a menos que resistam com um teste de Reação."
+    },
+    {
+      "nome": "Explosão Final",
+      "descricao": "Ao ser destruído, estilhaça-se em lascas de gelo cortante, ferindo com dano contínuo tudo que estiver por perto."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Estátua que anda",
+      "texto": "Esculpido de um único bloco de gelo puro, pode variar de uma figura tosca e congelada a uma escultura cristalina de rara beleza."
+    },
+    {
+      "titulo": "Guardião das terras geladas",
+      "texto": "Não fala nem geme, apenas o estalar constante do gelo denuncia sua aproximação nos corredores congelados que costuma vigiar."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Construct",
+    "terreno": [
+      "Cold",
+      "Mountain"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Ice Golem",
+    "cr": "5",
+    "tipo": "constructo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 16,
+      "des": 9,
+      "con": "-",
+      "int": "-",
+      "sab": 11,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

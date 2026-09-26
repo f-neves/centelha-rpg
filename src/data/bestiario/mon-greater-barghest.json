@@ -1,0 +1,129 @@
+{
+  "ordem": 151,
+  "id": "mon-greater-barghest",
+  "nome": "Greater Barghest",
+  "nomeIngles": "Greater Barghest",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Exterior",
+  "papel": "elite",
+  "conceito": "exterior Grande",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha"
+  ],
+  "imagem": "bestiario/greater-barghest.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,7 m de altura",
+    "peso": "350 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 8,
+    "destreza": 4,
+    "vigor": 6,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 5
+  },
+  "willpower": 9,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Metamorfose",
+      "descricao": "Mantém a capacidade de assumir forma de goblin ou de lobo, além de sua forma verdadeira, agora maior e mais imponente."
+    },
+    {
+      "nome": "Pele Curtida Maior",
+      "descricao": "Sua nova pele absorve ainda mais dano de armas comuns do que na forma anterior."
+    },
+    {
+      "nome": "Truques Sombrios Aprimorados",
+      "descricao": "Além dos poderes de seu estágio anterior, pode se tornar invisível por um tempo e fortalecer ou ampliar o tamanho de aliados próximos."
+    },
+    {
+      "nome": "Garras e Mordida Brutais",
+      "descricao": "Seus ataques físicos ficam significativamente mais fortes que os de um barghest comum."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Ascensão",
+      "texto": "O barghest maior é o resultado de fartos anos de devoração: uma criatura que trocou de pele tantas vezes que se tornou algo maior e mais terrível, perdendo o antigo corpo para sempre."
+    },
+    {
+      "titulo": "Liderança",
+      "texto": "Costuma assumir o comando de uma tribo de goblins ou criaturas afins, governando-as pelo medo e pela força bruta como um tirano vindo de fora."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any",
+      "Mountain"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Greater Barghest",
+    "cr": "7",
+    "tipo": "exterior Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 15,
+      "con": 19,
+      "int": 18,
+      "sab": 18,
+      "car": 18
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

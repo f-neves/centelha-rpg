@@ -1,0 +1,174 @@
+{
+  "ordem": 116,
+  "id": "mon-pixie",
+  "nome": "Pixie",
+  "nomeIngles": "Pixie",
+  "categoria": "Fada",
+  "papel": "soldado",
+  "conceito": "fada Pequeno",
+  "descricao": "Espírito da natureza, belo e caprichoso.",
+  "tags": [
+    "fada",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/pixie.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "30 cm de altura",
+    "peso": "3 kg"
+  },
+  "locomocao": {
+    "voo": 6
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 1,
+    "destreza": 6,
+    "vigor": 2,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 4,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 2,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 3,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 8,
+  "arte": {
+    "fascinacao": 2
+  },
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Invisibilidade natural (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N1",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Flechas do sono / amnésia",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N2",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Voo",
+      "tipo": "natural",
+      "alvo": "asas"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Invisibilidade à vontade",
+      "descricao": "ação livre; fica invisível até atacar, +3d6 em Furtividade enquanto oculta"
+    },
+    {
+      "nome": "Voo veloz",
+      "descricao": "desloca 12m voando; ignora terreno difícil, +1 Esquiva contra ataques corpo a corpo"
+    },
+    {
+      "nome": "Flecha do sono",
+      "descricao": "alcance 18m; falha em Vontade: Inconsciente até o fim da cena"
+    },
+    {
+      "nome": "Flecha da amnésia",
+      "descricao": "alcance 18m; falha em Vontade: perde as memórias da última hora"
+    },
+    {
+      "nome": "Corpo minúsculo",
+      "descricao": "+1 Defesa contra criaturas Médias ou maiores, difícil de acertar"
+    },
+    {
+      "nome": "Glamour distrativo",
+      "descricao": "1x por cena, cria uma ilusão que desvia a atenção; falha em Vontade faz o alvo perder a próxima ação"
+    },
+    {
+      "nome": "Fuga élfica",
+      "descricao": "abaixo de metade dos PV, pode ficar invisível e voar para longe como reação"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Adora pregar peças, usando invisibilidade e um pó que apaga memórias para brincar com viajantes sem nunca deixar rastro de sua passagem."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Recolhe curiosidades brilhantes, guarda pequenos tesouros sem valor real e passa as noites em música e dança nas clareiras."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Bosques floridos, clareiras escondidas e troncos ocos servem de lar e esconderijo."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Brincalhona e curiosa, raramente age com malícia verdadeira, mas torna-se implacável com quem agride a natureza que protege."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Ligada à mesma origem feérica que precede a Queda dos elfos, em Syl é tratada como pequeno kami travesso e benigno; no supersticioso Neck, camponeses deixam oferendas simples só para afastar suas peças."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fey",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 5, Ocultismo 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Pixie",
+    "cr": "4",
+    "tipo": "fada Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 7,
+      "des": 20,
+      "con": 11,
+      "int": 16,
+      "sab": 15,
+      "car": 16
+    },
+    "pericias": [
+      "Furtividade 5",
+      "Ocultismo 2"
+    ],
+    "nota": "Invisibilidade, flechas do sono: Centelha 3. Dex 20 → Destreza 6.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60; em terra 20"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

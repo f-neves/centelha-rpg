@@ -1,0 +1,134 @@
+{
+  "ordem": 55,
+  "id": "mon-grifo",
+  "nome": "Grifo",
+  "nomeIngles": "Griffon",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Grande",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/grifo.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "Corpo 2,4 m, envergadura 4,5 m",
+    "peso": "230 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 6,
+    "destreza": 4,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Voo veloz",
+      "descricao": "desloca no ar com grande velocidade e agilidade"
+    },
+    {
+      "nome": "Garras de mergulho",
+      "descricao": "ataque após mergulho causa dano extra e pode Derrubar"
+    },
+    {
+      "nome": "Bico de águia",
+      "descricao": "ataque corpo a corpo adicional com dano moderado"
+    },
+    {
+      "nome": "Visão de caçador",
+      "descricao": "detecta presas em movimento a grande distância"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Caça em mergulho, combinando a velocidade da águia com a força do leão; é territorial ao extremo e ataca qualquer coisa, inclusive hipogrifos, que cruze seu espaço aéreo."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Vive em casais ou pequenos bandos em ninhos de penhasco, criando os filhotes juntos e caçando em duplas coordenadas quando a presa é grande demais para um só."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Domina picos altos e planaltos ventosos, sobretudo no White Wall e nas serras que dividem Calin de Syl."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Ovos e filhotes de grifo são disputados havia gerações por cavaleiros de Calin que sonham montá-los em batalha, embora domar um adulto continue sendo tarefa de poucos e caro demais para a maioria."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Mountain",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 2, Atletismo 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Grifo",
+    "cr": "4",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 16,
+      "des": 15,
+      "con": 16,
+      "int": 5,
+      "sab": 13,
+      "car": 8
+    },
+    "pericias": [
+      "Prontidão 2",
+      "Atletismo 2"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

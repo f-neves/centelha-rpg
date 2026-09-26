@@ -1,0 +1,141 @@
+{
+  "ordem": 29,
+  "id": "mon-gigante-da-pedra",
+  "nome": "Gigante da Pedra",
+  "nomeIngles": "Giant, Stone",
+  "categoria": "Gigante",
+  "papel": "chefe",
+  "conceito": "humanoide Grande (gigante)",
+  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "tags": [
+    "gigante"
+  ],
+  "imagem": "bestiario/gigante-da-pedra.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,7 m de altura",
+    "peso": "770 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 9,
+    "destreza": 4,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 5
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Pancada descomunal",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Arremesso certeiro",
+      "descricao": "ataque à distância de até 45m, dano alto e raramente erra"
+    },
+    {
+      "nome": "Camuflagem pétrea",
+      "descricao": "Furtividade alta parado ou movendo-se devagar em terreno rochoso"
+    },
+    {
+      "nome": "Sentir vibrações",
+      "descricao": "percebe criaturas próximas através da rocha, ignora escuridão e invisibilidade a curta distância"
+    },
+    {
+      "nome": "Couro de pedra",
+      "descricao": "Absorção muito alta"
+    },
+    {
+      "nome": "Punho esmagador",
+      "descricao": "dano alto corpo a corpo, pode derrubar o alvo"
+    },
+    {
+      "nome": "Passos silenciosos",
+      "descricao": "atravessa cavernas e penhascos sem disparar a Prontidão de vigias"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Reclusivo e pacífico até ser provocado, prefere evitar contato com outras raças a impor sua força."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Esculpe formas belas na pedra nua das próprias cavernas, medita por longos períodos e arremessa rochas com precisão mortal quando ameaçado."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Contemplativo e discreto, quase um artista, mas devastador quando a guerra chega até ele."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Recolhido nas profundezas de montanhas que os anões já chamaram de lar, o gigante da pedra é talvez o único vizinho silencioso que restou no White Wall depois da Fenda, e poucos sabem dizer se ainda há covis intactos ou se os horrores já os alcançaram também."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Giant",
+    "terreno": [
+      "Mountain",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 3, Atletismo 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Gigante da Pedra",
+    "cr": "8",
+    "tipo": "humanoide Grande (gigante)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 27,
+      "des": 15,
+      "con": 19,
+      "int": 10,
+      "sab": 12,
+      "car": 11
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Atletismo 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

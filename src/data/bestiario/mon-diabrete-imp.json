@@ -1,0 +1,180 @@
+{
+  "ordem": 95,
+  "id": "mon-diabrete-imp",
+  "nome": "Diabrete (Imp)",
+  "nomeIngles": "Imp",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Diabo",
+  "papel": "soldado",
+  "conceito": "exterior Minúsculo (diabo)",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Tirano leal do Inferno, calculista e cruel.",
+  "tags": [
+    "diabo",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/diabrete-imp.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "60 cm de altura",
+    "peso": "3,6 kg"
+  },
+  "locomocao": {
+    "voo": 5
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 2,
+    "destreza": 5,
+    "vigor": 2,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 3,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 5
+  },
+  "willpower": 7,
+  "aparencia": 1,
+  "arte": {
+    "fascinacao": 1,
+    "adivinhacao": 1,
+    "materia": 2
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Invisibilidade (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N1",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Adivinhação",
+      "tipo": "feiticaria",
+      "alvo": "Adivinhação · N1",
+      "arte": "adivinhacao"
+    },
+    {
+      "efeito": "Forma alternativa",
+      "tipo": "feiticaria",
+      "alvo": "Matéria · N2",
+      "arte": "materia"
+    },
+    {
+      "efeito": "Ferrão venenoso",
+      "tipo": "natural",
+      "alvo": "natural"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Ferrão venenoso",
+      "descricao": "ataque corpo a corpo; falha em Fortitude = Enfraquecido"
+    },
+    {
+      "nome": "Invisibilidade",
+      "descricao": "feitiçaria; fica invisível à vontade como ação livre"
+    },
+    {
+      "nome": "Adivinhação",
+      "descricao": "feitiçaria, 1x por cena; revela uma informação oculta sobre um alvo ou cena"
+    },
+    {
+      "nome": "Forma alternativa",
+      "descricao": "feitiçaria; vira corvo ou aranha pequena, ganhando voo ou Furtividade extra"
+    },
+    {
+      "nome": "Regeneração",
+      "descricao": "recupera PV toda rodada, exceto se ferido por arma benta ou de prata"
+    },
+    {
+      "nome": "Sangue infernal",
+      "descricao": "imune a fogo e veneno; resistente a frio e ácido"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Prefere espionar, sussurrar e manipular a lutar abertamente, trocando de forma (rato, corvo, gato preto) para se infiltrar sem ser notado."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Serve como familiar e espião de feiticeiros e senhores infernais, cumprindo tarefas por anos a fio em troca de proteção ou de uma alma prometida ao final do serviço."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Perspicaz, sarcástico e paciente, prefere o plano de longo prazo à violência imediata, sempre com um contrato ou uma armadilha guardada na manga."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Circula em Calin como o mais discreto dos horrores: um corvo comum pousado na janela do inquisidor, ouvindo tudo, relatando tudo, tecendo lentamente a queda de alguém."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 4, Manha 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Diabrete (Imp)",
+    "cr": "2",
+    "tipo": "exterior Minúsculo (diabo)",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 10,
+      "des": 17,
+      "con": 10,
+      "int": 13,
+      "sab": 12,
+      "car": 14
+    },
+    "pericias": [
+      "Furtividade 4",
+      "Manha 3"
+    ],
+    "nota": "Invisibilidade, adivinhação, forma alternativa: Centelha 2.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte",
+      "nota": "voo 50 (perfeito); em terra 20"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

@@ -1,0 +1,129 @@
+{
+  "ordem": 150,
+  "id": "mon-barghest",
+  "nome": "Barghest",
+  "nomeIngles": "Barghest",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Exterior",
+  "papel": "soldado",
+  "conceito": "exterior Médio",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha"
+  ],
+  "imagem": "bestiario/barghest.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura",
+    "peso": "90 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 5,
+    "destreza": 4,
+    "vigor": 4,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4,
+    "percepcao": 4,
+    "inteligencia": 4,
+    "raciocinio": 4
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 5
+  },
+  "willpower": 7,
+  "aparencia": 1,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Metamorfose",
+      "descricao": "Pode assumir a forma de um goblin ou de um lobo comum, além de sua forma verdadeira."
+    },
+    {
+      "nome": "Devorar Almas",
+      "descricao": "Uma vez por mês, ao devorar o corpo de um humanoide não maligno, o barghest ganha um ponto de crescimento permanente, tornando-se cada vez mais forte, resistente e perigoso a cada refeição."
+    },
+    {
+      "nome": "Pele Curtida",
+      "descricao": "Sua carne absorve parte de golpes de armas comuns, exigindo algo enfeitiçado para feri-lo com força total."
+    },
+    {
+      "nome": "Truques Sombrios",
+      "descricao": "Pode piscar entre sombras, levitar, confundir sobre sua real localização e, ocasionalmente, encantar um inimigo, espalhar desespero ou se teleportar por curtas distâncias."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Origem",
+      "texto": "Ditos parentes demoníacos dos povos goblinoides, os barghests vêm ao mundo material para se alimentar, ganhando poder a cada vítima inocente devorada."
+    },
+    {
+      "titulo": "Destino",
+      "texto": "Ao acumular crescimento suficiente, o barghest troca de pele e se torna um barghest maior, geralmente assumindo o comando de uma tribo de goblins ou criaturas semelhantes."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any",
+      "Mountain"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Barghest",
+    "cr": "4",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 19,
+      "des": 15,
+      "con": 15,
+      "int": 14,
+      "sab": 14,
+      "car": 14
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

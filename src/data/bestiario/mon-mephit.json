@@ -1,0 +1,131 @@
+{
+  "ordem": 257,
+  "id": "mon-mephit",
+  "nome": "Mephit",
+  "nomeIngles": "Mephit",
+  "categoria": "Outsider",
+  "categoriaLegada": "Exterior",
+  "papel": "soldado",
+  "conceito": "exterior Pequeno",
+  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "tags": [
+    "exterior",
+    "centelha"
+  ],
+  "imagem": "bestiario/mephit.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "1 m de altura",
+    "peso": "18 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 3,
+    "destreza": 4,
+    "vigor": 3,
+    "influencia": 4,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 4,
+    "temperanca": 3,
+    "valor": 4
+  },
+  "willpower": 7,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Cura Acelerada",
+      "descricao": "Em ambientes ligados ao seu elemento, fecha ferimentos rapidamente sozinho."
+    },
+    {
+      "nome": "Sopro Elemental",
+      "descricao": "A cada poucos rounds, expele um cone de energia do seu elemento, ferindo todos à frente; quem se abaixa a tempo sofre só metade do dano."
+    },
+    {
+      "nome": "Convocar Semelhante",
+      "descricao": "Uma vez por dia, pode chamar outro mefite do mesmo tipo elemental para vir em seu auxílio."
+    },
+    {
+      "nome": "Corpo Semi-Etéreo",
+      "descricao": "Sendo feito de matéria elemental pura, absorve parte de golpes comuns; só armas encantadas o ferem de verdade."
+    },
+    {
+      "nome": "Voo Instável",
+      "descricao": "Voa com razoável destreza, usando isso tanto para fugir quanto para hostilizar de cima."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Servos dos Planos Elementais",
+      "texto": "Enxames destes seres pequenos cumprem tarefas e recados para senhores elementais poderosos, cada tipo ligado a um elemento específico."
+    },
+    {
+      "titulo": "Pragas Aladas",
+      "texto": "Irritantes e imprevisíveis, muitos preferem provocar e fugir a enfrentar um combate direto."
+    },
+    {
+      "titulo": "Muitas Formas, um Só Propósito",
+      "texto": "Existem mefites de ar, poeira, terra, fogo e outros elementos, cada um com seu próprio sopro e talento, mas todos compartilham a mesma natureza travessa e serviçal."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Monitor",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Mephit",
+    "cr": "3",
+    "tipo": "exterior Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 13,
+      "des": 15,
+      "con": 12,
+      "int": 6,
+      "sab": 11,
+      "car": 14
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

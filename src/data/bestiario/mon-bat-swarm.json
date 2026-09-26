@@ -1,0 +1,130 @@
+{
+  "ordem": 154,
+  "id": "mon-bat-swarm",
+  "nome": "Enxame de Morcegos",
+  "nomeIngles": "Swarm, Bat",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/bat-swarm.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "15 cm de comprimento (por indivíduo)",
+    "peso": "30 g (por indivíduo)"
+  },
+  "locomocao": {
+    "voo": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 1,
+    "destreza": 4,
+    "vigor": 2,
+    "influencia": 0,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Enxame Voraz",
+      "descricao": "Centenas de morcegos atacam como uma única massa, mordendo tudo que se move dentro do seu espaço; armas comuns de corte ou perfuração quase não causam efeito contra o enxame."
+    },
+    {
+      "nome": "Ecolocalização",
+      "descricao": "Percebe presas no escuro absoluto através de vibrações no ar, dispensando completamente a visão."
+    },
+    {
+      "nome": "Voo Ágil",
+      "descricao": "Desloca-se pelo ar com grande agilidade, esquivando de obstáculos e perseguindo presas em fuga."
+    },
+    {
+      "nome": "Perturbação",
+      "descricao": "O zumbido e as mordidas constantes atrapalham a concentração de quem está dentro do enxame, dificultando ações que exijam foco."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Habitat",
+      "texto": "Vivem em grandes cavernas, ruínas esquecidas e até esgotos de cidades, qualquer lugar escuro onde possam se esconder durante o dia."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Só saem em massa ao amanhecer e ao entardecer, ou quando são expulsos de seus covis por algum intruso ou incêndio."
+    },
+    {
+      "titulo": "Caçada",
+      "texto": "Cada morcego é inofensivo sozinho, mas centenas deles atacando ao mesmo tempo conseguem reduzir um viajante desavisado a uma carcaça em minutos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Underground",
+      "Ruins",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Bat Swarm",
+    "cr": "2",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 3,
+      "des": 15,
+      "con": 11,
+      "int": 2,
+      "sab": 14,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "voo 40: a nuvem de morcegos não pousa"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

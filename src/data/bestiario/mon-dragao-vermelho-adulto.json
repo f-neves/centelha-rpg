@@ -1,0 +1,189 @@
+{
+  "ordem": 132,
+  "id": "mon-dragao-vermelho-adulto",
+  "nome": "Dragão Vermelho Adulto",
+  "nomeIngles": "Dragon, Adult Red",
+  "categoria": "Dragão",
+  "papel": "chefe",
+  "conceito": "dragão Enorme",
+  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "tags": [
+    "dragao",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/dragao-vermelho-adulto.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "9 m de comprimento, com a cauda",
+    "peso": "7,3 t"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 6,
+  "attrs": {
+    "forca": 11,
+    "destreza": 2,
+    "vigor": 9,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5,
+    "percepcao": 5,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 2,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 5,
+    "temperanca": 3,
+    "valor": 6
+  },
+  "willpower": 11,
+  "aparencia": 9,
+  "arte": {
+    "fogo": 4,
+    "morte": 3
+  },
+  "ataques": [
+    {
+      "nome": "Garras e mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Sopro de fogo (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Fogo · N4",
+      "arte": "fogo"
+    },
+    {
+      "efeito": "Aura de fogo (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Fogo · N4 / Proteção",
+      "arte": "fogo"
+    },
+    {
+      "efeito": "Presença aterradora",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N3",
+      "arte": "morte"
+    },
+    {
+      "efeito": "Feitiços de feiticeiro",
+      "tipo": "feiticaria",
+      "alvo": "várias · N3"
+    }
+  ],
+  "resistencias": [
+    "fogo"
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro de fogo",
+      "descricao": "cone de 12m; 9d6 de dano, metade se Esquivar"
+    },
+    {
+      "nome": "Aura de fogo",
+      "descricao": "quem o acerta em combate corpo a corpo sofre 2d6 de dano automático"
+    },
+    {
+      "nome": "Presença aterradora",
+      "descricao": "falha no teste de Vontade = Abalado em raio de 24m"
+    },
+    {
+      "nome": "Voo",
+      "descricao": "manobra excelente; reposiciona-se livremente antes de atacar"
+    },
+    {
+      "nome": "Multiataque",
+      "descricao": "garra, garra, mordida e cauda no mesmo turno"
+    },
+    {
+      "nome": "Imune a fogo",
+      "descricao": "ignora todo dano de fogo"
+    },
+    {
+      "nome": "Escamas grossas",
+      "descricao": "Absorção +3d6 contra ataques físicos"
+    },
+    {
+      "nome": "Feitiços de feiticeiro",
+      "descricao": "lança feitiços intermediários (feiticaria) durante o combate"
+    },
+    {
+      "nome": "Sentidos aguçados",
+      "descricao": "detecta invisíveis e furtivos automaticamente"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "O dragão vermelho adulto já não caça por necessidade: impõe tributo às comunidades ao redor de seu covil, exigindo ouro, gado ou sacrifícios simbólicos em troca de não arrasar vilas inteiras."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Governa como um tirano solitário, cercado por servos, cultistas ou criaturas subjugadas que cuidam do covil e espalham seu nome com medo reverente pelas terras vizinhas."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Extremamente vaidoso e calculista, adora manipular mortais com promessas e ameaças veladas, tratando a bajulação como tributo tão valioso quanto o ouro do próprio tesouro."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Em Mére, onde cidades mágicas avançadas se escondem sob a fama de terra bárbara, um dragão vermelho adulto pode governar um vale inteiro como um rei não reconhecido, algo que as igrejas supressoras de Calin preferem não admitir que ainda existe."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Mountain"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 5, Persuasão 4, Ocultismo 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Dragão Vermelho Adulto",
+    "cr": "14",
+    "tipo": "dragão Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 31,
+      "des": 10,
+      "con": 23,
+      "int": 16,
+      "sab": 17,
+      "car": 16
+    },
+    "pericias": [
+      "Prontidão 5",
+      "Persuasão 4",
+      "Ocultismo 3"
+    ],
+    "nota": "Feiticeiro alado temível: Centelha 5. Str 31 → curva 9 +2 = Força 11.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

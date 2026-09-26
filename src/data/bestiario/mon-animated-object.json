@@ -1,0 +1,137 @@
+{
+  "ordem": 140,
+  "id": "mon-animated-object",
+  "nome": "Objeto Animado",
+  "nomeIngles": "Animated Object",
+  "categoria": "Construto",
+  "categoriaLegada": "Monstro",
+  "papel": "soldado",
+  "conceito": "constructo Médio",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricaoLegada": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha"
+  ],
+  "imagem": "bestiario/animated-object.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,5 m de altura",
+    "peso": "150 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 4,
+    "destreza": 2,
+    "vigor": 0,
+    "influencia": 0,
+    "perspicacia": 0,
+    "compostura": 0,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 0
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 0,
+    "prontidao": 0,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 3,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "bonus": {
+    "absorcao_impacto": 1,
+    "absorcao_corte": 3,
+    "absorcao_perfuracao": 3
+  },
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Corpo Inanimado",
+      "descricao": "Feito de madeira, pedra ou metal, o objeto animado não respira, não sente medo e é imune a doenças, venenos e efeitos que dependem de mente ou emoção."
+    },
+    {
+      "nome": "Casco Resistente",
+      "descricao": "A superfície do objeto absorve grande parte de qualquer impacto físico, reduzindo o dano recebido."
+    },
+    {
+      "nome": "Golpe Bruto",
+      "descricao": "O objeto ataca com pancadas contundentes, usando a própria massa como arma."
+    },
+    {
+      "nome": "Formas Variadas",
+      "descricao": "Alguns objetos animados ganham garras extras, capacidade de escalar, nadar ou voar, ou um golpe capaz de arremessar o oponente ao chão, dependendo do item original."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Origem",
+      "texto": "Um objeto animado não nasce, é feito. Móveis, estátuas, armaduras vazias e portões inteiros já foram despertados por magia para servir como guardiões silenciosos."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Sem mente própria, o objeto apenas cumpre a última ordem recebida ou ataca qualquer intruso que cruze seu posto, sem hesitação, cansaço ou piedade."
+    },
+    {
+      "titulo": "Tamanho e Material",
+      "texto": "Objetos animados variam enormemente: um candelabro desperto e um navio animado são a mesma criatura em escalas opostas. O tamanho e o material (madeira, pedra ou metal) alteram muito a Força, a Destreza, os PV, a Defesa e a Absorção. Os valores desta ficha são de um objeto Médio; ajuste conforme o item. Exemplos por porte: Minúsculo: candelabro · Pequeno: cadeira · Médio: jaula · Grande: estátua · Enorme: carroça · Imenso: catapulta · Colossal: navio."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Construct",
+    "terreno": [
+      "Any",
+      "Ruins"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Animated Object",
+    "cr": "3",
+    "tipo": "constructo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 10,
+      "con": "-",
+      "int": "-",
+      "sab": 1,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

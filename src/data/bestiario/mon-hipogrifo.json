@@ -1,0 +1,133 @@
+{
+  "ordem": 56,
+  "id": "mon-hipogrifo",
+  "nome": "Hipogrifo",
+  "nomeIngles": "Hippogriff",
+  "categoria": "Besta mágica",
+  "papel": "fera",
+  "conceito": "besta mágica Grande",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/hipogrifo.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3 m de comprimento, envergadura 5,5 m",
+    "peso": "450 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 6,
+    "destreza": 4,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Voo veloz",
+      "descricao": "desloca-se livremente pelo ar, ganha Iniciativa +1 em perseguições aéreas"
+    },
+    {
+      "nome": "Garras e bico",
+      "descricao": "ataca com garras e bico no mesmo turno"
+    },
+    {
+      "nome": "Investida em mergulho",
+      "descricao": "dano extra ao atacar descendo do ar contra alvo no chão"
+    },
+    {
+      "nome": "Sentidos de predador",
+      "descricao": "Prontidão 2; raramente é surpreendido"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Mais dócil e gregário que seu primo grifo, vive em manadas e reage a ameaças fugindo em voo antes de brigar, embora se defenda com força quando encurralado."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Forma bandos de várias famílias que pastam e voam juntos, com hierarquia frouxa liderada pelo garanhão mais velho e mais alerta a predadores."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Habita planícies altas e campos abertos entre montanhas, comum nas pastagens ventosas de Syl e nas bordas do White Wall."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Por ser mais fácil de domar que o grifo, o hipogrifo virou montaria de prestígio entre batedores e mensageiros de Calin, ainda que precise fugir de território de grifo sempre que os dois se cruzam."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Plains",
+      "Mountain"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Hipogrifo",
+    "cr": "2",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 15,
+      "con": 16,
+      "int": 2,
+      "sab": 13,
+      "car": 8
+    },
+    "pericias": [
+      "Prontidão 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

@@ -1,0 +1,131 @@
+{
+  "ordem": 259,
+  "id": "mon-mite",
+  "nome": "Mite",
+  "nomeIngles": "Mite",
+  "categoria": "Fada",
+  "papel": "capanga",
+  "conceito": "fada Pequeno",
+  "descricao": "Fada mesquinha e degenerada das cavernas, covarde e vingativa.",
+  "descricaoLegada": "Espírito da natureza, belo e caprichoso.",
+  "tags": [
+    "fada",
+    "centelha"
+  ],
+  "imagem": "bestiario/mite.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "60 cm de altura",
+    "peso": "9 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 2,
+    "destreza": 3,
+    "vigor": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 3,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 8,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentidos das cavernas",
+      "descricao": "Enxerga no escuro a longa distância, tem visão noturna aguçada e sente cheiros como um animal faminto."
+    },
+    {
+      "nome": "Pele curtida contra o ferro frio",
+      "descricao": "A pele fibrosa absorve parte de golpes cortantes, exceto os feitos com ferro frio."
+    },
+    {
+      "nome": "Sensibilidade à luz",
+      "descricao": "Sob luz forte fica ofuscado e briga em desvantagem."
+    },
+    {
+      "nome": "Ódio aos anões e gnomos",
+      "descricao": "Contra essas raças ataca com fúria extra, fruto de rancor ancestral."
+    },
+    {
+      "nome": "Fala com os vermes",
+      "descricao": "Consegue comandar e montar aracnídeos e outros vermes gigantes, tratando enxames como se fossem uma única criatura obediente."
+    },
+    {
+      "nome": "Truques menores",
+      "descricao": "Domina pequenos truques de prestidigitação e, uma vez por cena, pode amaldiçoar um inimigo com má sorte."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Covardes vingativos",
+      "texto": "Nascidos de fadas menores encolhidas por gerações no Plano Material, os mites nutrem humilhações por anos até explodirem em surtos de violência."
+    },
+    {
+      "titulo": "Reis dos porões",
+      "texto": "Vivem no fundo das cavernas mais desprezadas, evitados até por goblins, e usam vermes gigantes como montarias e guarda-costas."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fey",
+    "terreno": [
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Mite",
+    "cr": "1/4",
+    "tipo": "fada Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 8,
+      "des": 13,
+      "con": 11,
+      "int": 8,
+      "sab": 13,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

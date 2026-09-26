@@ -1,0 +1,138 @@
+{
+  "ordem": 248,
+  "id": "mon-crag-linnorm",
+  "nome": "Crag Linnorm",
+  "nomeIngles": "Crag Linnorm",
+  "categoria": "Dragão",
+  "papel": "chefe",
+  "conceito": "dragão Imenso",
+  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "tags": [
+    "dragao",
+    "centelha"
+  ],
+  "imagem": "bestiario/crag-linnorm.webp",
+  "porte": "Imenso",
+  "dimensoes": {
+    "medida": "18 m de comprimento",
+    "peso": "9.000 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 6,
+  "attrs": {
+    "forca": 13,
+    "destreza": 5,
+    "vigor": 11,
+    "influencia": 6,
+    "perspicacia": 3,
+    "compostura": 6,
+    "percepcao": 5,
+    "inteligencia": 1,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 6
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 5,
+    "temperanca": 3,
+    "valor": 6
+  },
+  "willpower": 11,
+  "aparencia": 9,
+  "ataques": [
+    {
+      "nome": "Garras e mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro de Magma",
+      "descricao": "A cada poucos rounds, cospe uma linha de lava incandescente que queima tudo à frente; o rastro continua ardendo e fere de novo quem passar por cima no round seguinte."
+    },
+    {
+      "nome": "Maldição da Morte",
+      "descricao": "Quem finalmente o abate é amaldiçoado a arder por dentro, ganhando vulnerabilidade permanente a fogo."
+    },
+    {
+      "nome": "Liberdade de Movimento",
+      "descricao": "Nunca fica preso, agarrado ou paralisado, como se estivesse sob proteção constante contra restrições."
+    },
+    {
+      "nome": "Veneno na Mordida",
+      "descricao": "A mordida injeta uma toxina ígnea que continua a arder por dentro da vítima, causando dano contínuo de fogo e corroendo seu Vigor até duas curas seguidas."
+    },
+    {
+      "nome": "Regeneração Dracônica",
+      "descricao": "Fecha feridas rapidamente; somente ferro frio impede essa cura."
+    },
+    {
+      "nome": "Visão Verdadeira",
+      "descricao": "Enxerga através de ilusões, disfarces e trevas como se nada os escondesse."
+    },
+    {
+      "nome": "Corpo Blindado e Resistente a Magia",
+      "descricao": "Escamas grossas absorvem grande parte do dano físico, feitiços hostis enfrentam grande resistência, e é imune a fogo, veneno, sono, paralisia e maldições comuns."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Fera Primeva do Norte",
+      "texto": "Mais fraco entre os linormes, ainda assim reina sobre colinas geladas onde poucos ousam se estabelecer."
+    },
+    {
+      "titulo": "Sangue de Fogo",
+      "texto": "Sob suas escamas escuras corre um calor vulcânico, e por onde se arrasta a terra racha e fumega."
+    },
+    {
+      "titulo": "Maldição Viva",
+      "texto": "Lendas dizem que quem mata um linorme carrega para sempre uma centelha de sua fúria ardente, lembrete do preço daquela morte."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Dragon",
+    "terreno": [
+      "Mountain"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Crag Linnorm",
+    "cr": "14",
+    "tipo": "dragão Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 34,
+      "des": 18,
+      "con": 25,
+      "int": 5,
+      "sab": 18,
+      "car": 21
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

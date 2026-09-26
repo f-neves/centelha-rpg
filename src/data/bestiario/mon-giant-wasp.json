@@ -1,0 +1,123 @@
+{
+  "ordem": 300,
+  "id": "mon-giant-wasp",
+  "nome": "Vespa Gigante",
+  "nomeIngles": "Giant Wasp",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/giant-wasp.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3 metros de comprimento",
+    "peso": "150 kg"
+  },
+  "locomocao": {
+    "voo": 6
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 6,
+    "destreza": 3,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 3
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Ferrão venenoso",
+      "descricao": "O ferrão injeta um veneno que corrói a Destreza da vítima a cada rodada por várias rodadas."
+    },
+    {
+      "nome": "Voo veloz",
+      "descricao": "Voa com grande agilidade, perseguindo presas por cima da copa das árvores ou dentro de covis apertados."
+    },
+    {
+      "nome": "Visão no escuro",
+      "descricao": "Enxerga bem mesmo nas partes mais escuras de seu ninho."
+    },
+    {
+      "nome": "Mente coletiva",
+      "descricao": "Como criatura sem verdadeira individualidade, é imune a efeitos que dependem de mente ou emoção."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Caçadora solitária",
+      "texto": "Vespa do tamanho de um cão grande, caça sozinha ou em pequenos grupos, paralisando a presa com o ferrão antes de arrastá-la de volta."
+    },
+    {
+      "titulo": "Berço de pesadelo",
+      "texto": "A presa paralisada vira incubadora viva: a vespa põe os ovos nela e as larvas a devoram por dentro ao nascer."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Wasp",
+    "cr": "3",
+    "tipo": "praga Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 12,
+      "con": 18,
+      "int": "-",
+      "sab": 13,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60; em terra 20"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

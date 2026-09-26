@@ -1,0 +1,194 @@
+{
+  "ordem": 105,
+  "id": "mon-solar",
+  "nome": "Solar",
+  "nomeIngles": "Angel, Solar",
+  "categoria": "Celestial",
+  "papel": "chefe",
+  "conceito": "exterior Grande (anjo)",
+  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
+  "tags": [
+    "celestial",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/solar.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3 m de altura, envergadura 7 m",
+    "peso": "320 kg"
+  },
+  "locomocao": {
+    "terra": 5
+  },
+  "centelha": 9,
+  "attrs": {
+    "forca": 10,
+    "destreza": 6,
+    "vigor": 10,
+    "influencia": 8,
+    "perspicacia": 7,
+    "compostura": 8,
+    "percepcao": 8,
+    "inteligencia": 7,
+    "raciocinio": 8
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 2,
+    "prontidao": 4,
+    "integridade": 8
+  },
+  "virtues": {
+    "compaixao": 5,
+    "conviccao": 5,
+    "temperanca": 4,
+    "valor": 5
+  },
+  "willpower": 12,
+  "aparencia": 12,
+  "arte": {
+    "morte": 5,
+    "espirito": 5,
+    "cura": 5
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Feitiços supremos (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "várias · N5"
+    },
+    {
+      "efeito": "Arco de luz que mata",
+      "tipo": "feiticaria",
+      "alvo": "Raio / Morte · N5",
+      "arte": "morte"
+    },
+    {
+      "efeito": "Convocar anjos",
+      "tipo": "feiticaria",
+      "alvo": "Espírito · N5",
+      "arte": "espirito"
+    },
+    {
+      "efeito": "Ressurreição",
+      "tipo": "feiticaria",
+      "alvo": "Cura · N5",
+      "arte": "cura"
+    }
+  ],
+  "fraquezas": [
+    "profano"
+  ],
+  "habilidades": [
+    {
+      "nome": "Arco da aurora",
+      "descricao": "flecha a distância; alvo maligno que falhar em Resistência sofre dano letal imediato"
+    },
+    {
+      "nome": "Espada afiada",
+      "descricao": "crítico pode decepar um membro ou matar em um só golpe"
+    },
+    {
+      "nome": "Ressurreição",
+      "descricao": "1x por história traz um aliado morto de volta à vida"
+    },
+    {
+      "nome": "Convocar anjos",
+      "descricao": "chama 1d6 celestiais menores para lutar ao seu lado"
+    },
+    {
+      "nome": "Aura protetora suprema",
+      "descricao": "aliados a 12m ganham +2d de Defesa contra o mal"
+    },
+    {
+      "nome": "Feitiços supremos",
+      "descricao": "1x por cena lança qualquer feitiço divino"
+    },
+    {
+      "nome": "Regeneração",
+      "descricao": "recupera PV toda rodada; só dano sagrado oposto interrompe"
+    },
+    {
+      "nome": "Visão verdadeira e telepatia",
+      "descricao": "ignora ilusão e invisibilidade; lê pensamentos a distância"
+    },
+    {
+      "nome": "Voo",
+      "descricao": "desloca-se livremente pelos ares"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "A mais alta expressão da vontade divina em forma de guerreiro, quase nunca visto, reservado para as maiores crises cósmicas."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Não tem par entre celestiais menores; quando aparece, archons e devas o tratam como general supremo."
+    },
+    {
+      "titulo": "Personalidade",
+      "texto": "Sereno além da compreensão mortal, fala pouco, age com precisão absoluta e sem dúvida."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Habita o coração do plano Divino/Celeste, ao lado das potências que serve."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "A Lei que barra os deuses de tocar mortais diretamente talvez nem alcance um solar, o que torna sua aparição um evento de era: as escrituras das igrejas supressoras falam de arautos de espada de luz vistos nos dias da Grande Guerra, e temem, ou rezam, para que um retorne."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Celestial",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Armas 5, Ocultismo 5, Oratória 5, Prontidão 5. Centelha acima do teto mortal (entidade).",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Solar",
+    "cr": "23",
+    "tipo": "exterior Grande (anjo)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 28,
+      "des": 20,
+      "con": 30,
+      "int": 23,
+      "sab": 27,
+      "car": 25
+    },
+    "pericias": [
+      "Armas 5",
+      "Ocultismo 5",
+      "Oratória 5",
+      "Prontidão 5"
+    ],
+    "nota": "Anjo supremo: Centelha 8. Sab 27 → Percepção 8; Con 30 → Vigor 9 +1 = 10.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 6
+}

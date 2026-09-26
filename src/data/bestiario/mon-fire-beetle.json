@@ -1,0 +1,123 @@
+{
+  "ordem": 158,
+  "id": "mon-fire-beetle",
+  "nome": "Besouro de Fogo",
+  "nomeIngles": "Fire Beetle",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Pequeno",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/fire-beetle.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "30 cm de comprimento",
+    "peso": "0,5 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 2,
+    "destreza": 2,
+    "vigor": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 1,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Glândulas Luminosas",
+      "descricao": "Suas glândulas brilham e iluminam uma pequena área ao redor; mesmo depois de morto, o besouro continua a brilhar por alguns dias."
+    },
+    {
+      "nome": "Visão Crepuscular",
+      "descricao": "Enxerga bem com pouca luz, embora dependa do próprio brilho para se guiar na escuridão total, já que não vê no escuro absoluto."
+    },
+    {
+      "nome": "Voo Trôpego",
+      "descricao": "Consegue voar por curtas distâncias, ainda que de forma desajeitada."
+    },
+    {
+      "nome": "Mente Vazia",
+      "descricao": "Imune a efeitos que dependam de mente ou raciocínio, agindo por puro instinto."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Noturno por hábito, mas sem visão no escuro absoluto: por isso depende do próprio brilho para se orientar durante a noite."
+    },
+    {
+      "titulo": "Uso Humano",
+      "texto": "Mineradores e excêntricos gostam de manter besouros-de-fogo engaiolados como fonte de luz barata e duradoura, já que o brilho persiste mesmo após a morte da criatura."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Fire Beetle",
+    "cr": "1/3",
+    "tipo": "praga Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 10,
+      "des": 11,
+      "con": 11,
+      "int": "-",
+      "sab": 10,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

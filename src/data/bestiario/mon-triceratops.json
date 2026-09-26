@@ -1,0 +1,122 @@
+{
+  "ordem": 190,
+  "id": "mon-triceratops",
+  "nome": "Tricerátops",
+  "nomeIngles": "Dinosaur, Triceratops",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "chefe",
+  "conceito": "animal Enorme",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/triceratops.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "9 metros de comprimento",
+    "peso": "9,1 t"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 10,
+    "destreza": 2,
+    "vigor": 7,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Visão penumbra e faro",
+      "descricao": "Enxerga bem em pouca luz e fareja o que se aproxima."
+    },
+    {
+      "nome": "Chifrada de investida",
+      "descricao": "Ao avançar em carga, o chifre frontal perfura com uma força muito maior do que um golpe parado."
+    },
+    {
+      "nome": "Pisoteio",
+      "descricao": "Esmaga inimigos menores sob as patas ao avançar; quem não escapa a tempo sofre dano grave, amenizado por um teste de Vigor."
+    },
+    {
+      "nome": "Escudo natural",
+      "descricao": "A grande gola óssea protege pescoço e cabeça, tornando difícil derrubá-lo ou empurrá-lo à força."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Fera birrenta",
+      "texto": "Teimoso e de temperamento curto, ataca por qualquer motivo, por menor que seja a provocação."
+    },
+    {
+      "titulo": "Escudo de osso",
+      "texto": "A grande gola que emoldura a cabeça protege o pescoço dos golpes que viriam de frente."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Triceratops",
+    "cr": "8",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 26,
+      "des": 9,
+      "con": 19,
+      "int": 2,
+      "sab": 12,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

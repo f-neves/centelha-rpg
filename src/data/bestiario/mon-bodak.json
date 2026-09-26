@@ -1,0 +1,166 @@
+{
+  "ordem": 83,
+  "id": "mon-bodak",
+  "nome": "Bodak",
+  "nomeIngles": "Bodak",
+  "categoria": "Morto-vivo",
+  "papel": "chefe",
+  "conceito": "morto-vivo Médio",
+  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "tags": [
+    "morto-vivo",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/bodak.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura",
+    "peso": "65 kg, corpo emagrecido"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 4,
+    "destreza": 4,
+    "vigor": 5,
+    "influencia": 5,
+    "perspicacia": 2,
+    "compostura": 4,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 4
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 4,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 9,
+  "aparencia": 2,
+  "arte": {
+    "morte": 4
+  },
+  "ataques": [
+    {
+      "nome": "Golpe",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Olhar mortal (Su)",
+      "tipo": "feiticaria",
+      "alvo": "Morte · N5",
+      "arte": "morte"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Olhar mortal",
+      "descricao": "quem cruza o olhar em campo aberto faz teste de Resistência; falha grave reduz o alvo a 0 PV instantaneamente"
+    },
+    {
+      "nome": "Pele cinzenta e rachada",
+      "descricao": "Absorção elevada"
+    },
+    {
+      "nome": "Vulnerável à luz solar direta",
+      "descricao": "sofre Abalado e penalidade em testes sob o sol"
+    },
+    {
+      "nome": "Presença perturbadora",
+      "descricao": "mesmo resistindo ao olhar mortal, quem falha fica Abalado"
+    },
+    {
+      "nome": "Garras ressecadas",
+      "descricao": "ataque corpo a corpo padrão"
+    },
+    {
+      "nome": "Constituição de morto-vivo",
+      "descricao": "imune a veneno, doença e efeitos mentais"
+    },
+    {
+      "nome": "Odiado pela vida",
+      "descricao": "plantas e animais próximos reagem com pavor, delatando sua presença"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Caminha como um cadáver oco, movido por um ódio cego a tudo que ainda respira. Seu simples olhar é capaz de matar quem encara de volta."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Casca cinzenta e sem cabelo, com o rosto encolhido como uma máscara de caveira: criatura que já não pertence a nenhum mundo saudável."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Costuma vagar sozinho, sem matilha nem senhor, atraído apenas pelo calor da vida que despreza e deseja apagar."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Nenhum monstro combina tanto com a Fenda quanto o bodak: dizem que é o que sobra de alguém arrastado para o plano de pesadelo e devolvido ao mundo com a Centelha torcida em algo que só sabe odiar. Os poucos sobreviventes de expedições ao White Wall descrevem exatamente essa figura de crânio humano descarnado e garras longas antes de fugir."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Undead",
+    "terreno": [
+      "Ruins",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 3, Furtividade 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "MM 3.5",
+    "nome": "Bodak",
+    "cr": "8",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": "-",
+      "int": 6,
+      "sab": 12,
+      "car": 16
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Furtividade 2"
+    ],
+    "nota": "Olhar mortal (Su): Centelha 3.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

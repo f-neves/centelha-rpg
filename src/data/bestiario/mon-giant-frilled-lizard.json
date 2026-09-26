@@ -1,0 +1,128 @@
+{
+  "ordem": 253,
+  "id": "mon-giant-frilled-lizard",
+  "nome": "Lagarto de Gola Gigante",
+  "nomeIngles": "Giant Frilled Lizard",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/giant-frilled-lizard.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "4 m de comprimento",
+    "peso": "900 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 7,
+    "destreza": 3,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 3,
+    "percepcao": 4,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Investida Intimidante",
+      "descricao": "Ao avançar em carga, sibila ferozmente e abre a gola ao redor do pescoço, forçando quem for atacado a testar Compostura ou ficar abalado por vários rounds."
+    },
+    {
+      "nome": "Trepadora",
+      "descricao": "Escala superfícies quase tão rápido quanto caminha, surpreendendo presas vindas de cima."
+    },
+    {
+      "nome": "Mordida e Rabada",
+      "descricao": "Ataca tanto com a mandíbula quanto com golpes de cauda, alternando os dois em combate."
+    },
+    {
+      "nome": "Couraça Natural",
+      "descricao": "Escamas grossas funcionam como uma armadura natural pesada contra ataques."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Réptil Colossal",
+      "texto": "Um verdadeiro behemoth entre os lagartos, ápice da cadeia alimentar nas regiões tropicais onde vive."
+    },
+    {
+      "titulo": "Terror das Caravanas",
+      "texto": "Sua gola vistosa e o sibilar agressivo bastam para espantar até guardas experientes antes mesmo do bote."
+    },
+    {
+      "titulo": "Muitas Espécies, Muitos Perigos",
+      "texto": "Outras variedades deste lagarto gigante trocam a gola intimidante por outras armas, como constrição, mordidas que prendem ou saltos surpreendentes."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Plains",
+      "Mountain"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Frilled Lizard",
+    "cr": "5",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 13,
+      "con": 19,
+      "int": 2,
+      "sab": 14,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "tabela"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

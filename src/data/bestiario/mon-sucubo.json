@@ -1,0 +1,188 @@
+{
+  "ordem": 88,
+  "id": "mon-sucubo",
+  "nome": "Súcubo",
+  "nomeIngles": "Demon, Succubus",
+  "categoria": "Corruptor",
+  "categoriaLegada": "Demônio",
+  "papel": "elite",
+  "conceito": "exterior Médio (demônio)",
+  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
+  "tags": [
+    "demonio",
+    "centelha",
+    "mágico"
+  ],
+  "imagem": "bestiario/sucubo.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,75 m de altura",
+    "peso": "59 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 3,
+    "destreza": 5,
+    "vigor": 6,
+    "influencia": 8,
+    "perspicacia": 7,
+    "compostura": 6,
+    "percepcao": 4,
+    "inteligencia": 5,
+    "raciocinio": 5
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 2,
+    "integridade": 6
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 5,
+    "temperanca": 1,
+    "valor": 5
+  },
+  "willpower": 9,
+  "aparencia": 9,
+  "arte": {
+    "fascinacao": 4,
+    "materia": 2,
+    "conjuracao": 4
+  },
+  "tech": {
+    "encanto-irresistivel": true
+  },
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Beijo dreno e enfeitiçar (Sp)",
+      "tipo": "feiticaria",
+      "alvo": "Fascinação · N4",
+      "arte": "fascinacao"
+    },
+    {
+      "efeito": "Sedução",
+      "tipo": "proeza",
+      "alvo": "Beleza Cativante · Encanto Irresistível (b4)",
+      "caminho": "beleza-cativante"
+    },
+    {
+      "efeito": "Mudar de forma",
+      "tipo": "feiticaria",
+      "alvo": "Matéria · N2",
+      "arte": "materia"
+    },
+    {
+      "efeito": "Teleporte",
+      "tipo": "feiticaria",
+      "alvo": "Conjuração · N4",
+      "arte": "conjuracao"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "habilidades": [
+    {
+      "nome": "Beijo dreno",
+      "descricao": "toque corpo a corpo; drena PV e, se a Vontade falhar, Enfeitiça o alvo por uma cena"
+    },
+    {
+      "nome": "Sedução",
+      "descricao": "proeza; teste de Persuasão ou Manha contra Vontade do alvo abre uma ação livre de aproximação ou distração"
+    },
+    {
+      "nome": "Mudar de forma",
+      "descricao": "feitiçaria; assume forma de qualquer humanoide Médio, indistinguível sem magia"
+    },
+    {
+      "nome": "Teleporte",
+      "descricao": "feitiçaria; desloca-se instantaneamente até 60m, ignorando obstáculos"
+    },
+    {
+      "nome": "Asas",
+      "descricao": "voo com deslocamento igual ao dobro do terrestre"
+    },
+    {
+      "nome": "Charme sobre-humano",
+      "descricao": "ganha bônus em testes de Persuasão e Manha contra alvos atraídos por ela"
+    },
+    {
+      "nome": "Pele resistente",
+      "descricao": "metade do dano de armas comuns não abençoadas"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Sedutora paciente, estuda a vítima antes de agir, assume o rosto e a voz de quem o alvo deseja e conduz a presa passo a passo até a ruína."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Trabalha sozinha ou a serviço de senhores demoníacos maiores, infiltrando cortes e conventos mortais como espiã e corruptora, raramente revelando sua verdadeira forma."
+    },
+    {
+      "titulo": "Hábitos",
+      "texto": "Alimenta se da energia vital e emocional roubada em beijos e noites de prazer, deixando a vítima exausta, obcecada ou lentamente corrompida."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Nas ortodoxias supressoras de Calin ela é o rosto do pecado perfeito: bela demais para ser natural, prova viva de que a Fenda também sabe seduzir, não só aterrorizar."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Fiend",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "Habilidades notáveis: Persuasão 4, Manha 4, Empatia 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Súcubo",
+    "cr": "7",
+    "tipo": "exterior Médio (demônio)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 17,
+      "con": 20,
+      "int": 18,
+      "sab": 14,
+      "car": 27
+    },
+    "pericias": [
+      "Persuasão 4",
+      "Manha 4",
+      "Empatia 3"
+    ],
+    "nota": "Enfeitiçar, mudar de forma, dreno: Centelha 3. Car 27 → Influência 8.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

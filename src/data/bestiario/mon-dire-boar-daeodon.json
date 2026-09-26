@@ -1,0 +1,127 @@
+{
+  "ordem": 161,
+  "id": "mon-dire-boar-daeodon",
+  "nome": "Javali Atroz",
+  "nomeIngles": "Dire Boar",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/dire-boar-daeodon.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3 m de comprimento",
+    "peso": "900 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 8,
+    "destreza": 2,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Fúria Selvagem",
+      "descricao": "Ignora ferimentos que abateriam qualquer outro animal, continuando a lutar mesmo à beira da morte."
+    },
+    {
+      "nome": "Faro e Visão Crepuscular",
+      "descricao": "Sente o cheiro de presas a distância e enxerga bem mesmo com pouca luz."
+    },
+    {
+      "nome": "Presas Afiadas",
+      "descricao": "Corta com as presas em uma investida certeira, capaz de abrir feridas profundas em um único golpe."
+    },
+    {
+      "nome": "Corrida Pesada",
+      "descricao": "Apesar do tamanho descomunal, corre com uma velocidade surpreendente ao avançar contra uma ameaça."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Enquanto o javali comum já é rabugento, o gigantesco daeodon (conhecido pelo povo como javali terrível) é genuinamente odioso e violento; embora onívoro, prefere carne, e suas presas afiadas o tornam um predador nato."
+    },
+    {
+      "titulo": "Caçada",
+      "texto": "É sobretudo um necrófago, mas não hesita em atacar criaturas menores que encontra ao buscar comida fácil, nem quem se aventura sem cuidado em seu território."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Orcs corajosos ou habilidosos gostam de usar daeodons como montarias, e a cavalaria orc montada nesses javalis é uma força verdadeiramente temível."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Boar (Daeodon)",
+    "cr": "4",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 10,
+      "con": 17,
+      "int": 2,
+      "sab": 13,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

@@ -1,0 +1,132 @@
+{
+  "ordem": 281,
+  "id": "mon-sea-serpent",
+  "nome": "Serpente Marinha",
+  "nomeIngles": "Sea Serpent",
+  "categoria": "Besta mágica",
+  "papel": "chefe",
+  "conceito": "besta mágica Imenso",
+  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "tags": [
+    "besta-magica",
+    "centelha"
+  ],
+  "imagem": "bestiario/sea-serpent.webp",
+  "porte": "Imenso",
+  "dimensoes": {
+    "medida": "corpo serpentino de mais de 18 metros de comprimento",
+    "peso": "dezenas de t"
+  },
+  "locomocao": {
+    "natacao": 6
+  },
+  "centelha": 5,
+  "attrs": {
+    "forca": 13,
+    "destreza": 4,
+    "vigor": 11,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 4
+  },
+  "willpower": 10,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Elusiva no mar",
+      "descricao": "Nada em alta velocidade e sem deixar rastro, o que a torna muito difícil de rastrear ou cercar."
+    },
+    {
+      "nome": "Capotar embarcações",
+      "descricao": "Investe contra um navio para virá-lo, arremessando a tripulação na água."
+    },
+    {
+      "nome": "Constrição e engolir por inteiro",
+      "descricao": "Agarra a presa com a mordida ou com a cauda, esmagando-a ou tragando-a inteira para dentro do próprio corpo."
+    },
+    {
+      "nome": "Imune ao frio",
+      "descricao": "As águas mais geladas do oceano não a afetam, e resiste bem também ao fogo."
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "Enxerga no escuro e na penumbra, percebendo presas mesmo nas profundezas mais escuras."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Lenda que os marinheiros temem contar",
+      "texto": "Histórias de serpentes marinhas colorem os relatos de todo navegador desde a primeira vela içada, embora poucos vivam para confirmar o que viram."
+    },
+    {
+      "titulo": "Mestra da invisibilidade",
+      "texto": "Quando não quer ser encontrada, a serpente desliza pelas águas sem deixar rastro algum, tornando-se praticamente um mito mesmo para quem a persegue de perto."
+    },
+    {
+      "titulo": "Terror das embarcações",
+      "texto": "Capaz de virar um navio inteiro com uma única investida, é tão temida por sua força quanto por seu apetite insaciável."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Beast",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Sea Serpent",
+    "cr": "12",
+    "tipo": "besta mágica Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 34,
+      "des": 14,
+      "con": 25,
+      "int": 2,
+      "sab": 11,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "nado 60; em terra 20, e ela não sai do mar"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

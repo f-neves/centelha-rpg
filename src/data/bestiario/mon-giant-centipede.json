@@ -1,0 +1,128 @@
+{
+  "ordem": 167,
+  "id": "mon-giant-centipede",
+  "nome": "Centopéia Gigante",
+  "nomeIngles": "Giant Centipede",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Médio",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/giant-centipede.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de comprimento",
+    "peso": "15 kg"
+  },
+  "locomocao": {
+    "terra": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 2,
+    "destreza": 4,
+    "vigor": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 1,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Mordida Venenosa",
+      "descricao": "Injeta um veneno que continua a corroer a agilidade da vítima por várias rodadas após a mordida, até que ela resista ou seja tratada."
+    },
+    {
+      "nome": "Visão no Escuro",
+      "descricao": "Enxerga perfeitamente mesmo na escuridão total."
+    },
+    {
+      "nome": "Escalador Veloz",
+      "descricao": "Sobe paredes e tetos quase tão rápido quanto se move pelo chão."
+    },
+    {
+      "nome": "Camuflagem Natural",
+      "descricao": "Sua coloração se mescla ao ambiente, tornando-a difícil de notar antes do ataque."
+    },
+    {
+      "nome": "Mente Vazia",
+      "descricao": "Imune a efeitos que dependam de mente ou raciocínio."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Ataca quase qualquer criatura viva com suas mandíbulas venenosas, adaptando-se a muitos ambientes diferentes e se alimentando vorazmente da fauna local, incluindo humanoides."
+    },
+    {
+      "titulo": "Natureza",
+      "texto": "A coloração das centopeias gigantes varia muito, indo de tons opacos a vermelhos e laranjas vibrantes; existem variantes bem menores e bem maiores da mesma espécie ao redor do mundo."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Underground"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Centipede",
+    "cr": "1/2",
+    "tipo": "praga Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 9,
+      "des": 15,
+      "con": 12,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

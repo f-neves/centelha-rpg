@@ -1,0 +1,156 @@
+{
+  "ordem": 69,
+  "id": "mon-montao-tropecante",
+  "nome": "Montão Tropeçante",
+  "nomeIngles": "Shambling Mound",
+  "categoria": "Planta",
+  "papel": "elite",
+  "conceito": "planta Grande",
+  "descricao": "Vegetal desperto, lento e implacável.",
+  "tags": [
+    "planta",
+    "centelha"
+  ],
+  "imagem": "bestiario/montao-tropecante.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,7 m de altura",
+    "peso": "1,4 t (massa vegetal e lodo compacto)"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 7,
+    "destreza": 2,
+    "vigor": 6,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 2,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 6,
+  "aparencia": 3,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "poderes": [
+    {
+      "efeito": "Absorve raio (Su)",
+      "tipo": "proeza",
+      "alvo": "Sangue Imune (raio)",
+      "caminho": "sangue-imune"
+    },
+    {
+      "efeito": "Constrição",
+      "tipo": "proeza",
+      "alvo": "Agarrão do Urso",
+      "caminho": "agarrao-do-urso"
+    }
+  ],
+  "fraquezas": [
+    "fogo"
+  ],
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Absorve raio",
+      "descricao": "dano elétrico recebido cura PV em vez de feri-lo"
+    },
+    {
+      "nome": "Constrição",
+      "descricao": "agarra e esmaga; dano contínuo enquanto o alvo estiver Agarrado"
+    },
+    {
+      "nome": "Casca vegetal",
+      "descricao": "Absorção elevada contra golpes cortantes e perfurantes"
+    },
+    {
+      "nome": "Emboscada no pântano",
+      "descricao": "Furtividade 3; confunde-se com vegetação densa"
+    },
+    {
+      "nome": "Passo pesado, sentidos atentos",
+      "descricao": "Prontidão 2 apesar da lentidão"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Amontoado de vegetação podre e restos que ganhou vontade própria, avança devagar mas sem cansar, esmagando e sufocando o que alcança com seus braços de galhos entrelaçados."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Costuma se formar perto de pântanos e brejos após tempestades fortes, arrastando cadáveres e restos orgânicos para dentro de si, que usa como alimento e material de crescimento."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Camponeses de Mére e Syl contam que um montão tropeçante nasce quando a terra se recusa a esquecer uma morte violenta; alguns druidas e xamãs o deixam em paz, como se fosse uma forma torta e lenta de luto da própria natureza."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Plant",
+    "terreno": [
+      "Swamp",
+      "Forest"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Montão Tropeçante",
+    "cr": "6",
+    "tipo": "planta Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 10,
+      "con": 17,
+      "int": 7,
+      "sab": 10,
+      "car": 9
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Prontidão 2"
+    ],
+    "nota": "Absorve raio (Su): Centelha 1.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 4
+}

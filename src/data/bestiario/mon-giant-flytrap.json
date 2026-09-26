@@ -1,0 +1,128 @@
+{
+  "ordem": 216,
+  "id": "mon-giant-flytrap",
+  "nome": "Papa-Moscas Gigante",
+  "nomeIngles": "Giant Flytrap",
+  "categoria": "Planta",
+  "papel": "chefe",
+  "conceito": "planta Enorme",
+  "descricao": "Vegetal desperto, lento e implacável.",
+  "tags": [
+    "planta"
+  ],
+  "imagem": "bestiario/giant-flytrap.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "4,5 m de altura",
+    "peso": "1000 kg"
+  },
+  "locomocao": {
+    "terra": 1
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 10,
+    "destreza": 5,
+    "vigor": 10,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 0,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 2,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 5,
+  "aparencia": 3,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 7
+    }
+  ],
+  "fraquezas": [
+    "fogo"
+  ],
+  "resistencias": [
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Imune à Podridão e ao Veneno",
+      "descricao": "Não sofre com toxinas, doenças, sono ou paralisia, e absorve grande parte de qualquer dano ácido que sofra."
+    },
+    {
+      "nome": "Tremor no Pântano",
+      "descricao": "Sente pelas vibrações do solo e da lama tudo que se move a sua volta, mesmo sem enxergar."
+    },
+    {
+      "nome": "Fauces Engolidoras",
+      "descricao": "Ao prender uma presa bem menor entre as mandíbulas, pode fechá-las de vez, causando dano contínuo de esmagamento e ácido enquanto a digere viva."
+    },
+    {
+      "nome": "Camuflagem Vegetal",
+      "descricao": "Confunde-se com o mato e o lodo do brejo, permanecendo imóvel até que a presa se aproxime demais."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "O nome que o povo dá",
+      "texto": "Camponeses da região a chamam de \"pega-gente\" ou \"devora-verde\", nomes nascidos do medo mais do que da ciência."
+    },
+    {
+      "titulo": "Fome maior que a razão",
+      "texto": "Diferente das flores-armadilha comuns, essa versão monstruosa caça humanoides e feras inteiras, arrastando-se lentamente atrás de terreno mais fértil em carne."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Plant",
+    "terreno": [
+      "Swamp",
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Flytrap",
+    "cr": "10",
+    "tipo": "planta Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 25,
+      "des": 18,
+      "con": 25,
+      "int": 1,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 10,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}

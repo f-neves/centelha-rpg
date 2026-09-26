@@ -927,7 +927,7 @@
     },
     "centelhaNoSoak": 1,
     "couracaPorte": {
-      "nota": "Couraça natural pela MASSA/pele/escamas/casco da criatura, por porte. Absorção EXTRA aplicada SÓ a Corte e Perfuração — o Impacto NÃO recebe couraça (continua sendo o abridor de lata contra massa, do mesmo modo que é a resposta contra placa). 'resistPerf' = gate natural de Perfuração: ataque Perfurante com Nível de Perfuração ABAIXO dele resvala (0, nem rola). Empilha com armadura: a couraça SOMA na Absorção; o resistPerf pega o MAIOR (nunca soma). Porte lido de dimensoes-bestiario.json; Médio (humanoide padrão) e menores = 0.",
+      "nota": "Couraça natural pela MASSA/pele/escamas/casco da criatura, por porte. Absorção EXTRA aplicada SÓ a Corte e Perfuração: o Impacto NÃO recebe couraça (continua sendo o abridor de lata contra massa, do mesmo modo que é a resposta contra placa). 'resistPerf' = gate natural de Perfuração: ataque Perfurante com Nível de Perfuração ABAIXO dele resvala (0, nem rola). Empilha com armadura: a couraça SOMA na Absorção; o resistPerf pega o MAIOR (nunca soma). Porte lido do campo porte da ficha de criatura (src/data/bestiario/<id>.json); Médio (humanoide padrão) e menores = 0.",
       "minusculo": {
         "couraca": 0,
         "resistPerf": 0

@@ -1,0 +1,129 @@
+{
+  "ordem": 203,
+  "id": "mon-small-earth-elemental",
+  "nome": "Elemental da Terra (Pequeno)",
+  "nomeIngles": "Elemental, Earth",
+  "categoria": "Elemental",
+  "papel": "soldado",
+  "conceito": "exterior (terra) Pequeno",
+  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "tags": [
+    "elemental",
+    "centelha"
+  ],
+  "imagem": "bestiario/small-earth-elemental.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "1,2 metro de altura, denso e compacto",
+    "peso": "300 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 1,
+  "attrs": {
+    "forca": 5,
+    "destreza": 2,
+    "vigor": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 6,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Golpe planar",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "fraquezas": [
+    "agua"
+  ],
+  "resistencias": [
+    "fogo"
+  ],
+  "habilidades": [
+    {
+      "nome": "Escavar e fundir com a pedra",
+      "descricao": "Cava pela terra sólida como se fosse água e atravessa a rocha, deixando o caminho intacto atrás de si."
+    },
+    {
+      "nome": "Domínio da terra",
+      "descricao": "Ganha vantagem para empurrar ou derrubar quem toca o chão, e dificilmente é ele mesmo derrubado."
+    },
+    {
+      "nome": "Corpo de pedra viva",
+      "descricao": "Não sente cansaço, veneno ou doença; é feito de puro elemento, não de carne."
+    },
+    {
+      "nome": "Sente tremores",
+      "descricao": "Percebe movimento através da terra e da pedra ao redor, mesmo sem enxergar."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Osso do mundo",
+      "texto": "Fragmento vivo da própria pedra fundamental, move-se devagar mas com força capaz de rachar muralhas."
+    },
+    {
+      "titulo": "Paciência de montanha",
+      "texto": "Onde outros elementais agem por impulso, o da terra espera, imóvel como rocha, até o momento certo de atacar."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Elemental",
+    "terreno": [
+      "Underground",
+      "Mountain"
+    ],
+    "clima": [
+      "Extraplanar"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Small Earth Elemental",
+    "cr": "1",
+    "tipo": "exterior (terra) Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 16,
+      "des": 8,
+      "con": 13,
+      "int": 4,
+      "sab": 11,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 2
+}

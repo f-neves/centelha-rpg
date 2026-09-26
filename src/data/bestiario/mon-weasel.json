@@ -1,0 +1,119 @@
+{
+  "ordem": 215,
+  "id": "mon-weasel",
+  "nome": "Doninha",
+  "nomeIngles": "Weasel",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Minúsculo",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/weasel.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "30 cm de comprimento",
+    "peso": "1 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 1,
+    "destreza": 4,
+    "vigor": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 1
+  },
+  "skills": {
+    "briga": 1,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
+  },
+  "willpower": 5,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Garras e presas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentidos de Predadora",
+      "descricao": "Visão que perfura a penumbra e faro afiado tornam quase impossível se esconder dela em terreno aberto."
+    },
+    {
+      "nome": "Mordida que Gruda",
+      "descricao": "Ao acertar, cravam os dentes e não soltam: continuam mordendo a cada instante enquanto a vítima tenta se libertar."
+    },
+    {
+      "nome": "Corpo Flexível",
+      "descricao": "Escorrega por frestas e armadilhas com facilidade, escapando de agarrões e cordas."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Praga dos galinheiros",
+      "texto": "Fazendeiros a odeiam mais que a lobos: entra em silêncio, mata em excesso e desaparece antes do amanhecer."
+    },
+    {
+      "titulo": "Pequena e implacável",
+      "texto": "Apesar do tamanho, ataca criaturas muito maiores quando encurralada, sem hesitar diante do próprio risco."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains",
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Weasel",
+    "cr": "1/2",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 3,
+      "des": 15,
+      "con": 10,
+      "int": 2,
+      "sab": 12,
+      "car": 5
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 1
+}

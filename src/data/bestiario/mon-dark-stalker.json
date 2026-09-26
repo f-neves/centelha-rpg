@@ -1,0 +1,131 @@
+{
+  "ordem": 175,
+  "id": "mon-dark-stalker",
+  "nome": "Dark Stalker",
+  "nomeIngles": "Dark Stalker",
+  "categoria": "Humanoide",
+  "papel": "soldado",
+  "conceito": "humanoide Médio",
+  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "tags": [
+    "humanoide",
+    "centelha"
+  ],
+  "imagem": "bestiario/dark-stalker.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,8 m de altura",
+    "peso": "45 kg"
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "centelha": 2,
+  "attrs": {
+    "forca": 4,
+    "destreza": 5,
+    "vigor": 4,
+    "influencia": 3,
+    "perspicacia": 2,
+    "compostura": 3,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 3
+  },
+  "virtues": {
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 7,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 5
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Explosão de Chamas",
+      "descricao": "Ao morrer, seu corpo estoura em uma bola de fogo branco-quente, queimando todos próximos que não conseguirem se esquivar a tempo."
+    },
+    {
+      "nome": "Ataque Furtivo",
+      "descricao": "Ataca com precisão letal contra alvos desprevenidos, causando dano considerável adicional."
+    },
+    {
+      "nome": "Duas Lâminas",
+      "descricao": "Luta com uma espada curta em cada mão, golpeando duas vezes por ataque com igual destreza."
+    },
+    {
+      "nome": "Visão Perfeita no Escuro",
+      "descricao": "Enxerga com clareza total em qualquer escuridão, mesmo a mais densa e mágica."
+    },
+    {
+      "nome": "Uso de Veneno",
+      "descricao": "Aplica veneno nas lâminas sem risco de se intoxicar."
+    },
+    {
+      "nome": "Cegueira pela Luz",
+      "descricao": "A luz intensa ofusca seus sentidos, prejudicando-o fora da escuridão."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Senhores das Profundezas",
+      "texto": "Lideram a sociedade dos povos das trevas a partir de vilarejos escondidos em cavernas remotas, onde são servidos e reverenciados por seus súditos menores."
+    },
+    {
+      "titulo": "Vestes Impecáveis",
+      "texto": "Ao contrário de seus servos maltrapilhos, vestem panos escuros e couro sempre limpos, carregando um par de espadas curtas que preferem a qualquer outra arma."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Humanoid",
+    "terreno": [
+      "Underground",
+      "Urban"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dark Stalker",
+    "cr": "4",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 18,
+      "con": 14,
+      "int": 9,
+      "sab": 11,
+      "car": 13
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 3
+}

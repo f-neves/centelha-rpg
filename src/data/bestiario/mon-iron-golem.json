@@ -1,0 +1,138 @@
+{
+  "ordem": 229,
+  "id": "mon-iron-golem",
+  "nome": "Golem de Ferro",
+  "nomeIngles": "Golem, Iron",
+  "categoria": "Construto",
+  "categoriaLegada": "Monstro",
+  "papel": "chefe",
+  "conceito": "constructo Grande",
+  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricaoLegada": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro",
+    "centelha"
+  ],
+  "imagem": "bestiario/iron-golem.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,6 m de altura",
+    "peso": "2.270 kg"
+  },
+  "locomocao": {
+    "terra": 2
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 11,
+    "destreza": 2,
+    "vigor": 1,
+    "influencia": 0,
+    "perspicacia": 0,
+    "compostura": 1,
+    "percepcao": 2,
+    "inteligencia": 0,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 0,
+    "prontidao": 1,
+    "integridade": 2
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 3,
+    "temperanca": 3,
+    "valor": 4
+  },
+  "willpower": 9,
+  "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Arma",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 0,
+      "ticks": 6
+    }
+  ],
+  "fraquezas": [
+    "raio"
+  ],
+  "resistencias": [
+    "corte",
+    "fogo",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Sopro de gás venenoso",
+      "descricao": "Uma vez a cada poucos turnos, o golem exala um cubo de gás nocivo; quem for envolvido sofre dano contínuo de veneno, com testes de Vigor repetidos até se livrar do efeito."
+    },
+    {
+      "nome": "Imunidade a magia",
+      "descricao": "A maioria dos efeitos mágicos simplesmente não o afeta. Descargas elétricas o deixam lento por vários turnos sem chance de resistência, enquanto fogo cura seus ferimentos e rompe qualquer lentidão."
+    },
+    {
+      "nome": "Golpes poderosos",
+      "descricao": "Seus socos de ferro acertam com força redobrada e ameaçam ferimentos graves com facilidade incomum."
+    },
+    {
+      "nome": "Casco de ferro",
+      "descricao": "Absorve boa parte de golpes físicos comuns; só armas de adamantina o ferem com eficácia plena."
+    },
+    {
+      "nome": "Sentidos na escuridão",
+      "descricao": "Enxerga no escuro e com pouca luz sem dificuldade alguma."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Autômato de guerra",
+      "texto": "Forjado para servir como guarda incansável, o golem de ferro nunca fala nem demonstra fadiga, avançando com passos que fazem o chão tremer."
+    },
+    {
+      "titulo": "Silêncio absoluto",
+      "texto": "Não emite cheiro nem ruído além do bater metálico de seus passos, o que torna sua aproximação um aviso tardio demais para muitos."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Construct",
+    "terreno": [
+      "Ruins",
+      "Underground",
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Iron Golem",
+    "cr": "13",
+    "tipo": "constructo Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 32,
+      "des": 9,
+      "con": "-",
+      "int": "-",
+      "sab": 11,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    }
+  },
+  "variantes": [],
+  "ameacaLegada": 5
+}
