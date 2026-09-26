@@ -5,6 +5,7 @@
   "nomeIngles": "Homunculus",
   "categoria": "Construto",
   "categoriaLegada": "Monstro",
+  "constructo": { "semVida": true },
   "papel": "soldado",
   "conceito": "monstro Médio",
   "descricao": "Autômato sem vida, movido por magia alheia.",

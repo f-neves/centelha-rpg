@@ -10,8 +10,7 @@
   "descricao": "Animal selvagem, perigo puro sem malícia.",
   "descricaoLegada": "Aberração humanoide de lendas antigas.",
   "tags": [
-    "monstro",
-    "centelha"
+    "monstro"
   ],
   "imagem": "bestiario/dire-lion-spotted-lion.webp",
   "porte": "Médio",
@@ -22,7 +21,7 @@
   "locomocao": {
     "terra": 4
   },
-  "centelha": 4,
+  "centelha": 0,
   "attrs": {
     "forca": 8,
     "destreza": 4,

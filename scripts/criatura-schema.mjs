@@ -35,9 +35,35 @@ export const ataqueSchema = z.object({
   notas: texto.optional(),
 }).strict();
 
-/** Poder: o efeito, de que tipo ele é (dom natural, Proeza de Caminho, Feitiçaria
- *  de Arte) e o alvo em prosa. `arte` e `caminho` apontam para o catálogo. */
-export const poderSchema = z.object({
+/** Poder natural: o dom da própria criatura (B14 fase 2, item A.2). NÃO passa pelo
+ *  portão de Centelha e NÃO usa Mana. `base` só referencia o Efeito Especial mais
+ *  parecido, para copiar parâmetro (área, dano); não é uma conjuração de verdade.
+ *  `resiste` é categoria, sem fórmula própria: a fórmula de "corpo" está em
+ *  auditoria (docs/pendencias/M-virtude-somada.md) — não escrever "Vigor +
+ *  Convicção" aqui enquanto ela não fechar. */
+export const poderNaturalSchema = z.object({
+  id: texto,
+  nome: texto,
+  tipo: z.literal('natural'),
+  base: z.object({ arte: texto, nivel: z.number().int().min(1).max(6) }).strict().optional(),
+  resiste: z.enum(['esquiva', 'corpo', 'mente', 'nenhum']),
+  area: texto.optional(),
+  efeito: texto,
+  usos: z.object({
+    quantidade: naoNeg.optional(),
+    periodo: z.enum(['ticks', 'cena', 'hora', 'dia', 'avontade', 'passivo', 'golpe']),
+    recarga: texto.optional(),
+  }).strict(),
+}).strict();
+
+/** Poder no formato de antes do B14 fase 2: `efeito`/`tipo`/`alvo`, com `tipo`
+ *  natural, proeza ou feiticaria. Continua valendo para os três tipos, inclusive
+ *  `natural`, porque 16 fichas já têm poder `natural` nesse formato (classificação
+ *  da tabela de poderes ainda não aplicada — ver docs/simulacao/caixa/
+ *  b14-fase2-executora.md, "Onde parei") e o schema não pode quebrar dado já
+ *  commitado. Quando a classificação fechar, a ideia é migrar essas 16 para
+ *  `poderNaturalSchema` e apertar este tipo para só proeza/feiticaria. */
+const poderLegadoSchema = z.object({
   efeito: texto,
   tipo: z.enum(['natural', 'proeza', 'feiticaria']),
   alvo: texto,
@@ -45,8 +71,27 @@ export const poderSchema = z.object({
   caminho: texto.optional(),
 }).strict();
 
+export const poderSchema = z.union([poderNaturalSchema, poderLegadoSchema]);
+
 const velocidade = z.number().int().min(1).max(20);
 const valorOriginal = z.union([z.number(), z.literal('-'), z.null()]);
+
+/** Forma do corpo, para as três medidas (B14 fase 2, item A.1). A forma comum
+ *  (humanoide) dá o padrão implícito do porte; só forma NÃO padrão exige
+ *  comprimento, largura e altura escritos. */
+const FORMA_PADRAO = 'humanoide';
+export const dimensoesSchema = z.object({
+  medida: texto,
+  peso: texto,
+  comprimento: z.number().positive().optional(),
+  largura: z.number().positive().optional(),
+  altura: z.number().positive().optional(),
+  envergadura: z.number().positive().optional(),
+  forma: z.enum(['humanoide', 'quadrupede', 'serpentiforme', 'alado', 'amorfo', 'radial']).optional(),
+}).strict().refine(
+  (d) => (d.forma ?? FORMA_PADRAO) === FORMA_PADRAO || (d.comprimento != null && d.largura != null && d.altura != null),
+  { message: 'forma não padrão (fora de humanoide) exige comprimento, largura e altura' },
+);
 
 export const criaturaSchema = z.object({
   ordem: z.number().int().min(1).optional(),
@@ -62,8 +107,9 @@ export const criaturaSchema = z.object({
   tags: z.array(texto),
   imagem: texto.nullable(),
   porte: z.enum(['Miúdo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal']),
-  dimensoes: z.object({ medida: texto, peso: texto }).strict(),
+  dimensoes: dimensoesSchema,
   material: texto.optional(),
+  constructo: z.object({ semVida: z.literal(true) }).strict().optional(),
   locomocao: z.object({
     terra: velocidade.optional(), voo: velocidade.optional(), natacao: velocidade.optional(),
     escalada: velocidade.optional(), escavacao: velocidade.optional(),
@@ -111,6 +157,12 @@ export const criaturaSchema = z.object({
   }).strict().optional(),
   variantes: z.array(z.object({ id: texto, nome: texto, delta: z.record(z.string(), z.any()) }).strict()),
   ameacaLegada: z.number().int().min(1),
+  /** Saída da recalibração B14 (item A.3): vazia até a bancada rodar. A recompensa
+   *  de caça usa só `individual`; `bando` é referência de leitura, não soma na conta. */
+  desafio: z.object({
+    individual: naoNeg.optional(),
+    bando: z.object({ quantidade: naoNeg, desafio: naoNeg }).strict().optional(),
+  }).strict().optional(),
 }).strict();
 
 /**

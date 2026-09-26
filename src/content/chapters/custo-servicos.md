@@ -37,9 +37,9 @@ A renda é o que o contratante gasta com quem trabalha. Quando o personagem trab
 
 Trabalhos pontuais, como abater uma colônia de aranhas, recuperar um hipogrifo ou buscar partes de uma criatura para um mago, pagam uma bolsa pelo trabalho, combinada antes. O valor é o Livre: o custo de vida de quem caça já está descontado. É esse o número do cartaz da recompensa.
 
-<p class="formula">Bolsa = Valor do degrau × Semanas × Tarefa × Risco × 3</p>
+<p class="formula">Bolsa = Valor do degrau × Semanas × Tarefa × Risco × 4</p>
 
-A bolsa paga um grupo de 3, que é o grupo para o qual o nível de desafio é pensado. O grupo divide como quiser: se forem mais, cada um leva menos; se forem menos, levam mais e arriscam mais.
+A bolsa paga um grupo de 4, que é o grupo para o qual o nível de desafio é pensado. O grupo divide como quiser: se forem mais, cada um leva menos; se forem menos, levam mais e arriscam mais.
 
 A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa).
 

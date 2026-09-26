@@ -110,7 +110,7 @@ A tabela é a régua de personalidade em números. A **Virtude 2** só segura a 
 
 A **Força de Vontade** é a reserva interior de determinação: o tanto de si que o personagem consegue **queimar para forçar o destino**. Vai de **0 a 12** e **começa em 0**, o piso grátis, que não é uma vontade fraca e sim reserva nenhuma, nada a queimar. O nível 1 já é comprado, e um herói típico leva a Vontade para 5 ou mais.
 
-Você gasta Vontade para **turbinar uma ação importante**, **resistir** a medo e manipulação, **ignorar penalidades** e **conjurar** as Técnicas e Artes mais poderosas.
+Você gasta Vontade para **turbinar uma ação importante** (cada ponto soma **+1d6** numa jogada ativa ou **+4** numa Defesa, no máximo **1 ponto por ação ou jogada**, inclusive cada golpe que se defende), **resistir** a medo e manipulação, **ignorar penalidades** e **conjurar** as Técnicas e Artes mais poderosas.
 
 **Ela volta por três caminhos.** O primeiro é uma **noite de sono**: 1 ponto, em meditação, descanso completo ou sono profundo, o mesmo repouso que a Mana pede (ela volta Centelha por hora, e 2 × Centelha por hora nesse repouso; a Energia volta a cada cena). O segundo é uma **[Firula](/regras/habilidades)**, e aqui o número depende do nível: a de nível 2 devolve **1** e a de nível 3 devolve **3**, se for a Vontade que você escolher entre as três reservas. O terceiro é **agir fiel à própria régua moral** num momento em que isso custa: 1 ponto, a critério do Mestre (o callout acima).
 

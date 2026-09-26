@@ -442,7 +442,9 @@ OUT["reparo_v2"] = {nome: {d: (reparo_v3(mo, pe, d), reparo_v3(mo, pe, d)) for d
 # =====================================================================
 # RECOMPENSAS DE CAÇA (rodada 115)
 # =====================================================================
-# Bolsa = Valor do degrau × Semanas × Tarefa × Risco × 3 (o grupo de referência). O valor do degrau é
+# Bolsa = Valor do degrau × Semanas × Tarefa × Risco × 4 (o grupo de referência, B14 fase 2 item
+# D.14, 26/09/2026: o desafio da criatura passa a ser calibrado para um grupo de 4). O valor do
+# degrau é
 # a tarifa de base por caçador, por semana: base 15, fator 1,75 por degrau, arredondado pelo `arred`.
 REC_BASE, REC_FATOR = 15, 1.75
 REC_DEGRAUS = [arred(REC_BASE * REC_FATOR ** (n - 1)) for n in range(1, 13)]
@@ -463,7 +465,7 @@ REC_RISCOS = [
 REC_TONS = [("curto", "Dinheiro curto", 0.5), ("padrao", "Padrão", 1), ("heroico", "Heroico", 2)]
 REC_URGENCIAS = [("normal", "Normal", 1), ("grave", "Grave", 3), ("desespero", "Desespero", 10)]
 OUT["recompensas"] = dict(base=REC_BASE, fator=REC_FATOR, degraus=REC_DEGRAUS, centelha_passo=4, centelha_max=12,
-                          fracas_contam=0.5, fracas_abaixo=2, dias_semana=DIAS_SEMANA, grupo=3,
+                          fracas_contam=0.5, fracas_abaixo=2, dias_semana=DIAS_SEMANA, grupo=4,
                           tarefas=REC_TAREFAS, riscos=REC_RISCOS, tons=REC_TONS, urgencias=REC_URGENCIAS)
 
 if __name__ == "__main__":

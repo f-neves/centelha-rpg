@@ -10,8 +10,7 @@
   "descricao": "Animal selvagem, perigo puro sem malícia.",
   "descricaoLegada": "Aberração humanoide de lendas antigas.",
   "tags": [
-    "monstro",
-    "centelha"
+    "monstro"
   ],
   "imagem": "bestiario/giant-frog.webp",
   "porte": "Médio",
@@ -22,7 +21,7 @@
   "locomocao": {
     "terra": 3
   },
-  "centelha": 1,
+  "centelha": 0,
   "attrs": {
     "forca": 4,
     "destreza": 3,

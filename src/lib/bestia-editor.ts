@@ -113,13 +113,16 @@ export function derivados(c: CriaturaEdit) {
   const soakDe = (m: string) => vig + cent * soakCent + nz(arm.soak?.[m]) + nz(b.absorcao);
 
   const int = n('inteligencia');
-  const social = pe?.sociabilidade ?? Math.max(0, sk('oratoria'), sk('manha'), sk('persuasao'), sk('lideranca'), sk('politica'));
+  // Int 0 não tem trato social nenhum ("-"); Int 1 (feras) troca Sociabilidade por
+  // Sobrevivência; Int ≥ 2 usa Sociabilidade (B14 fase 2, item C.7).
+  const social = int >= 2
+    ? (pe?.sociabilidade ?? Math.max(0, sk('oratoria'), sk('manha'), sk('persuasao'), sk('lideranca'), sk('politica')))
+    : sk('sobrevivencia');
 
   return {
     pv: pv(vig, porteSlug(c.porte)) + nz(b.pv),
     defesa: defesa({ destreza: n('destreza'), habilidade: sk('esquiva'), centelha: cent }) - nz(arm.penalidade) + nz(b.defesa),
-    // Int < 2 não tem trato social e Int 0 não tem mente: as duas viram "-", como no gerador.
-    defesaSocial: int >= 2 ? defesaSocial({ compostura: n('compostura'), sociabilidade: nz(social), centelha: cent }) + nz(b.defesaSocial) : '-',
+    defesaSocial: int >= 1 ? defesaSocial({ compostura: n('compostura'), sociabilidade: nz(social), centelha: cent }) + nz(b.defesaSocial) : '-',
     defesaMental: int >= 1 ? defesaMental({ raciocinio: n('raciocinio'), integridade: nz(c.integridade), vontade: nz(c.vontade), centelha: cent }) + nz(b.defesaMental) : '-',
     absorcao: { impacto: soakDe('impacto'), corte: soakDe('corte'), perfuracao: soakDe('perfuracao') },
     resistPerf: nz(arm.resistPerf) + nz(b.resistPerf),

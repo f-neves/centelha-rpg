@@ -22,13 +22,13 @@
   "centelha": 0,
   "attrs": {
     "forca": 5,
-    "destreza": 2,
-    "vigor": 3,
-    "influencia": 1,
-    "perspicacia": 1,
+    "destreza": 3,
+    "vigor": 5,
+    "influencia": 2,
+    "perspicacia": 2,
     "compostura": 1,
-    "percepcao": 2,
-    "inteligencia": 1,
+    "percepcao": 3,
+    "inteligencia": 2,
     "raciocinio": 2
   },
   "skills": {

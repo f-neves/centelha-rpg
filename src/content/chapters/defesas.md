@@ -112,7 +112,7 @@ Uma defesa só existe se houver o que defender. Usa-se a **Inteligência** da cr
 | Inteligência | Exemplos | Social | Mental |
 |---|---|:---:|:---:|
 | **0** | objeto, planta, limo, constructo, morto-vivo sem mente | imune ("-") | imune ("-") |
-| **1** | feras e bichos | "-" (sem trato social) | tem (sente medo, mágico ou não) |
+| **1** | feras e bichos | tem (Sobrevivência no lugar de Sociabilidade) | tem (sente medo, mágico ou não) |
 | **2+** | gente e seres pensantes | tem | tem |
 
 **Imune** quer dizer que o ataque **não funciona**, não que ele acerta de graça. Uma mente fraca tem um número baixo, nunca "-". (Exceção: certas magias de controle específicas conseguem mexer até com coisas sem mente, como animar um objeto.)

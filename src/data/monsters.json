@@ -502,6 +502,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 7,
@@ -515,7 +516,7 @@
   "combate": {
    "pv": 54,
    "defesa": 6,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 8,
@@ -619,6 +620,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 5,
@@ -632,7 +634,7 @@
   "combate": {
    "pv": 70,
    "defesa": 4,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 7,
@@ -738,6 +740,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 8,
@@ -751,7 +754,7 @@
   "combate": {
    "pv": 54,
    "defesa": 15,
-   "defesaSocial": "-",
+   "defesaSocial": 9,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 9,
@@ -875,6 +878,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -888,7 +892,7 @@
   "combate": {
    "pv": 34,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 2,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -1179,6 +1183,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 7,
@@ -1192,7 +1197,7 @@
   "combate": {
    "pv": 26,
    "defesa": 6,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 5,
@@ -1733,14 +1738,14 @@
      "perfArma": null,
      "speed": 5,
      "classe": "leve",
-     "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
+     "notas": "atravessa matéria; resiste a corte, impacto e perfuração (dano pela metade), arma comum ainda fere"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Incorpórea",
-    "descricao": "atravessa paredes e objetos; imune a ataques não mágicos"
+    "descricao": "atravessa paredes e objetos; resiste a corte, impacto e perfuração (dano pela metade), arma comum ainda fere"
    },
    {
     "nome": "Toque drenante",
@@ -1853,6 +1858,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -1866,7 +1872,7 @@
   "combate": {
    "pv": 54,
    "defesa": 4,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 6,
@@ -2660,6 +2666,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 8,
@@ -2673,7 +2680,7 @@
   "combate": {
    "pv": 37,
    "defesa": 7,
-   "defesaSocial": "-",
+   "defesaSocial": 9,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 7,
@@ -2937,6 +2944,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -2950,7 +2958,7 @@
   "combate": {
    "pv": 75,
    "defesa": 9,
-   "defesaSocial": "-",
+   "defesaSocial": 7,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 9,
@@ -3084,6 +3092,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 4
   },
   "vontade": 5,
@@ -3097,7 +3106,7 @@
   "combate": {
    "pv": 24,
    "defesa": 4,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -3200,6 +3209,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -3213,7 +3223,7 @@
   "combate": {
    "pv": 50,
    "defesa": 4,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -3472,6 +3482,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -3485,7 +3496,7 @@
   "combate": {
    "pv": 54,
    "defesa": 4,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 6,
@@ -3591,6 +3602,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -3604,7 +3616,7 @@
   "combate": {
    "pv": 40,
    "defesa": 14,
-   "defesaSocial": "-",
+   "defesaSocial": 12,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 9,
@@ -4001,6 +4013,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 5,
@@ -4014,7 +4027,7 @@
   "combate": {
    "pv": 85,
    "defesa": 4,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 10,
    "absorcao": {
     "impacto": 9,
@@ -4794,6 +4807,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -4807,7 +4821,7 @@
   "combate": {
    "pv": 80,
    "defesa": 9,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 10,
@@ -4926,6 +4940,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 4
   },
   "vontade": 5,
@@ -4939,7 +4954,7 @@
   "combate": {
    "pv": 28,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 4,
@@ -5264,11 +5279,10 @@
   "conceito": "monstro Médio",
   "descricao": "Animal selvagem, perigo puro sem malícia.",
   "tags": [
-   "monstro",
-   "centelha"
+   "monstro"
   ],
   "ameaca": 1,
-  "centelha": 1,
+  "centelha": 0,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -5301,6 +5315,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -5313,13 +5328,13 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 11,
-   "defesaSocial": "-",
-   "defesaMental": 10,
+   "defesa": 10,
+   "defesaSocial": 4,
+   "defesaMental": 9,
    "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 4,
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
@@ -5331,7 +5346,7 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6 +1",
+     "pool": "3d6",
      "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
@@ -5418,6 +5433,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 7,
@@ -5431,7 +5447,7 @@
   "combate": {
    "pv": 37,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 6,
@@ -5659,6 +5675,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -5672,7 +5689,7 @@
   "combate": {
    "pv": 37,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 2,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -5776,6 +5793,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -5789,7 +5807,7 @@
   "combate": {
    "pv": 37,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 4,
@@ -5893,6 +5911,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -5906,7 +5925,7 @@
   "combate": {
    "pv": 54,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 6,
@@ -6261,6 +6280,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -6274,7 +6294,7 @@
   "combate": {
    "pv": 54,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
@@ -6506,6 +6526,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -6519,7 +6540,7 @@
   "combate": {
    "pv": 34,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 2,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -7007,6 +7028,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -7020,7 +7042,7 @@
   "combate": {
    "pv": 34,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 2,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 3,
@@ -7272,6 +7294,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 7,
@@ -7285,7 +7308,7 @@
   "combate": {
    "pv": 24,
    "defesa": 14,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 4,
@@ -7535,6 +7558,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 6,
@@ -7548,7 +7572,7 @@
   "combate": {
    "pv": 54,
    "defesa": 9,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 10,
    "absorcao": {
     "impacto": 7,
@@ -7672,6 +7696,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 5
   },
   "vontade": 5,
@@ -7685,7 +7710,7 @@
   "combate": {
    "pv": 17,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -7954,6 +7979,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 6,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 11,
@@ -7967,7 +7993,7 @@
   "combate": {
    "pv": 95,
    "defesa": 18,
-   "defesaSocial": "-",
+   "defesaSocial": 18,
    "defesaMental": 26,
    "absorcao": {
     "impacto": 17,
@@ -8087,6 +8113,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -8100,7 +8127,7 @@
   "combate": {
    "pv": 50,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 2,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 5,
@@ -8718,6 +8745,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 6,
@@ -8731,7 +8759,7 @@
   "combate": {
    "pv": 28,
    "defesa": 11,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 10,
    "absorcao": {
     "impacto": 5,
@@ -8834,6 +8862,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -8847,7 +8876,7 @@
   "combate": {
    "pv": 40,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -9252,6 +9281,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 9,
@@ -9265,7 +9295,7 @@
   "combate": {
    "pv": 40,
    "defesa": 14,
-   "defesaSocial": "-",
+   "defesaSocial": 8,
    "defesaMental": 17,
    "absorcao": {
     "impacto": 9,
@@ -10569,6 +10599,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 5
   },
   "vontade": 5,
@@ -10582,7 +10613,7 @@
   "combate": {
    "pv": 17,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 2,
@@ -10846,6 +10877,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 9,
@@ -10859,7 +10891,7 @@
   "combate": {
    "pv": 43,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 10,
    "defesaMental": 18,
    "absorcao": {
     "impacto": 10,
@@ -12249,6 +12281,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 4
   },
   "vontade": 7,
@@ -12262,7 +12295,7 @@
   "combate": {
    "pv": 28,
    "defesa": 6,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 6,
@@ -13357,6 +13390,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 5,
@@ -13370,7 +13404,7 @@
   "combate": {
    "pv": 75,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 8,
@@ -13474,6 +13508,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -13487,7 +13522,7 @@
   "combate": {
    "pv": 26,
    "defesa": 5,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 4,
@@ -13599,6 +13634,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 8,
@@ -13612,7 +13648,7 @@
   "combate": {
    "pv": 58,
    "defesa": 7,
-   "defesaSocial": "-",
+   "defesaSocial": 7,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 10,
@@ -13755,6 +13791,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -13768,7 +13805,7 @@
   "combate": {
    "pv": 26,
    "defesa": 5,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 4,
@@ -13879,6 +13916,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -13892,7 +13930,7 @@
   "combate": {
    "pv": 26,
    "defesa": 13,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 4,
@@ -14000,6 +14038,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -14013,7 +14052,7 @@
   "combate": {
    "pv": 24,
    "defesa": 9,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 3,
@@ -14122,6 +14161,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 4
   },
   "vontade": 5,
@@ -14135,7 +14175,7 @@
   "combate": {
    "pv": 30,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 5,
@@ -14711,6 +14751,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 5
   },
   "vontade": 5,
@@ -14724,7 +14765,7 @@
   "combate": {
    "pv": 17,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -14833,6 +14874,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 5
   },
   "vontade": 5,
@@ -14846,7 +14888,7 @@
   "combate": {
    "pv": 18,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -15369,6 +15411,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -15382,7 +15425,7 @@
   "combate": {
    "pv": 54,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 2,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
@@ -15823,7 +15866,7 @@
      "perfArma": null,
      "speed": 5,
      "classe": "leve",
-     "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
+     "notas": "atravessa matéria; resiste a corte, impacto e perfuração (dano pela metade), arma comum ainda fere"
     }
    ]
   },
@@ -16075,6 +16118,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 5,
@@ -16088,7 +16132,7 @@
   "combate": {
    "pv": 70,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 10,
    "absorcao": {
     "impacto": 7,
@@ -16189,6 +16233,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 7,
@@ -16202,7 +16247,7 @@
   "combate": {
    "pv": 26,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 5,
@@ -16306,6 +16351,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -16319,7 +16365,7 @@
   "combate": {
    "pv": 40,
    "defesa": 14,
-   "defesaSocial": "-",
+   "defesaSocial": 8,
    "defesaMental": 14,
    "absorcao": {
     "impacto": 7,
@@ -16427,6 +16473,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 5,
@@ -16440,7 +16487,7 @@
   "combate": {
    "pv": 50,
    "defesa": 4,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -16556,6 +16603,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 5
   },
   "vontade": 5,
@@ -16569,7 +16617,7 @@
   "combate": {
    "pv": 17,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -16633,7 +16681,8 @@
   "descricao": "Um morto que não descansa, movido por magia ou ódio.",
   "tags": [
    "morto-vivo",
-   "centelha"
+   "centelha",
+   "incorpóreo"
   ],
   "ameaca": 4,
   "centelha": 4,
@@ -16672,7 +16721,7 @@
    "esquiva": 1,
    "integridade": 5,
    "sociabilidade": 0,
-   "furtividade": 1
+   "furtividade": 3
   },
   "vontade": 9,
   "aparencia": 2,
@@ -16698,6 +16747,8 @@
     "sagrado"
    ],
    "resistencias": [
+    "corte",
+    "impacto",
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
@@ -16720,7 +16771,7 @@
   "habilidades": [
    {
     "nome": "Corpo Incorpóreo",
-    "descricao": "Atravessa paredes e portas como se não existissem, e a maioria das armas comuns passa através dele sem causar dano algum."
+    "descricao": "Atravessa paredes e portas como se não existissem, e resiste a corte, impacto e perfuração (dano pela metade); arma comum ainda o fere."
    },
    {
     "nome": "Renascer da Fúria",
@@ -17396,6 +17447,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -17409,7 +17461,7 @@
   "combate": {
    "pv": 40,
    "defesa": 4,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 5,
@@ -17514,6 +17566,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 10,
@@ -17527,7 +17580,7 @@
   "combate": {
    "pv": 80,
    "defesa": 13,
-   "defesaSocial": "-",
+   "defesaSocial": 11,
    "defesaMental": 20,
    "absorcao": {
     "impacto": 14,
@@ -17753,6 +17806,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -17766,7 +17820,7 @@
   "combate": {
    "pv": 40,
    "defesa": 11,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 6,
@@ -17901,6 +17955,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 5
   },
   "vontade": 5,
@@ -17914,7 +17969,7 @@
   "combate": {
    "pv": 17,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 2,
@@ -18614,6 +18669,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 9,
@@ -18627,7 +18683,7 @@
   "combate": {
    "pv": 46,
    "defesa": 16,
-   "defesaSocial": "-",
+   "defesaSocial": 10,
    "defesaMental": 18,
    "absorcao": {
     "impacto": 11,
@@ -18740,6 +18796,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -18753,7 +18810,7 @@
   "combate": {
    "pv": 54,
    "defesa": 5,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 7,
@@ -19599,6 +19656,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -19612,7 +19670,7 @@
   "combate": {
    "pv": 54,
    "defesa": 16,
-   "defesaSocial": "-",
+   "defesaSocial": 8,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 10,
@@ -20767,6 +20825,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -20780,7 +20839,7 @@
   "combate": {
    "pv": 34,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -20886,6 +20945,7 @@
    "prontidao": 2,
    "esquiva": 0,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 8,
@@ -20899,7 +20959,7 @@
   "combate": {
    "pv": 62,
    "defesa": 7,
-   "defesaSocial": "-",
+   "defesaSocial": 9,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 11,
@@ -21027,6 +21087,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -21040,7 +21101,7 @@
   "combate": {
    "pv": 50,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -21465,6 +21526,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 6,
@@ -21478,7 +21540,7 @@
   "combate": {
    "pv": 54,
    "defesa": 11,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 7,
@@ -21710,6 +21772,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -21723,7 +21786,7 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 4,
@@ -21830,6 +21893,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -21843,7 +21907,7 @@
   "combate": {
    "pv": 31,
    "defesa": 14,
-   "defesaSocial": "-",
+   "defesaSocial": 10,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 4,
@@ -22139,6 +22203,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -22152,7 +22217,7 @@
   "combate": {
    "pv": 75,
    "defesa": 9,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 10,
    "absorcao": {
     "impacto": 9,
@@ -22266,6 +22331,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -22279,7 +22345,7 @@
   "combate": {
    "pv": 37,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -22382,6 +22448,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -22395,7 +22462,7 @@
   "combate": {
    "pv": 50,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -22500,6 +22567,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 6,
@@ -22513,7 +22581,7 @@
   "combate": {
    "pv": 54,
    "defesa": 11,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 7,
@@ -23134,6 +23202,7 @@
    "prontidao": 3,
    "esquiva": 2,
    "integridade": 7,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 11,
@@ -23147,7 +23216,7 @@
   "combate": {
    "pv": 110,
    "defesa": 24,
-   "defesaSocial": "-",
+   "defesaSocial": 20,
    "defesaMental": 27,
    "absorcao": {
     "impacto": 19,
@@ -23648,6 +23717,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -23661,7 +23731,7 @@
   "combate": {
    "pv": 40,
    "defesa": 4,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -23769,6 +23839,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -23782,7 +23853,7 @@
   "combate": {
    "pv": 54,
    "defesa": 4,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 6,
@@ -24323,6 +24394,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -24336,7 +24408,7 @@
   "combate": {
    "pv": 54,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 10,
    "absorcao": {
     "impacto": 6,
@@ -24444,6 +24516,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -24457,7 +24530,7 @@
   "combate": {
    "pv": 40,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 5,
@@ -24726,6 +24799,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -24739,7 +24813,7 @@
   "combate": {
    "pv": 50,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 10,
    "absorcao": {
     "impacto": 5,
@@ -24827,11 +24901,10 @@
   "conceito": "monstro Médio",
   "descricao": "Animal selvagem, perigo puro sem malícia.",
   "tags": [
-   "monstro",
-   "centelha"
+   "monstro"
   ],
   "ameaca": 4,
-  "centelha": 4,
+  "centelha": 0,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -24865,6 +24938,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 9,
@@ -24877,13 +24951,13 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 14,
-   "defesaSocial": "-",
-   "defesaMental": 16,
+   "defesa": 10,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 5,
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
@@ -24895,7 +24969,7 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "6d6+2 +4",
+     "pool": "6d6+2",
      "dano": "1d6 +8 corte",
      "perfArma": null,
      "speed": 5,
@@ -25119,6 +25193,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -25132,7 +25207,7 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -25245,6 +25320,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 5,
@@ -25258,7 +25334,7 @@
   "combate": {
    "pv": 70,
    "defesa": 2,
-   "defesaSocial": "-",
+   "defesaSocial": 2,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 7,
@@ -25945,6 +26021,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -25958,7 +26035,7 @@
   "combate": {
    "pv": 37,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 4,
@@ -26075,6 +26152,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -26088,7 +26166,7 @@
   "combate": {
    "pv": 54,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 6,
@@ -26326,6 +26404,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -26339,7 +26418,7 @@
   "combate": {
    "pv": 54,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 6,
@@ -26456,6 +26535,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -26469,7 +26549,7 @@
   "combate": {
    "pv": 31,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 2,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 2,
@@ -26573,6 +26653,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 5,
@@ -26586,7 +26667,7 @@
   "combate": {
    "pv": 70,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 2,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 7,
@@ -26694,6 +26775,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 5
   },
   "vontade": 5,
@@ -26707,7 +26789,7 @@
   "combate": {
    "pv": 17,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 2,
@@ -26948,6 +27030,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 5,
@@ -26961,7 +27044,7 @@
   "combate": {
    "pv": 75,
    "defesa": 4,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 8,
@@ -27087,6 +27170,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 6,
@@ -27100,7 +27184,7 @@
   "combate": {
    "pv": 54,
    "defesa": 11,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 7,
@@ -27518,6 +27602,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 5,
@@ -27531,7 +27616,7 @@
   "combate": {
    "pv": 75,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 8,
@@ -27789,6 +27874,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 7,
@@ -27802,7 +27888,7 @@
   "combate": {
    "pv": 26,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 8,
    "defesaMental": 14,
    "absorcao": {
     "impacto": 5,
@@ -28177,6 +28263,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 6,
@@ -28190,7 +28277,7 @@
   "combate": {
    "pv": 50,
    "defesa": 5,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 6,
@@ -28579,6 +28666,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -28592,7 +28680,7 @@
   "combate": {
    "pv": 34,
    "defesa": 13,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 4,
@@ -28714,6 +28802,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -28727,7 +28816,7 @@
   "combate": {
    "pv": 54,
    "defesa": 5,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 7,
@@ -28859,6 +28948,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 5
   },
   "vontade": 5,
@@ -28872,7 +28962,7 @@
   "combate": {
    "pv": 16,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 1,
@@ -28973,6 +29063,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -28986,7 +29077,7 @@
   "combate": {
    "pv": 46,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -29090,6 +29181,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -29103,7 +29195,7 @@
   "combate": {
    "pv": 54,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 6,
@@ -29208,6 +29300,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -29221,7 +29314,7 @@
   "combate": {
    "pv": 37,
    "defesa": 14,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 6,
@@ -29339,6 +29432,7 @@
    "prontidao": 2,
    "esquiva": 0,
    "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -29352,7 +29446,7 @@
   "combate": {
    "pv": 37,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 12,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 8,
@@ -30289,6 +30383,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 10,
@@ -30302,7 +30397,7 @@
   "combate": {
    "pv": 58,
    "defesa": 15,
-   "defesaSocial": "-",
+   "defesaSocial": 9,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 12,
@@ -30705,6 +30800,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 5,
@@ -30718,7 +30814,7 @@
   "combate": {
    "pv": 50,
    "defesa": 4,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -31004,19 +31100,20 @@
   "semImagem": false,
   "atributos": {
    "forca": 5,
-   "destreza": 2,
-   "vigor": 3,
-   "influencia": 1,
-   "perspicacia": 1,
+   "destreza": 3,
+   "vigor": 5,
+   "influencia": 2,
+   "perspicacia": 2,
    "compostura": 1,
-   "percepcao": 2,
-   "inteligencia": 1,
+   "percepcao": 3,
+   "inteligencia": 2,
    "raciocinio": 2
   },
   "pericias": {
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -31028,14 +31125,14 @@
    "valor": 3
   },
   "combate": {
-   "pv": 34,
-   "defesa": 4,
-   "defesaSocial": "-",
+   "pv": 40,
+   "defesa": 6,
+   "defesaSocial": 2,
    "defesaMental": 9,
    "absorcao": {
-    "impacto": 3,
-    "corte": 1,
-    "perfuracao": 1
+    "impacto": 5,
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -31141,6 +31238,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 5,
@@ -31154,7 +31252,7 @@
   "combate": {
    "pv": 70,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 7,
@@ -31260,6 +31358,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 7,
@@ -31273,7 +31372,7 @@
   "combate": {
    "pv": 46,
    "defesa": 6,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 6,
@@ -31782,6 +31881,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -31795,7 +31895,7 @@
   "combate": {
    "pv": 40,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 2,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
@@ -32246,6 +32346,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 4
   },
   "vontade": 5,
@@ -32259,7 +32360,7 @@
   "combate": {
    "pv": 28,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -32359,6 +32460,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -32372,7 +32474,7 @@
   "combate": {
    "pv": 54,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 6,
@@ -32475,6 +32577,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -32488,7 +32591,7 @@
   "combate": {
    "pv": 37,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 4,
@@ -32714,6 +32817,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -32727,7 +32831,7 @@
   "combate": {
    "pv": 50,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 8,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 5,
@@ -33123,6 +33227,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 8,
@@ -33136,7 +33241,7 @@
   "combate": {
    "pv": 54,
    "defesa": 11,
-   "defesaSocial": "-",
+   "defesaSocial": 9,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 9,
@@ -33236,11 +33341,10 @@
   "conceito": "monstro Médio",
   "descricao": "Animal selvagem, perigo puro sem malícia.",
   "tags": [
-   "monstro",
-   "centelha"
+   "monstro"
   ],
   "ameaca": 2,
-  "centelha": 1,
+  "centelha": 0,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -33275,6 +33379,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -33287,13 +33392,13 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 9,
-   "defesaSocial": "-",
-   "defesaMental": 10,
+   "defesa": 8,
+   "defesaSocial": 2,
+   "defesaMental": 9,
    "absorcao": {
-    "impacto": 6,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 5,
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
@@ -33305,7 +33410,7 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +1",
+     "pool": "3d6+2",
      "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
@@ -33392,6 +33497,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 5
   },
   "vontade": 5,
@@ -33405,7 +33511,7 @@
   "combate": {
    "pv": 17,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 2,
@@ -33682,6 +33788,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 4
   },
   "vontade": 5,
@@ -33695,7 +33802,7 @@
   "combate": {
    "pv": 26,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
@@ -33804,6 +33911,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 4
   },
   "vontade": 5,
@@ -33817,7 +33925,7 @@
   "combate": {
    "pv": 24,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
@@ -33922,6 +34030,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 9,
@@ -33935,7 +34044,7 @@
   "combate": {
    "pv": 75,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 8,
    "defesaMental": 17,
    "absorcao": {
     "impacto": 12,
@@ -34047,6 +34156,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 5,
@@ -34060,7 +34170,7 @@
   "combate": {
    "pv": 45,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 2,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 2,
@@ -34180,6 +34290,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -34193,7 +34304,7 @@
   "combate": {
    "pv": 58,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 7,
@@ -34301,6 +34412,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 5,
@@ -34314,7 +34426,7 @@
   "combate": {
    "pv": 85,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 10,
    "absorcao": {
     "impacto": 9,
@@ -34853,6 +34965,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -34866,7 +34979,7 @@
   "combate": {
    "pv": 37,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 2,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
@@ -34979,6 +35092,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 5
   },
   "vontade": 5,
@@ -34992,7 +35106,7 @@
   "combate": {
    "pv": 16,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 1,
@@ -35242,6 +35356,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 10,
@@ -35255,7 +35370,7 @@
   "combate": {
    "pv": 95,
    "defesa": 15,
-   "defesaSocial": "-",
+   "defesaSocial": 9,
    "defesaMental": 18,
    "absorcao": {
     "impacto": 16,
@@ -35369,6 +35484,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 5,
@@ -35382,7 +35498,7 @@
   "combate": {
    "pv": 37,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 4,
@@ -35616,6 +35732,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 7,
@@ -35629,7 +35746,7 @@
   "combate": {
    "pv": 26,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 5,
@@ -35742,6 +35859,7 @@
    "prontidao": 3,
    "esquiva": 2,
    "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 5,
@@ -35755,7 +35873,7 @@
   "combate": {
    "pv": 90,
    "defesa": 18,
-   "defesaSocial": "-",
+   "defesaSocial": 10,
    "defesaMental": 14,
    "absorcao": {
     "impacto": 11,
@@ -35874,6 +35992,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -35887,7 +36006,7 @@
   "combate": {
    "pv": 54,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 6,
@@ -36575,6 +36694,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 7,
@@ -36588,7 +36708,7 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 10,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
@@ -36619,14 +36739,14 @@
      "perfArma": null,
      "speed": 5,
      "classe": "leve",
-     "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
+     "notas": "atravessa matéria; resiste a corte, impacto e perfuração (dano pela metade), arma comum ainda fere"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Incorpórea",
-    "descricao": "atravessa paredes e objetos; só pode ser ferida por armas mágicas ou de prata"
+    "descricao": "atravessa paredes e objetos; resiste a corte, impacto e perfuração (dano pela metade), arma comum ainda fere"
    },
    {
     "nome": "Toque drenante",
@@ -36737,6 +36857,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 4
   },
   "vontade": 6,
@@ -36750,7 +36871,7 @@
   "combate": {
    "pv": 17,
    "defesa": 13,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 10,
    "absorcao": {
     "impacto": 3,
@@ -37160,6 +37281,7 @@
    "prontidao": 4,
    "esquiva": 2,
    "integridade": 8,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 11,
@@ -37173,7 +37295,7 @@
   "combate": {
    "pv": 115,
    "defesa": 26,
-   "defesaSocial": "-",
+   "defesaSocial": 22,
    "defesaMental": 30,
    "absorcao": {
     "impacto": 20,
@@ -37294,6 +37416,7 @@
    "prontidao": 2,
    "esquiva": 0,
    "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 12,
@@ -37307,7 +37430,7 @@
   "combate": {
    "pv": 115,
    "defesa": 14,
-   "defesaSocial": "-",
+   "defesaSocial": 18,
    "defesaMental": 28,
    "absorcao": {
     "impacto": 24,
@@ -37835,6 +37958,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -37848,7 +37972,7 @@
   "combate": {
    "pv": 54,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 10,
    "absorcao": {
     "impacto": 6,
@@ -37956,6 +38080,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 5,
@@ -37969,7 +38094,7 @@
   "combate": {
    "pv": 80,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 10,
    "absorcao": {
     "impacto": 8,
@@ -38364,6 +38489,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 5,
@@ -38377,7 +38503,7 @@
   "combate": {
    "pv": 70,
    "defesa": 4,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 7,
@@ -38609,6 +38735,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -38622,7 +38749,7 @@
   "combate": {
    "pv": 62,
    "defesa": 11,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 9,
@@ -38745,6 +38872,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -38758,7 +38886,7 @@
   "combate": {
    "pv": 46,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 2,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 4,
@@ -38862,6 +38990,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 5,
@@ -38875,7 +39004,7 @@
   "combate": {
    "pv": 80,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 8,
@@ -39148,6 +39277,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -39161,7 +39291,7 @@
   "combate": {
    "pv": 58,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 7,
@@ -39272,6 +39402,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -39285,7 +39416,7 @@
   "combate": {
    "pv": 54,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 6,
@@ -39390,6 +39521,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -39403,7 +39535,7 @@
   "combate": {
    "pv": 54,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 6,
@@ -39720,6 +39852,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 7,
@@ -39733,7 +39866,7 @@
   "combate": {
    "pv": 26,
    "defesa": 10,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 5,
@@ -39968,6 +40101,7 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -39981,7 +40115,7 @@
   "combate": {
    "pv": 95,
    "defesa": 5,
-   "defesaSocial": "-",
+   "defesaSocial": 5,
    "defesaMental": 10,
    "absorcao": {
     "impacto": 12,
@@ -40100,6 +40234,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 5,
@@ -40113,7 +40248,7 @@
   "combate": {
    "pv": 54,
    "defesa": 8,
-   "defesaSocial": "-",
+   "defesaSocial": 6,
    "defesaMental": 11,
    "absorcao": {
     "impacto": 6,
@@ -40219,6 +40354,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 5
   },
   "vontade": 5,
@@ -40232,7 +40368,7 @@
   "combate": {
    "pv": 17,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 4,
    "defesaMental": 8,
    "absorcao": {
     "impacto": 2,
@@ -40784,6 +40920,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -40797,7 +40934,7 @@
   "combate": {
    "pv": 34,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 8,
    "defesaMental": 14,
    "absorcao": {
     "impacto": 5,
@@ -40909,6 +41046,7 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 8,
@@ -40922,7 +41060,7 @@
   "combate": {
    "pv": 54,
    "defesa": 11,
-   "defesaSocial": "-",
+   "defesaSocial": 9,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 9,
@@ -41338,6 +41476,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -41351,7 +41490,7 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
-   "defesaSocial": "-",
+   "defesaSocial": 8,
    "defesaMental": 14,
    "absorcao": {
     "impacto": 6,

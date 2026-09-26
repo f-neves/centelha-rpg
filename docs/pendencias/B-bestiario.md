@@ -115,7 +115,7 @@ limitações conhecidas, que são as três de baixo.
   - **Proposta do autor (DECIDIR):**
     > Escalas desejadas pelo autor: nível de desafio de 1 a 12 (hoje 1 a 6, os losangos, campo
     > `ameaca`) e Centelha da criatura de 0 a 12 (hoje 0 a 10, campo `centelha`).
-    > Definição do autor: nível de desafio X é feito para um grupo de 3 personagens de Centelha X, com
+    > Definição do autor: nível de desafio X é feito para um grupo de 4 personagens de Centelha X, com
     > habilidades variadas, passarem dificuldade para vencer, gastando recursos e se ferindo. É
     > absoluto, não relativo ao grupo que joga.
     > Personagem sem Centelha fere criatura com Centelha, e o inverso também.

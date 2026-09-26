@@ -93,7 +93,7 @@
   "fracas_contam": 0.5,
   "fracas_abaixo": 2,
   "dias_semana": 8,
-  "grupo": 3,
+  "grupo": 4,
   "tarefas": [
     {
       "id": "afugentar",

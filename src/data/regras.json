@@ -328,6 +328,11 @@
     "respondido": "As duas metades caíram na `M-11b`, em 15/09/2026. A Firula de nível 3 devolve MAIS: 3 contra 1. E NÃO há teto por cena, nem de quantas Firulas nem de quantos pontos, em nenhuma das três reservas. `tetoPorCena` é `null` por decisão explícita da mesa, e não por falta de número.",
       "aRevisar": "quanto XP a Firula de nível 3 devolve, além da reserva. Não foi decidido, e é número e não redação."
   },
+  "gastoVontade": {
+    "nota": "O número do 'turbinar uma ação importante' que aparecia sem valor em aparencia-virtudes-vontade.md. Decidido em 26/09/2026 (B14 fase 2, item 12).",
+    "porPonto": "+1d6 numa jogada ativa, ou +4 numa Defesa (passiva)",
+    "teto": "1 ponto por ação ou jogada, inclusive cada golpe que se defende (não empilha dois pontos no mesmo lance)."
+  },
   "escalaAparencia": [
     {
       "nivel": 0,
@@ -799,7 +804,7 @@
       "especialidade": true
     },
     "defesaSocial": {
-      "nota": "O escudo social geral (equivale ao MDV): resiste a ser convencido/movido E a ser lido. (Compostura + Sociabilidade) × 2 + Centelha + Especialidade (Centelha fica FORA do ×2). Feras (Int 1) trocariam Sociabilidade por Sobrevivência, mas no bestiário Social vale só p/ Int 2+. Int 0 é imune ('-').",
+      "nota": "O escudo social geral (equivale ao MDV): resiste a ser convencido/movido E a ser lido. (Compostura + Sociabilidade) × 2 + Centelha + Especialidade (Centelha fica FORA do ×2). Feras (Int 1) trocam Sociabilidade por Sobrevivência (B14 fase 2, item C.7, 26/09/2026); Int 0 é imune ('-').",
       "mult": 2,
       "tracos": [
         "compostura",

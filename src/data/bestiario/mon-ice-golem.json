@@ -5,6 +5,7 @@
   "nomeIngles": "Golem, Ice",
   "categoria": "Construto",
   "categoriaLegada": "Monstro",
+  "constructo": { "semVida": true },
   "papel": "elite",
   "conceito": "constructo Médio",
   "descricao": "Autômato sem vida, movido por magia alheia.",

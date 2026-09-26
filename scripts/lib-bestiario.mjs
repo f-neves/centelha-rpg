@@ -60,11 +60,14 @@ export function stat(b) {
   // Defesa Mental: Raciocínio + Integridade + Vontade + Centelha (soma simples). Só p/ quem tem mente (Int ≥ 1); Int 0 é imune ("-").
   const defesaMental = intel <= 0 ? '-'
     : integ * D.defesaMental.mult + (D.defesaMental.maisRaciocinio ? at.raciocinio : 0) + (D.defesaMental.maisVontade ? (b.vontade ?? 5) : 0) + (D.defesaMental.maisCentelha ? C * (D.defesaMental.centelhaMult ?? 1) : 0);
-  // Defesa Social: escudo social geral (resiste a influência e a leitura). Só p/ Int ≥ 2 (Int < 2 = "-").
-  // Usa Sociabilidade; se o bloco não a declara, reaproveita a melhor perícia social que ele tenha. Centelha fica FORA do ×2.
-  const socialSkill = pe.sociabilidade ?? Math.max(0, pe.oratoria || 0, pe.manha || 0, pe.persuasao || 0, pe.lideranca || 0, pe.politica || 0);
+  // Defesa Social: escudo social geral (resiste a influência e a leitura). Int 0 = "-" (sem trato
+  // social nenhum); Int 1 (feras) troca Sociabilidade por Sobrevivência (B14 fase 2, item C.7);
+  // Int ≥ 2 usa Sociabilidade, ou a melhor perícia social que o bloco tenha. Centelha fica fora do ×2.
+  const socialSkill = intel >= 2
+    ? (pe.sociabilidade ?? Math.max(0, pe.oratoria || 0, pe.manha || 0, pe.persuasao || 0, pe.lideranca || 0, pe.politica || 0))
+    : (pe.sobrevivencia || 0);
   const espSoc = (b.especialidades && b.especialidades.social) || 0;
-  const defesaSocial = intel >= 2 ? (at.compostura + socialSkill) * D.defesaSocial.mult + C * (D.defesaSocial.centelhaMult ?? 0) + espSoc : '-';
+  const defesaSocial = intel >= 1 ? (at.compostura + socialSkill) * D.defesaSocial.mult + C * (D.defesaSocial.centelhaMult ?? 0) + espSoc : '-';
   const ini = at.raciocinio + (pe.prontidao || 0);
   const ataques = (b.ataques || []).map((a) => {
     const soma = (at[a.atrib] || 0) + (pe[a.pericia] || 0);
@@ -137,7 +140,7 @@ function catFromTags(tags) {
  *   Prontidão     = iniciativa − raciocínio
  *   Esquiva       = defesa/2 − destreza − centelha/2   (some com armadura no meio)
  *   Integridade   = defesaMental − raciocínio − vontade − centelha   (some sem mente)
- *   Sociabilidade = (defesaSocial − centelha)/2 − compostura   (some com Int < 2)
+ *   Sociabilidade = (defesaSocial − centelha)/2 − compostura   (some com Int 0; Int 1 é Sobrevivência por baixo)
  *
  * A Furtividade vem da tabela por porte e categoria (`regras.furtividadeCriatura`),
  * com exceção por id no próprio regras.json. ONDE A CONTA NÃO FECHA, a perícia sai

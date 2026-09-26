@@ -21,7 +21,7 @@ import REC from '../data/recompensas.json';
     <label>Tom da campanha
       <select data-rc="tom">{REC.tons.map((t) => <option value={t.id} selected={t.id === 'padrao'}>{t.nome} (×{String(t.mult).replace('.', ',')})</option>)}</select>
     </label>
-    <label>Tamanho real do grupo<input type="number" min="1" value="3" data-rc="grupo" /></label>
+    <label>Tamanho real do grupo<input type="number" min="1" value="4" data-rc="grupo" /></label>
   </div>
   <div class="rc-saida">
     <p class="rc-bolsa"><span data-rc="bolsa"></span></p>

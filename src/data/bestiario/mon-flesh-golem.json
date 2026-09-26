@@ -5,6 +5,7 @@
   "nomeIngles": "Golem, Flesh",
   "categoria": "Construto",
   "categoriaLegada": "Monstro",
+  "constructo": { "semVida": true },
   "papel": "elite",
   "conceito": "constructo Grande",
   "descricao": "Autômato sem vida, movido por magia alheia.",

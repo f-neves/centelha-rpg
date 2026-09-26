@@ -9,7 +9,8 @@
   "descricao": "Um morto que não descansa, movido por magia ou ódio.",
   "tags": [
     "morto-vivo",
-    "centelha"
+    "centelha",
+    "incorpóreo"
   ],
   "imagem": "bestiario/ghost.webp",
   "porte": "Médio",
@@ -63,12 +64,14 @@
     "sagrado"
   ],
   "resistencias": [
+    "corte",
+    "impacto",
     "perfuracao"
   ],
   "habilidades": [
     {
       "nome": "Corpo Incorpóreo",
-      "descricao": "Atravessa paredes e portas como se não existissem, e a maioria das armas comuns passa através dele sem causar dano algum."
+      "descricao": "Atravessa paredes e portas como se não existissem, e resiste a corte, impacto e perfuração (dano pela metade); arma comum ainda o fere."
     },
     {
       "nome": "Renascer da Fúria",

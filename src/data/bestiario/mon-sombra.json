@@ -61,7 +61,7 @@
       "mao": 1,
       "tipo": "necrótico (vs Def. Mental)",
       "ticks": 5,
-      "notas": "atravessa matéria; só Arcano, Proteção ou arma encantada o ferem"
+      "notas": "atravessa matéria; resiste a corte, impacto e perfuração (dano pela metade), arma comum ainda fere"
     }
   ],
   "poderes": [
@@ -90,7 +90,7 @@
   "habilidades": [
     {
       "nome": "Incorpórea",
-      "descricao": "atravessa paredes e objetos; só pode ser ferida por armas mágicas ou de prata"
+      "descricao": "atravessa paredes e objetos; resiste a corte, impacto e perfuração (dano pela metade), arma comum ainda fere"
     },
     {
       "nome": "Toque drenante",
