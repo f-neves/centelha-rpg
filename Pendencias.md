@@ -39,19 +39,19 @@ está na seção 3.
 
 | Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados | DECIDIR | FAZER | AUTOR | CONSERTAR | Outra marca | Adiados |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 28 | 18 | 1 | 9 | 11 | 4 | 4 | 0 | 0 | 0 |
+| A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 30 | 20 | 1 | 9 | 13 | 4 | 4 | 0 | 0 | 0 |
 | B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 14 | 9 | 0 | 5 | 4 | 5 | 0 | 0 | 0 | 0 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 8 | 5 | 0 | 3 | 2 | 1 | 0 | 0 | 0 | 2 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 10 | 7 | 0 | 3 | 5 | 1 | 0 | 1 | 0 | 0 |
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 | 6 | 0 | 3 | 0 | 0 | 0 |
-| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 72 | 48 | 0 | 24 | 26 | 2 | 0 | 5 | 15 | 0 |
+| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 73 | 49 | 0 | 24 | 27 | 2 | 0 | 5 | 15 | 0 |
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 6 | 4 | 0 | 2 | 1 | 0 | 0 | 2 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 10 | 2 | 2 | 3 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 17 | 14 | 0 | 3 | 6 | 3 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 32 | 18 | 1 | 13 | 14 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **322** | **220** | **4** | **98** | **80** | **38** | **8** | **10** | **81** | **7** |
+| | **Total** | | **325** | **223** | **4** | **98** | **83** | **38** | **8** | **10** | **81** | **7** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -337,6 +337,8 @@ Os itens abertos e parciais de cada tema, com a marca e o título; os fechados v
 | A26 | aberto | DECIDIR | O improviso pode começar em qualquer lugar? |
 | A19 | aberto | DECIDIR | O que a matéria dentro da fatia faz em número. |
 | A16 | aberto | DECIDIR | A Fonte do Elemento: os elementos que faltam. |
+| A28 | aberto | DECIDIR | A Cura mundana e a com Proeza ou Arte não têm número fora do combate. |
+| A29 | aberto | DECIDIR | Preço de serviço e de item mágico, e raridade por lugar. |
 
 Fechados (9): A12, A17, A18, A22, A23, A27, A21, A22, A20.
 
@@ -461,6 +463,7 @@ Fechados (1): F9.
 | G67 | aberto | DECIDIDO, APLICAR DEPOIS | E2 · Reparo e desgaste. |
 | G68 | aberto | DECIDIDO, APLICAR DEPOIS | E3 · Empréstimo de XP, a regra completa (completa a G44). |
 | G69 | aberto | DECIDIDO, APLICAR DEPOIS | E5 · Pacote inicial pelo Recursos. |
+| G71 | aberto | DECIDIR | Comércio e modificador regional. |
 
 Fechados (24): G1, G3, G4, "As cinco físicas de toda sessão.", G5, G5b, G7, G8, G9, G10, G18, G19, G20, G29, G52, G54, G55, G56, G57, G58, G59, G62, G65, G70.
 

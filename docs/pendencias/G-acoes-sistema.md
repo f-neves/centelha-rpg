@@ -148,6 +148,9 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   `acoes-e-sistema.md:107-109` diz que Proezas e Artes quebram a parede da Longa e levantam a
   média, mas não diz a forma. Um "+3 em Ofícios" (Mãos Hábeis) soma à média? Vale o mesmo para as
   Técnicas de estado do Artesão (Obra Fina, Reparo Veloz), que não trazem número.
+  - **Sugestão do Comerciante, não aprovada (registrada na rodada 114, texto dele sem alteração):**
+    > Na renda de ofício, a segunda Habilidade entra como bônus fixo, só uma. Firula não conta.
+    > Proeza conta como bônus na média. Número a definir junto com D8.
 - [ ] **G16 · [DECIDIR] Alcance da regra da maior e da menor.** Levantado em 24/09/2026.
   `acoes-e-sistema.md:195` restringe à "secundária que a ação nomear"; `habilidades-secundarias.md:15`
   formula sem a trava ("Quando as duas cabem na mesma ação"). E o documento de regra diz "que a
@@ -443,9 +446,43 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
 - [ ] **G67 · [DECIDIDO, APLICAR DEPOIS] E2 · Reparo e desgaste.** Documento §E2 (`:704`). Reparo em
   fração do preço (1/6, 1/3, 3/4); desgaste opcional por marcas. Afeta `acoes-oficio-e-mundo.md`
   (fabricação) e `armas-e-armaduras.md`. **Rodada 110 (25/09/2026), em parte** (`f9709bc`): o reparo pela regra da v2 §8 (leve sem Montagem, pesado com metade, arruinada inteira; ~1/10, 1/3 e 2/3 do preço), em `src/content/chapters/acoes-oficio-e-mundo.md:193`. **Falta:** o desgaste opcional por marcas, em `armas-e-armaduras.md`.
+  - **Sugestão do Comerciante, não aprovada (registrada na rodada 114, texto dele sem alteração):** "Desgaste e manutenção (regra opcional)". Não muda o veredito nem o "Falta" acima.
+    > Fim de cada combate: 1 marca em cada arma usada, em cada armadura que absorveu dano e em cada
+    > escudo que bloqueou. O Mestre pode dar mais uma em combate longo, contra armadura pesada,
+    > criatura grande ou falha crítica.
+    > Estágios: dano leve (-1 num número da peça: dano, absorção ou bloqueio), dano pesado (-2),
+    > arruinada (inútil até reparo).
+    > Marcas por estágio, pelo grau: Sucata 1, Tosca 2, Comum 3, Boa 3, Ótima 4, Excelente 6
+    > (Excelente 6/12/18 marcas para leve/pesado/arruinada). É o "Excelente dura mais".
+    > Manutenção: 1 hora com o kit apaga 1 marca, sem jogada, com Ofícios Gerais 1 ou o ofício, com
+    > tempo e abrigo. Só age antes do dano; depois, só o reparo.
+    > Kit de manutenção ~20 pc (pedra de amolar, óleo, trapos, areia); óleo 10 pc a cada 4 semanas de
+    > uso. Manutenção paga: ~2 pc por marca.
+    > Referência: limpadores de cota da Torre de Londres, 4 a 6 d por dia (1344-51).
+    > Fora da regra: roupa e ferramenta (já no custo de vida), cavalo (ferragem na manutenção
+    > semanal), munição (regra de recuperar metade).
+    > Reparo (se ainda não estiver no livro): leve sem Montagem, 1/4 da Peça, cerca de 1/10 do preço,
+    > Ofícios Gerais faz no campo; pesado 1/2 Montagem + 1/2 Peça, cerca de 1/3; arruinada com
+    > material, trabalho inteiro, cerca de 2/3 mais material.
 - [ ] **G68 · [DECIDIDO, APLICAR DEPOIS] E3 · Empréstimo de XP, a regra completa (completa a G44).**
   Documento §E3 (`:726`). Tempo, preço e dívida, sobre o que o autor já decidiu na G44. Afeta
   `criacao-de-personagem.md` (onde o XP se gasta). Ao aplicar, fecha a G44.
+  - **Sugestão do Comerciante, não aprovada (registrada na rodada 114, texto dele sem alteração):** "Empréstimo de XP", desenho pronto, aguarda o autor.
+    > Um ponto por vez, quitado antes do próximo; professor com pelo menos 1 ponto acima; vale para
+    > Atributo, Habilidade e Especialidade; o Mestre julga.
+    > Tempo de aula = custo em XP do ponto / 2, em jornadas (Habilidade 3 para 4: 6 jornadas;
+    > Atributo 3 para 4: 12,5). O aluno não trabalha nesses dias.
+    > Preço = jornadas × diária avulsa do professor.
+    > Dívida: metade de todo XP ganho vai para a dívida até quitar; some no fim da campanha.
+    > Mentor ensina sem cobrar dinheiro; a dívida de XP é a mesma. Aula em grupo: até 4 alunos, preço
+    > total × 1,5 dividido.
+    **O que é novo em relação ao já decidido na G44** (um ponto por vez, professor com 1 ponto acima,
+    o Mestre julga, preço = tempo × salário do professor, metade do XP para a dívida): o tempo da aula
+    (custo em XP ÷ 2, em jornadas, sem trabalhar nesses dias), que responde ao "quanto tempo" que a G44
+    deixa aberto; o preço pela diária **avulsa**; a dívida que some no fim da campanha, que responde ao
+    "se o XP não vier"; o **mentor que ensina de graça e mantém a dívida**; e a **aula em grupo, até 4
+    alunos, por 1,5×**. A G44 não fala de grupo nem de mentor: esses dois são proposta nova, e não
+    decisão do autor. O documento §E3 que a G68 cita já trazia os mesmos pontos.
 - [ ] **G69 · [DECIDIDO, APLICAR DEPOIS] E5 · Pacote inicial pelo Recursos.** Documento §E5 (`:767`).
   Bolsa de 4 semanas de Livre na criação (regra do Jogador). Afeta `criacao-de-personagem.md` e
   `antecedentes.md:92` (Recursos).
@@ -455,3 +492,12 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
   site; as tarifas em arquivos próprios (`custo-de-vida.json`, `renda.json`, `servicos.json`,
   `viagens.json`, `montarias-veiculos.json`). Afeta `src/data/` e o gerador do catálogo
   (`scripts/gen-cap-itens.mjs`).
+- [ ] **G71 · [DECIDIR] Comércio e modificador regional.** Registrado em 26/09/2026, na rodada 114,
+  a partir de uma sugestão do Comerciante. Hoje o site não tem pechincha, revenda por conta própria
+  nem variação regional de preço: o próprio capítulo de custo diz que "a diferença de preço entre
+  regiões" fica para depois (`src/content/chapters/custo-de-servico-e-itens.md:8`), e a única
+  regra de venda é a Revenda pela metade (`src/content/chapters/custo-qualidade-e-equipamento.md`,
+  "Revenda"). O modificador regional é a A4 da revisão econômica, adiado desde a A3.
+  - **Sugestão do Comerciante, não aprovada (registrada na rodada 114, texto dele sem alteração):**
+    > Pechincha com teto de 20%; venda direta ao consumidor 70% a 100% do preço de tabela;
+    > arbitragem entre regiões; números do modificador regional.

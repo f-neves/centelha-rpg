@@ -23,6 +23,8 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
 - [ ] **A4 · [DECIDIR] Rituais.** Ritual já é o modo lento de conjurar (troca Mana por tempo e
   Vontade). Falta: a regra antiga de "metade do Mana no Ritual" **morre de vez**? Existe **algum
   Efeito que só funciona no modo lento** (o círculo de invocação, por exemplo)?
+  - **Sugestão do Comerciante, não aprovada (registrada na rodada 114, texto dele sem alteração)**, a parte de Mana em ação Longa (a primeira frase do bloco 1d):
+    > Serviço mágico = tabela de serviços pelo perfil do conjurador × tempo, mais Mana e material quando houver regra.
 - [ ] **A5 · [DECIDIR] Clarão Cegante.** Ficou **sem Dificuldade** por ora: quem está na área e
   olhando sofre a Penalidade, sem rolagem. Confirmar assim ou dar uma resistência.
 - [ ] **A6 · [DECIDIR] O campo `escalonavel`.** Órfão desde que os níveis dos Efeitos viraram
@@ -220,4 +222,20 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   da areia é o mais visível: a escada da Terra desliza de solo solto para rocha viva conforme sobe,
   então um deserto cai perto do fundo de uma régua que trata material solto como fraco. Decidir
   quais materiais ganham escada própria, e se Som é escola de Ar ou outra coisa.
-
+- [ ] **A28 · [DECIDIR] A Cura mundana e a com Proeza ou Arte não têm número fora do combate.**
+  Registrado em 26/09/2026, na rodada 114, a partir de uma sugestão do Comerciante. A Arte Cura existe
+  e tem custo em Mana (`src/data/artes.json:744-826`), mas não há regra de quanto ela acelera a
+  recuperação fora do combate nem do preço de quem a vende. O levantamento da rodada D6 do Revisor
+  externo (`lore/economia/estado-revisao.md`, "3. Artes/Magia") mediu a mesma falta; ele é leitura, e
+  não decisão.
+  - **Sugestão do Comerciante, não aprovada (registrada na rodada 114, texto dele sem alteração):**
+    > Curandeiro mortal acelera a recuperação em cerca de 10%, só um pouco melhor que descansar.
+    > Preços mundanos baratos já no livro (atendimento 3, consulta 15, tratamento 10 por dia).
+    > Cura com Proeza ou Magia encarece: preço pela tabela de serviços do perfil do curador, mais o
+    > custo de Mana quando existir regra de Mana em ação Longa.
+- [ ] **A29 · [DECIDIR] Preço de serviço e de item mágico, e raridade por lugar.** Registrado em
+  26/09/2026, na rodada 114, a partir de uma sugestão do Comerciante. As páginas de custo não citam
+  "mágic", "encant" nem "Artefato" com preço nenhum (a mesma ausência que a rodada D6 do Revisor
+  externo mediu, `lore/economia/estado-revisao.md`, "5. Item encantado e Artefato").
+  - **Sugestão do Comerciante, não aprovada (registrada na rodada 114, texto dele sem alteração)**, a segunda frase do bloco 1d:
+    > Raridade por lugar: usar os tetos de aldeia, vila, cidade e capital como base.
