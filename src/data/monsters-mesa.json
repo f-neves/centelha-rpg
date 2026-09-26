@@ -15467,6 +15467,10 @@
    {
     "id": "fascinacao",
     "nivel": 5
+   },
+   {
+    "id": "raio",
+    "nivel": 4
    }
   ],
   "tecnicas": [

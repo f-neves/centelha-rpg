@@ -51,7 +51,8 @@
   "aparencia": 5,
   "arte": {
     "vento": 6,
-    "fascinacao": 5
+    "fascinacao": 5,
+    "raio": 4
   },
   "tech": {
     "abraco-do-tita": true

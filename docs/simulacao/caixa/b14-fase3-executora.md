@@ -54,8 +54,13 @@ Nuvens Centelha 2**, e o `artes-criaturas.md` originalmente sustentava 5 e 4 mas
 explicitamente **substituído** pelo `decisoes-fase3.md` "onde discordarem (os dois gigantes)",
 regra que o próprio despacho escreveu. Apliquei os números do **`decisoes-fase3.md`** (4 e 2), por
 ser o documento que a hierarquia declarada manda vencer, e porque ele vem com o raciocínio
-(círculo de magia, CR relativo) escrito, não só o número. Se a intenção era os números do despacho
-(5 e 4), é troca de dois números e duas Artes, avise que eu ajusto.
+(círculo de magia, CR relativo) escrito, não só o número.
+
+**Confirmado pelo Arquiteto**: os números que apliquei (Tempestade 4, Nuvens 2) estão certos; o
+"3→5, 1→4" da "Atenção especial" do despacho foi engano dele ao copiar do `artes-criaturas.md`
+(que o próprio `decisoes-fase3.md` rejeita, com justificativa escrita: "o que resolve é tratar o
+inato como poder natural" em vez de subir a Centelha para caber magia de alto círculo). Nada a
+mudar aqui.
 
 - **Gigante das Nuvens**: Centelha 1→2. Arte: vento 1→2 (só). Levitar e Névoa viraram poder
   natural (`resiste: nenhum`); "Arremesso de rocha" virou ataque de verdade (ver seção 3). Saíram
@@ -133,14 +138,17 @@ tinha registrado.
 ## Seção 6: Artes das 20 conjuradoras
 
 Apliquei o `artes-criaturas.md` inteiro, substituindo (não somando) o `arte` de cada uma das 20
-fichas. **Não consegui conferir as duas linhas "de memória da 5e" contra a fonte original nesta
-sessão** (sem acesso à internet aqui): apliquei `mon-naga-espirita` como a tabela trouxe
-(`fascinacao 5, fogo 4, ofuscacao 3, cura 1`), porque a Arte mais alta (fascinação 5) pode
-depender em parte das magias de domínio da 5e que o autor não confirmou. Para `mon-kraken`,
-apliquei só a parte com citação de Pathfinder (`vento 6, fascinacao 5`, de "control weather" e
-"dominate monster") e **deixei de fora o `raio 4`** que a tabela credita a "(5e) Lightning Storm",
-justamente a linha que o despacho pede para conferir antes de gravar. Se alguém confirmar a fonte
-5e, é só acrescentar `raio: 4` ao Kraken.
+fichas. Apliquei `mon-naga-espirita` como a tabela trouxe (`fascinacao 5, fogo 4, ofuscacao 3,
+cura 1`). Para `mon-kraken`, apliquei de início só a parte com citação de Pathfinder (`vento 6,
+fascinacao 5`), deixando de fora o `raio 4` que a tabela credita a "(5e) Lightning Storm" por não
+ter como conferir a fonte 5e nesta sessão (sem acesso à internet aqui).
+
+**Atualização**: o Arquiteto conferiu as duas linhas na fonte 5e (D&D Beyond/aidedd). Lightning
+Storm é ação lendária real do Kraken 5e (três raios em alvos diferentes, dano de raio): acrescentei
+`raio: 4` à Arte do Kraken (`{vento: 6, fascinacao: 5, raio: 4}`). As magias da Naga Espírita
+(dominate person, hold person, sleep, lightning bolt, blight, dimension door) também são reais do
+Spirit Naga 5e; as que o `artes-criaturas.md` deixou de fora (lightning bolt/blight/dimension door)
+foram exclusão deliberada do próprio arquivo, não erro meu: nada a mudar em `mon-naga-espirita`.
 
 ## Achado fora do escopo dos 6 itens: `gen-monsters.mjs` apagava poder natural novo, calado
 
