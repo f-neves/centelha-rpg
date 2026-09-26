@@ -51,8 +51,13 @@ valor próprio:
 - `carta`: hoje em `por: "unidade"` junto com `documento` e `cavalo` (adestrar). Vira `por:
   "carta"` só para o caso que for carta de verdade; `documento` e `cavalo` (adestrar) continuam em
   `unidade`, a menos que você ache que merecem valor próprio (registre se mudar).
-- `muda` e `parto`: não estão na lista nova. Mantenha em `por: "vez"` (é o mais próximo) e registre
-  os dois como casos sem valor próprio na lista, para o autor decidir se cria um.
+- `muda` (lavadeira) e `parto` (parteira): **decidido pelo autor em 26/09/2026**, depois deste
+  despacho ser publicado: `muda` vira `por: "unidade"` (uma muda de roupa lavada); `parto` vira
+  `por: "atendimento"`. Não ficam como "caso sem decisão".
+
+**Regra para o futuro, registre onde o vocabulário estiver documentado (README ou o próprio
+esquema):** um serviço novo usa um valor que já existe na lista sempre que couber; só se cria valor
+novo quando nenhum couber, e aí ele é registrado com o motivo.
 
 **Onde mais houver dinheiro solto** (o despacho da 110/111 já cobriu `servicos.json`,
 `viagens.json`, `custo-de-vida.json`, `renda.json`, `pacotes-equipamento.json`; confira de novo
