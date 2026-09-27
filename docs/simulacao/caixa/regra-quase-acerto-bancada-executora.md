@@ -184,3 +184,50 @@ exercite Vida abaixo de zero de verdade nesses dois arquivos (a fixture não tem
 bastante), então a prova principal aqui é de leitura de código + `tsc --noEmit` limpo, não de
 teste vermelho→verde.
 
+## Item 5 (nota do livro) · FEITO
+
+`src/content/chapters/combate.md`, logo depois da frase que descreve o Simultâneo (Tick a Tick):
+o texto exato que o despacho deu, sem alteração.
+
+## Item 6 (bancada) · código pronto e validado com `--n` baixo; falta só o `--n 1000` final
+
+`scripts/sim/calibrar.mjs` reescrito:
+
+- **6a.** Os cenários `CENARIOS` (V1/V2/V3/V1+V2/V1+V3) saíram por inteiro: a fórmula do V1 (o
+  piso do item 2c) já é incondicional em `lance.ts`, então o wrapper de `resolverGolpe` em
+  `libDaBancada` virou código morto e foi removido, junto com a variação de Absorção por tipo
+  (`cenario.absorcao`) em `perfilDe` e o parâmetro `cenario` espalhado por todas as funções. A
+  camada exata (`golpeExato`) também deixou de ramificar por cenário: o piso agora é incondicional
+  lá também, espelhando `resolverGolpe`.
+- **6b.** Força por Tick nova (`cicloDaPeca` via `L0.anatomia`, `golpesParaTicks`,
+  `forcaTick` em `rodarEspelho`), reportada ao lado da força por tentativa antiga (mantida,
+  renomeada só na leitura), com uma coluna ⚑ quando as duas discordam (sinal oposto, ou diferença
+  relativa > 20%). As duas SÓ discordam quando os dois lados usam armas de ciclo diferente
+  (confirmado rodando com `--n 20`: nas tabelas onde os dois lados usam a MESMA arma, força e
+  força/Tick saem idênticas, porque o ciclo é o mesmo dos dois lados; na tabela nova de Briga ×
+  Armas, que cruza desarmado com espada longa, elas divergem de verdade).
+- **6c.** Duas alavancas novas, `atributo+1-forca-montante` (seção 6a do relatório) e Briga
+  (desarmado, `skills2.briga`) contra Armas (seção 6b do relatório, arquétipo novo
+  `fichaBrigaDe`/`perfilBrigaDe`, usando a MESMA chave `pericia: 'briga'` que o bestiário já lê em
+  `combate-resumo.ts:85`, sem precisar entrar no catálogo de Habilidades secundárias para
+  funcionar). Arremesso contra Atirador **NÃO RODADO**: o motor não modela alcance além da
+  distância inicial fixa da cena (peças sempre nascem adjacentes; a penalidade por faixa é só
+  exibida na mesa, o mestre soma à mão), então rodar essa alavanca mediria o mesmo duelo corpo a
+  corpo com nomes diferentes de arma. Registrado como `docs/pendencias/H-arremesso.md` H7, novo.
+- **6d.** O relatório regenerado traz uma nota explícita sobre o viés de lado esperado cair
+  depois do conserto do item 3 (a coluna "viés" já existia; o texto novo explica o que mudou e
+  por quê a comparação com o "antes" não é possível a partir só deste arquivo, já que a rodada
+  anterior media os cenários V1/V2/V3 e não a regra viva).
+- **6e.** AINDA NÃO RODADO com `--n 1000`: rodei só com `--n 20` (`node scripts/sim/calibrar.mjs
+  --n 20 --saida ../tmp/executora/15-teste.md`) para validar que a reescrita gera as 8 seções sem
+  erro e que os números fazem sentido (conferido à mão: força/tentativa == força/Tick quando os
+  dois lados usam a mesma arma; force/Tick correndo para valores mais extremos que
+  força/tentativa quando Armas enfrenta Briga, na direção certa). `node scripts/sim/calibrar.mjs
+  --teste` verde (3 asserções manuais mais 2 pontos de concordância, ajustados para incluir a
+  Centelha do alvo no piso). A regeneração final com `--n 1000` fica para o momento do commit
+  (junto com o item 2, que ainda está represado), porque regenerar agora e de novo depois que a
+  fixture do item 2e for decidida seria bateria em dobro sem necessidade.
+
+Achado à parte, sem gravidade: o helper `qex` já estava sem uso ANTES desta rodada (não é
+código que a reescrita deixou órfão); não mexi nele.
+
