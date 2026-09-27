@@ -8,7 +8,7 @@
 // peça ou wrappers locais das funções entregues ao motor.
 //
 // Uso:
-//   node scripts/sim/calibrar.mjs --n 120
+//   node scripts/sim/calibrar.mjs --n 1000
 //   node scripts/sim/calibrar.mjs --teste
 import fs from 'node:fs';
 import path from 'node:path';
@@ -24,7 +24,7 @@ const arg = (nome, padrao) => {
   const i = process.argv.indexOf(nome);
   return i >= 0 ? process.argv[i + 1] : padrao;
 };
-const N = Number.parseInt(arg('--n', '120'), 10);
+const N = Number.parseInt(arg('--n', '1000'), 10);
 const SEMENTE = Number.parseInt(arg('--semente', '20260927'), 10);
 const SAIDA = path.resolve(RAIZ, arg('--saida', 'docs/export/proezas/15-linha-de-base.md'));
 const TESTE = process.argv.includes('--teste');
@@ -33,6 +33,14 @@ const ARMADURAS = ['nenhuma', 'gambeson', 'malha'];
 const SOMAS = [6, 8, 12];
 const CENTELHAS = [0, 1, 2, 3, 4, 5, 6];
 const CS = [1, 3, 5];
+const CENARIOS = [
+  { id: 'atual', nome: 'regra atual', v1: false, absorcao: 'atual' },
+  { id: 'v1', nome: 'V1', v1: true, absorcao: 'atual' },
+  { id: 'v2', nome: 'V2', v1: false, absorcao: 'impacto' },
+  { id: 'v3', nome: 'V3', v1: false, absorcao: 'meia' },
+  { id: 'v1+v2', nome: 'V1+V2', v1: true, absorcao: 'impacto' },
+  { id: 'v1+v3', nome: 'V1+V3', v1: true, absorcao: 'meia' },
+];
 const ALAVANCAS = [
   'ataque+1', 'defesa+1', 'dano+1', 'dano+1d6', 'absorcao+1',
   'pv+1', 'pv+5', 'preparo-1', 'recuperacao-1', 'habilidade+1', 'atributo+1',
@@ -90,6 +98,13 @@ function perfilDe(opts) {
   const al = opts.alavanca;
   const pvExtra = al === 'pv+5' ? 5 : al === 'pv+1' ? 1 : 0;
   const soakExtra = al === 'absorcao+1' ? 1 : 0;
+  const cenario = opts.cenario || CENARIOS[0];
+  const soak = Object.fromEntries(Object.entries(r.soak).map(([k, v]) => {
+    let base = v;
+    if (cenario.absorcao === 'impacto' && k !== 'impacto') base -= opts.centelha;
+    if (cenario.absorcao === 'meia') base += Math.floor(opts.centelha / 2) - opts.centelha;
+    return [k, Math.max(0, base + soakExtra)];
+  }));
   return {
     nome: `S${opts.soma} C${opts.centelha}`,
     arma: r.arma, classe, velocidade,
@@ -101,17 +116,18 @@ function perfilDe(opts) {
     tipoDano: tipoDaExpressao(r.dano) || 'impacto',
     defesa: r.defesa + (al === 'defesa+1' ? 1 : 0),
     pvMax: BASE_PV + pvExtra,
-    soak: Object.fromEntries(Object.entries(r.soak).map(([k, v]) => [k, v + soakExtra])),
+    soak,
     passo: r.passo,
     alcanceHex: classe === 'haste' ? 2 : 1,
     iniciativaBase: 6 + (r.atributos.raciocinio || 0),
     raciocinio: r.atributos.raciocinio || 0,
     qa: r.qa,
     alavanca: al,
+    cenario,
   };
 }
 
-function libDaBancada({ pressaoCap = null } = {}) {
+function libDaBancada({ pressaoCap = null, cenario = CENARIOS[0] } = {}) {
   return {
     ...L0,
     decisaoAutomatica: (eu, inimigos, distancia, opts) => L0.decisaoAutomatica(
@@ -122,11 +138,20 @@ function libDaBancada({ pressaoCap = null } = {}) {
       const pressao = Math.max(d.pressao, -Math.abs(pressaoCap));
       return { ...d, pressao, total: d.acao + pressao };
     },
+    resolverGolpe: (entrada, fonte) => {
+      const s = L0.resolverGolpe(entrada, fonte);
+      if (!cenario.v1 || s.veredito !== 'acerto') return s;
+      const danoLiquido = Math.max(s.danoLiquido, entrada.danoQA);
+      return {
+        ...s,
+        danoLiquido,
+        pvDepois: entrada.alvo.pv == null ? null : Math.max(0, entrada.alvo.pv - danoLiquido),
+      };
+    },
   };
 }
 
 function ajustarAnatomia(c, a) {
-  if (c.lado !== 'a') return a;
   if (c.alavanca === 'preparo-1' && a.preparo > 0) return {
     ...a, preparo: a.preparo - 1, ciclo: Math.max(1, a.ciclo - 1),
     offs: a.offs.map((x) => Math.max(0, x - 1)),
@@ -172,11 +197,11 @@ function logCalibracao() {
   };
 }
 
-function lutaFiel(A, B, { nB = 1, pressaoCap = null, seed = 1, centelhaMult = 1 } = {}) {
+function lutaFiel(A, B, { nB = 1, pressaoCap = null, seed = 1, cenario = CENARIOS[0] } = {}) {
   const cena = cenaDe(A, B, { nB, semente: seed });
   const log = logCalibracao();
   const perdas = [];
-  const L = libDaBancada({ pressaoCap });
+  const L = libDaBancada({ pressaoCap, cenario });
   L.semear(L.semeadoDe(seed));
   const res = batalha(L, cena, log, {
     ateCair: true, teto: 1000, ajustarAnatomia,
@@ -203,14 +228,70 @@ function rodarFiel(conf, reps = N) {
   const perdas = rs.flatMap((x) => x.perdas.map((p) => p.valor));
   const resolvidas = rs.filter((x) => x.resolvida);
   const acoes = resolvidas.map((x) => x.acoesAteCair);
+  const porA = lances.filter((x) => x.de[0] === 'a');
+  const porB = lances.filter((x) => x.de[0] === 'b');
+  const direcao = (xs, pvAlvo) => {
+    const total = xs.reduce((z, x) => z + (x.danoLiquido || 0), 0);
+    const dano = xs.length ? total / xs.length : 0;
+    return { total, n: xs.length, dano, golpes: dano > 0 ? pvAlvo / dano : Infinity };
+  };
   return {
     vitoriaA: resolvidas.length ? resolvidas.filter((x) => x.venceuA).length / resolvidas.length : null,
+    vitoriasA: resolvidas.filter((x) => x.venceuA).length,
+    resolvidas: resolvidas.length,
+    total: rs.length,
     censura: 1 - resolvidas.length / rs.length,
+    lancesN: lances.length,
+    acertosN: lances.filter((x) => x.veredito === 'acerto').length,
+    raspoesN: lances.filter((x) => x.veredito === 'raspao').length,
     acerto: lances.filter((x) => x.veredito === 'acerto').length / Math.max(1, lances.length),
     raspao: lances.filter((x) => x.veredito === 'raspao').length / Math.max(1, lances.length),
     danoTentativa: lances.reduce((z, x) => z + (x.danoLiquido || 0), 0) / Math.max(1, lances.length),
     acoes: { p10: quantil(acoes, .1), p50: quantil(acoes, .5), p90: quantil(acoes, .9), media: media(acoes) },
+    _acoes: acoes,
+    dirA: direcao(porA, conf.B.pvMax),
+    dirB: direcao(porB, conf.A.pvMax),
     perdas: { media: media(perdas), p10: quantil(perdas, .1), p50: quantil(perdas, .5), p90: quantil(perdas, .9), n: perdas.length },
+  };
+}
+
+function wilson(k, n, z = 1.959964) {
+  if (!n) return { p: null, lo: null, hi: null, n };
+  const p = k / n, z2 = z * z, den = 1 + z2 / n;
+  const meio = (p + z2 / (2 * n)) / den;
+  const margem = z * Math.sqrt((p * (1 - p) + z2 / (4 * n)) / n) / den;
+  return { p, lo: meio - margem, hi: meio + margem, n };
+}
+
+function juntarDirecao(a, b, pvAlvo) {
+  const total = a.total + b.total, n = a.n + b.n;
+  const dano = n ? total / n : 0;
+  return { total, n, dano, golpes: dano > 0 ? pvAlvo / dano : Infinity };
+}
+
+function rodarEspelho(conf, reps = N) {
+  const ida = rodarFiel(conf, reps);
+  const volta = rodarFiel({ ...conf, A: conf.B, B: conf.A }, reps);
+  const vitoriasComoA = ida.vitoriasA;
+  const vitoriasComoB = volta.resolvidas - volta.vitoriasA;
+  const resolvidas = ida.resolvidas + volta.resolvidas;
+  const ic = wilson(vitoriasComoA + vitoriasComoB, resolvidas);
+  const dirA = juntarDirecao(ida.dirA, volta.dirB, conf.B.pvMax);
+  const dirB = juntarDirecao(ida.dirB, volta.dirA, conf.A.pvMax);
+  const forca = Number.isFinite(dirA.golpes) && Number.isFinite(dirB.golpes)
+    ? dirB.golpes / dirA.golpes
+    : dirA.golpes < dirB.golpes ? Infinity : dirA.golpes > dirB.golpes ? 0 : null;
+  const acoes = [...ida._acoes, ...volta._acoes];
+  const comoA = ida.resolvidas ? vitoriasComoA / ida.resolvidas : null;
+  const comoB = volta.resolvidas ? vitoriasComoB / volta.resolvidas : null;
+  return {
+    ida, volta, dirA, dirB, forca, ic,
+    vitoriaA: ic.p,
+    vies: comoA == null || comoB == null ? null : comoA - comoB,
+    censura: 1 - resolvidas / (ida.total + volta.total),
+    acerto: (ida.acertosN + volta.acertosN) / Math.max(1, ida.lancesN + volta.lancesN),
+    raspao: (ida.raspoesN + volta.raspoesN) / Math.max(1, ida.lancesN + volta.lancesN),
+    acoes: { p10: quantil(acoes, .1), p50: quantil(acoes, .5), p90: quantil(acoes, .9), media: media(acoes) },
   };
 }
 
@@ -244,7 +325,9 @@ function golpeExato(A, B, defesaPerdida = 0) {
       const distD = dd;
       const denM = denD;
       for (let d = 0; d < distD.length; d++) {
-        const liq = Math.max(0, d + da.flat - (B.soak[A.tipoDano] || 0));
+        const normal = Math.max(0, d + da.flat - (B.soak[A.tipoDano] || 0));
+        const piso = Math.max(0, A.qa.armaDano - B.qa.armaduraReducao);
+        const liq = A.cenario?.v1 ? Math.max(normal, piso) : normal;
         dano.set(liq, (dano.get(liq) || 0) + ca * Number(distD[d]) / denM);
       }
     } else if (defesa - total + 1 <= A.qa.armaBonus + B.qa.armaduraBonus) {
@@ -283,10 +366,13 @@ function mdTabela(cab, rows) {
 }
 const qs = (a) => a.p50 == null ? 'não concluiu' : `${a.p10}/${a.p50}/${a.p90}`;
 const qex = (a) => [a.p10, a.p50, a.p90].map((x) => x == null ? '>200' : x).join('/');
+const icPct = (ic) => ic.p == null ? 'n/d' : `${pct(ic.p)} [${pct(ic.lo)}; ${pct(ic.hi)}], n=${ic.n}`;
+const pp = (x) => x == null ? 'n/d' : `${(x * 100).toFixed(1).replace('.', ',')} pp`;
+const golpes = (x) => Number.isFinite(x) ? num(x) : '∞';
 
 function chave(o) { return `${o.soma}/${o.centelha}/${o.arma}/${o.armadura}`; }
-function base(soma, centelha, arma = 'espada-longa', armadura = 'gambeson', alavanca = null) {
-  return perfilDe({ soma, centelha, arma, armadura, alavanca });
+function base(soma, centelha, arma = 'espada-longa', armadura = 'gambeson', alavanca = null, cenario = CENARIOS[0]) {
+  return perfilDe({ soma, centelha, arma, armadura, alavanca, cenario });
 }
 
 function testes() {
@@ -327,16 +413,35 @@ function testes() {
     }
     assert(Math.abs(hit - ex.hit) < 1e-12 && Math.abs(qa - ex.raspao) < 1e-12 && Math.abs(dano - ex.dano) < 1e-12, `concordância S${s} C${c}`);
   }
+  const atual = base(8, 3, 'espada-longa', 'gambeson');
+  const v2 = base(8, 3, 'espada-longa', 'gambeson', null, CENARIOS[2]);
+  const v3 = base(8, 3, 'espada-longa', 'gambeson', null, CENARIOS[3]);
+  const v1 = base(8, 3, 'espada-longa', 'gambeson', null, CENARIOS[1]);
+  assert(v2.soak.impacto === atual.soak.impacto && v2.soak.corte === atual.soak.corte - 3,
+    'V2 deve preservar Impacto e retirar Centelha de Corte');
+  assert(v3.soak.corte === atual.soak.corte - 2,
+    'V3 em C3 deve trocar +3 por +1 de Centelha');
+  assert(golpeExato(v1, v1).dano >= golpeExato(atual, atual).dano,
+    'V1 não pode reduzir o dano esperado de um golpe');
+  const pv5 = juntarDirecao({ total: 100, n: 20 }, { total: 100, n: 20 }, 35);
+  assert(pv5.golpes === 7, 'golpes direcionais devem incorporar PV do alvo');
   console.log('✓ calibrar: 3 golpes manuais e 2 pontos de concordância');
 }
 
 if (TESTE) { testes(); process.exit(0); }
 
-const linhasB = [], fielCache = new Map();
-for (const soma of SOMAS) for (const centelha of CENTELHAS) for (const arma of ARMAS) for (const armadura of ARMADURAS) {
-  const A = base(soma, centelha, arma, armadura), ex = acoesExatas(A, A, 0);
-  const fi = rodarFiel({ A, B: A }, N); fielCache.set(chave({ soma, centelha, arma, armadura }), fi);
-  linhasB.push([soma, centelha, arma, armadura, pct(fi.acerto), pct(fi.raspao), num(fi.danoTentativa), qs(fi.acoes), pct(fi.censura), num(ex.dano), qex(ex)]);
+const linhasB = [], bDados = [], fielCache = new Map();
+for (const cenario of CENARIOS) for (const soma of SOMAS) for (const centelha of CENTELHAS) for (const arma of ARMAS) for (const armadura of ARMADURAS) {
+  const A = base(soma, centelha, arma, armadura, null, cenario);
+  const fi = rodarEspelho({ A, B: A, cenario }, N);
+  const dado = { cenario, soma, centelha, arma, armadura, fi };
+  bDados.push(dado);
+  fielCache.set(`${cenario.id}/${chave({ soma, centelha, arma, armadura })}`, fi);
+  linhasB.push([
+    cenario.nome, soma, centelha, arma, armadura, pct(fi.acerto), pct(fi.raspao),
+    qs(fi.acoes), pct(fi.censura), icPct(fi.ic), pp(fi.vies),
+  ]);
+  if (soma === 12 && centelha === 6 && arma === 'montante' && armadura === 'malha') console.log(`· B concluído: ${cenario.nome}`);
 }
 
 const linhasA = [];
@@ -347,10 +452,16 @@ for (const [nB, rotulo] of [[1, 'duelo'], [3, '1 contra 3']]) for (const soma of
 }
 
 const linhasC = [];
-for (const soma of SOMAS) for (let x = 0; x < 6; x++) for (const arma of ARMAS) for (const armadura of ARMADURAS) {
-  const A = base(soma, x + 1, arma, armadura), B = base(soma, x, arma, armadura);
-  const hi = rodarFiel({ A, B }, N), eq = fielCache.get(chave({ soma, centelha: x, arma, armadura }));
-  linhasC.push([soma, `${x + 1}×${x}`, arma, armadura, hi.vitoriaA == null ? 'n/d' : pct(hi.vitoriaA), pct(hi.censura), num(eq.acoes.media / hi.acoes.media)]);
+for (const cenario of CENARIOS) for (const soma of SOMAS) for (let x = 0; x < 6; x++) for (const arma of ARMAS) for (const armadura of ARMADURAS) {
+  const A = base(soma, x + 1, arma, armadura, null, cenario);
+  const B = base(soma, x, arma, armadura, null, cenario);
+  const fi = rodarEspelho({ A, B, cenario }, N);
+  linhasC.push([
+    cenario.nome, soma, `${x + 1}×${x}`, arma, armadura,
+    num(fi.dirA.dano), num(fi.dirB.dano), golpes(fi.dirA.golpes), golpes(fi.dirB.golpes),
+    num(fi.forca, 3), icPct(fi.ic), pp(fi.vies), pct(fi.censura),
+  ]);
+  if (soma === 12 && x === 5 && arma === 'montante' && armadura === 'malha') console.log(`· C concluído: ${cenario.nome}`);
 }
 
 const linhasD = [];
@@ -360,14 +471,20 @@ for (const soma of SOMAS) for (let x = 0; x < 6; x++) for (const cap of [null, 4
   linhasD.push([soma, `${x + 1}×3 de ${x}`, cap == null ? 'sem teto' : `−${cap}`, fi.vitoriaA == null ? 'n/d' : pct(fi.vitoriaA), pct(fi.censura)]);
 }
 
-const linhasE = [];
-for (const soma of SOMAS) for (const c of CS) {
-  const B = base(soma, c), ref = rodarFiel({ A: B, B }, N);
+const linhasE = [], eDados = [];
+for (const cenario of CENARIOS) for (const soma of SOMAS) for (const c of CS) {
+  const B = base(soma, c, 'espada-longa', 'gambeson', null, cenario);
   for (const al of ALAVANCAS) {
-    const A = base(soma, c, 'espada-longa', 'gambeson', al);
-    const fi = rodarFiel({ A, B }, N);
-    linhasE.push([soma, c, al, num(ref.acoes.media / fi.acoes.media, 3), fi.vitoriaA == null ? 'n/d' : pct(fi.vitoriaA), pct(fi.censura)]);
+    const A = base(soma, c, 'espada-longa', 'gambeson', al, cenario);
+    const fi = rodarEspelho({ A, B, cenario }, N);
+    eDados.push({ cenario, soma, c, al, fi });
+    linhasE.push([
+      cenario.nome, soma, c, al,
+      num(fi.dirA.dano), num(fi.dirB.dano), golpes(fi.dirA.golpes), golpes(fi.dirB.golpes),
+      num(fi.forca, 3), icPct(fi.ic), pp(fi.vies), pct(fi.censura),
+    ]);
   }
+  if (soma === 12 && c === 5) console.log(`· E concluído: ${cenario.nome}`);
 }
 
 const linhasF = [];
@@ -376,26 +493,59 @@ for (const soma of SOMAS) for (let x = 0; x < 6; x++) {
   const lo = base(soma, x), hi = base(soma, x + 1);
   lo.ataque = addExpr(lo.ataque, { flat: x }); lo.defesa += x;
   hi.ataque = addExpr(hi.ataque, { flat: x + 1 }); hi.defesa += x + 1;
-  const fi = rodarFiel({ A: hi, B: lo }, N);
-  linhasF.push([soma, `${x + 1}×${x}`, fi.vitoriaA == null ? 'n/d' : pct(fi.vitoriaA), pct(fi.censura), num(fi.acoes.media)]);
+  const fi = rodarEspelho({ A: hi, B: lo }, N);
+  linhasF.push([soma, `${x + 1}×${x}`, num(fi.forca, 3), icPct(fi.ic), pp(fi.vies), pct(fi.censura)]);
 }
 
 const divergencias = [];
 for (const soma of SOMAS) for (const c of CS) {
   const A = base(soma, c), ex0 = acoesExatas(A, A, 0), ex4 = acoesExatas(A, A, 4);
-  const fi = fielCache.get(chave({ soma, centelha: c, arma: 'espada-longa', armadura: 'gambeson' }));
-  divergencias.push([soma, c, num(ex0.dano), num(ex4.dano), num(fi.danoTentativa), `${ex0.p50 ?? '>200'}/${ex4.p50 ?? '>200'}/${fi.acoes.p50 ?? 'cens.'}`, pct(fi.censura), num(fi.perdas.media)]);
+  const fi = fielCache.get(`atual/${chave({ soma, centelha: c, arma: 'espada-longa', armadura: 'gambeson' })}`);
+  divergencias.push([soma, c, num(ex0.dano), num(ex4.dano), num(fi.dirA.dano), `${ex0.p50 ?? '>200'}/${ex4.p50 ?? '>200'}/${fi.acoes.p50 ?? 'cens.'}`, pct(fi.censura)]);
 }
+
+const linhasResumo = [];
+for (const cenario of CENARIOS) {
+  const duracao = (arma) => CENTELHAS.map((c) => {
+    const fi = bDados.find((x) => x.cenario.id === cenario.id && x.soma === 8 && x.centelha === c && x.arma === arma && x.armadura === 'gambeson').fi;
+    return `C${c} ${fi.acoes.p50 ?? 'n/c'}${fi.censura ? ` (${pct(fi.censura)} cens.)` : ''}`;
+  }).join('; ');
+  const malhas = bDados.filter((x) => x.cenario.id === cenario.id && x.arma === 'espada-longa' && x.armadura === 'malha');
+  const pior = Math.max(...malhas.map((x) => x.fi.censura));
+  linhasResumo.push([cenario.nome, duracao('espada-longa'), duracao('montante'), pct(pior)]);
+}
+
+const linhasMonotonia = CENARIOS.map((cenario) => {
+  const xs = eDados.filter((x) => x.cenario.id === cenario.id && x.al === 'ataque+1');
+  const ruins = xs.filter((x) => !(x.fi.forca > 1));
+  return [cenario.nome, ruins.length ? 'não' : 'sim', `${xs.length - ruins.length}/${xs.length}`, ruins.length ? ruins.map((x) => `S${x.soma} C${x.c}`).join(', ') : 'nenhuma'];
+});
 
 const md = `# 15 · Linha de base do combate no motor real
 
-27/09/2026 · **MEDIÇÃO**, sem mudança de regra. ${N} lutas por célula fiel, semente mestre ${SEMENTE}. A camada rápida enumera exatamente as distribuições de d6; a fiel usa \`motor.mjs\`, \`lance.ts\` e as fórmulas de \`calc.ts\` trazidas por \`lib-ponte.mjs\`.
+27/09/2026 · **RASCUNHO DE MEDIÇÃO**, sem mudança de regra. Nada deste relatório vale para preço antes da conferência da Revisora. ${N} lutas em cada orientação de cada célula, semente mestre ${SEMENTE}.
+
+## Resumo para a Revisora
+
+A regra atual acrescenta a Centelha à Absorção de todos os tipos. V1 mantém essa Absorção, mas impede que um acerto cause menos dano que o raspão do mesmo encontro. V2 mantém a Absorção inteira da Centelha apenas contra Impacto. V3 mantém os três tipos, mas acrescenta somente 1 ponto a cada 2 de Centelha. Como V2 e V3 dão destinos alternativos à mesma parcela, não existe cenário V2+V3; as combinações válidas são V1+V2 e V1+V3.
+
+“Imunidade” nesta página significa uma luta que não terminou em 1.000 Ticks, não invulnerabilidade matemática. A última coluna mostra a maior censura observada com espada longa contra malha em qualquer soma e Centelha. A duração usa a ficha intermediária, soma 8 e gambeson; cada célula contém ${2 * N} lutas, metade em cada orientação.
+
+${mdTabela(['cenário', 'mediana espada por C', 'mediana montante por C', 'pior espada×malha'], linhasResumo)}
+
+O teste de monotonicidade abaixo usa a nova força direcional. “Sim” exige que +1 Ataque reduza os golpes necessários de A em todas as nove células de soma 6/8/12 e Centelha 1/3/5.
+
+${mdTabela(['cenário', '+1 Ataque sempre positivo?', 'células positivas', 'falhas'], linhasMonotonia)}
 
 ## 1. Método e limites
 
 Fichas sem Proezas: soma 6/8/12 dividida igualmente entre Atributo e Habilidade; Vigor 3; mesma ficha em C0–C6. A espada longa ocupa uma mão, com adaga inativa na outra apenas para acionar a fórmula viva de uma mão; Montante usa duas. Armadura nenhuma/Gambeson/Malha. Todos começam adjacentes; a luta vai até um lado cair, sem fuga ou desistência automáticas. Empate de iniciativa varia pela semente.
 
-Camada exata: Defesa cheia e golpes independentes, mas preserva pool, paridade, Acerto da arma, Margens, Quase-Acerto, dano e Absorção. Ela não modela P/G/R, Pressão, ferimentos, iniciativa ou simultaneidade. “Ações” nela são tentativas do atacante. Camada fiel: todas essas regras operam; “ações até cair” contam golpes do lado que derrubou o oponente.
+Camada exata: Defesa cheia e golpes independentes, mas preserva pool, paridade, Acerto da arma, Margens, Quase-Acerto, dano e Absorção. Ela não modela P/G/R, Pressão, ferimentos, iniciativa ou simultaneidade. Camada fiel: todas essas regras operam. “Ações até cair” mede duração e aparece apenas como duração, nunca como força.
+
+Cada duelo roda duas bancadas: A no lado \`a\` e A no lado \`b\`. A chance publicada reúne as duas orientações e traz intervalo de confiança de Wilson de 95%. O viés é a chance de A vencer no lado \`a\` menos a chance de vencer no lado \`b\`. Lutas censuradas ficam fora da chance, mas sua fração é publicada.
+
+A força direcional usa todos os golpes das mesmas lutas espelhadas. Para cada direção, dano médio é dano líquido total dividido pelas tentativas daquela direção; golpes necessários são PV iniciais do alvo divididos por esse dano médio. Força relativa = golpes que B precisa para derrubar A divididos pelos golpes que A precisa para derrubar B. Valor 1 é igualdade; acima de 1 favorece A.
 
 Os documentos pedidos existem nesta árvore em \`docs/export/proezas/chatgpt/09-inventario-calculos.md\` e \`14-levantamento-pesos.md\`; os caminhos sem \`chatgpt/\` estavam ausentes durante a execução. O primeiro também aparecia removido por outra frente, e não foi restaurado.
 
@@ -405,17 +555,15 @@ Valores são módulos positivos da perda total P/G/R + Pressão observada na ent
 
 ${mdTabela(['formato', 'soma', 'C', 'média', 'p10/p50/p90', 'golpes'], linhasA)}
 
-## 3. B · Linha de base entre iguais
+## 3. B · Linha de base entre iguais e variantes
 
-Colunas finais “ex.” são a camada rápida com Defesa cheia.
+${mdTabela(['cenário', 'soma', 'C', 'arma', 'armadura', 'acerto', 'raspão', 'ações p10/p50/p90', 'censura', 'vitória A, IC95%', 'viés'], linhasB)}
 
-${mdTabela(['soma', 'C', 'arma', 'armadura', 'acerto fiel', 'raspão fiel', 'dano/tent.', 'ações p10/p50/p90', 'censura', 'dano ex.', 'ações ex.'], linhasB)}
+## 4. C · Degrau automático de Centelha e variantes
 
-## 4. C · Degrau automático de Centelha
+A é X+1; B é X. Dano e golpes necessários são direcionais e vêm das mesmas lutas.
 
-Razão de ações = média para derrubar o igual C=X dividida pela média de X+1 para derrubar X. Acima de 1 favorece X+1.
-
-${mdTabela(['soma', 'confronto', 'arma', 'armadura', 'vitória X+1', 'censura', 'razão ações'], linhasC)}
+${mdTabela(['cenário', 'soma', 'confronto', 'arma', 'armadura', 'dano A→B', 'dano B→A', 'golpes A→B', 'golpes B→A', 'força relativa', 'vitória A, IC95%', 'viés', 'censura'], linhasC)}
 
 ## 5. D · Um contra três e Pressão
 
@@ -423,21 +571,21 @@ Equipamento de referência: espada longa e gambeson.
 
 ${mdTabela(['soma', 'confronto', 'Pressão', 'vitória do único', 'censura'], linhasD)}
 
-## 6. E · Valor marginal das alavancas
+## 6. E · Valor marginal das alavancas e variantes
 
-Centelha 1/3/5; espada longa e gambeson. Razão de ações = igual sem modificação dividido pela peça modificada. O valor de +1 Atributo segue a arma: Destreza na espada, Força no Montante; nesta tabela usa Destreza. +1 Habilidade altera Armas. Ticks alteram somente a anatomia da peça modificada.
+Centelha 1/3/5; espada longa e gambeson. A é a peça modificada; B é a ficha igual sem modificação. O valor de +1 Atributo usa Destreza. +1 Habilidade altera Armas. Ticks alteram somente a anatomia da peça modificada.
 
-${mdTabela(['soma', 'C', 'alavanca', 'razão ações', 'vitória modificada', 'censura'], linhasE)}
+${mdTabela(['cenário', 'soma', 'C', 'alavanca', 'dano A→B', 'dano B→A', 'golpes A→B', 'golpes B→A', 'força relativa', 'vitória A, IC95%', 'viés', 'censura'], linhasE)}
 
 ## 7. F · Variante D7, +2 por Centelha
 
 Variante injetada como +C adicional em ataque e Defesa, além do +C vivo. Equipamento de referência: espada longa e gambeson.
 
-${mdTabela(['soma', 'confronto', 'vitória X+1', 'censura', 'ações médias'], linhasF)}
+${mdTabela(['soma', 'confronto', 'força relativa', 'vitória X+1, IC95%', 'viés', 'censura'], linhasF)}
 
 ## 8. Onde as camadas divergem
 
-${mdTabela(['soma', 'C', 'dano ex. DV0', 'dano ex. DV4', 'dano fiel', 'ações p50 ex0/ex4/fiel', 'censura', 'perda fiel média'], divergencias)}
+${mdTabela(['soma', 'C', 'dano ex. DV0', 'dano ex. DV4', 'dano fiel', 'ações p50 ex0/ex4/fiel', 'censura'], divergencias)}
 
 A camada exata com Defesa cheia subestima acerto e dano sempre que a perda real é negativa. Usar perda fixa 4 aproxima alguns pontos, mas apaga a distribuição, a escalada de Pressão, o momento do ciclo e o ferimento. “Censura” é a fração que não chegou a uma queda em 1.000 Ticks; essas lutas não entram nos percentis nem são contadas como derrota. A camada rápida serve para varrer direção e ordenar alavancas; níveis finais precisam dos pontos fiéis.
 
@@ -447,13 +595,14 @@ A camada exata com Defesa cheia subestima acerto e dano sempre que a perda real 
 - Há células em que a espada longa não atravessa a combinação de Absorção e Quase-Acerto o bastante para encerrar a luta. A censura é resultado, não zero nem derrota.
 - Aumentar Ataque ou Habilidade pode reduzir a chance de vitória em certas células: um raspão causa dano fixo ignorando Absorção, enquanto um acerto fraco sofre Absorção e pode causar zero. O simulador preserva essa descontinuidade da regra viva; a Revisora deve confirmar que ela é intencional antes de usar a alavanca de ataque como moeda monotônica.
 - +1d6 de dano foi muito mais forte que +1 fixo nas células de referência. A razão varia com Absorção, portanto não existe conversão universal entre dado e ponto.
-- As razões de ações com censura ou baixa resolução não servem para precificar. Estão publicadas para localizar a falha da métrica, não para interpolar nível.
+- A antiga razão pela contagem de golpes do vencedor foi removida. Ela media duração da luta e podia dizer que +5 PV enfraquecia uma peça que vencia mais.
 
 ## 9. Procedência e conferência
 
 - \`node scripts/sim/calibrar.mjs --teste\`: três golpes determinísticos conferidos contra \`resolverGolpe\` (erro, raspão, acerto com Margem) e dois pontos de distribuição em que a camada rápida e o resolvedor usado pela camada fiel concordam exatamente, por enumeração direta através de \`lance.ts\`.
-- \`node scripts/sim/calibrar.mjs --n ${N}\`: comando desta medição.
+- \`node scripts/sim/calibrar.mjs --n ${N}\`: comando desta medição; cada célula de duelo executa ${N} lutas por orientação.
 - Pressão sem teto é a regra viva; −4 e −6 são somente variantes locais.
+- V1, V2 e V3 são cenários locais da bancada. Nenhum deles altera \`calc.ts\`, \`lance.ts\` ou os dados do jogo.
 - Nenhum valor de Proeza foi aplicado e nenhum catálogo foi modificado.
 
 **Parada:** esta é a linha de base para revisão do simulador. As taxas de câmbio não devem ser decididas antes da conferência da Revisora.
