@@ -86,11 +86,11 @@ Espada Longa de uma mão: 1d6+Força, Acerto +1, 6 Ticks. O personagem usa Preci
 |---|---|---:|---:|---:|---:|
 | 0 | 2d6+1 | 41.67% | 5.5 | 5.5 | 2.292 |
 | 1 | 3d6+5 | 74.07% | 6.5 | 10 | 6.493 |
-| 2 | 3d6+10 | 90.74% | 7.5 | 13 | 9.495 |
-| 3 | 4d6+14 | 97.30% | 8.5 | 15.5 | 11.909 |
-| 4 | 5d6+15 | 98.38% | 8.5 | 19 | 14.347 |
-| 5 | 5d6+21 | 99.92% | 9.5 | 23.5 | 18.740 |
-| 6 | 6d6+22 | 99.94% | 9.5 | 27 | 21.117 |
+| 2 | 3d6+11 | 95.37% | 7.5 | 13 | 10.398 |
+| 3 | 4d6+15 | 98.84% | 8.5 | 15.5 | 12.612 |
+| 4 | 5d6+17 | 99.73% | 8.5 | 19 | 15.640 |
+| 5 | 5d6+23 | 100.00% | 9.5 | 23.5 | 19.917 |
+| 6 | 6d6+25 | 100.00% | 9.5 | 27 | 22.875 |
 
 “Golpe” é um acerto sem Margem antes de Absorção. Última coluna é valor esperado **por tentativa**, incluindo falhas e Margens; não é o denominador usado na fração de Absorção do 02. A probabilidade elevada no topo é consequência explícita de bônus de ataque crescente e defesas limitadas, não uma garantia de equilíbrio.
 

@@ -2,7 +2,7 @@
 
 ## Decisões vigentes · 05 revisto após segunda opinião
 
-26/09/2026. Esta seção prevalece sobre o histórico abaixo em caso de conflito. **A1–A5 decididas pelo autor; G15 proposta pendente.** A nova `01-regua.md` incorpora as decisões e é entregue para revisão, sem iniciar lotes. A1a/A1b, acumulação geral e +18 deixaram de ser opções abertas.
+26/09/2026. Esta seção prevalece sobre o histórico abaixo em caso de conflito. **A1–A5 decididas pelo autor; G15 proposta pendente.** A nova `01-regua.md` incorpora as decisões e é entregue para revisão, sem iniciar lotes. A1a/A1b e acumulação geral foram descartadas; +18 foi aprovado na atualização posterior de A3.
 
 Permanece a escrita somente em `docs/export/proezas/chatgpt/`. A implementação/ocultação de Fôlego está sob responsabilidade da equipe normal; esta frente não volta a alterar seus arquivos.
 
@@ -18,7 +18,11 @@ Unidade: +5 de bônus desloca um degrau de D. Conferência: 6d6>D20, 6d6+5>D25 e
 
 ### A3 · Escala total aprovada
 
-**DECISÃO:** `5N/2`, metades arredondadas para cima: **3,5,8,10,13,15**. Totais substitutivos, um degrau de D a cada dois níveis. Mestre N6 contra D30: 90,3528%. Escala para jogadas; Longas tratadas em G15. Não transplantar automaticamente para Absorção/dano/parâmetros.
+**DECISÃO ATUALIZADA DO AUTOR:** `B(N)=3N`, **3/6/9/12/15/18**, total substitutivo por família e escopo. Substitui 3/5/8/10/13/15; a alternativa 0/5/5/10/10/15 não foi adotada. Motivo expresso: jogadores devem sentir progressão em todos os níveis, inclusive ímpares. N é nível comprado da Técnica, com Centelha≥N; não há upgrade automático só por aumentar Centelha. Escala para jogadas, sem transplante para dano, Absorção ou Longas.
+
+**Diretriz do autor:** buscar balanceamento do aumento em relação a 0/5/5/10/10/15 por calibração conjunta com itens, magias, artefatos e demais bônus. Nenhum ajuste específico foi aprovado; não presumir reduções, novos limites de acumulação ou aumento geral de Dificuldade. Manter escrita na pasta autorizada, sem implementação ou lotes.
+
+**CONFERÊNCIA:** soma 9 com +18 supera D30 em 84,1049%; soma 12 em 98,0324%. A3 muda, enquanto substituição e preços permanecem.
 
 A nova régua reúne a comparação com a escala atual em uma tabela, para somas 6/9/12 contra D10 a D30. A fonte viva não foi modificada.
 
@@ -26,7 +30,7 @@ A nova régua reúne a comparação com a escala atual em uma tabela, para somas
 
 **DECISÃO:** evolução marcada paga diferença; capacidade independente paga inteira. Preservar preços base 10/15/20/25/30/35. Comparar com Habilidade primária 3→4, 12 XP ([src/data/regras.json:570](C:/Users/Neves/ClaudeCode/centelha/rpg-system/src/data/regras.json:570)).
 
-**CONFERÊNCIA:** o ganho de média por ponto é +2 ou +1,5 conforme a paridade; +1,75 é comparador médio. `12/1,75=6,8571`, aproximadamente 7 XP/+1. A régua separa eficiência marginal/total, escopo e compras independentes. N3/N5 da evolução são maiores alertas de preço baixo; escopo raro ou compra inteira sem evolução podem torná-la cara. Diagnósticos condicionais, sem alterar preço nem marcar evoluções no catálogo.
+**CONFERÊNCIA:** o ganho de média por ponto é +2 ou +1,5 conforme a paridade; +1,75 é comparador médio. `12/1,75=6,8571`, aproximadamente 7 XP/+1. A régua separa eficiência marginal/total, escopo e compras independentes. Todas as evoluções marcadas N2–N6 agora custam 1,67 XP por +1 e são alertas de preço baixo; escopo raro ou compra inteira sem evolução podem torná-la cara. Diagnósticos condicionais, sem alterar preço nem marcar evoluções no catálogo.
 
 ### A5 · Quatro personagens, conferido
 
@@ -36,9 +40,7 @@ Não há divergência entre essas referências atuais; a parada condicional dest
 
 ### G15 · Proposta do autor, ainda pendente
 
-**PROPOSTA PENDENTE:** Proeza aplicável soma seu nível, +1 a +6, à Longa, não a escala inteira. Motivo: Mestre contra D20 avançaria de 1 a 16 com +15, multiplicando produção por 16.
-
-A nova régua mostra somas 9/12 contra D15/D20, N0–N6. Com +6, Mestre contra D20 avança 7, ainda ×7: consequência explicitada, sem aprovar proposta nem reformar economia. Não dar +N oculto a toda Técnica qualitativa.
+**PROPOSTA PENDENTE:** Proeza aplicável soma seu nível, +1 a +6, à Longa, não a escala inteira. A correção econômica da seção 5 da régua substitui o argumento local de ×16/×7: pela melhor faixa de renda, Mestre sem Proeza rende 668,57 pc/semana; com +6, 1.069,71 (×1,6); com +15, 1.671,43 (×2,5). A comparação +15 é histórica; com o novo teto +18 seriam 1.872,00 (×2,8). A decisão de bônus em jogada não aprova G15 nem modifica a economia.
 
 ### 06 · Direção aprovada; primeira etapa mínima
 
