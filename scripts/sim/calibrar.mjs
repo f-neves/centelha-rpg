@@ -26,7 +26,7 @@ const arg = (nome, padrao) => {
 };
 const N = Number.parseInt(arg('--n', '1000'), 10);
 const SEMENTE = Number.parseInt(arg('--semente', '20260927'), 10);
-const SAIDA = path.resolve(RAIZ, arg('--saida', 'docs/export/proezas/15-linha-de-base.md'));
+const SAIDA = path.resolve(RAIZ, arg('--saida', 'docs/export/proezas/chatgpt/centelha/15-linha-de-base.md'));
 const TESTE = process.argv.includes('--teste');
 const ARMAS = ['espada-longa', 'montante'];
 const ARMADURAS = ['nenhuma', 'gambeson', 'malha'];
@@ -533,6 +533,13 @@ A regra atual acrescenta a Centelha à Absorção de todos os tipos. V1 mantém 
 
 ${mdTabela(['cenário', 'mediana espada por C', 'mediana montante por C', 'pior espada×malha'], linhasResumo)}
 
+- Regra atual: há imunidade prática; em algumas células, nenhuma das 2.000 lutas terminou.
+- V1: encurta a espada contra gambeson e torna +1 Ataque monotônico, mas não elimina a imunidade contra malha porque o dano do próprio raspão pode ser zero depois da redução de Quase-Acerto da armadura.
+- V2: elimina a censura observada da espada contra malha e torna +1 Ataque monotônico nas nove células verificadas.
+- V3: reduz a duração, mas ainda deixa células com 100% de censura; também não torna +1 Ataque sempre positivo.
+- V1+V2: reúne lutas curtas, ausência de censura observada e monotonicidade de +1 Ataque.
+- V1+V3: melhora a duração e a monotonicidade, mas preserva células de imunidade prática.
+
 O teste de monotonicidade abaixo usa a nova força direcional. “Sim” exige que +1 Ataque reduza os golpes necessários de A em todas as nove células de soma 6/8/12 e Centelha 1/3/5.
 
 ${mdTabela(['cenário', '+1 Ataque sempre positivo?', 'células positivas', 'falhas'], linhasMonotonia)}
@@ -547,7 +554,7 @@ Cada duelo roda duas bancadas: A no lado \`a\` e A no lado \`b\`. A chance publi
 
 A força direcional usa todos os golpes das mesmas lutas espelhadas. Para cada direção, dano médio é dano líquido total dividido pelas tentativas daquela direção; golpes necessários são PV iniciais do alvo divididos por esse dano médio. Força relativa = golpes que B precisa para derrubar A divididos pelos golpes que A precisa para derrubar B. Valor 1 é igualdade; acima de 1 favorece A.
 
-Os documentos pedidos existem nesta árvore em \`docs/export/proezas/chatgpt/09-inventario-calculos.md\` e \`14-levantamento-pesos.md\`; os caminhos sem \`chatgpt/\` estavam ausentes durante a execução. O primeiro também aparecia removido por outra frente, e não foi restaurado.
+Os documentos de referência usados estão em \`docs/export/proezas/chatgpt/centelha/09-inventario-calculos.md\` e \`14-levantamento-pesos.md\`.
 
 ## 2. A · Defesa perdida no golpe
 
