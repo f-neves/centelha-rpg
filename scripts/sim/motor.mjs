@@ -162,7 +162,7 @@ export function batalha(L, cena, log, opts = {}) {
       // no ar, trajeto em curso.
       if ((c.tick ?? 0) > T) continue;
       if (L.golpesNoAr(c.acao).length || c.acao?.mov) continue;
-      declarar(L, c, cena, log, T, inimigosDe);
+      declarar(L, c, cena, log, T, inimigosDe, opts);
     }
 
     // ---- fase 3 · o retrato, no ponto em que a mesa despeja ----
@@ -183,7 +183,7 @@ export function batalha(L, cena, log, opts = {}) {
     // ---- fase 5 · o fim ----
     // `semFim` é do espelho: a mesa não tem fim de cena, e comparar um laço que
     // para com um que não para trunca a comparação no melhor pedaço.
-    if (!opts.semFim) fim = fimDaCena(pecas, T);
+    if (!opts.semFim) fim = fimDaCena(pecas, T, opts);
     log.fimDoTick(T, pecas);
   }
 
@@ -215,7 +215,7 @@ const naOrdem = (c) => ({
  * em vez de uma minha é o que impede o resultado de ser sobre o robô que eu
  * inventei (risco F1).
  */
-function declarar(L, c, cena, log, T, inimigosDe) {
+function declarar(L, c, cena, log, T, inimigosDe, opts = {}) {
   const inimigos = inimigosDe(c);
   if (!inimigos.length) return;
 
@@ -273,10 +273,13 @@ function declarar(L, c, cena, log, T, inimigosDe) {
   const viagem = L.ticksDeViagem(faltaHex * cena.escala, porTick);
 
   // PARADA iii · a anatomia e a agenda são aritmética pura.
-  const an = L.anatomia({
+  let an = L.anatomia({
     classe: c.classe, velocidade: c.velocidade, sistema: 'simultaneo',
     manobra: c.manobra,
   });
+  // Gancho inerte por padrão para bancadas aplicarem modificadores à peça sem
+  // alterar a tabela de anatomia nem envolver a função para os dois lados.
+  if (opts.ajustarAnatomia) an = opts.ajustarAnatomia(c, an);
   const ag = L.agendaSimultanea(T, an, viagem);
   const aid = `${c.id}-t${T}-${(c.seq = (c.seq || 0) + 1)}`;
   let acao = L.declarar(T, an, {
@@ -475,10 +478,14 @@ function fonteDaMesa(L, entrada) {
  * do laço que o espelho não tem como comparar, e está na lista do que ele não
  * prova.
  */
-function fimDaCena(pecas, T) {
+function fimDaCena(pecas, T, opts = {}) {
   const vivos = (lado) => pecas.filter((c) => c.lado === lado && c.pv > 0 && !c.desistiu);
   const a = vivos('a'), b = vivos('b');
   if (!a.length || !b.length) return 'sem-ninguem-de-pe';
+  // Bancadas de letalidade precisam acompanhar a luta até alguém cair. Isto
+  // não muda a política da mesa: é uma opção explícita do chamador, desligada
+  // por padrão, que remove somente os dois finais automáticos do harness.
+  if (opts.ateCair) return null;
   for (const lado of ['a', 'b']) {
     const v = vivos(lado);
     if (v.length && v.every((c) => c.pv / c.pvMax < 0.2)) {
