@@ -117,7 +117,7 @@ Estes se ajustam sozinhos, porque leem o `base` em vez de escrevê-lo. **Mexer n
 que seria erro.**
 
 - **`import.meta.env.BASE_URL`, em 15 lugares** (`src/lib/site.ts:3`, `mesa-core.ts:20`,
-  `ficha-card.ts:24` (`BASE_URL`), `Base.astro:369` (`BASE_URL`), `bestiario.astro:671` (`BASE_URL`), `conta.astro:37` (`BASE_URL`),
+  `ficha-card.ts:24` (`BASE_URL`), `Base.astro:369` (`BASE_URL`), `bestiario.astro:680` (`BASE_URL`), `conta.astro:37` (`BASE_URL`),
   `entrar.astro:68` (`BASE_URL`), `mesas.astro:78` (`BASE_URL`), `personagem.astro:123` (`BASE_URL`), `admin.astro:25` (`BASE_URL`),
   `marcadores.astro:14` (`BASE_URL`), `redefinir-senha.astro:31` (`BASE_URL`), `configuracoes.astro:407` (`BASE_URL`),
   `ArvoreTecnicas.astro:41` (`BASE_URL`), `Referencias.astro:11` (`BASE_URL`), `BestiaEditor.astro:455` (`BASE_URL`).

@@ -605,8 +605,13 @@ const opcoesEditor = {
   const lbCap = document.getElementById('lb-cap') as HTMLElement;
   function abrir(src: string, nome: string) { lbImg.src = src; lbImg.alt = `Ilustração de ${nome}`; lbCap.textContent = nome; lb.hidden = false; document.body.style.overflow = 'hidden'; }
   function fechar() { lb.hidden = true; lbImg.src = ''; document.body.style.overflow = ''; }
-  document.querySelectorAll<HTMLImageElement>('.arte img[data-full]').forEach((im) => {
-    im.addEventListener('click', () => abrir(im.dataset.full!, im.dataset.nome || ''));
+  // Delegado na lista, e não um addEventListener por imagem: as fichas além das
+  // 40 iniciais nascem dentro de <template> e só entram no DOM aos poucos
+  // (montarAosPoucos, depois deste bloco rodar), então ligar o clique uma vez só
+  // aqui deixava a arte delas sem lightbox. Delegar cobre a que ainda não existe.
+  list.addEventListener('click', (e) => {
+    const im = (e.target as HTMLElement).closest<HTMLImageElement>('.arte img[data-full]');
+    if (im) abrir(im.dataset.full!, im.dataset.nome || '');
   });
   lb.addEventListener('click', (e) => { if (e.target === lb || (e.target as HTMLElement).classList.contains('lb-fechar')) fechar(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) fechar(); });
@@ -635,11 +640,13 @@ const opcoesEditor = {
   function fecharInfo() { ib.hidden = true; ibBody.replaceChildren(); document.body.style.overflow = ''; }
   // :not(.besta-editar) — o botão de editar compartilha o estilo .besta-info mas abre
   // OUTRO modal (BestiaEditor). Sem isto, um clique abria os dois empilhados.
-  document.querySelectorAll<HTMLButtonElement>('.besta-foot .besta-info:not(.besta-editar)').forEach((b) => {
-    b.addEventListener('click', () => {
-      const card = b.closest('.besta') as HTMLElement;
-      if (card) abrirModal(card, b.classList.contains('besta-mech') ? '.mech-tpl' : '.lore-tpl');
-    });
+  // Delegado pelo mesmo motivo do lightbox acima: fichas adiadas ainda não existem
+  // quando este bloco roda.
+  list.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest<HTMLButtonElement>('.besta-foot .besta-info:not(.besta-editar)');
+    if (!b) return;
+    const card = b.closest('.besta') as HTMLElement;
+    if (card) abrirModal(card, b.classList.contains('besta-mech') ? '.mech-tpl' : '.lore-tpl');
   });
   ib.addEventListener('click', (e) => { if (e.target === ib || (e.target as HTMLElement).classList.contains('ib-fechar')) fecharInfo(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !ib.hidden) fecharInfo(); });
