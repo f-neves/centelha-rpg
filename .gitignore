@@ -81,14 +81,11 @@ Thumbs.db
 # o modelo do Vosk (voz-bench.html): 31 MB, nao versionado, cada maquina baixa o seu
 voz-bench-modelo/
 
-# material de exportação para avaliação externa das Proezas (26/09/2026, revisto 27/09/2026):
-# nasceu como saída derivada e regenerável, fora do git. Desde que passou a acumular decisões do
-# autor e resultado de simulação (a régua 3N, o inventário de cálculos, a bancada de calibração),
-# `chatgpt/` virou histórico que não se regenera sozinho, e por decisão do autor É VERSIONADA.
-# Só o que ficar solto direto em `proezas/`, fora de `chatgpt/`, continua de fora (cópia de
-# trabalho de sessão, pelo motivo original).
+# material de exportação para avaliação externa das Proezas: cópia de trabalho de sessão,
+# regenerável, fica fora do git. O que virou histórico versionado (a régua 3N, o inventário de
+# cálculos, a bancada de calibração) mudou de casa em 27/09/2026 para `docs/calibracao/`, que
+# não está sob este ignore.
 docs/export/proezas/*
-!docs/export/proezas/chatgpt/
 
 # o modelo do Vosk para o GRID: VERSIONADO desde 11/09/2026 (VOZ.md 10.2, decisao 14).
 # Nao esta mais ignorado, e e de proposito: o deploy monta o dist/ do que esta no

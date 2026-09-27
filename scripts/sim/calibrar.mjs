@@ -26,7 +26,7 @@ const arg = (nome, padrao) => {
 };
 const N = Number.parseInt(arg('--n', '1000'), 10);
 const SEMENTE = Number.parseInt(arg('--semente', '20260927'), 10);
-const SAIDA = path.resolve(RAIZ, arg('--saida', 'docs/export/proezas/chatgpt/centelha/15-linha-de-base.md'));
+const SAIDA = path.resolve(RAIZ, arg('--saida', 'docs/calibracao/15-linha-de-base.md'));
 const TESTE = process.argv.includes('--teste');
 const ARMAS = ['espada-longa', 'montante'];
 const ARMADURAS = ['nenhuma', 'gambeson', 'malha'];
@@ -554,7 +554,7 @@ Cada duelo roda duas bancadas: A no lado \`a\` e A no lado \`b\`. A chance publi
 
 A força direcional usa todos os golpes das mesmas lutas espelhadas. Para cada direção, dano médio é dano líquido total dividido pelas tentativas daquela direção; golpes necessários são PV iniciais do alvo divididos por esse dano médio. Força relativa = golpes que B precisa para derrubar A divididos pelos golpes que A precisa para derrubar B. Valor 1 é igualdade; acima de 1 favorece A.
 
-Os documentos de referência usados estão em \`docs/export/proezas/chatgpt/centelha/09-inventario-calculos.md\` e \`14-levantamento-pesos.md\`.
+Os documentos de referência usados estão em \`docs/calibracao/09-inventario-calculos.md\` e \`14-levantamento-pesos.md\`.
 
 ## 2. A · Defesa perdida no golpe
 

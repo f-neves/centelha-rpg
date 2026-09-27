@@ -39,7 +39,7 @@ Detalhe em `Proezas_revisao.md`.
   dá "+2". O caso é o mesmo do D2 (o doc ficou na régua velha), mas a Técnica pesa direto no
   ganho por ofício e pede confirmação antes de mexer.
 - [ ] **D9 · [ADIADO] [FAZER] Esquiva Impossível: marcar `pendente: true`.** Decisão do autor
-  (26/09/2026, análise externa via ChatGPT desktop, `docs/export/proezas/chatgpt/
+  (26/09/2026, análise externa via ChatGPT desktop, `docs/calibracao/discussao/
   decisoes-entendimento.md`, item 3a): `esquiva-impossivel` (`tecnicas.json`) fica sem efeito
   determinável (não inventar a partir do nome, nível ou custo), e a Técnica deve virar
   `pendente: true` só DEPOIS que a régua (a recalibração de custo/nível das Técnicas, item D6)
