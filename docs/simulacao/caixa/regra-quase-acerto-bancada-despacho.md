@@ -119,6 +119,34 @@ junto com este pedido (ver conferência do item 1c abaixo).
 - **Item 4, os 5 pontos do clamp**: corrija todos, não só o de `motor.mjs`. Cheque se algum
   deles é lido por um teste/fixture que espera 0 explicitamente (para não quebrar um teste que
   está certo sobre outra coisa).
+- **Item 4b, acrescentado pelo autor em 27/09/2026, depois de você relatar o sexto ponto**:
+  o clamp em `supabase/migracao-22.sql:146` (`jogador_dano`, `pv_atual = greatest(0, ...)`) NÃO
+  fica como pendência. É o valor gravado da Vida dos jogadores na mesa real; sem corrigi-lo, a
+  Vida negativa do item 4 não vale fora do simulador. Escreva uma migração NOVA (não edite a
+  22; a última existente é `migracao-39.sql`, então esta é `supabase/migracao-40.sql`) trocando
+  o piso de `0` pelo limite de morte M-21 (`−PV máximo ÷ 2`, com o arredondamento por Centelha
+  de `regras.json` "morte": `limiteDivisor`/`limiteArredonda`, já implementado em TypeScript por
+  `limiteDaMorte()` em `src/lib/calc.ts:69-79`, que é a fonte da fórmula: a migração replica a
+  mesma conta em PL/pgSQL).
+  - **Conferência prévia (Arquiteto)**: confirmei que `public.combatentes` (criada em
+    `migracao-2.sql:128-142`) **não tem coluna `centelha`** e nenhuma migração posterior
+    acrescenta uma; a Centelha de cada peça é hoje só um valor calculado no cliente
+    (`PERFIL[cid]?.centelha` em `grid.astro`, vindo da ficha ou do bestiário), nunca gravado no
+    banco. Isso significa que a RPC `jogador_dano`, rodando no servidor, HOJE não tem como saber
+    a Centelha da peça que está tomando dano para aplicar o arredondamento certo do M-21c.
+  - **Se isso for o obstáculo, é exatamente o caso do "relate como aplicar/testar" do autor**: não
+    invente um jeito de contornar (nem adicionar coluna nova, nem mudar o contrato da RPC) por
+    conta própria. Descreva no relato as opções que você vir (por exemplo: acrescentar coluna
+    `centelha` em `combatentes`, populada quando a peça entra no tabuleiro pelas funções que já
+    inserem linha ali; ou passar a Centelha como parâmetro extra de `jogador_dano`, já que o
+    cliente já a conhece e ela não é informação escondida como `pv_atual` é) e deixe a escolha
+    para o autor.
+  - **O que TEM para testar localmente**: a fórmula em si (mesmo teste que valida
+    `limiteDaMorte()` do lado TypeScript, replicado como asserção SQL se der, ou como comentário
+    de prova no arquivo da migração). **O que NÃO dá para testar localmente**: aplicar a
+    migração contra o banco de produção do Supabase (não há acesso de escrita daqui): relate os
+    passos exatos (SQL Editor, ordem, o que conferir antes/depois) para o autor rodar à mão,
+    como as migrações 29/30 já ficaram documentadas em `Pendencias.md`.
 - **Textos do livro (2d, 5)**: `src/content/chapters/quase-acerto.md` e
   `armas-e-armaduras.md` (a tabela de Redução por classe de armadura) para 2d; a nota do item 5
   entra onde o capítulo já fala do modo Simultâneo presencial (conferir `combate.md` e/ou o
