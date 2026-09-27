@@ -113,6 +113,8 @@ Preparo, Golpe e Recuperação em Ticks distintos.
   é a mesma física do P/G/R rodando um Tick por vez no tabuleiro digital, com o deslocamento
   acontecendo passo a passo.
 
+<p class="muted">Na mesa presencial, todos que agem no mesmo Tick rolam juntos; a ordem de resolução serve só para anotar.</p>
+
 ## O ataque: acertar e a Margem
 
 Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role. Você acerta se o total **superar a Defesa** do alvo (empate erra).
