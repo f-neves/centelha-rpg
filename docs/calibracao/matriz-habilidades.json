@@ -1,0 +1,1813 @@
+{
+ "descricao": "Matriz de amplitude das Habilidades do Centelha (27/09/2026). Notas 0 a 6 por arquetipo de campanha: 0 quase nunca, 1 detalhe raro, 2 aparece sem decidir, 3 apoio em quase toda sessao, 4 decide uma cena as vezes, 5 decide cenas com frequencia, 6 eixo da campanha. As notas supoem que o requisito da Habilidade existe. soma_ajustada = soma x dep x sub. dep: 1 sozinha, 0.75 equipamento caro ou outra Habilidade, 0.5 magia/Proeza/artefato. sub: 1 unica, 0.85 outra cobre parte, 0.7 outra faz quase o mesmo. Corte 15, zona cinzenta +-2; decisao do autor: nenhuma troca de classe pela zona cinzenta.",
+ "arquetipos": {
+  "via": "Viagem e natureza",
+  "int": "Intriga urbana e politica",
+  "gue": "Guerra",
+  "mas": "Masmorra e cacada",
+  "inv": "Investigacao e misterio",
+  "dom": "Dominio (partes jogadas em sessao)"
+ },
+ "habilidades": [
+  {
+   "id": "armas",
+   "nome": "Armas",
+   "classe": "primaria",
+   "grupo": "Combate",
+   "generalista": false,
+   "notas": {
+    "via": 3,
+    "int": 2,
+    "gue": 6,
+    "mas": 6,
+    "inv": 2,
+    "dom": 2
+   },
+   "soma": 21,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 21,
+   "pico": 6
+  },
+  {
+   "id": "arremesso",
+   "nome": "Arremesso",
+   "classe": "primaria",
+   "grupo": "Combate",
+   "generalista": false,
+   "notas": {
+    "via": 4,
+    "int": 1,
+    "gue": 5,
+    "mas": 4,
+    "inv": 1,
+    "dom": 2
+   },
+   "soma": 17,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 17,
+   "pico": 5
+  },
+  {
+   "id": "atirador",
+   "nome": "Atirador",
+   "classe": "primaria",
+   "grupo": "Combate",
+   "generalista": false,
+   "notas": {
+    "via": 4,
+    "int": 1,
+    "gue": 5,
+    "mas": 4,
+    "inv": 1,
+    "dom": 2
+   },
+   "soma": 17,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 17,
+   "pico": 5
+  },
+  {
+   "id": "bloqueio",
+   "nome": "Bloqueio",
+   "classe": "primaria",
+   "grupo": "Combate",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 1,
+    "gue": 6,
+    "mas": 5,
+    "inv": 1,
+    "dom": 2
+   },
+   "soma": 17,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 17,
+   "pico": 6
+  },
+  {
+   "id": "briga",
+   "nome": "Briga",
+   "classe": "primaria",
+   "grupo": "Combate",
+   "generalista": false,
+   "notas": {
+    "via": 3,
+    "int": 2,
+    "gue": 6,
+    "mas": 6,
+    "inv": 2,
+    "dom": 2
+   },
+   "soma": 21,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 21,
+   "pico": 6
+  },
+  {
+   "id": "esquiva",
+   "nome": "Esquiva",
+   "classe": "primaria",
+   "grupo": "Combate",
+   "generalista": false,
+   "notas": {
+    "via": 3,
+    "int": 2,
+    "gue": 5,
+    "mas": 6,
+    "inv": 2,
+    "dom": 2
+   },
+   "soma": 20,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 20,
+   "pico": 6
+  },
+  {
+   "id": "atletismo",
+   "nome": "Atletismo",
+   "classe": "primaria",
+   "grupo": "Física",
+   "generalista": false,
+   "notas": {
+    "via": 6,
+    "int": 2,
+    "gue": 4,
+    "mas": 5,
+    "inv": 2,
+    "dom": 1
+   },
+   "soma": 20,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 20,
+   "pico": 6
+  },
+  {
+   "id": "furtividade",
+   "nome": "Furtividade",
+   "classe": "primaria",
+   "grupo": "Física",
+   "generalista": false,
+   "notas": {
+    "via": 4,
+    "int": 5,
+    "gue": 3,
+    "mas": 5,
+    "inv": 5,
+    "dom": 2
+   },
+   "soma": 24,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 24,
+   "pico": 5
+  },
+  {
+   "id": "integridade",
+   "nome": "Integridade",
+   "classe": "primaria",
+   "grupo": "Física",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 5,
+    "gue": 2,
+    "mas": 3,
+    "inv": 4,
+    "dom": 4
+   },
+   "soma": 20,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 20,
+   "pico": 5
+  },
+  {
+   "id": "prestidigitacao",
+   "nome": "Prestidigitação",
+   "classe": "primaria",
+   "grupo": "Física",
+   "generalista": true,
+   "notas": {
+    "via": 2,
+    "int": 4,
+    "gue": 1,
+    "mas": 4,
+    "inv": 4,
+    "dom": 1
+   },
+   "soma": 16,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 16,
+   "pico": 4
+  },
+  {
+   "id": "prontidao",
+   "nome": "Prontidão",
+   "classe": "primaria",
+   "grupo": "Física",
+   "generalista": false,
+   "notas": {
+    "via": 5,
+    "int": 3,
+    "gue": 5,
+    "mas": 6,
+    "inv": 3,
+    "dom": 2
+   },
+   "soma": 24,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 24,
+   "pico": 6
+  },
+  {
+   "id": "resistencia",
+   "nome": "Resistência",
+   "classe": "primaria",
+   "grupo": "Física",
+   "generalista": false,
+   "notas": {
+    "via": 6,
+    "int": 1,
+    "gue": 5,
+    "mas": 4,
+    "inv": 1,
+    "dom": 2
+   },
+   "soma": 19,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 19,
+   "pico": 6
+  },
+  {
+   "id": "empatia",
+   "nome": "Empatia",
+   "classe": "primaria",
+   "grupo": "Social",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 6,
+    "gue": 2,
+    "mas": 1,
+    "inv": 5,
+    "dom": 5
+   },
+   "soma": 21,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 21,
+   "pico": 6
+  },
+  {
+   "id": "manha",
+   "nome": "Manha",
+   "classe": "primaria",
+   "grupo": "Social",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 5,
+    "gue": 2,
+    "mas": 1,
+    "inv": 5,
+    "dom": 3
+   },
+   "soma": 17,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 14.45,
+   "pico": 5
+  },
+  {
+   "id": "oratoria",
+   "nome": "Oratória",
+   "classe": "primaria",
+   "grupo": "Social",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 4,
+    "gue": 4,
+    "mas": 0,
+    "inv": 2,
+    "dom": 5
+   },
+   "soma": 16,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 13.6,
+   "pico": 5
+  },
+  {
+   "id": "persuasao",
+   "nome": "Persuasão",
+   "classe": "primaria",
+   "grupo": "Social",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 6,
+    "gue": 2,
+    "mas": 1,
+    "inv": 4,
+    "dom": 5
+   },
+   "soma": 20,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 20,
+   "pico": 6
+  },
+  {
+   "id": "politica",
+   "nome": "Política",
+   "classe": "primaria",
+   "grupo": "Social",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 6,
+    "gue": 3,
+    "mas": 0,
+    "inv": 2,
+    "dom": 6
+   },
+   "soma": 17,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 17,
+   "pico": 6
+  },
+  {
+   "id": "sociabilidade",
+   "nome": "Sociabilidade",
+   "classe": "primaria",
+   "grupo": "Social",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 5,
+    "gue": 2,
+    "mas": 1,
+    "inv": 4,
+    "dom": 4
+   },
+   "soma": 18,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 18,
+   "pico": 5
+  },
+  {
+   "id": "burocracia",
+   "nome": "Burocracia",
+   "classe": "primaria",
+   "grupo": "Saber",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 5,
+    "gue": 2,
+    "mas": 0,
+    "inv": 3,
+    "dom": 6
+   },
+   "soma": 16,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 16,
+   "pico": 6
+  },
+  {
+   "id": "conhecimentos-gerais",
+   "nome": "Conhecimentos Gerais",
+   "classe": "primaria",
+   "grupo": "Saber",
+   "generalista": true,
+   "notas": {
+    "via": 3,
+    "int": 3,
+    "gue": 2,
+    "mas": 3,
+    "inv": 4,
+    "dom": 3
+   },
+   "soma": 18,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 18,
+   "pico": 4
+  },
+  {
+   "id": "investigacao",
+   "nome": "Investigação",
+   "classe": "primaria",
+   "grupo": "Saber",
+   "generalista": false,
+   "notas": {
+    "via": 3,
+    "int": 4,
+    "gue": 2,
+    "mas": 5,
+    "inv": 6,
+    "dom": 2
+   },
+   "soma": 22,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 22,
+   "pico": 6
+  },
+  {
+   "id": "ocultismo",
+   "nome": "Ocultismo",
+   "classe": "primaria",
+   "grupo": "Saber",
+   "generalista": false,
+   "notas": {
+    "via": 3,
+    "int": 2,
+    "gue": 2,
+    "mas": 5,
+    "inv": 5,
+    "dom": 2
+   },
+   "soma": 19,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 19,
+   "pico": 5
+  },
+  {
+   "id": "oficios-gerais",
+   "nome": "Ofícios Gerais",
+   "classe": "primaria",
+   "grupo": "Saber",
+   "generalista": true,
+   "notas": {
+    "via": 4,
+    "int": 1,
+    "gue": 3,
+    "mas": 3,
+    "inv": 2,
+    "dom": 4
+   },
+   "soma": 17,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 17,
+   "pico": 4
+  },
+  {
+   "id": "sobrevivencia",
+   "nome": "Sobrevivência",
+   "classe": "primaria",
+   "grupo": "Saber",
+   "generalista": false,
+   "notas": {
+    "via": 6,
+    "int": 0,
+    "gue": 4,
+    "mas": 4,
+    "inv": 3,
+    "dom": 3
+   },
+   "soma": 20,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 20,
+   "pico": 6
+  },
+  {
+   "id": "equilibrio",
+   "nome": "Equilíbrio",
+   "classe": "secundaria",
+   "grupo": "Corpo",
+   "generalista": false,
+   "notas": {
+    "via": 3,
+    "int": 0,
+    "gue": 3,
+    "mas": 4,
+    "inv": 1,
+    "dom": 0
+   },
+   "soma": 11,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 9.35,
+   "pico": 4
+  },
+  {
+   "id": "escalada",
+   "nome": "Escalada",
+   "classe": "secundaria",
+   "grupo": "Corpo",
+   "generalista": false,
+   "notas": {
+    "via": 5,
+    "int": 0,
+    "gue": 2,
+    "mas": 4,
+    "inv": 2,
+    "dom": 0
+   },
+   "soma": 13,
+   "dep": 1,
+   "sub": 0.7,
+   "soma_ajustada": 9.1,
+   "pico": 5
+  },
+  {
+   "id": "ginastica",
+   "nome": "Ginástica",
+   "classe": "secundaria",
+   "grupo": "Corpo",
+   "generalista": false,
+   "notas": {
+    "via": 3,
+    "int": 0,
+    "gue": 2,
+    "mas": 4,
+    "inv": 1,
+    "dom": 0
+   },
+   "soma": 10,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 8.5,
+   "pico": 4
+  },
+  {
+   "id": "halterofilismo",
+   "nome": "Halterofilismo",
+   "classe": "secundaria",
+   "grupo": "Corpo",
+   "generalista": false,
+   "notas": {
+    "via": 5,
+    "int": 1,
+    "gue": 3,
+    "mas": 4,
+    "inv": 0,
+    "dom": 1
+   },
+   "soma": 14,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 11.9,
+   "pico": 5
+  },
+  {
+   "id": "malabarismo",
+   "nome": "Malabarismo",
+   "classe": "secundaria",
+   "grupo": "Corpo",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 2,
+    "gue": 0,
+    "mas": 1,
+    "inv": 0,
+    "dom": 1
+   },
+   "soma": 5,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 4.25,
+   "pico": 2
+  },
+  {
+   "id": "natacao",
+   "nome": "Natação",
+   "classe": "secundaria",
+   "grupo": "Corpo",
+   "generalista": false,
+   "notas": {
+    "via": 5,
+    "int": 0,
+    "gue": 2,
+    "mas": 3,
+    "inv": 1,
+    "dom": 0
+   },
+   "soma": 11,
+   "dep": 1,
+   "sub": 0.7,
+   "soma_ajustada": 7.7,
+   "pico": 5
+  },
+  {
+   "id": "atuacao",
+   "nome": "Atuação",
+   "classe": "secundaria",
+   "grupo": "Sociais",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 5,
+    "gue": 1,
+    "mas": 0,
+    "inv": 4,
+    "dom": 2
+   },
+   "soma": 12,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 10.2,
+   "pico": 5
+  },
+  {
+   "id": "disfarce",
+   "nome": "Disfarce",
+   "classe": "secundaria",
+   "grupo": "Sociais",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 5,
+    "gue": 1,
+    "mas": 1,
+    "inv": 4,
+    "dom": 1
+   },
+   "soma": 13,
+   "dep": 0.75,
+   "sub": 1,
+   "soma_ajustada": 9.75,
+   "pico": 5
+  },
+  {
+   "id": "etiqueta",
+   "nome": "Etiqueta",
+   "classe": "secundaria",
+   "grupo": "Sociais",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 5,
+    "gue": 1,
+    "mas": 0,
+    "inv": 2,
+    "dom": 5
+   },
+   "soma": 13,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 11.05,
+   "pico": 5
+  },
+  {
+   "id": "interrogatorio",
+   "nome": "Interrogatório",
+   "classe": "secundaria",
+   "grupo": "Sociais",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 3,
+    "gue": 3,
+    "mas": 2,
+    "inv": 5,
+    "dom": 2
+   },
+   "soma": 15,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 12.75,
+   "pico": 5
+  },
+  {
+   "id": "intimidacao",
+   "nome": "Intimidação",
+   "classe": "secundaria",
+   "grupo": "Sociais",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 3,
+    "gue": 2,
+    "mas": 2,
+    "inv": 4,
+    "dom": 3
+   },
+   "soma": 16,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 13.6,
+   "pico": 4
+  },
+  {
+   "id": "labia",
+   "nome": "Lábia",
+   "classe": "secundaria",
+   "grupo": "Sociais",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 5,
+    "gue": 1,
+    "mas": 1,
+    "inv": 4,
+    "dom": 3
+   },
+   "soma": 15,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 12.75,
+   "pico": 5
+  },
+  {
+   "id": "lideranca",
+   "nome": "Liderança",
+   "classe": "secundaria",
+   "grupo": "Sociais",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 2,
+    "gue": 6,
+    "mas": 1,
+    "inv": 0,
+    "dom": 6
+   },
+   "soma": 15,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 15,
+   "pico": 6
+  },
+  {
+   "id": "negociacao",
+   "nome": "Negociação",
+   "classe": "secundaria",
+   "grupo": "Sociais",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 5,
+    "gue": 3,
+    "mas": 0,
+    "inv": 1,
+    "dom": 6
+   },
+   "soma": 17,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 14.45,
+   "pico": 6
+  },
+  {
+   "id": "seducao",
+   "nome": "Sedução",
+   "classe": "secundaria",
+   "grupo": "Sociais",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 5,
+    "gue": 0,
+    "mas": 0,
+    "inv": 3,
+    "dom": 2
+   },
+   "soma": 10,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 8.5,
+   "pico": 5
+  },
+  {
+   "id": "acerto-arcano",
+   "nome": "Acerto Arcano",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 3,
+    "int": 0,
+    "gue": 6,
+    "mas": 6,
+    "inv": 0,
+    "dom": 0
+   },
+   "soma": 15,
+   "dep": 0.5,
+   "sub": 1,
+   "soma_ajustada": 7.5,
+   "pico": 6
+  },
+  {
+   "id": "alquimia",
+   "nome": "Alquimia",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 2,
+    "gue": 2,
+    "mas": 3,
+    "inv": 3,
+    "dom": 2
+   },
+   "soma": 14,
+   "dep": 0.75,
+   "sub": 1,
+   "soma_ajustada": 10.5,
+   "pico": 3
+  },
+  {
+   "id": "arquitetura",
+   "nome": "Arquitetura",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 2,
+    "gue": 3,
+    "mas": 3,
+    "inv": 2,
+    "dom": 4
+   },
+   "soma": 14,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 11.9,
+   "pico": 4
+  },
+  {
+   "id": "astronomia",
+   "nome": "Astronomia",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 4,
+    "int": 1,
+    "gue": 1,
+    "mas": 1,
+    "inv": 2,
+    "dom": 1
+   },
+   "soma": 10,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 8.5,
+   "pico": 4
+  },
+  {
+   "id": "bestiario",
+   "nome": "Bestiário",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 4,
+    "int": 0,
+    "gue": 2,
+    "mas": 6,
+    "inv": 3,
+    "dom": 1
+   },
+   "soma": 16,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 13.6,
+   "pico": 6
+  },
+  {
+   "id": "ciencias",
+   "nome": "Ciências",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 1,
+    "gue": 2,
+    "mas": 2,
+    "inv": 3,
+    "dom": 3
+   },
+   "soma": 12,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 10.2,
+   "pico": 3
+  },
+  {
+   "id": "cura",
+   "nome": "Cura",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 5,
+    "int": 2,
+    "gue": 6,
+    "mas": 5,
+    "inv": 2,
+    "dom": 3
+   },
+   "soma": 23,
+   "dep": 0.5,
+   "sub": 1,
+   "soma_ajustada": 11.5,
+   "pico": 6
+  },
+  {
+   "id": "direito",
+   "nome": "Direito",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 4,
+    "gue": 1,
+    "mas": 0,
+    "inv": 3,
+    "dom": 5
+   },
+   "soma": 13,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 11.05,
+   "pico": 5
+  },
+  {
+   "id": "engenharia",
+   "nome": "Engenharia",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 1,
+    "gue": 4,
+    "mas": 2,
+    "inv": 1,
+    "dom": 4
+   },
+   "soma": 13,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 11.05,
+   "pico": 4
+  },
+  {
+   "id": "estrategia",
+   "nome": "Estratégia",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 2,
+    "gue": 6,
+    "mas": 2,
+    "inv": 1,
+    "dom": 4
+   },
+   "soma": 16,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 16,
+   "pico": 6
+  },
+  {
+   "id": "folclore",
+   "nome": "Folclore",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 3,
+    "int": 2,
+    "gue": 1,
+    "mas": 3,
+    "inv": 4,
+    "dom": 2
+   },
+   "soma": 15,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 12.75,
+   "pico": 4
+  },
+  {
+   "id": "genealogia",
+   "nome": "Genealogia",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 4,
+    "gue": 1,
+    "mas": 0,
+    "inv": 3,
+    "dom": 4
+   },
+   "soma": 12,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 10.2,
+   "pico": 4
+  },
+  {
+   "id": "geografia",
+   "nome": "Geografia",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 4,
+    "int": 1,
+    "gue": 3,
+    "mas": 2,
+    "inv": 1,
+    "dom": 3
+   },
+   "soma": 14,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 11.9,
+   "pico": 4
+  },
+  {
+   "id": "herbologia",
+   "nome": "Herbologia",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 4,
+    "int": 1,
+    "gue": 2,
+    "mas": 3,
+    "inv": 2,
+    "dom": 1
+   },
+   "soma": 13,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 11.05,
+   "pico": 4
+  },
+  {
+   "id": "historia",
+   "nome": "História",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 2,
+    "gue": 2,
+    "mas": 2,
+    "inv": 2,
+    "dom": 3
+   },
+   "soma": 13,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 11.05,
+   "pico": 3
+  },
+  {
+   "id": "religiao",
+   "nome": "Religião",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 3,
+    "gue": 1,
+    "mas": 2,
+    "inv": 3,
+    "dom": 3
+   },
+   "soma": 13,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 11.05,
+   "pico": 3
+  },
+  {
+   "id": "ritualismo",
+   "nome": "Ritualismo",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 1,
+    "gue": 1,
+    "mas": 3,
+    "inv": 3,
+    "dom": 1
+   },
+   "soma": 10,
+   "dep": 0.75,
+   "sub": 1,
+   "soma_ajustada": 7.5,
+   "pico": 3
+  },
+  {
+   "id": "veterinaria",
+   "nome": "Veterinária",
+   "classe": "secundaria",
+   "grupo": "Conhecimento",
+   "generalista": false,
+   "notas": {
+    "via": 3,
+    "int": 0,
+    "gue": 2,
+    "mas": 1,
+    "inv": 0,
+    "dom": 2
+   },
+   "soma": 8,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 8,
+   "pico": 3
+  },
+  {
+   "id": "adestramento",
+   "nome": "Adestramento",
+   "classe": "secundaria",
+   "grupo": "Ofício",
+   "generalista": false,
+   "notas": {
+    "via": 3,
+    "int": 0,
+    "gue": 2,
+    "mas": 2,
+    "inv": 0,
+    "dom": 2
+   },
+   "soma": 9,
+   "dep": 0.75,
+   "sub": 1,
+   "soma_ajustada": 6.75,
+   "pico": 3
+  },
+  {
+   "id": "agricultura",
+   "nome": "Agricultura",
+   "classe": "secundaria",
+   "grupo": "Ofício",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 0,
+    "gue": 1,
+    "mas": 0,
+    "inv": 0,
+    "dom": 4
+   },
+   "soma": 6,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 5.1,
+   "pico": 4
+  },
+  {
+   "id": "alvenaria",
+   "nome": "Alvenaria",
+   "classe": "secundaria",
+   "grupo": "Ofício",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 0,
+    "gue": 2,
+    "mas": 1,
+    "inv": 0,
+    "dom": 4
+   },
+   "soma": 7,
+   "dep": 0.75,
+   "sub": 0.85,
+   "soma_ajustada": 4.46,
+   "pico": 4
+  },
+  {
+   "id": "artesanato",
+   "nome": "Artesanato",
+   "classe": "secundaria",
+   "grupo": "Ofício",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 2,
+    "gue": 0,
+    "mas": 0,
+    "inv": 1,
+    "dom": 2
+   },
+   "soma": 6,
+   "dep": 0.75,
+   "sub": 0.85,
+   "soma_ajustada": 3.82,
+   "pico": 2
+  },
+  {
+   "id": "carpintaria",
+   "nome": "Carpintaria",
+   "classe": "secundaria",
+   "grupo": "Ofício",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 0,
+    "gue": 2,
+    "mas": 1,
+    "inv": 0,
+    "dom": 3
+   },
+   "soma": 8,
+   "dep": 0.75,
+   "sub": 0.85,
+   "soma_ajustada": 5.1,
+   "pico": 3
+  },
+  {
+   "id": "cartografia",
+   "nome": "Cartografia",
+   "classe": "secundaria",
+   "grupo": "Ofício",
+   "generalista": false,
+   "notas": {
+    "via": 4,
+    "int": 0,
+    "gue": 3,
+    "mas": 3,
+    "inv": 1,
+    "dom": 2
+   },
+   "soma": 13,
+   "dep": 0.75,
+   "sub": 0.85,
+   "soma_ajustada": 8.29,
+   "pico": 4
+  },
+  {
+   "id": "cavalgar",
+   "nome": "Cavalgar",
+   "classe": "secundaria",
+   "grupo": "Ofício",
+   "generalista": false,
+   "notas": {
+    "via": 5,
+    "int": 1,
+    "gue": 5,
+    "mas": 1,
+    "inv": 1,
+    "dom": 2
+   },
+   "soma": 15,
+   "dep": 0.75,
+   "sub": 1,
+   "soma_ajustada": 11.25,
+   "pico": 5
+  },
+  {
+   "id": "comerciante",
+   "nome": "Comerciante",
+   "classe": "secundaria",
+   "grupo": "Ofício",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 4,
+    "gue": 1,
+    "mas": 1,
+    "inv": 2,
+    "dom": 4
+   },
+   "soma": 14,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 11.9,
+   "pico": 4
+  },
+  {
+   "id": "costura",
+   "nome": "Costura",
+   "classe": "secundaria",
+   "grupo": "Ofício",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 1,
+    "gue": 1,
+    "mas": 0,
+    "inv": 0,
+    "dom": 1
+   },
+   "soma": 4,
+   "dep": 0.75,
+   "sub": 0.85,
+   "soma_ajustada": 2.55,
+   "pico": 1
+  },
+  {
+   "id": "couraria",
+   "nome": "Couraria",
+   "classe": "secundaria",
+   "grupo": "Ofício",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 0,
+    "gue": 2,
+    "mas": 1,
+    "inv": 0,
+    "dom": 1
+   },
+   "soma": 5,
+   "dep": 0.75,
+   "sub": 0.85,
+   "soma_ajustada": 3.19,
+   "pico": 2
+  },
+  {
+   "id": "escrivao",
+   "nome": "Escrivão",
+   "classe": "secundaria",
+   "grupo": "Ofício",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 3,
+    "gue": 1,
+    "mas": 0,
+    "inv": 2,
+    "dom": 4
+   },
+   "soma": 10,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 8.5,
+   "pico": 4
+  },
+  {
+   "id": "ferreiro",
+   "nome": "Ferreiro",
+   "classe": "secundaria",
+   "grupo": "Ofício",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 0,
+    "gue": 3,
+    "mas": 1,
+    "inv": 0,
+    "dom": 3
+   },
+   "soma": 8,
+   "dep": 0.75,
+   "sub": 0.85,
+   "soma_ajustada": 5.1,
+   "pico": 3
+  },
+  {
+   "id": "gastronomia",
+   "nome": "Gastronomia",
+   "classe": "secundaria",
+   "grupo": "Ofício",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 2,
+    "gue": 1,
+    "mas": 1,
+    "inv": 0,
+    "dom": 2
+   },
+   "soma": 8,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 6.8,
+   "pico": 2
+  },
+  {
+   "id": "joalheria",
+   "nome": "Joalheria",
+   "classe": "secundaria",
+   "grupo": "Ofício",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 2,
+    "gue": 0,
+    "mas": 1,
+    "inv": 1,
+    "dom": 1
+   },
+   "soma": 5,
+   "dep": 0.75,
+   "sub": 0.85,
+   "soma_ajustada": 3.19,
+   "pico": 2
+  },
+  {
+   "id": "navegacao",
+   "nome": "Navegação",
+   "classe": "secundaria",
+   "grupo": "Ofício",
+   "generalista": false,
+   "notas": {
+    "via": 5,
+    "int": 1,
+    "gue": 3,
+    "mas": 1,
+    "inv": 1,
+    "dom": 2
+   },
+   "soma": 13,
+   "dep": 0.75,
+   "sub": 1,
+   "soma_ajustada": 9.75,
+   "pico": 5
+  },
+  {
+   "id": "caligrafia",
+   "nome": "Caligrafia",
+   "classe": "secundaria",
+   "grupo": "Expressão",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 2,
+    "gue": 0,
+    "mas": 0,
+    "inv": 1,
+    "dom": 2
+   },
+   "soma": 5,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 4.25,
+   "pico": 2
+  },
+  {
+   "id": "canto",
+   "nome": "Canto",
+   "classe": "secundaria",
+   "grupo": "Expressão",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 3,
+    "gue": 1,
+    "mas": 0,
+    "inv": 1,
+    "dom": 2
+   },
+   "soma": 8,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 8,
+   "pico": 3
+  },
+  {
+   "id": "contacao-de-historias",
+   "nome": "Contação de Histórias",
+   "classe": "secundaria",
+   "grupo": "Expressão",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 3,
+    "gue": 1,
+    "mas": 1,
+    "inv": 2,
+    "dom": 2
+   },
+   "soma": 11,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 9.35,
+   "pico": 3
+  },
+  {
+   "id": "danca",
+   "nome": "Dança",
+   "classe": "secundaria",
+   "grupo": "Expressão",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 4,
+    "gue": 0,
+    "mas": 0,
+    "inv": 1,
+    "dom": 2
+   },
+   "soma": 7,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 7,
+   "pico": 4
+  },
+  {
+   "id": "escultura",
+   "nome": "Escultura",
+   "classe": "secundaria",
+   "grupo": "Expressão",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 1,
+    "gue": 0,
+    "mas": 0,
+    "inv": 0,
+    "dom": 1
+   },
+   "soma": 2,
+   "dep": 0.75,
+   "sub": 1,
+   "soma_ajustada": 1.5,
+   "pico": 1
+  },
+  {
+   "id": "performance",
+   "nome": "Performance",
+   "classe": "secundaria",
+   "grupo": "Expressão",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 3,
+    "gue": 1,
+    "mas": 0,
+    "inv": 1,
+    "dom": 2
+   },
+   "soma": 8,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 6.8,
+   "pico": 3
+  },
+  {
+   "id": "pintura",
+   "nome": "Pintura",
+   "classe": "secundaria",
+   "grupo": "Expressão",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 2,
+    "gue": 0,
+    "mas": 0,
+    "inv": 2,
+    "dom": 1
+   },
+   "soma": 5,
+   "dep": 0.75,
+   "sub": 1,
+   "soma_ajustada": 3.75,
+   "pico": 2
+  },
+  {
+   "id": "poesia",
+   "nome": "Poesia",
+   "classe": "secundaria",
+   "grupo": "Expressão",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 3,
+    "gue": 0,
+    "mas": 0,
+    "inv": 1,
+    "dom": 2
+   },
+   "soma": 6,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 6,
+   "pico": 3
+  },
+  {
+   "id": "tocar-instrumento",
+   "nome": "Tocar Instrumento",
+   "classe": "secundaria",
+   "grupo": "Expressão",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 3,
+    "gue": 1,
+    "mas": 0,
+    "inv": 1,
+    "dom": 2
+   },
+   "soma": 8,
+   "dep": 0.75,
+   "sub": 1,
+   "soma_ajustada": 6.0,
+   "pico": 3
+  },
+  {
+   "id": "abrir-mecanismos",
+   "nome": "Abrir Mecanismos",
+   "classe": "secundaria",
+   "grupo": "Subterfúgio",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 4,
+    "gue": 0,
+    "mas": 6,
+    "inv": 4,
+    "dom": 1
+   },
+   "soma": 17,
+   "dep": 0.75,
+   "sub": 1,
+   "soma_ajustada": 12.75,
+   "pico": 6
+  },
+  {
+   "id": "ocultacao",
+   "nome": "Ocultação",
+   "classe": "secundaria",
+   "grupo": "Subterfúgio",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 4,
+    "gue": 2,
+    "mas": 3,
+    "inv": 5,
+    "dom": 1
+   },
+   "soma": 17,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 14.45,
+   "pico": 5
+  },
+  {
+   "id": "submundo",
+   "nome": "Submundo",
+   "classe": "secundaria",
+   "grupo": "Subterfúgio",
+   "generalista": false,
+   "notas": {
+    "via": 0,
+    "int": 5,
+    "gue": 0,
+    "mas": 1,
+    "inv": 5,
+    "dom": 2
+   },
+   "soma": 13,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 11.05,
+   "pico": 5
+  },
+  {
+   "id": "autocontrole",
+   "nome": "Autocontrole",
+   "classe": "secundaria",
+   "grupo": "Interior",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 3,
+    "gue": 3,
+    "mas": 3,
+    "inv": 3,
+    "dom": 3
+   },
+   "soma": 17,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 14.45,
+   "pico": 3
+  },
+  {
+   "id": "concentracao",
+   "nome": "Concentração",
+   "classe": "secundaria",
+   "grupo": "Interior",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 2,
+    "gue": 3,
+    "mas": 3,
+    "inv": 3,
+    "dom": 2
+   },
+   "soma": 15,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 15,
+   "pico": 3
+  },
+  {
+   "id": "energia-espiritual",
+   "nome": "Energia Espiritual",
+   "classe": "secundaria",
+   "grupo": "Interior",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 2,
+    "gue": 2,
+    "mas": 3,
+    "inv": 2,
+    "dom": 2
+   },
+   "soma": 13,
+   "dep": 0.5,
+   "sub": 1,
+   "soma_ajustada": 6.5,
+   "pico": 3
+  },
+  {
+   "id": "interpretacao-de-sonhos",
+   "nome": "Interpretação de Sonhos",
+   "classe": "secundaria",
+   "grupo": "Interior",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 1,
+    "gue": 0,
+    "mas": 1,
+    "inv": 3,
+    "dom": 1
+   },
+   "soma": 7,
+   "dep": 1,
+   "sub": 0.85,
+   "soma_ajustada": 5.95,
+   "pico": 3
+  },
+  {
+   "id": "leitura-corporal",
+   "nome": "Leitura Corporal",
+   "classe": "secundaria",
+   "grupo": "Interior",
+   "generalista": false,
+   "notas": {
+    "via": 1,
+    "int": 4,
+    "gue": 2,
+    "mas": 2,
+    "inv": 5,
+    "dom": 3
+   },
+   "soma": 17,
+   "dep": 1,
+   "sub": 0.7,
+   "soma_ajustada": 11.9,
+   "pico": 5
+  },
+  {
+   "id": "meditacao",
+   "nome": "Meditação",
+   "classe": "secundaria",
+   "grupo": "Interior",
+   "generalista": false,
+   "notas": {
+    "via": 2,
+    "int": 2,
+    "gue": 2,
+    "mas": 3,
+    "inv": 2,
+    "dom": 2
+   },
+   "soma": 13,
+   "dep": 1,
+   "sub": 1,
+   "soma_ajustada": 13,
+   "pico": 3
+  }
+ ]
+}
