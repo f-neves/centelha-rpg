@@ -11164,7 +11164,13 @@ let roladoDano = '';
       devido: () => {
         const T = tickSim();
         for (const c of naFila()) {
-          if (foraDaFila(c)) continue;
+          // MESMA EXCEÇÃO de `golpeMaisCedo`/`golpeVencidoNaFaixa` (Regra do
+          // Quase-Acerto, item 3, 27/09/2026): quem estava de pé na abertura
+          // do Tick solta o golpe mesmo que caia dentro dele. Sem isto, o
+          // segundo golpe de um duplo abate no mesmo Tick nunca era achado
+          // por este helper (achado pela cena `1v1-fatal-simultaneo` do
+          // espelho, que existe justamente para pegar isto).
+          if (foraDaFila(c) && !DE_PE_AO_ABRIR.has(c.id)) continue;
           const g = golpesNoAr(c.acao).filter((x: number) => x <= T).sort((a, b) => a - b)[0];
           if (g != null) return { id: c.id, tick: g };
         }

@@ -34,6 +34,28 @@ export const FICHAS = {
       equip: { armaduras: [{ base: 'malha', vestida: true }] },
     },
   },
+  /**
+   * DUAS PEÇAS QUE SE MATAM NO MESMO TICK, e é para isso que ela existe.
+   *
+   * Montante (dano alto), Vigor 1 (Vida baixa: 25 + 3 = 28) e sem armadura: um
+   * acerto de qualquer lado costuma bastar para derrubar o outro. Contra si
+   * mesma (o mesmo par de `escudeiro`/`montanteiro` já faz para o "unissono"),
+   * ela sobe a chance de um Tick em que os DOIS golpes caem e os DOIS matam,
+   * que é a condição do item 3 (27/09/2026, Regra do Quase-Acerto): quem
+   * estava de pé na abertura do Tick solta o golpe mesmo que caia nele, dos
+   * dois lados ao mesmo tempo. `test-espelho.mjs` usa a semente 10 (achada por
+   * busca, registrada lá) para chegar nisso de propósito, sem depender de
+   * bateria.
+   */
+  fatal: {
+    nome: 'Fatal',
+    ficha: {
+      ...BASE,
+      attrs: { ...BASE.attrs, forca: 6, vigor: 1, destreza: 3 },
+      conjuntos: [{ ativo: true, habil: { ref: 'a:montante' }, inabil: { ref: 'nada' } }],
+      equip: { armaduras: [] },
+    },
+  },
   montanteiro: {
     nome: 'Montanteiro',
     ficha: {

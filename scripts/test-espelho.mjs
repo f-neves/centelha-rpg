@@ -92,6 +92,20 @@ const CENAS = [
   // posições iniciais e o espaço de fuga, e nenhum desses três tinha oráculo:
   // até aqui o espelho só rodou no corredor.
   { ...celulaEspelho('4x4-aberto', ['escudeiro', 'montanteiro'], 4, 18, 'aberto'), teto: 45 },
+  // O DUPLO GOLPE FATAL, item 3 do despacho da Regra do Quase-Acerto
+  // (27/09/2026). A Revisora reverteu o conserto do item 3 e o espelho
+  // continuou verde nos cenários acima: a condição do bug antigo (o
+  // ATACANTE morrer dentro do mesmo Tick em que solta o golpe) nunca dispara
+  // neles. Esta cena é DETERMINÍSTICA e não uma bateria: `fatal` (montante,
+  // Vida 28, sem armadura, `elenco.mjs`) contra si mesma, semente 10 (achada
+  // por busca no harness, ver `docs/simulacao/caixa/...` do achado), onde os
+  // DOIS lados golpeiam e MORREM no Tick 12, o mesmo Tick, um matando o
+  // outro. É o par exato do "unissono" de cima (mesma cadência, então os
+  // golpes caem juntos), só que com Vida baixa o bastante para o Tick de
+  // troca também ser o Tick de morte dos dois. `sementes` abaixo troca a
+  // lista padrão por só a 10: é essa semente, e nenhuma outra, que produz o
+  // duplo abate.
+  { ...celulaEspelho('1v1-fatal-simultaneo', ['fatal', 'fatal'], 1, 1), teto: 20, sementes: [10] },
 ];
 
 /**
@@ -282,7 +296,9 @@ const dev = await subirDev({ config: 'astro.bancada.mjs' });
 const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
   for (const cena of CENAS) {
-   for (const sem of SEMENTES) {
+   // A CENA DO DUPLO GOLPE FATAL tem semente própria (achada por busca, não
+   // escolhida à toa): as duas sementes padrão não produzem o duplo abate.
+   for (const sem of (cena.sementes || SEMENTES)) {
     console.log(`\n· ${cena.id} (${cena.n}v${cena.n}, ${cena.dist} hex, teto ${cena.teto}) · semente ${sem}`);
     const mesa = await daMesa(br, dev.url, cena, sem);
     ok(!mesa.erros.length, `a mesa rodou sem erro de página${mesa.erros.length ? `: ${mesa.erros[0]}` : ''}`);
@@ -293,6 +309,15 @@ try {
     ok(r.ticksMesa > 0, 'a mesa despejou algum Tick');
     ok(r.lancesMesa > 0, 'a mesa resolveu algum golpe');
     ok(r.divs.length === 0, `sem divergência em ${cena.id} · semente ${sem}`);
+    if (cena.id === '1v1-fatal-simultaneo') {
+      // A PROVA DE QUE A CENA EXERCITA O QUE ELA PROMETE: sem isto, um dia em
+      // que a régua mudar e ninguém morrer mais no Tick 12 faria este cenário
+      // virar um duelo qualquer, verde por acidente, sem provar nada do item 3.
+      const doTickA = laco.lances.filter((l) => l.entrada.tickDoGolpe === 12 && l.entrada.atacante.id === 'a0');
+      const doTickB = laco.lances.filter((l) => l.entrada.tickDoGolpe === 12 && l.entrada.atacante.id === 'b0');
+      ok(doTickA.some((l) => l.saida.pvDepois === 0) && doTickB.some((l) => l.saida.pvDepois === 0),
+        'os dois lados golpeiam e derrubam no MESMO Tick (12), a condição que o item 3 corrige');
+    }
     for (const d of r.divs.slice(0, VER ? 40 : 12)) {
       console.log('      ✗ ' + (d.txt || (d.lance != null
         ? `lance ${d.lance} · ${d.campo}: mesa ${d.mesa} · laço ${d.laco}`
