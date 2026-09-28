@@ -119,11 +119,11 @@ Uma defesa só existe se houver o que defender. Usa-se a **Inteligência** da cr
 
 ## Folha de referência
 
-- **Física · Esquiva** = (Des + Esquiva)×2 + Centelha + Esp.
-- **Física · Bloqueio** = (Des + Bloqueio)×2 + Centelha + Esp + defesa da arma.
-- **Social** = (Compostura + Sociabilidade)×2 + Centelha + Esp. Feras usam Sobrevivência.
-- **Mental** = Raciocínio + Integridade + Força de Vontade + Centelha + Esp (soma simples).
-- **Centelha** = +1 em cada defesa e no ataque. **Esp.** é a [Especialidade](#especialidade-o-foco-que-só-vale-às-vezes), que só vale na situação dela.
+- **Física · Esquiva** = (Des + Esquiva)×2 + 2×menor(Centelha, Esquiva) + Esp.
+- **Física · Bloqueio** = (Des + Bloqueio)×2 + 2×menor(Centelha, Bloqueio) + Esp + defesa da arma.
+- **Social** = (Compostura + Sociabilidade)×2 + 2×menor(Centelha, Sociabilidade) + Esp. Feras usam Sobrevivência.
+- **Mental** = Raciocínio + Integridade + Força de Vontade + 2×menor(Centelha, Integridade) + Esp (soma simples).
+- **Centelha** = 2 pontos por ponto em cada defesa e no ataque, até o teto da Habilidade usada (Reforma da Centelha, 28/09/2026). **Esp.** é a [Especialidade](#especialidade-o-foco-que-só-vale-às-vezes), que só vale na situação dela.
 - **Social** = te mover ou te ler. **Mental** = invadir/impor na sua mente. **Medo da cena** = Bravura.
 
 Como a Defesa Social se desgasta numa disputa longa, e como as relações do dia a dia decidem o que alguém faz por você, é assunto do capítulo [Relações Sociais](/regras/relacoes-sociais).

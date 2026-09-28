@@ -1,7 +1,7 @@
 // Núcleo do editor de criaturas do bestiário: vocabulário, derivados e persistência.
 // Fica fora do .astro para poder ser importado tanto no servidor (montar o form)
 // quanto no cliente (recalcular ao vivo), sem duplicar número nenhum.
-import { pv, defesa, defesaMental, defesaSocial, regras } from './calc';
+import { pv, defesa, defesaMental, defesaSocial, ataqueCentelha, regras } from './calc';
 import type { Porte } from './calc';
 import vocab from '../data/elementos-vocab.json';
 // Via `equip.ts`, e não `armaduras.json` direto: o JSON guarda o envelope aninhado
@@ -135,14 +135,17 @@ export function derivados(c: CriaturaEdit) {
 /** Pool e dano de um ataque, pelas mesmas contas do gerador. */
 export function rolagemAtaque(c: CriaturaEdit, a: Ataque) {
   const at = c.atributos || {}, pe = c.pericias || {};
-  const soma = nz(at[a.atrib]) + nz(pe[a.pericia]);
+  const habilidade = nz(pe[a.pericia]);
+  const soma = nz(at[a.atrib]) + habilidade;
   const dados = Math.floor(soma / 2), mais = soma % 2 === 1 ? 2 : 0;
-  const acerto = nz(a.acerto) + nz(c.centelha) * ((regras as any).derivados?.ataque?.centelhaMult ?? 0);
+  const acerto = nz(a.acerto) + ataqueCentelha(nz(c.centelha), habilidade);
   const fm = (regras as any).derivados.danoForca;
   const forca = (a.distancia && !a.arremesso) ? 0 : nz(at.forca) * (Number(a.mao) === 2 ? fm.duasMaos : fm.umaMao);
+  // A Centelha do atacante soma inteira, sem teto, no dano (Reforma da Centelha, 28/09/2026).
+  const ap = forca + nz(c.centelha);
   return {
     pool: `${dados}d6${mais ? '+2' : ''}${acerto ? ` +${acerto}` : ''}`,
-    dano: `${nz(a.dado)}d6${forca ? ` +${forca}` : ''} ${a.tipo}${nz(a.perf) ? ` · perf. ${nz(a.perf)}` : ''}`,
+    dano: `${nz(a.dado)}d6${ap ? ` +${ap}` : ''} ${a.tipo}${nz(a.perf) ? ` · perf. ${nz(a.perf)}` : ''}`,
   };
 }
 

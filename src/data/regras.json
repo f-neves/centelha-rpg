@@ -111,7 +111,7 @@
   ],
   "notaEscalaCentelha": "A régua vai de 0 a 12, e o 12 é o teto real (`M-08`). O TETO DO JOGADOR é 6, e a razão é mecânica e não de gosto: acima de 6 a Centelha não destrava Proeza nenhuma, porque o nível máximo de Proeza é 6 e o portão é 'o nível N exige Centelha >= N'. Do 7 para cima ela só engorda ataque, as três Defesas, Energia e Mana, que é o que convém a um deus e não a um personagem. Os RÓTULOS dos degraus 7 a 12 estão marcados como `provisorio`: nomeá-los é worldbuilding e voltará à mesa como decisão de lore. Os degraus 7, 9 e 10 existem porque o bestiário já os usa: dez criaturas passam de 6, e as dez são `tipo: chefe` com `ameaça: 6`.",
   "escalasProeza": {
-    "nota": "Cada Técnica cresce conforme seu nível (1 a 6). O TIPO de melhora define a trilha e a escala. A maioria das Técnicas é 'estado' (uma capacidade, sem número). Os valores abaixo somam por cima do +2/ponto de Centelha que já pesa em ataque e nas 4 defesas.",
+    "nota": "Cada Técnica cresce conforme seu nível (1 a 6). O TIPO de melhora define a trilha e a escala. A maioria das Técnicas é 'estado' (uma capacidade, sem número). Os valores abaixo somam por cima do 2*menor(Centelha,Habilidade) que já pesa em ataque e nas 4 defesas (Reforma da Centelha, 28/09/2026).",
     "trilhas": {
       "bonus": {
         "rotulo": "Bônus",
@@ -811,31 +811,35 @@
       "especialidade": true,
       "especialidadeNota": "`true` quer dizer PODE SOMAR QUANDO O ESCOPO SE APLICAR, e não soma sempre (`M-03`). O portão da Especialidade é a situação, então ela não entra no número parado que a ficha imprime: entra por cima, na hora em que o escopo nomeado se revela. Vale igual nas três Defesas.",
       "maisCentelha": true,
-      "centelhaMult": 1
+      "centelhaMult": 1,
+      "centelhaNota": "DESATUALIZADO desde a Reforma da Centelha (28/09/2026): a regra viva é 2×menor(Centelha,Habilidade), calculada em calc.ts (centelhaNaJogada), não este campo flat. Mantido só porque scripts/lib-tempo.mjs e scripts/cost-examples.mjs ainda o leem (ver K35 em docs/pendencias/K-combate-linha-do-tempo.md)."
     },
     "defesaMental": {
-      "nota": "Barra invasão ou imposição direta na mente (controle, ordem, medo mágico, leitura mental, ataque psíquico). Raciocínio + Integridade + Força de Vontade + Centelha + Especialidade (soma simples, sem ×2). Só existe com mente: Int 0 é imune ('-').",
+      "nota": "Barra invasão ou imposição direta na mente (controle, ordem, medo mágico, leitura mental, ataque psíquico). Raciocínio + Integridade + Força de Vontade + 2×menor(Centelha,Integridade) + Especialidade (soma simples, sem ×2, Reforma da Centelha de 28/09/2026). Só existe com mente: Int 0 é imune ('-').",
       "mult": 1,
       "maisRaciocinio": true,
       "maisVontade": true,
       "maisCentelha": true,
       "centelhaMult": 1,
+      "centelhaNota": "DESATUALIZADO, mesma ressalva do bloco `defesa` acima: a regra viva capeia pela Integridade.",
       "especialidade": true
     },
     "defesaSocial": {
-      "nota": "O escudo social geral (equivale ao MDV): resiste a ser convencido/movido E a ser lido. (Compostura + Sociabilidade) × 2 + Centelha + Especialidade (Centelha fica FORA do ×2). Feras (Int 1) trocam Sociabilidade por Sobrevivência (B14 fase 2, item C.7, 26/09/2026); Int 0 é imune ('-').",
+      "nota": "O escudo social geral (equivale ao MDV): resiste a ser convencido/movido E a ser lido. (Compostura + Sociabilidade) × 2 + 2×menor(Centelha,Sociabilidade) + Especialidade (Reforma da Centelha de 28/09/2026, a Centelha capeada pela Sociabilidade fica FORA do ×2). Feras (Int 1) trocam Sociabilidade por Sobrevivência (B14 fase 2, item C.7, 26/09/2026); Int 0 é imune ('-').",
       "mult": 2,
       "tracos": [
         "compostura",
         "sociabilidade"
       ],
       "centelhaMult": 1,
+      "centelhaNota": "DESATUALIZADO, mesma ressalva do bloco `defesa` acima: a regra viva capeia pela Sociabilidade.",
       "especialidade": true,
       "reguaNota": "Termo da Régua de Relação, decisão de 18/09/2026 (ver relacoes-sociais.md, 'A história empurra o dado'): remar contra o que o alvo já sente soma o nível à Defesa Social dele; remar a favor subtrai. Ataque que AQUECE o vínculo (aproximar, seduzir, persuadir a ajudar): soma se o alvo já é hostil, subtrai se já é favorável. Ataque que ESFRIA (intimidar, ameaçar, romper, semear desconfiança): soma se o alvo já é favorável, subtrai se já é hostil. Multiplicador ×1, sem teto além do próprio ±6 da régua, zera no Neutro. É situacional e por relação (quem é o alvo, contra quem), então não entra no número parado que a ficha imprime; entra por cima, como a Especialidade acima."
     },
     "ataque": {
-      "nota": "Bônus de Centelha somado à soma do ataque (as quatro defesas ganham o mesmo, +1 por ponto). Simétrico: entre Centelhas iguais cancela; favorece quem tem mais Centelha.",
-      "centelhaMult": 1
+      "nota": "Bônus de Centelha somado à soma do ataque (as quatro defesas ganham o mesmo): 2×menor(Centelha,Habilidade) desde a Reforma da Centelha de 28/09/2026. Simétrico: entre Centelhas iguais e Habilidade que alcance, cancela; favorece quem tem mais Centelha.",
+      "centelhaMult": 1,
+      "centelhaNota": "DESATUALIZADO, mesma ressalva do bloco `defesa` acima: a regra viva capeia pela Habilidade daquele ataque."
     },
     "energia": {
       "nota": "(Vigor + Compostura + Raciocínio + Vontade) / 2 [arredonda para baixo] + Centelha × 2.",

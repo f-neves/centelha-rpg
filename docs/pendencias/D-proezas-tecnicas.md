@@ -76,3 +76,11 @@ Detalhe em `Proezas_revisao.md`.
   **média** (Briga séria, estilo de combate desarmado avançado) foi cogitada e não implementada:
   decidir se existe, o que ela muda exatamente (classe de QA? dado de dano? as duas?) e o custo.
 
+- [ ] **D14 · [ADIADO] [DECIDIR] Custo de Habilidades a revisar depois da Parte B.** Registrado
+  em 28/09/2026, no despacho da Reforma da Centelha ("Pendências a registrar"): a regra nova
+  (2×menor(Centelha,Habilidade) em toda jogada/Defesa, sem teto no dano) valoriza a Habilidade
+  alta mais do que a régua antiga (+1×Centelha flat), porque agora é ela quem decide o teto do
+  bônus de Centelha, não só o próprio valor da perícia. O preço de XP das Habilidades (capítulo
+  de Criação de Personagem) não foi revisado para refletir esse ganho a mais no topo. Adiado
+  pelo próprio despacho até a Parte B (a rodada de recalibração econômica, ainda não retomada
+  nesta frente) fechar; não decidir nem mexer em preço agora.

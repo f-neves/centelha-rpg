@@ -42,16 +42,16 @@ está na seção 3.
 | A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 31 | 21 | 1 | 9 | 14 | 4 | 4 | 0 | 0 | 0 |
 | B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 16 | 11 | 0 | 5 | 6 | 5 | 0 | 0 | 0 | 0 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
-| D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 13 | 9 | 0 | 4 | 5 | 1 | 0 | 0 | 0 | 3 |
+| D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 14 | 10 | 0 | 4 | 5 | 1 | 0 | 0 | 0 | 4 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 10 | 7 | 0 | 3 | 5 | 1 | 0 | 1 | 0 | 0 |
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 | 6 | 0 | 3 | 0 | 0 | 0 |
 | G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 74 | 50 | 0 | 24 | 28 | 2 | 0 | 5 | 15 | 0 |
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 7 | 5 | 0 | 2 | 2 | 0 | 0 | 2 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 15 | 11 | 2 | 2 | 4 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 17 | 14 | 0 | 3 | 6 | 3 | 0 | 2 | 1 | 2 |
-| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 34 | 20 | 1 | 13 | 16 | 5 | 0 | 0 | 0 | 0 |
+| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 36 | 22 | 1 | 13 | 18 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **338** | **235** | **4** | **99** | **94** | **38** | **8** | **10** | **81** | **8** |
+| | **Total** | | **341** | **238** | **4** | **99** | **96** | **38** | **8** | **10** | **81** | **9** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -385,6 +385,7 @@ Fechados (0): nenhum.
 | D11 | aberto | DECIDIR | Proeza de Quase-acerto, com duas alavancas. |
 | D12 | aberto | DECIDIR | Jogada só-de-Atributo, sem Habilidade que sirva de teto. |
 | D13 | aberto | DECIDIR | Proeza "punho como arma média". |
+| D14 | aberto, ADIADO | DECIDIR | Custo de Habilidades a revisar depois da Parte B. |
 
 Fechados (4): D1, D2, D4, D7.
 
@@ -553,6 +554,8 @@ Fechados (3): J1, J4, J5.
 | K32 | aberto | DECIDIR | Tags de arma sem definição. |
 | K33 | aberto | DECIDIR | Redução de raspão quando armaduras são vestidas juntas. |
 | K34 | aberto | DECIDIR | `quaseAcerto()` (`src/lib/quase-acerto.ts:187-199`), o card de ficha fora de combate, continua sem Centelha … |
+| K35 | aberto | DECIDIR | `lib-tempo.mjs` continua na régua antiga de Centelha |
+| K36 | aberto | DECIDIR | Agarrar não tem regra escrita em lugar nenhum. |
 
 Fechados (13): K29, K1, K2, K3, K10, K7, K15, K16, K22, K23, K26, K12, K13.
 

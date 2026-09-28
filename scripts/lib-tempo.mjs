@@ -36,9 +36,15 @@
 // regime antigo, e é o que `sim-ticks.mjs --legado` usa para reconferir as tabelas publicadas
 // antes dessa data. Ver K13 no `docs/pendencias/K-combate-linha-do-tempo.md`.
 //
-// A CENTELHA soma **+1** por ponto no ataque e nas defesas (K23), como `regras.json`,
-// `defesas.md` e `centelha.md`. Até 20/08 este motor usava ×2; em espelho o efeito se cancela,
-// então a direção dos resultados antigos se mantém, mas os absolutos mudam.
+// A CENTELHA soma **+1** por ponto no ataque e nas defesas (K23). Até 20/08 este motor usava
+// ×2; em espelho o efeito se cancela, então a direção dos resultados antigos se mantém, mas os
+// absolutos mudam.
+//
+// DIVERGIU da regra viva em 28/09/2026 (Reforma da Centelha, ver K35 em
+// `docs/pendencias/K-combate-linha-do-tempo.md`): `regras.json`, `calc.ts`, `defesas.md` e
+// `centelha.md` passaram a usar 2×menor(Centelha,Habilidade), e este motor não guarda a
+// Habilidade separada do Atributo (só a soma `ah`), então portar a fórmula pede quebrar essa
+// representação, decisão que não estava no despacho que achou isto. Não tocado; registrado.
 //
 // LIMITE CONHECIDO. O motor tem UMA Defesa e ignora a `defesaArma`, que pelo `defesas.md:67`
 // entra só no Bloqueio. Todo número de equilíbrio entre classes é, portanto, o canto em que

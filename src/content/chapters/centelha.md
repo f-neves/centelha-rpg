@@ -62,7 +62,7 @@ Uma Técnica de nível 3 só está ao alcance de um Herói (Centelha 3) ou acima
 
 ### O bônus de nível
 
-Quando uma Técnica melhora uma **tarefa** (esquivar, agarrar, mirar, resistir a ser movido), ela soma um **bônus que cresce com o nível**: **+3** no nível 1, subindo até **+15** no nível 6, pela trilha abaixo. Como numa disputa o bônus do outro lado se subtrai, o nível baixo é modesto (um +3 tende a vencer o igual, mas cede ao bem mais forte) e o alto é quase perfeito (um +15 só é contestado por outro semideus ou um abismo de atributo). Esse bônus é **por cima** do +1 por ponto de Centelha que já pesa em ataque e nas defesas.
+Quando uma Técnica melhora uma **tarefa** (esquivar, agarrar, mirar, resistir a ser movido), ela soma um **bônus que cresce com o nível**: **+3** no nível 1, subindo até **+15** no nível 6, pela trilha abaixo. Como numa disputa o bônus do outro lado se subtrai, o nível baixo é modesto (um +3 tende a vencer o igual, mas cede ao bem mais forte) e o alto é quase perfeito (um +15 só é contestado por outro semideus ou um abismo de atributo). Esse bônus é **por cima** dos 2 pontos por ponto de Centelha que já pesam em ataque e nas defesas (até o teto da Habilidade usada).
 
 Mas nem toda melhora é um bônus de rolagem. Erguer peso não é o mesmo que mirar melhor, e pular longe não é o mesmo que resistir a veneno. Por isso cada **tipo** de efeito tem sua própria escala por nível:
 

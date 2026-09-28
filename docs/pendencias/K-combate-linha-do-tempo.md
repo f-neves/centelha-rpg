@@ -485,3 +485,25 @@ revistos por ela.
   Reforma da Centelha de 28/09/2026. Decidir se o card de ficha ganha o mesmo termo (e contra
   que Centelha, já que não há alvo fixado) ou se ele fica deliberadamente simplificado por não
   ter combate de verdade por trás.
+- [ ] **K35 · [DECIDIR] `lib-tempo.mjs` continua na régua antiga de Centelha**, no ataque
+  (`A.centelha * (R.centelhaMult` em `scripts/lib-tempo.mjs:320`) e na defesa
+  (`c.centelha * (c.regrasCentelha` em `scripts/lib-tempo.mjs:278`). Registrado em 28/09/2026, achado numa varredura pós
+  Fase 1/2 da Reforma da Centelha (não fazia parte da lista explícita do despacho: "calc.ts,
+  lance.ts, grid.astro, motor.mjs, artes-grid-mesa.ts"). Este motor (inlinado sem alteração
+  dentro de `combate-tempo-bench.html` por `gen-bench-tempo.mjs`, e usado também por
+  `scripts/sim-ticks.mjs`) não separa Atributo de Habilidade, só guarda a soma `ah`: portar a
+  fórmula nova (2×menor(Centelha,Habilidade)) pede saber a Habilidade sozinha, o que quebra essa
+  representação. `scripts/cost-examples.mjs` (não gated pelo `validate`, conferidor manual das
+  tabelas de XP do capítulo XVIII) também soma Centelha à moda antiga em `defesaMental`/
+  `defesaSocial` (mas corretamente NÃO mexe em `energia`/`mana`, que ficam de fora da Reforma por
+  decisão do próprio despacho). Decidir se vale a pena reestruturar `lib-tempo.mjs` para carregar
+  Atributo e Habilidade separados, ou se essa bancada fica deliberadamente na régua antiga
+  (registrado no próprio arquivo).
+- [ ] **K36 · [DECIDIR] Agarrar não tem regra escrita em lugar nenhum.**
+  `src/content/chapters/acoes-corpo-e-movimento.md:271` remete Agarrar/imobilizar/derrubar para
+  o capítulo de Combate, mas `combate.md` não tem essa seção, e `regras.json` não tem chave
+  nenhuma para isso. É uma lacuna livro→livro (o capítulo remetido não existe), não só
+  livro→código: não há fórmula nem texto para o motor aplicar, porque não há fórmula nem texto
+  em lugar algum. Achado no levantamento de limites de 28/09/2026
+  (`docs/calibracao/discussao/inventario-limites.md`, grupo a). Não escrever a regra aqui:
+  aguardar o texto do autor.
