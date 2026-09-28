@@ -183,16 +183,47 @@ export interface Raspao {
   armadura: QAArmadura;
 }
 
-/** As duas contas do Quase-Acerto, juntas: quem ataca com quê, contra que couro. */
+/**
+ * A base da Margem e do raspão, que sai do ENCONTRO e não de um dos dois lados sozinho.
+ *
+ * FONTE ÚNICA da conta do raspão (Regra do Quase-Acerto, 27/09/2026, e a Centelha do atacante
+ * somando desde a Reforma da Centelha, 28/09/2026): `src/lib/lance.ts` reexporta esta função
+ * (que só existe aqui) para `grid.astro`/`motor.mjs` continuarem chamando por
+ * `quaseAcertoDoEncontro`, sem duas cópias da fórmula. O Vigor não entra.
+ */
+export function quaseAcertoDoEncontro(entrada: {
+  atacante: { qaArmaBonus: number; qaArmaDano: number; centelha: number };
+  alvo: { qaArmaduraBonus: number; qaArmaduraReducao: number; centelha: number };
+}): { margem: number; dano: number } {
+  return {
+    margem: entrada.atacante.qaArmaBonus + entrada.alvo.qaArmaduraBonus,
+    dano: Math.max(0, entrada.atacante.qaArmaDano - entrada.alvo.qaArmaduraReducao
+      + entrada.atacante.centelha - entrada.alvo.centelha),
+  };
+}
+
+/**
+ * As duas contas do Quase-Acerto, para o card FORA DE COMBATE (sem alvo real).
+ *
+ * Decisão do autor (28/09/2026): o card mostra o raspão com a Centelha do DONO da ficha somando
+ * (o termo do atacante) e a Centelha do alvo tratada como 0 (não há alvo real para descontar);
+ * quem lê o card sabe, pela nota ao lado do número, que um alvo Desperto/Herói/etc. descontaria
+ * dali. Passa pela MESMA `quaseAcertoDoEncontro` que resolve o combate de verdade, sem
+ * reimplementar a fórmula uma terceira vez.
+ */
 export function quaseAcerto(
-  atacante: { arma?: string | null; dano?: string | null },
+  atacante: { arma?: string | null; dano?: string | null; centelha?: number },
   alvo: { armaduras?: { classe?: string | null }[] | null },
 ): Raspao {
   const arma = qaDaArma(atacante?.arma, atacante?.dano);
   const armadura = qaDeArmaduras(alvo?.armaduras);
+  const encontro = quaseAcertoDoEncontro({
+    atacante: { qaArmaBonus: arma.bonus, qaArmaDano: arma.dano, centelha: atacante?.centelha ?? 0 },
+    alvo: { qaArmaduraBonus: armadura.bonus, qaArmaduraReducao: armadura.reducao, centelha: 0 },
+  });
   return {
-    margem: arma.bonus + armadura.bonus,
-    dano: Math.max(0, arma.dano - armadura.reducao),
+    margem: encontro.margem,
+    dano: encontro.dano,
     ignoraSoak: Q.ignoraSoak !== false,
     arma, armadura,
   };

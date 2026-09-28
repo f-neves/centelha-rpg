@@ -43,7 +43,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 6,
+   "esquiva": 0,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -169,7 +171,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 10,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 10,
@@ -366,7 +370,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 5,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 6,
@@ -502,7 +508,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 4,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 7,
@@ -738,7 +746,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 6,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 8,
@@ -1036,8 +1046,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 5,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 9,
@@ -1202,7 +1213,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 4,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 7,
@@ -1326,7 +1339,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "integridade": 9,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 11,
@@ -1578,8 +1593,8 @@
   },
   "pericias": {
    "prontidao": 4,
-   "esquiva": 5,
-   "integridade": 7,
+   "integridade": 4,
+   "sociabilidade": 3,
    "furtividade": 6
   },
   "vontade": 6,
@@ -1708,7 +1723,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 8,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 8,
@@ -2006,8 +2023,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 8,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 9,
@@ -2132,7 +2150,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "integridade": 15,
+   "esquiva": 2,
+   "integridade": 8,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 12,
@@ -2454,7 +2474,8 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 6,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -2575,6 +2596,7 @@
   },
   "pericias": {
    "prontidao": 1,
+   "esquiva": 1,
    "furtividade": 0
   },
   "vontade": 6,
@@ -2698,7 +2720,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 6,
+   "esquiva": 0,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 8,
@@ -2842,7 +2866,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 4,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 10,
@@ -2980,7 +3006,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 4,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -3375,7 +3403,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 7,
@@ -3649,8 +3678,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 8,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -3814,7 +3844,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 4,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -3939,8 +3971,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 8,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 9,
@@ -4305,7 +4338,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 6,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -4429,7 +4463,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 10,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 10,
@@ -4559,8 +4595,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 8,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 9,
@@ -4859,7 +4896,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -5109,7 +5148,9 @@
   },
   "pericias": {
    "prontidao": 5,
-   "integridade": 9,
+   "esquiva": 3,
+   "integridade": 6,
+   "sociabilidade": 3,
    "furtividade": 2
   },
   "vontade": 8,
@@ -5482,7 +5523,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 7,
@@ -5601,8 +5643,8 @@
   },
   "pericias": {
    "prontidao": 4,
-   "esquiva": 2,
-   "integridade": 7,
+   "integridade": 6,
+   "sociabilidade": 3,
    "furtividade": 2
   },
   "vontade": 7,
@@ -6076,7 +6118,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 4,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 10,
@@ -6197,8 +6241,8 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 2,
-   "integridade": 7,
+   "integridade": 6,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -6445,7 +6489,8 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 5,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 7,
@@ -6693,8 +6738,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
+   "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -6811,7 +6857,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -6944,8 +6992,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 8,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -7329,7 +7378,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 7,
@@ -7471,8 +7521,8 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 2,
-   "integridade": 7,
+   "integridade": 6,
+   "sociabilidade": 4,
    "furtividade": 2
   },
   "vontade": 7,
@@ -7600,7 +7650,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 6,
@@ -7845,7 +7897,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "integridade": 11,
+   "esquiva": 2,
+   "integridade": 6,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 10,
@@ -8033,7 +8087,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 12,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 11,
@@ -8287,6 +8343,7 @@
   },
   "pericias": {
    "prontidao": 0,
+   "esquiva": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -8416,7 +8473,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 4,
+   "esquiva": 2,
+   "integridade": 3,
+   "sociabilidade": 3,
    "furtividade": 2
   },
   "vontade": 7,
@@ -8544,7 +8603,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 7,
@@ -8666,7 +8726,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 5,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -8792,7 +8853,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 6,
@@ -9026,7 +9089,8 @@
   "pericias": {
    "prontidao": 0,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 7,
@@ -9151,7 +9215,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 12,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 11,
@@ -9331,8 +9397,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
+   "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 9,
@@ -9503,8 +9570,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 1,
-   "integridade": 13,
+   "esquiva": 2,
+   "integridade": 7,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 11,
@@ -9634,8 +9702,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 1,
-   "integridade": 12,
+   "esquiva": 2,
+   "integridade": 6,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 11,
@@ -9809,7 +9878,9 @@
   },
   "pericias": {
    "prontidao": 4,
-   "integridade": 15,
+   "esquiva": 3,
+   "integridade": 8,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 12,
@@ -10027,7 +10098,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 10,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 10,
@@ -10156,7 +10229,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 10,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 10,
@@ -10336,7 +10411,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 5,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 5
   },
   "vontade": 7,
@@ -10514,8 +10590,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 8,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 9,
@@ -10799,7 +10876,8 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 6,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -10956,7 +11034,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 5,
+   "esquiva": 0,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 9,
@@ -11078,7 +11158,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 9,
+   "esquiva": 0,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 11,
@@ -11272,7 +11354,9 @@
   },
   "pericias": {
    "prontidao": 1,
+   "esquiva": 0,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -11476,7 +11560,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "integridade": 14,
+   "esquiva": 0,
+   "integridade": 7,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 12,
@@ -11694,7 +11780,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 9,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 11,
@@ -11870,7 +11958,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 9,
+   "esquiva": 0,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 11,
@@ -12088,7 +12178,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "integridade": 11,
+   "esquiva": 0,
+   "integridade": 6,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 12,
@@ -12290,7 +12382,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 4,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 10,
@@ -12473,7 +12567,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 4,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 4
   },
   "vontade": 7,
@@ -12615,8 +12711,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 9,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 4
   },
   "vontade": 9,
@@ -12780,8 +12877,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 9,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -12905,7 +13003,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -13026,7 +13126,8 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 6,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -13150,8 +13251,8 @@
   },
   "pericias": {
    "prontidao": 4,
-   "esquiva": 5,
-   "integridade": 8,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -13276,7 +13377,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -13397,8 +13500,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 8,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 9,
@@ -13682,7 +13786,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -13806,7 +13912,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 8,
@@ -13958,7 +14066,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -14081,7 +14191,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -14201,7 +14313,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -15402,7 +15516,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 11,
+   "esquiva": 2,
+   "integridade": 6,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 10,
@@ -15693,7 +15809,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 10,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 10,
@@ -15862,7 +15980,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "integridade": 4,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 5,
@@ -15971,8 +16091,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 9,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 9,
@@ -16400,7 +16521,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 7,
@@ -16517,7 +16639,8 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 5,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -16884,8 +17007,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 9,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 9,
@@ -17019,7 +17143,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 6,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -17146,8 +17272,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 1,
-   "integridade": 13,
+   "esquiva": 2,
+   "integridade": 7,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 11,
@@ -17273,7 +17400,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 8,
+   "esquiva": 0,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 9,
@@ -17454,8 +17583,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 4,
-   "integridade": 8,
+   "esquiva": 3,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 4
   },
   "vontade": 9,
@@ -17738,7 +17868,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 4,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 10,
@@ -17976,7 +18108,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -18224,6 +18358,7 @@
   },
   "pericias": {
    "prontidao": 0,
+   "esquiva": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -18348,8 +18483,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 1,
-   "integridade": 13,
+   "esquiva": 2,
+   "integridade": 7,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 11,
@@ -18527,7 +18663,8 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 6,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 7,
@@ -18685,7 +18822,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 5,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 6,
@@ -18842,8 +18981,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 5,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 9,
@@ -18968,7 +19108,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -19232,8 +19374,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 0,
-   "integridade": 9,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 8,
@@ -19386,7 +19529,8 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 7,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -19544,7 +19688,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 4,
+   "esquiva": 0,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -19684,7 +19830,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 4,
+   "esquiva": 0,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -19813,8 +19961,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
+   "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -19935,7 +20084,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "integridade": 12,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 11,
@@ -20347,6 +20498,7 @@
   },
   "pericias": {
    "prontidao": 1,
+   "esquiva": 0,
    "furtividade": 1
   },
   "vontade": 8,
@@ -20468,6 +20620,7 @@
   },
   "pericias": {
    "prontidao": 1,
+   "esquiva": 0,
    "furtividade": 1
   },
   "vontade": 8,
@@ -20592,6 +20745,7 @@
   },
   "pericias": {
    "prontidao": 1,
+   "esquiva": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -20720,6 +20874,7 @@
   },
   "pericias": {
    "prontidao": 1,
+   "esquiva": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -20844,6 +20999,7 @@
   },
   "pericias": {
    "prontidao": 1,
+   "esquiva": 0,
    "furtividade": 1
   },
   "vontade": 8,
@@ -21084,7 +21240,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 6,
+   "esquiva": 0,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 8,
@@ -21359,7 +21517,9 @@
   },
   "pericias": {
    "prontidao": 4,
-   "integridade": 12,
+   "esquiva": 0,
+   "integridade": 7,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 12,
@@ -21564,8 +21724,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 9,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -21686,7 +21847,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 6,
@@ -22052,7 +22215,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 6,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -22201,7 +22365,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 10,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 10,
@@ -22363,7 +22529,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -22730,7 +22898,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 6,
@@ -23107,7 +23277,8 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -23237,7 +23408,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 4
   },
   "vontade": 6,
@@ -23360,8 +23533,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 1,
-   "integridade": 13,
+   "esquiva": 2,
+   "integridade": 7,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 11,
@@ -23500,7 +23674,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 2,
-   "integridade": 8,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 9,
@@ -23625,8 +23800,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 5,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -23752,7 +23928,8 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 6,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -24245,7 +24422,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "integridade": 11,
+   "esquiva": 0,
+   "integridade": 6,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 12,
@@ -24422,8 +24601,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 5,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 9,
@@ -24803,7 +24983,8 @@
   "pericias": {
    "prontidao": 3,
    "esquiva": 2,
-   "integridade": 9,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -25218,6 +25399,7 @@
   },
   "pericias": {
    "prontidao": 0,
+   "esquiva": 0,
    "furtividade": 3
   },
   "vontade": 6,
@@ -25614,7 +25796,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 6,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 11,
@@ -25817,8 +26001,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 9,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -25947,6 +26132,7 @@
   },
   "pericias": {
    "prontidao": 0,
+   "esquiva": 0,
    "furtividade": 1
   },
   "vontade": 6,
@@ -26068,7 +26254,8 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -26452,8 +26639,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 5,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -27058,7 +27246,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "integridade": 8,
+   "esquiva": 3,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 8,
@@ -27335,7 +27525,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 6,
@@ -27477,7 +27669,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 10,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 10,
@@ -27603,7 +27797,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 14,
+   "esquiva": 2,
+   "integridade": 7,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 12,
@@ -27896,7 +28092,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 7,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 8,
@@ -28061,7 +28259,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 5,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 7,
@@ -28186,7 +28385,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -28307,7 +28508,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 4,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -28455,7 +28658,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 6,
@@ -28593,7 +28798,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 5
   },
   "vontade": 6,
@@ -28719,8 +28926,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 5,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -28848,7 +29056,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -28991,7 +29201,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -29480,7 +29692,8 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -29610,7 +29823,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 8,
+   "esquiva": 0,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -29789,8 +30004,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 9,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 9,
@@ -29917,7 +30133,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 10,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 10,
@@ -30103,7 +30321,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 10,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 10,
@@ -30217,7 +30437,8 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 2,
-   "integridade": 9,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -30337,7 +30558,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "integridade": 12,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 11,
@@ -30461,7 +30684,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 9,
+   "esquiva": 0,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 11,
@@ -30589,7 +30814,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 10,
@@ -30711,7 +30938,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 10,
+   "esquiva": 2,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 4
   },
   "vontade": 10,
@@ -30882,6 +31111,7 @@
   },
   "pericias": {
    "prontidao": 0,
+   "esquiva": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -31133,7 +31363,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 10,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 10,
@@ -31569,7 +31801,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 4,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 7,
@@ -31814,8 +32048,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 5,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -31960,8 +32195,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 5,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -32208,7 +32444,8 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 2,
-   "integridade": 9,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 6
   },
   "vontade": 9,
@@ -32376,7 +32613,9 @@
   },
   "pericias": {
    "prontidao": 4,
-   "integridade": 15,
+   "esquiva": 1,
+   "integridade": 8,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 12,
@@ -32915,7 +33154,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 4
   },
   "vontade": 6,
@@ -33149,6 +33390,7 @@
   },
   "pericias": {
    "prontidao": 0,
+   "esquiva": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -33274,7 +33516,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 5,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 5
   },
   "vontade": 7,
@@ -33439,7 +33682,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 6,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 8,
@@ -33829,7 +34074,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 11,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 10,
@@ -34239,8 +34486,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
+   "esquiva": 1,
    "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 9,
@@ -34760,7 +35008,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 7,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 10,
@@ -34887,7 +35137,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -35013,7 +35264,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 7,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 8,
@@ -35414,7 +35667,8 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 7,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 4
   },
   "vontade": 7,
@@ -35568,7 +35822,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 10,
@@ -35813,8 +36069,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 8,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 9,
@@ -35942,7 +36199,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 7,
@@ -36325,7 +36583,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 7,
@@ -36460,7 +36719,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -36585,7 +36845,9 @@
   },
   "pericias": {
    "prontidao": 4,
-   "integridade": 15,
+   "esquiva": 2,
+   "integridade": 8,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 12,
@@ -36915,7 +37177,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 6,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 7,
@@ -37093,7 +37356,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 4
   },
   "vontade": 6,
@@ -37210,8 +37475,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 10,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 9,
@@ -37385,7 +37651,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 6,
@@ -37506,8 +37774,9 @@
   },
   "pericias": {
    "prontidao": 4,
-   "esquiva": 1,
-   "integridade": 14,
+   "esquiva": 2,
+   "integridade": 8,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 11,
@@ -37640,7 +37909,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 2,
+   "esquiva": 0,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 12,
@@ -37819,7 +38090,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 4,
+   "esquiva": 0,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 10,
@@ -37944,7 +38217,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 4,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -38066,7 +38341,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -38423,7 +38700,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 7,
+   "esquiva": 0,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 8,
@@ -38945,7 +39224,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -39326,8 +39607,9 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 0,
-   "integridade": 11,
+   "esquiva": 1,
+   "integridade": 7,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -39852,7 +40134,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 11,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 10,
@@ -40078,7 +40362,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 7,
@@ -40325,7 +40610,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -40695,6 +40982,7 @@
   },
   "pericias": {
    "prontidao": 1,
+   "esquiva": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -40825,7 +41113,9 @@
   },
   "pericias": {
    "prontidao": 2,
-   "integridade": 10,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 10,
@@ -40989,7 +41279,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 6,
+   "integridade": 4,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 7,
@@ -41146,7 +41437,8 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 5,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -41270,7 +41562,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 6,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 8,
@@ -41414,8 +41708,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 5,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 9,
@@ -41545,7 +41840,9 @@
   },
   "pericias": {
    "prontidao": 1,
-   "integridade": 3,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 8,
@@ -41706,7 +42003,8 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 5,
+   "integridade": 3,
+   "sociabilidade": 0,
    "furtividade": 2
   },
   "vontade": 7,
@@ -41836,7 +42134,8 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 2,
+   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 7,
@@ -41961,6 +42260,7 @@
   },
   "pericias": {
    "prontidao": 1,
+   "esquiva": 0,
    "furtividade": 1
   },
   "vontade": 6,

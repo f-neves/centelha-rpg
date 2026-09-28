@@ -56,12 +56,17 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
         data-caminhos={caminhosDe(i).join(' ')} data-artes={artesDe(i).join(' ')}
         data-nome={i.nome} data-en={i.nomeIngles || i.nome} data-pv={i.combate.pv} data-defesa={i.combate.defesa} data-centelha={i.centelha} data-ameaca={i.ameaca}
         data-txt={(i.nome + ' ' + (i.nomeIngles || '') + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (i.habilidades || []).map((h: any) => h.nome + ' ' + h.descricao).join(' ') + ' ' + (i.poderes || []).map((p: any) => p.id ? (p.nome + ' ' + p.efeito) : (p.efeito + ' ' + p.alvo)).join(' ')).toLowerCase()}
-        data-besta={JSON.stringify({ id: i.id, nome: i.nome, conceito: i.conceito, ameaca: i.ameaca, centelha: i.centelha, porte: i.porte, atributos: i.atributos, vontade: i.vontade, /* Integridade é ENTRADA do gerador e não sobrevive no monsters.json. Recupera-se
-           invertendo a Defesa Mental (= Integridade + Raciocínio + Vontade + Centelha),
-           senão o modal abriria com 0 e mostraria uma Defesa Mental que não é a da criatura. */
-        integridade: Math.max(0, (i.combate.defesaMental === '-' ? 0 : i.combate.defesaMental) - (i.atributos?.raciocinio ?? 0) - (i.vontade ?? 0) - (i.centelha ?? 0)),
-        /* Prontidão: mesma história, invertida da Iniciativa (= 1d6 + Raciocínio + Prontidão). */
-        prontidao: Math.max(0, Number(/\+\s*(\d+)/.exec(String(i.combate.iniciativa))?.[1] ?? 0) - (i.atributos?.raciocinio ?? 0)), fraquezas: i.combate.fraquezas || [], resistencias: i.combate.resistencias || [], notas: i.notas || '', armadura: 'nenhuma', ataquesLivro: (i.combate.ataques || []).map((x: any) => ({ nome: x.nome, pool: x.pool, dano: x.dano, speed: x.speed })) })}>
+        data-besta={JSON.stringify({ id: i.id, nome: i.nome, conceito: i.conceito, ameaca: i.ameaca, centelha: i.centelha, porte: i.porte, atributos: i.atributos, vontade: i.vontade,
+        /* Esquiva, Integridade, Sociabilidade e Prontidão são ENTRADA do gerador e não
+           sobrevivem no monsters.json: FONTE ÚNICA da estimativa é `periciasDe()`
+           (scripts/lib-bestiario.mjs), a mesma que grava o campo `pericias` publicado aqui.
+           Antes este componente reimplementava a inversão da Integridade por conta própria,
+           com a fórmula antiga (flat), e foi a causa exata do `Def. Mental: card ≠ modal` que
+           o `test-editor-bestiario.mjs` pegou. */
+        pericias: i.pericias || {},
+        integridade: i.pericias?.integridade ?? 0,
+        prontidao: i.pericias?.prontidao ?? 0,
+        fraquezas: i.combate.fraquezas || [], resistencias: i.combate.resistencias || [], notas: i.notas || '', armadura: 'nenhuma', ataquesLivro: (i.combate.ataques || []).map((x: any) => ({ nome: x.nome, pool: x.pool, dano: x.dano, speed: x.speed })) })}>
 
         <figure class={`arte${i.imagem ? '' : ' sem-arte'}`} data-cent={i.centelha}>
           {i.imagem

@@ -27,7 +27,7 @@
 // por teste; todas foram pegas por comparação contra o comportamento real.
 import { rolarExpr } from './rolagem';
 import { acaso } from './acaso';
-import { errouPor, saidaDoAtaque, type Saida } from './quase-acerto';
+import { errouPor, saidaDoAtaque, quaseAcertoDoEncontro, type Saida } from './quase-acerto';
 
 /** A fonte de dados de um lance: ou o acaso, ou os dados que já caíram. */
 export interface FonteDeDados {
@@ -232,22 +232,13 @@ export function resolverGolpe(entrada: EntradaLance, fonte: FonteDeDados = fonte
 /**
  * A base da Margem e do raspão, que sai do encontro e não de um dos dois lados.
  *
- * FONTE ÚNICA da conta do raspão (Regra do Quase-Acerto, 27/09/2026): `grid.astro` e
- * `motor.mjs` chamam esta função em vez de reimplementar a fórmula. O Vigor não entra.
+ * MUDOU DE CASA em 28/09/2026: a função em si mora em `quase-acerto.ts` (que também é quem o
+ * card fora de combate usa, `quaseAcerto()`), e este módulo só reexporta, para
+ * `grid.astro`/`motor.mjs` continuarem chamando por aqui sem precisar mudar o import. FONTE
+ * ÚNICA da conta do raspão (Regra do Quase-Acerto, 27/09/2026, Centelha do atacante desde a
+ * Reforma da Centelha, 28/09/2026): ninguém mais reimplementa esta fórmula.
  */
-export function quaseAcertoDoEncontro(entrada: {
-  atacante: Pick<EntradaLance['atacante'], 'qaArmaBonus' | 'qaArmaDano' | 'centelha'>;
-  alvo: Pick<EntradaLance['alvo'], 'qaArmaduraBonus' | 'qaArmaduraReducao' | 'centelha'>;
-}): { margem: number; dano: number } {
-  return {
-    margem: entrada.atacante.qaArmaBonus + entrada.alvo.qaArmaduraBonus,
-    // Reforma da Centelha (28/09/2026, item 5/6 da Fase 1): a Centelha do
-    // ATACANTE agora soma ao raspão, ao lado da Centelha do alvo (que
-    // continua descontando, desde 27/09/2026).
-    dano: Math.max(0, entrada.atacante.qaArmaDano - entrada.alvo.qaArmaduraReducao
-      + entrada.atacante.centelha - entrada.alvo.centelha),
-  };
-}
+export { quaseAcertoDoEncontro };
 
 /** A fonte de acaso do módulo, reexportada para quem semeia o harness. */
 export { acaso };

@@ -249,3 +249,10 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   com Armas/Esquiva na bancada de combate físico. A comparação certa é por PACOTE completo
   (guerreiro com Armas e uma arma contra mago com Arte e Acerto Arcano), e essa etapa ainda não
   chegou: fica registrada para quando a bancada cobrir Artes, não para esta rodada.
+- [ ] **A31 · [DECIDIR] Energia/Mana fora da Reforma da Centelha, avaliar com as Artes.**
+  Decisão do autor, 28/09/2026 (mensagem "Decisões do autor: energia/mana fora, quaseAcerto()
+  vira fonte única"): a Reforma da Centelha não tocou `centelhaMult` de `derivados.energia`/
+  `derivados.mana` (`regras.json`), que continuam com a régua antiga (`Energia = ... + Centelha
+  × 2`, `Mana = Centelha × 2 + Vontade`). Texto do autor, verbatim: "a energia cresce com a
+  Centelha e as Artes agora também ganham dano +C e Dificuldade de resistência com 2 × min(C,
+  nível da Arte); avaliar o conjunto quando as Artes forem calibradas".

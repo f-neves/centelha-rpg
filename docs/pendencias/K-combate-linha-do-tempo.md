@@ -475,7 +475,7 @@ revistos por ela.
   pergunta em aberto é outra: uma camisa de malha (leve) VESTIDA SOB uma placa (pesada) deveria
   ganhar alguma coisa além da maior Redução das duas, ou a regra do empilhar já fecha o caso?
   Não decidir aqui: só registrar a pergunta.
-- [ ] **K34 · [DECIDIR] `quaseAcerto()` (`src/lib/quase-acerto.ts:187-199`), o card de ficha fora
+- [ ] **K34 · [DECIDIR] `quaseAcerto()` (`src/lib/quase-acerto.ts:214-230`), o card de ficha fora
   de combate, continua sem Centelha nenhuma.** Registrado em 28/09/2026, Fase 1 da Reforma da
   Centelha (achado do Arquiteto, confirmado pela Executora, não tocado por instrução do
   despacho). A função usada pelos cards de ficha fora de combate (sem um alvo real do outro

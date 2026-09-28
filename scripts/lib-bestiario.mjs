@@ -169,6 +169,23 @@ function furtividadeDe(x, slug) {
   for (const t of (x.tags || [])) v += (FURT.tags || {})[t] || 0;
   return Math.max(0, Math.min(6, v));
 }
+/**
+ * Inverte "base × mult + resto + 2×menor(Centelha,base)" (a forma de Defesa/Defesa Mental/Defesa
+ * Social depois da Reforma da Centelha, 28/09/2026) para `base` (Esquiva/Integridade/
+ * Sociabilidade), a Habilidade que não sobrevive no JSON publicado.
+ *
+ * ANTES esta conta era `valor − resto − Centelha` (o termo antigo, flat): achado ao investigar
+ * o `Def. Mental: card ≠ modal` do `test-editor-bestiario.mjs` (o card já usava a fórmula nova
+ * desde a Fase 1 da Reforma, e esta inversão continuava lendo pela antiga, estimando uma
+ * Integridade alta demais). Duas hipóteses (a Centelha satura o teto da Habilidade, ou não)
+ * concordam exatamente no ponto de virada (base === Centelha), então a escolha nunca é ambígua.
+ */
+function inverteComCentelha(valor, resto, mult, C) {
+  const alvo = valor - resto;
+  const satura = (alvo - 2 * C) / mult;
+  if (satura >= C) return satura;
+  return alvo / (mult + 2);
+}
 export function periciasDe(x, slug) {
   const at = x.atributos || {};
   const C = x.centelha || 0;
@@ -181,11 +198,11 @@ export function periciasDe(x, slug) {
   const p = {
     prontidao: bonusIni == null ? undefined : inteiro(bonusIni - (at.raciocinio || 0)),
     esquiva: typeof x.defesa === 'number'
-      ? inteiro(x.defesa / 2 - (at.destreza || 0) - C / 2) : undefined,
+      ? inteiro(inverteComCentelha(x.defesa, 2 * (at.destreza || 0), 2, C)) : undefined,
     integridade: typeof x.defesaMental === 'number'
-      ? inteiro(x.defesaMental - (at.raciocinio || 0) - V - C) : undefined,
+      ? inteiro(inverteComCentelha(x.defesaMental, (at.raciocinio || 0) + V, 1, C)) : undefined,
     sociabilidade: typeof x.defesaSocial === 'number'
-      ? inteiro((x.defesaSocial - C) / 2 - (at.compostura || 0)) : undefined,
+      ? inteiro(inverteComCentelha(x.defesaSocial, 2 * (at.compostura || 0), 2, C)) : undefined,
     furtividade: furtividadeDe(x, slug),
   };
   const saida = {};
