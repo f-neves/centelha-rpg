@@ -159,6 +159,68 @@ daqui). Os passos exatos (SQL Editor, o `create or replace`, a conferência ante
 peça de teste, o registro em `Pendencias.md` como as migrações 29/30) estão no final do próprio
 arquivo `migracao-40.sql`, para o autor rodar à mão.
 
+## Item 8 · commit único, portão inteiro, relato final
+
+**Commit**: `1b933b5` (main, empurrado). 36 arquivos, os itens 2/3/4/4b/6/7 juntos, mais os
+documentos que o `reapontar.mjs` teve que ajustar por causa das linhas deslocadas em
+`grid.astro`/`motor.mjs`/`artes-grid-mesa.ts` (`ESTADO.md`, `CATALOGO.md`, `VOZ.md`, `REVISORA.md`,
+`CONJURACAO.md`, `CONTEXTO.md`, `Grid_Mobile.md`, `Auditoria_Tecnica.md`,
+`docs/pendencias/I-mesa-tempo-real.md`, `docs/pendencias/L-simulacao-simultaneo.md`). Os itens 1
+e 5 já tinham entrado em commits anteriores desta mesma rodada (`ba01ce6`, `826aa64`, `f0155b5`,
+`ffbeee0`).
+
+**A bancada `--n 1000` caiu duas vezes antes de fechar**: a primeira, cortada pelo meu próprio
+`timeout` de shell antes de terminar (sem perda, só recomeço); a segunda, morta pelo próprio
+Claude Code por falta de memória da máquina (aviso explícito, instruindo a não reiniciar
+sozinha). A terceira, sem `timeout` na frente e sem nada competindo, terminou de verdade. Ficou
+confirmado, a pedido do autor, que `calibrar.mjs` **não suporta mesclar duas passadas menores**
+(cada execução calcula tudo do zero e fecha um relatório; a semente não tem eixo de "continuar de
+onde parou", e as estatísticas finais não são somáveis a partir de dois relatórios já fechados):
+não precisou, porque a terceira tentativa não caiu, mas fica registrado caso a pergunta volte.
+
+**O que cada teste mostrou**:
+- `node scripts/test-lance.mjs`: **0 divergências, 56 asserções** (era 46 antes desta rodada; as
+  10 novas são a seção sintética da Regra do Quase-Acerto). A fixture re-derivada (390 lances)
+  bate exatamente com a contagem que eu já tinha relatado antes da decisão.
+- `node scripts/test-quase-acerto.mjs`: verde, com o exemplo do capítulo XII atualizado (couro
+  passa de 4 para 3 de raspão).
+- `node scripts/test-espelho.mjs`: **16 células, zero divergência**, incluindo as duas que
+  divergiam de verdade antes do conserto do item 3 (Tick 25-26 da célula `4x4-media`/`4x4-aberto`,
+  semente 771107).
+- `node scripts/test-golpe-caido.mjs`, `test-l84-caidofila-mesa.mjs`, `test-l84-levantar-mesa.mjs`:
+  verdes, sem contradizer o L84.
+- `node scripts/test-artes-grid.mjs`, `test-arte-na-mesa.mjs`: verdes.
+- `npm run validate`: verde (achou e eu corrigi duas coisas no caminho: o carimbo da migração 40
+  sem rodar `gen-carimbo-migracoes.mjs`, e uma tolerância não declarada que meu próprio comentário
+  disparou sem querer, "não travado" casando com o gatilho `não trava` do portão de tolerâncias:
+  reescrito para "sem o piso de zero").
+- `npx tsc --noEmit`: limpo.
+- `npm run build`: 111 páginas, conferido no `dist/regras/quase-acerto/index.html` que o texto
+  novo (Redução 1 na leve, o desconto de Centelha, o piso do acerto) está no HTML gerado.
+
+**Contagem de fixtures do item 2e**: **390 de 1315 lances (29,7%)**, todos por causa do item 2c (o
+piso). Os itens 2a/2b não têm como aparecer no replay da fixture (ela não guarda a Centelha do
+alvo nem testemunha a Redução da leve); cobertos por 7 asserções sintéticas novas em
+`test-lance.mjs`.
+
+**Resumo curto dos números novos** (bancada, `--n 1000`, `docs/calibracao/15-linha-de-base.md`):
+- Duração (mediana de ações até cair, soma 8, gambeson): espada longa vai de 10 ações em C0 até
+  ficar imune na prática em C5-C6 (100% censura em 1000 Ticks); montante fica entre 4 e 10 ações
+  em toda a faixa de Centelha, sem imunidade.
+- Viés de lado: pequeno em geral (a maioria das células fica abaixo de 3 pontos percentuais),
+  compatível com o esperado depois do conserto do item 3, mas este relatório não guarda a medição
+  de ANTES do conserto (a rodada anterior media os cenários V1/V2/V3), então não dá para citar uma
+  queda numérica.
+- +1 Força com Montante: força por Tick entre 1,8 e 3,8 a favor de quem tem o bônus, em todas as
+  nove células testadas (monotônico).
+- Briga (desarmado) contra Armas: força por Tick entre 0,00 e 0,33 (Armas vence quase sempre;
+  desarmado só tem chance real de vitória em soma 12 Centelha 1, 4,8%).
+
+**É seguro dar `/clear`**: sim. O commit está feito e empurrado, o portão inteiro está verde, e
+este relato tem tudo que a Revisora precisa para conferir (as decisões, os números, os arquivos
+tocados, o que ficou sintético em vez de testemunhado pela fixture). Nada fica pendente em
+memória de trabalho não commitada.
+
 ### Item 2 · achados a mais (ripple), todos corrigidos
 
 - **`quase-acerto.ts` `quaseAcerto()` é uma QUARTA implementação** da conta do raspão (a
