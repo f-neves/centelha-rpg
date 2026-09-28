@@ -280,6 +280,27 @@ const opcoesEditor = {
     color: #fff; background: color-mix(in srgb, var(--accent-strong) 90%, #000);
     box-shadow: 0 2px 5px rgba(0,0,0,.4);
   }
+  /* Fixar para comparar: canto superior direito da imagem, livre (ameaça e Centelha
+     ocupam os dois cantos da esquerda). Estrela vazia/cheia é o mesmo padrão visual da
+     Ameaça (glifo, sem SVG externo). */
+  .besta-pin {
+    position: absolute; right: .5rem; top: .5rem; z-index: 3;
+    width: 2.1rem; height: 2.1rem; display: flex; align-items: center; justify-content: center;
+    border: none; border-radius: 50%; cursor: pointer;
+    background: color-mix(in srgb, #1a120a 55%, transparent);
+    color: #f3e8cf; font-size: var(--fs-h3); line-height: 1;
+    box-shadow: 0 2px 5px rgba(0,0,0,.4);
+    transition: background .15s, color .15s, transform .15s;
+  }
+  .besta-pin:hover { background: color-mix(in srgb, #1a120a 75%, transparent); transform: scale(1.08); }
+  .besta-pin.ativo { background: var(--gold); color: #1a120a; }
+  .besta-pin.ativo:hover { background: color-mix(in srgb, var(--gold) 85%, #000); }
+  /* Marca visual no card inteiro, para achar as fixadas rolando uma lista comprida sem
+     precisar olhar o botão de cada uma. */
+  .besta.fixada {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--gold) 55%, transparent);
+  }
 
   .besta-corpo { display: flex; flex-direction: column; padding: .7rem .9rem .85rem; }
   .besta-head { display: flex; flex-wrap: wrap; gap: .38rem; align-items: center; }
@@ -470,6 +491,29 @@ const opcoesEditor = {
 </style>
 
 <script>
+  // ---- fixar criatura para comparar (localStorage, sem conta/Supabase) ----
+  const PIN_KEY = 'centelha:bestiario:fixadas';
+  const PIN_MAX = 6;
+  function lerFixadas(): string[] {
+    try { return JSON.parse(localStorage.getItem(PIN_KEY) || '[]'); } catch { return []; }
+  }
+  function salvarFixadas(a: string[]) {
+    try { localStorage.setItem(PIN_KEY, JSON.stringify(a)); } catch { /* aba anônima, storage bloqueado: fica sem guardar */ }
+  }
+  let fixadas = lerFixadas();
+  const list = document.querySelector<HTMLElement>('.besta-list')!;
+
+  // Uma criatura fixada numa visita anterior pode estar fora das 40 primeiras, ainda
+  // dentro de <template>. Monta SÓ ela agora, antes de `cards`/`apply()`/`sortCards()`
+  // rodarem pela primeira vez: o carregamento preguiçoso continua valendo para o resto.
+  if (fixadas.length) {
+    const alvo = new Set(fixadas);
+    for (const t of Array.from(list.querySelectorAll<HTMLTemplateElement>('template.besta-adiada'))) {
+      const art = t.content.querySelector<HTMLElement>('.besta');
+      if (art && alvo.has(art.id)) t.replaceWith(t.content);
+    }
+  }
+
   let cards = Array.from(document.querySelectorAll<HTMLElement>('.besta'));
   const count = document.querySelector<HTMLElement>('.bf-count')!;
   const val = (s: string) => (document.querySelector(`[data-bf="${s}"]`) as HTMLInputElement | HTMLSelectElement)?.value.trim().toLowerCase() ?? '';
@@ -492,7 +536,20 @@ const opcoesEditor = {
         (!proeza || caminhos.includes(proeza)) &&
         (!feit || artes.includes(feit)) &&
         (!text || c.dataset.txt!.includes(text));
-      c.style.display = ok ? '' : 'none'; if (ok) n++;
+      // Fixada aparece mesmo fora do filtro (o pedido do autor: comparar duas criaturas
+      // sem trocar de página). O contador de "adversários" segue contando só quem passa
+      // no filtro de verdade, para não fingir que o filtro achou mais do que achou.
+      const fixadaC = fixadas.includes(c.id);
+      c.style.display = (ok || fixadaC) ? '' : 'none'; if (ok) n++;
+      c.classList.toggle('fixada', fixadaC);
+      const pinBtn = c.querySelector<HTMLButtonElement>('.besta-pin');
+      if (pinBtn) {
+        pinBtn.classList.toggle('ativo', fixadaC);
+        pinBtn.setAttribute('aria-pressed', fixadaC ? 'true' : 'false');
+        pinBtn.title = fixadaC ? 'Desfixar' : 'Fixar para comparar';
+        const ic = pinBtn.querySelector('.besta-pin-ic');
+        if (ic) ic.textContent = fixadaC ? '★' : '☆';
+      }
     }
     count.textContent = `${n} adversário${n === 1 ? '' : 's'}`;
   }
@@ -500,7 +557,6 @@ const opcoesEditor = {
   apply();
 
   // Ordenação (complementar: desempate sempre por nome A→Z)
-  const list = document.querySelector<HTMLElement>('.besta-list')!;
   const ordKey = document.getElementById('ord-key') as HTMLSelectElement;
   const ordDir = document.getElementById('ord-dir') as HTMLButtonElement;
   const ordArw = ordDir.querySelector('.ord-arw') as HTMLElement;
@@ -511,6 +567,14 @@ const opcoesEditor = {
     const key = ordKey.value;
     const num = NUM.includes(key);
     cards.sort((a, b) => {
+      // Fixadas vão para o topo, antes de qualquer critério do <select>, na ordem em que
+      // foram fixadas (a posição no array do localStorage já é essa ordem).
+      const pa = fixadas.indexOf(a.id), pb = fixadas.indexOf(b.id);
+      if (pa !== -1 || pb !== -1) {
+        if (pa === -1) return 1;
+        if (pb === -1) return -1;
+        return pa - pb;
+      }
       let cmp = num
         ? (parseFloat(a.dataset[key] || '0') - parseFloat(b.dataset[key] || '0'))
         : coll.compare(a.dataset[key] || '', b.dataset[key] || '');
@@ -558,8 +622,12 @@ const opcoesEditor = {
     const restam = montarFatia(24);
     cards = Array.from(document.querySelectorAll<HTMLElement>('.besta'));
     apply();
+    // Reordena a CADA fatia, não só no fim: `montarFatia` reinsere cada ficha na
+    // posição em que ela nasceu no HTML (alfabética), e sem isto uma fixada saltava
+    // para fora do topo por 1-3 s (o tempo de montar as 268) antes de o `sortCards`
+    // final trazê-la de volta. Achado testando o item 4 do despacho de fixar criatura.
+    sortCards();
     if (restam) requestAnimationFrame(montarAosPoucos);
-    else sortCards();
   }
   // Chegou por permalink (#mon-troll): a ficha pode ser uma das adiadas, e o
   // navegador já passou pela hora de rolar até ela. Monta tudo de uma vez e
@@ -650,6 +718,30 @@ const opcoesEditor = {
   });
   ib.addEventListener('click', (e) => { if (e.target === ib || (e.target as HTMLElement).classList.contains('ib-fechar')) fecharInfo(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !ib.hidden) fecharInfo(); });
+
+  // Fixar/desfixar. Delegado pelo mesmo motivo do lightbox e do infobox: fichas
+  // adiadas ainda não existem quando este bloco roda a primeira vez.
+  list.addEventListener('click', async (e) => {
+    const b = (e.target as HTMLElement).closest<HTMLButtonElement>('.besta-pin');
+    if (!b) return;
+    const card = b.closest('.besta') as HTMLElement | null;
+    if (!card) return;
+    const idx = fixadas.indexOf(card.id);
+    if (idx === -1) {
+      if (fixadas.length >= PIN_MAX) {
+        const { uiAviso } = await import('../lib/ui-dialog');
+        await uiAviso(`Só dá para fixar ${PIN_MAX} criaturas ao mesmo tempo. Desfixe uma para trocar.`,
+          { titulo: 'Limite de fixadas' });
+        return;
+      }
+      fixadas.push(card.id);
+    } else {
+      fixadas.splice(idx, 1);
+    }
+    salvarFixadas(fixadas);
+    sortCards();
+    apply();
+  });
 
   // ==================================================== adicionar à mesa
   /**

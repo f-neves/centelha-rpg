@@ -75,6 +75,13 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
             : <span class="capitular cinzel" aria-hidden="true">{i.nome.trim()[0]}</span>}
           <span class="arte-ameaca" title={`Ameaça ${i.ameaca}/6`}>{stars(i.ameaca)}</span>
           {i.centelha > 0 && <span class="arte-cent" title={`Centelha ${i.centelha}`}><CentelhaSpark /> {i.centelha}</span>}
+          {/* Fixar para comparar: estado mora só em localStorage (src/pages/bestiario.astro,
+              PIN_KEY), nunca no servidor. O botão nasce sempre "não fixado"; o script da
+              página decide o estado real ao montar (para as fichas adiadas em <template>
+              também, antes de qualquer filtro/ordenação rodar). */}
+          <button class="besta-pin" type="button" aria-pressed="false" title="Fixar para comparar">
+            <span class="besta-pin-ic" aria-hidden="true">☆</span>
+          </button>
         </figure>
 
         <div class="besta-corpo">
