@@ -155,5 +155,109 @@ aqui, como pedido.
 - `periciasDe()` (inimigos.json): a inversão usa o termo de Centelha linear antigo; inofensivo
   hoje (nenhuma ficha tem pericias), mas ficaria errado se alguma ganhasse.
 
-Continuando para a Fase 2 (livro e página do Mestre) em seguida, na mesma sessão, com commit
-separado ao fim dela.
+## Fase 2 · Livro e página do Mestre (commit `9270be6f`)
+
+Arquivos: `src/content/chapters/centelha.md`, `combate.md`, `coracao-do-sistema.md`,
+`defesas.md`, `quase-acerto.md`, `src/data/regras.json`, `src/pages/mestre.astro`.
+
+- Reescrita a descrição da Centelha: item 1 do "O que a Centelha faz" passa a descrever o teto
+  pela Habilidade e o termo sem teto no dano.
+- Reescritas as fórmulas de Ataque, Defesa e Dano em `combate.md`, e as três Defesas em
+  `defesas.md`, para `2×menor(Centelha,Habilidade)` (jogada/Defesa) e `+Centelha` sem teto
+  (dano). Exemplo do Kael recalculado: Esquiva 17→20, Defesa Social 7→4, Defesa Mental 13→10,
+  conferido linha a linha contra `scripts/test-kael.mjs` (que já tinha esses números desde a
+  Fase 1).
+- Completada em `quase-acerto.md` a prosa do raspão que a Fase 1 tinha deixado só na fórmula
+  (linha 22): agora o parágrafo e o exemplo numérico explicam que a Centelha do atacante soma e
+  a do alvo desconta.
+- Acrescentados os três degraus novos de Dificuldade (35 Lendário, 40 Mítico, 45+ Semidivino) em
+  `regras.json.dificuldade`, na tabela de `coracao-do-sistema.md` e nas tabelas/descrições da
+  página `/mestre` (`DESC_DIF`).
+- `validate`, `tsc`, `build --force` (outra frente buildando `dist/` ao mesmo tempo; build
+  simultâneo estava dando "Duplicate id" fantasma, resolvido com `--force`) verdes. Prova no
+  `dist/` gerado: as quatro páginas (`centelha`, `combate`, `defesas`, `coracao-do-sistema`) e
+  `/mestre` trazem o texto novo. Fase 2 é só texto; `espelho` não se aplica.
+
+## Fase 3 · Briga (commit `7bbe593d`)
+
+Arquivos: `src/data/armas.json`, `combate-tempo-bench.html` (regenerado),
+`docs/pendencias/D-proezas-tecnicas.md` (D13).
+
+- `armas.json`, entrada `desarmado`: `acerto` 0→1, `defesaArma` 0→1. Dano (`1d6−2 + Força`),
+  tipo (Impacto) e Ticks (5) sem mudança, como o despacho manda ("continuam").
+- Registrada a pendência da Proeza "punho como arma média" (D13), não implementada.
+- `validate`, `tsc`, `build --force` e `espelho` (17 células, zero divergência) verdes.
+
+## Correção pós Fase 2/3 (commit `914ad390`) · varredura de "onde mais a Centelha entra"
+
+Ao reler o despacho completo (item 7 da Fase 1, "relate cada lugar tocado"), achei dois pontos
+que a varredura inicial da Fase 1 tinha deixado passar:
+
+- **`src/lib/bestia-editor.ts`** (o preview de ataque/dano do editor de bestiário no navegador):
+  `rolagemAtaque()` somava Centelha pela regra antiga (flat, sem teto de Habilidade) e não somava
+  Centelha nenhuma no dano. Corrigido para usar `ataqueCentelha()` de `calc.ts` (a mesma função
+  que `calc.ts`/`combate-resumo.ts` usam) e somar Centelha no dano, igual ao gerador
+  (`lib-bestiario.mjs`).
+- **`scripts/lib-tempo.mjs`** (o motor que calibra `combate-tempo-bench.html` e
+  `scripts/sim-ticks.mjs`): continua na regra antiga, mas por um motivo estrutural, não por
+  descuido: ele só guarda a soma Atributo+Habilidade (`ah`), nunca os dois valores separados, e
+  a fórmula nova precisa da Habilidade sozinha para capear. Não toquei o código (decisão de
+  regra/arquitetura fora do despacho); corrigi só o comentário do arquivo, que dizia seguir
+  `regras.json`/`defesas.md`/`centelha.md` (deixou de ser verdade). Registrado como **K35** em
+  `docs/pendencias/K-combate-linha-do-tempo.md`, junto com `scripts/cost-examples.mjs` (o
+  conferidor manual de XP, fora do `validate`), que tem o mesmo problema.
+- Corrigida prosa que ficou parada com a fórmula antiga: a "Folha de referência" de
+  `defesas.md`, a frase do "bônus de nível" em `centelha.md`, e quatro notas de `centelhaMult`
+  em `regras.json` (`defesa`/`defesaMental`/`defesaSocial`/`ataque`), marcadas `DESATUALIZADO`
+  com a explicação de por que o campo continua ali (`lib-tempo.mjs`/`cost-examples.mjs` ainda o
+  leem).
+- Registrada **D14** (custo de Habilidades a revisar depois da Parte B, adiado pelo próprio
+  despacho, texto verbatim das "Pendências a registrar").
+- **Migração 40 (arredondamento exato)**: não precisou de entrada nova em `docs/pendencias/`.
+  Já está documentada dentro do próprio `supabase/migracao-40.sql`, com as duas opções (a)/(b)
+  relatadas para o autor escolher e nenhuma aplicada.
+- `validate`, `tsc`, `build --force` e `espelho` verdes.
+
+## Fase 4 · consertos da bancada · confirmado coberto (sem commit novo)
+
+Os três itens desta fase (ciclo por Tick pós-`ajustarAnatomia`, `atributo+1-destreza-espada` de
+volta à seção E, teto de Pressão confirmado ligado) batem com os três já fechados no despacho
+anterior, commit `de35d9c2`. Não refeito; só confirmado, como já registrado na seção "Fase 4"
+mais acima.
+
+## Fase 5 · Fichas de referência e medição (commit `de96fa77`)
+
+Arquivos: `scripts/sim/calibrar.mjs`, `docs/calibracao/16-linha-de-base-centelha.md` (novo).
+
+- `calibrar.mjs` ganhou um modo `--centelha` que substitui a grade de soma 6/8/12 pelas quatro
+  fichas de referência do despacho (Típica espada, Típica montante, Especialista ofensivo,
+  Defensivo), Centelha 0-6, nas três armaduras. As seções A-E (soma-based) e o relatório 15
+  ficaram intactos: é um modo à parte, não uma reescrita do arquivo inteiro.
+- Duas suposições que o despacho não escreve, registradas no próprio relatório 16 (seção
+  "Suposições não escritas") e aqui: (1) o Especialista ofensivo usa soma 12 (Destreza+Armas)
+  também em Centelha 0, porque o texto diz "desde C1" sem dar o número de C0; (2) Especialista e
+  Defensivo lutam com espada longa, a única arma que o despacho amarra por nome às Típicas.
+- Achado no caminho: `golpeExato()`/`testes()` (a "camada exata" da bancada) reimplementavam a
+  conta do raspão por conta própria, sem o termo de Centelha do atacante (só o do alvo, e ainda
+  assim só nos casos sintéticos). Não quebrava nenhum teste porque os pontos de concordância
+  usavam Centelha 0 dos dois lados, e o teste manual usava atacante e alvo com a mesma Centelha
+  (o que cancelava os dois termos por coincidência). Corrigido: os dois caminhos agora chamam
+  `L0.quaseAcertoDoEncontro()` (a fonte única, `src/lib/lance.ts`) em vez de reimplementar.
+- **Item g (conferência de sanidade), o número que a cláusula "pare e relate" cobra prova**: o
+  erudito de Centelha 6 (Destreza 2, Armas 0, Esquiva 0) perde contra a Típica espada de
+  Centelha 0 (0,0% de vitória, n=1000); com Armas 2 e Esquiva 2 passa a resistir (99,4% de
+  vitória). Direção bate com o esperado; não precisou parar.
+- Rodado com `--n` baixo (5) para validar a forma do relatório, depois `--n 1000` uma vez para a
+  entrega final, marcada RASCUNHO.
+- Fase 5 é só bancada: nenhuma regra nem catálogo foi alterado. `validate` e `tsc` verdes;
+  `espelho` não se aplica (nenhum código de resolução de combate foi tocado).
+
+## É seguro dar `/clear`
+
+Sim. As cinco fases estão commitadas e empurradas para `main` (`adfbb5d7`, `9270be6f`,
+`7bbe593d`, `914ad390`, `de96fa77`), o portão (`validate`/`tsc`/`build`/`espelho`, conforme cada
+fase pedia) está verde em todas, e as pendências que exigiam decisão de regra (o `quase-acerto.ts`
+sem Centelha, a jogada só-de-Atributo, o bestiário sem `pericias`, `lib-tempo.mjs`/
+`cost-examples.mjs` desalinhados, o custo de Habilidades, a Proeza "punho como arma média") estão
+registradas em `docs/pendencias/` (D7 fechado por substituição; D12, D13, D14, B15, K34, K35
+novas), não decididas por conta própria. Nada fica pendente de commit nem de push nesta sessão.
