@@ -40,7 +40,14 @@ const arg = (nome, padrao) => {
 };
 const N = Number.parseInt(arg('--n', '1000'), 10);
 const SEMENTE = Number.parseInt(arg('--semente', '20260927'), 10);
-const SAIDA = path.resolve(RAIZ, arg('--saida', 'docs/calibracao/15-linha-de-base.md'));
+// FASE 5 (Reforma da Centelha, 28/09/2026): grade de fichas de referência, relatório PRÓPRIO
+// (16), sem tocar o relatório 15 nem as seções A-E da grade de soma 6/8/12 (que continuam
+// servindo a próxima calibração de Proezas). `--centelha` troca o padrão de `--saida` e desvia
+// para `rodarFase5()`, definida perto do fim do arquivo.
+const CENTELHA_MODE = process.argv.includes('--centelha');
+const SAIDA = path.resolve(RAIZ, arg('--saida', CENTELHA_MODE
+  ? 'docs/calibracao/16-linha-de-base-centelha.md'
+  : 'docs/calibracao/15-linha-de-base.md'));
 const TESTE = process.argv.includes('--teste');
 const PULAR = new Set((arg('--pular', '') || '').split(',').map((x) => x.trim()).filter(Boolean));
 const ANTERIOR = fs.existsSync(SAIDA) ? fs.readFileSync(SAIDA, 'utf8') : null;
@@ -398,6 +405,16 @@ function golpeExato(A, B, defesaPerdida = 0) {
   const denA = 6 ** at.dados, denD = 6 ** da.dados;
   const defesa = B.defesa - defesaPerdida;
   const dano = new Map(); let hit = 0, raspao = 0;
+  // O RASPÃO PASSA PELA FONTE ÚNICA (`quaseAcertoDoEncontro`, `src/lib/lance.ts`), e não por
+  // uma conta manual: a Reforma da Centelha (28/09/2026) somou a Centelha do ATACANTE ao lado
+  // da do alvo, e uma reimplementação aqui já tinha ficado sem os dois termos antes disto
+  // (achado ao preparar a Fase 5, coberto porque os dois pontos de concordância de `testes()`
+  // usam Centelha 0 dos dois lados, e o teste manual usa A.centelha === B.centelha, que cancela
+  // por coincidência).
+  const qaEncontro = L0.quaseAcertoDoEncontro({
+    atacante: { qaArmaBonus: A.qa.armaBonus, qaArmaDano: A.qa.armaDano, centelha: A.centelha },
+    alvo: { qaArmaduraBonus: B.qa.armaduraBonus, qaArmaduraReducao: B.qa.armaduraReducao, centelha: B.centelha },
+  });
   for (let r = 0; r < ad.length; r++) {
     const ca = Number(ad[r]); if (!ca) continue;
     const total = r + at.flat;
@@ -408,15 +425,15 @@ function golpeExato(A, B, defesaPerdida = 0) {
       const denM = denD;
       // O PISO DO ITEM 2C É INCONDICIONAL na regra viva desde 27/09/2026: o
       // acerto nunca dói menos que o raspão do mesmo golpe.
-      const piso = Math.max(0, A.qa.armaDano - B.qa.armaduraReducao);
+      const piso = qaEncontro.dano;
       for (let d = 0; d < distD.length; d++) {
         const normal = Math.max(0, d + da.flat - (B.soak[A.tipoDano] || 0));
         const liq = Math.max(normal, piso);
         dano.set(liq, (dano.get(liq) || 0) + ca * Number(distD[d]) / denM);
       }
-    } else if (defesa - total + 1 <= A.qa.armaBonus + B.qa.armaduraBonus) {
+    } else if (defesa - total + 1 <= qaEncontro.margem) {
       raspao += ca;
-      const liq = Math.max(0, A.qa.armaDano - B.qa.armaduraReducao);
+      const liq = qaEncontro.dano;
       dano.set(liq, (dano.get(liq) || 0) + ca);
     } else dano.set(0, (dano.get(0) || 0) + ca);
   }
@@ -464,34 +481,44 @@ function testes() {
   const assert = (ok, msg) => { if (!ok) throw new Error(msg); };
   const A = base(8, 3, 'espada-longa', 'gambeson');
   const B = base(8, 3, 'espada-longa', 'gambeson');
+  const qaAB = L0.quaseAcertoDoEncontro({
+    atacante: { qaArmaBonus: A.qa.armaBonus, qaArmaDano: A.qa.armaDano, centelha: A.centelha },
+    alvo: { qaArmaduraBonus: B.qa.armaduraBonus, qaArmaduraReducao: B.qa.armaduraReducao, centelha: B.centelha },
+  });
   const casos = [
     { nome: 'erro', a: 10, d: 5, defesaPerdida: 0, esperado: ['erro', 0] },
-    { nome: 'raspão', a: B.defesa - A.qa.armaBonus - B.qa.armaduraBonus + 1, d: 5, defesaPerdida: 0,
-      esperado: ['raspao', Math.max(0, A.qa.armaDano - B.qa.armaduraReducao - B.centelha)] },
+    { nome: 'raspão', a: B.defesa - qaAB.margem + 1, d: 5, defesaPerdida: 0,
+      esperado: ['raspao', qaAB.dano] },
     { nome: 'acerto', a: B.defesa + 7, d: 9, defesaPerdida: 0,
-      esperado: ['acerto', Math.max(Math.max(0, 9 - B.soak.corte), Math.max(0, A.qa.armaDano - B.qa.armaduraReducao - B.centelha))] },
+      esperado: ['acerto', Math.max(Math.max(0, 9 - B.soak.corte), qaAB.dano)] },
   ];
   for (const c of casos) {
     const entrada = {
       atacante: { ataque: A.ataque, dano: A.dano, ajusteDados: 0, ajusteFlat: 0, penDados: [0], qaArmaBonus: A.qa.armaBonus, qaArmaDano: A.qa.armaDano },
       alvo: { defesaBase: B.defesa, ferimento: 0, condicoesDefesa: 0, defesaPerdida: c.defesaPerdida, soak: B.soak.corte, pv: B.pvMax, pvMax: B.pvMax, qaArmaduraBonus: B.qa.armaduraBonus, qaArmaduraReducao: B.qa.armaduraReducao, centelha: B.centelha },
-      golpeIndice: 0, margemQA: A.qa.armaBonus + B.qa.armaduraBonus,
-      danoQA: Math.max(0, A.qa.armaDano - B.qa.armaduraReducao - B.centelha), tipoDano: 'corte', modManual: 0,
+      golpeIndice: 0, margemQA: qaAB.margem,
+      danoQA: qaAB.dano, tipoDano: 'corte', modManual: 0,
     };
     const out = L0.resolverGolpe(entrada, { rolar: (() => { const q = [{ total: c.a, rolls: [] }, { total: c.d, rolls: [] }]; let i = 0; return () => q[i++]; })() });
     assert(out.veredito === c.esperado[0], `${c.nome}: veredito ${out.veredito}`);
     assert(out.danoLiquido === c.esperado[1], `${c.nome}: dano ${out.danoLiquido}`);
   }
   // A camada exata e resolverGolpe concordam em dois pontos de probabilidade,
-  // pois ambos usam a mesma desigualdade, Margem, QA e Absorção (com Centelha
-  // zero, para o exato não precisar carregar o desconto de alvo).
+  // pois ambos usam a mesma desigualdade, Margem, QA e Absorção, e agora os
+  // dois lados PASSAM pela mesma fonte única (`quaseAcertoDoEncontro`), então a
+  // Centelha do atacante e a do alvo (aqui iguais, X === X) entram nos dois
+  // exatamente do mesmo jeito.
   for (const [s, c] of [[6, 1], [12, 5]]) {
     const X = base(s, c), ex = golpeExato(X, X, 0);
     let hit = 0, qa = 0, dano = 0; const distA = d6Dist(parseExpr(X.ataque).dados), denA = 6 ** parseExpr(X.ataque).dados;
     const at = parseExpr(X.ataque), da = parseExpr(X.dano), distD = d6Dist(da.dados), denD = 6 ** da.dados;
+    const qaXX = L0.quaseAcertoDoEncontro({
+      atacante: { qaArmaBonus: X.qa.armaBonus, qaArmaDano: X.qa.armaDano, centelha: X.centelha },
+      alvo: { qaArmaduraBonus: X.qa.armaduraBonus, qaArmaduraReducao: X.qa.armaduraReducao, centelha: X.centelha },
+    });
     for (let a = 0; a < distA.length; a++) for (let d = 0; d < distD.length; d++) {
       const w = Number(distA[a]) * Number(distD[d]) / denA / denD;
-      const entrada = { atacante: { ataque: X.ataque, dano: X.dano, ajusteDados: 0, ajusteFlat: 0, penDados: [0], qaArmaBonus: X.qa.armaBonus, qaArmaDano: X.qa.armaDano }, alvo: { defesaBase: X.defesa, ferimento: 0, condicoesDefesa: 0, defesaPerdida: 0, soak: X.soak.corte, pv: X.pvMax, pvMax: X.pvMax, qaArmaduraBonus: X.qa.armaduraBonus, qaArmaduraReducao: X.qa.armaduraReducao, centelha: 0 }, golpeIndice: 0, margemQA: X.qa.armaBonus + X.qa.armaduraBonus, danoQA: Math.max(0, X.qa.armaDano - X.qa.armaduraReducao), tipoDano: 'corte', modManual: 0 };
+      const entrada = { atacante: { ataque: X.ataque, dano: X.dano, ajusteDados: 0, ajusteFlat: 0, penDados: [0], qaArmaBonus: X.qa.armaBonus, qaArmaDano: X.qa.armaDano }, alvo: { defesaBase: X.defesa, ferimento: 0, condicoesDefesa: 0, defesaPerdida: 0, soak: X.soak.corte, pv: X.pvMax, pvMax: X.pvMax, qaArmaduraBonus: X.qa.armaduraBonus, qaArmaduraReducao: X.qa.armaduraReducao, centelha: X.centelha }, golpeIndice: 0, margemQA: qaXX.margem, danoQA: qaXX.dano, tipoDano: 'corte', modManual: 0 };
       let i = 0; const rolls = [{ total: a + at.flat, rolls: [] }, { total: d + da.flat, rolls: [] }];
       const out = L0.resolverGolpe(entrada, { rolar: () => rolls[i++] });
       if (out.veredito === 'acerto') hit += w; else if (out.veredito === 'raspao') qa += w;
@@ -507,6 +534,299 @@ function testes() {
 }
 
 if (TESTE) { testes(); process.exit(0); }
+
+// ============================================================ FASE 5 · fichas de referência
+//
+// Substitui a grade de soma 6/8/12 por QUATRO fichas de referência (Típica espada, Típica
+// montante, Especialista ofensivo, Defensivo), Centelha 0-6, nas três armaduras (despacho
+// "Reforma da Centelha, Briga, consertos e fichas de referência", Fase 5, 28/09/2026). Não
+// altera `regras.json` nem dado de personagem: só a bancada.
+//
+// Índice 0..6 = Centelha 0..6 nas tabelas abaixo (o despacho já escreve os números nessa ordem).
+const TIPICA_ESPADA = {
+  destreza: [5, 5, 6, 6, 6, 6, 6],
+  armas: [4, 5, 6, 6, 6, 6, 6],
+  esquiva: [2, 3, 3, 4, 5, 5, 6],
+  vigor: [3, 3, 4, 4, 5, 5, 6],
+  arma: 'espada-longa',
+};
+const TIPICA_MONTANTE = {
+  // "igual, com Força no lugar da Destreza para atacar e causar dano": copia a coluna de
+  // Destreza da típica espada, agora em Força.
+  forca: TIPICA_ESPADA.destreza,
+  destreza: [3, 4, 4, 5, 5, 6, 6],
+  armas: TIPICA_ESPADA.armas,
+  esquiva: TIPICA_ESPADA.esquiva,
+  vigor: TIPICA_ESPADA.vigor,
+  arma: 'montante',
+};
+const ARQUETIPOS = ['espada', 'montante', 'especialista', 'defensivo'];
+
+/**
+ * Ficha de um arquétipo de referência, por Centelha (0-6) e armadura.
+ *
+ * DUAS SUPOSIÇÕES NÃO ESCRITAS NO DESPACHO, registradas aqui e repetidas no relatório: (1) o
+ * Especialista ofensivo usa soma 12 (Destreza+Armas, 6/6) também em C0: o texto diz "desde C1"
+ * sem dar o número de C0; (2) Especialista e Defensivo lutam com espada longa (a única arma que
+ * o despacho amarra a um arquétipo com nome é a espada/montante das duas Típicas); Força e
+ * Destreza de ataque de ambos usam a mesma convenção do resto do arquivo (a=Destreza, salvo
+ * onde o despacho já diz o contrário).
+ */
+function fichaArquetipoDe({ arquetipo, centelha, armadura }) {
+  const i = centelha;
+  const f = copiar(BASE);
+  f.centelha = centelha;
+  let arma = 'espada-longa';
+  if (arquetipo === 'espada' || arquetipo === 'montante') {
+    const d = arquetipo === 'espada' ? TIPICA_ESPADA : TIPICA_MONTANTE;
+    const destreza = d.destreza[i];
+    const forca = d.forca ? d.forca[i] : destreza;
+    f.attrs = { ...f.attrs, destreza, forca, vigor: d.vigor[i] };
+    f.skills = { ...f.skills, armas: d.armas[i], esquiva: d.esquiva[i], atletismo: d.esquiva[i] };
+    arma = d.arma;
+  } else if (arquetipo === 'especialista') {
+    f.attrs = { ...f.attrs, destreza: 6, forca: 6, vigor: 3 };
+    f.skills = { ...f.skills, armas: 6, esquiva: 1, atletismo: 1 };
+  } else if (arquetipo === 'defensivo') {
+    const esquivaVal = Math.max(3, centelha);
+    f.attrs = { ...f.attrs, destreza: 6, forca: 6, vigor: TIPICA_ESPADA.vigor[i] };
+    f.skills = { ...f.skills, armas: 3, esquiva: esquivaVal, atletismo: esquivaVal };
+  } else throw new Error(`arquétipo desconhecido: ${arquetipo}`);
+  f.conjuntos = [{
+    ativo: true, habil: { ref: `a:${arma}` },
+    inabil: { ref: arma === 'espada-longa' ? 'a:adaga' : 'nada' },
+  }];
+  f.equip = { armaduras: armadura === 'nenhuma' ? [] : [{ base: armadura, vestida: true }] };
+  return f;
+}
+
+/** A ficha "erudito" do item g: uma pessoa de Centelha 6 sem treino de combate (ou quase). */
+function fichaEruditoDe({ armas = 0, esquiva = 0 } = {}) {
+  const f = copiar(BASE);
+  f.centelha = 6;
+  f.attrs = { ...f.attrs, destreza: 2, forca: 2, vigor: 3 };
+  f.skills = { ...f.skills, armas, esquiva, atletismo: esquiva };
+  f.conjuntos = [{ ativo: true, habil: { ref: 'a:espada-longa' }, inabil: { ref: 'a:adaga' } }];
+  f.equip = { armaduras: [] };
+  return f;
+}
+
+/** As mesmas 12 alavancas do item c da Fase 5, escritas exatamente como o despacho as nomeia. */
+const ALAVANCAS_F5 = [
+  'ataque+1', 'defesa+1', 'dano+1', 'dano+1d6', 'absorcao+1', 'pv+5',
+  'preparo-1', 'recuperacao-1', 'habilidade+1', 'esquiva+1',
+  'atributo+1-destreza-espada', 'atributo+1-forca-montante',
+];
+
+function perfilArquetipoDe({ arquetipo, centelha, armadura, alavanca = null }) {
+  const ficha = fichaArquetipoDe({ arquetipo, centelha, armadura });
+  if (alavanca === 'habilidade+1') ficha.skills.armas += 1;
+  if (alavanca === 'esquiva+1') ficha.skills.esquiva += 1;
+  if (alavanca === 'atributo+1-destreza-espada' && arquetipo === 'espada') ficha.attrs.destreza += 1;
+  if (alavanca === 'atributo+1-forca-montante' && arquetipo === 'montante') ficha.attrs.forca += 1;
+  const r = L0.resumoCombatePC(ficha);
+  const arma = L0.armaDoCatalogo(r.arma);
+  const classe = L0.classeDeTempo(r.arma, null, null);
+  const velocidade = L0.velocidadeDaArma(r.arma, 5);
+  const pvExtra = alavanca === 'pv+5' ? 5 : 0;
+  const soakExtra = alavanca === 'absorcao+1' ? 1 : 0;
+  const soak = Object.fromEntries(Object.entries(r.soak).map(([k, v]) => [k, Math.max(0, v + soakExtra)]));
+  return {
+    nome: `${arquetipo} C${centelha}`,
+    arma: r.arma, classe, velocidade,
+    ataque: addExpr(r.ataque, { flat: alavanca === 'ataque+1' ? 1 : 0 }),
+    dano: addExpr(r.dano, { flat: alavanca === 'dano+1' ? 1 : 0, dados: alavanca === 'dano+1d6' ? 1 : 0 }),
+    tipoDano: tipoDaExpressao(r.dano) || 'impacto',
+    defesa: r.defesa + (alavanca === 'defesa+1' ? 1 : 0),
+    pvMax: BASE_PV + pvExtra,
+    soak, passo: r.passo,
+    alcanceHex: classe === 'haste' ? 2 : 1,
+    iniciativaBase: 6 + (r.atributos.raciocinio || 0),
+    raciocinio: r.atributos.raciocinio || 0,
+    qa: r.qa, centelha, alavanca,
+  };
+}
+
+function perfilEruditoDe(opts) {
+  const r = L0.resumoCombatePC(fichaEruditoDe(opts));
+  const classe = L0.classeDeTempo(r.arma, null, null);
+  const velocidade = L0.velocidadeDaArma(r.arma, 5);
+  return {
+    nome: `erudito(${opts.armas ?? 0}/${opts.esquiva ?? 0})`,
+    arma: r.arma, classe, velocidade,
+    ataque: r.ataque, dano: r.dano,
+    tipoDano: tipoDaExpressao(r.dano) || 'impacto',
+    defesa: r.defesa, pvMax: BASE_PV, soak: r.soak, passo: r.passo,
+    alcanceHex: 1,
+    iniciativaBase: 6 + (r.atributos.raciocinio || 0),
+    raciocinio: r.atributos.raciocinio || 0,
+    qa: r.qa, centelha: 6, alavanca: null,
+  };
+}
+
+function rodarFase5() {
+  console.log(`· Fase 5 (--n ${N}, semente ${SEMENTE})`);
+
+  // a. Duração entre iguais por Centelha, ficha e armadura.
+  const linhasA5 = [];
+  for (const arq of ARQUETIPOS) for (const c of CENTELHAS) for (const arm of ARMADURAS) {
+    const A = perfilArquetipoDe({ arquetipo: arq, centelha: c, armadura: arm });
+    const fi = rodarEspelho({ A, B: A }, N);
+    linhasA5.push([arq, c, arm, qs(fi.acoes), pct(fi.censura)]);
+  }
+  console.log('  · a (duração) concluído');
+
+  // b. Degrau automático X+1 contra X (força por Tick, vitória e IC).
+  const linhasB5 = [];
+  for (const arq of ARQUETIPOS) for (const arm of ARMADURAS) for (let x = 0; x < 6; x++) {
+    const A = perfilArquetipoDe({ arquetipo: arq, centelha: x + 1, armadura: arm });
+    const B = perfilArquetipoDe({ arquetipo: arq, centelha: x, armadura: arm });
+    const fi = rodarEspelho({ A, B }, N);
+    linhasB5.push([
+      arq, arm, `${x + 1}×${x}`, num(fi.forcaTick, 3), fi.discorda ? '⚑' : '',
+      icPct(fi.ic), pp(fi.vies), pct(fi.censura),
+    ]);
+  }
+  console.log('  · b (degrau automático) concluído');
+
+  // c. Alavancas nas fichas típicas (espada, montante) em C1/C3/C5.
+  const linhasC5 = [];
+  for (const arq of ['espada', 'montante']) for (const c of CS) {
+    const B = perfilArquetipoDe({ arquetipo: arq, centelha: c, armadura: 'gambeson' });
+    for (const al of ALAVANCAS_F5) {
+      const A = perfilArquetipoDe({ arquetipo: arq, centelha: c, armadura: 'gambeson', alavanca: al });
+      const fi = rodarEspelho({ A, B }, N);
+      linhasC5.push([
+        arq, c, al, num(fi.forcaTick, 3), fi.discorda ? '⚑' : '',
+        icPct(fi.ic), pp(fi.vies), pct(fi.censura),
+      ]);
+    }
+  }
+  console.log('  · c (alavancas) concluído');
+
+  // d. Espada contra montante (fichas típicas), por Tick.
+  const linhasD5 = [];
+  for (const c of CENTELHAS) {
+    const A = perfilArquetipoDe({ arquetipo: 'espada', centelha: c, armadura: 'gambeson' });
+    const B = perfilArquetipoDe({ arquetipo: 'montante', centelha: c, armadura: 'gambeson' });
+    const fi = rodarEspelho({ A, B }, N);
+    linhasD5.push([c, num(fi.forcaTick, 3), fi.discorda ? '⚑' : '', icPct(fi.ic), pp(fi.vies), pct(fi.censura)]);
+  }
+  console.log('  · d (espada×montante) concluído');
+
+  // e. Briga (soco novo) contra Armas (típica espada), sem armadura dos dois lados.
+  const linhasE5 = [];
+  for (const c of CENTELHAS) {
+    const briga = perfilBrigaDe({ soma: TIPICA_ESPADA.destreza[c] + TIPICA_ESPADA.armas[c], centelha: c });
+    const armas = perfilArquetipoDe({ arquetipo: 'espada', centelha: c, armadura: 'nenhuma' });
+    const fi = rodarEspelho({ A: briga, B: armas }, N);
+    linhasE5.push([c, num(fi.forcaTick, 3), fi.discorda ? '⚑' : '', icPct(fi.ic), pp(fi.vies), pct(fi.censura)]);
+  }
+  console.log('  · e (Briga×Armas) concluído');
+
+  // f. 1 contra 2 e 1 contra 3, com a típica espada: X+1 contra grupo de X; X+2 contra X.
+  const linhasF5 = [];
+  for (const [nB, delta, rotulo] of [[2, 1, 'X+1 vs 2×X'], [3, 1, 'X+1 vs 3×X'], [2, 2, 'X+2 vs 2×X'], [3, 2, 'X+2 vs 3×X']]) {
+    for (let x = 0; x + delta <= 6; x++) {
+      const A = perfilArquetipoDe({ arquetipo: 'espada', centelha: x + delta, armadura: 'gambeson' });
+      const B = perfilArquetipoDe({ arquetipo: 'espada', centelha: x, armadura: 'gambeson' });
+      const fi = rodarFiel({ A, B, nB }, N);
+      linhasF5.push([rotulo, x, fi.vitoriaA == null ? 'n/d' : pct(fi.vitoriaA), pct(fi.censura)]);
+    }
+  }
+  console.log('  · f (grupo) concluído');
+
+  // g. Conferência de sanidade: erudito de Centelha 6 sem treino vs a típica de Centelha 0;
+  // depois o mesmo erudito com Armas 2 e Esquiva 2. Teste de DIREÇÃO, não de número exato.
+  const tipicaC0 = perfilArquetipoDe({ arquetipo: 'espada', centelha: 0, armadura: 'nenhuma' });
+  const eruditoFraco = perfilEruditoDe({ armas: 0, esquiva: 0 });
+  const eruditoTreinado = perfilEruditoDe({ armas: 2, esquiva: 2 });
+  const fiFraco = rodarEspelho({ A: eruditoFraco, B: tipicaC0 }, Math.max(N, 200));
+  const fiTreinado = rodarEspelho({ A: eruditoTreinado, B: tipicaC0 }, Math.max(N, 200));
+  const perdeSemTreino = fiFraco.vitoriaA != null && fiFraco.vitoriaA < 0.5;
+  const resisteComTreino = fiTreinado.vitoriaA != null && fiTreinado.vitoriaA >= 0.5;
+  const direcaoOk = perdeSemTreino && resisteComTreino;
+  console.log(`  · g (sanidade) concluído${direcaoOk ? '' : ' · DIREÇÃO AO CONTRÁRIO DO ESPERADO'}`);
+  if (!direcaoOk) {
+    console.log(`    fraco: vitória A = ${fiFraco.vitoriaA}; treinado: vitória A = ${fiTreinado.vitoriaA}`);
+    console.log('    PARE E RELATE (cláusula do despacho, item g): não seguindo para o relatório.');
+    process.exitCode = 1;
+  }
+
+  const linhasG5 = [
+    ['sem treino (Armas 0, Esquiva 0)', pct(fiFraco.vitoriaA ?? 0), num(fiFraco.dirA.dano), num(fiFraco.dirB.dano), pct(fiFraco.censura), perdeSemTreino ? 'perde (esperado)' : 'NÃO perde (inesperado)'],
+    ['com Armas 2, Esquiva 2', pct(fiTreinado.vitoriaA ?? 0), num(fiTreinado.dirA.dano), num(fiTreinado.dirB.dano), pct(fiTreinado.censura), resisteComTreino ? 'resiste (esperado)' : 'NÃO resiste (inesperado)'],
+  ];
+
+  const md5 = `# 16 · Linha de base do combate por fichas de referência (Reforma da Centelha)
+
+28/09/2026 · **RASCUNHO DE MEDIÇÃO**, Fase 5 do despacho "Reforma da Centelha, Briga, consertos e
+fichas de referência". Nada deste relatório vale para preço antes da conferência da Revisora.
+${N} lutas em cada orientação de cada célula, semente mestre ${SEMENTE}.
+
+## Suposições não escritas no despacho (registradas para a Revisora corrigir se erradas)
+
+1. O **Especialista ofensivo** usa soma 12 (Destreza 6 + Armas 6) também em **Centelha 0**: o
+   despacho diz "soma principal 12 desde C1", sem dar o número de C0. Assumi 12 em toda a régua.
+2. **Especialista** e **Defensivo** lutam com **espada longa** (o despacho só amarra arma às duas
+   Típicas por nome). Força de ataque dos dois usa a mesma convenção do resto do arquivo
+   (atributo de ataque = Destreza, como as fichas de soma).
+3. O item **e** (Briga contra Armas) usa a mesma soma Destreza+Armas da Típica espada em cada
+   Centelha para o lado desarmado (não há uma "Típica de Briga" nomeada no despacho).
+4. O item **g** (erudito) roda sem armadura, Vigor 3; o despacho não especifica os dois.
+
+## a. Duração entre iguais, por Centelha, ficha e armadura
+
+${mdTabela(['arquétipo', 'C', 'armadura', 'ações p10/p50/p90', 'censura'], linhasA5)}
+
+## b. Degrau automático X+1 contra X
+
+${mdTabela(['arquétipo', 'armadura', 'confronto', 'força/Tick', '⚑', 'vitória A, IC95%', 'viés', 'censura'], linhasB5)}
+
+## c. Valor marginal das alavancas, nas fichas típicas (C1/C3/C5, gambeson)
+
+${mdTabela(['arquétipo', 'C', 'alavanca', 'força/Tick', '⚑', 'vitória A, IC95%', 'viés', 'censura'], linhasC5)}
+
+## d. Espada contra montante (fichas típicas), por Tick
+
+${mdTabela(['C', 'força/Tick (espada→montante)', '⚑', 'vitória espada, IC95%', 'viés', 'censura'], linhasD5)}
+
+## e. Briga (soco novo) contra Armas (típica espada), sem armadura
+
+${mdTabela(['C', 'força/Tick (Briga→Armas)', '⚑', 'vitória Briga, IC95%', 'viés', 'censura'], linhasE5)}
+
+## f. Um contra grupo, com a típica espada
+
+X é a Centelha do grupo (todos iguais); o único soma X+1 ou X+2.
+
+${mdTabela(['confronto', 'X do grupo', 'vitória do único', 'censura'], linhasF5)}
+
+## g. Conferência de sanidade
+
+Erudito de Centelha 6 (Destreza 2, sem treino de combate) contra a Típica espada de Centelha 0.
+Esperado: perde sem treino de Armas/Esquiva, resiste com Armas 2 e Esquiva 2.
+
+${mdTabela(['ficha do erudito', 'vitória do erudito', 'dano erudito→típica', 'dano típica→erudito', 'censura', 'direção'], linhasG5)}
+
+${direcaoOk ? '**Direção conferida: bate com o esperado.**' : '**ATENÇÃO: a direção NÃO bateu com o esperado. Ver console; isto é sinal de algo errado na Fase 1, não variação estatística.**'}
+
+## Procedência
+
+- \`node scripts/sim/calibrar.mjs --teste\`: golpes manuais e pontos de concordância entre a
+  camada exata e \`resolverGolpe\`, agora os dois passando pela mesma fonte única do raspão
+  (\`quaseAcertoDoEncontro\`, \`src/lib/lance.ts\`).
+- \`node scripts/sim/calibrar.mjs --centelha --n ${N}\`: comando desta medição.
+- Nenhuma regra nem catálogo foi alterado para produzir este relatório; só a bancada
+  (\`scripts/sim/calibrar.mjs\`) ganhou as fichas de referência da Fase 5.
+
+**Parada:** esta é a linha de base para revisão do simulador. As taxas de câmbio não devem ser
+decididas antes da conferência da Revisora.
+`;
+  fs.writeFileSync(SAIDA, md5, 'utf8');
+  console.log(`✓ relatório: ${path.relative(RAIZ, SAIDA)} (${N} lutas/célula)`);
+}
+
+if (CENTELHA_MODE) { testes(); rodarFase5(); process.exit(process.exitCode || 0); }
 
 // A FATIA MÍNIMA que a seção 7 precisa (SOMAS × CS, espada longa/gambeson):
 // roda SEMPRE, mesmo com B pulada, porque é barata (9 células) e o item 1/2/3
