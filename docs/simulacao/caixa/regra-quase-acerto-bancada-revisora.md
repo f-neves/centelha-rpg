@@ -120,3 +120,45 @@ não a faixa inteira desde meu último veredito), nenhum caminho sujo tocado.
 ## CI
 
 `1b933b5` e `d41483b`: `Validar dados e regras` **success**.
+
+## Adendo (28/09/2026) · fechamento da nota do item 3 · PROCEDE
+
+A nota acima ficou fechada. Commit `99652358` (mesclado em `cdf4a8c6`, sem conflito): cena nova
+`1v1-fatal-simultaneo` no espelho (`fatal` × `fatal`, semente 10, teto 20), com asserção própria
+confirmando que os dois lados derrubam um ao outro no mesmo Tick (12): exatamente o buraco de
+cobertura que eu tinha apontado. No caminho, achou um TERCEIRO lugar com o mesmo bug do item 3:
+o helper `E.devido` (dentro do bloco `ESPELHO_LIGADO`, `grid.astro`), que reimplementava a busca
+de golpe devido sem a exceção `DE_PE_AO_ABRIR`. Isso explica por que meu controle negativo
+anterior não conseguia fazer nada divergir: eu revertia `motor.mjs` e `grid.astro`
+(`golpeMaisCedo`/`golpeVencidoNaFaixa`), mas o PRÓPRIO DRIVER do espelho, por trás do bug dele
+mesmo, nunca chegava a pedir o segundo golpe do duplo abate para comparar.
+
+**Fiz meu próprio controle negativo, diferente do da Executora** (ela testou `motor.mjs` sozinho e
+`E.devido` sozinho; eu testei os TRÊS lugares revertidos JUNTOS, e depois só `E.devido` sozinho
+com os outros dois já corrigidos):
+
+1. **Os três revertidos ao mesmo tempo** (`motor.mjs` de volta a `dePe()` + `if (!vivo(c))
+   continue`, e as três ocorrências de `DE_PE_AO_ABRIR` em `grid.astro` voltando a `foraDaFila(c)`
+   puro): a cena nova falhou exatamente na asserção nova (`✘ os dois lados golpeiam e derrubam no
+   MESMO Tick`), com só 3 lances em vez de 4 nos dois lados (o segundo golpe do duplo abate
+   sumiu dos dois).
+2. **Só `E.devido` revertido**, com `motor.mjs` e as outras duas funções de `grid.astro` intactas:
+   a cena também falhou, mas de um jeito diferente e específico do DRIVER: `sem divergência`
+   ficou **vermelho** (mesa parou no Tick 12 com 3 lances, laço foi até o teto com 20 Ticks e 4
+   lances), reproduzindo com exatidão o padrão que a Executora descreveu ("mesa para no Tick 12,
+   laço vai até o teto"). Confirma que o achado dela é real e que os três lugares (não só dois)
+   precisavam do mesmo conserto.
+
+Revertido de volta nos dois casos, `node scripts/test-espelho.mjs` fecha limpo, incluindo a cena
+nova. `npm run validate`, `npx tsc --noEmit` verdes. Travessão zero no adendo (`e5b5df74..cdf4a8c6`).
+
+**Efeito colateral de `E.devido`, checado:** o objeto `E` que carrega esse método só existe dentro
+de `if (ESPELHO_LIGADO)` (a URL `?espelho=1`), e o método é exposto em `window.__ESPELHO.devido()`.
+O único chamador, no repositório inteiro, é `scripts/test-espelho.mjs` (dois `p.evaluate(() =>
+window.__ESPELHO.devido())`, o driver do próprio teste). Nenhuma tela que um jogador ou mestre
+real usa passa por esse helper. O achado corrige o instrumento de medição, não um caminho de
+produção, e não tem como ter vazado efeito colateral para fora do espelho.
+
+CI: `cdf4a8c6` ainda em andamento no momento deste adendo (não vi o run próprio de `99652358`
+isolado, só o da mesclagem); `e5b5df74` (meu veredito anterior) e `d41483b` já confirmados
+success. Se `cdf4a8c6` terminar vermelho, aviso.

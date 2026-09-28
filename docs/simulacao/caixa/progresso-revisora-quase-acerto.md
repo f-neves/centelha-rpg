@@ -10,3 +10,12 @@
 - Item 7: 334 pendencias (327+7), todas as 6 novas citadas e no arquivo certo.
 - Travessão zero (escopo correto a4a6f33a..d41483b). CI verde nos 2 commits.
 - Veredito escrito: PROCEDE em todos os itens, com nota importante (não bloqueante) no item 3.
+
+## Adendo 28/09/2026 (item 3, fechamento)
+
+- Reancorada em `cdf4a8c6` (merge do 99652358 com meu veredito e5b5df74).
+- Confirmei que E.devido (grid.astro, ESPELHO_LIGADO) era um terceiro lugar com o mesmo bug do item 3, achado pela Executora ao construir a cena determinística.
+- Meu proprio controle negativo (diferente do dela): revertidos os 3 locais juntos (motor.mjs + 3 ocorrencias de DE_PE_AO_ABRIR), a cena fatal falha na asserção nova. Revertido só E.devido sozinho (motor.mjs e os outros dois intactos), falha de outro jeito (mesa para no Tick 12, laço vai ate o teto) -- reproduz exatamente o padrao que ela descreveu.
+- Verifiquei efeito colateral: E.devido só existe dentro de ESPELHO_LIGADO, único chamador é o proprio test-espelho.mjs via window.__ESPELHO.devido(). Sem caminho de producao tocado.
+- validate/tsc verdes, travessão zero no adendo.
+- Adendo escrito no mesmo arquivo do veredito: PROCEDE, nota fechada.
