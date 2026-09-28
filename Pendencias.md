@@ -162,7 +162,7 @@ feito estão na seção 5, e não entram aqui.
 
 | O que | Estado | O que destrava |
 |---|---|---|
-| **Migrações (L42)** | Todas as escritas estão aplicadas, de 1 a 39, lidas no banco em 14/09. A 34 não existe como arquivo. A `migracoes_fronteira` devolve nulo desde a 33, e o instrumento está certo. | Decidir o que fazer com a linha da 35 (registrado no L86b) |
+| **Migrações (L42)** | Todas as escritas estão aplicadas, de 1 a 40, a 40 rodada em 28/09/2026 (via Management API com token do autor, `pg_get_functiondef` e a linha em `public.migracoes` conferidas depois de rodar). A 34 não existe como arquivo. A `migracoes_fronteira` devolve nulo desde a 33, e o instrumento está certo. | Decidir o que fazer com a linha da 35 (registrado no L86b); a 40 deixou em aberto a escolha entre coluna `centelha` em `combatentes` ou parâmetro extra em `jogador_dano` (ver cabeçalho de `supabase/migracao-40.sql`, opções a/b) |
 | **A barra de comando sem teste (L62)** | Sem teste automatizado commitado; `mover` contra casa ocupada falha em silêncio (herdado de `porNoMapa`). | Um teste; o primeiro achado continua aberto por decisão do humano |
 | **O modelo de voz que trava (L71)** | Um modelo presente mas corrompido trava para sempre, sem prazo. Escalado pela Revisora; decisão tomada, e o teste do prazo existe desde a rodada 39. | Conferir se o L71 fecha (seção 5) |
 | **O gatilho `armadilha` (L86b)** | Família de quatro Efeitos (`brasa-retardada`, `semente-adormecida`, `salvaguarda`, `cura-guardada`) que disparam por condições diferentes, nenhuma decidida. O chão da `cura-guardada` existe (migração 39) sem consumidor. | Desenho de regra, do humano |
