@@ -786,7 +786,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   | perícia | de onde volta | quantas das 309 |
   |---|---|---|
-  | **Prontidão** | `iniciativa − raciocínio`, de `const ini = at.raciocinio` (`lib-bestiario.mjs:78`) | **309**, exata |
+  | **Prontidão** | `iniciativa − raciocínio`, de `const ini = at.raciocinio` (`lib-bestiario.mjs:86`) | **309**, exata |
   | **Esquiva** | `defesa / 2 − destreza − centelha / 2` | **301** (8 fracionárias: armadura ou especialidade no meio) |
   | **Integridade** | `defesaMental − raciocínio − vontade − centelha` | **284** (25 sem Defesa Mental, Int 0) |
   | **Sociabilidade** | `(defesaSocial − centelha) / 2 − compostura` | **145** (164 sem Defesa Social, Int < 2) |

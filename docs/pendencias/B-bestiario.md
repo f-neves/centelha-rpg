@@ -123,14 +123,18 @@ limitações conhecidas, que são as três de baixo.
     > Dependência: a recompensa de caça usa o desafio. Se a nova escala cobrir o mesmo perigo em passos
     > menores, o fator da recompensa passa de 1,75 para cerca de 1,32 (um parâmetro em `modelo.py`).
     > Revisar junto.
-- [ ] **B15 · [ACHADO, DECIDIR] As 309 fichas do bestiário não têm bloco `pericias` nenhum.**
-  Registrado em 28/09/2026, Fase 1 da Reforma da Centelha (`docs/simulacao/caixa/
-  reforma-centelha-briga-executora.md`, item 8). A fórmula nova de Centelha em jogada/Defesa
-  (2 × menor(Centelha, Habilidade), aplicada em `scripts/lib-bestiario.mjs`) precisa de uma
-  Habilidade para travar o bônus; conferido nas 309 fichas de `src/data/bestiario/`, nenhuma tem
-  `pericias` (o campo está ausente, não zerado). Resultado: o bônus de Centelha em Defesa/ataque
-  de TODA criatura do bestiário sai **0** hoje, porque a régua de combate delas usa só Atributo
-  (+ um flat da arma), nunca perícia. Não é um bug da fórmula nova, é uma lacuna de dado que ela
-  escancarou. Liga com **B14**: qualquer recalibração de desafio/Centelha do bestiário devia
-  decidir também se vale a pena escrever `pericias` nas fichas (para o bônus de Centelha valer de
-  verdade nas criaturas) ou se a régua delas continua deliberadamente só-Atributo.
+- [x] **B15 · [CORRIGIDO em 28/09/2026, achado da própria rodada estava ERRADO] O bônus de
+  Centelha NÃO sai 0 em toda criatura.** Registrado em 28/09/2026, Fase 1 da Reforma da
+  Centelha, como "as 309 fichas do bestiário não têm bloco `pericias`, o bônus de Centelha em
+  Defesa/ataque de TODA criatura sai 0". **Essa conclusão estava errada**, achado ao investigar
+  o CI vermelho do editor de bestiário na mesma rodada: eu tinha testado passando a ficha SOURCE
+  (`src/data/bestiario/<id>.json`, campo `skills`) direto para `stat()`, sem passar por
+  `paraStat()` primeiro, que é quem converte `skills`→`pericias` e `willpower`→`vontade`.
+  Conferido agora pelo caminho real (`lerCriaturas()` → `paraStat()` → `stat()`): **0 das 309
+  fichas** ficam sem Esquiva ou Integridade (as duas têm valor em `skills` sempre), e o bônus de
+  Centelha nessas duas Defesas funciona normalmente (ex.: Treant, Centelha 3, Integridade 4,
+  `centelhaNaJogada` = 6, Defesa Mental publicada 22). A única lacuna real: **309 de 309 sem
+  `skills.sociabilidade`**, mas `stat()` já tem um fallback (linha ~82, igual ao de
+  `bestia-editor.ts`) que usa a melhor perícia social presente (Oratória/Manha/Persuasão/
+  Liderança/Política) em vez de zerar, então Defesa Social também não sai capada por omissão na
+  maioria dos casos. Não há lacuna de dado a preencher aqui; fechado.

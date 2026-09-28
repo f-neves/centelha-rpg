@@ -62,7 +62,15 @@ export function stat(b) {
   const centelhaNaJogada = (habilidade) => 2 * Math.min(C, Math.max(0, habilidade));
   const espEsq = (b.especialidades && b.especialidades.esquiva) || 0;
   const defesa = (at.destreza + (pe.esquiva || 0)) * D.defesa.mult + espEsq + centelhaNaJogada(pe.esquiva || 0) - (arm.penalidade || 0);
-  const integ = pe.integridade ?? b.integridade ?? 2;
+  // Integridade AUSENTE vale 0, decisão do autor (28/09/2026, achado do CI vermelho em
+  // `Def. Mental: card != modal`): coerente com "sem Habilidade, sem bônus" (o mesmo
+  // `centelhaNaJogada` abaixo já trata Esquiva/Sociabilidade ausentes como 0, via `|| 0`).
+  // Não é mais `?? 2`: esse valor era um palpite sem justificativa escrita, e divergia do
+  // default que `bestia-editor.ts` já usava (`nz()`, que sempre caiu em 0). `periciasDe()`
+  // (mais abaixo neste arquivo) inverte esta mesma conta para o campo `pericias.integridade`
+  // publicado, e o round-trip com este default é a prova de que os dois concordam: ver
+  // `scripts/test-bestiario-integridade.mjs`.
+  const integ = pe.integridade ?? b.integridade ?? 0;
   const intel = at.inteligencia;
   // Defesa Mental: Raciocínio + Integridade + Vontade + Centelha (soma simples). Só p/ quem tem mente (Int ≥ 1); Int 0 é imune ("-").
   const defesaMental = intel <= 0 ? '-'

@@ -82,6 +82,20 @@ APROXIMADAS, documentado no próprio código:
   de 12 continua batendo em todo o bestiário (conferido: `fora.length === 0`). Documentado no
   próprio código como aproximação, não como fórmula exata.
 
+## CORREÇÃO (28/09/2026, achada ao investigar o CI vermelho): o item 8 acima estava ERRADO
+
+O "309 de 309 fichas sem `pericias`" saiu de um script descartável que passava a ficha SOURCE
+(`src/data/bestiario/<id>.json`, campo `skills`) direto para `stat()`, sem passar por
+`paraStat()` primeiro (é `paraStat()` quem converte `skills`→`pericias` e `willpower`→`vontade`
+antes de chamar `stat()`; `gen-bestiario.mjs` sempre fez essa chamada em duas etapas, eu que
+pulei a primeira ao testar). Pelo caminho real (`lerCriaturas()` → `paraStat()` → `stat()`),
+conferido de novo: **0 das 309 fichas** ficam sem Esquiva ou Integridade, e o bônus de Centelha
+nessas Defesas funciona (ex.: Treant, Centelha 3, Integridade 4, Defesa Mental publicada **22**,
+com `centelhaNaJogada(4)=6` dentro dela). A única lacuna real é **309 de 309 sem
+`skills.sociabilidade`**, e mesmo essa não zera a Defesa Social: `stat()` já cai num fallback
+(a melhor perícia social presente) antes de chegar a 0. Não há recalibração de dado pendente
+aqui; **B15 fechada** com esta correção (`docs/pendencias/B-bestiario.md`).
+
 ## O BUG REAL que a Fase 1 escancarou (achado, não pedido, mas corrigido)
 
 Ao testar `npm run espelho` com a Reforma aplicada, `1v1-unissono` (dois `escudeiro` se
