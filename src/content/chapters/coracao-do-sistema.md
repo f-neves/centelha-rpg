@@ -69,7 +69,10 @@ Você tem **sucesso** quando o total **supera** o alvo: a Defesa de um inimigo o
 | 15 | Difícil | 9 | Perito |
 | 20 | Limite humano | 12 | Mestre |
 | 25 | Excepcional | 15 |  Herói |
-| 30+ | Sobre-humano | 18 | Semideus|
+| 30 | Sobre-humano | 18 | Semideus|
+| 35 | Lendário | 21 | além do teto do jogador |
+| 40 | Mítico | 24 | além do teto do jogador |
+| 45+ | Semidivino | 27+ | além do teto do jogador |
 
 <p class="muted">No nível "à altura", tarefas fáceis e médias são um cara-ou-coroa; a maestria traz confiabilidade. Quem não tem competência simplesmente não alcança as dificuldades altas.</p>
 

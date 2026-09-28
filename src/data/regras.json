@@ -688,6 +688,21 @@
       "dif": 30,
       "desafio": "Sobre-humano",
       "aaltura": "18 · Semideus"
+    },
+    {
+      "dif": 35,
+      "desafio": "Lendário",
+      "aaltura": "21 · além do teto do jogador"
+    },
+    {
+      "dif": 40,
+      "desafio": "Mítico",
+      "aaltura": "24 · além do teto do jogador"
+    },
+    {
+      "dif": 45,
+      "desafio": "Semidivino",
+      "aaltura": "27+ · além do teto do jogador"
     }
   ],
   "ferimentos": [

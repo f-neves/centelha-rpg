@@ -41,7 +41,7 @@ A régua vai de **0 a 12**, e a **faixa do jogador é de 0 a 6**: os seis degrau
 
 ## O que a Centelha faz
 
-1. **Pesa nos dois lados do conflito.** Cada ponto de Centelha soma **+1 ao ataque** e **+1 às três Defesas** (a Física, por Esquiva ou Bloqueio, a Mental e a Social). Como é simétrico, entre Centelhas iguais o efeito se cancela e o duelo joga limpo; contra quem tem menos Centelha, a diferença vira vantagem líquida no acerto e na guarda, e um tier acima realmente prevalece.
+1. **Pesa nos dois lados do conflito, com um teto.** Em cada jogada e Defesa (o ataque, a Física por Esquiva ou Bloqueio, a Mental e a Social), a Centelha soma **2 pontos por ponto**, mas nunca mais do que a **Habilidade** que sustenta aquela jogada: quem tem a fagulha acesa e nenhuma prática nela ainda ganha só o que a prática permite. Como o teto é o mesmo dos dois lados, entre Centelhas iguais (e Habilidade que alcance) o efeito se cancela e o duelo joga limpo; contra quem tem menos Centelha, a diferença vira vantagem líquida no acerto e na guarda. No **dano**, a conta muda: a Centelha do atacante soma **inteira, sem teto**, a cada golpe de arma, cada Arte e cada pulso de dano contínuo, então um tier acima dói mais fundo mesmo quando o acerto empata.
 2. **Dimensiona os pools de poder.** A Centelha é o motor das reservas: **Energia = (Vigor + Compostura + Raciocínio + Vontade) ÷ 2 + Centelha × 2** e **Mana = Centelha × 2 + Vontade**. Mais Centelha, mais combustível para gastar numa cena.
 3. **Autoriza o sobre-humano.** A Centelha é também o que permite **Atributos acima de 6** (o pico mortal): cada salto de tier abre teto além do humano, liberado pelo Mestre junto com o avanço. *(A tabela exata de quanto cada nível libera ainda está em calibração.)*
 

@@ -121,18 +121,18 @@ Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma*
 
 <p class="muted"><strong>A Especialidade não é parcela somada numa rolagem.</strong> Se o escopo nomeado dela se aplica ao que você está fazendo (Armas <em>(machados)</em> com um machado na mão), ela rende <strong>+N dados, descartando os N menores</strong>, onde N é o nível. É por isso que ela sobe a confiança do golpe sem mexer no teto dele.</p>
 
-<p class="formula">Ataque = [(Atributo + Habilidade) ÷ 2]d6 (+2 se a soma for ímpar) + Arma + Centelha</p>
+<p class="formula">Ataque = [(Atributo + Habilidade) ÷ 2]d6 (+2 se a soma for ímpar) + Arma + 2 × menor(Centelha, Habilidade)</p>
 
 <p class="muted">O <strong>Atributo</strong> usado em combate corpo a corpo (armas ou punhos) é <strong>Destreza ou Força</strong>, à escolha de quem ataca, normalmente o maior dos dois (Força 5 e Destreza 2? use a Força). Para <strong>arremessos</strong>, sempre Destreza; para <strong>atirar</strong> (arco ou besta), sempre Percepção.</p>
 
 A Defesa é um valor **fixo** e **passivo**, o alvo não rola para se defender. A Habilidade que
 entra é **Esquiva ou Bloqueio**, detalhado a seguir em *Esquivar ou Bloquear*:
 
-<p class="formula">Defesa = (Destreza + Habilidade) × 2 + Especialidade + Centelha</p>
+<p class="formula">Defesa = (Destreza + Habilidade) × 2 + Especialidade + 2 × menor(Centelha, Habilidade)</p>
 
 Acertar não é tudo ou nada: a cada **6 pontos acima da Defesa**, você ganha **1 Margem**, e cada Margem vira **+1d6 de dano**. Um acerto raspando arranha; um acerto folgado despedaça.
 
-<p class="muted">A <strong>Centelha</strong> soma <strong>+1 por ponto</strong> dos dois lados: ao ataque e a todas as defesas. Entre Centelhas iguais ela se cancela, e o duelo joga igual do mortal ao semideus; contra quem tem menos Centelha, a diferença vira vantagem líquida no acerto e na guarda, e cada tier vale um degrau de modificador.</p>
+<p class="muted">A <strong>Centelha</strong> soma <strong>2 pontos por ponto de Centelha</strong> dos dois lados, ao ataque e a todas as defesas, mas até o teto da Habilidade usada: quem tem a fagulha acesa e nenhuma prática ainda ganha só o que a prática sustenta. Entre Centelhas iguais (e Habilidade suficiente dos dois lados) ela se cancela, e o duelo joga igual do mortal ao semideus; contra quem tem menos Centelha, a diferença vira vantagem líquida no acerto e na guarda. No <strong>dano</strong> a conta é outra: a Centelha do atacante soma inteira, sem esse teto (veja abaixo).</p>
 
 ### Rajada: golpes extras com a mesma arma
 
@@ -174,9 +174,9 @@ Uma **arma de duas mãos** ocupa as duas e não permite o segundo ataque; um **e
 
 ## Dano e Armadura
 
-<p class="formula">Dano = (Dado da Arma + Margem) + Força − Absorção</p>
+<p class="formula">Dano = (Dado da Arma + Margem) + Força + Centelha − Absorção</p>
 
-O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste 1d6+2, arremesso 1d6−2 a 1d6+2, distância 1d6−1 a 1d6+8). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**: **exceto as hastes de estocada** (Lança e afins), que ferem por alcance e precisão, não por peso, e somam apenas a **Força simples**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6.
+O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste 1d6+2, arremesso 1d6−2 a 1d6+2, distância 1d6−1 a 1d6+8). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**: **exceto as hastes de estocada** (Lança e afins), que ferem por alcance e precisão, não por peso, e somam apenas a **Força simples**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6. A **Centelha do atacante** soma inteira, sem teto de Habilidade: é a mesma fagulha que abre Proeza que faz o golpe doer mais fundo, em toda arma, em toda Arte e a cada pulso de dano contínuo.
 
 ### Os três modos de dano
 

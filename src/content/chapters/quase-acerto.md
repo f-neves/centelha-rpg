@@ -19,13 +19,13 @@ Depois de rolar o ataque e **não** superar a Defesa, compare o quanto faltou co
 
 Se você errou por **um valor menor ou igual à Margem**, é um raspão. O raspão causa:
 
-<p class="formula">Dano do raspão = Dano QA da arma − Redução QA da armadura − Centelha do alvo (mínimo 0)</p>
+<p class="formula">Dano do raspão = Dano QA da arma − Redução QA da armadura + Centelha do atacante − Centelha do alvo (mínimo 0)</p>
 
-O dano do raspão **ignora a Absorção normal** (já é o que sobra de um golpe que quase não conectou) e **não rola dados**: é um valor fixo. Não abre Margem de dano, não dispara Sangramento por si só: é só o arranhão. Quem já Despertou sente menos o arranhão: a Centelha desconta do raspão, ponto a ponto (o Vigor não entra nessa conta).
+O dano do raspão **ignora a Absorção normal** (já é o que sobra de um golpe que quase não conectou) e **não rola dados**: é um valor fixo. Não abre Margem de dano, não dispara Sangramento por si só: é só o arranhão. A Centelha entra dos dois lados: quem golpeia com a fagulha acesa arranha mais fundo mesmo num raspão, e quem já Despertou sente menos o arranhão, a Centelha desconta ponto a ponto (o Vigor não entra nessa conta).
 
 Um golpe de verdade nunca dói **menos** que o raspão do mesmo ataque: se a Absorção comeu o dano do acerto até menos que o raspão teria causado, vale o raspão.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora ataca um cavaleiro de <strong>placa</strong> com a <strong>espada longa</strong> (dano médio 3,5, arma média) e rola <strong>13</strong> contra Defesa <strong>16</strong>: precisava de 17, então errou por <strong>4</strong>. A Margem é <strong>2 (arma média) + 3 (placa) = 5</strong>. Como 4 ≤ 5, raspa. O dano é <strong>4 (arma média) − 6 (redução da placa) = 0</strong>: faíscas no aço. Contra um alvo de <strong>couro</strong> (leve, redução 1), a mesma arma faria <strong>4 − 1 = 3</strong> de raspão (menos 1 por ponto de Centelha do alvo, se ele tiver Despertado), e o couro quase não muda a Margem, então o mesmo 13 contra Defesa 16 <em>não</em> raspa nele: margem 2 + 1 = 3, e 4 &gt; 3.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora (Centelha 2) ataca um cavaleiro de <strong>placa</strong> com a <strong>espada longa</strong> (dano médio 3,5, arma média) e rola <strong>13</strong> contra Defesa <strong>16</strong>: precisava de 17, então errou por <strong>4</strong>. A Margem é <strong>2 (arma média) + 3 (placa) = 5</strong>. Como 4 ≤ 5, raspa. O dano é <strong>4 (arma média) − 5 (redução da placa) + 2 (Centelha de Sora) = 1</strong>: um risco no verniz, não faíscas no nada. Contra um alvo de <strong>couro</strong> (leve, redução 1) e Centelha 0, a mesma arma faria <strong>4 − 1 + 2 − 0 = 5</strong> de raspão, e o couro quase não muda a Margem, então o mesmo 13 contra Defesa 16 <em>não</em> raspa nele: margem 2 + 1 = 3, e 4 &gt; 3.</div>
 
 ## A lógica das classes
 

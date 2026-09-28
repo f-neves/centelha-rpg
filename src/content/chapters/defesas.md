@@ -59,30 +59,30 @@ Medo é o caso que mais engana, então fica a régua fechada:
 
 ## As fórmulas
 
-Um ponto de **[Centelha](/regras/centelha)** soma **+1** a cada uma das defesas (e o mesmo +1 ao ataque). Como os dois lados ganham igual, entre Centelhas iguais o efeito se cancela e o duelo joga limpo; contra quem tem menos Centelha, a diferença vira vantagem de verdade.
+Um ponto de **[Centelha](/regras/centelha)** soma **2 pontos** a cada uma das defesas (e ao ataque), mas só até o **teto da Habilidade** usada naquela jogada: quem tem a fagulha acesa e não treinou ganha só o que o treino sustenta (Reforma da Centelha, 28/09/2026). Como os dois lados ganham igual e limitado do mesmo jeito, entre Centelhas iguais (com Habilidade que alcance) o efeito se cancela e o duelo joga limpo; contra quem tem menos Centelha, a diferença vira vantagem de verdade.
 
 ### Defesa Física
 
 Você tem duas maneiras de se defender e usa a que couber. Na ficha as duas aparecem:
 
-- **Esquiva** = ( Destreza + Esquiva ) × 2 + Centelha + Especialidade
-- **Bloqueio** = ( Destreza + Bloqueio ) × 2 + Centelha + Especialidade + defesa da arma/escudo
+- **Esquiva** = ( Destreza + Esquiva ) × 2 + 2 × menor(Centelha, Esquiva) + Especialidade
+- **Bloqueio** = ( Destreza + Bloqueio ) × 2 + 2 × menor(Centelha, Bloqueio) + Especialidade + defesa da arma/escudo
 
 **Bloqueio** é uma Habilidade única: apara ataques com escudo, arma ou o próprio corpo, seja lá o que estiver empunhando. A defesa que a arma ou o escudo concede entra por cima, em jogo.
 
 ### Defesa Social
 
-- **Defesa Social** = ( Compostura + Sociabilidade ) × 2 + Centelha + Especialidade
+- **Defesa Social** = ( Compostura + Sociabilidade ) × 2 + 2 × menor(Centelha, Sociabilidade) + Especialidade
 
 Em **feras** (bichos de instinto, Inteligência 1) troca-se **Sociabilidade por Sobrevivência**: um animal não tem trato social, mas sente o perigo.
 
 ### Defesa Mental
 
-- **Defesa Mental** = Raciocínio + Integridade + Força de Vontade + Centelha + Especialidade
+- **Defesa Mental** = Raciocínio + Integridade + Força de Vontade + 2 × menor(Centelha, Integridade) + Especialidade
 
-A Mental é uma **soma simples** (sem o ×2 das outras): a mente se defende com os três pilares (a rapidez do **Raciocínio**, a firmeza da **Integridade** e a reserva da **Força de Vontade**), mais a Centelha.
+A Mental é uma **soma simples** (sem o ×2 das outras): a mente se defende com os três pilares (a rapidez do **Raciocínio**, a firmeza da **Integridade** e a reserva da **Força de Vontade**), mais a Centelha, aqui limitada pela **Integridade** (é ela que segura a mente firme, não o Raciocínio nem a Vontade).
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael tem Destreza 4, Esquiva 3, Compostura 2, Raciocínio 3, Força de Vontade 7 e Centelha 3, e nenhum ponto em Sociabilidade nem em Integridade. Sua <strong>Esquiva</strong> é (4+3)×2 + 3 = <strong>17</strong>; sua <strong>Defesa Social</strong> é (2+0)×2 + 3 = <strong>7</strong>; sua <strong>Defesa Mental</strong> é 3+0+7+3 = <strong>13</strong>. Cada ataque compara o próprio total com a muralha certa.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael tem Destreza 4, Esquiva 3, Compostura 2, Raciocínio 3, Força de Vontade 7 e Centelha 3, e nenhum ponto em Sociabilidade nem em Integridade. Sua <strong>Esquiva</strong> é (4+3)×2 + 2×menor(3,3) = <strong>20</strong>; sua <strong>Defesa Social</strong> é (2+0)×2 + 2×menor(3,0) = <strong>4</strong> (a Centelha não passa do que a Sociabilidade sustenta, que aqui é zero); sua <strong>Defesa Mental</strong> é 3+0+7 + 2×menor(3,0) = <strong>10</strong>, pelo mesmo motivo na Integridade. Cada ataque compara o próprio total com a muralha certa.</div>
 
 ## Especialidade: o foco que só vale às vezes
 
