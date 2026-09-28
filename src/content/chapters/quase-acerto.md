@@ -69,8 +69,8 @@ A arma **leve** raspa muito (Margem larga) mas raso; a **pesada** raspa pouco ma
 |---|:---:|:---:|
 | Nenhuma | +0 | 0 |
 | Leve | +1 | 1 |
-| Média | +2 | 4 |
-| Pesada | +3 | 6 |
+| Média | +2 | 3 |
+| Pesada | +3 | 5 |
 
 </div>
 

@@ -82,9 +82,10 @@ export function resumoCombatePC(S: any): ResumoCombate {
   const atribAcerto = w.pericia === 'atirador' ? (attrs.percepcao || 0)
     : w.pericia === 'arremesso' ? (attrs.destreza || 0)
     : Math.max(attrs.destreza || 0, attrs.forca || 0);
-  const soma = atribAcerto + (skills[w.pericia] || skills2[w.pericia] || 0);
+  const habilArma = skills[w.pericia] || skills2[w.pericia] || 0;
+  const soma = atribAcerto + habilArma;
   const dados = Math.floor(soma / 2), bonus = soma % 2 === 1 ? 2 : 0;
-  const flat = (w.acerto || 0) + ataqueCentelha(C) - armorPen;
+  const flat = (w.acerto || 0) + ataqueCentelha(C, habilArma) - armorPen;
   const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
   const ataque = `${dados}d6${bonus ? '+2' : ''}${flat ? ` ${sgn(flat)}` : ''}`;
 
@@ -142,7 +143,11 @@ export function resumoCombatePC(S: any): ResumoCombate {
     ? modos.find((m) => m.tipo === (w as any).fichaModo) : null;
   const principal = escolhido || modos.find((m) => m.principal) || modos[0];
   const sigla = MODO_SIGLA[(principal?.tipo) as keyof typeof MODO_SIGLA] || '';
-  const dano = `${w.dado}d6${forcaAp ? ` ${sgn(forcaAp)}` : ''}${sigla ? ` ${sigla}` : ''}`;
+  // +1 POR PONTO DE CENTELHA DO ATACANTE, SEM LIMITE, no dano (Reforma da
+  // Centelha, 28/09/2026, item 3 da Fase 1): soma junto do bônus de Força, na
+  // mesma expressão fixa.
+  const danoAp = forcaAp + C;
+  const dano = `${w.dado}d6${danoAp ? ` ${sgn(danoAp)}` : ''}${sigla ? ` ${sigla}` : ''}`;
   // O NÍVEL DE PERFURAÇÃO do modo em uso, para o gate (`gatePerfuracaoAbre`).
   // `null` quando o modo não é Perfurante: a função lê isso como "não se
   // aplica", e não como "Nível zero" (que resvalaria em qualquer armadura).

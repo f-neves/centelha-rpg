@@ -11,9 +11,14 @@ const at = { forca: 3, vigor: 4, destreza: 4, raciocinio: 3, compostura: 2 };
 const esquiva = 3, espEsq = 0, prontidao = 3, cent = 3, vont = 7, integridade = 0, atletismo = 3;
 const V = { compaixao: 2, conviccao: 3, temperanca: 2, valor: 4 };
 
+// O BÔNUS DE CENTELHA EM TODA JOGADA E TODA DEFESA (Reforma da Centelha,
+// 28/09/2026): 2 × o menor entre a Centelha e a Habilidade daquela jogada.
+// Mesma fórmula de `calc.ts`'s `centelhaNaJogada`, reimplementada aqui porque
+// este teste roda sem o bundler (mesmo motivo do `dc`, abaixo).
+const centelhaNaJogada = (habilidade) => 2 * Math.min(cent, Math.max(0, habilidade));
 const pv = D.pv.base + at.vigor * D.pv.vigorMult;
-const defesa = (at.destreza + esquiva) * D.defesa.mult + espEsq + cent * (D.defesa.centelhaMult ?? 1);
-const defM = integridade * D.defesaMental.mult + (D.defesaMental.maisRaciocinio ? at.raciocinio : 0) + (D.defesaMental.maisVontade ? vont : 0) + (D.defesaMental.maisCentelha ? cent * (D.defesaMental.centelhaMult ?? 1) : 0);
+const defesa = (at.destreza + esquiva) * D.defesa.mult + espEsq + centelhaNaJogada(esquiva);
+const defM = integridade * D.defesaMental.mult + (D.defesaMental.maisRaciocinio ? at.raciocinio : 0) + (D.defesaMental.maisVontade ? vont : 0) + centelhaNaJogada(integridade);
 const energia = fl((at.vigor + at.compostura + at.raciocinio + vont) / D.energia.divisor) + cent * D.energia.centelhaMult;
 const mana = cent * D.mana.centelhaMult + vont;
 const resistencia = 0;
@@ -27,7 +32,7 @@ const dc = (c) => Math.round(Object.entries(c).reduce(
   (s, [k, v]) => s + (k === 'base' ? v : (traits[k] || 0) * v), 0));
 const desl = { arr: dc(dz.arranque), cor: dc(dz.corrida), nor: dc(dz.normal), sv: dc(dz.saltoVertical), shp: dc(dz.saltoHorizontalParado), shc: dc(dz.saltoHorizontalCorrendo) };
 
-const esperado = { pv: 37, defesa: 17, defM: 13, energia: 14, mana: 13, folego: 44, ini: 6, deslArr: 6, deslCor: 9, deslNor: 4, saltoV: 256, saltoHP: 5, saltoHC: 14 };
+const esperado = { pv: 37, defesa: 20, defM: 10, energia: 14, mana: 13, folego: 44, ini: 6, deslArr: 6, deslCor: 9, deslNor: 4, saltoV: 256, saltoHP: 5, saltoHC: 14 };
 const got = { pv, defesa, defM, energia, mana, folego, ini, deslArr: desl.arr, deslCor: desl.cor, deslNor: desl.nor, saltoV: desl.sv, saltoHP: desl.shp, saltoHC: desl.shc };
 const erros = Object.keys(esperado).filter((k) => got[k] !== esperado[k]);
 if (erros.length) {

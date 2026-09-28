@@ -128,29 +128,49 @@ export function modificadorPorte(porteAtacante: Porte, porteAlvo: Porte): number
   return Math.sign(diff) * (t.porDiferenca[cat] ?? 0);
 }
 
-/** Defesa (Esquiva/Bloqueio): (Destreza + Habilidade) × 2 + Centelha + Especialidade. */
+/**
+ * O BÔNUS DE CENTELHA EM TODA JOGADA E TODA DEFESA (Reforma da Centelha,
+ * 28/09/2026): 2 × o menor entre a Centelha e a Habilidade daquela jogada. Sem
+ * Habilidade, sem bônus (uma jogada só de Atributo usa `centelhaSoAtributo`,
+ * a regra de primeira versão registrada como pendência, e não esta).
+ * Substitui o antigo "+1 por ponto" (`centelhaMult` em `regras.json`, que
+ * ficou parado em 1 nos blocos de ataque/defesa/defesaMental/defesaSocial e
+ * não é mais lido por eles).
+ */
+export function centelhaNaJogada(centelha: number, habilidade: number) {
+  return 2 * Math.min(Math.max(0, centelha), Math.max(0, habilidade));
+}
+
+/** A regra de primeira versão (item 1 da Fase 1, pendência registrada) para jogada só de Atributo. */
+export function centelhaSoAtributo(centelha: number) {
+  return Math.max(0, centelha);
+}
+
+/** Defesa (Esquiva/Bloqueio): (Destreza + Habilidade) × 2 + 2×min(Centelha,Habilidade) + Especialidade. */
 export function defesa(opts: { destreza: number; habilidade: number; especialidade?: number; centelha: number }) {
-  const d = regras.derivados.defesa as { mult: number; centelhaMult?: number };
-  return (opts.destreza + opts.habilidade) * d.mult + (opts.especialidade ?? 0) + opts.centelha * (d.centelhaMult ?? 1);
+  const d = regras.derivados.defesa as { mult: number };
+  return (opts.destreza + opts.habilidade) * d.mult + (opts.especialidade ?? 0)
+    + centelhaNaJogada(opts.centelha, opts.habilidade);
 }
 
-/** Defesa Mental: Raciocínio + Integridade + Vontade + Centelha + Especialidade (soma simples, sem ×2). */
+/** Defesa Mental: Raciocínio + Integridade + Vontade + 2×min(Centelha,Integridade) + Especialidade. */
 export function defesaMental(opts: { raciocinio: number; integridade: number; vontade: number; centelha: number; especialidade?: number }) {
-  const d = regras.derivados.defesaMental as { mult: number; maisRaciocinio?: boolean; maisVontade?: boolean; maisCentelha?: boolean; centelhaMult?: number };
-  return opts.integridade * d.mult + (d.maisRaciocinio ? opts.raciocinio : 0) + (d.maisVontade ? opts.vontade : 0) + (d.maisCentelha ? opts.centelha * (d.centelhaMult ?? 1) : 0) + (opts.especialidade ?? 0);
+  const d = regras.derivados.defesaMental as { mult: number; maisRaciocinio?: boolean; maisVontade?: boolean };
+  return opts.integridade * d.mult + (d.maisRaciocinio ? opts.raciocinio : 0) + (d.maisVontade ? opts.vontade : 0)
+    + centelhaNaJogada(opts.centelha, opts.integridade) + (opts.especialidade ?? 0);
 }
 
-/** Defesa Social (escudo social geral: resiste a influência E a leitura): (Compostura + Sociabilidade) × 2 + Centelha + Especialidade. */
+/** Defesa Social (escudo social geral: resiste a influência E a leitura): (Compostura + Sociabilidade) × 2 + 2×min(Centelha,Sociabilidade) + Especialidade. */
 export function defesaSocial(opts: { compostura: number; sociabilidade: number; centelha: number; especialidade?: number }) {
-  const d = regras.derivados.defesaSocial as { mult: number; tracos: string[]; centelhaMult?: number };
+  const d = regras.derivados.defesaSocial as { mult: number; tracos: string[] };
   const v: Record<string, number> = { compostura: opts.compostura, sociabilidade: opts.sociabilidade };
-  return d.tracos.reduce((s, k) => s + (v[k] ?? 0), 0) * d.mult + opts.centelha * (d.centelhaMult ?? 0) + (opts.especialidade ?? 0);
+  return d.tracos.reduce((s, k) => s + (v[k] ?? 0), 0) * d.mult
+    + centelhaNaJogada(opts.centelha, opts.sociabilidade) + (opts.especialidade ?? 0);
 }
 
-/** Bônus de Centelha somado à SOMA do ataque (simétrico às defesas: +1 por ponto). */
-export function ataqueCentelha(centelha: number) {
-  const d = regras.derivados.ataque as { centelhaMult?: number };
-  return centelha * (d?.centelhaMult ?? 0);
+/** Bônus de Centelha somado à SOMA do ataque: 2×min(Centelha,Habilidade da arma). */
+export function ataqueCentelha(centelha: number, habilidade: number) {
+  return centelhaNaJogada(centelha, habilidade);
 }
 
 /**

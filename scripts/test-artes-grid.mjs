@@ -816,7 +816,7 @@ eq(M.EFEITOS.filter((e) => e.acaoLivre).length, 1, 'só um Efeito é de ação l
   // o bloco já traz. Se a inversão saísse do prumo, o bestiário inteiro rolaria
   // o desvio com o pool errado, e ninguém veria.
   eq(M.desEsqDaDefesa(10, 0), 5, 'Defesa 10 sem Centelha dá Des+Esq 5');
-  eq(M.desEsqDaDefesa(10, 6), 2, 'a Centelha sai antes da divisão');
+  eq(M.desEsqDaDefesa(10, 6), 0, 'a Centelha sai antes da divisão (2×Centelha, aproximação registrada)');
   eq(M.desEsqDaDefesa(0, 4), 0, 'a soma nunca fica negativa');
   const bichos = MONSTROS();
   const fora = bichos.filter((m) => {

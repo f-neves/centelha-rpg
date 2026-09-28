@@ -1146,11 +1146,11 @@
       },
       "media": {
         "bonus": 2,
-        "reducao": 4
+        "reducao": 3
       },
       "pesada": {
         "bonus": 3,
-        "reducao": 6
+        "reducao": 5
       }
     },
     "nota": "Errar por ≤ margem é um raspão (não passa pela Absorção normal). Valores FIXOS por classe: a classe da arma sai do DANO MÉDIO dela (ver classePorDanoMedio), e não do número de dados. A armadura SOMA seu Bônus QA à margem (o alvo blindado é maior e mais lento, então é raspado com mais frequência) e abate o dano do raspão com a Redução. Leve nica muito e raso; pesada nica raro e fundo; a placa é nicada o tempo todo, mas a redução come quase tudo. Pode receber modificadores situacionais, de encantamento, de Proeza e de magia (ver cap. Quase-Acerto)."

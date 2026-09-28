@@ -394,6 +394,7 @@ function resolverContra(L, c, alvo, log, T, tg, opts, aid, tiraDaAgenda) {
       ajusteFlat: ferA, ajusteDados: ferADados,
       penDados: an?.penDados || [0],
       qaArmaBonus: c.qa.armaBonus, qaArmaDano: c.qa.armaDano,
+      centelha: c.centelha || 0,
     },
     alvo: {
       id: alvo.id, nome: alvo.nome,

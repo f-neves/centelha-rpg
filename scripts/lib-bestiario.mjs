@@ -53,29 +53,38 @@ export function stat(b) {
   const arm = ARMAD[b.armadura || 'nenhuma'] || ARMAD['nenhuma'];
   const C = b.centelha || 0;
   const pv = pvDe(b.porteSlug, at.vigor);
+  // O BÔNUS DE CENTELHA EM TODA JOGADA E TODA DEFESA (Reforma da Centelha,
+  // 28/09/2026): 2 × o menor entre a Centelha e a Habilidade daquela jogada.
+  // Substitui o antigo "+1 por ponto" (`centelhaMult`, que ficou parado em 1
+  // nestes quatro blocos e não é mais lido aqui). MESMA fórmula de
+  // `calc.ts`'s `centelhaNaJogada`, reimplementada porque este arquivo roda
+  // no gerador (build), não no cliente.
+  const centelhaNaJogada = (habilidade) => 2 * Math.min(C, Math.max(0, habilidade));
   const espEsq = (b.especialidades && b.especialidades.esquiva) || 0;
-  const defesa = (at.destreza + (pe.esquiva || 0)) * D.defesa.mult + espEsq + C * (D.defesa.centelhaMult ?? 1) - (arm.penalidade || 0);
+  const defesa = (at.destreza + (pe.esquiva || 0)) * D.defesa.mult + espEsq + centelhaNaJogada(pe.esquiva || 0) - (arm.penalidade || 0);
   const integ = pe.integridade ?? b.integridade ?? 2;
   const intel = at.inteligencia;
   // Defesa Mental: Raciocínio + Integridade + Vontade + Centelha (soma simples). Só p/ quem tem mente (Int ≥ 1); Int 0 é imune ("-").
   const defesaMental = intel <= 0 ? '-'
-    : integ * D.defesaMental.mult + (D.defesaMental.maisRaciocinio ? at.raciocinio : 0) + (D.defesaMental.maisVontade ? (b.vontade ?? 5) : 0) + (D.defesaMental.maisCentelha ? C * (D.defesaMental.centelhaMult ?? 1) : 0);
+    : integ * D.defesaMental.mult + (D.defesaMental.maisRaciocinio ? at.raciocinio : 0) + (D.defesaMental.maisVontade ? (b.vontade ?? 5) : 0) + centelhaNaJogada(integ);
   // Defesa Social: escudo social geral (resiste a influência e a leitura). Int 0 = "-" (sem trato
   // social nenhum); Int 1 (feras) troca Sociabilidade por Sobrevivência (B14 fase 2, item C.7);
-  // Int ≥ 2 usa Sociabilidade, ou a melhor perícia social que o bloco tenha. Centelha fica fora do ×2.
+  // Int ≥ 2 usa Sociabilidade, ou a melhor perícia social que o bloco tenha.
   const socialSkill = intel >= 2
     ? (pe.sociabilidade ?? Math.max(0, pe.oratoria || 0, pe.manha || 0, pe.persuasao || 0, pe.lideranca || 0, pe.politica || 0))
     : (pe.sobrevivencia || 0);
   const espSoc = (b.especialidades && b.especialidades.social) || 0;
-  const defesaSocial = intel >= 1 ? (at.compostura + socialSkill) * D.defesaSocial.mult + C * (D.defesaSocial.centelhaMult ?? 0) + espSoc : '-';
+  const defesaSocial = intel >= 1 ? (at.compostura + socialSkill) * D.defesaSocial.mult + centelhaNaJogada(socialSkill) + espSoc : '-';
   const ini = at.raciocinio + (pe.prontidao || 0);
   const ataques = (b.ataques || []).map((a) => {
-    const soma = (at[a.atrib] || 0) + (pe[a.pericia] || 0);
+    const habilAtq = pe[a.pericia] || 0;
+    const soma = (at[a.atrib] || 0) + habilAtq;
     const dados = fl(soma / 2), bonus = soma % 2 === 1 ? 2 : 0;
-    const acerto = (a.acerto || 0) + C * (D.ataque?.centelhaMult ?? 0);
+    const acerto = (a.acerto || 0) + centelhaNaJogada(habilAtq);
     const pool = `${dados}d6${bonus ? '+2' : ''}${acerto ? ` +${acerto}` : ''}`;
     const fm = D.danoForca; const forcaAp = a.mao === 2 ? at.forca * fm.duasMaos : at.forca * fm.umaMao;
-    const fa = (a.distancia && !a.arremesso) ? 0 : forcaAp;
+    // +1 POR PONTO DE CENTELHA DO ATACANTE NO DANO, SEM LIMITE (item 3 da Fase 1).
+    const fa = ((a.distancia && !a.arremesso) ? 0 : forcaAp) + C;
     const perf = a.perf ?? a.pen;
     const dano = `${a.dado}d6${fa ? ` +${fa}` : ''} ${a.tipo}${perf != null ? ` · perf. ${perf}` : ''}`;
     // O NÍVEL DE PERFURAÇÃO como campo numérico, e não só dentro da string do

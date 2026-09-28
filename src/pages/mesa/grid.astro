@@ -8680,7 +8680,7 @@ const SETAS = [
     // que a ponta encosta, e não meio segundo antes dela sair.
     const voou = await atirar();
     await aplicarDano(atacante, alvo, res.dano, res.tipo, voou ? 0 : undefined, dados + dadosDano + porque,
-      { raspao: !!res.raspou });
+      { raspao: !!res.raspou, piso: res.piso });
   }
 
   /** O Preparo que a arma desta peça cobra, pela régua da mesa. */
@@ -9042,7 +9042,7 @@ const SETAS = [
     // como alvo é o bastante — não há conta a refazer aqui.
     await aplicarDano(atacante, alvoDoImpacto, res.dano, res.tipo, voou ? 0 : undefined,
       dados + dadosDano + porque,
-      { raspao: !!res.raspou });
+      { raspao: !!res.raspou, piso: res.piso });
     if (interpositor) {
       await logar(atacante, `${interpositor.nome} se interpôs entre o golpe de ${atacante.nome}`
         + ` e ${alvo.nome}, e levou no lugar dele${dados}${porque}`, { acao: null });
@@ -10213,7 +10213,7 @@ const SETAS = [
     const qaA = ra?.qa, qaD = r?.qa;
     // FONTE ÚNICA: a conta do raspão mora em `quaseAcertoDoEncontro` (`lance.ts`), e não aqui.
     const qaEncontro = quaseAcertoDoEncontro({
-      atacante: { qaArmaBonus: qaA?.armaBonus || 0, qaArmaDano: qaA?.armaDano || 0 },
+      atacante: { qaArmaBonus: qaA?.armaBonus || 0, qaArmaDano: qaA?.armaDano || 0, centelha: ra?.centelha || 0 },
       alvo: {
         qaArmaduraBonus: qaD?.armaduraBonus || 0, qaArmaduraReducao: qaD?.armaduraReducao || 0,
         centelha: r?.centelha || 0,
@@ -10336,6 +10336,7 @@ let roladoDano = '';
         ajusteFlat: ajAtq.flat, ajusteDados: ajAtq.dados,
         penDados: (anat().penDados || []).slice(),
         qaArmaBonus: ra?.qa?.armaBonus ?? 0, qaArmaDano: ra?.qa?.armaDano ?? 0,
+        centelha: ra?.centelha ?? 0,
         // O +1d6 DA INVESTIDA, lido do modo declarado e não somado à mão.
         //
         // A régua tem três metades (`combate.movimento.investida`) e a mesa
@@ -11009,6 +11010,14 @@ let roladoDano = '';
         resolve({
           acertou: v, an: a, manobra: a.golpes > 1 ? manSel.value : 'simples',
           dano: resvalaGate ? 0 : raspou ? danoQA() : Math.max(0, rdDanoFim ? rdDanoFim.total : 0),
+          // O PISO DO ITEM 2C ("o acerto nunca dói menos que o raspão do mesmo
+          // golpe", Regra do Quase-Acerto): `contaDoLance()` já mostra isso na
+          // prévia, mas o valor de verdade que `aplicarDano` recebe (`dano`,
+          // acima) é o BRUTO rolado, sem o piso. Achado nesta rodada (Reforma
+          // da Centelha, 28/09/2026): sem passar o piso adiante, o golpe de
+          // verdade nunca respeitava a regra, só a caixa de prévia. `piso` só
+          // vale no acerto normal; no raspão o próprio `dano` já É o piso.
+          piso: (!resvalaGate && !raspou) ? danoQA() : 0,
           tipo: dnTipo.value,
           ajuste: parseInt(modInp.value || '0', 10) || 0,
           motivo: motivoInp.value.trim(),
@@ -11288,7 +11297,7 @@ let roladoDano = '';
    */
   async function aplicarDano(
     atacante: any, alvo: any, bruto: number, tipo: string, esperaMarca?: number, nota = '',
-    opts: { raspao?: boolean } = {},
+    opts: { raspao?: boolean; piso?: number } = {},
   ) {
     // Pelo lado do jogador a Absorção não existe (ver `folhaDaAcao`): o dano vai
     // inteiro, o registro diz que foi inteiro, e o mestre corrige se for o caso.
@@ -11296,7 +11305,10 @@ let roladoDano = '';
     // sobrou de um golpe que quase não conectou, e a Redução da armadura já foi
     // descontada dele lá atrás (capítulo XII).
     const s = MESTRE && !opts.raspao ? soakDe(alvo, tipo) : 0;
-    const liquido = Math.max(0, bruto - s);
+    // O PISO DO ITEM 2C: o acerto nunca dói menos que o raspão do mesmo golpe.
+    // `opts.piso` só chega preenchido no acerto normal (`fim()`, grid.astro);
+    // no raspão e no dano do jogador ele é 0, e o Math.max não muda nada.
+    const liquido = Math.max(opts.piso || 0, bruto - s, 0);
     const r = await baixarVida(alvo, liquido);
     if (r.erro) return uiErro('Erro ao aplicar o dano: ' + r.erro);
     // A marca sai antes do registro: o texto explica o que a imagem já mostrou.

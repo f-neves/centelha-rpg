@@ -43,9 +43,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 2
   },
   "vontade": 6,
@@ -58,9 +56,9 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 5,
-   "defesaSocial": 11,
-   "defesaMental": 16,
+   "defesa": 4,
+   "defesaSocial": 10,
+   "defesaMental": 17,
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -76,8 +74,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "2d6 +1",
-     "dano": "1d6 +2 corte",
+     "pool": "2d6 +2",
+     "dano": "1d6 +3 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -171,9 +169,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 10,
    "furtividade": 0
   },
   "vontade": 10,
@@ -186,9 +182,9 @@
   },
   "combate": {
    "pv": 75,
-   "defesa": 13,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 10,
+   "defesaSocial": 10,
+   "defesaMental": 30,
    "absorcao": {
     "impacto": 13,
     "corte": 13,
@@ -204,8 +200,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "7d6+2 +5",
-     "dano": "3d6 +10 perfurante",
+     "pool": "7d6+2 +10",
+     "dano": "3d6 +15 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -370,9 +366,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 5,
    "furtividade": 1
   },
   "vontade": 6,
@@ -385,9 +379,9 @@
   },
   "combate": {
    "pv": 50,
-   "defesa": 11,
-   "defesaSocial": 9,
-   "defesaMental": 14,
+   "defesa": 12,
+   "defesaSocial": 8,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
     "corte": 5,
@@ -403,8 +397,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +1",
-     "dano": "2d6 +6 perfurante",
+     "pool": "5d6 +2",
+     "dano": "2d6 +7 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -508,9 +502,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 1
   },
   "vontade": 7,
@@ -523,9 +515,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 6,
-   "defesaSocial": 6,
-   "defesaMental": 12,
+   "defesa": 4,
+   "defesaSocial": 4,
+   "defesaMental": 14,
    "absorcao": {
     "impacto": 8,
     "corte": 7,
@@ -541,8 +533,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +2",
-     "dano": "2d6 +6 perfurante",
+     "pool": "5d6 +4",
+     "dano": "2d6 +8 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -746,9 +738,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 1
   },
   "vontade": 8,
@@ -761,9 +751,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 15,
-   "defesaSocial": 9,
-   "defesaMental": 16,
+   "defesa": 14,
+   "defesaSocial": 6,
+   "defesaMental": 19,
    "absorcao": {
     "impacto": 9,
     "corte": 8,
@@ -779,8 +769,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6+2 +3",
-     "dano": "2d6 +6 perfurante",
+     "pool": "5d6+2 +6",
+     "dano": "2d6 +9 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -1046,9 +1036,8 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 5,
    "furtividade": 2
   },
   "vontade": 9,
@@ -1061,9 +1050,9 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 14,
-   "defesaSocial": 10,
-   "defesaMental": 20,
+   "defesa": 12,
+   "defesaSocial": 6,
+   "defesaMental": 22,
    "absorcao": {
     "impacto": 9,
     "corte": 6,
@@ -1082,8 +1071,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +4",
-     "dano": "1d6 +5 corte",
+     "pool": "4d6+2 +8",
+     "dano": "1d6 +9 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -1213,9 +1202,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 3
   },
   "vontade": 7,
@@ -1228,9 +1215,9 @@
   },
   "combate": {
    "pv": 26,
-   "defesa": 6,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesa": 4,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -1249,8 +1236,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "1d6+2 +2",
-     "dano": "1d6 corte",
+     "pool": "1d6+2 +4",
+     "dano": "1d6 +2 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -1339,9 +1326,7 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 9,
    "furtividade": 2
   },
   "vontade": 11,
@@ -1354,9 +1339,9 @@
   },
   "combate": {
    "pv": 49,
-   "defesa": 18,
-   "defesaSocial": 16,
-   "defesaMental": 27,
+   "defesa": 14,
+   "defesaSocial": 10,
+   "defesaMental": 31,
    "absorcao": {
     "impacto": 14,
     "corte": 10,
@@ -1375,8 +1360,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +6",
-     "dano": "1d6 +6 corte",
+     "pool": "5d6+2 +10",
+     "dano": "1d6 +12 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -1593,8 +1578,8 @@
   },
   "pericias": {
    "prontidao": 4,
-   "integridade": 4,
-   "sociabilidade": 3,
+   "esquiva": 5,
+   "integridade": 7,
    "furtividade": 6
   },
   "vontade": 6,
@@ -1607,9 +1592,9 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 20,
-   "defesaSocial": 13,
-   "defesaMental": 15,
+   "defesa": 23,
+   "defesaSocial": 16,
+   "defesaMental": 18,
    "absorcao": {
     "impacto": 8,
     "corte": 6,
@@ -1625,8 +1610,8 @@
    "ataques": [
     {
      "nome": "Adaga (Ágil)",
-     "pool": "4d6+2 +5",
-     "dano": "1d6 +3 perfurante · perf. 0",
+     "pool": "4d6+2 +8",
+     "dano": "1d6 +6 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve",
@@ -1723,9 +1708,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 8,
    "furtividade": 3
   },
   "vontade": 8,
@@ -1738,9 +1721,9 @@
   },
   "combate": {
    "pv": 43,
-   "defesa": 15,
-   "defesaSocial": 13,
-   "defesaMental": 20,
+   "defesa": 14,
+   "defesaSocial": 10,
+   "defesaMental": 23,
    "absorcao": {
     "impacto": 9,
     "corte": 6,
@@ -1765,8 +1748,8 @@
    "ataques": [
     {
      "nome": "Toque dilacerante",
-     "pool": "5d6+2 +3",
-     "dano": "2d6 necrótico (vs Def. Mental)",
+     "pool": "5d6+2 +6",
+     "dano": "2d6 +3 necrótico (vs Def. Mental)",
      "perfArma": null,
      "speed": 5,
      "classe": "leve",
@@ -2023,9 +2006,8 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 8,
    "furtividade": 3
   },
   "vontade": 9,
@@ -2038,9 +2020,9 @@
   },
   "combate": {
    "pv": 43,
-   "defesa": 12,
-   "defesaSocial": 12,
-   "defesaMental": 21,
+   "defesa": 10,
+   "defesaSocial": 8,
+   "defesaMental": 25,
    "absorcao": {
     "impacto": 10,
     "corte": 7,
@@ -2060,8 +2042,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +4",
-     "dano": "1d6 +6 corte",
+     "pool": "5d6+2 +8",
+     "dano": "1d6 +10 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -2150,9 +2132,7 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 2,
-   "integridade": 8,
-   "sociabilidade": 0,
+   "integridade": 15,
    "furtividade": 2
   },
   "vontade": 12,
@@ -2165,9 +2145,9 @@
   },
   "combate": {
    "pv": 78,
-   "defesa": 29,
-   "defesaSocial": 25,
-   "defesaMental": 36,
+   "defesa": 24,
+   "defesaSocial": 16,
+   "defesaMental": 43,
    "absorcao": {
     "impacto": 21,
     "corte": 17,
@@ -2187,8 +2167,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6 +9",
-     "dano": "2d6 +11 corte",
+     "pool": "8d6 +10",
+     "dano": "2d6 +20 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -2474,8 +2454,7 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 2
   },
   "vontade": 7,
@@ -2489,8 +2468,8 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
-   "defesaSocial": 10,
-   "defesaMental": 17,
+   "defesaSocial": 8,
+   "defesaMental": 19,
    "absorcao": {
     "impacto": 6,
     "corte": 4,
@@ -2510,8 +2489,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +2",
-     "dano": "1d6 +5 corte",
+     "pool": "4d6+2 +4",
+     "dano": "1d6 +7 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -2596,7 +2575,6 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
    "furtividade": 0
   },
   "vontade": 6,
@@ -2609,7 +2587,7 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 9,
+   "defesa": 10,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
@@ -2633,8 +2611,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6+2 +1",
-     "dano": "1d6 +6 perfurante",
+     "pool": "5d6+2 +2",
+     "dano": "1d6 +7 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -2720,9 +2698,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 2
   },
   "vontade": 8,
@@ -2735,9 +2711,9 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 7,
-   "defesaSocial": 9,
-   "defesaMental": 16,
+   "defesa": 4,
+   "defesaSocial": 6,
+   "defesaMental": 19,
    "absorcao": {
     "impacto": 7,
     "corte": 5,
@@ -2753,8 +2729,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +3",
-     "dano": "1d6 +5 perfurante",
+     "pool": "5d6 +6",
+     "dano": "1d6 +8 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -2866,9 +2842,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 0
   },
   "vontade": 10,
@@ -2881,9 +2855,9 @@
   },
   "combate": {
    "pv": 80,
-   "defesa": 13,
-   "defesaSocial": 11,
-   "defesaMental": 21,
+   "defesa": 10,
+   "defesaSocial": 6,
+   "defesaMental": 22,
    "absorcao": {
     "impacto": 14,
     "corte": 13,
@@ -2903,8 +2877,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6 +5",
-     "dano": "3d6 +11 corte",
+     "pool": "8d6 +10",
+     "dano": "3d6 +16 corte",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
@@ -3006,9 +2980,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 0
   },
   "vontade": 6,
@@ -3021,9 +2993,9 @@
   },
   "combate": {
    "pv": 75,
-   "defesa": 9,
-   "defesaSocial": 7,
-   "defesaMental": 12,
+   "defesa": 10,
+   "defesaSocial": 6,
+   "defesaMental": 13,
    "absorcao": {
     "impacto": 9,
     "corte": 9,
@@ -3039,8 +3011,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "7d6+2 +1",
-     "dano": "3d6 +10 perfurante",
+     "pool": "7d6+2 +2",
+     "dano": "3d6 +11 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -3403,8 +3375,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 1
   },
   "vontade": 7,
@@ -3418,8 +3389,8 @@
   "combate": {
    "pv": 54,
    "defesa": 12,
-   "defesaSocial": 6,
-   "defesaMental": 14,
+   "defesaSocial": 4,
+   "defesaMental": 16,
    "absorcao": {
     "impacto": 8,
     "corte": 7,
@@ -3435,8 +3406,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +2",
-     "dano": "2d6 +6 perfurante",
+     "pool": "5d6 +4",
+     "dano": "2d6 +8 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -3678,9 +3649,8 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 8,
    "furtividade": 1
   },
   "vontade": 9,
@@ -3693,9 +3663,9 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 14,
-   "defesaSocial": 12,
-   "defesaMental": 19,
+   "defesa": 12,
+   "defesaSocial": 8,
+   "defesaMental": 23,
    "absorcao": {
     "impacto": 9,
     "corte": 6,
@@ -3718,8 +3688,8 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "4d6+2 +4",
-     "dano": "1d6 +4 impacto",
+     "pool": "4d6+2 +8",
+     "dano": "1d6 +8 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -3844,9 +3814,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 2
   },
   "vontade": 7,
@@ -3859,9 +3827,9 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 6,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesa": 4,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
     "corte": 4,
@@ -3877,8 +3845,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +2",
-     "dano": "1d6 +4 corte",
+     "pool": "3d6+2 +4",
+     "dano": "1d6 +6 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -3971,9 +3939,8 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 8,
    "furtividade": 2
   },
   "vontade": 9,
@@ -3986,9 +3953,9 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 16,
-   "defesaSocial": 12,
-   "defesaMental": 21,
+   "defesa": 14,
+   "defesaSocial": 8,
+   "defesaMental": 25,
    "absorcao": {
     "impacto": 9,
     "corte": 6,
@@ -4004,8 +3971,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +4",
-     "dano": "1d6 +6 corte",
+     "pool": "5d6+2 +8",
+     "dano": "1d6 +10 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -4338,8 +4305,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 2
   },
   "vontade": 7,
@@ -4353,8 +4319,8 @@
   "combate": {
    "pv": 40,
    "defesa": 14,
-   "defesaSocial": 10,
-   "defesaMental": 16,
+   "defesaSocial": 8,
+   "defesaMental": 18,
    "absorcao": {
     "impacto": 7,
     "corte": 4,
@@ -4370,8 +4336,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "4d6+2 +2",
-     "dano": "1d6 +5 corte",
+     "pool": "4d6+2 +4",
+     "dano": "1d6 +7 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -4463,9 +4429,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 10,
    "furtividade": 2
   },
   "vontade": 10,
@@ -4478,9 +4442,9 @@
   },
   "combate": {
    "pv": 46,
-   "defesa": 17,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 14,
+   "defesaSocial": 10,
+   "defesaMental": 30,
    "absorcao": {
     "impacto": 12,
     "corte": 8,
@@ -4500,8 +4464,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +5",
-     "dano": "1d6 +6 corte",
+     "pool": "5d6+2 +10",
+     "dano": "1d6 +11 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -4595,9 +4559,8 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 8,
    "furtividade": 2
   },
   "vontade": 9,
@@ -4610,9 +4573,9 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 12,
-   "defesaSocial": 12,
-   "defesaMental": 20,
+   "defesa": 10,
+   "defesaSocial": 8,
+   "defesaMental": 24,
    "absorcao": {
     "impacto": 9,
     "corte": 6,
@@ -4628,8 +4591,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "5d6+2 +4",
-     "dano": "1d6 +6 corte",
+     "pool": "5d6+2 +8",
+     "dano": "1d6 +10 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -4896,9 +4859,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 0
   },
   "vontade": 6,
@@ -4911,9 +4872,9 @@
   },
   "combate": {
    "pv": 80,
-   "defesa": 9,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 10,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 10,
     "corte": 9,
@@ -4929,8 +4890,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "7d6+2 +1",
-     "dano": "3d6 +10 perfurante",
+     "pool": "7d6+2 +2",
+     "dano": "3d6 +11 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -5148,9 +5109,7 @@
   },
   "pericias": {
    "prontidao": 5,
-   "esquiva": 3,
-   "integridade": 6,
-   "sociabilidade": 3,
+   "integridade": 9,
    "furtividade": 2
   },
   "vontade": 8,
@@ -5163,9 +5122,9 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 19,
-   "defesaSocial": 13,
-   "defesaMental": 19,
+   "defesa": 22,
+   "defesaSocial": 16,
+   "defesaMental": 22,
    "absorcao": {
     "impacto": 8,
     "corte": 11,
@@ -5181,8 +5140,8 @@
    "ataques": [
     {
      "nome": "Espada longa (golpe duplo)",
-     "pool": "5d6 +4",
-     "dano": "2d6 +4 corte",
+     "pool": "5d6 +7",
+     "dano": "2d6 +7 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media",
@@ -5523,8 +5482,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 1
   },
   "vontade": 7,
@@ -5538,8 +5496,8 @@
   "combate": {
    "pv": 37,
    "defesa": 10,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
     "corte": 4,
@@ -5559,8 +5517,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "3d6+2 +2",
-     "dano": "1d6 +3 corte",
+     "pool": "3d6+2 +4",
+     "dano": "1d6 +5 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -5643,8 +5601,8 @@
   },
   "pericias": {
    "prontidao": 4,
-   "integridade": 6,
-   "sociabilidade": 3,
+   "esquiva": 2,
+   "integridade": 7,
    "furtividade": 2
   },
   "vontade": 7,
@@ -5657,9 +5615,9 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 12,
-   "defesaSocial": 11,
-   "defesaMental": 16,
+   "defesa": 13,
+   "defesaSocial": 12,
+   "defesaMental": 17,
    "absorcao": {
     "impacto": 9,
     "corte": 11,
@@ -5675,8 +5633,8 @@
    "ataques": [
     {
      "nome": "Espada longa",
-     "pool": "4d6 +2",
-     "dano": "2d6 +3 corte",
+     "pool": "4d6 +3",
+     "dano": "2d6 +4 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -6118,9 +6076,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 0
   },
   "vontade": 10,
@@ -6133,9 +6089,9 @@
   },
   "combate": {
    "pv": 75,
-   "defesa": 15,
-   "defesaSocial": 11,
-   "defesaMental": 22,
+   "defesa": 12,
+   "defesaSocial": 6,
+   "defesaMental": 23,
    "absorcao": {
     "impacto": 13,
     "corte": 13,
@@ -6155,8 +6111,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6 +5",
-     "dano": "3d6 +11 corte",
+     "pool": "8d6 +10",
+     "dano": "3d6 +16 corte",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
@@ -6241,8 +6197,8 @@
   },
   "pericias": {
    "prontidao": 3,
-   "integridade": 6,
-   "sociabilidade": 0,
+   "esquiva": 2,
+   "integridade": 7,
    "furtividade": 2
   },
   "vontade": 7,
@@ -6255,9 +6211,9 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 10,
-   "defesaSocial": 5,
-   "defesaMental": 16,
+   "defesa": 11,
+   "defesaSocial": 4,
+   "defesaMental": 17,
    "absorcao": {
     "impacto": 10,
     "corte": 11,
@@ -6273,8 +6229,8 @@
    "ataques": [
     {
      "nome": "Montante",
-     "pool": "4d6 +1",
-     "dano": "3d6 +8 corte",
+     "pool": "4d6 +2",
+     "dano": "3d6 +9 corte",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
@@ -6489,8 +6445,7 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 5,
    "furtividade": 1
   },
   "vontade": 7,
@@ -6504,8 +6459,8 @@
   "combate": {
    "pv": 50,
    "defesa": 12,
-   "defesaSocial": 8,
-   "defesaMental": 15,
+   "defesaSocial": 6,
+   "defesaMental": 17,
    "absorcao": {
     "impacto": 7,
     "corte": 6,
@@ -6521,8 +6476,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "4d6+2 +2",
-     "dano": "2d6 +5 corte",
+     "pool": "4d6+2 +4",
+     "dano": "2d6 +7 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -6738,9 +6693,8 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
+   "esquiva": 0,
    "integridade": 2,
-   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -6753,8 +6707,8 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 16,
-   "defesaSocial": 8,
+   "defesa": 14,
+   "defesaSocial": 4,
    "defesaMental": 18,
    "absorcao": {
     "impacto": 10,
@@ -6771,8 +6725,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "7d6 +4",
-     "dano": "2d6 +9 perfurante",
+     "pool": "7d6 +8",
+     "dano": "2d6 +13 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -6857,9 +6811,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 0
   },
   "vontade": 6,
@@ -6872,9 +6824,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 5,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 4,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
     "corte": 6,
@@ -6890,8 +6842,8 @@
    "ataques": [
     {
      "nome": "Pancada descomunal",
-     "pool": "7d6 +1",
-     "dano": "2d6 +9 impacto",
+     "pool": "7d6 +2",
+     "dano": "2d6 +10 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -6992,9 +6944,8 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 8,
    "furtividade": 1
   },
   "vontade": 9,
@@ -7007,9 +6958,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 16,
-   "defesaSocial": 12,
-   "defesaMental": 21,
+   "defesa": 14,
+   "defesaSocial": 8,
+   "defesaMental": 25,
    "absorcao": {
     "impacto": 10,
     "corte": 9,
@@ -7025,8 +6976,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6 +4",
-     "dano": "2d6 +7 perfurante",
+     "pool": "6d6 +8",
+     "dano": "2d6 +11 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -7378,8 +7329,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 3
   },
   "vontade": 7,
@@ -7393,8 +7343,8 @@
   "combate": {
    "pv": 24,
    "defesa": 14,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 4,
     "corte": 3,
@@ -7410,8 +7360,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "2d6+2 +2",
-     "dano": "1d6 +1 perfurante",
+     "pool": "2d6+2 +4",
+     "dano": "1d6 +3 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -7521,8 +7471,8 @@
   },
   "pericias": {
    "prontidao": 3,
-   "integridade": 6,
-   "sociabilidade": 4,
+   "esquiva": 2,
+   "integridade": 7,
    "furtividade": 2
   },
   "vontade": 7,
@@ -7535,9 +7485,9 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 12,
-   "defesaSocial": 13,
-   "defesaMental": 16,
+   "defesa": 13,
+   "defesaSocial": 14,
+   "defesaMental": 17,
    "absorcao": {
     "impacto": 9,
     "corte": 11,
@@ -7553,8 +7503,8 @@
    "ataques": [
     {
      "nome": "Espada longa",
-     "pool": "4d6 +2",
-     "dano": "2d6 +3 corte",
+     "pool": "4d6 +3",
+     "dano": "2d6 +4 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -7650,9 +7600,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 1
   },
   "vontade": 6,
@@ -7665,9 +7613,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 9,
-   "defesaSocial": 5,
-   "defesaMental": 10,
+   "defesa": 10,
+   "defesaSocial": 4,
+   "defesaMental": 11,
    "absorcao": {
     "impacto": 7,
     "corte": 6,
@@ -7683,8 +7631,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6+2 +1",
-     "dano": "2d6 +7 perfurante",
+     "pool": "5d6+2 +2",
+     "dano": "2d6 +8 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -7897,9 +7845,7 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 2,
-   "integridade": 6,
-   "sociabilidade": 0,
+   "integridade": 11,
    "furtividade": 2
   },
   "vontade": 10,
@@ -7912,9 +7858,9 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 21,
-   "defesaSocial": 17,
-   "defesaMental": 26,
+   "defesa": 20,
+   "defesaSocial": 12,
+   "defesaMental": 31,
    "absorcao": {
     "impacto": 10,
     "corte": 7,
@@ -7930,8 +7876,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +5",
-     "dano": "1d6 +4 corte",
+     "pool": "4d6+2 +10",
+     "dano": "1d6 +9 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -8087,9 +8033,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 6,
-   "sociabilidade": 0,
+   "integridade": 12,
    "furtividade": 0
   },
   "vontade": 11,
@@ -8102,9 +8046,9 @@
   },
   "combate": {
    "pv": 95,
-   "defesa": 18,
-   "defesaSocial": 18,
-   "defesaMental": 26,
+   "defesa": 14,
+   "defesaSocial": 12,
+   "defesaMental": 32,
    "absorcao": {
     "impacto": 17,
     "corte": 18,
@@ -8120,8 +8064,8 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "9d6 +6",
-     "dano": "3d6 +13 perfurante",
+     "pool": "9d6 +10",
+     "dano": "3d6 +19 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -8343,7 +8287,6 @@
   },
   "pericias": {
    "prontidao": 0,
-   "esquiva": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -8356,7 +8299,7 @@
   },
   "combate": {
    "pv": 66,
-   "defesa": 1,
+   "defesa": 0,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
@@ -8378,8 +8321,8 @@
    "ataques": [
     {
      "nome": "Pseudópode",
-     "pool": "3d6+2 +1",
-     "dano": "2d6 +3 impacto",
+     "pool": "3d6+2 +2",
+     "dano": "2d6 +4 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -8473,9 +8416,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 2,
-   "integridade": 3,
-   "sociabilidade": 3,
+   "integridade": 4,
    "furtividade": 2
   },
   "vontade": 7,
@@ -8488,9 +8429,9 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 11,
-   "defesaSocial": 11,
-   "defesaMental": 13,
+   "defesa": 12,
+   "defesaSocial": 12,
+   "defesaMental": 14,
    "absorcao": {
     "impacto": 4,
     "corte": 2,
@@ -8506,8 +8447,8 @@
    "ataques": [
     {
      "nome": "Toque mórbido (Morte 1)",
-     "pool": "3d6+2 +1",
-     "dano": "1d6 necrótico",
+     "pool": "3d6+2 +2",
+     "dano": "1d6 +1 necrótico",
      "perfArma": null,
      "speed": 6,
      "classe": "arte",
@@ -8603,8 +8544,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 3
   },
   "vontade": 7,
@@ -8618,8 +8558,8 @@
   "combate": {
    "pv": 28,
    "defesa": 14,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
     "corte": 4,
@@ -8635,8 +8575,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "2d6+2 +2",
-     "dano": "1d6 +2 corte",
+     "pool": "2d6+2 +4",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -8726,8 +8666,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 5,
    "furtividade": 2
   },
   "vontade": 7,
@@ -8741,8 +8680,8 @@
   "combate": {
    "pv": 37,
    "defesa": 14,
-   "defesaSocial": 8,
-   "defesaMental": 14,
+   "defesaSocial": 6,
+   "defesaMental": 16,
    "absorcao": {
     "impacto": 6,
     "corte": 4,
@@ -8758,8 +8697,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "4d6 +2",
-     "dano": "1d6 +4 corte",
+     "pool": "4d6 +4",
+     "dano": "1d6 +6 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -8853,9 +8792,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 3
   },
   "vontade": 6,
@@ -8868,9 +8805,9 @@
   },
   "combate": {
    "pv": 28,
-   "defesa": 11,
-   "defesaSocial": 5,
-   "defesaMental": 10,
+   "defesa": 12,
+   "defesaSocial": 4,
+   "defesaMental": 11,
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -8886,8 +8823,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "2d6+2 +1",
-     "dano": "1d6 +2 perfurante",
+     "pool": "2d6+2 +2",
+     "dano": "1d6 +3 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -9089,8 +9026,7 @@
   "pericias": {
    "prontidao": 0,
    "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 3
   },
   "vontade": 7,
@@ -9104,8 +9040,8 @@
   "combate": {
    "pv": 30,
    "defesa": 12,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 7,
     "corte": 4,
@@ -9121,8 +9057,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6 +2",
-     "dano": "1d6 +2 corte",
+     "pool": "3d6 +4",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -9215,9 +9151,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 6,
-   "sociabilidade": 0,
+   "integridade": 12,
    "furtividade": 2
   },
   "vontade": 11,
@@ -9230,9 +9164,9 @@
   },
   "combate": {
    "pv": 43,
-   "defesa": 18,
-   "defesaSocial": 18,
-   "defesaMental": 28,
+   "defesa": 14,
+   "defesaSocial": 12,
+   "defesaMental": 34,
    "absorcao": {
     "impacto": 12,
     "corte": 9,
@@ -9251,8 +9185,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6+2 +6",
-     "dano": "1d6 +8 corte",
+     "pool": "6d6+2 +10",
+     "dano": "1d6 +14 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -9397,9 +9331,8 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
+   "esquiva": 0,
    "integridade": 2,
-   "sociabilidade": 0,
    "furtividade": 3
   },
   "vontade": 9,
@@ -9412,8 +9345,8 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 14,
-   "defesaSocial": 8,
+   "defesa": 12,
+   "defesaSocial": 4,
    "defesaMental": 17,
    "absorcao": {
     "impacto": 9,
@@ -9434,8 +9367,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +4",
-     "dano": "1d6 +4 corte",
+     "pool": "4d6+2 +8",
+     "dano": "1d6 +8 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -9570,9 +9503,8 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 2,
-   "integridade": 7,
-   "sociabilidade": 0,
+   "esquiva": 1,
+   "integridade": 13,
    "furtividade": 2
   },
   "vontade": 11,
@@ -9585,9 +9517,9 @@
   },
   "combate": {
    "pv": 70,
-   "defesa": 26,
-   "defesaSocial": 20,
-   "defesaMental": 29,
+   "defesa": 24,
+   "defesaSocial": 14,
+   "defesaMental": 35,
    "absorcao": {
     "impacto": 16,
     "corte": 13,
@@ -9607,8 +9539,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6+2 +6",
-     "dano": "2d6 +10 corte",
+     "pool": "7d6+2 +10",
+     "dano": "2d6 +16 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -9702,9 +9634,8 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 2,
-   "integridade": 6,
-   "sociabilidade": 0,
+   "esquiva": 1,
+   "integridade": 12,
    "furtividade": 2
   },
   "vontade": 11,
@@ -9717,9 +9648,9 @@
   },
   "combate": {
    "pv": 66,
-   "defesa": 22,
-   "defesaSocial": 18,
-   "defesaMental": 29,
+   "defesa": 20,
+   "defesaSocial": 12,
+   "defesaMental": 35,
    "absorcao": {
     "impacto": 15,
     "corte": 12,
@@ -9739,8 +9670,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6 +6",
-     "dano": "2d6 +9 corte",
+     "pool": "7d6 +10",
+     "dano": "2d6 +15 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -9878,9 +9809,7 @@
   },
   "pericias": {
    "prontidao": 4,
-   "esquiva": 3,
-   "integridade": 8,
-   "sociabilidade": 0,
+   "integridade": 15,
    "furtividade": 2
   },
   "vontade": 12,
@@ -9893,9 +9822,9 @@
   },
   "combate": {
    "pv": 74,
-   "defesa": 33,
-   "defesaSocial": 27,
-   "defesaMental": 38,
+   "defesa": 30,
+   "defesaSocial": 18,
+   "defesaMental": 45,
    "absorcao": {
     "impacto": 20,
     "corte": 16,
@@ -9915,8 +9844,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6+2 +9",
-     "dano": "2d6 +12 corte",
+     "pool": "8d6+2 +10",
+     "dano": "2d6 +21 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -10098,9 +10027,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 2,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 10,
    "furtividade": 3
   },
   "vontade": 10,
@@ -10113,9 +10040,9 @@
   },
   "combate": {
    "pv": 46,
-   "defesa": 23,
-   "defesaSocial": 15,
-   "defesaMental": 24,
+   "defesa": 22,
+   "defesaSocial": 10,
+   "defesaMental": 29,
    "absorcao": {
     "impacto": 12,
     "corte": 8,
@@ -10135,8 +10062,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +5",
-     "dano": "1d6 +7 corte",
+     "pool": "6d6 +10",
+     "dano": "1d6 +12 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -10229,9 +10156,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 10,
    "furtividade": 2
   },
   "vontade": 10,
@@ -10244,9 +10169,9 @@
   },
   "combate": {
    "pv": 58,
-   "defesa": 17,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 14,
+   "defesaSocial": 10,
+   "defesaMental": 30,
    "absorcao": {
     "impacto": 12,
     "corte": 10,
@@ -10266,8 +10191,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6+2 +5",
-     "dano": "2d6 +8 corte",
+     "pool": "6d6+2 +10",
+     "dano": "2d6 +13 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -10411,8 +10336,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 5,
    "furtividade": 5
   },
   "vontade": 7,
@@ -10426,8 +10350,8 @@
   "combate": {
    "pv": 17,
    "defesa": 14,
-   "defesaSocial": 8,
-   "defesaMental": 15,
+   "defesaSocial": 6,
+   "defesaMental": 17,
    "absorcao": {
     "impacto": 4,
     "corte": 3,
@@ -10447,8 +10371,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "2d6+2 +2",
-     "dano": "1d6 +2 corte",
+     "pool": "2d6+2 +4",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -10590,9 +10514,8 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 8,
    "furtividade": 0
   },
   "vontade": 9,
@@ -10605,9 +10528,9 @@
   },
   "combate": {
    "pv": 50,
-   "defesa": 16,
-   "defesaSocial": 12,
-   "defesaMental": 21,
+   "defesa": 14,
+   "defesaSocial": 8,
+   "defesaMental": 25,
    "absorcao": {
     "impacto": 9,
     "corte": 8,
@@ -10627,8 +10550,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +4",
-     "dano": "2d6 +6 corte",
+     "pool": "5d6+2 +8",
+     "dano": "2d6 +10 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -10876,8 +10799,7 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 2
   },
   "vontade": 7,
@@ -10891,8 +10813,8 @@
   "combate": {
    "pv": 37,
    "defesa": 10,
-   "defesaSocial": 10,
-   "defesaMental": 17,
+   "defesaSocial": 8,
+   "defesaMental": 19,
    "absorcao": {
     "impacto": 6,
     "corte": 4,
@@ -10908,8 +10830,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +2",
-     "dano": "1d6 +3 corte",
+     "pool": "3d6+2 +4",
+     "dano": "1d6 +5 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -11034,9 +10956,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 5,
    "furtividade": 2
   },
   "vontade": 9,
@@ -11049,9 +10969,9 @@
   },
   "combate": {
    "pv": 43,
-   "defesa": 8,
-   "defesaSocial": 10,
-   "defesaMental": 18,
+   "defesa": 4,
+   "defesaSocial": 6,
+   "defesaMental": 20,
    "absorcao": {
     "impacto": 10,
     "corte": 7,
@@ -11067,8 +10987,8 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "6d6 +4",
-     "dano": "1d6 +7 perfurante",
+     "pool": "6d6 +8",
+     "dano": "1d6 +11 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -11158,9 +11078,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 9,
    "furtividade": 0
   },
   "vontade": 11,
@@ -11173,9 +11091,9 @@
   },
   "combate": {
    "pv": 80,
-   "defesa": 10,
-   "defesaSocial": 16,
-   "defesaMental": 27,
+   "defesa": 4,
+   "defesaSocial": 10,
+   "defesaMental": 31,
    "absorcao": {
     "impacto": 15,
     "corte": 14,
@@ -11194,8 +11112,8 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "8d6 +6",
-     "dano": "3d6 +11 perfurante",
+     "pool": "8d6 +10",
+     "dano": "3d6 +17 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -11354,9 +11272,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
    "integridade": 2,
-   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -11369,8 +11285,8 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 8,
-   "defesaSocial": 8,
+   "defesa": 4,
+   "defesaSocial": 4,
    "defesaMental": 17,
    "absorcao": {
     "impacto": 10,
@@ -11393,8 +11309,8 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "6d6 +4",
-     "dano": "2d6 +7 perfurante",
+     "pool": "6d6 +8",
+     "dano": "2d6 +11 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -11560,9 +11476,7 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 0,
-   "integridade": 7,
-   "sociabilidade": 0,
+   "integridade": 14,
    "furtividade": 0
   },
   "vontade": 12,
@@ -11575,9 +11489,9 @@
   },
   "combate": {
    "pv": 85,
-   "defesa": 11,
-   "defesaSocial": 21,
-   "defesaMental": 33,
+   "defesa": 4,
+   "defesaSocial": 14,
+   "defesaMental": 40,
    "absorcao": {
     "impacto": 17,
     "corte": 16,
@@ -11596,8 +11510,8 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "8d6+2 +7",
-     "dano": "3d6 +12 perfurante",
+     "pool": "8d6+2 +10",
+     "dano": "3d6 +19 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -11780,9 +11694,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 9,
    "furtividade": 0
   },
   "vontade": 11,
@@ -11795,9 +11707,9 @@
   },
   "combate": {
    "pv": 75,
-   "defesa": 14,
-   "defesaSocial": 16,
-   "defesaMental": 27,
+   "defesa": 10,
+   "defesaSocial": 10,
+   "defesaMental": 31,
    "absorcao": {
     "impacto": 14,
     "corte": 14,
@@ -11813,8 +11725,8 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "7d6+2 +6",
-     "dano": "3d6 +10 perfurante",
+     "pool": "7d6+2 +10",
+     "dano": "3d6 +16 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -11958,9 +11870,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 9,
    "furtividade": 0
   },
   "vontade": 11,
@@ -11973,9 +11883,9 @@
   },
   "combate": {
    "pv": 80,
-   "defesa": 10,
-   "defesaSocial": 16,
-   "defesaMental": 27,
+   "defesa": 4,
+   "defesaSocial": 10,
+   "defesaMental": 31,
    "absorcao": {
     "impacto": 15,
     "corte": 14,
@@ -11994,8 +11904,8 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "8d6 +6",
-     "dano": "3d6 +11 perfurante",
+     "pool": "8d6 +10",
+     "dano": "3d6 +17 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -12178,9 +12088,7 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 0,
-   "integridade": 6,
-   "sociabilidade": 0,
+   "integridade": 11,
    "furtividade": 0
   },
   "vontade": 12,
@@ -12193,9 +12101,9 @@
   },
   "combate": {
    "pv": 95,
-   "defesa": 11,
-   "defesaSocial": 19,
-   "defesaMental": 31,
+   "defesa": 4,
+   "defesaSocial": 12,
+   "defesaMental": 36,
    "absorcao": {
     "impacto": 18,
     "corte": 19,
@@ -12214,8 +12122,8 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "9d6+2 +7",
-     "dano": "3d6 +14 perfurante",
+     "pool": "9d6+2 +10",
+     "dano": "3d6 +21 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -12382,9 +12290,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 1
   },
   "vontade": 10,
@@ -12397,9 +12303,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 13,
-   "defesaSocial": 11,
-   "defesaMental": 21,
+   "defesa": 10,
+   "defesaSocial": 6,
+   "defesaMental": 22,
    "absorcao": {
     "impacto": 11,
     "corte": 10,
@@ -12418,8 +12324,8 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "7d6 +5",
-     "dano": "2d6 +9 perfurante",
+     "pool": "7d6 +10",
+     "dano": "2d6 +14 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -12567,9 +12473,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 4
   },
   "vontade": 7,
@@ -12582,9 +12486,9 @@
   },
   "combate": {
    "pv": 28,
-   "defesa": 6,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesa": 4,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
     "corte": 4,
@@ -12604,8 +12508,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "3d6 +2",
-     "dano": "1d6 +3 corte",
+     "pool": "3d6 +4",
+     "dano": "1d6 +5 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -12711,9 +12615,8 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 9,
    "furtividade": 4
   },
   "vontade": 9,
@@ -12726,9 +12629,9 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 16,
-   "defesaSocial": 14,
-   "defesaMental": 22,
+   "defesa": 14,
+   "defesaSocial": 10,
+   "defesaMental": 26,
    "absorcao": {
     "impacto": 7,
     "corte": 5,
@@ -12744,8 +12647,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "3d6 +4",
-     "dano": "1d6 +2 perfurante",
+     "pool": "3d6 +8",
+     "dano": "1d6 +6 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -12877,9 +12780,8 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 9,
    "furtividade": 1
   },
   "vontade": 9,
@@ -12892,9 +12794,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 14,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 12,
+   "defesaSocial": 10,
+   "defesaMental": 27,
    "absorcao": {
     "impacto": 10,
     "corte": 9,
@@ -12910,8 +12812,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +4",
-     "dano": "2d6 +5 perfurante",
+     "pool": "5d6 +8",
+     "dano": "2d6 +9 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -13003,9 +12905,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 2
   },
   "vontade": 6,
@@ -13018,9 +12918,9 @@
   },
   "combate": {
    "pv": 31,
-   "defesa": 11,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 12,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 3,
     "corte": 2,
@@ -13036,8 +12936,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "2d6 +1",
-     "dano": "1d6 +2 corte",
+     "pool": "2d6 +2",
+     "dano": "1d6 +3 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -13126,8 +13026,7 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 2
   },
   "vontade": 7,
@@ -13141,8 +13040,8 @@
   "combate": {
    "pv": 34,
    "defesa": 14,
-   "defesaSocial": 10,
-   "defesaMental": 17,
+   "defesaSocial": 8,
+   "defesaMental": 19,
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -13158,8 +13057,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +2",
-     "dano": "1d6 +3 corte",
+     "pool": "3d6+2 +4",
+     "dano": "1d6 +5 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -13251,8 +13150,8 @@
   },
   "pericias": {
    "prontidao": 4,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "esquiva": 5,
+   "integridade": 8,
    "furtividade": 2
   },
   "vontade": 6,
@@ -13265,9 +13164,9 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 20,
-   "defesaSocial": 7,
-   "defesaMental": 16,
+   "defesa": 23,
+   "defesaSocial": 4,
+   "defesaMental": 19,
    "absorcao": {
     "impacto": 8,
     "corte": 6,
@@ -13283,8 +13182,8 @@
    "ataques": [
     {
      "nome": "Florete (Ágil)",
-     "pool": "5d6 +5",
-     "dano": "1d6 +3 perfurante · perf. 1",
+     "pool": "5d6 +8",
+     "dano": "1d6 +6 perfurante · perf. 1",
      "perfArma": 1,
      "speed": 5,
      "classe": "leve"
@@ -13377,9 +13276,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 2
   },
   "vontade": 6,
@@ -13392,9 +13289,9 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 5,
-   "defesaSocial": 5,
-   "defesaMental": 12,
+   "defesa": 4,
+   "defesaSocial": 4,
+   "defesaMental": 13,
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -13410,8 +13307,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "2d6+2 +1",
-     "dano": "1d6 +3 corte",
+     "pool": "2d6+2 +2",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -13500,9 +13397,8 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 8,
    "furtividade": 0
   },
   "vontade": 9,
@@ -13515,9 +13411,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 16,
-   "defesaSocial": 12,
-   "defesaMental": 21,
+   "defesa": 14,
+   "defesaSocial": 8,
+   "defesaMental": 25,
    "absorcao": {
     "impacto": 10,
     "corte": 9,
@@ -13539,8 +13435,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6+2 +4",
-     "dano": "2d6 +8 corte",
+     "pool": "6d6+2 +8",
+     "dano": "2d6 +12 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -13786,9 +13682,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 2
   },
   "vontade": 6,
@@ -13801,9 +13695,9 @@
   },
   "combate": {
    "pv": 26,
-   "defesa": 5,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 4,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
     "corte": 2,
@@ -13825,8 +13719,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "3d6+2 +1",
-     "dano": "1d6 +4 corte",
+     "pool": "3d6+2 +2",
+     "dano": "1d6 +5 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -13912,9 +13806,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 0
   },
   "vontade": 8,
@@ -13927,9 +13819,9 @@
   },
   "combate": {
    "pv": 58,
-   "defesa": 7,
-   "defesaSocial": 7,
-   "defesaMental": 15,
+   "defesa": 4,
+   "defesaSocial": 4,
+   "defesaMental": 16,
    "absorcao": {
     "impacto": 10,
     "corte": 8,
@@ -13950,8 +13842,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6 +3",
-     "dano": "2d6 +9 corte",
+     "pool": "7d6 +6",
+     "dano": "2d6 +12 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -14066,9 +13958,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 2
   },
   "vontade": 6,
@@ -14081,9 +13971,9 @@
   },
   "combate": {
    "pv": 26,
-   "defesa": 5,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 4,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
     "corte": 2,
@@ -14105,8 +13995,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6 +1",
-     "dano": "1d6 +5 corte",
+     "pool": "4d6 +2",
+     "dano": "1d6 +6 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -14191,9 +14081,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 2
   },
   "vontade": 6,
@@ -14206,9 +14094,9 @@
   },
   "combate": {
    "pv": 26,
-   "defesa": 13,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 14,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
     "corte": 2,
@@ -14228,8 +14116,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "3d6 +1",
-     "dano": "1d6 +3 corte",
+     "pool": "3d6 +2",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -14313,9 +14201,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 2
   },
   "vontade": 6,
@@ -14328,9 +14214,9 @@
   },
   "combate": {
    "pv": 24,
-   "defesa": 9,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 10,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 3,
     "corte": 2,
@@ -14352,8 +14238,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "2d6+2 +1",
-     "dano": "1d6 +2 corte",
+     "pool": "2d6+2 +2",
+     "dano": "1d6 +3 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -15516,9 +15402,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 2,
-   "integridade": 6,
-   "sociabilidade": 0,
+   "integridade": 11,
    "furtividade": 3
   },
   "vontade": 10,
@@ -15531,9 +15415,9 @@
   },
   "combate": {
    "pv": 43,
-   "defesa": 23,
-   "defesaSocial": 17,
-   "defesaMental": 26,
+   "defesa": 22,
+   "defesaSocial": 12,
+   "defesaMental": 31,
    "absorcao": {
     "impacto": 11,
     "corte": 8,
@@ -15553,16 +15437,16 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +5",
-     "dano": "1d6 +6 corte",
+     "pool": "5d6+2 +10",
+     "dano": "1d6 +11 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
     },
     {
      "nome": "Arco longo",
-     "pool": "4d6+2 +5",
-     "dano": "1d6 +6 perfurante · perf. 1",
+     "pool": "4d6+2 +8",
+     "dano": "1d6 +11 perfurante · perf. 1",
      "perfArma": 1,
      "speed": 6,
      "classe": "distancia",
@@ -15809,9 +15693,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 10,
    "furtividade": 1
   },
   "vontade": 10,
@@ -15824,9 +15706,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 15,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 12,
+   "defesaSocial": 10,
+   "defesaMental": 30,
    "absorcao": {
     "impacto": 11,
     "corte": 10,
@@ -15842,8 +15724,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6 +5",
-     "dano": "2d6 +7 perfurante",
+     "pool": "6d6 +10",
+     "dano": "2d6 +12 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -15980,9 +15862,7 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 0
   },
   "vontade": 5,
@@ -15995,9 +15875,9 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 7,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 8,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
     "corte": 2,
@@ -16019,8 +15899,8 @@
    "ataques": [
     {
      "nome": "Foice enferrujada",
-     "pool": "1d6+2 +1",
-     "dano": "2d6 +3 corte",
+     "pool": "1d6+2",
+     "dano": "2d6 +4 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -16091,9 +15971,8 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 9,
    "furtividade": 3
   },
   "vontade": 9,
@@ -16106,9 +15985,9 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 16,
-   "defesaSocial": 14,
-   "defesaMental": 22,
+   "defesa": 14,
+   "defesaSocial": 10,
+   "defesaMental": 26,
    "absorcao": {
     "impacto": 9,
     "corte": 6,
@@ -16133,8 +16012,8 @@
    "ataques": [
     {
      "nome": "Toque dilacerante",
-     "pool": "5d6 +4",
-     "dano": "2d6 necrótico (vs Def. Mental)",
+     "pool": "5d6 +8",
+     "dano": "2d6 +4 necrótico (vs Def. Mental)",
      "perfArma": null,
      "speed": 5,
      "classe": "leve",
@@ -16521,8 +16400,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 3
   },
   "vontade": 7,
@@ -16536,8 +16414,8 @@
   "combate": {
    "pv": 26,
    "defesa": 12,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -16553,8 +16431,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "4d6 +2",
-     "dano": "1d6 +5 perfurante",
+     "pool": "4d6 +4",
+     "dano": "1d6 +7 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -16639,8 +16517,7 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 5,
    "furtividade": 2
   },
   "vontade": 7,
@@ -16654,8 +16531,8 @@
   "combate": {
    "pv": 40,
    "defesa": 14,
-   "defesaSocial": 8,
-   "defesaMental": 14,
+   "defesaSocial": 6,
+   "defesaMental": 16,
    "absorcao": {
     "impacto": 7,
     "corte": 4,
@@ -16671,8 +16548,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "4d6 +2",
-     "dano": "1d6 +4 perfurante",
+     "pool": "4d6 +4",
+     "dano": "1d6 +6 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -17007,9 +16884,8 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 9,
    "furtividade": 3
   },
   "vontade": 9,
@@ -17022,9 +16898,9 @@
   },
   "combate": {
    "pv": 43,
-   "defesa": 12,
-   "defesaSocial": 14,
-   "defesaMental": 20,
+   "defesa": 10,
+   "defesaSocial": 10,
+   "defesaMental": 24,
    "absorcao": {
     "impacto": 10,
     "corte": 7,
@@ -17049,8 +16925,8 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "2d6+2 +4",
-     "dano": "1d6 impacto",
+     "pool": "2d6+2 +8",
+     "dano": "1d6 +4 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -17143,9 +17019,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 2,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 2
   },
   "vontade": 6,
@@ -17158,9 +17032,9 @@
   },
   "combate": {
    "pv": 31,
-   "defesa": 11,
-   "defesaSocial": 5,
-   "defesaMental": 14,
+   "defesa": 12,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 3,
     "corte": 2,
@@ -17176,8 +17050,8 @@
    "ataques": [
     {
      "nome": "Dardo flamejante (Fogo 1)",
-     "pool": "3d6+2 +1",
-     "dano": "1d6 fogo",
+     "pool": "3d6+2 +2",
+     "dano": "1d6 +1 fogo",
      "perfArma": null,
      "speed": 6,
      "classe": "arte",
@@ -17272,9 +17146,8 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 2,
-   "integridade": 7,
-   "sociabilidade": 0,
+   "esquiva": 1,
+   "integridade": 13,
    "furtividade": 0
   },
   "vontade": 11,
@@ -17287,9 +17160,9 @@
   },
   "combate": {
    "pv": 85,
-   "defesa": 26,
-   "defesaSocial": 20,
-   "defesaMental": 31,
+   "defesa": 24,
+   "defesaSocial": 14,
+   "defesaMental": 37,
    "absorcao": {
     "impacto": 15,
     "corte": 17,
@@ -17305,8 +17178,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "8d6 +6",
-     "dano": "3d6 +11 perfurante",
+     "pool": "8d6 +10",
+     "dano": "3d6 +17 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -17400,9 +17273,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 8,
    "furtividade": 2
   },
   "vontade": 9,
@@ -17415,9 +17286,9 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 8,
-   "defesaSocial": 12,
-   "defesaMental": 21,
+   "defesa": 4,
+   "defesaSocial": 8,
+   "defesaMental": 25,
    "absorcao": {
     "impacto": 9,
     "corte": 6,
@@ -17436,8 +17307,8 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "5d6+2 +4",
-     "dano": "1d6 +6 perfurante",
+     "pool": "5d6+2 +8",
+     "dano": "1d6 +10 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -17583,9 +17454,8 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 3,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "esquiva": 4,
+   "integridade": 8,
    "furtividade": 4
   },
   "vontade": 9,
@@ -17598,9 +17468,9 @@
   },
   "combate": {
    "pv": 17,
-   "defesa": 28,
-   "defesaSocial": 12,
-   "defesaMental": 22,
+   "defesa": 30,
+   "defesaSocial": 8,
+   "defesaMental": 26,
    "absorcao": {
     "impacto": 6,
     "corte": 5,
@@ -17616,8 +17486,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "2d6+2 +4",
-     "dano": "1d6 perfurante",
+     "pool": "2d6+2 +8",
+     "dano": "1d6 +4 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -17868,9 +17738,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 0
   },
   "vontade": 10,
@@ -17883,9 +17751,9 @@
   },
   "combate": {
    "pv": 80,
-   "defesa": 13,
-   "defesaSocial": 11,
-   "defesaMental": 20,
+   "defesa": 10,
+   "defesaSocial": 6,
+   "defesaMental": 21,
    "absorcao": {
     "impacto": 14,
     "corte": 13,
@@ -17901,8 +17769,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "8d6 +5",
-     "dano": "3d6 +11 perfurante",
+     "pool": "8d6 +10",
+     "dano": "3d6 +16 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -18108,9 +17976,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 2
   },
   "vontade": 6,
@@ -18123,9 +17989,9 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 11,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 12,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 9,
     "corte": 6,
@@ -18141,8 +18007,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "4d6 +1",
-     "dano": "1d6 +4 corte",
+     "pool": "4d6 +2",
+     "dano": "1d6 +5 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -18358,7 +18224,6 @@
   },
   "pericias": {
    "prontidao": 0,
-   "esquiva": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -18371,7 +18236,7 @@
   },
   "combate": {
    "pv": 62,
-   "defesa": 1,
+   "defesa": 0,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
@@ -18393,8 +18258,8 @@
    "ataques": [
     {
      "nome": "Pseudópode",
-     "pool": "5d6 +1",
-     "dano": "2d6 +5 impacto",
+     "pool": "5d6 +2",
+     "dano": "2d6 +6 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -18483,9 +18348,8 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 2,
-   "integridade": 7,
-   "sociabilidade": 0,
+   "esquiva": 1,
+   "integridade": 13,
    "furtividade": 2
   },
   "vontade": 11,
@@ -18498,9 +18362,9 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 22,
-   "defesaSocial": 20,
-   "defesaMental": 30,
+   "defesa": 20,
+   "defesaSocial": 14,
+   "defesaMental": 36,
    "absorcao": {
     "impacto": 11,
     "corte": 8,
@@ -18519,8 +18383,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +6",
-     "dano": "1d6 +6 corte",
+     "pool": "5d6+2 +10",
+     "dano": "1d6 +12 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -18663,8 +18527,7 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 1
   },
   "vontade": 7,
@@ -18678,8 +18541,8 @@
   "combate": {
    "pv": 40,
    "defesa": 14,
-   "defesaSocial": 10,
-   "defesaMental": 17,
+   "defesaSocial": 8,
+   "defesaMental": 19,
    "absorcao": {
     "impacto": 7,
     "corte": 4,
@@ -18702,8 +18565,8 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "4d6 +2",
-     "dano": "1d6 +5 impacto",
+     "pool": "4d6 +4",
+     "dano": "1d6 +7 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -18822,9 +18685,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 5,
    "furtividade": 1
   },
   "vontade": 6,
@@ -18837,9 +18698,9 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 11,
-   "defesaSocial": 9,
-   "defesaMental": 15,
+   "defesa": 12,
+   "defesaSocial": 8,
+   "defesaMental": 16,
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -18862,8 +18723,8 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "3d6 +1",
-     "dano": "1d6 +3 impacto",
+     "pool": "3d6 +2",
+     "dano": "1d6 +4 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -18981,9 +18842,8 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 5,
    "furtividade": 2
   },
   "vontade": 9,
@@ -18996,9 +18856,9 @@
   },
   "combate": {
    "pv": 46,
-   "defesa": 16,
-   "defesaSocial": 10,
-   "defesaMental": 18,
+   "defesa": 14,
+   "defesaSocial": 6,
+   "defesaMental": 20,
    "absorcao": {
     "impacto": 11,
     "corte": 7,
@@ -19014,8 +18874,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "3d6+2 +4",
-     "dano": "1d6 +2 perfurante",
+     "pool": "3d6+2 +8",
+     "dano": "1d6 +6 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -19108,9 +18968,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 0
   },
   "vontade": 6,
@@ -19123,9 +18981,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 5,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 4,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
     "corte": 6,
@@ -19141,8 +18999,8 @@
    "ataques": [
     {
      "nome": "Pancada descomunal",
-     "pool": "7d6 +1",
-     "dano": "2d6 +9 impacto",
+     "pool": "7d6 +2",
+     "dano": "2d6 +10 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -19374,9 +19232,8 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 9,
    "furtividade": 0
   },
   "vontade": 8,
@@ -19389,9 +19246,9 @@
   },
   "combate": {
    "pv": 80,
-   "defesa": 14,
-   "defesaSocial": 14,
-   "defesaMental": 22,
+   "defesa": 12,
+   "defesaSocial": 10,
+   "defesaMental": 26,
    "absorcao": {
     "impacto": 13,
     "corte": 12,
@@ -19407,8 +19264,8 @@
    "ataques": [
     {
      "nome": "Pancada descomunal",
-     "pool": "9d6 +4",
-     "dano": "3d6 +13 impacto",
+     "pool": "9d6 +8",
+     "dano": "3d6 +17 impacto",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
@@ -19529,8 +19386,7 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 7,
    "furtividade": 0
   },
   "vontade": 6,
@@ -19544,8 +19400,8 @@
   "combate": {
    "pv": 75,
    "defesa": 10,
-   "defesaSocial": 12,
-   "defesaMental": 17,
+   "defesaSocial": 10,
+   "defesaMental": 19,
    "absorcao": {
     "impacto": 10,
     "corte": 10,
@@ -19561,16 +19417,16 @@
    "ataques": [
     {
      "nome": "Pancada descomunal",
-     "pool": "8d6+2 +2",
-     "dano": "3d6 +12 impacto",
+     "pool": "8d6+2 +4",
+     "dano": "3d6 +14 impacto",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     },
     {
      "nome": "Arremessar rocha",
-     "pool": "8d6+2 +2",
-     "dano": "3d6 +12 impacto",
+     "pool": "8d6+2 +4",
+     "dano": "3d6 +14 impacto",
      "perfArma": null,
      "speed": 7,
      "classe": "arremesso",
@@ -19688,9 +19544,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 0
   },
   "vontade": 6,
@@ -19703,9 +19557,9 @@
   },
   "combate": {
    "pv": 62,
-   "defesa": 5,
-   "defesaSocial": 7,
-   "defesaMental": 13,
+   "defesa": 4,
+   "defesaSocial": 6,
+   "defesaMental": 14,
    "absorcao": {
     "impacto": 9,
     "corte": 7,
@@ -19727,16 +19581,16 @@
    "ataques": [
     {
      "nome": "Pancada descomunal",
-     "pool": "7d6+2 +1",
-     "dano": "2d6 +10 impacto",
+     "pool": "7d6+2 +2",
+     "dano": "2d6 +11 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
     },
     {
      "nome": "Arremessar rocha",
-     "pool": "7d6+2 +1",
-     "dano": "2d6 +10 impacto",
+     "pool": "7d6+2 +2",
+     "dano": "2d6 +11 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "arremesso",
@@ -19830,9 +19684,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 0
   },
   "vontade": 6,
@@ -19845,9 +19697,9 @@
   },
   "combate": {
    "pv": 58,
-   "defesa": 5,
-   "defesaSocial": 7,
-   "defesaMental": 12,
+   "defesa": 4,
+   "defesaSocial": 6,
+   "defesaMental": 13,
    "absorcao": {
     "impacto": 8,
     "corte": 6,
@@ -19863,8 +19715,8 @@
    "ataques": [
     {
      "nome": "Pancada descomunal",
-     "pool": "7d6+2 +1",
-     "dano": "2d6 +10 impacto",
+     "pool": "7d6+2 +2",
+     "dano": "2d6 +11 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -19961,9 +19813,8 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
+   "esquiva": 0,
    "integridade": 2,
-   "sociabilidade": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -19976,8 +19827,8 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 16,
-   "defesaSocial": 8,
+   "defesa": 14,
+   "defesaSocial": 4,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 10,
@@ -19994,8 +19845,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6+2 +4",
-     "dano": "2d6 +6 perfurante",
+     "pool": "5d6+2 +8",
+     "dano": "2d6 +10 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -20084,9 +19935,7 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 1,
-   "integridade": 6,
-   "sociabilidade": 0,
+   "integridade": 12,
    "furtividade": 1
   },
   "vontade": 11,
@@ -20099,9 +19948,9 @@
   },
   "combate": {
    "pv": 85,
-   "defesa": 16,
-   "defesaSocial": 18,
-   "defesaMental": 28,
+   "defesa": 12,
+   "defesaSocial": 12,
+   "defesaMental": 34,
    "absorcao": {
     "impacto": 16,
     "corte": 15,
@@ -20121,8 +19970,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6+2 +6",
-     "dano": "3d6 +12 corte",
+     "pool": "8d6+2 +10",
+     "dano": "3d6 +18 corte",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
@@ -20498,7 +20347,6 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
    "furtividade": 1
   },
   "vontade": 8,
@@ -20511,7 +20359,7 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 7,
+   "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
@@ -20534,8 +20382,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "6d6+2 +3",
-     "dano": "2d6 +8 corte",
+     "pool": "6d6+2 +6",
+     "dano": "2d6 +11 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -20620,7 +20468,6 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
    "furtividade": 1
   },
   "vontade": 8,
@@ -20633,7 +20480,7 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 7,
+   "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
@@ -20654,8 +20501,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "6d6 +3",
-     "dano": "2d6 +7 corte",
+     "pool": "6d6 +6",
+     "dano": "2d6 +10 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -20745,7 +20592,6 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
    "furtividade": 1
   },
   "vontade": 9,
@@ -20758,7 +20604,7 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 8,
+   "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
@@ -20784,8 +20630,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "8d6 +4",
-     "dano": "2d6 +11 corte",
+     "pool": "8d6 +8",
+     "dano": "2d6 +15 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -20874,7 +20720,6 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -20887,7 +20732,7 @@
   },
   "combate": {
    "pv": 25,
-   "defesa": 5,
+   "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
@@ -20912,8 +20757,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "5d6 +1",
-     "dano": "1d6 +5 corte",
+     "pool": "5d6 +2",
+     "dano": "1d6 +6 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -20999,7 +20844,6 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
    "furtividade": 1
   },
   "vontade": 8,
@@ -21012,7 +20856,7 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 7,
+   "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
@@ -21035,8 +20879,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "7d6+2 +3",
-     "dano": "2d6 +10 corte",
+     "pool": "7d6+2 +6",
+     "dano": "2d6 +13 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -21240,9 +21084,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 1
   },
   "vontade": 8,
@@ -21255,9 +21097,9 @@
   },
   "combate": {
    "pv": 62,
-   "defesa": 7,
-   "defesaSocial": 9,
-   "defesaMental": 16,
+   "defesa": 4,
+   "defesaSocial": 6,
+   "defesaMental": 19,
    "absorcao": {
     "impacto": 11,
     "corte": 9,
@@ -21273,8 +21115,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6+2 +3",
-     "dano": "2d6 +8 perfurante",
+     "pool": "6d6+2 +6",
+     "dano": "2d6 +11 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -21517,9 +21359,7 @@
   },
   "pericias": {
    "prontidao": 4,
-   "esquiva": 0,
-   "integridade": 7,
-   "sociabilidade": 0,
+   "integridade": 12,
    "furtividade": 0
   },
   "vontade": 12,
@@ -21532,9 +21372,9 @@
   },
   "combate": {
    "pv": 115,
-   "defesa": 13,
-   "defesaSocial": 23,
-   "defesaMental": 35,
+   "defesa": 4,
+   "defesaSocial": 14,
+   "defesaMental": 40,
    "absorcao": {
     "impacto": 23,
     "corte": 26,
@@ -21553,8 +21393,8 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "10d6+2 +9",
-     "dano": "4d6 +16 perfurante",
+     "pool": "10d6+2 +10",
+     "dano": "4d6 +25 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -21724,9 +21564,8 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 9,
    "furtividade": 1
   },
   "vontade": 9,
@@ -21739,9 +21578,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 14,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 12,
+   "defesaSocial": 10,
+   "defesaMental": 27,
    "absorcao": {
     "impacto": 10,
     "corte": 9,
@@ -21761,8 +21600,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6+2 +4",
-     "dano": "2d6 +8 corte",
+     "pool": "6d6+2 +8",
+     "dano": "2d6 +12 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -21847,9 +21686,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 1
   },
   "vontade": 6,
@@ -21862,9 +21699,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 11,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 12,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
     "corte": 6,
@@ -21880,8 +21717,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +1",
-     "dano": "2d6 +6 perfurante",
+     "pool": "5d6 +2",
+     "dano": "2d6 +7 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -22215,8 +22052,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 2
   },
   "vontade": 7,
@@ -22230,8 +22066,8 @@
   "combate": {
    "pv": 31,
    "defesa": 14,
-   "defesaSocial": 10,
-   "defesaMental": 15,
+   "defesaSocial": 8,
+   "defesaMental": 17,
    "absorcao": {
     "impacto": 4,
     "corte": 3,
@@ -22247,8 +22083,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +2",
-     "dano": "1d6 +3 corte",
+     "pool": "3d6+2 +4",
+     "dano": "1d6 +5 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -22365,9 +22201,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 10,
    "furtividade": 2
   },
   "vontade": 10,
@@ -22380,9 +22214,9 @@
   },
   "combate": {
    "pv": 66,
-   "defesa": 15,
-   "defesaSocial": 15,
-   "defesaMental": 24,
+   "defesa": 12,
+   "defesaSocial": 10,
+   "defesaMental": 29,
    "absorcao": {
     "impacto": 14,
     "corte": 11,
@@ -22402,8 +22236,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6 +5",
-     "dano": "2d6 +9 corte",
+     "pool": "7d6 +10",
+     "dano": "2d6 +14 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -22529,9 +22363,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 0
   },
   "vontade": 6,
@@ -22544,9 +22376,9 @@
   },
   "combate": {
    "pv": 75,
-   "defesa": 9,
-   "defesaSocial": 5,
-   "defesaMental": 10,
+   "defesa": 10,
+   "defesaSocial": 4,
+   "defesaMental": 11,
    "absorcao": {
     "impacto": 9,
     "corte": 9,
@@ -22562,8 +22394,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6 +1",
-     "dano": "3d6 +8 perfurante",
+     "pool": "6d6 +2",
+     "dano": "3d6 +9 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -22898,9 +22730,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 1
   },
   "vontade": 6,
@@ -22913,9 +22743,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 11,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 12,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
     "corte": 6,
@@ -22931,8 +22761,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "4d6+2 +1",
-     "dano": "2d6 +6 perfurante",
+     "pool": "4d6+2 +2",
+     "dano": "2d6 +7 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -23277,8 +23107,7 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 2
   },
   "vontade": 7,
@@ -23292,8 +23121,8 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
-   "defesaSocial": 6,
-   "defesaMental": 14,
+   "defesaSocial": 4,
+   "defesaMental": 16,
    "absorcao": {
     "impacto": 6,
     "corte": 4,
@@ -23309,8 +23138,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6 +2",
-     "dano": "1d6 +3 corte",
+     "pool": "3d6 +4",
+     "dano": "1d6 +5 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -23408,9 +23237,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 4
   },
   "vontade": 6,
@@ -23423,9 +23250,9 @@
   },
   "combate": {
    "pv": 16,
-   "defesa": 11,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 12,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 2,
     "corte": 1,
@@ -23444,8 +23271,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "2d6+2 +1",
-     "dano": "1d6 +2 corte",
+     "pool": "2d6+2 +2",
+     "dano": "1d6 +3 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -23533,9 +23360,8 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 2,
-   "integridade": 7,
-   "sociabilidade": 0,
+   "esquiva": 1,
+   "integridade": 13,
    "furtividade": 0
   },
   "vontade": 11,
@@ -23548,9 +23374,9 @@
   },
   "combate": {
    "pv": 110,
-   "defesa": 24,
-   "defesaSocial": 20,
-   "defesaMental": 27,
+   "defesa": 22,
+   "defesaSocial": 14,
+   "defesaMental": 33,
    "absorcao": {
     "impacto": 19,
     "corte": 22,
@@ -23572,8 +23398,8 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "10d6 +6",
-     "dano": "4d6 +15 perfurante",
+     "pool": "10d6 +10",
+     "dano": "4d6 +21 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -23674,8 +23500,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 2,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 8,
    "furtividade": 3
   },
   "vontade": 9,
@@ -23689,8 +23514,8 @@
   "combate": {
    "pv": 32,
    "defesa": 22,
-   "defesaSocial": 12,
-   "defesaMental": 20,
+   "defesaSocial": 8,
+   "defesaMental": 24,
    "absorcao": {
     "impacto": 10,
     "corte": 7,
@@ -23706,8 +23531,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "4d6 +4",
-     "dano": "1d6 +3 perfurante",
+     "pool": "4d6 +8",
+     "dano": "1d6 +7 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -23800,9 +23625,8 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 5,
    "furtividade": 1
   },
   "vontade": 9,
@@ -23815,9 +23639,9 @@
   },
   "combate": {
    "pv": 46,
-   "defesa": 16,
-   "defesaSocial": 10,
-   "defesaMental": 20,
+   "defesa": 14,
+   "defesaSocial": 6,
+   "defesaMental": 22,
    "absorcao": {
     "impacto": 11,
     "corte": 7,
@@ -23837,8 +23661,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6 +4",
-     "dano": "1d6 +5 corte",
+     "pool": "5d6 +8",
+     "dano": "1d6 +9 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -23928,8 +23752,7 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 2
   },
   "vontade": 7,
@@ -23943,8 +23766,8 @@
   "combate": {
    "pv": 34,
    "defesa": 12,
-   "defesaSocial": 10,
-   "defesaMental": 17,
+   "defesaSocial": 8,
+   "defesaMental": 19,
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -23960,8 +23783,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +2",
-     "dano": "1d6 +5 corte",
+     "pool": "4d6+2 +4",
+     "dano": "1d6 +7 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -24422,9 +24245,7 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 0,
-   "integridade": 6,
-   "sociabilidade": 0,
+   "integridade": 11,
    "furtividade": 0
   },
   "vontade": 12,
@@ -24437,9 +24258,9 @@
   },
   "combate": {
    "pv": 110,
-   "defesa": 11,
-   "defesaSocial": 19,
-   "defesaMental": 31,
+   "defesa": 4,
+   "defesaSocial": 12,
+   "defesaMental": 36,
    "absorcao": {
     "impacto": 20,
     "corte": 23,
@@ -24455,8 +24276,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "9d6+2 +7",
-     "dano": "4d6 +14 perfurante",
+     "pool": "9d6+2 +10",
+     "dano": "4d6 +21 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -24601,9 +24422,8 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 5,
    "furtividade": 2
   },
   "vontade": 9,
@@ -24616,9 +24436,9 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 16,
-   "defesaSocial": 10,
-   "defesaMental": 19,
+   "defesa": 14,
+   "defesaSocial": 6,
+   "defesaMental": 21,
    "absorcao": {
     "impacto": 8,
     "corte": 6,
@@ -24638,8 +24458,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +4",
-     "dano": "1d6 +4 corte",
+     "pool": "4d6+2 +8",
+     "dano": "1d6 +8 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -24983,8 +24803,7 @@
   "pericias": {
    "prontidao": 3,
    "esquiva": 2,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 9,
    "furtividade": 1
   },
   "vontade": 9,
@@ -24998,8 +24817,8 @@
   "combate": {
    "pv": 54,
    "defesa": 20,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesaSocial": 10,
+   "defesaMental": 27,
    "absorcao": {
     "impacto": 10,
     "corte": 9,
@@ -25015,8 +24834,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "5d6+2 +4",
-     "dano": "2d6 +6 corte",
+     "pool": "5d6+2 +8",
+     "dano": "2d6 +10 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -25399,7 +25218,6 @@
   },
   "pericias": {
    "prontidao": 0,
-   "esquiva": 0,
    "furtividade": 3
   },
   "vontade": 6,
@@ -25412,7 +25230,7 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 5,
+   "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
@@ -25434,8 +25252,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "3d6 +1",
-     "dano": "1d6 +3 corte",
+     "pool": "3d6 +2",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -25796,9 +25614,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 1
   },
   "vontade": 11,
@@ -25811,9 +25627,9 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 16,
-   "defesaSocial": 14,
-   "defesaMental": 26,
+   "defesa": 12,
+   "defesaSocial": 8,
+   "defesaMental": 28,
    "absorcao": {
     "impacto": 11,
     "corte": 8,
@@ -25836,8 +25652,8 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "3d6+2 +6",
-     "dano": "1d6 +2 impacto",
+     "pool": "3d6+2 +10",
+     "dano": "1d6 +8 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -26001,9 +25817,8 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 9,
    "furtividade": 1
   },
   "vontade": 9,
@@ -26016,9 +25831,9 @@
   },
   "combate": {
    "pv": 58,
-   "defesa": 16,
-   "defesaSocial": 14,
-   "defesaMental": 22,
+   "defesa": 14,
+   "defesaSocial": 10,
+   "defesaMental": 26,
    "absorcao": {
     "impacto": 11,
     "corte": 9,
@@ -26037,8 +25852,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +4",
-     "dano": "2d6 +7 corte",
+     "pool": "6d6 +8",
+     "dano": "2d6 +11 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -26132,7 +25947,6 @@
   },
   "pericias": {
    "prontidao": 0,
-   "esquiva": 0,
    "furtividade": 1
   },
   "vontade": 6,
@@ -26145,7 +25959,7 @@
   },
   "combate": {
    "pv": 49,
-   "defesa": 1,
+   "defesa": 0,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
@@ -26167,8 +25981,8 @@
    "ataques": [
     {
      "nome": "Pseudópode",
-     "pool": "4d6+2 +1",
-     "dano": "1d6 +5 impacto",
+     "pool": "4d6+2 +2",
+     "dano": "1d6 +6 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -26254,8 +26068,7 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 2
   },
   "vontade": 7,
@@ -26269,8 +26082,8 @@
   "combate": {
    "pv": 37,
    "defesa": 10,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
     "corte": 4,
@@ -26289,8 +26102,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "4d6 +2",
-     "dano": "1d6 +5 corte",
+     "pool": "4d6 +4",
+     "dano": "1d6 +7 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -26639,9 +26452,8 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 5,
    "furtividade": 1
   },
   "vontade": 9,
@@ -26654,9 +26466,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 12,
-   "defesaSocial": 10,
-   "defesaMental": 18,
+   "defesa": 10,
+   "defesaSocial": 6,
+   "defesaMental": 20,
    "absorcao": {
     "impacto": 10,
     "corte": 9,
@@ -26672,8 +26484,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6 +4",
-     "dano": "2d6 +7 perfurante",
+     "pool": "6d6 +8",
+     "dano": "2d6 +11 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -27246,9 +27058,7 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 3,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 8,
    "furtividade": 2
   },
   "vontade": 8,
@@ -27261,9 +27071,9 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 15,
-   "defesaSocial": 7,
-   "defesaMental": 18,
+   "defesa": 18,
+   "defesaSocial": 4,
+   "defesaMental": 21,
    "absorcao": {
     "impacto": 6,
     "corte": 4,
@@ -27279,8 +27089,8 @@
    "ataques": [
     {
      "nome": "Bola de fogo (Fogo 3)",
-     "pool": "5d6 +3",
-     "dano": "3d6 fogo (área)",
+     "pool": "5d6 +6",
+     "dano": "3d6 +3 fogo (área)",
      "perfArma": null,
      "speed": 6,
      "classe": "arte",
@@ -27525,9 +27335,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 1
   },
   "vontade": 6,
@@ -27540,9 +27348,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 11,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 12,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
     "corte": 6,
@@ -27558,16 +27366,16 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6 +1",
-     "dano": "2d6 +7 perfurante",
+     "pool": "6d6 +2",
+     "dano": "2d6 +8 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
     },
     {
      "nome": "Espinhos de cauda",
-     "pool": "6d6 +1",
-     "dano": "1d6 +7 perfurante · perf. 1",
+     "pool": "6d6 +2",
+     "dano": "1d6 +8 perfurante · perf. 1",
      "perfArma": 1,
      "speed": 6,
      "classe": "media"
@@ -27669,9 +27477,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 10,
    "furtividade": 0
   },
   "vontade": 10,
@@ -27684,9 +27490,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 17,
-   "defesaSocial": 15,
-   "defesaMental": 24,
+   "defesa": 14,
+   "defesaSocial": 10,
+   "defesaMental": 29,
    "absorcao": {
     "impacto": 11,
     "corte": 10,
@@ -27708,8 +27514,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6+2 +5",
-     "dano": "2d6 +8 corte",
+     "pool": "6d6+2 +10",
+     "dano": "2d6 +13 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -27797,9 +27603,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 2,
-   "integridade": 7,
-   "sociabilidade": 0,
+   "integridade": 14,
    "furtividade": 2
   },
   "vontade": 12,
@@ -27812,9 +27616,9 @@
   },
   "combate": {
    "pv": 66,
-   "defesa": 27,
-   "defesaSocial": 21,
-   "defesaMental": 31,
+   "defesa": 24,
+   "defesaSocial": 14,
+   "defesaMental": 38,
    "absorcao": {
     "impacto": 16,
     "corte": 13,
@@ -27834,8 +27638,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6+2 +7",
-     "dano": "2d6 +10 corte",
+     "pool": "7d6+2 +10",
+     "dano": "2d6 +17 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -28092,9 +27896,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 7,
    "furtividade": 2
   },
   "vontade": 8,
@@ -28107,9 +27909,9 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 13,
-   "defesaSocial": 11,
-   "defesaMental": 18,
+   "defesa": 12,
+   "defesaSocial": 8,
+   "defesaMental": 21,
    "absorcao": {
     "impacto": 8,
     "corte": 5,
@@ -28125,8 +27927,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +3",
-     "dano": "1d6 +2 corte",
+     "pool": "3d6+2 +6",
+     "dano": "1d6 +5 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -28259,8 +28061,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 5,
    "furtividade": 3
   },
   "vontade": 7,
@@ -28274,8 +28075,8 @@
   "combate": {
    "pv": 26,
    "defesa": 12,
-   "defesaSocial": 8,
-   "defesaMental": 14,
+   "defesaSocial": 6,
+   "defesaMental": 16,
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -28291,8 +28092,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "3d6+2 +2",
-     "dano": "1d6 +3 corte",
+     "pool": "3d6+2 +4",
+     "dano": "1d6 +5 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -28385,9 +28186,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 2
   },
   "vontade": 6,
@@ -28400,9 +28199,9 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 9,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 10,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -28418,8 +28217,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "2d6+2 +1",
-     "dano": "1d6 +3 corte",
+     "pool": "2d6+2 +2",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -28508,9 +28307,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 2
   },
   "vontade": 6,
@@ -28523,9 +28320,9 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 9,
-   "defesaSocial": 7,
-   "defesaMental": 13,
+   "defesa": 10,
+   "defesaSocial": 6,
+   "defesaMental": 14,
    "absorcao": {
     "impacto": 6,
     "corte": 3,
@@ -28541,8 +28338,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "4d6+2 +1",
-     "dano": "1d6 +5 perfurante",
+     "pool": "4d6+2 +2",
+     "dano": "1d6 +6 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -28658,9 +28455,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 1
   },
   "vontade": 6,
@@ -28673,9 +28468,9 @@
   },
   "combate": {
    "pv": 50,
-   "defesa": 5,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 4,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 6,
     "corte": 5,
@@ -28691,8 +28486,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "5d6 +1",
-     "dano": "2d6 +6 corte",
+     "pool": "5d6 +2",
+     "dano": "2d6 +7 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -28798,9 +28593,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 5
   },
   "vontade": 6,
@@ -28813,9 +28606,9 @@
   },
   "combate": {
    "pv": 24,
-   "defesa": 9,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 10,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 3,
     "corte": 2,
@@ -28831,8 +28624,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "2d6 +1",
-     "dano": "1d6 +2 perfurante",
+     "pool": "2d6 +2",
+     "dano": "1d6 +3 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -28926,9 +28719,8 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 5,
    "furtividade": 1
   },
   "vontade": 9,
@@ -28941,9 +28733,9 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 16,
-   "defesaSocial": 10,
-   "defesaMental": 18,
+   "defesa": 14,
+   "defesaSocial": 6,
+   "defesaMental": 20,
    "absorcao": {
     "impacto": 8,
     "corte": 6,
@@ -28966,8 +28758,8 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "5d6+2 +4",
-     "dano": "1d6 +6 impacto",
+     "pool": "5d6+2 +8",
+     "dano": "1d6 +10 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -29056,9 +28848,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 2
   },
   "vontade": 6,
@@ -29071,9 +28861,9 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 13,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 14,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
     "corte": 2,
@@ -29089,8 +28879,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "3d6 +1",
-     "dano": "1d6 +2 perfurante",
+     "pool": "3d6 +2",
+     "dano": "1d6 +3 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -29201,9 +28991,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 0
   },
   "vontade": 6,
@@ -29216,9 +29004,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 5,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 4,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
     "corte": 6,
@@ -29241,8 +29029,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6 +1",
-     "dano": "2d6 +7 perfurante",
+     "pool": "6d6 +2",
+     "dano": "2d6 +8 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -29692,8 +29480,7 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 2
   },
   "vontade": 7,
@@ -29707,8 +29494,8 @@
   "combate": {
    "pv": 37,
    "defesa": 14,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
     "corte": 4,
@@ -29724,8 +29511,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +2",
-     "dano": "1d6 +4 corte",
+     "pool": "3d6+2 +4",
+     "dano": "1d6 +6 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -29823,9 +29610,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 8,
    "furtividade": 1
   },
   "vontade": 9,
@@ -29838,9 +29623,9 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 8,
-   "defesaSocial": 12,
-   "defesaMental": 19,
+   "defesa": 4,
+   "defesaSocial": 8,
+   "defesaMental": 23,
    "absorcao": {
     "impacto": 8,
     "corte": 6,
@@ -29864,8 +29649,8 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "6d6 +4",
-     "dano": "1d6 +7 impacto",
+     "pool": "6d6 +8",
+     "dano": "1d6 +11 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -30004,9 +29789,8 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 9,
    "furtividade": 3
   },
   "vontade": 9,
@@ -30019,9 +29803,9 @@
   },
   "combate": {
    "pv": 46,
-   "defesa": 16,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesa": 14,
+   "defesaSocial": 10,
+   "defesaMental": 27,
    "absorcao": {
     "impacto": 11,
     "corte": 7,
@@ -30041,8 +29825,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +4",
-     "dano": "1d6 +7 corte",
+     "pool": "6d6 +8",
+     "dano": "1d6 +11 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -30133,9 +29917,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 10,
    "furtividade": 1
   },
   "vontade": 10,
@@ -30148,9 +29930,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 13,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 10,
+   "defesaSocial": 10,
+   "defesaMental": 30,
    "absorcao": {
     "impacto": 11,
     "corte": 10,
@@ -30166,8 +29948,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6+2 +5",
-     "dano": "2d6 +6 perfurante",
+     "pool": "5d6+2 +10",
+     "dano": "2d6 +11 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -30321,9 +30103,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 2,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 10,
    "furtividade": 1
   },
   "vontade": 10,
@@ -30336,9 +30116,9 @@
   },
   "combate": {
    "pv": 58,
-   "defesa": 23,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 22,
+   "defesaSocial": 10,
+   "defesaMental": 30,
    "absorcao": {
     "impacto": 12,
     "corte": 10,
@@ -30354,8 +30134,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "6d6 +5",
-     "dano": "2d6 +7 perfurante",
+     "pool": "6d6 +10",
+     "dano": "2d6 +12 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -30437,8 +30217,7 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 2,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 9,
    "furtividade": 1
   },
   "vontade": 9,
@@ -30452,8 +30231,8 @@
   "combate": {
    "pv": 54,
    "defesa": 20,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesaSocial": 10,
+   "defesaMental": 27,
    "absorcao": {
     "impacto": 10,
     "corte": 9,
@@ -30469,8 +30248,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +4",
-     "dano": "2d6 +5 perfurante",
+     "pool": "5d6 +8",
+     "dano": "2d6 +9 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -30558,9 +30337,7 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 1,
-   "integridade": 6,
-   "sociabilidade": 0,
+   "integridade": 12,
    "furtividade": 1
   },
   "vontade": 11,
@@ -30573,9 +30350,9 @@
   },
   "combate": {
    "pv": 90,
-   "defesa": 14,
-   "defesaSocial": 18,
-   "defesaMental": 30,
+   "defesa": 10,
+   "defesaSocial": 12,
+   "defesaMental": 36,
    "absorcao": {
     "impacto": 17,
     "corte": 15,
@@ -30595,8 +30372,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "8d6+2 +6",
-     "dano": "3d6 +12 corte",
+     "pool": "8d6+2 +10",
+     "dano": "3d6 +18 corte",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
@@ -30684,9 +30461,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 9,
    "furtividade": 0
   },
   "vontade": 11,
@@ -30699,9 +30474,9 @@
   },
   "combate": {
    "pv": 90,
-   "defesa": 8,
-   "defesaSocial": 16,
-   "defesaMental": 27,
+   "defesa": 2,
+   "defesaSocial": 10,
+   "defesaMental": 31,
    "absorcao": {
     "impacto": 16,
     "corte": 18,
@@ -30717,8 +30492,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "8d6+2 +6",
-     "dano": "3d6 +12 perfurante",
+     "pool": "8d6+2 +10",
+     "dano": "3d6 +18 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -30814,9 +30589,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 1,
    "furtividade": 0
   },
   "vontade": 10,
@@ -30829,9 +30602,9 @@
   },
   "combate": {
    "pv": 58,
-   "defesa": 15,
-   "defesaSocial": 9,
-   "defesaMental": 19,
+   "defesa": 12,
+   "defesaSocial": 4,
+   "defesaMental": 18,
    "absorcao": {
     "impacto": 12,
     "corte": 10,
@@ -30851,8 +30624,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6 +5",
-     "dano": "2d6 +9 corte",
+     "pool": "7d6 +10",
+     "dano": "2d6 +14 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -30938,9 +30711,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 2,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 10,
    "furtividade": 4
   },
   "vontade": 10,
@@ -30953,9 +30724,9 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 21,
-   "defesaSocial": 15,
-   "defesaMental": 25,
+   "defesa": 20,
+   "defesaSocial": 10,
+   "defesaMental": 30,
    "absorcao": {
     "impacto": 8,
     "corte": 6,
@@ -30971,8 +30742,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "3d6+2 +5",
-     "dano": "1d6 +2 perfurante",
+     "pool": "3d6+2 +10",
+     "dano": "1d6 +7 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -31111,7 +30882,6 @@
   },
   "pericias": {
    "prontidao": 0,
-   "esquiva": 0,
    "furtividade": 2
   },
   "vontade": 6,
@@ -31124,7 +30894,7 @@
   },
   "combate": {
    "pv": 25,
-   "defesa": 5,
+   "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
@@ -31145,8 +30915,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "4d6 +1",
-     "dano": "1d6 +4 corte",
+     "pool": "4d6 +2",
+     "dano": "1d6 +5 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -31363,9 +31133,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 10,
    "furtividade": 1
   },
   "vontade": 10,
@@ -31378,9 +31146,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 15,
-   "defesaSocial": 15,
-   "defesaMental": 24,
+   "defesa": 12,
+   "defesaSocial": 10,
+   "defesaMental": 29,
    "absorcao": {
     "impacto": 11,
     "corte": 10,
@@ -31396,8 +31164,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +5",
-     "dano": "2d6 +7 corte",
+     "pool": "6d6 +10",
+     "dano": "2d6 +12 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -31801,9 +31569,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 1
   },
   "vontade": 7,
@@ -31816,9 +31582,9 @@
   },
   "combate": {
    "pv": 46,
-   "defesa": 6,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesa": 4,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
     "corte": 6,
@@ -31834,8 +31600,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +2",
-     "dano": "2d6 +6 perfurante",
+     "pool": "5d6 +4",
+     "dano": "2d6 +8 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -32048,9 +31814,8 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 5,
    "furtividade": 1
   },
   "vontade": 9,
@@ -32063,9 +31828,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 14,
-   "defesaSocial": 10,
-   "defesaMental": 19,
+   "defesa": 12,
+   "defesaSocial": 6,
+   "defesaMental": 21,
    "absorcao": {
     "impacto": 10,
     "corte": 9,
@@ -32081,8 +31846,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +4",
-     "dano": "2d6 +6 perfurante",
+     "pool": "5d6 +8",
+     "dano": "2d6 +10 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -32195,9 +31960,8 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 5,
    "furtividade": 1
   },
   "vontade": 9,
@@ -32210,9 +31974,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 14,
-   "defesaSocial": 10,
-   "defesaMental": 19,
+   "defesa": 12,
+   "defesaSocial": 6,
+   "defesaMental": 21,
    "absorcao": {
     "impacto": 10,
     "corte": 9,
@@ -32232,8 +31996,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +4",
-     "dano": "2d6 +6 corte",
+     "pool": "5d6+2 +8",
+     "dano": "2d6 +10 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -32444,8 +32208,7 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 2,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 9,
    "furtividade": 6
   },
   "vontade": 9,
@@ -32459,8 +32222,8 @@
   "combate": {
    "pv": 17,
    "defesa": 20,
-   "defesaSocial": 14,
-   "defesaMental": 23,
+   "defesaSocial": 10,
+   "defesaMental": 27,
    "absorcao": {
     "impacto": 6,
     "corte": 5,
@@ -32476,16 +32239,16 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "2d6+2 +4",
-     "dano": "1d6 +1 perfurante",
+     "pool": "2d6+2 +8",
+     "dano": "1d6 +5 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     },
     {
      "nome": "Flechas do sono",
-     "pool": "2d6 +4",
-     "dano": "1d6 perfurante",
+     "pool": "2d6",
+     "dano": "1d6 +4 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -32613,9 +32376,7 @@
   },
   "pericias": {
    "prontidao": 4,
-   "esquiva": 1,
-   "integridade": 8,
-   "sociabilidade": 0,
+   "integridade": 15,
    "furtividade": 1
   },
   "vontade": 12,
@@ -32628,9 +32389,9 @@
   },
   "combate": {
    "pv": 62,
-   "defesa": 19,
-   "defesaSocial": 23,
-   "defesaMental": 34,
+   "defesa": 14,
+   "defesaSocial": 16,
+   "defesaMental": 41,
    "absorcao": {
     "impacto": 15,
     "corte": 13,
@@ -32649,8 +32410,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6 +7",
-     "dano": "2d6 +9 corte",
+     "pool": "7d6 +10",
+     "dano": "2d6 +16 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -33154,9 +32915,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 4
   },
   "vontade": 6,
@@ -33169,9 +32928,9 @@
   },
   "combate": {
    "pv": 18,
-   "defesa": 11,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 12,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
     "corte": 2,
@@ -33187,8 +32946,8 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "2d6 +1",
-     "dano": "1d6 +1 perfurante",
+     "pool": "2d6 +2",
+     "dano": "1d6 +2 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -33390,7 +33149,6 @@
   },
   "pericias": {
    "prontidao": 0,
-   "esquiva": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -33403,7 +33161,7 @@
   },
   "combate": {
    "pv": 80,
-   "defesa": 1,
+   "defesa": 0,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
@@ -33425,8 +33183,8 @@
    "ataques": [
     {
      "nome": "Pseudópode",
-     "pool": "6d6 +1",
-     "dano": "3d6 +7 impacto",
+     "pool": "6d6 +2",
+     "dano": "3d6 +8 impacto",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
@@ -33516,8 +33274,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 5,
    "furtividade": 5
   },
   "vontade": 7,
@@ -33531,8 +33288,8 @@
   "combate": {
    "pv": 17,
    "defesa": 14,
-   "defesaSocial": 8,
-   "defesaMental": 15,
+   "defesaSocial": 6,
+   "defesaMental": 17,
    "absorcao": {
     "impacto": 4,
     "corte": 3,
@@ -33552,8 +33309,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "2d6+2 +2",
-     "dano": "1d6 +2 corte",
+     "pool": "2d6+2 +4",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -33682,9 +33439,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 1
   },
   "vontade": 8,
@@ -33697,9 +33452,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 11,
-   "defesaSocial": 9,
-   "defesaMental": 16,
+   "defesa": 10,
+   "defesaSocial": 6,
+   "defesaMental": 19,
    "absorcao": {
     "impacto": 9,
     "corte": 8,
@@ -33715,8 +33470,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6+2 +3",
-     "dano": "2d6 +6 perfurante",
+     "pool": "5d6+2 +6",
+     "dano": "2d6 +9 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -34074,9 +33829,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 8,
-   "sociabilidade": 0,
+   "integridade": 11,
    "furtividade": 2
   },
   "vontade": 10,
@@ -34089,9 +33842,9 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 17,
-   "defesaSocial": 13,
-   "defesaMental": 26,
+   "defesa": 14,
+   "defesaSocial": 8,
+   "defesaMental": 29,
    "absorcao": {
     "impacto": 10,
     "corte": 7,
@@ -34111,8 +33864,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +5",
-     "dano": "1d6 +4 corte",
+     "pool": "4d6+2 +10",
+     "dano": "1d6 +9 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -34486,9 +34239,8 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
+   "esquiva": 0,
    "integridade": 2,
-   "sociabilidade": 0,
    "furtividade": 0
   },
   "vontade": 9,
@@ -34501,8 +34253,8 @@
   },
   "combate": {
    "pv": 75,
-   "defesa": 12,
-   "defesaSocial": 8,
+   "defesa": 10,
+   "defesaSocial": 4,
    "defesaMental": 17,
    "absorcao": {
     "impacto": 12,
@@ -34519,8 +34271,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "7d6 +4",
-     "dano": "3d6 +9 perfurante",
+     "pool": "7d6 +8",
+     "dano": "3d6 +13 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -35008,9 +34760,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 7,
    "furtividade": 1
   },
   "vontade": 10,
@@ -35023,9 +34773,9 @@
   },
   "combate": {
    "pv": 70,
-   "defesa": 13,
-   "defesaSocial": 13,
-   "defesaMental": 23,
+   "defesa": 10,
+   "defesaSocial": 8,
+   "defesaMental": 26,
    "absorcao": {
     "impacto": 15,
     "corte": 12,
@@ -35041,8 +34791,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "8d6 +5",
-     "dano": "2d6 +11 perfurante",
+     "pool": "8d6 +10",
+     "dano": "2d6 +16 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -35137,8 +34887,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 2
   },
   "vontade": 7,
@@ -35152,8 +34901,8 @@
   "combate": {
    "pv": 37,
    "defesa": 10,
-   "defesaSocial": 6,
-   "defesaMental": 15,
+   "defesaSocial": 4,
+   "defesaMental": 17,
    "absorcao": {
     "impacto": 6,
     "corte": 4,
@@ -35169,8 +34918,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +2",
-     "dano": "1d6 +4 corte",
+     "pool": "3d6+2 +4",
+     "dano": "1d6 +6 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -35264,9 +35013,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 7,
    "furtividade": 1
   },
   "vontade": 8,
@@ -35279,9 +35026,9 @@
   },
   "combate": {
    "pv": 40,
-   "defesa": 11,
-   "defesaSocial": 11,
-   "defesaMental": 19,
+   "defesa": 10,
+   "defesaSocial": 8,
+   "defesaMental": 22,
    "absorcao": {
     "impacto": 8,
     "corte": 5,
@@ -35303,8 +35050,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6 +3",
-     "dano": "1d6 +5 corte",
+     "pool": "5d6 +6",
+     "dano": "1d6 +8 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -35667,8 +35414,7 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 7,
    "furtividade": 4
   },
   "vontade": 7,
@@ -35682,8 +35428,8 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
-   "defesaSocial": 12,
-   "defesaMental": 17,
+   "defesaSocial": 10,
+   "defesaMental": 19,
    "absorcao": {
     "impacto": 6,
     "corte": 4,
@@ -35699,8 +35445,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "4d6 +2",
-     "dano": "1d6 +4 perfurante",
+     "pool": "4d6 +4",
+     "dano": "1d6 +6 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -35822,9 +35568,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 1,
    "furtividade": 0
   },
   "vontade": 10,
@@ -35837,9 +35581,9 @@
   },
   "combate": {
    "pv": 95,
-   "defesa": 15,
-   "defesaSocial": 9,
-   "defesaMental": 18,
+   "defesa": 12,
+   "defesaSocial": 4,
+   "defesaMental": 17,
    "absorcao": {
     "impacto": 16,
     "corte": 17,
@@ -35855,8 +35599,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "9d6 +5",
-     "dano": "3d6 +13 perfurante",
+     "pool": "9d6 +10",
+     "dano": "3d6 +18 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -36069,9 +35813,8 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 8,
    "furtividade": 0
   },
   "vontade": 9,
@@ -36084,9 +35827,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 12,
-   "defesaSocial": 12,
-   "defesaMental": 21,
+   "defesa": 10,
+   "defesaSocial": 8,
+   "defesaMental": 25,
    "absorcao": {
     "impacto": 10,
     "corte": 9,
@@ -36108,8 +35851,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +4",
-     "dano": "2d6 +7 corte",
+     "pool": "6d6 +8",
+     "dano": "2d6 +11 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -36199,8 +35942,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 3
   },
   "vontade": 7,
@@ -36214,8 +35956,8 @@
   "combate": {
    "pv": 26,
    "defesa": 12,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -36231,8 +35973,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "2d6+2 +2",
-     "dano": "1d6 +2 perfurante",
+     "pool": "2d6+2 +4",
+     "dano": "1d6 +4 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -36583,8 +36325,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 1
   },
   "vontade": 7,
@@ -36598,8 +36339,8 @@
   "combate": {
    "pv": 34,
    "defesa": 10,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -36623,8 +36364,8 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "4d6 +2",
-     "dano": "1d6 +5 impacto",
+     "pool": "4d6 +4",
+     "dano": "1d6 +7 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -36719,8 +36460,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 2
   },
   "vontade": 7,
@@ -36734,8 +36474,8 @@
   "combate": {
    "pv": 40,
    "defesa": 10,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 7,
     "corte": 4,
@@ -36751,8 +36491,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6+2 +2",
-     "dano": "1d6 +4 corte",
+     "pool": "3d6+2 +4",
+     "dano": "1d6 +6 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -36845,9 +36585,7 @@
   },
   "pericias": {
    "prontidao": 4,
-   "esquiva": 2,
-   "integridade": 8,
-   "sociabilidade": 0,
+   "integridade": 15,
    "furtividade": 1
   },
   "vontade": 12,
@@ -36860,9 +36598,9 @@
   },
   "combate": {
    "pv": 70,
-   "defesa": 25,
-   "defesaSocial": 25,
-   "defesaMental": 37,
+   "defesa": 20,
+   "defesaSocial": 16,
+   "defesaMental": 44,
    "absorcao": {
     "impacto": 19,
     "corte": 16,
@@ -36881,16 +36619,16 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "7d6+2 +9",
-     "dano": "2d6 +10 corte",
+     "pool": "7d6+2 +10",
+     "dano": "2d6 +19 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
     },
     {
      "nome": "Arco de luz",
-     "pool": "6d6+2 +9",
-     "dano": "2d6 +10 perfurante · perf. 2",
+     "pool": "6d6+2 +10",
+     "dano": "2d6 +19 perfurante · perf. 2",
      "perfArma": 2,
      "speed": 6,
      "classe": "distancia"
@@ -37177,8 +36915,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 3
   },
   "vontade": 7,
@@ -37192,8 +36929,8 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
-   "defesaSocial": 10,
-   "defesaMental": 15,
+   "defesaSocial": 8,
+   "defesaMental": 17,
    "absorcao": {
     "impacto": 6,
     "corte": 4,
@@ -37218,8 +36955,8 @@
    "ataques": [
     {
      "nome": "Toque dilacerante",
-     "pool": "4d6 +2",
-     "dano": "2d6 necrótico (vs Def. Mental)",
+     "pool": "4d6 +4",
+     "dano": "2d6 +2 necrótico (vs Def. Mental)",
      "perfArma": null,
      "speed": 5,
      "classe": "leve",
@@ -37356,9 +37093,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 4
   },
   "vontade": 6,
@@ -37371,9 +37106,9 @@
   },
   "combate": {
    "pv": 17,
-   "defesa": 13,
-   "defesaSocial": 5,
-   "defesaMental": 10,
+   "defesa": 14,
+   "defesaSocial": 4,
+   "defesaMental": 11,
    "absorcao": {
     "impacto": 3,
     "corte": 2,
@@ -37389,8 +37124,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "1d6+2 +1",
-     "dano": "1d6 +1 perfurante",
+     "pool": "1d6+2 +2",
+     "dano": "1d6 +2 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -37475,9 +37210,8 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 6,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 10,
    "furtividade": 3
   },
   "vontade": 9,
@@ -37490,9 +37224,9 @@
   },
   "combate": {
    "pv": 43,
-   "defesa": 16,
-   "defesaSocial": 16,
-   "defesaMental": 24,
+   "defesa": 14,
+   "defesaSocial": 12,
+   "defesaMental": 28,
    "absorcao": {
     "impacto": 10,
     "corte": 7,
@@ -37512,8 +37246,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6 +4",
-     "dano": "1d6 +3 corte",
+     "pool": "4d6 +8",
+     "dano": "1d6 +7 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -37651,9 +37385,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 3
   },
   "vontade": 6,
@@ -37666,9 +37398,9 @@
   },
   "combate": {
    "pv": 28,
-   "defesa": 11,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 12,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -37684,8 +37416,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "3d6 +1",
-     "dano": "1d6 +3 corte",
+     "pool": "3d6 +2",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -37774,9 +37506,8 @@
   },
   "pericias": {
    "prontidao": 4,
-   "esquiva": 2,
-   "integridade": 8,
-   "sociabilidade": 0,
+   "esquiva": 1,
+   "integridade": 14,
    "furtividade": 0
   },
   "vontade": 11,
@@ -37789,9 +37520,9 @@
   },
   "combate": {
    "pv": 115,
-   "defesa": 26,
-   "defesaSocial": 22,
-   "defesaMental": 30,
+   "defesa": 24,
+   "defesaSocial": 16,
+   "defesaMental": 36,
    "absorcao": {
     "impacto": 20,
     "corte": 23,
@@ -37807,8 +37538,8 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "10d6+2 +6",
-     "dano": "4d6 +16 perfurante",
+     "pool": "10d6+2 +10",
+     "dano": "4d6 +22 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -37909,9 +37640,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 2,
    "furtividade": 0
   },
   "vontade": 12,
@@ -37924,9 +37653,9 @@
   },
   "combate": {
    "pv": 115,
-   "defesa": 14,
-   "defesaSocial": 18,
-   "defesaMental": 28,
+   "defesa": 4,
+   "defesaSocial": 8,
+   "defesaMental": 26,
    "absorcao": {
     "impacto": 24,
     "corte": 27,
@@ -37943,7 +37672,7 @@
     {
      "nome": "Garras e presas",
      "pool": "10d6+2 +10",
-     "dano": "4d6 +16 perfurante",
+     "dano": "4d6 +26 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -38090,9 +37819,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 0
   },
   "vontade": 10,
@@ -38105,9 +37832,9 @@
   },
   "combate": {
    "pv": 70,
-   "defesa": 9,
-   "defesaSocial": 11,
-   "defesaMental": 21,
+   "defesa": 4,
+   "defesaSocial": 6,
+   "defesaMental": 22,
    "absorcao": {
     "impacto": 12,
     "corte": 12,
@@ -38123,8 +37850,8 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "7d6+2 +5",
-     "dano": "3d6 +10 perfurante",
+     "pool": "7d6+2 +10",
+     "dano": "3d6 +15 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -38217,9 +37944,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 2
   },
   "vontade": 6,
@@ -38232,9 +37957,9 @@
   },
   "combate": {
    "pv": 34,
-   "defesa": 13,
-   "defesaSocial": 7,
-   "defesaMental": 13,
+   "defesa": 14,
+   "defesaSocial": 6,
+   "defesaMental": 14,
    "absorcao": {
     "impacto": 4,
     "corte": 2,
@@ -38250,8 +37975,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "2d6+2 +1",
-     "dano": "1d6 +3 corte",
+     "pool": "2d6+2 +2",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -38341,9 +38066,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 2
   },
   "vontade": 6,
@@ -38356,9 +38079,9 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 13,
-   "defesaSocial": 5,
-   "defesaMental": 12,
+   "defesa": 14,
+   "defesaSocial": 4,
+   "defesaMental": 13,
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -38374,8 +38097,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "2d6+2 +1",
-     "dano": "1d6 +3 corte",
+     "pool": "2d6+2 +2",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -38700,9 +38423,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 0,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 7,
    "furtividade": 0
   },
   "vontade": 8,
@@ -38715,9 +38436,9 @@
   },
   "combate": {
    "pv": 75,
-   "defesa": 7,
-   "defesaSocial": 11,
-   "defesaMental": 19,
+   "defesa": 4,
+   "defesaSocial": 8,
+   "defesaMental": 22,
    "absorcao": {
     "impacto": 11,
     "corte": 11,
@@ -38740,8 +38461,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "8d6 +3",
-     "dano": "3d6 +11 perfurante",
+     "pool": "8d6 +6",
+     "dano": "3d6 +14 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -39224,9 +38945,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 0
   },
   "vontade": 6,
@@ -39239,9 +38958,9 @@
   },
   "combate": {
    "pv": 62,
-   "defesa": 11,
-   "defesaSocial": 5,
-   "defesaMental": 11,
+   "defesa": 12,
+   "defesaSocial": 4,
+   "defesaMental": 12,
    "absorcao": {
     "impacto": 9,
     "corte": 7,
@@ -39257,8 +38976,8 @@
    "ataques": [
     {
      "nome": "Pancada descomunal",
-     "pool": "6d6 +1",
-     "dano": "2d6 +7 impacto",
+     "pool": "6d6 +2",
+     "dano": "2d6 +8 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -39607,9 +39326,8 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 1,
-   "integridade": 7,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 11,
    "furtividade": 1
   },
   "vontade": 9,
@@ -39622,9 +39340,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 16,
-   "defesaSocial": 18,
-   "defesaMental": 25,
+   "defesa": 14,
+   "defesaSocial": 14,
+   "defesaMental": 29,
    "absorcao": {
     "impacto": 10,
     "corte": 9,
@@ -39640,8 +39358,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6 +4",
-     "dano": "2d6 +6 perfurante",
+     "pool": "5d6 +8",
+     "dano": "2d6 +10 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -40134,9 +39852,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 6,
-   "sociabilidade": 0,
+   "integridade": 11,
    "furtividade": 1
   },
   "vontade": 10,
@@ -40149,9 +39865,9 @@
   },
   "combate": {
    "pv": 49,
-   "defesa": 17,
-   "defesaSocial": 17,
-   "defesaMental": 25,
+   "defesa": 14,
+   "defesaSocial": 12,
+   "defesaMental": 30,
    "absorcao": {
     "impacto": 13,
     "corte": 9,
@@ -40177,8 +39893,8 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "5d6 +5",
-     "dano": "1d6 +5 impacto",
+     "pool": "5d6 +10",
+     "dano": "1d6 +10 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -40362,8 +40078,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 3
   },
   "vontade": 7,
@@ -40377,8 +40092,8 @@
   "combate": {
    "pv": 26,
    "defesa": 10,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -40398,8 +40113,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "2d6+2 +2",
-     "dano": "1d6 +2 corte",
+     "pool": "2d6+2 +4",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -40610,9 +40325,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 0
   },
   "vontade": 6,
@@ -40625,9 +40338,9 @@
   },
   "combate": {
    "pv": 95,
-   "defesa": 5,
-   "defesaSocial": 5,
-   "defesaMental": 10,
+   "defesa": 4,
+   "defesaSocial": 4,
+   "defesaMental": 11,
    "absorcao": {
     "impacto": 12,
     "corte": 13,
@@ -40643,8 +40356,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "9d6 +1",
-     "dano": "3d6 +13 perfurante",
+     "pool": "9d6 +2",
+     "dano": "3d6 +14 perfurante",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -40982,7 +40695,6 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
    "furtividade": 0
   },
   "vontade": 6,
@@ -40995,7 +40707,7 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 5,
+   "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
@@ -41019,8 +40731,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6+2 +1",
-     "dano": "2d6 +7 perfurante",
+     "pool": "5d6+2 +2",
+     "dano": "2d6 +8 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -41113,9 +40825,7 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
+   "integridade": 10,
    "furtividade": 2
   },
   "vontade": 10,
@@ -41128,9 +40838,9 @@
   },
   "combate": {
    "pv": 66,
-   "defesa": 15,
-   "defesaSocial": 15,
-   "defesaMental": 24,
+   "defesa": 12,
+   "defesaSocial": 10,
+   "defesaMental": 29,
    "absorcao": {
     "impacto": 14,
     "corte": 11,
@@ -41150,8 +40860,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "6d6 +5",
-     "dano": "2d6 +7 corte",
+     "pool": "6d6 +10",
+     "dano": "2d6 +12 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -41279,8 +40989,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 1
   },
   "vontade": 7,
@@ -41294,8 +41003,8 @@
   "combate": {
    "pv": 37,
    "defesa": 10,
-   "defesaSocial": 10,
-   "defesaMental": 16,
+   "defesaSocial": 8,
+   "defesaMental": 18,
    "absorcao": {
     "impacto": 6,
     "corte": 4,
@@ -41318,8 +41027,8 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "3d6+2 +2",
-     "dano": "1d6 +3 impacto",
+     "pool": "3d6+2 +4",
+     "dano": "1d6 +5 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -41437,8 +41146,7 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 5,
    "furtividade": 2
   },
   "vontade": 7,
@@ -41452,8 +41160,8 @@
   "combate": {
    "pv": 34,
    "defesa": 12,
-   "defesaSocial": 8,
-   "defesaMental": 14,
+   "defesaSocial": 6,
+   "defesaMental": 16,
    "absorcao": {
     "impacto": 5,
     "corte": 3,
@@ -41469,8 +41177,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "4d6 +2",
-     "dano": "1d6 +5 perfurante",
+     "pool": "4d6 +4",
+     "dano": "1d6 +7 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -41562,9 +41270,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 6,
    "furtividade": 1
   },
   "vontade": 8,
@@ -41577,9 +41283,9 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 11,
-   "defesaSocial": 9,
-   "defesaMental": 16,
+   "defesa": 10,
+   "defesaSocial": 6,
+   "defesaMental": 19,
    "absorcao": {
     "impacto": 9,
     "corte": 8,
@@ -41595,8 +41301,8 @@
    "ataques": [
     {
      "nome": "Garras e mordida",
-     "pool": "5d6+2 +3",
-     "dano": "2d6 +6 perfurante",
+     "pool": "5d6+2 +6",
+     "dano": "2d6 +9 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -41708,9 +41414,8 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "esquiva": 0,
+   "integridade": 5,
    "furtividade": 2
   },
   "vontade": 9,
@@ -41723,9 +41428,9 @@
   },
   "combate": {
    "pv": 37,
-   "defesa": 16,
-   "defesaSocial": 10,
-   "defesaMental": 20,
+   "defesa": 14,
+   "defesaSocial": 6,
+   "defesaMental": 22,
    "absorcao": {
     "impacto": 8,
     "corte": 6,
@@ -41745,8 +41450,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6 +4",
-     "dano": "1d6 +5 corte",
+     "pool": "5d6 +8",
+     "dano": "1d6 +9 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -41840,9 +41545,7 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 3,
    "furtividade": 1
   },
   "vontade": 8,
@@ -41855,9 +41558,9 @@
   },
   "combate": {
    "pv": 43,
-   "defesa": 11,
-   "defesaSocial": 7,
-   "defesaMental": 15,
+   "defesa": 10,
+   "defesaSocial": 4,
+   "defesaMental": 16,
    "absorcao": {
     "impacto": 9,
     "corte": 6,
@@ -41879,8 +41582,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "5d6+2 +3",
-     "dano": "1d6 +6 corte",
+     "pool": "5d6+2 +6",
+     "dano": "1d6 +9 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -42003,8 +41706,7 @@
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
+   "integridade": 5,
    "furtividade": 2
   },
   "vontade": 7,
@@ -42018,8 +41720,8 @@
   "combate": {
    "pv": 37,
    "defesa": 12,
-   "defesaSocial": 8,
-   "defesaMental": 14,
+   "defesaSocial": 6,
+   "defesaMental": 16,
    "absorcao": {
     "impacto": 6,
     "corte": 4,
@@ -42039,8 +41741,8 @@
    "ataques": [
     {
      "nome": "Golpe planar",
-     "pool": "4d6+2 +2",
-     "dano": "1d6 +5 corte",
+     "pool": "4d6+2 +4",
+     "dano": "1d6 +7 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -42134,8 +41836,7 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
+   "integridade": 4,
    "furtividade": 1
   },
   "vontade": 7,
@@ -42149,8 +41850,8 @@
   "combate": {
    "pv": 50,
    "defesa": 10,
-   "defesaSocial": 6,
-   "defesaMental": 13,
+   "defesaSocial": 4,
+   "defesaMental": 15,
    "absorcao": {
     "impacto": 7,
     "corte": 6,
@@ -42166,8 +41867,8 @@
    "ataques": [
     {
      "nome": "Arma",
-     "pool": "5d6 +2",
-     "dano": "2d6 +6 corte",
+     "pool": "5d6 +4",
+     "dano": "2d6 +8 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -42260,7 +41961,6 @@
   },
   "pericias": {
    "prontidao": 1,
-   "esquiva": 0,
    "furtividade": 1
   },
   "vontade": 6,
@@ -42273,7 +41973,7 @@
   },
   "combate": {
    "pv": 31,
-   "defesa": 5,
+   "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
@@ -42298,8 +41998,8 @@
    "ataques": [
     {
      "nome": "Golpe",
-     "pool": "3d6+2 +1",
-     "dano": "1d6 +5 impacto",
+     "pool": "3d6+2 +2",
+     "dano": "1d6 +6 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"

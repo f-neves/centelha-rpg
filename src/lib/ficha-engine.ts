@@ -876,26 +876,29 @@ export function montarFicha(opts: FichaOpts) {
     // vêm abaixo já saem certos, e as três versões de `ap` deste bloco também.
     const atkBruto = (habil.kind === 'arma' || habil.kind === 'custom') ? habil.w : ARMA['desarmado'];
     const atk = comRequisitoDeForca(atkBruto, forca);
-    const soma = ataqueAtrib(atk) + (S.skills[atk.pericia] || S.skills2[atk.pericia] || 0);
+    const habilAtk = S.skills[atk.pericia] || S.skills2[atk.pericia] || 0;
+    const soma = ataqueAtrib(atk) + habilAtk;
     const dados = Math.floor(soma / 2), bonus = soma % 2 === 1 ? 2 : 0;
-    const flat = (atk.acerto || 0) + ataqueCentelha(C) - armorPen;
+    const flat = (atk.acerto || 0) + ataqueCentelha(C, habilAtk) - armorPen;
     const dist = (atk.tags || []).includes('distância');
     const fm = regras.derivados.danoForca as any;
     const db = atk.danoBonus || 0;
     const capF = atk.forcaCap != null ? Math.min(forca, atk.forcaCap) : forca;
     const inabilArmaOcupada = (inabil.kind === 'arma' || inabil.kind === 'custom');
     const versoes: { rot: string; ap: number }[] = [];
+    // +1 POR PONTO DE CENTELHA DO ATACANTE, SEM LIMITE, no dano (Reforma da
+    // Centelha, 28/09/2026, item 3 da Fase 1): soma em toda versão do `ap`.
     if (!dist && itVers(habil)) {
       // Versátil: com a outra mão ocupada (arma OU escudo) vai a uma mão; com a outra mão
       // livre, é empunhada com as duas e a Força entra dobrada. Antes a ficha mostrava as
       // duas versões e deixava a escolha no ar; agora o marcador de uso já decidiu.
       const inabilOcupada = inabil.kind !== 'nada';
       versoes.push(inabilOcupada
-        ? { rot: '', ap: db + forca * (atk.forcaMult ?? fm.umaMao) }
-        : { rot: '2 mãos', ap: db + forca * fm.duasMaos });
+        ? { rot: '', ap: db + forca * (atk.forcaMult ?? fm.umaMao) + C }
+        : { rot: '2 mãos', ap: db + forca * fm.duasMaos + C });
     } else {
       const mult = dist ? (atk.forcaMult ?? 1) : (atk.maos === 2 ? (atk.forcaMult ?? fm.duasMaos) : (atk.forcaMult ?? fm.umaMao));
-      versoes.push({ rot: '', ap: db + capF * mult });
+      versoes.push({ rot: '', ap: db + capF * mult + C });
     }
     // O aviso sai da arma BRUTA: a rebaixada já não tem requisito a cobrar.
     const reqForca = forcaFaltando(atkBruto, forca);
@@ -906,7 +909,8 @@ export function montarFicha(opts: FichaOpts) {
     const inabilArma = (inabil.kind === 'arma' || inabil.kind === 'custom') ? comRequisitoDeForca(inabil.w, forca) : null;
     let dupla: any = null;
     if (inabilArma) {
-      const somaI = ataqueAtrib(inabilArma) + (S.skills[inabilArma.pericia] || S.skills2[inabilArma.pericia] || 0);
+      const habilI = S.skills[inabilArma.pericia] || S.skills2[inabilArma.pericia] || 0;
+      const somaI = ataqueAtrib(inabilArma) + habilI;
       const distI = (inabilArma.tags || []).includes('distância');
       const capFI = inabilArma.forcaCap != null ? Math.min(forca, inabilArma.forcaCap) : forca;
       const multI = distI ? (inabilArma.forcaMult ?? 1) : (inabilArma.forcaMult ?? fm.umaMao);
@@ -914,8 +918,8 @@ export function montarFicha(opts: FichaOpts) {
       dupla = {
         habilAp: versoes[0].ap,
         inabilDados: Math.floor(somaI / 2), inabilBonus: somaI % 2 === 1 ? 2 : 0,
-        inabilFlat: (inabilArma.acerto || 0) + ataqueCentelha(C) - armorPen,
-        inabilDado: inabilArma.dado, inabilAp: (inabilArma.danoBonus || 0) + capFI * multI,
+        inabilFlat: (inabilArma.acerto || 0) + ataqueCentelha(C, habilI) - armorPen,
+        inabilDado: inabilArma.dado, inabilAp: (inabilArma.danoBonus || 0) + capFI * multI + C,
         inabilPen: ambi ? 1 : 2, ambi,
       };
     }

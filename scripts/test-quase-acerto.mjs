@@ -112,12 +112,12 @@ console.log('\n· a armadura empilha por duas regras diferentes');
   eq(QA.qaDeArmaduras([]), { bonus: 0, reducao: 0, classes: [] }, 'sem armadura, nada');
   eq(QA.qaDeArmaduras(null), { bonus: 0, reducao: 0, classes: [] }, 'e sem lista também não quebra');
   eq(QA.qaDeArmaduras([cl('pesada')]).bonus, 3, 'a placa dá +3 de Margem ao atacante');
-  eq(QA.qaDeArmaduras([cl('pesada')]).reducao, 6, 'e abate 6 do raspão');
+  eq(QA.qaDeArmaduras([cl('pesada')]).reducao, 5, 'e abate 5 do raspão');
   // A regra do capítulo: bônus SOMAM, redução é a MAIOR. Somar as duas seria
   // blindar duas vezes contra a mesma coisa.
   const duas = QA.qaDeArmaduras([cl('pesada'), cl('media')]);
   eq(duas.bonus, 5, 'duas peças SOMAM os bônus (3 + 2)');
-  eq(duas.reducao, 6, 'mas a redução é a MAIOR entre elas, e não a soma');
+  eq(duas.reducao, 5, 'mas a redução é a MAIOR entre elas, e não a soma');
   // E as classes do catálogo de armaduras são exatamente as quatro da tabela.
   const usadas = [...new Set(armaduras.map((a) => a.classe))].sort();
   eq(usadas, ['leve', 'media', 'nenhuma', 'pesada'],
@@ -126,13 +126,12 @@ console.log('\n· a armadura empilha por duas regras diferentes');
 
 console.log('\n· a tabela do regras.json é a que vale');
 {
-  // A do capítulo estava atrasada (média reduzia 2, pesada 4). O JSON venceu, e
-  // o capítulo se corrigiu — que é a regra da casa.
-  eq(regras.quaseAcerto.porClasseArmadura.media.reducao, 4, 'média reduz 4');
-  eq(regras.quaseAcerto.porClasseArmadura.pesada.reducao, 6, 'pesada reduz 6');
+  // Reforma da Centelha (28/09/2026, Fase 1 item 6): média 4→3, pesada 6→5.
+  eq(regras.quaseAcerto.porClasseArmadura.media.reducao, 3, 'média reduz 3');
+  eq(regras.quaseAcerto.porClasseArmadura.pesada.reducao, 5, 'pesada reduz 5');
   const cap = fs.readFileSync('src/content/chapters/quase-acerto.md', 'utf8');
-  ok(/\| Média \| \+2 \| 4 \|/.test(cap), 'e o capítulo escreve o mesmo para a média');
-  ok(/\| Pesada \| \+3 \| 6 \|/.test(cap), 'e para a pesada');
+  ok(/\| Média \| \+2 \| 3 \|/.test(cap), 'e o capítulo escreve o mesmo para a média');
+  ok(/\| Pesada \| \+3 \| 5 \|/.test(cap), 'e para a pesada');
 }
 
 console.log('\n· errar por quanto, e quando isso raspa');

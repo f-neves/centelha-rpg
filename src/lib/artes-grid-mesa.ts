@@ -1856,7 +1856,11 @@ async function morder(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any, verbo: string, f
   // A metade do desvio incide no BRUTO, antes da Absorção: quem se jogou para
   // fora pegou menos fogo, e a armadura continua fazendo o serviço dela sobre o
   // que chegou. Arredonda para cima, como o livro manda.
-  const bruto = Math.ceil((rolagem.total + (ef.dano_bonus || 0)) * fator);
+  //
+  // +1 POR PONTO DE CENTELHA DO CONJURADOR, SEM LIMITE, em CADA PULSO da Arte
+  // (Reforma da Centelha, 28/09/2026, item 3 da Fase 1).
+  const centelhaConjurador = ef.conjurador_id ? (ctx.resumo[ef.conjurador_id]?.centelha ?? 0) : 0;
+  const bruto = Math.ceil((rolagem.total + (ef.dano_bonus || 0) + centelhaConjurador) * fator);
   const m = MON[alvo.monstro_id] || {};
   const s = soakDe(ctx, alvo, ef.materia);
   const golpe = danoNoAlvo({

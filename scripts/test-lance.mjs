@@ -471,12 +471,17 @@ ok(Number.isFinite(r3.total), 'um golpeIndice além do fim de penDados cai no ze
 const comCouro = lances.find((l) => l.entrada.alvo.qaArmaduraBonus !== 0
   && l.entrada.alvo.qaArmaduraReducao !== 0);
 ok(!!comCouro, 'a fixture tem lance com armadura vestida, com os dois números');
-const qa = L.quaseAcertoDoEncontro({ ...comCouro.entrada, alvo: { ...comCouro.entrada.alvo, centelha: 0 } });
+const qa = L.quaseAcertoDoEncontro({
+  ...comCouro.entrada,
+  atacante: { ...comCouro.entrada.atacante, centelha: 0 },
+  alvo: { ...comCouro.entrada.alvo, centelha: 0 },
+});
 ok(qa.margem === comCouro.entrada.atacante.qaArmaBonus + comCouro.entrada.alvo.qaArmaduraBonus
   && qa.dano === Math.max(0, comCouro.entrada.atacante.qaArmaDano - comCouro.entrada.alvo.qaArmaduraReducao),
   `o Quase-Acerto do ENCONTRO soma arma e armadura (margem ${qa.margem}, raspão ${qa.dano})`);
 ok(L.quaseAcertoDoEncontro({
-  atacante: { qaArmaBonus: 1, qaArmaDano: 2 }, alvo: { qaArmaduraBonus: 0, qaArmaduraReducao: 9, centelha: 0 },
+  atacante: { qaArmaBonus: 1, qaArmaDano: 2, centelha: 0 },
+  alvo: { qaArmaduraBonus: 0, qaArmaduraReducao: 9, centelha: 0 },
 }).dano === 0, 'e a Redução não faz o raspão ficar negativo');
 
 // ============================================================ 6 · a Regra do Quase-Acerto (27/09/2026)
@@ -490,25 +495,38 @@ console.log('\n· a Regra do Quase-Acerto, sintética (a fixture não testemunha
 // 2a · a Centelha do alvo desconta o raspão, ponto a ponto, até zero.
 {
   const semCentelha = L.quaseAcertoDoEncontro({
-    atacante: { qaArmaBonus: 2, qaArmaDano: 4 }, alvo: { qaArmaduraBonus: 0, qaArmaduraReducao: 0, centelha: 0 },
+    atacante: { qaArmaBonus: 2, qaArmaDano: 4, centelha: 0 }, alvo: { qaArmaduraBonus: 0, qaArmaduraReducao: 0, centelha: 0 },
   });
   ok(semCentelha.dano === 4, `sem Centelha, o raspão passa inteiro (${semCentelha.dano})`);
   const c2 = L.quaseAcertoDoEncontro({
-    atacante: { qaArmaBonus: 2, qaArmaDano: 4 }, alvo: { qaArmaduraBonus: 0, qaArmaduraReducao: 0, centelha: 2 },
+    atacante: { qaArmaBonus: 2, qaArmaDano: 4, centelha: 0 }, alvo: { qaArmaduraBonus: 0, qaArmaduraReducao: 0, centelha: 2 },
   });
   ok(c2.dano === 2, `Centelha 2 desconta 2 do raspão (${c2.dano})`);
   const c9 = L.quaseAcertoDoEncontro({
-    atacante: { qaArmaBonus: 2, qaArmaDano: 4 }, alvo: { qaArmaduraBonus: 0, qaArmaduraReducao: 0, centelha: 9 },
+    atacante: { qaArmaBonus: 2, qaArmaDano: 4, centelha: 0 }, alvo: { qaArmaduraBonus: 0, qaArmaduraReducao: 0, centelha: 9 },
   });
   ok(c9.dano === 0, `e a Centelha não faz o raspão ficar negativo (Centelha 9 num raspão de 4: ${c9.dano})`);
 }
 
-// 2b · a armadura leve tem Redução 1 (era 0), e soma com a Centelha do alvo.
+// 2b · a armadura leve tem Redução 1, e soma com a Centelha do alvo.
 {
   const leve = L.quaseAcertoDoEncontro({
-    atacante: { qaArmaBonus: 2, qaArmaDano: 4 }, alvo: { qaArmaduraBonus: 1, qaArmaduraReducao: 1, centelha: 1 },
+    atacante: { qaArmaBonus: 2, qaArmaDano: 4, centelha: 0 }, alvo: { qaArmaduraBonus: 1, qaArmaduraReducao: 1, centelha: 1 },
   });
   ok(leve.dano === 2, `a leve reduz 1 e a Centelha 1 reduz outro 1 (4 − 1 − 1 = ${leve.dano})`);
+}
+
+// Reforma da Centelha (28/09/2026, item 5 da Fase 1) · a Centelha do ATACANTE
+// agora SOMA ao raspão, ao lado da Centelha do alvo (que continua descontando).
+{
+  const soAtacante = L.quaseAcertoDoEncontro({
+    atacante: { qaArmaBonus: 2, qaArmaDano: 4, centelha: 3 }, alvo: { qaArmaduraBonus: 0, qaArmaduraReducao: 0, centelha: 0 },
+  });
+  ok(soAtacante.dano === 7, `a Centelha do atacante soma ao raspão (4 + 3 = ${soAtacante.dano})`);
+  const osDois = L.quaseAcertoDoEncontro({
+    atacante: { qaArmaBonus: 2, qaArmaDano: 4, centelha: 3 }, alvo: { qaArmaduraBonus: 0, qaArmaduraReducao: 1, centelha: 2 },
+  });
+  ok(osDois.dano === 4, `os dois lados juntos (4 − 1 + 3 − 2 = ${osDois.dano})`);
 }
 
 // 2c · o acerto nunca dói menos que o raspão do mesmo golpe, mesmo com Absorção

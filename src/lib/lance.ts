@@ -104,6 +104,8 @@ export interface EntradaLance {
     danoDados?: number;
     /** As duas metades do Quase-Acerto que vêm da arma. */
     qaArmaBonus: number; qaArmaDano: number;
+    /** A Centelha do atacante, que SOMA ao raspão (Reforma da Centelha, 28/09/2026). */
+    centelha: number;
   };
   alvo: {
     id?: string; nome?: string;
@@ -234,12 +236,16 @@ export function resolverGolpe(entrada: EntradaLance, fonte: FonteDeDados = fonte
  * `motor.mjs` chamam esta função em vez de reimplementar a fórmula. O Vigor não entra.
  */
 export function quaseAcertoDoEncontro(entrada: {
-  atacante: Pick<EntradaLance['atacante'], 'qaArmaBonus' | 'qaArmaDano'>;
+  atacante: Pick<EntradaLance['atacante'], 'qaArmaBonus' | 'qaArmaDano' | 'centelha'>;
   alvo: Pick<EntradaLance['alvo'], 'qaArmaduraBonus' | 'qaArmaduraReducao' | 'centelha'>;
 }): { margem: number; dano: number } {
   return {
     margem: entrada.atacante.qaArmaBonus + entrada.alvo.qaArmaduraBonus,
-    dano: Math.max(0, entrada.atacante.qaArmaDano - entrada.alvo.qaArmaduraReducao - entrada.alvo.centelha),
+    // Reforma da Centelha (28/09/2026, item 5/6 da Fase 1): a Centelha do
+    // ATACANTE agora soma ao raspão, ao lado da Centelha do alvo (que
+    // continua descontando, desde 27/09/2026).
+    dano: Math.max(0, entrada.atacante.qaArmaDano - entrada.alvo.qaArmaduraReducao
+      + entrada.atacante.centelha - entrada.alvo.centelha),
   };
 }
 

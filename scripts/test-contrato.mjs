@@ -129,13 +129,14 @@ if (REVER) {
 }
 eq(R.arma, 'Espada Longa', 'arma no resumo de combate');
 // 3d6+2: (maior(Des 4, For 3) + Armas 3) = 7 → 3 dados e o +2 do ímpar.
-// +3 solto: acerto da arma (+1) mais Centelha (+3) menos a penalidade do gambeson (−1).
-eq(R.ataque, '3d6+2 +3', 'pool de acerto');
+// +6 solto: acerto da arma (+1) mais Centelha (2×min(3,Armas 3)=6) menos a
+// penalidade do gambeson (−1). Reforma da Centelha, 28/09/2026.
+eq(R.ataque, '3d6+2 +6', 'pool de acerto');
 // Versátil com a mão inábil ocupada pelo broquel: soma Força×1, e não ×2.
-eq(R.dano, '1d6 +3 (C)', 'dano');
-// 17 na ficha nua (test-kael), menos 1 de gambeson: a armadura aparece aqui.
-eq(R.defesa, 16, 'Defesa física');
-eq(R.defesaMental, 13, 'Defesa Mental');
+eq(R.dano, '1d6 +6 (C)', 'dano');
+// 20 na ficha nua (test-kael), menos 1 de gambeson: a armadura aparece aqui.
+eq(R.defesa, 19, 'Defesa física');
+eq(R.defesaMental, 10, 'Defesa Mental');
 eq(JSON.stringify(R.soak), JSON.stringify({ impacto: 10, corte: 7, perfuracao: 4 }), 'Absorção por modo');
 eq(R.resistPerf, 0, 'Resistência a Perfuração');
 
@@ -146,10 +147,10 @@ eq(F.pv, 37, 'PV');
 eq(F.energia, 14, 'Energia');
 eq(F.mana, 13, 'Mana');
 eq(F.folego, 44, 'Fôlego');
-eq(F.defEsquiva, 16, 'Defesa (Esquiva)');
-eq(F.defBloqueio, 10, 'Defesa (Bloqueio)');
-eq(F.defSocial, 7, 'Defesa Social');
-eq(F.defMental, 13, 'Defesa Mental pela ficha');
+eq(F.defEsquiva, 19, 'Defesa (Esquiva)');
+eq(F.defBloqueio, 7, 'Defesa (Bloqueio)');
+eq(F.defSocial, 4, 'Defesa Social');
+eq(F.defMental, 10, 'Defesa Mental pela ficha');
 eq(F.iniciativa, '3d6', 'Iniciativa');
 eq(F.armaduras.join(', '), 'gambeson', 'armaduras vestidas no resumo');
 

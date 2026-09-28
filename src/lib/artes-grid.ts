@@ -1826,13 +1826,23 @@ export interface Desvio {
  *
  * O desvio rola `Destreza + Esquiva`, e o bestiário não guarda os dois
  * separados: guarda a Defesa pronta, que É `(Destreza + Esquiva) × mult +
- * Centelha × centelhaMult`. Inverter devolve exatamente a soma que o pool pede,
- * sem inventar número nem abrir um campo novo em 308 criaturas. O PC não passa
- * por aqui: na ficha os dois estão escritos.
+ * 2×min(Centelha, Esquiva)` (Reforma da Centelha, 28/09/2026). Inverter
+ * devolve exatamente a soma que o pool pede, sem inventar número nem abrir um
+ * campo novo em 308 criaturas. O PC não passa por aqui: na ficha os dois
+ * estão escritos.
+ *
+ * APROXIMAÇÃO REGISTRADA (a inversão deixou de ser exata com o min()): a
+ * fórmula nova não é invertível sem saber Esquiva ANTES (é o que se está
+ * calculando), porque o termo de Centelha muda de tamanho dependendo se a
+ * Esquiva é maior ou menor que ela. Esta função assume Esquiva ≥ Centelha (o
+ * caso comum: a maioria do bestiário tem Centelha baixa ou zero), e por isso
+ * usa o termo de Centelha CHEIO (2×Centelha, não capeado). Quando essa
+ * suposição for falsa (Esquiva < Centelha), o valor sai um pouco ALTO, nunca
+ * inventa um negativo, e o teto de 12 continua batendo o bestiário inteiro.
  */
 export function desEsqDaDefesa(defesa: number, centelha: number): number {
-  const d = (regras.derivados as any).defesa as { mult: number; centelhaMult?: number };
-  const bruta = Number(defesa || 0) - Number(centelha || 0) * (d.centelhaMult ?? 1);
+  const d = (regras.derivados as any).defesa as { mult: number };
+  const bruta = Number(defesa || 0) - 2 * Number(centelha || 0);
   return Math.max(0, Math.round(bruta / (d.mult || 2)));
 }
 
