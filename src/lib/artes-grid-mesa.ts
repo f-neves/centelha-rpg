@@ -19,7 +19,7 @@ import {
   A_SAIR, deveSair, planoDaSaida, SEM_NIVEL_ARTE,
   type EfeitoAtivo, type Forma, type Figura, type Encaixe, type Desvio,
 } from './artes-grid';
-import { pool, regras } from './calc';
+import { pool, regras, limiteDaMorte } from './calc';
 import { pesoMaximoErguido, alcanceArremesso } from './forca-empurrao';
 import {
   abrirConjuracao, abrirNPC, abrirEmpurroes, abrirMudarEfeito, escolherItem, itensDoAlvo,
@@ -1864,7 +1864,9 @@ async function morder(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any, verbo: string, f
     soakArmadura: s.armadura, soakNatural: s.natural,
     ...elementosCombate(m),
   });
-  const pv = Math.max(0, (alvo.pv_atual ?? 0) - golpe.liquido);
+  // VIDA NEGATIVA ATÉ O LIMITE DA MORTE (item 4, M-21): antes travava em zero.
+  const limite = limiteDaMorte(alvo.pv_max, ctx.resumo[alvo.id]?.centelha ?? null) ?? -Infinity;
+  const pv = Math.max(limite, (alvo.pv_atual ?? 0) - golpe.liquido);
   const { error } = await ctx.SB.from('combatentes').update({ pv_atual: pv }).eq('id', alvo.id);
   if (error) return uiErro('Erro ao aplicar o dano: ' + error.message);
   alvo.pv_atual = pv;
@@ -1898,7 +1900,9 @@ async function aplicarDano(ctx: CtxGrid, alvo: any, bruto: number, plano: Plano,
     soakArmadura: s.armadura, soakNatural: s.natural,
     ...elementosCombate(m),
   });
-  const pv = Math.max(0, (alvo.pv_atual ?? 0) - golpe.liquido);
+  // VIDA NEGATIVA ATÉ O LIMITE DA MORTE (item 4, M-21): antes travava em zero.
+  const limite = limiteDaMorte(alvo.pv_max, ctx.resumo[alvo.id]?.centelha ?? null) ?? -Infinity;
+  const pv = Math.max(limite, (alvo.pv_atual ?? 0) - golpe.liquido);
   await ctx.SB.from('combatentes').update({ pv_atual: pv }).eq('id', alvo.id);
   alvo.pv_atual = pv;
   await ctx.logar(alvo, `${alvo.nome} sofreu ${golpe.liquido} de dano por ${motivo} [${golpe.nota}]`, { acao: null });

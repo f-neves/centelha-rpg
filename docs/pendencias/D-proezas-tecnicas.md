@@ -44,4 +44,16 @@ Detalhe em `Proezas_revisao.md`.
   determinável (não inventar a partir do nome, nível ou custo), e a Técnica deve virar
   `pendente: true` só DEPOIS que a régua (a recalibração de custo/nível das Técnicas, item D6)
   fechar. Ainda não aplicado. **Adiado até a régua fechar**, por decisão do próprio autor.
+- [ ] **D10 · [DECIDIR] Novo escopo da Prestidigitação.** Registrado pelo autor em 27/09/2026
+  (item 7d do despacho da Regra do Quase-Acerto), sem resolver. Proposta: "mãos hábeis sob os
+  olhos dos outros" (furto e plantar objetos, trapaça em jogos, sabotagem discreta, truques de
+  mão); Abrir Mecanismos continua com fechaduras e armadilhas. Texto do livro ainda por escrever;
+  hoje Prestidigitação e Abrir Mecanismos já existem como conceitos em
+  `src/content/chapters/acoes-sentidos-e-engano.md:87-94` e `habilidades-secundarias.md:107`, sem
+  o reescopo.
+- [ ] **D11 · [DECIDIR] Proeza de Quase-acerto, com duas alavancas.** Registrado pelo autor em
+  27/09/2026 (item 7e do despacho da Regra do Quase-Acerto), sem resolver. Uma Proeza/Técnica que
+  mexa no Quase-Acerto teria duas alavancas possíveis e independentes: o **dano do raspão** (a
+  metade que a arma carrega) e a **Margem** (a metade que soma arma e armadura). Decidir se a
+  Proeza mexe numa, na outra, ou nas duas, e o preço de cada caminho.
 

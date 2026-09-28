@@ -19,11 +19,13 @@ Depois de rolar o ataque e **não** superar a Defesa, compare o quanto faltou co
 
 Se você errou por **um valor menor ou igual à Margem**, é um raspão. O raspão causa:
 
-<p class="formula">Dano do raspão = Dano QA da arma − Redução QA da armadura (mínimo 0)</p>
+<p class="formula">Dano do raspão = Dano QA da arma − Redução QA da armadura − Centelha do alvo (mínimo 0)</p>
 
-O dano do raspão **ignora a Absorção normal** (já é o que sobra de um golpe que quase não conectou) e **não rola dados**: é um valor fixo. Não abre Margem de dano, não dispara Sangramento por si só: é só o arranhão.
+O dano do raspão **ignora a Absorção normal** (já é o que sobra de um golpe que quase não conectou) e **não rola dados**: é um valor fixo. Não abre Margem de dano, não dispara Sangramento por si só: é só o arranhão. Quem já Despertou sente menos o arranhão: a Centelha desconta do raspão, ponto a ponto (o Vigor não entra nessa conta).
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora ataca um cavaleiro de <strong>placa</strong> com a <strong>espada longa</strong> (dano médio 3,5, arma média) e rola <strong>13</strong> contra Defesa <strong>16</strong>: precisava de 17, então errou por <strong>4</strong>. A Margem é <strong>2 (arma média) + 3 (placa) = 5</strong>. Como 4 ≤ 5, raspa. O dano é <strong>4 (arma média) − 6 (redução da placa) = 0</strong>: faíscas no aço. Contra um alvo de <strong>couro</strong> (leve, redução 0), a mesma arma faria <strong>4 − 0 = 4</strong> de raspão, e o couro quase não muda a Margem, então o mesmo 13 contra Defesa 16 <em>não</em> raspa nele: margem 2 + 1 = 3, e 4 &gt; 3.</div>
+Um golpe de verdade nunca dói **menos** que o raspão do mesmo ataque: se a Absorção comeu o dano do acerto até menos que o raspão teria causado, vale o raspão.
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora ataca um cavaleiro de <strong>placa</strong> com a <strong>espada longa</strong> (dano médio 3,5, arma média) e rola <strong>13</strong> contra Defesa <strong>16</strong>: precisava de 17, então errou por <strong>4</strong>. A Margem é <strong>2 (arma média) + 3 (placa) = 5</strong>. Como 4 ≤ 5, raspa. O dano é <strong>4 (arma média) − 6 (redução da placa) = 0</strong>: faíscas no aço. Contra um alvo de <strong>couro</strong> (leve, redução 1), a mesma arma faria <strong>4 − 1 = 3</strong> de raspão (menos 1 por ponto de Centelha do alvo, se ele tiver Despertado), e o couro quase não muda a Margem, então o mesmo 13 contra Defesa 16 <em>não</em> raspa nele: margem 2 + 1 = 3, e 4 &gt; 3.</div>
 
 ## A lógica das classes
 
@@ -66,13 +68,13 @@ A arma **leve** raspa muito (Margem larga) mas raso; a **pesada** raspa pouco ma
 | Classe da armadura | Bônus de QA | Redução do raspão |
 |---|:---:|:---:|
 | Nenhuma | +0 | 0 |
-| Leve | +1 | 0 |
+| Leve | +1 | 1 |
 | Média | +2 | 4 |
 | Pesada | +3 | 6 |
 
 </div>
 
-Repare na contramão: quanto **mais pesada** a armadura, **mais** ela aumenta a Margem do atacante: um alvo encouraçado é maior, mais lento e mais fácil de roçar. Em troca, a **Redução** come o dano do raspão. Resultado: o cavaleiro de placa é nicado quase o tempo todo, mas a maioria desses nicks bate em **0**. A armadura leve quase não muda a Margem e não reduz nada: protege pelo Absorção, não contra raspões.
+Repare na contramão: quanto **mais pesada** a armadura, **mais** ela aumenta a Margem do atacante: um alvo encouraçado é maior, mais lento e mais fácil de roçar. Em troca, a **Redução** come o dano do raspão. Resultado: o cavaleiro de placa é nicado quase o tempo todo, mas a maioria desses nicks bate em **0**. A armadura leve quase não muda a Margem e reduz **pouco**: protege pelo Absorção, não pela Redução do raspão.
 
 <div class="callout"><span class="lbl">Empilhar</span>Ao usar mais de uma peça de armadura, <strong>some</strong> os Bônus de Quase-Acerto. A Redução do Raspão não é somada, use apenas a <strong>maior</strong> Redução entre elas.</div>
 

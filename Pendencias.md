@@ -39,19 +39,19 @@ está na seção 3.
 
 | Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados | DECIDIR | FAZER | AUTOR | CONSERTAR | Outra marca | Adiados |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 30 | 20 | 1 | 9 | 13 | 4 | 4 | 0 | 0 | 0 |
+| A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 31 | 21 | 1 | 9 | 14 | 4 | 4 | 0 | 0 | 0 |
 | B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 15 | 10 | 0 | 5 | 5 | 5 | 0 | 0 | 0 | 0 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
-| D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 9 | 6 | 0 | 3 | 2 | 1 | 0 | 0 | 0 | 3 |
+| D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 11 | 8 | 0 | 3 | 4 | 1 | 0 | 0 | 0 | 3 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 10 | 7 | 0 | 3 | 5 | 1 | 0 | 1 | 0 | 0 |
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 | 6 | 0 | 3 | 0 | 0 | 0 |
-| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 73 | 49 | 0 | 24 | 27 | 2 | 0 | 5 | 15 | 0 |
-| H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 6 | 4 | 0 | 2 | 1 | 0 | 0 | 2 | 0 | 1 |
-| I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 14 | 10 | 2 | 2 | 3 | 8 | 0 | 0 | 0 | 1 |
+| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 74 | 50 | 0 | 24 | 28 | 2 | 0 | 5 | 15 | 0 |
+| H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 7 | 5 | 0 | 2 | 2 | 0 | 0 | 2 | 0 | 1 |
+| I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 15 | 11 | 2 | 2 | 4 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 17 | 14 | 0 | 3 | 6 | 3 | 0 | 2 | 1 | 2 |
-| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 32 | 18 | 1 | 13 | 14 | 5 | 0 | 0 | 0 | 0 |
+| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 33 | 19 | 1 | 13 | 15 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **327** | **225** | **4** | **98** | **84** | **38** | **8** | **10** | **81** | **8** |
+| | **Total** | | **334** | **232** | **4** | **98** | **91** | **38** | **8** | **10** | **81** | **8** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -339,6 +339,7 @@ Os itens abertos e parciais de cada tema, com a marca e o título; os fechados v
 | A16 | aberto | DECIDIR | A Fonte do Elemento: os elementos que faltam. |
 | A28 | aberto | DECIDIR | A Cura com Proeza ou Arte não tem número fora do combate. |
 | A29 | aberto | DECIDIR | Preço de serviço e de item mágico, e raridade por lugar. |
+| A30 | aberto | DECIDIR | Cura, Acerto Arcano e Energia Espiritual: comparar por pacote na etapa das Artes. |
 
 Fechados (9): A12, A17, A18, A22, A23, A27, A21, A22, A20.
 
@@ -380,6 +381,8 @@ Fechados (0): nenhum.
 | D7 | aberto | DECIDIR | Bônus de Centelha em ataque e defesa: +1 ou +2 por ponto? |
 | D8 | aberto | DECIDIR | Mãos Hábeis: +3 ou +2 em Ofícios? |
 | D9 | aberto, ADIADO | FAZER | Esquiva Impossível: marcar `pendente: true`. |
+| D10 | aberto | DECIDIR | Novo escopo da Prestidigitação. |
+| D11 | aberto | DECIDIR | Proeza de Quase-acerto, com duas alavancas. |
 
 Fechados (3): D1, D2, D4.
 
@@ -466,6 +469,7 @@ Fechados (1): F9.
 | G68 | aberto | DECIDIDO, APLICAR DEPOIS | E3 · Empréstimo de XP, a regra completa (completa a G44). |
 | G69 | aberto | DECIDIDO, APLICAR DEPOIS | E5 · Pacote inicial pelo Recursos. |
 | G71 | aberto | DECIDIR | Comércio e modificador regional. |
+| G72 | aberto | DECIDIR | Atributo sugerido para cada Habilidade secundária. |
 
 Fechados (24): G1, G3, G4, "As cinco físicas de toda sessão.", G5, G5b, G7, G8, G9, G10, G18, G19, G20, G29, G52, G54, G55, G56, G57, G58, G59, G62, G65, G70.
 
@@ -477,6 +481,7 @@ Fechados (24): G1, G3, G4, "As cinco físicas de toda sessão.", G5, G5b, G7, G8
 | H4 | aberto, ADIADO | DECIDIR | O degrau de baixo do fator de forma: ÷2 ou ÷3? |
 | H5 | aberto | CONSERTAR | O Arco de Guerra não existe no catálogo. |
 | H6 | aberto | CONSERTAR | O teto de Força do Arco Curto diverge. |
+| H7 | aberto | DECIDIR | A bancada de calibração não modela alcance. |
 
 Fechados (2): H1, H2.
 
@@ -490,6 +495,7 @@ Fechados (2): H1, H2.
 | I3 | aberto | FAZER | As outras abas ainda não ouvem. |
 | I4 | aberto | FAZER | Nada garante entrega. |
 | I14 | aberto | FAZER | O anel de Vida remoto aparece em salto. |
+| I15 | aberto | DECIDIR | Sugestão de interface: mostrar juntos os resultados de todos os golpes de um Tick. |
 | I6 | aberto | FAZER | A presença não distingue quem está olhando. |
 | I8 | aberto, ADIADO | DECIDIR | Ponteiro ao vivo. |
 | I9 | aberto | DECIDIR | O caderno de melhorias do tabuleiro. |
@@ -543,6 +549,7 @@ Fechados (3): J1, J4, J5.
 | K5 | aberto | FAZER | A implementação: os DOIS sistemas. |
 | K31 | aberto | FAZER | O Grid anda a Corrida só na primeira fase: a regra publicada tem duas, e o código aplica metade. |
 | K32 | aberto | DECIDIR | Tags de arma sem definição. |
+| K33 | aberto | DECIDIR | Redução de raspão quando armaduras são vestidas juntas. |
 
 Fechados (13): K29, K1, K2, K3, K10, K7, K15, K16, K22, K23, K26, K12, K13.
 

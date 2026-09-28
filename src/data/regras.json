@@ -1142,7 +1142,7 @@
       },
       "leve": {
         "bonus": 1,
-        "reducao": 0
+        "reducao": 1
       },
       "media": {
         "bonus": 2,

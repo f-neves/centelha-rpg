@@ -77,6 +77,8 @@ export function montarArquetipo(id, L) {
     // é rolada por peça e não por arquétipo.
     iniciativaBase: 6 + (ficha.attrs.raciocinio || 0), raciocinio: ficha.attrs.raciocinio || 0,
     qa: r.qa,
+    // A Centelha do alvo desconta do raspão (Regra do Quase-Acerto, 27/09/2026).
+    centelha: ficha.centelha || 0,
   };
 }
 

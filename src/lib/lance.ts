@@ -117,6 +117,8 @@ export interface EntradaLance {
     soak: number;
     pv: number | null; pvMax: number | null;
     qaArmaduraBonus: number; qaArmaduraReducao: number;
+    /** A Centelha do alvo, que desconta do raspão (Regra do Quase-Acerto, 27/09/2026). */
+    centelha: number;
   };
   manobra: string;
   golpeIndice: number;
@@ -202,7 +204,9 @@ export function resolverGolpe(entrada: EntradaLance, fonte: FonteDeDados = fonte
     bruto = Math.max(0, d.total);
     rollsDano = d.rolls;
     absorcao = Math.min(bruto, entrada.alvo.soak);
-    liquido = Math.max(0, bruto - entrada.alvo.soak);
+    // O acerto nunca dói menos que o raspão do mesmo golpe (Regra do Quase-Acerto, 27/09/2026):
+    // sem este piso, um acerto com Absorção alta podia doer menos que um erro que raspa.
+    liquido = Math.max(entrada.danoQA, bruto - entrada.alvo.soak, 0);
   } else if (veredito === 'raspao') {
     bruto = Math.max(0, entrada.danoQA);
     liquido = bruto;
@@ -223,11 +227,19 @@ export function resolverGolpe(entrada: EntradaLance, fonte: FonteDeDados = fonte
   };
 }
 
-/** A base da Margem e do raspão, que sai do encontro e não de um dos dois lados. */
-export function quaseAcertoDoEncontro(entrada: EntradaLance): { margem: number; dano: number } {
+/**
+ * A base da Margem e do raspão, que sai do encontro e não de um dos dois lados.
+ *
+ * FONTE ÚNICA da conta do raspão (Regra do Quase-Acerto, 27/09/2026): `grid.astro` e
+ * `motor.mjs` chamam esta função em vez de reimplementar a fórmula. O Vigor não entra.
+ */
+export function quaseAcertoDoEncontro(entrada: {
+  atacante: Pick<EntradaLance['atacante'], 'qaArmaBonus' | 'qaArmaDano'>;
+  alvo: Pick<EntradaLance['alvo'], 'qaArmaduraBonus' | 'qaArmaduraReducao' | 'centelha'>;
+}): { margem: number; dano: number } {
   return {
     margem: entrada.atacante.qaArmaBonus + entrada.alvo.qaArmaduraBonus,
-    dano: Math.max(0, entrada.atacante.qaArmaDano - entrada.alvo.qaArmaduraReducao),
+    dano: Math.max(0, entrada.atacante.qaArmaDano - entrada.alvo.qaArmaduraReducao - entrada.alvo.centelha),
   };
 }
 

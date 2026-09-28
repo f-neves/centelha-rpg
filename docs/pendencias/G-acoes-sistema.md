@@ -501,3 +501,8 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
   - **Sugestão do Comerciante, não aprovada (registrada na rodada 114, texto dele sem alteração):**
     > Pechincha com teto de 20%; venda direta ao consumidor 70% a 100% do preço de tabela;
     > arbitragem entre regiões; números do modificador regional.
+- [ ] **G72 · [DECIDIR] Atributo sugerido para cada Habilidade secundária.** Registrado pelo autor
+  em 27/09/2026 (item 7a do despacho da Regra do Quase-Acerto), sem resolver. Hoje nenhuma das 66
+  entradas de `src/data/habilidades-secundarias.json` tem um campo de Atributo associado (a
+  Especialidade combina Atributo + Habilidade PRIMÁRIA, mas a secundária fica solta). Decidir se
+  cada secundária ganha um Atributo sugerido, e onde esse campo mora no JSON.

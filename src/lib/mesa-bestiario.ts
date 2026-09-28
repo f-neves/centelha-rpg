@@ -87,6 +87,13 @@ export interface ResumoCombate {
   pgr?: { preparo?: number; golpes?: number; recuperacao?: number } | null;
   qa?: QACombate;
   /**
+   * A CENTELHA, que passou a ser NÚMERO DE COMBATE em 27/09/2026 (Regra do
+   * Quase-Acerto: desconta do raspão). Do PC sai da ficha; da criatura, do
+   * bloco publicado. `0` por omissão (mortal comum), e não nulo: ao contrário
+   * da Defesa, a ausência de Centelha É a resposta, não uma recusa.
+   */
+  centelha?: number;
+  /**
    * OS SENTIDOS, e este bloco é de 04/09/2026, para o golpe vindo do escuro.
    *
    * A régua compara a Furtividade de quem ataca com a Percepção Passiva do
@@ -156,7 +163,7 @@ const resumoVazio = (): ResumoCombate => ({
   defesa: null, defesaSocial: null, defesaMental: null,
   soak: { impacto: 0, corte: 0, perfuracao: 0 },
   resistPerf: 0, velocidade: null, classe: null, passo: null,
-  qa: qaDaPeca('', '', null),
+  qa: qaDaPeca('', '', null), centelha: 0,
   // A peça de cena não sabe nada de si, e os dois são NULO e não `{}`, pela mesma
   // razão do `defesa: null` acima: um objeto vazio se leria como "tem atributos,
   // todos zero", e o que se sabe dela é que ninguém preencheu.
@@ -190,7 +197,7 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
   if (c.tipo === 'pc' && fichaPorId[c.personagem_id]) {
     try {
       const r = resumoCombatePC(fichaPorId[c.personagem_id]) as any;
-      return { ...r, velocidade: null };
+      return { ...r, velocidade: null, centelha: fichaPorId[c.personagem_id]?.centelha || 0 };
     } catch { return null; }
   }
   if (c.tipo === 'criatura') {
@@ -216,6 +223,7 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
       // objeto vazio que se leria como "tem atributos, todos zero".
       atributos: MON[c.monstro_id]?.atributos ?? null,
       pericias: MON[c.monstro_id]?.pericias ?? null,
+      centelha: MON[c.monstro_id]?.centelha || 0,
     };
   }
   return null;
@@ -284,6 +292,7 @@ export function resumoDe(c: any, fichaPorId: Record<string, any> = {}): ResumoCo
         ...(ov.qa || {}),
       };
     })(),
+    centelha: ov.centelha ?? base?.centelha ?? 0,
   };
 }
 

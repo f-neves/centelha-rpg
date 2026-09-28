@@ -166,7 +166,7 @@ console.log('\n· o exemplo do capítulo, refeito pelo motor');
 
   const couro = QA.quaseAcerto({ arma: 'espada-longa' }, { armaduras: [{ classe: 'leve' }] });
   eq(couro.margem, 3, 'contra couro a Margem é só 3');
-  eq(couro.dano, 4, 'mas o raspão passa inteiro: 4');
+  eq(couro.dano, 3, 'e o raspão perde 1 pro couro (4 − 1, Regra do Quase-Acerto de 27/09/2026)');
   eq(QA.saidaDoAtaque(13, 16, couro.margem), 'erro',
     'e o mesmo 13 contra 16 NÃO raspa no couro: errou por 4, e a margem é 3');
 

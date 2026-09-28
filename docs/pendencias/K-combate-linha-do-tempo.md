@@ -468,3 +468,10 @@ revistos por ela.
   só o arco composto). Nenhum código lê a tag `caro` (busca em `src/`). Decidir se cada uma ganha
   definição na seção ou sai do dado. (O pedido original listava também "pesada" e "imobiliza" como
   sem definição; as duas estão definidas em `armas-e-armaduras.md:51` e `:52`.)
+- [ ] **K33 · [DECIDIR] Redução de raspão quando armaduras são vestidas juntas.** Registrado pelo
+  autor em 27/09/2026 (item 7b do despacho da Regra do Quase-Acerto), sem resolver. Hoje
+  `qaDeArmaduras` (`src/lib/quase-acerto.ts:125-138`) já soma o Bônus de QA de todas as peças e
+  usa a MAIOR Redução entre elas (regra de "Empilhar" já publicada no capítulo Quase-Acerto). A
+  pergunta em aberto é outra: uma camisa de malha (leve) VESTIDA SOB uma placa (pesada) deveria
+  ganhar alguma coisa além da maior Redução das duas, ou a regra do empilhar já fecha o caso?
+  Não decidir aqui: só registrar a pergunta.

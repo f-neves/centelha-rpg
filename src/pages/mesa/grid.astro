@@ -2468,6 +2468,7 @@ const SETAS = [
   } from '../../lib/alcance';
   import { reconciliar, esquecerCaixa } from '../../lib/reconciliar';
   import { errouPor, saidaDoAtaque } from '../../lib/quase-acerto';
+  import { quaseAcertoDoEncontro } from '../../lib/lance';
   import {
     abrirEscolhaDoTempo, resumoDoTempo, fitaHTML, seloFaseHTML, abrirAbortar, podeAbortar,
     abrirForaDeHora, podeForaDeHora,
@@ -4759,7 +4760,9 @@ const SETAS = [
   function golpeMaisCedo(): number | null {
     let menor: number | null = null;
     for (const c of naFila()) {
-      if (foraDaFila(c)) continue;
+      // QUEM CAIU DENTRO DESTE TICK SOLTA O GOLPE ASSIM MESMO: só pula quem
+      // já estava fora da fila na abertura (`DE_PE_AO_ABRIR`, acima).
+      if (foraDaFila(c) && !DE_PE_AO_ABRIR.has(c.id)) continue;
       const g = proximoGolpe(c.acao);
       if (g != null && (menor == null || g < menor)) menor = g;
     }
@@ -4787,7 +4790,7 @@ const SETAS = [
     if (!instanteDeGolpe()) return null;
     const t = tickDaVez();
     for (const c of naFila()) {
-      if (foraDaFila(c)) continue;
+      if (foraDaFila(c) && !DE_PE_AO_ABRIR.has(c.id)) continue;
       const g = proximoGolpe(c.acao);
       if (g != null && (t == null || g <= t)) return { atacante: c, tick: g };
     }
@@ -5061,7 +5064,10 @@ const SETAS = [
     // no primeiro conserto.
     const itens = itensDaFila(pecasDaFila(emPe), tick, { marcacao: TEMPO.marcacao });
     reconciliar(box, itens);
-    pintarGolpesNoAr(emPe, tick);
+    // A FAIXA DOS GOLPES NO AR usa um elenco maior que `emPe`: quem caiu DENTRO
+    // deste Tick continua com o cartão do golpe devido (Regra do Simultâneo,
+    // conserto de 27/09/2026), mesmo já fora da fila de iniciativa.
+    pintarGolpesNoAr(fila.filter((c: any) => !foraDaFila(c) || DE_PE_AO_ABRIR.has(c.id)), tick);
     pintarRotas();
     atualizarSetasDaFila();
     if ((el('ordem-dlg') as HTMLDialogElement).open) pintarOrdem();
@@ -5889,12 +5895,23 @@ const SETAS = [
    * responde os dois sem guardar nada no banco.
    */
   let CAIDOS_AO_ABRIR = new Set<string>();
+  /**
+   * QUEM ESTAVA DE PÉ quando este Tick começou (Regra do Simultâneo, conserto de
+   * 27/09/2026): o par do atacante para `CAIDOS_AO_ABRIR`. Sem isto, `foraDaFila`
+   * (que também sai quando a Vida chega a zero) faz `golpeMaisCedo`/
+   * `golpeVencidoNaFaixa` deixarem de achar o golpe de quem caiu DENTRO deste
+   * Tick, e uma resolução anterior do mesmo Tick pode ter derrubado esse
+   * atacante: ele solta o golpe assim mesmo, porque estava de pé quando o
+   * Tick abriu.
+   */
+  let DE_PE_AO_ABRIR = new Set<string>();
 
   async function avancarTickSimultaneo() {
     if (instanteDeGolpe()) return;
     const T = tickSim() + 1;
     TICK_SIM = T;
     CAIDOS_AO_ABRIR = noChaoAgora();
+    DE_PE_AO_ABRIR = new Set(naFila().filter((c: any) => !foraDaFila(c)).map((c: any) => c.id));
     if (ENC?.id) {
       // A aba Combate lê o mesmo número: as duas telas contam o mesmo relógio.
       const { error } = await SB.from('encontros').update({ tick_atual: T }).eq('id', ENC.id);
@@ -10194,8 +10211,16 @@ const SETAS = [
     const qaMargemInp = el('al-qa-margem') as HTMLInputElement;
     const qaDanoInp = el('al-qa-dano') as HTMLInputElement;
     const qaA = ra?.qa, qaD = r?.qa;
-    const margemBase = (qaA?.armaBonus || 0) + (qaD?.armaduraBonus || 0);
-    const raspaoBase = Math.max(0, (qaA?.armaDano || 0) - (qaD?.armaduraReducao || 0));
+    // FONTE ÚNICA: a conta do raspão mora em `quaseAcertoDoEncontro` (`lance.ts`), e não aqui.
+    const qaEncontro = quaseAcertoDoEncontro({
+      atacante: { qaArmaBonus: qaA?.armaBonus || 0, qaArmaDano: qaA?.armaDano || 0 },
+      alvo: {
+        qaArmaduraBonus: qaD?.armaduraBonus || 0, qaArmaduraReducao: qaD?.armaduraReducao || 0,
+        centelha: r?.centelha || 0,
+      },
+    });
+    const margemBase = qaEncontro.margem;
+    const raspaoBase = qaEncontro.dano;
     qaMargemInp.value = String(margemBase);
     qaDanoInp.value = String(raspaoBase);
     const margemQA = () => Math.max(0, parseInt(qaMargemInp.value || '0', 10) || 0);
@@ -10341,6 +10366,7 @@ let roladoDano = '';
         pv: (opts.alvoDano || alvo).pv_atual ?? null, pvMax: (opts.alvoDano || alvo).pv_max ?? null,
         qaArmaduraBonus: r?.qa?.armaduraBonus ?? 0,
         qaArmaduraReducao: r?.qa?.armaduraReducao ?? 0,
+        centelha: r?.centelha || 0,
       },
       // A manobra e o índice do golpe: a rajada e a empunhadura dupla têm
       // penalidade POR GOLPE, e o `penDados` acima é a lista inteira.
@@ -10444,7 +10470,11 @@ let roladoDano = '';
       if (resvalaGate) bruto = 0;
       // E o raspão IGNORA a Absorção (capítulo XII): ele já é o que sobrou.
       const abs = veredito === 'acerto' ? Math.min(bruto, e.alvo.soak) : 0;
-      const liq = Math.max(0, bruto - abs);
+      // O ACERTO NUNCA DÓI MENOS QUE O RASPÃO do mesmo golpe (item 2c da Regra do
+      // Quase-Acerto, 27/09/2026): mesmo piso de `resolverGolpe` (`lance.ts`),
+      // repetido aqui porque esta conta é a do lance ROLADO À MÃO, e não passa
+      // pela função compartilhada.
+      const liq = veredito === 'acerto' ? Math.max(e.danoQA, bruto - abs, 0) : Math.max(0, bruto - abs);
       return {
         entrada: e,
         defesa: def2,
@@ -10457,7 +10487,11 @@ let roladoDano = '';
         absorcao: abs,
         danoLiquido: liq,
         pvAntes: e.alvo.pv,
-        pvDepois: e.alvo.pv != null ? Math.max(0, e.alvo.pv - liq) : null,
+        // VIDA NEGATIVA ATÉ O LIMITE DA MORTE (item 4): a prévia mostra o valor de
+        // verdade, sem o piso de zero (o zero é só da barra, pintado à parte).
+        pvDepois: e.alvo.pv != null
+          ? Math.max(limiteDaMorte(e.alvo.pvMax, r?.centelha ?? null) ?? -Infinity, e.alvo.pv - liq)
+          : null,
       };
     };
 
@@ -10575,12 +10609,18 @@ let roladoDano = '';
       // não apertou botão nenhum. O registro é que guarda os dois.
       const L = contaDoLance();
       const sk = L.entrada.alvo.soak;
-      const liq = Math.max(0, bruto - sk);
-      const pv = Math.max(0, (L.pvAntes ?? 0) - liq);
+      // O ACERTO NUNCA DÓI MENOS QUE O RASPÃO (item 2c da Regra do Quase-Acerto,
+      // 27/09/2026): mesmo piso de `resolverGolpe`/`contaDoLance`, repetido aqui
+      // porque esta caixa lê o campo digitado, e não o veredito de `L`.
+      const liq = Math.max(L.entrada.danoQA, bruto - sk, 0);
       // A VIDA QUE MEXE É A DE QUEM VAI LEVAR O GOLPE (`alvoDano` quando há
       // interposição, o `alvo` de sempre quando não há) — a prévia mentiria
       // por omissão se mostrasse a barra de quem não vai sangrar.
       const quemSangra = opts.alvoDano || alvo;
+      // VIDA NEGATIVA ATÉ O LIMITE DA MORTE (item 4): a caixa de detalhe mostra o
+      // valor de verdade, sem travar em zero (o zero é só da barra de Vida).
+      const limitePv = limiteDaMorte(quemSangra.pv_max, PERFIL[quemSangra.id]?.centelha ?? null) ?? -Infinity;
+      const pv = Math.max(limitePv, (L.pvAntes ?? 0) - liq);
       cx.innerHTML = `Absorção <b>${sk}</b> · passa <b>${liq}</b>`
         + (quemSangra.pv_max ? ` · Vida ficaria <b>${pv}/${quemSangra.pv_max}</b> (${tierDe(pv, quemSangra.pv_max).estado})` : '');
     };
@@ -11208,7 +11248,11 @@ let roladoDano = '';
       Promise<{ erro?: string; inverso: any; estado: string }> {
     if (MESTRE) {
       const antes = c.pv_atual ?? 0;
-      const pv = Math.max(0, antes - quanto);
+      // VIDA NEGATIVA ATÉ O LIMITE DA MORTE (item 4, M-21): antes travava em
+      // zero. A barra continua mostrando 0 (`pintarVida`/a régua de exibição);
+      // só o painel de detalhes e o registro veem o valor de verdade.
+      const limite = limiteDaMorte(c.pv_max, PERFIL[c.id]?.centelha ?? null) ?? -Infinity;
+      const pv = Math.max(limite, antes - quanto);
       const { error } = await gravarPeca(c.id, { pv_atual: pv });
       if (error) return { erro: error.message, inverso: null, estado: '' };
       c.pv_atual = pv;
@@ -11221,7 +11265,11 @@ let roladoDano = '';
     if (error) return { erro: error.message, inverso: null, estado: '' };
     // Quando a Vida é conhecida (a peça é dele), acompanha aqui e já dá o número
     // por conferido, senão a peça ganharia dois: este e o da diferença.
-    if (c.pv_atual != null) { c.pv_atual = Math.max(0, c.pv_atual - quanto); VIDA_VISTA[c.id] = c.pv_atual; }
+    if (c.pv_atual != null) {
+      const limite = limiteDaMorte(c.pv_max, PERFIL[c.id]?.centelha ?? null) ?? -Infinity;
+      c.pv_atual = Math.max(limite, c.pv_atual - quanto);
+      VIDA_VISTA[c.id] = c.pv_atual;
+    }
     flutuar(c.id, `−${quanto}`, 'dano');
     return { inverso: { acao: 'vida-menos', cid: c.id, quanto }, estado: '' };
   }

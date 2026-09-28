@@ -171,11 +171,15 @@ export function batalha(L, cena, log, opts = {}) {
     // ---- fase 4 · a resolução ----
     // Na mesa isto é o mestre clicando nos cartões vencidos, e o botão do ⏭ só
     // volta quando o último cai. A ordem é a da fila, que é a da faixa.
-    for (const c of dePe()) {
-      // QUEM CAIU DENTRO DESTE TICK NÃO SOLTA MAIS O GOLPE: o `devido` da mesa
-      // pula quem está no chão, e uma resolução anterior do mesmo Tick pode ter
-      // derrubado este atacante.
-      if (!vivo(c)) continue;
+    //
+    // QUEM ESTAVA DE PÉ NA ABERTURA DO TICK SOLTA TODOS OS GOLPES DAQUELE TICK,
+    // mesmo que caia nele (Regra do Simultâneo, conserto de 27/09/2026: o mesmo
+    // retrato que já valia para o ALVO desde 03/09 agora vale para o ATACANTE).
+    // Por isso o laço percorre `emPe`, o retrato da abertura (fase 2), e não
+    // `dePe()` de novo: uma resolução anterior do mesmo Tick pode ter derrubado
+    // este atacante, e ele solta o golpe assim mesmo. ANTES disto (`dePe()` +
+    // `if (!vivo(c)) continue;`) era decisão deliberada e o autor a reverteu.
+    for (const c of emPe) {
       const devidos = L.golpesNoAr(c.acao).filter((g) => g <= T);
       for (const tg of devidos) resolver(L, c, pecas, log, T, tg, opts, caidosAoAbrir);
     }
@@ -397,15 +401,19 @@ function resolverContra(L, c, alvo, log, T, tg, opts, aid, tiraDaAgenda) {
       defesaPerdida: dv.total, soak: alvo.soak[c.tipoDano] ?? 0,
       pv: alvo.pv, pvMax: alvo.pvMax,
       qaArmaduraBonus: alvo.qa.armaduraBonus, qaArmaduraReducao: alvo.qa.armaduraReducao,
+      centelha: alvo.centelha || 0,
     },
     manobra: (an?.golpes > 1 ? c.manobra : 'simples'),
     golpeIndice: idx,
     golpeDaAgenda: idx, penDadosUsado: idx, tickDoGolpe: tg, classeArma: c.classe,
     distanciaHex: L.distanciaHex(c.pos, alvo.pos), tipoDano: c.tipoDano,
     modManual: 0,
-    margemQA: c.qa.armaBonus + alvo.qa.armaduraBonus,
-    danoQA: Math.max(0, c.qa.armaDano - alvo.qa.armaduraReducao),
+    margemQA: 0, danoQA: 0,
   };
+  // FONTE ÚNICA: a conta do raspão mora em `quaseAcertoDoEncontro` (`lance.ts`), não aqui.
+  const qaEncontro = L.quaseAcertoDoEncontro(entrada);
+  entrada.margemQA = qaEncontro.margem;
+  entrada.danoQA = qaEncontro.dano;
 
   // OS DADOS SAEM ANTES DO VEREDITO, e isso não é estilo: a mesa, com a rolagem
   // no site, chama `rolarAcerto(); rolarDano();` na abertura da folha, ou seja
@@ -438,7 +446,10 @@ function resolverContra(L, c, alvo, log, T, tg, opts, aid, tiraDaAgenda) {
     opts.lance({ t: T, de: c.id, para: alvo.id, entrada, saida: s, rolados: fonte.rolados });
   }
 
-  alvo.pv = Math.max(0, alvo.pv - s.danoLiquido);
+  // VIDA NEGATIVA ATÉ O LIMITE DA MORTE (M-21, Regra do Quase-Acerto, conserto de 27/09/2026):
+  // antes travava em zero; agora desce até `limiteDaMorte`, e só ali para.
+  const limite = L.limiteDaMorte(alvo.pvMax, alvo.centelha) ?? -Infinity;
+  alvo.pv = Math.max(limite, alvo.pv - s.danoLiquido);
   log.dano(c, alvo, T, { aid, ...s });
   if (alvo.pv <= 0) log.caiu(alvo, T);
 }

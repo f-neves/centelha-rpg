@@ -18,7 +18,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   `arena_log` como tabela, uma linha por entrada, e o desfazer virando um `delete`.
 - [ ] **I5 · [FAZER] Um editor de cenário no Grid.** Hoje o mestre só põe peças: o tabuleiro não
   tem parede, terreno difícil nem item no chão, e o único veto de passo é casa ocupada
-  (`ocupadoPor`, `grid.astro:7433`). Decidido em 02/09/2026, ao desenhar o harness de simulação
+  (`ocupadoPor`, `grid.astro:7450`). Decidido em 02/09/2026, ao desenhar o harness de simulação
   (`docs/simulacao/02-projeto-harness.md` §0.4 P2): a **parede entra como funcionalidade**, e o
   encaixe já existe, porque `caminharHex` recebe um veto arbitrário (`hex.ts:131`). O terreno
   difícil tem gancho pronto e não usado: a condição `terreno-dificil` existe em `condicoes.json`
@@ -37,6 +37,12 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   desenho troca o nó e transição de CSS não roda em elemento recém-nascido. O caminho é o mesmo do
   `deslizarTokens`: mexer no `stroke-dashoffset` do nó que já está lá.
   **Renumerado na rodada 96:** a sigla I5 era também a do editor de cenário (acima), que é o citado de fora (`02-projeto-harness.md` §0.4 P2) e ficou com ela. O conteúdo deste item não mudou, e nenhum documento citava este pela sigla velha.
+- [ ] **I15 · [DECIDIR] Sugestão de interface: mostrar juntos os resultados de todos os golpes de
+  um Tick.** Registrado pelo autor em 27/09/2026 (item 7f do despacho da Regra do Quase-Acerto),
+  sem resolver. Hoje a faixa dos golpes no ar (`pintarGolpesNoAr`, `grid.astro`) mostra um cartão
+  por golpe, resolvido um de cada vez pelo mestre; a sugestão é uma tela que reúna o resultado dos
+  vários golpes do MESMO Tick (o "simultâneo" de verdade) numa vista só, em vez de o mestre clicar
+  cartão por cartão. Sem desenho de tela ainda: só a pergunta registrada.
 - [ ] **I6 · [FAZER] A presença não distingue quem está olhando.** Ela conta abas abertas, e uma
   aba em segundo plano conta igual. O navegador estrangula os timers da aba escondida, então ela
   também **atrasa a própria campainha** quando é ela que escreve (não incomoda na prática: quem

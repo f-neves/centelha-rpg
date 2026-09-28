@@ -263,11 +263,17 @@ ok(p1.some((x) => x.rolls.acerto.length > 0) && p1.some((x) => x.rolls.dano.leng
   + ` acertos com dado, ${p1.filter((x) => x.rolls.dano.length).length} danos com dado)`);
 
 // ---- 5.2 · Limites, checáveis sem oráculo nenhum ----
+//
+// O PISO DO ITEM 2C (27/09/2026, Regra do Quase-Acerto): o acerto nunca dói
+// menos que o raspão do mesmo golpe. Por isso o líquido não é mais SEMPRE
+// `bruto - absorção`; é `max(danoQA, bruto - absorção)`, e o limite abaixo
+// precisa saber disso para não acusar o piso como se fosse defeito.
 const foraDoLimite = [];
-for (const x of p1) {
+for (let i = 0; i < p1.length; i++) {
+  const x = p1[i]; const e = lances[i].entrada;
   if (x.absorcao > x.danoBruto) foraDoLimite.push(`absorcao ${x.absorcao} > danoBruto ${x.danoBruto}`);
-  if (x.veredito === 'acerto' && x.danoLiquido !== x.danoBruto - x.absorcao) {
-    foraDoLimite.push(`liquido ${x.danoLiquido} != bruto ${x.danoBruto} - absorcao ${x.absorcao}`);
+  if (x.veredito === 'acerto' && x.danoLiquido !== Math.max(e.danoQA, x.danoBruto - x.absorcao, 0)) {
+    foraDoLimite.push(`liquido ${x.danoLiquido} != max(danoQA ${e.danoQA}, bruto ${x.danoBruto} - absorcao ${x.absorcao}, 0)`);
   }
   if (x.pvAntes != null && x.pvDepois !== Math.max(0, x.pvAntes - x.danoLiquido)) {
     foraDoLimite.push(`pvDepois ${x.pvDepois} != max(0, ${x.pvAntes} - ${x.danoLiquido})`);
@@ -457,16 +463,67 @@ ok(Number.isFinite(r3.total), 'um golpeIndice além do fim de penDados cai no ze
 }
 
 // quaseAcertoDoEncontro, que é função exportada e precisa de execução.
+//
+// A FIXTURE NÃO TEM `alvo.centelha` (ela foi colhida antes da Regra do
+// Quase-Acerto de 27/09/2026): os lances gravados tratam o alvo como
+// Centelha 0 para esta asserção geral, e os itens 2a/2b abaixo são
+// sintéticos, escritos à mão, porque não há como pedir esse eixo à fixture.
 const comCouro = lances.find((l) => l.entrada.alvo.qaArmaduraBonus !== 0
   && l.entrada.alvo.qaArmaduraReducao !== 0);
 ok(!!comCouro, 'a fixture tem lance com armadura vestida, com os dois números');
-const qa = L.quaseAcertoDoEncontro(comCouro.entrada);
+const qa = L.quaseAcertoDoEncontro({ ...comCouro.entrada, alvo: { ...comCouro.entrada.alvo, centelha: 0 } });
 ok(qa.margem === comCouro.entrada.atacante.qaArmaBonus + comCouro.entrada.alvo.qaArmaduraBonus
   && qa.dano === Math.max(0, comCouro.entrada.atacante.qaArmaDano - comCouro.entrada.alvo.qaArmaduraReducao),
   `o Quase-Acerto do ENCONTRO soma arma e armadura (margem ${qa.margem}, raspão ${qa.dano})`);
 ok(L.quaseAcertoDoEncontro({
-  atacante: { qaArmaBonus: 1, qaArmaDano: 2 }, alvo: { qaArmaduraBonus: 0, qaArmaduraReducao: 9 },
+  atacante: { qaArmaBonus: 1, qaArmaDano: 2 }, alvo: { qaArmaduraBonus: 0, qaArmaduraReducao: 9, centelha: 0 },
 }).dano === 0, 'e a Redução não faz o raspão ficar negativo');
+
+// ============================================================ 6 · a Regra do Quase-Acerto (27/09/2026)
+//
+// SINTÉTICOS, escritos à mão: a fixture (colhida em 22/09) não testemunha
+// nenhum dos três itens abaixo, porque nasceu antes da regra existir. São a
+// COBERTURA que a decisão de 27/09/2026 pediu no lugar de recolher a mesa de
+// novo (opção 2 da proposta de versionamento).
+console.log('\n· a Regra do Quase-Acerto, sintética (a fixture não testemunha isto)');
+
+// 2a · a Centelha do alvo desconta o raspão, ponto a ponto, até zero.
+{
+  const semCentelha = L.quaseAcertoDoEncontro({
+    atacante: { qaArmaBonus: 2, qaArmaDano: 4 }, alvo: { qaArmaduraBonus: 0, qaArmaduraReducao: 0, centelha: 0 },
+  });
+  ok(semCentelha.dano === 4, `sem Centelha, o raspão passa inteiro (${semCentelha.dano})`);
+  const c2 = L.quaseAcertoDoEncontro({
+    atacante: { qaArmaBonus: 2, qaArmaDano: 4 }, alvo: { qaArmaduraBonus: 0, qaArmaduraReducao: 0, centelha: 2 },
+  });
+  ok(c2.dano === 2, `Centelha 2 desconta 2 do raspão (${c2.dano})`);
+  const c9 = L.quaseAcertoDoEncontro({
+    atacante: { qaArmaBonus: 2, qaArmaDano: 4 }, alvo: { qaArmaduraBonus: 0, qaArmaduraReducao: 0, centelha: 9 },
+  });
+  ok(c9.dano === 0, `e a Centelha não faz o raspão ficar negativo (Centelha 9 num raspão de 4: ${c9.dano})`);
+}
+
+// 2b · a armadura leve tem Redução 1 (era 0), e soma com a Centelha do alvo.
+{
+  const leve = L.quaseAcertoDoEncontro({
+    atacante: { qaArmaBonus: 2, qaArmaDano: 4 }, alvo: { qaArmaduraBonus: 1, qaArmaduraReducao: 1, centelha: 1 },
+  });
+  ok(leve.dano === 2, `a leve reduz 1 e a Centelha 1 reduz outro 1 (4 − 1 − 1 = ${leve.dano})`);
+}
+
+// 2c · o acerto nunca dói menos que o raspão do mesmo golpe, mesmo com Absorção
+// alta o bastante para zerar o dano rolado.
+{
+  const entrada = {
+    atacante: { ataque: '1d6', dano: '1d6', ajusteFlat: 0, ajusteDados: 0, penDados: [0], qaArmaBonus: 2, qaArmaDano: 5 },
+    alvo: { defesaBase: 1, ferimento: 0, condicoesDefesa: 0, defesaPerdida: 0, soak: 99, pv: 40, pvMax: 40, qaArmaduraBonus: 0, qaArmaduraReducao: 0, centelha: 0 },
+    golpeIndice: 0, margemQA: 2, danoQA: 5, tipoDano: 'corte', modManual: 0,
+  };
+  const s = L.resolverGolpe(entrada, L.fonteFixa({ acerto: [6], dano: [1] }));
+  ok(s.veredito === 'acerto', 'o golpe de prova acerta');
+  ok(s.danoBruto === 1 && s.absorcao === 1, `a Absorção 99 come o dado rolado inteiro (bruto ${s.danoBruto}, absorção ${s.absorcao})`);
+  ok(s.danoLiquido === 5, `mas o líquido vale o raspão da arma (danoQA 5), não zero (${s.danoLiquido})`);
+}
 
 if (divergencias.length) {
   console.log('\n  as primeiras divergências (fonte fixa):');

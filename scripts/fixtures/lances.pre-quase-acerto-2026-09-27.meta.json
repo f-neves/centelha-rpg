@@ -3,13 +3,6 @@
   "sujo": true,
   "dados_hash": "98f34b6ade6e64dc",
   "iso": "2026-09-22T04:56:45.668Z",
-  "rederivado": {
-    "quando": "2026-09-27",
-    "motivo": "Regra do Quase-Acerto (item 2, docs/simulacao/caixa/regra-quase-acerto-bancada-despacho.md). Decisão do autor (27/09/2026): opção 2 da proposta de versionamento em regra-quase-acerto-bancada-executora.md.",
-    "oQueFoiTocado": "Só danoLiquido e pvDepois, recalculados com o resolverGolpe NOVO (o piso do item 2c) a partir do entrada/sorteio JÁ GRAVADOS. Defesa, veredito, dados rolados e todo o resto continuam evidência real da mesa, sem regenerar. Lances com o gate de Perfuração resvalado (perfil.gate, tipoDano perfurante, danoBruto 0) foram poupados, porque o gate zera o dano por FORA de resolverGolpe.",
-    "naoTestemunhado": "Este re-derivação só prova o item 2c (o piso). Os itens 2a (Centelha do alvo) e 2b (Redução da leve) não aparecem aqui porque a fixture não guarda a Centelha do alvo nem testemunha a Redução da armadura leve: cobertos por testes sintéticos em test-lance.mjs, seção 6.",
-    "historico": "scripts/fixtures/lances.pre-quase-acerto-2026-09-27.jsonl (e o .meta.json irmão), a fixture ORIGINAL intacta, para o antes/depois continuar verificável quando a opção 1 (recoleta de verdade, depois que a mesa rodar com a regra nova) acontecer."
-  },
   "semente": 20260902,
   "perfil": {
     "margem": false,

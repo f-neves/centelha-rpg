@@ -96,6 +96,69 @@ mas não apliquei nenhuma das três: aguardando decisão antes de commitar `lanc
 `regras.json`, `grid.astro`, `motor.mjs`, `elenco.mjs`, `calibrar.mjs` e `lib-ponte.mjs` (as
 sete mudanças do item 2 ficam juntas, porque a regra só faz sentido como conjunto).
 
+### Item 2 · DECISÃO DO AUTOR e execução
+
+Decisão: opção 2 agora (re-derivar), opção 1 depois (recoleta de verdade quando a mesa rodar com
+a regra nova), com duas condições. As duas cumpridas:
+
+1. **Testes sintéticos para 2a e 2b** em `test-lance.mjs`, seção nova "6 · a Regra do Quase-Acerto
+   (27/09/2026)": Centelha 0/2/9 contra um raspão de 4 (passa inteiro, desconta 2, não fica
+   negativo), leve + Centelha somando os dois descontos, e um golpe de prova para 2c (Absorção 99
+   comendo o dado inteiro, e o líquido ainda vale o raspão da arma, não zero). As duas asserções
+   antigas de `quaseAcertoDoEncontro` (linhas ~465-475) ganharam `centelha: 0` explícito para não
+   virar `NaN` (a fixture não carrega esse campo).
+2. **Fixture original preservada intacta**: `scripts/fixtures/lances.pre-quase-acerto-2026-09-27.jsonl`
+   e o `.meta.json` irmão, cópia byte a byte de antes da re-derivação. `lances.meta.json` ganhou
+   um bloco `rederivado` documentando quando, por quê, o que foi tocado (só `danoLiquido` e
+   `pvDepois`), o que NÃO foi testemunhado (2a/2b, cobertos pelos sintéticos acima) e onde está o
+   histórico.
+
+Execução: script descartável (`scripts/sim/_tmp-reder.mjs`, rodado e apagado) recalcula
+`danoLiquido`/`pvDepois` com o `resolverGolpe` novo a partir do `entrada`/`sorteio` já gravados,
+**poupando os lances em que o Gate de Perfuração resvalou** (o mesmo predicado `gateResvalou` de
+`test-lance.mjs`: o gate zera o dano por FORA de `resolverGolpe`, e re-derivar esses lances com a
+função pura mentiria sobre o que a mesa faz de verdade). Primeira tentativa, sem essa exclusão,
+tinha re-derivado 618 lances; com o predicado certo, **390 lances mudaram, o mesmo número exato
+que `test-lance.mjs` já reportava antes desta rodada**. `node scripts/test-lance.mjs` agora fecha
+com **0 divergências e 56 asserções**, incluindo a atualização da seção 5.2 (o limite
+`líquido === bruto − absorção` virou `líquido === max(danoQA, bruto − absorção, 0)`, porque o
+piso do item 2c mudou esse invariante de propósito, não por defeito).
+
+## Item 4b (a migração 40) · FEITO, MAS NÃO APLICADA NO BANCO
+
+O autor decidiu que o sexto ponto de clamp (`migracao-22.sql:146`, a RPC `jogador_dano`) NÃO é
+pendência: é o valor gravado da Vida dos jogadores na mesa real, então sem ele o item 4 não vale
+fora do simulador. `supabase/migracao-40.sql`, novo, substitui o `greatest(0, ...)` pela mesma
+conta de `limiteDaMorte()` (`src/lib/calc.ts:69-79`), replicada em PL/pgSQL.
+
+**O obstáculo real, confirmado**: `combatentes` não tem coluna `centelha` (conferido em todas as
+migrações, `migracao-2.sql` até a `39`), e a Centelha de cada peça hoje só existe calculada no
+CLIENTE. A migração aplica o limite com a Centelha DESCONHECIDA (o mesmo caso que
+`limiteDaMorte()` já trata em TypeScript: `centelha == null` cai no lado mais generoso,
+`comCentelha`, arredondando para cima): não é um contorno inventado, é o comportamento que a
+função já define para "não sei a Centelha", e já é uma melhoria real sobre o `greatest(0, ...)`
+de hoje.
+
+**As duas opções para o arredondamento exato, relatadas no comentário da própria migração, NENHUMA
+aplicada**:
+1. Coluna `centelha` nova em `combatentes`, populada na entrada em jogo. Preserva a razão de ser
+   da RPC (o dano é relativo porque o jogador não pode saber a Vida do inimigo; a Centelha dele
+   mereceria a mesma proteção).
+2. Passar a Centelha como parâmetro extra de `jogador_dano`. Mais barato, mas **tem um problema de
+   privacidade que vale a pena pesar**: a RPC é relativa exatamente porque a visão do jogador
+   esconde a Vida do inimigo, e hoje, pela mesma visão, um jogador atacando um inimigo não tem a
+   Centelha dele carregada no próprio navegador (`PERFIL[alvo.id]` só existe para fichas que ele
+   pode ler). Passar a Centelha por parâmetro decidiria, de carona, que ela deixa de ser
+   informação escondida.
+
+**O que foi testado**: a fórmula em si, localmente, contra `limiteDaMorte(pvMax, null)` de verdade
+(`scripts/sim/lib-ponte.mjs`, que já exporta `limiteDaMorte`), para os PV máximos 1, 5, 20, 34, 35,
+40 e 41: os sete bateram exatamente com `-Math.ceil(pvMax/2)`, a mesma conta que a migração faz em
+SQL. **O que NÃO foi testado**: a migração rodando no banco de produção (sem acesso de escrita
+daqui). Os passos exatos (SQL Editor, o `create or replace`, a conferência antes/depois com uma
+peça de teste, o registro em `Pendencias.md` como as migrações 29/30) estão no final do próprio
+arquivo `migracao-40.sql`, para o autor rodar à mão.
+
 ### Item 2 · achados a mais (ripple), todos corrigidos
 
 - **`quase-acerto.ts` `quaseAcerto()` é uma QUARTA implementação** da conta do raspão (a

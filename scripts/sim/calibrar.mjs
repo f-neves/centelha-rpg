@@ -7,6 +7,12 @@
 // O script não altera regra nem catálogo. As alavancas são modificadores da
 // peça ou wrappers locais das funções entregues ao motor.
 //
+// A REGRA DO QUASE-ACERTO (27/09/2026) já mora em `lance.ts` (o piso do item 2c
+// é incondicional em `resolverGolpe`), e por isso os cenários locais V1/V2/V3
+// que este arquivo carregava (comparação de variantes de Absorção que nunca
+// foram adotadas) saíram: só existe a regra viva agora, e uma célula por
+// combinação, não seis.
+//
 // Uso:
 //   node scripts/sim/calibrar.mjs --n 1000
 //   node scripts/sim/calibrar.mjs --teste
@@ -33,17 +39,9 @@ const ARMADURAS = ['nenhuma', 'gambeson', 'malha'];
 const SOMAS = [6, 8, 12];
 const CENTELHAS = [0, 1, 2, 3, 4, 5, 6];
 const CS = [1, 3, 5];
-const CENARIOS = [
-  { id: 'atual', nome: 'regra atual', v1: false, absorcao: 'atual' },
-  { id: 'v1', nome: 'V1', v1: true, absorcao: 'atual' },
-  { id: 'v2', nome: 'V2', v1: false, absorcao: 'impacto' },
-  { id: 'v3', nome: 'V3', v1: false, absorcao: 'meia' },
-  { id: 'v1+v2', nome: 'V1+V2', v1: true, absorcao: 'impacto' },
-  { id: 'v1+v3', nome: 'V1+V3', v1: true, absorcao: 'meia' },
-];
 const ALAVANCAS = [
   'ataque+1', 'defesa+1', 'dano+1', 'dano+1d6', 'absorcao+1',
-  'pv+1', 'pv+5', 'preparo-1', 'recuperacao-1', 'habilidade+1', 'atributo+1',
+  'pv+1', 'pv+5', 'preparo-1', 'recuperacao-1', 'habilidade+1',
 ];
 const BASE_PV = REGRAS.derivados.pv.base + 3 * REGRAS.derivados.pv.vigorMult;
 
@@ -75,10 +73,8 @@ function fichaDe({ soma, centelha, arma, armadura, alavanca = null }) {
   f.attrs = { ...f.attrs, forca: atributo, destreza: atributo, vigor: 3 };
   f.skills = { ...f.skills, armas: habilidade, esquiva: habilidade, atletismo: habilidade };
   if (alavanca === 'habilidade+1') f.skills.armas += 1;
-  if (alavanca === 'atributo+1') {
-    if (arma === 'montante') f.attrs.forca += 1;
-    else f.attrs.destreza += 1;
-  }
+  if (alavanca === 'atributo+1-forca-montante') f.attrs.forca += 1;
+  if (alavanca === 'atributo+1-destreza-espada') f.attrs.destreza += 1;
   // A adaga apenas ocupa a segunda mão para a espada longa usar a fórmula de
   // uma mão; a política simples do motor nunca declara ataque com ela.
   f.conjuntos = [{
@@ -90,6 +86,26 @@ function fichaDe({ soma, centelha, arma, armadura, alavanca = null }) {
   return f;
 }
 
+/**
+ * A FICHA DE BRIGA (desarmado), para a alavanca nova do item 6c. `armas.json`
+ * lista `desarmado` com `pericia: 'briga'` (`src/lib/combate-resumo.ts:85` lê
+ * `skills[w.pericia] || skills2[w.pericia]`), e "Briga" não é uma das 12
+ * primárias da ficha de fixação nem está no catálogo de secundárias: é lida
+ * pela MESMA chave que o bestiário já usa para bicho desarmado. Somar aqui é
+ * só isso: `skills2.briga`, com a mesma divisão Atributo/Habilidade da soma.
+ */
+function fichaBrigaDe({ soma, centelha }) {
+  const { atributo, habilidade } = splitSoma(soma);
+  const f = copiar(BASE);
+  f.centelha = centelha;
+  f.attrs = { ...f.attrs, forca: atributo, destreza: atributo, vigor: 3 };
+  f.skills = { ...f.skills, esquiva: habilidade, atletismo: habilidade };
+  f.skills2 = { ...f.skills2, briga: habilidade };
+  f.conjuntos = [{ ativo: true, habil: { ref: 'a:desarmado' }, inabil: { ref: 'nada' } }];
+  f.equip = { armaduras: [] };
+  return f;
+}
+
 function perfilDe(opts) {
   const r = L0.resumoCombatePC(fichaDe(opts));
   const arma = L0.armaDoCatalogo(r.arma);
@@ -98,13 +114,7 @@ function perfilDe(opts) {
   const al = opts.alavanca;
   const pvExtra = al === 'pv+5' ? 5 : al === 'pv+1' ? 1 : 0;
   const soakExtra = al === 'absorcao+1' ? 1 : 0;
-  const cenario = opts.cenario || CENARIOS[0];
-  const soak = Object.fromEntries(Object.entries(r.soak).map(([k, v]) => {
-    let base = v;
-    if (cenario.absorcao === 'impacto' && k !== 'impacto') base -= opts.centelha;
-    if (cenario.absorcao === 'meia') base += Math.floor(opts.centelha / 2) - opts.centelha;
-    return [k, Math.max(0, base + soakExtra)];
-  }));
+  const soak = Object.fromEntries(Object.entries(r.soak).map(([k, v]) => [k, Math.max(0, v + soakExtra)]));
   return {
     nome: `S${opts.soma} C${opts.centelha}`,
     arma: r.arma, classe, velocidade,
@@ -122,12 +132,30 @@ function perfilDe(opts) {
     iniciativaBase: 6 + (r.atributos.raciocinio || 0),
     raciocinio: r.atributos.raciocinio || 0,
     qa: r.qa,
+    centelha: opts.centelha,
     alavanca: al,
-    cenario,
   };
 }
 
-function libDaBancada({ pressaoCap = null, cenario = CENARIOS[0] } = {}) {
+function perfilBrigaDe(opts) {
+  const r = L0.resumoCombatePC(fichaBrigaDe(opts));
+  const classe = L0.classeDeTempo(r.arma, null, null);
+  const velocidade = L0.velocidadeDaArma(r.arma, 5);
+  return {
+    nome: `Briga S${opts.soma} C${opts.centelha}`,
+    arma: r.arma, classe, velocidade,
+    ataque: r.ataque, dano: r.dano,
+    tipoDano: tipoDaExpressao(r.dano) || 'impacto',
+    defesa: r.defesa, pvMax: BASE_PV,
+    soak: r.soak, passo: r.passo,
+    alcanceHex: 1,
+    iniciativaBase: 6 + (r.atributos.raciocinio || 0),
+    raciocinio: r.atributos.raciocinio || 0,
+    qa: r.qa, centelha: opts.centelha, alavanca: null,
+  };
+}
+
+function libDaBancada({ pressaoCap = null } = {}) {
   return {
     ...L0,
     decisaoAutomatica: (eu, inimigos, distancia, opts) => L0.decisaoAutomatica(
@@ -137,16 +165,6 @@ function libDaBancada({ pressaoCap = null, cenario = CENARIOS[0] } = {}) {
       if (pressaoCap == null) return d;
       const pressao = Math.max(d.pressao, -Math.abs(pressaoCap));
       return { ...d, pressao, total: d.acao + pressao };
-    },
-    resolverGolpe: (entrada, fonte) => {
-      const s = L0.resolverGolpe(entrada, fonte);
-      if (!cenario.v1 || s.veredito !== 'acerto') return s;
-      const danoLiquido = Math.max(s.danoLiquido, entrada.danoQA);
-      return {
-        ...s,
-        danoLiquido,
-        pvDepois: entrada.alvo.pv == null ? null : Math.max(0, entrada.alvo.pv - danoLiquido),
-      };
     },
   };
 }
@@ -160,6 +178,20 @@ function ajustarAnatomia(c, a) {
     ...a, recuperacao: a.recuperacao - 1, ciclo: Math.max(1, a.ciclo - 1),
   };
   return a;
+}
+
+/**
+ * O CICLO DE UM ATAQUE SIMPLES, em Ticks (Preparo + Golpe + Recuperação).
+ *
+ * É o denominador da força por Tick (item 6b): duas peças podem precisar do
+ * mesmo número de golpes para derrubar uma a outra e ainda assim uma ser mais
+ * rápida na vida real, porque o montante demora mais Ticks por golpe que a
+ * espada longa. Sem isto, "força relativa" só compara DANO POR TENTATIVA, e
+ * tentativa não é tempo.
+ */
+function cicloDaPeca(p) {
+  const a = L0.anatomia({ classe: p.classe, velocidade: p.velocidade, sistema: 'simultaneo', manobra: 'simples', golpes: 1 });
+  return a.ciclo;
 }
 
 function cenaDe(A, B, { nB = 1, semente = 1 } = {}) {
@@ -197,11 +229,11 @@ function logCalibracao() {
   };
 }
 
-function lutaFiel(A, B, { nB = 1, pressaoCap = null, seed = 1, cenario = CENARIOS[0] } = {}) {
+function lutaFiel(A, B, { nB = 1, pressaoCap = null, seed = 1 } = {}) {
   const cena = cenaDe(A, B, { nB, semente: seed });
   const log = logCalibracao();
   const perdas = [];
-  const L = libDaBancada({ pressaoCap, cenario });
+  const L = libDaBancada({ pressaoCap });
   L.semear(L.semeadoDe(seed));
   const res = batalha(L, cena, log, {
     ateCair: true, teto: 1000, ajustarAnatomia,
@@ -269,6 +301,13 @@ function juntarDirecao(a, b, pvAlvo) {
   return { total, n, dano, golpes: dano > 0 ? pvAlvo / dano : Infinity };
 }
 
+/** golpes → Ticks: divide o dano por tentativa pelo ciclo do atacante, em Ticks. */
+const golpesParaTicks = (dir, cicloTicks) => dir.dano > 0 ? dir.golpes * cicloTicks : Infinity;
+
+const relForca = (numGolpes, denGolpes) =>
+  Number.isFinite(numGolpes) && Number.isFinite(denGolpes) ? numGolpes / denGolpes
+    : denGolpes < numGolpes ? Infinity : denGolpes > numGolpes ? 0 : null;
+
 function rodarEspelho(conf, reps = N) {
   const ida = rodarFiel(conf, reps);
   const volta = rodarFiel({ ...conf, A: conf.B, B: conf.A }, reps);
@@ -278,14 +317,23 @@ function rodarEspelho(conf, reps = N) {
   const ic = wilson(vitoriasComoA + vitoriasComoB, resolvidas);
   const dirA = juntarDirecao(ida.dirA, volta.dirB, conf.B.pvMax);
   const dirB = juntarDirecao(ida.dirB, volta.dirA, conf.A.pvMax);
-  const forca = Number.isFinite(dirA.golpes) && Number.isFinite(dirB.golpes)
-    ? dirB.golpes / dirA.golpes
-    : dirA.golpes < dirB.golpes ? Infinity : dirA.golpes > dirB.golpes ? 0 : null;
+  // FORÇA POR TENTATIVA (a métrica antiga, golpes necessários) e FORÇA POR
+  // TICK (item 6b, a métrica principal agora): as duas convivem porque
+  // discordam justamente quando o ciclo das duas armas difere (a pesada bate
+  // mais forte por golpe, mas gasta mais Ticks por golpe).
+  const forca = relForca(dirB.golpes, dirA.golpes);
+  const cicloA = cicloDaPeca(conf.A), cicloB = cicloDaPeca(conf.B);
+  const ticksA = golpesParaTicks(dirA, cicloA), ticksB = golpesParaTicks(dirB, cicloB);
+  const forcaTick = relForca(ticksB, ticksA);
+  const discorda = forca != null && forcaTick != null
+    && ((forca - 1) * (forcaTick - 1) < 0 // sinais diferentes: uma favorece A, a outra B
+      || (Number.isFinite(forca) && Number.isFinite(forcaTick) && Math.max(forca, forcaTick) > 0
+        && Math.abs(forca - forcaTick) / Math.max(forca, forcaTick, 1e-9) > .2));
   const acoes = [...ida._acoes, ...volta._acoes];
   const comoA = ida.resolvidas ? vitoriasComoA / ida.resolvidas : null;
   const comoB = volta.resolvidas ? vitoriasComoB / volta.resolvidas : null;
   return {
-    ida, volta, dirA, dirB, forca, ic,
+    ida, volta, dirA, dirB, forca, forcaTick, discorda, cicloA, cicloB, ticksA, ticksB, ic,
     vitoriaA: ic.p,
     vies: comoA == null || comoB == null ? null : comoA - comoB,
     censura: 1 - resolvidas / (ida.total + volta.total),
@@ -324,10 +372,12 @@ function golpeExato(A, B, defesaPerdida = 0) {
       // A Margem é informativa no lance atual; não acrescenta dado ao dano.
       const distD = dd;
       const denM = denD;
+      // O PISO DO ITEM 2C É INCONDICIONAL na regra viva desde 27/09/2026: o
+      // acerto nunca dói menos que o raspão do mesmo golpe.
+      const piso = Math.max(0, A.qa.armaDano - B.qa.armaduraReducao);
       for (let d = 0; d < distD.length; d++) {
         const normal = Math.max(0, d + da.flat - (B.soak[A.tipoDano] || 0));
-        const piso = Math.max(0, A.qa.armaDano - B.qa.armaduraReducao);
-        const liq = A.cenario?.v1 ? Math.max(normal, piso) : normal;
+        const liq = Math.max(normal, piso);
         dano.set(liq, (dano.get(liq) || 0) + ca * Number(distD[d]) / denM);
       }
     } else if (defesa - total + 1 <= A.qa.armaBonus + B.qa.armaduraBonus) {
@@ -369,10 +419,11 @@ const qex = (a) => [a.p10, a.p50, a.p90].map((x) => x == null ? '>200' : x).join
 const icPct = (ic) => ic.p == null ? 'n/d' : `${pct(ic.p)} [${pct(ic.lo)}; ${pct(ic.hi)}], n=${ic.n}`;
 const pp = (x) => x == null ? 'n/d' : `${(x * 100).toFixed(1).replace('.', ',')} pp`;
 const golpes = (x) => Number.isFinite(x) ? num(x) : '∞';
+const ticks = (x) => Number.isFinite(x) ? num(x, 1) : '∞';
 
 function chave(o) { return `${o.soma}/${o.centelha}/${o.arma}/${o.armadura}`; }
-function base(soma, centelha, arma = 'espada-longa', armadura = 'gambeson', alavanca = null, cenario = CENARIOS[0]) {
-  return perfilDe({ soma, centelha, arma, armadura, alavanca, cenario });
+function base(soma, centelha, arma = 'espada-longa', armadura = 'gambeson', alavanca = null) {
+  return perfilDe({ soma, centelha, arma, armadura, alavanca });
 }
 
 function testes() {
@@ -382,30 +433,31 @@ function testes() {
   const casos = [
     { nome: 'erro', a: 10, d: 5, defesaPerdida: 0, esperado: ['erro', 0] },
     { nome: 'raspão', a: B.defesa - A.qa.armaBonus - B.qa.armaduraBonus + 1, d: 5, defesaPerdida: 0,
-      esperado: ['raspao', Math.max(0, A.qa.armaDano - B.qa.armaduraReducao)] },
+      esperado: ['raspao', Math.max(0, A.qa.armaDano - B.qa.armaduraReducao - B.centelha)] },
     { nome: 'acerto', a: B.defesa + 7, d: 9, defesaPerdida: 0,
-      esperado: ['acerto', Math.max(0, 9 - B.soak.corte)] },
+      esperado: ['acerto', Math.max(Math.max(0, 9 - B.soak.corte), Math.max(0, A.qa.armaDano - B.qa.armaduraReducao - B.centelha))] },
   ];
   for (const c of casos) {
     const entrada = {
       atacante: { ataque: A.ataque, dano: A.dano, ajusteDados: 0, ajusteFlat: 0, penDados: [0], qaArmaBonus: A.qa.armaBonus, qaArmaDano: A.qa.armaDano },
-      alvo: { defesaBase: B.defesa, ferimento: 0, condicoesDefesa: 0, defesaPerdida: c.defesaPerdida, soak: B.soak.corte, pv: B.pvMax, pvMax: B.pvMax, qaArmaduraBonus: B.qa.armaduraBonus, qaArmaduraReducao: B.qa.armaduraReducao },
+      alvo: { defesaBase: B.defesa, ferimento: 0, condicoesDefesa: 0, defesaPerdida: c.defesaPerdida, soak: B.soak.corte, pv: B.pvMax, pvMax: B.pvMax, qaArmaduraBonus: B.qa.armaduraBonus, qaArmaduraReducao: B.qa.armaduraReducao, centelha: B.centelha },
       golpeIndice: 0, margemQA: A.qa.armaBonus + B.qa.armaduraBonus,
-      danoQA: Math.max(0, A.qa.armaDano - B.qa.armaduraReducao), tipoDano: 'corte', modManual: 0,
+      danoQA: Math.max(0, A.qa.armaDano - B.qa.armaduraReducao - B.centelha), tipoDano: 'corte', modManual: 0,
     };
     const out = L0.resolverGolpe(entrada, { rolar: (() => { const q = [{ total: c.a, rolls: [] }, { total: c.d, rolls: [] }]; let i = 0; return () => q[i++]; })() });
     assert(out.veredito === c.esperado[0], `${c.nome}: veredito ${out.veredito}`);
     assert(out.danoLiquido === c.esperado[1], `${c.nome}: dano ${out.danoLiquido}`);
   }
   // A camada exata e resolverGolpe concordam em dois pontos de probabilidade,
-  // pois ambos usam a mesma desigualdade, Margem, QA e Absorção.
+  // pois ambos usam a mesma desigualdade, Margem, QA e Absorção (com Centelha
+  // zero, para o exato não precisar carregar o desconto de alvo).
   for (const [s, c] of [[6, 1], [12, 5]]) {
     const X = base(s, c), ex = golpeExato(X, X, 0);
     let hit = 0, qa = 0, dano = 0; const distA = d6Dist(parseExpr(X.ataque).dados), denA = 6 ** parseExpr(X.ataque).dados;
     const at = parseExpr(X.ataque), da = parseExpr(X.dano), distD = d6Dist(da.dados), denD = 6 ** da.dados;
     for (let a = 0; a < distA.length; a++) for (let d = 0; d < distD.length; d++) {
       const w = Number(distA[a]) * Number(distD[d]) / denA / denD;
-      const entrada = { atacante: { ataque: X.ataque, dano: X.dano, ajusteDados: 0, ajusteFlat: 0, penDados: [0], qaArmaBonus: X.qa.armaBonus, qaArmaDano: X.qa.armaDano }, alvo: { defesaBase: X.defesa, ferimento: 0, condicoesDefesa: 0, defesaPerdida: 0, soak: X.soak.corte, pv: X.pvMax, pvMax: X.pvMax, qaArmaduraBonus: X.qa.armaduraBonus, qaArmaduraReducao: X.qa.armaduraReducao }, golpeIndice: 0, margemQA: X.qa.armaBonus + X.qa.armaduraBonus, danoQA: Math.max(0, X.qa.armaDano - X.qa.armaduraReducao), tipoDano: 'corte', modManual: 0 };
+      const entrada = { atacante: { ataque: X.ataque, dano: X.dano, ajusteDados: 0, ajusteFlat: 0, penDados: [0], qaArmaBonus: X.qa.armaBonus, qaArmaDano: X.qa.armaDano }, alvo: { defesaBase: X.defesa, ferimento: 0, condicoesDefesa: 0, defesaPerdida: 0, soak: X.soak.corte, pv: X.pvMax, pvMax: X.pvMax, qaArmaduraBonus: X.qa.armaduraBonus, qaArmaduraReducao: X.qa.armaduraReducao, centelha: 0 }, golpeIndice: 0, margemQA: X.qa.armaBonus + X.qa.armaduraBonus, danoQA: Math.max(0, X.qa.armaDano - X.qa.armaduraReducao), tipoDano: 'corte', modManual: 0 };
       let i = 0; const rolls = [{ total: a + at.flat, rolls: [] }, { total: d + da.flat, rolls: [] }];
       const out = L0.resolverGolpe(entrada, { rolar: () => rolls[i++] });
       if (out.veredito === 'acerto') hit += w; else if (out.veredito === 'raspao') qa += w;
@@ -414,15 +466,7 @@ function testes() {
     assert(Math.abs(hit - ex.hit) < 1e-12 && Math.abs(qa - ex.raspao) < 1e-12 && Math.abs(dano - ex.dano) < 1e-12, `concordância S${s} C${c}`);
   }
   const atual = base(8, 3, 'espada-longa', 'gambeson');
-  const v2 = base(8, 3, 'espada-longa', 'gambeson', null, CENARIOS[2]);
-  const v3 = base(8, 3, 'espada-longa', 'gambeson', null, CENARIOS[3]);
-  const v1 = base(8, 3, 'espada-longa', 'gambeson', null, CENARIOS[1]);
-  assert(v2.soak.impacto === atual.soak.impacto && v2.soak.corte === atual.soak.corte - 3,
-    'V2 deve preservar Impacto e retirar Centelha de Corte');
-  assert(v3.soak.corte === atual.soak.corte - 2,
-    'V3 em C3 deve trocar +3 por +1 de Centelha');
-  assert(golpeExato(v1, v1).dano >= golpeExato(atual, atual).dano,
-    'V1 não pode reduzir o dano esperado de um golpe');
+  assert(golpeExato(atual, atual).dano >= 0, 'a camada exata roda com a regra viva (piso incondicional)');
   const pv5 = juntarDirecao({ total: 100, n: 20 }, { total: 100, n: 20 }, 35);
   assert(pv5.golpes === 7, 'golpes direcionais devem incorporar PV do alvo');
   console.log('✓ calibrar: 3 golpes manuais e 2 pontos de concordância');
@@ -431,18 +475,18 @@ function testes() {
 if (TESTE) { testes(); process.exit(0); }
 
 const linhasB = [], bDados = [], fielCache = new Map();
-for (const cenario of CENARIOS) for (const soma of SOMAS) for (const centelha of CENTELHAS) for (const arma of ARMAS) for (const armadura of ARMADURAS) {
-  const A = base(soma, centelha, arma, armadura, null, cenario);
-  const fi = rodarEspelho({ A, B: A, cenario }, N);
-  const dado = { cenario, soma, centelha, arma, armadura, fi };
+for (const soma of SOMAS) for (const centelha of CENTELHAS) for (const arma of ARMAS) for (const armadura of ARMADURAS) {
+  const A = base(soma, centelha, arma, armadura);
+  const fi = rodarEspelho({ A, B: A }, N);
+  const dado = { soma, centelha, arma, armadura, fi };
   bDados.push(dado);
-  fielCache.set(`${cenario.id}/${chave({ soma, centelha, arma, armadura })}`, fi);
+  fielCache.set(chave({ soma, centelha, arma, armadura }), fi);
   linhasB.push([
-    cenario.nome, soma, centelha, arma, armadura, pct(fi.acerto), pct(fi.raspao),
+    soma, centelha, arma, armadura, pct(fi.acerto), pct(fi.raspao),
     qs(fi.acoes), pct(fi.censura), icPct(fi.ic), pp(fi.vies),
   ]);
-  if (soma === 12 && centelha === 6 && arma === 'montante' && armadura === 'malha') console.log(`· B concluído: ${cenario.nome}`);
 }
+console.log('· B concluído');
 
 const linhasA = [];
 for (const [nB, rotulo] of [[1, 'duelo'], [3, '1 contra 3']]) for (const soma of SOMAS) for (const c of CS) {
@@ -450,19 +494,21 @@ for (const [nB, rotulo] of [[1, 'duelo'], [3, '1 contra 3']]) for (const soma of
   const fi = rodarFiel({ A, B, nB }, N);
   linhasA.push([rotulo, soma, c, num(fi.perdas.media), `${fi.perdas.p10}/${fi.perdas.p50}/${fi.perdas.p90}`, fi.perdas.n]);
 }
+console.log('· A concluído');
 
 const linhasC = [];
-for (const cenario of CENARIOS) for (const soma of SOMAS) for (let x = 0; x < 6; x++) for (const arma of ARMAS) for (const armadura of ARMADURAS) {
-  const A = base(soma, x + 1, arma, armadura, null, cenario);
-  const B = base(soma, x, arma, armadura, null, cenario);
-  const fi = rodarEspelho({ A, B, cenario }, N);
+for (const soma of SOMAS) for (let x = 0; x < 6; x++) for (const arma of ARMAS) for (const armadura of ARMADURAS) {
+  const A = base(soma, x + 1, arma, armadura);
+  const B = base(soma, x, arma, armadura);
+  const fi = rodarEspelho({ A, B }, N);
   linhasC.push([
-    cenario.nome, soma, `${x + 1}×${x}`, arma, armadura,
+    soma, `${x + 1}×${x}`, arma, armadura,
     num(fi.dirA.dano), num(fi.dirB.dano), golpes(fi.dirA.golpes), golpes(fi.dirB.golpes),
-    num(fi.forca, 3), icPct(fi.ic), pp(fi.vies), pct(fi.censura),
+    num(fi.forca, 3), ticks(fi.ticksA), num(fi.forcaTick, 3), fi.discorda ? '⚑' : '',
+    icPct(fi.ic), pp(fi.vies), pct(fi.censura),
   ]);
-  if (soma === 12 && x === 5 && arma === 'montante' && armadura === 'malha') console.log(`· C concluído: ${cenario.nome}`);
 }
+console.log('· C concluído');
 
 const linhasD = [];
 for (const soma of SOMAS) for (let x = 0; x < 6; x++) for (const cap of [null, 4, 6]) {
@@ -470,107 +516,164 @@ for (const soma of SOMAS) for (let x = 0; x < 6; x++) for (const cap of [null, 4
   const fi = rodarFiel({ A, B, nB: 3, pressaoCap: cap }, N);
   linhasD.push([soma, `${x + 1}×3 de ${x}`, cap == null ? 'sem teto' : `−${cap}`, fi.vitoriaA == null ? 'n/d' : pct(fi.vitoriaA), pct(fi.censura)]);
 }
+console.log('· D concluído');
 
 const linhasE = [], eDados = [];
-for (const cenario of CENARIOS) for (const soma of SOMAS) for (const c of CS) {
-  const B = base(soma, c, 'espada-longa', 'gambeson', null, cenario);
+for (const soma of SOMAS) for (const c of CS) {
+  const B = base(soma, c, 'espada-longa', 'gambeson');
   for (const al of ALAVANCAS) {
-    const A = base(soma, c, 'espada-longa', 'gambeson', al, cenario);
-    const fi = rodarEspelho({ A, B, cenario }, N);
-    eDados.push({ cenario, soma, c, al, fi });
+    const A = base(soma, c, 'espada-longa', 'gambeson', al);
+    const fi = rodarEspelho({ A, B }, N);
+    eDados.push({ soma, c, al, fi });
     linhasE.push([
-      cenario.nome, soma, c, al,
+      soma, c, al,
       num(fi.dirA.dano), num(fi.dirB.dano), golpes(fi.dirA.golpes), golpes(fi.dirB.golpes),
-      num(fi.forca, 3), icPct(fi.ic), pp(fi.vies), pct(fi.censura),
+      num(fi.forca, 3), num(fi.forcaTick, 3), fi.discorda ? '⚑' : '',
+      icPct(fi.ic), pp(fi.vies), pct(fi.censura),
     ]);
   }
-  if (soma === 12 && c === 5) console.log(`· E concluído: ${cenario.nome}`);
 }
+console.log('· E concluído');
 
-const linhasF = [];
-for (const soma of SOMAS) for (let x = 0; x < 6; x++) {
-  // +2/C é injetado como +C adicional em ataque e Defesa da peça.
-  const lo = base(soma, x), hi = base(soma, x + 1);
-  lo.ataque = addExpr(lo.ataque, { flat: x }); lo.defesa += x;
-  hi.ataque = addExpr(hi.ataque, { flat: x + 1 }); hi.defesa += x + 1;
-  const fi = rodarEspelho({ A: hi, B: lo }, N);
-  linhasF.push([soma, `${x + 1}×${x}`, num(fi.forca, 3), icPct(fi.ic), pp(fi.vies), pct(fi.censura)]);
-}
-
-const divergencias = [];
+// ITEM 6C · +1 Força com montante (a par do +1 Destreza com espada, dentro de E)
+const linhasMontante = [];
 for (const soma of SOMAS) for (const c of CS) {
-  const A = base(soma, c), ex0 = acoesExatas(A, A, 0), ex4 = acoesExatas(A, A, 4);
-  const fi = fielCache.get(`atual/${chave({ soma, centelha: c, arma: 'espada-longa', armadura: 'gambeson' })}`);
-  divergencias.push([soma, c, num(ex0.dano), num(ex4.dano), num(fi.dirA.dano), `${ex0.p50 ?? '>200'}/${ex4.p50 ?? '>200'}/${fi.acoes.p50 ?? 'cens.'}`, pct(fi.censura)]);
+  const B = base(soma, c, 'montante', 'gambeson');
+  const A = base(soma, c, 'montante', 'gambeson', 'atributo+1-forca-montante');
+  const fi = rodarEspelho({ A, B }, N);
+  linhasMontante.push([
+    soma, c, num(fi.dirA.dano), num(fi.dirB.dano), golpes(fi.dirA.golpes), golpes(fi.dirB.golpes),
+    num(fi.forca, 3), num(fi.forcaTick, 3), fi.discorda ? '⚑' : '', icPct(fi.ic), pp(fi.vies), pct(fi.censura),
+  ]);
 }
+console.log('· montante (+1 Força) concluído');
 
-const linhasResumo = [];
-for (const cenario of CENARIOS) {
+// ITEM 6C · Briga (desarmado) contra Armas (espada longa, sem armadura dos dois lados)
+const linhasBriga = [];
+for (const soma of SOMAS) for (const c of CS) {
+  const armas = base(soma, c, 'espada-longa', 'nenhuma');
+  const briga = perfilBrigaDe({ soma, centelha: c });
+  const fi = rodarEspelho({ A: briga, B: armas }, N);
+  linhasBriga.push([
+    soma, c, num(fi.dirA.dano), num(fi.dirB.dano), golpes(fi.dirA.golpes), golpes(fi.dirB.golpes),
+    num(fi.forca, 3), num(fi.forcaTick, 3), fi.discorda ? '⚑' : '', icPct(fi.ic), pp(fi.vies), pct(fi.censura),
+  ]);
+}
+console.log('· Briga × Armas concluído');
+
+// ITEM 6C · Arremesso contra Atirador: NÃO RODADO.
+//
+// O motor (`scripts/sim/motor.mjs`/`cena.mjs`) não modela alcance nem posição
+// além da distância inicial fixa de `cenaDe` (peças sempre nascem adjacentes).
+// A penalidade por faixa de distância é só EXIBIDA na mesa (`faixaNaFolha`,
+// `grid.astro`, comentário "MOSTRA E NÃO APLICA": quem soma é o mestre, à
+// mão), e nenhuma das duas réguas (`decisaoAutomatica`, `resolverGolpe`)
+// aplica alcance de verdade. Rodar Arremesso × Atirador na cena adjacente de
+// hoje não exercitaria a identidade tática de nenhum dos dois (que é operar a
+// distância) e mediria só o mesmo duelo corpo a corpo com nomes diferentes de
+// arma: uma medição que mentiria por omissão. Parado aqui, como o despacho
+// pediu; ver H7 em `docs/pendencias/H-arremesso.md` para o modelo de distância
+// que falta.
+
+const linhasResumo = (() => {
   const duracao = (arma) => CENTELHAS.map((c) => {
-    const fi = bDados.find((x) => x.cenario.id === cenario.id && x.soma === 8 && x.centelha === c && x.arma === arma && x.armadura === 'gambeson').fi;
+    const fi = bDados.find((x) => x.soma === 8 && x.centelha === c && x.arma === arma && x.armadura === 'gambeson').fi;
     return `C${c} ${fi.acoes.p50 ?? 'n/c'}${fi.censura ? ` (${pct(fi.censura)} cens.)` : ''}`;
   }).join('; ');
-  const malhas = bDados.filter((x) => x.cenario.id === cenario.id && x.arma === 'espada-longa' && x.armadura === 'malha');
+  const malhas = bDados.filter((x) => x.arma === 'espada-longa' && x.armadura === 'malha');
   const pior = Math.max(...malhas.map((x) => x.fi.censura));
-  linhasResumo.push([cenario.nome, duracao('espada-longa'), duracao('montante'), pct(pior)]);
-}
+  return [[duracao('espada-longa'), duracao('montante'), pct(pior)]];
+})();
 
-const linhasMonotonia = CENARIOS.map((cenario) => {
-  const xs = eDados.filter((x) => x.cenario.id === cenario.id && x.al === 'ataque+1');
-  const ruins = xs.filter((x) => !(x.fi.forca > 1));
-  return [cenario.nome, ruins.length ? 'não' : 'sim', `${xs.length - ruins.length}/${xs.length}`, ruins.length ? ruins.map((x) => `S${x.soma} C${x.c}`).join(', ') : 'nenhuma'];
-});
+const linhasMonotonia = (() => {
+  const xs = eDados.filter((x) => x.al === 'ataque+1');
+  const ruins = xs.filter((x) => !(x.fi.forcaTick > 1));
+  return [[ruins.length ? 'não' : 'sim', `${xs.length - ruins.length}/${xs.length}`, ruins.length ? ruins.map((x) => `S${x.soma} C${x.c}`).join(', ') : 'nenhuma']];
+})();
 
 const md = `# 15 · Linha de base do combate no motor real
 
-27/09/2026 · **RASCUNHO DE MEDIÇÃO**, sem mudança de regra. Nada deste relatório vale para preço antes da conferência da Revisora. ${N} lutas em cada orientação de cada célula, semente mestre ${SEMENTE}.
+27/09/2026 · **RASCUNHO DE MEDIÇÃO**, regenerado com a Regra do Quase-Acerto (item 2) e o
+conserto do Simultâneo (item 3) já na regra viva. Nada deste relatório vale para preço antes da
+conferência da Revisora. ${N} lutas em cada orientação de cada célula, semente mestre ${SEMENTE}.
 
 ## Resumo para a Revisora
 
-A regra atual acrescenta a Centelha à Absorção de todos os tipos. V1 mantém essa Absorção, mas impede que um acerto cause menos dano que o raspão do mesmo encontro. V2 mantém a Absorção inteira da Centelha apenas contra Impacto. V3 mantém os três tipos, mas acrescenta somente 1 ponto a cada 2 de Centelha. Como V2 e V3 dão destinos alternativos à mesma parcela, não existe cenário V2+V3; as combinações válidas são V1+V2 e V1+V3.
+Os cenários locais V1/V2/V3 da rodada anterior saíram: a regra viva agora é a que estava em V1
+(o acerto nunca dói menos que o raspão do mesmo golpe), incondicional em \`resolverGolpe\`
+(\`src/lib/lance.ts\`), e a Redução da armadura leve também desconta o raspão (a Centelha do
+alvo entra na conta, item 2a). Não existe mais variante de Absorção por tipo de dano: a Centelha
+soma na Absorção normal dos três tipos, como sempre fez.
 
-“Imunidade” nesta página significa uma luta que não terminou em 1.000 Ticks, não invulnerabilidade matemática. A última coluna mostra a maior censura observada com espada longa contra malha em qualquer soma e Centelha. A duração usa a ficha intermediária, soma 8 e gambeson; cada célula contém ${2 * N} lutas, metade em cada orientação.
+“Imunidade” nesta página significa uma luta que não terminou em 1.000 Ticks, não invulnerabilidade
+matemática. A duração usa a ficha intermediária, soma 8 e gambeson; cada célula contém ${2 * N}
+lutas, metade em cada orientação.
 
-${mdTabela(['cenário', 'mediana espada por C', 'mediana montante por C', 'pior espada×malha'], linhasResumo)}
+${mdTabela(['mediana espada por C', 'mediana montante por C', 'pior espada×malha'], linhasResumo)}
 
-- Regra atual: há imunidade prática; em algumas células, nenhuma das 2.000 lutas terminou.
-- V1: encurta a espada contra gambeson e torna +1 Ataque monotônico, mas não elimina a imunidade contra malha porque o dano do próprio raspão pode ser zero depois da redução de Quase-Acerto da armadura.
-- V2: elimina a censura observada da espada contra malha e torna +1 Ataque monotônico nas nove células verificadas.
-- V3: reduz a duração, mas ainda deixa células com 100% de censura; também não torna +1 Ataque sempre positivo.
-- V1+V2: reúne lutas curtas, ausência de censura observada e monotonicidade de +1 Ataque.
-- V1+V3: melhora a duração e a monotonicidade, mas preserva células de imunidade prática.
+O teste de monotonicidade abaixo usa a força por Tick (item 6b). “Sim” exige que +1 Ataque reduza
+os Ticks necessários de A em todas as nove células de soma 6/8/12 e Centelha 1/3/5.
 
-O teste de monotonicidade abaixo usa a nova força direcional. “Sim” exige que +1 Ataque reduza os golpes necessários de A em todas as nove células de soma 6/8/12 e Centelha 1/3/5.
+${mdTabela(['+1 Ataque sempre positivo?', 'células positivas', 'falhas'], linhasMonotonia)}
 
-${mdTabela(['cenário', '+1 Ataque sempre positivo?', 'células positivas', 'falhas'], linhasMonotonia)}
+**Viés de lado (item 6d, depois do conserto do item 3):** a coluna "viés" de cada tabela abaixo é
+a chance de A vencer no lado \`a\` menos a chance de vencer no lado \`b\`. O conserto do item 3
+(quem estava de pé solta todos os golpes do Tick em que caiu) tira uma fonte de assimetria entre
+as duas orientações do mesmo duelo espelhado; o esperado é que o viés observado agora seja menor
+que numa medição equivalente antes do conserto. Este relatório não guarda a medição ANTES (a
+rodada anterior media outra coisa, os cenários V1/V2/V3), então a comparação fica para quem tiver
+os dois números lado a lado.
 
 ## 1. Método e limites
 
-Fichas sem Proezas: soma 6/8/12 dividida igualmente entre Atributo e Habilidade; Vigor 3; mesma ficha em C0–C6. A espada longa ocupa uma mão, com adaga inativa na outra apenas para acionar a fórmula viva de uma mão; Montante usa duas. Armadura nenhuma/Gambeson/Malha. Todos começam adjacentes; a luta vai até um lado cair, sem fuga ou desistência automáticas. Empate de iniciativa varia pela semente.
+Fichas sem Proezas: soma 6/8/12 dividida igualmente entre Atributo e Habilidade; Vigor 3; mesma
+ficha em C0–C6. A espada longa ocupa uma mão, com adaga inativa na outra apenas para acionar a
+fórmula viva de uma mão; Montante usa duas. Armadura nenhuma/Gambeson/Malha. Todos começam
+adjacentes; a luta vai até um lado cair, sem fuga ou desistência automáticas. Empate de iniciativa
+varia pela semente.
 
-Camada exata: Defesa cheia e golpes independentes, mas preserva pool, paridade, Acerto da arma, Margens, Quase-Acerto, dano e Absorção. Ela não modela P/G/R, Pressão, ferimentos, iniciativa ou simultaneidade. Camada fiel: todas essas regras operam. “Ações até cair” mede duração e aparece apenas como duração, nunca como força.
+Camada exata: Defesa cheia e golpes independentes, mas preserva pool, paridade, Acerto da arma,
+Margens, Quase-Acerto, dano e Absorção. Ela não modela P/G/R, Pressão, ferimentos, iniciativa ou
+simultaneidade, e roda com a Centelha do alvo zerada (não carrega um segundo lado na conta
+manual). Camada fiel: todas essas regras operam, com a Centelha de verdade dos dois lados.
+“Ações até cair” mede duração e aparece apenas como duração, nunca como força.
 
-Cada duelo roda duas bancadas: A no lado \`a\` e A no lado \`b\`. A chance publicada reúne as duas orientações e traz intervalo de confiança de Wilson de 95%. O viés é a chance de A vencer no lado \`a\` menos a chance de vencer no lado \`b\`. Lutas censuradas ficam fora da chance, mas sua fração é publicada.
+Cada duelo roda duas bancadas: A no lado \`a\` e A no lado \`b\`. A chance publicada reúne as duas
+orientações e traz intervalo de confiança de Wilson de 95%. O viés é a chance de A vencer no lado
+\`a\` menos a chance de vencer no lado \`b\`. Lutas censuradas ficam fora da chance, mas sua fração
+é publicada.
 
-A força direcional usa todos os golpes das mesmas lutas espelhadas. Para cada direção, dano médio é dano líquido total dividido pelas tentativas daquela direção; golpes necessários são PV iniciais do alvo divididos por esse dano médio. Força relativa = golpes que B precisa para derrubar A divididos pelos golpes que A precisa para derrubar B. Valor 1 é igualdade; acima de 1 favorece A.
+**A força por Tick (item 6b, a métrica principal agora)** usa todos os golpes das mesmas lutas
+espelhadas, do mesmo jeito que a força por tentativa (mantida ao lado, marcada com ⚑ quando as
+duas discordam muito): para cada direção, dano médio por tentativa dividido pelas tentativas
+daquela direção dá o dano médio; PV iniciais do alvo dividido por esse dano médio dá as
+TENTATIVAS necessárias; essa contagem multiplicada pelo CICLO do atacante (Preparo + Golpe +
+Recuperação de um ataque simples, em Ticks, por \`combate-tempo.ts\`'s \`anatomia\`) dá os TICKS
+necessários. Força relativa por Tick = Ticks que B precisa para derrubar A dividido pelos Ticks
+que A precisa para derrubar B. Valor 1 é igualdade; acima de 1 favorece A. A força por tentativa
+(a métrica antiga) é a mesma conta sem o ciclo, e as duas discordam sobretudo quando as armas têm
+ciclos diferentes (a pesada bate mais forte por golpe, mas gasta mais Ticks por golpe): a coluna
+⚑ marca essa discordância.
 
-Os documentos de referência usados estão em \`docs/calibracao/09-inventario-calculos.md\` e \`14-levantamento-pesos.md\`.
+Os documentos de referência usados estão em \`docs/calibracao/09-inventario-calculos.md\` e
+\`14-levantamento-pesos.md\`.
 
 ## 2. A · Defesa perdida no golpe
 
-Valores são módulos positivos da perda total P/G/R + Pressão observada na entrada real de \`resolverGolpe\`.
+Valores são módulos positivos da perda total P/G/R + Pressão observada na entrada real de
+\`resolverGolpe\`.
 
 ${mdTabela(['formato', 'soma', 'C', 'média', 'p10/p50/p90', 'golpes'], linhasA)}
 
-## 3. B · Linha de base entre iguais e variantes
+## 3. B · Linha de base entre iguais
 
-${mdTabela(['cenário', 'soma', 'C', 'arma', 'armadura', 'acerto', 'raspão', 'ações p10/p50/p90', 'censura', 'vitória A, IC95%', 'viés'], linhasB)}
+${mdTabela(['soma', 'C', 'arma', 'armadura', 'acerto', 'raspão', 'ações p10/p50/p90', 'censura', 'vitória A, IC95%', 'viés'], linhasB)}
 
-## 4. C · Degrau automático de Centelha e variantes
+## 4. C · Degrau automático de Centelha
 
-A é X+1; B é X. Dano e golpes necessários são direcionais e vêm das mesmas lutas.
+A é X+1; B é X. Dano e Ticks necessários são direcionais e vêm das mesmas lutas.
 
-${mdTabela(['cenário', 'soma', 'confronto', 'arma', 'armadura', 'dano A→B', 'dano B→A', 'golpes A→B', 'golpes B→A', 'força relativa', 'vitória A, IC95%', 'viés', 'censura'], linhasC)}
+${mdTabela(['soma', 'confronto', 'arma', 'armadura', 'dano A→B', 'dano B→A', 'golpes A→B', 'golpes B→A', 'força/tentativa', 'ticks A→B', 'força/Tick', '⚑', 'vitória A, IC95%', 'viés', 'censura'], linhasC)}
 
 ## 5. D · Um contra três e Pressão
 
@@ -578,41 +681,82 @@ Equipamento de referência: espada longa e gambeson.
 
 ${mdTabela(['soma', 'confronto', 'Pressão', 'vitória do único', 'censura'], linhasD)}
 
-## 6. E · Valor marginal das alavancas e variantes
+## 6. E · Valor marginal das alavancas
 
-Centelha 1/3/5; espada longa e gambeson. A é a peça modificada; B é a ficha igual sem modificação. O valor de +1 Atributo usa Destreza. +1 Habilidade altera Armas. Ticks alteram somente a anatomia da peça modificada.
+Centelha 1/3/5; espada longa e gambeson. A é a peça modificada; B é a ficha igual sem
+modificação. \`habilidade+1\` altera Armas. Ticks alteram somente a anatomia da peça modificada.
 
-${mdTabela(['cenário', 'soma', 'C', 'alavanca', 'dano A→B', 'dano B→A', 'golpes A→B', 'golpes B→A', 'força relativa', 'vitória A, IC95%', 'viés', 'censura'], linhasE)}
+${mdTabela(['soma', 'C', 'alavanca', 'dano A→B', 'dano B→A', 'golpes A→B', 'golpes B→A', 'força/tentativa', 'força/Tick', '⚑', 'vitória A, IC95%', 'viés', 'censura'], linhasE)}
 
-## 7. F · Variante D7, +2 por Centelha
+### 6a. Alavanca nova: +1 Força com Montante
 
-Variante injetada como +C adicional em ataque e Defesa, além do +C vivo. Equipamento de referência: espada longa e gambeson.
+Par do \`atributo+1-destreza-espada\` de cima (que já mede +1 Destreza com espada longa dentro da
+tabela E), agora com Montante e +1 Força.
 
-${mdTabela(['soma', 'confronto', 'força relativa', 'vitória X+1, IC95%', 'viés', 'censura'], linhasF)}
+${mdTabela(['soma', 'C', 'dano A→B', 'dano B→A', 'golpes A→B', 'golpes B→A', 'força/tentativa', 'força/Tick', '⚑', 'vitória A, IC95%', 'viés', 'censura'], linhasMontante)}
 
-## 8. Onde as camadas divergem
+### 6b. Alavanca nova: Briga (desarmado) contra Armas
 
-${mdTabela(['soma', 'C', 'dano ex. DV0', 'dano ex. DV4', 'dano fiel', 'ações p50 ex0/ex4/fiel', 'censura'], divergencias)}
+A é Briga (desarmado, \`skills2.briga\`); B é Armas (espada longa). Os dois sem armadura, mesma
+soma e mesma Centelha.
 
-A camada exata com Defesa cheia subestima acerto e dano sempre que a perda real é negativa. Usar perda fixa 4 aproxima alguns pontos, mas apaga a distribuição, a escalada de Pressão, o momento do ciclo e o ferimento. “Censura” é a fração que não chegou a uma queda em 1.000 Ticks; essas lutas não entram nos percentis nem são contadas como derrota. A camada rápida serve para varrer direção e ordenar alavancas; níveis finais precisam dos pontos fiéis.
+${mdTabela(['soma', 'C', 'dano A→B', 'dano B→A', 'golpes A→B', 'golpes B→A', 'força/tentativa', 'força/Tick', '⚑', 'vitória A, IC95%', 'viés', 'censura'], linhasBriga)}
+
+### 6c. Arremesso contra Atirador: NÃO RODADO
+
+O motor não modela alcance nem posição além da distância inicial fixa da bancada (peças sempre
+nascem adjacentes); a penalidade por faixa de distância é só exibida na mesa, e o mestre soma à
+mão. Rodar esta alavanca na cena adjacente de hoje mediria o mesmo duelo corpo a corpo com nomes
+diferentes de arma. Parado aqui, como o despacho autorizou.
+
+## 7. Onde as camadas divergem
+
+${mdTabela(['soma', 'C', 'dano ex. DV0', 'dano ex. DV4', 'dano fiel', 'ações p50 ex0/ex4/fiel', 'censura'], (() => {
+  const out = [];
+  for (const soma of SOMAS) for (const c of CS) {
+    const A = base(soma, c), ex0 = acoesExatas(A, A, 0), ex4 = acoesExatas(A, A, 4);
+    const fi = fielCache.get(chave({ soma, centelha: c, arma: 'espada-longa', armadura: 'gambeson' }));
+    out.push([soma, c, num(ex0.dano), num(ex4.dano), num(fi.dirA.dano), `${ex0.p50 ?? '>200'}/${ex4.p50 ?? '>200'}/${fi.acoes.p50 ?? 'cens.'}`, pct(fi.censura)]);
+  }
+  return out;
+})())}
+
+A camada exata com Defesa cheia subestima acerto e dano sempre que a perda real é negativa. Usar
+perda fixa 4 aproxima alguns pontos, mas apaga a distribuição, a escalada de Pressão, o momento do
+ciclo e o ferimento. “Censura” é a fração que não chegou a uma queda em 1.000 Ticks; essas lutas
+não entram nos percentis nem são contadas como derrota. A camada rápida serve para varrer direção
+e ordenar alavancas; níveis finais precisam dos pontos fiéis.
 
 ### Leitura para a revisão do simulador
 
-- A perda de Defesa não é uma constante 4: no duelo sua mediana foi 2; no 1 contra 3, 4, com p90 8. A aproximação fixa depende do formato do encontro.
-- Há células em que a espada longa não atravessa a combinação de Absorção e Quase-Acerto o bastante para encerrar a luta. A censura é resultado, não zero nem derrota.
-- Aumentar Ataque ou Habilidade pode reduzir a chance de vitória em certas células: um raspão causa dano fixo ignorando Absorção, enquanto um acerto fraco sofre Absorção e pode causar zero. O simulador preserva essa descontinuidade da regra viva; a Revisora deve confirmar que ela é intencional antes de usar a alavanca de ataque como moeda monotônica.
-- +1d6 de dano foi muito mais forte que +1 fixo nas células de referência. A razão varia com Absorção, portanto não existe conversão universal entre dado e ponto.
-- A antiga razão pela contagem de golpes do vencedor foi removida. Ela media duração da luta e podia dizer que +5 PV enfraquecia uma peça que vencia mais.
+- A perda de Defesa não é uma constante 4: no duelo sua mediana foi 2; no 1 contra 3, 4, com p90 8.
+  A aproximação fixa depende do formato do encontro.
+- Há células em que a espada longa não atravessa a combinação de Absorção e Quase-Acerto o
+  bastante para encerrar a luta. A censura é resultado, não zero nem derrota.
+- Aumentar Ataque ou Habilidade pode reduzir a chance de vitória em certas células: um raspão
+  causa dano fixo ignorando Absorção, enquanto um acerto fraco sofre Absorção e pode causar zero
+  (embora agora nunca menos que o próprio raspão, item 2c). O simulador preserva essa
+  descontinuidade da regra viva; a Revisora deve confirmar que ela é intencional antes de usar a
+  alavanca de ataque como moeda monotônica.
+- +1d6 de dano foi muito mais forte que +1 fixo nas células de referência. A razão varia com
+  Absorção, portanto não existe conversão universal entre dado e ponto.
+- A força por Tick (item 6b) é a moeda nova: compare-a com a força por tentativa antes de decidir
+  preço de Proeza que muda o CICLO da arma (Proezas de velocidade), porque só a força por
+  tentativa fica cega para esse efeito.
 
-## 9. Procedência e conferência
+## 8. Procedência e conferência
 
-- \`node scripts/sim/calibrar.mjs --teste\`: três golpes determinísticos conferidos contra \`resolverGolpe\` (erro, raspão, acerto com Margem) e dois pontos de distribuição em que a camada rápida e o resolvedor usado pela camada fiel concordam exatamente, por enumeração direta através de \`lance.ts\`.
-- \`node scripts/sim/calibrar.mjs --n ${N}\`: comando desta medição; cada célula de duelo executa ${N} lutas por orientação.
+- \`node scripts/sim/calibrar.mjs --teste\`: três golpes determinísticos conferidos contra
+  \`resolverGolpe\` (erro, raspão, acerto com Margem e o piso do item 2c) e dois pontos de
+  distribuição em que a camada rápida e o resolvedor usado pela camada fiel concordam exatamente,
+  por enumeração direta através de \`lance.ts\`.
+- \`node scripts/sim/calibrar.mjs --n ${N}\`: comando desta medição; cada célula de duelo executa
+  ${N} lutas por orientação.
 - Pressão sem teto é a regra viva; −4 e −6 são somente variantes locais.
-- V1, V2 e V3 são cenários locais da bancada. Nenhum deles altera \`calc.ts\`, \`lance.ts\` ou os dados do jogo.
 - Nenhum valor de Proeza foi aplicado e nenhum catálogo foi modificado.
 
-**Parada:** esta é a linha de base para revisão do simulador. As taxas de câmbio não devem ser decididas antes da conferência da Revisora.
+**Parada:** esta é a linha de base para revisão do simulador. As taxas de câmbio não devem ser
+decididas antes da conferência da Revisora.
 `;
 fs.writeFileSync(SAIDA, md, 'utf8');
 testes();

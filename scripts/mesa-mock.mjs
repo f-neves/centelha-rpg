@@ -474,7 +474,7 @@ if (ESPELHO) {
           arma: arq.arma, ataque: arq.ataque, dano: arq.dano,
           defesa: arq.defesa, soak: arq.soak,
           velocidade: arq.velocidade, classe: arq.classe,
-          passo: arq.passo, qa: arq.qa,
+          passo: arq.passo, qa: arq.qa, centelha: arq.centelha,
         },
         condicoes: [],
         ativo: true, oculto: false, imagem: null, retrato: null,

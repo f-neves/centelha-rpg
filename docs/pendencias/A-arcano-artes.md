@@ -242,3 +242,10 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   externo mediu, `lore/economia/estado-revisao.md`, "5. Item encantado e Artefato").
   - **Sugestão do Comerciante, não aprovada (registrada na rodada 114, texto dele sem alteração)**, a segunda frase do bloco 1d:
     > Raridade por lugar: usar os tetos de aldeia, vila, cidade e capital como base.
+- [ ] **A30 · [DECIDIR] Cura, Acerto Arcano e Energia Espiritual: comparar por pacote na etapa
+  das Artes.** Registrado pelo autor em 27/09/2026 (item 7c do despacho da Regra do
+  Quase-Acerto), sem resolver. O valor dessas três Habilidades depende de magia (nível de Arte,
+  Efeitos comprados, reserva de Mana), então não dá para calibrar uma delas isolada como se faz
+  com Armas/Esquiva na bancada de combate físico. A comparação certa é por PACOTE completo
+  (guerreiro com Armas e uma arma contra mago com Arte e Acerto Arcano), e essa etapa ainda não
+  chegou: fica registrada para quando a bancada cobrir Artes, não para esta rodada.

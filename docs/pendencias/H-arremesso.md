@@ -36,6 +36,15 @@ está no ar, e `Arremesso_Regra.md` é a **proposta nova**, em três regimes. A 
   `armas.json` (`arco-curto`) dá `forcaCap` 3 (`armas.json:470`) e a descrição diz "Soma Força até +3"
   (`armas.json:452`). A mesma linha da tabela dá o alcance livre (40 m), então a correção tem de dizer
   qual dos dois números esse alcance usa.
+- [ ] **H7 · [DECIDIR] A bancada de calibração não modela alcance.** Achado pela Executora em
+  27/09/2026, ao decidir NÃO rodar a alavanca "Arremesso contra Atirador" do item 6c do despacho
+  da Regra do Quase-Acerto. `scripts/sim/motor.mjs`/`cena.mjs` (o harness) e `decisaoAutomatica`
+  não modelam alcance nem posição além da distância inicial fixa da cena (as peças sempre nascem
+  adjacentes); a penalidade por faixa de distância é só EXIBIDA na mesa (`faixaNaFolha`,
+  `grid.astro`, comentário "MOSTRA E NÃO APLICA"), o mestre soma à mão. Rodar um duelo
+  Arremesso × Atirador na cena adjacente de hoje mediria o mesmo duelo corpo a corpo com nomes
+  diferentes de arma, não a identidade tática dos dois (que é operar a distância). Decidir se vale
+  a pena modelar alcance no harness antes de comparar essas duas Habilidades.
 
 ---
 

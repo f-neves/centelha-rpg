@@ -1968,7 +1968,7 @@ verde continua verde.**
 nada vermelho, por construção**. É o caso raro em que "nada falhou" é a resposta
 certa, e **a prova da união é o portão, não teste de comportamento** · par que fica
 vermelho está medindo outra coisa. Conferir que a união pegou **os dois sítios**
-(`motor.mjs:355` · `function resolverContra` e `:357`) e que a cópia local saiu.
+(`motor.mjs:362` · `function resolverContra` e `:357`) e que a cópia local saiu.
 
 **3 · Importes mortos · quatro, e um que não é.**
 `penDadosDaRegua` (`grid.astro:2433` (citação histórica)), `contrapeAcaba` (`:2436`), `golpeDevido`
