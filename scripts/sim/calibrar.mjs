@@ -16,6 +16,14 @@
 // Uso:
 //   node scripts/sim/calibrar.mjs --n 1000
 //   node scripts/sim/calibrar.mjs --teste
+//   node scripts/sim/calibrar.mjs --n 1000 --pular B,A,C,Briga
+//
+// `--pular` existe para o conserto que só mexe numa fatia da conta (item 1/2/3
+// do despacho "Três consertos na bancada", 28/09/2026): as seções puladas não
+// são recalculadas, e o texto delas é copiado VERBATIM do relatório anterior
+// (o que já está em `--saida`, lido antes de sobrescrever). Sem isto, provar
+// que um conserto pequeno não mudou nada fora dele custaria a bateria inteira
+// de novo, todo. As chaves aceitas são `A`, `B`, `C`, `Briga` (a seção 6b).
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -34,6 +42,20 @@ const N = Number.parseInt(arg('--n', '1000'), 10);
 const SEMENTE = Number.parseInt(arg('--semente', '20260927'), 10);
 const SAIDA = path.resolve(RAIZ, arg('--saida', 'docs/calibracao/15-linha-de-base.md'));
 const TESTE = process.argv.includes('--teste');
+const PULAR = new Set((arg('--pular', '') || '').split(',').map((x) => x.trim()).filter(Boolean));
+const ANTERIOR = fs.existsSync(SAIDA) ? fs.readFileSync(SAIDA, 'utf8') : null;
+if (PULAR.size && !ANTERIOR) throw new Error(`--pular pede um relatório anterior em ${SAIDA}, e ele não existe`);
+
+/** Copia um trecho do relatório ANTERIOR, do título dado até o próximo `## `/`### ` do mesmo nível. */
+function secaoAnterior(titulo) {
+  const linhas = ANTERIOR.split('\n');
+  const i = linhas.findIndex((l) => l.trim() === titulo);
+  if (i < 0) throw new Error(`--pular não achou a seção "${titulo}" no relatório anterior`);
+  const nivel = titulo.match(/^#+/)[0].length;
+  let j = i + 1;
+  while (j < linhas.length && !(linhas[j].match(/^#{1,6}\s/) && linhas[j].match(/^#+/)[0].length <= nivel)) j++;
+  return linhas.slice(i, j).join('\n').replace(/\n+$/, '') + '\n';
+}
 const ARMAS = ['espada-longa', 'montante'];
 const ARMADURAS = ['nenhuma', 'gambeson', 'malha'];
 const SOMAS = [6, 8, 12];
@@ -42,6 +64,7 @@ const CS = [1, 3, 5];
 const ALAVANCAS = [
   'ataque+1', 'defesa+1', 'dano+1', 'dano+1d6', 'absorcao+1',
   'pv+1', 'pv+5', 'preparo-1', 'recuperacao-1', 'habilidade+1',
+  'atributo+1-destreza-espada',
 ];
 const BASE_PV = REGRAS.derivados.pv.base + 3 * REGRAS.derivados.pv.vigorMult;
 
@@ -191,7 +214,12 @@ function ajustarAnatomia(c, a) {
  */
 function cicloDaPeca(p) {
   const a = L0.anatomia({ classe: p.classe, velocidade: p.velocidade, sistema: 'simultaneo', manobra: 'simples', golpes: 1 });
-  return a.ciclo;
+  // O CICLO TEM DE PASSAR PELO MESMO AJUSTE que a luta de verdade aplica
+  // (`ajustarAnatomia`, usado dentro de `batalha`): sem isto, `preparo-1` e
+  // `recuperacao-1` mediam a força por Tick com o ciclo CRU da arma, e as duas
+  // alavancas saíam com força/Tick idêntica à força/tentativa (achado do
+  // autor, 28/09/2026, lendo o `15-linha-de-base.md`).
+  return ajustarAnatomia(p, a).ciclo;
 }
 
 function cenaDe(A, B, { nB = 1, semente = 1 } = {}) {
@@ -325,10 +353,16 @@ function rodarEspelho(conf, reps = N) {
   const cicloA = cicloDaPeca(conf.A), cicloB = cicloDaPeca(conf.B);
   const ticksA = golpesParaTicks(dirA, cicloA), ticksB = golpesParaTicks(dirB, cicloB);
   const forcaTick = relForca(ticksB, ticksA);
+  // O LIMIAR É 15%, E NÃO 20% (achado do autor, 28/09/2026, lendo o
+  // `15-linha-de-base.md`): `preparo-1`/`recuperacao-1` COM A MESMA ARMA dos
+  // dois lados (ciclo 6 → 5) discordam por um fator de EXATAMENTE 6/5 = 1,2,
+  // que é 16,7% de diferença relativa ao maior dos dois valores. Com 20% essa
+  // linha, que é o próprio critério de aceite do conserto do item 1, não
+  // carregava `⚑`.
   const discorda = forca != null && forcaTick != null
     && ((forca - 1) * (forcaTick - 1) < 0 // sinais diferentes: uma favorece A, a outra B
       || (Number.isFinite(forca) && Number.isFinite(forcaTick) && Math.max(forca, forcaTick) > 0
-        && Math.abs(forca - forcaTick) / Math.max(forca, forcaTick, 1e-9) > .2));
+        && Math.abs(forca - forcaTick) / Math.max(forca, forcaTick, 1e-9) > .15));
   const acoes = [...ida._acoes, ...volta._acoes];
   const comoA = ida.resolvidas ? vitoriasComoA / ida.resolvidas : null;
   const comoB = volta.resolvidas ? vitoriasComoB / volta.resolvidas : null;
@@ -474,41 +508,93 @@ function testes() {
 
 if (TESTE) { testes(); process.exit(0); }
 
-const linhasB = [], bDados = [], fielCache = new Map();
-for (const soma of SOMAS) for (const centelha of CENTELHAS) for (const arma of ARMAS) for (const armadura of ARMADURAS) {
-  const A = base(soma, centelha, arma, armadura);
-  const fi = rodarEspelho({ A, B: A }, N);
-  const dado = { soma, centelha, arma, armadura, fi };
-  bDados.push(dado);
-  fielCache.set(chave({ soma, centelha, arma, armadura }), fi);
-  linhasB.push([
-    soma, centelha, arma, armadura, pct(fi.acerto), pct(fi.raspao),
-    qs(fi.acoes), pct(fi.censura), icPct(fi.ic), pp(fi.vies),
-  ]);
+// A FATIA MÍNIMA que a seção 7 precisa (SOMAS × CS, espada longa/gambeson):
+// roda SEMPRE, mesmo com B pulada, porque é barata (9 células) e o item 1/2/3
+// não muda os números dela. Sem isto, pular B pularia a seção 7 também, e
+// ninguém pediu isso.
+const fielCache = new Map();
+for (const soma of SOMAS) for (const c of CS) {
+  const A = base(soma, c, 'espada-longa', 'gambeson');
+  fielCache.set(chave({ soma, centelha: c, arma: 'espada-longa', armadura: 'gambeson' }), rodarEspelho({ A, B: A }, N));
 }
-console.log('· B concluído');
 
-const linhasA = [];
-for (const [nB, rotulo] of [[1, 'duelo'], [3, '1 contra 3']]) for (const soma of SOMAS) for (const c of CS) {
-  const A = base(soma, c), B = base(soma, c);
-  const fi = rodarFiel({ A, B, nB }, N);
-  linhasA.push([rotulo, soma, c, num(fi.perdas.media), `${fi.perdas.p10}/${fi.perdas.p50}/${fi.perdas.p90}`, fi.perdas.n]);
+// O RESUMO (soma 8, todas as Centelhas, gambeson + malha) é barato e SEMPRE
+// fresco, mesmo com B pulada: 21 células, não as 126 da tabela B inteira.
+const resumoDados = [];
+for (const centelha of CENTELHAS) for (const arma of ARMAS) {
+  const A = base(8, centelha, arma, 'gambeson');
+  resumoDados.push({ centelha, arma, armadura: 'gambeson', fi: rodarEspelho({ A, B: A }, N) });
 }
-console.log('· A concluído');
+for (const centelha of CENTELHAS) {
+  const A = base(8, centelha, 'espada-longa', 'malha');
+  resumoDados.push({ centelha, arma: 'espada-longa', armadura: 'malha', fi: rodarEspelho({ A, B: A }, N) });
+}
+const linhasResumo = (() => {
+  const duracao = (arma) => CENTELHAS.map((c) => {
+    const fi = resumoDados.find((x) => x.centelha === c && x.arma === arma && x.armadura === 'gambeson').fi;
+    return `C${c} ${fi.acoes.p50 ?? 'n/c'}${fi.censura ? ` (${pct(fi.censura)} cens.)` : ''}`;
+  }).join('; ');
+  const malhas = resumoDados.filter((x) => x.arma === 'espada-longa' && x.armadura === 'malha');
+  const pior = Math.max(...malhas.map((x) => x.fi.censura));
+  return [[duracao('espada-longa'), duracao('montante'), pct(pior)]];
+})();
 
-const linhasC = [];
-for (const soma of SOMAS) for (let x = 0; x < 6; x++) for (const arma of ARMAS) for (const armadura of ARMADURAS) {
-  const A = base(soma, x + 1, arma, armadura);
-  const B = base(soma, x, arma, armadura);
-  const fi = rodarEspelho({ A, B }, N);
-  linhasC.push([
-    soma, `${x + 1}×${x}`, arma, armadura,
-    num(fi.dirA.dano), num(fi.dirB.dano), golpes(fi.dirA.golpes), golpes(fi.dirB.golpes),
-    num(fi.forca, 3), ticks(fi.ticksA), num(fi.forcaTick, 3), fi.discorda ? '⚑' : '',
-    icPct(fi.ic), pp(fi.vies), pct(fi.censura),
-  ]);
+let secaoB;
+if (PULAR.has('B')) {
+  secaoB = secaoAnterior('## 3. B · Linha de base entre iguais');
+  console.log('· B pulada (copiada do relatório anterior)');
+} else {
+  const linhasB = [];
+  for (const soma of SOMAS) for (const centelha of CENTELHAS) for (const arma of ARMAS) for (const armadura of ARMADURAS) {
+    const A = base(soma, centelha, arma, armadura);
+    const fi = rodarEspelho({ A, B: A }, N);
+    if (arma === 'espada-longa' && armadura === 'gambeson' && CS.includes(centelha)) {
+      fielCache.set(chave({ soma, centelha, arma, armadura }), fi);
+    }
+    linhasB.push([
+      soma, centelha, arma, armadura, pct(fi.acerto), pct(fi.raspao),
+      qs(fi.acoes), pct(fi.censura), icPct(fi.ic), pp(fi.vies),
+    ]);
+  }
+  secaoB = `## 3. B · Linha de base entre iguais\n\n${mdTabela(['soma', 'C', 'arma', 'armadura', 'acerto', 'raspão', 'ações p10/p50/p90', 'censura', 'vitória A, IC95%', 'viés'], linhasB)}`;
+  console.log('· B concluído');
 }
-console.log('· C concluído');
+
+let secaoA;
+if (PULAR.has('A')) {
+  secaoA = secaoAnterior('## 2. A · Defesa perdida no golpe');
+  console.log('· A pulada (copiada do relatório anterior)');
+} else {
+  const linhasA = [];
+  for (const [nB, rotulo] of [[1, 'duelo'], [3, '1 contra 3']]) for (const soma of SOMAS) for (const c of CS) {
+    const A = base(soma, c), B = base(soma, c);
+    const fi = rodarFiel({ A, B, nB }, N);
+    linhasA.push([rotulo, soma, c, num(fi.perdas.media), `${fi.perdas.p10}/${fi.perdas.p50}/${fi.perdas.p90}`, fi.perdas.n]);
+  }
+  secaoA = `## 2. A · Defesa perdida no golpe\n\nValores são módulos positivos da perda total P/G/R + Pressão observada na entrada real de\n\`resolverGolpe\`.\n\n${mdTabela(['formato', 'soma', 'C', 'média', 'p10/p50/p90', 'golpes'], linhasA)}`;
+  console.log('· A concluído');
+}
+
+let secaoC;
+if (PULAR.has('C')) {
+  secaoC = secaoAnterior('## 4. C · Degrau automático de Centelha');
+  console.log('· C pulada (copiada do relatório anterior)');
+} else {
+  const linhasC = [];
+  for (const soma of SOMAS) for (let x = 0; x < 6; x++) for (const arma of ARMAS) for (const armadura of ARMADURAS) {
+    const A = base(soma, x + 1, arma, armadura);
+    const B = base(soma, x, arma, armadura);
+    const fi = rodarEspelho({ A, B }, N);
+    linhasC.push([
+      soma, `${x + 1}×${x}`, arma, armadura,
+      num(fi.dirA.dano), num(fi.dirB.dano), golpes(fi.dirA.golpes), golpes(fi.dirB.golpes),
+      num(fi.forca, 3), ticks(fi.ticksA), num(fi.forcaTick, 3), fi.discorda ? '⚑' : '',
+      icPct(fi.ic), pp(fi.vies), pct(fi.censura),
+    ]);
+  }
+  secaoC = `## 4. C · Degrau automático de Centelha\n\nA é X+1; B é X. Dano e Ticks necessários são direcionais e vêm das mesmas lutas.\n\n${mdTabela(['soma', 'confronto', 'arma', 'armadura', 'dano A→B', 'dano B→A', 'golpes A→B', 'golpes B→A', 'força/tentativa', 'ticks A→B', 'força/Tick', '⚑', 'vitória A, IC95%', 'viés', 'censura'], linhasC)}`;
+  console.log('· C concluído');
+}
 
 const linhasD = [];
 for (const soma of SOMAS) for (let x = 0; x < 6; x++) for (const cap of [null, 4, 6]) {
@@ -549,17 +635,24 @@ for (const soma of SOMAS) for (const c of CS) {
 console.log('· montante (+1 Força) concluído');
 
 // ITEM 6C · Briga (desarmado) contra Armas (espada longa, sem armadura dos dois lados)
-const linhasBriga = [];
-for (const soma of SOMAS) for (const c of CS) {
-  const armas = base(soma, c, 'espada-longa', 'nenhuma');
-  const briga = perfilBrigaDe({ soma, centelha: c });
-  const fi = rodarEspelho({ A: briga, B: armas }, N);
-  linhasBriga.push([
-    soma, c, num(fi.dirA.dano), num(fi.dirB.dano), golpes(fi.dirA.golpes), golpes(fi.dirB.golpes),
-    num(fi.forca, 3), num(fi.forcaTick, 3), fi.discorda ? '⚑' : '', icPct(fi.ic), pp(fi.vies), pct(fi.censura),
-  ]);
+let secaoBriga;
+if (PULAR.has('Briga')) {
+  secaoBriga = secaoAnterior('### 6b. Alavanca nova: Briga (desarmado) contra Armas');
+  console.log('· Briga × Armas pulada (copiada do relatório anterior)');
+} else {
+  const linhasBriga = [];
+  for (const soma of SOMAS) for (const c of CS) {
+    const armas = base(soma, c, 'espada-longa', 'nenhuma');
+    const briga = perfilBrigaDe({ soma, centelha: c });
+    const fi = rodarEspelho({ A: briga, B: armas }, N);
+    linhasBriga.push([
+      soma, c, num(fi.dirA.dano), num(fi.dirB.dano), golpes(fi.dirA.golpes), golpes(fi.dirB.golpes),
+      num(fi.forca, 3), num(fi.forcaTick, 3), fi.discorda ? '⚑' : '', icPct(fi.ic), pp(fi.vies), pct(fi.censura),
+    ]);
+  }
+  secaoBriga = `### 6b. Alavanca nova: Briga (desarmado) contra Armas\n\nA é Briga (desarmado, \`skills2.briga\`); B é Armas (espada longa). Os dois sem armadura, mesma\nsoma e mesma Centelha.\n\n${mdTabela(['soma', 'C', 'dano A→B', 'dano B→A', 'golpes A→B', 'golpes B→A', 'força/tentativa', 'força/Tick', '⚑', 'vitória A, IC95%', 'viés', 'censura'], linhasBriga)}`;
+  console.log('· Briga × Armas concluído');
 }
-console.log('· Briga × Armas concluído');
 
 // ITEM 6C · Arremesso contra Atirador: NÃO RODADO.
 //
@@ -574,16 +667,6 @@ console.log('· Briga × Armas concluído');
 // arma: uma medição que mentiria por omissão. Parado aqui, como o despacho
 // pediu; ver H7 em `docs/pendencias/H-arremesso.md` para o modelo de distância
 // que falta.
-
-const linhasResumo = (() => {
-  const duracao = (arma) => CENTELHAS.map((c) => {
-    const fi = bDados.find((x) => x.soma === 8 && x.centelha === c && x.arma === arma && x.armadura === 'gambeson').fi;
-    return `C${c} ${fi.acoes.p50 ?? 'n/c'}${fi.censura ? ` (${pct(fi.censura)} cens.)` : ''}`;
-  }).join('; ');
-  const malhas = bDados.filter((x) => x.arma === 'espada-longa' && x.armadura === 'malha');
-  const pior = Math.max(...malhas.map((x) => x.fi.censura));
-  return [[duracao('espada-longa'), duracao('montante'), pct(pior)]];
-})();
 
 const linhasMonotonia = (() => {
   const xs = eDados.filter((x) => x.al === 'ataque+1');
@@ -658,22 +741,10 @@ ciclos diferentes (a pesada bate mais forte por golpe, mas gasta mais Ticks por 
 Os documentos de referência usados estão em \`docs/calibracao/09-inventario-calculos.md\` e
 \`14-levantamento-pesos.md\`.
 
-## 2. A · Defesa perdida no golpe
+${secaoA}
+${secaoB}
+${secaoC}
 
-Valores são módulos positivos da perda total P/G/R + Pressão observada na entrada real de
-\`resolverGolpe\`.
-
-${mdTabela(['formato', 'soma', 'C', 'média', 'p10/p50/p90', 'golpes'], linhasA)}
-
-## 3. B · Linha de base entre iguais
-
-${mdTabela(['soma', 'C', 'arma', 'armadura', 'acerto', 'raspão', 'ações p10/p50/p90', 'censura', 'vitória A, IC95%', 'viés'], linhasB)}
-
-## 4. C · Degrau automático de Centelha
-
-A é X+1; B é X. Dano e Ticks necessários são direcionais e vêm das mesmas lutas.
-
-${mdTabela(['soma', 'confronto', 'arma', 'armadura', 'dano A→B', 'dano B→A', 'golpes A→B', 'golpes B→A', 'força/tentativa', 'ticks A→B', 'força/Tick', '⚑', 'vitória A, IC95%', 'viés', 'censura'], linhasC)}
 
 ## 5. D · Um contra três e Pressão
 
@@ -695,13 +766,7 @@ tabela E), agora com Montante e +1 Força.
 
 ${mdTabela(['soma', 'C', 'dano A→B', 'dano B→A', 'golpes A→B', 'golpes B→A', 'força/tentativa', 'força/Tick', '⚑', 'vitória A, IC95%', 'viés', 'censura'], linhasMontante)}
 
-### 6b. Alavanca nova: Briga (desarmado) contra Armas
-
-A é Briga (desarmado, \`skills2.briga\`); B é Armas (espada longa). Os dois sem armadura, mesma
-soma e mesma Centelha.
-
-${mdTabela(['soma', 'C', 'dano A→B', 'dano B→A', 'golpes A→B', 'golpes B→A', 'força/tentativa', 'força/Tick', '⚑', 'vitória A, IC95%', 'viés', 'censura'], linhasBriga)}
-
+${secaoBriga}
 ### 6c. Arremesso contra Atirador: NÃO RODADO
 
 O motor não modela alcance nem posição além da distância inicial fixa da bancada (peças sempre
