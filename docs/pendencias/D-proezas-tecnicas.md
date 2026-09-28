@@ -30,10 +30,15 @@ Detalhe em `Proezas_revisao.md`.
 - [ ] **D6 · [ADIADO] [DECIDIR] Custo de Técnica e de Arte em ×10.** Ficou de fora da recalibração de XP de
   propósito (largura segue sendo o gasto caro). Confirmar que fica.
   **Adiado na rodada 96 (23/09/2026), por proposta do humano:** refinamento que ninguém sentiu falta em mesa.
-- [ ] **D7 · [DECIDIR] Bônus de Centelha em ataque e defesa: +1 ou +2 por ponto?** Levantado em
-  24/09/2026, numa leitura da frente de economia. `centelha.md:44` e `:65` dizem "+1 por ponto de
-  Centelha" no ataque e nas Defesas; `regras.json:114` (nota de `escalasProeza`) diz "+2/ponto de
-  Centelha". Decidir qual vale e alinhar o outro, conferindo também o que o motor usa.
+- [x] **D7 · [FECHADO por substituição, 28/09/2026] Bônus de Centelha em ataque e defesa.** Levantado em
+  24/09/2026: `centelha.md:44` e `:65` diziam "+1 por ponto de Centelha" no ataque e nas Defesas;
+  `regras.json:114` (nota de `escalasProeza`) dizia "+2/ponto de Centelha". A Reforma da Centelha
+  (despacho `docs/simulacao/caixa/reforma-centelha-briga-despacho.md`) não escolheu um dos dois:
+  substituiu a fórmula inteira por **2 × menor(Centelha, Habilidade)** em toda jogada e Defesa, com
+  a Centelha do atacante somando inteira (sem teto) só no dano. `calc.ts`, `combate-resumo.ts`,
+  `lance.ts`, `grid.astro`, `motor.mjs`, `lib-bestiario.mjs` e os capítulos `centelha.md`,
+  `combate.md`, `defesas.md` foram alinhados nessa rodada (commit `adfbb5d7` e o commit desta Fase
+  2). Ver **D12** para a jogada só-de-Atributo, que ainda usa a regra antiga.
 - [ ] **D8 · [DECIDIR] Mãos Hábeis: +3 ou +2 em Ofícios?** Levantado em 24/09/2026.
   `tecnicas.json:6076` dá "+3 em Ofícios" (a régua de nível 1 da trilha Bônus); `Proezas_revisao.md:606`
   dá "+2". O caso é o mesmo do D2 (o doc ficou na régua velha), mas a Técnica pesa direto no
@@ -56,4 +61,18 @@ Detalhe em `Proezas_revisao.md`.
   mexa no Quase-Acerto teria duas alavancas possíveis e independentes: o **dano do raspão** (a
   metade que a arma carrega) e a **Margem** (a metade que soma arma e armadura). Decidir se a
   Proeza mexe numa, na outra, ou nas duas, e o preço de cada caminho.
+- [ ] **D12 · [DECIDIR] Jogada só-de-Atributo, sem Habilidade que sirva de teto.** Registrado em
+  28/09/2026, item 1 da Reforma da Centelha. A fórmula nova (2 × menor(Centelha, Habilidade)) exige
+  uma Habilidade para travar o bônus; jogadas que rolam **só Atributo** (Vontade pura, Resistir sem
+  perícia, alguns testes de Bravura) não têm esse segundo termo. `calc.ts` traz
+  `centelhaSoAtributo(centelha)`, que devolve a Centelha inteira sem teto, como regra de primeira
+  versão, mas isso é a regra ANTIGA sobrevivendo só nesse canto: mais generosa que o teto que vale
+  em toda outra jogada. Decidir se essa jogada ganha um teto próprio (Atributo? um valor fixo?) ou
+  se fica assim de propósito.
+- [ ] **D13 · [DECIDIR] Proeza "punho como arma média".** Registrado em 28/09/2026, Fase 3 da
+  Reforma da Centelha/Briga (item 3). O desarmado (`armas.json:1278`, id `desarmado`) subiu de
+  acerto 0 → 1 e defesaArma 0 → 1 nessa rodada, mas continua classe **leve** no Quase-Acerto (dano
+  médio 1,5) e na régua de dano (1d6−2). Uma Proeza/Técnica que fizesse o punho valer como arma
+  **média** (Briga séria, estilo de combate desarmado avançado) foi cogitada e não implementada:
+  decidir se existe, o que ela muda exatamente (classe de QA? dado de dano? as duas?) e o custo.
 

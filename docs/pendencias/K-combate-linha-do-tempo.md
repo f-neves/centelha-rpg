@@ -475,3 +475,13 @@ revistos por ela.
   pergunta em aberto é outra: uma camisa de malha (leve) VESTIDA SOB uma placa (pesada) deveria
   ganhar alguma coisa além da maior Redução das duas, ou a regra do empilhar já fecha o caso?
   Não decidir aqui: só registrar a pergunta.
+- [ ] **K34 · [DECIDIR] `quaseAcerto()` (`src/lib/quase-acerto.ts:187-199`), o card de ficha fora
+  de combate, continua sem Centelha nenhuma.** Registrado em 28/09/2026, Fase 1 da Reforma da
+  Centelha (achado do Arquiteto, confirmado pela Executora, não tocado por instrução do
+  despacho). A função usada pelos cards de ficha fora de combate (sem um alvo real do outro
+  lado) não carrega termo de Centelha nem do atacante nem do alvo, diferente de
+  `quaseAcertoDoEncontro()` (`src/lib/lance.ts`), a fonte única do combate de verdade, que já
+  soma a do atacante e desconta a do alvo desde a Regra do Quase-Acerto de 27/09/2026 e a
+  Reforma da Centelha de 28/09/2026. Decidir se o card de ficha ganha o mesmo termo (e contra
+  que Centelha, já que não há alvo fixado) ou se ele fica deliberadamente simplificado por não
+  ter combate de verdade por trás.

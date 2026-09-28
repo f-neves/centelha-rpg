@@ -123,3 +123,14 @@ limitações conhecidas, que são as três de baixo.
     > Dependência: a recompensa de caça usa o desafio. Se a nova escala cobrir o mesmo perigo em passos
     > menores, o fator da recompensa passa de 1,75 para cerca de 1,32 (um parâmetro em `modelo.py`).
     > Revisar junto.
+- [ ] **B15 · [ACHADO, DECIDIR] As 309 fichas do bestiário não têm bloco `pericias` nenhum.**
+  Registrado em 28/09/2026, Fase 1 da Reforma da Centelha (`docs/simulacao/caixa/
+  reforma-centelha-briga-executora.md`, item 8). A fórmula nova de Centelha em jogada/Defesa
+  (2 × menor(Centelha, Habilidade), aplicada em `scripts/lib-bestiario.mjs`) precisa de uma
+  Habilidade para travar o bônus; conferido nas 309 fichas de `src/data/bestiario/`, nenhuma tem
+  `pericias` (o campo está ausente, não zerado). Resultado: o bônus de Centelha em Defesa/ataque
+  de TODA criatura do bestiário sai **0** hoje, porque a régua de combate delas usa só Atributo
+  (+ um flat da arma), nunca perícia. Não é um bug da fórmula nova, é uma lacuna de dado que ela
+  escancarou. Liga com **B14**: qualquer recalibração de desafio/Centelha do bestiário devia
+  decidir também se vale a pena escrever `pericias` nas fichas (para o bônus de Centelha valer de
+  verdade nas criaturas) ou se a régua delas continua deliberadamente só-Atributo.
