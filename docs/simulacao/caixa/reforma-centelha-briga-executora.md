@@ -266,12 +266,65 @@ Arquivos: `scripts/sim/calibrar.mjs`, `docs/calibracao/16-linha-de-base-centelha
 - Fase 5 é só bancada: nenhuma regra nem catálogo foi alterado. `validate` e `tsc` verdes;
   `espelho` não se aplica (nenhum código de resolução de combate foi tocado).
 
+## Correção do CI vermelho (commits `82da902d` e `56a15544`), depois das cinco fases
+
+O CI real (GitHub Actions, "Validar dados e regras", job "Smoke · test-editor-bestiario") ficou
+vermelho em quatro commits seguidos (`adfbb5d7`, `9270be6f`, `7bbe593d`, `914ad390`) por uma
+asserção específica: `Def. Mental: card 22 = modal 25` (a criatura de teste, Treant). Os portões
+locais (`validate`/`tsc`/`build`/`espelho`) não cobrem esse smoke test, só o CI completo cobre;
+esse foi o próprio buraco que deixou a divergência passar sem eu perceber.
+
+**Causa real**: `scripts/lib-bestiario.mjs`'s `periciasDe()` (que gera o campo `pericias`
+publicado em `monsters.json`/`inimigos.json`, lido pelo editor do bestiário ao abrir uma
+criatura) invertia Defesa Mental/Defesa/Defesa Social pela fórmula LINEAR antiga, desatualizada
+desde a Fase 1. Para o Treant isso estimava Integridade 7 em vez da real 4, e o modal
+recalculava com o valor errado. `src/components/BestaCard.astro` tinha uma SEGUNDA cópia da
+mesma inversão, só para Integridade, com o mesmo erro. Corrigido com uma inversão de duas
+hipóteses (a Centelha satura o teto da Habilidade, ou não; concordam exatamente no ponto de
+virada, nunca ambígua), aplicada em `periciasDe()`; `BestaCard.astro` parou de duplicar e passou
+a ler `i.pericias` direto (`82da902d`).
+
+**Decisão do autor sobre um segundo ponto** (as duas casas usavam defaults DIFERENTES para
+Integridade genuinamente ausente: `0` em `bestia-editor.ts`, `2` em `stat()`): padrão único `0`,
+coerente com "sem Habilidade, sem bônus". Aplicado em `stat()`; `bestia-editor.ts` já usava 0.
+Prova de concordância nova: `scripts/test-bestiario-integridade.mjs`, registrado em
+`npm run validate` (`56a15544`).
+
+**Achado no caminho, e corrigido**: o item 8 da Fase 1 (acima) estava ERRADO. Eu tinha testado
+passando a ficha SOURCE (campo `skills`) direto para `stat()`, pulando `paraStat()` (quem
+converte `skills`→`pericias` e `willpower`→`vontade` antes). Pelo caminho real
+(`lerCriaturas()`→`paraStat()`→`stat()`): **0 das 309 fichas** ficam sem Esquiva ou Integridade;
+o bônus de Centelha funciona normalmente nelas. A única lacuna real é **309 de 309 sem
+`skills.sociabilidade`**, sem efeito prático (`stat()` já cai num fallback de perícia social
+antes de zerar). **B15 fechada** com esta correção em `docs/pendencias/B-bestiario.md`.
+
+`quaseAcerto()` (`src/lib/quase-acerto.ts`) virou fonte única: chama `quaseAcertoDoEncontro()`,
+que mudou de `lance.ts` para `quase-acerto.ts` (`lance.ts` só reexporta, sem quebrar
+`grid.astro`/`motor.mjs`). Centelha do dono soma, Centelha do alvo tratada como 0 (documentado no
+código; não há UI consumindo essa função hoje, só testes). Varredura por outras reimplementações
+da conta do raspão: achei mais uma, `scripts/sim-defesas.mjs` (função `eDanoQA`), um script
+exploratório anterior às duas rodadas de Quase-Acerto/Centelha, fora de `package.json`, `validate`
+e `smoke`, não citado em pendência nenhuma. Não toquei; fica para decisão do autor se apaga.
+
+Registrada **A31** (energia/mana fora da Reforma, avaliar com as Artes, texto do autor verbatim)
+e corrigida a nota desatualizada `morte.estadoDaMesa` de `regras.json`.
+
+**Confirmado ao autor, sem inferência**: a Fase 5 não usa nenhum dado do bestiário nem o código
+de Defesa Mental corrigido aqui (`calibrar.mjs --centelha` constrói as quatro fichas de
+referência à mão, do fixture `kael.json`, sem importar `lib-bestiario.mjs`).
+`16-linha-de-base-centelha.md` não precisou ser refeito.
+
+CI completo do GitHub conferido verde nos dois commits (`82da902d`, `56a15544`), via
+`gh run view`, confirmado independentemente pelo autor.
+
 ## É seguro dar `/clear`
 
-Sim. As cinco fases estão commitadas e empurradas para `main` (`adfbb5d7`, `9270be6f`,
-`7bbe593d`, `914ad390`, `de96fa77`), o portão (`validate`/`tsc`/`build`/`espelho`, conforme cada
-fase pedia) está verde em todas, e as pendências que exigiam decisão de regra (o `quase-acerto.ts`
-sem Centelha, a jogada só-de-Atributo, o bestiário sem `pericias`, `lib-tempo.mjs`/
-`cost-examples.mjs` desalinhados, o custo de Habilidades, a Proeza "punho como arma média") estão
-registradas em `docs/pendencias/` (D7 fechado por substituição; D12, D13, D14, B15, K34, K35
-novas), não decididas por conta própria. Nada fica pendente de commit nem de push nesta sessão.
+Sim. As cinco fases e a correção do CI estão commitadas e empurradas para `main` (`adfbb5d7`,
+`9270be6f`, `7bbe593d`, `914ad390`, `de96fa77`, `82da902d`, `56a15544`), o portão local
+(`validate`/`tsc`/`build`/`espelho`, conforme cada fase pedia) está verde em todos, e o CI
+completo do GitHub está verde nos dois commits de correção. As pendências que exigiam decisão de
+regra (o `quase-acerto.ts` sem alvo real, a jogada só-de-Atributo, `lib-tempo.mjs`/
+`cost-examples.mjs` desalinhados, o custo de Habilidades, a Proeza "punho como arma média",
+energia/mana fora da Reforma) estão registradas em `docs/pendencias/` (D7 fechado por
+substituição; D12, D13, D14, K34, K35, A31 novas; B15 registrada e depois corrigida), não
+decididas por conta própria. Nada fica pendente de commit nem de push nesta sessão.
