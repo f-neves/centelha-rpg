@@ -79,7 +79,11 @@
       "resiste": "esquiva",
       "efeito": "Rajada de 4 espinhos, pode dividir entre até 2 alvos na mesma rodada.",
       "ataque": "Espinhos de cauda",
-      "usos": { "periodo": "dia", "quantidade": 6, "recarga": "24 espinhos ao todo, 4 por rajada" }
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 6,
+        "recarga": "24 espinhos ao todo, 4 por rajada"
+      }
     }
   ],
   "habilidades": [
@@ -148,7 +152,8 @@
     "deslocamento": {
       "ft": 30,
       "origem": "fonte"
-    }
+    },
+    "crConf": "conhecido"
   },
   "variantes": [],
   "ameacaLegada": 4

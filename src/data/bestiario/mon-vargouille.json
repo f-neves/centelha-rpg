@@ -127,7 +127,8 @@
       "ft": 30,
       "origem": "fonte",
       "nota": "voo 30: a cabeça alada não tem passo"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 2

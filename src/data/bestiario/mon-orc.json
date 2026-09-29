@@ -64,7 +64,9 @@
       "tipo": "natural",
       "resiste": "nenhum",
       "efeito": "+Vigor de PV extra, sempre.",
-      "usos": { "periodo": "passivo" }
+      "usos": {
+        "periodo": "passivo"
+      }
     }
   ],
   "habilidades": [
@@ -140,7 +142,8 @@
     "deslocamento": {
       "ft": 30,
       "origem": "fonte"
-    }
+    },
+    "crConf": "conhecido"
   },
   "variantes": [],
   "ameacaLegada": 1

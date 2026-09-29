@@ -1,8 +1,8 @@
 {
   "ordem": 42,
   "id": "mon-elefante",
-  "nome": "Mamute",
-  "nomeIngles": "Mammoth",
+  "nome": "Elefante",
+  "nomeIngles": "Elephant",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
   "papel": "fera",
@@ -117,7 +117,7 @@
   "fonte": {
     "livro": "PF B1",
     "nome": "Elefante",
-    "cr": "7",
+    "cr": "9",
     "tipo": "animal Enorme",
     "tamanho": "enorme",
     "valores": {
@@ -134,7 +134,8 @@
     "deslocamento": {
       "ft": 40,
       "origem": "fonte"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 4,

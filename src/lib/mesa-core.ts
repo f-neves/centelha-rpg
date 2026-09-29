@@ -104,16 +104,20 @@ export function tierDe(cur: number | null | undefined, max: number | null | unde
 export const tierCls = (estado: string) => 't-' + norm(estado).replace(/\s+/g, '-');
 
 /**
- * Fraqueza e resistência (a elemento/tipo/natureza) de uma criatura do bestiário.
+ * Fraqueza, resistência e imunidade (a elemento/tipo/natureza) de uma criatura do bestiário.
  *
- * O dado mora em `combate.fraquezas`/`combate.resistencias` (`gen-monsters.mjs`),
- * NUNCA no topo do objeto — achado B12 do docs/pendencias/B-bestiario.md: quatro lugares liam do
- * topo (sempre `[]`, porque nenhuma das 309 tem o campo lá) e nenhum dano de
- * Arte no Grid era agravado. Ler daqui em vez de repetir `m.combate?.fraquezas`
- * é o que impede o quinto lugar de nascer errado.
+ * O dado mora em `combate.fraquezas`/`combate.resistencias`/`combate.imunidades`
+ * (`gen-monsters.mjs`), NUNCA no topo do objeto: achado B12 do docs/pendencias/B-bestiario.md,
+ * quatro lugares liam do topo (sempre `[]`, porque nenhuma das 309 tem o campo lá) e nenhum dano
+ * de Arte no Grid era agravado. Ler daqui em vez de repetir `m.combate?.fraquezas`
+ * é o que impede o quinto lugar de nascer errado. `imunidades` entrou na B14 fase 4 (29/09/2026).
  */
-export function elementosCombate(m: any): { fraquezas: string[]; resistencias: string[] } {
-  return { fraquezas: m?.combate?.fraquezas || [], resistencias: m?.combate?.resistencias || [] };
+export function elementosCombate(m: any): { fraquezas: string[]; resistencias: string[]; imunidades: string[] } {
+  return {
+    fraquezas: m?.combate?.fraquezas || [],
+    resistencias: m?.combate?.resistencias || [],
+    imunidades: m?.combate?.imunidades || [],
+  };
 }
 
 export const pctDe = (cur: number | null | undefined, max: number | null | undefined) =>

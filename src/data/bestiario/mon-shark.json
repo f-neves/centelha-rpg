@@ -117,7 +117,8 @@
       "ft": 60,
       "origem": "fonte",
       "nota": "nado 60: o tubarão não tem passo em terra"
-    }
+    },
+    "crConf": "conhecido"
   },
   "variantes": [],
   "ameacaLegada": 2

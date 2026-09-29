@@ -194,7 +194,7 @@
   "fonte": {
     "livro": "PF B1",
     "nome": "Dragão Dourado Adulto",
-    "cr": "17",
+    "cr": "15",
     "tipo": "dragão Enorme (metálico)",
     "tamanho": "enorme",
     "valores": {
@@ -215,7 +215,8 @@
     "deslocamento": {
       "ft": 40,
       "origem": "fonte"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 6

@@ -52,6 +52,10 @@ export const poderNaturalSchema = z.object({
   resiste: z.enum(['esquiva', 'corpo', 'mente', 'nenhum']),
   area: texto.optional(),
   efeito: texto,
+  /** Texto em prosa, adaptado da fonte e escrito próprio (B14 fase 4, item 4): o que o
+   *  poder faz na ficção e nos números dela, mesmo sem regra ainda no sistema para
+   *  aquele efeito. O Mestre tem de conseguir usar o poder só com este texto. */
+  descricao: texto.optional(),
   /** Só veneno e toque: o `nome` do ataque em `ataques` que carrega o poder, porque
    *  o efeito sai no golpe (resposta da fase 2, item 1). */
   ataque: texto.optional(),
@@ -156,6 +160,11 @@ export const criaturaSchema = z.object({
   proezaFutura: z.array(z.object({ caminho: texto, tecnica: texto.optional() }).strict()).optional(),
   fraquezas: z.array(texto).optional(),
   resistencias: z.array(texto).optional(),
+  /** Imunidade a um tipo de dano (B14 fase 4, item 5): dano daquele tipo é zero. Se um
+   *  efeito (não o dado da própria criatura) impuser fraqueza ao mesmo tipo por cima,
+   *  o dano volta a ser normal (regras.json, ao lado de fraqueza/resistência). Mesmo
+   *  vocabulário fechado de fraquezas/resistencias. */
+  imunidades: z.array(texto).optional(),
   habilidades: z.array(z.object({ nome: texto, descricao: texto }).strict()),
   lore: z.array(z.object({ titulo: texto, texto }).strict()),
   ecologia: z.object({ tipo: texto, terreno: z.array(texto), clima: z.array(texto) }).strict(),
@@ -163,6 +172,10 @@ export const criaturaSchema = z.object({
   pendente: z.boolean(),
   fonte: z.object({
     livro: texto.optional(), nome: texto.optional(), cr: texto.optional(),
+    /** Confiança do CR (B14 fase 4): "confirmado" (conferido na fonte, número exato),
+     *  "conhecido" (a fonte é clara, mas a leitura teve alguma dúvida menor) ou
+     *  "estimado" (sem fonte direta, por comparação com criatura parecida). */
+    crConf: z.enum(['confirmado', 'conhecido', 'estimado']).optional(),
     tipo: texto.optional(), tamanho: texto.optional(),
     valores: z.object({ for: valorOriginal, des: valorOriginal, con: valorOriginal, int: valorOriginal, sab: valorOriginal, car: valorOriginal }).strict().optional(),
     pericias: z.array(texto).optional(),

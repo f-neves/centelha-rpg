@@ -2122,6 +2122,12 @@
       ],
       "campoBestiario": "criar `fraquezas` e `resistencias` na criatura, como listas de palavras-chave (luz, sagrado, profano, fogo, agua, prata, sol)"
     },
+    "imunidade": {
+      "nota": "Imunidade a um tipo de dano (B14 fase 4, 29/09/2026): dano daquele tipo é ZERO, não metade como a resistência. Aparece em criatura cuja própria natureza rejeita o tipo (elemental de fogo e o fogo, morto-vivo e veneno, construto e doença).",
+      "regra": "o dano daquele tipo não fere nada: nem PV, nem condição, nem efeito de acompanhamento (veneno, doença, sangramento do mesmo tipo).",
+      "coexistencia": "se a MESMA criatura tiver imunidade e fraqueza ao mesmo tipo ao mesmo tempo, por um efeito de jogo que sobrepõe uma à outra (nunca pelo dado da própria criatura, que nunca grava as duas juntas para o mesmo tipo), o dano volta a ser NORMAL: as duas se cancelam, e nenhuma vence.",
+      "campoBestiario": "criar `imunidades` na criatura, lista de palavras-chave do MESMO vocabulário fechado de `fraquezas`/`resistencias`"
+    },
     "efeitos": {
       "nota": "Efeito é o resultado específico comprado dentro de uma Arte (o Special Effect do Sorcerer). A Arte dá o elemento em estado bruto; o Efeito dá forma, nome e comportamento. Régua: se precisa de um substantivo próprio para ser descrito, é Efeito.",
       "xp": "4 × nível do Efeito (ver xp.efeito). Não acumula: comprar o Efeito de nível 2 não exige ter o de nível 1.",

@@ -20,7 +20,7 @@
   "locomocao": {
     "terra": 5
   },
-  "centelha": 2,
+  "centelha": 1,
   "attrs": {
     "forca": 5,
     "destreza": 4,
@@ -124,7 +124,8 @@
     "deslocamento": {
       "ft": 50,
       "origem": "fonte"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 2

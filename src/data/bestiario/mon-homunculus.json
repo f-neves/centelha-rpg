@@ -131,7 +131,8 @@
       "ft": 50,
       "origem": "fonte",
       "nota": "voo 50; em terra 20, e o bichinho é feito para voar"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 2

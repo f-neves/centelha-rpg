@@ -121,7 +121,8 @@
       "ft": 60,
       "origem": "fonte",
       "nota": "nado 60 (o jato de 260 é fuga)"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 5

@@ -118,7 +118,8 @@
       "ft": 60,
       "origem": "fonte",
       "nota": "nado 60 (o jato de 240 é fuga, não deslocamento)"
-    }
+    },
+    "crConf": "conhecido"
   },
   "variantes": [],
   "ameacaLegada": 2

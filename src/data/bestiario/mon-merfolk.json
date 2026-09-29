@@ -121,7 +121,8 @@
       "ft": 50,
       "origem": "fonte",
       "nota": "nado 50: em terra o povo do mar se arrasta 5 ft"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 1

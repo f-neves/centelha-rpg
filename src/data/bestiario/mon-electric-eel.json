@@ -116,7 +116,8 @@
       "ft": 30,
       "origem": "fonte",
       "nota": "nado 30; em terra a enguia se arrasta 5 ft"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 2

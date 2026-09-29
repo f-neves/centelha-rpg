@@ -89,6 +89,7 @@ export interface CriaturaEdit {
   material?: string;
   fraquezas: string[];
   resistencias: string[];
+  imunidades?: string[];
   bonus?: Bonus;
   ataques?: Ataque[];
   habilidades?: { nome: string; descricao: string }[];
@@ -191,6 +192,7 @@ export function paraJson(c: CriaturaEdit) {
   if (c.material) out.material = c.material;
   if (c.fraquezas?.length) out.fraquezas = [...c.fraquezas].sort();
   if (c.resistencias?.length) out.resistencias = [...c.resistencias].sort();
+  if (c.imunidades?.length) out.imunidades = [...c.imunidades].sort();
   // `Bonus` é uma interface de campos nomeados, e `semVazio` só quer um objeto
   // para varrer: o cast é a ponte entre as duas leituras do mesmo dado.
   const bn = semVazio((c.bonus || {}) as unknown as Record<string, unknown>);

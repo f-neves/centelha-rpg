@@ -81,7 +81,9 @@
       "tipo": "natural",
       "resiste": "nenhum",
       "efeito": "Levita a si e até 900 kg, sem limite de tempo.",
-      "usos": { "periodo": "avontade" }
+      "usos": {
+        "periodo": "avontade"
+      }
     },
     {
       "id": "nevoa",
@@ -90,7 +92,10 @@
       "resiste": "nenhum",
       "area": "raio de 9 m",
       "efeito": "Névoa espessa que cobre a visão e concede Furtividade a aliados, dificultando Ataques à distância contra eles.",
-      "usos": { "periodo": "cena", "quantidade": 1 }
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 1
+      }
     }
   ],
   "habilidades": [
@@ -159,7 +164,8 @@
     "deslocamento": {
       "ft": 50,
       "origem": "fonte"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 5,

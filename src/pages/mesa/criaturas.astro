@@ -276,9 +276,10 @@ import MesaCab from '../../components/MesaCab.astro';
              ${variante ? '<span class="cri-var">variante</span>' : ''}</figure>`
         : `<figure class="cri-arte" data-mon="${m.id}"><span class="cap">${esc((m.nome || '?').trim()[0])}</span>
              <span class="cri-am">${estrelas(m.ameaca)}</span></figure>`;
-      const { fraquezas: crFraq, resistencias: crRes } = elementosCombate(m);
+      const { fraquezas: crFraq, resistencias: crRes, imunidades: crImu } = elementosCombate(m);
       const el2 = [...crFraq.map((f: string) => `<span class="el el-fraco" title="Fraqueza">▼ ${esc(f)}</span>`),
-                   ...crRes.map((x: string) => `<span class="el el-forte" title="Resistência">▲ ${esc(x)}</span>`)].join('');
+                   ...crRes.map((x: string) => `<span class="el el-forte" title="Resistência">▲ ${esc(x)}</span>`),
+                   ...crImu.map((x: string) => `<span class="el el-imune" title="Imunidade">◆ ${esc(x)}</span>`)].join('');
       return `${cabecalho}<article class="cri-card${(MESTRE && !c.visivel_jogadores) ? ' privada' : ''}" data-cr="${c.id}">
         ${arte}
         <div class="cri-corpo">

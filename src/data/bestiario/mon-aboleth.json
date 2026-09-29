@@ -194,7 +194,8 @@
       "ft": 60,
       "origem": "fonte",
       "nota": "nado 60; em terra 10, e o aboleth não sai da água"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 4

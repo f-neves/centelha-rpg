@@ -126,7 +126,8 @@
       "ft": 30,
       "origem": "fonte",
       "nota": "nado 30: o enxame de sanguessugas vive na água"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 3

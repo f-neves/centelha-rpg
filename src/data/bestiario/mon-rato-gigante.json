@@ -22,9 +22,9 @@
   },
   "centelha": 0,
   "attrs": {
-    "forca": 1,
-    "destreza": 4,
-    "vigor": 2,
+    "forca": 2,
+    "destreza": 5,
+    "vigor": 3,
     "influencia": 1,
     "perspicacia": 1,
     "compostura": 2,
@@ -102,13 +102,13 @@
   "fonte": {
     "livro": "PF B1",
     "nome": "Rato Gigante",
-    "cr": "1/8",
+    "cr": "1/3",
     "tipo": "animal Pequeno",
     "tamanho": "pequeno",
     "valores": {
-      "for": 2,
-      "des": 15,
-      "con": 11,
+      "for": 10,
+      "des": 17,
+      "con": 13,
       "int": 2,
       "sab": 13,
       "car": 4
@@ -120,7 +120,9 @@
     "deslocamento": {
       "ft": 40,
       "origem": "fonte"
-    }
+    },
+    "crConf": "confirmado",
+    "nota": "Corrigido em 29/09/2026 (B14 fase 4): os valores gravados antes (For 2, Des 15, Con 11) eram do rato comum (Bestiary 1); o Rato Gigante de porte Pequeno é o Dire Rat (For 10, Des 17, Con 13), CR 1/3."
   },
   "variantes": [],
   "ameacaLegada": 1

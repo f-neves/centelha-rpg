@@ -13743,6 +13743,140 @@
   ]
  },
  {
+  "id": "mon-elefante",
+  "nome": "Elefante",
+  "nomeIngles": "Elephant",
+  "categoria": "Animal",
+  "tipo": "fera",
+  "conceito": "animal Enorme",
+  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "tags": [
+   "fera"
+  ],
+  "ameaca": 4,
+  "centelha": 0,
+  "pendente": true,
+  "porte": "Enorme",
+  "dimensoes": {
+   "medida": "3,5 m de altura no ombro, 6 m de comprimento",
+   "peso": "6 t"
+  },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Plains",
+    "Jungle"
+   ],
+   "clima": [
+    "Tropical"
+   ]
+  },
+  "imagem": "bestiario/elefante.webp",
+  "semImagem": false,
+  "atributos": {
+   "forca": 11,
+   "destreza": 2,
+   "vigor": 8,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 2,
+   "percepcao": 3,
+   "inteligencia": 1,
+   "raciocinio": 2
+  },
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
+  "combate": {
+   "pv": 75,
+   "defesa": 4,
+   "defesaSocial": 4,
+   "defesaMental": 9,
+   "absorcao": {
+    "impacto": 8,
+    "corte": 8,
+    "perfuracao": 8
+   },
+   "resistenciaPerfuracao": 1,
+   "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "7d6+2",
+     "dano": "3d6 +11 perfurante",
+     "perfArma": 0,
+     "speed": 7,
+     "classe": "pesada"
+    }
+   ]
+  },
+  "habilidades": [
+   {
+    "nome": "Pisoteio",
+    "descricao": "área de 3m sob as patas; dano alto e Reflexos ou Caído"
+   },
+   {
+    "nome": "Agarrar com a tromba",
+    "descricao": "agarra um alvo Médio ou menor; pode arremessá-lo 4m causando dano"
+   },
+   {
+    "nome": "Couro grosso",
+    "descricao": "Absorção alta contra cortes e perfurações"
+   },
+   {
+    "nome": "Investida avassaladora",
+    "descricao": "moveu antes de atacar: dano extra e empurra o alvo 2m"
+   },
+   {
+    "nome": "Corpo enorme",
+    "descricao": "PV muito altos, dificilmente é Derrubado"
+   },
+   {
+    "nome": "Pisoteio",
+    "descricao": "Manobra de combate, sem limite de uso."
+   },
+   {
+    "nome": "Agarrar com a tromba",
+    "descricao": "Depende do agarrão; engolir 1 alvo por vez."
+   }
+  ],
+  "poderes": [],
+  "tecnicas": [],
+  "artes": [],
+  "notas": "Habilidades notáveis: Prontidão 2.",
+  "lore": [
+   {
+    "titulo": "Comportamento",
+    "texto": "Vive em manadas matriarcais, com forte laço social entre fêmeas e crias e uma memória apurada para rotas e perigos."
+   },
+   {
+    "titulo": "Ecologia",
+    "texto": "Herbívoro que migra por longas distâncias em busca de água e pasto, moldando a paisagem por onde passa."
+   },
+   {
+    "titulo": "No mundo de Centelha",
+    "texto": "As manadas cruzam as savanas e florestas de Mére, tratadas por alguns povos locais como animais quase sagrados pela sabedoria aparente e a longevidade, sem qualquer laço real com magia."
+   }
+  ]
+ },
+ {
   "id": "mon-small-water-elemental",
   "nome": "Elemental da Água (Pequeno)",
   "nomeIngles": "Elemental, Water",
@@ -27347,140 +27481,6 @@
   ]
  },
  {
-  "id": "mon-elefante",
-  "nome": "Mamute",
-  "nomeIngles": "Mammoth",
-  "categoria": "Animal",
-  "tipo": "fera",
-  "conceito": "animal Enorme",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
-  "tags": [
-   "fera"
-  ],
-  "ameaca": 4,
-  "centelha": 0,
-  "pendente": true,
-  "porte": "Enorme",
-  "dimensoes": {
-   "medida": "3,5 m de altura no ombro, 6 m de comprimento",
-   "peso": "6 t"
-  },
-  "ecologia": {
-   "tipo": "Animal",
-   "terreno": [
-    "Plains",
-    "Jungle"
-   ],
-   "clima": [
-    "Tropical"
-   ]
-  },
-  "imagem": "bestiario/elefante.webp",
-  "semImagem": false,
-  "atributos": {
-   "forca": 11,
-   "destreza": 2,
-   "vigor": 8,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 2,
-   "percepcao": 3,
-   "inteligencia": 1,
-   "raciocinio": 2
-  },
-  "pericias": {
-   "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 1
-  },
-  "vontade": 5,
-  "aparencia": 4,
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 2,
-   "temperanca": 2,
-   "valor": 2
-  },
-  "combate": {
-   "pv": 75,
-   "defesa": 4,
-   "defesaSocial": 4,
-   "defesaMental": 9,
-   "absorcao": {
-    "impacto": 8,
-    "corte": 8,
-    "perfuracao": 8
-   },
-   "resistenciaPerfuracao": 1,
-   "iniciativa": "1d6 + 3",
-   "deslocamento": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-   },
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "7d6+2",
-     "dano": "3d6 +11 perfurante",
-     "perfArma": 0,
-     "speed": 7,
-     "classe": "pesada"
-    }
-   ]
-  },
-  "habilidades": [
-   {
-    "nome": "Pisoteio",
-    "descricao": "área de 3m sob as patas; dano alto e Reflexos ou Caído"
-   },
-   {
-    "nome": "Agarrar com a tromba",
-    "descricao": "agarra um alvo Médio ou menor; pode arremessá-lo 4m causando dano"
-   },
-   {
-    "nome": "Couro grosso",
-    "descricao": "Absorção alta contra cortes e perfurações"
-   },
-   {
-    "nome": "Investida avassaladora",
-    "descricao": "moveu antes de atacar: dano extra e empurra o alvo 2m"
-   },
-   {
-    "nome": "Corpo enorme",
-    "descricao": "PV muito altos, dificilmente é Derrubado"
-   },
-   {
-    "nome": "Pisoteio",
-    "descricao": "Manobra de combate, sem limite de uso."
-   },
-   {
-    "nome": "Agarrar com a tromba",
-    "descricao": "Depende do agarrão; engolir 1 alvo por vez."
-   }
-  ],
-  "poderes": [],
-  "tecnicas": [],
-  "artes": [],
-  "notas": "Habilidades notáveis: Prontidão 2.",
-  "lore": [
-   {
-    "titulo": "Comportamento",
-    "texto": "Vive em manadas matriarcais, com forte laço social entre fêmeas e crias e uma memória apurada para rotas e perigos."
-   },
-   {
-    "titulo": "Ecologia",
-    "texto": "Herbívoro que migra por longas distâncias em busca de água e pasto, moldando a paisagem por onde passa."
-   },
-   {
-    "titulo": "No mundo de Centelha",
-    "texto": "As manadas cruzam as savanas e florestas de Mére, tratadas por alguns povos locais como animais quase sagrados pela sabedoria aparente e a longevidade, sem qualquer laço real com magia."
-   }
-  ]
- },
- {
   "id": "mon-manticora",
   "nome": "Mantícora",
   "nomeIngles": "Manticore",
@@ -27928,7 +27928,7 @@
  },
  {
   "id": "mon-mastodon",
-  "nome": "Mastodonte",
+  "nome": "Mastodonte (Mamute)",
   "nomeIngles": "Mastodon",
   "categoria": "Animal",
   "tipo": "chefe",
@@ -34355,9 +34355,9 @@
   "imagem": "bestiario/rato-gigante.webp",
   "semImagem": false,
   "atributos": {
-   "forca": 1,
-   "destreza": 4,
-   "vigor": 2,
+   "forca": 2,
+   "destreza": 5,
+   "vigor": 3,
    "influencia": 1,
    "perspicacia": 1,
    "compostura": 2,
@@ -34381,12 +34381,12 @@
    "valor": 2
   },
   "combate": {
-   "pv": 24,
-   "defesa": 10,
+   "pv": 26,
+   "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
-    "impacto": 2,
+    "impacto": 3,
     "corte": 1,
     "perfuracao": 1
    },
@@ -34400,8 +34400,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "1d6",
-     "dano": "1d6 +1 perfurante",
+     "pool": "1d6+2",
+     "dano": "1d6 +2 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -41404,7 +41404,7 @@
    "centelha"
   ],
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 1,
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
@@ -41453,11 +41453,11 @@
    "pv": 34,
    "defesa": 12,
    "defesaSocial": 6,
-   "defesaMental": 16,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 4,
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -41469,8 +41469,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "4d6 +4",
-     "dano": "1d6 +7 perfurante",
+     "pool": "4d6 +2",
+     "dano": "1d6 +6 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"

@@ -5,7 +5,9 @@
   "nomeIngles": "Retriever",
   "categoria": "Construto",
   "categoriaLegada": "Monstro",
-  "constructo": { "semVida": true },
+  "constructo": {
+    "semVida": true
+  },
   "papel": "chefe",
   "conceito": "constructo Enorme",
   "descricao": "Autômato sem vida, movido por magia alheia.",
@@ -134,7 +136,8 @@
     "deslocamento": {
       "ft": 50,
       "origem": "fonte"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 5

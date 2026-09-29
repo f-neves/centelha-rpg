@@ -73,7 +73,10 @@
       "resiste": "nenhum",
       "area": "convoca tempestade sobre uma área",
       "efeito": "Leva 10 minutos para conjurar; dura a cena. Reduz visibilidade e Ataques à distância de inimigos; a critério do Mestre, raios caem ao acaso na área.",
-      "usos": { "periodo": "dia", "quantidade": 1 }
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 1
+      }
     }
   ],
   "habilidades": [
@@ -146,7 +149,8 @@
     "deslocamento": {
       "ft": 50,
       "origem": "fonte"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 5

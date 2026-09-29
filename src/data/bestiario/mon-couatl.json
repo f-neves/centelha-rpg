@@ -183,7 +183,8 @@
       "ft": 60,
       "origem": "fonte",
       "nota": "voo 60; a serpente alada rasteja 20 e não é assim que ela vai"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 5,

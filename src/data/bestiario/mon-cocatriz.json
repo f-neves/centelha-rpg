@@ -146,7 +146,8 @@
       "ft": 60,
       "origem": "fonte",
       "nota": "voo 60; em terra 20: a cocatriz é bicho de asa"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 3

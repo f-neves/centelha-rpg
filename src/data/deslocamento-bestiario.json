@@ -688,6 +688,13 @@
   "origem": "fonte",
   "nota": "nado 50; em terra 20, e ele quase não sai da água"
  },
+ "mon-elefante": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 40,
+  "origem": "fonte"
+ },
  "mon-small-water-elemental": {
   "batalha": 2,
   "arranque": 3,
@@ -1415,13 +1422,6 @@
   "corrida": 7,
   "ft": 30,
   "origem": "tabela"
- },
- "mon-elefante": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
-  "ft": 40,
-  "origem": "fonte"
  },
  "mon-manticora": {
   "batalha": 3,

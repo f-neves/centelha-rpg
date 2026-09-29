@@ -2460,7 +2460,7 @@
   },
   {
     "id": "mon-elefante",
-    "nome": "Mamute",
+    "nome": "Elefante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 4,
@@ -2963,22 +2963,22 @@
     "tags": [
       "fera"
     ],
-    "pv": 24,
-    "defesa": 10,
+    "pv": 26,
+    "defesa": 12,
     "defesaSocial": 4,
     "defesaMental": 9,
     "vontade": 5,
     "soak": {
-      "impacto": 2,
+      "impacto": 3,
       "corte": 1,
       "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
-      "forca": 1,
-      "destreza": 4,
-      "vigor": 2,
+      "forca": 2,
+      "destreza": 5,
+      "vigor": 3,
       "influencia": 1,
       "perspicacia": 1,
       "compostura": 2,
@@ -2989,8 +2989,8 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "1d6",
-        "dano": "1d6 +1 perfurante",
+        "pool": "1d6+2",
+        "dano": "1d6 +2 perfurante",
         "perfArma": 0,
         "ticks": 5
       }
@@ -14363,7 +14363,7 @@
   },
   {
     "id": "mon-mastodon",
-    "nome": "Mastodonte",
+    "nome": "Mastodonte (Mamute)",
     "tipo": "chefe",
     "categoria": "Fera",
     "ameaca": 5,
@@ -19884,7 +19884,7 @@
     "tipo": "fera",
     "categoria": "Besta mágica",
     "ameaca": 2,
-    "centelha": 2,
+    "centelha": 1,
     "conceito": "besta mágica Médio",
     "descricao": "Fera tocada pela magia, além do reino natural.",
     "tags": [
@@ -19894,12 +19894,12 @@
     "pv": 34,
     "defesa": 12,
     "defesaSocial": 6,
-    "defesaMental": 16,
+    "defesaMental": 14,
     "vontade": 7,
     "soak": {
-      "impacto": 5,
-      "corte": 3,
-      "perfuracao": 3
+      "impacto": 4,
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -19917,8 +19917,8 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "4d6 +4",
-        "dano": "1d6 +7 perfurante",
+        "pool": "4d6 +2",
+        "dano": "1d6 +6 perfurante",
         "perfArma": 0,
         "ticks": 5
       }

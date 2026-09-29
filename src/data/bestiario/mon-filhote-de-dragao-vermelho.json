@@ -164,7 +164,7 @@
   "fonte": {
     "livro": "PF B1",
     "nome": "Filhote de Dragão Vermelho",
-    "cr": "7",
+    "cr": "6",
     "tipo": "dragão Médio",
     "tamanho": "medio",
     "valores": {
@@ -184,7 +184,8 @@
     "deslocamento": {
       "ft": 40,
       "origem": "fonte"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 4

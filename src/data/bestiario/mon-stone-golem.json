@@ -5,7 +5,9 @@
   "nomeIngles": "Golem, Stone",
   "categoria": "Construto",
   "categoriaLegada": "Monstro",
-  "constructo": { "semVida": true },
+  "constructo": {
+    "semVida": true
+  },
   "papel": "chefe",
   "conceito": "constructo Grande",
   "descricao": "Autômato sem vida, movido por magia alheia.",
@@ -125,7 +127,8 @@
     "deslocamento": {
       "ft": 20,
       "origem": "fonte"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 5

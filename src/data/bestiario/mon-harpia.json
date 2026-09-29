@@ -156,7 +156,8 @@
       "ft": 80,
       "origem": "fonte",
       "nota": "voo 80; em terra 20, e a harpia caça no ar"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 3,

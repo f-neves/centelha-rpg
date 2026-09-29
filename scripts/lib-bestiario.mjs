@@ -292,6 +292,7 @@ export function deCustom(c) {
     ...(c.poderes?.length ? { poderes: c.poderes } : {}),
     ...(c.fraquezas ? { fraquezas: c.fraquezas } : {}),
     ...(c.resistencias ? { resistencias: c.resistencias } : {}),
+    ...(c.imunidades ? { imunidades: c.imunidades } : {}),
     habilidades: c.habilidades || [], lore: c.lore || [], ecologia: eco,
     notas: c.notas || '', pendente: c.pendente ?? false,
     variantes: [], ameacaLegada: c.ameaca ?? 1,

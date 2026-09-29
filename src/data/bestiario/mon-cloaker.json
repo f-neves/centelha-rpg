@@ -121,7 +121,8 @@
       "ft": 40,
       "origem": "fonte",
       "nota": "voo 40; em terra 10, e o manto vive no ar"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 4

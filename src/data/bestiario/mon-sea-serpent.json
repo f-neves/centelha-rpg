@@ -126,7 +126,8 @@
       "ft": 60,
       "origem": "fonte",
       "nota": "nado 60; em terra 20, e ela não sai do mar"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 5

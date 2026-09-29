@@ -140,7 +140,8 @@
       "ft": 80,
       "origem": "fonte",
       "nota": "voo 80; em terra a águia salta 10 ft"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 3,

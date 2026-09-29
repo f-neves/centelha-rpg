@@ -160,7 +160,7 @@
   "fonte": {
     "livro": "MM 3.5",
     "nome": "Tarrasque",
-    "cr": "20",
+    "cr": "25",
     "tipo": "besta mágica Colossal",
     "tamanho": "colossal",
     "valores": {
@@ -178,7 +178,8 @@
     "deslocamento": {
       "ft": 40,
       "origem": "fonte"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 6,

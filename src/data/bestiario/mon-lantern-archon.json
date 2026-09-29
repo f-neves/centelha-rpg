@@ -124,7 +124,8 @@
       "ft": 60,
       "origem": "fonte",
       "nota": "voo 60 (perfeito): a esfera de luz não tem passo"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 2

@@ -126,7 +126,8 @@
       "ft": 20,
       "origem": "fonte",
       "nota": "nado 20; em terra a sanguessuga se arrasta 5"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 2

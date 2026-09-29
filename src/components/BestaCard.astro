@@ -66,7 +66,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
         pericias: i.pericias || {},
         integridade: i.pericias?.integridade ?? 0,
         prontidao: i.pericias?.prontidao ?? 0,
-        fraquezas: i.combate.fraquezas || [], resistencias: i.combate.resistencias || [], notas: i.notas || '', armadura: 'nenhuma', ataquesLivro: (i.combate.ataques || []).map((x: any) => ({ nome: x.nome, pool: x.pool, dano: x.dano, speed: x.speed })) })}>
+        fraquezas: i.combate.fraquezas || [], resistencias: i.combate.resistencias || [], imunidades: i.combate.imunidades || [], notas: i.notas || '', armadura: 'nenhuma', ataquesLivro: (i.combate.ataques || []).map((x: any) => ({ nome: x.nome, pool: x.pool, dano: x.dano, speed: x.speed })) })}>
 
         <figure class={`arte${i.imagem ? '' : ' sem-arte'}`} data-cent={i.centelha}>
           {i.imagem
@@ -109,7 +109,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
             <div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>
           </dl>
 
-          {(i.combate.fraquezas?.length || i.combate.resistencias?.length) && (
+          {(i.combate.fraquezas?.length || i.combate.resistencias?.length || i.combate.imunidades?.length) && (
             <div class="besta-elem">
               {i.combate.fraquezas?.length && (
                 <span class="el-linha" title="Dano deste tipo não é absorvido por nada (nem armadura, nem Absorção natural, nem Centelha) e é agravado: não fecha com descanso nem com a Habilidade Cura.">
@@ -121,6 +121,12 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
                 <span class="el-linha" title="Dano deste tipo cai pela metade, arredondando para cima, depois da armadura e antes da Absorção.">
                   <span class="el-lbl">Resiste</span>
                   {i.combate.resistencias.map((k: string) => <span class="el el-res">{ELEM[k] ?? k}</span>)}
+                </span>
+              )}
+              {i.combate.imunidades?.length && (
+                <span class="el-linha" title="Dano deste tipo é zero.">
+                  <span class="el-lbl">Imune</span>
+                  {i.combate.imunidades.map((k: string) => <span class="el el-imu">{ELEM[k] ?? k}</span>)}
                 </span>
               )}
             </div>

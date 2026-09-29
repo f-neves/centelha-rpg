@@ -5,7 +5,9 @@
   "nomeIngles": "Animated Object",
   "categoria": "Construto",
   "categoriaLegada": "Monstro",
-  "constructo": { "semVida": true },
+  "constructo": {
+    "semVida": true
+  },
   "papel": "soldado",
   "conceito": "constructo Médio",
   "descricao": "Autômato sem vida, movido por magia alheia.",
@@ -131,7 +133,8 @@
     "deslocamento": {
       "ft": 30,
       "origem": "fonte"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 3

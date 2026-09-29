@@ -8536,6 +8536,88 @@
   }
  },
  {
+  "id": "mon-elefante",
+  "nome": "Elefante",
+  "nomeIngles": "Elephant",
+  "ameaca": 4,
+  "centelha": 0,
+  "categoria": "Animal",
+  "porte": "Enorme",
+  "imagem": "bestiario/elefante.webp",
+  "semImagem": false,
+  "tipo": "fera",
+  "atributos": {
+   "forca": 11,
+   "destreza": 2,
+   "vigor": 8,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 2,
+   "percepcao": 3,
+   "inteligencia": 1,
+   "raciocinio": 2
+  },
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 0,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 75,
+   "defesa": 4,
+   "defesaSocial": 4,
+   "defesaMental": 9,
+   "absorcao": {
+    "impacto": 8,
+    "corte": 8,
+    "perfuracao": 8
+   },
+   "resistenciaPerfuracao": 1,
+   "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "7d6+2",
+     "dano": "3d6 +11 perfurante",
+     "perfArma": 0,
+     "speed": 7,
+     "classe": "pesada"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Animal",
+   "terreno": [
+    "Plains",
+    "Jungle"
+   ],
+   "clima": [
+    "Tropical"
+   ]
+  },
+  "dimensoes": {
+   "medida": "3,5 m de altura no ombro, 6 m de comprimento",
+   "peso": "6 t"
+  }
+ },
+ {
   "id": "mon-small-water-elemental",
   "nome": "Elemental da Água (Pequeno)",
   "nomeIngles": "Elemental, Water",
@@ -17312,88 +17394,6 @@
   }
  },
  {
-  "id": "mon-elefante",
-  "nome": "Mamute",
-  "nomeIngles": "Mammoth",
-  "ameaca": 4,
-  "centelha": 0,
-  "categoria": "Animal",
-  "porte": "Enorme",
-  "imagem": "bestiario/elefante.webp",
-  "semImagem": false,
-  "tipo": "fera",
-  "atributos": {
-   "forca": 11,
-   "destreza": 2,
-   "vigor": 8,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 2,
-   "percepcao": 3,
-   "inteligencia": 1,
-   "raciocinio": 2
-  },
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 2,
-   "temperanca": 2,
-   "valor": 2
-  },
-  "vontade": 5,
-  "aparencia": 4,
-  "pericias": {
-   "prontidao": 1,
-   "esquiva": 0,
-   "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 1
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 75,
-   "defesa": 4,
-   "defesaSocial": 4,
-   "defesaMental": 9,
-   "absorcao": {
-    "impacto": 8,
-    "corte": 8,
-    "perfuracao": 8
-   },
-   "resistenciaPerfuracao": 1,
-   "iniciativa": "1d6 + 3",
-   "deslocamento": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-   },
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "7d6+2",
-     "dano": "3d6 +11 perfurante",
-     "perfArma": 0,
-     "speed": 7,
-     "classe": "pesada"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Animal",
-   "terreno": [
-    "Plains",
-    "Jungle"
-   ],
-   "clima": [
-    "Tropical"
-   ]
-  },
-  "dimensoes": {
-   "medida": "3,5 m de altura no ombro, 6 m de comprimento",
-   "peso": "6 t"
-  }
- },
- {
   "id": "mon-manticora",
   "nome": "Mantícora",
   "nomeIngles": "Manticore",
@@ -17680,7 +17680,7 @@
  },
  {
   "id": "mon-mastodon",
-  "nome": "Mastodonte",
+  "nome": "Mastodonte (Mamute)",
   "nomeIngles": "Mastodon",
   "ameaca": 5,
   "centelha": 0,
@@ -21765,9 +21765,9 @@
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
-   "forca": 1,
-   "destreza": 4,
-   "vigor": 2,
+   "forca": 2,
+   "destreza": 5,
+   "vigor": 3,
    "influencia": 1,
    "perspicacia": 1,
    "compostura": 2,
@@ -21793,12 +21793,12 @@
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 24,
-   "defesa": 10,
+   "pv": 26,
+   "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
-    "impacto": 2,
+    "impacto": 3,
     "corte": 1,
     "perfuracao": 1
    },
@@ -21812,8 +21812,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "1d6",
-     "dano": "1d6 +1 perfurante",
+     "pool": "1d6+2",
+     "dano": "1d6 +2 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -26270,7 +26270,7 @@
   "nome": "Worg",
   "nomeIngles": "Worg",
   "ameaca": 2,
-  "centelha": 2,
+  "centelha": 1,
   "categoria": "Besta mágica",
   "porte": "Médio",
   "imagem": "bestiario/worg.webp",
@@ -26308,11 +26308,11 @@
    "pv": 34,
    "defesa": 12,
    "defesaSocial": 6,
-   "defesaMental": 16,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "impacto": 4,
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -26324,8 +26324,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "4d6 +4",
-     "dano": "1d6 +7 perfurante",
+     "pool": "4d6 +2",
+     "dano": "1d6 +6 perfurante",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"

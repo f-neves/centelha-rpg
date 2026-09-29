@@ -1,7 +1,7 @@
 {
   "ordem": 206,
   "id": "mon-mastodon",
-  "nome": "Mastodonte",
+  "nome": "Mastodonte (Mamute)",
   "nomeIngles": "Mastodon",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
@@ -117,7 +117,8 @@
     "deslocamento": {
       "ft": 40,
       "origem": "fonte"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 5

@@ -144,7 +144,8 @@
       "ft": 80,
       "origem": "fonte",
       "nota": "voo 80; em terra 20"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 5

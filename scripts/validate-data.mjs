@@ -1072,10 +1072,15 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
       if (base && !ARMD.has(base)) fail(`${onde}: armadura inexistente "${base}"`);
     }
     if (c.material && !MATERIAIS[String(c.material).toLowerCase()]) fail(`${onde}: material desconhecido "${c.material}"`);
-    const fr = c.fraquezas || [], rs = c.resistencias || [];
-    for (const k of [...fr, ...rs]) if (!ELEM_VOCAB.has(k)) fail(`${onde}: palavra fora do vocabulário "${k}"`);
+    const fr = c.fraquezas || [], rs = c.resistencias || [], im = c.imunidades || [];
+    for (const k of [...fr, ...rs, ...im]) if (!ELEM_VOCAB.has(k)) fail(`${onde}: palavra fora do vocabulário "${k}"`);
     const choque = fr.filter((x) => rs.includes(x));
     if (choque.length) fail(`${onde}: "${choque.join(', ')}" é fraqueza e resistência ao mesmo tempo`);
+    // Imunidade e fraqueza ao mesmo tipo, pelo DADO DA CRIATURA, nunca deveriam coexistir
+    // (a regra em regras.json diz que essa combinação só existe por efeito de jogo, nunca
+    // pela ficha): se a ficha grava as duas, é erro de digitação, não a exceção da regra.
+    const choqueImune = im.filter((x) => fr.includes(x));
+    if (choqueImune.length) fail(`${onde}: "${choqueImune.join(', ')}" é fraqueza e imunidade ao mesmo tempo (só um efeito de jogo faz essa combinação, nunca a própria ficha)`);
     if (!c.material) {
       const s = ELE[c.id] || {};
       if (JSON.stringify(fr) !== JSON.stringify(s.fraquezas || []) || JSON.stringify(rs) !== JSON.stringify(s.resistencias || [])) {

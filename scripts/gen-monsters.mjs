@@ -67,6 +67,9 @@ function build(c) {
   const elem = {
     fraquezas: f.fraquezas ?? doMat?.fraquezas ?? [],
     resistencias: f.resistencias ?? doMat?.resistencias ?? [],
+    // Imunidade (B14 fase 4, 29/09/2026): sem fallback de material, ninguém a
+    // concede hoje; só o que a própria ficha escrever.
+    imunidades: f.imunidades ?? [],
   };
   const e = f.ecologia || {};
   return {
@@ -107,6 +110,7 @@ function build(c) {
       // criaturas não tem nenhuma, então os campos só aparecem em quem tem.
       ...(elem.fraquezas.length ? { fraquezas: elem.fraquezas } : {}),
       ...(elem.resistencias.length ? { resistencias: elem.resistencias } : {}),
+      ...(elem.imunidades.length ? { imunidades: elem.imunidades } : {}),
       iniciativa: c.iniciativa,
       // Quantos metros a criatura cobre em um Tick, nas três marchas, a partir do
       // passo da `locomocao` da ficha. Sem ele (só a criatura da caixa), vale a

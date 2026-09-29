@@ -5,7 +5,9 @@
   "nomeIngles": "Iron Cobra",
   "categoria": "Construto",
   "categoriaLegada": "Monstro",
-  "constructo": { "semVida": true },
+  "constructo": {
+    "semVida": true
+  },
   "papel": "soldado",
   "conceito": "constructo Pequeno",
   "descricao": "Autômato sem vida, movido por magia alheia.",
@@ -137,7 +139,8 @@
     "deslocamento": {
       "ft": 40,
       "origem": "fonte"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 2

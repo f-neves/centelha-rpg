@@ -113,7 +113,9 @@
     "deslocamento": {
       "ft": 30,
       "origem": "tabela"
-    }
+    },
+    "cr": "3",
+    "crConf": "estimado"
   },
   "variantes": [],
   "ameacaLegada": 4

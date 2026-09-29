@@ -101,7 +101,7 @@
   "fonte": {
     "livro": "PF Bestiary 1",
     "nome": "Riding Dog",
-    "cr": "1/2",
+    "cr": "1",
     "tipo": "monstro Médio",
     "tamanho": "medio",
     "valores": {
@@ -116,7 +116,8 @@
     "deslocamento": {
       "ft": 40,
       "origem": "fonte"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 1

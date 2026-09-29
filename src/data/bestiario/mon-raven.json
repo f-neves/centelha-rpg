@@ -109,7 +109,8 @@
       "ft": 40,
       "origem": "fonte",
       "nota": "voo 40; em terra 10"
-    }
+    },
+    "crConf": "conhecido"
   },
   "variantes": [],
   "ameacaLegada": 1

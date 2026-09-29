@@ -114,7 +114,8 @@
       "ft": 50,
       "origem": "fonte",
       "nota": "voo 50; em terra 10, e o pterossauro não caça a pé"
-    }
+    },
+    "crConf": "conhecido"
   },
   "variantes": [],
   "ameacaLegada": 3

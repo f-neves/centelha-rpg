@@ -1448,15 +1448,32 @@ export function danoNoAlvo(opts: {
   soakNatural: number;         // o que o corpo absorve sozinho (Centelha inclusa)
   fraquezas?: string[];
   resistencias?: string[];
+  /** Imunidade (B14 fase 4, 29/09/2026): dano daquele tipo é ZERO. Se a mesma
+   *  criatura tiver imunidade e fraqueza ao mesmo tipo (só possível por um efeito de
+   *  jogo somando fraqueza por cima, nunca pelo dado da própria criatura), as duas se
+   *  cancelam e o dano volta a ser normal, como fraqueza+resistência já fazem. */
+  imunidades?: string[];
 }): Golpe {
   const { bruto, elemento, materia } = opts;
   const fr = (opts.fraquezas || []).map((x) => x.toLowerCase());
   const re = (opts.resistencias || []).map((x) => x.toLowerCase());
+  const im = (opts.imunidades || []).map((x) => x.toLowerCase());
   const chaves = [elemento, materia].filter(Boolean) as string[];
   let fraco = chaves.some((k) => fr.includes(k));
   let resiste = chaves.some((k) => re.includes(k));
+  const imune = chaves.some((k) => im.includes(k));
   // As duas ao mesmo tempo se anulam, por escrito nas regras.
   if (fraco && resiste) { fraco = false; resiste = false; }
+  if (imune && fraco) {
+    // Imunidade e fraqueza juntas (só por efeito de jogo, nunca pelo dado da
+    // criatura): as duas se cancelam, e a conta segue como se nenhuma existisse.
+    fraco = false;
+  } else if (imune) {
+    return {
+      bruto, absorcao: bruto, liquido: 0, agravado: false,
+      nota: `imunidade a ${chaves.filter((k) => im.includes(k)).join(' e ')}: dano zero`,
+    };
+  }
 
   if (fraco) {
     return {

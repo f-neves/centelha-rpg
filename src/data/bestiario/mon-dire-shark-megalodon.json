@@ -121,7 +121,8 @@
       "ft": 60,
       "origem": "fonte",
       "nota": "nado 60, como o tubarão comum"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 5

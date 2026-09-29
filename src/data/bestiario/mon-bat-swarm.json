@@ -123,7 +123,8 @@
       "ft": 40,
       "origem": "fonte",
       "nota": "voo 40: a nuvem de morcegos não pousa"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 2

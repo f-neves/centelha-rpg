@@ -184,7 +184,8 @@
       "ft": 60,
       "origem": "fonte",
       "nota": "voo 60: incorpórea, não pisa"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 4

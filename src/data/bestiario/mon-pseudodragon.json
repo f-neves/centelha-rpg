@@ -121,7 +121,8 @@
       "ft": 60,
       "origem": "fonte",
       "nota": "voo 60; em terra 15"
-    }
+    },
+    "crConf": "conhecido"
   },
   "variantes": [],
   "ameacaLegada": 2

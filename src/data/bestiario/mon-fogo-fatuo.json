@@ -162,7 +162,8 @@
       "ft": 50,
       "origem": "fonte",
       "nota": "voo 50 (perfeito): o fogo-fátuo não tem corpo que pise"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 4

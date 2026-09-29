@@ -117,7 +117,8 @@
       "ft": 30,
       "origem": "fonte",
       "nota": "nado 30: sem velocidade em terra"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 4

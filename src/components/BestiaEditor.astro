@@ -429,7 +429,8 @@ const PORTES = Object.keys(PORTE_LBL);
       if (tag) { tags = tags.filter((t) => t !== tag.dataset.tag); desenhaTags(); recalcular(); return; }
 
       const el = alvo.closest('.ed-el') as HTMLElement | null;
-      if (el) { el.dataset.estado = String((Number(el.dataset.estado || 0) + 1) % 3); recalcular(); return; }
+      // 0 nenhum · 1 fraqueza · 2 resistência · 3 imunidade (B14 fase 4, 29/09/2026)
+      if (el) { el.dataset.estado = String((Number(el.dataset.estado || 0) + 1) % 4); recalcular(); return; }
 
       if (alvo === box || alvo.classList.contains('ed-fechar')) fechar();
     });
@@ -481,10 +482,11 @@ const PORTES = Object.keys(PORTE_LBL);
       c.lore = lerLinhas('lore').filter((s) => s.titulo || s.texto);
       c.ecologia.terreno = ($$('[data-eco="terreno"]:checked') as HTMLInputElement[]).map((i) => i.value);
       c.ecologia.clima = ($$('[data-eco="clima"]:checked') as HTMLInputElement[]).map((i) => i.value);
-      c.fraquezas = []; c.resistencias = [];
+      c.fraquezas = []; c.resistencias = []; c.imunidades = [];
       for (const b of $$('.ed-el') as HTMLElement[]) {
         if (b.dataset.estado === '1') c.fraquezas.push(b.dataset.el!);
         else if (b.dataset.estado === '2') c.resistencias.push(b.dataset.el!);
+        else if (b.dataset.estado === '3') c.imunidades.push(b.dataset.el!);
       }
       return c as CriaturaEdit;
     }
@@ -544,13 +546,13 @@ const PORTES = Object.keys(PORTE_LBL);
       }
 
       // palavra da criatura que não tem botão vira botão extra, para poder ser desmarcada
-      for (const k of [...(c.fraquezas || []), ...(c.resistencias || [])]) {
+      for (const k of [...(c.fraquezas || []), ...(c.resistencias || []), ...(c.imunidades || [])]) {
         if (!box!.querySelector('.ed-el[data-el="' + k + '"]') && !extras.includes(k)) extras.push(k);
       }
       desenhaExtras();
       for (const b of $$('.ed-el') as HTMLElement[]) {
         const k = b.dataset.el!;
-        b.dataset.estado = c.fraquezas?.includes(k) ? '1' : c.resistencias?.includes(k) ? '2' : '0';
+        b.dataset.estado = c.fraquezas?.includes(k) ? '1' : c.resistencias?.includes(k) ? '2' : c.imunidades?.includes(k) ? '3' : '0';
       }
       recalcular();
     }
@@ -621,7 +623,7 @@ const PORTES = Object.keys(PORTE_LBL);
           nome: '', conceito: '', ameaca: 1, centelha: 0, porte: 'medio', tipo: 'soldado',
           atributos: Object.fromEntries(ATRIBS.map((k) => [k, 2])),
           pericias: {}, vontade: 4, integridade: 2, prontidao: 1,
-          armadura: 'nenhuma', fraquezas: [], resistencias: [], tags: [],
+          armadura: 'nenhuma', fraquezas: [], resistencias: [], imunidades: [], tags: [],
           ataques: [], habilidades: [], lore: [], notas: '',
         } as CriaturaEdit, null, 'Nova criatura');
       }

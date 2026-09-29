@@ -80,7 +80,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   criável assim que a primeira bandeira entra), o caminho do driver até a semente, e o despejo por
   Tick do que a folha calculou. `rolagem.ts:15` é `Math.random` e é a única fonte de acaso
   do combate. Ganha ponto de injeção, e `mesa-ficha.ts:140` · `rolarIniciativaPC` e
-  `artes-grid.ts:1484` · `acaso()` precisam do mesmo
+  `artes-grid.ts:1501` · `acaso()` precisam do mesmo
   tratamento. É o que permite o teste-espelho comparar as rolagens.
 - [x] **L6 · [O ESQUELETO FEITO em 02/09] O harness.** `scripts/sim/` com o laço do Tick, o elenco
   tirado da régua, o log com classe de parada, quatro invariantes, a repartição em processos e o
@@ -345,7 +345,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   Era a única das seis que era mesmo **só tela**, e o mecanismo existia inteiro:
 
   - o catálogo, 55 verbetes com número, em `src/data/condicoes.json`;
-  - a soma: `export function somarCondicoes` (`src/lib/mesa-core.ts:214`);
+  - a soma: `export function somarCondicoes` (`src/lib/mesa-core.ts:218`);
   - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:10053`);
   - o desconto chegando à Defesa: `alvo.condicoesDefesa` (`src/lib/lance.ts:163`);
   - a coluna: `add column if not exists condicoes` (`supabase/migracao-11.sql:25`);
@@ -1315,7 +1315,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **tira quando o Preparo acaba** (`marcarInvestida` e `varrerInvestida`, no `grid.astro`).
 
   **A remoção precisou ser explícita, e isso foi achado no caminho: o `ate` de uma condição não
-  tira ninguém.** `somarCondicoes` (`src/lib/mesa-core.ts:214`) soma tudo sem olhar prazo, e nenhum
+  tira ninguém.** `somarCondicoes` (`src/lib/mesa-core.ts:218`) soma tudo sem olhar prazo, e nenhum
   ponto do sistema lê a chave `ate` de uma condição. Sem a varredura do Tick, a marca ficaria
   grudada para sempre, penalizando em silêncio, que é pior que a dupla cobrança que ela conserta.
 
@@ -1684,9 +1684,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   (fechado, ver `docs/simulacao/caixa/19-executora.md`):**
   `src/lib/artes-grid-mesa.ts:490` (`const condId = ef.condicao || ef.condicaoAparente;`);
   `:1836` (`const condId = p.ef.condicao || p.ef.condicaoAparente;`, texto de log);
-  `src/lib/artes-grid.ts:1676`-`1497` (`if (ef.condicao && alvos.length) {`): a prévia só entra se
+  `src/lib/artes-grid.ts:1693`-`1497` (`if (ef.condicao && alvos.length) {`): a prévia só entra se
   `alvos.length`, e os 9 problemáticos têm `alvo: "nenhum"`: **já seguro por construção, não tocado**;
-  `src/lib/artes-grid.ts:1906` (`const condId = ef.condicao || ef.condicaoAparente;`);
+  `src/lib/artes-grid.ts:1923` (`const condId = ef.condicao || ef.condicaoAparente;`);
   `src/lib/artes-grid-ui.ts:47` (`const condId = g.condicao || g.condicaoAparente;`).
 
   **RELATÓRIO, sem risco de capítulo, atualizado (fechado):** `scripts/gen-grid-artes.mjs:436` (`efeitosNovos.filter((e) => e.grid.condicao).length`, dentro de um `console.log`, com uma segunda
@@ -1993,7 +1993,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | # | muda o QUE CHEGA ao jogador? | o quê, exatamente |
   |---|---|---|
   | **29** | **sim, ganha colunas** | a `encontro_visao` passa a mandar `tick_atual`, `rodada`, `perfil` e `perfil_em`. **Hoje não manda nenhuma das quatro** (sondado: `42703` nas duas primeiras) |
-  | **30** | quase nada | acrescenta `gravar_lances` ao `select('*')` de `mesas` (`mesa-core.ts:563`). Nada enumera as chaves desse objeto e nada o grava de volta inteiro · não há `from('mesas').update` no código |
+  | **30** | quase nada | acrescenta `gravar_lances` ao `select('*')` de `mesas` (`mesa-core.ts:567`). Nada enumera as chaves desse objeto e nada o grava de volta inteiro · não há `from('mesas').update` no código |
   | **31** | **sim, e some coisa** | mesma FORMA em `token_visao` e `efeito_visao`, mas menos LINHAS: peça que só chegava porque um fogo não-caído acendia o chão **para de chegar**, e efeito fora do intervalo do relógio também. E a `encontro_visao` ganha `tick_atual` e `rodada`, como na 29 |
   | **32** | **sim, e campo que nunca era nulo passa a ser** | mesmas 24 colunas da `efeito_visao`, mas `conjurador_id` e `centro` passam a poder vir **null**, e `hexes` vem **filtrado** pelas casas claras |
   | **35** | **nada** | ela troca o corpo de uma função, e nenhuma view. O `mordidos` **não chega ao jogador nem antes nem depois** (a `efeito_visao` o corta de propósito), então a tela dele não sente. E o poder dele **diminui**: antes podia zerar o mapa, agora só acrescenta chave |
@@ -2834,14 +2834,14 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
     `:354`, o empilhamento numa mesma Defesa limitado a ±6);
   - **os dois pontos que somam Defesa sem teto hoje** são os candidatos a receber o corte, e
     são estes dois:
-    - `src/lib/mesa-core.ts:214` · `export function somarCondicoes(`
+    - `src/lib/mesa-core.ts:218` · `export function somarCondicoes(`
     - `src/lib/combate-tempo.ts:696` · `export function defesaPerdida(`, esta com comentário
       próprio na linha de cima dizendo que acumula sem teto e só zera quando o ciclo fecha.
 
     Os dois se juntam em `src/lib/lance.ts:161` · `export function defesaEfetiva(`;
   - **o que NÃO foi achado:** um campo que hoje carregue OU sentinela OU magnitude conforme o
     caso, que é o que a frase descreve. Os dois candidatos mais próximos não batem limpo. O
-    primeiro é o campo declarado em `src/lib/mesa-core.ts:170` · `defesa?: number;`, lido com
+    primeiro é o campo declarado em `src/lib/mesa-core.ts:174` · `defesa?: number;`, lido com
     um "ou zero" que faz ausência e zero explícito colapsarem no mesmo valor · mas isso é o
     zero ambíguo comum, e não uma sentinela. O segundo é a pressão, que é sempre uma contagem
     de atacantes e nunca alterna de significado.
@@ -2874,7 +2874,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   nada no formato as distingue.
 
   **Por que um teto ingênuo era exatamente o defeito de que a frase avisava:** as quatro entram
-  pela mesma soma, em `src/lib/mesa-core.ts:220` · `t.velocidade += c.velocidade`. Um teto de ±6
+  pela mesma soma, em `src/lib/mesa-core.ts:224` · `t.velocidade += c.velocidade`. Um teto de ±6
   aplicado ali transforma −99 em −6, ou seja, transforma **"não age"** em **"age seis Ticks mais
   rápido"**. Não é um número errado, é uma grandeza virando outra, e sai sem exceção e sem teste
   vermelho.
@@ -4573,7 +4573,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   com um único uso, então não há ambiguidade nenhuma sobre onde ele está:
 
   · o documento aponta a linha 352, e o uso mora em `Base.astro:369` (`import.meta.env.BASE_URL`);
-  · aponta a 666, e o uso mora em `bestiario.astro:772` (`const base = import.meta.env`);
+  · aponta a 666, e o uso mora em `bestiario.astro:773` (`const base = import.meta.env`);
   · aponta a 55, e o uso mora em `mesas.astro:78` (`const base = import.meta.env`).
 
   **Nenhuma das três é falso verde** · as três caem como envelhecidas, que é o portão funcionando.

@@ -177,7 +177,8 @@
       "ft": 50,
       "origem": "fonte",
       "nota": "voo 50 (perfeito); em terra 20"
-    }
+    },
+    "crConf": "confirmado"
   },
   "variantes": [],
   "ameacaLegada": 2

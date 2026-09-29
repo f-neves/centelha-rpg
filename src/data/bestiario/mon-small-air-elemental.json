@@ -121,7 +121,8 @@
       "ft": 100,
       "origem": "fonte",
       "nota": "voo 100 (perfeito): o ar não tem pé"
-    }
+    },
+    "crConf": "conhecido"
   },
   "variantes": [],
   "ameacaLegada": 2
