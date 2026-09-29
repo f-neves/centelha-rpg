@@ -55,7 +55,9 @@ saltava para fora do topo por 1-3 segundos (o tempo de montar as 268) antes de o
 
 ## CI do GitHub
 
-Link do run será acrescentado aqui após o push e a conferência (`gh run view`).
+Commit `815e0e6d`, verde: https://github.com/f-neves/centelha-rpg/actions/runs/36463731711
+(job "Dados e regras" e toda a matriz de Smoke, conferido por `gh run view --json
+status,conclusion,jobs`, todos `success`).
 
 ## Fora do escopo (confirmado, não tocado)
 
@@ -64,4 +66,4 @@ Nenhuma mudança em `src/data/*.json`, Supabase, conta, RLS, `mesa-*.ts` nem
 
 ## Seguro dar `/clear`?
 
-Sim, depois do commit e da conferência do CI (seção acima atualizada com o link).
+Sim. Commitado, empurrado e CI verde confirmado.
