@@ -138,3 +138,13 @@ limitações conhecidas, que são as três de baixo.
   `bestia-editor.ts`) que usa a melhor perícia social presente (Oratória/Manha/Persuasão/
   Liderança/Política) em vez de zerar, então Defesa Social também não sai capada por omissão na
   maioria dos casos. Não há lacuna de dado a preencher aqui; fechado.
+- [ ] **B16 · [DECIDIR] Tipos de dano fora do vocabulário fechado (ácido, e possivelmente
+  outros).** Registrado em 29/09/2026, B14 Fase 4, processando o Pudim Negro: a nota dos
+  graves diz "dano principal passa a ser ácido", e "ácido" não está no vocabulário de
+  `fraquezas`/`resistencias`/`imunidades` (`elementos-vocab.json`) nem é um dos três tipos
+  físicos (`corte`/`perfuracao`/`impacto`) que o `tipoDano` de um ataque aceita hoje. Não
+  criei palavra nova no vocabulário, conforme o item 8 do despacho original ("resistências
+  novas... só anote em pendência, não crie palavra agora"). O Pudim Negro ficou com o tipo
+  de dano físico que já tinha (impacto) até esta pendência fechar. Provável que outras das
+  67 fichas dos graves tenham o mesmo problema com outros tipos (gelo intenso, necrótico
+  etc.); listar todos ao aplicar o resto das notas mecânicas.

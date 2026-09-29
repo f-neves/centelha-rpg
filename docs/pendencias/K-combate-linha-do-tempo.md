@@ -507,3 +507,12 @@ revistos por ela.
   em lugar algum. Achado no levantamento de limites de 28/09/2026
   (`docs/calibracao/discussao/inventario-limites.md`, grupo a). Não escrever a regra aqui:
   aguardar o texto do autor.
+- [ ] **K36 · [DECIDIR] Dano fenômeno (armadura não absorve, só Centelha) não alcança
+  ataque normal de criatura.** Registrado em 29/09/2026, B14 Fase 4, item 7 (Fantasma e
+  Sombra deveriam causar dano fenômeno pelo toque). O mecanismo existe só dentro do motor
+  de Artes do Grid (`danoNoAlvo()`, `src/lib/artes-grid.ts`, parâmetro `materia: null`);
+  não há campo no `ataqueSchema` (`scripts/criatura-schema.mjs`) nem caminho em
+  `combate-resumo.ts`/`lance.ts` (a resolução de ataque NORMAL de criatura, fora do motor
+  de Artes) para um ataque carregar essa marca. Não inventei campo novo. Decidir: criar um
+  campo tipo `fenomeno: true` no ataque e fiar até `resolverGolpe`, ou aceitar que
+  Fantasma/Sombra ficam com o dano físico comum (armadura absorve normal) até essa decisão.

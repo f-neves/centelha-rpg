@@ -40,7 +40,7 @@ está na seção 3.
 | Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados | DECIDIR | FAZER | AUTOR | CONSERTAR | Outra marca | Adiados |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 32 | 22 | 1 | 9 | 15 | 4 | 4 | 0 | 0 | 0 |
-| B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 16 | 10 | 0 | 6 | 5 | 5 | 0 | 0 | 0 | 0 |
+| B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 17 | 11 | 0 | 6 | 6 | 5 | 0 | 0 | 0 | 0 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 14 | 10 | 0 | 4 | 5 | 1 | 0 | 0 | 0 | 4 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 10 | 7 | 0 | 3 | 5 | 1 | 0 | 1 | 0 | 0 |
@@ -49,9 +49,9 @@ está na seção 3.
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 7 | 5 | 0 | 2 | 2 | 0 | 0 | 2 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 15 | 11 | 2 | 2 | 4 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 17 | 14 | 0 | 3 | 6 | 3 | 0 | 2 | 1 | 2 |
-| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 36 | 22 | 1 | 13 | 18 | 5 | 0 | 0 | 0 | 0 |
+| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 37 | 23 | 1 | 13 | 19 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **342** | **238** | **4** | **100** | **96** | **38** | **8** | **10** | **81** | **9** |
+| | **Total** | | **344** | **240** | **4** | **100** | **98** | **38** | **8** | **10** | **81** | **9** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -60,6 +60,7 @@ está na seção 3.
 - `A-arcano-artes.md`: a sigla **A22** aparece 2 vezes (fechado · fechado)
 - `G-acoes-sistema.md`: item sem sigla, "As cinco físicas de toda sessão." (fechado)
 - `J-infraestrutura.md`: item sem sigla, "A linha de fechamento do `test-grid` é texto fixo · [DECIDIR]" (aberto)
+- `K-combate-linha-do-tempo.md`: a sigla **K36** aparece 2 vezes (aberto · aberto)
 - `L-simulacao-simultaneo.md`: **L6** tem a caixa aberta e o título riscado (a contagem o conta como aberto)
 - `L-simulacao-simultaneo.md`: **L9** tem a caixa aberta e o título riscado (a contagem o conta como aberto)
 - `L-simulacao-simultaneo.md`: a sigla **L6** aparece 2 vezes (fechado · aberto, riscado)
@@ -358,6 +359,7 @@ Fechados (9): A12, A17, A18, A22, A23, A27, A21, A22, A20.
 | B9 | aberto | DECIDIR | Onde a criatura editada mora. |
 | B11 | aberto | FAZER | Palavra nova de fraqueza precisa de rito para virar oficial. |
 | B14 | aberto | DECIDIR | Recalibrar nível de desafio e Centelha das criaturas, e revisar as fichas do bestiário. |
+| B16 | aberto | DECIDIR | Tipos de dano fora do vocabulário fechado (ácido, e possivelmente outros). |
 
 Fechados (6): B12, B1, B1b, B10, B13, B15.
 
@@ -556,6 +558,7 @@ Fechados (3): J1, J4, J5.
 | K34 | aberto | DECIDIR | `quaseAcerto()` (`src/lib/quase-acerto.ts:214-230`), o card de ficha fora de combate, continua sem Centelha … |
 | K35 | aberto | DECIDIR | `lib-tempo.mjs` continua na régua antiga de Centelha |
 | K36 | aberto | DECIDIR | Agarrar não tem regra escrita em lugar nenhum. |
+| K36 | aberto | DECIDIR | Dano fenômeno (armadura não absorve, só Centelha) não alcança ataque normal de criatura. |
 
 Fechados (13): K29, K1, K2, K3, K10, K7, K15, K16, K22, K23, K26, K12, K13.
 
