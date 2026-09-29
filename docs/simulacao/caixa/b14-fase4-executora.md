@@ -172,8 +172,10 @@ a magia", "efeitos mentais"), NÃO inventei palavra nova: registrado em detalhe 
   `test-elementos-combate.mjs` ainda esperava essa resistência; troquei o exemplo de
   resistência para o Rakshasa (que eu não toquei) e acrescentei uma checagem nova, do
   Cubo Gelatinoso com `imunidades`, cobrindo o campo novo desta fase.
-- CI do GitHub: os commits anteriores foram empurrados e alguns já fecharam verdes (ver
-  histórico de mensagens); vou conferir o deste lote antes de considerar a fase fechada.
+- CI do GitHub: `cb2381c3`, `6ea979bc`, `a4d53bdc` e `659979d0` fecharam 100% verdes (os
+  dois workflows, conferido por `gh run list --json conclusion`). `0cdc06db` (este lote)
+  está na fila quando escrevo isto; vou conferir antes de considerar a fase fechada de
+  verdade.
 - Travessão: zero em todo texto novo desta fase (conferido arquivo por arquivo, não por
   `git diff` puro).
 
