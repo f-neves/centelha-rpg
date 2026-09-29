@@ -21,7 +21,7 @@
     "terra": 3,
     "voo": 5
   },
-  "centelha": 1,
+  "centelha": 0,
   "attrs": {
     "forca": 7,
     "destreza": 4,
@@ -30,7 +30,7 @@
     "perspicacia": 2,
     "compostura": 2,
     "percepcao": 3,
-    "inteligencia": 1,
+    "inteligencia": 2,
     "raciocinio": 2
   },
   "skills": {

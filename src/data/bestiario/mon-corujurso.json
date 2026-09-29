@@ -15,12 +15,12 @@
   "porte": "Grande",
   "dimensoes": {
     "medida": "2,4 m de altura",
-    "peso": "230 kg"
+    "peso": "cerca de 680 kg"
   },
   "locomocao": {
     "terra": 3
   },
-  "centelha": 1,
+  "centelha": 0,
   "attrs": {
     "forca": 7,
     "destreza": 3,

@@ -15,13 +15,13 @@
   "porte": "Enorme",
   "dimensoes": {
     "medida": "4,5 m de comprimento",
-    "peso": "1.800 kg"
+    "peso": "cerca de 8.000 kg"
   },
   "locomocao": {
     "terra": 2,
     "escalada": 2
   },
-  "centelha": 1,
+  "centelha": 0,
   "attrs": {
     "forca": 7,
     "destreza": 0,

@@ -48,12 +48,6 @@
   },
   "willpower": 10,
   "aparencia": 1,
-  "arte": {
-    "materia": 3,
-    "agua": 3,
-    "fascinacao": 4,
-    "adivinhacao": 2
-  },
   "ataques": [
     {
       "nome": "Garras e presas",
@@ -76,11 +70,12 @@
         "nivel": 3
       },
       "resiste": "corpo",
-      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
+      "efeito": "toque que transforma a pele do alvo, dando respiração aquática mas exigindo umidade constante depois",
       "usos": {
         "periodo": "golpe"
       },
-      "ataque": "Garras e presas"
+      "ataque": "Garras e presas",
+      "descricao": "O toque de um tentáculo do aboleth cobre a pele do alvo com um muco que muda sua respiração: passa a respirar água como se fosse ar, mas se afastar da água por muito tempo sofre com a pele ressecando."
     },
     {
       "id": "dominio-psiquico",
@@ -91,7 +86,24 @@
         "nivel": 4
       },
       "resiste": "mente",
-      "efeito": "Defesa Mental; dura enquanto o aboleth mantiver contato.",
+      "efeito": "domina a mente de quem falhar em resistir, que obedece ordens simples enquanto o aboleth mantiver o contato",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 3
+      },
+      "descricao": "O aboleth invade a mente de quem ele tocou ou encarou; falhando em resistir, a vítima obedece ordens simples do aboleth enquanto ele mantiver esse contato mental."
+    },
+    {
+      "id": "ilusoes-aboleth",
+      "nome": "Ilusões",
+      "tipo": "natural",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 5
+      },
+      "resiste": "mente",
+      "efeito": "cria uma ilusão convincente (visão, som) para confundir ou enganar, poucas vezes por dia",
+      "descricao": "O aboleth projeta diretamente na mente de quem o encara uma cena que não existe: um caminho seguro que é precipício, um aliado que é ele disfarçado, um perigo que não é real.",
       "usos": {
         "periodo": "dia",
         "quantidade": 3
