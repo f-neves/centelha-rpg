@@ -47,9 +47,6 @@
   },
   "willpower": 8,
   "aparencia": 5,
-  "arte": {
-    "fogo": 2
-  },
   "tech": {
     "imobilizar": true
   },
@@ -79,7 +76,8 @@
       "usos": {
         "periodo": "passivo",
         "recarga": "contínua"
-      }
+      },
+      "descricao": "A pele da salamandra irradia calor o tempo todo, o bastante para queimar quem a segura ou a aperta num agarrão."
     }
   ],
   "fraquezas": [

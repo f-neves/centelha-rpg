@@ -47,9 +47,6 @@
   },
   "willpower": 6,
   "aparencia": 4,
-  "arte": {
-    "vento": 2
-  },
   "ataques": [
     {
       "nome": "Pancada descomunal",
@@ -83,7 +80,12 @@
       "efeito": "Levita a si e até 900 kg, sem limite de tempo.",
       "usos": {
         "periodo": "avontade"
-      }
+      },
+      "base": {
+        "arte": "vento",
+        "nivel": 4
+      },
+      "descricao": "O gigante flutua à vontade, a si e a até mais 900 kg de carga ou de um companheiro, subindo e descendo devagar, sem precisar de asas."
     },
     {
       "id": "nevoa",
@@ -95,7 +97,12 @@
       "usos": {
         "periodo": "cena",
         "quantidade": 1
-      }
+      },
+      "base": {
+        "arte": "agua",
+        "nivel": 3
+      },
+      "descricao": "O gigante cobre uma área com névoa espessa, o bastante para encobrir a visão de quem estiver lá dentro."
     }
   ],
   "habilidades": [

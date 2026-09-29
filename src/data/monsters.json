@@ -9301,8 +9301,51 @@
     "resiste": "nenhum",
     "efeito": "Mudar de forma",
     "base": {
-     "arte": "materia",
-     "nivel": 2
+     "arte": "metamorfose",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
+   },
+   {
+    "id": "feiticos-celestiais",
+    "nome": "Feitiços celestiais",
+    "tipo": "natural",
+    "resiste": "nenhum",
+    "efeito": "cura ferimentos, remove doença ou maldição, ou abençoa um aliado, 1 vez por cena",
+    "base": {
+     "arte": "cura",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "cena",
+     "quantidade": 1
+    }
+   },
+   {
+    "id": "aura-protetora",
+    "nome": "Aura protetora",
+    "tipo": "natural",
+    "resiste": "nenhum",
+    "efeito": "aliados a 6m ganham +1 dado na Defesa contra ataques de origem maligna",
+    "base": {
+     "arte": "protecao",
+     "nivel": 5
+    },
+    "usos": {
+     "periodo": "passivo"
+    }
+   },
+   {
+    "id": "teleporte-sem-erro",
+    "nome": "Teleporte sem erro",
+    "tipo": "natural",
+    "resiste": "nenhum",
+    "efeito": "desloca-se a qualquer distância dentro do mesmo plano, sem chance de erro",
+    "base": {
+     "arte": "conjuracao",
+     "nivel": 5
     },
     "usos": {
      "periodo": "avontade"
@@ -9310,28 +9353,7 @@
    }
   ],
   "tecnicas": [],
-  "artes": [
-   {
-    "id": "cura",
-    "nivel": 4
-   },
-   {
-    "id": "protecao",
-    "nivel": 5
-   },
-   {
-    "id": "luz",
-    "nivel": 4
-   },
-   {
-    "id": "forcas",
-    "nivel": 4
-   },
-   {
-    "id": "conjuracao",
-    "nivel": 5
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Armas 4, Ocultismo 4, Persuasão 4, Prontidão 4.",
   "lore": [
    {
@@ -9497,19 +9519,25 @@
      "periodo": "passivo",
      "recarga": "contínua"
     }
+   },
+   {
+    "id": "teleporte-infernal",
+    "nome": "Teleporte",
+    "tipo": "natural",
+    "resiste": "nenhum",
+    "efeito": "desloca-se a curta/média distância dentro do mesmo plano, algumas vezes por dia",
+    "base": {
+     "arte": "conjuracao",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "dia",
+     "quantidade": 3
+    }
    }
   ],
   "tecnicas": [],
-  "artes": [
-   {
-    "id": "morte",
-    "nivel": 2
-   },
-   {
-    "id": "conjuracao",
-    "nivel": 3
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Armas 3, Prontidão 3.",
   "lore": [
    {
@@ -9792,27 +9820,39 @@
      "periodo": "passivo",
      "recarga": "contínua"
     }
+   },
+   {
+    "id": "muralha-de-gelo",
+    "nome": "Muralha de gelo",
+    "tipo": "natural",
+    "resiste": "esquiva",
+    "efeito": "ergue uma parede de gelo ou lança uma nevasca em área, poucas vezes por dia",
+    "base": {
+     "arte": "gelo",
+     "nivel": 5
+    },
+    "usos": {
+     "periodo": "dia",
+     "quantidade": 3
+    }
+   },
+   {
+    "id": "teleporte-de-gelo",
+    "nome": "Teleporte",
+    "tipo": "natural",
+    "resiste": "nenhum",
+    "efeito": "desloca-se a qualquer distância dentro do mesmo plano, à vontade",
+    "base": {
+     "arte": "conjuracao",
+     "nivel": 6
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
-  "artes": [
-   {
-    "id": "gelo",
-    "nivel": 5
-   },
-   {
-    "id": "conjuracao",
-    "nivel": 6
-   },
-   {
-    "id": "protecao",
-    "nivel": 3
-   },
-   {
-    "id": "tempo",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Armas 5, Ocultismo 4, Liderança 4.",
   "lore": [
    {
@@ -10666,7 +10706,7 @@
     "id": "forma-de-redemoinho",
     "nome": "Forma de redemoinho",
     "tipo": "natural",
-    "resiste": "nenhum",
+    "resiste": "esquiva",
     "efeito": "Forma de redemoinho",
     "base": {
      "arte": "vento",
@@ -10675,27 +10715,39 @@
     "usos": {
      "periodo": "avontade"
     }
+   },
+   {
+    "id": "criar-agua-e-comida",
+    "nome": "Criar água e comida",
+    "tipo": "natural",
+    "resiste": "nenhum",
+    "efeito": "convoca água limpa ou comida simples do nada, o bastante para um pequeno grupo",
+    "base": {
+     "arte": "materia",
+     "nivel": 2
+    },
+    "usos": {
+     "periodo": "dia",
+     "quantidade": 1
+    }
+   },
+   {
+    "id": "invisibilidade-djinn",
+    "nome": "Invisibilidade",
+    "tipo": "natural",
+    "resiste": "nenhum",
+    "efeito": "some de vista à vontade, até agir de forma hostil",
+    "base": {
+     "arte": "ofuscacao",
+     "nivel": 1
+    },
+    "usos": {
+     "periodo": "avontade"
+    }
    }
   ],
   "tecnicas": [],
-  "artes": [
-   {
-    "id": "agua",
-    "nivel": 2
-   },
-   {
-    "id": "materia",
-    "nivel": 2
-   },
-   {
-    "id": "fascinacao",
-    "nivel": 1
-   },
-   {
-    "id": "vento",
-    "nivel": 4
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Ofícios 3, Persuasão 3, Prontidão 2.",
   "lore": [
    {
@@ -13588,19 +13640,40 @@
      "periodo": "passivo",
      "recarga": "contínua"
     }
+   },
+   {
+    "id": "muralha-de-fogo",
+    "nome": "Muralha de fogo",
+    "tipo": "natural",
+    "resiste": "esquiva",
+    "efeito": "ergue uma parede de fogo que bloqueia passagem e fere quem atravessa",
+    "base": {
+     "arte": "fogo",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "dia",
+     "quantidade": 3
+    }
+   },
+   {
+    "id": "conceder-desejos",
+    "nome": "Conceder desejos",
+    "tipo": "natural",
+    "resiste": "nenhum",
+    "efeito": "concede um pedido poderoso a quem o aprisiona ou barganha com ele, raramente e sempre com um preço",
+    "base": {
+     "arte": "fortuna",
+     "nivel": 6
+    },
+    "usos": {
+     "periodo": "dia",
+     "quantidade": 1
+    }
    }
   ],
   "tecnicas": [],
-  "artes": [
-   {
-    "id": "fortuna",
-    "nivel": 4
-   },
-   {
-    "id": "fogo",
-    "nivel": 4
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Ofícios 4, Manha 3, Prontidão 3.",
   "lore": [
    {
@@ -14129,12 +14202,7 @@
   "tecnicas": [
    "pele-de-pedra"
   ],
-  "artes": [
-   {
-    "id": "terra",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Atletismo 2.",
   "lore": [
    {
@@ -16016,36 +16084,53 @@
   ],
   "poderes": [
    {
-    "id": "rugido",
-    "nome": "Rugido",
+    "id": "sabedoria-ancestral",
+    "nome": "Sabedoria ancestral",
     "tipo": "natural",
-    "resiste": "mente",
-    "efeito": "Área; quem resiste fica imune na cena.",
+    "resiste": "nenhum",
+    "efeito": "sabe algo sobre quase qualquer lenda, história ou segredo perguntado, poucas vezes por dia",
     "base": {
-     "arte": "forcas",
-     "nivel": 2
+     "arte": "adivinhacao",
+     "nivel": 5
     },
     "usos": {
-     "periodo": "cena",
+     "periodo": "dia",
      "quantidade": 1
+    }
+   },
+   {
+    "id": "enigma-mortal",
+    "nome": "Enigma mortal",
+    "tipo": "natural",
+    "resiste": "mente",
+    "efeito": "propõe um enigma; quem falha em resolvê-lo sofre medo, sono, dor ou paralisia, à escolha da esfinge, cerca de uma vez por semana",
+    "base": {
+     "arte": "fascinacao",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "dia",
+     "quantidade": 1,
+     "recarga": "cerca de uma vez por semana, não por dia"
+    }
+   },
+   {
+    "id": "ver-o-invisivel",
+    "nome": "Ver o invisível",
+    "tipo": "natural",
+    "resiste": "nenhum",
+    "efeito": "enxerga o que está invisível ou oculto por ilusão, constantemente",
+    "base": {
+     "arte": "ofuscacao",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "passivo"
     }
    }
   ],
   "tecnicas": [],
-  "artes": [
-   {
-    "id": "adivinhacao",
-    "nivel": 5
-   },
-   {
-    "id": "fascinacao",
-    "nivel": 4
-   },
-   {
-    "id": "protecao",
-    "nivel": 3
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Conhecimentos 5, Ocultismo 4, Prontidão 4.",
   "lore": [
    {
@@ -17796,8 +17881,8 @@
     "resiste": "nenhum",
     "efeito": "Invisibilidade natural",
     "base": {
-     "arte": "fascinacao",
-     "nivel": 1
+     "arte": "ofuscacao",
+     "nivel": 3
     },
     "usos": {
      "periodo": "avontade"
@@ -17805,20 +17890,7 @@
    }
   ],
   "tecnicas": [],
-  "artes": [
-   {
-    "id": "fascinacao",
-    "nivel": 1
-   },
-   {
-    "id": "raio",
-    "nivel": 1
-   },
-   {
-    "id": "vento",
-    "nivel": 3
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Furtividade 5, Prontidão 3.",
   "lore": [
    {
@@ -19573,29 +19645,49 @@
     "nome": "Comandar o clima",
     "tipo": "natural",
     "resiste": "nenhum",
-    "efeito": "Leva 10 minutos para conjurar; dura a cena. Reduz visibilidade e Ataques à distância de inimigos; a critério do Mestre, raios caem ao acaso na área.",
+    "efeito": "muda o tempo numa área grande ao longo de minutos (tempestade, vento forte, raios ao acaso, à escolha do Mestre); 1 vez por dia",
+    "base": {
+     "arte": "vento",
+     "nivel": 5
+    },
     "area": "convoca tempestade sobre uma área",
     "usos": {
      "periodo": "dia",
      "quantidade": 1
     }
+   },
+   {
+    "id": "relampago-em-cadeia",
+    "nome": "Relâmpago em cadeia",
+    "tipo": "natural",
+    "resiste": "esquiva",
+    "efeito": "um raio salta entre vários alvos próximos, poucas vezes por dia",
+    "base": {
+     "arte": "raio",
+     "nivel": 4
+    },
+    "usos": {
+     "periodo": "dia",
+     "quantidade": 3
+    }
+   },
+   {
+    "id": "respirar-agua-tempestade",
+    "nome": "Respirar água",
+    "tipo": "natural",
+    "resiste": "nenhum",
+    "efeito": "respira debaixo d'água como se fosse ar, sempre",
+    "base": {
+     "arte": "agua",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "passivo"
+    }
    }
   ],
   "tecnicas": [],
-  "artes": [
-   {
-    "id": "vento",
-    "nivel": 4
-   },
-   {
-    "id": "raio",
-    "nivel": 4
-   },
-   {
-    "id": "agua",
-    "nivel": 3
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Prontidão 4, Conhecimentos 2.",
   "lore": [
    {
@@ -19733,6 +19825,10 @@
     "tipo": "natural",
     "resiste": "nenhum",
     "efeito": "Levita a si e até 900 kg, sem limite de tempo.",
+    "base": {
+     "arte": "vento",
+     "nivel": 4
+    },
     "usos": {
      "periodo": "avontade"
     }
@@ -19743,6 +19839,10 @@
     "tipo": "natural",
     "resiste": "nenhum",
     "efeito": "Névoa espessa que cobre a visão e concede Furtividade a aliados, dificultando Ataques à distância contra eles.",
+    "base": {
+     "arte": "agua",
+     "nivel": 3
+    },
     "area": "raio de 9 m",
     "usos": {
      "periodo": "cena",
@@ -19751,12 +19851,7 @@
    }
   ],
   "tecnicas": [],
-  "artes": [
-   {
-    "id": "vento",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Prontidão 3, Ofícios 2.",
   "lore": [
    {
@@ -35357,12 +35452,7 @@
   "tecnicas": [
    "imobilizar"
   ],
-  "artes": [
-   {
-    "id": "fogo",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Ofícios 3, Armas 2.",
   "lore": [
    {
@@ -35735,7 +35825,7 @@
     "nome": "Flautas encantadas",
     "tipo": "natural",
     "resiste": "mente",
-    "efeito": "Sono, medo ou encanto, à escolha; Defesa Mental.",
+    "efeito": "a flauta encanta (fascina, aproxima) ou apavora quem ouvir e falhar em resistir, e pode também adormecer",
     "base": {
      "arte": "fascinacao",
      "nivel": 2
@@ -35747,12 +35837,7 @@
    }
   ],
   "tecnicas": [],
-  "artes": [
-   {
-    "id": "fascinacao",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Oratória 3, Persuasão 4, Furtividade 2.",
   "lore": [
    {
@@ -37258,7 +37343,7 @@
     "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
     "base": {
      "arte": "morte",
-     "nivel": 1
+     "nivel": 2
     },
     "ataque": "Toque dilacerante",
     "usos": {
@@ -37281,16 +37366,7 @@
    }
   ],
   "tecnicas": [],
-  "artes": [
-   {
-    "id": "morte",
-    "nivel": 1
-   },
-   {
-    "id": "espirito",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Furtividade 4.",
   "lore": [
    {
@@ -37991,6 +38067,10 @@
     "tipo": "natural",
     "resiste": "nenhum",
     "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
+    "base": {
+     "arte": "protecao",
+     "nivel": 4
+    },
     "usos": {
      "periodo": "passivo",
      "recarga": "contínua"
@@ -38015,16 +38095,7 @@
   "tecnicas": [
    "imortalidade-tenue"
   ],
-  "artes": [
-   {
-    "id": "protecao",
-    "nivel": 4
-   },
-   {
-    "id": "morte",
-    "nivel": 3
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Prontidão 4. Centelha acima do teto mortal (entidade).",
   "lore": [
    {
@@ -38774,16 +38845,27 @@
     "descricao": "parece árvore comum quando imóvel, dificultando ser notado"
    }
   ],
-  "poderes": [],
+  "poderes": [
+   {
+    "id": "animar-arvores",
+    "nome": "Animar árvores",
+    "tipo": "natural",
+    "resiste": "nenhum",
+    "efeito": "desperta uma ou duas árvores próximas para lutarem ao seu lado por uma cena, poucas vezes por dia",
+    "base": {
+     "arte": "vida",
+     "nivel": 3
+    },
+    "usos": {
+     "periodo": "dia",
+     "quantidade": 1
+    }
+   }
+  ],
   "tecnicas": [
    "pele-de-pedra"
   ],
-  "artes": [
-   {
-    "id": "vida",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Persuasão 2, Sobrevivência 3.",
   "lore": [
    {

@@ -48,12 +48,6 @@
   },
   "willpower": 9,
   "aparencia": 5,
-  "arte": {
-    "agua": 2,
-    "materia": 2,
-    "fascinacao": 1,
-    "vento": 4
-  },
   "ataques": [
     {
       "nome": "Golpe planar",
@@ -75,8 +69,40 @@
         "arte": "vento",
         "nivel": 4
       },
-      "resiste": "nenhum",
+      "resiste": "esquiva",
       "efeito": "Forma de redemoinho",
+      "usos": {
+        "periodo": "avontade"
+      },
+      "descricao": "O djinn vira um redemoinho de vento cortante, arrastando quem estiver perto e ferindo com destroços levantados do chão."
+    },
+    {
+      "id": "criar-agua-e-comida",
+      "nome": "Criar água e comida",
+      "tipo": "natural",
+      "base": {
+        "arte": "materia",
+        "nivel": 2
+      },
+      "resiste": "nenhum",
+      "efeito": "convoca água limpa ou comida simples do nada, o bastante para um pequeno grupo",
+      "descricao": "Com um gesto, o djinn faz brotar água fresca ou uma refeição simples, o bastante para alimentar um punhado de pessoas por um dia.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 1
+      }
+    },
+    {
+      "id": "invisibilidade-djinn",
+      "nome": "Invisibilidade",
+      "tipo": "natural",
+      "base": {
+        "arte": "ofuscacao",
+        "nivel": 1
+      },
+      "resiste": "nenhum",
+      "efeito": "some de vista à vontade, até agir de forma hostil",
+      "descricao": "O djinn desaparece de vista quando quer, e volta a ser visto só se atacar ou usar um poder chamativo.",
       "usos": {
         "periodo": "avontade"
       }

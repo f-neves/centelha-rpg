@@ -1878,12 +1878,7 @@
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "vento",
-        "nivel": 2
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Prontidão 3, Ofícios 2.",
     "pendente": true,
     "poderes": [
@@ -1895,7 +1890,12 @@
         "efeito": "Levita a si e até 900 kg, sem limite de tempo.",
         "usos": {
           "periodo": "avontade"
-        }
+        },
+        "base": {
+          "arte": "vento",
+          "nivel": 4
+        },
+        "descricao": "O gigante flutua à vontade, a si e a até mais 900 kg de carga ou de um companheiro, subindo e descendo devagar, sem precisar de asas."
       },
       {
         "id": "nevoa",
@@ -1907,7 +1907,12 @@
         "usos": {
           "periodo": "cena",
           "quantidade": 1
-        }
+        },
+        "base": {
+          "arte": "agua",
+          "nivel": 3
+        },
+        "descricao": "O gigante cobre uma área com névoa espessa, o bastante para encobrir a visão de quem estiver lá dentro."
       }
     ],
     "pericias": {
@@ -1965,20 +1970,7 @@
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "vento",
-        "nivel": 4
-      },
-      {
-        "id": "raio",
-        "nivel": 4
-      },
-      {
-        "id": "agua",
-        "nivel": 3
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Prontidão 4, Conhecimentos 2.",
     "pendente": true,
     "poderes": [
@@ -1988,10 +1980,46 @@
         "tipo": "natural",
         "resiste": "nenhum",
         "area": "convoca tempestade sobre uma área",
-        "efeito": "Leva 10 minutos para conjurar; dura a cena. Reduz visibilidade e Ataques à distância de inimigos; a critério do Mestre, raios caem ao acaso na área.",
+        "efeito": "muda o tempo numa área grande ao longo de minutos (tempestade, vento forte, raios ao acaso, à escolha do Mestre); 1 vez por dia",
         "usos": {
           "periodo": "dia",
           "quantidade": 1
+        },
+        "base": {
+          "arte": "vento",
+          "nivel": 5
+        },
+        "descricao": "Levando cerca de dez minutos, o gigante convoca ou dissipa uma tempestade sobre uma região inteira: nuvens carregadas, ventania, raios caindo ao acaso a critério do Mestre."
+      },
+      {
+        "id": "relampago-em-cadeia",
+        "nome": "Relâmpago em cadeia",
+        "tipo": "natural",
+        "base": {
+          "arte": "raio",
+          "nivel": 4
+        },
+        "resiste": "esquiva",
+        "efeito": "um raio salta entre vários alvos próximos, poucas vezes por dia",
+        "descricao": "Um relâmpago sai das mãos do gigante e salta de um alvo para o próximo, ferindo cada um que estiver perto o bastante do anterior.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 3
+        }
+      },
+      {
+        "id": "respirar-agua-tempestade",
+        "nome": "Respirar água",
+        "tipo": "natural",
+        "base": {
+          "arte": "agua",
+          "nivel": 3
+        },
+        "resiste": "nenhum",
+        "efeito": "respira debaixo d'água como se fosse ar, sempre",
+        "descricao": "O gigante da tempestade vive tanto no mar quanto na terra: respira água como quem respira ar, sem esforço nem limite de tempo.",
+        "usos": {
+          "periodo": "passivo"
         }
       }
     ],
@@ -4399,14 +4427,27 @@
     "tecnicas": [
       "pele-de-pedra"
     ],
-    "artes": [
-      {
-        "id": "vida",
-        "nivel": 2
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Persuasão 2, Sobrevivência 3.",
     "pendente": true,
+    "poderes": [
+      {
+        "id": "animar-arvores",
+        "nome": "Animar árvores",
+        "tipo": "natural",
+        "base": {
+          "arte": "vida",
+          "nivel": 3
+        },
+        "resiste": "nenhum",
+        "efeito": "desperta uma ou duas árvores próximas para lutarem ao seu lado por uma cena, poucas vezes por dia",
+        "descricao": "O treant acorda uma ou duas árvores da floresta ao redor, que arrancam as raízes do chão e lutam como ele por uma cena, voltando a dormir depois.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 1
+        }
+      }
+    ],
     "pericias": {
       "prontidao": 2,
       "esquiva": 0,
@@ -4955,16 +4996,7 @@
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "morte",
-        "nivel": 1
-      },
-      {
-        "id": "espirito",
-        "nivel": 2
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Furtividade 4.",
     "pendente": true,
     "poderes": [
@@ -4974,14 +5006,15 @@
         "tipo": "natural",
         "base": {
           "arte": "morte",
-          "nivel": 1
+          "nivel": 2
         },
         "resiste": "corpo",
         "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
         "usos": {
           "periodo": "golpe"
         },
-        "ataque": "Toque dilacerante"
+        "ataque": "Toque dilacerante",
+        "descricao": "O toque gelado da sombra suga a força de quem ela alcança; quem morre esgotado por esse dreno vira uma sombra também, presa ao mesmo destino."
       },
       {
         "id": "incorporeo",
@@ -4995,7 +5028,8 @@
         "efeito": "Incorpóreo",
         "usos": {
           "periodo": "avontade"
-        }
+        },
+        "descricao": "Sem corpo de verdade, a sombra atravessa paredes e portas fechadas e é imune a quase tudo que dependa de tocar carne, mas o dano físico ainda a alcança, reduzido pela metade (é incorpórea, não intangível)."
       }
     ],
     "pericias": {
@@ -6565,16 +6599,7 @@
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "morte",
-        "nivel": 2
-      },
-      {
-        "id": "conjuracao",
-        "nivel": 3
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Armas 3, Prontidão 3.",
     "pendente": true,
     "poderes": [
@@ -6590,7 +6615,8 @@
         "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
         "usos": {
           "periodo": "golpe"
-        }
+        },
+        "descricao": "A mordida do diabo carrega uma doença infernal: quem é mordido e falha em resistir adoece, perdendo força aos poucos até ser tratado ou curado por magia."
       },
       {
         "id": "trava-a-ferida",
@@ -6601,6 +6627,23 @@
         "usos": {
           "periodo": "passivo",
           "recarga": "contínua"
+        },
+        "descricao": "A barba viva do diabo se prende à ferida que ele abriu, impedindo que feche: enquanto o diabo mantiver o contato, o ferimento não se cura sozinho."
+      },
+      {
+        "id": "teleporte-infernal",
+        "nome": "Teleporte",
+        "tipo": "natural",
+        "base": {
+          "arte": "conjuracao",
+          "nivel": 3
+        },
+        "resiste": "nenhum",
+        "efeito": "desloca-se a curta/média distância dentro do mesmo plano, algumas vezes por dia",
+        "descricao": "O diabo desaparece numa baforada de enxofre e reaparece em outro ponto que consiga ver ou já conheça, poucas vezes ao dia.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 3
         }
       }
     ],
@@ -6835,24 +6878,7 @@
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "gelo",
-        "nivel": 5
-      },
-      {
-        "id": "conjuracao",
-        "nivel": 6
-      },
-      {
-        "id": "protecao",
-        "nivel": 3
-      },
-      {
-        "id": "tempo",
-        "nivel": 2
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Armas 5, Ocultismo 4, Liderança 4.",
     "pendente": true,
     "poderes": [
@@ -6869,6 +6895,38 @@
         "usos": {
           "periodo": "passivo",
           "recarga": "contínua"
+        },
+        "descricao": "Uma aura de frio cortante cerca o diabo o tempo todo; quem chega perto sente o gelo mesmo sem ser atacado."
+      },
+      {
+        "id": "muralha-de-gelo",
+        "nome": "Muralha de gelo",
+        "tipo": "natural",
+        "base": {
+          "arte": "gelo",
+          "nivel": 5
+        },
+        "resiste": "esquiva",
+        "efeito": "ergue uma parede de gelo ou lança uma nevasca em área, poucas vezes por dia",
+        "descricao": "O diabo ergue um paredão de gelo maciço para bloquear passagem, ou solta uma nevasca que cobre uma área inteira e fere quem não escapa a tempo.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 3
+        }
+      },
+      {
+        "id": "teleporte-de-gelo",
+        "nome": "Teleporte",
+        "tipo": "natural",
+        "base": {
+          "arte": "conjuracao",
+          "nivel": 6
+        },
+        "resiste": "nenhum",
+        "efeito": "desloca-se a qualquer distância dentro do mesmo plano, à vontade",
+        "descricao": "Some numa nuvem gelada e reaparece em qualquer ponto que conheça no mesmo plano, sem limite de vezes.",
+        "usos": {
+          "periodo": "avontade"
         }
       }
     ],
@@ -7231,28 +7289,7 @@
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "cura",
-        "nivel": 4
-      },
-      {
-        "id": "protecao",
-        "nivel": 5
-      },
-      {
-        "id": "luz",
-        "nivel": 4
-      },
-      {
-        "id": "forcas",
-        "nivel": 4
-      },
-      {
-        "id": "conjuracao",
-        "nivel": 5
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Armas 4, Ocultismo 4, Persuasão 4, Prontidão 4.",
     "pendente": true,
     "poderes": [
@@ -7261,11 +7298,58 @@
         "nome": "Mudar de forma",
         "tipo": "natural",
         "base": {
-          "arte": "materia",
-          "nivel": 2
+          "arte": "metamorfose",
+          "nivel": 3
         },
         "resiste": "nenhum",
         "efeito": "Mudar de forma",
+        "usos": {
+          "periodo": "avontade"
+        },
+        "descricao": "Assume a forma de um humano ou animal comum por uma cena inteira, incluindo voz e cheiro; a arma e a armadura não acompanham a troca."
+      },
+      {
+        "id": "feiticos-celestiais",
+        "nome": "Feitiços celestiais",
+        "tipo": "natural",
+        "base": {
+          "arte": "cura",
+          "nivel": 4
+        },
+        "resiste": "nenhum",
+        "efeito": "cura ferimentos, remove doença ou maldição, ou abençoa um aliado, 1 vez por cena",
+        "descricao": "Uma vez por cena, o deva toca alguém e escolhe: fecha ferimentos, limpa uma doença ou maldição, ou abençoa (o aliado ganha um bônus passageiro na próxima jogada importante).",
+        "usos": {
+          "periodo": "cena",
+          "quantidade": 1
+        }
+      },
+      {
+        "id": "aura-protetora",
+        "nome": "Aura protetora",
+        "tipo": "natural",
+        "base": {
+          "arte": "protecao",
+          "nivel": 5
+        },
+        "resiste": "nenhum",
+        "efeito": "aliados a 6m ganham +1 dado na Defesa contra ataques de origem maligna",
+        "descricao": "Uma auréola constante em volta do deva: qualquer aliado a até 6 metros ganha +1 dado ao se defender de um golpe, feitiço ou efeito vindo de algo maligno. Não precisa de ação para manter.",
+        "usos": {
+          "periodo": "passivo"
+        }
+      },
+      {
+        "id": "teleporte-sem-erro",
+        "nome": "Teleporte sem erro",
+        "tipo": "natural",
+        "base": {
+          "arte": "conjuracao",
+          "nivel": 5
+        },
+        "resiste": "nenhum",
+        "efeito": "desloca-se a qualquer distância dentro do mesmo plano, sem chance de erro",
+        "descricao": "O deva desaparece e reaparece em qualquer ponto que conheça no mesmo plano, levando até seis companheiros consigo. Nunca erra o destino.",
         "usos": {
           "periodo": "avontade"
         }
@@ -7756,24 +7840,7 @@
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "agua",
-        "nivel": 2
-      },
-      {
-        "id": "materia",
-        "nivel": 2
-      },
-      {
-        "id": "fascinacao",
-        "nivel": 1
-      },
-      {
-        "id": "vento",
-        "nivel": 4
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Ofícios 3, Persuasão 3, Prontidão 2.",
     "pendente": true,
     "poderes": [
@@ -7785,8 +7852,40 @@
           "arte": "vento",
           "nivel": 4
         },
-        "resiste": "nenhum",
+        "resiste": "esquiva",
         "efeito": "Forma de redemoinho",
+        "usos": {
+          "periodo": "avontade"
+        },
+        "descricao": "O djinn vira um redemoinho de vento cortante, arrastando quem estiver perto e ferindo com destroços levantados do chão."
+      },
+      {
+        "id": "criar-agua-e-comida",
+        "nome": "Criar água e comida",
+        "tipo": "natural",
+        "base": {
+          "arte": "materia",
+          "nivel": 2
+        },
+        "resiste": "nenhum",
+        "efeito": "convoca água limpa ou comida simples do nada, o bastante para um pequeno grupo",
+        "descricao": "Com um gesto, o djinn faz brotar água fresca ou uma refeição simples, o bastante para alimentar um punhado de pessoas por um dia.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 1
+        }
+      },
+      {
+        "id": "invisibilidade-djinn",
+        "nome": "Invisibilidade",
+        "tipo": "natural",
+        "base": {
+          "arte": "ofuscacao",
+          "nivel": 1
+        },
+        "resiste": "nenhum",
+        "efeito": "some de vista à vontade, até agir de forma hostil",
+        "descricao": "O djinn desaparece de vista quando quer, e volta a ser visto só se atacar ou usar um poder chamativo.",
         "usos": {
           "periodo": "avontade"
         }
@@ -7847,16 +7946,7 @@
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "fortuna",
-        "nivel": 4
-      },
-      {
-        "id": "fogo",
-        "nivel": 4
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Ofícios 4, Manha 3, Prontidão 3.",
     "pendente": true,
     "poderes": [
@@ -7873,6 +7963,39 @@
         "usos": {
           "periodo": "passivo",
           "recarga": "contínua"
+        },
+        "descricao": "O corpo do efreeti é fogo vivo: quem acerta um golpe corpo a corpo nele se queima de volta, e sua pele soca e machuca como brasa."
+      },
+      {
+        "id": "muralha-de-fogo",
+        "nome": "Muralha de fogo",
+        "tipo": "natural",
+        "base": {
+          "arte": "fogo",
+          "nivel": 4
+        },
+        "resiste": "esquiva",
+        "efeito": "ergue uma parede de fogo que bloqueia passagem e fere quem atravessa",
+        "descricao": "O efreeti ergue uma cortina de chamas que bloqueia um corredor ou porta; quem tenta atravessar se queima.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 3
+        }
+      },
+      {
+        "id": "conceder-desejos",
+        "nome": "Conceder desejos",
+        "tipo": "natural",
+        "base": {
+          "arte": "fortuna",
+          "nivel": 6
+        },
+        "resiste": "nenhum",
+        "efeito": "concede um pedido poderoso a quem o aprisiona ou barganha com ele, raramente e sempre com um preço",
+        "descricao": "Preso, subornado ou convencido, o efreeti pode realizar um pedido enorme. Ele cumpre a letra do pedido, nunca a intenção por trás dele, e cobra um preço à altura.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 1
         }
       }
     ],
@@ -7933,12 +8056,7 @@
     "tecnicas": [
       "imobilizar"
     ],
-    "artes": [
-      {
-        "id": "fogo",
-        "nivel": 2
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Ofícios 3, Armas 2.",
     "pendente": true,
     "poderes": [
@@ -7955,7 +8073,8 @@
         "usos": {
           "periodo": "passivo",
           "recarga": "contínua"
-        }
+        },
+        "descricao": "A pele da salamandra irradia calor o tempo todo, o bastante para queimar quem a segura ou a aperta num agarrão."
       }
     ],
     "pericias": {
@@ -8015,12 +8134,7 @@
     "tecnicas": [
       "pele-de-pedra"
     ],
-    "artes": [
-      {
-        "id": "terra",
-        "nivel": 2
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Atletismo 2.",
     "pendente": true,
     "poderes": [
@@ -8036,7 +8150,8 @@
         "efeito": "Deslizar na pedra e empurrão",
         "usos": {
           "periodo": "avontade"
-        }
+        },
+        "descricao": "O elemental nada pela rocha sólida como se fosse água, sem deixar rastro nem precisar de passagem aberta; a investida de sua massa empurra quem estiver no caminho."
       }
     ],
     "pericias": {
@@ -8353,12 +8468,7 @@
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "fascinacao",
-        "nivel": 2
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Oratória 3, Persuasão 4, Furtividade 2.",
     "pendente": true,
     "poderes": [
@@ -8371,11 +8481,12 @@
           "nivel": 2
         },
         "resiste": "mente",
-        "efeito": "Sono, medo ou encanto, à escolha; Defesa Mental.",
+        "efeito": "a flauta encanta (fascina, aproxima) ou apavora quem ouvir e falhar em resistir, e pode também adormecer",
         "usos": {
           "periodo": "cena",
           "quantidade": 1
-        }
+        },
+        "descricao": "O sátiro toca uma de duas flautas: uma encanta quem ouve, deixando a plateia fascinada e mais fácil de convencer (ou fazendo alguém fugir apavorado, se ele preferir a outra melodia); ambas podem, em vez disso, embalar o ouvinte até dormir."
       }
     ],
     "pericias": {
@@ -8530,20 +8641,7 @@
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "fascinacao",
-        "nivel": 1
-      },
-      {
-        "id": "raio",
-        "nivel": 1
-      },
-      {
-        "id": "vento",
-        "nivel": 3
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Furtividade 5, Prontidão 3.",
     "pendente": true,
     "poderes": [
@@ -8552,14 +8650,15 @@
         "nome": "Invisibilidade natural",
         "tipo": "natural",
         "base": {
-          "arte": "fascinacao",
-          "nivel": 1
+          "arte": "ofuscacao",
+          "nivel": 3
         },
         "resiste": "nenhum",
         "efeito": "Invisibilidade natural",
         "usos": {
           "periodo": "avontade"
-        }
+        },
+        "descricao": "O fogo-fátuo desaparece de vista quando quer, voltando a ser visto só como uma luzinha fraca ao longe, se tanto."
       }
     ],
     "pericias": {
@@ -9024,36 +9123,56 @@
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "adivinhacao",
-        "nivel": 5
-      },
-      {
-        "id": "fascinacao",
-        "nivel": 4
-      },
-      {
-        "id": "protecao",
-        "nivel": 3
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Conhecimentos 5, Ocultismo 4, Prontidão 4.",
     "pendente": true,
     "poderes": [
       {
-        "id": "rugido",
-        "nome": "Rugido",
+        "id": "sabedoria-ancestral",
+        "nome": "Sabedoria ancestral",
         "tipo": "natural",
         "base": {
-          "arte": "forcas",
-          "nivel": 2
+          "arte": "adivinhacao",
+          "nivel": 5
+        },
+        "resiste": "nenhum",
+        "efeito": "sabe algo sobre quase qualquer lenda, história ou segredo perguntado, poucas vezes por dia",
+        "descricao": "Uma vez ao dia a esfinge recorda algo que ninguém vivo deveria saber: um fato de história, o paradeiro de algo perdido, o nome verdadeiro de alguém. O Mestre decide o quanto ela revela.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 1
+        }
+      },
+      {
+        "id": "enigma-mortal",
+        "nome": "Enigma mortal",
+        "tipo": "natural",
+        "base": {
+          "arte": "fascinacao",
+          "nivel": 4
         },
         "resiste": "mente",
-        "efeito": "Área; quem resiste fica imune na cena.",
+        "efeito": "propõe um enigma; quem falha em resolvê-lo sofre medo, sono, dor ou paralisia, à escolha da esfinge, cerca de uma vez por semana",
+        "descricao": "A esfinge propõe um enigma a quem a enfrenta. Recusar ou errar tem preço: ela escolhe entre amedrontar, adormecer, ferir com dor pura ou paralisar quem falhou.",
         "usos": {
-          "periodo": "cena",
-          "quantidade": 1
+          "periodo": "dia",
+          "quantidade": 1,
+          "recarga": "cerca de uma vez por semana, não por dia"
+        }
+      },
+      {
+        "id": "ver-o-invisivel",
+        "nome": "Ver o invisível",
+        "tipo": "natural",
+        "base": {
+          "arte": "ofuscacao",
+          "nivel": 3
+        },
+        "resiste": "nenhum",
+        "efeito": "enxerga o que está invisível ou oculto por ilusão, constantemente",
+        "descricao": "Nada escapa aos olhos da esfinge por estar invisível ou disfarçado por ilusão: ela vê através dos dois o tempo todo.",
+        "usos": {
+          "periodo": "passivo"
         }
       }
     ],
@@ -9564,16 +9683,7 @@
     "tecnicas": [
       "imortalidade-tenue"
     ],
-    "artes": [
-      {
-        "id": "protecao",
-        "nivel": 4
-      },
-      {
-        "id": "morte",
-        "nivel": 3
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Prontidão 4. Centelha acima do teto mortal (entidade).",
     "pendente": true,
     "poderes": [
@@ -9586,7 +9696,12 @@
         "usos": {
           "periodo": "passivo",
           "recarga": "contínua"
-        }
+        },
+        "base": {
+          "arte": "protecao",
+          "nivel": 4
+        },
+        "descricao": "A carne da Tarrasca se refaz sozinha a cada instante; só fogo ou ácido de verdade atrasam essa regeneração, e mesmo assim ela some devagar."
       },
       {
         "id": "bramido-de-panico",
@@ -9601,7 +9716,8 @@
         "usos": {
           "periodo": "cena",
           "quantidade": 1
-        }
+        },
+        "descricao": "O rugido da Tarrasca é puro terror: quem ouve e falha em resistir foge cego de pavor, sem escolher direção."
       }
     ],
     "pericias": {

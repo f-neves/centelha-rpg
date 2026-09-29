@@ -49,10 +49,6 @@
   },
   "willpower": 9,
   "aparencia": 1,
-  "arte": {
-    "morte": 2,
-    "conjuracao": 3
-  },
   "ataques": [
     {
       "nome": "Golpe planar",
@@ -78,7 +74,8 @@
       "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
       "usos": {
         "periodo": "golpe"
-      }
+      },
+      "descricao": "A mordida do diabo carrega uma doença infernal: quem é mordido e falha em resistir adoece, perdendo força aos poucos até ser tratado ou curado por magia."
     },
     {
       "id": "trava-a-ferida",
@@ -89,6 +86,23 @@
       "usos": {
         "periodo": "passivo",
         "recarga": "contínua"
+      },
+      "descricao": "A barba viva do diabo se prende à ferida que ele abriu, impedindo que feche: enquanto o diabo mantiver o contato, o ferimento não se cura sozinho."
+    },
+    {
+      "id": "teleporte-infernal",
+      "nome": "Teleporte",
+      "tipo": "natural",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 3
+      },
+      "resiste": "nenhum",
+      "efeito": "desloca-se a curta/média distância dentro do mesmo plano, algumas vezes por dia",
+      "descricao": "O diabo desaparece numa baforada de enxofre e reaparece em outro ponto que consiga ver ou já conheça, poucas vezes ao dia.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 3
       }
     }
   ],

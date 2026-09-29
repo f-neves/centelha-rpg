@@ -48,11 +48,6 @@
   },
   "willpower": 10,
   "aparencia": 5,
-  "arte": {
-    "adivinhacao": 5,
-    "fascinacao": 4,
-    "protecao": 3
-  },
   "ataques": [
     {
       "nome": "Garras e presas",
@@ -67,18 +62,51 @@
   ],
   "poderes": [
     {
-      "id": "rugido",
-      "nome": "Rugido",
+      "id": "sabedoria-ancestral",
+      "nome": "Sabedoria ancestral",
       "tipo": "natural",
       "base": {
-        "arte": "forcas",
-        "nivel": 2
+        "arte": "adivinhacao",
+        "nivel": 5
+      },
+      "resiste": "nenhum",
+      "efeito": "sabe algo sobre quase qualquer lenda, história ou segredo perguntado, poucas vezes por dia",
+      "descricao": "Uma vez ao dia a esfinge recorda algo que ninguém vivo deveria saber: um fato de história, o paradeiro de algo perdido, o nome verdadeiro de alguém. O Mestre decide o quanto ela revela.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 1
+      }
+    },
+    {
+      "id": "enigma-mortal",
+      "nome": "Enigma mortal",
+      "tipo": "natural",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 4
       },
       "resiste": "mente",
-      "efeito": "Área; quem resiste fica imune na cena.",
+      "efeito": "propõe um enigma; quem falha em resolvê-lo sofre medo, sono, dor ou paralisia, à escolha da esfinge, cerca de uma vez por semana",
+      "descricao": "A esfinge propõe um enigma a quem a enfrenta. Recusar ou errar tem preço: ela escolhe entre amedrontar, adormecer, ferir com dor pura ou paralisar quem falhou.",
       "usos": {
-        "periodo": "cena",
-        "quantidade": 1
+        "periodo": "dia",
+        "quantidade": 1,
+        "recarga": "cerca de uma vez por semana, não por dia"
+      }
+    },
+    {
+      "id": "ver-o-invisivel",
+      "nome": "Ver o invisível",
+      "tipo": "natural",
+      "base": {
+        "arte": "ofuscacao",
+        "nivel": 3
+      },
+      "resiste": "nenhum",
+      "efeito": "enxerga o que está invisível ou oculto por ilusão, constantemente",
+      "descricao": "Nada escapa aos olhos da esfinge por estar invisível ou disfarçado por ilusão: ela vê através dos dois o tempo todo.",
+      "usos": {
+        "periodo": "passivo"
       }
     }
   ],

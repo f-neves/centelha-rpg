@@ -48,13 +48,6 @@
   },
   "willpower": 11,
   "aparencia": 10,
-  "arte": {
-    "cura": 4,
-    "protecao": 5,
-    "luz": 4,
-    "forcas": 4,
-    "conjuracao": 5
-  },
   "ataques": [
     {
       "nome": "Golpe planar",
@@ -73,11 +66,58 @@
       "nome": "Mudar de forma",
       "tipo": "natural",
       "base": {
-        "arte": "materia",
-        "nivel": 2
+        "arte": "metamorfose",
+        "nivel": 3
       },
       "resiste": "nenhum",
       "efeito": "Mudar de forma",
+      "usos": {
+        "periodo": "avontade"
+      },
+      "descricao": "Assume a forma de um humano ou animal comum por uma cena inteira, incluindo voz e cheiro; a arma e a armadura não acompanham a troca."
+    },
+    {
+      "id": "feiticos-celestiais",
+      "nome": "Feitiços celestiais",
+      "tipo": "natural",
+      "base": {
+        "arte": "cura",
+        "nivel": 4
+      },
+      "resiste": "nenhum",
+      "efeito": "cura ferimentos, remove doença ou maldição, ou abençoa um aliado, 1 vez por cena",
+      "descricao": "Uma vez por cena, o deva toca alguém e escolhe: fecha ferimentos, limpa uma doença ou maldição, ou abençoa (o aliado ganha um bônus passageiro na próxima jogada importante).",
+      "usos": {
+        "periodo": "cena",
+        "quantidade": 1
+      }
+    },
+    {
+      "id": "aura-protetora",
+      "nome": "Aura protetora",
+      "tipo": "natural",
+      "base": {
+        "arte": "protecao",
+        "nivel": 5
+      },
+      "resiste": "nenhum",
+      "efeito": "aliados a 6m ganham +1 dado na Defesa contra ataques de origem maligna",
+      "descricao": "Uma auréola constante em volta do deva: qualquer aliado a até 6 metros ganha +1 dado ao se defender de um golpe, feitiço ou efeito vindo de algo maligno. Não precisa de ação para manter.",
+      "usos": {
+        "periodo": "passivo"
+      }
+    },
+    {
+      "id": "teleporte-sem-erro",
+      "nome": "Teleporte sem erro",
+      "tipo": "natural",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 5
+      },
+      "resiste": "nenhum",
+      "efeito": "desloca-se a qualquer distância dentro do mesmo plano, sem chance de erro",
+      "descricao": "O deva desaparece e reaparece em qualquer ponto que conheça no mesmo plano, levando até seis companheiros consigo. Nunca erra o destino.",
       "usos": {
         "periodo": "avontade"
       }

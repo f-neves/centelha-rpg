@@ -48,10 +48,6 @@
   },
   "willpower": 9,
   "aparencia": 5,
-  "arte": {
-    "fortuna": 4,
-    "fogo": 4
-  },
   "ataques": [
     {
       "nome": "Golpe planar",
@@ -78,6 +74,39 @@
       "usos": {
         "periodo": "passivo",
         "recarga": "contínua"
+      },
+      "descricao": "O corpo do efreeti é fogo vivo: quem acerta um golpe corpo a corpo nele se queima de volta, e sua pele soca e machuca como brasa."
+    },
+    {
+      "id": "muralha-de-fogo",
+      "nome": "Muralha de fogo",
+      "tipo": "natural",
+      "base": {
+        "arte": "fogo",
+        "nivel": 4
+      },
+      "resiste": "esquiva",
+      "efeito": "ergue uma parede de fogo que bloqueia passagem e fere quem atravessa",
+      "descricao": "O efreeti ergue uma cortina de chamas que bloqueia um corredor ou porta; quem tenta atravessar se queima.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 3
+      }
+    },
+    {
+      "id": "conceder-desejos",
+      "nome": "Conceder desejos",
+      "tipo": "natural",
+      "base": {
+        "arte": "fortuna",
+        "nivel": 6
+      },
+      "resiste": "nenhum",
+      "efeito": "concede um pedido poderoso a quem o aprisiona ou barganha com ele, raramente e sempre com um preço",
+      "descricao": "Preso, subornado ou convencido, o efreeti pode realizar um pedido enorme. Ele cumpre a letra do pedido, nunca a intenção por trás dele, e cobra um preço à altura.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 1
       }
     }
   ],

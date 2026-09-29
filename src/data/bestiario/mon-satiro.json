@@ -47,9 +47,6 @@
   },
   "willpower": 7,
   "aparencia": 8,
-  "arte": {
-    "fascinacao": 2
-  },
   "ataques": [
     {
       "nome": "Garras e presas",
@@ -72,11 +69,12 @@
         "nivel": 2
       },
       "resiste": "mente",
-      "efeito": "Sono, medo ou encanto, à escolha; Defesa Mental.",
+      "efeito": "a flauta encanta (fascina, aproxima) ou apavora quem ouvir e falhar em resistir, e pode também adormecer",
       "usos": {
         "periodo": "cena",
         "quantidade": 1
-      }
+      },
+      "descricao": "O sátiro toca uma de duas flautas: uma encanta quem ouve, deixando a plateia fascinada e mais fácil de convencer (ou fazendo alguém fugir apavorado, se ele preferir a outra melodia); ambas podem, em vez disso, embalar o ouvinte até dormir."
     }
   ],
   "habilidades": [

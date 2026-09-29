@@ -47,9 +47,6 @@
   },
   "willpower": 8,
   "aparencia": 3,
-  "arte": {
-    "vida": 2
-  },
   "tech": {
     "pele-de-pedra": true
   },
@@ -157,6 +154,24 @@
   "proezaFutura": [
     {
       "caminho": "pele-de-pedra"
+    }
+  ],
+  "poderes": [
+    {
+      "id": "animar-arvores",
+      "nome": "Animar árvores",
+      "tipo": "natural",
+      "base": {
+        "arte": "vida",
+        "nivel": 3
+      },
+      "resiste": "nenhum",
+      "efeito": "desperta uma ou duas árvores próximas para lutarem ao seu lado por uma cena, poucas vezes por dia",
+      "descricao": "O treant acorda uma ou duas árvores da floresta ao redor, que arrancam as raízes do chão e lutam como ele por uma cena, voltando a dormir depois.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 1
+      }
     }
   ]
 }

@@ -47,11 +47,6 @@
   },
   "willpower": 9,
   "aparencia": 1,
-  "arte": {
-    "fascinacao": 1,
-    "raio": 1,
-    "vento": 3
-  },
   "ataques": [
     {
       "nome": "Garras e presas",
@@ -70,14 +65,15 @@
       "nome": "Invisibilidade natural",
       "tipo": "natural",
       "base": {
-        "arte": "fascinacao",
-        "nivel": 1
+        "arte": "ofuscacao",
+        "nivel": 3
       },
       "resiste": "nenhum",
       "efeito": "Invisibilidade natural",
       "usos": {
         "periodo": "avontade"
-      }
+      },
+      "descricao": "O fogo-fátuo desaparece de vista quando quer, voltando a ser visto só como uma luzinha fraca ao longe, se tanto."
     }
   ],
   "habilidades": [

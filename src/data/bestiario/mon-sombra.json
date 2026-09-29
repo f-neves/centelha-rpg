@@ -48,10 +48,6 @@
   },
   "willpower": 7,
   "aparencia": 2,
-  "arte": {
-    "morte": 1,
-    "espirito": 2
-  },
   "ataques": [
     {
       "nome": "Toque dilacerante",
@@ -71,14 +67,15 @@
       "tipo": "natural",
       "base": {
         "arte": "morte",
-        "nivel": 1
+        "nivel": 2
       },
       "resiste": "corpo",
       "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
       "usos": {
         "periodo": "golpe"
       },
-      "ataque": "Toque dilacerante"
+      "ataque": "Toque dilacerante",
+      "descricao": "O toque gelado da sombra suga a força de quem ela alcança; quem morre esgotado por esse dreno vira uma sombra também, presa ao mesmo destino."
     },
     {
       "id": "incorporeo",
@@ -92,7 +89,8 @@
       "efeito": "Incorpóreo",
       "usos": {
         "periodo": "avontade"
-      }
+      },
+      "descricao": "Sem corpo de verdade, a sombra atravessa paredes e portas fechadas e é imune a quase tudo que dependa de tocar carne, mas o dano físico ainda a alcança, reduzido pela metade (é incorpórea, não intangível)."
     }
   ],
   "fraquezas": [

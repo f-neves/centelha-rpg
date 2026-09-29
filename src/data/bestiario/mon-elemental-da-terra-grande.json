@@ -48,9 +48,6 @@
   },
   "willpower": 8,
   "aparencia": 5,
-  "arte": {
-    "terra": 2
-  },
   "tech": {
     "pele-de-pedra": true
   },
@@ -79,7 +76,8 @@
       "efeito": "Deslizar na pedra e empurrão",
       "usos": {
         "periodo": "avontade"
-      }
+      },
+      "descricao": "O elemental nada pela rocha sólida como se fosse água, sem deixar rastro nem precisar de passagem aberta; a investida de sua massa empurra quem estiver no caminho."
     }
   ],
   "material": "pedra",

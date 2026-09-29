@@ -50,12 +50,6 @@
   },
   "willpower": 11,
   "aparencia": 0,
-  "arte": {
-    "gelo": 5,
-    "conjuracao": 6,
-    "protecao": 3,
-    "tempo": 2
-  },
   "ataques": [
     {
       "nome": "Golpe planar",
@@ -82,6 +76,38 @@
       "usos": {
         "periodo": "passivo",
         "recarga": "contínua"
+      },
+      "descricao": "Uma aura de frio cortante cerca o diabo o tempo todo; quem chega perto sente o gelo mesmo sem ser atacado."
+    },
+    {
+      "id": "muralha-de-gelo",
+      "nome": "Muralha de gelo",
+      "tipo": "natural",
+      "base": {
+        "arte": "gelo",
+        "nivel": 5
+      },
+      "resiste": "esquiva",
+      "efeito": "ergue uma parede de gelo ou lança uma nevasca em área, poucas vezes por dia",
+      "descricao": "O diabo ergue um paredão de gelo maciço para bloquear passagem, ou solta uma nevasca que cobre uma área inteira e fere quem não escapa a tempo.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 3
+      }
+    },
+    {
+      "id": "teleporte-de-gelo",
+      "nome": "Teleporte",
+      "tipo": "natural",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 6
+      },
+      "resiste": "nenhum",
+      "efeito": "desloca-se a qualquer distância dentro do mesmo plano, à vontade",
+      "descricao": "Some numa nuvem gelada e reaparece em qualquer ponto que conheça no mesmo plano, sem limite de vezes.",
+      "usos": {
+        "periodo": "avontade"
       }
     }
   ],

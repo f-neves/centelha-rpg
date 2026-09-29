@@ -47,10 +47,6 @@
   },
   "willpower": 12,
   "aparencia": 5,
-  "arte": {
-    "protecao": 4,
-    "morte": 3
-  },
   "tech": {
     "imortalidade-tenue": true
   },
@@ -76,7 +72,12 @@
       "usos": {
         "periodo": "passivo",
         "recarga": "contínua"
-      }
+      },
+      "base": {
+        "arte": "protecao",
+        "nivel": 4
+      },
+      "descricao": "A carne da Tarrasca se refaz sozinha a cada instante; só fogo ou ácido de verdade atrasam essa regeneração, e mesmo assim ela some devagar."
     },
     {
       "id": "bramido-de-panico",
@@ -91,7 +92,8 @@
       "usos": {
         "periodo": "cena",
         "quantidade": 1
-      }
+      },
+      "descricao": "O rugido da Tarrasca é puro terror: quem ouve e falha em resistir foge cego de pavor, sem escolher direção."
     }
   ],
   "habilidades": [

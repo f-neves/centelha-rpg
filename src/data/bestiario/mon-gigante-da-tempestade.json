@@ -48,11 +48,6 @@
   },
   "willpower": 8,
   "aparencia": 4,
-  "arte": {
-    "vento": 4,
-    "raio": 4,
-    "agua": 3
-  },
   "ataques": [
     {
       "nome": "Pancada descomunal",
@@ -72,10 +67,46 @@
       "tipo": "natural",
       "resiste": "nenhum",
       "area": "convoca tempestade sobre uma área",
-      "efeito": "Leva 10 minutos para conjurar; dura a cena. Reduz visibilidade e Ataques à distância de inimigos; a critério do Mestre, raios caem ao acaso na área.",
+      "efeito": "muda o tempo numa área grande ao longo de minutos (tempestade, vento forte, raios ao acaso, à escolha do Mestre); 1 vez por dia",
       "usos": {
         "periodo": "dia",
         "quantidade": 1
+      },
+      "base": {
+        "arte": "vento",
+        "nivel": 5
+      },
+      "descricao": "Levando cerca de dez minutos, o gigante convoca ou dissipa uma tempestade sobre uma região inteira: nuvens carregadas, ventania, raios caindo ao acaso a critério do Mestre."
+    },
+    {
+      "id": "relampago-em-cadeia",
+      "nome": "Relâmpago em cadeia",
+      "tipo": "natural",
+      "base": {
+        "arte": "raio",
+        "nivel": 4
+      },
+      "resiste": "esquiva",
+      "efeito": "um raio salta entre vários alvos próximos, poucas vezes por dia",
+      "descricao": "Um relâmpago sai das mãos do gigante e salta de um alvo para o próximo, ferindo cada um que estiver perto o bastante do anterior.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 3
+      }
+    },
+    {
+      "id": "respirar-agua-tempestade",
+      "nome": "Respirar água",
+      "tipo": "natural",
+      "base": {
+        "arte": "agua",
+        "nivel": 3
+      },
+      "resiste": "nenhum",
+      "efeito": "respira debaixo d'água como se fosse ar, sempre",
+      "descricao": "O gigante da tempestade vive tanto no mar quanto na terra: respira água como quem respira ar, sem esforço nem limite de tempo.",
+      "usos": {
+        "periodo": "passivo"
       }
     }
   ],

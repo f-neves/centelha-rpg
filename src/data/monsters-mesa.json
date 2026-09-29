@@ -5948,28 +5948,7 @@
    "sociabilidade": 0,
    "furtividade": 2
   },
-  "artes": [
-   {
-    "id": "cura",
-    "nivel": 4
-   },
-   {
-    "id": "protecao",
-    "nivel": 5
-   },
-   {
-    "id": "luz",
-    "nivel": 4
-   },
-   {
-    "id": "forcas",
-    "nivel": 4
-   },
-   {
-    "id": "conjuracao",
-    "nivel": 5
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 43,
@@ -6053,16 +6032,7 @@
    "sociabilidade": 0,
    "furtividade": 3
   },
-  "artes": [
-   {
-    "id": "morte",
-    "nivel": 2
-   },
-   {
-    "id": "conjuracao",
-    "nivel": 3
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 40,
@@ -6232,24 +6202,7 @@
    "sociabilidade": 0,
    "furtividade": 2
   },
-  "artes": [
-   {
-    "id": "gelo",
-    "nivel": 5
-   },
-   {
-    "id": "conjuracao",
-    "nivel": 6
-   },
-   {
-    "id": "protecao",
-    "nivel": 3
-   },
-   {
-    "id": "tempo",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 66,
@@ -6722,24 +6675,7 @@
    "sociabilidade": 0,
    "furtividade": 0
   },
-  "artes": [
-   {
-    "id": "agua",
-    "nivel": 2
-   },
-   {
-    "id": "materia",
-    "nivel": 2
-   },
-   {
-    "id": "fascinacao",
-    "nivel": 1
-   },
-   {
-    "id": "vento",
-    "nivel": 4
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 50,
@@ -8395,16 +8331,7 @@
    "sociabilidade": 0,
    "furtividade": 0
   },
-  "artes": [
-   {
-    "id": "fortuna",
-    "nivel": 4
-   },
-   {
-    "id": "fogo",
-    "nivel": 4
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 54,
@@ -8741,12 +8668,7 @@
    "sociabilidade": 0,
    "furtividade": 0
   },
-  "artes": [
-   {
-    "id": "terra",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "tecnicas": [
    {
     "id": "pele-de-pedra",
@@ -10014,20 +9936,7 @@
    "sociabilidade": 0,
    "furtividade": 1
   },
-  "artes": [
-   {
-    "id": "adivinhacao",
-    "nivel": 5
-   },
-   {
-    "id": "fascinacao",
-    "nivel": 4
-   },
-   {
-    "id": "protecao",
-    "nivel": 3
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 54,
@@ -11148,20 +11057,7 @@
    "sociabilidade": 0,
    "furtividade": 4
   },
-  "artes": [
-   {
-    "id": "fascinacao",
-    "nivel": 1
-   },
-   {
-    "id": "raio",
-    "nivel": 1
-   },
-   {
-    "id": "vento",
-    "nivel": 3
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 17,
@@ -12284,20 +12180,7 @@
    "sociabilidade": 0,
    "furtividade": 0
   },
-  "artes": [
-   {
-    "id": "vento",
-    "nivel": 4
-   },
-   {
-    "id": "raio",
-    "nivel": 4
-   },
-   {
-    "id": "agua",
-    "nivel": 3
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 80,
@@ -12379,12 +12262,7 @@
    "sociabilidade": 0,
    "furtividade": 0
   },
-  "artes": [
-   {
-    "id": "vento",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 75,
@@ -22375,12 +22253,7 @@
    "sociabilidade": 0,
    "furtividade": 1
   },
-  "artes": [
-   {
-    "id": "fogo",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "tecnicas": [
    {
     "id": "imobilizar",
@@ -22640,12 +22513,7 @@
    "sociabilidade": 0,
    "furtividade": 4
   },
-  "artes": [
-   {
-    "id": "fascinacao",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
@@ -23599,16 +23467,7 @@
    "sociabilidade": 0,
    "furtividade": 3
   },
-  "artes": [
-   {
-    "id": "morte",
-    "nivel": 1
-   },
-   {
-    "id": "espirito",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
@@ -24049,16 +23908,7 @@
    "sociabilidade": 0,
    "furtividade": 0
   },
-  "artes": [
-   {
-    "id": "protecao",
-    "nivel": 4
-   },
-   {
-    "id": "morte",
-    "nivel": 3
-   }
-  ],
+  "artes": [],
   "tecnicas": [
    {
     "id": "imortalidade-tenue",
@@ -24556,12 +24406,7 @@
    "sociabilidade": 0,
    "furtividade": 0
   },
-  "artes": [
-   {
-    "id": "vida",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "tecnicas": [
    {
     "id": "pele-de-pedra",
