@@ -154,18 +154,29 @@ limitações conhecidas, que são as três de baixo.
   documentadas aqui. "Efeitos mentais" (Crag Linnorm, Cubo Gelatinoso) também não tem
   palavra própria no vocabulário; usei o mais próximo que já existe (nenhum, nestes dois
   casos) em vez de forçar uma palavra errada.
-- [ ] **B17 · [DECIDIR] 38 criaturas com Arte ainda para reverter a poder natural, sem
-  nota dos graves.** Registrado em 29/09/2026, B14 Fase 4, item 3/4/8. Depois de fechar as
-  16 com nota dos graves mais Balor/Diabo do Fosso/Kraken (âncoras da Fase 5) e o Aboleth
-  (que tinha ficado de fora do primeiro lote), sobram 38 criaturas com `arte` gravada que
-  não são caster de verdade (não estão na lista fixa dragões/Lich/Couatl/Ninfa/Planetar/
-  Solar/Ghaele/Rakshasa/Naga, nem são as três NPCs humanas Cultista/Feiticeiro Menor/Mago
-  de Batalha): `mon-aranha-das-fases, mon-archon-cao, mon-assombracao-wraith, mon-behir,
-  mon-besta-deslocadora, mon-bodak, mon-bruxa-verde-hag, mon-ciclope, mon-cocatriz,
-  mon-diabo-osseo, mon-diabrete-imp, mon-doppelganger, mon-dretch, mon-driade, mon-erinia,
-  mon-espectro, mon-ghast, mon-ghoul, mon-glabrezu, mon-gorgona-touro-de-ferro, mon-harpia,
-  mon-hezrou, mon-lamia, mon-marilith, mon-medusa, mon-monstro-da-ferrugem, mon-mumia,
-  mon-ogro-mago-oni, mon-pegaso, mon-pixie, mon-quasit, mon-quimera, mon-sucubo,
-  mon-unicornio, mon-vampiro, mon-vrock, mon-wight, mon-xorn`. Decisão do autor (29/09):
-  ele vai mandar um arquivo pronto com efeito, usos, resiste e descrição de cada poder
-  dessas 38; a aplicação vira uma rodada própria, fora desta Fase 4.
+- [ ] **B17 · [DECIDIR] Descrições faltando (item 4 inteiro) + 38 criaturas com Arte
+  ainda para reverter a poder natural, sem nota dos graves.** Registrado em 29/09/2026,
+  B14 Fase 4, item 3/4/8; **unificado em 29/09/2026** por decisão do autor (as duas
+  pendências eram separadas antes e viraram uma só). Cobre:
+  - **86 poderes naturais sem `descricao`** (contagem em 29/09/2026, depois de fechar os
+    52 graves mecânicos e Balor/Diabo do Fosso/Kraken): poderes de fases anteriores
+    (golems, elementais pequenos, dragões, etc.) e das próprias 38 criaturas abaixo, uma
+    vez revertidas. Os campos MECÂNICOS (`efeito`, `resiste`, `usos.periodo`, `base`
+    quando aplicável) estão completos em 100% dos poderes naturais hoje (conferido por
+    varredura própria); só a prosa do `descricao` falta.
+  - **38 criaturas com `arte` gravada ainda para reverter a poder natural**, sem nota dos
+    graves: não são caster de verdade (não estão na lista fixa dragões/Lich/Couatl/Ninfa/
+    Planetar/Solar/Ghaele/Rakshasa/Naga, nem são as três NPCs humanas Cultista/Feiticeiro
+    Menor/Mago de Batalha): `mon-aranha-das-fases, mon-archon-cao, mon-assombracao-wraith,
+    mon-behir, mon-besta-deslocadora, mon-bodak, mon-bruxa-verde-hag, mon-ciclope,
+    mon-cocatriz, mon-diabo-osseo, mon-diabrete-imp, mon-doppelganger, mon-dretch,
+    mon-driade, mon-erinia, mon-espectro, mon-ghast, mon-ghoul, mon-glabrezu,
+    mon-gorgona-touro-de-ferro, mon-harpia, mon-hezrou, mon-lamia, mon-marilith,
+    mon-medusa, mon-monstro-da-ferrugem, mon-mumia, mon-ogro-mago-oni, mon-pegaso,
+    mon-pixie, mon-quasit, mon-quimera, mon-sucubo, mon-unicornio, mon-vampiro, mon-vrock,
+    mon-wight, mon-xorn`.
+
+  Decisão do autor (29/09): ele vai mandar um arquivo pronto com efeito, usos, resiste e
+  descrição de cada poder das 38 criaturas, e as descrições que faltam nas fichas já
+  revertidas; a aplicação inteira vira uma rodada própria, fora desta Fase 4. A Fase 5
+  não depende disso: lê os campos mecânicos, que já estão completos.

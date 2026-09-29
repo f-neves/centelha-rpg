@@ -12,11 +12,29 @@ Fase 4 ainda não fechou (faltam pedaços dos itens 3/4/8, listados no fim).
 4. `a4d53bdc` · item 3/4/8, lote 2: Aboleth (faltou no lote 1) e Centelha/Inteligência/peso
    de 11 criaturas dos graves.
 5. `659979d0` · relato de andamento e pendências K36/B16.
-6. (este commit) · decisão do autor sobre o ritmo: as ~52 fichas dos graves mecânicas
+6. `0cdc06db` · decisão do autor sobre o ritmo: as ~52 fichas dos graves mecânicas
    (ataque, atributo, elemento, porte/peso), mais Balor/Diabo do Fosso/Kraken (as três
    âncoras da Fase 5 que precisavam sair da lista das "sem nota"), mais o Basilisco (tinha
    ficado com `arte` redundante, igual o Aboleth). As outras 38 sem nota viram pendência
    B17, aplicação em rodada própria com arquivo que o autor vai mandar.
+7. `fbd11dcf` · confirma CI verde dos commits anteriores no relato.
+8. (este commit) · **fecha a Fase 4**: ajuste do autor no item 4 (não escrever mais
+   descrição nova nesta rodada; garantir só os campos MECÂNICOS de todo poder natural —
+   `efeito`, `resiste`, `usos.periodo`, `base` quando aplicável), e unificação de B17
+   (descrições faltando + as 38 criaturas sem nota) numa pendência só.
+
+## Fase 4 fechada
+
+Varredura própria confere: **100% dos poderes naturais do bestiário têm os campos
+mecânicos completos** (`efeito`, `resiste`, `usos.periodo`, e `base` nos que citam
+parâmetro de Arte emprestado) — inclusive Balor, Diabo do Fosso e Kraken (as três âncoras
+da Fase 5) e as 37 fichas dos graves mecânicos fechadas no commit 6. **86 poderes naturais
+ainda sem `descricao`** (prosa), e isso NÃO bloqueia a Fase 5: ela lê os campos mecânicos,
+não a descrição. A pendência B17 (`docs/pendencias/B-bestiario.md`) foi reescrita para
+juntar as duas coisas que antes eram separadas (descrições faltando de todo o item 4, mais
+as 38 criaturas com Arte sem nota dos graves) numa pendência só, como pedido: o autor vai
+mandar um arquivo pronto com efeito/usos/resiste/descrição das 38, e a aplicação (incluindo
+as descrições que faltam nas fichas já revertidas) vira uma rodada própria fora desta Fase 4.
 
 ## Item 1 · `fonte.cr`/`fonte.crConf` (feito, commit `c9beedc2`)
 
@@ -127,8 +145,12 @@ Tarn Linnorm (+ataque de cauda), Trol, Arconte Trombeta. Onde a nota pedia um ti
 ou resistência fora do vocabulário fechado (ácido, ferro frio, prata, adamantina, "imunidade
 a magia", "efeitos mentais"), NÃO inventei palavra nova: registrado em detalhe na B16.
 
-## Item 3/4/8 · o que FALTA (pendência explícita B17, decisão do autor sobre o ritmo)
+## Item 3/4/8 · o que FALTA (pendência única B17, decisão do autor)
 
+- **Descrições (`descricao`) faltando em 86 poderes naturais**, tanto os de fases
+  anteriores (golems, elementais pequenos, dragões etc.) quanto os das 38 criaturas
+  abaixo, uma vez revertidas. Os campos MECÂNICOS já estão 100% completos (ver seção
+  "Fase 4 fechada" acima); só falta a prosa.
 - **38 criaturas com Arte gravada que NÃO têm nota nos graves**, listadas por completo na
   pendência **B17** (`docs/pendencias/B-bestiario.md`): `mon-aranha-das-fases,
   mon-archon-cao, mon-assombracao-wraith, mon-behir, mon-besta-deslocadora, mon-bodak,
@@ -137,17 +159,15 @@ a magia", "efeitos mentais"), NÃO inventei palavra nova: registrado em detalhe 
   mon-glabrezu, mon-gorgona-touro-de-ferro, mon-harpia, mon-hezrou, mon-lamia,
   mon-marilith, mon-medusa, mon-monstro-da-ferrugem, mon-mumia, mon-ogro-mago-oni,
   mon-pegaso, mon-pixie, mon-quasit, mon-quimera, mon-sucubo, mon-unicornio, mon-vampiro,
-  mon-vrock, mon-wight, mon-xorn`. Decisão do autor (29/09): ele vai mandar um arquivo
-  pronto com efeito, usos, resiste e descrição de cada poder; aplicação em rodada própria,
+  mon-vrock, mon-wight, mon-xorn`.
+- As duas acima foram **unificadas numa pendência só** (decisão do autor, 29/09): ele vai
+  mandar um arquivo pronto com efeito/usos/resiste/descrição de cada poder, cobrindo as 38
+  criaturas e as descrições que faltam nas já revertidas; aplicação em rodada própria,
   fora desta Fase 4.
 - **~30 das 67 fichas dos graves** ainda com pedaços da nota mecânica não conferidos linha
   a linha contra o texto original (a maioria já recebeu ataque/atributo/elemento; alguns
   poderes extras que as notas citam de passagem podem ter ficado de fora). Não é uma lista
   fechada; peço conferência cruzada na revisão.
-- **~95 poderes naturais (contagem antes deste lote) ainda sem `descricao`** de fases
-  anteriores que não vieram de Arte revertida (golems, elementais pequenos etc.); o número
-  exato muda com este commit (28 a mais ganharam descrição agora); contagem nova no
-  próximo relato.
 - **Vocabulário fechado sem "ácido", "ferro frio", "prata"/"bem" (resistência contornada),
   "adamantina", "imunidade a magia" e "efeitos mentais"**: registrado em detalhe na B16,
   com a lista de toda criatura que esbarrou nisso até agora.
@@ -158,13 +178,14 @@ a magia", "efeitos mentais"), NÃO inventei palavra nova: registrado em detalhe 
   alcança ataques normais de criatura; Fantasma/Sombra ficam sem essa marca até decidir.
 - **B16** (`B-bestiario.md`): tipos de dano/resistência fora do vocabulário fechado
   (ácido, ferro frio, prata/bem, adamantina, imunidade a magia, efeitos mentais).
-- **B17** (`B-bestiario.md`): as 38 criaturas com Arte sem nota dos graves, aplicação
-  adiada para rodada própria por decisão do autor.
+- **B17** (`B-bestiario.md`): descrições faltando (item 4 inteiro) + as 38 criaturas com
+  Arte sem nota dos graves, unificadas numa pendência só; aplicação adiada para rodada
+  própria por decisão do autor.
 
 ## Verificação
 
 - `npm run validate`, `npx tsc --noEmit`, `npm run build`: verdes em todos os commits desta
-  fase, incluindo este lote.
+  fase, incluindo o fechamento.
 - `test-editor-bestiario.mjs` e `npm run espelho`: rodados e verdes neste lote também
   (o `validate` sozinho não cobre esses dois, e o bestiário alimenta os dois). Achei e
   corrigi no caminho um teste que ficou desatualizado pela minha própria mudança: o Cubo
@@ -173,9 +194,9 @@ a magia", "efeitos mentais"), NÃO inventei palavra nova: registrado em detalhe 
   resistência para o Rakshasa (que eu não toquei) e acrescentei uma checagem nova, do
   Cubo Gelatinoso com `imunidades`, cobrindo o campo novo desta fase.
 - CI do GitHub: `cb2381c3`, `6ea979bc`, `a4d53bdc` e `659979d0` fecharam 100% verdes (os
-  dois workflows, conferido por `gh run list --json conclusion`). `0cdc06db` (este lote)
-  está na fila quando escrevo isto; vou conferir antes de considerar a fase fechada de
-  verdade.
+  dois workflows, conferido por `gh run list --json conclusion`). `0cdc06db` e `fbd11dcf`
+  confirmados verdes job a job (`gh run view --json status,conclusion,jobs`) antes de
+  seguir para a Fase 5, como pedido.
 - Travessão: zero em todo texto novo desta fase (conferido arquivo por arquivo, não por
   `git diff` puro).
 
@@ -183,10 +204,12 @@ a magia", "efeitos mentais"), NÃO inventei palavra nova: registrado em detalhe 
 
 O Arquiteto trouxe a decisão do autor: fazer agora a parte mecânica dos graves (feito
 acima) e só Balor/Diabo do Fosso/Kraken das 42 sem nota (as âncoras da Fase 5), com as
-outras 38 virando pendência B17 para uma rodada própria. Aplicado como pedido.
+outras 38 virando pendência B17 para uma rodada própria. Depois, ajuste sobre o item 4:
+não escrever mais descrição nesta rodada, só garantir os campos mecânicos completos, e
+unificar a pendência das descrições com a B17. Aplicado como pedido.
 
 ## É seguro dar `/clear`?
 
-Ainda não: falta a Fase 5, que só pode começar agora que Balor/Diabo do Fosso/Kraken estão
-convertidos. Vou confirmar o CI deste lote e seguir para a Fase 5 (começando pelas
-âncoras, "pare e relate" antes das 309 criaturas, como o despacho pede).
+Ainda não: falta a Fase 5. Fase 4 fechada (commit e CI confirmados); seguindo agora para a
+Fase 5, começando pelas âncoras, "pare e relate" antes das 309 criaturas, como o despacho
+pede.

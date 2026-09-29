@@ -360,7 +360,7 @@ Fechados (9): A12, A17, A18, A22, A23, A27, A21, A22, A20.
 | B11 | aberto | FAZER | Palavra nova de fraqueza precisa de rito para virar oficial. |
 | B14 | aberto | DECIDIR | Recalibrar nível de desafio e Centelha das criaturas, e revisar as fichas do bestiário. |
 | B16 | aberto | DECIDIR | Tipos de dano fora do vocabulário fechado (ácido, e possivelmente outros). |
-| B17 | aberto | DECIDIR | 38 criaturas com Arte ainda para reverter a poder natural, sem nota dos graves. |
+| B17 | aberto | DECIDIR | Descrições faltando (item 4 inteiro) + 38 criaturas com Arte ainda para reverter a poder natural, sem nota … |
 
 Fechados (6): B12, B1, B1b, B10, B13, B15.
 
