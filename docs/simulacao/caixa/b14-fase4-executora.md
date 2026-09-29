@@ -11,6 +11,12 @@ Fase 4 ainda não fechou (faltam pedaços dos itens 3/4/8, listados no fim).
 3. `6ea979bc` · Adendos 2 e 3: Tarn Linnorm/Girallon, exibição de locomoção e poderes.
 4. `a4d53bdc` · item 3/4/8, lote 2: Aboleth (faltou no lote 1) e Centelha/Inteligência/peso
    de 11 criaturas dos graves.
+5. `659979d0` · relato de andamento e pendências K36/B16.
+6. (este commit) · decisão do autor sobre o ritmo: as ~52 fichas dos graves mecânicas
+   (ataque, atributo, elemento, porte/peso), mais Balor/Diabo do Fosso/Kraken (as três
+   âncoras da Fase 5 que precisavam sair da lista das "sem nota"), mais o Basilisco (tinha
+   ficado com `arte` redundante, igual o Aboleth). As outras 38 sem nota viram pendência
+   B17, aplicação em rodada própria com arquivo que o autor vai mandar.
 
 ## Item 1 · `fonte.cr`/`fonte.crConf` (feito, commit `c9beedc2`)
 
@@ -73,13 +79,27 @@ site, mesmo os que já tinham. **Prova no `dist/` gerado** (não só no código)
 
 ## Item 3/4/8 · o que está feito
 
-**16 criaturas** com Arte revertida para poder natural (Deva Astral, Diabo Barbado, Diabo
-de Gelo, Djinn, Efreeti, Elemental da Terra Grande, Esfinge Ginosfinge, Fogo-fátuo, Gigante
-da Tempestade, Gigante das Nuvens, Salamandra, Sátiro, Sombra, Tarrasca, Treant, Aboleth).
-Nenhuma está na lista de quem conjura como classe (dragões, Lich, Couatl, Ninfa, Planetar,
-Solar, Ghaele, Rakshasa, Naga); os números (arte/nível) que já estavam gravados viraram
-parâmetro (`base`) dos poderes naturais, sem portão de Centelha nem custo de Mana. 22
-poderes naturais novos ou ajustados, todos com `descricao` em texto próprio.
+**19 criaturas** com Arte revertida para poder natural: as 16 do lote 1 (Deva Astral,
+Diabo Barbado, Diabo de Gelo, Djinn, Efreeti, Elemental da Terra Grande, Esfinge
+Ginosfinge, Fogo-fátuo, Gigante da Tempestade, Gigante das Nuvens, Salamandra, Sátiro,
+Sombra, Tarrasca, Treant, Aboleth) mais **Balor, Diabo do Fosso (Pit Fiend) e Kraken**,
+convertidos agora por serem as três âncoras da Fase 5 que precisavam sair da lista das
+"sem nota", com a mesma qualidade das 16 (descrição em texto próprio, que o Mestre usa
+sozinho, sem citar número de D&D). O Basilisco também perdeu o campo `arte` redundante
+(já tinha o poder convertido e com descrição desde antes; só sobrava o campo morto).
+Nenhuma das 19 está na lista de quem conjura como classe (dragões, Lich, Couatl, Ninfa,
+Planetar, Solar, Ghaele, Rakshasa, Naga); os números (arte/nível) que já estavam gravados
+viraram parâmetro (`base`) dos poderes naturais, sem portão de Centelha nem custo de Mana.
+28 poderes naturais novos ou ajustados no total, todos com `descricao` em texto próprio.
+
+Para Balor/Diabo do Fosso/Kraken especificamente: usei o `arte` que já estava gravado
+como parâmetro (fogo N4/N5 do Balor; fogo N6/fortuna N6/espírito N4/morte N3 do Diabo do
+Fosso; vento N6/fascinação N5/raio N4/água N4 do Kraken, este com apoio extra do
+`artes-criaturas.md`, que já tinha "Lightning Storm" e "dominate monster só em animais"
+documentados para ele) e escrevi a descrição a partir das próprias `habilidades` já na
+ficha (teleporte, feitiços supremos, tempestade de raios, dominar bestas do mar). Onde não
+havia base textual nenhuma (fascinação N5 do Diabo do Fosso, conjuração N6 do Diabo do
+Fosso), não inventei poder: a Arte foi descartada sem virar nada.
 
 **Onde uma nota dos graves dizia "conjuração de verdade, dentro da Centelha N"** (Deva
 Astral, Diabo de Gelo, Esfinge Ginosfinge): isso foi escrito antes do despacho desta rodada
@@ -87,80 +107,84 @@ fechar a lista de quem fica caster; o item 3 desta fase revê essa parte das not
 anteriores, como o próprio despacho avisa ("isto revê a fase 3"). Registrado aqui para
 quem ler o histórico depois.
 
-**Onde uma Arte do campo antigo não tinha nenhuma habilidade correspondente na ficha**
-(luz N4 e forças N4 do Deva Astral; proteção N3 do Diabo de Gelo e da Esfinge Ginosfinge;
-água N3 e adivinhação N2 do Aboleth), **não inventei poder**: a Arte foi descartada sem
-virar nada, por falta de base textual.
-
 **Centelha e Inteligência de 11 criaturas** ajustadas pela regra do autor (Centelha é eixo
 próprio, não sai do CR): Basidirond, Pudim Negro, Corujurso, Froghemoth, Mantícora e Montão
 Tropecante foram a Centelha 0; Cauchemar, Tarn Linnorm, Giant Slug, Giant Wasp, Mantícora e
-Montão Tropecante tiveram a Inteligência corrigida pela fonte. Peso/porte de Anquilossauro,
-Vespa Gigante, Pudim Negro e Corujurso corrigidos.
+Montão Tropecante tiveram a Inteligência corrigida pela fonte.
 
-## Item 3/4/8 · o que FALTA (pendências explícitas, não decidi cortar sozinha)
+**A parte MECÂNICA das notas dos graves** (ataque, atributo, elemento, porte/peso,
+deslocamento) aplicada em mais **37 fichas** que ainda não tinham recebido essa parte:
+Objeto Animado, Anquilossauro, Vinha Assassina (+poder Emaranhar), Basidirond,
+Braquiossauro, Cauchemar (+ataque de mordida, +imunidade a fogo), Couatl, Crag Linnorm,
+Cubo Gelatinoso (+poder Paralisia ao toque), Leão Atroz, Froghemoth, Fantasma (+poderes
+Possessão e Telecinese), Rã Gigante, Lesma Gigante, Girallon, Cavalo, Golem de Gelo,
+Perseguidor Invisível (nome em português, era Invisible Stalker), Golem de Ferro, Arconte
+Lanterna (+poderes Aura de ameaça, Círculo contra o mal, Teleporte), Mantícora, Marid,
+Montão Tropeçante, Nabasu (+poderes Toque que envelhece, Sombras, Fascinar), Pesadelo
+(+poder Viagem entre planos), Pônei, Cão de Montaria, Roper, Campeão Esquelético (nome
+novo, era Skeletal Champion), os quatro Elementais Pequenos, Estegossauro, Golem de Pedra,
+Tarn Linnorm (+ataque de cauda), Trol, Arconte Trombeta. Onde a nota pedia um tipo de dano
+ou resistência fora do vocabulário fechado (ácido, ferro frio, prata, adamantina, "imunidade
+a magia", "efeitos mentais"), NÃO inventei palavra nova: registrado em detalhe na B16.
 
-- **42 criaturas com Arte gravada que NÃO têm nota nos graves.** Precisam da mesma
-  reversão para poder natural (item 3), com `resiste`/`efeito`/`descricao` decididos por
-  mim, sem uma nota que já diga o parâmetro certo. Lista: (as 61 do levantamento original,
-  menos as 19 já feitas: 16 do lote 1 + Aboleth do lote 2, menos os 42 que restam)
-  `mon-aranha-das-fases, mon-archon-cao, mon-assombracao-wraith, mon-balor, mon-basilisco
-  (só faltava descrição, já feito), mon-behir, mon-besta-deslocadora, mon-bodak,
-  mon-bruxa-verde-hag, mon-ciclope, mon-cocatriz, mon-diabo-do-fosso-pit-fiend,
-  mon-diabo-osseo, mon-diabrete-imp, mon-doppelganger, mon-dretch, mon-driade, mon-erinia,
-  mon-espectro, mon-ghast, mon-ghoul, mon-glabrezu, mon-gorgona-touro-de-ferro, mon-harpia,
-  mon-hezrou, mon-kraken, mon-lamia, mon-marilith, mon-medusa, mon-monstro-da-ferrugem,
-  mon-mumia, mon-ogro-mago-oni, mon-pegaso, mon-pixie, mon-quasit, mon-quimera, mon-sucubo,
-  mon-unicornio, mon-vampiro, mon-vrock, mon-wight, mon-xorn`.
-- **~36 das 67 fichas dos graves ainda sem a parte MECÂNICA da nota aplicada**: o nome/tipo
-  do ataque natural (a maioria das notas pede algo como "ataque vira cauda em maça,
-  impacto, com atordoamento"), fraqueza/resistência/imunidade de elemento, e alguns
-  poderes naturais novos que as notas pedem além dos que já apliquei (Emaranhar da Vinha
-  Assassina, poderes do Cubo Gelatinoso, do Girallon etc.). Não toquei ainda porque cada
-  ataque renomeado pede decidir dado/acerto/notas com cuidado, não é cópia mecânica.
-- **~95 poderes naturais no total (contagem feita hoje) ainda sem `descricao`**, contando
-  os que já existiam de fases anteriores e não são do lote de Arte revertida (ex.:
-  Basilisco, que eu corrigi como prova do Adendo 3, mas há muitos outros: golems, elementais
-  pequenos, etc.). O item 4 pede descrição em TODO poder natural, não só nos que vieram de
-  Arte.
-- **"Ácido" e outros tipos de dano fora do vocabulário fechado** (achado processando o
-  Pudim Negro): pelo menos uma nota dos graves fala em dano de ácido como "dano
-  principal", e "ácido" não está no vocabulário de `fraquezas`/`resistencias`/`imunidades`
-  nem é um dos três tipos físicos (corte/perfuração/impacto). Não inventei palavra nova,
-  conforme o item 8 do pedido original ("Resistências novas... só anote em pendência").
+## Item 3/4/8 · o que FALTA (pendência explícita B17, decisão do autor sobre o ritmo)
+
+- **38 criaturas com Arte gravada que NÃO têm nota nos graves**, listadas por completo na
+  pendência **B17** (`docs/pendencias/B-bestiario.md`): `mon-aranha-das-fases,
+  mon-archon-cao, mon-assombracao-wraith, mon-behir, mon-besta-deslocadora, mon-bodak,
+  mon-bruxa-verde-hag, mon-ciclope, mon-cocatriz, mon-diabo-osseo, mon-diabrete-imp,
+  mon-doppelganger, mon-dretch, mon-driade, mon-erinia, mon-espectro, mon-ghast, mon-ghoul,
+  mon-glabrezu, mon-gorgona-touro-de-ferro, mon-harpia, mon-hezrou, mon-lamia,
+  mon-marilith, mon-medusa, mon-monstro-da-ferrugem, mon-mumia, mon-ogro-mago-oni,
+  mon-pegaso, mon-pixie, mon-quasit, mon-quimera, mon-sucubo, mon-unicornio, mon-vampiro,
+  mon-vrock, mon-wight, mon-xorn`. Decisão do autor (29/09): ele vai mandar um arquivo
+  pronto com efeito, usos, resiste e descrição de cada poder; aplicação em rodada própria,
+  fora desta Fase 4.
+- **~30 das 67 fichas dos graves** ainda com pedaços da nota mecânica não conferidos linha
+  a linha contra o texto original (a maioria já recebeu ataque/atributo/elemento; alguns
+  poderes extras que as notas citam de passagem podem ter ficado de fora). Não é uma lista
+  fechada; peço conferência cruzada na revisão.
+- **~95 poderes naturais (contagem antes deste lote) ainda sem `descricao`** de fases
+  anteriores que não vieram de Arte revertida (golems, elementais pequenos etc.); o número
+  exato muda com este commit (28 a mais ganharam descrição agora); contagem nova no
+  próximo relato.
+- **Vocabulário fechado sem "ácido", "ferro frio", "prata"/"bem" (resistência contornada),
+  "adamantina", "imunidade a magia" e "efeitos mentais"**: registrado em detalhe na B16,
+  com a lista de toda criatura que esbarrou nisso até agora.
 
 ## Pendências registradas em `docs/pendencias/`
 
 - **K36** (`K-combate-linha-do-tempo.md`): o mecanismo de dano fenômeno das Artes não
   alcança ataques normais de criatura; Fantasma/Sombra ficam sem essa marca até decidir.
-- **B16** (`B-bestiario.md`): "ácido" (e possivelmente outros tipos das notas dos graves,
-  ex. "necrótico" já resolvido como dreno de Força) fora do vocabulário fechado de
-  elemento; registrar antes de inventar palavra nova.
+- **B16** (`B-bestiario.md`): tipos de dano/resistência fora do vocabulário fechado
+  (ácido, ferro frio, prata/bem, adamantina, imunidade a magia, efeitos mentais).
+- **B17** (`B-bestiario.md`): as 38 criaturas com Arte sem nota dos graves, aplicação
+  adiada para rodada própria por decisão do autor.
 
-(Os dois ainda serão escritos no próximo commit desta fase, junto com o resto do lote
-mecânico, para não fragmentar o `Pendencias.md` regenerado em excesso.)
+## Verificação
 
-## Verificação até aqui
-
-- `npm run validate`, `npx tsc --noEmit`, `npm run build`: verdes em todos os 4 commits.
-- `test-editor-bestiario.mjs` e `npm run espelho`: rodados e verdes em todos os 4 commits
-  (o `validate` sozinho não cobre esses dois, e o bestiário alimenta os dois).
-- CI do GitHub: os 4 commits foram empurrados; a matriz de Smoke está com fila (vários
-  runs em `in_progress` ao mesmo tempo quando escrevo isto). Vou conferir e colar os links
-  antes de fechar a fase.
+- `npm run validate`, `npx tsc --noEmit`, `npm run build`: verdes em todos os commits desta
+  fase, incluindo este lote.
+- `test-editor-bestiario.mjs` e `npm run espelho`: rodados e verdes neste lote também
+  (o `validate` sozinho não cobre esses dois, e o bestiário alimenta os dois). Achei e
+  corrigi no caminho um teste que ficou desatualizado pela minha própria mudança: o Cubo
+  Gelatinoso perdeu a resistência a corte/perfuração (por decisão dos graves) e
+  `test-elementos-combate.mjs` ainda esperava essa resistência; troquei o exemplo de
+  resistência para o Rakshasa (que eu não toquei) e acrescentei uma checagem nova, do
+  Cubo Gelatinoso com `imunidades`, cobrindo o campo novo desta fase.
+- CI do GitHub: os commits anteriores foram empurrados e alguns já fecharam verdes (ver
+  histórico de mensagens); vou conferir o deste lote antes de considerar a fase fechada.
 - Travessão: zero em todo texto novo desta fase (conferido arquivo por arquivo, não por
   `git diff` puro).
 
 ## Ritmo
 
-Perguntei ao Arquiteto sobre o ritmo dos itens que faltam (42 criaturas sem nota, ~36
-fichas com pendência mecânica, ~95 descrições) antes de decidir sozinha cortar escopo.
-Ainda sem resposta quando escrevo isto. Continuo disponível para seguir assim que tiver
-direção, ou decido eu mesma como fatiar o resto se não vier resposta em tempo razoável,
-registrando a decisão aqui.
+O Arquiteto trouxe a decisão do autor: fazer agora a parte mecânica dos graves (feito
+acima) e só Balor/Diabo do Fosso/Kraken das 42 sem nota (as âncoras da Fase 5), com as
+outras 38 virando pendência B17 para uma rodada própria. Aplicado como pedido.
 
 ## É seguro dar `/clear`?
 
-Ainda não: a Fase 4 está em andamento, com pendências grandes e conhecidas listadas acima
-(não escondidas). Os 4 commits que já existem estão com portão local verde; falta
-confirmar o CI do GitHub (fila) antes mesmo desse pedaço fechar de verdade.
+Ainda não: falta a Fase 5, que só pode começar agora que Balor/Diabo do Fosso/Kraken estão
+convertidos. Vou confirmar o CI deste lote e seguir para a Fase 5 (começando pelas
+âncoras, "pare e relate" antes das 309 criaturas, como o despacho pede).

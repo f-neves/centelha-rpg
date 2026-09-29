@@ -50,14 +50,15 @@
   "aparencia": 2,
   "ataques": [
     {
-      "nome": "Golpe",
+      "nome": "Toque corrupto",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "impacto",
       "acerto": 0,
-      "ticks": 5
+      "ticks": 5,
+      "notas": "incorpóreo: o toque atravessa armadura, só a Centelha do alvo ajuda a resistir (pendência K36)"
     }
   ],
   "fraquezas": [
@@ -140,5 +141,39 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "imunidades": [],
+  "poderes": [
+    {
+      "id": "possessao",
+      "nome": "Possessão",
+      "tipo": "natural",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 4
+      },
+      "resiste": "mente",
+      "efeito": "toma o controle do corpo de quem falhar em resistir, por uma cena",
+      "descricao": "O fantasma desliza para dentro do corpo de alguém que falhou em resistir e assume o controle por uma cena, agindo como se fosse essa pessoa.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 1
+      }
+    },
+    {
+      "id": "telecinese-fantasma",
+      "nome": "Telecinese",
+      "tipo": "natural",
+      "base": {
+        "arte": "forcas",
+        "nivel": 3
+      },
+      "resiste": "nenhum",
+      "efeito": "move objetos à distância, sem tocá-los",
+      "descricao": "O fantasma move objetos pela sala com a força da própria vontade, sem precisar tocá-los.",
+      "usos": {
+        "periodo": "avontade"
+      }
+    }
+  ]
 }

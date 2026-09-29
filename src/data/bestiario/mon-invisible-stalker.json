@@ -1,7 +1,7 @@
 {
   "ordem": 243,
   "id": "mon-invisible-stalker",
-  "nome": "Invisible Stalker",
+  "nome": "Perseguidor Invisível",
   "nomeIngles": "Invisible Stalker",
   "categoria": "Elemental",
   "papel": "elite",
@@ -49,20 +49,17 @@
   "aparencia": 5,
   "ataques": [
     {
-      "nome": "Golpe planar",
+      "nome": "Dois socos",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
-      "tipo": "corte",
+      "tipo": "impacto",
       "acerto": 0,
       "ticks": 5
     }
   ],
-  "resistencias": [
-    "corte",
-    "perfuracao"
-  ],
+  "resistencias": [],
   "habilidades": [
     {
       "nome": "Invisibilidade natural",

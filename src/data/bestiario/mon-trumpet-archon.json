@@ -49,14 +49,15 @@
   "aparencia": 12,
   "ataques": [
     {
-      "nome": "Golpe planar",
+      "nome": "Espadão de duas mãos",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
-      "mao": 1,
+      "mao": 2,
       "tipo": "corte",
       "acerto": 0,
-      "ticks": 5
+      "ticks": 5,
+      "notas": "a trombeta que carrega vira a espada quando ele luta"
     }
   ],
   "fraquezas": [

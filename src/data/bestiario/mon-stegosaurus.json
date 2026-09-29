@@ -15,7 +15,7 @@
   "porte": "Enorme",
   "dimensoes": {
     "medida": "9 metros de comprimento e 4,3 metros de altura",
-    "peso": "2,3 t"
+    "peso": "cerca de 5,2 t (3,5 a 7 t na fonte)"
   },
   "locomocao": {
     "terra": 3
@@ -23,7 +23,7 @@
   "centelha": 0,
   "attrs": {
     "forca": 10,
-    "destreza": 4,
+    "destreza": 2,
     "vigor": 7,
     "influencia": 2,
     "perspicacia": 1,
@@ -48,7 +48,7 @@
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Cauda de espinhos",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 3,

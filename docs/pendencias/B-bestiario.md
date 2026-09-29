@@ -144,7 +144,28 @@ limitações conhecidas, que são as três de baixo.
   `fraquezas`/`resistencias`/`imunidades` (`elementos-vocab.json`) nem é um dos três tipos
   físicos (`corte`/`perfuracao`/`impacto`) que o `tipoDano` de um ataque aceita hoje. Não
   criei palavra nova no vocabulário, conforme o item 8 do despacho original ("resistências
-  novas... só anote em pendência, não crie palavra agora"). O Pudim Negro ficou com o tipo
-  de dano físico que já tinha (impacto) até esta pendência fechar. Provável que outras das
-  67 fichas dos graves tenham o mesmo problema com outros tipos (gelo intenso, necrótico
-  etc.); listar todos ao aplicar o resto das notas mecânicas.
+  novas... só anote em pendência, não crie palavra agora"). O Pudim Negro e a Lesma
+  Gigante (língua raspadora) ficaram com o tipo de dano físico que já tinham (impacto/
+  perfurante) até esta pendência fechar. Achados aplicando o resto das notas mecânicas
+  (29/09/2026): a mesma lacuna aparece em "resistência contornada por ferro frio" (Crag
+  Linnorm, Sátiro), "resistência contornada por prata ou pelo bem" (Diabo Barbado),
+  "resistência contornada por adamantina" (Golem de Argila, Golem de Carne) e "imunidade a
+  magia" (Golem de Argila, Fogo-fátuo): nenhuma dessas quatro entrou na ficha, ficam só
+  documentadas aqui. "Efeitos mentais" (Crag Linnorm, Cubo Gelatinoso) também não tem
+  palavra própria no vocabulário; usei o mais próximo que já existe (nenhum, nestes dois
+  casos) em vez de forçar uma palavra errada.
+- [ ] **B17 · [DECIDIR] 38 criaturas com Arte ainda para reverter a poder natural, sem
+  nota dos graves.** Registrado em 29/09/2026, B14 Fase 4, item 3/4/8. Depois de fechar as
+  16 com nota dos graves mais Balor/Diabo do Fosso/Kraken (âncoras da Fase 5) e o Aboleth
+  (que tinha ficado de fora do primeiro lote), sobram 38 criaturas com `arte` gravada que
+  não são caster de verdade (não estão na lista fixa dragões/Lich/Couatl/Ninfa/Planetar/
+  Solar/Ghaele/Rakshasa/Naga, nem são as três NPCs humanas Cultista/Feiticeiro Menor/Mago
+  de Batalha): `mon-aranha-das-fases, mon-archon-cao, mon-assombracao-wraith, mon-behir,
+  mon-besta-deslocadora, mon-bodak, mon-bruxa-verde-hag, mon-ciclope, mon-cocatriz,
+  mon-diabo-osseo, mon-diabrete-imp, mon-doppelganger, mon-dretch, mon-driade, mon-erinia,
+  mon-espectro, mon-ghast, mon-ghoul, mon-glabrezu, mon-gorgona-touro-de-ferro, mon-harpia,
+  mon-hezrou, mon-lamia, mon-marilith, mon-medusa, mon-monstro-da-ferrugem, mon-mumia,
+  mon-ogro-mago-oni, mon-pegaso, mon-pixie, mon-quasit, mon-quimera, mon-sucubo,
+  mon-unicornio, mon-vampiro, mon-vrock, mon-wight, mon-xorn`. Decisão do autor (29/09):
+  ele vai mandar um arquivo pronto com efeito, usos, resiste e descrição de cada poder
+  dessas 38; a aplicação vira uma rodada própria, fora desta Fase 4.

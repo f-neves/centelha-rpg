@@ -51,14 +51,25 @@
   "aparencia": 0,
   "ataques": [
     {
-      "nome": "Golpe planar",
+      "nome": "Cascos flamejantes",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 3,
       "mao": 1,
-      "tipo": "corte",
+      "tipo": "impacto",
       "acerto": 0,
-      "ticks": 7
+      "ticks": 7,
+      "notas": "cada acerto soma dano de fogo"
+    },
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 6
     }
   ],
   "fraquezas": [
@@ -126,5 +137,8 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "imunidades": [
+    "fogo"
+  ]
 }

@@ -1,7 +1,7 @@
 {
   "ordem": 286,
   "id": "mon-skeletal-champion",
-  "nome": "Skeletal Champion",
+  "nome": "Campeão Esquelético",
   "nomeIngles": "Skeletal Champion",
   "categoria": "Morto-vivo",
   "papel": "soldado",
@@ -48,14 +48,15 @@
   "aparencia": 2,
   "ataques": [
     {
-      "nome": "Golpe",
+      "nome": "Espada longa",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
-      "tipo": "impacto",
+      "tipo": "corte",
       "acerto": 0,
-      "ticks": 5
+      "ticks": 5,
+      "notas": "luta com escudo"
     }
   ],
   "fraquezas": [

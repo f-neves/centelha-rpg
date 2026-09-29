@@ -48,14 +48,15 @@
   "aparencia": 3,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Pancada esporulenta",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
-      "tipo": "perfurante",
+      "tipo": "impacto",
       "acerto": 0,
-      "ticks": 5
+      "ticks": 5,
+      "notas": "acerto solta uma nuvem de esporos no golpe"
     }
   ],
   "fraquezas": [

@@ -53,12 +53,12 @@
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Arma",
+      "nome": "Punhos",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 2,
       "mao": 1,
-      "tipo": "corte",
+      "tipo": "impacto",
       "acerto": 0,
       "ticks": 6
     }

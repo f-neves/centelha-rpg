@@ -15,7 +15,7 @@
   "porte": "Pequeno",
   "dimensoes": {
     "medida": "1 m de diâmetro",
-    "peso": "5 kg"
+    "peso": "desprezível"
   },
   "locomocao": {
     "voo": 6
@@ -48,14 +48,16 @@
   "aparencia": 10,
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
+      "nome": "Raios de luz",
+      "atrib": "percepcao",
+      "pericia": "acerto-arcano",
+      "dado": 2,
       "mao": 1,
-      "tipo": "corte",
+      "tipo": "impacto",
       "acerto": 0,
-      "ticks": 5
+      "ticks": 5,
+      "distancia": true,
+      "notas": "luz; fenômeno"
     }
   ],
   "fraquezas": [
@@ -128,5 +130,53 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "poderes": [
+    {
+      "id": "aura-de-ameaca",
+      "nome": "Aura de ameaça",
+      "tipo": "natural",
+      "base": {
+        "arte": "luz",
+        "nivel": 2
+      },
+      "resiste": "nenhum",
+      "efeito": "inimigos próximos sofrem uma penalidade leve enquanto o arconte estiver por perto",
+      "descricao": "A simples presença do arconte incomoda criaturas malignas por perto, atrapalhando um pouco a pontaria e a concentração delas.",
+      "usos": {
+        "periodo": "passivo"
+      }
+    },
+    {
+      "id": "circulo-contra-o-mal",
+      "nome": "Círculo contra o mal",
+      "tipo": "natural",
+      "base": {
+        "arte": "protecao",
+        "nivel": 2
+      },
+      "resiste": "nenhum",
+      "efeito": "cria uma barreira que dificulta o contato físico e mental de criaturas malignas com quem está protegido",
+      "descricao": "O arconte projeta uma barreira invisível ao redor de si e de quem quiser proteger, dificultando que criaturas malignas encostem ou dominem a mente delas.",
+      "usos": {
+        "periodo": "cena"
+      }
+    },
+    {
+      "id": "teleporte-arconte",
+      "nome": "Teleporte",
+      "tipo": "natural",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 2
+      },
+      "resiste": "nenhum",
+      "efeito": "desloca-se a curta distância dentro do mesmo plano",
+      "descricao": "O arconte lanterna pisca de um ponto a outro próximo, sem atravessar o espaço entre eles.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 3
+      }
+    }
+  ]
 }

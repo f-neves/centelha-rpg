@@ -269,6 +269,13 @@
   "ft": 30,
   "origem": "tabela"
  },
+ "mon-skeletal-champion": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "tabela"
+ },
  "camponis-assustado": {
   "batalha": 3,
   "arranque": 5,
@@ -1231,13 +1238,6 @@
   "ft": 40,
   "origem": "fonte"
  },
- "mon-invisible-stalker": {
-  "batalha": 3,
-  "arranque": 5,
-  "corrida": 7,
-  "ft": 30,
-  "origem": "fonte"
- },
  "mon-janni": {
   "batalha": 3,
   "arranque": 5,
@@ -1666,6 +1666,13 @@
   "ft": 60,
   "origem": "fonte"
  },
+ "mon-invisible-stalker": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "fonte"
+ },
  "mon-nightmare": {
   "batalha": 4,
   "arranque": 6,
@@ -1903,13 +1910,6 @@
   "corrida": 7,
   "ft": 30,
   "origem": "fonte"
- },
- "mon-skeletal-champion": {
-  "batalha": 3,
-  "arranque": 5,
-  "corrida": 7,
-  "ft": 30,
-  "origem": "tabela"
  },
  "mon-skum-ulat-kini": {
   "batalha": 2,

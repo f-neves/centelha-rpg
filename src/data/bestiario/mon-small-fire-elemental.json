@@ -48,22 +48,21 @@
   "aparencia": 5,
   "ataques": [
     {
-      "nome": "Golpe planar",
+      "nome": "Pancada flamejante",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
-      "tipo": "corte",
+      "tipo": "impacto",
       "acerto": 0,
-      "ticks": 5
+      "ticks": 5,
+      "notas": "cada acerto soma dano de fogo"
     }
   ],
   "fraquezas": [
     "agua"
   ],
-  "resistencias": [
-    "fogo"
-  ],
+  "resistencias": [],
   "habilidades": [
     {
       "nome": "Toque em chamas",
@@ -125,5 +124,8 @@
     "crConf": "conhecido"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "imunidades": [
+    "fogo"
+  ]
 }

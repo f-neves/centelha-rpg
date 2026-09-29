@@ -48,12 +48,12 @@
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Pisoteio e cauda",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 3,
       "mao": 1,
-      "tipo": "perfurante",
+      "tipo": "impacto",
       "acerto": 0,
       "ticks": 7
     }

@@ -49,11 +49,6 @@
   },
   "willpower": 12,
   "aparencia": 5,
-  "arte": {
-    "vento": 6,
-    "fascinacao": 5,
-    "raio": 4
-  },
   "tech": {
     "abraco-do-tita": true
   },
@@ -84,6 +79,39 @@
         "periodo": "cena",
         "quantidade": 3,
         "recarga": "1 hora"
+      },
+      "descricao": "O kraken cospe uma nuvem de tinta que cobre 18 metros de água, cegando quem estiver perto, e pode agitar o mar numa área grande para atrapalhar movimento e visão de quem navega ou nada por ali."
+    },
+    {
+      "id": "tempestade-de-raios",
+      "nome": "Tempestade de raios",
+      "tipo": "natural",
+      "base": {
+        "arte": "raio",
+        "nivel": 4
+      },
+      "resiste": "esquiva",
+      "efeito": "três raios caem em alvos diferentes ao mesmo tempo, poucas vezes por dia",
+      "descricao": "O céu escurece sobre o kraken e três raios caem ao mesmo tempo, cada um mirando um alvo diferente, poucas vezes ao dia.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 1
+      }
+    },
+    {
+      "id": "dominar-bestas-do-mar",
+      "nome": "Dominar bestas do mar",
+      "tipo": "natural",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 5
+      },
+      "resiste": "mente",
+      "efeito": "domina a mente de um animal do mar que falhar em resistir, controlando-o por uma cena; não funciona em gente",
+      "descricao": "Uma vez por dia, o kraken domina a mente de uma fera marinha (tubarões, baleias, cardumes inteiros), que passa a obedecê-lo por uma cena. Não funciona em criaturas pensantes.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 1
       }
     }
   ],

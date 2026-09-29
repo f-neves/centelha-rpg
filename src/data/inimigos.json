@@ -1556,11 +1556,19 @@
     },
     "ataques": [
       {
-        "nome": "Pancada descomunal",
+        "nome": "Garras",
         "pool": "6d6 +2",
-        "dano": "2d6 +8 impacto",
+        "dano": "2d6 +8 corte",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 5,
+        "notas": "dilacera: dano extra se o alvo já sangrando"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "6d6 +2",
+        "dano": "1d6 +8 perfurante",
+        "perfArma": 0,
+        "ticks": 5
       }
     ],
     "tecnicas": [],
@@ -3752,12 +3760,7 @@
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "materia",
-        "nivel": 3
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Furtividade 2, Prontidão 3.",
     "pendente": true,
     "poderes": [
@@ -4235,6 +4238,23 @@
     "artes": [],
     "notas": "",
     "pendente": true,
+    "poderes": [
+      {
+        "id": "paralisia-ao-toque",
+        "nome": "Paralisia ao toque",
+        "tipo": "natural",
+        "base": {
+          "arte": "tempo",
+          "nivel": 2
+        },
+        "resiste": "corpo",
+        "efeito": "quem é tocado e falha em resistir fica paralisado por um tempo",
+        "descricao": "O toque gelatinoso do cubo entorpece quem falha em resistir, deixando-o paralisado, incapaz de agir, por um tempo curto.",
+        "usos": {
+          "periodo": "golpe"
+        }
+      }
+    ],
     "pericias": {
       "prontidao": 0,
       "esquiva": 0,
@@ -4360,11 +4380,12 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Duas pancadas",
         "pool": "6d6",
-        "dano": "2d6 +7 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "dano": "2d6 +7 impacto",
+        "perfArma": null,
+        "ticks": 6,
+        "notas": "acerto pode agarrar e constringir"
       }
     ],
     "tecnicas": [],
@@ -6334,16 +6355,7 @@
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "fogo",
-        "nivel": 5
-      },
-      {
-        "id": "conjuracao",
-        "nivel": 4
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Armas 5, Ocultismo 5, Prontidão 5, Liderança 5. Centelha acima do teto mortal (entidade).",
     "pendente": true,
     "poderes": [
@@ -6356,11 +6368,12 @@
           "nivel": 4
         },
         "resiste": "nenhum",
-        "efeito": "Resiste ao entrar, 1 vez por cena.",
+        "efeito": "quem chega a até 3m do balor sofre dano de fogo automático a cada rodada que ficar perto",
         "usos": {
           "periodo": "passivo",
           "recarga": "contínua"
-        }
+        },
+        "descricao": "O corpo do balor arde o tempo todo; ficar perto dele, mesmo sem lutar, já queima."
       },
       {
         "id": "morte-explosiva",
@@ -6371,9 +6384,26 @@
           "nivel": 5
         },
         "resiste": "esquiva",
-        "efeito": "Morte explosiva",
+        "efeito": "ao cair a 0 PV, o balor explode numa área de 12m; quem não escapar sofre dano alto",
         "usos": {
           "periodo": "avontade"
+        },
+        "descricao": "A morte do balor não é silenciosa: seu corpo estoura numa bola de fogo que alcança 12 metros, ferindo gravemente quem não conseguir sair a tempo."
+      },
+      {
+        "id": "teleporte-balor",
+        "nome": "Teleporte",
+        "tipo": "natural",
+        "base": {
+          "arte": "conjuracao",
+          "nivel": 4
+        },
+        "resiste": "nenhum",
+        "efeito": "desloca-se instantaneamente, ignorando prisões e paredes, poucas vezes por dia",
+        "descricao": "O balor desaparece numa lufada de fumaça negra e reaparece em outro ponto que conheça, atravessando paredes e prisões mágicas comuns no caminho.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 3
         }
       }
     ],
@@ -7078,28 +7108,7 @@
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "fogo",
-        "nivel": 6
-      },
-      {
-        "id": "fortuna",
-        "nivel": 6
-      },
-      {
-        "id": "fascinacao",
-        "nivel": 5
-      },
-      {
-        "id": "espirito",
-        "nivel": 4
-      },
-      {
-        "id": "conjuracao",
-        "nivel": 6
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Ocultismo 5, Liderança 5, Prontidão 5, Persuasão 5. Centelha acima do teto mortal (entidade).",
     "pendente": true,
     "poderes": [
@@ -7116,7 +7125,8 @@
         "usos": {
           "periodo": "passivo",
           "recarga": "contínua"
-        }
+        },
+        "descricao": "Uma presença de puro terror cerca o diabo do fosso; quem chega a 12 metros e falha em resistir fica abalado, só de estar perto."
       },
       {
         "id": "convocar-diabos",
@@ -7131,7 +7141,8 @@
         "usos": {
           "periodo": "dia",
           "quantidade": 1
-        }
+        },
+        "descricao": "Uma vez por cena, o diabo abre uma fenda para o Fosso e puxa um punhado de diabos menores para lutarem ao seu lado."
       },
       {
         "id": "doenca",
@@ -7145,6 +7156,40 @@
         "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
         "usos": {
           "periodo": "golpe"
+        },
+        "descricao": "A mordida do diabo carrega uma doença infernal: quem é mordido e falha em resistir vai perdendo Vigor aos poucos, até ser tratado ou curado por magia."
+      },
+      {
+        "id": "labareda-pit-fiend",
+        "nome": "Labareda",
+        "tipo": "natural",
+        "base": {
+          "arte": "fogo",
+          "nivel": 6
+        },
+        "resiste": "esquiva",
+        "efeito": "bola de fogo numa área de 6m, dano altíssimo, metade se esquivar a tempo",
+        "descricao": "O diabo do fosso arremessa uma bola de fogo que explode numa área de 6 metros, torrando quase tudo que estiver lá dentro; quem consegue se jogar para fora a tempo sofre metade do estrago.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 3
+        }
+      },
+      {
+        "id": "feiticos-supremos",
+        "nome": "Feitiços supremos",
+        "tipo": "natural",
+        "base": {
+          "arte": "fortuna",
+          "nivel": 6
+        },
+        "resiste": "nenhum",
+        "efeito": "reproduz o efeito de qualquer Arte, de qualquer nível, uma única vez",
+        "descricao": "Raríssimas vezes, quase nunca dentro de uma única história, o diabo do fosso pode fazer o que quiser: reproduzir qualquer efeito de qualquer Arte, do nível que for. O Mestre decide quando isso é possível.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 1,
+          "recarga": "uma vez por história de campanha, não por dia"
         }
       }
     ],
@@ -7607,15 +7652,15 @@
       "centelha",
       "mágico"
     ],
-    "pv": 40,
+    "pv": 50,
     "defesa": 20,
     "defesaSocial": 12,
     "defesaMental": 31,
     "vontade": 10,
     "soak": {
       "impacto": 10,
-      "corte": 7,
-      "perfuracao": 7
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 8",
@@ -7632,11 +7677,12 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
+        "nome": "Mordida venenosa e constrição",
         "pool": "4d6+2 +10",
-        "dano": "1d6 +9 corte",
-        "perfArma": null,
-        "ticks": 5
+        "dano": "1d6 +9 perfurante",
+        "perfArma": 0,
+        "ticks": 5,
+        "notas": "veneno drena Força; pode constringir em seguida"
       }
     ],
     "tecnicas": [],
@@ -7697,7 +7743,7 @@
       "esquiva": 2,
       "integridade": 6,
       "sociabilidade": 0,
-      "furtividade": 2
+      "furtividade": 1
     }
   },
   {
@@ -9594,20 +9640,7 @@
     "tecnicas": [
       "abraco-do-tita"
     ],
-    "artes": [
-      {
-        "id": "vento",
-        "nivel": 6
-      },
-      {
-        "id": "fascinacao",
-        "nivel": 5
-      },
-      {
-        "id": "raio",
-        "nivel": 4
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Prontidão 5, Ocultismo 4. Centelha acima do teto mortal (entidade).",
     "pendente": true,
     "poderes": [
@@ -9625,6 +9658,39 @@
           "periodo": "cena",
           "quantidade": 3,
           "recarga": "1 hora"
+        },
+        "descricao": "O kraken cospe uma nuvem de tinta que cobre 18 metros de água, cegando quem estiver perto, e pode agitar o mar numa área grande para atrapalhar movimento e visão de quem navega ou nada por ali."
+      },
+      {
+        "id": "tempestade-de-raios",
+        "nome": "Tempestade de raios",
+        "tipo": "natural",
+        "base": {
+          "arte": "raio",
+          "nivel": 4
+        },
+        "resiste": "esquiva",
+        "efeito": "três raios caem em alvos diferentes ao mesmo tempo, poucas vezes por dia",
+        "descricao": "O céu escurece sobre o kraken e três raios caem ao mesmo tempo, cada um mirando um alvo diferente, poucas vezes ao dia.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 1
+        }
+      },
+      {
+        "id": "dominar-bestas-do-mar",
+        "nome": "Dominar bestas do mar",
+        "tipo": "natural",
+        "base": {
+          "arte": "fascinacao",
+          "nivel": 5
+        },
+        "resiste": "mente",
+        "efeito": "domina a mente de um animal do mar que falhar em resistir, controlando-o por uma cena; não funciona em gente",
+        "descricao": "Uma vez por dia, o kraken domina a mente de uma fera marinha (tubarões, baleias, cardumes inteiros), que passa a obedecê-lo por uma cena. Não funciona em criaturas pensantes.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 1
         }
       }
     ],
@@ -10800,9 +10866,9 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
+        "nome": "Pancada",
         "pool": "4d6 +2",
-        "dano": "1d6 +5 corte",
+        "dano": "1d6 +5 impacto",
         "perfArma": null,
         "ticks": 5
       }
@@ -11078,17 +11144,66 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
-        "pool": "1d6+2 +4",
-        "dano": "1d6 +2 corte",
+        "nome": "Raios de luz",
+        "pool": "1d6",
+        "dano": "2d6 +2 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "notas": "luz; fenômeno"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "",
     "pendente": true,
+    "poderes": [
+      {
+        "id": "aura-de-ameaca",
+        "nome": "Aura de ameaça",
+        "tipo": "natural",
+        "base": {
+          "arte": "luz",
+          "nivel": 2
+        },
+        "resiste": "nenhum",
+        "efeito": "inimigos próximos sofrem uma penalidade leve enquanto o arconte estiver por perto",
+        "descricao": "A simples presença do arconte incomoda criaturas malignas por perto, atrapalhando um pouco a pontaria e a concentração delas.",
+        "usos": {
+          "periodo": "passivo"
+        }
+      },
+      {
+        "id": "circulo-contra-o-mal",
+        "nome": "Círculo contra o mal",
+        "tipo": "natural",
+        "base": {
+          "arte": "protecao",
+          "nivel": 2
+        },
+        "resiste": "nenhum",
+        "efeito": "cria uma barreira que dificulta o contato físico e mental de criaturas malignas com quem está protegido",
+        "descricao": "O arconte projeta uma barreira invisível ao redor de si e de quem quiser proteger, dificultando que criaturas malignas encostem ou dominem a mente delas.",
+        "usos": {
+          "periodo": "cena"
+        }
+      },
+      {
+        "id": "teleporte-arconte",
+        "nome": "Teleporte",
+        "tipo": "natural",
+        "base": {
+          "arte": "conjuracao",
+          "nivel": 2
+        },
+        "resiste": "nenhum",
+        "efeito": "desloca-se a curta distância dentro do mesmo plano",
+        "descricao": "O arconte lanterna pisca de um ponto a outro próximo, sem atravessar o espaço entre eles.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 3
+        }
+      }
+    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 0,
@@ -11135,11 +11250,12 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
+        "nome": "Espadão de duas mãos",
         "pool": "5d6+2 +10",
-        "dano": "1d6 +12 corte",
+        "dano": "1d6 +18 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "notas": "a trombeta que carrega vira a espada quando ele luta"
       }
     ],
     "tecnicas": [],
@@ -11192,17 +11308,35 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Vinha constritora",
         "pool": "5d6+2 +2",
-        "dano": "2d6 +8 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "dano": "2d6 +8 impacto",
+        "perfArma": null,
+        "ticks": 6,
+        "notas": "acerto agarra e constringe o alvo"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "",
     "pendente": true,
+    "poderes": [
+      {
+        "id": "emaranhar",
+        "nome": "Emaranhar",
+        "tipo": "natural",
+        "base": {
+          "arte": "vida",
+          "nivel": 2
+        },
+        "resiste": "esquiva",
+        "efeito": "vinhas ao redor prendem quem estiver numa área, dificultando o movimento",
+        "descricao": "Vinhas do chão ao redor da planta se agitam e prendem quem estiver por perto, tornando difícil sair do lugar sem se debater.",
+        "usos": {
+          "periodo": "golpe"
+        }
+      }
+    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 0,
@@ -11475,11 +11609,12 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Pancada esporulenta",
         "pool": "5d6+2",
-        "dano": "1d6 +6 perfurante",
-        "perfArma": 0,
-        "ticks": 5
+        "dano": "1d6 +6 impacto",
+        "perfArma": null,
+        "ticks": 5,
+        "notas": "acerto solta uma nuvem de esporos no golpe"
       }
     ],
     "tecnicas": [],
@@ -12946,6 +13081,55 @@
     "artes": [],
     "notas": "",
     "pendente": true,
+    "poderes": [
+      {
+        "id": "toque-de-morte-nabasu",
+        "nome": "Toque que envelhece",
+        "tipo": "natural",
+        "base": {
+          "arte": "morte",
+          "nivel": 2
+        },
+        "resiste": "corpo",
+        "efeito": "o toque do nabasu envelhece o alvo, drenando vigor aos poucos",
+        "descricao": "O toque gélido do nabasu suga a vitalidade de quem ele alcança, deixando a vítima mais fraca e mais velha a cada golpe.",
+        "usos": {
+          "periodo": "golpe"
+        }
+      },
+      {
+        "id": "sombras-do-nabasu",
+        "nome": "Sombras",
+        "tipo": "natural",
+        "base": {
+          "arte": "sombra",
+          "nivel": 4
+        },
+        "resiste": "esquiva",
+        "efeito": "convoca sombras vivas para lutar ao seu lado ou cobrir uma área em escuridão",
+        "descricao": "O nabasu puxa sombras do chão que ganham vida própria, lutando por ele ou cobrindo uma área inteira de escuridão.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 1
+        }
+      },
+      {
+        "id": "fascinar-nabasu",
+        "nome": "Fascinar",
+        "tipo": "natural",
+        "base": {
+          "arte": "fascinacao",
+          "nivel": 4
+        },
+        "resiste": "mente",
+        "efeito": "prende a atenção de quem falhar em resistir, deixando-o vulnerável",
+        "descricao": "O olhar do nabasu prende quem cruza com ele; quem falha em resistir fica paralisado de atenção, fácil de golpear.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 3
+        }
+      }
+    ],
     "pericias": {
       "prontidao": 2,
       "esquiva": 1,
@@ -13219,11 +13403,12 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Cauda em maça",
         "pool": "7d6",
-        "dano": "3d6 +10 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "dano": "3d6 +10 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "notas": "acerto forte pode atordoar o alvo por um Tick"
       }
     ],
     "tecnicas": [],
@@ -13275,10 +13460,10 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Pisoteio e cauda",
         "pool": "9d6+2",
-        "dano": "3d6 +14 perfurante",
-        "perfArma": 0,
+        "dano": "3d6 +14 impacto",
+        "perfArma": null,
         "ticks": 7
       }
     ],
@@ -13475,7 +13660,7 @@
       "fera"
     ],
     "pv": 70,
-    "defesa": 10,
+    "defesa": 6,
     "defesaSocial": 6,
     "defesaMental": 10,
     "vontade": 5,
@@ -13488,7 +13673,7 @@
     "iniciativa": "1d6 + 3",
     "atributos": {
       "forca": 10,
-      "destreza": 4,
+      "destreza": 2,
       "vigor": 7,
       "influencia": 2,
       "perspicacia": 1,
@@ -13499,7 +13684,7 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Cauda de espinhos",
         "pool": "7d6",
         "dano": "3d6 +10 perfurante",
         "perfArma": 0,
@@ -13723,11 +13908,12 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
+        "nome": "Mordida",
         "pool": "3d6",
-        "dano": "1d6 +4 corte",
-        "perfArma": null,
-        "ticks": 5
+        "dano": "1d6 +4 perfurante",
+        "perfArma": 0,
+        "ticks": 5,
+        "notas": "acerto forte pode derrubar o alvo"
       }
     ],
     "tecnicas": [],
@@ -14289,9 +14475,9 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
+        "nome": "Pancada de vento",
         "pool": "3d6 +2",
-        "dano": "1d6 +4 corte",
+        "dano": "1d6 +4 impacto",
         "perfArma": null,
         "ticks": 5
       }
@@ -14346,9 +14532,9 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
+        "nome": "Pancada",
         "pool": "4d6 +2",
-        "dano": "1d6 +6 corte",
+        "dano": "1d6 +6 impacto",
         "perfArma": null,
         "ticks": 5
       }
@@ -14403,11 +14589,12 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
+        "nome": "Pancada flamejante",
         "pool": "2d6+2 +2",
-        "dano": "1d6 +3 corte",
+        "dano": "1d6 +3 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "notas": "cada acerto soma dano de fogo"
       }
     ],
     "tecnicas": [],
@@ -14460,9 +14647,9 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
+        "nome": "Pancada de água",
         "pool": "3d6+2 +2",
-        "dano": "1d6 +5 corte",
+        "dano": "1d6 +5 impacto",
         "perfArma": null,
         "ticks": 5
       }
@@ -15101,7 +15288,7 @@
     "categoria": "Monstro",
     "ameaca": 2,
     "centelha": 0,
-    "conceito": "monstro Médio",
+    "conceito": "animal Médio",
     "descricao": "Aberração humanoide de lendas antigas.",
     "tags": [
       "monstro"
@@ -15131,11 +15318,12 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
+        "nome": "Mordida",
         "pool": "3d6+2",
-        "dano": "1d6 +4 corte",
-        "perfArma": null,
-        "ticks": 5
+        "dano": "1d6 +4 perfurante",
+        "perfArma": 0,
+        "ticks": 5,
+        "notas": "acerto pode agarrar o alvo"
       }
     ],
     "tecnicas": [],
@@ -15244,11 +15432,12 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Tentáculos e língua",
         "pool": "8d6",
-        "dano": "3d6 +11 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "dano": "3d6 +11 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "notas": "agarra com os tentáculos; a língua puxa a presa para perto"
       }
     ],
     "tecnicas": [],
@@ -15473,17 +15662,51 @@
     },
     "ataques": [
       {
-        "nome": "Golpe",
+        "nome": "Toque corrupto",
         "pool": "2d6+2 +8",
         "dano": "1d6 +4 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "notas": "incorpóreo: o toque atravessa armadura, só a Centelha do alvo ajuda a resistir (pendência K36)"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "",
     "pendente": true,
+    "poderes": [
+      {
+        "id": "possessao",
+        "nome": "Possessão",
+        "tipo": "natural",
+        "base": {
+          "arte": "fascinacao",
+          "nivel": 4
+        },
+        "resiste": "mente",
+        "efeito": "toma o controle do corpo de quem falhar em resistir, por uma cena",
+        "descricao": "O fantasma desliza para dentro do corpo de alguém que falhou em resistir e assume o controle por uma cena, agindo como se fosse essa pessoa.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 1
+        }
+      },
+      {
+        "id": "telecinese-fantasma",
+        "nome": "Telecinese",
+        "tipo": "natural",
+        "base": {
+          "arte": "forcas",
+          "nivel": 3
+        },
+        "resiste": "nenhum",
+        "efeito": "move objetos à distância, sem tocá-los",
+        "descricao": "O fantasma move objetos pela sala com a força da própria vontade, sem precisar tocá-los.",
+        "usos": {
+          "periodo": "avontade"
+        }
+      }
+    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
@@ -15587,10 +15810,10 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Quatro garras e mordida",
         "pool": "5d6+2 +2",
-        "dano": "2d6 +7 perfurante",
-        "perfArma": 0,
+        "dano": "2d6 +7 corte",
+        "perfArma": null,
         "ticks": 6
       }
     ],
@@ -15754,11 +15977,12 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
+        "nome": "Punhos gelados",
         "pool": "5d6 +2",
-        "dano": "1d6 +6 corte",
+        "dano": "1d6 +6 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "notas": "cada acerto soma dano de frio"
       }
     ],
     "tecnicas": [],
@@ -15809,9 +16033,9 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
+        "nome": "Punhos",
         "pool": "8d6 +8",
-        "dano": "2d6 +15 corte",
+        "dano": "2d6 +15 impacto",
         "perfArma": null,
         "ticks": 6
       }
@@ -15864,9 +16088,9 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
+        "nome": "Punhos",
         "pool": "7d6+2 +6",
-        "dano": "2d6 +13 corte",
+        "dano": "2d6 +13 impacto",
         "perfArma": null,
         "ticks": 6
       }
@@ -16313,11 +16537,18 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Cascos",
         "pool": "4d6",
-        "dano": "2d6 +6 perfurante",
-        "perfArma": 0,
+        "dano": "2d6 +6 impacto",
+        "perfArma": null,
         "ticks": 6
+      },
+      {
+        "nome": "Mordida",
+        "pool": "4d6",
+        "dano": "1d6 +6 perfurante",
+        "perfArma": 0,
+        "ticks": 5
       }
     ],
     "tecnicas": [],
@@ -16369,10 +16600,10 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Cascos",
         "pool": "2d6",
-        "dano": "1d6 +3 perfurante",
-        "perfArma": 0,
+        "dano": "1d6 +3 impacto",
+        "perfArma": null,
         "ticks": 5
       }
     ],
@@ -16559,7 +16790,7 @@
   },
   {
     "id": "mon-invisible-stalker",
-    "nome": "Invisible Stalker",
+    "nome": "Perseguidor Invisível",
     "tipo": "elite",
     "categoria": "Elemental",
     "ameaca": 4,
@@ -16595,9 +16826,9 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
+        "nome": "Dois socos",
         "pool": "5d6 +8",
-        "dano": "1d6 +9 corte",
+        "dano": "1d6 +9 impacto",
         "perfArma": null,
         "ticks": 5
       }
@@ -16992,6 +17223,14 @@
         "dano": "4d6 +22 perfurante",
         "perfArma": 0,
         "ticks": 7
+      },
+      {
+        "nome": "Cauda",
+        "pool": "10d6+2 +10",
+        "dano": "2d6 +22 impacto",
+        "perfArma": null,
+        "ticks": 6,
+        "notas": "pode agarrar e constringir"
       }
     ],
     "tecnicas": [],
@@ -17018,15 +17257,15 @@
     "tags": [
       "monstro"
     ],
-    "pv": 40,
+    "pv": 50,
     "defesa": 10,
     "defesaSocial": 4,
     "defesaMental": 12,
     "vontade": 9,
     "soak": {
       "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 2",
@@ -17043,9 +17282,9 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
+        "nome": "Garras e mordida",
         "pool": "6d6+2",
-        "dano": "1d6 +8 corte",
+        "dano": "2d6 +8 corte",
         "perfArma": null,
         "ticks": 5
       }
@@ -17059,7 +17298,7 @@
       "esquiva": 1,
       "integridade": 2,
       "sociabilidade": 0,
-      "furtividade": 2
+      "furtividade": 1
     }
   },
   {
@@ -17895,17 +18134,43 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
+        "nome": "Cascos flamejantes",
         "pool": "5d6+2 +8",
-        "dano": "2d6 +10 corte",
+        "dano": "2d6 +10 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 6,
+        "notas": "cada acerto soma dano de fogo"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "5d6+2 +8",
+        "dano": "1d6 +10 perfurante",
+        "perfArma": 0,
+        "ticks": 5
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "",
     "pendente": true,
+    "poderes": [
+      {
+        "id": "viagem-planar-pesadelo",
+        "nome": "Viagem entre planos",
+        "tipo": "natural",
+        "base": {
+          "arte": "conjuracao",
+          "nivel": 5
+        },
+        "resiste": "nenhum",
+        "efeito": "leva o cavaleiro e a si mesmo para outro plano, poucas vezes por dia",
+        "descricao": "O pesadelo galopa pelo ar e atravessa a fronteira entre planos, levando quem estiver montado nele junto.",
+        "usos": {
+          "periodo": "dia",
+          "quantidade": 3
+        }
+      }
+    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
@@ -17952,11 +18217,19 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
+        "nome": "Cascos flamejantes",
         "pool": "8d6 +10",
-        "dano": "3d6 +16 corte",
+        "dano": "3d6 +16 impacto",
         "perfArma": null,
-        "ticks": 7
+        "ticks": 7,
+        "notas": "cada acerto soma dano de fogo"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "8d6 +10",
+        "dano": "2d6 +16 perfurante",
+        "perfArma": 0,
+        "ticks": 6
       }
     ],
     "tecnicas": [],
@@ -18989,7 +19262,7 @@
   },
   {
     "id": "mon-skeletal-champion",
-    "nome": "Skeletal Champion",
+    "nome": "Campeão Esquelético",
     "tipo": "soldado",
     "categoria": "Morto-vivo",
     "ameaca": 2,
@@ -19025,11 +19298,12 @@
     },
     "ataques": [
       {
-        "nome": "Golpe",
+        "nome": "Espada longa",
         "pool": "4d6 +4",
-        "dano": "1d6 +7 impacto",
+        "dano": "1d6 +7 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "notas": "luta com escudo"
       }
     ],
     "tecnicas": [],
@@ -19138,11 +19412,12 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Língua raspadora",
         "pool": "7d6+2",
         "dano": "3d6 +10 perfurante",
         "perfArma": 0,
-        "ticks": 7
+        "ticks": 7,
+        "notas": "dano corrosivo (pendência B16: sem palavra \"ácido\" no vocabulário)"
       }
     ],
     "tecnicas": [],

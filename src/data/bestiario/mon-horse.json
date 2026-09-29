@@ -48,14 +48,24 @@
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Cascos",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 2,
       "mao": 1,
-      "tipo": "perfurante",
+      "tipo": "impacto",
       "acerto": 0,
       "ticks": 6
+    },
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
     }
   ],
   "habilidades": [

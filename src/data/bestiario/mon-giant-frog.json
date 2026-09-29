@@ -6,7 +6,7 @@
   "categoria": "Animal",
   "categoriaLegada": "Monstro",
   "papel": "soldado",
-  "conceito": "monstro Médio",
+  "conceito": "animal Médio",
   "descricao": "Animal selvagem, perigo puro sem malícia.",
   "descricaoLegada": "Aberração humanoide de lendas antigas.",
   "tags": [
@@ -50,14 +50,15 @@
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Arma",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
-      "tipo": "corte",
+      "tipo": "perfurante",
       "acerto": 0,
-      "ticks": 5
+      "ticks": 5,
+      "notas": "acerto pode agarrar o alvo"
     }
   ],
   "habilidades": [

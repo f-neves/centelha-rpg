@@ -15,7 +15,7 @@
   "porte": "Grande",
   "dimensoes": {
     "medida": "3 metros de altura",
-    "peso": "várias centenas de kg"
+    "peso": "cerca de 1.000 kg"
   },
   "locomocao": {
     "terra": 1
@@ -129,5 +129,8 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "imunidades": [
+    "raio"
+  ]
 }

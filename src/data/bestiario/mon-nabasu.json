@@ -130,5 +130,54 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "poderes": [
+    {
+      "id": "toque-de-morte-nabasu",
+      "nome": "Toque que envelhece",
+      "tipo": "natural",
+      "base": {
+        "arte": "morte",
+        "nivel": 2
+      },
+      "resiste": "corpo",
+      "efeito": "o toque do nabasu envelhece o alvo, drenando vigor aos poucos",
+      "descricao": "O toque gélido do nabasu suga a vitalidade de quem ele alcança, deixando a vítima mais fraca e mais velha a cada golpe.",
+      "usos": {
+        "periodo": "golpe"
+      }
+    },
+    {
+      "id": "sombras-do-nabasu",
+      "nome": "Sombras",
+      "tipo": "natural",
+      "base": {
+        "arte": "sombra",
+        "nivel": 4
+      },
+      "resiste": "esquiva",
+      "efeito": "convoca sombras vivas para lutar ao seu lado ou cobrir uma área em escuridão",
+      "descricao": "O nabasu puxa sombras do chão que ganham vida própria, lutando por ele ou cobrindo uma área inteira de escuridão.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 1
+      }
+    },
+    {
+      "id": "fascinar-nabasu",
+      "nome": "Fascinar",
+      "tipo": "natural",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 4
+      },
+      "resiste": "mente",
+      "efeito": "prende a atenção de quem falhar em resistir, deixando-o vulnerável",
+      "descricao": "O olhar do nabasu prende quem cruza com ele; quem falha em resistir fica paralisado de atenção, fácil de golpear.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 3
+      }
+    }
+  ]
 }

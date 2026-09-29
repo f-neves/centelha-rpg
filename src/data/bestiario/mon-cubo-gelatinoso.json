@@ -58,10 +58,7 @@
       "ticks": 6
     }
   ],
-  "resistencias": [
-    "corte",
-    "perfuracao"
-  ],
+  "resistencias": [],
   "habilidades": [
     {
       "nome": "Corpo transparente",
@@ -131,5 +128,25 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "imunidades": [
+    "raio"
+  ],
+  "poderes": [
+    {
+      "id": "paralisia-ao-toque",
+      "nome": "Paralisia ao toque",
+      "tipo": "natural",
+      "base": {
+        "arte": "tempo",
+        "nivel": 2
+      },
+      "resiste": "corpo",
+      "efeito": "quem é tocado e falha em resistir fica paralisado por um tempo",
+      "descricao": "O toque gelatinoso do cubo entorpece quem falha em resistir, deixando-o paralisado, incapaz de agir, por um tempo curto.",
+      "usos": {
+        "periodo": "golpe"
+      }
+    }
+  ]
 }

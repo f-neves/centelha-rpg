@@ -15,7 +15,7 @@
   "porte": "Pequeno",
   "dimensoes": {
     "medida": "1,2 metro de altura, corpo líquido em constante fluxo",
-    "peso": "100 kg"
+    "peso": "cerca de 15 kg"
   },
   "locomocao": {
     "terra": 2,
@@ -49,22 +49,18 @@
   "aparencia": 5,
   "ataques": [
     {
-      "nome": "Golpe planar",
+      "nome": "Pancada de água",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
-      "tipo": "corte",
+      "tipo": "impacto",
       "acerto": 0,
       "ticks": 5
     }
   ],
-  "fraquezas": [
-    "raio"
-  ],
-  "resistencias": [
-    "fogo"
-  ],
+  "fraquezas": [],
+  "resistencias": [],
   "habilidades": [
     {
       "nome": "Nado veloz",

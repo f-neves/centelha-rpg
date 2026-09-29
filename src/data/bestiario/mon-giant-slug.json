@@ -48,14 +48,15 @@
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Língua raspadora",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 3,
       "mao": 1,
       "tipo": "perfurante",
       "acerto": 0,
-      "ticks": 7
+      "ticks": 7,
+      "notas": "dano corrosivo (pendência B16: sem palavra \"ácido\" no vocabulário)"
     }
   ],
   "habilidades": [
@@ -133,5 +134,8 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "resistencias": [
+    "impacto"
+  ]
 }

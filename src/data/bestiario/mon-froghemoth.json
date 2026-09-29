@@ -49,14 +49,15 @@
   "aparencia": 1,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Tentáculos e língua",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 3,
       "mao": 1,
-      "tipo": "perfurante",
+      "tipo": "impacto",
       "acerto": 0,
-      "ticks": 7
+      "ticks": 7,
+      "notas": "agarra com os tentáculos; a língua puxa a presa para perto"
     }
   ],
   "habilidades": [

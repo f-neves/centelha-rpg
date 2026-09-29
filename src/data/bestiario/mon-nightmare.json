@@ -51,14 +51,25 @@
   "aparencia": 1,
   "ataques": [
     {
-      "nome": "Golpe planar",
+      "nome": "Cascos flamejantes",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 2,
       "mao": 1,
-      "tipo": "corte",
+      "tipo": "impacto",
       "acerto": 0,
-      "ticks": 6
+      "ticks": 6,
+      "notas": "cada acerto soma dano de fogo"
+    },
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
     }
   ],
   "fraquezas": [
@@ -126,5 +137,23 @@
     "crConf": "conhecido"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "poderes": [
+    {
+      "id": "viagem-planar-pesadelo",
+      "nome": "Viagem entre planos",
+      "tipo": "natural",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 5
+      },
+      "resiste": "nenhum",
+      "efeito": "leva o cavaleiro e a si mesmo para outro plano, poucas vezes por dia",
+      "descricao": "O pesadelo galopa pelo ar e atravessa a fronteira entre planos, levando quem estiver montado nele junto.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 3
+      }
+    }
+  ]
 }

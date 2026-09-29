@@ -15,7 +15,7 @@
   "porte": "Grande",
   "dimensoes": {
     "medida": "6 m de comprimento",
-    "peso": "200 kg"
+    "peso": "cerca de 360 kg"
   },
   "locomocao": {
     "terra": 1
@@ -48,20 +48,21 @@
   "aparencia": 3,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Vinha constritora",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 2,
       "mao": 1,
-      "tipo": "perfurante",
+      "tipo": "impacto",
       "acerto": 0,
-      "ticks": 6
+      "ticks": 6,
+      "notas": "acerto agarra e constringe o alvo"
     }
   ],
-  "fraquezas": [
-    "fogo"
-  ],
+  "fraquezas": [],
   "resistencias": [
+    "fogo",
+    "gelo",
     "perfuracao"
   ],
   "habilidades": [
@@ -134,5 +135,25 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "imunidades": [
+    "raio"
+  ],
+  "poderes": [
+    {
+      "id": "emaranhar",
+      "nome": "Emaranhar",
+      "tipo": "natural",
+      "base": {
+        "arte": "vida",
+        "nivel": 2
+      },
+      "resiste": "esquiva",
+      "efeito": "vinhas ao redor prendem quem estiver numa área, dificultando o movimento",
+      "descricao": "Vinhas do chão ao redor da planta se agitam e prendem quem estiver por perto, tornando difícil sair do lugar sem se debater.",
+      "usos": {
+        "periodo": "golpe"
+      }
+    }
+  ]
 }

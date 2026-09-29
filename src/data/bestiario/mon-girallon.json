@@ -49,12 +49,12 @@
   "aparencia": 5,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Quatro garras e mordida",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 2,
       "mao": 1,
-      "tipo": "perfurante",
+      "tipo": "corte",
       "acerto": 0,
       "ticks": 6
     }

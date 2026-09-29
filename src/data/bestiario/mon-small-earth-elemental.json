@@ -15,7 +15,7 @@
   "porte": "Pequeno",
   "dimensoes": {
     "medida": "1,2 metro de altura, denso e compacto",
-    "peso": "300 kg"
+    "peso": "cerca de 36 kg"
   },
   "locomocao": {
     "terra": 2,
@@ -49,12 +49,12 @@
   "aparencia": 5,
   "ataques": [
     {
-      "nome": "Golpe planar",
+      "nome": "Pancada",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
-      "tipo": "corte",
+      "tipo": "impacto",
       "acerto": 0,
       "ticks": 5
     }

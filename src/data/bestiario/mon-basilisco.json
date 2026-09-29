@@ -47,9 +47,6 @@
   },
   "willpower": 8,
   "aparencia": 5,
-  "arte": {
-    "materia": 3
-  },
   "ataques": [
     {
       "nome": "Garras e presas",

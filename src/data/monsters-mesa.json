@@ -391,12 +391,13 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Cauda em maça",
      "pool": "7d6",
-     "dano": "3d6 +10 perfurante",
-     "perfArma": 0,
+     "dano": "3d6 +10 impacto",
+     "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "notas": "acerto forte pode atordoar o alvo por um Tick"
     }
    ]
   },
@@ -743,12 +744,13 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "1d6+2 +4",
-     "dano": "1d6 +2 corte",
+     "nome": "Raios de luz",
+     "pool": "1d6",
+     "dano": "2d6 +2 impacto",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "notas": "luz; fenômeno"
     }
    ]
   },
@@ -764,7 +766,7 @@
   },
   "dimensoes": {
    "medida": "1 m de diâmetro",
-   "peso": "5 kg"
+   "peso": "desprezível"
   }
  },
  {
@@ -828,12 +830,13 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Espadão de duas mãos",
      "pool": "5d6+2 +10",
-     "dano": "1d6 +12 corte",
+     "dano": "1d6 +18 corte",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "notas": "a trombeta que carrega vira a espada quando ele luta"
     }
    ]
   },
@@ -1339,16 +1342,7 @@
    "sociabilidade": 0,
    "furtividade": 2
   },
-  "artes": [
-   {
-    "id": "fogo",
-    "nivel": 5
-   },
-   {
-    "id": "conjuracao",
-    "nivel": 4
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 78,
@@ -1625,12 +1619,13 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Pancada esporulenta",
      "pool": "5d6+2",
-     "dano": "1d6 +6 perfurante",
-     "perfArma": 0,
+     "dano": "1d6 +6 impacto",
+     "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "notas": "acerto solta uma nuvem de esporos no golpe"
     }
    ]
   },
@@ -1686,12 +1681,7 @@
    "sociabilidade": 0,
    "furtividade": 2
   },
-  "artes": [
-   {
-    "id": "materia",
-    "nivel": 3
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
@@ -2561,10 +2551,10 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Pisoteio e cauda",
      "pool": "9d6+2",
-     "dano": "3d6 +14 perfurante",
-     "perfArma": 0,
+     "dano": "3d6 +14 impacto",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     }
@@ -3277,6 +3267,98 @@
   }
  },
  {
+  "id": "mon-skeletal-champion",
+  "nome": "Campeão Esquelético",
+  "nomeIngles": "Skeletal Champion",
+  "ameaca": 2,
+  "centelha": 2,
+  "categoria": "Morto-vivo",
+  "porte": "Médio",
+  "imagem": "bestiario/skeletal-champion.webp",
+  "semImagem": false,
+  "tipo": "soldado",
+  "atributos": {
+   "forca": 5,
+   "destreza": 3,
+   "vigor": 3,
+   "influencia": 3,
+   "perspicacia": 2,
+   "compostura": 2,
+   "percepcao": 2,
+   "inteligencia": 2,
+   "raciocinio": 2
+  },
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 4,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "vontade": 7,
+  "aparencia": 2,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 34,
+   "defesa": 10,
+   "defesaSocial": 4,
+   "defesaMental": 15,
+   "absorcao": {
+    "impacto": 5,
+    "corte": 3,
+    "perfuracao": 3
+   },
+   "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "resistencias": [
+    "corte",
+    "perfuracao"
+   ],
+   "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
+   "ataques": [
+    {
+     "nome": "Espada longa",
+     "pool": "4d6 +4",
+     "dano": "1d6 +7 corte",
+     "perfArma": null,
+     "speed": 5,
+     "classe": "media",
+     "notas": "luta com escudo"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Undead",
+   "terreno": [
+    "Any",
+    "Ruins",
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "dimensoes": {
+   "medida": "1,8 metro de altura",
+   "peso": "25 kg de ossos e armadura"
+  }
+ },
+ {
   "id": "camponis-assustado",
   "nome": "Camponês Assustado",
   "nomeIngles": "Frightened Peasant",
@@ -3416,12 +3498,13 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
+     "nome": "Mordida",
      "pool": "3d6",
-     "dano": "1d6 +4 corte",
-     "perfArma": null,
+     "dano": "1d6 +4 perfurante",
+     "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "notas": "acerto forte pode derrubar o alvo"
     }
    ]
   },
@@ -3904,6 +3987,9 @@
     "luz",
     "sagrado"
    ],
+   "imunidades": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 4,
@@ -3912,12 +3998,21 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Cascos flamejantes",
      "pool": "8d6 +10",
-     "dano": "3d6 +16 corte",
+     "dano": "3d6 +16 impacto",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "notas": "cada acerto soma dano de fogo"
+    },
+    {
+     "nome": "Mordida",
+     "pool": "8d6 +10",
+     "dano": "2d6 +16 perfurante",
+     "perfArma": 0,
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -4090,12 +4185,20 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Cascos",
      "pool": "4d6",
-     "dano": "2d6 +6 perfurante",
-     "perfArma": 0,
+     "dano": "2d6 +6 impacto",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
+    },
+    {
+     "nome": "Mordida",
+     "pool": "4d6",
+     "dano": "1d6 +6 perfurante",
+     "perfArma": 0,
+     "speed": 5,
+     "classe": "leve"
     }
    ]
   },
@@ -5055,7 +5158,7 @@
   "ameaca": 5,
   "centelha": 5,
   "categoria": "Outsider",
-  "porte": "Médio",
+  "porte": "Grande",
   "imagem": "bestiario/couatl.webp",
   "semImagem": false,
   "tipo": "chefe",
@@ -5083,7 +5186,7 @@
    "esquiva": 2,
    "integridade": 6,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 1
   },
   "artes": [
    {
@@ -5109,14 +5212,14 @@
   ],
   "tecnicas": [],
   "combate": {
-   "pv": 40,
+   "pv": 50,
    "defesa": 20,
    "defesaSocial": 12,
    "defesaMental": 31,
    "absorcao": {
     "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 8",
@@ -5127,12 +5230,13 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Mordida venenosa e constrição",
      "pool": "4d6+2 +10",
-     "dano": "1d6 +9 corte",
-     "perfArma": null,
+     "dano": "1d6 +9 perfurante",
+     "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "notas": "veneno drena Força; pode constringir em seguida"
     }
    ]
   },
@@ -5147,8 +5251,8 @@
    ]
   },
   "dimensoes": {
-   "medida": "3 m de comprimento, envergadura 2,4 m",
-   "peso": "115 kg"
+   "medida": "cerca de 3,7 m de comprimento",
+   "peso": "cerca de 800 kg"
   }
  },
  {
@@ -5229,7 +5333,7 @@
   },
   "dimensoes": {
    "medida": "18 m de comprimento",
-   "peso": "9.000 kg"
+   "peso": "cerca de 5.400 kg"
   }
  },
  {
@@ -5362,9 +5466,8 @@
     "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
-   "resistencias": [
-    "corte",
-    "perfuracao"
+   "imunidades": [
+    "raio"
    ],
    "iniciativa": "1d6 + 0",
    "deslocamento": {
@@ -6271,28 +6374,7 @@
    "sociabilidade": 0,
    "furtividade": 2
   },
-  "artes": [
-   {
-    "id": "fogo",
-    "nivel": 6
-   },
-   {
-    "id": "fortuna",
-    "nivel": 6
-   },
-   {
-    "id": "fascinacao",
-    "nivel": 5
-   },
-   {
-    "id": "espirito",
-    "nivel": 4
-   },
-   {
-    "id": "conjuracao",
-    "nivel": 6
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 74,
@@ -8577,12 +8659,6 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
-   "fraquezas": [
-    "raio"
-   ],
-   "resistencias": [
-    "fogo"
-   ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 2,
@@ -8591,9 +8667,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Pancada de água",
      "pool": "3d6+2 +2",
-     "dano": "1d6 +5 corte",
+     "dano": "1d6 +5 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -8611,7 +8687,7 @@
   },
   "dimensoes": {
    "medida": "1,2 metro de altura, corpo líquido em constante fluxo",
-   "peso": "100 kg"
+   "peso": "cerca de 15 kg"
   }
  },
  {
@@ -8771,9 +8847,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Pancada",
      "pool": "4d6 +2",
-     "dano": "1d6 +6 corte",
+     "dano": "1d6 +6 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -8792,7 +8868,7 @@
   },
   "dimensoes": {
    "medida": "1,2 metro de altura, denso e compacto",
-   "peso": "300 kg"
+   "peso": "cerca de 36 kg"
   }
  },
  {
@@ -8857,9 +8933,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Pancada de vento",
      "pool": "3d6 +2",
-     "dano": "1d6 +4 corte",
+     "dano": "1d6 +4 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -8934,7 +9010,7 @@
    "fraquezas": [
     "agua"
    ],
-   "resistencias": [
+   "imunidades": [
     "fogo"
    ],
    "iniciativa": "1d6 + 3",
@@ -8945,12 +9021,13 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Pancada flamejante",
      "pool": "2d6+2 +2",
-     "dano": "1d6 +3 corte",
+     "dano": "1d6 +3 impacto",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "notas": "cada acerto soma dano de fogo"
     }
    ]
   },
@@ -10253,7 +10330,7 @@
   "tipo": "fera",
   "atributos": {
    "forca": 10,
-   "destreza": 4,
+   "destreza": 2,
    "vigor": 7,
    "influencia": 2,
    "perspicacia": 1,
@@ -10281,7 +10358,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 70,
-   "defesa": 10,
+   "defesa": 6,
    "defesaSocial": 6,
    "defesaMental": 10,
    "absorcao": {
@@ -10298,7 +10375,7 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Cauda de espinhos",
      "pool": "7d6",
      "dano": "3d6 +10 perfurante",
      "perfArma": 0,
@@ -10318,7 +10395,7 @@
   },
   "dimensoes": {
    "medida": "9 metros de comprimento e 4,3 metros de altura",
-   "peso": "2,3 t"
+   "peso": "cerca de 5,2 t (3,5 a 7 t na fonte)"
   }
  },
  {
@@ -10715,12 +10792,13 @@
    },
    "ataques": [
     {
-     "nome": "Golpe",
+     "nome": "Toque corrupto",
      "pool": "2d6+2 +8",
      "dano": "1d6 +4 impacto",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "notas": "incorpóreo: o toque atravessa armadura, só a Centelha do alvo ajuda a resistir (pendência K36)"
     }
    ]
   },
@@ -11224,12 +11302,13 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Tentáculos e língua",
      "pool": "8d6",
-     "dano": "3d6 +11 perfurante",
-     "perfArma": 0,
+     "dano": "3d6 +11 impacto",
+     "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "notas": "agarra com os tentáculos; a língua puxa a presa para perto"
     }
    ]
   },
@@ -12536,10 +12615,10 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Quatro garras e mordida",
      "pool": "5d6+2 +2",
-     "dano": "2d6 +7 perfurante",
-     "perfArma": 0,
+     "dano": "2d6 +7 corte",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -13060,9 +13139,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
+     "nome": "Punhos",
      "pool": "8d6 +8",
-     "dano": "2d6 +15 corte",
+     "dano": "2d6 +15 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -13148,12 +13227,13 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
+     "nome": "Punhos gelados",
      "pool": "5d6 +2",
-     "dano": "1d6 +6 corte",
+     "dano": "1d6 +6 impacto",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "notas": "cada acerto soma dano de frio"
     }
    ]
   },
@@ -13233,9 +13313,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
+     "nome": "Punhos",
      "pool": "7d6+2 +6",
-     "dano": "2d6 +13 corte",
+     "dano": "2d6 +13 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -14954,92 +15034,6 @@
   }
  },
  {
-  "id": "mon-invisible-stalker",
-  "nome": "Invisible Stalker",
-  "nomeIngles": "Invisible Stalker",
-  "ameaca": 4,
-  "centelha": 4,
-  "categoria": "Elemental",
-  "porte": "Médio",
-  "imagem": "bestiario/invisible-stalker.webp",
-  "semImagem": false,
-  "tipo": "elite",
-  "atributos": {
-   "forca": 5,
-   "destreza": 5,
-   "vigor": 7,
-   "influencia": 2,
-   "perspicacia": 3,
-   "compostura": 3,
-   "percepcao": 4,
-   "inteligencia": 4,
-   "raciocinio": 4
-  },
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "vontade": 9,
-  "aparencia": 5,
-  "pericias": {
-   "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
-   "furtividade": 1
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 46,
-   "defesa": 14,
-   "defesaSocial": 6,
-   "defesaMental": 22,
-   "absorcao": {
-    "impacto": 11,
-    "corte": 7,
-    "perfuracao": 7
-   },
-   "resistenciaPerfuracao": 0,
-   "resistencias": [
-    "corte",
-    "perfuracao"
-   ],
-   "iniciativa": "1d6 + 6",
-   "deslocamento": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-   },
-   "ataques": [
-    {
-     "nome": "Golpe planar",
-     "pool": "5d6 +8",
-     "dano": "1d6 +9 corte",
-     "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Elemental",
-   "terreno": [
-    "Sky",
-    "Any"
-   ],
-   "clima": [
-    "Extraplanar"
-   ]
-  },
-  "dimensoes": {
-   "medida": "1,8 m de altura",
-   "peso": "70 kg"
-  }
- },
- {
   "id": "mon-janni",
   "nome": "Janni",
   "nomeIngles": "Janni",
@@ -15402,20 +15396,7 @@
    "sociabilidade": 0,
    "furtividade": 0
   },
-  "artes": [
-   {
-    "id": "vento",
-    "nivel": 6
-   },
-   {
-    "id": "fascinacao",
-    "nivel": 5
-   },
-   {
-    "id": "raio",
-    "nivel": 4
-   }
-  ],
+  "artes": [],
   "tecnicas": [
    {
     "id": "abraco-do-tita",
@@ -15895,7 +15876,7 @@
   "ameaca": 4,
   "centelha": 0,
   "categoria": "Animal",
-  "porte": "Médio",
+  "porte": "Grande",
   "imagem": "bestiario/dire-lion-spotted-lion.webp",
   "semImagem": false,
   "tipo": "elite",
@@ -15923,19 +15904,19 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 1
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 40,
+   "pv": 50,
    "defesa": 10,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 5,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
@@ -15946,9 +15927,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
+     "nome": "Garras e mordida",
      "pool": "6d6+2",
-     "dano": "1d6 +8 corte",
+     "dano": "2d6 +8 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -16189,6 +16170,9 @@
     "perfuracao": 7
    },
    "resistenciaPerfuracao": 1,
+   "resistencias": [
+    "impacto"
+   ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 2,
@@ -16197,12 +16181,13 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Língua raspadora",
      "pool": "7d6+2",
      "dano": "3d6 +10 perfurante",
      "perfArma": 0,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "notas": "dano corrosivo (pendência B16: sem palavra \"ácido\" no vocabulário)"
     }
    ]
   },
@@ -17392,9 +17377,6 @@
     "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
-   "fraquezas": [
-    "raio"
-   ],
    "resistencias": [
     "fogo"
    ],
@@ -18348,10 +18330,8 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
-   "fraquezas": [
-    "fogo"
-   ],
    "resistencias": [
+    "fogo",
     "perfuracao",
     "raio"
    ],
@@ -18363,12 +18343,13 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Duas pancadas",
      "pool": "6d6",
-     "dano": "2d6 +7 perfurante",
-     "perfArma": 0,
+     "dano": "2d6 +7 impacto",
+     "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "notas": "acerto pode agarrar e constringir"
     }
    ]
   },
@@ -19581,9 +19562,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
+     "nome": "Pancada",
      "pool": "4d6 +2",
-     "dano": "1d6 +5 corte",
+     "dano": "1d6 +5 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -20215,6 +20196,88 @@
   }
  },
  {
+  "id": "mon-invisible-stalker",
+  "nome": "Perseguidor Invisível",
+  "nomeIngles": "Invisible Stalker",
+  "ameaca": 4,
+  "centelha": 4,
+  "categoria": "Elemental",
+  "porte": "Médio",
+  "imagem": "bestiario/invisible-stalker.webp",
+  "semImagem": false,
+  "tipo": "elite",
+  "atributos": {
+   "forca": 5,
+   "destreza": 5,
+   "vigor": 7,
+   "influencia": 2,
+   "perspicacia": 3,
+   "compostura": 3,
+   "percepcao": 4,
+   "inteligencia": 4,
+   "raciocinio": 4
+  },
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "vontade": 9,
+  "aparencia": 5,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 46,
+   "defesa": 14,
+   "defesaSocial": 6,
+   "defesaMental": 22,
+   "absorcao": {
+    "impacto": 11,
+    "corte": 7,
+    "perfuracao": 7
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
+   "ataques": [
+    {
+     "nome": "Dois socos",
+     "pool": "5d6 +8",
+     "dano": "1d6 +9 impacto",
+     "perfArma": null,
+     "speed": 5,
+     "classe": "leve"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Elemental",
+   "terreno": [
+    "Sky",
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
+  "dimensoes": {
+   "medida": "1,8 m de altura",
+   "peso": "70 kg"
+  }
+ },
+ {
   "id": "mon-nightmare",
   "nome": "Pesadelo",
   "nomeIngles": "Nightmare",
@@ -20276,12 +20339,21 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Cascos flamejantes",
      "pool": "5d6+2 +8",
-     "dano": "2d6 +10 corte",
+     "dano": "2d6 +10 impacto",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "notas": "cada acerto soma dano de fogo"
+    },
+    {
+     "nome": "Mordida",
+     "pool": "5d6+2 +8",
+     "dano": "1d6 +10 perfurante",
+     "perfArma": 0,
+     "speed": 5,
+     "classe": "leve"
     }
    ]
   },
@@ -20808,10 +20880,10 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Cascos",
      "pool": "2d6",
-     "dano": "1d6 +3 perfurante",
-     "perfArma": 0,
+     "dano": "1d6 +3 impacto",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -21319,12 +21391,13 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
+     "nome": "Mordida",
      "pool": "3d6+2",
-     "dano": "1d6 +4 corte",
-     "perfArma": null,
+     "dano": "1d6 +4 perfurante",
+     "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "notas": "acerto pode agarrar o alvo"
     }
    ]
   },
@@ -22081,6 +22154,9 @@
     "perfuracao": 12
    },
    "resistenciaPerfuracao": 0,
+   "imunidades": [
+    "raio"
+   ],
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 1,
@@ -22111,7 +22187,7 @@
   },
   "dimensoes": {
    "medida": "3 metros de altura",
-   "peso": "várias centenas de kg"
+   "peso": "cerca de 1.000 kg"
   }
  },
  {
@@ -23043,97 +23119,6 @@
   }
  },
  {
-  "id": "mon-skeletal-champion",
-  "nome": "Skeletal Champion",
-  "nomeIngles": "Skeletal Champion",
-  "ameaca": 2,
-  "centelha": 2,
-  "categoria": "Morto-vivo",
-  "porte": "Médio",
-  "imagem": "bestiario/skeletal-champion.webp",
-  "semImagem": false,
-  "tipo": "soldado",
-  "atributos": {
-   "forca": 5,
-   "destreza": 3,
-   "vigor": 3,
-   "influencia": 3,
-   "perspicacia": 2,
-   "compostura": 2,
-   "percepcao": 2,
-   "inteligencia": 2,
-   "raciocinio": 2
-  },
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 4,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "vontade": 7,
-  "aparencia": 2,
-  "pericias": {
-   "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 1
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 34,
-   "defesa": 10,
-   "defesaSocial": 4,
-   "defesaMental": 15,
-   "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
-   },
-   "resistenciaPerfuracao": 0,
-   "fraquezas": [
-    "luz",
-    "sagrado"
-   ],
-   "resistencias": [
-    "corte",
-    "perfuracao"
-   ],
-   "iniciativa": "1d6 + 3",
-   "deslocamento": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-   },
-   "ataques": [
-    {
-     "nome": "Golpe",
-     "pool": "4d6 +4",
-     "dano": "1d6 +7 impacto",
-     "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Undead",
-   "terreno": [
-    "Any",
-    "Ruins",
-    "Underground"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "dimensoes": {
-   "medida": "1,8 metro de altura",
-   "peso": "25 kg de ossos e armadura"
-  }
- },
- {
   "id": "mon-skum-ulat-kini",
   "nome": "Skum (Ulat-Kini)",
   "nomeIngles": "Skum",
@@ -23834,6 +23819,15 @@
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
+    },
+    {
+     "nome": "Cauda",
+     "pool": "10d6+2 +10",
+     "dano": "2d6 +22 impacto",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media",
+     "notas": "pode agarrar e constringir"
     }
    ]
   },
@@ -24752,12 +24746,21 @@
    },
    "ataques": [
     {
-     "nome": "Pancada descomunal",
+     "nome": "Garras",
      "pool": "6d6 +2",
-     "dano": "2d6 +8 impacto",
+     "dano": "2d6 +8 corte",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 5,
+     "classe": "leve",
+     "notas": "dilacera: dano extra se o alvo já sangrando"
+    },
+    {
+     "nome": "Mordida",
+     "pool": "6d6 +2",
+     "dano": "1d6 +8 perfurante",
+     "perfArma": 0,
+     "speed": 5,
+     "classe": "leve"
     }
    ]
   },
@@ -25863,11 +25866,13 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
-   "fraquezas": [
-    "fogo"
-   ],
    "resistencias": [
+    "fogo",
+    "gelo",
     "perfuracao"
+   ],
+   "imunidades": [
+    "raio"
    ],
    "iniciativa": "1d6 + 4",
    "deslocamento": {
@@ -25877,12 +25882,13 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Vinha constritora",
      "pool": "5d6+2 +2",
-     "dano": "2d6 +8 perfurante",
-     "perfArma": 0,
+     "dano": "2d6 +8 impacto",
+     "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "notas": "acerto agarra e constringe o alvo"
     }
    ]
   },
@@ -25898,7 +25904,7 @@
   },
   "dimensoes": {
    "medida": "6 m de comprimento",
-   "peso": "200 kg"
+   "peso": "cerca de 360 kg"
   }
  },
  {

@@ -13,7 +13,7 @@
     "monstro"
   ],
   "imagem": "bestiario/dire-lion-spotted-lion.webp",
-  "porte": "Médio",
+  "porte": "Grande",
   "dimensoes": {
     "medida": "2,5 m de comprimento",
     "peso": "300 kg"
@@ -49,10 +49,10 @@
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Arma",
+      "nome": "Garras e mordida",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 1,
+      "dado": 2,
       "mao": 1,
       "tipo": "corte",
       "acerto": 0,

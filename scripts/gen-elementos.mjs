@@ -109,12 +109,36 @@ const EXCECOES = {
   'mon-treant': { fraquezas: ['fogo'], resistencias: ['perfuracao', 'impacto'] },
   // Gigante do Fogo (B14 fase 3): forjado no calor da fornalha, sofre no gelo.
   'mon-gigante-do-fogo': { fraquezas: ['gelo'], resistencias: ['fogo'] },
-  // Montão Tropeçante (B14 fase 3): "imune a raio" na fonte; aqui vira resistência, e o dano que
-  // a resistência cortaria pela metade vira cura na mesma proporção (texto na habilidade).
-  'mon-montao-tropecante': { fraquezas: ['fogo'], resistencias: ['perfuracao', 'raio'] },
+  // Montão Tropeçante (B14 fase 4, achado da revisão dos graves): a fraqueza a fogo virou
+  // resistência (a fonte não sustenta fraqueza aqui); "imune a raio" na fonte vira
+  // resistência, e o dano que a resistência cortaria pela metade vira cura na mesma
+  // proporção (texto na habilidade).
+  'mon-montao-tropecante': { resistencias: ['perfuracao', 'raio', 'fogo'] },
+  // Vinha Assassina (B14 fase 4): a fonte não sustenta fraqueza a fogo, e sim resistência
+  // a fogo e frio (a planta é resistente ao clima, não sensível a ele).
+  'mon-assassin-vine': { resistencias: ['perfuracao', 'fogo', 'gelo'] },
+  // Cubo Gelatinoso (B14 fase 4): a fonte não dá resistência a corte/perfuração, ao
+  // contrário do default da categoria Limo; sem nenhuma fraqueza/resistência de dano
+  // físico (a imunidade a eletricidade da fonte não entra aqui, é `imunidades`, campo à
+  // parte que este satélite não cobre).
+  'mon-cubo-gelatinoso': {},
   // Rakshasa (B14 fase 3): a fonte não sustenta imunidade total, e sim resistência a corte e
   // impacto; perfurante passa.
   'mon-rakshasa': { resistencias: ['corte', 'impacto'] },
+  // Lesma Gigante (B14 fase 4): só armas de impacto são absorvidas pela carne (a fonte
+  // inverte a resistência de corte/perfuração para só impacto).
+  'mon-giant-slug': { resistencias: ['impacto'] },
+  // Perseguidor Invisível (B14 fase 4): a fonte não sustenta resistência a corte/perfuração.
+  'mon-invisible-stalker': {},
+  // Elemental do Fogo Pequeno (B14 fase 4): a resistência a fogo da fonte vira imunidade
+  // (campo à parte); aqui fica só a fraqueza a água.
+  'mon-small-fire-elemental': { fraquezas: ['agua'] },
+  // Elemental da Água Pequeno (B14 fase 4): a fraqueza a raio e a resistência a fogo não
+  // vêm da fonte.
+  'mon-small-water-elemental': {},
+  // Marid (B14 fase 4): "resiste na fonte", tira a fraqueza a raio que o Djinn tinha por
+  // padrão de categoria; mantém a resistência a fogo.
+  'mon-marid': { resistencias: ['fogo'] },
 
   // Dragões: o bicho resiste ao que ele mesmo cospe
   'mon-dragao-vermelho-adulto': { resistencias: ['fogo'] },

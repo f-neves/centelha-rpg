@@ -50,10 +50,6 @@
   },
   "willpower": 12,
   "aparencia": -2,
-  "arte": {
-    "fogo": 5,
-    "conjuracao": 4
-  },
   "ataques": [
     {
       "nome": "Golpe planar",
@@ -76,11 +72,12 @@
         "nivel": 4
       },
       "resiste": "nenhum",
-      "efeito": "Resiste ao entrar, 1 vez por cena.",
+      "efeito": "quem chega a até 3m do balor sofre dano de fogo automático a cada rodada que ficar perto",
       "usos": {
         "periodo": "passivo",
         "recarga": "contínua"
-      }
+      },
+      "descricao": "O corpo do balor arde o tempo todo; ficar perto dele, mesmo sem lutar, já queima."
     },
     {
       "id": "morte-explosiva",
@@ -91,9 +88,26 @@
         "nivel": 5
       },
       "resiste": "esquiva",
-      "efeito": "Morte explosiva",
+      "efeito": "ao cair a 0 PV, o balor explode numa área de 12m; quem não escapar sofre dano alto",
       "usos": {
         "periodo": "avontade"
+      },
+      "descricao": "A morte do balor não é silenciosa: seu corpo estoura numa bola de fogo que alcança 12 metros, ferindo gravemente quem não conseguir sair a tempo."
+    },
+    {
+      "id": "teleporte-balor",
+      "nome": "Teleporte",
+      "tipo": "natural",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 4
+      },
+      "resiste": "nenhum",
+      "efeito": "desloca-se instantaneamente, ignorando prisões e paredes, poucas vezes por dia",
+      "descricao": "O balor desaparece numa lufada de fumaça negra e reaparece em outro ponto que conheça, atravessando paredes e prisões mágicas comuns no caminho.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 3
       }
     }
   ],

@@ -14,10 +14,10 @@
     "mágico"
   ],
   "imagem": "bestiario/couatl.webp",
-  "porte": "Médio",
+  "porte": "Grande",
   "dimensoes": {
-    "medida": "3 m de comprimento, envergadura 2,4 m",
-    "peso": "115 kg"
+    "medida": "cerca de 3,7 m de comprimento",
+    "peso": "cerca de 800 kg"
   },
   "locomocao": {
     "voo": 6
@@ -57,14 +57,15 @@
   },
   "ataques": [
     {
-      "nome": "Golpe planar",
+      "nome": "Mordida venenosa e constrição",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
-      "tipo": "corte",
+      "tipo": "perfurante",
       "acerto": 0,
-      "ticks": 5
+      "ticks": 5,
+      "notas": "veneno drena Força; pode constringir em seguida"
     }
   ],
   "poderes": [

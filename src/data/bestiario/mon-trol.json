@@ -48,14 +48,25 @@
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Pancada descomunal",
+      "nome": "Garras",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 2,
       "mao": 1,
-      "tipo": "impacto",
+      "tipo": "corte",
       "acerto": 0,
-      "ticks": 6
+      "ticks": 5,
+      "notas": "dilacera: dano extra se o alvo já sangrando"
+    },
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 0,
+      "ticks": 5
     }
   ],
   "poderes": [

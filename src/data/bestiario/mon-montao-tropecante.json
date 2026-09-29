@@ -49,20 +49,20 @@
   "aparencia": 3,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Duas pancadas",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 2,
       "mao": 1,
-      "tipo": "perfurante",
+      "tipo": "impacto",
       "acerto": 0,
-      "ticks": 6
+      "ticks": 6,
+      "notas": "acerto pode agarrar e constringir"
     }
   ],
-  "fraquezas": [
-    "fogo"
-  ],
+  "fraquezas": [],
   "resistencias": [
+    "fogo",
     "perfuracao",
     "raio"
   ],

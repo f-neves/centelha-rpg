@@ -58,6 +58,17 @@
       "tipo": "perfurante",
       "acerto": 0,
       "ticks": 7
+    },
+    {
+      "nome": "Cauda",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 6,
+      "notas": "pode agarrar e constringir"
     }
   ],
   "habilidades": [

@@ -50,13 +50,6 @@
   },
   "willpower": 12,
   "aparencia": -1,
-  "arte": {
-    "fogo": 6,
-    "fortuna": 6,
-    "fascinacao": 5,
-    "espirito": 4,
-    "conjuracao": 6
-  },
   "ataques": [
     {
       "nome": "Golpe planar",
@@ -83,7 +76,8 @@
       "usos": {
         "periodo": "passivo",
         "recarga": "contínua"
-      }
+      },
+      "descricao": "Uma presença de puro terror cerca o diabo do fosso; quem chega a 12 metros e falha em resistir fica abalado, só de estar perto."
     },
     {
       "id": "convocar-diabos",
@@ -98,7 +92,8 @@
       "usos": {
         "periodo": "dia",
         "quantidade": 1
-      }
+      },
+      "descricao": "Uma vez por cena, o diabo abre uma fenda para o Fosso e puxa um punhado de diabos menores para lutarem ao seu lado."
     },
     {
       "id": "doenca",
@@ -112,6 +107,40 @@
       "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
       "usos": {
         "periodo": "golpe"
+      },
+      "descricao": "A mordida do diabo carrega uma doença infernal: quem é mordido e falha em resistir vai perdendo Vigor aos poucos, até ser tratado ou curado por magia."
+    },
+    {
+      "id": "labareda-pit-fiend",
+      "nome": "Labareda",
+      "tipo": "natural",
+      "base": {
+        "arte": "fogo",
+        "nivel": 6
+      },
+      "resiste": "esquiva",
+      "efeito": "bola de fogo numa área de 6m, dano altíssimo, metade se esquivar a tempo",
+      "descricao": "O diabo do fosso arremessa uma bola de fogo que explode numa área de 6 metros, torrando quase tudo que estiver lá dentro; quem consegue se jogar para fora a tempo sofre metade do estrago.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 3
+      }
+    },
+    {
+      "id": "feiticos-supremos",
+      "nome": "Feitiços supremos",
+      "tipo": "natural",
+      "base": {
+        "arte": "fortuna",
+        "nivel": 6
+      },
+      "resiste": "nenhum",
+      "efeito": "reproduz o efeito de qualquer Arte, de qualquer nível, uma única vez",
+      "descricao": "Raríssimas vezes, quase nunca dentro de uma única história, o diabo do fosso pode fazer o que quiser: reproduzir qualquer efeito de qualquer Arte, do nível que for. O Mestre decide quando isso é possível.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 1,
+        "recarga": "uma vez por história de campanha, não por dia"
       }
     }
   ],
