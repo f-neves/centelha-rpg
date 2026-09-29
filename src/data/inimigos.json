@@ -3773,7 +3773,8 @@
         "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
         "usos": {
           "periodo": "cena"
-        }
+        },
+        "descricao": "Quem cruza o olhar do basilisco tem de resistir, uma vez por cena: falhar começa a virar pedra, devagar, até a cura ou a magia certa reverter. Lutar sem olhar direto (de lado, de olhos fechados, por reflexo) evita o olhar, mas cobra −4 no próprio ataque."
       }
     ],
     "pericias": {
@@ -15553,7 +15554,7 @@
     "tipo": "fera",
     "categoria": "Besta mágica",
     "ameaca": 4,
-    "centelha": 4,
+    "centelha": 1,
     "conceito": "besta mágica Grande",
     "descricao": "Fera tocada pela magia, além do reino natural.",
     "tags": [
@@ -15563,12 +15564,12 @@
     "pv": 54,
     "defesa": 14,
     "defesaSocial": 4,
-    "defesaMental": 16,
+    "defesaMental": 14,
     "vontade": 9,
     "soak": {
-      "impacto": 10,
-      "corte": 9,
-      "perfuracao": 9
+      "impacto": 7,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 2",
@@ -15586,8 +15587,8 @@
     "ataques": [
       {
         "nome": "Garras e presas",
-        "pool": "5d6+2 +8",
-        "dano": "2d6 +10 perfurante",
+        "pool": "5d6+2 +2",
+        "dano": "2d6 +7 perfurante",
         "perfArma": 0,
         "ticks": 6
       }

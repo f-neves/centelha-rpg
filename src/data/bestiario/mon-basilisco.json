@@ -75,7 +75,8 @@
       "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
       "usos": {
         "periodo": "cena"
-      }
+      },
+      "descricao": "Quem cruza o olhar do basilisco tem de resistir, uma vez por cena: falhar começa a virar pedra, devagar, até a cura ou a magia certa reverter. Lutar sem olhar direto (de lado, de olhos fechados, por reflexo) evita o olhar, mas cobra −4 no próprio ataque."
     }
   ],
   "habilidades": [

@@ -45,6 +45,23 @@ const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
 const DANO_AB: Record<string, string> = { impacto: '(I)', corte: '(C)', perfurante: '(P)' };
 const fmtPool = (s: string) => String(s || '').replace(/(\d+d6)\+/, '$1 +');
 const fmtDano = (s: string) => String(s || '').replace(/\b(impacto|corte|perfurante)\b/g, (m) => DANO_AB[m]);
+// Locomoção (B14 fase 4, Adendo 3 item 5): só os modos que a criatura tem, m/Tick.
+const LOCO: [string, string][] = [
+  ['terra', 'Terra'], ['voo', 'Voo'], ['natacao', 'Natação'],
+  ['escalada', 'Escalada'], ['escavacao', 'Escavação'], ['jato', 'Jato'],
+];
+const locoDe = (x: any) => LOCO.filter(([k]) => x.locomocao?.[k]).map(([k, nome]) => ({ nome, v: x.locomocao[k] }));
+// Uso de um poder natural, por extenso: "1×/dia", "à vontade", "passivo", "por golpe".
+const PERIODO: Record<string, string> = {
+  ticks: 'Ticks', cena: 'cena', hora: 'hora', dia: 'dia', avontade: 'à vontade', passivo: 'passivo', golpe: 'por golpe',
+};
+const usosTxt = (u: any) => {
+  if (!u) return '';
+  if (u.periodo === 'avontade' || u.periodo === 'passivo' || u.periodo === 'golpe') return PERIODO[u.periodo];
+  const base = u.quantidade ? `${u.quantidade}×/${PERIODO[u.periodo] || u.periodo}` : `por ${PERIODO[u.periodo] || u.periodo}`;
+  return u.recarga ? `${base} (${u.recarga})` : base;
+};
+const RESISTE: Record<string, string> = { esquiva: 'Esquiva', corpo: 'corpo', mente: 'mente', nenhum: 'nenhuma' };
 // tem conteúdo mecânico (Habilidades / Poderes / Técnicas / Artes / Notas) → botão do card flutuante
 const temMec = (x: any) => !!((x.habilidades?.length) || (x.poderes?.length) || (x.tecnicas?.length) || (x.artes?.length) || x.notas);
 // listas de poderes por criatura (ids p/ filtro)
@@ -96,6 +113,9 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
           </div>
           {i.porte && (
             <p class="besta-porte"><span class="pt-lbl">Porte</span><span class="pt-cat">{i.porte}</span><span class="pt-sep">·</span>{i.dimensoes.medida}<span class="pt-sep">·</span>{i.dimensoes.peso}</p>
+          )}
+          {locoDe(i).length > 0 && (
+            <p class="besta-porte besta-loco"><span class="pt-lbl">Desloc.</span>{locoDe(i).map((m, n) => (<>{n > 0 && <span class="pt-sep">·</span>}<span>{`${m.nome} ${m.v} m/Tick`}</span></>))}</p>
           )}
 
           {i.descricao && <p class="besta-con muted">{i.descricao}</p>}
@@ -161,6 +181,18 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
               <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">Ataque: <b>{fmtPool(a.pool)}</b> · Dano <b>{fmtDano(a.dano)}</b> · Velocidade {a.speed}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
             ))}
           </ul>
+
+          {(i.poderes || []).some((p: any) => p.tipo === 'natural') && (
+            <ul class="besta-poderes">
+              {i.poderes.filter((p: any) => p.tipo === 'natural').map((p: any) => (
+                <li>
+                  <span class="pn-nome">{p.nome}</span>
+                  <span class="pn-meta">{usosTxt(p.usos)}{p.resiste && p.resiste !== 'nenhum' ? ` · resiste ${RESISTE[p.resiste] ?? p.resiste}` : ''}</span>
+                  {p.descricao && <span class="pn-desc muted">{p.descricao}</span>}
+                </li>
+              ))}
+            </ul>
+          )}
 
           {(
             <div class="besta-foot">

@@ -14,8 +14,8 @@
   "imagem": "bestiario/tarn-linnorm.webp",
   "porte": "Colossal",
   "dimensoes": {
-    "medida": "27 m de comprimento",
-    "peso": "16.000 kg"
+    "medida": "cerca de 36 m de comprimento",
+    "peso": "cerca de 11.000 kg"
   },
   "locomocao": {
     "terra": 4,

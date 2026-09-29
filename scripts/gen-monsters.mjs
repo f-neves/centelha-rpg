@@ -132,8 +132,14 @@ function build(c) {
     poderes: (c.poderes || []).map((p) => (p.id
       ? { id: p.id, nome: p.nome, tipo: p.tipo, resiste: p.resiste, efeito: p.efeito,
           ...(p.base ? { base: p.base } : {}), ...(p.area ? { area: p.area } : {}),
-          ...(p.ataque ? { ataque: p.ataque } : {}), usos: p.usos }
+          ...(p.ataque ? { ataque: p.ataque } : {}), ...(p.descricao ? { descricao: p.descricao } : {}),
+          usos: p.usos }
       : { efeito: p.efeito, tipo: p.tipo, alvo: p.alvo, ...(p.caminho ? { caminho: p.caminho } : {}), ...(p.arte ? { arte: p.arte } : {}) })),
+    // Locomoção CRUA, por modo (B14 fase 4, item 5 do Adendo 3): o `deslocamento`
+    // acima já é o passo único (m/Tick) que o Grid usa; isto é o detalhe por modo
+    // (terra/voo/natação/escalada/escavação/jato) que o card exibe, e que até
+    // agora só alimentava `passoDaPeca` por baixo dos panos.
+    ...(f.locomocao && Object.keys(f.locomocao).length ? { locomocao: f.locomocao } : {}),
     tecnicas: c.tecnicas || [],
     artes: (c.artes || []).map((a) => ({ id: a.id && a.id.id ? a.id.id : a.id, nivel: a.nivel })),
     notas: c.notas || '',
@@ -242,6 +248,10 @@ const FORA_DA_MESA = {
   notas: 'caderno do mestre; não desce nem para a aba, quanto mais para o pacote',
   pendente: 'marca de trabalho do bestiário, não é dado de jogo',
   tags: 'usadas no editor e na busca do bestiário, não no tabuleiro',
+  // O Grid anda pelo passo único de `combate.deslocamento` (já derivado, já em
+  // CAMPOS_MESA); isto é só o detalhe por modo que o card mostra (B14 fase 4,
+  // Adendo 3, item 5).
+  locomocao: 'exibição do card; o Grid anda por combate.deslocamento, já derivado',
 };
 
 const TEC_POR_ID = Object.fromEntries(read('tecnicas.json').map((t) => [t.id, t]));

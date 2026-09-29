@@ -56,11 +56,11 @@ const opcoesEditor = {
   armas: [...armasCat].map((a) => ({ id: a.id, nome: a.nome })).sort((a, b) => a.nome.localeCompare(b.nome, 'pt')),
 };
 ---
-<Base title="Bestiário & NPCs" largura="wide" descricao="Adversários prontos para o Mestre — do goblin ao dragão ancião, com blocos de combate calculados, arte de referência e poderes traduzidos em Proezas e Feitiçarias.">
+<Base title="Bestiário & NPCs" largura="wide" descricao="Adversários prontos para o Mestre, do goblin ao dragão ancião, com blocos de combate calculados, arte de referência e poderes naturais ou Artes de verdade, conforme cada criatura.">
   <h1>Bestiário & NPCs</h1>
-  <p class="lead">Adversários prontos para a mesa, do camponês ao dragão ancião. Os números seguem as mesmas fórmulas dos personagens (PV, Defesa, Absorção, Iniciativa e pools de ataque já calculados), e os poderes especiais vêm traduzidos em <strong>Proezas</strong> (Técnicas de Caminho) e <strong>Feitiçarias</strong> (Artes).</p>
+  <p class="lead">Adversários prontos para a mesa, do camponês ao dragão ancião. Os números seguem as mesmas fórmulas dos personagens (PV, Defesa, Absorção, Iniciativa e pools de ataque já calculados). Os poderes especiais aparecem como <strong>poderes naturais</strong> (com usos por dia, por cena ou à vontade) ou como <strong>Artes</strong> de verdade, quando a criatura conjura como um personagem conjuraria.</p>
 
-  <div class="callout regra"><span class="lbl">Informações</span>O bloco traz o <strong>Ataque</strong> (o pool, já com o Acerto) e o <strong>Dano</strong> prontos para rolar. O tipo de dano vem em sigla: <strong>Impacto (I)</strong>, <strong>Corte (C)</strong>, <strong>Perfuração (P)</strong>. <strong>Ameaça</strong> (◆) é uma referência rápida de perigo, de 1 a 6. Criaturas com <strong>Centelha</strong> usam <strong>Proezas</strong>, <strong>Feitiçaria</strong> ou alguma técnica equivalente. A lista de <strong>Poderes</strong> indica o Caminho ou Arte que reproduz cada efeito. Toque na arte para ampliar.</div>
+  <div class="callout regra"><span class="lbl">Informações</span>O bloco traz o <strong>Ataque</strong> (o pool, já com o Acerto) e o <strong>Dano</strong> prontos para rolar. O tipo de dano vem em sigla: <strong>Impacto (I)</strong>, <strong>Corte (C)</strong>, <strong>Perfuração (P)</strong>. <strong>Ameaça</strong> (◆) é o desafio publicado até hoje; está em recalibração, e os losangos continuam mostrando o valor antigo até a bancada medir de novo. A lista de <strong>Poderes</strong> mostra o efeito, os usos e o que o alvo resiste, quando a criatura tiver algum. Toque na arte para ampliar.</div>
 
   <div class="callout"><span class="lbl">Dano</span>O golpe de uma criatura soma a <strong>Força uma vez</strong> ao dano (um só membro: garra, presa, braço ou tentáculo). A Força só entra <strong>em dobro</strong> quando se empunha uma <strong>arma</strong> com mais de um membro (as duas mãos num montante, por exemplo), então os ataques naturais do bestiário usam sempre <strong>uma vez a Força</strong>. Uma criatura com muitos membros ataca <strong>várias vezes</strong> (um golpe por membro), não com mais Força por golpe.</div>
 
@@ -370,6 +370,16 @@ const opcoesEditor = {
   .atk-nome { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink); }
   .atk-rolls b { color: var(--accent-strong); }
   .atk-nota { font-size: var(--fs-micro); font-style: italic; }
+
+  /* Locomoção (B14 fase 4, Adendo 3) */
+  .besta-loco { color: var(--ink-soft); }
+
+  /* Poderes naturais, no card fechado (B14 fase 4, Adendo 3) */
+  .besta-poderes { list-style: none; padding: 0; margin: 0 0 .5rem; font-size: var(--fs-rotulo); display: flex; flex-direction: column; gap: .3rem; }
+  .besta-poderes li { display: flex; flex-direction: column; gap: .05rem; padding-left: .7rem; border-left: 2px solid color-mix(in srgb, var(--gold) 55%, transparent); }
+  .pn-nome { font-family: 'Cinzel'; font-size: var(--fs-micro); color: var(--ink); }
+  .pn-meta { font-size: var(--fs-micro); color: var(--accent-strong); text-transform: capitalize; }
+  .pn-desc { font-size: var(--fs-micro); font-style: italic; }
 
   .besta-foot { margin-top: auto; padding-top: .6rem; display: flex; flex-wrap: wrap; gap: .5rem; }
   .besta-info {

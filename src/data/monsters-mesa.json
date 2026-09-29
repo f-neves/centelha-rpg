@@ -12500,7 +12500,7 @@
   "nome": "Girallon",
   "nomeIngles": "Girallon",
   "ameaca": 4,
-  "centelha": 4,
+  "centelha": 1,
   "categoria": "Besta mágica",
   "porte": "Grande",
   "imagem": "bestiario/girallon.webp",
@@ -12538,11 +12538,11 @@
    "pv": 54,
    "defesa": 14,
    "defesaSocial": 4,
-   "defesaMental": 16,
+   "defesaMental": 14,
    "absorcao": {
-    "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "impacto": 7,
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
@@ -12554,8 +12554,8 @@
    "ataques": [
     {
      "nome": "Garras e presas",
-     "pool": "5d6+2 +8",
-     "dano": "2d6 +10 perfurante",
+     "pool": "5d6+2 +2",
+     "dano": "2d6 +7 perfurante",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -23867,8 +23867,8 @@
    ]
   },
   "dimensoes": {
-   "medida": "27 m de comprimento",
-   "peso": "16.000 kg"
+   "medida": "cerca de 36 m de comprimento",
+   "peso": "cerca de 11.000 kg"
   }
  },
  {

@@ -4573,7 +4573,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   com um único uso, então não há ambiguidade nenhuma sobre onde ele está:
 
   · o documento aponta a linha 352, e o uso mora em `Base.astro:369` (`import.meta.env.BASE_URL`);
-  · aponta a 666, e o uso mora em `bestiario.astro:773` (`const base = import.meta.env`);
+  · aponta a 666, e o uso mora em `bestiario.astro:783` (`const base = import.meta.env`);
   · aponta a 55, e o uso mora em `mesas.astro:78` (`const base = import.meta.env`).
 
   **Nenhuma das três é falso verde** · as três caem como envelhecidas, que é o portão funcionando.
