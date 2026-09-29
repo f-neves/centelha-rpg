@@ -41,7 +41,7 @@ export async function carregarLib() {
         export { resumoCombatePC } from './src/lib/combate-resumo';
         export { velocidadeDaArma, classeDeTempo, armaDoCatalogo } from './src/lib/combate-tempo';
         export { tierDe, somarCondicoes, elementosCombate } from './src/lib/mesa-core';
-        export { deslocamento, limiteDaMorte } from './src/lib/calc';
+        export { deslocamento, limiteDaMorte, mana } from './src/lib/calc';
         export { semear, semeadoDe, semeado } from './src/lib/acaso';
         export { rolarExpr } from './src/lib/rolagem';
         export { PERFIL_CORRENTE } from './src/lib/bandeiras';

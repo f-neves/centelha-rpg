@@ -66,7 +66,7 @@ export function blocoPersona(persona, centelha) {
       // portão de nível ≥ Centelha dizem outra coisa fora daqui, e o próprio
       // despacho da Fase 5 pede para registrar isto como pendência).
       // LEVANTA QUANDO: o autor decidir o nível de Arte real do Pers. 3 na bancada.
-      return { persona, centelha, nivelArteProvisorio: centelha + 2, armaduraId: 'gambeson', escudoId: 'nenhum', proezas: prz };
+      return { persona, centelha, nivelArtePers3: centelha + 2, armaduraId: 'gambeson', escudoId: 'nenhum', proezas: prz };
     case 'pers4': {
       const { atributo, habilidade } = dividirSoma(SOMA_ATAQUE_4[centelha]);
       return { persona, centelha, atributo, habilidade, armaduraId: 'gambeson', escudoId: 'nenhum', proezas: prz };
