@@ -408,7 +408,10 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
     if (c.pv <= 0) { fim = 'criatura-caiu'; break; }
   }
   if (!fim) fim = 'censura';
-  return { fim, turnos: turno, venceuGrupo: fim === 'criatura-caiu', resolvida: fim !== 'censura' };
+  return {
+    fim, turnos: turno, venceuGrupo: fim === 'criatura-caiu', resolvida: fim !== 'censura',
+    caidasNoFim: caidas(), pvCriaturaNoFim: c.pv,
+  };
 }
 
 export function wilson(k, n, z = 1.959964) {

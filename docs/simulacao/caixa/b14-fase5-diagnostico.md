@@ -161,3 +161,98 @@ Não decidi nada disto sozinha, conforme pedido:
    aqui até uma rodada própria de dados).
 
 Não rodei mais nenhuma âncora depois disto, como pedido.
+
+## 30/09/2026, segunda rodada · decisão do autor: Esquiva 0 é fiel à fonte
+
+O autor decidiu: Esquiva 0 no bicho grande não é bug nem limite da bancada, é o jogo real
+(no PF1 a armadura natural protege via Absorção, não via Defesa). O desafio destes bichos
+tem de vir de PV, Absorção e dano devolvido. Três pedidos, sem mudar ficha, isolados um de
+cada vez.
+
+### 1 · filhote vs grupo Centelha 3, com Absorção já aplicada
+
+| | dano médio/turno | PV | turnos até cair (estimado) |
+|---|---|---|---|
+| Grupo (Pers.1+Pers.2 golpeando) | 13,0 (6,5+6,5) | 40 (do filhote) | ~3,1 |
+| Filhote (só no engajado) | 0,4 | 34 (do Pers.1) | ~94 |
+
+Bateria de 400 batalhas completas (não só a estimativa por golpe): **3,54 turnos médios
+até resolver, 0,00 personas caídas em média, e ZERO das 400 batalhas teve qualquer persona
+caída no fim.** O grupo nunca chega nem perto de perder 1 dos 4, quanto mais 2.
+
+### 2 · três variações isoladas (uma de cada vez), curva de Centelha 0 a 6 (n=150/célula)
+
+| variação | C0 | C1 | C2 | C3 | C4 | C5 | C6 |
+|---|---|---|---|---|---|---|---|
+| (base, ficha real) | 77% | 100% | 100% | 100% | 100% | 100% | 100% |
+| PV ×1,5 (60) | 6% | 100% | 100% | 100% | 100% | 100% | 100% |
+| PV ×2 (80) | 0% | 97% | 100% | 100% | 100% | 100% | 100% |
+| Absorção +3 | 0% | 88% | 100% | 100% | 100% | 100% | 100% |
+| Absorção +6 | 0% | 3% | 100% | 100% | 100% | 100% | 100% |
+| Mordida +1d6 (2d6+10) | 53% | 100% | 100% | 100% | 100% | 100% | 100% |
+| Sopro, área 9 m (em vez de só engajado) | 77% | 100% | 100% | 100% | 100% | 100% | 100% |
+
+**Nenhuma das três variações pedidas chega perto do desafio 3 ou 4.** A melhor
+(Absorção +6) empurra o desafio de C1 para C2, e nada mais. Fui além do pedido para medir
+o TAMANHO da alavanca que faltaria: testei Absorção até +20 (mais de triplicar a Absorção
+original) e PV até ×8 (320 PV): **nenhuma das duas, sozinha, passa de C2.**
+
+| variação extra | C0 | C1 | C2 | C3 |
+|---|---|---|---|---|
+| Absorção +10 / +15 / +20 | 0% | 3% | 100% | 100% |
+| PV ×4 (160) | 0% | 0% | 100% | 100% |
+| PV ×8 (320) | 0% | 0% | 79% | 100% |
+
+(O "sopro com área real" não mudou nada porque 9 m fica abaixo do limiar de 10 m da regra
+de área; refiz o teste FORÇANDO a área a atingir os 4 personagens mesmo com 9 m, só para
+medir o teto do que a área pode valer: resultado idêntico ao da tabela, porque o sopro
+continua sendo um só disparo a cada ~4 turnos, e o corpo a corpo do grupo já resolve a
+batalha antes disso pesar.)
+
+**Leitura dos números:** em C2 e acima, o grupo sozinho já teria dano suficiente para
+vencer batalhas com um filhote de PV/Absorção MUITO acima do que qualquer ajuste razoável
+de ficha daria (320 PV é 8× o real). Isso não é mais sobre o filhote: é sobre o quanto a
+ofensiva do PRÓPRIO GRUPO escala rápido com a Centelha (ver a Defesa do Pers.1 crescendo
+de 16 em C0 a 43 em C6, já levantado na rodada anterior: o ataque cresce no mesmo ritmo).
+
+### 3 · razão PV/dano · fonte (PF1) vs Centelha
+
+**Lado Centelha** (dado exato, direto da ficha e do `monsters-mesa.json`; PV do Pers.1 é
+fixo em 34 em toda Centelha, pela convenção da bancada):
+
+| criatura | Centelha | PV criatura | PV/PV(Pers.1) | dano médio/rodada | dano/PV(Pers.1) |
+|---|---|---|---|---|---|
+| Filhote | 4 | 40 | 1,18 | 13,5 | 0,40 |
+| Jovem | 5 | 54 | 1,59 | 21,0 | 0,62 |
+| Adulto | 6 | 80 | 2,35 | 27,5 | 0,81 |
+| Ancião | 7 | 95 | 2,79 | 31,5 | 0,93 |
+
+**Lado fonte (PF1): não tenho os números confiáveis para completar esta coluna.** Não
+tenho acesso a um livro de regras PF1 nesta sessão, e não vou inventar PV/dano de dragão
+"de memória" travestido de dado: seria exatamente o tipo de número fabricado que este
+projeto pede para nunca assumir. O que dá para calcular sem chutar é o lado "guerreiro":
+PV de um guerreiro PF1 de nível = CR, pela fórmula padrão de HP de Fighter (d10, +2 de
+Vigor, máximo no nível 1): `10 + 2 + (nível−1) × 7,5`.
+
+| criatura | CR (fonte.cr) | PV guerreiro equivalente (fórmula) |
+|---|---|---|
+| Filhote | 6 | ~50 |
+| Jovem | 10 | ~80 |
+| Adulto | 14 | ~110 |
+| Ancião | 19 | ~147 |
+
+Isto é só a fórmula do guerreiro; falta o PV e o dano por rodada do PRÓPRIO DRAGÃO na
+fonte para fechar a razão pedida. Se isto for necessário para a decisão, peço que o autor
+(que já tem o PF1 Bestiary aberto para o resto desta Fase 4) passe os quatro números de PV
+e dano por rodada da fonte, e eu completo a tabela e as razões na hora.
+
+## O que fica para o Arquiteto/autor decidir, nesta segunda rodada
+
+1. Confirmado pelos três testes: **nenhuma correção isolada e razoável em PV, Absorção ou
+   dano do filhote chega ao desafio 3-4**; a causa dominante é o quanto a ofensiva do
+   PRÓPRIO GRUPO de referência escala com a Centelha, não uma característica do filhote.
+2. Falta decidir se querem os números de PV/dano do PF1 real para fechar a razão do item 3
+   (eu completo assim que tiver), ou se a comparação só com o "guerreiro equivalente" já
+   basta.
+
+Não ajustei nada, não rodei mais nenhuma âncora. Parei aqui, como pedido.
