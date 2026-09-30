@@ -645,3 +645,147 @@ Não estendi o teto. Não mudei ficha nem regra. Corrigi publicamente o erro da 
 anterior (Tarrasca não tem censura; só o Diabo do Fosso tem, e é real). A política "nunca
 considerar o ataque básico" fica anotada como possível ajuste futuro da bancada, sem
 decidir nada sozinha. Parei aqui, como pedido.
+
+## 30/09/2026, sexta rodada · escolha por dano esperado, matriz final, FECHA A FASE 5
+
+### 1 · a política de escolha corrigida
+
+Antes: a criatura sempre preferia QUALQUER poder com `base` sobre o ataque básico
+(corrigido na rodada 4 pra pegar o de maior nível, não o primeiro do array). Agora: em
+cada turno, a criatura compara o **dano esperado** de TODA opção disponível (ataque
+básico, cada poder ofensivo, cada Arte ofensiva de caster) e usa a de maior valor. Dano
+esperado = chance de acerto × dano líquido médio (com o piso do raspão), somado sobre os
+alvos atingidos se for área, calculado por convolução exata dos dados (mesma conta das
+rodadas 4 e 5), não simulação nem aproximação. Poder de controle/apoio sem dano (Proteção,
+Cura-em-si) continua fora dessa comparação, seguindo o roteiro já combinado.
+Implementado em `scripts/sim/desafio-bancada.mjs` (`escolherAcaoCriatura`, `pmfDado`,
+`danoEsperadoContra`, `danoEsperadoOpcao`).
+
+**Efeito: a censura sumiu por completo.** Rodei a matriz inteira de novo (200
+batalhas/Centelha/célula, todas as 36 células): **nenhuma célula ficou em censura desta
+vez** (zero "estagnado" em toda a tabela). O Diabo do Fosso, que antes travava com censura
+total em quase toda Centelha, agora resolve em poucos turnos (confirmado: C0/A1B1, antes
+100% censura, agora resolve em 4 turnos, grupo perde). Isto sustenta a leitura da rodada
+5: a censura real (só no Diabo do Fosso) era causada pela política de escolha, não por uma
+luta genuinamente longa.
+
+**Vários "desafio" mudaram**, quase sempre pra CIMA (criatura ficou mais difícil, porque
+agora usa sua melhor opção de verdade):
+
+| âncora | célula | desafio ANTES (rodada 4) | desafio AGORA |
+|---|---|---|---|
+| Filhote | A1B1/A2B1 | 1 | **2** |
+| | A1B2/A2B2 | 1 | **2** |
+| Jovem | A1B1/A2B1 | 2 | **4** |
+| | A1B2/A2B2 | 2 | **5** |
+| Adulto | A1B1 | 5 | **6** |
+| | A1B2 | 5 | **não alcançado até C6** |
+| | A2B1 | 5 | **não alcançado até C6** |
+| | A2B2 | 6 | **não alcançado até C6** |
+| Ancião, Balor, Diabo do Fosso, Solar, Kraken, Tarrasca | todas | não alcançado até C6 | não alcançado até C6 (sem mudança: já eram as âncoras mais fortes, a política nova não tinha onde melhorar mais) |
+
+### 2 · a matriz final × a faixa do despacho original
+
+A régua do grupo só vai até Centelha 6 (é o teto da tabela de soma do despacho). Para as
+âncoras cuja faixa esperada é **acima de 6** (Ancião=9, Balor/Diabo do Fosso/Solar/
+Kraken=6-8, Tarrasca=10), "não alcançado até C6" é **consistente** com a faixa esperada,
+mas **não a confirma**: precisaria da fórmula de escala além de Centelha 6 (`6 +
+log_k(N/4)`, grupo de N personagens de Centelha 6), que esta bancada não implementa (não
+estava no pedido de nenhuma das seis rodadas). Marco essas seis como **não determinável
+nesta régua**, não como "passou" nem "falhou".
+
+| âncora | Centelha | faixa do despacho | A1B1 | A1B2 | A2B1 | A2B2 |
+|---|---|---|---|---|---|---|
+| Filhote | 4 | 3 ou 4 | 2 ✗ | 2 ✗ | 2 ✗ | 2 ✗ |
+| Jovem | 5 | 5 ou 6 | 4 ✗ | **5 ✓** | 4 ✗ | **5 ✓** |
+| Adulto | 6 | 6 a 8 | **6 ✓** | não det.¹ | não det.¹ | não det.¹ |
+| Ancião | 7 | =9 | não determinável (régua para em C6) |
+| Balor | 9 | 6 a 8 | não determinável (régua para em C6) |
+| Diabo do Fosso | 9 | 6 a 8 | não determinável (régua para em C6) |
+| Solar | 9 | 6 a 8 | não determinável (régua para em C6) |
+| Kraken | 7 | 6 a 8 | não determinável (régua para em C6) |
+| Tarrasca | 10 | =10 | não determinável (régua para em C6) |
+
+¹ "Não alcançado até C6" pra uma âncora cuja faixa esperada É 6-8: o desafio pode estar
+em 7 ou 8 (dentro da faixa, sem eu conseguir confirmar) ou genuinamente acima da régua.
+Marquei "não determinável" porque a tabela aqui não distingue os dois casos, não porque o
+teste tenha "passado" ou "falhado".
+
+### 2b · quantas das 9 âncoras caem na faixa, por célula
+
+Só 3 das 9 âncoras têm faixa esperada dentro de 0-6 (as únicas onde dá pra dizer
+passou/falhou de verdade: Filhote, Jovem, Adulto). Das outras 6, nenhuma célula permite
+dizer se passou.
+
+| célula | das 3 determináveis, quantas passam |
+|---|---|
+| A1B1 | 1 de 3 (só Adulto) |
+| A1B2 | 1 de 3 (só Jovem) |
+| A2B1 | 0 de 3 |
+| A2B2 | 1 de 3 (só Jovem) |
+
+**Nenhuma célula acerta as 3.** O Filhote fica sempre abaixo da faixa (desafio 2, esperado
+3-4) em toda célula; nem A2 (tirar o teto da Habilidade) nem B2 (tirar Proezas/Vontade do
+Pers.1) resolvem isso sozinhos, confirmando o achado da rodada 4: o gargalo é a Defesa do
+Pers.1 crescendo rápido (16→33→43) contra qualquer criatura, não uma característica
+isolada do bestiário.
+
+### 3 · Defesa do Pers.1, parcela por parcela (C0/C3/C6): confere com as rodadas 4 e 5
+
+Fórmula: `(Destreza+Esquiva)×2 + 2×mín(Centelha,Esquiva) − penalidade de armadura/escudo
+(malha+broquel) + Proezas`.
+
+| Centelha | (Des+Esq)×2 | 2×mín(C,Esq) | − penalidade | Proezas | **Defesa final** |
+|---|---|---|---|---|---|
+| 0 | 18 | 0 | −2 | +0 | **16** |
+| 3 | 24 | 6 | −2 | +5 | **33** |
+| 6 | 24 | 12 | −2 | +9 | **43** |
+
+### 4 · lacunas corrigidas nesta fase (bancada, não ficha nem regra)
+
+1. `tipoDano` do ataque básico sempre caindo em "impacto" (parser lia só o sufixo de PC).
+2. `resolverGolpe`/`danoNoAlvo` sem checar fraqueza/resistência/imunidade do dano físico
+   das personas contra a criatura (elemento vinha `null` sempre).
+3. Poder com `usos.periodo:'ticks'`+`recarga` virando teto vitalício (1 uso na batalha
+   inteira) em vez de reiniciar a cada recarga.
+4. "Dano e projéteis" (poder natural/Arte ofensiva) usando o bolo de ataque físico da
+   criatura, em vez da regra escrita (Dificuldade fixa = nível×4 contra a Defesa).
+5. Vontade defensiva (+4 em Grave) calculada mas nunca aplicada (dead code).
+6. Poder-gatilho-de-morte (`morte-explosiva`) entrando no pool de ataques ativos.
+7. Poder de utilidade (`resiste:'nenhum'`: teleporte, convocar, reproduzir Arte,
+   regenerar) rolando dano que a ficha não descreve.
+8. Escolha de ação sempre preferindo poder sobre básico, depois só por nível; agora por
+   dano esperado de verdade (item 1 desta rodada), o que eliminou toda censura observada.
+9. Área dos 4 sopros de dragão gravada (`"cone de N m"`, valores já existentes em prosa
+   na própria ficha, não recalculados).
+
+### 5 · lacunas que ficam abertas (não mexidas, fora do escopo de cada rodada)
+
+- **Habilidade de Briga travada em 5** em quase toda âncora forte (gerador antigo): não é
+  bug de bancada (decisão do autor, rodada 4); vira variante A2 de teste, não correção.
+- **Reserva de Vontade / nível de Arte do Pers. 3**: ainda a suposição provisória
+  (Centelha+2), sem número real do autor.
+- **Desafio acima de Centelha 6** (6 das 9 âncoras): a fórmula `6 + log_k(N/4)` do
+  despacho original não está implementada; sem ela, não dá pra confirmar nem negar a
+  faixa esperada dessas seis.
+- **"Caído" não reverte** (decisão do autor, rodada 4: fica assim, deixa o desafio medido
+  mais pessimista que com estabilização/cura de verdade revertendo queda).
+- **Controle de Arte (Fascinação/Morte que domina ou paralisa)** ainda vira dano puro, não
+  efeito de controle (suposição 4, nunca revisada).
+- **Dano em área do Pers.3 (Centelha 3+)** não modelado (suposição 5, despacho não fixa
+  qual Arte ela usaria).
+- **Custo de Mana aproximado** em 1/nível (2 na Cura), não o `custoDe` inteiro com escolha
+  de parâmetro por parâmetro (suposição 3).
+- **Teto de 60 turnos**: preocupação da rodada 4 (achava que podia ser curto demais);
+  ficou sem sentido depois do item 1 desta rodada (zero censura na matriz final), mas não
+  testei explicitamente um teto maior pra confirmar que 60 é suficiente em todo caso.
+
+## É seguro fechar a Fase 5?
+
+Os seis passos pedidos nesta rodada estão feitos: política de escolha corrigida (item 1),
+matriz completa rerrodada (item 2), tabela de 9 âncoras × 4 células com a faixa do
+despacho e se passou (item 2, 2b), Defesa do Pers.1 decomposta (item 3), lacunas
+corrigidas e abertas listadas (item 4, 5). Não mudei ficha nem regra em nenhum passo desta
+rodada. `validate`/`tsc`/`build`/`espelho` verdes; confirmo CI do commit antes de
+considerar fechado de verdade. Por pedido do Arquiteto, NÃO sigo para as 309 criaturas
+nesta rodada.

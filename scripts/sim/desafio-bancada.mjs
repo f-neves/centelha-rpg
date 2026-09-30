@@ -273,26 +273,105 @@ function alvoDaCriatura(c, personas, engajadaId) {
   return personas.find((p) => p.id === engajadaId) || personas.find((p) => !p.caido);
 }
 
+// ============================================================= dano esperado (exato)
+//
+// CORRIGIDO em 30/09/2026 (decisão do Arquiteto, item 1): a escolha de ação passa a
+// comparar o DANO ESPERADO de cada opção (ataque básico e cada poder/Arte ofensiva
+// disponível), não mais "sempre prefere poder" nem "poder de maior nível". Achado
+// investigando o Diabo do Fosso: o ataque básico dele acertaria 99,99% do Pers.1 C0 e
+// causaria 22 de dano médio, mas a escolha antiga nunca considerava essa opção porque
+// sempre preferia QUALQUER poder com `base`. Dano esperado = chance de acerto × dano
+// líquido médio (com o piso do raspão), somado sobre os alvos atingidos se for área.
+// Cálculo EXATO por convolução dos dados (mesma conta do `desafio-diagnostico.mjs`), não
+// aproximação: é barato (pools de até ~13d6) e evita viés de amostra pequena na escolha.
+function pmfDado(n) {
+  let pmf = new Map([[0, 1]]);
+  for (let i = 0; i < n; i++) {
+    const novo = new Map();
+    for (const [s, p] of pmf) for (let f = 1; f <= 6; f++) {
+      const ns = s + f; novo.set(ns, (novo.get(ns) || 0) + p / 6);
+    }
+    pmf = novo;
+  }
+  return pmf;
+}
+const PMF_CACHE = new Map();
+function pmfDadoCache(n) {
+  if (!PMF_CACHE.has(n)) PMF_CACHE.set(n, pmfDado(n));
+  return PMF_CACHE.get(n);
+}
+function parseExprSimples(expr) {
+  const m = String(expr).match(/^(\d+)d6(\+2)?\s*(.*)$/);
+  if (!m) return { n: 0, flat: 0 };
+  const n = Number(m[1]);
+  let flat = m[2] ? 2 : 0;
+  for (const mm of m[3].matchAll(/([+−-])\s*(\d+)/g)) flat += (mm[1] === '+' ? 1 : -1) * Number(mm[2]);
+  return { n, flat };
+}
+/** Dano líquido médio por golpe (com acerto/raspão/erro), contra UM alvo. */
+function danoEsperadoContra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano) {
+  const margemQA = atacanteQa.qaArmaBonus + (alvo.qaArmaduraBonus ?? 0);
+  const danoQA = Math.max(0, atacanteQa.qaArmaDano - (alvo.qaArmaduraReducao ?? 0) + atacanteQa.centelha - alvo.centelha);
+  const at = parseExprSimples(ataqueExpr);
+  const pmfAtaque = pmfDadoCache(at.n);
+  let pAcerto = 0, pRaspao = 0;
+  for (const [soma6, p] of pmfAtaque) {
+    const total = soma6 + at.flat;
+    const falta = alvo.defesaBase - total + 1;
+    if (falta <= 0) pAcerto += p;
+    else if (falta <= margemQA) pRaspao += p;
+  }
+  const dn = parseExprSimples(danoExpr);
+  const pmfDano = pmfDadoCache(dn.n);
+  const soak = alvo.soak[tipoDano] ?? 0;
+  let danoLiquidoSeAcerto = 0;
+  for (const [somaD, p] of pmfDano) {
+    const bruto = Math.max(0, somaD + dn.flat);
+    danoLiquidoSeAcerto += p * Math.max(danoQA, bruto - soak, 0);
+  }
+  return pAcerto * danoLiquidoSeAcerto + pRaspao * Math.max(0, danoQA);
+}
+/** Dano esperado somado sobre os alvos atingidos (área ≥10m atinge todos os vivos). */
+function danoEsperadoOpcao(ataqueExpr, danoExpr, atacanteQa, alvos, tipoDano) {
+  return alvos.reduce((s, alvo) => s + danoEsperadoContra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano), 0);
+}
+
 function escolherAcaoCriatura(c, turno, personas, engajadaId) {
   if (turno === 1 && c.arte.protecao && !c.protecaoUsada) return { tipo: 'protecao' };
   if (c.pv / c.pvMax < 0.3 && !c.curaUsada && c.arte.cura) return { tipo: 'cura-si' };
-  // Entre os poderes disponíveis, prefere o de MAIOR nível (proxy de força), não o
-  // primeiro da lista. Achado rodando a matriz (30/09/2026): o Diabo do Fosso tem
-  // "doença" (nível 3, `periodo:'golpe'`, sempre disponível) ANTES de "labareda"
-  // (nível 6, só 3 usos/dia) no array; `.find()` sempre pegava a fraca e nunca soltava
-  // a forte, porque a fraca nunca ficava indisponível. Isto é política de escolha da
-  // bancada (não regra nova): uma criatura "inteligente" preferiria o golpe mais forte
-  // disponível.
-  const poderesDisponiveis = c.poderes.filter((p) => p.base && poderDisponivel(c, p, turno));
-  const poder = poderesDisponiveis.sort((a, b) => (b.base?.nivel || 0) - (a.base?.nivel || 0))[0];
-  if (poder) return { tipo: 'poder', poder };
+
+  const alvoUnico = [alvoDaCriatura(c, personas, engajadaId)].filter(Boolean);
+  const alvosVivos = personas.filter((p) => !p.caido);
+  const qaCriatura = { qaArmaBonus: c.qaArmaBonus, qaArmaDano: c.qaArmaDano, centelha: c.centelha };
+
+  const opcoes = [];
+  opcoes.push({ tipo: 'basico', dano: danoEsperadoOpcao(c.ataque, c.dano, qaCriatura, alvoUnico, c.tipoDano) });
+
+  for (const p of c.poderes) {
+    if (!p.base || p.resiste === 'nenhum' || !poderDisponivel(c, p, turno)) continue;
+    const nv = poderNivel(p);
+    if (!nv) continue;
+    const area = areaMetros(p);
+    const alvos = (area != null && area >= 10) ? alvosVivos : alvoUnico;
+    const dificuldadeFixa = nv.nivel * 4;
+    const dano = danoEsperadoOpcao(`0d6 +${dificuldadeFixa}`, `${nv.dados}d6`, { ...qaCriatura, qaArmaBonus: 0, qaArmaDano: 0 }, alvos, c.tipoDano);
+    opcoes.push({ tipo: 'poder', poder: p, dano });
+  }
+
   if (c.caster && c.manaRestante > 0) {
-    const ofensivas = Object.entries(c.arte).filter(([id]) => id !== 'protecao' && id !== 'cura');
-    if (ofensivas.length) {
-      const [arteId, nivel] = ofensivas.reduce((m, x) => (x[1] > m[1] ? x : m));
-      if (nivel <= c.manaRestante) return { tipo: 'arte', arteId, nivel };
+    for (const [arteId, nivel] of Object.entries(c.arte)) {
+      if (arteId === 'protecao' || arteId === 'cura' || nivel > c.manaRestante) continue;
+      const arte = L0.ARTE[arteId];
+      const dados = nivel * (arte?.grid?.dadoPorNivel || 1);
+      const dificuldadeFixa = nivel * 4;
+      const dano = danoEsperadoOpcao(`0d6 +${dificuldadeFixa}`, `${dados}d6`, { ...qaCriatura, qaArmaBonus: 0, qaArmaDano: 0 }, alvoUnico, c.tipoDano);
+      opcoes.push({ tipo: 'arte', arteId, nivel, dano });
     }
   }
+
+  const melhor = opcoes.reduce((m, o) => (o.dano > m.dano ? o : m), opcoes[0]);
+  if (melhor.tipo === 'poder') { return { tipo: 'poder', poder: melhor.poder }; }
+  if (melhor.tipo === 'arte') { return { tipo: 'arte', arteId: melhor.arteId, nivel: melhor.nivel }; }
   return { tipo: 'basico' };
 }
 
