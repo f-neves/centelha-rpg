@@ -547,3 +547,101 @@ correção isolada resolve"; os números desta e da rodada anterior (rampa de ac
 Habilidade de Briga travada em 5, Proezas valendo dezenas de % de acerto, e agora a matriz
 A/B mostrando que nem tirar o teto da Habilidade nem tirar Proezas/Vontade do Pers.1
 resolvem sozinhos) são material novo para essa conversa. Parei aqui, como pedido.
+
+## 30/09/2026, quinta rodada · a censura contra a Tarrasca era leitura errada minha
+
+**Correção antes de tudo:** a célula Tarrasca×C0×A1B1 NUNCA esteve em censura. Reli a
+minha própria tabela da rodada anterior: ela diz "não alcançado até C6" para a Tarrasca em
+toda célula, e essa frase significa "o grupo nunca vence", não "a luta não resolve". A
+curva bruta (que eu tinha, mas não colei) mostra `q2.00` em toda Centelha da Tarrasca:
+**resolvida, grupo perde, 2 caídos, toda vez.** Só o Diabo do Fosso teve células genuínas
+em censura (`n/d`) na matriz. Eu misturei os dois na mensagem de chat da rodada anterior
+("boa parte das células... Tarrasca... censura total"), e isso é o que mandou a
+investigação atrás de uma luta longa que não existe. Peço desculpa pelo ruído; os três
+itens pedidos, com o par certo (Tarrasca não tem o problema; o Diabo do Fosso tem).
+
+### 1 · os 10 primeiros golpes, Tarrasca×grupo C0, célula A1B1
+
+**Tarrasca ataca Pers.1** (pool `10d6+2 +10`, dano `4d6 +26 perfurante`; Defesa do Pers.1
+em C0 = 16; Absorção dele em perfuração = 1):
+
+| golpe | soma | defesa | veredito | dano bruto | absorção | dano líquido |
+|---|---|---|---|---|---|---|
+| 1 | 52 | 16 | acerto | 47 | 1 | 46 |
+| 2 | 52 | 16 | acerto | 34 | 1 | 33 |
+| 3 | 42 | 16 | acerto | 41 | 1 | 40 |
+| 4 | 50 | 16 | acerto | 40 | 1 | 39 |
+| 5 | 42 | 16 | acerto | 46 | 1 | 45 |
+| 6 | 44 | 16 | acerto | 40 | 1 | 39 |
+| 7 | 57 | 16 | acerto | 44 | 1 | 43 |
+| 8 | 37 | 16 | acerto | 45 | 1 | 44 |
+| 9 | 48 | 16 | acerto | 35 | 1 | 34 |
+| 10 | 49 | 16 | acerto | 46 | 1 | 45 |
+
+Todo golpe acerta e mata (34 PV do Pers.1, dano líquido sempre ≥33): a Tarrasca fere o
+grupo, rápido. Não é isto que trava a luta.
+
+**Pers.1 ataca a Tarrasca** (pool `4d6+2 −1`, dano `1d6 +5`; Defesa da Tarrasca = 4;
+Absorção dela em corte = 27):
+
+| golpe | soma | defesa | veredito | dano bruto | absorção | dano líquido |
+|---|---|---|---|---|---|---|
+| 1 | 18 | 4 | acerto | 8 | 8 | **0** |
+| 2 | 16 | 4 | acerto | 7 | 7 | **0** |
+| 3 | 8 | 4 | acerto | 11 | 11 | **0** |
+| 4 | 11 | 4 | acerto | 6 | 6 | **0** |
+| 5 | 15 | 4 | acerto | 8 | 8 | **0** |
+| 6 | 12 | 4 | acerto | 11 | 11 | **0** |
+| 7 | 15 | 4 | acerto | 11 | 11 | **0** |
+| 8 | 14 | 4 | acerto | 10 | 10 | **0** |
+| 9 | 11 | 4 | acerto | 6 | 6 | **0** |
+| 10 | 15 | 4 | acerto | 10 | 10 | **0** |
+
+**O Pers.1 acerta TODO golpe (Defesa 4 é trivial) e nunca causa dano nenhum**, porque a
+Absorção da Tarrasca em corte (27) é maior que qualquer coisa que o dano dele (`1d6+5`,
+teto 11) consiga rolar. Isto não é "nenhum lado fere o outro": é UM lado ferindo o outro
+rápido (a Tarrasca) e o outro lado acertando sem nunca perfurar a Absorção. A luta resolve
+em poucos turnos, com a Tarrasca vencendo.
+
+### 2 · chance de acerto e dano médio EXATOS (convolução dos dados, não simulação)
+
+| direção | Centelha do grupo | acerto | raspão | dano líq. médio SE acerto | dano médio/golpe (com raspão) |
+|---|---|---|---|---|---|
+| Tarrasca → Pers.1 | 0 | 100,0% | 0,0% | 39,0 | 39,0 |
+| Pers.1 → Tarrasca | 0 | 100,0% | 0,0% | **0,0** | **0,0** |
+| Tarrasca → Pers.1 | 6 | 73,9% | 10,5% | 33,0 | 24,5 |
+| Pers.1 → Tarrasca | 6 | 100,0% | 0,0% | **0,0** | **0,0** |
+| Balor → Pers.1 | 0 | 100,0% | 0,0% | 21,0 | 21,0 |
+| Pers.1 → Balor | 0 | 0,1% | 1,1% | 0,0 | ~0,0 |
+| Balor → Pers.1 | 6 | 13,0% | 10,8% | 15,0 | 1,9 |
+| Pers.1 → Balor | 6 | 100,0% | 0,0% | 1,0 | 1,0 |
+
+### 3 · o cálculo bate com a simulação; não há acerto nem dano "perdido" no código
+
+Comparei cada número da tabela acima com a mesma conta rodada dentro do `resolverGolpe`
+de verdade (os 10 golpes do item 1 têm 100% de acerto e dano líquido 0 nos dois lados da
+Tarrasca, exatamente como a conta exata prevê). **Não achei divergência nenhuma entre
+calculado e observado em nenhum dos 8 pares.** O que existe, e é real, não bug:
+
+- **Tarrasca: não trava nada.** Resolve rápido, a Tarrasca vence. O "Pers.1 acerta sempre
+  e nunca fere" é uma curiosidade (Absorção 27 > teto do dano dele), mas não impede a luta
+  de terminar, porque a Tarrasca já mata o grupo antes de isso importar.
+- **Diabo do Fosso (a célula que REALMENTE tem censura na matriz) é outra causa,
+  confirmada com a mesma conta exata:** o ataque BÁSICO dele (`Golpe planar`) acerta
+  99,99% do Pers.1 C0 e causa 22,0 de dano médio (mataria rápido), **mas a criatura nunca
+  usa o básico**: minha escolha de ação sempre prefere QUALQUER poder com `base` sobre o
+  ataque básico, mesmo quando o básico seria mais forte. Com "Labareda" (nível 6,
+  Dificuldade 24, acerto garantido) limitada a 3 usos por dia, ela mata rápido nos 3
+  primeiros turnos e depois a criatura cai pra "Doença" (nível 3, Dificuldade 12 < Defesa
+  16, raramente conecta) pelos 57 turnos restantes, enquanto o Pers.1 C0 tem **0,0% de
+  chance exata** de acertar a Defesa 30 dele. Sobra 1 persona caída (não 2) em 60 turnos:
+  estagnado de verdade, não bug, mas **exposto por uma política de escolha que nunca
+  considera o ataque básico como alternativa**, o que não estava no escopo desta
+  investigação e não mudei.
+
+## Pendente desta rodada
+
+Não estendi o teto. Não mudei ficha nem regra. Corrigi publicamente o erro da rodada
+anterior (Tarrasca não tem censura; só o Diabo do Fosso tem, e é real). A política "nunca
+considerar o ataque básico" fica anotada como possível ajuste futuro da bancada, sem
+decidir nada sozinha. Parei aqui, como pedido.
