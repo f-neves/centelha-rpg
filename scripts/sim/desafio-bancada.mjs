@@ -13,10 +13,14 @@
 //      número fixo no despacho): Centelha + 2. Proposto ao Arquiteto em 29/09/2026, sem
 //      objeção até aqui.
 //      LEVANTA QUANDO: o Arquiteto/autor decidir o número real dos dois.
-//   2. O ataque de um poder natural ou de uma Arte ofensiva usa o MESMO bolo de acerto do
-//      ataque básico da criatura (não existe pool próprio gravado na ficha para poderes);
-//      só o dano muda, por `nivel × dadoPorNivel` da Arte-base (a régua padrão do
-//      catálogo, sem escolher parâmetro por parâmetro).
+//   2. CORRIGIDO em 30/09/2026 (decisão do Arquiteto, item 3): poder natural/Arte
+//      ofensiva de "dano e projéteis" NÃO usa mais o bolo de ataque físico da criatura.
+//      Usa a regra escrita (`regras.json → arcano.resistencia`): efeito não mirado, sem
+//      rolagem de conjuração, resolvido pela Dificuldade FIXA do Efeito (nível × 4)
+//      contra a Defesa passiva do alvo: a mesma `resolverGolpe`/quase-acerto de sempre,
+//      só com o "bolo" do atacante fixo (`0d6 + nível×4`) em vez de rolado. O dano em si
+//      continua por `nivel × dadoPorNivel` da Arte-base (a régua padrão do catálogo, sem
+//      escolher parâmetro por parâmetro: isto continua simplificação).
 //   3. Custo de Mana de toda conjuração desta bancada (Proteção, Cura em si mesma, Arte
 //      ofensiva de recarga): 1 Mana por nível (2 na Cura, como o resto do sistema já
 //      cobra). Não é o `custoDe` inteiro (que pede escolha de parâmetro a parâmetro);
@@ -24,13 +28,13 @@
 //   4. "Arte de Proteção" vira +2 de Defesa permanente na criatura (efeito numérico único
 //      já existente no sistema, análogo ao que a Arte de Proteção faz na mesa); Fascinação/
 //      Morte/outras Artes de controle (dominar, paralisar) NÃO são modeladas como controle
-//      nesta rodada, só como dano pela régua do item 2 — perdem o efeito de controle.
+//      nesta rodada, só como dano pela régua do item 2: perdem o efeito de controle.
 //   5. Pers. 3 "dano em área da Centelha 3 em diante" (política iv, a de menor prioridade)
 //      NÃO é modelado nesta rodada: o despacho não fixa qual Arte/Efeito ela usaria, e
 //      inventar um aqui seria regra de jogo nova. Fica pendência.
 //   6. Estabilizar não muda PV nem o estado "caído": a derrota do grupo já é definida por
 //      "2 dos 4 caídos" (não por morte), então estabilizar não altera o resultado desta
-//      bancada especificamente — a ação é registrada, mas sem efeito numérico aqui.
+//      bancada especificamente: a ação é registrada, mas sem efeito numérico aqui.
 //   7. Poder natural "passivo/contínuo" (aura permanente, ex.: Aura de fogo) não é
 //      modelado como ação discreta: sem um gatilho de turno claro no despacho, fica de
 //      fora, listado por criatura no relato.
@@ -305,26 +309,34 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
       c.pv = Math.min(c.pvMax, c.pv + (cura || 0));
       c.curaUsada = true; c.manaRestante -= (c.arte.cura || 1) * 2;
     } else {
-      let dados, elemento = null, area = null, tipoDano = c.tipoDano;
+      let dados, elemento = null, area = null, tipoDano = c.tipoDano, nivelUsado = null;
       if (acao.tipo === 'poder') {
         consumirPoder(c, acao.poder, turno);
         const nv = poderNivel(acao.poder);
         dados = nv ? nv.dados : null;
         elemento = nv?.arteId || null;
+        nivelUsado = nv?.nivel ?? null;
         area = areaMetros(acao.poder);
       } else if (acao.tipo === 'arte') {
         const arte = L.ARTE[acao.arteId];
         dados = acao.nivel * (arte?.grid?.dadoPorNivel || 1);
         elemento = acao.arteId;
+        nivelUsado = acao.nivel;
         c.manaRestante -= acao.nivel;
       }
       if (dados) {
+        // "Dano e projéteis" (regras.json → arcano.resistencia.tipos): não mirado, sem
+        // rolagem de conjuração: resolve pela Dificuldade FIXA do Efeito (nível × 4)
+        // contra a Defesa passiva do alvo, não pelo bolo de ataque da criatura (que é
+        // só para o ataque FÍSICO dela). Implementa a regra escrita, não uma política
+        // de bancada (decisão do Arquiteto, 30/09/2026, item 3).
+        const dificuldadeFixa = nivelUsado != null ? nivelUsado * 4 : 0;
         const alvos = (area != null && area >= 10) ? personas.filter((p) => !p.caido) : [alvoDaCriatura(c, personas, engajadaId)];
         for (const alvo of alvos) {
           if (!alvo) continue;
           const saida = rolarContraDefesa(L, {
-            ataqueExpr: c.ataque, danoExpr: `${dados}d6`, ajusteFlat: 0, ajusteDados: 0,
-            qaArmaBonus: c.qaArmaBonus, qaArmaDano: c.qaArmaDano, centelha: c.centelha, tipoDano,
+            ataqueExpr: '0d6', danoExpr: `${dados}d6`, ajusteFlat: dificuldadeFixa, ajusteDados: 0,
+            qaArmaBonus: 0, qaArmaDano: 0, centelha: c.centelha, tipoDano,
           }, {
             defesaBase: alvo.defesaBase,
             soak: alvo.soak, pv: alvo.pv, pvMax: alvo.pvMax,
@@ -388,7 +400,7 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
         qaArmaduraBonus: 0, qaArmaduraReducao: 0, centelha: c.centelha,
       }, fonte);
       let liquido = saida.danoLiquido;
-      liquido = danoElementalNoAlvo(L, liquido, null, c).liquido;
+      liquido = danoElementalNoAlvo(L, liquido, p.tipoDano, c).liquido;
       c.pv = Math.max(0, c.pv - liquido);
       if (defesaBonus) { /* defesaBonus só valeria contra o golpe da criatura NO PRÓXIMO turno; aproximação: não reaplicado retroativamente. */ }
     }
@@ -422,4 +434,4 @@ export function desafioDe(id, reps, semente) {
   return { curva, desafio: acha ? acha.centelha : null };
 }
 
-export { carregarCriatura, L0 };
+export { carregarCriatura, grupoCombatentes, L0 };
