@@ -128,6 +128,7 @@ function combatentePersona(persona, bloco, somaPers12) {
     id: persona, nome: persona, tipo: 'persona',
     pv: BASE_PV, pvMax: BASE_PV,
     defesaBase: r.defesa + (bloco.proezas?.defesa || 0),
+    proezasDefesaAplicada: bloco.proezas?.defesa || 0,
     soak: r.soak,
     ataque: r.ataque, dano: r.dano,
     tipoDano: tipoDaExpressao(r.dano) || 'impacto',
@@ -183,11 +184,49 @@ function carregarCriatura(id) {
     caster, arte: caster ? (ficha.arte || {}) : {},
     manaMax: caster ? L0.mana({ centelha: mesa.centelha, vontade: mesa.vontade }) : 0,
     manaRestante: caster ? L0.mana({ centelha: mesa.centelha, vontade: mesa.vontade }) : 0,
-    poderes: (ficha.poderes || []).filter((p) => p.tipo === 'natural' && p.usos.periodo !== 'passivo'),
+    // "passivo" já fora (aura contínua, não é ação de turno). Dois achados rodando a
+    // matriz das 9 âncoras (30/09/2026):
+    //  1. `morte-explosiva` (Balor) tem `base` (entrava no pool de ataques ativos) mas o
+    //     `efeito` é um GATILHO DE MORTE ("ao cair a 0 PV..."), não algo que a criatura
+    //     escolhe usar. Sem exclusão, o Balor escolhia "morte-explosiva" todo turno
+    //     (nunca fica indisponível: `avontade` sem `quantidade` nem `recarga`) e NUNCA
+    //     atacava de verdade, travando a batalha em censura total.
+    //  2. Poder com `base` e `resiste: 'nenhum'` não é dano-e-projétil: é utilidade
+    //     (teleporte, convocar, reproduzir Arte, regenerar). Rolar Nd6 contra a Defesa
+    //     pra essas seria dano inventado onde a ficha não descreve dano nenhum. Afeta
+    //     Balor (teleporte-balor), Diabo do Fosso (convocar-diabos, feiticos-supremos),
+    //     Solar (convocar-anjos), Tarrasca (regeneracao-implacavel).
+    // Não modelo gatilho de morte nem essas utilidades (seria mecânica nova); só tiro as
+    // duas categorias do pool de ataque ativo.
+    poderes: (ficha.poderes || []).filter((p) => p.tipo === 'natural' && p.usos.periodo !== 'passivo'
+      && p.resiste !== 'nenhum' && !/ao cair a 0 ?PV/i.test(p.efeito || '')),
     voadoraOuDistancia,
     poderState: {}, // id -> { usosRestantes, cooldownTurnos }
     protecaoUsada: false, curaUsada: false, defesaExtra: 0,
   };
+}
+
+/**
+ * VARIANTE A2 (matriz pedida pelo Arquiteto, 30/09/2026): Habilidade de ataque =
+ * máx(Habilidade real, Centelha), só dentro da bancada, pra que `2×mín(Centelha,
+ * Habilidade)` vire `2×Centelha` sem o teto do gerador antigo (que travou a Briga em 5
+ * em quase toda âncora, item 2b do relato anterior). Recomputa o pool do zero pela MESMA
+ * fórmula do gerador (`rolagemAtaque`, `src/lib/bestia-editor.ts`), não uma aproximação:
+ * dados = ⌊(Atrib+HabEfetiva)/2⌋, flat = acerto-base + 2×mín(Centelha,HabEfetiva).
+ */
+function criaturaA2(id, criaturaBase) {
+  const ficha = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/bestiario', `${id}.json`), 'utf8'));
+  const a0 = ficha.ataques[0];
+  const atrib = ficha.attrs[a0.atrib] || 0;
+  const habReal = (ficha.skills && ficha.skills[a0.pericia]) ?? (ficha.skills2 && ficha.skills2[a0.pericia]) ?? 0;
+  const centelha = ficha.centelha;
+  const habEf = Math.max(habReal, centelha);
+  const soma = atrib + habEf;
+  const dados = Math.floor(soma / 2);
+  const mais = soma % 2 === 1 ? 2 : 0;
+  const acerto = (a0.acerto || 0) + 2 * Math.min(centelha, habEf);
+  const pool = `${dados}d6${mais ? '+2' : ''}${acerto ? ` +${acerto}` : ''}`;
+  return { ...criaturaBase, ataque: pool };
 }
 
 function poderNivel(p, L0arte) {
@@ -237,7 +276,15 @@ function alvoDaCriatura(c, personas, engajadaId) {
 function escolherAcaoCriatura(c, turno, personas, engajadaId) {
   if (turno === 1 && c.arte.protecao && !c.protecaoUsada) return { tipo: 'protecao' };
   if (c.pv / c.pvMax < 0.3 && !c.curaUsada && c.arte.cura) return { tipo: 'cura-si' };
-  const poder = c.poderes.find((p) => p.base && poderDisponivel(c, p, turno));
+  // Entre os poderes disponíveis, prefere o de MAIOR nível (proxy de força), não o
+  // primeiro da lista. Achado rodando a matriz (30/09/2026): o Diabo do Fosso tem
+  // "doença" (nível 3, `periodo:'golpe'`, sempre disponível) ANTES de "labareda"
+  // (nível 6, só 3 usos/dia) no array; `.find()` sempre pegava a fraca e nunca soltava
+  // a forte, porque a fraca nunca ficava indisponível. Isto é política de escolha da
+  // bancada (não regra nova): uma criatura "inteligente" preferiria o golpe mais forte
+  // disponível.
+  const poderesDisponiveis = c.poderes.filter((p) => p.base && poderDisponivel(c, p, turno));
+  const poder = poderesDisponiveis.sort((a, b) => (b.base?.nivel || 0) - (a.base?.nivel || 0))[0];
   if (poder) return { tipo: 'poder', poder };
   if (c.caster && c.manaRestante > 0) {
     const ofensivas = Object.entries(c.arte).filter(([id]) => id !== 'protecao' && id !== 'cura');
@@ -281,9 +328,31 @@ function danoElementalNoAlvo(L, danoBruto, elemento, alvo) {
   });
 }
 
+/**
+ * Vontade defensiva (política 4 do despacho): +4 na Defesa quando Grave, 1 por jogada,
+ * até a reserva acabar. CORRIGIDO em 30/09/2026: antes era calculado mas nunca aplicado
+ * (dead code, comentário antigo "não reaplicado retroativamente"). Agora aplica de
+ * verdade, no momento em que a CRIATURA mira no alvo, que é quando a Defesa dele importa.
+ */
+function vontadeDefesa(alvo) {
+  if (alvo.semVontadeDefesa || alvo.vontadeRestante <= 0) return 0;
+  const pct = Math.max(1, Math.floor((alvo.pv / alvo.pvMax) * 100));
+  const grave = REGRAS.ferimentos.find((f) => pct >= f.minPct && pct <= f.maxPct)?.estado === 'Grave';
+  if (!grave) return 0;
+  alvo.vontadeRestante -= 1;
+  return 4;
+}
+
 export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
   const c = { ...structuredClone(criaturaBase), poderState: {} };
   const personas = grupoCombatentes(centelha);
+  // VARIANTE B2 (matriz pedida pelo Arquiteto, 30/09/2026): Pers.1 sem Proezas de Defesa
+  // e sem o bônus reativo de Vontade na Defesa (Grave → +4). Só dentro da bancada, não
+  // muda ficha nem regra.
+  if (opts.semDefesaExtraPers1) {
+    const pers1 = personas.find((p) => p.id === 'pers1');
+    if (pers1) { pers1.defesaBase -= pers1.proezasDefesaAplicada || 0; pers1.semVontadeDefesa = true; }
+  }
   L.semear(L.semeadoDe(seed));
   const fonte = L.fonteRolada;
   let engajadaId = personas.find((p) => p.ataca)?.id; // pers1
@@ -342,11 +411,12 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
         const alvos = (area != null && area >= 10) ? personas.filter((p) => !p.caido) : [alvoDaCriatura(c, personas, engajadaId)];
         for (const alvo of alvos) {
           if (!alvo) continue;
+          const vDef = vontadeDefesa(alvo);
           const saida = rolarContraDefesa(L, {
             ataqueExpr: '0d6', danoExpr: `${dados}d6`, ajusteFlat: dificuldadeFixa, ajusteDados: 0,
             qaArmaBonus: 0, qaArmaDano: 0, centelha: c.centelha, tipoDano,
           }, {
-            defesaBase: alvo.defesaBase,
+            defesaBase: alvo.defesaBase + vDef,
             soak: alvo.soak, pv: alvo.pv, pvMax: alvo.pvMax,
             qaArmaduraBonus: alvo.qaArmaduraBonus, qaArmaduraReducao: alvo.qaArmaduraReducao, centelha: alvo.centelha,
           }, fonte);
@@ -359,11 +429,12 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
         // ataque básico
         const alvo = alvoDaCriatura(c, personas, engajadaId);
         if (alvo) {
+          const vDef = vontadeDefesa(alvo);
           const saida = rolarContraDefesa(L, {
             ataqueExpr: c.ataque, danoExpr: c.dano, ajusteFlat: 0, ajusteDados: 0,
             qaArmaBonus: c.qaArmaBonus, qaArmaDano: c.qaArmaDano, centelha: c.centelha, tipoDano: c.tipoDano,
           }, {
-            defesaBase: alvo.defesaBase, soak: alvo.soak, pv: alvo.pv, pvMax: alvo.pvMax,
+            defesaBase: alvo.defesaBase + vDef, soak: alvo.soak, pv: alvo.pv, pvMax: alvo.pvMax,
             qaArmaduraBonus: alvo.qaArmaduraBonus, qaArmaduraReducao: alvo.qaArmaduraReducao, centelha: alvo.centelha,
           }, fonte);
           alvo.pv = Math.max(0, alvo.pv - saida.danoLiquido);
@@ -393,13 +464,12 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
       }
       const atacaAgora = p.id === 'pers2' || p.id === engajadaId;
       if (!atacaAgora) continue;
-      const grave = REGRAS.ferimentos.find((f) => {
-        const pct = Math.max(1, Math.floor((p.pv / p.pvMax) * 100));
-        return pct >= f.minPct && pct <= f.maxPct;
-      })?.estado === 'Grave';
-      let ajusteDados = 0, defesaBonus = 0;
-      if (grave && p.vontadeRestante > 0) { defesaBonus = 4; p.vontadeRestante -= 1; }
-      else if (p.vontadeRestante > 0) { ajusteDados = 1; p.vontadeRestante -= 1; }
+      // Política 4: se Grave, reserva a Vontade pra Defesa (gasta de verdade em
+      // `vontadeDefesa()`, quando a criatura mirar nele); senão, gasta em +1d6 aqui.
+      const pctP = Math.max(1, Math.floor((p.pv / p.pvMax) * 100));
+      const graveAgora = REGRAS.ferimentos.find((f) => pctP >= f.minPct && pctP <= f.maxPct)?.estado === 'Grave';
+      let ajusteDados = 0;
+      if (!graveAgora && p.vontadeRestante > 0) { ajusteDados = 1; p.vontadeRestante -= 1; }
       const saida = rolarContraDefesa(L, {
         ataqueExpr: p.ataque, danoExpr: p.dano, ajusteFlat: p.ataqueBonusFlat, ajusteDados,
         qaArmaBonus: p.qaArmaBonus, qaArmaDano: p.qaArmaDano, centelha: p.centelha, tipoDano: p.tipoDano,
@@ -410,7 +480,6 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
       let liquido = saida.danoLiquido;
       liquido = danoElementalNoAlvo(L, liquido, p.tipoDano, c).liquido;
       c.pv = Math.max(0, c.pv - liquido);
-      if (defesaBonus) { /* defesaBonus só valeria contra o golpe da criatura NO PRÓXIMO turno; aproximação: não reaplicado retroativamente. */ }
     }
     if (caidas() >= 2) { fim = 'grupo-caiu'; break; }
     if (c.pv <= 0) { fim = 'criatura-caiu'; break; }
@@ -445,4 +514,4 @@ export function desafioDe(id, reps, semente) {
   return { curva, desafio: acha ? acha.centelha : null };
 }
 
-export { carregarCriatura, grupoCombatentes, L0 };
+export { carregarCriatura, criaturaA2, grupoCombatentes, L0 };

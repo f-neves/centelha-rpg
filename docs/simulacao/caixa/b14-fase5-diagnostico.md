@@ -427,9 +427,123 @@ da rodada anterior, com o bug de tipoDano) para **34,0%** [25,5%;43,7%]; C1 a C4
 "atinge os 4"), então a diferença em C0 é só o conserto do `tipoDano`. Continua confirmando
 o achado das rodadas anteriores: a causa não é o sopro.
 
+## 30/09/2026, quarta rodada · matriz 2x2 nas 9 âncoras
+
+Decisões do autor antes da matriz: 1) "caído" mantém como está (chegou a 0 PV uma vez
+conta pra sempre nesta bancada); registro aqui que isso deixa o desafio medido MAIS
+PESSIMISTA para o grupo do que seria com estabilização revertendo a queda de verdade.
+2) Briga travada em 5 NÃO é o mesmo caso da Esquiva: a Defesa do PF1 tem canal alternativo
+no Centelha (armadura natural → Absorção), o Ataque não tem esse canal (o bônus de ataque
+do PF1 cresce com Dados de Vida, e o teto 5 é do gerador, não da fonte). Virou variante de
+teste (Eixo A), não correção de ficha.
+
+**Três bugs reais achados RODANDO a matriz, todos na bancada, nenhum em ficha nem regra**
+(sem eles a matriz travava em censura total nos casos mais fortes, e eu teria relatado
+"desafio altíssimo" por um defeito meu, não pela criatura):
+
+1. **`morte-explosiva` (Balor) trava a criatura num loop sem ataque nenhum.** Tem `base`
+   (entrava no pool de ataques) mas o `efeito` é gatilho de morte ("ao cair a 0 PV..."),
+   não uma escolha de turno; como `avontade` sem `quantidade` nem `recarga` nunca fica
+   indisponível, o Balor "escolhia" ela todo turno e nunca batia de verdade. Corrigido:
+   poder cujo `efeito` bate com "ao cair a 0 PV" sai do pool de ações ativas (não modelo
+   o gatilho em si, seria mecânica nova).
+2. **Poder com `resiste: 'nenhum'` não é dano.** `teleporte-balor`, `convocar-diabos`,
+   `feiticos-supremos` (Diabo do Fosso), `convocar-anjos` (Solar), `regeneracao-implacavel`
+   (Tarrasca): todos têm `base` mas são utilidade (teleporte, convocação, reproduzir Arte,
+   regenerar), não ataque. Rolar Nd6 contra a Defesa nesses inventaria dano que a ficha não
+   descreve. Corrigido: fora do pool de ataque ativo.
+3. **Entre poderes disponíveis, a escolha pegava sempre o primeiro do array, não o mais
+   forte.** O Diabo do Fosso tem "doença" (nível 3, sempre disponível, `periodo:'golpe'`)
+   ANTES de "labareda" (nível 6, só 3 usos/dia); a criatura nunca soltava a labareda porque
+   a doença nunca ficava indisponível. Corrigido: entre os disponíveis, prefere o de maior
+   nível (política de escolha da bancada, não regra nova).
+
+**Defesa do Pers.1, parcela por parcela (C0/C3/C6): confirmada igual à rodada anterior**
+(nenhuma ficha de persona mudou): **16 / 33 / 43**, com a mesma decomposição já relatada
+(base + `2×mín(C,Hab)` + Proezas − penalidade de armadura/escudo).
+
+### A matriz (N=200 batalhas/Centelha/célula)
+
+Eixo A: A1=como está; A2=Habilidade de ataque efetiva = máx(atual, Centelha) (só na
+bancada). Eixo B: B1=como está; B2=Pers.1 sem Proezas de Defesa e sem Vontade na Defesa.
+"Desafio" = menor Centelha do grupo com vitória ≥80%. Quando a maioria das batalhas não
+resolve em 60 turnos (nenhum lado consegue ferir o outro o bastante), marco "estagnado" com
+a fração de censura, em vez de fingir uma taxa de vitória sobre poucas batalhas.
+
+| âncora (Centelha) | célula | desafio medido | acerto vs Pers.1 C6 |
+|---|---|---|---|
+| Filhote (4) | A1B1 | 1 | 0,0% |
+| | A1B2 | 1 | 0,0% |
+| | A2B1 | 1 | 0,0% (Habilidade real 5 já ≥ Centelha 4, A2 não muda nada) |
+| | A2B2 | 1 | 0,0% |
+| Jovem (5) | A1B1 | 2 | 2,1% |
+| | A1B2 | 2 | 2,1% |
+| | A2B1 | 2 | 2,1% |
+| | A2B2 | 2 | 2,1% |
+| Adulto (6) | A1B1 | 5 | 12,1% |
+| | A1B2 | 5 | 12,1% |
+| | A2B1 | 5 | 36,4% |
+| | A2B2 | **6** | 36,4% |
+| Ancião (7) | A1B1 | não alcançado até C6 | 47,6% |
+| | A1B2 | não alcançado até C6 | 47,6% |
+| | A2B1 | não alcançado até C6 | 90,9% |
+| | A2B2 | não alcançado até C6 | 90,9% |
+| Balor (9) | A1B1 | não alcançado até C6 | 11,8% |
+| | A1B2 | não alcançado até C6 | 11,8% |
+| | A2B1 | não alcançado até C6 | 94,6% |
+| | A2B2 | não alcançado até C6 | 94,6% |
+| Diabo do Fosso (9) | A1B1 | 6 (maioria estagnada abaixo) | 23,0% |
+| | A1B2 | 6 (idem) | 23,0% |
+| | A2B1 | 6 (idem) | 98,1% |
+| | A2B2 | 6 (idem) | 98,1% |
+| Solar (9) | A1B1 | não alcançado até C6 | 6,6% |
+| | A1B2 | não alcançado até C6 | 6,6% |
+| | A2B1 | não alcançado até C6 | 93,4% |
+| | A2B2 | não alcançado até C6 | 93,4% |
+| Kraken (7) | A1B1 | não alcançado até C6 | 49,1% |
+| | A1B2 | não alcançado até C6 | 49,1% |
+| | A2B1 | não alcançado até C6 | 90,7% |
+| | A2B2 | não alcançado até C6 | 90,7% |
+| Tarrasca (10) | A1B1 | não alcançado até C6 | 74,5% |
+| | A1B2 | não alcançado até C6 | 74,5% |
+| | A2B1 | não alcançado até C6 | 100,0% |
+| | A2B2 | não alcançado até C6 | 100,0% |
+
+(Curvas completas Centelha a Centelha, com a fração de censura de cada célula, na saída
+bruta de `node scripts/sim/desafio-matriz.mjs`, não reproduzidas aqui por tamanho; posso
+colar sob pedido.)
+
+### Leitura
+
+**B2 (tirar Proezas/Vontade da Defesa do Pers.1) quase não muda nada sozinho**: só move o
+desafio do Adulto (A2B2: 5→6) e a taxa de acerto em alguns pontos no meio da curva
+(Adulto A1B1→A1B2: C5 99,0%→93,5%). Nunca muda o "não alcançado até C6" de nenhuma âncora
+grande.
+
+**A2 (Habilidade de ataque = máx(atual,Centelha), tirando o teto do gerador antigo) muda
+MUITO a chance de ACERTO** (Ancião 47,6%→90,9%; Balor 11,8%→94,6%; Diabo do Fosso
+23,0%→98,1%; Solar 6,6%→93,4%; Kraken 49,1%→90,7%; Tarrasca 74,5%→100,0%), mas **quase não
+muda o "desafio" medido**, porque a maioria das âncoras grandes segue presa em
+"estagnado"/"não alcançado até C6" mesmo acertando quase sempre. A causa: mesmo acertando
+90%+ das vezes, o dano por acerto das âncoras (Absorção do Pers.1 descontada) não é grande
+o bastante para derrubar 34 PV rápido o suficiente dentro de 60 turnos, enquanto o Pers.1
+raramente fere a criatura de volta (Defesa 20-30 das âncoras grandes é alta demais pro
+grupo de Centelha baixa).
+
+**Achado metodológico que não estava no pedido, mas é importante registrar:** boa parte
+das células de âncora grande (Ancião, Balor, Diabo do Fosso, Solar, Kraken, Tarrasca) tem
+a MAIORIA das 200 batalhas em censura (nenhum lado resolve em 60 turnos), em quase toda
+Centelha do grupo de 0 a 5 ou 6. **O teto de 60 turnos pode ser curto demais pra medir
+desafio de verdade nestas âncoras**: não dá pra saber se "não alcançado até C6" é porque o
+grupo realmente não venceria com mais tempo, ou porque nenhum dos dois lados fere o outro
+rápido o bastante dentro da janela. Não estendi o teto por conta própria (mudaria a medida
+sem pedido); fica registrado como uma quarta variável a testar, se fizer sentido.
+
 ## Pendente desta rodada
 
-Nada decidido sozinha. O autor ainda não aceitou a leitura de que "nenhuma correção isolada
-resolve"; os números desta rodada (rampa de acerto em vez de degrau, Habilidade de Briga
-travada em 5, os 9 pontos de Proezas valendo dezenas de % de acerto) são material novo para
-essa conversa, não uma repetição do que já foi dito. Parei aqui, como pedido.
+Nada decidido sozinha. Três bugs reais de bancada corrigidos no caminho (documentados
+acima, nenhum mexeu em ficha ou regra). O autor ainda não aceitou a leitura de que "nenhuma
+correção isolada resolve"; os números desta e da rodada anterior (rampa de acerto,
+Habilidade de Briga travada em 5, Proezas valendo dezenas de % de acerto, e agora a matriz
+A/B mostrando que nem tirar o teto da Habilidade nem tirar Proezas/Vontade do Pers.1
+resolvem sozinhos) são material novo para essa conversa. Parei aqui, como pedido.
