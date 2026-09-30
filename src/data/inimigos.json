@@ -9865,6 +9865,7 @@
           "nivel": 2
         },
         "resiste": "esquiva",
+        "area": "cone de 9 m",
         "efeito": "Cone ou linha. Esquiva para metade.",
         "usos": {
           "periodo": "ticks",
@@ -9967,6 +9968,7 @@
           "nivel": 3
         },
         "resiste": "esquiva",
+        "area": "cone de 9 m",
         "efeito": "Cone ou linha. Esquiva para metade.",
         "usos": {
           "periodo": "ticks",
@@ -10075,6 +10077,7 @@
           "nivel": 4
         },
         "resiste": "esquiva",
+        "area": "cone de 12 m",
         "efeito": "Cone ou linha. Esquiva para metade.",
         "usos": {
           "periodo": "ticks",
@@ -10202,6 +10205,7 @@
           "nivel": 5
         },
         "resiste": "esquiva",
+        "area": "cone de 15 m",
         "efeito": "Cone ou linha. Esquiva para metade.",
         "usos": {
           "periodo": "ticks",

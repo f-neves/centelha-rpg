@@ -12669,6 +12669,7 @@
      "arte": "fogo",
      "nivel": 4
     },
+    "area": "cone de 12 m",
     "usos": {
      "periodo": "ticks",
      "quantidade": 1,
@@ -12893,6 +12894,7 @@
      "arte": "fogo",
      "nivel": 5
     },
+    "area": "cone de 15 m",
     "usos": {
      "periodo": "ticks",
      "quantidade": 1,
@@ -13097,6 +13099,7 @@
      "arte": "fogo",
      "nivel": 3
     },
+    "area": "cone de 9 m",
     "usos": {
      "periodo": "ticks",
      "quantidade": 1,
@@ -18450,6 +18453,7 @@
      "arte": "fogo",
      "nivel": 2
     },
+    "area": "cone de 9 m",
     "usos": {
      "periodo": "ticks",
      "quantidade": 1,

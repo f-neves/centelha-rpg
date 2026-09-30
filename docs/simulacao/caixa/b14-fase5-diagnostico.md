@@ -256,3 +256,180 @@ e dano por rodada da fonte, e eu completo a tabela e as razões na hora.
    basta.
 
 Não ajustei nada, não rodei mais nenhuma âncora. Parei aqui, como pedido.
+
+## 30/09/2026, terceira rodada · decomposição pedida pelo autor (nenhum achado anterior aceito ainda)
+
+Um bug real achado no caminho, antes de qualquer outra coisa: **`tipoDano` do ataque
+básico de toda criatura estava sempre caindo em "impacto"**, porque eu usava
+`tipoDaExpressao()` (lê só o sufixo `"(C)/(I)/(P)"` que as fichas de PC escrevem) na string
+de dano do bestiário, que escreve o tipo por extenso ("perfurante"). Corrigido lendo
+`ficha.ataques[0].tipo` direto (a fonte real do dado), mapeado para o vocabulário de
+`soak`. Isso mudou a Absorção usada contra toda criatura em todo teste anterior (geralmente
+para MENOS Absorção, porque `perfuracao` costuma ser menor que `impacto` nas fichas de
+persona): o filhote, por exemplo, passa a bater 9,5 de dano líquido médio por acerto contra
+qualquer persona (antes saía 4,5 a 6,5, dependendo da persona, com a Absorção errada).
+Reflete nos números abaixo.
+
+### 1 · filhote vs grupo C3
+
+**(a) Chance de ACERTO por jogada** (Pers.1, pool `6d6 +5`+4 prz, N=3000/linha, contra
+Defesa fixa, sem rolar dano):
+
+| Defesa do alvo | acerto | raspão | erro |
+|---|---|---|---|
+| 4 | 100,0% | 0,0% | 0,0% |
+| 10 | 100,0% | 0,0% | 0,0% |
+| 20 | 98,8% | 0,9% | 0,2% |
+| 30 | 44,7% | 18,2% | 37,1% |
+| 35 | 8,9% | 11,3% | 79,8% |
+| 40 | 0,4% | 1,6% | 98,0% |
+
+**Isto corrige a leitura anterior: por JOGADA, a curva é uma rampa, não um degrau** (cai de
+forma gradual de 100% a 0,4% entre Defesa 20 e 40). O que parecia degrau era a TAXA DE
+VITÓRIA da luta inteira, que satura porque qualquer coisa acima de ~15-20% de acerto por
+jogada já é suficiente pra vencer dentro do teto de turnos, e qualquer coisa abaixo de ~5%
+raramente resolve a tempo. A confusão foi minha, entre os dois planos (jogada vs luta);
+agradeço a insistência em separar os dois.
+
+**(b) Com Ataque +15 do filhote** (dano bruto médio por acerto 13,5, tipo perfuração
+corrigido):
+
+| persona | Absorção(perfuração) | dano líquido médio/acerto | PV | acertos p/ derrubar |
+|---|---|---|---|---|
+| Pers.1 | 4 | 9,5 | 34 | 4 |
+| Pers.2 | 4 | 9,5 | 34 | 4 |
+| Pers.3 | 4 | 9,5 | 34 | 4 |
+| Pers.4 | 4 | 9,5 | 34 | 4 |
+
+(Todas as quatro personas têm Absorção(perfuração)=4 nesta bancada, porque as três
+armaduras usadas, malha/couro/gambeson, têm o mesmo número ali; só corte e impacto
+diferem entre elas.) **4 acertos bastam para derrubar qualquer persona**, mesmo com
+Ataque +15. O problema não é "o filhote não derruba ninguém quando acerta": é que ele quase
+nunca chega a acertar 4 vezes dentro da janela de ~3,5 turnos em que o grupo já o matou.
+
+**(c) 100 batalhas completas, filhote vs grupo C3:**
+
+- Vezes que alguma persona chegou a 0 PV: **0 em 100 batalhas.**
+- Vezes que alguém foi curado/estabilizado e voltou: **0** (ver item d abaixo: não existe
+  esse caminho no código ainda).
+- Duração: média 3,55 turnos, mínimo 3, máximo 5.
+
+**(d) Confirmado no código** (`scripts/sim/desafio-bancada.mjs`): `caido` é marcado `true`
+na primeira vez que `pv <= 0` e **nunca é desmarcado em lugar nenhum do arquivo**: nem a
+Cura do Pers.3 alcança quem já caiu (o filtro de alvo da Cura exclui explicitamente
+`!x.caido`) nem existe qualquer outro caminho de revivência. Ou seja: hoje **"caído" conta
+"chegou a 0 PV alguma vez", não "está a 0 PV agora"**, porque não há como sair desse estado.
+Isto bate com a suposição 6 já registrada (Estabilizar sem efeito numérico), mas é mais
+forte do que eu tinha deixado claro antes: mesmo a Cura do Pers.3, se algum dia alguém
+chegasse a cair, não o traria de volta nesta bancada. Não é um problema nestes 100 jogos
+(ninguém caiu), mas fica registrado para quando alguma âncora tiver combate mais equilibrado.
+
+### 2 · decomposição da Defesa (grupo) e do Ataque (âncoras), sem rodar bancada
+
+**(a) Defesa do Pers.1, parcela por parcela** (fórmula `(Destreza+Esquiva)×2 + 2×min(C,Esquiva) − penalidade física(malha+broquel) + Proezas`; Vontade NÃO entra aqui, é bônus situacional de +4 só quando o personagem está em Grave, nunca somado à Defesa base):
+
+| Centelha | (Des+Esq)×2 | 2×min(C,Esq) | − penalidade armadura/escudo | Proezas | **Defesa final** |
+|---|---|---|---|---|---|
+| 0 | 18 | 0 | −2 | +0 | **16** |
+| 3 | 24 | 6 | −2 | +5 | **33** |
+| 6 | 24 | 12 | −2 | +9 | **43** |
+
+**(b) Ataque das 11 âncoras contra o Pers.1** (fórmula igual, `pool = ⌊(Atrib+Habilidade)/2⌋d6 + 2×min(Centelha,Habilidade)`; a perícia usada é sempre Briga):
+
+| criatura | Centelha | Habilidade(Briga) | soma | dados | 2×min(C,Hab) |
+|---|---|---|---|---|---|
+| Lobo | 0 | 2 | 5 | 2d6 | 0 |
+| Worg | 1 | 3 | 8 | 4d6 | 2 |
+| Filhote | 4 | 5 | 11 | 5d6 | **8** |
+| Jovem | 5 | 5 | 14 | 7d6 | **10** |
+| Adulto | 6 | 5 | 16 | 8d6 | **10** |
+| Ancião | 7 | 5 | 19 | 9d6 | **10** |
+| Kraken | 7 | 5 | 19 | 9d6 | **10** |
+| Balor | 9 | 5 | 16 | 8d6 | **10** |
+| Diabo do Fosso | 9 | 5 | 17 | 8d6 | **10** |
+| Solar | 9 | 5 | 15 | 7d6 | **10** |
+| Tarrasca | 10 | 5 | 21 | 10d6 | **10** |
+
+**O padrão salta aos olhos de novo, e é simétrico ao da Esquiva:** a Habilidade de Briga de
+QUASE TODAS as âncoras está travada em 5 (só lobo e worg, os dois mais fracos, têm menos).
+Como o termo de Centelha no ataque é `2×min(Centelha,Habilidade)`, a partir da Centelha 5 o
+termo trava em 10 pontos e NUNCA MAIS CRESCE, mesmo para a Tarrasca (Centelha 10). Enquanto
+isso, a Habilidade do Pers.1 (Esquiva) CRESCE JUNTO com a soma de ataque dele, Centelha a
+Centelha (despacho: soma 9,10,11,12,12,12,12), então o termo dela nunca trava dentro da
+régua 0-6. **Isto é o mesmo padrão da Defesa/Esquiva 0, só do lado do Ataque: Habilidade
+de combate da criatura não escalou junto com a Centelha dela**, pelo menos nestas 9 âncoras
+acima de Centelha 4.
+
+**(c) Chance de acerto das 11 âncoras contra o Pers.1 C6** (Defesa 43 vs Defesa 34, a
+segunda sem os 9 pontos de Proezas; Vontade não muda a Defesa base, como já dito em 2a, então
+não há uma terceira versão "sem Vontade" diferente de "sem Proezas" aqui):
+
+| criatura | acerto com Defesa 43 (atual) | acerto com Defesa 34 (sem Proezas) |
+|---|---|---|
+| Lobo | 0,0% | 0,0% |
+| Worg | 0,0% | 0,0% |
+| Filhote | 0,0% | 2,9% |
+| Jovem | 1,8% | 49,1% |
+| Adulto | 11,8% | 75,7% |
+| Ancião | 47,6% | 95,8% |
+| Kraken | 48,1% | 96,3% |
+| Balor | 12,4% | 74,8% |
+| Diabo do Fosso | 23,0% | 87,4% |
+| Solar | 5,2% | 65,4% |
+| Tarrasca | 73,0% | 99,2% |
+
+**Os 9 pontos de Proezas do Pers.1 em C6, sozinhos, derrubam a chance de acerto de quase
+toda âncora em dezenas de pontos percentuais** (ancião: 95,8%→47,6%; Diabo do Fosso:
+87,4%→23,0%). Isto é outra cara do mesmo "degrau" da rodada anterior: perto do teto do
+pool de dados de uma criatura, um punhado de pontos de Defesa vale muito mais do que o
+mesmo punhado valeria no meio da curva.
+
+### 3 · área dos sopros: aplicada
+
+**(a) Porte PF1 usado na conversão vs porte da nossa ficha**, conferido contra a nota já
+registrada pelo Arquiteto em `../tmp/arquiteto/b14-cr-desafio.md` (linha do filhote) e
+contra o nome do stat block PF1 de cada um:
+
+| criatura | nome do stat block PF1 | porte PF1 | porte da ficha | bate? |
+|---|---|---|---|---|
+| Filhote | Red Dragon (wyrmling) | **Pequeno** | Médio | **NÃO** (já registrado pelo Arquiteto: "porte PF1 é Pequeno, não Médio") |
+| Jovem | Young Red Dragon | Grande | Grande | sim |
+| Adulto | Adult Red Dragon | Enorme | Enorme | sim |
+| Ancião | Ancient Red Dragon | Imenso | Imenso | sim |
+
+Só o filhote diverge, e a divergência já estava documentada antes desta rodada (não é
+achado novo). Usei o porte DA FICHA (Médio) em tudo, como pedido.
+
+**(b) Os valores gravados não são um cálculo meu a partir de tabela PF1 de alento por
+categoria de idade** (a proposta da rodada anterior, que eu tinha feito sem olhar com
+cuidado o resto da própria ficha): achei que as quatro fichas de dragão vermelho JÁ TINHAM
+a área do sopro escrita, em prosa, no campo `habilidades` (o texto solto que já existia
+antes desta Fase, não gravado no campo estruturado `area` do poder). Usei ESSES números, já
+decididos por quem escreveu a ficha, em vez de recalcular os meus:
+
+| criatura | texto já existente em `habilidades` | `area` gravada agora |
+|---|---|---|
+| Filhote | "cone de 9m; dano alto, metade se Esquivar" | `"cone de 9 m"` |
+| Jovem | "cone de 9m; 6d6 de dano..." | `"cone de 9 m"` |
+| Adulto | "cone de 12m; 9d6 de dano..." | `"cone de 12 m"` |
+| Ancião | "cone de 15m; 12d6 de dano..." | `"cone de 15 m"` |
+
+O campo `area` (`poderNaturalSchema`, `scripts/criatura-schema.mjs`) já é texto livre
+(`z.string().optional()`), então a forma ("cone de") entra junto com o número, sem precisar
+de um campo novo nem de pendência: gravei `"cone de 9 m"`, não só `"9"`. Rodei
+`gen-bestiario.mjs`/`gen-monsters.mjs` depois de editar as quatro fichas; `validate`,
+`tsc` e `build` verdes, `test-editor-bestiario` e `espelho` verdes também.
+
+**Resultado depois de gravar:** rodei a âncora do filhote de novo (C0 a C4, n=100). Com o
+`tipoDano` corrigido (achado nesta mesma rodada) MAIS a área de 9 m: C0 caiu de 62,5% (valor
+da rodada anterior, com o bug de tipoDano) para **34,0%** [25,5%;43,7%]; C1 a C4 continuam
+**100,0%**. **A área em si não mudou nada** (9 m fica abaixo do limiar de 10 m da regra de
+"atinge os 4"), então a diferença em C0 é só o conserto do `tipoDano`. Continua confirmando
+o achado das rodadas anteriores: a causa não é o sopro.
+
+## Pendente desta rodada
+
+Nada decidido sozinha. O autor ainda não aceitou a leitura de que "nenhuma correção isolada
+resolve"; os números desta rodada (rampa de acerto em vez de degrau, Habilidade de Briga
+travada em 5, os 9 pontos de Proezas valendo dezenas de % de acerto) são material novo para
+essa conversa, não uma repetição do que já foi dito. Parei aqui, como pedido.

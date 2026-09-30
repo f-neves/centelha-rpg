@@ -75,6 +75,7 @@
         "nivel": 2
       },
       "resiste": "esquiva",
+      "area": "cone de 9 m",
       "efeito": "Cone ou linha. Esquiva para metade.",
       "usos": {
         "periodo": "ticks",

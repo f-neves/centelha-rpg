@@ -162,13 +162,21 @@ function carregarCriatura(id) {
   const a0 = mesa.combate.ataques[0];
   const caster = ehCaster(ficha);
   const voadoraOuDistancia = !!(ficha.locomocao?.voo) || mesa.combate.ataques.some((a) => a.speed && /arco|sopro/i.test(a.nome || ''));
+  // CORRIGIDO em 30/09/2026: `tipoDaExpressao` só lê o sufixo "(C)/(I)/(P)" que as fichas
+  // de PC usam; o bestiário escreve o tipo por extenso ("perfurante") no próprio dano E
+  // no campo `tipo` do ataque-fonte (ataqueSchema). Ler do dano com `tipoDaExpressao`
+  // sempre caía no fallback 'impacto', trocando a Absorção usada contra toda criatura (achado
+  // conferindo o pedido do Arquiteto sobre dano/Absorção, 30/09/2026). A fonte certa é
+  // `ficha.ataques[0].tipo`, mapeado para o vocabulário de `soak` ('perfurante'→'perfuracao').
+  const TIPO_PARA_SOAK = { perfurante: 'perfuracao', corte: 'corte', impacto: 'impacto' };
+  const tipoDanoBasico = TIPO_PARA_SOAK[ficha.ataques?.[0]?.tipo] || tipoDaExpressao(a0.dano) || 'impacto';
   return {
     id, nome: ficha.nome, tipo: 'criatura',
     pv: mesa.combate.pv, pvMax: mesa.combate.pv,
     defesaBase: mesa.combate.defesa,
     soak: mesa.combate.absorcao,
     ataque: a0.pool, dano: a0.dano,
-    tipoDano: tipoDaExpressao(a0.dano) || 'impacto',
+    tipoDano: tipoDanoBasico,
     qaArmaBonus: 0, qaArmaDano: 0, // simplificação (suposição 2): sem catálogo de arma natural
     fraquezas: elem.fraquezas, resistencias: elem.resistencias, imunidades: elem.imunidades,
     centelha: mesa.centelha, vontade: mesa.vontade,
