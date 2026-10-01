@@ -117,6 +117,28 @@ e o salto de N para 4N.
 **Item 4**: pendência nova na frente da economia (`docs/pendencias/`, a letra que já cobre a
 economia; procure onde estão G61-G70). Três entradas, com a fala do autor, sem execução.
 
+## Adendo (autor, 01/10, respostas à conferência)
+
+Aprovados como estão na conferência: o desafio digitado na calculadora sem preencher fichas, os
+números do exemplo, o ×4 em `recompensa.astro`, os `centelhaMult` lidos só registrados e a D12.
+
+1. **Exemplo dos worgs**: diga com todas as letras que **worg = 1 é provisório e contradiz a
+   bancada** (4 worgs medidos em 3, Fase 5b). O item 3 confere isso, se sobrar orçamento.
+2. **Valor Passivo, fórmula única** (substitui o "não decida" do item 1a). A mesma redação em
+   `coracao-do-sistema.md:89`, no exemplo do guarda (`:93`) e em `acoes-e-sistema.md:121`:
+
+   > Valor Passivo = (Atributo + Habilidade) × 2 + 2 × mín(Centelha, Habilidade) + Especialidade
+   > (só quando o escopo dela se aplica, somada no momento do uso)
+
+   - Em `acoes-e-sistema.md`, **mantenha** a explicação de por que a Especialidade não entra no
+     valor parado (`:123`), ajustada para casar com a fórmula: ela fica fora do número calculado
+     antes e soma no momento do uso.
+   - A tabela dos modos (`acoes-e-sistema.md:65`) segue a mesma fórmula.
+   - **`calc.ts` já calcula sem a Especialidade e continua assim.** A única mudança no código é a
+     do item 1b (`centelhaNaJogada` no lugar da Centelha inteira).
+   - **Exemplo do guarda:** o guarda comum (Centelha 0, sem Especialidade) continua dando
+     (Percepção + Prontidão) × 2.
+
 ## Regras desta rodada
 
 - Um commit por item (1, 2, 3 se houver, 4), com pathspec, rebase antes e depois, `push origin
