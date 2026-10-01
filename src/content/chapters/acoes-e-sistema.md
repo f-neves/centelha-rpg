@@ -62,7 +62,7 @@ Nem todo modo é jogado. Dois deles dispensam o dado inteiramente.
 | **Acumulada** | sim | sim | Dificuldade **e** Acúmulo: cada jogada rende o que passou da Dificuldade, somando até fechar |
 | **Longa** | **não** | fora de cena | a mesma dupla, mas usando a **média** do pool por intervalo |
 | **Reflexiva** | sim | **não** | uma jogada avulsa, no meio de outra coisa |
-| **Passiva** | **não** | **não** | um valor parado: (Atributo + Habilidade) × 2 + Centelha |
+| **Passiva** | **não** | **não** | um valor parado: (Atributo + Habilidade) × 2 + 2 × mín(Centelha, Habilidade) |
 
 ### Direta
 
@@ -118,7 +118,7 @@ Uma jogada que não consome a ação do lance. Notar o vulto, reagir ao chão qu
 
 Sem jogada e sem dado: um **valor parado**.
 
-<p class="formula">Valor Passivo = (Atributo + Habilidade) × 2 + Centelha</p>
+<p class="formula">Valor Passivo = (Atributo + Habilidade) × 2 + 2 × mín(Centelha, Habilidade)</p>
 
 <p class="muted">A <strong>Especialidade não entra aqui</strong>, e não por esquecimento: ela só vale quando o escopo nomeado dela se aplica, e um valor parado é calculado sem saber quem vem nem como. Ela entra na hora em que a situação aparece, somada por cima.</p>
 

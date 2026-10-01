@@ -132,7 +132,7 @@ export function modificadorPorte(porteAtacante: Porte, porteAlvo: Porte): number
  * O BÔNUS DE CENTELHA EM TODA JOGADA E TODA DEFESA (Reforma da Centelha,
  * 28/09/2026): 2 × o menor entre a Centelha e a Habilidade daquela jogada. Sem
  * Habilidade, sem bônus (uma jogada só de Atributo usa `centelhaSoAtributo`,
- * a regra de primeira versão registrada como pendência, e não esta).
+ * regra própria e não esta).
  * Substitui o antigo "+1 por ponto" (`centelhaMult` em `regras.json`, que
  * ficou parado em 1 nos blocos de ataque/defesa/defesaMental/defesaSocial e
  * não é mais lido por eles).
@@ -141,7 +141,14 @@ export function centelhaNaJogada(centelha: number, habilidade: number) {
   return 2 * Math.min(Math.max(0, centelha), Math.max(0, habilidade));
 }
 
-/** A regra de primeira versão (item 1 da Fase 1, pendência registrada) para jogada só de Atributo. */
+/**
+ * Jogada só de Atributo, sem Habilidade que sirva de teto (Vontade pura,
+ * Resistir sem perícia, alguns testes de Bravura): +1 por ponto de Centelha,
+ * sem teto. Decidido pelo autor em 01/10/2026 como regra oficial (fecha a
+ * pendência D12, `docs/pendencias/D-proezas-tecnicas.md`), e não mais a
+ * "regra de primeira versão" que o `centelhaNaJogada` substituiu em todo
+ * resto; aqui ela sobrevive porque não há Habilidade para travar o teto.
+ */
 export function centelhaSoAtributo(centelha: number) {
   return Math.max(0, centelha);
 }
@@ -371,8 +378,9 @@ export const custoEspecialidade = (nivel: number, secundaria = false) =>
   custoPontos(secundaria ? 'especialidadeSecundaria' : 'especialidadePrimaria', undefined, nivel);
 
 /**
- * O VALOR PASSIVO, pela fórmula do `coracao-do-sistema.md:59`:
- * `(Atributo + Habilidade) × 2 + Especialidade + Centelha`.
+ * O VALOR PASSIVO, pela fórmula do `coracao-do-sistema.md:89` (Reforma da
+ * Centelha, 28/09/2026): `(Atributo + Habilidade) × 2 + 2×mín(Centelha,
+ * Habilidade) + Especialidade`.
  *
  * Ele é a Dificuldade de quem se opõe sem rolar. O caso que o trouxe para cá é a
  * Percepção Passiva do alvo contra a Furtividade de quem ataca do escuro, mas a
@@ -406,4 +414,4 @@ export const custoEspecialidade = (nivel: number, secundaria = false) =>
  */
 export const valorPassivo = (
   atributo?: number | null, habilidade?: number | null, centelha = 0,
-) => (atributo == null || habilidade == null ? null : (atributo + habilidade) * 2 + centelha);
+) => (atributo == null || habilidade == null ? null : (atributo + habilidade) * 2 + centelhaNaJogada(centelha, habilidade));

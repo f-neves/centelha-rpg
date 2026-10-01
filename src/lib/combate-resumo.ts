@@ -153,7 +153,7 @@ export function resumoCombatePC(S: any): ResumoCombate {
   // aplica", e não como "Nível zero" (que resvalaria em qualquer armadura).
   const perfArma = principal?.tipo === 'perfurante' ? (principal.perf ?? 0) : null;
 
-  // Defesa física passiva = Esquiva: (Destreza + Esquiva)×2 + Centelha − penalidade física
+  // Defesa física passiva = Esquiva: (Destreza + Esquiva)×2 + 2×mín(Centelha,Esquiva) − penalidade física
   const def = defesa({ destreza: attrs.destreza || 0, habilidade: skills.esquiva || 0, centelha: C }) - penFisica;
 
   // Defesa Mental. A criatura sempre trouxe a dela no bloco do bestiário; o PC

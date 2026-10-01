@@ -61,14 +61,14 @@ Detalhe em `Proezas_revisao.md`.
   mexa no Quase-Acerto teria duas alavancas possíveis e independentes: o **dano do raspão** (a
   metade que a arma carrega) e a **Margem** (a metade que soma arma e armadura). Decidir se a
   Proeza mexe numa, na outra, ou nas duas, e o preço de cada caminho.
-- [ ] **D12 · [DECIDIR] Jogada só-de-Atributo, sem Habilidade que sirva de teto.** Registrado em
+- [x] **D12 · [FECHADA] Jogada só-de-Atributo, sem Habilidade que sirva de teto.** Registrado em
   28/09/2026, item 1 da Reforma da Centelha. A fórmula nova (2 × menor(Centelha, Habilidade)) exige
   uma Habilidade para travar o bônus; jogadas que rolam **só Atributo** (Vontade pura, Resistir sem
-  perícia, alguns testes de Bravura) não têm esse segundo termo. `calc.ts` traz
-  `centelhaSoAtributo(centelha)`, que devolve a Centelha inteira sem teto, como regra de primeira
-  versão, mas isso é a regra ANTIGA sobrevivendo só nesse canto: mais generosa que o teto que vale
-  em toda outra jogada. Decidir se essa jogada ganha um teto próprio (Atributo? um valor fixo?) ou
-  se fica assim de propósito.
+  perícia, alguns testes de Bravura) não têm esse segundo termo. **Decidido pelo autor em
+  01/10/2026**: fica assim de propósito, +1 por ponto de Centelha sem teto, como regra oficial (não
+  mais "regra de primeira versão" sobrevivendo por acaso). `calc.ts` traz
+  `centelhaSoAtributo(centelha)`; a regra está escrita em `src/content/chapters/centelha.md`, junto
+  ao item 1 da Reforma.
 - [ ] **D13 · [DECIDIR] Proeza "punho como arma média".** Registrado em 28/09/2026, Fase 3 da
   Reforma da Centelha/Briga (item 3). O desarmado (`armas.json:1278`, id `desarmado`) subiu de
   acerto 0 → 1 e defesaArma 0 → 1 nessa rodada, mas continua classe **leve** no Quase-Acerto (dano

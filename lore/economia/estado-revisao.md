@@ -1,6 +1,6 @@
 # Estado da revisão econômica · revisor adversarial
 
-Arquivo de trabalho fora do git (`lore/economia/` não é rastreada). Sem commit, sem push.
+Arquivo de trabalho versionado desde a rodada 111 (`508c92a3`), dentro de `lore/economia/`.
 Se a sessão for limpa (/clear), reler este arquivo antes de qualquer coisa.
 
 ## Papel
