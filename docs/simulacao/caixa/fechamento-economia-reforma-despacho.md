@@ -139,6 +139,42 @@ números do exemplo, o ×4 em `recompensa.astro`, os `centelhaMult` lidos só re
    - **Exemplo do guarda:** o guarda comum (Centelha 0, sem Especialidade) continua dando
      (Percepção + Prontidão) × 2.
 
+## Adendo 2 (autor, 01/10, depois do item 2 em `5d068c65`): a regra do encontro muda (item 2b)
+
+O Comerciante achou a divergência: a soma simples paga demais por bando de fracos (100
+ratazanas de desafio 0 pagariam 4.000, mais que um chefe de desafio 3). O item 2 já está no main,
+então isto entra como **commit novo (2b)**, sem reescrever o `5d068c65`.
+
+1. **Equivalentes.** Cada criatura no desafio da mais forte conta 1, e **cada desafio abaixo da
+   mais forte divide por 4**, sem piso (um abaixo 1/4, dois 1/16, três 1/64...). Equivalentes
+   somam com fração.
+2. **Desafio do encontro** = desafio da mais forte + **1/2 a cada dobra dos equivalentes**,
+   arredondando **para baixo** nos degraus da Magnitude: 1: +0; 2 a 3: +1/2; 4 a 7: +1; 8 a 15:
+   +1 1/2; 16 a 31: +2; 32 a 63: +2 1/2; 64 a 127: +3; e assim por diante. No texto, ligar à
+   Regra de Horda (`combate.md:409`, tabela de Magnitude em `:415`, os mesmos degraus): **+
+   Magnitude ÷ 2**.
+3. **Valor do encontro** = valor da tabela no desafio do encontro. **Meio degrau = média
+   geométrica dos dois vizinhos** (raiz do produto), arredondada como a tabela (a régua `arred`).
+4. **Um número só no capítulo e na calculadora**: os dois pagam pelo meio degrau de baixo. A
+   calculadora PODE mostrar o desafio exato (D + log4 dos equivalentes) como informação, mas
+   paga pelo meio degrau.
+5. **Bolsa** = Valor do encontro × Semanas × Tarefa × Risco × 4 (sem mudança).
+6. **Por cabeça**: cada criatura paga a fração dos seus equivalentes no total. Solitária: tudo ou
+   nada. (O arredondamento da parte, que o item 2 deixou em aberto, continua em aberto.)
+7. **Exemplos obrigatórios no relato, conferidos à mão** (Valor do encontro, antes do × 4):
+   - 1 lobo = 40;
+   - 4 lobos = 95;
+   - 4 worgs (desafio 1, provisório, contra a bancada) = 270;
+   - 100 ratazanas de desafio 0 = desafio 3, **910**;
+   - chefe de desafio 3 + 4 de desafio 0 = equivalentes 1,0625, desafio 3, **910**, chefe
+     com 94%;
+   - 4 de desafio 3 = 3.600.
+8. **O item 3 passa a conferir esta regra: "dobrar = +1/2 desafio".** Os N já medidos (1, 2, 4 e
+   8) servem: reescreva a leitura do item 3 contra a regra nova. Só rode de novo se precisar.
+9. Arquivos: os mesmos do item 2 (`modelo.py`, `gerar.py` se o formato mudar, a cadeia de
+   regeneração, `recompensa.ts`, `CalculadoraRecompensa.astro`, `recompensa.astro`,
+   `custo-servicos.md`, `test-recompensa.mjs`).
+
 ## Regras desta rodada
 
 - Um commit por item (1, 2, 3 se houver, 4), com pathspec, rebase antes e depois, `push origin
