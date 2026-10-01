@@ -54,7 +54,9 @@ const NOTAS = {
   'renda.json': 'Renda por semana de trabalho (6 jornadas). Livre = Renda x 12% x (60/Renda)^0,35 (curva D: 12% no braçal, 2% na nobreza), arredondado. Custo = Renda - Livre; inclui o estilo de vida obrigatório da faixa. ' + F5,
   'custo-de-vida.json': 'Semana de Uldun (8 dias). Cestas por adulto-equivalente (Allen). Criança = meio adulto-equivalente. ' + F5,
   'viagens.json': 'Distâncias em km. ' + F5,
-  'recompensas.json': 'Recompensa de caça: Bolsa = Valor do degrau × Semanas × Tarefa × Risco × 4 (o grupo de referência); degrau = desafio + quantidade + Centelha ÷ 4; o valor do degrau é a tarifa de base por caçador, por semana, base × fator^(degrau − 1), arredondado pela régua em `arredondamento` (a mesma do `arred` de lore/economia/v2/base.py). A Parte por caçador é a bolsa ÷ o grupo, para baixo; a sobra o grupo divide como quiser. ' + F5,
+  // TOLERÂNCIA: a tabela de desafio do autor e o desafio que o Mestre digita valem só até a bancada medir.
+  // LEVANTA QUANDO: a B14 medir o desafio das criaturas, gravá-lo nas fichas e confirmar ou trocar a tabela.
+  'recompensas.json': 'Recompensa de caça: Bolsa = Valor do encontro × Semanas × Tarefa × Risco × 4 (o grupo de referência); Valor do encontro = a soma dos valores de todas as criaturas, cada uma pela tabela de desafio (por caçador, por semana), provisória até a bancada medir e só até o desafio 9. A bolsa e a Parte por caçador se arredondam pela régua em `arredondamento` (a mesma do `arred` de lore/economia/v2/base.py); a Parte por caçador é a bolsa ÷ o grupo, para baixo, e a sobra o grupo divide como quiser. ' + F5,
 };
 const saida = {};
 const procMontarias = { _nota: 'Procedência dos preços de montarias-veiculos.json (tirada do arquivo do site na rodada 110, F4). Lore, não dado de jogo.', itens: [] };

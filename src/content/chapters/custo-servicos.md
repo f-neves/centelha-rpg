@@ -37,37 +37,36 @@ A renda é o que o contratante gasta com quem trabalha. Quando o personagem trab
 
 Trabalhos pontuais, como abater uma colônia de aranhas, recuperar um hipogrifo ou buscar partes de uma criatura para um mago, pagam uma bolsa pelo trabalho, combinada antes. O valor é o Livre: o custo de vida de quem caça já está descontado. É esse o número do cartaz da recompensa.
 
-<p class="formula">Bolsa = Valor do degrau × Semanas × Tarefa × Risco × 4</p>
+<p class="formula">Bolsa = Valor do encontro × Semanas × Tarefa × Risco × 4</p>
 
 A bolsa paga um grupo de 4, que é o grupo para o qual o nível de desafio é pensado. O grupo divide como quiser: se forem mais, cada um leva menos; se forem menos, levam mais e arriscam mais.
 
 A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa).
 
-1. **Degrau** = desafio + quantidade + Centelha
-   - a) Desafio: o da criatura mais forte.
-   - b) Quantidade: criaturas com desafio até 2 abaixo da mais forte contam inteiras; as mais fracas que isso contam metade. Some tudo e ganhe +1 cada vez que o total dobra (2 +1, 4 +2, 8 +3, 16 +4).
-   - c) Centelha da criatura: +1 a cada 4 pontos (0 a 3 +0, 4 a 7 +1, 8 a 11 +2, 12 +3).
-2. **Valor do degrau** (por caçador, por semana):
+1. **Valor de cada criatura** (por caçador, por semana), pelo desafio dela. A tabela é provisória até a bancada medir o desafio das criaturas, e vai até o desafio 9:
 
 <!-- gen:economia-recompensas -->
 
 <div class="table-wrap">
 
-| Degrau | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Valor (pc) | 15 | 25 | 45 | 80 | 140 | 250 | 430 | 750 | 1.300 | 2.300 | 4.000 | 7.100 |
+| Desafio | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Valor (pc) | 40 | 95 | 270 | 910 | 3.600 | 14.500 | 57.900 | 231.700 | 926.800 | 3.707.300 |
 
 </div>
 
 <!-- /gen:economia-recompensas -->
 
-   Acima de 12: 15 × 1,75^(degrau − 1), arredondado.
-
+2. **Valor do encontro** = a soma dos valores de todas as criaturas.
 3. **Semanas** = caçada estimada (mínimo 1) + metade da viagem de ida e volta. A semana tem 8 dias. É estimativa de contrato: se levar mais, azar de quem caça; se levar menos, sorte. A viagem conta metade porque é tempo gasto, não perigo: paga o tempo, sem o prêmio de risco.
 4. **Tipo de tarefa** (exemplos): afugentar ou expulsar ×0,75; matar ×1; trazer parte ou prova ×1; recuperar alguém ou algo levado ×1; capturar vivo ×1,5; capturar vivo e sem ferimentos, ou domar ×2.
 5. **Risco**, além do que o desafio já prevê (exemplos): normal ×1; alto, um agravante sério (terreno hostil, alvo desconhecido, prazo curto, civis para proteger) ×1,5; muito alto, dois ou mais agravantes ×2; extremo, alguém provavelmente morre mesmo dando certo ×3.
 
-**Tom da campanha:** numa campanha de dinheiro curto, o Valor do degrau vale metade; numa campanha heroica, o dobro.
+**Tom da campanha:** numa campanha de dinheiro curto, o Valor do encontro vale metade; numa campanha heroica, o dobro.
+
+**Pagamento:** num bando, a bolsa se divide pelo valor de cada criatura, e cada uma morta ou capturada paga a sua parte (sucesso parcial paga parcial). Criatura solitária: tudo ou nada.
+
+A partir do desafio 5, a bolsa é paga em terra, título, direito ou favor, no valor da tabela.
 
 **Três testes antes de fechar o valor:**
 
@@ -96,7 +95,7 @@ A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa
 
 3. **Oferta:** o Mestre decide quantos trabalhos existem. Referência: aldeia, 1 por ano; vila, 1 por estação; cidade, 1 por mês; fronteira e terra selvagem, o dobro. Caçar só vira profissão onde há trabalho de sobra.
 
-A bolsa por semana é alta de propósito: paga o risco e o tempo sem trabalho entre uma caçada e outra. Compare com personagens de Centelha parecida, não com um trabalhador: o degrau 6 paga 250 pc por semana, perto do Livre de uma Nobreza (200). O que impede todo mundo de virar caçador são os três testes, principalmente a oferta.
+A bolsa por semana é alta de propósito: paga o risco e o tempo sem trabalho entre uma caçada e outra. Compare com personagens de Centelha parecida, não com um trabalhador. O que impede todo mundo de virar caçador são os três testes, principalmente a oferta.
 
 **Despesas e partes:**
 

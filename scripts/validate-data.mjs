@@ -979,13 +979,11 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
       manutencao_cavalo: valor(), manutencao_cavalo_guerra: valor(),
       pacotes_familia: z.record(z.object({ itens: z.array(valor({ item: z.string() })), pacote: valor(), estilo_de_vida: valor() }).strict()),
     }).strict(),
-    // a recompensa de caça (rodada 115): o valor do degrau é dinheiro com unidade; o resto são
-    // parâmetros da conta, lidos pela calculadora (src/lib/recompensa.ts)
+    // a recompensa de caça (rodada 115; regra da soma, 01/10/2026): o valor de cada desafio é
+    // dinheiro com unidade; o resto são parâmetros da conta, lidos pela calculadora (src/lib/recompensa.ts)
     'recompensas.json': z.object({
-      _nota: nota, base: z.number().positive(), fator: z.number().positive(),
-      degraus: z.array(z.object({ degrau: z.number().int().min(1), por: POR, preco }).strict()).min(1),
-      centelha_passo: z.number().int().positive(), centelha_max: z.number().int().positive(),
-      fracas_contam: z.number().positive(), fracas_abaixo: z.number().int().nonnegative(),
+      _nota: nota,
+      desafios: z.array(z.object({ desafio: z.number().int().min(0), por: POR, preco }).strict()).min(1),
       dias_semana: z.number().int().positive(), grupo: z.number().int().positive(),
       tarefas: z.array(z.object({ id: z.string(), nome: z.string(), mult: z.number().positive(), descricao: z.string() }).strict()).min(1),
       riscos: z.array(z.object({ id: z.string(), nome: z.string(), mult: z.number().positive(), descricao: z.string() }).strict()).min(1),

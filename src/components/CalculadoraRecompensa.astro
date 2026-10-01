@@ -1,14 +1,17 @@
 ---
-// A calculadora da recompensa de caça (rodada 115). As listas vêm de src/data/recompensas.json e a
+// A calculadora da recompensa de caça (rodada 115; regra da soma desde 01/10/2026). As listas vêm de src/data/recompensas.json e a
 // conta de src/lib/recompensa.ts; nenhum número da regra mora aqui.
+// TOLERÂNCIA: a tabela de desafio do autor e o desafio que o Mestre digita valem só até a bancada medir.
+// LEVANTA QUANDO: a B14 medir o desafio das criaturas, gravá-lo nas fichas e confirmar ou trocar a tabela.
 import REC from '../data/recompensas.json';
 ---
 <div class="recompensa panel">
+  <p class="muted rc-aviso">O desafio de cada criatura é <strong>provisório até a bancada medir</strong>, e as fichas do bestiário ainda não o trazem: digite o desafio e a quantidade de cada tipo de criatura do encontro. A tabela vai do desafio 0 ao {REC.desafios.at(-1)!.desafio}.</p>
+  <div class="rc-encontro" data-rc="encontro">
+    <div class="rc-linha"><label>Desafio<input type="number" min="0" max={REC.desafios.at(-1)!.desafio} step="1" value="0" data-rc-l="desafio" /></label><label>Quantidade<input type="number" min="0" step="1" value="1" data-rc-l="quantidade" /></label></div>
+  </div>
+  <p class="rc-botoes"><button type="button" data-rc="mais">+ outra criatura</button> <button type="button" data-rc="menos">− última</button></p>
   <div class="rc-campos">
-    <label>Desafio da mais forte<input type="number" min="1" value="5" data-rc="desafio" /></label>
-    <label>Centelha<input type="number" min="0" value="5" data-rc="centelha" /></label>
-    <label title="Desafio até 2 abaixo da mais forte, contando ela">Criaturas fortes (até 2 abaixo da mais forte)<input type="number" min="1" value="1" data-rc="fortes" /></label>
-    <label title="Desafio mais de 2 abaixo da mais forte: contam metade">Criaturas fracas (mais de 2 abaixo; contam metade)<input type="number" min="0" value="0" data-rc="fracas" /></label>
     <label>Semanas de caçada<input type="number" min="0" step="0.5" value="1" data-rc="cacadaSemanas" /></label>
     <label>Dias de viagem (ida e volta)<input type="number" min="0" value="16" data-rc="viagemDias" /></label>
     <label>Tipo de tarefa
@@ -31,7 +34,10 @@ import REC from '../data/recompensas.json';
 
 <!-- is:global: o recibo é montado por JS -->
 <style is:global>
-  .recompensa .rc-campos { display: flex; gap: .7rem; flex-wrap: wrap; }
+  .recompensa .rc-campos, .recompensa .rc-encontro { display: flex; gap: .7rem; flex-wrap: wrap; }
+  .recompensa .rc-linha { display: flex; gap: .5rem; padding: .3rem .4rem; border: 1px solid var(--rule); border-radius: var(--r-sm); }
+  .recompensa .rc-botoes { margin: .5rem 0 .8rem; }
+  .recompensa .rc-aviso { margin-top: 0; }
   .recompensa label { display: flex; flex-direction: column; font-size: var(--fs-micro); color: var(--ink-soft); font-family: 'Cinzel'; gap: .2rem; }
   .recompensa input, .recompensa select { width: 11rem; padding: .35rem .4rem; border: 1px solid var(--panel-border); border-radius: var(--r-sm); background: var(--bg); color: var(--ink); font-size: var(--fs-aux); }
   .recompensa input[type='number'] { width: 7rem; }
@@ -52,10 +58,24 @@ import REC from '../data/recompensas.json';
     const n = (k: string) => { const v = parseFloat(campo(k).value.replace(',', '.')); return Number.isFinite(v) ? v : 0; };
     const bolsaEl = root.querySelector<HTMLElement>('[data-rc="bolsa"]')!;
     const recibo = root.querySelector<HTMLElement>('[data-rc="recibo"]')!;
+    const encontro = root.querySelector<HTMLElement>('[data-rc="encontro"]')!;
+    const maxDesafio = REC.desafios.at(-1)!.desafio;
     const atualizar = () => {
+      const lidas = [...encontro.querySelectorAll<HTMLElement>('.rc-linha')].map((l) => {
+        const v = (k: string) => parseFloat(l.querySelector<HTMLInputElement>(`[data-rc-l="${k}"]`)!.value.replace(',', '.'));
+        return { desafio: v('desafio'), quantidade: v('quantidade') };
+      });
+      // acima do desafio 9 a tabela para, e a calculadora recusa em vez de extrapolar
+      const fora = lidas.find((l) => !Number.isInteger(l.desafio) || l.desafio < 0 || l.desafio > maxDesafio);
+      if (fora) {
+        bolsaEl.textContent = `Sem bolsa: a tabela de desafio vai de 0 a ${maxDesafio}, e o desafio ${Number.isFinite(fora.desafio) ? ptNum(fora.desafio, fora.desafio % 1 ? 1 : 0) : '(vazio)'} não tem valor.`;
+        recibo.innerHTML = '';
+        return;
+      }
+      const criaturas = lidas.map((l) => ({ desafio: l.desafio, quantidade: Number.isFinite(l.quantidade) ? Math.max(0, Math.round(l.quantidade)) : 0 }));
+      if (!criaturas.some((l) => l.quantidade > 0)) { bolsaEl.textContent = 'Sem bolsa: o encontro não tem criatura nenhuma.'; recibo.innerHTML = ''; return; }
       const e: EntradaRecompensa = {
-        desafio: Math.max(1, Math.round(n('desafio'))), centelha: Math.max(0, Math.round(n('centelha'))),
-        fortes: Math.max(1, Math.round(n('fortes'))), fracas: Math.max(0, Math.round(n('fracas'))),
+        criaturas,
         cacadaSemanas: Math.max(0, n('cacadaSemanas')), viagemDias: Math.max(0, n('viagemDias')),
         tarefa: campo('tarefa').value, risco: campo('risco').value, tom: campo('tom').value,
         outro: campo('outro').value.trim() === '' ? 1 : Math.max(0, n('outro')), grupo: Math.max(1, Math.round(n('grupo'))),
@@ -63,18 +83,30 @@ import REC from '../data/recompensas.json';
       const r = calcularRecompensa(e, REC as any);
       const sobra = r.sobra > 0 ? ` (sobram ${pc(r.sobra)}, divida como quiser)` : '';
       bolsaEl.textContent = `Bolsa: ${pc(r.bolsa)} · Parte por caçador (grupo de ${e.grupo}): ${pc(r.porCacador)}${sobra}`;
+      const parcela = (x: number) => `${ptNum(x, x % 1 ? 1 : 0)} pc`;
       const itens = [
-        `Quantidade efetiva: ${ptNum(e.fortes)} forte(s) + ${ptNum(e.fracas)} fraca(s) × ${ptNum(REC.fracas_contam, 1)} = ${ptNum(r.quantidadeEfetiva, 1)} → +${r.passoQuantidade} (cada vez que o número dobra)`,
-        `Centelha ${e.centelha} ÷ ${REC.centelha_passo} → +${r.passoCentelha}`,
-        `Degrau = desafio ${e.desafio} + quantidade ${r.passoQuantidade} + Centelha ${r.passoCentelha} = ${r.degrau}`,
-        `Valor do degrau ${r.degrau}: ${pc(r.valor)} por caçador, por semana`,
+        ...r.linhas.map((l) => `Desafio ${l.desafio}: ${pc(l.valor)} × ${ptNum(l.quantidade)} = ${pc(l.valor * l.quantidade)}`),
+        `Valor do encontro = ${r.linhas.map((l) => pc(l.valor * l.quantidade)).join(' + ')} = ${pc(r.valorEncontro)}, por caçador, por semana`,
         `Semanas = caçada ${ptNum(Math.max(1, e.cacadaSemanas), 1)} + metade da viagem (${ptNum(e.viagemDias)} dias ÷ 2 ÷ ${REC.dias_semana}) = ${ptNum(r.semanas, 1)}`,
         `Tom: ${r.tom.nome} ×${m(r.tom.mult)} · Tarefa: ${r.tarefa.nome} ×${m(r.tarefa.mult)} · Risco: ${r.risco.nome} ×${m(r.risco.mult)} · Outro ×${m(r.outro)}`,
-        `Bolsa = ${pc(r.valor)} × ${m(r.tom.mult)} × ${ptNum(r.semanas, 1)} × ${m(r.tarefa.mult)} × ${m(r.risco.mult)} × ${m(r.outro)} × ${r.grupoReferencia} = ${ptNum(r.exata, r.exata % 1 ? 1 : 0)} pc, arredondada: ${pc(r.bolsa)}`,
+        `Bolsa = ${pc(r.valorEncontro)} × ${m(r.tom.mult)} × ${ptNum(r.semanas, 1)} × ${m(r.tarefa.mult)} × ${m(r.risco.mult)} × ${m(r.outro)} × ${r.grupoReferencia} = ${ptNum(r.exata, r.exata % 1 ? 1 : 0)} pc, arredondada: ${pc(r.bolsa)}`,
+        r.solitaria
+          ? 'Criatura solitária: tudo ou nada.'
+          : `Pagamento por criatura morta ou capturada (a bolsa dividida pelo valor de cada uma): ${r.partes.map((p) => `desafio ${p.desafio}, ${parcela(p.parte)} cada`).join('; ')}`,
         `Parte por caçador = ${pc(r.bolsa)} ÷ ${e.grupo}, para baixo = ${pc(r.porCacador)}${sobra}`,
+        ...(r.maiorDesafio >= 5 ? ['A partir do desafio 5, a bolsa é paga em terra, título, direito ou favor, no valor da tabela.'] : []),
       ];
       recibo.innerHTML = itens.map((t) => `<li>${t}</li>`).join('');
     };
+    const ligar = (el: Element) => { el.addEventListener('input', atualizar); el.addEventListener('change', atualizar); };
+    root.querySelector('[data-rc="mais"]')!.addEventListener('click', () => {
+      const nova = encontro.querySelector('.rc-linha')!.cloneNode(true) as HTMLElement;
+      nova.querySelectorAll('input').forEach(ligar);
+      encontro.appendChild(nova); atualizar();
+    });
+    root.querySelector('[data-rc="menos"]')!.addEventListener('click', () => {
+      const ls = encontro.querySelectorAll('.rc-linha'); if (ls.length > 1) { ls[ls.length - 1].remove(); atualizar(); }
+    });
     root.querySelectorAll('input, select').forEach((el) => { el.addEventListener('input', atualizar); el.addEventListener('change', atualizar); });
     atualizar();
   });
