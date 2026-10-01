@@ -1,5 +1,5 @@
 {
-  "_nota": "Recompensa de caça: Bolsa = Valor do encontro × Semanas × Tarefa × Risco × 4 (o grupo de referência); Valor do encontro = a soma dos valores de todas as criaturas, cada uma pela tabela de desafio (por caçador, por semana), provisória até a bancada medir e só até o desafio 9. A bolsa e a Parte por caçador se arredondam pela régua em `arredondamento` (a mesma do `arred` de lore/economia/v2/base.py); a Parte por caçador é a bolsa ÷ o grupo, para baixo, e a sobra o grupo divide como quiser. Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
+  "_nota": "Recompensa de caça: Bolsa = Valor do encontro × Semanas × Tarefa × Risco × 4 (o grupo de referência); Valor do encontro = o valor da tabela de desafio (por caçador, por semana) no desafio do encontro: o da mais forte + 1/2 a cada dobra dos equivalentes (cada desafio abaixo da mais forte conta 1/4), para baixo; o meio degrau é a média geométrica dos vizinhos (`meios`). A tabela é provisória até a bancada medir e vai só até o desafio 9. A bolsa e a Parte por caçador se arredondam pela régua em `arredondamento` (a mesma do `arred` de lore/economia/v2/base.py); a Parte por caçador é a bolsa ÷ o grupo, para baixo, e a sobra o grupo divide como quiser. Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
   "desafios": [
     {
       "desafio": 0,
@@ -72,6 +72,73 @@
       }
     }
   ],
+  "meios": [
+    {
+      "desafio": 0.5,
+      "por": "semana",
+      "preco": {
+        "pc": 60
+      }
+    },
+    {
+      "desafio": 1.5,
+      "por": "semana",
+      "preco": {
+        "pc": 160
+      }
+    },
+    {
+      "desafio": 2.5,
+      "por": "semana",
+      "preco": {
+        "pc": 500
+      }
+    },
+    {
+      "desafio": 3.5,
+      "por": "semana",
+      "preco": {
+        "pc": 1800
+      }
+    },
+    {
+      "desafio": 4.5,
+      "por": "semana",
+      "preco": {
+        "pc": 7200
+      }
+    },
+    {
+      "desafio": 5.5,
+      "por": "semana",
+      "preco": {
+        "pc": 29000
+      }
+    },
+    {
+      "desafio": 6.5,
+      "por": "semana",
+      "preco": {
+        "pc": 115800
+      }
+    },
+    {
+      "desafio": 7.5,
+      "por": "semana",
+      "preco": {
+        "pc": 463400
+      }
+    },
+    {
+      "desafio": 8.5,
+      "por": "semana",
+      "preco": {
+        "pc": 1853600
+      }
+    }
+  ],
+  "divisor_por_desafio": 4,
+  "desafio_por_dobra": 0.5,
   "dias_semana": 8,
   "grupo": 4,
   "tarefas": [

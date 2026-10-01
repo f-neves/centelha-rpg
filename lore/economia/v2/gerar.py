@@ -229,6 +229,8 @@ RC = O["recompensas"]
 dump("recompensas.json", {
     "_nota": "Recompensa de caça.",
     "desafios": [{"desafio": n, "por": "semana", "preco": {"pc": v}} for n, v in enumerate(RC["desafios"])],
+    "meios": [{"desafio": n + 0.5, "por": "semana", "preco": {"pc": v}} for n, v in enumerate(RC["meios"])],
+    "divisor_por_desafio": RC["divisor_por_desafio"], "desafio_por_dobra": RC["desafio_por_dobra"],
     "dias_semana": RC["dias_semana"], "grupo": RC["grupo"],
     "tarefas": [{"id": i, "nome": n, "mult": x, "descricao": d} for i, n, x, d in RC["tarefas"]],
     "riscos": [{"id": i, "nome": n, "mult": x, "descricao": d} for i, n, x, d in RC["riscos"]],

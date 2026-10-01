@@ -984,6 +984,8 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
     'recompensas.json': z.object({
       _nota: nota,
       desafios: z.array(z.object({ desafio: z.number().int().min(0), por: POR, preco }).strict()).min(1),
+      meios: z.array(z.object({ desafio: z.number().min(0).refine((d) => d % 1 === 0.5, 'meio degrau termina em ,5'), por: POR, preco }).strict()).min(1),
+      divisor_por_desafio: z.number().positive(), desafio_por_dobra: z.number().positive(),
       dias_semana: z.number().int().positive(), grupo: z.number().int().positive(),
       tarefas: z.array(z.object({ id: z.string(), nome: z.string(), mult: z.number().positive(), descricao: z.string() }).strict()).min(1),
       riscos: z.array(z.object({ id: z.string(), nome: z.string(), mult: z.number().positive(), descricao: z.string() }).strict()).min(1),

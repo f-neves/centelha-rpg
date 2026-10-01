@@ -1,5 +1,5 @@
 ---
-// A calculadora da recompensa de caça (rodada 115; regra da soma desde 01/10/2026). As listas vêm de src/data/recompensas.json e a
+// A calculadora da recompensa de caça (rodada 115; encontro por equivalentes desde 01/10/2026). As listas vêm de src/data/recompensas.json e a
 // conta de src/lib/recompensa.ts; nenhum número da regra mora aqui.
 // TOLERÂNCIA: a tabela de desafio do autor e o desafio que o Mestre digita valem só até a bancada medir.
 // LEVANTA QUANDO: a B14 medir o desafio das criaturas, gravá-lo nas fichas e confirmar ou trocar a tabela.
@@ -49,7 +49,7 @@ import REC from '../data/recompensas.json';
 
 <script>
   import REC from '../data/recompensas.json';
-  import { calcularRecompensa, type EntradaRecompensa } from '../lib/recompensa';
+  import { calcularRecompensa, desafioDoEncontro, type EntradaRecompensa } from '../lib/recompensa';
   const ptNum = (n: number, casas = 0) => n.toLocaleString('pt-BR', { minimumFractionDigits: casas, maximumFractionDigits: casas });
   const pc = (n: number) => `${ptNum(n)} pc`;
   const m = (x: number) => x.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
@@ -80,21 +80,32 @@ import REC from '../data/recompensas.json';
         tarefa: campo('tarefa').value, risco: campo('risco').value, tom: campo('tom').value,
         outro: campo('outro').value.trim() === '' ? 1 : Math.max(0, n('outro')), grupo: Math.max(1, Math.round(n('grupo'))),
       };
-      const r = calcularRecompensa(e, REC as any);
+      let r: ReturnType<typeof calcularRecompensa>;
+      try { r = calcularRecompensa(e, REC as any); } catch {
+        // o desafio do encontro passou do fim da tabela (9): recusa, sem extrapolar
+        const enc = desafioDoEncontro(criaturas, REC as any);
+        bolsaEl.textContent = `Sem bolsa: o desafio do encontro dá ${ptNum(enc.desafio, enc.desafio % 1 ? 1 : 0)}, e a tabela vai só até ${maxDesafio}.`;
+        recibo.innerHTML = '';
+        return;
+      }
+      const enc = r.encontro;
+      const des = (d: number) => ptNum(d, d % 1 ? 1 : 0);
+      const eqTxt = (x: number) => x.toLocaleString('pt-BR', { maximumFractionDigits: 4 });
       const sobra = r.sobra > 0 ? ` (sobram ${pc(r.sobra)}, divida como quiser)` : '';
       bolsaEl.textContent = `Bolsa: ${pc(r.bolsa)} · Parte por caçador (grupo de ${e.grupo}): ${pc(r.porCacador)}${sobra}`;
       const parcela = (x: number) => `${ptNum(x, x % 1 ? 1 : 0)} pc`;
       const itens = [
-        ...r.linhas.map((l) => `Desafio ${l.desafio}: ${pc(l.valor)} × ${ptNum(l.quantidade)} = ${pc(l.valor * l.quantidade)}`),
-        `Valor do encontro = ${r.linhas.map((l) => pc(l.valor * l.quantidade)).join(' + ')} = ${pc(r.valorEncontro)}, por caçador, por semana`,
+        `Equivalentes (a mais forte, desafio ${enc.maisForte}, conta 1; cada desafio abaixo divide por ${REC.divisor_por_desafio}): ${enc.linhas.map((l) => `${ptNum(l.quantidade)} × ${eqTxt(l.eqCada)}`).join(' + ')} = ${eqTxt(enc.equivalentes)}`,
+        `Desafio do encontro = ${enc.maisForte} + Magnitude ${enc.magnitude} ÷ 2 = ${des(enc.desafio)} (+1/2 a cada dobra dos equivalentes, para baixo; o exato seria ${ptNum(enc.exato, 2)})`,
+        `Valor do encontro (tabela no desafio ${des(enc.desafio)}${enc.desafio % 1 ? ', meio degrau' : ''}): ${pc(r.valorEncontro)}, por caçador, por semana`,
         `Semanas = caçada ${ptNum(Math.max(1, e.cacadaSemanas), 1)} + metade da viagem (${ptNum(e.viagemDias)} dias ÷ 2 ÷ ${REC.dias_semana}) = ${ptNum(r.semanas, 1)}`,
         `Tom: ${r.tom.nome} ×${m(r.tom.mult)} · Tarefa: ${r.tarefa.nome} ×${m(r.tarefa.mult)} · Risco: ${r.risco.nome} ×${m(r.risco.mult)} · Outro ×${m(r.outro)}`,
         `Bolsa = ${pc(r.valorEncontro)} × ${m(r.tom.mult)} × ${ptNum(r.semanas, 1)} × ${m(r.tarefa.mult)} × ${m(r.risco.mult)} × ${m(r.outro)} × ${r.grupoReferencia} = ${ptNum(r.exata, r.exata % 1 ? 1 : 0)} pc, arredondada: ${pc(r.bolsa)}`,
         r.solitaria
           ? 'Criatura solitária: tudo ou nada.'
-          : `Pagamento por criatura morta ou capturada (a bolsa dividida pelo valor de cada uma): ${r.partes.map((p) => `desafio ${p.desafio}, ${parcela(p.parte)} cada`).join('; ')}`,
+          : `Pagamento por criatura morta ou capturada (a fração dos equivalentes dela): ${r.partes.map((p) => `desafio ${p.desafio}, ${parcela(p.parte)} cada (${ptNum(100 * p.fracao, 1)}%)`).join('; ')}`,
         `Parte por caçador = ${pc(r.bolsa)} ÷ ${e.grupo}, para baixo = ${pc(r.porCacador)}${sobra}`,
-        ...(r.maiorDesafio >= 5 ? ['A partir do desafio 5, a bolsa é paga em terra, título, direito ou favor, no valor da tabela.'] : []),
+        ...(enc.desafio >= 5 ? ['A partir do desafio 5, a bolsa é paga em terra, título, direito ou favor, no valor da tabela.'] : []),
       ];
       recibo.innerHTML = itens.map((t) => `<li>${t}</li>`).join('');
     };

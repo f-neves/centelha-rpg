@@ -256,7 +256,112 @@ anomalias de antes (nenhuma nova).
   exata; falta decidir se arredonda e como.
 - **Worg = 1 contradiz a bancada** (itens 2 e 3): o worg sozinho mede 0, 4 worgs medem 3, e
   quadruplicar os worgs sobe 3 desafios em vez de 1. A soma, como está, subprecifica bandos de
-  worgs em relação à bancada. É da B14 e do autor.
+  worgs em relação à bancada. É da B14 e do autor. (Atualizado no item 2b: a regra por
+  equivalentes subprecifica ainda mais; ver a leitura do item 3 refeita.)
 - **O desafio nas fichas** continua vazio; a calculadora recebe o desafio digitado (decidido na
   conferência, lacuna levada ao autor pelo Arquiteto).
 - **Os `centelhaMult` ainda lidos** (item 1d): seguem na K35, só registrados.
+
+## Item 2b · O encontro por equivalentes (Adendo 2 do autor, `ab10dfaf`)
+
+Commit novo, sem reescrever o `5d068c65`. O Comerciante achou que a soma paga demais por bando de
+fracos (100 ratazanas de desafio 0 davam 4.000); o autor trocou o Valor do encontro.
+
+**A regra, onde mora.**
+- `lore/economia/v2/modelo.py`: `REC_MEIOS = [arred(√(a × b))]` para cada par de vizinhos da
+  tabela, e `divisor_por_desafio = 4`, `desafio_por_dobra = 0,5` no `OUT["recompensas"]` (os dois
+  números da regra saem do modelo, não do código do site). Os meios degraus: 0,5 = 60; 1,5 = 160;
+  2,5 = 500; 3,5 = 1.800; 4,5 = 7.200; 5,5 = 29.000; 6,5 = 115.800; 7,5 = 463.400;
+  8,5 = 1.853.600.
+- `lore/economia/v2/gerar.py`: `recompensas.json` ganha `meios` (desafio 0,5 a 8,5),
+  `divisor_por_desafio` e `desafio_por_dobra`. Regerado pela cadeia do README; só
+  `recompensas.json` mudou. Esquema em `scripts/validate-data.mjs` e `_nota` em
+  `scripts/copiar-economia.mjs` acompanham.
+- `src/lib/recompensa.ts`: `desafioDoEncontro` faz os equivalentes (a mais forte conta 1, cada
+  desafio abaixo divide por 4, sem piso), a Magnitude (`floor(log2(equivalentes))`), o desafio do
+  encontro (mais forte + Magnitude × 1/2) e o exato (mais forte + log4 dos equivalentes, só
+  informação). `calcularRecompensa` paga pelo valor da tabela no desafio do encontro (inteiro ou
+  meio degrau); criatura fora da tabela ou encontro acima de 9 lança erro. Por cabeça, cada
+  criatura paga bolsa × equivalentes dela ÷ equivalentes do encontro; solitária, tudo ou nada.
+- `src/components/CalculadoraRecompensa.astro`: o recibo mostra os equivalentes, a Magnitude, o
+  desafio do encontro e o exato, o valor (com "meio degrau" quando for), e a parte por cabeça com a
+  fração. Encontro acima de 9: "Sem bolsa: o desafio do encontro dá 9,5, e a tabela vai só até 9."
+- `src/pages/recompensa.astro`: o texto do topo descreve o Valor do encontro pelo desafio do
+  encontro.
+- `src/content/chapters/custo-servicos.md`: a lista vira Equivalentes, Desafio do encontro
+  (+ Magnitude ÷ 2, com link para a Regra de Horda e os degraus por extenso), Valor do encontro
+  (com a tabela gerada em duas linhas: o desafio e o "+1/2"), Semanas, Tarefa, Risco. O Pagamento
+  passa a "a fração dos seus equivalentes". Entrou uma linha de exemplos (4 lobos, 100 ratazanas,
+  o chefe com 94%), para o leitor ver a conta; se o Arquiteto preferir sem, é uma linha.
+- `scripts/test-recompensa.mjs`: 19 asserções (tabela, meios degraus, os seis exemplos, os 94% do
+  chefe, partes somando a bolsa, o meio degrau de baixo em 2/3 e 8/15/16, o exato, a Parte por
+  caçador, Semanas/Tarefa/Risco, e as duas recusas).
+
+**Duas leituras que fiz, por estarem implícitas, e que o Arquiteto pode trocar.**
+1. **"A partir do desafio 5" lê o desafio do ENCONTRO**, não o da criatura mais forte (no item 2
+   era o da mais forte, porque não havia desafio de encontro). Quatro criaturas de desafio 4 dão
+   encontro 5 e mostram a frase da terra e do título.
+2. **Encontro acima de 9 recusa** do mesmo jeito que criatura acima de 9: 9,5 não tem vizinho de
+   cima para a média geométrica, e a tabela para no 9.
+
+**Os seis exemplos, conferidos à mão** (Valor do encontro, antes do × 4; Semanas 1, matar, risco
+normal, tom padrão):
+
+| encontro | equivalentes | Magnitude (degrau) | desafio | Valor do encontro | bolsa (× 4, arred) |
+|---|---|---|---|---|---|
+| 1 lobo (0) | 1 | 0 (1) | 0 | **40** | 160 |
+| 4 lobos (0) | 4 | 2 (4 a 7) | 0 + 1 = 1 | **95** | 380 |
+| 4 worgs (1, **provisório, contra a bancada**) | 4 | 2 (4 a 7) | 1 + 1 = 2 | **270** | 1.080, arred 1.100 |
+| 100 ratazanas (0) | 100 | 6 (64 a 127) | 0 + 3 = 3 | **910** | 3.640, arred 3.600 |
+| chefe (3) + 4 de desafio 0 | 1 + 4 × 1/64 = 1,0625 | 0 (1) | 3 | **910** | 3.640, arred 3.600 |
+| 4 de desafio 3 | 4 | 2 (4 a 7) | 3 + 1 = 4 | **3.600** | 14.400 |
+
+No chefe com os quatro menores, cada menor está três desafios abaixo (1/4³ = 1/64): o chefe
+responde por 1 ÷ 1,0625 = **94,1%** da bolsa (3.388,2 pc dos 3.600) e cada menor por 1,5% (52,9 pc).
+As cinco partes somam 3.600. O exato das 100 ratazanas é 0 + log4(100) = 3,32, pago pelo 3.
+
+Os seis números são asserções do `test-recompensa.mjs`, e a calculadora real (Edge headless no
+dev server, linhas digitadas pela tela) mostrou o mesmo: 1 lobo "Bolsa: 160 pc"; 100 ratazanas
+"Magnitude 6 ÷ 2 = 3 ... o exato seria 3,32 ... 910 pc ... Bolsa: 3.600 pc"; o chefe "1 × 1 + 4 ×
+0,0156 = 1,0625 ... desafio 3, 3.388,2 pc cada (94,1%); desafio 0, 52,9 pc cada (1,5%)"; 2 de
+desafio 9 "Sem bolsa: o desafio do encontro dá 9,5, e a tabela vai só até 9."; desafio 10 recusado;
+4 de desafio 4 com a frase do desafio 5. Nenhum erro de script (só os 403 de recurso estático do
+dev server).
+
+**Produção.** Para quem joga hoje: a Calculadora de Recompensa paga bando pelo desafio do encontro
+(equivalentes e meio degrau), e não mais pela soma; bando de fracos paga bem menos (100 ratazanas:
+de 4.000 para 910 por caçador e semana), e a parte por cabeça segue os equivalentes. O capítulo
+traz a regra nova. Nenhuma migração.
+
+**Verificação:** `npm run validate` (portões verdes, `test-recompensa` 19/19, economia em dia com
+o modelo), `npx astro sync && npx tsc --noEmit` (sem erro), `npm run build` (prova no gerado:
+`dist/regras/custo-servicos/index.html` traz a linha "Com +1/2 (pc)" até 1.853.600, o "Desafio do
+encontro = desafio da mais forte + Magnitude ÷ 2", o link `/centelha-rpg/regras/combate#regra-de-horda`,
+"o chefe sozinho responde por 94%" e zero "a soma dos valores"; `dist/recompensa/index.html` traz
+"mais 1/2 a cada vez que os equivalentes dobram"). `calc.ts` não mudou, então sem `espelho`. Zero
+travessão.
+
+### Item 3 relido contra a regra nova ("dobrar = +1/2 desafio")
+
+Sem rodar de novo: os N medidos (1, 2, 4 e 8) bastam. Uma ressalva de medida antes: a bancada
+mede desafio só em inteiro (Centelha 0 a 6 do grupo), então um encontro de meio degrau aparece
+como o inteiro de baixo ou o de cima, e não como ,5.
+
+| N | equivalentes | regra, lobo = 0 | lobos medidos | regra, worg = 0 (bancada) | regra, worg = 1 (provisório) | worgs medidos |
+|---|---|---|---|---|---|---|
+| 1 | 1 | 0 | 0 | 0 | 1 | 0 |
+| 2 | 2 | 0,5 | 0 | 0,5 | 1,5 | 2 |
+| 4 | 4 | 1 | 1 | 1 | 2 | 3 |
+| 8 | 8 | 1,5 | 2 | 1,5 | 2,5 | 5 |
+
+- **Lobos: a regra fica perto.** 4 lobos batem exato (1); 2 lobos (0,5) medem 0, dentro da
+  ressalva do inteiro; 8 lobos (1,5) medem 2, meio desafio acima. Por dobra, a bancada sobe +0, +1
+  e +1 (o primeiro preso no piso do 0), contra +1/2 da regra.
+- **Worgs: a regra fica longe.** A bancada sobe +2, +1 e +2 por dobra (de 1 para 8, +5), contra
+  +1/2 por dobra (+1,5). Com o worg = 0 que a bancada mede, a regra dá a 8 worgs 1,5 contra 5
+  medidos; mesmo com o worg = 1 do exemplo, 2,5 contra 5. **A regra por equivalentes subprecifica
+  bando de worgs ainda mais que a soma** (para 4 worgs de desafio 0, a soma dava um valor entre o
+  desafio 1 e o 2; a regra dá 1; a bancada mede 3).
+- O que a Fase 5b já tinha levantado continua de pé: ou o worg tem algo que faz o bando dele
+  crescer mais rápido que o de lobos, ou a política de bando da bancada (foco de fogo, pressão
+  empilhada na persona engajada) pesa demais. Para o autor e a B14; nada decidido aqui.

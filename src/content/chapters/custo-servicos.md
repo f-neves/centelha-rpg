@@ -43,7 +43,9 @@ A bolsa paga um grupo de 4, que é o grupo para o qual o nível de desafio é pe
 
 A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa).
 
-1. **Valor de cada criatura** (por caçador, por semana), pelo desafio dela. A tabela é provisória até a bancada medir o desafio das criaturas, e vai até o desafio 9:
+1. **Equivalentes.** Cada criatura no desafio da mais forte conta 1, e cada desafio abaixo da mais forte divide por 4, sem piso (um abaixo 1/4, dois 1/16, três 1/64). Os equivalentes somam com fração.
+2. **Desafio do encontro** = desafio da mais forte + Magnitude ÷ 2: sobe 1/2 a cada vez que os equivalentes dobram, para baixo, nos mesmos degraus da Magnitude da [Regra de Horda](/regras/combate#regra-de-horda) (1: +0; 2 a 3: +1/2; 4 a 7: +1; 8 a 15: +1 1/2; 16 a 31: +2; 32 a 63: +2 1/2; 64 a 127: +3).
+3. **Valor do encontro** (por caçador, por semana): o da tabela no desafio do encontro. O meio degrau é a média geométrica dos dois vizinhos, arredondada. A tabela é provisória até a bancada medir o desafio das criaturas, e vai até o desafio 9: acima disso não há valor.
 
 <!-- gen:economia-recompensas -->
 
@@ -52,19 +54,21 @@ A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa
 | Desafio | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | Valor (pc) | 40 | 95 | 270 | 910 | 3.600 | 14.500 | 57.900 | 231.700 | 926.800 | 3.707.300 |
+| Com +1/2 (pc) | 60 | 160 | 500 | 1.800 | 7.200 | 29.000 | 115.800 | 463.400 | 1.853.600 | · |
 
 </div>
 
 <!-- /gen:economia-recompensas -->
 
-2. **Valor do encontro** = a soma dos valores de todas as criaturas.
-3. **Semanas** = caçada estimada (mínimo 1) + metade da viagem de ida e volta. A semana tem 8 dias. É estimativa de contrato: se levar mais, azar de quem caça; se levar menos, sorte. A viagem conta metade porque é tempo gasto, não perigo: paga o tempo, sem o prêmio de risco.
-4. **Tipo de tarefa** (exemplos): afugentar ou expulsar ×0,75; matar ×1; trazer parte ou prova ×1; recuperar alguém ou algo levado ×1; capturar vivo ×1,5; capturar vivo e sem ferimentos, ou domar ×2.
-5. **Risco**, além do que o desafio já prevê (exemplos): normal ×1; alto, um agravante sério (terreno hostil, alvo desconhecido, prazo curto, civis para proteger) ×1,5; muito alto, dois ou mais agravantes ×2; extremo, alguém provavelmente morre mesmo dando certo ×3.
+4. **Semanas** = caçada estimada (mínimo 1) + metade da viagem de ida e volta. A semana tem 8 dias. É estimativa de contrato: se levar mais, azar de quem caça; se levar menos, sorte. A viagem conta metade porque é tempo gasto, não perigo: paga o tempo, sem o prêmio de risco.
+5. **Tipo de tarefa** (exemplos): afugentar ou expulsar ×0,75; matar ×1; trazer parte ou prova ×1; recuperar alguém ou algo levado ×1; capturar vivo ×1,5; capturar vivo e sem ferimentos, ou domar ×2.
+6. **Risco**, além do que o desafio já prevê (exemplos): normal ×1; alto, um agravante sério (terreno hostil, alvo desconhecido, prazo curto, civis para proteger) ×1,5; muito alto, dois ou mais agravantes ×2; extremo, alguém provavelmente morre mesmo dando certo ×3.
 
 **Tom da campanha:** numa campanha de dinheiro curto, o Valor do encontro vale metade; numa campanha heroica, o dobro.
 
-**Pagamento:** num bando, a bolsa se divide pelo valor de cada criatura, e cada uma morta ou capturada paga a sua parte (sucesso parcial paga parcial). Criatura solitária: tudo ou nada.
+**Pagamento:** num bando, cada criatura morta ou capturada paga a fração dos seus equivalentes no total (sucesso parcial paga parcial). Criatura solitária: tudo ou nada.
+
+Exemplos de Valor do encontro: 4 lobos (desafio 0) são 4 equivalentes, desafio 1, 95 pc; 100 ratazanas (desafio 0), desafio 3, 910 pc; um chefe de desafio 3 com 4 criaturas de desafio 0 soma 1,0625 equivalentes, desafio 3, 910 pc, e o chefe sozinho responde por 94% da bolsa.
 
 A partir do desafio 5, a bolsa é paga em terra, título, direito ou favor, no valor da tabela.
 

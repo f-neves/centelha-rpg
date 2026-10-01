@@ -440,14 +440,17 @@ OUT["reparo_v2"] = {nome: {d: (reparo_v3(mo, pe, d), reparo_v3(mo, pe, d)) for d
                     for nome, mo, pe in (("Faca", 6, 3), ("Espada", 12, 10), ("Placa completa", 6, 24))}
 
 # =====================================================================
-# RECOMPENSAS DE CAÇA (rodada 115; regra da soma, fechamento da economia, 01/10/2026)
+# RECOMPENSAS DE CAÇA (rodada 115; fechamento da economia, 01/10/2026, item 2 e Adendo 2)
 # =====================================================================
 # Bolsa = Valor do encontro × Semanas × Tarefa × Risco × 4 (o grupo de referência, B14 fase 2 item
-# D.14, 26/09/2026). Valor do encontro = a soma dos valores de todas as criaturas, cada uma pela
-# tabela de desafio abaixo (por caçador, por semana). A tabela é do autor (01/10/2026), PROVISÓRIA
-# até a bancada medir, e para no desafio 9: acima dele a calculadora recusa, sem extrapolar. Saíram o
-# Degrau, o termo de Centelha e a regra de quantidade (+1 por dobra, fracas contam metade).
+# D.14, 26/09/2026). Valor do encontro = o valor da tabela no desafio do ENCONTRO (Adendo 2): a
+# criatura no desafio da mais forte conta 1 equivalente, cada desafio abaixo divide por 4, e o
+# desafio do encontro é o da mais forte + 1/2 a cada dobra dos equivalentes (os degraus da
+# Magnitude da Regra de Horda, para baixo). A tabela é do autor (01/10/2026), PROVISÓRIA até a
+# bancada medir, e para no desafio 9: acima dele a calculadora recusa, sem extrapolar. O meio degrau
+# entre dois desafios é a média geométrica dos vizinhos, arredondada pelo `arred`.
 REC_DESAFIOS = [40, 95, 270, 910, 3600, 14500, 57900, 231700, 926800, 3707300]
+REC_MEIOS = [arred(math.sqrt(a * b)) for a, b in zip(REC_DESAFIOS, REC_DESAFIOS[1:])]
 REC_TAREFAS = [
     ("afugentar", "Afugentar ou expulsar", 0.75, "Tirar a criatura do lugar, sem precisar matá-la."),
     ("matar", "Matar", 1, "Abater a criatura."),
@@ -464,7 +467,7 @@ REC_RISCOS = [
 ]
 REC_TONS = [("curto", "Dinheiro curto", 0.5), ("padrao", "Padrão", 1), ("heroico", "Heroico", 2)]
 REC_URGENCIAS = [("normal", "Normal", 1), ("grave", "Grave", 3), ("desespero", "Desespero", 10)]
-OUT["recompensas"] = dict(desafios=REC_DESAFIOS, dias_semana=DIAS_SEMANA, grupo=4,
+OUT["recompensas"] = dict(desafios=REC_DESAFIOS, meios=REC_MEIOS, divisor_por_desafio=4, desafio_por_dobra=0.5, dias_semana=DIAS_SEMANA, grupo=4,
                           tarefas=REC_TAREFAS, riscos=REC_RISCOS, tons=REC_TONS, urgencias=REC_URGENCIAS)
 
 if __name__ == "__main__":

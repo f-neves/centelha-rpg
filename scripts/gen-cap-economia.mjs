@@ -154,11 +154,13 @@ blocos.pacotes = Object.entries(PAC).map(([nome, p]) => {
 }).join('\n');
 
 // ------------------------------------------------ recompensas de caça (rodada 115)
-// O valor de cada desafio (por caçador, por semana; regra da soma, 01/10/2026) e a capacidade de quem paga (Livre/Ano da faixa ×
+// O valor de cada desafio e do meio degrau acima dele (por caçador, por semana; encontro por
+// equivalentes, Adendo 2 de 01/10/2026) e a capacidade de quem paga (Livre/Ano da faixa ×
 // urgência), lidos de recompensas.json e renda.json.
 blocos.recompensas = envolve(tabela(
   ['Desafio', ...REC.desafios.map((d) => String(d.desafio))], ['l', ...REC.desafios.map(() => 'c')],
-  [['Valor (pc)', ...REC.desafios.map((d) => milhar(pcDe(d)))]],
+  [['Valor (pc)', ...REC.desafios.map((d) => milhar(pcDe(d)))],
+   ['Com +1/2 (pc)', ...REC.desafios.map((d) => { const m = REC.meios.find((x) => x.desafio === d.desafio + 0.5); return m ? milhar(pcDe(m)) : '·'; })]],
 ));
 blocos['recompensas-capacidade'] = envolve(tabela(
   ['Faixa', 'Livre/Ano', ...REC.urgencias.map((u) => `${u.nome} ×${num(u.mult)}`)], ['l', 'c', ...REC.urgencias.map(() => 'c')],
