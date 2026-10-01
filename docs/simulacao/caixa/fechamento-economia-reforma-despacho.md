@@ -175,6 +175,27 @@ então isto entra como **commit novo (2b)**, sem reescrever o `5d068c65`.
    regeneração, `recompensa.ts`, `CalculadoraRecompensa.astro`, `recompensa.astro`,
    `custo-servicos.md`, `test-recompensa.mjs`).
 
+## Adendo 3 (autor, 01/10, depois do 2b em `c09261ce`): item 2c
+
+1. **"+1/2 por dobra" fica, marcado como PROVISÓRIO** no capítulo e na calculadora. No relato,
+   registrar a contradição da bancada (item 3: worgs 0, 2, 3, 5 e lobos 0, 0, 1, 2 para N = 1, 2,
+   4, 8), com a ressalva de que N = 8 rodou como indivíduos, e não como Horda.
+2. **Worg = 0** nos exemplos (medido sozinho no item 3), e não 1. Refazer o exemplo dos worgs com
+   esse valor (4 worgs = 4 equivalentes, desafio 0 + 1 = 1, Valor do encontro 95) e dizer que a
+   bancada mediu 4 worgs em 3.
+3. **Parte de cada criatura no bando: arredonda para baixo, no pc; a sobra vai para a criatura
+   mais forte.** Fecha a pendência que o item 2 deixou aberta.
+4. **Degrau na borda da Magnitude (127 para 128 equivalentes): conhecido e aceito.** Quem escolhe
+   o número de criaturas é o Mestre, e a Regra de Horda tem os mesmos degraus. Registrar no
+   relato (e no capítulo só se couber numa frase).
+5. **Fila da B14** (`docs/pendencias/B-bestiario.md`, no fim do que já está na fila):
+   - bando medido com N = 1, 2, 4, 8, 16 e 32 para lobos, worgs e uma criatura de desafio 2,
+     usando a Regra de Horda (`combate.md:409`) a partir de 8 (2 por personagem);
+   - informar o desafio por N e se a curva casa com "+1/2 por dobra";
+   - registrar a suspeita: a Guarda sob pressão pode pesar demais com 2 a 4 atacantes (1 worg
+     = 0, 2 worgs = 2).
+   Só anotar; medir fica para a B14, sem decidir nada.
+
 ## Regras desta rodada
 
 - Um commit por item (1, 2, 3 se houver, 4), com pathspec, rebase antes e depois, `push origin
