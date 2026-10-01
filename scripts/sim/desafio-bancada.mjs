@@ -135,11 +135,21 @@ function combatentePersona(persona, bloco, somaPers12) {
   const armaId = ARMA_POR_PERSONA[persona] || null;
   const classe = armaId ? L0.classeDeTempo(armaId, null, null) : null;
   const velocidade = armaId ? L0.velocidadeDaArma(armaId, 5) : null;
+  // Para a leitura alternativa da Guarda sob pressão ("cai na Habilidade", Fase 5b,
+  // Adendo item 2): guarda os componentes crus e a penalidade de armadura/escudo já
+  // embutida em `r.defesa`, pra recompor a Defesa com a Habilidade reduzida quando
+  // `GUARDA_MODO==='habilidade'`.
+  const destrezaRaw = ficha.attrs.destreza;
+  const esquivaRaw = ficha.skills.esquiva;
+  const penFisica = (destrezaRaw + esquivaRaw) * (REGRAS.derivados.defesa.mult ?? 2)
+    + 2 * Math.min(Math.max(0, centelha), Math.max(0, esquivaRaw)) - r.defesa;
   return {
     id: persona, nome: persona, tipo: 'persona',
     pv: BASE_PV, pvMax: BASE_PV,
     defesaBase: r.defesa + (bloco.proezas?.defesa || 0),
     proezasDefesaAplicada: bloco.proezas?.defesa || 0,
+    proezasAtual: bloco.proezas?.defesa || 0,
+    destrezaRaw, esquivaRaw, penFisica,
     soak: r.soak,
     ataque: r.ataque, dano: r.dano,
     tipoDano: tipoDaExpressao(r.dano) || 'impacto',
@@ -183,10 +193,16 @@ function carregarCriatura(id) {
   // `ficha.ataques[0].tipo`, mapeado para o vocabulário de `soak` ('perfurante'→'perfuracao').
   const TIPO_PARA_SOAK = { perfurante: 'perfuracao', corte: 'corte', impacto: 'impacto' };
   const tipoDanoBasico = TIPO_PARA_SOAK[ficha.ataques?.[0]?.tipo] || tipoDaExpressao(a0.dano) || 'impacto';
+  // Componentes crus pra leitura alternativa da Guarda sob pressão (ver combatentePersona).
+  const destrezaRaw = ficha.attrs.destreza;
+  const esquivaRaw = ficha.skills.esquiva ?? 0;
+  const penFisica = (destrezaRaw + esquivaRaw) * (REGRAS.derivados.defesa.mult ?? 2)
+    + 2 * Math.min(Math.max(0, mesa.centelha), Math.max(0, esquivaRaw)) - mesa.combate.defesa;
   return {
     id, nome: ficha.nome, tipo: 'criatura',
     pv: mesa.combate.pv, pvMax: mesa.combate.pv,
     defesaBase: mesa.combate.defesa,
+    destrezaRaw, esquivaRaw, penFisica,
     soak: mesa.combate.absorcao,
     ataque: a0.pool, dano: a0.dano,
     tipoDano: tipoDanoBasico,
@@ -339,15 +355,13 @@ function dadosComAjuste(n, ajusteDados) {
  * Dano líquido médio por golpe (com acerto/raspão/erro), contra UM alvo. `ajusteDados`
  * é a penalidade de Rajada/dupla no POOL DE ACERTO (negativo, nunca no dano: a Margem é
  * que cresce o dano, e o pool de dano não leva a penalidade de golpes múltiplos).
- * `defesaPerdida` é a Guarda sob pressão já computada (`pressao × −2`, ver
- * `defesaPerdidaDaPressao`), somada à Defesa do alvo como a fórmula escrita manda.
+ * `defesaEfetiva` já vem pronta de `defesaComPressao` (Guarda sob pressão aplicada).
  */
-function danoEsperadoContra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano, ajusteDados = 0, defesaPerdida = 0) {
+function danoEsperadoContra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano, ajusteDados, defesaEfetiva) {
   const margemQA = atacanteQa.qaArmaBonus + (alvo.qaArmaduraBonus ?? 0);
   const danoQA = Math.max(0, atacanteQa.qaArmaDano - (alvo.qaArmaduraReducao ?? 0) + atacanteQa.centelha - alvo.centelha);
   const at = parseExprSimples(ataqueExpr);
   const pmfAtaque = pmfDadoCache(dadosComAjuste(at.n, ajusteDados));
-  const defesaEfetiva = alvo.defesaBase + defesaPerdida;
   let pAcerto = 0, pRaspao = 0;
   for (const [soma6, p] of pmfAtaque) {
     const total = soma6 + at.flat;
@@ -367,21 +381,43 @@ function danoEsperadoContra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano, aj
 }
 /** Dano esperado somado sobre os alvos atingidos (área ≥10m atinge todos os vivos). */
 function danoEsperadoOpcao(ataqueExpr, danoExpr, atacanteQa, alvos, tipoDano) {
-  return alvos.reduce((s, alvo) => s + danoEsperadoContra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano, 0, defesaPerdidaDaPressao(alvo)), 0);
+  return alvos.reduce((s, alvo) => s + danoEsperadoContra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano, 0, defesaComPressao(alvo)), 0);
 }
-/** A Guarda sob pressão (`combate.md:405`, `regras.json → combate.escada.pressaoPorAtaque`):
- * cada ataque QUE O ALVO RECEBE reduz a Defesa dele em 2, até a próxima ação dele. Mesma
- * leitura que `src/lib/combate-tempo.ts`/`grid.astro` implementam de verdade: só o lado
- * RECEBIDO conta (o texto também fala em "faz", mas nenhum dos dois lugares do código
- * soma pressão em quem ataca, só em quem é atingido; sigo o código, não o texto solto). */
+/**
+ * Guarda sob pressão (`combate.md:405`): cada ataque QUE O ALVO RECEBE (ou, na leitura
+ * escrita, também os que ele FAZ, mas nem `combate-tempo.ts` nem `grid.astro` somam esse
+ * lado: sigo o código, não o texto solto) reduz a guarda em 2, acumulando até a próxima
+ * ação do alvo, sem teto. `alvo.pressao` é a CONTAGEM de ataques (não o já multiplicado).
+ *
+ * DUAS LEITURAS de ONDE o −2 entra (Fase 5b, Adendo do autor, 01/10/2026, pedindo as duas
+ * atrás de uma chave): o autor pediu confirmação entre colchetes; `GUARDA_MODO` decide, e
+ * o padrão é o que ele escolheu.
+ *   'defesaFinal' (PADRÃO): o −2 cai na Defesa já pronta, por fora da fórmula; NÃO mexe
+ *     na Habilidade nem no teto `2×mín(Centelha,Habilidade)`.
+ *   'habilidade': o −2 cai na própria Habilidade (Esquiva/Bloqueio) ANTES da fórmula,
+ *     então reduz também o teto da Centelha (`2×mín(Centelha,Habilidade−pressão)`).
+ * Para trocar: editar a constante abaixo. É a "UMA chave" pedida pelo Adendo: nenhuma
+ * bandeira de CLI nova, só esta constante de módulo.
+ */
+const GUARDA_MODO = 'defesaFinal'; // 'defesaFinal' | 'habilidade'
 const PRESSAO_POR_ATAQUE = REGRAS.combate.escada.pressaoPorAtaque ?? -2;
-const defesaPerdidaDaPressao = (alvo) => (alvo.pressao || 0) * PRESSAO_POR_ATAQUE;
+function defesaComPressao(alvo) {
+  // Chave de medição (despacho da Fase 5b, item 5: efeito isolado da Guarda sob
+  // pressão): `alvo.semGuarda` desliga o termo inteiro, pra comparar com/sem.
+  const pressao = alvo.semGuarda ? 0 : (alvo.pressao || 0);
+  if (GUARDA_MODO === 'habilidade' && alvo.destrezaRaw != null) {
+    const habilidadeEfetiva = Math.max(0, alvo.esquivaRaw + pressao * (PRESSAO_POR_ATAQUE / 2));
+    return L0.defesa({ destreza: alvo.destrezaRaw, habilidade: habilidadeEfetiva, centelha: alvo.centelha })
+      - alvo.penFisica + (alvo.proezasAtual || 0);
+  }
+  return alvo.defesaBase + pressao * PRESSAO_POR_ATAQUE;
+}
 /** Dano esperado de uma manobra de vários golpes (Rajada/dupla), somando golpe a golpe,
  * já com a Guarda sob pressão de quem avalia a escolha (aproximação: a pressão do alvo
  * no INÍCIO da ação, sem reprojetar golpe a golpe dentro da própria estimativa). */
 function danoEsperadoManobra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano, penDados) {
-  const dv = defesaPerdidaDaPressao(alvo);
-  return penDados.reduce((s, pd) => s + danoEsperadoContra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano, pd, dv), 0);
+  const defesaEfetiva = defesaComPressao(alvo);
+  return penDados.reduce((s, pd) => s + danoEsperadoContra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano, pd, defesaEfetiva), 0);
 }
 
 /**
@@ -528,8 +564,8 @@ function vontadeDefesa(alvo) {
  * Resolve UM golpe físico, atacante → alvo, com Guarda sob pressão (`combate.md:405`) e
  * Vontade defensiva. `ajusteDados` é a penalidade de Rajada/dupla no acerto deste golpe
  * (`penDados[i]`). Incrementa `alvo.pressao` em 1 ao final (cada ataque RECEBIDO, ver
- * `defesaPerdidaDaPressao`), seja acerto, raspão ou erro: é a mesma régua do
- * `resolverContra` do motor da mesa (`pressao: (base.pressao||0)+1`, sem checar veredito).
+ * `defesaComPressao`), seja acerto, raspão ou erro: é a mesma régua do `resolverContra`
+ * do motor da mesa (`pressao: (base.pressao||0)+1`, sem checar veredito).
  */
 function resolverGolpeFisico(L, fonte, atacante, alvo, ajusteDados) {
   const vDef = vontadeDefesa(alvo);
@@ -539,7 +575,7 @@ function resolverGolpeFisico(L, fonte, atacante, alvo, ajusteDados) {
     qaArmaBonus: atacante.qaArmaBonus, qaArmaDano: atacante.qaArmaDano, centelha: atacante.centelha,
     tipoDano: atacante.tipoDano,
   }, {
-    defesaBase: alvo.defesaBase + vDef + defesaPerdidaDaPressao(alvo),
+    defesaBase: defesaComPressao(alvo) + vDef,
     soak: alvo.soak, pv: alvo.pv, pvMax: alvo.pvMax,
     qaArmaduraBonus: alvo.qaArmaduraBonus ?? 0, qaArmaduraReducao: alvo.qaArmaduraReducao ?? 0, centelha: alvo.centelha,
   }, fonte);
@@ -555,13 +591,21 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
   // VARIANTE "Ataque total" (despacho item 3, 01/10/2026): só entra quando pedida
   // explicitamente; é um Poder Especial de teste, não parte da base.
   c.ataqueTotal = !!opts.ataqueTotal;
+  c.semGuarda = !!opts.semGuardaPressao;
   const personas = grupoCombatentes(centelha);
-  // VARIANTE B2 (matriz pedida pelo Arquiteto, 30/09/2026): Pers.1 sem Proezas de Defesa
-  // e sem o bônus reativo de Vontade na Defesa (Grave → +4). Só dentro da bancada, não
-  // muda ficha nem regra.
+  if (opts.semGuardaPressao) for (const p of personas) p.semGuarda = true;
+  // VARIANTE B2 da FASE 5 (30/09/2026, agora só de referência histórica): Pers.1 sem
+  // Proezas de Defesa E sem Vontade na Defesa, as duas juntas.
   if (opts.semDefesaExtraPers1) {
     const pers1 = personas.find((p) => p.id === 'pers1');
-    if (pers1) { pers1.defesaBase -= pers1.proezasDefesaAplicada || 0; pers1.semVontadeDefesa = true; }
+    if (pers1) { pers1.defesaBase -= pers1.proezasDefesaAplicada || 0; pers1.proezasAtual = 0; pers1.semVontadeDefesa = true; }
+  }
+  // BASE NOVA da FASE 5b (Adendo do autor, 01/10/2026): "não é a B2 antiga". Pers.1 fica
+  // SEM Proezas de Defesa, mas COM Vontade na Defesa (o traço Força de Vontade real,
+  // `willpower`, continua valendo). Só tira Proezas; não mexe em `semVontadeDefesa`.
+  if (opts.semProezasPers1) {
+    const pers1 = personas.find((p) => p.id === 'pers1');
+    if (pers1) { pers1.defesaBase -= pers1.proezasDefesaAplicada || 0; pers1.proezasAtual = 0; }
   }
   L.semear(L.semeadoDe(seed));
   const fonte = L.fonteRolada;
@@ -731,17 +775,23 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
  *   - a ordem dentro do turno é a mesma do 1×1 (criaturas agem, depois as personas), e
  *     isto importa pra pilha de Guarda sob pressão: um bando de N golpeando a MESMA
  *     persona empilha N pontos de pressão nela antes mesmo das personas agirem.
- * Base nova (B2): aceita `opts.semDefesaExtraPers1` como `rodarBatalha`; sem variante
- * (nem A2, nem Ataque total): o próprio despacho pede "base nova, sem variante".
+ * Base nova (Adendo, 01/10/2026): aceita `opts.semProezasPers1` como `rodarBatalha`
+ * (Pers.1 sem Proezas de Defesa, COM Vontade real); sem variante (nem A2, nem Ataque
+ * total): o próprio despacho pede "base nova, sem variante".
  */
 export function rodarBatalhaBando(L, criaturaBase, n, centelha, seed, opts = {}) {
   const criaturas = Array.from({ length: n }, () => ({
-    ...structuredClone(criaturaBase), poderState: {}, ataqueTotal: false,
+    ...structuredClone(criaturaBase), poderState: {}, ataqueTotal: false, semGuarda: !!opts.semGuardaPressao,
   }));
   const personas = grupoCombatentes(centelha);
+  if (opts.semGuardaPressao) for (const p of personas) p.semGuarda = true;
   if (opts.semDefesaExtraPers1) {
     const pers1 = personas.find((p) => p.id === 'pers1');
-    if (pers1) { pers1.defesaBase -= pers1.proezasDefesaAplicada || 0; pers1.semVontadeDefesa = true; }
+    if (pers1) { pers1.defesaBase -= pers1.proezasDefesaAplicada || 0; pers1.proezasAtual = 0; pers1.semVontadeDefesa = true; }
+  }
+  if (opts.semProezasPers1) {
+    const pers1 = personas.find((p) => p.id === 'pers1');
+    if (pers1) { pers1.defesaBase -= pers1.proezasDefesaAplicada || 0; pers1.proezasAtual = 0; }
   }
   L.semear(L.semeadoDe(seed));
   const fonte = L.fonteRolada;

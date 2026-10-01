@@ -1,6 +1,6 @@
 // desafio-5b-bateria.mjs · B14 Fase 5b (01/10/2026): Filhote/Jovem/Adulto em A1/A2 ×
-// base(B2, sem Proezas/Vontade do Pers.1)/B1 (com Proezas, sensibilidade), com Rajada e
-// dupla. Reusa `desafio-bancada.mjs`; nenhuma fórmula nova.
+// base (Adendo: sem Proezas de Defesa, COM Vontade real do Pers.1)/B1 (com Proezas,
+// sensibilidade), com Rajada e dupla. Reusa `desafio-bancada.mjs`; nenhuma fórmula nova.
 import { carregarCriatura, criaturaA2, rodarBatalha, wilson, grupoCombatentes, L0 } from './desafio-bancada.mjs';
 
 const SEMENTE = 20261001;
@@ -54,15 +54,15 @@ function curva(criaturaBase, opts) {
   return { linha, desafio: acha ? acha.centelha : null };
 }
 
-console.log('# B14 Fase 5b · Filhote/Jovem/Adulto, A1/A2 × base(B2)/B1, N=%d\n', N);
+console.log('# B14 Fase 5b · Filhote/Jovem/Adulto, A1/A2 × base/B1, N=%d\n', N);
 for (const [id, faixa] of ALVOS) {
   const base = carregarCriatura(id);
   const baseA2 = criaturaA2(id, base);
   console.log(`## ${id} (Centelha ${base.centelha}, faixa do autor: ${faixa})\n`);
   const celulas = [
-    ['A1,base(B2)', base, { semDefesaExtraPers1: true }],
+    ['A1,base', base, { semProezasPers1: true }],
     ['A1,B1', base, {}],
-    ['A2,base(B2)', baseA2, { semDefesaExtraPers1: true }],
+    ['A2,base', baseA2, { semProezasPers1: true }],
     ['A2,B1', baseA2, {}],
   ];
   for (const [nome, criatura, opts] of celulas) {

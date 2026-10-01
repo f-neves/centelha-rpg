@@ -93,6 +93,8 @@ Substitui os itens 1, 2, 5 e 6 da "Atenção especial" acima.
    nesta rodada. **O texto do autor trazia a leitura alternativa entre colchetes** ("o −2 cai na
    Habilidade Esquiva/Bloqueio, com efeito na base e no teto da Centelha"); pedi a confirmação.
    Implemente com uma chave única que troque entre as duas leituras, padrão na Defesa final.
+   **Confirmado pelo autor em 01/10: vale a leitura da Defesa final.** A chave pode ficar,
+   mas os resultados oficiais saem nessa leitura.
 3. **Bando**: N criaturas individuais. 4 e 5 lobos e worgs ficam abaixo da sugestão de Horda
    do livro (2 por personagem, 8).
 4. **Base da bancada**: SEM Proezas e COM Vontade (o traço Força de Vontade real). A B2 antiga
