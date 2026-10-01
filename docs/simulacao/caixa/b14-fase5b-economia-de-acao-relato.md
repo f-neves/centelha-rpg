@@ -278,9 +278,10 @@ que ataca acumula a própria `pressaoFeita`, e isso facilita o contra-ataque do 
 contra ELA especificamente depois; ao mesmo tempo, a persona engajada acumula
 `pressaoRecebida` de TODAS as N criaturas que bateram nela no mesmo turno, facilitando o
 acerto delas contra essa persona também. Os dois efeitos se somam rápido num bando de 4-5,
-mais do que numa luta 1×1. O número que o autor deu (desafio 2 pra 4-5 worgs) foi medido
-antes da correção da Guarda sob pressão: pode ser que precise ser revisto, ou que a
-política de robô do bando (foco de fogo, ordem de ação) precise de outro olhar. Devolvo a
+mais do que numa luta 1×1. O número que o autor deu (desafio 2 pra 4-5 worgs) é a
+EXPECTATIVA dele sobre o resultado, não algo que ele mediu: pode ser que a expectativa
+precise ser revista à luz da regra escrita, ou que a política de robô do bando (foco de
+fogo, ordem de ação) precise de outro olhar. Devolvo a
 pergunta, não decido sozinha.
 
 ### Item 5 completo: as duas parcelas isoladas (Adendo 1 + Adendo 2)
@@ -312,3 +313,93 @@ pra 2): é ela que pesa mais no bando, confirmando a leitura do item anterior.
 Regressão conferida: 1 lobo contra o grupo Centelha 0 continua sem ser desafio, com a
 Guarda sob pressão (feito+recebida) e a Rajada ligadas. CI do GitHub: confirmo job a job
 depois do commit.
+
+## Adendo 3 (autor, 01/10, corrigindo `8c7f941f`): a fase não entra na bancada
+
+**O erro apontado**: `8c7f941f` modelou a penalidade de fase (Preparo −2, Golpe −4) como
+um estado PERSISTENTE (−4 fixo, ligando quando o combatente age e durando até a próxima
+ação dele, igual à Guarda sob pressão), inclusive em ações sem ataque (Protecao,
+Cura-em-si, Cura/Estabilizar/Cobrir do Pers.3). **Não era isso que o autor tinha dito**
+("uma vale durante o gesto, a outra até a próxima ação") nem o que a regra escreve: o
+texto (`combate.md` "Dois sistemas de tempo" e "Golpes no mesmo instante", `:98-114` e
+`:378-382`) prende a fase ao INSTANTE do gesto, não a um intervalo que dura até a próxima
+ação de quem a sofre.
+
+**Decisão do autor, aplicada**: a fase só vale contra golpes que caem NO MESMO INSTANTE
+do gesto de quem a sofre. Esta bancada por turnos não tem esse instante compartilhado: o
+bando age primeiro, inteiro, depois as personas agem, inteiro; não existe um ponto em que
+os dois lados estão "no meio do próprio gesto" ao mesmo tempo. Criar um recorte de
+simultaneidade só pra caber a fase seria regra nova, então **a fase fica FORA da bancada**,
+registrada como suposição (item 9 da lista no topo de `desafio-bancada.mjs`). Removida:
+a constante `faseExposta` e o termo −4 em `defesaComPressao()`. Só a Guarda sob pressão
+(desgaste contínuo, feito+recebido) continua entrando no cálculo. Cura/Estabilizar/Cobrir
+confirmados sem contar como "ataque feito" (só `resolverGolpeFisico()` soma
+`pressaoFeita`, e essas três ações nunca chamam essa função).
+
+**A lição que levo**: devia ter perguntado antes de escolher como modelar a fase numa
+bancada por turnos, em vez de decidir sozinha e só registrar a escolha depois. O despacho
+pedia "diga como modelou", e eu li isso como licença pra decidir; não era. Uma modelagem
+genuinamente em aberto (sem instante compartilhado nesta bancada) é exatamente o tipo de
+situação pra parar e perguntar antes, não depois.
+
+### Tabela lado a lado: fase permanente (`8c7f941f`, errada) × corrigida (sem fase)
+
+**Filhote, Jovem, Adulto** (desafio medido; faixa do autor entre parênteses):
+
+| criatura | célula | fase permanente (errada) | corrigido (sem fase) |
+|---|---|---|---|
+| Filhote (3 ou 4) | A1/A2, base | 3 ✓ | 2 ✗ |
+| | A1/A2, B1 | 3 ✓ | 2 ✗ |
+| Jovem (5 ou 6) | A1/A2, base | 6 ✓ | 5 ✓ |
+| | A1/A2, B1 | 5 ✓ | 5 ✓ |
+| Adulto (6 a 8) | A1/A2, base/B1 | não alcançado ✗ | não alcançado ✗ |
+
+**Bando** (desafio medido; expectativa do autor entre parênteses):
+
+| grupo | fase permanente (errada) | corrigido (sem fase) |
+|---|---|---|
+| 1 lobo (não é desafio) | 0 ✓ | 0 ✓ |
+| 4 lobos (sem expectativa) | 2 | 1 |
+| 4 worgs (expectativa 2) | 3 ✗ | 3 ✗ |
+| 5 worgs (expectativa 2) | 4 ✗ | 3 ✗ |
+
+**Leitura**: a fase permanente (o erro) empurrava TUDO pra cima (mais desafio): o
+Filhote só alcançava a faixa com ela ligada; sem ela, volta a ficar abaixo (desafio 2,
+precisa de 3-4), do mesmo jeito que na primeira rodada desta fase, antes de qualquer
+correção de pressão. **Testei "Ataque total" no Filhote de novo** (a condição "só se o
+item 2 não chegar" volta a valer pra ele): com `semProezasPers1`, desafio=3 ✓; com B1,
+desafio=3 ✓ também agora (antes da fase era 2). O Jovem e o bando de worgs mudam pouco
+entre as duas versões (a fase pesava menos neles do que no Filhote especificamente,
+porque o Filhote é quem mais depende de poucos turnos decisivos pra resolver a luta).
+**Nenhuma das duas versões faz o bando de worgs bater a expectativa do autor** (desafio 2):
+tanto com a fase errada quanto sem ela, 4-5 worgs saem acima disso (3 e 3-4).
+
+### Item 5, refeito com a fase removida
+
+**Filhote (A1, base):**
+
+| | C0 | C1 | C2 | desafio |
+|---|---|---|---|---|
+| Pressão INTEIRA (feito+recebida) | 0,0% | 0,0% | 80,5% | **2** |
+| SEM pressão nenhuma | 0,0% | 5,5% | 100% | **2** |
+| Só "recebida" (sem a parcela "feito") | 0,0% | 0,0% | 95,5% | **2** |
+
+**4 lobos (bando, base):**
+
+| | C0 | C1 | desafio |
+|---|---|---|---|
+| Pressão INTEIRA (feito+recebida) | 0,0% | 100% | **1** |
+| SEM pressão nenhuma | 100% | 100% | **0** |
+| Só "recebida" (sem a parcela "feito") | 100% | 100% | **0** |
+
+**Leitura, sem a fase**: no Filhote, nenhuma das três versões muda o desafio (fica 2 nas
+três): a Guarda sob pressão, sozinha, já não é o suficiente pra levar o Filhote à faixa.
+**Nos 4 lobos, é de novo a parcela "feito" que decide**: sem ela (ou sem pressão nenhuma),
+desafio 0; com ela, desafio 1. Confirma, com os números certos desta vez, que o bando é
+onde a parcela "ataque feito" mais pesa.
+
+## Verificação (Adendo 3)
+
+`npm run validate`, `npx tsc --noEmit`, `npm run build`, `npm run espelho`: verdes.
+Regressão conferida: 1 lobo contra o grupo Centelha 0 continua sem ser desafio (100% de
+vitória, 100/100 resolvidas). CI do GitHub: confirmo job a job depois do commit.

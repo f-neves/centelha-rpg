@@ -41,6 +41,14 @@
 //   8. Alvo da Arte ofensiva de recarga ("contra o alvo mais perigoso"): mesma regra de
 //      alvo da política 1 (persona engajada, ou a mais ferida se a criatura for à
 //      distância/alcance longo/voadora), por não haver uma métrica de "perigo" definida.
+//   9. CORRIGIDO em 01/10/2026 (Adendo 3 do autor, Fase 5b): as penalidades de FASE
+//      (Preparo −2, Golpe −4, `combate.md:98-114`/`:378-382`) ficam FORA da bancada. Elas
+//      só valem contra golpes que caem no MESMO INSTANTE do gesto de quem as sofre, e
+//      esta bancada por turnos não tem um instante compartilhado entre o lado que ataca e
+//      o lado que é atingido (os dois agem em blocos sequenciais, nunca ao mesmo
+//      "tempo"). Uma versão anterior (`8c7f941f`) tinha modelado isto errado, como um
+//      estado persistente de −4 "até a próxima ação" (a régua da Guarda sob pressão, não
+//      a da fase); corrigido. Só a Guarda sob pressão entra no cálculo.
 import { carregarLib, ligar } from './lib-ponte.mjs';
 import { tipoDaExpressao } from './elenco.mjs';
 import { grupoDeReferencia } from './desafio-personas.mjs';
@@ -164,7 +172,7 @@ function combatentePersona(persona, bloco, somaPers12) {
     manaMax: persona === 'pers3' ? L0.mana({ centelha, vontade: ficha.willpower }) : 0,
     manaRestante: persona === 'pers3' ? L0.mana({ centelha, vontade: ficha.willpower }) : 0,
     engajado: false, caido: false, coberto: false, curouAlguem: false,
-    pressaoRecebida: 0, pressaoFeita: 0, faseExposta: false, atrasoTicks: 0,
+    pressaoRecebida: 0, pressaoFeita: 0, atrasoTicks: 0,
   };
 }
 
@@ -232,7 +240,7 @@ function carregarCriatura(id) {
     classe: a0.classe || 'leve', velocidade: a0.speed || 5,
     poderState: {}, // id -> { usosRestantes, cooldownTurnos }
     protecaoUsada: false, curaUsada: false, defesaExtra: 0,
-    pressaoRecebida: 0, pressaoFeita: 0, faseExposta: false, atrasoTicks: 0,
+    pressaoRecebida: 0, pressaoFeita: 0, atrasoTicks: 0,
     // Vontade defensiva (política 4) é só das personas nesta bancada; sem isto,
     // `vontadeDefesa()` leria `vontadeRestante` indefinido (NaN <= 0 é falso) e daria um
     // +4 de Defesa de graça pra criatura quando ela está Grave, achado unificando
@@ -405,6 +413,19 @@ function danoEsperadoOpcao(ataqueExpr, danoExpr, atacanteQa, alvos, tipoDano) {
  */
 const GUARDA_MODO = 'defesaFinal'; // 'defesaFinal' | 'habilidade'
 const PRESSAO_POR_ATAQUE = REGRAS.combate.escada.pressaoPorAtaque ?? -2;
+// SUPOSIÇÃO REGISTRADA (Adendo 3 do autor, 01/10/2026, corrigindo o `8c7f941f`): as
+// penalidades de FASE (Preparo −2, Golpe −4, `combate.md` "Dois sistemas de tempo" e
+// "Golpes no mesmo instante", `:98-114` e `:378-382`) só valem contra golpes que caem NO
+// MESMO INSTANTE do gesto de quem as sofre, não um estado persistente "até a próxima
+// ação" como a Guarda sob pressão. `8c7f941f` modelou errado: liguei um −4 fixo que
+// durava o ciclo inteiro, inclusive em ações sem ataque (Cura, Protecao), o que não era
+// nem a leitura do autor nem a regra escrita. Esta bancada por turnos não tem um INSTANTE
+// COMPARTILHADO entre o gesto de quem ataca e o de quem é atingido (os dois lados agem em
+// blocos sequenciais, criatura primeiro, depois as personas, nunca ao mesmo "tempo"), e
+// inventar um recorte de simultaneidade só pra caber a fase seria regra nova. Por isso a
+// fase FICA DE FORA da bancada: só a Guarda sob pressão (desgaste contínuo, −2 por ataque
+// feito OU recebido, até a próxima ação de quem sofre) entra no cálculo. Cura/Estabilizar/
+// Cobrir não contam como "ataque feito": só `resolverGolpeFisico()` soma `pressaoFeita`.
 function defesaComPressao(alvo) {
   // Chaves de medição (Adendo 1 item 5 e Adendo 2 item 4): `semGuarda` desliga a Guarda
   // sob pressão inteira; `semPressaoFeita` desliga só a parcela "ataques feitos",
@@ -413,20 +434,12 @@ function defesaComPressao(alvo) {
   const recebida = alvo.semGuarda ? 0 : (alvo.pressaoRecebida || 0);
   const feita = (alvo.semGuarda || alvo.semPressaoFeita) ? 0 : (alvo.pressaoFeita || 0);
   const pressao = recebida + feita;
-  // Penalidade de fase (Adendo 2 item 2): sistema Normal resolve Preparo+Golpe no mesmo
-  // Tick da declaração (`combate.md` "Dois sistemas de tempo", `:98-114`); modelo isto
-  // como UM estado só, −4 (a penalidade do Golpe, o instante em que o gesto resolve, não
-  // o −2 do Preparo em separado: os dois colapsam no mesmo Tick no sistema Normal, e não
-  // tenho um Tick isolado de Preparo nesta bancada por turnos pra distingui-los). Liga
-  // quando o combatente AGE, desliga quando ele age de novo ("até a próxima ação", mesmo
-  // gatilho da pressão): ver `faseExposta` nos dois laços de turno.
-  const fase = alvo.faseExposta ? -4 : 0;
   if (GUARDA_MODO === 'habilidade' && alvo.destrezaRaw != null) {
     const habilidadeEfetiva = Math.max(0, alvo.esquivaRaw + pressao * (PRESSAO_POR_ATAQUE / 2));
     return L0.defesa({ destreza: alvo.destrezaRaw, habilidade: habilidadeEfetiva, centelha: alvo.centelha })
-      - alvo.penFisica + (alvo.proezasAtual || 0) + fase;
+      - alvo.penFisica + (alvo.proezasAtual || 0);
   }
-  return alvo.defesaBase + pressao * PRESSAO_POR_ATAQUE + fase;
+  return alvo.defesaBase + pressao * PRESSAO_POR_ATAQUE;
 }
 /** Dano esperado de uma manobra de vários golpes (Rajada/dupla), somando golpe a golpe,
  * já com a Guarda sob pressão de quem avalia a escolha (aproximação: a pressão do alvo
@@ -663,7 +676,7 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
       // Ainda pagando Ticks de uma Rajada anterior: não age, não zera a própria pressão
       // nem a exposição de fase (as duas só zeram "quando você age").
     } else {
-      c.pressaoRecebida = 0; c.pressaoFeita = 0; c.faseExposta = false; // zera ao agir
+      c.pressaoRecebida = 0; c.pressaoFeita = 0; // zera ao agir
       if (acao.tipo === 'protecao') {
         c.protecaoUsada = true; c.defesaExtra += 2; c.manaRestante -= Math.max(1, c.arte.protecao || 1);
       } else if (acao.tipo === 'cura-si') {
@@ -716,8 +729,6 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
           }
         }
       }
-      // Penalidade de fase (Adendo 2 item 2): expõe até a PRÓXIMA ação dela.
-      c.faseExposta = true;
     }
     if (caidas() >= 2) { fim = 'grupo-caiu'; break; }
     if (c.pv <= 0) { fim = 'criatura-caiu'; break; }
@@ -727,8 +738,8 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
       if (p.caido) continue;
       if (p.id === 'pers3') {
         // Pers.3 também "age" todo turno (Cura/Estabilizar/Cobrir): zera e reexpõe,
-        // igual a quem ataca (qualquer ação conta pra Guarda sob pressão/fase).
-        p.pressaoRecebida = 0; p.pressaoFeita = 0; p.faseExposta = true;
+        // igual a quem ataca (a pressão zera ao agir, qualquer ação, não só ataque).
+        p.pressaoRecebida = 0; p.pressaoFeita = 0;
         const machucado = personas.find((x) => !x.caido && x.pv / x.pvMax < 0.3);
         if (machucado && p.centelha > 0 && p.manaRestante >= (p.nivelArtePers3 * 2)) {
           const cura = L.curaDoEfeito(L.EFEITO['acelerar-a-cura'], p.nivelArtePers3);
@@ -745,7 +756,7 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
       p.atrasoTicks = Math.max(0, p.atrasoTicks - TICKS_POR_TURNO);
       const atacaAgora = p.id === 'pers2' || p.id === engajadaId;
       if (!atacaAgora || p.atrasoTicks > 0) continue;
-      p.pressaoRecebida = 0; p.pressaoFeita = 0; p.faseExposta = false; // zera ao agir
+      p.pressaoRecebida = 0; p.pressaoFeita = 0; // zera ao agir
       // Política 4: se Grave, reserva a Vontade pra Defesa (gasta de verdade em
       // `vontadeDefesa()`, quando a criatura mirar nele); senão, gasta em +1d6 aqui.
       const pctP = Math.max(1, Math.floor((p.pv / p.pvMax) * 100));
@@ -776,7 +787,6 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
         resolverGolpeFisico(L, fonte, atacanteStats, alvoCriatura, manobra.penDados[i] + (i === 0 ? bonusVontade : 0));
         c.pv = alvoCriatura.pv; c.pressaoRecebida = alvoCriatura.pressaoRecebida;
       }
-      p.faseExposta = true; // Penalidade de fase (Adendo 2 item 2): até a próxima ação dela.
     }
     if (caidas() >= 2) { fim = 'grupo-caiu'; break; }
     if (c.pv <= 0) { fim = 'criatura-caiu'; break; }
@@ -853,7 +863,7 @@ export function rodarBatalhaBando(L, criaturaBase, n, centelha, seed, opts = {})
       c.atrasoTicks = Math.max(0, c.atrasoTicks - TICKS_POR_TURNO);
       const acao = escolherAcaoCriatura(c, turno, personas, engajadaId);
       if (acao.tipo === 'esperar') continue;
-      c.pressaoRecebida = 0; c.pressaoFeita = 0; c.faseExposta = false;
+      c.pressaoRecebida = 0; c.pressaoFeita = 0;
       if (acao.tipo === 'basico' || acao.tipo === 'ataque-total') {
         c.atrasoTicks += acao.cicloExtra || 0;
         for (const pd of acao.penDados) {
@@ -883,7 +893,6 @@ export function rodarBatalhaBando(L, criaturaBase, n, centelha, seed, opts = {})
           }
         }
       }
-      c.faseExposta = true;
       if (caidasPersonas() >= 2) break;
     }
     if (caidasPersonas() >= 2) { fim = 'grupo-caiu'; break; }
@@ -894,8 +903,8 @@ export function rodarBatalhaBando(L, criaturaBase, n, centelha, seed, opts = {})
       if (p.caido) continue;
       if (p.id === 'pers3') {
         // Pers.3 também "age" todo turno (Cura/Estabilizar/Cobrir): zera e reexpõe,
-        // igual a quem ataca (qualquer ação conta pra Guarda sob pressão/fase).
-        p.pressaoRecebida = 0; p.pressaoFeita = 0; p.faseExposta = true;
+        // igual a quem ataca (a pressão zera ao agir, qualquer ação, não só ataque).
+        p.pressaoRecebida = 0; p.pressaoFeita = 0;
         const machucado = personas.find((x) => !x.caido && x.pv / x.pvMax < 0.3);
         if (machucado && p.centelha > 0 && p.manaRestante >= (p.nivelArtePers3 * 2)) {
           const cura = L.curaDoEfeito(L.EFEITO['acelerar-a-cura'], p.nivelArtePers3);
@@ -914,7 +923,7 @@ export function rodarBatalhaBando(L, criaturaBase, n, centelha, seed, opts = {})
       if (!atacaAgora || p.atrasoTicks > 0) continue;
       const alvo = maisFerida();
       if (!alvo) continue;
-      p.pressaoRecebida = 0; p.pressaoFeita = 0; p.faseExposta = false;
+      p.pressaoRecebida = 0; p.pressaoFeita = 0;
       const pctP = Math.max(1, Math.floor((p.pv / p.pvMax) * 100));
       const graveAgora = REGRAS.ferimentos.find((f) => pctP >= f.minPct && pctP <= f.maxPct)?.estado === 'Grave';
       let bonusVontade = 0;
@@ -938,7 +947,6 @@ export function rodarBatalhaBando(L, criaturaBase, n, centelha, seed, opts = {})
         if (alvo.pv <= 0) break;
         resolverGolpeFisico(L, fonte, atacanteStats, alvo, manobra.penDados[i] + (i === 0 ? bonusVontade : 0));
       }
-      p.faseExposta = true;
     }
     if (caidasPersonas() >= 2) { fim = 'grupo-caiu'; break; }
     if (!vivasCriaturas().length) { fim = 'bando-caiu'; break; }
