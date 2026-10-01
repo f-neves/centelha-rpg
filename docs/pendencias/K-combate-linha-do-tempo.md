@@ -516,3 +516,17 @@ revistos por ela.
   de Artes) para um ataque carregar essa marca. Não inventei campo novo. Decidir: criar um
   campo tipo `fenomeno: true` no ataque e fiar até `resolverGolpe`, ou aceitar que
   Fantasma/Sombra ficam com o dano físico comum (armadura absorve normal) até essa decisão.
+- [ ] **K37 · [DECIDIR] `defesaPerdida` só soma o ataque RECEBIDO; `combate.md:405` cobra
+  também o FEITO.** Registrado em 01/10/2026, B14 Fase 5b, Adendo 2, rodando a bancada de
+  desafio. A Guarda sob pressão escrita diz "cada ataque que você FAZ OU RECEBE reduz sua
+  Esquiva e Bloqueio em −2". `defesaPerdida()`, `src/lib/combate-tempo.ts:696`: `pressao = (acao?.pressao || 0) * pressaoPorAtaque`.
+  Os dois lugares que incrementam a pressão só somam no ALVO do golpe, nunca em quem ataca:
+  `scripts/sim/motor.mjs:437`: `(base.pressao || 0) + 1`.
+  Na mesa, `src/pages/mesa/grid.astro:9068`: `pressao: (antes.pressao || 0) + golpes` (repete em `:9150`).
+  O Grid hoje cobra MENOS do que o livro escreve. Achado comparando a
+  bancada da Fase 5b (que soma os dois lados, por decisão explícita do autor nesta rodada)
+  com o comportamento real do Grid. **Não mexi no Grid nem no `motor.mjs`** (fora de
+  escopo desta rodada, e mudar a Pressão da mesa é decisão maior que esta bancada). Decidir:
+  o Grid soma um segundo incremento em quem ataca (mudança de comportamento ao vivo,
+  precisa de teste e aviso de produção), ou a leitura do livro é só pra bancadas de
+  medição e a mesa fica como está.

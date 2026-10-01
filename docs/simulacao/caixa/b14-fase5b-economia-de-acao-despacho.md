@@ -102,6 +102,28 @@ Substitui os itens 1, 2, 5 e 6 da "Atenção especial" acima.
 5. **Pedido extra**: na tabela de resultados, o efeito da Guarda sob pressão isolado, Filhote e
    4 lobos, com e sem a regra.
 
+## Adendo 2 (autor, 01/10, depois da entrega em `2e14b3f2`)
+
+A entrega teve dois desvios, e a rodada se refaz:
+
+1. **Base errada.** Rodou-se a B2 antiga (sem Proezas E sem Vontade). A base é a do Adendo 1:
+   **sem Proezas, com Vontade** (traço real). Refazer toda a tabela nela; B1 segue como
+   sensibilidade.
+2. **Guarda sob pressão pelo livro, não pelo código da mesa.** A entrega contou só o ataque
+   recebido, seguindo `defesaPerdida` (`src/lib/combate-tempo.ts:696`). Decisão do autor: vale
+   `combate.md:405`. **−2 na Defesa final por ataque FEITO ou RECEBIDO**, acumulando até a
+   próxima ação de quem sofre, sem teto; **a empunhadura dupla conta 2 ataques feitos**. As
+   penalidades de fase (Preparo −2, Golpe −4) continuam valendo **à parte**, como o sistema
+   Normal descreve (`combate.md`, "Dois sistemas de tempo", `:98-114`): uma vale durante o
+   gesto, a outra até a próxima ação, e o livro cobra as duas. Diga como modelou as penalidades
+   de fase numa bancada por turnos.
+3. **Pendência da frente da mesa** (registrar, não consertar): `defesaPerdida` só soma o ataque
+   recebido; o livro cobra também o feito. O Grid hoje cobra menos do que o livro. Não mexer no
+   Grid nesta rodada.
+4. **Leitura extra**: o efeito isolado da parcela "ataque feito" da pressão (Filhote e 4 lobos,
+   com e sem ela), só como leitura, sem mudar a decisão. Mantém também o pedido do Adendo 1
+   (pressão inteira, com e sem).
+
 ## Verificação
 
 - `npm run validate`, `npx tsc --noEmit`, `npm run build`, `npm run espelho` verdes.

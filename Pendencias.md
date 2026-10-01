@@ -49,9 +49,9 @@ está na seção 3.
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 7 | 5 | 0 | 2 | 2 | 0 | 0 | 2 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 15 | 11 | 2 | 2 | 4 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 17 | 14 | 0 | 3 | 6 | 3 | 0 | 2 | 1 | 2 |
-| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 37 | 23 | 1 | 13 | 19 | 5 | 0 | 0 | 0 | 0 |
+| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 38 | 24 | 1 | 13 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **345** | **241** | **4** | **100** | **99** | **38** | **8** | **10** | **81** | **9** |
+| | **Total** | | **346** | **242** | **4** | **100** | **100** | **38** | **8** | **10** | **81** | **9** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -560,6 +560,7 @@ Fechados (3): J1, J4, J5.
 | K35 | aberto | DECIDIR | `lib-tempo.mjs` continua na régua antiga de Centelha |
 | K36 | aberto | DECIDIR | Agarrar não tem regra escrita em lugar nenhum. |
 | K36 | aberto | DECIDIR | Dano fenômeno (armadura não absorve, só Centelha) não alcança ataque normal de criatura. |
+| K37 | aberto | DECIDIR | `defesaPerdida` só soma o ataque RECEBIDO; `combate.md:405` cobra também o FEITO. |
 
 Fechados (13): K29, K1, K2, K3, K10, K7, K15, K16, K22, K23, K26, K12, K13.
 

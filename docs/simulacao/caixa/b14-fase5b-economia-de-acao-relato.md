@@ -198,9 +198,117 @@ casos pedidos (um deles trivial pro grupo, o outro com desafio baixo mesmo).
 - Desafio acima de Centelha 6 continua fora de escopo (nenhuma das âncoras desta rodada
   precisou disso).
 
-## Verificação
+## Verificação (até o Adendo 1)
 
 `npm run validate`, `npx tsc --noEmit`, `npm run build`, `npm run espelho`: verdes.
 Regressão conferida: 1 lobo contra o grupo Centelha 0 continua sem ser desafio (100% de
-vitória do grupo), com a Guarda sob pressão e a Rajada ligadas. CI do GitHub: confirmo
-job a job depois do commit, como sempre.
+vitória do grupo), com a Guarda sob pressão e a Rajada ligadas.
+
+## Adendo 2 (autor, 01/10, depois da entrega `2e14b3f2`): dois desvios, rodada refeita
+
+### 1 · Base: já estava certa desde o commit anterior
+
+A crítica do Adendo 2 (item 1) fala do commit `2e14b3f2`, de ANTES do commit `3c9f9d59`
+(ainda deste dia), que já tinha trocado `semDefesaExtraPers1` (B2 antiga, tira Proezas E
+Vontade) por `semProezasPers1` (só tira Proezas, mantém Vontade real) na base nova. As
+mensagens se cruzaram: a correção já estava feita quando o Adendo 2 chegou. Não mudei nada
+aqui de novo; os números desta seção já usam `semProezasPers1`, como antes.
+
+### 2 · Guarda sob pressão PELO LIVRO: feito + recebido
+
+**Isto sim era um desvio real.** A entrega anterior seguia o CÓDIGO da mesa
+(`defesaPerdida`, `src/lib/combate-tempo.ts:696`, só soma pressão em quem RECEBE o golpe).
+O autor confirmou, vendo a divergência com o Grid, que vale o TEXTO (`combate.md:405`):
+"cada ataque que você FAZ OU RECEBE" reduz a Defesa em −2. Implementado: todo golpe
+resolvido agora soma 1 em `pressaoRecebida` do alvo E 1 em `pressaoFeita` de quem bateu
+(a dupla soma 2 sozinha, por fazer 2 golpes, sem caso especial). As duas contagens entram
+juntas em `defesaComPressao()`, com o mesmo reset "zera quando você age" para as duas.
+
+**Penalidades de fase (Preparo −2, Golpe −4), "à parte" da pressão**: modeladas como UM
+estado só, −4, que liga quando o combatente AGE (qualquer ação, não só ataque: Proteção,
+Cura-em-si, Cura do Pers.3 e Cobrir também contam) e desliga quando ele age de novo
+("até a próxima ação", mesmo gatilho da pressão). **Não separei o −2 do Preparo do −4 do
+Golpe**: o próprio texto do sistema Normal (`combate.md`, "Dois sistemas de tempo",
+`:98-114`) diz que a ação "resolve inteira no Tick da declaração", ou seja, Preparo e
+Golpe colapsam no mesmo instante nesta bancada por turnos, que não tem um Tick isolado de
+Preparo pra distinguir os dois. Fiquei com o número mais forte (−4, o do Golpe, o
+instante em que o gesto resolve de verdade) em vez de inventar uma régua de dois estados
+que a bancada não tem como sustentar.
+
+**Pendência de mesa registrada, não consertada** (`docs/pendencias/K-combate-linha-do-
+tempo.md`, **K37**): `defesaPerdida`/`motor.mjs`/`grid.astro` só somam o ataque recebido;
+o livro cobra também o feito. O Grid hoje cobra MENOS do que a regra escrita. Não mexi no
+Grid nem no `motor.mjs` nesta rodada.
+
+### Tabela refeita: Filhote, Jovem e Adulto, com a Guarda sob pressão correta
+
+| criatura (Centelha) | faixa do autor | A1, base | A1, B1 | A2, base | A2, B1 |
+|---|---|---|---|---|---|
+| Filhote (4) | 3 ou 4 | **3 ✓** | **3 ✓** | **3 ✓** | **3 ✓** |
+| Jovem (5) | 5 ou 6 | **6 ✓** | **5 ✓** | **6 ✓** | **5 ✓** |
+| Adulto (6) | 6 a 8 | não alcançado ✗ | não alcançado ✗ | não alcançado ✗ | não alcançado ✗ |
+
+**O Filhote agora alcança a faixa nas QUATRO células** (antes só com "Ataque total", e só
+em duas): a pressão feita+recebida pesa mais contra o grupo do que a pressão só recebida
+media antes. **O Adulto, que antes alcançava em A1/B1 (desafio 6), agora não alcança em
+nenhuma célula** (A1/B1 cai pra 5,5% em C6, longe dos 99% de antes): com a pressão certa,
+o Adulto demora mais a derrubar o grupo, e o grupo (que também ganha Defesa pela pressão
+feita dele mesmo atacar menos) segura mais tempo.
+
+Testei "Ataque total" no Adulto, já que agora ele não alcança a faixa (a mesma condição
+"só se o item 2 não chegar" que valeu pro Filhote na rodada anterior): **piorou, não
+ajudou**: A1/base e A1/B1 caem pra 0,0% em toda Centelha até C6. Fazendo 3 golpes na
+mesma ação sem a penalidade da Rajada, o Adulto soma 3 de `pressaoFeita` de uma vez (em
+vez de 1), ficando mais exposto ao contra-ataque do grupo logo depois. Não é uma vantagem
+estrita mais: é dado novo, pro autor decidir se isto é esperado da regra ou sinal de
+reconsiderar o "Ataque total" como variante.
+
+### Bando refeito: as âncoras do despacho NÃO batem mais
+
+| grupo | desafio ANTES (pressão só recebida) | desafio AGORA (feito+recebida) | âncora do autor |
+|---|---|---|---|
+| 1 lobo | 0 | **0** | "não é desafio nem pro grupo C0" ✓ ainda bate |
+| 4 lobos | 0 | **2** | (sem âncora específica) |
+| 4 worgs | 2 | **3** | "4 a 5 worgs são desafio 2" ✗ **não bate mais** |
+| 5 worgs | 2 | **4** | "4 a 5 worgs são desafio 2" ✗ **não bate mais** |
+
+**Não ajustei nada pra forçar o encaixe de novo**, como o despacho original pede. A
+pressão feita+recebida pesa muito mais num bando do que num 1×1: cada criatura do bando
+que ataca acumula a própria `pressaoFeita`, e isso facilita o contra-ataque do grupo
+contra ELA especificamente depois; ao mesmo tempo, a persona engajada acumula
+`pressaoRecebida` de TODAS as N criaturas que bateram nela no mesmo turno, facilitando o
+acerto delas contra essa persona também. Os dois efeitos se somam rápido num bando de 4-5,
+mais do que numa luta 1×1. O número que o autor deu (desafio 2 pra 4-5 worgs) foi medido
+antes da correção da Guarda sob pressão: pode ser que precise ser revisto, ou que a
+política de robô do bando (foco de fogo, ordem de ação) precise de outro olhar. Devolvo a
+pergunta, não decido sozinha.
+
+### Item 5 completo: as duas parcelas isoladas (Adendo 1 + Adendo 2)
+
+**Filhote (A1, base):**
+
+| | C0 | C1 | C2 | C3+ | desafio |
+|---|---|---|---|---|---|
+| Pressão INTEIRA (feito+recebida) | 0,0% | 0,0% | 41,5% | 100% | **3** |
+| SEM pressão nenhuma | 0,0% | 0,0% | 94,5% | 100% | **2** |
+| Só "recebida" (sem a parcela "feito") | 0,0% | 0,0% | 67,5% | 100% | **3** |
+
+**4 lobos (bando, base):**
+
+| | C0 | C1 | C2+ | desafio |
+|---|---|---|---|---|
+| Pressão INTEIRA (feito+recebida) | 0,0% | 24,5% | 100% | **2** |
+| SEM pressão nenhuma | 99,5% | 100% | 100% | **0** |
+| Só "recebida" (sem a parcela "feito") | 42,0% | 100% | 100% | **1** |
+
+**Leitura**: no Filhote, a parcela "feito" sozinha não muda o desafio medido (C2 vai de
+67,5% pra 41,5% com ela, mas os dois ficam abaixo de 80%: quem decide o salto de 2 pra 3
+é a parcela "recebida"). **Nos 4 lobos, a parcela "feito" sozinha MOVE o desafio** (de 1
+pra 2): é ela que pesa mais no bando, confirmando a leitura do item anterior.
+
+## Verificação (Adendo 2)
+
+`npm run validate`, `npx tsc --noEmit`, `npm run build`, `npm run espelho`: verdes.
+Regressão conferida: 1 lobo contra o grupo Centelha 0 continua sem ser desafio, com a
+Guarda sob pressão (feito+recebida) e a Rajada ligadas. CI do GitHub: confirmo job a job
+depois do commit.
