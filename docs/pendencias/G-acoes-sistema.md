@@ -501,8 +501,22 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
   - **Sugestão do Comerciante, não aprovada (registrada na rodada 114, texto dele sem alteração):**
     > Pechincha com teto de 20%; venda direta ao consumidor 70% a 100% do preço de tabela;
     > arbitragem entre regiões; números do modificador regional.
+  - **Reafirmado pelo autor em 01/10/2026** (item 4 do fechamento da economia, junto com a G73 e a
+    G74, sem execução): "o modificador regional" segue pendente. Anotado aqui, e não numa entrada
+    nova, porque esta já é a pendência dele.
 - [ ] **G72 · [DECIDIR] Atributo sugerido para cada Habilidade secundária.** Registrado pelo autor
   em 27/09/2026 (item 7a do despacho da Regra do Quase-Acerto), sem resolver. Hoje nenhuma das 66
   entradas de `src/data/habilidades-secundarias.json` tem um campo de Atributo associado (a
   Especialidade combina Atributo + Habilidade PRIMÁRIA, mas a secundária fica solta). Decidir se
   cada secundária ganha um Atributo sugerido, e onde esse campo mora no JSON.
+- [ ] **G73 · [DECIDIR] Preços do sobre-humano: Centelha, Proezas e Magia.** Registrado em
+  01/10/2026, item 4 do fechamento da economia
+  (`docs/simulacao/caixa/fechamento-economia-reforma-despacho.md`), sem execução. A economia
+  mundana (`lore/economia/`) só preça o mundo sem Centelha, Proeza ou Arte; o que custa o serviço,
+  o item ou a ajuda sobre-humana segue sem regra.
+  - **Fala do autor (01/10/2026):**
+    > Pendência para anotar, sem executar: preços do sobre-humano (Centelha, Proezas, Magia),
+    > poções como estoque de emergência caro e o modificador regional.
+- [ ] **G74 · [DECIDIR] Poções como estoque de emergência caro.** Registrado em 01/10/2026, item 4
+  do fechamento da economia, sem execução. Mesma fala do autor da G73: a poção entra na economia
+  como estoque de emergência, e cara; o preço e a regra de compra ficam por decidir.

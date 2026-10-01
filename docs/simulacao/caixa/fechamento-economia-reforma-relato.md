@@ -232,3 +232,31 @@ número da Fase 5b. Com worg = 0 pela bancada, a soma daria a 4 worgs 4 × 40 = 
 desafio 1 e o 2), contra o 3 medido. Fica para o autor e a B14: se a soma precisa de um termo de
 bando para criaturas como o worg, ou se a política de bando da bancada (foco de fogo, pressão
 empilhada na persona engajada) pesa demais, como a Fase 5b já tinha levantado.
+
+**Commit do item 3:** `2ea408a0` (só documento) · **CI:** Validar run 36928039875, os 19 jobs
+verdes, conferidos job a job; Deploy run 36928039885 verde.
+
+## Item 4 · As três pendências da economia (anotadas, sem execução)
+
+A letra da economia é a **G** (`docs/pendencias/G-acoes-sistema.md`, onde estão G61 a G70 e a G71
+do comércio). Com a fala do autor de 01/10/2026 citada:
+- **G73 · [DECIDIR] Preços do sobre-humano: Centelha, Proezas e Magia.** Nova.
+- **G74 · [DECIDIR] Poções como estoque de emergência caro.** Nova.
+- **Modificador regional: anotado na G71, e não numa entrada nova.** A G71 ("Comércio e
+  modificador regional", rodada 114) já é a pendência dele, então uma G75 seria duplicata. Ganhou
+  um subitem "Reafirmado pelo autor em 01/10/2026". Se o Arquiteto preferir entrada própria, é
+  uma linha.
+
+`Pendencias.md` regerado (`node scripts/gen-pendencias.mjs`): 348 itens, 243 abertos, as mesmas 8
+anomalias de antes (nenhuma nova).
+
+## O que ficou pendente desta rodada
+
+- **O arredondamento da parte de cada criatura no bando** (item 2): a calculadora mostra a parte
+  exata; falta decidir se arredonda e como.
+- **Worg = 1 contradiz a bancada** (itens 2 e 3): o worg sozinho mede 0, 4 worgs medem 3, e
+  quadruplicar os worgs sobe 3 desafios em vez de 1. A soma, como está, subprecifica bandos de
+  worgs em relação à bancada. É da B14 e do autor.
+- **O desafio nas fichas** continua vazio; a calculadora recebe o desafio digitado (decidido na
+  conferência, lacuna levada ao autor pelo Arquiteto).
+- **Os `centelhaMult` ainda lidos** (item 1d): seguem na K35, só registrados.
