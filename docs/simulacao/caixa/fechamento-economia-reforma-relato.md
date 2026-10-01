@@ -66,4 +66,20 @@ muda; o que muda é o comentário que o descrevia errado. Nenhuma migração.
 `dist/regras/coracao-do-sistema/index.html` e `dist/regras/acoes-e-sistema/index.html` mostram
 a fórmula nova), `npm run espelho` (tocou `calc.ts`). Todos verdes.
 
-**Commit:** (preencher após commitar) · **CI:** (preencher após conferir)
+**Commit:** `8d1cbb79` · **CI:** (conferir após o adendo abaixo, mesmo item)
+
+### Adendo do autor (commit `f963cbf5`, após o item 1 commitado)
+
+Unificou a fórmula do Valor Passivo nos dois capítulos: a mesma redação agora em
+`coracao-do-sistema.md:89/93` e `acoes-e-sistema.md:65/121`, incluindo a Especialidade com a
+ressalva por extenso: "+ Especialidade (só quando o escopo dela se aplica, somada no momento do
+uso)". `acoes-e-sistema.md:123` ajustado para casar (não diz mais "a Especialidade não entra
+aqui", diz "não entra no número parado que a ficha imprime", mesma explicação de sempre). O
+`calc.ts` não mudou: `valorPassivo` continua sem somar Especialidade (não tem esse parâmetro), e
+isso é o comportamento certo, porque a Especialidade só entra no momento do uso, não no número
+parado. Guarda comum (Centelha 0, sem Especialidade) continua dando (Percepção + Prontidão) × 2,
+sem mudança.
+
+**Verificação do adendo:** `npm run validate`, `npm run build` (prova no gerado: as duas páginas
+mostram a fórmula idêntica agora), zero travessão. `npx tsc`/`espelho` não repetidos porque
+`calc.ts` não mudou nesta parte.

@@ -86,11 +86,11 @@ Passar raspando é diferente de passar com sobra. A cada **6 pontos** que seu to
 
 Quando alguém se opõe a você, em geral apenas o lado *ativo* rola, contra um **Valor Passivo** do outro.
 
-<p class="formula">Valor Passivo = (Atributo + Habilidade) × 2 + 2 × mín(Centelha, Habilidade) + Especialidade (+ modificadores)</p>
+<p class="formula">Valor Passivo = (Atributo + Habilidade) × 2 + 2 × mín(Centelha, Habilidade) + Especialidade (só quando o escopo dela se aplica, somada no momento do uso) (+ modificadores)</p>
 
 <p class="muted">A <strong>Especialidade</strong> vale **+1 por nível** aqui, num valor fixo; numa jogada com dado, ela rende **+1d6 por nível, descartando o menor** do pool. Só entra quando o escopo nomeado dela se aplica. A <strong>[Centelha](/regras/centelha)</strong> soma **2 × o menor entre ela e a Habilidade** em toda jogada e Defesa; numa rolagem de dano, soma a Centelha inteira.</p>
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Um ladrão se esgueira (rola Destreza + Furtividade) contra a <strong>Percepção Passiva</strong> do guarda, igual a (Percepção + Prontidão) × 2 + 2 × mín(Centelha, Prontidão) + Especialidade: para um guarda comum, sem Centelha nem Especialidade, isso é só (Percepção + Prontidão) × 2. O guarda não rola: sua vigilância é um muro a ser superado.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Um ladrão se esgueira (rola Destreza + Furtividade) contra a <strong>Percepção Passiva</strong> do guarda, igual a (Percepção + Prontidão) × 2 + 2 × mín(Centelha, Prontidão) + Especialidade (só quando o escopo dela se aplica, somada no momento do uso): para um guarda comum, sem Centelha nem Especialidade, isso é só (Percepção + Prontidão) × 2. O guarda não rola: sua vigilância é um muro a ser superado.</div>
 
 Quando os dois agem de fato (uma queda de braço, uma corrida), ambos rolam e o maior total vence; empates favorecem quem defende ou mantém o *status quo*.
 
