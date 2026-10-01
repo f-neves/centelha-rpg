@@ -86,7 +86,7 @@ sem mudança.
 mostram a fórmula idêntica agora), zero travessão. `npx tsc`/`espelho` não repetidos porque
 `calc.ts` não mudou nesta parte.
 
-**CI do adendo `ed3ebadd`:** ver o fim do item 2 (estava em andamento quando a Executora-4 nasceu).
+**CI do adendo `ed3ebadd`:** Validar (run 36925496143) e Deploy (run 36925496154) verdes.
 
 **Registro do Arquiteto, para a história da rodada:** o Validar do `7975f664` (commit do
 Arquiteto, só documento, run 36919784546) falhou no smoke `test-l88`, com o navegador estourando
@@ -180,3 +180,55 @@ modelo), `npx astro sync && npx tsc --noEmit` (sem erro), `npm run build` (prova
 a tabela até 3.707.300, a frase do desafio 5 e zero "degrau"; `dist/recompensa/index.html` traz
 "Valor do encontro × Semanas × Tarefa × Risco × 4", "grupo de 4" e "provisório até a bancada
 medir"). `npm run espelho` não se aplica (`calc.ts` não mudou). Zero travessão no que escrevi.
+
+**Commit:** `5d068c65` · **CI:** Validar run 36926866092, os 19 jobs verdes (Dados e regras e os
+18 smokes, conferidos job a job com `gh run view`); Deploy run 36926866039 verde.
+
+## Item 3 · A regra da soma na bancada (só conferência, nada mudou)
+
+Coube no orçamento: a bateria inteira rodou em uns 3 segundos. Base do Adendo 3 da Fase 5b
+(`86de43ff`): `rodarBatalhaBando` de `scripts/sim/desafio-bancada.mjs`, com
+`opts.semProezasPers1` (sem Proezas de Defesa, com Vontade real), Guarda sob pressão com feito e
+recebido (o padrão do código), fase fora. Semente 20261001, N = 200 por Centelha do grupo, a
+mesma política de bando da Fase 5b. Desafio = a menor Centelha do grupo em que ele vence 80% ou
+mais (a curva para nesse ponto). O roteiro ficou fora do repositório
+(`../tmp/executora/item3-soma.mjs`), porque o item não muda nada; a saída, colada:
+
+```
+mon-lobo ×1: desafio=0 · C0:100.0% · 0.1 s
+mon-lobo ×2: desafio=0 · C0:100.0% · 0.1 s
+mon-lobo ×4: desafio=1 · C0:0.0% C1:100.0% · 0.3 s
+mon-lobo ×8: desafio=2 · C0:0.0% C1:0.0% C2:94.0% · 0.5 s
+mon-worg ×1: desafio=0 · C0:100.0% · 0.0 s
+mon-worg ×2: desafio=2 · C0:0.0% C1:75.5% C2:100.0% · 0.2 s
+mon-worg ×4: desafio=3 · C0:0.0% C1:0.0% C2:51.0% C3:100.0% · 0.4 s
+mon-worg ×8: desafio=5 · C0:0.0% C1:0.0% C2:0.0% C3:0.0% C4:6.5% C5:100.0% · 0.8 s
+```
+
+**Regressão:** 1 lobo = 0, 4 lobos = 1 e 4 worgs = 3 são os mesmos números do Adendo 3 da Fase
+5b, então a bancada é a mesma.
+
+| N | lobos | worgs |
+|---|---|---|
+| 1 | 0 | 0 |
+| 2 | 0 | 2 |
+| 4 | 1 | 3 |
+| 8 | 2 | 5 |
+
+**Quadruplicar sobe cerca de 1 desafio?**
+- **Lobos: em parte.** De 1 para 4, +1 (0 para 1); de 2 para 8, +2 (0 para 2). Os dois pontos
+  de partida batem no piso: 1 e 2 lobos já perdem 100% em C0, e o desafio 0 não distingue "0" de
+  "abaixo de 0", então os saltos reais podem ser maiores que os medidos.
+- **Worgs: não.** De 1 para 4, +3 (0 para 3); de 2 para 8, +3 (2 para 5). Quadruplicar os worgs
+  sobe uns 3 desafios, não 1.
+
+**O que isto diz da soma, sem decidir nada.** A tabela do autor cresce perto de ×4 por desafio
+a partir do 3 (910, 3.600, 14.500...), e mais devagar embaixo (40, 95, 270: ×2,4 e ×2,8). Pela
+soma, 4 iguais valem o mesmo que um de desafio +1. Nos lobos a bancada fica perto disso no salto de 1 para 4 (+1, com a ressalva do piso), e passa dele no de 2 para 8 (+2).
+Nos worgs, não:
+o bando cresce bem mais rápido do que a soma supõe. **O worg sozinho mediu 0** (o grupo vence
+100% em C0), o que contradiz também o worg = 1 usado no exemplo do item 2; e 4 worgs medem 3, o
+número da Fase 5b. Com worg = 0 pela bancada, a soma daria a 4 worgs 4 × 40 = 160 (entre o
+desafio 1 e o 2), contra o 3 medido. Fica para o autor e a B14: se a soma precisa de um termo de
+bando para criaturas como o worg, ou se a política de bando da bancada (foco de fogo, pressão
+empilhada na persona engajada) pesa demais, como a Fase 5b já tinha levantado.
