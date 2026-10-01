@@ -117,6 +117,14 @@ function fichaPers3(bloco, somaBase) {
   return f;
 }
 
+// Arma usada por cada persona, para Rajada/dupla (`combate.md:137-173`). Pers.2 (arco,
+// classe `distancia`) e Pers.3 (não ataca) ficam sem arma de corpo a corpo: nenhuma das
+// duas puxa Rajada (a regra escrita já barra à distância, `rajada.corpoACorpo`) nem dupla
+// (arco ocupa as duas mãos). Pers.1 e Pers.4 não têm segunda arma equipada (Pers.1 leva
+// broquel; Pers.4 vai com a mão inábil vazia), então nenhuma persona desta bancada tem
+// dupla disponível: só Rajada, quando a arma permitir.
+const ARMA_POR_PERSONA = { pers1: 'espada-longa', pers2: 'arco-longo', pers4: 'adaga' };
+
 function combatentePersona(persona, bloco, somaPers12) {
   const ficha = persona === 'pers1' ? fichaPers1(bloco)
     : persona === 'pers2' ? fichaPers2(bloco)
@@ -124,6 +132,9 @@ function combatentePersona(persona, bloco, somaPers12) {
     : fichaPers3(bloco, somaPers12);
   const r = L0.resumoCombatePC(ficha);
   const centelha = bloco.centelha;
+  const armaId = ARMA_POR_PERSONA[persona] || null;
+  const classe = armaId ? L0.classeDeTempo(armaId, null, null) : null;
+  const velocidade = armaId ? L0.velocidadeDaArma(armaId, 5) : null;
   return {
     id: persona, nome: persona, tipo: 'persona',
     pv: BASE_PV, pvMax: BASE_PV,
@@ -135,7 +146,7 @@ function combatentePersona(persona, bloco, somaPers12) {
     ataqueBonusFlat: bloco.proezas?.ataque || 0,
     qaArmaBonus: r.qa.armaBonus, qaArmaDano: r.qa.armaDano,
     qaArmaduraBonus: r.qa.armaduraBonus, qaArmaduraReducao: r.qa.armaduraReducao,
-    centelha,
+    centelha, classe, velocidade,
     vontadeMax: ficha.willpower, vontadeRestante: ficha.willpower,
     ataca: persona !== 'pers3',
     ehSuporte: persona === 'pers3',
@@ -143,6 +154,7 @@ function combatentePersona(persona, bloco, somaPers12) {
     manaMax: persona === 'pers3' ? L0.mana({ centelha, vontade: ficha.willpower }) : 0,
     manaRestante: persona === 'pers3' ? L0.mana({ centelha, vontade: ficha.willpower }) : 0,
     engajado: false, caido: false, coberto: false, curouAlguem: false,
+    pressao: 0, atrasoTicks: 0,
   };
 }
 
@@ -201,8 +213,15 @@ function carregarCriatura(id) {
     poderes: (ficha.poderes || []).filter((p) => p.tipo === 'natural' && p.usos.periodo !== 'passivo'
       && p.resiste !== 'nenhum' && !/ao cair a 0 ?PV/i.test(p.efeito || '')),
     voadoraOuDistancia,
+    classe: a0.classe || 'leve', velocidade: a0.speed || 5,
     poderState: {}, // id -> { usosRestantes, cooldownTurnos }
     protecaoUsada: false, curaUsada: false, defesaExtra: 0,
+    pressao: 0, atrasoTicks: 0,
+    // Vontade defensiva (política 4) é só das personas nesta bancada; sem isto,
+    // `vontadeDefesa()` leria `vontadeRestante` indefinido (NaN <= 0 é falso) e daria um
+    // +4 de Defesa de graça pra criatura quando ela está Grave, achado unificando
+    // `resolverGolpeFisico` pros dois lados (Fase 5b, 01/10/2026).
+    vontadeRestante: 0, semVontadeDefesa: true,
   };
 }
 
@@ -308,16 +327,31 @@ function parseExprSimples(expr) {
   for (const mm of m[3].matchAll(/([+−-])\s*(\d+)/g)) flat += (mm[1] === '+' ? 1 : -1) * Number(mm[2]);
   return { n, flat };
 }
-/** Dano líquido médio por golpe (com acerto/raspão/erro), contra UM alvo. */
-function danoEsperadoContra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano) {
+/**
+ * Quantos dados o pool tem depois do ajuste (Rajada/dupla tiram dado, nunca somam aqui).
+ * MESMA REGRA de `dadosAjustados` (`src/lib/rolagem.ts`): pool não-vazio nunca cai abaixo
+ * de 1 dado; pool já vazio (`0d6`, ex.: a Dificuldade fixa de poder/Arte) continua vazio.
+ */
+function dadosComAjuste(n, ajusteDados) {
+  return n > 0 ? Math.max(1, n + ajusteDados) : Math.max(0, n + ajusteDados);
+}
+/**
+ * Dano líquido médio por golpe (com acerto/raspão/erro), contra UM alvo. `ajusteDados`
+ * é a penalidade de Rajada/dupla no POOL DE ACERTO (negativo, nunca no dano: a Margem é
+ * que cresce o dano, e o pool de dano não leva a penalidade de golpes múltiplos).
+ * `defesaPerdida` é a Guarda sob pressão já computada (`pressao × −2`, ver
+ * `defesaPerdidaDaPressao`), somada à Defesa do alvo como a fórmula escrita manda.
+ */
+function danoEsperadoContra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano, ajusteDados = 0, defesaPerdida = 0) {
   const margemQA = atacanteQa.qaArmaBonus + (alvo.qaArmaduraBonus ?? 0);
   const danoQA = Math.max(0, atacanteQa.qaArmaDano - (alvo.qaArmaduraReducao ?? 0) + atacanteQa.centelha - alvo.centelha);
   const at = parseExprSimples(ataqueExpr);
-  const pmfAtaque = pmfDadoCache(at.n);
+  const pmfAtaque = pmfDadoCache(dadosComAjuste(at.n, ajusteDados));
+  const defesaEfetiva = alvo.defesaBase + defesaPerdida;
   let pAcerto = 0, pRaspao = 0;
   for (const [soma6, p] of pmfAtaque) {
     const total = soma6 + at.flat;
-    const falta = alvo.defesaBase - total + 1;
+    const falta = defesaEfetiva - total + 1;
     if (falta <= 0) pAcerto += p;
     else if (falta <= margemQA) pRaspao += p;
   }
@@ -333,10 +367,53 @@ function danoEsperadoContra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano) {
 }
 /** Dano esperado somado sobre os alvos atingidos (área ≥10m atinge todos os vivos). */
 function danoEsperadoOpcao(ataqueExpr, danoExpr, atacanteQa, alvos, tipoDano) {
-  return alvos.reduce((s, alvo) => s + danoEsperadoContra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano), 0);
+  return alvos.reduce((s, alvo) => s + danoEsperadoContra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano, 0, defesaPerdidaDaPressao(alvo)), 0);
+}
+/** A Guarda sob pressão (`combate.md:405`, `regras.json → combate.escada.pressaoPorAtaque`):
+ * cada ataque QUE O ALVO RECEBE reduz a Defesa dele em 2, até a próxima ação dele. Mesma
+ * leitura que `src/lib/combate-tempo.ts`/`grid.astro` implementam de verdade: só o lado
+ * RECEBIDO conta (o texto também fala em "faz", mas nenhum dos dois lugares do código
+ * soma pressão em quem ataca, só em quem é atingido; sigo o código, não o texto solto). */
+const PRESSAO_POR_ATAQUE = REGRAS.combate.escada.pressaoPorAtaque ?? -2;
+const defesaPerdidaDaPressao = (alvo) => (alvo.pressao || 0) * PRESSAO_POR_ATAQUE;
+/** Dano esperado de uma manobra de vários golpes (Rajada/dupla), somando golpe a golpe,
+ * já com a Guarda sob pressão de quem avalia a escolha (aproximação: a pressão do alvo
+ * no INÍCIO da ação, sem reprojetar golpe a golpe dentro da própria estimativa). */
+function danoEsperadoManobra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano, penDados) {
+  const dv = defesaPerdidaDaPressao(alvo);
+  return penDados.reduce((s, pd) => s + danoEsperadoContra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano, pd, dv), 0);
+}
+
+/**
+ * B14 Fase 5b (01/10/2026): Rajada e empunhadura dupla (`combate.md:137-173`), pelos
+ * dois lados, escolhidas por dano esperado junto com as outras opções. `classe`/
+ * `velocidade` decidem o teto de golpes e os Ticks extra (`L0.tetoDaRajada`,
+ * `L0.anatomia`); nenhum número novo, só a conta que já existe em `src/lib`.
+ *
+ * `temDupla`: só a criatura tem (interpretação, ver relato: "duas armas naturais, uma
+ * por pata" vira DUAS repetições do MESMO perfil de ataque, porque a ficha não separa
+ * mordida de garra). Nenhuma persona desta bancada tem segunda arma equipada (Pers.1 leva
+ * escudo, Pers.4 vai com a mão livre), então `temDupla` é sempre falso para persona.
+ */
+function opcoesMultiGolpe(classe, velocidade, temDupla) {
+  if (!classe || !velocidade) return [];
+  const opcoes = [];
+  const simples = L0.anatomia({ classe, velocidade, sistema: 'normal', manobra: 'simples' });
+  const teto = L0.tetoDaRajada(classe);
+  for (let golpes = 2; golpes <= teto; golpes++) {
+    const an = L0.anatomia({ classe, velocidade, sistema: 'normal', manobra: 'rajada', golpes });
+    if (an.golpes < 2) continue; // a régua forçou n=1 (distância: `rajada.corpoACorpo`)
+    opcoes.push({ manobra: 'rajada', golpes: an.golpes, penDados: an.penDados, cicloExtra: an.ciclo - simples.ciclo });
+  }
+  if (temDupla) {
+    const an = L0.anatomia({ classe, velocidade, sistema: 'normal', manobra: 'dupla' });
+    opcoes.push({ manobra: 'dupla', golpes: an.golpes, penDados: an.penDados, cicloExtra: an.ciclo - simples.ciclo });
+  }
+  return opcoes;
 }
 
 function escolherAcaoCriatura(c, turno, personas, engajadaId) {
+  if (c.atrasoTicks > 0) return { tipo: 'esperar' }; // ainda pagando Ticks de Rajada
   if (turno === 1 && c.arte.protecao && !c.protecaoUsada) return { tipo: 'protecao' };
   if (c.pv / c.pvMax < 0.3 && !c.curaUsada && c.arte.cura) return { tipo: 'cura-si' };
 
@@ -345,7 +422,28 @@ function escolherAcaoCriatura(c, turno, personas, engajadaId) {
   const qaCriatura = { qaArmaBonus: c.qaArmaBonus, qaArmaDano: c.qaArmaDano, centelha: c.centelha };
 
   const opcoes = [];
-  opcoes.push({ tipo: 'basico', dano: danoEsperadoOpcao(c.ataque, c.dano, qaCriatura, alvoUnico, c.tipoDano) });
+  opcoes.push({ tipo: 'basico', manobra: 'simples', penDados: [0], dano: danoEsperadoOpcao(c.ataque, c.dano, qaCriatura, alvoUnico, c.tipoDano) });
+  if (alvoUnico[0]) {
+    // "Criatura com garras = duas armas naturais, uma por pata" (despacho item 4): a
+    // ficha não separa mordida de garra, então a Rajada e a "dupla" reusam o MESMO
+    // perfil de `ataques[0]` (interpretação, não um segundo golpe inventado).
+    for (const mg of opcoesMultiGolpe(c.classe, c.velocidade, true)) {
+      opcoes.push({
+        tipo: 'basico', manobra: mg.manobra, golpes: mg.golpes, penDados: mg.penDados, cicloExtra: mg.cicloExtra,
+        dano: danoEsperadoManobra(c.ataque, c.dano, qaCriatura, alvoUnico[0], c.tipoDano, mg.penDados),
+      });
+    }
+    // VARIANTE "Ataque total" (despacho item 3, só quando `c.ataqueTotal` liga): mordida
+    // e as duas garras na mesma ação (3 golpes, MESMO perfil repetido, mesma
+    // interpretação da dupla), sem a penalidade de −1d6 da Rajada, 1 uso a cada 3
+    // turnos. Poder Especial de variante, não ficha: só entra quando pedido.
+    if (c.ataqueTotal && (c.ataqueTotalCooldown ?? 0) <= turno) {
+      opcoes.push({
+        tipo: 'ataque-total', manobra: 'ataque-total', golpes: 3, penDados: [0, 0, 0], cicloExtra: 0,
+        dano: danoEsperadoManobra(c.ataque, c.dano, qaCriatura, alvoUnico[0], c.tipoDano, [0, 0, 0]),
+      });
+    }
+  }
 
   for (const p of c.poderes) {
     if (!p.base || p.resiste === 'nenhum' || !poderDisponivel(c, p, turno)) continue;
@@ -372,7 +470,10 @@ function escolherAcaoCriatura(c, turno, personas, engajadaId) {
   const melhor = opcoes.reduce((m, o) => (o.dano > m.dano ? o : m), opcoes[0]);
   if (melhor.tipo === 'poder') { return { tipo: 'poder', poder: melhor.poder }; }
   if (melhor.tipo === 'arte') { return { tipo: 'arte', arteId: melhor.arteId, nivel: melhor.nivel }; }
-  return { tipo: 'basico' };
+  if (melhor.tipo === 'ataque-total') {
+    return { tipo: 'ataque-total', manobra: melhor.manobra, penDados: melhor.penDados, cicloExtra: 0 };
+  }
+  return { tipo: 'basico', manobra: melhor.manobra, penDados: melhor.penDados, cicloExtra: melhor.cicloExtra || 0 };
 }
 
 function rolarContraDefesa(L, atacante, alvoStats, fonte) {
@@ -388,7 +489,8 @@ function rolarContraDefesa(L, atacante, alvoStats, fonte) {
       centelha: atacante.centelha,
     },
     alvo: {
-      defesaBase: alvoStats.defesaBase, ferimento: 0, condicoesDefesa: 0, defesaPerdida: 0,
+      defesaBase: alvoStats.defesaBase, ferimento: 0, condicoesDefesa: 0,
+      defesaPerdida: alvoStats.defesaPerdida ?? 0,
       soak: alvoStats.soak[atacante.tipoDano] ?? 0, pv: alvoStats.pv, pvMax: alvoStats.pvMax,
       qaArmaduraBonus: alvoStats.qaArmaduraBonus ?? 0, qaArmaduraReducao: alvoStats.qaArmaduraReducao ?? 0,
       centelha: alvoStats.centelha,
@@ -422,8 +524,37 @@ function vontadeDefesa(alvo) {
   return 4;
 }
 
+/**
+ * Resolve UM golpe físico, atacante → alvo, com Guarda sob pressão (`combate.md:405`) e
+ * Vontade defensiva. `ajusteDados` é a penalidade de Rajada/dupla no acerto deste golpe
+ * (`penDados[i]`). Incrementa `alvo.pressao` em 1 ao final (cada ataque RECEBIDO, ver
+ * `defesaPerdidaDaPressao`), seja acerto, raspão ou erro: é a mesma régua do
+ * `resolverContra` do motor da mesa (`pressao: (base.pressao||0)+1`, sem checar veredito).
+ */
+function resolverGolpeFisico(L, fonte, atacante, alvo, ajusteDados) {
+  const vDef = vontadeDefesa(alvo);
+  const saida = rolarContraDefesa(L, {
+    ataqueExpr: atacante.ataqueExpr, danoExpr: atacante.danoExpr,
+    ajusteFlat: atacante.ajusteFlat || 0, ajusteDados,
+    qaArmaBonus: atacante.qaArmaBonus, qaArmaDano: atacante.qaArmaDano, centelha: atacante.centelha,
+    tipoDano: atacante.tipoDano,
+  }, {
+    defesaBase: alvo.defesaBase + vDef + defesaPerdidaDaPressao(alvo),
+    soak: alvo.soak, pv: alvo.pv, pvMax: alvo.pvMax,
+    qaArmaduraBonus: alvo.qaArmaduraBonus ?? 0, qaArmaduraReducao: alvo.qaArmaduraReducao ?? 0, centelha: alvo.centelha,
+  }, fonte);
+  let liquido = saida.danoLiquido;
+  liquido = danoElementalNoAlvo(L, liquido, atacante.elemento ?? null, alvo).liquido;
+  alvo.pv = Math.max(0, alvo.pv - liquido);
+  alvo.pressao = (alvo.pressao || 0) + 1;
+  return liquido;
+}
+
 export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
   const c = { ...structuredClone(criaturaBase), poderState: {} };
+  // VARIANTE "Ataque total" (despacho item 3, 01/10/2026): só entra quando pedida
+  // explicitamente; é um Poder Especial de teste, não parte da base.
+  c.ataqueTotal = !!opts.ataqueTotal;
   const personas = grupoCombatentes(centelha);
   // VARIANTE B2 (matriz pedida pelo Arquiteto, 30/09/2026): Pers.1 sem Proezas de Defesa
   // e sem o bônus reativo de Vontade na Defesa (Grave → +4). Só dentro da bancada, não
@@ -457,67 +588,65 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
     if (c.pv <= 0) { fim = 'criatura-caiu'; break; }
 
     // ---- turno da criatura ----
+    // O relógio de Ticks passa pra todo mundo a cada turno (TICKS_POR_TURNO=6), e é
+    // esse decaimento que consome o atraso que a Rajada acumulou.
+    c.atrasoTicks = Math.max(0, c.atrasoTicks - TICKS_POR_TURNO);
     const acao = escolherAcaoCriatura(c, turno, personas, engajadaId);
-    if (acao.tipo === 'protecao') {
-      c.protecaoUsada = true; c.defesaExtra += 2; c.manaRestante -= Math.max(1, c.arte.protecao || 1);
-    } else if (acao.tipo === 'cura-si') {
-      const cura = L.curaDoEfeito(L.EFEITO['acelerar-a-cura'], c.arte.cura);
-      c.pv = Math.min(c.pvMax, c.pv + (cura || 0));
-      c.curaUsada = true; c.manaRestante -= (c.arte.cura || 1) * 2;
+    if (acao.tipo === 'esperar') {
+      // Ainda pagando Ticks de uma Rajada anterior: não age, não zera a própria pressão
+      // (ela só zera "quando você age", `combate.md:405`/`declarar()`).
     } else {
-      let dados, elemento = null, area = null, tipoDano = c.tipoDano, nivelUsado = null;
-      if (acao.tipo === 'poder') {
-        consumirPoder(c, acao.poder, turno);
-        const nv = poderNivel(acao.poder);
-        dados = nv ? nv.dados : null;
-        elemento = nv?.arteId || null;
-        nivelUsado = nv?.nivel ?? null;
-        area = areaMetros(acao.poder);
-      } else if (acao.tipo === 'arte') {
-        const arte = L.ARTE[acao.arteId];
-        dados = acao.nivel * (arte?.grid?.dadoPorNivel || 1);
-        elemento = acao.arteId;
-        nivelUsado = acao.nivel;
-        c.manaRestante -= acao.nivel;
-      }
-      if (dados) {
-        // "Dano e projéteis" (regras.json → arcano.resistencia.tipos): não mirado, sem
-        // rolagem de conjuração: resolve pela Dificuldade FIXA do Efeito (nível × 4)
-        // contra a Defesa passiva do alvo, não pelo bolo de ataque da criatura (que é
-        // só para o ataque FÍSICO dela). Implementa a regra escrita, não uma política
-        // de bancada (decisão do Arquiteto, 30/09/2026, item 3).
-        const dificuldadeFixa = nivelUsado != null ? nivelUsado * 4 : 0;
-        const alvos = (area != null && area >= 10) ? personas.filter((p) => !p.caido) : [alvoDaCriatura(c, personas, engajadaId)];
-        for (const alvo of alvos) {
-          if (!alvo) continue;
-          const vDef = vontadeDefesa(alvo);
-          const saida = rolarContraDefesa(L, {
-            ataqueExpr: '0d6', danoExpr: `${dados}d6`, ajusteFlat: dificuldadeFixa, ajusteDados: 0,
-            qaArmaBonus: 0, qaArmaDano: 0, centelha: c.centelha, tipoDano,
-          }, {
-            defesaBase: alvo.defesaBase + vDef,
-            soak: alvo.soak, pv: alvo.pv, pvMax: alvo.pvMax,
-            qaArmaduraBonus: alvo.qaArmaduraBonus, qaArmaduraReducao: alvo.qaArmaduraReducao, centelha: alvo.centelha,
-          }, fonte);
-          let liquido = saida.danoLiquido;
-          if (elemento) liquido = danoElementalNoAlvo(L, liquido, elemento, alvo).liquido;
-          alvo.pv = Math.max(0, alvo.pv - liquido);
+      c.pressao = 0; // zera ao agir (mesmo gatilho de `declarar()` em combate-tempo.ts)
+      if (acao.tipo === 'protecao') {
+        c.protecaoUsada = true; c.defesaExtra += 2; c.manaRestante -= Math.max(1, c.arte.protecao || 1);
+      } else if (acao.tipo === 'cura-si') {
+        const cura = L.curaDoEfeito(L.EFEITO['acelerar-a-cura'], c.arte.cura);
+        c.pv = Math.min(c.pvMax, c.pv + (cura || 0));
+        c.curaUsada = true; c.manaRestante -= (c.arte.cura || 1) * 2;
+      } else if (acao.tipo === 'basico' || acao.tipo === 'ataque-total') {
+        c.atrasoTicks += acao.cicloExtra || 0;
+        if (acao.tipo === 'ataque-total') c.ataqueTotalCooldown = turno + 3; // "1 uso a cada 3 turnos"
+        for (const pd of acao.penDados) {
+          const alvo = alvoDaCriatura(c, personas, engajadaId);
+          if (!alvo) break;
+          resolverGolpeFisico(L, fonte, {
+            ataqueExpr: c.ataque, danoExpr: c.dano, ajusteFlat: 0,
+            qaArmaBonus: c.qaArmaBonus, qaArmaDano: c.qaArmaDano, centelha: c.centelha, tipoDano: c.tipoDano,
+          }, alvo, pd);
           if (alvo.pv <= 0 && !alvo.caido) { alvo.caido = true; if (alvo.id === engajadaId) promoverProximo(); }
+          if (caidas() >= 2) break;
         }
       } else {
-        // ataque básico
-        const alvo = alvoDaCriatura(c, personas, engajadaId);
-        if (alvo) {
-          const vDef = vontadeDefesa(alvo);
-          const saida = rolarContraDefesa(L, {
-            ataqueExpr: c.ataque, danoExpr: c.dano, ajusteFlat: 0, ajusteDados: 0,
-            qaArmaBonus: c.qaArmaBonus, qaArmaDano: c.qaArmaDano, centelha: c.centelha, tipoDano: c.tipoDano,
-          }, {
-            defesaBase: alvo.defesaBase + vDef, soak: alvo.soak, pv: alvo.pv, pvMax: alvo.pvMax,
-            qaArmaduraBonus: alvo.qaArmaduraBonus, qaArmaduraReducao: alvo.qaArmaduraReducao, centelha: alvo.centelha,
-          }, fonte);
-          alvo.pv = Math.max(0, alvo.pv - saida.danoLiquido);
-          if (alvo.pv <= 0 && !alvo.caido) { alvo.caido = true; if (alvo.id === engajadaId) promoverProximo(); }
+        // poder/Arte ofensiva: "dano e projéteis" (regras.json → arcano.resistencia.tipos),
+        // não mirado, sem rolagem de conjuração, Dificuldade fixa (nível×4) contra a
+        // Defesa (decisão do Arquiteto, 30/09/2026, item 3). Sem Rajada/dupla: não é um
+        // golpe de arma, é um disparo só por turno.
+        let dados, elemento = null, area = null, nivelUsado = null;
+        if (acao.tipo === 'poder') {
+          consumirPoder(c, acao.poder, turno);
+          const nv = poderNivel(acao.poder);
+          dados = nv ? nv.dados : null;
+          elemento = nv?.arteId || null;
+          nivelUsado = nv?.nivel ?? null;
+          area = areaMetros(acao.poder);
+        } else if (acao.tipo === 'arte') {
+          const arte = L.ARTE[acao.arteId];
+          dados = acao.nivel * (arte?.grid?.dadoPorNivel || 1);
+          elemento = acao.arteId;
+          nivelUsado = acao.nivel;
+          c.manaRestante -= acao.nivel;
+        }
+        if (dados) {
+          const dificuldadeFixa = nivelUsado != null ? nivelUsado * 4 : 0;
+          const alvos = (area != null && area >= 10) ? personas.filter((p) => !p.caido) : [alvoDaCriatura(c, personas, engajadaId)];
+          for (const alvo of alvos) {
+            if (!alvo) continue;
+            resolverGolpeFisico(L, fonte, {
+              ataqueExpr: '0d6', danoExpr: `${dados}d6`, ajusteFlat: dificuldadeFixa,
+              qaArmaBonus: 0, qaArmaDano: 0, centelha: c.centelha, tipoDano: c.tipoDano, elemento,
+            }, alvo, 0);
+            if (alvo.pv <= 0 && !alvo.caido) { alvo.caido = true; if (alvo.id === engajadaId) promoverProximo(); }
+          }
         }
       }
     }
@@ -541,24 +670,40 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
         }
         continue;
       }
+      p.atrasoTicks = Math.max(0, p.atrasoTicks - TICKS_POR_TURNO);
       const atacaAgora = p.id === 'pers2' || p.id === engajadaId;
-      if (!atacaAgora) continue;
+      if (!atacaAgora || p.atrasoTicks > 0) continue;
+      p.pressao = 0; // zera ao agir
       // Política 4: se Grave, reserva a Vontade pra Defesa (gasta de verdade em
       // `vontadeDefesa()`, quando a criatura mirar nele); senão, gasta em +1d6 aqui.
       const pctP = Math.max(1, Math.floor((p.pv / p.pvMax) * 100));
       const graveAgora = REGRAS.ferimentos.find((f) => pctP >= f.minPct && pctP <= f.maxPct)?.estado === 'Grave';
-      let ajusteDados = 0;
-      if (!graveAgora && p.vontadeRestante > 0) { ajusteDados = 1; p.vontadeRestante -= 1; }
-      const saida = rolarContraDefesa(L, {
-        ataqueExpr: p.ataque, danoExpr: p.dano, ajusteFlat: p.ataqueBonusFlat, ajusteDados,
+      let bonusVontade = 0;
+      if (!graveAgora && p.vontadeRestante > 0) { bonusVontade = 1; p.vontadeRestante -= 1; }
+      const atacanteStats = {
+        ataqueExpr: p.ataque, danoExpr: p.dano, ajusteFlat: p.ataqueBonusFlat,
         qaArmaBonus: p.qaArmaBonus, qaArmaDano: p.qaArmaDano, centelha: p.centelha, tipoDano: p.tipoDano,
-      }, {
-        defesaBase: c.defesaBase + c.defesaExtra, soak: c.soak, pv: c.pv, pvMax: c.pvMax,
-        qaArmaduraBonus: 0, qaArmaduraReducao: 0, centelha: c.centelha,
-      }, fonte);
-      let liquido = saida.danoLiquido;
-      liquido = danoElementalNoAlvo(L, liquido, p.tipoDano, c).liquido;
-      c.pv = Math.max(0, c.pv - liquido);
+        elemento: p.tipoDano, // fraqueza/resistência/imunidade física da criatura, ver carregarCriatura
+      };
+      const alvoCriatura = { ...c, defesaBase: c.defesaBase + c.defesaExtra };
+      // Rajada (`combate.md:137-155`), só Pers.1/Pers.4 (Pers.2 é à distância: a régua
+      // escrita barra Rajada à distância, item 1 do despacho; nenhuma persona tem
+      // segunda arma pra dupla). Escolhida por dano esperado, junto do golpe simples.
+      const multi = opcoesMultiGolpe(p.classe, p.velocidade, false);
+      let manobra = { manobra: 'simples', golpes: 1, penDados: [0], cicloExtra: 0 };
+      if (multi.length) {
+        let melhorDano = danoEsperadoManobra(p.ataque, p.dano, { qaArmaBonus: p.qaArmaBonus, qaArmaDano: p.qaArmaDano, centelha: p.centelha }, alvoCriatura, p.tipoDano, [0]);
+        for (const mg of multi) {
+          const d = danoEsperadoManobra(p.ataque, p.dano, { qaArmaBonus: p.qaArmaBonus, qaArmaDano: p.qaArmaDano, centelha: p.centelha }, alvoCriatura, p.tipoDano, mg.penDados);
+          if (d > melhorDano) { melhorDano = d; manobra = mg; }
+        }
+      }
+      p.atrasoTicks += manobra.cicloExtra || 0;
+      for (let i = 0; i < manobra.penDados.length; i++) {
+        if (c.pv <= 0) break;
+        resolverGolpeFisico(L, fonte, atacanteStats, alvoCriatura, manobra.penDados[i] + (i === 0 ? bonusVontade : 0));
+        c.pv = alvoCriatura.pv; c.pressao = alvoCriatura.pressao;
+      }
     }
     if (caidas() >= 2) { fim = 'grupo-caiu'; break; }
     if (c.pv <= 0) { fim = 'criatura-caiu'; break; }
@@ -567,6 +712,155 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
   return {
     fim, turnos: turno, venceuGrupo: fim === 'criatura-caiu', resolvida: fim !== 'censura',
     caidasNoFim: caidas(), pvCriaturaNoFim: c.pv,
+  };
+}
+
+/**
+ * BANDO (despacho item 4, 01/10/2026): N criaturas INDIVIDUAIS, cada uma com sua própria
+ * ação, PV, pressão e cooldown de poder, contra o grupo de referência. É a definição de
+ * `maisUm`/"quantos iguais" do despacho original ("Fase 5", não "5b"): N peças
+ * separadas, nunca a Regra de Horda (`combate.md:409`, Magnitude), que o despacho desta
+ * rodada pede para NÃO aplicar, só registrar que não foi usada.
+ *
+ * Política (decisões de robô, não regra de jogo, nenhuma delas no despacho):
+ *   - vitória do bando só quando TODAS as N criaturas caem (PV ≤ 0);
+ *   - toda criatura mira a persona ENGAJADA (política 1 do despacho da Fase 5: nenhum
+ *     lobo/worg é voador/à distância, então já seria essa a escolha de `alvoDaCriatura`);
+ *   - as personas sempre mirando a criatura VIVA MAIS FERIDA (foco de fogo), não uma
+ *     escolhida ao acaso nem dividida por igual;
+ *   - a ordem dentro do turno é a mesma do 1×1 (criaturas agem, depois as personas), e
+ *     isto importa pra pilha de Guarda sob pressão: um bando de N golpeando a MESMA
+ *     persona empilha N pontos de pressão nela antes mesmo das personas agirem.
+ * Base nova (B2): aceita `opts.semDefesaExtraPers1` como `rodarBatalha`; sem variante
+ * (nem A2, nem Ataque total): o próprio despacho pede "base nova, sem variante".
+ */
+export function rodarBatalhaBando(L, criaturaBase, n, centelha, seed, opts = {}) {
+  const criaturas = Array.from({ length: n }, () => ({
+    ...structuredClone(criaturaBase), poderState: {}, ataqueTotal: false,
+  }));
+  const personas = grupoCombatentes(centelha);
+  if (opts.semDefesaExtraPers1) {
+    const pers1 = personas.find((p) => p.id === 'pers1');
+    if (pers1) { pers1.defesaBase -= pers1.proezasDefesaAplicada || 0; pers1.semVontadeDefesa = true; }
+  }
+  L.semear(L.semeadoDe(seed));
+  const fonte = L.fonteRolada;
+  let engajadaId = personas.find((p) => p.ataca)?.id;
+  if (engajadaId) personas.find((p) => p.id === engajadaId).engajado = true;
+  const ordemPromocao = ['pers4', 'pers2', 'pers3'];
+
+  const caidasPersonas = () => personas.filter((p) => p.caido).length;
+  const vivasCriaturas = () => criaturas.filter((x) => x.pv > 0);
+  const promoverProximo = () => {
+    const at = personas.find((p) => p.id === engajadaId);
+    if (at) at.engajado = false;
+    engajadaId = ordemPromocao.find((id) => { const p = personas.find((x) => x.id === id); return p && !p.caido; });
+    if (engajadaId) personas.find((p) => p.id === engajadaId).engajado = true;
+  };
+  const maisFerida = () => vivasCriaturas().reduce((pior, x) => (x.pv / x.pvMax < pior.pv / pior.pvMax ? x : pior), vivasCriaturas()[0]);
+
+  const TETO = opts.teto ?? 60;
+  let turno = 0, fim = null;
+  while (!fim && turno < TETO) {
+    turno += 1;
+    if (caidasPersonas() >= 2) { fim = 'grupo-caiu'; break; }
+    if (!vivasCriaturas().length) { fim = 'bando-caiu'; break; }
+
+    // ---- turno do bando: cada criatura viva age, na ordem do array ----
+    for (const c of criaturas) {
+      if (c.pv <= 0) continue;
+      c.atrasoTicks = Math.max(0, c.atrasoTicks - TICKS_POR_TURNO);
+      const acao = escolherAcaoCriatura(c, turno, personas, engajadaId);
+      if (acao.tipo === 'esperar') continue;
+      c.pressao = 0;
+      if (acao.tipo === 'basico' || acao.tipo === 'ataque-total') {
+        c.atrasoTicks += acao.cicloExtra || 0;
+        for (const pd of acao.penDados) {
+          const alvo = alvoDaCriatura(c, personas, engajadaId);
+          if (!alvo) break;
+          resolverGolpeFisico(L, fonte, {
+            ataqueExpr: c.ataque, danoExpr: c.dano, ajusteFlat: 0,
+            qaArmaBonus: c.qaArmaBonus, qaArmaDano: c.qaArmaDano, centelha: c.centelha, tipoDano: c.tipoDano,
+          }, alvo, pd);
+          if (alvo.pv <= 0 && !alvo.caido) { alvo.caido = true; if (alvo.id === engajadaId) promoverProximo(); }
+          if (caidasPersonas() >= 2) break;
+        }
+      } else if (acao.tipo === 'poder') {
+        consumirPoder(c, acao.poder, turno);
+        const nv = poderNivel(acao.poder);
+        if (nv) {
+          const area = areaMetros(acao.poder);
+          const alvos = (area != null && area >= 10) ? personas.filter((p) => !p.caido) : [alvoDaCriatura(c, personas, engajadaId)];
+          const dificuldadeFixa = nv.nivel * 4;
+          for (const alvo of alvos) {
+            if (!alvo) continue;
+            resolverGolpeFisico(L, fonte, {
+              ataqueExpr: '0d6', danoExpr: `${nv.dados}d6`, ajusteFlat: dificuldadeFixa,
+              qaArmaBonus: 0, qaArmaDano: 0, centelha: c.centelha, tipoDano: c.tipoDano, elemento: nv.arteId,
+            }, alvo, 0);
+            if (alvo.pv <= 0 && !alvo.caido) { alvo.caido = true; if (alvo.id === engajadaId) promoverProximo(); }
+          }
+        }
+      }
+      if (caidasPersonas() >= 2) break;
+    }
+    if (caidasPersonas() >= 2) { fim = 'grupo-caiu'; break; }
+    if (!vivasCriaturas().length) { fim = 'bando-caiu'; break; }
+
+    // ---- turno das personas: foco de fogo na criatura viva mais ferida ----
+    for (const p of personas) {
+      if (p.caido) continue;
+      if (p.id === 'pers3') {
+        const machucado = personas.find((x) => !x.caido && x.pv / x.pvMax < 0.3);
+        if (machucado && p.centelha > 0 && p.manaRestante >= (p.nivelArtePers3 * 2)) {
+          const cura = L.curaDoEfeito(L.EFEITO['acelerar-a-cura'], p.nivelArtePers3);
+          machucado.pv = Math.min(machucado.pvMax, machucado.pv + (cura || 0));
+          p.manaRestante -= p.nivelArtePers3 * 2;
+        } else if (personas.some((x) => x.caido)) {
+          // Estabilizar (suposição 6): registrado, sem efeito numérico.
+        } else {
+          const pers2 = personas.find((x) => x.id === 'pers2');
+          if (pers2 && !pers2.coberto) { pers2.defesaBase += 2; pers2.coberto = true; }
+        }
+        continue;
+      }
+      p.atrasoTicks = Math.max(0, p.atrasoTicks - TICKS_POR_TURNO);
+      const atacaAgora = p.id === 'pers2' || p.id === engajadaId;
+      if (!atacaAgora || p.atrasoTicks > 0) continue;
+      const alvo = maisFerida();
+      if (!alvo) continue;
+      p.pressao = 0;
+      const pctP = Math.max(1, Math.floor((p.pv / p.pvMax) * 100));
+      const graveAgora = REGRAS.ferimentos.find((f) => pctP >= f.minPct && pctP <= f.maxPct)?.estado === 'Grave';
+      let bonusVontade = 0;
+      if (!graveAgora && p.vontadeRestante > 0) { bonusVontade = 1; p.vontadeRestante -= 1; }
+      const atacanteStats = {
+        ataqueExpr: p.ataque, danoExpr: p.dano, ajusteFlat: p.ataqueBonusFlat,
+        qaArmaBonus: p.qaArmaBonus, qaArmaDano: p.qaArmaDano, centelha: p.centelha, tipoDano: p.tipoDano,
+        elemento: p.tipoDano,
+      };
+      const multi = opcoesMultiGolpe(p.classe, p.velocidade, false);
+      let manobra = { manobra: 'simples', golpes: 1, penDados: [0], cicloExtra: 0 };
+      if (multi.length) {
+        let melhorDano = danoEsperadoManobra(p.ataque, p.dano, { qaArmaBonus: p.qaArmaBonus, qaArmaDano: p.qaArmaDano, centelha: p.centelha }, alvo, p.tipoDano, [0]);
+        for (const mg of multi) {
+          const d = danoEsperadoManobra(p.ataque, p.dano, { qaArmaBonus: p.qaArmaBonus, qaArmaDano: p.qaArmaDano, centelha: p.centelha }, alvo, p.tipoDano, mg.penDados);
+          if (d > melhorDano) { melhorDano = d; manobra = mg; }
+        }
+      }
+      p.atrasoTicks += manobra.cicloExtra || 0;
+      for (let i = 0; i < manobra.penDados.length; i++) {
+        if (alvo.pv <= 0) break;
+        resolverGolpeFisico(L, fonte, atacanteStats, alvo, manobra.penDados[i] + (i === 0 ? bonusVontade : 0));
+      }
+    }
+    if (caidasPersonas() >= 2) { fim = 'grupo-caiu'; break; }
+    if (!vivasCriaturas().length) { fim = 'bando-caiu'; break; }
+  }
+  if (!fim) fim = 'censura';
+  return {
+    fim, turnos: turno, venceuGrupo: fim === 'bando-caiu', resolvida: fim !== 'censura',
+    caidasNoFim: caidasPersonas(), criaturasVivasNoFim: vivasCriaturas().length,
   };
 }
 

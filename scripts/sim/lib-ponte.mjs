@@ -31,6 +31,7 @@ export async function carregarLib() {
           decisaoAutomatica, ticksDeViagem, golpeDaAgenda, penDadosDaRegua,
           passoDoGolpe, decideEmValeDepois, faseDeQuemVaiAgir, preparoDe,
           agendar, contrapeDe, temGesto, proximoGolpe, ticksDeEntrada, contrapeEm,
+          tetoDaRajada, cicloExtraDaDupla,
         } from './src/lib/combate-tempo';
         export { distanciaHex, caminharHex, vizinhos, alemDe } from './src/lib/hex';
         export { HEX_HASTE, HEX_CORPO_A_CORPO } from './src/lib/alcance';
