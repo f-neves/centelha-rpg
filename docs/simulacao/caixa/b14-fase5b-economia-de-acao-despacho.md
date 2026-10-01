@@ -124,6 +124,28 @@ A entrega teve dois desvios, e a rodada se refaz:
    com e sem ela), só como leitura, sem mudar a decisão. Mantém também o pedido do Adendo 1
    (pressão inteira, com e sem).
 
+## Adendo 3 (autor, 01/10, depois de `8c7f941f`)
+
+A entrega `8c7f941f` modelou a penalidade de fase como −4 que liga quando o combatente age
+(qualquer ação, inclusive cura) e dura até a próxima ação dele (`desafio-bancada.mjs:720` e
+`:731`), juntando Preparo e Golpe num −4 só. Decisão do autor:
+
+1. A penalidade de fase (Preparo −2, Golpe −4) **só vale contra golpes que caem no mesmo
+   instante do gesto**, como o sistema Normal descreve (`combate.md`, "Dois sistemas de tempo"
+   e "Golpes no mesmo instante", `:378-382`). Numa bancada por turnos, ela não liga quando o
+   combatente age nem dura até a próxima ação. **Se a bancada não tem instante compartilhado, a
+   fase fica de fora**, registrada como suposição.
+2. **Preparo e Golpe são duas penalidades distintas**: não juntar num −4 só.
+3. O desgaste contínuo fica todo na **Guarda sob pressão** (−2 por ataque feito ou recebido,
+   até a próxima ação). **Ação que não é ataque (cura, estabilizar) não conta como ataque
+   feito.**
+4. Rerrodar a tabela inteira da Fase 5b (base sem Proezas e com Vontade; B1 de sensibilidade),
+   e informar **lado a lado** o resultado com a fase permanente (`8c7f941f`) e o corrigido,
+   para Filhote, Jovem, Adulto, 4 e 5 worgs, 1 e 4 lobos. Não ajustar nada para âncora passar.
+
+Nota do Arquiteto: a âncora de 4-5 worgs (desafio 2) é a expectativa do autor, e não um número
+medido antes da correção, como o relato de `8c7f941f` sugeriu. Corrigir essa frase no relato.
+
 ## Verificação
 
 - `npm run validate`, `npx tsc --noEmit`, `npm run build`, `npm run espelho` verdes.
