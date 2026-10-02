@@ -72,7 +72,7 @@ export function stat(b) {
   // `scripts/test-bestiario-integridade.mjs`.
   const integ = pe.integridade ?? b.integridade ?? 0;
   const intel = at.inteligencia;
-  // Defesa Mental: Raciocínio + Integridade + Vontade + Centelha (soma simples). Só p/ quem tem mente (Int ≥ 1); Int 0 é imune ("-").
+  // Defesa Mental: Raciocínio + Integridade + Vontade + 2×mín(Centelha, Integridade) (soma simples). Só p/ quem tem mente (Int ≥ 1); Int 0 é imune ("-").
   const defesaMental = intel <= 0 ? '-'
     : integ * D.defesaMental.mult + (D.defesaMental.maisRaciocinio ? at.raciocinio : 0) + (D.defesaMental.maisVontade ? (b.vontade ?? 5) : 0) + centelhaNaJogada(integ);
   // Defesa Social: escudo social geral (resiste a influência e a leitura). Int 0 = "-" (sem trato

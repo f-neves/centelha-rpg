@@ -69,6 +69,12 @@ Detalhe em `Proezas_revisao.md`.
   mais "regra de primeira versão" sobrevivendo por acaso). `calc.ts` traz
   `centelhaSoAtributo(centelha)`; a regra está escrita em `src/content/chapters/centelha.md`, junto
   ao item 1 da Reforma.
+  **Precisado pelo autor em 02/10/2026** (correção da Reforma, Adendo 1): "jogada só de Atributo" é o
+  TIPO de jogada que o Mestre pede ("role Destreza"), e não o personagem com Habilidade 0. "Role
+  Destreza + Atletismo" com Atletismo 0 leva bônus 0, pelo 2 × menor; só a jogada de Atributo puro
+  pedida leva a Centelha inteira. Os exemplos acima ("Vontade pura", "Resistir sem perícia",
+  "testes de Bravura") são de antes dessa precisão e não valem como lista: a provocação do orc
+  (`racas.md:169`) e o teste de Virtude (achado 16 da Revisão 119) seguem com o autor.
 - [ ] **D13 · [DECIDIR] Proeza "punho como arma média".** Registrado em 28/09/2026, Fase 3 da
   Reforma da Centelha/Briga (item 3). O desarmado (`armas.json:1278`, id `desarmado`) subiu de
   acerto 0 → 1 e defesaArma 0 → 1 nessa rodada, mas continua classe **leve** no Quase-Acerto (dano

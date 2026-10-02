@@ -142,7 +142,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Técnicas | 34, de Mente Afiada, Reflexo Mental e Punho de Ferro (níveis 1 a 4) | 615 |
 | **Total** | | **2104** |
 
-<p class="muted">Derivados: PV 37 · Defesa 20 · Def. Mental 20 · Def. Social 18 · Energia 17 · Mana 16 · Iniciativa 1d6+6. Fecha no orçamento. Tece Feitiço e lâmina no mesmo lance; com o XP investido poderia ter mergulhado numa Arte de nível 5, mas preferiu largura a profundidade.</p>
+<p class="muted">Derivados: PV 37 · Defesa 20 · Def. Mental 20 · Def. Social 18 (pendente: supõe Sociabilidade 3, que a ficha acima ainda não nomeia) · Energia 17 · Mana 16 · Iniciativa 1d6+6. Fecha no orçamento. Tece Feitiço e lâmina no mesmo lance; com o XP investido poderia ter mergulhado numa Arte de nível 5, mas preferiu largura a profundidade.</p>
 
 ## O mortal-tocado: magia como estudo, não como tier
 

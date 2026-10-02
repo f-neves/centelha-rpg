@@ -77,14 +77,15 @@ const REGRAS_TEXTO = [
     é a identidade da dupla, os dados são o custo dela.</p>`,
   },
   {
-    id: 'centelha-k23', titulo: 'A Centelha soma +1, não +2', estado: 'decidido',
+    id: 'centelha-k23', titulo: 'A Centelha soma 2 × mín(Centelha, Habilidade)', estado: 'decidido',
     corpo: `Vale o que <code>regras.json</code>, <code>defesas.md</code> e <code>centelha.md</code>
-    escrevem: <b>+1 por ponto</b> no ataque e nas quatro defesas. O motor usava &times;2 até
-    20/08.
-    <p class="nota">Com &times;2 as pontas colapsam: Centelha 6 contra Centelha 0 acerta <b>99%</b>
-    e o contrário acerta <b>0%</b>. Com &times;1 são 78% e 1%: esmagador, mas ainda dentro do dado.
-    E um tier passa a valer um degrau de modificador situacional, comparável ao resto do sistema.
-    Ver K23.</p>`,
+    escrevem desde a Reforma da Centelha (28/09/2026; correção de 02/10/2026): no ataque, nas
+    Defesas e no Valor Passivo, <b>2 &times; mín(Centelha, Habilidade)</b>, e Habilidade 0 dá 0.
+    A <b>Centelha inteira</b> só entra na jogada de <b>Atributo puro</b> pedida pelo Mestre
+    ("role Destreza"), e no dano.
+    <p class="nota">Antes da Reforma valia o <b>+1 por ponto</b> da K23, escolhido contra o
+    &times;2 sem teto porque com ele as pontas colapsavam (Centelha 6 contra 0 acertava 99%). Ver
+    K23 e a Reforma da Centelha.</p>`,
   },
   {
     id: 'pgr', titulo: 'Tres fases: Preparo, Golpe e Recuperacao', estado: 'decidido',
