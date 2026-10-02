@@ -136,7 +136,9 @@ eq(R.ataque, '3d6+2 +6', 'pool de acerto');
 eq(R.dano, '1d6 +6 (C)', 'dano');
 // 20 na ficha nua (test-kael), menos 1 de gambeson: a armadura aparece aqui.
 eq(R.defesa, 19, 'Defesa física');
-eq(R.defesaMental, 10, 'Defesa Mental');
+// Integridade 0: pela regra do maior (correção da Reforma, 02/10/2026) leva a Centelha
+// inteira (+3), e não mais 2×min(3, 0) = 0. Era 10.
+eq(R.defesaMental, 13, 'Defesa Mental');
 eq(JSON.stringify(R.soak), JSON.stringify({ impacto: 10, corte: 7, perfuracao: 4 }), 'Absorção por modo');
 eq(R.resistPerf, 0, 'Resistência a Perfuração');
 
@@ -148,9 +150,11 @@ eq(F.energia, 14, 'Energia');
 eq(F.mana, 13, 'Mana');
 eq(F.folego, 44, 'Fôlego');
 eq(F.defEsquiva, 19, 'Defesa (Esquiva)');
-eq(F.defBloqueio, 7, 'Defesa (Bloqueio)');
-eq(F.defSocial, 4, 'Defesa Social');
-eq(F.defMental, 10, 'Defesa Mental pela ficha');
+// Bloqueio, Sociabilidade e Integridade 0: as três levam a Centelha inteira (+3) pela regra do
+// maior (correção da Reforma, 02/10/2026). Eram 7, 4 e 10.
+eq(F.defBloqueio, 10, 'Defesa (Bloqueio)');
+eq(F.defSocial, 7, 'Defesa Social');
+eq(F.defMental, 13, 'Defesa Mental pela ficha');
 eq(F.iniciativa, '3d6', 'Iniciativa');
 eq(F.armaduras.join(', '), 'gambeson', 'armaduras vestidas no resumo');
 

@@ -465,7 +465,7 @@
     ],
     "pv": 34,
     "defesa": 23,
-    "defesaSocial": 4,
+    "defesaSocial": 7,
     "defesaMental": 19,
     "vontade": 6,
     "soak": {
@@ -527,7 +527,7 @@
     ],
     "pv": 31,
     "defesa": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 15,
     "vontade": 6,
     "soak": {
@@ -590,7 +590,7 @@
     ],
     "pv": 40,
     "defesa": 11,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 17,
     "vontade": 7,
     "soak": {
@@ -837,7 +837,7 @@
     ],
     "pv": 34,
     "defesa": 18,
-    "defesaSocial": 4,
+    "defesaSocial": 7,
     "defesaMental": 21,
     "vontade": 8,
     "soak": {
@@ -904,7 +904,7 @@
     ],
     "pv": 34,
     "defesa": 8,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 5,
     "soak": {
@@ -928,7 +928,7 @@
     "ataques": [
       {
         "nome": "Foice enferrujada",
-        "pool": "1d6+2",
+        "pool": "1d6+2 +1",
         "dano": "2d6 +4 corte",
         "perfArma": null,
         "ticks": 6
@@ -1533,7 +1533,7 @@
     ],
     "pv": 62,
     "defesa": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -1610,8 +1610,8 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 4,
-    "defesaSocial": 4,
+    "defesa": 5,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -1723,8 +1723,8 @@
       "centelha"
     ],
     "pv": 62,
-    "defesa": 4,
-    "defesaSocial": 6,
+    "defesa": 5,
+    "defesaSocial": 7,
     "defesaMental": 14,
     "vontade": 6,
     "soak": {
@@ -1788,8 +1788,8 @@
       "centelha"
     ],
     "pv": 58,
-    "defesa": 4,
-    "defesaSocial": 6,
+    "defesa": 5,
+    "defesaSocial": 7,
     "defesaMental": 13,
     "vontade": 6,
     "soak": {
@@ -1847,7 +1847,7 @@
     ],
     "pv": 75,
     "defesa": 10,
-    "defesaSocial": 10,
+    "defesaSocial": 12,
     "defesaMental": 19,
     "vontade": 6,
     "soak": {
@@ -1946,8 +1946,8 @@
       "mágico"
     ],
     "pv": 80,
-    "defesa": 12,
-    "defesaSocial": 10,
+    "defesa": 14,
+    "defesaSocial": 14,
     "defesaMental": 26,
     "vontade": 8,
     "soak": {
@@ -2054,8 +2054,8 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 4,
-    "defesaSocial": 4,
+    "defesa": 5,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -2887,7 +2887,7 @@
     ],
     "pv": 50,
     "defesa": 12,
-    "defesaSocial": 8,
+    "defesaSocial": 9,
     "defesaMental": 15,
     "vontade": 6,
     "soak": {
@@ -3116,8 +3116,8 @@
       "centelha"
     ],
     "pv": 50,
-    "defesa": 4,
-    "defesaSocial": 4,
+    "defesa": 5,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -3177,7 +3177,7 @@
     ],
     "pv": 31,
     "defesa": 14,
-    "defesaSocial": 8,
+    "defesaSocial": 10,
     "defesaMental": 17,
     "vontade": 7,
     "soak": {
@@ -3255,7 +3255,7 @@
     ],
     "pv": 40,
     "defesa": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -3312,7 +3312,7 @@
     ],
     "pv": 54,
     "defesa": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -3369,7 +3369,7 @@
     ],
     "pv": 54,
     "defesa": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -3505,8 +3505,8 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 10,
-    "defesaSocial": 6,
+    "defesa": 11,
+    "defesaSocial": 9,
     "defesaMental": 19,
     "vontade": 8,
     "soak": {
@@ -3585,8 +3585,8 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 10,
-    "defesaSocial": 6,
+    "defesa": 11,
+    "defesaSocial": 9,
     "defesaMental": 19,
     "vontade": 8,
     "soak": {
@@ -3658,7 +3658,7 @@
     ],
     "pv": 75,
     "defesa": 10,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 11,
     "vontade": 6,
     "soak": {
@@ -3728,8 +3728,8 @@
       "mágico"
     ],
     "pv": 37,
-    "defesa": 4,
-    "defesaSocial": 6,
+    "defesa": 7,
+    "defesaSocial": 9,
     "defesaMental": 19,
     "vontade": 8,
     "soak": {
@@ -3804,7 +3804,7 @@
     ],
     "pv": 24,
     "defesa": 14,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
@@ -3883,8 +3883,8 @@
       "mágico"
     ],
     "pv": 62,
-    "defesa": 4,
-    "defesaSocial": 6,
+    "defesa": 7,
+    "defesaSocial": 9,
     "defesaMental": 19,
     "vontade": 8,
     "soak": {
@@ -3965,7 +3965,7 @@
     ],
     "pv": 54,
     "defesa": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 16,
     "vontade": 7,
     "soak": {
@@ -4045,8 +4045,8 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 14,
-    "defesaSocial": 6,
+    "defesa": 15,
+    "defesaSocial": 9,
     "defesaMental": 19,
     "vontade": 8,
     "soak": {
@@ -4125,7 +4125,7 @@
     ],
     "pv": 34,
     "defesa": 14,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -4203,7 +4203,7 @@
       "centelha"
     ],
     "pv": 66,
-    "defesa": 0,
+    "defesa": 1,
     "defesaSocial": "-",
     "defesaMental": "-",
     "vontade": 6,
@@ -4276,7 +4276,7 @@
     ],
     "pv": 40,
     "defesa": 10,
-    "defesaSocial": 6,
+    "defesaSocial": 7,
     "defesaMental": 14,
     "vontade": 6,
     "soak": {
@@ -4415,8 +4415,8 @@
       "mágico"
     ],
     "pv": 75,
-    "defesa": 4,
-    "defesaSocial": 8,
+    "defesa": 7,
+    "defesaSocial": 11,
     "defesaMental": 22,
     "vontade": 8,
     "soak": {
@@ -4492,8 +4492,8 @@
       "centelha"
     ],
     "pv": 95,
-    "defesa": 4,
-    "defesaSocial": 4,
+    "defesa": 5,
+    "defesaSocial": 5,
     "defesaMental": 11,
     "vontade": 6,
     "soak": {
@@ -4550,7 +4550,7 @@
     ],
     "pv": 80,
     "defesa": 10,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -4607,8 +4607,8 @@
       "mágico"
     ],
     "pv": 75,
-    "defesa": 10,
-    "defesaSocial": 10,
+    "defesa": 13,
+    "defesaSocial": 15,
     "defesaMental": 30,
     "vontade": 10,
     "soak": {
@@ -4768,7 +4768,7 @@
       "centelha"
     ],
     "pv": 31,
-    "defesa": 4,
+    "defesa": 5,
     "defesaSocial": "-",
     "defesaMental": "-",
     "vontade": 6,
@@ -4825,7 +4825,7 @@
     ],
     "pv": 37,
     "defesa": 12,
-    "defesaSocial": 8,
+    "defesaSocial": 9,
     "defesaMental": 16,
     "vontade": 6,
     "soak": {
@@ -4906,7 +4906,7 @@
     ],
     "pv": 40,
     "defesa": 14,
-    "defesaSocial": 8,
+    "defesaSocial": 10,
     "defesaMental": 19,
     "vontade": 7,
     "soak": {
@@ -4987,7 +4987,7 @@
     ],
     "pv": 37,
     "defesa": 12,
-    "defesaSocial": 8,
+    "defesaSocial": 10,
     "defesaMental": 17,
     "vontade": 7,
     "soak": {
@@ -5079,7 +5079,7 @@
     ],
     "pv": 37,
     "defesa": 10,
-    "defesaSocial": 8,
+    "defesaSocial": 10,
     "defesaMental": 18,
     "vontade": 7,
     "soak": {
@@ -5158,8 +5158,8 @@
       "mágico"
     ],
     "pv": 43,
-    "defesa": 14,
-    "defesaSocial": 10,
+    "defesa": 15,
+    "defesaSocial": 13,
     "defesaMental": 23,
     "vontade": 8,
     "soak": {
@@ -5258,8 +5258,8 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 14,
-    "defesaSocial": 10,
+    "defesa": 16,
+    "defesaSocial": 14,
     "defesaMental": 26,
     "vontade": 9,
     "soak": {
@@ -5357,8 +5357,8 @@
       "mágico"
     ],
     "pv": 37,
-    "defesa": 4,
-    "defesaSocial": 8,
+    "defesa": 8,
+    "defesaSocial": 12,
     "defesaMental": 23,
     "vontade": 9,
     "soak": {
@@ -5451,8 +5451,8 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 12,
-    "defesaSocial": 8,
+    "defesa": 14,
+    "defesaSocial": 12,
     "defesaMental": 23,
     "vontade": 9,
     "soak": {
@@ -5530,8 +5530,8 @@
       "mágico"
     ],
     "pv": 49,
-    "defesa": 14,
-    "defesaSocial": 12,
+    "defesa": 17,
+    "defesaSocial": 17,
     "defesaMental": 30,
     "vontade": 10,
     "soak": {
@@ -5659,8 +5659,8 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 12,
-    "defesaSocial": 8,
+    "defesa": 16,
+    "defesaSocial": 14,
     "defesaMental": 28,
     "vontade": 11,
     "soak": {
@@ -5765,8 +5765,8 @@
       "mágico"
     ],
     "pv": 28,
-    "defesa": 4,
-    "defesaSocial": 4,
+    "defesa": 6,
+    "defesaSocial": 6,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
@@ -5833,7 +5833,7 @@
     ],
     "pv": 17,
     "defesa": 14,
-    "defesaSocial": 6,
+    "defesaSocial": 8,
     "defesaMental": 17,
     "vontade": 7,
     "soak": {
@@ -5919,8 +5919,8 @@
       "mágico"
     ],
     "pv": 43,
-    "defesa": 14,
-    "defesaSocial": 12,
+    "defesa": 16,
+    "defesaSocial": 16,
     "defesaMental": 28,
     "vontade": 9,
     "soak": {
@@ -6008,8 +6008,8 @@
       "mágico"
     ],
     "pv": 66,
-    "defesa": 12,
-    "defesaSocial": 10,
+    "defesa": 15,
+    "defesaSocial": 15,
     "defesaMental": 29,
     "vontade": 10,
     "soak": {
@@ -6088,8 +6088,8 @@
       "mágico"
     ],
     "pv": 66,
-    "defesa": 12,
-    "defesaSocial": 10,
+    "defesa": 15,
+    "defesaSocial": 15,
     "defesaMental": 29,
     "vontade": 10,
     "soak": {
@@ -6172,8 +6172,8 @@
       "mágico"
     ],
     "pv": 85,
-    "defesa": 12,
-    "defesaSocial": 12,
+    "defesa": 16,
+    "defesaSocial": 18,
     "defesaMental": 34,
     "vontade": 11,
     "soak": {
@@ -6246,8 +6246,8 @@
       "centelha"
     ],
     "pv": 66,
-    "defesa": 24,
-    "defesaSocial": 14,
+    "defesa": 27,
+    "defesaSocial": 21,
     "defesaMental": 38,
     "vontade": 12,
     "soak": {
@@ -6323,8 +6323,8 @@
       "mágico"
     ],
     "pv": 78,
-    "defesa": 24,
-    "defesaSocial": 16,
+    "defesa": 29,
+    "defesaSocial": 25,
     "defesaMental": 43,
     "vontade": 12,
     "soak": {
@@ -6429,7 +6429,7 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 4,
+    "defesa": 5,
     "defesaSocial": "-",
     "defesaMental": "-",
     "vontade": 6,
@@ -6501,7 +6501,7 @@
     ],
     "pv": 17,
     "defesa": 14,
-    "defesaSocial": 6,
+    "defesaSocial": 8,
     "defesaMental": 17,
     "vontade": 7,
     "soak": {
@@ -6599,8 +6599,8 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 12,
-    "defesaSocial": 4,
+    "defesa": 14,
+    "defesaSocial": 8,
     "defesaMental": 17,
     "vontade": 9,
     "soak": {
@@ -6702,8 +6702,8 @@
       "mágico"
     ],
     "pv": 43,
-    "defesa": 22,
-    "defesaSocial": 12,
+    "defesa": 23,
+    "defesaSocial": 17,
     "defesaMental": 31,
     "vontade": 10,
     "soak": {
@@ -6777,8 +6777,8 @@
       "mágico"
     ],
     "pv": 58,
-    "defesa": 14,
-    "defesaSocial": 10,
+    "defesa": 17,
+    "defesaSocial": 15,
     "defesaMental": 30,
     "vontade": 10,
     "soak": {
@@ -6878,8 +6878,8 @@
       "mágico"
     ],
     "pv": 66,
-    "defesa": 20,
-    "defesaSocial": 12,
+    "defesa": 22,
+    "defesaSocial": 18,
     "defesaMental": 35,
     "vontade": 11,
     "soak": {
@@ -6985,8 +6985,8 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 14,
-    "defesaSocial": 8,
+    "defesa": 17,
+    "defesaSocial": 13,
     "defesaMental": 29,
     "vontade": 10,
     "soak": {
@@ -7076,8 +7076,8 @@
       "mágico"
     ],
     "pv": 74,
-    "defesa": 30,
-    "defesaSocial": 18,
+    "defesa": 33,
+    "defesaSocial": 27,
     "defesaMental": 45,
     "vontade": 12,
     "soak": {
@@ -7216,8 +7216,8 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 12,
-    "defesaSocial": 6,
+    "defesa": 14,
+    "defesaSocial": 10,
     "defesaMental": 22,
     "vontade": 9,
     "soak": {
@@ -7304,8 +7304,8 @@
       "mágico"
     ],
     "pv": 43,
-    "defesa": 14,
-    "defesaSocial": 12,
+    "defesa": 18,
+    "defesaSocial": 18,
     "defesaMental": 34,
     "vontade": 11,
     "soak": {
@@ -7425,8 +7425,8 @@
       "mágico"
     ],
     "pv": 62,
-    "defesa": 14,
-    "defesaSocial": 16,
+    "defesa": 19,
+    "defesaSocial": 23,
     "defesaMental": 41,
     "vontade": 12,
     "soak": {
@@ -7534,8 +7534,8 @@
       "mágico"
     ],
     "pv": 70,
-    "defesa": 20,
-    "defesaSocial": 16,
+    "defesa": 25,
+    "defesaSocial": 25,
     "defesaMental": 44,
     "vontade": 12,
     "soak": {
@@ -7653,8 +7653,8 @@
       "mágico"
     ],
     "pv": 50,
-    "defesa": 20,
-    "defesaSocial": 12,
+    "defesa": 21,
+    "defesaSocial": 17,
     "defesaMental": 31,
     "vontade": 10,
     "soak": {
@@ -7761,8 +7761,8 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 20,
-    "defesaSocial": 14,
+    "defesa": 22,
+    "defesaSocial": 20,
     "defesaMental": 36,
     "vontade": 11,
     "soak": {
@@ -7856,8 +7856,8 @@
       "mágico"
     ],
     "pv": 50,
-    "defesa": 14,
-    "defesaSocial": 8,
+    "defesa": 16,
+    "defesaSocial": 12,
     "defesaMental": 25,
     "vontade": 9,
     "soak": {
@@ -7962,8 +7962,8 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 14,
-    "defesaSocial": 8,
+    "defesa": 16,
+    "defesaSocial": 12,
     "defesaMental": 25,
     "vontade": 9,
     "soak": {
@@ -8070,8 +8070,8 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 10,
-    "defesaSocial": 8,
+    "defesa": 11,
+    "defesaSocial": 11,
     "defesaMental": 22,
     "vontade": 8,
     "soak": {
@@ -8148,8 +8148,8 @@
       "mágico"
     ],
     "pv": 58,
-    "defesa": 4,
-    "defesaSocial": 4,
+    "defesa": 7,
+    "defesaSocial": 7,
     "defesaMental": 16,
     "vontade": 8,
     "soak": {
@@ -8225,8 +8225,8 @@
       "mágico"
     ],
     "pv": 43,
-    "defesa": 10,
-    "defesaSocial": 4,
+    "defesa": 11,
+    "defesaSocial": 7,
     "defesaMental": 16,
     "vontade": 8,
     "soak": {
@@ -8304,8 +8304,8 @@
       "mágico"
     ],
     "pv": 34,
-    "defesa": 14,
-    "defesaSocial": 10,
+    "defesa": 16,
+    "defesaSocial": 14,
     "defesaMental": 26,
     "vontade": 9,
     "soak": {
@@ -8391,8 +8391,8 @@
       "mágico"
     ],
     "pv": 34,
-    "defesa": 20,
-    "defesaSocial": 10,
+    "defesa": 21,
+    "defesaSocial": 15,
     "defesaMental": 30,
     "vontade": 10,
     "soak": {
@@ -8485,7 +8485,7 @@
     ],
     "pv": 37,
     "defesa": 12,
-    "defesaSocial": 10,
+    "defesaSocial": 12,
     "defesaMental": 19,
     "vontade": 7,
     "soak": {
@@ -8561,7 +8561,7 @@
     ],
     "pv": 17,
     "defesa": 20,
-    "defesaSocial": 10,
+    "defesaSocial": 14,
     "defesaMental": 27,
     "vontade": 9,
     "soak": {
@@ -8592,7 +8592,7 @@
       },
       {
         "nome": "Flechas do sono",
-        "pool": "2d6",
+        "pool": "2d6 +4",
         "dano": "1d6 +4 perfurante",
         "perfArma": 0,
         "ticks": 6
@@ -8658,7 +8658,7 @@
     ],
     "pv": 17,
     "defesa": 30,
-    "defesaSocial": 8,
+    "defesaSocial": 12,
     "defesaMental": 26,
     "vontade": 9,
     "soak": {
@@ -8732,8 +8732,8 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 12,
-    "defesaSocial": 8,
+    "defesa": 13,
+    "defesaSocial": 11,
     "defesaMental": 21,
     "vontade": 8,
     "soak": {
@@ -8824,7 +8824,7 @@
     ],
     "pv": 37,
     "defesa": 10,
-    "defesaSocial": 8,
+    "defesaSocial": 10,
     "defesaMental": 19,
     "vontade": 7,
     "soak": {
@@ -8902,8 +8902,8 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 12,
-    "defesaSocial": 6,
+    "defesa": 14,
+    "defesaSocial": 10,
     "defesaMental": 21,
     "vontade": 9,
     "soak": {
@@ -8965,8 +8965,8 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 14,
-    "defesaSocial": 14,
+    "defesa": 16,
+    "defesaSocial": 18,
     "defesaMental": 29,
     "vontade": 9,
     "soak": {
@@ -9049,8 +9049,8 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 12,
-    "defesaSocial": 10,
+    "defesa": 15,
+    "defesaSocial": 15,
     "defesaMental": 29,
     "vontade": 10,
     "soak": {
@@ -9139,8 +9139,8 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 12,
-    "defesaSocial": 10,
+    "defesa": 15,
+    "defesaSocial": 15,
     "defesaMental": 30,
     "vontade": 10,
     "soak": {
@@ -9247,8 +9247,8 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 10,
-    "defesaSocial": 10,
+    "defesa": 13,
+    "defesaSocial": 15,
     "defesaMental": 30,
     "vontade": 10,
     "soak": {
@@ -9352,7 +9352,7 @@
     ],
     "pv": 75,
     "defesa": 10,
-    "defesaSocial": 6,
+    "defesaSocial": 7,
     "defesaMental": 13,
     "vontade": 6,
     "soak": {
@@ -9433,7 +9433,7 @@
     ],
     "pv": 54,
     "defesa": 20,
-    "defesaSocial": 10,
+    "defesaSocial": 14,
     "defesaMental": 27,
     "vontade": 9,
     "soak": {
@@ -9515,8 +9515,8 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 10,
-    "defesaSocial": 8,
+    "defesa": 12,
+    "defesaSocial": 12,
     "defesaMental": 24,
     "vontade": 9,
     "soak": {
@@ -9606,8 +9606,8 @@
       "mágico"
     ],
     "pv": 110,
-    "defesa": 4,
-    "defesaSocial": 12,
+    "defesa": 11,
+    "defesaSocial": 19,
     "defesaMental": 36,
     "vontade": 12,
     "soak": {
@@ -9717,9 +9717,9 @@
       "mágico"
     ],
     "pv": 115,
-    "defesa": 4,
-    "defesaSocial": 8,
-    "defesaMental": 26,
+    "defesa": 14,
+    "defesaSocial": 18,
+    "defesaMental": 28,
     "vontade": 12,
     "soak": {
       "impacto": 24,
@@ -9811,8 +9811,8 @@
       "mágico"
     ],
     "pv": 40,
-    "defesa": 4,
-    "defesaSocial": 8,
+    "defesa": 8,
+    "defesaSocial": 12,
     "defesaMental": 25,
     "vontade": 9,
     "soak": {
@@ -9912,8 +9912,8 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 10,
-    "defesaSocial": 6,
+    "defesa": 13,
+    "defesaSocial": 11,
     "defesaMental": 22,
     "vontade": 10,
     "soak": {
@@ -10011,8 +10011,8 @@
       "mágico"
     ],
     "pv": 80,
-    "defesa": 4,
-    "defesaSocial": 10,
+    "defesa": 10,
+    "defesaSocial": 16,
     "defesaMental": 31,
     "vontade": 11,
     "soak": {
@@ -10139,8 +10139,8 @@
       "mágico"
     ],
     "pv": 95,
-    "defesa": 4,
-    "defesaSocial": 12,
+    "defesa": 11,
+    "defesaSocial": 19,
     "defesaMental": 36,
     "vontade": 12,
     "soak": {
@@ -10252,8 +10252,8 @@
       "mágico"
     ],
     "pv": 115,
-    "defesa": 4,
-    "defesaSocial": 14,
+    "defesa": 13,
+    "defesaSocial": 23,
     "defesaMental": 40,
     "vontade": 12,
     "soak": {
@@ -10364,8 +10364,8 @@
       "mágico"
     ],
     "pv": 54,
-    "defesa": 4,
-    "defesaSocial": 4,
+    "defesa": 8,
+    "defesaSocial": 8,
     "defesaMental": 17,
     "vontade": 9,
     "soak": {
@@ -10478,8 +10478,8 @@
       "mágico"
     ],
     "pv": 80,
-    "defesa": 4,
-    "defesaSocial": 10,
+    "defesa": 10,
+    "defesaSocial": 16,
     "defesaMental": 31,
     "vontade": 11,
     "soak": {
@@ -10582,8 +10582,8 @@
       "mágico"
     ],
     "pv": 75,
-    "defesa": 10,
-    "defesaSocial": 10,
+    "defesa": 14,
+    "defesaSocial": 16,
     "defesaMental": 31,
     "vontade": 11,
     "soak": {
@@ -10667,8 +10667,8 @@
       "mágico"
     ],
     "pv": 85,
-    "defesa": 4,
-    "defesaSocial": 14,
+    "defesa": 11,
+    "defesaSocial": 21,
     "defesaMental": 40,
     "vontade": 12,
     "soak": {
@@ -10789,8 +10789,8 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 4,
-    "defesaSocial": 10,
+    "defesa": 5,
+    "defesaSocial": 11,
     "defesaMental": 17,
     "vontade": 6,
     "soak": {
@@ -10846,7 +10846,7 @@
       "centelha"
     ],
     "pv": 25,
-    "defesa": 4,
+    "defesa": 5,
     "defesaSocial": "-",
     "defesaMental": "-",
     "vontade": 6,
@@ -10901,8 +10901,8 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 4,
-    "defesaSocial": 4,
+    "defesa": 6,
+    "defesaSocial": 6,
     "defesaMental": 14,
     "vontade": 7,
     "soak": {
@@ -11124,8 +11124,8 @@
       "centelha"
     ],
     "pv": 26,
-    "defesa": 4,
-    "defesaSocial": 4,
+    "defesa": 6,
+    "defesaSocial": 6,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
@@ -11149,7 +11149,7 @@
     "ataques": [
       {
         "nome": "Raios de luz",
-        "pool": "1d6",
+        "pool": "1d6 +2",
         "dano": "2d6 +2 impacto",
         "perfArma": null,
         "ticks": 5,
@@ -11230,8 +11230,8 @@
       "centelha"
     ],
     "pv": 49,
-    "defesa": 14,
-    "defesaSocial": 10,
+    "defesa": 18,
+    "defesaSocial": 16,
     "defesaMental": 31,
     "vontade": 11,
     "soak": {
@@ -11288,7 +11288,7 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 4,
+    "defesa": 5,
     "defesaSocial": "-",
     "defesaMental": "-",
     "vontade": 6,
@@ -11361,8 +11361,8 @@
       "centelha"
     ],
     "pv": 40,
-    "defesa": 14,
-    "defesaSocial": 8,
+    "defesa": 16,
+    "defesaSocial": 12,
     "defesaMental": 25,
     "vontade": 9,
     "soak": {
@@ -11418,8 +11418,8 @@
       "centelha"
     ],
     "pv": 58,
-    "defesa": 14,
-    "defesaSocial": 10,
+    "defesa": 16,
+    "defesaSocial": 14,
     "defesaMental": 26,
     "vontade": 9,
     "soak": {
@@ -11476,7 +11476,7 @@
     ],
     "pv": 37,
     "defesa": 12,
-    "defesaSocial": 8,
+    "defesaSocial": 10,
     "defesaMental": 19,
     "vontade": 7,
     "soak": {
@@ -11532,8 +11532,8 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 12,
-    "defesaSocial": 10,
+    "defesa": 14,
+    "defesaSocial": 14,
     "defesaMental": 27,
     "vontade": 9,
     "soak": {
@@ -11869,8 +11869,8 @@
       "centelha"
     ],
     "pv": 80,
-    "defesa": 10,
-    "defesaSocial": 6,
+    "defesa": 13,
+    "defesaSocial": 11,
     "defesaMental": 22,
     "vontade": 10,
     "soak": {
@@ -12149,8 +12149,8 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 4,
-    "defesaSocial": 4,
+    "defesa": 6,
+    "defesaSocial": 6,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
@@ -12375,7 +12375,7 @@
     ],
     "pv": 50,
     "defesa": 12,
-    "defesaSocial": 6,
+    "defesaSocial": 8,
     "defesaMental": 17,
     "vontade": 7,
     "soak": {
@@ -12542,7 +12542,7 @@
     ],
     "pv": 26,
     "defesa": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
@@ -12598,8 +12598,8 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 14,
-    "defesaSocial": 4,
+    "defesa": 16,
+    "defesaSocial": 8,
     "defesaMental": 18,
     "vontade": 9,
     "soak": {
@@ -12655,8 +12655,8 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 14,
-    "defesaSocial": 8,
+    "defesa": 16,
+    "defesaSocial": 12,
     "defesaMental": 25,
     "vontade": 9,
     "soak": {
@@ -12823,7 +12823,7 @@
     ],
     "pv": 28,
     "defesa": 14,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
@@ -12880,7 +12880,7 @@
     ],
     "pv": 37,
     "defesa": 14,
-    "defesaSocial": 6,
+    "defesaSocial": 8,
     "defesaMental": 16,
     "vontade": 7,
     "soak": {
@@ -12937,7 +12937,7 @@
     ],
     "pv": 28,
     "defesa": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 11,
     "vontade": 6,
     "soak": {
@@ -12993,8 +12993,8 @@
       "centelha"
     ],
     "pv": 43,
-    "defesa": 10,
-    "defesaSocial": 8,
+    "defesa": 12,
+    "defesaSocial": 12,
     "defesaMental": 25,
     "vontade": 9,
     "soak": {
@@ -13050,8 +13050,8 @@
       "centelha"
     ],
     "pv": 46,
-    "defesa": 14,
-    "defesaSocial": 10,
+    "defesa": 16,
+    "defesaSocial": 14,
     "defesaMental": 27,
     "vontade": 9,
     "soak": {
@@ -13156,8 +13156,8 @@
       "centelha"
     ],
     "pv": 90,
-    "defesa": 10,
-    "defesaSocial": 12,
+    "defesa": 14,
+    "defesaSocial": 18,
     "defesaMental": 36,
     "vontade": 11,
     "soak": {
@@ -13214,7 +13214,7 @@
     ],
     "pv": 30,
     "defesa": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
@@ -13270,8 +13270,8 @@
       "centelha"
     ],
     "pv": 46,
-    "defesa": 22,
-    "defesaSocial": 10,
+    "defesa": 23,
+    "defesaSocial": 15,
     "defesaMental": 29,
     "vontade": 10,
     "soak": {
@@ -13327,8 +13327,8 @@
       "centelha"
     ],
     "pv": 70,
-    "defesa": 24,
-    "defesaSocial": 14,
+    "defesa": 26,
+    "defesaSocial": 20,
     "defesaMental": 35,
     "vontade": 11,
     "soak": {
@@ -14058,8 +14058,8 @@
       "centelha"
     ],
     "pv": 70,
-    "defesa": 4,
-    "defesaSocial": 6,
+    "defesa": 9,
+    "defesaSocial": 11,
     "defesaMental": 22,
     "vontade": 10,
     "soak": {
@@ -14115,8 +14115,8 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 12,
-    "defesaSocial": 10,
+    "defesa": 14,
+    "defesaSocial": 14,
     "defesaMental": 27,
     "vontade": 9,
     "soak": {
@@ -14173,7 +14173,7 @@
     ],
     "pv": 31,
     "defesa": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -14230,7 +14230,7 @@
     ],
     "pv": 34,
     "defesa": 14,
-    "defesaSocial": 8,
+    "defesaSocial": 10,
     "defesaMental": 19,
     "vontade": 7,
     "soak": {
@@ -14286,8 +14286,8 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 4,
-    "defesaSocial": 4,
+    "defesa": 5,
+    "defesaSocial": 5,
     "defesaMental": 13,
     "vontade": 6,
     "soak": {
@@ -14456,7 +14456,7 @@
     ],
     "pv": 26,
     "defesa": 14,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -14512,8 +14512,8 @@
       "centelha"
     ],
     "pv": 26,
-    "defesa": 4,
-    "defesaSocial": 4,
+    "defesa": 5,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -14570,7 +14570,7 @@
     ],
     "pv": 24,
     "defesa": 10,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -14627,8 +14627,8 @@
       "centelha"
     ],
     "pv": 26,
-    "defesa": 4,
-    "defesaSocial": 4,
+    "defesa": 5,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -14741,7 +14741,7 @@
     ],
     "pv": 40,
     "defesa": 14,
-    "defesaSocial": 6,
+    "defesaSocial": 8,
     "defesaMental": 16,
     "vontade": 7,
     "soak": {
@@ -15471,7 +15471,7 @@
     ],
     "pv": 34,
     "defesa": 12,
-    "defesaSocial": 8,
+    "defesaSocial": 10,
     "defesaMental": 19,
     "vontade": 7,
     "soak": {
@@ -15527,8 +15527,8 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 14,
-    "defesaSocial": 10,
+    "defesa": 17,
+    "defesaSocial": 15,
     "defesaMental": 29,
     "vontade": 10,
     "soak": {
@@ -15584,8 +15584,8 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 10,
-    "defesaSocial": 8,
+    "defesa": 12,
+    "defesaSocial": 12,
     "defesaMental": 25,
     "vontade": 9,
     "soak": {
@@ -15642,8 +15642,8 @@
       "incorpóreo"
     ],
     "pv": 43,
-    "defesa": 10,
-    "defesaSocial": 10,
+    "defesa": 12,
+    "defesaSocial": 14,
     "defesaMental": 24,
     "vontade": 9,
     "soak": {
@@ -15733,8 +15733,8 @@
       "centelha"
     ],
     "pv": 46,
-    "defesa": 14,
-    "defesaSocial": 6,
+    "defesa": 16,
+    "defesaSocial": 10,
     "defesaMental": 20,
     "vontade": 9,
     "soak": {
@@ -15791,7 +15791,7 @@
     ],
     "pv": 54,
     "defesa": 14,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 14,
     "vontade": 9,
     "soak": {
@@ -15847,7 +15847,7 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 4,
+    "defesa": 7,
     "defesaSocial": "-",
     "defesaMental": "-",
     "vontade": 8,
@@ -15902,7 +15902,7 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 4,
+    "defesa": 7,
     "defesaSocial": "-",
     "defesaMental": "-",
     "vontade": 8,
@@ -15957,7 +15957,7 @@
       "centelha"
     ],
     "pv": 25,
-    "defesa": 4,
+    "defesa": 5,
     "defesaSocial": "-",
     "defesaMental": "-",
     "vontade": 6,
@@ -16013,7 +16013,7 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 4,
+    "defesa": 8,
     "defesaSocial": "-",
     "defesaMental": "-",
     "vontade": 9,
@@ -16068,7 +16068,7 @@
       "centelha"
     ],
     "pv": 34,
-    "defesa": 4,
+    "defesa": 7,
     "defesaSocial": "-",
     "defesaMental": "-",
     "vontade": 8,
@@ -16123,7 +16123,7 @@
       "centelha"
     ],
     "pv": 49,
-    "defesa": 0,
+    "defesa": 1,
     "defesaSocial": "-",
     "defesaMental": "-",
     "vontade": 6,
@@ -16178,8 +16178,8 @@
       "centelha"
     ],
     "pv": 43,
-    "defesa": 4,
-    "defesaSocial": 6,
+    "defesa": 8,
+    "defesaSocial": 10,
     "defesaMental": 20,
     "vontade": 9,
     "soak": {
@@ -16236,7 +16236,7 @@
     ],
     "pv": 37,
     "defesa": 10,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
@@ -16292,9 +16292,9 @@
       "centelha"
     ],
     "pv": 58,
-    "defesa": 12,
-    "defesaSocial": 4,
-    "defesaMental": 18,
+    "defesa": 15,
+    "defesaSocial": 9,
+    "defesaMental": 19,
     "vontade": 10,
     "soak": {
       "impacto": 12,
@@ -16462,7 +16462,7 @@
     ],
     "pv": 16,
     "defesa": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -16750,7 +16750,7 @@
     ],
     "pv": 32,
     "defesa": 22,
-    "defesaSocial": 8,
+    "defesaSocial": 12,
     "defesaMental": 24,
     "vontade": 9,
     "soak": {
@@ -16806,8 +16806,8 @@
       "centelha"
     ],
     "pv": 46,
-    "defesa": 14,
-    "defesaSocial": 6,
+    "defesa": 16,
+    "defesaSocial": 10,
     "defesaMental": 22,
     "vontade": 9,
     "soak": {
@@ -16917,8 +16917,8 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 14,
-    "defesaSocial": 6,
+    "defesa": 16,
+    "defesaSocial": 10,
     "defesaMental": 21,
     "vontade": 9,
     "soak": {
@@ -17084,8 +17084,8 @@
       "centelha"
     ],
     "pv": 95,
-    "defesa": 14,
-    "defesaSocial": 12,
+    "defesa": 18,
+    "defesaSocial": 18,
     "defesaMental": 32,
     "vontade": 11,
     "soak": {
@@ -17141,8 +17141,8 @@
       "centelha"
     ],
     "pv": 110,
-    "defesa": 22,
-    "defesaSocial": 14,
+    "defesa": 24,
+    "defesaSocial": 20,
     "defesaMental": 33,
     "vontade": 11,
     "soak": {
@@ -17198,8 +17198,8 @@
       "centelha"
     ],
     "pv": 115,
-    "defesa": 24,
-    "defesaSocial": 16,
+    "defesa": 26,
+    "defesaSocial": 22,
     "defesaMental": 36,
     "vontade": 11,
     "soak": {
@@ -17432,7 +17432,7 @@
     ],
     "pv": 37,
     "defesa": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 16,
     "vontade": 7,
     "soak": {
@@ -17489,7 +17489,7 @@
     ],
     "pv": 37,
     "defesa": 10,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
@@ -17602,7 +17602,7 @@
     ],
     "pv": 26,
     "defesa": 12,
-    "defesaSocial": 6,
+    "defesaSocial": 8,
     "defesaMental": 16,
     "vontade": 7,
     "soak": {
@@ -17659,7 +17659,7 @@
     ],
     "pv": 37,
     "defesa": 10,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -17716,7 +17716,7 @@
     ],
     "pv": 24,
     "defesa": 10,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -17772,8 +17772,8 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 14,
-    "defesaSocial": 6,
+    "defesa": 16,
+    "defesaSocial": 10,
     "defesaMental": 20,
     "vontade": 9,
     "soak": {
@@ -17830,7 +17830,7 @@
     ],
     "pv": 37,
     "defesa": 14,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
@@ -17887,7 +17887,7 @@
     ],
     "pv": 54,
     "defesa": 20,
-    "defesaSocial": 10,
+    "defesaSocial": 14,
     "defesaMental": 27,
     "vontade": 9,
     "soak": {
@@ -17943,8 +17943,8 @@
       "centelha"
     ],
     "pv": 58,
-    "defesa": 22,
-    "defesaSocial": 10,
+    "defesa": 23,
+    "defesaSocial": 15,
     "defesaMental": 30,
     "vontade": 10,
     "soak": {
@@ -18000,8 +18000,8 @@
       "centelha"
     ],
     "pv": 90,
-    "defesa": 2,
-    "defesaSocial": 10,
+    "defesa": 8,
+    "defesaSocial": 16,
     "defesaMental": 31,
     "vontade": 11,
     "soak": {
@@ -18057,8 +18057,8 @@
       "centelha"
     ],
     "pv": 46,
-    "defesa": 14,
-    "defesaSocial": 10,
+    "defesa": 17,
+    "defesaSocial": 15,
     "defesaMental": 30,
     "vontade": 10,
     "soak": {
@@ -18114,8 +18114,8 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 12,
-    "defesaSocial": 6,
+    "defesa": 14,
+    "defesaSocial": 10,
     "defesaMental": 21,
     "vontade": 9,
     "soak": {
@@ -18197,8 +18197,8 @@
       "centelha"
     ],
     "pv": 75,
-    "defesa": 12,
-    "defesaSocial": 6,
+    "defesa": 15,
+    "defesaSocial": 11,
     "defesaMental": 23,
     "vontade": 10,
     "soak": {
@@ -18262,7 +18262,7 @@
       "centelha"
     ],
     "pv": 62,
-    "defesa": 0,
+    "defesa": 1,
     "defesaSocial": "-",
     "defesaMental": "-",
     "vontade": 6,
@@ -18429,8 +18429,8 @@
       "centelha"
     ],
     "pv": 46,
-    "defesa": 4,
-    "defesaSocial": 4,
+    "defesa": 6,
+    "defesaSocial": 6,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
@@ -18486,8 +18486,8 @@
       "centelha"
     ],
     "pv": 85,
-    "defesa": 24,
-    "defesaSocial": 14,
+    "defesa": 26,
+    "defesaSocial": 20,
     "defesaMental": 37,
     "vontade": 11,
     "soak": {
@@ -18544,7 +18544,7 @@
     ],
     "pv": 18,
     "defesa": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -18712,8 +18712,8 @@
       "centelha"
     ],
     "pv": 75,
-    "defesa": 10,
-    "defesaSocial": 4,
+    "defesa": 12,
+    "defesaSocial": 8,
     "defesaMental": 17,
     "vontade": 9,
     "soak": {
@@ -18825,8 +18825,8 @@
       "centelha"
     ],
     "pv": 70,
-    "defesa": 10,
-    "defesaSocial": 8,
+    "defesa": 13,
+    "defesaSocial": 13,
     "defesaMental": 26,
     "vontade": 10,
     "soak": {
@@ -18883,7 +18883,7 @@
     ],
     "pv": 37,
     "defesa": 10,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 17,
     "vontade": 7,
     "soak": {
@@ -18940,7 +18940,7 @@
     ],
     "pv": 40,
     "defesa": 14,
-    "defesaSocial": 8,
+    "defesaSocial": 10,
     "defesaMental": 18,
     "vontade": 7,
     "soak": {
@@ -18996,9 +18996,9 @@
       "centelha"
     ],
     "pv": 95,
-    "defesa": 12,
-    "defesaSocial": 4,
-    "defesaMental": 17,
+    "defesa": 15,
+    "defesaSocial": 9,
+    "defesaMental": 18,
     "vontade": 10,
     "soak": {
       "impacto": 16,
@@ -19166,7 +19166,7 @@
     ],
     "pv": 26,
     "defesa": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
@@ -19279,7 +19279,7 @@
     ],
     "pv": 34,
     "defesa": 10,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
@@ -19337,7 +19337,7 @@
     ],
     "pv": 40,
     "defesa": 10,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
@@ -19671,7 +19671,7 @@
     ],
     "pv": 17,
     "defesa": 14,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 11,
     "vontade": 6,
     "soak": {
@@ -19728,7 +19728,7 @@
     ],
     "pv": 28,
     "defesa": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
@@ -19785,7 +19785,7 @@
     ],
     "pv": 34,
     "defesa": 14,
-    "defesaSocial": 6,
+    "defesaSocial": 7,
     "defesaMental": 14,
     "vontade": 6,
     "soak": {
@@ -19842,7 +19842,7 @@
     ],
     "pv": 37,
     "defesa": 14,
-    "defesaSocial": 4,
+    "defesaSocial": 5,
     "defesaMental": 13,
     "vontade": 6,
     "soak": {
@@ -19899,7 +19899,7 @@
     ],
     "pv": 26,
     "defesa": 10,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
@@ -20286,7 +20286,7 @@
     ],
     "pv": 34,
     "defesa": 12,
-    "defesaSocial": 6,
+    "defesaSocial": 7,
     "defesaMental": 14,
     "vontade": 7,
     "soak": {
@@ -20342,8 +20342,8 @@
       "centelha"
     ],
     "pv": 54,
-    "defesa": 10,
-    "defesaSocial": 6,
+    "defesa": 12,
+    "defesaSocial": 10,
     "defesaMental": 20,
     "vontade": 9,
     "soak": {
@@ -20399,8 +20399,8 @@
       "centelha"
     ],
     "pv": 37,
-    "defesa": 14,
-    "defesaSocial": 6,
+    "defesa": 16,
+    "defesaSocial": 10,
     "defesaMental": 22,
     "vontade": 9,
     "soak": {
@@ -20511,7 +20511,7 @@
     ],
     "pv": 37,
     "defesa": 12,
-    "defesaSocial": 6,
+    "defesaSocial": 8,
     "defesaMental": 16,
     "vontade": 7,
     "soak": {
@@ -20568,7 +20568,7 @@
     ],
     "pv": 50,
     "defesa": 10,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {

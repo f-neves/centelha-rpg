@@ -150,7 +150,7 @@ function combatentePersona(persona, bloco, somaPers12) {
   const destrezaRaw = ficha.attrs.destreza;
   const esquivaRaw = ficha.skills.esquiva;
   const penFisica = (destrezaRaw + esquivaRaw) * (REGRAS.derivados.defesa.mult ?? 2)
-    + 2 * Math.min(Math.max(0, centelha), Math.max(0, esquivaRaw)) - r.defesa;
+    + Math.max(Math.max(0, centelha), 2 * Math.min(Math.max(0, centelha), Math.max(0, esquivaRaw))) - r.defesa;   // regra do maior (02/10/2026), a mesma de calc.ts
   return {
     id: persona, nome: persona, tipo: 'persona',
     pv: BASE_PV, pvMax: BASE_PV,
@@ -205,7 +205,7 @@ function carregarCriatura(id) {
   const destrezaRaw = ficha.attrs.destreza;
   const esquivaRaw = ficha.skills.esquiva ?? 0;
   const penFisica = (destrezaRaw + esquivaRaw) * (REGRAS.derivados.defesa.mult ?? 2)
-    + 2 * Math.min(Math.max(0, mesa.centelha), Math.max(0, esquivaRaw)) - mesa.combate.defesa;
+    + Math.max(Math.max(0, mesa.centelha), 2 * Math.min(Math.max(0, mesa.centelha), Math.max(0, esquivaRaw))) - mesa.combate.defesa;   // regra do maior (02/10/2026)
   return {
     id, nome: ficha.nome, tipo: 'criatura',
     pv: mesa.combate.pv, pvMax: mesa.combate.pv,

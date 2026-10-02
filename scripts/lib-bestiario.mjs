@@ -53,18 +53,20 @@ export function stat(b) {
   const arm = ARMAD[b.armadura || 'nenhuma'] || ARMAD['nenhuma'];
   const C = b.centelha || 0;
   const pv = pvDe(b.porteSlug, at.vigor);
-  // O BÔNUS DE CENTELHA EM TODA JOGADA E TODA DEFESA (Reforma da Centelha,
-  // 28/09/2026): 2 × o menor entre a Centelha e a Habilidade daquela jogada.
-  // Substitui o antigo "+1 por ponto" (`centelhaMult`, que ficou parado em 1
-  // nestes quatro blocos e não é mais lido aqui). MESMA fórmula de
-  // `calc.ts`'s `centelhaNaJogada`, reimplementada porque este arquivo roda
-  // no gerador (build), não no cliente.
-  const centelhaNaJogada = (habilidade) => 2 * Math.min(C, Math.max(0, habilidade));
+  // O BÔNUS DE CENTELHA EM TODA JOGADA E TODA DEFESA, pela regra do maior
+  // (correção da Reforma da Centelha, 02/10/2026): o maior entre +1 por ponto
+  // de Centelha e 2 × o menor entre a Centelha e a Habilidade daquela jogada
+  // (Habilidade 0 dá a Centelha inteira). O antigo "+1 por ponto" sozinho
+  // (`centelhaMult`, parado em 1 nestes quatro blocos) não é lido aqui. MESMA
+  // fórmula de `calc.ts`'s `centelhaNaJogada`, reimplementada porque este
+  // arquivo roda no gerador (build), não no cliente.
+  const centelhaNaJogada = (habilidade) => Math.max(C, 2 * Math.min(C, Math.max(0, habilidade)));
   const espEsq = (b.especialidades && b.especialidades.esquiva) || 0;
   const defesa = (at.destreza + (pe.esquiva || 0)) * D.defesa.mult + espEsq + centelhaNaJogada(pe.esquiva || 0) - (arm.penalidade || 0);
   // Integridade AUSENTE vale 0, decisão do autor (28/09/2026, achado do CI vermelho em
-  // `Def. Mental: card != modal`): coerente com "sem Habilidade, sem bônus" (o mesmo
-  // `centelhaNaJogada` abaixo já trata Esquiva/Sociabilidade ausentes como 0, via `|| 0`).
+  // `Def. Mental: card != modal`): o mesmo `centelhaNaJogada` abaixo trata
+  // Esquiva/Sociabilidade ausentes como 0, via `|| 0` (e Habilidade 0 dá a Centelha inteira,
+  // pela regra do maior, desde 02/10/2026).
   // Não é mais `?? 2`: esse valor era um palpite sem justificativa escrita, e divergia do
   // default que `bestia-editor.ts` já usava (`nz()`, que sempre caiu em 0). `periciasDe()`
   // (mais abaixo neste arquivo) inverte esta mesma conta para o campo `pericias.integridade`
@@ -72,7 +74,7 @@ export function stat(b) {
   // `scripts/test-bestiario-integridade.mjs`.
   const integ = pe.integridade ?? b.integridade ?? 0;
   const intel = at.inteligencia;
-  // Defesa Mental: Raciocínio + Integridade + Vontade + Centelha (soma simples). Só p/ quem tem mente (Int ≥ 1); Int 0 é imune ("-").
+  // Defesa Mental: Raciocínio + Integridade + Vontade + o bônus de Centelha (soma simples). Só p/ quem tem mente (Int ≥ 1); Int 0 é imune ("-").
   const defesaMental = intel <= 0 ? '-'
     : integ * D.defesaMental.mult + (D.defesaMental.maisRaciocinio ? at.raciocinio : 0) + (D.defesaMental.maisVontade ? (b.vontade ?? 5) : 0) + centelhaNaJogada(integ);
   // Defesa Social: escudo social geral (resiste a influência e a leitura). Int 0 = "-" (sem trato
@@ -178,9 +180,12 @@ function furtividadeDe(x, slug) {
   return Math.max(0, Math.min(6, v));
 }
 /**
- * Inverte "base × mult + resto + 2×menor(Centelha,base)" (a forma de Defesa/Defesa Mental/Defesa
- * Social depois da Reforma da Centelha, 28/09/2026) para `base` (Esquiva/Integridade/
- * Sociabilidade), a Habilidade que não sobrevive no JSON publicado.
+ * Inverte "base × mult + resto + maior(Centelha, 2×menor(Centelha,base))" (a forma de Defesa/
+ * Defesa Mental/Defesa Social pela regra do maior, correção da Reforma da Centelha, 02/10/2026)
+ * para `base` (Esquiva/Integridade/Sociabilidade), a Habilidade que não sobrevive no JSON
+ * publicado. A conta sobe sempre com `base` (inclinação `mult` abaixo de metade da Centelha,
+ * `mult + 2` entre metade e a Centelha, `mult` acima), então há uma só resposta: as três faixas
+ * concordam nas duas viradas (base === Centelha ÷ 2 e base === Centelha).
  *
  * ANTES esta conta era `valor − resto − Centelha` (o termo antigo, flat): achado ao investigar
  * o `Def. Mental: card ≠ modal` do `test-editor-bestiario.mjs` (o card já usava a fórmula nova
@@ -192,7 +197,9 @@ function inverteComCentelha(valor, resto, mult, C) {
   const alvo = valor - resto;
   const satura = (alvo - 2 * C) / mult;
   if (satura >= C) return satura;
-  return alvo / (mult + 2);
+  const meio = alvo / (mult + 2);
+  if (meio >= C / 2) return meio;
+  return (alvo - C) / mult;
 }
 export function periciasDe(x, slug) {
   const at = x.atributos || {};

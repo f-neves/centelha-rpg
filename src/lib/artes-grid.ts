@@ -1843,7 +1843,8 @@ export interface Desvio {
  *
  * O desvio rola `Destreza + Esquiva`, e o bestiário não guarda os dois
  * separados: guarda a Defesa pronta, que É `(Destreza + Esquiva) × mult +
- * 2×min(Centelha, Esquiva)` (Reforma da Centelha, 28/09/2026). Inverter
+ * maior(Centelha, 2×min(Centelha, Esquiva))` (regra do maior, correção da
+ * Reforma da Centelha, 02/10/2026). Inverter
  * devolve exatamente a soma que o pool pede, sem inventar número nem abrir um
  * campo novo em 308 criaturas. O PC não passa por aqui: na ficha os dois
  * estão escritos.
