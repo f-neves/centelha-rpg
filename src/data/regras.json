@@ -2680,7 +2680,7 @@
       "nota": "Alcance do pedido na tabela de Pedir as coisas, e nada mais. A régua não anda."
     },
     "modoDevagar": {
-      "nota": "Sem dado. Ataque parado = Influência + Habilidade. Defesa parada = (Compostura + Sociabilidade) × multDefesa + maior(Centelha, 2×menor(Centelha,Sociabilidade)) + termo da régua (regra do maior: decisões 1 e 2b do autor, correção da Reforma da Centelha de 02/10/2026; o `centelhaMult` abaixo ficou parado em 1 e não é lido por nenhum código, ver nota em derivados.defesaSocial). Tempo do passo, em intervalos = máx(pisoTempoDoPasso, defesa parada − ataque parado − soma dos gestos). O termo da régua é o mesmo de derivados.defesaSocial.reguaNota.",
+      "nota": "Sem dado. Ataque parado = Influência + Habilidade. Defesa parada = (Compostura + Sociabilidade) × multDefesa + 2×menor(Centelha,Sociabilidade) + termo da régua (decisão 1 do autor e Adendo 1 da correção da Reforma da Centelha, 02/10/2026; o `centelhaMult` abaixo ficou parado em 1 e não é lido por nenhum código, ver nota em derivados.defesaSocial). Tempo do passo, em intervalos = máx(pisoTempoDoPasso, defesa parada − ataque parado − soma dos gestos). O termo da régua é o mesmo de derivados.defesaSocial.reguaNota.",
       "multDefesa": 1,
       "multDefesaNota": "1 e não 2 porque não há dado: o ×2 de derivados.defesaSocial casa com a média de um punhado de dados rolados, e ataque parado vale a própria soma. Mesma calibragem, não outro número.",
       "centelhaMult": 1,

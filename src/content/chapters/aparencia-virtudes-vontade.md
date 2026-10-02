@@ -126,6 +126,6 @@ Mais que isso, a Vontade é a **espinha dos seus traços derivados**: entra na *
 
 A **Defesa Mental** é o muro passivo que o medo imposto, a ordem, a leitura da mente e os outros poderes mentais precisam superar (convencer e intimidar numa conversa batem na Defesa Social; o medo da cena é da Bravura, pela [régua do medo](/regras/defesas)):
 
-<p class="formula">Defesa Mental = Integridade + Raciocínio + Força de Vontade + maior(Centelha, 2 × mín(Centelha, Integridade)) + Especialidade</p>
+<p class="formula">Defesa Mental = Integridade + Raciocínio + Força de Vontade + 2 × mín(Centelha, Integridade) + Especialidade</p>
 
-<p class="muted">Uma Integridade baixa derruba a Defesa Mental: quem está quebrado por dentro é mais fácil de dobrar. (A sua irmã social, a <strong>Defesa Social</strong>, protege contra quem tenta te <em>convencer</em> ou te <em>ler</em>, e vem de (Compostura + Sociabilidade) × 2 + maior(Centelha, 2 × mín(Centelha, Sociabilidade)) + Especialidade.)</p>
+<p class="muted">Uma Integridade baixa derruba a Defesa Mental: quem está quebrado por dentro é mais fácil de dobrar. (A sua irmã social, a <strong>Defesa Social</strong>, protege contra quem tenta te <em>convencer</em> ou te <em>ler</em>, e vem de (Compostura + Sociabilidade) × 2 + 2 × mín(Centelha, Sociabilidade) + Especialidade.)</p>

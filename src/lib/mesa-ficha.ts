@@ -42,7 +42,7 @@ export interface ResumoFicha {
 
 const media = (dados: number, bonus: number) => Math.round(dados * 3.5 + bonus);
 // O VALOR É O DO LIVRO (decisão 3 do autor, correção da Reforma, 02/10/2026): `valorPassivo`, de
-// `calc.ts`, (Atributo + Habilidade) × 2 + o bônus de Centelha pela regra do maior, sem a
+// `calc.ts`, (Atributo + Habilidade) × 2 + 2 × mín(Centelha, Habilidade), sem a
 // Especialidade. Antes o painel mostrava a média do pool (dados × 3,5 + bônus), que ficava abaixo do
 // número do livro e sem a Centelha (Kael: Prontidão 16, contra 24 do livro).
 function passivo(id: string, nome: string, atributo: number, habilidade: number, centelha: number): Passivo {

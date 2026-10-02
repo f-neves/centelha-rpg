@@ -63,8 +63,8 @@ ok(semProntidao.length === 0,
 // Então são duas: a Passiva bate com a fórmula (a positiva) E ela é DIFERENTE da
 // que sairia sem a Prontidão, em quantidade de criaturas que não dá para
 // confundir com acaso (a gêmea). Zerar a Prontidão na fonte derruba a segunda.
-// a regra do maior (correção da Reforma, 02/10/2026): maior(Centelha, 2 × mín(Centelha, Prontidão))
-const bonusC = (c, pr) => Math.max(c, 2 * Math.min(c, pr));
+// o bônus de Centelha da Reforma (28/09/2026, confirmado no Adendo 1 de 02/10/2026): 2 × mín(Centelha, Prontidão)
+const bonusC = (c, pr) => 2 * Math.min(c, pr);
 const passiva = (p, pr, c = 0) => (p == null || pr == null ? null : (p + pr) * 2 + bonusC(c, pr));
 let batem = 0;
 let mexem = 0;

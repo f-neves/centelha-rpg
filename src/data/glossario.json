@@ -90,7 +90,7 @@
       "esquiva",
       "bloqueio"
     ],
-    "definicao": "Valor fixo e passivo que o atacante precisa superar: (Destreza + Habilidade) × 2 + maior(Centelha, 2 × mín(Centelha, Habilidade)), mais a Especialidade quando o escopo nomeado dela se aplicar (ela não é parcela fixa: o portão dela é a situação). Vem por Esquiva ou por Bloqueio (arma/escudo). Contra projéteis rápidos (flecha, virote, bala de funda, dardo) não se bloqueia com arma nem com a mão: só Esquiva, ou Bloqueio com escudo hábil (cobre ≥30% do corpo, médio+ para um usuário Médio) estando apto a manejá-lo. Arremessos lentos (lança, machado, pedra grande) bloqueiam normalmente."
+    "definicao": "Valor fixo e passivo que o atacante precisa superar: (Destreza + Habilidade) × 2 + 2 × mín(Centelha, Habilidade), mais a Especialidade quando o escopo nomeado dela se aplicar (ela não é parcela fixa: o portão dela é a situação). Vem por Esquiva ou por Bloqueio (arma/escudo). Contra projéteis rápidos (flecha, virote, bala de funda, dardo) não se bloqueia com arma nem com a mão: só Esquiva, ou Bloqueio com escudo hábil (cobre ≥30% do corpo, médio+ para um usuário Médio) estando apto a manejá-lo. Arremessos lentos (lança, machado, pedra grande) bloqueiam normalmente."
   },
   {
     "id": "defesa-mental",
@@ -98,7 +98,7 @@
     "aliases": [
       "resistência mental"
     ],
-    "definicao": "Muro passivo contra manipulação e poderes mentais: Integridade + Raciocínio + Vontade + maior(Centelha, 2 × mín(Centelha, Integridade)), mais a Especialidade quando o escopo nomeado dela se aplicar."
+    "definicao": "Muro passivo contra manipulação e poderes mentais: Integridade + Raciocínio + Vontade + 2 × mín(Centelha, Integridade), mais a Especialidade quando o escopo nomeado dela se aplicar."
   },
   {
     "id": "defesa-social",
@@ -106,7 +106,7 @@
     "aliases": [
       "resistência social"
     ],
-    "definicao": "Muro passivo contra a influência e a leitura social: (Compostura + Sociabilidade) × 2 + maior(Centelha, 2 × mín(Centelha, Sociabilidade)), mais a Especialidade quando o escopo nomeado dela se aplicar. O termo de história da Régua de Relação NÃO entra nesse número: ele é por relação (contra quem se fala) e a mesa soma por cima, no lance, somando ou subtraindo o nível conforme o ataque aquece ou esfria o vínculo."
+    "definicao": "Muro passivo contra a influência e a leitura social: (Compostura + Sociabilidade) × 2 + 2 × mín(Centelha, Sociabilidade), mais a Especialidade quando o escopo nomeado dela se aplicar. O termo de história da Régua de Relação NÃO entra nesse número: ele é por relação (contra quem se fala) e a mesa soma por cima, no lance, somando ou subtraindo o nível conforme o ataque aquece ou esfria o vínculo."
   },
   {
     "id": "centelha",
@@ -220,7 +220,7 @@
       "passiva",
       "percepção passiva"
     ],
-    "definicao": "Quando só um lado rola: (Atributo + Habilidade) × 2 + maior(Centelha, 2 × mín(Centelha, Habilidade)) do outro serve de alvo. A Especialidade NÃO entra no número parado, porque o portão dela é a situação e um valor passivo é calculado sem saber quem vem nem como; ela é somada por cima no instante em que o escopo nomeado se aplica. Como a Centelha é rara, na prática a maioria é só (Atributo + Habilidade) × 2."
+    "definicao": "Quando só um lado rola: (Atributo + Habilidade) × 2 + 2 × mín(Centelha, Habilidade) do outro serve de alvo. A Especialidade NÃO entra no número parado, porque o portão dela é a situação e um valor passivo é calculado sem saber quem vem nem como; ela é somada por cima no instante em que o escopo nomeado se aplica. Como a Centelha é rara, na prática a maioria é só (Atributo + Habilidade) × 2."
   },
   {
     "id": "porte",

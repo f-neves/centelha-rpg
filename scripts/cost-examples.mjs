@@ -82,7 +82,7 @@ const EXEMPLOS = {
     centelha: 3,
     artes: [], artesPub: null,
     tecnicasPub: 450,
-    derivadosPub: { pv: 37, defesa: 20, defM: 13, defS: 7, energia: 14, mana: 13 },
+    derivadosPub: { pv: 37, defesa: 20, defM: 10, defS: 4, energia: 14, mana: 13 },
     integridade: 0, raciocinio: 3, compostura: 2, sociabilidade: 0, esquiva: 3,
   },
   'Sora, a Capitã': {
@@ -140,7 +140,7 @@ const EXEMPLOS = {
     // oito Artes) passou a 745, que é o que esta linha calcula.
     artes: [5, 5, 5, 5, 5, 3, 3], artesPub: 745,
     tecnicasPub: 120,
-    derivadosPub: { pv: 34, defesa: 14, defM: 13, defS: 10, energia: 10, mana: 11 },
+    derivadosPub: { pv: 34, defesa: 14, defM: 12, defS: 10, energia: 10, mana: 11 },
     integridade: 0, raciocinio: 3, compostura: 2, sociabilidade: 2, esquiva: 3,
   },
 };

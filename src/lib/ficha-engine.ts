@@ -1561,8 +1561,8 @@ export function montarFicha(opts: FichaOpts) {
     const soc = defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C });
     const men = defesaMental({ raciocinio: A('raciocinio'), integridade: integ, vontade: W, centelha: C });
     const soaks = SOAK_CATS.map((cat) => soakNatural(vig, cat) + C * cs + (armSt.soak[cat] || 0));
-    // o bônus de Centelha de cada Defesa, pela regra do maior, escrito para a conta da explicação fechar
-    const cNa = (h: number) => `Centelha ${centelhaNaJogada(C, h)} (maior entre ${C} e 2×mín(${C}, ${h}))`;
+    // o bônus de Centelha de cada Defesa, 2 × mín(Centelha, Habilidade), escrito para a conta da explicação fechar
+    const cNa = (h: number) => `Centelha ${centelhaNaJogada(C, h)} (2×mín(${C}, ${h}))`;
     const pArm = armPen ? ` − ${armPen} (Armadura)` : '';
     const pEsc = penEsc ? ` − ${penEsc} (Escudo)` : '';
     const defParts = [act.habil, act.inabil].filter((it: any) => it.def).map((it: any) => ` ${it.def >= 0 ? '+' : '−'} ${Math.abs(it.def)} (${it.nome})`).join('');

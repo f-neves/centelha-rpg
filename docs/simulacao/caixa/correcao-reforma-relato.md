@@ -270,3 +270,89 @@ da tabela lê `.valor` (1) e não `.media` (0).
 **Produção:** a Prontidão passiva de Kael no painel passa de 16 para 24. Os Passivos do grupo e os
 números "Percep" e "Furt" do cartão da mesa mostram o Valor Passivo do livro, e não mais a média do
 pool. Sem migração.
+
+**Commit do item 4:** `555abf60` · **CI:** Validar 37075674431 (19 de 19) e Deploy 37075674538 (2 de 2),
+primeira volta. Os itens 1 a 3: Validar 37072671934, 37073788547 e 37074927414, todos 19 de 19; Deploy
+37072671929, 37073788424 e 37074927390, todos 2 de 2.
+
+## Adendo 1 · a regra do maior sai; vale 2 × mín (`86b9f722`)
+
+**A decisão do autor** está verbatim no despacho, seção "Adendo 1". Em uma linha: 2 × mín(Centelha,
+Habilidade) em toda jogada de Atributo + Habilidade, no Valor Passivo, nas três Defesas e na Defesa
+parada (Habilidade 0 dá 0); a Centelha inteira só quando o Mestre pede a jogada de Atributo puro
+(D12); o dano, a Absorção, o raspão, Energia, Mana e os saltos seguem com a Centelha inteira.
+
+**A regra do maior entrou como decisão do autor pela resposta à pergunta de alcance, e o autor a
+cancelou: não era decisão dele.**
+
+**O que foi desfeito, e por qual commit.**
+- **A · `0ebc9917`**: o revert inteiro de `4aaf0fce` (item 1). Voltaram ao estado de `0eecc2c7`:
+  - o código: `calc.ts` (`centelhaNaJogada` = 2 × mín), `lib-bestiario.mjs` (com a inversão de duas
+    faixas), `test-kael.mjs` (20/10/4, sem a Social), `test-contrato.mjs`, `desafio-bancada.mjs` e
+    `artes-grid.ts`;
+  - as notas de `regras.json`;
+  - o bestiário (`inimigos.json`, `monsters.json`, `monsters-mesa.json`).
+
+  Conferido: `rtk proxy git diff 0eecc2c7 --stat` desses arquivos sai vazio; `gen-bestiario --check`
+  verde. Os comentários de `centelhaNaJogada` e `centelhaSoAtributo` dizem a decisão nova: o tipo de
+  jogada PEDIDA, e não o personagem com Habilidade 0. A `centelhaSoAtributo` continua sem chamador
+  no código, porque nenhum caminho da ficha ou da mesa monta uma jogada de Atributo puro. O relato
+  do item 1 ficou, como registro.
+- **B, C e D · este commit**, para a frente:
+  - **Os textos que estavam certos pela 2 × mín** foram devolvidos ao que eram em `0eecc2c7`.
+    `acoes-e-sistema.md` e `defesas.md` (Kael 20/4/10 de novo) voltaram inteiros. Também voltaram
+    `combate.md:124/131/135`, `coracao-do-sistema.md:89/91/93`, `centelha.md:65` e o comentário de
+    `calc.ts:384`.
+  - **O que o item 2 consertou e continua valendo** fica, com "maior(...)" trocado por "2 × mín(...)":
+    - as três fórmulas da criação (eram "+ Centelha" flat);
+    - `aparencia-virtudes-vontade.md`, a Percepção Passiva de `acoes-sentidos-e-engano.md`, o
+      `qual-sistema.md` (SVG regerado) e o `glossario.json`;
+    - a explicação das Defesas na ficha, agora `Centelha 0 (2×mín(3, 0))`;
+    - os comentários de `combate-resumo.ts`, o `test-sentidos.mjs` (2 × mín) e o `Regua_Relacao.md`;
+    - o raspão de `quase-acerto.md` e de `regras.json:1133`, que não depende da regra;
+    - o muro de Kael (3d6 + 6, total 17, uma Margem) e o pool de Sora (5d6+9). Pela 2 × mín os dois
+      dão o mesmo, porque as Habilidades alcançam a Centelha.
+  - `centelha.md:44` reescrito com a distinção do autor. Saiu a "exceção só Atributo", que dizia
+    "Vontade pura, Resistir sem perícia" e misturava o tipo de jogada com o personagem sem
+    Habilidade. Entraram os seis exemplos dele (+2, +6, +2, +2, 0, 0) e o exemplo de Destreza 3 e
+    Centelha 3: 1d6 + 5; 1d6 + 2; 2d6 + 6.
+  - Os quatro exemplos da criação, pela `calc.ts` (`cost-examples.mjs` confere e os quatro batem):
+
+| exemplo | Defesa | Def. Mental | Def. Social |
+|---|---|---|---|
+| Kael | 20 | **10** (era 13, conta flat) | **4** (era 7, conta flat) |
+| Sora | 24 | 20 | 18 |
+| Veil | 20 | 20 | 18, **pendente** (Sociabilidade não publicada; 3 implícita) |
+| Bram | 14 | **12** (era 13, conta flat) | 10 |
+
+  - **Relações sociais (C):** ataque social e Defesa parada com 2 × mín. A tabela tem Kael **4** e
+    **2** (Sociabilidade 0, bônus 0; eram 7 e 5) e Sora 18 e 12. A nota de `regras.json:2683` diz
+    2×menor, cita a decisão 1 e o Adendo 1, e **mantém a frase do Tempo do passo**. O registro sobre
+    o `8d1cbb79`, no item 3, fica.
+  - **Mesa (D):** só texto. O comentário de `mesa-ficha.ts` e a nota de `grupo.astro` dizem 2 ×
+    mín(Centelha, Habilidade). Kael continua **24** no painel (2 × mín(3, 3) = 6).
+- **Item 5: não feito.** A nota da B14 que eu tinha escrito, e não commitado, foi descartada (era
+  arquivo meu). A bancada mediu com a regra certa, e as âncoras continuam válidas.
+
+**Os achados de antes continuam valendo:**
+- os dois do item 1: o `gen-monsters` sem `--check` no `validate`; o comentário de `desEsqDaDefesa`,
+  que diz "sai alto" quando a estimativa sai baixo;
+- o de Sora em `combate.md:21`, onde 5d6+9 com "soma 16" quer dizer 7 nos dados;
+- a fixture do Kael com Percepção 3, contra 6 no capítulo;
+- a asserção de `test-sentidos.mjs:74`, que compara a função com ela mesma.
+
+**Verificação** (sobre `0ebc9917`): `npm run validate` verde ("Portões OK"); `npx astro sync && npx
+tsc --noEmit` sem erro; `npm run build` verde. `rtk proxy git grep -n -i "maior(Centelha\|regra do
+maior" -- src scripts '*.md' ':!docs'`: nenhuma ocorrência da regra (sobram só frases sem relação,
+como "a redução é a MAIOR"). No `dist/` inteiro (HTML, JSON e scripts), "maior(Centelha" e "regra do
+maior" aparecem 0 vezes.
+
+No HTML gerado, contado no texto sem marcação:
+- `centelha`: traz "Habilidade 0 dá bônus 0", "1d6 + 5", "2d6 + 6" e "Mestre pede só o Atributo"
+  (1 cada); "nunca mais do que a Habilidade" aparece 0 vezes;
+- `defesas`: traz "= 4 (a Centelha não passa" e "= 10 , pelo mesmo motivo";
+- `criacao-de-personagem`: traz as quatro linhas de derivados da tabela e a fórmula da Mental com
+  2 × mín;
+- `relacoes-sociais`: traz "Kael 4 2" e "Sora 18 12", e a fórmula do ataque e a da Defesa parada
+  com 2 × mín (2 vezes cada);
+- `mesa/grupo`: traz a nota com "2 × mín(Centelha, Habilidade), sem a Especialidade".
