@@ -79,7 +79,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   bandeira desligada é inerte compara ruído. Junto vêm a **branch congelada** (que deixa de ser
   criável assim que a primeira bandeira entra), o caminho do driver até a semente, e o despejo por
   Tick do que a folha calculou. `rolagem.ts:15` é `Math.random` e é a única fonte de acaso
-  do combate. Ganha ponto de injeção, e `mesa-ficha.ts:140` · `rolarIniciativaPC` e
+  do combate. Ganha ponto de injeção, e `mesa-ficha.ts:146` · `rolarIniciativaPC` e
   `artes-grid.ts:1501` · `acaso()` precisam do mesmo
   tratamento. É o que permite o teste-espelho comparar as rolagens.
 - [x] **L6 · [O ESQUELETO FEITO em 02/09] O harness.** `scripts/sim/` com o laço do Tick, o elenco

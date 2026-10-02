@@ -24,8 +24,8 @@ import FichaResumo from '../../components/FichaResumo.astro';
         <h2>Passivos do grupo <small>· para rolar atrás do escudo</small></h2>
       </div>
       <div class="tab-wrap" id="passivos"></div>
-      <p class="muted nota-mini">O número é a <strong>média</strong> do pool (dados × 3,5 + bônus): serve de valor passivo
-        quando você não quer parar a cena para pedir uma rolagem. Entre parênteses, o pool para rolar de verdade.</p>
+      <p class="muted nota-mini">O número é o <strong>Valor Passivo</strong> do livro: (Atributo + Habilidade) × 2 + maior(Centelha,
+        2 × mín(Centelha, Habilidade)), sem a Especialidade, que só soma quando o escopo dela se aplica. Embaixo, o pool para rolar de verdade.</p>
     </section>
 
     <section class="bloco" id="sec-visao" hidden>
@@ -653,7 +653,7 @@ import FichaResumo from '../../components/FichaResumo.astro';
       <tbody>${comFicha.map((p) => {
         const R = resumos[p.id];
         return `<tr><td><a href="${u('personagem')}?id=${p.id}">${esc(p.nome || 'Personagem')}</a></td>
-          ${R.passivos.map((x: any) => `<td class="num" title="${esc(x.str)}">${x.media}<br><small class="muted">${esc(x.str)}</small></td>`).join('')}</tr>`;
+          ${R.passivos.map((x: any) => `<td class="num" title="${esc(x.str)}">${x.valor}<br><small class="muted">${esc(x.str)}</small></td>`).join('')}</tr>`;
       }).join('')}</tbody></table>`;
   }
 

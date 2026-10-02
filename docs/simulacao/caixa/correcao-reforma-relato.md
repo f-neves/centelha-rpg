@@ -233,3 +233,40 @@ HTML de `dist/regras/relacoes-sociais/index.html`, contado no texto sem marcaç�
 "+ Acerto da Abordagem + maior(Centelha, 2 × mín(Centelha, Habilidade))" e a Defesa parada nova
 aparecem 2 vezes cada (a fórmula e o resumo do fim); a tabela traz "Sora 18 12" e "Kael 7 5"; "Acerto
 da Abordagem + Centelha" e "Sociabilidade + Centelha +" aparecem 0 vezes.
+
+**Commit do item 3:** `ae1889c9`.
+
+## Item 4 · Os Passivos do grupo na mesa (commit próprio)
+
+- `src/lib/mesa-ficha.ts`: cada passivo do painel passa a levar o **Valor Passivo do livro**, pela
+  `valorPassivo` de `calc.ts` ((Atributo + Habilidade) × 2 + o bônus de Centelha pela regra do maior,
+  sem a Especialidade, como a função já faz). O campo `media` do `Passivo` virou `valor`, para o nome
+  não mentir. O pool continua no `str`, para rolar de verdade. A média do pool continua existindo
+  só para a `iniciativaMedia`, que é outra coisa.
+- `src/pages/mesa/grupo.astro`: a tabela mostra o `valor`, e a frase que dizia que a média "serve de
+  valor passivo" saiu. No lugar dela, a nota diz que o número é o Valor Passivo do livro, dá a
+  fórmula e diz que a Especialidade só soma quando o escopo dela se aplica.
+- **Fora da lista, pelo mesmo campo:** `src/pages/mesa.astro:371-372` (os números "Percep" e "Furt"
+  no cartão de cada personagem da mesa) lia a mesma `media` dos passivos. Passou a ler o `valor`, e
+  mostra o mesmo número que o painel.
+
+**A conta do Kael**, pelo `resumoFicha` (script de prova em `../tmp/executora/kael-passivos.mjs`):
+Prontidão com o maior entre Percepção e Raciocínio (6) e Prontidão 3, Centelha 3: (6 + 3) × 2 +
+maior(3, 2 × mín(3, 3)) = **24**; a média de antes era a do pool 4d6 + 2 = **16**.
+
+**Achado, registrado:** a fixture de teste do Kael (`scripts/fixtures/kael.json`) tem **Percepção
+3**, e o Kael do capítulo de criação tem **Percepção 6**. Pela fixture, a Prontidão do painel dá 18
+(era 11 pela média). O "16 para 24" do despacho é o do Kael do capítulo. Não mexi na fixture.
+
+**Para o portão de citações:** a linha nova em `mesa-ficha.ts` empurrou a `rolarIniciativaPC` de
+`:140` para `:146`, e o `test-procedencia` acusou a citação de `docs/pendencias/L-simulacao-simultaneo.md:82`.
+Reapontei à mão aquela citação, a única que o portão apontou; `Pendencias.md` regerado, sem mudança.
+
+**Verificação** (sobre `ae1889c9`): `npx astro sync && npx tsc --noEmit` sem erro; `npm run validate`
+verde ("Portões OK"); `npm run build` verde. Em `dist/mesa/grupo/index.html`, "Valor Passivo do livro"
+aparece 1 vez e "serve de valor passivo" 0 vezes; nos scripts gerados (`dist/_astro/*.js`), a célula
+da tabela lê `.valor` (1) e não `.media` (0).
+
+**Produção:** a Prontidão passiva de Kael no painel passa de 16 para 24. Os Passivos do grupo e os
+números "Percep" e "Furt" do cartão da mesa mostram o Valor Passivo do livro, e não mais a média do
+pool. Sem migração.

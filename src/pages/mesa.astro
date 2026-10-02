@@ -368,8 +368,8 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
         <span class="pl"><span class="pl-l">Men</span><span class="pl-v">${R.defMental}</span></span>
         <span class="pl"><span class="pl-l">Abs</span><span class="pl-v">${R.soak.impacto}/${R.soak.corte}/${R.soak.perfuracao}</span></span>
         <span class="pl"><span class="pl-l">Ini</span><span class="pl-v">${esc(R.iniciativa)}</span></span>
-        <span class="pl"><span class="pl-l">Percep</span><span class="pl-v">${R.passivos[0].media}</span></span>
-        <span class="pl"><span class="pl-l">Furt</span><span class="pl-v">${R.passivos[3].media}</span></span>
+        <span class="pl"><span class="pl-l">Percep</span><span class="pl-v">${R.passivos[0].valor}</span></span>
+        <span class="pl"><span class="pl-l">Furt</span><span class="pl-v">${R.passivos[3].valor}</span></span>
         <span class="pl"><span class="pl-l">Cent</span><span class="pl-v">${R.centelha}</span></span>` : '<span class="muted">ficha em branco</span>';
       return `<div class="pj ${norm(t.estado).replace(/\s+/g, '-')}">
         <span class="pj-av">${avatarHTML(p.nome, imgs[p.imagem_path] || null, 'av-g', pvMax ? Math.round((pvAt / pvMax) * 100) : null)}</span>

@@ -5,7 +5,7 @@
 // rola escondido. A conta é a mesma de `ficha-engine` (renderDerived), refeita
 // aqui sem tocar no DOM — a engine inteira tem 156 KB e desenha uma ficha.
 import {
-  pv, energia, mana, folego, defesa, defesaSocial, defesaMental, pool, poolStr, regras,
+  pv, energia, mana, folego, defesa, defesaSocial, defesaMental, pool, poolStr, valorPassivo, regras,
   empilharArmaduras, soakNatural, type Porte,
 } from './calc';
 import RACAS_D from '../data/racas.json';
@@ -18,7 +18,9 @@ import { d6 } from './rolagem';
 const porteDaRaca = (id?: string | null): Porte =>
   (((RACAS_D as any[]).find((r) => r.id === (id || ''))?.porte || 'medio') as Porte);
 
-export interface Passivo { id: string; nome: string; dados: number; bonus: number; media: number; str: string }
+/** Um passivo do painel do mestre: o `valor` é o Valor Passivo do livro (`valorPassivo`, sem a
+ *  Especialidade), e o `str` é o pool para rolar de verdade. */
+export interface Passivo { id: string; nome: string; dados: number; bonus: number; valor: number; str: string }
 
 export interface ResumoFicha {
   nome: string; conceito: string; jogador: string; raca: string;
@@ -39,9 +41,13 @@ export interface ResumoFicha {
 }
 
 const media = (dados: number, bonus: number) => Math.round(dados * 3.5 + bonus);
-function passivo(id: string, nome: string, atributo: number, habilidade: number): Passivo {
+// O VALOR É O DO LIVRO (decisão 3 do autor, correção da Reforma, 02/10/2026): `valorPassivo`, de
+// `calc.ts`, (Atributo + Habilidade) × 2 + o bônus de Centelha pela regra do maior, sem a
+// Especialidade. Antes o painel mostrava a média do pool (dados × 3,5 + bônus), que ficava abaixo do
+// número do livro e sem a Centelha (Kael: Prontidão 16, contra 24 do livro).
+function passivo(id: string, nome: string, atributo: number, habilidade: number, centelha: number): Passivo {
   const p = pool(atributo, habilidade);
-  return { id, nome, dados: p.dados, bonus: p.bonus, media: media(p.dados, p.bonus), str: poolStr(atributo, habilidade) };
+  return { id, nome, dados: p.dados, bonus: p.bonus, valor: valorPassivo(atributo, habilidade, centelha) ?? 0, str: poolStr(atributo, habilidade) };
 }
 
 /** Tudo que o mestre precisa saber de um personagem, a partir do objeto S da ficha. */
@@ -65,16 +71,16 @@ export function resumoFicha(S: any): ResumoFicha {
   const ini = pool(A('raciocinio'), SK('prontidao'));
 
   const PASSIVOS: Passivo[] = [
-    passivo('prontidao', 'Prontidão', Math.max(A('percepcao'), A('raciocinio')), SK('prontidao')),
-    passivo('investigacao', 'Investigação', A('percepcao'), SK('investigacao')),
-    passivo('empatia', 'Empatia', A('perspicacia'), SK('empatia')),
-    passivo('furtividade', 'Furtividade', dex, SK('furtividade')),
-    passivo('sobrevivencia', 'Sobrevivência', A('percepcao'), SK('sobrevivencia')),
-    passivo('ocultismo', 'Ocultismo', A('inteligencia'), SK('ocultismo')),
-    passivo('conhecimentos', 'Conhecimentos', A('inteligencia'), SK('conhecimentos')),
-    passivo('atletismo', 'Atletismo', A('forca'), SK('atletismo')),
-    passivo('resistencia', 'Resistência', vig, SK('resistencia')),
-    passivo('integridade', 'Integridade', W, SK('integridade')),
+    passivo('prontidao', 'Prontidão', Math.max(A('percepcao'), A('raciocinio')), SK('prontidao'), C),
+    passivo('investigacao', 'Investigação', A('percepcao'), SK('investigacao'), C),
+    passivo('empatia', 'Empatia', A('perspicacia'), SK('empatia'), C),
+    passivo('furtividade', 'Furtividade', dex, SK('furtividade'), C),
+    passivo('sobrevivencia', 'Sobrevivência', A('percepcao'), SK('sobrevivencia'), C),
+    passivo('ocultismo', 'Ocultismo', A('inteligencia'), SK('ocultismo'), C),
+    passivo('conhecimentos', 'Conhecimentos', A('inteligencia'), SK('conhecimentos'), C),
+    passivo('atletismo', 'Atletismo', A('forca'), SK('atletismo'), C),
+    passivo('resistencia', 'Resistência', vig, SK('resistencia'), C),
+    passivo('integridade', 'Integridade', W, SK('integridade'), C),
   ];
 
   return {
