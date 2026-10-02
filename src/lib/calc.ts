@@ -129,47 +129,48 @@ export function modificadorPorte(porteAtacante: Porte, porteAlvo: Porte): number
 }
 
 /**
- * Jogada só de Atributo, sem Habilidade (Vontade pura, Resistir sem
- * Habilidade, alguns testes de Bravura): +1 por ponto de Centelha, sem teto.
- * Decidido pelo autor em 01/10/2026 (fecha a pendência D12,
- * `docs/pendencias/D-proezas-tecnicas.md`). Desde a correção da Reforma
- * (02/10/2026) ela é o piso da regra do maior, em `centelhaNaJogada`.
+ * O BÔNUS DE CENTELHA EM TODA JOGADA DE ATRIBUTO + HABILIDADE, NO VALOR
+ * PASSIVO, NAS TRÊS DEFESAS E NA DEFESA PARADA (Reforma da Centelha,
+ * 28/09/2026, confirmada pelo autor em 02/10/2026 no Adendo 1 da correção da
+ * Reforma): 2 × o menor entre a Centelha e a Habilidade daquela jogada. Sempre
+ * o menor: Habilidade 0 dá bônus 0, e "role Destreza + Atletismo" com
+ * Atletismo 0 leva 0. A jogada de Atributo PURO é outra regra
+ * (`centelhaSoAtributo`, abaixo).
+ * Substitui o antigo "+1 por ponto" (`centelhaMult` em `regras.json`, que
+ * ficou parado em 1 nos blocos de ataque/defesa/defesaMental/defesaSocial e
+ * não é mais lido por eles).
+ */
+export function centelhaNaJogada(centelha: number, habilidade: number) {
+  return 2 * Math.min(Math.max(0, centelha), Math.max(0, habilidade));
+}
+
+/**
+ * Jogada de Atributo PURO, quando o Mestre pede só o Atributo (raro; "role
+ * Destreza"): + a Centelha inteira, sem teto. É a D12 (decidida pelo autor em
+ * 01/10/2026, `docs/pendencias/D-proezas-tecnicas.md`), mantida no Adendo 1 de
+ * 02/10/2026. Conta o TIPO de jogada pedida, e não o personagem com Habilidade
+ * 0: uma jogada de Atributo + Habilidade com Habilidade 0 usa
+ * `centelhaNaJogada` e leva 0.
  */
 export function centelhaSoAtributo(centelha: number) {
   return Math.max(0, centelha);
 }
 
-/**
- * O BÔNUS DE CENTELHA EM TODA JOGADA E TODA DEFESA, pela REGRA DO MAIOR
- * (correção da Reforma da Centelha, decisões 2 e 2b do autor, 02/10/2026): o
- * maior entre +1 por ponto de Centelha (`centelhaSoAtributo`) e 2 × o menor
- * entre a Centelha e a Habilidade daquela jogada. Vale para a jogada rolada, o
- * Valor Passivo, as três Defesas e a Defesa parada. Habilidade 0 conta como
- * jogada só de Atributo (a Centelha inteira), e quem treinou nunca recebe
- * menos que quem não treinou; com Habilidade ≥ metade da Centelha, dá o mesmo
- * 2 × mín da Reforma (28/09/2026).
- * O antigo "+1 por ponto" (`centelhaMult` em `regras.json`, parado em 1 nos
- * blocos de ataque/defesa/defesaMental/defesaSocial) não é lido por eles.
- */
-export function centelhaNaJogada(centelha: number, habilidade: number) {
-  return Math.max(centelhaSoAtributo(centelha), 2 * Math.min(Math.max(0, centelha), Math.max(0, habilidade)));
-}
-
-/** Defesa (Esquiva/Bloqueio): (Destreza + Habilidade) × 2 + maior(Centelha, 2×mín(Centelha,Habilidade)) + Especialidade. */
+/** Defesa (Esquiva/Bloqueio): (Destreza + Habilidade) × 2 + 2×min(Centelha,Habilidade) + Especialidade. */
 export function defesa(opts: { destreza: number; habilidade: number; especialidade?: number; centelha: number }) {
   const d = regras.derivados.defesa as { mult: number };
   return (opts.destreza + opts.habilidade) * d.mult + (opts.especialidade ?? 0)
     + centelhaNaJogada(opts.centelha, opts.habilidade);
 }
 
-/** Defesa Mental: Raciocínio + Integridade + Vontade + maior(Centelha, 2×mín(Centelha,Integridade)) + Especialidade. */
+/** Defesa Mental: Raciocínio + Integridade + Vontade + 2×min(Centelha,Integridade) + Especialidade. */
 export function defesaMental(opts: { raciocinio: number; integridade: number; vontade: number; centelha: number; especialidade?: number }) {
   const d = regras.derivados.defesaMental as { mult: number; maisRaciocinio?: boolean; maisVontade?: boolean };
   return opts.integridade * d.mult + (d.maisRaciocinio ? opts.raciocinio : 0) + (d.maisVontade ? opts.vontade : 0)
     + centelhaNaJogada(opts.centelha, opts.integridade) + (opts.especialidade ?? 0);
 }
 
-/** Defesa Social (escudo social geral: resiste a influência E a leitura): (Compostura + Sociabilidade) × 2 + maior(Centelha, 2×mín(Centelha,Sociabilidade)) + Especialidade. */
+/** Defesa Social (escudo social geral: resiste a influência E a leitura): (Compostura + Sociabilidade) × 2 + 2×min(Centelha,Sociabilidade) + Especialidade. */
 export function defesaSocial(opts: { compostura: number; sociabilidade: number; centelha: number; especialidade?: number }) {
   const d = regras.derivados.defesaSocial as { mult: number; tracos: string[] };
   const v: Record<string, number> = { compostura: opts.compostura, sociabilidade: opts.sociabilidade };
@@ -177,7 +178,7 @@ export function defesaSocial(opts: { compostura: number; sociabilidade: number; 
     + centelhaNaJogada(opts.centelha, opts.sociabilidade) + (opts.especialidade ?? 0);
 }
 
-/** Bônus de Centelha somado à SOMA do ataque: maior(Centelha, 2×mín(Centelha,Habilidade da arma)). */
+/** Bônus de Centelha somado à SOMA do ataque: 2×min(Centelha,Habilidade da arma). */
 export function ataqueCentelha(centelha: number, habilidade: number) {
   return centelhaNaJogada(centelha, habilidade);
 }
