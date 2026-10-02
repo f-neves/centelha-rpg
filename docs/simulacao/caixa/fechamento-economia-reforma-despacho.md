@@ -274,6 +274,21 @@ recompensa é o preço de um trabalho, e não de cabeças.
     mede 3, com salto de 0 (1 worg) para 2 (2 worgs). A medição de bando com Horda (N = 1 a 32)
     deve dizer se o salto vem da Guarda sob pressão com 2 a 4 atacantes. Só medir, sem decidir.
 
+## Adendo 6 (autor, 02/10, vindo do Comerciante, depois do 2e em `601e1ce8`): item 2f
+
+O 2e já está no main, então isto é **commit novo (2f)**.
+
+1. **Capítulo e calculadora**, verbatim:
+
+   > O desafio do trabalho é absoluto: é o da ameaça, medido contra o grupo de referência (4
+   > personagens de Centelha igual ao desafio), e não muda conforme o grupo que aceita o trabalho.
+   > Um grupo veterano que pega uma matilha de worgs recebe o mesmo que um grupo novato receberia.
+
+2. **Pendência, sem executar, registrada na G73:** quando houver preço de partes de criatura
+   (junto da G73 e da G74), ele precisa de um teto próprio pela demanda de quem compra. Hoje os
+   testes de Prejuízo e Capacidade só limitam a bolsa, e bolsa mais partes não tem teto
+   (Comerciante, 02/10).
+
 ## Regras desta rodada
 
 - Um commit por item (1, 2, 3 se houver, 4), com pathspec, rebase antes e depois, `push origin
