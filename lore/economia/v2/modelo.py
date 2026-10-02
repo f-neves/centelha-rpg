@@ -440,15 +440,15 @@ OUT["reparo_v2"] = {nome: {d: (reparo_v3(mo, pe, d), reparo_v3(mo, pe, d)) for d
                     for nome, mo, pe in (("Faca", 6, 3), ("Espada", 12, 10), ("Placa completa", 6, 24))}
 
 # =====================================================================
-# RECOMPENSAS DE CAÇA (rodada 115; fechamento da economia, 01/10/2026, item 2 e Adendo 2)
+# RECOMPENSAS DE CAÇA (rodada 115; fechamento da economia, 01 e 02/10/2026, itens 2, 2b e 2e)
 # =====================================================================
-# Bolsa = Valor do encontro × Semanas × Tarefa × Risco × 4 (o grupo de referência, B14 fase 2 item
-# D.14, 26/09/2026). Valor do encontro = o valor da tabela no desafio do ENCONTRO (Adendo 2): a
-# criatura no desafio da mais forte conta 1 equivalente, cada desafio abaixo divide por 4, e o
-# desafio do encontro é o da mais forte + 1/2 a cada dobra dos equivalentes (os degraus da
-# Magnitude da Regra de Horda, para baixo). A tabela é do autor (01/10/2026), PROVISÓRIA até a
-# bancada medir, e para no desafio 9: acima dele a calculadora recusa, sem extrapolar. O meio degrau
-# entre dois desafios é a média geométrica dos vizinhos, arredondada pelo `arred`.
+# A recompensa é o preço de UM TRABALHO (Adendo 5): Bolsa = Valor(desafio do trabalho) × Semanas ×
+# Tarefa × Risco × 4 (o grupo de referência, B14 fase 2 item D.14, 26/09/2026). O desafio do
+# trabalho é o do pior confronto que o grupo precisa vencer. A tabela é do autor (01/10/2026),
+# PROVISÓRIA até a bancada medir, e para no desafio 9: acima dele a calculadora recusa, sem
+# extrapolar. O meio degrau entre dois desafios é a média geométrica dos vizinhos, arredondada pelo
+# `arred`. `divisor_por_desafio` e `desafio_por_dobra` servem só à ajuda provisória de estimar o
+# desafio de um confronto com várias criaturas (Adendo 2), que não mexe em pagamento.
 REC_DESAFIOS = [40, 95, 270, 910, 3600, 14500, 57900, 231700, 926800, 3707300]
 REC_MEIOS = [arred(math.sqrt(a * b)) for a, b in zip(REC_DESAFIOS, REC_DESAFIOS[1:])]
 REC_TAREFAS = [

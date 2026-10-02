@@ -1,17 +1,16 @@
 ---
-// A calculadora da recompensa de caça (rodada 115; encontro por equivalentes desde 01/10/2026). As listas vêm de src/data/recompensas.json e a
-// conta de src/lib/recompensa.ts; nenhum número da regra mora aqui.
+// A calculadora da recompensa de caça (rodada 115; desde 02/10/2026 a recompensa é o preço de UM
+// TRABALHO, pelo desafio dele). As listas vêm de src/data/recompensas.json e a conta de
+// src/lib/recompensa.ts; nenhum número da regra mora aqui.
 // TOLERÂNCIA: a tabela de desafio do autor, o +1/2 por dobra e o desafio digitado valem até a bancada medir.
 // LEVANTA QUANDO: a B14 medir o desafio das criaturas, gravá-lo nas fichas e confirmar ou trocar a tabela.
 import REC from '../data/recompensas.json';
+const MAX = REC.desafios.at(-1)!.desafio;
 ---
 <div class="recompensa panel">
-  <p class="muted rc-aviso">O desafio de cada criatura é <strong>provisório até a bancada medir</strong>, e as fichas do bestiário ainda não o trazem: digite o desafio e a quantidade de cada tipo de criatura do encontro. A tabela vai do desafio 0 ao {REC.desafios.at(-1)!.desafio}. O <strong>+1/2 a cada dobra</strong> dos equivalentes também é provisório: a bancada mediu bandos que sobem mais rápido.</p>
-  <div class="rc-encontro" data-rc="encontro">
-    <div class="rc-linha"><label>Desafio<input type="number" min="0" max={REC.desafios.at(-1)!.desafio} step="1" value="0" data-rc-l="desafio" /></label><label>Quantidade<input type="number" min="0" step="1" value="1" data-rc-l="quantidade" /></label></div>
-  </div>
-  <p class="rc-botoes"><button type="button" data-rc="mais">+ outra criatura</button> <button type="button" data-rc="menos">− última</button></p>
+  <p class="muted rc-aviso">O desafio do trabalho é o do <strong>pior confronto que o grupo precisa vencer</strong> para cumpri-lo; a duração entra em Semanas. A tabela vai do desafio 0 ao {MAX}, em degraus inteiros e meios degraus entre eles, e é <strong>provisória até a bancada medir</strong> o desafio das criaturas.</p>
   <div class="rc-campos">
+    <label>Desafio do trabalho<input type="number" min="0" max={MAX} step="0.5" value="1" data-rc="desafio" /></label>
     <label>Semanas de caçada<input type="number" min="0" step="0.5" value="1" data-rc="cacadaSemanas" /></label>
     <label>Dias de viagem (ida e volta)<input type="number" min="0" value="16" data-rc="viagemDias" /></label>
     <label>Tipo de tarefa
@@ -26,18 +25,33 @@ import REC from '../data/recompensas.json';
     </label>
     <label>Tamanho real do grupo<input type="number" min="1" value="4" data-rc="grupo" /></label>
   </div>
+  <!-- TOLERÂNCIA: a conta por equivalentes (+1/2 por dobra) vale até a bancada medir o bando com a Regra de Horda.
+       LEVANTA QUANDO: a B18 (fila da B14) medir o desafio por N e o autor confirmar ou trocar a regra. -->
+  <details class="rc-estimar">
+    <summary>Estimar o desafio de um confronto com várias criaturas (ajuda opcional, provisória)</summary>
+    <p class="muted">A criatura no desafio da mais forte conta 1, cada desafio abaixo dela divide por {REC.divisor_por_desafio}, e o confronto sobe 1/2 desafio a cada vez que esses equivalentes dobram (os degraus da Magnitude da Regra de Horda). O <strong>+1/2 a cada dobra é provisório</strong>: a bancada mediu bandos que sobem mais rápido. É só uma estimativa do desafio: não multiplica nem divide a bolsa.</p>
+    <div class="rc-encontro" data-rc="encontro">
+      <div class="rc-linha"><label>Desafio<input type="number" min="0" max={MAX} step="1" value="0" data-rc-l="desafio" /></label><label>Quantidade<input type="number" min="0" step="1" value="1" data-rc-l="quantidade" /></label></div>
+    </div>
+    <p class="rc-botoes"><button type="button" data-rc="mais">+ outra criatura</button> <button type="button" data-rc="menos">− última</button></p>
+    <p class="rc-estimativa"><span data-rc="estimativa"></span> <button type="button" data-rc="usar" hidden>usar como desafio do trabalho</button></p>
+  </details>
   <div class="rc-saida">
     <p class="rc-bolsa"><span data-rc="bolsa"></span></p>
     <ol class="rc-recibo" data-rc="recibo"></ol>
   </div>
 </div>
 
-<!-- is:global: o recibo é montado por JS -->
+<!-- is:global: o recibo e a estimativa são montados por JS -->
 <style is:global>
   .recompensa .rc-campos, .recompensa .rc-encontro { display: flex; gap: .7rem; flex-wrap: wrap; }
   .recompensa .rc-linha { display: flex; gap: .5rem; padding: .3rem .4rem; border: 1px solid var(--rule); border-radius: var(--r-sm); }
-  .recompensa .rc-botoes { margin: .5rem 0 .8rem; }
+  .recompensa .rc-botoes { margin: .5rem 0 .4rem; }
   .recompensa .rc-aviso { margin-top: 0; }
+  .recompensa .rc-estimar { margin-top: .9rem; }
+  .recompensa .rc-estimar summary { cursor: pointer; font-family: 'Cinzel'; font-size: var(--fs-aux); color: var(--ink-soft); }
+  .recompensa .rc-estimar p.muted { font-size: var(--fs-aux); }
+  .recompensa .rc-estimativa { margin: 0; font-size: var(--fs-aux); }
   .recompensa label { display: flex; flex-direction: column; font-size: var(--fs-micro); color: var(--ink-soft); font-family: 'Cinzel'; gap: .2rem; }
   .recompensa input, .recompensa select { width: 11rem; padding: .35rem .4rem; border: 1px solid var(--panel-border); border-radius: var(--r-sm); background: var(--bg); color: var(--ink); font-size: var(--fs-aux); }
   .recompensa input[type='number'] { width: 7rem; }
@@ -49,80 +63,83 @@ import REC from '../data/recompensas.json';
 
 <script>
   import REC from '../data/recompensas.json';
-  import { calcularRecompensa, desafioDoEncontro, type EntradaRecompensa } from '../lib/recompensa';
+  import { calcularRecompensa, desafioDoEncontro, valorDoDesafio, type EntradaRecompensa } from '../lib/recompensa';
   const ptNum = (n: number, casas = 0) => n.toLocaleString('pt-BR', { minimumFractionDigits: casas, maximumFractionDigits: casas });
   const pc = (n: number) => `${ptNum(n)} pc`;
   const m = (x: number) => x.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
+  const des = (d: number) => d.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
   document.querySelectorAll<HTMLElement>('.recompensa').forEach((root) => {
     const campo = (k: string) => root.querySelector<HTMLInputElement | HTMLSelectElement>(`[data-rc="${k}"]`)!;
     const n = (k: string) => { const v = parseFloat(campo(k).value.replace(',', '.')); return Number.isFinite(v) ? v : 0; };
     const bolsaEl = root.querySelector<HTMLElement>('[data-rc="bolsa"]')!;
     const recibo = root.querySelector<HTMLElement>('[data-rc="recibo"]')!;
     const encontro = root.querySelector<HTMLElement>('[data-rc="encontro"]')!;
+    const estimativaEl = root.querySelector<HTMLElement>('[data-rc="estimativa"]')!;
+    const usar = root.querySelector<HTMLButtonElement>('[data-rc="usar"]')!;
     const maxDesafio = REC.desafios.at(-1)!.desafio;
-    const atualizar = () => {
+    const temValor = (d: number) => { try { valorDoDesafio(d, REC as any); return true; } catch { return false; } };
+    let estimado: number | null = null;
+
+    // a ajuda de estimar: só diz um desafio; não mexe na bolsa
+    const estimar = () => {
+      estimado = null; usar.hidden = true;
       const lidas = [...encontro.querySelectorAll<HTMLElement>('.rc-linha')].map((l) => {
         const v = (k: string) => parseFloat(l.querySelector<HTMLInputElement>(`[data-rc-l="${k}"]`)!.value.replace(',', '.'));
         return { desafio: v('desafio'), quantidade: v('quantidade') };
       });
-      // acima do desafio 9 a tabela para, e a calculadora recusa em vez de extrapolar
       const fora = lidas.find((l) => !Number.isInteger(l.desafio) || l.desafio < 0 || l.desafio > maxDesafio);
-      if (fora) {
-        bolsaEl.textContent = `Sem bolsa: a tabela de desafio vai de 0 a ${maxDesafio}, e o desafio ${Number.isFinite(fora.desafio) ? ptNum(fora.desafio, fora.desafio % 1 ? 1 : 0) : '(vazio)'} não tem valor.`;
+      if (fora) { estimativaEl.textContent = `Cada criatura vai de desafio 0 a ${maxDesafio}, em inteiros.`; return; }
+      const criaturas = lidas.map((l) => ({ desafio: l.desafio, quantidade: Number.isFinite(l.quantidade) ? Math.max(0, Math.round(l.quantidade)) : 0 }));
+      if (!criaturas.some((l) => l.quantidade > 0)) { estimativaEl.textContent = 'O confronto não tem criatura nenhuma.'; return; }
+      const enc = desafioDoEncontro(criaturas, REC as any);
+      const eq = enc.equivalentes.toLocaleString('pt-BR', { maximumFractionDigits: 4 });
+      estimativaEl.textContent = `Equivalentes ${eq} · Magnitude ${enc.magnitude} · desafio estimado ${enc.maisForte} + ${enc.magnitude} ÷ 2 = ${des(enc.desafio)} (exato ${ptNum(enc.exato, 2)})${temValor(enc.desafio) ? '.' : `, acima do fim da tabela (${maxDesafio}).`}`;
+      if (temValor(enc.desafio)) { estimado = enc.desafio; usar.hidden = false; }
+    };
+
+    const atualizar = () => {
+      const txt = campo('desafio').value.trim();
+      const desafio = txt === '' ? NaN : parseFloat(txt.replace(',', '.'));
+      // fora de 0 a 9, meio degrau sem vizinho ou outra fração: recusa, sem extrapolar
+      if (!temValor(desafio)) {
+        bolsaEl.textContent = `Sem bolsa: a tabela de desafio vai de 0 a ${maxDesafio}, em degraus inteiros e meios degraus entre eles, e o desafio ${Number.isFinite(desafio) ? des(desafio) : '(vazio)'} não tem valor.`;
         recibo.innerHTML = '';
         return;
       }
-      const criaturas = lidas.map((l) => ({ desafio: l.desafio, quantidade: Number.isFinite(l.quantidade) ? Math.max(0, Math.round(l.quantidade)) : 0 }));
-      if (!criaturas.some((l) => l.quantidade > 0)) { bolsaEl.textContent = 'Sem bolsa: o encontro não tem criatura nenhuma.'; recibo.innerHTML = ''; return; }
       const e: EntradaRecompensa = {
-        criaturas,
+        desafio,
         cacadaSemanas: Math.max(0, n('cacadaSemanas')), viagemDias: Math.max(0, n('viagemDias')),
         tarefa: campo('tarefa').value, risco: campo('risco').value, tom: campo('tom').value,
         outro: campo('outro').value.trim() === '' ? 1 : Math.max(0, n('outro')), grupo: Math.max(1, Math.round(n('grupo'))),
       };
-      let r: ReturnType<typeof calcularRecompensa>;
-      try { r = calcularRecompensa(e, REC as any); } catch {
-        // o desafio do encontro passou do fim da tabela (9): recusa, sem extrapolar
-        const enc = desafioDoEncontro(criaturas, REC as any);
-        bolsaEl.textContent = `Sem bolsa: o desafio do encontro dá ${ptNum(enc.desafio, enc.desafio % 1 ? 1 : 0)}, e a tabela vai só até ${maxDesafio}.`;
-        recibo.innerHTML = '';
-        return;
-      }
-      const enc = r.encontro;
-      const des = (d: number) => ptNum(d, d % 1 ? 1 : 0);
-      const eqTxt = (x: number) => x.toLocaleString('pt-BR', { maximumFractionDigits: 4 });
+      const r = calcularRecompensa(e, REC as any);
       const sobra = r.sobra > 0 ? ` (sobram ${pc(r.sobra)}, divida como quiser)` : '';
       bolsaEl.textContent = `Bolsa: ${pc(r.bolsa)} · Parte por caçador (grupo de ${e.grupo}): ${pc(r.porCacador)}${sobra}`;
-      const parcela = (x: number) => `${ptNum(x, x % 1 ? 1 : 0)} pc`;
-      // TOLERÂNCIA: o +1/2 por dobra do recibo vale até a bancada medir o bando com a Regra de Horda.
-      // LEVANTA QUANDO: a B18 (fila da B14) medir o desafio por N e o autor confirmar ou trocar a regra.
       const itens = [
-        `Equivalentes (a mais forte, desafio ${enc.maisForte}, conta 1; cada desafio abaixo divide por ${REC.divisor_por_desafio}): ${enc.linhas.map((l) => `${ptNum(l.quantidade)} × ${eqTxt(l.eqCada)}`).join(' + ')} = ${eqTxt(enc.equivalentes)}`,
-        `Desafio do encontro = ${enc.maisForte} + Magnitude ${enc.magnitude} ÷ 2 = ${des(enc.desafio)} (+1/2 a cada dobra dos equivalentes, para baixo, provisório até a bancada; o exato seria ${ptNum(enc.exato, 2)})`,
-        `Valor do encontro (tabela no desafio ${des(enc.desafio)}${enc.desafio % 1 ? ', meio degrau' : ''}): ${pc(r.valorEncontro)}, por caçador, por semana`,
+        `Valor no desafio ${des(r.desafio)}${r.desafio % 1 ? ' (meio degrau)' : ''}: ${pc(r.valor)} por caçador, por semana`,
         `Semanas = caçada ${ptNum(Math.max(1, e.cacadaSemanas), 1)} + metade da viagem (${ptNum(e.viagemDias)} dias ÷ 2 ÷ ${REC.dias_semana}) = ${ptNum(r.semanas, 1)}`,
         `Tom: ${r.tom.nome} ×${m(r.tom.mult)} · Tarefa: ${r.tarefa.nome} ×${m(r.tarefa.mult)} · Risco: ${r.risco.nome} ×${m(r.risco.mult)} · Outro ×${m(r.outro)}`,
-        `Bolsa = ${pc(r.valorEncontro)} × ${m(r.tom.mult)} × ${ptNum(r.semanas, 1)} × ${m(r.tarefa.mult)} × ${m(r.risco.mult)} × ${m(r.outro)} × ${r.grupoReferencia} = ${ptNum(r.exata, r.exata % 1 ? 1 : 0)} pc, arredondada: ${pc(r.bolsa)}`,
-        r.solitaria
-          ? 'Criatura solitária: tudo ou nada.'
-          : `Pagamento por criatura morta ou capturada (a fração dos equivalentes dela, para baixo, no pc): ${r.partes.map((p) => p.extra
-              ? `desafio ${p.desafio}, ${pc(p.parte + p.extra)} (${pc(p.parte)} + a sobra de ${pc(p.extra)}, que vai para a mais forte; ${ptNum(100 * p.fracao, 1)}%)`
-              : `desafio ${p.desafio}, ${pc(p.parte)} cada (${ptNum(100 * p.fracao, 1)}%)`).join('; ')}${r.sobraSemDono ? `. Sobram ${pc(r.sobraSemDono)}: as mais fortes empatam, e o grupo decide de quem é` : ''}`,
+        `Bolsa = ${pc(r.valor)} × ${m(r.tom.mult)} × ${ptNum(r.semanas, 1)} × ${m(r.tarefa.mult)} × ${m(r.risco.mult)} × ${m(r.outro)} × ${r.grupoReferencia} = ${ptNum(r.exata, r.exata % 1 ? 1 : 0)} pc, arredondada: ${pc(r.bolsa)}`,
         `Parte por caçador = ${pc(r.bolsa)} ÷ ${e.grupo}, para baixo = ${pc(r.porCacador)}${sobra}`,
-        ...(enc.desafio >= 5 ? ['A partir do desafio 5, a bolsa é paga em terra, título, direito ou favor, no valor da tabela.'] : []),
+        'A bolsa paga o trabalho cumprido. Cumprir parte do trabalho não paga parte, a não ser que o Mestre decida.',
+        ...(r.desafio >= 5 ? ['A partir do desafio 5, a bolsa é paga em terra, título, direito ou favor, no valor da tabela.'] : []),
       ];
       recibo.innerHTML = itens.map((t) => `<li>${t}</li>`).join('');
     };
-    const ligar = (el: Element) => { el.addEventListener('input', atualizar); el.addEventListener('change', atualizar); };
+
+    const ligar = (el: Element, f: () => void) => { el.addEventListener('input', f); el.addEventListener('change', f); };
+    root.querySelectorAll('.rc-campos input, .rc-campos select').forEach((el) => ligar(el, atualizar));
+    encontro.querySelectorAll('input').forEach((el) => ligar(el, estimar));
     root.querySelector('[data-rc="mais"]')!.addEventListener('click', () => {
       const nova = encontro.querySelector('.rc-linha')!.cloneNode(true) as HTMLElement;
-      nova.querySelectorAll('input').forEach(ligar);
-      encontro.appendChild(nova); atualizar();
+      nova.querySelectorAll('input').forEach((el) => ligar(el, estimar));
+      encontro.appendChild(nova); estimar();
     });
     root.querySelector('[data-rc="menos"]')!.addEventListener('click', () => {
-      const ls = encontro.querySelectorAll('.rc-linha'); if (ls.length > 1) { ls[ls.length - 1].remove(); atualizar(); }
+      const ls = encontro.querySelectorAll('.rc-linha'); if (ls.length > 1) { ls[ls.length - 1].remove(); estimar(); }
     });
-    root.querySelectorAll('input, select').forEach((el) => { el.addEventListener('input', atualizar); el.addEventListener('change', atualizar); });
+    usar.addEventListener('click', () => { if (estimado != null) { campo('desafio').value = String(estimado); atualizar(); } });
+    estimar();
     atualizar();
   });
 </script>

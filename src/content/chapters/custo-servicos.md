@@ -37,15 +37,14 @@ A renda é o que o contratante gasta com quem trabalha. Quando o personagem trab
 
 Trabalhos pontuais, como abater uma colônia de aranhas, recuperar um hipogrifo ou buscar partes de uma criatura para um mago, pagam uma bolsa pelo trabalho, combinada antes. O valor é o Livre: o custo de vida de quem caça já está descontado. É esse o número do cartaz da recompensa.
 
-<p class="formula">Bolsa = Valor do encontro × Semanas × Tarefa × Risco × 4</p>
+<p class="formula">Bolsa = Valor(desafio do trabalho) × Semanas × Tarefa × Risco × 4</p>
 
 A bolsa paga um grupo de 4, que é o grupo para o qual o nível de desafio é pensado. O grupo divide como quiser: se forem mais, cada um leva menos; se forem menos, levam mais e arriscam mais.
 
 A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa).
 
-1. **Equivalentes.** Cada criatura no desafio da mais forte conta 1, e cada desafio abaixo da mais forte divide por 4, sem piso (um abaixo 1/4, dois 1/16, três 1/64). Os equivalentes somam com fração.
-2. **Desafio do encontro** = desafio da mais forte + Magnitude ÷ 2: sobe 1/2 a cada vez que os equivalentes dobram (**provisório**: a bancada mediu bandos que sobem mais rápido, e a medida com a Regra de Horda ainda está por fazer), para baixo, nos mesmos degraus da Magnitude da [Regra de Horda](/regras/combate#regra-de-horda) (1: +0; 2 a 3: +1/2; 4 a 7: +1; 8 a 15: +1 1/2; 16 a 31: +2; 32 a 63: +2 1/2; 64 a 127: +3).
-3. **Valor do encontro** (por caçador, por semana): o da tabela no desafio do encontro. O meio degrau é a média geométrica dos dois vizinhos, arredondada. A tabela é provisória até a bancada medir o desafio das criaturas, e vai até o desafio 9: acima disso não há valor.
+1. **Desafio do trabalho**: o do **pior confronto que o grupo precisa vencer** para cumprir o trabalho. A duração (semanas limpando uma infestação, por exemplo) entra em Semanas, e não no desafio. Animal comum não tem desafio próprio; a ficha traz uma nota de quantos formam um desafio 0 para um grupo de Centelha 0, como referência.
+2. **Valor** (por caçador, por semana): o da tabela no desafio do trabalho. O meio degrau é a média geométrica dos dois vizinhos, arredondada. A tabela é provisória até a bancada medir o desafio das criaturas, e vai até o desafio 9: acima disso não há valor.
 
 <!-- gen:economia-recompensas -->
 
@@ -60,15 +59,21 @@ A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa
 
 <!-- /gen:economia-recompensas -->
 
-4. **Semanas** = caçada estimada (mínimo 1) + metade da viagem de ida e volta. A semana tem 8 dias. É estimativa de contrato: se levar mais, azar de quem caça; se levar menos, sorte. A viagem conta metade porque é tempo gasto, não perigo: paga o tempo, sem o prêmio de risco.
-5. **Tipo de tarefa** (exemplos): afugentar ou expulsar ×0,75; matar ×1; trazer parte ou prova ×1; recuperar alguém ou algo levado ×1; capturar vivo ×1,5; capturar vivo e sem ferimentos, ou domar ×2.
-6. **Risco**, além do que o desafio já prevê (exemplos): normal ×1; alto, um agravante sério (terreno hostil, alvo desconhecido, prazo curto, civis para proteger) ×1,5; muito alto, dois ou mais agravantes ×2; extremo, alguém provavelmente morre mesmo dando certo ×3.
+3. **Semanas** = caçada estimada (mínimo 1) + metade da viagem de ida e volta. A semana tem 8 dias. É estimativa de contrato: se levar mais, azar de quem caça; se levar menos, sorte. A viagem conta metade porque é tempo gasto, não perigo: paga o tempo, sem o prêmio de risco.
+4. **Tipo de tarefa** (exemplos): afugentar ou expulsar ×0,75; matar ×1; trazer parte ou prova ×1; recuperar alguém ou algo levado ×1; capturar vivo ×1,5; capturar vivo e sem ferimentos, ou domar ×2.
+5. **Risco**, além do que o desafio já prevê (exemplos): normal ×1; alto, um agravante sério (terreno hostil, alvo desconhecido, prazo curto, civis para proteger) ×1,5; muito alto, dois ou mais agravantes ×2; extremo, alguém provavelmente morre mesmo dando certo ×3.
 
-**Tom da campanha:** numa campanha de dinheiro curto, o Valor do encontro vale metade; numa campanha heroica, o dobro.
+**Tom da campanha:** numa campanha de dinheiro curto, o Valor vale metade; numa campanha heroica, o dobro.
 
-**Pagamento:** num bando, cada criatura morta ou capturada paga a fração dos seus equivalentes no total (sucesso parcial paga parcial), arredondada para baixo, no pc; a sobra fica com a criatura mais forte (se as mais fortes empatam, o grupo decide). Criatura solitária: tudo ou nada.
+**O que a bolsa paga:** um trabalho, pago por alguém com um objetivo (livrar o lugar da ameaça, proteger o rebanho ou a gente), e não cabeças. Matar criaturas sem trabalho contratado não paga nada. Cumprir parte do trabalho não paga parte, a não ser que o Mestre decida. Pagamento por peça (um crânio, uma parte para poção) é outra coisa: entra pela Tarefa "trazer parte ou prova" ou pela venda de partes (em Despesas e partes, abaixo), e não divide a bolsa.
 
-Exemplos de Valor do encontro: 4 lobos (desafio 0) são 4 equivalentes, desafio 1, 95 pc; 100 ratazanas (desafio 0), desafio 3, 910 pc; um chefe de desafio 3 com 4 criaturas de desafio 0 soma 1,0625 equivalentes, desafio 3, 910 pc, e o chefe sozinho responde por 94% da bolsa.
+**Estimar o desafio de um confronto com várias criaturas** (ajuda opcional, **provisória**: a bancada mediu bandos que sobem mais rápido, e a medida com a Regra de Horda ainda está por fazer): a criatura no desafio da mais forte conta 1, e cada desafio abaixo dela divide por 4, sem piso (um abaixo 1/4, dois 1/16, três 1/64); some esses equivalentes, com fração. O confronto fica no desafio da mais forte + Magnitude ÷ 2: sobe 1/2 a cada vez que os equivalentes dobram, para baixo, nos mesmos degraus da Magnitude da [Regra de Horda](/regras/combate#regra-de-horda) (1: +0; 2 a 3: +1/2; 4 a 7: +1; 8 a 15: +1 1/2; 16 a 31: +2; 32 a 63: +2 1/2; 64 a 127: +3). É só uma estimativa do desafio: não multiplica nem divide a bolsa, e o Mestre pode preferir um desafio medido ou conhecido.
+
+**Exemplos de trabalho:**
+
+- **Livrar a estrada de uma matilha de 4 worgs:** desafio 3, medido na bancada (**provisório** até a medição de bando com a Regra de Horda). Referência para o Mestre: worg sozinho, desafio 0; dupla, desafio 2; matilha de 4, desafio 3.
+- **Livrar o vilarejo da infestação de ratazanas:** a ratazana não tem desafio por criatura; o Mestre fixa o desafio do trabalho e as Semanas que a limpeza leva.
+- **Matar o chefe de desafio 3 com o bando dele:** desafio 3.
 
 A partir do desafio 5, a bolsa é paga em terra, título, direito ou favor, no valor da tabela.
 

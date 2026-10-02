@@ -194,3 +194,19 @@ limitações conhecidas, que são as três de baixo.
   - **Informar** o desafio por N e se a curva casa com "+1/2 por dobra".
   - **Suspeita a registrar:** a Guarda sob pressão (`combate.md:405`) pode pesar demais com 2 a 4
     atacantes (1 worg = 0, 2 worgs = 2).
+  - **Ajuste do Adendo 5 (02/10/2026, item 9):** a medição de bando (N = 1 a 32, com Horda a
+    partir de 8) passa a informar **quantos indivíduos são precisos para desafio 0, 1 e 2**, para
+    lobos, worgs, gatos, cães e ratos. Esse número vai para a nota das fichas de animal comum. As
+    fichas de animal comum do bestiário ficam **sem desafio e com a nota** (aplicar quando a B14
+    chegar nas 309). A regra que o capítulo já traz: "Animal comum não tem desafio próprio; a ficha
+    traz uma nota de quantos formam um desafio 0 para um grupo de Centelha 0, como referência."
+  - **Worg é besta mágica, com desafio próprio; lobo é animal comum, sem desafio próprio**
+    (Complemento do autor, 02/10/2026, item 11).
+  - **Nota da ficha do lobo** (aplicar quando a B14 chegar nas fichas; agora só registrada),
+    verbatim do autor: "Animal comum, sem desafio próprio. 1 ou 2 lobos não chegam a desafio 0 para
+    um grupo de Centelha 0; uma matilha de 4 é desafio 1; 8, desafio 2 (medição provisória, Fase
+    5b)."
+  - **A matilha de worgs** (Complemento, item 14): o autor esperava a matilha de worgs em desafio 1
+    ou 2; a bancada mede 3, com salto de 0 (1 worg) para 2 (2 worgs). A medição de bando com Horda
+    (N = 1 a 32) deve dizer se o salto vem da Guarda sob pressão com 2 a 4 atacantes. Só medir,
+    sem decidir.

@@ -1,5 +1,5 @@
 ---
-// A calculadora de recompensa de caça (rodada 115; encontro por equivalentes desde 01/10/2026). A capacidade de quem paga sai de renda.json
+// A calculadora de recompensa de caça (rodada 115; preço de um trabalho, pelo desafio dele, desde 02/10/2026). A capacidade de quem paga sai de renda.json
 // (Livre/Ano da faixa) e das urgências de recompensas.json, para o Mestre comparar com a bolsa.
 import Base from '../layouts/Base.astro';
 import CalculadoraRecompensa from '../components/CalculadoraRecompensa.astro';
@@ -10,9 +10,9 @@ const pc = (n: number) => `${n.toLocaleString('pt-BR')} pc`;
 const mult = (m: number) => String(m).replace('.', ',');
 const anoDe = (f: any) => f.livre.find((v: any) => v.por === 'ano').preco.pc;
 ---
-<Base title="Calculadora de Recompensa" descricao="Quanto vale uma caçada: a bolsa pelo desafio do encontro, as semanas, a tarefa e o risco, com a conta passo a passo.">
+<Base title="Calculadora de Recompensa" descricao="Quanto vale uma caçada: a bolsa pelo desafio do trabalho, as semanas, a tarefa e o risco, com a conta passo a passo.">
   <h1>Calculadora de Recompensa</h1>
-  <p class="lead">A bolsa de um trabalho de caça, combinada antes: <strong>Valor do encontro × Semanas × Tarefa × Risco × 4</strong>, onde o Valor do encontro é o valor da tabela no desafio do encontro: o da criatura mais forte, mais 1/2 a cada vez que os equivalentes dobram. Ela paga um grupo de 4, e é o Livre de quem caça (o custo de vida já está descontado). A regra inteira está em <a href={url('regras/custo-servicos') + '#caça-e-recompensas'}>Caça e recompensas</a>.</p>
+  <p class="lead">A bolsa de um trabalho de caça, combinada antes: <strong>Valor(desafio do trabalho) × Semanas × Tarefa × Risco × 4</strong>, onde o desafio do trabalho é o do pior confronto que o grupo precisa vencer para cumpri-lo. Ela paga um grupo de 4, e é o Livre de quem caça (o custo de vida já está descontado). A regra inteira está em <a href={url('regras/custo-servicos') + '#caça-e-recompensas'}>Caça e recompensas</a>.</p>
   <CalculadoraRecompensa />
   <h2>Quanto quem paga consegue juntar</h2>
   <p class="muted">Quem paga junta até o seu Livre/Ano × urgência. Uma comunidade soma as casas. Se a bolsa passar disso, não há contrato.</p>

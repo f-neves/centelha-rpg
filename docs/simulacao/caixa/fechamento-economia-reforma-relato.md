@@ -447,3 +447,97 @@ QUANDO` junto da linha nova do recibo, que o portão pegou na primeira volta; `t
 rápido..." e "arredondada para baixo, no pc; a sobra fica com a criatura mais forte (se as mais
 fortes empatam, o grupo decide)"; `dist/recompensa/index.html` traz "+1/2 a cada dobra dos
 equivalentes também é provisório"). Zero travessão.
+
+**Commit do item 2c:** `d8d2fd27` · **CI:** Validar run 36962462391 verde depois de um rerun (ver o
+item 2e, "O test-l84 intermitente"); Deploy verde.
+
+## Item 2d · não entrou
+
+O Adendo 4 (`72f344f2`, parte fixada no contrato e campo opcional de desafio conhecido) foi feito e
+verificado na árvore, mas não foi commitado: o autor corrigiu o desenho antes, e o Adendo 5 o
+substituiu. Do 2d só ficaram o campo de desafio (agora a entrada principal, no 2e) e o registro do
+test-l84 (no item 2e). A observação do Adendo 4 sobre a oferta (a oferta de trabalho é por povoado,
+e não por caçador: uma cidade de fronteira com 24 trabalhos por ano reparte esses trabalhos entre
+todos os caçadores dela) fica anotada aqui como registro, sem divergência.
+
+## Item 2e · A recompensa é o preço de UM TRABALHO (Adendo 5 e Complemento, `2f522a44` e `791cbd25`)
+
+**A regra.** Bolsa = Valor(desafio do trabalho) × Semanas × Tarefa × Risco × 4. O desafio do
+trabalho é o do pior confronto que o grupo precisa vencer para cumpri-lo; a duração entra em
+Semanas. Matar sem trabalho contratado não paga nada; cumprir parte não paga parte, a não ser que o
+Mestre decida; pagamento por peça fica na Tarefa "trazer parte ou prova" e na venda de partes.
+
+**O que foi desfeito, e o que ficou.**
+
+| de onde | o quê | no 2e |
+|---|---|---|
+| 2 | tabela de desafio 0 a 9 do autor, recusa acima de 9, ×4, Semanas/Tarefa/Risco/Tom, a frase do desafio 5, `TOLERÂNCIA` | **ficou** |
+| 2 | Valor do encontro pela SOMA das criaturas (já trocado no 2b) | desfeito antes |
+| 2 | pagamento num bando dividido pelo valor de cada criatura; solitária tudo ou nada | **desfeito** |
+| 2b | meio degrau pela média geométrica (`meios` no JSON, linha "+1/2" na tabela do capítulo) | **ficou** |
+| 2b | equivalentes, Magnitude ÷ 2, desafio do encontro | **ficou só como ajuda opcional** de estimar o desafio de um confronto; não paga nada |
+| 2b | Valor do encontro = valor no desafio do encontro, divisão da bolsa por equivalentes, os exemplos (4 lobos, 100 ratazanas, chefe com 94%) | **desfeito** |
+| 2c | "+1/2 por dobra" provisório | **ficou**, na ajuda de estimar |
+| 2c | worg = 0 nos exemplos | **trocado pelo Complemento**: a matilha de 4 worgs é desafio 3 (medido), com a referência worg 0, dupla 2, matilha 3 |
+| 2c | parte por cabeça para baixo, sobra na mais forte, empate só informado | **desfeito** |
+| 2c | B18 na fila da B14 | **ficou**, com o ajuste do item 9 e as notas dos itens 11, 13 e 14 |
+| 2d | parte fixada no contrato, parcial somando partes, `pagamentoParcial` | **não entrou** |
+| 2d | campo de desafio (inteiro ou meio degrau, 0 a 9, mesmas recusas) | **ficou como a entrada principal** |
+
+**Onde mora.**
+- `src/lib/recompensa.ts`: `calcularRecompensa` recebe `desafio` (o do trabalho) em vez de
+  criaturas; o Valor sai de `valorDoDesafio` (inteiro ou meio degrau; fora da tabela, erro). Saíram
+  as partes por criatura, a sobra e o empate. `desafioDoEncontro` ficou, como ajuda de estimar.
+- `src/components/CalculadoraRecompensa.astro`: a entrada principal é "Desafio do trabalho" (passo
+  0,5, de 0 a 9); recusa fora da tabela com "Sem bolsa: a tabela de desafio vai de 0 a 9, em degraus
+  inteiros e meios degraus entre eles...". A conta por equivalentes foi para um bloco que abre e
+  fecha, "Estimar o desafio de um confronto com várias criaturas (ajuda opcional, provisória)", que
+  só mostra a estimativa e um botão "usar como desafio do trabalho" (o Mestre escolhe se usa). O
+  recibo diz "Cumprir parte do trabalho não paga parte, a não ser que o Mestre decida."
+- `src/pages/recompensa.astro`: o topo traz a fórmula nova.
+- `src/content/chapters/custo-servicos.md`: a fórmula nova; o passo 1 é o desafio do trabalho, com
+  a frase verbatim do animal comum ("Animal comum não tem desafio próprio; a ficha traz uma nota de
+  quantos formam um desafio 0 para um grupo de Centelha 0, como referência."); o passo 2 é o Valor
+  pela tabela. Saiu o parágrafo do Pagamento por criatura; entrou "O que a bolsa paga" (trabalho e
+  não cabeças, sem trabalho não paga, parte não paga parte salvo o Mestre, e a frase que separa
+  pagamento por peça). A conta por equivalentes virou o parágrafo "Estimar o desafio de um confronto
+  com várias criaturas", provisório, que "não multiplica nem divide a bolsa". Os exemplos viraram
+  trabalhos.
+- `lore/economia/v2/modelo.py` (só comentário) e `scripts/copiar-economia.mjs` (a `_nota` do JSON):
+  descrevem a regra do trabalho. Regerado pela cadeia; `recompensas.json` mudou só na `_nota`.
+- `scripts/test-recompensa.mjs`: reescrito, 16 asserções. Saíram os casos de 125/128 ratazanas,
+  chefe com 94%, divisão por equivalentes e 7 lobos empatados.
+- `docs/pendencias/B-bestiario.md` (B18): o ajuste do item 9, worg besta mágica e lobo animal comum
+  (item 11), a nota verbatim do lobo (item 13) e a matilha de worgs (item 14). `Pendencias.md`
+  regerado, sem mudança (o índice traz só a linha de resumo da B18, que não mudou).
+
+**Os exemplos, como trabalhos** (Semanas 1, matar, risco normal, tom padrão, grupo de 4):
+1. **Livrar a estrada de uma matilha de 4 worgs:** desafio 3, medido na Fase 5b, **PROVISÓRIO** até
+   a medição de bando com Horda (referência: worg sozinho 0; dupla 2; matilha de 4, 3). Valor 910;
+   bolsa 910 × 1 × 1 × 1 × 4 = 3.640, arred **3.600**; 900 pc por caçador. A ajuda por
+   equivalentes daria 1 (Valor 95), contra o 3 medido. A frase "estimado 1 pela conta provisória; o
+   Mestre escolhe" do item 7 saiu, porque o Complemento (item 12) substitui esse exemplo.
+2. **Livrar o vilarejo da infestação de ratazanas:** sem desafio por criatura; o Mestre fixa o
+   desafio do trabalho e as Semanas. Para ilustrar (números escolhidos aqui, não regra): desafio 1 e
+   3 semanas dão 95 × 3 × 4 = 1.140, arred **1.100**.
+3. **Matar o chefe de desafio 3 com o bando dele:** desafio 3, Valor 910, bolsa **3.600**.
+
+**O test-l84 intermitente** (pendente do 2c, pedido no Adendo 4, item 4). No Validar 36962462391
+(o do `d8d2fd27`, item 2c), o smoke `test-l84` falhou na primeira volta: o navegador estourou os
+30 s esperando o "WS endpoint", o mesmo sintoma do `test-l88` no `7975f664`. O Arquiteto rodou de
+novo só o job que falhou e deu success; o Deploy já tinha passado. São dois casos do mesmo sintoma,
+em smokes diferentes, os dois em commit que não tocava o smoke.
+
+**Verificação** (sobre `791cbd25`, 02/10): `test-recompensa` 16 asserções verdes; `npm run validate`
+verde ("Portões OK"); `npx astro sync && npx tsc --noEmit` sem erro; `npm run build` verde. No
+gerado, `dist/regras/custo-servicos/index.html` traz "Valor(desafio do trabalho)", a frase do
+animal comum verbatim, "Cumprir parte do trabalho não paga parte" e "Livrar a estrada de uma
+matilha de 4 worgs", e não traz "Valor do encontro", "fração dos seus equivalentes", "tudo ou nada"
+nem "o Mestre escolhe" (contagens 1, 1, 1, 1 e 0, 0, 0, 0); `dist/recompensa/index.html` traz
+"Valor(desafio do trabalho)", "Desafio do trabalho", "pior confronto" e "Estimar o desafio de um
+confronto", e não traz "Valor do encontro". Zero travessão nos 10 arquivos (contado em Python, no
+arquivo).
+
+**Uma escolha de interface, que o Arquiteto pode trocar:** o botão "usar como desafio do trabalho"
+na ajuda de estimar. Ele só copia a estimativa para o campo principal quando o Mestre clica; sem o
+clique, a estimativa não mexe em nada.
