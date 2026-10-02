@@ -429,6 +429,20 @@ Notas do Arquiteto sobre as correções:
 3. **Recuperar é tipo próprio**; Caçar fica com 5 variações (afugentar, matar, trazer parte ou
    prova, capturar vivo, capturar sem ferimentos ou domar).
 
+### Emenda à correção B (autor, vinda do Comerciante, 02/10)
+
+A segunda frase da correção B passa a ser, verbatim (substitui "A bolsa é para o trabalho pontual
+fora da rotina de um ofício: com sigilo, ilegal, perigoso, ou que nenhum profissional aceita."):
+
+> A bolsa é para o trabalho pontual fora da rotina de um ofício: com sigilo, ilegal, perigoso,
+> recusado pelos profissionais, ou quando não há profissional ao alcance. Acima de Dificuldade 20
+> nunca há: nenhum mortal passa esses testes, e a tabela de Serviços para no Mestre de ofício
+> (soma 12).
+
+Exemplo curto no capítulo, verbatim: "consertar a ponte da aldeia isolada, a dias de qualquer
+carpinteiro: bolsa, e não Serviços". A primeira frase da correção B ("Se um profissional faria o
+trabalho como serviço comum...") fica como está.
+
 ## Regras desta rodada
 
 - Um commit por item (1, 2, 3 se houver, 4), com pathspec, rebase antes e depois, `push origin
