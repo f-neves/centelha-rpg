@@ -163,8 +163,8 @@
       "nome": "Rótulos (texto, transparente)",
       "tipo": "tile",
       "arquivo": null,
-      "visivel": false,
-      "opacidade": 0.45
+      "visivel": true,
+      "opacidade": 0.6
     },
     {
       "id": "ocean-deep",
