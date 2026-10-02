@@ -59,30 +59,30 @@ Medo é o caso que mais engana, então fica a régua fechada:
 
 ## As fórmulas
 
-Um ponto de **[Centelha](/regras/centelha)** soma **2 pontos** a cada uma das defesas (e ao ataque), mas só até o **teto da Habilidade** usada naquela jogada: quem tem a fagulha acesa e não treinou ganha só o que o treino sustenta (Reforma da Centelha, 28/09/2026). Como os dois lados ganham igual e limitado do mesmo jeito, entre Centelhas iguais (com Habilidade que alcance) o efeito se cancela e o duelo joga limpo; contra quem tem menos Centelha, a diferença vira vantagem de verdade.
+A **[Centelha](/regras/centelha)** pesa em cada uma das defesas (e no ataque) pela **regra do maior**: soma o maior entre **+1 por ponto de Centelha** e **2 pontos por ponto até o teto da Habilidade** usada naquela jogada. Quem tem a fagulha acesa e não treinou ganha a Centelha inteira, e quem treinou nunca ganha menos do que isso (Reforma da Centelha, 28/09/2026, corrigida em 02/10/2026). Como os dois lados ganham pela mesma conta, entre Centelhas iguais (com Habilidade que alcance) o efeito se cancela e o duelo joga limpo; contra quem tem menos Centelha, a diferença vira vantagem de verdade.
 
 ### Defesa Física
 
 Você tem duas maneiras de se defender e usa a que couber. Na ficha as duas aparecem:
 
-- **Esquiva** = ( Destreza + Esquiva ) × 2 + 2 × menor(Centelha, Esquiva) + Especialidade
-- **Bloqueio** = ( Destreza + Bloqueio ) × 2 + 2 × menor(Centelha, Bloqueio) + Especialidade + defesa da arma/escudo
+- **Esquiva** = ( Destreza + Esquiva ) × 2 + maior(Centelha, 2 × menor(Centelha, Esquiva)) + Especialidade
+- **Bloqueio** = ( Destreza + Bloqueio ) × 2 + maior(Centelha, 2 × menor(Centelha, Bloqueio)) + Especialidade + defesa da arma/escudo
 
 **Bloqueio** é uma Habilidade única: apara ataques com escudo, arma ou o próprio corpo, seja lá o que estiver empunhando. A defesa que a arma ou o escudo concede entra por cima, em jogo.
 
 ### Defesa Social
 
-- **Defesa Social** = ( Compostura + Sociabilidade ) × 2 + 2 × menor(Centelha, Sociabilidade) + Especialidade
+- **Defesa Social** = ( Compostura + Sociabilidade ) × 2 + maior(Centelha, 2 × menor(Centelha, Sociabilidade)) + Especialidade
 
 Em **feras** (bichos de instinto, Inteligência 1) troca-se **Sociabilidade por Sobrevivência**: um animal não tem trato social, mas sente o perigo.
 
 ### Defesa Mental
 
-- **Defesa Mental** = Raciocínio + Integridade + Força de Vontade + 2 × menor(Centelha, Integridade) + Especialidade
+- **Defesa Mental** = Raciocínio + Integridade + Força de Vontade + maior(Centelha, 2 × menor(Centelha, Integridade)) + Especialidade
 
-A Mental é uma **soma simples** (sem o ×2 das outras): a mente se defende com os três pilares (a rapidez do **Raciocínio**, a firmeza da **Integridade** e a reserva da **Força de Vontade**), mais a Centelha, aqui limitada pela **Integridade** (é ela que segura a mente firme, não o Raciocínio nem a Vontade).
+A Mental é uma **soma simples** (sem o ×2 das outras): a mente se defende com os três pilares (a rapidez do **Raciocínio**, a firmeza da **Integridade** e a reserva da **Força de Vontade**), mais o bônus de Centelha, que aqui se mede pela **Integridade** (é ela que segura a mente firme, não o Raciocínio nem a Vontade).
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael tem Destreza 4, Esquiva 3, Compostura 2, Raciocínio 3, Força de Vontade 7 e Centelha 3, e nenhum ponto em Sociabilidade nem em Integridade. Sua <strong>Esquiva</strong> é (4+3)×2 + 2×menor(3,3) = <strong>20</strong>; sua <strong>Defesa Social</strong> é (2+0)×2 + 2×menor(3,0) = <strong>4</strong> (a Centelha não passa do que a Sociabilidade sustenta, que aqui é zero); sua <strong>Defesa Mental</strong> é 3+0+7 + 2×menor(3,0) = <strong>10</strong>, pelo mesmo motivo na Integridade. Cada ataque compara o próprio total com a muralha certa.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael tem Destreza 4, Esquiva 3, Compostura 2, Raciocínio 3, Força de Vontade 7 e Centelha 3, e nenhum ponto em Sociabilidade nem em Integridade. Sua <strong>Esquiva</strong> é (4+3)×2 + maior(3, 2×menor(3,3)) = <strong>20</strong>; sua <strong>Defesa Social</strong> é (2+0)×2 + maior(3, 2×menor(3,0)) = <strong>7</strong> (com Sociabilidade zero, a Centelha entra inteira, pela regra do maior); sua <strong>Defesa Mental</strong> é 3+0+7 + maior(3, 2×menor(3,0)) = <strong>13</strong>, pelo mesmo motivo na Integridade. Cada ataque compara o próprio total com a muralha certa.</div>
 
 ## Especialidade: o foco que só vale às vezes
 
@@ -119,11 +119,11 @@ Uma defesa só existe se houver o que defender. Usa-se a **Inteligência** da cr
 
 ## Folha de referência
 
-- **Física · Esquiva** = (Des + Esquiva)×2 + 2×menor(Centelha, Esquiva) + Esp.
-- **Física · Bloqueio** = (Des + Bloqueio)×2 + 2×menor(Centelha, Bloqueio) + Esp + defesa da arma.
-- **Social** = (Compostura + Sociabilidade)×2 + 2×menor(Centelha, Sociabilidade) + Esp. Feras usam Sobrevivência.
-- **Mental** = Raciocínio + Integridade + Força de Vontade + 2×menor(Centelha, Integridade) + Esp (soma simples).
-- **Centelha** = 2 pontos por ponto em cada defesa e no ataque, até o teto da Habilidade usada (Reforma da Centelha, 28/09/2026). **Esp.** é a [Especialidade](#especialidade-o-foco-que-só-vale-às-vezes), que só vale na situação dela.
+- **Física · Esquiva** = (Des + Esquiva)×2 + maior(Centelha, 2×menor(Centelha, Esquiva)) + Esp.
+- **Física · Bloqueio** = (Des + Bloqueio)×2 + maior(Centelha, 2×menor(Centelha, Bloqueio)) + Esp + defesa da arma.
+- **Social** = (Compostura + Sociabilidade)×2 + maior(Centelha, 2×menor(Centelha, Sociabilidade)) + Esp. Feras usam Sobrevivência.
+- **Mental** = Raciocínio + Integridade + Força de Vontade + maior(Centelha, 2×menor(Centelha, Integridade)) + Esp (soma simples).
+- **Centelha** = o maior entre +1 por ponto e 2 pontos por ponto até o teto da Habilidade usada, em cada defesa e no ataque (regra do maior: Reforma da Centelha, 28/09/2026, corrigida em 02/10/2026). **Esp.** é a [Especialidade](#especialidade-o-foco-que-só-vale-às-vezes), que só vale na situação dela.
 - **Social** = te mover ou te ler. **Mental** = invadir/impor na sua mente. **Medo da cena** = Bravura.
 
 Como a Defesa Social se desgasta numa disputa longa, e como as relações do dia a dia decidem o que alguém faz por você, é assunto do capítulo [Relações Sociais](/regras/relacoes-sociais).

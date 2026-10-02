@@ -76,7 +76,7 @@ Você tem **sucesso** quando o total **supera** o alvo: a Defesa de um inimigo o
 
 <p class="muted">No nível "à altura", tarefas fáceis e médias são um cara-ou-coroa; a maestria traz confiabilidade. Quem não tem competência simplesmente não alcança as dificuldades altas.</p>
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Para escalar um muro liso (Dificuldade 10), Kael soma <strong>Força 3 + Atletismo 3 = 6</strong> → rola <strong>3d6</strong>. Saem <strong>11</strong> nos dados: supera 10, ele sobe. Se tivesse chegado a 16 (6 acima do alvo), ganharia uma <strong>Margem</strong>: subiria mais rápido, ou alcançaria um peitoril mais alto.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Para escalar um muro liso (Dificuldade 10), Kael soma <strong>Força 3 + Atletismo 3 = 6</strong> → rola <strong>3d6</strong>, mais a Centelha: com Centelha 3 e Atletismo 3, <strong>+6</strong>. Saem <strong>11</strong> nos dados, total <strong>17</strong>: supera 10, ele sobe, e com 7 acima do alvo ganha uma <strong>Margem</strong>: sobe mais rápido, ou alcança um peitoril mais alto.</div>
 
 ## Margem: graus de sucesso
 
@@ -86,11 +86,11 @@ Passar raspando é diferente de passar com sobra. A cada **6 pontos** que seu to
 
 Quando alguém se opõe a você, em geral apenas o lado *ativo* rola, contra um **Valor Passivo** do outro.
 
-<p class="formula">Valor Passivo = (Atributo + Habilidade) × 2 + 2 × mín(Centelha, Habilidade) + Especialidade (só quando o escopo dela se aplica, somada no momento do uso) (+ modificadores)</p>
+<p class="formula">Valor Passivo = (Atributo + Habilidade) × 2 + maior(Centelha, 2 × mín(Centelha, Habilidade)) + Especialidade (só quando o escopo dela se aplica, somada no momento do uso) (+ modificadores)</p>
 
-<p class="muted">A <strong>Especialidade</strong> vale **+1 por nível** aqui, num valor fixo; numa jogada com dado, ela rende **+1d6 por nível, descartando o menor** do pool. Só entra quando o escopo nomeado dela se aplica. A <strong>[Centelha](/regras/centelha)</strong> soma **2 × o menor entre ela e a Habilidade** em toda jogada e Defesa; numa rolagem de dano, soma a Centelha inteira.</p>
+<p class="muted">A <strong>Especialidade</strong> vale **+1 por nível** aqui, num valor fixo; numa jogada com dado, ela rende **+1d6 por nível, descartando o menor** do pool. Só entra quando o escopo nomeado dela se aplica. A <strong>[Centelha](/regras/centelha)</strong> soma **o maior entre ela mesma e 2 × o menor entre ela e a Habilidade** em toda jogada e Defesa (com Habilidade 0, a Centelha inteira); numa rolagem de dano, soma a Centelha inteira.</p>
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Um ladrão se esgueira (rola Destreza + Furtividade) contra a <strong>Percepção Passiva</strong> do guarda, igual a (Percepção + Prontidão) × 2 + 2 × mín(Centelha, Prontidão) + Especialidade (só quando o escopo dela se aplica, somada no momento do uso): para um guarda comum, sem Centelha nem Especialidade, isso é só (Percepção + Prontidão) × 2. O guarda não rola: sua vigilância é um muro a ser superado.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Um ladrão se esgueira (rola Destreza + Furtividade) contra a <strong>Percepção Passiva</strong> do guarda, igual a (Percepção + Prontidão) × 2 + maior(Centelha, 2 × mín(Centelha, Prontidão)) + Especialidade (só quando o escopo dela se aplica, somada no momento do uso): para um guarda comum, sem Centelha nem Especialidade, isso é só (Percepção + Prontidão) × 2. O guarda não rola: sua vigilância é um muro a ser superado.</div>
 
 Quando os dois agem de fato (uma queda de braço, uma corrida), ambos rolam e o maior total vence; empates favorecem quem defende ou mantém o *status quo*.
 

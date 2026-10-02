@@ -36,7 +36,7 @@ const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^
 const saida = path.join(os.tmpdir(), `cost-examples-${process.pid}.mjs`);
 await build({
   stdin: {
-    contents: "export { custoPontos, custoArte, custoEspecialidade } from './src/lib/calc';",
+    contents: "export { custoPontos, custoArte, custoEspecialidade, defesa, defesaMental, defesaSocial } from './src/lib/calc';",
     resolveDir: ROOT,
     loader: 'ts',
   },
@@ -82,8 +82,8 @@ const EXEMPLOS = {
     centelha: 3,
     artes: [], artesPub: null,
     tecnicasPub: 450,
-    derivadosPub: { pv: 37, defM: 13, defS: 7, energia: 14, mana: 13 },
-    integridade: 0, raciocinio: 3, compostura: 2, sociabilidade: 0,
+    derivadosPub: { pv: 37, defesa: 20, defM: 13, defS: 7, energia: 14, mana: 13 },
+    integridade: 0, raciocinio: 3, compostura: 2, sociabilidade: 0, esquiva: 3,
   },
   'Sora, a Capitã': {
     orcamento: r.veterano, totalPub: 1643,
@@ -98,8 +98,8 @@ const EXEMPLOS = {
     centelha: 3,
     artes: [], artesPub: null,
     tecnicasPub: 590,
-    derivadosPub: { pv: 37, defM: 17, defS: 15, energia: 15, mana: 14 },
-    integridade: 3, raciocinio: 3, compostura: 3, sociabilidade: 3,
+    derivadosPub: { pv: 37, defesa: 24, defM: 20, defS: 18, energia: 15, mana: 14 },
+    integridade: 3, raciocinio: 3, compostura: 3, sociabilidade: 3, esquiva: 3,
   },
   'Veil, o Feiticeiro-guerreiro': {
     orcamento: r.especialista, totalPub: 2104,
@@ -114,12 +114,12 @@ const EXEMPLOS = {
     centelha: 4,
     artes: [4, 4, 3, 3, 3, 3], artesPub: 420,
     tecnicasPub: 615,
-    derivadosPub: { pv: 37, defM: 18, defS: 16, energia: 17, mana: 16 },
+    derivadosPub: { pv: 37, defesa: 20, defM: 20, defS: 18, energia: 17, mana: 16 },
     // A ficha do Veil lista só quatro das oito Habilidades de nível 3 e fecha
     // com reticências, então a Sociabilidade dele NÃO ESTÁ PUBLICADA. Sem ela a
     // Defesa Social não é conferível, e deduzi-la do número publicado seria o
     // conferidor confirmando a si mesmo.
-    integridade: 3, raciocinio: 3, compostura: 3, sociabilidade: null,
+    integridade: 3, raciocinio: 3, compostura: 3, sociabilidade: null, esquiva: 3,
   },
   'Bram, o Erudito-tocado': {
     orcamento: r.veterano, totalPub: 1868,
@@ -140,8 +140,8 @@ const EXEMPLOS = {
     // oito Artes) passou a 745, que é o que esta linha calcula.
     artes: [5, 5, 5, 5, 5, 3, 3], artesPub: 745,
     tecnicasPub: 120,
-    derivadosPub: { pv: 34, defM: 13, defS: 9, energia: 10, mana: 11 },
-    integridade: 0, raciocinio: 3, compostura: 2, sociabilidade: 2,
+    derivadosPub: { pv: 34, defesa: 14, defM: 13, defS: 10, energia: 10, mana: 11 },
+    integridade: 0, raciocinio: 3, compostura: 2, sociabilidade: 2, esquiva: 3,
   },
 };
 
@@ -196,26 +196,26 @@ for (const [nome, e] of Object.entries(EXEMPLOS)) {
   const fechaPub = totalPub != null ? `${totalPub} publicado, dos quais ${e.tecnicasPub} são Técnicas` : '';
   console.log(`  TOTAL conferível ${String(conferivel).padStart(5)}  +  Técnicas ${e.tecnicasPub}  =  ${conferivel + e.tecnicasPub}   (${fechaPub})`);
 
-  // Os derivados saem das mesmas fórmulas de `regras.json` que a ficha usa.
+  // Os derivados saem das MESMAS funções de `calc.ts` que a ficha usa (desde a correção da
+  // Reforma, 02/10/2026: antes este trecho somava a Centelha flat, pelo `centelhaMult`, e
+  // conferia os quatro exemplos pela regra de antes da Reforma). A Defesa física entrou na
+  // conferência com a Esquiva que o capítulo lista (3 nos quatro).
   const a = e.atributos;
   const pv = D.pv.base + (a.vigor || 0) * D.pv.vigorMult;
-  const defM = e.integridade * D.defesaMental.mult
-    + (D.defesaMental.maisRaciocinio ? (a.raciocinio || 0) : 0)
-    + (D.defesaMental.maisVontade ? e.vontade : 0)
-    + (D.defesaMental.maisCentelha ? e.centelha * (D.defesaMental.centelhaMult ?? 1) : 0);
+  const defF = C.defesa({ destreza: a.destreza || 0, habilidade: e.esquiva, centelha: e.centelha });
+  const defM = C.defesaMental({ raciocinio: a.raciocinio || 0, integridade: e.integridade, vontade: e.vontade, centelha: e.centelha });
   const defS = e.sociabilidade == null ? null
-    : ((a.compostura || 0) + e.sociabilidade) * D.defesaSocial.mult
-      + e.centelha * (D.defesaSocial.centelhaMult ?? 1);
+    : C.defesaSocial({ compostura: a.compostura || 0, sociabilidade: e.sociabilidade, centelha: e.centelha });
   const energia = Math.floor(((a.vigor || 0) + (a.compostura || 0) + (a.raciocinio || 0) + e.vontade) / D.energia.divisor)
     + e.centelha * D.energia.centelhaMult;
   const mana = e.centelha * D.mana.centelhaMult + e.vontade;
   const p = e.derivadosPub;
   const cmp = (v, pub) => (v == null ? `? (publica ${pub}, sem dado para conferir)` : v === pub ? `${v}` : `${v} (publica ${pub})`);
-  const fora = [pv !== p.pv, defM !== p.defM, defS != null && defS !== p.defS,
+  const fora = [pv !== p.pv, defF !== p.defesa, defM !== p.defM, defS != null && defS !== p.defS,
     energia !== p.energia, mana !== p.mana].filter(Boolean).length;
   DIVERGENCIAS += fora;
   if (defS == null) NAO_CONFERIVEL.push(`${nome}: Defesa Social (a ficha não publica a Sociabilidade)`);
-  console.log(`  Derivados: PV ${cmp(pv, p.pv)} · Def.Mental ${cmp(defM, p.defM)}`
+  console.log(`  Derivados: PV ${cmp(pv, p.pv)} · Defesa ${cmp(defF, p.defesa)} · Def.Mental ${cmp(defM, p.defM)}`
     + ` · Def.Social ${cmp(defS, p.defS)} · Energia ${cmp(energia, p.energia)} · Mana ${cmp(mana, p.mana)}`);
 }
 

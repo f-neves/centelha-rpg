@@ -92,3 +92,100 @@ o `monsters.json` e o `monsters-mesa.json` a partir do `inimigos.json`). Nada à
 
 **Produção:** as Defesas de quem tem Habilidade menor que metade da Centelha sobem na ficha e no
 bestiário (Kael 20/10/4 para 20/13/7). Sem migração.
+
+**Commit do item 1:** `4aaf0fce`.
+
+## Item 2 · Os capítulos, o glossário e os textos da ficha
+
+Toda fórmula que dizia "+ Centelha" (a de antes da Reforma) ou "2 × mín(Centelha, Habilidade)" passou
+à regra do maior, escrita como `maior(Centelha, 2 × mín(Centelha, Habilidade))` (ou `menor`, onde o
+capítulo já usava `menor`).
+
+**A lista do despacho, feita:**
+- `centelha.md:44`: o item 1 inteiro. A regra do maior dita em uma frase, com a Habilidade 0
+  nomeada ("uma jogada só de Atributo: Vontade pura, Resistir sem Habilidade, alguns testes de
+  Bravura") e o "quem treinou nunca recebe menos do que quem não treinou". A exceção do fim do
+  parágrafo ("só Atributo [...] é a mesma exceção") saiu, porque deixou de ser exceção. O dano segue
+  como estava. `:65`: "por cima do bônus de Centelha que já pesa [...] (o maior entre +1 por ponto e
+  2 por ponto até o teto da Habilidade usada)".
+- `coracao-do-sistema.md:89`, `:91`, `:93`: a fórmula do Valor Passivo, a frase da Centelha e a
+  Percepção Passiva do guarda. O guarda comum (Centelha 0) continua dando (Percepção + Prontidão) × 2.
+- `coracao-do-sistema.md:79` (o muro de Kael), **só a conta da Centelha**: 3d6 + 6 (Centelha 3,
+  Atletismo 3); 11 nos dados dá 17, 7 acima de 10, então **uma Margem**, e a frase da Margem passou a
+  dizer o que ele ganha. A Dificuldade 10 contra a tabela de Escalar não foi tocada.
+- `acoes-e-sistema.md:65` e `:121`. O `:123` (por que a Especialidade fica fora do valor parado)
+  não fala da Centelha e não mudou.
+- `defesas.md:68-81`: as quatro fórmulas e a frase da Mental ("mais o bônus de Centelha, que aqui
+  se mede pela Integridade"; antes, "limitada pela"). `:85`, Kael: Esquiva 20, Social **7**, Mental
+  **13** (antes 4 e 10). `:122-126`: a folha de referência.
+- `combate.md:124` e `:131`; o exemplo de `:21`, Sora: o pool passa a **5d6+9**.
+- `criacao-de-personagem.md:73-75` e os quatro exemplos, recalculados por `calc.ts`:
+
+| exemplo | Defesa | Def. Mental | Def. Social |
+|---|---|---|---|
+| Kael (C3, Esquiva 3, Integridade 0, Sociabilidade 0) | 17 para **20** | 13 | 7 |
+| Sora (C3, Esquiva 3, Integridade 3, Sociabilidade 3) | 21 para **24** | 17 para **20** | 15 para **18** |
+| Veil (C4, Esquiva 3, Integridade 3, Sociabilidade **não publicada**) | 18 para **20** | 18 para **20** | 16 para **18**, **pendente** |
+| Bram (C1, Esquiva 3, Integridade 0, Sociabilidade 2) | 13 para **14** | 13 | 9 para **10** |
+
+  **Veil, pendente:** a ficha dele lista só quatro das oito Habilidades de nível 3 e não nomeia a
+  Sociabilidade. O 16 de hoje, pela fórmula antiga ((3 + S) × 2 + 4), implica Sociabilidade 3, e com
+  ela a regra do maior dá 18. Ficou 18, marcado aqui como pendente até a ficha nomear a Sociabilidade.
+  Não inventei a Habilidade na ficha.
+  O Kael e o Bram já davam 13 e 7 na Mental e na Social pela conta flat de antes, e a regra do
+  maior dá o mesmo (Habilidade 0, Centelha inteira). O Kael tinha **Defesa 17 aqui e 20 em
+  `defesas.md:85`**: os dois capítulos já se contradiziam, e agora os dois dizem 20.
+- `aparencia-virtudes-vontade.md:129` e `:131`.
+- `acoes-sentidos-e-engano.md:16` (Percepção Passiva).
+- `qual-sistema.md:87-88` e o SVG gerado, pelo `gen-mermaid.mjs` (`diagramas.json`; `--check` verde).
+- `glossario.json:93`, `:101`, `:109`, `:223`.
+- `ficha-engine.ts:1570-1573`: a explicação das quatro Defesas escreve o bônus de Centelha que a
+  conta usou, como `Centelha 3 (maior entre 3 e 2×mín(3, 0))`, e a conta da linha fecha. O número
+  não muda. **Produção:** muda só o texto da explicação.
+- `quase-acerto.md:28`: Sora com Centelha 3, raspão **2** (placa) e **6** (couro). `regras.json:1133`:
+  a string do dano do raspão ganha os dois termos ("+ Centelha do atacante − Centelha do alvo").
+- `combate-resumo.ts:80` (comentário; "Perícia" virou "Habilidade", porque a linha foi reescrita).
+- `scripts/test-sentidos.mjs:66`: a fórmula da passiva passa à regra do maior. **A asserção de
+  `:74` compara a função com ela mesma**: `passiva(p, pr, c)` contra a mesma expressão escrita de
+  novo, então ela não pega uma fórmula errada, só uma função que deixou de devolver número. Quem
+  prova a Prontidão é a gêmea logo abaixo (`mexem`). Registrado, sem mudar o teste.
+- `Regua_Relacao.md:120` (a Defesa Social).
+
+**Achados da varredura, fora da lista, que mudei porque diziam a mesma regra:**
+- `combate.md:135`: o parágrafo da Centelha ("2 pontos por ponto [...] até o teto da Habilidade").
+- `defesas.md:62`: o parágrafo de abertura da Centelha nas Defesas, com o mesmo texto.
+- `calc.ts:384`: o comentário da `valorPassivo`.
+- `combate-resumo.ts:156`: o comentário da Defesa física.
+- `scripts/cost-examples.mjs` (o conferidor dos quatro exemplos, que não é portão): somava a Centelha
+  flat pelo `centelhaMult`. Agora chama `defesa`, `defesaMental` e `defesaSocial` de `calc.ts`. Ganhou
+  a Defesa física, com a Esquiva 3 que o capítulo lista, e os números publicados novos. Rodado: os
+  derivados dos quatro batem. As 5 divergências que ele aponta são as linhas de XP de antes (o
+  C-12 do Bram); nenhuma é derivado.
+
+**Vistos e deixados como estão:**
+- `racas.md:169`: "Força de Vontade do orc × 2 + Centelha dele" é jogada só de Atributo. A regra do
+  maior com Habilidade 0 dá a Centelha inteira, o mesmo número.
+- O dano, a Absorção natural, o raspão, Energia, Mana e os saltos somam a Centelha inteira por regra
+  própria (`combate.md:177`, `:193`, `:350-351`, `glossario.json:52`, `ficha-engine.ts:1569/1577/1597-1599`,
+  `mesa/referencia.astro:262`). Não mudam.
+- `relacoes-sociais.md:138`, `:182`, `:274`, `:276`, `regras.json:2683` e `Regua_Relacao.md:119` (o
+  ataque social): são do item 3.
+
+**Registrado, sem consertar:**
+- **Sora em `combate.md:21`:** com o pool 5d6+9, o "ela rola e soma 16" quer dizer 7 nos cinco dados
+  (o mínimo é 5). É possível, mas improvável. Com o 5d6+6 de antes eram 10 nos dados. Não troquei o
+  16, porque o despacho só pede o pool, e o resto da conta (diferença 6, uma Margem) depende dele.
+- `centelha.md:44`: o "Resistir sem perícia" da frase velha virou "Resistir sem Habilidade", porque
+  a frase foi reescrita. É o vocabulário da regra, e não o conserto de outro achado.
+
+**Verificação** (sobre `4aaf0fce`): `npm run validate` verde ("Portões OK", com `gen-mermaid --check` e
+`test-sentidos`); `npx astro sync && npx tsc --noEmit` sem erro; `npm run build` verde. No HTML gerado,
+contado no texto sem marcação: `centelha` traz "pela regra do maior", "Com Habilidade 0" e "do bônus
+de Centelha que já pesa" (1 cada); `coracao-do-sistema` traz "total 17" e as duas fórmulas novas;
+`acoes-e-sistema` traz a fórmula nova 2 vezes; `defesas` traz "= 7 (com Sociabilidade zero", "= 13 ,
+pelo mesmo motivo" e "regra do maior" (3); `combate` traz "5d6+9" e as duas fórmulas; `criacao-de-personagem`
+traz as quatro linhas de derivados novas (1 cada); `aparencia-virtudes-vontade`, `acoes-sentidos-e-engano`
+e `quase-acerto` ("Sora (Centelha 3)", "4 − 1 + 3 − 0 = 6") também. O SVG de `qual-sistema` traz
+"maior(Centelha" 2 vezes. O `dist/ref-index.json` (glossário) traz a fórmula nova 8 vezes, e o bundle
+da ficha traz a explicação nova. Nenhuma página de `dist/regras/` sobra com "2 × menor(Centelha,
+Habilidade)", "nunca mais do que a Habilidade" ou "Centelha 2) ataca" fora de um `maior(`.

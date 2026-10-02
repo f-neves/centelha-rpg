@@ -380,9 +380,9 @@ export const custoEspecialidade = (nivel: number, secundaria = false) =>
   custoPontos(secundaria ? 'especialidadeSecundaria' : 'especialidadePrimaria', undefined, nivel);
 
 /**
- * O VALOR PASSIVO, pela fórmula do `coracao-do-sistema.md:89` (Reforma da
- * Centelha, 28/09/2026): `(Atributo + Habilidade) × 2 + 2×mín(Centelha,
- * Habilidade) + Especialidade`.
+ * O VALOR PASSIVO, pela fórmula do `coracao-do-sistema.md:89` (regra do maior,
+ * correção da Reforma da Centelha, 02/10/2026): `(Atributo + Habilidade) × 2 +
+ * maior(Centelha, 2×mín(Centelha, Habilidade)) + Especialidade`.
  *
  * Ele é a Dificuldade de quem se opõe sem rolar. O caso que o trouxe para cá é a
  * Percepção Passiva do alvo contra a Furtividade de quem ataca do escuro, mas a

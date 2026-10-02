@@ -63,7 +63,9 @@ ok(semProntidao.length === 0,
 // Então são duas: a Passiva bate com a fórmula (a positiva) E ela é DIFERENTE da
 // que sairia sem a Prontidão, em quantidade de criaturas que não dá para
 // confundir com acaso (a gêmea). Zerar a Prontidão na fonte derruba a segunda.
-const passiva = (p, pr, c = 0) => (p == null || pr == null ? null : (p + pr) * 2 + c);
+// a regra do maior (correção da Reforma, 02/10/2026): maior(Centelha, 2 × mín(Centelha, Prontidão))
+const bonusC = (c, pr) => Math.max(c, 2 * Math.min(c, pr));
+const passiva = (p, pr, c = 0) => (p == null || pr == null ? null : (p + pr) * 2 + bonusC(c, pr));
 let batem = 0;
 let mexem = 0;
 for (const m of MESA) {
@@ -71,7 +73,7 @@ for (const m of MESA) {
   const pr = m.pericias?.prontidao;
   const c = m.centelha || 0;
   const v = passiva(p, pr, c);
-  if (v === (p + pr) * 2 + c) batem += 1;
+  if (v === (p + pr) * 2 + bonusC(c, pr)) batem += 1;
   if (v !== passiva(p, 0, c)) mexem += 1;
 }
 ok(batem === MESA.length, `a Passiva sai da fórmula em todas (${batem} de ${MESA.length})`);

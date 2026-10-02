@@ -77,7 +77,7 @@ export function resumoCombatePC(S: any): ResumoCombate {
   const armorPen = armSt.penalidade || 0;
   const penFisica = armorPen + escPen;
 
-  // Ataque: [(Atrib + Perícia) / 2]d6 (+2 se ímpar) + acerto da arma + Centelha − armadura
+  // Ataque: [(Atrib + Habilidade) / 2]d6 (+2 se ímpar) + acerto da arma + maior(Centelha, 2×mín(Centelha, Habilidade)) − armadura
   // Atributo do acerto por perícia: tiro = Percepção; arremesso = Destreza; corpo a corpo = maior(Destreza, Força).
   const atribAcerto = w.pericia === 'atirador' ? (attrs.percepcao || 0)
     : w.pericia === 'arremesso' ? (attrs.destreza || 0)
@@ -153,7 +153,7 @@ export function resumoCombatePC(S: any): ResumoCombate {
   // aplica", e não como "Nível zero" (que resvalaria em qualquer armadura).
   const perfArma = principal?.tipo === 'perfurante' ? (principal.perf ?? 0) : null;
 
-  // Defesa física passiva = Esquiva: (Destreza + Esquiva)×2 + 2×mín(Centelha,Esquiva) − penalidade física
+  // Defesa física passiva = Esquiva: (Destreza + Esquiva)×2 + maior(Centelha, 2×mín(Centelha,Esquiva)) − penalidade física
   const def = defesa({ destreza: attrs.destreza || 0, habilidade: skills.esquiva || 0, centelha: C }) - penFisica;
 
   // Defesa Mental. A criatura sempre trouxe a dela no bloco do bestiário; o PC

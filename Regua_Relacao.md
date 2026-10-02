@@ -117,7 +117,7 @@ Uma conversa que tenta mover alguém usa a **fórmula do Combate Social** (Ataqu
 Defesa Social, ver `Combate_Social.md` §4 e §5):
 
 > **Ataque Social** = [(Influência + Perícia) ÷ 2]d6 (+2 se ímpar) + Peso do argumento + Centelha
-> **Defesa Social** = (Compostura + Sociabilidade) × 2 + Centelha + Especialidade
+> **Defesa Social** = (Compostura + Sociabilidade) × 2 + maior(Centelha, 2 × mín(Centelha, Sociabilidade)) + Especialidade
 
 - **A régua sobe +1 passo a cada 6 de folga** (`[(Ataque − Defesa) ÷ 6]`). Um **sucesso raso**
   (folga 0 a 5) rende o **favor momentâneo daquela cena**, mas **não move a régua**: subir o

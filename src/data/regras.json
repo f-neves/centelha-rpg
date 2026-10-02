@@ -1130,7 +1130,7 @@
   },
   "quaseAcerto": {
     "margem": "Bônus QA da arma + Bônus QA da armadura do alvo",
-    "dano": "Dano QA da arma − Redução QA da armadura do alvo (mínimo 0)",
+    "dano": "Dano QA da arma − Redução QA da armadura do alvo + Centelha do atacante − Centelha do alvo (mínimo 0)",
     "ignoraSoak": true,
     "errouPor": "(Defesa + 1) − total. É quanto faltou para acertar, e não a diferença crua: a regra do acerto é `total > Defesa` e empate não passa, então quem tira exatamente a Defesa errou por 1.",
     "classePorDanoMedio": {

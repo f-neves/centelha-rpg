@@ -84,8 +84,8 @@ flowchart TD
 ```mermaid
 flowchart TD
   D(["Vão te acertar no corpo"]) --> D1{"Como você se protege deste golpe?"}
-  D1 -->|"Desviando com corpo e reflexo"| DE["Esquiva = (Destreza + Esquiva) x2 + Centelha + Esp."]
-  D1 -->|"Aparando com arma ou escudo"| DB["Bloqueio = (Destreza + Bloqueio) x2 + Centelha + Esp. + defesa da arma/escudo"]
+  D1 -->|"Desviando com corpo e reflexo"| DE["Esquiva = (Destreza + Esquiva) x2 + maior(Centelha, 2 x mín(Centelha, Esquiva)) + Esp."]
+  D1 -->|"Aparando com arma ou escudo"| DB["Bloqueio = (Destreza + Bloqueio) x2 + maior(Centelha, 2 x mín(Centelha, Bloqueio)) + Esp. + defesa da arma/escudo"]
   DE --> N["Você usa a maior das duas; a ficha mostra ambas"]
   DB --> N
 ```

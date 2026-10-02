@@ -70,9 +70,9 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 | Traço | Fórmula |
 |---|---|
 | Pontos de Vida | 25 + (Vigor × 3) |
-| Defesa | (Destreza + Habilidade) × 2 + Especialidade + Centelha |
-| Defesa Mental | Integridade + Raciocínio + Vontade + Centelha + Especialidade |
-| Defesa Social | (Compostura + Sociabilidade) × 2 + Especialidade + Centelha |
+| Defesa | (Destreza + Habilidade) × 2 + Especialidade + maior(Centelha, 2 × mín(Centelha, Habilidade)) |
+| Defesa Mental | Integridade + Raciocínio + Vontade + maior(Centelha, 2 × mín(Centelha, Integridade)) + Especialidade |
+| Defesa Social | (Compostura + Sociabilidade) × 2 + Especialidade + maior(Centelha, 2 × mín(Centelha, Sociabilidade)) |
 | Energia | (Vigor + Compostura + Raciocínio + Vontade) ÷ 2 [arredonda p/ baixo] + Centelha × 2 |
 | Mana | (Centelha × 2) + Força de Vontade |
 | Iniciativa | 1d6 + Raciocínio + Prontidão |
@@ -103,7 +103,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Técnicas | 29, de Olho de Águia, Sombra e Vento (níveis 1 a 3, já com o [Desperto](/regras/centelha), o degrau 2 da Centelha) | 450 |
 | **Total** | | **1230** |
 
-<p class="muted">Derivados: PV 37 · Defesa 17 · Def. Mental 13 · Def. Social 7 · Energia 14 · Mana 13 · Iniciativa 1d6+6. Fecha no orçamento. Mira firme à distância e some na sombra entre os tiros; guarda social baixa, porque não é o forte dele.</p>
+<p class="muted">Derivados: PV 37 · Defesa 20 · Def. Mental 13 · Def. Social 7 · Energia 14 · Mana 13 · Iniciativa 1d6+6. Fecha no orçamento. Mira firme à distância e some na sombra entre os tiros; guarda social baixa, porque não é o forte dele.</p>
 
 ### Sora, a Capitã · Veterana (Centelha 3)
 
@@ -121,7 +121,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Técnicas | 35, de Comando, Pele de Pedra e Dança da Lâmina (níveis 1 a 3) | 590 |
 | **Total** | | **1643** |
 
-<p class="muted">Derivados: PV 37 · Defesa 21 · Def. Mental 17 · Def. Social 15 · Energia 15 · Mana 14 · Iniciativa 1d6+6. Fecha no orçamento. Uma líder de tropa que combina posturas defensivas, golpes precisos e uma guarda social sólida.</p>
+<p class="muted">Derivados: PV 37 · Defesa 24 · Def. Mental 20 · Def. Social 18 · Energia 15 · Mana 14 · Iniciativa 1d6+6. Fecha no orçamento. Uma líder de tropa que combina posturas defensivas, golpes precisos e uma guarda social sólida.</p>
 
 ### Veil, o Feiticeiro-guerreiro · Especialista (Centelha 4)
 
@@ -142,7 +142,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Técnicas | 34, de Mente Afiada, Reflexo Mental e Punho de Ferro (níveis 1 a 4) | 615 |
 | **Total** | | **2104** |
 
-<p class="muted">Derivados: PV 37 · Defesa 18 · Def. Mental 18 · Def. Social 16 · Energia 17 · Mana 16 · Iniciativa 1d6+6. Fecha no orçamento. Tece Feitiço e lâmina no mesmo lance; com o XP investido poderia ter mergulhado numa Arte de nível 5, mas preferiu largura a profundidade.</p>
+<p class="muted">Derivados: PV 37 · Defesa 20 · Def. Mental 20 · Def. Social 18 · Energia 17 · Mana 16 · Iniciativa 1d6+6. Fecha no orçamento. Tece Feitiço e lâmina no mesmo lance; com o XP investido poderia ter mergulhado numa Arte de nível 5, mas preferiu largura a profundidade.</p>
 
 ## O mortal-tocado: magia como estudo, não como tier
 
@@ -169,4 +169,4 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 
 <p class="muted">O total deste exemplo ainda não se confere, e o dos outros três também não: a linha de Técnicas de Kael, Sora, Veil e Bram dá a contagem e as Proezas, e não a lista, então o preço delas não sai do catálogo.</p>
 
-<p class="muted">Derivados: PV 34 · Defesa 13 · Def. Mental 13 · Def. Social 9 · Energia 10 · <strong>Mana 11</strong> · Iniciativa 1d6+6. Fecha no orçamento. Repare no preço da fagulha mínima: com Centelha 1, sua <strong>Mana é só 11</strong>: ele conhece magia tão funda quanto Veil, mas o tanque o obriga a poucos Feitiços por cena. Largura de conhecimento, estreiteza de combustível: o feiticeiro de torre, não o de campo.</p>
+<p class="muted">Derivados: PV 34 · Defesa 14 · Def. Mental 13 · Def. Social 10 · Energia 10 · <strong>Mana 11</strong> · Iniciativa 1d6+6. Fecha no orçamento. Repare no preço da fagulha mínima: com Centelha 1, sua <strong>Mana é só 11</strong>: ele conhece magia tão funda quanto Veil, mas o tanque o obriga a poucos Feitiços por cena. Largura de conhecimento, estreiteza de combustível: o feiticeiro de torre, não o de campo.</p>
