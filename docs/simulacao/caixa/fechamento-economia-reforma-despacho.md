@@ -289,6 +289,24 @@ O 2e já está no main, então isto é **commit novo (2f)**.
    testes de Prejuízo e Capacidade só limitam a bolsa, e bolsa mais partes não tem teto
    (Comerciante, 02/10).
 
+## Adendo 7 (autor, 02/10, achado do Comerciante, depois do 2f em `ed289426`): item 2g
+
+O 2f já está no main, então isto é **commit novo (2g)**. O achado: o grupo podia escolher um
+método mais lento para multiplicar Semanas.
+
+1. **Capítulo e calculadora**, verbatim:
+
+   > Semanas é a duração prevista no contrato, combinada antes do trabalho. Terminar antes ou
+   > depois não muda a bolsa: quem contrata paga pelo resultado, e não pelo tempo gasto.
+
+   No capítulo, junto do passo de Semanas (`custo-servicos.md:62`), que já diz "É estimativa de
+   contrato: se levar mais, azar de quem caça; se levar menos, sorte". Ajuste só o necessário para
+   as duas frases não se repetirem, sem regra nova.
+
+**Aviso, sem executar:** o autor aprovou generalizar a bolsa para qualquer trabalho pontual
+(caçar, capturar, escoltar, proteger um lugar, invadir, roubar, investigar, entregar), como guia
+para o Mestre e não como regra de mundo. A proposta com conta vem antes de qualquer despacho.
+
 ## Regras desta rodada
 
 - Um commit por item (1, 2, 3 se houver, 4), com pathspec, rebase antes e depois, `push origin
