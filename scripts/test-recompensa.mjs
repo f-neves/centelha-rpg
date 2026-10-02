@@ -6,7 +6,7 @@
 // da economia (02/10/2026) ela vale para qualquer trabalho pontual, como guia para o Mestre:
 // Bolsa = Valor por pessoa × Semanas × Tarefa × Risco × Pessoas (padrão 4), com o Valor por dois
 // caminhos, o confronto (tabela de desafio, 0 a 9, meio degrau pela média geométrica) e a perícia
-// (pela Dificuldade: Dif 5 = 10, 10 = 20, 15 = desafio 0, 20 = desafio 0,5; acima de 20, desafio =
+// (pela Dificuldade: Dif 5 = 13, 10 = 20, 15 = desafio 0, 20 = 65; acima de 20, desafio =
 // (Dif − 19) ÷ 2, para cima; entre degraus, interpolação geométrica); com os dois, vale o maior. Os oito exemplos são os do item 5, com a
 // bolsa pela régua (worgs 3.600 e torre 7.300, por decisão do autor). A conta por equivalentes
 // (Adendo 2) segue só como ajuda de estimar o desafio de um confronto, sem mexer em pagamento. Desde
@@ -44,16 +44,18 @@ ok(R.P.meios.length === TABELA.length - 1 && R.P.meios.every((m, i) => m.desafio
 ok(R.P.provisorio_desde === 4, 'os desafios 0 a 3 deixam de ser provisórios; do 4 em diante seguem provisórios (correção D)');
 
 console.log('\n· a tabela de perícia é a da correção A');
-const PERICIA = [[5, 5, null, 10], [10, 10, null, 20], [15, 15, 0, 40], [20, 20, 0.5, 60], [21, 21, 1, 95], [22, 23, 2, 270], [24, 25, 3, 910], [26, 27, 4, 3600], [28, 29, 5, 14500], [30, 31, 6, 57900], [32, 33, 7, 231700], [34, 35, 8, 926800], [36, 37, 9, 3707300]];
+const PERICIA = [[5, 5, null, 13], [10, 10, null, 20], [15, 15, 0, 40], [20, 20, null, 65], [21, 21, 1, 95], [22, 23, 2, 270], [24, 25, 3, 910], [26, 27, 4, 3600], [28, 29, 5, 14500], [30, 31, 6, 57900], [32, 33, 7, 231700], [34, 35, 8, 926800], [36, 37, 9, 3707300]];
 ok(R.P.pericia.length === PERICIA.length && PERICIA.every(([de, ate, d, v], i) => { const l = R.P.pericia[i]; return l.dif_de === de && l.dif_ate === ate && l.desafio === d && l.preco.pc === v; }),
-  'Dif 5 = 10; 10 = 20; 15 = desafio 0 (40); 20 = desafio 0,5 (60); 21 = 1 (95); 22-23 = 2; 24-25 = 3; 26-27 = 4; 28-29 = 5; 30-31 = 6; e a fórmula segue até 36-37 = 9');
+  'Dif 5 = 13; 10 = 20; 15 = desafio 0 (40); 20 = 65 (sem desafio, item 5b); 21 = 1 (95); 22-23 = 2; 24-25 = 3; 26-27 = 4; 28-29 = 5; 30-31 = 6; e a fórmula segue até 36-37 = 9');
 ok(R.P.pericia.filter((l) => l.dif_de > 20).every((l) => [l.dif_de, l.dif_ate].every((d) => Math.ceil((d - 19) / 2) === l.desafio)),
   'acima de 20, cada faixa é desafio = (Dif − 19) ÷ 2, para cima');
 const vp = (d) => R.valorDaPericia(d, R.P);
 const geo = (a, b, t) => R.arred(a * (b / a) ** t, R.P.arredondamento);
-ok(vp(12).pc === geo(20, 40, 2 / 5) && vp(12).pc === 25 && vp(17).pc === geo(40, 60, 2 / 5) && vp(17).pc === 45 && vp(7).pc === geo(10, 20, 2 / 5) && vp(7).como === 'entre',
+ok(vp(12).pc === geo(20, 40, 2 / 5) && vp(12).pc === 25 && vp(17).pc === geo(40, 65, 2 / 5) && vp(17).pc === 50 && vp(7).pc === geo(13, 20, 2 / 5) && vp(7).pc === 15 && vp(7).como === 'entre',
   `entre degraus, interpolação geométrica pela régua: Dif 7 = ${vp(7).pc}, Dif 12 = ${vp(12).pc}, Dif 17 = ${vp(17).pc}`);
-ok(vp(2).pc === 10 && vp(0).pc === 10 && vp(2).como === 'piso', 'abaixo de Dif 5, paga 10 (o piso)');
+ok(vp(2).pc === 13 && vp(0).pc === 13 && vp(2).como === 'piso', 'abaixo de Dif 5, paga 13 (o piso)');
+ok([[5, 4], [10, 6], [20, 12]].every(([d, s]) => vp(d).pc === R.arred(({ 4: 7, 6: 12, 12: 35 })[s] * 1.8, R.P.arredondamento)) && vp(20).desafio === null,
+  'Dif 5, 10 e 20 = arred(Livre de Braçal 7, Oficial 12, Mestre 35 × 1,8) = 13, 20, 65; Dif 20 sem desafio (item 5b)');
 ok(vp(23).pc === 270 && vp(37).pc === 3707300 && (() => { try { vp(38); return false; } catch { return true; } })(), 'Dif 23 = 270 (faixa 22-23); 37 = desafio 9; 38 recusa, sem extrapolar');
 
 console.log('\n· os oito exemplos do item 5 (a bolsa pela régua)');
@@ -61,8 +63,8 @@ const base = { semanas: 1, viagemDias: 0, risco: 'normal', tom: 'padrao', outro:
 const conta = (e) => R.calcularRecompensa({ ...base, ...e }, R.P);
 const EXEMPLOS = [
   ['seguir em segredo quem não quer ser achado e descobrir onde mora', { dificuldade: 15, trabalho: 'investigar', tarefa: 'fato', pessoas: 1 }, 40, 40],
-  ['seguir um espião treinado, com prova', { dificuldade: 20, semanas: 2, trabalho: 'investigar', tarefa: 'prova', pessoas: 1 }, 180, 180],
-  ['roubar de um nobre sem que note', { dificuldade: 20, trabalho: 'roubar', tarefa: 'sem-notar', risco: 'alto', pessoas: 2 }, 360, 360],
+  ['seguir um espião treinado, com prova', { dificuldade: 20, semanas: 2, trabalho: 'investigar', tarefa: 'prova', pessoas: 1 }, 195, 200],
+  ['roubar de um nobre sem que note', { dificuldade: 20, trabalho: 'roubar', tarefa: 'sem-notar', risco: 'alto', pessoas: 2 }, 390, 390],
   ['entregar uma carta que ninguém pode saber que existe', { dificuldade: 15, semanas: 2, trabalho: 'entregar', tarefa: 'prazo-sigilo', pessoas: 1 }, 120, 120],
   ['recuperar uma criança levada por goblins', { desafio: 1, trabalho: 'recuperar', tarefa: 'trazer-de-volta', pessoas: 4 }, 380, 380],
   ['escoltar um mercador por estrada com bandidos', { desafio: 1, semanas: 2, trabalho: 'escoltar', tarefa: 'levar', pessoas: 4 }, 760, 760],

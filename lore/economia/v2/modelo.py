@@ -451,18 +451,20 @@ OUT["reparo_v2"] = {nome: {d: (reparo_v3(mo, pe, d), reparo_v3(mo, pe, d)) for d
 # Desde o item 5 (02/10/2026) a bolsa vale para qualquer trabalho pontual, como GUIA para o Mestre:
 # Bolsa = Valor por pessoa × Semanas × Tarefa × Risco × Pessoas (padrão 4). O Valor tem dois
 # caminhos: o confronto, pela tabela de desafio, e a perícia, pela Dificuldade dos testes decisivos
-# (correção A): Dif 5 = 10 pc; Dif 10 = 20 pc; Dif 15 = desafio 0; Dif 20 = desafio 0,5; acima de 20, desafio =
-# (Dif − 19) ÷ 2, para cima. Os desafios 0 a 3 vêm da escada de capacidade (correção D); do 4 em
-# diante a tabela é provisória até existir onde gastar (G73).
+# (correção A e item 5b): Dif 5, 10 e 20 = arred(Livre do ofício × 1,8); Dif 15 = desafio 0; acima
+# de 20, desafio = (Dif − 19) ÷ 2, para cima. Os desafios 0 a 3 da tabela de valor não são
+# provisórios (correção D); do 4 em diante a tabela é provisória até a G73.
 REC_DESAFIOS = [40, 95, 270, 910, 3600, 14500, 57900, 231700, 926800, 3707300]
 REC_MEIOS = [arred(math.sqrt(a * b)) for a, b in zip(REC_DESAFIOS, REC_DESAFIOS[1:])]
 REC_PROVISORIO_DESDE = 4
-# a perícia até Dif 20 é o Livre do ofício à altura × 1,8 (Braçal, Oficial, Perito, Mestre), com os
-# números do autor: o Dif 5 é 10 (o piso; abaixo de 5 paga 10), e não o arred(7 × 1,8) = 13; e o
-# Dif 20 fica no meio degrau 0,5 (60), e não no arred(35 × 1,8) = 65. Entre um degrau e outro a
-# calculadora interpola geometricamente, como o meio degrau, e arredonda pela régua (respostas do
-# autor às perguntas da Executora, 02/10/2026)
-REC_PERICIA_BAIXA = [(5, 5, None, 10), (10, 10, None, 20), (15, 15, 0, None), (20, 20, 0.5, None)]
+# a perícia até Dif 20 é o Livre do ofício à altura × 1,8, o mesmo prêmio de risco da caçada de
+# desafio 0 (40 ÷ 22), pela régua (item 5b, 02/10/2026): Dif 5 o Braçal (soma 4), Dif 10 o Oficial
+# (soma 6), Dif 20 o Mestre (soma 12). O Dif 15 (Perito, soma 9) é o desafio 0. O Dif 5 é o piso:
+# abaixo dele paga o mesmo. Entre um degrau e outro a calculadora interpola geometricamente, como o
+# meio degrau, e arredonda pela régua (respostas do autor às perguntas da Executora, 02/10/2026)
+REC_PREMIO_PERICIA = 1.8
+def rec_livre_x(soma): return arred(T_PERFIL[soma]["livre"] * REC_PREMIO_PERICIA)
+REC_PERICIA_BAIXA = [(5, 5, None, rec_livre_x(4)), (10, 10, None, rec_livre_x(6)), (15, 15, 0, None), (20, 20, None, rec_livre_x(12))]
 REC_PERICIA_ACIMA_DE, REC_PERICIA_MENOS, REC_PERICIA_DIVISOR = 20, 19, 2
 def rec_valor_desafio(d):
     return REC_DESAFIOS[int(d)] if d == int(d) else REC_MEIOS[int(d)]

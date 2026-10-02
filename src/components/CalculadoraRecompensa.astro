@@ -11,7 +11,7 @@ const DIF_MAX = REC.pericia.at(-1)!.dif_ate;
 const x = (n: number) => String(n).replace('.', ',');
 ---
 <div class="recompensa panel">
-  <p class="muted rc-aviso"><strong>Guia para o Mestre, e não regra de mundo.</strong> O Valor por pessoa sai do <strong>desafio do trabalho</strong> (o do pior confronto que o grupo precisa vencer), da <strong>Dificuldade</strong> dos testes decisivos, ou do maior dos dois. O desafio do trabalho é absoluto: é o da ameaça, medido contra o grupo de referência (4 personagens de Centelha igual ao desafio), e não muda conforme o grupo que aceita o trabalho. Um grupo veterano que pega uma matilha de worgs recebe o mesmo que um grupo novato receberia. Semanas é a duração prevista no contrato, combinada antes do trabalho. Terminar antes ou depois não muda a bolsa: quem contrata paga pelo resultado, e não pelo tempo gasto. A tabela de desafio vai do 0 ao {MAX}, em degraus inteiros e meios degraus entre eles, e é <strong>provisória do desafio {REC.provisorio_desde} em diante</strong>; a calculadora interpola as Dificuldades entre um degrau e outro.</p>
+  <p class="muted rc-aviso"><strong>Guia para o Mestre, e não regra de mundo.</strong> O Valor por pessoa sai do <strong>desafio do trabalho</strong> (o do pior confronto que o grupo precisa vencer), da <strong>Dificuldade</strong> dos testes decisivos, ou do maior dos dois. O desafio do trabalho é absoluto: é o da ameaça, medido contra o grupo de referência (4 personagens de Centelha igual ao desafio), e não muda conforme o grupo que aceita o trabalho. Um grupo veterano que pega uma matilha de worgs recebe o mesmo que um grupo novato receberia. Semanas é a duração prevista no contrato, combinada antes do trabalho. Terminar antes ou depois não muda a bolsa: quem contrata paga pelo resultado, e não pelo tempo gasto. A tabela de desafio vai do 0 ao {MAX}, em degraus inteiros e meios degraus entre eles, e a calculadora interpola as Dificuldades entre um degrau e outro. <strong>Os desafios 0 a {REC.provisorio_desde - 1} da tabela de valor não são provisórios: vêm da escada de capacidade, e não da bancada. Do desafio {REC.provisorio_desde} em diante a tabela é provisória até a G73. O desafio de cada criatura segue provisório até a B14.</strong></p>
   <div class="rc-campos">
     <label>Caminho
       <select data-rc="caminho">
@@ -165,7 +165,7 @@ const x = (n: number) => String(n).replace('.', ',');
         'A bolsa paga o trabalho cumprido. Cumprir parte do trabalho não paga parte, a não ser que o Mestre decida.',
         // TOLERÂNCIA: o recibo avisa o valor do topo da tabela, que vale até existir onde gastar.
         // LEVANTA QUANDO: a G73 decidir os preços do sobre-humano, e o autor confirmar ou trocar o topo da tabela.
-        ...(r.provisorio ? [`O valor do desafio ${des(r.desafioUsado!)} é provisório: do desafio ${REC.provisorio_desde} em diante, a tabela depende de existir onde gastar.`] : []),
+        ...(r.provisorio ? [`O valor do desafio ${des(r.desafioUsado!)} é provisório. Do desafio ${REC.provisorio_desde} em diante a tabela é provisória até a G73.`] : []),
         ...(r.desafioUsado != null && r.desafioUsado >= 5 ? ['A partir do desafio 5, a bolsa é paga em terra, título, direito ou favor, no valor da tabela.']
           : r.desafioUsado != null && r.desafioUsado > 3 ? ['Acima do desafio 3, o Mestre pode pagar parte em favor, acesso ou objeto.'] : []),
       ];

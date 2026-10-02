@@ -1,5 +1,5 @@
 {
-  "_nota": "Trabalhos e recompensas (guia para o Mestre, e não regra de mundo): Bolsa = Valor por pessoa × Semanas × Tarefa × Risco × Pessoas (`pessoas_padrao`). O Valor por pessoa, por semana, tem dois caminhos: o confronto, pela tabela de desafio (`desafios`, e o meio degrau pela média geométrica dos vizinhos em `meios`), e a perícia, pela Dificuldade dos testes decisivos (`pericia`: cada linha cobre de `dif_de` a `dif_ate`; acima de Dif 20, desafio = (Dif − 19) ÷ 2, para cima). Com os dois, vale o maior. A Tarefa vem por tipo de trabalho (`trabalhos`). Os desafios 0 a 3 vêm da escada de capacidade; do `provisorio_desde` em diante a tabela é provisória, e ela vai só até o desafio 9. `divisor_por_desafio` e `desafio_por_dobra` servem só à ajuda provisória de estimar o desafio de um confronto com várias criaturas, que não mexe em pagamento. A bolsa e a Parte por pessoa se arredondam pela régua em `arredondamento` (a mesma do `arred` de lore/economia/v2/base.py); a Parte por pessoa é a bolsa ÷ quem vai, para baixo, e a sobra o grupo divide como quiser. Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
+  "_nota": "Trabalhos e recompensas (guia para o Mestre, e não regra de mundo): Bolsa = Valor por pessoa × Semanas × Tarefa × Risco × Pessoas (`pessoas_padrao`). O Valor por pessoa, por semana, tem dois caminhos: o confronto, pela tabela de desafio (`desafios`, e o meio degrau pela média geométrica dos vizinhos em `meios`), e a perícia, pela Dificuldade dos testes decisivos (`pericia`: cada linha cobre de `dif_de` a `dif_ate`; acima de Dif 20, desafio = (Dif − 19) ÷ 2, para cima). Com os dois, vale o maior. A Tarefa vem por tipo de trabalho (`trabalhos`). Os desafios 0 a 3 da tabela de valor não são provisórios: vêm da escada de capacidade, e não da bancada. Do desafio 4 em diante a tabela é provisória até a G73. O desafio de cada criatura segue provisório até a B14. O 4 é o `provisorio_desde`. A tabela vai só até o desafio 9. `divisor_por_desafio` e `desafio_por_dobra` servem só à ajuda provisória de estimar o desafio de um confronto com várias criaturas, que não mexe em pagamento. A bolsa e a Parte por pessoa se arredondam pela régua em `arredondamento` (a mesma do `arred` de lore/economia/v2/base.py); a Parte por pessoa é a bolsa ÷ quem vai, para baixo, e a sobra o grupo divide como quiser. Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
   "desafios": [
     {
       "desafio": 0,
@@ -145,7 +145,7 @@
       "desafio": null,
       "por": "semana",
       "preco": {
-        "pc": 10
+        "pc": 13
       }
     },
     {
@@ -169,10 +169,10 @@
     {
       "dif_de": 20,
       "dif_ate": 20,
-      "desafio": 0.5,
+      "desafio": null,
       "por": "semana",
       "preco": {
-        "pc": 60
+        "pc": 65
       }
     },
     {

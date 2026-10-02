@@ -62,7 +62,7 @@ A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa
 
 <!-- /gen:economia-recompensas -->
 
-Os valores dos desafios 0 a 3 vêm da escada de capacidade. **Do desafio 4 em diante a tabela é provisória**: o topo depende de existir onde gastar tanto dinheiro, e isso ainda está por decidir. A tabela vai até o desafio 9: acima disso não há valor. O desafio de cada criatura também é provisório, até a bancada medir.
+Os desafios 0 a 3 da tabela de valor não são provisórios: vêm da escada de capacidade, e não da bancada. Do desafio 4 em diante a tabela é provisória até a G73. O desafio de cada criatura segue provisório até a B14. O topo da tabela depende de existir onde gastar tanto dinheiro. A tabela vai até o desafio 9: acima disso não há valor.
 
 **Trabalho de perícia** (investigar, roubar, invadir, entregar): pela Dificuldade dos testes decisivos (a de [De onde sai a Dificuldade](/regras/acoes-e-sistema#de-onde-sai-a-dificuldade)). Até Dificuldade 20 um mortal passa (Braçal, Oficial, Perito, Mestre de ofício), e o valor é o Livre do ofício à altura × 1,8, o mesmo prêmio de risco da caçada de desafio 0 (40 ÷ 22). Acima de 20 só a Centelha passa, e o valor é o da tabela de desafio: desafio = (Dificuldade − 19) ÷ 2, arredondado para cima (o especialista de soma 12 precisa de +1 de Centelha a cada 2 pontos de Dificuldade para passar com 55%).
 
@@ -72,14 +72,14 @@ Os valores dos desafios 0 a 3 vêm da escada de capacidade. **Do desafio 4 em di
 
 | Dificuldade | 5 | 10 | 15 | 20 | 21 | 22-23 | 24-25 | 26-27 | 28-29 | 30-31 |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Desafio | · | · | 0 | 0,5 | 1 | 2 | 3 | 4 | 5 | 6 |
-| Valor (pc) | 10 | 20 | 40 | 60 | 95 | 270 | 910 | 3.600 | 14.500 | 57.900 |
+| Desafio | · | · | 0 | · | 1 | 2 | 3 | 4 | 5 | 6 |
+| Valor (pc) | 13 | 20 | 40 | 65 | 95 | 270 | 910 | 3.600 | 14.500 | 57.900 |
 
 </div>
 
 <!-- /gen:economia-recompensas-pericia -->
 
-Abaixo de Dificuldade 5, paga 10. A fórmula continua acima de 31, até o desafio 9 (Dificuldade 36 e 37). Fora dos degraus, a calculadora interpola as Dificuldades entre um degrau e outro.
+Abaixo de Dificuldade 5, paga 13. A fórmula continua acima de 31, até o desafio 9 (Dificuldade 36 e 37). Fora dos degraus, a calculadora interpola as Dificuldades entre um degrau e outro.
 
 Os outros fatores da conta:
 
@@ -105,8 +105,8 @@ Os outros fatores da conta:
 **Exemplos de trabalho** (sem viagem, tom padrão; a bolsa sai arredondada):
 
 - **Seguir em segredo quem não quer ser achado e descobrir onde mora** (investigar, Dificuldade 15, 1 semana, descobrir um fato ×1, 1 pessoa): 40 × 1 × 1 × 1 × 1 = **40 pc**.
-- **Seguir um espião treinado sem ser notado e trazer prova do que ele faz** (investigar, Dificuldade 20, 2 semanas, com prova ×1,5, 1 pessoa): 60 × 2 × 1,5 × 1 × 1 = **180 pc**.
-- **Roubar de um nobre sem que ele note** (roubar, Dificuldade 20, 1 semana, sem que a falta seja notada ×2, risco alto ×1,5, 2 pessoas): 60 × 1 × 2 × 1,5 × 2 = **360 pc**.
+- **Seguir um espião treinado sem ser notado e trazer prova do que ele faz** (investigar, Dificuldade 20, 2 semanas, com prova ×1,5, 1 pessoa): 65 × 2 × 1,5 × 1 × 1 = 195, arredondada: **200 pc**.
+- **Roubar de um nobre sem que ele note** (roubar, Dificuldade 20, 1 semana, sem que a falta seja notada ×2, risco alto ×1,5, 2 pessoas): 65 × 1 × 2 × 1,5 × 2 = **390 pc**.
 - **Entregar uma carta que ninguém pode saber que existe** (entregar, Dificuldade 15, 2 semanas, sigilo ×1,5, 1 pessoa; é o sigilo que tira o trabalho do mensageiro comum): 40 × 2 × 1,5 × 1 × 1 = **120 pc**.
 - **Recuperar uma criança levada por goblins** (recuperar, desafio 1, 1 semana, ×1, 4 pessoas): 95 × 1 × 1 × 1 × 4 = **380 pc**.
 - **Escoltar um mercador por estrada com bandidos** (escoltar, desafio 1, 2 semanas, ×1, 4 pessoas): 95 × 2 × 1 × 1 × 4 = **760 pc**.

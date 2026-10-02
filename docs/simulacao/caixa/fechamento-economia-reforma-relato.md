@@ -725,3 +725,70 @@ exemplo verbatim, com "Por exemplo:" na frente: "consertar a ponte da aldeia iso
 qualquer carpinteiro: bolsa, e não Serviços". A primeira frase da correção B ficou como estava. Os
 rótulos dos exemplos de perícia continuam valendo com a frase nova (sigilo, alvo que se esconde,
 ilegal), e nenhum número mudou.
+
+**Commit da emenda B:** `03149413`.
+
+**CI do item 5:** `d2237ae2`, Validar
+[37048010428](https://github.com/f-neves/centelha-rpg/actions/runs/37048010428) 19 de 19 e Deploy
+[37048010789](https://github.com/f-neves/centelha-rpg/actions/runs/37048010789) 2 de 2; `03149413`,
+Validar [37048406249](https://github.com/f-neves/centelha-rpg/actions/runs/37048406249) 19 de 19 e
+Deploy [37048406143](https://github.com/f-neves/centelha-rpg/actions/runs/37048406143) 2 de 2. Todos
+na primeira volta.
+
+## Item 5b · Correção D com uma redação só, e Dif 5 e 20 pela régua (`5e192070`)
+
+### 1. Correção D com uma redação só nos três lugares
+
+O reforço do autor (os três lugares dizem a mesma coisa, do mesmo jeito) chegou depois do commit do
+item 5, e as três redações tinham ficado diferentes. Uma frase só, agora igual nos três:
+
+> Os desafios 0 a 3 da tabela de valor não são provisórios: vêm da escada de capacidade, e não da
+> bancada. Do desafio 4 em diante a tabela é provisória até a G73. O desafio de cada criatura segue
+> provisório até a B14.
+
+| lugar | antes (item 5, `d2237ae2`) | agora |
+|---|---|---|
+| capítulo (`custo-servicos.md`, "Trabalho de confronto") | "Os valores dos desafios 0 a 3 vêm da escada de capacidade. **Do desafio 4 em diante a tabela é provisória**: o topo depende de existir onde gastar tanto dinheiro, e isso ainda está por decidir. [...] O desafio de cada criatura também é provisório, até a bancada medir." | a frase, seguida de "O topo da tabela depende de existir onde gastar tanto dinheiro." (o motivo do item 7) e "A tabela vai até o desafio 9: acima disso não há valor." |
+| calculadora (aviso do topo) | "[a tabela] é **provisória do desafio 4 em diante**" | a frase, em negrito (os números 3 e 4 saem de `provisorio_desde`, e o texto renderizado é o mesmo); o recibo do topo diz "O valor do desafio N é provisório. Do desafio 4 em diante a tabela é provisória até a G73." |
+| `_nota` do `recompensas.json` (via `copiar-economia.mjs`, regerado) | "Os desafios 0 a 3 vêm da escada de capacidade; do `provisorio_desde` em diante a tabela é provisória, e ela vai só até o desafio 9." | a frase, seguida de "O 4 é o `provisorio_desde`. A tabela vai só até o desafio 9." |
+
+### 2. Dif 5 e Dif 20 pela régua
+
+Dif 5 = arred(7 × 1,8 = 12,6) = **13**, e Dif 20 = arred(35 × 1,8 = 63) = **65**, no lugar dos 10 e
+60 do pedido e da resposta 1. O modelo agora calcula os três degraus de mortal pela mesma conta,
+arred(Livre do perfil × 1,8), lendo o Livre da tabela de perfis (`T_PERFIL`: Braçal 7, Oficial 12,
+Mestre 35); o Dif 10 continua dando 20 (21,6 pela régua) e o Dif 15 continua sendo o desafio 0 (40).
+O Dif 20 **deixou de ser** o meio degrau 0,5: na tabela de perícia do capítulo a coluna 20 traz
+"·" em Desafio e 65 em Valor, e a calculadora não diz mais "desafio 0,5" para ele. O piso passou a
+13 ("Abaixo de Dificuldade 5, paga 13.").
+
+**As contas refeitas, à mão:**
+- Espião (Dif 20, 2 semanas, com prova ×1,5, 1 pessoa): 65 × 2 × 1,5 × 1 × 1 = 195. **Pela régua
+  (passo 10 entre 100 e 999, meio para cima), a bolsa é 200.** O despacho escreve 195, que é a
+  conta antes de arredondar; a régua é a decisão do autor do item 5 (worgs 3.600, torre 7.300), e
+  o capítulo mostra "= 195, arredondada: **200 pc**", como mostra nos worgs e na torre.
+- Nobre (Dif 20, 1 semana, ×2, risco alto ×1,5, 2 pessoas): 65 × 1 × 2 × 1,5 × 2 = **390** (já
+  múltiplo de 10).
+- Dif 7, entre 5 (13) e 10 (20), a 2/5: 13 × (20/13)^0,4; ln(20/13) = 0,4308, × 0,4 = 0,1723,
+  e^0,1723 = 1,1880, × 13 = 15,44; abaixo de 20 a régua é o inteiro: **15**.
+- Dif 12, entre 10 (20) e 15 (40), a 2/5: 20 × 2^0,4 = 20 × 1,3195 = 26,39; passo 5: **25**.
+- Dif 17, entre 15 (40) e 20 (65), a 2/5: 40 × 1,625^0,4; ln 1,625 = 0,4855, × 0,4 = 0,1942,
+  e^0,1942 = 1,2143, × 40 = 48,57; passo 5: **50**.
+
+O teste confere todos esses pela mesma fórmula (33 asserções), e também que Dif 5, 10 e 20 são
+arred(7, 12 e 35 × 1,8).
+
+**O que mais dependia de Dif 20 = 60:** só os dois exemplos de Dif 20 (espião e nobre), os casos
+interpolados vizinhos (Dif 16 a 19) e o piso. Procurado no capítulo, na calculadora, na lib, no
+modelo, no gerador e no teste: nada mais usava 60 nem "desafio 0,5" para a perícia. A torre (Dif
+25, desafio 3) e os exemplos de Dif 15 (40) não mudam. Fica registrado que a seção "Dois números do
+autor que a régua não dá", do item 5, foi substituída por esta.
+
+**Verificação** (sobre `5e192070`): `test-recompensa` 33 asserções verdes; `npm run validate`
+verde ("Portões OK"); `npx astro sync && npx tsc --noEmit` sem erro; `npm run build` verde. A frase
+da correção D, contada no texto sem marcação: 1 vez em `dist/regras/custo-servicos/index.html`, 1
+vez em `dist/recompensa/index.html` e 1 vez na `_nota` de `src/data/recompensas.json`. No capítulo
+gerado: "Abaixo de Dificuldade 5, paga 13.", "= 195, arredondada: 200 pc" e "= 390 pc" (1 vez
+cada); "paga 10", "= 180 pc" e "= 360 pc" (0); a tabela de perícia lida célula a célula: Desafio
+·, ·, 0, ·, 1, 2, 3, 4, 5, 6 e Valor 13, 20, 40, 65, 95, 270, 910, 3.600, 14.500, 57.900. Zero
+travessão nos 7 arquivos tocados (contado em Python, no arquivo).
