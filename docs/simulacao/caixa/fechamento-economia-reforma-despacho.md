@@ -196,6 +196,31 @@ então isto entra como **commit novo (2b)**, sem reescrever o `5d068c65`.
      = 0, 2 worgs = 2).
    Só anotar; medir fica para a B14, sem decidir nada.
 
+## Adendo 4 (autor, 02/10, depois do 2c em `d8d2fd27`): item 2d
+
+O 2c já está no main, então isto é **commit novo (2d)**.
+
+1. **Parte fixada no contrato.** Texto no capítulo e na calculadora, verbatim:
+
+   > A parte de cada criatura é fixada no contrato, pelo encontro inteiro. No sucesso parcial, o
+   > grupo recebe a soma das partes das criaturas mortas ou capturadas; o desafio do encontro não
+   > é refeito com o que foi morto.
+
+   Fecha a brecha do Comerciante: matar 128 ratazanas em vez de 125 para cruzar a borda da
+   Magnitude e mudar o valor do contrato inteiro. **Teste:** encontro de 130 ratazanas de desafio
+   0; matar 125 e matar 128 pagam 125 e 128 partes do mesmo Valor do encontro.
+2. **Campo opcional na calculadora: "desafio do encontro (se conhecido)".** Preenchido, ele
+   substitui a conta por equivalentes no Valor do encontro; a divisão por cabeça continua pelos
+   equivalentes. Texto, verbatim: "Use quando o desafio do encontro foi medido ou é conhecido; a
+   conta por equivalentes é a estimativa para quando não for." Motivo: com "+1/2 por dobra"
+   provisório, 4 worgs pagam 95, a bancada mediu desafio 3 (910), e nenhum Risco cobre isso
+   (Comerciante, rodada de 02/10). As mesmas recusas valem para o campo (fora de 0 a 9, ou meio
+   degrau sem vizinho).
+3. **Só no relato, sem mudar nada:** a oferta de trabalho é por povoado, e não por caçador. Uma
+   cidade de fronteira com 24 trabalhos por ano reparte esses trabalhos entre todos os caçadores
+   dela; não é divergência.
+4. Registrar também no relato o test-l84 intermitente do Validar `36962462391` (pendente do 2c).
+
 ## Regras desta rodada
 
 - Um commit por item (1, 2, 3 se houver, 4), com pathspec, rebase antes e depois, `push origin
