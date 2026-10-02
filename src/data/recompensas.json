@@ -1,5 +1,5 @@
 {
-  "_nota": "Recompensa de caça, o preço de um trabalho: Bolsa = Valor(desafio do trabalho) × Semanas × Tarefa × Risco × 4 (o grupo de referência); o Valor é o da tabela de desafio (por caçador, por semana), e o meio degrau é a média geométrica dos vizinhos (`meios`). `divisor_por_desafio` e `desafio_por_dobra` servem só à ajuda provisória de estimar o desafio de um confronto com várias criaturas (cada desafio abaixo da mais forte conta 1/4; +1/2 a cada dobra dos equivalentes, para baixo), que não mexe em pagamento. A tabela é provisória até a bancada medir e vai só até o desafio 9. A bolsa e a Parte por caçador se arredondam pela régua em `arredondamento` (a mesma do `arred` de lore/economia/v2/base.py); a Parte por caçador é a bolsa ÷ o grupo, para baixo, e a sobra o grupo divide como quiser. Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
+  "_nota": "Trabalhos e recompensas (guia para o Mestre, e não regra de mundo): Bolsa = Valor por pessoa × Semanas × Tarefa × Risco × Pessoas (`pessoas_padrao`). O Valor por pessoa, por semana, tem dois caminhos: o confronto, pela tabela de desafio (`desafios`, e o meio degrau pela média geométrica dos vizinhos em `meios`), e a perícia, pela Dificuldade dos testes decisivos (`pericia`: cada linha cobre de `dif_de` a `dif_ate`; acima de Dif 20, desafio = (Dif − 19) ÷ 2, para cima). Com os dois, vale o maior. A Tarefa vem por tipo de trabalho (`trabalhos`). Os desafios 0 a 3 vêm da escada de capacidade; do `provisorio_desde` em diante a tabela é provisória, e ela vai só até o desafio 9. `divisor_por_desafio` e `desafio_por_dobra` servem só à ajuda provisória de estimar o desafio de um confronto com várias criaturas, que não mexe em pagamento. A bolsa e a Parte por pessoa se arredondam pela régua em `arredondamento` (a mesma do `arred` de lore/economia/v2/base.py); a Parte por pessoa é a bolsa ÷ quem vai, para baixo, e a sobra o grupo divide como quiser. Saída do modelo em lore/economia/v2/gerar.py: não edite preço à mão aqui; mude o modelo e gere de novo.",
   "desafios": [
     {
       "desafio": 0,
@@ -137,46 +137,268 @@
       }
     }
   ],
+  "provisorio_desde": 4,
+  "pericia": [
+    {
+      "dif_de": 5,
+      "dif_ate": 5,
+      "desafio": null,
+      "por": "semana",
+      "preco": {
+        "pc": 10
+      }
+    },
+    {
+      "dif_de": 10,
+      "dif_ate": 10,
+      "desafio": null,
+      "por": "semana",
+      "preco": {
+        "pc": 20
+      }
+    },
+    {
+      "dif_de": 15,
+      "dif_ate": 15,
+      "desafio": 0,
+      "por": "semana",
+      "preco": {
+        "pc": 40
+      }
+    },
+    {
+      "dif_de": 20,
+      "dif_ate": 20,
+      "desafio": 0.5,
+      "por": "semana",
+      "preco": {
+        "pc": 60
+      }
+    },
+    {
+      "dif_de": 21,
+      "dif_ate": 21,
+      "desafio": 1,
+      "por": "semana",
+      "preco": {
+        "pc": 95
+      }
+    },
+    {
+      "dif_de": 22,
+      "dif_ate": 23,
+      "desafio": 2,
+      "por": "semana",
+      "preco": {
+        "pc": 270
+      }
+    },
+    {
+      "dif_de": 24,
+      "dif_ate": 25,
+      "desafio": 3,
+      "por": "semana",
+      "preco": {
+        "pc": 910
+      }
+    },
+    {
+      "dif_de": 26,
+      "dif_ate": 27,
+      "desafio": 4,
+      "por": "semana",
+      "preco": {
+        "pc": 3600
+      }
+    },
+    {
+      "dif_de": 28,
+      "dif_ate": 29,
+      "desafio": 5,
+      "por": "semana",
+      "preco": {
+        "pc": 14500
+      }
+    },
+    {
+      "dif_de": 30,
+      "dif_ate": 31,
+      "desafio": 6,
+      "por": "semana",
+      "preco": {
+        "pc": 57900
+      }
+    },
+    {
+      "dif_de": 32,
+      "dif_ate": 33,
+      "desafio": 7,
+      "por": "semana",
+      "preco": {
+        "pc": 231700
+      }
+    },
+    {
+      "dif_de": 34,
+      "dif_ate": 35,
+      "desafio": 8,
+      "por": "semana",
+      "preco": {
+        "pc": 926800
+      }
+    },
+    {
+      "dif_de": 36,
+      "dif_ate": 37,
+      "desafio": 9,
+      "por": "semana",
+      "preco": {
+        "pc": 3707300
+      }
+    }
+  ],
   "divisor_por_desafio": 4,
   "desafio_por_dobra": 0.5,
   "dias_semana": 8,
-  "grupo": 4,
-  "tarefas": [
+  "pessoas_padrao": 4,
+  "trabalhos": [
     {
-      "id": "afugentar",
-      "nome": "Afugentar ou expulsar",
-      "mult": 0.75,
-      "descricao": "Tirar a criatura do lugar, sem precisar matá-la."
+      "id": "cacar",
+      "nome": "Caçar",
+      "tarefas": [
+        {
+          "id": "afugentar",
+          "nome": "Afugentar ou expulsar",
+          "mult": 0.75
+        },
+        {
+          "id": "matar",
+          "nome": "Matar",
+          "mult": 1
+        },
+        {
+          "id": "trazer-parte",
+          "nome": "Trazer parte ou prova",
+          "mult": 1
+        },
+        {
+          "id": "capturar-vivo",
+          "nome": "Capturar vivo",
+          "mult": 1.5
+        },
+        {
+          "id": "capturar-intacto",
+          "nome": "Capturar sem ferimentos, ou domar",
+          "mult": 2
+        }
+      ]
     },
     {
-      "id": "matar",
-      "nome": "Matar",
-      "mult": 1,
-      "descricao": "Abater a criatura."
+      "id": "escoltar",
+      "nome": "Escoltar",
+      "tarefas": [
+        {
+          "id": "levar",
+          "nome": "Levar de A a B",
+          "mult": 1
+        },
+        {
+          "id": "sem-saber",
+          "nome": "Sem que ninguém saiba",
+          "mult": 1.5
+        }
+      ]
     },
     {
-      "id": "trazer-parte",
-      "nome": "Trazer parte ou prova",
-      "mult": 1,
-      "descricao": "Trazer uma parte da criatura, ou a prova de que ela morreu."
+      "id": "proteger",
+      "nome": "Proteger um lugar",
+      "tarefas": [
+        {
+          "id": "conhecida",
+          "nome": "Contra ameaça conhecida",
+          "mult": 1
+        },
+        {
+          "id": "guarda-oculta",
+          "nome": "Sem que a ameaça saiba que há guarda",
+          "mult": 1.5
+        }
+      ]
+    },
+    {
+      "id": "invadir",
+      "nome": "Invadir",
+      "tarefas": [
+        {
+          "id": "entrar-sair",
+          "nome": "Entrar e sair",
+          "mult": 1
+        },
+        {
+          "id": "sem-rastro",
+          "nome": "Sem deixar rastro",
+          "mult": 1.5
+        }
+      ]
+    },
+    {
+      "id": "roubar",
+      "nome": "Roubar",
+      "tarefas": [
+        {
+          "id": "trazer",
+          "nome": "Trazer o objeto",
+          "mult": 1
+        },
+        {
+          "id": "sem-notar",
+          "nome": "Sem que a falta seja notada",
+          "mult": 2
+        }
+      ]
+    },
+    {
+      "id": "investigar",
+      "nome": "Investigar",
+      "tarefas": [
+        {
+          "id": "fato",
+          "nome": "Descobrir um fato",
+          "mult": 1
+        },
+        {
+          "id": "prova",
+          "nome": "Com prova que se sustente",
+          "mult": 1.5
+        }
+      ]
+    },
+    {
+      "id": "entregar",
+      "nome": "Entregar",
+      "tarefas": [
+        {
+          "id": "levar",
+          "nome": "Levar de A a B",
+          "mult": 1
+        },
+        {
+          "id": "prazo-sigilo",
+          "nome": "Com prazo apertado ou sigilo",
+          "mult": 1.5
+        }
+      ]
     },
     {
       "id": "recuperar",
       "nome": "Recuperar",
-      "mult": 1,
-      "descricao": "Recuperar alguém ou algo levado pela criatura."
-    },
-    {
-      "id": "capturar-vivo",
-      "nome": "Capturar vivo",
-      "mult": 1.5,
-      "descricao": "Trazer a criatura viva."
-    },
-    {
-      "id": "capturar-intacto",
-      "nome": "Capturar vivo e sem ferimentos, ou domar",
-      "mult": 2,
-      "descricao": "Trazer a criatura viva e inteira, ou domada."
+      "tarefas": [
+        {
+          "id": "trazer-de-volta",
+          "nome": "Trazer de volta alguém ou algo levado",
+          "mult": 1
+        }
+      ]
     }
   ],
   "riscos": [

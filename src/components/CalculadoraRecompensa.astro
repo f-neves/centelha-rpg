@@ -1,29 +1,44 @@
 ---
-// A calculadora da recompensa de caça (rodada 115; desde 02/10/2026 a recompensa é o preço de UM
-// TRABALHO, pelo desafio dele). As listas vêm de src/data/recompensas.json e a conta de
-// src/lib/recompensa.ts; nenhum número da regra mora aqui.
-// TOLERÂNCIA: a tabela de desafio do autor, o +1/2 por dobra e o desafio digitado valem até a bancada medir.
-// LEVANTA QUANDO: a B14 medir o desafio das criaturas, gravá-lo nas fichas e confirmar ou trocar a tabela.
+// A calculadora da bolsa de um trabalho pontual (rodada 115; desde 02/10/2026 a recompensa é o preço
+// de UM TRABALHO, e desde o item 5 vale para qualquer trabalho, como guia para o Mestre: o Valor sai
+// do desafio, da Dificuldade, ou do maior dos dois). As listas vêm de src/data/recompensas.json e a
+// conta de src/lib/recompensa.ts; nenhum número da regra mora aqui.
+// TOLERÂNCIA: a tabela de desafio do 4 em diante vale até existir onde gastar o topo dela.
+// LEVANTA QUANDO: a G73 decidir os preços do sobre-humano, e o autor confirmar ou trocar o topo da tabela.
 import REC from '../data/recompensas.json';
 const MAX = REC.desafios.at(-1)!.desafio;
+const DIF_MAX = REC.pericia.at(-1)!.dif_ate;
+const x = (n: number) => String(n).replace('.', ',');
 ---
 <div class="recompensa panel">
-  <p class="muted rc-aviso">O desafio do trabalho é o do <strong>pior confronto que o grupo precisa vencer</strong> para cumpri-lo; a duração entra em Semanas. Semanas é a duração prevista no contrato, combinada antes do trabalho. Terminar antes ou depois não muda a bolsa: quem contrata paga pelo resultado, e não pelo tempo gasto. O desafio do trabalho é absoluto: é o da ameaça, medido contra o grupo de referência (4 personagens de Centelha igual ao desafio), e não muda conforme o grupo que aceita o trabalho. Um grupo veterano que pega uma matilha de worgs recebe o mesmo que um grupo novato receberia. A tabela vai do desafio 0 ao {MAX}, em degraus inteiros e meios degraus entre eles, e é <strong>provisória até a bancada medir</strong> o desafio das criaturas.</p>
+  <p class="muted rc-aviso"><strong>Guia para o Mestre, e não regra de mundo.</strong> O Valor por pessoa sai do <strong>desafio do trabalho</strong> (o do pior confronto que o grupo precisa vencer), da <strong>Dificuldade</strong> dos testes decisivos, ou do maior dos dois. O desafio do trabalho é absoluto: é o da ameaça, medido contra o grupo de referência (4 personagens de Centelha igual ao desafio), e não muda conforme o grupo que aceita o trabalho. Um grupo veterano que pega uma matilha de worgs recebe o mesmo que um grupo novato receberia. Semanas é a duração prevista no contrato, combinada antes do trabalho. Terminar antes ou depois não muda a bolsa: quem contrata paga pelo resultado, e não pelo tempo gasto. A tabela de desafio vai do 0 ao {MAX}, em degraus inteiros e meios degraus entre eles, e é <strong>provisória do desafio {REC.provisorio_desde} em diante</strong>; a calculadora interpola as Dificuldades entre um degrau e outro.</p>
   <div class="rc-campos">
-    <label>Desafio do trabalho<input type="number" min="0" max={MAX} step="0.5" value="1" data-rc="desafio" /></label>
-    <label>Semanas de caçada<input type="number" min="0" step="0.5" value="1" data-rc="cacadaSemanas" /></label>
+    <label>Caminho
+      <select data-rc="caminho">
+        <option value="confronto">Confronto (desafio)</option>
+        <option value="pericia">Perícia (Dificuldade)</option>
+        <option value="ambos">Os dois (vale o maior)</option>
+      </select>
+    </label>
+    <label data-rc-so="confronto">Desafio do trabalho<input type="number" min="0" max={MAX} step="0.5" value="1" data-rc="desafio" /></label>
+    <label data-rc-so="pericia">Dificuldade<input type="number" min="0" max={DIF_MAX} step="1" value="15" data-rc="dificuldade" /></label>
+    <label>Tipo de trabalho
+      <select data-rc="trabalho">{REC.trabalhos.map((t) => <option value={t.id}>{t.nome}</option>)}</select>
+    </label>
+    <label>Variação
+      <select data-rc="tarefa"></select>
+    </label>
+    <label>Semanas de trabalho<input type="number" min="0" step="0.5" value="1" data-rc="semanas" /></label>
     <label>Dias de viagem (ida e volta)<input type="number" min="0" value="16" data-rc="viagemDias" /></label>
-    <label>Tipo de tarefa
-      <select data-rc="tarefa">{REC.tarefas.map((t) => <option value={t.id} selected={t.id === 'matar'}>{t.nome} (×{String(t.mult).replace('.', ',')})</option>)}</select>
-    </label>
     <label>Risco
-      <select data-rc="risco">{REC.riscos.map((r) => <option value={r.id}>{r.nome} (×{String(r.mult).replace('.', ',')})</option>)}</select>
+      <select data-rc="risco">{REC.riscos.map((r) => <option value={r.id}>{r.nome} (×{x(r.mult)})</option>)}</select>
     </label>
+    <label>Pessoas (pagas no contrato)<input type="number" min="1" step="1" value={REC.pessoas_padrao} data-rc="pessoas" /></label>
     <label>Outro × (opcional)<input type="number" min="0" step="0.05" value="1" data-rc="outro" /></label>
     <label>Tom da campanha
-      <select data-rc="tom">{REC.tons.map((t) => <option value={t.id} selected={t.id === 'padrao'}>{t.nome} (×{String(t.mult).replace('.', ',')})</option>)}</select>
+      <select data-rc="tom">{REC.tons.map((t) => <option value={t.id} selected={t.id === 'padrao'}>{t.nome} (×{x(t.mult)})</option>)}</select>
     </label>
-    <label>Tamanho real do grupo<input type="number" min="1" value="4" data-rc="grupo" /></label>
+    <label>Quantos vão de fato<input type="number" min="1" value={REC.pessoas_padrao} data-rc="grupo" /></label>
   </div>
   <!-- TOLERÂNCIA: a conta por equivalentes (+1/2 por dobra) vale até a bancada medir o bando com a Regra de Horda.
        LEVANTA QUANDO: a B18 (fila da B14) medir o desafio por N e o autor confirmar ou trocar a regra. -->
@@ -42,9 +57,10 @@ const MAX = REC.desafios.at(-1)!.desafio;
   </div>
 </div>
 
-<!-- is:global: o recibo e a estimativa são montados por JS -->
+<!-- is:global: o recibo, a lista de variações e a estimativa são montados por JS -->
 <style is:global>
   .recompensa .rc-campos, .recompensa .rc-encontro { display: flex; gap: .7rem; flex-wrap: wrap; }
+  .recompensa .rc-campos label[hidden] { display: none; }
   .recompensa .rc-linha { display: flex; gap: .5rem; padding: .3rem .4rem; border: 1px solid var(--rule); border-radius: var(--r-sm); }
   .recompensa .rc-botoes { margin: .5rem 0 .4rem; }
   .recompensa .rc-aviso { margin-top: 0; }
@@ -68,17 +84,33 @@ const MAX = REC.desafios.at(-1)!.desafio;
   const pc = (n: number) => `${ptNum(n)} pc`;
   const m = (x: number) => x.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
   const des = (d: number) => d.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
+  const faixa = (l: { dif_de: number; dif_ate: number }) => (l.dif_de === l.dif_ate ? String(l.dif_de) : `${l.dif_de}-${l.dif_ate}`);
   document.querySelectorAll<HTMLElement>('.recompensa').forEach((root) => {
     const campo = (k: string) => root.querySelector<HTMLInputElement | HTMLSelectElement>(`[data-rc="${k}"]`)!;
     const n = (k: string) => { const v = parseFloat(campo(k).value.replace(',', '.')); return Number.isFinite(v) ? v : 0; };
+    const lido = (k: string) => { const t = campo(k).value.trim(); return t === '' ? NaN : parseFloat(t.replace(',', '.')); };
     const bolsaEl = root.querySelector<HTMLElement>('[data-rc="bolsa"]')!;
     const recibo = root.querySelector<HTMLElement>('[data-rc="recibo"]')!;
     const encontro = root.querySelector<HTMLElement>('[data-rc="encontro"]')!;
     const estimativaEl = root.querySelector<HTMLElement>('[data-rc="estimativa"]')!;
     const usar = root.querySelector<HTMLButtonElement>('[data-rc="usar"]')!;
+    const tarefaSel = campo('tarefa') as HTMLSelectElement;
     const maxDesafio = REC.desafios.at(-1)!.desafio;
     const temValor = (d: number) => { try { valorDoDesafio(d, REC as any); return true; } catch { return false; } };
     let estimado: number | null = null;
+
+    // a variação depende do tipo de trabalho
+    const variacoes = () => {
+      const t = REC.trabalhos.find((w) => w.id === campo('trabalho').value)!;
+      // abre na variação base (×1): Matar, na caça; a primeira, nos outros tipos
+      const base = (t.tarefas.find((v) => v.mult === 1) ?? t.tarefas[0]).id;
+      tarefaSel.innerHTML = t.tarefas.map((v) => `<option value="${v.id}"${v.id === base ? ' selected' : ''}>${v.nome} (×${m(v.mult)})</option>`).join('');
+    };
+    // o caminho mostra o campo do desafio, o da Dificuldade, ou os dois
+    const caminho = () => {
+      const c = campo('caminho').value;
+      root.querySelectorAll<HTMLElement>('[data-rc-so]').forEach((el) => { el.hidden = c !== 'ambos' && el.dataset.rcSo !== c; });
+    };
 
     // a ajuda de estimar: só diz um desafio; não mexe na bolsa
     const estimar = () => {
@@ -97,37 +129,52 @@ const MAX = REC.desafios.at(-1)!.desafio;
       if (temValor(enc.desafio)) { estimado = enc.desafio; usar.hidden = false; }
     };
 
+    const semBolsa = (txt: string) => { bolsaEl.textContent = `Sem bolsa: ${txt}`; recibo.innerHTML = ''; };
     const atualizar = () => {
-      const txt = campo('desafio').value.trim();
-      const desafio = txt === '' ? NaN : parseFloat(txt.replace(',', '.'));
+      const c = campo('caminho').value;
+      const desafio = c === 'pericia' ? null : lido('desafio');
+      const dificuldade = c === 'confronto' ? null : lido('dificuldade');
       // fora de 0 a 9, meio degrau sem vizinho ou outra fração: recusa, sem extrapolar
-      if (!temValor(desafio)) {
-        bolsaEl.textContent = `Sem bolsa: a tabela de desafio vai de 0 a ${maxDesafio}, em degraus inteiros e meios degraus entre eles, e o desafio ${Number.isFinite(desafio) ? des(desafio) : '(vazio)'} não tem valor.`;
-        recibo.innerHTML = '';
-        return;
-      }
+      if (desafio != null && !temValor(desafio)) return semBolsa(`a tabela de desafio vai de 0 a ${maxDesafio}, em degraus inteiros e meios degraus entre eles, e o desafio ${Number.isFinite(desafio) ? des(desafio) : '(vazio)'} não tem valor.`);
       const e: EntradaRecompensa = {
-        desafio,
-        cacadaSemanas: Math.max(0, n('cacadaSemanas')), viagemDias: Math.max(0, n('viagemDias')),
-        tarefa: campo('tarefa').value, risco: campo('risco').value, tom: campo('tom').value,
-        outro: campo('outro').value.trim() === '' ? 1 : Math.max(0, n('outro')), grupo: Math.max(1, Math.round(n('grupo'))),
+        desafio, dificuldade,
+        trabalho: campo('trabalho').value, tarefa: tarefaSel.value,
+        semanas: Math.max(0, n('semanas')), viagemDias: Math.max(0, n('viagemDias')),
+        risco: campo('risco').value, tom: campo('tom').value,
+        outro: campo('outro').value.trim() === '' ? 1 : Math.max(0, n('outro')),
+        pessoas: Math.max(1, Math.round(n('pessoas'))), grupo: Math.max(1, Math.round(n('grupo'))),
       };
-      const r = calcularRecompensa(e, REC as any);
+      let r: ReturnType<typeof calcularRecompensa>;
+      // Dificuldade vazia, negativa ou acima do fim da tabela de perícia: recusa, sem extrapolar
+      try { r = calcularRecompensa(e, REC as any); } catch (err) { return semBolsa(`${(err as Error).message}.`); }
       const sobra = r.sobra > 0 ? ` (sobram ${pc(r.sobra)}, divida como quiser)` : '';
-      bolsaEl.textContent = `Bolsa: ${pc(r.bolsa)} · Parte por caçador (grupo de ${e.grupo}): ${pc(r.porCacador)}${sobra}`;
+      bolsaEl.textContent = `Bolsa: ${pc(r.bolsa)} · Parte por pessoa (vão ${e.grupo}): ${pc(r.porPessoa)}${sobra}`;
+      const p = r.pericia;
+      const linhaConfronto = r.valorConfronto != null ? `Confronto: desafio ${des(r.desafio!)}${r.desafio! % 1 ? ' (meio degrau)' : ''}, ${pc(r.valorConfronto)}` : null;
+      const comoPericia = !p ? '' : p.como === 'degrau' ? `degrau ${faixa(p.de)}${p.desafio != null ? ` (desafio ${des(p.desafio)})` : ''}`
+        : p.como === 'piso' ? 'abaixo do primeiro degrau, o piso'
+        : `entre os degraus ${faixa(p.de)} (${pc(p.de.preco.pc)}) e ${faixa(p.ate)} (${pc(p.ate.preco.pc)}), interpolada e arredondada`;
+      const linhaPericia = p ? `Perícia: Dificuldade ${des(r.dificuldade!)}, ${comoPericia}, ${pc(p.pc)}` : null;
       const itens = [
-        `Valor no desafio ${des(r.desafio)}${r.desafio % 1 ? ' (meio degrau)' : ''}: ${pc(r.valor)} por caçador, por semana`,
-        `Semanas = caçada ${ptNum(Math.max(1, e.cacadaSemanas), 1)} + metade da viagem (${ptNum(e.viagemDias)} dias ÷ 2 ÷ ${REC.dias_semana}) = ${ptNum(r.semanas, 1)}`,
-        `Tom: ${r.tom.nome} ×${m(r.tom.mult)} · Tarefa: ${r.tarefa.nome} ×${m(r.tarefa.mult)} · Risco: ${r.risco.nome} ×${m(r.risco.mult)} · Outro ×${m(r.outro)}`,
-        `Bolsa = ${pc(r.valor)} × ${m(r.tom.mult)} × ${ptNum(r.semanas, 1)} × ${m(r.tarefa.mult)} × ${m(r.risco.mult)} × ${m(r.outro)} × ${r.grupoReferencia} = ${ptNum(r.exata, r.exata % 1 ? 1 : 0)} pc, arredondada: ${pc(r.bolsa)}`,
-        `Parte por caçador = ${pc(r.bolsa)} ÷ ${e.grupo}, para baixo = ${pc(r.porCacador)}${sobra}`,
+        ...([linhaConfronto, linhaPericia].filter(Boolean) as string[]),
+        `Valor por pessoa, por semana: ${pc(r.valor)}${linhaConfronto && linhaPericia ? `, o maior dos dois (${r.caminho === 'pericia' ? 'a perícia' : 'o confronto'})` : ''}`,
+        `Semanas = trabalho ${ptNum(Math.max(1, e.semanas), 1)} + metade da viagem (${ptNum(e.viagemDias)} dias ÷ 2 ÷ ${REC.dias_semana}) = ${ptNum(r.semanas, 1)}`,
+        `Tom: ${r.tom.nome} ×${m(r.tom.mult)} · Tarefa: ${r.trabalho.nome}, ${r.tarefa.nome} ×${m(r.tarefa.mult)} · Risco: ${r.risco.nome} ×${m(r.risco.mult)} · Outro ×${m(r.outro)}`,
+        `Bolsa = ${pc(r.valor)} × ${m(r.tom.mult)} × ${ptNum(r.semanas, 1)} × ${m(r.tarefa.mult)} × ${m(r.risco.mult)} × ${m(r.outro)} × ${r.pessoas} pessoas = ${ptNum(r.exata, r.exata % 1 ? 1 : 0)} pc, arredondada: ${pc(r.bolsa)}`,
+        `Parte por pessoa = ${pc(r.bolsa)} ÷ ${e.grupo}, para baixo = ${pc(r.porPessoa)}${sobra}. O grupo que vai com mais ou menos gente divide o mesmo valor.`,
         'A bolsa paga o trabalho cumprido. Cumprir parte do trabalho não paga parte, a não ser que o Mestre decida.',
-        ...(r.desafio >= 5 ? ['A partir do desafio 5, a bolsa é paga em terra, título, direito ou favor, no valor da tabela.'] : []),
+        // TOLERÂNCIA: o recibo avisa o valor do topo da tabela, que vale até existir onde gastar.
+        // LEVANTA QUANDO: a G73 decidir os preços do sobre-humano, e o autor confirmar ou trocar o topo da tabela.
+        ...(r.provisorio ? [`O valor do desafio ${des(r.desafioUsado!)} é provisório: do desafio ${REC.provisorio_desde} em diante, a tabela depende de existir onde gastar.`] : []),
+        ...(r.desafioUsado != null && r.desafioUsado >= 5 ? ['A partir do desafio 5, a bolsa é paga em terra, título, direito ou favor, no valor da tabela.']
+          : r.desafioUsado != null && r.desafioUsado > 3 ? ['Acima do desafio 3, o Mestre pode pagar parte em favor, acesso ou objeto.'] : []),
       ];
       recibo.innerHTML = itens.map((t) => `<li>${t}</li>`).join('');
     };
 
     const ligar = (el: Element, f: () => void) => { el.addEventListener('input', f); el.addEventListener('change', f); };
+    ligar(campo('trabalho'), variacoes);
+    ligar(campo('caminho'), caminho);
     root.querySelectorAll('.rc-campos input, .rc-campos select').forEach((el) => ligar(el, atualizar));
     encontro.querySelectorAll('input').forEach((el) => ligar(el, estimar));
     root.querySelector('[data-rc="mais"]')!.addEventListener('click', () => {
@@ -139,7 +186,7 @@ const MAX = REC.desafios.at(-1)!.desafio;
       const ls = encontro.querySelectorAll('.rc-linha'); if (ls.length > 1) { ls[ls.length - 1].remove(); estimar(); }
     });
     usar.addEventListener('click', () => { if (estimado != null) { campo('desafio').value = String(estimado); atualizar(); } });
-    estimar();
+    variacoes(); caminho(); estimar();
     atualizar();
   });
 </script>

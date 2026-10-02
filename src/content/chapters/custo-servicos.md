@@ -33,18 +33,21 @@ A renda é o que o contratante gasta com quem trabalha. Quando o personagem trab
 
 <!-- /gen:economia-tarifas -->
 
-### Caça e recompensas
+### Trabalhos e recompensas
 
-Trabalhos pontuais, como abater uma colônia de aranhas, recuperar um hipogrifo ou buscar partes de uma criatura para um mago, pagam uma bolsa pelo trabalho, combinada antes. O valor é o Livre: o custo de vida de quem caça já está descontado. É esse o número do cartaz da recompensa.
+Trabalhos pontuais, como abater uma colônia de aranhas, escoltar um mercador, proteger uma aldeia, invadir uma torre, roubar, investigar ou entregar o que não pode cair em mãos erradas, pagam uma bolsa pelo trabalho, combinada antes. É esse o número do cartaz. **Esta seção é um guia para o Mestre: sugestão de preço, e não regra de mundo.**
 
-<p class="formula">Bolsa = Valor(desafio do trabalho) × Semanas × Tarefa × Risco × 4</p>
+A bolsa é Livre: durante o trabalho, o custo de vida do personagem continua saindo dos Recursos dele. Contratar um profissional de fora, por diária, custa a renda dele, pela tabela de Serviços, e não a bolsa.
 
-A bolsa paga um grupo de 4, que é o grupo para o qual o nível de desafio é pensado. O grupo divide como quiser: se forem mais, cada um leva menos; se forem menos, levam mais e arriscam mais.
+Se um profissional faria o trabalho como serviço comum do ofício dele (o mensageiro leva a carta, o rastreador segue a trilha), o preço é o de Serviços, pela renda dele. A bolsa é para o trabalho pontual fora da rotina de um ofício: com sigilo, ilegal, perigoso, ou que nenhum profissional aceita.
+
+<p class="formula">Bolsa = Valor por pessoa × Semanas × Tarefa × Risco × Pessoas</p>
 
 A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa).
 
-1. **Desafio do trabalho**: o do **pior confronto que o grupo precisa vencer** para cumprir o trabalho. A duração (semanas limpando uma infestação, por exemplo) entra em Semanas, e não no desafio. O desafio do trabalho é absoluto: é o da ameaça, medido contra o grupo de referência (4 personagens de Centelha igual ao desafio), e não muda conforme o grupo que aceita o trabalho. Um grupo veterano que pega uma matilha de worgs recebe o mesmo que um grupo novato receberia. Animal comum não tem desafio próprio; a ficha traz uma nota de quantos formam um desafio 0 para um grupo de Centelha 0, como referência.
-2. **Valor** (por caçador, por semana): o da tabela no desafio do trabalho. O meio degrau é a média geométrica dos dois vizinhos, arredondada. A tabela é provisória até a bancada medir o desafio das criaturas, e vai até o desafio 9: acima disso não há valor.
+**Valor por pessoa**, por semana, por dois caminhos. Com as duas coisas no mesmo trabalho, vale o maior.
+
+**Trabalho de confronto** (caçar, proteger, escoltar com ameaça, recuperar à força): pela tabela de desafio, no **desafio do trabalho**, o do **pior confronto que o grupo precisa vencer** para cumprir o trabalho. A duração (semanas limpando uma infestação, por exemplo) entra em Semanas, e não no desafio. O desafio do trabalho é absoluto: é o da ameaça, medido contra o grupo de referência (4 personagens de Centelha igual ao desafio), e não muda conforme o grupo que aceita o trabalho. Um grupo veterano que pega uma matilha de worgs recebe o mesmo que um grupo novato receberia. Animal comum não tem desafio próprio; a ficha traz uma nota de quantos formam um desafio 0 para um grupo de Centelha 0, como referência. O meio degrau é a média geométrica dos dois vizinhos, arredondada.
 
 <!-- gen:economia-recompensas -->
 
@@ -59,9 +62,39 @@ A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa
 
 <!-- /gen:economia-recompensas -->
 
-3. **Semanas** = caçada estimada (mínimo 1) + metade da viagem de ida e volta. A semana tem 8 dias. Semanas é a duração prevista no contrato, combinada antes do trabalho. Terminar antes ou depois não muda a bolsa: quem contrata paga pelo resultado, e não pelo tempo gasto. A viagem conta metade porque é tempo gasto, não perigo: paga o tempo, sem o prêmio de risco.
-4. **Tipo de tarefa** (exemplos): afugentar ou expulsar ×0,75; matar ×1; trazer parte ou prova ×1; recuperar alguém ou algo levado ×1; capturar vivo ×1,5; capturar vivo e sem ferimentos, ou domar ×2.
-5. **Risco**, além do que o desafio já prevê (exemplos): normal ×1; alto, um agravante sério (terreno hostil, alvo desconhecido, prazo curto, civis para proteger) ×1,5; muito alto, dois ou mais agravantes ×2; extremo, alguém provavelmente morre mesmo dando certo ×3.
+Os valores dos desafios 0 a 3 vêm da escada de capacidade. **Do desafio 4 em diante a tabela é provisória**: o topo depende de existir onde gastar tanto dinheiro, e isso ainda está por decidir. A tabela vai até o desafio 9: acima disso não há valor. O desafio de cada criatura também é provisório, até a bancada medir.
+
+**Trabalho de perícia** (investigar, roubar, invadir, entregar): pela Dificuldade dos testes decisivos (a de [De onde sai a Dificuldade](/regras/acoes-e-sistema#de-onde-sai-a-dificuldade)). Até Dificuldade 20 um mortal passa (Braçal, Oficial, Perito, Mestre de ofício), e o valor é o Livre do ofício à altura × 1,8, o mesmo prêmio de risco da caçada de desafio 0 (40 ÷ 22). Acima de 20 só a Centelha passa, e o valor é o da tabela de desafio: desafio = (Dificuldade − 19) ÷ 2, arredondado para cima (o especialista de soma 12 precisa de +1 de Centelha a cada 2 pontos de Dificuldade para passar com 55%).
+
+<!-- gen:economia-recompensas-pericia -->
+
+<div class="table-wrap">
+
+| Dificuldade | 5 | 10 | 15 | 20 | 21 | 22-23 | 24-25 | 26-27 | 28-29 | 30-31 |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Desafio | · | · | 0 | 0,5 | 1 | 2 | 3 | 4 | 5 | 6 |
+| Valor (pc) | 10 | 20 | 40 | 60 | 95 | 270 | 910 | 3.600 | 14.500 | 57.900 |
+
+</div>
+
+<!-- /gen:economia-recompensas-pericia -->
+
+Abaixo de Dificuldade 5, paga 10. A fórmula continua acima de 31, até o desafio 9 (Dificuldade 36 e 37). Fora dos degraus, a calculadora interpola as Dificuldades entre um degrau e outro.
+
+Os outros fatores da conta:
+
+1. **Semanas** = duração estimada (mínimo 1) + metade da viagem de ida e volta. A semana tem 8 dias. Semanas é a duração prevista no contrato, combinada antes do trabalho. Terminar antes ou depois não muda a bolsa: quem contrata paga pelo resultado, e não pelo tempo gasto. A viagem conta metade porque é tempo gasto, não perigo: paga o tempo, sem o prêmio de risco.
+2. **Tarefa**, por tipo de trabalho (a variação base é ×1; são sugestões):
+   - **Caçar:** afugentar ou expulsar ×0,75; matar ×1; trazer parte ou prova ×1; capturar vivo ×1,5; capturar sem ferimentos ou domar ×2.
+   - **Escoltar:** levar de A a B ×1; sem que ninguém saiba ×1,5.
+   - **Proteger um lugar:** contra ameaça conhecida ×1; sem que a ameaça saiba que há guarda ×1,5.
+   - **Invadir:** entrar e sair ×1; sem deixar rastro ×1,5.
+   - **Roubar:** trazer o objeto ×1; sem que a falta seja notada ×2.
+   - **Investigar:** descobrir um fato ×1; com prova que se sustente ×1,5.
+   - **Entregar:** levar de A a B ×1; com prazo apertado ou sigilo ×1,5.
+   - **Recuperar:** trazer de volta alguém ou algo levado ×1.
+3. **Risco**, além do que o desafio ou a Dificuldade já preveem (exemplos): normal ×1; alto, um agravante sério (terreno hostil, alvo desconhecido, prazo curto, civis para proteger) ×1,5; muito alto, dois ou mais agravantes ×2; extremo, alguém provavelmente morre mesmo dando certo ×3.
+4. **Pessoas** é quantas o contratante decide pagar, combinado no contrato, como as Semanas. O grupo que vai com mais ou menos gente divide o mesmo valor. Na caça, o padrão é 4, o grupo de referência para o qual o desafio é pensado.
 
 **Tom da campanha:** numa campanha de dinheiro curto, o Valor vale metade; numa campanha heroica, o dobro.
 
@@ -69,13 +102,20 @@ A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa
 
 **Estimar o desafio de um confronto com várias criaturas** (ajuda opcional, **provisória**: a bancada mediu bandos que sobem mais rápido, e a medida com a Regra de Horda ainda está por fazer): a criatura no desafio da mais forte conta 1, e cada desafio abaixo dela divide por 4, sem piso (um abaixo 1/4, dois 1/16, três 1/64); some esses equivalentes, com fração. O confronto fica no desafio da mais forte + Magnitude ÷ 2: sobe 1/2 a cada vez que os equivalentes dobram, para baixo, nos mesmos degraus da Magnitude da [Regra de Horda](/regras/combate#regra-de-horda) (1: +0; 2 a 3: +1/2; 4 a 7: +1; 8 a 15: +1 1/2; 16 a 31: +2; 32 a 63: +2 1/2; 64 a 127: +3). É só uma estimativa do desafio: não multiplica nem divide a bolsa, e o Mestre pode preferir um desafio medido ou conhecido.
 
-**Exemplos de trabalho:**
+**Exemplos de trabalho** (sem viagem, tom padrão; a bolsa sai arredondada):
 
-- **Livrar a estrada de uma matilha de 4 worgs:** desafio 3, medido na bancada (**provisório** até a medição de bando com a Regra de Horda). Referência para o Mestre: worg sozinho, desafio 0; dupla, desafio 2; matilha de 4, desafio 3.
+- **Seguir em segredo quem não quer ser achado e descobrir onde mora** (investigar, Dificuldade 15, 1 semana, descobrir um fato ×1, 1 pessoa): 40 × 1 × 1 × 1 × 1 = **40 pc**.
+- **Seguir um espião treinado sem ser notado e trazer prova do que ele faz** (investigar, Dificuldade 20, 2 semanas, com prova ×1,5, 1 pessoa): 60 × 2 × 1,5 × 1 × 1 = **180 pc**.
+- **Roubar de um nobre sem que ele note** (roubar, Dificuldade 20, 1 semana, sem que a falta seja notada ×2, risco alto ×1,5, 2 pessoas): 60 × 1 × 2 × 1,5 × 2 = **360 pc**.
+- **Entregar uma carta que ninguém pode saber que existe** (entregar, Dificuldade 15, 2 semanas, sigilo ×1,5, 1 pessoa; é o sigilo que tira o trabalho do mensageiro comum): 40 × 2 × 1,5 × 1 × 1 = **120 pc**.
+- **Recuperar uma criança levada por goblins** (recuperar, desafio 1, 1 semana, ×1, 4 pessoas): 95 × 1 × 1 × 1 × 4 = **380 pc**.
+- **Escoltar um mercador por estrada com bandidos** (escoltar, desafio 1, 2 semanas, ×1, 4 pessoas): 95 × 2 × 1 × 1 × 4 = **760 pc**.
+- **Proteger a aldeia de uma matilha de worgs** (proteger, desafio 3, 1 semana, ×1, 4 pessoas): 910 × 1 × 1 × 1 × 4 = 3.640, arredondada: **3.600 pc**. O desafio 3 da matilha foi medido na bancada e é **provisório** até a medição de bando com a Regra de Horda. Referência para o Mestre: worg sozinho, desafio 0; dupla, desafio 2; matilha de 4, desafio 3.
+- **Invadir a torre de um mago** (invadir, Dificuldade 25, que é desafio 3, 1 semana, ×1, risco muito alto ×2, 4 pessoas): 910 × 1 × 1 × 2 × 4 = 7.280, arredondada: **7.300 pc**.
 - **Livrar o vilarejo da infestação de ratazanas:** a ratazana não tem desafio por criatura; o Mestre fixa o desafio do trabalho e as Semanas que a limpeza leva.
 - **Matar o chefe de desafio 3 com o bando dele:** desafio 3.
 
-A partir do desafio 5, a bolsa é paga em terra, título, direito ou favor, no valor da tabela.
+A partir do desafio 5, a bolsa é paga em terra, título, direito ou favor, no valor da tabela. Acima do desafio 3, o Mestre pode pagar parte em favor, acesso ou objeto.
 
 **Três testes antes de fechar o valor:**
 

@@ -979,15 +979,21 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
       manutencao_cavalo: valor(), manutencao_cavalo_guerra: valor(),
       pacotes_familia: z.record(z.object({ itens: z.array(valor({ item: z.string() })), pacote: valor(), estilo_de_vida: valor() }).strict()),
     }).strict(),
-    // a recompensa de caça (rodada 115; regra da soma, 01/10/2026): o valor de cada desafio é
-    // dinheiro com unidade; o resto são parâmetros da conta, lidos pela calculadora (src/lib/recompensa.ts)
+    // a recompensa de um trabalho (rodada 115; item 5 do fechamento da economia, 02/10/2026): o valor
+    // de cada desafio e de cada degrau de perícia é dinheiro com unidade; o resto são parâmetros da
+    // conta, lidos pela calculadora (src/lib/recompensa.ts)
     'recompensas.json': z.object({
       _nota: nota,
       desafios: z.array(z.object({ desafio: z.number().int().min(0), por: POR, preco }).strict()).min(1),
       meios: z.array(z.object({ desafio: z.number().min(0).refine((d) => d % 1 === 0.5, 'meio degrau termina em ,5'), por: POR, preco }).strict()).min(1),
+      // TOLERÂNCIA: o primeiro desafio cujo valor ainda vale só até existir onde gastar o topo da tabela.
+      // LEVANTA QUANDO: a G73 decidir os preços do sobre-humano, e o autor confirmar ou trocar o topo da tabela.
+      provisorio_desde: z.number().int().min(0),
+      pericia: z.array(z.object({ dif_de: z.number().int().positive(), dif_ate: z.number().int().positive(), desafio: z.number().min(0).nullable(), por: POR, preco }).strict()).min(1),
       divisor_por_desafio: z.number().positive(), desafio_por_dobra: z.number().positive(),
-      dias_semana: z.number().int().positive(), grupo: z.number().int().positive(),
-      tarefas: z.array(z.object({ id: z.string(), nome: z.string(), mult: z.number().positive(), descricao: z.string() }).strict()).min(1),
+      dias_semana: z.number().int().positive(), pessoas_padrao: z.number().int().positive(),
+      trabalhos: z.array(z.object({ id: z.string(), nome: z.string(),
+        tarefas: z.array(z.object({ id: z.string(), nome: z.string(), mult: z.number().positive() }).strict()).min(1) }).strict()).min(1),
       riscos: z.array(z.object({ id: z.string(), nome: z.string(), mult: z.number().positive(), descricao: z.string() }).strict()).min(1),
       tons: z.array(z.object({ id: z.string(), nome: z.string(), mult: z.number().positive() }).strict()).min(1),
       urgencias: z.array(z.object({ id: z.string(), nome: z.string(), mult: z.number().positive() }).strict()).min(1),

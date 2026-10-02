@@ -440,24 +440,60 @@ OUT["reparo_v2"] = {nome: {d: (reparo_v3(mo, pe, d), reparo_v3(mo, pe, d)) for d
                     for nome, mo, pe in (("Faca", 6, 3), ("Espada", 12, 10), ("Placa completa", 6, 24))}
 
 # =====================================================================
-# RECOMPENSAS DE CAÇA (rodada 115; fechamento da economia, 01 e 02/10/2026, itens 2, 2b e 2e)
+# TRABALHOS E RECOMPENSAS (rodada 115; fechamento da economia, 01 e 02/10/2026, itens 2, 2b, 2e e 5)
 # =====================================================================
-# A recompensa é o preço de UM TRABALHO (Adendo 5): Bolsa = Valor(desafio do trabalho) × Semanas ×
-# Tarefa × Risco × 4 (o grupo de referência, B14 fase 2 item D.14, 26/09/2026). O desafio do
-# trabalho é o do pior confronto que o grupo precisa vencer. A tabela é do autor (01/10/2026),
-# PROVISÓRIA até a bancada medir, e para no desafio 9: acima dele a calculadora recusa, sem
-# extrapolar. O meio degrau entre dois desafios é a média geométrica dos vizinhos, arredondada pelo
+# A recompensa é o preço de UM TRABALHO (Adendo 5), e não de cabeças. O desafio do trabalho é o do
+# pior confronto que o grupo precisa vencer. A tabela de desafio é do autor (01/10/2026) e para no
+# desafio 9: acima dele a calculadora recusa, sem extrapolar. O meio degrau entre dois desafios é a média geométrica dos vizinhos, arredondada pelo
 # `arred`. `divisor_por_desafio` e `desafio_por_dobra` servem só à ajuda provisória de estimar o
 # desafio de um confronto com várias criaturas (Adendo 2), que não mexe em pagamento.
+#
+# Desde o item 5 (02/10/2026) a bolsa vale para qualquer trabalho pontual, como GUIA para o Mestre:
+# Bolsa = Valor por pessoa × Semanas × Tarefa × Risco × Pessoas (padrão 4). O Valor tem dois
+# caminhos: o confronto, pela tabela de desafio, e a perícia, pela Dificuldade dos testes decisivos
+# (correção A): Dif 5 = 10 pc; Dif 10 = 20 pc; Dif 15 = desafio 0; Dif 20 = desafio 0,5; acima de 20, desafio =
+# (Dif − 19) ÷ 2, para cima. Os desafios 0 a 3 vêm da escada de capacidade (correção D); do 4 em
+# diante a tabela é provisória até existir onde gastar (G73).
 REC_DESAFIOS = [40, 95, 270, 910, 3600, 14500, 57900, 231700, 926800, 3707300]
 REC_MEIOS = [arred(math.sqrt(a * b)) for a, b in zip(REC_DESAFIOS, REC_DESAFIOS[1:])]
-REC_TAREFAS = [
-    ("afugentar", "Afugentar ou expulsar", 0.75, "Tirar a criatura do lugar, sem precisar matá-la."),
-    ("matar", "Matar", 1, "Abater a criatura."),
-    ("trazer-parte", "Trazer parte ou prova", 1, "Trazer uma parte da criatura, ou a prova de que ela morreu."),
-    ("recuperar", "Recuperar", 1, "Recuperar alguém ou algo levado pela criatura."),
-    ("capturar-vivo", "Capturar vivo", 1.5, "Trazer a criatura viva."),
-    ("capturar-intacto", "Capturar vivo e sem ferimentos, ou domar", 2, "Trazer a criatura viva e inteira, ou domada."),
+REC_PROVISORIO_DESDE = 4
+# a perícia até Dif 20 é o Livre do ofício à altura × 1,8 (Braçal, Oficial, Perito, Mestre), com os
+# números do autor: o Dif 5 é 10 (o piso; abaixo de 5 paga 10), e não o arred(7 × 1,8) = 13; e o
+# Dif 20 fica no meio degrau 0,5 (60), e não no arred(35 × 1,8) = 65. Entre um degrau e outro a
+# calculadora interpola geometricamente, como o meio degrau, e arredonda pela régua (respostas do
+# autor às perguntas da Executora, 02/10/2026)
+REC_PERICIA_BAIXA = [(5, 5, None, 10), (10, 10, None, 20), (15, 15, 0, None), (20, 20, 0.5, None)]
+REC_PERICIA_ACIMA_DE, REC_PERICIA_MENOS, REC_PERICIA_DIVISOR = 20, 19, 2
+def rec_valor_desafio(d):
+    return REC_DESAFIOS[int(d)] if d == int(d) else REC_MEIOS[int(d)]
+def rec_pericia():
+    linhas = [(de, ate, d, v if d is None else rec_valor_desafio(d)) for de, ate, d, v in REC_PERICIA_BAIXA]
+    dif = REC_PERICIA_ACIMA_DE + 1
+    while True:
+        d = math.ceil((dif - REC_PERICIA_MENOS) / REC_PERICIA_DIVISOR)
+        if d >= len(REC_DESAFIOS): break   # acima do desafio 9 a tabela para, como a de desafio
+        ate = dif
+        while math.ceil((ate + 1 - REC_PERICIA_MENOS) / REC_PERICIA_DIVISOR) == d: ate += 1
+        linhas.append((dif, ate, d, REC_DESAFIOS[d]))
+        dif = ate + 1
+    return linhas
+REC_PERICIA = rec_pericia()
+# a Tarefa por tipo de trabalho (item 4; variação base ×1, sugestões). O bloco "Caçar" é a Tarefa de
+# caça de antes, sem o "recuperar", que virou um tipo de trabalho
+REC_TRABALHOS = [
+    ("cacar", "Caçar", [
+        ("afugentar", "Afugentar ou expulsar", 0.75),
+        ("matar", "Matar", 1),
+        ("trazer-parte", "Trazer parte ou prova", 1),
+        ("capturar-vivo", "Capturar vivo", 1.5),
+        ("capturar-intacto", "Capturar sem ferimentos, ou domar", 2)]),
+    ("escoltar", "Escoltar", [("levar", "Levar de A a B", 1), ("sem-saber", "Sem que ninguém saiba", 1.5)]),
+    ("proteger", "Proteger um lugar", [("conhecida", "Contra ameaça conhecida", 1), ("guarda-oculta", "Sem que a ameaça saiba que há guarda", 1.5)]),
+    ("invadir", "Invadir", [("entrar-sair", "Entrar e sair", 1), ("sem-rastro", "Sem deixar rastro", 1.5)]),
+    ("roubar", "Roubar", [("trazer", "Trazer o objeto", 1), ("sem-notar", "Sem que a falta seja notada", 2)]),
+    ("investigar", "Investigar", [("fato", "Descobrir um fato", 1), ("prova", "Com prova que se sustente", 1.5)]),
+    ("entregar", "Entregar", [("levar", "Levar de A a B", 1), ("prazo-sigilo", "Com prazo apertado ou sigilo", 1.5)]),
+    ("recuperar", "Recuperar", [("trazer-de-volta", "Trazer de volta alguém ou algo levado", 1)]),
 ]
 REC_RISCOS = [
     ("normal", "Normal", 1, "O que o desafio já prevê."),
@@ -467,8 +503,9 @@ REC_RISCOS = [
 ]
 REC_TONS = [("curto", "Dinheiro curto", 0.5), ("padrao", "Padrão", 1), ("heroico", "Heroico", 2)]
 REC_URGENCIAS = [("normal", "Normal", 1), ("grave", "Grave", 3), ("desespero", "Desespero", 10)]
-OUT["recompensas"] = dict(desafios=REC_DESAFIOS, meios=REC_MEIOS, divisor_por_desafio=4, desafio_por_dobra=0.5, dias_semana=DIAS_SEMANA, grupo=4,
-                          tarefas=REC_TAREFAS, riscos=REC_RISCOS, tons=REC_TONS, urgencias=REC_URGENCIAS)
+OUT["recompensas"] = dict(desafios=REC_DESAFIOS, meios=REC_MEIOS, provisorio_desde=REC_PROVISORIO_DESDE, pericia=REC_PERICIA,
+                          divisor_por_desafio=4, desafio_por_dobra=0.5, dias_semana=DIAS_SEMANA, pessoas_padrao=4,
+                          trabalhos=REC_TRABALHOS, riscos=REC_RISCOS, tons=REC_TONS, urgencias=REC_URGENCIAS)
 
 if __name__ == "__main__":
     import json

@@ -153,14 +153,24 @@ blocos.pacotes = Object.entries(PAC).map(([nome, p]) => {
   return `- **${nome} (${fmt(p.total.pc)})**: ${itens.join(', ')}.`;
 }).join('\n');
 
-// ------------------------------------------------ recompensas de caça (rodada 115)
-// O valor de cada desafio e do meio degrau acima dele (por caçador, por semana; encontro por
-// equivalentes, Adendo 2 de 01/10/2026) e a capacidade de quem paga (Livre/Ano da faixa ×
+// ------------------------------------------- trabalhos e recompensas (rodada 115)
+// O valor de cada desafio e do meio degrau acima dele (por pessoa, por semana; item 5 de
+// 02/10/2026), o de cada degrau de perícia e a capacidade de quem paga (Livre/Ano da faixa ×
 // urgência), lidos de recompensas.json e renda.json.
 blocos.recompensas = envolve(tabela(
   ['Desafio', ...REC.desafios.map((d) => String(d.desafio))], ['l', ...REC.desafios.map(() => 'c')],
   [['Valor (pc)', ...REC.desafios.map((d) => milhar(pcDe(d)))],
    ['Com +1/2 (pc)', ...REC.desafios.map((d) => { const m = REC.meios.find((x) => x.desafio === d.desafio + 0.5); return m ? milhar(pcDe(m)) : '·'; })]],
+));
+// a tabela de perícia (item 5, correção A): o valor por Dificuldade dos testes decisivos. O capítulo
+// mostra os degraus até a faixa 30-31, por decisão do autor (02/10/2026); a fórmula segue até o
+// desafio 9 no JSON e na calculadora, e o texto diz isso
+const ATE_DIF_CAPITULO = 31;
+const PER = REC.pericia.filter((l) => l.dif_ate <= ATE_DIF_CAPITULO);
+blocos['recompensas-pericia'] = envolve(tabela(
+  ['Dificuldade', ...PER.map((l) => (l.dif_de === l.dif_ate ? String(l.dif_de) : `${l.dif_de}-${l.dif_ate}`))], ['l', ...PER.map(() => 'c')],
+  [['Desafio', ...PER.map((l) => (l.desafio == null ? '·' : num(l.desafio)))],
+   ['Valor (pc)', ...PER.map((l) => milhar(pcDe(l)))]],
 ));
 blocos['recompensas-capacidade'] = envolve(tabela(
   ['Faixa', 'Livre/Ano', ...REC.urgencias.map((u) => `${u.nome} ×${num(u.mult)}`)], ['l', 'c', ...REC.urgencias.map(() => 'c')],
@@ -203,7 +213,7 @@ const CAP_OFICIO = path.join(raiz, 'src/content/chapters/acoes-oficio-e-mundo.md
 const pagina = (slug) => path.join(raiz, `src/content/chapters/${slug}.md`);
 const ONDE = {
   'custo-de-servico-e-itens': ['renda', 'custo-de-vida', 'pacote-familia'],
-  'custo-servicos': ['tarifas', 'recompensas', 'recompensas-capacidade', 'servicos', 'aulas', 'criados', 'escravos'],
+  'custo-servicos': ['tarifas', 'recompensas', 'recompensas-pericia', 'recompensas-capacidade', 'servicos', 'aulas', 'criados', 'escravos'],
   'custo-mercadorias': ['mercadorias', 'pacotes'],
   'custo-montarias-e-viagens': ['montarias', 'viagens'],
 };

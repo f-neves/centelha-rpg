@@ -600,3 +600,116 @@ O achado do Comerciante: o grupo podia escolher um método mais lento para multi
   caça" aparece 0 vez no capítulo gerado. Zero travessão nos 3 arquivos (contado em Python, no
   arquivo).
 
+
+**Commit do item 2g:** `38008870` · **CI:** Validar
+[37037626301](https://github.com/f-neves/centelha-rpg/actions/runs/37037626301) verde; Deploy
+[37037626116](https://github.com/f-neves/centelha-rpg/actions/runs/37037626116) verde.
+
+## Item 5 · Trabalhos e recompensas (`57cf3e8a` e `30127dcb`, com as respostas do autor)
+
+A bolsa passa a valer para qualquer trabalho pontual, **como guia para o Mestre, e não regra de
+mundo**, e o texto diz isso. Bolsa = Valor por pessoa × Semanas × Tarefa × Risco × Pessoas, com
+Pessoas no padrão 4. O Valor tem dois caminhos, confronto (tabela de desafio) e perícia (tabela da
+Dificuldade); com os dois, vale o maior.
+
+**Perguntas da Executora, respondidas pelo autor antes do commit** (no despacho, "Respostas do
+autor às perguntas da Executora"):
+1. Dificuldade entre degraus: **interpolação geométrica** entre os degraus vizinhos, como o meio
+   degrau, arredondada pela régua. Degrau novo **Dif 5 = 10** como piso; abaixo de 5 paga 10.
+2. Acima de Dif 31: a fórmula segue até o desafio 9 (Dif 36-37) e recusa acima; o capítulo mostra a
+   tabela até 30-31 e uma frase dizendo que a fórmula continua.
+3. **Recuperar é tipo próprio**; Caçar fica com 5 variações (saiu o "recuperar" da caça).
+
+**Onde mora.**
+- `lore/economia/v2/modelo.py`: `REC_PERICIA` (gerada: os degraus 5, 10, 15 e 20 do autor, e acima
+  de 20 as faixas da fórmula (Dif − 19) ÷ 2, para cima, até o desafio 9), `REC_TRABALHOS` (a Tarefa
+  por tipo, aninhada), `REC_PROVISORIO_DESDE = 4` (correção D) e `pessoas_padrao = 4` no lugar do
+  antigo `grupo`. `gerar.py` escreve `pericia`, `trabalhos`, `provisorio_desde` e `pessoas_padrao`
+  em `recompensas.json`, regerado pela cadeia (`copiar-economia.mjs`, que leva a `_nota` nova).
+  O schema em `validate-data.mjs` acompanha.
+- `src/lib/recompensa.ts`: `calcularRecompensa` recebe `desafio`, `dificuldade` (um dos dois ou os
+  dois), `trabalho`, `tarefa`, `semanas`, `pessoas` e `grupo` (quem vai, só divide). `valorDaPericia`
+  devolve o degrau, a interpolação entre degraus ou o piso, e recusa acima de Dif 37. O resultado
+  diz o caminho que valeu e se o valor é do topo provisório.
+- `src/components/CalculadoraRecompensa.astro`: escolhe o caminho (confronto, perícia, os dois), o
+  tipo de trabalho e a variação (a lista muda com o tipo), Semanas, viagem, Risco, Pessoas (padrão
+  4), Outro, Tom e quantos vão. O recibo mostra os dois valores quando há os dois, qual valeu, a
+  conta inteira e o arredondado, e os avisos (parte não paga parte; topo provisório; terra a partir
+  do desafio 5; favor acima do 3). As frases dos itens 2f e 2g ficaram no aviso do topo. A ajuda de
+  estimar ficou como estava.
+- `src/content/chapters/custo-servicos.md`: a seção virou **"Trabalhos e recompensas"**, com as
+  frases verbatim do item 3 e das correções B e C, os dois caminhos, as duas tabelas geradas (a de
+  perícia é um bloco novo, `gen:economia-recompensas-pericia`, em `gen-cap-economia.mjs`), a Tarefa
+  por tipo do item 4, os oito exemplos com a conta, e a frase do item 7 ("Acima do desafio 3, o
+  Mestre pode pagar parte em favor, acesso ou objeto."). Correção D: o texto diz que os desafios 0
+  a 3 vêm da escada de capacidade e que do 4 em diante a tabela é provisória; o desafio de cada
+  criatura segue provisório até a bancada.
+- `src/pages/recompensa.astro`: a fórmula nova no topo e o link para `#trabalhos-e-recompensas`. Era o
+  único lugar que apontava para `#caça-e-recompensas` (procurado em `src/`, `scripts/` e no `dist/`
+  gerado: zero ocorrência da âncora velha depois do build).
+- `scripts/test-recompensa.mjs`: 32 asserções, com os oito exemplos, a tabela de perícia, a
+  interpolação, o piso, a recusa acima de 37, o maior dos dois caminhos e Pessoas.
+
+**Os oito exemplos** (sem viagem, tom padrão, a bolsa pela régua, por decisão do autor):
+
+| trabalho | caminho | conta | exata | bolsa |
+|---|---|---|---|---|
+| seguir em segredo quem não quer ser achado e descobrir onde mora | Dif 15 | 40 × 1 sem × 1 × 1 × 1 pessoa | 40 | **40** |
+| seguir um espião treinado sem ser notado e trazer prova do que ele faz | Dif 20 | 60 × 2 × 1,5 × 1 × 1 | 180 | **180** |
+| roubar de um nobre sem que ele note | Dif 20 | 60 × 1 × 2 × 1,5 (alto) × 2 | 360 | **360** |
+| entregar uma carta que ninguém pode saber que existe | Dif 15 | 40 × 2 × 1,5 × 1 × 1 | 120 | **120** |
+| recuperar uma criança levada por goblins | desafio 1 | 95 × 1 × 1 × 1 × 4 | 380 | **380** |
+| escoltar um mercador por estrada com bandidos | desafio 1 | 95 × 2 × 1 × 1 × 4 | 760 | **760** |
+| proteger a aldeia de uma matilha de worgs | desafio 3 | 910 × 1 × 1 × 1 × 4 | 3.640 | **3.600** |
+| invadir a torre de um mago | Dif 25 = desafio 3 | 910 × 1 × 1 × 2 (muito alto) × 4 | 7.280 | **7.300** |
+
+**Rótulos trocados pela correção B** (sem mudar número):
+- "seguir uma pessoa e achar onde mora" virou "seguir **em segredo quem não quer ser achado** e
+  descobrir onde mora": seguir alguém comum é serviço de rastreador; o sigilo e o alvo que se
+  esconde tiram o trabalho da rotina.
+- "seguir um espião treinado, com prova" virou "seguir um espião treinado **sem ser notado** e
+  trazer prova do que ele faz": só deixa explícito o sigilo e o perigo.
+- "roubar de um nobre sem que note" ficou como estava, com "ele": é ilegal, e já está fora de
+  Serviços.
+- "entregar carta sigilosa" virou "entregar uma carta **que ninguém pode saber que existe**", com a
+  observação "é o sigilo que tira o trabalho do mensageiro comum", como a correção B pede.
+
+**O que mais mudou no capítulo, e por quê.**
+- "O valor é o Livre: o custo de vida de quem caça já está descontado" e "A bolsa paga um grupo de
+  4 ... se forem menos, levam mais e arriscam mais" saíram: a frase do item 3 e a da correção C
+  dizem o mesmo, e as duas versões juntas se repetiriam.
+- "Semanas = caçada estimada" virou "duração estimada", porque o trabalho não é mais só caça.
+- O "Risco, além do que o desafio já prevê" virou "além do que o desafio ou a Dificuldade já
+  preveem".
+- Na explicação da perícia, a lista de quem passa até Dif 20 ganhou o **Braçal** ("Braçal, Oficial,
+  Perito, Mestre de ofício"), por causa do degrau Dif 5 = 10 da resposta do autor, que é o Livre do
+  Braçal × 1,8.
+- Na calculadora, a variação abre na base ×1 de cada tipo (Matar, na caça), como abria antes.
+- Os exemplos de antes ficaram: a matilha de worgs virou o exemplo de proteger a aldeia (o mesmo
+  desafio 3, com a referência do Complemento: worg 0, dupla 2, matilha 3), e as ratazanas e o chefe
+  de desafio 3 continuam no fim da lista.
+
+**Dois números do autor que a régua não dá**, registrados sem mudar nada: Dif 5 = 10, e não
+arred(7 × 1,8) = 13; e Dif 20 = 60 (o meio degrau 0,5), e não arred(35 × 1,8) = 65. O modelo grava
+os números do autor e diz isso em comentário. O Dif 10 = 20 e o Dif 15 = 40 batem com a régua.
+
+**Para o portão das tolerâncias:** os desafios do 4 em diante e o recibo que avisa disso levam
+`TOLERÂNCIA` com `LEVANTA QUANDO:` (a G73 decidir os preços do sobre-humano, e o autor confirmar ou
+trocar o topo da tabela). A marca velha, "até a bancada medir" para a tabela inteira, saiu.
+
+**Verificação** (sobre `30127dcb`): `test-recompensa` 32 asserções verdes; `npm run validate`
+verde ("Portões OK"); `npx astro sync && npx tsc --noEmit` sem erro; `npm run build` verde. No
+gerado, `dist/regras/custo-servicos/index.html` traz `id="trabalhos-e-recompensas"`, a fórmula nova,
+"guia para o Mestre: sugestão de preço, e não regra de mundo", as frases do item 3 e das correções B
+e C inteiras, "a calculadora interpola as Dificuldades entre um degrau e outro", a tabela de perícia
+(a faixa "22-23"), "3.600 pc", "7.300 pc", a frase do item 7 e "Do desafio 4 em diante a tabela é
+provisória" (1 vez cada), e o link para `acoes-e-sistema#de-onde-sai-a-dificuldade`, que existe
+como `id` na página de destino. Não traz "caça-e-recompensas" nem "Valor do encontro" (0).
+`dist/recompensa/index.html` traz o link `trabalhos-e-recompensas`, a fórmula nova, "Perícia
+(Dificuldade)", "Quantos vão de fato", "Guia para o Mestre, e não regra de mundo" e "Proteger um
+lugar"; nenhuma âncora velha em todo o `dist/`. Nenhum travessão novo (contado em Python, no
+arquivo): zero em 11 dos 12 arquivos, e os 17 de `scripts/validate-data.mjs` já estavam no
+`HEAD` (contagem igual antes e depois). A página aberta no dev server (driver do projeto, modo
+`shot`): a calculadora abre em Confronto, desafio 1, Caçar, Matar ×1, 1 semana e 16 dias de viagem,
+4 pessoas, e o recibo dá "Bolsa: 760 pc · Parte por pessoa (vão 4): 190 pc" (95 × 2,0 × 4), com o
+campo da Dificuldade escondido no caminho do confronto.
