@@ -443,6 +443,26 @@ Exemplo curto no capítulo, verbatim: "consertar a ponte da aldeia isolada, a di
 carpinteiro: bolsa, e não Serviços". A primeira frase da correção B ("Se um profissional faria o
 trabalho como serviço comum...") fica como está.
 
+### Item 5b (autor, 02/10, depois de `d2237ae2` e `03149413`)
+
+1. **Correção D com a mesma frase nos três lugares** (capítulo, calculadora e `_nota` do
+   `recompensas.json`, esta pela cadeia do modelo), **com os códigos**, verbatim:
+
+   > Os desafios 0 a 3 da tabela de valor não são provisórios: vêm da escada de capacidade, e não
+   > da bancada. Do desafio 4 em diante a tabela é provisória até a G73. O desafio de cada
+   > criatura segue provisório até a B14.
+
+2. **Dif 5 e Dif 20 pela régua**: Dif 5 = **13** (arred de 7 × 1,8 = 12,6) e Dif 20 = **65**
+   (arred de 35 × 1,8 = 63). Substitui os 10 e 60 do pedido e da resposta 1.
+   - Dif 20 **deixa de ser** o meio degrau 0,5 da tabela de desafio. Tire do capítulo e da
+     calculadora a equivalência "Dif 20 = desafio 0,5". As outras (Dif 15 = desafio 0; acima de
+     20 pela fórmula) ficam.
+   - O piso passa a ser 13: abaixo de Dif 5, paga 13.
+   - Mudam os exemplos que usam Dif 20 e os casos interpolados. Refaça a conta à mão no relato:
+     o espião (65 × 2 × 1,5 = 195), o nobre (65 × 1 × 2 × 1,5 × 2 = 390), e os interpolados
+     Dif 7, 12 e 17 (os vizinhos agora são 13, 20, 40 e 65).
+   - Se mais algum número depender de Dif 20 = 60, liste no relato.
+
 ## Regras desta rodada
 
 - Um commit por item (1, 2, 3 se houver, 4), com pathspec, rebase antes e depois, `push origin
