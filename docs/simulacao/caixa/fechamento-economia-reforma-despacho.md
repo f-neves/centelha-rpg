@@ -259,6 +259,21 @@ recompensa é o preço de um trabalho, e não de cabeças.
    chegar nas 309).
 10. **O relato diz o que foi desfeito e o que ficou** (do 2b, do 2c e do 2d não commitado).
 
+**Complemento do autor (02/10), substitui o exemplo dos worgs do item 7:**
+
+11. **Worg é besta mágica, criatura com desafio próprio. Lobo é animal comum, sem desafio
+    próprio.**
+12. **Exemplo do capítulo e do relato:** "livrar a estrada de uma matilha de 4 worgs" = **desafio 3**
+    (medido na Fase 5b), **PROVISÓRIO** até a medição de bando com Horda. Referência para o
+    Mestre: worg sozinho, desafio 0; dupla, desafio 2; matilha de 4, desafio 3.
+13. **Nota da ficha do lobo** (aplicar quando a B14 chegar nas fichas; agora só registrar na
+    B18), verbatim: "Animal comum, sem desafio próprio. 1 ou 2 lobos não chegam a desafio 0 para
+    um grupo de Centelha 0; uma matilha de 4 é desafio 1; 8, desafio 2 (medição provisória,
+    Fase 5b)."
+14. **Na fila da B14 (B18):** o autor esperava a matilha de worgs em desafio 1 ou 2; a bancada
+    mede 3, com salto de 0 (1 worg) para 2 (2 worgs). A medição de bando com Horda (N = 1 a 32)
+    deve dizer se o salto vem da Guarda sob pressão com 2 a 4 atacantes. Só medir, sem decidir.
+
 ## Regras desta rodada
 
 - Um commit por item (1, 2, 3 se houver, 4), com pathspec, rebase antes e depois, `push origin
