@@ -8,7 +8,7 @@ import REC from '../data/recompensas.json';
 const MAX = REC.desafios.at(-1)!.desafio;
 ---
 <div class="recompensa panel">
-  <p class="muted rc-aviso">O desafio do trabalho é o do <strong>pior confronto que o grupo precisa vencer</strong> para cumpri-lo; a duração entra em Semanas. O desafio do trabalho é absoluto: é o da ameaça, medido contra o grupo de referência (4 personagens de Centelha igual ao desafio), e não muda conforme o grupo que aceita o trabalho. Um grupo veterano que pega uma matilha de worgs recebe o mesmo que um grupo novato receberia. A tabela vai do desafio 0 ao {MAX}, em degraus inteiros e meios degraus entre eles, e é <strong>provisória até a bancada medir</strong> o desafio das criaturas.</p>
+  <p class="muted rc-aviso">O desafio do trabalho é o do <strong>pior confronto que o grupo precisa vencer</strong> para cumpri-lo; a duração entra em Semanas. Semanas é a duração prevista no contrato, combinada antes do trabalho. Terminar antes ou depois não muda a bolsa: quem contrata paga pelo resultado, e não pelo tempo gasto. O desafio do trabalho é absoluto: é o da ameaça, medido contra o grupo de referência (4 personagens de Centelha igual ao desafio), e não muda conforme o grupo que aceita o trabalho. Um grupo veterano que pega uma matilha de worgs recebe o mesmo que um grupo novato receberia. A tabela vai do desafio 0 ao {MAX}, em degraus inteiros e meios degraus entre eles, e é <strong>provisória até a bancada medir</strong> o desafio das criaturas.</p>
   <div class="rc-campos">
     <label>Desafio do trabalho<input type="number" min="0" max={MAX} step="0.5" value="1" data-rc="desafio" /></label>
     <label>Semanas de caçada<input type="number" min="0" step="0.5" value="1" data-rc="cacadaSemanas" /></label>

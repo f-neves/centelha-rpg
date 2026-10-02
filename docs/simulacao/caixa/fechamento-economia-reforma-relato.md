@@ -570,3 +570,33 @@ saiu. O registro do test-l84 passou da seção do 2d para a do 2e.
   `dist/regras/custo-servicos/index.html` e 1 vez em `dist/recompensa/index.html`. Zero travessão
   nos 4 arquivos (contado em Python, no arquivo).
 
+**Commit do item 2f:** `ed289426` · **CI:** Validar
+[37033400033](https://github.com/f-neves/centelha-rpg/actions/runs/37033400033) verde, 19 de 19
+jobs na primeira volta; Deploy
+[37033399808](https://github.com/f-neves/centelha-rpg/actions/runs/37033399808) verde, 2 de 2.
+
+## Item 2g · Semanas é a duração prevista no contrato (Adendo 7, `7c28c50d`)
+
+O achado do Comerciante: o grupo podia escolher um método mais lento para multiplicar Semanas.
+
+- `src/content/chapters/custo-servicos.md`, passo 3 (Semanas): a frase "É estimativa de contrato:
+  se levar mais, azar de quem caça; se levar menos, sorte." saiu, e no lugar dela entrou o texto do
+  autor, verbatim: "Semanas é a duração prevista no contrato, combinada antes do trabalho. Terminar
+  antes ou depois não muda a bolsa: quem contrata paga pelo resultado, e não pelo tempo gasto." Foi
+  o único ajuste: a frase antiga dizia o mesmo (o contrato fixa a duração, e o tempo real não mexe
+  na bolsa), e manter as duas repetiria. O resto do passo ficou como estava.
+- `src/components/CalculadoraRecompensa.astro`: o mesmo texto, verbatim, no aviso do topo, logo
+  depois de "a duração entra em Semanas".
+- Nenhuma conta mudou. O aviso do adendo (generalizar a bolsa para qualquer trabalho pontual) não
+  foi executado, por ordem do despacho.
+- **Uma leitura para o Arquiteto, sem mexer:** o mesmo passo segue dizendo, sobre a viagem, "A
+  viagem conta metade porque é tempo gasto, não perigo: paga o tempo, sem o prêmio de risco." Ao
+  lado de "paga pelo resultado, e não pelo tempo gasto", as duas falam de "tempo gasto" em
+  sentidos diferentes (a viagem prevista que entra na conta, e o tempo real que não entra). Não
+  troquei a redação porque seria escolha além de tirar a repetição.
+- **Verificação** (sobre `7c28c50d`): `npm run validate` verde ("Portões OK"); `npx astro sync &&
+  npx tsc --noEmit` sem erro; `npm run build` verde. A frase do autor aparece 1 vez em
+  `dist/regras/custo-servicos/index.html` e 1 vez em `dist/recompensa/index.html`; "azar de quem
+  caça" aparece 0 vez no capítulo gerado. Zero travessão nos 3 arquivos (contado em Python, no
+  arquivo).
+

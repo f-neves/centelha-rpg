@@ -59,7 +59,7 @@ A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa
 
 <!-- /gen:economia-recompensas -->
 
-3. **Semanas** = caçada estimada (mínimo 1) + metade da viagem de ida e volta. A semana tem 8 dias. É estimativa de contrato: se levar mais, azar de quem caça; se levar menos, sorte. A viagem conta metade porque é tempo gasto, não perigo: paga o tempo, sem o prêmio de risco.
+3. **Semanas** = caçada estimada (mínimo 1) + metade da viagem de ida e volta. A semana tem 8 dias. Semanas é a duração prevista no contrato, combinada antes do trabalho. Terminar antes ou depois não muda a bolsa: quem contrata paga pelo resultado, e não pelo tempo gasto. A viagem conta metade porque é tempo gasto, não perigo: paga o tempo, sem o prêmio de risco.
 4. **Tipo de tarefa** (exemplos): afugentar ou expulsar ×0,75; matar ×1; trazer parte ou prova ×1; recuperar alguém ou algo levado ×1; capturar vivo ×1,5; capturar vivo e sem ferimentos, ou domar ×2.
 5. **Risco**, além do que o desafio já prevê (exemplos): normal ×1; alto, um agravante sério (terreno hostil, alvo desconhecido, prazo curto, civis para proteger) ×1,5; muito alto, dois ou mais agravantes ×2; extremo, alguém provavelmente morre mesmo dando certo ×3.
 
