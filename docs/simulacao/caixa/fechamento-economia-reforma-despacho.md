@@ -376,7 +376,9 @@ gerar algo desta seção.
   não 3.640) e a torre do mago 7.300 (e não 7.280)**; os outros seis, abaixo de 1.000, não mudam.
   Mostre a conta inteira e o arredondado.
 - O "×4" fixo da fórmula atual vira o fator **Pessoas** (padrão 4). A Tarefa de caça atual
-  (`afugentar` ... `domar`) já existe: ela vira o bloco "Caçar" da lista do item 4, sem mudar.
+  (`afugentar` ... `domar`) já existe e vira o bloco "Caçar" do item 4, **com uma mudança**:
+  "recuperar alguém ou algo levado" sai de Caçar e passa a ser o tipo próprio "Recuperar".
+  Caçar fica com 5 variações (corrigido pelo autor em 02/10; esta linha dizia "sem mudar").
 - A Dificuldade citada é a de `acoes-e-sistema.md`, seção "De onde sai a Dificuldade" (`:14`).
   Dificuldades entre os degraus da lista (por exemplo, 17): não estão no pedido. **Pare e
   pergunte** antes de decidir se a calculadora aceita só 10/15/20/25/30 ou interpola.
@@ -414,6 +416,18 @@ Notas do Arquiteto sobre as correções:
   ofício (sem mudar os números), e diga no relato o que trocou. Se um exemplo não couber sem
   mudar número, pare e pergunte.
 - D: as marcas `TOLERÂNCIA`/"provisório" da tabela passam a cobrir só o desafio 4 em diante.
+
+### Respostas do autor às perguntas da Executora (02/10)
+
+1. **Dificuldades entre degraus: interpola geometricamente** entre os degraus vizinhos, como o
+   meio degrau de desafio, e arredonda pela régua. **Novo degrau Dif 5 = 10** (Livre do Braçal 7
+   × 1,8, arredondado) como piso; **abaixo de 5, paga 10.** O capítulo mostra só os degraus (5,
+   10, 15, 20, 21 a 31), com a frase verbatim: "a calculadora interpola as Dificuldades entre um
+   degrau e outro".
+2. **Acima de Dif 31:** a fórmula segue até o desafio 9 (Dif 36-37) e recusa acima. O capítulo
+   mostra a tabela até 30-31 e uma frase dizendo que a fórmula continua até o desafio 9.
+3. **Recuperar é tipo próprio**; Caçar fica com 5 variações (afugentar, matar, trazer parte ou
+   prova, capturar vivo, capturar sem ferimentos ou domar).
 
 ## Regras desta rodada
 
