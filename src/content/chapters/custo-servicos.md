@@ -43,7 +43,7 @@ A bolsa paga um grupo de 4, que é o grupo para o qual o nível de desafio é pe
 
 A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa).
 
-1. **Desafio do trabalho**: o do **pior confronto que o grupo precisa vencer** para cumprir o trabalho. A duração (semanas limpando uma infestação, por exemplo) entra em Semanas, e não no desafio. Animal comum não tem desafio próprio; a ficha traz uma nota de quantos formam um desafio 0 para um grupo de Centelha 0, como referência.
+1. **Desafio do trabalho**: o do **pior confronto que o grupo precisa vencer** para cumprir o trabalho. A duração (semanas limpando uma infestação, por exemplo) entra em Semanas, e não no desafio. O desafio do trabalho é absoluto: é o da ameaça, medido contra o grupo de referência (4 personagens de Centelha igual ao desafio), e não muda conforme o grupo que aceita o trabalho. Um grupo veterano que pega uma matilha de worgs recebe o mesmo que um grupo novato receberia. Animal comum não tem desafio próprio; a ficha traz uma nota de quantos formam um desafio 0 para um grupo de Centelha 0, como referência.
 2. **Valor** (por caçador, por semana): o da tabela no desafio do trabalho. O meio degrau é a média geométrica dos dois vizinhos, arredondada. A tabela é provisória até a bancada medir o desafio das criaturas, e vai até o desafio 9: acima disso não há valor.
 
 <!-- gen:economia-recompensas -->

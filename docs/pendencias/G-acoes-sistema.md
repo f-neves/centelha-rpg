@@ -517,6 +517,10 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
   - **Fala do autor (01/10/2026):**
     > Pendência para anotar, sem executar: preços do sobre-humano (Centelha, Proezas, Magia),
     > poções como estoque de emergência caro e o modificador regional.
+  - **Teto do preço de partes de criatura** (Adendo 6 do fechamento da economia, item 2f, 02/10/2026,
+    vindo do Comerciante; sem execução): quando houver preço de partes de criatura (junto desta e da
+    G74), ele precisa de um teto próprio pela demanda de quem compra. Hoje os testes de Prejuízo e
+    Capacidade só limitam a bolsa, e bolsa mais partes não tem teto.
 - [ ] **G74 · [DECIDIR] Poções como estoque de emergência caro.** Registrado em 01/10/2026, item 4
   do fechamento da economia, sem execução. Mesma fala do autor da G73: a poção entra na economia
   como estoque de emergência, e cara; o preço e a regra de compra ficam por decidir.

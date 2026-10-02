@@ -541,3 +541,32 @@ arquivo).
 **Uma escolha de interface, que o Arquiteto pode trocar:** o botão "usar como desafio do trabalho"
 na ajuda de estimar. Ele só copia a estimativa para o campo principal quando o Mestre clica; sem o
 clique, a estimativa não mexe em nada.
+
+**Commit do item 2e:** `601e1ce8` · **CI:** Validar
+[37026268471](https://github.com/f-neves/centelha-rpg/actions/runs/37026268471) verde, os 19 jobs
+na primeira volta (Dados e regras e 18 smokes); Deploy
+[37026268494](https://github.com/f-neves/centelha-rpg/actions/runs/37026268494) verde (build e
+deploy).
+
+**Um ajuste da nova Executora no 2e, antes do commit:** a anterior morreu no meio, com a árvore
+suja. Na conferência contra os 14 itens, o capítulo ainda trazia "A estimativa por equivalentes
+daria 1; o Mestre escolhe.", do exemplo do item 7 que o Complemento (item 12) substituiu; a frase
+saiu. O registro do test-l84 passou da seção do 2d para a do 2e.
+
+## Item 2f · O desafio do trabalho é absoluto (Adendo 6, `5d76b91b`)
+
+- `src/content/chapters/custo-servicos.md` (passo 1, "Desafio do trabalho") e
+  `src/components/CalculadoraRecompensa.astro` (o aviso do topo) trazem o texto do autor, verbatim:
+  "O desafio do trabalho é absoluto: é o da ameaça, medido contra o grupo de referência (4
+  personagens de Centelha igual ao desafio), e não muda conforme o grupo que aceita o trabalho. Um
+  grupo veterano que pega uma matilha de worgs recebe o mesmo que um grupo novato receberia."
+  Nenhuma conta mudou.
+- `docs/pendencias/G-acoes-sistema.md` (G73): pendência, sem execução, do teto próprio do preço de
+  partes de criatura pela demanda de quem compra, porque hoje Prejuízo e Capacidade só limitam a
+  bolsa, e bolsa mais partes não tem teto (Comerciante, 02/10). `Pendencias.md` regerado, sem
+  mudança (o índice traz só o resumo da G73).
+- **Verificação** (sobre `5d76b91b`): `npm run validate` verde ("Portões OK"); `npx astro sync &&
+  npx tsc --noEmit` sem erro; `npm run build` verde. A frase inteira do autor aparece 1 vez em
+  `dist/regras/custo-servicos/index.html` e 1 vez em `dist/recompensa/index.html`. Zero travessão
+  nos 4 arquivos (contado em Python, no arquivo).
+
