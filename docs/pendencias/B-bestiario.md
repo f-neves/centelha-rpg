@@ -180,3 +180,17 @@ limitações conhecidas, que são as três de baixo.
   descrição de cada poder das 38 criaturas, e as descrições que faltam nas fichas já
   revertidas; a aplicação inteira vira uma rodada própria, fora desta Fase 4. A Fase 5
   não depende disso: lê os campos mecânicos, que já estão completos.
+- [ ] **B18 · [FAZER] Fila da B14: medir o bando por N, com a Regra de Horda a partir de 8.**
+  Registrado em 01/10/2026, Adendo 3 do fechamento da economia
+  (`docs/simulacao/caixa/fechamento-economia-reforma-despacho.md`, item 2c), só anotado: medir fica
+  para a B14, sem decidir nada. A recompensa de caça usa hoje "+1/2 desafio a cada dobra dos
+  equivalentes", marcado como provisório no capítulo e na calculadora, e a bancada do item 3
+  (`docs/simulacao/caixa/fechamento-economia-reforma-relato.md`) contradiz: para N = 1, 2, 4 e 8,
+  lobos 0, 0, 1, 2 e worgs 0, 2, 3, 5. Ressalva: o N = 8 rodou como indivíduos
+  (`rodarBatalhaBando`), e não como Horda.
+  - **Medir** o bando com N = 1, 2, 4, 8, 16 e 32 para lobos, worgs e uma criatura de desafio 2,
+    usando a Regra de Horda (`src/content/chapters/combate.md:409`, o esquadrão com Magnitude) a
+    partir de 8 (2 por personagem).
+  - **Informar** o desafio por N e se a curva casa com "+1/2 por dobra".
+  - **Suspeita a registrar:** a Guarda sob pressão (`combate.md:405`) pode pesar demais com 2 a 4
+    atacantes (1 worg = 0, 2 worgs = 2).

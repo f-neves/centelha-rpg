@@ -1,12 +1,12 @@
 ---
 // A calculadora da recompensa de caça (rodada 115; encontro por equivalentes desde 01/10/2026). As listas vêm de src/data/recompensas.json e a
 // conta de src/lib/recompensa.ts; nenhum número da regra mora aqui.
-// TOLERÂNCIA: a tabela de desafio do autor e o desafio que o Mestre digita valem só até a bancada medir.
+// TOLERÂNCIA: a tabela de desafio do autor, o +1/2 por dobra e o desafio digitado valem até a bancada medir.
 // LEVANTA QUANDO: a B14 medir o desafio das criaturas, gravá-lo nas fichas e confirmar ou trocar a tabela.
 import REC from '../data/recompensas.json';
 ---
 <div class="recompensa panel">
-  <p class="muted rc-aviso">O desafio de cada criatura é <strong>provisório até a bancada medir</strong>, e as fichas do bestiário ainda não o trazem: digite o desafio e a quantidade de cada tipo de criatura do encontro. A tabela vai do desafio 0 ao {REC.desafios.at(-1)!.desafio}.</p>
+  <p class="muted rc-aviso">O desafio de cada criatura é <strong>provisório até a bancada medir</strong>, e as fichas do bestiário ainda não o trazem: digite o desafio e a quantidade de cada tipo de criatura do encontro. A tabela vai do desafio 0 ao {REC.desafios.at(-1)!.desafio}. O <strong>+1/2 a cada dobra</strong> dos equivalentes também é provisório: a bancada mediu bandos que sobem mais rápido.</p>
   <div class="rc-encontro" data-rc="encontro">
     <div class="rc-linha"><label>Desafio<input type="number" min="0" max={REC.desafios.at(-1)!.desafio} step="1" value="0" data-rc-l="desafio" /></label><label>Quantidade<input type="number" min="0" step="1" value="1" data-rc-l="quantidade" /></label></div>
   </div>
@@ -94,16 +94,20 @@ import REC from '../data/recompensas.json';
       const sobra = r.sobra > 0 ? ` (sobram ${pc(r.sobra)}, divida como quiser)` : '';
       bolsaEl.textContent = `Bolsa: ${pc(r.bolsa)} · Parte por caçador (grupo de ${e.grupo}): ${pc(r.porCacador)}${sobra}`;
       const parcela = (x: number) => `${ptNum(x, x % 1 ? 1 : 0)} pc`;
+      // TOLERÂNCIA: o +1/2 por dobra do recibo vale até a bancada medir o bando com a Regra de Horda.
+      // LEVANTA QUANDO: a B18 (fila da B14) medir o desafio por N e o autor confirmar ou trocar a regra.
       const itens = [
         `Equivalentes (a mais forte, desafio ${enc.maisForte}, conta 1; cada desafio abaixo divide por ${REC.divisor_por_desafio}): ${enc.linhas.map((l) => `${ptNum(l.quantidade)} × ${eqTxt(l.eqCada)}`).join(' + ')} = ${eqTxt(enc.equivalentes)}`,
-        `Desafio do encontro = ${enc.maisForte} + Magnitude ${enc.magnitude} ÷ 2 = ${des(enc.desafio)} (+1/2 a cada dobra dos equivalentes, para baixo; o exato seria ${ptNum(enc.exato, 2)})`,
+        `Desafio do encontro = ${enc.maisForte} + Magnitude ${enc.magnitude} ÷ 2 = ${des(enc.desafio)} (+1/2 a cada dobra dos equivalentes, para baixo, provisório até a bancada; o exato seria ${ptNum(enc.exato, 2)})`,
         `Valor do encontro (tabela no desafio ${des(enc.desafio)}${enc.desafio % 1 ? ', meio degrau' : ''}): ${pc(r.valorEncontro)}, por caçador, por semana`,
         `Semanas = caçada ${ptNum(Math.max(1, e.cacadaSemanas), 1)} + metade da viagem (${ptNum(e.viagemDias)} dias ÷ 2 ÷ ${REC.dias_semana}) = ${ptNum(r.semanas, 1)}`,
         `Tom: ${r.tom.nome} ×${m(r.tom.mult)} · Tarefa: ${r.tarefa.nome} ×${m(r.tarefa.mult)} · Risco: ${r.risco.nome} ×${m(r.risco.mult)} · Outro ×${m(r.outro)}`,
         `Bolsa = ${pc(r.valorEncontro)} × ${m(r.tom.mult)} × ${ptNum(r.semanas, 1)} × ${m(r.tarefa.mult)} × ${m(r.risco.mult)} × ${m(r.outro)} × ${r.grupoReferencia} = ${ptNum(r.exata, r.exata % 1 ? 1 : 0)} pc, arredondada: ${pc(r.bolsa)}`,
         r.solitaria
           ? 'Criatura solitária: tudo ou nada.'
-          : `Pagamento por criatura morta ou capturada (a fração dos equivalentes dela): ${r.partes.map((p) => `desafio ${p.desafio}, ${parcela(p.parte)} cada (${ptNum(100 * p.fracao, 1)}%)`).join('; ')}`,
+          : `Pagamento por criatura morta ou capturada (a fração dos equivalentes dela, para baixo, no pc): ${r.partes.map((p) => p.extra
+              ? `desafio ${p.desafio}, ${pc(p.parte + p.extra)} (${pc(p.parte)} + a sobra de ${pc(p.extra)}, que vai para a mais forte; ${ptNum(100 * p.fracao, 1)}%)`
+              : `desafio ${p.desafio}, ${pc(p.parte)} cada (${ptNum(100 * p.fracao, 1)}%)`).join('; ')}${r.sobraSemDono ? `. Sobram ${pc(r.sobraSemDono)}: as mais fortes empatam, e o grupo decide de quem é` : ''}`,
         `Parte por caçador = ${pc(r.bolsa)} ÷ ${e.grupo}, para baixo = ${pc(r.porCacador)}${sobra}`,
         ...(enc.desafio >= 5 ? ['A partir do desafio 5, a bolsa é paga em terra, título, direito ou favor, no valor da tabela.'] : []),
       ];

@@ -4,7 +4,7 @@
 // devolve a bolsa com cada passo da conta. Nenhum número da regra mora aqui: a tabela de desafio, os
 // multiplicadores e a régua de arredondamento vêm do JSON, que sai do modelo em lore/economia/v2.
 
-// TOLERÂNCIA: a tabela de desafio do autor e o desafio que o Mestre digita valem só até a bancada medir.
+// TOLERÂNCIA: a tabela de desafio do autor, o +1/2 por dobra e o desafio digitado valem até a bancada medir.
 // LEVANTA QUANDO: a B14 medir o desafio das criaturas, gravá-lo nas fichas e confirmar ou trocar a tabela.
 
 export interface ParamRecompensa {
@@ -87,12 +87,19 @@ export function calcularRecompensa(e: EntradaRecompensa, P: ParamRecompensa) {
   const exata = valorEncontro * tom.mult * semanas * tarefa.mult * risco.mult * outro * P.grupo;
   const bolsa = arred(exata, P.arredondamento);
   // por cabeça, cada criatura paga a fração dos seus equivalentes no total; a solitária é tudo ou
-  // nada. A parte sai exata: o arredondamento dela não foi decidido.
+  // nada. Cada parte arredonda para baixo, no pc (Adendo 3), e a sobra vai para a criatura mais
+  // forte quando ela é única; se as mais fortes empatam, a sobra só é informada, porque a divisão
+  // é do grupo (a folga de 1e-9 só protege a parte exata do erro de ponto flutuante).
   const solitaria = totalCriaturas === 1;
-  const partes = enc.linhas.map((l) => ({ desafio: l.desafio, quantidade: l.quantidade, eqCada: l.eqCada, fracao: l.eqCada / enc.equivalentes, parte: bolsa * l.eqCada / enc.equivalentes }));
+  const partes = enc.linhas.map((l) => ({ desafio: l.desafio, quantidade: l.quantidade, eqCada: l.eqCada, fracao: l.eqCada / enc.equivalentes, parte: Math.floor(bolsa * l.eqCada / enc.equivalentes + 1e-9), extra: 0 }));
+  const sobraPartes = bolsa - partes.reduce((s, p) => s + p.parte * p.quantidade, 0);
+  const fortes = partes.filter((p) => p.desafio === enc.maisForte);
+  const maisForteUnica = fortes.reduce((s, p) => s + p.quantidade, 0) === 1;
+  if (maisForteUnica) fortes[0].extra = sobraPartes;
+  const sobraSemDono = maisForteUnica ? 0 : sobraPartes;
   // a Parte por caçador arredonda para baixo, e o que sobra fica explícito (rodada 118): as partes
   // nunca somam mais que a bolsa
   const porCacador = Math.floor(bolsa / Math.max(1, e.grupo));
   const sobra = bolsa - porCacador * Math.max(1, e.grupo);
-  return { encontro: enc, totalCriaturas, valorEncontro, semanas, tarefa, risco, tom, outro, exata, bolsa, solitaria, partes, porCacador, sobra, grupoReferencia: P.grupo };
+  return { encontro: enc, totalCriaturas, valorEncontro, semanas, tarefa, risco, tom, outro, exata, bolsa, solitaria, partes, sobraPartes, maisForteUnica, sobraSemDono, porCacador, sobra, grupoReferencia: P.grupo };
 }

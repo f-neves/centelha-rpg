@@ -44,7 +44,7 @@ A bolsa paga um grupo de 4, que é o grupo para o qual o nível de desafio é pe
 A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa).
 
 1. **Equivalentes.** Cada criatura no desafio da mais forte conta 1, e cada desafio abaixo da mais forte divide por 4, sem piso (um abaixo 1/4, dois 1/16, três 1/64). Os equivalentes somam com fração.
-2. **Desafio do encontro** = desafio da mais forte + Magnitude ÷ 2: sobe 1/2 a cada vez que os equivalentes dobram, para baixo, nos mesmos degraus da Magnitude da [Regra de Horda](/regras/combate#regra-de-horda) (1: +0; 2 a 3: +1/2; 4 a 7: +1; 8 a 15: +1 1/2; 16 a 31: +2; 32 a 63: +2 1/2; 64 a 127: +3).
+2. **Desafio do encontro** = desafio da mais forte + Magnitude ÷ 2: sobe 1/2 a cada vez que os equivalentes dobram (**provisório**: a bancada mediu bandos que sobem mais rápido, e a medida com a Regra de Horda ainda está por fazer), para baixo, nos mesmos degraus da Magnitude da [Regra de Horda](/regras/combate#regra-de-horda) (1: +0; 2 a 3: +1/2; 4 a 7: +1; 8 a 15: +1 1/2; 16 a 31: +2; 32 a 63: +2 1/2; 64 a 127: +3).
 3. **Valor do encontro** (por caçador, por semana): o da tabela no desafio do encontro. O meio degrau é a média geométrica dos dois vizinhos, arredondada. A tabela é provisória até a bancada medir o desafio das criaturas, e vai até o desafio 9: acima disso não há valor.
 
 <!-- gen:economia-recompensas -->
@@ -66,7 +66,7 @@ A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa
 
 **Tom da campanha:** numa campanha de dinheiro curto, o Valor do encontro vale metade; numa campanha heroica, o dobro.
 
-**Pagamento:** num bando, cada criatura morta ou capturada paga a fração dos seus equivalentes no total (sucesso parcial paga parcial). Criatura solitária: tudo ou nada.
+**Pagamento:** num bando, cada criatura morta ou capturada paga a fração dos seus equivalentes no total (sucesso parcial paga parcial), arredondada para baixo, no pc; a sobra fica com a criatura mais forte (se as mais fortes empatam, o grupo decide). Criatura solitária: tudo ou nada.
 
 Exemplos de Valor do encontro: 4 lobos (desafio 0) são 4 equivalentes, desafio 1, 95 pc; 100 ratazanas (desafio 0), desafio 3, 910 pc; um chefe de desafio 3 com 4 criaturas de desafio 0 soma 1,0625 equivalentes, desafio 3, 910 pc, e o chefe sozinho responde por 94% da bolsa.
 

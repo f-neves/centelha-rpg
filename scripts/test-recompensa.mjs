@@ -1,4 +1,4 @@
-// TOLERÂNCIA: a tabela de desafio do autor e o desafio que o Mestre digita valem só até a bancada medir.
+// TOLERÂNCIA: a tabela de desafio do autor, o +1/2 por dobra e o desafio digitado valem até a bancada medir.
 // LEVANTA QUANDO: a B14 medir o desafio das criaturas, gravá-lo nas fichas e confirmar ou trocar a tabela.
 // test-recompensa.mjs · a conta da recompensa de caça, pela mesma função que a calculadora usa
 // (src/lib/recompensa.ts), com os parâmetros de src/data/recompensas.json. Desde o fechamento da
@@ -6,9 +6,11 @@
 // forte conta 1, cada desafio abaixo divide por 4; o desafio do encontro é o da mais forte + 1/2 a
 // cada dobra dos equivalentes, para baixo (os degraus da Magnitude); o Valor do encontro é o da
 // tabela do autor nesse desafio (0 a 9, meio degrau pela média geométrica dos vizinhos); e Bolsa =
-// Valor do encontro × Semanas × Tarefa × Risco × 4. Os seis exemplos são os do Adendo 2 (lobo = 0;
-// worg = 1 PROVISÓRIO, que contradiz a bancada). Desde a rodada 118 a Parte por caçador é a bolsa ÷
-// o grupo PARA BAIXO, e a sobra é o que as partes não cobrem.
+// Valor do encontro × Semanas × Tarefa × Risco × 4. Os seis exemplos são os do Adendo 2, com o worg
+// = 0 do Adendo 3 (medido sozinho na bancada, item 3; a bancada mede 4 worgs em 3). Desde o Adendo
+// 3 a parte de cada criatura no bando é para baixo, no pc, e a sobra vai para a mais forte quando
+// ela é única (empate: só informada). Desde a rodada 118 a Parte por caçador é a bolsa ÷ o grupo
+// PARA BAIXO, e a sobra é o que as partes não cobrem.
 import { build } from 'esbuild';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -43,7 +45,7 @@ const conta = (criaturas, extra = {}) => R.calcularRecompensa({ ...base, ...extr
 const EXEMPLOS = [
   ['1 lobo', [{ desafio: 0, quantidade: 1 }], 1, 0, 40],
   ['4 lobos', [{ desafio: 0, quantidade: 4 }], 4, 1, 95],
-  ['4 worgs (worg = 1, contra a bancada)', [{ desafio: 1, quantidade: 4 }], 4, 2, 270],
+  ['4 worgs (worg = 0, medido sozinho; a bancada mede 4 worgs em 3)', [{ desafio: 0, quantidade: 4 }], 4, 1, 95],
   ['100 ratazanas de desafio 0', [{ desafio: 0, quantidade: 100 }], 100, 3, 910],
   ['chefe 3 + 4 de desafio 0', [{ desafio: 3, quantidade: 1 }, { desafio: 0, quantidade: 4 }], 1.0625, 3, 910],
   ['4 de desafio 3', [{ desafio: 3, quantidade: 4 }], 4, 4, 3600],
@@ -56,8 +58,12 @@ for (const [nome, cr, eq, des, valor] of EXEMPLOS) {
 const chefe = conta(EXEMPLOS[4][1]);
 ok(Math.abs(chefe.partes[0].fracao - 1 / 1.0625) < 1e-12 && Math.round(100 * chefe.partes[0].fracao) === 94,
   `o chefe responde por ${(100 * chefe.partes[0].fracao).toFixed(2)}% da bolsa (94%)`);
-ok(Math.abs(chefe.partes[0].parte + 4 * chefe.partes[1].parte - chefe.bolsa) < 1e-9,
-  `as partes por cabeça somam a bolsa: ${chefe.partes[0].parte.toFixed(2)} + 4 × ${chefe.partes[1].parte.toFixed(2)} = ${chefe.bolsa}`);
+ok(chefe.bolsa === 3600 && chefe.partes[1].parte === 52 && chefe.partes[0].parte === 3388 && chefe.sobraPartes === 4 && chefe.partes[0].extra === 4 && chefe.sobraSemDono === 0,
+  `chefe: cada menor paga ${chefe.partes[1].parte} pc (52,94 para baixo), o chefe ${chefe.partes[0].parte} + a sobra ${chefe.partes[0].extra} = ${chefe.partes[0].parte + chefe.partes[0].extra} (3392)`);
+ok(chefe.partes[0].parte + chefe.partes[0].extra + 4 * chefe.partes[1].parte === chefe.bolsa, 'as partes por cabeça, com a sobra no chefe, somam a bolsa');
+const sete = conta([{ desafio: 0, quantidade: 7 }]);
+ok(sete.encontro.desafio === 1 && sete.bolsa === 380 && sete.partes[0].parte === 54 && sete.partes[0].extra === 0 && !sete.maisForteUnica && sete.sobraSemDono === 2,
+  `7 lobos empatados: bolsa ${sete.bolsa}, ${sete.partes[0].parte} pc cada (54,28 para baixo), sobra ${sete.sobraSemDono} pc só informada, sem dono (2)`);
 ok(conta(EXEMPLOS[0][1]).solitaria && !conta(EXEMPLOS[1][1]).solitaria, 'a criatura solitária é tudo ou nada; o bando paga por cabeça');
 
 console.log('\n· o meio degrau: dobrar os equivalentes = +1/2 desafio, para baixo');
@@ -71,8 +77,8 @@ ok(Math.abs(v([{ desafio: 0, quantidade: 100 }]).exato - Math.log(100) / Math.lo
 console.log('\n· a Parte por caçador arredonda para baixo, e a sobra fecha a bolsa (rodada 118)');
 const tres = conta([{ desafio: 3, quantidade: 4 }], { grupo: 3 });
 ok(tres.bolsa === 14400 && tres.porCacador === 4800 && tres.sobra === 0, `14400 ÷ 3: parte ${tres.porCacador} (4800), sobra ${tres.sobra}`);
-const sete = conta([{ desafio: 0, quantidade: 1 }], { grupo: 7 });
-ok(sete.porCacador === 22 && sete.sobra === 6 && sete.porCacador * 7 + sete.sobra === sete.bolsa, `160 ÷ 7: parte ${sete.porCacador} (22), sobra ${sete.sobra} (6)`);
+const g7 = conta([{ desafio: 0, quantidade: 1 }], { grupo: 7 });
+ok(g7.porCacador === 22 && g7.sobra === 6 && g7.porCacador * 7 + g7.sobra === g7.bolsa, `160 ÷ 7: parte ${g7.porCacador} (22), sobra ${g7.sobra} (6)`);
 
 console.log('\n· Semanas, Tarefa e Risco seguem como estavam');
 const longa = conta([{ desafio: 2, quantidade: 1 }], { cacadaSemanas: 2, viagemDias: 8, tarefa: 'capturar-intacto', risco: 'alto' });

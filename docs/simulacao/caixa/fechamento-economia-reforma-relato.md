@@ -252,8 +252,8 @@ anomalias de antes (nenhuma nova).
 
 ## O que ficou pendente desta rodada
 
-- **O arredondamento da parte de cada criatura no bando** (item 2): a calculadora mostra a parte
-  exata; falta decidir se arredonda e como.
+- ~~**O arredondamento da parte de cada criatura no bando** (item 2)~~: **fechado no item 2c**
+  (para baixo, no pc, a sobra para a mais forte; empate só informa a sobra).
 - **Worg = 1 contradiz a bancada** (itens 2 e 3): o worg sozinho mede 0, 4 worgs medem 3, e
   quadruplicar os worgs sobe 3 desafios em vez de 1. A soma, como está, subprecifica bandos de
   worgs em relação à bancada. É da B14 e do autor. (Atualizado no item 2b: a regra por
@@ -365,3 +365,85 @@ como o inteiro de baixo ou o de cima, e não como ,5.
 - O que a Fase 5b já tinha levantado continua de pé: ou o worg tem algo que faz o bando dele
   crescer mais rápido que o de lobos, ou a política de bando da bancada (foco de fogo, pressão
   empilhada na persona engajada) pesa demais. Para o autor e a B14; nada decidido aqui.
+
+**Commit do item 2b:** `c09261ce` · **CI:** Validar run 36932066683, os 19 jobs verdes, conferidos
+job a job com `gh run view`; Deploy run 36932066543 verde.
+
+## Item 2c · Adendo 3 do autor (`170f6fe4`)
+
+Commit novo sobre o `c09261ce`.
+
+**1. "+1/2 por dobra" fica, marcado como provisório.** No capítulo (`custo-servicos.md`, passo 2 do
+Desafio do encontro: "(**provisório**: a bancada mediu bandos que sobem mais rápido, e a medida com
+a Regra de Horda ainda está por fazer)") e na calculadora (o aviso do topo e a linha do recibo
+"+1/2 a cada dobra dos equivalentes, para baixo, provisório até a bancada"). As marcas
+`TOLERÂNCIA` do código passam a citar também o +1/2 por dobra, com o mesmo `LEVANTA QUANDO`.
+
+**A contradição da bancada, registrada.** O item 3 mediu, para N = 1, 2, 4 e 8:
+
+| N | lobos | worgs | regra (+1/2 por dobra, a partir de 0) |
+|---|---|---|---|
+| 1 | 0 | 0 | 0 |
+| 2 | 0 | 2 | 0,5 |
+| 4 | 1 | 3 | 1 |
+| 8 | 2 | 5 | 1,5 |
+
+Os lobos ficam perto da regra; os worgs sobem bem mais rápido (+5 de 1 para 8, contra +1,5).
+**Ressalva: o N = 8 rodou como 8 indivíduos** (`rodarBatalhaBando`, a mesma política da Fase 5b),
+**e não como Horda** (o esquadrão com Magnitude de `combate.md:409`). A medida certa com a Horda
+foi para a fila da B14 (B18, abaixo).
+
+**2. Worg = 0 nos exemplos.** O worg medido sozinho no item 3 deu 0. O exemplo vira: **4 worgs = 4
+equivalentes, desafio 0 + 1 = 1, Valor do encontro 95** (bolsa 95 × 4 = 380). **A bancada mediu 4
+worgs em 3**, e a regra paga como desafio 1. A asserção do `test-recompensa.mjs` passou de "worg =
+1, desafio 2, 270" para "worg = 0, desafio 1, 95".
+
+**3. A parte por cabeça arredonda para baixo, no pc, e a sobra vai para a mais forte.** Fecha a
+pendência que o item 2 deixou aberta. Quando as mais fortes empatam, a resposta do autor (via
+Arquiteto) é não regular: a divisão é do grupo, e a calculadora mostra as partes por baixo e a
+sobra em pc, sem dar dono. No código (`src/lib/recompensa.ts`), cada parte é `floor(bolsa ×
+equivalentes dela ÷ equivalentes do encontro)`; `sobraPartes` é o que falta para a bolsa; se a mais
+forte é uma só, a sobra entra como `extra` dela; senão vira `sobraSemDono`. No capítulo: "arredondada
+para baixo, no pc; a sobra fica com a criatura mais forte (se as mais fortes empatam, o grupo
+decide)".
+
+- **O chefe, refeito:** bolsa 3.600. Cada menor: 3.600 × (1/64) ÷ 1,0625 = 52,94, para baixo **52
+  pc**. O chefe: 3.600 × 1 ÷ 1,0625 = 3.388,24, para baixo 3.388, mais a sobra de 3.600 − 3.388 −
+  4 × 52 = **4 pc**: **3.392 pc**. Soma: 3.392 + 4 × 52 = 3.600.
+- **Empate, 7 lobos:** 7 equivalentes, desafio 1, bolsa 380. Cada lobo: 380 ÷ 7 = 54,28, para baixo
+  **54 pc**; sobram **2 pc**, só informados ("Sobram 2 pc: as mais fortes empatam, e o grupo decide
+  de quem é").
+
+Os dois casos são asserções do teste (21 no total).
+
+**4. O degrau na borda da Magnitude: conhecido e aceito.** 127 equivalentes dão +3 e 128 dão +3 1/2:
+uma criatura a mais muda o Valor do encontro de um degrau inteiro para o meio degrau seguinte. O
+autor aceita: quem escolhe o número de criaturas é o Mestre, e a Regra de Horda tem os mesmos
+degraus. Não entrou frase no capítulo (o passo 2 já lista os degraus por extenso).
+
+**5. Fila da B14.** Nova **B18 · [FAZER]** no fim de `docs/pendencias/B-bestiario.md`, só anotada:
+medir o bando com N = 1, 2, 4, 8, 16 e 32 para lobos, worgs e uma criatura de desafio 2, com a Regra
+de Horda a partir de 8; informar o desafio por N e se a curva casa com +1/2 por dobra; e a
+suspeita de que a Guarda sob pressão pesa demais com 2 a 4 atacantes (1 worg = 0, 2 worgs = 2).
+`Pendencias.md` regerado: 349 itens, 244 abertos, as mesmas 8 anomalias.
+
+**As duas leituras do 2b ficam como estavam** (o Arquiteto confirmou): "a partir do desafio 5" lê o
+desafio do encontro, e encontro acima de 9 recusa.
+
+**Na calculadora real** (Edge headless no dev server, linhas digitadas pela tela): 7 lobos "Bolsa:
+380 pc ... desafio 0, 54 pc cada (14,3%). Sobram 2 pc: as mais fortes empatam, e o grupo decide de
+quem é"; o chefe "desafio 3, 3.392 pc (3.388 pc + a sobra de 4 pc, que vai para a mais forte;
+94,1%); desafio 0, 52 pc cada (1,5%)"; a linha do desafio com "provisório até a bancada". Nenhum
+erro de script (só os 403 de recurso estático do dev server).
+
+**Produção.** Para quem joga hoje: a parte de cada criatura no recibo da calculadora agora é em pc
+inteiro, com a sobra na mais forte (ou informada, no empate); o capítulo e a calculadora dizem que o
++1/2 por dobra é provisório. Os valores de bolsa não mudam em relação ao 2b. Nenhuma migração.
+
+**Verificação:** `npm run validate` (portões verdes depois de pôr a marca `TOLERÂNCIA` / `LEVANTA
+QUANDO` junto da linha nova do recibo, que o portão pegou na primeira volta; `test-recompensa`
+21/21), `npx astro sync && npx tsc --noEmit` (sem erro), `npm run build` (prova no gerado:
+`dist/regras/custo-servicos/index.html` traz "**provisório**: a bancada mediu bandos que sobem mais
+rápido..." e "arredondada para baixo, no pc; a sobra fica com a criatura mais forte (se as mais
+fortes empatam, o grupo decide)"; `dist/recompensa/index.html` traz "+1/2 a cada dobra dos
+equivalentes também é provisório"). Zero travessão.
