@@ -1,5 +1,9 @@
 # Correção da Reforma da Centelha (a regra do maior) · despacho
 
+> **ATENÇÃO: a regra do maior foi CANCELADA pelo autor em 02/10/2026.** Vale o **Adendo 1**, no fim
+> deste arquivo, que substitui as decisões 2 e 2b e reajusta os cinco itens. O texto abaixo fica como
+> registro do que foi despachado e aplicado nos itens 1 a 4.
+
 Liberado pelo autor em 02/10/2026, para a Executora. Parte de `1a65063f` (origin/main na abertura,
 fim da Revisora 120). **Um commit por item, CI verde em cada um.** Se o orçamento acabar, pare no
 último item fechado e registre o resto como pendência. A revisão é da Revisora, rodada 121, ao fim.
@@ -163,3 +167,80 @@ está reescrevendo, não o conserte de carona: registre.
 - Build: prova no gerado (o HTML da página ou o `dist/` que muda), nunca remoção de pasta.
 - Sem travessão. Habilidade, nunca Perícia, no texto novo.
 - Relato em `docs/simulacao/caixa/correcao-reforma-relato.md`, um bloco por item, com o sha e o CI.
+
+## Adendo 1 · a regra do maior sai; vale 2 × mín (02/10/2026)
+
+### A decisão do autor, verbatim
+
+> Arquiteto: decisão do autor, que substitui a "regra do maior" (proposta do assistente, nunca
+> decidida pelo autor). Se a Executora já aplicou algo da regra do maior, desfaça.
+>
+> A regra do bônus de Centelha:
+> 1. Jogada de Atributo + Habilidade (o caso comum), Valor Passivo, as três Defesas e a Defesa
+>    parada: 2 × mín(Centelha, Habilidade). Sempre o menor. Habilidade 0 dá bônus 0. Exemplos do
+>    autor: Centelha 1 e Habilidade 5 = +2; Centelha 5 e Habilidade 3 = +6; Centelha 6 e Habilidade
+>    1 = +2; Centelha 1 e Habilidade 6 = +2; Centelha 0 e Habilidade 6 = 0; Centelha 0 e Habilidade
+>    0 = 0.
+> 2. Jogada de Atributo puro, quando o MESTRE pede só o Atributo (raro; por exemplo, "role
+>    Destreza"): + Centelha inteira. É a D12, que continua valendo. O texto precisa deixar claro que
+>    "jogada só de Atributo" é o TIPO de jogada pedida, e não o personagem com Habilidade 0: "role
+>    Destreza + Atletismo" com Atletismo 0 leva bônus 0.
+> 3. Dano, Absorção, raspão, Energia, Mana e saltos continuam somando a Centelha inteira.
+> Exemplo para o capítulo: Destreza 3, Centelha 3. "Role Destreza" = 1d6 + 2 + 3 = 1d6 + 5. "Role
+> Destreza + Atletismo" com Atletismo 0 = 1d6 + 2. Com Atletismo 2 = 2d6 + 2 + 4 = 2d6 + 6.
+>
+> Reajuste o despacho da correção da Reforma (0eecc2c7):
+> 1. Motor e bestiário: centelhaNaJogada = 2 × mín; centelhaSoAtributo = + Centelha, usada só
+>    quando a jogada pedida é de Atributo puro. Sem regeneração de criaturas pela regra do maior.
+> 2. Capítulos, glossário, explicação da ficha: todo "+ Centelha" velho vira 2 × mín(Centelha,
+>    Habilidade), menos na jogada de Atributo puro. Reescrever centelha.md:44 com a distinção acima
+>    e os exemplos do autor.
+> 3. Relações sociais: Defesa parada com 2 × mín(Centelha, Sociabilidade) (resposta A), ataque
+>    social com 2 × mín, a frase do Tempo do passo restaurada e o registro sobre o 8d1cbb79.
+> 4. Passivos do grupo na mesa seguindo o Valor Passivo do livro (Kael de 16 para 24).
+> 5. A nota da B14 sai: a bancada mediu com a regra certa, e as âncoras continuam válidas.
+
+### Onde a rodada estava (conferido pelo Arquiteto no origin/main)
+
+| item | commit | o que fez | o que acontece agora |
+|---|---|---|---|
+| 1 | `4aaf0fce` | regra do maior no motor; 189 criaturas regeneradas; test-kael 20/13/7; test-contrato | **desfazer inteiro** (código e dados) |
+| 2 | `58869f2f` | capítulos, glossário, ficha, diagrama, cost-examples com "maior(...)" | **refazer para a frente**: cada "maior(Centelha, 2 × mín(...))" vira "2 × mín(...)" |
+| 3 | `ae1889c9` | relações sociais com "maior"; Tempo do passo restaurado; registro do 8d1cbb79 | **refazer para a frente** no termo de Centelha; o resto fica |
+| 4 | `555abf60` | Passivos do grupo pela `valorPassivo` | **fica**; só o texto que cita "maior" muda |
+| 5 | não feito | nota da B14 | **não fazer** |
+
+### O que fazer, em ordem de commit
+
+**A · Desfazer o item 1.** `git revert --no-commit 4aaf0fce`. Antes de commitar, devolva
+`correcao-reforma-relato.md` ao estado do HEAD (é arquivo seu; o relato não se apaga, ele ganha o
+registro abaixo). Depois, em `calc.ts`, os comentários de `centelhaNaJogada` e `centelhaSoAtributo`
+passam a dizer a decisão nova: 2 × mín em toda jogada de Atributo + Habilidade, Habilidade 0 dá 0;
+`centelhaSoAtributo` (+ Centelha inteira) só quando a jogada PEDIDA é de Atributo puro (D12).
+Conferir no fim: `git diff 0eecc2c7 -- src/data/inimigos.json src/data/monsters.json
+src/data/monsters-mesa.json scripts/lib-bestiario.mjs scripts/test-kael.mjs scripts/test-contrato.mjs
+scripts/sim/desafio-bancada.mjs src/lib/artes-grid.ts` vazio (por `rtk proxy git diff`, e com
+`--stat`), e `gen-bestiario.mjs --check` verde. **Os dois achados do item 1 continuam valendo** (o
+`gen-monsters` sem `--check`; o comentário de `desEsqDaDefesa`): ficam no relato como estão.
+**Produção:** as Defesas da ficha e do bestiário voltam ao que eram antes de 4aaf0fce (Kael 20/10/4).
+
+**B · Capítulos, glossário e ficha (item 2 para a frente).** Toda fórmula com "maior(Centelha, 2 ×
+mín(Centelha, X))" vira "2 × mín(Centelha, X)". Os quatro exemplos da criação recalculados pelo
+`calc.ts` (Kael 20/10/4). O `cost-examples.mjs` segue conferindo pela calc. `centelha.md:44`
+reescrito com a distinção do autor (o TIPO de jogada pedida, e não o personagem com Habilidade 0),
+os seis exemplos dele e o exemplo de Destreza 3 / Centelha 3, verbatim nos números. Varra
+`rtk proxy git grep -n -i "maior(Centelha\|regra do maior" -- src scripts *.md`: no fim, zero fora
+de `docs/`.
+
+**C · Relações sociais (item 3 para a frente).** `:138`, `:274`, `:182`, `:276` com 2 × mín; a tabela
+`:196-197` recalculada (Kael e Sora); a nota de `regras.json:2683` com 2 × menor e a frase do Tempo
+do passo mantida; `Regua_Relacao.md:119`.
+
+**D · Mesa (item 4, só texto).** `mesa-ficha.ts` e `grupo.astro`: onde o comentário ou a nota diz
+"maior", passa a "2 × mín(Centelha, Habilidade)". Kael continua 24 (2 × mín(3, 3) = 6, igual).
+
+B, C e D podem ir num commit só, se ficar mais simples; A vai sozinho.
+
+**No relato**, um bloco "Adendo 1" com: a decisão verbatim (apontar para este arquivo basta); o que
+foi desfeito e por qual commit; e a frase: "a regra do maior entrou como decisão do autor pela
+resposta à pergunta de alcance, e o autor a cancelou: não era decisão dele". Nada da B14.
