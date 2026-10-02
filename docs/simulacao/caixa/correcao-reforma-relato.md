@@ -189,3 +189,47 @@ e `quase-acerto` ("Sora (Centelha 3)", "4 − 1 + 3 − 0 = 6") também. O SVG d
 "maior(Centelha" 2 vezes. O `dist/ref-index.json` (glossário) traz a fórmula nova 8 vezes, e o bundle
 da ficha traz a explicação nova. Nenhuma página de `dist/regras/` sobra com "2 × menor(Centelha,
 Habilidade)", "nunca mais do que a Habilidade" ou "Centelha 2) ataca" fora de um `maior(`.
+
+**Commit do item 2:** `58869f2f`.
+
+## Item 3 · Relações sociais e a Defesa parada
+
+- `relacoes-sociais.md:138` e `:274` (o ataque social): `+ maior(Centelha, 2 × mín(Centelha,
+  Habilidade))` no lugar de `+ Centelha`.
+- `:182` e `:276` (a Defesa parada): `Compostura + Sociabilidade + maior(Centelha, 2 × mín(Centelha,
+  Sociabilidade)) + termo da régua`, a fórmula da seção "Como as decisões se juntam" do despacho.
+  O `multDefesa` é 1 (`regras.json`), então o capítulo continua escrevendo a soma sem multiplicador.
+- `:188`, a explicação de por que a Centelha entra "só de um lado", **relida contra a fórmula nova e
+  deixada como está**. Ela segue fazendo sentido:
+  - o ataque parado continua sem Centelha;
+  - o "sem o ×2" fala da soma (Compostura + Sociabilidade), e na Defesa Social com dado o bônus de
+    Centelha também fica fora do ×2, então os dois modos levam o mesmo termo de Centelha e a
+    "mesma calibragem" continua valendo.
+- A tabela `:192-198`, Kael e Sora recalculados nas duas colunas:
+
+| alvo | Defesa Social (com dado) | Defesa parada |
+|---|---|---|
+| Kael (Compostura 2, Sociabilidade 0, Centelha 3) | 7, igual: (2 + 0) × 2 + maior(3, 0) | 5, igual: 2 + 0 + 3 |
+| Sora (Compostura 3, Sociabilidade 3, Centelha 3) | 15 para **18**: (3 + 3) × 2 + maior(3, 6) | 9 para **12**: 3 + 3 + 6 |
+
+  O Kael já dava 7 e 5 pela conta flat de antes, e a regra do maior com Sociabilidade 0 dá o mesmo.
+  **O guarda, o vendedor e a Dama Vesna não têm ficha no texto**: os números deles (6/3, 8/4, 18/11)
+  ficaram como estavam, sem conferência possível. Registrado.
+- `regras.json:2683` (`relacoes.modoDevagar.nota`): a Defesa parada pela regra do maior, e **a frase
+  do Tempo do passo voltou**, na redação de antes do `8d1cbb79`: "Tempo do passo, em intervalos =
+  máx(pisoTempoDoPasso, defesa parada − ataque parado − soma dos gestos)."
+- Varrido por mais: `Regua_Relacao.md:119` (o Ataque Social do documento de desenho), que somava
+  `+ Centelha`, passa a `maior(Centelha, 2 × mín(Centelha, Habilidade))`. O resto da linha diz
+  "Perícia", e não mexi: não era a frase que eu estava reescrevendo. Nenhum código calcula o ataque
+  social nem a Defesa parada (procurado `multDefesa`, `centelhaSoNaDefesa`, `modoDevagar` e
+  "Defesa parada" em `src` e `scripts`): a mesa só registra o lance social.
+
+**O registro que o autor pediu, verbatim:** a troca do 8d1cbb79 foi decisão de regra tomada sem o
+autor, sob o nome de "comentário desatualizado"; o resultado ficou certo, mas o caminho foi errado, e
+regra se pergunta.
+
+**Verificação** (sobre `58869f2f`): `npm run validate` verde ("Portões OK"); `npm run build` verde. No
+HTML de `dist/regras/relacoes-sociais/index.html`, contado no texto sem marcação: o ataque com
+"+ Acerto da Abordagem + maior(Centelha, 2 × mín(Centelha, Habilidade))" e a Defesa parada nova
+aparecem 2 vezes cada (a fórmula e o resumo do fim); a tabela traz "Sora 18 12" e "Kael 7 5"; "Acerto
+da Abordagem + Centelha" e "Sociabilidade + Centelha +" aparecem 0 vezes.

@@ -135,7 +135,7 @@ Quem lê melhor a sala toma a palavra primeiro: entra sozinho no **Tick 1**, e o
 
 ### O ataque social
 
-<p class="formula">Ataque = [ (Influência + Habilidade) ÷ 2 ] d6  ( +2 se a soma for ímpar )  + Acerto da Abordagem  + Centelha</p>
+<p class="formula">Ataque = [ (Influência + Habilidade) ÷ 2 ] d6  ( +2 se a soma for ímpar )  + Acerto da Abordagem  + maior(Centelha, 2 × mín(Centelha, Habilidade))</p>
 
 A **habilidade** é a da abordagem usada (Persuasão, Sedução, Intimidação, Manha…), como o golpe físico escolhe a sua, e a **Especialidade** entra aqui do mesmo jeito que entra lá: se o escopo nomeado dela se aplica (Persuasão *(na corte)* numa audiência), rende **+N dados descartando os N menores**, e não uma parcela somada. O **Acerto da Abordagem** (não confundir com o peso leve, média ou pesada, que só decide a Velocidade) é um bônus de **+0 a +3** que o Mestre concede conforme a abordagem é certeira: uma provocação ou um elogio acertam fácil e somam mais; um discurso longo pesa mais e soma menos. Compara-se com a **Defesa Social** do alvo, que é o número passivo da ficha mais o termo da história, somado pela mesa na hora (logo abaixo):
 
@@ -179,7 +179,7 @@ Sem dado, os dois lados entram somados, sem multiplicador:
 
 <p class="formula">Ataque parado = Influência + Habilidade</p>
 
-<p class="formula">Defesa parada = Compostura + Sociabilidade + Centelha + termo da régua</p>
+<p class="formula">Defesa parada = Compostura + Sociabilidade + maior(Centelha, 2 × mín(Centelha, Sociabilidade)) + termo da régua</p>
 
 <p class="formula">Tempo do passo = máx(1, Defesa parada − Ataque parado − gestos)</p>
 
@@ -194,7 +194,7 @@ O **termo da régua** é o mesmo de "A história empurra o dado", lá atrás: aq
 | um guarda | 6 | 3 |
 | um vendedor | 8 | 4 |
 | Kael | 7 | 5 |
-| Sora | 15 | 9 |
+| Sora | 18 | 12 |
 | a Dama Vesna | 18 | 11 |
 
 Do outro lado, para o Mestre ter referência: um **cortesão** ataca com 10, um sujeito **mediano** com 7, um **inepto** com 4, um **bruto** com 1.
@@ -271,6 +271,6 @@ O cortejo não concede pedido: o que ele faz é **andar a régua**, um passo por
 - **Move por:** atos (saltos fixos: +2 e +3 a seu favor, de −2 a −5 contra você) e gestos (só no cortejo, um por intervalo). Cobrar favor grande desce 1 passo. Sair do Neutro = 3 passos; **teto de vidro ±2** para tudo o que acumula, e só ato atravessa. Esfria 1 passo por estação.
 - **Cena com dado NÃO move a régua**, nem conversa nem duelo: rende **alcance do pedido**, +1 nível por 6 de folga, só naquela cena.
 - **A história pesa:** remar contra o que o alvo já sente soma o nível à Defesa Social dele; remar a favor subtrai. ×1, sem teto (o próprio ±6 já é o limite). Zera no Neutro.
-- **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Acerto da Abordagem + Centelha, contra a Defesa Social (o número da ficha, mais o termo da história somado na hora, acima); **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade.
+- **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Acerto da Abordagem + maior(Centelha, 2 × mín(Centelha, Habilidade)), contra a Defesa Social (o número da ficha, mais o termo da história somado na hora, acima); **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade.
 - **Resistir:** para não ceder, gaste **1 + Margem** de Vontade no lance; se não pagar, cede o ponto e o pedido chega **Margem** níveis acima. Não vale contra leitura.
-- **Influência Estendida** (o modo devagar, sem dado): Ataque parado = Influência + Habilidade; Defesa parada = Compostura + Sociabilidade + Centelha + termo da régua; **Tempo do passo = máx(1, defesa − ataque − gestos)**, em intervalos de **8 dias ×½ ×1 ×2 ×4** pela longevidade de quem corteja. Gestos 0/+1/+2/+4, **um por intervalo**. Quem resiste paga **1 + [máx(0, ataque + gestos − defesa) ÷ 6]** de Vontade por intervalo, e essa Vontade fica **presa** até o cortejo acabar. Leitura vs Defesa Social (a com dado) para saber quanto falta.
+- **Influência Estendida** (o modo devagar, sem dado): Ataque parado = Influência + Habilidade; Defesa parada = Compostura + Sociabilidade + maior(Centelha, 2 × mín(Centelha, Sociabilidade)) + termo da régua; **Tempo do passo = máx(1, defesa − ataque − gestos)**, em intervalos de **8 dias ×½ ×1 ×2 ×4** pela longevidade de quem corteja. Gestos 0/+1/+2/+4, **um por intervalo**. Quem resiste paga **1 + [máx(0, ataque + gestos − defesa) ÷ 6]** de Vontade por intervalo, e essa Vontade fica **presa** até o cortejo acabar. Leitura vs Defesa Social (a com dado) para saber quanto falta.

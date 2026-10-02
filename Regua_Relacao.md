@@ -116,7 +116,7 @@ saco de moedas.
 Uma conversa que tenta mover alguém usa a **fórmula do Combate Social** (Ataque Social vs
 Defesa Social, ver `Combate_Social.md` §4 e §5):
 
-> **Ataque Social** = [(Influência + Perícia) ÷ 2]d6 (+2 se ímpar) + Peso do argumento + Centelha
+> **Ataque Social** = [(Influência + Perícia) ÷ 2]d6 (+2 se ímpar) + Peso do argumento + maior(Centelha, 2 × mín(Centelha, Habilidade))
 > **Defesa Social** = (Compostura + Sociabilidade) × 2 + maior(Centelha, 2 × mín(Centelha, Sociabilidade)) + Especialidade
 
 - **A régua sobe +1 passo a cada 6 de folga** (`[(Ataque − Defesa) ÷ 6]`). Um **sucesso raso**
