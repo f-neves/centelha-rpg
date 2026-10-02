@@ -713,3 +713,15 @@ arquivo): zero em 11 dos 12 arquivos, e os 17 de `scripts/validate-data.mjs` já
 `shot`): a calculadora abre em Confronto, desafio 1, Caçar, Matar ×1, 1 semana e 16 dias de viagem,
 4 pessoas, e o recibo dá "Bolsa: 760 pc · Parte por pessoa (vão 4): 190 pc" (95 × 2,0 × 4), com o
 campo da Dificuldade escondido no caminho do confronto.
+
+**Commit do item 5:** `d2237ae2` (rebaseado sobre `9c13c21f`).
+
+**Emenda à correção B (`9c13c21f`), em commit à parte.** A emenda chegou ao main enquanto o item 5
+era verificado, e o commit do item 5 saiu sem ela. Ela entra no commit seguinte: no capítulo, a
+segunda frase da correção B foi trocada pelo texto novo, verbatim ("... recusado pelos
+profissionais, ou quando não há profissional ao alcance. Acima de Dificuldade 20 nunca há: nenhum
+mortal passa esses testes, e a tabela de Serviços para no Mestre de ofício (soma 12)."), seguida do
+exemplo verbatim, com "Por exemplo:" na frente: "consertar a ponte da aldeia isolada, a dias de
+qualquer carpinteiro: bolsa, e não Serviços". A primeira frase da correção B ficou como estava. Os
+rótulos dos exemplos de perícia continuam valendo com a frase nova (sigilo, alvo que se esconde,
+ilegal), e nenhum número mudou.

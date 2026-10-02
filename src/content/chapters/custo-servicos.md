@@ -39,7 +39,7 @@ Trabalhos pontuais, como abater uma colônia de aranhas, escoltar um mercador, p
 
 A bolsa é Livre: durante o trabalho, o custo de vida do personagem continua saindo dos Recursos dele. Contratar um profissional de fora, por diária, custa a renda dele, pela tabela de Serviços, e não a bolsa.
 
-Se um profissional faria o trabalho como serviço comum do ofício dele (o mensageiro leva a carta, o rastreador segue a trilha), o preço é o de Serviços, pela renda dele. A bolsa é para o trabalho pontual fora da rotina de um ofício: com sigilo, ilegal, perigoso, ou que nenhum profissional aceita.
+Se um profissional faria o trabalho como serviço comum do ofício dele (o mensageiro leva a carta, o rastreador segue a trilha), o preço é o de Serviços, pela renda dele. A bolsa é para o trabalho pontual fora da rotina de um ofício: com sigilo, ilegal, perigoso, recusado pelos profissionais, ou quando não há profissional ao alcance. Acima de Dificuldade 20 nunca há: nenhum mortal passa esses testes, e a tabela de Serviços para no Mestre de ofício (soma 12). Por exemplo: consertar a ponte da aldeia isolada, a dias de qualquer carpinteiro: bolsa, e não Serviços.
 
 <p class="formula">Bolsa = Valor por pessoa × Semanas × Tarefa × Risco × Pessoas</p>
 
