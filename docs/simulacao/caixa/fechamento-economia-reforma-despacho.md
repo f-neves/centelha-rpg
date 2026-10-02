@@ -221,6 +221,44 @@ O 2c já está no main, então isto é **commit novo (2d)**.
    dela; não é divergência.
 4. Registrar também no relato o test-l84 intermitente do Validar `36962462391` (pendente do 2c).
 
+## Adendo 5 (autor, 02/10): item 2e, a recompensa é o preço de UM TRABALHO
+
+**Substitui o Adendo 4 (o 2d não foi commitado e não entra) e desfaz parte do 2b e do 2c.** A
+recompensa é o preço de um trabalho, e não de cabeças.
+
+1. **Bolsa = Valor(desafio do trabalho) × Semanas × Tarefa × Risco × 4.** O desafio do trabalho é
+   o do **pior confronto que o grupo precisa vencer** para cumprir o trabalho. A duração (por
+   exemplo, semanas limpando uma infestação) entra em Semanas.
+2. O trabalho é pago por alguém com um objetivo (livrar o lugar da ameaça, proteger rebanho ou
+   gente). **Matar criaturas sem trabalho contratado não paga nada.**
+3. **Cumprir parte do trabalho não paga parte, a não ser que o Mestre decida.** Escrever assim.
+4. **Pagamento por peça** (crânio, parte para poção) é outra coisa: fica na Tarefa "trazer parte"
+   e na venda de partes, e não na bolsa. Uma frase no capítulo separando os dois.
+5. **SAEM:** divisão da bolsa por criatura, "parte fixada no contrato", sucesso parcial somando
+   partes, arredondamento das partes, regra de empate, "solitária: tudo ou nada". Saem também os
+   casos correspondentes do `test-recompensa.mjs` (125/128 ratazanas, chefe com 94%, divisão por
+   equivalentes, os 7 lobos empatados).
+6. **O campo "desafio do trabalho" vira a entrada principal da calculadora** (inteiro ou meio
+   degrau, de 0 a 9; isto responde à pergunta do campo opcional do 2d). A conta por equivalentes
+   (meio degrau por dobra, divide por 4 a cada desafio abaixo da mais forte, provisória) fica como
+   **ajuda opcional**: "estimar o desafio de um confronto com várias criaturas". Ela não
+   multiplica nem divide pagamento.
+7. **Exemplos do relato e do capítulo, como trabalhos:**
+   - "livrar a estrada da matilha de 4 worgs": desafio medido 3, ou estimado 1 pela conta
+     provisória; o Mestre escolhe;
+   - "livrar o vilarejo da infestação de ratazanas": sem desafio por criatura; o Mestre fixa o
+     desafio do trabalho e as Semanas;
+   - "matar o chefe de desafio 3 com o bando dele": desafio 3.
+8. **Animais comuns** (gato, cão, rato, coelho, pombo, cavalo, pônei e afins) não têm desafio. No
+   capítulo, verbatim: "Animal comum não tem desafio próprio; a ficha traz uma nota de quantos
+   formam um desafio 0 para um grupo de Centelha 0, como referência."
+9. **Fila da B14, ajuste na B18:** a medição de bando (N = 1 a 32, com Horda a partir de 8) passa
+   a informar **quantos indivíduos são precisos para desafio 0, 1 e 2** (lobos, worgs, gatos,
+   cães, ratos). Esse número vai para a nota das fichas de animal comum. Registrar também: as
+   fichas de animal comum do bestiário ficam **sem desafio e com a nota** (aplicar quando a B14
+   chegar nas 309).
+10. **O relato diz o que foi desfeito e o que ficou** (do 2b, do 2c e do 2d não commitado).
+
 ## Regras desta rodada
 
 - Um commit por item (1, 2, 3 se houver, 4), com pathspec, rebase antes e depois, `push origin
