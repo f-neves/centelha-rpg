@@ -307,6 +307,82 @@ método mais lento para multiplicar Semanas.
 (caçar, capturar, escoltar, proteger um lugar, invadir, roubar, investigar, entregar), como guia
 para o Mestre e não como regra de mundo. A proposta com conta vem antes de qualquer despacho.
 
+## Item 5 (autor, 02/10): Trabalhos e recompensas, a bolsa para qualquer trabalho pontual
+
+Já passou pela rodada adversarial do Comerciante; as correções dela estão incorporadas. **É GUIA
+PARA O MESTRE, sugestão e não regra de mundo, e o texto diz isso.** Um item, um commit, CI verde.
+Mexe em `custo-servicos.md` (a seção "Caça e recompensas" vira **"Trabalhos e recompensas"**), na
+calculadora `/recompensa`, em `recompensas.json`, em `test-recompensa.mjs` e no `modelo.py` se ele
+gerar algo desta seção.
+
+### O pedido, verbatim
+
+> 1. Fórmula: Bolsa = Valor por pessoa × Semanas × Tarefa × Risco × Pessoas. "Pessoas" = quantas o
+>    trabalho pede; o padrão de caça continua 4 (o grupo de referência). Todo o resto já decidido
+>    (desafio absoluto, Semanas do contrato, parte não paga parte, paga em terra/título/favor a
+>    partir do desafio 5) continua valendo.
+>
+> 2. Valor por pessoa, por semana, por dois caminhos:
+>    a) Trabalho de confronto (caçar, proteger, escoltar com ameaça, recuperar à força): tabela de
+>       desafio atual.
+>    b) Trabalho de perícia (investigar, roubar, invadir, entregar): pela Dificuldade dos testes
+>       decisivos: Dif 10 = 20; Dif 15 = 40; Dif 20 = 60; Dif 25 = 910; Dif 30 = 14.500.
+>       Explicação no texto: até Dif 20 um mortal passa (Oficial, Perito, Mestre de ofício), e o
+>       valor é o Livre do ofício à altura × 1,8, o mesmo prêmio de risco da caçada de desafio 0
+>       (40 ÷ 22); acima de 20 só a Centelha passa, e o valor é o da tabela de desafio (Dif 15 =
+>       desafio 0, Dif 20 = desafio 0,5, Dif 25 = desafio 3, Dif 30 = desafio 5). A Dificuldade é a
+>       da tabela de acoes-e-sistema.md (De onde sai a Dificuldade).
+>    c) Trabalho com as duas coisas: vale o maior.
+>
+> 3. Frase obrigatória, para evitar a comparação errada com Serviços: "A bolsa é Livre: durante o
+>    trabalho, o custo de vida do personagem continua saindo dos Recursos dele. Contratar um
+>    profissional de fora, por diária, custa a renda dele, pela tabela de Serviços, e não a bolsa."
+>
+> 4. Tarefa por tipo de trabalho (variação base ×1; sugestões):
+>    Caçar: afugentar 0,75 · matar 1 · trazer parte ou prova 1 · capturar vivo 1,5 · capturar sem
+>    ferimentos ou domar 2.
+>    Escoltar: levar de A a B 1 · sem que ninguém saiba 1,5.
+>    Proteger um lugar: contra ameaça conhecida 1 · sem que a ameaça saiba que há guarda 1,5.
+>    Invadir: entrar e sair 1 · sem deixar rastro 1,5.
+>    Roubar: trazer o objeto 1 · sem que a falta seja notada 2.
+>    Investigar: descobrir um fato 1 · com prova que se sustente 1,5.
+>    Entregar: levar de A a B 1 · com prazo apertado ou sigilo 1,5.
+>    Recuperar: trazer de volta alguém ou algo levado 1.
+>
+> 5. Exemplos no capítulo e no teste (conferidos à mão):
+>    seguir uma pessoa e achar onde mora (Dif 15, 1 sem, ×1, 1 pessoa) = 40;
+>    seguir um espião treinado, com prova (Dif 20, 2 sem, ×1,5, 1 pessoa) = 180;
+>    roubar de um nobre sem que note (Dif 20, 1 sem, ×2, risco ×1,5, 2 pessoas) = 360;
+>    entregar carta sigilosa (Dif 15, 2 sem, ×1,5, 1 pessoa) = 120;
+>    recuperar criança levada por goblins (desafio 1, 1 sem, 4 pessoas) = 380;
+>    escoltar mercador por estrada com bandidos (desafio 1, 2 sem, 4 pessoas) = 760;
+>    proteger a aldeia de uma matilha de worgs (desafio 3, 1 sem, 4 pessoas) = 3.640;
+>    invadir a torre de um mago (Dif 25, 1 sem, risco ×2, 4 pessoas) = 7.280.
+>
+> 6. Calculadora: escolher o caminho (confronto: desafio; perícia: Dificuldade), o tipo de
+>    trabalho e a variação, Semanas, Risco e Pessoas (padrão 4).
+>
+> 7. Registre como provisório, sem mudar nada: o topo da tabela (desafio 4 em diante) depende de
+>    existir onde gastar (G73). Acima do desafio 3, o Mestre pode pagar parte em favor, acesso ou
+>    objeto.
+
+### Conferência (Arquiteto) e decisão do autor
+
+- **As oito contas batem à mão.** Os valores de perícia até Dif 20 fecham com o Livre/Sem da
+  tabela de perfis de `custo-servicos.md:20-30` × 1,8: Oficial 12 dá 21,6 (20); Perito 22 dá 39,6
+  (40); Mestre 35 dá 63 (60). E Dif 20 = 60 é também o meio degrau 0,5 da tabela de desafio.
+- **Arredondamento: o autor decidiu manter a régua** (a bolsa sai arredondada, múltiplo de 100 a
+  partir de 1.000, como hoje). Então, no capítulo e no teste, **a matilha de worgs fica 3.600 (e
+  não 3.640) e a torre do mago 7.300 (e não 7.280)**; os outros seis, abaixo de 1.000, não mudam.
+  Mostre a conta inteira e o arredondado.
+- O "×4" fixo da fórmula atual vira o fator **Pessoas** (padrão 4). A Tarefa de caça atual
+  (`afugentar` ... `domar`) já existe: ela vira o bloco "Caçar" da lista do item 4, sem mudar.
+- A Dificuldade citada é a de `acoes-e-sistema.md`, seção "De onde sai a Dificuldade" (`:14`).
+  Dificuldades entre os degraus da lista (por exemplo, 17): não estão no pedido. **Pare e
+  pergunte** antes de decidir se a calculadora aceita só 10/15/20/25/30 ou interpola.
+- A âncora `#caça-e-recompensas` muda com o título: procure quem linka para ela (a página
+  `/recompensa`, o glossário, outros capítulos) e acompanhe.
+
 ## Regras desta rodada
 
 - Um commit por item (1, 2, 3 se houver, 4), com pathspec, rebase antes e depois, `push origin
