@@ -383,6 +383,38 @@ gerar algo desta seção.
 - A âncora `#caça-e-recompensas` muda com o título: procure quem linka para ela (a página
   `/recompensa`, o glossário, outros capítulos) e acompanhe.
 
+### Correções do autor (Comerciante, 02/10), entram no mesmo commit
+
+> A. Perícia acima de Dif 20: desafio = (Dificuldade − 19) ÷ 2, arredondado para cima (o
+>    especialista de soma 12 precisa de +1 de Centelha a cada 2 pontos de Dificuldade para passar
+>    com 55%). Tabela no capítulo e na calculadora: Dif 10 = 20; Dif 15 = 40 (desafio 0); Dif 20 =
+>    60 (desafio 0,5); 21 = desafio 1 (95); 22-23 = desafio 2 (270); 24-25 = desafio 3 (910);
+>    26-27 = desafio 4 (3.600); 28-29 = desafio 5 (14.500); 30-31 = desafio 6 (57.900). Substitui
+>    "Dif 30 = 14.500".
+> B. Bolsa ou Serviços: "Se um profissional faria o trabalho como serviço comum do ofício dele (o
+>    mensageiro leva a carta, o rastreador segue a trilha), o preço é o de Serviços, pela renda
+>    dele. A bolsa é para o trabalho pontual fora da rotina de um ofício: com sigilo, ilegal,
+>    perigoso, ou que nenhum profissional aceita." Os exemplos de perícia do capítulo devem ser
+>    todos desse tipo; troque "entregar carta sigilosa" para deixar claro que o sigilo é o que tira
+>    o trabalho de Serviços.
+> C. Pessoas: "Pessoas é quantas o contratante decide pagar, combinado no contrato, como as
+>    Semanas. O grupo que vai com mais ou menos gente divide o mesmo valor."
+> D. Tabela de valor: os desafios 0 a 3 deixam de ser provisórios (vêm da escada de capacidade, e
+>    não da bancada). De 4 em diante continua provisório até a G73. O desafio de cada criatura
+>    continua provisório até a B14.
+
+Notas do Arquiteto sobre as correções:
+- A fórmula de A vale **acima de 20**: aplicada a 20 daria 0,5 para cima = 1, e a tabela fixa
+  Dif 20 = 0,5 (60). Siga a tabela.
+- A torre do mago (Dif 25) continua desafio 3, 910, bolsa 7.300 (régua). Os oito valores não
+  mudam com A.
+- **Dificuldades 11 a 14 e 16 a 19 continuam fora do pedido**: pare e pergunte antes de decidir.
+- B: o "seguir uma pessoa e achar onde mora" (Dif 15) também pode ler como serviço de rastreador.
+  Ajuste o rótulo de cada exemplo de perícia só o necessário para ele ficar fora da rotina de um
+  ofício (sem mudar os números), e diga no relato o que trocou. Se um exemplo não couber sem
+  mudar número, pare e pergunte.
+- D: as marcas `TOLERÂNCIA`/"provisório" da tabela passam a cobrir só o desafio 4 em diante.
+
 ## Regras desta rodada
 
 - Um commit por item (1, 2, 3 se houver, 4), com pathspec, rebase antes e depois, `push origin
