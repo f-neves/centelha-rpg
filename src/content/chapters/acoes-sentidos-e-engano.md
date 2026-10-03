@@ -80,7 +80,7 @@ A leitura é simples: **o estado de alerta é o que apaga a banda morta**. Um gu
 
 **Ajuda** · **teste coletivo**. A Dificuldade sobe +2 por pessoa, rola quem tem o pior pool, e os outros apoiam. O sujeito de armadura de placas é o problema do grupo, e a regra diz isso com número.
 
-**Circunstância** · escuridão **−4** · chuva, vento ou barulho de fundo **−2** · distração criada por outro personagem **−2** · armadura pesada **+4** · carga acima da faixa Leve **+2** · cascalho, folha seca ou tábua solta **+2** · campo aberto e iluminado **+4**.
+**Circunstância** · escuridão **−4** · chuva, vento ou barulho de fundo **−2** · distração criada por outro personagem **−2** · armadura: **o dobro da Penalidade dela** (+4 nas de −2, +6 nas de −3, para toda armadura com Penalidade; é a Penalidade da armadura, cobrada uma vez só, aqui) · carga acima da faixa Leve **+2** · cascalho, folha seca ou tábua solta **+2** · campo aberto e iluminado **+4**.
 
 ### As que ainda não têm ficha
 

@@ -128,7 +128,7 @@ A armadura **absorve dano depois do acerto**, com **três Absorções**: **Impac
 
 </div>
 
-<p class="muted"><strong>Penalidade:</strong> incide em qualquer ação física, incluindo <strong>Ataque, Esquiva, Bloqueio, Deslocamento e Salto</strong>; para <strong>Furtividade e atividades delicadas, dobra</strong>. <strong>Empilhar:</strong> dá para vestir mais de uma peça (gambeson sob malha, p.ex.): vale o <strong>maior Absorção de cada categoria</strong>, o <strong>maior Nível</strong> (a Resistência à Perfuração NUNCA soma) e a <strong>soma das Penalidades</strong>. A placa te torna um tanque, mas mais fácil de acertar e furtivo péssimo. Armadura não reduz o Bloqueio diretamente, mas a Penalidade dela, sim.</p>
+<p class="muted"><strong>Penalidade:</strong> incide em qualquer ação física, incluindo <strong>Ataque, Esquiva, Bloqueio, Deslocamento e Salto</strong>; para <strong>Furtividade e atividades delicadas, dobra</strong> (na Furtividade, esse dobro é a própria Circunstância da armadura na Dificuldade, +4 nas de −2 e +6 nas de −3, e é uma cobrança só: não se tira também do total). <strong>Empilhar:</strong> dá para vestir mais de uma peça (gambeson sob malha, p.ex.): vale o <strong>maior Absorção de cada categoria</strong>, o <strong>maior Nível</strong> (a Resistência à Perfuração NUNCA soma) e a <strong>soma das Penalidades</strong>. A placa te torna um tanque, mas mais fácil de acertar e furtivo péssimo. Armadura não reduz o Bloqueio diretamente, mas a Penalidade dela, sim.</p>
 
 ## Escudos
 

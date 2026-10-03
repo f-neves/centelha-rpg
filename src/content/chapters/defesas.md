@@ -101,7 +101,7 @@ Além do número passivo, em alguns casos você pode **gastar Força de Vontade*
 
 | Contra o quê | Dá para gastar Vontade? |
 |---|---|
-| **Influência social** (te convencer, seduzir, coagir) | **Sim**: você recusa friamente, mesmo que o teste tenha passado. |
+| **Influência social** (te convencer, seduzir, coagir) | **Sim**: com 1 ponto de Vontade você segura firme, mesmo que o teste tenha passado (na Margem 0 recusa de vez; com Margem maior cede, mas o pedido chega 1 nível abaixo; ver Resistir, em Relações Sociais). |
 | **Leitura social** (te ler, farejar sua mentira) | **Não**: não dá para "se recusar" a ser lido; só o número da Defesa Social protege. |
 | **Ataques e influências mentais** | **Sim**: você se blinda por um tempo (uma cena ou um dia, conforme o efeito). |
 

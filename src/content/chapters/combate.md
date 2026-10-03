@@ -297,7 +297,7 @@ Vai **50 a 67% mais longe por Tick** que o Deslocamento de Batalha, e o preço �
 É o mesmo −4 do Tick do Golpe e das condições surpreso, cego e imobilizado, e ele diz uma coisa
 só: **correndo não se apara nem se esquiva**. O acerto não sofre, porque quem parou, parou.
 
-Interrompível a **qualquer Tick**: você decide quando parar. A largada acelera: os **3 primeiros Ticks** correm à **Velocidade de Arranque** (a explosão do disparo); do **4º Tick em diante**, à **Velocidade de Corrida** (o ritmo sustentado). Cada valor é em metros por Tick.
+A Corrida é uma **ação de 3 Ticks**, interrompível a **qualquer Tick**: você decide quando parar. A largada acelera: os **3 primeiros Ticks** correm à **Velocidade de Arranque** (a explosão do disparo). Para seguir correndo, declara-se outra Corrida sem parar: a declaração e o custo recomeçam, mas a velocidade não, e a Corrida seguinte já corre à **Velocidade de Corrida** (o ritmo sustentado), do **4º Tick em diante**. Kael (Força 3, Destreza 4, Atletismo 3) corre a **6 m por Tick** no Arranque e a **9 m por Tick** na Corrida. Cada valor é em metros por Tick.
 
 | Fase | Quando | m por Tick |
 |---|---|---|

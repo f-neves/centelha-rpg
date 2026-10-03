@@ -414,3 +414,166 @@ tsc --noEmit` sem erro; `npm run build` verde. No HTML gerado, contado no texto 
 - `src/pages/artes/regras.astro` e `src/data/regras.json`;
 - `docs/pendencias/G-acoes-sistema.md` e `Pendencias.md`;
 - este relato.
+
+**Commit do Adendo 2:** `08f9df52` · **CI:** Validar 37087553484 (19 de 19) e Deploy 37087553496 (2 de
+2), primeira volta.
+
+## Adendo 3 · Itens 8, 9 e 14 (`6d49bfc8`), commit só de texto
+
+### Item 8 (opção A) · A armadura na Furtividade é o dobro da Penalidade
+- `armas-e-armaduras.md:131`: "para Furtividade e atividades delicadas, dobra" ganhou "(na
+  Furtividade, esse dobro é a própria Circunstância da armadura na Dificuldade, +4 nas de −2 e +6 nas
+  de −3, e é uma cobrança só: não se tira também do total)".
+- `acoes-sentidos-e-engano.md:83` (Circunstância do Esgueirar)
+  - antes: "armadura pesada **+4**"
+  - depois: "armadura: **o dobro da Penalidade dela** (+4 nas de −2, +6 nas de −3, para toda armadura
+    com Penalidade; é a Penalidade da armadura, cobrada uma vez só, aqui)"
+- `acoes-e-sistema.md:180` (Teste Coletivo): o exemplo "dois furtivos com −2 de armadura somam −4 na
+  jogada coletiva" punha a armadura na jogada, que é a cobrança dupla. Ficou o dançarino ("um
+  dançarino com −1 físico pesa −1 na jogada coletiva"), e entrou: "Num deslocamento furtivo, a
+  armadura de cada participante entra uma vez só, como Circunstância na Dificuldade (o dobro da
+  Penalidade dela, como no Esgueirar), e não também na jogada."
+- `custo-servicos.md`: não cita armadura em Furtividade. **Visto e não mexido:** o "armadura pesada
+  **+4**" da Circunstância do **Nadar** (`acoes-corpo-e-movimento.md:76`) é de outra ação, não de
+  Furtividade, e ficou.
+
+### Item 9 (opção B) · A Corrida é ação de 3 Ticks, e a seguinte segue na Velocidade de Corrida
+- `combate.md:299`
+  - antes: "Interrompível a **qualquer Tick** [...] os **3 primeiros Ticks** correm à **Velocidade de
+    Arranque** [...]; do **4º Tick em diante**, à **Velocidade de Corrida**"
+  - depois: "A Corrida é uma **ação de 3 Ticks**, interrompível a **qualquer Tick** [...] Para seguir
+    correndo, declara-se outra Corrida sem parar: a declaração e o custo recomeçam, mas a velocidade
+    não, e a Corrida seguinte já corre à **Velocidade de Corrida** (o ritmo sustentado), do **4º Tick
+    em diante**. Kael (Força 3, Destreza 4, Atletismo 3) corre a **6 m por Tick** no Arranque e a
+    **9 m por Tick** na Corrida."
+- **Os números do Kael**, conferidos:
+  - `scripts/test-kael.mjs` imprime "Arranque 6/Corrida 9 m·s";
+  - a fixture `scripts/fixtures/kael.json` tem Força 3, Destreza 4, Atletismo 3;
+  - pela tabela de `:303-304`, Arranque = 2 + 3 ÷ 4 + 3 ÷ 4 + 4 ÷ 2 = 5,5, e Corrida = 4 + 4 × ¾ + 3
+    ÷ 2 = 8,5; o motor arredonda para 6 e 9.
+- `:54` (a tabela de Ticks: "3 | Muito rápida | correr") e `:286` ("Corrida (Velocidade 3)") já
+  dizem 3 Ticks e não mudaram. Não mexi em `:292` nem em `:295`.
+
+### Item 14 (opção B nas duas perguntas) · Vontade: 1 ponto por ação, inclusive para resistir
+- `relacoes-sociais.md:148-156`, a tabela de segurar firme reescrita. O texto acima dela diz que se
+  gasta **1 ponto de Força de Vontade** no lance, e só 1, e que o máximo de 1 por ação ou jogada
+  vale também para resistir. As colunas passaram a "Gastando 1 Vontade" e "Sem gastar":
+  - Margem 0: **segura firme**, contra ceder no nível da relação;
+  - Margem 1: cede, mas o pedido chega **1 nível abaixo** (no nível da relação), contra 1 nível
+    acima;
+  - Margem 2: cede, 1 nível abaixo (1 acima da relação), contra 2 acima;
+  - cada +6: +1 nível, sempre 1 abaixo do que chegaria, contra +1 nível.
+- O exemplo da Dama Vesna (`:166`) dizia "Vesna gasta **2 de Vontade** (1 + Margem 1) e segura
+  firme". Agora: "Vesna gasta **1 de Vontade**, o máximo por lance: com Margem 1 ela não segura de
+  vez, mas cede com o pedido **1 nível abaixo** do que chegaria, ou seja, no nível em que a relação
+  já está". O resto do exemplo (o lance de Margem 0 em que ela decide não gastar) ficou, com "1 de
+  Vontade seguraria de vez".
+- O resumo de `:275`
+  - antes: "gaste **1 + Margem** de Vontade no lance"
+  - depois: "gaste **1** Vontade no lance (no máximo 1 por ação): na Margem 0 segura de vez; com
+    Margem 1 ou mais, cede, mas o pedido chega **1 nível abaixo** do que chegaria. Se não pagar,
+    cede o ponto e o pedido chega **Margem** níveis acima."
+- O cortejo (pergunta 2): o custo por intervalo ficou como está (`:242` e `regras.json`
+  `social.modoDevagar.resistencia`). O parágrafo da Vontade presa (`:246`) ganhou: "Pelo mesmo motivo
+  o custo por intervalo pode passar de 1 ponto: o **intervalo do cortejo (8 dias ou mais) não é uma
+  ação**, e o máximo de 1 ponto de Vontade por ação ou jogada não o alcança."
+- `aparencia-virtudes-vontade.md:115`: "**resistir** a medo e manipulação" ganhou "(também no máximo
+  1 ponto por ação: ver Resistir, em Relações Sociais; a exceção é o intervalo do cortejo, que não é
+  uma ação)", com o link para `#resistir-gastar-força-de-vontade`, que existe como `id` no gerado.
+- `defesas.md:104`
+  - antes: "**Sim**: você recusa friamente, mesmo que o teste tenha passado."
+  - depois: "**Sim**: com 1 ponto de Vontade você segura firme, mesmo que o teste tenha passado (na
+    Margem 0 recusa de vez; com Margem maior cede, mas o pedido chega 1 nível abaixo; ver Resistir,
+    em Relações Sociais)."
+- **Varrido por mais:** o diagrama de `qual-sistema.md:75` dizia "o alvo gasta Vontade para não ceder
+  (1 + Margem por lance)". Passou a "o alvo gasta 1 Vontade por lance; na Margem 0 segura, com
+  Margem maior cede com o pedido 1 nível abaixo; sem gastar, Cede [...]". O SVG foi regerado pelo
+  `gen-mermaid.mjs`, com `--check` verde.
+
+**Verificação** (sobre `6d49bfc8`): `npm run validate` verde ("Portões OK"). O `npm run build`
+saiu verde, **mas com o conteúdo velho** no `dist/`: as frases novas contavam 0. É o cache de
+conteúdo do Astro. Pelo CLAUDE.md, refiz com `npx astro build --force`, sem remover pasta nenhuma,
+e provei de novo. No HTML gerado, contado no texto sem marcação:
+- `armas-e-armaduras` traz "esse dobro é a própria Circunstância da armadura" (1);
+- `acoes-sentidos-e-engano` traz "armadura: o dobro da Penalidade dela" (1) e "armadura pesada +4" 0
+  vezes;
+- `acoes-e-sistema` traz "entra uma vez só, como Circunstância na Dificuldade" (1) e "dois furtivos" 0
+  vezes;
+- `combate` traz "ação de 3 Ticks", "a Corrida seguinte já corre à Velocidade de Corrida" e "6 m por
+  Tick no Arranque e a 9 m por Tick" (1 cada);
+- `relacoes-sociais` traz "Gastando 1 Vontade" (1), "cede, mas o pedido chega 1 nível abaixo" (3) e
+  "não é uma ação" (1). Depois da correção do exemplo da Vesna (rebuild com `--force` de novo),
+  "Vesna gasta 1 de Vontade" aparece 1 vez, e "2 de Vontade" e "1 + Margem" aparecem 0 vezes (a
+  fórmula do cortejo, "1 + [ máx(0, ...", fica); o SVG de `qual-sistema` não traz mais "1 + Margem
+  por lance" (0);
+- `aparencia-virtudes-vontade` traz "também no máximo 1 ponto por ação" (1) e o link para
+  `relacoes-sociais#resistir-gastar-força-de-vontade` (1);
+- `defesas` traz "com 1 ponto de Vontade você segura firme" (1).
+
+## Medição da F2 · a Mana do mortal no código (sem liberar nada)
+
+Script: `../tmp/executora/medir-f2.mjs`. Ele empacota `custoDe` (`src/lib/artes-grid.ts:350`) e `mana`
+(`src/lib/calc.ts:213`, a mesma que a mesa importa como `manaDe`) e lê `artes.json`, `efeitos.json`
+e `regras.json`. Nenhuma conta foi digitada à mão.
+
+### Onde a Mana do mortal entra (Centelha 0)
+
+| lugar | o que faz com Centelha 0 |
+|---|---|
+| `src/lib/calc.ts:213` (`mana`) | Mana = Centelha × 2 + Vontade + bônus da Arte Manipulação de Mana. Com Centelha 0, dá a Vontade. **Não bloqueia.** |
+| `src/lib/ficha-engine.ts:1559` e `:1578` | a ficha calcula e mostra a Mana pela `mana` (a Vontade, no mortal). Não bloqueia. |
+| `src/lib/ficha-engine.ts:176` (`capFor('arte2')`) | **bloqueia**: o teto de toda Arte é 0 com Centelha 0, e o mortal não compra nível de Arte. O cabeçalho da seção (`FichaSkeleton.astro:117`) diz "exige Centelha > 0". |
+| `src/lib/mesa-ficha.ts:95` | o resumo da mesa leva a Mana pela `mana`. Não bloqueia. |
+| `src/pages/mesa/grid.astro:3329` | **bloqueia**: no Grid, `mana: R.centelha > 0 ? R.mana : 0`, e o mortal entra com Mana 0 por cima do resumo. |
+| `src/pages/mesa/combate.astro:1693` (rastreador) | **bloqueia**: `(S.centelha || 0) > 0 ? manaDe(...) : null`, e o mortal entra sem Mana. |
+| `src/lib/artes-grid-ui.ts:507` (a calculadora da conjuração no Grid) | chama `custoDe` com a Centelha do conjurador e mostra "N de Mana" (`:575`). Não tem portão de Centelha nem de Mana. |
+| `src/lib/artes-grid.ts:350` (`custoDe`) | Mana gasta = total − Centelha, sem piso de Centelha. O mortal paga o total inteiro. |
+| `src/data/regras.json` `escalaCentelha` (degraus 0 e 1) | texto: desde o `08f9df52` diz que o mortal conjura com a Mana da Vontade. Nenhum código o lê para decidir nada. |
+| `src/data/regras.json` `arcano.recuperacaoMana` | **a recuperação é por Centelha**: "Centelha por hora", e em descanso "2 × Centelha por hora". **Com Centelha 0, a Mana do mortal não volta pelo relógio.** Só voltam a Firula (1 por Firula de nível 2, 3 por Firula de nível 3) e a Arte Manipulação de Mana ("+1 por nível dela a cada 2 horas, e o dobro em descanso"). |
+
+### O custo contra a reserva
+
+O custo de Mana de um Efeito de nível N, conjurado com a Arte no nível N, sem parâmetro escolhido (o
+mínimo daquele Efeito), por Centelha 0. Cada Efeito conta uma vez por Arte a que pertence:
+
+| nível | Efeitos (por Arte) | mín | mediana | máx |
+|---|---|---|---|---|
+| 1 | 36 | 1 | 1 | 3 |
+| 2 | 42 | 2 | 2 | 2 |
+| 3 | 39 | 3 | 3 | 3 |
+| 4 | 24 | 4 | 4 | 4 |
+| 5 | 24 | 5 | 5 | 5 |
+| 6 | 24 | 6 | 6 | 18 |
+
+A Mana do mortal (`mana`, Centelha 0, sem Manipulação de Mana) é igual à Vontade: Vontade 1 dá 1,
+Vontade 6 dá 6.
+
+Conjurações com a reserva cheia, pelo custo **mínimo / mediano** de um Efeito do nível:
+
+| nível da Arte | V1 | V2 | V3 | V4 | V5 | V6 |
+|---|---|---|---|---|---|---|
+| 1 | 1 / 1 | 2 / 2 | 3 / 3 | 4 / 4 | 5 / 5 | 6 / 6 |
+| 2 | 0 / 0 | 1 / 1 | 1 / 1 | 2 / 2 | 2 / 2 | 3 / 3 |
+| 3 | 0 / 0 | 0 / 0 | 1 / 1 | 1 / 1 | 1 / 1 | 2 / 2 |
+| 4 | 0 / 0 | 0 / 0 | 0 / 0 | 1 / 1 | 1 / 1 | 1 / 1 |
+| 5 | 0 / 0 | 0 / 0 | 0 / 0 | 0 / 0 | 1 / 1 | 1 / 1 |
+| 6 | 0 / 0 | 0 / 0 | 0 / 0 | 0 / 0 | 0 / 0 | 1 / 1 |
+
+**A leitura, sem decidir nada:**
+- Com o teto atual de Arte 6, um mortal de Vontade 6 paga **uma** conjuração de nível 6 (no Efeito
+  mais barato) e fica vazio. Uma de nível 4 a 6 por reserva, para Vontade 4 a 6. No nível 1 ele
+  conjura tantas vezes quanto a Vontade.
+- Parâmetro escolhido ou esticado soma ao custo, então o número real numa cena fica abaixo do da
+  tabela.
+- **"Por descanso" no mortal é zero.** A recuperação de Mana é por Centelha, e com Centelha 0 nem a
+  hora nem o descanso devolvem nada. A reserva só volta pela Firula ou pela Arte Manipulação de Mana.
+  Sem uma das duas, a primeira reserva gasta é a última, até o autor decidir de onde vem a
+  recuperação do mortal.
+- A Vontade vai até 12 (`aparencia-virtudes-vontade.md:113`). Com Vontade 12 a reserva é 12: duas de
+  nível 6, ou doze de nível 1.
+- A Arte Manipulação de Mana soma à reserva (`MANA_ARTE_BONUS`, `calc.ts:211`: 0, 1, 2, 3, 5, 8, 12
+  por nível) e é a única fonte de recuperação pelo relógio que alcança o mortal.
+
+**Nada foi liberado.** Os três bloqueios (`ficha-engine.ts:176`, `grid.astro:3329`,
+`combate.astro:1693`) seguem como estão, à espera do teto de Arte do mortal e da decisão sobre a
+recuperação.

@@ -72,7 +72,7 @@ flowchart TD
   R1 -->|"Sim (está dentro do que a disposição já dá)"| RFree["Concedido, sem rolar"]
   R1 -->|"Não, quero mais do que a relação dá"| R2{"Tem aposta alta E resistência declarada?"}
   R2 -->|"Não: um pedido, um favor, um papo, uma sedução comum"| RJ["Jogada única: Ataque Social vs Defesa Social compra alcance do pedido (+1 nível a cada 6 de folga), só naquela cena; a Régua não anda"]
-  R2 -->|"Sim: um julgamento, uma sedução decisiva, quebrar um inimigo"| RC["Combate Social: o alvo gasta Vontade para não ceder (1 + Margem por lance); se não segura, Cede e o pedido chega Margem níveis acima, só naquela cena; a Régua não anda"]
+  R2 -->|"Sim: um julgamento, uma sedução decisiva, quebrar um inimigo"| RC["Combate Social: o alvo gasta 1 Vontade por lance; na Margem 0 segura, com Margem maior cede com o pedido 1 nível abaixo; sem gastar, Cede e o pedido chega Margem níveis acima, só naquela cena; a Régua não anda"]
 ```
 
 **Nenhum dos dois move a régua.** A cena com dados compra **alcance** do pedido e vai embora; quem move a régua são os **atos** e o **cortejo com calma** (ver [Relações Sociais](/regras/relacoes-sociais)).
