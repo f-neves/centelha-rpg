@@ -84,8 +84,9 @@ O Preparo depende da **classe da arma**, não da Velocidade dela:
 | Arte (conjuração) | Velocidade − 1 |
 
 Nas armas de Distância o Golpe cai no **último Tick do ciclo**: quase toda a Velocidade é
-Preparo, e é por isso que a Besta Grande (Velocidade 15) passa catorze Ticks armando antes do
-virote sair. No Arremesso sobra **um Tick de Recuperação** depois do Golpe, o de voltar à postura.
+Preparo, e é por isso que a Besta Grande (Velocidade 15) passa catorze Ticks armando, com a guarda
+aberta, até o Tick do Golpe. No sistema Normal, o padrão deste capítulo, o tiro já foi rolado na
+declaração (ver *Dois sistemas de tempo*); esses Ticks marcam quanto tempo a guarda fica aberta. No Arremesso sobra **um Tick de Recuperação** depois do Golpe, o de voltar à postura.
 
 Cada fase custa Defesa, pela mesma moeda: estar comprometido com um gesto abre a guarda.
 
@@ -102,7 +103,9 @@ Preparo, Golpe e Recuperação em Ticks distintos.
 
 - **Normal** (**o padrão desta mesa**, e o sistema deste capítulo): a ação resolve inteira no
   Tick da declaração, com a Defesa em −2 durante o Preparo e −4 no Tick do golpe, exatamente
-  como descrito acima. Não há um Tick isolado de Recuperação: a Velocidade inteira empurra a
+  como descrito acima. **Rola-se ao declarar**, para arma Leve, Média e de Distância: o acerto e o
+  dano valem no Tick da declaração, e o Preparo e o Golpe que vêm depois só marcam a Defesa em −2 e
+  em −4. Não há um Tick isolado de Recuperação: a Velocidade inteira empurra a
   próxima ação, e é por isso que este capítulo fala em "Velocidade" e raramente em
   "Recuperação" sozinha.
 - **Três fases (P/G/R)**, usado na mesa tática (o Grid): a mesma Velocidade se abre em Ticks
@@ -336,7 +339,7 @@ em **−2** o tempo todo (o mesmo −2 de qualquer Preparo: ele não cresce, mas
 só então o virote sai. É exatamente a vulnerabilidade que o **pavês**
 existe para cobrir, e é por isso que o livro chama o pavês de parede portátil do besteiro.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Bram, de Besta Média (Velocidade 12), declara o tiro no Tick 0. Ele fica dos Ticks 0 ao 10 em Preparo, sem sair do lugar, e o virote sai no Tick 11. Um espadachim de espada longa (Velocidade 6) atravessa esse mesmo intervalo golpeando duas vezes, e andando nos dois. Se Bram precisar sair do caminho de uma investida no Tick 7, a saída é a mesma de qualquer um pego no meio de um Preparo: o desvio de emergência, a 1 Tick por metro, fora da vez.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Bram, de Besta Média (Velocidade 12), declara o tiro no Tick 0 e, no sistema Normal, rola ali mesmo. Ele fica dos Ticks 0 ao 10 em Preparo, sem sair do lugar, e no Tick 11 em Golpe, com a guarda em −4. Um espadachim de espada longa (Velocidade 6) atravessa esse mesmo intervalo golpeando duas vezes, e andando nos dois. Se Bram precisar sair do caminho de uma investida no Tick 7, a saída é a mesma de qualquer um pego no meio de um Preparo: o desvio de emergência, a 1 Tick por metro, fora da vez.</div>
 
 <p class="muted">O que acontece com os Ticks já investidos quando o besteiro se mexe (perde tudo, ou a recarga apenas pausa) ainda não foi decidido, e o Grid não trava o passo sozinho: por enquanto é o Mestre que segura.</p>
 
@@ -379,7 +382,7 @@ Posição, cobertura e postura mudam o combate sem mudar suas fichas: todos eles
 
 Quando dois golpes caem no **mesmo Tick**, os dois atacantes estão abertos ao mesmo tempo: cada um ataca contra a guarda comprometida do outro. Não importa quem a mesa resolveu primeiro: a escada se lê pela **agenda**, e não pela ordem em que as jogadas foram narradas.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Duas adagas (Preparo 0) agem no <strong>Tick 4</strong>. As duas golpeiam nesse instante, então as duas estão em <strong>−4</strong>: cada uma ataca uma Defesa aberta. Se uma delas fosse uma espada longa (Preparo 1) declarada no Tick 3, o golpe dela também cairia no 4, e valeria o mesmo.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Duas adagas (Preparo 0) agem no <strong>Tick 4</strong>. As duas golpeiam nesse instante, então as duas estão em <strong>−4</strong>: cada uma ataca uma Defesa aberta. Se uma delas fosse uma espada longa (Preparo 1) declarada no Tick 3, no sistema Normal ela rolaria no 3, mas o Golpe dela também cairia no 4: no Tick 4 a guarda dela estaria em −4, a mesma das adagas.</div>
 
 <p class="muted">Vale a pena dizer por que a regra é essa: se a guarda de quem ainda não narrou a jogada contasse como inteira, a jogada certa seria sempre <em>deixar o outro atacar primeiro</em>, e a vantagem de ter rolado bem na Iniciativa se voltaria contra quem a ganhou.</p>
 
@@ -402,7 +405,7 @@ Isso é **só no acerto**: não muda a Defesa passiva do alvo, **não entra no t
 
 Cada inimigo extra desgasta a sua guarda, e cada golpe que **você** desfere também.
 
-<div class="callout regra"><span class="lbl">Guarda sob pressão</span>Cada ataque que você <strong>faz ou recebe</strong> reduz sua <strong>Esquiva e Bloqueio em −2</strong>, e o efeito <strong>acumula até a sua próxima ação</strong>: quando você age, a guarda se refaz e o acúmulo zera. <strong>Sem teto:</strong> ninguém desvia de uma dúzia de golpes. Atacar te expõe (e atacar com as <strong>duas mãos</strong>, o dobro); ser cercado te expõe muito mais. Um único oponente brilhante resiste a alguns fracos, mas a maré da multidão acaba furando qualquer guarda.</div>
+<div class="callout regra"><span class="lbl">Guarda sob pressão</span>Cada ataque que você <strong>faz ou recebe</strong> reduz sua <strong>Esquiva e Bloqueio em −2</strong>, e o efeito <strong>acumula até a sua próxima ação</strong>: quando você age, a guarda se refaz e o acúmulo zera. <strong>O golpe não desconta a si mesmo:</strong> o primeiro ataque recebido bate na Defesa cheia, e o segundo já pega −2. <strong>Sem teto:</strong> ninguém desvia de uma dúzia de golpes. Atacar te expõe (e atacar com as <strong>duas mãos</strong>, o dobro); ser cercado te expõe muito mais. Um único oponente brilhante resiste a alguns fracos, mas a maré da multidão acaba furando qualquer guarda.</div>
 
 A posição fecha o cerco: quem ataca pelo **flanco ou pelas costas** ganha o **−2 na Defesa** do alvo, porque ele não pode voltar a melhor guarda contra todos ao mesmo tempo. Dois inimigos coordenados (um prendendo a frente, outro contornando) combinam a penalidade de pressão com a de flanco: é assim que o número vira vantagem tática, e não só mais dados.
 

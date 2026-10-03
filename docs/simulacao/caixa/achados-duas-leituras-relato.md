@@ -106,3 +106,68 @@ JSON ficam, e só o capítulo muda.
 - `centelha` traz "de 1 a 3 numa campanha heroica" (1);
 - `aparencia-virtudes-vontade` traz "também não entra no teste de Virtude" (1);
 - `racas` traz "Força de Vontade do orc × 2 + 2 × mín(Centelha, Integridade) dele" (1).
+
+**Commit do Bloco 1:** `bd26f1b0` · **CI:** Validar 37083199172 (19 de 19) e Deploy 37083199174 (2 de
+2), primeira volta.
+
+## Bloco 2 · Combate
+
+**Ficaram de fora deste commit, à espera do autor:**
+- item 8, a armadura na Furtividade (a ficha diz +4, e o dobro da Penalidade das pesadas dá 4 ou 6);
+- item 9, a Corrida (recomeçar no Arranque deixa a Velocidade de Corrida inalcançável).
+`combate.md:54`, `:286`, `:297`, `armas-e-armaduras.md:131` e `acoes-sentidos-e-engano.md:81` não
+foram tocados.
+
+### Item 6 · Golpe no sistema Normal: rola-se ao declarar (Leitora B1)
+
+O `combate.md` inteiro é o sistema Normal ("o sistema deste capítulo", `:103`). As seções de Preparo,
+Golpe e Recuperação descrevem as fases que os dois sistemas usam. Por isso os quatro trechos foram
+alinhados ao Normal, e nenhum foi reescrito como P/G/R:
+- `:103-105` (o Normal), acrescentado: "**Rola-se ao declarar**, para arma Leve, Média e de
+  Distância: o acerto e o dano valem no Tick da declaração, e o Preparo e o Golpe que vêm depois só
+  marcam a Defesa em −2 e em −4."
+- `:86-87`
+  - antes: "a Besta Grande (Velocidade 15) passa catorze Ticks armando antes do virote sair."
+  - depois: "[...] passa catorze Ticks armando, com a guarda aberta, até o Tick do Golpe. No sistema
+    Normal, o padrão deste capítulo, o tiro já foi rolado na declaração (ver *Dois sistemas de
+    tempo*); esses Ticks marcam quanto tempo a guarda fica aberta."
+- `:339` (Bram)
+  - antes: "declara o tiro no Tick 0. Ele fica dos Ticks 0 ao 10 em Preparo, sem sair do lugar, e o
+    virote sai no Tick 11."
+  - depois: "declara o tiro no Tick 0 e, no sistema Normal, rola ali mesmo. Ele fica dos Ticks 0 ao 10
+    em Preparo, sem sair do lugar, e no Tick 11 em Golpe, com a guarda em −4."
+- `:382` (as duas adagas)
+  - antes: "Se uma delas fosse uma espada longa (Preparo 1) declarada no Tick 3, o golpe dela também
+    cairia no 4, e valeria o mesmo."
+  - depois: "[...] declarada no Tick 3, no sistema Normal ela rolaria no 3, mas o Golpe dela também
+    cairia no 4: no Tick 4 a guarda dela estaria em −4, a mesma das adagas."
+  - O "valeria o mesmo" saiu: no Normal o ataque da espada se rola no 3, então ele não é o mesmo
+    lance das adagas. O que é igual é a guarda aberta no 4.
+
+**Visto e não mexido:** na Recarga, `:330` ("O tiro continua saindo no último Tick do ciclo") e
+`:336` ("só então o virote sai") ainda falam do disparo no fim do Preparo. Não estavam na lista do
+despacho nem nos trechos da Leitora; ficam registrados para a próxima leitura.
+
+### Item 7 · A Pressão: o golpe não desconta a si mesmo (Leitora B2)
+
+- `combate.md:405` (callout Guarda sob pressão), acrescentado: "**O golpe não desconta a si
+  mesmo:** o primeiro ataque recebido bate na Defesa cheia, e o segundo já pega −2."
+- **O código, conferido; nenhum caminho desconta o golpe antes de rolá-lo:**
+  - `scripts/sim/motor.mjs:376` lê a `defesaPerdida` do alvo antes de somar a pressão (`:437`);
+  - no Grid, `src/pages/mesa/grid.astro:8671` chama `declararNoTabuleiro`, que soma a pressão no alvo
+    (`gravarRelogio`, `:9122`), depois de o `acertou` já ter sido calculado. No caminho adiado, a
+    pressão entra em `tirarDaAgenda` (`:9011`), depois da folha do golpe;
+  - no rastreador, `src/pages/mesa/combate.astro:2079` soma a pressão (`somarPressao`) depois que a
+    folha fechou com o resultado.
+  A K37 (o Grid só conta o recebido) segue como está.
+
+**Arquivos do Bloco 2:**
+- `src/content/chapters/combate.md`
+- este relato
+
+**Verificação** (sobre `bd26f1b0`): `npm run validate` verde ("Portões OK"); `npm run build` verde
+(sem código tocado). Em `dist/regras/combate/index.html`, contado no texto sem marcação:
+- trazem 1 cada: "Rola-se ao declarar", "o tiro já foi rolado na declaração", "no sistema Normal,
+  rola ali mesmo", "no Tick 4 a guarda dela estaria em −4" e "O golpe não desconta a si mesmo:";
+- trazem 0 cada: "e valeria o mesmo" e "antes do virote sair".
+Nenhum travessão novo (`combate.md` tem 6 antes e depois, os mesmos).
