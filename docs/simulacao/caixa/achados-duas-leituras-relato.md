@@ -171,3 +171,111 @@ despacho nem nos trechos da Leitora; ficam registrados para a próxima leitura.
   rola ali mesmo", "no Tick 4 a guarda dela estaria em −4" e "O golpe não desconta a si mesmo:";
 - trazem 0 cada: "e valeria o mesmo" e "antes do virote sair".
 Nenhum travessão novo (`combate.md` tem 6 antes e depois, os mesmos).
+
+**Commit do Bloco 2:** `ac3b197e` · **CI:** Validar 37084319434 (19 de 19) e Deploy 37084319419 (2 de
+2), primeira volta.
+
+## Bloco 3 · Ações e testes
+
+**Ficou de fora deste commit, à espera do autor:** o item 14 (Vontade, no máximo 1 ponto por jogada
+ou ação, inclusive para resistir). Mandei ao Arquiteto o texto atual da tabela social
+(`relacoes-sociais.md:148-156`, mais o resumo de `:275`) e três propostas de redação. Perguntei
+também se o cortejo (`:276` e `regras.json` `social.modoDevagar.resistencia`, que cobra 1 + [excedente
+÷ 6] por intervalo) conta como "uma ação". Nenhum código cobra Vontade de resistir: procurado em
+`ficha-engine.ts`, `src/lib/mesa-*.ts` e nas páginas da mesa. `aparencia-virtudes-vontade.md:115`,
+`defesas.md:104` e a tabela social não foram tocados.
+
+### Item 10 · A Margem na Acumulada é só a leitura do excedente (Leitora D1)
+
+- `acoes-e-sistema.md`, logo depois do exemplo da muralha (`:77`), acrescentado: "Na Acumulada, a
+  **Margem é só a forma de ler o excedente**: os 10 de excedente do 17 contra 7 já são o progresso
+  daquela jogada (e contêm uma Margem), e a Margem não soma progresso por cima deles."
+- `acoes-corpo-e-movimento.md:33` (Escalar)
+  - antes: "**A Margem compra** · altura. Cada Margem sobe **mais 3 metros** naquele intervalo."
+  - depois: "**A Margem** · não compra altura por cima: o excedente da jogada já é a altura subida
+    naquele intervalo, e a Margem é só a forma de lê-lo."
+- `acoes-sentidos-e-engano.md:75` (Esgueirar)
+  - antes: "**A Margem compra** · terreno ou tempo, à escolha do jogador: **mais 4 metros**, ou
+    **congelar um intervalo** [...]"
+  - depois: "**A Margem** · não compra terreno por cima: o excedente da jogada já é o terreno
+    andado. Cada Margem pode, à escolha do jogador, **congelar um intervalo** [...]"
+  - **Uma leitura minha, para a Revisora e o Arquiteto:** o "congelar um intervalo" ficou como efeito
+    da Margem, porque não é progresso, e a decisão só tira o que soma por cima do progresso. Saíram os
+    "mais 4 metros".
+
+### Item 11 · O erro na Acumulada perde só o que passou da faixa de 6 (Leitora D2)
+
+- `acoes-e-sistema.md:84`
+  - antes: "| **6 ou mais** | **perde a diferença**. Escorregou de verdade |"
+  - depois: "| **6 ou mais** | **perde o que passou da faixa de 6**. Escorregou de verdade: errou por
+    8, perde 2 |"
+- `:86`: "É a Margem valendo nos dois sentidos: para cima compra efeito, para baixo cobra terreno."
+  passou a "É a Margem valendo nos dois sentidos, como no [Quase-Acerto](/regras/quase-acerto): os
+  primeiros 6 abaixo são a faixa que só custa tempo, e só o que passa dela cobra terreno." A frase
+  velha dizia que a Margem "compra efeito" para cima, o que o item 10 desfaz.
+- **Varrido por mais, a mesma regra:** a Falha do Escalar (`acoes-corpo-e-movimento.md:35`) dizia
+  "errar por 6 ou mais perde a diferença em metros", e passou a "perde, em metros, o que passou da
+  faixa de 6 (errou por 8, desce 2)".
+
+### Item 12 · No Trabalho em Grupo, soma-se o excedente de cada jogada
+
+- `acoes-e-sistema.md:168`
+  - antes: "Cada um faz o **próprio teste**, e os resultados somam além da Dificuldade."
+  - depois: "Cada um faz o **próprio teste**, e soma-se o **excedente de cada jogada** sobre a
+    Dificuldade: com Dificuldade 7, quem tira 12 e quem tira 10 somam 5 + 3 = 8 de progresso."
+
+### Item 13 · A Cura encurta o intervalo em 10% por nível (Leitora F3)
+
+- `vida-ferimentos-cura.md:90`
+  - antes: "**cada nível de Cura** de quem cuida a acelera em **10%**"
+  - depois: "**cada nível de Cura** de quem cuida **encurta o intervalo** da tabela em **10%** (com
+    Cura 3, o "a cada 5 dias" vira 3,5 dias)"
+- `custo-servicos.md:228` (Tratamento diário, 10 pc) não cita a aceleração, e nenhuma calculadora a
+  usa: nada a mudar. A linha do Incapacitado e a piora não foram tocadas.
+
+### Item 15 · Seguir alguém: a Dificuldade é o Valor Passivo do alvo
+
+- `custo-servicos.md:67` (Trabalho de perícia), acrescentado: "Num trabalho de seguir alguém, a
+  Dificuldade é o **Valor Passivo do alvo** (a Percepção Passiva dele), a mesma da cena."
+- `:107` e `:108`, os dois exemplos de seguir:
+  - "Dificuldade 15" passou a "Dificuldade 15, o Valor Passivo do alvo";
+  - "Dificuldade 20" passou a "Dificuldade 20, o Valor Passivo do espião".
+  - **O 15 fica**, agora lido como um alvo de Valor Passivo 15. Nenhum número dos exemplos mudou.
+- `acoes-sentidos-e-engano.md`, logo depois da fórmula do Esgueirar (`:50`), acrescentado: "Num
+  **trabalho de seguir alguém**, a Dificuldade é o **Valor Passivo do alvo** (a Percepção Passiva
+  dele), na cena e no preço do trabalho", com o link para Trabalhos e recompensas.
+
+### Item 16 · A suspeita se mede contra o Valor Passivo inteiro (opção B do autor)
+
+- `acoes-sentidos-e-engano.md:50` (a fórmula)
+  - antes: "Direta: passe do **Valor Passivo** do vigia · Acumulada: a Dificuldade é **70%** dele"
+  - depois: o mesmo, mais "e a suspeita se mede contra o **Valor Passivo inteiro**".
+- `:61` e `:63` (o parágrafo "O Valor Passivo não é um alarme ligado o tempo todo"), acrescentado
+  antes da frase que leva à tabela de estados: "Na Acumulada, quem avança abaixo do Passivo progride
+  e deixa rastro ao mesmo tempo: o progresso se conta contra a Dificuldade (os 70%), e a suspeita
+  contra o Passivo inteiro. Um guarda de portão tem Passivo 10 e Dificuldade 7; uma jogada de 8 avança
+  1 e fica 2 abaixo do Passivo, na coluna "abaixo por menos de 6" da tabela abaixo."
+
+**Arquivos do Bloco 3:**
+- `src/content/chapters/acoes-e-sistema.md`
+- `src/content/chapters/acoes-corpo-e-movimento.md`
+- `src/content/chapters/acoes-sentidos-e-engano.md`
+- `src/content/chapters/vida-ferimentos-cura.md`
+- `src/content/chapters/custo-servicos.md`
+- este relato
+
+**Verificação** (sobre `ac3b197e`): `npm run validate` verde ("Portões OK"); `npm run build` verde
+(sem código tocado). No HTML gerado, contado no texto sem marcação:
+- `acoes-e-sistema` traz "Margem é só a forma de ler o excedente", "perde o que passou da faixa de 6",
+  "errou por 8, perde 2" e "5 + 3 = 8 de progresso" (1 cada), e "perde a diferença" 0 vezes;
+- `acoes-corpo-e-movimento` traz "não compra altura por cima" e "errou por 8, desce 2" (1 cada), e
+  "mais 3 metros" 0 vezes;
+- `acoes-sentidos-e-engano` traz "não compra terreno por cima", "a suspeita se mede contra o Valor
+  Passivo inteiro", "uma jogada de 8 avança 1 e fica 2 abaixo do Passivo" e "trabalho de seguir
+  alguém" (1 cada), e "mais 4 metros" 0 vezes;
+- `vida-ferimentos-cura` traz "encurta o intervalo" e "vira 3,5 dias" (1 cada);
+- `custo-servicos` traz "Dificuldade 15, o Valor Passivo do alvo", "Dificuldade 20, o Valor Passivo
+  do espião" e "a mesma da cena" (1 cada).
+
+Nenhum travessão novo: a contagem é a mesma de antes nos cinco capítulos (o único, em
+`vida-ferimentos-cura.md`, já estava lá).

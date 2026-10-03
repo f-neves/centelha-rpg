@@ -64,7 +64,7 @@ A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa
 
 Os desafios 0 a 3 da tabela de valor não são provisórios: vêm da escada de capacidade, e não da bancada. Do desafio 4 em diante a tabela é provisória até a G73. O desafio de cada criatura segue provisório até a B14. O topo da tabela depende de existir onde gastar tanto dinheiro. A tabela vai até o desafio 9: acima disso não há valor.
 
-**Trabalho de perícia** (investigar, roubar, invadir, entregar): pela Dificuldade dos testes decisivos (a de [De onde sai a Dificuldade](/regras/acoes-e-sistema#de-onde-sai-a-dificuldade)). Até Dificuldade 20 um mortal passa (Braçal, Oficial, Perito, Mestre de ofício), e o valor é o Livre do ofício à altura × 1,8, o mesmo prêmio de risco da caçada de desafio 0 (40 ÷ 22). Acima de 20 só a Centelha passa, e o valor é o da tabela de desafio: desafio = (Dificuldade − 19) ÷ 2, arredondado para cima (o especialista de soma 12 precisa de +1 de Centelha a cada 2 pontos de Dificuldade para passar com 55%).
+**Trabalho de perícia** (investigar, roubar, invadir, entregar): pela Dificuldade dos testes decisivos (a de [De onde sai a Dificuldade](/regras/acoes-e-sistema#de-onde-sai-a-dificuldade)). Num trabalho de seguir alguém, a Dificuldade é o **Valor Passivo do alvo** (a Percepção Passiva dele), a mesma da cena. Até Dificuldade 20 um mortal passa (Braçal, Oficial, Perito, Mestre de ofício), e o valor é o Livre do ofício à altura × 1,8, o mesmo prêmio de risco da caçada de desafio 0 (40 ÷ 22). Acima de 20 só a Centelha passa, e o valor é o da tabela de desafio: desafio = (Dificuldade − 19) ÷ 2, arredondado para cima (o especialista de soma 12 precisa de +1 de Centelha a cada 2 pontos de Dificuldade para passar com 55%).
 
 <!-- gen:economia-recompensas-pericia -->
 
@@ -104,8 +104,8 @@ Os outros fatores da conta:
 
 **Exemplos de trabalho** (sem viagem, tom padrão; a bolsa sai arredondada):
 
-- **Seguir em segredo quem não quer ser achado e descobrir onde mora** (investigar, Dificuldade 15, 1 semana, descobrir um fato ×1, 1 pessoa): 40 × 1 × 1 × 1 × 1 = **40 pc**.
-- **Seguir um espião treinado sem ser notado e trazer prova do que ele faz** (investigar, Dificuldade 20, 2 semanas, com prova ×1,5, 1 pessoa): 65 × 2 × 1,5 × 1 × 1 = 195, arredondada: **200 pc**.
+- **Seguir em segredo quem não quer ser achado e descobrir onde mora** (investigar, Dificuldade 15, o Valor Passivo do alvo, 1 semana, descobrir um fato ×1, 1 pessoa): 40 × 1 × 1 × 1 × 1 = **40 pc**.
+- **Seguir um espião treinado sem ser notado e trazer prova do que ele faz** (investigar, Dificuldade 20, o Valor Passivo do espião, 2 semanas, com prova ×1,5, 1 pessoa): 65 × 2 × 1,5 × 1 × 1 = 195, arredondada: **200 pc**.
 - **Roubar de um nobre sem que ele note** (roubar, Dificuldade 20, 1 semana, sem que a falta seja notada ×2, risco alto ×1,5, 2 pessoas): 65 × 1 × 2 × 1,5 × 2 = **390 pc**.
 - **Entregar uma carta que ninguém pode saber que existe** (entregar, Dificuldade 15, 2 semanas, sigilo ×1,5, 1 pessoa; é o sigilo que tira o trabalho do mensageiro comum): 40 × 2 × 1,5 × 1 × 1 = **120 pc**.
 - **Recuperar uma criança levada por goblins** (recuperar, desafio 1, 1 semana, ×1, 4 pessoas): 95 × 1 × 1 × 1 × 4 = **380 pc**.

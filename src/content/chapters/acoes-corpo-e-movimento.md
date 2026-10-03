@@ -30,9 +30,9 @@ mesma lógica: quanto maior o número, mais difícil.*
 
 **Acúmulo e intervalo** · o Acúmulo é a **altura em metros**. O intervalo é o botão de velocidade da cena: **Tick** na perseguição, **minuto** na infiltração, **hora** na parede longa com equipamento.
 
-**A Margem compra** · altura. Cada Margem sobe **mais 3 metros** naquele intervalo.
+**A Margem** · não compra altura por cima: o excedente da jogada já é a altura subida naquele intervalo, e a Margem é só a forma de lê-lo.
 
-**Falha** · o padrão. Raspar custa o intervalo; errar por 6 ou mais perde a diferença em metros. Zerar o Acúmulo é voltar ao chão, e quem volta ao chão de uma altura considerável não volta inteiro: aí vale **Cair**, mais abaixo nesta página.
+**Falha** · o padrão. Raspar custa o intervalo; errar por 6 ou mais perde, em metros, o que passou da faixa de 6 (errou por 8, desce 2). Zerar o Acúmulo é voltar ao chão, e quem volta ao chão de uma altura considerável não volta inteiro: aí vale **Cair**, mais abaixo nesta página.
 
 **Ajuda** · não soma, apoia. Um só sobe de cada vez.
 

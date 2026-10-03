@@ -76,14 +76,16 @@ A tarefa declara **dois** números: a **Dificuldade**, que é o quanto custa cad
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Subir uma muralha de dez metros: <b>Dificuldade 7, Acúmulo 10</b>. Quem tira 17 sobe de primeira, porque 17 menos 7 são os dez metros inteiros. Quem tira 12 sobe cinco e continua pendurado, tentando de novo no intervalo seguinte.</div>
 
+Na Acumulada, a **Margem é só a forma de ler o excedente**: os 10 de excedente do 17 contra 7 já são o progresso daquela jogada (e contêm uma Margem), e a Margem não soma progresso por cima deles.
+
 Quando a jogada fica **abaixo** da Dificuldade, vale a **banda morta de uma Margem**:
 
 | Ficou abaixo por | O que acontece |
 |---|---|
 | **menos de 6** | nada. Raspou: passou o tempo do intervalo e o progresso fica onde estava |
-| **6 ou mais** | **perde a diferença**. Escorregou de verdade |
+| **6 ou mais** | **perde o que passou da faixa de 6**. Escorregou de verdade: errou por 8, perde 2 |
 
-É a Margem valendo nos dois sentidos: para cima compra efeito, para baixo cobra terreno. **Errar por pouco custa tempo; errar por muito custa progresso.** O progresso nunca fica abaixo de zero, e quem não tem pool para a Dificuldade oscila em torno do fundo sem avançar, que é a maneira certa de dizer "esta parede não é para você".
+É a Margem valendo nos dois sentidos, como no [Quase-Acerto](/regras/quase-acerto): os primeiros 6 abaixo são a faixa que só custa tempo, e só o que passa dela cobra terreno. **Errar por pouco custa tempo; errar por muito custa progresso.** O progresso nunca fica abaixo de zero, e quem não tem pool para a Dificuldade oscila em torno do fundo sem avançar, que é a maneira certa de dizer "esta parede não é para você".
 
 Algumas ações declaram outro comportamento, quando o padrão não faz sentido: **nunca retrocede** (o que já foi decifrado não se desdecifra) ou **falha completa e recomeço** (a peça rachou no forno, o disfarce foi desmascarado).
 
@@ -165,7 +167,7 @@ Três formas de mais de uma pessoa entrar na mesma tarefa, e cada uma resolve um
 
 ### Trabalho em Grupo
 
-Tarefas em que cada pessoa a mais é trabalho extra completo: cavar um buraco, carregar entulho, revistar uma sala. Cada um faz o **próprio teste**, e os resultados somam além da Dificuldade.
+Tarefas em que cada pessoa a mais é trabalho extra completo: cavar um buraco, carregar entulho, revistar uma sala. Cada um faz o **próprio teste**, e soma-se o **excedente de cada jogada** sobre a Dificuldade: com Dificuldade 7, quem tira 12 e quem tira 10 somam 5 + 3 = 8 de progresso.
 
 ### Ajudante
 

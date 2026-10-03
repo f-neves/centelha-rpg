@@ -47,7 +47,9 @@ A família inteira ainda espera regra. O que segue é o que cada ação é e a j
 
 **Dificuldade** · aqui ela não sai de tabela, **sai do observador**.
 
-<p class="formula">Direta: passe do <b>Valor Passivo</b> do vigia · Acumulada: a Dificuldade é <b>70%</b> dele</p>
+<p class="formula">Direta: passe do <b>Valor Passivo</b> do vigia · Acumulada: a Dificuldade é <b>70%</b> dele, e a suspeita se mede contra o <b>Valor Passivo inteiro</b></p>
+
+Num **trabalho de seguir alguém**, a Dificuldade é o **Valor Passivo do alvo** (a Percepção Passiva dele), na cena e no preço do trabalho ([Trabalhos e recompensas](/regras/custo-servicos#trabalhos-e-recompensas)).
 
 | Quem vigia | Valor Passivo | Dif na Acumulada |
 |---|:--:|:--:|
@@ -58,7 +60,7 @@ A família inteira ainda espera regra. O que segue é o que cada ação é e a j
 
 Havendo mais de um vigia, vale o **maior** Valor Passivo, e cada vigia a mais soma +1, porque cobrem ângulos diferentes.
 
-**O Valor Passivo não é um alarme ligado o tempo todo.** Ficar abaixo dele não significa, por si só, que o vigia notou alguma coisa: significa que você não passou limpo. O que acontece depois depende do **estado** dele.
+**O Valor Passivo não é um alarme ligado o tempo todo.** Ficar abaixo dele não significa, por si só, que o vigia notou alguma coisa: significa que você não passou limpo. Na Acumulada, quem avança abaixo do Passivo progride e deixa rastro ao mesmo tempo: o progresso se conta contra a Dificuldade (os 70%), e a suspeita contra o Passivo inteiro. Um guarda de portão tem Passivo 10 e Dificuldade 7; uma jogada de 8 avança 1 e fica 2 abaixo do Passivo, na coluna "abaixo por menos de 6" da tabela abaixo. O que acontece depois depende do **estado** dele.
 
 | Estado do vigia | Abaixo por menos de 6 | Abaixo por 6 ou mais |
 |---|---|---|
@@ -72,7 +74,7 @@ A leitura é simples: **o estado de alerta é o que apaga a banda morta**. Um gu
 
 **Acúmulo e intervalo** · o Acúmulo é o **comprimento do trecho exposto, em metros**. **Tick** no corredor com ronda passando, **minuto** no pátio, **hora** para atravessar um acampamento adormecido.
 
-**A Margem compra** · terreno ou tempo, à escolha do jogador: **mais 4 metros**, ou **congelar um intervalo**, com o vigia olhando para o outro lado enquanto o relógio da cena não anda.
+**A Margem** · não compra terreno por cima: o excedente da jogada já é o terreno andado. Cada Margem pode, à escolha do jogador, **congelar um intervalo**, com o vigia olhando para o outro lado enquanto o relógio da cena não anda.
 
 **Falha** · a banda morta existe, mas não devolve metros: devolve suspeita ou detecção, pela tabela acima. **Em furtividade não se escorrega um pouco.** O progresso conquistado nunca é perdido; o que se perde é o anonimato, e esse não volta.
 

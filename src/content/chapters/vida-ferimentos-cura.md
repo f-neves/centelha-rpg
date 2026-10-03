@@ -87,4 +87,4 @@ Você recupera o equivalente ao seu Vigor em PV a cada intervalo, tão mais lent
 | Grave (11–30%) | a cada 5 dias |
 | Crítico (1–10%) | por semana |
 
-<p class="muted">Cura é cura: a tabela vale para qualquer dano, venha ele de malho, de lâmina ou de queda. Quem trata acelera a recuperação: <strong>cada nível de Cura</strong> de quem cuida a acelera em <strong>10%</strong>, e os 50% exigem Cura 5. A magia também acelera.</p>
+<p class="muted">Cura é cura: a tabela vale para qualquer dano, venha ele de malho, de lâmina ou de queda. Quem trata acelera a recuperação: <strong>cada nível de Cura</strong> de quem cuida <strong>encurta o intervalo</strong> da tabela em <strong>10%</strong> (com Cura 3, o "a cada 5 dias" vira 3,5 dias), e os 50% exigem Cura 5. A magia também acelera.</p>
