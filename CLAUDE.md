@@ -292,6 +292,20 @@ dia, então ele só os reescreve se sumirem. E o passo 1 não é formalidade: o
   efeito" sem depender de um clique — e sem a separação, ela nasceria pedindo reescrita de
   toda ação que quisesse cobrir.
 
+## Decisões de regra do autor: confira o registro antes de despachar
+
+O registro de decisões do autor mora em `../tmp/veterana/decisoes.md` (fora do repositório): uma
+entrada por decisão, com data, texto verbatim, origem (despacho, adendo, commit) e estado (no ar, a
+implementar, substituída por X). Quando duas decisões tratam do mesmo ponto, as duas ficam, a mais
+antiga marcada "substituída" com o link para a nova.
+
+**Regra, para Arquiteto, Executora e Revisora:** antes de despachar ou aplicar qualquer MUDANÇA DE
+REGRA, procure o ponto no registro. Se a mudança contradiz uma decisão registrada, **pare e pergunte
+ao autor antes**; não escolha entre as duas. Quem aplica uma decisão nova acrescenta a entrada no
+mesmo dia e marca a antiga como substituída. Caso que motivou a regra: o Resistir teve três decisões
+sobre o mesmo ponto (1 + Margem em `afb818cc`; 1 ponto no Adendo 3, item 14, de 02/10/2026; e uma
+terceira depois), e a mais nova só vale se quem a aplica souber das anteriores.
+
 ## Escrita
 
 - Sem travessão (—) em nenhum texto: prosa, capítulo, comentário, mensagem de
