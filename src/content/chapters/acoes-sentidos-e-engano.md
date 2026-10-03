@@ -49,7 +49,7 @@ A família inteira ainda espera regra. O que segue é o que cada ação é e a j
 
 <p class="formula">Direta: passe do <b>Valor Passivo</b> do vigia · Acumulada: a Dificuldade é <b>70%</b> dele, e a suspeita se mede contra o <b>Valor Passivo inteiro</b></p>
 
-Num **trabalho de seguir alguém**, a Dificuldade é o **Valor Passivo do alvo** (a Percepção Passiva dele), na cena e no preço do trabalho ([Trabalhos e recompensas](/regras/custo-servicos#trabalhos-e-recompensas)).
+Num **trabalho de seguir alguém**, na cena vale a regra do Esgueirar, com o alvo no lugar do vigia: na Direta, contra o **Valor Passivo do alvo** (a Percepção Passiva dele); na Acumulada, contra 70% dele, com a suspeita medida contra o Passivo inteiro. O preço do trabalho usa o Valor Passivo inteiro ([Trabalhos e recompensas](/regras/custo-servicos#trabalhos-e-recompensas)).
 
 | Quem vigia | Valor Passivo | Dif na Acumulada |
 |---|:--:|:--:|

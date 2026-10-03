@@ -83,7 +83,7 @@ Quando a jogada fica **abaixo** da Dificuldade, vale a **banda morta de uma Marg
 | Ficou abaixo por | O que acontece |
 |---|---|
 | **menos de 6** | nada. Raspou: passou o tempo do intervalo e o progresso fica onde estava |
-| **6 ou mais** | **perde o que passou da faixa de 6**. Escorregou de verdade: errou por 8, perde 2 |
+| **6 ou mais** | **perde o que passou da faixa de 6**. Escorregou de verdade: errou por 8, perde 2; errou por exatamente 6, perde 0 |
 
 É a Margem valendo nos dois sentidos, como no [Quase-Acerto](/regras/quase-acerto): os primeiros 6 abaixo são a faixa que só custa tempo, e só o que passa dela cobra terreno. **Errar por pouco custa tempo; errar por muito custa progresso.** O progresso nunca fica abaixo de zero, e quem não tem pool para a Dificuldade oscila em torno do fundo sem avançar, que é a maneira certa de dizer "esta parede não é para você".
 

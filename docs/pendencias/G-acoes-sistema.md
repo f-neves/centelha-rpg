@@ -524,3 +524,20 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
 - [ ] **G74 · [DECIDIR] Poções como estoque de emergência caro.** Registrado em 01/10/2026, item 4
   do fechamento da economia, sem execução. Mesma fala do autor da G73: a poção entra na economia
   como estoque de emergência, e cara; o preço e a regra de compra ficam por decidir.
+- [ ] **G75 · [DECIDIR] Rever de uma vez todo efeito da Margem dentro da Acumulada.** Registrado em
+  02/10/2026, decisão do autor (Adendo 2 do despacho dos achados de duas leituras, pergunta 1 da
+  Revisora, opção C): desde o item 10 daquele despacho, na Acumulada a Margem é só a leitura do
+  excedente e não soma progresso por cima. Os efeitos de Margem que sobram dentro de uma Acumulada
+  ficam como estão até esta revisão. Os casos achados:
+  - **Esgueirar, "congelar um intervalo"** (`src/content/chapters/acoes-sentidos-e-engano.md`, ficha
+    do Esgueirar-se, linha "A Margem"): cada Margem pode congelar um intervalo.
+  - **Ofício na Acumulada** (`acoes-oficio-e-mundo.md`: "Fabricar é Longa por padrão. Vira
+    Acumulada só quando há pressa real"; a régua de qualidade em "A qualidade move os cinco números
+    de uma vez"): a Margem sobe o grau da peça.
+  - **A régua geral "O que a Margem compra fora do combate"** (`acoes-e-sistema.md`, Tempo,
+    Qualidade e Duração): vale para toda ação sem régua própria, Acumulada inclusive, e o capítulo
+    não diz como ela convive com o excedente que já é progresso.
+  - **Margem numa Longa** (`acoes-e-sistema.md`, exemplo de Decifrar uma página, "Duas Margens de
+    sobra"): é a D3 da Leitura de novato 3, e a Longa não rola.
+  - Já resolvidos e fora da lista: Escalar, Esgueirar (os metros) e Nadar (os metros), que deixaram
+    de somar por cima do progresso.

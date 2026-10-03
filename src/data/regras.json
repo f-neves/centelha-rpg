@@ -40,12 +40,12 @@
     {
       "nivel": 0,
       "rotulo": "Mortal",
-      "texto": "Pessoa comum, cerca de 95% da população. Sem acesso a Proezas ou Artes; vive do que treinou."
+      "texto": "Pessoa comum, cerca de 95% da população. Sem acesso a Proezas; conjura Artes com a Mana, que nele é a própria Força de Vontade. Tem Energia, mas não a usa: ela serve às Proezas."
     },
     {
       "nivel": 1,
       "rotulo": "Tocado",
-      "texto": "A fagulha acendeu: refino sobre-humano, ainda dentro do possível. Proezas de nível 1; ganha Energia e Mana."
+      "texto": "A fagulha acendeu: refino sobre-humano, ainda dentro do possível. Proezas de nível 1; a Energia passa a servir e a Mana cresce."
     },
     {
       "nivel": 2,

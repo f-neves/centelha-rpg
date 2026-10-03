@@ -279,3 +279,138 @@ também se o cortejo (`:276` e `regras.json` `social.modoDevagar.resistencia`, q
 
 Nenhum travessão novo: a contagem é a mesma de antes nos cinco capítulos (o único, em
 `vida-ferimentos-cura.md`, já estava lá).
+
+**Commit do Bloco 3:** `711b7b82` · **CI:** Validar 37085390862 (19 de 19) e Deploy 37085390876 (2 de
+2), primeira volta.
+
+## Adendo 2 · Correções da rodada 122 e a F2 (`f9116f28`), um commit
+
+Os itens 8, 9 e 14 seguem fora, com o autor.
+
+### CORRIGE A · `combate.md:106`
+- antes: "**Rola-se ao declarar**, para arma Leve, Média e de Distância: o acerto e o dano [...]"
+- depois: "**Rola-se ao declarar**, em todo golpe: o acerto e o dano [...]"
+
+### CORRIGE B · `combate.md:333` e `:339` (Recarga)
+- `:333`: depois de "o que a besta perde é o passo, não o disparo." entrou "No sistema Normal, o tiro
+  já foi rolado na declaração; o Preparo só marca a guarda aberta."
+- `:339`: "e só então o virote sai" ganhou "(no sistema Normal ele já foi rolado na declaração, e
+  esses Ticks só marcam a guarda aberta)".
+
+### CORRIGE C · `acoes-corpo-e-movimento.md:72` (Nadar)
+- antes: "**A Margem compra** · distância. Cada Margem avança **mais 5 metros**. A água devolve mais que
+  a parede: quem nada bem desliza."
+- depois: "**A Margem** · não compra distância por cima: o excedente da jogada já é a distância nadada
+  naquele intervalo, e a Margem é só a forma de lê-lo." É o mesmo molde do Escalar e do Esgueirar.
+
+### CLAREZA 1 · `acoes-e-sistema.md:84`
+- A linha "6 ou mais" da tabela da Acumulada passou a terminar em "errou por 8, perde 2; errou por
+  exatamente 6, perde 0".
+
+### CLAREZA 2 · `criacao-de-personagem.md:33`
+- A ponte: "[...] isso se conquista na história, não na planilha. Por isso a Centelha inicial também
+  não se compra: na criação, é o Mestre quem a dá, pela campanha (0 numa campanha mortal; de 1 a 3
+  numa heroica), e dali em diante ela sobe em jogo."
+
+### Pergunta 1, opção C · pendência G75
+- `docs/pendencias/G-acoes-sistema.md`, **G75 · [DECIDIR] Rever de uma vez todo efeito da Margem
+  dentro da Acumulada**. Os casos achados, varrendo `acoes-*.md`:
+  - o "congelar um intervalo" do Esgueirar;
+  - a qualidade do Ofício quando ele vira Acumulada;
+  - a régua geral "O que a Margem compra fora do combate" (Tempo, Qualidade, Duração), que vale
+    também na Acumulada sem dizer como convive com o excedente;
+  - a Margem numa Longa (o exemplo de Decifrar, a D3 da Leitora).
+- O congelar do Esgueirar ficou como estava. `Pendencias.md` regerado (entra a G75).
+
+### Pergunta 2, opção B · seguir alguém
+- `acoes-sentidos-e-engano.md:52`
+  - antes: "a Dificuldade é o **Valor Passivo do alvo** [...], na cena e no preço do trabalho"
+  - depois: "na cena vale a regra do Esgueirar, com o alvo no lugar do vigia: na Direta, contra o
+    **Valor Passivo do alvo** [...]; na Acumulada, contra 70% dele, com a suspeita medida contra o
+    Passivo inteiro. O preço do trabalho usa o Valor Passivo inteiro".
+- `custo-servicos.md:67`: "a mesma da cena" saiu. Agora diz: "o preço usa o **Valor Passivo inteiro
+  do alvo** [...]; na cena vale a regra do Esgueirar, em que a Acumulada vai contra 70% dele." Os
+  exemplos de `:107-108` ("Dificuldade 15, o Valor Passivo do alvo") não mudam.
+
+### F2 · o mortal tem Mana e conjura Artes
+
+**O código, conferido antes do texto. TRÊS lugares bloqueiam a Arte ou a Mana em Centelha 0, e não
+mudei nenhum, porque é decisão do autor:**
+1. `src/lib/ficha-engine.ts:176`: `capFor('arte2')` devolve `(S.centelha || 0) > 0 ? 6 : 0`. Na
+   ficha, com Centelha 0, o teto de toda Arte é 0, e o mortal **não consegue comprar nível de Arte**.
+   O comentário de `:174` diz "Basta Centelha > 0 para tocar a magia".
+2. `src/pages/mesa/grid.astro:3327-3329`: `mana: R.centelha > 0 ? R.mana : 0`, com o comentário
+   "Mana só existe para quem despertou". No Grid, o mortal entra com **Mana 0**.
+3. `src/pages/mesa/combate.astro:1690-1696` (o rastreador): `mn = (S.centelha || 0) > 0 ? manaDe(...)
+   : null`, com o comentário "Mana só para quem despertou". No rastreador, o mortal entra **sem
+   Mana**.
+
+Também diz o mesmo, ligado ao bloqueio 1, `src/components/FichaSkeleton.astro:117`: o cabeçalho da
+seção de Artes na ficha, "(10 + nível×5 · exige Centelha &gt; 0)". Não mexi: é o rótulo do que a
+ficha de fato faz hoje, e trocá-lo sem o código faria a ficha dizer uma coisa e fazer outra.
+
+Não bloqueiam:
+- `calc.ts` (a `mana` é Centelha × 2 + Vontade, que dá a Vontade em Centelha 0; a linha `:77` é do
+  limite de morte, outro assunto);
+- `artes-grid.ts` (o custo é total − Centelha, sem portão);
+- `mesa-ficha.ts` (usa a `mana` da calc);
+- `gen-bestiario.mjs`, `lib-bestiario.mjs` e `validate-data.mjs` (nenhuma regra de Arte por
+  Centelha);
+- `regras.json` `centelhaGate` (só diz que a Centelha sobe com o Mestre).
+
+**O texto mudou:**
+- `centelha.md`:
+  - a linha 0 da tabela: "Nada de sobrenatural, só Atributos e Habilidades" passou a "Nenhuma
+    Proeza; Artes, com a Mana, que no mortal é a própria Força de Vontade";
+  - `:28`, o "Mortal": "não há Proeza nem magia" passou a "não há Proeza: o mortal tem Energia, mas
+    não a usa, porque a Energia serve às Proezas. Magia ele pode estudar e conjurar, com a Mana
+    [...]";
+  - `:19` (Tocado, na tabela): "a Energia e a Mana que todo mortal já tem passam a servir (Proezas,
+    Artes)" passou a "a Energia que todo mortal já tem passa a servir (às Proezas), e a Mana
+    cresce";
+  - `:30`: "É aqui que se ganham as primeiras reservas de **Energia e Mana**" passou a "É aqui que a
+    **Energia** passa a servir (ela serve às Proezas), a **Mana** cresce, e chegam as primeiras
+    **Proezas**".
+  - O `:84` (o Portão) não fala de Arte e não mudou.
+- `criacao-de-personagem.md`:
+  - `:33`: "sem acesso a Técnicas ou Artes" passou a "sem acesso a Técnicas (as Artes ele pode estudar
+    e conjurar, com a Mana [...])";
+  - `:58`: "Arte de qualquer nível exige apenas Centelha > 0 (qualquer fagulha)" passou a "Arte de
+    qualquer nível não exige Centelha: o mortal (Centelha 0) também aprende e conjura, com a Mana
+    [...]";
+  - `:149`: "basta **Centelha maior que 0** (uma fagulha qualquer): a Centelha é só o interruptor"
+    passou a "**não é preciso Centelha**: o mortal conjura com a Mana [...], e a Centelha só engorda
+    essa reserva; ela não é a medida da profundidade". O arquétipo do Bram (mortal-tocado, Centelha 1)
+    ficou.
+- `src/pages/artes/regras.astro:46`: "basta **Centelha > 0** (qualquer fagulha) para tocar a magia"
+  passou a "não é preciso **Centelha** para tocar a magia (o mortal conjura com a Mana, que nele é a
+  própria Força de Vontade)".
+- `regras.json` `escalaCentelha`, que a ficha mostra como descrição do degrau:
+  - degrau 0: "Sem acesso a Proezas ou Artes" passou a "Sem acesso a Proezas; conjura Artes com a
+    Mana, que nele é a própria Força de Vontade. Tem Energia, mas não a usa: ela serve às Proezas.";
+  - degrau 1: "ganha Energia e Mana" passou a "a Energia passa a servir e a Mana cresce".
+  - É texto, e não portão: nenhum código lê esse campo para decidir nada.
+- A fórmula da Mana não mudou (Centelha × 2 + Vontade).
+
+**Verificação** (sobre `f9116f28`): `npm run validate` verde ("Portões OK"); `npx astro sync && npx
+tsc --noEmit` sem erro; `npm run build` verde. No HTML gerado, contado no texto sem marcação:
+- `combate` traz "em todo golpe", "o Preparo só marca a guarda aberta" e "esses Ticks só marcam a
+  guarda aberta" (1 cada), e "para arma Leve, Média e de Distância" 0 vezes;
+- `acoes-corpo-e-movimento` traz "não compra distância por cima" (1) e "mais 5 metros" 0 vezes;
+- `acoes-e-sistema` traz "errou por exatamente 6, perde 0" (1);
+- `criacao-de-personagem` traz a ponte, "não é preciso Centelha" e "Arte de qualquer nível não exige
+  Centelha" (1 cada); "Centelha maior que 0" e "sem acesso a Técnicas ou Artes" aparecem 0 vezes;
+- `centelha` traz "Nenhuma Proeza; Artes, com a Mana", "tem Energia, mas não a usa" e "a Energia que
+  todo mortal já tem passa a servir" (1 cada), e "não há Proeza nem magia" 0 vezes;
+- `acoes-sentidos-e-engano` traz "com o alvo no lugar do vigia" e "O preço do trabalho usa o Valor
+  Passivo inteiro" (1 cada);
+- `custo-servicos` traz "o preço usa o Valor Passivo inteiro do alvo" (1) e "a mesma da cena" 0
+  vezes;
+- `artes/regras` traz "não é preciso Centelha para tocar a magia" (1) e "qualquer fagulha" 0 vezes.
+
+**Arquivos deste commit:**
+- capítulos: `combate.md`, `acoes-corpo-e-movimento.md`, `acoes-e-sistema.md`,
+  `criacao-de-personagem.md`, `centelha.md`, `acoes-sentidos-e-engano.md`, `custo-servicos.md`;
+- `src/pages/artes/regras.astro` e `src/data/regras.json`;
+- `docs/pendencias/G-acoes-sistema.md` e `Pendencias.md`;
+- este relato.

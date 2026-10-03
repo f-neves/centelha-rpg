@@ -103,7 +103,7 @@ Preparo, Golpe e Recuperação em Ticks distintos.
 
 - **Normal** (**o padrão desta mesa**, e o sistema deste capítulo): a ação resolve inteira no
   Tick da declaração, com a Defesa em −2 durante o Preparo e −4 no Tick do golpe, exatamente
-  como descrito acima. **Rola-se ao declarar**, para arma Leve, Média e de Distância: o acerto e o
+  como descrito acima. **Rola-se ao declarar**, em todo golpe: o acerto e o
   dano valem no Tick da declaração, e o Preparo e o Golpe que vêm depois só marcam a Defesa em −2 e
   em −4. Não há um Tick isolado de Recuperação: a Velocidade inteira empurra a
   próxima ação, e é por isso que este capítulo fala em "Velocidade" e raramente em
@@ -331,12 +331,14 @@ O espelho da Investida. Se investir é gastar o Preparo **correndo**, recarregar
 
 É a única arma do jogo que perde o passo grátis. O arqueiro recua e dispara; o besteiro planta os
 pés e conta os Ticks. O tiro continua saindo no último Tick do ciclo, como em toda arma de
-distância: o que a besta perde é o passo, não o disparo.
+distância: o que a besta perde é o passo, não o disparo. No sistema Normal, o tiro já foi rolado na
+declaração; o Preparo só marca a guarda aberta.
 
 O preço é grande porque o ciclo é grande. A **Besta Grande** custa **15 Ticks**, e o Preparo de uma
 arma de distância é a Velocidade menos 1: são **catorze Ticks** de manivela, imóvel, com a Defesa
 em **−2** o tempo todo (o mesmo −2 de qualquer Preparo: ele não cresce, mas também não alivia), e
-só então o virote sai. É exatamente a vulnerabilidade que o **pavês**
+só então o virote sai (no sistema Normal ele já foi rolado na declaração, e esses Ticks só marcam a
+guarda aberta). É exatamente a vulnerabilidade que o **pavês**
 existe para cobrir, e é por isso que o livro chama o pavês de parede portátil do besteiro.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Bram, de Besta Média (Velocidade 12), declara o tiro no Tick 0 e, no sistema Normal, rola ali mesmo. Ele fica dos Ticks 0 ao 10 em Preparo, sem sair do lugar, e no Tick 11 em Golpe, com a guarda em −4. Um espadachim de espada longa (Velocidade 6) atravessa esse mesmo intervalo golpeando duas vezes, e andando nos dois. Se Bram precisar sair do caminho de uma investida no Tick 7, a saída é a mesma de qualquer um pego no meio de um Preparo: o desvio de emergência, a 1 Tick por metro, fora da vez.</div>

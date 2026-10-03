@@ -69,7 +69,7 @@ mesma lógica: quanto maior o número, mais difícil.*
 
 **Acúmulo e intervalo** · o Acúmulo é a **distância em metros**. **Tick** na fuga ou no naufrágio, **minuto** na travessia curta, **hora** na longa.
 
-**A Margem compra** · distância. Cada Margem avança **mais 5 metros**. A água devolve mais que a parede: quem nada bem desliza.
+**A Margem** · não compra distância por cima: o excedente da jogada já é a distância nadada naquele intervalo, e a Margem é só a forma de lê-lo.
 
 **Falha** · o padrão, com uma divergência que importa: **zerar o Acúmulo sobre água funda é começar a afundar**, e daí em diante vale [Sufocamento](/regras/acoes-resistir).
 
