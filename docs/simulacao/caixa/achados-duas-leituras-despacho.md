@@ -157,3 +157,24 @@ O que muda no despacho:
 - Seguem parados, à espera do autor: **item 8** (armadura na Furtividade), **item 9** (Corrida) e
   **item 14** (as duas perguntas: segurar firme e o cortejo). O Bloco 2 e o Bloco 3 podem fechar sem
   eles, se você preferir não esperar: diga no relato quais itens ficaram de fora de cada commit.
+
+## Adendo 2 (autor, 02/10/2026, depois da rodada 122): um commit de correção
+
+Verbatim:
+
+> 1. Os três CORRIGE (A, B e C) estão aprovados. Despache num commit só, junto com os dois pontos de clareza (a linha "6 ou mais" da tabela da Acumulada, deixando claro que errar por exatamente 6 perde 0; e uma ponte em criacao:33 entre "a Centelha se conquista na história" e o Mestre dar a Centelha inicial pela campanha).
+> 2. Pergunta 1 da Revisora, "congelar um intervalo": opção C. Fica como está, anotado como pendência, até se rever de uma vez todo efeito da Margem dentro da Acumulada (o congelar do Esgueirar, a qualidade do Ofício e o que mais houver). Liste os casos na pendência.
+> 3. Pergunta 2 da Revisora, seguir alguém: opção B. Na cena, a regra do Esgueirar: Direta contra o Valor Passivo do alvo; Acumulada contra 70% dele, com a suspeita medida contra o Passivo inteiro. O preço do trabalho usa o Passivo inteiro. Corrija acoes-sentidos-e-engano.md:52.
+> 4. Leitora F2, decidida pelo autor (reenvio): o mortal (Centelha 0) tem Mana e pode usá-la, então conjura Artes; a Mana dele é a Força de Vontade (fórmula atual, sem mudança). Pode ter Energia, mas não a usa, porque Energia serve às Proezas e Proeza exige Centelha. Corrija centelha.md:19 e :30 e os lugares que dizem que Arte exige Centelha maior que 0 (criacao-de-personagem.md:58 e :149, src/pages/artes/regras.astro:46). Antes de mudar, confira se algum código bloqueia Arte para Centelha 0 (ficha, Grid, gen-bestiario) e relate; se bloquear, é decisão de código que volta ao autor.
+
+Tarefa para a Executora, **um commit só** (CI verde; depois Revisora):
+- **CORRIGE A** (`combate.md:106`): tirar "para arma Leve, Média e de Distância"; vale para todo golpe no Normal.
+- **CORRIGE B** (`combate.md:333` e `:339`, Recarga): uma frase em cada, alinhando ao item 6 (rola-se ao declarar; o tiro já foi rolado, o Preparo só marca a guarda aberta).
+- **CORRIGE C** (`acoes-corpo-e-movimento.md:72`, Nadar): tirar o "mais 5 metros" da Margem, como no Escalar e no Esgueirar.
+- **CLAREZA 1**: a linha "6 ou mais" da tabela da Acumulada (`acoes-e-sistema.md:84`) deixa claro que errar por exatamente 6 perde 0.
+- **CLAREZA 2**: ponte em `criacao-de-personagem.md:33` entre "a Centelha se conquista na história" e o Mestre dar a Centelha inicial pela campanha.
+- **Pergunta 1, opção C**: o congelar do Esgueirar fica como está. Registre uma pendência nova em `docs/pendencias/G-acoes-sistema.md` ("rever de uma vez todo efeito da Margem dentro da Acumulada") **listando os casos**: o congelar do Esgueirar, a qualidade do Ofício na Acumulada e o que mais você achar (varra `acoes-*.md` por "Margem compra" / "A Margem" em ficha de Acumulada).
+- **Pergunta 2, opção B**: corrigir `acoes-sentidos-e-engano.md:52` (na cena, a regra do Esgueirar: Direta contra o Passivo; Acumulada contra 70%, suspeita medida contra o Passivo inteiro; o preço do trabalho usa o Passivo inteiro). Alinhe o que `custo-servicos.md` disser sobre "a mesma da cena".
+- **F2, texto**: o mortal (Centelha 0) tem Mana e a usa, e conjura Artes; a Mana dele é a Força de Vontade (fórmula atual, sem mudança). Pode ter Energia, mas não a usa, porque Energia serve às Proezas e Proeza exige Centelha. Corrigir `centelha.md:19` e `:30` e os lugares que dizem que Arte exige Centelha > 0: `criacao-de-personagem.md:58` e `:149`, `src/pages/artes/regras.astro:46`. Procure também no resto (`grep` por "Centelha > 0", "Centelha maior que 0", "exige apenas Centelha"), inclusive `centelha.md:84` e a ficha de Arte.
+- **F2, código primeiro**: ANTES de mudar o texto, confira se algum código bloqueia Arte para Centelha 0 (`ficha-engine.ts`, `calc.ts`, `grid.astro`, `artes-grid.ts`, `mesa-*.ts`, `gen-bestiario.mjs`, `validate-data.mjs`, `regras.json` `escalaCentelha` e `centelhaGate`). **Relate com arquivo:linha.** Se algum bloquear, **não mude o código**: é decisão do autor; mude só o texto e deixe o bloqueio descrito no relato. O texto do livro e o `escalaCentelha` hoje dizem que Centelha 0 não tem acesso a Artes (achado da B14, Adendo 1 do despacho da Fase 4).
+- Os itens **8, 9 e 14 seguem fora**.
