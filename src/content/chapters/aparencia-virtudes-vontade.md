@@ -81,7 +81,7 @@ Quando a pressão é sobre a alma (o medo que manda correr, a provocação que p
 | 5 | 2d6+2 |
 | 6 | 3d6 |
 
-O Atributo fica de fora de propósito: somado, ele empurra todo mundo para perto da média e apaga a diferença entre uma Virtude e a vizinha, que é justamente o que o teste existe para mostrar.
+O Atributo fica de fora de propósito: somado, ele empurra todo mundo para perto da média e apaga a diferença entre uma Virtude e a vizinha, que é justamente o que o teste existe para mostrar. A **Centelha** também não entra no teste de Virtude: nem inteira, nem pelo 2 × mín.
 
 **Só a pressão da alma vai com a Virtude sozinha, e o corpo não testa Virtude nenhuma.** O que pesa no **corpo**, a dor física inclusive, não é teste de Virtude, mesmo quando a tabela acima põe a dor na Convicção: a dor do ferro, os efeitos das [Artes](/artes/regras) que invadem o corpo e o próprio sangramento ([Estabilizar](/regras/vida-ferimentos-cura#sangramento-e-estabilização)) são **Vigor + Resistência**, a mesma Habilidade que já resolve veneno, doença e ambiente hostil no capítulo [Resistir](/regras/acoes-resistir). Ali quem aguenta é a carne, e nenhuma Virtude entra na conta. Do mesmo jeito, as jogadas das Artes que forçam a alma de outra coisa a ceder (Banir, Círculo) resistem pela [Defesa Mental](/regras/defesas), um número passivo, não um teste.
 

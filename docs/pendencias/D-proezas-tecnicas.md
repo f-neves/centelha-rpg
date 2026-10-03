@@ -73,8 +73,13 @@ Detalhe em `Proezas_revisao.md`.
   TIPO de jogada que o Mestre pede ("role Destreza"), e não o personagem com Habilidade 0. "Role
   Destreza + Atletismo" com Atletismo 0 leva bônus 0, pelo 2 × menor; só a jogada de Atributo puro
   pedida leva a Centelha inteira. Os exemplos acima ("Vontade pura", "Resistir sem perícia",
-  "testes de Bravura") são de antes dessa precisão e não valem como lista: a provocação do orc
-  (`racas.md:169`) e o teste de Virtude (achado 16 da Revisão 119) seguem com o autor.
+  "testes de Bravura") são de antes dessa precisão e não valem como lista. O critério, verbatim do
+  autor (o mesmo de `centelha.md:44`): "O Mestre pede uma jogada de Atributo puro só quando nenhuma
+  Habilidade do livro cobre a ação. É sempre o Mestre quem decide, e não o jogador. Se existe
+  Habilidade que cubra, ela é pedida, e quem não a tem leva bônus 0." Os dois casos que seguiam com
+  o autor foram decididos em 02/10/2026 (despacho dos achados de duas leituras): a provocação do orc
+  (`racas.md:169`) é Força de Vontade × 2 + 2 × mín(Centelha, Integridade), como na Defesa Mental;
+  e o teste de Virtude não leva a Centelha (achado 16 da Revisão 119).
 - [ ] **D13 · [DECIDIR] Proeza "punho como arma média".** Registrado em 28/09/2026, Fase 3 da
   Reforma da Centelha/Briga (item 3). O desarmado (`armas.json:1278`, id `desarmado`) subiu de
   acerto 0 → 1 e defesaArma 0 → 1 nessa rodada, mas continua classe **leve** no Quase-Acerto (dano
@@ -90,3 +95,7 @@ Detalhe em `Proezas_revisao.md`.
   de Criação de Personagem) não foi revisado para refletir esse ganho a mais no topo. Adiado
   pelo próprio despacho até a Parte B (a rodada de recalibração econômica, ainda não retomada
   nesta frente) fechar; não decidir nem mexer em preço agora.
+- [ ] **D15 · [ADIADO] Botão de Atributo puro.** Registrado em 02/10/2026, decisão do autor no
+  despacho dos achados de duas leituras (item 17): sem botão de jogada de Atributo puro na ficha nem
+  no Grid por enquanto. O Mestre faz a conta à mão (a Centelha inteira, pela D12).
+  `centelhaSoAtributo` (`src/lib/calc.ts`) segue sem chamador.

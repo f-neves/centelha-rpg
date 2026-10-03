@@ -166,7 +166,7 @@ Entrar é um [teste de Temperança](/regras/aparencia-virtudes-vontade#o-teste-d
 **O teste só é forçado em dois casos.** Fora deles, o orc só rola se quiser entrar, e a provocação de cotidiano (um insulto, um golpe que raspou, o cheiro de sangue) não obriga a nada.
 
 1. **Dano grande: um único golpe que tire 20% ou mais da Vida máxima**, arredondado para cima (orc de 41 PV: 9 de dano). Conta o dano que passou, depois da Absorção. **Dano acumulado não dispara**: o Frenesi é pela pancada, não pelo desgaste, e dez golpes pequenos levam o orc a Crítico sem teste nenhum.
-2. **Provocação importante.** O que conta como importante decide o Mestre, pela história e pelas relações do personagem. Quem provoca rola **Influência** com a Habilidade que a forma da provocação pedir (Manha para zombaria e deboche, Intimidação para ameaça, Empatia para achar a ferida certa, Oratória para humilhar em público), com uma descrição que combine com ela, contra **Força de Vontade do orc × 2 + Centelha dele**. Passando, o orc é obrigado ao teste de Frenesi. Aqui a Força de Vontade protege o orc.
+2. **Provocação importante.** O que conta como importante decide o Mestre, pela história e pelas relações do personagem. Quem provoca rola **Influência** com a Habilidade que a forma da provocação pedir (Manha para zombaria e deboche, Intimidação para ameaça, Empatia para achar a ferida certa, Oratória para humilhar em público), com uma descrição que combine com ela, contra **Força de Vontade do orc × 2 + 2 × mín(Centelha, Integridade) dele**, como na Defesa Mental. Passando, o orc é obrigado ao teste de Frenesi. Aqui a Força de Vontade protege o orc.
 
 **A Dificuldade vem da situação** em que o orc está no momento do teste, e o Mestre a escolhe nesta escala:
 

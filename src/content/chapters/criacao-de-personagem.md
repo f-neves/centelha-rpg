@@ -20,7 +20,7 @@ Se é a sua primeira vez, siga esta ordem: os detalhes de cada passo estão nas 
 5. **Habilidades e Especialidades.** Teto **4**, com **uma única** primária em **5** (o pico de Habilidade). Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
 6. **Virtudes.** As quatro, de 1 a 6.
 7. **Força de Vontade e Aparência.** Suba a Vontade do piso 0 (um herói costuma levá-la a 5+); escolha a Aparência (0–12, normal no nível 6).
-8. **Centelha.** Teto **3** na criação. Ela **não custa XP**: o tier é definido com o Mestre e define o que você alcança. A maioria começa em 1; quem quer um herói de saga começa em 3 (Herói).
+8. **Centelha.** Teto **3** na criação. Ela **não custa XP**: o tier é definido com o Mestre e define o que você alcança. O Mestre escolhe pela campanha: **Centelha 0** numa campanha mortal; de **1 a 3** numa campanha heroica (3 é o Herói, para quem quer um herói de saga).
 9. **Proezas, Técnicas e Artes.** Gaste o restante em poder: as Técnicas que a Centelha destrava e, se for feiticeiro, os níveis de Arte e os Efeitos Especiais.
 10. **Derivados.** PV, Defesas, Energia/Mana e Iniciativa saem de fórmulas: confira na tabela mais abaixo, ou deixe a Ficha calcular.
 
@@ -30,9 +30,9 @@ Se é a sua primeira vez, siga esta ordem: os detalhes de cada passo estão nas 
 
 Tudo começa no mínimo e é comprado dali: **Atributos 1** · **Habilidades 0** · **Virtudes 1** · **Força de Vontade 0** · **Aparência 0** · **Centelha 0** · qualquer **Proeza 0**.
 
-A **Centelha 0** é o mortal comum, cerca de 95% das pessoas, sem acesso a Técnicas ou Artes. Alcançar **Centelha 1** é o que torna alguém especial, e isso se conquista na história, não na planilha. Orçamento inicial padrão: **1500 XP** (iniciante), **2000** (veterano) ou **2600** (especialista).
+A **Centelha 0** é o mortal comum, cerca de 95% das pessoas, sem acesso a Técnicas ou Artes. Alcançar **Centelha 1** é o que torna alguém especial, e isso se conquista na história, não na planilha. Na criação, quem decide a Centelha inicial é o Mestre, pela campanha (0 numa campanha mortal; de 1 a 3 numa heroica); dali em diante ela sobe em jogo. Orçamento inicial padrão: **1500 XP** (iniciante), **2000** (veterano) ou **2600** (especialista).
 
-> **Modelo de custo (fechado).** O preço de um nível é **base + (multiplicador × nível)**, no lugar do antigo *nível × custo*. A diferença prática: a escada dos níveis altos ficou muito mais suave, então o topo da régua passou a ser alcançável em jogo. **Vontade e Aparência descem para o piso 0** (você compra o nível 1) e a **Centelha deixa de custar XP**. Duas trilhas não acumulam, a Proeza e o Efeito Especial: paga-se só o preço do nível comprado.
+> **Modelo de custo (fechado).** O preço de um nível é **base + (multiplicador × nível)**, no lugar do antigo *nível × custo*. A diferença prática: a escada dos níveis altos ficou muito mais suave, então o topo da régua passou a ser alcançável em jogo. **Vontade e Aparência descem para o piso 0** (você compra o nível 1) e a **Centelha deixa de custar XP**. Duas trilhas não acumulam, a Proeza e o Efeito Especial: paga-se no total só o preço do nível comprado (subir uma Proeza de nível paga só a diferença).
 >
 > **Pendente.** Os orçamentos de 1500 / 2000 / 2600 foram calibrados na economia antiga, quando as Proezas comiam cerca de 40% do bolo. Com a curva nova elas se acumulam ao longo da campanha em vez de saírem da criação, e um personagem inicial típico fecha perto de **1050 XP**. Os três exemplos abaixo estão **recusteados pela função de custo real**, mas os orçamentos ainda serão reajustados.
 
@@ -55,13 +55,13 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 | Nível de Arte (Arcano) | 10 + (nível × 5) | 0→1 = 15 · 2→3 = 25 · 5→6 = 40 |
 | Efeito Especial de Arte | nível × 4 | 4 · 8 · 12 · 16 · 20 · 24 · **não acumula** |
 
-<p class="muted">Duas trilhas <strong>não acumulam</strong>: a Proeza e o Efeito Especial. Você paga o preço cheio do nível que está comprando, e não a soma dos de baixo: um Efeito de nível 2 custa 8 e não exige ter pago o de nível 1; subir uma Proeza do nível 2 para o 3 custa os 20 do nível 3 inteiro, não a diferença entre os dois. Nas demais trilhas o custo é cumulativo: você paga cada degrau até chegar lá. Técnica de nível <em>N</em> exige Centelha ≥ N, e é esse portão que limita a profundidade; Arte de qualquer nível exige apenas Centelha &gt; 0 (qualquer fagulha).</p>
+<p class="muted">Duas trilhas <strong>não acumulam</strong>: a Proeza e o Efeito Especial. Uma Técnica de nível <em>N</em> custa no total o preço do nível <em>N</em> (5 + 5 × nível), e não a soma dos de baixo; subir uma Proeza de nível paga só a diferença: do nível 2 (15) para o 3 (20), 5. A Proeza não acumula como Atributo e Habilidade porque o personagem compra muitas Técnicas, e não sobe uma trilha só. Do mesmo jeito, você paga o preço cheio do nível do Efeito que está comprando, e não a soma dos de baixo: um Efeito de nível 2 custa 8 e não exige ter pago o de nível 1. Nas demais trilhas o custo é cumulativo: você paga cada degrau até chegar lá. Técnica de nível <em>N</em> exige Centelha ≥ N, e é esse portão que limita a profundidade; Arte de qualquer nível exige apenas Centelha &gt; 0 (qualquer fagulha).</p>
 
 <div class="callout"><span class="lbl">O portão da Centelha</span>A Centelha <strong>não custa XP</strong>. Ela sobe só com <strong>permissão do Mestre</strong>, num marco de história ou feito maior: o salto de tier, de herói a semideus, é uma conquista narrativa e não uma transação de balcão. Cobrar XP por ela criava a situação estranha de o Mestre conceder o marco e o jogador responder que não tinha guardado o suficiente.</div>
 
 ## Limites na criação
 
-Atributo máximo **5**; Habilidade máxima **4**; Centelha máxima **3** (a maioria dos heróis começa em 1). O ponto seguinte e os tiers maiores vêm com o jogo.
+Atributo máximo **5**; Habilidade máxima **4**; Centelha máxima **3** (o Mestre escolhe pela campanha: 0 numa campanha mortal; de 1 a 3 numa heroica). O ponto seguinte e os tiers maiores vêm com o jogo.
 
 Cada herói pode ter **um pico**: você está autorizado a levar **um único Atributo a 6** e **uma única Habilidade primária a 5** já na criação: o talento superlativo que o define. Os demais respeitam os tetos acima.
 
@@ -125,7 +125,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 
 ### Veil, o Feiticeiro-guerreiro · Especialista (Centelha 4)
 
-<p class="muted">**Exceção declarada:** o teto de criação é Centelha 3 (`limitesCriacao.centelha`); Veil sobe a 4 porque a Centelha não se compra com XP, é concedida pelo Mestre num marco de história, e o orçamento Especialista é o único que já supõe esse marco alcançado. Não é o número padrão de um personagem recém-criado.</p>
+<p class="muted">**Exceção declarada:** o teto de criação é Centelha 3 (`limitesCriacao.centelha`); Veil sobe a 4 porque a Centelha não se compra com XP, é concedida pelo Mestre num marco de história, e o orçamento Especialista é o único que já supõe esse marco alcançado. Não é o número padrão de um personagem recém-criado: pela faixa padrão (0 numa campanha mortal; de 1 a 3 numa heroica), Veil é de uma campanha heroica que o Mestre abre acima dela.</p>
 
 | Compra | Detalhe | XP |
 |---|---|:---:|
