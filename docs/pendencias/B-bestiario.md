@@ -123,6 +123,14 @@ limitações conhecidas, que são as três de baixo.
     > Dependência: a recompensa de caça usa o desafio. Se a nova escala cobrir o mesmo perigo em passos
     > menores, o fator da recompensa passa de 1,75 para cerca de 1,32 (um parâmetro em `modelo.py`).
     > Revisar junto.
+  - **A escala do desafio, DECIDIDA pelo autor (registrado em 02/10/2026, sem executar):** de 0 a
+    12, e nenhuma criatura passa de 9, exceto a Tarrasca (10). O campo `ameaca` (1 a 6, os
+    losangos) é o que precisa se ajustar a isso, quando a B14 gravar o desafio nas fichas.
+  - **O `REC_FATOR` (1,75 contra 1,32) não é decisão aberta** (autor, 02/10/2026): era da regra de
+    Degrau, que saiu no item 2e do fechamento da economia, trocada pela tabela de valor por
+    desafio. Conferido em 02/10/2026: o `REC_FATOR` já não existe em `lore/economia/v2/modelo.py`
+    (saiu em `5d068c65`, 01/10/2026) nem em outro código do repositório; a citação
+    `modelo.py:447` do achado acima é histórica.
 - [x] **B15 · [CORRIGIDO em 28/09/2026, achado da própria rodada estava ERRADO] O bônus de
   Centelha NÃO sai 0 em toda criatura.** Registrado em 28/09/2026, Fase 1 da Reforma da
   Centelha, como "as 309 fichas do bestiário não têm bloco `pericias`, o bônus de Centelha em
