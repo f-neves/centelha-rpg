@@ -137,3 +137,23 @@ ele traz todas as linhas em conflito, não só a primeira.
 `docs/simulacao/caixa/achados-duas-leituras-relato.md`: por item, o texto antes e depois com
 arquivo:linha; no item 1, qual era a convenção; os pontos onde parou para perguntar; os arquivos
 tocados por bloco.
+
+## Adendo 1 (autor, 02/10/2026, respostas às paradas do item 1 e ao item 16)
+
+Verbatim:
+
+> Item 1 (Proeza): opção B. Mantém o código e o JSON: a Técnica no nível N custa o preço do nível N no total (5 + 5 × nível), e subir paga a diferença. Nenhum total de ficha muda. Corrija criacao-de-personagem.md:58 para dizer o mesmo, com uma frase explicando que a Proeza não acumula como Atributo e Habilidade porque o personagem compra muitas Técnicas, e não sobe uma trilha só. A recomendação "mesma convenção das Habilidades" foi do assistente, sem os números; não vale. O Efeito Especial fica como está.
+> Item 16 (suspeita no Esgueirar): opção B. Na Acumulada, a Dificuldade é 70% do Valor Passivo do vigia, e a suspeita é medida contra o Valor Passivo inteiro: quem avança abaixo do Passivo progride e deixa rastro ao mesmo tempo. Ajuste acoes-sentidos-e-engano.md:50, :61 e :63 para dizer isso com o exemplo do guarda (Passivo 10, Dificuldade 7, jogada 8: avança e cai em "abaixo por menos de 6").
+> Correção anotada: no item 2, a Leitora certa é a F1. A F2 (Energia e Mana do mortal) segue aberta para o autor.
+
+O que muda no despacho:
+- **Item 1** sai da parada e entra no Bloco 1: só texto. `criacao-de-personagem.md:58` passa a dizer o
+  que o código e o JSON já fazem (a Técnica no nível N custa o preço do nível N no total; subir paga a
+  diferença), com a frase do porquê. Confira também `criacao:35` ("Duas trilhas não acumul...") e
+  deixe os dois dizendo o mesmo. `regras.json` e `calc.ts` não mudam (a nota e o comentário já dizem
+  "paga só a diferença"). O Efeito Especial fica como está.
+- **Item 16** deixa de ser do Arquiteto e entra no **Bloco 3**: `acoes-sentidos-e-engano.md:50`, `:61`
+  e `:63`, com o exemplo do guarda do autor.
+- Seguem parados, à espera do autor: **item 8** (armadura na Furtividade), **item 9** (Corrida) e
+  **item 14** (as duas perguntas: segurar firme e o cortejo). O Bloco 2 e o Bloco 3 podem fechar sem
+  eles, se você preferir não esperar: diga no relato quais itens ficaram de fora de cada commit.
