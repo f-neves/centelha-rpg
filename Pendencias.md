@@ -39,7 +39,7 @@ está na seção 3.
 
 | Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados | DECIDIR | FAZER | AUTOR | CONSERTAR | Outra marca | Adiados |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 32 | 22 | 1 | 9 | 15 | 4 | 4 | 0 | 0 | 0 |
+| A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 33 | 23 | 1 | 9 | 16 | 4 | 4 | 0 | 0 | 0 |
 | B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 19 | 13 | 0 | 6 | 7 | 6 | 0 | 0 | 0 | 0 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 15 | 10 | 0 | 5 | 4 | 1 | 0 | 0 | 0 | 5 |
@@ -51,7 +51,7 @@ está na seção 3.
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 17 | 14 | 0 | 3 | 6 | 3 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 38 | 24 | 1 | 13 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **351** | **246** | **4** | **101** | **102** | **39** | **8** | **10** | **81** | **10** |
+| | **Total** | | **352** | **247** | **4** | **101** | **103** | **39** | **8** | **10** | **81** | **10** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -342,6 +342,7 @@ Os itens abertos e parciais de cada tema, com a marca e o título; os fechados v
 | A29 | aberto | DECIDIR | Preço de serviço e de item mágico, e raridade por lugar. |
 | A30 | aberto | DECIDIR | Cura, Acerto Arcano e Energia Espiritual: comparar por pacote na etapa das Artes. |
 | A31 | aberto | DECIDIR | Energia/Mana fora da Reforma da Centelha, avaliar com as Artes. |
+| A32 | aberto | DECIDIR | O mortal conjura no livro, e o código ainda bloqueia. |
 
 Fechados (9): A12, A17, A18, A22, A23, A27, A21, A22, A20.
 

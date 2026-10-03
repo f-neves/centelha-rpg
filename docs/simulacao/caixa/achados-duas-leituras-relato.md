@@ -577,3 +577,45 @@ Conjurações com a reserva cheia, pelo custo **mínimo / mediano** de um Efeito
 **Nada foi liberado.** Os três bloqueios (`ficha-engine.ts:176`, `grid.astro:3329`,
 `combate.astro:1693`) seguem como estão, à espera do teto de Arte do mortal e da decisão sobre a
 recuperação.
+
+**Commit do Adendo 3:** `ad632f3f` · **CI:** Validar 37089325069 (19 de 19) e Deploy 37089325039 (2 de
+2), primeira volta.
+
+## Correções da rodada 123 (`657cbe0a`), commit separado
+
+1. **G75** (`docs/pendencias/G-acoes-sistema.md`): o caso "Ofício na Acumulada" estava mal ancorado.
+   O erro veio da 122: no capítulo do Ofício a qualidade é o grau escolhido antes da peça
+   (`acoes-oficio-e-mundo.md:68-82` e `:113`), e a Margem só aparece no Desmontar (`:205`). A
+   ancoragem passou para `acoes-e-sistema.md:46` e `:51`, e o caso agora é "A régua própria de
+   Ofício, prometida e ausente": `:46` liga a Margem à Qualidade pela "régua dos Ofícios", `:51`
+   promete que a régua própria de Ofício vale sobre a geral, e essa régua não existe.
+2. **`centelha.md:12`**
+   - antes: "tudo que é extraordinário, as **Proezas**, a feitiçaria do **Arcano** e a estatura que
+     vai do mortal ao semideus, pende dela."
+   - depois: "tudo que é extraordinário, as **Proezas** e a estatura que vai do mortal ao semideus,
+     pende dela; a feitiçaria do **Arcano** o mortal também alcança, e a Centelha engorda a Mana de
+     quem conjura."
+3. **`src/pages/arcano.astro:57`** (a página "O Arcano")
+   - antes: "Ter a fagulha (Centelha) deixa você **tocar** a magia, mas ninguém nasce sabendo
+     **moldá-la**."
+   - depois: "Qualquer um pode **tocar** a magia, com ou sem fagulha (Centelha), mas ninguém nasce
+     sabendo **moldá-la**."
+4. **Pendência nova A32** (`docs/pendencias/A-arcano-artes.md`): "O mortal conjura no livro, e o
+   código ainda bloqueia".
+   - Lista os três bloqueios (`ficha-engine.ts:176`, `grid.astro:3329`, `combate.astro:1693`) e o
+     rótulo `FichaSkeleton.astro:117` ("exige Centelha > 0"), com a decisão do teto com o autor.
+   - Traz a observação, sem resolver: a recuperação da Mana é por Centelha, e com Centelha 0 ela
+     nunca volta pelo relógio.
+   - `Pendencias.md` regerado.
+
+Não escrevi ressalva no livro sobre o bloqueio, não mexi nos três códigos e não decidi a recuperação
+da Mana do mortal.
+
+**Verificação** (sobre `ad632f3f`): `npm run validate` verde ("Portões OK"); `npx astro build
+--force` verde. No HTML gerado:
+- `dist/regras/centelha/index.html` traz "a feitiçaria do Arcano o mortal também alcança" (1) e "a
+  feitiçaria do Arcano e a estatura" 0 vezes;
+- `dist/arcano/index.html` traz "Qualquer um pode tocar a magia, com ou sem fagulha" (1) e "Ter a
+  fagulha (Centelha) deixa" 0 vezes.
+
+Nenhum travessão nos quatro arquivos tocados.

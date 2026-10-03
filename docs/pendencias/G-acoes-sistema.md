@@ -531,9 +531,13 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
   ficam como estão até esta revisão. Os casos achados:
   - **Esgueirar, "congelar um intervalo"** (`src/content/chapters/acoes-sentidos-e-engano.md`, ficha
     do Esgueirar-se, linha "A Margem"): cada Margem pode congelar um intervalo.
-  - **Ofício na Acumulada** (`acoes-oficio-e-mundo.md`: "Fabricar é Longa por padrão. Vira
-    Acumulada só quando há pressa real"; a régua de qualidade em "A qualidade move os cinco números
-    de uma vez"): a Margem sobe o grau da peça.
+  - **A régua própria de Ofício, prometida e ausente** (`acoes-e-sistema.md:46` e `:51`). A tabela
+    geral liga a Margem à Qualidade pela "régua dos Ofícios" (`:46`), e `:51` diz que "onde já existe
+    uma régua própria e mais detalhada para uma ação, como a qualidade de Ofício", ela vale sobre a
+    tabela geral. Mas no capítulo do Ofício a qualidade é o **grau escolhido antes** da peça
+    (`acoes-oficio-e-mundo.md:68-82` e `:113`), e a Margem só aparece no Desmontar (`:205`): a régua
+    própria de Margem para a qualidade não existe. (Corrigido na rodada 123: a 122 tinha ancorado
+    este caso na Acumulada do Ofício, que não liga Margem a qualidade.)
   - **A régua geral "O que a Margem compra fora do combate"** (`acoes-e-sistema.md`, Tempo,
     Qualidade e Duração): vale para toda ação sem régua própria, Acumulada inclusive, e o capítulo
     não diz como ela convive com o excedente que já é progresso.

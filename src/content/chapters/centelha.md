@@ -9,7 +9,7 @@ O que separa um mestre-de-armas mortal de um herói de lenda é a **Centelha**, 
 
 ## A Centelha, o coração do sistema
 
-A Centelha é a **fagulha de poder** que mora (ou não) em alguém. É o eixo central deste jogo: tudo que é extraordinário, as **Proezas**, a feitiçaria do **Arcano** e a estatura que vai do mortal ao semideus, pende dela. A esmagadora maioria das pessoas tem Centelha **0** e vive uma vida inteira sem nunca tocar o sobrenatural. Acender uma Centelha é o que torna alguém especial.
+A Centelha é a **fagulha de poder** que mora (ou não) em alguém. É o eixo central deste jogo: tudo que é extraordinário, as **Proezas** e a estatura que vai do mortal ao semideus, pende dela; a feitiçaria do **Arcano** o mortal também alcança, e a Centelha engorda a Mana de quem conjura. A esmagadora maioria das pessoas tem Centelha **0** e vive uma vida inteira sem nunca tocar o sobrenatural. Acender uma Centelha é o que torna alguém especial.
 
 A régua vai de **0 a 12**, e a **faixa do jogador é de 0 a 6**: os seis degraus de cima são do bestiário, e a tabela abaixo é a parte jogável. Cada degrau não é "um pouco mais forte": é um **salto de tier**, uma mudança de natureza.
 

@@ -256,3 +256,20 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   × 2`, `Mana = Centelha × 2 + Vontade`). Texto do autor, verbatim: "a energia cresce com a
   Centelha e as Artes agora também ganham dano +C e Dificuldade de resistência com 2 × min(C,
   nível da Arte); avaliar o conjunto quando as Artes forem calibradas".
+- [ ] **A32 · [DECIDIR] O mortal conjura no livro, e o código ainda bloqueia.** Registrado em
+  02/10/2026, rodada 123 (`docs/simulacao/caixa/123-revisora.md`, ESCALA), sobre a F2 decidida pelo
+  autor no Adendo 2 do despacho dos achados de duas leituras: o mortal (Centelha 0) tem Mana, que é a
+  Força de Vontade, e conjura Artes. O livro já diz isso (`centelha.md`, `criacao-de-personagem.md`,
+  `artes/regras.astro`, `arcano.astro`), e o código ainda bloqueia em três lugares, mais um rótulo:
+  - `src/lib/ficha-engine.ts:176`: `capFor('arte2')` dá teto 0 com Centelha 0, e a ficha não deixa
+    comprar nível de Arte;
+  - `src/pages/mesa/grid.astro:3329`: no Grid, `mana: R.centelha > 0 ? R.mana : 0`, Mana 0 para o
+    mortal;
+  - `src/pages/mesa/combate.astro:1693`: no rastreador, Mana nula para Centelha 0;
+  - `src/components/FichaSkeleton.astro:117`: o cabeçalho da seção de Artes da ficha diz "exige
+    Centelha > 0".
+  O autor decide o teto de Arte do mortal antes de o código seguir (a medição está no relato dos
+  achados de duas leituras, seção "Medição da F2"). **Observação, sem resolver:** a recuperação da
+  Mana é por Centelha (`regras.json` `arcano.recuperacaoMana`: "Centelha por hora", e "2 × Centelha
+  por hora" em descanso). Com Centelha 0, a Mana do mortal nunca volta pelo relógio, só pela Firula
+  ou pela Arte Manipulação de Mana. É pergunta do autor.
