@@ -146,14 +146,14 @@ Bater num alvo de Defesa Social muito acima da sua é bater numa muralha; a saí
 
 ### Resistir: gastar Força de Vontade
 
-Um golpe que supera a Defesa **moveria** o alvo. Para **segurar firme**, ele gasta **1 ponto de Força de Vontade** naquele lance, e só 1: o máximo de 1 ponto por ação ou jogada vale também para resistir. O que esse ponto compra depende da Margem:
+Um golpe que supera a Defesa **moveria** o alvo. Para **segurar firme**, ele gasta **Força de Vontade** naquele lance, e o custo sobe com a Margem: **1 + Margem**, com **teto de 4**. Nenhum efeito obriga o defensor a pagar mais de 4 para resistir: uma Margem 6 pediria 7, e 4 bastam. (Proezas podem cobrar mais que 4.) **Resistir é um pagamento**, e fica fora do limite de 1 ponto de Vontade por ação ou jogada, que vale só para melhorar uma ação ou uma Defesa.
 
-| Ataque supera a Defesa por | Gastando 1 Vontade | Sem gastar |
-|---|---|---|
-| 1–5 (Margem 0) | **segura firme**: não cede | cede o ponto daquela cena, no nível em que a relação já está |
-| 6–11 (Margem 1) | cede, mas o pedido chega **1 nível abaixo**: no nível da relação | cede, e o pedido chega **1 nível acima** da relação |
-| 12–17 (Margem 2) | cede, mas o pedido chega **1 nível abaixo**: 1 nível acima da relação | cede, e o pedido chega **2 níveis acima** |
-| cada +6 além disso | **+1 nível**, sempre 1 abaixo do que chegaria | **+1 nível** de alcance |
+| Ataque supera a Defesa por | Para segurar firme, gaste | Se não segurar |
+|---|:--:|---|
+| 1–5 (Margem 0) | **1** Vontade | cede o ponto daquela cena, no nível em que a relação já está |
+| 6–11 (Margem 1) | **2** Vontade | cede, e o pedido chega **1 nível acima** da relação |
+| 12–17 (Margem 2) | **3** Vontade | cede, e o pedido chega **2 níveis acima** |
+| 18 ou mais (Margem 3 ou mais) | **4** Vontade, o **teto**: o custo para de subir | cede, e o pedido chega **Margem** níveis acima (cada +6 além disso, **+1 nível** de alcance) |
 
 **A régua não se move em nenhuma linha desta tabela.** Ganhar o duelo estica o que se pode pedir naquela cena; não faz ninguém gostar de você.
 
@@ -163,7 +163,7 @@ A Vontade é a mesma reserva das Proezas e das Artes e **volta devagar**: 1 pont
 
 Quando o alvo **não** paga a Vontade, ele **cede o ponto** daquela troca: aceita o argumento, topa o pedido, faz o que estava sendo empurrado. O que a Margem compra é **alcance**, e não vínculo: um golpe raso (Margem 0) rende o favor no nível em que a relação já está; um golpe folgado (Margem 1 ou mais) estica o pedido aquele tanto de níveis acima, na tabela de "Pedir as coisas", e vale só naquela cena. A régua fica onde estava, e é isso que separa **ganhar a discussão** de **ser querido**. Vencer feio, na base da ameaça ou da chantagem, ainda dobra o ponto, mas costuma **ferir a relação**: o alvo cede com ressentimento e pode reverter na primeira chance.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>A Dama Vesna (<strong>Defesa Social 18</strong>) resiste ao cortesão Lírio. Ele ataca com Sedução e soma <strong>25</strong>: 25 − 18 = 7, <strong>Margem 1</strong>. Vesna gasta <strong>1 de Vontade</strong>, o máximo por lance: com Margem 1 ela não segura de vez, mas cede com o pedido <strong>1 nível abaixo</strong> do que chegaria, ou seja, no nível em que a relação já está. No lance seguinte, Lírio soma 20 (<strong>Margem 0</strong>): 1 de Vontade seguraria de vez, mas Vesna, já cansada do jogo, decide <strong>não gastar</strong> e cede o ponto da cena, aceita uma dança, que é o que a relação de hoje já daria. Sem o ponto no primeiro lance, Lírio poderia ter pedido algo <strong>um nível acima</strong> daquela relação, e só naquela noite: a régua não andaria de um jeito nem do outro.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>A Dama Vesna (<strong>Defesa Social 18</strong>) resiste ao cortesão Lírio. Ele ataca com Sedução e soma <strong>25</strong>: 25 − 18 = 7, <strong>Margem 1</strong>. Para não ceder, Vesna gasta <strong>2 de Vontade</strong> (1 + Margem 1) e segura firme. No lance seguinte, Lírio soma 20 (<strong>Margem 0</strong>): custaria só 1 de Vontade, mas Vesna, já cansada do jogo, decide <strong>não gastar</strong> e cede o ponto da cena, aceita uma dança, que é o que a relação de hoje já daria. Tivesse cedido ao golpe de Margem 1, Lírio poderia ter pedido algo <strong>um nível acima</strong> daquela relação, e só naquela noite: a régua não andaria de um jeito nem do outro.</div>
 
 ---
 
@@ -272,5 +272,5 @@ O cortejo não concede pedido: o que ele faz é **andar a régua**, um passo por
 - **Cena com dado NÃO move a régua**, nem conversa nem duelo: rende **alcance do pedido**, +1 nível por 6 de folga, só naquela cena.
 - **A história pesa:** remar contra o que o alvo já sente soma o nível à Defesa Social dele; remar a favor subtrai. ×1, sem teto (o próprio ±6 já é o limite). Zera no Neutro.
 - **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Acerto da Abordagem + 2 × mín(Centelha, Habilidade), contra a Defesa Social (o número da ficha, mais o termo da história somado na hora, acima); **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade.
-- **Resistir:** gaste **1** Vontade no lance (no máximo 1 por ação): na Margem 0 segura de vez; com Margem 1 ou mais, cede, mas o pedido chega **1 nível abaixo** do que chegaria. Se não pagar, cede o ponto e o pedido chega **Margem** níveis acima. Não vale contra leitura.
+- **Resistir:** para não ceder, gaste **1 + Margem** de Vontade no lance (**teto 4**; é um pagamento, fora do limite de 1 ponto por ação); se não pagar, cede o ponto e o pedido chega **Margem** níveis acima. Não vale contra leitura.
 - **Influência Estendida** (o modo devagar, sem dado): Ataque parado = Influência + Habilidade; Defesa parada = Compostura + Sociabilidade + 2 × mín(Centelha, Sociabilidade) + termo da régua; **Tempo do passo = máx(1, defesa − ataque − gestos)**, em intervalos de **8 dias ×½ ×1 ×2 ×4** pela longevidade de quem corteja. Gestos 0/+1/+2/+4, **um por intervalo**. Quem resiste paga **1 + [máx(0, ataque + gestos − defesa) ÷ 6]** de Vontade por intervalo, e essa Vontade fica **presa** até o cortejo acabar. Leitura vs Defesa Social (a com dado) para saber quanto falta.
