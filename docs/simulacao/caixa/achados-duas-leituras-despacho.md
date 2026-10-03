@@ -178,3 +178,28 @@ Tarefa para a Executora, **um commit só** (CI verde; depois Revisora):
 - **F2, texto**: o mortal (Centelha 0) tem Mana e a usa, e conjura Artes; a Mana dele é a Força de Vontade (fórmula atual, sem mudança). Pode ter Energia, mas não a usa, porque Energia serve às Proezas e Proeza exige Centelha. Corrigir `centelha.md:19` e `:30` e os lugares que dizem que Arte exige Centelha > 0: `criacao-de-personagem.md:58` e `:149`, `src/pages/artes/regras.astro:46`. Procure também no resto (`grep` por "Centelha > 0", "Centelha maior que 0", "exige apenas Centelha"), inclusive `centelha.md:84` e a ficha de Arte.
 - **F2, código primeiro**: ANTES de mudar o texto, confira se algum código bloqueia Arte para Centelha 0 (`ficha-engine.ts`, `calc.ts`, `grid.astro`, `artes-grid.ts`, `mesa-*.ts`, `gen-bestiario.mjs`, `validate-data.mjs`, `regras.json` `escalaCentelha` e `centelhaGate`). **Relate com arquivo:linha.** Se algum bloquear, **não mude o código**: é decisão do autor; mude só o texto e deixe o bloqueio descrito no relato. O texto do livro e o `escalaCentelha` hoje dizem que Centelha 0 não tem acesso a Artes (achado da B14, Adendo 1 do despacho da Fase 4).
 - Os itens **8, 9 e 14 seguem fora**.
+
+## Adendo 3 (autor, 02/10/2026): itens 8, 9 e 14 decididos, e a F2 no código em medição
+
+Verbatim:
+
+> Item 8: opção A. A Circunstância da armadura na Furtividade é o dobro da Penalidade (+4 nas de −2, +6 nas de −3), para toda armadura com Penalidade. Alinhe armas-e-armaduras.md:131 e acoes-sentidos-e-engano.md:81.
+> Item 9: opção B. A Corrida é ação de 3 Ticks; a seguinte, declarada sem parar, continua na Velocidade de Corrida. "Recomeça" vale para a declaração e o custo. Corrija combate.md:297 com o exemplo do Kael (6 no Arranque, 9 m por Tick na Corrida).
+> Item 14, pergunta 1: opção B. Segurar firme custa 1 ponto: na Margem 0 segura de vez; com Margem 1 ou mais o alvo cede, mas o pedido chega 1 nível abaixo. Corrija relacoes-sociais.md:148-156 e o resumo de :275.
+> Item 14, pergunta 2: opção B. O intervalo do cortejo (8 dias ou mais) não é uma ação; o custo atual fica, e o capítulo explica a exceção ao "1 por ação".
+> F2 no código: opção D. Antes de liberar, meça onde a Mana do mortal entra (Grid, rastreador, calculadora, regras.json escalaCentelha) e relate. Junto, meça o custo de Mana por nível de Arte contra a Mana de um mortal (Força de Vontade de 1 a 6): com o teto atual de 6, um mortal consegue de fato usar Arte de nível alto? Não libere nada antes de o autor ver os números e decidir o teto de Arte do mortal.
+> Os itens 8, 9 e 14 vão num commit só, com a Revisora depois. A F2 no código fica num commit próprio, depois da decisão do teto, com a linha do que muda para quem joga hoje.
+
+Tarefa para a Executora:
+
+**Commit 1 (texto, itens 8, 9 e 14), CI verde, depois Revisora:**
+- Item 8: `armas-e-armaduras.md:131` e `acoes-sentidos-e-engano.md:81`. Na Furtividade a Circunstância da armadura é o **dobro da Penalidade** (+4 nas de −2, +6 nas de −3), para **toda** armadura com Penalidade (as médias de −2 também); é uma cobrança só, sem somar a Penalidade dobrada ao total. O "+4 armadura pesada" da Circunstância vira "armadura: o dobro da Penalidade dela". Procure o mesmo +4 em `acoes-e-sistema.md` (Teste Coletivo, `:178`) e em `custo-servicos.md`.
+- Item 9: `combate.md:54`, `:286`, `:297`. A Corrida é ação de 3 Ticks; a seguinte, declarada sem parar, continua na Velocidade de Corrida; "recomeça" vale para a declaração e o custo, e não para a velocidade. Exemplo do Kael: 6 m por Tick no Arranque, 9 m por Tick na Corrida (confira com `test-kael.mjs` e a fixture, e cole os números). Não mexa no `:292` ("até se recompor") nem no `:295`.
+- Item 14, pergunta 1 (opção B): `relacoes-sociais.md:148-156` e o resumo de `:275`. Segurar firme custa **1 ponto**: na Margem 0 segura de vez; com Margem 1 ou mais o alvo cede, mas o pedido chega **1 nível abaixo** do que chegaria. Reescreva a tabela e o resumo, e a coluna "Se não segurar" e a nova linha de "cede com 1 nível a menos" para cada Margem. Alinhe `aparencia-virtudes-vontade.md:115` (o máximo de 1 ponto por ação ou jogada vale para tudo, inclusive resistir) e `defesas.md:104`.
+- Item 14, pergunta 2 (opção B): o cortejo (`relacoes-sociais.md:276`, `regras.json` `social.modoDevagar.resistencia`) fica como está, e o capítulo explica que o intervalo de 8 dias ou mais não é uma ação, então a regra do "1 por ação" não o alcança.
+- Texto, só texto. Nenhum código.
+
+**Medição da F2 (sem commit de código; relato em seção nova do relato):**
+- Onde a Mana do mortal entra, com arquivo:linha: Grid (`grid.astro:3329`), rastreador (`combate.astro:1693`), calculadora, `regras.json` `escalaCentelha`, `ficha-engine.ts:176`, `manaDe` e quem o chama.
+- O custo de Mana por nível de Arte contra a Mana de um mortal com Força de Vontade de 1 a 6: tabela nível da Arte × Vontade, mostrando em qual nível o mortal consegue pagar uma conjuração, e quantas por descanso, com o teto atual de Arte 6. Use as funções do repositório (`custoDe`, `manaDe`) e não digite as contas à mão.
+- **Não libere nada.** O autor vê os números e decide o teto de Arte do mortal. O commit de código da F2 vem depois dessa decisão, com a linha "para quem joga hoje".
