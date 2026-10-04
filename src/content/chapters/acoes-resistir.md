@@ -44,9 +44,11 @@ Esse valor sai do **pool total**, na unidade que o **Tipo** do veneno declara (P
 
 **Dano e penalidade são duas trilhas separadas, e só o dano se reduz pela rolagem.** Enquanto o pool não zerar, o alvo carrega a **penalidade mínima** do veneno (Desgaste, nos seis catalogados), que **não** se reduz por resistir bem: é a substância ainda circulando, mesmo que o corpo esteja vencendo o dano dela. Só some quando o pool zera de vez.
 
+A bebida forte é a exceção declarada: tem pool 0, nada a drenar, e o Desgaste 1 dela é de efeito único e sai pela recuperação padrão, uma noite de sono com abrigo, comida e água.
+
 | Veneno | Potência | Início | Intervalo | Pool total | Tipo | Penalidade mínima |
 |---|:--:|---|---|---|---|---|
-| Bebida forte do senhor local | 5 | 10 min (ingerido) | — (efeito único) | 0 | — | Desgaste 1 |
+| Bebida forte do senhor local | 5 | 10 min (ingerido) | — (efeito único) | 0 | — | Desgaste 1, até a recuperação padrão |
 | Cicuta | 10 | minuto (sangue) | 1 hora | 3 (Vigor) | atributo | Desgaste 1 |
 | Peçonha de víbora | 14 | minuto (sangue) | 1 hora | 24 (PV) | pv | Desgaste 1 |
 | Curare | 14 | Tick (sangue) | — (efeito único, duração 1 cena) | 3 (Destreza) | atributo | Desgaste 1 |
@@ -105,7 +107,7 @@ Estes números foram calibrados contra o **camponês** (Vigor 2, Resistência 1)
 
 **Ajuda** · o curandeiro que quiser mais do que a circunstância rola Inteligência + Cura contra a Virulência e apoia pela [tabela geral de apoio](/regras/acoes-e-sistema). O −2 vale para até três doentes, e some acima disso.
 
-**Contágio** · quem convive com um doente Instalado ou pior rola uma vez por dia contra metade da Virulência.
+**Contágio** · quem convive com um doente Instalado ou pior rola uma vez por dia contra metade da Virulência. Quem falha no contágio começa em Incubação.
 
 ## Ambiente
 

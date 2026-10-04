@@ -7,7 +7,7 @@ resumo: "O que cada povo é no mundo, e como sua herança move os tetos de Atrib
 
 Nem todo herói nasce humano. Cada povo carrega uma **herança** que molda corpo, mente e tempo de vida, e que, em regra de jogo, **desloca os limites** de alguns Atributos e abre **traços** que ninguém mais tem. Escolher uma raça é pagar um custo em **XP** por essa herança; o **Humano** é a régua contra a qual todos os outros são descritos.
 
-<div class="callout regra"><span class="lbl">Como ler um traço racial</span>O <strong><code>+1</code> racial faz duas coisas</strong>, e é preciso ler as duas. Ele <strong>levanta o teto</strong> daquele Atributo para <strong>7</strong>, um ponto acima do teto humano de 6, <strong>e levanta o piso</strong>: aquele Atributo <strong>começa em 2</strong> em vez de 1, e esse ponto <strong>vem de graça</strong>. O <strong><code>−1</code> racial</strong> é diferente: ele trava o Atributo em <strong>5</strong> e <strong>não mexe no piso</strong>, que continua sendo 1 como o de todo mundo. Fora o ponto de brinde, você compra cada nível com XP (Atributo = 5 + novo × 5).</div>
+<div class="callout regra"><span class="lbl">Como ler um traço racial</span>O <strong><code>+1</code> racial faz duas coisas</strong>, e é preciso ler as duas. Ele <strong>levanta o teto</strong> daquele Atributo para <strong>7</strong>, um ponto acima do teto humano de 6, mesmo em quem tem Centelha 0, e já na criação: o Atributo com o <code>+1</code> pode ser comprado até 7 sem gastar o pico (Cap. XVIII). É o único ponto acima de 6 que a herança dá, e os seguintes só vêm da Centelha (Atributos e Centelha), <strong>e levanta o piso</strong>: aquele Atributo <strong>começa em 2</strong> em vez de 1, e esse ponto <strong>vem de graça</strong>. O <strong><code>−1</code> racial</strong> é diferente: ele trava o Atributo em <strong>5</strong> e <strong>não mexe no piso</strong>, que continua sendo 1 como o de todo mundo. Fora o ponto de brinde, você compra cada nível com XP (Atributo = 5 + novo × 5).</div>
 
 <div class="callout"><span class="lbl">Provisório</span>Os <strong>custos de XP</strong> das raças são uma primeira passada, recusteada da tabela antiga para a economia atual (orçamentos de 1500–2600). Tratam-se de números a calibrar conforme o peso real de cada herança na mesa. <strong>Os custos E as idades das oito serão refeitos de uma vez</strong>, depois que as inconsistências de herança fecharem: o que está na tabela hoje vale para jogar e não vale como régua fechada. O <strong>Gnomo</strong> é o caso vivo disso: caiu de 40 para 30 ao virar de porte pequeno, e esse 30 entra na conta futura como qualquer outro.</div>
 
@@ -31,14 +31,14 @@ Em Relações Sociais, o humano não tem inimizades naturais: começa em **Neutr
 
 | Raça | Custo XP | `+1` racial (começa em 2, vai até 7) | `−1` racial (máx 5) | Porte |
 |---|:---:|---|---|---|
-| Humano | 0 | — | — | médio |
-| Anão | 30 | Vigor | Perspicácia | baixo, corpulento |
-| Gnomo | 30 | Vigor | Força | muito baixo |
-| Halfling | 30 | Destreza | Força | muito baixo |
-| Elfo | 50 | Destreza | Vigor | esguio |
-| Meio-Elfo | 20 | — | — | médio-alto |
-| Meio-Orc | 40 | Força, Vigor | Compostura, Inteligência | alto, robusto |
-| Orc | 40 | Força, Vigor | Perspicácia, Compostura, Inteligência | alto, robusto, rude |
+| Humano | 0 | — | — | Médio |
+| Anão | 30 | Vigor | Perspicácia | Médio (baixo, corpulento) |
+| Gnomo | 30 | Vigor | Força | Pequeno (muito baixo) |
+| Halfling | 30 | Destreza | Força | Pequeno (muito baixo) |
+| Elfo | 50 | Destreza | Vigor | Médio (esguio) |
+| Meio-Elfo | 20 | — | — | Médio (de estatura média a alta) |
+| Meio-Orc | 40 | Força, Vigor | Compostura, Inteligência | Médio (alto, robusto) |
+| Orc | 40 | Força, Vigor | Perspicácia, Compostura, Inteligência | Médio (alto, robusto, rude) |
 
 </div>
 
@@ -47,6 +47,7 @@ Em Relações Sociais, o humano não tem inimizades naturais: começa em **Neutr
 Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e colinas, muitas vezes **dentro** delas. Têm pele de tons mais morenos e raramente cabelos ou olhos claros. Medem de **1,20 a 1,50 m** e pesam **70–100 kg**. Atingem a idade adulta aos **20 anos**, a maturidade plena por volta dos **100**, e podem viver mais de **300 anos**.
 
 - **Custo de XP:** 30
+- **Porte médio**: a Vida é 25 + Vigor × 3, a linha Médio da tabela de [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura). A baixa estatura já está paga no deslocamento, e não muda o porte.
 - **`+1` de Vigor**: começa em **2** e vai até **7**. Corpulência de pedra.
 - **`−1` teto de Perspicácia** (máx 5, piso normal): arrogantes e prepotentes, pouco tato social.
 - **Baixa estatura**, pernas curtas: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
@@ -62,7 +63,7 @@ Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das ou
 - **Custo de XP:** 50
 - **`+1` de Destreza**: começa em **2** e vai até **7**. Graça sobre-humana.
 - **`−1` teto de Vigor** (máx 5, piso normal): corpo frágil.
-- **Aparência Universal**, descendentes das fadas, sua beleza atrai quase toda raça: o elfo **não sofre penalidades de Aparência** ao lidar com outras raças humanóides, mesmo as que lhe seriam hostis.
+- **Aparência Universal**, descendentes das fadas, sua beleza atrai quase toda raça: ao lidar com outras raças humanoides, o modificador negativo de Aparência do elfo (Aparência de 0 a 5) não conta: vale 0. É só a Aparência: as relações entre os povos, na Régua de Relação, abaixo, continuam como estão.
 - **Sentidos Naturais Aguçados**: em ambiente natural, concentrando-se por 6 Ticks inteiros, faz testes de **Percepção** de visão ou audição com **+1d6** e **enxerga o dobro da distância** de um humano. Dura uma cena, enquanto permanecer no ambiente natural.
 - **Resiliência Mental**, naturalmente resistente a controle mental: qualquer efeito do tipo contra o elfo tem a **dificuldade aumentada em +4**, ou o elfo recebe **+1d6** para resistir (o que for melhor para ele).
 - **Relações Sociais:** tratam a maioria dos outros povos como inferiores, por baseline: **−1 (Antipatia)** com Humano, Halfling e Meio-Orc. Duas exceções para pior: o **Orc**, que consideram bestas, leva **−2 (Desafeto)**; o **Meio-Elfo**, sangue que julgam diluído, também leva **−2 (Desafeto)**. Uma exceção para melhor: o **Gnomo**, cujo talento ilusório os diverte, ganha **+1 (Simpatia)**. Pelo Anão carregam **−3 (Rancor)**, o mesmo ódio antigo que o Anão devolve em **−4**.
@@ -72,6 +73,7 @@ Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das ou
 Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Idade adulta aos 18 anos; podem viver mais de **300 anos**.
 
 - **Custo de XP:** 30 <small>(provisório: desceu de 40 quando o Gnomo virou de porte **pequeno** e perdeu PV)</small>
+- **Porte pequeno**: a Vida é 20 + Vigor × 2, a linha Pequeno da tabela de [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura).
 - **`+1` de Vigor**: começa em **2** e vai até **7**. Resistência teimosa num corpo pequeno.
 - **`−1` teto de Força** (máx 5, piso normal): pequenos demais para grande força bruta.
 - **Baixa estatura**: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
@@ -97,8 +99,9 @@ Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atinge
 Filhos de pais humanos com mães elfas. A concepção é rara, e o resultado se parece mais com um elfo do que com um humano, sem, contudo, herdar tudo. Altura e peso puxam ao elfo: **1,60–1,90 m** e **50–90 kg**. Têm poucos pelos, como os elfos, e vivem mais que humanos: até **200 anos**. Por serem híbridos, são **inférteis**.
 
 - **Custo de XP:** 20
+- **Porte médio**: a Vida é 25 + Vigor × 3.
 - **Sem deslocamento de tetos**: herdam o equilíbrio físico humano.
-- **Aparência Universal**, o sangue feérico se reflete na aparência: o meio-elfo **não sofre penalidades de Aparência** ao lidar com outras raças humanóides.
+- **Aparência Universal**, o sangue feérico se reflete na aparência: ao lidar com outras raças humanoides, o modificador negativo de Aparência do meio-elfo (Aparência de 0 a 5) não conta: vale 0. É só a Aparência: as relações entre os povos, na Régua de Relação, abaixo, continuam como estão.
 - **Resiliência Mental**, versão mais branda da do ancestral élfico: **+2** para resistir a qualquer efeito de controle mental.
 - **Relações Sociais:** herdam o pior do lado élfico (o Elfo os trata com **−2 (Desafeto)**, mais frio que a velha mágoa sugeriria) e o melhor do lado humano: Humano e Anão os recebem com **+1 (Simpatia)**, o Anão por pena de uma origem que sabe nascida de violência. Orc, Gnomo e Halfling tratam o meio-elfo como **Neutro**.
 
@@ -107,6 +110,7 @@ Filhos de pais humanos com mães elfas. A concepção é rara, e o resultado se 
 Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangue humano. Pele e pelos puxam ao marrom ou ao verde e as feições são rudes, mas menos que as de um orc puro. São altos e robustos. Atingem a idade adulta por volta dos 14 anos; vida curta, pouco mais de **70 anos**.
 
 - **Custo de XP:** 40
+- **Porte médio**, apesar do tamanho: a Vida é 25 + Vigor × 3, e a Vitalidade soma +Vigor por cima.
 - **`+1` de Força e de Vigor**: os dois começam em **2** e vão até **7**. A compleição forte da herança orc.
 - **`−1` teto de Compostura e de Inteligência** (máx 5, piso normal): o temperamento bruto e a lógica mais curta que a humana; o sangue humano poupa o tato social (a Perspicácia) que um orc puro perderia.
 - **Vitalidade**, couro grosso: ganha **+Vigor** pontos de vida adicionais (PV = 25 + Vigor×3 + Vigor).
@@ -122,6 +126,7 @@ Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangu
 Humanóides de herança metamorfa, com constituição física superior a qualquer outra raça mediana. Pele e pelos variam do marrom ao verde; olhos e cabelos costumam ser pretos. Medem **1,80–2,30 m** e pesam **80–140 kg**. Idade adulta por volta dos 14 anos; vivem pouco mais de **60 anos**. São mais bestiais que os meio-orcs, e pagam por isso em juízo e trato.
 
 - **Custo de XP:** 40
+- **Porte médio**, apesar do tamanho: a Vida é 25 + Vigor × 3, e a Vitalidade soma +Vigor por cima.
 - **`+1` de Força e de Vigor**: os dois começam em **2** e vão até **7**. Criaturas poderosas e truculentas.
 - **`−1` teto de Perspicácia, Compostura e Inteligência** (máx 5, piso normal): a força não vem acompanhada de tato social nem de lógica fina.
 - **Aparência rebaixada**: a Aparência do orc vale **1 a menos** que o nível pago (paga Aparência 7, vale 6).

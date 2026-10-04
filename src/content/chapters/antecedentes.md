@@ -35,8 +35,9 @@ O exemplo que resume o formato Nomeado:
 ## Custo · tudo por XP, a ×3 por ponto
 
 Antecedente se compra e se eleva com XP como o resto da ficha, a **×3 por ponto**: o próximo ponto
-custa o novo valor × 3, então sair de 2 para 3 custa 9 XP. O lugar dele na economia é deliberado,
-entre a Habilidade secundária (2 + o novo valor) e a primária (4 + 2 × o novo valor): é **poder de
+custa o novo valor × 3, então sair de 2 para 3 custa 9 XP. O lugar dele na economia é deliberado: no nível 1 custa o mesmo que a Habilidade secundária (2 + o
+novo valor) e dali em diante custa mais; em relação à primária (4 + 2 × o novo valor), custa menos até
+o nível 3, o mesmo no 4 e mais nos níveis 5 e 6 (15 contra 14, 18 contra 16). É **poder de
 campanha, não poder de dado**, e não disputa de igual para igual com Atributo (5 + 5 × o novo valor);
 a Centelha nem custa XP, é concedida pelo Mestre. Na criação, sai do
 mesmo orçamento de XP do resto do personagem.
@@ -70,13 +71,15 @@ em **qualquer** jogada, social ou não, pela qualidade da descrição.
 O Antecedente age antes de qualquer rolagem:
 
 > Uma Reputação em contexto, um Contato bem posto, uma Posição que pesa naquela sala **descontam
-> passos do Neutro**: o nível do traço tira esse tanto dos **três passos** que separam um estranho
-> da primeira Simpatia na [Régua de Relação](/regras/relacoes-sociais), e com **3 ou mais** a
-> relação já começa em **+1 (Simpatia)**. O que muda de um traço para o outro é **com quem** ele
+> passos do Neutro**: a **metade do nível do traço**, arredondada para baixo, tira esse tanto dos
+> **três passos** que separam um estranho da primeira Simpatia na
+> [Régua de Relação](/regras/relacoes-sociais) (nível 1, nenhum passo; 2 e 3, um; 4 e 5, dois; 6,
+> os três, e a relação já começa em **+1 (Simpatia)**). O que muda de um traço para o outro é **com quem** ele
 > vale: a **Reputação** com quem já ouviu falar de você, o **Contato** com o círculo dele, a
 > **Posição** com quem se importa com o posto. Eles **não** turbinam um ataque no Combate Social
-> nem uma Habilidade solta, e somam entre si até um **teto de +6**, o mesmo dos modificadores de
-> combate.
+> nem uma Habilidade solta. Vale a metade do **maior** traço que serve à situação, e o Mestre pode
+> somar o desconto de outros traços quando a situação pedir, sempre dentro dos três passos. Os
+> outros usos do traço (alcance da fama, do círculo, do posto) continuam valendo fora da régua.
 
 Dito de outro jeito: um Antecedente **encurta o caminho até a relação**, não ganha o duelo social
 do momento. E o desconto é mudo onde não há Neutro a romper: quem já nasce acima dele por outra
@@ -181,7 +184,7 @@ disso.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span><strong>Posição 3 (Exército real) · Posição 1 (Guilda dos Mercadores)</strong>.</div>
 
-**Amarra com:** "terreno social" na Régua de Relação (onde o posto pesa, o nível do traço desconta os passos que separam do Neutro, e não soma na jogada nem no Combate Social); abre portas que Recursos e Reputação não abrem. Posição também **obriga**: quem tem posto responde por ele.
+**Amarra com:** "terreno social" na Régua de Relação (onde o posto pesa, a metade do nível do traço (para baixo) desconta os passos que separam do Neutro, e não soma na jogada nem no Combate Social); abre portas que Recursos e Reputação não abrem. Posição também **obriga**: quem tem posto responde por ele.
 
 ### Reputação
 
@@ -198,7 +201,7 @@ disso.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span><strong>Reputação 2 (Guarda-costas) · Reputação 3 (Cantor lírico) · Reputação 1 (Confiável)</strong>. A de guarda-costas ajuda a ser contratado e a intimidar, mas atrapalha a passar despercebido; a de cantor abre salões e atrapalha a ser levado a sério numa briga; a de confiável ajuda em tudo que dependa de palavra.</div>
 
-**Amarra com:** um **desconto nos passos que separam do Neutro** na Régua de Relação, no contexto em que a fama pesa (ver "Onde a régua já começa"): o nível do traço tira esse tanto dos três passos, vale com quem conhece aquela reputação, soma com os outros Antecedentes até +6, e **não** buffa o Combate Social nem Habilidades soltas. Uma boa reputação **acelera romper o Neutro** com quem já ouviu falar bem de você; uma temível dá o mesmo desconto a quem quer coagir quem a conhece, e atrapalha a passar despercebido. Alimenta Proezas como Lenda Viva e Presença Aterradora.
+**Amarra com:** um **desconto nos passos que separam do Neutro** na Régua de Relação, no contexto em que a fama pesa (ver "Onde a régua já começa"): a metade do nível do traço (para baixo) tira esse tanto dos três passos, vale com quem conhece aquela reputação, o Mestre pode somá-la ao desconto de outros traços até os três passos, e **não** buffa o Combate Social nem Habilidades soltas. Uma boa reputação **acelera romper o Neutro** com quem já ouviu falar bem de você; uma temível dá o mesmo desconto a quem quer coagir quem a conhece, e atrapalha a passar despercebido. Alimenta Proezas como Lenda Viva e Presença Aterradora.
 
 ### Artefato
 
@@ -228,7 +231,7 @@ disso.
 | **5** | Um bastião: um castelo, um santuário de poder, um lugar que é conhecido e temido. |
 | **6** | Uma cidadela lendária: uma fortaleza ou santuário conhecido no mundo todo, quase inexpugnável. |
 
-**Amarra com:** ações Acumuladas e Longas (ofício, Ritual, cura, planejamento) ganham tempo protegido em casa, e não bônus na jogada; "terreno social" (o desconto nos passos do Neutro) quando você recebe alguém no seu território.
+**Amarra com:** ações Acumuladas e Longas (ofício, Ritual, cura, planejamento) ganham tempo protegido em casa, e não bônus na jogada; "terreno social" (o desconto nos passos do Neutro, pela metade do nível, para baixo) quando você recebe alguém no seu território.
 
 ### Aliado Animal
 
@@ -273,7 +276,7 @@ disso.
 | **5** | Uma força de fé: uma seita ou culto amplo que faria quase tudo por você ou pela causa. |
 | **6** | Uma religião de massa: milhares de devotos em muitos povos, movidos pela sua palavra ou pela causa. |
 
-**Amarra com:** a Régua de forma coletiva (a fé é uma disposição de muitos de uma vez); recuperação de Vontade em terreno sagrado; ganchos de trama religiosa e de lore.
+**Amarra com:** a Régua de forma coletiva (a fé é uma disposição de muitos de uma vez); ganchos de trama religiosa e de lore.
 
 ### Linhagem
 
@@ -315,7 +318,8 @@ disso.
 - **Teto 3 na criação** para Recursos e Artefato.
 - **Bônus:** Aparência é geral em toda jogada social; a Firula entra em qualquer jogada. O
   Antecedente não soma a jogada nenhuma: ele **desconta passos do Neutro** na Régua de Relação, o
-  nível do traço por passo, somando entre os traços até +6.
+  metade do nível do traço, para baixo, por passo (só o 6 chega aos três), e o Mestre soma outros
+  traços quando a situação pedir, dentro dos três passos.
 - **Voláteis:** sobem e caem na ficção, e o XP perdido volta como crédito.
 - **Pessoas** (Aliados, Contatos, Mentor, Séquito, Fé) vivem na Régua de Relação e esfriam se
   maltratadas. **Reputação** desconta passos do Neutro com quem a conhece, e não soma na jogada. **Segredo** e **Dívida** são meio

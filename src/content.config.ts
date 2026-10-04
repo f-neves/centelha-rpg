@@ -326,6 +326,10 @@ const chapters = defineCollection({
     numeral: z.string(),
     titulo: z.string(),
     resumo: z.string(),
+    // Nome do capítulo quando a página é a primeira de um capítulo de várias páginas e o
+    // título dela é outro (Ações & Sistema abre com "A Régua Comum"). O rodapé de quem vem
+    // de outro capítulo mostra os dois.
+    capitulo: z.string().optional(),
   }),
 });
 

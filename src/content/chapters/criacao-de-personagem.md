@@ -16,7 +16,7 @@ Se é a sua primeira vez, siga esta ordem: os detalhes de cada passo estão nas 
 1. **Conceito.** Quem é o herói? Uma frase basta ("batedora silenciosa", "capitão que inspira tropas"), ela guia todas as escolhas seguintes.
 2. **Orçamento.** Combine com o Mestre: **1500** (iniciante), **2000** (veterano) ou **2600** (especialista). Todo o resto sai desse bolo de XP.
 3. **[Raça](/regras/racas).** Escolha o povo do seu herói e **pague o custo em XP** dele (o Humano custa **0**; os outros vão de 20 a 50). Ela vem antes dos Atributos porque é ela que **move os tetos**: um `+1 de teto` deixa aquele Atributo chegar mais alto do que chegaria, e um `−1` o trava mais baixo. Escolher a raça depois seria escolher com a régua do passo seguinte já usada.
-4. **Atributos.** Suba do piso 1. Teto **5** na criação, com **um único** atributo em **6** (o seu pico), respeitados os tetos que a sua raça moveu.
+4. **Atributos.** Suba do piso 1. Teto **5** na criação, com **um único** atributo em **6** (o seu pico), o máximo de cada Atributo vem da raça e já vale na criação: o Atributo com `+1` racial pode ir a 6 ou a 7 sem gastar o pico, e o com `−1` não passa de 5.
 5. **Habilidades e Especialidades.** Teto **4**, com **uma única** primária em **5** (o pico de Habilidade). Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
 6. **Virtudes.** As quatro, de 1 a 6.
 7. **Força de Vontade e Aparência.** Suba a Vontade do piso 0 (um herói costuma levá-la a 5+); escolha a Aparência (0–12, normal no nível 6).
@@ -61,9 +61,9 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 
 ## Limites na criação
 
-Atributo máximo **5**; Habilidade máxima **4**; Centelha máxima **3** (o Mestre escolhe pela campanha: 0 numa campanha mortal; de 1 a 3 numa heroica). O ponto seguinte e os tiers maiores vêm com o jogo.
+Atributo máximo **5** (o Atributo com `+1` racial chega a 7 já na criação, sem gastar o pico, e o com `−1` não passa de 5); Habilidade máxima **4**; Centelha máxima **3** (o Mestre escolhe pela campanha: 0 numa campanha mortal; de 1 a 3 numa heroica). O ponto seguinte e os tiers maiores vêm com o jogo.
 
-Cada herói pode ter **um pico**: você está autorizado a levar **um único Atributo a 6** e **uma única Habilidade primária a 5** já na criação: o talento superlativo que o define. Os demais respeitam os tetos acima.
+Cada herói pode ter **um pico**: você está autorizado a levar **um único Atributo a 6** e **uma única Habilidade primária a 5** já na criação: o talento superlativo que o define. Os demais respeitam os tetos acima. O Atributo com `+1` racial fica fora dessa conta: o 6 e o 7 dele não gastam o pico.
 
 ## Traços derivados
 
@@ -75,7 +75,7 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 | Defesa Social | (Compostura + Sociabilidade) × 2 + Especialidade + 2 × mín(Centelha, Sociabilidade) |
 | Energia | (Vigor + Compostura + Raciocínio + Vontade) ÷ 2 [arredonda p/ baixo] + Centelha × 2 |
 | Mana | (Centelha × 2) + Força de Vontade |
-| Iniciativa | 1d6 + Raciocínio + Prontidão |
+| Iniciativa | 1d6 + Raciocínio + Prontidão (sem Centelha, Especialidade nem penalidade) |
 
 <p class="muted"><strong>Energia</strong> é o combustível das [Técnicas de Proeza](/caminhos); <strong>Mana</strong> é o do [Arcano](/arcano).</p>
 

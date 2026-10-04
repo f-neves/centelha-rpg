@@ -71,7 +71,7 @@ A tríade social forma um ciclo fechado, espelhando o combate: um age, o outro r
 
 ## Acima de 6
 
-A faixa **1 a 6 é a régua mortal**, e o **6** é o ápice que um ser humano já alcançou. Valores de **7 a 12** são **sobre-humanos** (força que dobra portões de ferro, sentidos que leem uma cidade num relance) e só se abrem pela **Centelha**, o traço de tier de poder. *Como* a Centelha eleva esse teto é assunto do [capítulo da Centelha](/regras/centelha).
+A faixa **1 a 6 é a régua mortal**, e o **6** é o ápice que um ser humano já alcançou. Valores de **7 a 12** são **sobre-humanos** (força que dobra portões de ferro, sentidos que leem uma cidade num relance) e só se abrem pela **Centelha**, o traço de tier de poder, com uma exceção: o primeiro ponto acima de 6 pode vir da herança racial ([Cap. VI](/regras/racas)), que leva um Atributo a 7 mesmo em quem tem Centelha 0. *Como* a Centelha eleva esse teto é assunto do [capítulo da Centelha](/regras/centelha).
 
 ## A Aparência
 

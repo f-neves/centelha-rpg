@@ -19,6 +19,10 @@ export async function getStaticPaths() {
 const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
 const slugOf = (e: any) => (['caminhos', 'arcano'].includes(e.id) ? e.id : `regras/${e.id}`);
+// Vindo de outro capítulo, a página que abre um capítulo de várias páginas leva o nome do
+// capítulo na frente do título dela: "Ações & Sistema (A Régua Comum)".
+const rotulo = (e: any) => (e.data.capitulo && e.data.numeral !== entry.data.numeral
+  ? `${e.data.capitulo} (${e.data.titulo})` : e.data.titulo);
 ---
 <Base title={entry.data.titulo} descricao={entry.data.resumo}>
   <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size: var(--fs-micro);margin:0">
@@ -29,8 +33,8 @@ const slugOf = (e: any) => (['caminhos', 'arcano'].includes(e.id) ? e.id : `regr
   <Content />
 
   <nav class="cap-nav" aria-label="Navegação entre capítulos">
-    {prev ? <a class="btn" href={url(slugOf(prev))}>← {prev.data.titulo}</a> : <span />}
-    {next ? <a class="btn" href={url(slugOf(next))}>{next.data.titulo} →</a> : <span />}
+    {prev ? <a class="btn" href={url(slugOf(prev))}>← {rotulo(prev)}</a> : <span />}
+    {next ? <a class="btn" href={url(slugOf(next))}>{rotulo(next)} →</a> : <span />}
   </nav>
 </Base>
 

@@ -99,7 +99,7 @@ Suborno, presentes caros e mesada são **gestos**, e dinheiro compra pressa no c
 
 ## Sair do Neutro é o mais difícil
 
-O meio da régua é **largo de propósito**: do centro até a primeira Simpatia (+1) são **três passos**. Enquanto você não os acumula, a pessoa continua Neutra. Depois de romper o Neutro, cada nível seguinte é só **um passo**.
+O meio da régua é **largo de propósito**: do centro até a primeira Simpatia (+1) são **três passos**. Enquanto você não os acumula, a pessoa continua Neutra. Depois de romper o Neutro, cada nível seguinte é só **um passo**. A ficha abre uma segunda porta: um Antecedente em contexto (Reputação, Contato, Posição, e o Refúgio em casa; [Cap. VII](/regras/antecedentes)) desconta passos desses três, pela metade do nível do traço (para baixo), e só o nível 6 desconta os três e já começa a relação em +1 (Simpatia). Dali para cima valem as regras de sempre: o teto de vidro de ±2 segura o que acumula, e só ato atravessa.
 
 Isso modela uma verdade simples: **o difícil é deixar de ser um estranho.** Conversa nenhuma tira alguém do Neutro, por boa que seja, porque em cena a régua não anda. Um **ato** tira: um "serviço grande" (+2) já leva quase todo o caminho; "salvar a vida" (+3) rompe de uma vez. Sem ato, o caminho é o **cortejo com calma**, gesto sobre gesto, e ele leva o tempo que leva.
 
@@ -130,6 +130,8 @@ Na conversa comum, a influência compra o alcance do pedido e vai embora (a seç
 ### Iniciativa e ritmo
 
 <p class="formula">Iniciativa social = 1d6 + Perspicácia + Sociabilidade</p>
+
+Sem Centelha, sem Especialidade e sem penalidade, como a Iniciativa física ([Cap. V](/regras/centelha)).
 
 Quem lê melhor a sala toma a palavra primeiro: entra sozinho no **Tick 1**, e os demais entram um Tick depois por degrau de 6 pontos de atraso, arredondando para cima, pela mesma regra da [iniciativa física](/regras/combate#a-linha-do-tempo-ticks-velocidade-e-iniciativa). As abordagens vêm em três pesos, e o peso dá a **Velocidade** (Ticks até o próximo lance): **leve 5** (uma alfinetada, um elogio), **média 6** (um argumento, uma sedução), **pesada 7** (um discurso, um esquema). Rápido arranha; lento constrói.
 
@@ -271,6 +273,6 @@ O cortejo não concede pedido: o que ele faz é **andar a régua**, um passo por
 - **Move por:** atos (saltos fixos: +2 e +3 a seu favor, de −2 a −5 contra você) e gestos (só no cortejo, um por intervalo). Cobrar favor grande desce 1 passo. Sair do Neutro = 3 passos; **teto de vidro ±2** para tudo o que acumula, e só ato atravessa. Esfria 1 passo por estação.
 - **Cena com dado NÃO move a régua**, nem conversa nem duelo: rende **alcance do pedido**, +1 nível por 6 de folga, só naquela cena.
 - **A história pesa:** remar contra o que o alvo já sente soma o nível à Defesa Social dele; remar a favor subtrai. ×1, sem teto (o próprio ±6 já é o limite). Zera no Neutro.
-- **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Acerto da Abordagem + 2 × mín(Centelha, Habilidade), contra a Defesa Social (o número da ficha, mais o termo da história somado na hora, acima); **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade.
+- **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Acerto da Abordagem + 2 × mín(Centelha, Habilidade), contra a Defesa Social (o número da ficha, mais o termo da história somado na hora, acima); **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade, sem Centelha.
 - **Resistir:** para não ceder, gaste **1 + Margem** de Vontade no lance (**teto 4**; é um pagamento, fora do limite de 1 ponto por ação); se não pagar, cede o ponto e o pedido chega **Margem** níveis acima. Não vale contra leitura.
 - **Influência Estendida** (o modo devagar, sem dado): Ataque parado = Influência + Habilidade; Defesa parada = Compostura + Sociabilidade + 2 × mín(Centelha, Sociabilidade) + termo da régua; **Tempo do passo = máx(1, defesa − ataque − gestos)**, em intervalos de **8 dias ×½ ×1 ×2 ×4** pela longevidade de quem corteja. Gestos 0/+1/+2/+4, **um por intervalo**. Quem resiste paga **1 + [máx(0, ataque + gestos − defesa) ÷ 6]** de Vontade por intervalo, e essa Vontade fica **presa** até o cortejo acabar. Leitura vs Defesa Social (a com dado) para saber quanto falta.

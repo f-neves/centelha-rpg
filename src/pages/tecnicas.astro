@@ -24,7 +24,7 @@ for (const t of techs) {
       <label>Proeza<select data-f="caminho"><option value="">todos</option>{[...d.caminhos].sort((a, b) => a.nome.localeCompare(b.nome)).map((c) => <option value={c.id} data-atr={c.atributo.id}>{c.nome}</option>)}</select></label>
     </div>
     <div class="f-row">
-      <fieldset><legend>Nível</legend>{Array.from({ length: 5 }, (_, i) => i + 1).map((b) => <label class="chk"><input type="checkbox" data-f="nivel" value={b} />{b}</label>)}</fieldset>
+      <fieldset><legend>Nível</legend>{Array.from({ length: Math.max(...techs.map((t) => t.nivel)) },(_, i) => i + 1).map((b) => <label class="chk"><input type="checkbox" data-f="nivel" value={b} />{b}</label>)}</fieldset>
       <fieldset><legend>Tipo</legend>{['passiva', 'ativa', 'reflexiva'].map((t) => <label class="chk"><input type="checkbox" data-f="tipo" value={t} />{t}</label>)}</fieldset>
       <button class="btn" data-f="clear">Limpar</button>
     </div>

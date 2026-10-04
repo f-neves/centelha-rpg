@@ -116,7 +116,7 @@
       "spark",
       "poder"
     ],
-    "definicao": "O nível de poder pessoal (0–6), do mortal ao semideus. Destrava os níveis das Proezas e dimensiona Energia e Mana."
+    "definicao": "O nível de poder pessoal (0 a 6 para o jogador, até 12 no bestiário), do mortal ao semideus. Destrava os níveis das Proezas e dimensiona Energia e Mana."
   },
   {
     "id": "vontade",

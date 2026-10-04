@@ -33,7 +33,7 @@ O *pool* básico é determinado pela soma de Atributo + Habilidade. A metade des
 
 <p class="muted">A tabela para em 12 porque é onde o mortal comum termina, mas a régua não tem teto: soma 14 rola 7d6, soma 16 rola 8d6, e assim por diante, na mesma proporção (Centelha, Proezas e Artes é que levam gente até lá).</p>
 
-<p class="muted">Soma **1** (Atributo 1 e Habilidade não treinada, o caso mais comum de personagem recém-criado) não rola dado nenhum: o total fixo de **2** nunca supera a Dificuldade **5**. É de propósito, não bug: quem não tem competência simplesmente não alcança as dificuldades altas, nem as fáceis. A saída não é mexer nesta fórmula (ela sustenta ataque, Defesa, perícia e o bestiário inteiro), é a **[Firula](/regras/habilidades#firulas--recompensa-à-ousadia) de nível 2** (+1d6), que devolve o dado e torna a Dificuldade 5 possível com 4 ou mais.</p>
+<p class="muted">Soma <strong>1</strong> (Atributo 1 e Habilidade não treinada, o caso mais comum de personagem recém-criado) não rola dado nenhum: o total fixo de <strong>2</strong> nunca supera a Dificuldade <strong>5</strong>. É de propósito, não bug: quem não tem competência simplesmente não alcança as dificuldades altas, nem as fáceis. A saída não é mexer nesta fórmula (ela sustenta ataque, Defesa, perícia e o bestiário inteiro), é a <a href="/centelha-rpg/regras/habilidades#firulas--recompensa-à-ousadia"><strong>Firula</strong></a> <strong>de nível 2</strong> (+1d6: o bônus de um lance, por descrever a ação com criatividade e uso do cenário), que devolve o dado e torna a Dificuldade 5 possível com 4 ou mais.</p>
 
 ### Quem escolhe o par
 
@@ -57,6 +57,8 @@ Repare em dois. A **ameaça** troca de Habilidade *e* de Atributo em relação a
 **Os Atributos também vêm em três grupos:** Força, Destreza e Vigor são físicos; Influência, Perspicácia e Compostura, sociais; Percepção, Inteligência e Raciocínio, mentais. Serve para saber por onde começar a pensar, e é a mesma natureza da inclinação das Habilidades.
 
 <p class="muted">Quem julga a descrição é o Mestre, e um par que a ficção não sustenta ele recusa. O que a regra pede é o contrário: não recusar um par que a descrição sustenta só porque ele está fora da inclinação publicada.</p>
+
+Quando nenhuma Habilidade do livro cobre a ação, o Mestre pode pedir só o Atributo. É sempre o Mestre quem decide, e a Centelha soma inteira nessa jogada ([Cap. V](/regras/centelha)).
 
 ## Sucesso e Dificuldade
 
@@ -88,7 +90,7 @@ Quando alguém se opõe a você, em geral apenas o lado *ativo* rola, contra um 
 
 <p class="formula">Valor Passivo = (Atributo + Habilidade) × 2 + 2 × mín(Centelha, Habilidade) + Especialidade (só quando o escopo dela se aplica, somada no momento do uso) (+ modificadores)</p>
 
-<p class="muted">A <strong>Especialidade</strong> vale **+1 por nível** aqui, num valor fixo; numa jogada com dado, ela rende **+1d6 por nível, descartando o menor** do pool. Só entra quando o escopo nomeado dela se aplica. A <strong>[Centelha](/regras/centelha)</strong> soma **2 × o menor entre ela e a Habilidade** em toda jogada e Defesa; numa rolagem de dano, soma a Centelha inteira.</p>
+<p class="muted">A <strong>Especialidade</strong> vale <strong>+1 por nível</strong> aqui, num valor fixo; numa jogada com dado, ela rende <strong>+1d6 por nível, descartando o menor</strong> do pool. Só entra quando o escopo nomeado dela se aplica. A <a href="/centelha-rpg/regras/centelha"><strong>Centelha</strong></a> soma <strong>2 × o menor entre ela e a Habilidade</strong> em toda jogada de Atributo + Habilidade, no Valor Passivo e em cada Defesa (Habilidade 0 dá bônus 0). Numa jogada de Atributo puro e numa rolagem de dano, soma a Centelha inteira.</p>
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Um ladrão se esgueira (rola Destreza + Furtividade) contra a <strong>Percepção Passiva</strong> do guarda, igual a (Percepção + Prontidão) × 2 + 2 × mín(Centelha, Prontidão) + Especialidade (só quando o escopo dela se aplica, somada no momento do uso): para um guarda comum, sem Centelha nem Especialidade, isso é só (Percepção + Prontidão) × 2. O guarda não rola: sua vigilância é um muro a ser superado.</div>
 
