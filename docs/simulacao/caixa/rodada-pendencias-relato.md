@@ -36,8 +36,11 @@ não é uma ação" não foi tocada.
   anula. Resistir é um pagamento, fora do limite de 1 ponto por ação."
 - Nenhum nome de grau inventado: a frase aponta para as réguas, que são `arcano.improviso.graus`
   (`duracaoBreve`, `duracaoLonga`) e `escalasProeza.parametros.duracao`.
-- Outro lugar que trata de resistir a efeito mental: só a linha "Mente e alma" de
-  `arcano.resistencia.tipos`, que ganhou a remissão.
+- Outro lugar que trata de resistir a efeito mental: a linha "Mente e alma" de
+  `arcano.resistencia.tipos`, que ganhou a remissão. **Corrigido depois da revisão 126:** havia mais
+  dois, que a minha varredura não pegou, `qual-sistema.md:43` (o nó do diagrama) e `:119` (a folha). Os
+  dois ainda diziam a regra velha ("pontual ou por cena/dia"), e foram trocados no commit dos CORRIGE
+  da 126 (ver o fim deste relato).
 
 **Código e a Duração do efeito mental:** nenhum código lê a Duração do efeito mental nem cobra
 Vontade para resisti-lo. `artes-grid-mesa.ts` e `artes-grid-ui.ts` citam a Defesa Mental (a conjuração
@@ -176,6 +179,12 @@ O smoke da ficha (`driver.mjs`) também passa: "✓ all checks passed".
   profundidade que Veil [...] porque a profundidade vem do estudo". Com o teto Centelha + 2, a Centelha
   passa a limitar a profundidade, e o Bram não existe como está. Não mexi no texto nem na ficha: é para o
   autor.
+- **O exemplo do magus de academia** (`src/pages/arcano.astro:63`, acrescentado depois da revisão 126):
+  "um magus de academia de Centelha mínima que, só com estudo, conjura Artes tão fundas quanto as de um
+  grande herói". Com o teto Centelha + 2, Centelha mínima dá Arte 2 ou 3 no máximo (Centelha 0 ou 1), e o "tão fundas quanto
+  as de um grande herói" deixa de valer. É o mesmo conflito do Bram. Não mexi no texto. O autor já
+  decidiu (D-035, 04/10/2026): reescrever pela amplitude, e não pela profundidade. A reescrita vem por
+  despacho próprio.
 - A memória de projeto "Trilhas de Feitiçaria" (a Arte só exige Centelha > 0, e a profundidade vem do
   XP) é anterior à F2 e a esta decisão. Registro para quem a ler.
 
@@ -536,3 +545,27 @@ deleção). Não publiquei esse commit: refiz o `git rm --cached`, conferi por `
 
 **Commit do Bloco G:** `822be8b1` · **CI:** Validar 37174631521 (19 de 19, checkout limpo, sem os 9 arquivos) e
 Deploy 37174631532 (2 de 2), primeira volta. Com isso, A a K estão publicados.
+
+## Os dois CORRIGE da revisão 126
+
+**(A) `qual-sistema.md`, a regra velha de blindar a mente.** Só este trecho; o teto do cortejo não foi
+tocado.
+- `:43`, o nó do diagrama:
+  - antes: "Alvo pode gastar Vontade para blindar: pontual (nega um golpe) ou por cena/dia"
+  - depois: "Alvo pode gastar Vontade: 1 + Margem (teto 4) recusa; pagar 1 encurta um grau na régua de
+    Duração do efeito, e no menor grau anula"
+- `:119`, a folha:
+  - antes: "**Blindar a mente:** gastar Força de Vontade (pontual ou por cena/dia)."
+  - depois: "**Blindar a mente:** pagar **1 + Margem** de Força de Vontade (teto 4) recusa o efeito; com
+    Margem 1 ou mais, pagar só 1 encurta um grau na régua de Duração do próprio efeito, e no menor grau o
+    anula (ver [Defesas](/regras/defesas))."
+  - O "Contra **leitura** não dá para se recusar" ficou.
+- O SVG saiu do `gen-mermaid.mjs`. Na minha máquina ele redesenha os outros cinco diagramas com
+  diferenças de poucos caracteres (medida de fonte), sem mudança de fonte. Mantive os cinco iguais aos do
+  `HEAD` e troquei só a entrada do diagrama editado (`7b7b23843517` passou a `9d02a48ac089`); o
+  `gen-mermaid.mjs --check` dá "diagramas em dia · 6 desenhos".
+- A frase do Bloco A que dizia que não havia outro lugar foi corrigida lá em cima.
+- Varredura depois: "por cena/dia" aparece 0 vezes em `src/content/` e em `src/data/`.
+
+**(D) A lista do Bloco D** ganhou o `arcano.astro:63` (o magus de academia de Centelha mínima), sem
+mudança no texto.

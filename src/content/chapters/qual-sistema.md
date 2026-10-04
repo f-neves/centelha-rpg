@@ -40,7 +40,7 @@ flowchart TD
   S --> S2{"É o dia a dia ou uma cena decisiva?"}
   S2 -->|"Dia a dia: um pedido, um favor, construir um vínculo"| Regua["Régua de Relação (ver fluxo)"]
   S2 -->|"Cena tensa: dobrar alguém agora, custe o que custar"| CS["Combate Social (gastar Vontade para não ceder)"]
-  M --> M2["Alvo pode gastar Vontade para blindar: pontual (nega um golpe) ou por cena/dia"]
+  M --> M2["Alvo pode gastar Vontade: 1 + Margem (teto 4) recusa; pagar 1 encurta um grau na régua de Duração do efeito, e no menor grau anula"]
   M --> M3["Ao sair de um controle percebido, nasce inimizade (salto no Desfavor da Régua)"]
 ```
 
@@ -116,4 +116,4 @@ flowchart TD
 - **Três medos:** intimidação = Social; medo mágico = Mental; medo da cena = Bravura.
 - **Defesa física:** desviou = Esquiva; aparou = Bloqueio (usa a maior).
 - **Percepção x Perspicácia:** o mundo = Percepção; as pessoas = Perspicácia.
-- **Blindar a mente:** gastar Força de Vontade (pontual ou por cena/dia). Contra **leitura** não dá para se recusar: só o número da Defesa protege.
+- **Blindar a mente:** pagar **1 + Margem** de Força de Vontade (teto 4) recusa o efeito; com Margem 1 ou mais, pagar só 1 encurta um grau na régua de Duração do próprio efeito, e no menor grau o anula (ver [Defesas](/regras/defesas)). Contra **leitura** não dá para se recusar: só o número da Defesa protege.
