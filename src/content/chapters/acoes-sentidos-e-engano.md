@@ -121,7 +121,7 @@ Esta família inteira ainda espera regra, e depende da mecânica de poder divino
 - **Ritual menor.** Bênção da colheita, praga, adivinhação. Longa, Inteligência + Ritualismo.
 - **Exorcizar.** O espírito na casa, a coisa que ficou. Acumulada, Vontade + Ocultismo ou Religião.
 - **Reconhecer o sobrenatural.** Direta, Inteligência + Ocultismo.
-- **Meditar.** Recolher-se e recuperar Vontade. Longa, Compostura + Meditação.
+- **Meditar.** Recolher-se e recuperar Vontade. Longa, Compostura + Meditação. (A Mana que a hora de meditação devolve está no verbete Meditação, nas Habilidades Secundárias.)
 - **Interpretar presságio.** O sonho repetido, o voo dos pássaros. Direta, Perspicácia + Ocultismo.
 
 ---

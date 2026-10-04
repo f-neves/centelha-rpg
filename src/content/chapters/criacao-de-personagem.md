@@ -21,7 +21,7 @@ Se é a sua primeira vez, siga esta ordem: os detalhes de cada passo estão nas 
 6. **Virtudes.** As quatro, de 1 a 6.
 7. **Força de Vontade e Aparência.** Suba a Vontade do piso 0 (um herói costuma levá-la a 5+); escolha a Aparência (0–12, normal no nível 6).
 8. **Centelha.** Teto **3** na criação. Ela **não custa XP**: o tier é definido com o Mestre e define o que você alcança. O Mestre escolhe pela campanha: **Centelha 0** numa campanha mortal; de **1 a 3** numa campanha heroica (3 é o Herói, para quem quer um herói de saga).
-9. **Proezas, Técnicas e Artes.** Gaste o restante em poder: as Técnicas que a Centelha destrava e, se for feiticeiro, os níveis de Arte e os Efeitos Especiais.
+9. **Proezas, Técnicas e Artes.** Gaste o restante em poder: as Técnicas que a Centelha destrava e, se for feiticeiro, os níveis de Arte (até Centelha + 2) e os Efeitos Especiais.
 10. **Derivados.** PV, Defesas, Energia/Mana e Iniciativa saem de fórmulas: confira na tabela mais abaixo, ou deixe a Ficha calcular.
 
 <p class="muted">Não há ordem obrigatória de <em>compra</em>: esta é só a sequência mais fácil de raciocinar.</p>
@@ -30,7 +30,7 @@ Se é a sua primeira vez, siga esta ordem: os detalhes de cada passo estão nas 
 
 Tudo começa no mínimo e é comprado dali: **Atributos 1** · **Habilidades 0** · **Virtudes 1** · **Força de Vontade 0** · **Aparência 0** · **Centelha 0** · qualquer **Proeza 0**.
 
-A **Centelha 0** é o mortal comum, cerca de 95% das pessoas, sem acesso a Técnicas (as Artes ele pode estudar e conjurar, com a Mana, que no mortal é a própria Força de Vontade). Alcançar **Centelha 1** é o que torna alguém especial, e isso se conquista na história, não na planilha. Por isso a Centelha inicial também não se compra: na criação, é o Mestre quem a dá, pela campanha (0 numa campanha mortal; de 1 a 3 numa heroica), e dali em diante ela sobe em jogo. Orçamento inicial padrão: **1500 XP** (iniciante), **2000** (veterano) ou **2600** (especialista).
+A **Centelha 0** é o mortal comum, cerca de 95% das pessoas, sem acesso a Técnicas (as Artes ele pode estudar e conjurar, até o nível 2, com a Mana, que nele é uma reserva própria com o valor da Força de Vontade). Alcançar **Centelha 1** é o que torna alguém especial, e isso se conquista na história, não na planilha. Por isso a Centelha inicial também não se compra: na criação, é o Mestre quem a dá, pela campanha (0 numa campanha mortal; de 1 a 3 numa heroica), e dali em diante ela sobe em jogo. Orçamento inicial padrão: **1500 XP** (iniciante), **2000** (veterano) ou **2600** (especialista).
 
 > **Modelo de custo (fechado).** O preço de um nível é **base + (multiplicador × nível)**, no lugar do antigo *nível × custo*. A diferença prática: a escada dos níveis altos ficou muito mais suave, então o topo da régua passou a ser alcançável em jogo. **Vontade e Aparência descem para o piso 0** (você compra o nível 1) e a **Centelha deixa de custar XP**. Duas trilhas não acumulam, a Proeza e o Efeito Especial: paga-se no total só o preço do nível comprado (subir uma Proeza de nível paga só a diferença).
 >
@@ -55,13 +55,13 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 | Nível de Arte (Arcano) | 10 + (nível × 5) | 0→1 = 15 · 2→3 = 25 · 5→6 = 40 |
 | Efeito Especial de Arte | nível × 4 | 4 · 8 · 12 · 16 · 20 · 24 · **não acumula** |
 
-<p class="muted">Duas trilhas <strong>não acumulam</strong>: a Proeza e o Efeito Especial. Uma Técnica de nível <em>N</em> custa no total o preço do nível <em>N</em> (5 + 5 × nível), e não a soma dos de baixo; subir uma Proeza de nível paga só a diferença: do nível 2 (15) para o 3 (20), 5. A Proeza não acumula como Atributo e Habilidade porque o personagem compra muitas Técnicas, e não sobe uma trilha só. Do mesmo jeito, você paga o preço cheio do nível do Efeito que está comprando, e não a soma dos de baixo: um Efeito de nível 2 custa 8 e não exige ter pago o de nível 1. Nas demais trilhas o custo é cumulativo: você paga cada degrau até chegar lá. Técnica de nível <em>N</em> exige Centelha ≥ N, e é esse portão que limita a profundidade; Arte não exige Centelha para começar: o mortal (Centelha 0) também aprende e conjura, com a Mana, que no mortal é a própria Força de Vontade. O nível máximo de cada Arte é <strong>Centelha + 2</strong>, até 6 (Centelha 0 → 2; 1 → 3; 2 → 4; 3 → 5; 4, 5 ou 6 → 6; provisório).</p>
+<p class="muted">Duas trilhas <strong>não acumulam</strong>: a Proeza e o Efeito Especial. Uma Técnica de nível <em>N</em> custa no total o preço do nível <em>N</em> (5 + 5 × nível), e não a soma dos de baixo; subir uma Proeza de nível paga só a diferença: do nível 2 (15) para o 3 (20), 5. A Proeza não acumula como Atributo e Habilidade porque o personagem compra muitas Técnicas, e não sobe uma trilha só. Do mesmo jeito, você paga o preço cheio do nível do Efeito que está comprando, e não a soma dos de baixo: um Efeito de nível 2 custa 8 e não exige ter pago o de nível 1. Nas demais trilhas o custo é cumulativo: você paga cada degrau até chegar lá. Técnica de nível <em>N</em> exige Centelha ≥ N, e é esse portão que limita a profundidade da Proeza; Arte não exige Centelha para começar: o mortal (Centelha 0) também aprende e conjura, com a Mana, uma reserva própria com o valor da Força de Vontade. O nível máximo de cada Arte é <strong>Centelha + 2</strong>, até 6 (Centelha 0 → 2; 1 → 3; 2 → 4; 3 → 5; 4, 5 ou 6 → 6). O teto de Proeza continua igual à Centelha.</p>
 
 <div class="callout"><span class="lbl">O portão da Centelha</span>A Centelha <strong>não custa XP</strong>. Ela sobe só com <strong>permissão do Mestre</strong>, num marco de história ou feito maior: o salto de tier, de herói a semideus, é uma conquista narrativa e não uma transação de balcão. Cobrar XP por ela criava a situação estranha de o Mestre conceder o marco e o jogador responder que não tinha guardado o suficiente.</div>
 
 ## Limites na criação
 
-Na criação não existe limite próprio: valem os máximos normais da ficha. Quase tudo vai até **6**, e alguns traços vão até **12** (Força de Vontade, Aparência). Depois entram os ajustes raciais, para cima ou para baixo: o Atributo com `+1` racial chega a **7**, e o com `−1` fica em **5**. O que segura o personagem novo é o orçamento de XP. Centelha máxima **3** (o Mestre escolhe pela campanha: 0 numa campanha mortal; de 1 a 3 numa heroica). O ponto seguinte e os tiers maiores vêm com o jogo.
+Na criação não existe limite próprio: valem os máximos normais da ficha. Quase tudo vai até **6**, e alguns traços vão até **12** (Força de Vontade, Aparência). Depois entram os ajustes raciais, para cima ou para baixo: o Atributo com `+1` racial chega a **7**, e o com `−1` fica em **5**. O que segura o personagem novo é o orçamento de XP. Centelha máxima **3** (o Mestre escolhe pela campanha: 0 numa campanha mortal; de 1 a 3 numa heroica). O nível de cada Arte respeita o teto da Centelha (Centelha + 2): com a Centelha 3 do teto de criação, até o nível 5. O ponto seguinte e os tiers maiores vêm com o jogo.
 
 ## Traços derivados
 
@@ -77,7 +77,7 @@ Na criação não existe limite próprio: valem os máximos normais da ficha. Qu
 
 Nas fórmulas, a Força de Vontade é sempre a **máxima**, e não a que sobrou: gastar pontos não baixa a Defesa Mental, a Energia nem a Mana.
 
-<p class="muted"><strong>Energia</strong> é o combustível das <a href="/centelha-rpg/caminhos">Técnicas de Proeza</a>; <strong>Mana</strong> é o do <a href="/centelha-rpg/arcano">Arcano</a>.</p>
+<p class="muted"><strong>Energia</strong> é o combustível das <a href="/centelha-rpg/caminhos">Técnicas de Proeza</a>; <strong>Mana</strong> é o do <a href="/centelha-rpg/arcano">Arcano</a>, uma reserva própria que não se mistura com a Força de Vontade.</p>
 
 ## Três exemplos, um por orçamento
 

@@ -1313,7 +1313,7 @@
       "desconto": "nível de Centelha, por conjuração",
       "mana": "total de pontos − Centelha (mínimo 0; zero = grátis e ilimitado)",
       "tetoPorParametro": "nível da Arte (Efeitos Especiais podem passar disso, ver `efeitos`)",
-      "escopo": "Os valores abaixo valem para as Artes ELEMENTAIS. As demais Artes têm parâmetros próprios, definidos caso a caso.",
+      "escopo": "Os valores abaixo valem para as Artes ELEMENTAIS e, até cada uma ganhar régua própria, também para as universais. A Cura tem régua própria.",
       "graus": {
         "nota": "Graus 0 a 6. O grau 0 é o piso de todo parâmetro e é GRÁTIS: toque, uma manifestação mínima do elemento, nenhum alvo designado, nenhum dano e instantâneo. Um feitiço com tudo no grau 0 custa zero pontos, e é assim que se acende uma vela ou se gela uma bebida.",
         "notaTurno": "A PONTE para quem quiser jogar por turnos, e só isso: 1 turno = 1 rodada = 6 Ticks. Turno e rodada são o ciclo em que todos agem, como no D&D, e não são nenhum dos três sistemas que este livro declara (`combate.sistemas`), que são todos de Tick. Desde a `M-04b` as escadas e o texto contam SÓ em Ticks; esta linha existe para a mesa que preferir o outro relógio converter de volta. A régua breve inteira cabe dentro de uma briga: o nível 6 são 300 Ticks, cinco minutos. Passou disso, é caso da régua longa.",
@@ -1372,7 +1372,7 @@
           "1 mês"
         ],
         "notaDano": "Terra dobra o dado: cada nível de dano dela vale 2d6. Ar e Sombra não têm parâmetro de dano.",
-        "notaArea": "O nível compra um DIÂMETRO, e a área é a do círculo que ele desenha (grau 3 = 2 m de diâmetro = 3,1 m² de chão). Em círculo, o raio é sempre metade do diâmetro comprado. Esta régua é a dos Efeitos que ainda declaram Área. Ela está de saída: a decisão de 2026-08-15 é que o chão de um Efeito se compra por MOLDE, com régua por forma, e passar os 46 Efeitos que hoje declaram Área para o molde que lhes cabe é trabalho por julgamento de Efeito, ainda não feito.",
+        "notaArea": "O nível compra um DIÂMETRO, e a área é a do círculo que ele desenha (grau 3 = 2 m de diâmetro = 3,1 m² de chão). Em círculo, o raio é sempre metade do diâmetro comprado. Esta régua é a dos Efeitos que ainda declaram Área. Ela está de saída: o chão de um Efeito passa a se comprar por MOLDE, com régua por forma, e passar os 46 Efeitos que hoje declaram Área para o molde que lhes cabe ainda está por fazer.",
         "notaAlcance": "O toque é o grau 0 e é grátis: nenhum efeito paga para acontecer na própria mão. Quem CRIA algo para ser arremessado (uma bola de neve) não paga Alcance: o objeto voa até acertar, e se o alvo estiver longe pode precisar de Duração. Já o projétil que sai da mão e voa sozinho paga Alcance, e a jogada é Percepção + Acerto Arcano.",
         "volume": [
           "0,02x0,02x0,02",
@@ -1392,7 +1392,7 @@
           "5 m",
           "6 m"
         ],
-        "notaVolumeImproviso": "O Volume tem DUAS RÉGUAS, como a Duração tem breve e longa, e o efeito usa uma ou a outra, nunca as duas. A régua da MANIFESTAÇÃO vale para o improviso: ela compra o lado da base de n × n da geometria em fatias, e mede elemento que sai do feiticeiro, ocupa o espaço e some (a labareda, o jorro, a lufada). A régua da MATÉRIA vale para o Efeito Especial: ela compra um lado de 2 cm a 2 m, mede elemento que passa a existir e fica (a lança de gelo que se pega, o bloco de pedra, o painel do Muro), e está calibrada como massa, com 169 kg de pedra no grau 3 e 10,8 t no grau 6. A distância entre as duas não é erro de calibragem, é a distância entre as duas coisas: fabricar um litro de gelo que dura e se carrega é caro, soprar 289 litros de chama que vivem um Tick e apagam é barato. É a mesma verdade do fator de estado dita por outro lado: pedra não vira tapete, névoa vira.",
+        "notaVolumeImproviso": "O Volume tem DUAS RÉGUAS, como a Duração tem breve e longa, e o efeito usa uma ou a outra, nunca as duas. A régua da MANIFESTAÇÃO vale para o improviso: ela compra o lado da base de n × n da geometria em fatias, e mede elemento que sai do feiticeiro, ocupa o espaço e some (a labareda, o jorro, a lufada). A régua da MATÉRIA vale para o Efeito Especial: ela compra um lado de 2 cm a 2 m, mede elemento que passa a existir e fica (a lança de gelo que se pega, o bloco de pedra, o painel do Muro), e está calibrada como massa, com 169 kg de pedra no grau 3 e 10,8 t no grau 6. A distância entre as duas não é erro de calibragem, é a distância entre as duas coisas: fabricar um litro de gelo que dura e se carrega é caro, soprar 289 litros de chama que vivem um Tick e apagam é barato. O fator de estado também tem duas versões, uma para cada régua, e elas não dão o mesmo número. Na matéria ele multiplica o volume (a tabela de estados, abaixo); no improviso ele multiplica o lado da base (Terra metade do lado, Vento e névoa o dobro, o resto igual), e por isso a Terra improvisada fica com um oitavo do volume, e não com a metade, e o Fogo improvisado não dobra. Pedra não vira tapete, névoa vira.",
         "volumeAncora": [
           "8 cm³, um caroço",
           "1 litro",
@@ -1405,12 +1405,12 @@
         "notaVolume": "Esta é a régua da MATÉRIA, e ela vale para o Efeito Especial que cria elemento que fica. O Volume compra um LADO e o que se ganha é o cubo daquele lado, mas ele perdeu o direito de virar forma: a forma agora é o molde. Lido como massa ele está calibrado, e o que parecia pequeno era pergunta de chão feita a uma régua de massa: em pedra, o grau 3 são 169 kg, o grau 4 são 1,4 t e o grau 6 são 10,8 t; em gelo, com 10 cm de espessura e 2 m de altura, o grau 4 dá cinco metros de muro.",
         "notaAreaOuVolume": "Área e Volume são as DUAS RÉGUAS do mesmo parâmetro, como Duração breve e Duração longa: o efeito usa uma ou a outra, nunca as duas, e custam o mesmo em pontos. Não é escolha de otimização do jogador, é o que o efeito faz que decide. VOLUME mede o CORPO do elemento, quanta matéria ou quanto fenômeno saiu: as Lascas, a Onda, a Tromba, o Clarão, o Muro. ÁREA mede a JURISDIÇÃO, a região onde a regra passa a valer, e ali não interessa quanto elemento existe, interessa quem está dentro: a Noite, o Santuário, a Barreira, o Círculo, a Praga, a Mordaça, a Bolha Temporal. Teste de mesa: o efeito é MATÉRIA ou é REGRA? Se a pergunta que ele responde é 'quanto elemento?', é Volume. Se é 'quem está dentro?', é Área. Uma mesma Arte usa as duas conforme o efeito: o Clarão de Luz é corpo, a Noite de Sombra é jurisdição. ESCOPO: este corte é dos EFEITOS ESPECIAIS. O improviso não escolhe entre Área e Volume, porque ele tem uma geometria só, que é a manifestação em fatias: lá o Volume compra o lado da base, e qualquer outra manifestação de volume é Efeito Especial.",
         "volumePorEstado": {
-          "nota": "O Volume mede corpo, e um metro cúbico de pedra, de água, de chama e de névoa são quantidades de esforço muito diferentes. O multiplicador vale só para o VOLUME DA MATÉRIA, o dos Efeitos: a Área é jurisdição e não depende do material, e o improviso tem o fator de estado dele, que incide no LADO DA BASE (Terra e Metal metade do lado, Ar e névoa o dobro, o resto igual). É a mesma verdade da tabela de dano dita pelo outro lado, e por isso as duas exceções são as mesmas em direções opostas: a Terra dobra o dado e divide o volume, o Ar não tem dano e multiplica o volume por oito.",
+          "nota": "O Volume mede corpo, e um metro cúbico de pedra, de água, de chama e de névoa são quantidades de esforço muito diferentes. O multiplicador vale só para o VOLUME DA MATÉRIA, o dos Efeitos: a Área é jurisdição e não depende do material, e o improviso tem o fator de estado dele, que incide no LADO DA BASE (Terra metade do lado, Vento e névoa o dobro, o resto igual). As duas exceções do dano são as mesmas, em direções opostas: a Terra dobra o dado e divide o volume, o Vento não tem dano no improviso e multiplica o volume por oito.",
           "tabela": [
             {
               "estado": "Sólido",
               "fator": "metade",
-              "artes": "Terra, Metal",
+              "artes": "Terra (inclui o metal do nível 5)",
               "porque": "8 m³ de pedra são 22 toneladas, e metade disso ainda é muito"
             },
             {
@@ -1434,7 +1434,7 @@
             {
               "estado": "Gás",
               "fator": "oito vezes",
-              "artes": "Ar, e os Efeitos de névoa",
+              "artes": "Vento, e os Efeitos de névoa",
               "porque": "ocupa sem pesar. É o que a Neblina já fazia sem regra escrita"
             },
             {
@@ -1444,14 +1444,14 @@
               "porque": "descarga não tem corpo, tem trajeto: usa a régua do Muro"
             }
           ],
-          "exemplo": "No grau 4, que na régua base é 1 m³: Terra entrega 0,5 m³ (1,4 tonelada de pedra), Água 1 m³, Fogo 2 m³, Ar 8 m³.",
+          "exemplo": "No grau 4, que na régua base é 1 m³: Terra entrega 0,5 m³ (1,4 tonelada de pedra), Água 1 m³, Fogo 2 m³, Vento 8 m³.",
           "notaGranular": "O granular é a razão de a escola importar. Quem trabalha areia move o mesmo volume que quem trabalha barro e mais chão que quem trabalha rocha, mas perde o dado dobrado da Terra. A escola da Areia troca dano por alcance e a da Pedra troca alcance por dano, e nenhuma das duas precisa de regra própria dizendo isso: sai desta tabela sozinho."
         },
         "notaAlvos": "O grau 0 é nenhum alvo DESIGNADO, e não \"nenhum alvo\": o dardo continua acertando quem você mira, pela pontaria, e o jorro continua pegando quem está dentro. O parâmetro Alvos serve para ESCOLHER vítimas a dedo, ignorando a geometria, e é por isso que ele quase não aparece nas Artes elementais: o lugar dele é em Cura, Fascinação, Conjuração e nas outras que agem sobre pessoas escolhidas."
       },
       "combinacoes": {
         "nota": "A Arte crua não desenha: ela MANIFESTA o elemento. Fogo sai como labareda, Terra sai como pedra, estilhaço e estalactite. Quem dá forma é o Efeito Especial. Por isso os parâmetros não se combinam todos: a forma do improviso sai de quais foram pagos, e não de uma escolha do jogador.",
-        "definicoes": "Alcance é ONDE o efeito começa. Volume é O TAMANHO do que ele ocupa, lido na régua da manifestação: o lado da base de n × n. Na labareda o efeito começa na mão (Alcance 0, o toque, que é grátis) e ocupa um leque; no dardo ele começa longe e ocupa um alvo só. Pagar os dois ao mesmo tempo é pedir que o efeito comece longe E ocupe espaço, que é a definição de bola de fogo.",
+        "definicoes": "Alcance é ONDE o efeito começa. Volume é O TAMANHO do que ele ocupa, lido na régua da manifestação: o lado da base de n × n. Na labareda o efeito começa na mão (Alcance 0, o toque, que é grátis) e ocupa um leque; no dardo ele começa longe e ocupa um alvo só. Pagar os dois ao mesmo tempo é pedir que o efeito comece longe E ocupe espaço: é a Massa lançada, um corpo do elemento que corre em linha reta e bate no primeiro obstáculo. A bola de fogo, que explode num ponto escolhido, é Efeito Especial.",
         "areaNuncaColocada": "Área nunca é posta num ponto escolhido do mapa. Ou ela nasce no corpo do conjurador, ou ela viaja em linha reta a partir dele. Escolher um ponto a X metros e pôr uma área lá é Efeito Especial.",
         "duracaoPedeConcentracao": "Duração improvisada se paga com CONCENTRAÇÃO. Duração que fica de pé sozinha, sem o conjurador sustentando, é Efeito Especial.",
         "teto": "No máximo TRÊS parâmetros acima do grau 0. O parâmetro Alvos nunca entra no improviso elemental: escolher várias vítimas a dedo é precisão, e precisão se compra.",
@@ -1478,14 +1478,14 @@
             "nome": "Sustentado",
             "paga": "Dardo ou Jorro + Duração",
             "forma": "o conjurador se planta e mantém: o Dardo sustentado vira jato contínuo, o Jorro sustentado vira a labareda que não apaga",
-            "atinge": "reavaliado a cada 6 Ticks. A Massa lançada não se sustenta, porque ela viaja e acaba"
+            "atinge": "fere ao fim de cada janela de 6 Ticks da Duração comprada, um pulso por janela (Duração 1, 6 Ticks: um pulso, no 6º Tick depois de sair; Duração 2, 12 Ticks: dois, no 6º e no 12º; Duração 3, 24 Ticks: quatro), e a Centelha de quem conjura soma inteira em cada pulso. A Massa lançada não se sustenta, porque ela viaja e acaba"
           }
         ],
         "concentracao": {
           "acao": "gasta a ação do lance",
           "posicao": "o conjurador não sai do lugar",
           "defesa": "defender-se é permitido, porque proibir defesa faria de sustentar um suicídio",
-          "aoSofrerDano": "teste de Vontade + Acerto Arcano para segurar; falhando, o efeito cai",
+          "aoSofrerDano": "teste de Compostura + Concentração contra Dificuldade 10 para segurar (a Força de Vontade entra só como +1d6 antes da jogada, 1 ponto por ação); falhando, o efeito cai",
           "aRevisar": "a dificuldade do teste (fixa ou crescendo com o tamanho do golpe), e a Habilidade definitiva quando a conjuração por Tradição fechar"
         },
         "consequencias": [
@@ -1493,8 +1493,8 @@
           "Improvisar área é coisa de linha de frente: sem alcance, quem quer área precisa estar a distância de toque.",
           "Uma flecha de fogo para atirar com arco é Efeito Especial mesmo sendo pequena, porque persiste sem concentração e é entregue a outra coisa."
         ],
-        "escopo": "Escrito para as Artes elementais, onde 'manifestação do elemento' quer dizer alguma coisa concreta. Cura, Fascinação, Adivinhação, Conjuração e Metamorfose já têm parâmetros próprios e precisam da versão delas.",
-        "grauZero": "Com tudo no grau 0 o feitiço custa zero pontos e é o elemento apenas se manifestando: acender ou apagar uma vela, gelar uma bebida, umedecer uma superfície, faíscas, iluminar como uma tocha, suprimir a luz de uma tocha, assoprar folhas. Dura um tick. Quem tem Centelha 1 paga a Duração 1 com o desconto e sustenta por 6 Ticks, e é sustentando de 6 em 6 Ticks que a vela vira lareira e a bebida vira gelo. O preço não é Mana, é a ação: sustentar é concentração."
+        "escopo": "Escrito para as Artes elementais, onde 'manifestação do elemento' quer dizer alguma coisa concreta. As universais não manifestam elemento e usam a tabela dos parâmetros para Alcance, Alvos, Área e Duração; a Cura usa a régua dela.",
+        "grauZero": "Com tudo no grau 0 o feitiço custa zero pontos e é o elemento apenas se manifestando: acender ou apagar uma vela, gelar uma bebida, umedecer uma superfície, faíscas, iluminar como uma tocha, suprimir a luz de uma tocha, assoprar folhas. Dura um Tick. Quem tem Centelha 1 paga a Duração 1 com o desconto e sustenta por 6 Ticks, e é sustentando de 6 em 6 Ticks que a vela vira lareira e a bebida vira gelo. O preço não é Mana, é a ação: sustentar é concentração."
       },
       "manifestacao": {
         "nota": "A geometria do IMPROVISO: o que a Arte crua faz sem nenhum Efeito comprado. Ela nasce no feiticeiro e sai em fatias; os moldes com nome são o que se compra com XP.",
@@ -1549,7 +1549,7 @@
           "consequencias": [
             "A cobertura cresce em todo grau, e nenhum grau é pior que o anterior.",
             "Em fatias de 60° só o grau 6 fecha o círculo. Em 90°, o grau 4 já fecha; em 120°, o grau 3.",
-            "O piso sai de graça: dividir pelo próprio nível dá aresta de 1 m, então o elemento nunca nasce a menos de 87 cm do peito, sem precisar de regra escrita."
+            "Com aresta de 1 m (fatias iguais ao grau), o elemento nasce a 87 cm do peito em 60°, a 50 cm em 90° e a 29 cm em 120°; com mais fatias que o grau a aresta encolhe e ele nasce mais perto ainda."
           ]
         },
         "botoes": {
@@ -1587,8 +1587,8 @@
           "consequencia": "Saindo da mão com o pé da base no chão, a fatia é uma rampa que passa por cima de quem está deitado até quase a ponta. Quem quiser varrer o chão desde o próprio pé precisa agachar e sair do piso. Não é regra escrita, é consequência da forma."
         },
         "estadoNoLado": {
-          "formula": "Terra e Metal: metade do lado · Ar e névoa: o dobro · o resto: igual",
-          "nota": "O estado da matéria incide no LADO DA BASE, e não no volume final. No grau 6 isso dá 3 m para a Terra, 6 m para água, gelo, fogo, luz e sombra, e 12 m para o Ar. O Ar vira a Arte de domínio de espaço sem precisar de regra própria, o que casa com a decisão de tê-lo calibrado sem dano direto: a Arte que não fere é a que toma o campo."
+          "formula": "Terra: metade do lado · Vento e névoa: o dobro · o resto: igual",
+          "nota": "O estado da matéria incide no LADO DA BASE, e não no volume final. É outra régua, diferente da tabela de estados da matéria, que multiplica o volume: aqui metade do lado é um oitavo do volume, e o Fogo fica igual à Água. No grau 6 isso dá 3 m para a Terra, 6 m para água, gelo, fogo, luz e sombra, e 12 m para o Vento. O Vento vira a Arte de domínio de espaço sem precisar de regra própria, o que casa com a decisão de tê-lo calibrado sem dano direto no improviso: a Arte que não fere de improviso é a que toma o campo, e o dano do Vento fica nos Efeitos que o declaram (o Muro e a Tempestade)."
         },
         "naoFaz": [
           "Não põe nada num ponto escolhido. Ela nasce no feiticeiro, sempre. Pôr num ponto é Efeito Especial.",
@@ -1596,11 +1596,11 @@
           "Não ganha alcance com o nível da Arte: o nível segue só como teto do grau do parâmetro.",
           "Não manifesta volume de nenhuma outra maneira. A fatia é a geometria inteira do improviso, e toda forma fora dela, num ponto escolhido, em parede, em reta, em bloco que se carregue, é Efeito Especial."
         ],
-        "escopo": "Escrito para as Artes elementais. Cura, Fascinação, Adivinhação, Conjuração e Metamorfose não manifestam elemento, e a fatia não quer dizer nada nelas: elas ainda precisam da geometria própria.",
+        "escopo": "Escrito para as Artes elementais. Cura, Fascinação, Adivinhação, Conjuração e Metamorfose não manifestam elemento, e a fatia não quer dizer nada nelas: quando pedem chão, usam a régua de Área da tabela dos parâmetros.",
         "emAvaliacao": [
           "O QUE A MATÉRIA DENTRO DA FATIA FAZ EM NÚMERO: a regra diz quanto elemento aparece e onde, e não diz o que 62 m³ de chama fazem além do parâmetro de Dano, nem o que a espessura de uma fatia de Terra aguenta antes de ceder."
         ],
-        "oParametro": "Quem compra a base é o VOLUME, na régua da manifestação, e não a Área: área é jurisdição, uma região onde uma regra passa a valer, e a fatia não é isso, é corpo de elemento ocupando o espaço. O improviso não escolhe entre as duas réguas como o Efeito escolhe, porque ele tem uma geometria só. Decidido em 2026-08-18, junto com a consequência que fecha o escopo: QUALQUER OUTRA MANIFESTAÇÃO DE VOLUME É EFEITO ESPECIAL.",
+        "oParametro": "Quem compra a base é o VOLUME, na régua da manifestação, e não a Área: área é jurisdição, uma região onde uma regra passa a valer, e a fatia não é isso, é corpo de elemento ocupando o espaço. O improviso não escolhe entre as duas réguas como o Efeito escolhe, porque ele tem uma geometria só. A consequência fecha o escopo: QUALQUER OUTRA MANIFESTAÇÃO DE VOLUME É EFEITO ESPECIAL.",
         "numeros": {
           "nota": "A geometria em número, para o tabuleiro não a reescrever. A base é n × n, sai em N fatias vizinhas com o mesmo ápice, e a distância cai com N e com a abertura: distancia = (n ÷ 2N) ÷ tan(θ÷2).",
           "aberturas": [
@@ -1647,7 +1647,7 @@
       "exemplos": [
         "Acender uma vela: tudo no grau 0 = 0 pontos. Sai de graça para qualquer um, e com Centelha 1 dá para pagar Duração 1 (6 Ticks) e ainda sair de graça, sustentando de 6 em 6 Ticks até virar uma fogueira.",
         "Dardo: Alcance 3 (4 m) + Dano 2 (2d6) = 5 pontos. Com Centelha 2, custa 3 de Mana.",
-        "Jorro sustentado: Volume 3 (50 cm de lado) + Dano 2 (2d6) + Duração 2 (12 Ticks) = 7 pontos, três parâmetros acima do grau 0. Com Centelha 2, custa 5 de Mana."
+        "Jorro sustentado: Volume 3 (3 m de base) + Dano 2 (2d6) + Duração 2 (12 Ticks) = 7 pontos, três parâmetros acima do grau 0. Com Centelha 2, custa 5 de Mana."
       ]
     },
     "moldes": {
@@ -1820,13 +1820,13 @@
           "2,5 m",
           "3 m"
         ],
-        "nota": "A Aura mantém a régua dela e é menor de propósito: ela acompanha o corpo em vez de ocupar o campo. São 10 Efeitos, e o número é raio, não diâmetro."
+        "nota": "A Aura mantém a régua dela e é menor de propósito: ela acompanha o corpo em vez de ocupar o campo. A Aura é um Efeito só, com cinco sabores (Fogo, Gelo, Raio, Luz e Sombra), e o número é raio, não diâmetro."
       },
       "cadeiaRessalva": "A Cadeia é indiferente à formação, mas não é indiferente ao CAMINHO. Ela salta de um alvo ao mais próximo ainda não atingido, e onde o próximo estiver além do salto a corrente arrebenta ali, perdendo os elos restantes. É o molde de quem enfrenta muitos inimigos em fila ou em cordão, e é fraca contra dois grupos separados por um vão.",
       "cuboide": "O cuboide não é proibido: ele ganha nome. O cuboide comprido é a Muralha, e a Muralha tem régua calibrada para ser comprida; o cuboide maciço é matéria, e matéria é Volume em m³. O abuso morre por construção e não por proibição, porque não sobra medida livre para trocar: quem escolhe as dimensões é o molde.",
       "volume": "A régua do Volume fica exatamente como está (8 cm³ a 8 m³) para os Efeitos que criam matéria: lida como matéria ela está calibrada, e o grau 3 são 169 kg de pedra, o grau 4 são 1,4 t e o grau 6 são 10,8 t. O que ela ganhou foi MOLDE: a quantidade comprada é a mesma, e o molde diz em que forma ela aparece. Pedra não vira tapete e névoa vira, e isso continua sendo o fator de estado, não uma medida livre.",
       "hexagonosNota": "Os hexágonos são coluna de leitura, não unidade: a régua é em metros, e o molde ancora onde o efeito nasce.",
-      "aRevisar": "A escola está fechada; as réguas acima são a calibragem proposta e ainda esperam mesa. Falta também passar os Efeitos que hoje usam a `zona` genérica para o molde que lhes cabe.",
+      "aRevisar": "A escola está fechada; as réguas acima são provisórias.",
       "porForma": {
         "nota": "A forma que o Efeito declara já diz o molde dele. Só a `zona` fica em aberto, porque ela é a genérica que engordou, e por isso ela pergunta: o padrão é a Explosão, e os 23 Efeitos que ainda a usam esperam o julgamento um a um.",
         "zona": "explosao",
@@ -1841,7 +1841,7 @@
       },
       "solidos": {
         "nota": "O Volume compra o LADO DE UM CUBO, e o que se ganha é o cubo dele. O molde não muda quanto se ganha: muda a forma em que aquilo aparece, e por tabela a pegada no chão e a altura. A mesma quantidade vira bolha, cúpula, coluna, bloco, jorro, pirâmide ou anel.",
-        "porque": "Sem molde, o Volume era lido como um quadrado de lado n e assentado no chão pelo molde de área, o que dava uma pegada sem relação com o que a matéria faz de pé. Com molde, a altura passa a existir: 1 m³ de água em coluna tem 1,1 m de altura e meio metro de raio; o mesmo metro cúbico em bloco tem 79 cm de altura e o dobro de chão.",
+        "porque": "Sem molde, o Volume era lido como um quadrado de lado n e assentado no chão pelo molde de área, o que dava uma pegada sem relação com o que a matéria faz de pé. Com molde, a altura passa a existir: 1 m³ de água em coluna tem 1,1 m de altura e meio metro de raio; o mesmo metro cúbico em bloco tem 79 cm de altura e pouco mais de um terço a mais de chão (1,26 m² contra 0,92 m²).",
         "padrao": "cubo",
         "padraoPorque": "O cubo, porque é ele que a régua nomeia: comprou \"1x1x1\", saiu um cubo de 1 m. Quem quiser outra forma escolhe, e o que ganha continua sendo o mesmo volume.",
         "trava": "O molde não é medida livre: cada um tem proporção fixa, e é isso que impede o abuso da esbeltez (esticar 1 m³ em 127 m de fio). Quem quer comprido compra a Muralha, que é molde de chão e tem régua calibrada para ser comprida.",
@@ -1903,7 +1903,7 @@
             "serve": "a rosca no chão, o cerco baixo. É a única com buraco no meio: cerca sem encher."
           }
         ],
-        "aRevisar": "As proporções acima são a calibragem proposta e ainda esperam mesa. Só o Volume da manifestação escapa: aquele tem geometria própria, as fatias da §5.4."
+        "aRevisar": "As proporções acima são provisórias. Só o Volume da manifestação escapa: aquele tem geometria própria, as fatias de Como a Arte crua se manifesta."
       }
     },
     "tempoDaArte": {
@@ -1939,12 +1939,12 @@
         "regra": "Contra área não existe Esquiva nem Bloqueio. As duas são números contra um golpe que vem de uma direção, e a área não vem de direção nenhuma: ela OCUPA O ESPAÇO. Quem está lá quando ela sai, come. As saídas são duas, e NENHUMA É GRÁTIS: as duas gastam Tick e as duas pedem a mesma jogada. O que muda é de onde sai o Tick e em que estado se rola.",
         "deslocamentoLivre": {
           "titulo": "Livre, com a vez na mão: o próprio deslocamento",
-          "texto": "Quem ainda não agiu sai pelas próprias pernas: o Deslocamento de Batalha, 2 + (Destreza + Atletismo) ÷ 4 metros num Tick (3 m para o camponês, 4 para o aventureiro, 5 para o herói), ou o Arranque da Corrida, que rende mais. Esse Tick é GASTO: sair da área é o movimento, e não o passo de brinde que acompanha outra ação. E a jogada é a mesma de quem desvia fora da vez, porque a área pegou os dois. A vantagem de estar livre é dupla e é grande: um Tick só cobre vários metros, em vez de um metro por Tick, e a rolagem sai limpa, sem a escada de Preparo, Golpe ou Recuperação pesando nos dados. Depois do movimento você continua livre para agir.",
-          "semGabarito": "Como a mira e a forma só travam no último Tick, durante o preparo o molde AINDA NÃO TEM LUGAR NO CHÃO. Não se sai de uma área que ainda não existe: o que se faz é ficar fora do alcance dela, e o alcance do improviso é o próprio lado da base, porque a área nasce no feiticeiro e nunca é colocada. No grau 6 isso são 5,2 m de raio útil contra um passo grátis de 3,5 m: andando você não escapa, correndo sim (7 m no primeiro Tick da Corrida). Por isso a mesa não precisa de gabarito desenhado durante os sete Ticks: o que está em jogo é distância do feiticeiro, não a borda de um desenho."
+          "texto": "Quem ainda não agiu sai pelas próprias pernas: o Deslocamento de Batalha, 2 + (Destreza + Atletismo) ÷ 4 metros num Tick (3 m para o camponês, 4 para o aventureiro, 5 para o herói), ou o Arranque da Corrida, que rende mais. Esse Tick é GASTO: sair da área é o movimento, e não o passo de brinde que acompanha outra ação. E a jogada é a mesma de quem desvia fora da vez, porque a área pegou os dois. A vantagem de estar livre é dupla e é grande: um Tick só cobre vários metros, em vez de um metro por Tick, e a rolagem sai limpa, sem a escada de Preparo, Golpe ou Recuperação pesando no total. Depois do movimento você continua livre para agir.",
+          "semGabarito": "Como a mira e a forma só travam no último Tick, durante o preparo o molde AINDA NÃO TEM LUGAR NO CHÃO. Não se sai de uma área que ainda não existe: o que se faz é ficar fora do alcance dela, e o alcance do improviso é a distância da fatia (no grau 6: 5,2 m a 60°, 3 m a 90°, 1,7 m a 120°), contra um Deslocamento de Batalha de 3 a 5 m: a 60° andando você não escapa, correndo sim (o Arranque chega a 7 m para quem tem Força, Destreza e Atletismo 5). Por isso a mesa não precisa de gabarito desenhado durante os sete Ticks: o que está em jogo é distância do feiticeiro, não a borda de um desenho."
         },
         "desvio": {
           "titulo": "Fora da vez, no Tick em que a Arte sai: o desvio de emergência",
-          "texto": "Quem já agiu não tem Tick na mão, então empresta: custa 1 Tick por metro que falte para o corpo sair, e esses Ticks empurram para frente a próxima ação do alvo. É a única coisa do sistema que se faz fora da própria vez, e ela é legítima justamente porque é cara: o Tick é emprestado do próprio futuro, como uma ação lenta atrasa a seguinte. E ela quase nunca sai limpa, porque estar fora da vez quer dizer estar no meio de um Preparo, de um Golpe ou de uma Recuperação, com a escada aberta. Precisa de pelo menos 1 metro de deslocamento, porque ninguém sai de uma área ficando parado.",
+          "texto": "Quem já agiu não tem Tick na mão, então empresta: custa 1 Tick por metro que falte para o corpo sair, e esses Ticks empurram para frente a próxima ação do alvo. É a única coisa do sistema que se faz fora da própria vez, e ela é legítima justamente porque é cara: o Tick é emprestado do próprio futuro, como uma ação lenta atrasa a seguinte. E ela quase nunca sai limpa, porque estar fora da vez quer dizer estar no meio de um Preparo, de um Golpe ou de uma Recuperação, com a escada aberta. Fora da vez, a jogada leva no total a mesma escada que a Defesa leva: −2 se o alvo estiver no Preparo, −4 se estiver no Tick do Golpe; no modo P/G/R, também −2 por golpe ainda pendurado na Recuperação. Precisa de pelo menos 1 metro de deslocamento, porque ninguém sai de uma área ficando parado.",
           "formula": "Metros = o que falta para o corpo ficar fora, pela direção mais barata · Ticks, livre = os do próprio deslocamento (vários metros por Tick) · Ticks, fora da vez = 1 por metro · Dificuldade (metade do dano) = 5 + 5 × metros, nos dois casos · Dificuldade (dano nenhum) = o DOBRO da anterior",
           "numeros": {
             "nota": "A mesma regra em número, para o tabuleiro não a reescrever. O Grid mede na figura quantos metros faltam para o corpo ficar fora, arredonda para cima com o mínimo de 1 m, e daí saem os Ticks e as duas Dificuldades. O `ticksPorMetro` é o preço de quem desvia FORA DA VEZ; quem está livre paga o Tick do próprio deslocamento e cobre a mesma distância por muito menos. As Dificuldades valem para os dois.",
@@ -2006,54 +2006,86 @@
             "porqueDobrar": "Dobrar funciona como teto de propósito. Sair ILESO na borda (Dif 20) é o limite do que um mortal de ponta consegue: a régua já chama esse patamar de Limite humano, e é justamente o teto de Atributo + Habilidade sem Centelha (12). Um passo além da borda, zerar o dano exige Dif 30, Sobre-humano, que a mesma régua reserva a quem tem Centelha, Proeza ou Arte turbinando a rolagem. A partir de 3 metros a Dificuldade dobrada sai da escada inteira: não é regra dizendo que é impossível, é a própria tabela dizendo isso sozinha."
           },
           "condicoes": [
-            "A JOGADA É A MESMA na vez e fora dela: a área pegou os dois, e os dois rolam Destreza + Esquiva contra os mesmos dois patamares. Estar livre não dispensa a rolagem. O que ela dispensa é o preço de um Tick por metro e a escada em cima dos dados.",
+            "A JOGADA É A MESMA na vez e fora dela: a área pegou os dois, e os dois rolam Destreza + Esquiva contra os mesmos dois patamares. Estar livre não dispensa a rolagem. O que ela dispensa é o preço de um Tick por metro e a escada em cima do total.",
             "Para rolar é preciso TENTAR SAIR DE VERDADE. Quem fica no lugar não testa e come inteiro. Não existe \"me encolho e rolo os dados\".",
             "Os Ticks são gastos de qualquer maneira, passando ou falhando. É o que torna a decisão uma decisão, e não um bônus grátis.",
             "Ter identificado o efeito rende bônus na jogada: +2 no total, ou +4 se a identificação passou com Margem. Lê-se cedo para escapar melhor, e é o prêmio do teste de Ocultismo."
           ],
           "ficarParado": "Ficar parado de propósito, para não testar nem gastar Tick, pede coragem e não pernas: um teste de Virtude (Bravura ou Temperança, ou outra Virtude, com Firula), a Virtude sozinha e sem Atributo, contra METADE da Dificuldade da linha \"metade\", arredondada para cima (borda 10 vira 5, dois metros 15 vira 8, três metros 20 vira 10, e o núcleo, a quatro metros, 25 vira 13). Passando, o personagem aguenta no lugar sem se mexer, e ainda come o dano inteiro, porque ficar parado nunca reduz o que a área faz, só evita o risco e o custo de tentar sair. Falhando, o corpo se move sozinho: vira o desvio de emergência de qualquer maneira.",
           "retorno": {
-            "nota": "Contra uma Arte de grau 6 (6d6, 21 de dano médio), o dano poupado por Tick gasto tentando sair. O soldado só tenta na borda; o aventureiro desiste a partir de 2 m; no núcleo, gastar quatro Ticks para poupar menos de um ponto é a prova de que ali a jogada certa é ficar quieto.",
+            "nota": "Contra uma Arte de grau 6 (6d6, 21 de dano médio), o dano poupado por tentativa de sair (entre parênteses, por Tick gasto), com Centelha 0 dos dois lados.",
             "tabela": [
               {
                 "quem": "Soldado (Des 3 + Esq 2)",
-                "m1": "2,9",
+                "m1": "2,8 (2,8)",
                 "m2": "0",
                 "m3": "0",
                 "m4": "0"
               },
               {
                 "quem": "Aventureiro (4 + 3)",
-                "m1": "7,8",
-                "m2": "1,7",
+                "m1": "7,6 (7,6)",
+                "m2": "1,7 (0,8)",
                 "m3": "0",
                 "m4": "0"
               },
               {
                 "quem": "Veterano (5 + 4)",
-                "m1": "11,0",
-                "m2": "5,8",
-                "m3": "1,0",
+                "m1": "10,7 (10,7)",
+                "m2": "5,7 (2,9)",
+                "m3": "1,0 (0,3)",
                 "m4": "0"
               },
               {
                 "quem": "Herói (5 + 5)",
-                "m1": "12,5",
-                "m2": "7,3",
-                "m3": "2,3",
-                "m4": "0,2"
+                "m1": "12,3 (12,3)",
+                "m2": "7,1 (3,6)",
+                "m3": "2,3 (0,8)",
+                "m4": "0,2 (0,05)"
               }
-            ]
+            ],
+            "notaCentelha": "Com Centelha 3 dos dois lados (dano 6d6 + 3, média 24; quem sai soma 2 × o menor entre 3 e a Esquiva), por tentativa (por Tick):",
+            "tabelaCentelha": [
+              {
+                "quem": "Soldado",
+                "m1": "9,8 (9,8)",
+                "m2": "2,0 (1,0)",
+                "m3": "0",
+                "m4": "0"
+              },
+              {
+                "quem": "Aventureiro",
+                "m1": "14,9 (14,9)",
+                "m2": "9,8 (4,9)",
+                "m3": "3,0 (1,0)",
+                "m4": "0,1 (0,03)"
+              },
+              {
+                "quem": "Veterano",
+                "m1": "19,9 (19,9)",
+                "m2": "11,5 (5,7)",
+                "m3": "7,8 (2,6)",
+                "m4": "1,9 (0,5)"
+              },
+              {
+                "quem": "Herói",
+                "m1": "21,3 (21,3)",
+                "m2": "12,0 (6,0)",
+                "m3": "9,1 (3,0)",
+                "m4": "3,6 (0,9)"
+              }
+            ],
+            "leitura": "Sem Centelha, o soldado só tenta na borda, o aventureiro desiste a partir de 2 m, e no núcleo ninguém poupa um ponto: ali a jogada certa é ficar quieto. Com Centelha 3 dos dois lados, todos poupam mais a cada metro, e o herói ainda tira 3,6 pontos do núcleo."
           },
           "direcoes": "As três direções valem, e todas cobram. Sair pelos lados, jogar-se ao chão (quando a faixa do elemento não encosta no piso) ou saltar por cima (quando ela é rasteira) são a mesma conta: o que importa é quantos metros faltam para o corpo ficar fora, e cada metro é um Tick. É aqui que as duas alturas da manifestação deixam de ser enfeite: faixa que sobe do chão obriga a sair pelos lados ou a saltar, faixa com o pé a um metro do chão se resolve caindo, e cair é barato. Onde o feiticeiro pousa a base decide qual saída ele deixa aberta."
         },
-        "contraOPasso": "Um molde só prende quem não o atravessa num Tick, e atravessar custa o Tick e a jogada mesmo estando livre. O Deslocamento de Batalha humano vai de 2 a 5 m por Tick (fórmula: 2 + (Des + Atl) ÷ 4), e a escada do lado da base (0,5 · 1 · 2 · 3 · 4 · 5 · 6 m) ainda a atravessa, só que mais acima: os três primeiros graus ficaram MENORES QUE O PASSO DE TODO MUNDO e só pegam quem está preso, surpreso ou sem vez; o grau 4 pega o camponês e o aventureiro; o 5 empata com o herói; e só o 6 passa dele. O piso de 2 m do passo é o preço disso, e foi escolhido de olhos abertos."
+        "contraOPasso": "Um molde só prende, sem jogada, quem não tenta sair; quem o atravessa num Tick gasta o Tick e rola, mesmo estando livre. O Deslocamento de Batalha humano vai de 2 a 5 m por Tick (fórmula: 2 + (Des + Atl) ÷ 4), e a escada do lado da base (0,5 · 1 · 2 · 3 · 4 · 5 · 6 m) ainda a atravessa, só que mais acima: os três primeiros graus ficaram MENORES QUE O PASSO DE TODO MUNDO e só pegam quem está preso, surpreso ou sem vez; o grau 4 pega o camponês e o aventureiro; o 5 empata com o herói; e só o 6 passa dele. O piso de 2 m do passo é o preço disso, e foi escolhido de olhos abertos."
       },
       "aRevisar": [
-        "A calibragem de `8 + 2 × metros` no desvio precisa de mesa: a forma está decidida e os números são provisórios. Os dois botões são o 8 (que move todo mundo) e o 2 por metro (que move só quem está fundo).",
+        "A calibragem de 5 + 5 × metros no desvio precisa de mesa: a forma está decidida e os números são provisórios. Os dois botões são o 5 (que move todo mundo) e o 5 por metro (que move só quem está fundo).",
         "Metade por cobertura e metade por desvio não deveriam se multiplicar. Quem está com só as pernas dentro da faixa já sofre metade por física, e passando no desvio sofreria metade disso. A saída provável é valer a melhor das duas, não o produto.",
         "A Dificuldade da identificação, e o quanto ela cai por Tick: precisa casar com a régua do capítulo de Ações e com o fato de que o teste é escolha de momento.",
-        "A Dificuldade do teste de concentração ao sofrer dano: se ela vale para o PREPARO e não só para o sustentar, e se o Mana volta quando o feitiço cai. Com cinco a sete Ticks de exposição, quebrar a conjuração é a contrajogada do corpo a corpo.",
+        "Se o teste de concentração (O que o improviso pode combinar) vale também para o PREPARO, e se o Mana volta quando o feitiço cai.",
         "Os números de ficar parado (o teste de Bravura ou Temperança) ainda não passaram por mesa.",
         "Proezas de Destreza são o lugar da exceção, e não como \"rolar para desviar\": como SAIR MAIS BARATO, com menos Ticks por metro, um Deslocamento de Batalha maior contra área ou o direito comprado de se mover fora da vez sem teste."
       ]
@@ -2134,7 +2166,7 @@
         "Neblina (Efeito 1) + Alcance 1 (toque) + Volume 2 (2×2×2) + Duração 1 (6 Ticks) = 1 + 1 + 2 + 1 = 5 pontos.",
         "Terremoto (Efeito 2) + Alcance 1 (toque) + Área 3 (4×4) = 2 + 1 + 3 = 6 pontos."
       ],
-      "fronteira": "Efeito de FRONTEIRA é o que mora em duas Artes vizinhas e empresta os verbos de uma para a outra. É o mesmo mecanismo de \"o Efeito que você já sabe e que cabe em outra Arte sua não custa XP\", visto pelo outro lado: ele é a vantagem concreta que uma Escola entrega. A escola da Areia é a de Terra que faz fronteira com Ar, e por isso alcança Efeitos que a Terra pura não alcançaria. Raio e Ar se tocam pela tempestade e pela velocidade; Gelo e Água pela mesma matéria em dois estados."
+      "fronteira": "Efeito de FRONTEIRA é o que mora em duas Artes vizinhas e empresta os verbos de uma para a outra. É o mesmo mecanismo de \"o Efeito que você já sabe e que cabe em outra Arte sua não custa XP\", visto pelo outro lado: ele é a vantagem concreta que uma Escola entrega. A escola da Areia é a de Terra que faz fronteira com o Vento, e por isso alcança Efeitos que a Terra pura não alcançaria. Raio e Vento se tocam pela tempestade e pela velocidade; Gelo e Água pela mesma matéria em dois estados."
     },
     "composta": {
       "regra": "Espelha o combo das Técnicas: juntar K Artes numa conjuração custa a soma dos Manas + sobretaxa progressiva +(k−1). Uma única rolagem (Arte condutora à escolha do feiticeiro); o nível efetivo para gating = o maior componente; os Ticks seguem a escada do maior nível.",
@@ -2164,7 +2196,7 @@
     },
     "recuperacaoMana": {
       "normal": "Centelha por hora",
-      "descanso": "2 × Centelha por hora em meditação, descanso completo ou sono profundo",
+      "descanso": "2 × Centelha por hora em descanso completo ou sono profundo",
       "firula": "1 de Mana por Firula de nível 2 e 3 por Firula de nível 3, quando a Mana for a reserva escolhida pelo jogador (`M-11b`). É a única porta que devolve Mana dentro da cena, e ela não é relógio, é recompensa.",
       "nota": "Pelo RELÓGIO a reserva não volta por cena: o feiticeiro que se esvazia numa luta precisa de horas, não de um respiro. É o que separa a economia do Arcano da economia das Proezas (a Energia, essa sim, é o combustível da cena).",
       "arteManipulacao": "A Arte Mana soma +1 por nível dela a cada 2 horas, e o dobro em descanso."
@@ -2278,7 +2310,7 @@
         }
       ],
       "focos": {
-        "texto": "As Artes que não têm elemento no mundo podem ter o equivalente: um foco material que ancora o trabalho e rende o mesmo +1. A régua é a mesma das elementais, ou seja, o foco precisa ser bom o bastante para o maior parâmetro investido, e o trabalho gasta o foco. O que segue é o rascunho a fechar.",
+        "texto": "As Artes que não têm elemento no mundo podem ter o equivalente: um foco material que ancora o trabalho e rende o mesmo +1. A régua é a mesma das elementais, ou seja, o foco precisa ser bom o bastante para o maior parâmetro investido, e o trabalho gasta o foco. A lista abaixo é provisória.",
         "lista": [
           {
             "arte": "cura",
@@ -2346,7 +2378,7 @@
         ]
       },
       "semArea": "A cura comum não tem Área: ela vai a alvos escolhidos, um por um, nunca a todos que estiverem num pedaço de chão. Curar em área existe, mas só através de um Efeito Especial feito para isso.",
-      "outrasArtes": "A Cura é a Arte de curar, e nenhuma outra a alcança. Toda Arte que cura sem ser ela cura MENOS, ou cobra alguma restrição a mais: menos PV pelo mesmo Mana, só certos tipos de dano, exigência de tempo ou de contato. O custo em Mana, porém, é o mesmo: cura é sempre 2 por nível, em qualquer Arte. A Vida, por exemplo, não fecha ferimento: apressa o corpo a fechá-lo sozinho, em qualquer nível e em qualquer profundidade, inclusive abaixo do zero (`M-21b`).",
+      "outrasArtes": "A Cura é a Arte de curar, e nenhuma outra a alcança. Toda Arte que cura sem ser ela cura MENOS, ou cobra alguma restrição a mais: menos PV pelo mesmo Mana, só certos tipos de dano, exigência de tempo ou de contato. O custo em Mana, porém, é o mesmo: cura é sempre 2 por nível, em qualquer Arte. A Vida, por exemplo, não fecha ferimento: apressa o corpo a fechá-lo sozinho, em qualquer nível e em qualquer profundidade, inclusive abaixo do zero, onde soma ao teste de Tratar do dia (ver Vida, Ferimentos & Cura). Em quem está em 0 PV ou menos, a cura de PV soma ao PV negativo, e o alvo só acorda se chegar a 1 PV ou mais; chegando, acorda na hora.",
       "divide": "Em mais de um alvo, o valor curado é DIVIDIDO entre eles: 2d6 em três pessoas é a rolagem inteira repartida em três, não 2d6 para cada uma. Comprar Alvos compra ação, não quantidade de cura.",
       "nota": "O desconto da Centelha continua valendo sobre o total, e no modo Ritual ele é multiplicado pelo tempo gasto: é assim que o curandeiro trata os feridos depois da luta quase de graça, mesmo tendo pouco Mana para gastar durante ela."
     },

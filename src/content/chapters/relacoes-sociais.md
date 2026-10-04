@@ -128,7 +128,7 @@ Um ato forte fura a baseline (um elfo que salva a vida de um anão vira, sim, um
 
 Na conversa comum, a influência compra o alcance do pedido e vai embora (a seção anterior). A cena vira **Combate Social** quando alguém **crava os pés**: recusa-se conscientemente a ser movido, com uma aposta real na mesa (dobrar um juiz, aguentar uma sedução decisiva, não entregar o segredo sob pressão). Aí a mesma jogada de influência ganha uma camada: para **não ceder**, o alvo **queima Força de Vontade**, e segurar a linha fica mais caro quanto mais forte vem o ataque. Quando a Vontade acaba, ou deixa de valer a pena, ele **cede**.
 
-É o lado da **Defesa Social**: influência (te mover) e leitura (te ler). Ataque mágico à mente (controle, ordem, medo mágico) é [Defesa Mental](/regras/defesas), outro sistema. E **ceder é o ponto, não a alma**: perder aqui é conceder aquela discussão, sedução ou negociação, não virar fantoche.
+É o lado da **Defesa Social**: influência (te mover) e leitura (te ler). Ataque mágico à mente (controle, ordem, medo mágico) é [Defesa Mental](/regras/defesas), outro sistema, e o Resistir dele está em As Três Defesas, Queimar Força de Vontade. E **ceder é o ponto, não a alma**: perder aqui é conceder aquela discussão, sedução ou negociação, não virar fantoche.
 
 ### Iniciativa e ritmo
 

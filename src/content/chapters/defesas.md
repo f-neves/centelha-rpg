@@ -104,7 +104,7 @@ Além do número passivo, a **Força de Vontade** tem dois usos contra influênc
 |---|---|
 | **Influência social** (te convencer, seduzir, coagir) | **Sim**: **+4 antes do teste.** Depois que o ataque passou, você recusa friamente, mesmo que o teste tenha passado, pagando **1 + Margem** de Vontade (teto 4; é um pagamento, fora do limite de 1 ponto por ação; ver Resistir, em Relações Sociais). |
 | **Leitura social** (te ler, farejar sua mentira) | **+4 antes do teste, sim. Depois, não**: não dá para "se recusar" a ser lido; só o número da Defesa Social protege. |
-| **Ataques e influências mentais** | **Sim**: **+4 antes do teste.** Depois que o ataque passou, pagar **1 + Margem** de Vontade (teto 4) recusa o efeito. Com Margem 1 ou mais, você pode pagar só 1: o efeito pega, mas dura **um grau a menos na régua de Duração do próprio efeito** (a da Arte, Breve ou Longa, ou a da Proeza); se ele já está no menor grau dessa régua, pagar 1 o anula. Resistir é um pagamento, fora do limite de 1 ponto por ação. Não existe blindagem por cena ou por dia: cada ataque pede o seu pagamento. |
+| **Ataques e influências mentais** | **Sim**: **+4 antes do teste.** Depois que o ataque passou, pagar **1 + Margem** de Vontade (teto 4) recusa o efeito. Com Margem 1 ou mais, você pode pagar só 1: o efeito pega, mas dura **um grau a menos na régua de Duração do próprio efeito** (a da Arte, Breve ou Longa, ou a da Proeza, em Centelha, Os seis níveis das Proezas); se ele já está no menor grau dessa régua, pagar 1 o anula. Resistir é um pagamento, fora do limite de 1 ponto por ação. Não existe blindagem por cena ou por dia: cada ataque pede o seu pagamento. |
 
 ## Quem tem cada muralha
 

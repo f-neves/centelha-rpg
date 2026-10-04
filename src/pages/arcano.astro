@@ -38,7 +38,7 @@ const RESUMO: Record<string, string> = {
 <Base title="O Arcano" descricao="O que é a feitiçaria, os nomes que recebe, as Tradições de ensino e um resumo das 24 Artes.">
   <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size: var(--fs-micro);margin:0">Capítulo {numeralDe('arcano')}</p>
   <h1>O Arcano</h1>
-  <p class="lead">A feitiçaria é a quarta trilha das Proezas, a única que de fato <em>quebra</em> as regras do mundo. Ela se pratica em <strong>Artes</strong>: domínios mágicos comprados e evoluídos um a um. Este capítulo é o panorama; as regras completas, os efeitos e a descrição de cada Arte estão em <a href={url('artes')}>As Artes</a>.</p>
+  <p class="lead">A feitiçaria é a única trilha do extraordinário que de fato <em>quebra</em> as regras do mundo, e a única que o mortal também alcança. Ela se pratica em <strong>Artes</strong>: domínios mágicos comprados e evoluídos um a um. Este capítulo é o panorama; as regras completas, os efeitos e a descrição de cada Arte estão em <a href={url('artes')}>As Artes</a>.</p>
 
   <section class="arcano-regras">
     <h2>Os muitos nomes</h2>
@@ -59,7 +59,7 @@ const RESUMO: Record<string, string> = {
     <div class="trilhas-grid">
       <div class="panel trilha">
         <h3>Erudição <span class="tl-tag">o estudo</span></h3>
-        <p>A magia tratada como <strong>ciência</strong>, aprendida em universidades e centros de pesquisa escondidos: por livros, fórmulas e experimentos. O erudito encara uma labareda como um fenômeno a dissecar, não como uma fúria a sentir. É a via mais lenta de começar (exige Ocultismo, saberes largos, tempo e um mestre ou biblioteca), mas a mais ampla: em tese, aprende qualquer Arte, porque tudo é conhecível.</p>
+        <p>A magia tratada como <strong>ciência</strong>, aprendida em universidades e centros de pesquisa escondidos: por livros, fórmulas e experimentos. O erudito encara uma labareda como um fenômeno a dissecar, não como uma fúria a sentir. É a via mais lenta de começar (costuma passar por Ocultismo, saberes largos, tempo e um mestre ou biblioteca), mas a mais ampla: em tese, aprende qualquer Arte, porque tudo é conhecível.</p>
         <p class="tl-ex"><em>Exemplo:</em> um magus de academia de Centelha mínima que se destaca pela <strong>amplitude</strong>: muitas Artes, rituais e preparo para cada ocasião. A pouca Centelha segura o nível de cada Arte (o teto é Centelha + 2: Centelha 0 chega ao nível 2, Centelha 1 ao 3), e não o quanto ele sabe.</p>
       </div>
       <div class="panel trilha">
@@ -69,12 +69,12 @@ const RESUMO: Record<string, string> = {
       </div>
       <div class="panel trilha">
         <h3>Pacto <span class="tl-tag">o poder emprestado</span></h3>
-        <p>Você não <strong>aprende</strong> a Arte: você a <strong>toma emprestada</strong> de uma entidade (um deus menor, um espírito, um ser de outro plano). É a via que menos exige em Habilidade (basta alcançar a entidade e selar a barganha), mas vem com uma <strong>coleira</strong>: deveres, tributos, favores cobrados e o risco de o patrono negar o poder na hora pior.</p>
+        <p>Você não <strong>aprende</strong> a Arte: você a <strong>toma emprestada</strong> de uma entidade (um deus menor, um espírito, um ser de outro plano). É a via que menos pede de treino (basta alcançar a entidade e selar a barganha), mas vem com uma <strong>coleira</strong>: deveres, tributos, favores cobrados e o risco de o patrono negar o poder na hora pior.</p>
         <p class="tl-ex"><em>Exemplo:</em> um soldado que barganha com um espírito do fogo pela força de queimar, e agora deve uma oferenda antes de cada batalha.</p>
       </div>
       <div class="panel trilha">
         <h3>Iniciação <span class="tl-tag">os graus</span></h3>
-        <p>Ligada a uma <strong>fé, um patrono ou uma ordem</strong>. A Arte vem em graus guardados que a ordem libera à medida que você prova devoção. Pouca Habilidade bruta, mas muito voto, obediência e abdicação: você sobe pelos degraus de um templo ou ordem secreta, e cada grau destrava uma Arte mais funda. Quem controla o acesso é a ordem, não você.</p>
+        <p>Ligada a uma <strong>fé, um patrono ou uma ordem</strong>. A Arte vem em graus guardados que a ordem libera à medida que você prova devoção. Pouco treino bruto, mas muito voto, obediência e abdicação: você sobe pelos degraus de um templo ou ordem secreta, e cada grau destrava uma Arte mais funda. Quem controla o acesso é a ordem, não você.</p>
         <p class="tl-ex"><em>Exemplo:</em> um acólito da Ordem da Lua que só recebe o dom de prever o amanhã após anos de serviço e renúncias juradas.</p>
       </div>
       <div class="panel trilha">
@@ -88,17 +88,18 @@ const RESUMO: Record<string, string> = {
         <p class="tl-ex"><em>Exemplo:</em> um xamã goblin que fala com o totem da montanha e guarda os tabus dos ancestrais, nunca desferindo o primeiro golpe num bosque sagrado.</p>
       </div>
     </div>
+    <p class="muted">O que está dito de cada Tradição é cor de quem a pratica: a regra só cobra XP.</p>
   </section>
 
   <section class="arcano-regras" id="escolas">
     <h2>As Escolas</h2>
-    <p>A Tradição diz <strong>como</strong> se ensina. A <strong>Escola</strong> é a casa concreta onde se ensina: um mosteiro, uma academia, um círculo de anciãos, a corte de um senhor. Ela nasce dentro de uma das seis Tradições e herda o método dela, mas o <strong>repertório</strong> que ela passa não sai do método: sai do que existe em volta.</p>
+    <p>A Tradição diz <strong>como</strong> se ensina. A <strong>Escola</strong> é a casa concreta onde se ensina: um mosteiro, uma academia, um círculo de anciãos, a corte de um senhor. Ela nasce dentro de uma das seis Tradições e herda o método dela, mas o <strong>repertório</strong> que ela passa não sai do método: sai do que existe em volta. Escolas de magia, templos e círculos de druidas costumam ficar em <strong>lugares de fluxo</strong>, onde a energia corre mais forte e a Mana volta mais depressa: +1 por hora no fluxo mediano, +2 no muito alto, +3 no enorme e preocupante (ver <a href={url('artes/regras') + '#mana-volta'}>Regras das Artes, Quando o Mana volta</a>). Quais lugares têm fluxo, e quanto, é assunto do mapa das Escolas.</p>
     <p>Onde o inverno é o ano inteiro, ensina-se <strong>Gelo</strong>, e quase ninguém aprende Água. No deserto ensina-se <strong>Areia</strong>, e rocha viva é lenda de viajante. Isso não é gosto do mestre: é a régua da fonte funcionando. Conjurar a partir do elemento abundante vale desconto, e ninguém funda escola de pedra onde não há pedra.</p>
     <div class="callout regra"><span class="lbl">Por que Artes parecidas existem separadas</span>
       Gelo e Água fazem coisas próximas, e uma vira a outra na frente dos seus olhos. Elas são Artes distintas porque foram <strong>ensinadas distintas</strong>, por gente que morava em lugares distintos. O que um feiticeiro do norte sabe fazer com a água do rio é o que a escola dele achou que valia a pena ensinar, e não tudo o que a água permite.
     </div>
     <h3>A fronteira é a vantagem</h3>
-    <p>Uma Escola costuma morar numa <strong>divisa entre duas Artes</strong>, e é isso que ela entrega de concreto. A escola da <strong>Areia</strong> é a de Terra que faz divisa com o <strong>Ar</strong>: areia voa, cega, sobe em nuvem e se assenta. Quem estudou nela alcança coisas que a Terra pura, a do talhador de rocha, nunca alcançaria, e em troca não ergue muralha nenhuma.</p>
+    <p>Uma Escola costuma morar numa <strong>divisa entre duas Artes</strong>, e é isso que ela entrega de concreto. A escola da <strong>Areia</strong> é a de Terra que faz divisa com o <strong>Vento</strong>: areia voa, cega, sobe em nuvem e se assenta. Quem estudou nela alcança coisas que a Terra pura, a do talhador de rocha, nunca alcançaria, e em troca não ergue muralha nenhuma.</p>
     <p class="muted">{FRONTEIRA}</p>
     <p>Isso também aparece no tamanho do que se move. Areia é <strong>granular</strong> na tabela de estado da matéria: escorre, então cobre mais chão que a rocha pelo mesmo esforço, e em troca não dobra o dado como a Terra dobra. <strong>A escola da Areia troca dano por alcance, e a da Pedra troca alcance por dano</strong>, sem que nenhuma regra de Escola precise dizer isso. Sai da tabela sozinho.</p>
     <p class="muted">O mapa das Escolas do mundo, com os lugares e o que cada uma abre, fica para um próximo passo. <strong>Não há mapa de qual Arte sai de qual Tradição</strong>, e não vai haver: qualquer Arte pode vir por qualquer Tradição que esteja aberta ao personagem, e nenhuma delas cobra treino em número.</p>

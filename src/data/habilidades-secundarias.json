@@ -2589,7 +2589,7 @@
     "id": "energia-espiritual",
     "nome": "Energia Espiritual",
     "grupo": "interior",
-    "descricao": "O cultivo da fonte interior que alimenta a Mana: o quanto se guarda, com que rapidez volta e o quanto se pode sacar de uma vez sem passar mal. Não conjura nada por si, é o fôlego de quem conjura, e sem ela a magia mais bem aprendida acaba na terceira cena.",
+    "descricao": "O cultivo da fonte interior que alimenta a Mana: o quanto se guarda e o quanto se pode sacar de uma vez sem passar mal. Não conjura nada por si, é o fôlego de quem conjura, e sem ela a magia mais bem aprendida acaba na terceira cena.",
     "niveis": [
       {
         "nivel": 0,
@@ -2632,7 +2632,7 @@
     "id": "meditacao",
     "nome": "Meditação",
     "grupo": "interior",
-    "descricao": "Aquietar-se de propósito: acalmar o corpo, esvaziar a cabeça, recuperar-se do desgaste e alcançar o estado em que se enxerga o que a agitação estava escondendo. É prática de tempo parado, e por isso costuma render entre as cenas, e não dentro delas.",
+    "descricao": "Aquietar-se de propósito: acalmar o corpo, esvaziar a cabeça, recuperar-se do desgaste e alcançar o estado em que se enxerga o que a agitação estava escondendo. É prática de tempo parado, e por isso costuma render entre as cenas, e não dentro delas. Quem medita recupera 1 de Mana por hora meditando, até o seu nível de Meditação por dia. Vale para todos, mortais ou não, e soma-se ao que a Mana já recupera (ver Regras das Artes, Quando o Mana volta). Recuperar Vontade é a ação Meditar do Cap. VIII.",
     "niveis": [
       {
         "nivel": 0,

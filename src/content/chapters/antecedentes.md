@@ -205,7 +205,7 @@ disso.
 
 ### Artefato
 
-*Nomeado (teto 3 na criação).* Um item **além do mundano**: uma arma encantada, uma joia de poder, um foco de Arte, uma peça de armadura que não devia existir. Para um mortal (Centelha 0), é a única forma de tocar o sobrenatural. Cada artefato é nomeado; o nível mede a potência.
+*Nomeado (teto 3 na criação).* Um item **além do mundano**: uma arma encantada, uma joia de poder, um foco de Arte, uma peça de armadura que não devia existir. Para um mortal (Centelha 0), é a forma mais direta de tocar o sobrenatural, ao lado das Artes que ele também pode estudar. Cada artefato é nomeado; o nível mede a potência.
 
 | Nível | O que significa |
 |:---:|---|

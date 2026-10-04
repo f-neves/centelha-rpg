@@ -37,15 +37,13 @@ const EX_CONTA: [string, string, number][] = [
   ['Acender uma vela: tudo no grau 0', '0', 0],
   ['Toque ardente: Dano 1 (1d6)', '1', 1],
   ['Dardo: Alcance 3 (4 m) + Dano 2 (2d6)', '3 + 2', 5],
-  ['Labareda de 12 Ticks: Volume 3 (50 cm de lado) + Dano 2 (2d6) + Duração 2 (12 Ticks)', '3 + 2 + 2', 7],
+  ['Labareda de 12 Ticks: Volume 3 (3 m de base) + Dano 2 (2d6) + Duração 2 (12 Ticks)', '3 + 2 + 2', 7],
 ];
 ---
 <Base title="Regras das Artes" largura="wide" descricao="Como se conjura no Centelha: parâmetros, custo em Mana, a fonte do elemento, esticar, Rituais e o que o alvo opõe.">
   <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size: var(--fs-micro);margin:0">Capítulo {numeralDe('artes/regras')}</p>
   <h1>Regras das Artes</h1>
-  <!-- TOLERÂNCIA: o teto de Arte Centelha + 2 (D-006, 03/10/2026) ainda não é definitivo.
-       LEVANTA QUANDO: o autor fechar o teto de Arte do mortal e da Centelha baixa. -->
-  <p class="lead">Como se conjura, o que custa e o que o alvo pode fazer a respeito. Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: não é preciso <strong>Centelha</strong> para tocar a magia (o mortal conjura com a Mana, que nele é a própria Força de Vontade), e o <strong>nível máximo</strong> de cada Arte é <strong>Centelha + 2</strong>, até 6 (Centelha 0 → 2; 1 → 3; 2 → 4; 3 → 5; 4, 5 ou 6 → 6; provisório); a profundidade (o nível da Arte) você compra e evolui um a um. Dentro do seu nível, você monta o efeito girando os parâmetros. O panorama, os nomes da feitiçaria e as Tradições de ensino estão em <a href={url('arcano')}>O Arcano</a>.</p>
+  <p class="lead">Como se conjura, o que custa e o que o alvo pode fazer a respeito. Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: não é preciso <strong>Centelha</strong> para tocar a magia (o mortal conjura com a Mana, uma reserva própria com o valor da Força de Vontade, que não se mistura com ela), e o <strong>nível máximo</strong> de cada Arte é <strong>Centelha + 2</strong>, até 6 (Centelha 0 → 2; 1 → 3; 2 → 4; 3 → 5; 4, 5 ou 6 → 6); a profundidade (o nível da Arte) você compra e evolui um a um. Dentro do seu nível, você monta o efeito girando os parâmetros. O panorama, os nomes da feitiçaria e as Tradições de ensino estão em <a href={url('arcano')}>O Arcano</a>.</p>
 
   <nav class="artes-nav artes-nav-topo" data-pagefind-ignore>
     <a class="cap-card" href={url('artes/efeitos')}>
@@ -58,11 +56,11 @@ const EX_CONTA: [string, string, number][] = [
     </a>
   </nav>
 
-  <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong>, rápido, em combate: custa Ticks como uma ação (<strong>5</strong> nos níveis 1 a 3, <strong>6</strong> no 4, <strong>7</strong> nos 5 e 6), mais o Mana. Esses Ticks são de <strong>preparo</strong>, e a Arte sai no <a href="#tempo"><strong>último</strong></a> deles, ao contrário da ação comum, que resolve no primeiro. &nbsp; <strong><a href="#rituais">Ritual</a></strong>, estendido: a conjuração passa a levar minutos ou horas e, em troca, sai mais barato ou alcança mais alto do que a sua Arte permitiria.</div>
+  <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong>, rápido, em combate: custa Ticks como uma ação (<strong>5</strong> quando o maior grau investido na conjuração vai de 0 a 3, <strong>6</strong> quando é 4, <strong>7</strong> quando é 5 ou 6; o nível da Arte de quem conjura não entra nessa conta), mais o Mana. Esses Ticks são de <strong>preparo</strong>, e a Arte sai no <a href="#tempo"><strong>último</strong></a> deles, ao contrário da ação comum, que resolve no primeiro. &nbsp; <strong><a href="#rituais">Ritual</a></strong>, estendido: a conjuração passa a levar minutos ou horas e, em troca, sai mais barato ou alcança mais alto do que a sua Arte permitiria.</div>
 
   <section class="arcano-regras">
     <h2>Como se aprende uma Arte</h2>
-    <p>Nenhuma Arte se aprende no vácuo: você chega a ela por uma <a href={url('arcano') + '#trilhas'}>Tradição de Feitiçaria</a>, o método que explica <em>como</em> aquele personagem passou a lançá-la, e que ele declara por Arte. A mesma Arte chega por Tradições diferentes (a do erudito, a do monge, a do pactuário). Comprar e subir uma Arte custa <strong>XP</strong> como qualquer traço, e a Tradição <strong>não muda número nenhum</strong>: ela diz o que é preciso ter vivido para aquilo fazer sentido, e com que cara o feitiço sai.</p>
+    <p>Nenhuma Arte se aprende no vácuo: você chega a ela por uma <a href={url('arcano') + '#trilhas'}>Tradição de Feitiçaria</a>, o método que explica <em>como</em> aquele personagem passou a lançá-la, e que ele declara por Arte. A mesma Arte chega por Tradições diferentes (a do erudito, a do monge, a do pactuário). Comprar e subir uma Arte custa <strong>XP</strong> como qualquer traço, e a Tradição <strong>não muda número nenhum</strong>: ela diz o que é preciso ter vivido para aquilo fazer sentido, e com que cara o feitiço sai. Preço: cada nível de Arte custa 10 + 5 × o nível em XP, pagos um a um (a Arte 4 inteira custa 15 + 20 + 25 + 30 = 90 XP). Cada Efeito Especial custa 4 × o nível dele, pago cheio, sem somar os de baixo.</p>
   </section>
 
   <section class="arcano-regras">
@@ -72,22 +70,27 @@ const EX_CONTA: [string, string, number][] = [
       <table>
         <thead><tr><th>Natureza do efeito</th><th>Como o alvo resiste</th><th>Exemplos</th></tr></thead>
         <tbody>
-          <tr><td><strong>Dano e projéteis</strong></td><td><strong>Defesa</strong> (Esquiva) para acertar; depois o dano − <strong>Absorção</strong></td><td>dardo de fogo, raio, lança de gelo</td></tr>
+          <tr><td><strong>Dano e projéteis</strong></td><td><strong>Defesa</strong> para acertar (Esquiva; Bloqueio só contra o que deixou matéria no mundo); depois o dano − <strong>Absorção</strong></td><td>dardo de fogo, raio, lança de gelo</td></tr>
           <tr><td><strong>Corpo e veneno</strong></td><td><strong>Vigor + Resistência</strong> (fortitude)</td><td>transmutação, doença, frio que enrijece, paralisia</td></tr>
-          <tr><td><strong>Mente e alma</strong></td><td><strong>Defesa Mental</strong> (passiva)</td><td>medo, fascínio, ilusão, domínio</td></tr>
+          <tr><td><strong>Mente e alma</strong></td><td><strong>Defesa Mental</strong> (passiva), ou <strong>Defesa Social</strong> nos Efeitos que persuadem; sem projétil, quem conjura rola Influência + uma Habilidade social</td><td>medo, fascínio, ilusão, domínio</td></tr>
           <tr><td><strong>Aprisionamento e contato</strong></td><td><strong>Defesa</strong> para prender; o preso fica <strong>Preso</strong> (não se desloca, mas age) e escapa com <strong>Força + Atletismo</strong> contra a Dificuldade do Efeito, uma tentativa por ação</td><td>correntes, lama, agarrão telecinético</td></tr>
           <tr><td><strong>Em aliado, objeto ou cenário</strong></td><td>sem resistência</td><td>cura, escudo, muralha, luz</td></tr>
         </tbody>
       </table>
     </div>
+    <p><strong>A Arte que toca a mente.</strong> Sem projétil, conjurar contra a mente é uma interação com o alvo: quem conjura rola <strong>Influência + uma Habilidade social</strong>, com 2 × o menor entre a Centelha e essa Habilidade (a conta do ataque social, em <a href={url('regras/relacoes-sociais')}>Relações Sociais</a>, sem o Acerto da Abordagem). Cada Efeito diz a Habilidade na linha <strong>Conjurar</strong>; uma Arte da mente usada sem Efeito (as Sugestões, Simpatias e Encantos do catálogo) pede a Habilidade que a intenção declarada pedir, escolhida pelo Mestre como em qualquer cena social. O nível da Arte não entra na jogada: compra o tamanho do efeito (Alvos, Área, Duração). O total é comparado à Defesa que o Efeito nomeia na linha <strong>Dificuldade</strong>: a <strong>Defesa Social</strong> nos Efeitos que persuadem (Boa Impressão), a <strong>Defesa Mental</strong> nos que impõem, plantam ou apagam algo na cabeça do alvo (ver <a href={url('regras/defesas')}>As Três Defesas</a>). Com projétil, o efeito que sai da mão e voa até o alvo, a jogada é Percepção + Acerto Arcano, contra a Defesa Mental. Um total vale para todos os alvos do Efeito: na área, ele é comparado à Defesa de cada um que estiver dentro; nos Efeitos em você, à de cada um que olhar enquanto durar; no Círculo, à de cada criatura da categoria que tentar cruzar a linha. A Margem é a de sempre, cada 6 pontos acima da Defesa, e a Força de Vontade do alvo vale como em toda Defesa. Como o alvo resiste depois que o total passou está em <strong>Resistir a um Efeito da mente</strong>, logo abaixo.</p>
+    <p><strong>Resistir a um Efeito da mente.</strong> Depois que o total superou a Defesa, o alvo pode pagar Força de Vontade para recusar o Efeito: <strong>1 + Margem</strong>, com teto de 4, fora do limite de 1 ponto por ação (ver <a href={url('regras/defesas')}>As Três Defesas</a>, Queimar Força de Vontade). Com Margem 1 ou mais, pode pagar só <strong>1</strong>: o Efeito pega, mas dura <strong>um grau a menos na régua de Duração dele</strong>, a Breve ou a Longa da tabela dos parâmetros, a que o Efeito usa. Se o Efeito já está no menor grau, pagar 1 o anula: é o caso do Efeito sem linha de Duração, que é instantâneo, grau 0. Exemplos: um Pavor de Duração breve 3 (24 Ticks) cai para 12 Ticks; uma Sugestão Plantada de Duração longa 2 (1 hora) cai para 10 minutos; um Pavor de Duração breve 1 (6 Ticks) cai para o grau 0, no máximo 1 Tick; Esquecer, que não tem Duração, é anulado. Nos Efeitos contra a Defesa Social (Boa Impressão), o Resistir é o de Relações Sociais, que só tem recusar ou ceder: quem paga 1 + Margem recusa, e quem não paga sofre o Efeito inteiro.</p>
+    <p><strong>A Centelha nas Artes.</strong> A jogada de uma Arte soma 2 × o menor entre a sua Centelha e a Habilidade da jogada, como toda jogada do livro: no efeito mirado, Percepção + Acerto Arcano + 2 × o menor entre a Centelha e o Acerto Arcano (Acerto Arcano 0 dá bônus 0); na Arte que toca a mente sem projétil, o mesmo com a Habilidade social do Efeito. O dano soma a sua Centelha inteira, uma vez por pulso, em toda Arte que causa dano. O alvo usa as próprias regras: as Defesas já trazem a Centelha dele, e jogadas como Vigor + Resistência somam 2 × o menor entre a Centelha e a Habilidade usada. O desconto de Mana é outra conta: a Centelha inteira, tirada do total de pontos. O mortal (Centelha 0) não soma nada em nenhuma das três. Exemplo: Veil, Centelha 4, Percepção 3 e Acerto Arcano 3, rola 3d6 + 6; com Acerto Arcano 0 rolaria 1d6 + 2.</p>
     <p><strong>Área é a exceção da primeira linha.</strong> O que voa se esquiva, mas o que ocupa espaço não: contra área não há Esquiva nem Bloqueio, e a saída é <a href="#tempo">sair do lugar</a>, gastando um Tick do próprio deslocamento se você ainda tem a vez, ou um Tick por metro se já agiu. A jogada é a mesma nos dois casos.</p>
-    <p class="muted">A <strong>Margem</strong> funciona como no combate: cada 6 pontos acima da resistência rende +1d6 de dano ou um efeito mais forte. A armadura só protege contra dano <strong>físico</strong>: o que decide é se o efeito deixou matéria no mundo. Fogo, raio e o gelo que evapora ao acertar são absorvidos só pela Centelha; a lança de gelo que se pega na mão, ou o cascalho que a Terra arranca do chão, entram nas trilhas normais.</p>
+    <p>Bloquear uma Arte segue o mesmo critério da armadura. O que deixou matéria no mundo se bloqueia como a arma de arremesso do mesmo tamanho, pelo <a href={url('regras/combate')}>Cap. IX</a>: o Projétil Conjurado de Gelo, Água ou Terra, do tamanho de flecha, virote, dardo ou adaga, é projétil rápido, e só se bloqueia com escudo hábil e estando apto; a lança de gelo arremessada e a pedra grande (a da Terra, a do Arremesso de Forças) são lentas, e se bloqueiam com arma, escudo ou mão. Fogo, raio, luz, sombra e o gelo que evapora ao acertar não se bloqueiam: contra eles, só Esquiva. Quando o Efeito diz que é imbloqueável (a Prisão, a Paralisia), vale o Efeito.</p>
+    <p>Nos Efeitos com Ataque, a Dificuldade é a de resistir ao efeito secundário; o Mestre pede o teste que fizer sentido.</p>
+    <p class="muted">A <strong>Margem</strong> funciona como no combate: cada 6 pontos acima da resistência rende +1d6 de dano ou um efeito mais forte. A armadura só protege contra dano <strong>físico</strong>: o que decide é se o efeito deixou matéria no mundo. Fogo, raio e o gelo que evapora ao acertar são absorvidos só pela Centelha; a lança de gelo que se pega na mão, ou o cascalho que a Terra arranca do chão, entram nas trilhas normais. Nos Efeitos vale o mesmo critério. O que é feito de Gelo, Água ou Terra e acerta como corpo (o projétil, a arma, as lascas) é matéria, e a armadura absorve normalmente, no modo do formato. O dano de Fogo, Raio, Luz e Sombra só a Centelha de quem recebe absorve, e a resistência ao elemento corta pela metade o que passar.</p>
     <p class="muted">Dentro de uma ação Longa (<a href={url('regras/acoes-e-sistema#longa')}>Cap. VIII</a>), que não rola, o Efeito só conta se durar o intervalo inteiro, ou se for relançado sem falha, pagando a Mana a cada vez. Cada +1d6 de bônus do Efeito vale +3, e um bônus fixo entra como o próprio valor. Nova rolagem e bônus atado a uma rolagem só (como o de Maré da Sorte) não valem na Longa.</p>
 
     <h2 id="parametros">Os parâmetros</h2>
     <p>Você não decora feitiços prontos: você <strong>monta</strong> cada conjuração investindo pontos nos parâmetros. Cada grau custa <strong>1 ponto</strong>, e nenhum parâmetro passa do <strong>nível da Arte</strong> que você tem.</p>
     <p><strong>O grau 0 é o piso de tudo, e é grátis.</strong> Toque, uma manifestação mínima do elemento, nenhum alvo escolhido, nenhum dano, instantâneo. Um feitiço inteiro no grau 0 custa zero pontos, e é assim que se acende uma vela.</p>
-    <p class="muted">A tabela abaixo vale para as <strong>Artes elementais</strong>. As demais Artes têm parâmetros próprios, definidos caso a caso.</p>
+    <p class="muted">A tabela abaixo vale para as <strong>Artes elementais</strong> e, até cada uma ganhar régua própria, também para as universais: Alcance, Alvos, Área e as duas Durações saem daqui, e os parâmetros de efeito (Dano, Cura, Bônus, Absorção) estão em cada Efeito. A Cura é a exceção: tem régua própria (<a href="#cura">A economia da Cura</a>).</p>
     <div class="table-wrap">
       <table class="graus-tab">
         <thead><tr><th>Parâmetro</th>{GRAU_COLS.map((g) => <th>{g}</th>)}</tr></thead>
@@ -151,7 +154,8 @@ const EX_CONTA: [string, string, number][] = [
     <div class="callout regra"><span class="lbl">O que sai de graça</span>
       {COMB.grauZero}
     </div>
-    <p><strong>Sustentar cobra a cada 6 Ticks.</strong> {COMB.concentracao.acao}, {COMB.concentracao.posicao}, e {COMB.concentracao.defesa}. Ao sofrer dano, {COMB.concentracao.aoSofrerDano}.</p>
+    <p><strong>Sustentar cobra a cada 6 Ticks.</strong> Cada janela de 6 Ticks gasta a ação daquele lance e não cobra Mana: a Duração se paga uma vez, na conjuração. A janela não se soma à Duração comprada: é a Duração sendo sustentada, e quem para de sustentar perde o resto. A janela é de 6 Ticks mesmo quando a conjuração levou 5, porque é a régua da Duração (6, 12, 24 Ticks) que a define. Sustentar {COMB.concentracao.acao}, {COMB.concentracao.posicao}, e {COMB.concentracao.defesa}. Ao sofrer dano, {COMB.concentracao.aoSofrerDano}.</p>
+    <p>A Duração 1 de um sustentado compra só presença: a chama fica de pé 6 Ticks e fere quem estiver nela no fim da janela. Quem sair antes do 6º Tick não leva o pulso. Para ferir duas vezes é preciso Duração 2 (12 Ticks, dois pulsos).</p>
     <ul class="fraq">
       {COMB.consequencias.map((x: string) => <li>{x}</li>)}
     </ul>
@@ -293,7 +297,7 @@ const EX_CONTA: [string, string, number][] = [
             <tr>
               <td><strong>{m.nome}</strong></td>
               <td class="muted">{m.proporcao}</td>
-              <td class="muted">{m.pegada === 'circulo' ? 'redonda' : 'quadrada'}</td>
+              <td class="muted">{m.pegada === 'circulo' ? 'redonda' : m.nome === 'Bloco' ? 'retangular (2 : 1)' : 'quadrada'}</td>
             </tr>
           ))}
         </tbody>
@@ -375,8 +379,20 @@ const EX_CONTA: [string, string, number][] = [
         </tbody>
       </table>
     </div>
+    <p class="muted">{TEMPO.area.desvio.retorno.notaCentelha}</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Quem tenta</th><th>Borda, 1 m</th><th>2 m</th><th>3 m</th><th>Núcleo, 4 m</th></tr></thead>
+        <tbody>
+          {TEMPO.area.desvio.retorno.tabelaCentelha.map((l: any) => (
+            <tr><td><strong>{l.quem}</strong></td><td class="num">{l.m1}</td><td class="num">{l.m2}</td><td class="num">{l.m3}</td><td class="num">{l.m4}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p>{TEMPO.area.desvio.retorno.leitura}</p>
     <p>{TEMPO.area.desvio.direcoes}</p>
-    <div class="callout regra"><span class="lbl">O molde medido contra o passo grátis</span>
+    <div class="callout regra"><span class="lbl">O molde medido contra o Deslocamento de Batalha</span>
       {TEMPO.area.contraOPasso}
     </div>
 
@@ -400,6 +416,7 @@ const EX_CONTA: [string, string, number][] = [
         </tbody>
       </table>
     </div>
+    <p class="muted">A Labareda de 12 Ticks fere duas vezes, no 6º e no 12º Tick depois de sair.</p>
     <p>O desconto muda o jeito de jogar conforme a Centelha sobe: o mesmo dardo que era caro no começo vira troco, e lá pelo fim os truques pequenos deixam de ter custo nenhum. E o que está escrito nos seis níveis de cada Arte, mais abaixo, é <em>exemplo de alocação típica</em> daquele patamar, não a regra.</p>
 
     <h2 id="fonte">A fonte do elemento</h2>
@@ -436,7 +453,7 @@ const EX_CONTA: [string, string, number][] = [
 
     <h2 id="cura">A economia da Cura</h2>
     <p>{CURA.resumo}</p>
-    <p class="muted">A régua da Cura <strong>não tem grau 0</strong>: ela começa em 1, diferente dos outros parâmetros do catálogo (que têm um grau 0 de graça). Não há Cura "de brinde".</p>
+    <p class="muted">A régua da Cura <strong>não tem grau 0</strong>: ela começa em 1, diferente dos outros parâmetros do catálogo (que têm um grau 0 de graça). Não há Cura "de brinde". A exceção é o <strong>primeiro alvo</strong>: o nível 1 de Alvos é grátis. A partir do 2º, cada nível custa 2 de Mana, como em todo parâmetro da Cura (dois alvos, 2; três alvos, 4), e o toque continua pagando o Alcance 1.</p>
     <div class="table-wrap">
       <table class="graus-tab">
         <thead><tr><th>Parâmetro</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
@@ -468,6 +485,7 @@ const EX_CONTA: [string, string, number][] = [
         </tbody>
       </table>
     </div>
+    <p class="muted">A Velocidade que o esticar multiplica é a do conjuro antes de esticar, pelo maior grau investido até o seu nível de Arte. No exemplo abaixo, o maior grau é 2 (Velocidade 5), e esticar dá 10 e depois 15.</p>
     <p class="formula">Centelha 2, Arte 2, um jorro sustentado. Volume 2 + Dano 2 + Duração 2 = <strong>6 pontos</strong>, Velocidade 5. Puxando para Volume 3, um nível acima: 3×2 + 2 + 2 = <strong>10 pontos</strong>, Velocidade 10. Para Volume 4, dois acima: 4×3 + 2 + 2 = <strong>16 pontos</strong>, Velocidade 15.</p>
     <div class="callout regra"><span class="lbl">Você decide no fim</span>
       Não é preciso anunciar de saída até onde vai. No <strong>tick final de cada Velocidade</strong> você escolhe: soltar o efeito agora, ou segurar e subir mais um nível de um parâmetro. Numa ação de Velocidade 5, você decide no tick 5; se esticar, decide de novo no 10, e outra vez no 15. Quem interromper você no meio leva a conjuração junto.
@@ -475,8 +493,8 @@ const EX_CONTA: [string, string, number][] = [
     <p class="muted">O preço sobe rápido de propósito: forçar o limite é recurso de momento decisivo, não atalho para o estudo. E o desconto da Centelha continua valendo sobre o total.</p>
 
     <h2>Conjuração composta</h2>
-    <p>Você pode trançar <strong>várias Artes numa única conjuração</strong>, o mesmo idioma dos combos de Técnica. Junte K Artes e pague a <strong>soma dos Manas + uma sobretaxa progressiva de +(k−1)</strong> (a 2ª Arte +1, a 3ª +2…). É uma <strong>só rolagem</strong> (você escolhe a Arte condutora); o nível efetivo para gating é o do maior componente, e os Ticks seguem a escada dele.</p>
-    <p class="formula">Fogo (Labareda, nível 3) + Forças (nível 1) = uma chama que persegue o alvo. Mana = 3 + 1 + <strong>1</strong> de sobretaxa = <strong>5</strong>, numa conjuração só.</p>
+    <p>Você pode trançar <strong>várias Artes numa única conjuração</strong>, o mesmo idioma dos combos de Técnica. Junte K Artes: some os pontos de todas, subtraia a sua Centelha <strong>uma vez só</strong>, do total, e some ao que sobrar a <strong>sobretaxa progressiva</strong> (a 2ª Arte +1, a 3ª +2, a 4ª +3: no total, 1 + 2 + … + (K − 1)). A sobretaxa não leva o desconto da Centelha e se paga mesmo quando os pontos cabem dentro dela: trançar Artes nunca sai de graça. É uma <strong>só rolagem</strong> (você escolhe a Arte condutora); o nível efetivo para gating é o do maior componente, e os Ticks seguem o maior grau investido em qualquer das Artes trançadas.</p>
+    <p class="formula">Fogo (Labareda: Volume 3 + Dano 2 = 5 pontos) + Forças (Alcance 1 = 1 ponto) = uma chama que persegue o alvo. Com Centelha 2: (5 + 1) − 2 = 4, mais 1 de sobretaxa = <strong>5</strong> de Mana, numa conjuração só.</p>
 
     <h2 id="rituais">Rituais</h2>
     <p><strong>Ritual é a conjuração estendida</strong>, não uma categoria de magia à parte. Um efeito que dura a cena não é Ritual: é um feitiço com o parâmetro de duração alto. O que faz um Ritual é <em>o tempo que você gasta conjurando</em>, subindo esta escada:</p>
@@ -494,10 +512,12 @@ const EX_CONTA: [string, string, number][] = [
     <div class="callout regra"><span class="lbl">Ritual não é discreto</span>
       Nada disso é silencioso. Ritual tem luz, som e às vezes cheiro, e chama atenção de longe. Quem conjura por uma hora num lugar habitado está anunciando o que faz, e isso é parte do preço.
     </div>
-    <p>Vários feiticeiros que conheçam a Arte <strong>cooperam</strong>, somando Mana e Força de Vontade. Não há recuo mágico (<em>backlash</em>); uma falha apenas desperdiça o tempo e o Mana investidos.</p>
+    <p>Vários feiticeiros que conheçam a Arte <strong>cooperam</strong>, somando Mana e Força de Vontade. Não há recuo mágico (<em>backlash</em>) e não há jogada de conjurar o Ritual: ele não falha por dado. Falha só se for interrompido, como no esticar (quem interromper você no meio leva a conjuração junto), e aí se perdem o tempo e o Mana investidos. Se o efeito for mirado, a jogada de ataque dele rola normalmente, quando ele sai.</p>
 
-    <h2>Quando o Mana volta</h2>
-    <p>A reserva <strong>não</strong> volta por cena: quem se esvazia numa luta precisa de horas, não de um respiro. Você recupera <strong>{RECUP.normal}</strong>, e <strong>{RECUP.descanso}</strong>.</p>
+    <h2 id="mana-volta">Quando o Mana volta</h2>
+    <p>A reserva <strong>não</strong> volta por cena: quem se esvazia numa luta precisa de horas, não de um respiro. Com Centelha 1 ou mais, você recupera <strong>{RECUP.normal}</strong>, e <strong>{RECUP.descanso}</strong>. O mortal (Centelha 0) tem a Mana como uma <strong>reserva própria</strong>, com o valor da Força de Vontade, e ela volta <strong>1 por dia</strong>, ou <strong>2 por dia descansando</strong> (descanso completo ou sono profundo). Mana e Vontade são reservas separadas: gastar ou recuperar uma não mexe na outra.</p>
+    <p><strong>Meditação.</strong> Meditar devolve <strong>1 de Mana por hora meditando</strong>, até o seu nível de Meditação por dia (ver <a href={url('regras/habilidades-secundarias')}>Habilidades Secundárias</a>). Vale para todos, mortais ou não, e soma-se ao que a Mana já recupera.</p>
+    <p><strong>Lugares de fluxo.</strong> Em certos lugares a energia corre mais forte, e quem recupera Mana ali ganha <strong>+1 por hora</strong> (fluxo mediano), <strong>+2</strong> (fluxo muito alto) ou <strong>+3</strong> (fluxo enorme, e preocupante). Escolas de magia, templos e círculos de druidas costumam ficar nesses lugares.</p>
     <p class="muted">É o que separa a economia do Arcano da das Proezas: a Energia é o combustível da cena, o Mana é o combustível do dia. Quem investe na Arte <a href={url('artes/catalogo') + '#manipulacao-mana'}>Mana</a> aumenta as duas coisas, a reserva e a velocidade com que ela volta.</p>
 
     <div class="callout regra"><span class="lbl">O lugar do feiticeiro</span>
@@ -531,15 +551,14 @@ const EX_CONTA: [string, string, number][] = [
     <div class="callout revisao"><span class="lbl">Em revisão</span>
       Esta parte do capítulo está sendo reescrita. Ainda falta definir:
       <ul>
-        <li>A <strong>conjuração por Tradição</strong>: se um efeito Moldado rola por Habilidade própria. (A rolagem geral já está fechada e não é mais pergunta: só os efeitos <strong>mirados</strong> rolam, com Percepção + Acerto Arcano, e o resto se resolve por Dificuldade fixa, pela Defesa passiva do alvo ou por tabela.)</li>
+        <li>A <strong>conjuração por Tradição</strong>: se um efeito Moldado rola por Habilidade própria. (A rolagem geral já está fechada: os efeitos <strong>mirados</strong> rolam Percepção + Acerto Arcano; os que tocam a mente sem projétil rolam Influência + uma Habilidade social, ver Conjurar e resistir; o resto se resolve por Dificuldade fixa, por resistência do alvo ou por tabela.)</li>
         <li>Revisar a <strong>primeira leva</strong> de Efeitos das Artes não elementais: os números e os limites de cada um ainda não passaram por mesa.</li>
         <li>Como o Efeito Especial entra no <strong>bestiário</strong> (na ficha ele já tem lugar).</li>
         {FONTE.pendencias.map((p: string) => <li>{p}</li>)}
         <li>Preencher <strong>fraquezas</strong> e <strong>resistências</strong> nas 308 criaturas do bestiário; a regra das duas já está fechada acima.</li>
-        <li>Se o campo <strong>escalonavel</strong> dos Efeitos vira "sucede" (pagar só a diferença de um Efeito para o irmão maior) ou some de vez.</li>
-        <li>Treze Efeitos <strong>elementais</strong> ainda estão sem número, e Fogo, Raio e Luz não têm nenhum de nível 1.</li>
+        <li>Se um Efeito passa a "suceder" o irmão menor (pagar só a diferença para o maior) ou não.</li>
+        <li>Treze Efeitos <strong>elementais</strong> ainda estão sem número.</li>
         <li>Se a penalidade de guardar feitiço acumula por feitiço, e se há teto de quantos dá para carregar.</li>
-        <li>A <strong>dificuldade do teste de concentração</strong> ao sofrer dano sustentando um improviso: fixa, ou subindo com o tamanho do golpe.</li>
         <li><strong>Área × Volume está em revisão.</strong> A escada de Volume, a tabela de estado da matéria e o corte entre corpo e jurisdição podem mudar juntos.</li>
         {MANI.emAvaliacao.map((p: string) => <li><strong>Manifestação:</strong> {p}</li>)}
         {TEMPO.aRevisar.map((p: string) => <li><strong>Tempo e área:</strong> {p}</li>)}

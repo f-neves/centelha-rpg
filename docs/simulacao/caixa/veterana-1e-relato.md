@@ -386,3 +386,210 @@ Só texto e uma nota no `regras.json`, que nenhum código lê. Nenhuma ficha mud
     "Construção Naval", "média 10,5), para", "quinze semanas", "267 pc", "num número da peça", "35 por
     estação", G73 e B14 em Serviços e na calculadora, `limitesCriacao` na Criação, `aaltura` no Mestre,
     "órfã" em Equipamentos e "B14 fase 3" no Bestiário.
+
+**Commit da rodada 7, parte 1:** `028213ac`. CI: Validar 37196367500, 19 de 19; Deploy 37196367497, 2 de 2. A
+parte 2 (SERVICOS, REQUISITO-FAIXA, RENDA-1, GANHO-BRUTO, TETO) espera a escolha do Arquiteto entre mexer
+no modelo da economia, aplicar só o texto ou segurar.
+
+## Rodada 8 · Artes: regras, Mana e Mente
+
+**Antes de mexer.**
+- Registro conferido:
+  - D-001 e D-014 (Resistir mental: 1 + Margem, ou 1 e um grau a menos);
+  - D-002, D-003 e D-004 (Mana do mortal, Meditação, lugares de fluxo);
+  - D-006 (teto de Arte);
+  - D-020 (Artes de mente);
+  - D-021 (Sustentado de Duração 1);
+  - D-023 (frase geral da Dificuldade com Ataque);
+  - D-046 (régua de Duração das Proezas);
+  - D-049 (Energia Espiritual sem número);
+  - C-025 (Dificuldade de resistir a efeito: nível da Arte × 5 + 2 × mín).
+- O único choque é o do ART-37, abaixo. O resto não contradiz o registro.
+- Citações de (b) conferidas contra o main: todas lá.
+- Varri `scripts/` atrás de cada frase velha que troquei. Só o `test-artes-grid.mjs` lê texto de
+  `regras.json`: o rótulo do grau 0 da Duração breve e as Dificuldades de ficar parado. Os dois pontos
+  ficaram parados, abaixo.
+
+**Parados, um a um, com o motivo** (nada deles entrou):
+- **ART-37** (a Dificuldade pelo maior grau investido, × 5): contradiz a **C-025**, que está no ar e diz
+  "nível da Arte × 5 + 2 × o menor entre a Centelha do conjurador e o nível da Arte". O (e) troca a
+  variável (grau investido no lugar do nível da Arte) e tira o termo da Centelha, sem citar decisão
+  numerada para isso. Com ele ficam parados:
+  - as 33 linhas `(nível da Arte) × 4/× 5` de `efeitos.json`;
+  - o Dissipar;
+  - Mãos sobre a Multidão;
+  - o parágrafo "Nível da Arte e grau investido não são a mesma coisa".
+  - Do ATAQUE-DIF entraram só as duas frases sem número, que são a D-023. A linha "(maior grau
+    investido) × 5" das seis entradas é do ART-37 e ficou.
+  - A célula Aprisionamento já estava na redação de A·ESCAPISMO desde a rodada 5.
+- **ART-34** (ficar parado contra 5, 7, 9 e 11): o número é do código. `artes-grid.ts:1882` calcula
+  `difParado: Math.ceil(difMetade / 2)`, que dá os 5, 8, 10 e 13 do texto, e o
+  `test-artes-grid.mjs:790` afirma "borda 10 vira 5, meio 15 vira 8, fundo 20 vira 10". Por isso ficou
+  também o item 17 do Em revisão ("os números de ficar parado"), que o ART-18 tirava por causa do
+  ART-34.
+- **ART-5**, só as duas células do grau 0 da tabela: o `test-artes-grid.mjs:61` afirma o rótulo
+  "instantâneo (no máximo 1 tick)". Além disso, `TURNOS_LONGA[0] = 1` (`artes-grid.ts:155`) é um turno,
+  6 Ticks, e o comentário ali diz que os dois zeros diferem de propósito: "1 Tick" na Longa muda esse
+  número. Entrou só a maiúscula de "Dura um Tick.".
+- **ART-38** (o Efeito Bola de Fogo): é uma entrada nova em `efeitos.json`, com bloco `grid`, e a
+  contagem 140 é lida no código do Grid e nos testes. Ficaram com ele:
+  - o título do catálogo;
+  - a frase "o Efeito Bola de Fogo, de nível 4";
+  - as contagens Fogo 9, Gelo 14, Raio 12 e Luz 10.
+- **ART-40** (a Terra dobra o dado): o "1d6 por nível" dos Efeitos não está no JSON, é o `valorPar`
+  (`artes-fmt.ts:39`) que o escreve para todo parâmetro Dano, e a linha nova da tabela pede outra
+  escala em `regras.json`. O (d) ainda traz a objeção de mesa ao 12d6. O catálogo também ficou, para não
+  dizer 2d6 enquanto os Efeitos dizem 1d6.
+
+**Divergências do Grid** (o texto entrou, e o tabuleiro não faz o que ele diz; nenhum número lido pelo
+código mudou):
+- **ART-35**: o texto diz que a Velocidade vem do maior grau investido. O `ticksDe`
+  (`artes-grid.ts:389`) dá `4 + nível do Efeito` ao Efeito e `5 + esticados` fixo ao improviso.
+- **ART-33**: o texto diz que o primeiro alvo da Cura é grátis e que o resto custa 2 por nível. O
+  `custoDe` (`artes-grid.ts:350`) cobra 2 por nível só no parâmetro Cura, e 1 por nível no Alvos, desde
+  o primeiro.
+- **ART-11**: o texto diz que a escada de Defesa pesa no total de quem desvia fora da vez. A jogada do
+  desvio no Grid (`artes-grid-mesa.ts:1793`) só soma o bônus de quem identificou o efeito.
+- **ART-36 e ART-42**: o texto separa o projétil de Gelo, Água e Terra (matéria, a armadura absorve e
+  dá para bloquear) do de Fogo e Raio. O bloco `grid` do Projétil Conjurado e da Arma Elemental tem
+  `materia: null` para todas as Artes.
+- **MENTE**: as 17 linhas **Conjurar** entraram em `efeitos.json` como parâmetro fixo, que o
+  `parametrosAjustaveis` já filtra do custo. Só que o `RANK` de `artes-fmt.ts` não conhece "conjurar", e
+  a linha sai depois da Dificuldade, e não acima dela como o (e) pede. Pôr `conjurar: 5` no `RANK` é uma
+  linha de código só de ordem de exibição, e ela espera o Arquiteto.
+
+**O que entrou**, ponto a ponto (o texto de (e), palavra por palavra, salvo onde está dito):
+- **DURACAO-PROEZA**:
+  - a régua de Duração das Proezas em Centelha, depois do parágrafo dos parâmetros das Técnicas;
+  - a remissão em Como ler (`/caminhos`);
+  - "em Centelha, Os seis níveis das Proezas" na linha mental das Defesas.
+- **ART-1**: Erudição, Pacto, Iniciação, e a frase que fecha As Tradições.
+- **a7-MORTAL**:
+  - a abertura do Arcano;
+  - o Artefato em `antecedentes.json`, com o capítulo regerado.
+- **FLUXO**: a frase dos lugares de fluxo nas Escolas do Arcano.
+  - O (e) diz "no fim do primeiro parágrafo (o que termina em 'a corte de um senhor')". O parágrafo
+    continua depois disso ("Ela nasce dentro de uma das seis Tradições..."), e a frase entrou no fim
+    dele.
+- **MANA-MORTAL**:
+  - a abertura das Regras das Artes, sem "provisório". O marcador `TOLERÂNCIA` / `LEVANTA QUANDO` que
+    estava em cima dela saiu junto, porque já não marca nada;
+  - Quando o Mana volta, mais os parágrafos Meditação e Lugares de fluxo. A "frase de A·ART-41, sobre a
+    Vontade máxima" não existe no 1e: o ART-41 de lá é o da Energia Espiritual, e a decisão 45 tirou a
+    remissão;
+  - a linha 0 e o parágrafo do mortal em Centelha;
+  - Pisos e princípios e Traços derivados na Criação;
+  - a Força de Vontade em Aparência;
+  - o verbete Mana do glossário, que manteve o "(Vontade máxima)" da rodada 6;
+  - `recuperacaoMana.descanso` perdeu a "meditação", porque o parágrafo da página o lê.
+- **MEDITACAO**:
+  - o verbete Meditação (`habilidades-secundarias.json`, capítulo regerado);
+  - a Arte Mana, níveis 1 a 6, e o plural do nível 1;
+  - o Meditar do Cap. VIII.
+- **TETO-ARTE**:
+  - Custos de XP, sem "provisório" e com "O teto de Proeza continua igual à Centelha.";
+  - a frase depois da Centelha máxima em Limites. A frase da Centelha 3 em si não foi tocada (D-040);
+  - o passo 9;
+  - as linhas 1 a 6 da tabela de Centelha e o item 4 de O que a Centelha faz;
+  - a abertura do catálogo;
+  - o verbete Centelha do glossário. A mesma frase velha está em `ficha-engine.ts`, que não foi tocado.
+  - O mortal-tocado e Bram são da rodada 10, e a frase "que no mortal é a própria Força de Vontade" do
+    mortal-tocado continua lá.
+- **ART-2**: o preço em XP, no fim de Como se aprende uma Arte.
+- **ART-3**: A Centelha nas Artes, depois de A Arte que toca a mente e do Resistir.
+- **ART-6**: Vento no lugar de Ar em todos os trechos de (e), e "Terra (inclui o metal do nível 5)".
+  - O (e) do ART-39 escreve "Terra e Metal" e "Ar" nas frases que reescreve, e ele mesmo remete os nomes
+    ao ART-6. Lá entrou "Terra metade do lado, Vento e névoa o dobro" e "o Vento não tem dano no
+    improviso".
+- **ART-7**: a Massa lançada.
+- **ART-8**: o "piso" dos 87 cm.
+- **ART-9**: a Aura.
+- **ART-10**:
+  - o bloco com 1,26 m² contra 0,92 m²;
+  - a pegada do Bloco "retangular (2 : 1)", na página: o `pegada` de `regras.json` continua
+    `retangulo`, que é o que o Grid lê;
+  - a Neblina "molda em esfera, cúpula, bloco ou coluna".
+- **ART-11**: a escada no total, "pesando no total", "em cima do total", e o item do Em revisão com 5 +
+  5 × metros.
+- **ART-12**:
+  - o alcance do improviso pela distância da fatia;
+  - o título "O molde medido contra o Deslocamento de Batalha";
+  - o "só prende, sem jogada".
+- **ART-13**: a tabela com Centelha 0 e a nova com Centelha 3, em `regras.json`, com a frase de leitura
+  depois das duas. A página ganhou a segunda tabela.
+- **ART-14**:
+  - "Volume 3 (3 m de base)" no exemplo de custo;
+  - o mesmo erro no "Jorro sustentado" de `improviso.exemplos`, que a página não mostra, consertado junto.
+- **ART-15**:
+  - a Vida e o 0 PV em A economia da Cura, sem o "M-21b";
+  - o Cura 4 do catálogo;
+  - a Cura Guardada;
+  - o Refazer o Corpo.
+- **ART-16**: o exemplo da composta em pontos.
+- **ART-17**: o "Fogo, Raio e Luz não têm nenhum de nível 1" saiu.
+- **ART-18**:
+  - a Área de saída;
+  - a data da manifestação;
+  - os moldes do volume e a §5.4;
+  - os focos;
+  - o "M-21b";
+  - o Em revisão, itens 1, 7, 8, 10, 13, 16 e 19. O 17 ficou (ART-34, acima).
+- **ART-31**:
+  - o teste de concentração (Compostura + Concentração contra 10);
+  - Servo de Ossos, Convocar e Invocar.
+- **ART-32**:
+  - a tabela vale também para as universais;
+  - a nota do improviso;
+  - As duas alturas;
+  - a abertura dos Efeitos.
+  - O `improviso.escopo` de `regras.json`, que a página não mostra e dizia o mesmo "definidos caso a
+    caso", foi consertado junto.
+- **ART-33**: o primeiro alvo grátis (Grid divergente, acima).
+- **ART-35**: os três textos (Grid divergente, acima).
+- **ART-36**:
+  - o critério da matéria nos Efeitos, em Conjurar e resistir;
+  - o Projétil Conjurado;
+  - a Arma Elemental.
+- **ART-39**: as três frases.
+- **ART-41**: a Energia Espiritual sem "com que rapidez volta".
+- **ART-42**: a linha da tabela, e o parágrafo de Bloquear uma Arte.
+- **ART-43**:
+  - a linha Sustentado;
+  - as frases da janela;
+  - a Labareda que fere duas vezes.
+  - O parágrafo da página dizia "Sustentar cobra a cada 6 Ticks. gasta a ação do lance": com as frases
+    novas no meio, ele passou a "Sustentar gasta a ação do lance".
+- **ART-44**: a sobretaxa e a ordem do desconto.
+- **ART-45**:
+  - o Vento sem dano no improviso;
+  - o Vendaval do catálogo (o Efeito Muro, 2d6).
+- **ART-46**: o Ritual não falha por dado.
+- **SUSTENTADO-1**: a Duração 1 compra só presença.
+- **ATAQUE-DIF**: a frase geral em Conjurar e resistir, e a remissão na abertura dos Efeitos (D-023).
+- **MENTE**:
+  - a linha da mente na tabela;
+  - A Arte que toca a mente;
+  - o item 1 do Em revisão;
+  - a abertura dos Efeitos;
+  - as 17 linhas Conjurar, com as Habilidades da tabela;
+  - Boa Impressão contra a Defesa Social;
+  - o Comando do catálogo;
+  - a frase do teste de Virtude em Aparência.
+- **RESISTIR-MENTE**:
+  - o parágrafo depois de A Arte que toca a mente;
+  - Como ler (`/caminhos`);
+  - a remissão em Relações Sociais.
+
+**Citações reapontadas:** o `reapontar.mjs` moveu três citações de `docs/simulacao/CONJURACAO.md` para
+`regras.astro` (`:382` virou `:401`, `:307-324` virou `:314-331`, `:151` virou `:157`). A pasta `docs/`
+estava limpa antes. A frase de `CONJURACAO.md:243` ainda descreve o teste de concentração antigo, e não
+foi tocada.
+
+**Verificação** (sobre `028213ac`):
+- `npm run validate` verde;
+- `npx astro sync && npx tsc --noEmit` sem erro;
+- `npx astro build --force` verde, 110 páginas.
+- No gerado, com `../tmp/executora/prova-r8.py`, em 14 páginas:
+  - os 127 trechos novos estão lá;
+  - os 63 velhos dão 0.
+  - A frase velha do mortal-tocado, que é da rodada 10, ficou fora da lista de propósito.

@@ -11,7 +11,7 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
 <Base title={`As ${d.artes.length} Artes`} largura="wide" descricao="O catálogo das Artes da feitiçaria: os seis níveis de cada uma, com exemplos do que aquele patamar alcança.">
   <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size: var(--fs-micro);margin:0">Capítulo {numeralDe('artes/regras')} · <a href={url('artes/regras')}>As Artes</a></p>
   <h1>As {d.artes.length} Artes</h1>
-  <p class="lead">Os seis níveis de cada Arte são <em>exemplos de alocação típica</em> daquele patamar, não a regra: a mecânica de verdade vem dos <a href={url('artes/regras') + '#parametros'}>parâmetros</a>. Sob cada nível vão outros exemplos do que aquele patamar alcança, gastando os pontos de formas diferentes.</p>
+  <p class="lead">Os seis níveis de cada Arte são <em>exemplos de alocação típica</em> daquele patamar, não a regra: a mecânica de verdade vem dos <a href={url('artes/regras') + '#parametros'}>parâmetros</a>. O nível máximo que um personagem alcança em cada Arte é Centelha + 2, até 6: o mortal chega ao 2, e os níveis 5 e 6 pedem Centelha 3 e 4. Sob cada nível vão outros exemplos do que aquele patamar alcança, gastando os pontos de formas diferentes.</p>
 
   <div class="filtros panel">
     <div class="f-linha">
