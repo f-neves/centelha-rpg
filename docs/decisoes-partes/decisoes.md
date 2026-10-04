@@ -1368,3 +1368,74 @@ Imobilizado, Bram, Técnicas do Agarrão do Urso, Energia Espiritual, Vida 1, Ma
 - Decisão: "AGENTS.md e .agents/: troque o AGENTS.md por duas linhas que mandam ler o CLAUDE.md, ponha o AGENTS.md no .gitignore e apague as cópias de .agents/. O autor usa o ChatGPT desktop com acesso às pastas, e ele pode ler esse arquivo. Commite o docs/calibracao/discussao/inventario-limites.md e o .claude/commands/comerciante.md onde estão."
 - Origem: conversa do autor, 04/10/2026
 - Estado: aplicada pelo Arquiteto em 04/10/2026.
+
+### D-040 · Limite de criação: não existe limite próprio, e o "pico" deixa de existir [tags: criacao, limite, pico, ficha, atributo]
+- Data: 2026-10-04
+- Decisão: "Limite de criação (nova regra, substitui 'Atributo máximo 5, Habilidade máxima 4, com um pico de Atributo em 6 e um de Habilidade em 5'): Na criação não existe limite próprio. Valem os máximos normais da ficha: quase tudo vai até 6, e alguns traços vão até 12 (Força de Vontade, Aparência). Depois entram os ajustes raciais, para cima ou para baixo (o Atributo racial chega a 7 com +1, ou fica em 5 com −1). O 'pico' deixa de existir. A ficha fica toda desbloqueada, sem modo de criação limitante. Ajuste o texto da Criação (Passo a passo e Limites na criação) e tudo o que citar o pico ou o teto 5/4: capítulos, regras.json, glossário, e os pontos do 1d e do 1e que falam em 'pico' (o RACIAL-7, por exemplo). Confira se os quatro exemplos de criação continuam válidos."
+- Origem: conversa do autor, 04/10/2026
+- Estado: a implementar (commit próprio da Executora, antes da rodada 4). SUBSTITUI as regras anteriores de teto de criação 5/4 com pico (regras.json picoAtributo, picoHabilidade, picoQuantidade, notaPico). Consistente com a D-028 (máximo racial vale já na criação). Se código ou teste ler esses campos, parar e avisar o Arquiteto antes de mudar.
+
+### D-041 · As "38 criaturas com ataques a corrigir": item cancelado [tags: bestiario, ataques, b14, pendencias]
+- Data: 2026-10-04
+- Decisão: "As '38 criaturas com ataques a corrigir' (item 3 da rodada de pendências): ninguém sabe de onde veio a lista. Cancele o item. A correção de ataques entra na revisão das criaturas da B14, que já prevê 'garras ou presas em criaturas sem braços ou presas'."
+- Origem: conversa do autor, 04/10/2026
+- Estado: item 3 da rodada de pendências CANCELADO; a correção de ataques fica dentro da B14.
+
+### Decisões 38 a 48 do veterana-1e (respostas do autor entregues em 04/10/2026)
+
+Origem de todas: "conversa do autor, 03/10 e 04/10, veterana-1e" (numeração do 1e, depois das 37 do 1d). Tabela do 1e: `tmp/veterana/veterana-1e.md`, "Decisões 38 a 48". O 1e foi conferido contra o deploy 03d5c00.
+
+### D-042 · Cortejo fechado: vale a decisão 4 (D-017) [tags: cortejo, resistir, veterana-1e]
+- Data: 2026-10-04
+- Decisão (decisão 38 do 1e): CONFLITO·CORTEJO fechado: vale a decisão 4 (teto 4 por intervalo do cortejo).
+- Estado: a implementar na rodada 6. Idêntica à D-017.
+
+### D-043 · Imobilizado [tags: imobilizado, manobra, escapismo, agarrar]
+- Data: 2026-10-04
+- Decisão (decisão 39 do 1e): Imobilizado não age, nem com Firula; a penalidade grande só vale sem agarrão; a ordem dos estados é Preso, Agarrado, Imobilizado.
+- Estado: a implementar nas rodadas 5 (ESCAPISMO-CAT, MANOBRA, ESCAPISMO, RAJADA) e 11. Complementa a D-019.
+
+### D-044 · Bram: Artes no nível 3, total 1401 [tags: bram, arte, teto, criacao]
+- Data: 2026-10-04
+- Decisão (decisão 40 do 1e): Bram com as Artes no nível 3, total 1401. Já adiantada pelo autor na D-035.
+- Estado: a implementar na rodada 10 (ART-26, BRAM). Aplica a D-006 e a D-035.
+
+### D-045 · Prensa Crescente, Esmagar nos Braços e Abraço do Titã vão para a calibração [tags: proezas, tecnicas, calibracao, agarrao]
+- Data: 2026-10-04
+- Decisão (decisão 41 do 1e): as três Técnicas do Agarrão do Urso saem do texto de A·a4-1 e vão para a calibração das Proezas (D54, D55, D56).
+- Estado: a implementar na rodada 11 (só o texto de a4-1); as três não se tocam.
+
+### D-046 · Régua de Duração das Proezas publicada no capítulo das Proezas [tags: proezas, duracao, regua]
+- Data: 2026-10-04
+- Decisão (decisão 42 do 1e): a régua de Duração das Proezas (escalasProeza.parametros.duracao) é publicada no capítulo das Proezas; a Proeza Resistir mental usa essa régua. É a decisão que o autor deu em 04/10 e o despacho anterior marcava para a rodada 11.
+- Estado: a implementar na rodada 8 (DURACAO-PROEZA antes de RESISTIR-MENTE) e na calibração.
+
+### D-047 · Exemplos de criação: trocar as Técnicas sem pré-requisito, mantendo o XP [tags: criacao, exemplos, tecnicas, requer]
+- Data: 2026-10-04
+- Decisão (decisão 43 do 1e, com a resposta do autor a B·REQUER-EXEMPLOS em 04/10): "Troque cada Técnica por outra de OUTRA Proeza, no mesmo nível e sem pré-requisito (totais previstos: Kael 1075, Sora 1333, Veil 1874). Se não houver equivalente, ponha outra no lugar ou deixe sem, e recalcule o XP."
+- Estado: a implementar na rodada 10 (TECNICAS-EXEMPLOS, C15a). Os totais 1075, 1333 e 1874 correspondem à opção 3 do 1e (Técnica de nível 3 de outra Proeza mais a de nível 1 que ela pede: Trilha Fria, Ler a Batalha, Mente Imperturbável); a escolha das Técnicas é "escolha da Veterana".
+
+### D-048 · Manobra: as três leituras ficam [tags: manobra, agarrar, empate, derrubar]
+- Data: 2026-10-04
+- Decisão (decisão 44 do 1e): as três leituras da Manobra ficam (empate, Derrubar e Empurrar, primeiro acerto). Confirmação do autor em 04/10: "manter o agarrão é a ação de quem controla, rolada no Tick do Golpe" é a regra que o autor deu.
+- Estado: a implementar na rodada 5 (MANOBRA). Complementa a D-019.
+
+### D-049 · Energia Espiritual fica como está, sem número [tags: energia-espiritual, meditacao, mana]
+- Data: 2026-10-04
+- Decisão (decisão 45 do 1e): a Energia Espiritual fica como está, sem número; sai a remissão de A·ART-41.
+- Estado: a implementar na rodada 8 (MEDITACAO, ART-41).
+
+### D-050 · Vida 1 no catálogo [tags: vida, catalogo, arte, desgaste]
+- Data: 2026-10-04
+- Decisão (decisão 46 do 1e): Vida 1 no catálogo: "aliviar o cansaço: tira uma penalidade de Desgaste".
+- Estado: a implementar na rodada 9 (VIDA-1).
+
+### D-051 · Mago de Batalha: Fogo nível 4 [tags: bestiario, mago-de-batalha, b14]
+- Data: 2026-10-04
+- Decisão (decisão 47 do 1e): Mago de Batalha com Fogo no nível 4; nota de revisão na B14 (Parte C do 1e).
+- Estado: a implementar com a revisão das criaturas (B14), fora da Parte A.
+
+### D-052 · Moinho passa para Engenharia na tabela de obras [tags: oficio, engenharia, moinho, longa]
+- Data: 2026-10-04
+- Decisão (decisão 48 do 1e): o moinho passa para Engenharia na tabela de obras. Resposta do autor em 04/10: "o Requisito 3 fica".
+- Estado: a implementar na rodada 7 (ENGENHARIA, MOINHO, T3b, LONGA-2).
