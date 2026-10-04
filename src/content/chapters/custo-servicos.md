@@ -110,7 +110,7 @@ Os outros fatores da conta:
 - **Entregar uma carta que ninguém pode saber que existe** (entregar, Dificuldade 15, 2 semanas, sigilo ×1,5, 1 pessoa; é o sigilo que tira o trabalho do mensageiro comum): 40 × 2 × 1,5 × 1 × 1 = **120 pc**.
 - **Recuperar uma criança levada por goblins** (recuperar, desafio 1, 1 semana, ×1, 4 pessoas): 95 × 1 × 1 × 1 × 4 = **380 pc**.
 - **Escoltar um mercador por estrada com bandidos** (escoltar, desafio 1, 2 semanas, ×1, 4 pessoas): 95 × 2 × 1 × 1 × 4 = **760 pc**.
-- **Proteger a aldeia de uma matilha de worgs** (proteger, desafio 3, 1 semana, ×1, 4 pessoas): 910 × 1 × 1 × 1 × 4 = 3.640, arredondada: **3.600 pc**. O desafio 3 da matilha foi medido na bancada e é **provisório** até a medição de bando com a Regra de Horda. Referência para o Mestre: worg sozinho, desafio 0; dupla, desafio 2; matilha de 4, desafio 3.
+- **Proteger a aldeia de uma matilha de worgs** (proteger, desafio 1, 1 semana, ×1, 4 pessoas): 95 × 1 × 1 × 1 × 4 = **380 pc**. Referência para o Mestre: matilha de 4 worgs, desafio 1.
 - **Invadir a torre de um mago** (invadir, Dificuldade 25, que é desafio 3, 1 semana, ×1, risco muito alto ×2, 4 pessoas): 910 × 1 × 1 × 2 × 4 = 7.280, arredondada: **7.300 pc**.
 - **Livrar o vilarejo da infestação de ratazanas:** a ratazana não tem desafio por criatura; o Mestre fixa o desafio do trabalho e as Semanas que a limpeza leva.
 - **Matar o chefe de desafio 3 com o bando dele:** desafio 3.

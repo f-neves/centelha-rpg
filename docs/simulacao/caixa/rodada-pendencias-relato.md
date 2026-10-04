@@ -284,3 +284,41 @@ No `dist/`:
 - fichas e resumos salvos com ele abrem normalmente, e o campo some;
 - a condição "Sem fôlego" deixa de existir;
 - nenhuma migração.
+
+**Commit do Bloco C:** `66497997` · **CI:** Validar 37171337323 (19 de 19) e Deploy 37171337317 (2 de 2),
+primeira volta.
+
+## Bloco E · Recompensa: a matilha de worgs passa a desafio 1 (item 5, P-05)
+
+A conta, pela regra do capítulo (Valor × Semanas × tarefa × risco × Pessoas):
+- antes: proteger, **desafio 3** (Valor 910), 1 semana, ×1, ×1, 4 pessoas: 910 × 1 × 1 × 1 × 4 = 3.640,
+  arredondada a **3.600 pc**;
+- depois: proteger, **desafio 1** (Valor 95), 1 semana, ×1, ×1, 4 pessoas: 95 × 1 × 1 × 1 × 4 = **380 pc**,
+  que já é redondo na régua.
+
+O que mudou:
+- **`custo-servicos.md:113`**
+  - antes: "(proteger, desafio 3, 1 semana, ×1, 4 pessoas): 910 × 1 × 1 × 1 × 4 = 3.640, arredondada:
+    **3.600 pc**. O desafio 3 da matilha foi medido na bancada e é **provisório** até a medição de bando com
+    a Regra de Horda. Referência para o Mestre: worg sozinho, desafio 0; dupla, desafio 2; matilha de 4,
+    desafio 3."
+  - depois: "(proteger, desafio 1, 1 semana, ×1, 4 pessoas): 95 × 1 × 1 × 1 × 4 = **380 pc**. Referência
+    para o Mestre: matilha de 4 worgs, desafio 1."
+  - A referência antiga (worg 0, dupla 2, matilha 3) saiu inteira: ela era a medição da bancada, e o autor
+    fixou o número do exemplo. O "provisório" saiu junto, porque o número agora é decisão, e não medição.
+- **`scripts/test-recompensa.mjs`**
+  - o exemplo passou de `{ desafio: 3 }`, 3.640 / 3.600, a `{ desafio: 1 }`, 380 / 380;
+  - o cabeçalho deixou de dizer "worgs 3.600 [...] por decisão do autor" e diz que a matilha é desafio 1
+    desde 03/10/2026 (P-05);
+  - a mensagem da ajuda de estimar ("4 de desafio 0 [...]: 1, contra o 3 medido") perdeu o "contra o 3
+    medido". A asserção é a mesma: 4 criaturas de desafio 0 estimam desafio 1, que agora casa com o exemplo.
+  - saída: "✓ recompensa de trabalho OK · 33 asserções".
+- **A calculadora** (`CalculadoraRecompensa.astro`) não tem o exemplo nem a referência dos worgs: a única
+  menção é "Um grupo veterano que pega uma matilha de worgs recebe o mesmo [...]", sem número, e ficou.
+  Ela lê a tabela de `recompensa`, que não mudou.
+- **`docs/pendencias/B-bestiario.md`**, B18 (a medição de bando): acrescentei que o exemplo foi fixado em
+  desafio 1 pela P-05, e que a medição segue na fila sem mexer nele. O `Pendencias.md` regerado não muda.
+
+Ficam, por serem registro do que foi medido ou decidido na época: `docs/decisoes-partes/B.md` e `C.md`,
+`120-revisora.md`, `b14-cr-desafio-fase4-5-despacho.md`, `fechamento-economia-reforma-despacho.md` e os
+arquivos de `docs/calibracao/discussao/`.

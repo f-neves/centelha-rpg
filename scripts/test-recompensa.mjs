@@ -8,7 +8,7 @@
 // caminhos, o confronto (tabela de desafio, 0 a 9, meio degrau pela média geométrica) e a perícia
 // (pela Dificuldade: Dif 5 = 13, 10 = 20, 15 = desafio 0, 20 = 65; acima de 20, desafio =
 // (Dif − 19) ÷ 2, para cima; entre degraus, interpolação geométrica); com os dois, vale o maior. Os oito exemplos são os do item 5, com a
-// bolsa pela régua (worgs 3.600 e torre 7.300, por decisão do autor). A conta por equivalentes
+// bolsa pela régua (torre 7.300, por decisão do autor; a matilha de worgs é desafio 1 desde 03/10/2026, P-05). A conta por equivalentes
 // (Adendo 2) segue só como ajuda de estimar o desafio de um confronto, sem mexer em pagamento. Desde
 // a rodada 118 a Parte por pessoa é a bolsa ÷ quem vai, PARA BAIXO, e a sobra é o que as partes não
 // cobrem.
@@ -68,7 +68,7 @@ const EXEMPLOS = [
   ['entregar uma carta que ninguém pode saber que existe', { dificuldade: 15, semanas: 2, trabalho: 'entregar', tarefa: 'prazo-sigilo', pessoas: 1 }, 120, 120],
   ['recuperar uma criança levada por goblins', { desafio: 1, trabalho: 'recuperar', tarefa: 'trazer-de-volta', pessoas: 4 }, 380, 380],
   ['escoltar um mercador por estrada com bandidos', { desafio: 1, semanas: 2, trabalho: 'escoltar', tarefa: 'levar', pessoas: 4 }, 760, 760],
-  ['proteger a aldeia de uma matilha de worgs', { desafio: 3, trabalho: 'proteger', tarefa: 'conhecida', pessoas: 4 }, 3640, 3600],
+  ['proteger a aldeia de uma matilha de worgs (desafio 1, P-05)', { desafio: 1, trabalho: 'proteger', tarefa: 'conhecida', pessoas: 4 }, 380, 380],
   ['invadir a torre de um mago', { dificuldade: 25, trabalho: 'invadir', tarefa: 'entrar-sair', risco: 'muito-alto', pessoas: 4 }, 7280, 7300],
 ];
 for (const [nome, e, exata, bolsa] of EXEMPLOS) {
@@ -107,7 +107,7 @@ ok(!des(3).provisorio && des(4).provisorio && conta({ dificuldade: 26, trabalho:
 console.log('\n· a ajuda de estimar o desafio de um confronto (vale até a bancada; não mexe em pagamento)');
 const est = (cr) => R.desafioDoEncontro(cr, R.P);
 ok(est([{ desafio: 0, quantidade: 1 }]).desafio === 0 && est([{ desafio: 0, quantidade: 4 }]).desafio === 1,
-  '1 criatura de desafio 0: 0; 4 de desafio 0 (a matilha de worgs, pela estimativa): 1, contra o 3 medido');
+  '1 criatura de desafio 0: 0; 4 de desafio 0: 1');
 ok(est([{ desafio: 0, quantidade: 100 }]).desafio === 3 && est([{ desafio: 0, quantidade: 130 }]).desafio === 3.5,
   '100 de desafio 0: 3 (Magnitude 6); 130: 3,5 (Magnitude 7)');
 const ch = est([{ desafio: 3, quantidade: 1 }, { desafio: 0, quantidade: 4 }]);

@@ -218,3 +218,6 @@ limitações conhecidas, que são as três de baixo.
     ou 2; a bancada mede 3, com salto de 0 (1 worg) para 2 (2 worgs). A medição de bando com Horda
     (N = 1 a 32) deve dizer se o salto vem da Guarda sob pressão com 2 a 4 atacantes. Só medir,
     sem decidir.
+    **Decidido em 03/10/2026 (P-05):** o exemplo da recompensa passa a tratar a matilha de 4 worgs
+    como **desafio 1** (380 pc em `custo-servicos.md`, `test-recompensa.mjs`). A medição continua
+    na fila, e não mexe no exemplo.
