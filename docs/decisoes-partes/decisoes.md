@@ -1331,7 +1331,7 @@ O autor decidiu a Parte B do veterana-1c e mais alguns pontos novos. As 37 decis
 
 ### Respostas do autor que chegam no veterana-1e (NÃO aplicar antes)
 
-Imobilizado, Bram, Técnicas do Agarrão do Urso, Energia Espiritual, Vida 1, Mago de Batalha e moinho. A Veterana está montando o `veterana-1e.md`. Nenhuma delas entra em rodada até o 1e chegar e ser registrado. Sem registro de texto aqui por isso.
+Imobilizado, Bram, Técnicas do Agarrão do Urso, Energia Espiritual, Vida 1, Mago de Batalha e moinho. A Veterana está montando o `veterana-1e.md`. Chegaram no 1e em 04/10 e estão registradas abaixo (D-042 a D-052). Sem registro de texto aqui por isso.
 
 ### D-034 · Decisões da Missão 1c aplicadas pelo 1d, sem texto verbatim no registro [tags: veterana, 1c, longa, iniciativa]
 - Data: 2026-10-04
