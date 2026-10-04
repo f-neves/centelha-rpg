@@ -1124,6 +1124,7 @@ Os itens abaixo vieram da "lista do veterana-1c" e NÃO foram despachados; vão 
 - Decisão: "Centelha 0 → 2; 1 → 3; 2 → 4; 3 → 5; 4, 5 e 6 → 6."
 - Origem: conversa do autor, 03/10, lista do veterana-1c
 - Estado: a implementar. REFINA a recebida P-04 ("Centelha + 2", provisório): a tabela é Centelha + 2 com teto 6.
+- Nota do autor (04/10/2026): o mago de pouca Centelha se destaca pela AMPLITUDE (muitas Artes, rituais, preparo), e não pela profundidade; ver a D-035.
 - Nota do autor (03/10/2026): o teto do nível de ARTE é Centelha + 2 (a tabela acima). O teto do nível de PROEZA continua Centelha: o portão "nível N exige Centelha >= N" (regras.json notaEscalaCentelha) vale só para Proeza. Não há conflito.
 
 ### D-007 · Tratar (0 PV ou menos) [tags: cura, tratar, estabilizar, pv]
@@ -1336,4 +1337,10 @@ Imobilizado, Bram, Técnicas do Agarrão do Urso, Energia Espiritual, Vida 1, Ma
 - Data: 2026-10-04
 - Decisão: o veterana-1c aplicou 25 decisões do autor dadas na Missão 1c, e o 1d as herda ("decisão herdada", "decisão N da 1c"). O registro não tem o texto verbatim delas. As que as rodadas 1 a 3 aplicam: Longa a 3 por dado (o site e a memória do Arquiteto dizem 3,5), Especialidade +2 por nível na Longa, o Mestre escolhe entre Longa e Acumulada, a Longa gera Margem e ferimento/Desgaste só entram se durarem o intervalo inteiro, Iniciativa sem Centelha, Acelerar 10% não vale abaixo de 0 nem na linha "por dia".
 - Origem: veterana-1c.md (Missão 1c, 03/10/2026) e veterana-1d.md
-- Estado: a implementar nas rodadas 1 a 3. PENDENTE: o autor confirma o texto verbatim; a Longa a 3 por dado contradiz a memória do Arquiteto (3,5, soma 7 = 12,5) e o site de hoje. Antes de mexer em código que lê a média, a Executora me avisa.
+- Estado: a implementar nas rodadas 1 a 3. Longa a 3 por dado CONFIRMADA pelo autor em 04/10/2026: decisão dele de 02/10, reconfirmada em 03/10, com os efeitos aceitos (espada Comum do oficial em 11 dias, cota de malha em 14 semanas, Lamelar fechada ao oficial). Substitui a regra de 3,5 por dado (memória do Arquiteto, site de hoje). Antes de mexer em código que lê a média, a Executora me avisa. As demais decisões da 1c seguem sem verbatim.
+
+### D-035 · O mago de Centelha mínima se destaca pela amplitude, não pela profundidade [tags: arte, teto, arquetipo, arcano, bram]
+- Data: 2026-10-04
+- Decisão: "arcano.astro:63, o arquétipo do mago de Centelha mínima: reescrever. O mago de pouca Centelha se destaca pela AMPLITUDE (muitas Artes, rituais, preparo), e não pela profundidade, porque o teto do nível de Arte é Centelha + 2 (Centelha 0 chega ao nível 2; Centelha 1, ao 3). Tire a promessa de Artes "tão fundas quanto as de um grande herói". Bram já foi resolvido do mesmo jeito (Artes no nível 3, total 1401), e isso chega no veterana-1e.md."
+- Origem: conversa do autor, 04/10/2026
+- Estado: a implementar (commit pequeno antes da rodada 1 do veterana-1d). Consequência direta da D-006. O Bram (Artes no nível 3, total 1401) chega no veterana-1e; não aplicar antes.
