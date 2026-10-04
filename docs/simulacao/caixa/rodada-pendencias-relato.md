@@ -533,3 +533,6 @@ continuam no disco, ele os pôs de volta e o commit saiu só com o `.gitignore` 
 deleção). Não publiquei esse commit: refiz o `git rm --cached`, conferi por `git diff --cached
 --name-status` que o índice da minha árvore tinha só as 9 deleções (e o relato), e corrigi o commit pelo
 índice com `--amend`. Isso é seguro aqui porque cada worktree tem índice próprio.
+
+**Commit do Bloco G:** `822be8b1` · **CI:** Validar 37174631521 (19 de 19, checkout limpo, sem os 9 arquivos) e
+Deploy 37174631532 (2 de 2), primeira volta. Com isso, A a K estão publicados.
