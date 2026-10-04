@@ -417,3 +417,33 @@ primeira volta.
 - **Para a árvore `rpg-system`:** a cópia sem rastrear de `docs/itens-magicos/itens-magicos-pesquisa.md`
   que está lá vai colidir com este commit no próximo `pull` ("untracked working tree files would be
   overwritten"). Como as duas são iguais, basta apagar a de lá antes do `pull`.
+
+**Commit do Bloco I:** `70dd7728` · **CI:** no fim do relato.
+
+## Bloco J · Economia, resumo (item 17)
+
+Só leitura, nada mudou.
+
+**1. O "tempo gasto".** O passo 1 de `custo-servicos.md:86` usa a expressão duas vezes, em sentidos
+diferentes:
+- "Terminar antes ou depois não muda a bolsa: quem contrata paga pelo resultado, e não pelo **tempo
+  gasto**." Aqui é o tempo REAL do trabalho, que não entra na conta.
+- "A viagem conta metade porque é **tempo gasto**, não perigo: paga o tempo, sem o prêmio de risco." Aqui
+  é a viagem PREVISTA, que entra na conta (metade, em Semanas).
+- A primeira frase se repete, verbatim, no aviso do topo da calculadora (`CalculadoraRecompensa.astro:14`).
+- Não há conta errada: o leitor atento separa os dois. A ambiguidade é só de palavra, e foi apontada no
+  fechamento da economia (`fechamento-economia-reforma-relato.md:592-596`) sem troca de redação.
+
+**2. O padrão de Pessoas não chegou à calculadora.**
+- O capítulo (`custo-servicos.md:97`) diz: "Na caça, o padrão é 4, o grupo de referência para o qual o
+  desafio é pensado." Para a perícia ele não fixa padrão; os exemplos de perícia usam 1 e 2 pessoas.
+- A calculadora abre com **4 em todo tipo de trabalho**. Os dois campos, "Pessoas (pagas no contrato)"
+  (`CalculadoraRecompensa.astro:36`) e "Quantos vão de fato" (`:41`), nascem com
+  `value={REC.pessoas_padrao}`. Esse valor é único e global: `recompensas.json:263`, `"pessoas_padrao": 4`,
+  que vem de `lore/economia/v2/modelo.py:509` (`pessoas_padrao=4`). Trocar o tipo de trabalho não mexe
+  no campo: o script da página só LÊ `pessoas` e `grupo` (`:145`), e nunca os reescreve.
+- A biblioteca faz o mesmo: `recompensa.ts:128`, `const pessoas = e.pessoas ?? P.pessoas_padrao;`, sem
+  olhar se o caminho é confronto ou perícia.
+- Resultado: o "4 no confronto, 1 na perícia" não existe no código. Quem abre a calculadora para
+  investigar uma carta começa com 4 pessoas e precisa trocar à mão. É a mesma leitura da ressalva 3 da
+  rodada 120 (`120-revisora.md:179-182`), que segue aberta.
