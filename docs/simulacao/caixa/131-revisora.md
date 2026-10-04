@@ -114,3 +114,24 @@ mexe em Vontade máxima, interrogatório Social e o +4 de Vontade, e não encost
 (T2c em `defesas.md`:62 e :126 e `centelha.md`:67, `criacao-de-personagem.md`:149, a entrada
 `defesa-de-agarrao`). A conclusão fica. Corrigi também, neste segundo commit, duas falhas de escrita minhas
 no primeiro (um travessão citado sem a troca por [travessão] e o nome antigo de Habilidade no item 9).
+
+## Ponto extra do Arquiteto · armas.json e as duas criaturas · PROCEDE
+
+1. **Desarmado intocado.** `armas.json`, entrada `desarmado`: `acerto` 1 e `defesaArma` 1, como manda a C-029.
+   O diff de `3dc09c71` em `armas.json` não encosta nessa entrada. K4a segue parado.
+2. **O que mudou em `armas.json`:** só a Rede (:951 a :957). A descrição passou de "deixa o alvo Imobilizado
+   (…escapar com Força ou Acrobacias vs o lançamento)" para "deixa o alvo Preso (não se desloca, mas age) até
+   escapar: Força + Atletismo contra o total do lançamento, e cada tentativa gasta a ação", e a tag `imobiliza`
+   virou `prende`. **Lastro:** ESCAPISMO (e), item 3 (`veterana-1e.md`:280): o texto da tag Prende, a linha da
+   Rede com tags «arremessável, prende» e o filtro de Tag de `imobiliza` para `prende`. A descrição do JSON
+   repete o texto da tag do (e). Nenhum código lê a tag `imobiliza` como literal (procurei em `src/lib`,
+   `src/pages`, `src/components` e `scripts`, no pino e no pai: o único `imobiliza` entre aspas era o da
+   própria Rede), então a troca não quebra filtro nem mesa. No dist: `prende` 6, `imobiliza` 0.
+3. **As duas criaturas:** `mon-cobra-constritora.json`:66 e `mon-crocodilo.json`:65 trocaram "até o alvo se
+   soltar/escapar (Atletismo)" por "enquanto o agarrão se mantém" (a cobra com "(Combate, Manobras)", o
+   crocodilo sem). É exatamente o ESCAPISMO (e), item 5 (`veterana-1e.md`:282), inclusive a diferença entre as
+   duas. **Fonte e gerado coerentes:** `gen-bestiario.mjs --check` verde (`inimigos.json` em dia, 309
+   criaturas; a descrição dessas habilidades não passa pelo `inimigos.json`). O `monsters.json` vem do
+   `gen-monsters.mjs`: regenerei no pino e o resultado saiu **byte a byte igual** ao commitado (`cmp`), com
+   `git status` limpo depois (o `monsters-mesa.json` também). As três ocorrências de "enquanto o agarrão se
+   mantém" no `monsters.json` são estas duas e o Caranguejo Gigante, que o (e) manda deixar como está.
