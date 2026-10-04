@@ -146,7 +146,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 
 ## O mortal-tocado: magia como estudo, não como tier
 
-Os três acima sobem a Centelha junto com a magia, como manda a intuição. Mas a regra de Arcano **separa as duas coisas**: para aprender e conjurar uma Arte **não é preciso Centelha**: o mortal conjura com a Mana, que no mortal é a própria Força de Vontade, e a Centelha só engorda essa reserva; ela não é a medida da profundidade. A profundidade (o nível da Arte) vem do estudo, comprada com XP. Isso abre um arquétipo que os exemplos anteriores escondem: o feiticeiro **mortal-tocado**, que estudou fundo o que quase não tem por natureza.
+Os três acima sobem a Centelha junto com a magia, como manda a intuição. Mas a regra de Arcano **separa as duas coisas**: para aprender e conjurar uma Arte **não é preciso Centelha**: o mortal conjura com a Mana, que no mortal é a própria Força de Vontade, e a Centelha engorda essa reserva e segura o nível de cada Arte (o teto é Centelha + 2: Centelha 0 chega ao nível 2, Centelha 1 ao 3). Isso abre um arquétipo que os exemplos anteriores escondem: o feiticeiro **mortal-tocado**, que se destaca pela **amplitude** (muitas Artes, rituais, preparo para cada ocasião), e não pela profundidade.
 
 ### Bram, o Erudito-tocado · Veterano (Centelha 1)
 
