@@ -649,3 +649,87 @@ foi tocada.
       Fogo, Raio, Luz e Sombra só se esquivam;
     - nos módulos `artes-grid*.ts` não há regra de Bloqueio contra Arte (procurei por "bloqu"), e o
       `materia: null` é o mesmo. Não conferi qual Defesa o tabuleiro usa contra o projétil.
+
+## Rodada 9 · Artes: catálogo e Efeitos
+
+**Antes de mexer.**
+- Registro conferido:
+  - D-050 (Vida 1);
+  - D-022 (Chão Traiçoeiro);
+  - D-020 (MENTE, já aplicada na rodada 8, com a Boa Impressão contra a Defesa Social);
+  - C-025 (a Dificuldade pelo nível da Arte, que segue valendo).
+- A decisão 24 da 1c (Sopro de Vida, Campo de Alívio, Mão Firme, Acelerar a Cura) não tem entrada
+  própria no registro. Não achei nada que a contradiga.
+- Citações de (b) conferidas contra o main: todas lá.
+
+**Pausados ou parados** (nada deles entrou):
+- **ART-47** (Acelerar a Cura encurta o intervalo em 10% por nível da Arte, até 50%; abaixo de 0 soma +1
+  por nível ao Tratar): parado porque mexe no que o código lê.
+  - O parâmetro Cura do Efeito tem o campo estruturado `porNivel: true`, e o Grid cura com ele 1 PV por
+    nível da Arte (`artes-grid.ts`, comentário do campo; L86b). O comentário diz que o campo existe para
+    que a frase e o padrão não virem duas especificações.
+  - Trocar só a prosa para "encurta o intervalo em 10%" deixaria o JSON dizendo as duas coisas no mesmo
+    parâmetro. Mudar o comportamento é mexer no Grid.
+  - O que o 1e pede: o parágrafo novo do verbete, a linha de parâmetro e o parágrafo de baixo, já
+    citados no (e) do ART-47.
+  - Só o "(`M-21b`)", que é do ART-24, saiu do verbete.
+- **ART-23, o Chamar à Mão**: o texto novo manda rolar "contra a Dificuldade" e acrescenta a linha
+  "Dificuldade: (maior grau investido) × 5", que é do ART-37, pausado contra a C-025. Fica com ele.
+  Engolir e Projétil Conjurado entraram.
+- **ART-20, o Vento 3**: as duas correções finais do 1e discordam no mesmo trecho.
+  - O ART-45 (rodada 8, PROCEDE no 134) pôs "rajada cortante (o Efeito Muro, 2d6)".
+  - O ART-20 pede "desvia projéteis; rajada que derruba", sem dano.
+  - Ficou o texto da rodada 8, e a escolha é do Arquiteto. Os outros itens do ART-20 entraram.
+
+**O que entrou:**
+- **VIDA-1**: "aliviar o cansaço: tira uma penalidade de Desgaste".
+- **ART-48**: o Sopro de Vida com os 10 minutos, 1 PV, acordado e em Crítico, e o exemplo.
+- **ARTE-MANA**: a frase final de Quando o Mana volta.
+- **ART-19**: o "(N Mana)" saiu dos níveis do catálogo, na página (`catalogo.astro`).
+  - O campo `custo.mana` continua em `artes.json`, porque o schema de `validate-data.mjs` o exige, de 1 a
+    6. Tirar o campo é mudar o schema, e isso fica para o Arquiteto decidir.
+  - Conferido: a ficha (`arteFx`, `artePrint`) não mostra o custo, e só a página do catálogo o lia.
+- **ART-20**:
+  - Fogo, Gelo e Raio 1 "a 1 m";
+  - Fogo 3 "em leque", 2d6 e 4 m;
+  - Gelo 3 com 2d6;
+  - Raio 3 "da mão ao alvo";
+  - Raio 4, o Efeito Corrente.
+- **ART-21**: Estalo (Raio 1), Restauração (Cura 4), Jato Forte (Água 2).
+- **ART-49**: Campo de Alívio e Mão Firme diante do Tratar.
+  - Não conferi o que o Grid faz com a Mão Firme em quem está abaixo de 0. O campo `pontos: 1` dela não
+    mudou.
+- **ART-50**: Simpatia "(vs Defesa Social)". A Boa Impressão já tinha entrado na rodada 8. A Máscara
+  (Ofuscação 2) segue "vs Defesa Mental", como o MENTE manda.
+- **CHAO** (D-022):
+  - o texto, a Jogada e a Dificuldade "(maior grau investido) × 5", com a metade, para cima, para quem só
+    anda.
+  - É o único Efeito com "maior grau investido" enquanto o ART-37 espera o autor, e o termo vem da
+    própria D-022 ("grau x 5").
+  - O Grid não trata o Chão de modo especial: não há código que leia essa Dificuldade.
+- **ART-22**:
+  - Metal Incandescente, "6 Ticks por grau de Duração" e Dano "Fixo: não sobe com o grau.";
+  - Paralisia, "a cada 2 graus de Duração";
+  - Fenda, "1 metro por grau de Profundidade".
+  - As réguas impressas não mudaram, e o `1d6` que o Grid lê no Metal também não.
+- **ART-23**:
+  - Engolir, Força + Atletismo;
+  - Projétil Conjurado, Destreza + Arremesso e Percepção + Atirador.
+- **ART-24**:
+  - a data do Metal Incandescente;
+  - o "M-21b" do Acelerar a Cura;
+  - o "provavelmente barato demais" de Mãos sobre a Multidão.
+
+**Observações da Revisora (veredito 134), só anotadas, sem agir:**
+- `regras.json`, `arcano.resistencia.tipos[2]` ainda diz só "Defesa Mental (passiva)". A página tem a
+  linha nova do MENTE escrita direto em `regras.astro`, e esse campo não é mostrado.
+- `docs/simulacao/CONJURACAO.md:243` descreve o teste de concentração antigo.
+
+**Verificação** (sobre `663f0ef8`):
+- `npm run validate` verde;
+- `gen-grid-artes --check` em dia;
+- `npx astro sync && npx tsc --noEmit` sem erro;
+- `npx astro build --force` verde.
+- No gerado, com `../tmp/executora/prova-r9.py`:
+  - os 31 trechos novos estão no catálogo, nos Efeitos e nas Regras;
+  - os 21 velhos dão 0.

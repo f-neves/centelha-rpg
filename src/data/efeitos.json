@@ -488,16 +488,16 @@
         "nome": "Jogada",
         "tipo": "fixo",
         "valor": "Destreza + Atletismo ou Equilíbrio",
-        "nota": "de quem tenta andar"
+        "nota": "de quem pisa o chão (anda, corre, cavalga ou luta)"
       },
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 2",
-        "nota": "dobra para quem corre, cavalga ou luta"
+        "valor": "(maior grau investido) × 5",
+        "nota": "para quem corre, cavalga ou luta; a metade disso, arredondada para cima, para quem só anda"
       }
     ],
-    "efeito": "O piso deixa de cooperar. Andar exige teste, e quem falha cai; correr, cavalgar ou lutar em cima dobra a dificuldade. Na areia movediça, quem cai afunda a cada 6 Ticks.",
+    "efeito": "O piso deixa de cooperar. Andar exige teste, e quem falha cai; correr, cavalgar ou lutar em cima pede a Dificuldade inteira, e quem só anda enfrenta a metade dela. Na areia movediça, quem cai afunda a cada 6 Ticks.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -621,7 +621,7 @@
       }
     ],
     "efeito": "Cria na mão um único projétil do elemento, do tamanho de uma flecha, de um virote, de um dardo ou de uma adaga de arremesso. Ele se arremessa como qualquer arma de arremesso, ou se encaixa num arco ou numa besta já empunhada, e se gasta no golpe. O dano é do ELEMENTO, e não da ponta: a flecha de chama não é uma flecha em chamas, é chama com formato de flecha. De Fogo e de Raio, a armadura não o segura: só a Centelha de quem recebe e a resistência ao elemento o aparam. De Gelo, Água e Terra ele é matéria de verdade, e a armadura absorve normalmente, no modo do formato. Em Luz e Sombra o projétil não tem corpo: acerta, ilumina ou apaga, e não fere.",
-    "notas": "Conjurar não pede ação própria: é o mesmo gesto de puxar uma arma da cintura ou tirar uma flecha da aljava, e sai junto com o ataque que usa o projétil. Também não paga Alcance, pela nota do livro sobre quem cria algo para ser arremessado: o objeto voa até acertar, e a jogada é a mundana (Destreza para arremessar, Percepção para atirar), não a do Acerto Arcano. A Duração é só quanto tempo ele existe na mão antes de ser usado.",
+    "notas": "Conjurar não pede ação própria: é o mesmo gesto de puxar uma arma da cintura ou tirar uma flecha da aljava, e sai junto com o ataque que usa o projétil. Também não paga Alcance, pela nota do livro sobre quem cria algo para ser arremessado: o objeto voa até acertar, e a jogada é a mundana (Destreza + Arremesso para arremessar, Percepção + Atirador para atirar), não a do Acerto Arcano. A Duração é só quanto tempo ele existe na mão antes de ser usado.",
     "acaoLivre": true,
     "grid": {
       "forma": "alvo",
@@ -664,7 +664,7 @@
         "nome": "Dano",
         "tipo": "fixo",
         "valor": "1d6",
-        "nota": "Fixo: não escala mais por Mana investida (redesenho de 16/09/2026)."
+        "nota": "Fixo: não sobe com o grau."
       },
       {
         "nome": "Duração",
@@ -680,7 +680,7 @@
           "30 Ticks",
           "36 Ticks"
         ],
-        "nota": "6 Ticks por ponto de Mana investido"
+        "nota": "6 Ticks por grau de Duração"
       },
       {
         "nome": "Penalidade",
@@ -1579,7 +1579,7 @@
       {
         "nome": "Profundidade",
         "tipo": "fixo",
-        "valor": "1 metro por ponto de Mana"
+        "valor": "1 metro por grau de Profundidade"
       },
       {
         "nome": "Duração",
@@ -1647,7 +1647,7 @@
           "12 Ticks",
           "18 Ticks"
         ],
-        "nota": "6 Ticks a cada 2 pontos de Mana"
+        "nota": "6 Ticks a cada 2 graus de Duração"
       },
       {
         "nome": "Ataque",
@@ -1707,7 +1707,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Em vez de fechar tudo de uma vez, a cura fica trabalhando: o alvo recupera a Cura escolhida a cada 6 Ticks enquanto durar, e não morre de sangramento enquanto a sua mão estiver nele. Não é uma cura muito eficiente, mas impede que o alvo piore.",
+    "efeito": "Em vez de fechar tudo de uma vez, a cura fica trabalhando: o alvo recupera a Cura escolhida a cada 6 Ticks enquanto durar, e não morre de sangramento enquanto a sua mão estiver nele. Em quem está em 0 PV ou menos, cada PV recuperado soma ao PV negativo, e o alvo acorda ao chegar a 1 PV; enquanto a mão estiver nele, o teste de Tratar fica suspenso. Não é uma cura muito eficiente, mas impede que o alvo piore.",
     "notas": "Serve no meio da luta, quando não há tempo de parar para curar direito.",
     "grid": {
       "forma": "alvo",
@@ -1795,7 +1795,7 @@
         "nota": "exige concentração o tempo todo"
       }
     ],
-    "efeito": "Dentro da área a dor cessa e nada piora: sangramentos param, venenos e doenças ficam suspensos, e quem está caindo não morre enquanto durar. Nada disso cura; só congela o quadro até alguém tratar de verdade.",
+    "efeito": "Dentro da área a dor cessa e nada piora: sangramentos param, venenos e doenças ficam suspensos, e o PV de quem está em 0 ou menos não desce nem cruza o limite de morte enquanto durar; nesse tempo o teste de Tratar fica suspenso. Nada disso cura; só congela o quadro até alguém tratar de verdade.",
     "grid": {
       "forma": "aura",
       "ancora": "conjurador",
@@ -4783,7 +4783,7 @@
       }
     ],
     "efeito": "Cura de uma vez todo mundo que estiver na área, aliado ou não, amigo ou inimigo. Não dá para separar: quem está dentro sara.",
-    "notas": "É a exceção que a Cura não tem: curar em Área. O valor NÃO é dividido: cada um que estiver dentro recebe a cura inteira, e o nível é o da Arte de quem conjurou, a mesma conta do Acelerar a Cura. Em troca, curar a multidão custa o mesmo por alvo que curar uma pessoa só, e isso está anotado como provavelmente barato demais.",
+    "notas": "É a exceção que a Cura não tem: curar em Área. O valor NÃO é dividido: cada um que estiver dentro recebe a cura inteira, e o nível é o da Arte de quem conjurou, a mesma conta do Acelerar a Cura. Em troca, curar a multidão custa o mesmo por alvo que curar uma pessoa só.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -5753,7 +5753,7 @@
         "valor": "(nível da Arte) × 5"
       }
     ],
-    "efeito": "O chão amolece sob os pés do alvo e endurece por cima dele. Quem falha fica soterrado até o peito, ou inteiro se falhar feio, e sair de lá exige Força contra a Dificuldade a cada ação.",
+    "efeito": "O chão amolece sob os pés do alvo e endurece por cima dele. Quem falha fica soterrado até o peito, ou inteiro se falhar feio, e sair de lá exige Força + Atletismo contra a Dificuldade a cada ação.",
     "grid": {
       "forma": "movimento",
       "ancora": "alvo",
@@ -6100,7 +6100,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "A Vida não fecha o ferimento: ela apressa o corpo a fechá-lo sozinho, até o dobro da velocidade natural. Ela acelera em qualquer nível e em qualquer profundidade, inclusive abaixo do zero: o que muda com o nível é o quanto, e não o que ela alcança (`M-21b`).",
+    "efeito": "A Vida não fecha o ferimento: ela apressa o corpo a fechá-lo sozinho, até o dobro da velocidade natural. Ela acelera em qualquer nível e em qualquer profundidade, inclusive abaixo do zero: o que muda com o nível é o quanto, e não o que ela alcança.",
     "notas": "Cura é sempre mais cara: 2 de Mana por nível, como na Arte de Cura. E aqui rende menos, 1 PV por nível da Arte (o nível investido por quem conjura, o mesmo que a prosa chama de Vida 1, 2 ou 3) em vez da régua dela.",
     "grid": {
       "forma": "alvo",

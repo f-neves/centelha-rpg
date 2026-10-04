@@ -45,7 +45,7 @@ const txtDe = (a: any) => (a.nome + ' ' + a.niveis.map((n: any) => n.nome + ' ' 
                 <li>
                   <span class="lvl">{n.nivel}</span>
                   <span class="nv-corpo">
-                    <strong>{n.nome}</strong>: {n.efeito}{n.custo?.mana ? <span class="muted"> ({n.custo.mana} Mana)</span> : null}
+                    <strong>{n.nome}</strong>: {n.efeito}
                     {n.exemplos?.length ? <span class="nv-ex muted">{n.exemplos.map((e: string) => <span>{e}</span>)}</span> : null}
                   </span>
                 </li>

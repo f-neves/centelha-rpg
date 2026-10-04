@@ -14,7 +14,7 @@
         },
         "exemplos": [
           "acender ou apagar uma tocha com a mão",
-          "dardo flamejante de 1d6 num alvo a 5 m",
+          "dardo flamejante de 1d6 num alvo a 1 m",
           "fogo na lâmina por um golpe só",
           "esquentar o corpo numa noite fria"
         ]
@@ -36,13 +36,13 @@
       {
         "nivel": 3,
         "nome": "Labareda",
-        "efeito": "jato de fogo em linha (2d6)",
+        "efeito": "jato de fogo em leque (2d6)",
         "custo": {
           "mana": 3
         },
         "exemplos": [
-          "jato de fogo em linha, 3d6",
-          "incendiar uma porta ou um monte de palha a 50 m",
+          "jato de fogo em leque, 2d6",
+          "incendiar uma porta ou um monte de palha a 4 m",
           "sustentar uma parede baixa de chamas por 12 ou 24 Ticks"
         ]
       },
@@ -110,7 +110,7 @@
         },
         "exemplos": [
           "resfriar uma jarra, congelar uma poça rasa",
-          "lasca de gelo de 1d6 a 5 m",
+          "lasca de gelo de 1d6 a 1 m",
           "gelar a lâmina para o próximo golpe"
         ]
       },
@@ -135,7 +135,7 @@
           "mana": 3
         },
         "exemplos": [
-          "cone de frio de 3d6 que ainda desacelera",
+          "cone de frio de 2d6 que ainda desacelera",
           "cobrir o chão de gelo escorregadio",
           "congelar uma fechadura até ficar quebradiça"
         ]
@@ -196,14 +196,14 @@
     "niveis": [
       {
         "nivel": 1,
-        "nome": "Faísca",
+        "nome": "Estalo",
         "efeito": "choque que atordoa; dardo (1d6)",
         "custo": {
           "mana": 1
         },
         "exemplos": [
           "choque que atordoa quem você toca",
-          "faísca de 1d6 a 5 m",
+          "faísca de 1d6 a 1 m",
           "acender uma fagulha à distância"
         ]
       },
@@ -223,12 +223,12 @@
       {
         "nivel": 3,
         "nome": "Relâmpago",
-        "efeito": "raio em linha (2d6)",
+        "efeito": "raio da mão ao alvo (2d6)",
         "custo": {
           "mana": 3
         },
         "exemplos": [
-          "relâmpago em linha de 3d6",
+          "relâmpago de 2d6 num alvo",
           "queimar um mecanismo à distância",
           "atordoar dois inimigos de uma vez"
         ]
@@ -236,7 +236,7 @@
       {
         "nivel": 4,
         "nome": "Corrente",
-        "efeito": "salta entre vários alvos (3d6 dividido)",
+        "efeito": "o Efeito Corrente, que salta de corpo em corpo (1d6 por nível)",
         "custo": {
           "mana": 4
         },
@@ -300,7 +300,7 @@
       },
       {
         "nivel": 2,
-        "nome": "Corrente",
+        "nome": "Jato Forte",
         "efeito": "jato forte que empurra e apaga; molda a água em formas úteis (corda, ponte rasa)",
         "custo": {
           "mana": 2
@@ -787,7 +787,7 @@
       },
       {
         "nivel": 4,
-        "nome": "Restaurar",
+        "nome": "Restauração",
         "efeito": "ferimentos graves, doenças, venenos",
         "custo": {
           "mana": 4
@@ -814,12 +814,12 @@
       {
         "nivel": 6,
         "nome": "Sopro de Vida",
-        "efeito": "traz o recém-morto; expurga quase tudo",
+        "efeito": "traz o recém-morto (morto há até 10 minutos, o grau 1 da Duração longa), que volta com 1 PV, acordado e em Crítico; expurga quase tudo",
         "custo": {
           "mana": 6
         },
         "exemplos": [
-          "chamar de volta quem morreu há pouco",
+          "chamar de volta quem morreu há até 10 minutos",
           "desfazer uma mutilação antiga"
         ]
       }
@@ -849,7 +849,7 @@
         "exemplos": [
           "firmar um pulso fraco",
           "acelerar um broto",
-          "devolver fôlego a quem está exausto"
+          "aliviar o cansaço: tira uma penalidade de Desgaste"
         ]
       },
       {
@@ -1031,7 +1031,7 @@
       {
         "nivel": 2,
         "nome": "Simpatia",
-        "efeito": "o alvo baixa a guarda e o trata com boa vontade por um tempo (vs Defesa Mental)",
+        "efeito": "o alvo baixa a guarda e o trata com boa vontade por um tempo (vs Defesa Social)",
         "custo": {
           "mana": 2
         },
