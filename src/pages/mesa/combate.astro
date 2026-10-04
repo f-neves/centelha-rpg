@@ -1687,13 +1687,10 @@ import CondDlg from '../../components/CondDlg.astro';
       const S = p.ficha || {}; const at = S.attrs || {};
       const pvv = pvDe(at.vigor || 0);
       const en = (Math.floor(((at.vigor || 0) + (at.compostura || 0) + (at.raciocinio || 0) + (S.willpower || 0)) / 2) + (S.centelha || 0) * 2);
-      // Mana só para quem despertou: a reserva sai da Centelha, e um mortal de
-      // Vontade alta continua sem uma gota. Nulo aqui quer dizer "não lida com
-      // Mana", que é diferente de uma reserva vazia.
-      const mn = (S.centelha || 0) > 0
-        ? manaDe({ centelha: S.centelha || 0, vontade: S.willpower || 0,
-                   manipulacao: S?.arte?.['manipulacao-mana'] || 0 })
-        : null;
+      // O mortal também tem Mana (F2, Adendo 2 de 02/10/2026): a Força de Vontade,
+      // pela mesma `mana` de calc.ts. Todo personagem lida com Mana.
+      const mn = manaDe({ centelha: S.centelha || 0, vontade: S.willpower || 0,
+                          manipulacao: S?.arte?.['manipulacao-mana'] || 0 });
       return {
         encontro_id: ENC.id, tipo: 'pc', personagem_id: p.id, nome: p.nome || 'PC',
         pv_max: pvv, pv_atual: pvv, energia_max: en, energia_atual: en,

@@ -3324,9 +3324,9 @@ const SETAS = [
       const R = resumoFicha(fichas[c.personagem_id]);
       return {
         origem: 'ficha', centelha: R.centelha, vontade: R.vontade, aparencia: R.aparencia,
-        // Mana só existe para quem despertou: a reserva é da Centelha, e um
-        // mortal com Vontade alta continua sem uma gota.
-        mana: R.centelha > 0 ? R.mana : 0,
+        // O mortal também tem Mana (F2, Adendo 2 de 02/10/2026): a Força de Vontade,
+        // pela mesma `mana` de calc.ts que o resumo já trouxe.
+        mana: R.mana,
         energia: R.energia, folego: R.folego, pv: R.pv,
         attrs: R.attrs, skills: R.skills, skills2: R.skills2, virtudes: R.virtudes,
         artes: R.artes, tecnicas: R.tecnicas, passivos: R.passivos,

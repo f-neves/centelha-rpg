@@ -171,9 +171,16 @@ export function montarFicha(opts: FichaOpts) {
    * limite de criação.
    */
   function capFor(kind: string, key?: string): number {
-    // Feitiçaria: a trava de nível por Ocultismo foi removida. Basta Centelha > 0 para tocar a magia;
-    // a profundidade (nível da Arte) é comprada com XP. (Relação com Ocultismo será refeita nas Trilhas de Feitiçaria.)
-    if (kind === 'arte2') return (S.centelha || 0) > 0 ? 6 : 0;
+    // TOLERÂNCIA: o teto de Arte Centelha + 2 (D-006, 03/10/2026) ainda não é definitivo.
+    // LEVANTA QUANDO: o autor fechar o teto de Arte do mortal e da Centelha baixa.
+    // Feitiçaria: o mortal (Centelha 0) também conjura (F2, Adendo 2 de 02/10/2026), e o nível máximo da
+    // Arte é Centelha + 2, até 6 (D-006, 03/10/2026, provisório): a tabela mora em
+    // `regras.json` → `arcano.tetoNivelArte.porCentelha`. Só limita o que se compra daqui em diante: um
+    // valor salvo acima do teto não é cortado ao carregar. (Ocultismo será refeito nas Trilhas de Feitiçaria.)
+    if (kind === 'arte2') {
+      const tab = ((regras as any).arcano?.tetoNivelArte?.porCentelha || []) as number[];
+      return tab[Math.max(0, Math.min(tab.length - 1, S.centelha || 0))] ?? 6;
+    }
     const rac = kind === 'attr' ? tetoRacialAttr(key) : 0;
     const teto: Record<string, number> = { attr: 6, skill: 6, skill2: 6, virtue: 6, centelha: 6, willpower: 12, aparencia: 12, ante: 6, anten: 6 };
     return (teto[kind] ?? 6) + rac;

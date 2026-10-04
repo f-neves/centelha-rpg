@@ -128,3 +128,67 @@ espera a resposta, e nada dele foi tocado.
   **9 m por Tick** (8,5, arredondado) na Corrida". A Revisora pediu só o 5,5; pus os dois, pelo mesmo
   motivo.
 
+
+**Commit do Bloco D (texto):** `d8f693b1` · **CI:** Validar 37169937791 (19 de 19) e Deploy 37169937814 (2
+de 2), primeira volta.
+
+### D, código
+
+**Destrava o que o livro já diz.** Não entram a reserva própria de Mana do mortal (D-002) nem a Meditação
+(D-003).
+- **`src/lib/ficha-engine.ts:176`** (`capFor('arte2')`)
+  - antes: `(S.centelha || 0) > 0 ? 6 : 0`
+  - depois: lê `regras.arcano.tetoNivelArte.porCentelha[Centelha]`. Centelha 0 dá 2, 1 dá 3, ..., 4 a 6
+    dão 6.
+  - O `capFor` só limita a compra nova (`applyVal`): um valor salvo acima do teto não é cortado ao
+    carregar, só aparece com as bolinhas marcadas como acima do teto. Nenhuma ficha salva perde nível.
+  - Comentário com `TOLERÂNCIA` e `LEVANTA QUANDO`.
+- **`src/components/FichaSkeleton.astro:117`**: o rótulo "(10 + nível×5 · exige Centelha > 0)" passou a
+  "(10 + nível×5 · nível máximo: Centelha + 2, até 6)".
+- **`src/pages/mesa/grid.astro:3329`**: `mana: R.centelha > 0 ? R.mana : 0` passou a `mana: R.mana`, que é
+  a `mana` de `calc.ts` (a Vontade, no mortal).
+- **`src/pages/mesa/combate.astro:1693`**: `(S.centelha || 0) > 0 ? manaDe(...) : null` passou a
+  `manaDe(...)` para todo personagem.
+- **As citações que a linha nova empurrou** (o `test-procedencia` acusou três; reapontadas à mão):
+  - `K-combate-linha-do-tempo.md:335`: `ficha-engine.ts:1545` passou a `:1552`;
+  - `L-simulacao-simultaneo.md:5702` e `:5703`: `:1655` e `:1656` passaram a `:1664` e `:1665`.
+
+**Prova na ficha** (`../tmp/executora/teste-arte-mortal.mjs`, Edge headless sobre o dev server):
+- ficha nova, Centelha 0: o teto da Arte é 2; clicar no 3 não muda nada, e clicar no 2 dá 2;
+- Centelha 1: o teto vira 3; clicar no 4 não passa, e clicar no 3 dá 3;
+- saída: "✓ teto da Arte na ficha: Centelha 0 → 2, Centelha 1 → 3".
+O smoke da ficha (`driver.mjs`) também passa: "✓ all checks passed".
+
+### Acima do teto (listado, sem alterar)
+
+- **Criaturas: nenhuma.** As 58 criaturas com Arte em `inimigos.json` estão dentro do teto da própria
+  Centelha.
+- **Fixtures:** a do Kael não tem Arte.
+- **Exemplos do livro:**
+  - **Bram** (`criacao-de-personagem.md:151-172`, Centelha 1, teto 3): Artes **5, 5, 5, 5, 5, 3, 3**.
+    Cinco Artes passam do teto, cada uma 2 níveis acima.
+  - Veil (Centelha 4, teto 6): 4, 4, 3, 3, 3, 3, dentro.
+
+### Outra regra escrita que conflita com o teto novo
+
+- **O arquétipo do mortal-tocado** (`criacao-de-personagem.md:149` e o Bram): "a Centelha só engorda
+  essa reserva; ela não é a medida da profundidade", e "Conjura Artes de nível 5 com Centelha 1: a mesma
+  profundidade que Veil [...] porque a profundidade vem do estudo". Com o teto Centelha + 2, a Centelha
+  passa a limitar a profundidade, e o Bram não existe como está. Não mexi no texto nem na ficha: é para o
+  autor.
+- A memória de projeto "Trilhas de Feitiçaria" (a Arte só exige Centelha > 0, e a profundidade vem do
+  XP) é anterior à F2 e a esta decisão. Registro para quem a ler.
+
+**Verificação** (sobre `e7c06baa`):
+- `npm run validate` verde ("Portões OK"), depois dos marcadores de tolerância e das citações
+  reapontadas;
+- `npx astro sync && npx tsc --noEmit` sem erro;
+- `npx astro build --force` verde.
+
+No gerado:
+- `dist/artes/regras/index.html` traz "nível máximo de cada Arte é Centelha + 2" (1);
+- `criacao-de-personagem` traz "O nível máximo de cada Arte é Centelha + 2" (1);
+- `centelha` traz "Artes até o nível 2" (1);
+- `combate` traz "6 m por Tick (5,5, arredondado)" (1);
+- `dist/ficha/index.html` traz o rótulo novo (1), e "exige Centelha > 0" aparece 0 vezes;
+- os scripts gerados citam `tetoNivelArte` (2).
