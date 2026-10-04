@@ -294,7 +294,7 @@ dia, então ele só os reescreve se sumirem. E o passo 1 não é formalidade: o
 
 ## Decisões de regra do autor: confira o registro antes de despachar
 
-O registro de decisões do autor mora em `../tmp/veterana/decisoes.md` (fora do repositório): uma
+O registro de decisões do autor mora em `docs/decisoes-partes/decisoes.md` (junto das partes A, B e C): uma
 entrada por decisão, com data, texto verbatim, origem (despacho, adendo, commit) e estado (no ar, a
 implementar, substituída por X). Quando duas decisões tratam do mesmo ponto, as duas ficam, a mais
 antiga marcada "substituída" com o link para a nova.
