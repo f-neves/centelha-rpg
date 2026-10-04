@@ -120,7 +120,7 @@ A ajuda da [Régua Comum](/regras/acoes-e-sistema) (o ajudante contra metade da 
 
 A condução **herda os modificadores**. Oficina e material são circunstâncias da tarefa e valem para todos que trabalham nela; o **+4** de quem não tem o ofício específico é pessoal, e pesa só sobre quem não o tem. Cada artesão conduz até **dez** ajudantes, como na direção de obra. Sob condução, os aprendizes dispensam o Requisito 3 da espada, e cada um soma o que a sua média passar da Dificuldade que a oficina deixou.
 
-**O braçal, que não tem o ofício, não soma na espada em nenhuma oficina**: na de mestre, a Dificuldade dele é 7 − 4 + 4 = 7, e a média 6 não passa dela. Os aprendizes, de Habilidade 1 ou 2, somam numa oficina de mestre; numa bem equipada, só os de soma 4 ou mais: **numa oficina bem equipada ou de mestre, dez aprendizes aceleram uma espada Comum e não fazem uma Ótima**.
+**O braçal, que não tem o ofício, não soma na espada em nenhuma oficina**: na de mestre, a Dificuldade dele é 7 − 4 + 4 = 7, e a média 6 não passa dela. Os aprendizes, de Habilidade 1 ou 2, somam numa oficina de mestre; numa bem equipada, só os de soma 4 ou mais.
 
 **Direção de obra.** Esta regra é de **obra**, e não de fabricação. Obra é **construção fixa no lugar** (casa, celeiro, forja, moinho, muralha, ponte, catedral) ou peça da **escala de estações**; todo o resto é fabricação, qualquer que seja o ofício da linha. A carroça e o barco de pesca são fabricação; o navio de guerra é obra. O braçal tem média 6, e numa obra de Dificuldade 11 ele contribuiria com um número negativo: pela regra crua, carregar pedra atrapalharia. O que falta é a figura do mestre de obras.
 

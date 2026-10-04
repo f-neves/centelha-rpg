@@ -593,3 +593,5 @@ foi tocada.
   - os 127 trechos novos estão lá;
   - os 63 velhos dão 0.
   - A frase velha do mortal-tocado, que é da rodada 10, ficou fora da lista de propósito.
+
+**Correção da Revisora (veredito 133), num commit à parte depois do `0aca9c99`:** em `acoes-oficio-e-mundo.md:123`, o negrito antigo "numa oficina bem equipada ou de mestre, dez aprendizes aceleram uma espada Comum e não fazem uma Ótima" tinha ficado colado à frase nova dos aprendizes. Saiu, e ficou só a frase nova ("numa bem equipada, só os de soma 4 ou mais.").
