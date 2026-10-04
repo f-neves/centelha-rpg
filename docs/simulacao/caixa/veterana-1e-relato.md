@@ -595,3 +595,57 @@ foi tocada.
   - A frase velha do mortal-tocado, que é da rodada 10, ficou fora da lista de propósito.
 
 **Correção da Revisora (veredito 133), num commit à parte depois do `0aca9c99`:** em `acoes-oficio-e-mundo.md:123`, o negrito antigo "numa oficina bem equipada ou de mestre, dez aprendizes aceleram uma espada Comum e não fazem uma Ótima" tinha ficado colado à frase nova dos aprendizes. Saiu, e ficou só a frase nova ("numa bem equipada, só os de soma 4 ou mais.").
+
+**Rodada 8, decisões do Arquiteto sobre os parados** (depois do `0aca9c99` e do `ce0f116b`):
+- **MENTE, a ordem da linha Conjurar: liberada.** `conjurar: 5` entrou no `RANK` de `artes-fmt.ts`, num
+  commit próprio. A linha Conjurar passa a sair acima da Dificuldade, como o (e) pede. Na Imagem Viva ela
+  sai também acima da Jogada de quem duvida, porque as duas têm o mesmo peso e a Conjurar vem antes no
+  JSON. Prova no gerado: `dist/artes/efeitos/index.html` tem as 17 linhas
+  "Conjurar: Influência + ...", cada uma seguida da Dificuldade, e na Imagem Viva a ordem é Conjurar,
+  Jogada e Dificuldade. `validate` e `tsc` passaram, e o build com `--force` também.
+- **ART-37: pausado, vai ao autor.** A C-025 continua valendo e não foi mexida. O que o 1e pede:
+  - a Dificuldade dos 28 Efeitos (33 entradas) passa de "(nível da Arte) × 4" ou "× 5" para "(maior grau
+    investido) × 5", tabela 5, 10, 15, 20, 25 e 30, sem o termo da Centelha da C-025;
+  - o Dissipar decide pelo maior grau investido de cada lado;
+  - Mãos sobre a Multidão cura 1 PV por grau investido;
+  - nas Regras das Artes, o parágrafo "Nível da Arte e grau investido não são a mesma coisa".
+- **Parados para a lista do autor, porque mexem em número que o código ou os testes leem.** O que cada um
+  pede:
+  - **ART-34**: ficar parado contra a régua da Virtude, um degrau por metro, borda 5, dois metros 7, três
+    metros 9 e núcleo 11, no lugar de 5, 8, 10 e 13. Hoje o código faz `Math.ceil(difMetade / 2)`
+    (`artes-grid.ts:1882`), e o teste confere 5, 8 e 10 (`test-artes-grid.mjs:790`).
+  - **ART-5**: o grau 0 das duas Durações passa a "instantâneo (1 Tick)". Hoje a Breve diz "no máximo
+    1 tick", e o teste confere esse rótulo (`test-artes-grid.mjs:61`). A Longa diz "no máximo 6 Ticks",
+    e o código conta 1 turno, 6 Ticks (`TURNOS_LONGA[0]`, `artes-grid.ts:155`).
+  - **ART-38**: o Efeito novo Bola de Fogo, nível 4, em Fogo, Gelo, Raio e Luz, com Alcance normal,
+    Explosão de 0,5 a 8 m de diâmetro e Dano de 1d6 por nível. As contagens mudam para Fogo 9, Gelo 14,
+    Raio 12 e Luz 10, e o total de 140 para 141 Efeitos, que o código do Grid e os testes leem. Vêm junto
+    o título do catálogo (Fogo 4) e a frase "o Efeito Bola de Fogo, de nível 4".
+  - **ART-40**: a Terra dobra o dado em todo dano dela, com a linha nova "Dano da Terra" (2d6 a 12d6) na
+    tabela de parâmetros. Pede também "2d6 por nível" em Lascas, Projétil Conjurado, Arma Conjurada e
+    Muro de Terra, e 2d6 nos níveis 1 e 2 do catálogo. Hoje o "1d6 por nível" sai do `valorPar`
+    (`artes-fmt.ts:39`) para todo parâmetro Dano. O (d) traz a objeção de mesa: o 12d6 do grau 6 (média
+    42, contra 21 do Fogo) precisa passar por mesa.
+- **O Grid contra o livro**, ponto a ponto. O Grid não foi mexido, e cada ponto é dúvida para o autor:
+  - **ART-35**:
+    - o livro diz que a Velocidade é 5, 6 ou 7 pelo maior grau investido, e que o esticar multiplica a do
+      conjuro antes de esticar;
+    - o Grid (`ticksDe`, `artes-grid.ts:389`) dá ao Efeito 4 + nível do Efeito + 1 por grau esticado, e ao
+      improviso 5 + 1 por grau esticado, sem olhar o maior grau.
+  - **ART-33**:
+    - o livro diz que o primeiro alvo da Cura é grátis, e que do 2º em diante cada nível custa 2;
+    - o Grid (`custoDe`, `artes-grid.ts:350`) cobra 2 por nível só no parâmetro Cura, e o Alvos a 1 por
+      nível desde o primeiro.
+  - **ART-11**:
+    - o livro diz que quem desvia fora da vez leva no total a escada da Defesa (−2 no Preparo, −4 no Golpe,
+      −2 por golpe pendurado na Recuperação);
+    - o Grid (`artes-grid-mesa.ts:1793`) só soma o +2 ou +4 de quem identificou o efeito.
+  - **ART-36**:
+    - o livro diz que o Projétil Conjurado e a Arma Elemental de Gelo, Água e Terra são matéria, e que a
+      armadura os absorve;
+    - no Grid os dois têm `materia: null` em todas as Artes, e o tabuleiro não separa a Arte.
+  - **ART-42**:
+    - o livro diz que o que deixou matéria se bloqueia como a arma de arremesso do mesmo tamanho, e que
+      Fogo, Raio, Luz e Sombra só se esquivam;
+    - nos módulos `artes-grid*.ts` não há regra de Bloqueio contra Arte (procurei por "bloqu"), e o
+      `materia: null` é o mesmo. Não conferi qual Defesa o tabuleiro usa contra o projétil.

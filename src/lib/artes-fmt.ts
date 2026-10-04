@@ -21,7 +21,7 @@ const RANK: Record<string, number> = {
   // magnitudes do efeito, todas na casa do Dano
   dano: 3, cura: 3, bônus: 3, absorção: 3, absorve: 3, resistência: 3, quantidade: 3,
   ganho: 3, voo: 3, visão: 3, força: 3, efeito: 3, fah: 3, faa: 3,
-  duração: 4, duracao: 4, ataque: 5, jogada: 5, dificuldade: 6, penalidade: 7,
+  duração: 4, duracao: 4, ataque: 5, conjurar: 5, jogada: 5, dificuldade: 6, penalidade: 7,
 };
 export const rank = (p: any) => RANK[p.nome.toLowerCase().split(' ')[0]] ?? RANK[(p.substitui || '').toLowerCase()] ?? 9;
 /** Até a Duração o parâmetro diz a FORMA do efeito; daí para frente é a execução (jogada, dificuldade). */
