@@ -1854,8 +1854,8 @@ export interface Desvio {
  * Esquiva é maior ou menor que ela. Esta função assume Esquiva ≥ Centelha (o
  * caso comum: a maioria do bestiário tem Centelha baixa ou zero), e por isso
  * usa o termo de Centelha CHEIO (2×Centelha, não capeado). Quando essa
- * suposição for falsa (Esquiva < Centelha), o valor sai um pouco ALTO, nunca
- * inventa um negativo, e o teto de 12 continua batendo o bestiário inteiro.
+ * suposição for falsa (Esquiva < Centelha), o valor sai um pouco BAIXO (tira 2×Centelha,
+ * e a Defesa só tinha 2×Esquiva), nunca negativo, e o teto de 12 continua batendo o bestiário inteiro.
  */
 export function desEsqDaDefesa(defesa: number, centelha: number): number {
   const d = (regras.derivados as any).defesa as { mult: number };

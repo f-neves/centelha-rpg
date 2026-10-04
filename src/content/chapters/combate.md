@@ -18,7 +18,7 @@ Antes dos detalhes, o esqueleto de uma briga, do começo ao fim:
 5. **O dano, menos a Absorção** (a absorção do alvo), vira ferimento.
 6. **Quem chega a 0 de Vida cai.** Ferimentos, morte e sangramento são assunto do próximo capítulo, [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura).
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora ataca um bandido de <strong>Defesa 10</strong>. Seu pool de ataque dá <strong>5d6+9</strong> (Destreza 6 + Armas 5, mais o acerto da espada e a Centelha); ela rola e soma <strong>16</strong>. 16 supera 10 → acerta, com diferença de 6, exatamente <strong>uma Margem</strong>, então o dano ganha <strong>+1d6</strong>. Ela rola o dano da espada (1d6) + a Margem (1d6) + a Força, desconta a Absorção do bandido, e o que sobra abre ferimento.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora ataca um bandido de <strong>Defesa 20</strong>. Seu pool de ataque dá <strong>5d6+9</strong> (Destreza 6 + Armas 5, mais o acerto da espada e a Centelha); ela rola 17 nos dados e soma <strong>26</strong>. 26 supera 20 → acerta, com diferença de 6, exatamente <strong>uma Margem</strong>, então o dano ganha <strong>+1d6</strong>. Ela rola o dano da espada (1d6) + a Margem (1d6) + a Força, desconta a Absorção do bandido, e o que sobra abre ferimento.</div>
 
 No osso, é só isso. O resto do capítulo são as camadas que dão profundidade tática: **quando** agir, **como** se mover, **usar a posição** e **desencadear Técnicas**.
 

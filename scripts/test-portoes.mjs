@@ -99,7 +99,6 @@ const TESTES_FORA = {};
 // `gen-monsters` de sempre. Cada linha que sumir daqui (por virar `--check`
 // de verdade) é um gerador que passou a se conferir.
 const GERADORES_FORA = {
-  'gen-monsters.mjs': 'roda no `build` SEM `--check`: ele produz `public/dados/`, que não é versionado, então não há o que divergir.',
   'gen-arte-equip.mjs': 'L31 · a saída (CSS) é versionada e bate limpo, mas a ENTRADA (`D&D/armas&armaduras/folhas`) está inteira fora do git (`.gitignore:25`): um `--check` aqui passaria na máquina de quem tem a pasta local e falharia sempre no CI, que nunca a tem. Escalado ao TechLead. Ver 21-executora.md.',
   'gen-lista-equip.mjs': 'L31 · escreve em `D&D/armas&armaduras/`, inteira fora do git (`.gitignore:25`): não há arquivo commitado para divergir. Mesma família do `gen-monsters.mjs` acima, achado nesta rodada, escalado ao TechLead (a pendência original listava sete supondo `--check` cabível nos sete). Ver 21-executora.md.',
   'gen-creditos-equip.mjs': 'L31 · mesmo motivo do `gen-lista-equip.mjs`: escreve em `D&D/armas&armaduras/`, fora do git. Ver 21-executora.md.',

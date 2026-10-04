@@ -5,7 +5,7 @@
   "attrs": {
     "forca": 3, "destreza": 4, "vigor": 4,
     "influencia": 2, "perspicacia": 2, "compostura": 2,
-    "percepcao": 3, "inteligencia": 2, "raciocinio": 3
+    "percepcao": 6, "inteligencia": 2, "raciocinio": 3
   },
   "skills": {
     "armas": 3, "esquiva": 3, "prontidao": 3, "atletismo": 3,

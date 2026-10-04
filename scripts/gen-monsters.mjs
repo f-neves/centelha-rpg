@@ -9,7 +9,7 @@
 // ficha; os satélites que os semeiam (gen-elementos, gen-deslocamento) continuam
 // e o validate confere que a ficha e a semente concordam.
 // Rodar: node scripts/gen-monsters.mjs   (rode gen-bestiario.mjs antes se mexeu nas fichas)
-import { readFileSync, writeFileSync, statSync } from 'node:fs';
+import { readFileSync, writeFileSync, statSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { elementosDoMaterial } from './lib-materiais.mjs';
 import { achataCatalogo } from './lib-equip.mjs';
@@ -165,8 +165,19 @@ if (problemas.length) {
   process.exit(1);
 }
 
+// --check (rodada de pendências, Bloco H, 03/10/2026): os dois JSONs saem daqui e ficam
+// commitados, e o `inimigos.json` novo com o `monsters.json` velho passava no gancho calado
+// (achado da correção da Reforma, item 1). Com `--check` nada é escrito: o gerado é comparado
+// com o commitado, e a divergência derruba o `validate`. Mesmo padrão do `gen-bestiario.mjs`.
+const CHECK = process.argv.includes('--check');
+const divergem = [];
+function emitir(arquivo, texto) {
+  if (!CHECK) { writeFileSync(arquivo, texto); return; }
+  const atual = existsSync(arquivo) ? readFileSync(arquivo, 'utf8') : '';
+  if (atual !== texto) divergem.push(arquivo);
+}
 const out = join(data, 'monsters.json');
-writeFileSync(out, JSON.stringify(monsters, null, 1));
+emitir(out, JSON.stringify(monsters, null, 1));
 console.log(`monsters.json: ${monsters.length} criaturas, ${(statSync(out).size / 1024).toFixed(0)} KB.`);
 
 // ------------------------------------------------- a versão que a mesa carrega
@@ -275,7 +286,16 @@ const mesa = monsters.map((m) => {
 }
 
 const outMesa = join(data, 'monsters-mesa.json');
-writeFileSync(outMesa, JSON.stringify(mesa, null, 1));
+emitir(outMesa, JSON.stringify(mesa, null, 1));
 const kb = (n) => (n / 1024).toFixed(0);
 console.log(`monsters-mesa.json: ${kb(statSync(outMesa).size)} KB `
   + `(${kb(JSON.stringify(mesa).length)} KB minificado, contra ${kb(JSON.stringify(monsters).length)} KB do inteiro).`);
+
+if (CHECK) {
+  if (divergem.length) {
+    console.error(`✘ gen-monsters --check: fora de sincronia com o inimigos.json: ${divergem.map((f) => f.split(/[\\/]/).pop()).join(', ')}.`);
+    console.error('  Rode `node scripts/gen-monsters.mjs` e commite junto.');
+    process.exit(1);
+  }
+  console.log('✓ monsters.json e monsters-mesa.json em dia com o inimigos.json');
+}

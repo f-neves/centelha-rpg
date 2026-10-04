@@ -323,7 +323,7 @@ Ficam, por serem registro do que foi medido ou decidido na época: `docs/decisoe
 `120-revisora.md`, `b14-cr-desafio-fase4-5-despacho.md`, `fechamento-economia-reforma-despacho.md` e os
 arquivos de `docs/calibracao/discussao/`.
 
-**Commit do Bloco E:** `ce425f84` · **CI:** Validar 37172173817 e Deploy 37172173810 (resultado no fim do F).
+**Commit do Bloco E:** `ce425f84` · **CI:** Validar 37172173817 (19 de 19) e Deploy 37172173810 (2 de 2), primeira volta.
 
 ## Bloco F · Ataque Total não existe (item 7, P-07)
 
@@ -353,3 +353,49 @@ arquivos de `docs/calibracao/discussao/`.
   - `fechamento-economia-reforma-despacho.md:5`;
   - `docs/decisoes-partes/decisoes.md:1199` (a própria P-07).
 - O "Multiataque total" do Grande Wyrm é habilidade de criatura, de outro nome, e fica.
+
+**Commit do Bloco F:** `468a532f` · **CI:** Validar 37172248130 (19 de 19) e Deploy 37172248140 (2 de 2),
+primeira volta.
+
+## Bloco H · Pequenas pendências técnicas (item 15)
+
+- **`gen-monsters` sem `--check`.** `scripts/gen-monsters.mjs` ganhou `--check`, no molde do
+  `gen-bestiario.mjs --check`: gera em memória, compara com o `monsters.json` e o `monsters-mesa.json` do
+  disco e sai com código 1 e a lista do que diverge, sem gravar. O `validate` (`package.json`) passou a
+  rodá-lo logo depois do `gen-bestiario.mjs --check`, e o `test-portoes.mjs` tirou o `gen-monsters.mjs` da
+  lista `GERADORES_FORA` (os geradores que não se conferiam). A linha nova empurrou a citação de
+  `docs/simulacao/REVISORA.md:1196`: `gen-monsters.mjs:217` passou a `:228`. Controle negativo: com o
+  `monsters.json` alterado à mão, o `--check` saiu com código 1; desfeito, saiu 0.
+- **O comentário de `desEsqDaDefesa`** (`src/lib/artes-grid.ts:1857-1858`):
+  - antes: "o valor sai um pouco ALTO, nunca inventa um negativo, e o teto de 12 continua batendo o
+    bestiário inteiro."
+  - depois: "o valor sai um pouco BAIXO (tira 2×Centelha, e a Defesa só tinha 2×Esquiva), nunca
+    negativo, e o teto de 12 continua batendo o bestiário inteiro."
+  - Só o comentário, o mesmo número de linhas. A aproximação em si (a função subtrai 2 × Centelha
+    cheio) ficou, como no achado da correção da Reforma (`correcao-reforma-relato.md:78-85`).
+- **A Percepção do Kael na fixture.** A certa é **6**: é a do Kael do capítulo de criação
+  (`criacao-de-personagem.md:95`, "Percepção 6 (pico)"), que é a ficha. Corrigi a **fixture**
+  (`scripts/fixtures/kael.json`, `"percepcao": 3` passou a `6`). O `test-kael.mjs` não lê Percepção. O
+  `test-contrato.mjs` segue verde sem mudança ("Contrato ficha↔mesa OK [...] Defesa 19"), porque nenhum
+  número que ele confere passa pela Percepção. A fixture também alimenta o `mesa-mock.mjs` dos smokes.
+  `npm run smoke` local com a fixture nova: 17 dos 18 verdes. O `test-grid` falhou num item de toque
+  ("nada dentro dela fica abaixo de 44px", o botão `mesa-sair` com 40,55 de largura). **Controle:** com a
+  fixture velha (Percepção 3) o `test-grid` falha no MESMO item, com o mesmo número, então a falha é da
+  máquina (largura de fonte), e não da fixture; no CI o `test-grid` está verde. O `test-espelho`, que o
+  `&&` do `smoke` não chegou a rodar, rodei à parte: "os dois laços concordam".
+  - Fica registrado, sem mexer: a fixture e o capítulo divergem também nas Habilidades (a fixture tem
+    Armas 3 e Furtividade 2; o capítulo tem Atirador 3, Briga 2 e Furtividade 5). O despacho pediu só a
+    Percepção, e a nota da fixture diz que as Habilidades são as do `test-kael.mjs` de propósito.
+- **O "16" da Sora** (`combate.md:21`). O pool é 5d6 + 9, e somar 16 pede 7 nos cinco dados: possível,
+  mas longe da média (17,5), e com Defesa 10 o golpe não tinha como errar (o mínimo é 14).
+  - antes: "Sora ataca um bandido de **Defesa 10**. [...] ela rola e soma **16**. 16 supera 10 → acerta,
+    com diferença de 6, exatamente uma Margem"
+  - depois: "Sora ataca um bandido de **Defesa 20**. [...] ela rola 17 nos dados e soma **26**. 26 supera
+    20 → acerta, com diferença de 6, exatamente uma Margem"
+  - A diferença segue 6 (uma Margem), e o resto do exemplo não muda.
+
+**Verificação** (sobre `468a532f`):
+- `npm run validate` verde ("Portões OK"), já com o `gen-monsters.mjs --check` dentro;
+- `npx astro sync && npx tsc --noEmit` sem erro;
+- `npx astro build --force` verde. No gerado, `dist/regras/combate/index.html` traz "Defesa 20" no
+  exemplo da Sora (1) e "soma 26" (1), e "soma 16" aparece 0 vezes.
