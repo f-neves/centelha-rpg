@@ -43,7 +43,9 @@ const EX_CONTA: [string, string, number][] = [
 <Base title="Regras das Artes" largura="wide" descricao="Como se conjura no Centelha: parâmetros, custo em Mana, a fonte do elemento, esticar, Rituais e o que o alvo opõe.">
   <p class="muted cinzel" style="letter-spacing:.3em;text-transform:uppercase;font-size: var(--fs-micro);margin:0">Capítulo {numeralDe('artes/regras')}</p>
   <h1>Regras das Artes</h1>
-  <p class="lead">Como se conjura, o que custa e o que o alvo pode fazer a respeito. Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: não é preciso <strong>Centelha</strong> para tocar a magia (o mortal conjura com a Mana, que nele é a própria Força de Vontade); a profundidade (o nível da Arte) você compra e evolui um a um. Dentro do seu nível, você monta o efeito girando os parâmetros. O panorama, os nomes da feitiçaria e as Tradições de ensino estão em <a href={url('arcano')}>O Arcano</a>.</p>
+  <!-- TOLERÂNCIA: o teto de Arte Centelha + 2 (D-006, 03/10/2026) ainda não é definitivo.
+       LEVANTA QUANDO: o autor fechar o teto de Arte do mortal e da Centelha baixa. -->
+  <p class="lead">Como se conjura, o que custa e o que o alvo pode fazer a respeito. Cada <strong>Arte</strong> tem <strong>6 níveis</strong>: não é preciso <strong>Centelha</strong> para tocar a magia (o mortal conjura com a Mana, que nele é a própria Força de Vontade), e o <strong>nível máximo</strong> de cada Arte é <strong>Centelha + 2</strong>, até 6 (Centelha 0 → 2; 1 → 3; 2 → 4; 3 → 5; 4, 5 ou 6 → 6; provisório); a profundidade (o nível da Arte) você compra e evolui um a um. Dentro do seu nível, você monta o efeito girando os parâmetros. O panorama, os nomes da feitiçaria e as Tradições de ensino estão em <a href={url('arcano')}>O Arcano</a>.</p>
 
   <nav class="artes-nav artes-nav-topo" data-pagefind-ignore>
     <a class="cap-card" href={url('artes/efeitos')}>

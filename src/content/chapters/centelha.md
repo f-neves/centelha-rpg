@@ -15,7 +15,7 @@ A régua vai de **0 a 12**, e a **faixa do jogador é de 0 a 6**: os seis degrau
 
 | Nível | Estatura | Raridade | O que abre |
 |:---:|---|---|---|
-| **0** | Mortal | ~95% das pessoas | Nenhuma Proeza; Artes, com a Mana, que no mortal é a própria Força de Vontade |
+| **0** | Mortal | ~95% das pessoas | Nenhuma Proeza; Artes até o nível 2, com a Mana, que no mortal é a própria Força de Vontade |
 | **1** | Tocado | ~1 em 20 | Proezas de **nível 1**; a Energia que todo mortal já tem passa a servir (às Proezas), e a Mana cresce |
 | **2** | Desperto | raro | Proezas até o **nível 2** |
 | **3** | Herói | mais raro | Proezas até o **nível 3** |

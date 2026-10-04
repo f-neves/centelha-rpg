@@ -86,3 +86,45 @@ verde. No HTML gerado, contado no texto sem marcação:
 - `docs/pendencias/G-acoes-sistema.md`
 - `Pendencias.md`
 - este relato
+
+**Commit do Bloco B:** `e7c06baa` · **CI:** Validar 37169320767 (19 de 19) e Deploy 37169320714 (2 de 2),
+primeira volta.
+
+## Bloco C · Fôlego: PARADO
+
+O Fôlego não alimenta nenhuma fórmula de Energia, de combate nem da Pressão, mas é a mecânica de conteúdo
+que o pedido não mandou apagar:
+- **9 Técnicas** com `modulo: "folego"`, todas da Proeza `coracao-incansavel`: `folego-profundo`,
+  `segundo-vento`, `marcha-forcada`, `incansavel`, `pulmoes-de-ferro`, `sem-limites`,
+  `vigor-inesgotavel`, `coracao-eterno` e `folego-de-sobra`;
+- mais 2 Técnicas que citam o Fôlego no texto: `segundo-folego` e `fechar-feridas`;
+- **2 Efeitos de Arte** que fazem perder Fôlego (`efeitos.json:4372`, o Inverno; `:5586`, o afogamento);
+- a condição `sem-folego` (`condicoes.json:166`);
+- o campo `folego` de todas as armas.
+
+Mandei o mapa (197 linhas, `../tmp/executora/folego-mapa.txt`) e três opções ao Arquiteto. O Bloco C
+espera a resposta, e nada dele foi tocado.
+
+## Bloco D · Teto de Arte e a F2 (item 4, D-006), em dois commits
+
+### D, texto
+
+- **`regras.json`**: bloco novo `arcano.tetoNivelArte`, com `porCentelha: [2, 3, 4, 5, 6, 6, 6]` (o
+  índice é a Centelha, de 0 a 6) e a nota. A nota diz que a tabela é provisória (D-006) e que o teto de
+  Proeza continua sendo a Centelha.
+- **`src/pages/artes/regras.astro:46`**: depois de "não é preciso Centelha para tocar a magia (o mortal
+  conjura com a Mana [...])" entrou "e o **nível máximo** de cada Arte é **Centelha + 2**, até 6
+  (Centelha 0 → 2; 1 → 3; 2 → 4; 3 → 5; 4, 5 ou 6 → 6; provisório)". O comentário `TOLERÂNCIA` com
+  `LEVANTA QUANDO` vai logo acima, para o portão das tolerâncias.
+- **`criacao-de-personagem.md:58`**
+  - antes: "Arte de qualquer nível não exige Centelha: o mortal (Centelha 0) também aprende e conjura,
+    com a Mana [...]"
+  - depois: "Arte não exige Centelha para começar: o mortal (Centelha 0) também aprende e conjura, com a
+    Mana [...]. O nível máximo de cada Arte é **Centelha + 2**, até 6 ([a tabela]; provisório)."
+  - O negrito vai como `<strong>`, porque o parágrafo é HTML e o `**` não renderiza ali.
+- **`centelha.md`**, a linha 0 da tabela: "Artes, com a Mana [...]" passou a "Artes até o nível 2, com a
+  Mana [...]".
+- **`combate.md:300`** (a CLAREZA da 124): "corre a **6 m por Tick** (5,5, arredondado) no Arranque e a
+  **9 m por Tick** (8,5, arredondado) na Corrida". A Revisora pediu só o 5,5; pus os dois, pelo mesmo
+  motivo.
+
