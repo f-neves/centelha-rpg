@@ -1180,6 +1180,12 @@ Os itens abaixo vieram da "lista do veterana-1c" e NÃO foram despachados; vão 
 - Origem: mensagem do autor via Arquiteto, 03/10/2026 (resposta à ESCALA 2 da rodada 125)
 - Estado: a implementar. O CORTEJO ESTÁ EM DISCUSSÃO (relacoes-sociais.md:242-246, regras.json vontadePresa e C-072): não mexer até o autor decidir. Restringe D-001 (o teto 4 não alcança o cortejo).
 
+### D-016 · Fôlego: sai o motor e a condição; texto do jogador corrigido; Técnicas ocultas e armas ficam [tags: folego, tecnicas, efeitos, condicoes]
+- Data: 2026-10-03
+- Decisão: "Bloco C (Fôlego): variante da C. 1. Sai o motor inteiro, como a Executora mapeou (capítulo, derivados, calc.ts, ficha, mesa-ficha, Grid, módulo, site.ts, coluna de equipamentos, testes). A ficha ignora o campo velho ao carregar. 2. Sai a condição "sem-folego" (condicoes.json:166). 3. Corrigir só o que o jogador vê: Efeito do afogamento (efeitos.json:5586): em vez de perder Fôlego, remete à regra de Sufocamento do capítulo Resistir ("Janela de socorro = Vigor × 20 Ticks"). Efeito "Inverno" (efeitos.json:4372): "perde Fôlego de 6 em 6 Ticks" vira "−1d6 nas ações físicas enquanto exposto". As 2 Técnicas visíveis que citam o Fôlego (segundo-folego, fechar-feridas) perdem só a frase do Fôlego. 4. As 9 Técnicas ocultas da Coração Incansável e o campo "folego" das armas e dos schemas FICAM como estão, ocultos e inertes. Registre uma pendência: decidir o destino das 9 Técnicas da Coração Incansável e do campo folego das armas (recalibração das Proezas)."
+- Origem: mensagem do autor via Arquiteto, 03/10/2026 (resposta ao escopo do Bloco C, achado da Executora)
+- Estado: a implementar (Bloco C do despacho da rodada). Detalha P-02.
+
 ## Recebidas em 03/10/2026 (confirmadas pelo autor no mesmo dia; ver estado de cada uma)
 
 Rodada de pendencias abertas, texto do autor via Arquiteto. Aguardam a confirmacao do autor sobre a leitura do Arquiteto. Antes de aplicar, conferir contra as entradas acima.
