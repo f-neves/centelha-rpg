@@ -1295,7 +1295,7 @@
         },
         {
           "efeito": "Mente e alma",
-          "resiste": "Defesa Mental (passiva) — a conjuração precisa superá-la",
+          "resiste": "Defesa Mental (passiva) — a conjuração precisa superá-la; passando, o alvo ainda pode pagar Força de Vontade para recusar o efeito ou encurtá-lo (ver Defesas)",
           "ex": "medo, fascínio, ilusão, domínio"
         },
         {
@@ -2677,7 +2677,13 @@
     },
     "modoRapido": {
       "alcancePorMargem": 1,
-      "nota": "Alcance do pedido na tabela de Pedir as coisas, e nada mais. A régua não anda."
+      "nota": "Alcance do pedido na tabela de Pedir as coisas, e nada mais. A régua não anda.",
+      "resistencia": {
+        "custoBase": 1,
+        "porMargem": 1,
+        "tetoCusto": 4,
+        "tetoCustoNota": "Resistir no Combate Social custa 1 + Margem de Vontade, com teto de 4: nenhum efeito obriga o defensor a pagar mais de 4 (Proezas podem cobrar mais). O mesmo teto vale para o efeito mental. Não alcança o cortejo (modoDevagar), que está em discussão. Decisões do autor de 03/10/2026 (D-001 e D-015)."
+      }
     },
     "modoDevagar": {
       "nota": "Sem dado. Ataque parado = Influência + Habilidade. Defesa parada = (Compostura + Sociabilidade) × multDefesa + 2×menor(Centelha,Sociabilidade) + termo da régua (decisão 1 do autor e Adendo 1 da correção da Reforma da Centelha, 02/10/2026; o `centelhaMult` abaixo ficou parado em 1 e não é lido por nenhum código, ver nota em derivados.defesaSocial). Tempo do passo, em intervalos = máx(pisoTempoDoPasso, defesa parada − ataque parado − soma dos gestos). O termo da régua é o mesmo de derivados.defesaSocial.reguaNota.",
@@ -2690,8 +2696,6 @@
       "resistencia": {
         "custoBase": 1,
         "divisorExcedente": 6,
-        "tetoCusto": 4,
-        "tetoCustoNota": "Resistir custa 1 + Margem de Vontade, com teto de 4: nenhum efeito obriga o defensor a pagar mais de 4 (Proezas podem cobrar mais). Decisão do autor de 03/10/2026 (D-001).",
         "excedenteComPisoZero": true,
         "vontadePresa": true,
         "vontadePresaNota": "A Vontade investida em segurar fica presa enquanto o cortejo durar, e só volta quando ele acaba ou o alvo desiste. Vale SÓ para o cortejo longo, porque a Vontade se recompõe a 1 por noite (recuperacaoVontade.quantoPorSono) e o intervalo tem 8 dias ou mais: sem a trava, qualquer custo por intervalo sai de graça."
