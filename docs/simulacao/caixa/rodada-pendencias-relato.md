@@ -399,3 +399,21 @@ primeira volta.
 - `npx astro sync && npx tsc --noEmit` sem erro;
 - `npx astro build --force` verde. No gerado, `dist/regras/combate/index.html` traz "Defesa 20" no
   exemplo da Sora (1) e "soma 26" (1), e "soma 16" aparece 0 vezes.
+
+**Commit do Bloco H:** `319bf4b9` · **CI:** Validar 37172942688 (19 de 19) e Deploy 37172942666 (2 de 2), primeira volta.
+
+## Bloco I · Itens mágicos (item 16)
+
+- **`docs/itens-magicos/itens-magicos-pesquisa.md`**: lido inteiro antes (70 linhas) e commitado sem
+  mudança. O arquivo estava sem rastrear na árvore `rpg-system`; copiei para a minha e conferi por `cmp`
+  que as duas cópias são iguais. É pesquisa de referência, sem desenho: os modelos de D&D 5e, Pathfinder 2e
+  e Exalted 3e por categoria (poções, pergaminhos, itens mágicos, armas e armaduras encantadas,
+  artefatos), uma tabela do que cada modelo resolve e custa, e seis perguntas de contato com Centelha.
+  Nenhum travessão no arquivo.
+- **Pendência nova G76** (`docs/pendencias/G-acoes-sistema.md`): "Itens mágicos: poções, pergaminhos,
+  itens mágicos, armas e armaduras encantadas, artefatos", em [DECIDIR], apontando para a pesquisa e
+  cruzando com a G73 (preço do sobre-humano) e a G74 (poções). `Pendencias.md` regerado: G passa de 77
+  para 78 itens, e o total de 353 para 354.
+- **Para a árvore `rpg-system`:** a cópia sem rastrear de `docs/itens-magicos/itens-magicos-pesquisa.md`
+  que está lá vai colidir com este commit no próximo `pull` ("untracked working tree files would be
+  overwritten"). Como as duas são iguais, basta apagar a de lá antes do `pull`.

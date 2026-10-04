@@ -549,3 +549,8 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
     sobra"): é a D3 da Leitura de novato 3, e a Longa não rola.
   - Já resolvidos e fora da lista: Escalar, Esgueirar (os metros) e Nadar (os metros), que deixaram
     de somar por cima do progresso.
+- [ ] **G76 · [DECIDIR] Itens mágicos: poções, pergaminhos, itens mágicos, armas e armaduras
+  encantadas, artefatos.** Registrado em 03/10/2026 (rodada de pendências, Bloco I). Centelha não
+  tem regra para nenhum deles. A pesquisa de referência (D&D, Pathfinder 2e, Exalted 3e, sem
+  desenho) está em `docs/itens-magicos/itens-magicos-pesquisa.md`, com seis perguntas de contato
+  com Centelha na seção 4. Cruza com a G73 (preço do sobre-humano) e a G74 (poções).
