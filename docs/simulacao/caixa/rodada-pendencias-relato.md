@@ -474,3 +474,62 @@ os adiados de `decisoes.md`):
   `regras.json` → `social.modoDevagar.resistencia`).
 
 `Pendencias.md` regerado.
+
+## Bloco G · lore/economia fora do git (item 13, opção A, P-10)
+
+**A prova antes.** Para cada arquivo que sai, `grep -rln` em `scripts/`, `src/`, `.github/`,
+`package.json` e `astro.config.*`, pelo nome (`economia/README`, `anexo-auditoria`, `catalogo-unificado`,
+`estado-revisao`, `etapas-abc`, `revisao-economica-etapas`): **0 leitores** em todos. Os três leitores
+da economia leem só a v2/ e a procedência:
+- `scripts/copiar-economia.mjs:27-28`: `MODELO = lore/economia/v2` e `LORE = lore/economia`, onde ele só
+  escreve e confere os `*.procedencia.json`; o laço da `:42` copia os `.py` da v2/;
+- `scripts/gen-cap-economia.mjs:4`: os JSONs de `src/data` que saem da v2/;
+- `scripts/validate-data.mjs:922`: o comentário e os esquemas da economia gerada pela v2/.
+Nenhum script varre `lore/` inteiro, e nenhum documento de `docs/` nem o `Pendencias.md` cita os
+arquivos que saem por `arquivo:linha` (o `test-procedencia` pula arquivo que não existe, de qualquer
+jeito).
+
+**Saem do índice** (`git rm --cached`; continuam no disco, e a história não muda):
+- `lore/economia/README.md`, `anexo-auditoria-f1-f3.md`, `catalogo-unificado.md`, `estado-revisao.md`;
+- `lore/economia/etapas-abc/base.py`, `gerar.py`, `mercadorias.py`, `modelo.py` e
+  `revisao-economica-etapas-abc.md`.
+
+**Ficam versionados:** a `v2/` inteira (`base.py`, `gerar.py`, `mercadorias.py`, `modelo.py`,
+`revisao-economica-v2.md`, `mercadorias.procedencia.json`) e os três `*.procedencia.json` fora dela
+(`lore/economia/`, os de mercadorias e de montarias; e o de `etapas-abc/`).
+
+**`.gitignore`**, depois das linhas que já existiam para a economia:
+- `lore/economia/*.md`: os documentos da raiz. Pega também o `prompt-revisao-economica.md`, que está sem
+  dono e sem rastrear na árvore `rpg-system`: passa a ser ignorado, e não foi commitado;
+- `lore/economia/etapas-abc/*` com a exceção `!lore/economia/etapas-abc/*.procedencia.json`.
+- A v2/ não é atingida: o `*` do gitignore não atravessa `/`, então `lore/economia/*.md` não casa
+  `v2/revisao-economica-v2.md`. Conferido com `git check-ignore -v`: os dois arquivos que saem casam a
+  regra nova, e `v2/gerar.py`, `v2/revisao-economica-v2.md` e `etapas-abc/mercadorias.procedencia.json`
+  não casam nada.
+
+**CI de I, J e K:**
+- I `70dd7728`: Validar 37173731667 (19 de 19); o Deploy 37173731658 foi cancelado pelo push seguinte
+  (`deploy.yml`, `concurrency: pages`, `cancel-in-progress: true`).
+- J `9013360b`: Validar 37173779519 (19 de 19); o Deploy 37173779504 foi cancelado do mesmo jeito.
+- K `5c18b7d3`: Validar 37173852179 (19 de 19) e Deploy 37173852183 (2 de 2). Esse deploy publicou
+  tudo.
+
+**O G foi liberado pelo Arquiteto (opção 1)** depois do aviso de que o `pull` apaga os 9 arquivos do
+disco das outras árvores. Antes do commit, na minha árvore, `git status --short -- lore/economia`
+mostrava só as 9 deleções preparadas, e nenhuma mudança na pasta de trabalho. Os 9 arquivos do disco são
+iguais aos do `HEAD` (`cmp`, um por um).
+
+**Para quem tem outra árvore (a `rpg-system` e a da Revisora):** o `pull` deste commit apaga os 9
+arquivos do disco. Para trazê-los de volta sem que entrem de novo no índice (o pai do G é `5c18b7d3`):
+
+    git restore --source=5c18b7d3 --worktree -- lore/economia/README.md lore/economia/anexo-auditoria-f1-f3.md lore/economia/catalogo-unificado.md lore/economia/estado-revisao.md lore/economia/etapas-abc/base.py lore/economia/etapas-abc/gerar.py lore/economia/etapas-abc/mercadorias.py lore/economia/etapas-abc/modelo.py lore/economia/etapas-abc/revisao-economica-etapas-abc.md
+
+Depois, `git status --short -- lore/economia` tem de sair vazio, porque os 9 passam a ser ignorados.
+**Revisora:** restaure a sua árvore por conta própria, com o mesmo comando.
+
+**Como o commit saiu, para quem repetir:** o `git commit -- <caminhos>` NÃO serve para `git rm --cached`.
+Com pathspec, o git monta o commit a partir da pasta de trabalho daqueles caminhos. Como os 9 arquivos
+continuam no disco, ele os pôs de volta e o commit saiu só com o `.gitignore` e o relato (2 arquivos, nenhuma
+deleção). Não publiquei esse commit: refiz o `git rm --cached`, conferi por `git diff --cached
+--name-status` que o índice da minha árvore tinha só as 9 deleções (e o relato), e corrigi o commit pelo
+índice com `--amend`. Isso é seguro aqui porque cada worktree tem índice próprio.

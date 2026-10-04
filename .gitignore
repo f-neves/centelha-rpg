@@ -61,6 +61,12 @@ lore/economia/*/*.json
 !lore/economia/*/*.procedencia.json
 lore/economia/*proposta*
 lore/economia/gerar_mercadorias.py
+# e o material de trabalho da economia que o build não lê (03/10/2026, decisão P-10, opção A):
+# os documentos da raiz e a etapa ABC antiga. Ficam no disco e saem do repositório público. O
+# build, os testes e as calculadoras leem só a v2/ e os *.procedencia.json, que seguem versionados.
+lore/economia/*.md
+lore/economia/etapas-abc/*
+!lore/economia/etapas-abc/*.procedencia.json
 
 # SO / editor
 *.stackdump
