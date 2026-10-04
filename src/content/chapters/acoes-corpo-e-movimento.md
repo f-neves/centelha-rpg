@@ -13,6 +13,8 @@ Esta é a família do corpo contra o mundo físico: distância, altura, água, p
 
 **Modo** · Acumulada com pressa, Longa com calma. O par de números é o mesmo nos dois.
 
+**Direta** · quando só importa se sobe ou não, numa jogada só. O total precisa superar a Dificuldade da superfície mais a altura em metros, menos 1 (a Direta pede superar, e a Acumulada fecha ao alcançar o Acúmulo; o 1 acerta as duas). Uma muralha de pedra lavrada de 10 m (Dificuldade 7) é Direta 16: o 17 que sobe de primeira na Acumulada supera 16 aqui. A [Área do Mestre](/mestre) traz a versão Direta.
+
 **Jogada** · Força + Atletismo, secundária **Escalada**.
 
 **Dificuldade** · a superfície, e só ela.
@@ -99,7 +101,7 @@ Disso sai uma consequência que vale saber antes de rolar qualquer coisa: **cair
 
 **Valor fixo, não jogada.** O dano vai de 5 a mais de 300, e rolar cem dados não é jogo. A variação de "como você caiu" mora na Reflexiva de amortecer, que é onde ela é interessante.
 
-<p class="formula">Dano de <b>Impacto</b>. A Absorção natural de Impacto é o Vigor (+ Centelha), mais a armadura</p>
+<p class="formula">Dano de <b>Impacto</b>: o valor da tabela menos a Absorção. A Absorção natural de Impacto é o Vigor (+ Centelha), mais a da armadura.</p>
 
 | Altura | Dano | Altura | Dano |
 |:--:|:--:|:--:|:--:|
@@ -119,29 +121,33 @@ Disso sai uma consequência que vale saber antes de rolar qualquer coisa: **cair
 
 Sai sozinho do Vigor, que entra **duas vezes**: nos Pontos de Vida e na Absorção de Impacto.
 
-| Quem cai | PV | Absorção | Morre a partir de |
-|---|:--:|:--:|:--:|
-| Pessoa comum · Vigor 2 | 31 | 2 | **15 m** |
-| Robusto · Vigor 4 | 37 | 4 | **19 m** |
-| Herói · Vigor 6, Centelha 2 | 43 | 8 | **24 m** |
-| Colosso · Vigor 6, Centelha 6 | 43 | 12 | **26 m** |
+| Quem cai | PV | Absorção | Desmaia a partir de | Morre a partir de |
+|---|:--:|:--:|:--:|:--:|
+| Pessoa comum · Vigor 2 | 31 | 2 | **15 m** | **23 m** |
+| Robusto · Vigor 4 | 37 | 4 | **19 m** | **28 m** |
+| Herói · Vigor 6, Centelha 2 | 43 | 8 | **24 m** | **36 m** |
+| Colosso · Vigor 6, Centelha 6 | 43 | 12 | **26 m** | **38 m** |
 
-E os quinze metros da pessoa comum não são chute: é a altura em que, na vida real, cerca de metade dos adultos morre numa queda. Aos vinte e cinco morrem nove em cada dez, e a tabela concorda.
+Desmaia é cair a 0 PV (o dano líquido iguala o PV); morre é chegar a −(PV máximo ÷ 2), como no Cap. IV.
+
+E os quinze metros da pessoa comum não são chute: é a altura em que, na vida real, cerca de metade dos adultos morre sem socorro; no jogo, é a altura em que ela cai a 0 PV e desmaia, e a morte vem aos 23. Aos vinte e cinco morrem nove em cada dez, e a tabela concorda.
 
 ### Amortecer · Reflexiva
 
 Destreza + Atletismo, secundária **Ginástica**, contra **Dificuldade 10**. O sucesso não tira dano bruto: **tira 4 metros da altura efetiva**, e cada Margem tira mais 3. É o que um bom rolamento faz de verdade, alongar a parada em vez de anular a queda.
 
+Cada valor é o da tabela de Dano na altura que sobra; entre duas linhas da tabela, lê-se por interpolação, arredondando para baixo.
+
 | Altura | Sem jogada | Sucesso | Uma Margem | Duas Margens |
 |:--:|:--:|:--:|:--:|:--:|
 | 7 m | 16 | 7 | **0** | 0 |
-| 10 m | 22 | 13 | 6 | **0** |
-| 15 m | 33 | 24 | 17 | 10 |
-| 20 m | 43 | 34 | 27 | 20 |
-| 30 m | 63 | 54 | 47 | 40 |
-| 50 m | 98 | 89 | 82 | 75 |
+| 10 m | 22 | 13 | 7 | **0** |
+| 15 m | 33 | 24 | 18 | 11 |
+| 20 m | 43 | 35 | 29 | 22 |
+| 30 m | 63 | 55 | 49 | 43 |
+| 50 m | 98 | 91 | 86 | 81 |
 
-A jogada **salva de verdade entre 7 e 20 metros**, que é exatamente a faixa em que a queda decide se você vive. Acima de trinta ela vira consolo, e está certo: não existe rolar no chão que resolva uma queda de prédio.
+A jogada **salva de verdade entre 7 e 20 metros**, que é a faixa em que a queda decide se você levanta ou apaga: um sucesso empurra 4 m para cima a altura do desmaio e a da morte (a pessoa comum passa de 15 para 19 m e de 23 para 27), e cada Margem mais 3 m. Acima de trinta ela continua empurrando as duas alturas, mas não existe rolar no chão que resolva uma queda de prédio.
 
 ### Agarrar a borda · Reflexiva
 

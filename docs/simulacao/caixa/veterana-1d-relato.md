@@ -437,3 +437,5 @@ XP dos exemplos.
   - os textos novos estão lá;
   - "Teto 5 na criação", "Habilidade máxima 4" e "Atributo máximo 5" dão 0;
   - "Teto 3 na criação" e "Centelha máxima 3" continuam (1 cada).
+
+**Commit da D-040:** `58b22ce4` · **CI:** Validar 37190844735 (19 de 19) e Deploy 37190844712 (2 de 2).

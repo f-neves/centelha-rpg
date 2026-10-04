@@ -68,22 +68,22 @@ const degraus = regras.dificuldade.map((d, i) => ({
 
 // Exemplos: tarefas físicas e de perícia
 const exFisicas = [
-  ['Pular um muro na cintura', 'Atletismo', 3, 'Só sob pressão/perseguição'],
-  ['Pular um muro no ombro (~1,4 m)', 'Atletismo', 8, 'Com impulso'],
-  ['Pular um muro alto (~2 m)', 'Atletismo', 13, 'Precisa de corrida e boa forma'],
-  ['Escalar parede rústica (muitos apoios)', 'Atletismo', 8, ''],
-  ['Escalar parede de pedra comum', 'Atletismo', 12, 'Juntas e saliências'],
-  ['Escalar muralha bem-feita', 'Atletismo', 18, 'Poucas fendas'],
-  ['Escalar superfície lisa/molhada', 'Atletismo', 24, 'Quase sem apoio; feito de perito'],
-  ['Cavalgar tranquilo numa estrada', 'Cavalgar', 5, 'Normalmente sem rolagem'],
-  ['Galopar em terreno difícil / saltar obstáculo', 'Cavalgar', 10, ''],
-  ['Cavalgar em combate / montaria assustada', 'Cavalgar', 15, ''],
-  ['Disfarce: não ser reconhecido de relance', 'Disfarce', 8, 'Na multidão'],
-  ['Disfarce: enganar quem te conhece de vista', 'Disfarce', 14, ''],
-  ['Disfarce: passar-se por pessoa específica', 'Disfarce', 20, 'Diante de quem convive com ela'],
-  ['Bater carteira de alvo distraído ou bêbado', 'Prestidigitação', 8, 'Ou vs Percepção passiva'],
-  ['Bater carteira de transeunte atento', 'Prestidigitação', 12, ''],
-  ['Bater carteira de guarda alerta', 'Prestidigitação', 16, ''],
+  ['Pular um muro na cintura', 'Atletismo', 3, 'Só sob pressão/perseguição', ''],
+  ['Pular um muro no ombro (~1,4 m)', 'Atletismo', 8, 'Com impulso', ''],
+  ['Pular um muro alto (~2 m)', 'Atletismo', 13, 'Precisa de corrida e boa forma', ''],
+  ['Escalar parede rústica (muitos apoios)', 'Atletismo', 8, '', '5 m'],
+  ['Escalar parede de pedra comum', 'Atletismo', 12, 'Juntas e saliências', '6 m'],
+  ['Escalar muralha bem-feita', 'Atletismo', 18, 'Poucas fendas', '8 m'],
+  ['Escalar superfície lisa/molhada', 'Atletismo', 24, 'Quase sem apoio; feito de perito', '11 m'],
+  ['Cavalgar tranquilo numa estrada', 'Cavalgar', 5, 'Normalmente sem rolagem', ''],
+  ['Galopar em terreno difícil / saltar obstáculo', 'Cavalgar', 10, '', ''],
+  ['Cavalgar em combate / montaria assustada', 'Cavalgar', 15, '', ''],
+  ['Disfarce: não ser reconhecido de relance', 'Disfarce', 8, 'Na multidão', ''],
+  ['Disfarce: enganar quem te conhece de vista', 'Disfarce', 14, '', ''],
+  ['Disfarce: passar-se por pessoa específica', 'Disfarce', 20, 'Diante de quem convive com ela', ''],
+  ['Bater carteira de alvo distraído ou bêbado', 'Prestidigitação', 8, 'Ou vs Percepção passiva', ''],
+  ['Bater carteira de transeunte atento', 'Prestidigitação', 12, '', ''],
+  ['Bater carteira de guarda alerta', 'Prestidigitação', 16, '', ''],
 ];
 
 // Exemplos: situações sociais comuns
@@ -187,14 +187,15 @@ const exSociais = [
   <h3 class="sub">Tarefas físicas e de Habilidade</h3>
   <div class="tab-wrap">
     <table class="ex">
-      <thead><tr><th>Tarefa</th><th>Habilidade</th><th>Dif</th><th>Observação</th></tr></thead>
+      <thead><tr><th>Tarefa</th><th>Habilidade</th><th>Dif</th><th>Observação</th><th>Altura de referência</th></tr></thead>
       <tbody>
         {exFisicas.map((e) => (
-          <tr><td>{e[0]}</td><td class="per">{e[1]}</td><td class="c dif">{e[2]}</td><td class="obs">{e[3]}</td></tr>
+          <tr><td>{e[0]}</td><td class="per">{e[1]}</td><td class="c dif">{e[2]}</td><td class="obs">{e[3]}</td><td class="c">{e[4]}</td></tr>
         ))}
       </tbody>
     </table>
   </div>
+  <p class="muted">Escalar na Direta: Dificuldade da superfície (Cap. VIII) + altura em metros − 1. Para outra altura, refaça a conta.</p>
 
   <h3 class="sub">Situações sociais comuns</h3>
   <div class="tab-wrap">
