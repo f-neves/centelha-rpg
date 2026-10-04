@@ -241,3 +241,14 @@ confere o −19 da Sora (37 ÷ 2 = 18,5, para cima com Centelha), e não o deixa
   Qual sistema;
 - a referência do Mestre na mesa passa a dizer "Raciocínio + Cura" no Estabilizar.
 Nenhuma ficha muda, e nenhuma migração.
+
+**Commit da rodada 2:** `5598adeb` · **CI:** Validar 37186952721 (19 de 19) e Deploy 37186952724 (2 de 2).
+Revisora: rodada 128, PROCEDE.
+
+## A ESCALA da 128: a nota da condição Sangrando
+
+- `src/data/condicoes.json:136`, condição `sangrando` (a nota que o Escudo do Mestre mostra):
+  - antes: "Estabilizar: Cura contra Dif 10, ou Vigor + Resistência em si mesmo."
+  - depois: "Estabilizar: Raciocínio + Cura contra Dif 10, ou Vigor + Resistência em si mesmo."
+- Só o texto da nota (D-008 e T1b). O `porSeisTicks` não mudou. Aprovado pelo Arquiteto.
+- A condição Morrendo e o K5a continuam parados, à espera do autor.
