@@ -43,6 +43,8 @@ Conforme a Vida restante cai, a dor cobra seu preço nas **ações físicas** (a
 | 1–10% | Crítico | −2d6 | −8 |
 | ≤ 0% | Incapacitado | desmaiado, fora da briga | — |
 
+A porcentagem é a Vida restante sobre o PV máximo, **arredondada para baixo**: com PV 43 e 26 de Vida, 60,47% conta como 60%, e o estado é Machucado. Com Vida acima de 0, ela nunca fica abaixo de 1%, que é Crítico.
+
 <p class="muted">A tabela para em Crítico, e só uma coisa passa dele sem cair em Incapacitado: a <strong>ressaca do Frenesi</strong> dos orcs e meio-orcs. Cada estado de ressaca além de Crítico soma mais −1d6 na ação física e −4 na Defesa Física, e nunca leva a Incapacitado. O degrau não existe fora dela (ver <a href="/centelha-rpg/regras/racas#frenesi">Frenesi</a>).</p>
 
 **O pool nunca desce abaixo de 1d6**, mesma trava do Desgaste: Grave e Crítico tiram dado de verdade, mas nunca zeram a ação física por inteiro. O piso vale para quem tinha dado: quem já rolava zero dados (soma 1, o 2 fixo) continua no 2 fixo, e a penalidade não inventa um dado que não existia. A única exceção é o teste para entrar no [Frenesi](/regras/racas#frenesi): ali a penalidade de ferimento e o ponto de Força de Vontade que o próprio orc aplica para ceder podem zerar a parada.
@@ -104,7 +106,7 @@ Exemplo: Sora (PV 37, Vigor 4, Centelha 3) cai a −16; morre em −19. Kael cui
 
 ## Recuperação
 
-Você recupera o equivalente ao seu Vigor em PV a cada intervalo, tão mais lento quanto pior o estado:
+Você recupera o equivalente ao seu Vigor em PV a cada intervalo, tão mais lento quanto pior o estado (pela mesma porcentagem dos Limiares, arredondada para baixo):
 
 | Estado | Recupera o Vigor em PV… |
 |---|---|

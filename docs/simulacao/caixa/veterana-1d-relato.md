@@ -328,3 +328,45 @@ regerado):
 - as regras de bônus, Margem e ferimento na Longa, e a Arte na Longa;
 - "Ação demorada" no Combate.
 Os números do Ofício e da economia ainda não mudaram (rodada 7). Nenhuma ficha muda, e nenhuma migração.
+
+**Commit da rodada 3:** `61bf02fe` · **CI:** Validar 37188043368 (19 de 19) e Deploy 37188043391 (2 de 2).
+O da ESCALA, `604d3a6a`: Validar 37187791960 (19 de 19), Deploy 2 de 2.
+
+## As respostas do autor de 04/10: D-036, D-037, D-038
+
+### D-036 · as faixas de Vida (o K5a)
+
+O texto passa a dizer o que o código já faz. Nenhum código mudou: `regras.json` → `ferimentos` e
+`mesa-core.ts:101-102` (`Math.max(1, Math.floor(cur / max × 100))`) ficaram como estavam.
+- `vida-ferimentos-cura.md`, Limiares de Ferimento, logo abaixo da tabela: "A porcentagem é a Vida restante
+  sobre o PV máximo, **arredondada para baixo**: com PV 43 e 26 de Vida, 60,47% conta como 60%, e o estado
+  é Machucado. Com Vida acima de 0, ela nunca fica abaixo de 1%, que é Crítico." O "nunca abaixo de 1%" é o
+  `Math.max(1, ...)` do código.
+- Recuperação, a frase de abertura: "(pela mesma porcentagem dos Limiares, arredondada para baixo)".
+- As células "61–100%" etc. ficaram, porque com o arredondamento para baixo elas não deixam vão.
+
+### D-038 · o mortal-tocado (`criacao-de-personagem.md:149`)
+
+- antes: "[...] e a Centelha só engorda essa reserva; ela não é a medida da profundidade. A profundidade
+  (o nível da Arte) vem do estudo, comprada com XP. Isso abre um arquétipo [...]: o feiticeiro
+  **mortal-tocado**, que estudou fundo o que quase não tem por natureza."
+- depois: "[...] e a Centelha engorda essa reserva e segura o nível de cada Arte (o teto é Centelha + 2:
+  Centelha 0 chega ao nível 2, Centelha 1 ao 3). Isso abre um arquétipo [...]: o feiticeiro
+  **mortal-tocado**, que se destaca pela **amplitude** (muitas Artes, rituais, preparo para cada ocasião),
+  e não pela profundidade."
+- O Bram (`:153` em diante) não foi tocado: espera o veterana-1e. Até lá a ficha dele (Artes no nível 5
+  com Centelha 1) segue contradizendo o parágrafo de cima.
+
+### D-037 · a condição Morrendo: PARADA, como mandado
+
+O Arquiteto mandou parar se algum código lesse o `porSeisTicks` da Morrendo. Lê, pelo caminho geral das
+condições, e não pelo id:
+- `mesa-core.ts:299-305` (`continuoDe`): uma condição aplicada do catálogo é gravada só como `{ id }`, e o
+  número é buscado no catálogo (`COND[k.id].porSeisTicks`). É esse número que a mesa cobra a cada 6
+  Ticks;
+- `mesa-core.ts:227` e `:260` somam e mostram o mesmo campo no resumo das condições;
+- `mesa/referencia.astro:78` e `mesa/combate.astro:1236` imprimem "−N a cada 6 Ticks";
+- nenhum teste cita a Morrendo. O `test-sangramento.mjs:74` usa uma condição caseira (`x-caseira`).
+Efeito de tirar o campo do catálogo: toda Morrendo já aplicada numa mesa, que está gravada só como
+`{ id }`, para de tirar PV na hora, sem migração. Uma Morrendo editada à mão pelo Mestre com número
+próprio continua com o número dela. Não mexi: espera o OK.
