@@ -41,7 +41,7 @@ Conforme a Vida restante cai, a dor cobra seu preço nas **ações físicas** (a
 | 31–60% | Machucado | −2 | −2 |
 | 11–30% | Grave | −1d6 | −4 |
 | 1–10% | Crítico | −2d6 | −8 |
-| ≤ 0% | Incapacitado | incapacitado | — |
+| ≤ 0% | Incapacitado | desmaiado, fora da briga | — |
 
 <p class="muted">A tabela para em Crítico, e só uma coisa passa dele sem cair em Incapacitado: a <strong>ressaca do Frenesi</strong> dos orcs e meio-orcs. Cada estado de ressaca além de Crítico soma mais −1d6 na ação física e −4 na Defesa Física, e nunca leva a Incapacitado. O degrau não existe fora dela (ver <a href="/centelha-rpg/regras/racas#frenesi">Frenesi</a>).</p>
 
@@ -51,7 +51,7 @@ Conforme a Vida restante cai, a dor cobra seu preço nas **ações físicas** (a
 
 ## Queda e Morte
 
-Chegar a **0 PV ou menos** deixa você **Incapacitado**: fora da briga, e ainda vivo. A Vida não para no zero, ela continua descendo, e é abaixo do zero que mora a morte.
+Chegar a **0 PV ou menos** deixa você **Incapacitado**: desmaiado, fora da briga, e ainda vivo. Esse desmaio não tem teste: nem a Resistência o evita. As Proezas que mantêm de pé em 0 PV ou menos (Não Vou Cair, Último Suspiro, Não Sentir Dor) são a exceção. A Vida não para no zero, ela continua descendo, e é abaixo do zero que mora a morte.
 
 <p class="formula">Morre em Vida ≤ −(PV máximo ÷ 2)</p>
 
@@ -72,9 +72,35 @@ Há duas formas de começar a sangrar:
 
 Sangramentos não se somam livremente: vale o **maior**, e cada fonte adicional acrescenta apenas +1 (teto **5**).
 
-<div class="callout"><span class="lbl">Estabilizar</span>Uma ação dedicada e um teste de <strong>Cura vs Dif 10</strong> (pano limpo, pressão, sutura) encerra um Sangramento. Sozinho, cerrando os dentes, role <strong>Vigor + Resistência vs Dif 10</strong>. Qualquer cura de PV (descanso, Cura ou magia) também o estanca.</div>
+<div class="callout"><span class="lbl">Estabilizar</span>Uma ação dedicada e um teste de <strong>Raciocínio + Cura vs Dif 10</strong> (pano limpo, pressão, sutura) encerra um Sangramento. Sozinho, cerrando os dentes, role <strong>Vigor + Resistência vs Dif 10</strong>. Qualquer cura de PV (descanso, Cura ou magia) também o estanca.</div>
 
 <p class="muted">Um aliado <strong>Incapacitado</strong> que ainda sangra continua perdendo Vida rumo ao limite: a margem de meio PV máximo encurta sozinha enquanto ninguém chega. É a hora em que parar para estabilizar o companheiro pesa tanto quanto desferir mais um golpe.</p>
+
+## Tratar
+
+Quem está em 0 PV ou menos não se recupera sozinho. Enquanto o PV não chegar a 1, cada dia pede um teste de **Tratar**, feito por quem cuida: **Raciocínio + Cura**. Chame de **X** o PV negativo atual (a −16, X é 16). Como em todo teste, o total precisa **superar** a Dificuldade, e há duas: **metade de X** e **um quarto de X**, as duas arredondadas para cima (a X = 16, Dificuldades 8 e 4; a X = 15, 8 e 4; a X = 17, 9 e 5).
+
+| Total do teste de Tratar | Faixa | O paciente, naquele dia |
+| --- | --- | --- |
+| supera metade de X | **recupera** | recupera o seu Vigor em PV, até no máximo 1 PV |
+| supera um quarto de X, mas não metade | **segura** | nada muda |
+| igual ou abaixo de um quarto de X | **piora** | perde **1d6 PV** |
+
+Em 0 PV exato (X = 0) qualquer resultado supera, e o paciente recupera. Com **1 PV** o paciente acorda, em Crítico, e dali em diante vale a tabela de Recuperação.
+
+**Cura, a Habilidade.** Identificar o mal (a ferida, o veneno, a doença) é **Inteligência + Cura**, e o Mestre decide se é preciso rolar. O tratamento que exige mão (sutura, colocar osso, cirurgia, administração intravenosa) é **Raciocínio + Cura**: é o caso do Estabilizar, do Tratar e do tratamento de veneno e de doença no capítulo Resistir. Dar um remédio para beber não pede teste.
+
+**A Arte no Tratar.** Quem cuida e conhece uma Arte de cura soma ao teste **+3 por nível da Arte de Cura**, ou **+1 por nível da Arte de Vida**. Os dois não se somam: vale o maior. Quem a usa escolhe o nível, até o que tem na Arte, e paga a **Mana desse nível**: 2 por nível, como toda cura, menos a Centelha (pode sair de graça). Um Efeito específico (Mão Firme, Campo de Alívio, Acelerar a Cura) vale o que o próprio Efeito disser.
+
+**Tratar não é Estabilizar.** Estabilizar encerra um Sangramento, numa ação, contra Dificuldade 10. Tratar é o teste do dia, de quem está em 0 PV ou menos. Quem ainda sangra precisa primeiro ser estabilizado; enquanto sangra, continua perdendo Vida rumo ao limite.
+
+**Cura de PV.** Toda cura de PV (a Arte de Cura, uma Técnica como o Estancar, a magia em geral) soma ao PV negativo, e, se levar o paciente a 1 PV ou mais, ele acorda na hora.
+
+**Transporte.** O grupo só segue viagem com quem está em 0 PV ou menos se puder levá-lo sem piorar as feridas. Uma carroça serve.
+
+**Sem tratamento.** Se ninguém trata, e o paciente não sangra nem sofre de nada que piore a situação, o PV fica parado onde está. Não há regra para a morte por abandono: o Mestre decide o que acontece, e quando.
+
+Exemplo: Sora (PV 37, Vigor 4, Centelha 3) cai a −16; morre em −19. Kael cuida dela com Raciocínio 3 e Cura 1 (2d6, mais 2 de Centelha: 2d6+2). Dia 1: X é 16, Dificuldades 8 e 4; Kael tira 6, não supera 8 mas supera 4: **segura**, e nada muda. Dia 2: tira 10 e supera 8: **recupera**, e Sora sobe o Vigor, para −12. Dia 3: X é 12, Dificuldades 6 e 3, tira 9: −8. Dia 4: Dificuldades 4 e 2, tira 8: −4. Dia 5: Dificuldades 2 e 1, tira 7: 0. Dia 6: X é 0, e qualquer resultado supera: 1 PV, e Sora acorda em Crítico. Um companheiro sem a Habilidade Cura (Raciocínio 3: 1d6+2) nunca recuperaria Sora a −16 (o total máximo é 8, e a Dificuldade é 8), e cada dia com total 4 ou menos (rolar 1 ou 2) custaria a ela 1d6 PV. Se esse mesmo companheiro conhecer a Arte de Cura no nível 1 (+3, 2 de Mana, de graça para quem tem Centelha 2), ele rola 1d6+5 e recupera Sora na metade dos dias (total 9 ou mais), sem nunca piorá-la.
 
 ## Recuperação
 
@@ -86,5 +112,6 @@ Você recupera o equivalente ao seu Vigor em PV a cada intervalo, tão mais lent
 | Machucado (31–60%) | a cada 3 dias |
 | Grave (11–30%) | a cada 5 dias |
 | Crítico (1–10%) | por semana |
+| Incapacitado (0 PV ou menos) | por dia, pelo teste de Tratar, até 1 PV |
 
-<p class="muted">Cura é cura: a tabela vale para qualquer dano, venha ele de malho, de lâmina ou de queda. Quem trata acelera a recuperação: <strong>cada nível de Cura</strong> de quem cuida <strong>encurta o intervalo</strong> da tabela em <strong>10%</strong> (com Cura 3, o "a cada 5 dias" vira 3,5 dias), e os 50% exigem Cura 5. A magia também acelera.</p>
+<p class="muted">Cura é cura: a tabela vale para qualquer dano, venha ele de malho, de lâmina ou de queda. Quem trata acelera a recuperação: <strong>cada nível de Cura</strong> de quem cuida <strong>encurta o intervalo</strong> da tabela em <strong>10%</strong> (com Cura 3, o "a cada 5 dias" vira 3,5 dias), e os 50% exigem Cura 5. O encurtamento não vale na linha "por dia" (o dia é o menor intervalo da tabela) nem para quem está em 0 PV ou menos, que sobe pelo teste de Tratar. A magia também acelera (Acelerar a Cura, na Arte de Vida).</p>

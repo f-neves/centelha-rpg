@@ -125,3 +125,119 @@ links seguem o Markdown da página):
 - o rodapé do Cap. VII;
 - o filtro de nível 6 em Técnicas.
 Nenhuma ficha muda, e nenhuma migração.
+
+**Commit da rodada 1:** `eaca41a0` · **CI:** Validar 37176419134 (19 de 19) e Deploy 37176419133 (2 de 2).
+Revisora: rodada 127, PROCEDE.
+
+## Rodada 2 · Cap. III, Cap. IV e Cura
+
+**Antes de mexer.**
+- Registro lido: D-001 (o limite de 1 ponto vale só para o +1d6 e o +4), D-007 (Tratar), D-008 (Cura com
+  Inteligência ou Raciocínio), D-009 (Arte no Tratar) e D-034 (decisões da 1c; o ACELERA-10 é uma delas).
+  Nenhum ponto da rodada contradiz o registro.
+- Citações de (b) conferidas contra a fonte: todas ainda estavam lá, e nenhum ponto estava resolvido.
+- **Quem lê o Tratar no código** (busca por "tratar", "estabiliz" e "incapacitad" em `src/lib`,
+  `src/pages`, `src/components` e `src/data`):
+  - **ninguém calcula o Tratar.** Não há teste de Tratar na ficha, no Grid, no `calc.ts` nem em
+    calculadora;
+  - **o Estabilizar é lido do dado**: `regras.json` → `sangramento.estabilizar` (`pericia`, `dif`,
+    `alternativa`), e a referência do Mestre (`mesa/referencia.astro:175`) só o imprime. O `pericia` era
+    "Cura" e passou a "Raciocínio + Cura" (texto, sem número);
+  - **dois lugares ficaram PARADOS**, porque o texto novo os contradiz e eles são número que código lê.
+    Ver "Parado, à espera do Arquiteto", abaixo.
+
+**Os pontos** (o texto de (e), palavra por palavra; negrito e links no formato de cada página):
+
+- **T4a**
+  - `aparencia-virtudes-vontade.md`, Força de Vontade: a frase de (e).1 entrou ao fim do parágrafo dos
+    gastos;
+  - `qual-sistema.md`, a folha de bolso: a linha "Blindar a mente" (que a correção da 126 tinha escrito)
+    virou "**Gastar Vontade:**", na redação do A·T4d item 3, como (e).2 manda. O nó do diagrama é do T4d
+    (rodada 6) e não foi tocado.
+- **K9a** · `aparencia-virtudes-vontade.md`: a linha da Convicção na tabela, a oração "mesmo quando a
+  tabela acima põe a dor na Convicção" (saiu) e o verbete da Convicção ("o ferro em brasa que quer arrancar
+  uma confissão (a dor do ferro, em si, é do corpo)").
+- **T1b** · `aparencia-virtudes-vontade.md`, O teste de Virtude: o trecho de (e).
+  - **Mudei a posição de uma oração.** Na frase, logo depois de "são Vigor + Resistência", vinha "a mesma
+    Habilidade que já resolve veneno, doença e ambiente hostil no capítulo Resistir". Pôr o "quem estanca o
+    de outro rola Raciocínio + Cura (Cap. IV)" no ponto exato de (e) faria essa oração parecer falar da
+    Cura. Por isso a oração nova entrou depois dela, separada por ponto e vírgula. As palavras são as de
+    (e).
+- **T1a** · Cap. IV e Combate
+  - a célula "incapacitado" virou "desmaiado, fora da briga";
+  - o parágrafo de Queda e Morte, com o desmaio sem teste e as três Proezas;
+  - Estabilizar: "Raciocínio + Cura vs Dif 10";
+  - a seção nova **Tratar** inteira, entre Sangramento e Recuperação;
+  - a linha "Incapacitado (0 PV ou menos)" na tabela de Recuperação;
+  - `combate.md`, passo 6: "Quem chega a 0 de Vida desmaia (fica Incapacitado).".
+- **NOVO-a2-1**: a tabela das três faixas e o exemplo estão dentro do Tratar (T1a). O exemplo foi conferido
+  contra `scripts/sim_tratar_1d.py`:
+  - Kael (2d6+2) a X = 16 dá 58,3 / 38,9 / 2,8;
+  - o leigo com Cura 1 (1d6+5) a Dificuldade 8 supera em 50%, sem nunca piorar;
+  - os seis dias do exemplo fecham: −16, −16, −12, −8, −4, 0 e 1 PV.
+- **NOVO-a2-2** (D-008)
+  - `acoes-resistir.md`, Veneno: o "Tratar" passou ao texto de (e) (Reconhecer, Tratar, o antídoto
+    bebido);
+  - Doença, Ajuda: o trecho de (e). O "O −2 vale para até três doentes" ficou;
+  - `acoes-sentidos-e-engano.md`, Diagnosticar e socorrer: a frase de (e).
+- **NOVO-a2-3** (D-009): o parágrafo "A Arte no Tratar" está no Tratar (T1a). Em `artes/regras.astro`, A
+  economia da Cura, entrou o parágrafo "**Tratar.**", depois de "Vale para toda Arte que cura", com o link
+  para `regras/vida-ferimentos-cura#tratar`. O item 3 (Acelerar a Cura, A·ART-47) é da rodada das Artes e
+  não foi tocado.
+- **T1c**: a frase da Resistência. O capítulo de Habilidades é gerado (`gen-cap-pericias.mjs`), então a
+  mudança foi feita em `habilidades.json` e o capítulo foi regerado; só essa frase mudou nele.
+- **ACELERA-10** · `vida-ferimentos-cura.md`, Recuperação: a frase de (e), com `<strong>` (o parágrafo é
+  HTML).
+- **A observação da Revisora sobre `centelha.md:30`:** o trecho do RACIAL-7 tinha entrado no meio da frase.
+  Agora ele fecha com ponto: "(Cap. VI). Seus saltos são saltos de atleta, [...]".
+- **O `Antecedentes.md:54` da raiz** (documento de desenho, fora do site), só relatado, sem mudança: diz
+  "situacionais **somam entre si até um teto de +6**, espelhando o teto dos modificadores de [...]", que é
+  o modelo de antes da D-027.
+
+**Uma linha de teste mudou.** O `validate-data.mjs:420-425` (a função `ladoDe`) confere o lado da Centelha nos exemplos de morte do
+Cap. IV. Ele reconhecia "com Centelha", "tem Centelha", "Centelha 1" e "Tocado", mas não "Centelha 3", e
+acusava o exemplo do Tratar: "Sora (PV 37, Vigor 4, Centelha 3) cai a −16; morre em −19". O regex passou
+de `Centelha 1` a `Centelha [1-9]`. A negativa ("Centelha 0") continua testada antes. Com isso o portão
+confere o −19 da Sora (37 ÷ 2 = 18,5, para cima com Centelha), e não o deixa sem conferência.
+
+**Parado, à espera do Arquiteto** (número lido por código):
+1. **K5a, as faixas de Vida.** O texto de (e) diz "acima de 60%", "acima de 30% até 60%" e assim por
+   diante. O código classifica por `Math.floor(cur / max × 100)` contra `minPct`/`maxPct` de
+   `regras.json` → `ferimentos` (61-100, 31-60, 11-30, 1-10): `mesa-core.ts:101-102`, e as mesmas faixas
+   em `desafio-bancada.mjs`, `sim-caps.mjs` e `sim-defesas.mjs`. O exemplo do próprio K5a (PV 43, Vida 26,
+   60,47%) é "acima de 60%" pelo texto (Saudável), e o código o põe em Machucado (o `floor` dá 60). Publicar
+   o texto sem mexer no código faria o livro e a mesa discordarem nas frações. As saídas:
+   - (a) o código passa a comparar a fração exata (Saudável se `cur / max > 0,6`, e assim por diante);
+   - (b) o texto diz o que o código faz;
+   - (c) segurar o K5a.
+   As células "61–100%" etc. ficaram como estavam.
+2. **A condição "Morrendo"** (`condicoes.json`, id `morrendo`). Ela tem `porSeisTicks: 1`: a mesa tira 1
+   PV a cada 6 Ticks de quem a tem. A nota diz "Precisa ser estabilizado (Cura, Dif 10) antes que a Vida
+   chegue ao limite". O Tratar novo diz o contrário nos dois pontos:
+   - quem está em 0 PV ou menos e não sangra fica parado ("Sem tratamento");
+   - o Estabilizar é só do Sangramento (D-007).
+   A condição é aplicada pelo Mestre (a mesa não a põe sozinha, e nenhum código a cita pelo id). Mudar o
+   `porSeisTicks` muda o que acontece numa mesa que já usa a condição. Saídas:
+   - (a) tirar o `porSeisTicks` e reescrever a nota pelo Tratar;
+   - (b) só a nota;
+   - (c) deixar como está.
+   Não mexi.
+
+**Verificação** (sobre `2aa30250`):
+- `npm run validate` verde ("Portões OK"), com a linha do teste ajustada;
+- `npx astro sync && npx tsc --noEmit` sem erro;
+- `npx astro build --force` verde.
+- **No gerado**, com `../tmp/executora/prova-v2.py`:
+  - os 24 trechos novos estão lá;
+  - os 9 velhos dão 0: "à dor, à tortura e ao desânimo", "mesmo quando a tabela acima põe a dor na
+    Convicção", "por cena/dia", "teste de Cura vs Dif 10", "Quem chega a 0 de Vida cai.", "Tratar é
+    Inteligência + Cura", "rola Inteligência + Cura contra a Virulência", e "conta como superado" e
+    "metade da Dificuldade" no Cap. IV;
+  - o link do Arcano aponta para `#tratar`, que existe no Cap. IV.
+  - Saída: "TUDO OK".
+
+**Para quem joga hoje:**
+- texto de regra: Cap. III, Cap. IV com o Tratar novo, Combate, Resistir, Sentidos, Habilidades, Artes e
+  Qual sistema;
+- a referência do Mestre na mesa passa a dizer "Raciocínio + Cura" no Estabilizar.
+Nenhuma ficha muda, e nenhuma migração.

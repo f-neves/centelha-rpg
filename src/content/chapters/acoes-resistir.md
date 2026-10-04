@@ -59,7 +59,7 @@ A bebida forte é a exceção declarada: tem pool 0, nada a drenar, e o Desgaste
 
 **Atributo drenado volta a um ponto por dia de descanso**, salvo o Curare, que se resolve pela duração declarada (uma cena) em vez de recuperação diária. Um Atributo em **zero** incapacita naquele eixo: Vigor 0 é o corpo desligando, Destreza 0 é paralisia, Inteligência 0 é delírio. É por aqui que o veneno mata, sem precisar de regra de morte própria.
 
-**Tratar** é Inteligência + Cura contra a Potência, uma vez por intervalo pendente. Passando, reduz o pool restante pela mesma régua de Margem da rolagem de resistir; antídoto específico em mãos dá **+4** à jogada.
+**Reconhecer** o veneno é Inteligência + Cura, e o Mestre decide se é preciso rolar. **Tratar** é o que se faz com a mão (sangrar e limpar a ferida, administrar o antídoto na veia): **Raciocínio + Cura contra a Potência**, uma vez por intervalo pendente. Passando, reduz o pool restante pela mesma régua de Margem da rolagem de resistir; antídoto específico em mãos dá **+4** à jogada. Dar um remédio ou um antídoto para beber não pede teste, e ele vale o que o próprio remédio disser.
 
 **Circunstância** · sangrar a ferida no primeiro Tick **−2** na Potência efetiva · dose dobrada ou direto no sangue **+4**.
 
@@ -105,7 +105,7 @@ Estes números foram calibrados contra o **camponês** (Vigor 2, Resistência 1)
 
 <div class="callout regra"><span class="lbl">Regra</span>É isso que faz "põe ele na cama" ser um ato mecânico e não um floreio. A febre dos pântanos que o camponês não vence de jeito nenhum vira Virulência 6 com cama e cuidado, e ele desce um estágio a cada três dias. <b>Doença não é vencida pela ficha do doente, é vencida por quem cuida dele.</b></div>
 
-**Ajuda** · o curandeiro que quiser mais do que a circunstância rola Inteligência + Cura contra a Virulência e apoia pela [tabela geral de apoio](/regras/acoes-e-sistema). O −2 vale para até três doentes, e some acima disso.
+**Ajuda** · reconhecer a doença é Inteligência + Cura, e o Mestre decide se é preciso rolar. O curandeiro que quiser mais do que a circunstância trata com a mão (cirurgia, administração intravenosa), rola **Raciocínio + Cura** contra a Virulência e apoia pela [tabela geral de apoio](/regras/acoes-e-sistema). Dar um remédio para beber não pede teste. O −2 vale para até três doentes, e some acima disso.
 
 **Contágio** · quem convive com um doente Instalado ou pior rola uma vez por dia contra metade da Virulência. Quem falha no contágio começa em Incubação.
 

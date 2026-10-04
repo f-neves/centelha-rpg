@@ -1115,7 +1115,7 @@
     "valorTagMax": 3,
     "teto": 5,
     "estabilizar": {
-      "pericia": "Cura",
+      "pericia": "Raciocínio + Cura",
       "dif": 10,
       "alternativa": "Vigor + Resistência (em si mesmo)"
     }

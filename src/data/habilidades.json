@@ -428,7 +428,7 @@
     "atributos": [
       "vigor"
     ],
-    "descricao": "Aguentar: a marcha que não acaba, a noite sem dormir, o frio, a sede, a dor, o veneno e a bebida na mesa do senhor local. É a Habilidade da duração, e por isso raramente decide uma cena sozinha, mas decide em que estado você chega na cena seguinte. Também é ela que se rola para não desmaiar, para segurar o fôlego e para continuar de pé depois do que deveria ter derrubado você.",
+    "descricao": "Aguentar: a marcha que não acaba, a noite sem dormir, o frio, a sede, a dor, o veneno e a bebida na mesa do senhor local. É a Habilidade da duração, e por isso raramente decide uma cena sozinha, mas decide em que estado você chega na cena seguinte. Também é ela que se rola para não desmaiar por outras causas que não o 0 PV (o desmaio em 0 PV não tem teste), para segurar o fôlego e para continuar de pé depois do que deveria ter derrubado você.",
     "niveis": [
       {
         "nivel": 0,

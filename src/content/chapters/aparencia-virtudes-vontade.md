@@ -40,7 +40,7 @@ Se o Atributo é o que o personagem **consegue** fazer e a Habilidade é o que e
 | Virtude | Empurra você a… | Resiste… |
 |---|---|---|
 | **Compaixão** | poupar, socorrer e cuidar | à crueldade |
-| **Convicção** | seguir apesar de tudo | à dor, à tortura e ao desânimo |
+| **Convicção** | seguir apesar de tudo | à tortura (na parte da alma) e ao desânimo |
 | **Temperança** | segurar o próprio impulso | à tentação e à provocação |
 | **Bravura** | ficar e encarar | ao medo |
 
@@ -52,7 +52,7 @@ Se o Atributo é o que o personagem **consegue** fazer e a Habilidade é o que e
 
 **Compaixão** · O que você faz com a dor dos outros: o impulso de poupar, socorrer e cuidar, e o peso que sobra em quem escolhe não fazer nada. É a Virtude que mais decide cena fora do combate, porque quase toda escolha difícil de uma campanha passa por ela: matar o prisioneiro ou não, gastar a última bandagem em quem não é do grupo, entregar o refugiado para salvar a aldeia. Não confunda com Empatia: a Empatia entende o que o outro está sentindo, a Compaixão decide o que você faz com isso.
 
-**Convicção** · A teimosia da alma: o que mantém você de pé quando já não há motivo visível para continuar. É a Virtude do propósito, e quem a testa não é o inimigo que argumenta, é o que dói e cansa: a marcha que não acaba, o cerco no terceiro mês, o ferro em brasa, a notícia de que tudo foi em vão. Integridade é não ceder ao que os outros fazem com você; a Convicção é não ceder quando ninguém está fazendo nada, só o tempo e a dor.
+**Convicção** · A teimosia da alma: o que mantém você de pé quando já não há motivo visível para continuar. É a Virtude do propósito, e quem a testa não é o inimigo que argumenta, é o que dói e cansa: a marcha que não acaba, o cerco no terceiro mês, o ferro em brasa que quer arrancar uma confissão (a dor do ferro, em si, é do corpo), a notícia de que tudo foi em vão. Integridade é não ceder ao que os outros fazem com você; a Convicção é não ceder quando ninguém está fazendo nada, só o tempo e a dor.
 
 **Temperança** · O domínio sobre o que vem de dentro: apetite, raiva, pressa, orgulho e a vontade de responder à provocação. É a Virtude do freio, e ela decide as cenas em que o erro não veio do inimigo, veio de você: o insulto que não devia ter sido respondido, a bolsa de ouro que não devia ter sido aceita, o gole a mais na véspera da batalha. Onde a Convicção aguenta o que vem de fora e dói, a Temperança aguenta o que vem de dentro e agrada.
 
@@ -83,7 +83,7 @@ Quando a pressão é sobre a alma (o medo que manda correr, a provocação que p
 
 O Atributo fica de fora de propósito: somado, ele empurra todo mundo para perto da média e apaga a diferença entre uma Virtude e a vizinha, que é justamente o que o teste existe para mostrar. A **Centelha** também não entra no teste de Virtude: nem inteira, nem pelo 2 × mín.
 
-**Só a pressão da alma vai com a Virtude sozinha, e o corpo não testa Virtude nenhuma.** O que pesa no **corpo**, a dor física inclusive, não é teste de Virtude, mesmo quando a tabela acima põe a dor na Convicção: a dor do ferro, os efeitos das [Artes](/artes/regras) que invadem o corpo e o próprio sangramento ([Estabilizar](/regras/vida-ferimentos-cura#sangramento-e-estabilização)) são **Vigor + Resistência**, a mesma Habilidade que já resolve veneno, doença e ambiente hostil no capítulo [Resistir](/regras/acoes-resistir). Ali quem aguenta é a carne, e nenhuma Virtude entra na conta. Do mesmo jeito, as jogadas das Artes que forçam a alma de outra coisa a ceder (Banir, Círculo) resistem pela [Defesa Mental](/regras/defesas), um número passivo, não um teste.
+**Só a pressão da alma vai com a Virtude sozinha, e o corpo não testa Virtude nenhuma.** O que pesa no **corpo**, a dor física inclusive, não é teste de Virtude: a dor do ferro, os efeitos das [Artes](/artes/regras) que invadem o corpo e o próprio sangramento, quando a pessoa o estanca sozinha ([Estabilizar](/regras/vida-ferimentos-cura#sangramento-e-estabilização)), são **Vigor + Resistência**, a mesma Habilidade que já resolve veneno, doença e ambiente hostil no capítulo [Resistir](/regras/acoes-resistir); quem estanca o de outro rola **Raciocínio + Cura** ([Cap. IV](/regras/vida-ferimentos-cura)). Ali quem aguenta é a carne, e nenhuma Virtude entra na conta. Do mesmo jeito, as jogadas das Artes que forçam a alma de outra coisa a ceder (Banir, Círculo) resistem pela [Defesa Mental](/regras/defesas), um número passivo, não um teste.
 
 **Fora do teste de Virtude sozinho, a única soma de Virtude com Atributo ou Habilidade no jogo é o Canalizar Virtude**, o callout logo abaixo: um bônus voluntário, não um teste, sem Dificuldade própria. Nenhuma outra regra do livro soma Virtude a Atributo ou Habilidade na mesma parada.
 
@@ -112,7 +112,7 @@ A tabela é a régua de personalidade em números. A **Virtude 2** só segura a 
 
 A **Força de Vontade** é a reserva interior de determinação: o tanto de si que o personagem consegue **queimar para forçar o destino**. Vai de **0 a 12** e **começa em 0**, o piso grátis, que não é uma vontade fraca e sim reserva nenhuma, nada a queimar. O nível 1 já é comprado, e um herói típico leva a Vontade para 5 ou mais.
 
-Você gasta Vontade para **turbinar uma ação importante** (cada ponto soma **+1d6** numa jogada ativa ou **+4** numa Defesa, no máximo **1 ponto por ação ou jogada**, inclusive cada golpe que se defende), **resistir** a medo e manipulação (resistir é um **pagamento à parte**, fora desse limite de 1 ponto: 1 + Margem, teto 4; ver [Resistir](/regras/relacoes-sociais#resistir-gastar-força-de-vontade), em Relações Sociais), **ignorar penalidades** e **conjurar** as Técnicas e Artes mais poderosas.
+Você gasta Vontade para **turbinar uma ação importante** (cada ponto soma **+1d6** numa jogada ativa ou **+4** numa Defesa, no máximo **1 ponto por ação ou jogada**, inclusive cada golpe que se defende), **resistir** a medo e manipulação (resistir é um **pagamento à parte**, fora desse limite de 1 ponto: 1 + Margem, teto 4; ver [Resistir](/regras/relacoes-sociais#resistir-gastar-força-de-vontade), em Relações Sociais), **ignorar penalidades** e **conjurar** as Técnicas e Artes mais poderosas. O ponto de +1d6 ou de +4 se declara antes do teste (na Defesa, antes de quem ataca rolar) e não volta, acerte o golpe ou erre. O +4 vale também contra leitura social, porque a leitura bate no número da Defesa Social; o que não existe contra leitura é a recusa de depois (Resistir).
 
 **Ela volta por três caminhos.** O primeiro é uma **noite de sono**: 1 ponto, em meditação, descanso completo ou sono profundo, o mesmo repouso que a Mana pede (ela volta Centelha por hora, e 2 × Centelha por hora nesse repouso; a Energia volta a cada cena). O segundo é uma **[Firula](/regras/habilidades)**, e aqui o número depende do nível: a de nível 2 devolve **1** e a de nível 3 devolve **3**, se for a Vontade que você escolher entre as três reservas. O terceiro é **agir fiel à própria régua moral** num momento em que isso custa: 1 ponto, a critério do Mestre (o callout acima).
 

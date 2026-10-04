@@ -31,7 +31,7 @@ A família inteira ainda espera regra. O que segue é o que cada ação é e a j
 - **Ler motivações.** Farejar a mentira e a intenção. Vive em [Relações Sociais](/regras/relacoes-sociais), contra a Defesa Social.
 - **Avaliar um item.** Dizer o que uma peça vale, se é autêntica, de onde veio. Direta, Inteligência + o Ofício da peça.
 - **Decifrar.** Cifra, língua morta, símbolo entalhado. Acumulada, Inteligência + Conhecimentos Gerais ou Ocultismo.
-- **Diagnosticar e socorrer.** Ler o corpo é Inteligência + Cura; agir sobre ele é Raciocínio + Cura.
+- **Diagnosticar e socorrer.** Ler o corpo é Inteligência + Cura, e o Mestre decide se é preciso rolar; agir sobre ele com a mão é Raciocínio + Cura; dar um remédio para beber não pede teste.
 - **Orientar-se.** Saber onde você está e para que lado fica o que procura. Direta, Percepção + Sobrevivência.
 - **Rastrear.** Pegada, galho quebrado, cinza ainda morna. Acumulada, Percepção + Sobrevivência.
 

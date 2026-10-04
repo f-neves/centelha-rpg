@@ -419,7 +419,8 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
     // exemplo de Tocado.
     const ladoDe = (janela) => {
       if (/(sem|não tem|nao tem|nenhuma) Centelha|Centelha 0/i.test(janela)) return 'semCentelha';
-      if (/(com|tem) Centelha|Centelha 1|Tocado/i.test(janela)) return 'comCentelha';
+      // Qualquer Centelha de 1 para cima é o lado de quem tem (o exemplo do Tratar diz "Centelha 3").
+      if (/(com|tem) Centelha|Centelha [1-9]|Tocado/i.test(janela)) return 'comCentelha';
       return null;
     };
     // O RESTO DA DIVISÃO É QUEM DECIDE SE O LADO IMPORTA: com PV par as duas

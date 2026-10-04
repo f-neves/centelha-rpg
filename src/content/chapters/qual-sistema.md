@@ -116,4 +116,4 @@ flowchart TD
 - **Três medos:** intimidação = Social; medo mágico = Mental; medo da cena = Bravura.
 - **Defesa física:** desviou = Esquiva; aparou = Bloqueio (usa a maior).
 - **Percepção x Perspicácia:** o mundo = Percepção; as pessoas = Perspicácia.
-- **Blindar a mente:** pagar **1 + Margem** de Força de Vontade (teto 4) recusa o efeito; com Margem 1 ou mais, pagar só 1 encurta um grau na régua de Duração do próprio efeito, e no menor grau o anula (ver [Defesas](/regras/defesas)). Contra **leitura** não dá para se recusar: só o número da Defesa protege.
+- **Gastar Vontade:** antes do teste, 1 ponto dá +4 na Defesa (também contra leitura), no máximo 1 por ação; depois que o ataque passou, resistir custa 1 + Margem (teto 4), fora do limite de 1 por ação ([Cap. X](/regras/relacoes-sociais)). No efeito mental, com Margem 1 ou mais, dá para pagar só 1 e o efeito dura um grau a menos ([Cap. XI](/regras/defesas)). Contra leitura não dá para se recusar depois do teste: só o número da Defesa protege, e o +4 de antes entra nele.
