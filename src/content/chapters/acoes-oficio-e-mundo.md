@@ -28,11 +28,11 @@ Fabricar é **Longa** por padrão. Vira **Acumulada** só quando há pressa real
 
 <p class="formula">Acúmulo total = Montagem + (Peça × unidades)</p>
 
-Requisito e Dificuldade parecem a mesma coisa dita duas vezes, e não são. **O Requisito é conhecimento e a Dificuldade é execução**, e as duas se separam nos extremos da bancada: uma **cota de malha** é Requisito 2 com Acúmulo enorme, porque qualquer armeiro sabe abrir, passar e rebitar um anel, e são milhares deles; uma **fechadura de segredo** é Requisito 5 com Acúmulo pequeno, porque são poucos dias de trabalho que quase ninguém sabe fazer.
+Requisito e Dificuldade parecem a mesma coisa dita duas vezes, e não são. **O Requisito é conhecimento e a Dificuldade é execução**, e as duas se separam nos extremos da bancada: uma **cota de malha** é Requisito 2 com Acúmulo enorme, porque qualquer ferreiro sabe abrir, passar e rebitar um anel, e são milhares deles; uma **fechadura de segredo** é Requisito 5 com Acúmulo pequeno, porque são poucos dias de trabalho que quase ninguém sabe fazer.
 
 Só a **Habilidade** conta para o Requisito, nunca a soma com o Atributo: destreza de mão não substitui não saber. As exceções são duas, as duas mais abaixo: na fabricação, quem ajuda sob a condução de alguém que cumpre o Requisito da peça não precisa cumpri-lo, mas trabalha contra a Dificuldade da peça (Ajuda); na obra, o ajudante sob direção de quem tem o ofício não tem Requisito nenhum e trabalha contra a Dificuldade 4 (Direção de obra). Nos dois casos, quem sabe é quem conduz.
 
-O **Piso** existe porque há serviço que não é técnica, é mão. Uma cota de malha são milhares de anéis rebitados um a um, e nenhuma Habilidade do mundo cria dedos extras: o mestre armeiro faz uma cota **melhor** que o oficial, não uma cota em três dias.
+O **Piso** existe porque há serviço que não é técnica, é mão. Uma cota de malha são milhares de anéis rebitados um a um, e nenhuma Habilidade do mundo cria dedos extras: o mestre ferreiro faz uma cota **melhor** que o oficial, não uma cota em três dias.
 
 ## Ofícios Gerais e os ofícios
 
@@ -46,9 +46,9 @@ Fora do território, a regra é uma só:
 
 <p class="formula">Sem o ofício específico, a Dificuldade sobe <b>+4</b> · e Ofícios Gerais vale <b>metade</b> ao conferir o Requisito</p>
 
-O primeiro é um degrau, não uma parede: um faz-tudo excepcional bate uma espada simples, e leva três dias e meio nela. O segundo é a parede de verdade, e é o que fecha a fechadura de segredo, a placa completa sob medida, a peça de joalheria e o casco de navio a quem não tem o ofício.
+O primeiro é um degrau, não uma parede: um faz-tudo excepcional bate uma espada simples, e leva cinco dias e meio nela. O segundo é a parede de verdade, e é o que fecha a fechadura de segredo, a placa completa sob medida, a peça de joalheria e o casco de navio a quem não tem o ofício.
 
-Os ofícios são **[Habilidades Secundárias](/regras/habilidades-secundarias)**, ilimitadas e mais baratas: Ferreiro, Carpintaria, Alvenaria, Couraria, Costura, Joalheria, Gastronomia, Artesanato, Navegação, e o que mais a história pedir (Olaria, Vidraria, Construção Naval). O Atributo é **Destreza** para trabalho de mão e **Inteligência** para projeto, traçado e cálculo.
+Os ofícios são **[Habilidades Secundárias](/regras/habilidades-secundarias)**, ilimitadas e mais baratas: Ferreiro, Carpintaria, Alvenaria, Engenharia, Couraria, Costura, Joalheria, Gastronomia, Artesanato, Navegação, e o que mais a história pedir (Olaria, Vidraria). O Atributo é **Destreza** para trabalho de mão e **Inteligência** para projeto, traçado e cálculo.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>O ferreiro tem Ferreiro 5 e Ofícios Gerais 3. Pela <a href="/centelha-rpg/regras/acoes-e-sistema">regra da maior e da menor</a>, ele rola com Ferreiro e soma +3 ao total.</div>
 
@@ -58,10 +58,10 @@ Os ofícios são **[Habilidades Secundárias](/regras/habilidades-secundarias)**
 
 | Espadas no mesmo lote | Acúmulo total | Dias | Dias por espada |
 |:--:|:--:|:--:|:--:|
-| 1 | 22 | 6,3 | 6,3 |
-| 3 | 42 | 12,0 | 4,0 |
-| 5 | 62 | 17,7 | 3,5 |
-| 8 | 92 | 26,3 | 3,3 |
+| 1 | 22 | 11,0 | 11,0 |
+| 3 | 42 | 21,0 | 7,0 |
+| 5 | 62 | 31,0 | 6,2 |
+| 8 | 92 | 46,0 | 5,8 |
 
 O ganho é grande e satura, que é como funciona de verdade. O limite do lote é físico, não numérico: quantas peças cabem no fogo, na bancada, no tear. Na falta de um número melhor, **oito** para peça de mão e **três** para peça grande. O lote exige unidades **iguais**: cinco espadas do mesmo modelo são um lote, mas uma espada, um elmo e uma panela são três montagens.
 
@@ -80,22 +80,22 @@ A peça sai **Comum** por padrão. A régua vai para os dois lados, e cada grau 
 | Montagem e Peça **× 1,5** | Montagem e Peça **× 0,5** |
 | Intervalo sobe um degrau **a cada dois graus** | o Mestre pode descer um degrau em −2 |
 | Preço fixo por grau: Boa **5×**, Ótima **30×**, Excelente **70×** a Comum ([Qualidade de Itens](/regras/custo-qualidade-e-equipamento)) | Tosca até **⅓**, Sucata até **⅙** |
-| **+1** num número da peça | **−1** num número da peça |
+| **+1** ponto de qualidade, gasto na tabela de Melhoria do Cap. XIV | **−1** ponto de qualidade |
 
-O "número da peça" é o que aquela peça tem para dar: acerto, defesa da arma, dado de dano, Absorção de uma categoria, penalidade reduzida em 1, um degrau a menos de peso. No máximo **+2 ou −2 no mesmo número**, para que uma Excelente espalhe o ganho em vez de empilhar.
+O que o ponto compra é o que a tabela de Melhoria de [Qualidade de Itens](/regras/custo-qualidade-e-equipamento) compra, com os preços dela. No máximo **+2 ou −2 no mesmo número**, para que uma Excelente espalhe o ganho em vez de empilhar.
 
 A espada serve de gabarito da régua inteira:
 
 | Grau | Req | Dif | Acúmulo | Intervalo | Quem faz, e em quanto tempo |
 |---|:--:|:--:|:--:|---|---|
-| Sucata | 1 | 1 | 6 | dia | Ferreiro 1, meio dia |
-| Tosca | 2 | 4 | 11 | dia | oficial, 1,7 dia |
-| **Comum** | 3 | 7 | 22 | dia | oficial, 6,3 dias |
-| Boa | 4 | 10 | 33 | dia | Ferreiro 4 e soma 10, 4,4 dias |
-| Ótima | 5 | 13 | 50 | **semana** | mestre (soma 12), 6,3 semanas |
-| Excelente | 6 | 16 | 74 | semana | mestre em oficina de mestre, ~15 semanas |
+| Sucata | 1 | 1 | 6 | dia | Ferreiro 1 (soma 6), três quartos de dia |
+| Tosca | 2 | 4 | 11 | dia | oficial, 2,2 dias |
+| **Comum** | 3 | 7 | 22 | dia | oficial, 11 dias |
+| Boa | 4 | 10 | 33 | dia | Ferreiro 4 e soma 10, 6,6 dias |
+| Ótima | 5 | 13 | 50 | **semana** | mestre (soma 12), 10 semanas |
+| Excelente | 6 | 16 | 74 | semana | mestre em oficina de mestre, ~12 semanas |
 
-A subida do intervalo na Ótima é o que impede a peça fina de sair no ritmo da peça de tropa. E a última linha mostra o teto do sistema funcionando: a soma máxima de um humano é 12, o que dá média 21 e cinco pontos por semana contra a Dificuldade 16, ou seja quinze semanas. **Uma espada Excelente não sai numa forja de vila**: exige a soma máxima humana (12) e a oficina de mestre da régua abaixo, não um bônus à parte somado por cima.
+A subida do intervalo na Ótima é o que impede a peça fina de sair no ritmo da peça de tropa. E a última linha mostra o teto do sistema funcionando: a soma máxima de um humano é 12, o que dá média 18 e dois pontos por semana contra a Dificuldade 16, ou seja 37 semanas. Na oficina de mestre a Dificuldade cai para 12, e são seis pontos por semana, cerca de 12 semanas. **Uma espada Excelente não sai numa forja de vila**: exige a soma máxima humana (12) e a oficina de mestre da régua abaixo, não um bônus à parte somado por cima.
 
 Para baixo a régua serve à mesa tanto quanto para cima: é o que o bando forja no acampamento, o que o exército distribui à tropa, e o que o mercador tenta empurrar como Comum.
 
@@ -120,9 +120,9 @@ A ajuda da [Régua Comum](/regras/acoes-e-sistema) (o ajudante contra metade da 
 
 A condução **herda os modificadores**. Oficina e material são circunstâncias da tarefa e valem para todos que trabalham nela; o **+4** de quem não tem o ofício específico é pessoal, e pesa só sobre quem não o tem. Cada artesão conduz até **dez** ajudantes, como na direção de obra. Sob condução, os aprendizes dispensam o Requisito 3 da espada, e cada um soma o que a sua média passar da Dificuldade que a oficina deixou.
 
-**O braçal, que não tem o ofício, não soma na espada em nenhuma oficina**: na de mestre, a Dificuldade dele é 7 − 4 + 4 = 7, e a média 7 não passa dela. Os aprendizes, de Habilidade 1 ou 2, somam numa oficina bem equipada ou de mestre: **numa oficina bem equipada ou de mestre, dez aprendizes aceleram uma espada Comum e não fazem uma Ótima**.
+**O braçal, que não tem o ofício, não soma na espada em nenhuma oficina**: na de mestre, a Dificuldade dele é 7 − 4 + 4 = 7, e a média 6 não passa dela. Os aprendizes, de Habilidade 1 ou 2, somam numa oficina de mestre; numa bem equipada, só os de soma 4 ou mais: **numa oficina bem equipada ou de mestre, dez aprendizes aceleram uma espada Comum e não fazem uma Ótima**.
 
-**Direção de obra.** Esta regra é de **obra**, e não de fabricação. Obra é **construção fixa no lugar** (casa, celeiro, forja, moinho, muralha, ponte, catedral) ou peça da **escala de estações**; todo o resto é fabricação, qualquer que seja o ofício da linha. A carroça e o barco de pesca são fabricação; o navio de guerra é obra. O braçal tem média 7, e numa obra de Dificuldade 11 ele contribuiria com um número negativo: pela regra crua, carregar pedra atrapalharia. O que falta é a figura do mestre de obras.
+**Direção de obra.** Esta regra é de **obra**, e não de fabricação. Obra é **construção fixa no lugar** (casa, celeiro, forja, moinho, muralha, ponte, catedral) ou peça da **escala de estações**; todo o resto é fabricação, qualquer que seja o ofício da linha. A carroça e o barco de pesca são fabricação; o navio de guerra é obra. O braçal tem média 6, e numa obra de Dificuldade 11 ele contribuiria com um número negativo: pela regra crua, carregar pedra atrapalharia. O que falta é a figura do mestre de obras.
 
 <p class="formula">Numa obra, sob direção de quem tem o ofício, o ajudante sem ofício trabalha contra <b>Dificuldade 4</b></p>
 
@@ -132,7 +132,7 @@ Quem pensa é o mestre; o ajudante executa serviço simples, e serviço simples 
 
 ## As tabelas de referência
 
-O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6, média 10,5), para uma unidade, sem ajuda, em qualidade Comum. O perito é soma 9 e o mestre é soma 12.
+O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6, Habilidade 3, média 9), para uma unidade, sem ajuda, em qualidade Comum. O perito é soma 9 (média 14) e o mestre é soma 12 (média 18). "Fechada ao oficial" quer dizer que ele não faz a peça: ou o Requisito passa da Habilidade dele, ou a média dele não passa da Dificuldade, como na Lamelar.
 
 **A jornada é do ofício.** O "dia" destas tabelas é uma **jornada** daquele ofício: **6 horas** no ofício leve (escrivão, acadêmico), **8** no artesão, **10** no braçal e no trabalho pesado. A linha em escala de horas converte pela jornada do próprio ofício, e **meia jornada é meio intervalo**.
 
@@ -141,44 +141,45 @@ O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6,
 | Peça | Ofício | Req | Dif | Mont. | Peça | Oficial |
 |---|---|:--:|:--:|:--:|:--:|:--:|
 | Prego, gancho, dobradiça | Gerais | 1 | 4 | 2 | 1 | menos de 1 h |
-| Ferradura, corrente, grampo | Ferreiro, Gerais | 1 | 4 | 3 | 2 | menos de 1 h |
-| Flecha rústica (dúzia) | Gerais | 1 | 4 | 2 | 5 | 1 h |
+| Ferradura, corrente, grampo | Ferreiro, Gerais | 1 | 4 | 3 | 2 | 1 h |
+| Flecha rústica (dúzia) | Gerais | 1 | 4 | 2 | 5 | 1,5 h |
 | Refeição farta para dez | Gastronomia, Gerais | 1 | 4 | 2 | 4 | 1 h |
-| Flecha de guerra (dúzia) | Arcos | 2 | 7 | 2 | 6 | 2 h |
-| Emplastro, tintura, tinta | Herbalismo | 2 | 7 | 2 | 5 | 2 h |
-| Página iluminada, cópia fiel | Iluminura | 3 | 7 | 1 | 6 | 2 h |
-| Chave copiada de molde | Serralheria | 4 | 11 | 2 | 3 | fechada ao oficial |
+| Flecha de guerra (dúzia) | Carpintaria | 2 | 7 | 2 | 6 | 4 h |
+| Emplastro, tintura, tinta | Herbologia | 2 | 7 | 2 | 5 | 3,5 h |
+| Página iluminada, cópia fiel | Caligrafia, Escrivão | 3 | 7 | 1 | 6 | 3,5 h |
+| Chave copiada de molde | Ferreiro | 4 | 11 | 2 | 3 | fechada ao oficial |
 
 ### Escala de dias
 
 | Peça | Ofício | Req | Dif | Mont. | Peça | Oficial |
 |---|---|:--:|:--:|:--:|:--:|:--:|
 | Porta, banco, mesa tosca, cerca de 20 m | Carpintaria, Gerais | 1 | 4 | 2 | 4 | 1 dia |
-| Escudo | Carpintaria | 1 | 4 | 2 | 6 | 1 dia |
-| Gambeson | Alfaiataria | 1 | 4 | 3 | 20 | 3,5 dias |
-| Faca, machado, ponta de lança | Ferreiro | 2 | 4 | 6 | 3 | 1,5 dia |
-| Sela, arreio, bota, couro endurecido | Curtume | 2 | 7 | 3 | 9 | 3,5 dias |
-| Móvel bem-acabado, arca | Carpintaria | 3 | 7 | 3 | 8 | 3 dias |
-| **Espada, machado de guerra, arma marcial** | Ferreiro | 3 | 7 | 12 | 10 | 6,3 dias |
-| Arco longo, besta (madeira já curada) | Arcos, Carpintaria | 3 | 7 | 4 | 12 | 4,5 dias |
-| Carroça | Carpintaria | 3 | 7 | 4 | 20 | 6,9 dias |
+| Escudo | Carpintaria | 1 | 4 | 2 | 6 | 1,5 dia |
+| Gambeson | Costura | 1 | 4 | 3 | 20 | 4,5 dias |
+| Faca, machado, ponta de lança | Ferreiro | 2 | 4 | 6 | 3 | 2 dias |
+| Sela, arreio, bota, couro endurecido | Couraria | 2 | 7 | 3 | 9 | 6 dias |
+| Móvel bem-acabado, arca | Carpintaria | 3 | 7 | 3 | 8 | 5,5 dias |
+| **Espada, machado de guerra, arma marcial** | Ferreiro | 3 | 7 | 12 | 10 | 11 dias |
+| Arco longo, besta (madeira já curada) | Carpintaria | 3 | 7 | 4 | 12 | 8 dias |
+| Carroça | Carpintaria | 3 | 7 | 4 | 20 | 12 dias |
 | Anel, broche, peça de joalheria | Joalheria | 4 | 11 | 3 | 6 | fechada ao oficial |
-| Fechadura, engenho, autômato de corda | Serralheria | 5 | 11 | 4 | 10 | fechada ao oficial |
+| Fechadura, engenho, autômato de corda | Ferreiro | 5 | 11 | 4 | 10 | fechada ao oficial |
 
 ### Escala de semanas
 
 | Peça | Ofício | Req | Dif | Mont. | Peça | Piso | Oficial |
 |---|---|:--:|:--:|:--:|:--:|:--:|:--:|
-| Casa de madeira, celeiro | Carpintaria | 2 | 4 | 4 | 40 | 2 | 7 semanas |
-| Cota de malha | Armaria | 2 | 8 | 2 | 12 | 3 | 6 semanas |
-| Brigandina | Armaria | 2 | 6 | 3 | 10 | 2 | 3 semanas |
-| Lamelar | Armaria | 3 | 9 | 3 | 10 | 3 | 9 semanas |
-| Barco de pesca | Carpintaria | 3 | 7 | 4 | 20 | 2 | 7 semanas |
-| Forja, moinho, oficina montada | Alvenaria | 3 | 7 | 6 | 40 | 4 | 13 semanas |
-| Placa de munição | Armaria | 4 | 8 | 4 | 14 | 3 | 7 semanas |
-| Placa completa sob medida | Armaria | 5 | 11 | 6 | 24 | 6 | fechada ao oficial |
+| Casa de madeira, celeiro | Carpintaria | 2 | 4 | 4 | 40 | 2 | 9 semanas |
+| Cota de malha | Ferreiro | 2 | 8 | 2 | 12 | 3 | 14 semanas |
+| Brigandina | Ferreiro | 2 | 6 | 3 | 10 | 2 | 4 semanas |
+| Lamelar | Ferreiro | 3 | 9 | 3 | 10 | 3 | fechada ao oficial |
+| Barco de pesca | Carpintaria | 3 | 7 | 4 | 20 | 2 | 12 semanas |
+| Forja, oficina montada | Alvenaria | 3 | 7 | 6 | 40 | 4 | 23 semanas |
+| Moinho | Engenharia | 3 | 7 | 6 | 40 | 4 | 23 semanas |
+| Placa de munição | Ferreiro | 4 | 8 | 4 | 14 | 3 | fechada ao oficial |
+| Placa completa sob medida | Ferreiro | 5 | 11 | 6 | 24 | 6 | fechada ao oficial |
 
-<p class="muted">A <strong>carroça</strong> sai em dias: avulsa, cerca de 267 pc em 6,9 dias do oficial; em lote de três, cerca de 238 pc cada. O catálogo a vende a 300 pc, 1,12 vez o avulso. O <strong>barco de pesca</strong>, do mesmo ofício e dos mesmos números, fica na escala de semanas, a cerca de 1.600 pc.</p>
+<p class="muted">A <strong>carroça</strong> sai em dias: avulsa, 12 dias do oficial; em lote de três, cerca de 10,7 dias cada. O catálogo a vende a 300 pc, e o <strong>barco de pesca</strong>, do mesmo ofício e dos mesmos números, fica na escala de semanas, a cerca de 1.600 pc.</p>
 
 ### Escala de estações
 
@@ -186,9 +187,9 @@ O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6,
 |---|---|:--:|:--:|:--:|:--:|:--:|
 | Casa de pedra, torre pequena | Alvenaria | 3 | 7 | 2 | 8 | 1 |
 | Muralha, ponte de pedra | Engenharia | 4 | 11 | 3 | 20 | 2 |
-| Navio de guerra, catedral | Naval, Alvenaria | 5 | 11 | 4 | 40 | 4 |
+| Navio de guerra, catedral | Carpintaria, Alvenaria | 5 | 11 | 4 | 40 | 4 |
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Uma muralha tocada por um mestre de obras (média 16, cinco pontos por estação contra a Dificuldade 11) e dez braçais (média 7, três cada contra a Dificuldade 4 da direção) avança <b>35 por estação</b>. Um trecho de Acúmulo 23 sai numa estação de trabalho, e sai da obra na segunda, que é o piso.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Uma muralha tocada por um mestre de obras (média 14, três pontos por estação contra a Dificuldade 11) e dez braçais (média 6, dois cada contra a Dificuldade 4 da direção) avança <b>23 por estação</b>. Um trecho de Acúmulo 23 sai numa estação de trabalho, e sai da obra na segunda, que é o piso.</div>
 
 ## Reparar, melhorar, improvisar, desmontar
 

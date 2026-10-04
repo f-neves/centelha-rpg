@@ -294,3 +294,95 @@ ponto vai ao autor.
 - o +4 antes do teste vale contra leitura;
 - a Vontade das fórmulas é a máxima.
 Só texto e uma nota no `regras.json`, que nenhum código lê. Nenhuma ficha muda, e nenhuma migração.
+
+**Commit da rodada 6:** `2ab7da2e`.
+- **CI:** o Validar 37194234726 falhou primeiro no Smoke `test-grid` ("[aquece] a peça pegável não está
+  na vez"). É intermitente e não tem relação com a rodada, que é só texto. O job rerodado deu verde: 19
+  de 19.
+- O `c0fde3d0` da Revisora, que já contém este commit, também deu 19 de 19.
+- O Deploy dele foi cancelado pelo push seguinte, e o `d558cf05` publicou.
+- Revisora 131: PROCEDE na rodada 5, sem CORRIGE.
+
+## Rodada 7 · Ofício, Renda e Serviços (parte 1: o texto)
+
+**Antes de mexer.**
+- Registro: a D-011 (o catálogo de preços fica; é a decisão 18 do 1d), a D-031 (Engenharia como ofício de obra; só pedra é
+  Alvenaria), a D-052 (o moinho passa para Engenharia, Requisito 3 fica) e a D-034 (Longa a 3 por dado).
+  Nada contradiz o registro.
+- Citações de (b) conferidas contra o main: todas lá. Os tempos do oficial e o lote estavam a 3,5, como a
+  G77 registrou.
+- **A rodada se divide em duas.**
+  - Esta parte aplica o que é texto escrito à mão.
+  - O grupo **SERVICOS, REQUISITO-FAIXA, RENDA-1, GANHO-BRUTO e TETO** mexe no bloco gerado
+    `gen:economia-ganhar-a-vida`. As faixas 26/47/96, a coluna de Requisito, a coluna de Livre e o teto em
+    Livre saem de `renda.json`, que sai do modelo `lore/economia/v2`.
+  - Esse grupo pede mudar o modelo e o gerador. Parei e perguntei ao Arquiteto, e ele fica para a parte 2.
+  - A frase de `:253` ("É o que faz o mestre armeiro se mudar para a cidade") é a do teto, reescrita no
+    TETO. Por isso o "armeiro" dela ainda está lá.
+
+**Os pontos desta parte** (o texto de (e), palavra por palavra):
+- **T3a** (`habilidades-secundarias.json`, com o capítulo regerado): o Ferreiro (a serralheria e "todo
+  trabalho em ferro"), a Carpintaria ("ponte de madeira", "casco de barco e de navio", "flecha, arco,
+  besta", e "Arcos e construção naval são Carpintaria; não há ofício separado."), a Herbologia e a
+  Alquimia. A Caligrafia e o Escrivão não mudaram, como (e) diz.
+- **T3b**: a coluna Ofício das tabelas, linha a linha:
+  - Arcos → Carpintaria;
+  - Herbalismo → Herbologia;
+  - Iluminura → Caligrafia, Escrivão;
+  - Serralheria → Ferreiro (duas linhas);
+  - Alfaiataria → Costura;
+  - Curtume → Couraria;
+  - Armaria → Ferreiro (as cinco armaduras);
+  - Naval, Alvenaria → Carpintaria, Alvenaria.
+  - "armeiro" virou "ferreiro" nas duas frases que não são do teto.
+  - A lista de ofícios sem "Construção Naval".
+- **ENGENHARIA**: o fim da descrição da Engenharia no catálogo, e "Engenharia" na lista de ofícios. As
+  linhas da muralha e da casa de pedra ficaram.
+- **MOINHO**: a linha "Forja, moinho, oficina montada" virou duas (Forja, oficina montada, Alvenaria; Moinho,
+  Engenharia), as duas com 23 semanas.
+- **LONGA-2**:
+  - o parágrafo das tabelas (oficial soma 6, Habilidade 3, média 9; perito média 14; mestre média 18; o
+    que quer dizer "fechada ao oficial");
+  - as três escalas com os tempos novos;
+  - o lote;
+  - a espada por grau, com a Sucata "Ferreiro 1 (soma 6), três quartos de dia";
+  - a frase da Excelente (37 semanas; 12 na oficina de mestre);
+  - o faz-tudo (cinco dias e meio);
+  - o braçal (média 6);
+  - os aprendizes;
+  - a direção de obra;
+  - a muralha (23 por estação);
+  - a carroça (12 dias, 10,7 em lote).
+  - O catálogo de preços não mudou (D-011).
+  - A tabela gerada do Ganhar a vida (Oficial média 10,5, etc.) NÃO mudou: é da parte 2.
+- **C21a**: a placa de munição "fechada ao oficial", e a Excelente no LONGA-2.
+- **C8a**: "+1 ponto de qualidade, gasto na tabela de Melhoria do Cap. XIV" / "−1 ponto de qualidade", e
+  a frase do que o ponto compra, com o link.
+- **RENDA-2** (`custo-de-servico-e-itens.md`, fim do primeiro parágrafo de Renda): a frase da simplificação
+  do Mestre.
+- **K2b**:
+  - "até a G73" e "até a B14" saíram de `custo-servicos.md` e de `CalculadoraRecompensa.astro` (o aviso
+    do topo e a linha da conta);
+  - "(`limitesCriacao.centelha`)" saiu da Criação;
+  - o "`aaltura` [...] `Dif × 3/5`" do Mestre virou "a soma à altura de cada degrau (Atributo +
+    Habilidade) é a Dificuldade × 3/5";
+  - nas cinco armaduras de `armaduras.json` a nota "Armadura órfã resolvida (§5 [...])" saiu da
+    descrição (que vira a coluna Notas da tabela), e a frase de (e) entrou uma vez, numa linha acima da
+    tabela de Armaduras, nomeando as cinco. A frase tem a palavra "provisórios", então ganhou os
+    marcadores `TOLERÂNCIA` e `LEVANTA QUANDO` (o balanceamento final das armaduras);
+  - "(B14 fase 3)" saiu das duas notas do bestiário (`mon-gigante-das-nuvens`, `mon-gigante-do-fogo`),
+    com `gen-bestiario` e `gen-monsters` rodados;
+  - o `combate-tempo-bench.html`, que embute as armaduras, foi regerado.
+- A pendência **G77** ganhou a atualização: o texto do Ofício já está a 3 por dado; seguem a 3,5 o bloco
+  gerado do Ganhar a vida e a economia gerada. `Pendencias.md` regerado.
+
+**Verificação** (sobre `d558cf05`):
+- `npm run validate` verde, depois dos marcadores de tolerância;
+- `npx astro sync && npx tsc --noEmit` sem erro;
+- `npx astro build --force` verde.
+- No gerado, com `../tmp/executora/prova-r7a.py`:
+  - os 35 trechos novos estão lá. O "Fechada ao oficial" aparece com aspas curvas, pelo tipógrafo do Astro;
+  - os 20 velhos dão 0: Armaria, Serralheria, Herbalismo, Iluminura, Alfaiataria, Curtume, "Naval,",
+    "Construção Naval", "média 10,5), para", "quinze semanas", "267 pc", "num número da peça", "35 por
+    estação", G73 e B14 em Serviços e na calculadora, `limitesCriacao` na Criação, `aaltura` no Mestre,
+    "órfã" em Equipamentos e "B14 fase 3" no Bestiário.

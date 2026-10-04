@@ -30,7 +30,7 @@ O dinheiro mede tempo e trabalho. Este capítulo reúne **o que se ganha**, **o 
 
 ## Renda
 
-O nível de **Recursos** é a faixa social do trabalho. **Renda** é o bruto que entra; **Custo** é o custo de vida da faixa, com o estilo de vida que ela obriga; **Livre** é o que sobra: o que dá para juntar.
+O nível de **Recursos** é a faixa social do trabalho. **Renda** é o bruto que entra; **Custo** é o custo de vida da faixa, com o estilo de vida que ela obriga; **Livre** é o que sobra: o que dá para juntar. Quem trabalha embolsa só a Renda Livre, o que sobra do bruto depois do custo de vida. É uma simplificação, decisão do Mestre, para poupar a conta de gastos: numa cena em que o custo de vida importa, o Mestre pode trocá-la pela conta de gastos, nunca pelas duas ao mesmo tempo.
 
 **Recursos 0.** Sem renda contínua. Vive do que ganha em trabalhos e recompensas.
 

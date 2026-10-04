@@ -1759,7 +1759,7 @@
         "dano": "2d6 +11 impacto",
         "perfArma": null,
         "ticks": 6,
-        "notas": "dado pelo porte Grande (B14 fase 3)"
+        "notas": "dado pelo porte Grande"
       }
     ],
     "tecnicas": [],
@@ -1882,7 +1882,7 @@
         "dano": "3d6 +14 impacto",
         "perfArma": null,
         "ticks": 7,
-        "notas": "dado pelo porte Enorme (B14 fase 3)"
+        "notas": "dado pelo porte Enorme"
       }
     ],
     "tecnicas": [],

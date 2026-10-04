@@ -125,7 +125,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 
 ### Veil, o Feiticeiro-guerreiro · Especialista (Centelha 4)
 
-<p class="muted"><strong>Exceção declarada:</strong> o teto de criação é Centelha 3 (<code>limitesCriacao.centelha</code>); Veil sobe a 4 porque a Centelha não se compra com XP, é concedida pelo Mestre num marco de história, e o orçamento Especialista é o único que já supõe esse marco alcançado. Não é o número padrão de um personagem recém-criado: pela faixa padrão (0 numa campanha mortal; de 1 a 3 numa heroica), Veil é de uma campanha heroica que o Mestre abre acima dela.</p>
+<p class="muted"><strong>Exceção declarada:</strong> o teto de criação é Centelha 3; Veil sobe a 4 porque a Centelha não se compra com XP, é concedida pelo Mestre num marco de história, e o orçamento Especialista é o único que já supõe esse marco alcançado. Não é o número padrão de um personagem recém-criado: pela faixa padrão (0 numa campanha mortal; de 1 a 3 numa heroica), Veil é de uma campanha heroica que o Mestre abre acima dela.</p>
 
 | Compra | Detalhe | XP |
 |---|---|:---:|

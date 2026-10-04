@@ -826,7 +826,7 @@
     "id": "herbologia",
     "nome": "Herbologia",
     "grupo": "conhecimento",
-    "descricao": "Plantas: reconhecer, colher na hora certa, secar, preparar e saber para que serve cada uma, como remédio, tempero, tinta ou veneno. Também é o que impede a confusão fatal entre duas folhas parecidas, uma que cura e outra que mata.",
+    "descricao": "Plantas: reconhecer, colher na hora certa, secar, preparar (emplastro, tintura e tinta) e saber para que serve cada uma, como remédio, tempero, tinta ou veneno. Também é o que impede a confusão fatal entre duas folhas parecidas, uma que cura e outra que mata.",
     "niveis": [
       {
         "nivel": 0,
@@ -1041,7 +1041,7 @@
     "id": "alquimia",
     "nome": "Alquimia",
     "grupo": "conhecimento",
-    "descricao": "Extrair, destilar e combinar substâncias em preparados que fazem alguma coisa: elixir, ácido, fogo que gruda, sal que revela, fumaça que derruba. É trabalho de bancada, com tempo, material e risco, e a fronteira com a Herbologia é simples, uma colhe o ingrediente, a outra o transforma.",
+    "descricao": "Extrair, destilar e combinar substâncias em preparados que fazem alguma coisa: elixir, ácido, fogo que gruda, sal que revela, fumaça que derruba. É trabalho de bancada, com tempo, material e risco, e a fronteira com a Herbologia é simples: a Herbologia prepara o que a própria planta dá (emplastro, tintura, tinta), e a Alquimia combina e transforma substâncias em algo que a planta sozinha não faz.",
     "niveis": [
       {
         "nivel": 0,
@@ -1127,7 +1127,7 @@
     "id": "engenharia",
     "nome": "Engenharia",
     "grupo": "conhecimento",
-    "descricao": "O cálculo das máquinas e das grandes obras: engenho de cerco, moinho, ponte, comporta, guindaste, alavanca e contrapeso, escoramento de galeria. Onde a Arquitetura pensa o que fica de pé, a Engenharia pensa o que se move e o que vence uma força.",
+    "descricao": "O cálculo das máquinas e das grandes obras: engenho de cerco, moinho, ponte, comporta, guindaste, alavanca e contrapeso, escoramento de galeria. Onde a Arquitetura pensa o que fica de pé, a Engenharia pensa o que se move e o que vence uma força. Vale como ofício de obra: a direção de muralha, ponte e comporta usa Engenharia, e o que é só pedra (casa, torre) é Alvenaria.",
     "niveis": [
       {
         "nivel": 0,
@@ -1471,7 +1471,7 @@
     "id": "ferreiro",
     "nome": "Ferreiro",
     "grupo": "oficio",
-    "descricao": "O trabalho do metal na forja, do começo ao fim: aquecer, malhar, temperar, soldar, rebitar, consertar e fabricar de dobradiça a ferradura, de prego a lâmina, de anel de malha a peça de placa. Cobre a arma e a armadura junto com o resto, porque é a mesma bigorna e o mesmo par de mãos; o que muda de uma peça para a outra é a dificuldade e o tempo, não o ofício. É o ofício mais presente de qualquer vila, e o único que devolve a uma espada lascada a qualidade que ela tinha.",
+    "descricao": "O trabalho do metal na forja, do começo ao fim: aquecer, malhar, temperar, soldar, rebitar, consertar e fabricar de dobradiça a ferradura, de prego a lâmina, de anel de malha a peça de placa. Cobre a arma, a armadura e a serralheria (fechadura, chave, dobradiça de segredo, mecanismo e engenho de ferro) junto com o resto: é todo trabalho em ferro, porque é a mesma bigorna e o mesmo par de mãos; o que muda de uma peça para a outra é a dificuldade e o tempo, não o ofício. É o ofício mais presente de qualquer vila, e o único que devolve a uma espada lascada a qualidade que ela tinha.",
     "niveis": [
       {
         "nivel": 0,
@@ -1514,7 +1514,7 @@
     "id": "carpintaria",
     "nome": "Carpintaria",
     "grupo": "oficio",
-    "descricao": "A madeira, da viga ao móvel: cortar, aparelhar, encaixar, montar e acabar. Cobre o que sustenta (telhado, assoalho, porta, escada, ponte, escoramento de mina, casco de barco) e o que se usa de perto (móvel, baú, cabo de arma, arco, acabamento), porque é a mesma madeira, a mesma ferramenta e o mesmo par de mãos; o que muda de uma peça para a outra é a tolerância do encaixe, não o ofício. É o ofício mais pedido de qualquer acampamento, porque quase tudo que quebra numa viagem é de madeira.",
+    "descricao": "A madeira, da viga ao móvel: cortar, aparelhar, encaixar, montar e acabar. Cobre o que sustenta (telhado, assoalho, porta, escada, ponte de madeira, escoramento de mina, casco de barco e de navio) e o que se usa de perto (móvel, baú, cabo de arma, flecha, arco, besta, acabamento), porque é a mesma madeira, a mesma ferramenta e o mesmo par de mãos; o que muda de uma peça para a outra é a tolerância do encaixe, não o ofício. Arcos e construção naval são Carpintaria; não há ofício separado. É o ofício mais pedido de qualquer acampamento, porque quase tudo que quebra numa viagem é de madeira.",
     "niveis": [
       {
         "nivel": 0,
