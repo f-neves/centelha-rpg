@@ -51,7 +51,7 @@ Fora do combate não existe uma conversão única: o Mestre escolhe, pela ação
 
 Onde já existe uma régua própria e mais detalhada para uma ação, como a qualidade de Ofício (que troca cinco números de uma vez, não só um grau), ela vale sobre esta tabela geral. Esta tabela é o padrão para a ação que ainda não tem a própria.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Decifrar uma página antiga é Hora (Longa). Com soma 12 (média 18) contra Dificuldade 5, são 13 acima: duas Margens de sobra: o jogador pode dividir entre eixos (uma em Tempo, termina em Minuto; outra em Qualidade, a tradução sai livre de erro) ou empilhar as duas no mesmo eixo (Tempo duas vezes: termina no próprio Tick).</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Decifrar uma página antiga é Hora (Longa). Com soma 12 (média 18) contra Dificuldade 5, são 13 acima: duas Margens de sobra. O jogador pode dividir entre eixos (uma em Tempo, termina em Minuto; outra em Qualidade, a tradução sai livre de erro) ou empilhar as duas no mesmo eixo (Tempo duas vezes: termina no próprio Tick).</div>
 
 ## Os cinco modos de ação
 

@@ -370,3 +370,23 @@ condições, e não pelo id:
 Efeito de tirar o campo do catálogo: toda Morrendo já aplicada numa mesa, que está gravada só como
 `{ id }`, para de tirar PV na hora, sem migração. Uma Morrendo editada à mão pelo Mestre com número
 próprio continua com o número dela. Não mexi: espera o OK.
+
+**Commits da D-036 e da D-038:** `7ab6c733` e `5df8c7d5`, com um CI só, no `5df8c7d5`: Validar 37189061282
+(19 de 19) e Deploy 37189061263 (2 de 2).
+
+### D-037 · a Morrendo vira marcador (liberada pelo Arquiteto)
+
+- `src/data/condicoes.json`, condição `morrendo`:
+  - saiu o `"porSeisTicks": 1`;
+  - a nota passou de "Vida em 0 ou menos, ainda acima do limite da morte (`regras.json` · `morte`: metade
+    do PV máximo, abaixo do zero). Precisa ser estabilizado (Cura, Dif 10) antes que a Vida chegue ao
+    limite." a "0 PV ou menos, entre a vida e a morte; ver Tratar.".
+- Efeito, o que o autor decidiu: a Morrendo já aplicada numa mesa (gravada só como `{ id }`) deixa de tirar
+  PV a cada 6 Ticks, e a referência do Mestre perde a linha "−1 a cada 6 Ticks". Quem perde PV é o
+  Sangrando. Sem migração.
+- `npm run validate` verde, e o `test-sangramento.mjs` segue verde.
+
+### O ajuste de pontuação da 129
+
+- `acoes-e-sistema.md:54`: "duas Margens de sobra: o jogador pode dividir" passou a "duas Margens de
+  sobra. O jogador pode dividir".

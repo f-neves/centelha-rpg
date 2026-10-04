@@ -179,8 +179,8 @@
     },
     {
       "id": "morrendo", "nome": "Morrendo", "icone": "✝", "grupo": "corpo", "cor": "morte",
-      "foraDeCombate": true, "porSeisTicks": 1,
-      "nota": "Vida em 0 ou menos, ainda acima do limite da morte (`regras.json` · `morte`: metade do PV máximo, abaixo do zero). Precisa ser estabilizado (Cura, Dif 10) antes que a Vida chegue ao limite."
+      "foraDeCombate": true,
+      "nota": "0 PV ou menos, entre a vida e a morte; ver Tratar."
     },
     {
       "id": "estabilizado", "nome": "Estabilizado", "icone": "✚", "grupo": "corpo", "cor": "bom",
