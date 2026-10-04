@@ -7558,7 +7558,7 @@
   "habilidades": [
    {
     "nome": "Constrição",
-    "descricao": "após morder e agarrar, causa dano contínuo por rodada até o alvo se soltar (Atletismo)"
+    "descricao": "após morder e agarrar, causa dano contínuo por rodada enquanto o agarrão se mantém (Combate, Manobras)"
    },
    {
     "nome": "Corpo flexível",
@@ -8696,7 +8696,7 @@
   "habilidades": [
    {
     "nome": "Mordida e rolamento",
-    "descricao": "após morder e agarrar, rola na água causando dano contínuo até o alvo escapar (Atletismo)"
+    "descricao": "após morder e agarrar, rola na água causando dano contínuo enquanto o agarrão se mantém"
    },
    {
     "nome": "Emboscada aquática",

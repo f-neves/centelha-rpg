@@ -93,6 +93,14 @@
     "definicao": "Valor fixo e passivo que o atacante precisa superar: (Destreza + Habilidade) × 2 + 2 × mín(Centelha, Habilidade), mais a Especialidade quando o escopo nomeado dela se aplicar (ela não é parcela fixa: o portão dela é a situação). Vem por Esquiva ou por Bloqueio (arma/escudo). Contra projéteis rápidos (flecha, virote, bala de funda, dardo) não se bloqueia com arma nem com a mão: só Esquiva, ou Bloqueio com escudo hábil (cobre ≥30% do corpo, médio+ para um usuário Médio) estando apto a manejá-lo. Arremessos lentos (lança, machado, pedra grande) bloqueiam normalmente."
   },
   {
+    "id": "defesa-de-agarrao",
+    "termo": "Defesa de agarrão",
+    "aliases": [
+      "grapple"
+    ],
+    "definicao": "Valor fixo e passivo contra o agarrão: (Força ou Destreza + Briga ou Atletismo) × 2 + 2 × mín(Centelha, Habilidade usada), sempre o maior de cada par. Ver Manobras, em Combate Físico."
+  },
+  {
     "id": "defesa-mental",
     "termo": "Defesa Mental",
     "aliases": [

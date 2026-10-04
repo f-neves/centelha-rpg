@@ -951,10 +951,10 @@
       "pc": 30
     },
     "peso": 1.5,
-    "descricao": "Não fere: um acerto deixa o alvo Imobilizado (Defesa para prender; escapar com Força ou Acrobacias vs o lançamento).",
+    "descricao": "Não fere: um acerto deixa o alvo Preso (não se desloca, mas age) até escapar: Força + Atletismo contra o total do lançamento, e cada tentativa gasta a ação.",
     "tags": [
       "arremessável",
-      "imobiliza"
+      "prende"
     ],
     "arma": {
       "classe": "arremesso",

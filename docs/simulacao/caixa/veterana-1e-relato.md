@@ -64,3 +64,133 @@ rodadas 1 a 3 e as decisões D-036 a D-040 estão em `veterana-1d-relato.md`.
 - o Amortecer segue a tabela de Dano;
 - a Área do Mestre mostra a altura de referência.
 Só texto e uma coluna na Área do Mestre. Nenhuma migração.
+
+**Commit da rodada 4:** `6781f6b9` · **CI:** Validar 37191729074 (19 de 19) e Deploy 37191729068 (2 de 2).
+Revisora: rodada 130, PROCEDE. O script `a4_queda_manobra.py` é da Veterana e mora em `tmp/`: a seção C4a
+dele segue velha (sem o −1), e a nota fica só aqui.
+
+## Rodada 5 · Combate, Manobra, Armas
+
+**Antes de mexer.**
+- Registro conferido:
+  - D-033 (Rajada), D-043 (Imobilizado), D-048 (as três leituras da Manobra, e manter rolado no Tick do
+    Golpe) e D-019;
+  - C-046, C-047 e C-048, que a D-033 manda conferir. A Rajada continua sendo regra escrita, e o "feito +
+    recebido" da Guarda (C-047) é o que o livro já diz.
+  - Nenhum ponto aplicado contradiz o registro.
+- Citações de (b) conferidas contra o main: todas estavam lá, e nenhum ponto estava resolvido. A tabela de
+  Velocidade já dizia "Ação demorada" desde a rodada 3 do 1d; o ART-28 parte desse texto.
+- **O código da Rajada já faz o que a D-033 pede.** `combate-tempo.ts:327-332` dá ao golpe i a penalidade
+  `pen × i` com `penDadosAcumula: true` (`regras.json` → `combate.rajada`). Isso é 0, −1d6 e −2d6. Só o
+  texto do livro dizia outra coisa. O Grid ainda não cobra o ataque FEITO na Guarda (a K37, adiada): não
+  mexi nisso.
+
+**Os pontos** (o texto de (e), palavra por palavra, salvo onde anotado):
+- **MANOBRA**
+  - Cap. IX: a seção nova "Manobras: agarrar, derrubar, empurrar", inteira, entre a Empunhadura dupla e
+    Dano e Armadura;
+  - a Vantagem tática: "(Imobilizado: ver Manobras)", e a linha nova do alvo agarrado, −2;
+  - a Velocidade 3 ganhou "levantar-se";
+  - Corpo e Movimento: "Agarrar, imobilizar, derrubar, empurrar vivem [...] seção Manobras";
+  - Ofício e Mundo: "Agarrar, imobilizar, derrubar e empurrar também";
+  - glossário: o verbete novo "Defesa de agarrão" (alias "grapple").
+- **ESCAPISMO**
+  - Corpo e Movimento: as duas linhas novas (Escapar de amarras; Escapar de rede, de Arte que prende e de
+    agarrão);
+  - Cap. XIII: a tag **Prende** e a Rede ("Prende. Deixa o alvo Preso em vez de feri-lo");
+  - `armas.json`: a Rede passou a ter as tags `arremessável, prende`, e a descrição diz Preso. O filtro de
+    Tag de `/equipamentos` sai do dado e mostra `prende` em ordem alfabética;
+  - `artes/regras`: a linha Aprisionamento e contato;
+  - Bestiário (`src/data/bestiario/mon-cobra-constritora.json` e `mon-crocodilo.json`, com o
+    `gen-bestiario` e o `gen-monsters` rodados): "enquanto o agarrão se mantém". Na Cobra, o link de (e)
+    "([Combate](/regras/combate), Manobras)" ficou "(Combate, Manobras)" em texto puro, porque o texto dos
+    poderes do bestiário não renderiza Markdown.
+  - Itens 6 e 7: sem mudança de texto, como (e) diz.
+- **ESCAPISMO-CAT**: a secundária **Escapismo** entrou em `habilidades-secundarias.json` (grupo corpo; o
+  `gen-cap-pericias` a põe em ordem alfabética, entre Escalada e Ginástica). O capítulo foi regerado ("24
+  primárias, 67 secundárias").
+  - A descrição é a de (e), sem os dois links: nenhuma descrição de secundária tem link, e a ficha mostra o
+    texto puro. "[Combate](/regras/combate)" e "[Corpo e Movimento](...)" ficaram "Combate" e "Corpo e
+    Movimento".
+  - A entrada vai SEM a escala de níveis (0 a 6), que as outras 66 têm. O (e) não dá os textos dos níveis,
+    e eu não os inventei. O campo é opcional no esquema. Fica para quem escrever os níveis.
+- **T2c**: a frase da Centelha nos quatro lugares (Cap. IX, Cap. XI duas vezes, Cap. V O bônus de nível). No
+  Cap. XI a data "(Reforma da Centelha, 28/09/2026)" saiu, como (e) manda.
+- **K6a**: a frase da Corrida, a do arredondamento depois das fórmulas e a Investida (a tabela e o exemplo
+  da Sora: "corre 7 no Arranque", "cobre 14"). Conferido: o Arranque da Sora (Força 4, Destreza 6,
+  Atletismo 3) é 2 + 1 + 0,75 + 3 = 6,75, que dá 7.
+- **K1b**: a marcação real nos nove lugares
+  - Cap. IX: "lista de exemplos", o link para Armas & Armaduras, "destes modificadores situacionais" e
+    "Guarda sob pressão";
+  - Quase-Acerto: o link;
+  - Criação: "Exceção declarada" e os três links;
+  - `/caminhos/leitor-de-almas` (`tecnicas.json`): o itálico virou `<em>que houve</em>`, porque o texto
+    das Técnicas só converte `**`.
+  - Fora da lista, mesmo defeito: o `` `limitesCriacao.centelha` `` cru no parágrafo da Exceção declarada
+    virou `<code>`.
+- **RAJADA**
+  - a frase da penalidade (0, −1d6, −2d6);
+  - depois da tabela de tetos, os dois parágrafos de (e): "A Rajada é de golpes de arma [...]" e "Cada
+    golpe da Rajada conta como um ataque feito [...] −6 [...] −4";
+  - Guarda sob pressão: "(cada golpe de uma Rajada e cada Manobra é um ataque)".
+- **ART-28**: a linha "9 a 15 | Ação demorada | recarregar uma besta", a linha nova da Arte (5 a 7, esticada
+  10 em diante) e "as Artes esticadas passam de 7 pela escada do capítulo das Artes".
+- **ART-29**: "em todo golpe de arma", e a frase da Arte como exceção.
+- **ALCANCE**: a tag Alcance com 1 m e ±2.
+- **ARMADURA-2X**
+  - Nadar: "o dobro da Penalidade dela [...]";
+  - `/equipamentos`: o parêntese da Furtividade e da natação;
+  - Cap. XIII: "Na natação, a Circunstância da armadura [...] também substitui a Penalidade."
+- **C16a**
+  - Corpo e Movimento: a seção nova "Arremessar: o FAA", com a fórmula e a tabela, antes de "O que o motor
+    já responde", e o "(a de Arremessar: o FAA, acima)";
+  - Cap. XIII e `/equipamentos`: o parêntese da tabela de Arremessar;
+  - a tag Pesada sem "ações ágeis".
+  - O «O que o motor já responde» dentro do texto de (e) foi escrito com aspas retas, como o livro cita
+    seções.
+  - Conferido contra o código: `ficha-engine.ts:1662` (FAA = 2 × Força + Atletismo + Arremesso, de 2 a 24)
+    e `forca-empurrao.ts:56-74` com as constantes de `regras.json` → `forca` (7, 0,7, 0,4, ápice 0,1 kg,
+    teto 0,25, queda 0,8).
+- **Arquivo gerado que mudou junto:** `combate-tempo-bench.html` traz o `armas.json` embutido; foi regerado
+  (`gen-bench-tempo.mjs`), e só a Rede mudou nele.
+
+**PARADO, à espera do Arquiteto:**
+- **K4a (o Desarmado +0/0).** O (e) manda `/equipamentos` dizer +0 de Acerto e +0 de Defesa. A linha da
+  página sai de `armas.json`, e o Desarmado lá tem `"acerto": 1, "defesaArma": 1`. Esses dois números são
+  lidos pela ficha (o ataque e o Bloqueio de quem luta sem arma) e pela mesa (`armaDoSlot`). Mudar a página
+  é mudar o dado, e mudar o dado muda o ataque e a defesa de toda ficha desarmada em 1. A "regra herdada"
+  do 1c não está no registro com texto verbatim. Não mexi.
+
+**Divergências de dado que a rodada deixa abertas** (só anoto, nada no (e) as cobre):
+- `condicoes.json`:
+  - **agarrado** ("Só ações de força, arma curta ou escapar", `defesa −2`): pelo livro novo, o agarrado não
+    age. O −2 contra quem ataca de fora bate;
+  - **imobilizado** (`defesa −4`, `acao −2`, nota "Agarrado, preso ou amarrado"): pelo livro novo, o
+    Imobilizado não age (o `acao −2` diz o contrário), e "agarrado" e "preso" são outros estados;
+  - **não existe a condição Preso**;
+  - **caido**: a nota "Levantar consome movimento"; o livro diz ação de Velocidade 3.
+  - São números que a mesa lê (`defesa`, `acao`).
+- `scripts/gen-grid-artes.mjs:248` liga a Arte Prisão (e Engolir, Paralisia, Círculo) à condição
+  `imobilizado`. Pelo ESCAPISMO, a Arte que prende causa Preso. É código do Grid.
+
+**Verificação** (sobre `6781f6b9`):
+- `npm run validate` verde, depois de regerar o `combate-tempo-bench.html`;
+- `npx astro sync && npx tsc --noEmit` sem erro;
+- `npx astro build --force` verde.
+- No gerado, com `../tmp/executora/prova-r5.py`:
+  - os 45 trechos novos estão lá, em 14 páginas;
+  - os 18 velhos dão 0: "conjurar uma Arte de grau alto", "até o teto da Habilidade", "50 a 67%",
+    "corre 6.", `**` e "[Armas" no Cap. IX; "teto da Habilidade" no Cap. XI; "Imobiliza, não causa dano" e
+    "ações ágeis" no Cap. XIII; "imobiliza" em Equipamentos; "armadura pesada +4" e "um agarrão que já não
+    cede" em Corpo e Movimento; "Força/Atletismo vs o nível" em artes/regras; `**` e "](/" em Criação;
+    "[Armas" no Quase-Acerto; "*que houve*" no Leitor de Almas; "(Atletismo)" no Bestiário.
+  - Saída: "TUDO OK".
+
+**Para quem joga hoje:**
+- a regra de Manobras (agarrar, derrubar, empurrar) entra no Combate;
+- a Rajada diz o que o Grid já fazia;
+- a Rede prende em vez de imobilizar;
+- a secundária Escapismo aparece na ficha, sem a escala de níveis;
+- o arremesso ganha a tabela do FAA;
+- o glossário ganha "Defesa de agarrão".
+Nenhuma ficha salva muda, e nenhuma migração.

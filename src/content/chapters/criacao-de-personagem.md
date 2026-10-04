@@ -75,13 +75,13 @@ Na criação não existe limite próprio: valem os máximos normais da ficha. Qu
 | Mana | (Centelha × 2) + Força de Vontade |
 | Iniciativa | 1d6 + Raciocínio + Prontidão (sem Centelha, Especialidade nem penalidade) |
 
-<p class="muted"><strong>Energia</strong> é o combustível das [Técnicas de Proeza](/caminhos); <strong>Mana</strong> é o do [Arcano](/arcano).</p>
+<p class="muted"><strong>Energia</strong> é o combustível das <a href="/centelha-rpg/caminhos">Técnicas de Proeza</a>; <strong>Mana</strong> é o do <a href="/centelha-rpg/arcano">Arcano</a>.</p>
 
 ## Três exemplos, um por orçamento
 
 Os três personagens abaixo mostram o que cada patamar entrega: **Kael** no iniciante, **Sora** no veterano e **Veil** no especialista. Repare onde o XP vai: boa parte do bolo se converte em **largura** (mais Proezas, Técnicas, habilidades e especialidades). É o toolbox que carrega a profundidade.
 
-<p class="muted">As quatro Virtudes das fichas abaixo (Bravura, Convicção, Temperança, Compaixão) e o modificador entre parênteses da Aparência (a régua de −6 a +6) estão detalhados no capítulo [Aparência, Virtudes & Vontade](/regras/aparencia-virtudes-vontade).</p>
+<p class="muted">As quatro Virtudes das fichas abaixo (Bravura, Convicção, Temperança, Compaixão) e o modificador entre parênteses da Aparência (a régua de −6 a +6) estão detalhados no capítulo <a href="/centelha-rpg/regras/aparencia-virtudes-vontade">Aparência, Virtudes &amp; Vontade</a>.</p>
 
 ### Kael, o Batedor · Iniciante (Centelha 3)
 
@@ -123,7 +123,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 
 ### Veil, o Feiticeiro-guerreiro · Especialista (Centelha 4)
 
-<p class="muted">**Exceção declarada:** o teto de criação é Centelha 3 (`limitesCriacao.centelha`); Veil sobe a 4 porque a Centelha não se compra com XP, é concedida pelo Mestre num marco de história, e o orçamento Especialista é o único que já supõe esse marco alcançado. Não é o número padrão de um personagem recém-criado: pela faixa padrão (0 numa campanha mortal; de 1 a 3 numa heroica), Veil é de uma campanha heroica que o Mestre abre acima dela.</p>
+<p class="muted"><strong>Exceção declarada:</strong> o teto de criação é Centelha 3 (<code>limitesCriacao.centelha</code>); Veil sobe a 4 porque a Centelha não se compra com XP, é concedida pelo Mestre num marco de história, e o orçamento Especialista é o único que já supõe esse marco alcançado. Não é o número padrão de um personagem recém-criado: pela faixa padrão (0 numa campanha mortal; de 1 a 3 numa heroica), Veil é de uma campanha heroica que o Mestre abre acima dela.</p>
 
 | Compra | Detalhe | XP |
 |---|---|:---:|

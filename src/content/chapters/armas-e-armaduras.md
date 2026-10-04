@@ -44,12 +44,12 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 
 ## Tags
 
-- **Alcance**: ataca a uma casa de distância; bônus contra quem se aproxima, penalidade colado.
+- **Alcance**: ataca a 1 m de distância (uma casa); **+2 no acerto** contra quem se aproxima, **−2** contra quem já está colado. É bônus de acerto de quem ataca, e não entra no teto de ±6 da Defesa.
 - **Ágil**: só descritiva, sem efeito mecânico próprio; o jeito ágil da arma já está nos números dela (dano baixo, acerto alto).
 - **Versátil**, 1 ou 2 mãos: com uma mão soma Força no dano; com as duas, Força×2.
 - **Sangramento**, um golpe que abre Margem deixa uma ferida que continua drenando: **Sangramento igual à Margem** (máx 3). Ver *Sangramento e Estabilização* em Vida & Ferimentos.
-- **Arremessável · Munição · Pesada**: lançar; gastar munição; usar Força total e −1 em ações ágeis.
-- **Imobiliza**, não causa dano: um acerto deixa o alvo **Imobilizado** até escapar (Força ou Atletismo vs o lançamento).
+- **Arremessável · Munição · Pesada**: lançar; gastar munição; usar Força total.
+- **Prende**, não causa dano: um acerto deixa o alvo **Preso** (não se desloca, mas age; [Combate](/regras/combate), Manobras) até escapar: Força + Atletismo contra o total do lançamento, e cada tentativa gasta a ação.
 
 ## Armas de Exemplo
 
@@ -76,7 +76,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 
 ### Armas à Distância
 
-<p class="muted">Aqui a <strong>Defesa</strong> dá lugar à <strong>Distância</strong>: o alcance máximo do disparo ou do arremesso, em metros. Arma de projétil não guarda, então não acrescenta nada ao Bloqueio. Os valores são o <em>tiro extremo</em>, não a distância em que se acerta com facilidade; para mirar bem, conte com algo em torno de metade. Nas armas de <strong>Arremesso</strong> o número é um teto do objeto, não uma promessa: o braço também limita, e vale <em>o menor</em> entre ele e o que o seu <strong>FAA</strong> alcança com aquele peso (o bloco <em>Peso, Arremesso e Corrida</em> da ficha faz essa conta). Um arco não tem essa segunda trava, porque quem lança a flecha é o arco.</p>
+<p class="muted">Aqui a <strong>Defesa</strong> dá lugar à <strong>Distância</strong>: o alcance máximo do disparo ou do arremesso, em metros. Arma de projétil não guarda, então não acrescenta nada ao Bloqueio. Os valores são o <em>tiro extremo</em>, não a distância em que se acerta com facilidade; para mirar bem, conte com algo em torno de metade. Nas armas de <strong>Arremesso</strong> o número é um teto do objeto, não uma promessa: o braço também limita, e vale <em>o menor</em> entre ele e o que o seu <strong>FAA</strong> alcança com aquele peso (a tabela de Arremessar, em Corpo e Movimento, e o bloco <em>Peso, Arremesso e Corrida</em> da ficha fazem essa conta). Um arco não tem essa segunda trava, porque quem lança a flecha é o arco.</p>
 
 <div class="table-wrap sem-ultima-coluna">
 
@@ -95,7 +95,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 | Pilum | Arremesso | ★P(N2) | 5 | 1d6+2 | +1 | 25 m | 1 | Anti-escudo: fura placa de N2 e entorta ao cravar |
 | Machado de Arremesso | Arremesso | ★C · I | 5 | 1d6+2 | +1 | 12 m | 1 | Gira no ar; golpe forte e curto |
 | Adaga de Arremesso | Arremesso | ★P(N0) | 5 | 1d6−2 | +1 | 10 m | 1 | Ágil, munição. Facas às dezenas; só fura pele |
-| Rede | Arremesso | ★I | 5 | 1d6 | +0 | 5 m | 1 | Imobiliza. Prende o alvo em vez de ferir |
+| Rede | Arremesso | ★I | 5 | 1d6 | +0 | 5 m | 1 | Prende. Deixa o alvo Preso em vez de feri-lo |
 
 </div>
 
@@ -128,7 +128,7 @@ A armadura **absorve dano depois do acerto**, com **três Absorções**: **Impac
 
 </div>
 
-<p class="muted"><strong>Penalidade:</strong> incide em qualquer ação física, incluindo <strong>Ataque, Esquiva, Bloqueio, Deslocamento e Salto</strong>; para <strong>Furtividade e atividades delicadas, dobra</strong> (na Furtividade, esse dobro é a própria Circunstância da armadura na Dificuldade, +4 nas de −2 e +6 nas de −3, e é uma cobrança só: não se tira também do total). <strong>Empilhar:</strong> dá para vestir mais de uma peça (gambeson sob malha, p.ex.): vale o <strong>maior Absorção de cada categoria</strong>, o <strong>maior Nível</strong> (a Resistência à Perfuração NUNCA soma) e a <strong>soma das Penalidades</strong>. A placa te torna um tanque, mas mais fácil de acertar e furtivo péssimo. Armadura não reduz o Bloqueio diretamente, mas a Penalidade dela, sim.</p>
+<p class="muted"><strong>Penalidade:</strong> incide em qualquer ação física, incluindo <strong>Ataque, Esquiva, Bloqueio, Deslocamento e Salto</strong>; para <strong>Furtividade e atividades delicadas, dobra</strong> (na Furtividade, esse dobro é a própria Circunstância da armadura na Dificuldade, +4 nas de −2 e +6 nas de −3, e é uma cobrança só: não se tira também do total). Na natação, a Circunstância da armadura (Cap. VIII, Nadar) também substitui a Penalidade. <strong>Empilhar:</strong> dá para vestir mais de uma peça (gambeson sob malha, p.ex.): vale o <strong>maior Absorção de cada categoria</strong>, o <strong>maior Nível</strong> (a Resistência à Perfuração NUNCA soma) e a <strong>soma das Penalidades</strong>. A placa te torna um tanque, mas mais fácil de acertar e furtivo péssimo. Armadura não reduz o Bloqueio diretamente, mas a Penalidade dela, sim.</p>
 
 ## Escudos
 

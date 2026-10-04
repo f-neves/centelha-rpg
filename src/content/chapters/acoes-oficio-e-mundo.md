@@ -266,7 +266,7 @@ A média é a da Longa, a mesma da fabricação. Cada faixa paga um valor por po
 
 ## O que não está aqui
 
-- **Bater em alguém**, e tudo o que decorre disso, está em [Combate Físico](/regras/combate). Agarrar, imobilizar e derrubar também, porque são controle e não dano.
+- **Bater em alguém**, e tudo o que decorre disso, está em [Combate Físico](/regras/combate). Agarrar, imobilizar, derrubar e empurrar também, porque são controle e não dano.
 - **Convencer, seduzir, coagir e ler gente** estão em [Relações Sociais](/regras/relacoes-sociais), com a Régua de Relação inteira.
 - **Ferimentos, cura e morte** estão em [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura). Este capítulo produz dano e desgaste; quem os administra é aquele.
 - **Feitiçaria** é o Arcano e as Artes. Uma Arte pode substituir qualquer ação deste capítulo, e quando substitui, a regra é a dela.

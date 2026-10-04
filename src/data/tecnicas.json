@@ -7090,7 +7090,7 @@
       "olhar-perspicaz"
     ],
     "aliases": [],
-    "texto": "Quando alguém lhe mente, role **Perspicácia + Empatia** vs a Defesa Social do alvo; o sucesso revela *que houve* mentira (não o conteúdo).",
+    "texto": "Quando alguém lhe mente, role **Perspicácia + Empatia** vs a Defesa Social do alvo; o sucesso revela <em>que houve</em> mentira (não o conteúdo).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"

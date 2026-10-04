@@ -215,6 +215,12 @@
     ]
   },
   {
+    "id": "escapismo",
+    "nome": "Escapismo",
+    "grupo": "corpo",
+    "descricao": "Soltar-se do que prende: corda, algema, saco, corrente, rede e o que a Arte de prender fecha em volta. É virar o pulso, encolher a mão para fora do ferro, achar a ponta do nó e sair de dentro do que fechou em volta sem arrebentar nada. Serve a quem está Preso (rede, Arte de prender) e a quem está Imobilizado sem agarrão (amarrado, preso em gelo) e tenta se soltar sozinho. O Agarrado não rola nada, e o agarrão do corpo a corpo não é Escapismo: tem regra própria em Combate. Fica ao lado da Ginástica, que é passar por um vão: o Escapismo é a técnica de quem já está preso. Soltar-se de dentro é Escapismo; abrir o fecho com gazua é Abrir Mecanismos. A regra de escapar de cada estado (Preso, Agarrado, Imobilizado) está em Corpo e Movimento e em Combate."
+  },
+  {
     "id": "escalada",
     "nome": "Escalada",
     "grupo": "corpo",

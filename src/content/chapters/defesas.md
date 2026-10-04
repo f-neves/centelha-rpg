@@ -59,7 +59,7 @@ Medo é o caso que mais engana, então fica a régua fechada:
 
 ## As fórmulas
 
-Um ponto de **[Centelha](/regras/centelha)** soma **2 pontos** a cada uma das defesas (e ao ataque), mas só até o **teto da Habilidade** usada naquela jogada: quem tem a fagulha acesa e não treinou ganha só o que o treino sustenta (Reforma da Centelha, 28/09/2026). Como os dois lados ganham igual e limitado do mesmo jeito, entre Centelhas iguais (com Habilidade que alcance) o efeito se cancela e o duelo joga limpo; contra quem tem menos Centelha, a diferença vira vantagem de verdade.
+A **[Centelha](/regras/centelha)** soma **2 × o menor entre ela e a Habilidade usada** naquela jogada (Habilidade 0 dá bônus 0) a cada uma das defesas e ao ataque: quem tem a fagulha acesa e não treinou ganha só o que o treino sustenta. Como os dois lados ganham igual e limitado do mesmo jeito, entre Centelhas iguais (com Habilidade que alcance) o efeito se cancela e o duelo joga limpo; contra quem tem menos Centelha, a diferença vira vantagem de verdade.
 
 ### Defesa Física
 
@@ -123,7 +123,7 @@ Uma defesa só existe se houver o que defender. Usa-se a **Inteligência** da cr
 - **Física · Bloqueio** = (Des + Bloqueio)×2 + 2×menor(Centelha, Bloqueio) + Esp + defesa da arma.
 - **Social** = (Compostura + Sociabilidade)×2 + 2×menor(Centelha, Sociabilidade) + Esp. Feras usam Sobrevivência.
 - **Mental** = Raciocínio + Integridade + Força de Vontade + 2×menor(Centelha, Integridade) + Esp (soma simples).
-- **Centelha** = 2 pontos por ponto em cada defesa e no ataque, até o teto da Habilidade usada (Reforma da Centelha, 28/09/2026). **Esp.** é a [Especialidade](#especialidade-o-foco-que-só-vale-às-vezes), que só vale na situação dela.
+- **Centelha** = 2 × mín(Centelha, Habilidade) em cada defesa e no ataque; Habilidade 0 dá 0. **Esp.** é a [Especialidade](#especialidade-o-foco-que-só-vale-às-vezes), que só vale na situação dela.
 - **Social** = te mover ou te ler. **Mental** = invadir/impor na sua mente. **Medo da cena** = Bravura.
 
 Como a Defesa Social se desgasta numa disputa longa, e como as relações do dia a dia decidem o que alguém faz por você, é assunto do capítulo [Relações Sociais](/regras/relacoes-sociais).

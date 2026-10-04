@@ -75,7 +75,7 @@ mesma lógica: quanto maior o número, mais difícil.*
 
 **Falha** · o padrão, com uma divergência que importa: **zerar o Acúmulo sobre água funda é começar a afundar**, e daí em diante vale [Sufocamento](/regras/acoes-resistir).
 
-**Circunstância** · armadura pesada **+4** · carga acima da faixa Leve **+2** · roupa pesada **+2** · a favor da corrente **−4** · corda de segurança **−2** · boia, tábua ou odre inflado **−2**. Estes três testes de água brava usam a carga como Circunstância fixa na Dificuldade, sem a curva da Vel. de Natação acima: são contas diferentes, de propósito, para não calibrar as duas juntas.
+**Circunstância** · armadura: **o dobro da Penalidade dela** (+2 nas de −1, +4 nas de −2, +6 nas de −3; é a Penalidade da armadura, cobrada uma vez só, aqui, e não se tira também do total) · carga acima da faixa Leve **+2** · roupa pesada **+2** · a favor da corrente **−4** · corda de segurança **−2** · boia, tábua ou odre inflado **−2**. Estes três testes de água brava usam a carga como Circunstância fixa na Dificuldade, sem a curva da Vel. de Natação acima: são contas diferentes, de propósito, para não calibrar as duas juntas.
 
 ## Cair
 
@@ -258,6 +258,19 @@ Repare que a régua de carga e a de altura se encontram: a **Leve** termina exat
 
 **Falha** não existe aqui, porque não há jogada. O que existe é o objeto que não sai do chão, e a mesa segue.
 
+### Arremessar: o FAA
+
+**FAA = Força × 2 + Atletismo + Arremesso**, de 2 a 24. A distância máxima, na melhor situação possível (correndo e girando), é **7 × FAA^0,7 ÷ peso^0,4** metros, com o peso em kg. Só se arremessa o que cabe na coluna "Arremessa até" da tabela do FAH, e a partir de 80% desse teto a distância cai em linha reta até zero. A fórmula vale de 100 g para cima: abaixo disso a distância cai com o peso (o ápice é 100 g, como diz "O que o motor já responde"). A coluna Distância das armas de Arremesso é o teto do objeto, e vale o menor dos dois.
+
+| FAA | 0,5 kg | 1 kg | 2 kg | 5 kg |
+| --- | --- | --- | --- | --- |
+| **4** | 24 m | 18 m | 14 m | 10 m |
+| **8** | 40 m | 30 m | 23 m | 16 m |
+| **12** | 53 m | 40 m | 30 m | 21 m |
+| **16** | 64 m | 49 m | 37 m | 26 m |
+| **20** | 75 m | 57 m | 43 m | 30 m |
+| **24** | 85 m | 65 m | 49 m | 34 m |
+
 ## O que o motor já responde
 
 Três ações desta família não têm jogada nenhuma: o número sai direto da ficha.
@@ -266,14 +279,15 @@ Três ações desta família não têm jogada nenhuma: o número sai direto da f
 - **Saltar.** Três distâncias calculadas na ficha: vertical, horizontal parado e horizontal com corrida.
 - **Carregar peso.** Cinco faixas de carga, cada uma com a sua velocidade: Mínima, Leve, Média, Pesada e Máxima.
 
-**Arremessar** é o caso híbrido, e vale entender a divisão: **até onde o objeto chega** sai de tabela, sem jogada, e o gráfico na ficha mostra a curva, em escala normal ou logarítmica. **Se acerta o que mirou** é ataque, e vive no capítulo de Combate. O detalhe que surpreende todo mundo é que a curva tem ápice em **100 gramas**: abaixo disso a velocidade do braço satura, porque a inércia do próprio braço já domina, e o que sobra é o ar cobrando. E o teto é **um quarto do peso máximo**: acima dele o objeto se ergue, mas não voa.
+**Arremessar** é o caso híbrido, e vale entender a divisão: **até onde o objeto chega** sai de tabela (a de Arremessar: o FAA, acima), sem jogada, e o gráfico na ficha mostra a curva, em escala normal ou logarítmica. **Se acerta o que mirou** é ataque, e vive no capítulo de Combate. O detalhe que surpreende todo mundo é que a curva tem ápice em **100 gramas**: abaixo disso a velocidade do braço satura, porque a inércia do próprio braço já domina, e o que sobra é o ar cobrando. E o teto é **um quarto do peso máximo**: acima dele o objeto se ergue, mas não voa.
 
 ## As que ainda não têm ficha
 
 - **Equilibrar-se.** Atravessar viga, telhado, corda ou terreno instável. Direta, Destreza + Atletismo, secundária Equilíbrio.
 - **Acrobacia.** Rolar, passar por baixo, torcer o corpo para caber onde ele não cabe. Reflexiva, Destreza + Atletismo, secundária Ginástica.
 - **Cavalgar e conduzir.** A diferença para o resto da família é que aqui o veículo tem opinião, e o cavalo em particular tem medo, cansaço e vontade própria. Direta, Destreza + Cavalgar.
-- **Escapar de amarras.** Corda, algema, saco, um agarrão que já não cede à força. Nunca aparece numa hora conveniente. Acumulada, Destreza + Prestidigitação, secundária Escapismo, e o que interessa quase sempre é o tempo até soltar.
-- **Agarrar, imobilizar, derrubar** vive no capítulo de [Combate](/regras/combate), porque é corpo contra corpo com intenção de controlar em vez de ferir.
+- **Escapar de amarras.** Corda, algema, saco. Nunca aparece numa hora conveniente. Acumulada, Destreza + Prestidigitação, secundária Escapismo, e o que interessa quase sempre é o tempo até soltar. Quem está amarrado está **Imobilizado** sem agarrão: tenta se soltar sozinho, e essa tentativa sofre uma penalidade grande para agir ([Combate](/regras/combate), Manobras).
+- **Escapar de rede, de Arte que prende e de agarrão.** Quem está **Preso** (rede, Arte que prende) escapa pela jogada que a rede ou a Arte indicam (Força + Atletismo, secundária Escapismo), e cada tentativa gasta a ação. Quem está **Agarrado** não rola: só se solta quando quem o controla erra ([Combate](/regras/combate), Manobras).
+- **Agarrar, imobilizar, derrubar, empurrar** vivem no capítulo de [Combate](/regras/combate), seção Manobras, porque é corpo contra corpo com intenção de controlar em vez de ferir.
 
 ---
