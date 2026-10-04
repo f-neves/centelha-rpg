@@ -252,3 +252,79 @@ Revisora: rodada 128, PROCEDE.
   - depois: "Estabilizar: Raciocínio + Cura contra Dif 10, ou Vigor + Resistência em si mesmo."
 - Só o texto da nota (D-008 e T1b). O `porSeisTicks` não mudou. Aprovado pelo Arquiteto.
 - A condição Morrendo e o K5a continuam parados, à espera do autor.
+
+**Commit da ESCALA da 128:** `604d3a6a`.
+
+## Rodada 3 · Cap. VIII, a régua comum e a Longa (opção (a) do Arquiteto)
+
+**Antes de mexer.**
+- Registro: D-012 (Arte dentro da Longa) e D-034 (Longa a 3 por dado, confirmada pelo autor; a
+  Especialidade +2 por nível; o Mestre escolhe o modo; a Margem na Longa; ferimento e Desgaste só se durarem
+  o intervalo). Nenhum ponto da rodada contradiz o registro.
+- Citações de (b) conferidas contra a fonte: todas estavam lá, e nenhum ponto estava resolvido.
+- Quem lê a média da Longa: o levantamento está em `../tmp/executora/levantamento-rodada3.md`. Só o modelo da
+  economia calcula com ela. A escolha do Arquiteto foi a opção (a): a regra e o texto mudam agora; o modelo,
+  os geradores e os números calculados ficam para a rodada 7.
+
+**Os pontos** (o texto de (e), palavra por palavra):
+- **LONGA-1** · `acoes-e-sistema.md`
+  - a fórmula passa a 3 por dado, e o "meio ponto é real" vira a frase da simplificação;
+  - a tabela fica 6, 9, 11, 12, 15 e 18;
+  - os bônus na Longa: +3 por +1d6, o fixo como fixo, a Especialidade +2 por nível, e a Firula não conta;
+  - o parágrafo da Margem na Longa, com o link para "O que a Margem compra fora do combate";
+  - ferimento e Desgaste só se durarem o intervalo;
+  - a régua de altura (soma 12 até a Dif 17, soma 6 até a 8);
+  - "Quem escolhe o modo é o Mestre", com o parágrafo novo. O título não tinha nenhum link de entrada
+    para quebrar;
+  - o exemplo da página antiga (soma 12, média 18, Dif 5, 13 acima, duas Margens);
+  - o Ajudante: "a média do ajudante (3 por dado, como na Longa)".
+- **ARTE-LONGA**
+  - item 2: a frase entrou logo depois da frase de bônus do LONGA-1, no mesmo parágrafo;
+  - item 1: `artes/regras.astro`, ao fim de "Conjurar e resistir", com o link para
+    `regras/acoes-e-sistema#longa`.
+- **ESPECIALIDADE-LONGA**
+  - `acoes-oficio-e-mundo.md`: o parágrafo "Especialidade na Longa" com o texto de (e) (+2 por nível,
+    fixo);
+  - `habilidades.md`, Como funciona na mesa: fora do bloco gerado, então foi direto no capítulo;
+  - `coracao-do-sistema.md`: "; numa ação Longa, +2 por nível";
+  - a frase do Cap. VIII entrou com o LONGA-1.
+- **C1a** · `coracao-do-sistema.md`: a frase da Acumulada e da Longa, e o exemplo da espada como Longa
+  (soma 12, média 18, 6 por semana, cinco semanas).
+- **K9e** · `acoes-e-sistema.md`: "**Semana** (8 dias, em Uldun)" na tabela de intervalos.
+- **ART-30** · `combate.md`: "Ação longa" passou a "Ação demorada". Os textos novos sobre o modo sem dado
+  escrevem "ação Longa".
+
+**Ficaram a 3,5 de propósito** (opção (a); pendência nova **G77** em `G-acoes-sistema.md`, `Pendencias.md`
+regerado):
+- `acoes-oficio-e-mundo.md`:
+  - o ganho por lote (6,3 / 4,0 / 3,5 / 3,3);
+  - a espada gabarito da qualidade (os tempos "6,3 dias", "4,4 dias", "6,3 semanas", "~15 semanas");
+  - a linha "O tempo da última coluna é o do oficial [...] (soma 6, média 10,5)" e os tempos da tabela
+    dela;
+  - a tabela gerada do ganhar a vida (Oficial 10,5, Perito 16, Mestre 21, e as faixas 20/37/67).
+- Toda a economia gerada pelo modelo (`lore/economia/v2/base.py:22-23`): renda, serviços, aulas (por
+  exemplo, a "12,5" da tabela de aulas em `custo-servicos.md`), mercadorias, `recompensas.json` e o
+  `test-recompensa.mjs`.
+- Nenhum deles foi tocado: `base.py`, `modelo.py`, `gerar.py`, `copiar-economia.mjs`, `recompensas.json` e
+  `test-recompensa.mjs` estão como estavam.
+
+**Verificação** (sobre `604d3a6a`):
+- `npm run validate` verde;
+- `npx astro sync && npx tsc --noEmit` sem erro;
+- `npx astro build --force` verde.
+- No gerado, com `../tmp/executora/prova-v3.py`:
+  - os 25 trechos novos estão lá;
+  - os 10 velhos dão 0: "3,5 × (número de dados)", "o meio ponto é real", a linha "6 3d6 10,5", "Quem
+    escolhe o modo é o jogador", "quem decide é quem está tentando", "a média das jogadas do ajudante",
+    "A cada semana o ferreiro rola", "A cada intervalo você rola;", "cada nível vale cerca de" e "Ação
+    longa".
+  - Saída: "TUDO OK".
+- `scripts/a3_1c.py` da Veterana: a Longa nova por soma bate com a tabela (4 → 6, 6 → 9, 7 → 11, 8 → 12,
+  10 → 15, 12 → 18).
+
+**Para quem joga hoje:**
+- a Longa passa a 3 por dado no texto do Cap. VIII e do Cap. I;
+- o Mestre escolhe o modo;
+- as regras de bônus, Margem e ferimento na Longa, e a Arte na Longa;
+- "Ação demorada" no Combate.
+Os números do Ofício e da economia ainda não mudaram (rodada 7). Nenhuma ficha muda, e nenhuma migração.

@@ -56,7 +56,7 @@ Cada ação tem uma **Velocidade**, quantos Ticks ela custa antes de você poder
 | 5 | Ataque leve | faca, adaga, espada curta, bastão |
 | 6 | Ataque médio | espada longa, machado de uma mão, lança, alabarda |
 | 7 | Ataque pesado | martelo de guerra, montante |
-| 9 a 15 | Ação longa | recarregar uma besta, conjurar uma Arte de grau alto |
+| 9 a 15 | Ação demorada | recarregar uma besta, conjurar uma Arte de grau alto |
 
 <p class="muted">Armas leves agem mais vezes e defendem melhor; as pesadas batem como um trovão, mas deixam você exposto entre os golpes. A arma define o seu estilo. A tabela é uma **lista de exemplos**, não um contrato: o "Tipo de ação" é só orientação de leitura, e a Velocidade real de cada arma está no catálogo de [Armas & Armaduras](/regras/armas-e-armaduras).</p>
 

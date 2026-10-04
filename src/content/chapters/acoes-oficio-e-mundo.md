@@ -99,7 +99,7 @@ A subida do intervalo na Ótima é o que impede a peça fina de sair no ritmo da
 
 Para baixo a régua serve à mesa tanto quanto para cima: é o que o bando forja no acampamento, o que o exército distribui à tropa, e o que o mercador tenta empurrar como Comum.
 
-<p class="muted"><strong>Especialidade na Longa.</strong> A Especialidade dá +1d6 com descarte do menor, o que não é um número fixo. Na média, cada nível vale cerca de <strong>+2</strong>, e é frequentemente o que separa a peça Boa da Ótima. Vale para qualquer Longa, não só para o ofício.</p>
+<p class="muted"><strong>Especialidade na Longa.</strong> Numa jogada, a Especialidade dá +1d6 com descarte do menor. Na Longa, que não rola, cada nível vale <strong>+2</strong>, um número fixo, e é frequentemente o que separa a peça Boa da Ótima. Vale para qualquer Longa, não só para o ofício.</p>
 
 ## Oficina, material e ajuda
 

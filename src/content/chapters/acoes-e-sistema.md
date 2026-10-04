@@ -51,7 +51,7 @@ Fora do combate não existe uma conversão única: o Mestre escolhe, pela ação
 
 Onde já existe uma régua própria e mais detalhada para uma ação, como a qualidade de Ofício (que troca cinco números de uma vez, não só um grau), ela vale sobre esta tabela geral. Esta tabela é o padrão para a ação que ainda não tem a própria.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Decifrar uma página antiga é Hora (Longa). Duas Margens de sobra: o jogador pode dividir entre eixos (uma em Tempo, termina em Minuto; outra em Qualidade, a tradução sai livre de erro) ou empilhar as duas no mesmo eixo (Tempo duas vezes: termina no próprio Tick).</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Decifrar uma página antiga é Hora (Longa). Com soma 12 (média 18) contra Dificuldade 5, são 13 acima: duas Margens de sobra: o jogador pode dividir entre eixos (uma em Tempo, termina em Minuto; outra em Qualidade, a tradução sai livre de erro) ou empilhar as duas no mesmo eixo (Tempo duas vezes: termina no próprio Tick).</div>
 
 ## Os cinco modos de ação
 
@@ -94,22 +94,28 @@ Algumas ações declaram outro comportamento, quando o padrão não faz sentido:
 
 A mesma dupla de números, e **nenhuma jogada**. Em vez de rolar, usa-se a **média** do pool, somada uma vez por intervalo.
 
-<p class="formula">Média = 3,5 × (número de dados), + 2 se a soma for ímpar<br />Progresso por intervalo = média − Dificuldade</p>
+<p class="formula">Média = 3 × (número de dados), + 2 se a soma for ímpar<br />Progresso por intervalo = média − Dificuldade</p>
 
-A média **não se arredonda**: o meio ponto é real, porque 3d6 tira 10,5 mesmo.
+É uma simplificação assumida: a Longa rende um pouco menos do que rolar (3,5 por dado), e em troca a conta nunca tem meio ponto.
 
 | Soma | Pool | Média |
 |:--:|:--:|:--:|
-| 4 | 2d6 | 7 |
-| 6 | 3d6 | 10,5 |
-| 7 | 3d6+2 | 12,5 |
-| 8 | 4d6 | 14 |
-| 10 | 5d6 | 17,5 |
-| 12 | 6d6 | 21 |
+| 4 | 2d6 | 6 |
+| 6 | 3d6 | 9 |
+| 7 | 3d6+2 | 11 |
+| 8 | 4d6 | 12 |
+| 10 | 5d6 | 15 |
+| 12 | 6d6 | 18 |
 
-**A Centelha não entra na Longa.** Quem quebra a parede do trabalho longo são Proezas e Artes.
+**A Centelha não entra na Longa.** Quem quebra a parede do trabalho longo são Proezas e Artes. Nada se rola na Longa, então o bônus vira número: cada +1d6 de bônus (de raça, de Arte ou de outra fonte) vale +3; um bônus fixo entra como o próprio valor; a Especialidade vale +2 por nível. A Firula não conta, porque é bônus de jogada. Uma Arte só conta na Longa se o Efeito durar o intervalo inteiro, ou se for relançado sem falha, pagando a Mana a cada vez. Nova rolagem e bônus atado a uma rolagem só não valem na Longa, porque ela não rola.
+
+A Longa gera Margem como qualquer jogada: cada 6 pontos de média acima da Dificuldade são uma Margem por intervalo. Como na Acumulada, a Margem é só a forma de ler o excedente: o progresso já é a média menos a Dificuldade, e a Margem não soma progresso por cima. O que mais a Margem compra dentro de uma Longa, o Mestre decide, pela tabela de [O que a Margem compra fora do combate](#o-que-a-margem-compra-fora-do-combate).
+
+Penalidade de ferimento e Desgaste só entram na Longa se durarem o intervalo inteiro. Quando entram, um −1d6 tira 3 da média e um −2 tira 2. Se começam ou acabam no meio do intervalo, não entram.
 
 Média igual ou menor que a Dificuldade não impede tentar: o personagem simplesmente **não avança**, e cada intervalo passa sem o Acúmulo subir. O caminho não é insistir, é levantar a média ou abaixar a Dificuldade, e para isso vale tudo o que não é dado: ajuda, ferramenta certa, oficina, material melhor, Proeza, Arte.
+
+Na Longa a régua de altura fica mais baixa: a soma 12 (média 18) avança até a Dificuldade 17, e a soma 6 (média 9) até a 8.
 
 > A Longa é o modo em que **a competência substitui a sorte**. Não existe azar: existe capacidade suficiente, ou não existe.
 
@@ -143,7 +149,7 @@ Acumulada e Longa declaram um terceiro número: **em que ritmo o progresso acont
 | **Minuto** | dezenas de segundos | arrombar a fechadura, estancar o sangramento |
 | **Hora** | uma sentada | vasculhar a biblioteca, decifrar a página, costurar o ferimento |
 | **Dia** | uma jornada | marcha forçada, caçar e forragear, rastrear a caravana |
-| **Semana** | uma empreitada | forjar a espada, a viagem entre cidades, o treino |
+| **Semana** (8 dias, em Uldun) | uma empreitada | forjar a espada, a viagem entre cidades, o treino |
 | **Estação** | uma obra | erguer o muro, administrar a terra |
 
 Os degraus estão longe uns dos outros de propósito, e é isso que faz a escolha ser fácil: **nenhuma tarefa fica entre dois degraus**. O Mestre narra quarenta minutos ou uma hora e meia à vontade; o que a ficha declara é o degrau.
@@ -152,9 +158,9 @@ O degrau também revela o modo. Tick e minuto são território de Acumulada, por
 
 O **Tick é o mesmo do Combate**, cerca de um segundo, e é por isso que uma ação deste capítulo acontece no meio de uma luta sem tradução nenhuma. Em [Relações Sociais](/regras/relacoes-sociais) o cortejo com calma tem intervalo próprio, de 8 dias ajustado pela longevidade de quem corteja, e não usa esta escada.
 
-## Quem escolhe o modo é o jogador
+## Quem escolhe o modo é o Mestre
 
-Acumulada e Longa compartilham a mesma dupla de números. O que escolhe entre elas é **a pressão**, e quem decide é quem está tentando.
+Acumulada e Longa compartilham a mesma dupla de números. O que escolhe entre elas é a pressão da cena, e quem decide é o Mestre: com pressa ou sob risco, Acumulada, com dado; sem pressa, Longa, pela média. O jogador pede e argumenta.
 
 <p class="formula">Com pressa ou sob risco: <b>Acumulada</b>, com dado · Sem pressa: <b>Longa</b>, pela média</p>
 
@@ -172,7 +178,7 @@ Tarefas em que cada pessoa a mais é trabalho extra completo: cavar um buraco, c
 
 ### Ajudante
 
-Servir de auxiliar numa tarefa que **outra pessoa realiza**, em **apoio numa jogada única**, numa ação que não se divide: ajudar uma cirurgia, abrir uma fechadura, dar aula. O ajudante rola contra **metade da Dificuldade** (arredondado para cima); a cada **6 pontos** acima disso, concede **+1** à jogada de quem está realizando a tarefa. Numa jogada estendida, pode-se usar a média das jogadas do ajudante em vez de rolar a cada intervalo. Há um limite de ajudantes por tarefa, a critério do Mestre.
+Servir de auxiliar numa tarefa que **outra pessoa realiza**, em **apoio numa jogada única**, numa ação que não se divide: ajudar uma cirurgia, abrir uma fechadura, dar aula. O ajudante rola contra **metade da Dificuldade** (arredondado para cima); a cada **6 pontos** acima disso, concede **+1** à jogada de quem está realizando a tarefa. Numa jogada estendida, pode-se usar a média do ajudante (3 por dado, como na Longa) em vez de rolar a cada intervalo. Há um limite de ajudantes por tarefa, a critério do Mestre.
 
 O trabalho **divisível**, uma Longa com Acúmulo, não usa esta regra: quem ajuda a fabricar uma peça trabalha sob **condução**, e quem ajuda numa obra trabalha sob **direção**, as duas em [Ofício e Mundo](/regras/acoes-oficio-e-mundo).
 

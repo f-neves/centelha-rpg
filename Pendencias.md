@@ -45,13 +45,13 @@ está na seção 3.
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 16 | 11 | 0 | 5 | 5 | 1 | 0 | 0 | 0 | 5 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 11 | 8 | 0 | 3 | 6 | 1 | 0 | 1 | 0 | 0 |
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 | 6 | 0 | 3 | 0 | 0 | 0 |
-| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 78 | 53 | 0 | 25 | 31 | 2 | 0 | 5 | 15 | 0 |
+| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 79 | 54 | 0 | 25 | 31 | 3 | 0 | 5 | 15 | 0 |
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 7 | 5 | 0 | 2 | 2 | 0 | 0 | 2 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 15 | 11 | 2 | 2 | 4 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 17 | 14 | 0 | 3 | 6 | 3 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 25 | 1 | 13 | 21 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **357** | **250** | **4** | **103** | **106** | **39** | **8** | **10** | **81** | **10** |
+| | **Total** | | **358** | **251** | **4** | **103** | **106** | **40** | **8** | **10** | **81** | **10** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -483,6 +483,7 @@ Fechados (1): F9.
 | G73 | aberto | DECIDIR | Preços do sobre-humano: Centelha, Proezas e Magia. |
 | G74 | aberto | DECIDIR | Poções como estoque de emergência caro. |
 | G76 | aberto | DECIDIR | Itens mágicos: poções, pergaminhos, itens mágicos, armas e armaduras encantadas, artefatos. |
+| G77 | aberto | FAZER | Longa a 3 por dado (D-034): Ofício (lote, espada gabarito, Especialidade na Longa, tabela … |
 
 Fechados (25): G1, G3, G4, "As cinco físicas de toda sessão.", G5, G5b, G7, G8, G9, G10, G18, G19, G20, G29, G52, G54, G55, G56, G57, G58, G59, G62, G65, G70, G75.
 

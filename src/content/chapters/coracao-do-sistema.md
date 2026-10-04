@@ -90,7 +90,7 @@ Quando alguém se opõe a você, em geral apenas o lado *ativo* rola, contra um 
 
 <p class="formula">Valor Passivo = (Atributo + Habilidade) × 2 + 2 × mín(Centelha, Habilidade) + Especialidade (só quando o escopo dela se aplica, somada no momento do uso) (+ modificadores)</p>
 
-<p class="muted">A <strong>Especialidade</strong> vale <strong>+1 por nível</strong> aqui, num valor fixo; numa jogada com dado, ela rende <strong>+1d6 por nível, descartando o menor</strong> do pool. Só entra quando o escopo nomeado dela se aplica. A <a href="/centelha-rpg/regras/centelha"><strong>Centelha</strong></a> soma <strong>2 × o menor entre ela e a Habilidade</strong> em toda jogada de Atributo + Habilidade, no Valor Passivo e em cada Defesa (Habilidade 0 dá bônus 0). Numa jogada de Atributo puro e numa rolagem de dano, soma a Centelha inteira.</p>
+<p class="muted">A <strong>Especialidade</strong> vale <strong>+1 por nível</strong> aqui, num valor fixo; numa jogada com dado, ela rende <strong>+1d6 por nível, descartando o menor</strong> do pool; numa ação Longa, +2 por nível. Só entra quando o escopo nomeado dela se aplica. A <a href="/centelha-rpg/regras/centelha"><strong>Centelha</strong></a> soma <strong>2 × o menor entre ela e a Habilidade</strong> em toda jogada de Atributo + Habilidade, no Valor Passivo e em cada Defesa (Habilidade 0 dá bônus 0). Numa jogada de Atributo puro e numa rolagem de dano, soma a Centelha inteira.</p>
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Um ladrão se esgueira (rola Destreza + Furtividade) contra a <strong>Percepção Passiva</strong> do guarda, igual a (Percepção + Prontidão) × 2 + 2 × mín(Centelha, Prontidão) + Especialidade (só quando o escopo dela se aplica, somada no momento do uso): para um guarda comum, sem Centelha nem Especialidade, isso é só (Percepção + Prontidão) × 2. O guarda não rola: sua vigilância é um muro a ser superado.</div>
 
@@ -110,6 +110,6 @@ Quando os dois agem de fato (uma queda de braço, uma corrida), ambos rolam e o 
 
 ## Ações Acumuladas e Longas
 
-Tarefas longas (forjar uma lâmina, decifrar um tomo) são os modos **Acumulada** e **Longa** de [Ações & Sistema](/regras/acoes-e-sistema), e usam três valores: uma **Dificuldade**, um **Intervalo** de tempo e um **Acúmulo** a atingir. A cada intervalo você rola; o quanto o total *passar* da Dificuldade soma ao Acúmulo. Ao alcançá-lo, a obra está pronta.
+Tarefas longas (forjar uma lâmina, decifrar um tomo) são os modos **Acumulada** e **Longa** de [Ações & Sistema](/regras/acoes-e-sistema), e usam três valores: uma **Dificuldade**, um **Intervalo** de tempo e um **Acúmulo** a atingir. Na Acumulada, a cada intervalo você rola, e o quanto o total passar da Dificuldade soma ao Acúmulo. Na Longa não se rola: a cada intervalo soma-se a média do pool (3 por dado, mais 2 se a soma for ímpar) menos a Dificuldade. Ao alcançar o Acúmulo, a obra está pronta.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Forjar uma espada fina: Dificuldade 12, intervalo semanal, Acúmulo 30. A cada semana o ferreiro rola e soma o excedente sobre 12: chegando a 30, a lâmina nasce.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Forjar uma espada fina, como Longa: Dificuldade 12, intervalo semanal, Acúmulo 30. Um ferreiro de soma 12 tem média 18 e avança 18 − 12 = 6 por semana: chegando a 30, em cinco semanas, a lâmina nasce.</div>

@@ -90,7 +90,7 @@ Cada nível é um **escopo nomeado**. Você distribui esses níveis como quiser:
 
 ### Como funciona na mesa
 
-O bônus é **situacional**: o Mestre julga se o escopo nomeado se aplica à ação. Quando se aplica, para cada nível com aquele nome role **+1d6 e descarte o menor** dado do pool. Em valores fixos (como uma Defesa), cada nível vale **+1**. Fora do escopo, a Especialidade não faz nada, e por isso a ficha **não a soma automaticamente** no rolador.
+O bônus é **situacional**: o Mestre julga se o escopo nomeado se aplica à ação. Quando se aplica, para cada nível com aquele nome role **+1d6 e descarte o menor** dado do pool. Em valores fixos (como uma Defesa), cada nível vale **+1**; numa ação Longa, que usa a média e não rola, cada nível vale **+2**. Fora do escopo, a Especialidade não faz nada, e por isso a ficha **não a soma automaticamente** no rolador.
 
 Cada nível custa **8 + (nível × 4)** numa Habilidade primária (12 · 16 · 20) e metade disso numa secundária (6 · 8 · 10), acumulando os níveis abaixo.
 
