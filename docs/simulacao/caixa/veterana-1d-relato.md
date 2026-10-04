@@ -390,3 +390,50 @@ próprio continua com o número dela. Não mexi: espera o OK.
 
 - `acoes-e-sistema.md:54`: "duas Margens de sobra: o jogador pode dividir" passou a "duas Margens de
   sobra. O jogador pode dividir".
+
+**Commit da D-037 e da pontuação:** `d3ad7ca7` · **CI:** Validar 37190093008 (19 de 19) e Deploy 37190093009
+(2 de 2).
+
+## D-040 · o limite de criação
+
+**O que lê os campos (conferido antes de mexer).** `regras.json` → `limitesCriacao` não é lido por código nem
+por teste nenhum: um grep em `src/` e `scripts/` acha só a definição. A ficha já não tinha limite de criação:
+`capFor` (`ficha-engine.ts:173-187`) é 6 mais o ajuste racial. O `test-exemplos-criacao.mjs` soma só o
+XP dos exemplos.
+
+**O que mudou:**
+- `regras.json` → `limitesCriacao`: saíram `atributo`, `habilidade`, `picoAtributo`, `picoHabilidade`,
+  `picoQuantidade` e `notaPico`. Ficou `centelha: 3`, mais uma `nota` que registra a D-040 e diz que o teto
+  da Centelha fica à espera do autor.
+- `criacao-de-personagem.md`:
+  - passo 4 (Atributos): "Na criação não há teto próprio: vale o máximo normal da ficha, **6**, e depois o
+    ajuste da raça (o Atributo com `+1` racial vai até **7**, e o com `−1` não passa de **5**).";
+  - passo 5 (Habilidades): "Vale o máximo normal da ficha, **6**.";
+  - Limites na criação: o texto da D-040 (máximos normais, 6, alguns traços até 12, depois o ajuste
+    racial; o que segura é o orçamento de XP). O parágrafo do pico saiu;
+  - a frase de abertura dos exemplos perdeu "como os tetos de criação seguram os traços (5/4, mais o
+    pico)";
+  - nos quatro exemplos saiu o rótulo "(pico)" das linhas de Atributos e Habilidades. Nenhum número
+    mudou: todos os valores dos quatro estão dentro dos máximos normais (Atributo até 6, Habilidade até
+    6), e o `test-exemplos-criacao.mjs` segue verde.
+- `racas.md`:
+  - Como ler um traço racial (o trecho do RACIAL-7): "pode ser comprado até 7 sem gastar o pico (Cap.
+    XVIII)" passou a "pode ser comprado até 7 (Cap. XVIII)";
+  - O Humano: "(**6** no jogo, 5 na criação fora do pico)" passou a "(**6**, na criação e no jogo)".
+  - "não ter um pico de herança", no Humano, é outro sentido ("ponto alto") e ficou.
+- O glossário não cita o pico nem o teto 5/4. A ficha não tinha texto sobre isso.
+
+**Ficam, à espera do autor** (decisão não tomada, por ordem do Arquiteto):
+- o teto 3 da Centelha na criação: `limitesCriacao.centelha`, `criacao-de-personagem.md` passo 8 e
+  "Centelha máxima **3**" em Limites;
+- o teto 3 de Recursos e Artefato na criação: `antecedentes.json` `tetoCriacao`, `antecedentes.md:55`,
+  `:208` e `:318`, e `criacao-de-personagem.md:52`.
+
+**Verificação:**
+- `npm run validate` verde;
+- `npx astro build --force` verde.
+- No gerado:
+  - "pico" (palavra inteira) dá 0 na Criação e 0 nas Raças, fora do "pico de herança";
+  - os textos novos estão lá;
+  - "Teto 5 na criação", "Habilidade máxima 4" e "Atributo máximo 5" dão 0;
+  - "Teto 3 na criação" e "Centelha máxima 3" continuam (1 cada).

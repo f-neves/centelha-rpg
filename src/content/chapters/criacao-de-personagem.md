@@ -16,8 +16,8 @@ Se é a sua primeira vez, siga esta ordem: os detalhes de cada passo estão nas 
 1. **Conceito.** Quem é o herói? Uma frase basta ("batedora silenciosa", "capitão que inspira tropas"), ela guia todas as escolhas seguintes.
 2. **Orçamento.** Combine com o Mestre: **1500** (iniciante), **2000** (veterano) ou **2600** (especialista). Todo o resto sai desse bolo de XP.
 3. **[Raça](/regras/racas).** Escolha o povo do seu herói e **pague o custo em XP** dele (o Humano custa **0**; os outros vão de 20 a 50). Ela vem antes dos Atributos porque é ela que **move os tetos**: um `+1 de teto` deixa aquele Atributo chegar mais alto do que chegaria, e um `−1` o trava mais baixo. Escolher a raça depois seria escolher com a régua do passo seguinte já usada.
-4. **Atributos.** Suba do piso 1. Teto **5** na criação, com **um único** atributo em **6** (o seu pico), o máximo de cada Atributo vem da raça e já vale na criação: o Atributo com `+1` racial pode ir a 6 ou a 7 sem gastar o pico, e o com `−1` não passa de 5.
-5. **Habilidades e Especialidades.** Teto **4**, com **uma única** primária em **5** (o pico de Habilidade). Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
+4. **Atributos.** Suba do piso 1. Na criação não há teto próprio: vale o máximo normal da ficha, **6**, e depois o ajuste da raça (o Atributo com `+1` racial vai até **7**, e o com `−1` não passa de **5**).
+5. **Habilidades e Especialidades.** Vale o máximo normal da ficha, **6**. Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
 6. **Virtudes.** As quatro, de 1 a 6.
 7. **Força de Vontade e Aparência.** Suba a Vontade do piso 0 (um herói costuma levá-la a 5+); escolha a Aparência (0–12, normal no nível 6).
 8. **Centelha.** Teto **3** na criação. Ela **não custa XP**: o tier é definido com o Mestre e define o que você alcança. O Mestre escolhe pela campanha: **Centelha 0** numa campanha mortal; de **1 a 3** numa campanha heroica (3 é o Herói, para quem quer um herói de saga).
@@ -61,9 +61,7 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 
 ## Limites na criação
 
-Atributo máximo **5** (o Atributo com `+1` racial chega a 7 já na criação, sem gastar o pico, e o com `−1` não passa de 5); Habilidade máxima **4**; Centelha máxima **3** (o Mestre escolhe pela campanha: 0 numa campanha mortal; de 1 a 3 numa heroica). O ponto seguinte e os tiers maiores vêm com o jogo.
-
-Cada herói pode ter **um pico**: você está autorizado a levar **um único Atributo a 6** e **uma única Habilidade primária a 5** já na criação: o talento superlativo que o define. Os demais respeitam os tetos acima. O Atributo com `+1` racial fica fora dessa conta: o 6 e o 7 dele não gastam o pico.
+Na criação não existe limite próprio: valem os máximos normais da ficha. Quase tudo vai até **6**, e alguns traços vão até **12** (Força de Vontade, Aparência). Depois entram os ajustes raciais, para cima ou para baixo: o Atributo com `+1` racial chega a **7**, e o com `−1` fica em **5**. O que segura o personagem novo é o orçamento de XP. Centelha máxima **3** (o Mestre escolhe pela campanha: 0 numa campanha mortal; de 1 a 3 numa heroica). O ponto seguinte e os tiers maiores vêm com o jogo.
 
 ## Traços derivados
 
@@ -81,7 +79,7 @@ Cada herói pode ter **um pico**: você está autorizado a levar **um único Atr
 
 ## Três exemplos, um por orçamento
 
-Os três personagens abaixo mostram o que cada patamar entrega: **Kael** no iniciante, **Sora** no veterano e **Veil** no especialista. Repare onde o XP vai: como os tetos de criação seguram os traços (5/4, mais o pico), boa parte do bolo se converte em **largura** (mais Proezas, Técnicas, habilidades e especialidades). É o toolbox que carrega a profundidade.
+Os três personagens abaixo mostram o que cada patamar entrega: **Kael** no iniciante, **Sora** no veterano e **Veil** no especialista. Repare onde o XP vai: boa parte do bolo se converte em **largura** (mais Proezas, Técnicas, habilidades e especialidades). É o toolbox que carrega a profundidade.
 
 <p class="muted">As quatro Virtudes das fichas abaixo (Bravura, Convicção, Temperança, Compaixão) e o modificador entre parênteses da Aparência (a régua de −6 a +6) estão detalhados no capítulo [Aparência, Virtudes & Vontade](/regras/aparencia-virtudes-vontade).</p>
 
@@ -92,8 +90,8 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Compra | Detalhe | XP |
 |---|---|:---:|
 | Raça | Humano (a régua: nenhum teto movido, nenhum traço racial) | 0 |
-| Atributos | Percepção 6 (pico) · Destreza, Vigor 4 · Força, Raciocínio 3 · Inteligência, Influência, Perspicácia, Compostura 2 | 375 |
-| Habilidades | Furtividade 5 (pico) · Atirador, Prontidão, Esquiva, Atletismo, Sobrevivência 3 · Investigação, Briga 2 · Cura 1 (secundária) | 201 |
+| Atributos | Percepção 6 · Destreza, Vigor 4 · Força, Raciocínio 3 · Inteligência, Influência, Perspicácia, Compostura 2 | 375 |
+| Habilidades | Furtividade 5 · Atirador, Prontidão, Esquiva, Atletismo, Sobrevivência 3 · Investigação, Briga 2 · Cura 1 (secundária) | 201 |
 | Secundárias | quatro em 2 (Rastreio, Escalada, Falcoaria, Armadilhas) | 28 |
 | Especialidades | Furtividade, Atirador, Sobrevivência | 36 |
 | Virtudes | Bravura 4 · Convicção 3 · Temperança 2 · Compaixão 2 | 64 |
@@ -110,8 +108,8 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Compra | Detalhe | XP |
 |---|---|:---:|
 | Raça | Humano (a régua: nenhum teto movido, nenhum traço racial) | 0 |
-| Atributos | Destreza 6 (pico) · Força, Vigor, Influência 4 · Percepção, Raciocínio, Perspicácia, Compostura 3 · Inteligência 2 | 460 |
-| Habilidades | Armas 5 (pico) · oito em 3 (Esquiva, Prontidão, Atletismo, Integridade, Política, Manha, Resistência, Sociabilidade) · duas em 2 · uma em 1 | 276 |
+| Atributos | Destreza 6 · Força, Vigor, Influência 4 · Percepção, Raciocínio, Perspicácia, Compostura 3 · Inteligência 2 | 460 |
+| Habilidades | Armas 5 · oito em 3 (Esquiva, Prontidão, Atletismo, Integridade, Política, Manha, Resistência, Sociabilidade) · duas em 2 · uma em 1 | 276 |
 | Secundárias | sete (duas em 3, cinco em 2: Estratégia, Cavalgar, Jogos de Guerra…) | 59 |
 | Especialidades | cinco (Armas, Integridade, Política…) | 60 |
 | Virtudes | Bravura 4 · Convicção 4 · Temperança 3 · Compaixão 3 | 96 |
@@ -130,8 +128,8 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 | Compra | Detalhe | XP |
 |---|---|:---:|
 | Raça | Humano (a régua: nenhum teto movido, nenhum traço racial) | 0 |
-| Atributos | Inteligência 6 (pico) · Força, Destreza, Vigor 4 · Percepção, Raciocínio, Influência, Perspicácia, Compostura 3 | 480 |
-| Habilidades | Ocultismo 5 (pico) · oito em 3 (Esquiva, Prontidão, Integridade, Conhecimentos…) · três em 2 | 284 |
+| Atributos | Inteligência 6 · Força, Destreza, Vigor 4 · Percepção, Raciocínio, Influência, Perspicácia, Compostura 3 | 480 |
+| Habilidades | Ocultismo 5 · oito em 3 (Esquiva, Prontidão, Integridade, Conhecimentos…) · três em 2 | 284 |
 | Secundárias | seis (três em 3, três em 2) | 57 |
 | Especialidades | cinco (Ocultismo, Integridade…) | 60 |
 | Virtudes | Convicção 4 · Temperança 4 · Bravura 3 · Compaixão 3 | 96 |
@@ -155,8 +153,8 @@ Passou a vida entre grimórios; a fagulha que carrega é mínima, mas o que sabe
 | Compra | Detalhe | XP |
 |---|---|:---:|
 | Raça | Humano (a régua: nenhum teto movido, nenhum traço racial) | 0 |
-| Atributos | Inteligência 6 (pico) · Influência, Percepção 4 · Raciocínio, Vigor, Destreza, Perspicácia 3 · Força, Compostura 2 | 496 |
-| Habilidades | Ocultismo 5 (pico) · Conhecimentos, Investigação, Esquiva, Prontidão 3 · Cura, Resistência, Furtividade, Sociabilidade, Ciências 2 · Persuasão 1 | 220 |
+| Atributos | Inteligência 6 · Influência, Percepção 4 · Raciocínio, Vigor, Destreza, Perspicácia 3 · Força, Compostura 2 | 496 |
+| Habilidades | Ocultismo 5 · Conhecimentos, Investigação, Esquiva, Prontidão 3 · Cura, Resistência, Furtividade, Sociabilidade, Ciências 2 · Persuasão 1 | 220 |
 | Secundárias | oito (Astronomia, Alquimia, Caligrafia, História, Herbologia, Genealogia…) | 66 |
 | Especialidades | seis (Ocultismo: invocação · Adivinhação · Conhecimentos…) | 48 |
 | Virtudes | Convicção 4 · Temperança 3 · Compaixão 3 · Bravura 2 | 63 |

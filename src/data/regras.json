@@ -436,13 +436,8 @@
     "aparencia": 0
   },
   "limitesCriacao": {
-    "atributo": 5,
-    "habilidade": 4,
     "centelha": 3,
-    "picoAtributo": 6,
-    "picoHabilidade": 5,
-    "picoQuantidade": 1,
-    "notaPico": "Na criação permite-se UM atributo em 6 e UMA habilidade primária em 5 — o talento superlativo do herói."
+    "nota": "D-040 (04/10/2026): na criação não há limite próprio de Atributo nem de Habilidade, e o pico deixou de existir; valem os máximos normais da ficha e os ajustes raciais. O teto 3 da Centelha na criação fica à espera do autor."
   },
   "iniciante": 1500,
   "veterano": 2000,
