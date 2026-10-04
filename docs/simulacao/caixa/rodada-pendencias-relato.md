@@ -53,3 +53,36 @@ No JSON: `modoDevagar.resistencia` sem `tetoCusto`; `modoRapido.resistencia.teto
 - `src/data/regras.json`
 - `src/content/chapters/defesas.md`
 - este relato
+
+**Commit do Bloco A:** `03c1d711` · **CI:** Validar 37168526691 (19 de 19) e Deploy 37168526693 (2 de 2),
+primeira volta.
+
+## Bloco B · Margem na Acumulada: o Mestre decide (item 1)
+
+- `acoes-e-sistema.md`, na Acumulada: depois de "a Margem não soma progresso por cima deles" entrou
+  "**O que mais a Margem compra dentro de uma Acumulada, o Mestre decide.** Dois exemplos do que ele
+  pode fazer: no Esgueirar, uma Margem congela um intervalo, com o vigia olhando para o outro lado; no
+  Ofício feito às pressas, uma Margem sobe a qualidade da peça um grau."
+- `acoes-sentidos-e-engano.md`, a linha "A Margem" do Esgueirar
+  - antes: "Cada Margem pode, à escolha do jogador, **congelar um intervalo** [...]"
+  - depois: "O que mais ela compra, o Mestre decide (a Margem na Acumulada, com link para
+    `#acumulada`); um exemplo: cada Margem **congela um intervalo** [...]"
+  - Saiu o "à escolha do jogador": quem decide passou a ser o Mestre.
+- `regras.json`: nenhum campo trata os dois efeitos como regra fechada (o `grep` por "congel" só acha
+  Artes, condições e textos de criatura). Nada a ajustar.
+- **G75 fechada** (`G-acoes-sistema.md`): `[x]`, "[FECHADA]", com a decisão verbatim do autor e onde ela
+  foi aplicada. `Pendencias.md` regerado: a G75 passou para a lista dos fechados de G.
+
+**Verificação** (sobre `03c1d711`): `npm run validate` verde ("Portões OK"); `npx astro build --force`
+verde. No HTML gerado, contado no texto sem marcação:
+- `acoes-e-sistema` traz "O que mais a Margem compra dentro de uma Acumulada, o Mestre decide." e "sobe a
+  qualidade da peça um grau" (1 cada), e a âncora `id="acumulada"` existe;
+- `acoes-sentidos-e-engano` traz "O que mais ela compra, o Mestre decide" (1) e "à escolha do jogador,
+  congelar" 0 vezes.
+
+**Arquivos do Bloco B:**
+- `src/content/chapters/acoes-e-sistema.md`
+- `src/content/chapters/acoes-sentidos-e-engano.md`
+- `docs/pendencias/G-acoes-sistema.md`
+- `Pendencias.md`
+- este relato

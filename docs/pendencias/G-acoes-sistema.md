@@ -524,7 +524,11 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
 - [ ] **G74 · [DECIDIR] Poções como estoque de emergência caro.** Registrado em 01/10/2026, item 4
   do fechamento da economia, sem execução. Mesma fala do autor da G73: a poção entra na economia
   como estoque de emergência, e cara; o preço e a regra de compra ficam por decidir.
-- [ ] **G75 · [DECIDIR] Rever de uma vez todo efeito da Margem dentro da Acumulada.** Registrado em
+- [x] **G75 · [FECHADA] Rever de uma vez todo efeito da Margem dentro da Acumulada.** **Decidido pelo
+  autor em 03/10/2026** (rodada de pendências, Bloco B): "Margem dentro da Acumulada: 'o Mestre decide'.
+  Os dois efeitos de hoje (congelar um intervalo no Esgueirar, subir a qualidade no Ofício) ficam no
+  livro como EXEMPLOS do que o Mestre pode fazer." Aplicado em `acoes-e-sistema.md` (a Acumulada) e no
+  Esgueirar. Registrado em
   02/10/2026, decisão do autor (Adendo 2 do despacho dos achados de duas leituras, pergunta 1 da
   Revisora, opção C): desde o item 10 daquele despacho, na Acumulada a Margem é só a leitura do
   excedente e não soma progresso por cima. Os efeitos de Margem que sobram dentro de uma Acumulada

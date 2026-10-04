@@ -76,7 +76,7 @@ A tarefa declara **dois** números: a **Dificuldade**, que é o quanto custa cad
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Subir uma muralha de dez metros: <b>Dificuldade 7, Acúmulo 10</b>. Quem tira 17 sobe de primeira, porque 17 menos 7 são os dez metros inteiros. Quem tira 12 sobe cinco e continua pendurado, tentando de novo no intervalo seguinte.</div>
 
-Na Acumulada, a **Margem é só a forma de ler o excedente**: os 10 de excedente do 17 contra 7 já são o progresso daquela jogada (e contêm uma Margem), e a Margem não soma progresso por cima deles.
+Na Acumulada, a **Margem é só a forma de ler o excedente**: os 10 de excedente do 17 contra 7 já são o progresso daquela jogada (e contêm uma Margem), e a Margem não soma progresso por cima deles. **O que mais a Margem compra dentro de uma Acumulada, o Mestre decide.** Dois exemplos do que ele pode fazer: no Esgueirar, uma Margem congela um intervalo, com o vigia olhando para o outro lado; no Ofício feito às pressas, uma Margem sobe a qualidade da peça um grau.
 
 Quando a jogada fica **abaixo** da Dificuldade, vale a **banda morta de uma Margem**:
 
