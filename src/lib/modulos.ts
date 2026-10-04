@@ -1,22 +1,12 @@
-// Módulos opcionais do sistema: o que existe nas regras mas o site não mostra.
+// O que existe nos dados mas o site não oferece.
 //
-// Desligar um módulo NÃO apaga dado nenhum. Os JSONs continuam com os campos, as
-// fórmulas de `calc.ts` continuam calculando e as fichas salvas continuam válidas:
-// o que a bandeira controla é só o que aparece na tela (índice de capítulos, ficha,
-// tabelas de equipamento, painéis da mesa). Ligar de volta é trocar `false` por `true`.
-//
-// `folego`: o capítulo XX é declaradamente um módulo avançado, e mostrar o número na
-// ficha e a coluna nas tabelas de arma confunde quem joga sem ele. A página segue
-// acessível pela URL (para os links dos outros capítulos não quebrarem), mas some
-// da navegação e das ferramentas.
-export const MODULOS = {
-  folego: false,
-} as const;
+// O módulo Fôlego saiu do sistema em 03/10/2026 (D-016): o capítulo, a reserva, o número na
+// ficha e na mesa e a coluna das armas foram removidos. As nove Técnicas da Proeza Coração
+// Incansável que só funcionavam com ele (marcadas `modulo: "folego"` no `tecnicas.json`) e o
+// campo `folego` das armas FICAM nos dados, ocultos e inertes, até o autor decidir o destino
+// deles (pendência registrada). É esta função que as mantém fora da ficha e das listas.
 
-/** A marca no dado controla a exibição; nome e texto não decidem o módulo. */
-export function tecnicaDisponivel(
-  tecnica: { modulo?: string },
-  modulos: { folego: boolean } = MODULOS,
-): boolean {
-  return tecnica.modulo !== 'folego' || modulos.folego;
+/** A marca no dado controla a exibição; nome e texto não decidem. */
+export function tecnicaDisponivel(tecnica: { modulo?: string }): boolean {
+  return tecnica.modulo !== 'folego';
 }

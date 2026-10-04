@@ -99,3 +99,14 @@ Detalhe em `Proezas_revisao.md`.
   despacho dos achados de duas leituras (item 17): sem botão de jogada de Atributo puro na ficha nem
   no Grid por enquanto. O Mestre faz a conta à mão (a Centelha inteira, pela D12).
   `centelhaSoAtributo` (`src/lib/calc.ts`) segue sem chamador.
+- [ ] **D16 · [DECIDIR] O que sobrou do Fôlego: as nove Técnicas da Coração Incansável e o campo
+  `folego` das armas.** Registrado em 03/10/2026 (D-016, rodada de pendências, Bloco C). O Fôlego saiu
+  do sistema (capítulo, reserva, ficha, mesa, condição "Sem fôlego"), mas, por decisão do autor, ficam
+  nos dados, ocultos e inertes:
+  - as nove Técnicas com `modulo: "folego"` da Proeza `coracao-incansavel` (`folego-profundo`,
+    `segundo-vento`, `marcha-forcada`, `incansavel`, `pulmoes-de-ferro`, `sem-limites`,
+    `vigor-inesgotavel`, `coracao-eterno`, `folego-de-sobra`), que `src/lib/modulos.ts`
+    (`tecnicaDisponivel`) mantém fora da ficha e das listas;
+  - o campo `folego` de cada arma (`armas.json`) e dos schemas (`scripts/validate-data.mjs`,
+    `src/content.config.ts`), que nenhuma tela mostra mais.
+  Decidir o destino de cada um junto com a recalibração das Proezas.

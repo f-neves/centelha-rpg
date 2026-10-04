@@ -121,7 +121,7 @@ const R = CR.resumoCombatePC(S);
 const F = MF.resumoFicha(S);
 if (REVER) {
   console.log(JSON.stringify({ combate: R, ficha: {
-    pv: F.pv, energia: F.energia, mana: F.mana, folego: F.folego,
+    pv: F.pv, energia: F.energia, mana: F.mana,
     defEsquiva: F.defEsquiva, defBloqueio: F.defBloqueio, defSocial: F.defSocial,
     defMental: F.defMental, iniciativa: F.iniciativa, armaduras: F.armaduras,
   } }, null, 2));
@@ -140,13 +140,12 @@ eq(R.defesaMental, 10, 'Defesa Mental');
 eq(JSON.stringify(R.soak), JSON.stringify({ impacto: 10, corte: 7, perfuracao: 4 }), 'Absorção por modo');
 eq(R.resistPerf, 0, 'Resistência a Perfuração');
 
-// Estes quatro são os mesmos de `test-kael.mjs`, e é para continuarem sendo: os
+// Estes três são os mesmos de `test-kael.mjs`, e é para continuarem sendo: os
 // dois testes olham a mesma pessoa por caminhos diferentes (lá pela fórmula do
 // JSON, aqui pelo código que a mesa executa). Divergiram? Um dos dois mentiu.
 eq(F.pv, 37, 'PV');
 eq(F.energia, 14, 'Energia');
 eq(F.mana, 13, 'Mana');
-eq(F.folego, 44, 'Fôlego');
 eq(F.defEsquiva, 19, 'Defesa (Esquiva)');
 eq(F.defBloqueio, 7, 'Defesa (Bloqueio)');
 eq(F.defSocial, 4, 'Defesa Social');
@@ -157,7 +156,7 @@ eq(F.armaduras.join(', '), 'gambeson', 'armaduras vestidas no resumo');
 // O que vai para `personagens.resumo`, que é o que o colega de mesa enxerga.
 const B = MF.resumoParaBanco(F);
 eq(Object.keys(B).sort().join(','),
-  'arma,ataque,dano,defBloqueio,defesa,defesaMental,defesaSocial,energia,folego,iniciativa,mana,pv,resistPerf,soak',
+  'arma,ataque,dano,defBloqueio,defesa,defesaMental,defesaSocial,energia,iniciativa,mana,pv,resistPerf,soak',
   'as chaves do resumo gravado no banco');
 
 // ------------------------------- 7. a ficha sem equipamento não explode

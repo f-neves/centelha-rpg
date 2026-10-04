@@ -21,8 +21,6 @@ const defesa = (at.destreza + esquiva) * D.defesa.mult + espEsq + centelhaNaJoga
 const defM = integridade * D.defesaMental.mult + (D.defesaMental.maisRaciocinio ? at.raciocinio : 0) + (D.defesaMental.maisVontade ? vont : 0) + centelhaNaJogada(integridade);
 const energia = fl((at.vigor + at.compostura + at.raciocinio + vont) / D.energia.divisor) + cent * D.energia.centelhaMult;
 const mana = cent * D.mana.centelhaMult + vont;
-const resistencia = 0;
-const fo = D.folego, folego = fo.base + at.vigor * fo.vigorMult + resistencia * fo.resistenciaMult + vont * fo.vontadeMult;
 const ini = at.raciocinio + prontidao;
 const dz = D.deslocamento, traits = { forca: at.forca, destreza: at.destreza, atletismo, centelha: cent };
 // `base` é constante da fórmula, e não um traço: mesma leitura de `calc.ts`.
@@ -32,8 +30,8 @@ const dc = (c) => Math.round(Object.entries(c).reduce(
   (s, [k, v]) => s + (k === 'base' ? v : (traits[k] || 0) * v), 0));
 const desl = { arr: dc(dz.arranque), cor: dc(dz.corrida), nor: dc(dz.normal), sv: dc(dz.saltoVertical), shp: dc(dz.saltoHorizontalParado), shc: dc(dz.saltoHorizontalCorrendo) };
 
-const esperado = { pv: 37, defesa: 20, defM: 10, energia: 14, mana: 13, folego: 44, ini: 6, deslArr: 6, deslCor: 9, deslNor: 4, saltoV: 256, saltoHP: 5, saltoHC: 14 };
-const got = { pv, defesa, defM, energia, mana, folego, ini, deslArr: desl.arr, deslCor: desl.cor, deslNor: desl.nor, saltoV: desl.sv, saltoHP: desl.shp, saltoHC: desl.shc };
+const esperado = { pv: 37, defesa: 20, defM: 10, energia: 14, mana: 13, ini: 6, deslArr: 6, deslCor: 9, deslNor: 4, saltoV: 256, saltoHP: 5, saltoHC: 14 };
+const got = { pv, defesa, defM, energia, mana, ini, deslArr: desl.arr, deslCor: desl.cor, deslNor: desl.nor, saltoV: desl.sv, saltoHP: desl.shp, saltoHC: desl.shc };
 const erros = Object.keys(esperado).filter((k) => got[k] !== esperado[k]);
 if (erros.length) {
   console.error('✘ Regressão Kael FALHOU:');
@@ -43,6 +41,6 @@ if (erros.length) {
 // A frase de sucesso sai do PRÓPRIO esperado: escrita à mão, ela envelhece e passa
 // a mentir na tela mesmo com o teste verde, que foi o que aconteceu com o Arranque.
 console.log(`✓ Regressão Kael OK · PV ${esperado.pv} · Defesa ${esperado.defesa} · Def. Mental ${esperado.defM}`
-  + ` · Energia ${esperado.energia} · Mana ${esperado.mana} · Fôlego ${esperado.folego}`
+  + ` · Energia ${esperado.energia} · Mana ${esperado.mana}`
   + ` · Iniciativa 1d6+${esperado.ini} · Arranque ${esperado.deslArr}/Corrida ${esperado.deslCor} m·s`
   + ` · Livre ${esperado.deslNor} m · Salto V${esperado.saltoV}/HP${esperado.saltoHP}/HC${esperado.saltoHC}.`);

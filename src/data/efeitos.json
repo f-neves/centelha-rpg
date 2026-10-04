@@ -4369,7 +4369,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Traz o inverno para a região. A água vira chão, o barro endurece, a plantação morre e quem fica exposto perde Fôlego de 6 em 6 Ticks. A região demora a esquecer que você passou por ali.",
+    "efeito": "Traz o inverno para a região. A água vira chão, o barro endurece, a plantação morre e quem fica exposto sofre −1d6 nas ações físicas enquanto exposto. A região demora a esquecer que você passou por ali.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -5583,7 +5583,7 @@
         "valor": "(nível da Arte) × 5"
       }
     ],
-    "efeito": "A água entra pela boca e pelo nariz do alvo e fica lá. Ele não fala, não conjura e perde Fôlego a cada 6 Ticks enquanto durar, mesmo em terra seca. Quem estiver ao lado pode gastar uma ação para virá-lo e drenar.",
+    "efeito": "A água entra pela boca e pelo nariz do alvo e fica lá. Ele não fala, não conjura e sufoca enquanto durar, mesmo em terra seca, pela regra de Sufocamento do capítulo Resistir (Janela de socorro = Vigor × 20 Ticks). Quem estiver ao lado pode gastar uma ação para virá-lo e drenar.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",

@@ -2,9 +2,9 @@
 // Renderiza bolinhas/cards/derivados no esqueleto (FichaSkeleton.astro) e calcula XP ao vivo.
 // A persistência e o orçamento são configuráveis via opts, para servir tanto a /ficha
 // (localStorage) quanto a /personagem (Supabase, com XP definido pelo mestre).
-import { MODULOS, tecnicaDisponivel } from './modulos';
+import { tecnicaDisponivel } from './modulos';
 import { pesoMaximoErguido, alcanceArremesso } from './forca-empurrao';
-import { custoPontos, custoTecnica, custoArte, custoEfeito, custoEspecialidade, pisoXp, pv, pvPorte, type Porte, comRequisitoDeForca, forcaFaltando, defesa, defesaMental, defesaSocial, centelhaNaJogada, energia, mana, folego, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './calc';
+import { custoPontos, custoTecnica, custoArte, custoEfeito, custoEspecialidade, pisoXp, pv, pvPorte, type Porte, comRequisitoDeForca, forcaFaltando, defesa, defesaMental, defesaSocial, centelhaNaJogada, energia, mana, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './calc';
 import ATTRS_D from '../data/atributos.json';
 import HAB_D from '../data/habilidades.json';
 import SEC_D from '../data/habilidades-secundarias.json';
@@ -1564,7 +1564,6 @@ export function montarFicha(opts: FichaOpts) {
     const vitalidade = ((RACA[S.raca] as any)?.bonusCondicional || [])
       .find((b: any) => b.campo === 'pv' && b.escopo === 'sempre');
     const pvv = pv(vig, porteR) + (vitalidade ? vig : 0), en = energia({ vigor: vig, compostura: A('compostura'), raciocinio: A('raciocinio'), vontade: W, centelha: C }), mn = mana({ centelha: C, vontade: W, manipulacao: S.arte['manipulacao-mana'] || 0 });
-    const fo = folego({ vigor: vig, resistencia: SK('resistencia'), vontade: W });
     const soc = defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C });
     const men = defesaMental({ raciocinio: A('raciocinio'), integridade: integ, vontade: W, centelha: C });
     const soaks = SOAK_CATS.map((cat) => soakNatural(vig, cat) + C * cs + (armSt.soak[cat] || 0));
@@ -1583,7 +1582,6 @@ export function montarFicha(opts: FichaOpts) {
       r('Absorção Imp/Cor/Perf', `${soaks.join(' / ')}${armSt.resistPerf ? ` · Nível ${armSt.resistPerf}` : ''}`, soakCalc) +
       r('Energia', en, `(Vigor ${vig} + Compostura ${A('compostura')} + Raciocínio ${A('raciocinio')} + Vontade ${W})÷2 + Centelha ${C}×2 = ${en}`, true) +
       r('Mana', mn, `Centelha ${C}×2 + Vontade ${W} = ${mn}`, true) +
-      (MODULOS.folego ? r('Fôlego', fo, `10 + Vigor ${vig}×5 + Resistência ${SK('resistencia')}×4 + Vontade ${W}×2 = ${fo} · recupera Vigor/Tick`, true) : '') +
       r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, `1d6 + Raciocínio ${A('raciocinio')} + Prontidão ${SK('prontidao')}`, true) +
       (() => {
         // A BAIXA ESTATURA VIRA CONTA. O traço era prosa dentro de `tracos`, e
@@ -1643,10 +1641,9 @@ export function montarFicha(opts: FichaOpts) {
     const pecas = pecasArmadura();
     el('combate').innerHTML =
       `<div class="cmb"><b>Conjunto em uso</b> — ${nomeSet}</div>` +
-      `<div class="cmb"><b>Ataque</b> — ${w.nome}: rola <b>${atk}</b> · dano <b>${dano}</b> · Velocidade ${w.ticks}${MODULOS.folego ? ` · Fôlego ${w.folego ?? 0}` : ''}</div>` +
+      `<div class="cmb"><b>Ataque</b> — ${w.nome}: rola <b>${atk}</b> · dano <b>${dano}</b> · Velocidade ${w.ticks}</div>` +
       `<div class="cmb"><b>Modos</b> — ${modoStr}${temSec ? ' <span class="muted">(* secundário: −2 acerto e −1d6 de dano)</span>' : ''}</div>` +
       linhaPGR(w) +
-      (MODULOS.folego ? `<div class="cmb muted">Custa ${w.folego ?? 0} de Fôlego por golpe; recupera Vigor/Tick fora dos ataques. Esforço: cada +1d6 dobra o Fôlego e +1 Velocidade.</div>` : '') +
       (act.dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b> — <b>${blk}</b> <span class="muted">(inclui a Defesa das armas do conjunto)</span></div>`) +
       (escudos.length
         ? `<div class="cmb muted">Projétil rápido: ${escudos.some((e: any) => e.vsProjetilRapido?.bloqueia) ? 'você tem escudo hábil, dá para Bloquear se estiver apto (consciente, braço livre, espaço para manobrar)' : 'escudo pequeno demais, não bloqueia projétil rápido, só Esquiva'}.</div>`

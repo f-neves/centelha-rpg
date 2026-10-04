@@ -2624,7 +2624,7 @@ const SETAS = [
   // a conta da ficha do personagem e o bloco do bestiário chegam aqui como a
   // mesma coisa, e quem desenha o tabuleiro não precisa saber de qual dos dois
   // veio o número. É daqui que sai a Mana, e é aqui que entram os próximos
-  // (Fôlego, Energia, passivos, Artes conhecidas).
+  // (Energia, passivos, Artes conhecidas).
   let PERFIL: Record<string, any> = {};
   // O canal da mesa. Null enquanto a página abre, e null para sempre se o
   // realtime não subir: tudo o que depende dele é opcional por construção.
@@ -3327,7 +3327,7 @@ const SETAS = [
         // O mortal também tem Mana (F2, Adendo 2 de 02/10/2026): a Força de Vontade,
         // pela mesma `mana` de calc.ts que o resumo já trouxe.
         mana: R.mana,
-        energia: R.energia, folego: R.folego, pv: R.pv,
+        energia: R.energia, pv: R.pv,
         attrs: R.attrs, skills: R.skills, skills2: R.skills2, virtudes: R.virtudes,
         artes: R.artes, tecnicas: R.tecnicas, passivos: R.passivos,
         defesas: { esquiva: R.defEsquiva, bloqueio: R.defBloqueio, social: R.defSocial, mental: R.defMental },
@@ -3341,7 +3341,7 @@ const SETAS = [
     return {
       origem: 'bestiario', centelha: cent, vontade: vont, aparencia: m.aparencia || 0,
       mana: cent > 0 ? manaDaFicha({ centelha: cent, vontade: vont, manipulacao: nivelArte('manipulacao-mana') }) : 0,
-      energia: m.combate?.energia ?? null, folego: m.combate?.folego ?? null, pv: m.combate?.pv ?? null,
+      energia: m.combate?.energia ?? null, pv: m.combate?.pv ?? null,
       attrs: m.atributos || {}, skills: {}, skills2: {}, virtudes: m.virtudes || {},
       artes: m.artes || [], tecnicas: m.tecnicas || [], passivos: [],
       defesas: { esquiva: m.combate?.defesa ?? null, bloqueio: null,

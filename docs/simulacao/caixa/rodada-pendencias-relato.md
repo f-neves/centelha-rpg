@@ -90,7 +90,7 @@ verde. No HTML gerado, contado no texto sem marcação:
 **Commit do Bloco B:** `e7c06baa` · **CI:** Validar 37169320767 (19 de 19) e Deploy 37169320714 (2 de 2),
 primeira volta.
 
-## Bloco C · Fôlego: PARADO
+## Bloco C · Fôlego: PARADO (retomado abaixo, depois do D)
 
 O Fôlego não alimenta nenhuma fórmula de Energia, de combate nem da Pressão, mas é a mecânica de conteúdo
 que o pedido não mandou apagar:
@@ -192,3 +192,95 @@ No gerado:
 - `combate` traz "6 m por Tick (5,5, arredondado)" (1);
 - `dist/ficha/index.html` traz o rótulo novo (1), e "exige Centelha > 0" aparece 0 vezes;
 - os scripts gerados citam `tetoNivelArte` (2).
+
+**Commit do Bloco D (código):** `7e0d0bb7` · **CI:** Validar 37170427913 (19 de 19) e Deploy 37170427933 (2
+de 2), primeira volta.
+
+## Bloco C, retomado · Fôlego: sai o motor (D-016)
+
+Parei antes (registro acima), e o autor decidiu a D-016, a "variante da C". Aplicado:
+
+**1. Sai o motor inteiro.**
+- O capítulo `src/content/chapters/folego.md`, com `git rm`. Saem com ele o Esforço e o Tomar Fôlego, que
+  só existiam ali.
+- `regras.json`: o bloco `derivados.folego`. A nota da recuperação da Vontade dizia "a única das quatro
+  reservas sem relógio: o Fôlego volta por Tick [...]" e passou a "das três reservas [...]: a Mana volta
+  por hora [...] e a Energia por cena".
+- `calc.ts`: a função `folego()`.
+- A ficha:
+  - `ficha-engine.ts`: o import, o cálculo, a linha "Fôlego" dos derivados e, no bloco de combate, o
+    "· Fôlego N" e a linha "Custa N de Fôlego por golpe [...] Esforço [...]";
+  - `ficha-card.ts`: o número no cartão.
+- A mesa:
+  - `mesa-ficha.ts`: o campo `folego` do resumo e do `resumoParaBanco`;
+  - `grid.astro`: o `folego` do perfil do PC e da criatura, mais o comentário;
+  - `grupo.astro`: o "Fôlego" do painel.
+- O módulo: `src/lib/modulos.ts` perdeu o `MODULOS` (a bandeira só servia ao Fôlego). Os usos saíram de
+  `site.ts` (a entrada XX da navegação), de `equipamentos.astro` (a coluna Fôlego das duas tabelas de
+  armas) e de `regras/[slug].astro` (os capítulos ocultos).
+- O texto: o callout "Regra opcional: O Fôlego [...]" de `combate.md`, que linkava para o módulo, saiu
+  inteiro. Em `custo-qualidade-e-equipamento.md:82`, saiu o "baixar o custo de Fôlego" da lista de
+  melhorias de qualidade.
+- O simulador `scripts/sim-folego.mjs` (`git rm`), que lia o `derivados.folego` e quebraria se rodasse.
+  O `scripts/add-folego.mjs` FICA: é o gerador do campo `folego` das armas, que fica.
+- Os testes:
+  - `test-kael.mjs`: sem o Fôlego (era 44);
+  - `test-contrato.mjs`: sem `F.folego`, e o resumo gravado no banco perdeu a chave `folego`;
+  - `test-porte-raca.mjs`: sai o item 4 (a nota do Fôlego sem base por raça, `M-26`);
+  - `test-proezas-modulos.mjs`: reescrito. As nove seguem ocultas, sem a "reativação", que não existe
+    mais.
+  - A nota da fixture `kael.json` não fala mais do Fôlego.
+
+**A ficha ignora o campo velho.** O Fôlego nunca foi guardado na ficha (era derivado), mas foi para o
+`resumo` do banco (`resumoParaBanco`) e para o perfil do Grid. Hoje nada lê esse campo, então resumo
+velho com `folego` abre e o campo some. Prova: `../tmp/executora/teste-folego-velho.mjs` monta o Kael da
+fixture COM `folego: 44` e `derivados.folego`, chama `resumoFicha` e `resumoParaBanco`, e sai "resumo: sem
+folego · banco: sem folego · PV 37 · ✓ ficha com o Fôlego velho abre, e o campo é ignorado". O smoke da
+ficha (`driver.mjs`) também passa. Não precisa de `RENOMES` nem de migração.
+
+**2. Sai a condição "Sem fôlego"** (`condicoes.json`, id `sem-folego`). Combatente da mesa que tenha a
+condição gravada não quebra: `mesa-condicoes.ts:56` monta a condição com `COND[k.id] || {}`, e o que
+falta no catálogo só fica sem os dados dele.
+
+**3. O que o jogador vê:**
+- `efeitos.json`, o afogar: "perde Fôlego a cada 6 Ticks enquanto durar" passou a "sufoca enquanto
+  durar, mesmo em terra seca, pela regra de Sufocamento do capítulo Resistir (Janela de socorro = Vigor
+  × 20 Ticks)".
+- `efeitos.json`, o Inverno: "quem fica exposto perde Fôlego de 6 em 6 Ticks" passou a "quem fica
+  exposto sofre −1d6 nas ações físicas enquanto exposto".
+- As duas Técnicas visíveis, `segundo-folego` e `fechar-feridas`: **não têm frase do Fôlego no
+  texto**. O mapa as achou pelo id; o nome "Segundo Fôlego" é a expressão de "segundo fôlego" e ficou.
+
+**4. Ficam, ocultos e inertes:**
+- as nove Técnicas da Coração Incansável. `tecnicaDisponivel` (`modulos.ts`) as mantém fora, agora sem
+  bandeira;
+- o campo `folego` das armas e dos schemas (`validate-data.mjs:106`, `content.config.ts:201`, mais o
+  `modulo: "folego"` de `content.config.ts:84`).
+Pendência nova **D16** em `D-proezas-tecnicas.md`; `Pendencias.md` regerado.
+
+**Os "fôlego" que ficaram, porque são a palavra comum e não a reserva:**
+- `atributos.md:45` e `atributos.json`, o Vigor;
+- `habilidades.md`;
+- `habilidades-secundarias` (Canto);
+- `acoes-corpo-e-movimento.md:183`;
+- `caminhos.json:104`;
+- `artes.json:852`;
+- nomes de poderes de criaturas ("Fôlego Longo" e outros).
+
+**Verificação** (sobre `7e0d0bb7`):
+- `npx astro sync && npx tsc --noEmit` sem erro;
+- `npm run validate` verde ("Portões OK"), com o `test-kael`, o `test-contrato`, o `test-porte-raca`
+  e o `test-proezas-modulos` novos;
+- `npx astro build --force` verde.
+
+No `dist/`:
+- a página `regras/folego` não existe mais;
+- nenhum HTML traz "regras/folego", "módulo Fôlego" ou "Tomar Fôlego" (0);
+- a tabela de `equipamentos` não tem coluna "Fôlego" (0);
+- o callout "Regra opcional O Fôlego" sumiu de `combate` (0).
+
+**Para quem joga hoje:**
+- o Fôlego sai do livro, da ficha e da mesa;
+- fichas e resumos salvos com ele abrem normalmente, e o campo some;
+- a condição "Sem fôlego" deixa de existir;
+- nenhuma migração.

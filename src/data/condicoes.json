@@ -163,12 +163,6 @@
       "dados": -4, "nota": "Teto do Desgaste: −4d6 em todas as jogadas.", "fonte": "acoes-resistir"
     },
     {
-      "id": "sem-folego", "nome": "Sem fôlego", "icone": "💨", "grupo": "corpo", "cor": "alerta",
-      "dados": -1,
-      "nota": "Abaixo de 25% do Fôlego: −1d6 em toda ação física.",
-      "fonte": "folego"
-    },
-    {
       "id": "sufocando", "nome": "Sufocando", "icone": "🫁", "grupo": "corpo", "cor": "perigo",
       "porSeisTicks": 2,
       "nota": "Afogamento, fumaça, garganta presa: dano crescente a cada 6 Ticks, ignora Absorção."

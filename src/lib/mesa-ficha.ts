@@ -5,7 +5,7 @@
 // rola escondido. A conta é a mesma de `ficha-engine` (renderDerived), refeita
 // aqui sem tocar no DOM — a engine inteira tem 156 KB e desenha uma ficha.
 import {
-  pv, energia, mana, folego, defesa, defesaSocial, defesaMental, pool, poolStr, valorPassivo, regras,
+  pv, energia, mana, defesa, defesaSocial, defesaMental, pool, poolStr, valorPassivo, regras,
   empilharArmaduras, soakNatural, type Porte,
 } from './calc';
 import RACAS_D from '../data/racas.json';
@@ -27,7 +27,7 @@ export interface ResumoFicha {
   centelha: number; vontade: number; aparencia: number;
   attrs: Record<string, number>; skills: Record<string, number>; skills2: Record<string, number>;
   virtudes: Record<string, number>;
-  pv: number; energia: number; mana: number; folego: number;
+  pv: number; energia: number; mana: number;
   defEsquiva: number; defBloqueio: number; defSocial: number; defMental: number;
   soak: { impacto: number; corte: number; perfuracao: number }; resistPerf: number;
   penFisica: number;
@@ -93,7 +93,6 @@ export function resumoFicha(S: any): ResumoFicha {
     pv: pv(vig, porteDaRaca(S?.raca)),
     energia: energia({ vigor: vig, compostura: A('compostura'), raciocinio: A('raciocinio'), vontade: W, centelha: C }),
     mana: mana({ centelha: C, vontade: W, manipulacao: S?.arte?.['manipulacao-mana'] || 0 }),
-    folego: folego({ vigor: vig, resistencia: SK('resistencia'), vontade: W }),
     defEsquiva: combate?.defesa ?? (defesa({ destreza: dex, habilidade: SK('esquiva'), centelha: C }) - armPen),
     defBloqueio: defesa({ destreza: dex, habilidade: SK('bloqueio'), centelha: C }) - armPen,
     defSocial: defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C }),
@@ -134,7 +133,7 @@ export function resumoFicha(S: any): ResumoFicha {
  */
 export function resumoParaBanco(R: ResumoFicha) {
   return {
-    pv: R.pv, energia: R.energia, mana: R.mana, folego: R.folego,
+    pv: R.pv, energia: R.energia, mana: R.mana,
     arma: R.arma, ataque: R.ataque, dano: R.dano,
     defesa: R.defEsquiva, defBloqueio: R.defBloqueio,
     defesaSocial: R.defSocial, defesaMental: R.defMental,

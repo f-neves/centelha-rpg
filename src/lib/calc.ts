@@ -216,12 +216,6 @@ export function mana(opts: { centelha: number; vontade: number; manipulacao?: nu
   return opts.centelha * d.centelhaMult + (d.maisVontade ? opts.vontade : 0) + arte;
 }
 
-/** Fôlego: reserva física p/ ações comuns. base + Vigor×5 + Resistência×4 + Vontade×2. */
-export function folego(opts: { vigor: number; resistencia: number; vontade: number }) {
-  const d = regras.derivados.folego as { base: number; vigorMult: number; resistenciaMult: number; vontadeMult: number };
-  return d.base + opts.vigor * d.vigorMult + opts.resistencia * d.resistenciaMult + opts.vontade * d.vontadeMult;
-}
-
 // ----- Dano, Soak e armadura -----
 // Três modos de ataque: Cortante, Perfurante (funde projétil e estocada) e Impacto.
 export type Modo = 'corte' | 'perfurante' | 'impacto';

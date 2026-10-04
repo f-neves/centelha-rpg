@@ -19,8 +19,8 @@
 //      o conserto morre na próxima vez que alguém reescrever a linha à mão.
 //   3. OS DOIS CHAMADORES PASSAM O PORTE. Se um voltar a chamar `pv(vig)` seco,
 //      a tabela deixa de ser alcançada de novo, e nenhum número fica vermelho.
-//   4. A NOTA DO FÔLEGO NÃO PROMETE O QUE O DADO NÃO TEM (`M-26`): ela dizia
-//      "Base por raça (humano = 10)" e o dado entrega um número só para as oito.
+//   (O antigo item 4, a nota do Fôlego sem base por raça (`M-26`), saiu com o Fôlego, em
+//   03/10/2026, D-016.)
 //
 // Entra no `npm run validate`: é puro e custa milissegundos.
 import { build } from 'esbuild';
@@ -116,16 +116,6 @@ eq(C.pv(3, 'Pequeno'), 34, 'porte escrito errado cai em Médio, calado: é por i
   const mesa = ler('src/lib/mesa-ficha.ts');
   ok(!/\bpv\(vig\)(?!,)/.test(mesa), 'a ficha da mesa voltou a chamar `pv(vig)` sem porte');
   ok(/porteDaRaca/.test(mesa), 'a ficha da mesa tem de resolver o porte da raça antes de chamar `pv()`');
-}
-
-// ------------------------------------------- 4. o Fôlego não promete base por raça
-{
-  const nota = regras.derivados.folego?.nota || '';
-  ok(!/base por ra[cç]a/i.test(nota),
-    'a nota do Fôlego voltou a prometer base por raça, e o dado entrega um número só para as oito (`M-26`)');
-  eq(regras.derivados.folego.base, 10, 'a base do Fôlego continua sendo 10, e igual para todos');
-  const cap = ler('src/content/chapters/folego.md');
-  ok(!/base racial/i.test(cap), 'o capítulo do Fôlego voltou a chamar a base de racial');
 }
 
 // ------------------------ 5. o capítulo das raças NÃO é gerado, e não acompanha
@@ -259,5 +249,4 @@ if (falhas.length) {
 console.log('✓ porte-raca: as oito raças declaram porte, o Halfling e o Gnomo são Pequenos e o porte chega ao `pv()`,'
   + ' a explicação da ficha sai da tabela em vez de guardar cópia à mão,'
   + ' o capítulo (que NÃO é gerado) diz o mesmo custo e o mesmo porte que o dado,'
-  + ' o `+1` racial é piso E teto por dois caminhos separados e vale 15 XP de brinde,'
-  + ' e o Fôlego parou de prometer base por raça');
+  + ' e o `+1` racial é piso E teto por dois caminhos separados e vale 15 XP de brinde');

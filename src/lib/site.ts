@@ -1,5 +1,4 @@
 // Helpers de URL para funcionar sob o `base` do GitHub Pages (/centelha-rpg/).
-import { MODULOS } from './modulos';
 const BASE = import.meta.env.BASE_URL; // ex.: "/centelha-rpg/"
 
 /** Prefixa um caminho interno com o base do site (sem barras duplicadas). */
@@ -71,8 +70,6 @@ export const NAV = [
   },
   { slug: 'regras/criacao-de-personagem', titulo: 'Criação de Personagem', numeral: 'XVIII' },
   { slug: 'regras/qual-sistema', titulo: 'Qual Sistema Eu Uso?', numeral: 'XIX' },
-  // Fôlego (XX) é módulo opcional: a página existe, mas só entra aqui com MODULOS.folego.
-  ...(MODULOS.folego ? [{ slug: 'regras/folego', titulo: 'Fôlego', numeral: 'XX' }] : []),
 ];
 
 /**

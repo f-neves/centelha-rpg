@@ -79,7 +79,7 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 </div>
 
 
-<p class="muted">Não há como deixar a arma <strong>mais rápida</strong> (−1 de Velocidade) só com melhoria de qualidade. Melhorar a qualidade também pode, a critério do Narrador, <strong>reduzir o peso</strong>, <strong>aumentar o alcance/distância</strong>, <strong>baixar o custo de Fôlego</strong> e afins: cada um equivale a uma melhoria de +1.</p>
+<p class="muted">Não há como deixar a arma <strong>mais rápida</strong> (−1 de Velocidade) só com melhoria de qualidade. Melhorar a qualidade também pode, a critério do Narrador, <strong>reduzir o peso</strong>, <strong>aumentar o alcance/distância</strong> e afins: cada um equivale a uma melhoria de +1.</p>
 
 <div class="callout exemplo"><span class="lbl">Machado (base 300 pc)</span>Um <strong>Machado Sucata</strong> sai por até <strong>50 pc</strong>; <strong>Tosco</strong> por até <strong>100 pc</strong>; <strong>Bom</strong> por <strong>1.500 pc</strong>; <strong>Ótimo</strong> por <strong>9.000 pc</strong>; <strong>Excelente</strong> por <strong>21.000 pc</strong>; uma <strong>Relíquia</strong> a partir de <strong>30.000 pc</strong>. Um Machado <strong>Bom</strong> (+1) pode vir com <strong>+1 de Dano</strong> ou <strong>+2 de Acerto</strong>; um <em>Ótimo</em> (+2) com <strong>+1 de Dano</strong> e <strong>+2 de Acerto</strong> ou <strong>+1 nível de Perfuração</strong> </div>
 

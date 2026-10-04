@@ -357,8 +357,6 @@ Um impulso único que, **uma vez iniciado, não pode ser interrompido**. Três a
 
 <p class="muted">No salto correndo, <strong>Velocidade atual</strong> é a sua velocidade no instante do impulso: Arranque se você corre há ≤3 Ticks, Corrida depois (na ficha, supõe-se corrida plena). O <strong>Salto</strong> é a explosão de força do corpo: a Força lança, o Atletismo controla, a Destreza ajusta, e a Centelha rompe os limites mortais, do pulo humano ao salto lendário.</p>
 
-<div class="callout regra"><span class="lbl">Regra opcional</span>O <strong>Fôlego</strong>, o cansaço que limita as rajadas de golpes, o <strong>Esforço</strong> (forçar o golpe por mais dados) e a ação de <strong>Tomar Fôlego</strong>, é um <strong>módulo avançado, desligado por padrão</strong>: fica guardado à parte, no <a href="/centelha-rpg/regras/folego">módulo Fôlego</a>, com os números todos publicados lá. As mesas que quiserem ligá-lo o encontram nessa página; nada mais no Combate depende disso.</div>
-
 ## Vantagem tática: posição e número
 
 Posição, cobertura e postura mudam o combate sem mudar suas fichas: todos eles ajustam o **valor passivo da Defesa do alvo**. Positivo torna o alvo mais difícil de acertar; negativo, mais fácil. Use o **grau menor (±2)** para vantagens comuns e o **maior (±4)** para situações marcantes.

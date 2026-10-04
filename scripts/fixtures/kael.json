@@ -1,5 +1,5 @@
 {
-  "_nota": "Ficha de fixação do contrato ficha↔mesa. É o Kael de test-kael.mjs, agora com equipamento, para o teste atravessar equip.ts e combate-resumo.ts. Os atributos e perícias são os mesmos daquele teste (inclusive Resistência 0), de propósito: assim PV, Energia, Mana e Fôlego batem nos dois e a discordância entre eles vira sinal. Editar aqui muda os números esperados em scripts/test-contrato.mjs, e é para ser assim: o teste existe para a mudança doer.",
+  "_nota": "Ficha de fixação do contrato ficha↔mesa. É o Kael de test-kael.mjs, agora com equipamento, para o teste atravessar equip.ts e combate-resumo.ts. Os atributos e perícias são os mesmos daquele teste (inclusive Resistência 0), de propósito: assim PV, Energia e Mana batem nos dois e a discordância entre eles vira sinal. Editar aqui muda os números esperados em scripts/test-contrato.mjs, e é para ser assim: o teste existe para a mudança doer.",
   "id": { "nome": "Kael", "conceito": "O Batedor", "jogador": "fixação" },
   "raca": "humano",
   "attrs": {
