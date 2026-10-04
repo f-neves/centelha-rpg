@@ -19,6 +19,8 @@ uma decisao registrada, pare e pergunte ao autor.
 2. C-070 · 02/10/2026 · `ad632f3f` (Adendo 3, item 14, pergunta 1, opcao B) · custa 1 ponto; Margem 0 segura de vez; Margem 1 ou mais cede, com o pedido 1 nivel abaixo. **No ar.** Junto, C-072: o intervalo do cortejo (8 dias ou mais) nao e uma acao.
 3. D-001 · 03/10/2026 · decisao do autor, confirmou os conflitos: resistir custa 1 + Margem de Vontade, teto 4, e e um pagamento fora do limite de 1 ponto por acao. **Substitui C-070; restringe C-011.** Estado: a implementar (despacho do Resistir).
 
+4. D-015 · 03/10/2026 · teto 4 fora do cortejo, cortejo em discussão (commit 03c1d711). **Substituída pela D-017** (04/10/2026, decisão 4 do veterana-1d): o teto 4 vale também por intervalo do cortejo, e as linhas :242 e :246 de relacoes-sociais.md remetem ao Resistir. Substitui também o item 5 da D-001 e a C-072 ("o intervalo do cortejo não é uma ação"). Entra na rodada 6.
+
 **Bonus de Centelha em jogada, Defesa e Valor Passivo**
 1. C-024 · Reforma da Centelha (28/09/2026): 2 x min(Centelha, Habilidade).
 2. B-029 · 01/10/2026: Atributo puro leva +1 por ponto de Centelha (D12).
@@ -1164,7 +1166,7 @@ Os itens abaixo vieram da "lista do veterana-1c" e NÃO foram despachados; vão 
 - Data: 2026-10-03
 - Decisão: "empurrão de 1 m + 1 m por Margem; +3 na pegada por Margem; levantar e escapar com Velocidade 3. Para manter o agarrão, o agarrador gasta uma ação de Velocidade 6 a cada lance, ou o alvo se solta. Dois estados: Agarrado (não se desloca, mas age; é o que a rede e a Arte de prender causam) e Imobilizado (não age, só tenta escapar; só a Técnica causa)."
 - Origem: conversa do autor, 03/10, lista do veterana-1c
-- Estado: EM REVISÃO PELO AUTOR, NÃO DESPACHAR. O modelo mudou e chega completo depois; o texto acima é o antigo.
+- Estado: SUBSTITUÍDA pela D-019 (04/10/2026: o modelo novo chegou nas decisões 20 a 27 do veterana-1d). O texto acima é o antigo e não vale mais; os acréscimos abaixo foram absorvidos pela D-019.
 - Acréscimos do autor (03/10/2026), para quando a Manobra vier: errar a primeira tentativa de agarrar é um erro comum de ataque, e a inversão de controle só vale com o agarrão já formado; não existe Rajada de agarrão; uma Proeza pode transformar um soco que acerta em agarrão.
 
 ### D-014 · Resistir a efeito mental: "um grau a menos" usa a régua de Duração do próprio efeito [tags: resistir, mental, duracao]
@@ -1178,7 +1180,7 @@ Os itens abaixo vieram da "lista do veterana-1c" e NÃO foram despachados; vão 
 - Data: 2026-10-03
 - Decisão: ESCALA 2, opção B: "Tire o tetoCusto (e a tetoCustoNota) do bloco social.modoDevagar.resistencia: o teto 4 vale para o Combate Social e para o efeito mental, e o cortejo fica como estava até o autor decidir o cortejo."
 - Origem: mensagem do autor via Arquiteto, 03/10/2026 (resposta à ESCALA 2 da rodada 125)
-- Estado: a implementar. O CORTEJO ESTÁ EM DISCUSSÃO (relacoes-sociais.md:242-246, regras.json vontadePresa e C-072): não mexer até o autor decidir. Restringe D-001 (o teto 4 não alcança o cortejo).
+- Estado: SUBSTITUÍDA pela D-017 (04/10/2026): o autor decidiu o cortejo, e o "tirar do cortejo" do commit 03c1d711 era provisório. Foi aplicada em 03c1d711 e será desfeita na rodada 6.
 
 ### D-016 · Fôlego: sai o motor e a condição; texto do jogador corrigido; Técnicas ocultas e armas ficam [tags: folego, tecnicas, efeitos, condicoes]
 - Data: 2026-10-03
@@ -1201,3 +1203,131 @@ Rodada de pendencias abertas, texto do autor via Arquiteto. Aguardam a confirmac
 - P-09 · Comportamento das criaturas na bancada (9a a 9f). Estado: despachada (a traducao em politica de bancada e da Executora, com tabela no relato).
 - P-10 · lore/economia/ fora do repositorio publico: **bloqueado**, o build e a validacao leem de la (scripts/copiar-economia.mjs, gen-cap-economia.mjs, validate-data.mjs:922). Autor escolheu a opcao A em 03/10/2026: tirar do git so o que o build nao le; ficam a v2/ e o .procedencia.json. Despachada.
 - Adiados: K37 (Grid cobra pressao pelo ataque feito e recebido), B16 (vocabulario de resistencias), topo da tabela de recompensa (desafio 4+).
+
+## Decisões do veterana-1d (conversa do autor, 03/10, veterana-1d; e 04/10/2026)
+
+O autor decidiu a Parte B do veterana-1c e mais alguns pontos novos. As 37 decisões estão na tabela do topo de `tmp/veterana/veterana-1d.md` (numeração do despacho da Missão 1d, citada aqui como "decisão N do 1d"). O texto final de cada ponto está na Parte A do 1d e o plano de rodadas na Parte D. Estado de todas: **a implementar**, por rodada (a numeração das rodadas é a da Parte D do 1d). Origem: conversa do autor, 03/10, veterana-1d, salvo onde está escrito 04/10.
+
+### Decisões que repetem entradas já registradas (ligadas, sem duplicar)
+
+| Decisão do 1d | Entrada registrada | Observação |
+|---|---|---|
+| 1 e 2 (Resistir 1 + Margem, teto 4, fora do limite de 1 ponto; o limite vale só para o +1d6 e o +4) | D-001 (itens 1 e 2) | no ar desde 99e97b2; o texto do Cap. III é da rodada 2 |
+| 3 (efeito mental: 1 + Margem recusa; com Margem 1 ou mais paga 1 e o efeito dura um grau a menos) | D-001 (item 3) e D-014 | a parte da Proeza espera o veterana-1e (B·RESISTIR-PROEZA) |
+| 5 (Mana do mortal) | D-002 | rodada 8 |
+| 6 (Meditação) | D-003 | rodada 8 |
+| 7 (lugares de fluxo) | D-004 | rodada 8 |
+| 8 (Arte Mana sem Centelha) | D-005 | rodada 9 |
+| 9 (teto de Arte) | D-006 e P-04 | no ar; sem a palavra "provisório" (rodada 8) |
+| 14 (Tratar X, X/2, X/4; recupera, segura, piora) | D-007 | rodada 2 |
+| 15 (identificar é Inteligência + Cura; a mão é Raciocínio + Cura) | D-008 | rodada 2 |
+| 16 (Arte no Tratar) | D-009 | rodadas 2 e 9 |
+| 17 (ganho bruto fora das linhas) | D-010 | rodada 7 |
+| 18 (preços de peças) | D-011 | o catálogo fica; tempo x preço vai para a reconciliação de preços |
+| 19 (Arte dentro da Longa) | D-012 | rodada 3 |
+
+### D-017 · Cortejo: o teto 4 vale também por intervalo do cortejo [tags: resistir, cortejo, social, teto]
+- Data: 2026-10-04
+- Decisão (decisão 4 do 1d, verbatim): "Cortejo: o teto 4 vale também por intervalo do cortejo. A frase do relacoes-sociais.md:246 ("o intervalo do cortejo não é uma ação...") passa a remeter ao Resistir." Resposta do autor ao CONFLITO·CORTEJO do 1d, 04/10/2026: o "tirar do cortejo" do commit 03c1d711 era provisório. Recolocar o `tetoCusto` em `social.modoDevagar.resistencia` (regras.json), e as linhas 242 e 246 de relacoes-sociais.md passam a remeter ao Resistir. O texto final do lado A está no CONFLITO·CORTEJO do 1d (quatro trocas: fórmula, parágrafo seguinte, frase final da Vontade presa, Folha de referência).
+- Origem: conversa do autor, 03/10, veterana-1d (decisão 4); confirmada em 04/10/2026
+- Estado: a implementar na rodada 6. SUBSTITUI a D-015 e o item 5 da D-001. A C-072 ("o intervalo do cortejo não é uma ação") fica substituída. O `vontadePresa` não muda (a Vontade presa continua somando de um intervalo para o outro, sem teto).
+
+### D-018 · Régua de Duração das Proezas: publicar no capítulo das Proezas [tags: proeza, duracao, regua, resistir]
+- Data: 2026-10-04
+- Decisão: publicar no capítulo das Proezas a régua de Duração das Proezas (`escalasProeza.parametros.duracao`, regras.json).
+- Origem: conversa do autor, 04/10/2026
+- Estado: a implementar na rodada 11. Relacionada à D-014 (o "um grau a menos" do efeito mental de Proeza usa essa régua) e ao B·RESISTIR-PROEZA do 1d.
+
+### D-019 · Manobra: o modelo novo (agarrar, manter, dano, estados) [tags: manobra, agarrar, combate, imobilizado]
+- Data: 2026-10-03
+- Decisão (decisões 20 a 27 do 1d, resumo da tabela): 20. Agarrar é jogada de ataque contra a Defesa de agarrão passiva; não existe Rajada de agarrão. 21. Manter o agarrão: a cada 6 Ticks; superou, igual, abaixo. 22. Dano do agarrão: 2 x Força + Centelha, Impacto, +1d6 por Margem; a Absorção conta. 23. O agarrado não age; Defesas e penalidades do agarrão. 24. Pegada de Ferro: +3 na jogada de quem controla (sem "+3 por Margem"). 25. Três estados: Preso, Agarrado, Imobilizado. 26. Deslocamento durante o agarrão: só descrição. 27. Empurrão (1 m + 1 m por Margem) e levantar-se (Velocidade 3). Acréscimos do autor de 03/10 (da D-013), absorvidos: errar a primeira tentativa de agarrar é um erro comum de ataque, e a inversão de controle só vale com o agarrão já formado; uma Proeza pode transformar um soco que acerta em agarrão.
+- Origem: conversa do autor, 03/10, veterana-1d
+- Estado: a implementar na rodada 5 (aguarda o veterana-1e: as respostas do autor sobre Imobilizado e sobre as Técnicas do Agarrão do Urso podem mexer na redação). SUBSTITUI a D-013.
+
+### D-020 · Artes de mente sem projétil: Influência + Habilidade social [tags: arte, mente, social, defesa]
+- Data: 2026-10-03
+- Decisão (decisão 10 do 1d): Artes de mente sem projétil rolam Influência + Habilidade social do Efeito, contra a Defesa que o Efeito nomeia (17 Efeitos de controle mental); com projétil, Percepção + Acerto Arcano contra a Defesa Mental. A Habilidade social de cada um dos 17 Efeitos e o ajuste da ficha de Bram são "escolha da Veterana" (o autor aceitou).
+- Origem: conversa do autor, 03/10, veterana-1d
+- Estado: a implementar na rodada 8 (a linha de Artes de Bram espera o veterana-1e).
+
+### D-021 · Sustentado de Duração 1: só presença, 6 Ticks [tags: arte, sustentado, duracao]
+- Data: 2026-10-03
+- Decisão (decisão 11 do 1d): o Sustentado de Duração 1 vale só enquanto o conjurador mantém a presença, 6 Ticks, e fere quem estiver nela no fim.
+- Origem: conversa do autor, 03/10, veterana-1d
+- Estado: a implementar na rodada 8
+
+### D-022 · Chão Traiçoeiro [tags: arte, chao, deslocamento]
+- Data: 2026-10-03
+- Decisão (decisão 12 do 1d): grau x 5 para quem corre, cavalga ou luta; a metade (para cima) para quem só anda.
+- Origem: conversa do autor, 03/10, veterana-1d
+- Estado: a implementar na rodada 9
+
+### D-023 · Efeitos com Ataque e uma linha de Dificuldade: frase geral [tags: arte, efeitos, dificuldade]
+- Data: 2026-10-03
+- Decisão (decisão 13 do 1d): frase geral nas Artes dizendo como se lê a Dificuldade dos Efeitos que têm Ataque.
+- Origem: conversa do autor, 03/10, veterana-1d
+- Estado: a implementar na rodada 8
+
+### D-024 · Quatro regras sociais: Ameaça, Chantagem, Ruptura, Rumor [tags: social, ameaca, chantagem, ruptura, rumor]
+- Data: 2026-10-03
+- Decisão (decisão 28 do 1d): as quatro regras entram no Cap. X; as menções soltas remetem a elas.
+- Origem: conversa do autor, 03/10, veterana-1d
+- Estado: a implementar na rodada 6
+
+### D-025 · Controle percebido: linha na tabela de atos [tags: social, controle, ressentimento]
+- Data: 2026-10-03
+- Decisão (decisão 29 do 1d): linha nova na tabela de atos, "Ter sido controlado e perceber | -2"; a "inimizade" vira "ressentimento".
+- Origem: conversa do autor, 03/10, veterana-1d
+- Estado: a implementar na rodada 6
+
+### D-026 · Interrogar fica como decidido [tags: social, interrogar]
+- Data: 2026-10-03
+- Decisão (decisão 30 do 1d): Influência + Interrogatório contra a Defesa Social; alcance pela relação; o prisioneiro hostil só fala sob tortura (Convicção), por ato ou diante de um interrogador muito forte.
+- Origem: conversa do autor, 03/10, veterana-1d
+- Estado: a implementar na rodada 6
+
+### D-027 · Traços do Antecedente descontam na régua pela metade, para baixo [tags: antecedente, regua, reputacao, contato, posicao, refugio]
+- Data: 2026-10-03
+- Decisão (decisão 31 do 1d): Reputação, Contato, Posição e Refúgio entram na régua pela metade, para baixo; vale a metade do maior traço; só o nível 6 chega a 3 passos. Sem "teto de +6" nem "+3" soltos.
+- Origem: conversa do autor, 03/10, veterana-1d
+- Estado: a implementar na rodada 1. REVISA em parte A-004 ("Nível N tira N dos 3 passos") e A-005 ("mantém o teto de +6"), que estão no ar. Não substitui A-003 (o Antecedente mexe no ponto de partida da régua).
+
+### D-028 · Máximo de cada Atributo vem da raça e vale na criação [tags: raca, atributo, criacao]
+- Data: 2026-10-03
+- Decisão (decisão 32 do 1d): o máximo racial de Atributo vale já na criação (elfo com Destreza 7 sem gastar o pico). Escrito em Atributos, em Centelha e em Criação.
+- Origem: conversa do autor, 03/10, veterana-1d
+- Estado: a implementar na rodada 1 (a rodada 10 só confere o exemplo)
+
+### D-029 · Elfo e Meio-Elfo: o texto da Resiliência Mental fica [tags: raca, elfo, resiliencia]
+- Data: 2026-10-03
+- Decisão (decisão 33 do 1d): o texto da Resiliência Mental fica como está; só a Aparência muda (A·ELFO). Portes: Anão, Meio-Elfo, Meio-Orc e Orc são Médio.
+- Origem: conversa do autor, 03/10, veterana-1d
+- Estado: a implementar na rodada 1
+
+### D-030 · Números da Quebra-Muralhas (D43) e da Esquiva Impossível (D49) [tags: proeza, d43, d49]
+- Data: 2026-10-03
+- Decisão (decisão 34 do 1d): valem os números da Veterana (D43: linhas 35 e 40 do Romper e a trilha de Bônus por nível; D49: Esquiva Impossível +6).
+- Origem: conversa do autor, 03/10, veterana-1d
+- Estado: a implementar na rodada 11
+
+### D-031 · Engenharia é ofício de obra; só pedra é Alvenaria [tags: oficio, engenharia, alvenaria]
+- Data: 2026-10-03
+- Decisão (decisão 35 do 1d): Engenharia é ofício de obra (muralha, ponte, comporta); o que é só pedra (casa, torre) é Alvenaria.
+- Origem: conversa do autor, 03/10, veterana-1d
+- Estado: a implementar na rodada 7
+
+### D-032 · Técnicas das fichas de exemplo: a contagem ao que existe no catálogo [tags: exemplos, tecnicas, xp]
+- Data: 2026-10-03
+- Decisão (decisão 36 do 1d): totais de XP dos exemplos: Kael 1065, Sora 1323, Veil 1864, Bram 1726 (o do Bram supõe cinco Artes no nível 5, que o teto da D-006 proíbe com Centelha 1: B·BRAM-TETO, espera o veterana-1e). Nota do 1d: três Técnicas das fichas pedem como pré-requisito uma Técnica que a ficha não tem (B·REQUER-EXEMPLOS).
+- Origem: conversa do autor, 03/10, veterana-1d
+- Estado: a implementar na rodada 10 (o Bram e o Requer esperam o veterana-1e)
+
+### D-033 · Rajada: a penalidade cresce golpe a golpe [tags: rajada, combate, defesa]
+- Data: 2026-10-03
+- Decisão (decisão 37 do 1d): 1º golpe sem penalidade, 2º a -1d6, 3º a -2d6; a Defesa cai 2 por golpe; a frase da Guarda sob pressão concorda.
+- Origem: conversa do autor, 03/10, veterana-1d
+- Estado: a implementar na rodada 5. Conferir contra C-046 (múltiplos ataques só pelas regras escritas), C-047 e C-048 antes de despachar.
+
+### Respostas do autor que chegam no veterana-1e (NÃO aplicar antes)
+
+Imobilizado, Bram, Técnicas do Agarrão do Urso, Energia Espiritual, Vida 1, Mago de Batalha e moinho. A Veterana está montando o `veterana-1e.md`. Nenhuma delas entra em rodada até o 1e chegar e ser registrado. Sem registro de texto aqui por isso.
