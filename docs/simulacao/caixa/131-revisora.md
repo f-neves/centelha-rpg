@@ -45,7 +45,7 @@ de dado), que não falsifica o texto da rodada.**
 8. **Travessão:** contagem antes (`3dc09c71~1`) e depois, por arquivo tocado, igual em todos (combate.md 6/6,
    armas-e-armaduras.md 3/3, equipamentos.astro 4/4, tecnicas.json 15/15, glossario.json 3/3, armas.json 1/1,
    bench 7/7, os demais 0/0). Nenhuma linha nova com travessão nos três commits. Ver a observação 2.
-9. **"Perícia"** nas linhas acrescentadas dos três commits: 0.
+9. **Vocabulário:** o nome antigo de Habilidade não aparece em nenhuma linha acrescentada dos três commits (0).
 
 ## D-036 (`7ab6c733`) · PROCEDE
 
@@ -93,7 +93,7 @@ Quem decide: o Arquiteto, ao despachar a pendência de condições (ela toca a f
    As duas falam a língua do agarrão antigo. Imobilizar é da rodada 11 (a4-1) e Prensa Crescente foi para a
    calibração (D-045, D54 a D56). Não é defeito desta rodada; anoto para que a rodada 11 as encontre.
 2. **Travessão herdado numa linha reescrita:** `src/pages/equipamentos.astro`:100 foi reescrita na rodada e
-   manteve um travessão que já estava lá ("resvala — e ele"). Não é linha nova (a contagem do arquivo é 4 antes
+   manteve um travessão que já estava lá ("resvala [travessão] e ele"). Não é linha nova (a contagem do arquivo é 4 antes
    e 4 depois) e o portão de travessão não cobre `.astro`. Fica para quem passar pela página.
 3. **K4a fora de propósito**, como o despacho diz: `armas.json` desarmado com acerto 1 e defesaArma 1 (C-029),
    lido pela ficha e por `armaDoSlot`. Concordo que não é defeito: parado à espera do autor.
@@ -105,3 +105,12 @@ Quem decide: o Arquiteto, ao despachar a pendência de condições (ela toca a f
 
 O texto da Manobra ficou legível na ordem de jogo (agarrar, manter, dano, estados, derrubar, empurrar), e a
 frase do Tick do Golpe resolve a dúvida que motivou a D-048. Nada a acrescentar.
+
+## Nota de delta (§10)
+
+No push, o rebase trouxe `2ab7da2e` (veterana-1e rodada 6), que toca , ,
+ e . Conferi o diff de `3dc09c71` a `2ab7da2e` nesses quatro: ele
+mexe em Vontade máxima, interrogatório Social e o +4 de Vontade, e não encosta nas linhas julgadas aqui
+(T2c em :62 e :126 e :67, :149, a entrada
+). A conclusão fica. Corrigi também, neste segundo commit, duas falhas de escrita minhas
+no primeiro (um travessão citado sem a troca por [travessão] e o nome antigo de Habilidade no item 9).
