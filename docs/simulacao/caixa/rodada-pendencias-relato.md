@@ -183,8 +183,8 @@ O smoke da ficha (`driver.mjs`) também passa: "✓ all checks passed".
   "um magus de academia de Centelha mínima que, só com estudo, conjura Artes tão fundas quanto as de um
   grande herói". Com o teto Centelha + 2, Centelha mínima dá Arte 2 ou 3 no máximo (Centelha 0 ou 1), e o "tão fundas quanto
   as de um grande herói" deixa de valer. É o mesmo conflito do Bram. Não mexi no texto. O autor já
-  decidiu (D-035, 04/10/2026): reescrever pela amplitude, e não pela profundidade. A reescrita vem por
-  despacho próprio.
+  decidiu (D-035, 04/10/2026): reescrever pela amplitude, e não pela profundidade. Reescrito depois, ver "A D-035 no
+  arcano.astro:63" no fim deste relato.
 - A memória de projeto "Trilhas de Feitiçaria" (a Arte só exige Centelha > 0, e a profundidade vem do
   XP) é anterior à F2 e a esta decisão. Registro para quem a ler.
 
@@ -569,3 +569,36 @@ tocado.
 
 **(D) A lista do Bloco D** ganhou o `arcano.astro:63` (o magus de academia de Centelha mínima), sem
 mudança no texto.
+
+**Commit dos CORRIGE da 126:** `da98f8b1` · **CI:** Validar 37175588407 (19 de 19) e Deploy 37175588365 (2 de 2).
+
+## A D-035 no arcano.astro:63
+
+O Arquiteto mandou reescrever o arquétipo no commit pequeno dos CORRIGE. A ordem chegou depois de `da98f8b1`
+(CORRIGE) e de `eaca41a0` (rodada 1 do veterana-1d) já estarem publicados, e por isso sai num commit à
+parte.
+
+- **`src/pages/arcano.astro:63`**, a Erudição:
+  - antes: "*Exemplo:* um magus de academia de Centelha mínima que, só com estudo, conjura Artes tão fundas
+    quanto as de um grande herói."
+  - depois: "*Exemplo:* um magus de academia de Centelha mínima que se destaca pela **amplitude**: muitas
+    Artes, rituais e preparo para cada ocasião. A pouca Centelha segura o nível de cada Arte (o teto é
+    Centelha + 2: Centelha 0 chega ao nível 2, Centelha 1 ao 3), e não o quanto ele sabe."
+- **`criacao-de-personagem.md:149`**, só relatado, sem mudança. Diz:
+  > Os três acima sobem a Centelha junto com a magia, como manda a intuição. Mas a regra de Arcano **separa
+  > as duas coisas**: para aprender e conjurar uma Arte **não é preciso Centelha**: o mortal conjura com a
+  > Mana, que no mortal é a própria Força de Vontade, e a Centelha só engorda essa reserva; ela não é a
+  > medida da profundidade. A profundidade (o nível da Arte) vem do estudo, comprada com XP. Isso abre um
+  > arquétipo que os exemplos anteriores escondem: o feiticeiro **mortal-tocado**, que estudou fundo o que
+  > quase não tem por natureza.
+  - Com a D-006 e a D-035, "ela não é a medida da profundidade" e "A profundidade (o nível da Arte) vem do
+    estudo" deixam de valer: a Centelha passa a limitar o nível da Arte. E "estudou fundo" promete o
+    mesmo.
+- **Outra frase que promete profundidade à Centelha baixa:** só a ficha do Bram, `criacao-de-personagem.md:153`:
+  "a fagulha que carrega é mínima, mas o que sabe fazer com ela humilha conjuradores de tier maior. Conjura
+  Artes de **nível 5** com Centelha **1**: a mesma profundidade que Veil". É do Bram, e não mexi: chega no
+  veterana-1e.
+- Varri `src/` por "profundidade", "tão fundas", "vem do estudo", "não é a medida", "só com estudo" e "grande
+  herói". O resto que aparece é de outro assunto: o Contato ("largura, não profundidade"), o efeito
+  Profundidade, a nota de Proeza do `regras.json:639`, que é a Centelha limitando a Proeza, e código de
+  desenho 3D.
