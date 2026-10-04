@@ -1331,3 +1331,9 @@ O autor decidiu a Parte B do veterana-1c e mais alguns pontos novos. As 37 decis
 ### Respostas do autor que chegam no veterana-1e (NÃO aplicar antes)
 
 Imobilizado, Bram, Técnicas do Agarrão do Urso, Energia Espiritual, Vida 1, Mago de Batalha e moinho. A Veterana está montando o `veterana-1e.md`. Nenhuma delas entra em rodada até o 1e chegar e ser registrado. Sem registro de texto aqui por isso.
+
+### D-034 · Decisões da Missão 1c aplicadas pelo 1d, sem texto verbatim no registro [tags: veterana, 1c, longa, iniciativa]
+- Data: 2026-10-04
+- Decisão: o veterana-1c aplicou 25 decisões do autor dadas na Missão 1c, e o 1d as herda ("decisão herdada", "decisão N da 1c"). O registro não tem o texto verbatim delas. As que as rodadas 1 a 3 aplicam: Longa a 3 por dado (o site e a memória do Arquiteto dizem 3,5), Especialidade +2 por nível na Longa, o Mestre escolhe entre Longa e Acumulada, a Longa gera Margem e ferimento/Desgaste só entram se durarem o intervalo inteiro, Iniciativa sem Centelha, Acelerar 10% não vale abaixo de 0 nem na linha "por dia".
+- Origem: veterana-1c.md (Missão 1c, 03/10/2026) e veterana-1d.md
+- Estado: a implementar nas rodadas 1 a 3. PENDENTE: o autor confirma o texto verbatim; a Longa a 3 por dado contradiz a memória do Arquiteto (3,5, soma 7 = 12,5) e o site de hoje. Antes de mexer em código que lê a média, a Executora me avisa.
