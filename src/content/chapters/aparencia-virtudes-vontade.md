@@ -118,7 +118,7 @@ Você gasta Vontade para **turbinar uma ação importante** (cada ponto soma **+
 
 <p class="muted">Repare no relógio, porque ele é o que dá o peso: pela cama a Vontade volta <strong>1 por noite</strong>, e não há atalho. Uma Firula de nível 3 vale <strong>três noites de sono</strong> de uma vez, e é o número mais forte das três reservas. Não há teto por cena, e isso é decisão da mesa e não esquecimento: os números estão no ar para serem testados.</p>
 
-Mais que isso, a Vontade é a **espinha dos seus traços derivados**: entra na **Mana** (Centelha×2 + Vontade), na **Energia** e na **Defesa Mental**. Uma vontade fraca não só cede sob pressão: encolhe tudo o que o personagem tem de reserva.
+Mais que isso, a Vontade é a **espinha dos seus traços derivados**: entra na **Mana** (Centelha×2 + Vontade), na **Energia** e na **Defesa Mental**. Nas fórmulas, a Força de Vontade é sempre a **máxima**, e não a que sobrou: gastar pontos não baixa a Defesa Mental, a Energia nem a Mana. Uma vontade fraca não só cede sob pressão: encolhe tudo o que o personagem tem de reserva.
 
 ## Integridade & Defesa Mental
 
@@ -127,5 +127,7 @@ Mais que isso, a Vontade é a **espinha dos seus traços derivados**: entra na *
 A **Defesa Mental** é o muro passivo que o medo imposto, a ordem, a leitura da mente e os outros poderes mentais precisam superar (convencer e intimidar numa conversa batem na Defesa Social; o medo da cena é da Bravura, pela [régua do medo](/regras/defesas)):
 
 <p class="formula">Defesa Mental = Integridade + Raciocínio + Força de Vontade + 2 × mín(Centelha, Integridade) + Especialidade</p>
+
+(a Força de Vontade é a máxima, ver Força de Vontade)
 
 <p class="muted">Uma Integridade baixa derruba a Defesa Mental: quem está quebrado por dentro é mais fácil de dobrar. (A sua irmã social, a <strong>Defesa Social</strong>, protege contra quem tenta te <em>convencer</em> ou te <em>ler</em>, e vem de (Compostura + Sociabilidade) × 2 + 2 × mín(Centelha, Sociabilidade) + Especialidade.)</p>

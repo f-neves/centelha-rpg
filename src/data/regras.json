@@ -2673,7 +2673,7 @@
         "custoBase": 1,
         "porMargem": 1,
         "tetoCusto": 4,
-        "tetoCustoNota": "Resistir no Combate Social custa 1 + Margem de Vontade, com teto de 4: nenhum efeito obriga o defensor a pagar mais de 4 (Proezas podem cobrar mais). O mesmo teto vale para o efeito mental. Não alcança o cortejo (modoDevagar), que está em discussão. Decisões do autor de 03/10/2026 (D-001 e D-015)."
+        "tetoCustoNota": "Resistir no Combate Social custa 1 + Margem de Vontade, com teto de 4: nenhum efeito obriga o defensor a pagar mais de 4 (Proezas podem cobrar mais). O mesmo teto vale para o efeito mental e, por intervalo, para o cortejo (modoDevagar). Decisões do autor D-001 (03/10/2026) e D-017 (04/10/2026)."
       }
     },
     "modoDevagar": {
@@ -2688,6 +2688,8 @@
         "custoBase": 1,
         "divisorExcedente": 6,
         "excedenteComPisoZero": true,
+        "tetoCusto": 4,
+        "tetoCustoNota": "O custo por intervalo do cortejo tem o mesmo teto de 4 do Resistir, por intervalo (D-017, 04/10/2026, que substitui a D-015). A Vontade presa continua somando de um intervalo para o outro, sem teto.",
         "vontadePresa": true,
         "vontadePresaNota": "A Vontade investida em segurar fica presa enquanto o cortejo durar, e só volta quando ele acaba ou o alvo desiste. Vale SÓ para o cortejo longo, porque a Vontade se recompõe a 1 por noite (recuperacaoVontade.quantoPorSono) e o intervalo tem 8 dias ou mais: sem a trava, qualquer custo por intervalo sai de graça."
       }

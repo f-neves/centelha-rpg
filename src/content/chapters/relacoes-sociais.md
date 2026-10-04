@@ -13,7 +13,7 @@ O lado social do jogo tem **três marchas**, da mais leve à mais pesada:
 
 Comece pela régua; as outras duas são escaladas dela.
 
-E há uma divisão que atravessa o capítulo inteiro, melhor dita de uma vez: **a cena com dados na mesa não move a régua.** Ela compra o que se consegue naquela cena, e nada além. Quem move a régua são os **atos** e o **cortejo com calma**.
+E há uma divisão que atravessa o capítulo inteiro, melhor dita de uma vez: **a cena com dados na mesa não move a régua.** Ela compra o que se consegue naquela cena, e nada além. Quem move a régua são os **atos** e o **cortejo com calma**; para baixo, mexem nela também, e só nos casos escritos mais adiante, cobrar favor, vencer feio (Ameaça e Chantagem) e o boato.
 
 ## A régua
 
@@ -58,7 +58,7 @@ Antes de qualquer rolagem, o Mestre olha o que você quer e compara com o nível
 
 ## Como a régua se move
 
-Relações mudam por **duas coisas**, sempre medidas em **passos** na régua: os **atos**, que saltam sozinhos, e os **gestos**, que só acumulam, e só no cortejo com calma. E há uma terceira que a move para baixo: **cobrar favor gasta crédito**.
+Relações mudam por **duas coisas**, sempre medidas em **passos** na régua: os **atos**, que saltam sozinhos, e os **gestos**, que só acumulam, e só no cortejo com calma. E há outras que a movem só para baixo: **cobrar favor gasta crédito**, vencer feio (Ameaça e Chantagem) e o boato (Rumor e fofoca).
 
 ### Atos valem mais que palavras
 
@@ -67,9 +67,12 @@ O que mais move uma relação são **feitos**, não conversa. Cada um empurra um
 | A seu favor | Passos | Contra você | Passos |
 |---|:---:|---|:---:|
 | Um serviço grande, defender você em público | +2 | Um insulto público, um prejuízo | −2 |
+| | | Ter sido controlado e perceber | −2 |
 | Salvar a vida, um sacrifício pesado | +3 | Uma traição | −3 |
 | | | Uma traição grave | −4 |
 | | | O imperdoável (matar quem ele ama, arruiná-lo) | −5 |
+
+**Ter sido controlado e perceber** conta quando um efeito contra a Defesa Mental (uma ordem obedecida sem querer, uma emoção plantada; Cap. XI) é percebido pelo alvo: quando o efeito acaba e ele se lembra, ou quando alguém lhe conta, e o Mestre decide. Vale uma vez por controle, e vale para quem controlou, não para quem só convenceu: persuasão e sedução que passaram pelo juízo do alvo não contam, porque ali ele continuou dono da decisão. É ato: salta na hora, sem rolar, e atravessa o teto de vidro.
 
 A fronteira entre **ato** e **gesto** é uma pergunta só: *"este feito muda como ela te vê, sozinho?"*. Se muda, é ato, e vale o salto da tabela, na hora, sem rolar nada. Se apenas **ajuda** a mudar, é gesto: um presente, um favor pequeno, uma cortesia, uma desfeita, uma grosseria. Gesto não salta, ele **acumula**, e o lugar onde ele acumula é o **cortejo com calma**, no fim deste capítulo.
 
@@ -157,15 +160,41 @@ Um golpe que supera a Defesa **moveria** o alvo. Para **segurar firme**, ele gas
 | 12–17 (Margem 2) | **3** Vontade | cede, e o pedido chega **2 níveis acima** |
 | 18 ou mais (Margem 3 ou mais) | **4** Vontade, o **teto**: o custo para de subir | cede, e o pedido chega **Margem** níveis acima (cada +6 além disso, **+1 nível** de alcance) |
 
-**A régua não se move em nenhuma linha desta tabela.** Ganhar o duelo estica o que se pode pedir naquela cena; não faz ninguém gostar de você.
+**A régua não sobe em nenhuma linha desta tabela.** Ganhar o duelo estica o que se pode pedir naquela cena; não faz ninguém gostar de você.
 
-A Vontade é a mesma reserva das Proezas e das Artes e **volta devagar**: 1 ponto por noite de sono, 1 ou 3 por [Firula](/regras/habilidades) conforme o nível, e 1 por agir fiel à própria régua moral. Então segurar-se num embate longo **custa caro**: vira uma queda de braço de recursos, em que ganha quem tem mais paciência e convicção. Gastar Vontade **não** vale contra **leitura** (não dá para se recusar a ser lido); vale só contra os golpes que tentam te **mover**.
+A Vontade é a mesma reserva das Proezas (a Mana das Artes é outra reserva, também no mortal: recuperar uma não recupera a outra) e **volta devagar**: 1 ponto por noite de sono, 1 ou 3 por [Firula](/regras/habilidades) conforme o nível, e 1 por agir fiel à própria régua moral. Então segurar-se num embate longo **custa caro**: vira uma queda de braço de recursos, em que ganha quem tem mais paciência e convicção. O Resistir **não** vale contra **leitura** (não dá para se recusar a ser lido); vale só contra os golpes que tentam te **mover**. O +4 na Defesa antes do teste vale também contra leitura (Cap. XI).
 
 ### Ceder, e o alcance que a Margem compra
 
-Quando o alvo **não** paga a Vontade, ele **cede o ponto** daquela troca: aceita o argumento, topa o pedido, faz o que estava sendo empurrado. O que a Margem compra é **alcance**, e não vínculo: um golpe raso (Margem 0) rende o favor no nível em que a relação já está; um golpe folgado (Margem 1 ou mais) estica o pedido aquele tanto de níveis acima, na tabela de "Pedir as coisas", e vale só naquela cena. A régua fica onde estava, e é isso que separa **ganhar a discussão** de **ser querido**. Vencer feio, na base da ameaça ou da chantagem, ainda dobra o ponto, mas costuma **ferir a relação**: o alvo cede com ressentimento e pode reverter na primeira chance.
+Quando o alvo **não** paga a Vontade, ele **cede o ponto** daquela troca: aceita o argumento, topa o pedido, faz o que estava sendo empurrado. O que a Margem compra é **alcance**, e não vínculo: um golpe raso (Margem 0) rende o favor no nível em que a relação já está; um golpe folgado (Margem 1 ou mais) estica o pedido aquele tanto de níveis acima, na tabela de "Pedir as coisas", e vale só naquela cena. A régua fica onde estava, e é isso que separa **ganhar a discussão** de **ser querido**. Vencer feio, na base da ameaça ou da chantagem, ainda dobra o ponto, e **fere a relação** (1 passo, ver Ameaça, Chantagem e Ruptura): o alvo cede com ressentimento e pode reverter na primeira chance.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>A Dama Vesna (<strong>Defesa Social 18</strong>) resiste ao cortesão Lírio. Ele ataca com Sedução e soma <strong>25</strong>: 25 − 18 = 7, <strong>Margem 1</strong>. Para não ceder, Vesna gasta <strong>2 de Vontade</strong> (1 + Margem 1) e segura firme. No lance seguinte, Lírio soma 20 (<strong>Margem 0</strong>): custaria só 1 de Vontade, mas Vesna, já cansada do jogo, decide <strong>não gastar</strong> e cede o ponto da cena, aceita uma dança, que é o que a relação de hoje já daria. Tivesse cedido ao golpe de Margem 1, Lírio poderia ter pedido algo <strong>um nível acima</strong> daquela relação, e só naquela noite: a régua não andaria de um jeito nem do outro.</div>
+
+### Interrogar
+
+Interrogar é sempre interação social, nunca ataque à mente. Quem interroga faz um **Ataque Social** (Influência + Interrogatório, como em O ataque social) contra a **Defesa Social** de quem responde, e a **pergunta é o pedido**: o Mestre a põe na tabela de "Pedir as coisas" (uma informação pública é Neutro), e o alcance é medido a partir da relação de quem responde com quem interroga. Pergunta dentro do nível da relação: o alvo responde sem rolar. Acima dele, cada Margem estica o alcance um nível, só naquela cena. Quem não tem Interrogatório usa a Habilidade da abordagem (Intimidação para ameaçar, Persuasão para convencer, Manha para enganar); quem tem as duas segue a regra da primária e da secundária do Cap. VIII. Ameaçar é esfriar e convencer é aquecer, para o termo da história.
+
+**Segurar a língua é o Resistir acima:** o alvo paga 1 + Margem de Vontade (teto 4) e segura firme; se não paga, cede e responde até onde o alcance chega. Perguntar não é ler, então a Vontade vale.
+
+**O prisioneiro hostil.** Um prisioneiro é, no mínimo, um estranho, e quase sempre algo pior, de modo que o alcance medido da relação o deixa quase calado. O inimigo capturado só fala por um destes caminhos: a tortura (quem falha no teste de Convicção fala), um ato que mude a relação, ou um interrogador muito forte.
+
+**A tortura não é ataque contra Defesa nenhuma.** Ela fica nos dois testes de quem a sofre, em Resistir (Cap. VIII): a dor do ferro é Vigor + Resistência, e aguentar sem falar é o teste de Virtude de Convicção. O Mestre escolhe qual a cena pede, ou os dois.
+
+### Ameaça, Chantagem e Ruptura
+
+As três esfriam (ver A história empurra o dado) e são Ataque Social e Combate Social como qualquer outro, com o termo da história de quem esfria.
+
+**Ameaça.** Intimidação: dobrar pelo medo.
+
+**Chantagem.** Manha ou Intimidação, e exige que quem ataca tenha um Segredo (Cap. VII) que atinja o alvo, no peso que o nível do Segredo descreve. O Segredo não soma na jogada (nenhum Antecedente soma): ele é o que permite a abordagem, e cobrá-lo a fundo o gasta (Cap. VII, Segredo). Sem Segredo, a mesma conversa é Ameaça. As Proezas da Teia (Alavanca, Chantagem) seguem o texto de cada uma.
+
+**Ruptura.** Persuasão ou Manha: romper um vínculo, seja acabar uma aliança, uma amizade ou um namoro, seja semear desconfiança entre o alvo e alguém de quem ele gosta. Como toda cena com dados, ela só compra alcance do pedido (aqui, que o alvo aceite o fim ou duvide do outro); a régua só anda por ato, e o rompimento de fato é o ato que o Mestre escolhe na tabela de atos contra você.
+
+**Vencer feio fere a relação.** Quando o alvo cede a uma Ameaça ou a uma Chantagem, a relação dele com quem o dobrou desce 1 passo, o mesmo passo de Favor gasta crédito. Como tudo o que não é ato, esse passo não leva a relação abaixo de −2 (o teto de vidro).
+
+### Rumor e fofoca
+
+Plantar boato é Longa (Influência + Manha, intervalo de dia; Cap. VIII, Social). Dificuldade e Acúmulo saem das tabelas gerais do Cap. VIII, pelo Mestre, conforme a credibilidade do boato e o tamanho do círculo. Os Contatos (Cap. VII) não somam na jogada: dizem onde o boato circula, que é o meio que a rede cobre. Fechado o Acúmulo, quem ouviu o boato trata o alvo dele 1 passo abaixo, só no círculo que o boato alcançou, até uma estação (o prazo de Esfriar com o tempo) ou até o alvo desmentir com um ato; o passo também para em −2. Colher boato é a mesma Longa, para saber o que o círculo diz do alvo, sem mover ninguém.
 
 ---
 
@@ -241,11 +270,11 @@ Gesto alto **custa dinheiro**, e o preço cresce rápido com o nível. O que ele
 
 Cortejo não se sofre calado. O alvo que percebe e não quer ser movido **gasta Força de Vontade** para segurar, e o preço é por intervalo:
 
-<p class="formula">Custo por intervalo = 1 + [ máx(0, Ataque parado + gestos − Defesa parada) ÷ 6 ]</p>
+<p class="formula">Custo por intervalo = 1 + [ máx(0, Ataque parado + gestos − Defesa parada) ÷ 6 ], com teto de 4 por intervalo</p>
 
-Quem vem com folga cobra mais caro: cada 6 pontos acima da Defesa parada somam 1 ao custo. E o `máx(0, …)` está ali porque sem ele um pretendente **pior** que a Defesa do alvo sairia de graça, com o custo caindo a zero.
+Quem vem com folga cobra mais caro: cada 6 pontos acima da Defesa parada somam 1 ao custo, até o teto de 4 por intervalo, o mesmo do Resistir (Cap. X, Resistir: gastar Força de Vontade). O teto vale por intervalo; a Vontade presa continua somando de um intervalo para o outro, sem teto. E o `máx(0, …)` está ali porque sem ele um pretendente **pior** que a Defesa do alvo sairia de graça, com o custo caindo a zero.
 
-**A Vontade investida em segurar fica presa** enquanto o cortejo durar. Só volta quando ele acaba, ou quando o alvo desiste de segurar. Sem essa trava a regra seria nada: a Vontade se recompõe a 1 ponto por noite de sono, e o intervalo tem 8 dias ou mais, então a reserva voltaria cheia entre um intervalo e o outro e qualquer custo sairia de graça. **Isto vale só para o cortejo longo**: no Combate Social a Vontade continua como está, porque ali a cena não dura noites. Pelo mesmo motivo o custo por intervalo pode passar de 1 ponto: o **intervalo do cortejo (8 dias ou mais) não é uma ação**, e o máximo de 1 ponto de Vontade por ação ou jogada não o alcança.
+**A Vontade investida em segurar fica presa** enquanto o cortejo durar. Só volta quando ele acaba, ou quando o alvo desiste de segurar. Sem essa trava a regra seria nada: a Vontade se recompõe a 1 ponto por noite de sono, e o intervalo tem 8 dias ou mais, então a reserva voltaria cheia entre um intervalo e o outro e qualquer custo sairia de graça. **Isto vale só para o cortejo longo**: no Combate Social a Vontade continua como está, porque ali a cena não dura noites. Pelo mesmo motivo o custo por intervalo pode passar de 1 ponto: pagar para segurar é Resistir, e Resistir é um pagamento, fora do limite de 1 ponto de Vontade por ação ou jogada (Resistir, acima); vale o teto de 4, por intervalo.
 
 Quantos intervalos a Vontade do alvo compra, com o pretendente empilhando um gesto de +4 por intervalo:
 
@@ -271,8 +300,10 @@ O cortejo não concede pedido: o que ele faz é **andar a régua**, um passo por
 
 - **Régua** −6 a +6, meio Neutro largo. O nível diz o que a pessoa faz por (ou contra) você. Pedido dentro do nível: de graça; acima: mova a régua até lá, ou compre **alcance** na cena.
 - **Move por:** atos (saltos fixos: +2 e +3 a seu favor, de −2 a −5 contra você) e gestos (só no cortejo, um por intervalo). Cobrar favor grande desce 1 passo. Sair do Neutro = 3 passos; **teto de vidro ±2** para tudo o que acumula, e só ato atravessa. Esfria 1 passo por estação.
-- **Cena com dado NÃO move a régua**, nem conversa nem duelo: rende **alcance do pedido**, +1 nível por 6 de folga, só naquela cena.
+- **Cena com dado NÃO move a régua**, nem conversa nem duelo: rende **alcance do pedido**, +1 nível por 6 de folga, só naquela cena. Para baixo, só vencer feio (Ameaça e Chantagem) desce 1 passo.
 - **A história pesa:** remar contra o que o alvo já sente soma o nível à Defesa Social dele; remar a favor subtrai. ×1, sem teto (o próprio ±6 já é o limite). Zera no Neutro.
 - **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Acerto da Abordagem + 2 × mín(Centelha, Habilidade), contra a Defesa Social (o número da ficha, mais o termo da história somado na hora, acima); **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade, sem Centelha.
-- **Resistir:** para não ceder, gaste **1 + Margem** de Vontade no lance (**teto 4**; é um pagamento, fora do limite de 1 ponto por ação); se não pagar, cede o ponto e o pedido chega **Margem** níveis acima. Não vale contra leitura.
-- **Influência Estendida** (o modo devagar, sem dado): Ataque parado = Influência + Habilidade; Defesa parada = Compostura + Sociabilidade + 2 × mín(Centelha, Sociabilidade) + termo da régua; **Tempo do passo = máx(1, defesa − ataque − gestos)**, em intervalos de **8 dias ×½ ×1 ×2 ×4** pela longevidade de quem corteja. Gestos 0/+1/+2/+4, **um por intervalo**. Quem resiste paga **1 + [máx(0, ataque + gestos − defesa) ÷ 6]** de Vontade por intervalo, e essa Vontade fica **presa** até o cortejo acabar. Leitura vs Defesa Social (a com dado) para saber quanto falta.
+- **Resistir:** para não ceder, gaste **1 + Margem** de Vontade no lance (**teto 4**; é um pagamento, fora do limite de 1 ponto por ação); se não pagar, cede o ponto e o pedido chega **Margem** níveis acima. Não vale contra leitura (o +4 antes do teste vale).
+- **Influência Estendida** (o modo devagar, sem dado): Ataque parado = Influência + Habilidade; Defesa parada = Compostura + Sociabilidade + 2 × mín(Centelha, Sociabilidade) + termo da régua; **Tempo do passo = máx(1, defesa − ataque − gestos)**, em intervalos de **8 dias ×½ ×1 ×2 ×4** pela longevidade de quem corteja. Gestos 0/+1/+2/+4, **um por intervalo**. Quem resiste paga **1 + [máx(0, ataque + gestos − defesa) ÷ 6]** de Vontade por intervalo (teto 4 por intervalo), e essa Vontade fica **presa** até o cortejo acabar. Leitura vs Defesa Social (a com dado) para saber quanto falta.
+- **Ameaça, Chantagem, Ruptura, Rumor:** Ataque Social ou Longa como os outros. A Chantagem exige um Segredo e o gasta; vencer feio e o boato descem 1 passo e param em −2.
+- **Interrogar:** Ataque Social, Influência + Interrogatório, contra a Defesa Social; a pergunta é o pedido, medido a partir da relação, e segurar a língua é o Resistir (1 + Margem de Vontade, teto 4). O prisioneiro hostil só fala sob tortura, por ato ou diante de interrogador muito forte. Tortura: só os testes de corpo e de Convicção de quem a sofre.

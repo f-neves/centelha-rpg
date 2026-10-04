@@ -194,3 +194,103 @@ dele segue velha (sem o −1), e a nota fica só aqui.
 - o arremesso ganha a tabela do FAA;
 - o glossário ganha "Defesa de agarrão".
 Nenhuma ficha salva muda, e nenhuma migração.
+
+**Commit da rodada 5:** `3dc09c71` · **CI:** Validar 37193403973 (19 de 19) e Deploy 37193403983 (2 de 2).
+O K4a ficou parado: o Arquiteto confirmou que o (e) contradiz a C-029 (Desarmado +1/+1 no `armas.json`), e o
+ponto vai ao autor.
+
+## Rodada 6 · Vontade, Defesas e Cap. X (Relações Sociais)
+
+**Antes de mexer.**
+- **A cadeia do Resistir**, conferida no registro: C-071 (1 + Margem, antiga) → C-070 (1 ponto) → D-001 (1 +
+  Margem, teto 4) → D-015 (teto fora do cortejo, SUBSTITUÍDA) → D-017 (teto 4 também por intervalo do
+  cortejo; a C-072 "não é uma ação" fica substituída) → D-042 (repete a D-017). E a D-014 (mental, um grau
+  a menos). O RESISTIR do 1e aplica a D-017, que é a decisão viva.
+- Os outros pontos aplicam decisões registradas: D-024 (decisão 28, regras sociais), D-025 (29, controle
+  percebido) e D-026 (30, Interrogar), e a D-002 (a Mana do mortal como reserva própria; o NOVO-a6-1 só
+  escreve a separação no Cap. X). Nada contradiz o registro.
+- Citações de (b) conferidas contra o main:
+  - o **K2a** já estava resolvido: as duas datas "(Reforma da Centelha, 28/09/2026)" do Cap. XI saíram na
+    rodada 5, com o T2c. "Reforma da Centelha" dá 0 em `defesas.md`. Anotado e pulado;
+  - o **T4d**: o nó "pontual ou por cena/dia" já tinha saído na correção da 126; o que faltava era o nó da
+    "inimizade";
+  - o resto estava como o (b) cita.
+
+**Os pontos** (o texto de (e), palavra por palavra, salvo onde anotado):
+- **RESISTIR** (D-017) · `relacoes-sociais.md`
+  - a fórmula do custo por intervalo, "com teto de 4 por intervalo";
+  - o parágrafo seguinte, com o teto e a Vontade presa sem teto;
+  - a frase do "não é uma ação" (o antigo `:246`) passou a "pagar para segurar é Resistir [...] vale o teto
+    de 4, por intervalo";
+  - a Folha de referência: "(teto 4 por intervalo)".
+  - **No dado** (`regras.json`), como a D-017 manda: `social.modoDevagar.resistencia` voltou a ter
+    `tetoCusto: 4`, com uma `tetoCustoNota` que cita a D-017. A nota do `modoRapido.resistencia` deixou de
+    dizer "Não alcança o cortejo [...] em discussão" e diz que o teto vale também, por intervalo, para o
+    cortejo. Nenhum código lê esses campos (grep em `src/` e `scripts/`).
+  - A pendência **E11** (cortejo em discussão), registrada no Bloco K, ficou FECHADA, apontando para a
+    D-017; `Pendencias.md` regerado.
+- **NOVO-a6-1** e **LEITURA-4** · Cap. X, Resistir
+  - "A Vontade é a mesma reserva das Proezas (a Mana das Artes é outra reserva [...])";
+  - "O Resistir não vale contra leitura [...] O +4 na Defesa antes do teste vale também contra leitura
+    (Cap. XI).";
+  - a Folha: "Não vale contra leitura (o +4 antes do teste vale)."
+- **REGRAS-SOCIAIS**
+  - as seções novas "Ameaça, Chantagem e Ruptura" e "Rumor e fofoca", depois de Interrogar;
+  - a abertura do capítulo e "Como a régua se move";
+  - "A régua não sobe em nenhuma linha desta tabela.";
+  - "e fere a relação (1 passo [...])";
+  - a Folha: a frase do vencer feio, e a linha nova.
+- **CONTROLE-PERCEBIDO**: a linha "Ter sido controlado e perceber | −2" na tabela de atos, e o parágrafo
+  depois dela.
+- **INTERROGAR**
+  - a seção nova Interrogar, depois do exemplo da Vesna, em Ceder;
+  - a linha da Folha;
+  - Sentidos e engano, Interrogar;
+  - Resistir, Dor e tortura;
+  - Cap. XI, Uma dúzia de casos: as duas linhas novas e o parágrafo novo, com os links em HTML, porque o
+    parágrafo é `<p class="muted">`;
+  - Investigação: em `habilidades.json`, com o capítulo regerado.
+- **REGRAS-CITADAS**: o Segredo e os Contatos, nas linhas "Amarra com" (`antecedentes.json`, com o capítulo
+  regerado).
+- **T4b** · Cap. XI, Queimar Força de Vontade
+  - a frase de abertura (antes e depois do teste);
+  - "+4 antes do teste." nas células de Influência social e de Ataques mentais;
+  - a Leitura social: "+4 antes do teste, sim. Depois, não";
+  - "Não existe blindagem por cena ou por dia" ao fim da célula mental.
+- **T4d** · `qual-sistema.md`: o nó "nasce ressentimento (ato de −2 passos na Régua, Cap. X)". O SVG foi
+  regerado só para esse diagrama; os outros cinco ficaram iguais ao HEAD. O `gen-mermaid --check` passa no
+  `validate`.
+- **VONTADE-MAXIMA**: a frase-padrão no Cap. III (Força de Vontade) e na Criação (sob a tabela de derivados);
+  "(a Força de Vontade é a máxima [...])" no Cap. III, Integridade, e no Cap. XI, Defesa Mental; o Orc
+  ("Força de Vontade máxima do orc × 2"); o glossário (Defesa Mental, Energia e Mana).
+  - **Dois ajustes de forma:**
+    - no Cap. V, o "(Vontade máxima)" da Energia ficou depois da fórmula em negrito, e não dentro do
+      parêntese da soma, onde (e) o põe ("depois do + Vontade"). No meio da soma ele quebraria a fórmula.
+      O da Mana ficou depois de "Mana = Centelha × 2 + Vontade", como (e) diz;
+    - no Orc, o (e) põe "máxima" em negrito dentro de um trecho que já é negrito. Escrevi sem o negrito
+      aninhado.
+  - É o ponto que eu tinha deixado para a rodada 5 na rodada 1 do 1d (ART-27): a linha da Energia agora
+    leva os dois ajustes.
+- **C5a** · `/mestre`: a linha de intimidar o soldado perdeu "vs Defesa Social do alvo", e o parágrafo do
+  atalho ganhou as duas frases de (e).
+
+**Verificação** (sobre `3dc09c71`):
+- `npm run validate` verde;
+- `npx astro sync && npx tsc --noEmit` sem erro;
+- `npx astro build --force` verde.
+- No gerado, com `../tmp/executora/prova-r6.py`:
+  - os 39 trechos novos estão lá, em 13 páginas;
+  - os 14 velhos dão 0: "não é uma ação", "mesma reserva das Proezas e das Artes", "A régua não se move em
+    nenhuma linha", "costuma ferir", "Gastar Vontade não vale contra leitura", "para se blindar:", a
+    linha "Tortura, canto [...]", "Reforma da Centelha", "inimizade" no Qual sistema, "vs Defesa Social do
+    alvo" no Mestre, "contra Integridade", "Quem interroga rola contra", "munição para as abordagens" e
+    "o interrogatório conduzido com método".
+  - Saída: "TUDO OK".
+
+**Para quem joga hoje:**
+- o cortejo passa a ter teto de 4 por intervalo;
+- o Cap. X ganha Interrogar, Ameaça, Chantagem, Ruptura e Rumor;
+- ser controlado e perceber custa −2 na régua;
+- o +4 antes do teste vale contra leitura;
+- a Vontade das fórmulas é a máxima.
+Só texto e uma nota no `regras.json`, que nenhum código lê. Nenhuma ficha muda, e nenhuma migração.

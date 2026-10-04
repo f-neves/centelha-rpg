@@ -137,7 +137,7 @@ disso.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span><strong>Contatos 3 (submundo do porto) · Contatos 1 (guarda da cidade)</strong>.</div>
 
-**Amarra com:** a Régua (contatos ficam em Simpatia, +1: ajudam barato, não se sacrificam); alimenta investigação, boatos e a arma social "Rumor/Fofoca".
+**Amarra com:** a Régua (contatos ficam em Simpatia, +1: ajudam barato, não se sacrificam); alimenta investigação, boatos e a arma social Rumor/Fofoca (Cap. X, Rumor e fofoca: os Contatos dizem em que círculo o boato circula).
 
 ### Séquito
 
@@ -261,7 +261,7 @@ disso.
 | **5** | Um segredo que muda o mundo: a fraqueza de um rei, a origem de uma guerra, algo que reescreve a história. |
 | **6** | O segredo definitivo: a fraqueza de um deus, a verdade que derruba impérios; guardá-lo é carregar o destino de muitos. |
 
-**Amarra com:** o Combate Social (munição para as abordagens de Ruptura, Chantagem e Ameaça) e a Proeza Teia. **É meio consumível:** usar um segredo a fundo costuma gastá-lo (uma vez revelado ou cobrado, perde a força). O XP volta como crédito quando queima.
+**Amarra com:** o Combate Social (a Chantagem só existe com um Segredo, e cobrá-lo a fundo o gasta; ver Cap. X, Ameaça, Chantagem e Ruptura) e a Proeza Teia. **É meio consumível:** usar um segredo a fundo costuma gastá-lo (uma vez revelado ou cobrado, perde a força). O XP volta como crédito quando queima.
 
 ### Fé
 

@@ -41,7 +41,7 @@ flowchart TD
   S2 -->|"Dia a dia: um pedido, um favor, construir um vínculo"| Regua["Régua de Relação (ver fluxo)"]
   S2 -->|"Cena tensa: dobrar alguém agora, custe o que custar"| CS["Combate Social (gastar Vontade para não ceder)"]
   M --> M2["Alvo pode gastar Vontade: 1 + Margem (teto 4) recusa; pagar 1 encurta um grau na régua de Duração do efeito, e no menor grau anula"]
-  M --> M3["Ao sair de um controle percebido, nasce inimizade (salto no Desfavor da Régua)"]
+  M --> M3["Ao sair de um controle percebido, nasce ressentimento (ato de −2 passos na Régua, Cap. X)"]
 ```
 
 Atalho: **Social = você não quer ceder. Mental = tentam tirar de você a escolha de ceder.**

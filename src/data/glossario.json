@@ -106,7 +106,7 @@
     "aliases": [
       "resistência mental"
     ],
-    "definicao": "Muro passivo contra manipulação e poderes mentais: Integridade + Raciocínio + Vontade + 2 × mín(Centelha, Integridade), mais a Especialidade quando o escopo nomeado dela se aplicar."
+    "definicao": "Muro passivo contra manipulação e poderes mentais: Integridade + Raciocínio + Vontade (Vontade máxima) + 2 × mín(Centelha, Integridade), mais a Especialidade quando o escopo nomeado dela se aplicar."
   },
   {
     "id": "defesa-social",
@@ -141,7 +141,7 @@
     "aliases": [
       "reserva de técnicas"
     ],
-    "definicao": "Combustível das Proezas mundanas: (Vigor + Compostura + Raciocínio + Vontade) ÷ 2 [arredonda p/ baixo] + Centelha × 2."
+    "definicao": "Combustível das Proezas mundanas: (Vigor + Compostura + Raciocínio + Vontade (Vontade máxima)) ÷ 2 [arredonda p/ baixo] + Centelha × 2."
   },
   {
     "id": "mana",
@@ -149,7 +149,7 @@
     "aliases": [
       "reserva mágica"
     ],
-    "definicao": "Combustível do Arcano: (Centelha × 2) + Vontade. Conjurar custa Mana = soma dos níveis dos parâmetros escolhidos, menos a Centelha."
+    "definicao": "Combustível do Arcano: (Centelha × 2) + Vontade (Vontade máxima). Conjurar custa Mana = soma dos níveis dos parâmetros escolhidos, menos a Centelha."
   },
   {
     "id": "integridade",

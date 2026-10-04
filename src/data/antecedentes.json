@@ -107,7 +107,7 @@
       }
     ],
     "exemplo": "**Contatos 3 (submundo do porto) · Contatos 1 (guarda da cidade)**.",
-    "amarra": "a Régua (contatos ficam em Simpatia, +1: ajudam barato, não se sacrificam); alimenta investigação, boatos e a arma social \"Rumor/Fofoca\"."
+    "amarra": "a Régua (contatos ficam em Simpatia, +1: ajudam barato, não se sacrificam); alimenta investigação, boatos e a arma social Rumor/Fofoca (Cap. X, Rumor e fofoca: os Contatos dizem em que círculo o boato circula)."
   },
   {
     "id": "sequito",
@@ -384,7 +384,7 @@
         "texto": "O segredo definitivo: a fraqueza de um deus, a verdade que derruba impérios; guardá-lo é carregar o destino de muitos."
       }
     ],
-    "amarra": "o Combate Social (munição para as abordagens de Ruptura, Chantagem e Ameaça) e a Proeza Teia. **É meio consumível:** usar um segredo a fundo costuma gastá-lo (uma vez revelado ou cobrado, perde a força). O XP volta como crédito quando queima."
+    "amarra": "o Combate Social (a Chantagem só existe com um Segredo, e cobrá-lo a fundo o gasta; ver Cap. X, Ameaça, Chantagem e Ruptura) e a Proeza Teia. **É meio consumível:** usar um segredo a fundo costuma gastá-lo (uma vez revelado ou cobrado, perde a força). O XP volta como crédito quando queima."
   },
   {
     "id": "fe",

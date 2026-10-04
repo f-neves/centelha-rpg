@@ -53,9 +53,10 @@ Medo é o caso que mais engana, então fica a régua fechada:
 | Alguém lê os seus pensamentos por magia | Mental |
 | Provocação em combate ("vem, covarde!") | Social |
 | Compulsão mágica ("ataque seu aliado") | Mental |
-| Tortura, canto enlouquecedor, privação de sono, trauma | Mental |
+| Canto enlouquecedor, trauma | Mental |
+| Interrogar, com ou sem tortura ou privação de sono | Social |
 
-<p class="muted">Na tortura, a Defesa Mental é o muro contra quem <strong>interroga</strong>: ele rola contra ela. Aguentar a dor em si é outra coisa, um teste ativo de quem resiste, em duas metades (corpo e alma), no capítulo de <a href="/centelha-rpg/regras/acoes-resistir">Resistir</a>. A <strong>privação de sono</strong> segue a mesma divisão: quem a usa como arma rola contra a Defesa Mental, e o cansaço em si é o Desgaste do <a href="/centelha-rpg/regras/acoes-resistir#sono">Sono</a>, que chega sem jogada.</p>
+<p class="muted">Interrogar, com tortura ou sem ela, é Social: quem interroga rola contra a Defesa Social (ver <a href="/centelha-rpg/regras/relacoes-sociais">Relações Sociais</a>). Aguentar a dor em si é outra coisa, um teste ativo de quem resiste, em duas metades (corpo e alma), no capítulo de <a href="/centelha-rpg/regras/acoes-resistir">Resistir</a>. A privação de sono segue a mesma divisão: usada para arrancar informação é interrogar, e o cansaço em si é o Desgaste do <a href="/centelha-rpg/regras/acoes-resistir#sono">Sono</a>, que chega sem jogada.</p>
 
 ## As fórmulas
 
@@ -78,7 +79,7 @@ Em **feras** (bichos de instinto, Inteligência 1) troca-se **Sociabilidade por 
 
 ### Defesa Mental
 
-- **Defesa Mental** = Raciocínio + Integridade + Força de Vontade + 2 × menor(Centelha, Integridade) + Especialidade
+- **Defesa Mental** = Raciocínio + Integridade + Força de Vontade + 2 × menor(Centelha, Integridade) + Especialidade (a Força de Vontade é a máxima: gastar pontos para resistir não baixa a Defesa Mental)
 
 A Mental é uma **soma simples** (sem o ×2 das outras): a mente se defende com os três pilares (a rapidez do **Raciocínio**, a firmeza da **Integridade** e a reserva da **Força de Vontade**), mais a Centelha, aqui limitada pela **Integridade** (é ela que segura a mente firme, não o Raciocínio nem a Vontade).
 
@@ -97,13 +98,13 @@ Regra do "quando": o foco é **estreito e declarado** (uma situação, nunca "to
 
 ## Queimar Força de Vontade
 
-Além do número passivo, em alguns casos você pode **gastar Força de Vontade** para se blindar:
+Além do número passivo, a **Força de Vontade** tem dois usos contra influência e ataque, e nenhum deles é uma blindagem que dura. **Antes do teste:** 1 ponto soma **+4** à Defesa (Social ou Mental) contra aquele ataque, no máximo 1 ponto por ação ou jogada (Cap. III). **Depois que o ataque passou:** vale o Resistir, um pagamento de **1 + Margem** de Vontade (teto 4) que fica fora desse limite de 1 ponto (ver Resistir, em Relações Sociais).
 
 | Contra o quê | Dá para gastar Vontade? |
 |---|---|
-| **Influência social** (te convencer, seduzir, coagir) | **Sim**: você recusa friamente, mesmo que o teste tenha passado, pagando **1 + Margem** de Vontade (teto 4; é um pagamento, fora do limite de 1 ponto por ação; ver Resistir, em Relações Sociais). |
-| **Leitura social** (te ler, farejar sua mentira) | **Não**: não dá para "se recusar" a ser lido; só o número da Defesa Social protege. |
-| **Ataques e influências mentais** | **Sim**: pagar **1 + Margem** de Vontade (teto 4) recusa o efeito. Com Margem 1 ou mais, você pode pagar só 1: o efeito pega, mas dura **um grau a menos na régua de Duração do próprio efeito** (a da Arte, Breve ou Longa, ou a da Proeza); se ele já está no menor grau dessa régua, pagar 1 o anula. Resistir é um pagamento, fora do limite de 1 ponto por ação. |
+| **Influência social** (te convencer, seduzir, coagir) | **Sim**: **+4 antes do teste.** Depois que o ataque passou, você recusa friamente, mesmo que o teste tenha passado, pagando **1 + Margem** de Vontade (teto 4; é um pagamento, fora do limite de 1 ponto por ação; ver Resistir, em Relações Sociais). |
+| **Leitura social** (te ler, farejar sua mentira) | **+4 antes do teste, sim. Depois, não**: não dá para "se recusar" a ser lido; só o número da Defesa Social protege. |
+| **Ataques e influências mentais** | **Sim**: **+4 antes do teste.** Depois que o ataque passou, pagar **1 + Margem** de Vontade (teto 4) recusa o efeito. Com Margem 1 ou mais, você pode pagar só 1: o efeito pega, mas dura **um grau a menos na régua de Duração do próprio efeito** (a da Arte, Breve ou Longa, ou a da Proeza); se ele já está no menor grau dessa régua, pagar 1 o anula. Resistir é um pagamento, fora do limite de 1 ponto por ação. Não existe blindagem por cena ou por dia: cada ataque pede o seu pagamento. |
 
 ## Quem tem cada muralha
 

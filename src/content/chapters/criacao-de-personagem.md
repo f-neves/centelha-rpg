@@ -75,6 +75,8 @@ Na criação não existe limite próprio: valem os máximos normais da ficha. Qu
 | Mana | (Centelha × 2) + Força de Vontade |
 | Iniciativa | 1d6 + Raciocínio + Prontidão (sem Centelha, Especialidade nem penalidade) |
 
+Nas fórmulas, a Força de Vontade é sempre a **máxima**, e não a que sobrou: gastar pontos não baixa a Defesa Mental, a Energia nem a Mana.
+
 <p class="muted"><strong>Energia</strong> é o combustível das <a href="/centelha-rpg/caminhos">Técnicas de Proeza</a>; <strong>Mana</strong> é o do <a href="/centelha-rpg/arcano">Arcano</a>.</p>
 
 ## Três exemplos, um por orçamento

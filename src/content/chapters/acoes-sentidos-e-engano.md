@@ -106,7 +106,7 @@ O que fica de fora dele, e ainda espera ficha:
 - **Barganhar.** Chegar num preço. Acumulada, Influência + Sociabilidade, secundária Comerciante.
 - **Apostar.** Dado, carta, briga de galo, e a mesa em volta deles. O que se descobre sentado ali costuma valer mais que o dinheiro. Direta, Perspicácia + Manha, secundária Submundo quando a mesa é do ramo. Trapacear é outra ação, na família de Furtividade.
 - **Etiqueta.** Não dar vexame onde as regras não estão escritas. Passiva, Compostura + Sociabilidade.
-- **Interrogar.** Arrancar informação de quem não quer dar. Acumulada, Influência + Manha ou Oratória contra Integridade.
+- **Interrogar.** Arrancar informação de quem não quer dar. É interação social, e vive em [Relações Sociais](/regras/relacoes-sociais): Ataque Social, Influência + Interrogatório, contra a Defesa Social de quem responde.
 - **Colher boato** e **plantar boato.** Longa, Influência + Manha, intervalo de dia. Um boato bem posto trabalha sozinho.
 - **Lidar com animal.** Direta, Influência + Adestramento.
 - **Reputação** não é ação, é estado, e modifica quase toda ação social.
