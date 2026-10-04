@@ -108,9 +108,9 @@ frase do Tick do Golpe resolve a dúvida que motivou a D-048. Nada a acrescentar
 
 ## Nota de delta (§10)
 
-No push, o rebase trouxe `2ab7da2e` (veterana-1e rodada 6), que toca , ,
- e . Conferi o diff de `3dc09c71` a `2ab7da2e` nesses quatro: ele
+No push, o rebase trouxe `2ab7da2e` (veterana-1e rodada 6), que toca `defesas.md`, `centelha.md`,
+`criacao-de-personagem.md` e `glossario.json`. Conferi o diff de `3dc09c71` a `2ab7da2e` nesses quatro: ele
 mexe em Vontade máxima, interrogatório Social e o +4 de Vontade, e não encosta nas linhas julgadas aqui
-(T2c em :62 e :126 e :67, :149, a entrada
-). A conclusão fica. Corrigi também, neste segundo commit, duas falhas de escrita minhas
+(T2c em `defesas.md`:62 e :126 e `centelha.md`:67, `criacao-de-personagem.md`:149, a entrada
+`defesa-de-agarrao`). A conclusão fica. Corrigi também, neste segundo commit, duas falhas de escrita minhas
 no primeiro (um travessão citado sem a troca por [travessão] e o nome antigo de Habilidade no item 9).
