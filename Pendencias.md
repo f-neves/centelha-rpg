@@ -40,18 +40,18 @@ está na seção 3.
 | Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados | DECIDIR | FAZER | AUTOR | CONSERTAR | Outra marca | Adiados |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 33 | 23 | 1 | 9 | 16 | 4 | 4 | 0 | 0 | 0 |
-| B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 19 | 13 | 0 | 6 | 7 | 6 | 0 | 0 | 0 | 0 |
+| B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 20 | 13 | 0 | 7 | 7 | 6 | 0 | 0 | 0 | 0 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 16 | 11 | 0 | 5 | 5 | 1 | 0 | 0 | 0 | 5 |
-| E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 10 | 7 | 0 | 3 | 5 | 1 | 0 | 1 | 0 | 0 |
+| E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 11 | 8 | 0 | 3 | 6 | 1 | 0 | 1 | 0 | 0 |
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 | 6 | 0 | 3 | 0 | 0 | 0 |
 | G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 78 | 53 | 0 | 25 | 31 | 2 | 0 | 5 | 15 | 0 |
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 7 | 5 | 0 | 2 | 2 | 0 | 0 | 2 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 15 | 11 | 2 | 2 | 4 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 17 | 14 | 0 | 3 | 6 | 3 | 0 | 2 | 1 | 2 |
-| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 38 | 24 | 1 | 13 | 20 | 5 | 0 | 0 | 0 | 0 |
+| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 25 | 1 | 13 | 21 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **354** | **248** | **4** | **102** | **104** | **39** | **8** | **10** | **81** | **10** |
+| | **Total** | | **357** | **250** | **4** | **103** | **106** | **39** | **8** | **10** | **81** | **10** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -364,7 +364,7 @@ Fechados (9): A12, A17, A18, A22, A23, A27, A21, A22, A20.
 | B17 | aberto | DECIDIR | Descrições faltando (item 4 inteiro) + 38 criaturas com Arte ainda para reverter a poder natural, sem nota … |
 | B18 | aberto | FAZER | Fila da B14: medir o bando por N, com a Regra de Horda a partir de 8. |
 
-Fechados (6): B12, B1, B1b, B10, B13, B15.
+Fechados (7): B12, B1, B1b, B10, B13, B15, B19.
 
 ### C · Trilhas de Feitiçaria
 
@@ -406,6 +406,7 @@ Fechados (5): D1, D2, D4, D7, D12.
 | E5 | aberto | DECIDIR | ⚑ O que a leitura revela no modo devagar. |
 | E6 | aberto | DECIDIR | ⚑ O preço de um gesto em moeda. |
 | E7 | aberto | CONSERTAR | A Dama Vesna tem três estados diferentes no mesmo capítulo. |
+| E11 | aberto | DECIDIR | Cortejo, em discussão pelo autor. |
 
 Fechados (3): E1, E9, E10.
 
@@ -567,6 +568,7 @@ Fechados (3): J1, J4, J5.
 | K36 | aberto | DECIDIR | Agarrar não tem regra escrita em lugar nenhum. |
 | K36 | aberto | DECIDIR | Dano fenômeno (armadura não absorve, só Centelha) não alcança ataque normal de criatura. |
 | K37 | aberto | DECIDIR | `defesaPerdida` só soma o ataque RECEBIDO; `combate.md:405` cobra também o FEITO. |
+| K38 | aberto | DECIDIR | Guarda sob pressão: como a guarda se renova para quem não age. |
 
 Fechados (13): K29, K1, K2, K3, K10, K7, K15, K16, K22, K23, K26, K12, K13.
 

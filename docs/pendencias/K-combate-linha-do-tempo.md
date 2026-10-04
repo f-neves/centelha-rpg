@@ -530,3 +530,13 @@ revistos por ela.
   o Grid soma um segundo incremento em quem ataca (mudança de comportamento ao vivo,
   precisa de teste e aviso de produção), ou a leitura do livro é só pra bancadas de
   medição e a mesa fica como está.
+  - **Encaminhado pelo autor em 03/10/2026** (rodada de pendências de 03/10/2026, Bloco K, P-06 e adiados do registro):
+    o Grid passa a cobrar a pressão pelo ataque FEITO e pelo RECEBIDO, como o livro escreve. A
+    mudança no Grid entra **junto com as regras de combate**, e não antes; até lá a mesa fica como
+    está.
+- [ ] **K38 · [DECIDIR] Guarda sob pressão: como a guarda se renova para quem não age.** Registrado
+  em 03/10/2026 (rodada de pendências de 03/10/2026, Bloco K, P-06). **Adiada pelo autor até fechar as regras de combate**,
+  "com grandes chances de no final manter como está". A lacuna: o livro (`combate.md`, Guarda sob
+  pressão) não diz como a guarda se renova para quem não age (esperando a vez, atordoado, preso),
+  nem o que conta como "agir". Relacionada à K37, à C-011 do registro de decisões e ao item 7 dos
+  achados de duas leituras.

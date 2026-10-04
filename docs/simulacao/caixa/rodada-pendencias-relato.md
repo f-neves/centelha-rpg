@@ -447,3 +447,30 @@ diferentes:
 - Resultado: o "4 no confronto, 1 na perícia" não existe no código. Quem abre a calculadora para
   investigar uma carta começa com 4 pessoas e precisa trocar à mão. É a mesma leitura da ressalva 3 da
   rodada 120 (`120-revisora.md:179-182`), que segue aberta.
+
+**Commit do Bloco J:** `9013360b` · **CI:** no fim do relato.
+
+## Bloco K · Só registrar
+
+Nenhuma regra, ficha ou código mudou. As entradas, com o texto do despacho e do registro (P-06, P-08 e
+os adiados de `decisoes.md`):
+- **Guarda sob pressão**: entrada nova **K38** [DECIDIR] em `K-combate-linha-do-tempo.md`. Adiada até
+  fechar as regras de combate, "com grandes chances de no final manter como está"; registra a lacuna (o
+  livro não diz como a guarda se renova para quem não age, esperando a vez, atordoado ou preso, nem o que
+  conta como "agir"). Aponta para a K37, a C-011 e o item 7 dos achados de duas leituras.
+- **K37**: a entrada que já existia ganhou o encaminhamento do autor. O Grid passa a cobrar a pressão pelo
+  ataque feito e pelo recebido, junto com as regras de combate; até lá a mesa fica como está. Segue em
+  aberto, porque não está aplicada.
+- **B16**: a entrada que já existia (`B-bestiario.md`) ganhou "Adiada pelo autor em 03/10/2026: o
+  vocabulário de resistências fica para depois".
+- **Topo da tabela de recompensa (desafio 4 em diante)**: sub-item na **G73** (`G-acoes-sistema.md`), que
+  é a pendência da qual a tabela depende ("provisória até a G73", no capítulo e na calculadora). Adiado,
+  "sem pressa".
+- **Dragões (Filhote, Jovem, Adulto)**: entrada nova **B19**, já fechada como [SEM AÇÃO]: "deixar do
+  jeito que estão, sem mexer". Nenhuma alteração de ficha.
+- **Cortejo**: entrada nova **E11** [DECIDIR] em `E-social-mental-antecedentes.md`. Em discussão pelo
+  autor; ficam a frase "o intervalo do cortejo (8 dias ou mais) não é uma ação" (`relacoes-sociais.md`,
+  Quando o alvo segura) e a Vontade presa (`vontadePresa` e `vontadePresaNota`, em
+  `regras.json` → `social.modoDevagar.resistencia`).
+
+`Pendencias.md` regerado.

@@ -88,4 +88,7 @@
   de outra frente e não foi tocado de propósito; quem ler o registro sem ler o dado reimplementa o
   modelo morto.
   **Fechado na revisão da rodada 94 (23/09/2026), com prova:** `fb9310c` (20/09/2026) marcou, na seção da M-09 de `jogador-novo-decisoes.md`, o que caiu e o que continua valendo, citando este item.
-
+- [ ] **E11 · [DECIDIR] Cortejo, em discussão pelo autor.** Registrado em 03/10/2026 (rodada de pendências de 03/10/2026, Bloco K).
+  O autor está discutindo o cortejo. Até lá ficam como estão a frase "o intervalo do cortejo (8 dias
+  ou mais) não é uma ação" (`relacoes-sociais.md`, Quando o alvo segura) e a Vontade presa
+  (`vontadePresa` e `vontadePresaNota` em `regras.json`, `social.modoDevagar.resistencia`).

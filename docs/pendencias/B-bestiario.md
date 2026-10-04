@@ -162,6 +162,8 @@ limitações conhecidas, que são as três de baixo.
   documentadas aqui. "Efeitos mentais" (Crag Linnorm, Cubo Gelatinoso) também não tem
   palavra própria no vocabulário; usei o mais próximo que já existe (nenhum, nestes dois
   casos) em vez de forçar uma palavra errada.
+  - **Adiada pelo autor em 03/10/2026** (rodada de pendências de 03/10/2026, Bloco K): o vocabulário de resistências fica
+    para depois.
 - [ ] **B17 · [DECIDIR] Descrições faltando (item 4 inteiro) + 38 criaturas com Arte
   ainda para reverter a poder natural, sem nota dos graves.** Registrado em 29/09/2026,
   B14 Fase 4, item 3/4/8; **unificado em 29/09/2026** por decisão do autor (as duas
@@ -221,3 +223,6 @@ limitações conhecidas, que são as três de baixo.
     **Decidido em 03/10/2026 (P-05):** o exemplo da recompensa passa a tratar a matilha de 4 worgs
     como **desafio 1** (380 pc em `custo-servicos.md`, `test-recompensa.mjs`). A medição continua
     na fila, e não mexe no exemplo.
+- [x] **B19 · [SEM AÇÃO] Dragões (Filhote, Jovem, Adulto) ficam como estão.** Registrado em
+  03/10/2026 (rodada de pendências de 03/10/2026, Bloco K, P-08). Decisão do autor: "deixar do jeito que estão, sem mexer".
+  Nenhuma alteração de ficha.

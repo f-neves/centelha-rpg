@@ -521,6 +521,8 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
     vindo do Comerciante; sem execução): quando houver preço de partes de criatura (junto desta e da
     G74), ele precisa de um teto próprio pela demanda de quem compra. Hoje os testes de Prejuízo e
     Capacidade só limitam a bolsa, e bolsa mais partes não tem teto.
+  - **Topo da tabela de recompensa (desafio 4 em diante)** (rodada de pendências de 03/10/2026, Bloco K): segue provisório
+    até esta pendência, como o capítulo e a calculadora já dizem; adiado pelo autor, "sem pressa".
 - [ ] **G74 · [DECIDIR] Poções como estoque de emergência caro.** Registrado em 01/10/2026, item 4
   do fechamento da economia, sem execução. Mesma fala do autor da G73: a poção entra na economia
   como estoque de emergência, e cara; o preço e a regra de compra ficam por decidir.
