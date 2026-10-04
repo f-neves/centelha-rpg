@@ -1412,8 +1412,8 @@ Origem de todas: "conversa do autor, 03/10 e 04/10, veterana-1e" (numeração do
 
 ### D-047 · Exemplos de criação: trocar as Técnicas sem pré-requisito, mantendo o XP [tags: criacao, exemplos, tecnicas, requer]
 - Data: 2026-10-04
-- Decisão (decisão 43 do 1e, com a resposta do autor a B·REQUER-EXEMPLOS em 04/10): "Troque cada Técnica por outra de OUTRA Proeza, no mesmo nível e sem pré-requisito (totais previstos: Kael 1075, Sora 1333, Veil 1874). Se não houver equivalente, ponha outra no lugar ou deixe sem, e recalcule o XP."
-- Estado: a implementar na rodada 10 (TECNICAS-EXEMPLOS, C15a). Os totais 1075, 1333 e 1874 correspondem à opção 3 do 1e (Técnica de nível 3 de outra Proeza mais a de nível 1 que ela pede: Trilha Fria, Ler a Batalha, Mente Imperturbável); a escolha das Técnicas é "escolha da Veterana".
+- Decisão (decisão 43 do 1e, corrigida pelo autor em 04/10): só entra Técnica SEM pré-requisito nenhum. "Se não houver equivalente, entra outra ou fica sem, e o XP é recalculado, seja qual for o total. Não some a Técnica de nível 1 que a nova pediria." Os totais "1075, 1333, 1874" que o despacho anterior citou foram erro de repasse, NÃO valem.
+- Estado: a implementar na rodada 10 (TECNICAS-EXEMPLOS, C15a), só a troca das três Técnicas (Encontrão Relâmpago, Comando Inspirador, Investida Devastadora) e o recálculo do XP. Ver D-053: o resto das fichas de exemplo não entra em rodada.
 
 ### D-048 · Manobra: as três leituras ficam [tags: manobra, agarrar, empate, derrubar]
 - Data: 2026-10-04
@@ -1439,3 +1439,9 @@ Origem de todas: "conversa do autor, 03/10 e 04/10, veterana-1e" (numeração do
 - Data: 2026-10-04
 - Decisão (decisão 48 do 1e): o moinho passa para Engenharia na tabela de obras. Resposta do autor em 04/10: "o Requisito 3 fica".
 - Estado: a implementar na rodada 7 (ENGENHARIA, MOINHO, T3b, LONGA-2).
+
+### D-053 · Fichas de exemplo: só direcionamento, revisão ao fim do sistema [tags: criacao, exemplos, kael, sora, veil, bram]
+- Data: 2026-10-04
+- Decisao: "as fichas de exemplo (Kael, Sora, Veil, Bram) sao so um direcionamento. Depois desta correcao, nao gaste mais rodada nelas. Ficam como estiverem ate o fim da revisao do sistema, quando o autor volta a elas. Registre como pendencia (revisar as fichas de exemplo ao fim) e, se algum ponto do 1e mexer nelas alem disso, pule e anote."
+- Origem: conversa do autor, 04/10/2026
+- Estado: em vigor. Vale na rodada 10: so a troca das Tecnicas da D-047; os demais pontos sobre as fichas (totais de XP, Bram em 1401, contagens) sao pulados e anotados. Pendencia "revisar as fichas de exemplo ao fim" no Pendencias.md (pasta docs/pendencias).
