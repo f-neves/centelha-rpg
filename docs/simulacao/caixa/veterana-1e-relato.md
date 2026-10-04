@@ -733,3 +733,55 @@ foi tocada.
 - No gerado, com `../tmp/executora/prova-r9.py`:
   - os 31 trechos novos estão no catálogo, nos Efeitos e nas Regras;
   - os 21 velhos dão 0.
+
+## Rodada 10 · Criação de Personagem
+
+**Antes de mexer.**
+- Registro conferido:
+  - D-053 (as fichas de exemplo ficam até o fim da revisão);
+  - D-047 (só Técnica sem pré-requisito nenhum);
+  - D-044 (Bram com as Artes no nível 3, total 1401);
+  - D-038 (o mortal-tocado pela amplitude, texto do autor);
+  - D-002 (Mana do mortal).
+- Nada contradiz o C15a.
+
+**O que entrou:**
+- **C15a** (regra geral, não ficha), em `criacao-de-personagem.md`:
+  - Pisos e princípios terminam em "**Centelha 0** · nenhuma **Técnica**.";
+  - a frase do Modelo de custo;
+  - as quatro primeiras frases do parágrafo de Custos de XP (Técnica a Técnica, o Requer continua na
+    ficha).
+  - O resto do parágrafo, da rodada 8, não mudou.
+- **Mana do mortal no O mortal-tocado**: só a frase velha "que no mortal é a própria Força de Vontade"
+  virou o trecho do (e) do BRAM, "uma reserva separada da Vontade e do mesmo valor dela" (escolha 2 do
+  Arquiteto). O título e o resto da seção, que a D-038 reescreveu com texto do autor, não mudaram.
+- **Pendência D17** (`docs/pendencias/D-proezas-tecnicas.md`): revisar as fichas de exemplo ao fim da
+  revisão do sistema. Ela leva:
+  - a nota do Bram (Artes no nível 3, total 1401, D-044; `:153` intocado);
+  - os pontos pulados;
+  - o caso da D-047.
+- **Pendência A33** (`docs/pendencias/A-arcano-artes.md`): o `custo.mana` do catálogo, da rodada 9.
+- `Pendencias.md` regerado. As 8 anomalias que o gerador acusa já existiam antes.
+
+**Pulados pela D-053, e anotados na D17:**
+- N1;
+- ART-26;
+- BRAM (a ficha, o título e o parágrafo do mortal-tocado);
+- TECNICAS-EXEMPLOS;
+- C20a;
+- ART-25.
+
+**A D-047 não tem troca possível** (escolha 1 do Arquiteto: (c), as fichas não mudam e o caso vai ao
+autor):
+- Pelo catálogo, o Encontrão Relâmpago (Kael), o Comando Inspirador (Sora) e a Investida Devastadora
+  (Veil) pedem uma Técnica de outra Proeza que a ficha não tem.
+- As outras Técnicas de nível 3 dessas Proezas já estão na contagem, e não há Técnica de nível 3 sem
+  pré-requisito no catálogo.
+- A conta da opção "fica sem" está na D17.
+
+**Verificação** (sobre `5e32204d`):
+- `npm run validate` verde;
+- `npx astro build --force` verde.
+- No gerado (`dist/regras/criacao-de-personagem/index.html`):
+  - os cinco trechos novos aparecem uma vez cada;
+  - "qualquer Proeza 0", "subir uma Proeza de nível" e "que no mortal é a própria" dão 0.

@@ -273,3 +273,8 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   Mana é por Centelha (`regras.json` `arcano.recuperacaoMana`: "Centelha por hora", e "2 × Centelha
   por hora" em descanso). Com Centelha 0, a Mana do mortal nunca volta pelo relógio, só pela Firula
   ou pela Arte Manipulação de Mana. É pergunta do autor.
+- [ ] **A33 · [DECIDIR] O campo `custo.mana` dos níveis do catálogo das Artes.** Registrado em 04/10/2026,
+  rodada 9 do veterana-1e (ART-19). O "(N Mana)" saiu da página do catálogo, porque a Mana não é o nível
+  (o custo é a soma dos pontos menos a Centelha, e a Cura custa 2 por nível). O campo continua em
+  `artes.json` porque o schema de `scripts/validate-data.mjs` o exige, de 1 a 6. Nenhuma tela o mostra
+  mais. Decidir se o campo sai do dado e do schema.

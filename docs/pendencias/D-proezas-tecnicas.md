@@ -110,3 +110,35 @@ Detalhe em `Proezas_revisao.md`.
   - o campo `folego` de cada arma (`armas.json`) e dos schemas (`scripts/validate-data.mjs`,
     `src/content.config.ts`), que nenhuma tela mostra mais.
   Decidir o destino de cada um junto com a recalibração das Proezas.
+- [ ] **D17 · [DECIDIR] Revisar as fichas de exemplo (Kael, Sora, Veil, Bram) ao fim da revisão do sistema.**
+  Registrado em 04/10/2026, rodada 10 do veterana-1e (D-053). As fichas são só direcionamento. Elas ficam
+  como estão até o fim da revisão do sistema, quando o autor volta a elas.
+  - Bram precisa do corte das Artes ao nível 3, com total 1401 (D-044). A seção dele na Criação
+    (`criacao-de-personagem.md:151` em diante, a linha de abertura em `:153`) continua com as Artes no
+    nível 5 e não foi tocada.
+  - Pontos do veterana-1e pulados por D-053, para quando o autor voltar às fichas:
+    - N1 (a Sociabilidade de Veil);
+    - ART-26 (Derivados, "Cabe no orçamento", nota Pendente com "quatro exemplos", Exceção declarada de
+      Veil);
+    - BRAM (abertura, Secundárias, Artes, frase final, Total);
+    - TECNICAS-EXEMPLOS (as contagens e os totais da decisão 36: 1065, 1323, 1864);
+    - C20a (Atributos 415, Habilidades 208, Virtudes 74 de Bram);
+    - ART-25 (Acerto Arcano nas Secundárias de Veil e de Bram).
+  - BRAM também pede o título novo da seção O mortal-tocado ("magia como estudo, com teto de Centelha") e
+    o parágrafo de abertura reescrito. A seção já foi reescrita pela D-038, com texto do autor, e na
+    rodada 10 entrou só a troca da frase da Mana ("uma reserva separada da Vontade e do mesmo valor dela").
+    O título e o resto do parágrafo do BRAM esperam o autor.
+  - **A D-047 precisa ser revista pelo autor: a troca não existe.** A linha de Técnicas das fichas não
+    nomeia Técnicas, só dá uma contagem (Kael "29 | 450", Sora "35 | 590", Veil "34 | 615", Bram "12 |
+    120").
+    - No catálogo (`tecnicas.json`), "todas as de" cada Proeza até o nível da ficha dão Kael 19 (285 XP),
+      Sora 19 (270), Veil 23 (375) e Bram 6 (60).
+    - Três delas pedem uma Técnica de outra Proeza que a ficha não tem:
+      - Encontrão Relâmpago (Kael, Vento 3) pede o Golpe Pesado, de Punho de Ferro;
+      - Comando Inspirador (Sora, Comando 3) pede a Presença Imponente, de Lenda Viva;
+      - Investida Devastadora (Veil, Punho de Ferro 3) pede o Salto do Grilo, de Vento.
+    - As outras Técnicas de nível 3 dessas Proezas já estão na contagem, e no catálogo inteiro não há
+      nenhuma Técnica de nível 3 sem pré-requisito.
+    - A opção "fica sem" daria Kael 18 (265 XP, total 1045), Sora 18 (250, total 1303) e Veil 22 (355,
+      total 1844).
+    - Escolha do Arquiteto na rodada 10: (c), as fichas não mudam e o caso vai ao autor.
