@@ -322,3 +322,34 @@ O que mudou:
 Ficam, por serem registro do que foi medido ou decidido na época: `docs/decisoes-partes/B.md` e `C.md`,
 `120-revisora.md`, `b14-cr-desafio-fase4-5-despacho.md`, `fechamento-economia-reforma-despacho.md` e os
 arquivos de `docs/calibracao/discussao/`.
+
+**Commit do Bloco E:** `ce425f84` · **CI:** Validar 37172173817 e Deploy 37172173810 (resultado no fim do F).
+
+## Bloco F · Ataque Total não existe (item 7, P-07)
+
+- **`scripts/sim/desafio-bancada.mjs`**: saiu a variante inteira.
+  - Em `escolherAcaoCriatura`, saiu a opção `ataque-total` (3 golpes sem a penalidade da Rajada, 1 uso a
+    cada 3 turnos) e o retorno dela. No lugar ficou um comentário de duas linhas: "Não existe Ataque Total
+    no sistema: cada ataque é separado (P-07, decisão do autor de 03/10/2026). A variante de teste da
+    Fase 5b (`opts.ataqueTotal`) saiu daqui."
+  - Em `rodarBatalha`, saiu o `c.ataqueTotal = !!opts.ataqueTotal` com o comentário; o ramo
+    `acao.tipo === 'basico' || acao.tipo === 'ataque-total'` voltou a ser só `'basico'`, e o cooldown saiu.
+  - Em `rodarBatalhaBando`, saiu o `ataqueTotal: false` das criaturas e o mesmo ramo.
+  - Nenhum outro script passava a opção: `desafio-5b-bateria`, `desafio-diagnostico` e `desafio-matriz`
+    importam a bancada e não a citam.
+  - Prova (`../tmp/executora/teste-bancada-F.mjs`): `node --check` ok; 40 batalhas do Filhote de dragão
+    vermelho contra Centelha 3, passando de propósito a opção velha `{ ataqueTotal: true }` (é ignorada), e
+    20 batalhas de bando com 4 worgs, todas sem erro.
+- **Documentos onde aparecia como decisão pendente:**
+  - `Pendencias.md` e `docs/pendencias/*`: não citam o termo (conferido por `grep -i "ataque total"`).
+  - `b14-fase5b-economia-de-acao-relato.md:192-193`, em "O que fica pendente desta rodada": "Se 'Ataque
+    total' vira ficha de verdade (poder natural) [...]: decisão do autor." Acrescentei na mesma linha
+    "**Decidido em 03/10/2026 (P-07): não existe Ataque Total no sistema, cada ataque é separado; a
+    variante saiu da bancada.**" Sem linha nova, para não mexer em citação.
+- **Ficam, porque citam o termo como fato passado:**
+  - `b14-fase5b-economia-de-acao-despacho.md:27` e `:71` (o pedido da variante);
+  - o resto do `b14-fase5b-economia-de-acao-relato.md` (`:121-135`, `:251`, `:258-264`, `:369`, os
+    números medidos com a variante);
+  - `fechamento-economia-reforma-despacho.md:5`;
+  - `docs/decisoes-partes/decisoes.md:1199` (a própria P-07).
+- O "Multiataque total" do Grande Wyrm é habilidade de criatura, de outro nome, e fica.

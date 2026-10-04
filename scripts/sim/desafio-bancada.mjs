@@ -498,16 +498,8 @@ function escolherAcaoCriatura(c, turno, personas, engajadaId) {
         dano: danoEsperadoManobra(c.ataque, c.dano, qaCriatura, alvoUnico[0], c.tipoDano, mg.penDados),
       });
     }
-    // VARIANTE "Ataque total" (despacho item 3, só quando `c.ataqueTotal` liga): mordida
-    // e as duas garras na mesma ação (3 golpes, MESMO perfil repetido, mesma
-    // interpretação da dupla), sem a penalidade de −1d6 da Rajada, 1 uso a cada 3
-    // turnos. Poder Especial de variante, não ficha: só entra quando pedido.
-    if (c.ataqueTotal && (c.ataqueTotalCooldown ?? 0) <= turno) {
-      opcoes.push({
-        tipo: 'ataque-total', manobra: 'ataque-total', golpes: 3, penDados: [0, 0, 0], cicloExtra: 0,
-        dano: danoEsperadoManobra(c.ataque, c.dano, qaCriatura, alvoUnico[0], c.tipoDano, [0, 0, 0]),
-      });
-    }
+    // Não existe Ataque Total no sistema: cada ataque é separado (P-07, decisão do autor de
+    // 03/10/2026). A variante de teste da Fase 5b (`opts.ataqueTotal`) saiu daqui.
   }
 
   for (const p of c.poderes) {
@@ -535,9 +527,6 @@ function escolherAcaoCriatura(c, turno, personas, engajadaId) {
   const melhor = opcoes.reduce((m, o) => (o.dano > m.dano ? o : m), opcoes[0]);
   if (melhor.tipo === 'poder') { return { tipo: 'poder', poder: melhor.poder }; }
   if (melhor.tipo === 'arte') { return { tipo: 'arte', arteId: melhor.arteId, nivel: melhor.nivel }; }
-  if (melhor.tipo === 'ataque-total') {
-    return { tipo: 'ataque-total', manobra: melhor.manobra, penDados: melhor.penDados, cicloExtra: 0 };
-  }
   return { tipo: 'basico', manobra: melhor.manobra, penDados: melhor.penDados, cicloExtra: melhor.cicloExtra || 0 };
 }
 
@@ -622,9 +611,6 @@ function resolverGolpeFisico(L, fonte, atacante, alvo, ajusteDados) {
 
 export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
   const c = { ...structuredClone(criaturaBase), poderState: {} };
-  // VARIANTE "Ataque total" (despacho item 3, 01/10/2026): só entra quando pedida
-  // explicitamente; é um Poder Especial de teste, não parte da base.
-  c.ataqueTotal = !!opts.ataqueTotal;
   c.semGuarda = !!opts.semGuardaPressao;
   c.semPressaoFeita = !!opts.semPressaoFeita;
   const personas = grupoCombatentes(centelha);
@@ -683,9 +669,8 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
         const cura = L.curaDoEfeito(L.EFEITO['acelerar-a-cura'], c.arte.cura);
         c.pv = Math.min(c.pvMax, c.pv + (cura || 0));
         c.curaUsada = true; c.manaRestante -= (c.arte.cura || 1) * 2;
-      } else if (acao.tipo === 'basico' || acao.tipo === 'ataque-total') {
+      } else if (acao.tipo === 'basico') {
         c.atrasoTicks += acao.cicloExtra || 0;
-        if (acao.tipo === 'ataque-total') c.ataqueTotalCooldown = turno + 3; // "1 uso a cada 3 turnos"
         for (const pd of acao.penDados) {
           const alvo = alvoDaCriatura(c, personas, engajadaId);
           if (!alvo) break;
@@ -820,7 +805,7 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
  */
 export function rodarBatalhaBando(L, criaturaBase, n, centelha, seed, opts = {}) {
   const criaturas = Array.from({ length: n }, () => ({
-    ...structuredClone(criaturaBase), poderState: {}, ataqueTotal: false,
+    ...structuredClone(criaturaBase), poderState: {},
     semGuarda: !!opts.semGuardaPressao, semPressaoFeita: !!opts.semPressaoFeita,
   }));
   const personas = grupoCombatentes(centelha);
@@ -864,7 +849,7 @@ export function rodarBatalhaBando(L, criaturaBase, n, centelha, seed, opts = {})
       const acao = escolherAcaoCriatura(c, turno, personas, engajadaId);
       if (acao.tipo === 'esperar') continue;
       c.pressaoRecebida = 0; c.pressaoFeita = 0;
-      if (acao.tipo === 'basico' || acao.tipo === 'ataque-total') {
+      if (acao.tipo === 'basico') {
         c.atrasoTicks += acao.cicloExtra || 0;
         for (const pd of acao.penDados) {
           const alvo = alvoDaCriatura(c, personas, engajadaId);

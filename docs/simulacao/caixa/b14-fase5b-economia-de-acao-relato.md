@@ -190,7 +190,7 @@ casos pedidos (um deles trivial pro grupo, o outro com desafio baixo mesmo).
 ## O que fica pendente desta rodada
 
 - Se "Ataque total" vira ficha de verdade (poder natural) ou fica só o diagnóstico de que
-  o Filhote precisa de economia de ação pra chegar na faixa: decisão do autor.
+  o Filhote precisa de economia de ação pra chegar na faixa: decisão do autor. **Decidido em 03/10/2026 (P-07): não existe Ataque Total no sistema, cada ataque é separado; a variante saiu da bancada.**
 - Vontade do Pers.3/reserva de Vontade das personas: mesma suposição provisória de
   sempre (Centelha+2), sem número do autor ainda.
 - Regra de Horda pro bando: registrada como não aplicada (e, pelo Adendo, não chegaria a
