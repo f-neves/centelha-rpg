@@ -1344,3 +1344,27 @@ Imobilizado, Bram, Técnicas do Agarrão do Urso, Energia Espiritual, Vida 1, Ma
 - Decisão: "arcano.astro:63, o arquétipo do mago de Centelha mínima: reescrever. O mago de pouca Centelha se destaca pela AMPLITUDE (muitas Artes, rituais, preparo), e não pela profundidade, porque o teto do nível de Arte é Centelha + 2 (Centelha 0 chega ao nível 2; Centelha 1, ao 3). Tire a promessa de Artes "tão fundas quanto as de um grande herói". Bram já foi resolvido do mesmo jeito (Artes no nível 3, total 1401), e isso chega no veterana-1e.md."
 - Origem: conversa do autor, 04/10/2026
 - Estado: a implementar (commit pequeno antes da rodada 1 do veterana-1d). Consequência direta da D-006. O Bram (Artes no nível 3, total 1401) chega no veterana-1e; não aplicar antes.
+
+### D-036 · K5a: as faixas de Vida arredondam a porcentagem para baixo [tags: vida, ferimentos, k5a]
+- Data: 2026-10-04
+- Decisão: "K5a (faixas de Vida): opção B. O texto passa a dizer o que o código já faz: 'arredonde a porcentagem para baixo'. Nenhum código muda."
+- Origem: conversa do autor, 04/10/2026
+- Estado: a implementar (Executora, texto de Vida/ferimentos). Código (regras.json ferimentos, mesa-core.ts) intocado.
+
+### D-037 · Morrendo vira só um marcador [tags: condicoes, morrendo, sangrando, tratar]
+- Data: 2026-10-04
+- Decisão: "Condição Morrendo (condicoes.json:181): opção A. Vira só um marcador ('0 PV ou menos, entre a vida e a morte; ver Tratar'). Tire o porSeisTicks; a perda de PV fica só na condição Sangrando."
+- Origem: conversa do autor, 04/10/2026
+- Estado: a implementar (Executora). Se código ou teste ler o porSeisTicks de Morrendo, parar e avisar o Arquiteto antes.
+
+### D-038 · O mortal-tocado se destaca pela amplitude, não pela profundidade [tags: arte, teto, arquetipo, criacao, d-035]
+- Data: 2026-10-04
+- Decisão: "criacao-de-personagem.md:149 (mortal-tocado): reescrever como o arcano.astro:63. O mortal-tocado se destaca pela amplitude, e não pela profundidade (D-035). O Bram (:153) continua esperando o veterana-1e."
+- Origem: conversa do autor, 04/10/2026
+- Estado: a implementar (Executora). Estende a D-035 e a D-006. O Bram não se toca.
+
+### D-039 · Arquivos sem dono: AGENTS.md, .agents/, inventario-limites.md, comerciante.md [tags: repositorio, agents, codex]
+- Data: 2026-10-04
+- Decisão: "AGENTS.md e .agents/: troque o AGENTS.md por duas linhas que mandam ler o CLAUDE.md, ponha o AGENTS.md no .gitignore e apague as cópias de .agents/. O autor usa o ChatGPT desktop com acesso às pastas, e ele pode ler esse arquivo. Commite o docs/calibracao/discussao/inventario-limites.md e o .claude/commands/comerciante.md onde estão."
+- Origem: conversa do autor, 04/10/2026
+- Estado: aplicada pelo Arquiteto em 04/10/2026.

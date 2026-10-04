@@ -104,3 +104,6 @@ docs/export/proezas/*
 # nunca acumular uma pasta de versoes.
 #
 # O download do celular nao e automatico: o primeiro toque PERGUNTA (decisao 15).
+
+# Ponteiro para o CLAUDE.md, lido por outros agentes (ChatGPT desktop); nao versionar
+AGENTS.md
