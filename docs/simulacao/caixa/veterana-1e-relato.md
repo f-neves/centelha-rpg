@@ -785,3 +785,88 @@ autor):
 - No gerado (`dist/regras/criacao-de-personagem/index.html`):
   - os cinco trechos novos aparecem uma vez cada;
   - "qualquer Proeza 0", "subir uma Proeza de nível" e "que no mortal é a própria" dão 0.
+
+## Rodada 11 · Proezas (`/caminhos`)
+
+**Antes de mexer.**
+- Registro conferido:
+  - D-030 (decisão 34: os números da Veterana no D43 e o +6 no D49);
+  - D-019 e D-043 (Imobilizado não age, nem com Firula);
+  - D-045 (Prensa Crescente, Esmagar nos Braços e Abraço do Titã vão para a calibração e não se tocam).
+- Nada contradiz.
+- Citações de (b) conferidas contra o main: todas lá. A Esquiva Impossível estava com o `texto` vazio.
+
+**O que entrou:**
+- **a4-1**: o texto do Imobilizar em `tecnicas.json`, que aparece em `/caminhos/agarrao-do-urso` e em
+  `/tecnicas`.
+  - O item 2 do (e) é só leitura nova, sem mudança de texto.
+  - As três Técnicas da D-045 não foram tocadas.
+- **D43**:
+  - os textos de Demolidor, Pancada Destrutiva, Romper, Estilhaçar, Abrir Brecha, Esmaga-Pedra e
+    Quebra-Muralhas;
+  - a tabela do Romper no Cap. VIII: a parede de taipa ou de tábuas na linha 20, as linhas 35 e 40, e a
+    frase "Acima de 30" no parágrafo do teto mortal.
+  - Golpe que Vaza e Terremoto ficaram como estavam.
+- **D49**: o texto da Esquiva Impossível.
+- **Os selos novos.** O selo da página não é texto: sai do campo `efeito` da Técnica pela trilha do
+  Cap. V (`modProeza`, `src/lib/data.ts:9`, que só a página de Proezas e a `/tecnicas` leem).
+  - Pancada Destrutiva, Abrir Brecha, Esmaga-Pedra, Quebra-Muralhas e Esquiva Impossível passaram de
+    `estado` para `bonus`, e os selos saem +3, +6, +9, +15 e +6, como o (e) pede.
+  - O Demolidor continua `dano` (+1d6), mantido.
+- **O parágrafo de abertura da Quebra-Muralhas.** Não havia lugar para ele: a página da Proeza só mostra
+  o `descricao` do caminho. Entrou um campo opcional `nota` em `caminhos.json`, só no `quebra-muralhas`.
+  Para isso:
+  - o campo opcional foi aceito nos dois schemas (`src/content.config.ts` e `scripts/validate-data.mjs`);
+  - `src/pages/caminhos/[id].astro` o mostra depois do subtítulo, com o negrito do "Romper".
+  - É código só de exibição, e espera a liberação do Arquiteto antes de subir.
+
+**Verificação** (sobre a árvore da rodada 10):
+- `npm run validate` verde;
+- `npx astro sync && npx tsc --noEmit` sem erro;
+- `npx astro build --force` verde.
+- No gerado:
+  - os 16 trechos novos estão em Quebra-Muralhas, Agarrão do Urso, Vento, `/tecnicas` e o Cap. VIII;
+  - os 4 velhos dão 0 ("ignora parte da dureza", "armas inferiores ao bloquear", "gasta ação para
+    escapar" nas duas páginas).
+  - Os selos lidos nos cabeçalhos: Demolidor +1d6, Pancada Destrutiva +3, Abrir Brecha +6, Esmaga-Pedra
+    +9, Quebra-Muralhas +15, Esquiva Impossível +6.
+
+**Prova de que nada além da exibição lê o `efeito` das Técnicas ou o `nota` do caminho** (condição 1 do
+Arquiteto). Feita com a ferramenta Grep, porque o `grep` pelo shell perdeu linhas pelo hook.
+- **Quem lê `tecnicas.json`** (em `src/` e `scripts/`):
+  - `content.config.ts` (o schema);
+  - `src/lib/data.ts`, por `getCollection`;
+  - `ArvoreTecnicas.astro`;
+  - `ficha-engine.ts:14` (`TEC_D`);
+  - `dados/nomes-ficha.json.ts`;
+  - `dados/criatura/[id].json.ts`;
+  - `marcadores.astro`;
+  - `index.astro`;
+  - `gen-monsters.mjs`;
+  - `test-proezas-modulos.mjs`;
+  - `validate-data.mjs` (o schema);
+  - e os scripts de migração antigos (`add-social-trees`, `migrate-social`, `retag-bandas`, `fix-*`), que
+    escrevem o arquivo e não rodam no build.
+- **Nenhum `mesa-*.ts`, nenhum `artes-grid*.ts`, nem o `grid.astro` ou o `combate.astro` importam
+  `tecnicas.json`.**
+- **Quem lê o `efeito` de uma Técnica:**
+  - só o `modProeza` (`src/lib/data.ts:9`), chamado em `TecnicaItem.astro:8` e em `tecnicas.astro:49`;
+  - e a cópia dele, `modOf`, em `ArvoreTecnicas.astro:47` e `:134`.
+  - Os três são o selo na tela.
+  - Em `ficha-engine.ts`, o `TEC_D` só alimenta id, nome, nível, Requer e texto (`:123-133`). Os
+    `.efeito` do arquivo são dos Efeitos das Artes e dos níveis do catálogo (`:592`, `:687`, `:718`).
+  - `criatura/[id].json.ts:27` copia só `nome` e `caminho`.
+  - O `p.efeito` de `mesa-bestiario.ts:345` e `gen-monsters.mjs:133` é o poder natural da criatura, outro
+    objeto.
+  - O `test-proezas-modulos.mjs` não lê `efeito`.
+- **Quem lê `caminhos.json`:**
+  - `content.config.ts` e `data.ts`, de onde vem o `cam` de `caminhos/[id].astro`;
+  - `ArvoreTecnicas.astro`;
+  - `ficha-engine.ts:124-126` (só id, nome e atributo);
+  - `nomes-ficha.json.ts`.
+  - O campo `nota` só é lido em `caminhos/[id].astro:28`.
+- D-045 respeitada: Prensa Crescente, Esmagar nos Braços e Abraço do Titã não mudaram, e a calibração
+  (D54, D55, D56) não entrou.
+- A comparação de `tecnicas.json` com o HEAD, Técnica a Técnica, mostra nove mudadas: esquiva-impossivel,
+  demolidor, pancada-destrutiva, romper, estilhacar, abrir-brecha, esmaga-pedra, quebra-muralhas e
+  imobilizar.

@@ -25,6 +25,7 @@ const titulo = caminhoComArtigo(cam.nome);
   </p>
   <h1 style="margin-bottom:.1em;display:flex;align-items:center;gap:.5rem"><Icone nome={cam.atributo.id} size={28} /> {titulo}</h1>
   <p class="lead" style="font-style:italic">{cam.descricao}</p>
+  {cam.nota && <p set:html={cam.nota.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')} />}
 
   <ArvoreTecnicas caminho={id} />
 

@@ -73,6 +73,7 @@ const caminhos = defineCollection({
     atributo: reference('atributos'),
     habilidade_ancora: z.string().optional(),
     descricao: z.string(),
+    nota: z.string().optional(),
   }),
 });
 

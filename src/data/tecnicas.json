@@ -96,10 +96,10 @@
       "reflexos-de-vento"
     ],
     "aliases": [],
-    "texto": "",
+    "texto": "Ao ver um ataque que te visa, +6 na Defesa contra ele: o corpo já saiu do caminho quando o golpe chega.",
     "pendente": false,
     "nivel": 3,
-    "efeito": "estado"
+    "efeito": "bonus"
   },
   {
     "id": "encontrao-relampago",
@@ -2668,7 +2668,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+1d6 de dano contra objetos/estruturas; ignora parte da dureza.",
+    "texto": "+1d6 no pool de Romper (Força + Atletismo): você acha o ponto fraco do que quer quebrar.",
     "pendente": false,
     "nivel": 1,
     "efeito": "dano"
@@ -2686,10 +2686,10 @@
       "demolidor"
     ],
     "aliases": [],
-    "texto": "um golpe quebra portas, fechaduras e correntes.",
+    "texto": "Um golpe de Romper com +3 (trilha de Bônus, nível 1) contra porta, fechadura ou corrente.",
     "pendente": false,
     "nivel": 1,
-    "efeito": "estado"
+    "efeito": "bonus"
   },
   {
     "id": "romper",
@@ -2704,7 +2704,7 @@
       "demolidor"
     ],
     "aliases": [],
-    "texto": "força passagem por barreiras frágeis sem perder o ritmo.",
+    "texto": "Atravessa uma barreira de Dificuldade 10 ou menos (porta de madeira comum, tranca de madeira) no meio do deslocamento: o Romper entra no movimento e não custa uma ação à parte.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -2722,7 +2722,7 @@
       "demolidor"
     ],
     "aliases": [],
-    "texto": "quebra escudos e armas inferiores ao bloquear.",
+    "texto": "Quando você usa o Bloqueio contra um ataque corpo a corpo e o ataque não supera a sua Defesa, a arma ou o escudo que atacou quebra, se for de Qualidade menor que a da sua arma ou do seu escudo (escala do Cap. XIV: Sucata, Tosca, Comum, Boa, Ótima, Excelente).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -2740,10 +2740,10 @@
       "pancada-destrutiva"
     ],
     "aliases": [],
-    "texto": "derruba uma parede fraca num golpe.",
+    "texto": "Um golpe de Romper com +6 (trilha de Bônus, nível 3) contra parede: derruba uma parede fraca (taipa, adobe ou tábuas) num golpe.",
     "pendente": false,
     "nivel": 3,
-    "efeito": "estado"
+    "efeito": "bonus"
   },
   {
     "id": "esmaga-pedra",
@@ -2759,10 +2759,10 @@
       "abrir-brecha"
     ],
     "aliases": [],
-    "texto": "rompe pedra e portões reforçados.",
+    "texto": "Um golpe de Romper com +9 (trilha de Bônus, nível 4) contra pedra e portão reforçado.",
     "pendente": false,
     "nivel": 4,
-    "efeito": "estado"
+    "efeito": "bonus"
   },
   {
     "id": "terremoto",
@@ -2797,10 +2797,10 @@
       "terremoto"
     ],
     "aliases": [],
-    "texto": "derruba muralhas e torres; abre caminho por qualquer fortificação.",
+    "texto": "Um golpe de Romper com +15 (trilha de Bônus, nível 6) contra muralha ou torre.",
     "pendente": false,
     "nivel": 6,
-    "efeito": "estado"
+    "efeito": "bonus"
   },
   {
     "id": "pegada-de-ferro",
@@ -2829,7 +2829,7 @@
       "pegada-de-ferro"
     ],
     "aliases": [],
-    "texto": "prende o agarrado (ele gasta ação para escapar).",
+    "texto": "prende o agarrado: ele fica Imobilizado (não age, nem com Firula, e não grita se o tipo de imobilização disser). Só cobra a manutenção, a cada 6 Ticks, se o alvo estiver tentando se libertar.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"

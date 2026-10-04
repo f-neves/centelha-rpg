@@ -170,11 +170,13 @@ Esta ação tem **duas faces**, e confundi-las é o erro comum.
 | **5** | tábua apodrecida, corda fina, gesso, porta já frouxa nas dobradiças |
 | **10** | porta de madeira comum, cadeado barato, corrente leve, tranca de madeira |
 | **15** | porta reforçada com ferragens, grade de ferro fina, corda grossa, cadeado bom |
-| **20** | porta de carvalho com barra, grade grossa, algemas, tranca de ferro |
+| **20** | porta de carvalho com barra, grade grossa, algemas, tranca de ferro, parede de taipa ou de tábuas |
 | **25** | portão gradeado, parede de tijolo, corrente de âncora |
 | **30** | porta de metal, cantaria, grade de masmorra feita para segurar coisas piores |
+| **35** | muralha de castelo, portão de cidade, ponte de pedra |
+| **40** | torre de cantaria, portão de cidadela, parede mestra de fortaleza |
 
-Como o teto mortal de Atributo + Habilidade é 12, **Dificuldade 20 é o limite do que um homem excepcional arromba** com meia chance. De 25 para cima é território de Proeza, Arte ou aríete.
+Como o teto mortal de Atributo + Habilidade é 12, **Dificuldade 20 é o limite do que um homem excepcional arromba** com meia chance. De 25 para cima é território de Proeza, Arte ou aríete. Acima de 30, só a Centelha chega lá, e a Proeza Quebra-Muralhas existe para esse território.
 
 **A Margem compra** · silêncio e inteireza. Sem Margem a coisa cede com estrondo e em pedaços; com uma Margem cede limpa, e a porta ainda fecha depois; com duas, cede em silêncio. Numa fuga, essa diferença é a fuga inteira.
 
