@@ -1165,25 +1165,33 @@ Os itens abaixo vieram da "lista do veterana-1c" e NÃO foram despachados; vão 
 - Decisão: "empurrão de 1 m + 1 m por Margem; +3 na pegada por Margem; levantar e escapar com Velocidade 3. Para manter o agarrão, o agarrador gasta uma ação de Velocidade 6 a cada lance, ou o alvo se solta. Dois estados: Agarrado (não se desloca, mas age; é o que a rede e a Arte de prender causam) e Imobilizado (não age, só tenta escapar; só a Técnica causa)."
 - Origem: conversa do autor, 03/10, lista do veterana-1c
 - Estado: EM REVISÃO PELO AUTOR, NÃO DESPACHAR. O modelo mudou e chega completo depois; o texto acima é o antigo.
+- Acréscimos do autor (03/10/2026), para quando a Manobra vier: errar a primeira tentativa de agarrar é um erro comum de ataque, e a inversão de controle só vale com o agarrão já formado; não existe Rajada de agarrão; uma Proeza pode transformar um soco que acerta em agarrão.
 
 ### D-014 · Resistir a efeito mental: "um grau a menos" usa a régua de Duração do próprio efeito [tags: resistir, mental, duracao]
 - Data: 2026-10-03
 - Decisão: o autor escolheu a opção A do ponto 7 do despacho do Resistir (D-001, item 3): o "um grau a menos" conta na régua de Duração do próprio efeito (a da Arte ou a da Proeza).
 - Origem: mensagem do autor via Arquiteto, 03/10/2026
-- Estado: registrada, NÃO DESPACHAR ainda. Falta uma resposta do autor: o que acontece com o efeito que já está no menor grau da sua régua. Complementa D-001.
+- Complemento do autor (03/10/2026): se o efeito já está no menor grau da sua régua de Duração, pagar 1 ponto ANULA o efeito. Texto completo do ponto 7: com Margem 1 ou mais, pagar 1 faz o efeito mental durar um grau a menos na régua do próprio efeito (Arte Breve/Longa ou Proeza); no menor grau, anula.
+- Estado: a implementar (despacho de 03/10/2026, junto da D-015). Complementa D-001.
 
-## Recebidas em 03/10/2026, a confirmar (nao despachadas)
+### D-015 · Teto 4 do Resistir fora do cortejo; cortejo em discussão [tags: resistir, cortejo, social, teto]
+- Data: 2026-10-03
+- Decisão: ESCALA 2, opção B: "Tire o tetoCusto (e a tetoCustoNota) do bloco social.modoDevagar.resistencia: o teto 4 vale para o Combate Social e para o efeito mental, e o cortejo fica como estava até o autor decidir o cortejo."
+- Origem: mensagem do autor via Arquiteto, 03/10/2026 (resposta à ESCALA 2 da rodada 125)
+- Estado: a implementar. O CORTEJO ESTÁ EM DISCUSSÃO (relacoes-sociais.md:242-246, regras.json vontadePresa e C-072): não mexer até o autor decidir. Restringe D-001 (o teto 4 não alcança o cortejo).
+
+## Recebidas em 03/10/2026 (confirmadas pelo autor no mesmo dia; ver estado de cada uma)
 
 Rodada de pendencias abertas, texto do autor via Arquiteto. Aguardam a confirmacao do autor sobre a leitura do Arquiteto. Antes de aplicar, conferir contra as entradas acima.
 
-- P-01 · Margem na Acumulada: "o Mestre decide"; congelar intervalo (Esgueirar) e subir qualidade (Oficio) viram exemplos. Contradiz em parte a leitura da Executora do item 10 (achados de duas leituras) e a pendencia G75. Estado: a confirmar.
-- P-02 · Folego: "remover direto". Escopo a confirmar (reserva inteira ou so texto). Estado: a confirmar.
-- P-03 · Ataques das 38 criaturas da lista levantada: corrigir. Estado: aprovado, nao despachado.
-- P-04 · Teto de Arte: "Nivel maximo da Arte e Centelha + 2", provisorio, para todos; mortal chega ao nivel 2; commit F2 (Mana do mortal) junto. Pode conflitar com o portao de Proeza (nivel N exige Centelha >= N, regras.json notaEscalaCentelha) e com o texto atual da Arte. Estado: a confirmar.
-- P-05 · Recompensa: exemplo da matilha de worgs passa a DESAFIO 1. Estado: a confirmar.
+- P-01 · Margem na Acumulada: "o Mestre decide"; congelar intervalo (Esgueirar) e subir qualidade (Oficio) viram exemplos. Contradiz em parte a leitura da Executora do item 10 (achados de duas leituras) e a pendencia G75. Estado: CONFIRMADA em 03/10/2026, despachada.
+- P-02 · Folego: "remover direto". Autor confirmou em 03/10/2026: remover do livro e do código (a reserva inteira); a ficha IGNORA o campo velho ao carregar, para nenhuma ficha salva quebrar; avisar no commit. Estado: despachada.
+- P-03 · Ataques das 38 criaturas da lista levantada: corrigir. Estado: aprovada, despachada em 03/10/2026.
+- P-04 · Teto de Arte: "Nivel maximo da Arte e Centelha + 2", provisorio, para todos; mortal chega ao nivel 2; commit F2 (Mana do mortal) junto. Pode conflitar com o portao de Proeza (nivel N exige Centelha >= N, regras.json notaEscalaCentelha) e com o texto atual da Arte. Estado: CONFIRMADA e refinada pela D-006 (tabela 0→2 ... 4 a 6→6; o teto de Proeza continua Centelha, sem conflito). Despachada.
+- P-05 · Recompensa: exemplo da matilha de worgs passa a DESAFIO 1. Estado: CONFIRMADA, despachada.
 - P-06 · Guarda sob pressao: adiada ate fechar o combate; lacuna da renovacao da guarda para quem nao age. Estado: adiada. Relacionada a C-011 e ao item 7 dos achados de duas leituras.
-- P-07 · Ataque total: "Nao existe Ataque Total no sistema. Cada ataque e separado." Estado: a confirmar.
+- P-07 · Ataque total: "Nao existe Ataque Total no sistema. Cada ataque e separado." Estado: CONFIRMADA, despachada.
 - P-08 · Dragoes: deixar como estao. Estado: sem acao.
-- P-09 · Comportamento das criaturas na bancada (9a a 9f). Estado: a confirmar a traducao em politica de bancada.
-- P-10 · lore/economia/ fora do repositorio publico: **bloqueado**, o build e a validacao leem de la (scripts/copiar-economia.mjs, gen-cap-economia.mjs, validate-data.mjs:922). Aguarda escolha do autor.
+- P-09 · Comportamento das criaturas na bancada (9a a 9f). Estado: despachada (a traducao em politica de bancada e da Executora, com tabela no relato).
+- P-10 · lore/economia/ fora do repositorio publico: **bloqueado**, o build e a validacao leem de la (scripts/copiar-economia.mjs, gen-cap-economia.mjs, validate-data.mjs:922). Autor escolheu a opcao A em 03/10/2026: tirar do git so o que o build nao le; ficam a v2/ e o .procedencia.json. Despachada.
 - Adiados: K37 (Grid cobra pressao pelo ataque feito e recebido), B16 (vocabulario de resistencias), topo da tabela de recompensa (desafio 4+).
