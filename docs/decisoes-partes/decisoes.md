@@ -117,11 +117,11 @@ uma decisao registrada, pare e pergunte ao autor.
 | C-022 | 2026-09-27 | Nota do livro: mesa presencial no Simultâneo | no ar |
 | C-023 | 2026-09-27 | Pendências de regra registradas, sem resolver (lote do Quase-Acerto) | a implementar |
 | C-024 | 2026-09-28 | Reforma da Centelha: 2 × mín(Centelha, Habilidade) em toda jogada e Defesa | no ar |
-| C-025 | 2026-09-28 | Resistência a efeito por Dificuldade: nível da Arte × 5 + 2 × mín | no ar (nao conferido) |
+| C-025 | 2026-09-28 | Resistência a efeito por Dificuldade: nível da Arte × 5 + 2 × mín | substituída por D-060 |
 | C-026 | 2026-09-28 | Dano e Absorção: +1 por ponto de Centelha, sem limite, também em cada pulso | no ar |
 | C-027 | 2026-09-28 | Raspão com Centelha de atacante e de alvo; Reduções 0/1/3/5 | no ar (nao conferido) |
 | C-028 | 2026-09-28 | Escada de Dificuldade com 35, 40, 45+ e nota de alcance humano | no ar (nao conferido) |
-| C-029 | 2026-09-28 | Briga: desarmado com acerto +1 e Defesa da arma +1; punho como arma média em Proeza | no ar |
+| C-029 | 2026-09-28 | Briga: desarmado com acerto +1 e Defesa da arma +1; punho como arma média em Proeza | substituída por D-057 (desarmado) |
 | C-030 | 2026-09-28 | Pendências da Reforma, sem resolver | a implementar |
 | C-031 | 2026-09-28 | Fichas de referência da bancada (Centelha 0 a 6) | no ar |
 | C-032 | 2026-09-28 | Padrão único 0 para Integridade ausente (bestiário) | no ar (nao conferido) |
@@ -699,7 +699,7 @@ uma decisao registrada, pare e pergunte ao autor.
 - Data: 2026-09-28
 - Decisão: "Dificuldade = nível da Arte × 5 + 2 × o menor entre a Centelha do conjurador e o nível da Arte. O alvo soma 2 × o menor entre a Centelha dele e a Habilidade da jogada."
 - Origem: reforma-centelha-briga-despacho.md:27-29 (Fase 1 item 2), commit adfbb5d7
-- Estado: no ar (não conferido)
+- Estado: SUBSTITUÍDA por D-060 (04/10/2026): a Dificuldade passa a "maior grau investido × 5"
 
 ### C-026 · Dano e Absorção: +1 por ponto de Centelha, sem limite, também em cada pulso [tags: dano, absorcao, centelha, artes]
 - Data: 2026-09-28
@@ -723,7 +723,7 @@ uma decisao registrada, pare e pergunte ao autor.
 - Data: 2026-09-28
 - Decisão: "Desarmado em armas.json: acerto +1 e Defesa da arma +1. Dano, tipo e Ticks continuam (1d6 − 2 + Força, Impacto, 5 Ticks)." E a pendência: "punho como arma média", nível 1 da árvore de Briga, "Transforma o punho em classe média por inteiro (1d6 + Força, QA de classe média, 6 Ticks). Não implemente agora."
 - Origem: reforma-centelha-briga-despacho.md:57-62 (Fase 3), commit 7bbe593d
-- Estado: no ar para o desarmado (não conferido); a Proeza fica a implementar
+- Estado: SUBSTITUÍDA por D-057 para o desarmado (Punhos e Chutes, 04/10/2026); a Proeza "punho como arma média" continua a implementar
 
 ### C-030 · Pendências da Reforma, sem resolver [tags: pendencia, centelha, bestiario, habilidade, migracao]
 - Data: 2026-09-28
@@ -1445,3 +1445,73 @@ Origem de todas: "conversa do autor, 03/10 e 04/10, veterana-1e" (numeração do
 - Decisao: "as fichas de exemplo (Kael, Sora, Veil, Bram) sao so um direcionamento. Depois desta correcao, nao gaste mais rodada nelas. Ficam como estiverem ate o fim da revisao do sistema, quando o autor volta a elas. Registre como pendencia (revisar as fichas de exemplo ao fim) e, se algum ponto do 1e mexer nelas alem disso, pule e anote."
 - Origem: conversa do autor, 04/10/2026
 - Estado: em vigor. Vale na rodada 10: so a troca das Tecnicas da D-047; os demais pontos sobre as fichas (totais de XP, Bram em 1401, contagens) sao pulados e anotados. Pendencia "revisar as fichas de exemplo ao fim" no Pendencias.md (pasta docs/pendencias).
+
+### Respostas do autor às 12 dúvidas do veterana-1e (04/10/2026)
+
+Origem de todas: "conversa do autor, 04/10/2026, respostas às 12 dúvidas da entrega final do veterana-1e". A dúvida e a letra escolhida vão em cada entrada.
+
+### D-054 · Regra geral: o Grid fica congelado; o livro manda e o Grid se ajusta depois [tags: grid, congelado, pendencias, regra-geral]
+- Data: 2026-10-04
+- Decisão: "O Grid fica congelado. Nada no Grid muda até fecharmos todas as regras, Proezas, magias, criaturas etc. Toda divergência entre livro e Grid vai para uma lista única de pendências do Grid (crie, se não existir). O livro manda; o Grid se ajusta depois, numa passada só."
+- Origem: regra geral nova do autor, 04/10/2026. Cobre a dúvida 11 (ART-35, ART-33, ART-11, ART-36 e ART-42 entram na lista).
+- Estado: em vigor. Lista única: docs/pendencias/N-grid-pendencias.md. Vale para toda rodada daqui em diante: o que tocar o Grid se aplica só fora dele e se anota na lista.
+
+### D-055 · Dúvida 1 (A): o teto 3 da Centelha cai na criação [tags: criacao, centelha, teto, mestre]
+- Data: 2026-10-04
+- Decisão: "Cai. A ficha básica não tem restrição; quem informa as restrições da campanha aos jogadores é o Mestre. Deixe isso dito no texto da Criação."
+- Origem: conversa do autor, 04/10/2026, dúvida 1, opção A
+- Estado: a implementar (rodada 12). Estende a D-040 (sem limite próprio na criação).
+
+### D-056 · Dúvida 2 (A): cai o teto 3 de Recursos e Artefato nos Antecedentes [tags: antecedentes, recursos, artefato, teto, ficha]
+- Data: 2026-10-04
+- Decisão: "Cai o campo 'tetoCriacao', o aviso da ficha (ficha-engine.ts:2410-2418) e os três trechos do texto. Mesmo princípio da 1: quem limita é o Mestre."
+- Origem: conversa do autor, 04/10/2026, dúvida 2, opção A
+- Estado: a implementar (rodada 12). Estende a D-040.
+
+### D-057 · Dúvida 3: Desarmado vira duas armas, Punhos e Chutes [tags: desarmado, punhos, chutes, armas, defesa, k4a]
+- Data: 2026-10-04
+- Decisão: "A linha 'Desarmado' é substituída por duas armas. Punhos: arma leve (Velocidade 5), P 0 / G 1 / R 4. Acerto +1, Defesa +1, dano 1d6−2 + Força. Chutes: arma média (Velocidade 6), P 1 / G 1 / R 3. Acerto +0, Defesa −1, dano 1d6 + Força. Defesa: o jogador escolhe com que arma defende (pernas, mãos, objeto ou arma que tenha nas mãos). Pode chutar e depois defender com as mãos, ou o contrário. Defender com as pernas é mais difícil (o −1). Mão nua contra arma cortante ou perfurante: não defende. Se tentar, toma o dano inteiro mesmo com a defesa bem-sucedida. Contra contundente e contra ataque desarmado, defende normalmente."
+- Origem: conversa do autor, 04/10/2026, dúvida 3 (resposta livre, nem A nem B nem C)
+- Estado: a implementar, DEPOIS do relato das três conferências que o autor pediu (as outras armas somam Força ao dano; o livro já tem regra de escolher com que arma defender; existe esquiva separada da defesa com arma). SUBSTITUI a C-029 (+1/+1) e o +0/+0 do 1e (K4a, item e). A Proeza "punho como arma média" da C-029 continua a implementar à parte. A mesa lê armas.json: aplicar só fora do Grid e anotar a pendência.
+
+### D-058 · Dúvida 4 (C): Ganhar a vida fica como está até decidir o modelo de economia [tags: economia, renda, servicos, modelo]
+- Data: 2026-10-04
+- Decisão: "Fica como está até decidir o modelo de economia."
+- Origem: conversa do autor, 04/10/2026, dúvida 4, opção C
+- Estado: em vigor. A parte 2 da rodada 7 (SERVICOS, REQUISITO-FAIXA, RENDA-1, GANHO-BRUTO, TETO) fica segurada. Consistente com a D-010 e a D-011.
+
+### D-059 · Dúvidas 5 e 12 (A e B): as fichas ficam sem a Técnica; a aplicação espera o fim da revisão [tags: criacao, exemplos, tecnicas, d-047, kael, sora, veil, bram]
+- Data: 2026-10-04
+- Decisão: dúvida 5, A: "As fichas ficam sem a Técnica (Kael 1045, Sora 1303, Veil 1844). Se aplicar isso nas fichas agora conflitar com a D-053 (fichas de exemplo só no fim da revisão), registre a regra e me pergunte antes de mexer nas fichas." Dúvida 12, B: "Esperar o fim da revisão (D-053)."
+- Origem: conversa do autor, 04/10/2026, dúvidas 5 e 12
+- Estado: a regra está registrada, e as fichas NÃO se tocam agora (D-053 vale). O Arquiteto pergunta ao autor antes de mexer nelas, ao fim da revisão. Complementa a D-047 e confirma a D-053. Bram continua com a lembrança do corte para Artes no nível 3 (D-044, total 1401).
+
+### D-060 · Dúvida 6 (A): a Dificuldade da Arte vale "maior grau investido × 5" [tags: artes, dificuldade, art-37, c-025, centelha]
+- Data: 2026-10-04
+- Decisão: "Vale o 1e ('maior grau investido × 5'), e a C-025 é substituída."
+- Origem: conversa do autor, 04/10/2026, dúvida 6, opção A
+- Estado: a implementar (rodada 12: ART-37, Dissipar, Mãos sobre a Multidão, Chamar à Mão, a linha "× 5" do ATAQUE-DIF, e reler o Chão Traiçoeiro). SUBSTITUI a C-025. Consistente com a D-022.
+
+### D-061 · Dúvida 7 (C): ART-34, ART-5, ART-38 e ART-40 ficam para a recalibração das Artes; o Mago de Batalha continua em Fogo 4 [tags: artes, recalibracao, bola-de-fogo, mago-de-batalha, b14]
+- Data: 2026-10-04
+- Decisão: "Os quatro ficam para a recalibração das Artes. 7b: O Mago de Batalha continua em Fogo 4. Registre que o Efeito Bola de Fogo (ART-38) entra na recalibração das Artes ANTES das fichas de exemplo. É uma dependência de ordem entre as duas tarefas."
+- Origem: conversa do autor, 04/10/2026, dúvida 7, opção C, e nota 7b
+- Estado: em vigor. Ordem: recalibração das Artes (com a Bola de Fogo) ANTES da revisão das fichas de exemplo. Confirma a D-051.
+
+### D-062 · Dúvida 8: Acelerar a Cura segue a escala dos dias, com +1 por nível no Tratar [tags: vida, acelerar-a-cura, tratar, art-47]
+- Data: 2026-10-04
+- Decisão: "Nem A nem B. O livro segue o que já decidi: a Vida apressa a recuperação, na escala dos dias, e no Tratar dá +1 por nível. Corrigir o texto do Efeito para isso. A diferença com o Grid (1 PV por nível) vai para a pendência do Grid."
+- Origem: conversa do autor, 04/10/2026, dúvida 8 (resposta livre)
+- Estado: a implementar (rodada 12, só o texto do Efeito). Consistente com a D-009 (+1 por nível da Vida no Tratar). A diferença com o Grid vai para N-grid-pendencias.md (D-054).
+
+### D-063 · Dúvida 9 (A): Vento 3 fica cortante, com dano [tags: artes, vento, art-45, art-20]
+- Data: 2026-10-04
+- Decisão: "Fica cortante, com dano (ART-45). O ART-20 (rajada que derruba) é descartado."
+- Origem: conversa do autor, 04/10/2026, dúvida 9, opção A
+- Estado: o texto da rodada 8 já está assim. O ART-20 fica descartado.
+
+### D-064 · Dúvida 10 (C): as condições da mesa ficam como estão; vão para a pendência do Grid e da mesa [tags: condicoes, mesa, agarrao, preso, imobilizado, grid]
+- Data: 2026-10-04
+- Decisão: "Fica como está. Registre na pendência do Grid/mesa: condicoes.json:19-21 (Imobilizado age com penalidade, contra a D-043), Preso inexistente, Agarrado (:25), Caído (:15, contra Velocidade 3) e a Prisão em gen-grid-artes.mjs:248."
+- Origem: conversa do autor, 04/10/2026, dúvida 10, opção C
+- Estado: em vigor. Os cinco itens vão para N-grid-pendencias.md (D-054). Não contradiz a D-043: o livro manda, a mesa se ajusta depois.
