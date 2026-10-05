@@ -1132,3 +1132,40 @@ ART-5, ART-38, ART-40, K4a e o Vento 3 do ART-20.
   - `npm run validate` verde, depois da D-066;
   - `npx astro build --force` verde;
   - a linha das armas naturais aparece uma vez no Cap. XIII gerado.
+
+**CORRIGE da revisão 140** (leitura (a) do Arquiteto, o item 3 da D-065):
+- **O defeito:** em `ficha-engine.ts`, o `calcConj` só tratava como mão livre os Punhos ou Chutes da mão
+  hábil. Com Punhos na inábil, a ficha somava arma e corpo (Espada Longa / Punhos dava 4) e contava um
+  punho só (Punhos / Punhos dava 3).
+- **O conserto:** os Punhos e os Chutes contam como mão livre nas duas mãos, desde que a hábil não seja de
+  duas mãos. A lista da mão inábil não mudou.
+- **Medido na tela** com o script da Revisora, copiado para `../tmp/executora/bloqueio-141.mjs` (o
+  `dev-server` e o `puppeteer-core` desta árvore; saída em `bloqueio-141.txt`). É a "Defesa por Bloqueio"
+  da ficha limpa, com a base 2 dos traços no piso:
+
+```
+padrão (nada mexido): 4
+nada / nada: 4
+Punhos / nada: 4
+Chutes / nada: 4
+Espada Longa (+1) / nada: 3
+Machado (+0) / nada: 3
+Espada Longa / Broquel: 4
+nada / Broquel: 3
+Lança (2 mãos): 4
+Espada Longa / Punhos: 3
+Punhos / Punhos: 4
+Machado / Chutes: 3
+```
+
+  - Espada Longa / Punhos dá 3 e Punhos / Punhos dá 4, como a D-065 pede. Os outros oito casos da tabela
+    da 140 ficaram iguais.
+  - O Machado / Chutes, que a 140 usou só para provar a base, passou de 2 para 3: os Chutes na inábil
+    agora contam como mão livre, e o punho livre (+1) vence o Machado (+0), como no Machado / mão livre.
+- **N17:** a frase "A ficha já faz isso" agora diz o estado real e o que a rodada 13 ainda fazia errado.
+- **Rótulos da mão vazia** na ficha, sem travessão: "Punhos (Briga)" e "Mão livre". Nenhum teste nem smoke
+  citava o rótulo antigo.
+  - O "Defesa por Bloqueio —" que a medição mostra é texto antigo da ficha, e não foi mexido.
+- **Chutes no Cap. XIII:** a coluna Mãos passou a 1, como o `maos: 1` de `armas.json`, que é a fonte.
+- **Verificação:** `npm run validate`, `npx astro sync && npx tsc --noEmit` e `npx astro build --force`
+  verdes.

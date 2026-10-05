@@ -932,11 +932,13 @@ export function montarFicha(opts: FichaOpts) {
     }
     // O BLOQUEIO PELA MELHOR COMBINAÇÃO (D-065): as armas e os escudos das mãos somam; o corpo só
     // defende quando nada nas mãos é usado, e não soma com eles; só os dois punhos somam entre si
-    // (+1 cada). Punhos e Chutes na mão hábil contam como mão livre. Os Chutes (−1) ficam para o
-    // Mestre, quando as mãos não podem ser usadas: a ficha mostra a melhor combinação disponível.
+    // (+1 cada). Punhos e Chutes, na mão hábil ou na inábil, contam como mão livre (CORRIGE 140).
+    // Os Chutes (−1) ficam para o Mestre, quando as mãos não podem ser usadas: a ficha mostra a
+    // melhor combinação disponível.
     const ehCorpo = (s: any) => s?.ref === 'a:desarmado' || s?.ref === 'a:chutes';
-    const maosLivres = (ehCorpo(cj.habil) ? 1 : 0) + (inabil.kind === 'nada' && !it2H(habil) ? 1 : 0);
-    const nasMaos = [ehCorpo(cj.habil) ? null : habil, inabil].filter((it: any) => it && it.kind !== 'nada');
+    const inabilCorpo = !it2H(habil) && ehCorpo(cj.inabil);
+    const maosLivres = (ehCorpo(cj.habil) ? 1 : 0) + ((inabil.kind === 'nada' || inabilCorpo) && !it2H(habil) ? 1 : 0);
+    const nasMaos = [ehCorpo(cj.habil) ? null : habil, inabilCorpo ? null : inabil].filter((it: any) => it && it.kind !== 'nada');
     const defMaos = nasMaos.reduce((s: number, it: any) => s + (it.def || 0), 0);
     const defCorpo = maosLivres * (ARMA['desarmado']?.defesaArma ?? 1);
     const defSum = nasMaos.length ? Math.max(defMaos, defCorpo) : defCorpo;
@@ -1507,7 +1509,7 @@ export function montarFicha(opts: FichaOpts) {
         const travada = hand === 'inabil' && trava;
         const it = hand === 'habil' ? c.habil : c.inabil;
         const p = travada ? null : (cj[hand]?.uid ? pecaArsenal(cj[hand].uid) : null);
-        const vazioRot = hand === 'habil' ? '— punhos (briga) —' : '— mão livre —';
+        const vazioRot = hand === 'habil' ? 'Punhos (Briga)' : 'Mão livre';
         // Este painel virou espelho: quem edita imagem, números e improvisado é o card do
         // arsenal, para os controles não existirem em dois lugares com a mesma chave.
         const corpo = travada

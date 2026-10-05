@@ -97,7 +97,9 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
 - [ ] **N17 · [FAZER] Os dois punhos somam no Bloqueio (D-065).**
   - O livro diz: só os dois punhos somam entre si, +1 cada, +2 com as duas mãos livres. Arma ou escudo e
     corpo não somam, e a ficha mostra a melhor combinação.
-  - A ficha já faz isso (`calcConj` em `ficha-engine.ts`).
+  - A ficha faz isso desde o CORRIGE 140 (`calcConj` em `ficha-engine.ts`): Punhos ou Chutes, em qualquer das
+    duas mãos, contam como mão livre. Na rodada 13 a mão inábil com Punhos ainda somava como arma, e o
+    Punhos / Punhos contava um punho só.
   - A mesa calcula o Bloqueio sem a Defesa da arma nenhuma (`mesa-ficha.ts:97`) e usa a Esquiva como
     Defesa física do resumo (`combate-resumo.ts:157`).
 - [ ] **N18 · [FAZER] Lâmina contra o corpo (D-057, D-065).**

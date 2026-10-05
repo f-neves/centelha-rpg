@@ -60,7 +60,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 | Arma | Classe | Modos | Velocidade | Dano | Acerto | Defesa | Mãos | Destaque |
 |---|:---:|---|:---:|:---:|:---:|:---:|:---:|---|
 | Punhos | Leve | ★I | 5 | 1d6−2 | +1 | +1 | 1 | Socos e agarrões (Briga), com as mãos vazias. Ver [Luta desarmada](#luta-desarmada) |
-| Chutes | Média | ★I | 6 | 1d6 | +0 | −1 | 0 | Chutes e joelhadas (Briga). Ver [Luta desarmada](#luta-desarmada) |
+| Chutes | Média | ★I | 6 | 1d6 | +0 | −1 | 1 | Chutes e joelhadas (Briga). Ver [Luta desarmada](#luta-desarmada) |
 | Adaga | Leve | ★P(N0) · C | 5 | 1d6−2 | +2 | +1 | 1 | Ágil, arremessável. Rápida e precisa; só fura pele (mira na fresta) |
 | Espada Curta | Leve | ★C · P(N1) | 5 | 1d6−2 | +2 | +1 | 1 | Veloz e defensiva |
 | Espada Longa | Média | ★C · P(N1) | 6 | 1d6 | +1 | +1 | 1 | Versátil (2 mãos: Força×2). A clássica adaptável |
