@@ -146,3 +146,7 @@ Detalhe em `Proezas_revisao.md`.
       Veil 1844), aplicado só ao fim da revisão, e o Arquiteto pergunta antes de mexer.
   - A "Exceção declarada" de Veil (`criacao-de-personagem.md`, seção Veil) ainda diz "o teto de criação é
     Centelha 3". A D-055 tirou esse teto, mas a frase é da ficha (D-053) e espera a revisão.
+  - Fora das fichas de exemplo, na ficha do site: `src/lib/ficha-engine.ts:174-175` ainda marca o teto
+    de Arte Centelha + 2 como TOLERÂNCIA ("ainda não é definitivo", LEVANTA QUANDO o autor fechar o
+    teto do mortal), e o comentário de `:177` diz "provisório". O teto foi fechado pela D-006 e saiu do
+    livro como "provisório" na rodada 8. O código não foi tocado (rodada 12, ordem do Arquiteto).

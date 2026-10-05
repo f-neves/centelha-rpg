@@ -36,9 +36,15 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
     Recuperação, até 50%. Abaixo de 0, soma +1 por nível ao Tratar (D-009).
   - O Grid faz: cura 1 PV por nível da Arte, pelo campo `porNivel: true` do parâmetro Cura
     (`src/lib/artes-grid.ts`, comentário do campo, L86b).
+  - O diálogo de conjurar do Grid mostra o texto dos parâmetros fixos (`src/lib/artes-grid-ui.ts:807`),
+    e por isso já exibe "Cura: encurta o intervalo em 10% por nível da Arte" enquanto cura 1 PV por nível.
 - [ ] **N7 · [FAZER] Mãos sobre a Multidão pelo maior grau investido (D-060, ART-37).**
   - O livro diz (verbete): o nível é o maior grau investido por quem conjurou, 1 PV por grau.
   - O Grid faz: cura pelo nível da Arte de quem conjurou, pelo mesmo campo `porNivel: true`.
+  - O diálogo de conjurar do Grid mostra o texto dos parâmetros fixos (`src/lib/artes-grid-ui.ts:807`):
+    exibe "Cura: 1 PV por grau investido" e a Dificuldade "(maior grau investido) × 5" dos 28 Efeitos
+    (D-060), enquanto cura pelo nível da Arte. O Grid não calcula Dificuldade de Efeito por fórmula
+    nenhuma: a linha é só texto.
 - [ ] **N8 · [FAZER] Chamar à Mão com Dificuldade (D-060, ART-23).**
   - O 1e pede: "é disputa: quem o segura rola Força + Atletismo contra a Dificuldade, e o objeto só fica
     se a superar", com a linha "Dificuldade: (maior grau investido) × 5".

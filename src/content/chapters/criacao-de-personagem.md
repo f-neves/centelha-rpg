@@ -20,7 +20,7 @@ Se é a sua primeira vez, siga esta ordem: os detalhes de cada passo estão nas 
 5. **Habilidades e Especialidades.** Vale o máximo normal da ficha, **6**. Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
 6. **Virtudes.** As quatro, de 1 a 6.
 7. **Força de Vontade e Aparência.** Suba a Vontade do piso 0 (um herói costuma levá-la a 5+); escolha a Aparência (0–12, normal no nível 6).
-8. **Centelha.** Teto **3** na criação. Ela **não custa XP**: o tier é definido com o Mestre e define o que você alcança. O Mestre escolhe pela campanha: **Centelha 0** numa campanha mortal; de **1 a 3** numa campanha heroica (3 é o Herói, para quem quer um herói de saga).
+8. **Centelha.** Ela **não custa XP**: o tier é definido com o Mestre e define o que você alcança. O Mestre escolhe pela campanha: **Centelha 0** numa campanha mortal; de **1 a 3** numa campanha heroica (3 é o Herói, para quem quer um herói de saga).
 9. **Proezas, Técnicas e Artes.** Gaste o restante em poder: as Técnicas que a Centelha destrava e, se for feiticeiro, os níveis de Arte (até Centelha + 2) e os Efeitos Especiais.
 10. **Derivados.** PV, Defesas, Energia/Mana e Iniciativa saem de fórmulas: confira na tabela mais abaixo, ou deixe a Ficha calcular.
 
@@ -61,7 +61,7 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 
 ## Limites na criação
 
-Na criação não existe limite próprio: valem os máximos normais da ficha. Quase tudo vai até **6**, e alguns traços vão até **12** (Força de Vontade, Aparência). Depois entram os ajustes raciais, para cima ou para baixo: o Atributo com `+1` racial chega a **7**, e o com `−1` fica em **5**. O que segura o personagem novo é o orçamento de XP. A ficha básica não tem restrição de criação, e isso vale também para a Centelha: quem informa aos jogadores as restrições da campanha é o Mestre. O nível de cada Arte respeita o teto da Centelha (Centelha + 2). O ponto seguinte e os tiers maiores vêm com o jogo.
+Na criação não existe limite próprio: valem os máximos normais da ficha. Quase tudo vai até **6**, e alguns traços vão até **12** (Força de Vontade, Aparência). Depois entram os ajustes raciais, para cima ou para baixo: o Atributo com `+1` racial chega a **7**, e o com `−1` fica em **5**. O que segura o personagem novo é o orçamento de XP. A ficha básica não tem restrição de criação, e isso vale também para a Centelha: quem informa aos jogadores as restrições da campanha é o Mestre. O nível de cada Arte respeita o teto da Centelha (Centelha + 2). Os tiers maiores da Centelha vêm com o jogo.
 
 ## Traços derivados
 

@@ -975,3 +975,36 @@ ART-5, ART-38, ART-40, K4a e o Vento 3 do ART-20.
     cinco Artes, e 1 "(nível da Arte) × 5", que é a Resistência do Escudo de Força. As duas ficam, como
     o ART-37 manda.
   - "(maior grau investido) × 5" aparece 37 vezes: as 33 entradas mais as 4 do Chão Traiçoeiro.
+
+**CORRIGE da revisão 138** (rodada 12, opção (a) do Arquiteto):
+- O passo 8 da Criação (`criacao-de-personagem.md:23`) dizia "**Centelha.** Teto **3** na criação.",
+  contra a D-055 e contra a frase nova de Limites. Saiu só "Teto **3** na criação.". O "de **1 a 3** numa
+  campanha heroica" ficou, como orientação ao Mestre.
+- Na varredura apareceu um resto da rodada 12: a frase final de Limites (`:64`), "O ponto seguinte e os
+  tiers maiores vêm com o jogo.", falava do ponto acima da Centelha 3, que já não está na frase. Ela
+  passou a "Os tiers maiores da Centelha vêm com o jogo."
+- **A varredura do capítulo**, depois do conserto: `teto` em qualquer caixa, `**3**` e `<strong>3</strong>`,
+  linha a linha. Nenhuma sobra diz teto de criação, exceto a de Veil (`:128`), que é ficha (D-053, D17):
+
+```
+:18 · …o de 20 a 50). Ela vem antes dos Atributos porque é ela que **move os tetos**: um `+1 de teto` deixa aquele Atributo chegar mais alto do que che…
+:18 · …vem antes dos Atributos porque é ela que **move os tetos**: um `+1 de teto` deixa aquele Atributo chegar mais alto do que chegaria, e um `−1` o …
+:19 · …4. **Atributos.** Suba do piso 1. Na criação não há teto próprio: vale o máximo normal da ficha, **6**, e depois o ajuste da r…
+:58 · …trong>, até 6 (Centelha 0 → 2; 1 → 3; 2 → 4; 3 → 5; 4, 5 ou 6 → 6). O teto de Proeza continua igual à Centelha.</p>…
+:64 · …as restrições da campanha é o Mestre. O nível de cada Arte respeita o teto da Centelha (Centelha + 2). O ponto seguinte e os tiers maiores vêm c…
+:94 · …| Raça | Humano (a régua: nenhum teto movido, nenhum traço racial) | 0 |…
+:112 · …| Raça | Humano (a régua: nenhum teto movido, nenhum traço racial) | 0 |…
+:128 · (Veil, ficha de exemplo, D-053/D17) …<p class="muted"><strong>Exceção declarada:</strong> o teto de criação é Centelha 3; Veil sobe a 4 porque a Centelha não se compr…
+:132 · …| Raça | Humano (a régua: nenhum teto movido, nenhum traço racial) | 0 |…
+:149 · …a, e a Centelha engorda essa reserva e segura o nível de cada Arte (o teto é Centelha + 2: Centelha 0 chega ao nível 2, Centelha 1 ao 3). Isso a…
+:157 · …| Raça | Humano (a régua: nenhum teto movido, nenhum traço racial) | 0 |…
+```
+
+- **Notas da Revisora, só em documentação:**
+  - em "Cadeias a conhecer" do `decisoes.md`, as cadeias C-025 para D-060 e C-029 para D-057;
+  - em `N-grid-pendencias.md`, N6 e N7: o diálogo do Grid mostra o texto dos parâmetros fixos
+    (`artes-grid-ui.ts:807`), e já exibe "encurta o intervalo em 10%", "1 PV por grau investido" e
+    "(maior grau investido) × 5" enquanto cura e conta como antes.
+- A TOLERÂNCIA do teto de Arte em `ficha-engine.ts:174-175` (e o "provisório" de `:177`) não foi tocada.
+  Ficou anotada na D17, porque é da ficha.
+- Verificação: `npm run validate` e `npx astro build --force` verdes. No gerado, "Teto 3 na criação" dá 0, e o passo 8 novo e a frase nova de Limites aparecem uma vez cada.

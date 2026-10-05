@@ -21,6 +21,14 @@ uma decisao registrada, pare e pergunte ao autor.
 
 4. D-015 · 03/10/2026 · teto 4 fora do cortejo, cortejo em discussão (commit 03c1d711). **Substituída pela D-017** (04/10/2026, decisão 4 do veterana-1d): o teto 4 vale também por intervalo do cortejo, e as linhas :242 e :246 de relacoes-sociais.md remetem ao Resistir. Substitui também o item 5 da D-001 e a C-072 ("o intervalo do cortejo não é uma ação"). Entra na rodada 6.
 
+**Dificuldade da Arte**
+1. C-025 · 28/09/2026 · `adfbb5d7` · nivel da Arte × 5 + 2 × min(Centelha, nivel da Arte). **Substituida pela D-060.**
+2. D-060 · 04/10/2026 · resposta do autor a duvida 6 · "(maior grau investido) × 5". **No ar desde a rodada 12** (`bd041499`); o Grid segue a conta antiga ate a passada da N (D-054).
+
+**Desarmado**
+1. C-029 · 28/09/2026 · `7bbe593d` · acerto +1 e Defesa da arma +1. **Substituida pela D-057** no desarmado; a Proeza "punho como arma media" continua a implementar.
+2. D-057 · 04/10/2026 · resposta livre do autor a duvida 3 · Punhos e Chutes. **A implementar**, depois do relato das tres conferencias.
+
 **Bonus de Centelha em jogada, Defesa e Valor Passivo**
 1. C-024 · Reforma da Centelha (28/09/2026): 2 x min(Centelha, Habilidade).
 2. B-029 · 01/10/2026: Atributo puro leva +1 por ponto de Centelha (D12).
