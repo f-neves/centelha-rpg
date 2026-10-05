@@ -46,7 +46,7 @@ Arquiteto disse que confere.
 7. **Grid e mesa:** `git diff --stat` sobre `src/lib/artes-grid*`, `src/lib/mesa-*`, `src/pages/mesa/`,
    `scripts/gen-grid-artes.mjs`, `src/lib/equip.ts`, `src/lib/combate-resumo.ts` e `src/data/`: vazio.
 8. **Travessão e vocabulário:** `ficha-engine.ts` passou de 20 para 16 travessões (os quatro do rótulo); o capítulo e a
-   N ficaram iguais. Nenhum "Perícia" novo. Ver a observação.
+   N ficaram iguais. Nenhuma linha nova usa o nome antigo de Habilidade. Ver a observação.
 
 ## Observação
 
