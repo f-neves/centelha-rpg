@@ -930,7 +930,17 @@ export function montarFicha(opts: FichaOpts) {
         inabilPen: ambi ? 1 : 2, ambi,
       };
     }
-    return { habil, inabil, atk, dados, bonus, flat, dist, versoes, reqForca, dupla, defSum: (habil.def || 0) + (inabil.def || 0), penSum: (habil.pen || 0) + (inabil.pen || 0), armorPen };
+    // O BLOQUEIO PELA MELHOR COMBINAÇÃO (D-065): as armas e os escudos das mãos somam; o corpo só
+    // defende quando nada nas mãos é usado, e não soma com eles; só os dois punhos somam entre si
+    // (+1 cada). Punhos e Chutes na mão hábil contam como mão livre. Os Chutes (−1) ficam para o
+    // Mestre, quando as mãos não podem ser usadas: a ficha mostra a melhor combinação disponível.
+    const ehCorpo = (s: any) => s?.ref === 'a:desarmado' || s?.ref === 'a:chutes';
+    const maosLivres = (ehCorpo(cj.habil) ? 1 : 0) + (inabil.kind === 'nada' && !it2H(habil) ? 1 : 0);
+    const nasMaos = [ehCorpo(cj.habil) ? null : habil, inabil].filter((it: any) => it && it.kind !== 'nada');
+    const defMaos = nasMaos.reduce((s: number, it: any) => s + (it.def || 0), 0);
+    const defCorpo = maosLivres * (ARMA['desarmado']?.defesaArma ?? 1);
+    const defSum = nasMaos.length ? Math.max(defMaos, defCorpo) : defCorpo;
+    return { habil, inabil, atk, dados, bonus, flat, dist, versoes, reqForca, dupla, defSum, penSum: (habil.pen || 0) + (inabil.pen || 0), armorPen };
   }
   const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
   // Cada arma da lista já mostra os próprios números: Velocidade / Acerto / Dano / Defesa.
@@ -1497,7 +1507,7 @@ export function montarFicha(opts: FichaOpts) {
         const travada = hand === 'inabil' && trava;
         const it = hand === 'habil' ? c.habil : c.inabil;
         const p = travada ? null : (cj[hand]?.uid ? pecaArsenal(cj[hand].uid) : null);
-        const vazioRot = hand === 'habil' ? '— desarmado (briga) —' : '— mão livre —';
+        const vazioRot = hand === 'habil' ? '— punhos (briga) —' : '— mão livre —';
         // Este painel virou espelho: quem edita imagem, números e improvisado é o card do
         // arsenal, para os controles não existirem em dois lugares com a mesma chave.
         const corpo = travada
@@ -1510,7 +1520,7 @@ export function montarFicha(opts: FichaOpts) {
                    ${it.kind === 'arma' ? statsBlocos(it.w) : it.kind === 'escudo' ? statsBlocosEscudo(it.s) : ''}
                  </div>
                </div>`
-            : `<div class="conj-vazia">${hand === 'habil' ? 'Desarmado: ataca de briga' : 'Mão livre'}</div>`;
+            : `<div class="conj-vazia">${hand === 'habil' ? 'Punhos: ataca de briga' : 'Mão livre'}</div>`;
         // o seletor volta a oferecer o CATÁLOGO: sem o bloco do arsenal, é por aqui que
         // uma arma entra na ficha. A peça correspondente é criada (ou reaproveitada) na hora.
         const sel = travada ? 'nada' : (p ? p.ref : 'nada');

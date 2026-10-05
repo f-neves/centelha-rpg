@@ -51,8 +51,8 @@ está na seção 3.
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 17 | 14 | 0 | 3 | 6 | 3 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 25 | 1 | 13 | 21 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 15 | 15 | 0 | 0 | 0 | 15 | 0 | 0 | 0 | 0 |
-| | **Total** | | **376** | **268** | **4** | **104** | **107** | **56** | **8** | **10** | **81** | **10** |
+| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 20 | 20 | 0 | 0 | 0 | 20 | 0 | 0 | 0 | 0 |
+| | **Total** | | **381** | **273** | **4** | **104** | **107** | **61** | **8** | **10** | **81** | **10** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -676,6 +676,11 @@ Fechados (33): L5, L6, L9, L11, L12, L13, L14, L15, L17, L18, L19, L21, L22, L34
 | N13 | aberto | FAZER | A Prisão deixa Preso, e não Imobilizado (D-064). |
 | N14 | aberto | FAZER | A escala de 0 a 6 do Escapismo. |
 | N15 | aberto | FAZER | O Desarmado novo (D-057), a preencher depois da aplicação. |
+| N16 | aberto | FAZER | Chutes na mesa e no Grid (D-057, D-065). |
+| N17 | aberto | FAZER | Os dois punhos somam no Bloqueio (D-065). |
+| N18 | aberto | FAZER | Lâmina contra o corpo (D-057, D-065). |
+| N19 | aberto | FAZER | A escolha da melhor combinação de defesa (D-065). |
+| N20 | aberto | FAZER | A classe de ataque dos golems de Punhos (D-065, D-054). |
 
 Fechados (0): nenhum.
 

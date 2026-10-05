@@ -161,7 +161,7 @@ eq(Object.keys(B).sort().join(','),
 
 // ------------------------------- 7. a ficha sem equipamento não explode
 const pelado = { attrs: {}, skills: {}, willpower: 0, centelha: 0 };
-eq(CR.resumoCombatePC(pelado).arma, 'Desarmado / Briga', 'ficha vazia cai no desarmado');
+eq(CR.resumoCombatePC(pelado).arma, 'Punhos', 'ficha vazia cai no desarmado (Punhos, D-065)');
 eq(E.armaDoSlot({ ref: 'a:espada-lomga' }), null, 'id errado vira null, e é justamente isso que o resto do teste cobra');
 
 // ------------------------------------------------------------------ fim

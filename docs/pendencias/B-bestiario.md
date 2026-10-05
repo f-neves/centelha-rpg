@@ -131,6 +131,12 @@ limitações conhecidas, que são as três de baixo.
     desafio. Conferido em 02/10/2026: o `REC_FATOR` já não existe em `lore/economia/v2/modelo.py`
     (saiu em `5d068c65`, 01/10/2026) nem em outro código do repositório; a citação
     `modelo.py:447` do achado acima é histórica.
+  - **Armas naturais (D-066, 05/10/2026), para quando a B14 chegar às criaturas:**
+    - uma linha na abertura do bestiário, no tom da Luta desarmada do Cap. XIII: quem tem armas naturais
+      (garras, chifres, carapaça, corpo de pedra ou ferro) ataca e se defende com elas, quase todas
+      bloqueiam sem tomar dano, e o Mestre julga as exceções;
+    - o ataque e a defesa do Golem de Ferro e do Golem de Pedra são revistos com essa regra. A fixação
+      dos dois como "media" no `gen-monsters.mjs` (N20) fica como está até lá.
 - [x] **B15 · [CORRIGIDO em 28/09/2026, achado da própria rodada estava ERRADO] O bônus de
   Centelha NÃO sai 0 em toda criatura.** Registrado em 28/09/2026, Fase 1 da Reforma da
   Centelha, como "as 309 fichas do bestiário não têm bloco `pericias`, o bônus de Centelha em

@@ -44,7 +44,13 @@ const DESL = read('deslocamento-bestiario.json');
 //      Velocidade, que é o atalho de sempre, agora explícito no dado.
 const ARMAS_CAT = achataCatalogo(read('armas.json'));
 const CLASSE_OVERRIDE = {
-  // exceções por criatura, quando o nome e a velocidade enganarem; vazio por ora
+  // exceções por criatura, quando o nome e a velocidade enganarem.
+  // Os dois golems atacam com "Punhos" a Velocidade 6. Até a rodada 13 nenhum nome de arma
+  // batia, e a Velocidade os punha em "media". Com a arma Punhos (leve) no catálogo (D-065),
+  // o nome os jogaria em "leve", e a mesa mudaria. O Grid está congelado (D-054), então eles
+  // ficam em "media" até a passada do Grid (N-grid-pendencias.md, N20).
+  'mon-iron-golem': 'media',
+  'mon-stone-golem': 'media',
 };
 function classeDoAtaque(id, nome, ticks) {
   if (CLASSE_OVERRIDE[id]) return CLASSE_OVERRIDE[id];

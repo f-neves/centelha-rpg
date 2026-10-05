@@ -69,7 +69,7 @@ Você tem duas maneiras de se defender e usa a que couber. Na ficha as duas apar
 - **Esquiva** = ( Destreza + Esquiva ) × 2 + 2 × menor(Centelha, Esquiva) + Especialidade
 - **Bloqueio** = ( Destreza + Bloqueio ) × 2 + 2 × menor(Centelha, Bloqueio) + Especialidade + defesa da arma/escudo
 
-**Bloqueio** é uma Habilidade única: apara ataques com escudo, arma ou o próprio corpo, seja lá o que estiver empunhando. A defesa que a arma ou o escudo concede entra por cima, em jogo.
+**Bloqueio** é uma Habilidade única: apara ataques com escudo, arma ou o próprio corpo, seja lá o que estiver empunhando. A defesa que a arma ou o escudo concede entra por cima, em jogo. Sem nada nas mãos, o corpo também defende, pela regra da [luta desarmada](/regras/armas-e-armaduras#luta-desarmada) (Cap. XIII).
 
 ### Defesa Social
 

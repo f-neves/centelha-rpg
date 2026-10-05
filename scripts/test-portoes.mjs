@@ -205,8 +205,6 @@ const NAO_E_TOLERANCIA = [
     'regra de mesa decidida, com a alternativa nomeada. Mudá-la é decisão, não dívida.'],
   ['src/pages/mesa/grid.astro', 'por ora sem a escolha de outro alvo',
     'a regra do golpe no caído está implementada; a escolha de outro alvo é fatia de trabalho seguinte, e não regra afrouxada.'],
-  ['scripts/gen-monsters.mjs', 'vazio por ora',
-    'tabela de exceções vazia. Vazia é o estado normal dela, não um afrouxamento.'],
   ['supabase/migracao-23.sql', 'fica para depois',
     'névoa por jogador é funcionalidade não construída, e não regra afrouxada. A névoa do grupo é a decisão de mesa, não um degrau para ela.'],
   ['scripts/sim/lib-ponte.mjs', 'arquivo temporário',

@@ -1008,3 +1008,127 @@ ART-5, ART-38, ART-40, K4a e o Vento 3 do ART-20.
 - A TOLERÂNCIA do teto de Arte em `ficha-engine.ts:174-175` (e o "provisório" de `:177`) não foi tocada.
   Ficou anotada na D17, porque é da ficha.
 - Verificação: `npm run validate` e `npx astro build --force` verdes. No gerado, "Teto 3 na criação" dá 0, e o passo 8 novo e a frase nova de Limites aparecem uma vez cada.
+
+## Rodada 13 · Desarmado vira Punhos e Chutes (D-057, D-065)
+
+**Antes de mexer.**
+- Li a D-065 inteira (commit `924a99bb`).
+- Conflito (i): nenhuma decisão viva fala de Bloqueio com escudo, mão inábil, empunhadura dupla ou Defesa
+  da arma. O texto existente concorda com a D-065:
+  - `defesas.md:72`: "apara ataques com escudo, arma ou o próprio corpo";
+  - `combate.md:270`: "a mesma para qualquer arma, escudo ou mão";
+  - `combate.md:272`: o escudo ou a arma da mão inábil "eleva o Bloqueio";
+  - `armas-e-armaduras.md:135`: cada escudo "entra no seu Bloqueio".
+  - Nenhum texto limita a um escudo só.
+- Conflito (iii): a Proeza "punho como arma média" (C-029) não foi tocada.
+
+**O que entrou:**
+- **`armas.json`**: o id `desarmado` ficou, com o nome "Punhos" e os mesmos números (leve, Velocidade 5,
+  Acerto +1, Defesa +1, 1d6−2 + Força, Impacto, Briga). Entrou `chutes` logo depois: média, Velocidade 6,
+  Acerto +0, Defesa −1, 1d6 + Força, Impacto, Briga.
+  - O `chutes` leva `maos: 1`, porque o schema só aceita 1 ou 2.
+  - Leva `folego: 24`, campo inerte (D-016), o mesmo das armas médias.
+  - O P/G/R não é gravado: sai da classe e da Velocidade (`regras.json`, `combate.pgr`).
+    - Punhos (leve, Preparo fixo 0, Velocidade 5) dá P 0 / G 1 / R 4, como a D-065 diz.
+    - Chutes (média, Preparo fixo 1, Velocidade 6) dá P 1 / G 1 / R 4. A D-065 dizia R 3, e o autor
+      respondeu na dúvida 13 (opção A): vale R 4, pela régua, e o R 3 era erro de digitação. Nenhum arquivo
+      do livro tinha R 3: o P/G/R não é gravado, e a Velocidade 6 já dava R 4.
+- **Cap. XIII**:
+  - a linha Desarmado (+0/0, o K4a) virou Punhos (+1/+1);
+  - entrou a linha dos Chutes;
+  - a seção curta "Luta desarmada", antes de Armaduras, diz como são os dois golpes, as defesas sem arma
+    (o que está nas mãos soma, o corpo só quando nada nas mãos é usado, os dois punhos +1 cada, Chutes −1
+    quando as mãos não podem ser usadas) e a lâmina contra o corpo, sem tabela de situações.
+  - Remissões em `defesas.md:72` e em `combate.md`, Esquivar ou Bloquear.
+- **Outros textos**:
+  - `quase-acerto.md:40`: Punhos na Leve, Chutes na Média;
+  - `custo-qualidade-e-equipamento.md:10`: "menos Punhos, Chutes e Nenhuma";
+  - glossário, verbete Defesa: "Bloqueio (arma, escudo ou, sem nada nas mãos, o corpo: ver Luta
+    desarmada, no Cap. XIII)".
+  - `/equipamentos` lê `armas.json` e mostra as duas armas. Lá o Chutes aparece com Mãos 1, porque a
+    coluna lê o campo `maos`.
+- **Ficha** (`ficha-engine.ts`, `calcConj`): o Bloqueio é a melhor combinação.
+  - Soma o que está nas mãos. Se nada estiver nas mãos, conta +1 por mão livre, e Punhos e Chutes na mão
+    hábil contam como mão livre.
+  - Com as duas mãos vazias, +2.
+  - Escudo ou arma contra corpo: vale o maior dos dois, sem somar.
+  - Os rótulos da mão vazia viraram "Punhos".
+  - O código da mesa (`combate-resumo.ts`, `equip.ts`, `mesa-ficha.ts`, `ficha-card.ts`) não foi tocado.
+  - Fichas salvas não quebram: o `a:desarmado` continua.
+  - Não conferi na tela o número do Bloqueio com as mãos vazias (o smoke da ficha não o mede).
+- **`test-contrato.mjs:164`**: a ficha vazia cai em "Punhos".
+- `combate-tempo-bench.html` regerado. O `chutes` entrou no `SEM_IMAGEM` do `gen-lista-equip.mjs`.
+- **Os golems** (opção (b) do Arquiteto): o Golem de Ferro e o Golem de Pedra atacam com "Punhos" a
+  Velocidade 6, e o `gen-monsters.mjs` passaria a lhes dar a classe "leve" pelo nome.
+  - Os dois entraram no `CLASSE_OVERRIDE` como "media". O comentário do mapa foi reescrito, e a isenção
+    do `test-portoes.mjs` que apontava para o "vazio por ora" saiu.
+  - **Prova:** `gen-monsters --check` em dia, e `cmp` de `monsters.json` e `monsters-mesa.json` contra o
+    HEAD, os dois idênticos byte a byte.
+  - O Golem de Gelo ("Punhos gelados", Velocidade 5) também casa pelo nome, mas já era "leve" pela
+    Velocidade, e nada mudou.
+- **N-grid-pendencias.md**:
+  - N15 atualizado;
+  - N16 (Chutes na mesa e no Grid);
+  - N17 (soma dos dois punhos);
+  - N18 (lâmina contra o corpo);
+  - N19 (escolha da melhor combinação);
+  - N20 (a classe dos golems).
+- **Citações reapontadas** pelo `reapontar.mjs`, com `docs/` limpa antes:
+  - K (`ficha-engine.ts:1552` virou `:1562`);
+  - L (`ficha-engine.ts:1664/1665` viraram `:1671/1672`, e `test-portoes.mjs:454` virou `:452`);
+  - REVISORA (`gen-monsters.mjs:228` virou `:234`).
+  - Ele avisou de uma citação de `L-simulacao-simultaneo.md:71` para `test-contrato.mjs:137` com âncora
+    repetida na janela. Ela não foi mexida, e o portão segue verde.
+
+**Verificação:**
+- `npm run validate` verde;
+- `npx astro sync && npx tsc --noEmit` sem erro;
+- `npx astro build --force` verde.
+- O smoke da ficha passou na segunda rodada. Na primeira falhou só "opening the modal does not scroll the
+  page" (4723→4646), que não tem relação com a rodada, e passou ao rodar de novo.
+- No gerado:
+  - os 13 trechos novos estão no Cap. XIII, em `/equipamentos`, no Quase-Acerto, em Defesas, em Combate,
+    no glossário e em Custo e Qualidade;
+  - "Desarmado" dá 0 nessas páginas;
+  - o Cap. XIII tem uma âncora `id="luta-desarmada"`.
+
+**Rodada 13, depois da dúvida 13 e da D-066:**
+- **Chutes:** fica média, Velocidade 6, R 4 (opção A do autor). Nada a corrigir nos arquivos: nenhum dizia R
+  3.
+- **Armas naturais (D-066):** uma linha nova no fim da Luta desarmada do Cap. XIII: quem tem armas naturais
+  ataca e se defende com elas, quase sempre bloqueia a lâmina sem tomar o dano, e o Mestre julga as
+  exceções. A linha da abertura do bestiário e a revisão dos golems ficaram como pendência na B14
+  (`B-bestiario.md`), e a N20 fica como está.
+- **Conferência, só relato (o autor decide depois):** o que, no material jogável, dá ao personagem garras,
+  couraça, pele de pedra ou coisa parecida com arma natural.
+  - **Raças:** nenhuma. `racas.json` e o capítulo de Raças não têm garra, chifre, carapaça nem pele dura.
+  - **Arte Metamorfose, nível 1, "Garra e Presa"** (`artes.json:1956-1962`): "muda uma parte do corpo:
+    garras (arma natural), presas, olhos de bicho, faro apurado". É a única que diz "arma natural".
+  - **Técnica Forma Bestial** (Vínculo Animal, nível 5, `tecnicas.json:2341`): "Assume traços de um
+    animal, sentidos, garras, velocidade, ou parte de sua forma".
+  - **Proeza Pele de Pedra** (`caminhos.json:92`), Técnicas de Absorção:
+    - Pele Curtida (N1, `tecnicas.json:826`);
+    - Couro Endurecido (N2, `:7431`);
+    - Pele de Pedra (N3, `:874`);
+    - Carne de Granito (N4, `:908`): "A pele apara golpes mundanos que não a penetram; imune a cortes
+      leves". É a mais perto de "o corpo bloqueia a lâmina".
+    - As outras são Absorção e imunidade, e não arma natural.
+  - **Efeito Pele de Pedra** (Terra, Gelo, Metamorfose, nível 3, `efeitos.json:1131`): Absorção contra dano
+    físico enquanto durar.
+  - **Efeito Arma Conjurada** (Gelo, Terra, Metamorfose, nível 2, `efeitos.json:519`): o sabor da
+    Metamorfose é "a mão vira garra, a boca ganha presa". É arma conjurada que se pega, e não corpo.
+  - **Proeza Punho de Ferro:**
+    - Mão de Ferro (N1, `tecnicas.json:268`): "Golpes desarmados contam como arma (sem penalidade vs
+      armados)";
+    - Punho que Parte Pedra (N4): "Suas mãos quebram pedra e metal".
+    - Não dão arma natural, mas tocam a mesma pergunta: se o punho que "conta como arma" bloqueia a
+      lâmina.
+- **A ficha na tela** (`../tmp/executora/ficha-bloqueio.mjs`, com o dev server e o Edge, na ficha
+  vazia):
+  - o conjunto mostra "Defesa +2" (os dois Punhos), e a mão vazia diz "Punhos: ataca de briga";
+  - a linha "Defesa (Bloqueio)" dá 4, que é (Destreza 1 + Bloqueio 0) × 2 + 2;
+  - "Desarmado" não aparece na página.
+- **Verificação final:**
+  - `npm run validate` verde, depois da D-066;
+  - `npx astro build --force` verde;
+  - a linha das armas naturais aparece uma vez no Cap. XIII gerado.

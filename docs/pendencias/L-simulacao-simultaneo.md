@@ -2494,7 +2494,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 - [x] **L49 · [FECHADO em 07/09/2026, commit `2fe37cd`] `test-bandeiras-mesa.mjs` entrou no
   `smoke` do `package.json` (9 scripts) e não entrou na matriz do `.github/workflows/validate.yml`
   (8 nomes fixos): a prova inteira de porte/gate na Vida nunca rodava no CI, só na máquina de
-  quem lembrasse de rodar `npm run smoke` antes de empurrar. E `test-portoes.mjs:454`
+  quem lembrasse de rodar `npm run smoke` antes de empurrar. E `test-portoes.mjs:452`
   · `roda os mesmos em matriz a cada push` afirmava
   "o CI roda os mesmos em matriz a cada push" sem nada no repositório conferir isso · o próprio
   caso que o arquivo existe para pegar.
@@ -5699,8 +5699,8 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   decisão que eu tinha montado em cima dela. O ×4 não é número novo: é o MESMO princípio do
   `×7 − 2`, que faz os seis níveis de Arte varrerem a faixa humana inteira e encostarem no teto no
   nível 6. A faixa humana do FAH é 3 a 40 e a do FAA é 2 a 24:
-  `const fah = Math.max(3, Math.min(40` em `ficha-engine.ts:1664` e
-  `const faa = Math.max(2, Math.min(24` em `ficha-engine.ts:1665`. O mesmo princípio, aplicado
+  `const fah = Math.max(3, Math.min(40` em `ficha-engine.ts:1671` e
+  `const faa = Math.max(2, Math.min(24` em `ficha-engine.ts:1672`. O mesmo princípio, aplicado
   à segunda tabela. **O conserto é dos dois lados:** o `parametros` do `empurrao-elemental` em
   `src/data/efeitos.json` muda junto com o código, senão o dado fica mandando o contrário e a
   próxima pessoa conserta o código "de volta" para o errado. → `CATALOGO`, a forma que saiu daqui.

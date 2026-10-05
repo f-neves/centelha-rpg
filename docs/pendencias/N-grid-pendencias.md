@@ -85,4 +85,35 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
     - o `armaDoSlot` de `src/lib/equip.ts:129`, em `grid.astro:8782`, `:10140`, `combate.astro:1929` e
       `grid-golpe-fx.ts:663`;
     - `src/lib/combate-tempo.ts:218`.
-  - O que mudar ali entra aqui quando a D-057 for aplicada.
+  - Aplicada na rodada 13 (D-065): o id `desarmado` ficou, com o nome "Punhos" e os mesmos números, e
+    entrou `chutes`. Nada nesses leitores quebra, e o que eles ainda não fazem está em N16 a N19.
+- [ ] **N16 · [FAZER] Chutes na mesa e no Grid (D-057, D-065).**
+  - O livro diz (Cap. XIII, Luta desarmada): os Chutes são arma média de Briga (Velocidade 6, Acerto +0,
+    Defesa −1, 1d6 + Força).
+  - A mesa e o Grid leem `armas.json` pelo `armaDoSlot` e passam a achar `a:chutes`. Mas com a mão vazia
+    caem sempre em `ARMA['desarmado']`, os Punhos (`combate-resumo.ts:66`, `:72`), e nada no tabuleiro
+    oferece os Chutes.
+  - O `ficha-card.ts:74`, que a mesa usa, ainda tem "Desarmado" como reserva quando não acha nome.
+- [ ] **N17 · [FAZER] Os dois punhos somam no Bloqueio (D-065).**
+  - O livro diz: só os dois punhos somam entre si, +1 cada, +2 com as duas mãos livres. Arma ou escudo e
+    corpo não somam, e a ficha mostra a melhor combinação.
+  - A ficha já faz isso (`calcConj` em `ficha-engine.ts`).
+  - A mesa calcula o Bloqueio sem a Defesa da arma nenhuma (`mesa-ficha.ts:97`) e usa a Esquiva como
+    Defesa física do resumo (`combate-resumo.ts:157`).
+- [ ] **N18 · [FAZER] Lâmina contra o corpo (D-057, D-065).**
+  - O livro diz: quem Bloqueia sem arma um ataque cortante ou perfurante, com qualquer parte do corpo,
+    recebe o dano normalmente, mesmo que o Bloqueio supere o ataque. A Esquiva não muda.
+  - O Grid e a mesa não têm essa regra.
+- [ ] **N19 · [FAZER] A escolha da melhor combinação de defesa (D-065).**
+  - O livro diz: o personagem defende com o que tem nas mãos (somam, dois escudos contam), ou com o corpo
+    quando nada nas mãos é usado, e o Mestre ajusta pela situação (Chutes, −1, quando as mãos não podem
+    ser usadas).
+  - O Grid e a mesa não deixam escolher.
+- [ ] **N20 · [FAZER] A classe de ataque dos golems de Punhos (D-065, D-054).**
+  - O `gen-monsters.mjs` dá a classe do ataque pelo nome da arma do catálogo. Com a arma Punhos (leve) no
+    catálogo, o Golem de Ferro e o Golem de Pedra, que atacam com "Punhos" a Velocidade 6, passariam de
+    "media" a "leve".
+  - Para a mesa não mudar, os dois estão no `CLASSE_OVERRIDE` como "media" (rodada 13).
+  - Na passada do Grid, decidir a classe deles (leve pelo nome, ou média pela Velocidade 6).
+  - O Golem de Gelo ataca com "Punhos gelados" a Velocidade 5. O nome também começa com "Punhos", e ele
+    também passaria a "leve" pelo nome, mas já era "leve" pela Velocidade 5, então nada mudou nele.
