@@ -49,7 +49,7 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 | Virtude | 4 + (novo × 2) | 1→2 = 8 · 2→3 = 10 · 5→6 = 16 |
 | Força de Vontade | novo × 2 | piso 0 · 0→1 = 2 · 5→6 = 12 · 11→12 = 24 |
 | Aparência | novo × 2 | piso 0 · mesma trilha da Vontade |
-| Antecedente | novo × 3 | 0→1 = 3 · 2→3 = 9 · 5→6 = 18 · teto **3** na criação em Recursos e Artefato |
+| Antecedente | novo × 3 | 0→1 = 3 · 2→3 = 9 · 5→6 = 18 |
 | Centelha | **grátis** | o tier vem do Mestre, não do XP |
 | Técnica de Proeza | 5 + (nível × 5) | 10 · 15 · 20 · 25 · 30 · 35 · **não acumula** |
 | Nível de Arte (Arcano) | 10 + (nível × 5) | 0→1 = 15 · 2→3 = 25 · 5→6 = 40 |
@@ -61,7 +61,7 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 
 ## Limites na criação
 
-Na criação não existe limite próprio: valem os máximos normais da ficha. Quase tudo vai até **6**, e alguns traços vão até **12** (Força de Vontade, Aparência). Depois entram os ajustes raciais, para cima ou para baixo: o Atributo com `+1` racial chega a **7**, e o com `−1` fica em **5**. O que segura o personagem novo é o orçamento de XP. Centelha máxima **3** (o Mestre escolhe pela campanha: 0 numa campanha mortal; de 1 a 3 numa heroica). O nível de cada Arte respeita o teto da Centelha (Centelha + 2): com a Centelha 3 do teto de criação, até o nível 5. O ponto seguinte e os tiers maiores vêm com o jogo.
+Na criação não existe limite próprio: valem os máximos normais da ficha. Quase tudo vai até **6**, e alguns traços vão até **12** (Força de Vontade, Aparência). Depois entram os ajustes raciais, para cima ou para baixo: o Atributo com `+1` racial chega a **7**, e o com `−1` fica em **5**. O que segura o personagem novo é o orçamento de XP. A ficha básica não tem restrição de criação, e isso vale também para a Centelha: quem informa aos jogadores as restrições da campanha é o Mestre. O nível de cada Arte respeita o teto da Centelha (Centelha + 2). O ponto seguinte e os tiers maiores vêm com o jogo.
 
 ## Traços derivados
 

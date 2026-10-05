@@ -2406,23 +2406,16 @@ export function montarFicha(opts: FichaOpts) {
    * três Reputações diferentes no mesmo personagem são três traços separados, cada um
    * com nome e régua própria. Por isso a chave do Nomeado é "id~uid" e não o id: o uid
    * sobrevive a reordenar e a apagar a linha de cima, e o índice não.
-   *
-   * O teto de criação (3 em Recursos e Artefato) aparece como aviso e NÃO trava a
-   * bolinha: o modo Criação/Evolução saiu do motor, e travar aqui seria a única
-   * trava de criação da ficha inteira.
    */
   function renderAntecedentes() {
     const alvo = document.getElementById('antecedentes');
     if (!alvo) return;
-    const teto = (a: any) => (a.tetoCriacao
-      ? ` <span class="ante-teto" title="Acima disso, só com curadoria do Mestre">criação até ${a.tetoCriacao}</span>`
-      : '');
     let h = '<div class="ante-bloco"><h3>Únicos <small>(um valor cada)</small></h3>';
-    for (const a of ANTE_UNI) h += trow(`${a.nome}${teto(a)}`, dotsHTML('ante', a.id, S.ante[a.id] || 0, 6, 0));
+    for (const a of ANTE_UNI) h += trow(`${a.nome}`, dotsHTML('ante', a.id, S.ante[a.id] || 0, 6, 0));
     h += '</div><div class="ante-bloco"><h3>Nomeados <small>(quantos quiser, cada um com o seu nome e a sua régua)</small></h3>';
     for (const a of ANTE_NOM) {
       const lista = (S.anteNom[a.id] || []) as any[];
-      h += `<div class="ante-grupo"><div class="ante-cab"><span class="ante-tit">${a.nome}${teto(a)}</span>`
+      h += `<div class="ante-grupo"><div class="ante-cab"><span class="ante-tit">${a.nome}</span>`
         + (opts.readOnly ? '' : `<button class="btn ante-add" data-ante-add="${a.id}" type="button">+ ${a.nome}</button>`)
         + '</div>';
       if (!lista.length) h += '<p class="muted ante-vazio">Nenhum comprado.</p>';

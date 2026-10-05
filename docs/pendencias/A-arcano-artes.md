@@ -278,3 +278,13 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   (o custo é a soma dos pontos menos a Centelha, e a Cura custa 2 por nível). O campo continua em
   `artes.json` porque o schema de `scripts/validate-data.mjs` o exige, de 1 a 6. Nenhuma tela o mostra
   mais. Decidir se o campo sai do dado e do schema.
+- [ ] **A34 · [FAZER] Recalibração das Artes: ART-34, ART-5, ART-38 e ART-40 (D-061).** Registrado em
+  04/10/2026, rodada 12 do veterana-1e. Os quatro pontos do 1e mexem em número que o código ou os testes
+  leem, e ficam para a recalibração das Artes:
+  - **ART-34**: ficar parado contra a régua da Virtude (borda 5, 2 m 7, 3 m 9, núcleo 11);
+  - **ART-5**: o grau 0 das duas Durações como "instantâneo (1 Tick)";
+  - **ART-38**: o Efeito Bola de Fogo, nível 4, em Fogo, Gelo, Raio e Luz, com 141 Efeitos no total;
+  - **ART-40**: a Terra dobra o dado, com a objeção de mesa ao 12d6.
+  - O que cada um pede está no relato do veterana-1e (rodada 8).
+  - **Ordem (D-061):** o Efeito Bola de Fogo entra na recalibração das Artes ANTES da revisão das fichas de
+    exemplo (D17). O Mago de Batalha continua em Fogo 4 (D-051).

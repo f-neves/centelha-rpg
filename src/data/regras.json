@@ -436,8 +436,7 @@
     "aparencia": 0
   },
   "limitesCriacao": {
-    "centelha": 3,
-    "nota": "D-040 (04/10/2026): na criação não há limite próprio de Atributo nem de Habilidade, e o pico deixou de existir; valem os máximos normais da ficha e os ajustes raciais. O teto 3 da Centelha na criação fica à espera do autor."
+    "nota": "D-040 e D-055 (04/10/2026): a ficha básica não tem restrição de criação, nem de Atributo, de Habilidade ou de Centelha, e o pico deixou de existir; valem os máximos normais da ficha e os ajustes raciais. Quem informa aos jogadores as restrições da campanha é o Mestre."
   },
   "iniciante": 1500,
   "veterano": 2000,
@@ -581,7 +580,7 @@
       "base": 0,
       "mult": 3,
       "piso": 0,
-      "nota": "O custo do próximo ponto é o novo valor × 3: 3·6·9·12·15·18 · acumulado 3·9·18·30·45·63. Fica entre a Habilidade secundária e a primária, porque é poder de campanha e não de dado. Teto 3 na criação em Recursos e Artefato (regra de mesa, o motor não trava)."
+      "nota": "O custo do próximo ponto é o novo valor × 3: 3·6·9·12·15·18 · acumulado 3·9·18·30·45·63. Fica entre a Habilidade secundária e a primária, porque é poder de campanha e não de dado."
     },
     "especialidadePrimaria": {
       "tipo": "acum",
@@ -1272,7 +1271,7 @@
       }
     ],
     "resistencia": {
-      "rolagem": "Percepção + Acerto Arcano, e só nos efeitos MIRADOS. Não há rolagem de conjuração para o resto: o que não é mirado se resolve pela Dificuldade fixa do Efeito ((nível da Arte) × 4 ou × 5), pela Defesa passiva do alvo ou por tabela.",
+      "rolagem": "Percepção + Acerto Arcano, e só nos efeitos MIRADOS. Não há rolagem de conjuração para o resto: o que não é mirado se resolve pela Dificuldade fixa do Efeito ((maior grau investido) × 5), pela Defesa passiva do alvo ou por tabela.",
       "tipos": [
         {
           "efeito": "Dano e projéteis",
@@ -1291,7 +1290,7 @@
         },
         {
           "efeito": "Aprisionamento e contato",
-          "resiste": "Defesa (Esquiva) para prender; escapar depois com Força ou Atletismo vs Dificuldade = nível efetivo do efeito × 5",
+          "resiste": "Defesa para prender; o preso fica Preso (não se desloca, mas age) e escapa com Força + Atletismo contra a Dificuldade do Efeito, uma tentativa por ação",
           "ex": "correntes, lama, agarrão telecinético"
         },
         {

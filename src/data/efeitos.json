@@ -354,7 +354,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 4"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "O ataque com o elemento prende o alvo no lugar. Exige jogada do conjurador; o ataque é imbloqueável, mas pode ser esquivado. Escapar exige Força + Atletismo contra a Dificuldade, e cada tentativa gasta a ação. Quando a duração acaba, a matéria deixa de ser mágica e solta o alvo, mesmo que tenha sido erguida com terra de verdade.",
@@ -1595,7 +1595,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 5"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "O chão se abre. Quem está na área cai dentro da fenda e precisa escalar para sair, e o que estava construído em cima racha junto. Só funciona em terreno feito predominantemente de terra ou de pedra.",
@@ -1954,7 +1954,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 4"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Planta o efeito num ponto e ele dorme até alguém pisar, tocar, ou até a hora combinada. Cresce de uma vez, agarra quem estiver em cima e fere. É a armadilha do jardineiro: enquanto espera, é só uma semente no chão.",
@@ -2011,7 +2011,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 4"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Empresta ao corpo do alvo um traço vivo que ele não tinha: guelras, olhos de coruja, couro mais grosso, um dedo a mais. Um traço por conjuração, e o corpo o rejeita quando a duração acaba. Em quem não quer, é ataque, e o corpo luta contra.",
@@ -2117,7 +2117,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 4"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Marca o alvo. Enquanto durar, o que o fere não fecha sozinho: todo dano que ele sofrer vira agravado e precisa de tratamento ou da Arte de Cura. Não causa dano por si.",
@@ -3085,7 +3085,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 4"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Dobra o que puxa o alvo para baixo: quem falha vai ao chão e quem aguenta anda devagar, não salta e não corre enquanto durar. Contra objeto solto, ele desaba.",
@@ -3138,7 +3138,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 4"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Pega algo pesado que esteja por perto (uma pedra, um barril, uma mesa, um corpo) e o joga. O dano é físico e a armadura conta, porque o que acerta é matéria de verdade.",
@@ -3197,7 +3197,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 5"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Comprime o alvo de todos os lados de uma vez. O dano volta a cada 6 Ticks enquanto durar, e quem está sendo esmagado não fala, não conjura e mal se mexe. Contra objeto, amassa e arrebenta.",
@@ -3428,7 +3428,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 4"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "As ações do alvo passam a custar mais Ticks enquanto durar. Não impede nada; só o coloca sempre atrás de todo mundo na ordem das coisas.",
@@ -3898,10 +3898,10 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 5"
+        "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "Desfaz magia alheia. Apaga de uma vez o que for de nível igual ou menor ao que você investiu, e enfraquece o que for maior. Contra magia de outro feiticeiro, é o nível da Arte de cada um que decide.",
+    "efeito": "Desfaz magia alheia. Apaga de uma vez o que for de nível igual ou menor ao que você investiu, e enfraquece o que for maior. Contra magia de outro feiticeiro, decide o maior grau investido de cada lado.",
     "grid": {
       "forma": "nenhuma",
       "ancora": "nenhuma",
@@ -4156,7 +4156,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 4"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "A vegetação abre para o seu grupo e fecha logo atrás: pegada some, galho volta ao lugar, quem persegue perde o rastro e o tempo. Não funciona onde não há mato.",
@@ -4488,7 +4488,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 4"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Chama a tempestade. A cada 6 Ticks um raio cai onde você apontar dentro da área, sem gastar a sua ação, e quem veste metal atrai o próximo.",
@@ -4542,7 +4542,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 5"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Uma parede de água varre a área e leva embora o que não estiver preso ao chão. Quem falha é arrastado até a borda, e o que estava solto no caminho vira projétil.",
@@ -4598,7 +4598,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 4"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "O vento fecha em volta de você. Ninguém anda contra ele, nada voa em linha reta e nenhum projétil atravessa a área enquanto durar. Quem falha vai ao chão e rola.",
@@ -4776,14 +4776,14 @@
       {
         "nome": "Cura",
         "tipo": "fixo",
-        "valor": "1 PV por nível da Arte",
+        "valor": "1 PV por grau investido",
         "nota": "2 de Mana por nível, como toda cura",
         "porNivel": true,
         "custaMana": 2
       }
     ],
     "efeito": "Cura de uma vez todo mundo que estiver na área, aliado ou não, amigo ou inimigo. Não dá para separar: quem está dentro sara.",
-    "notas": "É a exceção que a Cura não tem: curar em Área. O valor NÃO é dividido: cada um que estiver dentro recebe a cura inteira, e o nível é o da Arte de quem conjurou, a mesma conta do Acelerar a Cura. Em troca, curar a multidão custa o mesmo por alvo que curar uma pessoa só.",
+    "notas": "É a exceção que a Cura não tem: curar em Área. O valor NÃO é dividido: cada um que estiver dentro recebe a cura inteira, e o nível é o maior grau investido por quem conjurou: 1 PV por grau. Em troca, curar a multidão custa o mesmo por alvo que curar uma pessoa só.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -4841,7 +4841,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 4"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "O lugar vira mata viva e do seu lado: raiz que agarra o pé, galho que bate, tronco que fecha o caminho. Enquanto durar, o terreno luta com você e contra quem você apontar.",
@@ -5114,7 +5114,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 5"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Você escolhe para que lado a área cai. Quem está dentro despenca na direção nova, e o que não estava preso vai junto. Voltar ao normal derruba tudo de volta.",
@@ -5477,7 +5477,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 4"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "O fogo gruda e continua queimando: o dano volta a cada 6 Ticks e não sai com água, areia nem rolando no chão. Só acaba quando a duração acaba, ou quando alguém desfaz a magia.",
@@ -5537,7 +5537,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 4"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Um cone de frio que arranca o calor de tudo o que pega. Quem falha fica enregelado e age devagar enquanto durar, e o chão atrás vira gelo escorregadio.",
@@ -5590,7 +5590,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 5"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Chama um único raio do céu sobre o alvo. É o maior dano concentrado que a Arte alcança, precisa de céu por cima e avisa a todo mundo, pelo som e pela luz, exatamente onde você está.",
@@ -5645,7 +5645,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 5"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "A água entra pela boca e pelo nariz do alvo e fica lá. Ele não fala, não conjura e sufoca enquanto durar, mesmo em terra seca, pela regra de Sufocamento do capítulo Resistir (Janela de socorro = Vigor × 20 Ticks). Quem estiver ao lado pode gastar uma ação para virá-lo e drenar.",
@@ -5700,7 +5700,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 5"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Uma coluna de vento anda pela área e leva junto quem falhar: sobe, gira e cai onde a tromba quiser. O que não estiver preso ao chão vai junto, e o que era leve vira projétil.",
@@ -5750,7 +5750,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 5"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "O chão amolece sob os pés do alvo e endurece por cima dele. Quem falha fica soterrado até o peito, ou inteiro se falhar feio, e sair de lá exige Força + Atletismo contra a Dificuldade a cada ação.",
@@ -5803,7 +5803,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 4"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Uma coluna de luz cai sobre o alvo. Contra quem tem fraqueza a luz ou ao sagrado o dano é agravado e ignora toda a Absorção; contra o resto, cega e derruba, mas fere pouco.",
@@ -6089,7 +6089,7 @@
       {
         "nome": "Cura",
         "tipo": "fixo",
-        "valor": "1 PV por nível da Arte",
+        "valor": "encurta o intervalo em 10% por nível da Arte",
         "nota": "2 de Mana por nível, como toda cura",
         "porNivel": true,
         "custaMana": 2
@@ -6100,8 +6100,8 @@
         "regua": "longa"
       }
     ],
-    "efeito": "A Vida não fecha o ferimento: ela apressa o corpo a fechá-lo sozinho, até o dobro da velocidade natural. Ela acelera em qualquer nível e em qualquer profundidade, inclusive abaixo do zero: o que muda com o nível é o quanto, e não o que ela alcança.",
-    "notas": "Cura é sempre mais cara: 2 de Mana por nível, como na Arte de Cura. E aqui rende menos, 1 PV por nível da Arte (o nível investido por quem conjura, o mesmo que a prosa chama de Vida 1, 2 ou 3) em vez da régua dela.",
+    "efeito": "A Vida não fecha o ferimento: ela apressa o corpo a fechá-lo sozinho, até o dobro da velocidade natural. Enquanto durar, cada nível da Arte encurta em 10% o intervalo da tabela de Recuperação, até no máximo 50% (o dobro da velocidade), que o nível 5 alcança. Ela acelera em qualquer nível e em qualquer profundidade, inclusive abaixo do zero: em quem está em 0 PV ou menos, a tabela de Recuperação não vale, e a Arte soma ao teste de Tratar de cada dia em que durar o que a Vida soma no Tratar, +1 por nível da Arte (Vida, Ferimentos & Cura). O que muda com o nível é o quanto, e não o que ela alcança.",
+    "notas": "Cura é sempre mais cara: 2 de Mana por nível, como na Arte de Cura. E aqui rende menos: em vez da régua dela, encurta o intervalo em 10% por nível da Arte, até 50% (o nível investido por quem conjura, o mesmo que a prosa chama de Vida 1, 2 ou 3). O encurtamento da Arte e o da Cura de quem cuida não se somam: vale o maior. Como o do Cap. IV, ele não vale na linha \"por dia\".",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -6156,7 +6156,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 4"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Puxa a vida do alvo para dentro de você. O dano é do tipo que a armadura não para, porque não é golpe: é a vida indo embora. O que você recupera é metade do que passou, arredondado para baixo, e nunca passa do seu máximo.",
@@ -6212,7 +6212,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 4"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "O alvo enfraquece: Força e Vigor contam um nível abaixo por nível investido, com tudo o que isso arrasta atrás (dano, carga, PV, Absorção natural). Não fere; só tira o que sustenta.",
@@ -6272,7 +6272,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 5"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Uma doença cai sobre a área e fica. Quem falha adoece e piora dia após dia, a plantação murcha e o gado morre. Não é conjuração de combate: é o que se faz a uma cidade que fechou os portões para você.",
@@ -6514,7 +6514,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 5"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Traz para a sua mão um objeto que é seu, ou que você já teve nas mãos e conhece bem, esteja onde estiver. Se alguém o estiver segurando, é disputa. Não funciona com criatura viva.",
@@ -6753,7 +6753,7 @@
       {
         "nome": "Dificuldade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) × 5"
+        "valor": "(maior grau investido) × 5"
       }
     ],
     "efeito": "Chama um espírito poderoso como aliado, não como servo. Ele vem, escuta e negocia: quer nome, oferenda ou promessa. Quebrar o combinado com um desses é o começo de uma história ruim.",

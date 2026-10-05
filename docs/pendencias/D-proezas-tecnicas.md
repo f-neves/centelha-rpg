@@ -142,3 +142,7 @@ Detalhe em `Proezas_revisao.md`.
     - A opção "fica sem" daria Kael 18 (265 XP, total 1045), Sora 18 (250, total 1303) e Veil 22 (355,
       total 1844).
     - Escolha do Arquiteto na rodada 10: (c), as fichas não mudam e o caso vai ao autor.
+    - Respondido pelo autor em 04/10/2026 (D-059): as fichas ficam sem a Técnica (Kael 1045, Sora 1303,
+      Veil 1844), aplicado só ao fim da revisão, e o Arquiteto pergunta antes de mexer.
+  - A "Exceção declarada" de Veil (`criacao-de-personagem.md`, seção Veil) ainda diz "o teto de criação é
+    Centelha 3". A D-055 tirou esse teto, mas a frase é da ficha (D-053) e espera a revisão.

@@ -39,7 +39,7 @@ está na seção 3.
 
 | Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados | DECIDIR | FAZER | AUTOR | CONSERTAR | Outra marca | Adiados |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 34 | 24 | 1 | 9 | 17 | 4 | 4 | 0 | 0 | 0 |
+| A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 35 | 25 | 1 | 9 | 17 | 5 | 4 | 0 | 0 | 0 |
 | B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 20 | 13 | 0 | 7 | 7 | 6 | 0 | 0 | 0 | 0 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 17 | 12 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | 5 |
@@ -51,7 +51,8 @@ está na seção 3.
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 17 | 14 | 0 | 3 | 6 | 3 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 25 | 1 | 13 | 21 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| | **Total** | | **360** | **252** | **4** | **104** | **107** | **40** | **8** | **10** | **81** | **10** |
+| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 15 | 15 | 0 | 0 | 0 | 15 | 0 | 0 | 0 | 0 |
+| | **Total** | | **376** | **268** | **4** | **104** | **107** | **56** | **8** | **10** | **81** | **10** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -344,6 +345,7 @@ Os itens abertos e parciais de cada tema, com a marca e o título; os fechados v
 | A31 | aberto | DECIDIR | Energia/Mana fora da Reforma da Centelha, avaliar com as Artes. |
 | A32 | aberto | DECIDIR | O mortal conjura no livro, e o código ainda bloqueia. |
 | A33 | aberto | DECIDIR | O campo `custo.mana` dos níveis do catálogo das Artes. |
+| A34 | aberto | FAZER | Recalibração das Artes: ART-34, ART-5, ART-38 e ART-40 (D-061). |
 
 Fechados (9): A12, A17, A18, A22, A23, A27, A21, A22, A20.
 
@@ -654,5 +656,27 @@ Fechados (13): K29, K1, K2, K3, K10, K7, K15, K16, K22, K23, K26, K12, K13.
 | L106 | aberto | ANOTADO | "No máximo 60 KB de HTML por movimento (foram 67,1 KB)". |
 
 Fechados (33): L5, L6, L9, L11, L12, L13, L14, L15, L17, L18, L19, L21, L22, L34, L32, L31, L27, L37, L39, L44, L46, L49, L50, L53, L61, L64, L67, L72, L73, L75, L79, L85, L68.
+
+### N · Grid e mesa · o que o livro diz e o tabuleiro ainda não faz
+
+| Sigla | Estado | Marcação | Título |
+|---|---|---|---|
+| N1 | aberto | FAZER | Velocidade da conjuração pelo maior grau investido (ART-35). |
+| N2 | aberto | FAZER | O primeiro alvo da Cura é grátis (ART-33). |
+| N3 | aberto | FAZER | A escada da Defesa no desvio fora da vez (ART-11). |
+| N4 | aberto | FAZER | Projétil e arma de Gelo, Água e Terra são matéria (ART-36). |
+| N5 | aberto | FAZER | Bloquear uma Arte pelo critério da matéria (ART-42). |
+| N6 | aberto | FAZER | Acelerar a Cura na escala dos dias (D-062, ART-47). |
+| N7 | aberto | FAZER | Mãos sobre a Multidão pelo maior grau investido (D-060, ART-37). |
+| N8 | aberto | FAZER | Chamar à Mão com Dificuldade (D-060, ART-23). |
+| N9 | aberto | FAZER | Imobilizado não age (D-064, D-043). |
+| N10 | aberto | FAZER | O estado Preso não existe na mesa (D-064). |
+| N11 | aberto | FAZER | Agarrado (D-064). |
+| N12 | aberto | FAZER | Caído levanta com Velocidade 3 (D-064). |
+| N13 | aberto | FAZER | A Prisão deixa Preso, e não Imobilizado (D-064). |
+| N14 | aberto | FAZER | A escala de 0 a 6 do Escapismo. |
+| N15 | aberto | FAZER | O Desarmado novo (D-057), a preencher depois da aplicação. |
+
+Fechados (0): nenhum.
 
 <!-- /gen:pendencias-itens -->

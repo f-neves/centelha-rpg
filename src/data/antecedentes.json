@@ -37,8 +37,7 @@
         "texto": "Frotas, domínios e tesouros que movem economias inteiras; financia exércitos e compra a lealdade de cidades."
       }
     ],
-    "amarra": "o custo dos itens e equipamentos; o \"favor alugado\" da Régua de Relação (suborno e mesada saem daqui, e param quando o dinheiro para). Recursos não compra lealdade de verdade, só serviço enquanto paga.",
-    "tetoCriacao": 3
+    "amarra": "o custo dos itens e equipamentos; o \"favor alugado\" da Régua de Relação (suborno e mesada saem daqui, e param quando o dinheiro para). Recursos não compra lealdade de verdade, só serviço enquanto paga."
   },
   {
     "id": "aliados",
@@ -280,9 +279,7 @@
         "texto": "Um artefato único e divino: rivaliza com uma Proeza de tier alto; nações guerreiam por ele."
       }
     ],
-    "notaFormato": "Nomeado (teto 3 na criação)",
-    "amarra": "equipamento e Arcano. Um Artefato pode conceder uma Arte ou uma Proeza que o portador não teria, dentro do nível. **Pode ser roubado ou quebrado** (é volátil por natureza): por isso o XP volta como crédito se ele se perde.",
-    "tetoCriacao": 3
+    "amarra": "equipamento e Arcano. Um Artefato pode conceder uma Arte ou uma Proeza que o portador não teria, dentro do nível. **Pode ser roubado ou quebrado** (é volátil por natureza): por isso o XP volta como crédito se ele se perde."
   },
   {
     "id": "refugio",

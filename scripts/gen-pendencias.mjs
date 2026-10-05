@@ -10,7 +10,7 @@
 //
 // O QUE ELE LÊ, e é o formato de todos os doze arquivos: um item é uma linha da coluna 0 que
 // começa com `- [ ]` (aberto), `- [~]` (parcial) ou `- [x]` (fechado), seguida de
-// `**SIGLA · ...**`, às vezes dentro de `~~ ~~`. A sigla é `[A-L]\d+[a-z]?`. A marcação é o
+// `**SIGLA · ...**`, às vezes dentro de `~~ ~~`. A sigla é `[A-LN]\d+[a-z]?` (o M é levantamento e fica fora). A marcação é o
 // começo em maiúsculas do primeiro `[...]` depois da sigla (`DECIDIR`, `FAZER`, `AUTOR`...).
 //
 // O QUE ELE ACUSA, sem consertar (a caixa só muda com prova, e isso é de quem edita o tema):
@@ -45,7 +45,7 @@ const INDICE = path.join(raiz, 'Pendencias.md');
 
 const ESTADO = { ' ': 'aberto', '~': 'parcial', x: 'fechado', X: 'fechado' };
 const ITEM = /^- \[( |~|x|X)\] (.*)$/;
-const SIGLA = /^([A-L]\d+[a-z]?)\b/;
+const SIGLA = /^([A-LN]\d+[a-z]?)\b/;
 // Qualquer marcador de lista (`-`, `*`, `+`, `1.`, `1)`), com ou sem recuo, seguido de uma caixa de
 // no máximo um caractere. É a régua com que a Revisora varreu os temas na 94.
 const CARA_DE_CAIXA = /^\s*([-*+]|\d+[.)])\s*\[.?\]/;
@@ -105,10 +105,10 @@ function tituloDe(resto, sigla) {
 }
 
 const naoLidas = [];
-const temas = fs.readdirSync(DIR).filter((f) => /^[A-L]-.*\.md$/.test(f)).sort();
+const temas = fs.readdirSync(DIR).filter((f) => /^[A-LN]-.*\.md$/.test(f)).sort();
 const dados = temas.map((arq) => {
   const linhas = fs.readFileSync(path.join(DIR, arq), 'utf8').split(/\r?\n/);
-  const tema = (linhas.find((l) => /^# /.test(l)) || '').replace(/^#\s*[A-L]\.\s*/, '').trim();
+  const tema = (linhas.find((l) => /^# /.test(l)) || '').replace(/^#\s*[A-LN]\.\s*/, '').trim();
   const itens = [];
   let naCerca = false;
   let cercaAbriuEm = 0;

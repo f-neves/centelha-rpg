@@ -870,3 +870,108 @@ Arquiteto). Feita com a ferramenta Grep, porque o `grep` pelo shell perdeu linha
 - A comparação de `tecnicas.json` com o HEAD, Técnica a Técnica, mostra nove mudadas: esquiva-impossivel,
   demolidor, pancada-destrutiva, romper, estilhacar, abrir-brecha, esmaga-pedra, quebra-muralhas e
   imobilizar.
+
+## Rodada 12 · As respostas do autor (D-054 a D-064)
+
+**Antes de mexer.** Li as entradas D-054 a D-064 (commit `5ee62d88`). C-025 e C-029 estão substituídas
+por D-060 e D-057. Vale a regra geral da D-054: o Grid fica congelado, e nada em `artes-grid*.ts`,
+`mesa-*.ts`, `grid.astro`, `combate.astro`, `gen-grid-artes.mjs` nem em dado que só o Grid lê mudou.
+
+**Tarefa A (D-057, Desarmado):** só conferência, mandada ao Arquiteto por mensagem. `armas.json` não foi
+tocado.
+
+**O que entrou:**
+- **D-055** (a ficha básica não tem restrição de criação):
+  - em Limites na criação, "Centelha máxima **3** (...)" e o "com a Centelha 3 do teto de criação, até o
+    nível 5" deram lugar a "A ficha básica não tem restrição de criação, e isso vale também para a
+    Centelha: quem informa aos jogadores as restrições da campanha é o Mestre." A frase do teto de Arte
+    ficou "(Centelha + 2)";
+  - `regras.json` `limitesCriacao` perdeu o `centelha: 3`, e a nota diz D-040 e D-055. Nenhum código lê
+    `limitesCriacao`.
+  - Varri capítulos, `regras.json`, glossário e ficha atrás de "teto 3", "Centelha máxima" e "teto de
+    criação". O que ficou, e por quê:
+    - `criacao-de-personagem.md:33` e `centelha.md:86` dizem que o Mestre escolhe a Centelha inicial pela
+      campanha, "0 numa campanha mortal; de 1 a 3 numa heroica". É orientação ao Mestre, e não teto, e
+      ficou.
+    - A "Exceção declarada" de Veil diz "o teto de criação é Centelha 3", mas é da ficha (D-053), e foi
+      anotada na D17.
+- **D-056** (cai o teto 3 de Recursos e Artefato):
+  - o campo `tetoCriacao` saiu de `antecedentes.json` (Recursos e Artefato), e o schema saiu de
+    `validate-data.mjs:40`;
+  - o `notaFormato` "Nomeado (teto 3 na criação)" do Artefato saiu: o gerador cai no "Nomeado";
+  - `antecedentes.md` regerado (`:208`);
+  - os dois trechos escritos à mão (`:54-55` e `:318`) agora dizem que quem limita é o Mestre. O
+    "Antecedentes.md:54 teto de +6" não foi tocado;
+  - `criacao-de-personagem.md:52`: a tabela de custos perdeu o "teto **3** na criação em Recursos e
+    Artefato";
+  - `regras.json` (nota dos antecedentes): saiu a frase do teto 3.
+  - **A ficha** (`ficha-engine.ts`, código da ficha e não do Grid): saíram o aviso "criação até 3" e o
+    comentário que o explicava (antes em `:2410-2418`), e as duas chamadas `teto(a)`. Saíram também o CSS
+    `.ante-teto` de `FichaSkeleton.astro` e a isenção do `test-portoes.mjs` que apontava para o comentário
+    apagado (o portão acusa isenção órfã).
+  - Ninguém mais lia `tetoCriacao`: só a ficha e o schema.
+- **D-060** (ART-37, a Dificuldade é "maior grau investido × 5"):
+  - nas Regras das Artes, o parágrafo "Nível da Arte e grau investido não são a mesma coisa", depois de
+    "nenhum parâmetro passa do nível da Arte";
+  - em `efeitos.json`, as 28 linhas de Dificuldade com "(nível da Arte) × 4" ou "× 5" passaram a
+    "(maior grau investido) × 5", inclusive as seis do ATAQUE-DIF e o Dissipar;
+  - o Dissipar ganhou "decide o maior grau investido de cada lado";
+  - Mãos sobre a Multidão ganhou "o nível é o maior grau investido por quem conjurou: 1 PV por grau" e
+    "Cura: 1 PV por grau investido". O campo `porNivel`, que o Grid lê, ficou (N7);
+  - em `regras.json`, a conta antiga de `resistencia.rolagem` virou "(maior grau investido) × 5", e a de
+    `resistencia.tipos[3]` ("nível efetivo do efeito × 5") passou à redação da célula Aprisionamento da
+    página.
+  - Ficaram com o nível da Arte, como o ART-37 manda: a Distância de Arremesso do Empurrão
+    (`(nível da Arte) × 4`, o FAA), o Peso Erguido, a Resistência do Escudo de Força, as Penalidades e a
+    altura do Muro.
+  - Releitura do Chão Traiçoeiro: já está em "(maior grau investido) × 5" desde a rodada 9 (D-022), e
+    concorda.
+  - A fórmula da C-025 ("× 5 + 2 × mín") não aparece em lugar nenhum do livro nem do código, só em
+    documentos de decisão e de rodada.
+  - **Chamar à Mão, pausado de novo**: a linha nova "Dificuldade: (maior grau investido) × 5" muda o
+    bloco `grid` gerado do Efeito (o `gen-grid-artes.mjs --check` acusou), e o gerador e o bloco são do
+    Grid. Desfiz o trecho, e ele foi para a N8.
+- **D-062** (Acelerar a Cura): o texto do ART-47 entrou.
+  - O verbete diz: cada nível encurta em 10% o intervalo da tabela de Recuperação, até 50%. Abaixo de 0
+    soma +1 por nível ao Tratar. A linha de parâmetro diz "Cura: encurta o intervalo em 10% por nível da
+    Arte". O encurtamento não soma com o da Cura de quem cuida e não vale na linha "por dia".
+  - Concorda com a C-068 (10% por nível, o intervalo encurta), com a D-034 ("Acelerar 10% não vale
+    abaixo de 0 nem na linha por dia") e com a D-009 (+1 por nível da Vida no Tratar).
+  - Não toca a D-050, que é o catálogo da Vida 1.
+  - O `porNivel`, que o Grid lê, ficou (N6).
+- **D-063**: nenhum texto diz "rajada que derruba" no Vento 3, que segue "rajada cortante (o Efeito
+  Muro, 2d6)". A frase aparece só no Vento 2 (`artes.json:397`, Lufada Cortante: "rajada que derruba um
+  alvo leve e desvia um projétil contra você"), que é outro nível e não é o texto do ART-20.
+- **`docs/pendencias/N-grid-pendencias.md`** (novo): a lista única da D-054, com 15 itens:
+  - N1 a N5: ART-35, ART-33, ART-11, ART-36, ART-42;
+  - N6: Acelerar a Cura;
+  - N7: Mãos sobre a Multidão;
+  - N8: Chamar à Mão;
+  - N9 a N13: os cinco da D-064;
+  - N14: a escala do Escapismo;
+  - N15: o Desarmado, a preencher.
+  - Para o `Pendencias.md` listar o tema N, o `gen-pendencias.mjs` passou a ler `[A-LN]` (o M continua
+    fora, como levantamento). O `test-gen-pendencias.mjs` passa.
+- **A34** em `A-arcano-artes.md`: a recalibração das Artes com ART-34, ART-5, ART-38 e ART-40, e a ordem
+  da D-061 (a Bola de Fogo antes da revisão das fichas; o Mago de Batalha segue em Fogo 4).
+- **D17** ganhou a resposta da D-059 e a nota da Exceção declarada de Veil.
+
+**Não entraram (D-053, D-058, D-059, D-061):** as fichas de exemplo, a parte 2 da rodada 7, ART-34,
+ART-5, ART-38, ART-40, K4a e o Vento 3 do ART-20.
+
+**Verificação:**
+- `npm run validate` verde;
+- `npx astro sync && npx tsc --noEmit` sem erro;
+- `node scripts/test-portoes.mjs` verde;
+- os testes da ficha: o `test-contrato.mjs` passou, e o smoke da ficha
+  (`.claude/skills/run-centelha-rpg/driver.mjs`) passou inteiro;
+- `npx astro build --force` verde.
+- No gerado:
+  - os 12 trechos novos estão em Criação, Antecedentes, Regras das Artes e Efeitos;
+  - os velhos dão 0: "Centelha máxima", "Centelha 3 do teto de criação", "teto 3 na criação", "param no
+    3", "é o nível da Arte de cada um que decide", "a mesma conta do Acelerar a Cura", "1 PV por nível da
+    Arte".
+  - Na página de Efeitos sobram 5 "(nível da Arte) × 4", que são a Distância de Arremesso do Empurrão nas
+    cinco Artes, e 1 "(nível da Arte) × 5", que é a Resistência do Escudo de Força. As duas ficam, como
+    o ART-37 manda.
+  - "(maior grau investido) × 5" aparece 37 vezes: as 33 entradas mais as 4 do Chão Traiçoeiro.

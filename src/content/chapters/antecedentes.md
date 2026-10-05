@@ -52,8 +52,8 @@ quando a ficção os entrega.
 ## Tetos de bom senso
 
 **Recursos** e **Artefato** são os dois que mais facilmente quebram o jogo, porque dinheiro compra
-equipamento e artefato compra poder. Na criação, os dois param no **3**; acima disso, só com
-curadoria do Mestre.
+equipamento e artefato compra poder. Na criação, eles não têm teto próprio: quem os limita é o
+Mestre, pelas restrições da campanha.
 
 Antecedentes que são **pessoas** (Aliados, Contatos, Mentor, Séquito) nascem numa posição da
 [Régua de Relação](/regras/relacoes-sociais) e continuam sujeitos a ela: um aliado tratado como
@@ -205,7 +205,7 @@ disso.
 
 ### Artefato
 
-*Nomeado (teto 3 na criação).* Um item **além do mundano**: uma arma encantada, uma joia de poder, um foco de Arte, uma peça de armadura que não devia existir. Para um mortal (Centelha 0), é a forma mais direta de tocar o sobrenatural, ao lado das Artes que ele também pode estudar. Cada artefato é nomeado; o nível mede a potência.
+*Nomeado.* Um item **além do mundano**: uma arma encantada, uma joia de poder, um foco de Arte, uma peça de armadura que não devia existir. Para um mortal (Centelha 0), é a forma mais direta de tocar o sobrenatural, ao lado das Artes que ele também pode estudar. Cada artefato é nomeado; o nível mede a potência.
 
 | Nível | O que significa |
 |:---:|---|
@@ -315,7 +315,7 @@ disso.
 - **Escala 1 a 6**, tudo por **XP a ×3 por ponto**, na criação e em jogo, do mesmo orçamento.
 - **Únicos:** Recursos, Linhagem, Fé. **Nomeados** (várias instâncias, cada uma de 1 a 6): os
   outros onze.
-- **Teto 3 na criação** para Recursos e Artefato.
+- **Sem teto na criação** para Recursos e Artefato: quem limita é o Mestre.
 - **Bônus:** Aparência é geral em toda jogada social; a Firula entra em qualquer jogada. O
   Antecedente não soma a jogada nenhuma: ele **desconta passos do Neutro** na Régua de Relação, o
   metade do nível do traço, para baixo, por passo (só o 6 chega aos três), e o Mestre soma outros

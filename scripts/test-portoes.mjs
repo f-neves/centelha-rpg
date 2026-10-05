@@ -201,8 +201,6 @@ const NAO_E_TOLERANCIA = [
     'frase de tela para uma lista vazia.'],
   ['scripts/gen-lista-equip.mjs', 'Sem imagem por enquanto',
     'frase do texto gerado, dirigida a quem o lê.'],
-  ['src/lib/ficha-engine.ts', 'aparece como aviso e NÃO trava',
-    'decisão fechada e coerente: o modo Criação saiu do motor, e travar aqui seria a única trava de criação da ficha inteira.'],
   ['src/pages/mesa/grid.astro', 'dividem um metro quadrado, e por ora a resposta é não',
     'regra de mesa decidida, com a alternativa nomeada. Mudá-la é decisão, não dívida.'],
   ['src/pages/mesa/grid.astro', 'por ora sem a escolha de outro alvo',

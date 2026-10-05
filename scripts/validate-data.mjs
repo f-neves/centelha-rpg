@@ -37,7 +37,6 @@ const S = {
     formato: z.enum(['unico', 'nomeado']), notaFormato: z.string().optional(),
     descricao: z.string(), niveis: escala.length(6),
     exemplo: z.string().optional(), amarra: z.string().optional(),
-    tetoCriacao: z.number().int().min(1).max(6).optional(),
   }),
   caminhos: z.object({ id: z.string(), nome: z.string(), trilha: z.enum(['corpo', 'voz', 'mente']), atributo: z.string(), habilidade_ancora: z.string().optional(), descricao: z.string(), nota: z.string().optional() }),
   tecnicas: z.object({ id: z.string(), nome: z.string(), caminho: z.string(), atributo: z.string(), nivel: z.number().int().min(1).max(6), efeito: z.enum(['bonus', 'soak', 'dano', 'penetracao', 'carga', 'salto', 'velocidade', 'tamanho', 'estado']), tipo: z.enum(['passiva', 'ativa', 'reflexiva']), custo, prereq: z.array(z.string()), aliases: z.array(z.string()), texto: z.string(), pendente: z.boolean() }),
