@@ -1273,3 +1273,7 @@ Machado / Punhos: 3
     e em Custo e Qualidade;
   - "Chutes" dá 0 no Cap. XIII, em `/equipamentos`, no Quase-Acerto e em Custo e Qualidade;
   - nenhum JavaScript gerado tem `chutes`.
+
+**Rodada 14, D-068 retirada do texto:** o Arquiteto pediu que a D-068 não fosse escrita antes de o autor
+ver o texto exato da empunhadura dupla. O parágrafo do gato tinha entrado em `combate.md` no `e462681a`
+(as mensagens se cruzaram), e saiu neste commit. `combate.md` voltou ao texto de antes da rodada 14.

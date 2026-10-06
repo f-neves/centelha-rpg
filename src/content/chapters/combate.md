@@ -144,8 +144,6 @@ Uma ação, um golpe: essa é a régua padrão. Duas coisas rendem mais: lutar c
 seguir) ou puxar uma **Rajada**, vários golpes com a **mesma** arma, corpo a corpo, declarados de
 uma vez, sem parar no meio.
 
-**Nada dá ataque extra sem dizer que dá.** Ter várias armas, ou partes do corpo que servem de arma, é ter opções de ataque, e não ataques a mais: um gato pode atacar com qualquer das quatro patas ou com a mordida, e nem por isso ataca mais vezes. Os golpes a mais são os que uma regra dá pelo nome, como a Rajada e a empunhadura dupla, abaixo.
-
 A penalidade de acerto cresce golpe a golpe: o **1º golpe** da Rajada sai **sem penalidade**, o **2º** a **−1d6** e o **3º** a **−2d6**. Cada golpe extra soma **+2 de Velocidade** ao ciclo inteiro. Há um teto de golpes por Rajada, pela classe da arma:
 
 | Classe | Golpes no teto |
