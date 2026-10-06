@@ -809,7 +809,7 @@ uma decisao registrada, pare e pergunte ao autor.
 - Data: 2026-09-28
 - Decisão: "Resistências novas por criatura (ferro frio, adamantina, ácido): só anote em pendência, não crie palavra no vocabulário agora." As 67 decisões dos graves entram com os ajustes acima.
 - Origem: b14-cr-desafio-fase4-5-despacho.md:39-41 (item 8)
-- Estado: a implementar (pendência)
+- Estado: no ar (aplicada em 0cdc06db, B14 Fase 4) (pendência)
 
 ### C-044 · Fase 5: definição de desafio e âncoras do autor [tags: desafio, bancada, bestiario, ancora]
 - Data: 2026-09-28
@@ -1085,7 +1085,7 @@ uma decisao registrada, pare e pergunte ao autor.
 - Data: 2026-10-02
 - Decisão: "F2 no código: opção D. Antes de liberar, meça onde a Mana do mortal entra ... Junto, meça o custo de Mana por nível de Arte contra a Mana de um mortal (Força de Vontade de 1 a 6)... Não libere nada antes de o autor ver os números e decidir o teto de Arte do mortal."
 - Origem: achados-duas-leituras-despacho.md:190-191 e :202-205, commit ad632f3f (medição, sem código)
-- Estado: a implementar (aguarda decisão do autor sobre o teto de Arte do mortal)
+- Estado: no ar (resolvida pela D-006) (aguarda decisão do autor sobre o teto de Arte do mortal)
 
 ### C-078 · Escala do desafio: de 0 a 12, nada passa de 9 exceto a Tarrasca (10); ameaça 1-6 a ajustar [tags: desafio, escala, bestiario, ameaca]
 - Data: 2026-10-02
@@ -1099,7 +1099,7 @@ uma decisao registrada, pare e pergunte ao autor.
 - Data: 2026-10-03
 - Decisão: "Resistir (Cap. X, e valendo também para efeito mental): 1. Depois que o ataque passou da Defesa, resistir custa 1 + Margem de Força de Vontade, com teto de 4: nenhum efeito obriga o defensor a pagar mais de 4 para resistir. Ex.: Margem 6 pediria 7; o defensor pode pagar 4 e resiste. Proezas podem cobrar mais que 4. 2. Resistir é um PAGAMENTO e fica fora do limite de 1 ponto por ação. O limite de 1 ponto por ação ou jogada (C-011) vale só para melhorar uma ação ou uma Defesa. 3. Contra efeito mental vale o mesmo: 1 + Margem (teto 4) recusa o efeito. Além disso, com Margem 1 ou mais, o alvo pode pagar só 1 ponto, e o efeito pega, mas dura um grau a menos na régua de Duração." Item 5: a frase do cortejo (relacoes-sociais.md:246, "o intervalo não é uma ação") NÃO se mexe, o autor decide depois.
 - Origem: mensagem do autor de 03/10/2026 via Arquiteto; despacho docs/simulacao/caixa/resistir-despacho.md
-- Estado: a implementar. Substitui C-070 (e, por tabela, C-072 fica em suspenso: o autor decide o cortejo depois). Restringe C-011. Reaproxima C-071 (1 + Margem), agora com teto 4.
+- Estado: no ar (aplicada em a7bec31c, despacho do Resistir). Substitui C-070 (e, por tabela, C-072 fica em suspenso: o autor decide o cortejo depois). Restringe C-011. Reaproxima C-071 (1 + Margem), agora com teto 4.
 
 Os itens abaixo vieram da "lista do veterana-1c" e NÃO foram despachados; vão juntos com o documento da Veterana.
 
@@ -1113,25 +1113,25 @@ Os itens abaixo vieram da "lista do veterana-1c" e NÃO foram despachados; vão 
 - Data: 2026-10-03
 - Decisão: "Meditação (Habilidade secundária): 1 de Mana por hora meditando, até o nível de Meditação por dia, para todos. Substitui o '2 × Centelha por hora em meditação'."
 - Origem: conversa do autor, 03/10, lista do veterana-1c
-- Estado: a implementar. Substitui a regra atual de 2 × Centelha por hora (não localizada no registro; conferir regras.json arcano.recuperacaoMana).
+- Estado: no ar (aplicada em 0aca9c99, 1e r8). Substitui a regra atual de 2 × Centelha por hora (não localizada no registro; conferir regras.json arcano.recuperacaoMana).
 
 ### D-004 · Lugares de fluxo de energia: +1, +2, +3 de Mana por hora [tags: mana, lugares]
 - Data: 2026-10-03
 - Decisão: "+1 de Mana por hora (mediano), +2 (muito alto), +3 (enorme e preocupante)."
 - Origem: conversa do autor, 03/10, lista do veterana-1c
-- Estado: a implementar
+- Estado: no ar (aplicada em 0aca9c99, 1e r8)
 
 ### D-005 · A Arte Mana não usa Centelha no cálculo [tags: mana, arte, centelha]
 - Data: 2026-10-03
 - Decisão: "A Arte Mana não usa Centelha no cálculo."
 - Origem: conversa do autor, 03/10, lista do veterana-1c
-- Estado: a implementar
+- Estado: no ar (aplicada em 0aca9c99, 1e r8)
 
 ### D-006 · Teto do nível de Arte por Centelha [tags: arte, centelha, teto]
 - Data: 2026-10-03
 - Decisão: "Centelha 0 → 2; 1 → 3; 2 → 4; 3 → 5; 4, 5 e 6 → 6."
 - Origem: conversa do autor, 03/10, lista do veterana-1c
-- Estado: a implementar. REFINA a recebida P-04 ("Centelha + 2", provisório): a tabela é Centelha + 2 com teto 6.
+- Estado: no ar (aplicada em d8f693b1 e 7e0d0bb7, Bloco D de pendências). REFINA a recebida P-04 ("Centelha + 2", provisório): a tabela é Centelha + 2 com teto 6.
 - Nota do autor (04/10/2026): o mago de pouca Centelha se destaca pela AMPLITUDE (muitas Artes, rituais, preparo), e não pela profundidade; ver a D-035.
 - Nota do autor (03/10/2026): o teto do nível de ARTE é Centelha + 2 (a tabela acima). O teto do nível de PROEZA continua Centelha: o portão "nível N exige Centelha >= N" (regras.json notaEscalaCentelha) vale só para Proeza. Não há conflito.
 
@@ -1139,19 +1139,19 @@ Os itens abaixo vieram da "lista do veterana-1c" e NÃO foram despachados; vão 
 - Data: 2026-10-03
 - Decisão: "X = PV negativo, arredondando sempre para cima: superar X/2 recupera o Vigor (até 1 PV); superar X/4 segura (nada muda); igual ou abaixo de X/4 piora 1d6 PV. O nome do teste é Tratar; Estabilizar continua sendo só o do Sangramento."
 - Origem: conversa do autor, 03/10, lista do veterana-1c
-- Estado: a implementar
+- Estado: no ar (aplicada em 5598adeb, 1d r2)
 
 ### D-008 · Cura: identificar é Inteligência + Cura; tratamento com a mão é Raciocínio + Cura [tags: cura, inteligencia, raciocinio]
 - Data: 2026-10-03
 - Decisão: "identificar o mal é Inteligência + Cura (o Mestre decide se é preciso rolar). O tratamento que exige mão (sutura, osso, cirurgia, administração intravenosa) é Raciocínio + Cura. Dar um remédio para beber não pede teste. Isso substitui a decisão anterior de que todo teste de Cura é com Inteligência."
 - Origem: conversa do autor, 03/10, lista do veterana-1c
-- Estado: a implementar. Substitui decisão anterior, não localizada: "todo teste de Cura é com Inteligência" foi dita pelo autor e pode não estar em despacho nenhum (não consta nas partes A, B, C).
+- Estado: no ar (aplicada em 5598adeb, 1d r2). Substitui decisão anterior, não localizada: "todo teste de Cura é com Inteligência" foi dita pelo autor e pode não estar em despacho nenhum (não consta nas partes A, B, C).
 
 ### D-009 · Arte no Tratar: +3 por nível da Arte de Cura ou +1 por nível da Vida [tags: cura, arte, mana, tratar]
 - Data: 2026-10-03
 - Decisão: "+3 por nível da Arte de Cura, ou +1 por nível da Vida (não somam; vale o maior). Paga-se a Mana do nível escolhido, com o desconto da Centelha (pode sair de graça). Um Efeito específico vale o que ele disser."
 - Origem: conversa do autor, 03/10, lista do veterana-1c
-- Estado: a implementar
+- Estado: no ar (aplicada em 5598adeb, 1d r2)
 
 ### D-010 · Ganho bruto fora das linhas de Serviços [tags: economia, renda, livre]
 - Data: 2026-10-03
@@ -1163,13 +1163,13 @@ Os itens abaixo vieram da "lista do veterana-1c" e NÃO foram despachados; vão 
 - Data: 2026-10-03
 - Decisão: "o catálogo fica; a conta tempo × preço vai para a reconciliação de preços prometida no site."
 - Origem: conversa do autor, 03/10, lista do veterana-1c
-- Estado: a implementar
+- Estado: no ar (aplicada em 028213ac, 1e r7 parte 1)
 
 ### D-012 · Arte dentro da Longa [tags: arte, longa, acumulada]
 - Data: 2026-10-03
 - Decisão: "o Efeito só conta se durar o intervalo inteiro, ou se for relançado sem falha, pagando a Mana a cada vez. Nova rolagem e bônus atado a uma rolagem só não valem na Longa."
 - Origem: conversa do autor, 03/10, lista do veterana-1c
-- Estado: a implementar
+- Estado: no ar (aplicada em 61bf02fe, 1d r3)
 
 ### D-013 · Manobra: empurrão, pegada, agarrar e dois estados [tags: manobra, agarrar, combate]
 - Data: 2026-10-03
@@ -1183,7 +1183,7 @@ Os itens abaixo vieram da "lista do veterana-1c" e NÃO foram despachados; vão 
 - Decisão: o autor escolheu a opção A do ponto 7 do despacho do Resistir (D-001, item 3): o "um grau a menos" conta na régua de Duração do próprio efeito (a da Arte ou a da Proeza).
 - Origem: mensagem do autor via Arquiteto, 03/10/2026
 - Complemento do autor (03/10/2026): se o efeito já está no menor grau da sua régua de Duração, pagar 1 ponto ANULA o efeito. Texto completo do ponto 7: com Margem 1 ou mais, pagar 1 faz o efeito mental durar um grau a menos na régua do próprio efeito (Arte Breve/Longa ou Proeza); no menor grau, anula.
-- Estado: a implementar (despacho de 03/10/2026, junto da D-015). Complementa D-001.
+- Estado: no ar (aplicada em 03c1d711, Bloco A de pendências) (despacho de 03/10/2026, junto da D-015). Complementa D-001.
 
 ### D-015 · Teto 4 do Resistir fora do cortejo; cortejo em discussão [tags: resistir, cortejo, social, teto]
 - Data: 2026-10-03
@@ -1195,7 +1195,7 @@ Os itens abaixo vieram da "lista do veterana-1c" e NÃO foram despachados; vão 
 - Data: 2026-10-03
 - Decisão: "Bloco C (Fôlego): variante da C. 1. Sai o motor inteiro, como a Executora mapeou (capítulo, derivados, calc.ts, ficha, mesa-ficha, Grid, módulo, site.ts, coluna de equipamentos, testes). A ficha ignora o campo velho ao carregar. 2. Sai a condição "sem-folego" (condicoes.json:166). 3. Corrigir só o que o jogador vê: Efeito do afogamento (efeitos.json:5586): em vez de perder Fôlego, remete à regra de Sufocamento do capítulo Resistir ("Janela de socorro = Vigor × 20 Ticks"). Efeito "Inverno" (efeitos.json:4372): "perde Fôlego de 6 em 6 Ticks" vira "−1d6 nas ações físicas enquanto exposto". As 2 Técnicas visíveis que citam o Fôlego (segundo-folego, fechar-feridas) perdem só a frase do Fôlego. 4. As 9 Técnicas ocultas da Coração Incansável e o campo "folego" das armas e dos schemas FICAM como estão, ocultos e inertes. Registre uma pendência: decidir o destino das 9 Técnicas da Coração Incansável e do campo folego das armas (recalibração das Proezas)."
 - Origem: mensagem do autor via Arquiteto, 03/10/2026 (resposta ao escopo do Bloco C, achado da Executora)
-- Estado: a implementar (Bloco C do despacho da rodada). Detalha P-02.
+- Estado: no ar (aplicada em 66497997, Bloco C de pendências) (Bloco C do despacho da rodada). Detalha P-02.
 
 ## Recebidas em 03/10/2026 (confirmadas pelo autor no mesmo dia; ver estado de cada uma)
 
@@ -1239,49 +1239,49 @@ O autor decidiu a Parte B do veterana-1c e mais alguns pontos novos. As 37 decis
 - Data: 2026-10-04
 - Decisão (decisão 4 do 1d, verbatim): "Cortejo: o teto 4 vale também por intervalo do cortejo. A frase do relacoes-sociais.md:246 ("o intervalo do cortejo não é uma ação...") passa a remeter ao Resistir." Resposta do autor ao CONFLITO·CORTEJO do 1d, 04/10/2026: o "tirar do cortejo" do commit 03c1d711 era provisório. Recolocar o `tetoCusto` em `social.modoDevagar.resistencia` (regras.json), e as linhas 242 e 246 de relacoes-sociais.md passam a remeter ao Resistir. O texto final do lado A está no CONFLITO·CORTEJO do 1d (quatro trocas: fórmula, parágrafo seguinte, frase final da Vontade presa, Folha de referência).
 - Origem: conversa do autor, 03/10, veterana-1d (decisão 4); confirmada em 04/10/2026
-- Estado: a implementar na rodada 6. SUBSTITUI a D-015 e o item 5 da D-001. A C-072 ("o intervalo do cortejo não é uma ação") fica substituída. O `vontadePresa` não muda (a Vontade presa continua somando de um intervalo para o outro, sem teto).
+- Estado: no ar (aplicada em 2ab7da2e, 1e r6) na rodada 6. SUBSTITUI a D-015 e o item 5 da D-001. A C-072 ("o intervalo do cortejo não é uma ação") fica substituída. O `vontadePresa` não muda (a Vontade presa continua somando de um intervalo para o outro, sem teto).
 
 ### D-018 · Régua de Duração das Proezas: publicar no capítulo das Proezas [tags: proeza, duracao, regua, resistir]
 - Data: 2026-10-04
 - Decisão: publicar no capítulo das Proezas a régua de Duração das Proezas (`escalasProeza.parametros.duracao`, regras.json).
 - Origem: conversa do autor, 04/10/2026
-- Estado: a implementar na rodada 11. Relacionada à D-014 (o "um grau a menos" do efeito mental de Proeza usa essa régua) e ao B·RESISTIR-PROEZA do 1d.
+- Estado: no ar (aplicada em 0aca9c99, 1e r8, antes da rodada 11 prevista) na rodada 11. Relacionada à D-014 (o "um grau a menos" do efeito mental de Proeza usa essa régua) e ao B·RESISTIR-PROEZA do 1d.
 
 ### D-019 · Manobra: o modelo novo (agarrar, manter, dano, estados) [tags: manobra, agarrar, combate, imobilizado]
 - Data: 2026-10-03
 - Decisão (decisões 20 a 27 do 1d, resumo da tabela): 20. Agarrar é jogada de ataque contra a Defesa de agarrão passiva; não existe Rajada de agarrão. 21. Manter o agarrão: a cada 6 Ticks; superou, igual, abaixo. 22. Dano do agarrão: 2 x Força + Centelha, Impacto, +1d6 por Margem; a Absorção conta. 23. O agarrado não age; Defesas e penalidades do agarrão. 24. Pegada de Ferro: +3 na jogada de quem controla (sem "+3 por Margem"). 25. Três estados: Preso, Agarrado, Imobilizado. 26. Deslocamento durante o agarrão: só descrição. 27. Empurrão (1 m + 1 m por Margem) e levantar-se (Velocidade 3). Acréscimos do autor de 03/10 (da D-013), absorvidos: errar a primeira tentativa de agarrar é um erro comum de ataque, e a inversão de controle só vale com o agarrão já formado; uma Proeza pode transformar um soco que acerta em agarrão.
 - Origem: conversa do autor, 03/10, veterana-1d
-- Estado: a implementar na rodada 5 (aguarda o veterana-1e: as respostas do autor sobre Imobilizado e sobre as Técnicas do Agarrão do Urso podem mexer na redação). SUBSTITUI a D-013.
+- Estado: no ar (aplicada em 3dc09c71, 1e r5) na rodada 5 (aguarda o veterana-1e: as respostas do autor sobre Imobilizado e sobre as Técnicas do Agarrão do Urso podem mexer na redação). SUBSTITUI a D-013.
 
 ### D-020 · Artes de mente sem projétil: Influência + Habilidade social [tags: arte, mente, social, defesa]
 - Data: 2026-10-03
 - Decisão (decisão 10 do 1d): Artes de mente sem projétil rolam Influência + Habilidade social do Efeito, contra a Defesa que o Efeito nomeia (17 Efeitos de controle mental); com projétil, Percepção + Acerto Arcano contra a Defesa Mental. A Habilidade social de cada um dos 17 Efeitos e o ajuste da ficha de Bram são "escolha da Veterana" (o autor aceitou).
 - Origem: conversa do autor, 03/10, veterana-1d
-- Estado: a implementar na rodada 8 (a linha de Artes de Bram espera o veterana-1e).
+- Estado: no ar (aplicada em 0aca9c99 e 189ddfcb, 1e r8) na rodada 8 (a linha de Artes de Bram espera o veterana-1e).
 
 ### D-021 · Sustentado de Duração 1: só presença, 6 Ticks [tags: arte, sustentado, duracao]
 - Data: 2026-10-03
 - Decisão (decisão 11 do 1d): o Sustentado de Duração 1 vale só enquanto o conjurador mantém a presença, 6 Ticks, e fere quem estiver nela no fim.
 - Origem: conversa do autor, 03/10, veterana-1d
-- Estado: a implementar na rodada 8
+- Estado: no ar (aplicada em 0aca9c99, 1e r8) na rodada 8
 
 ### D-022 · Chão Traiçoeiro [tags: arte, chao, deslocamento]
 - Data: 2026-10-03
 - Decisão (decisão 12 do 1d): grau x 5 para quem corre, cavalga ou luta; a metade (para cima) para quem só anda.
 - Origem: conversa do autor, 03/10, veterana-1d
-- Estado: a implementar na rodada 9
+- Estado: no ar (aplicada em 5e32204d, 1e r9) na rodada 9
 
 ### D-023 · Efeitos com Ataque e uma linha de Dificuldade: frase geral [tags: arte, efeitos, dificuldade]
 - Data: 2026-10-03
 - Decisão (decisão 13 do 1d): frase geral nas Artes dizendo como se lê a Dificuldade dos Efeitos que têm Ataque.
 - Origem: conversa do autor, 03/10, veterana-1d
-- Estado: a implementar na rodada 8
+- Estado: no ar (aplicada em 0aca9c99, 1e r8) na rodada 8
 
 ### D-024 · Quatro regras sociais: Ameaça, Chantagem, Ruptura, Rumor [tags: social, ameaca, chantagem, ruptura, rumor]
 - Data: 2026-10-03
 - Decisão (decisão 28 do 1d): as quatro regras entram no Cap. X; as menções soltas remetem a elas.
 - Origem: conversa do autor, 03/10, veterana-1d
-- Estado: a implementar na rodada 6
+- Estado: no ar (aplicada em 2ab7da2e, 1e r6) na rodada 6
 
 ### D-025 · Controle percebido: linha na tabela de atos [tags: social, controle, ressentimento]
 - Data: 2026-10-03
@@ -1293,37 +1293,37 @@ O autor decidiu a Parte B do veterana-1c e mais alguns pontos novos. As 37 decis
 - Data: 2026-10-03
 - Decisão (decisão 30 do 1d): Influência + Interrogatório contra a Defesa Social; alcance pela relação; o prisioneiro hostil só fala sob tortura (Convicção), por ato ou diante de um interrogador muito forte.
 - Origem: conversa do autor, 03/10, veterana-1d
-- Estado: a implementar na rodada 6
+- Estado: no ar (aplicada em 2ab7da2e, 1e r6) na rodada 6
 
 ### D-027 · Traços do Antecedente descontam na régua pela metade, para baixo [tags: antecedente, regua, reputacao, contato, posicao, refugio]
 - Data: 2026-10-03
 - Decisão (decisão 31 do 1d): Reputação, Contato, Posição e Refúgio entram na régua pela metade, para baixo; vale a metade do maior traço; só o nível 6 chega a 3 passos. Sem "teto de +6" nem "+3" soltos.
 - Origem: conversa do autor, 03/10, veterana-1d
-- Estado: a implementar na rodada 1. REVISA em parte A-004 ("Nível N tira N dos 3 passos") e A-005 ("mantém o teto de +6"), que estão no ar. Não substitui A-003 (o Antecedente mexe no ponto de partida da régua).
+- Estado: no ar (aplicada em eaca41a0, 1d r1) na rodada 1. REVISA em parte A-004 ("Nível N tira N dos 3 passos") e A-005 ("mantém o teto de +6"), que estão no ar. Não substitui A-003 (o Antecedente mexe no ponto de partida da régua).
 
 ### D-028 · Máximo de cada Atributo vem da raça e vale na criação [tags: raca, atributo, criacao]
 - Data: 2026-10-03
 - Decisão (decisão 32 do 1d): o máximo racial de Atributo vale já na criação (elfo com Destreza 7 sem gastar o pico). Escrito em Atributos, em Centelha e em Criação.
 - Origem: conversa do autor, 03/10, veterana-1d
-- Estado: a implementar na rodada 1 (a rodada 10 só confere o exemplo)
+- Estado: no ar (aplicada em eaca41a0, 1d r1) na rodada 1 (a rodada 10 só confere o exemplo)
 
 ### D-029 · Elfo e Meio-Elfo: o texto da Resiliência Mental fica [tags: raca, elfo, resiliencia]
 - Data: 2026-10-03
 - Decisão (decisão 33 do 1d): o texto da Resiliência Mental fica como está; só a Aparência muda (A·ELFO). Portes: Anão, Meio-Elfo, Meio-Orc e Orc são Médio.
 - Origem: conversa do autor, 03/10, veterana-1d
-- Estado: a implementar na rodada 1
+- Estado: no ar (aplicada em eaca41a0, 1d r1) na rodada 1
 
 ### D-030 · Números da Quebra-Muralhas (D43) e da Esquiva Impossível (D49) [tags: proeza, d43, d49]
 - Data: 2026-10-03
 - Decisão (decisão 34 do 1d): valem os números da Veterana (D43: linhas 35 e 40 do Romper e a trilha de Bônus por nível; D49: Esquiva Impossível +6).
 - Origem: conversa do autor, 03/10, veterana-1d
-- Estado: a implementar na rodada 11
+- Estado: no ar (aplicada em 8704232a, 1e r11) na rodada 11
 
 ### D-031 · Engenharia é ofício de obra; só pedra é Alvenaria [tags: oficio, engenharia, alvenaria]
 - Data: 2026-10-03
 - Decisão (decisão 35 do 1d): Engenharia é ofício de obra (muralha, ponte, comporta); o que é só pedra (casa, torre) é Alvenaria.
 - Origem: conversa do autor, 03/10, veterana-1d
-- Estado: a implementar na rodada 7
+- Estado: no ar (aplicada em 028213ac, 1e r7 parte 1) na rodada 7
 
 ### D-032 · Técnicas das fichas de exemplo: a contagem ao que existe no catálogo [tags: exemplos, tecnicas, xp]
 - Data: 2026-10-03
@@ -1335,7 +1335,7 @@ O autor decidiu a Parte B do veterana-1c e mais alguns pontos novos. As 37 decis
 - Data: 2026-10-03
 - Decisão (decisão 37 do 1d): 1º golpe sem penalidade, 2º a -1d6, 3º a -2d6; a Defesa cai 2 por golpe; a frase da Guarda sob pressão concorda.
 - Origem: conversa do autor, 03/10, veterana-1d
-- Estado: a implementar na rodada 5. Conferir contra C-046 (múltiplos ataques só pelas regras escritas), C-047 e C-048 antes de despachar.
+- Estado: no ar (aplicada em 3dc09c71, 1e r5) na rodada 5. Conferir contra C-046 (múltiplos ataques só pelas regras escritas), C-047 e C-048 antes de despachar.
 
 ### Respostas do autor que chegam no veterana-1e (NÃO aplicar antes)
 
@@ -1351,25 +1351,25 @@ Imobilizado, Bram, Técnicas do Agarrão do Urso, Energia Espiritual, Vida 1, Ma
 - Data: 2026-10-04
 - Decisão: "arcano.astro:63, o arquétipo do mago de Centelha mínima: reescrever. O mago de pouca Centelha se destaca pela AMPLITUDE (muitas Artes, rituais, preparo), e não pela profundidade, porque o teto do nível de Arte é Centelha + 2 (Centelha 0 chega ao nível 2; Centelha 1, ao 3). Tire a promessa de Artes "tão fundas quanto as de um grande herói". Bram já foi resolvido do mesmo jeito (Artes no nível 3, total 1401), e isso chega no veterana-1e.md."
 - Origem: conversa do autor, 04/10/2026
-- Estado: a implementar (commit pequeno antes da rodada 1 do veterana-1d). Consequência direta da D-006. O Bram (Artes no nível 3, total 1401) chega no veterana-1e; não aplicar antes.
+- Estado: no ar (aplicada em 2aa30250, antes da 1d r1) (commit pequeno antes da rodada 1 do veterana-1d). Consequência direta da D-006. O Bram (Artes no nível 3, total 1401) chega no veterana-1e; não aplicar antes.
 
 ### D-036 · K5a: as faixas de Vida arredondam a porcentagem para baixo [tags: vida, ferimentos, k5a]
 - Data: 2026-10-04
 - Decisão: "K5a (faixas de Vida): opção B. O texto passa a dizer o que o código já faz: 'arredonde a porcentagem para baixo'. Nenhum código muda."
 - Origem: conversa do autor, 04/10/2026
-- Estado: a implementar (Executora, texto de Vida/ferimentos). Código (regras.json ferimentos, mesa-core.ts) intocado.
+- Estado: no ar (aplicada em 7ab6c733) (Executora, texto de Vida/ferimentos). Código (regras.json ferimentos, mesa-core.ts) intocado.
 
 ### D-037 · Morrendo vira só um marcador [tags: condicoes, morrendo, sangrando, tratar]
 - Data: 2026-10-04
 - Decisão: "Condição Morrendo (condicoes.json:181): opção A. Vira só um marcador ('0 PV ou menos, entre a vida e a morte; ver Tratar'). Tire o porSeisTicks; a perda de PV fica só na condição Sangrando."
 - Origem: conversa do autor, 04/10/2026
-- Estado: a implementar (Executora). Se código ou teste ler o porSeisTicks de Morrendo, parar e avisar o Arquiteto antes.
+- Estado: no ar (aplicada em d3ad7ca7) (Executora). Se código ou teste ler o porSeisTicks de Morrendo, parar e avisar o Arquiteto antes.
 
 ### D-038 · O mortal-tocado se destaca pela amplitude, não pela profundidade [tags: arte, teto, arquetipo, criacao, d-035]
 - Data: 2026-10-04
 - Decisão: "criacao-de-personagem.md:149 (mortal-tocado): reescrever como o arcano.astro:63. O mortal-tocado se destaca pela amplitude, e não pela profundidade (D-035). O Bram (:153) continua esperando o veterana-1e."
 - Origem: conversa do autor, 04/10/2026
-- Estado: a implementar (Executora). Estende a D-035 e a D-006. O Bram não se toca.
+- Estado: no ar (aplicada em 5df8c7d5) (Executora). Estende a D-035 e a D-006. O Bram não se toca.
 
 ### D-039 · Arquivos sem dono: AGENTS.md, .agents/, inventario-limites.md, comerciante.md [tags: repositorio, agents, codex]
 - Data: 2026-10-04
@@ -1381,7 +1381,7 @@ Imobilizado, Bram, Técnicas do Agarrão do Urso, Energia Espiritual, Vida 1, Ma
 - Data: 2026-10-04
 - Decisão: "Limite de criação (nova regra, substitui 'Atributo máximo 5, Habilidade máxima 4, com um pico de Atributo em 6 e um de Habilidade em 5'): Na criação não existe limite próprio. Valem os máximos normais da ficha: quase tudo vai até 6, e alguns traços vão até 12 (Força de Vontade, Aparência). Depois entram os ajustes raciais, para cima ou para baixo (o Atributo racial chega a 7 com +1, ou fica em 5 com −1). O 'pico' deixa de existir. A ficha fica toda desbloqueada, sem modo de criação limitante. Ajuste o texto da Criação (Passo a passo e Limites na criação) e tudo o que citar o pico ou o teto 5/4: capítulos, regras.json, glossário, e os pontos do 1d e do 1e que falam em 'pico' (o RACIAL-7, por exemplo). Confira se os quatro exemplos de criação continuam válidos."
 - Origem: conversa do autor, 04/10/2026
-- Estado: a implementar (commit próprio da Executora, antes da rodada 4). SUBSTITUI as regras anteriores de teto de criação 5/4 com pico (regras.json picoAtributo, picoHabilidade, picoQuantidade, notaPico). Consistente com a D-028 (máximo racial vale já na criação). Se código ou teste ler esses campos, parar e avisar o Arquiteto antes de mudar.
+- Estado: no ar (aplicada em 58b22ce4, antes da rodada 4) (commit próprio da Executora, antes da rodada 4). SUBSTITUI as regras anteriores de teto de criação 5/4 com pico (regras.json picoAtributo, picoHabilidade, picoQuantidade, notaPico). Consistente com a D-028 (máximo racial vale já na criação). Se código ou teste ler esses campos, parar e avisar o Arquiteto antes de mudar.
 
 ### D-041 · As "38 criaturas com ataques a corrigir": item cancelado [tags: bestiario, ataques, b14, pendencias]
 - Data: 2026-10-04
@@ -1396,12 +1396,12 @@ Origem de todas: "conversa do autor, 03/10 e 04/10, veterana-1e" (numeração do
 ### D-042 · Cortejo fechado: vale a decisão 4 (D-017) [tags: cortejo, resistir, veterana-1e]
 - Data: 2026-10-04
 - Decisão (decisão 38 do 1e): CONFLITO·CORTEJO fechado: vale a decisão 4 (teto 4 por intervalo do cortejo).
-- Estado: a implementar na rodada 6. Idêntica à D-017.
+- Estado: no ar (aplicada em 2ab7da2e, 1e r6) na rodada 6. Idêntica à D-017.
 
 ### D-043 · Imobilizado [tags: imobilizado, manobra, escapismo, agarrar]
 - Data: 2026-10-04
 - Decisão (decisão 39 do 1e): Imobilizado não age, nem com Firula; a penalidade grande só vale sem agarrão; a ordem dos estados é Preso, Agarrado, Imobilizado.
-- Estado: a implementar nas rodadas 5 (ESCAPISMO-CAT, MANOBRA, ESCAPISMO, RAJADA) e 11. Complementa a D-019.
+- Estado: no ar (aplicada em 3dc09c71, 1e r5, e 8704232a, 1e r11) nas rodadas 5 (ESCAPISMO-CAT, MANOBRA, ESCAPISMO, RAJADA) e 11. Complementa a D-019.
 
 ### D-044 · Bram: Artes no nível 3, total 1401 [tags: bram, arte, teto, criacao]
 - Data: 2026-10-04
@@ -1411,12 +1411,12 @@ Origem de todas: "conversa do autor, 03/10 e 04/10, veterana-1e" (numeração do
 ### D-045 · Prensa Crescente, Esmagar nos Braços e Abraço do Titã vão para a calibração [tags: proezas, tecnicas, calibracao, agarrao]
 - Data: 2026-10-04
 - Decisão (decisão 41 do 1e): as três Técnicas do Agarrão do Urso saem do texto de A·a4-1 e vão para a calibração das Proezas (D54, D55, D56).
-- Estado: a implementar na rodada 11 (só o texto de a4-1); as três não se tocam.
+- Estado: no ar (aplicada em 8704232a, 1e r11, só o texto de a4-1) na rodada 11 (só o texto de a4-1); as três não se tocam.
 
 ### D-046 · Régua de Duração das Proezas publicada no capítulo das Proezas [tags: proezas, duracao, regua]
 - Data: 2026-10-04
 - Decisão (decisão 42 do 1e): a régua de Duração das Proezas (escalasProeza.parametros.duracao) é publicada no capítulo das Proezas; a Proeza Resistir mental usa essa régua. É a decisão que o autor deu em 04/10 e o despacho anterior marcava para a rodada 11.
-- Estado: a implementar na rodada 8 (DURACAO-PROEZA antes de RESISTIR-MENTE) e na calibração.
+- Estado: no ar (aplicada em 0aca9c99, 1e r8) na rodada 8 (DURACAO-PROEZA antes de RESISTIR-MENTE) e na calibração.
 
 ### D-047 · Exemplos de criação: trocar as Técnicas sem pré-requisito, mantendo o XP [tags: criacao, exemplos, tecnicas, requer]
 - Data: 2026-10-04
@@ -1426,17 +1426,17 @@ Origem de todas: "conversa do autor, 03/10 e 04/10, veterana-1e" (numeração do
 ### D-048 · Manobra: as três leituras ficam [tags: manobra, agarrar, empate, derrubar]
 - Data: 2026-10-04
 - Decisão (decisão 44 do 1e): as três leituras da Manobra ficam (empate, Derrubar e Empurrar, primeiro acerto). Confirmação do autor em 04/10: "manter o agarrão é a ação de quem controla, rolada no Tick do Golpe" é a regra que o autor deu.
-- Estado: a implementar na rodada 5 (MANOBRA). Complementa a D-019.
+- Estado: no ar (aplicada em 3dc09c71, 1e r5) na rodada 5 (MANOBRA). Complementa a D-019.
 
 ### D-049 · Energia Espiritual fica como está, sem número [tags: energia-espiritual, meditacao, mana]
 - Data: 2026-10-04
 - Decisão (decisão 45 do 1e): a Energia Espiritual fica como está, sem número; sai a remissão de A·ART-41.
-- Estado: a implementar na rodada 8 (MEDITACAO, ART-41).
+- Estado: no ar (aplicada em 0aca9c99, 1e r8) na rodada 8 (MEDITACAO, ART-41).
 
 ### D-050 · Vida 1 no catálogo [tags: vida, catalogo, arte, desgaste]
 - Data: 2026-10-04
 - Decisão (decisão 46 do 1e): Vida 1 no catálogo: "aliviar o cansaço: tira uma penalidade de Desgaste".
-- Estado: a implementar na rodada 9 (VIDA-1).
+- Estado: no ar (aplicada em 5e32204d, 1e r9) na rodada 9 (VIDA-1).
 
 ### D-051 · Mago de Batalha: Fogo nível 4 [tags: bestiario, mago-de-batalha, b14]
 - Data: 2026-10-04
@@ -1446,7 +1446,7 @@ Origem de todas: "conversa do autor, 03/10 e 04/10, veterana-1e" (numeração do
 ### D-052 · Moinho passa para Engenharia na tabela de obras [tags: oficio, engenharia, moinho, longa]
 - Data: 2026-10-04
 - Decisão (decisão 48 do 1e): o moinho passa para Engenharia na tabela de obras. Resposta do autor em 04/10: "o Requisito 3 fica".
-- Estado: a implementar na rodada 7 (ENGENHARIA, MOINHO, T3b, LONGA-2).
+- Estado: no ar (aplicada em 028213ac, 1e r7 parte 1) na rodada 7 (ENGENHARIA, MOINHO, T3b, LONGA-2).
 
 ### D-053 · Fichas de exemplo: só direcionamento, revisão ao fim do sistema [tags: criacao, exemplos, kael, sora, veil, bram]
 - Data: 2026-10-04
@@ -1468,19 +1468,19 @@ Origem de todas: "conversa do autor, 04/10/2026, respostas às 12 dúvidas da en
 - Data: 2026-10-04
 - Decisão: "Cai. A ficha básica não tem restrição; quem informa as restrições da campanha aos jogadores é o Mestre. Deixe isso dito no texto da Criação."
 - Origem: conversa do autor, 04/10/2026, dúvida 1, opção A
-- Estado: a implementar (rodada 12). Estende a D-040 (sem limite próprio na criação).
+- Estado: no ar (aplicada em bd041499, r12). Estende a D-040 (sem limite próprio na criação).
 
 ### D-056 · Dúvida 2 (A): cai o teto 3 de Recursos e Artefato nos Antecedentes [tags: antecedentes, recursos, artefato, teto, ficha]
 - Data: 2026-10-04
 - Decisão: "Cai o campo 'tetoCriacao', o aviso da ficha (ficha-engine.ts:2410-2418) e os três trechos do texto. Mesmo princípio da 1: quem limita é o Mestre."
 - Origem: conversa do autor, 04/10/2026, dúvida 2, opção A
-- Estado: a implementar (rodada 12). Estende a D-040.
+- Estado: no ar (aplicada em bd041499, r12). Estende a D-040.
 
 ### D-057 · Dúvida 3: Desarmado vira duas armas, Punhos e Chutes [tags: desarmado, punhos, chutes, armas, defesa, k4a]
 - Data: 2026-10-04
 - Decisão: "A linha 'Desarmado' é substituída por duas armas. Punhos: arma leve (Velocidade 5), P 0 / G 1 / R 4. Acerto +1, Defesa +1, dano 1d6−2 + Força. Chutes: arma média (Velocidade 6), P 1 / G 1 / R 3. Acerto +0, Defesa −1, dano 1d6 + Força. Defesa: o jogador escolhe com que arma defende (pernas, mãos, objeto ou arma que tenha nas mãos). Pode chutar e depois defender com as mãos, ou o contrário. Defender com as pernas é mais difícil (o −1). Mão nua contra arma cortante ou perfurante: não defende. Se tentar, toma o dano inteiro mesmo com a defesa bem-sucedida. Contra contundente e contra ataque desarmado, defende normalmente."
 - Origem: conversa do autor, 04/10/2026, dúvida 3 (resposta livre, nem A nem B nem C)
-- Estado: a implementar, DEPOIS do relato das três conferências que o autor pediu (as outras armas somam Força ao dano; o livro já tem regra de escolher com que arma defender; existe esquiva separada da defesa com arma). SUBSTITUI a C-029 (+1/+1) e o +0/+0 do 1e (K4a, item e). A Proeza "punho como arma média" da C-029 continua a implementar à parte. A mesa lê armas.json: aplicar só fora do Grid e anotar a pendência. Complementada pela D-065 (05/10/2026): ids, lâmina contra qualquer parte do corpo e escolha da arma no Bloqueio.
+- Estado: no ar (aplicada em 2dc330a2, r13), DEPOIS do relato das três conferências que o autor pediu (as outras armas somam Força ao dano; o livro já tem regra de escolher com que arma defender; existe esquiva separada da defesa com arma). SUBSTITUI a C-029 (+1/+1) e o +0/+0 do 1e (K4a, item e). A Proeza "punho como arma média" da C-029 continua a implementar à parte. A mesa lê armas.json: aplicar só fora do Grid e anotar a pendência. Complementada pela D-065 (05/10/2026): ids, lâmina contra qualquer parte do corpo e escolha da arma no Bloqueio.
 
 ### D-058 · Dúvida 4 (C): Ganhar a vida fica como está até decidir o modelo de economia [tags: economia, renda, servicos, modelo]
 - Data: 2026-10-04
@@ -1510,7 +1510,7 @@ Origem de todas: "conversa do autor, 04/10/2026, respostas às 12 dúvidas da en
 - Data: 2026-10-04
 - Decisão: "Nem A nem B. O livro segue o que já decidi: a Vida apressa a recuperação, na escala dos dias, e no Tratar dá +1 por nível. Corrigir o texto do Efeito para isso. A diferença com o Grid (1 PV por nível) vai para a pendência do Grid."
 - Origem: conversa do autor, 04/10/2026, dúvida 8 (resposta livre)
-- Estado: a implementar (rodada 12, só o texto do Efeito). Consistente com a D-009 (+1 por nível da Vida no Tratar). A diferença com o Grid vai para N-grid-pendencias.md (D-054).
+- Estado: no ar (aplicada em bd041499, r12). Consistente com a D-009 (+1 por nível da Vida no Tratar). A diferença com o Grid vai para N-grid-pendencias.md (D-054).
 
 ### D-063 · Dúvida 9 (A): Vento 3 fica cortante, com dano [tags: artes, vento, art-45, art-20]
 - Data: 2026-10-04
@@ -1528,13 +1528,13 @@ Origem de todas: "conversa do autor, 04/10/2026, respostas às 12 dúvidas da en
 - Data: 2026-10-05
 - Decisão: "1. Id: A. 'desarmado' passa a ser Punhos (mesmos números de hoje: leve, 5 Ticks, P 0 / G 1 / R 4, Acerto +1, Defesa +1, 1d6−2 + Força; o nome na tela muda para 'Punhos'). 'chutes' entra como arma nova: média, 6 Ticks, P 1 / G 1 / R 3, Acerto +0, Defesa −1, 1d6 + Força. Nenhum id some, então ficha salva, mesa e Grid não quebram. 2. Lâmina contra o corpo: vale para qualquer parte do corpo. Quem Bloqueia sem arma um ataque cortante ou perfurante recebe o dano normalmente. A Esquiva não é afetada (segue a regra da melhor das duas, combate.md:265-270). 3. Como o Bloqueio escolhe a arma de defesa: Na hora de defender, o personagem usa as armas e escudos que tem nas mãos, e eles somam (dois escudos, os dois contam), como já acontece com a mão inábil. O corpo só defende quando nada nas mãos é usado. Arma ou escudo e corpo não somam. Partes do corpo: só os dois punhos somam entre si (+1 cada, +2 com as duas mãos livres). Punhos e Chutes não somam. Chutes (−1) é a opção quando as mãos não podem ser usadas (por exemplo, amarradas). A ficha mostra o Bloqueio com a melhor combinação disponível. Quem muda a escolha é a situação, e o Mestre ajusta. 4. COMO ESCREVER: só descreva a regra da luta desarmada, ou seja, como são os golpes (Punhos e Chutes) e as defesas sem arma. Não detalhe casos nem crie tabela de situações: o Mestre julga quando o jogador decidir usar. Texto curto, no Cap. XIII, com remissão em defesas.md e combate.md."
 - Origem: conversa do autor, 05/10/2026, respostas após o relato da Executora sobre o Desarmado
-- Estado: a implementar (rodada 13, fora do Grid). Complementa a D-057 (que substitui a C-029 e o K4a). A lâmina contra o corpo esclarece a D-057 ("mão nua") para qualquer parte do corpo. A mesa e o Grid não mudam (D-054); as diferenças vão para N-grid-pendencias.md. CORREÇÃO do autor em 05/10/2026 (dúvida 13, A): os Chutes são Velocidade 6 e R 4, como manda a régua; o "R 3" do texto acima e da D-057 foi erro de digitação.
+- Estado: no ar (aplicada em 2dc330a2, r13). Complementa a D-057 (que substitui a C-029 e o K4a). A lâmina contra o corpo esclarece a D-057 ("mão nua") para qualquer parte do corpo. A mesa e o Grid não mudam (D-054); as diferenças vão para N-grid-pendencias.md. CORREÇÃO do autor em 05/10/2026 (dúvida 13, A): os Chutes são Velocidade 6 e R 4, como manda a régua; o "R 3" do texto acima e da D-057 foi erro de digitação.
 
 ### D-066 · Armas naturais: criaturas bloqueiam e se defendem com elas [tags: armas-naturais, bloqueio, desarmado, criaturas, b14, bestiario]
 - Data: 2026-10-05
 - Decisão: "A regra 'bloquear sem arma um ataque cortante ou perfurante faz receber o dano normalmente' vale só para quem não tem armas naturais no corpo. A maior parte das criaturas com armas naturais (garras, chifres, carapaça, corpo de pedra ou ferro etc.) ataca com elas e também se defende com elas, mesmo sendo ataques desarmados. Padrão para criaturas: quase todas podem bloquear sem tomar dano. O Mestre julga os casos em que o ataque bloqueado causa dano mesmo assim. Escrever no mesmo tom da seção 'Luta desarmada': descritivo, curto, sem tabela de casos. Uma linha na própria seção do Cap. XIII e, quando chegarmos às criaturas (B14), uma linha na abertura do bestiário. Por ora, registre a linha do bestiário como pendência da B14. Golens: a fixação de Golem de Ferro e Golem de Pedra como médios (N20) fica como está; anote na B14 que o ataque e a defesa deles serão revistos com a regra das armas naturais."
 - Origem: conversa do autor, 05/10/2026, junto da resposta à dúvida 13
-- Estado: a implementar (rodada 13: uma linha no Cap. XIII; linha do bestiário e revisão dos golens ficam na B14). Complementa a D-065 (item 2). A conferência de linhagens, origens, Artes, Técnicas e Proezas que dão arma natural a personagem jogável é só relato; o autor decide depois.
+- Estado: no ar (aplicada em 2dc330a2, r13). Complementa a D-065 (item 2). A conferência de linhagens, origens, Artes, Técnicas e Proezas que dão arma natural a personagem jogável é só relato; o autor decide depois.
 
 
 ### D-067 · Chutes saem das armas e da ficha: viram só regra de texto [tags: chutes, desarmado, armas, ficha, luta-desarmada]
