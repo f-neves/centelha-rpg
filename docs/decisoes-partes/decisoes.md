@@ -142,7 +142,7 @@ uma decisao registrada, pare e pergunte ao autor.
 | C-039 | 2026-09-28 | Imunidade: dano zero do tipo; imunidade + fraqueza ao mesmo tipo = dano normal | no ar |
 | C-040 | 2026-09-28 | Constructo na Fase 4: mantém Vigor, sem teste de Vigor/Resistência/Virtude | a implementar |
 | C-041 | 2026-09-28 | Fantasma e Sombra: dano é fenômeno, armadura não absorve | no ar (nao conferido) |
-| C-042 | 2026-09-28 | Resistências novas por criatura: só pendência, sem palavra nova | a implementar |
+| C-042 | 2026-09-28 | Resistências novas por criatura: só pendência, sem palavra nova | no ar |
 | C-044 | 2026-09-28 | Fase 5: definição de desafio e âncoras do autor | no ar |
 | C-045 | 2026-09-28 | Grupo de referência: composição, Proezas matemáticas, Vontade | no ar |
 | C-043 | 2026-09-29 | Arte exige só Centelha > 0; o portão "nível N exige Centelha ≥ N" é só das Técnicas de Pro | substituida |
@@ -183,12 +183,12 @@ uma decisao registrada, pare e pergunte ao autor.
 | C-068 | 2026-10-02 | Cura acelera 10% por nível: o intervalo encurta | no ar |
 | C-069 | 2026-10-02 | Vontade: máximo 1 ponto por jogada ou ação, inclusive para resistir | no ar (parte "inclusive resistir" retirada por D-001) |
 | C-070 | 2026-10-02 | Segurar firme custa 1 ponto de Vontade (substitui afb818cc) | substituida |
-| C-072 | 2026-10-02 | Cortejo: intervalo de 8 dias ou mais não é uma ação | no ar (nao conferido) |
+| C-072 | 2026-10-02 | Cortejo: intervalo de 8 dias ou mais não é uma ação | substituida |
 | C-073 | 2026-10-02 | Seguir alguém: Dificuldade é o Valor Passivo do alvo | no ar (nao conferido) |
 | C-074 | 2026-10-02 | Suspeita no Esgueirar: 70% na Acumulada, suspeita contra o Passivo inteiro | no ar (nao conferido) |
-| C-075 | 2026-10-02 | Congelar o intervalo da Margem na Acumulada: fica como está, pendência G75 | a implementar |
+| C-075 | 2026-10-02 | Congelar o intervalo da Margem na Acumulada: fica como está, pendência G75 | substituida (P-01) |
 | C-076 | 2026-10-02 | Mortal (Centelha 0): tem Mana (a Força de Vontade) e conjura Arte; Energia não usada | no ar |
-| C-077 | 2026-10-02 | Teto de Arte do mortal: não liberar no código antes de ver os números | a implementar |
+| C-077 | 2026-10-02 | Teto de Arte do mortal: não liberar no código antes de ver os números | cumprida (D-006) |
 | C-078 | 2026-10-02 | Escala do desafio: de 0 a 12, nada passa de 9 exceto a Tarrasca (10); ameaça 1-6 a ajustar | a implementar |
 
 ## Entradas
@@ -1049,13 +1049,13 @@ uma decisao registrada, pare e pergunte ao autor.
 - Data: 2026-10-02
 - Decisão: "Item 14, pergunta 1: opção B. Segurar firme custa 1 ponto: na Margem 0 segura de vez; com Margem 1 ou mais o alvo cede, mas o pedido chega 1 nível abaixo. Corrija relacoes-sociais.md:148-156 e o resumo de :275."
 - Origem: achados-duas-leituras-despacho.md:188 e :198, commit ad632f3f
-- Estado: substituída por D-001 (03/10/2026). Texto no ar até o despacho do Resistir ser aplicado.
+- Estado: substituída por D-001 (03/10/2026).
 
 ### C-072 · Cortejo: intervalo de 8 dias ou mais não é uma ação [tags: social, cortejo, vontade, relacoes-sociais]
 - Data: 2026-10-02
 - Decisão: "Item 14, pergunta 2: opção B. O intervalo do cortejo (8 dias ou mais) não é uma ação; o custo atual fica, e o capítulo explica a exceção ao '1 por ação'."
 - Origem: achados-duas-leituras-despacho.md:189 e :199, commit ad632f3f (relacoes-sociais.md:276, regras.json social.modoDevagar.resistencia)
-- Estado: no ar (não conferido)
+- Estado: substituída pela D-017 (2ab7da2e, 1e r6)
 
 ### C-073 · Seguir alguém: Dificuldade é o Valor Passivo do alvo [tags: valor-passivo, percepcao, esgueirar, trabalho, dificuldade]
 - Data: 2026-10-02
@@ -1073,7 +1073,7 @@ uma decisao registrada, pare e pergunte ao autor.
 - Data: 2026-10-02
 - Decisão: "Pergunta 1 da Revisora, 'congelar um intervalo': opção C. Fica como está, anotado como pendência, até se rever de uma vez todo efeito da Margem dentro da Acumulada (o congelar do Esgueirar, a qualidade do Ofício e o que mais houver). Liste os casos na pendência."
 - Origem: achados-duas-leituras-despacho.md:166 e :176, commit 08f9df52 (G-acoes-sistema.md, G75)
-- Estado: a implementar (pendência G75)
+- Estado: substituída pela P-01 de 03/10/2026 ("o Mestre decide"), aplicada em e7c06baa (pendência G75 fechada)
 
 ### C-076 · Mortal (Centelha 0): tem Mana (a Força de Vontade) e conjura Arte; Energia não usada [tags: mortal, centelha, mana, energia, artes, vontade]
 - Data: 2026-10-02
@@ -1085,7 +1085,7 @@ uma decisao registrada, pare e pergunte ao autor.
 - Data: 2026-10-02
 - Decisão: "F2 no código: opção D. Antes de liberar, meça onde a Mana do mortal entra ... Junto, meça o custo de Mana por nível de Arte contra a Mana de um mortal (Força de Vontade de 1 a 6)... Não libere nada antes de o autor ver os números e decidir o teto de Arte do mortal."
 - Origem: achados-duas-leituras-despacho.md:190-191 e :202-205, commit ad632f3f (medição, sem código)
-- Estado: no ar (resolvida pela D-006) (aguarda decisão do autor sobre o teto de Arte do mortal)
+- Estado: cumprida pela D-006 (código liberado em 7e0d0bb7)
 
 ### C-078 · Escala do desafio: de 0 a 12, nada passa de 9 exceto a Tarrasca (10); ameaça 1-6 a ajustar [tags: desafio, escala, bestiario, ameaca]
 - Data: 2026-10-02
@@ -1099,7 +1099,7 @@ uma decisao registrada, pare e pergunte ao autor.
 - Data: 2026-10-03
 - Decisão: "Resistir (Cap. X, e valendo também para efeito mental): 1. Depois que o ataque passou da Defesa, resistir custa 1 + Margem de Força de Vontade, com teto de 4: nenhum efeito obriga o defensor a pagar mais de 4 para resistir. Ex.: Margem 6 pediria 7; o defensor pode pagar 4 e resiste. Proezas podem cobrar mais que 4. 2. Resistir é um PAGAMENTO e fica fora do limite de 1 ponto por ação. O limite de 1 ponto por ação ou jogada (C-011) vale só para melhorar uma ação ou uma Defesa. 3. Contra efeito mental vale o mesmo: 1 + Margem (teto 4) recusa o efeito. Além disso, com Margem 1 ou mais, o alvo pode pagar só 1 ponto, e o efeito pega, mas dura um grau a menos na régua de Duração." Item 5: a frase do cortejo (relacoes-sociais.md:246, "o intervalo não é uma ação") NÃO se mexe, o autor decide depois.
 - Origem: mensagem do autor de 03/10/2026 via Arquiteto; despacho docs/simulacao/caixa/resistir-despacho.md
-- Estado: no ar (aplicada em a7bec31c, despacho do Resistir). Substitui C-070 (e, por tabela, C-072 fica em suspenso: o autor decide o cortejo depois). Restringe C-011. Reaproxima C-071 (1 + Margem), agora com teto 4.
+- Estado: no ar (aplicada em a7bec31c, despacho do Resistir). Substitui C-070 (e, por tabela, C-072 fica substituída pela D-017). Restringe C-011. Reaproxima C-071 (1 + Margem), agora com teto 4.
 
 Os itens abaixo vieram da "lista do veterana-1c" e NÃO foram despachados; vão juntos com o documento da Veterana.
 
@@ -1107,7 +1107,7 @@ Os itens abaixo vieram da "lista do veterana-1c" e NÃO foram despachados; vão 
 - Data: 2026-10-03
 - Decisão: "a reserva tem o mesmo valor da Força de Vontade, mas é separada (recuperar uma não recupera a outra). Recupera 1 de Mana por dia, 2 se estiver descansando."
 - Origem: conversa do autor, 03/10, lista do veterana-1c
-- Estado: a implementar. Toca a F2 (mortal conjura, pendência A32) e a recuperação de Mana por hora (regras.json arcano.recuperacaoMana).
+- Estado: no ar (texto em 0aca9c99; o valor da Vontade na mesa desde 7e0d0bb7). Toca a F2 (mortal conjura, pendência A32) e a recuperação de Mana por hora (regras.json arcano.recuperacaoMana).
 
 ### D-003 · Meditação: 1 de Mana por hora, até o nível de Meditação por dia [tags: mana, meditacao]
 - Data: 2026-10-03
@@ -1125,7 +1125,7 @@ Os itens abaixo vieram da "lista do veterana-1c" e NÃO foram despachados; vão 
 - Data: 2026-10-03
 - Decisão: "A Arte Mana não usa Centelha no cálculo."
 - Origem: conversa do autor, 03/10, lista do veterana-1c
-- Estado: no ar (aplicada em 0aca9c99, 1e r8)
+- Estado: no ar (aplicada em 0aca9c99, 1e r8; a frase "a Arte Mana não usa a Centelha em conta nenhuma" entrou em 5e32204d, 1e r9)
 
 ### D-006 · Teto do nível de Arte por Centelha [tags: arte, centelha, teto]
 - Data: 2026-10-03
@@ -1245,13 +1245,13 @@ O autor decidiu a Parte B do veterana-1c e mais alguns pontos novos. As 37 decis
 - Data: 2026-10-04
 - Decisão: publicar no capítulo das Proezas a régua de Duração das Proezas (`escalasProeza.parametros.duracao`, regras.json).
 - Origem: conversa do autor, 04/10/2026
-- Estado: no ar (aplicada em 0aca9c99, 1e r8, antes da rodada 11 prevista) na rodada 11. Relacionada à D-014 (o "um grau a menos" do efeito mental de Proeza usa essa régua) e ao B·RESISTIR-PROEZA do 1d.
+- Estado: no ar (aplicada em 0aca9c99, 1e r8, antes da rodada 11 prevista). Relacionada à D-014 (o "um grau a menos" do efeito mental de Proeza usa essa régua) e ao B·RESISTIR-PROEZA do 1d.
 
 ### D-019 · Manobra: o modelo novo (agarrar, manter, dano, estados) [tags: manobra, agarrar, combate, imobilizado]
 - Data: 2026-10-03
 - Decisão (decisões 20 a 27 do 1d, resumo da tabela): 20. Agarrar é jogada de ataque contra a Defesa de agarrão passiva; não existe Rajada de agarrão. 21. Manter o agarrão: a cada 6 Ticks; superou, igual, abaixo. 22. Dano do agarrão: 2 x Força + Centelha, Impacto, +1d6 por Margem; a Absorção conta. 23. O agarrado não age; Defesas e penalidades do agarrão. 24. Pegada de Ferro: +3 na jogada de quem controla (sem "+3 por Margem"). 25. Três estados: Preso, Agarrado, Imobilizado. 26. Deslocamento durante o agarrão: só descrição. 27. Empurrão (1 m + 1 m por Margem) e levantar-se (Velocidade 3). Acréscimos do autor de 03/10 (da D-013), absorvidos: errar a primeira tentativa de agarrar é um erro comum de ataque, e a inversão de controle só vale com o agarrão já formado; uma Proeza pode transformar um soco que acerta em agarrão.
 - Origem: conversa do autor, 03/10, veterana-1d
-- Estado: no ar (aplicada em 3dc09c71, 1e r5) na rodada 5 (aguarda o veterana-1e: as respostas do autor sobre Imobilizado e sobre as Técnicas do Agarrão do Urso podem mexer na redação). SUBSTITUI a D-013.
+- Estado: no ar (aplicada em 3dc09c71, 1e r5) (as respostas do autor sobre Imobilizado e sobre as Técnicas do Agarrão do Urso vieram: D-043 e D-045). SUBSTITUI a D-013.
 
 ### D-020 · Artes de mente sem projétil: Influência + Habilidade social [tags: arte, mente, social, defesa]
 - Data: 2026-10-03
@@ -1287,7 +1287,7 @@ O autor decidiu a Parte B do veterana-1c e mais alguns pontos novos. As 37 decis
 - Data: 2026-10-03
 - Decisão (decisão 29 do 1d): linha nova na tabela de atos, "Ter sido controlado e perceber | -2"; a "inimizade" vira "ressentimento".
 - Origem: conversa do autor, 03/10, veterana-1d
-- Estado: a implementar na rodada 6
+- Estado: no ar (aplicada em 2ab7da2e, 1e r6)
 
 ### D-026 · Interrogar fica como decidido [tags: social, interrogar]
 - Data: 2026-10-03
@@ -1329,7 +1329,7 @@ O autor decidiu a Parte B do veterana-1c e mais alguns pontos novos. As 37 decis
 - Data: 2026-10-03
 - Decisão (decisão 36 do 1d): totais de XP dos exemplos: Kael 1065, Sora 1323, Veil 1864, Bram 1726 (o do Bram supõe cinco Artes no nível 5, que o teto da D-006 proíbe com Centelha 1: B·BRAM-TETO, espera o veterana-1e). Nota do 1d: três Técnicas das fichas pedem como pré-requisito uma Técnica que a ficha não tem (B·REQUER-EXEMPLOS).
 - Origem: conversa do autor, 03/10, veterana-1d
-- Estado: a implementar na rodada 10 (o Bram e o Requer esperam o veterana-1e)
+- Estado: substituída pela D-059 (exemplos de criação) e, no Bram, pela D-044
 
 ### D-033 · Rajada: a penalidade cresce golpe a golpe [tags: rajada, combate, defesa]
 - Data: 2026-10-03
@@ -1345,7 +1345,7 @@ Imobilizado, Bram, Técnicas do Agarrão do Urso, Energia Espiritual, Vida 1, Ma
 - Data: 2026-10-04
 - Decisão: o veterana-1c aplicou 25 decisões do autor dadas na Missão 1c, e o 1d as herda ("decisão herdada", "decisão N da 1c"). O registro não tem o texto verbatim delas. As que as rodadas 1 a 3 aplicam: Longa a 3 por dado (o site e a memória do Arquiteto dizem 3,5), Especialidade +2 por nível na Longa, o Mestre escolhe entre Longa e Acumulada, a Longa gera Margem e ferimento/Desgaste só entram se durarem o intervalo inteiro, Iniciativa sem Centelha, Acelerar 10% não vale abaixo de 0 nem na linha "por dia".
 - Origem: veterana-1c.md (Missão 1c, 03/10/2026) e veterana-1d.md
-- Estado: a implementar nas rodadas 1 a 3. Longa a 3 por dado CONFIRMADA pelo autor em 04/10/2026: decisão dele de 02/10, reconfirmada em 03/10, com os efeitos aceitos (espada Comum do oficial em 11 dias, cota de malha em 14 semanas, Lamelar fechada ao oficial). Substitui a regra de 3,5 por dado (memória do Arquiteto, site de hoje). Antes de mexer em código que lê a média, a Executora me avisa. As demais decisões da 1c seguem sem verbatim.
+- Estado: no ar (Longa a 3 por dado em 61bf02fe, 1d r3; o bloco gerado de Ganhar a vida segue a 3,5, pendência G77). Longa a 3 por dado CONFIRMADA pelo autor em 04/10/2026: decisão dele de 02/10, reconfirmada em 03/10, com os efeitos aceitos (espada Comum do oficial em 11 dias, cota de malha em 14 semanas, Lamelar fechada ao oficial). Substitui a regra de 3,5 por dado (memória do Arquiteto, site de hoje). Antes de mexer em código que lê a média, a Executora me avisa. As demais decisões da 1c seguem sem verbatim.
 
 ### D-035 · O mago de Centelha mínima se destaca pela amplitude, não pela profundidade [tags: arte, teto, arquetipo, arcano, bram]
 - Data: 2026-10-04
@@ -1421,7 +1421,7 @@ Origem de todas: "conversa do autor, 03/10 e 04/10, veterana-1e" (numeração do
 ### D-047 · Exemplos de criação: trocar as Técnicas sem pré-requisito, mantendo o XP [tags: criacao, exemplos, tecnicas, requer]
 - Data: 2026-10-04
 - Decisão (decisão 43 do 1e, corrigida pelo autor em 04/10): só entra Técnica SEM pré-requisito nenhum. "Se não houver equivalente, entra outra ou fica sem, e o XP é recalculado, seja qual for o total. Não some a Técnica de nível 1 que a nova pediria." Os totais "1075, 1333, 1874" que o despacho anterior citou foram erro de repasse, NÃO valem.
-- Estado: a implementar na rodada 10 (TECNICAS-EXEMPLOS, C15a), só a troca das três Técnicas (Encontrão Relâmpago, Comando Inspirador, Investida Devastadora) e o recálculo do XP. Ver D-053: o resto das fichas de exemplo não entra em rodada.
+- Estado: regra geral C15a no ar (bf8bf608); a troca das três Técnicas ficou com a D-059 (fichas só no fim da revisão, D-053). Era: só a troca das três Técnicas (Encontrão Relâmpago, Comando Inspirador, Investida Devastadora) e o recálculo do XP. Ver D-053: o resto das fichas de exemplo não entra em rodada.
 
 ### D-048 · Manobra: as três leituras ficam [tags: manobra, agarrar, empate, derrubar]
 - Data: 2026-10-04
@@ -1480,7 +1480,7 @@ Origem de todas: "conversa do autor, 04/10/2026, respostas às 12 dúvidas da en
 - Data: 2026-10-04
 - Decisão: "A linha 'Desarmado' é substituída por duas armas. Punhos: arma leve (Velocidade 5), P 0 / G 1 / R 4. Acerto +1, Defesa +1, dano 1d6−2 + Força. Chutes: arma média (Velocidade 6), P 1 / G 1 / R 3. Acerto +0, Defesa −1, dano 1d6 + Força. Defesa: o jogador escolhe com que arma defende (pernas, mãos, objeto ou arma que tenha nas mãos). Pode chutar e depois defender com as mãos, ou o contrário. Defender com as pernas é mais difícil (o −1). Mão nua contra arma cortante ou perfurante: não defende. Se tentar, toma o dano inteiro mesmo com a defesa bem-sucedida. Contra contundente e contra ataque desarmado, defende normalmente."
 - Origem: conversa do autor, 04/10/2026, dúvida 3 (resposta livre, nem A nem B nem C)
-- Estado: no ar (aplicada em 2dc330a2, r13), DEPOIS do relato das três conferências que o autor pediu (as outras armas somam Força ao dano; o livro já tem regra de escolher com que arma defender; existe esquiva separada da defesa com arma). SUBSTITUI a C-029 (+1/+1) e o +0/+0 do 1e (K4a, item e). A Proeza "punho como arma média" da C-029 continua a implementar à parte. A mesa lê armas.json: aplicar só fora do Grid e anotar a pendência. Complementada pela D-065 (05/10/2026): ids, lâmina contra qualquer parte do corpo e escolha da arma no Bloqueio.
+- Estado: no ar (aplicada em 2dc330a2, r13; os Chutes como arma foram substituídos pela D-067 na rodada 14), DEPOIS do relato das três conferências que o autor pediu (as outras armas somam Força ao dano; o livro já tem regra de escolher com que arma defender; existe esquiva separada da defesa com arma). SUBSTITUI a C-029 (+1/+1) e o +0/+0 do 1e (K4a, item e). A Proeza "punho como arma média" da C-029 continua a implementar à parte. A mesa lê armas.json: aplicar só fora do Grid e anotar a pendência. Complementada pela D-065 (05/10/2026): ids, lâmina contra qualquer parte do corpo e escolha da arma no Bloqueio.
 
 ### D-058 · Dúvida 4 (C): Ganhar a vida fica como está até decidir o modelo de economia [tags: economia, renda, servicos, modelo]
 - Data: 2026-10-04
@@ -1498,7 +1498,7 @@ Origem de todas: "conversa do autor, 04/10/2026, respostas às 12 dúvidas da en
 - Data: 2026-10-04
 - Decisão: "Vale o 1e ('maior grau investido × 5'), e a C-025 é substituída."
 - Origem: conversa do autor, 04/10/2026, dúvida 6, opção A
-- Estado: a implementar (rodada 12: ART-37, Dissipar, Mãos sobre a Multidão, Chamar à Mão, a linha "× 5" do ATAQUE-DIF, e reler o Chão Traiçoeiro). SUBSTITUI a C-025. Consistente com a D-022.
+- Estado: no ar (aplicada em bd041499, r12, menos a Chamar à Mão: N8 da lista do Grid) (ART-37, Dissipar, Mãos sobre a Multidão, Chamar à Mão, a linha "× 5" do ATAQUE-DIF, e reler o Chão Traiçoeiro). SUBSTITUI a C-025. Consistente com a D-022.
 
 ### D-061 · Dúvida 7 (C): ART-34, ART-5, ART-38 e ART-40 ficam para a recalibração das Artes; o Mago de Batalha continua em Fogo 4 [tags: artes, recalibracao, bola-de-fogo, mago-de-batalha, b14]
 - Data: 2026-10-04
@@ -1528,13 +1528,13 @@ Origem de todas: "conversa do autor, 04/10/2026, respostas às 12 dúvidas da en
 - Data: 2026-10-05
 - Decisão: "1. Id: A. 'desarmado' passa a ser Punhos (mesmos números de hoje: leve, 5 Ticks, P 0 / G 1 / R 4, Acerto +1, Defesa +1, 1d6−2 + Força; o nome na tela muda para 'Punhos'). 'chutes' entra como arma nova: média, 6 Ticks, P 1 / G 1 / R 3, Acerto +0, Defesa −1, 1d6 + Força. Nenhum id some, então ficha salva, mesa e Grid não quebram. 2. Lâmina contra o corpo: vale para qualquer parte do corpo. Quem Bloqueia sem arma um ataque cortante ou perfurante recebe o dano normalmente. A Esquiva não é afetada (segue a regra da melhor das duas, combate.md:265-270). 3. Como o Bloqueio escolhe a arma de defesa: Na hora de defender, o personagem usa as armas e escudos que tem nas mãos, e eles somam (dois escudos, os dois contam), como já acontece com a mão inábil. O corpo só defende quando nada nas mãos é usado. Arma ou escudo e corpo não somam. Partes do corpo: só os dois punhos somam entre si (+1 cada, +2 com as duas mãos livres). Punhos e Chutes não somam. Chutes (−1) é a opção quando as mãos não podem ser usadas (por exemplo, amarradas). A ficha mostra o Bloqueio com a melhor combinação disponível. Quem muda a escolha é a situação, e o Mestre ajusta. 4. COMO ESCREVER: só descreva a regra da luta desarmada, ou seja, como são os golpes (Punhos e Chutes) e as defesas sem arma. Não detalhe casos nem crie tabela de situações: o Mestre julga quando o jogador decidir usar. Texto curto, no Cap. XIII, com remissão em defesas.md e combate.md."
 - Origem: conversa do autor, 05/10/2026, respostas após o relato da Executora sobre o Desarmado
-- Estado: no ar (aplicada em 2dc330a2, r13). Complementa a D-057 (que substitui a C-029 e o K4a). A lâmina contra o corpo esclarece a D-057 ("mão nua") para qualquer parte do corpo. A mesa e o Grid não mudam (D-054); as diferenças vão para N-grid-pendencias.md. CORREÇÃO do autor em 05/10/2026 (dúvida 13, A): os Chutes são Velocidade 6 e R 4, como manda a régua; o "R 3" do texto acima e da D-057 foi erro de digitação.
+- Estado: no ar (aplicada em 2dc330a2, r13; os itens 1 e 3 na parte dos Chutes foram substituídos pela D-067 na rodada 14). Complementa a D-057 (que substitui a C-029 e o K4a). A lâmina contra o corpo esclarece a D-057 ("mão nua") para qualquer parte do corpo. A mesa e o Grid não mudam (D-054); as diferenças vão para N-grid-pendencias.md. CORREÇÃO do autor em 05/10/2026 (dúvida 13, A): os Chutes são Velocidade 6 e R 4, como manda a régua; o "R 3" do texto acima e da D-057 foi erro de digitação.
 
 ### D-066 · Armas naturais: criaturas bloqueiam e se defendem com elas [tags: armas-naturais, bloqueio, desarmado, criaturas, b14, bestiario]
 - Data: 2026-10-05
 - Decisão: "A regra 'bloquear sem arma um ataque cortante ou perfurante faz receber o dano normalmente' vale só para quem não tem armas naturais no corpo. A maior parte das criaturas com armas naturais (garras, chifres, carapaça, corpo de pedra ou ferro etc.) ataca com elas e também se defende com elas, mesmo sendo ataques desarmados. Padrão para criaturas: quase todas podem bloquear sem tomar dano. O Mestre julga os casos em que o ataque bloqueado causa dano mesmo assim. Escrever no mesmo tom da seção 'Luta desarmada': descritivo, curto, sem tabela de casos. Uma linha na própria seção do Cap. XIII e, quando chegarmos às criaturas (B14), uma linha na abertura do bestiário. Por ora, registre a linha do bestiário como pendência da B14. Golens: a fixação de Golem de Ferro e Golem de Pedra como médios (N20) fica como está; anote na B14 que o ataque e a defesa deles serão revistos com a regra das armas naturais."
 - Origem: conversa do autor, 05/10/2026, junto da resposta à dúvida 13
-- Estado: no ar (aplicada em 2dc330a2, r13). Complementa a D-065 (item 2). A conferência de linhagens, origens, Artes, Técnicas e Proezas que dão arma natural a personagem jogável é só relato; o autor decide depois.
+- Estado: parcial: a linha do Cap. XIII está no ar (2dc330a2, r13); a linha do bestiário e a revisão dos golens ficam na B14. Complementa a D-065 (item 2). A conferência de linhagens, origens, Artes, Técnicas e Proezas que dão arma natural a personagem jogável é só relato; o autor decide depois.
 
 
 ### D-067 · Chutes saem das armas e da ficha: viram só regra de texto [tags: chutes, desarmado, armas, ficha, luta-desarmada]
