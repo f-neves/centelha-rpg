@@ -1535,3 +1535,34 @@ Origem de todas: "conversa do autor, 04/10/2026, respostas às 12 dúvidas da en
 - Decisão: "A regra 'bloquear sem arma um ataque cortante ou perfurante faz receber o dano normalmente' vale só para quem não tem armas naturais no corpo. A maior parte das criaturas com armas naturais (garras, chifres, carapaça, corpo de pedra ou ferro etc.) ataca com elas e também se defende com elas, mesmo sendo ataques desarmados. Padrão para criaturas: quase todas podem bloquear sem tomar dano. O Mestre julga os casos em que o ataque bloqueado causa dano mesmo assim. Escrever no mesmo tom da seção 'Luta desarmada': descritivo, curto, sem tabela de casos. Uma linha na própria seção do Cap. XIII e, quando chegarmos às criaturas (B14), uma linha na abertura do bestiário. Por ora, registre a linha do bestiário como pendência da B14. Golens: a fixação de Golem de Ferro e Golem de Pedra como médios (N20) fica como está; anote na B14 que o ataque e a defesa deles serão revistos com a regra das armas naturais."
 - Origem: conversa do autor, 05/10/2026, junto da resposta à dúvida 13
 - Estado: a implementar (rodada 13: uma linha no Cap. XIII; linha do bestiário e revisão dos golens ficam na B14). Complementa a D-065 (item 2). A conferência de linhagens, origens, Artes, Técnicas e Proezas que dão arma natural a personagem jogável é só relato; o autor decide depois.
+
+
+### D-067 · Chutes saem das armas e da ficha: viram só regra de texto [tags: chutes, desarmado, armas, ficha, luta-desarmada]
+- Data: 2026-10-05
+- Decisão: "O chute não é arma de equipamento. Remover 'chutes' do armas.json, da ficha (incluindo a lógica do Bloqueio que trata Chutes na mão inábil) e do teste de contrato. Ele nunca esteve na mesa nem no Grid; se houver item na N-grid-pendencias.md sobre 'Chutes ausente na mesa/Grid', retire. Os Punhos ficam como estão na ficha (id 'desarmado'), como opção para quem escolhe lutar desarmado. O chute vira só regra de texto, na seção 'Luta desarmada' do Cap. XIII, para o Mestre consultar quando um jogador quiser chutar: média, Velocidade 6, Acerto +0, Defesa −1, dano 1d6 + Força. Pode ser feito mesmo com armas nas mãos, e gasta a própria ação como qualquer golpe. Defender com as pernas (−1) continua valendo quando as mãos não podem ser usadas. Antes de remover, confira se 'chutes' é lido em algum outro lugar além dos que você já listou. Se for, avise."
+- Origem: conversa do autor, 05/10/2026, respostas sobre Chutes, armas naturais e manutenção, item 1
+- Estado: a implementar (rodada 14). SUBSTITUI, no que toca ao id `chutes` como arma e à lógica de Chutes no Bloqueio da ficha, a D-057 (Chutes como arma) e a D-065 itens 1 e 3 (parte dos Chutes). Os Punhos (D-057, D-065) e as demais regras da D-065 continuam.
+
+### D-068 · Regra geral: nada dá ataque extra sem dizer explicitamente [tags: combate, ataque-extra, armas-naturais, opcoes-de-ataque]
+- Data: 2026-10-05
+- Decisão: "Nada dá ataque extra se não disser explicitamente que dá. Ter várias armas, ou partes do corpo que servem de arma, é ter opções de ataque, não ataques a mais. Exemplo para o texto: um gato pode atacar com qualquer das quatro patas ou com a mordida, e isso não lhe dá ataques extras. Escreva em combate.md, onde fala de ações de ataque."
+- Origem: conversa do autor, 05/10/2026, item 2
+- Estado: a implementar (rodada 14, texto em combate.md). Conferir contra a regra de empunhadura dupla (uma arma = 1 ataque; 1 por mão): se divergir, parar e perguntar.
+
+### D-069 · Armas naturais: Garra e Presa, Forma Bestial e Pele de Pedra (complemento da D-066) [tags: armas-naturais, metamorfose, forma-bestial, pele-de-pedra, bloqueio]
+- Data: 2026-10-05
+- Decisão: "Arte Metamorfose 1, 'Garra e Presa' (artes.json:1956-1962), e Técnica Forma Bestial (tecnicas.json:2341): as garras contam como arma natural enquanto durarem e defendem como armas. Proeza Pele de Pedra (caminhos.json): a partir do nível 2, conta como arma natural para bloquear golpes com o corpo. Os níveis 1 a 4 continuam com o que já dão (Absorção etc.). O nível 1 não bloqueia. O Efeito Pele de Pedra (efeitos.json:1131) e o Efeito Arma Conjurada (efeitos.json:519) não mudam."
+- Origem: conversa do autor, 05/10/2026, item 3
+- Estado: a implementar (rodada 14, só texto). Complementa a D-066 e a D-065 item 2.
+
+### D-070 · Mão que conta como arma bloqueia armas e soma com outras armas na defesa [tags: mao-de-ferro, punho, bloqueio, arma, lamina]
+- Data: 2026-10-05
+- Decisão: "Regra geral: sempre que uma mão contar como arma (ex.: Mão de Ferro N1, tecnicas.json:268; Punho que Parte Pedra N4), ela pode bloquear ataques de armas, inclusive cortantes e perfurantes, a não ser que a Proeza ou a magia diga o contrário. E, por contar como arma, soma com outras armas na defesa. Aplique no texto (Luta desarmada e na descrição das duas Técnicas, se precisar de ajuste). Na ficha, só aplique se ela já calcula o efeito da Mão de Ferro; se não calcula, não crie cálculo novo, só me avise."
+- Origem: conversa do autor, 05/10/2026, item 4
+- Estado: a implementar (rodada 14, só texto; ficha só se já calcula a Mão de Ferro). Complementa a D-065 (item 2).
+
+### D-071 · test-grid desligado do Validar; religa na passada única do Grid [tags: grid, ci, test-grid, flake, aquece]
+- Data: 2026-10-05
+- Decisão: "Não é para testar o Grid agora. Desligue o test-grid do Validar (desligar, não apagar), para o flake '[aquece]' parar de travar as rodadas. Registre na N-grid-pendencias.md que a passada única do Grid começa religando esse teste e conferindo o que quebrou com as mudanças do livro nos dados compartilhados (armas.json, condicoes.json etc.)."
+- Origem: conversa do autor, 05/10/2026, item 5
+- Estado: a implementar (rodada 14). Consistente com a D-054.
