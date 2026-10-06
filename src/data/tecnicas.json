@@ -2351,7 +2351,7 @@
       "matilha"
     ],
     "aliases": [],
-    "texto": "Assume traços de um animal — sentidos, garras, velocidade — ou parte de sua forma.",
+    "texto": "Assume traços de um animal (sentidos, garras, velocidade) ou parte de sua forma. As garras contam como arma natural enquanto durarem e defendem como armas.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"

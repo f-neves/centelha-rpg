@@ -38,7 +38,7 @@ Os valores são **fixos por classe**: nada de campo por arma. A classe da arma v
 | Arma | Dano médio | Classe de QA |
 |---|:---:|:---:|
 | Adaga, Espada Curta, Punhos | 1,5 | Leve |
-| Espada Longa, Machado, Maça, Chutes, Arco Longo | 3,5 | Média |
+| Espada Longa, Machado, Maça, Arco Longo | 3,5 | Média |
 | Lança, Alabarda, Besta Pequena, Pilum | 5,5 | Média |
 | Montante, Martelo de Guerra | 7,0 | Pesada |
 | Besta Média, Besta Grande | 7,5 · 11,5 | Pesada |

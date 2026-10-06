@@ -932,10 +932,10 @@ export function montarFicha(opts: FichaOpts) {
     }
     // O BLOQUEIO PELA MELHOR COMBINAÇÃO (D-065): as armas e os escudos das mãos somam; o corpo só
     // defende quando nada nas mãos é usado, e não soma com eles; só os dois punhos somam entre si
-    // (+1 cada). Punhos e Chutes, na mão hábil ou na inábil, contam como mão livre (CORRIGE 140).
-    // Os Chutes (−1) ficam para o Mestre, quando as mãos não podem ser usadas: a ficha mostra a
-    // melhor combinação disponível.
-    const ehCorpo = (s: any) => s?.ref === 'a:desarmado' || s?.ref === 'a:chutes';
+    // (+1 cada). Os Punhos, na mão hábil ou na inábil, contam como mão livre (CORRIGE 140). As
+    // pernas (−1) ficam para o Mestre, quando as mãos não podem ser usadas (D-067: o chute é regra
+    // de texto, e não arma da ficha): a ficha mostra a melhor combinação disponível.
+    const ehCorpo = (s: any) => s?.ref === 'a:desarmado';
     const inabilCorpo = !it2H(habil) && ehCorpo(cj.inabil);
     const maosLivres = (ehCorpo(cj.habil) ? 1 : 0) + ((inabil.kind === 'nada' || inabilCorpo) && !it2H(habil) ? 1 : 0);
     const nasMaos = [ehCorpo(cj.habil) ? null : habil, inabilCorpo ? null : inabil].filter((it: any) => it && it.kind !== 'nada');

@@ -22,7 +22,7 @@ const pacotes = Object.entries(ler('pacotes-equipamento.json').pacotes).map(([no
 
 // "Desarmado", "Nenhuma" e "Nenhum" existem como opção de regra, não como peça:
 // entram nas tabelas, mas não recebem imagem.
-const SEM_IMAGEM = new Set(['desarmado', 'chutes', 'nenhuma', 'nenhum']);
+const SEM_IMAGEM = new Set(['desarmado', 'nenhuma', 'nenhum']);
 const imagemDe = (id) => (SEM_IMAGEM.has(id) ? '—' : `\`${id}.png\``);
 
 const CLASSE = {

@@ -676,11 +676,11 @@ Fechados (33): L5, L6, L9, L11, L12, L13, L14, L15, L17, L18, L19, L21, L22, L34
 | N13 | aberto | FAZER | A Prisão deixa Preso, e não Imobilizado (D-064). |
 | N14 | aberto | FAZER | A escala de 0 a 6 do Escapismo. |
 | N15 | aberto | FAZER | O Desarmado novo (D-057), a preencher depois da aplicação. |
-| N16 | aberto | FAZER | Chutes na mesa e no Grid (D-057, D-065). |
 | N17 | aberto | FAZER | Os dois punhos somam no Bloqueio (D-065). |
 | N18 | aberto | FAZER | Lâmina contra o corpo (D-057, D-065). |
 | N19 | aberto | FAZER | A escolha da melhor combinação de defesa (D-065). |
 | N20 | aberto | FAZER | A classe de ataque dos golems de Punhos (D-065, D-054). |
+| N21 | aberto | FAZER | Religar o `test-grid` no começo da passada única do Grid (D-071). |
 
 Fechados (0): nenhum.
 

@@ -60,7 +60,6 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 | Arma | Classe | Modos | Velocidade | Dano | Acerto | Defesa | Mãos | Destaque |
 |---|:---:|---|:---:|:---:|:---:|:---:|:---:|---|
 | Punhos | Leve | ★I | 5 | 1d6−2 | +1 | +1 | 1 | Socos e agarrões (Briga), com as mãos vazias. Ver [Luta desarmada](#luta-desarmada) |
-| Chutes | Média | ★I | 6 | 1d6 | +0 | −1 | 1 | Chutes e joelhadas (Briga). Ver [Luta desarmada](#luta-desarmada) |
 | Adaga | Leve | ★P(N0) · C | 5 | 1d6−2 | +2 | +1 | 1 | Ágil, arremessável. Rápida e precisa; só fura pele (mira na fresta) |
 | Espada Curta | Leve | ★C · P(N1) | 5 | 1d6−2 | +2 | +1 | 1 | Veloz e defensiva |
 | Espada Longa | Média | ★C · P(N1) | 6 | 1d6 | +1 | +1 | 1 | Versátil (2 mãos: Força×2). A clássica adaptável |
@@ -106,13 +105,15 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 
 ## Luta desarmada
 
-Sem arma, o corpo luta com o que tem, e as duas armas dele são de Briga. Os **Punhos** são arma leve: Velocidade 5, Acerto +1, Defesa +1, dano 1d6−2 + Força, Impacto. Os **Chutes** são arma média: Velocidade 6, Acerto +0, Defesa −1, dano 1d6 + Força, Impacto.
+Sem arma, o corpo luta com o que tem, e os golpes dele são de Briga. Os **Punhos** são arma leve: Velocidade 5, Acerto +1, Defesa +1, dano 1d6−2 + Força, Impacto. O **chute** não é arma de equipamento: é um golpe médio, de Velocidade 6, Acerto +0, Defesa −1, dano 1d6 + Força, Impacto. Ele pode ser dado mesmo com armas nas mãos, e gasta a própria ação, como qualquer golpe.
 
-No Bloqueio, você usa o que tem nas mãos: as armas e os escudos que estiver empunhando somam a Defesa deles (dois escudos, os dois contam), como a arma da mão inábil já soma. O corpo só defende quando nada nas mãos é usado, e arma ou escudo não somam com ele. Das partes do corpo, só os dois punhos somam entre si: +1 cada, +2 com as duas mãos livres. Punhos e Chutes não somam; os Chutes (−1) são a defesa de quem não pode usar as mãos, como quem está amarrado. A ficha mostra o Bloqueio com a melhor combinação que você tem; quem muda a escolha é a situação, e o Mestre ajusta.
+No Bloqueio, você usa o que tem nas mãos: as armas e os escudos que estiver empunhando somam a Defesa deles (dois escudos, os dois contam), como a arma da mão inábil já soma. O corpo só defende quando nada nas mãos é usado, e arma ou escudo não somam com ele. Das partes do corpo, só os dois punhos somam entre si: +1 cada, +2 com as duas mãos livres. As pernas não somam com eles: defender com as pernas (−1) é para quem não pode usar as mãos, como quem está amarrado. A ficha mostra o Bloqueio com a melhor combinação que você tem; quem muda a escolha é a situação, e o Mestre ajusta.
 
 Contra lâmina, o corpo não segura. Quem Bloqueia sem arma um ataque cortante ou perfurante, com qualquer parte do corpo, recebe o dano normalmente, mesmo que o Bloqueio supere o ataque. A Esquiva não muda: contra a lâmina você ainda pode sair da frente, pela regra da melhor das duas ([Combate](/regras/combate), Esquivar ou Bloquear).
 
 Quem tem armas naturais no corpo (garras, chifres, carapaça, corpo de pedra ou de ferro) ataca e se defende com elas, e quase sempre bloqueia a lâmina sem tomar o dano; o Mestre julga os casos em que o golpe bloqueado fere mesmo assim.
+
+Quando uma mão conta como arma (a Mão de Ferro, o Punho que Parte Pedra), ela bloqueia ataques de armas, inclusive cortantes e perfurantes, a não ser que a Proeza ou a magia diga o contrário, e soma com as outras armas na defesa.
 
 ## Armaduras
 

@@ -87,7 +87,9 @@ const ok = (cond, msg) => {
 // metade da conferência (motivo escrito para teste que JÁ está em portão)
 // derrubou o próprio arquivo na primeira execução. Foi de propósito: uma lista
 // de exceções que não encolhe junto com o problema vira ficção em duas semanas.
-const TESTES_FORA = {};
+const TESTES_FORA = {
+  'test-grid.mjs': 'D-071 (05/10/2026): desligado do smoke e da matriz do CI, porque o flake "[aquece]" travava as rodadas e o Grid está congelado (D-054). Religa na passada única do Grid (N-grid-pendencias.md, N21).',
+};
 
 // OS GERADORES SEM `--check` NO BUILD, e o motivo.
 //

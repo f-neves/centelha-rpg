@@ -1954,7 +1954,7 @@
       {
         "nivel": 1,
         "nome": "Garra e Presa",
-        "efeito": "muda uma parte do corpo: garras (arma natural), presas, olhos de bicho, faro apurado",
+        "efeito": "muda uma parte do corpo: garras (arma natural), presas, olhos de bicho, faro apurado; as garras contam como arma natural enquanto durarem e defendem como armas",
         "custo": {
           "mana": 1
         },

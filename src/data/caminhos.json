@@ -94,7 +94,8 @@
     "trilha": "corpo",
     "atributo": "vigor",
     "habilidade_ancora": "Resistência",
-    "descricao": "a carne que vira pedra que vira lenda"
+    "descricao": "a carne que vira pedra que vira lenda",
+    "nota": "A partir do nível 2, a pele conta como **arma natural** para bloquear golpes com o corpo (Cap. XIII, Luta desarmada); o nível 1 não bloqueia. Cada Técnica continua dando o que já dá."
   },
   {
     "id": "coracao-incansavel",

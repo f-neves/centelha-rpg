@@ -1169,3 +1169,107 @@ Machado / Chutes: 3
 - **Chutes no Cap. XIII:** a coluna Mãos passou a 1, como o `maos: 1` de `armas.json`, que é a fonte.
 - **Verificação:** `npm run validate`, `npx astro sync && npx tsc --noEmit` e `npx astro build --force`
   verdes.
+
+## Rodada 14 · Chutes saem, ataque extra, armas naturais, mão que conta como arma, test-grid (D-067 a D-071)
+
+**Antes de mexer:** li as D-067 a D-071.
+
+**D-067 (os Chutes saem do equipamento).**
+- Busca de `chutes`/`Chutes` em todo o repositório (fora de `dist/` e `node_modules`). Além dos lugares
+  listados pelo Arquiteto, achei um só: `custo-qualidade-e-equipamento.md:10`, "(menos Punhos, Chutes e
+  Nenhuma)". O resto é documento de rodada e de revisão (relato, 140, 141, decisões), que fica como
+  história.
+- Saíram:
+  - o `chutes` de `armas.json`;
+  - o `a:chutes` do `ehCorpo` da ficha (o Bloqueio agora só trata os Punhos como mão livre, nas duas
+    mãos);
+  - o `chutes` do `SEM_IMAGEM` do `gen-lista-equip.mjs`;
+  - "Chutes" do Quase-Acerto (classe Média) e de Custo e Qualidade;
+  - a linha Chutes da tabela de armas do Cap. XIII.
+- O `test-contrato.mjs` não citava os Chutes, e não mudou.
+- `combate-tempo-bench.html` regerado (33 armas).
+- **Na Luta desarmada:**
+  - o chute virou só texto: "golpe médio, de Velocidade 6, Acerto +0, Defesa −1, dano 1d6 + Força,
+    Impacto", que pode ser dado mesmo com armas nas mãos e gasta a própria ação, como qualquer golpe;
+  - "defender com as pernas (−1) é para quem não pode usar as mãos".
+- **N-grid:**
+  - o antigo N16 (Chutes na mesa e no Grid) saiu. A nota do `ficha-card.ts` foi para o N15;
+  - N15, N17 e N19 dizem "Punhos" e "as pernas" no lugar dos Chutes.
+- Uma ficha salva entre a rodada 13 e esta que tenha escolhido Chutes não quebra: o `itemDe` da ficha cai
+  em "nada" quando o id não existe, e a mesa cai nos Punhos (`combate-resumo.ts:66`).
+- **A ficha medida na tela de novo** (`../tmp/executora/bloqueio-142.mjs`, saída em `bloqueio-142.txt`;
+  os casos com Chutes saíram e entrou Machado / Punhos):
+
+```
+padrão (nada mexido): 4
+nada / nada: 4
+Punhos / nada: 4
+Espada Longa (+1) / nada: 3
+Machado (+0) / nada: 3
+Espada Longa / Broquel: 4
+nada / Broquel: 3
+Lança (2 mãos): 4
+Espada Longa / Punhos: 3
+Punhos / Punhos: 4
+Machado / Punhos: 3
+```
+
+  Punhos / Punhos = 4 e Espada Longa / Punhos = 3, como antes.
+
+**D-068 (nada dá ataque extra sem dizer que dá).**
+- Em `combate.md`, logo depois de "Uma ação, um golpe: essa é a régua padrão... sem parar no meio.", entrou
+  o parágrafo, com o exemplo do gato. Ele nomeia a Rajada e a empunhadura dupla como as regras que dão
+  golpes a mais.
+- **Conferência:**
+  - não diverge da empunhadura dupla (`combate.md`, "um ataque por mão", que é regra escrita);
+  - não diverge da Rajada;
+  - não diverge do `acaoExtra` de `regras.json:1250` (efeitos que dão ação ou ataque extra não acumulam);
+  - não diverge da decisão de 01/10 ("Múltiplos ataques só pelas regras escritas: Rajada e empunhadura
+    dupla. Fora disso, só por Poder Especial ou Proeza"). Não há regra de "ataques múltiplos" além dessas.
+  - A Firula não dá ataque.
+- **Uma pergunta que fica aberta, sem mudança:** a ficha deixa escolher Punhos nas duas mãos, e o
+  `calcConj` então calcula a empunhadura dupla (um golpe por mão), porque os Punhos são arma no
+  `armas.json`. Pela D-068, partes do corpo são opções de ataque, e não ataques a mais. Pela empunhadura
+  dupla, "uma arma em cada mão" dá um golpe por mão. Qual das duas vale para os dois Punhos é escolha do
+  autor. Avisei o Arquiteto, e a ficha não foi mexida.
+
+**D-069 (armas naturais, só texto):**
+- Metamorfose 1, "Garra e Presa" (`artes.json`): "as garras contam como arma natural enquanto durarem e
+  defendem como armas".
+- Forma Bestial (`tecnicas.json`): a mesma frase no fim do texto. Os dois travessões que a frase de antes
+  tinha viraram parênteses.
+- Proeza Pele de Pedra: pelo campo `nota` de `caminhos.json`, o mesmo da rodada 11, a página da Proeza
+  diz "A partir do nível 2, a pele conta como arma natural para bloquear golpes com o corpo (Cap. XIII,
+  Luta desarmada); o nível 1 não bloqueia. Cada Técnica continua dando o que já dá."
+- Os textos das Técnicas da Pele de Pedra e os Efeitos Pele de Pedra e Arma Conjurada não mudaram.
+
+**D-070 (a mão que conta como arma):**
+- Uma linha na Luta desarmada: "Quando uma mão conta como arma (a Mão de Ferro, o Punho que Parte Pedra),
+  ela bloqueia ataques de armas, inclusive cortantes e perfurantes, a não ser que a Proeza ou a magia
+  diga o contrário, e soma com as outras armas na defesa."
+- As descrições das duas Técnicas não precisaram de ajuste.
+- **A ficha não calcula a Mão de Ferro** (nenhum código lê `mao-de-ferro` ou `punho-que-parte-pedra`, só
+  scripts de migração antigos). Por isso nada foi criado na ficha.
+
+**D-071 (o test-grid fora do CI):**
+- Na matriz do smoke de `.github/workflows/validate.yml`, a linha `- test-grid` virou comentário, com o
+  motivo e como religar.
+- O `node scripts/test-grid.mjs` saiu do `smoke` do `package.json`, porque o `test-portoes.mjs` exige que
+  o `smoke` e a matriz concordem. Ele entrou no `TESTES_FORA` do portão, com o motivo, porque o portão
+  também exige que todo teste esteja num portão ou declarado.
+- Os outros testes de mesa da matriz continuam ligados: test-grid-simultaneo, test-golpe-caido, os
+  `-mesa` e o test-espelho. O flake "[aquece]" era do test-grid.
+- O `pre-commit` local roda o `validate`, que nunca chamou o test-grid.
+- A N21 registra que a passada única do Grid começa religando o teste e conferindo o que quebrou nos
+  dados compartilhados.
+
+**Verificação:**
+- `npm run validate` verde (o portão diz "os 67 testes estão no validate ou no smoke, menos 1
+  declarado");
+- `npx astro sync && npx tsc --noEmit` sem erro;
+- `npx astro build --force` verde.
+- No gerado:
+  - os 10 trechos novos estão no Cap. XIII, em Combate, na Pele de Pedra, no Vínculo Animal, no catálogo
+    e em Custo e Qualidade;
+  - "Chutes" dá 0 no Cap. XIII, em `/equipamentos`, no Quase-Acerto e em Custo e Qualidade;
+  - nenhum JavaScript gerado tem `chutes`.

@@ -1304,36 +1304,5 @@
     "armadura": null,
     "escudo": null,
     "municao": null
-  },
-  {
-    "id": "chutes",
-    "nome": "Chutes",
-    "tipo": "arma",
-    "peso": 0,
-    "descricao": "Chutes e joelhadas (Briga); dano de Impacto. No Bloqueio, as pernas (−1) são a defesa de quem não pode usar as mãos.",
-    "tags": [],
-    "arma": {
-      "classe": "media",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "danoBonus": 0,
-      "acerto": 0,
-      "defesaArma": -1,
-      "maos": 1,
-      "ticks": 6,
-      "folego": 24,
-      "tipoDano": "impacto",
-      "pen": 0,
-      "modos": [
-        {
-          "tipo": "impacto",
-          "principal": true
-        }
-      ]
-    },
-    "armadura": null,
-    "escudo": null,
-    "municao": null
   }
 ]

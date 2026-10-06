@@ -78,7 +78,8 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
     que as outras secundárias têm (`niveis`).
   - A mesa e a ficha não têm nada a ler para ela.
 - [ ] **N15 · [FAZER] O Desarmado novo (D-057), a preencher depois da aplicação.**
-  - A D-057 troca a linha Desarmado por Punhos e Chutes, e espera o relato da conferência.
+  - A D-057 trocava a linha Desarmado por Punhos e Chutes. A D-067 tirou os Chutes do equipamento: o chute
+    virou só regra de texto, e nunca esteve na mesa nem no Grid (o antigo N16 saiu).
   - A mesa e o Grid leem o Desarmado:
     - `src/lib/combate-resumo.ts:66` e `:72` (`ARMA['desarmado']`, usado por `mesa-ficha.ts` e
       `mesa-bestiario.ts`);
@@ -86,19 +87,14 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
       `grid-golpe-fx.ts:663`;
     - `src/lib/combate-tempo.ts:218`.
   - Aplicada na rodada 13 (D-065): o id `desarmado` ficou, com o nome "Punhos" e os mesmos números, e
-    entrou `chutes`. Nada nesses leitores quebra, e o que eles ainda não fazem está em N16 a N19.
-- [ ] **N16 · [FAZER] Chutes na mesa e no Grid (D-057, D-065).**
-  - O livro diz (Cap. XIII, Luta desarmada): os Chutes são arma média de Briga (Velocidade 6, Acerto +0,
-    Defesa −1, 1d6 + Força).
-  - A mesa e o Grid leem `armas.json` pelo `armaDoSlot` e passam a achar `a:chutes`. Mas com a mão vazia
-    caem sempre em `ARMA['desarmado']`, os Punhos (`combate-resumo.ts:66`, `:72`), e nada no tabuleiro
-    oferece os Chutes.
+    entrou `chutes`, que a D-067 tirou na rodada 14. Nada nesses leitores quebra, e o que eles ainda não
+    fazem está em N17 a N19.
   - O `ficha-card.ts:74`, que a mesa usa, ainda tem "Desarmado" como reserva quando não acha nome.
 - [ ] **N17 · [FAZER] Os dois punhos somam no Bloqueio (D-065).**
   - O livro diz: só os dois punhos somam entre si, +1 cada, +2 com as duas mãos livres. Arma ou escudo e
     corpo não somam, e a ficha mostra a melhor combinação.
-  - A ficha faz isso desde o CORRIGE 140 (`calcConj` em `ficha-engine.ts`): Punhos ou Chutes, em qualquer das
-    duas mãos, contam como mão livre. Na rodada 13 a mão inábil com Punhos ainda somava como arma, e o
+  - A ficha faz isso desde o CORRIGE 140 (`calcConj` em `ficha-engine.ts`): os Punhos, em qualquer das duas
+    mãos, contam como mão livre. Na rodada 13 a mão inábil com Punhos ainda somava como arma, e o
     Punhos / Punhos contava um punho só.
   - A mesa calcula o Bloqueio sem a Defesa da arma nenhuma (`mesa-ficha.ts:97`) e usa a Esquiva como
     Defesa física do resumo (`combate-resumo.ts:157`).
@@ -108,8 +104,8 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
   - O Grid e a mesa não têm essa regra.
 - [ ] **N19 · [FAZER] A escolha da melhor combinação de defesa (D-065).**
   - O livro diz: o personagem defende com o que tem nas mãos (somam, dois escudos contam), ou com o corpo
-    quando nada nas mãos é usado, e o Mestre ajusta pela situação (Chutes, −1, quando as mãos não podem
-    ser usadas).
+    quando nada nas mãos é usado, e o Mestre ajusta pela situação (as pernas, −1, quando as mãos não
+    podem ser usadas).
   - O Grid e a mesa não deixam escolher.
 - [ ] **N20 · [FAZER] A classe de ataque dos golems de Punhos (D-065, D-054).**
   - O `gen-monsters.mjs` dá a classe do ataque pelo nome da arma do catálogo. Com a arma Punhos (leve) no
@@ -119,3 +115,13 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
   - Na passada do Grid, decidir a classe deles (leve pelo nome, ou média pela Velocidade 6).
   - O Golem de Gelo ataca com "Punhos gelados" a Velocidade 5. O nome também começa com "Punhos", e ele
     também passaria a "leve" pelo nome, mas já era "leve" pela Velocidade 5, então nada mudou nele.
+- [ ] **N21 · [FAZER] Religar o `test-grid` no começo da passada única do Grid (D-071).**
+  - O `test-grid` saiu da matriz do CI (`.github/workflows/validate.yml`, linha comentada) e do `smoke`
+    do `package.json` na rodada 14, e está declarado no `TESTES_FORA` de `scripts/test-portoes.mjs`. O
+    flake "[aquece]" travava as rodadas.
+  - A passada única do Grid começa religando esse teste (descomentar a linha da matriz, devolver
+    `node scripts/test-grid.mjs` ao `smoke`, tirar a entrada do `TESTES_FORA`).
+  - Em seguida, conferir o que quebrou com as mudanças do livro nos dados compartilhados (`armas.json`,
+    `condicoes.json`, `efeitos.json`, `regras.json` etc.).
+  - Os outros testes de mesa da matriz (test-grid-simultaneo, test-golpe-caido, os `-mesa` e o
+    test-espelho) continuam ligados.

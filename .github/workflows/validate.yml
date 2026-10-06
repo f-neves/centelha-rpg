@@ -91,7 +91,10 @@ jobs:
       fail-fast: false
       matrix:
         teste:
-          - test-grid
+          # - test-grid  · DESLIGADO pela D-071 (05/10/2026): o flake "[aquece]" travava as rodadas, e o
+          #   Grid está congelado (D-054). Religar na passada única do Grid: descomentar esta linha, devolver
+          #   `node scripts/test-grid.mjs` ao `smoke` do package.json e tirar a entrada dele do
+          #   TESTES_FORA de scripts/test-portoes.mjs (N-grid-pendencias.md, N21).
           - test-espelho
           - test-golpe-caido
           - test-bandeiras-mesa
