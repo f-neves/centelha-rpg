@@ -118,3 +118,7 @@ A **C-065** (`decisoes.md`:1022) diz "Pendência G75 em G-acoes-sistema.md: reve
 ## CLAREZA
 
 Nada a acrescentar.
+
+## Nota de delta (§10)
+
+No push, o rebase trouxe `0fab8b13` (rodada 14: tira o parágrafo da D-068 de `combate.md`). Ele toca só `combate.md` e o relato, e não `decisoes.md`: a conclusão fica.
