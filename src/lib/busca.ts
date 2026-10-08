@@ -93,8 +93,9 @@ export interface Veredito {
  *
  * A PREMISSA de que `locais` indexa `palavras` (o pagefind conta as posições em `content.split(' ')`)
  * é do pagefind, não nossa. Se ela quebrar (uma posição fora do texto, ou `contagem`, o
- * `word_count` dele, diferente do número de palavras), o filtro erraria calado; então o resultado
- * inteiro é tratado como neutro: passa, sem destaque, e é contado em `neutros`.
+ * `word_count` dele, DIFERENTE do número de palavras, para mais ou para menos), o filtro erraria
+ * calado; então o resultado inteiro é tratado como neutro: passa, sem destaque, e é contado em
+ * `neutros`.
  */
 export function filtrarCaixa(palavras: string[], locais: number[], tokens: string[], modo: Modo, contagem?: number): Veredito {
   if (!tokens.length) return { ok: true, aceitos: [], neutros: 0 };

@@ -120,10 +120,16 @@ ok(fora.ok && fora.neutros === 1 && fora.aceitos.length === 0, 'uma posição fo
 ok(v(k, [-1], 'kael').ok && v(k, [1.5], 'kael').ok && v(k, [Number.NaN], 'kael').ok, 'posição negativa, fracionária ou NaN: neutro, sem exceção');
 ok(v(k, undefined, 'kael').ok && v(k, null, 'kael').ok, 'locations ausente: neutro, sem exceção');
 ok(M.filtrarCaixa(k, [1], ['kael'], 'palavras', k.length).ok === false, 'word_count igual ao número de palavras: o filtro age normalmente ("kael" sai)');
+// "diferente" vale nas DUAS direções: word_count maior (o texto perdeu palavras) e menor (ganhou)
 const wc = M.filtrarCaixa(k, [1], ['kael'], 'palavras', k.length + 1);
-ok(wc.ok && wc.neutros === 1 && wc.aceitos.length === 0, 'word_count diferente do número de palavras: resultado neutro, passa');
+ok(wc.ok && wc.neutros === 1 && wc.aceitos.length === 0, 'word_count MAIOR que o número de palavras: resultado neutro, passa');
+const wcm = M.filtrarCaixa(k, [1], ['kael'], 'palavras', k.length - 1);
+ok(wcm.ok && wcm.neutros === 1 && wcm.aceitos.length === 0, 'word_count MENOR que o número de palavras: resultado neutro, passa');
+ok(M.filtrarCaixa(k, [1], ['kael'], 'palavras', 0).ok && M.filtrarCaixa(k, [1], ['kael'], 'palavras', 0).neutros === 1, 'word_count zero: neutro');
 const wcf = M.filtrarCaixa(['na', 'Defesa', 'contra', 'projéteis.'], [1, 2, 3], ['defesa', 'contra', 'projéteis'], 'frase', 999);
 ok(wcf.ok && wcf.neutros === 3, 'o mesmo na frase exata: neutro');
+const wcfm = M.filtrarCaixa(['na', 'Defesa', 'contra', 'projéteis.'], [1, 2, 3], ['defesa', 'contra', 'projéteis'], 'frase', 3);
+ok(wcfm.ok && wcfm.neutros === 3, 'o mesmo na frase exata com word_count menor: neutro');
 ok(v(k, [1], '').ok && v(k, [1], '"').ok, 'sem palavras digitadas (vazio, só aspas), o filtro não derruba nada');
 
 // frase exata: sequência de palavras consecutivas, cada uma com a caixa certa
