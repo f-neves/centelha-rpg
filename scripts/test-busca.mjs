@@ -47,58 +47,83 @@ igual(M.termoPagefind(['arma', 'armadura'], 'frase'), '"arma armadura"', 'Frase 
 igual(M.termoPagefind(M.tokensDe('"arma armadura"'), 'frase'), '"arma armadura"', 'aspas digitadas não duplicam');
 
 // ------------------------------------------------------------------ o Aa
-const TEXTO = 'Kael luta contra o Uldun. O exemploKael aparece. Defesa contra projéteis: +3. A absorção do alvo. '
-  + 'A armadura pesada e as armaduras leves. Lutando, ele luta.';
-const casa = (digitado, modo, texto = TEXTO) => M.contem(texto, M.padroes(M.tokensDe(digitado), modo), true);
-const solto = (digitado, modo, texto = TEXTO) => // o mesmo padrão com a caixa afrouxada: o controle negativo
-  M.padroes(M.tokensDe(digitado), modo).some((re) => new RegExp(re.source, 'giu').test(M.norm(texto).s));
+// O Aa não busca: ele confere a CAIXA das palavras que o pagefind já casou (por radical). Os
+// vetores abaixo têm a forma do que `result.data()` devolve de verdade: `palavras` é o texto em
+// `content.split(' ')` e `locais` são os `locations` (posições nelas). As palavras casadas são
+// as que o pagefind mostrou na sonda de 08/10/2026 ("luta", "lutando.", "lutador;", "mágicos"...).
+const v = (palavras, locais, digitado, modo = 'palavras') => M.filtrarCaixa(palavras, locais, M.tokensDe(digitado), modo);
+// o controle negativo: a MESMA entrada com a caixa desligada à força (tudo em minúsculas)
+const frouxo = (palavras, locais, digitado, modo = 'palavras') =>
+  M.filtrarCaixa(palavras.map((x) => x.toLowerCase()), locais, M.tokensDe(digitado.toLowerCase()), modo);
 
-// só com inicial maiúscula: kael e uldun
-ok(casa('Kael', 'palavras'), '"Kael" casa com o texto que traz "Kael"');
-ok(!casa('kael', 'palavras'), '"kael" NÃO casa com Aa (o texto só tem "Kael")');
-ok(solto('kael', 'palavras'), 'controle negativo: "kael" casaria sem a caixa exata');
-ok(!casa('KAEL', 'palavras'), '"KAEL" NÃO casa com Aa');
-ok(casa('Uldun', 'palavras') && !casa('uldun', 'palavras') && solto('uldun', 'palavras'), '"Uldun" casa, "uldun" não, e casaria sem a caixa');
-// a emenda de camelCase (o pagefind separa "exemploKael")
-ok(casa('Kael', 'palavras', 'veja exemploKael abaixo'), 'camelCase: "Kael" casa dentro de "exemploKael"');
-ok(!casa('kael', 'palavras', 'veja exemploKael abaixo'), 'camelCase: "kael" continua não casando');
-// início de palavra
-ok(!casa('rmadura', 'palavras'), 'meio de palavra NÃO casa ("rmadura")');
-ok(casa('armad', 'palavras'), 'o começo de uma palavra casa ("armad" acha "armadura")');
+// kael e uldun: o livro só os tem com inicial maiúscula
+const k = ['O', 'Kael', 'luta', 'contra', 'o', 'Uldun.'];
+ok(v(k, [1], 'Kael').ok, '"Kael" fica: a palavra casada é "Kael"');
+ok(!v(k, [1], 'kael').ok, '"kael" SAI com Aa: a palavra casada tem outra caixa');
+ok(frouxo(k, [1], 'kael').ok, 'controle negativo: "kael" ficaria sem a caixa exata');
+ok(!v(k, [1], 'KAEL').ok, '"KAEL" SAI com Aa');
+ok(v(k, [5], 'Uldun').ok && !v(k, [5], 'uldun').ok && frouxo(k, [5], 'uldun').ok, '"Uldun" fica, "uldun" sai, e ficaria sem a caixa');
+igual(v(k, [1], 'Kael').aceitos, [1], 'a palavra de caixa certa é a que se destaca');
+igual(v(k, [1], 'kael').aceitos, [], 'e nenhuma se destaca quando a caixa não bate');
+// camelCase: o pagefind separa "exemploKael" e casa "Kael" nele
+ok(v(['veja', 'exemploKael', 'abaixo'], [1], 'Kael').ok, 'camelCase: "Kael" casa dentro de "exemploKael"');
+ok(!v(['veja', 'exemploKael', 'abaixo'], [1], 'kael').ok, 'camelCase: "kael" continua saindo');
 // acento ignorado, caixa não
-ok(casa('absorcao', 'palavras'), '"absorcao" casa com "absorção" (acento ignorado)');
-ok(casa('absorção', 'palavras'), '"absorção" casa com "absorção"');
-ok(!casa('Absorcao', 'palavras'), '"Absorcao" NÃO casa: o texto tem "absorção" minúsculo');
-ok(solto('Absorcao', 'palavras'), 'controle negativo: "Absorcao" casaria sem a caixa exata');
-// plural digitado acha o singular
-ok(casa('armaduras', 'palavras', 'A armadura pesada.'), 'plural digitado casa com o singular do texto');
-ok(casa('armadura', 'palavras', 'As armaduras leves.'), 'singular digitado casa com o plural do texto (início de palavra)');
-// várias palavras: todas têm de aparecer
-ok(casa('Kael Uldun', 'palavras'), 'duas palavras presentes casam');
-ok(!casa('Kael Balkor', 'palavras'), 'uma das duas ausente NÃO casa');
-// frase exata
-ok(casa('Defesa contra projéteis', 'frase'), 'frase na ordem do texto casa');
-ok(casa('Defesa contra projeteis', 'frase'), 'frase sem acento casa');
-ok(!casa('projéteis contra Defesa', 'frase'), 'frase em ordem trocada NÃO casa');
-ok(!casa('defesa contra projéteis', 'frase'), 'frase com a caixa trocada NÃO casa com Aa');
-ok(solto('defesa contra projéteis', 'frase'), 'controle negativo: a frase em minúsculas casaria sem a caixa exata');
-ok(casa('contra o Uldun', 'frase'), 'frase com palavra de ligação casa');
-ok(!casa('Kael Uldun', 'frase'), 'duas palavras que existem mas não em sequência NÃO casam como frase');
-ok(casa('Kael Uldun', 'palavras'), 'e as mesmas duas palavras casam no modo Palavras');
-ok(casa('A absorção do alvo', 'frase'), 'frase atravessa a pontuação do texto');
-ok(casa('Defesa contra', 'frase', 'Defesa, contra tudo'), 'a pontuação entre as palavras da frase não a quebra');
+ok(v(['A', 'absorção', 'do', 'alvo'], [1], 'absorcao').ok, '"absorcao" casa com "absorção" (acento ignorado)');
+ok(v(['A', 'absorção', 'do', 'alvo'], [1], 'absorção').ok, '"absorção" casa com "absorção"');
+ok(!v(['A', 'Absorção', 'do', 'alvo'], [1], 'absorcao').ok, '"absorcao" SAI quando o texto só tem "Absorção"');
+ok(v(['A', 'Absorção', 'do', 'alvo'], [1], 'Absorcao').ok, '"Absorcao" fica quando o texto tem "Absorção"');
+ok(frouxo(['A', 'Absorção'], [1], 'absorcao').ok, 'controle negativo: "absorcao" ficaria sem a caixa exata');
+
+// O ponto do veredito 143: o Aa NÃO pode derrubar o que o pagefind acha por radical.
+// "lutando" acha "luta", "lutar", "lutador" e a caixa bate: tem de ficar (a regra antiga dava 22 -> 4).
+const lut = ['A', 'luta', 'luta.', 'lutar', 'lutador;', 'lutando.', 'fim'];
+const rl = v(lut, [1, 2, 3, 4, 5], 'lutando');
+ok(rl.ok, '"lutando" fica quando o texto traz "luta", "lutar", "lutador" e "lutando" em minúsculas');
+igual(rl.aceitos, [1, 2, 3, 4, 5], 'e todas as variações casadas se destacam');
+ok(!v(['A', 'Luta', 'Luta', 'fim'], [1, 2], 'lutando').ok, '"lutando" sai quando as palavras casadas só têm inicial maiúscula');
+ok(v(['A', 'Luta', 'Luta', 'fim'], [1, 2], 'Lutando').ok, '"Lutando" fica nesse mesmo texto');
+ok(v(['A', 'Luta', 'e', 'luta', 'fim'], [1, 3], 'lutando').ok, 'basta UMA variação de caixa certa ("luta" depois de "Luta")');
+ok(v(['ele', 'ataca', 'com', 'ataque', 'e', 'atacar'], [1, 3, 5], 'atacar').ok, '"atacar" acha "ataca", "ataque", "atacar"');
+ok(v(['um', 'animal', 'e', 'dois', 'animais'], [1, 4], 'animais').ok, '"animais" acha "animal" e "animais"');
+ok(v(['a', 'mágica,', 'os', 'mágicos', 'e', 'a', 'magia'], [1, 3, 6], 'magia').ok, '"magia" acha "mágica", "mágicos", "magia" (acento e radical)');
+ok(!v(['a', 'Magia', 'e', 'Magnitude'], [1, 3], 'magia').ok, '"magia" sai quando só há "Magia" e "Magnitude"');
+ok(v(['a', 'Magia', 'e', 'Magnitude'], [1, 3], 'Magia').ok, '"Magia" fica nesse texto');
+// plural digitado e flexão: a caixa só se compara onde as duas palavras começam iguais
+ok(v(['A', 'armadura', 'pesada'], [1], 'armaduras').ok, 'plural digitado acha o singular do texto');
+ok(!v(['A', 'Armadura', 'pesada'], [1], 'armaduras').ok, 'plural digitado em minúsculas sai se o texto tem "Armadura"');
+// várias palavras: cada uma precisa da sua
+ok(v(k, [1, 5], 'Kael Uldun').ok, 'duas palavras de caixa certa ficam');
+ok(!v(k, [1, 5], 'Kael uldun').ok, 'uma das duas com a caixa errada derruba o resultado');
+// o que não dá para conferir passa (a regra é só "menos os de outra caixa")
+const nv = v(['xyz', 'abc'], [0], 'kael');
+ok(nv.ok && nv.neutros === 1 && nv.aceitos.length === 0, 'palavra casada sem parentesco com o digitado: não há o que conferir, passa e é contada');
+ok(v(k, [], 'kael').ok, 'sem posições nenhuma, passa');
+ok(v(k, [99, -1], 'kael').ok, 'posições fora do texto são ignoradas');
+ok(v(k, [1], '').ok && v(k, [1], '"').ok, 'sem palavras digitadas (vazio, só aspas), o filtro não derruba nada');
+
+// frase exata: sequência de palavras consecutivas, cada uma com a caixa certa
+const fr = ['+3', 'na', 'Defesa', 'contra', 'projéteis.', 'A', 'Interação'];
+ok(v(fr, [2, 3, 4], 'Defesa contra projéteis', 'frase').ok, 'frase com a caixa do texto fica');
+ok(v(fr, [2, 3, 4], 'Defesa contra projeteis', 'frase').ok, 'frase sem acento fica');
+ok(!v(fr, [2, 3, 4], 'defesa contra projéteis', 'frase').ok, 'frase com a caixa trocada SAI com Aa');
+ok(frouxo(fr, [2, 3, 4], 'defesa contra projéteis', 'frase').ok, 'controle negativo: ficaria sem a caixa exata');
+igual(v(fr, [2, 3, 4], 'Defesa contra projéteis', 'frase').aceitos, [2, 3, 4], 'a frase inteira se destaca');
+ok(v(['x', 'Defesa', 'a', 'Defesa', 'contra', 'projéteis'], [1, 3, 4, 5], 'defesa contra projéteis', 'frase').ok === false, 'frase: a sequência é que conta, e uma "Defesa" solta antes não salva a de caixa errada');
+ok(v(['x', 'Defesa', 'a', 'defesa', 'contra', 'projéteis'], [1, 3, 4, 5], 'defesa contra projéteis', 'frase').ok, 'frase: uma das ocorrências com a caixa certa basta');
+ok(v(fr, [2, 4], 'Defesa contra projéteis', 'frase').ok, 'frase sem sequência completa nas posições: não há o que conferir, passa');
 
 // ------------------------------------------------------------- o destaque
-const marcado = M.realcar('Kael e kael e <b>Kael</b>', M.padroes(['Kael'], 'palavras'), false);
-ok(marcado === '<mark>Kael</mark> e kael e &lt;b&gt;<mark>Kael</mark>&lt;/b&gt;', `destaque só na caixa exata e com o HTML escapado (veio ${marcado})`);
-const longo = 'palavra '.repeat(60) + 'Kael ' + 'palavra '.repeat(60);
-const janela = M.realcar(longo, M.padroes(['Kael'], 'palavras'), true);
-ok(janela.startsWith('… ') && janela.endsWith(' …') && janela.includes('<mark>Kael</mark>') && janela.length < 400, 'a janela recorta ao redor do achado, com reticências');
-ok(M.realcar('sem nada', M.padroes(['Kael'], 'palavras'), true) === 'sem nada', 'sem achado, o texto sai como está');
+const pal = ['A', 'luta <b>', 'do', 'Kael', '&', 'fim'];
+igual(M.trechoDe(pal, [3], 3, 10, 10), 'A luta &lt;b&gt; do <mark>Kael</mark> &amp; fim', 'destaque só nas palavras marcadas, com o HTML escapado');
+const longa = Array.from({ length: 100 }, (_, i) => (i === 50 ? 'Kael' : 'p' + i));
+const jan = M.trechoDe(longa, [50], 50, 5, 5);
+ok(jan.startsWith('… ') && jan.endsWith(' …') && jan.includes('<mark>Kael</mark>') && jan.split(' ').length < 20, 'a janela recorta ao redor do achado, com reticências');
+ok(M.trechoDe(['só', 'isto'], [], 0, 5, 5) === 'só isto', 'sem marcação nem corte, o texto sai como está');
 
 if (falhas.length) {
   console.error(`✘ test-busca: ${falhas.length} falha(s)`);
   for (const f of falhas) console.error('  · ' + f);
   process.exit(1);
 }
-console.log('✓ test-busca · a regra de casamento da busca (palavras, frase exata, Aa, acento, camelCase, termo vazio, só aspas, destaque)');
+console.log('✓ test-busca · a regra da busca (palavras, frase exata, Aa por caixa sobre o que o pagefind casou, radical, acento, camelCase, termo vazio, só aspas, destaque)');

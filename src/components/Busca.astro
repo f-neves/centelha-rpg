@@ -31,13 +31,13 @@ const pfJs = url('pagefind/pagefind.js');
   <p class="muted busca-hint">
     <b>Palavras</b> acha as páginas que têm todas as palavras digitadas, em qualquer ordem.
     <b>Frase exata</b> só acha as palavras em sequência, como foram digitadas.
-    <b>Aa</b> exige a mesma caixa das letras digitadas (maiúscula ou minúscula); os acentos continuam sendo ignorados.
+    <b>Aa</b> diferencia maiúscula de minúscula: <em>Kael</em> não acha <em>kael</em>. Só descarta os resultados em que a palavra achada tem outra caixa; as variações que a busca já acha (<em>luta</em>, <em>lutando</em>, <em>lutador</em>) continuam valendo. Os acentos continuam sendo ignorados.
     Conceitos também funcionam: tente <em>willpower</em>, <em>iniciativa</em>, <em>absorção</em>.
   </p>
 </dialog>
 
 <script>
-  import { tokensDe, termoPagefind, padroes, contem, realcar } from '../lib/busca';
+  import { tokensDe, termoPagefind, palavrasDe, filtrarCaixa, trechoDe } from '../lib/busca';
 
   const dlg = document.querySelector('.busca-modal');
   const pfJs = dlg.dataset.pf;
@@ -74,8 +74,9 @@ const pfJs = url('pagefind/pagefind.js');
   }
 
   // ---- resultados ----
-  function item(d, pads) {
-    const exato = !!pads;
+  // `aa` é nulo na busca sem Aa (o trecho é o do pagefind) ou { pal, v } com o Aa ligado: as palavras da
+  // página e o veredito da caixa, de onde saem as palavras a destacar.
+  function item(d, aa) {
     const li = document.createElement('li');
     li.className = 'busca-res';
     const h = document.createElement('h3');
@@ -87,9 +88,13 @@ const pfJs = url('pagefind/pagefind.js');
     li.append(h);
     const tr = document.createElement('p');
     tr.className = 'busca-res-trecho';
-    tr.innerHTML = exato ? realcar(d.content, pads, true) : d.excerpt;
+    const marcadas = aa ? aa.v.aceitos : [];
+    tr.innerHTML = marcadas.length ? trechoDe(aa.pal, marcadas, marcadas[0], 12, 28) : d.excerpt;
     li.append(tr);
-    const subs = (d.sub_results || []).filter((s) => s.anchor && (!exato || contem(s.plain_excerpt, pads, false))).slice(0, SUBS);
+    let subs = (d.sub_results || []).filter((s) => s.anchor);
+    // com Aa, só as seções em que alguma palavra de caixa certa aparece (se nenhuma foi conferida, valem todas)
+    if (marcadas.length) subs = subs.filter((s) => s.locations.some((i) => marcadas.includes(i)));
+    subs = subs.slice(0, SUBS);
     if (subs.length) {
       const ul = document.createElement('ul');
       ul.className = 'busca-subs';
@@ -99,7 +104,8 @@ const pfJs = url('pagefind/pagefind.js');
         sa.href = s.url;
         sa.textContent = s.title;
         const sp = document.createElement('p');
-        sp.innerHTML = exato ? realcar(s.plain_excerpt, pads, false) : s.excerpt;
+        const ms = marcadas.length ? s.locations.filter((i) => marcadas.includes(i)) : [];
+        sp.innerHTML = ms.length ? trechoDe(aa.pal, marcadas, ms[0], 8, 22) : s.excerpt;
         si.append(sa, sp);
         ul.append(si);
       }
@@ -112,7 +118,7 @@ const pfJs = url('pagefind/pagefind.js');
   let cand = [];    // resultados do pagefind ainda sem os dados
   let fila = [];    // com Aa: os que passaram no filtro de caixa
   let ptr = 0;
-  let ativo = null; // { aa, pads, m }
+  let ativo = null; // { aa, m }
 
   async function mostrarMais(minha) {
     if (!ativo) return;
@@ -127,7 +133,7 @@ const pfJs = url('pagefind/pagefind.js');
     } else {
       const lote = fila.slice(ptr, ptr + LOTE);
       ptr += lote.length;
-      lote.forEach((d) => lista.append(item(d, ativo.pads)));
+      lote.forEach((x) => lista.append(item(x.d, x)));
       restante = fila.length - ptr;
     }
     mais.hidden = restante <= 0;
@@ -158,14 +164,18 @@ const pfJs = url('pagefind/pagefind.js');
     if (resp === null || minha !== seq) return;
     // lista e estado trocam juntos, no mesmo trecho síncrono: nunca há lista de uma busca com fila de outra
     lista.replaceChildren();
-    ativo = { aa, m, pads: aa ? padroes(tokens, m) : null };
+    ativo = { aa, m };
     cand = resp.results; fila = []; ptr = 0;
     if (aa) {
-      // o pagefind ignora a caixa, então o filtro precisa ver o texto de todos os candidatos
+      // o pagefind ignora a caixa; o filtro olha a caixa das palavras que ele casou em cada candidato
       for (let i = 0; i < cand.length; i += 12) {
         const dados = await Promise.all(cand.slice(i, i + 12).map((r) => r.data()));
         if (minha !== seq) return;
-        dados.forEach((d) => { if (contem(d.content, ativo.pads, true)) fila.push(d); });
+        dados.forEach((d) => {
+          const pal = palavrasDe(d.content);
+          const v = filtrarCaixa(pal, d.locations, tokens, m);
+          if (v.ok) fila.push({ d, pal, v });
+        });
       }
     }
     const total = aa ? fila.length : cand.length;
