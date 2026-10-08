@@ -665,6 +665,10 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
 .busca-modal::backdrop { background: rgba(0,0,0,.45); }
 /* o dourado do tema legível é escuro (#7a5e16): ali o destaque pede texto claro para passar de 4,5:1 */
 [data-theme='legivel'] .busca-modal { --b-mark-fg: #ffffff; }
+/* a regra global de .cinzel pinta o título com --accent-texto (3,73:1 no clássico); aqui o título usa o tom de link */
+.busca-modal .busca-head strong { color: var(--b-link); }
+/* a dica de atalho do botão Buscar usava opacity .6 (3,98:1 no clássico); sem opacity, no cinza do tema */
+.busca-abrir .busca-kbd { float: right; color: var(--ink-soft); }
 .busca-modal .busca-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: .6rem; }
 .busca-modal .busca-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .busca-modal .busca-opcoes { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; margin-bottom: .65rem; }

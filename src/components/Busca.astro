@@ -3,7 +3,7 @@ import { url } from '../lib/site';
 const pfJs = url('pagefind/pagefind.js');
 ---
 <button class="btn busca-abrir" aria-label="Buscar (tecle /)" style="width:100%;text-align:left">
-  🔍 Buscar… <kbd style="float:right;opacity:.6">/</kbd>
+  🔍 Buscar… <kbd class="busca-kbd">/</kbd>
 </button>
 
 <!-- A marcação é nossa e fala com o pagefind.js direto (sem o PagefindUI): o Aa precisa descartar
@@ -186,6 +186,7 @@ const pfJs = url('pagefind/pagefind.js');
   let ativo = null; // { aa, pads, m }
 
   async function mostrarMais(minha) {
+    if (!ativo) return;
     let restante;
     if (!ativo.aa) {
       const lote = cand.slice(ptr, ptr + LOTE);
@@ -206,12 +207,19 @@ const pfJs = url('pagefind/pagefind.js');
 
   async function buscar() {
     const minha = ++seq;
+    // o botão da busca anterior não pode ser clicado enquanto a nova corre: ele atuaria sobre a fila nova, ainda parcial
+    mais.hidden = true;
     const bruto = entrada.value.trim();
-    if (!bruto) { lista.replaceChildren(); mais.hidden = true; msg.textContent = ''; return; }
     const m = modo();
     const aa = caixaAa.checked;
     const tokens = bruto.match(/[\p{L}\p{N}]+/gu) || [];
-    if (!tokens.length) { msg.textContent = 'Digite ao menos uma palavra.'; return; }
+    if (!tokens.length) {
+      // sem termo (vazio ou só pontuação): nada da busca anterior fica na tela
+      lista.replaceChildren();
+      cand = []; fila = []; ptr = 0; ativo = null;
+      msg.textContent = bruto ? 'Digite ao menos uma palavra.' : '';
+      return;
+    }
     msg.textContent = carga ? 'Buscando…' : 'Carregando o índice…';
     const pf = await ensure();
     if (minha !== seq) return;
@@ -220,6 +228,8 @@ const pfJs = url('pagefind/pagefind.js');
     const termo = m === 'frase' ? '"' + tokens.join(' ') + '"' : tokens.join(' ');
     const resp = await pf.debouncedSearch(termo, {}, ATRASO);
     if (resp === null || minha !== seq) return;
+    // lista e estado trocam juntos, no mesmo trecho síncrono: nunca há lista de uma busca com fila de outra
+    lista.replaceChildren();
     ativo = { aa, m, pads: aa ? padroes(tokens, m) : null };
     cand = resp.results; fila = []; ptr = 0;
     if (aa) {
@@ -230,8 +240,6 @@ const pfJs = url('pagefind/pagefind.js');
         dados.forEach((d) => { if (contem(d.content, ativo.pads, true)) fila.push(d); });
       }
     }
-    lista.replaceChildren();
-    mais.hidden = true;
     const total = aa ? fila.length : cand.length;
     const rot = '“' + bruto + '”' + (m === 'frase' ? ' (frase exata)' : '') + (aa ? ' com Aa' : '');
     msg.textContent = total
