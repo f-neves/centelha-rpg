@@ -57,6 +57,7 @@ const PACOTES = [
   ['test-lance', ['lance', 'acaso', 'combate-tempo']],
   ['test-peca-cena', ['mesa-bestiario']],
   ['test-seta', ['seta']],
+  ['test-busca', ['busca']],
   ['sim/lib-ponte', ['combate-tempo', 'hex', 'alcance', 'lance', 'quase-acerto',
     'combate-resumo', 'mesa-core', 'calc', 'acaso', 'rolagem', 'bandeiras']],
 ];

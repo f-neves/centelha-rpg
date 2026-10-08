@@ -8,7 +8,7 @@ const pfJs = url('pagefind/pagefind.js');
 
 <!-- A marcação é nossa e fala com o pagefind.js direto (sem o PagefindUI): o Aa precisa descartar
      resultado depois da busca, e o PagefindUI não deixa. Estilo em global.css. -->
-<dialog class="busca-modal" aria-label="Busca">
+<dialog class="busca-modal" aria-label="Busca" data-pf={pfJs}>
   <div class="busca-head">
     <strong class="cinzel">Busca</strong>
     <button class="btn busca-fechar" aria-label="Fechar">✕</button>
@@ -36,8 +36,11 @@ const pfJs = url('pagefind/pagefind.js');
   </p>
 </dialog>
 
-<script define:vars={{ pfJs }}>
+<script>
+  import { tokensDe, termoPagefind, padroes, contem, realcar } from '../lib/busca';
+
   const dlg = document.querySelector('.busca-modal');
+  const pfJs = dlg.dataset.pf;
   const entrada = dlg.querySelector('.busca-entrada');
   const lista = dlg.querySelector('.busca-lista');
   const msg = dlg.querySelector('.busca-msg');
@@ -68,80 +71,6 @@ const pfJs = url('pagefind/pagefind.js');
       carga = import(/* @vite-ignore */ pfJs).then((m) => { m.init?.(); return m; }).catch(() => null);
     }
     return carga;
-  }
-
-  // ---- texto: sem acento (guardando o mapa para o índice original), mas COM a caixa ----
-  const L = '[\\p{L}\\p{N}]';
-  const semAcento = (s) => s.normalize('NFD').replace(/\p{M}/gu, '');
-  function norm(txt) {
-    let s = '';
-    const mapa = [];
-    for (let i = 0; i < txt.length; i++) {
-      const n = txt[i].normalize('NFD').replace(/\p{M}/gu, '');
-      for (let k = 0; k < n.length; k++) { s += n[k]; mapa.push(i); }
-    }
-    return { s, mapa };
-  }
-  const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const html = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-
-  // Padrões do Aa. Espelham o que o pagefind já aceita: a palavra começa no início de uma palavra
-  // do texto e pode continuar (armad acha armadura), e o plural digitado acha o singular
-  // (armaduras acha armadura). Só a caixa é exata. Frase: um padrão só, palavras em sequência.
-  function padroes(tokens, m) {
-    const raizes = tokens.map((t) => {
-      const n = semAcento(t);
-      return esc(n.length > 3 && n.endsWith('s') ? n.slice(0, -1) : n);
-    });
-    // início de palavra; vale também a emenda de camelCase (exemploKael), que o pagefind separa
-    const ini = '(?:(?<![\\p{L}\\p{N}])|(?<=\\p{Ll})(?=\\p{Lu}))';
-    if (m === 'frase') return [new RegExp(ini + raizes.map((r) => r + L + '*').join('[^\\p{L}\\p{N}]+'), 'gu')];
-    return raizes.map((r) => new RegExp(ini + r, 'gu'));
-  }
-  function achados(norma, re) {
-    const r = [];
-    re.lastIndex = 0;
-    let x;
-    while ((x = re.exec(norma.s))) {
-      if (!x[0]) { re.lastIndex++; continue; }
-      r.push([norma.mapa[x.index], norma.mapa[x.index + x[0].length - 1] + 1]);
-    }
-    return r;
-  }
-  // Palavras: todas têm de aparecer. Frase: o padrão único. `todas` false = basta uma (trecho curto).
-  function contem(texto, pads, todas) {
-    const n = norm(texto);
-    return pads[todas ? 'every' : 'some']((re) => achados(n, re).length > 0);
-  }
-  // texto puro -> HTML com <mark> nos trechos de caixa exata; `janela` recorta ao redor do primeiro
-  function realcar(texto, pads, janela) {
-    const n = norm(texto);
-    let spans = pads.flatMap((re) => achados(n, re)).sort((a, b) => a[0] - b[0]);
-    const fund = [];
-    for (const sp of spans) {
-      const u = fund[fund.length - 1];
-      if (u && sp[0] <= u[1]) u[1] = Math.max(u[1], sp[1]); else fund.push([sp[0], sp[1]]);
-    }
-    spans = fund;
-    let a = 0;
-    let b = texto.length;
-    if (janela && spans.length) {
-      a = Math.max(0, spans[0][0] - 70);
-      b = Math.min(texto.length, spans[0][0] + 170);
-      if (a > 0) { const q = texto.indexOf(' ', a); if (q >= 0 && q < spans[0][0]) a = q + 1; }
-      if (b < texto.length) { const q = texto.lastIndexOf(' ', b); if (q > spans[0][1]) b = q; }
-    }
-    let out = a > 0 ? '… ' : '';
-    let p = a;
-    for (const [i, j] of spans) {
-      if (j <= a || i >= b) continue;
-      const ii = Math.max(i, a);
-      const jj = Math.min(j, b);
-      out += html(texto.slice(p, ii)) + '<mark>' + html(texto.slice(ii, jj)) + '</mark>';
-      p = jj;
-    }
-    out += html(texto.slice(p, b));
-    return out + (b < texto.length ? ' …' : '');
   }
 
   // ---- resultados ----
@@ -212,7 +141,7 @@ const pfJs = url('pagefind/pagefind.js');
     const bruto = entrada.value.trim();
     const m = modo();
     const aa = caixaAa.checked;
-    const tokens = bruto.match(/[\p{L}\p{N}]+/gu) || [];
+    const tokens = tokensDe(bruto);
     if (!tokens.length) {
       // sem termo (vazio ou só pontuação): nada da busca anterior fica na tela
       lista.replaceChildren();
@@ -224,8 +153,7 @@ const pfJs = url('pagefind/pagefind.js');
     const pf = await ensure();
     if (minha !== seq) return;
     if (!pf) { msg.textContent = 'A busca fica disponível no site publicado (índice gerado no build).'; return; }
-    // frase: a engine do pagefind entende aspas; as digitadas à mão saem para não duplicar
-    const termo = m === 'frase' ? '"' + tokens.join(' ') + '"' : tokens.join(' ');
+    const termo = termoPagefind(tokens, m);
     const resp = await pf.debouncedSearch(termo, {}, ATRASO);
     if (resp === null || minha !== seq) return;
     // lista e estado trocam juntos, no mesmo trecho síncrono: nunca há lista de uma busca com fila de outra
