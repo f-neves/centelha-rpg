@@ -171,6 +171,8 @@
   autolink casar em prosa comum). Decidir se `nivel` sai dos apelidos autolinkáveis do verbete
   Nível, ou outra saída.
 
+- [ ] **J17 · [FAZER] Busca do site: o componente não tem teste de navegador no CI, e a premissa dos `locations` só tem o guarda de `filtrarCaixa`.** Achado nas rodadas 143 e 144 (08/10/2026). A regra de casamento (`src/lib/busca.ts`) tem `scripts/test-busca.mjs` no `validate`. O que o componente faz no navegador (`src/components/Busca.astro`: botão "Mostrar mais" oculto durante a busca nova, lista limpa sem termo, foco no campo) foi provado só por bateria fora do repositório, e o autor escolheu o teste da lógica. A premissa de que `result.data().locations` indexa `content.split(' ')` vale hoje (as 110 páginas conferem) e, se o pagefind a mudar, o Aa degrada para neutro (passa, sem destaque) e não avisa. Um passo depois do `pagefind --site dist` que confira `word_count == split(' ').length` em todas as páginas fecharia a segunda metade; um smoke de navegador sobre o `dist/` fecharia a primeira.
+
 - [ ] **J10 · [ADIADO] [DECIDIR] Os 23 travessões do `regras.json`, e seis deles NÃO são travessão.**
   Contados pela Executora na rodada 86, ocorrência a ocorrência, com Python e não por `git diff`:
   são **23 U+2014** no arquivo, e a régua da casa (sem travessão em texto nenhum) só tem portão

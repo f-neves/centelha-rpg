@@ -48,11 +48,11 @@ está na seção 3.
 | G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 79 | 54 | 0 | 25 | 31 | 3 | 0 | 5 | 15 | 0 |
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 7 | 5 | 0 | 2 | 2 | 0 | 0 | 2 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 15 | 11 | 2 | 2 | 4 | 8 | 0 | 0 | 0 | 1 |
-| J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 17 | 14 | 0 | 3 | 6 | 3 | 0 | 2 | 1 | 2 |
+| J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 18 | 15 | 0 | 3 | 6 | 4 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 25 | 1 | 13 | 21 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
 | N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 20 | 20 | 0 | 0 | 0 | 20 | 0 | 0 | 0 | 0 |
-| | **Total** | | **381** | **273** | **4** | **104** | **107** | **61** | **8** | **10** | **81** | **10** |
+| | **Total** | | **382** | **274** | **4** | **104** | **107** | **62** | **8** | **10** | **81** | **10** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -539,6 +539,7 @@ Fechados (2): I7, I13.
 | J14 | aberto | DECIDIR | "Margem" nomeia duas grandezas: a Margem do verbete e a Margem de Quase-Acerto. |
 | J15 | aberto | DECIDIR | "nível" no sentido da Arte: 202 links, fora da conta da J12. |
 | J16 | aberto | DECIDIR | "Nível" é o nome do próprio verbete, usado como palavra comum em todo o sistema: 125 links errados, fora da … |
+| J17 | aberto | FAZER | Busca do site: o componente não tem teste de navegador no CI, e a premissa dos `locations` só tem o guarda de … |
 | J10 | aberto, ADIADO | DECIDIR | Os 23 travessões do `regras.json`, e seis deles NÃO são travessão. |
 
 Fechados (3): J1, J4, J5.
