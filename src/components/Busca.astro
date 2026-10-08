@@ -1,49 +1,269 @@
 ---
 import { url } from '../lib/site';
-const pfUi = url('pagefind/pagefind-ui.js');
-const pfCss = url('pagefind/pagefind-ui.css');
-const base = url('');
+const pfJs = url('pagefind/pagefind.js');
 ---
 <button class="btn busca-abrir" aria-label="Buscar (tecle /)" style="width:100%;text-align:left">
   🔍 Buscar… <kbd style="float:right;opacity:.6">/</kbd>
 </button>
 
-<dialog class="busca-modal" aria-label="Busca">
+<!-- A marcação é nossa e fala com o pagefind.js direto (sem o PagefindUI): o Aa precisa descartar
+     resultado depois da busca, e o PagefindUI não deixa. Estilo e paletas (data-paleta) em global.css. -->
+<dialog class="busca-modal" data-paleta="a" aria-label="Busca">
   <div class="busca-head">
     <strong class="cinzel">Busca</strong>
     <button class="btn busca-fechar" aria-label="Fechar">✕</button>
   </div>
-  <div id="pagefind"></div>
-  <p class="muted busca-hint">Busca o texto inteiro do site. Conceitos também funcionam: tente <em>willpower</em>, <em>iniciativa</em>, <em>absorção</em>.</p>
+  <div class="busca-opcoes">
+    <fieldset class="busca-modos">
+      <legend class="busca-sr">Modo de busca</legend>
+      <label class="busca-chip"><input type="radio" name="busca-modo" value="palavras" checked><span>Palavras</span></label>
+      <label class="busca-chip"><input type="radio" name="busca-modo" value="frase"><span>Frase exata</span></label>
+    </fieldset>
+    <label class="busca-chip busca-aa" title="Diferenciar maiúsculas de minúsculas">
+      <input type="checkbox" class="busca-aa-caixa"><span><b>Aa</b> diferenciar maiúsculas</span>
+    </label>
+  </div>
+  <input class="busca-entrada" type="search" placeholder="Buscar no livro" aria-label="Termo da busca"
+    autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" autofocus>
+  <p class="busca-msg" role="status" aria-live="polite"></p>
+  <ol class="busca-lista"></ol>
+  <button class="btn busca-mais" type="button" hidden></button>
+  <p class="muted busca-hint">
+    <b>Palavras</b> acha as páginas que têm todas as palavras digitadas, em qualquer ordem.
+    <b>Frase exata</b> só acha as palavras em sequência, como foram digitadas.
+    <b>Aa</b> exige a mesma caixa das letras digitadas (maiúscula ou minúscula); os acentos continuam sendo ignorados.
+    Conceitos também funcionam: tente <em>willpower</em>, <em>iniciativa</em>, <em>absorção</em>.
+  </p>
 </dialog>
 
-<style>
-  .busca-modal { width: min(40rem, 92vw); border: 1px solid var(--accent); border-radius: var(--r-lg); padding: 1rem 1.1rem 1.2rem; background: var(--panel); color: var(--ink); box-shadow: 0 10px 40px var(--shadow); }
-  .busca-modal::backdrop { background: rgba(0,0,0,.45); }
-  .busca-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: .6rem; }
-  .busca-hint { font-size: var(--fs-rotulo); margin-top: .6rem; }
-  #pagefind { --pagefind-ui-scale: .9; }
-</style>
-
-<script define:vars={{ pfUi, pfCss, base }}>
+<script define:vars={{ pfJs }}>
   const dlg = document.querySelector('.busca-modal');
-  let inited = false;
-  async function ensure() {
-    if (inited) return; inited = true;
-    const link = document.createElement('link'); link.rel = 'stylesheet'; link.href = pfCss; document.head.append(link);
-    try {
-      const mod = await import(/* @vite-ignore */ pfUi);
-      new (window.PagefindUI || mod.PagefindUI)({ element: '#pagefind', showSubResults: true, showImages: false, bundlePath: base + 'pagefind/' });
-    } catch (e) {
-      document.getElementById('pagefind').innerHTML = '<p class="muted">A busca fica disponível no site publicado (índice gerado no build).</p>';
-    }
+  const entrada = dlg.querySelector('.busca-entrada');
+  const lista = dlg.querySelector('.busca-lista');
+  const msg = dlg.querySelector('.busca-msg');
+  const mais = dlg.querySelector('.busca-mais');
+  const radios = dlg.querySelectorAll('input[name="busca-modo"]');
+  const caixaAa = dlg.querySelector('.busca-aa-caixa');
+  const CHAVE = 'centelha-busca';
+  const LOTE = 8;       // resultados por vez
+  const SUBS = 3;       // seções (âncoras) mostradas por página
+  const ATRASO = 150;   // ms de espera depois da última tecla
+
+  const modo = () => dlg.querySelector('input[name="busca-modo"]:checked').value;
+
+  // modo e Aa lembrados, mas a busca funciona igual sem o localStorage
+  try {
+    const s = JSON.parse(localStorage.getItem(CHAVE) || '{}');
+    if (s.modo === 'frase') radios.forEach((r) => { r.checked = r.value === 'frase'; });
+    caixaAa.checked = s.aa === true;
+  } catch (e) { /* sem armazenamento: segue com o padrão */ }
+  function salvar() {
+    try { localStorage.setItem(CHAVE, JSON.stringify({ modo: modo(), aa: caixaAa.checked })); } catch (e) { /* idem */ }
   }
-  function open() { ensure(); dlg.showModal(); setTimeout(() => dlg.querySelector('input')?.focus(), 60); }
-  document.querySelectorAll('.busca-abrir').forEach((b) => b.addEventListener('click', open));
-  document.querySelector('.busca-fechar')?.addEventListener('click', () => dlg.close());
+
+  // ---- pagefind.js (carga única, assíncrona) ----
+  let carga = null;
+  function ensure() {
+    if (!carga) {
+      carga = import(/* @vite-ignore */ pfJs).then((m) => { m.init?.(); return m; }).catch(() => null);
+    }
+    return carga;
+  }
+
+  // ---- texto: sem acento (guardando o mapa para o índice original), mas COM a caixa ----
+  const L = '[\\p{L}\\p{N}]';
+  const semAcento = (s) => s.normalize('NFD').replace(/\p{M}/gu, '');
+  function norm(txt) {
+    let s = '';
+    const mapa = [];
+    for (let i = 0; i < txt.length; i++) {
+      const n = txt[i].normalize('NFD').replace(/\p{M}/gu, '');
+      for (let k = 0; k < n.length; k++) { s += n[k]; mapa.push(i); }
+    }
+    return { s, mapa };
+  }
+  const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const html = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  // Padrões do Aa. Espelham o que o pagefind já aceita: a palavra começa no início de uma palavra
+  // do texto e pode continuar (armad acha armadura), e o plural digitado acha o singular
+  // (armaduras acha armadura). Só a caixa é exata. Frase: um padrão só, palavras em sequência.
+  function padroes(tokens, m) {
+    const raizes = tokens.map((t) => {
+      const n = semAcento(t);
+      return esc(n.length > 3 && n.endsWith('s') ? n.slice(0, -1) : n);
+    });
+    // início de palavra; vale também a emenda de camelCase (exemploKael), que o pagefind separa
+    const ini = '(?:(?<![\\p{L}\\p{N}])|(?<=\\p{Ll})(?=\\p{Lu}))';
+    if (m === 'frase') return [new RegExp(ini + raizes.map((r) => r + L + '*').join('[^\\p{L}\\p{N}]+'), 'gu')];
+    return raizes.map((r) => new RegExp(ini + r, 'gu'));
+  }
+  function achados(norma, re) {
+    const r = [];
+    re.lastIndex = 0;
+    let x;
+    while ((x = re.exec(norma.s))) {
+      if (!x[0]) { re.lastIndex++; continue; }
+      r.push([norma.mapa[x.index], norma.mapa[x.index + x[0].length - 1] + 1]);
+    }
+    return r;
+  }
+  // Palavras: todas têm de aparecer. Frase: o padrão único. `todas` false = basta uma (trecho curto).
+  function contem(texto, pads, todas) {
+    const n = norm(texto);
+    return pads[todas ? 'every' : 'some']((re) => achados(n, re).length > 0);
+  }
+  // texto puro -> HTML com <mark> nos trechos de caixa exata; `janela` recorta ao redor do primeiro
+  function realcar(texto, pads, janela) {
+    const n = norm(texto);
+    let spans = pads.flatMap((re) => achados(n, re)).sort((a, b) => a[0] - b[0]);
+    const fund = [];
+    for (const sp of spans) {
+      const u = fund[fund.length - 1];
+      if (u && sp[0] <= u[1]) u[1] = Math.max(u[1], sp[1]); else fund.push([sp[0], sp[1]]);
+    }
+    spans = fund;
+    let a = 0;
+    let b = texto.length;
+    if (janela && spans.length) {
+      a = Math.max(0, spans[0][0] - 70);
+      b = Math.min(texto.length, spans[0][0] + 170);
+      if (a > 0) { const q = texto.indexOf(' ', a); if (q >= 0 && q < spans[0][0]) a = q + 1; }
+      if (b < texto.length) { const q = texto.lastIndexOf(' ', b); if (q > spans[0][1]) b = q; }
+    }
+    let out = a > 0 ? '… ' : '';
+    let p = a;
+    for (const [i, j] of spans) {
+      if (j <= a || i >= b) continue;
+      const ii = Math.max(i, a);
+      const jj = Math.min(j, b);
+      out += html(texto.slice(p, ii)) + '<mark>' + html(texto.slice(ii, jj)) + '</mark>';
+      p = jj;
+    }
+    out += html(texto.slice(p, b));
+    return out + (b < texto.length ? ' …' : '');
+  }
+
+  // ---- resultados ----
+  function item(d, pads) {
+    const exato = !!pads;
+    const li = document.createElement('li');
+    li.className = 'busca-res';
+    const h = document.createElement('h3');
+    h.className = 'busca-res-titulo';
+    const a = document.createElement('a');
+    a.href = d.url;
+    a.textContent = d.meta?.title || d.url;
+    h.append(a);
+    li.append(h);
+    const tr = document.createElement('p');
+    tr.className = 'busca-res-trecho';
+    tr.innerHTML = exato ? realcar(d.content, pads, true) : d.excerpt;
+    li.append(tr);
+    const subs = (d.sub_results || []).filter((s) => s.anchor && (!exato || contem(s.plain_excerpt, pads, false))).slice(0, SUBS);
+    if (subs.length) {
+      const ul = document.createElement('ul');
+      ul.className = 'busca-subs';
+      for (const s of subs) {
+        const si = document.createElement('li');
+        const sa = document.createElement('a');
+        sa.href = s.url;
+        sa.textContent = s.title;
+        const sp = document.createElement('p');
+        sp.innerHTML = exato ? realcar(s.plain_excerpt, pads, false) : s.excerpt;
+        si.append(sa, sp);
+        ul.append(si);
+      }
+      li.append(ul);
+    }
+    return li;
+  }
+
+  let seq = 0;      // cada busca nova invalida as respostas atrasadas das anteriores
+  let cand = [];    // resultados do pagefind ainda sem os dados
+  let fila = [];    // com Aa: os que passaram no filtro de caixa
+  let ptr = 0;
+  let ativo = null; // { aa, pads, m }
+
+  async function mostrarMais(minha) {
+    let restante;
+    if (!ativo.aa) {
+      const lote = cand.slice(ptr, ptr + LOTE);
+      ptr += lote.length;
+      const dados = await Promise.all(lote.map((r) => r.data()));
+      if (minha !== seq) return;
+      dados.forEach((d) => lista.append(item(d, null)));
+      restante = cand.length - ptr;
+    } else {
+      const lote = fila.slice(ptr, ptr + LOTE);
+      ptr += lote.length;
+      lote.forEach((d) => lista.append(item(d, ativo.pads)));
+      restante = fila.length - ptr;
+    }
+    mais.hidden = restante <= 0;
+    if (restante > 0) mais.textContent = 'Mostrar mais (' + restante + ')';
+  }
+
+  async function buscar() {
+    const minha = ++seq;
+    const bruto = entrada.value.trim();
+    if (!bruto) { lista.replaceChildren(); mais.hidden = true; msg.textContent = ''; return; }
+    const m = modo();
+    const aa = caixaAa.checked;
+    const tokens = bruto.match(/[\p{L}\p{N}]+/gu) || [];
+    if (!tokens.length) { msg.textContent = 'Digite ao menos uma palavra.'; return; }
+    msg.textContent = carga ? 'Buscando…' : 'Carregando o índice…';
+    const pf = await ensure();
+    if (minha !== seq) return;
+    if (!pf) { msg.textContent = 'A busca fica disponível no site publicado (índice gerado no build).'; return; }
+    // frase: a engine do pagefind entende aspas; as digitadas à mão saem para não duplicar
+    const termo = m === 'frase' ? '"' + tokens.join(' ') + '"' : tokens.join(' ');
+    const resp = await pf.debouncedSearch(termo, {}, ATRASO);
+    if (resp === null || minha !== seq) return;
+    ativo = { aa, m, pads: aa ? padroes(tokens, m) : null };
+    cand = resp.results; fila = []; ptr = 0;
+    if (aa) {
+      // o pagefind ignora a caixa, então o filtro precisa ver o texto de todos os candidatos
+      for (let i = 0; i < cand.length; i += 12) {
+        const dados = await Promise.all(cand.slice(i, i + 12).map((r) => r.data()));
+        if (minha !== seq) return;
+        dados.forEach((d) => { if (contem(d.content, ativo.pads, true)) fila.push(d); });
+      }
+    }
+    lista.replaceChildren();
+    mais.hidden = true;
+    const total = aa ? fila.length : cand.length;
+    const rot = '“' + bruto + '”' + (m === 'frase' ? ' (frase exata)' : '') + (aa ? ' com Aa' : '');
+    msg.textContent = total
+      ? total + (total === 1 ? ' resultado para ' : ' resultados para ') + rot
+      : 'Nenhum resultado para ' + rot + (aa ? '. Tente desligar o Aa.' : '.');
+    if (total) await mostrarMais(minha);
+  }
+
+  entrada.addEventListener('input', buscar);
+  radios.forEach((r) => r.addEventListener('change', () => { salvar(); buscar(); }));
+  caixaAa.addEventListener('change', () => { salvar(); buscar(); });
+  mais.addEventListener('click', () => { mostrarMais(seq); });
+
+  // O campo já existe no HTML, então o foco é imediato mesmo na primeira abertura;
+  // só o índice do pagefind chega depois, e a busca digitada nesse meio tempo espera por ele.
+  function abrir() {
+    if (!dlg.open) dlg.showModal();
+    entrada.focus();
+    ensure();
+    if (entrada.value.trim() && !lista.children.length && !msg.textContent) buscar();
+  }
+  document.querySelectorAll('.busca-abrir').forEach((b) => b.addEventListener('click', abrir));
+  dlg.querySelector('.busca-fechar')?.addEventListener('click', () => dlg.close());
   dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
   document.addEventListener('keydown', (e) => {
-    const tag = document.activeElement?.tagName;
-    if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA') { e.preventDefault(); open(); }
+    if (e.key !== '/' || e.ctrlKey || e.metaKey || e.altKey) return;
+    const a = document.activeElement;
+    const emCampo = a && (['INPUT', 'TEXTAREA', 'SELECT'].includes(a.tagName) || a.isContentEditable);
+    // A / é texto quando se digita em algum campo, inclusive o da própria busca aberta. Com o
+    // diálogo fechado o foco pode ter ficado no campo dele, e aí a / tem de abrir de novo.
+    if (emCampo && (!dlg.contains(a) || (dlg.open && a === entrada))) return;
+    e.preventDefault();
+    abrir();
   });
 </script>

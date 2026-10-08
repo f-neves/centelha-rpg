@@ -649,8 +649,73 @@ em em, i i, .muted-em em, .callout.exemplo em, figcaption em { font-style: norma
 }
 @keyframes ui-dlg-entra { from { opacity: 0; transform: translateY(-8px) scale(.98); } to { opacity: 1; transform: none; } }
 
-/* pagefind UI mínima */
-:root { --pagefind-ui-primary: var(--accent); --pagefind-ui-text: var(--ink); --pagefind-ui-background: var(--panel); --pagefind-ui-border: var(--panel-border); --pagefind-ui-tag: var(--bg-soft); }
+/* ===== Busca (caixa de diálogo e resultados) =====
+   A marcação é de Busca.astro, que fala com o pagefind.js direto (sem o PagefindUI). A cor vem de
+   três paletas, escolhidas por [data-paleta] no <dialog>: a = contraste pleno (padrão) ·
+   b = papel e tinta (cartões) · c = alto contraste. Nenhuma põe opacity em texto; as razões de
+   contraste medidas no navegador estão na mensagem do commit que as criou. */
+.busca-modal {
+  --b-fundo: var(--panel); --b-texto: var(--ink); --b-trecho: var(--ink-soft); --b-link: var(--accent-strong);
+  --b-borda: var(--panel-border); --b-campo-bg: var(--panel-2); --b-foco: var(--accent-texto);
+  --b-chip-on-bg: var(--accent); --b-chip-on-fg: var(--on-accent);
+  --b-mark-bg: var(--gold); --b-mark-fg: #11151f;
+  --b-res-bg: transparent;
+  width: min(40rem, 92vw); max-height: min(90vh, 52rem); overflow-y: auto;
+  border: 1px solid var(--accent); border-radius: var(--r-lg); padding: 1rem 1.1rem 1.2rem;
+  background: var(--b-fundo); color: var(--b-texto); box-shadow: 0 10px 40px var(--shadow);
+}
+.busca-modal::backdrop { background: rgba(0,0,0,.45); }
+/* o dourado do tema legível é escuro (#7a5e16): ali o destaque pede texto claro para passar de 4,5:1 */
+[data-theme='legivel'] .busca-modal { --b-mark-fg: #ffffff; }
+/* B · papel e tinta: resultados em cartões, destaque por sublinhado e negrito (sem fundo) */
+.busca-modal[data-paleta='b'] {
+  --b-trecho: var(--ink); --b-res-bg: var(--panel-2); --b-campo-bg: var(--panel-2);
+  --b-mark-bg: transparent; --b-mark-fg: var(--ink);
+}
+/* C · alto contraste: preto sobre branco (clássico e legível), inverso no escuro */
+.busca-modal[data-paleta='c'] {
+  --b-fundo: #ffffff; --b-texto: #000000; --b-trecho: #111111; --b-link: #083f3b; --b-borda: #111111;
+  --b-campo-bg: #ffffff; --b-foco: #083f3b; --b-chip-on-bg: #000000; --b-chip-on-fg: #ffffff;
+  --b-mark-bg: #ffeb3b; --b-mark-fg: #000000; --b-res-bg: transparent;
+}
+[data-theme='escuro'] .busca-modal[data-paleta='c'] {
+  --b-fundo: #000000; --b-texto: #ffffff; --b-trecho: #f2f2f2; --b-link: #8fe3dd; --b-borda: #d0d0d0;
+  --b-campo-bg: #000000; --b-foco: #8fe3dd; --b-chip-on-bg: #ffffff; --b-chip-on-fg: #000000;
+}
+.busca-modal .busca-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: .6rem; }
+.busca-modal .busca-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.busca-modal .busca-opcoes { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; margin-bottom: .65rem; }
+.busca-modal .busca-modos { display: flex; gap: .4rem; border: 0; padding: 0; margin: 0; min-width: 0; }
+.busca-modal .busca-chip { position: relative; display: inline-flex; cursor: pointer; }
+.busca-modal .busca-chip input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.busca-modal .busca-chip span { display: inline-flex; align-items: center; min-height: 2.5rem; padding: .35rem .85rem;
+  border: 2px solid var(--b-borda); border-radius: var(--r-md); font-size: var(--fs-rotulo); color: var(--b-texto); background: var(--b-fundo); }
+.busca-modal .busca-chip input:checked + span { background: var(--b-chip-on-bg); color: var(--b-chip-on-fg); border-color: var(--b-chip-on-bg); font-weight: 700; }
+.busca-modal .busca-chip input:focus-visible + span { outline: 3px solid var(--b-foco); outline-offset: 2px; }
+.busca-modal .busca-aa b { margin-right: .35rem; font-family: inherit; }
+@media (pointer: coarse) { .busca-modal .busca-chip span { min-height: 2.75rem; } }
+.busca-modal .busca-entrada { display: block; width: 100%; font: inherit; font-size: max(16px, var(--fs-aux)); font-weight: 700;
+  padding: .6rem .8rem; border: 2px solid var(--b-borda); border-radius: var(--r-md); background: var(--b-campo-bg); color: var(--b-texto); }
+.busca-modal .busca-entrada::placeholder { color: var(--b-trecho); opacity: 1; font-weight: 400; }
+.busca-modal .busca-entrada:focus-visible { outline: 3px solid var(--b-foco); outline-offset: 1px; }
+.busca-modal .busca-msg { margin: .65rem 0 .2rem; min-height: 1.4em; font-size: var(--fs-rotulo); font-weight: 700; color: var(--b-texto); }
+.busca-modal .busca-lista { list-style: none; margin: 0; padding: 0; }
+.busca-modal .busca-res { padding: .8rem .1rem .9rem; border-top: 1px solid var(--b-borda); background: var(--b-res-bg); }
+.busca-modal[data-paleta='b'] .busca-res { margin-top: .6rem; padding: .75rem .9rem .85rem; border: 1px solid var(--b-borda); border-radius: var(--r-md); }
+.busca-modal .busca-res-titulo { margin: 0; font-size: calc(var(--fs-aux) * 1.1); font-weight: 700; line-height: 1.25; }
+.busca-modal .busca-res-titulo a { color: var(--b-texto); text-decoration: none; }
+.busca-modal .busca-res a:hover { text-decoration: underline; }
+.busca-modal .busca-res a:focus-visible { outline: 3px solid var(--b-foco); outline-offset: 2px; }
+.busca-modal .busca-res-trecho { margin: .3rem 0 0; font-size: var(--fs-rotulo); line-height: 1.45; color: var(--b-trecho); }
+.busca-modal .busca-subs { list-style: none; margin: .55rem 0 0; padding: 0 0 0 .8rem; border-left: 3px solid var(--b-borda); }
+.busca-modal .busca-subs li + li { margin-top: .45rem; }
+.busca-modal .busca-subs a { font-size: var(--fs-rotulo); font-weight: 700; color: var(--b-link); }
+.busca-modal .busca-subs p { margin: .1rem 0 0; font-size: var(--fs-rotulo); line-height: 1.45; color: var(--b-trecho); }
+.busca-modal mark { background: var(--b-mark-bg); color: var(--b-mark-fg); padding: 0 .12em; border-radius: 2px; }
+.busca-modal[data-paleta='b'] mark { padding: 0; font-weight: 800; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .14em; text-decoration-color: var(--b-link); }
+.busca-modal .busca-mais { display: block; width: 100%; margin-top: .8rem; min-height: 2.75rem; font-weight: 700; color: var(--b-link); background: var(--b-fundo); border: 2px solid var(--b-borda); }
+.busca-modal .busca-fechar { color: var(--b-texto); background: var(--b-fundo); border: 2px solid var(--b-borda); }
+.busca-modal .busca-hint { margin: .9rem 0 0; font-size: var(--fs-rotulo); line-height: 1.45; color: var(--b-trecho); }
 
 /* Retrato do personagem — moldura única, usada na ficha (/personagem) e nos cards
    de Mesas / Fichas. O enquadramento que o jogador salva (imagem_pos) é calibrado
