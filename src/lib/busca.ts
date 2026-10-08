@@ -30,6 +30,14 @@ export function termoPagefind(tokens: string[], modo: Modo): string {
 /** As palavras do texto de uma página, na mesma contagem do pagefind (`locations` indexa isto). */
 export const palavrasDe = (content: string): string[] => content.split(' ');
 
+/**
+ * `locations` de uma seção (`sub_results[]`) ou de um resultado, em forma segura: um pagefind que
+ * não traga o campo (ou o traga de outro tipo) dá lista vazia, nunca `TypeError`.
+ */
+export function locaisSeguros(x: unknown): number[] {
+  return Array.isArray(x) ? x.filter((i): i is number => Number.isInteger(i)) : [];
+}
+
 /** Pedaços de uma palavra do texto: separa pela pontuação e pela emenda de camelCase (exemploKael). */
 export function segmentos(palavra: string): string[] {
   // sem lookbehind: num literal de regex ele é erro de sintaxe no Safari antes do 16.4, e o
@@ -79,6 +87,8 @@ export interface Veredito {
   aceitos: number[];
   /** palavras digitadas para as quais nenhuma palavra casada era parente: não dá para conferir, então passam */
   neutros: number;
+  /** a premissa do pagefind (locations indexa content.split(' ')) não vale neste resultado: o filtro desistiu dele */
+  premissaQuebrada: boolean;
 }
 
 /**
@@ -98,11 +108,11 @@ export interface Veredito {
  * `neutros`.
  */
 export function filtrarCaixa(palavras: string[], locais: number[], tokens: string[], modo: Modo, contagem?: number): Veredito {
-  if (!tokens.length) return { ok: true, aceitos: [], neutros: 0 };
+  if (!tokens.length) return { ok: true, aceitos: [], neutros: 0, premissaQuebrada: false };
   const lista = Array.isArray(locais) ? locais : [];
   const foraDoTexto = lista.some((i) => !Number.isInteger(i) || i < 0 || i >= palavras.length);
   if (foraDoTexto || (contagem !== undefined && contagem !== palavras.length)) {
-    return { ok: true, aceitos: [], neutros: tokens.length };
+    return { ok: true, aceitos: [], neutros: tokens.length, premissaQuebrada: true };
   }
   const locs = [...new Set(lista)].sort((a, b) => a - b);
   if (modo === 'frase') {
@@ -119,8 +129,8 @@ export function filtrarCaixa(palavras: string[], locais: number[], tokens: strin
       for (let j = 0; j < n; j++) if (caixa(tokens[j], palavras[i + j]) === 'errada') { certa = false; break; }
       if (certa) for (let j = 0; j < n; j++) aceitos.add(i + j);
     }
-    if (!sequencias) return { ok: true, aceitos: [], neutros: n };
-    return { ok: aceitos.size > 0, aceitos: [...aceitos].sort((a, b) => a - b), neutros: 0 };
+    if (!sequencias) return { ok: true, aceitos: [], neutros: n, premissaQuebrada: false };
+    return { ok: aceitos.size > 0, aceitos: [...aceitos].sort((a, b) => a - b), neutros: 0, premissaQuebrada: false };
   }
   const aceitos = new Set<number>();
   let ok = true;
@@ -137,7 +147,7 @@ export function filtrarCaixa(palavras: string[], locais: number[], tokens: strin
     if (!temParente) neutros++;
     else if (!certa) ok = false;
   }
-  return { ok, aceitos: [...aceitos].sort((a, b) => a - b), neutros };
+  return { ok, aceitos: [...aceitos].sort((a, b) => a - b), neutros, premissaQuebrada: false };
 }
 
 /**

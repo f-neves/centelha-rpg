@@ -131,6 +131,18 @@ ok(wcf.ok && wcf.neutros === 3, 'o mesmo na frase exata: neutro');
 const wcfm = M.filtrarCaixa(['na', 'Defesa', 'contra', 'projéteis.'], [1, 2, 3], ['defesa', 'contra', 'projéteis'], 'frase', 3);
 ok(wcfm.ok && wcfm.neutros === 3, 'o mesmo na frase exata com word_count menor: neutro');
 ok(v(k, [1], '').ok && v(k, [1], '"').ok, 'sem palavras digitadas (vazio, só aspas), o filtro não derruba nada');
+// o aviso de que a premissa quebrou (o componente dá um console.warn por sessão quando vê isto)
+ok(v(k, [1, 99], 'kael').premissaQuebrada === true, 'posição fora do texto: premissaQuebrada');
+ok(M.filtrarCaixa(k, [1], ['kael'], 'palavras', k.length + 1).premissaQuebrada === true, 'word_count diferente: premissaQuebrada');
+ok(v(k, [1], 'kael').premissaQuebrada === false && v(k, [1], 'Kael').premissaQuebrada === false, 'caso normal (saia ou fique): premissa de pé');
+ok(v(['xyz', 'abc'], [0], 'kael').premissaQuebrada === false, 'palavra neutra por falta de parentesco NÃO é premissa quebrada');
+// seções (sub_results[].locations): campo ausente ou de outro tipo não lança, dá lista vazia
+igual(M.locaisSeguros(undefined), [], 'locations ausente: lista vazia');
+igual(M.locaisSeguros(null), [], 'locations nulo: lista vazia');
+igual(M.locaisSeguros('1,2'), [], 'locations de outro tipo: lista vazia');
+igual(M.locaisSeguros([3, 'x', 4.5, 7, NaN]), [3, 7], 'só inteiros ficam');
+const secoes = [{ locations: [1, 2] }, {}, { locations: null }];
+ok(secoes.map((s) => M.locaisSeguros(s.locations).some((i) => [1].includes(i))).join() === 'true,false,false', 'seção sem o campo cai fora do filtro, sem TypeError');
 
 // frase exata: sequência de palavras consecutivas, cada uma com a caixa certa
 const fr = ['+3', 'na', 'Defesa', 'contra', 'projéteis.', 'A', 'Interação'];

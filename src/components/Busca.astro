@@ -37,7 +37,7 @@ const pfJs = url('pagefind/pagefind.js');
 </dialog>
 
 <script>
-  import { tokensDe, termoPagefind, palavrasDe, filtrarCaixa, trechoDe } from '../lib/busca';
+  import { tokensDe, termoPagefind, palavrasDe, filtrarCaixa, locaisSeguros, trechoDe } from '../lib/busca';
 
   const dlg = document.querySelector('.busca-modal');
   const pfJs = dlg.dataset.pf;
@@ -92,8 +92,9 @@ const pfJs = url('pagefind/pagefind.js');
     tr.innerHTML = marcadas.length ? trechoDe(aa.pal, marcadas, marcadas[0], 12, 28) : d.excerpt;
     li.append(tr);
     let subs = (d.sub_results || []).filter((s) => s.anchor);
-    // com Aa, só as seções em que alguma palavra de caixa certa aparece (se nenhuma foi conferida, valem todas)
-    if (marcadas.length) subs = subs.filter((s) => s.locations.some((i) => marcadas.includes(i)));
+    // com Aa, só as seções em que alguma palavra de caixa certa aparece (se nenhuma foi conferida, valem todas;
+    // seção sem o campo `locations`, de um pagefind que o tirou, também fica, com o trecho do próprio pagefind)
+    if (marcadas.length) subs = subs.filter((s) => !Array.isArray(s.locations) || locaisSeguros(s.locations).some((i) => marcadas.includes(i)));
     subs = subs.slice(0, SUBS);
     if (subs.length) {
       const ul = document.createElement('ul');
@@ -104,7 +105,7 @@ const pfJs = url('pagefind/pagefind.js');
         sa.href = s.url;
         sa.textContent = s.title;
         const sp = document.createElement('p');
-        const ms = marcadas.length ? s.locations.filter((i) => marcadas.includes(i)) : [];
+        const ms = marcadas.length ? locaisSeguros(s.locations).filter((i) => marcadas.includes(i)) : [];
         sp.innerHTML = ms.length ? trechoDe(aa.pal, marcadas, ms[0], 8, 22) : s.excerpt;
         si.append(sa, sp);
         ul.append(si);
@@ -138,6 +139,15 @@ const pfJs = url('pagefind/pagefind.js');
     }
     mais.hidden = restante <= 0;
     if (restante > 0) mais.textContent = 'Mostrar mais (' + restante + ')';
+  }
+
+  // Se o pagefind mudar o que `locations` e `word_count` significam, o Aa passa a deixar tudo passar
+  // (degrada para neutro); este aviso, uma vez por sessão, impede que a quebra fique muda.
+  let avisou = false;
+  function avisarPremissa(url) {
+    if (avisou) return;
+    avisou = true;
+    console.warn('Busca: os locations do pagefind não batem com o texto de ' + url + '; o Aa não está filtrando a caixa nos resultados assim.');
   }
 
   async function buscar() {
@@ -174,6 +184,7 @@ const pfJs = url('pagefind/pagefind.js');
         dados.forEach((d) => {
           const pal = palavrasDe(d.content);
           const v = filtrarCaixa(pal, d.locations, tokens, m, d.word_count);
+          if (v.premissaQuebrada) avisarPremissa(d.url);
           if (v.ok) fila.push({ d, pal, v });
         });
       }
