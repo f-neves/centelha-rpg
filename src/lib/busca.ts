@@ -32,7 +32,9 @@ export const palavrasDe = (content: string): string[] => content.split(' ');
 
 /** Pedaços de uma palavra do texto: separa pela pontuação e pela emenda de camelCase (exemploKael). */
 export function segmentos(palavra: string): string[] {
-  return palavra.split(/[^\p{L}\p{N}]+|(?<=\p{Ll})(?=\p{Lu})/u).filter(Boolean);
+  // sem lookbehind: num literal de regex ele é erro de sintaxe no Safari antes do 16.4, e o
+  // módulo inteiro (a busca toda) deixaria de carregar. A emenda vira um espaço e se separa junto.
+  return palavra.replace(/(\p{Ll})(?=\p{Lu})/gu, '$1 ').split(/[^\p{L}\p{N}]+/u).filter(Boolean);
 }
 
 const maiuscula = (c: string): boolean => c !== c.toLowerCase();
