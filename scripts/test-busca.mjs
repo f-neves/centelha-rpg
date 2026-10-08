@@ -98,6 +98,19 @@ ok(!v(k, [1, 5], 'Kael uldun').ok, 'uma das duas com a caixa errada derruba o re
 // o que não dá para conferir passa (a regra é só "menos os de outra caixa")
 const nv = v(['xyz', 'abc'], [0], 'kael');
 ok(nv.ok && nv.neutros === 1 && nv.aceitos.length === 0, 'palavra casada sem parentesco com o digitado: não há o que conferir, passa e é contada');
+// pontuação em volta da palavra casada: aspas curvas e parênteses NÃO a tornam "estranha" (o que a
+// faria passar como neutra com a caixa errada); são separados e a palavra é reconhecida
+ok(!v(['veja', '“Kael”', 'agora'], [1], 'kael').ok, '"“Kael”" (aspas curvas) com "kael": a palavra é Kael, caixa errada, SAI');
+ok(!v(['veja', '(Kael)', 'agora'], [1], 'kael').ok, '"(Kael)" com "kael": SAI');
+ok(!v(['veja', 'Kael,', 'agora'], [1], 'kael').ok, '"Kael," com "kael": SAI');
+ok(frouxo(['veja', '“Kael”', 'agora'], [1], 'kael').ok, 'controle negativo: ficaria sem a caixa exata');
+ok(v(['veja', '“Kael”', 'agora'], [1], 'Kael').ok && v(['veja', '(Kael)'], [1], 'Kael').ok, '"“Kael”" e "(Kael)" com "Kael": ficam');
+igual(v(['veja', '“Kael”', 'agora'], [1], 'Kael').aceitos, [1], 'e a palavra com a pontuação é a que se destaca');
+// o mínimo de 3 letras do parentesco: duas letras iguais não fazem parentesco
+const tl = v(['x', 'kaxyz'], [1], 'Kael');
+ok(tl.ok && tl.neutros === 1, '"Kael" e "kaxyz" só têm 2 letras iniciais iguais: sem parentesco, a palavra é neutra e o resultado passa');
+ok(v(['x', 'kaelzinho'], [1], 'Kael').ok === false, 'com 3 letras ou mais iguais há parentesco, e a caixa passa a valer ("Kael" sai de "kaelzinho")');
+ok(!v(['Ka'], [0], 'ka').ok && v(['Ka'], [0], 'Ka').ok, 'palavra mais curta que 3 letras: ela inteira faz parentesco e a caixa vale');
 ok(v(k, [], 'kael').ok, 'sem posições nenhuma, passa');
 ok(v(k, [99, -1], 'kael').ok, 'posições fora do texto são ignoradas');
 ok(v(k, [1], '').ok && v(k, [1], '"').ok, 'sem palavras digitadas (vazio, só aspas), o filtro não derruba nada');
