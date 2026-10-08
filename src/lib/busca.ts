@@ -106,12 +106,17 @@ export interface Veredito {
  * `word_count` dele, DIFERENTE do número de palavras, para mais ou para menos), o filtro erraria
  * calado; então o resultado inteiro é tratado como neutro: passa, sem destaque, e é contado em
  * `neutros`.
+ *
+ * Duas escolhas deliberadas: `locais` AUSENTE ou que não seja lista (undefined, null) é premissa
+ * quebrada e dispara o aviso; a lista VAZIA `[]` não é (não se sabe se o pagefind a devolve num
+ * acerto legítimo, como o do título), e as palavras digitadas ficam neutras sem aviso. Já nas
+ * seções (`locaisSeguros`) o campo é opcional: ausente não é quebra.
  */
 export function filtrarCaixa(palavras: string[], locais: number[], tokens: string[], modo: Modo, contagem?: number): Veredito {
   if (!tokens.length) return { ok: true, aceitos: [], neutros: 0, premissaQuebrada: false };
   const lista = Array.isArray(locais) ? locais : [];
   const foraDoTexto = lista.some((i) => !Number.isInteger(i) || i < 0 || i >= palavras.length);
-  if (foraDoTexto || (contagem !== undefined && contagem !== palavras.length)) {
+  if (!Array.isArray(locais) || foraDoTexto || (contagem !== undefined && contagem !== palavras.length)) {
     return { ok: true, aceitos: [], neutros: tokens.length, premissaQuebrada: true };
   }
   const locs = [...new Set(lista)].sort((a, b) => a - b);

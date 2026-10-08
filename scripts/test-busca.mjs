@@ -119,6 +119,14 @@ const fora = v(k, [1, 99], 'kael');
 ok(fora.ok && fora.neutros === 1 && fora.aceitos.length === 0, 'uma posição fora do texto torna o resultado inteiro neutro: passa, sem destaque, contado');
 ok(v(k, [-1], 'kael').ok && v(k, [1.5], 'kael').ok && v(k, [Number.NaN], 'kael').ok, 'posição negativa, fracionária ou NaN: neutro, sem exceção');
 ok(v(k, undefined, 'kael').ok && v(k, null, 'kael').ok, 'locations ausente: neutro, sem exceção');
+// locations AUSENTE no resultado é premissa quebrada (dispara o aviso); a lista vazia, não
+for (const [nome, ausente] of [['undefined', undefined], ['null', null], ['string', '1,2'], ['objeto', { 0: 1 }]]) {
+  const r = v(k, ausente, 'kael');
+  ok(r.ok && r.premissaQuebrada === true && r.neutros === 1, `locations ${nome}: neutro E premissaQuebrada (o aviso dispara)`);
+}
+const vazia = v(k, [], 'kael');
+ok(vazia.ok && vazia.premissaQuebrada === false && vazia.neutros === 1, 'locations [] (lista vazia): neutro, mas NÃO é premissa quebrada (escolha deliberada)');
+igual(M.locaisSeguros(undefined), [], 'nas seções o campo é opcional: ausente não é quebra (locaisSeguros dá lista vazia)');
 ok(M.filtrarCaixa(k, [1], ['kael'], 'palavras', k.length).ok === false, 'word_count igual ao número de palavras: o filtro age normalmente ("kael" sai)');
 // "diferente" vale nas DUAS direções: word_count maior (o texto perdeu palavras) e menor (ganhou)
 const wc = M.filtrarCaixa(k, [1], ['kael'], 'palavras', k.length + 1);
