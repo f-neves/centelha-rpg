@@ -90,10 +90,20 @@ export interface Veredito {
  * Frase: precisa de uma sequência de palavras consecutivas, uma por palavra digitada, cada uma
  * com a caixa certa; se o pagefind não deu nenhuma sequência completa, também não há o que
  * conferir e o resultado passa.
+ *
+ * A PREMISSA de que `locais` indexa `palavras` (o pagefind conta as posições em `content.split(' ')`)
+ * é do pagefind, não nossa. Se ela quebrar (uma posição fora do texto, ou `contagem`, o
+ * `word_count` dele, diferente do número de palavras), o filtro erraria calado; então o resultado
+ * inteiro é tratado como neutro: passa, sem destaque, e é contado em `neutros`.
  */
-export function filtrarCaixa(palavras: string[], locais: number[], tokens: string[], modo: Modo): Veredito {
-  const locs = [...new Set(locais)].filter((i) => i >= 0 && i < palavras.length).sort((a, b) => a - b);
+export function filtrarCaixa(palavras: string[], locais: number[], tokens: string[], modo: Modo, contagem?: number): Veredito {
   if (!tokens.length) return { ok: true, aceitos: [], neutros: 0 };
+  const lista = Array.isArray(locais) ? locais : [];
+  const foraDoTexto = lista.some((i) => !Number.isInteger(i) || i < 0 || i >= palavras.length);
+  if (foraDoTexto || (contagem !== undefined && contagem !== palavras.length)) {
+    return { ok: true, aceitos: [], neutros: tokens.length };
+  }
+  const locs = [...new Set(lista)].sort((a, b) => a - b);
   if (modo === 'frase') {
     const n = tokens.length;
     const conjunto = new Set(locs);

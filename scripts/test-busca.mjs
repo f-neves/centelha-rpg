@@ -112,7 +112,18 @@ ok(tl.ok && tl.neutros === 1, '"Kael" e "kaxyz" só têm 2 letras iniciais iguai
 ok(v(['x', 'kaelzinho'], [1], 'Kael').ok === false, 'com 3 letras ou mais iguais há parentesco, e a caixa passa a valer ("Kael" sai de "kaelzinho")');
 ok(!v(['Ka'], [0], 'ka').ok && v(['Ka'], [0], 'Ka').ok, 'palavra mais curta que 3 letras: ela inteira faz parentesco e a caixa vale');
 ok(v(k, [], 'kael').ok, 'sem posições nenhuma, passa');
-ok(v(k, [99, -1], 'kael').ok, 'posições fora do texto são ignoradas');
+// A premissa do pagefind (locations indexa content.split(' ')) pode quebrar numa versão nova: o
+// filtro então degrada para NEUTRO, sem quebrar e sem derrubar o resultado.
+ok(!v(k, [1], 'kael').ok, 'base: com a posição certa, "kael" sai');
+const fora = v(k, [1, 99], 'kael');
+ok(fora.ok && fora.neutros === 1 && fora.aceitos.length === 0, 'uma posição fora do texto torna o resultado inteiro neutro: passa, sem destaque, contado');
+ok(v(k, [-1], 'kael').ok && v(k, [1.5], 'kael').ok && v(k, [Number.NaN], 'kael').ok, 'posição negativa, fracionária ou NaN: neutro, sem exceção');
+ok(v(k, undefined, 'kael').ok && v(k, null, 'kael').ok, 'locations ausente: neutro, sem exceção');
+ok(M.filtrarCaixa(k, [1], ['kael'], 'palavras', k.length).ok === false, 'word_count igual ao número de palavras: o filtro age normalmente ("kael" sai)');
+const wc = M.filtrarCaixa(k, [1], ['kael'], 'palavras', k.length + 1);
+ok(wc.ok && wc.neutros === 1 && wc.aceitos.length === 0, 'word_count diferente do número de palavras: resultado neutro, passa');
+const wcf = M.filtrarCaixa(['na', 'Defesa', 'contra', 'projéteis.'], [1, 2, 3], ['defesa', 'contra', 'projéteis'], 'frase', 999);
+ok(wcf.ok && wcf.neutros === 3, 'o mesmo na frase exata: neutro');
 ok(v(k, [1], '').ok && v(k, [1], '"').ok, 'sem palavras digitadas (vazio, só aspas), o filtro não derruba nada');
 
 // frase exata: sequência de palavras consecutivas, cada uma com a caixa certa

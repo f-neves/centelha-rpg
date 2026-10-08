@@ -173,7 +173,7 @@ const pfJs = url('pagefind/pagefind.js');
         if (minha !== seq) return;
         dados.forEach((d) => {
           const pal = palavrasDe(d.content);
-          const v = filtrarCaixa(pal, d.locations, tokens, m);
+          const v = filtrarCaixa(pal, d.locations, tokens, m, d.word_count);
           if (v.ok) fila.push({ d, pal, v });
         });
       }
