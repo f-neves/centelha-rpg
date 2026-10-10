@@ -287,6 +287,21 @@ PROCEDE); rodadas 2 e 3, 5c4bb201, 53574bf0 e 9bd51dd3 (vereditos 149 CORRIGE e 
 - Divergências com `condicoes.json` e o Grid vão para o N-grid-pendencias.md (D-064).
 
 **Rodada 8 · Fechamento**
+- **Andamento (10/10/2026):** a parte do Arquiteto em be553ee0 (Estados das D-072 a D-085, T8, janela de aborto no
+  N22); a da Executora-2 em 5d2cfeea (itens 1, 3, 4, 7, 9, 10, 11, 13, 14 e 16 a 18, mais a varredura), veredito 163
+  PROCEDE (todos os buracos dos vereditos 153 a 162 pegos; `/mesa/referencia` em 390 px; o "=" do contador não
+  falsificou os totais das rodadas anteriores); Validar e Deploy verdes. Sugestões da 163, para depois: os pinos que
+  não estavam no plano (Rajada "só o Preparo é interrompível", dupla "−2 em vez de −4", exceção da Lança Longa,
+  "armadura funciona", "6 quando é 4", campos de dado sem leitor), o total do teste como conta à mão, e o "perícia"
+  de `gen-bench-tempo.mjs` l.236 (cartão da finta; o bench não vai para o site).
+- **Passada da Leitora-novata (71b37571, `docs/simulacao/caixa/leitora-novata-rodada-8.md`):** a 8-bis corrige os
+  14 achados que caem nos textos reescritos hoje e têm fonte (mão nua como exceção, "ação comum" só no Normal,
+  Velocidade da Arte esticada, "Golpes no mesmo instante" no P/G/R, o agarrado que inverte, a Nota ao Mestre do
+  porte, o bumerangue de retorno, "faca de arremesso", "bastão", "já apareceu", a Rede fora das áreas, a Máxima do
+  tiro, a unidade do 2V + 2, "a menor das três"). O exemplo do esticar (Velocidade 15) está certo: a regra está em
+  `artes/regras.astro` l.489 ("a do conjuro antes de esticar", Veterana 1e l.1292). **Ficam fora, para uma rodada
+  futura de texto (anteriores às rodadas ou regra):** relato 1.2, 1.4 a 1.6, 1.8, 1.9, 1.11 a 1.15, 2.4, 2.8, 3.2,
+  3.4, 3.5, 3.9 a 3.11, 3.13, §4 itens 2 a 12 e §5 (menos o primeiro item). A Couraça do Verme e do Tarrasque é da B14.
 - **Sugestões da Revisora (153 e 154), cada uma com dono; sem veredito (D-087), mas listadas aqui para não se perderem:**
   1. **`linhaPGR` testado por arma, não só por substring.** Dono: Executora-2. Antecipada e entregue na 4d (o teste das
      40 armas); a 8 só confere que continua verde.
@@ -382,7 +397,7 @@ na D-083; o "caso 11 forte" (T8 da fase de testes) e a "janela de aborto" (quest
   Deploy verdes. Depois: e5ab6925 verde; **8748735d (4d): Validar verde, Deploy "cancelled"** porque o push seguinte
   (adee7295) o substituiu na fila do Pages (`deploy.yml`: `concurrency: pages`, `cancel-in-progress: true`), o que não é falha; o Deploy de adee7295, que já contém a 4d, ficou verde,
   assim como o de 20ec3e89. **b56d78f5 (4c): Validar e Deploy verdes.** 63817b4f (5), 0a87a64d (5-bis) e 1efe2ad9 (5-ter): Validar e Deploy
-  verdes. c0085104 (6) e f4c5f136 (7): Validar e Deploy verdes.
+  verdes. c0085104 (6), f4c5f136 (7) e 5d2cfeea (8): Validar e Deploy verdes.
 
 ## Ordem e custo
 
