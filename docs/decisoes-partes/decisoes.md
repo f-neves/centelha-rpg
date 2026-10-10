@@ -1700,7 +1700,7 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): "O Bastão leve de 22/09 continua como está. O 'bastão' do 2b é o de duas mãos que o próprio texto agrupa com Bordão e Cajado; como a reforma do 2b foi aprovada inteira (D-082), entra no catálogo o Bordão (Cajado como outro nome), na Haste média, com os números da classe e preço pelo gerador."
 - Origem: resposta do autor ao Arquiteto, 10/10/2026; colisão de nome achada pela Leitora-novata (rodada 8, relato 3.6) e pela Revisora (veredito 164, item i): o Bastão leve vem da `leitura-de-novato-decisoes.md` (item 13, 7c6ff2db); a lista da D-082 copia o 2b §0 ("Lança, Bastão, Bordão, Cajado, Tridente, Arpão").
-- Estado: a implementar (rodada 9 do plano): catálogo (`armas.json`, Haste média, 2/1/3, Velocidade 6, 1d6, Acerto +1, Defesa +2, Força×2 em duas mãos, como a classe na D-082), capítulo, ficha e teste. "Cajado" não é nome de outro item no repositório (busca em `src/`, 10/10/2026: só prosa do bestiário e as listas da Haste média em `combate.md` l.99 e `armas-e-armaduras.md` l.39), então entra como outro nome. Na lista da Haste média da D-082, "Bastão" passa a ler-se "Bordão"; o Grid herda o catálogo novo e a divergência vai para o N22.
+- Estado: **NO AR desde a rodada 9** (d5be1e7b, veredito 165 PROCEDE), sem preço até a 9-bis (o preço é a D-092). As escolhas que a classe não fixava (Impacto sem perfuração, 2 kg, fôlego 24, Destreza, tag `alcance`) foram do Arquiteto pela D-087 (veredito 165, a PERGUNTA). O que estava a implementar: catálogo (`armas.json`, Haste média, 2/1/3, Velocidade 6, 1d6, Acerto +1, Defesa +2, Força×2 em duas mãos, como a classe na D-082), capítulo, ficha e teste. "Cajado" não é nome de outro item no repositório (busca em `src/`, 10/10/2026: só prosa do bestiário e as listas da Haste média em `combate.md` l.99 e `armas-e-armaduras.md` l.39), então entra como outro nome. Na lista da Haste média da D-082, "Bastão" passa a ler-se "Bordão"; o Grid herda o catálogo novo e a divergência vai para o N22.
 
 ### D-090 · Passada a Máxima, não há jogada, também no arco e na besta [tags: maxima, arco, besta, alcance, mestre]
 - Data: 2026-10-10
@@ -1712,7 +1712,25 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): "Sem penalidade extra por atacar com a mão inábil: a dupla fica em −1d6 nas duas, como na D-083 e no livro. A ficha passa a seguir o livro (hoje cobra −2d6 na inábil e −1d6 com Ambidestria). O efeito da Ambidestria vai para a recalibração das Proezas, onde já estava a candidata 'alívio de defesa'."
 - Origem: resposta do autor ao Arquiteto, 10/10/2026; K18 (`K-combate-linha-do-tempo.md`); a candidata "alívio defensivo mesmo golpeando com as duas (Golpes a −2 em vez de −4)" está em `Combate_Tempo.md` l.1234-1236.
-- Estado: a implementar (rodada 9 do plano): `combate.md` l.203-204 perde "a Técnica Ambidestria apaga esse dado extra"; a ficha (`ficha-engine.ts`, `dupla.inabilPen`) deixa de cobrar a inábil e de ler a Ambidestria; a Técnica Ambidestria (`tecnicas.json`) perde o "em vez de −2d6, sai a −1d6" e o "−4 pelos próximos 6 Ticks" e fica na lista com a descrição e "efeito em recalibração", para não quebrar ficha salva. A K18 fecha; a Ambidestria passa ao D18 de `D-proezas-tecnicas.md`. A cláusula da D-083 ("a mão inábil vale para qualquer coisa usada nessas mãos") perde o objeto.
+- Estado: **NO AR desde a rodada 9** (08c5e0ce, veredito 165 PROCEDE): a ficha usa `inabilPen: 1` e não lê a Ambidestria; a Técnica fica na lista com "efeito em recalibração". O que estava a implementar: `combate.md` l.203-204 perde "a Técnica Ambidestria apaga esse dado extra"; a ficha (`ficha-engine.ts`, `dupla.inabilPen`) deixa de cobrar a inábil e de ler a Ambidestria; a Técnica Ambidestria (`tecnicas.json`) perde o "em vez de −2d6, sai a −1d6" e o "−4 pelos próximos 6 Ticks" e fica na lista com a descrição e "efeito em recalibração", para não quebrar ficha salva. A K18 fecha; a Ambidestria passa ao D18 de `D-proezas-tecnicas.md`. A cláusula da D-083 ("a mão inábil vale para qualquer coisa usada nessas mãos") perde o objeto.
+
+### D-092 · Preço do Bordão: 30 pc [tags: bordao, preco, catalogo]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026, escolha entre 30, 40 e 50 pc): 30 pc, mais barato que a Lança (50) e que o Bastão leve (40), por ser haste de madeira sem ponta de metal.
+- Origem: pergunta do Arquiteto depois da rodada 9; a D-089 pedia "preço pelo gerador", e não existe gerador de preço de arma (os preços estão escritos item a item em `armas.json`; confirmado pela Executora-2 e pelo veredito 165, item B3).
+- Estado: a implementar (rodada 9-bis).
+
+### D-093 · Atlatl na ficha: as duas linhas da azagaia, sem campo novo [tags: atlatl, azagaia, ficha, tiro, b7]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026, escolha entre lacuna registrada, as duas linhas e um campo "com atlatl"): quem tem azagaia vê na ficha a linha normal e a "com atlatl" (`regras.json`, `reforma.tiro`, `azagaia-com-atlatl`); o jogador escolhe qual vale.
+- Origem: o B7 da rodada 9 parou porque a ficha não guarda o atlatl (item de `armas-extras.json` que a ficha, a mesa e o Grid não leem); relato da Executora-2 e veredito 165, item B7.
+- Estado: a implementar (rodada 9-bis). O Grid não muda (D-054); o que ele herdar vai para o N22.
+
+### D-094 · Sem travessão também no texto de tela [tags: travessao, escrita, interface, titulo]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026, escolha entre trocar todos, só os de frase e deixar como está): trocar todos os travessões do texto visível fora das células vazias de tabela, inclusive o título das páginas ("X · Centelha") e os rótulos da ficha e do rolador.
+- Origem: o B11 da rodada 9 tirou o travessão da prosa dos dados e deixou uns 25 rótulos de interface (relato da Executora-2); o veredito 165 (a ESCALA) achou também prosa de página fora da lista (`index.astro` l.24, `caminhos/index.astro` l.11, `tecnicas.astro` l.18, `glossario.astro` l.9, `equipamentos.astro` l.35 e l.103, `ficha.astro` l.5, `mesa/combate.astro` l.1997).
+- Estado: a implementar (rodada 9-bis). Ficam de fora as células vazias de tabela, o `monsters.json` e o bestiário (B14) e o que só o Grid lê (D-054).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15

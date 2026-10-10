@@ -406,6 +406,25 @@ PROCEDE); rodadas 2 e 3, 5c4bb201, 53574bf0 e 9bd51dd3 (vereditos 149 CORRIGE e 
   `regras.json` e `tecnicas.json` (lista do relatório, seção 4). Os de `monsters.json` ficam para a B14.
 - B12. A Revisora mede no navegador: `/equipamentos` (Rede e Bordão) e `/mesa/referencia` a 390 px.
 - Sem Grid (D-054): o que o Grid herdar (o Bordão no catálogo, a Rede) vai para o N22.
+- **FEITA em 10/10/2026:** 08c5e0ce (B2, B4, B5, B6, B8, B10), d5be1e7b (B1, B3, B9) e acfb6272 (B11), veredito
+  **165 PROCEDE** (2c5627e4), CI verde por sha nos três. B6: a chave `semPreparo` foi apagada (sem leitor). B7 parou
+  (a ficha não guarda o atlatl) e virou a D-093. O Bordão entrou sem preço (não há gerador) e virou a D-092. O 165
+  achou travessão em prosa de página fora da lista do B11 (a ESCALA), que somado aos rótulos virou a D-094.
+- **B13, pedido do autor depois do despacho:** `dardos` vira `plumbata` numa ficha salva (`src/lib/ficha-migra.ts`,
+  `RENOMES_ARMA`, chamada no carregamento da ficha), 827026ac, Validar verde (o Deploy foi cancelado pelo push
+  seguinte, 1ae2780f, que saiu verde). A mesa só vê a troca depois de a ficha ser aberta e salva, porque o
+  `armaDoSlot` de `equip.ts` é congelado (linha no N22).
+- **N22 desta rodada:** a Rede (`semDano`, que o Grid não lê; a coluna Modos segue Impacto), o Bordão como arma
+  nova do catálogo, a chave `combateTatico.restricao` em dados, a linha da K18 atualizada (o Grid já usa −1d6 nas duas)
+  e o limite do B13 na mesa.
+
+**Rodada 9-bis · as respostas do autor de 10/10** (D-092, D-093, D-094; despachada à Executora-2)
+- Preço do Bordão, 30 pc, de volta à tabela de preços gerada (D-092).
+- A azagaia mostra as duas linhas na ficha, a normal e a "com atlatl", sem campo novo (D-093).
+- Travessão fora de todo texto visível que não seja célula vazia de tabela: títulos de página, rótulos da ficha e do
+  rolador, e a prosa de página que o 165 listou (D-094). Fora: `monsters.json` e o bestiário (B14), e o Grid.
+- Sugestões do 165: esconder o Modo da Rede quando `semDano`; prender `escudoPerdeOBonus` e `soContraDeFora` no
+  teste; tirar o caractere literal do comentário do teste.
 
 ## Mapa do 2b §4, item por item (conferido no texto de 10/10/2026; nada fica sem rodada)
 
@@ -426,7 +445,7 @@ Fonte: `veterana-2b-reforma-pgr.md` §4, "Textos a reescrever". "Feito" quer diz
 
 Pendências do 2b §5: o CONFLITO do Normal fechou na D-082 (a pressão vale em todos os Ticks); a Recuperação da Arte
 cobrar −2 e a seção 3 (a Arte no Tick do Golpe) fecharam na D-082 e na D-084; as distâncias do Arremesso fecharam nas
-D-075 e D-076; Ambidestria é a K18 (em aberto, do autor); dado e teto da mistura e os Punhos nas duas mãos fecharam
+D-075 e D-076; Ambidestria era a K18, fechada pela D-091 e aplicada na rodada 9; dado e teto da mistura e os Punhos nas duas mãos fecharam
 na D-083; o "caso 11 forte" (T8 da fase de testes) e a "janela de aborto" (questão do Grid, N22) foram triados na
 **rodada 8** (triagem do Arquiteto, acima), sem pergunta ao autor.
 
