@@ -34,7 +34,7 @@ de texto antes de editar.
 
 | Item | Por quê |
 | --- | --- |
-| Ambidestria (K18) | sem decisão do autor |
+| Ambidestria (K18) | **fechada em 10/10/2026 pela D-091**; aplicada na rodada 9; o efeito novo vai ao D18 das Proezas |
 | D-068 (nada dá ataque extra sem dizer) | **entrou na 4b** (liberada pelo autor em 10/10/2026) |
 | Dois Punhos como par de leves | **entrou na 4b** (cláusula da D-083) |
 | Bestiário (inclui a redação da Constrição) | as fichas de criatura serão refeitas; a divergência vai para a B14 |
@@ -289,7 +289,9 @@ PROCEDE); rodadas 2 e 3, 5c4bb201, 53574bf0 e 9bd51dd3 (vereditos 149 CORRIGE e 
 **Rodada 8 · Fechamento**
 - **FEITA em 10/10/2026, e com ela o plano inteiro:** 5d2cfeea (veredito 163 PROCEDE) e 8-bis 9aaa04cf (veredito 164
   PROCEDE, 0 CORRIGE; os 14 achados da Leitora-novata que cabiam nos textos de hoje), Validar e Deploy verdes nos
-  dois. O teste do capítulo acusa 187 estragos. **Para o autor:** (1) o Bastão: o catálogo o tem leve (V5, uma mão;
+  dois. O teste do capítulo acusa 187 estragos. **Respondido pelo autor em 10/10/2026:** (1) Bordão na Haste média,
+  D-089; (2) a frase da Máxima fica, D-090; (3) o Tick de decisão como Preparo, leitura na D-084; a K18 fechou na
+  D-091. Os três eram, à época, **para o autor:** (1) o Bastão: o catálogo o tem leve (V5, uma mão;
   leitura-de-novato-decisoes.md item 13, 7c6ff2db) e a D-082 o lista na Haste média, copiando o 2b §0 (o bastão de
   duas mãos junto de Bordão e Cajado); o livro segue o leve; (2) a frase "passada a Máxima, não há jogada, no arco e
   na besta como no Arremesso" (armas-e-armaduras.md): conclusão de "Máxima" pela D-087, sai inteira ou vira "o Mestre
@@ -373,6 +375,37 @@ PROCEDE); rodadas 2 e 3, 5c4bb201, 53574bf0 e 9bd51dd3 (vereditos 149 CORRIGE e 
   e "teto de ±12"; passada da Leitora-novata nos capítulos tocados (lê `origin/main`, sem `docs/simulacao/`);
   Estado das D-072 a D-087 em `decisoes.md`; atualização de `fase-de-testes.md` se a escrita revelar algo a
   medir; resumo final em forma de prompt para o autor.
+
+**Rodada 9 · O que a verificação externa achou, e as decisões de 10/10** (D-089, D-091; relatório da Verificadora em
+`../tmp/verificadora/relatorio-fechamento.md`, sobre b8c143da; liberada pelo autor em 10/10/2026)
+- **Registro antes (parte A, só documento):** Estados das D-080, D-082 a D-086 corrigidos, D-089 a D-091, a K18
+  fechada, o D18 das Proezas, três linhas no N22. **Fichas com `dardos` (A4):** varredura de arquivos (`public/`,
+  `scripts/fixtures/`, `supabase/`) sem nenhuma ocorrência; a sondagem só de leitura com a chave anon vê 0 linhas em
+  `personagens`, `combatentes`, `arquivos`, `mesa_criaturas` e `personagem_xp` (`Content-Range: */0`, RLS), então
+  o banco não pode ser provado daqui. A prova pede uma consulta do autor no SQL Editor:
+  `select id, nome from public.personagens where ficha::text ilike '%dardos%';`. Até lá vale a afirmação do autor.
+- B1. **Rede sem dano** (D-076): `armas.json` traz dado 1 e Impacto, e `/equipamentos` monta "1d6". A página e a
+  ficha mostram "não causa dano" sem mudar o que o Grid lê; a divergência dos dados que ficam vai ao N22; teste que
+  falhe se a Rede voltar a mostrar dano.
+- B2. **K18 aplicada** (D-091): `combate.md` l.203-204 sem "a Técnica Ambidestria apaga esse dado extra"; ficha
+  (`ficha-engine.ts`, `inabilPen`) sem penalidade na inábil e sem a Ambidestria; a Técnica (`tecnicas.json`) sem
+  "em vez de −2d6, sai a −1d6" e sem "−4 pelos próximos 6 Ticks", com a descrição e "efeito em recalibração".
+- B3. **Bordão** (D-089): catálogo na Haste média com os números da classe, preço pelo gerador, "Cajado" como outro
+  nome; capítulo, ficha e teste.
+- B4. Remissão do esticar em `combate.md` l.101 para "Passar do seu limite" (`artes/regras.astro` l.477-495).
+- B5. O 19 em `esticar.decisaoTardia`: as decisões na V5 são 4, 9 e 14; o 19 é o Golpe do quarto ciclo.
+- B6. `combate.movimento.investida.semPreparo` (régua velha, sem leitor): reescrever na D-082 ou apagar.
+- B7. Atlatl na ficha: a linha `azagaia-com-atlatl` passa a ser escolhida quando o personagem tem atlatl.
+- B8. `regras.json` "Totalmente imobilizado" (`zera`) com a ressalva da Defesa de agarrão (D-081).
+- B9. Os números só do livro entram nos dados, em chaves novas no padrão da reforma, sem tocar no que o Grid lê:
+  a Rede (−2/−2, −1 por Margem), o Agarrado (−8/−4 contra os de fora) e a tabela de restrição; o teste prende livro e
+  dados.
+- B10. O comentário vencido de `test-capitulo-armas.mjs` (perto da l.343: a leitura c da D-088 foi descartada).
+- B11. Termos proibidos antigos que o jogador vê, fora do bestiário: "Perícia" em `CalculadoraRecompensa.astro`,
+  `custo-servicos.md` e `coracao-do-sistema.md`; travessão em prosa em `glossario.json`, `mesa/referencia.astro`,
+  `regras.json` e `tecnicas.json` (lista do relatório, seção 4). Os de `monsters.json` ficam para a B14.
+- B12. A Revisora mede no navegador: `/equipamentos` (Rede e Bordão) e `/mesa/referencia` a 390 px.
+- Sem Grid (D-054): o que o Grid herdar (o Bordão no catálogo, a Rede) vai para o N22.
 
 ## Mapa do 2b §4, item por item (conferido no texto de 10/10/2026; nada fica sem rodada)
 

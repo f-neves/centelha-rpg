@@ -150,3 +150,11 @@ Detalhe em `Proezas_revisao.md`.
     de Arte Centelha + 2 como TOLERÂNCIA ("ainda não é definitivo", LEVANTA QUANDO o autor fechar o
     teto do mortal), e o comentário de `:177` diz "provisório". O teto foi fechado pela D-006 e saiu do
     livro como "provisório" na rodada 8. O código não foi tocado (rodada 12, ordem do Arquiteto).
+- [ ] **D18 · [DECIDIR] O efeito novo da Técnica Ambidestria.** Registrado em 10/10/2026, vindo da K18
+  (`K-combate-linha-do-tempo.md`), fechada pela D-091: a mão inábil não tem penalidade extra, então o que a
+  Ambidestria fazia (tirar o −2d6 da inábil) sumiu. Na rodada 9 do plano das armas a Técnica fica na lista, com
+  a descrição e "efeito em recalibração" (para não quebrar ficha salva), e a ficha deixa de lê-la.
+  - **Candidata já levantada:** o "alívio de defesa", golpear com as duas e ficar a −2 em vez de −4 no Tick do
+    Golpe (`Combate_Tempo.md` l.1234-1236). A outra candidata de lá, tratar par com média como par leve, foi
+    medida (67,7%) e descartada.
+  - Decidir junto com a recalibração das Proezas.

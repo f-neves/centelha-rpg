@@ -138,7 +138,10 @@ revistos por ela.
 - [ ] **K17 · [DECIDIR] O arqueiro ficou forte demais.** 63,9% a 100 metros contra 35,8% do sistema
   de hoje, por um motivo estrutural: com `R = 0` ele nunca passa pela fase exposta. Conversa com o
   **K4**, que por sua vez está travado pelo **K13**.
-- [ ] **K18 · [DECIDIR] A Técnica Ambidestria ficou sem função.** O que ela faz hoje (Dança da
+- [x] **K18 · [FECHADA em 10/10/2026 pela D-091] A Técnica Ambidestria ficou sem função.** Decisão do
+  autor: sem penalidade extra na mão inábil (a dupla fica em −1d6 nas duas, como no livro); a ficha passa a
+  seguir o livro na rodada 9 do plano das armas; o efeito novo da Ambidestria vai para a recalibração das
+  Proezas (`D-proezas-tecnicas.md`, D18). Histórico abaixo. O que ela faz hoje (Dança da
   Lâmina) é exatamente apagar o dado extra da mão fraca, e isso virou o padrão. Ou ela ganha outro
   benefício, ou a paridade da dupla fica atrás dela e a dupla sem treino continua armadilha
   (22,9% contra 54,0%). §14.4.
