@@ -334,7 +334,7 @@ function conferir(cap, armas, regras, comb = COMB, acoes = ACOES) {
     if (!comb.includes('o ciclo é o da arma **mais lenta** das duas, em qualquer mão que ela esteja') || !comb.includes('têm o ciclo da dupla com a espada, 7 Ticks (a Velocidade 6 dela mais 1, como na tabela acima)')) f.push('Combate: falta a frase do Mestre para a dupla mista (ciclo da arma mais lenta, com o exemplo da adaga e da espada longa)');
     // D-088: o Bloqueio com a mão nua contra ataque armado (a Margem se perde, o dano da arma passa)
     if (!comb.includes('o dano da arma passa, a Margem não')) f.push('Combate, Esquivar ou Bloquear: falta a remissão da D-088 (o dano da arma passa, a Margem não)');
-    if (!cap.includes('A mão nua bloqueia **qualquer ataque armado**') || !cap.includes('**perde os dados de Margem**') || !cap.includes('**toma o dano da arma normalmente**') || !cap.includes('garra, mordida e chifre contam; contra um soco, o Bloqueio com as mãos para tudo')) f.push('Armas & Armaduras, Luta desarmada: falta o parágrafo da D-088 (a mão nua bloqueia qualquer ataque armado, perde a Margem, toma o dano da arma)');
+    if (!cap.includes('A mão nua bloqueia **qualquer ataque armado**') || !cap.includes('**perde os dados de Margem**') || !cap.includes('**toma o dano da arma normalmente**') || !cap.includes('garra, mordida e chifre contam; contra um soco, o Bloqueio com as mãos para tudo') || !cap.includes('só com a aprovação do Mestre a mão nua barra também o dano da arma') || !cap.includes('braçadeira de aço contra uma clava')) f.push('Armas & Armaduras, Luta desarmada: falta o parágrafo da D-088 (a mão nua bloqueia qualquer ataque armado, perde a Margem, toma o dano da arma)');
     if (!cap.includes('Bloqueio 14, mais 1 de cada punho: <strong>16</strong>') || !cap.includes('<strong>só o dano da arma</strong>')) f.push('Armas & Armaduras, Luta desarmada: falta o exemplo do autor da D-088 (Bloqueio 16, Esquiva 8, acerto 15)');
     if (cap.includes('Contra lâmina, o corpo não segura')) f.push('Armas & Armaduras: sobrou o parágrafo "Contra lâmina, o corpo não segura" (a D-088 o substitui)');
     // a leitura c da D-088 (arma numa mão e punho na outra) está em aberto com o autor: nenhuma frase pode somar punho com arma
@@ -482,6 +482,7 @@ for (const [nome, estraga] of Object.entries(estragosCatalogo)) {
     'frase da dupla mista em Combate': (c, t) => [c.replace('o ciclo é o da arma **mais lenta** das duas', 'o ciclo é o da arma mais rápida das duas'), t],
     'remissão da D-088 em Combate': (c, t) => [c.replace('o dano da arma passa, a Margem não', 'o corpo não segura'), t],
     'parágrafo da D-088 em Luta desarmada': (c, t) => [c, t.replace('**perde os dados de Margem**', 'perde o dano')],
+    'frase do Mestre sobre o dano da arma em Luta desarmada': (c, t) => [c, t.replace('só com a aprovação do Mestre a mão nua barra também o dano da arma', 'a mão nua barra também o dano da arma')],
     'exemplo da D-088 em Luta desarmada': (c, t) => [c, t.replace('Bloqueio 14, mais 1 de cada punho: <strong>16</strong>', 'Bloqueio 14, mais 1 de cada punho: <strong>15</strong>')],
     'parágrafo da lâmina de volta em Luta desarmada': (c, t) => [c, t + '\nContra lâmina, o corpo não segura.\n'],
     'carga voluntária de volta em Combate': (c, t) => [c + '\nA carga voluntária compra Preparo.\n', t],
@@ -504,5 +505,5 @@ if (falhas.length) {
   for (const f of falhas) console.error('  · ' + f);
   process.exit(1);
 }
-const total = Object.keys(estragosTexto).length + Object.keys(estragosCatalogo).length + 2 + 7 + 1 + 9 + 13 + 8;
+const total = Object.keys(estragosTexto).length + Object.keys(estragosCatalogo).length + 2 + 7 + 1 + 9 + 13 + 9;
 console.log(`✓ test-capitulo-armas · as tabelas de Arremesso, Atirador, Classes e a Máxima por Força do capítulo batem com armas.json e regras.json · ${total} estragos acusados`);
