@@ -287,6 +287,16 @@ PROCEDE); rodadas 2 e 3, 5c4bb201, 53574bf0 e 9bd51dd3 (vereditos 149 CORRIGE e 
 - Divergências com `condicoes.json` e o Grid vão para o N-grid-pendencias.md (D-064).
 
 **Rodada 8 · Fechamento**
+- **FEITA em 10/10/2026, e com ela o plano inteiro:** 5d2cfeea (veredito 163 PROCEDE) e 8-bis 9aaa04cf (veredito 164
+  PROCEDE, 0 CORRIGE; os 14 achados da Leitora-novata que cabiam nos textos de hoje), Validar e Deploy verdes nos
+  dois. O teste do capítulo acusa 187 estragos. **Para o autor:** (1) o Bastão: o catálogo o tem leve (V5, uma mão;
+  leitura-de-novato-decisoes.md item 13, 7c6ff2db) e a D-082 o lista na Haste média, copiando o 2b §0 (o bastão de
+  duas mãos junto de Bordão e Cajado); o livro segue o leve; (2) a frase "passada a Máxima, não há jogada, no arco e
+  na besta como no Arremesso" (armas-e-armaduras.md): conclusão de "Máxima" pela D-087, sai inteira ou vira "o Mestre
+  pode negar a jogada além da Máxima"; (3) o Tick de decisão do esticar (Preparo −2, Golpe −4), da 4c. **Sugestões da
+  164, para depois:** pinar o "Igual" (6 Ticks) e o "Abaixo: os papéis se invertem"; a meia frase do "empate erra" no
+  "Igual" é inferência da Executora e sai sem tocar o resto; uma frase nas Artes de que o nível da Arte só corta os
+  graus esticados.
 - **Andamento (10/10/2026):** a parte do Arquiteto em be553ee0 (Estados das D-072 a D-085, T8, janela de aborto no
   N22); a da Executora-2 em 5d2cfeea (itens 1, 3, 4, 7, 9, 10, 11, 13, 14 e 16 a 18, mais a varredura), veredito 163
   PROCEDE (todos os buracos dos vereditos 153 a 162 pegos; `/mesa/referencia` em 390 px; o "=" do contador não
@@ -397,7 +407,7 @@ na D-083; o "caso 11 forte" (T8 da fase de testes) e a "janela de aborto" (quest
   Deploy verdes. Depois: e5ab6925 verde; **8748735d (4d): Validar verde, Deploy "cancelled"** porque o push seguinte
   (adee7295) o substituiu na fila do Pages (`deploy.yml`: `concurrency: pages`, `cancel-in-progress: true`), o que não é falha; o Deploy de adee7295, que já contém a 4d, ficou verde,
   assim como o de 20ec3e89. **b56d78f5 (4c): Validar e Deploy verdes.** 63817b4f (5), 0a87a64d (5-bis) e 1efe2ad9 (5-ter): Validar e Deploy
-  verdes. c0085104 (6), f4c5f136 (7) e 5d2cfeea (8): Validar e Deploy verdes.
+  verdes. c0085104 (6), f4c5f136 (7), 5d2cfeea (8) e 9aaa04cf (8-bis): Validar e Deploy verdes.
 
 ## Ordem e custo
 
