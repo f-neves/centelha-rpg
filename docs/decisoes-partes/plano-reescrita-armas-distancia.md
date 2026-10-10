@@ -192,6 +192,9 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
   ("No Preparo ainda dá para desistir"), e a 4c não acrescenta nem tira exceção para a Arte.
 
 **Rodada 4d · Ficha: uma régua só (OBRIGATÓRIA, não é sugestão)** (achado de 10/10/2026, veredito 153 da Revisora, N22)
+- **FEITA em 10/10/2026:** 8748735d (`src/lib/ficha-pgr.ts`, `anatomiaDaFicha`; `test-capitulo-armas.mjs` com as 40
+  armas e controles negativos), veredito 156 PROCEDE (0 BLOQUEIA; o CORRIGE do N22 fechado em 20ec3e89), smoke da ficha
+  13 de 13, Validar verde em 8748735d. A ficha mostra a régua do livro em todas as armas; o Grid segue a velha (N22).
 - **O problema.** A ficha publicada hoje mostra duas réguas de P/G/R misturadas, por classe de arma
   (`ficha-engine.ts`, `linhaPGR`, l.1633). O corpo a corpo lê a régua nova (`combate.pgr.reforma.corpoACorpo`, entregue
   na 4b); o tiro e o arremesso leem a velha (`combate.pgr.preparo`, via `preparoDe` de `combate-tempo.ts`), embora a
@@ -268,6 +271,15 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
      ela, o dano passa"; a 154 mutou as duas e o teste não acusou). Dono: Executora-2. Conferência: Revisora.
   5. **A mensagem do 0dcb1e56 diz "todo o corpo a corpo como 1/1/3", e só Leve e Punhos são 1/1/3.** Commit já
      publicado, não se reescreve. Dono: nenhum; a prova que vale é o texto do livro e a tabela da 4d.
+  6. **(156) O teste da 4d pina a chamada de `anatomiaDaFicha` por substring** (`anatomiaDaFicha(w, {}) /* anatomiaDaFicha(w,
+     regras) */` passaria, com a ficha de volta à régua velha). Casar a linha inteira. Dono: Executora-2. Conferência:
+     Revisora.
+  7. **(156) O fallback por Velocidade de `ficha-pgr.ts` não é exercitado** (4 de 12 mutações passam, porque as 40 armas
+     casam por id; a asserção da "arma inventada" é condicional e o comentário diz "V6" onde o código usa 4). Uma
+     asserção por grupo, sem condicional, e o comentário certo. Dono: Executora-2. Conferência: Revisora.
+  8. Mutantes equivalentes da 156 ("não troca o ciclo", `c.id !== 'punhos'`): sem ação.
+- **A mensagem do 8748735d diz que a mesa não importa a ficha-engine** antes de a Executora conferir; a 156 confirmou
+  que é verdade (os imports são `ficha.astro` e `personagem.astro`). Não se reescreve.
 - **Pendências guardadas da Missão 2 que o 2b §5 lista e nenhuma rodada cobria:** o "caso 11 forte" (veterana-2, item
   14: a Rajada rende pouco contra o forte blindado, porque a Absorção repete a cada golpe) e a "janela de aborto com
   declaração simultânea" (sem texto-fonte achado nos documentos da Veterana). Dono: **Arquiteto**; só vai ao autor o
@@ -317,7 +329,9 @@ na D-083; o "caso 11 forte" e a "janela de aborto" estão na **rodada 8** (triag
   nos commits seguintes. Não é defeito do commit. **Regra: se o `test-l70-ocupacao-mesa` cair de novo por tempo, o
   Arquiteto abre pendência de teste instável** (e não reexecuta em silêncio); uma queda só não abre.
 - Conferido por sha em 10/10/2026: 85461925, 32924728, 4450f70c, 2ef4f5b8, 3909629a, 33ab2068 e 8c04d6a6, Validar e
-  Deploy verdes.
+  Deploy verdes. Depois: e5ab6925 verde; **8748735d (4d): Validar verde, Deploy "cancelled"** porque o push seguinte
+  (adee7295) o substituiu na fila do Pages (`deploy.yml`: `concurrency: pages`, `cancel-in-progress: true`), o que não é falha; o Deploy de adee7295, que já contém a 4d, ficou verde,
+  assim como o de 20ec3e89.
 
 ## Ordem e custo
 
