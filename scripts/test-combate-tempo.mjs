@@ -71,7 +71,7 @@ const ESPERADO = {
   'espada-longa':      [1, 1, 4],  // média, 6t
   'machado':           [1, 1, 4],
   'lanca':             [2, 1, 3],  // haste, 6t
-  'alabarda':          [2, 1, 3],
+  'alabarda':          [2, 1, 4],  // haste, 7t desde a D-082 (Haste de Guerra); a formula de hoje ainda da P 2
   'montante':          [2, 1, 4],  // pesada, 7t
   'martelo-de-guerra': [2, 1, 4],
   // ATÉ A RODADA 4a: o arremesso e o tiro seguem a fórmula de hoje (distância P = Velocidade − 1,

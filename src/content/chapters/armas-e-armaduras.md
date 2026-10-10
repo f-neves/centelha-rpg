@@ -13,8 +13,8 @@ Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a
 
 Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra no [Combate](/regras/combate):
 
-- **Velocidade**: quantos **Ticks** o ataque custa na linha do tempo (leve 5, média 6, pesada 7): a leve age mais vezes; a pesada bate mais forte, mas te expõe entre os golpes.
-- **Dano**: o **dado de dano** do golpe (com um bônus fixo por classe), ao qual se somam a **Força** (o dobro nas de duas mãos) e cada Margem (+1d6). A régua por peso: leve **1d6−2**, média **1d6**, pesada **2d6**, haste **1d6+2**, arremesso **1d6−4 a 1d6**. **Arcos** somam a **Força no arco** (a menor entre a sua Força e a Força máxima do arco: o Curto tem Força máxima 3, o Longo e o Composto não têm, e o Composto soma ×2); **bestas** não usam Força e já vêm com o bônus embutido (**1d6+2 / +4 / +8**).
+- **Velocidade**: quantos **Ticks** o ataque custa na linha do tempo (leve 5, média 6, haste 6 ou 7, pesada 7): a leve age mais vezes; a pesada bate mais forte, mas te expõe entre os golpes.
+- **Dano**: o **dado de dano** do golpe (com um bônus fixo por classe), ao qual se somam a **Força** (o dobro nas de duas mãos) e cada Margem (+1d6). A régua por peso: leve **1d6−2**, média **1d6**, pesada **2d6**, haste média **1d6**, haste de Guerra **1d6+2**, arremesso **1d6−4 a 1d6**. **Arcos** somam a **Força no arco** (a menor entre a sua Força e a Força máxima do arco: o Curto tem Força máxima 3, o Longo e o Composto não têm, e o Composto soma ×2); **bestas** não usam Força e já vêm com o bônus embutido (**1d6+2 / +4 / +8**).
 - **Acerto**: um bônus que **soma no seu pool de ataque** (a leve mira melhor; a pesada, pior).
 - **Def. (Defesa da Arma)**: quanto a arma acrescenta ao seu **Bloqueio**.
 - **Mãos**: uma ou duas; algumas são *Versáteis* e servem nas duas formas.
@@ -36,7 +36,8 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 | Leve | 5 | 1d6−2 | +2 | +1 | 1 | tempo, precisão e defesa; habilita Técnicas ágeis |
 | Média | 6 | 1d6 | +1 | +1 | 1\* | equilíbrio sem fraquezas (versátil) |
 | Pesada | 7 | 2d6 | +0 | −2 | 2 | dano que vence armadura, mas lenta e te expõe, com guarda baixa |
-| Haste | 6 | 1d6+2 | +1 | +2 | 2 | alcance: controla a distância e defende muito |
+| Haste média | 6 | 1d6 | +1 | +2 | 2 | alcance: controla a distância e defende muito (Lança, Bordão, Cajado, Tridente, Arpão) |
+| Haste de Guerra | 7 | 1d6+2 | +0 | +0 | 2 | alcance e peso: bate forte de longe, mas é lenta e não guarda (Foice Grande, Lança Longa, Alabarda, Glaive, Guisarme, Poleaxe) |
 | Arremesso leve | 4 | 1d6−4 | +1 | · | 1 | lançar com a mão o que cabe na palma, às dezenas: mira boa, dano pequeno. Efetiva de 8 a 10 m |
 | Arremesso médio | 5 | 1d6−2 | +0 a +1 | · | 1 | uma mão, projétil recuperável: o meio-termo. Efetiva de 10 a 20 m |
 | Arremesso pesado | 6 | 1d6 | +0 a +1 | · | 1 | golpe forte e curto, mas lento. Efetiva de 4 a 16 m |
@@ -73,8 +74,8 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 | Espada Serrilhada | Média | ★C · P(N1) | 6 | 1d6 | +0 | +1 | 1 | Sangramento (−Acerto): feridas que continuam drenando |
 | Maça | Média | ★I | 6 | 1d6 | +1 | +1 | 1 | Anti-placa: o Impacto quase não é absorvido |
 | Picareta de Guerra | Média | ★P(N2) · I | 6 | 1d6 | +1 | +1 | 1 | O bico vence placa de N2 pelo ponto |
-| Lança | Haste | ★P(N1) | 6 | 1d6+2 | +1 | +2 | 2 | Alcance, arremessável. Estocada que controla a distância; resvala na placa |
-| Alabarda | Haste | ★C · ★P(N1) · ★I | 6 | 1d6+2 | +1 | +2 | 2 | Alcance, pesada (lenta). Três modos principais num cabo; cobre tudo |
+| Lança | Haste média | ★P(N1) | 6 | 1d6 | +1 | +2 | 2 | Alcance, arremessável. Estocada que controla a distância; resvala na placa |
+| Alabarda | Haste de Guerra | ★C · ★P(N1) · ★I | 7 | 1d6+2 | +0 | +0 | 2 | Alcance, pesada (lenta). Três modos principais num cabo; cobre tudo |
 | Montante | Pesada | ★C · P(N1) · I | 7 | 2d6 | +0 | −2 | 2 | Espadão; dano alto, guarda baixa, te expõe entre os golpes |
 | Martelo de Guerra | Pesada | ★I · P(N2) | 7 | 2d6 | +0 | −2 | 2 | Esmaga placas; o bico fura quando precisa. Pouca defesa |
 

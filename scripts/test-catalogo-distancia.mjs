@@ -63,6 +63,22 @@ const REFORMA = {
   'besta-grande': [15, 12, 1, 2],
   'azagaia-com-atlatl': [8, 5, 1, 2],
 };
+// A reforma do CORPO A CORPO (D-082): [Velocidade, Preparo, Golpe, Recuperação]
+const REFORMA_CC = {
+  leve: [5, 1, 1, 3],
+  media: [6, 2, 1, 3],
+  'haste-media': [6, 2, 1, 3],
+  'haste-guerra': [7, 3, 1, 3],
+  pesada: [7, 3, 1, 3],
+  punhos: [5, 1, 1, 3],
+};
+// O que a D-082 mudou no catálogo do corpo a corpo: [Velocidade, bônus de dano, Acerto, Defesa da arma, Mãos]
+const CC_MUDOU = {
+  lanca: [6, 0, 1, 2, 2],           // Haste média: 1d6, +1, +2, Força×2 em duas mãos
+  alabarda: [7, 2, 0, 0, 2],        // Haste de Guerra: V7, 1d6+2, +0, +0
+  'lanca-longa': [7, 2, 0, 0, 2],
+  desarmado: [5, -2, 1, 1, 1],      // Punhos: 1/1/3, V5, o resto igual
+};
 const ARCOS_POR_FORCA = {
   curto: [50, 90, 120, 140, 155, 170, 180, 190],
   longo: [100, 180, 250, 295, 325, 350, 370, 390],
@@ -133,6 +149,43 @@ function conferir(armas, regras, extras) {
     const atl = RF.find((c) => c.id === 'azagaia-com-atlatl');
     if (atl && extras?.[0]?.efeito?.velocidadeDaAzagaia !== atl.velocidade) f.push('reforma: a azagaia com atlatl nao bate com armas-extras.json');
   }
+  // regras.json combate.pgr.reforma.corpoACorpo (D-082), a Rajada e a dupla (D-083)
+  const CC = regras?.combate?.pgr?.reforma?.corpoACorpo;
+  if (!Array.isArray(CC)) f.push('regras.json sem combate.pgr.reforma.corpoACorpo');
+  else {
+    const porId = Object.fromEntries(CC.map((c) => [c.id, c]));
+    for (const [id, esp] of Object.entries(REFORMA_CC)) {
+      const c = porId[id];
+      if (!c) { f.push(`reforma corpo a corpo: falta a classe ${id}`); continue; }
+      const real = [c.velocidade, c.preparo, c.golpe, c.recuperacao];
+      if (JSON.stringify(real) !== JSON.stringify(esp)) f.push(`reforma ${id}: V/P/G/R ${JSON.stringify(real)}, a D-082 pede ${JSON.stringify(esp)}`);
+      if (c.preparo < 1) f.push(`reforma ${id}: toda arma tem ao menos 1 Tick de Preparo`);
+      if (c.preparo + c.golpe + c.recuperacao !== c.velocidade) f.push(`reforma ${id}: P + G + R nao fecha a Velocidade`);
+      for (const aid of c.armas || []) if (por[aid]?.arma.ticks !== c.velocidade) f.push(`reforma ${id}: ${aid} tem Velocidade ${por[aid]?.arma.ticks} no catalogo, a classe pede ${c.velocidade}`);
+    }
+    if (CC.length !== Object.keys(REFORMA_CC).length) f.push(`reforma corpo a corpo: ${CC.length} classes, esperava ${Object.keys(REFORMA_CC).length}`);
+    const donas = {};
+    for (const c of CC) for (const aid of c.armas || []) donas[aid] = (donas[aid] || 0) + 1;
+    for (const x of armas) {
+      if (!x.arma || ['distancia', 'arremesso'].includes(x.arma.classe)) continue;
+      if ((donas[x.id] || 0) !== 1) f.push(`reforma corpo a corpo: ${x.id} esta em ${donas[x.id] || 0} classes (tem de ser 1)`);
+    }
+    for (const [id, [v, d, a, df, m]] of Object.entries(CC_MUDOU)) {
+      const w = por[id]?.arma;
+      if (!w) { f.push(`corpo a corpo: ${id} sumiu`); continue; }
+      const real = [w.ticks, w.danoBonus || 0, w.acerto, w.defesaArma, w.maos];
+      if (JSON.stringify(real) !== JSON.stringify([v, d, a, df, m])) f.push(`${id}: V, dano, Acerto, Defesa e Maos ${JSON.stringify(real)}, a D-082 pede ${JSON.stringify([v, d, a, df, m])}`);
+    }
+    if (por.lanca?.arma.forcaMult != null) f.push('lanca: ainda tem forcaMult (a Haste media soma Forca x2 em duas maos)');
+    if (por['lanca-longa']?.arma.forcaMult !== 1) f.push('lanca-longa: perdeu o forcaMult 1 (e a excecao que soma so a Forca simples)');
+  }
+  const RJ = regras?.combate?.pgr?.reforma?.rajada;
+  if (!RJ || RJ.penDadosPorGolpeExtra !== -1 || RJ.golpeExtraTicksDeGolpe !== 1 || RJ.golpeExtraTicksDeRecuperacao !== 1) f.push('reforma: a Rajada pede -1d6, +1 Tick de Golpe e +1 de Recuperacao por golpe extra');
+  else if (JSON.stringify(RJ.teto) !== JSON.stringify({ leve: 3, media: 3, 'haste-media': 2, 'haste-guerra': 2, pesada: 2 })) f.push('reforma: o teto da Rajada pede 3/3/2/2/2');
+  const DP = regras?.combate?.pgr?.reforma?.dupla;
+  if (!DP || DP.penDados !== -1 || JSON.stringify(DP.parDeLeves) !== JSON.stringify({ preparo: 1, golpes: 2, recuperacao: 2, ciclo: 5 }) || JSON.stringify(DP.comMedia) !== JSON.stringify({ preparo: 2, golpes: 2, recuperacao: 3, ciclo: 7 }) || DP.golpeSemGolpear !== -2) f.push('reforma: a dupla pede -1d6, par de leves 1/2/2 ciclo 5, media 2/2/3 ciclo 7 e -2 sem golpear');
+  const IV = regras?.combate?.pgr?.reforma?.investida;
+  if (!IV || IV.andandoPorTick !== 4 || IV.investindoPorTick !== 7) f.push('reforma: a Investida da Sora pede 4 m andando e 7 m investindo por Tick');
   // regras.json combate.distancia
   const D = regras?.combate?.distancia;
   if (!D) { f.push('regras.json sem combate.distancia'); return f; }
@@ -174,6 +227,9 @@ const estragos = {
   'Dardos voltaram': (A) => { const d = copia(A.find((x) => x.id === 'plumbata')); d.id = 'dardos'; A.push(d); },
   'atlatl em armas.json': (A) => { A.push({ id: 'atlatl', nome: 'Atlatl', arma: null }); },
   'peso da Rede': (A) => { A.find((x) => x.id === 'rede').peso = 1.5; },
+  'Defesa da Alabarda no catalogo (a reforma pede 0)': (A) => { A.find((x) => x.id === 'alabarda').arma.defesaArma = 2; },
+  'forcaMult de volta na Lanca': (A) => { A.find((x) => x.id === 'lanca').arma.forcaMult = 1; },
+  'Punhos fora de toda classe': (A) => { A.find((x) => x.id === 'desarmado').arma.classe = 'distancia'; },
   'Velocidade da Funda no catalogo (a reforma pede 6)': (A) => { A.find((x) => x.id === 'funda').arma.ticks = 5; },
   'distMax da azagaia': (A) => { A.find((x) => x.id === 'azagaia').arma.distMax = 41; },
   'distMax da Funda': (A) => { A.find((x) => x.id === 'funda').arma.distMax = 199; },
@@ -190,6 +246,12 @@ for (const [nome, estraga] of Object.entries(estragos)) {
   if (conferir(ARMAS, R, EXTRAS).length === 0) falhas.push('o teste NÃO acusou a tabela dos arcos adulterada');
   const R2 = copia(REGRAS); R2.combate.distancia.maxima.multiplicadores.funda = 1;
   if (conferir(ARMAS, R2, EXTRAS).length === 0) falhas.push('o teste NÃO acusou a Funda sem o ×2');
+  const R6 = copia(REGRAS); R6.combate.pgr.reforma.corpoACorpo.find((c) => c.id === 'pesada').preparo = 2;
+  if (conferir(ARMAS, R6, EXTRAS).length === 0) falhas.push('o teste NAO acusou o Preparo da Pesada alterado');
+  const R7 = copia(REGRAS); R7.combate.pgr.reforma.rajada.teto.leve = 2;
+  if (conferir(ARMAS, R7, EXTRAS).length === 0) falhas.push('o teste NAO acusou o teto da Rajada alterado');
+  const R8 = copia(REGRAS); R8.combate.pgr.reforma.dupla.comMedia.ciclo = 8;
+  if (conferir(ARMAS, R8, EXTRAS).length === 0) falhas.push('o teste NAO acusou o ciclo da dupla alterado');
   const R3 = copia(REGRAS); R3.combate.pgr.reforma.tiro.find((c) => c.id === 'besta-grande').preparo = 13;
   if (conferir(ARMAS, R3, EXTRAS).length === 0) falhas.push('o teste NAO acusou o Preparo da Besta Grande alterado');
   const R4 = copia(REGRAS); R4.combate.pgr.reforma.tiro.find((c) => c.id === 'funda').armas = [];

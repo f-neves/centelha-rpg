@@ -2615,7 +2615,34 @@
         "nota": "A Arte sai no ÚLTIMO Tick da montagem: Preparo = 2 + nível, ciclo = nível + 3. É a §5.3 do Arcano, já no site."
       },
       "reforma": {
-        "nota": "A reforma de P/G/R da D-082 para as armas de TIRO e de arremesso (rodada 4a, 10/10/2026): Preparo = Velocidade − 1 − Recuperação, com o Golpe sempre em 1 Tick, e toda arma de tiro tem Recuperação. Fica numa chave à parte porque `preparo` (a fórmula por classe, acima) é lida pelo motor do Grid (combate-tempo.ts), congelado pela D-054: o motor passa a ler esta na passada do Grid (N22 em N-grid-pendencias.md). Os números são os da tabela 'Preparo, Golpe e Recuperação' do capítulo Combate Físico, e o test-capitulo-armas.mjs os prende nos dois lados. O corpo a corpo (leve 1/1/3 etc.) é da rodada 4b e não está aqui.",
+        "nota": "A reforma de P/G/R da D-082 (tiro e arremesso na rodada 4a, corpo a corpo na 4b, 10/10/2026): Preparo = Velocidade − 1 − Recuperação, com o Golpe sempre em 1 Tick, e toda arma de tiro tem Recuperação. Fica numa chave à parte porque `preparo` (a fórmula por classe, acima) é lida pelo motor do Grid (combate-tempo.ts), congelado pela D-054: o motor passa a ler esta na passada do Grid (N22 em N-grid-pendencias.md). Os números são os da tabela 'Preparo, Golpe e Recuperação' do capítulo Combate Físico, e o test-capitulo-armas.mjs os prende nos dois lados. O corpo a corpo, a Investida, a Rajada e a dupla (rodada 4b) estão em `corpoACorpo`, `investida`, `rajada` e `dupla`, na mesma chave e com o mesmo motivo.",
+        "corpoACorpo": [
+          { "id": "leve", "nome": "Leve", "velocidade": 5, "preparo": 1, "golpe": 1, "recuperacao": 3, "armas": ["adaga", "espada-curta", "machadinha", "bastao", "sabre"] },
+          { "id": "media", "nome": "Média", "velocidade": 6, "preparo": 2, "golpe": 1, "recuperacao": 3, "armas": ["espada-longa", "machado", "espada-serrilhada", "maca", "picareta-de-guerra", "martelo", "maca-estrela"] },
+          { "id": "haste-media", "nome": "Haste média", "velocidade": 6, "preparo": 2, "golpe": 1, "recuperacao": 3, "armas": ["lanca"] },
+          { "id": "haste-guerra", "nome": "Haste de Guerra", "velocidade": 7, "preparo": 3, "golpe": 1, "recuperacao": 3, "armas": ["alabarda", "lanca-longa"] },
+          { "id": "pesada", "nome": "Pesada", "velocidade": 7, "preparo": 3, "golpe": 1, "recuperacao": 3, "armas": ["montante", "martelo-de-guerra", "machado-pesado"] },
+          { "id": "punhos", "nome": "Punhos", "velocidade": 5, "preparo": 1, "golpe": 1, "recuperacao": 3, "armas": ["desarmado"] }
+        ],
+        "investida": {
+          "nota": "Toda arma investe, inclusive a leve (D-082, opção a do autor): o Preparo é o orçamento de deslocamento. Para a Sora (4 m por Tick andando, 7 m por Tick no Arranque) o que se cobre é o Preparo × 4 e o Preparo × 7.",
+          "andandoPorTick": 4,
+          "investindoPorTick": 7
+        },
+        "rajada": {
+          "nota": "A Rajada no P/G/R (D-083): P → G → G → … → R, declarada de uma vez. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação (+2 no ciclo) e custa −1d6 acumulativo no acerto. Só corpo a corpo.",
+          "golpeExtraTicksDeGolpe": 1,
+          "golpeExtraTicksDeRecuperacao": 1,
+          "penDadosPorGolpeExtra": -1,
+          "teto": { "leve": 3, "media": 3, "haste-media": 2, "haste-guerra": 2, "pesada": 2 }
+        },
+        "dupla": {
+          "nota": "A empunhadura dupla no P/G/R (D-083): um Tick de Golpe por mão, ambas a −1d6. O par de leves faz o segundo Golpe comer a Recuperação (o ciclo não muda); com arma média na mão hábil o ciclo cresce 1. Segurando a segunda arma ou o escudo sem golpear com ela, o Tick de Golpe fica a −2 em vez de −4. Conta 2 ataques para a Guarda sob pressão.",
+          "penDados": -1,
+          "parDeLeves": { "preparo": 1, "golpes": 2, "recuperacao": 2, "ciclo": 5 },
+          "comMedia": { "preparo": 2, "golpes": 2, "recuperacao": 3, "ciclo": 7 },
+          "golpeSemGolpear": -2
+        },
         "tiro": [
           { "id": "arremesso-leve", "nome": "Arremesso leve", "velocidade": 4, "preparo": 2, "golpe": 1, "recuperacao": 1, "armas": ["shuriken", "mini-faca", "kunai"] },
           { "id": "arremesso-medio", "nome": "Arremesso médio", "velocidade": 5, "preparo": 3, "golpe": 1, "recuperacao": 1, "armas": ["adaga-de-arremesso", "plumbata", "bumerangue", "bumerangue-de-retorno-cortante"] },

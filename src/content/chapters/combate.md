@@ -54,8 +54,8 @@ Cada ação tem uma **Velocidade**, quantos Ticks ela custa antes de você poder
 | 3 | Muito rápida | correr, saltar, abrir porta, sacar arma, levantar-se |
 | 4 | Utilitária | pegar item, interagir com o cenário (também é a Velocidade da Shuriken, da Mini-faca e da Kunai, armas de ataque) |
 | 5 | Ataque leve | faca, adaga, espada curta, bastão, adaga de arremesso, plumbata |
-| 6 | Ataque médio | espada longa, machado de uma mão, lança, alabarda, arco curto, azagaia |
-| 7 | Ataque pesado | martelo de guerra, montante, arco longo e composto |
+| 6 | Ataque médio | espada longa, machado de uma mão, lança, arco curto, azagaia |
+| 7 | Ataque pesado | martelo de guerra, montante, alabarda, arco longo e composto |
 | 9 a 15 | Ação demorada | recarregar uma besta |
 | 5 a 7 (esticada: 10 em diante) | Arte | conjurar uma Arte: 5 a 7 Ticks, pela escada de As Artes; esticar a conjuração a leva a 10, 15, 20 e adiante |
 
@@ -72,14 +72,16 @@ tempo até o golpe estar pronto), **Golpe** (o instante em que ele sai, sempre *
 
 <p class="formula">Preparo + Golpe + Recuperação = Velocidade</p>
 
-O Preparo e a Recuperação dependem da **classe da arma**:
+Toda arma tem **ao menos 1 Tick de Preparo**, e a conta é **Preparo = Velocidade − 1 − Recuperação**, com o Golpe sempre em 1 Tick. O Preparo e a Recuperação dependem da **classe da arma**:
 
 | Classe | Velocidade | Preparo | Golpe | Recuperação |
 |---|:---:|:---:|:---:|:---:|
-| Leve | 5 | 0 | 1 | 4 |
-| Média | 6 | 1 | 1 | 4 |
-| Haste | 6 | 2 | 1 | 3 |
-| Pesada | 7 | 2 | 1 | 4 |
+| Leve | 5 | 1 | 1 | 3 |
+| Média | 6 | 2 | 1 | 3 |
+| Haste média | 6 | 2 | 1 | 3 |
+| Haste de Guerra | 7 | 3 | 1 | 3 |
+| Pesada | 7 | 3 | 1 | 3 |
+| Punhos | 5 | 1 | 1 | 3 |
 | Arremesso leve | 4 | 2 | 1 | 1 |
 | Arremesso médio | 5 | 3 | 1 | 1 |
 | Arremesso pesado | 6 | 3 | 1 | 2 |
@@ -92,7 +94,7 @@ O Preparo e a Recuperação dependem da **classe da arma**:
 | Azagaia com atlatl | 8 | 5 | 1 | 2 |
 | Arte (conjuração) | 5 a 7 | Velocidade − 1 | 1 | 0 |
 
-Nas armas de **tiro** (os arcos, as bestas, a Funda e o Arremesso) a conta é **Preparo = Velocidade − 1 − Recuperação**, com o Golpe sempre em 1 Tick, e **toda arma de tiro tem Recuperação**. O Golpe cai no Tick **imediatamente antes da Recuperação**: quase toda a Velocidade é Preparo, e é por isso que a Besta Grande (Velocidade 15) passa **doze Ticks** armando, com a guarda aberta, um Tick de Golpe e dois de Recuperação. No sistema Normal, o padrão deste capítulo, o tiro já foi rolado na declaração (ver *Dois sistemas de tempo*); esses Ticks marcam quanto tempo a guarda fica aberta. Até o Arremesso leve tem um Tick de Recuperação depois do Golpe, o de voltar à postura.
+A **Haste** se divide em duas: a **média** (Lança, Bordão, Cajado, Tridente, Arpão) e a **de Guerra** (Foice Grande, Lança Longa, Alabarda, Glaive, Guisarme, Poleaxe), maior e mais lenta. No corpo a corpo o Golpe cai no Tick logo depois do Preparo, e sobram três Ticks de Recuperação. Nas armas de **tiro** (os arcos, as bestas, a Funda e o Arremesso) o Golpe cai no Tick **imediatamente antes da Recuperação**, que **toda arma de tiro tem**: quase toda a Velocidade é Preparo, e é por isso que a Besta Grande (Velocidade 15) passa **doze Ticks** armando, com a guarda aberta, um Tick de Golpe e dois de Recuperação. No sistema Normal, o padrão deste capítulo, o tiro já foi rolado na declaração (ver *Dois sistemas de tempo*); esses Ticks marcam quanto tempo a guarda fica aberta. Até o Arremesso leve tem um Tick de Recuperação depois do Golpe, o de voltar à postura.
 
 Cada fase custa Defesa, pela mesma moeda: estar comprometido com um gesto abre a guarda.
 
@@ -124,15 +126,15 @@ Preparo, Golpe e Recuperação em Ticks distintos.
 
 - **Normal** (**o padrão desta mesa**, e o sistema deste capítulo): a ação resolve inteira no
   Tick da declaração, com a Defesa em −2 durante o Preparo e −4 no Tick do golpe, exatamente
-  como descrito acima. **Rola-se ao declarar**, em todo golpe de arma: o acerto e o
+  como descrito acima, e **−2 até a próxima ação** pelo ataque que acabou de fazer (a Guarda sob pressão). **Rola-se ao declarar**, em todo golpe de arma: o acerto e o
   dano valem no Tick da declaração, e o Preparo e o Golpe que vêm depois só marcam a Defesa em −2 e
-  em −4. A **Arte** é a exceção: só o tamanho de cada parâmetro se declara no primeiro Tick, e a Arte rola e produz o efeito no último Tick da Velocidade (ver O tempo da Arte, em As Artes). Não há um Tick isolado de Recuperação: a Velocidade inteira empurra a
+  em −4. A Velocidade é a soma do Preparo, do Golpe e da Recuperação, e a Defesa fica aberta em todos os Ticks da ação, num custo total de **2 × Velocidade + 2**, seja qual for a divisão entre Preparo e Recuperação. A **Arte** é a exceção: só o tamanho de cada parâmetro se declara no primeiro Tick, e a Arte rola e produz o efeito no último Tick da Velocidade (ver O tempo da Arte, em As Artes). Não há um Tick isolado de Recuperação: a Velocidade inteira empurra a
   próxima ação, e é por isso que este capítulo fala em "Velocidade" e raramente em
   "Recuperação" sozinha.
 - **Três fases (P/G/R)**, usado na mesa tática (o Grid): a mesma Velocidade se abre em Ticks
-  separados de verdade. Todo gesto com Preparo maior que zero **telegrafa** (dá para ver e
-  interromper, não só o de quem conjura), e ganha uma penalidade própria de Recuperação: **−2
-  de Defesa por golpe ainda pendurado**, além do Preparo e do Golpe. No Preparo ainda dá para
+  separados de verdade. Todo gesto de ataque **telegrafa** (tem sempre ao menos 1 Tick de Preparo: dá para ver e
+  interromper, não só o de quem conjura), e a Recuperação cobra **−2
+  de Defesa por golpe ainda pendurado**, a mesma Guarda sob pressão do Normal, além do Preparo e do Golpe. No Preparo ainda dá para
   desistir; na Recuperação já não dá, só dá para pagar. A variante **Simultâneo (Tick a Tick)**
   é a mesma física do P/G/R rodando um Tick por vez no tabuleiro digital, com o deslocamento
   acontecendo passo a passo.
@@ -164,21 +166,25 @@ Uma ação, um golpe: essa é a régua padrão. Duas coisas rendem mais: lutar c
 seguir) ou puxar uma **Rajada**, vários golpes com a **mesma** arma, corpo a corpo, declarados de
 uma vez, sem parar no meio.
 
-A penalidade de acerto cresce golpe a golpe: o **1º golpe** da Rajada sai **sem penalidade**, o **2º** a **−1d6** e o **3º** a **−2d6**. Cada golpe extra soma **+2 de Velocidade** ao ciclo inteiro. Há um teto de golpes por Rajada, pela classe da arma:
+A Rajada tem a forma **P → G → G → … → R**: um Preparo, os golpes em Ticks seguidos e uma Recuperação, declarada de uma vez e sem parar no meio. Cada golpe **além do primeiro** custa duas coisas: **−1d6 no acerto, acumulando** (o **1º golpe** sai **sem penalidade**, o **2º** a **−1d6** e o **3º** a **−2d6**) e **+1 Tick de Recuperação**, além do Tick de Golpe que ele próprio ocupa. Cada golpe extra soma, portanto, **+2 de Velocidade** ao ciclo inteiro (no Normal também). Há um teto de golpes por Rajada, pela classe da arma, e o ciclo fica assim:
 
-| Classe | Golpes no teto |
-|---|:---:|
-| Leve | 3 |
-| Média | 3 |
-| Haste | 2 |
-| Pesada | 2 |
+| Classe | Golpes no teto | Ciclo com 1, 2 e 3 golpes |
+|---|:---:|:---:|
+| Leve | 3 | 5, 7 e 9 |
+| Média | 3 | 6, 8 e 10 |
+| Haste média | 2 | 6 e 8 |
+| Haste de Guerra | 2 | 7 e 9 |
+| Pesada | 2 | 7 e 9 |
 
-A Rajada é de golpes de arma. Agarrar, derrubar e empurrar (Manobras) não entram nela: o acerto de uma Manobra agarra e não fere.
+A Rajada é só **corpo a corpo** (arco, besta e Arremesso não fazem: recarregar é Preparo) e é de golpes de arma. Agarrar, derrubar e empurrar (Manobras) não entram nela: o acerto de uma Manobra agarra e não fere.
 
-Cada golpe da Rajada conta como um ataque feito pela Guarda sob pressão: uma Rajada de 3 golpes baixa a sua Esquiva e o Bloqueio em **−6** até a sua próxima ação, e a de 2 golpes (Haste, Pesada), em **−4** (−2 por golpe, a mesma conta da empunhadura dupla).
+- **Alvos diferentes:** golpe a golpe, qualquer um ao alcance. É o que faz da Rajada a ferramenta contra a horda.
+- **Interrupção:** só o Preparo é interrompível; os golpes seguidos não têm janela. O espelho de quem pagou ação fora de hora **empurra os golpes restantes**, não os cancela.
+- **Sem alvo ao alcance:** os golpes restantes se perdem e a Recuperação começa, sem reembolso: declarou três, pagou três.
+- **Uma só fonte de golpes múltiplos por ação:** a Rajada não acumula com a empunhadura dupla nem com Técnicas de ataque extra.
+- A **Investida** e o **Mirar** valem só para o primeiro golpe: compram Preparo, e há um só.
 
-No sistema P/G/R, cada golpe extra soma um Tick de Golpe e um de Recuperação ao ciclo (é o que
-consome os +2 de Velocidade).
+Cada golpe da Rajada conta como um ataque feito pela Guarda sob pressão: uma Rajada de 3 golpes baixa a sua Esquiva e o Bloqueio em **−6** até a sua próxima ação, e a de 2 golpes (as duas Hastes e a Pesada), em **−4** (−2 por golpe, a mesma conta da empunhadura dupla).
 
 ### Empunhadura dupla: um ataque por mão
 
@@ -193,6 +199,15 @@ Ao desferir os dois golpes:
 - cada golpe rola o próprio acerto e o próprio dano, com a arma daquela mão (a Força soma uma
   vez em cada);
 - podem cair no **mesmo alvo** ou em **alvos diferentes**, um por mão.
+
+No sistema P/G/R a dupla ganha **um Tick de Golpe para cada mão**, as duas a −1d6, e o ciclo muda pouco:
+
+| Dupla | Preparo | Golpes | Recuperação | Ciclo |
+|---|:---:|:---:|:---:|:---:|
+| Par de armas leves | 1 | 2 | 2 | 5 |
+| Arma média na mão hábil | 2 | 2 | 3 | 7 |
+
+No par de leves o segundo Golpe **come um Tick da Recuperação**, e o ciclo não muda; com arma média na mão hábil o ciclo **cresce 1**. Segurando a segunda arma (ou o escudo) **sem golpear com ela**, o Tick de Golpe fica a **−2** em vez de −4: a outra mão continua guardando. Os dois golpes contam, os dois, como ataques feitos para a Guarda sob pressão. O tempo é a identidade da dupla, e os dados são o preço dela.
 
 O preço não está tanto nos dados (pela régua da Margem, um golpe que **encosta** já rende quase todo o dano), e sim na **exposição**: cada ataque que você faz baixa a Esquiva e o Bloqueio (ver *Guarda sob pressão*), então brigar com as duas mãos derruba a sua guarda o **dobro** de um golpe só, até a sua próxima ação. Em troca, a **Defesa das armas continua valendo** para aparar: empunhar duas lâminas ataca e defende ao mesmo tempo: o que custa é ficar aberto, não largar a guarda da arma.
 
@@ -230,7 +245,7 @@ Controlar alguém em vez de feri-lo é uma **Manobra**: agarrar, derrubar ou emp
 
 <p class="formula">Dano = (Dado da Arma + Margem) + Força + Centelha − Absorção</p>
 
-O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste 1d6+2, arremesso 1d6−4 a 1d6, distância 1d6−2 a 1d6+8). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**: **exceto as hastes de estocada** (Lança e afins), que ferem por alcance e precisão, não por peso, e somam apenas a **Força simples**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6. A **Centelha do atacante** soma inteira, sem teto de Habilidade: é a mesma fagulha que abre Proeza que faz o golpe doer mais fundo, em toda arma, em toda Arte e a cada pulso de dano contínuo.
+O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste média 1d6, haste de Guerra 1d6+2, arremesso 1d6−4 a 1d6, distância 1d6−2 a 1d6+8). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**, a Lança entre elas: **a exceção é a Lança Longa**, que fere por alcance e precisão, não por peso, e soma apenas a **Força simples**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6. A **Centelha do atacante** soma inteira, sem teto de Habilidade: é a mesma fagulha que abre Proeza que faz o golpe doer mais fundo, em toda arma, em toda Arte e a cada pulso de dano contínuo.
 
 ### Os três modos de dano
 
@@ -289,7 +304,7 @@ Sua Defesa pode vir de duas fontes, e você usa **a melhor** delas contra cada g
 - **Esquiva**: com a habilidade Esquiva, mais a mobilidade do terreno. Some sai da frente.
 - **Bloqueio**: com a Habilidade **Bloqueio** (a mesma para qualquer arma, escudo ou mão), mais a **Defesa da Arma** e o escudo. Apara o golpe. Sem nada nas mãos, o corpo defende pela regra da [luta desarmada](/regras/armas-e-armaduras#luta-desarmada) (Cap. XIII).
 
-A **Defesa da Arma** (coluna *Defesa* em [Armas & Armaduras](/regras/armas-e-armaduras)) entra no **Bloqueio**: uma espada acrescenta **+1**, uma haste **+2** (o alcance afasta o golpe), e as **armas pesadas de duas mãos −2** (o espadão e o martelo dão muito dano, mas comprometem a guarda e **expõem o lutador entre os golpes**). Quem usa **uma só mão** pode ocupar a outra: um **escudo** (+1 a +3) ou uma **arma na mão inábil** (+1) eleva o Bloqueio. E a arma da mão inábil não só defende: ela rende um **segundo ataque** na ação (ver *Empunhadura dupla*), e o Bloqueio dela continua valendo mesmo quando você golpeia com ela. É a troca central da empunhadura: **dano concentrado e alcance com as duas mãos, a muralha do escudo, ou dois golpes por vez com uma arma em cada mão.**
+A **Defesa da Arma** (coluna *Defesa* em [Armas & Armaduras](/regras/armas-e-armaduras)) entra no **Bloqueio**: uma espada acrescenta **+1**, uma haste média **+2** (o alcance afasta o golpe; a Haste de Guerra, grande demais para aparar, **0**), e as **armas pesadas de duas mãos −2** (o espadão e o martelo dão muito dano, mas comprometem a guarda e **expõem o lutador entre os golpes**). Quem usa **uma só mão** pode ocupar a outra: um **escudo** (+1 a +3) ou uma **arma na mão inábil** (+1) eleva o Bloqueio. E a arma da mão inábil não só defende: ela rende um **segundo ataque** na ação (ver *Empunhadura dupla*), e o Bloqueio dela continua valendo mesmo quando você golpeia com ela. É a troca central da empunhadura: **dano concentrado e alcance com as duas mãos, a muralha do escudo, ou dois golpes por vez com uma arma em cada mão.**
 
 ### Projéteis rápidos: só Esquiva ou escudo
 
@@ -369,11 +384,17 @@ Preparo que a sua arma já tem, atravessado à velocidade de Corrida.
 | **Preparo andando** | Deslocamento de Batalha por Tick | o −2 do Preparo | — |
 | **Preparo investindo** | velocidade atual da Corrida por Tick (Arranque nos 3 primeiros Ticks, Corrida depois, como no Salto correndo) | −2 **a mais** | **+1d6** |
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora, de martelo (Preparo 2), anda 4 m por Tick e corre 7 no Arranque. Fechando a distância no Preparo ela cobre <strong>8 metros</strong> com a Defesa em −2. Investindo, cobre <strong>14</strong>, com a Defesa em −4, e o martelo cai com <strong>+1d6</strong>.</div>
+Como toda arma tem ao menos 1 Tick de Preparo, **toda arma investe**, a leve também, com o +1d6. O que se cobre depende do Preparo, e a Sora (4 m por Tick andando, 7 m por Tick no Arranque) mostra a escala:
 
-A arma **leve tem Preparo 0**, e por isso não investe de graça: ela precisa comprar Preparo antes
-(a carga voluntária). É a arma que **arma** o golpe que investe bem, e a pesada, com Preparo 2, é a
-que investe melhor, que é exatamente a imagem de quem atravessa o salão com o martelo erguido.
+| Arma | Preparo | Andando | Investindo |
+|---|:---:|:---:|:---:|
+| Leve | 1 | 4 m | 7 m |
+| Média e Haste média | 2 | 8 m | 14 m |
+| Haste de Guerra e Pesada | 3 | 12 m | 21 m |
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora, de martelo (Preparo 3), anda 4 m por Tick e corre 7 no Arranque. Fechando a distância no Preparo ela cobre <strong>12 metros</strong> com a Defesa em −2. Investindo, cobre <strong>21</strong>, com a Defesa em −4, e o martelo cai com <strong>+1d6</strong>.</div>
+
+Quanto maior o Preparo, mais longe e mais forte vai o golpe que investe, e a pesada, com Preparo 3, é a que investe melhor, que é exatamente a imagem de quem atravessa o salão com o martelo erguido.
 
 ### Recarga: o Preparo que não anda
 
@@ -436,7 +457,7 @@ Posição, cobertura e postura mudam o combate sem mudar suas fichas: todos eles
 
 Quando dois golpes caem no **mesmo Tick**, os dois atacantes estão abertos ao mesmo tempo: cada um ataca contra a guarda comprometida do outro. Não importa quem a mesa resolveu primeiro: a escada se lê pela **agenda**, e não pela ordem em que as jogadas foram narradas.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Duas adagas (Preparo 0) agem no <strong>Tick 4</strong>. As duas golpeiam nesse instante, então as duas estão em <strong>−4</strong>: cada uma ataca uma Defesa aberta. Se uma delas fosse uma espada longa (Preparo 1) declarada no Tick 3, no sistema Normal ela rolaria no 3, mas o Golpe dela também cairia no 4: no Tick 4 a guarda dela estaria em −4, a mesma das adagas.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Duas adagas (Preparo 1) declaradas no <strong>Tick 3</strong> golpeiam no <strong>Tick 4</strong>. As duas golpeiam nesse instante, então as duas estão em <strong>−4</strong>: cada uma ataca uma Defesa aberta. Se uma delas fosse uma espada longa (Preparo 2) declarada no <strong>Tick 2</strong>, no sistema Normal ela rolaria no 2, mas o Golpe dela também cairia no 4: no Tick 4 a guarda dela estaria em −4, a mesma das adagas.</div>
 
 <p class="muted">Vale a pena dizer por que a regra é essa: se a guarda de quem ainda não narrou a jogada contasse como inteira, a jogada certa seria sempre <em>deixar o outro atacar primeiro</em>, e a vantagem de ter rolado bem na Iniciativa se voltaria contra quem a ganhou.</p>
 

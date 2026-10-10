@@ -227,15 +227,15 @@ function conferir(cap, armas, regras, comb = COMB, acoes = ACOES) {
       const esp = [c.velocidade, c.preparo, c.golpe, c.recuperacao];
       if (JSON.stringify(real) !== JSON.stringify(esp)) f.push(`Combate, ${c.nome}: V/P/G/R ${JSON.stringify(real)} no capítulo, ${JSON.stringify(esp)} em regras.json`);
     }
-    // o corpo a corpo, como ainda está (até a rodada 4b): Preparo fixo da classe e P + G + R = Velocidade
-    const FIXO = { Leve: 'leve', 'Média': 'media', Haste: 'haste', Pesada: 'pesada' };
-    for (const [nome, cls] of Object.entries(FIXO)) {
-      const l = linha(nome);
-      if (!l) { f.push(`Combate: falta a linha "${nome}"`); continue; }
-      const [v, pr, g, r] = l.slice(1).map(num);
-      const fixo = regras?.combate?.pgr?.preparo?.[cls]?.fixo;
-      if (pr !== fixo) f.push(`Combate, ${nome}: Preparo ${pr} no capítulo, ${fixo} em regras.json`);
-      if (g !== 1 || pr + g + r !== v) f.push(`Combate, ${nome}: ${pr} + ${g} + ${r} nao fecha a Velocidade ${v}`);
+    // o corpo a corpo (rodada 4b): a reforma da D-082 em regras.json combate.pgr.reforma.corpoACorpo
+    const CCR = regras?.combate?.pgr?.reforma?.corpoACorpo;
+    if (!Array.isArray(CCR)) f.push('regras.json sem combate.pgr.reforma.corpoACorpo');
+    else for (const c of CCR) {
+      const l = linha(c.nome);
+      if (!l) { f.push(`Combate: falta a linha "${c.nome}" na tabela de Preparo, Golpe e Recuperação`); continue; }
+      const real = l.slice(1).map(num);
+      const esp = [c.velocidade, c.preparo, c.golpe, c.recuperacao];
+      if (JSON.stringify(real) !== JSON.stringify(esp)) f.push(`Combate, ${c.nome}: V/P/G/R ${JSON.stringify(real)} no capítulo, ${JSON.stringify(esp)} em regras.json`);
     }
     // o texto repete a Besta Grande ("doze Ticks") e o exemplo do Bram (Besta Média): saem do dado
     const grande = RF.find((c) => c.id === 'besta-grande');
@@ -271,6 +271,111 @@ function conferir(cap, armas, regras, comb = COMB, acoes = ACOES) {
     }
     if (!comb.includes('Efetiva 10 m') || ef('adaga-de-arremesso') !== 10) f.push('Combate: o exemplo da Adaga de Arremesso cita a Efetiva 10 m e o catalogo diz outra');
     if (!comb.includes('Efetiva 50 m') || ef('arco-longo') !== 50) f.push('Combate: o exemplo do Arco Longo cita a Efetiva 50 m e o catalogo diz outra');
+  }
+
+  // ---- o corpo a corpo, a Rajada, a dupla e a Investida (rodada 4b)
+  const CC = regras?.combate?.pgr?.reforma?.corpoACorpo;
+  const RJ = regras?.combate?.pgr?.reforma?.rajada;
+  const DP = regras?.combate?.pgr?.reforma?.dupla;
+  const IV = regras?.combate?.pgr?.reforma?.investida;
+  if (Array.isArray(CC) && RJ && DP && IV) {
+    const cls = (id) => CC.find((c) => c.id === id);
+    // Rajada: o ciclo com n golpes é a Velocidade + 2 por golpe extra; o teto vem de regras.json
+    const rt = tabelaApos(comb, '| Classe | Golpes no teto | Ciclo com 1, 2 e 3 golpes |');
+    if (!rt) f.push('Combate: falta a tabela da Rajada (golpes no teto e ciclo)');
+    else for (const [nome, id] of [['Leve', 'leve'], ['Média', 'media'], ['Haste média', 'haste-media'], ['Haste de Guerra', 'haste-guerra'], ['Pesada', 'pesada']]) {
+      const l = rt.linhas.find((r) => r[0] === nome);
+      const c = cls(id);
+      if (!l) { f.push(`Rajada: falta a linha "${nome}"`); continue; }
+      const teto = RJ.teto[id];
+      const ciclos = Array.from({ length: teto }, (_, k) => c.velocidade + 2 * k);
+      const txt = ciclos.length === 3 ? `${ciclos[0]}, ${ciclos[1]} e ${ciclos[2]}` : `${ciclos[0]} e ${ciclos[1]}`;
+      if (num(l[1]) !== teto) f.push(`Rajada, ${nome}: teto ${l[1]} no capítulo, ${teto} em regras.json`);
+      if (l[2] !== txt) f.push(`Rajada, ${nome}: ciclo "${l[2]}" no capítulo, "${txt}" pela Velocidade ${c.velocidade} e +2 por golpe extra`);
+    }
+    // dupla
+    const dt = tabelaApos(comb, '| Dupla | Preparo | Golpes | Recuperação | Ciclo |');
+    if (!dt) f.push('Combate: falta a tabela da empunhadura dupla');
+    else for (const [nome, d] of [['Par de armas leves', DP.parDeLeves], ['Arma média na mão hábil', DP.comMedia]]) {
+      const l = dt.linhas.find((r) => r[0] === nome);
+      if (!l) { f.push(`Dupla: falta a linha "${nome}"`); continue; }
+      const real = l.slice(1).map(num);
+      const esp = [d.preparo, d.golpes, d.recuperacao, d.ciclo];
+      if (JSON.stringify(real) !== JSON.stringify(esp)) f.push(`Dupla, ${nome}: P/G/R/ciclo ${JSON.stringify(real)} no capítulo, ${JSON.stringify(esp)} em regras.json`);
+      if (d.preparo + d.golpes + d.recuperacao !== d.ciclo) f.push(`Dupla, ${nome}: P + G + R nao fecha o ciclo`);
+    }
+    if (DP.parDeLeves.ciclo !== cls('leve').velocidade) f.push('Dupla: o par de leves nao muda o ciclo da leve');
+    if (DP.comMedia.ciclo !== cls('media').velocidade + 1) f.push('Dupla: a media pede ciclo +1');
+    // Investida: o que se cobre e o Preparo x 4 (andando) e x 7 (investindo)
+    const it = tabelaApos(comb, '| Arma | Preparo | Andando | Investindo |');
+    if (!it) f.push('Combate: falta a tabela da Investida');
+    else {
+      const ESPI = { Leve: 'leve', 'Média e Haste média': 'media', 'Haste de Guerra e Pesada': 'pesada' };
+      for (const [nome, id] of Object.entries(ESPI)) {
+        const l = it.linhas.find((r) => r[0] === nome);
+        if (!l) { f.push(`Investida: falta a linha "${nome}"`); continue; }
+        const P = cls(id).preparo;
+        if (nome === 'Média e Haste média' && cls('haste-media').preparo !== P) f.push('Investida: Media e Haste media tem Preparos diferentes');
+        if (nome === 'Haste de Guerra e Pesada' && cls('haste-guerra').preparo !== P) f.push('Investida: Haste de Guerra e Pesada tem Preparos diferentes');
+        if (num(l[1]) !== P || num(l[2]) !== P * IV.andandoPorTick || num(l[3]) !== P * IV.investindoPorTick) f.push(`Investida, ${nome}: ${l.slice(1).join(' / ')} no capítulo, ${P} / ${P * IV.andandoPorTick} m / ${P * IV.investindoPorTick} m pelo Preparo`);
+      }
+      const Pp = cls('pesada').preparo;
+      if (!comb.includes(`de martelo (Preparo ${Pp})`) || !comb.includes(`<strong>${Pp * IV.andandoPorTick} metros</strong>`) || !comb.includes(`cobre <strong>${Pp * IV.investindoPorTick}</strong>`)) f.push(`Combate: o exemplo da Sora (martelo, Preparo ${Pp}) pede ${Pp * IV.andandoPorTick} m andando e ${Pp * IV.investindoPorTick} m investindo`);
+    }
+    // Golpes no mesmo instante: a adaga declara em 4 - Preparo, a espada longa tambem
+    const pl = cls('leve').preparo, pm = cls('media').preparo;
+    if (!comb.includes(`Duas adagas (Preparo ${pl}) declaradas no <strong>Tick ${4 - pl}</strong> golpeiam no <strong>Tick 4</strong>`) || !comb.includes(`espada longa (Preparo ${pm}) declarada no <strong>Tick ${4 - pm}</strong>`)) f.push(`Combate: o exemplo dos golpes no mesmo instante pede a adaga (Preparo ${pl}) no Tick ${4 - pl} e a espada longa (Preparo ${pm}) no Tick ${4 - pm}`);
+    // a regra geral e o custo do Normal
+    if (!comb.includes('Toda arma tem **ao menos 1 Tick de Preparo**') || !comb.includes('**2 × Velocidade + 2**')) f.push('Combate: faltam a regra de 1 Tick de Preparo e o custo 2 × Velocidade + 2 do Normal');
+    if (/carga voluntária/i.test(comb)) f.push('Combate: sobrou a "carga voluntária" (a Investida vale para toda arma)');
+    // o capítulo Armas & Armaduras: a tabela de exemplos do corpo a corpo e as linhas do corpo a corpo da tabela de Classes
+    const NOMECLASSE = {};
+    for (const c of CC) for (const aid of c.armas) NOMECLASSE[aid] = c.id === 'punhos' ? 'Leve' : c.nome; // os Punhos são da classe Leve no catálogo, e têm linha própria só no P/G/R
+    const ex = tabelaApos(cap, '### Armas Corpo a Corpo');
+    if (!ex) f.push('Armas & Armaduras: falta a tabela de armas de exemplo do corpo a corpo');
+    else {
+      const ix = Object.fromEntries(['Arma', 'Classe', 'Modos', 'Velocidade', 'Dano', 'Acerto', 'Defesa', 'Mãos'].map((n) => [n, ex.cab.indexOf(n)]));
+      for (const l of ex.linhas) {
+        const x = porNome[l[ix.Arma]];
+        if (!x) { f.push(`corpo a corpo: "${l[ix.Arma]}" nao existe no catalogo`); continue; }
+        const a = x.arma;
+        const q = l[ix.Arma];
+        if (l[ix.Classe] !== NOMECLASSE[x.id]) f.push(`${q}: classe "${l[ix.Classe]}" no capítulo, "${NOMECLASSE[x.id]}" pela reforma`);
+        if (num(l[ix.Velocidade]) !== a.ticks) f.push(`${q}: Velocidade ${l[ix.Velocidade]} no capítulo, ${a.ticks} no catálogo`);
+        if (l[ix.Dano] !== `${a.dado}d6${sinal(a.danoBonus || 0)}`) f.push(`${q}: dano ${l[ix.Dano]} no capítulo, ${a.dado}d6${sinal(a.danoBonus || 0)} no catálogo`);
+        if (num(l[ix.Acerto]) !== a.acerto) f.push(`${q}: Acerto ${l[ix.Acerto]} no capítulo, ${a.acerto} no catálogo`);
+        if (num(l[ix.Defesa]) !== a.defesaArma) f.push(`${q}: Defesa ${l[ix.Defesa]} no capítulo, ${a.defesaArma} no catálogo`);
+        if (num(l[ix['Mãos']]) !== a.maos) f.push(`${q}: Mãos ${l[ix['Mãos']]} no capítulo, ${a.maos} no catálogo`);
+        // modos: ★ = principal, sem ★ = secundário
+        const toks = l[ix.Modos].split('·').map((t) => t.trim());
+        const prin = toks.filter((t) => t.startsWith('★')).map((t) => TIPO[t[1]]).sort();
+        const sec = toks.filter((t) => !t.startsWith('★')).map((t) => TIPO[t[0]]).sort();
+        const rp = (a.modos || []).filter((m) => m.principal).map((m) => m.tipo).sort();
+        const rs = (a.modos || []).filter((m) => !m.principal).map((m) => m.tipo).sort();
+        if (JSON.stringify(prin) !== JSON.stringify(rp) || JSON.stringify(sec) !== JSON.stringify(rs)) f.push(`${q}: modos ${l[ix.Modos]} no capítulo (principais ${JSON.stringify(prin)}, secundários ${JSON.stringify(sec)}), catálogo ${JSON.stringify(rp)} e ${JSON.stringify(rs)}`);
+      }
+      // toda arma de corpo a corpo do catálogo que o capítulo exemplifica
+      const nomesEx = new Set(ex.linhas.map((l) => l[ix.Arma]));
+      for (const id of ['desarmado', 'adaga', 'espada-curta', 'espada-longa', 'machado', 'lanca', 'alabarda', 'montante', 'martelo-de-guerra']) {
+        const x = armas.find((y) => y.id === id);
+        if (x && !nomesEx.has(x.nome)) f.push(`corpo a corpo: "${x.nome}" está no catálogo e falta na tabela de exemplos`);
+      }
+    }
+    const clt = tabelaApos(cap, '## Classes de Arma');
+    if (clt) {
+      const REP = { Leve: ['leve', 'adaga'], 'Média': ['media', 'espada-longa'], Pesada: ['pesada', 'montante'], 'Haste média': ['haste-media', 'lanca'], 'Haste de Guerra': ['haste-guerra', 'alabarda'] };
+      const iV = clt.cab.indexOf('Velocidade'), iD = clt.cab.indexOf('Dano'), iA = clt.cab.indexOf('Acerto'), iF = clt.cab.indexOf('Def.'), iM = clt.cab.indexOf('Mãos');
+      for (const [rot, [cid, wid]] of Object.entries(REP)) {
+        const l = clt.linhas.find((r) => r[0] === rot);
+        if (!l) { f.push(`Classes: falta a linha "${rot}"`); continue; }
+        const w = armas.find((x) => x.id === wid).arma;
+        if (num(l[iV]) !== cls(cid).velocidade) f.push(`Classes, ${rot}: Velocidade ${l[iV]} no capítulo, ${cls(cid).velocidade} pela reforma`);
+        if (l[iD] !== `${w.dado}d6${sinal(w.danoBonus || 0)}`) f.push(`Classes, ${rot}: dano ${l[iD]} no capítulo, ${w.dado}d6${sinal(w.danoBonus || 0)} (${wid})`);
+        if (num(l[iA]) !== w.acerto) f.push(`Classes, ${rot}: Acerto ${l[iA]} no capítulo, ${w.acerto} (${wid})`);
+        if (num(l[iF]) !== w.defesaArma) f.push(`Classes, ${rot}: Defesa ${l[iF]} no capítulo, ${w.defesaArma} (${wid})`);
+        if (num(l[iM]) !== w.maos) f.push(`Classes, ${rot}: Mãos ${l[iM]} no capítulo, ${w.maos} (${wid})`);
+      }
+    }
   }
   return f;
 }
@@ -320,7 +425,7 @@ for (const [nome, estraga] of Object.entries(estragosCatalogo)) {
     'Preparo do Arco Curto em Combate': (t) => t.replace('| Arco Curto | 6 | 4 | 1 | 1 |', '| Arco Curto | 6 | 5 | 1 | 0 |'),
     'Recuperação da Besta Média em Combate': (t) => t.replace('| Besta Média | 12 | 9 | 1 | 2 |', '| Besta Média | 12 | 9 | 1 | 3 |'),
     'linha da Funda sumiu de Combate': (t) => t.split('\n').filter((l) => !l.startsWith('| Funda | 6 | 4 |')).join('\n'),
-    'Preparo do Leve em Combate (corpo a corpo)': (t) => t.replace('| Leve | 5 | 0 | 1 | 4 |', '| Leve | 5 | 1 | 1 | 3 |'),
+    'Preparo do Leve em Combate (corpo a corpo)': (t) => t.replace('| Leve | 5 | 1 | 1 | 3 |', '| Leve | 5 | 0 | 1 | 4 |'),
     'exemplo do Bram em Combate': (t) => t.replace('Ele fica dos Ticks 0 ao 8 em Preparo', 'Ele fica dos Ticks 0 ao 10 em Preparo'),
     'Besta Grande em Combate': (t) => t.replace('passa **doze Ticks** armando', 'passa **catorze Ticks** armando'),
     'exemplo do tempo de voo em Combate': (t) => t.replace('n = 4, <strong>−12</strong>', 'n = 4, <strong>−9</strong>'),
@@ -346,6 +451,26 @@ for (const [nome, estraga] of Object.entries(estragosCatalogo)) {
     if (c === CAP && a === ACOES) { falhas.push(`o estrago "${nome}" não alterou nada (o teste de teste está torto)`); continue; }
     if (conferir(c, ARMAS, REGRAS, COMB, a).length === 0) falhas.push(`o teste NÃO acusou o estrago "${nome}"`);
   }
+  const estragosCC = {
+    'Preparo da Leve em Combate': (c, t) => [c.replace('| Leve | 5 | 1 | 1 | 3 |', '| Leve | 5 | 0 | 1 | 4 |'), t],
+    'Haste de Guerra em Combate': (c, t) => [c.replace('| Haste de Guerra | 7 | 3 | 1 | 3 |', '| Haste de Guerra | 7 | 2 | 1 | 4 |'), t],
+    'ciclo da Rajada de Média em Combate': (c, t) => [c.replace('| Média | 3 | 6, 8 e 10 |', '| Média | 3 | 6, 8 e 11 |'), t],
+    'teto da Rajada de Haste de Guerra em Combate': (c, t) => [c.replace('| Haste de Guerra | 2 | 7 e 9 |', '| Haste de Guerra | 3 | 7 e 9 |'), t],
+    'ciclo da dupla com média em Combate': (c, t) => [c.replace('| Arma média na mão hábil | 2 | 2 | 3 | 7 |', '| Arma média na mão hábil | 2 | 2 | 3 | 8 |'), t],
+    'Investida da Pesada em Combate': (c, t) => [c.replace('| Haste de Guerra e Pesada | 3 | 12 m | 21 m |', '| Haste de Guerra e Pesada | 3 | 12 m | 24 m |'), t],
+    'exemplo da Sora em Combate': (c, t) => [c.replace('de martelo (Preparo 3)', 'de martelo (Preparo 2)'), t],
+    'exemplo dos golpes no mesmo instante em Combate': (c, t) => [c.replace('Duas adagas (Preparo 1) declaradas no <strong>Tick 3</strong>', 'Duas adagas (Preparo 1) declaradas no <strong>Tick 2</strong>'), t],
+    'carga voluntária de volta em Combate': (c, t) => [c + '\nA carga voluntária compra Preparo.\n', t],
+    'Alabarda no capítulo (Velocidade 6)': (c, t) => [c, t.replace('| Alabarda | Haste de Guerra | ★C · ★P(N1) · ★I | 7 |', '| Alabarda | Haste de Guerra | ★C · ★P(N1) · ★I | 6 |')],
+    'Lança no capítulo (1d6+2)': (c, t) => [c, t.replace('| Lança | Haste média | ★P(N1) | 6 | 1d6 |', '| Lança | Haste média | ★P(N1) | 6 | 1d6+2 |')],
+    'classe da Lança no capítulo': (c, t) => [c, t.replace('| Lança | Haste média |', '| Lança | Haste |')],
+    'Defesa da Haste média nas Classes': (c, t) => [c, t.replace('| Haste média | 6 | 1d6 | +1 | +2 | 2 |', '| Haste média | 6 | 1d6 | +1 | +3 | 2 |')],
+  };
+  for (const [nome, estraga] of Object.entries(estragosCC)) {
+    const [c, t] = estraga(COMB, CAP);
+    if (c === COMB && t === CAP) { falhas.push(`o estrago "${nome}" nao alterou nada (o teste de teste esta torto)`); continue; }
+    if (conferir(t, ARMAS, REGRAS, c).length === 0) falhas.push(`o teste NÃO acusou o estrago "${nome}"`);
+  }
   const R5 = copia(REGRAS); R5.combate.pgr.reforma.tiro.find((c) => c.id === 'arco-curto').preparo = 5;
   if (conferir(CAP, ARMAS, R5, COMB).length === 0) falhas.push('o teste NÃO acusou o Preparo do Arco Curto alterado em regras.json');
 }
@@ -355,5 +480,5 @@ if (falhas.length) {
   for (const f of falhas) console.error('  · ' + f);
   process.exit(1);
 }
-const total = Object.keys(estragosTexto).length + Object.keys(estragosCatalogo).length + 2 + 7 + 1 + 9;
+const total = Object.keys(estragosTexto).length + Object.keys(estragosCatalogo).length + 2 + 7 + 1 + 9 + 13;
 console.log(`✓ test-capitulo-armas · as tabelas de Arremesso, Atirador, Classes e a Máxima por Força do capítulo batem com armas.json e regras.json · ${total} estragos acusados`);
