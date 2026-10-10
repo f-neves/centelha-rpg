@@ -1,0 +1,1 @@
+- 9-bis e B13: Com Atlatl medido na ficha, migracao com ficha salva de verdade, test-portoes (ancora) conferido, 27 mutacoes (24 pegas), CORRIGE: 5 textos visiveis fora do Grid (mesa-core, mesa-tempo-ui, mesa/combate). Veredito 166.
