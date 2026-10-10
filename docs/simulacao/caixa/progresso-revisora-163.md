@@ -1,0 +1,1 @@
+- Rodada 8: buracos dos vereditos 153 a 162 remutados (todos pegos), fallback de ficha-pgr, contador, CSS medido na bancada, varredura refeita. Veredito 163: PROCEDE.
