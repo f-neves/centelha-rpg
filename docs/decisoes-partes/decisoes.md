@@ -1754,7 +1754,7 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): todo animal comum tem Centelha 0. O piloto são todos os animais, inclusive os pré-históricos (dinossauros de vários tipos e portes, pterossauros, répteis marinhos, mamute e outros), na versão adulta. Filhote, atroz e de guerra ficam para depois.
 - Origem: mensagem do autor ao Arquiteto, 10/10/2026. Hoje há 84 fichas na categoria Animal, todas com Centelha 0 (diagnóstico, seção g).
-- Estado: a implementar (B20). Os pré-históricos são criaturas novas no bestiário.
+- Estado: a implementar (B20). Nove pré-históricos já têm ficha, e os outros são criaturas novas (inventário de 10/10/2026, `../tmp/arquiteto/bestiario/inventario.md`, item 10). Bordas que o inventário deixa para o autor: 10 animais "atroz" (6 com nome de espécie extinta) e 16 "gigantes" sem animal real daquele tamanho.
 
 ### D-099 · Habilidades dos animais: Briga, Bloqueio e Esquiva sempre; nunca Atirador, Armas ou Arremesso [tags: bestiario, animal, habilidades, briga, bloqueio, esquiva, b20]
 - Data: 2026-10-10
