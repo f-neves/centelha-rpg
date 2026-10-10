@@ -732,9 +732,8 @@ function conferirDefesa(comb, cap, sent, R, mesa = '', ref = '') {
   comeca(L, 'É o mesmo −4 do Tick do Golpe,', ['e ele diz uma coisa'], 'Combate, Correndo');
   if (/condições surpreso, cego e imobilizado/.test(comb)) f.push('Combate, Correndo: sobrou "das condições surpreso, cego e imobilizado"');
   if (!comb.includes('é o *pouco espaço* da tabela de restrição, em que o escudo perde o bônus')) f.push('Combate, escudo apto: falta a ligação com o pouco espaço da tabela de restrição');
-  // o único "teto de ±6" que resta é o do porte, que é da rodada 6
-  const ocorrencias = L.filter((x) => x.includes('teto de ±6'));
-  if (ocorrencias.length !== 1 || !ocorrencias[0].startsWith('Isso é **só no acerto**')) f.push(`Combate: o "teto de ±6" devia restar só no parágrafo do porte (rodada 6), e há ${ocorrencias.length}`);
+  // o "teto de ±6" não resta em lugar nenhum de combate.md (o porte, que ainda o citava, foi reescrito na rodada 6)
+  if (L.some((x) => x.includes('teto de ±6'))) f.push('Combate: sobrou "teto de ±6"');
   linha(LA, '- **Alcance**: ataca a 1 m de distância (uma casa); **+2 no acerto** contra quem se aproxima, **−2** contra quem já está colado. É bônus de acerto de quem ataca, e não modificador de Defesa: não entra no teto de +6 dos bônus de Defesa.', 'Armas & Armaduras, Alcance');
   if (cap.includes('teto de ±6')) f.push('Armas & Armaduras: sobrou "teto de ±6"');
   comeca(LS, '**Antes de um ataque** ·', ['é o que separa o alvo surpreso, de Defesa zerada, do que se defende', 'Quem ataca rola **Furtividade**, como no Esgueirar-se, contra a **Percepção Passiva** do defendido.', 'Falhou: ele sabe, e se defende normalmente. O atacante invisível usa o mesmo teste.'], 'Ações, Sentidos e Engano');
@@ -748,7 +747,6 @@ function conferirDefesa(comb, cap, sent, R, mesa = '', ref = '') {
   // varredura: nenhum texto de regras.json fala do teto velho nem das condições surpreso/cego/imobilizado a -4, salvo as exceções abaixo
   const EXCECOES_TETO = {
     'derivados.defesaSocial.reguaNota': 'a régua social tem o próprio ±6, que é outro assunto',
-    'porteAcerto.nota': 'o porte é da rodada 6; a rodada 6 reescreve a frase e tira esta exceção',
   };
   const varre = (o, caminho) => {
     for (const [k, v] of Object.entries(o || {})) {
@@ -777,7 +775,7 @@ function conferirDefesa(comb, cap, sent, R, mesa = '', ref = '') {
     for (const fr of frases) if (!l.includes(fr)) f.push(`${onde}: a linha "${ini.slice(0, 40)}" não tem "${fr.slice(0, 70)}"`);
   };
   if (mesa) {
-    paginaPina(lm, '<p class="muted nota-mini">Os <strong>bônus</strong> de Defesa vão até', ['<strong>+{(regras.combateTatico as any).bonusCap}</strong>', '<strong>penalidades não têm teto</strong>', '<strong>nunca fica abaixo de 0</strong>', 'O porte entra no <em>acerto</em>, fora deste teto.</p>'], 'mesa.astro');
+    paginaPina(lm, '<p class="muted nota-mini">Os <strong>bônus</strong> de Defesa vão até', ['<strong>+{(regras.combateTatico as any).bonusCap}</strong>', '<strong>penalidades não têm teto</strong>', '<strong>nunca fica abaixo de 0</strong>', 'O porte entra no <em>acerto</em>, sem teto: <strong>+{(regras.porteAcerto as any).reforma.porCategoria} por categoria</strong>, e no corpo a corpo só o menor ganha.</p>'], 'mesa.astro');
     if (/modificadorCap|Teto de <strong>±|somando tudo/.test(mesa)) f.push('mesa.astro: sobrou o teto de ±6 somando tudo ou modificadorCap');
   }
   if (ref) {
@@ -840,6 +838,90 @@ function conferirDefesa(comb, cap, sent, R, mesa = '', ref = '') {
     if (conferirDefesa(c, a, t, r, m, rf).length === 0) falhas.push(`o teste NÃO acusou o estrago da Defesa "${nome}"`);
   }
   TOTAL_ARTE += Object.keys(mutD).length;
+}
+
+// ---- o Porte: +3 por categoria sem teto, só o menor ganha no corpo a corpo, relativo à distância (rodada 6, D-077)
+// Pinos pela LINHA inteira e pela AUSÊNCIA do que saiu (o "+12 (teto)", o "Simétrico", o "até 4 categorias", o "teto de ±6").
+function conferirPorte(comb, R, gloss, ref, mesa) {
+  const f = [];
+  const L = comb.split('\n');
+  const linha = (exata, onde) => { if (!L.includes(exata)) f.push(`${onde}: falta a linha "${exata.slice(0, 100)}"`); };
+  const comeca = (ini, frases, onde) => {
+    const l = L.find((x) => x.startsWith(ini));
+    if (!l) { f.push(`${onde}: falta a linha que começa com "${ini.slice(0, 60)}"`); return; }
+    for (const fr of frases) if (!l.includes(fr)) f.push(`${onde}: a linha "${ini.slice(0, 40)}" não tem "${fr.slice(0, 80)}"`);
+  };
+  comeca('O tamanho conta na **jogada de acerto** dos **ataques físicos**:', ['soma **+3**, **sem teto**.'], 'Combate, Porte');
+  comeca('- **Corpo a corpo: só o menor ganha.**', ['Quem é menor que o alvo soma **+3 por categoria** de diferença contra ele.', 'Quem é igual ou maior ataca **sem penalidade** e sem bônus.', 'as criaturas grandes devem ser temidas pelas menores.'], 'Combate, Porte, corpo a corpo');
+  comeca('- **À distância, relativo nos dois sentidos.**', ['(arremesso, projétil, arco, besta, ataque mágico e Artes físicas à distância)', 'alvo **maior** que quem ataca, **+3 por categoria**; alvo **menor**, **−3 por categoria**.'], 'Combate, Porte, à distância');
+  for (const l of ['| **Maior** em *n* categorias | **+3 × n** | **+3 × n** |', '| **Do mesmo porte** | 0 | 0 |', '| **Menor** em *n* categorias | **0** | **−3 × n** |']) linha(l, 'Combate, Porte, tabela');
+  comeca('Sem teto quer dizer sem teto:', ['um Miúdo que ataca um Colossal soma **+18**, de perto ou de longe.', 'rola sem penalidade', '**−18**'], 'Combate, Porte, exemplo');
+  comeca('Atirar num Colossal **muito longe** continua difícil:', ['o porte não escala a Efetiva', 'entra só como bônus fixo no acerto.', 'Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.'], 'Combate, Porte, Colossal e enxame');
+  comeca('Isso é **só no acerto**:', ['não é modificador de Defesa (então fica fora do teto de +6 dos bônus de Defesa)', 'ataques **Sociais** ou **Mentais**, nem a Artes de **área** sem rolagem de ataque.', 'a **Couraça de Porte**'], 'Combate, Porte, exclusões');
+  linha('<div class="callout regra"><span class="lbl">Nota ao Mestre</span>Criaturas maiores que Médio que lutam <strong>entre si</strong> não ganham bônus de Defesa pelo tamanho. Nesses casos o Mestre pode aumentar a Defesa delas.</div>', 'Combate, Porte, nota ao Mestre');
+  comeca('Controlar alguém em vez de feri-lo é uma **Manobra**', ['O porte conta no acerto como em qualquer ataque de corpo a corpo: só o menor ganha bônus contra o maior (ver *Porte*).'], 'Combate, Manobras');
+  if (/\+12\*\* \(teto\)|\*\*Simétrico:\*\*|até 4 categorias|\| Alvo \*\*\d\*\* categorias? maiores?/.test(comb)) f.push('Combate: sobrou o teto de 4 categorias, o "+12 (teto)" ou o "Simétrico" do porte velho');
+  // regras.json: porteAcerto
+  const PA = R?.porteAcerto;
+  if (!PA?.reforma) f.push('regras.json: falta porteAcerto.reforma');
+  else {
+    if (PA.reforma.porCategoria !== 3 || PA.reforma.teto !== null) f.push('porteAcerto.reforma: porCategoria 3 e teto null (D-077)');
+    for (const k of ['corpoACorpo', 'aDistancia', 'enxame', 'fora', 'efetiva']) if (!PA.reforma[k]) f.push(`porteAcerto.reforma: falta ${k}`);
+    if (!/só o menor ganha/.test(PA.reforma.corpoACorpo) || !/relativo nos dois sentidos/.test(PA.reforma.aDistancia)) f.push('porteAcerto.reforma: corpo a corpo só o menor ganha, à distância relativo');
+    // o Grid lê ordem, porDiferenca e capCategorias, e esses ficam como estão
+    if (PA.capCategorias !== 4 || JSON.stringify(PA.porDiferenca) !== JSON.stringify([0, 3, 6, 9, 12])) f.push('porteAcerto: capCategorias 4 e porDiferenca [0,3,6,9,12] são o que o Grid lê (calc.ts) e não mudam nesta rodada');
+    if (!PA.gridNota || !/Grid lê/.test(PA.gridNota)) f.push('porteAcerto.gridNota: falta a nota de que o Grid ainda lê a regra velha');
+    for (const fr of ['+3 por categoria, SEM TETO (D-077)', 'CORPO A CORPO: só o menor ganha (+3 por categoria contra o maior); o maior ataca o menor sem penalidade.', 'À DISTÂNCIA (arremesso, projétil, arco, besta, ataque mágico, Artes físicas à distância): relativo nos dois sentidos, alvo maior +3 por categoria, alvo menor −3 por categoria.', 'O enxame usa o tamanho que apresenta, nos dois papéis.', 'O porte não escala a Efetiva.', 'nem para Artes de área sem rolagem de ataque']) if (!PA.nota.includes(fr)) f.push(`porteAcerto.nota: falta "${fr.slice(0, 70)}"`);
+    if (/teto de 4 categorias \(diferenças|Relativo e simétrico|teto ±6/.test(PA.nota)) f.push('porteAcerto.nota: sobrou a regra velha (teto de 4 categorias, simétrico, teto ±6)');
+  }
+  // glossário
+  const gp = (gloss || []).find?.((x) => x.id === 'porte') ?? null;
+  if (!gp) f.push('glossario.json: não achei o termo Porte');
+  else {
+    if (!gp.definicao.includes('cada categoria de diferença soma +3, sem teto, só no acerto. No corpo a corpo só o menor ganha (o maior ataca o menor sem penalidade); à distância é relativo nos dois sentidos (alvo maior +3 por categoria, alvo menor −3).')) f.push('glossario.json, Porte: falta a definição nova (+3, sem teto, só o menor ganha no corpo a corpo, relativo à distância)');
+    if (/simétrico, teto de 4 categorias|\+3\/\+6\/\+9\/\+12/.test(gp.definicao)) f.push('glossario.json, Porte: sobrou o teto de 4 categorias');
+  }
+  // as paginas da mesa
+  if (ref) {
+    if (/Teto de \{PORTE\.capCategorias\}|porDiferenca|±\$\{v\}/.test(ref)) f.push('referencia.astro: o porte ainda lê porDiferenca/capCategorias (a tabela devia vir de porteAcerto.reforma)');
+    for (const fr of ['<tr><td>Corpo a corpo, alvo maior</td>', '<tr><td>Corpo a corpo, alvo menor</td>{DIFS.map(() => (<td class="num">0</td>))}</tr>', '<tr><td>À distância, alvo menor</td>', 'Sem teto.</p>']) if (!ref.includes(fr)) f.push(`referencia.astro, porte: falta "${fr.slice(0, 70)}"`);
+  }
+  if (mesa && /fora deste teto/.test(mesa)) f.push('mesa.astro: sobrou "fora deste teto" no porte');
+  return f;
+}
+{
+  const GLOSS = JSON.parse(ler('src/data/glossario.json'));
+  const GL = Array.isArray(GLOSS) ? GLOSS : (GLOSS.termos || GLOSS.itens || Object.values(GLOSS));
+  const MESA2 = ler('src/pages/mesa.astro').replace(/\r\n/g, '\n'), REF2 = ler('src/pages/mesa/referencia.astro').replace(/\r\n/g, '\n');
+  const realP = conferirPorte(COMB, REGRAS, GL, REF2, MESA2);
+  for (const x of realP) falhas.push(x);
+  const ed = (r, fn) => { const x = copia(r); fn(x); return x; };
+  const mutP = realP.length ? {} : {
+    'o teto de ±12 de volta na tabela': (c) => [c.replace('| **Maior** em *n* categorias | **+3 × n** | **+3 × n** |', '| **Maior** em *n* categorias | **+3 × n** (até +12) | **+3 × n** |')],
+    'o corpo a corpo simétrico': (c) => [c.replace('Quem é igual ou maior ataca **sem penalidade** e sem bônus.', 'Quem é maior ataca com penalidade.')],
+    'o corpo a corpo com −3 para o maior': (c) => [c.replace('| **Menor** em *n* categorias | **0** | **−3 × n** |', '| **Menor** em *n* categorias | **−3 × n** | **−3 × n** |')],
+    'a distância sem o relativo': (c) => [c.replace('alvo **menor**, **−3 por categoria**.', 'alvo menor, igual.')],
+    'sem o "sem teto"': (c) => [c.replace('soma **+3**, **sem teto**.', 'soma **+3**, até 4 categorias.')],
+    'o enxame sumido': (c) => [c.replace('Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.', '')],
+    'a exclusão social/mental/área sumida': (c) => [c.replace('ataques **Sociais** ou **Mentais**, nem a Artes de **área** sem rolagem de ataque.', 'ataques Sociais.')],
+    'a nota ao Mestre sumida': (c) => [c.replace('<div class="callout regra"><span class="lbl">Nota ao Mestre</span>Criaturas maiores que Médio', '<div class="callout regra"><span class="lbl">Aviso</span>Criaturas maiores que Médio')],
+    'o teto de ±6 de volta no porte': (c) => [c.replace('(então fica fora do teto de +6 dos bônus de Defesa)', 'e não entra no teto de ±6')],
+    'a frase de Manobras com a penalidade': (c) => [c.replace('só o menor ganha bônus contra o maior (ver *Porte*).', 'o bônus e a penalidade valem como em qualquer ataque.')],
+    'a Efetiva escalada pelo porte': (c) => [c.replace('o porte não escala a Efetiva', 'o porte escala a Efetiva')],
+    'o teto de 4 categorias em regras.json': (c, r) => [c, ed(r, (x) => { x.porteAcerto.nota += ' Conta a diferença de categorias na ordem dos portes, com teto de 4 categorias (diferenças maiores contam como 4).'; })],
+    'o porCategoria estragado': (c, r) => [c, ed(r, (x) => { x.porteAcerto.reforma.porCategoria = 4; })],
+    'o capCategorias do Grid mexido': (c, r) => [c, ed(r, (x) => { x.porteAcerto.capCategorias = 6; })],
+    'a gridNota sumida': (c, r) => [c, ed(r, (x) => { delete x.porteAcerto.gridNota; })],
+    'o glossário com o teto de 4 categorias': (c, r, g) => [c, r, g.map((t) => (t.id === 'porte' ? { ...t, definicao: t.definicao + ' (simétrico, teto de 4 categorias)' } : t))],
+    'a tabela da referência lendo o teto velho': (c, r, g, rf) => [c, r, g, rf.replace('Sem teto.</p>', 'Teto de {PORTE.capCategorias} categorias.</p>')],
+    'a frase da mesa com o teto': (c, r, g, rf, m) => [c, r, g, rf, m.replace('O porte entra no <em>acerto</em>, sem teto:', 'O porte entra no <em>acerto</em>, fora deste teto:')],
+  };
+  for (const [nome, estraga] of Object.entries(mutP)) {
+    const [c, r = REGRAS, g = GL, rf = REF2, m = MESA2] = estraga(COMB, REGRAS, GL, REF2, MESA2);
+    if (c === COMB && r === REGRAS && g === GL && rf === REF2 && m === MESA2) { falhas.push(`o estrago "${nome}" não alterou nada (o teste de teste está torto)`); continue; }
+    if (conferirPorte(c, r, g, rf, m).length === 0) falhas.push(`o teste NÃO acusou o estrago do Porte "${nome}"`);
+  }
+  TOTAL_ARTE += Object.keys(mutP).length;
 }
 
 if (falhas.length) {

@@ -37,6 +37,7 @@ const FERIMENTOS = regras.ferimentos as any[];
 const sinalTxt = (n: number) => (n > 0 ? `+${n}` : `−${Math.abs(n)}`);
 const CT = regras.combateTatico as any;
 const PORTE = regras.porteAcerto as any;
+const DIFS = Array.from({ length: PORTE.ordem.length - 1 }, (_: unknown, i: number) => i + 1);
 const BLOQ = regras.bloqueioLimite as any;
 const SANG = regras.sangramento as any;
 const QA = regras.quaseAcerto as any;
@@ -236,10 +237,15 @@ const PORTE_NOME: Record<string, string> = {
       <h2>Porte no acerto</h2>
       <p class="ref-nota">{PORTE.nota}</p>
       <div class="tab-wrap"><table class="tab-mesa">
-        <thead><tr><th class="num">Diferença de categorias</th>{PORTE.porDiferenca.map((_: number, i: number) => (<th class="num">{i}</th>))}</tr></thead>
-        <tbody><tr><td>Modificador ao acerto</td>{PORTE.porDiferenca.map((v: number) => (<td class="num">{v ? `±${v}` : '0'}</td>))}</tr></tbody>
+        <thead><tr><th>Alvo, comparado a quem ataca</th>{DIFS.map((n: number) => (<th class="num">{n}</th>))}</tr></thead>
+        <tbody>
+          <tr><td>Corpo a corpo, alvo maior</td>{DIFS.map((n: number) => (<td class="num">{`+${PORTE.reforma.porCategoria * n}`}</td>))}</tr>
+          <tr><td>Corpo a corpo, alvo menor</td>{DIFS.map(() => (<td class="num">0</td>))}</tr>
+          <tr><td>À distância, alvo maior</td>{DIFS.map((n: number) => (<td class="num">{`+${PORTE.reforma.porCategoria * n}`}</td>))}</tr>
+          <tr><td>À distância, alvo menor</td>{DIFS.map((n: number) => (<td class="num">{`−${PORTE.reforma.porCategoria * n}`}</td>))}</tr>
+        </tbody>
       </table></div>
-      <p class="ref-nota muted">Ordem dos portes: {PORTE.ordem.map((p: string) => PORTE_NOME[p] || p).join(' · ')}. Teto de {PORTE.capCategorias} categorias.</p>
+      <p class="ref-nota muted">Colunas: a diferença em categorias. Ordem dos portes: {PORTE.ordem.map((p: string) => PORTE_NOME[p] || p).join(' · ')}. Sem teto.</p>
 
       <h3>Couraça de Porte</h3>
       <p class="ref-nota">{DANO.couracaPorte.nota}</p>

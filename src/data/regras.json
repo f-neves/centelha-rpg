@@ -1073,7 +1073,17 @@
     }
   },
   "porteAcerto": {
-    "nota": "Modificador à JOGADA DE ACERTO de ataques FÍSICOS (corpo a corpo e à distância), pela diferença de porte entre atacante e alvo. Só no acerto: NÃO altera a Defesa passiva do alvo, NÃO entra no teto ±6 dos modificadores situacionais e NÃO vale p/ ataques Sociais ou Mentais. Relativo e simétrico: acertar alvo MAIOR soma o valor; acertar alvo MENOR subtrai o mesmo valor. Conta a diferença de categorias na ordem dos portes, com teto de 4 categorias (diferenças maiores contam como 4). Bichos Enormes+ compensam a facilidade de acerto com a Couraça de Porte, que corta o dano de quem é menor.",
+    "nota": "Modificador à JOGADA DE ACERTO de ataques FÍSICOS, pela diferença de categorias de porte entre atacante e alvo: +3 por categoria, SEM TETO (D-077). Só no acerto: NÃO altera a Defesa passiva do alvo, não é modificador de Defesa (fica fora do teto de +6 dos bônus de Defesa) e NÃO vale p/ ataques Sociais ou Mentais, nem para Artes de área sem rolagem de ataque. CORPO A CORPO: só o menor ganha (+3 por categoria contra o maior); o maior ataca o menor sem penalidade. À DISTÂNCIA (arremesso, projétil, arco, besta, ataque mágico, Artes físicas à distância): relativo nos dois sentidos, alvo maior +3 por categoria, alvo menor −3 por categoria. O enxame usa o tamanho que apresenta, nos dois papéis. O porte não escala a Efetiva. Bichos Enormes+ compensam a facilidade de acerto com a Couraça de Porte, que corta o dano de quem é menor.",
+    "gridNota": "ordem, porDiferenca e capCategorias abaixo são o que o Grid lê (calc.ts, modificadorPorte, chamado em grid.astro): teto de 4 categorias e simétrico, a regra de ANTES da D-077. O livro, a nota acima e a chave reforma valem a regra nova; o Grid acompanha na passada do Grid (D-054, N22).",
+    "reforma": {
+      "porCategoria": 3,
+      "teto": null,
+      "corpoACorpo": "só o menor ganha: +3 por categoria contra o maior; o maior ataca o menor sem penalidade",
+      "aDistancia": "relativo nos dois sentidos: alvo maior +3 por categoria, alvo menor −3 por categoria",
+      "enxame": "o tamanho que apresenta, como alvo e como atacante",
+      "fora": ["ataques Sociais e Mentais", "Artes de área sem rolagem de ataque"],
+      "efetiva": "o porte não escala a Efetiva: entra só como bônus fixo no acerto"
+    },
     "ordem": [
       "minusculo",
       "pequeno",
