@@ -910,7 +910,7 @@ export function montarFicha(opts: FichaOpts) {
     }
     // O aviso sai da arma BRUTA: a rebaixada já não tem requisito a cobrar.
     const reqForca = forcaFaltando(atkBruto, forca);
-    // Empunhadura dupla: se a mão inábil também é arma, ela rende um 2º ataque (hábil −1d6, inábil −2d6).
+    // Empunhadura dupla: se a mão inábil também é arma, ela rende um 2º ataque, as duas mãos a −1d6 (D-091: sem penalidade extra na inábil).
     // A mão INÁBIL passa pelo mesmo freio: o Arco Composto cabe neste slot, e
     // sem isto ele sairia freado na mão hábil e inteiro na outra, que é meia
     // regra e pior do que nenhuma.
@@ -922,13 +922,12 @@ export function montarFicha(opts: FichaOpts) {
       const distI = (inabilArma.tags || []).includes('distância');
       const capFI = forcaNoArco(inabilArma, inabilArma.forcaCap != null ? Math.min(forca, inabilArma.forcaCap) : forca);
       const multI = distI ? (inabilArma.forcaMult ?? 1) : (inabilArma.forcaMult ?? fm.umaMao);
-      const ambi = !!(S.tech && S.tech['ambidestria']);
       dupla = {
         habilAp: versoes[0].ap,
         inabilDados: Math.floor(somaI / 2), inabilBonus: somaI % 2 === 1 ? 2 : 0,
         inabilFlat: (inabilArma.acerto || 0) + ataqueCentelha(C, habilI) - armorPen,
         inabilDado: inabilArma.dado, inabilAp: (inabilArma.danoBonus || 0) + capFI * multI + C,
-        inabilPen: ambi ? 1 : 2, ambi,
+        inabilPen: 1,
       };
     }
     // O BLOQUEIO PELA MELHOR COMBINAÇÃO (D-065): as armas e os escudos das mãos somam; o corpo só
@@ -1502,7 +1501,7 @@ export function montarFicha(opts: FichaOpts) {
     const p0 = (n: number) => Math.max(0, n);
     const pool = (d: number, b: number, f: number) => `${p0(d)}d6${b ? '+2' : ''}${f ? ' ' + sgn(f) : ''}`;
     const dm = (dado: number, ap: number) => `${dado}d6${ap ? ' ' + sgn(ap) : ''}`;
-    return `<div class="conj-dupla"><b>Ataque duplo</b> hábil −1d6: ${pool(c.dados - 1, c.bonus, c.flat)} (${dm(c.atk.dado, c.dupla.habilAp)}) · inábil −${c.dupla.inabilPen}d6: ${pool(c.dupla.inabilDados - c.dupla.inabilPen, c.dupla.inabilBonus, c.dupla.inabilFlat)} (${dm(c.dupla.inabilDado, c.dupla.inabilAp)}) <span class="muted">· guarda −4 até seu turno${c.dupla.ambi ? ' · Ambidestria' : ''}</span></div>`;
+    return `<div class="conj-dupla"><b>Ataque duplo</b> hábil −1d6: ${pool(c.dados - 1, c.bonus, c.flat)} (${dm(c.atk.dado, c.dupla.habilAp)}) · inábil −${c.dupla.inabilPen}d6: ${pool(c.dupla.inabilDados - c.dupla.inabilPen, c.dupla.inabilBonus, c.dupla.inabilFlat)} (${dm(c.dupla.inabilDado, c.dupla.inabilAp)}) <span class="muted">· guarda −4 até seu turno</span></div>`;
   }
   function renderConjuntos() {
     const ro = !!opts.readOnly;

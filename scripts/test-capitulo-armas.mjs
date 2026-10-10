@@ -340,9 +340,9 @@ function conferir(cap, armas, regras, comb = COMB, acoes = ACOES) {
     if (!cap.includes('A mão nua bloqueia **qualquer ataque armado**') || !cap.includes('**perde os dados de Margem**') || !cap.includes('**toma o dano da arma normalmente**') || !cap.includes('garra, mordida e chifre contam; contra um soco, o Bloqueio com as mãos para tudo') || !cap.includes('só com a aprovação do Mestre a mão nua barra também o dano da arma') || !cap.includes('braçadeira de aço contra uma clava')) f.push('Armas & Armaduras, Luta desarmada: falta o parágrafo da D-088 (a mão nua bloqueia qualquer ataque armado, perde a Margem, toma o dano da arma)');
     if (!cap.includes('Bloqueio 14, mais 1 de cada punho: <strong>16</strong>') || !cap.includes('<strong>só o dano da arma</strong>')) f.push('Armas & Armaduras, Luta desarmada: falta o exemplo do autor da D-088 (Bloqueio 16, Esquiva 8, acerto 15)');
     if (cap.includes('Contra lâmina, o corpo não segura')) f.push('Armas & Armaduras: sobrou o parágrafo "Contra lâmina, o corpo não segura" (a D-088 o substitui)');
-    // a leitura c da D-088 (arma numa mão e punho na outra) está em aberto com o autor: nenhuma frase pode somar punho com arma
+    // a leitura c da D-088 (arma numa mão e punho na outra) foi DESCARTADA pelo autor (vale a D-065 item 3): nenhuma frase pode somar punho com arma
     const desarmada = (cap.split('## Luta desarmada')[1] || '').split('## Armaduras')[0];
-    if (/punho[^.]{0,60}soma[^.]{0,40}(arma|escudo)/i.test(desarmada.replace(/arma ou escudo não somam com ele/g, ''))) f.push('Luta desarmada: uma frase soma punho com arma (leitura c da D-088, em aberto com o autor)');
+    if (/punho[^.]{0,60}soma[^.]{0,40}(arma|escudo)/i.test(desarmada.replace(/arma ou escudo não somam com ele/g, ''))) f.push('Luta desarmada: uma frase soma punho com arma (a leitura c da D-088 foi descartada; vale a D-065 item 3)');
     // o capítulo Armas & Armaduras: a tabela de exemplos do corpo a corpo e as linhas do corpo a corpo da tabela de Classes
     const NOMECLASSE = {};
     for (const c of CC) for (const aid of c.armas) NOMECLASSE[aid] = c.id === 'punhos' ? 'Leve' : c.nome; // os Punhos são da classe Leve no catálogo, e têm linha própria só no P/G/R
@@ -697,7 +697,7 @@ function conferirArte(comb, R, astro) {
   else {
     tem(DT, 'No Tick do Golpe de cada ciclo ele escolhe', 'decisaoTardia');
     tem(DT, 'O Golpe do ciclo n cai no Tick n × V − 1', 'decisaoTardia');
-    tem(DT, 'uma ação de Velocidade 5 decide no Tick 4; se esticar, decide de novo no 9, e assim por diante (14, 19).', 'decisaoTardia');
+    tem(DT, 'uma ação de Velocidade 5 decide no Tick 4; se esticar, decide de novo no 9, e outra vez no 14; o 19 é o Golpe do quarto ciclo, onde não há mais o que esticar.', 'decisaoTardia');
     tem(DT, 'Só o ciclo final leva Recuperação.', 'decisaoTardia');
     tem(DT, 'O Tick em que se decide esticar ainda é Preparo (−2 na Defesa), e só o Tick em que a Arte sai é Golpe (−4).', 'decisaoTardia');
     nao(DT, /tick final|no 10/, 'decisaoTardia');
@@ -817,7 +817,7 @@ function conferirDefesa(comb, cap, sent, R, mesa = '', ref = '') {
     if (CT.bonusCap !== 6 || CT.penalidadeCap !== null || CT.pisoDefesa !== 0) f.push('combateTatico: bonusCap 6, penalidadeCap null e pisoDefesa 0 (D-078)');
     if ((CT.modificadores || []).some((m) => /surpreso|cego|imobilizado|agarrad/i.test(m.nome))) f.push('combateTatico.modificadores: sobrou a linha de surpreso, cego, imobilizado ou agarrado a -4 ou -2 (agora em defesaZerada e na restrição do capítulo)');
     const Z = (CT.defesaZerada?.linhas || []).map((l) => JSON.stringify(l));
-    for (const esp of [{ nome: 'Surpreso (não sabe do ataque)', tipo: 'zera' }, { nome: 'Totalmente imobilizado (amarrado, soterrado)', tipo: 'zera' }, { nome: 'Dormindo ou desacordado', tipo: 'zera' }, { nome: 'Cego, vendado ou no escuro total, sabendo do ataque', tipo: 'soma', esquiva: -4, bloqueio: -8 }]) {
+    for (const esp of [{ nome: 'Surpreso (não sabe do ataque)', tipo: 'zera' }, { nome: 'Totalmente imobilizado (amarrado, soterrado; não zera a Defesa de agarrão)', tipo: 'zera' }, { nome: 'Dormindo ou desacordado', tipo: 'zera' }, { nome: 'Cego, vendado ou no escuro total, sabendo do ataque', tipo: 'soma', esquiva: -4, bloqueio: -8 }]) {
       if (!Z.includes(JSON.stringify(esp))) f.push(`combateTatico.defesaZerada: falta a linha ${JSON.stringify(esp)}`);
     }
   }
@@ -1040,7 +1040,7 @@ function conferirFechamento(T) {
   // 4
   comeca(A, 'A mão nua bloqueia **qualquer ataque armado**', ['Os punhos não barram o dano de arma nenhuma: só com a aprovação do Mestre'], 'Luta desarmada, frase do Mestre', 'sem ela, o dano passa.');
   // 9 e 10
-  comeca(C, 'A **Arte** tem a mesma forma', [], 'Combate, parágrafo da Arte', 'Esticar a conjuração, que se decide a cada Tick do Golpe, está em *O tempo da Arte*, em As Artes.');
+  comeca(C, 'A **Arte** tem a mesma forma', [], 'Combate, parágrafo da Arte', 'Esticar a conjuração, que se decide a cada Tick do Golpe, está em *Passar do seu limite*, em As Artes.');
   comeca(R, 'Não é preciso anunciar de saída até onde vai.', ['(T é a Velocidade esticada: 9 Ticks quando a ação passa a 10).'], 'regras.astro, esticar');
   comeca(R, '<div class="callout regra"><span class="lbl">Os dois modos</span>', ['Esses Ticks são a Velocidade da conjuração, e a Arte sai no'], 'regras.astro, Os dois modos');
   // 13: a tabelinha "Defesa zerada ou cego" e a ordem Esquiva, Bloqueio
@@ -1082,7 +1082,7 @@ function conferirFechamento(T) {
     '4: o começo da frase do Mestre': troca('cap', 'Os punhos não barram o dano de arma nenhuma: só com a aprovação do Mestre', 'Os punhos barram o dano de arma: só com a aprovação do Mestre'),
     '4: o fim da frase do Mestre': troca('cap', 'sem ela, o dano passa.', 'sem ela, o dano não passa.'),
     '9: o "9 Ticks quando a ação passa a 10"': troca('astro', '(T é a Velocidade esticada: 9 Ticks quando a ação passa a 10).', '(T é a Velocidade esticada).'),
-    '9: a frase final do parágrafo da Arte': troca('comb', 'Esticar a conjuração, que se decide a cada Tick do Golpe, está em *O tempo da Arte*, em As Artes.', 'Esticar a conjuração está em As Artes.'),
+    '9: a frase final do parágrafo da Arte': troca('comb', 'Esticar a conjuração, que se decide a cada Tick do Golpe, está em *Passar do seu limite*, em As Artes.', 'Esticar a conjuração está em As Artes.'),
     '10: "Esses Ticks são a Velocidade da conjuração"': troca('astro', 'Esses Ticks são a Velocidade da conjuração, e a Arte sai no', 'Esses Ticks são de preparo, e a Arte sai no'),
     '13: a tabela da mesa removida': troca('mesa', '<thead><tr><th>Defesa zerada ou cego</th><th class="num">Esquiva</th><th class="num">Bloqueio</th></tr></thead>', '<thead><tr><th>Defesa zerada ou cego</th></tr></thead>'),
     '13: as colunas da mesa trocadas': troca('mesa', '<th class="num">Esquiva</th><th class="num">Bloqueio</th></tr></thead>\n            <tbody>{ZERA', '<th class="num">Bloqueio</th><th class="num">Esquiva</th></tr></thead>\n            <tbody>{ZERA'),
@@ -1202,6 +1202,61 @@ function conferirOitoBis(T) {
   TOTAL_ARTE += Object.keys(mutB).length;
 }
 
+// ---- rodada 9: a D-091 (mão inábil sem penalidade extra, Ambidestria em recalibração), B4, B5, B6 e B8
+function conferirNove(T) {
+  const f = [];
+  const L = T.comb.split('\n');
+  if (!L.includes('- **as duas mãos atacam a −1d6** (coordenar dois gumes tira precisão, e tira igual das duas);')) f.push('Combate, empunhadura dupla (B2): a linha "as duas mãos atacam a −1d6 (...);" devia ser inteira e sem a Ambidestria');
+  if (/Ambidestria|apaga esse dado extra/.test(T.comb)) f.push('Combate (B2): sobrou a Ambidestria ou "apaga esse dado extra"');
+  // a ficha: a mão inábil a −1d6 e sem ler a Técnica
+  const FL = T.ficha.split('\n');
+  if (!FL.some((x) => /^\s*inabilPen: 1,$/.test(x))) f.push('ficha-engine.ts (B2): falta a linha "inabilPen: 1," (sem penalidade extra na inábil, D-091)');
+  if (/ambidestria/i.test(T.ficha) || /inabilPen: ambi/.test(T.ficha) || /c\.dupla\.ambi/.test(T.ficha)) f.push('ficha-engine.ts (B2): a ficha ainda lê a Ambidestria');
+  // a Técnica fica na lista, com a descrição e "efeito em recalibração"
+  const amb = (T.tecnicas || []).find((x) => x.id === 'ambidestria');
+  if (!amb) f.push('tecnicas.json (B2): a Ambidestria saiu da lista (o id tem de ficar, por causa da ficha salva)');
+  else {
+    if (amb.texto !== 'Suas duas mãos golpeiam como uma só. Efeito em recalibração: na empunhadura dupla as duas mãos já atacam a −1d6, sem penalidade extra na inábil, e o que esta Proeza dará de novo será decidido na recalibração das Proezas.') f.push('tecnicas.json, Ambidestria (B2): o texto devia ser a descrição com "Efeito em recalibração"');
+    if (/−2d6|−4 pelos próximos 6 Ticks/.test(amb.texto)) f.push('tecnicas.json, Ambidestria (B2): sobrou o "−2d6" ou o "−4 pelos próximos 6 Ticks"');
+  }
+  // B4, B5, B6, B8
+  if (!L.some((x) => x.startsWith('A **Arte** tem a mesma forma') && x.trimEnd().endsWith('*Passar do seu limite*, em As Artes.'))) f.push('Combate (B4): o parágrafo da Arte devia remeter o esticar a "Passar do seu limite", em As Artes');
+  const DT = T.regras?.arcano?.esticar?.decisaoTardia || '';
+  if (!DT.includes('decide no Tick 4; se esticar, decide de novo no 9, e outra vez no 14; o 19 é o Golpe do quarto ciclo, onde não há mais o que esticar.')) f.push('regras.json esticar.decisaoTardia (B5): as decisões na V5 são 4, 9 e 14, e o 19 é o Golpe do quarto ciclo');
+  if (/\(14, 19\)/.test(DT)) f.push('regras.json esticar.decisaoTardia (B5): sobrou "(14, 19)"');
+  const IV = T.regras?.combate?.movimento?.investida;
+  if (!IV) f.push('regras.json: não achei combate.movimento.investida');
+  else if ('semPreparo' in IV) f.push('regras.json movimento.investida (B6): sobrou a chave semPreparo, de antes da D-082 (leve com Preparo 0)');
+  const lin = (T.regras?.combateTatico?.defesaZerada?.linhas || []).find((x) => /imobilizado/i.test(x.nome));
+  if (!lin || lin.nome !== 'Totalmente imobilizado (amarrado, soterrado; não zera a Defesa de agarrão)') f.push('regras.json combateTatico.defesaZerada (B8): a linha do Totalmente imobilizado devia trazer a ressalva da Defesa de agarrão');
+  return f;
+}
+{
+  const T0 = { comb: COMB, ficha: ler('src/lib/ficha-engine.ts').replace(/\r\n/g, '\n'), tecnicas: JSON.parse(ler('src/data/tecnicas.json')), regras: REGRAS };
+  const tec = Array.isArray(T0.tecnicas) ? T0.tecnicas : (T0.tecnicas.tecnicas || T0.tecnicas.itens || Object.values(T0.tecnicas).flat());
+  T0.tecnicas = tec;
+  const realN = conferirNove(T0);
+  for (const x of realN) falhas.push(x);
+  const troca = (k, de, para) => (T) => ({ ...T, [k]: T[k].replace(de, para) });
+  const trocaR = (fn) => (T) => ({ ...T, regras: (() => { const x = copia(T.regras); fn(x); return x; })() });
+  const mutN = realN.length ? {} : {
+    'B2: a Ambidestria de volta no livro': troca('comb', 'e tira igual das duas);', 'e tira igual das duas). A Técnica **Ambidestria** apaga esse dado extra;'),
+    'B2: a ficha com a inábil a −2d6': troca('ficha', 'inabilPen: 1,', 'inabilPen: 2,'),
+    'B2: a ficha lendo a Ambidestria': troca('ficha', 'inabilPen: 1,', "inabilPen: (S.tech && S.tech['ambidestria']) ? 1 : 2,"),
+    'B2: a Técnica com o −2d6 de volta': (T) => ({ ...T, tecnicas: T.tecnicas.map((x) => (x.id === 'ambidestria' ? { ...x, texto: x.texto + ' Em vez de −2d6, sai a −1d6.' } : x)) }),
+    'B2: a Técnica fora da lista': (T) => ({ ...T, tecnicas: T.tecnicas.filter((x) => x.id !== 'ambidestria') }),
+    'B4: a remissão de volta a O tempo da Arte': troca('comb', '*Passar do seu limite*, em As Artes.', '*O tempo da Arte*, em As Artes.'),
+    'B5: o 19 como decisão': trocaR((x) => { x.arcano.esticar.decisaoTardia = x.arcano.esticar.decisaoTardia.replace('e outra vez no 14; o 19 é o Golpe do quarto ciclo, onde não há mais o que esticar.', 'e assim por diante (14, 19).'); }),
+    'B6: a semPreparo de volta': trocaR((x) => { x.combate.movimento.investida.semPreparo = 'A arma leve tem Preparo 0'; }),
+    'B8: a linha do imobilizado sem a ressalva': trocaR((x) => { x.combateTatico.defesaZerada.linhas[1].nome = 'Totalmente imobilizado (amarrado, soterrado)'; }),
+  };
+  for (const [nome, estraga] of Object.entries(mutN)) {
+    const T = estraga(T0);
+    if (JSON.stringify(T) === JSON.stringify(T0)) { falhas.push(`o estrago "${nome}" não alterou nada (o teste de teste está torto)`); continue; }
+    if (conferirNove(T).length === 0) falhas.push(`o teste NÃO acusou o estrago da rodada 9 "${nome}"`);
+  }
+  TOTAL_ARTE += Object.keys(mutN).length;
+}
 if (falhas.length) {
   console.error(`✘ test-capitulo-armas: ${falhas.length} falha(s)`);
   for (const f of falhas) console.error('  · ' + f);

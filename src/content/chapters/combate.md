@@ -98,7 +98,7 @@ Toda arma tem **ao menos 1 Tick de Preparo**, e a conta é **Preparo = Velocidad
 
 A **Haste** se divide em duas: a **média** (Lança, Bordão, Cajado, Tridente, Arpão) e a **de Guerra** (Foice Grande, Lança Longa, Alabarda, Glaive, Guisarme, Poleaxe), maior e mais lenta. No corpo a corpo o Golpe cai no Tick logo depois do Preparo, e sobram três Ticks de Recuperação. Nas armas de **tiro** (os arcos, as bestas, a Funda e o Arremesso) o Golpe cai no Tick **imediatamente antes da Recuperação**, que **toda arma de tiro tem**: quase toda a Velocidade é Preparo, e é por isso que a Besta Grande (Velocidade 15) passa **doze Ticks** armando, com a guarda aberta, um Tick de Golpe e dois de Recuperação. No sistema Normal, o padrão deste capítulo, o tiro já foi rolado na declaração (ver *Dois sistemas de tempo*); esses Ticks marcam quanto tempo a guarda fica aberta. Até o Arremesso leve tem um Tick de Recuperação depois do Golpe, o de voltar à postura.
 
-A **Arte** tem a mesma forma, com 1 Tick de Recuperação, e a Velocidade vem do maior grau investido na conjuração (5, 6 ou 7); ao esticar, a Velocidade que se multiplica é a do conjuro antes de esticar, pelo maior grau investido até o nível de Arte de quem conjura. Ela sai no **Tick do Golpe, o penúltimo da Velocidade** (a Velocidade menos um), e não no último: na Velocidade 5 o Preparo ocupa os Ticks 1 a 3, o Golpe é o Tick 4 e a Recuperação é o 5; na Velocidade 7, o Golpe é o Tick 6. Quem vê a Arte se juntar tem o Preparo mais o Golpe de aviso, de **4 a 6 Ticks**. A Recuperação da Arte cobra −2, como a de qualquer ataque. Esticar a conjuração, que se decide a cada Tick do Golpe, está em *O tempo da Arte*, em As Artes.
+A **Arte** tem a mesma forma, com 1 Tick de Recuperação, e a Velocidade vem do maior grau investido na conjuração (5, 6 ou 7); ao esticar, a Velocidade que se multiplica é a do conjuro antes de esticar, pelo maior grau investido até o nível de Arte de quem conjura. Ela sai no **Tick do Golpe, o penúltimo da Velocidade** (a Velocidade menos um), e não no último: na Velocidade 5 o Preparo ocupa os Ticks 1 a 3, o Golpe é o Tick 4 e a Recuperação é o 5; na Velocidade 7, o Golpe é o Tick 6. Quem vê a Arte se juntar tem o Preparo mais o Golpe de aviso, de **4 a 6 Ticks**. A Recuperação da Arte cobra −2, como a de qualquer ataque. Esticar a conjuração, que se decide a cada Tick do Golpe, está em *Passar do seu limite*, em As Artes.
 
 Cada fase custa Defesa, pela mesma moeda: estar comprometido com um gesto abre a guarda.
 
@@ -200,8 +200,7 @@ dois; se preferir, faça só o golpe da mão hábil, normal, sem penalidade.
 
 Ao desferir os dois golpes:
 
-- **as duas mãos atacam a −1d6** (coordenar dois gumes tira precisão, e tira igual das duas). A
-  Técnica **Ambidestria** (Dança da Lâmina) apaga esse dado extra;
+- **as duas mãos atacam a −1d6** (coordenar dois gumes tira precisão, e tira igual das duas);
 - cada golpe rola o próprio acerto e o próprio dano, com a arma daquela mão (a Força soma uma
   vez em cada);
 - podem cair no **mesmo alvo** ou em **alvos diferentes**, um por mão.

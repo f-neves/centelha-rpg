@@ -7493,7 +7493,7 @@
       "duas lâminas",
       "mão trocada"
     ],
-    "texto": "Suas duas mãos golpeiam como uma só. Na empunhadura dupla, o ataque da mão inábil deixa de sofrer o dado extra: em vez de −2d6, sai a −1d6, igual à mão hábil. A guarda ainda cai por cada golpe (dois ataques = −4 pelos próximos 6 Ticks); o que a Ambidestria apaga é a desvantagem da mão fraca, não a exposição.",
+    "texto": "Suas duas mãos golpeiam como uma só. Efeito em recalibração: na empunhadura dupla as duas mãos já atacam a −1d6, sem penalidade extra na inábil, e o que esta Proeza dará de novo será decidido na recalibração das Proezas.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"

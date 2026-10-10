@@ -1066,7 +1066,7 @@
       "nota": "Regra geral (D-078): quem não sabe do ataque ou não tem como se defender fica com a Defesa correspondente zerada; ataque imbloqueável zera só o Bloqueio, inesquivável só a Esquiva. A restrição de corpo e de lugar (leve, parcial, grave, total, pouco espaço, sem equilíbrio) está no capítulo Combate Físico, com o Agarrado (só contra quem está de fora) e o Imobilizado.",
       "linhas": [
         { "nome": "Surpreso (não sabe do ataque)", "tipo": "zera" },
-        { "nome": "Totalmente imobilizado (amarrado, soterrado)", "tipo": "zera" },
+        { "nome": "Totalmente imobilizado (amarrado, soterrado; não zera a Defesa de agarrão)", "tipo": "zera" },
         { "nome": "Dormindo ou desacordado", "tipo": "zera" },
         { "nome": "Cego, vendado ou no escuro total, sabendo do ataque", "tipo": "soma", "esquiva": -4, "bloqueio": -8 }
       ]
@@ -2110,7 +2110,7 @@
       "nota": "Passar do nível da Arte num parâmetro. Investir mais Mana NÃO fura o teto sozinho: quem tem Fogo 3 leva tudo até o 3 pagando o normal, mas para alcançar o 4 tem de esticar.",
       "custo": "Um parâmetro N níveis ACIMA do nível da Arte custa (nível do parâmetro) × (N + 1) pontos.",
       "speed": "CADA nível acima soma outra vez a Velocidade da ação, somando entre todos os parâmetros esticados. Velocidade 5 vira 10 com um nível acima, 15 com dois.",
-      "decisaoTardia": "O feiticeiro NÃO decide de saída até onde vai. No Tick do Golpe de cada ciclo ele escolhe: soltar o efeito agora, ou segurar e subir mais um nível de um parâmetro. Se segurar, decide de novo no Tick do Golpe do ciclo seguinte. O Golpe do ciclo n cai no Tick n × V − 1, em que V é a Velocidade da conjuração: uma ação de Velocidade 5 decide no Tick 4; se esticar, decide de novo no 9, e assim por diante (14, 19). Só o ciclo final leva Recuperação. O Tick em que se decide esticar ainda é Preparo (−2 na Defesa), e só o Tick em que a Arte sai é Golpe (−4).",
+      "decisaoTardia": "O feiticeiro NÃO decide de saída até onde vai. No Tick do Golpe de cada ciclo ele escolhe: soltar o efeito agora, ou segurar e subir mais um nível de um parâmetro. Se segurar, decide de novo no Tick do Golpe do ciclo seguinte. O Golpe do ciclo n cai no Tick n × V − 1, em que V é a Velocidade da conjuração: uma ação de Velocidade 5 decide no Tick 4; se esticar, decide de novo no 9, e outra vez no 14; o 19 é o Golpe do quarto ciclo, onde não há mais o que esticar. Só o ciclo final leva Recuperação. O Tick em que se decide esticar ainda é Preparo (−2 na Defesa), e só o Tick em que a Arte sai é Golpe (−4).",
       "tabela": [
         {
           "acima": 0,
@@ -2583,8 +2583,7 @@
         "titulo": "Investida",
         "danoDados": 1,
         "defesaExtra": -2,
-        "texto": "Gastar o Preparo CORRENDO em vez de andando: o golpe cobre a distância da Corrida em vez da de Batalha, a Defesa cai −2 além do que o Preparo já cobra, e o golpe sai com +1d6 de dano. Não é regra nova: é o Preparo que a arma já tem, atravessado a outra velocidade.",
-        "semPreparo": "A arma leve tem Preparo 0 e por isso não investe de graça: ela compra Preparo pela carga voluntária (§3 do Combate_Tempo.md) e aí investe. É a arma que ARMA o golpe que investe bem, e a pesada, com Preparo 2, é a que investe melhor."
+        "texto": "Gastar o Preparo CORRENDO em vez de andando: o golpe cobre a distância da Corrida em vez da de Batalha, a Defesa cai −2 além do que o Preparo já cobra, e o golpe sai com +1d6 de dano. Não é regra nova: é o Preparo que a arma já tem, atravessado a outra velocidade."
       },
       "recarga": {
         "titulo": "Recarga",
