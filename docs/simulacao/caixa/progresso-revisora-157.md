@@ -1,0 +1,1 @@
+- 4c: conta do 155 conferida nos tres lugares; 26 mutacoes (19 pegas); testes do Grid verdes; leitura 390/1300. Veredito 157: PROCEDE.
