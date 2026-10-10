@@ -19,6 +19,7 @@ import RACA_D from '../data/racas.json';
 import { ordemPar, valorPar, formaDe, rank, PAR_FORMA } from './artes-fmt';
 import { classeDeTempo, tetoDaRajada } from './combate-tempo';
 import { anatomiaDaFicha } from './ficha-pgr';
+import { migrarRefsDeArma } from './ficha-migra';
 import { sparkSVG } from './centelha-spark';
 import { url } from './site';
 import {
@@ -369,6 +370,8 @@ export function montarFicha(opts: FichaOpts) {
       S.anteNom[a.id] = arr.map((x: any) => ({ u: x.u || novoUid(), n: String(x.n ?? ''), v: +x.v || 0 }));
     }
     S.equip ??= {};
+    // Migração: arma que saiu do catálogo com outro nome (dardos → plumbata), nos slots, no arsenal e no legado S.equip.arma.
+    migrarRefsDeArma(S);
     if (!Array.isArray(S.equip.armaduras)) S.equip.armaduras = (S.equip.armadura && S.equip.armadura !== 'nenhuma') ? [S.equip.armadura] : [];
     delete S.equip.armadura;
     // Migração: Arma/Escudo únicos viram um conjunto (mão hábil/inábil).

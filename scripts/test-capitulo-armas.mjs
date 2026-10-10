@@ -1418,6 +1418,60 @@ function conferirTermos(T) {
   TOTAL_ARTE += Object.keys(mutT).length;
 }
 
+// ---- rodada 9, B13: "dardos" vira "plumbata" numa ficha salva (a Plumbata ocupa o lugar dos Dardos, D-076 e D-085)
+function conferirMigracaoDeArma(MG, F, armas) {
+  const f = [];
+  const ficha = () => ({
+    equip: { arma: 'dardos' },
+    conjuntos: [{ habil: { ref: 'a:dardos', mod: { acerto: 1 } }, inabil: { ref: 'a:adaga' }, ativo: true }, { habil: { ref: 'a:desarmado' }, inabil: { ref: 'a:dardos' }, ativo: false }],
+    arsenal: [{ uid: 'u1', ref: 'a:dardos' }, { uid: 'u2', ref: 'a:adaga' }, { uid: 'u3', ref: 'e:escudo-redondo' }],
+  });
+  const S = MG.migrarRefsDeArma(ficha());
+  const vem = JSON.stringify([S.equip.arma, S.conjuntos[0].habil, S.conjuntos[0].inabil, S.conjuntos[1].inabil, S.arsenal.map((p) => p.ref)]);
+  const deve = JSON.stringify(['plumbata', { ref: 'a:plumbata', mod: { acerto: 1 } }, { ref: 'a:adaga' }, { ref: 'a:plumbata' }, ['a:plumbata', 'a:adaga', 'e:escudo-redondo']]);
+  if (vem !== deve) f.push(`ficha-migra: a ficha com "dardos" devia sair com "plumbata" (e o mod, a Adaga e o escudo intactos): saiu ${vem}`);
+  // uma ficha sem arma velha passa intacta, e rodar duas vezes dá o mesmo
+  const limpa = { equip: { arma: 'adaga' }, conjuntos: [{ habil: { ref: 'a:adaga' }, inabil: { ref: 'nada' }, ativo: true }], arsenal: [] };
+  if (JSON.stringify(MG.migrarRefsDeArma(JSON.parse(JSON.stringify(limpa)))) !== JSON.stringify(limpa)) f.push('ficha-migra: uma ficha sem arma velha devia passar intacta');
+  const dupla = MG.migrarRefsDeArma(MG.migrarRefsDeArma(ficha()));
+  if (JSON.stringify(dupla) !== JSON.stringify(S)) f.push('ficha-migra: a migração devia ser idempotente');
+  try { MG.migrarRefsDeArma({}); MG.migrarRefsDeArma(undefined); } catch (e) { f.push('ficha-migra: uma ficha vazia não pode quebrar (' + e.message + ')'); }
+  // a tabela: todo id velho saiu do catálogo, todo id novo existe nele
+  for (const [velho, novo] of MG.RENOMES_ARMA) {
+    if (armas.some((x) => x.id === velho)) f.push(`ficha-migra: "${velho}" ainda está no catálogo (então não é um nome velho)`);
+    if (!armas.some((x) => x.id === novo)) f.push(`ficha-migra: "${novo}" não existe no catálogo`);
+  }
+  if (!MG.RENOMES_ARMA.some(([v, n]) => v === 'dardos' && n === 'plumbata')) f.push('ficha-migra: falta dardos → plumbata em RENOMES_ARMA');
+  // a ficha chama a migração, antes de converter o legado em conjuntos
+  const L = F.split('\n');
+  const iChamada = L.findIndex((x) => /^\s*migrarRefsDeArma\(S\);$/.test(x));
+  const iLegado = L.findIndex((x) => x.includes('// Migração: Arma/Escudo únicos viram um conjunto'));
+  if (iChamada < 0) f.push('ficha-engine.ts: falta a linha "migrarRefsDeArma(S);" no carregamento');
+  else if (iLegado >= 0 && iChamada > iLegado) f.push('ficha-engine.ts: migrarRefsDeArma(S) tem de rodar ANTES da migração do legado S.equip.arma para conjuntos');
+  if (!L.some((x) => x.trim() === "import { migrarRefsDeArma } from './ficha-migra';")) f.push('ficha-engine.ts: falta o import de migrarRefsDeArma');
+  return f;
+}
+{
+  const MG = await carregarTS('src/lib/ficha-migra.ts');
+  const FICHA2 = ler('src/lib/ficha-engine.ts').replace(/\r\n/g, '\n');
+  const catalogo2 = ARMAS.filter((x) => x.arma);
+  const realM = conferirMigracaoDeArma(MG, FICHA2, catalogo2);
+  for (const x of realM) falhas.push(x);
+  const mutM = realM.length ? {} : {
+    'sem a entrada dardos no RENOMES_ARMA (o controle negativo)': [{ ...MG, RENOMES_ARMA: [], migrarRefsDeArma: (S) => MG.migrarRefsDeArma(S, []) }, FICHA2],
+    'a ficha sem a chamada': [MG, FICHA2.replace(/^\s*migrarRefsDeArma\(S\);\n/m, '')],
+    'a chamada depois do legado': [MG, FICHA2.replace(/^(\s*)migrarRefsDeArma\(S\);\n/m, '').replace('    // Migração: Arma/Escudo únicos viram um conjunto', '    // Migração: Arma/Escudo únicos viram um conjunto\n    migrarRefsDeArma(S);')],
+    'a migração que ignora o arsenal': [{ ...MG, migrarRefsDeArma: (S) => { const a = S.arsenal; S.arsenal = []; MG.migrarRefsDeArma(S); S.arsenal = a; return S; } }, FICHA2],
+    'a migração que ignora a mão inábil': [{ ...MG, migrarRefsDeArma: (S) => { const i = S.conjuntos.map((c) => c.inabil); MG.migrarRefsDeArma(S); S.conjuntos.forEach((c, k) => (c.inabil = i[k])); return S; } }, FICHA2],
+    'a migração que ignora S.equip.arma': [{ ...MG, migrarRefsDeArma: (S) => { const a = S.equip.arma; MG.migrarRefsDeArma(S); S.equip.arma = a; return S; } }, FICHA2],
+    'a migração que apaga o mod do slot': [{ ...MG, migrarRefsDeArma: (S) => { MG.migrarRefsDeArma(S); S.conjuntos[0].habil = { ref: S.conjuntos[0].habil.ref }; return S; } }, FICHA2],
+  };
+  for (const [nome, [mg, fic]] of Object.entries(mutM)) {
+    if (conferirMigracaoDeArma(mg, fic, catalogo2).length === 0) falhas.push(`o teste NÃO acusou o estrago da migração de arma "${nome}"`);
+  }
+  TOTAL_ARTE += Object.keys(mutM).length;
+}
+
 if (falhas.length) {
   console.error(`✘ test-capitulo-armas: ${falhas.length} falha(s)`);
   for (const f of falhas) console.error('  · ' + f);
