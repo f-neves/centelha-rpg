@@ -4,7 +4,7 @@
 // (localStorage) quanto a /personagem (Supabase, com XP definido pelo mestre).
 import { tecnicaDisponivel } from './modulos';
 import { pesoMaximoErguido, alcanceArremesso } from './forca-empurrao';
-import { custoPontos, custoTecnica, custoArte, custoEfeito, custoEspecialidade, pisoXp, pv, pvPorte, type Porte, comRequisitoDeForca, forcaFaltando, defesa, defesaMental, defesaSocial, centelhaNaJogada, energia, mana, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './calc';
+import { custoPontos, custoTecnica, custoArte, custoEfeito, custoEspecialidade, pisoXp, pv, pvPorte, type Porte, comRequisitoDeForca, forcaFaltando, forcaNoArco, defesa, defesaMental, defesaSocial, centelhaNaJogada, energia, mana, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './calc';
 import ATTRS_D from '../data/atributos.json';
 import HAB_D from '../data/habilidades.json';
 import SEC_D from '../data/habilidades-secundarias.json';
@@ -890,7 +890,7 @@ export function montarFicha(opts: FichaOpts) {
     const dist = (atk.tags || []).includes('distância');
     const fm = regras.derivados.danoForca as any;
     const db = atk.danoBonus || 0;
-    const capF = atk.forcaCap != null ? Math.min(forca, atk.forcaCap) : forca;
+    const capF = forcaNoArco(atk, atk.forcaCap != null ? Math.min(forca, atk.forcaCap) : forca);
     const inabilArmaOcupada = (inabil.kind === 'arma' || inabil.kind === 'custom');
     const versoes: { rot: string; ap: number }[] = [];
     // +1 POR PONTO DE CENTELHA DO ATACANTE, SEM LIMITE, no dano (Reforma da
@@ -919,7 +919,7 @@ export function montarFicha(opts: FichaOpts) {
       const habilI = S.skills[inabilArma.pericia] || S.skills2[inabilArma.pericia] || 0;
       const somaI = ataqueAtrib(inabilArma) + habilI;
       const distI = (inabilArma.tags || []).includes('distância');
-      const capFI = inabilArma.forcaCap != null ? Math.min(forca, inabilArma.forcaCap) : forca;
+      const capFI = forcaNoArco(inabilArma, inabilArma.forcaCap != null ? Math.min(forca, inabilArma.forcaCap) : forca);
       const multI = distI ? (inabilArma.forcaMult ?? 1) : (inabilArma.forcaMult ?? fm.umaMao);
       const ambi = !!(S.tech && S.tech['ambidestria']);
       dupla = {

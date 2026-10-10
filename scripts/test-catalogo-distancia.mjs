@@ -50,6 +50,19 @@ const TABELA = {
 };
 const DISTMAX_LEGADO = { 'adaga-de-arremesso': 10, 'machado-de-arremesso': 12, azagaia: 40, funda: 200, bumerangue: 50, rede: 5, pilum: 25 };
 const SEM_DISTMAX = ['plumbata', 'shuriken', 'mini-faca', 'kunai', 'boleadeira', 'bumerangue-de-caca', 'bumerangue-de-caca-cortante', 'bumerangue-de-retorno-cortante'];
+// A reforma de P/G/R do TIRO (D-082), classe a classe: [Velocidade, Preparo, Golpe, Recuperação]
+const REFORMA = {
+  'arremesso-leve': [4, 2, 1, 1],
+  'arremesso-medio': [5, 3, 1, 1],
+  'arremesso-pesado': [6, 3, 1, 2],
+  'funda': [6, 4, 1, 1],
+  'arco-curto': [6, 4, 1, 1],
+  'arco-longo-composto': [7, 4, 1, 2],
+  'besta-pequena': [9, 7, 1, 1],
+  'besta-media': [12, 9, 1, 2],
+  'besta-grande': [15, 12, 1, 2],
+  'azagaia-com-atlatl': [8, 5, 1, 2],
+};
 const ARCOS_POR_FORCA = {
   curto: [50, 90, 120, 140, 155, 170, 180, 190],
   longo: [100, 180, 250, 295, 325, 350, 370, 390],
@@ -94,6 +107,32 @@ function conferir(armas, regras, extras) {
   if (!tp.includes('projétil veloz') || !tp.includes('bloqueável')) f.push('Plumbata sem as tags de projétil rápido e bloqueável');
   // Bumerangues: um só id antigo vira o de retorno em Impacto
   if (por.bumerangue?.nome !== 'Bumerangue de retorno') f.push('o id `bumerangue` não é o Bumerangue de retorno');
+  // regras.json combate.pgr.reforma (P/G/R do tiro, D-082): a tabela da decisao, e cada arma na sua classe
+  const RF = regras?.combate?.pgr?.reforma?.tiro;
+  if (!Array.isArray(RF)) f.push('regras.json sem combate.pgr.reforma.tiro');
+  else {
+    const porId = Object.fromEntries(RF.map((c) => [c.id, c]));
+    for (const [id, esp] of Object.entries(REFORMA)) {
+      const c = porId[id];
+      if (!c) { f.push(`reforma: falta a classe ${id}`); continue; }
+      const real = [c.velocidade, c.preparo, c.golpe, c.recuperacao];
+      if (JSON.stringify(real) !== JSON.stringify(esp)) f.push(`reforma ${id}: V/P/G/R ${JSON.stringify(real)}, a D-082 pede ${JSON.stringify(esp)}`);
+      if (c.preparo + c.golpe + c.recuperacao !== c.velocidade) f.push(`reforma ${id}: P + G + R nao fecha a Velocidade`);
+      for (const aid of c.armas || []) {
+        if (por[aid]?.arma.ticks !== c.velocidade) f.push(`reforma ${id}: ${aid} tem Velocidade ${por[aid]?.arma.ticks} no catalogo, a classe pede ${c.velocidade}`);
+      }
+    }
+    if (RF.length !== Object.keys(REFORMA).length) f.push(`reforma: ${RF.length} classes, esperava ${Object.keys(REFORMA).length}`);
+    // toda arma de tiro e arremesso do catalogo esta em exatamente uma classe
+    const donas = {};
+    for (const c of RF) for (const aid of c.armas || []) donas[aid] = (donas[aid] || 0) + 1;
+    for (const x of armas) {
+      if (!x.arma || (x.arma.classe !== 'distancia' && x.arma.classe !== 'arremesso')) continue;
+      if ((donas[x.id] || 0) !== 1) f.push(`reforma: ${x.id} esta em ${donas[x.id] || 0} classes (tem de ser 1)`);
+    }
+    const atl = RF.find((c) => c.id === 'azagaia-com-atlatl');
+    if (atl && extras?.[0]?.efeito?.velocidadeDaAzagaia !== atl.velocidade) f.push('reforma: a azagaia com atlatl nao bate com armas-extras.json');
+  }
   // regras.json combate.distancia
   const D = regras?.combate?.distancia;
   if (!D) { f.push('regras.json sem combate.distancia'); return f; }
@@ -135,6 +174,7 @@ const estragos = {
   'Dardos voltaram': (A) => { const d = copia(A.find((x) => x.id === 'plumbata')); d.id = 'dardos'; A.push(d); },
   'atlatl em armas.json': (A) => { A.push({ id: 'atlatl', nome: 'Atlatl', arma: null }); },
   'peso da Rede': (A) => { A.find((x) => x.id === 'rede').peso = 1.5; },
+  'Velocidade da Funda no catalogo (a reforma pede 6)': (A) => { A.find((x) => x.id === 'funda').arma.ticks = 5; },
   'distMax da azagaia': (A) => { A.find((x) => x.id === 'azagaia').arma.distMax = 41; },
   'distMax da Funda': (A) => { A.find((x) => x.id === 'funda').arma.distMax = 199; },
   'distMax do bumerangue': (A) => { A.find((x) => x.id === 'bumerangue').arma.distMax = 51; },
@@ -150,6 +190,10 @@ for (const [nome, estraga] of Object.entries(estragos)) {
   if (conferir(ARMAS, R, EXTRAS).length === 0) falhas.push('o teste NÃO acusou a tabela dos arcos adulterada');
   const R2 = copia(REGRAS); R2.combate.distancia.maxima.multiplicadores.funda = 1;
   if (conferir(ARMAS, R2, EXTRAS).length === 0) falhas.push('o teste NÃO acusou a Funda sem o ×2');
+  const R3 = copia(REGRAS); R3.combate.pgr.reforma.tiro.find((c) => c.id === 'besta-grande').preparo = 13;
+  if (conferir(ARMAS, R3, EXTRAS).length === 0) falhas.push('o teste NAO acusou o Preparo da Besta Grande alterado');
+  const R4 = copia(REGRAS); R4.combate.pgr.reforma.tiro.find((c) => c.id === 'funda').armas = [];
+  if (conferir(ARMAS, R4, EXTRAS).length === 0) falhas.push('o teste NAO acusou a Funda fora de toda classe');
   const E2 = copia(EXTRAS); E2[0].so = ['azagaia', 'plumbata'];
   if (conferir(ARMAS, REGRAS, E2).length === 0) falhas.push('o teste NÃO acusou o atlatl com a Plumbata');
 }

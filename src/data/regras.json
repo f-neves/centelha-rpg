@@ -2613,6 +2613,21 @@
         "cicloBase": 3,
         "cicloPorNivel": 1,
         "nota": "A Arte sai no ÚLTIMO Tick da montagem: Preparo = 2 + nível, ciclo = nível + 3. É a §5.3 do Arcano, já no site."
+      },
+      "reforma": {
+        "nota": "A reforma de P/G/R da D-082 para as armas de TIRO e de arremesso (rodada 4a, 10/10/2026): Preparo = Velocidade − 1 − Recuperação, com o Golpe sempre em 1 Tick, e toda arma de tiro tem Recuperação. Fica numa chave à parte porque `preparo` (a fórmula por classe, acima) é lida pelo motor do Grid (combate-tempo.ts), congelado pela D-054: o motor passa a ler esta na passada do Grid (N22 em N-grid-pendencias.md). Os números são os da tabela 'Preparo, Golpe e Recuperação' do capítulo Combate Físico, e o test-capitulo-armas.mjs os prende nos dois lados. O corpo a corpo (leve 1/1/3 etc.) é da rodada 4b e não está aqui.",
+        "tiro": [
+          { "id": "arremesso-leve", "nome": "Arremesso leve", "velocidade": 4, "preparo": 2, "golpe": 1, "recuperacao": 1, "armas": ["shuriken", "mini-faca", "kunai"] },
+          { "id": "arremesso-medio", "nome": "Arremesso médio", "velocidade": 5, "preparo": 3, "golpe": 1, "recuperacao": 1, "armas": ["adaga-de-arremesso", "plumbata", "bumerangue", "bumerangue-de-retorno-cortante"] },
+          { "id": "arremesso-pesado", "nome": "Arremesso pesado", "velocidade": 6, "preparo": 3, "golpe": 1, "recuperacao": 2, "armas": ["bumerangue-de-caca", "bumerangue-de-caca-cortante", "machado-de-arremesso", "azagaia", "pilum", "boleadeira", "rede"] },
+          { "id": "funda", "nome": "Funda", "velocidade": 6, "preparo": 4, "golpe": 1, "recuperacao": 1, "armas": ["funda"] },
+          { "id": "arco-curto", "nome": "Arco Curto", "velocidade": 6, "preparo": 4, "golpe": 1, "recuperacao": 1, "armas": ["arco-curto"] },
+          { "id": "arco-longo-composto", "nome": "Arco Longo e Composto", "velocidade": 7, "preparo": 4, "golpe": 1, "recuperacao": 2, "armas": ["arco-longo", "arco-composto"] },
+          { "id": "besta-pequena", "nome": "Besta Pequena", "velocidade": 9, "preparo": 7, "golpe": 1, "recuperacao": 1, "armas": ["besta-pequena"] },
+          { "id": "besta-media", "nome": "Besta Média", "velocidade": 12, "preparo": 9, "golpe": 1, "recuperacao": 2, "armas": ["besta-media"] },
+          { "id": "besta-grande", "nome": "Besta Grande", "velocidade": 15, "preparo": 12, "golpe": 1, "recuperacao": 2, "armas": ["besta-grande"] },
+          { "id": "azagaia-com-atlatl", "nome": "Azagaia com atlatl", "velocidade": 8, "preparo": 5, "golpe": 1, "recuperacao": 2, "armas": [], "extra": "atlatl" }
+        ]
       }
     },
     "escada": {

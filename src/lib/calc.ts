@@ -269,6 +269,18 @@ export function comRequisitoDeForca<T extends { forcaMin?: number; forcaMult?: n
   return { ...w, forcaMult: 1, danoBonus: 0 };
 }
 
+/**
+ * A Força que o ARCO usa na conta do dano: acima de 8 conta como 8 (D-075, adendo 3 do 2f, 10/10/2026).
+ * No alcance a mesma regra já está na tabela de Máxima dos arcos (`combate.distancia.maxima`). Vale só para
+ * o arco (classe de distância que soma Força, `forcaMult` > 0): a besta não usa Força, e o arremesso e o corpo
+ * a corpo não têm esse teto. Isto NÃO substitui o `forcaCap` (a Força máxima do Curto, 3): quem chama aplica
+ * os dois, e o menor vale.
+ */
+export function forcaNoArco(w: { classe?: string; forcaMult?: number } | null | undefined, forca: number): number {
+  const teto = Number((regras as any)?.combate?.distancia?.maxima?.forcaAcimaDeContaComo ?? 8);
+  return w?.classe === 'distancia' && (w.forcaMult ?? 0) > 0 ? Math.min(forca, teto) : forca;
+}
+
 /** O requisito de Força que esta arma NÃO está cumprindo, ou 0. Para a tela dizer. */
 export function forcaFaltando(w: { forcaMin?: number } | null | undefined, forca: number): number {
   return w?.forcaMin && forca < w.forcaMin ? w.forcaMin : 0;

@@ -52,10 +52,10 @@ Cada ação tem uma **Velocidade**, quantos Ticks ela custa antes de você poder
 | Ticks | Tipo de ação | Exemplos |
 |:---:|---|---|
 | 3 | Muito rápida | correr, saltar, abrir porta, sacar arma, levantar-se |
-| 4 | Utilitária | pegar item, interagir com o cenário (também é a Velocidade dos Dardos, uma arma de ataque) |
-| 5 | Ataque leve | faca, adaga, espada curta, bastão |
-| 6 | Ataque médio | espada longa, machado de uma mão, lança, alabarda |
-| 7 | Ataque pesado | martelo de guerra, montante |
+| 4 | Utilitária | pegar item, interagir com o cenário (também é a Velocidade da Shuriken, da Mini-faca e da Kunai, armas de ataque) |
+| 5 | Ataque leve | faca, adaga, espada curta, bastão, adaga de arremesso, plumbata |
+| 6 | Ataque médio | espada longa, machado de uma mão, lança, alabarda, arco curto, azagaia |
+| 7 | Ataque pesado | martelo de guerra, montante, arco longo e composto |
 | 9 a 15 | Ação demorada | recarregar uma besta |
 | 5 a 7 (esticada: 10 em diante) | Arte | conjurar uma Arte: 5 a 7 Ticks, pela escada de As Artes; esticar a conjuração a leva a 10, 15, 20 e adiante |
 
@@ -72,22 +72,27 @@ tempo até o golpe estar pronto), **Golpe** (o instante em que ele sai, sempre *
 
 <p class="formula">Preparo + Golpe + Recuperação = Velocidade</p>
 
-O Preparo depende da **classe da arma**, não da Velocidade dela:
+O Preparo e a Recuperação dependem da **classe da arma**:
 
-| Classe | Preparo |
-|---|:---:|
-| Leve | 0 |
-| Média | 1 |
-| Haste | 2 |
-| Pesada | 2 |
-| Distância | Velocidade − 1 |
-| Arremesso | Velocidade − 2 |
-| Arte (conjuração) | Velocidade − 1 |
+| Classe | Velocidade | Preparo | Golpe | Recuperação |
+|---|:---:|:---:|:---:|:---:|
+| Leve | 5 | 0 | 1 | 4 |
+| Média | 6 | 1 | 1 | 4 |
+| Haste | 6 | 2 | 1 | 3 |
+| Pesada | 7 | 2 | 1 | 4 |
+| Arremesso leve | 4 | 2 | 1 | 1 |
+| Arremesso médio | 5 | 3 | 1 | 1 |
+| Arremesso pesado | 6 | 3 | 1 | 2 |
+| Funda | 6 | 4 | 1 | 1 |
+| Arco Curto | 6 | 4 | 1 | 1 |
+| Arco Longo e Composto | 7 | 4 | 1 | 2 |
+| Besta Pequena | 9 | 7 | 1 | 1 |
+| Besta Média | 12 | 9 | 1 | 2 |
+| Besta Grande | 15 | 12 | 1 | 2 |
+| Azagaia com atlatl | 8 | 5 | 1 | 2 |
+| Arte (conjuração) | 5 a 7 | Velocidade − 1 | 1 | 0 |
 
-Nas armas de Distância o Golpe cai no **último Tick do ciclo**: quase toda a Velocidade é
-Preparo, e é por isso que a Besta Grande (Velocidade 15) passa catorze Ticks armando, com a guarda
-aberta, até o Tick do Golpe. No sistema Normal, o padrão deste capítulo, o tiro já foi rolado na
-declaração (ver *Dois sistemas de tempo*); esses Ticks marcam quanto tempo a guarda fica aberta. No Arremesso sobra **um Tick de Recuperação** depois do Golpe, o de voltar à postura.
+Nas armas de **tiro** (os arcos, as bestas, a Funda e o Arremesso) a conta é **Preparo = Velocidade − 1 − Recuperação**, com o Golpe sempre em 1 Tick, e **toda arma de tiro tem Recuperação**. O Golpe cai no Tick **imediatamente antes da Recuperação**: quase toda a Velocidade é Preparo, e é por isso que a Besta Grande (Velocidade 15) passa **doze Ticks** armando, com a guarda aberta, um Tick de Golpe e dois de Recuperação. No sistema Normal, o padrão deste capítulo, o tiro já foi rolado na declaração (ver *Dois sistemas de tempo*); esses Ticks marcam quanto tempo a guarda fica aberta. Até o Arremesso leve tem um Tick de Recuperação depois do Golpe, o de voltar à postura.
 
 Cada fase custa Defesa, pela mesma moeda: estar comprometido com um gesto abre a guarda.
 
@@ -96,6 +101,21 @@ Cada fase custa Defesa, pela mesma moeda: estar comprometido com um gesto abre a
 É a régua que já apareceu em *Correndo* (o mesmo −4 do Tick do Golpe), na Investida e na Recarga
 (o −2 do Preparo) e em *Golpes no mesmo instante* (o −4 no Tick do golpe). Empunhar duas armas e
 golpear só com uma alivia esse −4 para **−2** no Tick do Golpe: a outra mão continua guardando.
+
+### Distância e tempo de voo
+
+Cada arma de tiro tem uma **Efetiva** (a coluna Efetiva em [Armas & Armaduras](/regras/armas-e-armaduras)): a distância até a qual a distância não atrapalha a mira. **Além dela, cada meia Efetiva custa −3 no acerto, sem teto**: com a Efetiva E e o alvo a uma distância d, são n = ⌈(d − E) ÷ (E ÷ 2)⌉ passos, e a penalidade é −3 × n. Ela entra na jogada de acerto, e não na Defesa do alvo. No sistema P/G/R o projétil também leva tempo, e o tempo é o mesmo n:
+
+- **Até a Efetiva**, o projétil chega no **mesmo Tick do Golpe**.
+- **Cada incremento além dela soma 1 Tick** entre o Golpe e a chegada: −3 no acerto e +1 Tick de voo, por incremento.
+- O ataque é **rolado no Golpe** e vale contra a **Defesa do alvo no Tick da chegada**: o alvo se defende no Tick em que o projétil chega.
+- A **distância e o n ficam fixos no disparo.** Se o alvo sair da linha antes da chegada, o **Mestre decide** se escapou; o mesmo vale para um aliado, uma cobertura ou um terreno que entre na linha durante o voo.
+- Na **Guarda sob pressão**, o ataque conta como **recebido** no Tick da chegada, e não no do Golpe.
+- O **bumerangue de retorno** volta no mesmo número de Ticks que levou para ir. Até a Efetiva, a ida leva 0 Ticks e a volta também, porque a arma está na mão ao fim do Golpe.
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>A <strong>Adaga de Arremesso</strong> (Efetiva 10 m) contra um alvo a <strong>25 m</strong>: n = 3, <strong>−9</strong> no acerto, e o projétil chega <strong>3 Ticks depois do Golpe</strong>. O <strong>Arco Longo</strong> (Efetiva 50 m) contra um alvo a <strong>150 m</strong>: n = 4, <strong>−12</strong>, chega 4 Ticks depois. Na Máxima do arco, a 250 m: n = 8, <strong>−24</strong>, 8 Ticks de voo.</div>
+
+**O sistema Normal não tem tempo de voo**: o tiro continua rolado na declaração, e o projétil chega no mesmo instante. Isso favorece um pouco quem atira de longe, e é aceito: o equilíbrio do jogo é medido no P/G/R.
 
 ## Dois sistemas de tempo, e qual é o padrão
 
@@ -210,14 +230,14 @@ Controlar alguém em vez de feri-lo é uma **Manobra**: agarrar, derrubar ou emp
 
 <p class="formula">Dano = (Dado da Arma + Margem) + Força + Centelha − Absorção</p>
 
-O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste 1d6+2, arremesso 1d6−2 a 1d6+2, distância 1d6−1 a 1d6+8). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**: **exceto as hastes de estocada** (Lança e afins), que ferem por alcance e precisão, não por peso, e somam apenas a **Força simples**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6. A **Centelha do atacante** soma inteira, sem teto de Habilidade: é a mesma fagulha que abre Proeza que faz o golpe doer mais fundo, em toda arma, em toda Arte e a cada pulso de dano contínuo.
+O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste 1d6+2, arremesso 1d6−4 a 1d6, distância 1d6−2 a 1d6+8). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**: **exceto as hastes de estocada** (Lança e afins), que ferem por alcance e precisão, não por peso, e somam apenas a **Força simples**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6. A **Centelha do atacante** soma inteira, sem teto de Habilidade: é a mesma fagulha que abre Proeza que faz o golpe doer mais fundo, em toda arma, em toda Arte e a cada pulso de dano contínuo.
 
 ### Os três modos de dano
 
 Todo golpe tem um **modo**, e a maioria das armas pode usar mais de um, você escolhe conforme o alvo:
 
 - **Cortante**: gume deslizante (espada, machado).
-- **Perfurante**, ponta ou projétil que fura: estocada, adaga de rondel, bico de picareta, flecha, virote, dardo lançado. (Não há distinção entre projétil e estocada: ambos são Perfurante.)
+- **Perfurante**, ponta ou projétil que fura: estocada, adaga de rondel, bico de picareta, flecha, virote, faca ou plumbata lançada. (Não há distinção entre projétil e estocada: ambos são Perfurante.)
 - **Impacto**: maça, martelo, malho; também socos e quedas.
 
 O modo escolhe a **Absorção**, e para ali: o dano que passa é um só, e qualquer um dos três mata (ver [Vida & Ferimentos](/regras/vida-ferimentos-cura)).
@@ -273,14 +293,14 @@ A **Defesa da Arma** (coluna *Defesa* em [Armas & Armaduras](/regras/armas-e-arm
 
 ### Projéteis rápidos: só Esquiva ou escudo
 
-Contra um **projétil rápido** (flecha, virote, bala de funda, dardo, adaga pequena de arremesso, sopro de zarabatana), **ninguém apara com a arma ou com a mão**: vem depressa demais. As saídas são duas:
+Contra um **projétil rápido** (flecha, virote, bala de funda, faca de arremesso e as outras armas pequenas de arremesso, sopro de zarabatana), **ninguém apara com a arma ou com a mão**: vem depressa demais. As saídas são duas:
 
 - **Esquivar**, sempre.
 - **Bloquear**, só com um **escudo hábil** e se você estiver **apto** a manejá-lo.
 
-Um escudo é **hábil** quando cobre pelo menos **30% do seu corpo** (um escudo médio para uma criatura Média): o broquel e o targe são pequenos demais e não valem; do escudo redondo para cima, sim. Estar **apto** exige estar consciente, não ser pego de surpresa, ter o braço do escudo livre e ter **espaço para manobrá-lo** (não vale encurralado ou no meio de galhos). Sem escudo hábil (ou sem estar apto), contra o projétil rápido resta só a Esquiva.
+Um escudo é **hábil** quando cobre pelo menos **30% do seu corpo** (um escudo médio para uma criatura Média): o broquel e o targe são pequenos demais e não valem; do escudo redondo para cima, sim. Estar **apto** exige estar consciente, não ser pego de surpresa, ter o braço do escudo livre e ter **espaço para manobrá-lo** (não vale encurralado ou no meio de galhos). Sem escudo hábil (ou sem estar apto), contra o projétil rápido resta só a Esquiva. **A Plumbata é a exceção**: é projétil rápido, mas é lançada à mão, e por isso se bloqueia também com a arma.
 
-Já as armas de arremesso **lentas** (a lança ou o machado lançado, o pilum, o bumerangue, uma pedra grande) são pesadas e visíveis: essas você **bloqueia normalmente**, com arma, escudo ou mão, como no corpo a corpo.
+Já as armas de arremesso **lentas** (a lança ou o machado lançado, o pilum, o bumerangue de caça e o de retorno, uma pedra grande) são pesadas e visíveis: essas você **bloqueia normalmente**, com arma, escudo ou mão, como no corpo a corpo.
 
 ### Força e porte: quando a guarda não segura
 
@@ -363,18 +383,18 @@ O espelho da Investida. Se investir é gastar o Preparo **correndo**, recarregar
 <p class="formula">Arma com <strong>recarga</strong> (as três bestas): durante o Preparo você <strong>não se desloca</strong>, e isso inclui o primeiro Tick de graça</p>
 
 É a única arma do jogo que perde o passo grátis. O arqueiro recua e dispara; o besteiro planta os
-pés e conta os Ticks. O tiro continua saindo no último Tick do ciclo, como em toda arma de
-distância: o que a besta perde é o passo, não o disparo. No sistema Normal, o tiro já foi rolado na
+pés e conta os Ticks. O tiro continua saindo no Tick do Golpe, como em toda arma de
+tiro: o que a besta perde é o passo, não o disparo. No sistema Normal, o tiro já foi rolado na
 declaração; o Preparo só marca a guarda aberta.
 
-O preço é grande porque o ciclo é grande. A **Besta Grande** custa **15 Ticks**, e o Preparo de uma
-arma de distância é a Velocidade menos 1: são **catorze Ticks** de manivela, imóvel, com a Defesa
+O preço é grande porque o ciclo é grande. A **Besta Grande** custa **15 Ticks**, e o Preparo dela é
+de **doze Ticks**: são doze Ticks de manivela, imóvel, com a Defesa
 em **−2** o tempo todo (o mesmo −2 de qualquer Preparo: ele não cresce, mas também não alivia), e
 só então o virote sai (no sistema Normal ele já foi rolado na declaração, e esses Ticks só marcam a
 guarda aberta). É exatamente a vulnerabilidade que o **pavês**
 existe para cobrir, e é por isso que o livro chama o pavês de parede portátil do besteiro.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Bram, de Besta Média (Velocidade 12), declara o tiro no Tick 0 e, no sistema Normal, rola ali mesmo. Ele fica dos Ticks 0 ao 10 em Preparo, sem sair do lugar, e no Tick 11 em Golpe, com a guarda em −4. Um espadachim de espada longa (Velocidade 6) atravessa esse mesmo intervalo golpeando duas vezes, e andando nos dois. Se Bram precisar sair do caminho de uma investida no Tick 7, a saída é a mesma de qualquer um pego no meio de um Preparo: o desvio de emergência, a 1 Tick por metro, fora da vez.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Bram, de Besta Média (Velocidade 12), declara o tiro no Tick 0 e, no sistema Normal, rola ali mesmo. Ele fica dos Ticks 0 ao 8 em Preparo, sem sair do lugar, no Tick 9 em Golpe, com a guarda em −4, e os Ticks 10 e 11 são de Recuperação. Um espadachim de espada longa (Velocidade 6) atravessa esse mesmo intervalo golpeando duas vezes, e andando nos dois. Se Bram precisar sair do caminho de uma investida no Tick 7, a saída é a mesma de qualquer um pego no meio de um Preparo: o desvio de emergência, a 1 Tick por metro, fora da vez.</div>
 
 <p class="muted">O que acontece com os Ticks já investidos quando o besteiro se mexe (perde tudo, ou a recarga apenas pausa) ainda não foi decidido, e o Grid não trava o passo sozinho: por enquanto é o Mestre que segura.</p>
 
@@ -440,6 +460,8 @@ Isso é **só no acerto**: não muda a Defesa passiva do alvo, **não entra no t
 Cada inimigo extra desgasta a sua guarda, e cada golpe que **você** desfere também.
 
 <div class="callout regra"><span class="lbl">Guarda sob pressão</span>Cada ataque que você <strong>faz ou recebe</strong> reduz sua <strong>Esquiva e Bloqueio em −2</strong> (cada golpe de uma Rajada e cada Manobra é um ataque), e o efeito <strong>acumula até a sua próxima ação</strong>: quando você age, a guarda se refaz e o acúmulo zera. <strong>O golpe não desconta a si mesmo:</strong> o primeiro ataque recebido bate na Defesa cheia, e o segundo já pega −2. <strong>Sem teto:</strong> ninguém desvia de uma dúzia de golpes. Atacar te expõe (e atacar com as <strong>duas mãos</strong>, o dobro); ser cercado te expõe muito mais. Um único oponente brilhante resiste a alguns fracos, mas a maré da multidão acaba furando qualquer guarda.</div>
+
+No sistema P/G/R, o tiro com tempo de voo conta como **recebido** no Tick da **chegada** (ver *Distância e tempo de voo*), e não no do Golpe.
 
 A posição fecha o cerco: quem ataca pelo **flanco ou pelas costas** ganha o **−2 na Defesa** do alvo, porque ele não pode voltar a melhor guarda contra todos ao mesmo tempo. Dois inimigos coordenados (um prendendo a frente, outro contornando) combinam a penalidade de pressão com a de flanco: é assim que o número vira vantagem tática, e não só mais dados.
 

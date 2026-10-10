@@ -90,7 +90,7 @@
       "esquiva",
       "bloqueio"
     ],
-    "definicao": "Valor fixo e passivo que o atacante precisa superar: (Destreza + Habilidade) × 2 + 2 × mín(Centelha, Habilidade), mais a Especialidade quando o escopo nomeado dela se aplicar (ela não é parcela fixa: o portão dela é a situação). Vem por Esquiva ou por Bloqueio (arma, escudo ou, sem nada nas mãos, o corpo: ver Luta desarmada, no Cap. XIII). Contra projéteis rápidos (flecha, virote, bala de funda, faca de arremesso) não se bloqueia com arma nem com a mão: só Esquiva, ou Bloqueio com escudo hábil (cobre ≥30% do corpo, médio+ para um usuário Médio) estando apto a manejá-lo. Arremessos lentos (lança, machado, pedra grande) bloqueiam normalmente."
+    "definicao": "Valor fixo e passivo que o atacante precisa superar: (Destreza + Habilidade) × 2 + 2 × mín(Centelha, Habilidade), mais a Especialidade quando o escopo nomeado dela se aplicar (ela não é parcela fixa: o portão dela é a situação). Vem por Esquiva ou por Bloqueio (arma, escudo ou, sem nada nas mãos, o corpo: ver Luta desarmada, no Cap. XIII). Contra projéteis rápidos (flecha, virote, bala de funda, faca de arremesso e as outras armas pequenas de arremesso) não se bloqueia com arma nem com a mão: só Esquiva, ou Bloqueio com escudo hábil (cobre ≥30% do corpo, médio+ para um usuário Médio) estando apto a manejá-lo. Arremessos lentos (lança, machado, pedra grande) bloqueiam normalmente."
   },
   {
     "id": "defesa-de-agarrao",

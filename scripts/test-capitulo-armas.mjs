@@ -23,6 +23,7 @@ import path from 'node:path';
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const ler = (rel) => fs.readFileSync(path.join(ROOT, rel), 'utf8');
 const CAP = ler('src/content/chapters/armas-e-armaduras.md').replace(/\r\n/g, '\n');
+const COMB = ler('src/content/chapters/combate.md').replace(/\r\n/g, '\n');
 const ARMAS = JSON.parse(ler('src/data/armas.json'));
 const REGRAS = JSON.parse(ler('src/data/regras.json'));
 
@@ -55,7 +56,7 @@ function pesoKg(s) {
 }
 const TIPO = { I: 'impacto', C: 'corte', P: 'perfurante' };
 
-function conferir(cap, armas, regras) {
+function conferir(cap, armas, regras, comb = COMB) {
   const f = [];
   const porNome = Object.fromEntries(armas.map((x) => [x.nome, x]));
   const col = (tab, nome) => tab.cab.findIndex((c) => c.toLowerCase() === nome.toLowerCase());
@@ -144,11 +145,60 @@ function conferir(cap, armas, regras) {
       if (l[iv] !== v) f.push(`Classes, ${rot}: Velocidade "${l[iv]}" no capítulo, "${v}" no catálogo`);
     }
   }
+  // ---- o capítulo Combate Físico: a tabela de Preparo, Golpe e Recuperação (rodada 4a) e o que o texto repete dela
+  const pg = tabelaApos(comb, '| Classe | Velocidade | Preparo | Golpe | Recuperação |');
+  const RF = regras?.combate?.pgr?.reforma?.tiro;
+  if (!pg) f.push('Combate: falta a tabela de Preparo, Golpe e Recuperação');
+  else if (!Array.isArray(RF)) f.push('regras.json sem combate.pgr.reforma.tiro');
+  else {
+    const linha = (nome) => pg.linhas.find((r) => r[0] === nome);
+    for (const c of RF) {
+      const l = linha(c.nome);
+      if (!l) { f.push(`Combate: falta a linha "${c.nome}" na tabela de Preparo, Golpe e Recuperação`); continue; }
+      const real = l.slice(1).map(num);
+      const esp = [c.velocidade, c.preparo, c.golpe, c.recuperacao];
+      if (JSON.stringify(real) !== JSON.stringify(esp)) f.push(`Combate, ${c.nome}: V/P/G/R ${JSON.stringify(real)} no capítulo, ${JSON.stringify(esp)} em regras.json`);
+    }
+    // o corpo a corpo, como ainda está (até a rodada 4b): Preparo fixo da classe e P + G + R = Velocidade
+    const FIXO = { Leve: 'leve', 'Média': 'media', Haste: 'haste', Pesada: 'pesada' };
+    for (const [nome, cls] of Object.entries(FIXO)) {
+      const l = linha(nome);
+      if (!l) { f.push(`Combate: falta a linha "${nome}"`); continue; }
+      const [v, pr, g, r] = l.slice(1).map(num);
+      const fixo = regras?.combate?.pgr?.preparo?.[cls]?.fixo;
+      if (pr !== fixo) f.push(`Combate, ${nome}: Preparo ${pr} no capítulo, ${fixo} em regras.json`);
+      if (g !== 1 || pr + g + r !== v) f.push(`Combate, ${nome}: ${pr} + ${g} + ${r} nao fecha a Velocidade ${v}`);
+    }
+    // o texto repete a Besta Grande ("doze Ticks") e o exemplo do Bram (Besta Média): saem do dado
+    const grande = RF.find((c) => c.id === 'besta-grande');
+    const media = RF.find((c) => c.id === 'besta-media');
+    const PALAVRA = { 12: 'doze' };
+    if (grande && !new RegExp(`passa \\*\\*${PALAVRA[grande.preparo]} Ticks\\*\\* armando`).test(comb)) f.push(`Combate: o texto da Besta Grande nao diz "${PALAVRA[grande.preparo]} Ticks" armando (Preparo ${grande.preparo})`);
+    if (grande && !new RegExp(`Preparo dela é\\s+de \\*\\*${PALAVRA[grande.preparo]} Ticks\\*\\*`).test(comb)) f.push('Combate: a Recarga nao diz que o Preparo da Besta Grande e de doze Ticks');
+    if (media) {
+      const m = /Ticks 0 ao (\d+) em Preparo.*?no Tick (\d+) em Golpe.*?os Ticks (\d+) e (\d+) são de Recuperação/s.exec(comb);
+      if (!m) f.push('Combate: o exemplo do Bram nao tem a forma esperada');
+      else if (JSON.stringify(m.slice(1).map(Number)) !== JSON.stringify([media.preparo - 1, media.preparo, media.preparo + 1, media.preparo + 2])) {
+        f.push(`Combate: o exemplo do Bram diz Preparo ate o Tick ${m[1]}, Golpe no ${m[2]}, Recuperacao ${m[3]} e ${m[4]}; a Besta Media (P${media.preparo}) pede ${media.preparo - 1}, ${media.preparo}, ${media.preparo + 1} e ${media.preparo + 2}`);
+      }
+    }
+    // os exemplos do tempo de voo saem da formula e da Efetiva do catalogo
+    const ef = (id) => armas.find((x) => x.id === id)?.arma.efetiva;
+    const n = (E, d) => Math.ceil((d - E) / (E / 2));
+    for (const [id, nome, d] of [['adaga-de-arremesso', 'Adaga de Arremesso', 25], ['arco-longo', 'Arco Longo', 150], ['arco-longo', 'Arco Longo', 250]]) {
+      const E = ef(id);
+      const k = n(E, d);
+      if (!comb.includes(`n = ${k}`)) f.push(`Combate: o exemplo do tempo de voo (${nome} a ${d} m, Efetiva ${E} m) pede n = ${k}`);
+      if (!comb.includes(`−${3 * k}</strong>`)) f.push(`Combate: o exemplo do tempo de voo (${nome} a ${d} m) pede −${3 * k} no acerto`);
+    }
+    if (!comb.includes('Efetiva 10 m') || ef('adaga-de-arremesso') !== 10) f.push('Combate: o exemplo da Adaga de Arremesso cita a Efetiva 10 m e o catalogo diz outra');
+    if (!comb.includes('Efetiva 50 m') || ef('arco-longo') !== 50) f.push('Combate: o exemplo do Arco Longo cita a Efetiva 50 m e o catalogo diz outra');
+  }
   return f;
 }
 
 const falhas = [];
-const real = conferir(CAP, ARMAS, REGRAS);
+const real = conferir(CAP, ARMAS, REGRAS, COMB);
 for (const x of real) falhas.push(x);
 
 // ---- o teste acusa: estragos no TEXTO e no CATÁLOGO ----
@@ -167,7 +217,7 @@ const estragosTexto = {
 for (const [nome, estraga] of Object.entries(estragosTexto)) {
   const t = estraga(CAP);
   if (t === CAP) { falhas.push(`o estrago "${nome}" não alterou o capítulo (o teste de teste está torto)`); continue; }
-  if (conferir(t, ARMAS, REGRAS).length === 0) falhas.push(`o teste NÃO acusou o estrago "${nome}"`);
+  if (conferir(t, ARMAS, REGRAS, COMB).length === 0) falhas.push(`o teste NÃO acusou o estrago "${nome}"`);
 }
 const estragosCatalogo = {
   'Velocidade da azagaia no catálogo': (A) => { A.find((x) => x.id === 'azagaia').arma.ticks = 7; },
@@ -180,13 +230,30 @@ const estragosCatalogo = {
 };
 for (const [nome, estraga] of Object.entries(estragosCatalogo)) {
   const A = copia(ARMAS); estraga(A);
-  if (conferir(CAP, A, REGRAS).length === 0) falhas.push(`o teste NÃO acusou o estrago "${nome}"`);
+  if (conferir(CAP, A, REGRAS, COMB).length === 0) falhas.push(`o teste NÃO acusou o estrago "${nome}"`);
 }
 {
   const R = copia(REGRAS); R.combate.distancia.maxima.arcos.porForca.composto[7] = 466;
-  if (conferir(CAP, ARMAS, R).length === 0) falhas.push('o teste NÃO acusou a Máxima do Composto alterada em regras.json');
+  if (conferir(CAP, ARMAS, R, COMB).length === 0) falhas.push('o teste NÃO acusou a Máxima do Composto alterada em regras.json');
   const R2 = copia(REGRAS); R2.combate.distancia.maxima.bestas.grande = 301;
-  if (conferir(CAP, ARMAS, R2).length === 0) falhas.push('o teste NÃO acusou a Máxima da Besta Grande alterada em regras.json');
+  if (conferir(CAP, ARMAS, R2, COMB).length === 0) falhas.push('o teste NÃO acusou a Máxima da Besta Grande alterada em regras.json');
+  // estragos no TEXTO de Combate Físico e no dado da reforma
+  const estragosComb = {
+    'Preparo do Arco Curto em Combate': (t) => t.replace('| Arco Curto | 6 | 4 | 1 | 1 |', '| Arco Curto | 6 | 5 | 1 | 0 |'),
+    'Recuperação da Besta Média em Combate': (t) => t.replace('| Besta Média | 12 | 9 | 1 | 2 |', '| Besta Média | 12 | 9 | 1 | 3 |'),
+    'linha da Funda sumiu de Combate': (t) => t.split('\n').filter((l) => !l.startsWith('| Funda | 6 | 4 |')).join('\n'),
+    'Preparo do Leve em Combate (corpo a corpo)': (t) => t.replace('| Leve | 5 | 0 | 1 | 4 |', '| Leve | 5 | 1 | 1 | 3 |'),
+    'exemplo do Bram em Combate': (t) => t.replace('Ele fica dos Ticks 0 ao 8 em Preparo', 'Ele fica dos Ticks 0 ao 10 em Preparo'),
+    'Besta Grande em Combate': (t) => t.replace('passa **doze Ticks** armando', 'passa **catorze Ticks** armando'),
+    'exemplo do tempo de voo em Combate': (t) => t.replace('n = 4, <strong>−12</strong>', 'n = 4, <strong>−9</strong>'),
+  };
+  for (const [nome, estraga] of Object.entries(estragosComb)) {
+    const t = estraga(COMB);
+    if (t === COMB) { falhas.push(`o estrago "${nome}" nao alterou Combate (o teste de teste esta torto)`); continue; }
+    if (conferir(CAP, ARMAS, REGRAS, t).length === 0) falhas.push(`o teste NÃO acusou o estrago "${nome}"`);
+  }
+  const R5 = copia(REGRAS); R5.combate.pgr.reforma.tiro.find((c) => c.id === 'arco-curto').preparo = 5;
+  if (conferir(CAP, ARMAS, R5, COMB).length === 0) falhas.push('o teste NÃO acusou o Preparo do Arco Curto alterado em regras.json');
 }
 
 if (falhas.length) {
@@ -194,5 +261,5 @@ if (falhas.length) {
   for (const f of falhas) console.error('  · ' + f);
   process.exit(1);
 }
-const total = Object.keys(estragosTexto).length + Object.keys(estragosCatalogo).length + 2;
+const total = Object.keys(estragosTexto).length + Object.keys(estragosCatalogo).length + 2 + 7 + 1;
 console.log(`✓ test-capitulo-armas · as tabelas de Arremesso, Atirador, Classes e a Máxima por Força do capítulo batem com armas.json e regras.json · ${total} estragos acusados`);
