@@ -2,7 +2,8 @@
 
 Montado em 09/10/2026 pelo Arquiteto, a partir da seção 14 do `veterana-2f-distancia-e-precisao.md` e das
 decisões D-072 a D-087. **Estado: autorizado inteiro pelo autor em 10/10/2026, com travas (abaixo).** Ordem:
-**1, 2 e 3, 4a, 4b, 4c, 4d, 5, 6, 7, 8.** Os números dos itens (§14.N) são os da seção 14 do 2f; as linhas citadas lá
+**1, 2 e 3, 4a, 4b, 4d, 4c, 5, 6, 7, 8** (a 4d passou à frente da 4c por ordem do usuário em 10/10/2026: ela corrige
+o que está errado no ar e não depende da Arte). Os números dos itens (§14.N) são os da seção 14 do 2f; as linhas citadas lá
 (`armas l.68-87` etc.) são do site de 06/10/2026 e envelhecem, então a Executora relocaliza cada trecho por busca
 de texto antes de editar.
 
@@ -142,14 +143,28 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
   "Arte (conjuração) 5 a 7 | Velocidade − 1 | 1 | 0" da tabela de P/G/R, que está velha frente à D-082: Arte graus 0 a 3
   é 3/1/1, V5; grau 4, 4/1/1, V6; graus 5 e 6, 5/1/1, V7, com a Recuperação cobrando −2) e l.131 (Normal: "a Arte rola e
   produz o efeito no último Tick da Velocidade"); `src/pages/artes/regras.astro` (l.315 "A Arte sai no último Tick";
-  l.492, a decisão de esticar nos Ticks 5, 10 e 15, que passam a 4, 9 e 14); `src/data/regras.json` (l.1909 a 1924:
+  l.492, a decisão de esticar nos Ticks 5, 10 e 15 do exemplo de Velocidade 5, que passam a 4, 9 e 14; ver a conta
+  abaixo); `src/data/regras.json` (l.1909 a 1924:
   o pilar, "sétimo", "cinco a sete Ticks", a tabela "Último Tick, quando sai"; l.2096 `decisaoTardia`; l.2385
   `feiticoTicksNota`; `combate.pgr.preparo.arte` e `combate.pgr.arte`, que o motor do Grid lê, **congelados**: a
   régua nova da Arte entra em `combate.pgr.reforma`, como a do corpo a corpo e a do tiro).
   `src/lib/combate-tempo.ts` (`reguaDaArte`, l.269 e l.545, comentários "ÚLTIMO Tick") é compartilhado com o Grid:
   a Executora confere quem o lê antes de tocar, e não toca se o Grid o lê.
+- **Fonte e conta do tempo da Arte (10/10/2026). Trava: a Executora só escreve depois de a Revisora refazer a
+  conta e confirmar.** Fonte: `veterana-2b-reforma-pgr.md` §3 (l.63 a 65: penúltimo Tick, "quatro a seis", "4, 9, 14,
+  e não 5, 10, 15") e §4 item 7, **confirmada pelo autor** na resposta "A: sim, no Tick do Golpe" (D-084). A régua da
+  Arte é a da D-082 (graus 0 a 3: 3/1/1, V5; grau 4: 4/1/1, V6; graus 5 e 6: 5/1/1, V7; Preparo = Velocidade − 1 −
+  Recuperação; Golpe sempre 1 Tick; Recuperação 1). Contando os Ticks de 1 em diante, como o capítulo das Artes conta:
+  o Golpe é o Tick (Preparo + 1) = **Velocidade − 1**. V5: Preparo nos Ticks 1 a 3, Golpe no 4, Recuperação no 5.
+  V6: Golpe no 5. V7: Golpe no 6 ("uma conjuração de 7 Ticks acontece no sexto"). O sinal se anuncia pelo Preparo
+  mais o Golpe: **4 a 6 Ticks** (era 5 a 7). Esticar soma a Velocidade outra vez (`regras.json` `esticar.speed`:
+  V5 vira 10 e 15) e só o ciclo final leva Recuperação, então o Golpe de cada ciclo n cai no Tick **n × V − 1**: V5
+  decide nos Ticks **4, 9 e 14**; V6 nos 5, 11 e 17; V7 nos 6, 13 e 20. **Os "4, 9, 14" do 2b valem para a
+  Velocidade 5; o livro de hoje também só exemplifica a V5 ("tick 5, 10, 15"), e a 4c escreve a regra geral
+  (Tick do Golpe de cada Velocidade) mais o exemplo da V5.** Isto é conta minha sobre a fonte, e não está escrito
+  no 2b para V6 e V7: por isso a Revisora a refaz antes da escrita.
 - A Arte sai no penúltimo Tick, o sinal se anuncia por quatro a seis Ticks, a decisão de esticar cai no Tick
-  do Golpe (4, 9, 14). Texto dos dois modos, "A Arte sai no último Tick", tabela "Último Tick, quando sai",
+  do Golpe de cada Velocidade (V5: 4, 9, 14). Texto dos dois modos, "A Arte sai no último Tick", tabela "Último Tick, quando sai",
   "O tempo da Arte" no Normal, e o pilar do capítulo. Vai depois da 4 porque usa as mesmas classes. A recalibração
   das Artes (A34) parte deste tempo.
 
@@ -174,7 +189,7 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
   que `grid.astro` e `combate.astro` importam) e a chave `combate.pgr.preparo` de `regras.json`: essas **ficam como
   estão**, presas à D-054, e a divergência Grid × livro continua no N22 até a passada do Grid. Ler `reforma.tiro` na
   ficha, como a 4b fez com `corpoACorpo`, não toca o Grid.
-- **A rodada (depois da 4c, antes da 5):** `linhaPGR` passa a ler `combate.pgr.reforma.tiro` pelo id da arma (com o
+- **A rodada (ANTES da 4c, por ordem do usuário de 10/10/2026; a Arte não aparece na ficha):** `linhaPGR` passa a ler `combate.pgr.reforma.tiro` pelo id da arma (com o
   mesmo fallback por Velocidade que o corpo a corpo tem), e a ficha mostra a régua do livro em TODAS as armas. Prova
   exigida: um teste que percorre as 40 armas e compara o que `linhaPGR` mostra com a tabela do capítulo (isto é a
   sugestão 1 da Revisora, feita aqui porque é a mesma conta), com controle negativo. **Não** mexer em
@@ -232,9 +247,19 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
      publicado, não se reescreve. Dono: nenhum; a prova que vale é o texto do livro e a tabela da 4d.
 - **Pendências guardadas da Missão 2 que o 2b §5 lista e nenhuma rodada cobria:** o "caso 11 forte" (veterana-2, item
   14: a Rajada rende pouco contra o forte blindado, porque a Absorção repete a cada golpe) e a "janela de aborto com
-  declaração simultânea" (sem texto-fonte achado nos documentos da Veterana). Dono: **Arquiteto**, que na abertura da
-  8 passa cada um pelos três filtros da D-087; só vai ao autor o que atravessar os três. Nenhum deles muda texto
-  antes dessa passada.
+  declaração simultânea" (sem texto-fonte achado nos documentos da Veterana). Dono: **Arquiteto**; só vai ao autor o
+  que atravessar os três filtros da D-087. O "caso 11 forte" fica para a abertura da 8. **A janela de aborto foi
+  triada em 10/10/2026, antes da 4c, e não muda o tempo da Arte:** (a) o 2b §5 l.87 só a nomeia, copiada da lista
+  da Missão 2 (`veterana-2-ataques-multiplos.md`), que não tem "aborto" no texto; o mais perto é o item 5, caso 4
+  ("parar" um Preparo) e a Q5, que perguntam se há regra de interromper por dano, e dizem que no Normal o tiro já
+  foi rolado na declaração, então só existe no P/G/R (Grid, congelado); (b) o registro de decisões não tem entrada
+  sobre aborto; o Abortar existe em `regras.json` `combate.abortar` (só no Preparo, perde o investido, nunca para
+  atacar) e o livro já diz "No Preparo ainda dá para desistir" (`combate.md` l.137); estender o Abortar à Preparação
+  de Arte é o item 6 da tabela de `docs/simulacao/CONJURACAO.md` e mora no Grid; (c) a 4c só troca em que Tick a
+  Arte sai: o Preparo da Arte já encolhe sozinho pela tabela (V5: 3 Ticks em vez de 4) e o livro não escreve número
+  nenhum para a janela de interromper, só "quem interromper você no meio leva a conjuração junto". **Resultado: não
+  muda texto da 4c; fica na 8 como questão do Grid (N22), e só vira pergunta ao autor se, na passada do Grid, o
+  filtro 3 não a resolver (o Mestre já pode permitir o aborto de uma Preparação).**
 - Varredura de texto em `src/` e nos dados por "Dardos", "±6" (só o de Defesa), "Distância" no sentido antigo
   e "teto de ±12"; passada da Leitora-novata nos capítulos tocados (lê `origin/main`, sem `docs/simulacao/`);
   Estado das D-072 a D-087 em `decisoes.md`; atualização de `fase-de-testes.md` se a escrita revelar algo a
@@ -268,9 +293,10 @@ na D-083; o "caso 11 forte" e a "janela de aborto" estão na **rodada 8** (triag
   WS endpoint URL` ao abrir o Chrome em `test-l70-ocupacao-mesa` (smoke). A mesma árvore de código passou em 85461925 e
   nos commits seguintes. Não é defeito do commit. **Regra: se o `test-l70-ocupacao-mesa` cair de novo por tempo, o
   Arquiteto abre pendência de teste instável** (e não reexecuta em silêncio); uma queda só não abre.
-- Conferido por sha em 10/10/2026: 85461925, 32924728, 4450f70c, 2ef4f5b8, 3909629a e 33ab2068, Validar e Deploy verdes.
+- Conferido por sha em 10/10/2026: 85461925, 32924728, 4450f70c, 2ef4f5b8, 3909629a, 33ab2068 e 8c04d6a6, Validar e
+  Deploy verdes.
 
 ## Ordem e custo
 
-1 → (2 e 3) → 4a → 4b → 4c → 4d → 5 → 6 → 7 → 8. Cada rodada é pequena e revisável; as rodadas 4a a 6 mexem no mesmo
+1 → (2 e 3) → 4a → 4b → 4d → 4c → 5 → 6 → 7 → 8. Cada rodada é pequena e revisável; as rodadas 4a a 6 mexem no mesmo
 `combate.md` e por isso andam em fila, não em paralelo.
