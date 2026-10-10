@@ -73,7 +73,9 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
   fonte do bestiário). "Dardo flamejante" (Arte) não muda.
 - **Preço da Plumbata: 35 pc, definitivo (D-085); a rodada não espera mais o modelo de economia por causa dela.**
   Os preços dos arcos e das outras armas novas continuam com o modelo de economia: não inventar número.
-- Depende da rodada 1.
+- Depende da rodada 1. Frases sugeridas pela revisão 147 (`docs/simulacao/caixa/147-revisora.md`, "Sugestões"):
+  o Composto e a Força (M-32 não é a Força mínima dos reforçados; ver a M-32 no `decisoes.md`), a Rede sem
+  depender do 1d6 da coluna Dano ("não causa dano"), e as três leves de arremesso como projétil rápido.
 
 **Rodada 3 · Capítulo Corpo e Movimento: FAA e Rede** (§14.3 e a linha da Rede de §14.15)
 - O parágrafo do FAA ("a coluna Distância é o teto do objeto") passa a Efetiva por arma e Máxima por FAA e
@@ -88,6 +90,11 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
   Recuperação do Arremesso, dos arcos, das bestas e da Funda, parágrafo da Distância, tabela de Velocidades,
   "contra 6 e 7 dos arcos". Dados: `armas.json` (P/G/R e Velocidade das armas de tiro) e `regras.json`
   `combate.pgr.preparo`.
+- **Entra aqui (decidido em 10/10/2026, revisão 147): "Força acima de 8 conta como 8, no alcance E no dano"**
+  (adendo, item 3). O alcance já está em `regras.json` (`forcaAcimaDeContaComo: 8`, que nada lê); o dano precisa
+  de uma conta no motor (`calc.ts`) para os arcos, sem pôr `forcaCap` no Longo e no Composto (o
+  `test-catalogo-distancia` proíbe, porque o `forcaCap` do Curto é a Força máxima padrão da D-075). Só afeta
+  Força 9 ou mais.
 - Espera o veredito da rodada 14 e não toca D-068 nem Ambidestria.
 
 **Rodada 4b · Combate: a reforma de P/G/R no corpo a corpo, a Rajada e a dupla** (§14.18, D-082 e D-083)
