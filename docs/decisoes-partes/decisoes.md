@@ -1732,6 +1732,60 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
 - Origem: o B11 da rodada 9 tirou o travessão da prosa dos dados e deixou uns 25 rótulos de interface (relato da Executora-2); o veredito 165 (a ESCALA) achou também prosa de página fora da lista (`index.astro` l.24, `caminhos/index.astro` l.11, `tecnicas.astro` l.18, `glossario.astro` l.9, `equipamentos.astro` l.35 e l.103, `ficha.astro` l.5, `mesa/combate.astro` l.1997).
 - Estado: a implementar (rodada 9-bis). Ficam de fora as células vazias de tabela, o `monsters.json` e o bestiário (B14) e o que só o Grid lê (D-054).
 
+### D-095 · Bestiário novo: a ficha de criatura sai das descrições da ficha humana, sem fórmula única [tags: bestiario, metodo, criatura, atributos, conversao, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): a ficha de criatura sai das descrições da ficha humana (Atributos, Habilidades, Força de Vontade etc.), porque o sistema se baseia no mundo real. Não há fórmula única. Cada número leva justificativa (qual descrição do sistema ele cumpre) e passa por um teste de ordem entre criaturas (exemplo do autor: o gorila mais fraco é mais forte que qualquer humano, ao contrário do Pathfinder). Ordem do trabalho: regra de construção; fichas de referência aprovadas pelo autor; bancada; comparação com D&D e Pathfinder; tabela de conversão; conversão do resto com validador.
+- Origem: mensagem do autor ao Arquiteto, 10/10/2026, depois do diagnóstico do bestiário (`../tmp/arquiteto/bestiario/diagnostico.md`, fora do repositório), que mostrou que as 309 fichas vieram de uma tabela de equivalência a partir dos valores de D&D e Pathfinder.
+- Estado: a implementar (pendência B20). Substitui, para as fichas refeitas, o método da conversão de 2026 (tabela de equivalência D&D → Centelha, `conversao-monstros.html`), que passa a ser só um passo de comparação.
+
+### D-096 · O trabalho do bestiário é todo em P/G/R [tags: bestiario, pgr, normal, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): tudo em P/G/R; o sistema Normal fica de lado por enquanto, em todo o trabalho.
+- Origem: mensagem do autor ao Arquiteto, 10/10/2026.
+- Estado: vale para a B20. Não revoga a D-082 nem o Normal no livro; diz só em que sistema as fichas novas se constroem e se medem.
+
+### D-097 · Um ataque por ação, também para as criaturas [tags: bestiario, ataque, acao, d-068, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): um ataque por ação (D-068), também para as criaturas.
+- Origem: mensagem do autor ao Arquiteto, 10/10/2026; confirma para o bestiário a D-068 e a cláusula dos dois Punhos da D-083 (só as mãos fazem par), já anotadas na B14.
+- Estado: vale para a B20. O diagnóstico conta 11 fichas com 2 ataques e 15 com "multiataque" na prosa; elas se refazem por esta regra.
+
+### D-098 · Todo animal comum tem Centelha 0; o piloto são todos os animais adultos, inclusive os pré-históricos [tags: bestiario, animal, centelha, piloto, pre-historico, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): todo animal comum tem Centelha 0. O piloto são todos os animais, inclusive os pré-históricos (dinossauros de vários tipos e portes, pterossauros, répteis marinhos, mamute e outros), na versão adulta. Filhote, atroz e de guerra ficam para depois.
+- Origem: mensagem do autor ao Arquiteto, 10/10/2026. Hoje há 84 fichas na categoria Animal, todas com Centelha 0 (diagnóstico, seção g).
+- Estado: a implementar (B20). Os pré-históricos são criaturas novas no bestiário.
+
+### D-099 · Habilidades dos animais: Briga, Bloqueio e Esquiva sempre; nunca Atirador, Armas ou Arremesso [tags: bestiario, animal, habilidades, briga, bloqueio, esquiva, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): todo animal tem Briga, Bloqueio e Esquiva; nenhum tem Atirador, Armas ou Arremesso. Percepção, Furtividade e Atletismo entram quando o animal real se destaca nisso (leitura aceita pelo autor). Criaturas complexas e humanoides têm também as outras Habilidades e os conhecimentos.
+- Origem: mensagem do autor ao Arquiteto, 10/10/2026.
+- Estado: a implementar (B20).
+
+### D-100 · Bloqueio de animal: como a mão nua; chifre, galhada e carapaça bloqueiam como arma [tags: bestiario, animal, bloqueio, mao-nua, d-088, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): a maioria dos animais prefere esquivar, mas todos têm algum Bloqueio (o gato apara com a pata). O animal bloqueia como a mão nua (D-088): tira a Margem e toma o dano. Chifre, galhada e carapaça bloqueiam como arma.
+- Origem: mensagem do autor ao Arquiteto, 10/10/2026. Ajusta a linha da D-066 anotada na B14 ("quase todas bloqueiam sem tomar dano"): para os animais, só chifre, galhada e carapaça bloqueiam sem tomar dano.
+- Estado: a implementar (B20).
+
+### D-101 · O que não é ponto vai num campo próprio, por categoria; armadura natural, veneno, constrição, enxame, montaria e comportamento [tags: bestiario, esquema, veneno, absorcao, agarrao, enxame, montaria, carga, comportamento, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): o que não é ponto na ficha vai num campo próprio, padronizado e por categoria, para ser consultado depois (por exemplo, puxar todos os venenos). Armadura natural é absorção extra, não Defesa. Veneno: só o id do veneno, num catálogo próprio de venenos, sem a regra completa por enquanto. Constrição é Agarrão; o animal só imobiliza com toxina ou algo que paralise. Enxame é uma criatura só. Montaria e animal de carga são duas marcas separadas, sem regra agora. Comportamento vem do animal real; no extinto, da pesquisa, ou de extrapolação marcada como tal.
+- Origem: mensagem do autor ao Arquiteto, 10/10/2026. O esquema proposto sai do inventário (`../tmp/arquiteto/bestiario/inventario.md`).
+- Estado: a implementar (B20). O Grid lê `monsters.json`, `monsters-mesa.json` e `inimigos.json` e está congelado (D-054): a ficha nova continua gerando esses arquivos no formato velho, ou a diferença vai para o N22.
+
+### D-102 · Imagens do bestiário: as atuais ficam até a troca; as novas saem do ChatGPT com guia de estilo [tags: bestiario, imagens, estilo, licenca, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): as imagens atuais (a maioria do Pathfinder) ficam até serem substituídas uma a uma, começando pelas que vieram dos livros. As novas saem do ChatGPT, com um guia de estilo escrito e um arquivo de descrição visual por criatura (só traços físicos, texto próprio); as imagens atuais não entram no gerador. Fundo chapado com remoção, se o gerador não entregar transparência.
+- Origem: mensagem do autor ao Arquiteto, 10/10/2026; o diagnóstico conta 308 imagens WebP, quase todas extraídas de livros fechados, e nenhum guia de estilo.
+- Estado: a implementar (B20).
+
+### D-103 · Fontes do bestiário fora do repositório [tags: bestiario, fontes, livros, pesquisa, licenca, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): as fontes ficam em `C:\Users\Neves\ClaudeCode\centelha\fontes-bestiario\`, com três subpastas: `livros\` (os livros que o autor fornecer, que nunca entram no rpg-system), `pesquisa\` (dados de animais reais e extintos, um arquivo por animal, com o link de cada dado) e `fatos\` (o que foi extraído dos livros e da pesquisa, um arquivo por criatura). Só a ficha final entra no repositório; texto de livro não é copiado para ficha nem para site, só os fatos.
+- Origem: mensagem do autor ao Arquiteto, 10/10/2026.
+- Estado: a pasta espera um ajuste do portão: a seção 7 de `scripts/test-portoes.mjs` (l.480-481) só aceita as quatro árvores, `tmp/`, `LEIA-ME.md` e `centelha-mudanca/` na pasta `centelha\`, e uma pasta nova ali deixa vermelho o `pre-commit` de todas as frentes. O ajuste é acrescentar `fontes-bestiario` à lista, e ainda não foi autorizado.
+
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
 - Decisão (texto completo em `docs/simulacao/caixa/jogador-novo-decisoes.md`, seção "M-32"): abaixo de Força 4, o Arco Composto soma `Força×1` e parte de `+0`, os números do Arco Longo; a arma não fica proibida, fica "um arco comum caro". O campo é `forcaMin: 4` em `armas.json`, lido por `calc.ts` (`comRequisitoDeForca`), `ficha-engine.ts` e `combate-resumo.ts`.

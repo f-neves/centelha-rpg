@@ -107,7 +107,7 @@ limitações conhecidas, que são as três de baixo.
   no teste novo usando um pool com dado de verdade (`3d6+21`) em vez de reproduzir o caso "0d6".
   **Fechado na revisão da rodada 94 (23/09/2026), com prova:** `888a196` (22/09/2026), "roladaManual dobrava o bonus fixo de qualquer golpe com o bolo em zero dado", com asserção em `scripts/test-rolada-manual.mjs`.
 - [ ] **B14 · [DECIDIR] Recalibrar nível de desafio e Centelha das criaturas, e revisar as fichas do
-  bestiário.** Registrado em 26/09/2026, na rodada 115, a partir da proposta do autor, que segue
+  bestiário.** **Desde 10/10/2026, a revisão das fichas segue a B20 (o bestiário novo, D-095 a D-103).** Registrado em 26/09/2026, na rodada 115, a partir da proposta do autor, que segue
   abaixo como ele escreveu. **Achado, e não decisão:** no dado vivo, o desafio é o campo `ameaca` de
   `src/data/inimigos.json`, de 1 a 6 nas 309 criaturas; a `centelha` vai de 0 a 10 (só a
   `mon-tarrasque` está em 10). O fator da recompensa de caça é `REC_FATOR` em
@@ -238,3 +238,25 @@ limitações conhecidas, que são as três de baixo.
 - [x] **B19 · [SEM AÇÃO] Dragões (Filhote, Jovem, Adulto) ficam como estão.** Registrado em
   03/10/2026 (rodada de pendências de 03/10/2026, Bloco K, P-08). Decisão do autor: "deixar do jeito que estão, sem mexer".
   Nenhuma alteração de ficha.
+- [ ] **B20 · [FAZER] Bestiário novo: refazer as fichas pelas descrições da ficha humana, começando pelos animais.**
+  Registrado em 10/10/2026, a partir das decisões do autor D-095 a D-103 (`docs/decisoes-partes/decisoes.md`).
+  Etapa atual: só leitura e registro. Nada de conversão de ficha nem de despacho à Executora.
+  - **Método (D-095):** cada número sai de uma descrição do sistema, com justificativa e teste de ordem entre
+    criaturas. Ordem: regra de construção; fichas de referência aprovadas pelo autor; bancada; comparação com D&D e
+    Pathfinder; tabela de conversão; conversão do resto com validador.
+  - **Sistema (D-096):** tudo em P/G/R; o Normal fica de lado neste trabalho.
+  - **Ataques (D-097):** um ataque por ação (D-068), também para as criaturas.
+  - **Piloto (D-098):** todos os animais adultos com Centelha 0, inclusive os pré-históricos. Filhote, atroz e de
+    guerra ficam para depois.
+  - **Habilidades (D-099) e Bloqueio (D-100):** Briga, Bloqueio e Esquiva sempre; nunca Atirador, Armas ou
+    Arremesso. O animal bloqueia como a mão nua (D-088); chifre, galhada e carapaça, como arma.
+  - **Campos próprios (D-101):** absorção extra, veneno por id (catálogo de venenos), constrição como Agarrão,
+    enxame como uma criatura, marcas de montaria e de carga, comportamento do animal real ou extrapolação marcada.
+  - **Imagens (D-102):** as atuais ficam até a troca, uma a uma, começando pelas que vieram dos livros; as novas
+    saem do ChatGPT, com guia de estilo e descrição visual por criatura.
+  - **Fontes (D-103):** `C:\Users\Neves\ClaudeCode\centelha\fontes-bestiario\` (livros, pesquisa, fatos), fora do
+    repositório. Espera o ajuste do portão da pasta mãe (`test-portoes.mjs` seção 7).
+  - **Absorve:** a B14 (desafio, Centelha e revisão das fichas) e a N20 (classe de ataque dos golems) passam a ser
+    feitas dentro desta frente quando ela chegar a essas criaturas.
+  - **Leitura de apoio, fora do repositório:** `../tmp/arquiteto/bestiario/diagnostico.md`,
+    `animais-centelha-0.md` e `inventario.md` (o esquema proposto e as descrições da ficha humana com linha).

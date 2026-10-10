@@ -113,6 +113,8 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
     "media" a "leve".
   - Para a mesa não mudar, os dois estão no `CLASSE_OVERRIDE` como "media" (rodada 13).
   - Na passada do Grid, decidir a classe deles (leve pelo nome, ou média pela Velocidade 6).
+  - Desde 10/10/2026, os golems se refazem pela B20 (`B-bestiario.md`, bestiário novo, D-095 a D-103); a classe
+    sai da ficha nova, e esta linha fica até o Grid ler o que ela gerar.
   - O Golem de Gelo ataca com "Punhos gelados" a Velocidade 5. O nome também começa com "Punhos", e ele
     também passaria a "leve" pelo nome, mas já era "leve" pela Velocidade 5, então nada mudou nele.
 - [ ] **N21 · [FAZER] Religar o `test-grid` no começo da passada única do Grid (D-071).**
