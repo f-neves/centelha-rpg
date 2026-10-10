@@ -1,0 +1,1 @@
+- Rodada 5: 35 mutacoes (34 pegas), linhas das decisoes conferidas, 2 frases velhas em regras.json (CORRIGE), leitura 390/1300. Veredito 158.
