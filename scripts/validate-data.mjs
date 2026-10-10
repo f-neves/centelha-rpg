@@ -106,6 +106,8 @@ const blocoArmaEnvelope = z.object({
   forcaMult: z.number().optional(), forcaCap: z.number().int().optional(), forcaMin: z.number().int().optional(),
   alcance: z.enum(['curto', 'medio', 'longo']).optional(),
   distMax: z.number().int().positive().optional(), alcanceLivreFrac: z.number().min(0).max(1).optional(),
+  // Distância Efetiva (D-072), em metros, para alvo Médio: sempre par. Toda arma de tiro e de arremesso tem.
+  efetiva: z.number().int().positive().optional(),
   tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(5),
   fichaModo: z.enum(['corte', 'perfurante', 'impacto']).optional(),
   modos: z.array(z.object({ tipo: z.enum(['corte', 'perfurante', 'impacto']), perf: z.number().int().min(0).max(5).optional(), principal: z.boolean() })),
@@ -125,6 +127,13 @@ const envelopeItem = z.object({
   preco: precoEnvelope, peso: z.number().nonnegative(), acesso: z.number().int().optional(),
   descricao: z.string(), tags: z.array(z.string()),
   arma: blocoArmaEnvelope, armadura: blocoArmaduraEnvelope, escudo: blocoEscudoEnvelope, municao: blocoMunicaoEnvelope,
+});
+// Itens que acompanham uma arma sem ser arma (o atlatl, D-074). Ficam fora de armas.json de propósito:
+// quem monta a lista de armas da ficha, da mesa e do bestiário lê `armas.json` inteiro como arma.
+S['armas-extras'] = z.object({
+  id: z.string(), nome: z.string(), tipo: z.literal('extra'), descricao: z.string(), tags: z.array(z.string()),
+  so: z.array(z.string()),
+  efeito: z.object({ maximaMult: z.number(), danoForcaMais: z.number(), preparoMais: z.number(), velocidadeDaAzagaia: z.number().int(), maos: z.number().int(), mudaEfetiva: z.boolean() }),
 });
 S.armas = envelopeItem; S.armaduras = envelopeItem; S.escudos = envelopeItem; S.municao = envelopeItem;
 
@@ -182,6 +191,10 @@ for (const w of data.armas || []) {
   // referência, sem que nada em lugar nenhum tivesse escolhido isso. Uma arma
   // nova com dois principais reintroduziria o defeito do mesmo jeito, e é para
   // isso que esta conferência existe.
+  // A Efetiva (D-072) é sempre par, e toda arma de tiro e de arremesso tem uma.
+  if ((w.classe === 'distancia' || w.classe === 'arremesso') && w.efetiva == null) fail(`arma "${w.id}": arma de ${w.classe} sem \`efetiva\``);
+  if (w.efetiva != null && w.efetiva % 2 !== 0) fail(`arma "${w.id}": \`efetiva\` ${w.efetiva} é ímpar (a Efetiva é sempre par)`);
+  if (w.efetiva != null && w.classe !== 'distancia' && w.classe !== 'arremesso') fail(`arma "${w.id}": \`efetiva\` numa arma de corpo a corpo`);
   const principais = (w.modos || []).filter((m) => m.principal);
   if (principais.length > 1 && !w.fichaModo) {
     fail(`arma "${w.id}": ${principais.length} modos principais e nenhum \`fichaModo\`.`

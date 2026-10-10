@@ -74,10 +74,16 @@ const ESPERADO = {
   'alabarda':          [2, 1, 3],
   'montante':          [2, 1, 4],  // pesada, 7t
   'martelo-de-guerra': [2, 1, 4],
-  'arco-longo':        [5, 1, 0],  // distância: P = Velocidade − 1
+  // ATÉ A RODADA 4a: o arremesso e o tiro seguem a fórmula de hoje (distância P = Velocidade − 1,
+  // arremesso P = Velocidade − 2). A reforma de P/G/R da D-082 (Longo 4/1/2, azagaia e as pesadas
+  // 3/1/2, bestas 7/1/1...) NÃO cabe nessa fórmula e entra com o motor, na 4a. A rodada 1 só trocou
+  // as Velocidades do catálogo (D-076, D-082), e estes números são o que a fórmula dá com elas.
+  'arco-longo':        [6, 1, 0],  // distância: P = Velocidade − 1 (V7 desde a D-082)
   'besta-grande':      [14, 1, 0], // 15t pela recarga (M-13): a regra P = Velocidade - 1 nao tem teto
-  'azagaia':           [3, 1, 1],  // arremesso: P = Velocidade − 2
-  'dardos':            [2, 1, 1],
+  'azagaia':           [4, 1, 1],  // arremesso: P = Velocidade − 2 (V6 desde a D-076)
+  'plumbata':          [3, 1, 1],  // V5; no lugar dos Dardos (D-076)
+  'shuriken':          [2, 1, 1],  // leve de arremesso, V4
+  'boleadeira':        [4, 1, 1],  // pesada de arremesso, V6
 };
 for (const [id, esp] of Object.entries(ESPERADO)) {
   const w = armas.find((x) => x.id === id);

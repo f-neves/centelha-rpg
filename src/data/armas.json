@@ -460,8 +460,8 @@
       "atrib": "percepcao",
       "pericia": "atirador",
       "dado": 1,
-      "danoBonus": -1,
-      "acerto": 1,
+      "danoBonus": -2,
+      "acerto": 2,
       "defesaArma": 0,
       "maos": 2,
       "ticks": 6,
@@ -470,6 +470,7 @@
       "forcaCap": 3,
       "alcance": "curto",
       "distMax": 120,
+      "efetiva": 30,
       "tipoDano": "perfurante",
       "pen": 1,
       "modos": [
@@ -508,11 +509,12 @@
       "acerto": 0,
       "defesaArma": 0,
       "maos": 2,
-      "ticks": 6,
+      "ticks": 7,
       "folego": 20,
       "forcaMult": 1,
       "alcance": "longo",
       "distMax": 250,
+      "efetiva": 50,
       "tipoDano": "perfurante",
       "pen": 1,
       "modos": [
@@ -552,12 +554,13 @@
       "acerto": 0,
       "defesaArma": 0,
       "maos": 2,
-      "ticks": 6,
+      "ticks": 7,
       "folego": 20,
       "forcaMult": 2,
       "forcaMin": 4,
       "alcance": "longo",
       "distMax": 300,
+      "efetiva": 70,
       "tipoDano": "perfurante",
       "pen": 1,
       "modos": [
@@ -602,6 +605,7 @@
       "forcaMult": 0,
       "alcance": "medio",
       "distMax": 100,
+      "efetiva": 40,
       "tipoDano": "perfurante",
       "pen": 1,
       "modos": [
@@ -646,6 +650,7 @@
       "forcaMult": 0,
       "alcance": "longo",
       "distMax": 200,
+      "efetiva": 60,
       "tipoDano": "perfurante",
       "pen": 1,
       "modos": [
@@ -691,6 +696,7 @@
       "forcaMult": 0,
       "alcance": "longo",
       "distMax": 300,
+      "efetiva": 80,
       "tipoDano": "perfurante",
       "pen": 2,
       "modos": [
@@ -713,7 +719,7 @@
     "preco": {
       "pc": 50
     },
-    "peso": 0.2,
+    "peso": 0.25,
     "descricao": "Lâmina leve e balanceada para girar no ar. Rápida e precisa; carregada às dezenas no cinto.",
     "tags": [
       "ágil",
@@ -733,6 +739,7 @@
       "ticks": 5,
       "folego": 12,
       "distMax": 10,
+      "efetiva": 10,
       "tipoDano": "perfurante",
       "pen": 0,
       "modos": [
@@ -764,13 +771,14 @@
       "atrib": "forca",
       "pericia": "arremesso",
       "dado": 1,
-      "danoBonus": 2,
+      "danoBonus": 0,
       "acerto": 1,
       "defesaArma": 0,
       "maos": 1,
-      "ticks": 5,
+      "ticks": 6,
       "folego": 20,
       "distMax": 12,
+      "efetiva": 12,
       "tipoDano": "corte",
       "pen": 0,
       "modos": [
@@ -796,7 +804,7 @@
       "pc": 65
     },
     "peso": 0.8,
-    "descricao": "Dardo de arremesso (javelina): fura à distância (N1) e ainda serve de lança curta na mão (estocada N1).",
+    "descricao": "Dardo de arremesso (javelina): fura à distância (N1) e ainda serve de lança curta na mão (estocada N1). Aceita atlatl (item extra).",
     "tags": [
       "arremessável"
     ],
@@ -805,13 +813,14 @@
       "atrib": "destreza",
       "pericia": "arremesso",
       "dado": 1,
-      "danoBonus": 1,
+      "danoBonus": 0,
       "acerto": 1,
       "defesaArma": 0,
       "maos": 1,
-      "ticks": 5,
+      "ticks": 6,
       "folego": 20,
       "distMax": 40,
+      "efetiva": 16,
       "tipoDano": "perfurante",
       "pen": 1,
       "modos": [
@@ -834,7 +843,7 @@
       "pc": 10
     },
     "peso": 0.1,
-    "descricao": "Lança pedras a grande distância; barata e silenciosa. Dano de Impacto (quebra ossos sob a armadura), não passa pelo gate de perfuração.",
+    "descricao": "Lança pedras a grande distância; barata e silenciosa. Dano de Impacto (quebra ossos sob a armadura), não passa pelo gate de perfuração. A pedra pesa 100 g, e a Máxima é o dobro da do arremesso comum.",
     "tags": [
       "munição",
       "arremessável",
@@ -852,6 +861,7 @@
       "ticks": 6,
       "folego": 12,
       "distMax": 200,
+      "efetiva": 26,
       "tipoDano": "impacto",
       "pen": 0,
       "modos": [
@@ -866,32 +876,29 @@
     "municao": null
   },
   {
-    "id": "dardos",
-    "nome": "Dardos",
+    "id": "plumbata",
+    "nome": "Plumbata",
     "tipo": "arma",
-    "preco": {
-      "pc": 5
-    },
     "peso": 0.2,
-    "descricao": "Pequenos e velozes, lançados em sequência; precisos de perto. Carregados às dezenas.",
+    "descricao": "Dardo de guerra, curto e pesado, com chumbo: fura couro (N1). É projétil rápido, mas é lançada à mão, então pode ser defendida também com Bloqueio (além da Esquiva e do escudo hábil).",
     "tags": [
-      "ágil",
-      "arremessável",
       "munição",
-      "projétil veloz"
+      "arremessável",
+      "projétil veloz",
+      "bloqueável"
     ],
     "arma": {
       "classe": "arremesso",
       "atrib": "destreza",
       "pericia": "arremesso",
       "dado": 1,
-      "danoBonus": 0,
-      "acerto": 2,
+      "danoBonus": -2,
+      "acerto": 0,
       "defesaArma": 0,
       "maos": 1,
-      "ticks": 4,
+      "ticks": 5,
       "folego": 12,
-      "distMax": 30,
+      "efetiva": 14,
       "tipoDano": "perfurante",
       "pen": 1,
       "modos": [
@@ -908,13 +915,13 @@
   },
   {
     "id": "bumerangue",
-    "nome": "Bumerangue",
+    "nome": "Bumerangue de retorno",
     "tipo": "arma",
     "preco": {
       "pc": 30
     },
     "peso": 0.3,
-    "descricao": "Atinge em curva (contorna cobertura parcial) e volta à mão quando erra — não gasta munição. Dano de Impacto.",
+    "descricao": "Leve e preciso: voa em curva (contorna cobertura parcial) e volta à mão no fim da ação se errar, sem gastar munição. Dano de Impacto (madeira). Até a Efetiva, a ida e a volta levam 0 Ticks. Existe também em Cortante.",
     "tags": [
       "arremessável"
     ],
@@ -923,13 +930,14 @@
       "atrib": "destreza",
       "pericia": "arremesso",
       "dado": 1,
-      "danoBonus": 0,
+      "danoBonus": -2,
       "acerto": 1,
       "defesaArma": 0,
       "maos": 1,
       "ticks": 5,
       "folego": 12,
       "distMax": 50,
+      "efetiva": 20,
       "tipoDano": "impacto",
       "pen": 0,
       "modos": [
@@ -950,8 +958,8 @@
     "preco": {
       "pc": 30
     },
-    "peso": 1.5,
-    "descricao": "Não fere: um acerto deixa o alvo Preso (não se desloca, mas age) até escapar: Força + Atletismo contra o total do lançamento, e cada tentativa gasta a ação.",
+    "peso": 3,
+    "descricao": "Não fere (sem dano): um acerto deixa o alvo Preso pela Rede (não se desloca, mas age) até escapar: Força + Atletismo contra o total do lançamento, e cada tentativa gasta a ação.",
     "tags": [
       "arremessável",
       "prende"
@@ -965,9 +973,10 @@
       "acerto": 0,
       "defesaArma": 0,
       "maos": 1,
-      "ticks": 5,
+      "ticks": 6,
       "folego": 12,
       "distMax": 5,
+      "efetiva": 4,
       "tipoDano": "impacto",
       "pen": 0,
       "modos": [
@@ -998,19 +1007,271 @@
       "atrib": "forca",
       "pericia": "arremesso",
       "dado": 1,
-      "danoBonus": 2,
+      "danoBonus": 0,
       "acerto": 1,
       "defesaArma": 0,
       "maos": 1,
-      "ticks": 5,
+      "ticks": 6,
       "folego": 20,
       "distMax": 25,
+      "efetiva": 12,
       "tipoDano": "perfurante",
       "pen": 2,
       "modos": [
         {
           "tipo": "perfurante",
           "perf": 2,
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
+    "id": "shuriken",
+    "nome": "Shuriken",
+    "tipo": "arma",
+    "peso": 0.05,
+    "descricao": "Estrela de lâmina fina e rasa, leve para levar às dezenas: só fura pele (N0).",
+    "tags": [
+      "ágil",
+      "arremessável",
+      "munição",
+      "projétil veloz"
+    ],
+    "arma": {
+      "classe": "arremesso",
+      "atrib": "destreza",
+      "pericia": "arremesso",
+      "dado": 1,
+      "danoBonus": -4,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 4,
+      "folego": 12,
+      "efetiva": 10,
+      "tipoDano": "perfurante",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 0,
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
+    "id": "mini-faca",
+    "nome": "Mini-faca",
+    "tipo": "arma",
+    "peso": 0.1,
+    "descricao": "Faca pequena de arremesso, fácil de esconder: só fura pele (N0). Quase igual à Kunai e à Shuriken; a escolha é de estilo.",
+    "tags": [
+      "ágil",
+      "arremessável",
+      "munição",
+      "projétil veloz"
+    ],
+    "arma": {
+      "classe": "arremesso",
+      "atrib": "destreza",
+      "pericia": "arremesso",
+      "dado": 1,
+      "danoBonus": -4,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 4,
+      "folego": 12,
+      "efetiva": 8,
+      "tipoDano": "perfurante",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 0,
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
+    "id": "kunai",
+    "nome": "Kunai",
+    "tipo": "arma",
+    "peso": 0.15,
+    "descricao": "Mais pesada que a Mini-faca, com argola: só fura pele (N0). Serve também de ferramenta (o Mestre julga).",
+    "tags": [
+      "ágil",
+      "arremessável",
+      "munição",
+      "projétil veloz"
+    ],
+    "arma": {
+      "classe": "arremesso",
+      "atrib": "destreza",
+      "pericia": "arremesso",
+      "dado": 1,
+      "danoBonus": -4,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 4,
+      "folego": 12,
+      "efetiva": 8,
+      "tipoDano": "perfurante",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 0,
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
+    "id": "bumerangue-de-caca",
+    "nome": "Bumerangue de caça",
+    "tipo": "arma",
+    "peso": 0.7,
+    "descricao": "Pesado, de voo reto e baixo: não volta. Troca alcance por dano. Dano de Impacto (madeira).",
+    "tags": [
+      "arremessável"
+    ],
+    "arma": {
+      "classe": "arremesso",
+      "atrib": "destreza",
+      "pericia": "arremesso",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 0,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 6,
+      "folego": 20,
+      "efetiva": 16,
+      "tipoDano": "impacto",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "impacto",
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
+    "id": "bumerangue-de-caca-cortante",
+    "nome": "Bumerangue de caça (Cortante)",
+    "tipo": "arma",
+    "peso": 0.7,
+    "descricao": "Como o de caça, de borda afiada ou metal: dano Cortante, mais caro. Não volta.",
+    "tags": [
+      "arremessável"
+    ],
+    "arma": {
+      "classe": "arremesso",
+      "atrib": "destreza",
+      "pericia": "arremesso",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 0,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 6,
+      "folego": 20,
+      "efetiva": 16,
+      "tipoDano": "corte",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "corte",
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
+    "id": "bumerangue-de-retorno-cortante",
+    "nome": "Bumerangue de retorno (Cortante)",
+    "tipo": "arma",
+    "peso": 0.3,
+    "descricao": "Como o de retorno, de borda afiada ou metal: dano Cortante, mais caro. Pegá-lo de volta pede Destreza + Arremesso, Dificuldade Média (10); se falhar, ele cai a 1 ou 2 m.",
+    "tags": [
+      "arremessável"
+    ],
+    "arma": {
+      "classe": "arremesso",
+      "atrib": "destreza",
+      "pericia": "arremesso",
+      "dado": 1,
+      "danoBonus": -2,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 5,
+      "folego": 12,
+      "efetiva": 20,
+      "tipoDano": "corte",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "corte",
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
+    "id": "boleadeira",
+    "nome": "Boleadeira",
+    "tipo": "arma",
+    "peso": 0.6,
+    "descricao": "Deixa o alvo Preso pelas pernas (tabela: Esquiva −4). Para escapar: Força + Atletismo contra o total do lançamento. O dano é pequeno (1d6−4), uma exceção à classe pesada.",
+    "tags": [
+      "arremessável",
+      "prende"
+    ],
+    "arma": {
+      "classe": "arremesso",
+      "atrib": "destreza",
+      "pericia": "arremesso",
+      "dado": 1,
+      "danoBonus": -4,
+      "acerto": 0,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 6,
+      "folego": 12,
+      "efetiva": 16,
+      "tipoDano": "impacto",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "impacto",
           "principal": true
         }
       ]

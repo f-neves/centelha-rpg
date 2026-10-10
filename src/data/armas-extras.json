@@ -1,0 +1,18 @@
+[
+  {
+    "id": "atlatl",
+    "nome": "Atlatl",
+    "tipo": "extra",
+    "descricao": "Propulsor de dardo: item extra, não arma. Funciona só com a azagaia (a Plumbata se lança à mão e não usa atlatl). Na arma lançada: ×2 na Máxima final, +1× Força no dano (a azagaia, que somava 1× Força, passa a somar 2× Força) e +2 no Preparo (azagaia com atlatl: Velocidade 8). Usa 1 mão, a mesma que lança, e não muda a Efetiva. A exposição maior (Velocidade 8) é o preço aceito pelo +2 na Preparação.",
+    "tags": ["extra", "propulsor"],
+    "so": ["azagaia"],
+    "efeito": {
+      "maximaMult": 2,
+      "danoForcaMais": 1,
+      "preparoMais": 2,
+      "velocidadeDaAzagaia": 8,
+      "maos": 1,
+      "mudaEfetiva": false
+    }
+  }
+]

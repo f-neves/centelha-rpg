@@ -125,8 +125,7 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 | Besta Pequena | 300 pc |
 | Adaga de Arremesso | 50 pc |
 | Azagaia | 65 pc |
-| Bumerangue | 30 pc |
-| Dardos | 5 pc |
+| Bumerangue de retorno | 30 pc |
 | Funda | 10 pc |
 | Machado de Arremesso | 80 pc |
 | Pilum | 50 pc |

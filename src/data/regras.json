@@ -795,7 +795,7 @@
       }
     },
     "danoForca": {
-      "nota": "Multiplicador da Força somada ao dano por nº de mãos: 1 mão ×1, 2 mãos ×2 (armas versáteis empunhadas com as duas mãos também ×2). À distância o multiplicador vem da arma (forcaMult): arco curto ×1 com teto forcaCap 3, arco longo ×1, arco composto ×2 com forcaMin 4; bestas ×0 (não usam Força, bônus embutido em danoBonus; Pen pequena N1, média N1, grande N2). Arcos e bestas miram pela Percepção.",
+      "nota": "Multiplicador da Força somada ao dano por nº de mãos: 1 mão ×1, 2 mãos ×2 (armas versáteis empunhadas com as duas mãos também ×2). À distância o multiplicador vem da arma (forcaMult): arco curto ×1 com teto forcaCap 3 (a Força máxima padrão do Curto), arco longo ×1, arco composto ×2 com forcaMin 4 (M-32; ver a D-075); bestas ×0 (não usam Força, bônus embutido em danoBonus; Pen pequena N1, média N1, grande N2). Arcos e bestas miram pela Percepção.",
       "umaMao": 1,
       "duasMaos": 2
     },
@@ -2516,6 +2516,36 @@
         "alemDoMaximo": "não chega: o objeto cai antes e não há jogada a fazer."
       },
       "mostraNaoAplica": "O Grid MOSTRA a faixa e a penalidade, e não desconta nada sozinho. Quem põe o valor final do ataque é o mestre, de acordo com o que o jogador rolou na mesa."
+    },
+    "distancia": {
+      "nota": "A régua nova do tiro e do arremesso (D-072 a D-076, 09/10/2026). O catálogo traz a Efetiva por arma (`efetiva`, em metros, sempre par); a Máxima sai daqui (arcos e bestas) ou do FAA e do peso (arremesso, forca.notaArremesso). O bloco `alcance` acima é a régua antiga que o Grid ainda lê (D-054); esta ainda não é lida por código nenhum, os textos e o motor a seguem nas rodadas 2 a 4 do plano.",
+      "efetiva": {
+        "nota": "Distância em que o personagem acerta sem a distância atrapalhar, para alvo Médio, por arma e independente do personagem. Além dela, cada meia Efetiva custa o incremento abaixo no acerto, sem teto; com n incrementos = ⌈(d − E) ÷ (E ÷ 2)⌉. Cada incremento soma também 1 Tick de voo entre o Golpe e a chegada (D-073). A Efetiva pode ser maior que a Máxima, e o personagem joga sempre sem penalidade. O propulsor (atlatl) não a muda.",
+        "penPorIncremento": -3,
+        "ticksDeVooPorIncremento": 1,
+        "sempreParEm": "metros"
+      },
+      "maxima": {
+        "nota": "Distância Máxima do projétil. Arcos: tabela pela Força no arco (a menor entre a Força do personagem e a Força máxima do arco; acima de 8 conta como 8, no alcance e no dano). Bestas: valor fixo, sem Força. Arremesso: fórmula do FAA (forca.notaArremesso). Funda e atlatl dobram a Máxima final.",
+        "forcaAcimaDeContaComo": 8,
+        "arcos": {
+          "forcaMaximaPadrao": { "curto": 3 },
+          "nota": "Só o Arco Curto tem Força máxima padrão (3); o Longo e o Composto não têm, e neles a Força no arco é a do personagem. Arco com Força máxima definida (reforçado, de criatura) tem Força mínima = Força máxima − 3.",
+          "porForca": {
+            "curto": [50, 90, 120, 140, 155, 170, 180, 190],
+            "longo": [100, 180, 250, 295, 325, 350, 370, 390],
+            "composto": [120, 215, 300, 355, 390, 420, 445, 465]
+          }
+        },
+        "bestas": { "pequena": 100, "media": 200, "grande": 300 },
+        "multiplicadores": { "funda": 2, "atlatl": 2 }
+      },
+      "atlatl": {
+        "nota": "Item extra, não arma (armas-extras.json). Só com a azagaia: ×2 na Máxima final, +1× Força no dano (a azagaia passa de 1× para 2× Força) e +2 no Preparo (azagaia com atlatl: Velocidade 8). Usa 1 mão, a mesma que lança, e não muda a Efetiva.",
+        "so": ["azagaia"],
+        "preparoMais": 2,
+        "velocidadeDaAzagaia": 8
+      }
     },
     "movimento": {
       "nota": "As três maneiras de andar em combate, e o que cada uma cobra. O número de metros por Tick está em derivados.deslocamento; aqui fica o preço.",

@@ -1401,17 +1401,20 @@ export function montarFicha(opts: FichaOpts) {
   }
   /** Os quatro números da arma como blocos, no lugar da linha "5/+2/1d6/+1". */
   /**
-   * Os quatro números da arma. Na arma de longe o último bloco é a Distância, e
-   * não a Defesa: quem atira não guarda com o arco, e o que interessa ali é até
-   * onde o tiro chega.
+   * Os quatro números da arma. Na arma de longe o último bloco é a Efetiva (a
+   * distância sem penalidade de mira, D-072), e não a Defesa: quem atira não
+   * guarda com o arco. Peça sem `efetiva` mas com `distMax` (arma livre antiga)
+   * continua mostrando a Distância.
    */
   const statsBlocos = (w: any) => `<div class="eq-nums">
     <span class="eq-n"><b>Veloc.</b>${w.ticks}</span>
     <span class="eq-n"><b>Acerto</b>${sgn(w.acerto || 0)}</span>
     <span class="eq-n"><b>Dano</b>${danoStr(w)}</span>
-    ${w.distMax
-      ? `<span class="eq-n"><b>Distância</b>${w.distMax} m</span>`
-      : `<span class="eq-n def"><b>Defesa</b>${sgn(w.defesaArma || 0)}</span>`}</div>`;
+    ${w.efetiva
+      ? `<span class="eq-n"><b>Efetiva</b>${w.efetiva} m</span>`
+      : w.distMax
+        ? `<span class="eq-n"><b>Distância</b>${w.distMax} m</span>`
+        : `<span class="eq-n def"><b>Defesa</b>${sgn(w.defesaArma || 0)}</span>`}</div>`;
   const statsBlocosEscudo = (s: any) => `<div class="eq-nums">
     <span class="eq-n def"><b>Defesa</b>${sgn(s.bloqCaC || 0)}</span>
     <span class="eq-n pen"><b>Penalid.</b>${s.penalidade ? '−' + s.penalidade : '0'}</span>

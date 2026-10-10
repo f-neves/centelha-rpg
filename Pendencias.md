@@ -51,8 +51,8 @@ está na seção 3.
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 18 | 15 | 0 | 3 | 6 | 4 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 25 | 1 | 13 | 21 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 20 | 20 | 0 | 0 | 0 | 20 | 0 | 0 | 0 | 0 |
-| | **Total** | | **382** | **274** | **4** | **104** | **107** | **62** | **8** | **10** | **81** | **10** |
+| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 21 | 21 | 0 | 0 | 0 | 21 | 0 | 0 | 0 | 0 |
+| | **Total** | | **383** | **275** | **4** | **104** | **107** | **63** | **8** | **10** | **81** | **10** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -682,6 +682,7 @@ Fechados (33): L5, L6, L9, L11, L12, L13, L14, L15, L17, L18, L19, L21, L22, L34
 | N19 | aberto | FAZER | A escolha da melhor combinação de defesa (D-065). |
 | N20 | aberto | FAZER | A classe de ataque dos golems de Punhos (D-065, D-054). |
 | N21 | aberto | FAZER | Religar o `test-grid` no começo da passada única do Grid (D-071). |
+| N22 | aberto | FAZER | O catálogo de Arremesso e tiro da rodada 1 (D-072 a D-076, D-082): o que o Grid herda e o que ele ainda não … |
 
 Fechados (0): nenhum.
 

@@ -19,11 +19,11 @@ const ordem = ['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso'];
 armas.sort((a, b) => ordem.indexOf(a.classe) - ordem.indexOf(b.classe) || a.nome.localeCompare(b.nome));
 const allTags = [...new Set(armas.flatMap((a) => a.tags))].sort();
 // Duas tabelas, porque as colunas divergem: quem atira não guarda, e no lugar da
-// Defesa entra a Distância. As de Arremesso vão com as de Distância: também
+// Defesa entra a Efetiva. As de Arremesso vão com as de Distância: também
 // atacam de longe, e é a distância que interessa comparar entre elas.
 const aDistancia = (a: any) => a.classe === 'distancia' || a.classe === 'arremesso';
 const corpoACorpo = armas.filter((a) => !aDistancia(a));
-const distancia = armas.filter(aDistancia).sort((a, b) => (b.distMax ?? 0) - (a.distMax ?? 0));
+const distancia = armas.filter(aDistancia).sort((a, b) => (b.efetiva ?? 0) - (a.efetiva ?? 0));
 const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
 const dano = (a: any) => `${a.dado}d6${a.danoBonus ? (a.danoBonus > 0 ? `+${a.danoBonus}` : `−${Math.abs(a.danoBonus)}`) : ''}`;
 const modosDe = (a: any) => modosOrd(a.modos ?? [{ tipo: a.tipoDano, perf: a.pen, principal: true }]).map(modoStr).join(' · ');
@@ -70,10 +70,10 @@ const linhaDados = (a: any) => ({
 
   <section data-bloco>
   <h2>Armas à Distância</h2>
-  <p class="muted">No lugar da Defesa entra a <strong>Distância</strong>, o alcance máximo: arma de projétil não guarda, então não acrescenta nada ao Bloqueio. É o <em>tiro extremo</em>, e não a distância em que se acerta com facilidade. Nas de <strong>Arremesso</strong> o número é um teto do objeto: o braço também limita, e vale o menor entre ele e o que o seu <strong>FAA</strong> alcança com aquele peso (a tabela de Arremessar, em Corpo e Movimento, e o bloco Peso, Arremesso e Corrida da ficha fazem essa conta).</p>
+  <p class="muted">No lugar da Defesa entra a <strong>Efetiva</strong>, a distância até a qual se acerta sem a distância atrapalhar (alvo Médio, a mesma para qualquer personagem): arma de projétil não guarda, então não acrescenta nada ao Bloqueio. Além dela a mira custa −3 por meia Efetiva, sem teto. A distância <em>máxima</em> é outra conta: nos arcos vem da Força, nas bestas é fixa, e no <strong>Arremesso</strong> vem do seu <strong>FAA</strong> e do peso (a tabela de Arremessar, em Corpo e Movimento, e o bloco Peso, Arremesso e Corrida da ficha fazem essa conta).</p>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dano</th><th class="c">Acerto</th><th class="c">Distância</th><th class="c">Mãos</th><th class="c">Velocidade</th><th>Modos</th><th>Habilidade</th><th>Tags</th></tr></thead>
+      <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dano</th><th class="c">Acerto</th><th class="c">Efetiva</th><th class="c">Mãos</th><th class="c">Velocidade</th><th>Modos</th><th>Habilidade</th><th>Tags</th></tr></thead>
       <tbody>
         {distancia.map((a) => (
           <tr {...linhaDados(a)}>
@@ -81,7 +81,7 @@ const linhaDados = (a: any) => ({
             <td>{CLASSE[a.classe]}</td>
             <td class="c">{dano(a)}</td>
             <td class="c">{sgn(a.acerto)}</td>
-            <td class="c">{a.distMax ? `${a.distMax} m` : '—'}</td>
+            <td class="c">{a.efetiva ? `${a.efetiva} m` : '—'}</td>
             <td class="c">{a.maos}</td>
             <td class="c">{a.ticks}</td>
             <td>{modosDe(a)}</td>

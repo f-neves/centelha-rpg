@@ -1,7 +1,7 @@
 // test-folha-arremesso.mjs · a folha da ação CALA para arma de arremesso (rodada 103).
 //
-// O DEFEITO QUE ISTO GUARDA. As 8 armas de Arremesso de `armas.json` têm `distMax`
-// e nenhuma tem `alcanceLivreFrac`, então `faixaDeDistancia` as devolve com livre 0
+// O DEFEITO QUE ISTO GUARDA. As armas de Arremesso de `armas.json` que já existiam têm `distMax`
+// (legado; as novas da rodada 1 só têm `efetiva`) e nenhuma tem `alcanceLivreFrac`, então `faixaDeDistancia` as devolve com livre 0
 // e o máximo do catálogo. A folha da ação mostrava isso: a adaga de arremesso a 4 m
 // saía na "2ª faixa ... -6 no acerto" (medição de 24/09/2026, `medicao-i12.md`).
 // Nenhuma regra dá esse número: pelo `Arremesso.md`, o máximo de uma arma atirada
@@ -44,7 +44,12 @@ ok(typeof AL.faixaNaFolha === 'function', 'existe a função que a folha chama (
 if (typeof AL.faixaNaFolha === 'function') {
   const armas = achataCatalogo(JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/armas.json'), 'utf8')));
   const arremesso = armas.filter((a) => (a.arma?.classe ?? a.classe) === 'arremesso');
-  ok(arremesso.length === 8, `o catálogo tem as 8 armas de arremesso que a medição achou (${arremesso.map((a) => a.id).join(', ')})`);
+  // Rodada 1 (D-076): os Dardos saíram e entraram 8 armas novas. As 7 que já existiam guardam o `distMax`
+  // legado (a remoção dele é da passada do Grid, D-054); as novas só trazem `efetiva`. A folha cala em todas.
+  const LEGADO = ['adaga-de-arremesso', 'machado-de-arremesso', 'azagaia', 'funda', 'bumerangue', 'rede', 'pilum'];
+  ok(arremesso.length === 15, `o catálogo tem as 15 armas de arremesso (as 7 de antes e as 8 da rodada 1): ${arremesso.map((a) => a.id).join(', ')}`);
+  ok(LEGADO.every((id) => (arremesso.find((a) => a.id === id)?.distMax ?? 0) > 0), 'as 7 de antes seguem com o `distMax` legado (o Grid o lê)');
+  ok(arremesso.every((a) => Number.isInteger(a.efetiva) && a.efetiva % 2 === 0), 'todas as de arremesso trazem a `efetiva`, par (D-072)');
   for (const a of arremesso) {
     const max = a.arma?.distMax ?? a.distMax;
     const perto = AL.faixaNaFolha(a.id, 4, 'arremesso');
