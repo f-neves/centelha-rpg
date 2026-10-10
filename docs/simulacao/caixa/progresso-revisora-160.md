@@ -1,0 +1,1 @@
+- 5-ter: paginas da mesa medidas com mock (390/1300), 22 mutacoes (16 pegas), regex alargado conferido, rolagem de /mesa/referencia a 390 e de antes. Veredito 160: PROCEDE.
