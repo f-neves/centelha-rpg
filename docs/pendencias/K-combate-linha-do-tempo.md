@@ -96,6 +96,13 @@ revistos por ela.
   o Golpe custa −6", está registrada e superada na §14.2.)* Preço conhecido da escada: amplitude
   21,0 contra 16,6 de hoje, com a arma leve em 63%; a alternativa R −4 media 15,1 e foi rejeitada
   por princípio (a Recuperação é a penalidade de "já ataquei", que sempre foi −2).
+  - **Nota de 10/10/2026 (D-082): este item virou BASELINE HISTÓRICO.** A régua deste item (leve 0/1/4,
+    média 1/1/4, haste 2/1/3, pesada 2/1/4, arco (Vel−1)/1/0, arremesso (Vel−2)/1/1, Arte (2+nível)/1/0) foi
+    substituída pela reforma de P/G/R da D-082 (Preparo = Velocidade − 1 − Recuperação, Golpe sempre 1 Tick;
+    leve 1/1/3, média 2/1/3, Haste de Guerra e pesada 3/1/3, Punhos 1/1/3). Segue valendo como a régua com que
+    o Grid e a bancada foram medidos até a passada do Grid (D-054), e como base de comparação da medição T7
+    (`docs/decisoes-partes/fase-de-testes.md`). A escada de Defesa (Preparo −2, Golpe −4, Recuperação −2 por
+    golpe dado) não foi tocada.
 - [x] **K16 · Rajada e empunhadura dupla, decididas (20/08).** **Rajada** (§14.12): atacar de novo
   com a mesma arma é `P→G→G→…→R`, declarada de uma vez; cada golpe além do primeiro custa **−1d6
   acumulativo e +1 Tick de Recuperação**; teto 3 (leve e média) e 2 (haste e pesada); só corpo a
@@ -105,6 +112,8 @@ revistos por ela.
   ciclo +1; Recuperação −4 (dois golpes); segurando a segunda arma sem golpear, o Tick de Golpe
   fica a −2. A dupla ganha da rajada em todas as colunas, que era a exigência. *(A geometria de
   19/08, `P→G→P→G→R` com freio de dado, está registrada e superada nas §14.4/§14.5/§14.11.)*
+  - **Nota de 10/10/2026: registrada como D-083** (a Rajada e a dupla não tinham número no registro). Dois
+    Punhos como par de leves: em espera (D-068).
 - [ ] **K20 · [DECIDIR] O que se pode fazer no Preparo e na Recuperação.** A §14.6 do
   `Combate_Tempo.md` tem um primeiro recorte, mas ele foi escrito antes de duas coisas mudarem, e
   precisa de uma passada inteira. O que já está resolvido: **no Preparo você aborta** (perdendo os

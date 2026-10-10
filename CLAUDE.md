@@ -306,6 +306,14 @@ mesmo dia e marca a antiga como substituída. Caso que motivou a regra: o Resist
 sobre o mesmo ponto (1 + Margem em `afb818cc`; 1 ponto no Adendo 3, item 14, de 02/10/2026; e uma
 terceira depois), e a mais nova só vale se quem a aplica souber das anteriores.
 
+**Princípio do Mestre (D-087, 10/10/2026), para Arquiteto, Executora e Revisora.** O jogo tem um Mestre,
+responsável por entender as regras e aplicá-las com bom senso. Caso de borda que o bom senso resolve **não vira
+regra nova nem pergunta ao autor**; quando muito, vira uma frase no livro que deixa o caso ao critério do Mestre,
+com um exemplo. **Antes de levar qualquer pergunta ao autor, passe por três filtros, nesta ordem:** (1) o registro
+de decisões; (2) os documentos da Veterana (1b a 1e, 2, 2b a 2f); (3) se é caso para o bom senso do Mestre. Só
+pergunte o que passar pelos três. O filtro 1 não dispensa a regra acima: contradição REAL com decisão registrada
+continua indo ao autor.
+
 ## Escrita
 
 - Sem travessão (—) em nenhum texto: prosa, capítulo, comentário, mensagem de

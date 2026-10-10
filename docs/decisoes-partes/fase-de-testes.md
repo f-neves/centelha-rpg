@@ -1,6 +1,6 @@
 # Lista da fase de testes (simulações)
 
-Criada em 09/10/2026 pelo Arquiteto, a pedido do autor, ao registrar as decisões D-072 a D-080. Reúne o que as
+Criada em 09/10/2026 pelo Arquiteto, a pedido do autor, ao registrar as decisões D-072 a D-080 (T5 a T7 e o cenário (d) do T2 vieram do despacho de 10/10/2026). Reúne o que as
 regras novas de distância, precisão, Defesa e porte deixaram para medir nas simulações, em vez de decidir no
 papel. Fica fora do índice `Pendencias.md` (o `gen-pendencias.mjs` lê só `[A-LN]-*.md`): é uma lista de medição,
 não de pendência de texto. Quem acrescentar um item põe a decisão que o origina e o que muda se a medição
@@ -35,9 +35,13 @@ Estado de todos os itens: **abertos**. Nenhum deve rodar antes de existir o que 
 - Medir: a distribuição do dano em um golpe e a fração de mortes com um golpe só, por Centelha do atacante e por
   Vida do alvo; se a Defesa 0 por acúmulo vira acerto automático cedo demais; como isso conversa com a Absorção
   e com o Quase-Acerto.
-- Estados do cenário (b), pela D-081: o agarrado leva Esquiva −8 e Bloqueio −4 contra quem está de fora; o
-  Imobilizado tem as Defesas zeradas contra todos. A jogada que o agarrado faz para tentar controlar ainda não foi
-  definida, então o cenário mede só o ataque de fora contra o agarrado.
+- Estados do cenário (b), pela D-081 corrigida (10/10/2026): o agarrado leva Esquiva −8 e Bloqueio −4 contra quem
+  está de fora; o Imobilizado tem as Defesas zeradas (Esquiva e Bloqueio, não a Defesa de agarrão) contra todos.
+  O agarrado não age e não rola: não há jogada dele a modelar, só o Manter de quem controla contra a Defesa de
+  agarrão passiva, a cada 6 Ticks.
+- Cenário (d), acrescentado em 10/10/2026: **Imobilizar mais aliado batendo.** Um personagem usa a Técnica
+  Imobilizar (Agarrão do Urso, N1) e o aliado ataca o imobilizado: Defesa 0 e Margem sem teto. Medir o dano do
+  aliado por golpe e a fração de mortes com um golpe só, e se a combinação Imobilizar + aliado domina a Técnica.
 
 ## T3 · Penalidade de distância contra alvo em movimento
 
@@ -63,3 +67,49 @@ Estado de todos os itens: **abertos**. Nenhum deve rodar antes de existir o que 
   de criaturas maiores que Médio entre si basta.
 - Depende de: **as fichas das criaturas refeitas e os desafios recalculados (B14)**. O autor adiou isso: não
   se recalcula nada agora, e as fichas serão refeitas antes da fase de testes. Este item só roda depois.
+
+## T5 · Agarrar e o aliado bater, com Esquiva −8 (D-081)
+
+- Decisão: D-081 corrigida (10/10/2026). Item novo pedido pelo autor em 10/10/2026.
+- O que testar: um personagem agarra o alvo; o agarrado leva **Esquiva −8 e Bloqueio −4 só contra quem está de
+  fora**, e o aliado de fora o ataca. O agarrado não age e não rola; quem controla rola o Manter a cada 6 Ticks
+  contra a Defesa de agarrão passiva do agarrado.
+- Cenários: agarrador e aliado contra um alvo de Defesa típica (mortal e com Centelha alta); com e sem Pegada de
+  Ferro; manutenção que supera, que empata (6 Ticks sem controle) e que fica abaixo (os papéis se invertem).
+- Medir: quanto o aliado de fora ganha com −8 na Esquiva (contra Defesa normal, não 0); quantos ciclos de 6
+  Ticks o agarrão dura em média; se agarrar mais aliado batendo vira a jogada padrão contra um único forte; o
+  efeito da inversão de controle sobre o dano que o agarrador leva no segundo ciclo.
+- Depende de: o harness modelar a Manobra e a Guarda sob pressão do aliado (conferir o que `scripts/sim/` já
+  cobre antes de rodar).
+
+## T6 · A Arte sai um Tick mais cedo (D-084)
+
+- Decisão: D-084. Item novo pedido pelo autor em 10/10/2026.
+- O que testar: a Arte sai no **Tick do Golpe, o penúltimo** (uma conjuração de 7 Ticks acontece no sexto); o
+  aviso para o alvo é de **4 a 6 Ticks** em vez de 5 a 7; a janela de sair do caminho fica **1 Tick menor**.
+- Cenários: Arte mirada contra um alvo que corre para sair da linha; Arte contra quem tenta **interromper** a
+  conjuração; Arte contra quem ataca corpo a corpo no mesmo ciclo; graus 0 a 3 (3/1/1, Velocidade 5), 4 (4/1/1, 6)
+  e 5 e 6 (5/1/1, 7).
+- Medir: a taxa de acerto e de esquiva de cada grau, contra o corpo a corpo e contra a interrupção, antes e depois
+  do tempo novo. **Se as Artes ficarem fortes demais, a alternativa a testar é manter a Preparação de hoje com
+  Recuperação 1** (nota do autor, D-084).
+- Depende de: a rodada 4c escrita e do `scripts/sim/` aceitar o Tick do Golpe da Arte. A recalibração das Artes
+  (A34: ART-34, ART-5, ART-38, ART-40) parte do tempo novo.
+
+## T7 · A reforma de P/G/R inteira (D-082)
+
+- Decisão: D-082, em cima da base do K15. Item novo pedido pelo autor em 10/10/2026.
+- O que testar: a reforma toda (Preparo = Velocidade − 1 − Recuperação, Golpe sempre 1 Tick; leve 1/1/3, média e
+  haste média 2/1/3, Haste de Guerra e pesada 3/1/3, Punhos 1/1/3, arcos 4/1/1 e 4/1/2, bestas 7/1/1, 9/1/2 e
+  12/1/2, Arremesso 2/1/1, 3/1/1 e 3/1/2, Arte 3/1/1 a 5/1/1; Investida para todas as armas; Normal com a mesma
+  pressão em todos os Ticks).
+- Antecedente: em 20/08/2026 o **Preparo mínimo** (subir o P de todas as armas em 1 e baixar a Recuperação em
+  1) foi medido como **pior para o equilíbrio entre as classes: a amplitude passou de 21,0 para 24,8 pontos**
+  (`Combate_Tempo.md` §14.11, "O Preparo mínimo, medido"; K15 registra os 21,0 contra os 16,6 de hoje). Aquela
+  medição usou haste 3/1/2 e pesada 3/1/3, que não são as classes de agora (a D-082 divide a haste em média 2/1/3
+  e de Guerra 3/1/3).
+- Medir de novo, com a reforma inteira e **usando o K15 como base**: a amplitude entre classes (21,0 e 24,8
+  como régua de comparação), a arma leve (63% na K15), o arqueiro (K17), a Rajada e a dupla da D-083 sobre os
+  ciclos novos, e a legibilidade (nenhuma ação resolve no Tick em que é declarada).
+- Depende de: a bancada rodar a régua nova (hoje `scripts/sim/` e `test-combate-tempo.mjs` seguem o K15) e do
+  tempo de voo (T1) para o arqueiro.

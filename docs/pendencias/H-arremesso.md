@@ -22,6 +22,9 @@ está no ar, e `Arremesso_Regra.md` é a **proposta nova**, em três regimes. A 
   machuca ninguém, e o corte da ponta leve é energia e não distância. **Limite de pegada**: acima
   de uns 13 cm de diâmetro não sai de uma mão. **Duas mãos**: no objeto leve saem 75% da velocidade
   de uma mão, no pesado empata, ou seja, é penalidade no leve e é a única opção no pesado.
+  - **Nota de 10/10/2026: a D-074 responde a parte da Funda e das ferramentas que estendem o braço** (Funda
+    ×2 na Máxima final; atlatl como item extra só com a azagaia, ×2 na Máxima, +1× Força no dano, +2 no
+    Preparo). A energia que chega, o limite de pegada e as duas mãos seguem como estão aqui.
 - [ ] **H4 · [ADIADO] [DECIDIR] O degrau de baixo do fator de forma: ÷2 ou ÷3?** Ressalva já medida na §3 da
   proposta. Pela densidade seccional, um baralho de cartas e uma bola de beisebol pesam quase o
   mesmo e o baralho chega a **22% do alcance**, não aos 50% que o ÷2 promete. Fica em ÷2 por
@@ -36,6 +39,9 @@ está no ar, e `Arremesso_Regra.md` é a **proposta nova**, em três regimes. A 
   `armas.json` (`arco-curto`) dá `forcaCap` 3 (`armas.json:470`) e a descrição diz "Soma Força até +3"
   (`armas.json:452`). A mesma linha da tabela dá o alcance livre (40 m), então a correção tem de dizer
   qual dos dois números esse alcance usa.
+  - **Nota de 10/10/2026: respondida pela D-075.** Só o Arco Curto tem Força máxima padrão, e ela é 3 (como o
+    `armas.json`); a Efetiva do Curto passa a ser 30 m, por arma (D-072), e a Máxima sai da tabela por Força no
+    arco. O H5 (Arco de Guerra) segue aberto.
 - [ ] **H7 · [DECIDIR] A bancada de calibração não modela alcance.** Achado pela Executora em
   27/09/2026, ao decidir NÃO rodar a alavanca "Arremesso contra Atirador" do item 6c do despacho
   da Regra do Quase-Acerto. `scripts/sim/motor.mjs`/`cena.mjs` (o harness) e `decisaoAutomatica`

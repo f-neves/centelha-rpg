@@ -288,3 +288,7 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   - O que cada um pede está no relato do veterana-1e (rodada 8).
   - **Ordem (D-061):** o Efeito Bola de Fogo entra na recalibração das Artes ANTES da revisão das fichas de
     exemplo (D17). O Mago de Batalha continua em Fogo 4 (D-051).
+  - **Nota de 10/10/2026 (D-084): a recalibração parte do novo tempo da Arte.** A Arte passa a sair no Tick do
+    Golpe, o penúltimo (aviso de 4 a 6 Ticks, janela de sair do caminho 1 Tick menor, esticar decide nos Ticks
+    4, 9 e 14). Calibrar ART-34, ART-5, ART-38 e ART-40 com o tempo antigo seria calibrar duas vezes. Medir o
+    efeito no T6 de `docs/decisoes-partes/fase-de-testes.md`.

@@ -326,6 +326,8 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   (3 pp, cerca de três cordas de 15 m, com a unidade de venda pendente) entraram com preço por
   comparação, porque nenhuma delas tem linha na tabela de fabricação
   (`custo-de-servico-e-itens.md:169-171`, `:174`).
+  - **Nota de 10/10/2026 (D-085):** os Dardos saem do catálogo (D-076) e a Plumbata fica em 35 pc, definitivo.
+    Funda, Bumerangue (agora dois, D-076) e Rede seguem com preço provisório.
 - [ ] **G41 · [DECIDIR] As três bestas sem base de custo.** Levantado em 24/09/2026, na revisão
   econômica, proposta de preços das Fases 1 a 3. Besta Pequena 3 po, Média 55 pp, Grande 95 pp
   (`custo-de-servico-e-itens.md:164-166`) ficaram como estavam, sem conta de fabricação por trás:
@@ -336,6 +338,9 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   que o maço custa 5 pc; o mesmo vale para a Adaga de Arremesso. O item é uma unidade (prova no
   `107-executora.md`). Saídas: o nome no singular ("Dardo"), o gerador `gen-cap-itens.mjs` pôr
   "(cada)", ou deixar.
+  - **Nota de 10/10/2026 (D-085): os Dardos saem do catálogo e a Plumbata (35 pc, definitivo) ocupa o lugar
+    deles.** O item perde o objeto para os Dardos e segue valendo para a Adaga de Arremesso (e para a Plumbata,
+    que também é munição).
 - [ ] **G43 · [DECIDIR] Dois nomes de armadura ainda de trabalho.** Levantado em 25/09/2026, no resíduo
   do CORRIGE da rodada 107 (`ae1c526`). O catálogo mostra "Gambeson (acolchoado)" e "Brigandina / coat
   of plates" (`custo-de-servico-e-itens.md:192`, `:194`), que vêm do `nome` no `armaduras.json`, e o

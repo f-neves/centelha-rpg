@@ -18,7 +18,8 @@ seção 15 dele. Transcrição do despacho ao Arquiteto, na ordem original. As e
 6. Bumerangue de retorno: até a Efetiva, a ida leva 0 Ticks e a volta também (está na mão no fim do Golpe).
 7. Rede: sem teto de Margem.
 8. Agarrado: age só contra quem o agarra (escapar, força, arma curta); o "não age" do site muda. Imobilizado: Defesas zeradas contra todos, inclusive contra quem imobiliza.
+   **[SUBSTITUÍDO pela D-081 corrigida, 10/10/2026, e não vale como está escrito. O "não age" do site NÃO muda: o agarrado não age, não rola e só se solta quando quem controla erra. Do item 23 da D-019 mudam só a Esquiva −8 e o Bloqueio −4 do agarrado contra quem está de fora, e o Imobilizado com as Defesas zeradas (Esquiva e Bloqueio).]**
 9. Os exemplos de rede saem da tabela de restrição (a Rede tem regra própria).
 10. Porte: ataques Sociais e Mentais continuam fora do porte; Artes de área sem rolagem de ataque também.
 11. Atlatl: a exposição maior (Velocidade 8) é o preço aceito pelo +2 na Preparação.
-12. "Sem equilíbrio" × Caído: continua pendente.
+12. "Sem equilíbrio" × Caído: continua pendente. **[ENCERRADO em 10/10/2026 pela D-086: sem regra nova, a cargo do Mestre.]**

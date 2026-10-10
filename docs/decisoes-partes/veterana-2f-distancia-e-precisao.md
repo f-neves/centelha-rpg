@@ -1,5 +1,14 @@
 # Centelha RPG · Distância e precisão do tiro · Documento 2f (fecha as respostas do autor ao 2e)
 
+> **Cabeçalho do Arquiteto (10/10/2026). Esta cópia não é exata e tem quatro correções do autor por cima do texto original, que segue abaixo sem alteração:**
+>
+> 1. **A cópia não é exata:** o endereço claude.ai do §13 foi removido de propósito (repositório público).
+> 2. **§8.4 (Preso):** o agarrão **não gera Preso**; gera só **Agarrado** (D-081). O Preso vem da **boleadeira, da rede e de Arte de prender**. Onde o texto abaixo lista "agarrão" entre as origens do Preso (§8.4 e a tabela do §8.5), leia sem ele.
+> 3. **§8.3 e adendo, item 8 (Agarrado e Imobilizado):** substituídos pela **D-081 corrigida** (`decisoes.md`). Vale o item 23 da D-019 com duas mudanças: Esquiva −8 e Bloqueio −4 do agarrado, só contra quem está de fora; Imobilizado com as Defesas zeradas (Esquiva e Bloqueio, não a Defesa de agarrão). O agarrado não age, não rola e só se solta quando quem controla erra; "não pode atacar quem está de fora" e "age só contra quem o agarra" **não valem**.
+> 4. **Teto de Defesa (§8.1 e §8.2):** o teto de **+6 continua valendo para os BÔNUS** de Defesa; só as **penalidades** ficam sem teto (D-078).
+>
+> Decisões posteriores que mexem neste texto: D-083 (Rajada e dupla), D-084 (Arte no Tick do Golpe), D-085 (Plumbata 35 pc), D-086 ("Sem equilíbrio" × Caído fechado, a cargo do Mestre; §8.5 e §13, item 3), D-087 (Princípio do Mestre).
+
 Escrito pela Veterana em 09/10/2026. **Substitui** `veterana-2e-distancia-e-precisao.md` (que fica como histórico, não se altera), junto com o 2d e o 2c. Este arquivo é completo e autônomo: o leitor (outro Claude, o Arquiteto) não precisa dos anteriores. Nada foi editado no site.
 
 Base de leitura: site `https://f-neves.github.io/centelha-rpg`, cópia local `tmp/veterana/site-13/txt` (deploy 85f623b, lida em 06/10/2026). Documento irmão: `veterana-2b-reforma-pgr.md` (reforma de Preparo/Golpe/Recuperação, que define as classes de Arremesso e os arcos).
