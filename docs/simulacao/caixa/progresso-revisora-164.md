@@ -1,0 +1,1 @@
+- 8-bis: 14 itens conferidos contra a fonte, 38 mutacoes (36 pegas), bastao e Maxima respondidos, bench --check, dist sem faca de arremesso. Veredito 164: PROCEDE.
