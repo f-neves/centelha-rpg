@@ -924,6 +924,47 @@ function conferirPorte(comb, R, gloss, ref, mesa) {
   TOTAL_ARTE += Object.keys(mutP).length;
 }
 
+// ---- Manobras: Preso, Agarrado e Imobilizado (rodada 7, D-081 e D-079)
+// O agarrado leva Esquiva −8 e Bloqueio −4 só contra quem está de fora; o Imobilizado tem Esquiva e Bloqueio zerados, e não a
+// Defesa de agarrão; o Preso tem dois perfis (a tabela e a Rede); o agarrão comum só gera Agarrado.
+function conferirManobras(comb) {
+  const f = [];
+  const L = comb.split('\n');
+  const comeca = (ini, frases, onde) => {
+    const l = L.find((x) => x.startsWith(ini));
+    if (!l) { f.push(`${onde}: falta a linha que começa com "${ini.slice(0, 50)}"`); return; }
+    for (const fr of frases) if (!l.includes(fr)) f.push(`${onde}: a linha "${ini.slice(0, 30)}" não tem "${fr.slice(0, 90)}"`);
+  };
+  comeca('**O agarrado.**', ['Contra quem ataca de fora, a Esquiva dele leva −8 e o Bloqueio −4, mais as penalidades da situação (por exemplo, no chão), sem dobro', 'Entre os dois envolvidos não há penalidade de ataque nem de Defesa', 'Não age e não rola nada: só escapa quando quem o controla erra.'], 'Manobras, O agarrado');
+  comeca('* **Preso:**', ['Vem da boleadeira, da Rede e da Arte de prender, e tem dois perfis.', '**Pela tabela de restrição** (a boleadeira e a Arte de prender, parcial nas pernas): Esquiva −4.', '**Pela Rede**, que tem regra própria ([Armas & Armaduras](/regras/armas-e-armaduras)): −2 na Esquiva e −2 no Bloqueio, e mais −1 em cada por grau de Margem do lançamento, sem teto.', 'Força + Atletismo contra o total do lançamento, uma tentativa por ação', 'contra a Dificuldade do Efeito'], 'Manobras, Preso');
+  comeca('* **Agarrado:**', ['O agarrão comum só gera Agarrado: não prende (Preso) nem imobiliza.'], 'Manobras, Agarrado');
+  comeca('* **Imobilizado:**', ['A Esquiva e o Bloqueio dele ficam **zerados** (não a Defesa de agarrão)', 'Nenhum movimento, não age (nem com Firula)'], 'Manobras, Imobilizado');
+  if (/a Defesa dele leva −2|A Defesa dele cai −4/.test(comb)) f.push('Manobras: sobrou "a Defesa dele leva −2 mais as penalidades" ou "A Defesa dele cai −4"');
+  return f;
+}
+{
+  const realM = conferirManobras(COMB);
+  for (const x of realM) falhas.push(x);
+  const mutM = realM.length ? {} : {
+    'o agarrado a −2 de volta': (c) => c.replace('a Esquiva dele leva −8 e o Bloqueio −4, mais', 'a Defesa dele leva −2 mais'),
+    'o agarrado com −8/−8': (c) => c.replace('a Esquiva dele leva −8 e o Bloqueio −4', 'a Esquiva dele leva −8 e o Bloqueio −8'),
+    'a penalidade entre os dois': (c) => c.replace('Entre os dois envolvidos não há penalidade de ataque nem de Defesa', 'Entre os dois envolvidos há penalidade de Defesa'),
+    'o Imobilizado a −4 de volta': (c) => c.replace('A Esquiva e o Bloqueio dele ficam **zerados** (não a Defesa de agarrão), como em *Corpo, total* (ver *Restrição de corpo e de lugar*).', 'A Defesa dele cai −4 (Vantagem tática).'),
+    'o Imobilizado sem a exceção da Defesa de agarrão': (c) => c.replace('ficam **zerados** (não a Defesa de agarrão)', 'ficam **zerados**'),
+    'o Preso sem o perfil da Rede': (c) => c.replace('**Pela Rede**, que tem regra própria', '**Pela Rede**, que não tem regra própria'),
+    'o Preso pela tabela a −2': (c) => c.replace('parcial nas pernas): Esquiva −4.', 'parcial nas pernas): Esquiva −2.'),
+    'a Rede com teto de Margem': (c) => c.replace('por grau de Margem do lançamento, sem teto.', 'por grau de Margem do lançamento, até −3.'),
+    'o agarrão que prende': (c) => c.replace('O agarrão comum só gera Agarrado: não prende (Preso) nem imobiliza.', 'O agarrão comum também prende.'),
+    'a fuga sem a Força + Atletismo': (c) => c.replace('Força + Atletismo contra o total do lançamento, uma tentativa por ação', 'a jogada de quem prendeu'),
+  };
+  for (const [nome, estraga] of Object.entries(mutM)) {
+    const c = estraga(COMB);
+    if (c === COMB) { falhas.push(`o estrago "${nome}" não alterou nada (o teste de teste está torto)`); continue; }
+    if (conferirManobras(c).length === 0) falhas.push(`o teste NÃO acusou o estrago de Manobras "${nome}"`);
+  }
+  TOTAL_ARTE += Object.keys(mutM).length;
+}
+
 if (falhas.length) {
   console.error(`✘ test-capitulo-armas: ${falhas.length} falha(s)`);
   for (const f of falhas) console.error('  · ' + f);
