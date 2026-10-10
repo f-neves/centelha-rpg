@@ -35,8 +35,9 @@ Estado de todos os itens: **abertos**. Nenhum deve rodar antes de existir o que 
 - Medir: a distribuição do dano em um golpe e a fração de mortes com um golpe só, por Centelha do atacante e por
   Vida do alvo; se a Defesa 0 por acúmulo vira acerto automático cedo demais; como isso conversa com a Absorção
   e com o Quase-Acerto.
-- Depende de: o autor responder a pergunta sobre Agarrado, Imobilizado e Preso (D-019, item 23); o cenário (b)
-  espera isso.
+- Estados do cenário (b), pela D-081: o agarrado leva Esquiva −8 e Bloqueio −4 contra quem está de fora; o
+  Imobilizado tem as Defesas zeradas contra todos. A jogada que o agarrado faz para tentar controlar ainda não foi
+  definida, então o cenário mede só o ataque de fora contra o agarrado.
 
 ## T3 · Penalidade de distância contra alvo em movimento
 

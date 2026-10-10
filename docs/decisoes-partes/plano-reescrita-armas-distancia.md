@@ -1,7 +1,7 @@
 # Plano de rodadas: reescrita dos textos de armas de arremesso, distância, Defesa e porte
 
 Montado em 09/10/2026 pelo Arquiteto, a partir da seção 14 do `veterana-2f-distancia-e-precisao.md` e das
-decisões D-072 a D-080. **Estado: aguardando autorização do autor. Nada foi reescrito.** Os números dos itens
+decisões D-072 a D-082. **Estado: aguardando autorização do autor. Nada foi reescrito.** Os números dos itens
 (§14.N) são os da seção 14 do 2f; as linhas citadas lá (`armas l.68-87` etc.) são do site de 06/10/2026 e
 envelhecem, então a Executora relocaliza cada trecho por busca de texto antes de editar.
 
@@ -28,9 +28,9 @@ envelhecem, então a Executora relocaliza cada trecho por busca de texto antes d
 
 | Pendência | Trava |
 | --- | --- |
-| Agarrado, Imobilizado e a origem do Preso pelo agarrão (conflito com a D-019, item 23) | rodada 7 inteira, e as linhas de Agarrado e Imobilizado das rodadas 5 |
-| Preparo mínimo (reforma das armas corpo a corpo do 2b: 1/1/3, 2/1/3, 3/1/3; `Combate_Tempo.md` §14.11) | §14.18 (os textos da reforma de P/G/R) na parte corpo a corpo |
-| Teto de ±6 nos bônus de Defesa (`defesaReflexiva`) | a frase de `regras.json` e a de `combate.md` sobre o teto, na rodada 5 |
+| Mecânica do agarrado não dita na D-081 (que jogada ele faz para tentar controlar, em que Tick, a que custo, e se o Manter de quem controla continua) | o parágrafo "O agarrado" da rodada 7; o resto da rodada 7 (Imobilizado, Preso) pode andar |
+| Punhos na reforma de P/G/R (D-082 contra D-057 e D-065 item 1) | só a linha dos Punhos na rodada 4; as demais classes andam |
+| Arte sai no Tick do Golpe, o penúltimo (D-082, não confirmado; 2b §3) | a rodada 4b (As Artes) inteira |
 | "Sem equilíbrio" × Caído (adendo, item 12) | só a linha de Sem equilíbrio da tabela de restrição fica sem a soma |
 | Rajada, empunhadura dupla, Ambidestria, D-068 (em espera) | as seções correspondentes de `combate.md` não são tocadas por nenhuma rodada abaixo |
 | Rodada 14 das armas sem veredito da Revisora (e462681a, 0fab8b13) | qualquer rodada que edite `combate.md` (rodadas 4, 5, 6) espera esse veredito |
@@ -62,12 +62,26 @@ envelhecem, então a Executora relocaliza cada trecho por busca de texto antes d
   da Boleadeira (Preso pela Rede, escapar por Força + Atletismo); o Preso do agarrão fica na rodada 7.
 - Depende da rodada 1. Pode andar junto com a 2.
 
-**Rodada 4 · Combate: tempo de voo e P/G/R do tiro** (§14.8 e §14.18 só nas armas de distância)
+**Rodada 4 · Combate: tempo de voo e a reforma de P/G/R** (§14.8 e §14.18, D-073 e D-082)
 - Regra de tempo de voo perto de "Nas armas de Distância o Golpe cai no último Tick do ciclo", Recarga, exemplo
   do Bram, menção no Normal ("o tiro continua rolado na declaração") e o recebido da Guarda sob pressão na
-  chegada. Tabela de Velocidades do Arremesso e dos arcos. `combate l.54, 219, 275` (Dardos).
-- Espera o veredito da rodada 14 e não toca Rajada, empunhadura dupla nem D-068. A parte corpo a corpo da
-  reforma de P/G/R (§14.18) NÃO entra aqui: espera o Preparo mínimo.
+  chegada. `combate l.54, 219, 275` (Dardos).
+- Reforma de P/G/R inteira (`veterana-2b-reforma-pgr.md` §4, itens 1 a 6, 8, 9 e 10): tabela de Preparo e
+  Recuperação (Preparo = Velocidade − 1 − Recuperação), parágrafo da Distância, tabela de Velocidades, Recarga,
+  exemplo do Bram, "contra 6 e 7 dos arcos", Golpes no mesmo instante, catálogo de classes (Haste dividida em
+  média e de Guerra, Alabarda na de Guerra), Investida (leve sem "carga voluntária", exemplo da Sora a 12 e
+  21 m) e o texto do Normal (pressão em todos os Ticks). Dados: `armas.json` (P/G/R, Velocidade, dano das
+  hastes e dos arcos) e `regras.json` `combate.pgr.preparo`. O Grid segue o K15 (N-grid-pendencias.md).
+- **Dividida em duas por tamanho**, se a Executora achar grande: 4a tempo de voo e o tiro; 4b a reforma
+  corpo a corpo.
+- Espera o veredito da rodada 14 e não toca Rajada, empunhadura dupla nem D-068. A linha dos Punhos espera a
+  resposta do autor (D-057 e D-065 contra a classe Leve 1/1/3).
+
+**Rodada 4c · As Artes: a Arte sai no Tick do Golpe** (2b §3 e §4 item 7)
+- Só abre se o autor confirmar a consequência (a Arte sai no penúltimo Tick, o sinal se anuncia por quatro a
+  seis Ticks, a decisão de esticar cai no Tick do Golpe). Texto dos dois modos, "A Arte sai no último Tick",
+  tabela "Último Tick, quando sai", "O tempo da Arte" no Normal. Se o autor disser que não, o 2b §3 cai e as
+  classes da Arte da D-082 ganham outra leitura.
 
 **Rodada 5 · Defesa: fim do teto, piso 0, restrição, cego** (§14.9, §14.10, §14.11, §14.13, §14.14, §14.16)
 - Fim do teto de ±6 nas penalidades (`combate`, tag Alcance e porte em `armas-e-armaduras`, `defesas`),
@@ -75,8 +89,10 @@ envelhecem, então a Executora relocaliza cada trecho por busca de texto antes d
   corpo e de lugar, parágrafo "A Defesa é um valor fixo e passivo" (alvo sem Defesa), linha do Correndo
   (deixa de citar o −4 igual ao de surpreso e imobilizado), escudo "apto" com Pouco espaço, e em Ações
   (Sentidos e Engano) o teste de Furtividade contra a Percepção Passiva para "sabe que vai ser atacado".
-  Dados: `regras.json` (`defesaReflexiva` e a nota do teto, quando o autor responder sobre os bônus).
-- As linhas de Agarrado e Imobilizado da tabela de restrição esperam a rodada 7.
+  Dados: `regras.json` (`defesaReflexiva` e a nota do teto: o teto de +6 fica só para os BÔNUS, as penalidades
+  perdem o teto; a exceção "penalidade imposta por Proeza fica fora do teto" fica sem objeto).
+- As linhas de Agarrado e Imobilizado da tabela de restrição entram aqui (D-081: Agarrado −8/−4 só contra quem
+  está de fora; Imobilizado com Defesas zeradas); o parágrafo do agarrado é da rodada 7.
 - Espera o veredito da rodada 14.
 
 **Rodada 6 · Porte** (§14.17)
@@ -87,8 +103,11 @@ envelhecem, então a Executora relocaliza cada trecho por busca de texto antes d
 - Não recalcula desafios nem mexe em fichas de criaturas (D-077). Espera o veredito da rodada 14.
 
 **Rodada 7 · Preso, Agarrado e Imobilizado** (§14.12 e §14.15, o que sobrar)
-- Parágrafo "O agarrado", item Imobilizado, definição de Preso em Manobras com os dois perfis, tag Prende
-  ("deixa o alvo Preso"). **Só abre depois da resposta do autor** sobre a D-019, item 23 (e a origem do Preso).
+- Parágrafo "O agarrado" (D-081: só age contra quem o agarra, para tentar controlar; Esquiva −8 e Bloqueio −4
+  contra os de fora), item Imobilizado (Defesas zeradas; um agarrão normal não imobiliza), definição de Preso
+  em Manobras com os dois perfis (origens: boleadeira, rede e Arte de prender), tag Prende ("deixa o alvo
+  Preso"), e a conferência da redação da Constrição no bestiário.
+- O parágrafo do agarrado espera a mecânica que a D-081 não disse; o resto abre já.
 - Divergências com `condicoes.json` e o Grid vão para o N-grid-pendencias.md (D-064).
 
 **Rodada 8 · Fechamento**
@@ -99,6 +118,6 @@ envelhecem, então a Executora relocaliza cada trecho por busca de texto antes d
 
 ## Ordem sugerida e custo
 
-1 → (2 e 3) → 4 → 5 → 6 → 7 → 8, com a 7 solta até o autor responder. Cada rodada é pequena e revisável; as
+1 → (2 e 3) → 4 → (4c, se confirmada) → 5 → 6 → 7 → 8. Cada rodada é pequena e revisável; as
 rodadas 4 a 6 mexem no mesmo `combate.md` e por isso andam em fila, não em paralelo. A ordem entre 4, 5 e 6
 pode mudar se o autor quiser a Defesa antes do tempo de voo.
