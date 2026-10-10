@@ -83,7 +83,7 @@ const PECAS = [
   { id: 'machado-de-arremesso', met: 'tomahawk', exige: /tomahawk|\baxe\b/i, icone: 'lorc/hatchets' },
   { id: 'azagaia', met: 'javelin', exige: /javelin|spear/i, icone: 'lorc/thrown-spear' },
   { id: 'funda', met: 'sling', exige: /\bsling\b/i, icone: 'delapouite/sling' },
-  { id: 'dardos', met: 'dart', exige: /\bdart/i, icone: 'delapouite/dart' },
+  { id: 'plumbata', met: 'dart', exige: /\bdart/i, icone: 'delapouite/dart' },
   { id: 'bumerangue', met: 'boomerang', exige: /boomerang|throwing stick/i, icone: 'delapouite/boomerang' },
   { id: 'rede', met: 'net', exige: /\bnet\b/i, icone: 'lorc/fishing-net' },
   { id: 'pilum', met: 'pilum', exige: /pilum|spear|javelin/i, icone: 'lorc/barbed-spear' },

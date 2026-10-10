@@ -48,6 +48,8 @@ const TABELA = {
   'besta-media': [12, 4, 1, 60, null, 'perfurante', 1],
   'besta-grande': [15, 8, 1, 80, null, 'perfurante', 2],
 };
+const DISTMAX_LEGADO = { 'adaga-de-arremesso': 10, 'machado-de-arremesso': 12, azagaia: 40, funda: 200, bumerangue: 50, rede: 5, pilum: 25 };
+const SEM_DISTMAX = ['plumbata', 'shuriken', 'mini-faca', 'kunai', 'boleadeira', 'bumerangue-de-caca', 'bumerangue-de-caca-cortante', 'bumerangue-de-retorno-cortante'];
 const ARCOS_POR_FORCA = {
   curto: [50, 90, 120, 140, 155, 170, 180, 190],
   longo: [100, 180, 250, 295, 325, 350, 370, 390],
@@ -78,6 +80,11 @@ function conferir(armas, regras, extras) {
   }
   const DM = { 'arco-curto': 120, 'arco-longo': 250, 'arco-composto': 300, 'besta-pequena': 100, 'besta-media': 200, 'besta-grande': 300 };
   for (const [id, m] of Object.entries(DM)) if (por[id]?.arma.distMax !== m) f.push(`${id}: distMax ${por[id]?.arma.distMax}, o Grid lê ${m}`);
+  // O `distMax` LEGADO das 7 armas de arremesso antigas é o que o Interpor do Grid lê (alcance.ts), e a rodada 1
+  // o deixou intacto por causa da D-054. Os números ficam presos aqui; mudá-los é da passada do Grid (N22).
+  for (const [id, m] of Object.entries(DISTMAX_LEGADO)) if (por[id]?.arma.distMax !== m) f.push(`${id}: distMax ${por[id]?.arma.distMax}, o legado que o Grid lê é ${m}`);
+  // E as 8 armas novas não o têm: sem `distMax` o Interpor não mede alcance nem reta para elas (N22).
+  for (const id of SEM_DISTMAX) if (por[id]?.arma.distMax != null) f.push(`${id}: ganhou distMax ${por[id].arma.distMax}, e a rodada 1 as deixou sem`);
   // Classes e Força máxima
   for (const id of ['funda', 'plumbata', 'rede', 'boleadeira', 'shuriken']) if (por[id]?.arma.classe !== 'arremesso') f.push(`${id}: classe ${por[id]?.arma.classe}, esperava arremesso`);
   if (por['arco-curto']?.arma.forcaCap !== 3) f.push('Arco Curto sem a Força máxima 3 (D-075)');
@@ -108,6 +115,12 @@ function conferir(armas, regras, extras) {
 }
 
 const falhas = [];
+// O id `dardos` não pode sobrar na arte nem nas ferramentas de imagem (a Plumbata ocupa o lugar e a arte do dardo).
+for (const rel of ['scripts/folhas-ia.json', 'scripts/baixar-imagens-equip.mjs', 'src/styles/arte-equip.css']) {
+  const t = fs.readFileSync(path.join(ROOT, rel), 'utf8');
+  if (/(id['"]?: ?['"]dardos['"]|arte-dardos)/.test(t)) falhas.push(`${rel}: ainda aponta para o id "dardos"`);
+  if (!/plumbata/.test(t)) falhas.push(`${rel}: não cita a plumbata (a arte e as ferramentas de imagem seguem o catálogo)`);
+}
 const real = conferir(ARMAS, REGRAS, EXTRAS);
 for (const x of real) falhas.push(x);
 
@@ -122,6 +135,11 @@ const estragos = {
   'Dardos voltaram': (A) => { const d = copia(A.find((x) => x.id === 'plumbata')); d.id = 'dardos'; A.push(d); },
   'atlatl em armas.json': (A) => { A.push({ id: 'atlatl', nome: 'Atlatl', arma: null }); },
   'peso da Rede': (A) => { A.find((x) => x.id === 'rede').peso = 1.5; },
+  'distMax da azagaia': (A) => { A.find((x) => x.id === 'azagaia').arma.distMax = 41; },
+  'distMax da Funda': (A) => { A.find((x) => x.id === 'funda').arma.distMax = 199; },
+  'distMax do bumerangue': (A) => { A.find((x) => x.id === 'bumerangue').arma.distMax = 51; },
+  'distMax da adaga de arremesso sumiu': (A) => { delete A.find((x) => x.id === 'adaga-de-arremesso').arma.distMax; },
+  'distMax na Plumbata': (A) => { A.find((x) => x.id === 'plumbata').arma.distMax = 30; },
 };
 for (const [nome, estraga] of Object.entries(estragos)) {
   const A = copia(ARMAS); estraga(A);
