@@ -121,8 +121,11 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
   - **D-088 (Bloqueio desarmado contra arma):** no lugar do parágrafo "Contra lâmina, o corpo não segura"
     (`armas-e-armaduras.md`, Luta desarmada) e na remissão de `combate.md`, Esquivar ou Bloquear: a mão nua bloqueia
     qualquer ataque armado, sem os dados de Margem do ataque, e toma o dano da arma. As leituras a, b e d entram
-    como frase; **a leitura c (dupla mista) NÃO entra até o autor responder** (conflito com a D-065 item 3).
+    como frase; **a leitura c (dupla mista) foi DESCARTADA pelo autor** (10/10/2026: vale a D-065 item 3).
     Sem código novo: a ficha só calcula o valor do Bloqueio.
+  - **4b-bis (decisão final do autor, 10/10/2026: "Punhos não bloqueiam o dano de NENHUMA arma, a não ser com
+    aprovação do Mestre"):** o texto da 4b já diz que o dano da arma passa (cortante, perfurante ou contundente);
+    falta só a frase do Mestre da exceção, em `armas-e-armaduras.md` (Luta desarmada), sem regra nova.
   - **Ficha:** o `armas.json` e o P/G/R dos Punhos passam a 1/1/3 (hoje a ficha lê a régua antiga, 0/1/4, para
     todas as armas); a dupla Punhos/Punhos da ficha continua como está. A ficha cobra hoje −1d6 na hábil e −2d6 na
     inábil: **não mexer**, depende da K18 ("se há penalidade por atacar com a mão inábil").

@@ -147,6 +147,9 @@ revistos por ela.
     apaga esse dado; a ficha hoje cobra −1d6 na hábil e −2d6 na inábil, −1d6 com a Técnica. A divergência
     entre ficha e livro depende desta decisão, e a rodada 4b não mexe na ficha por causa dela.) A mão inábil
     vale para qualquer coisa usada nas mãos da dupla, inclusive os dois Punhos (cláusula da D-083).
+  - **Insumo para a decisão (10/10/2026):** o desenho que o código usa hoje é −1d6 na mão hábil e
+    −2d6 na inábil (`ficha-engine.ts`, `dupla.inabilPen: ambi ? 1 : 2`; a Ambidestria baixa a inábil
+    para −1d6), e o livro diz −1d6 nas duas. Nada muda agora.
 - [ ] **K19 · [FAZER] A cadeia foi medida só na arma leve.** Na média e na pesada cada elo custa 2
   e 3 Ticks, e as três curvas de freio não foram varridas ali. Bateria `--so T`.
 - [ ] **K21 · [FAZER/DECIDIR] As armas versáteis: a regra, a lista e o preço da forma de duas
