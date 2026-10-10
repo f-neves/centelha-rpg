@@ -390,6 +390,9 @@ const PORTE_NOME: Record<string, string> = {
   .ref-lista li { margin-bottom: .25rem; }
   .ref-duas { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; align-items: start; }
   @media (max-width: 820px) { .ref-duas { grid-template-columns: 1fr; } }
+  /* O item de grade tem min-width: auto, e com overflow visível ele cresce até a largura da tabela (482 px a 390 px de tela):
+     com min-width 0 quem rola é o .tab-wrap, e a página não. */
+  .ref-duas > * { min-width: 0; }
   .tab-mesa .col-efeito { font-variant-numeric: tabular-nums; white-space: nowrap; }
   .ref-bloco .tab-mesa td { vertical-align: top; }
 </style>

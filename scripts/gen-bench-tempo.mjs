@@ -253,7 +253,7 @@ const REGRAS_TEXTO = [
     <b>Solta</b> (abortável, perdendo o que foi gasto: Corrida, ações longas).</li>
     <li><b>A dívida na virada da cena.</b> Proposta: morre com a cena, como a guarda.</li>
     <li><b>A Horda.</b> Proposta: esquadrão com P=0. A massa está sempre girando.</li>
-    <li><b>O teto de ±6.</b> O atraso por interrupção não é modificador de Defesa e não entra nele.</li>
+    <li><b>O teto de +6 dos bônus de Defesa.</b> O atraso por interrupção não é modificador de Defesa e não entra nele.</li>
     </ol>`,
   },
 ];

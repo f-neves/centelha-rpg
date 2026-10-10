@@ -537,6 +537,16 @@ async function carregarTS(rel) {
   globalThis.__ENV__ = globalThis.__ENV__ || { BASE_URL: '/', MODE: 'test' };
   try { return await import(pathToFileURL(saida).href); } finally { try { fs.unlinkSync(saida); } catch { /* o sistema limpa */ } }
 }
+async function carregarTSdoTexto(texto, dirRelativo) {
+  const saida = path.join(os.tmpdir(), `mutante-capitulo-armas-${process.pid}-${Math.random().toString(36).slice(2)}.mjs`);
+  await build({
+    stdin: { contents: texto, resolveDir: path.join(ROOT, dirRelativo), loader: 'ts', sourcefile: 'mutante.ts' },
+    outfile: saida, bundle: true, format: 'esm', platform: 'node',
+    loader: { '.json': 'json' }, logLevel: 'error', define: { 'import.meta.env': 'globalThis.__ENV__' },
+  });
+  globalThis.__ENV__ = globalThis.__ENV__ || { BASE_URL: '/', MODE: 'test' };
+  try { return await import(pathToFileURL(saida).href); } finally { try { fs.unlinkSync(saida); } catch { /* o sistema limpa */ } }
+}
 /** Percorre as armas e devolve o que a ficha mostra que difere da tabela do capítulo. `mostra(w)` devolve a anatomia. */
 function conferirFicha(mostra, comb, armas) {
   const f = [];
@@ -577,9 +587,52 @@ function conferirFicha(mostra, comb, armas) {
   // controle negativo 3: uma célula da tabela do capítulo estragada (a recuperação do Arco Curto)
   const comb2 = COMB.replace('| Arco Curto | 6 | 4 | 1 | 1 |', '| Arco Curto | 6 | 5 | 1 | 0 |');
   if (comb2 === COMB || conferirFicha(dela(REGRAS), comb2, catalogo).length === 0) falhas.push('ficha: o teste NÃO acusou o Arco Curto estragado na tabela do capítulo');
-  // o fallback por Velocidade de uma arma que não está no catálogo (id inventado, V6 de arremesso) segue a linha do livro
-  const inv = FP.anatomiaDaFicha({ id: 'arma-inventada', nome: 'Arma inventada', ticks: 4, classe: 'arremesso' }, REGRAS);
-  if (CT.classeDeTempo('arma-inventada', 4) === 'leve' && inv.ciclo !== 4) falhas.push('ficha: a arma sem catálogo devia cair na fórmula do motor (ciclo = Velocidade)');
+  // o fallback por Velocidade (rodada 8, item 7 da 156): uma asserção por grupo, sem condicional; cada mutante de ficha-pgr.ts é acusado
+  const motor = (id, ticks) => { const a = CT.anatomia({ classe: CT.classeDeTempo(id, ticks), velocidade: ticks, sistema: 'pgr' }); return [a.preparo, a.golpes, a.recuperacao, a.ciclo]; };
+  const FALLBACK = [
+    // [descrição, id, Velocidade editada, esperado: [P, G, R, ciclo] ou 'motor']
+    ['corpo a corpo: a Espada Longa editada para V7 pega a linha da V7 do grupo (Haste de Guerra), e não a da Média', 'espada-longa', 7, [3, 1, 3, 7]],
+    ['corpo a corpo: o casamento por id exige a Velocidade (a Adaga editada para V7 não herda a linha da Leve)', 'adaga', 7, [3, 1, 3, 7]],
+    ['corpo a corpo: sem linha na Velocidade (V9), cai no motor', 'espada-longa', 9, 'motor'],
+    ['arma sem catálogo (id inventado) com V4: a classe sai da Velocidade (leve), não há V4 no grupo e cai no motor', 'arma-inventada', 4, 'motor'],
+    ['arma sem catálogo (id inventado) com V7: a classe sai da Velocidade (pesada) e pega a linha da V7', 'arma-inventada', 7, [3, 1, 3, 7]],
+    ['arremesso: o Shuriken editado para V5 pega a linha do Arremesso médio', 'shuriken', 5, [3, 1, 1, 5]],
+    ['arremesso: a Adaga de Arremesso editada para V6 pega o Arremesso pesado (a primeira da V6 no grupo), e não a Funda', 'adaga-de-arremesso', 6, [3, 1, 2, 6]],
+    ['arremesso: a Funda com a Velocidade intacta casa pelo id (4/1/1), e não vira Arremesso pesado', 'funda', 6, [4, 1, 1, 6]],
+    ['arremesso: a Funda editada para V5 não vira nem Funda nem Arremesso pesado, vira o Arremesso médio', 'funda', 5, [3, 1, 1, 5]],
+    ['arremesso: o Shuriken editado para V7 não tem linha no grupo e cai no motor (e não pega a do Arco Longo)', 'shuriken', 7, 'motor'],
+    ['distância: o Arco Curto editado para V5 não tem linha no grupo e cai no motor (e não pega a do Arremesso médio)', 'arco-curto', 5, 'motor'],
+    ['distância: o Arco Curto editado para V7 pega a linha do Arco Longo e Composto', 'arco-curto', 7, [4, 1, 2, 7]],
+    ['distância: sem linha na Velocidade (V8, o atlatl não tem arma), cai no motor', 'arco-curto', 8, 'motor'],
+    ['distância: a Besta Pequena editada para V12 pega a linha da Besta Média', 'besta-pequena', 12, [9, 1, 2, 12]],
+  ];
+  function conferirFallback(mostra) {
+    const f = [];
+    for (const [desc, id, ticks, esp] of FALLBACK) {
+      const x = catalogo.find((y) => y.id === id);
+      const w = x ? { id: x.id, nome: x.nome, ...x.arma, ticks } : { id, nome: 'Arma inventada', ticks, classe: 'arremesso' };
+      const a = mostra(w);
+      const vem = [a.preparo, a.golpes, a.recuperacao, a.ciclo], deve = esp === 'motor' ? motor(w.id, ticks) : esp;
+      if (JSON.stringify(vem) !== JSON.stringify(deve)) f.push(`ficha, fallback (${desc}): mostra ${vem.join('/')}, devia mostrar ${deve.join('/')}`);
+    }
+    return f;
+  }
+  for (const x of conferirFallback(dela(REGRAS))) falhas.push(x);
+  // controle negativo: cada mutante de ficha-pgr.ts tem de ser acusado pelo fallback
+  const FONTE = ler('src/lib/ficha-pgr.ts');
+  const mutantesFP = {
+    'sem o fallback por Velocidade': ["    || grupo.find((c) => c.id !== 'punhos' && (c.armas || []).length > 0 && c.velocidade === velocidade);", ';'],
+    'o casamento por id sem a Velocidade': ["grupo.find((c) => c.velocidade === velocidade && (c.armas || []).includes(w?.id))", "grupo.find((c) => (c.armas || []).includes(w?.id))"],
+    'o arremesso lê o tiro todo': ["? (ref.tiro || []).filter((c: any) => ARREMESSO.test(String(c.id)))", '? (ref.tiro || [])'],
+    'a distância lê o tiro todo': ["? (ref.tiro || []).filter((c: any) => !ARREMESSO.test(String(c.id)))", '? (ref.tiro || [])'],
+    'o fallback aceita a linha sem arma (o atlatl)': ["(c.armas || []).length > 0 && c.velocidade === velocidade", "c.velocidade === velocidade"],
+  };
+  for (const [nome, [de, para]] of Object.entries(mutantesFP)) {
+    if (FONTE.split(de).length !== 2) { falhas.push(`ficha: o mutante "${nome}" não casa com ficha-pgr.ts (o teste de teste está torto)`); continue; }
+    const mod = await carregarTSdoTexto(FONTE.replace(de, () => para), 'src/lib');
+    if (conferirFallback((w) => mod.anatomiaDaFicha(w, REGRAS)).length === 0) falhas.push(`ficha: o teste NÃO acusou o mutante de ficha-pgr.ts "${nome}"`);
+  }
+  TOTAL_ARTE += Object.keys(mutantesFP).length;
 }
 
 // ---- o tempo da Arte: a Arte sai no Tick do Golpe, o penúltimo (D-084, rodada 4c)
@@ -698,7 +751,7 @@ function conferirArte(comb, R, astro) {
     if (c === COMB && JSON.stringify(r) === JSON.stringify(REGRAS) && a === ASTRO) { falhas.push(`o estrago "${nome}" não alterou nada (o teste de teste está torto)`); continue; }
     if (conferirArte(c, r, a).length === 0) falhas.push(`o teste NÃO acusou o estrago da Arte "${nome}"`);
   }
-  TOTAL_ARTE = Object.keys(mut).length;
+  TOTAL_ARTE += Object.keys(mut).length;
 }
 
 // ---- a Defesa sem teto de penalidades, o piso 0, a Defesa zerada, o cego e a restrição de corpo e de lugar (rodada 5)
@@ -963,6 +1016,91 @@ function conferirManobras(comb) {
     if (conferirManobras(c).length === 0) falhas.push(`o teste NÃO acusou o estrago de Manobras "${nome}"`);
   }
   TOTAL_ARTE += Object.keys(mutM).length;
+}
+
+// ---- fechamento (rodada 8): os pinos que as revisões 153 a 162 acharam faltando, cada um com o estrago que o acusa
+// 3 (Rajada e dupla de Punhos, o exemplo da D-088), 4 (a frase do Mestre da Luta desarmada, começo e fim), 9 e 10 (a Arte e o esticar),
+// 13 (a tabela "Defesa zerada ou cego" e a ordem Esquiva, Bloqueio nas duas páginas da mesa), 16 (as células da tabela do porte),
+// 17 (o parêntese do "sem dobro"), 18 (as penalidades da Preparação de quem controla e o imobilizado que se solta sozinho).
+function conferirFechamento(T) {
+  const f = [];
+  const lin = (txt) => txt.split('\n');
+  const comeca = (ls, ini, frases, onde, fim) => {
+    const l = ls.find((x) => x.trimStart().startsWith(ini));
+    if (!l) { f.push(`${onde}: falta a linha que começa com "${ini.slice(0, 60)}"`); return; }
+    for (const fr of frases) if (!l.includes(fr)) f.push(`${onde}: a linha "${ini.slice(0, 40)}" não tem "${fr.slice(0, 90)}"`);
+    if (fim && !l.trimEnd().endsWith(fim)) f.push(`${onde}: a linha "${ini.slice(0, 40)}" devia terminar em "${fim.slice(0, 80)}"`);
+  };
+  const C = lin(T.comb), A = lin(T.cap), R = lin(T.astro), M = lin(T.mesa), F = lin(T.ref);
+  // 3
+  comeca(C, 'A Rajada tem a forma', ['**−1d6 no acerto, acumulando** (o **1º golpe** sai **sem penalidade**, o **2º** a **−1d6** e o **3º** a **−2d6**)'], 'Rajada');
+  comeca(C, 'A Rajada é só **corpo a corpo**', ['(arco, besta e Arremesso não fazem: recarregar é Preparo)'], 'Rajada');
+  comeca(C, '**Dois Punhos contam como duas armas leves**', ['e contam como **2 ataques** para a Guarda sob pressão.'], 'Dois Punhos');
+  comeca(A, '<div class="callout exemplo"><span class="lbl">Exemplo</span>Bloqueio 14', ['Esquiva <strong>8</strong>. Um ataque armado chega com <strong>15</strong> de acerto.'], 'Luta desarmada, exemplo');
+  // 4
+  comeca(A, 'A mão nua bloqueia **qualquer ataque armado**', ['Os punhos não barram o dano de arma nenhuma: só com a aprovação do Mestre'], 'Luta desarmada, frase do Mestre', 'sem ela, o dano passa.');
+  // 9 e 10
+  comeca(C, 'A **Arte** tem a mesma forma', [], 'Combate, parágrafo da Arte', 'Esticar a conjuração, que se decide a cada Tick do Golpe, está em *O tempo da Arte*, em As Artes.');
+  comeca(R, 'Não é preciso anunciar de saída até onde vai.', ['(T é a Velocidade esticada: 9 Ticks quando a ação passa a 10).'], 'regras.astro, esticar');
+  comeca(R, '<div class="callout regra"><span class="lbl">Os dois modos</span>', ['Esses Ticks são a Velocidade da conjuração, e a Arte sai no'], 'regras.astro, Os dois modos');
+  // 13: a tabelinha "Defesa zerada ou cego" e a ordem Esquiva, Bloqueio
+  const ordem = (ls, ini, onde) => {
+    const k = ls.findIndex((x) => x.includes(ini));
+    if (k < 0) { f.push(`${onde}: falta o cabeçalho "${ini.slice(0, 60)}"`); return; }
+    const tds = ls.slice(k + 1, k + 12).filter((x) => x.includes('<td class="num">'));
+    if (tds.length < 2 || !/z\.esquiva/.test(tds[0]) || !/z\.bloqueio/.test(tds[1])) f.push(`${onde}: as células devem sair na ordem Esquiva, Bloqueio`);
+  };
+  if (!M.some((x) => x.includes('<thead><tr><th>Defesa zerada ou cego</th><th class="num">Esquiva</th><th class="num">Bloqueio</th></tr></thead>'))) f.push('mesa.astro: falta a tabela "Defesa zerada ou cego" com as colunas Esquiva e Bloqueio, nessa ordem');
+  ordem(M, '<tbody>{ZERA.map((z) => (', 'mesa.astro, Defesa zerada');
+  if (!F.some((x) => x.includes('<thead><tr><th>Situação</th><th class="num">Esquiva</th><th class="num">Bloqueio</th></tr></thead>'))) f.push('referencia.astro: falta a tabela "Defesa zerada e cego" com as colunas Esquiva e Bloqueio, nessa ordem');
+  ordem(F, '<tbody>{CT.defesaZerada.linhas.map((z: any) => (', 'referencia.astro, Defesa zerada');
+  // 16: as células da tabela do porte, com os sinais
+  const fl = F.map((x) => x.trim());
+  for (const l of [
+    '<tr><td>Corpo a corpo, alvo maior</td>{DIFS.map((n: number) => (<td class="num">{`+${PORTE.reforma.porCategoria * n}`}</td>))}</tr>',
+    '<tr><td>Corpo a corpo, alvo menor</td>{DIFS.map(() => (<td class="num">0</td>))}</tr>',
+    '<tr><td>À distância, alvo maior</td>{DIFS.map((n: number) => (<td class="num">{`+${PORTE.reforma.porCategoria * n}`}</td>))}</tr>',
+    '<tr><td>À distância, alvo menor</td>{DIFS.map((n: number) => (<td class="num">{`−${PORTE.reforma.porCategoria * n}`}</td>))}</tr>',
+  ]) if (!fl.includes(l)) f.push(`referencia.astro, porte: falta a linha "${l.slice(0, 80)}" (o sinal de cada célula conta)`);
+  // 14: a grade das duas tabelas do Quase-Acerto não estica a página (min-width 0 nos itens, quem rola é o .tab-wrap)
+  if (!F.some((x) => x.trim() === '.ref-duas > * { min-width: 0; }')) f.push('referencia.astro: falta ".ref-duas > * { min-width: 0; }" (sem ela a página rola na horizontal a 390 px)');
+  // 17 e 18
+  comeca(C, '**O agarrado.**', ['sem dobro (a linha *Corpo, grave* da tabela de restrição é esta mesma penalidade, contada uma vez).', 'Quem controla sofre as penalidades da Preparação (Defesa −2, e −4 no Tick do Golpe) e da situação, mas não a do agarrado, porque pode largar o agarrão para se defender.'], 'Manobras, O agarrado');
+  comeca(C, '* **Imobilizado:**', ['Quem está imobilizado sem agarrão (amarrado, preso em gelo) pode tentar se soltar sozinho, e essa tentativa sofre uma penalidade grande para agir.'], 'Manobras, Imobilizado');
+  return f;
+}
+{
+  const T0 = { comb: COMB, cap: CAP, astro: ler('src/pages/artes/regras.astro').replace(/\r\n/g, '\n'), mesa: ler('src/pages/mesa.astro').replace(/\r\n/g, '\n'), ref: ler('src/pages/mesa/referencia.astro').replace(/\r\n/g, '\n') };
+  const realF = conferirFechamento(T0);
+  for (const x of realF) falhas.push(x);
+  const troca = (k, de, para) => (T) => ({ ...T, [k]: T[k].replace(de, para) });
+  const mutF = realF.length ? {} : {
+    '3: o −1d6 acumulando sumido': troca('comb', '**−1d6 no acerto, acumulando** (o **1º golpe**', '**−1d6 no acerto** (o **1º golpe**'),
+    '3: a Rajada que faz arco e besta': troca('comb', '(arco, besta e Arremesso não fazem: recarregar é Preparo)', '(arco e besta fazem)'),
+    '3: os dois Punhos como 1 ataque': troca('comb', 'e contam como **2 ataques** para a Guarda sob pressão.', 'e contam como **1 ataque** para a Guarda sob pressão.'),
+    '3: a Esquiva 8 do exemplo trocada': troca('cap', 'Esquiva <strong>8</strong>. Um ataque armado', 'Esquiva <strong>9</strong>. Um ataque armado'),
+    '4: o começo da frase do Mestre': troca('cap', 'Os punhos não barram o dano de arma nenhuma: só com a aprovação do Mestre', 'Os punhos barram o dano de arma: só com a aprovação do Mestre'),
+    '4: o fim da frase do Mestre': troca('cap', 'sem ela, o dano passa.', 'sem ela, o dano não passa.'),
+    '9: o "9 Ticks quando a ação passa a 10"': troca('astro', '(T é a Velocidade esticada: 9 Ticks quando a ação passa a 10).', '(T é a Velocidade esticada).'),
+    '9: a frase final do parágrafo da Arte': troca('comb', 'Esticar a conjuração, que se decide a cada Tick do Golpe, está em *O tempo da Arte*, em As Artes.', 'Esticar a conjuração está em As Artes.'),
+    '10: "Esses Ticks são a Velocidade da conjuração"': troca('astro', 'Esses Ticks são a Velocidade da conjuração, e a Arte sai no', 'Esses Ticks são de preparo, e a Arte sai no'),
+    '13: a tabela da mesa removida': troca('mesa', '<thead><tr><th>Defesa zerada ou cego</th><th class="num">Esquiva</th><th class="num">Bloqueio</th></tr></thead>', '<thead><tr><th>Defesa zerada ou cego</th></tr></thead>'),
+    '13: as colunas da mesa trocadas': troca('mesa', '<th class="num">Esquiva</th><th class="num">Bloqueio</th></tr></thead>\n            <tbody>{ZERA', '<th class="num">Bloqueio</th><th class="num">Esquiva</th></tr></thead>\n            <tbody>{ZERA'),
+    '13: as células da referência trocadas': (T) => ({ ...T, ref: T.ref.replace("sinalTxt(z.esquiva)}</td>\n            <td class=\"num\">{z.tipo === 'zera' ? '0' : sinalTxt(z.bloqueio)}", "sinalTxt(z.bloqueio)}</td>\n            <td class=\"num\">{z.tipo === 'zera' ? '0' : sinalTxt(z.esquiva)}") }),
+    '14: o min-width 0 da grade removido': troca('ref', '  .ref-duas > * { min-width: 0; }', ''),
+    '16: o sinal do alvo menor à distância trocado': troca('ref', '{`−${PORTE.reforma.porCategoria * n}`}', '{`+${PORTE.reforma.porCategoria * n}`}'),
+    '16: o corpo a corpo do alvo menor com sinal': troca('ref', '<tr><td>Corpo a corpo, alvo menor</td>{DIFS.map(() => (<td class="num">0</td>))}</tr>', '<tr><td>Corpo a corpo, alvo menor</td>{DIFS.map((n: number) => (<td class="num">{`−${PORTE.reforma.porCategoria * n}`}</td>))}</tr>'),
+    '17: o parêntese do sem dobro removido': troca('comb', ' (a linha *Corpo, grave* da tabela de restrição é esta mesma penalidade, contada uma vez)', ''),
+    '17: o parêntese do sem dobro invertido': troca('comb', 'é esta mesma penalidade, contada uma vez', 'é outra penalidade, contada em dobro'),
+    '18: as penalidades da Preparação de quem controla': troca('comb', 'Quem controla sofre as penalidades da Preparação (Defesa −2, e −4 no Tick do Golpe) e da situação, mas não a do agarrado', 'Quem controla não sofre penalidade'),
+    '18: o imobilizado que se solta sozinho': troca('comb', 'pode tentar se soltar sozinho, e essa tentativa sofre uma penalidade grande para agir.', 'não pode se soltar.'),
+  };
+  for (const [nome, estraga] of Object.entries(mutF)) {
+    const T = estraga(T0);
+    if (JSON.stringify(T) === JSON.stringify(T0)) { falhas.push(`o estrago "${nome}" não alterou nada (o teste de teste está torto)`); continue; }
+    if (conferirFechamento(T).length === 0) falhas.push(`o teste NÃO acusou o estrago do fechamento "${nome}"`);
+  }
+  TOTAL_ARTE += Object.keys(mutF).length;
 }
 
 if (falhas.length) {
