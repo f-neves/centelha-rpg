@@ -382,8 +382,8 @@ PROCEDE); rodadas 2 e 3, 5c4bb201, 53574bf0 e 9bd51dd3 (vereditos 149 CORRIGE e 
   fechada, o D18 das Proezas, três linhas no N22. **Fichas com `dardos` (A4):** varredura de arquivos (`public/`,
   `scripts/fixtures/`, `supabase/`) sem nenhuma ocorrência; a sondagem só de leitura com a chave anon vê 0 linhas em
   `personagens`, `combatentes`, `arquivos`, `mesa_criaturas` e `personagem_xp` (`Content-Range: */0`, RLS), então
-  o banco não pode ser provado daqui. A prova pede uma consulta do autor no SQL Editor:
-  `select id, nome from public.personagens where ficha::text ilike '%dardos%';`. Até lá vale a afirmação do autor.
+  o banco não pode ser provado daqui. **Encerrado em 10/10/2026:** o autor confirmou que nenhuma ficha usava Dardos,
+  a consulta no banco ficou dispensada, e o B13 cobre qualquer exceção.
 - B1. **Rede sem dano** (D-076): `armas.json` traz dado 1 e Impacto, e `/equipamentos` monta "1d6". A página e a
   ficha mostram "não causa dano" sem mudar o que o Grid lê; a divergência dos dados que ficam vai ao N22; teste que
   falhe se a Rede voltar a mostrar dano.
