@@ -53,7 +53,7 @@ Cada ação tem uma **Velocidade**, quantos Ticks ela custa antes de você poder
 |:---:|---|---|
 | 3 | Muito rápida | correr, saltar, abrir porta, sacar arma, levantar-se |
 | 4 | Utilitária | pegar item, interagir com o cenário (também é a Velocidade da Shuriken, da Mini-faca e da Kunai, armas de ataque) |
-| 5 | Ataque leve | faca, adaga, espada curta, bastão, adaga de arremesso, plumbata |
+| 5 | Ataque leve | adaga, espada curta, bastão, adaga de arremesso, plumbata |
 | 6 | Ataque médio | espada longa, machado de uma mão, lança, arco curto, azagaia |
 | 7 | Ataque pesado | martelo de guerra, montante, alabarda, arco longo e composto |
 | 9 a 15 | Ação demorada | recarregar uma besta |
@@ -65,8 +65,8 @@ Cada ação tem uma **Velocidade**, quantos Ticks ela custa antes de você poder
 
 ## Preparo, Golpe e Recuperação
 
-Por baixo da Velocidade, toda ação de ataque se divide em fases, e o capítulo já usa os três
-nomes antes de defini-los (a Investida, a Recarga, "Golpes no mesmo instante"): **Preparo** (o
+Por baixo da Velocidade, toda ação de ataque se divide em fases, e o capítulo usa os três
+nomes aqui e mais adiante (na Investida, na Recarga e em "Golpes no mesmo instante"): **Preparo** (o
 tempo até o golpe estar pronto), **Golpe** (o instante em que ele sai, sempre **1 Tick**) e
 **Recuperação** (o que sobra da Velocidade depois do golpe).
 
@@ -98,13 +98,13 @@ Toda arma tem **ao menos 1 Tick de Preparo**, e a conta é **Preparo = Velocidad
 
 A **Haste** se divide em duas: a **média** (Lança, Bordão, Cajado, Tridente, Arpão) e a **de Guerra** (Foice Grande, Lança Longa, Alabarda, Glaive, Guisarme, Poleaxe), maior e mais lenta. No corpo a corpo o Golpe cai no Tick logo depois do Preparo, e sobram três Ticks de Recuperação. Nas armas de **tiro** (os arcos, as bestas, a Funda e o Arremesso) o Golpe cai no Tick **imediatamente antes da Recuperação**, que **toda arma de tiro tem**: quase toda a Velocidade é Preparo, e é por isso que a Besta Grande (Velocidade 15) passa **doze Ticks** armando, com a guarda aberta, um Tick de Golpe e dois de Recuperação. No sistema Normal, o padrão deste capítulo, o tiro já foi rolado na declaração (ver *Dois sistemas de tempo*); esses Ticks marcam quanto tempo a guarda fica aberta. Até o Arremesso leve tem um Tick de Recuperação depois do Golpe, o de voltar à postura.
 
-A **Arte** tem a mesma forma, com 1 Tick de Recuperação, e a Velocidade vem do maior grau investido na conjuração (5, 6 ou 7). Ela sai no **Tick do Golpe, o penúltimo da Velocidade** (a Velocidade menos um), e não no último: na Velocidade 5 o Preparo ocupa os Ticks 1 a 3, o Golpe é o Tick 4 e a Recuperação é o 5; na Velocidade 7, o Golpe é o Tick 6. Quem vê a Arte se juntar tem o Preparo mais o Golpe de aviso, de **4 a 6 Ticks**. A Recuperação da Arte cobra −2, como a de qualquer ataque. Esticar a conjuração, que se decide a cada Tick do Golpe, está em *O tempo da Arte*, em As Artes.
+A **Arte** tem a mesma forma, com 1 Tick de Recuperação, e a Velocidade vem do maior grau investido na conjuração (5, 6 ou 7); ao esticar, a Velocidade que se multiplica é a do conjuro antes de esticar, pelo maior grau investido até o nível de Arte de quem conjura. Ela sai no **Tick do Golpe, o penúltimo da Velocidade** (a Velocidade menos um), e não no último: na Velocidade 5 o Preparo ocupa os Ticks 1 a 3, o Golpe é o Tick 4 e a Recuperação é o 5; na Velocidade 7, o Golpe é o Tick 6. Quem vê a Arte se juntar tem o Preparo mais o Golpe de aviso, de **4 a 6 Ticks**. A Recuperação da Arte cobra −2, como a de qualquer ataque. Esticar a conjuração, que se decide a cada Tick do Golpe, está em *O tempo da Arte*, em As Artes.
 
 Cada fase custa Defesa, pela mesma moeda: estar comprometido com um gesto abre a guarda.
 
 <p class="formula">Preparo: Defesa −2 · Golpe (o Tick em que ele sai): Defesa −4</p>
 
-É a régua que já apareceu em *Correndo* (o mesmo −4 do Tick do Golpe), na Investida e na Recarga
+É a régua que aparece mais adiante em *Correndo* (o mesmo −4 do Tick do Golpe), na Investida e na Recarga
 (o −2 do Preparo) e em *Golpes no mesmo instante* (o −4 no Tick do golpe). Empunhar duas armas e
 golpear só com uma alivia esse −4 para **−2** no Tick do Golpe: a outra mão continua guardando.
 
@@ -132,7 +132,7 @@ Preparo, Golpe e Recuperação em Ticks distintos.
   Tick da declaração, com a Defesa em −2 durante o Preparo e −4 no Tick do golpe, exatamente
   como descrito acima, e **−2 até a próxima ação** pelo ataque que acabou de fazer (a Guarda sob pressão). **Rola-se ao declarar**, em todo golpe de arma: o acerto e o
   dano valem no Tick da declaração, e o Preparo e o Golpe que vêm depois só marcam a Defesa em −2 e
-  em −4. A Velocidade é a soma do Preparo, do Golpe e da Recuperação, e a Defesa fica aberta em todos os Ticks da ação, num custo total de **2 × Velocidade + 2**, seja qual for a divisão entre Preparo e Recuperação. A **Arte** é a exceção: só o tamanho de cada parâmetro se declara no primeiro Tick, e a Arte rola e produz o efeito no Tick do Golpe, o penúltimo da Velocidade (ver O tempo da Arte, em As Artes). Não há um Tick isolado de Recuperação: a Velocidade inteira empurra a
+  em −4. A Velocidade é a soma do Preparo, do Golpe e da Recuperação, e a Defesa fica aberta em todos os Ticks da ação, num custo total de **2 × Velocidade + 2** (em pontos de Defesa somados nos Ticks da ação), seja qual for a divisão entre Preparo e Recuperação. A **Arte** é a exceção: só o tamanho de cada parâmetro se declara no primeiro Tick, e a Arte rola e produz o efeito no Tick do Golpe, o penúltimo da Velocidade (ver O tempo da Arte, em As Artes). Não há um Tick isolado de Recuperação: a Velocidade inteira empurra a
   próxima ação, e é por isso que este capítulo fala em "Velocidade" e raramente em
   "Recuperação" sozinha.
 - **Três fases (P/G/R)**, usado na mesa tática (o Grid): a mesma Velocidade se abre em Ticks
@@ -232,12 +232,12 @@ Controlar alguém em vez de feri-lo é uma **Manobra**: agarrar, derrubar ou emp
 **Manter.** A cada 6 Ticks, contados a partir de quem controla (5 de Preparo e 1 de Golpe), quem controla rola de novo, com a mesma jogada, contra a Defesa de agarrão do outro. Manter é a ação de quem controla, e a jogada e o dano caem no Tick do Golpe. Ele pode soltar em qualquer Tick antes do Golpe.
 
 * **Superou:** mantém e causa o dano, ou escolhe soltar.
-* **Igual:** durante 6 Ticks ninguém controla e ninguém causa dano, e quem desistir entrega o controle ao outro. Passados os 6 Ticks, quem controlava antes rola de novo.
+* **Igual:** durante 6 Ticks ninguém controla e ninguém causa dano, e quem desistir entrega o controle ao outro. Passados os 6 Ticks, quem controlava antes rola de novo. Aqui o empate não segue o "empate erra" do acerto: é a regra própria da Manobra.
 * **Abaixo:** os papéis se invertem, e o agarrado passa a controlar.
 
 **Dano do agarrão.** 2 × Força + Centelha, de Impacto, sem dado base, e +1d6 por Margem da manutenção. A Absorção do alvo conta (armadura inclusa), e por isso ferir agarrando quem veste armadura é mais difícil.
 
-**O agarrado.** Não age e não rola nada: só escapa quando quem o controla erra. Pode gritar. A Firula dele é só descrição. Contra quem ataca de fora, a Esquiva dele leva −8 e o Bloqueio −4, mais as penalidades da situação (por exemplo, no chão), sem dobro (a linha *Corpo, grave* da tabela de restrição é esta mesma penalidade, contada uma vez). Entre os dois envolvidos não há penalidade de ataque nem de Defesa, só as de outra natureza (veneno, doença, ferimento). Quem controla sofre as penalidades da Preparação (Defesa −2, e −4 no Tick do Golpe) e da situação, mas não a do agarrado, porque pode largar o agarrão para se defender.
+**O agarrado.** Não age e não rola nada: quando quem o controla erra, os papéis se invertem, e o agarrado passa a controlar, podendo continuar ou soltar. Pode gritar. A Firula dele é só descrição. Contra quem ataca de fora, a Esquiva dele leva −8 e o Bloqueio −4, mais as penalidades da situação (por exemplo, no chão), sem dobro (a linha *Corpo, grave* da tabela de restrição é esta mesma penalidade, contada uma vez). Entre os dois envolvidos não há penalidade de ataque nem de Defesa, só as de outra natureza (veneno, doença, ferimento). Quem controla sofre as penalidades da Preparação (Defesa −2, e −4 no Tick do Golpe) e da situação, mas não a do agarrado, porque pode largar o agarrão para se defender.
 
 **Três estados**, do mais leve ao mais forte: Preso, Agarrado, Imobilizado.
 
@@ -318,7 +318,7 @@ A **Defesa da Arma** (coluna *Defesa* em [Armas & Armaduras](/regras/armas-e-arm
 
 ### Projéteis rápidos: só Esquiva ou escudo
 
-Contra um **projétil rápido** (flecha, virote, bala de funda, faca de arremesso e as outras armas pequenas de arremesso, sopro de zarabatana), **ninguém apara com a arma ou com a mão**: vem depressa demais. As saídas são duas:
+Contra um **projétil rápido** (flecha, virote, bala de funda, Shuriken, Mini-faca, Kunai, Adaga de Arremesso, sopro de zarabatana), **ninguém apara com a arma ou com a mão**: vem depressa demais. As saídas são duas:
 
 - **Esquivar**, sempre.
 - **Bloquear**, só com um **escudo hábil** e se você estiver **apto** a manejá-lo.
@@ -338,7 +338,7 @@ A **Centelha rompe o limite mortal:** cada ponto de Centelha do defensor **sobe 
 
 **Escudo grande escora:** plantar um escudo de tronco (heater, kite, scutum ou pavês) deixa você aguentar **uma categoria de porte acima** do seu limite, porque você escora a massa com o corpo todo em vez de aparar no braço.
 
-Mas **nem tudo se bloqueia ou se esquiva**: uma avalanche, uma onda de fogo, uma rede bem lançada cobram outra saída.
+Mas **nem tudo se bloqueia ou se esquiva**: uma avalanche e uma onda de fogo cobram outra saída.
 
 **Contra área, a saída é sair.** Área não vem de uma direção, ela ocupa o espaço, então não há número de Esquiva nem de Bloqueio a opor. Sair tem duas versões e **nenhuma delas é de graça**: as duas gastam Tick e as duas pedem a mesma jogada, porque a área pegou os dois.
 
@@ -494,7 +494,7 @@ No Total, as Defesas zeradas são a Esquiva e o Bloqueio, e **não** a Defesa de
 
 Quando dois golpes caem no **mesmo Tick**, os dois atacantes estão abertos ao mesmo tempo: cada um ataca contra a guarda comprometida do outro. Não importa quem a mesa resolveu primeiro: a escada se lê pela **agenda**, e não pela ordem em que as jogadas foram narradas.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Duas adagas (Preparo 1) declaradas no <strong>Tick 3</strong> golpeiam no <strong>Tick 4</strong>. As duas golpeiam nesse instante, então as duas estão em <strong>−4</strong>: cada uma ataca uma Defesa aberta. Se uma delas fosse uma espada longa (Preparo 2) declarada no <strong>Tick 2</strong>, no sistema Normal ela rolaria no 2, mas o Golpe dela também cairia no 4: no Tick 4 a guarda dela estaria em −4, a mesma das adagas.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Duas adagas (Preparo 1) declaradas no <strong>Tick 3</strong> golpeiam no <strong>Tick 4</strong> (a conta é a do P/G/R, em que o golpe sai no Tick do Golpe). As duas golpeiam nesse instante, então as duas estão em <strong>−4</strong>: cada uma ataca uma Defesa aberta. Se uma delas fosse uma espada longa (Preparo 2) declarada no <strong>Tick 2</strong>, no sistema Normal ela rolaria no 2, mas o Golpe dela também cairia no 4: no Tick 4 a guarda dela estaria em −4, a mesma das adagas.</div>
 
 <p class="muted">Vale a pena dizer por que a regra é essa: se a guarda de quem ainda não narrou a jogada contasse como inteira, a jogada certa seria sempre <em>deixar o outro atacar primeiro</em>, e a vantagem de ter rolado bem na Iniciativa se voltaria contra quem a ganhou.</p>
 
@@ -517,7 +517,7 @@ Atirar num Colossal **muito longe** continua difícil: o porte não escala a Efe
 
 Isso é **só no acerto**: não muda a Defesa passiva do alvo, não é modificador de Defesa (então fica fora do teto de +6 dos bônus de Defesa), e não se aplica a ataques **Sociais** ou **Mentais**, nem a Artes de **área** sem rolagem de ataque. E não deixa o gigante indefeso: a **Couraça de Porte** (ver *Dano e Armadura*) devora o dano de quem é menor, então acertá-lo é fácil, mas feri-lo de verdade não é.
 
-<div class="callout regra"><span class="lbl">Nota ao Mestre</span>Criaturas maiores que Médio que lutam <strong>entre si</strong> não ganham bônus de Defesa pelo tamanho. Nesses casos o Mestre pode aumentar a Defesa delas.</div>
+<div class="callout regra"><span class="lbl">Nota ao Mestre</span>O porte não dá Defesa a ninguém. Quando duas criaturas maiores que Médio lutam <strong>entre si</strong>, o Mestre pode aumentar a Defesa delas.</div>
 
 ### Pressão: muitos contra um
 

@@ -1925,7 +1925,7 @@
       "nota": "A manifestação diz ONDE o elemento aparece. Esta parte diz o que acontece com quem está lá, e ela nasce de uma regra de tempo: a Arte resolve no TICK DO GOLPE, o penúltimo da ação.",
       "ultimoTick": {
         "nota": "O nome ultimoTick é histórico (até a D-084 a Arte saía no último Tick); a chave guarda a regra do Tick do Golpe. Renomear fica para a passada do Grid (D-054), porque os comentários do Grid e do test-artes-grid.mjs citam este nome.",
-        "regra": "Ação comum resolve no primeiro Tick (ou nos primeiros), e o resto da Velocidade é recuperação. A ARTE resolve no TICK DO GOLPE, o penúltimo (a Velocidade menos um): uma conjuração de 7 Ticks acontece no sexto. Na Velocidade 5 o Golpe é o Tick 4, na 6 é o 5 e na 7 é o 6; o Preparo ocupa os Ticks antes dele e a Recuperação, o último.",
+        "regra": "No sistema Normal, a ação comum resolve no primeiro Tick (ou nos primeiros), e o resto da Velocidade é recuperação; no P/G/R toda ação resolve no Tick do Golpe. A ARTE resolve no TICK DO GOLPE, o penúltimo (a Velocidade menos um): uma conjuração de 7 Ticks acontece no sexto. Na Velocidade 5 o Golpe é o Tick 4, na 6 é o 5 e na 7 é o 6; o Preparo ocupa os Ticks antes dele e a Recuperação, o último.",
         "excecao": "Vale mesmo quando a conjuração ocupa várias ações, e vale a não ser que o Efeito Especial diga o contrário: um Efeito pode comprar o direito de sair na hora, e é dele o ônus de dizer isso na própria ficha.",
         "porque": "Não é detalhe de cronometragem, é a peça que sustenta o resto. Como a Arte se anuncia por quatro a seis Ticks (o Preparo e o Golpe), sair de perto pode ser movimento normal, na vez do alvo, e não uma reação fora de hora. E é o que faz da Arte uma decisão tomada com antecedência: o feiticeiro compromete a Velocidade inteira, de cinco a sete Ticks, montando uma coisa que os outros podem ver se juntando, e tem de acertar onde o inimigo VAI ESTAR, não onde ele está.",
         "tabela": [
@@ -2399,7 +2399,7 @@
       "nota": "O desconto da Centelha continua valendo sobre o total, e no modo Ritual ele é multiplicado pelo tempo gasto: é assim que o curandeiro trata os feridos depois da luta quase de graça, mesmo tendo pouco Mana para gastar durante ela."
     },
     "papelDoFeiticeiro": "Feitiçaria não é build barata nem para personagem iniciante: nos primeiros níveis as conjurações são escassas, como o mago de D&D. No Centelha o feiticeiro precisa de um papel secundário, e não necessariamente de combate. Quando o Mana acaba, ele depende de outros recursos para ser útil.",
-    "feiticoTicksNota": "Os Ticks são a Velocidade da conjuração (Preparo, Golpe e Recuperação), e a Arte resolve no Tick do Golpe, o penúltimo, ao contrário da ação comum, que resolve no primeiro. Ver `tempoDaArte`."
+    "feiticoTicksNota": "Os Ticks são a Velocidade da conjuração (Preparo, Golpe e Recuperação), e a Arte resolve no Tick do Golpe, o penúltimo, ao contrário da ação comum, que no sistema Normal resolve no primeiro Tick. Ver `tempoDaArte`."
   },
   "combate": {
     "nota": "A linha do tempo do combate. O jogo tem DOIS sistemas de tempo, à escolha do mestre por mesa, e UM conjunto de regras: tudo aqui está escrito em moeda comum (Ticks de Velocidade, dados de rolagem e pontos de Defesa) e vale nos dois. Ver `Combate_Tempo.md`, seção 15.",

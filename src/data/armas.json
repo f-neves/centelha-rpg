@@ -923,7 +923,7 @@
       "pc": 30
     },
     "peso": 0.3,
-    "descricao": "Leve e preciso: voa em curva (contorna cobertura parcial) e volta à mão no fim da ação se errar, sem gastar munição. Dano de Impacto (madeira). Até a Efetiva, a ida e a volta levam 0 Ticks. Existe também em Cortante.",
+    "descricao": "Leve e preciso: voa em curva (contorna cobertura parcial) e, se errar, volta à mão no mesmo número de Ticks da ida, sem gastar munição. Dano de Impacto (madeira). Até a Efetiva, a ida e a volta levam 0 Ticks. Existe também em Cortante.",
     "tags": [
       "arremessável"
     ],

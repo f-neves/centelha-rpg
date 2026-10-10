@@ -709,7 +709,7 @@ function conferirArte(comb, R, astro) {
   const la = astro.split('\n');
   if (!la.some((l) => /^\s*<div class="callout regra"><span class="lbl">A Arte sai no Tick do Golpe<\/span>$/.test(l))) f.push('regras.astro: o rótulo do callout devia ser "A Arte sai no Tick do Golpe" (linha inteira)');
   const modos = la.find((l) => l.includes('<span class="lbl">Os dois modos</span>'));
-  if (!modos || !modos.includes('e a Arte sai no <a href="#tempo"><strong>Tick do Golpe, o penúltimo</strong></a>, ao contrário da ação comum, que resolve no primeiro.')) f.push('regras.astro, Os dois modos: a Arte devia sair no Tick do Golpe, o penúltimo');
+  if (!modos || !modos.includes('e a Arte sai no <a href="#tempo"><strong>Tick do Golpe, o penúltimo</strong></a>, ao contrário da ação comum, que no sistema Normal resolve no primeiro Tick.')) f.push('regras.astro, Os dois modos: a Arte devia sair no Tick do Golpe, o penúltimo');
   const dec = la.find((l) => /^\s*Não é preciso anunciar de saída até onde vai\./.test(l));
   if (!dec) f.push('regras.astro: falta o callout "Você decide no fim"');
   else for (const frase of ['No <strong>Tick do Golpe de cada ciclo</strong> você escolhe', 'O Golpe do ciclo n cai no Tick <strong>n × V − 1</strong>', 'numa ação de Velocidade 5, você decide no Tick 4; se esticar, decide de novo no 9, e outra vez no 14.', 'Só o ciclo final leva Recuperação, e o sinal esticado dura T − 1 Ticks']) {
@@ -911,7 +911,7 @@ function conferirPorte(comb, R, gloss, ref, mesa) {
   comeca('Sem teto quer dizer sem teto:', ['um Miúdo que ataca um Colossal soma **+18**, de perto ou de longe.', 'rola sem penalidade', '**−18**'], 'Combate, Porte, exemplo');
   comeca('Atirar num Colossal **muito longe** continua difícil:', ['o porte não escala a Efetiva', 'entra só como bônus fixo no acerto.', 'Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.'], 'Combate, Porte, Colossal e enxame');
   comeca('Isso é **só no acerto**:', ['não é modificador de Defesa (então fica fora do teto de +6 dos bônus de Defesa)', 'ataques **Sociais** ou **Mentais**, nem a Artes de **área** sem rolagem de ataque.', 'a **Couraça de Porte**'], 'Combate, Porte, exclusões');
-  linha('<div class="callout regra"><span class="lbl">Nota ao Mestre</span>Criaturas maiores que Médio que lutam <strong>entre si</strong> não ganham bônus de Defesa pelo tamanho. Nesses casos o Mestre pode aumentar a Defesa delas.</div>', 'Combate, Porte, nota ao Mestre');
+  linha('<div class="callout regra"><span class="lbl">Nota ao Mestre</span>O porte não dá Defesa a ninguém. Quando duas criaturas maiores que Médio lutam <strong>entre si</strong>, o Mestre pode aumentar a Defesa delas.</div>', 'Combate, Porte, nota ao Mestre');
   comeca('Controlar alguém em vez de feri-lo é uma **Manobra**', ['O porte conta no acerto como em qualquer ataque de corpo a corpo: só o menor ganha bônus contra o maior (ver *Porte*).'], 'Combate, Manobras');
   if (/\+12\*\* \(teto\)|\*\*Simétrico:\*\*|até 4 categorias|\| Alvo \*\*\d\*\* categorias? maiores?/.test(comb)) f.push('Combate: sobrou o teto de 4 categorias, o "+12 (teto)" ou o "Simétrico" do porte velho');
   // regras.json: porteAcerto
@@ -957,7 +957,7 @@ function conferirPorte(comb, R, gloss, ref, mesa) {
     'sem o "sem teto"': (c) => [c.replace('soma **+3**, **sem teto**.', 'soma **+3**, até 4 categorias.')],
     'o enxame sumido': (c) => [c.replace('Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.', '')],
     'a exclusão social/mental/área sumida': (c) => [c.replace('ataques **Sociais** ou **Mentais**, nem a Artes de **área** sem rolagem de ataque.', 'ataques Sociais.')],
-    'a nota ao Mestre sumida': (c) => [c.replace('<div class="callout regra"><span class="lbl">Nota ao Mestre</span>Criaturas maiores que Médio', '<div class="callout regra"><span class="lbl">Aviso</span>Criaturas maiores que Médio')],
+    'a nota ao Mestre sumida': (c) => [c.replace('<div class="callout regra"><span class="lbl">Nota ao Mestre</span>O porte não dá Defesa a ninguém.', '<div class="callout regra"><span class="lbl">Aviso</span>O porte não dá Defesa a ninguém.')],
     'o teto de ±6 de volta no porte': (c) => [c.replace('(então fica fora do teto de +6 dos bônus de Defesa)', 'e não entra no teto de ±6')],
     'a frase de Manobras com a penalidade': (c) => [c.replace('só o menor ganha bônus contra o maior (ver *Porte*).', 'o bônus e a penalidade valem como em qualquer ataque.')],
     'a Efetiva escalada pelo porte': (c) => [c.replace('o porte não escala a Efetiva', 'o porte escala a Efetiva')],
@@ -988,7 +988,7 @@ function conferirManobras(comb) {
     if (!l) { f.push(`${onde}: falta a linha que começa com "${ini.slice(0, 50)}"`); return; }
     for (const fr of frases) if (!l.includes(fr)) f.push(`${onde}: a linha "${ini.slice(0, 30)}" não tem "${fr.slice(0, 90)}"`);
   };
-  comeca('**O agarrado.**', ['Contra quem ataca de fora, a Esquiva dele leva −8 e o Bloqueio −4, mais as penalidades da situação (por exemplo, no chão), sem dobro', 'Entre os dois envolvidos não há penalidade de ataque nem de Defesa', 'Não age e não rola nada: só escapa quando quem o controla erra.'], 'Manobras, O agarrado');
+  comeca('**O agarrado.**', ['Contra quem ataca de fora, a Esquiva dele leva −8 e o Bloqueio −4, mais as penalidades da situação (por exemplo, no chão), sem dobro', 'Entre os dois envolvidos não há penalidade de ataque nem de Defesa', 'Não age e não rola nada: quando quem o controla erra, os papéis se invertem, e o agarrado passa a controlar, podendo continuar ou soltar.'], 'Manobras, O agarrado');
   comeca('* **Preso:**', ['Vem da boleadeira, da Rede e da Arte de prender, e tem dois perfis.', '**Pela tabela de restrição** (a boleadeira e a Arte de prender, parcial nas pernas): Esquiva −4.', '**Pela Rede**, que tem regra própria ([Armas & Armaduras](/regras/armas-e-armaduras)): −2 na Esquiva e −2 no Bloqueio, e mais −1 em cada por grau de Margem do lançamento, sem teto.', 'Força + Atletismo contra o total do lançamento, uma tentativa por ação', 'contra a Dificuldade do Efeito'], 'Manobras, Preso');
   comeca('* **Agarrado:**', ['O agarrão comum só gera Agarrado: não prende (Preso) nem imobiliza.'], 'Manobras, Agarrado');
   comeca('* **Imobilizado:**', ['A Esquiva e o Bloqueio dele ficam **zerados** (não a Defesa de agarrão)', 'Nenhum movimento, não age (nem com Firula)'], 'Manobras, Imobilizado');
@@ -1101,6 +1101,105 @@ function conferirFechamento(T) {
     if (conferirFechamento(T).length === 0) falhas.push(`o teste NÃO acusou o estrago do fechamento "${nome}"`);
   }
   TOTAL_ARTE += Object.keys(mutF).length;
+}
+
+// ---- rodada 8-bis: os achados da Leitora-novata nos textos que as rodadas de hoje reescreveram (cada frase nova pinada pela linha,
+// e a ausência da velha). Fonte de cada item: D-088 (1), D-084 e o Normal (2), a página As Artes (3), D-081 (5), D-077 (6),
+// D-073 adendo 6 (7), D-076 (8), D-082 (9), D-075 (12).
+function conferirOitoBis(T) {
+  const f = [];
+  const lin = (txt) => txt.split('\n');
+  const comeca = (ls, ini, frases, onde, naoTem = []) => {
+    const l = ls.find((x) => x.trimStart().startsWith(ini));
+    if (!l) { f.push(`${onde}: falta a linha que começa com "${ini.slice(0, 60)}"`); return; }
+    for (const fr of frases) if (!l.includes(fr)) f.push(`${onde}: a linha "${ini.slice(0, 40)}" não tem "${fr.slice(0, 90)}"`);
+    for (const fr of naoTem) if (l.includes(fr)) f.push(`${onde}: a linha "${ini.slice(0, 40)}" ainda tem "${fr.slice(0, 90)}"`);
+  };
+  const C = lin(T.comb), A = lin(T.cap), K = lin(T.acoes);
+  // 1
+  comeca(A, 'A mão nua bloqueia **qualquer ataque armado**', ['Este é o caso que foge da regra geral, em que o Bloqueio que supera o acerto faz o golpe errar: mesmo quando o Bloqueio com as mãos supera o acerto, o golpe **acerta**, o ataque **perde os dados de Margem** e você **toma o dano da arma normalmente**'], 'Luta desarmada (1)', ['Se o Bloqueio supera o acerto, o ataque **perde']);
+  // 2
+  const RG = T.regras?.arcano?.tempoDaArte?.ultimoTick?.regra || '';
+  if (!RG.includes('No sistema Normal, a ação comum resolve no primeiro Tick (ou nos primeiros), e o resto da Velocidade é recuperação; no P/G/R toda ação resolve no Tick do Golpe. A ARTE')) f.push('regras.json ultimoTick.regra (2): a ação comum que resolve no primeiro Tick vale no sistema Normal, e no P/G/R resolve no Golpe');
+  if (/(^|\. )Ação comum resolve no primeiro Tick/.test(RG)) f.push('regras.json ultimoTick.regra (2): sobrou "Ação comum resolve no primeiro Tick" sem o Normal');
+  const FTN = T.regras?.arcano?.feiticoTicksNota || '';
+  if (!FTN.includes('ao contrário da ação comum, que no sistema Normal resolve no primeiro Tick. Ver `tempoDaArte`.')) f.push('regras.json feiticoTicksNota (2): falta o "no sistema Normal"');
+  // 3
+  comeca(C, 'A **Arte** tem a mesma forma', ['(5, 6 ou 7); ao esticar, a Velocidade que se multiplica é a do conjuro antes de esticar, pelo maior grau investido até o nível de Arte de quem conjura.'], 'Combate, parágrafo da Arte (3)');
+  // 4
+  comeca(C, '<div class="callout exemplo"><span class="lbl">Exemplo</span>Duas adagas (Preparo 1)', ['golpeiam no <strong>Tick 4</strong> (a conta é a do P/G/R, em que o golpe sai no Tick do Golpe). As duas golpeiam nesse instante', 'no sistema Normal ela rolaria no 2'], 'Combate, Golpes no mesmo instante (4)');
+  // 5
+  comeca(C, '* **Igual:**', ['quem desistir entrega o controle ao outro.', 'Aqui o empate não segue o "empate erra" do acerto: é a regra própria da Manobra.'], 'Manobras, Igual (5)');
+  comeca(K, '- **Escapar de rede, de boleadeira, de Arte que prende e de agarrão.**', ['Quem está **Agarrado** não rola: quando quem o controla erra, os papéis se invertem e ele passa a controlar, podendo continuar ou soltar'], 'Corpo e Movimento, agarrão (5)', ['só se solta quando quem o controla erra']);
+  if (/só escapa quando quem o controla erra/.test(T.comb)) f.push('Manobras (5): sobrou "só escapa quando quem o controla erra"');
+  // 7
+  if (!A.some((x) => x.includes('| Em curva; se errar, volta à mão no mesmo número de Ticks da ida (0 até a Efetiva) |'))) f.push('Armas & Armaduras, tabela do Arremesso (7): a linha do Bumerangue de retorno devia dizer "se errar, volta à mão no mesmo número de Ticks da ida (0 até a Efetiva)"');
+  comeca(A, '- **Bumerangues.**', ['se errar, volta à mão no mesmo número de Ticks que levou para ir; até a Efetiva'], 'Armas & Armaduras, Bumerangues (7)', ['no fim da ação']);
+  if (/volta à mão no fim da ação/.test(T.armasJson) || /volta à mão no fim da ação/.test(T.cap)) f.push('Bumerangue (7): sobrou "volta à mão no fim da ação"');
+  if (!T.armasJson.includes('e, se errar, volta à mão no mesmo número de Ticks da ida, sem gastar munição.')) f.push('armas.json, Bumerangue (7): falta "se errar, volta à mão no mesmo número de Ticks da ida"');
+  // 8
+  for (const [nome, txt] of [['combate.md', T.comb], ['armas-e-armaduras.md', T.cap], ['glossario.json', T.gloss], ['equipamentos.astro', T.equip]]) if (/faca de arremesso/i.test(txt)) f.push(`${nome} (8): sobrou "faca de arremesso" (o catálogo tem Shuriken, Mini-faca, Kunai e Adaga de Arremesso)`);
+  comeca(C, 'Contra um **projétil rápido**', ['(flecha, virote, bala de funda, Shuriken, Mini-faca, Kunai, Adaga de Arremesso, sopro de zarabatana)'], 'Combate, projétil rápido (8)');
+  comeca(A, 'Contra **projéteis rápidos**', ['(flecha, virote, bala de funda, Shuriken, Mini-faca, Kunai, Adaga de Arremesso)'], 'Armas & Armaduras, projéteis rápidos (8)');
+  if (!T.cap.includes('A Adaga de Arremesso (Efetiva 10 m) contra um alvo a 25 m dá n = 3 e −9')) f.push('Armas & Armaduras (8): o exemplo da Efetiva devia ser a Adaga de Arremesso (Efetiva 10 m)');
+  // 9
+  if (!C.includes('| 5 | Ataque leve | adaga, espada curta, bastão, adaga de arremesso, plumbata |')) f.push('Combate, tabela de Velocidades (9): a linha da Velocidade 5 devia ser "adaga, espada curta, bastão, adaga de arremesso, plumbata" (o Bastão é leve, V5, no catálogo; a "faca" não existe)');
+  // 10
+  comeca(C, 'Por baixo da Velocidade, toda ação de ataque se divide em fases', ['e o capítulo usa os três'], 'Combate, Preparo, Golpe e Recuperação (10)', ['já usa os três']);
+  if (!T.comb.includes('nomes aqui e mais adiante (na Investida, na Recarga e em "Golpes no mesmo instante"):')) f.push('Combate (10): os três nomes aparecem aqui e mais adiante (Investida, Recarga, Golpes no mesmo instante)');
+  if (!T.comb.includes('É a régua que aparece mais adiante em *Correndo*') || /É a régua que já apareceu/.test(T.comb)) f.push('Combate (10): "É a régua que aparece mais adiante em *Correndo*", e não "já apareceu"');
+  // 11
+  if (!C.includes('Mas **nem tudo se bloqueia ou se esquiva**: uma avalanche e uma onda de fogo cobram outra saída.')) f.push('Combate (11): a lista de "nem tudo se bloqueia ou se esquiva" devia ser só a avalanche e a onda de fogo (a Rede é ataque contra Defesa)');
+  if (/rede bem lançada/.test(T.comb)) f.push('Combate (11): sobrou "rede bem lançada"');
+  // 12
+  comeca(A, '<p class="muted">Aqui a <strong>Defesa</strong> dá lugar à <strong>Efetiva</strong>', ['Passada a Máxima, o projétil cai antes de chegar e não há jogada, no arco e na besta como no Arremesso.</p>'], 'Armas & Armaduras, Máxima (12)');
+  // 13
+  comeca(C, 'em −4. A Velocidade é a soma do Preparo, do Golpe e da Recuperação', ['num custo total de **2 × Velocidade + 2** (em pontos de Defesa somados nos Ticks da ação), seja qual for'], 'Combate, custo do Normal (13)');
+  // 14
+  comeca(A, '- **Placa × Impacto**', ['= **4** de Absorção, a menor das três (empatada com a Perfuração, também 4).'], 'Armas & Armaduras, Placa × Impacto (14)');
+  return f;
+}
+{
+  const T0 = {
+    comb: COMB, cap: CAP,
+    acoes: ler('src/content/chapters/acoes-corpo-e-movimento.md').replace(/\r\n/g, '\n'),
+    gloss: ler('src/data/glossario.json'), equip: ler('src/pages/equipamentos.astro').replace(/\r\n/g, '\n'),
+    armasJson: ler('src/data/armas.json'), regras: REGRAS,
+  };
+  const realB = conferirOitoBis(T0);
+  for (const x of realB) falhas.push(x);
+  const troca = (k, de, para) => (T) => ({ ...T, [k]: T[k].replace(de, para) });
+  const trocaR = (fn) => (T) => ({ ...T, regras: (() => { const x = copia(T.regras); fn(x); return x; })() });
+  const mutB = realB.length ? {} : {
+    '1: a mão nua que bloqueia como a regra geral': troca('cap', 'Este é o caso que foge da regra geral, em que o Bloqueio que supera o acerto faz o golpe errar: mesmo quando o Bloqueio com as mãos supera o acerto, o golpe **acerta**, o ataque', 'Se o Bloqueio supera o acerto, o ataque'),
+    '2: a ação comum sem o Normal em regras.json': trocaR((x) => { x.arcano.tempoDaArte.ultimoTick.regra = x.arcano.tempoDaArte.ultimoTick.regra.replace('No sistema Normal, a ação comum resolve', 'Ação comum resolve'); }),
+    '2: a feiticoTicksNota sem o Normal': trocaR((x) => { x.arcano.feiticoTicksNota = x.arcano.feiticoTicksNota.replace('que no sistema Normal resolve', 'que resolve'); }),
+    '3: o parêntese da Velocidade esticada': troca('comb', '; ao esticar, a Velocidade que se multiplica é a do conjuro antes de esticar, pelo maior grau investido até o nível de Arte de quem conjura.', '.'),
+    '4: o exemplo dos golpes sem o P/G/R': troca('comb', ' (a conta é a do P/G/R, em que o golpe sai no Tick do Golpe)', ''),
+    '5: o agarrado que só escapa': troca('comb', 'quando quem o controla erra, os papéis se invertem, e o agarrado passa a controlar, podendo continuar ou soltar.', 'só escapa quando quem o controla erra.'),
+    '5: o Igual sem o empate da Manobra': troca('comb', ' Aqui o empate não segue o "empate erra" do acerto: é a regra própria da Manobra.', ''),
+    '5: o agarrão em Corpo e Movimento que só se solta': troca('acoes', 'quando quem o controla erra, os papéis se invertem e ele passa a controlar, podendo continuar ou soltar', 'só se solta quando quem o controla erra'),
+    '7: o bumerangue na tabela com o fim da ação': troca('cap', '| Em curva; se errar, volta à mão no mesmo número de Ticks da ida (0 até a Efetiva) |', '| Em curva; volta à mão no fim da ação se errar |'),
+    '7: o bumerangue no texto com o fim da ação': troca('cap', 'se errar, volta à mão no mesmo número de Ticks que levou para ir; até a Efetiva', 'se errar, volta à mão no fim da ação, no mesmo número de Ticks que levou para ir; até a Efetiva'),
+    '7: o bumerangue no catálogo com o fim da ação': troca('armasJson', 'e, se errar, volta à mão no mesmo número de Ticks da ida, sem gastar munição.', 'e volta à mão no fim da ação se errar, sem gastar munição.'),
+    '8: a faca de arremesso em Combate': troca('comb', 'Shuriken, Mini-faca, Kunai, Adaga de Arremesso, sopro', 'faca de arremesso e as outras armas pequenas de arremesso, sopro'),
+    '8: a faca de arremesso no glossário': troca('gloss', 'bala de funda, Shuriken, Mini-faca, Kunai, Adaga de Arremesso)', 'bala de funda, faca de arremesso e as outras armas pequenas de arremesso)'),
+    '8: a faca de arremesso em Equipamentos': troca('equip', 'bala de funda, Shuriken, Mini-faca, Kunai, Adaga de Arremesso)', 'bala de funda, faca de arremesso e as outras armas pequenas de arremesso)'),
+    '8: a faca de arremesso no exemplo da Efetiva': troca('cap', 'A Adaga de Arremesso (Efetiva 10 m) contra um alvo a 25 m', 'A faca de arremesso (Efetiva 10 m) contra um alvo a 25 m'),
+    '9: a faca de volta na tabela de Velocidades': troca('comb', '| 5 | Ataque leve | adaga, espada curta,', '| 5 | Ataque leve | faca, adaga, espada curta,'),
+    '10: o "já usa os três nomes"': troca('comb', 'e o capítulo usa os três', 'e o capítulo já usa os três'),
+    '10: o "já apareceu" do Correndo': troca('comb', 'É a régua que aparece mais adiante em *Correndo*', 'É a régua que já apareceu em *Correndo*'),
+    '11: a rede bem lançada de volta': troca('comb', 'uma avalanche e uma onda de fogo cobram outra saída.', 'uma avalanche, uma onda de fogo, uma rede bem lançada cobram outra saída.'),
+    '12: a Máxima sem a frase do arco e da besta': troca('cap', ' Passada a Máxima, o projétil cai antes de chegar e não há jogada, no arco e na besta como no Arremesso.', ''),
+    '13: o custo sem a unidade': troca('comb', ' (em pontos de Defesa somados nos Ticks da ação)', ''),
+    '14: a menor das três sem o empate': troca('cap', 'a menor das três (empatada com a Perfuração, também 4).', 'a menor das três.'),
+  };
+  for (const [nome, estraga] of Object.entries(mutB)) {
+    const T = estraga(T0);
+    if (JSON.stringify(T) === JSON.stringify(T0)) { falhas.push(`o estrago "${nome}" não alterou nada (o teste de teste está torto)`); continue; }
+    if (conferirOitoBis(T).length === 0) falhas.push(`o teste NÃO acusou o estrago da 8-bis "${nome}"`);
+  }
+  TOTAL_ARTE += Object.keys(mutB).length;
 }
 
 if (falhas.length) {
