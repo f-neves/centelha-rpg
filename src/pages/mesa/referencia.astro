@@ -203,13 +203,23 @@ const PORTE_NOME: Record<string, string> = {
     <!-- ============ MODIFICADORES ============ -->
     <section class="ref-bloco" id="combate">
       <h2>Modificadores de combate</h2>
-      <p class="ref-nota">{CT.nota} Teto de <strong>±{CT.modificadorCap}</strong> somando tudo.</p>
+      <p class="ref-nota">{CT.nota} Os <strong>bônus</strong> de Defesa vão até <strong>+{CT.bonusCap}</strong>; as <strong>penalidades não têm teto</strong>; a Defesa <strong>nunca fica abaixo de 0</strong>.</p>
       <div class="tab-wrap"><table class="tab-mesa">
         <thead><tr><th>Situação</th><th class="num">Valor</th><th>Onde incide</th><th>Quando</th></tr></thead>
         <tbody>{CT.modificadores.map((m: any) => (
           <tr><td>{m.nome}</td><td class="num">{sinal(m.valor)}</td>
             <td class="muted">{m.alvo === 'defesa-propria' ? 'a sua Defesa' : 'a Defesa do alvo'}</td>
             <td class="muted">{m.nota}</td></tr>))}</tbody>
+      </table></div>
+
+      <h3>Defesa zerada e cego</h3>
+      <p class="ref-nota">{CT.defesaZerada.nota}</p>
+      <div class="tab-wrap"><table class="tab-mesa">
+        <thead><tr><th>Situação</th><th class="num">Esquiva</th><th class="num">Bloqueio</th></tr></thead>
+        <tbody>{CT.defesaZerada.linhas.map((z: any) => (
+          <tr><td>{z.nome}</td>
+            <td class="num">{z.tipo === 'zera' ? '0' : sinalTxt(z.esquiva)}</td>
+            <td class="num">{z.tipo === 'zera' ? '0' : sinalTxt(z.bloqueio)}</td></tr>))}</tbody>
       </table></div>
 
       <h3>Bloqueio: quando não dá</h3>

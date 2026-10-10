@@ -704,7 +704,7 @@ function conferirArte(comb, R, astro) {
 // ---- a Defesa sem teto de penalidades, o piso 0, a Defesa zerada, o cego e a restrição de corpo e de lugar (rodada 5)
 // D-078, D-079, D-081 (só as duas linhas da tabela) e D-086. Os pinos casam a LINHA inteira (as linhas das tabelas, a frase
 // da regra), e a ausência do que saiu: um pedaço solto sobrevive numa frase velha ao lado da nova.
-function conferirDefesa(comb, cap, sent, R) {
+function conferirDefesa(comb, cap, sent, R, mesa = '', ref = '') {
   const f = [];
   const L = comb.split('\n'), LA = cap.split('\n'), LS = sent.split('\n');
   const linha = (ls, exata, onde) => { if (!ls.includes(exata)) f.push(`${onde}: falta a linha "${exata.slice(0, 90)}"`); };
@@ -753,11 +753,38 @@ function conferirDefesa(comb, cap, sent, R) {
   const varre = (o, caminho) => {
     for (const [k, v] of Object.entries(o || {})) {
       const c = caminho ? `${caminho}.${k}` : k;
-      if (typeof v === 'string') { if (/±6|\+\/-6|\+-6|condições surpreso/.test(v) && !(c in EXCECOES_TETO)) f.push(`regras.json ${c}: fala do teto velho (±6) ou das "condições surpreso, cego e imobilizado"; só valem as exceções listadas no teste`); }
+      if (typeof v === 'string') { if (/±\s?6|\+\s?\/\s?[-−]\s?6|\+\s?[-−]\s?6|de [-−]6 a \+6|condições surpreso/.test(v) && !(c in EXCECOES_TETO)) f.push(`regras.json ${c}: fala do teto velho (±6) ou das "condições surpreso, cego e imobilizado"; só valem as exceções listadas no teste`); }
       else if (v && typeof v === 'object') varre(v, c);
     }
   };
   varre(R, '');
+  // a referência da mesa (rodada 5-ter): combateTatico diz o que o livro diz
+  const CT = R?.combateTatico;
+  if (!CT) f.push('regras.json: não achei combateTatico');
+  else {
+    if ('modificadorCap' in CT) f.push('combateTatico: sobrou modificadorCap (o teto de ±6 não existe mais)');
+    if (CT.bonusCap !== 6 || CT.penalidadeCap !== null || CT.pisoDefesa !== 0) f.push('combateTatico: bonusCap 6, penalidadeCap null e pisoDefesa 0 (D-078)');
+    if ((CT.modificadores || []).some((m) => /surpreso|cego|imobilizado|agarrad/i.test(m.nome))) f.push('combateTatico.modificadores: sobrou a linha de surpreso, cego, imobilizado ou agarrado a -4 ou -2 (agora em defesaZerada e na restrição do capítulo)');
+    const Z = (CT.defesaZerada?.linhas || []).map((l) => JSON.stringify(l));
+    for (const esp of [{ nome: 'Surpreso (não sabe do ataque)', tipo: 'zera' }, { nome: 'Totalmente imobilizado (amarrado, soterrado)', tipo: 'zera' }, { nome: 'Dormindo ou desacordado', tipo: 'zera' }, { nome: 'Cego, vendado ou no escuro total, sabendo do ataque', tipo: 'soma', esquiva: -4, bloqueio: -8 }]) {
+      if (!Z.includes(JSON.stringify(esp))) f.push(`combateTatico.defesaZerada: falta a linha ${JSON.stringify(esp)}`);
+    }
+  }
+  const lm = mesa.split('\n'), lr = ref.split('\n');
+  const paginaPina = (ls, ini, frases, onde) => {
+    const l = ls.find((x) => x.trimStart().startsWith(ini));
+    if (!l) { f.push(`${onde}: falta a linha que começa com "${ini.slice(0, 50)}"`); return; }
+    for (const fr of frases) if (!l.includes(fr)) f.push(`${onde}: a linha "${ini.slice(0, 40)}" não tem "${fr.slice(0, 70)}"`);
+  };
+  if (mesa) {
+    paginaPina(lm, '<p class="muted nota-mini">Os <strong>bônus</strong> de Defesa vão até', ['<strong>+{(regras.combateTatico as any).bonusCap}</strong>', '<strong>penalidades não têm teto</strong>', '<strong>nunca fica abaixo de 0</strong>', 'O porte entra no <em>acerto</em>, fora deste teto.</p>'], 'mesa.astro');
+    if (/modificadorCap|Teto de <strong>±|somando tudo/.test(mesa)) f.push('mesa.astro: sobrou o teto de ±6 somando tudo ou modificadorCap');
+  }
+  if (ref) {
+    paginaPina(lr, '<p class="ref-nota">{CT.nota} Os <strong>bônus</strong> de Defesa vão até', ['<strong>+{CT.bonusCap}</strong>', '<strong>penalidades não têm teto</strong>', '<strong>nunca fica abaixo de 0</strong>.</p>'], 'referencia.astro');
+    if (/modificadorCap|Teto de <strong>±|somando tudo/.test(ref)) f.push('referencia.astro: sobrou o teto de ±6 somando tudo ou modificadorCap');
+    if (!lr.some((x) => x.includes('<h3>Defesa zerada e cego</h3>'))) f.push('referencia.astro: falta a tabela "Defesa zerada e cego"');
+  }
   const DR = R?.empilhamentoProezas?.defesaReflexiva;
   if (!DR) f.push('regras.json: não achei empilhamentoProezas.defesaReflexiva');
   else {
@@ -768,7 +795,8 @@ function conferirDefesa(comb, cap, sent, R) {
 }
 {
   const SENT = ler('src/content/chapters/acoes-sentidos-e-engano.md').replace(/\r\n/g, '\n');
-  const realDef = conferirDefesa(COMB, CAP, SENT, REGRAS);
+  const MESA = ler('src/pages/mesa.astro').replace(/\r\n/g, '\n'), REF = ler('src/pages/mesa/referencia.astro').replace(/\r\n/g, '\n');
+  const realDef = conferirDefesa(COMB, CAP, SENT, REGRAS, MESA, REF);
   for (const x of realDef) falhas.push(x);
   const edita2 = (r, fn) => { const x = copia(r); fn(x); return x; };
   const mutD = realDef.length ? {} : {
@@ -780,6 +808,15 @@ function conferirDefesa(comb, cap, sent, R) {
     'o Imobilizado a −4': (c, a, t, r) => [c.replace('amarrado, soterrado; Imobilizado | zerada | zerado |', 'amarrado, soterrado; Imobilizado | −4 | −4 |'), a, t, r],
     'o pouco espaço': (c, a, t, r) => [c.replace('entre galhos, túnel | −2 | −4 |', 'entre galhos, túnel | −4 | −2 |'), a, t, r],
     'a rede nas pernas na tabela': (c, a, t, r) => [c.replace('| **Corpo, leve** | pé enroscado, lama funda | −2 | 0 |', '| **Corpo, leve** | pé enroscado, lama funda, rede nas pernas | −2 | 0 |'), a, t, r],
+    'o modificadorCap de volta': (c, a, t, r, m, rf) => [c, a, t, edita2(r, (x) => { x.combateTatico.modificadorCap = 6; }), m, rf],
+    'a linha do surpreso a -4 de volta': (c, a, t, r, m, rf) => [c, a, t, edita2(r, (x) => { x.combateTatico.modificadores.push({ nome: 'Surpreso, cego ou imobilizado', valor: -4, alvo: 'defesa', nota: 'x' }); }), m, rf],
+    'o cego com -4/-4 em combateTatico': (c, a, t, r, m, rf) => [c, a, t, edita2(r, (x) => { x.combateTatico.defesaZerada.linhas[3].bloqueio = -4; }), m, rf],
+    'o teto de penalidade em combateTatico': (c, a, t, r, m, rf) => [c, a, t, edita2(r, (x) => { x.combateTatico.penalidadeCap = 6; }), m, rf],
+    'o teto de ±6 somando tudo na mesa': (c, a, t, r, m, rf) => [c, a, t, r, m.replace('<strong>nunca fica abaixo de 0</strong>. O porte', '<strong>nunca fica abaixo de 0</strong>. Teto de <strong>±6</strong> somando tudo. O porte'), rf],
+    'o teto de ±6 somando tudo na referência': (c, a, t, r, m, rf) => [c, a, t, r, m, rf.replace('<strong>+{CT.bonusCap}</strong>', 'Teto de <strong>±{CT.modificadorCap}</strong> somando tudo')],
+    'um "de −6 a +6" novo em regras.json': (c, a, t, r, m, rf) => [c, a, t, edita2(r, (x) => { x.combate.movimento.corrida.nota = 'a Defesa vai de −6 a +6'; }), m, rf],
+    'um "± 6" com espaço em regras.json': (c, a, t, r, m, rf) => [c, a, t, edita2(r, (x) => { x.combate.movimento.corrida.nota = 'teto de ± 6'; }), m, rf],
+    'um "+/−6" com o menos U+2212 em regras.json': (c, a, t, r, m, rf) => [c, a, t, edita2(r, (x) => { x.combate.movimento.corrida.nota = 'teto de +/−6'; }), m, rf],
     'a parte presa conta sumida': (c, a, t, r) => [c.replace('**só a parte presa conta**: quem tem uma perna presa perde Esquiva e conserva o Bloqueio dos braços.', 'a restrição vale no corpo inteiro.'), a, t, r],
     'o Correndo em regras.json com as condições': (c, a, t, r) => [c, a, t, edita2(r, (x) => { x.combate.movimento.corrida.texto = x.combate.movimento.corrida.texto.replace('do Tick do Golpe.', 'do Tick do Golpe e das condições surpreso, cego e imobilizado.'); })],
     'a faixa de distância com o teto velho': (c, a, t, r) => [c, a, t, edita2(r, (x) => { x.combate.alcance.faixas.ondeEntra = x.combate.alcance.faixas.ondeEntra.replace('não entra no teto de +6 dos bônus de Defesa.', 'não respeita o teto de +/-6 dos modificadores de Defesa.'); })],
@@ -798,9 +835,9 @@ function conferirDefesa(comb, cap, sent, R) {
     'o teto de ±6 em regras.json': (c, a, t, r) => [c, a, t, edita2(r, (x) => { x.empilhamentoProezas.defesaReflexiva = x.empilhamentoProezas.defesaReflexiva.replace('TETO de +6 dos BÔNUS de Defesa', 'TETO de ±6 dos modificadores'); })],
   };
   for (const [nome, estraga] of Object.entries(mutD)) {
-    const [c, a, t, r] = estraga(COMB, CAP, SENT, REGRAS);
-    if (c === COMB && a === CAP && t === SENT && JSON.stringify(r) === JSON.stringify(REGRAS)) { falhas.push(`o estrago "${nome}" não alterou nada (o teste de teste está torto)`); continue; }
-    if (conferirDefesa(c, a, t, r).length === 0) falhas.push(`o teste NÃO acusou o estrago da Defesa "${nome}"`);
+    const [c, a, t, r, m = MESA, rf = REF] = estraga(COMB, CAP, SENT, REGRAS, MESA, REF);
+    if (c === COMB && a === CAP && t === SENT && JSON.stringify(r) === JSON.stringify(REGRAS) && m === MESA && rf === REF) { falhas.push(`o estrago "${nome}" não alterou nada (o teste de teste está torto)`); continue; }
+    if (conferirDefesa(c, a, t, r, m, rf).length === 0) falhas.push(`o teste NÃO acusou o estrago da Defesa "${nome}"`);
   }
   TOTAL_ARTE += Object.keys(mutD).length;
 }

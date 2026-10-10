@@ -10,6 +10,7 @@ const ANCORAS = regras.dificuldade as { dif: number; desafio: string; aaltura: s
 const FERIMENTOS = regras.ferimentos as { minPct: number; maxPct: number; estado: string; penAcao: number | null; penAcaoDados: number | null; penDefesa: number | null }[];
 const sinalTxt = (n: number) => (n > 0 ? `+${n}` : `−${Math.abs(n)}`);
 const MODS = (regras.combateTatico as any).modificadores as { nome: string; valor: number; alvo: string; nota: string }[];
+const ZERA = (regras.combateTatico as any).defesaZerada.linhas as { nome: string; tipo: string; esquiva?: number; bloqueio?: number }[];
 ---
 <Base title="Mesa" largura="full" telaCheia descricao="Escudo do Mestre: o painel da campanha.">
   <MesaCab aba="escudo">
@@ -129,7 +130,14 @@ const MODS = (regras.combateTatico as any).modificadores as { nome: string; valo
                 <td class="num">{m.valor > 0 ? `+${m.valor}` : m.valor}</td>
                 <td class="muted">{m.nota}</td></tr>))}</tbody>
           </table></div>
-          <p class="muted nota-mini">Teto de <strong>±{(regras.combateTatico as any).modificadorCap}</strong> somando tudo. O porte entra no <em>acerto</em>, fora deste teto.</p>
+          <p class="muted nota-mini">Os <strong>bônus</strong> de Defesa vão até <strong>+{(regras.combateTatico as any).bonusCap}</strong>; as <strong>penalidades não têm teto</strong>; a Defesa <strong>nunca fica abaixo de 0</strong>. O porte entra no <em>acerto</em>, fora deste teto.</p>
+          <div class="tab-wrap"><table class="tab-mesa">
+            <thead><tr><th>Defesa zerada ou cego</th><th class="num">Esquiva</th><th class="num">Bloqueio</th></tr></thead>
+            <tbody>{ZERA.map((z) => (
+              <tr><td>{z.nome}</td>
+                <td class="num">{z.tipo === 'zera' ? '0' : sinalTxt(z.esquiva ?? 0)}</td>
+                <td class="num">{z.tipo === 'zera' ? '0' : sinalTxt(z.bloqueio ?? 0)}</td></tr>))}</tbody>
+          </table></div>
         </details>
       </div>
     </section>

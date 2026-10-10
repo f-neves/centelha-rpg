@@ -996,7 +996,10 @@
   },
   "combateTatico": {
     "nota": "Modificadores situacionais aplicados ao valor PASSIVO da Defesa do alvo (+ = mais difícil de acertar, − = mais fácil). Cada ±1 ≈ ∓6% de chance perto do baseline (~42%).",
-    "modificadorCap": 6,
+    "bonusCap": 6,
+    "penalidadeCap": null,
+    "pisoDefesa": 0,
+    "teto": "Os BÔNUS de Defesa vão até +6; as PENALIDADES não têm teto (D-078); a Defesa nunca fica abaixo de 0. Tudo se soma: condição, restrição, situação e Guarda sob pressão.",
     "modificadores": [
       {
         "nome": "Cobertura parcial",
@@ -1053,18 +1056,21 @@
         "nota": "não pode usar a melhor defesa contra você"
       },
       {
-        "nome": "Surpreso, cego ou imobilizado",
-        "valor": -4,
-        "alvo": "defesa",
-        "nota": "praticamente sem esquiva ativa"
-      },
-      {
         "nome": "Postura agressiva",
         "valor": -2,
         "alvo": "defesa-propria",
         "nota": "−2 à sua própria Defesa e +2 ao seu ataque até a próxima ação"
       }
-    ]
+    ],
+    "defesaZerada": {
+      "nota": "Regra geral (D-078): quem não sabe do ataque ou não tem como se defender fica com a Defesa correspondente zerada; ataque imbloqueável zera só o Bloqueio, inesquivável só a Esquiva. A restrição de corpo e de lugar (leve, parcial, grave, total, pouco espaço, sem equilíbrio) está no capítulo Combate Físico, com o Agarrado (só contra quem está de fora) e o Imobilizado.",
+      "linhas": [
+        { "nome": "Surpreso (não sabe do ataque)", "tipo": "zera" },
+        { "nome": "Totalmente imobilizado (amarrado, soterrado)", "tipo": "zera" },
+        { "nome": "Dormindo ou desacordado", "tipo": "zera" },
+        { "nome": "Cego, vendado ou no escuro total, sabendo do ataque", "tipo": "soma", "esquiva": -4, "bloqueio": -8 }
+      ]
+    }
   },
   "porteAcerto": {
     "nota": "Modificador à JOGADA DE ACERTO de ataques FÍSICOS (corpo a corpo e à distância), pela diferença de porte entre atacante e alvo. Só no acerto: NÃO altera a Defesa passiva do alvo, NÃO entra no teto ±6 dos modificadores situacionais e NÃO vale p/ ataques Sociais ou Mentais. Relativo e simétrico: acertar alvo MAIOR soma o valor; acertar alvo MENOR subtrai o mesmo valor. Conta a diferença de categorias na ordem dos portes, com teto de 4 categorias (diferenças maiores contam como 4). Bichos Enormes+ compensam a facilidade de acerto com a Couraça de Porte, que corta o dano de quem é menor.",
