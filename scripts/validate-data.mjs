@@ -104,6 +104,8 @@ const blocoArmaEnvelope = z.object({
   atrib: z.string(), pericia: z.string(), dado: z.number().int().min(1).max(3), danoBonus: z.number().int().optional(), acerto: z.number().int(),
   defesaArma: z.number().int(), maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0).optional(),
   forcaMult: z.number().optional(), forcaCap: z.number().int().optional(), forcaMin: z.number().int().optional(),
+  // A Rede não causa dano (D-076): a página e a ficha mostram isso; `dado` e `tipoDano` ficam, porque o Grid os lê.
+  semDano: z.boolean().optional(),
   alcance: z.enum(['curto', 'medio', 'longo']).optional(),
   distMax: z.number().int().positive().optional(), alcanceLivreFrac: z.number().min(0).max(1).optional(),
   // Distância Efetiva (D-072), em metros, para alvo Médio: sempre par. Toda arma de tiro e de arremesso tem.

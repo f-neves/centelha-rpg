@@ -75,6 +75,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 | Maça | Média | ★I | 6 | 1d6 | +1 | +1 | 1 | Anti-placa: o Impacto quase não é absorvido |
 | Picareta de Guerra | Média | ★P(N2) · I | 6 | 1d6 | +1 | +1 | 1 | O bico vence placa de N2 pelo ponto |
 | Lança | Haste média | ★P(N1) | 6 | 1d6 | +1 | +2 | 2 | Alcance, arremessável. Estocada que controla a distância; resvala na placa |
+| Bordão | Haste média | ★I | 6 | 1d6 | +1 | +2 | 2 | Alcance. Também chamado Cajado: haste de madeira, sem ponta nem fio, que controla a distância e defende muito |
 | Alabarda | Haste de Guerra | ★C · ★P(N1) · ★I | 7 | 1d6+2 | +0 | +0 | 2 | Alcance, pesada (lenta). Três modos principais num cabo; cobre tudo |
 | Montante | Pesada | ★C · P(N1) · I | 7 | 2d6 | +0 | −2 | 2 | Espadão; dano alto, guarda baixa, te expõe entre os golpes |
 | Martelo de Guerra | Pesada | ★I · P(N2) | 7 | 2d6 | +0 | −2 | 2 | Esmaga placas; o bico fura quando precisa. Pouca defesa |

@@ -513,7 +513,7 @@ for (const [nome, estraga] of Object.entries(estragosCatalogo)) {
 const LINHA_DA_ARMA = {
   'Leve': ['adaga', 'espada-curta', 'machadinha', 'bastao', 'sabre'],
   'Média': ['espada-longa', 'machado', 'espada-serrilhada', 'maca', 'picareta-de-guerra', 'martelo', 'maca-estrela'],
-  'Haste média': ['lanca'],
+  'Haste média': ['lanca', 'bordao'],
   'Haste de Guerra': ['alabarda', 'lanca-longa'],
   'Pesada': ['montante', 'martelo-de-guerra', 'machado-pesado'],
   'Punhos': ['desarmado'],
@@ -572,7 +572,7 @@ function conferirFicha(mostra, comb, armas) {
 }
 {
   const catalogo = ARMAS.filter((x) => x.arma);
-  if (catalogo.length !== 40) falhas.push(`ficha: o catálogo tem ${catalogo.length} armas, e o teste foi escrito para 40 (acrescente a nova em LINHA_DA_ARMA)`);
+  if (catalogo.length !== 41) falhas.push(`ficha: o catálogo tem ${catalogo.length} armas, e o teste foi escrito para 41 (acrescente a nova em LINHA_DA_ARMA)`);
   const FP = await carregarTS('src/lib/ficha-pgr.ts');
   const CT = await carregarTS('src/lib/combate-tempo.ts');
   const dela = (R) => (w) => FP.anatomiaDaFicha(w, R);
@@ -1257,6 +1257,114 @@ function conferirNove(T) {
   }
   TOTAL_ARTE += Object.keys(mutN).length;
 }
+// ---- rodada 9, B1 (a Rede não causa dano), B3 (o Bordão) e B9 (a restrição, o Agarrado, o Imobilizado e o Preso em dado)
+function conferirNoveB(T) {
+  const f = [];
+  const L = T.comb.split('\n'), A = T.cap.split('\n');
+  const R = T.regras;
+  // B1: a Rede
+  const rede = (T.armas || []).find((x) => x.id === 'rede');
+  if (!rede || rede.arma.semDano !== true) f.push('armas.json (B1): a Rede devia trazer semDano: true');
+  else if (rede.arma.dado !== 1 || rede.arma.tipoDano !== 'impacto') f.push('armas.json (B1): dado e tipoDano da Rede ficam como estão (o Grid os lê); só a página e a ficha leem semDano');
+  // o dano que /equipamentos mostra, executado: a função sai do código-fonte da página
+  const linhaDano = T.equip.split('\n').find((x) => x.startsWith('const dano = (a: any) =>'));
+  if (!linhaDano) f.push('equipamentos.astro (B1): falta a função "dano"');
+  else {
+    const fn = new Function('return (' + linhaDano.replace(/^const dano = /, '').replace(/;$/, '').replace(/\(a: any\)/, '(a)') + ')')();
+    if (rede && fn({ ...rede.arma }) !== 'não causa dano') f.push('equipamentos.astro (B1): a Rede mostraria "' + fn({ ...rede.arma }) + '" em vez de "não causa dano"');
+    const adaga = (T.armas || []).find((x) => x.id === 'adaga');
+    if (adaga && fn({ ...adaga.arma }) !== '1d6−2') f.push('equipamentos.astro (B1): a Adaga devia continuar mostrando 1d6−2');
+  }
+  const FL = T.ficha.split('\n').map((x) => x.trim());
+  for (const l of ["<span class=\"eq-n\"><b>Dano</b>${w.semDano ? 'não causa dano' : danoStr(w)}</span>", "const dano = c.atk.semDano ? 'não causa dano' : c.versoes.map((v: any) => `${v.rot ? v.rot + ': ' : ''}${c.atk.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');", "const dano = w.semDano ? 'não causa dano' : act.versoes.map((v) => `${v.rot ? v.rot + ': ' : ''}${w.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');"]) {
+    if (!FL.some((x) => x.includes(l))) f.push('ficha-engine.ts (B1): falta "' + l.slice(0, 70) + '" (a ficha mostra "não causa dano" na Rede)');
+  }
+  if (!/^\s*semDano: z\.boolean\(\)\.optional\(\),$/m.test(T.config) || !/^\s*semDano: z\.boolean\(\)\.optional\(\),$/m.test(T.validate)) f.push('content.config.ts e validate-data.mjs (B1): os dois esquemas devem aceitar semDano');
+  // B3: o Bordão
+  const b = (T.armas || []).find((x) => x.id === 'bordao');
+  if (!b) f.push('armas.json (B3): falta o Bordão');
+  else {
+    const w = b.arma;
+    const esp = { classe: 'haste', dado: 1, danoBonus: 0, acerto: 1, defesaArma: 2, maos: 2, ticks: 6 };
+    for (const [k, v] of Object.entries(esp)) if (w[k] !== v) f.push('armas.json (B3): Bordão ' + k + ' devia ser ' + v + ' (a Haste média da D-082), e é ' + w[k]);
+    if (!/Cajado/.test(b.descricao)) f.push('armas.json (B3): a descrição do Bordão devia dizer que também se chama Cajado');
+  }
+  if (!A.includes('| Bordão | Haste média | ★I | 6 | 1d6 | +1 | +2 | 2 | Alcance. Também chamado Cajado: haste de madeira, sem ponta nem fio, que controla a distância e defende muito |')) f.push('Armas & Armaduras (B3): falta a linha do Bordão na tabela do corpo a corpo');
+  if (!(R?.combate?.pgr?.reforma?.corpoACorpo || []).find((c) => c.id === 'haste-media')?.armas?.includes('bordao')) f.push('regras.json (B3): o Bordão devia estar em reforma.corpoACorpo, linha da Haste média');
+  // B9: o livro e os dados dizem o mesmo
+  const RE = R?.combateTatico?.restricao;
+  if (!RE) { f.push('regras.json (B9): falta combateTatico.restricao'); return f; }
+  const val = (c) => { const t = c.replace(/\*\*/g, '').trim(); return /^zerad[ao]$/.test(t) ? 'zera' : Number(t.replace('−', '-')); };
+  for (const l of RE.linhas) {
+    const lin = L.find((x) => x.startsWith('| **' + l.rotulo + '** |'));
+    if (!lin) { f.push('Combate (B9): falta a linha "' + l.rotulo + '" da tabela de restrição'); continue; }
+    const c = lin.split('|').map((x) => x.trim()).filter((x, i, a) => i > 0 && i < a.length);
+    const [ex, e, bl] = [c[1], c[2], c[3]];
+    if (ex !== l.exemplo) f.push('Combate, restrição "' + l.rotulo + '": exemplo "' + ex + '" no livro, "' + l.exemplo + '" nos dados');
+    if (val(e) !== l.esquiva || val(bl) !== l.bloqueio) f.push('Combate, restrição "' + l.rotulo + '": Esquiva/Bloqueio ' + e + '/' + bl + ' no livro, ' + l.esquiva + '/' + l.bloqueio + ' nos dados');
+  }
+  const gr = RE.linhas.find((l) => l.id === RE.agarrado.linha), to = RE.linhas.find((l) => l.id === RE.imobilizado.linha);
+  if (gr.esquiva !== RE.agarrado.esquiva || gr.bloqueio !== RE.agarrado.bloqueio) f.push('regras.json (B9): o Agarrado devia ter os números da linha grave');
+  if (to.esquiva !== 'zera' || RE.imobilizado.defesaDeAgarrao !== 'não zera') f.push('regras.json (B9): o Imobilizado zera a Esquiva e o Bloqueio, e não a Defesa de agarrão');
+  const ag = L.find((x) => x.startsWith('**O agarrado.**')) || '';
+  const m1 = ag.match(/a Esquiva dele leva −(\d+) e o Bloqueio −(\d+)/);
+  if (!m1 || -Number(m1[1]) !== RE.agarrado.esquiva || -Number(m1[2]) !== RE.agarrado.bloqueio) f.push('Combate, O agarrado (B9): Esquiva −' + (m1 && m1[1]) + ' e Bloqueio −' + (m1 && m1[2]) + ' no livro, ' + RE.agarrado.esquiva + '/' + RE.agarrado.bloqueio + ' nos dados');
+  const im = L.find((x) => x.startsWith('* **Imobilizado:**')) || '';
+  if (!im.includes('A Esquiva e o Bloqueio dele ficam **zerados** (não a Defesa de agarrão)')) f.push('Combate, Imobilizado (B9): o livro devia dizer Esquiva e Bloqueio zerados, não a Defesa de agarrão');
+  const pr = L.find((x) => x.startsWith('* **Preso:**')) || '';
+  const m2 = pr.match(/\(a boleadeira e a Arte de prender, parcial nas pernas\): Esquiva −(\d+)\./), m3 = pr.match(/−(\d+) na Esquiva e −(\d+) no Bloqueio, e mais −(\d+) em cada por grau de Margem do lançamento, sem teto/);
+  if (!m2 || -Number(m2[1]) !== RE.preso.tabela.esquiva) f.push('Combate, Preso pela tabela (B9): a Esquiva do livro difere de preso.tabela.esquiva (' + RE.preso.tabela.esquiva + ')');
+  if (!m3 || -Number(m3[1]) !== RE.preso.rede.esquiva || -Number(m3[2]) !== RE.preso.rede.bloqueio || -Number(m3[3]) !== RE.preso.rede.porGrauDeMargem || RE.preso.rede.tetoDeMargem !== null) f.push('Combate, Preso pela Rede (B9): −2, −2, −1 por grau e sem teto no livro; os dados dizem outra coisa');
+  const ra = A.find((x) => x.startsWith('- **Rede.**')) || '';
+  const m4 = ra.match(/\*\*−(\d+) na Esquiva e −(\d+) no Bloqueio\*\*, e mais \*\*−(\d+) em cada\*\* por grau de Margem do lançamento, sem teto/);
+  if (!m4 || -Number(m4[1]) !== RE.preso.rede.esquiva || -Number(m4[2]) !== RE.preso.rede.bloqueio || -Number(m4[3]) !== RE.preso.rede.porGrauDeMargem) f.push('Armas & Armaduras, Rede (B9): os números da Rede no capítulo diferem dos dados');
+  const bo = A.find((x) => x.startsWith('- **Boleadeira.**')) || '';
+  const m5 = bo.match(/\(Esquiva −(\d+); não se desloca, mas age\)/);
+  if (!m5 || -Number(m5[1]) !== RE.preso.tabela.esquiva) f.push('Armas & Armaduras, Boleadeira (B9): a Esquiva da Boleadeira no capítulo difere dos dados');
+  return f;
+}
+{
+  const T0 = {
+    comb: COMB, cap: CAP, regras: REGRAS, armas: ARMAS,
+    equip: ler('src/pages/equipamentos.astro').replace(/\r\n/g, '\n'), ficha: ler('src/lib/ficha-engine.ts').replace(/\r\n/g, '\n'),
+    config: ler('src/content.config.ts').replace(/\r\n/g, '\n'), validate: ler('scripts/validate-data.mjs').replace(/\r\n/g, '\n'),
+  };
+  const realB9 = conferirNoveB(T0);
+  for (const x of realB9) falhas.push(x);
+  const troca = (k, de, para) => (T) => ({ ...T, [k]: T[k].replace(de, para) });
+  const trocaR = (fn) => (T) => ({ ...T, regras: (() => { const x = copia(T.regras); fn(x); return x; })() });
+  const trocaA = (fn) => (T) => ({ ...T, armas: (() => { const x = copia(T.armas); fn(x); return x; })() });
+  const mutB9 = realB9.length ? {} : {
+    'B1: a Rede sem o semDano': trocaA((a) => { delete a.find((x) => x.id === 'rede').arma.semDano; }),
+    'B1: o dado da Rede mexido (o Grid o lê)': trocaA((a) => { a.find((x) => x.id === 'rede').arma.dado = 2; }),
+    'B1: a página de volta a montar o dano da Rede': troca('equip', "(a.semDano ? 'não causa dano' : ", "(false ? 'não causa dano' : "),
+    'B1: a ficha mostrando o dano da Rede no equipamento': troca('ficha', "${w.semDano ? 'não causa dano' : danoStr(w)}", '${danoStr(w)}'),
+    'B1: a ficha mostrando o dano da Rede no conjunto': troca('ficha', "const dano = c.atk.semDano ? 'não causa dano' : ", 'const dano = '),
+    'B1: a ficha mostrando o dano da Rede no combate': troca('ficha', "const dano = w.semDano ? 'não causa dano' : ", 'const dano = '),
+    'B1: o esquema do conteúdo sem o semDano': troca('config', '  semDano: z.boolean().optional(),\n', ''),
+    'B3: o Bordão fora do catálogo': (T) => ({ ...T, armas: T.armas.filter((x) => x.id !== 'bordao') }),
+    'B3: o Bordão com Defesa +1': trocaA((a) => { a.find((x) => x.id === 'bordao').arma.defesaArma = 1; }),
+    'B3: o Bordão sem a linha do capítulo': troca('cap', '| Bordão | Haste média | ★I |', '| Bastão | Haste média | ★I |'),
+    'B3: o Bordão fora da reforma': trocaR((x) => { const c = x.combate.pgr.reforma.corpoACorpo.find((y) => y.id === 'haste-media'); c.armas = c.armas.filter((i) => i !== 'bordao'); }),
+    'B9: a restrição grave a −6 nos dados': trocaR((x) => { x.combateTatico.restricao.linhas.find((l) => l.id === 'grave').esquiva = -6; }),
+    'B9: a restrição leve a −3 no livro': troca('comb', '| **Corpo, leve** | pé enroscado, lama funda | −2 | 0 |', '| **Corpo, leve** | pé enroscado, lama funda | −3 | 0 |'),
+    'B9: o pouco espaço trocado no livro': troca('comb', 'entre galhos, túnel | −2 | −4 |', 'entre galhos, túnel | −4 | −2 |'),
+    'B9: o Agarrado a −2 no livro': troca('comb', 'a Esquiva dele leva −8 e o Bloqueio −4', 'a Esquiva dele leva −2 e o Bloqueio −2'),
+    'B9: o Agarrado a −6 nos dados': trocaR((x) => { x.combateTatico.restricao.agarrado.bloqueio = -6; }),
+    'B9: o Imobilizado que zera a Defesa de agarrão': trocaR((x) => { x.combateTatico.restricao.imobilizado.defesaDeAgarrao = 'zera'; }),
+    'B9: a Rede a −3 no livro': troca('cap', '**−2 na Esquiva e −2 no Bloqueio**', '**−3 na Esquiva e −2 no Bloqueio**'),
+    'B9: a Rede com teto de Margem nos dados': trocaR((x) => { x.combateTatico.restricao.preso.rede.tetoDeMargem = 3; }),
+    'B9: o Preso pela tabela a −2 no livro': troca('comb', 'parcial nas pernas): Esquiva −4.', 'parcial nas pernas): Esquiva −2.'),
+    'B9: a Boleadeira a −2 no capítulo': troca('cap', '(Esquiva −4; não se desloca, mas age)', '(Esquiva −2; não se desloca, mas age)'),
+  };
+  for (const [nome, estraga] of Object.entries(mutB9)) {
+    const T = estraga(T0);
+    if (JSON.stringify(T) === JSON.stringify(T0)) { falhas.push(`o estrago "${nome}" não alterou nada (o teste de teste está torto)`); continue; }
+    if (conferirNoveB(T).length === 0) falhas.push(`o teste NÃO acusou o estrago da rodada 9 "${nome}"`);
+  }
+  TOTAL_ARTE += Object.keys(mutB9).length;
+}
+
 if (falhas.length) {
   console.error(`✘ test-capitulo-armas: ${falhas.length} falha(s)`);
   for (const f of falhas) console.error('  · ' + f);

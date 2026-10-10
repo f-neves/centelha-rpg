@@ -1070,6 +1070,24 @@
         { "nome": "Dormindo ou desacordado", "tipo": "zera" },
         { "nome": "Cego, vendado ou no escuro total, sabendo do ataque", "tipo": "soma", "esquiva": -4, "bloqueio": -8 }
       ]
+    },
+    "restricao": {
+      "nota": "A tabela de restrição de corpo e de lugar do capítulo Combate Físico (D-079, D-081), em número, para o teste prender livro e dados. Só a parte presa conta. Esquiva e Bloqueio: um número é penalidade; 'zera' é a Defesa zerada. O Grid não lê esta chave (D-054).",
+      "linhas": [
+        { "id": "leve", "rotulo": "Corpo, leve", "exemplo": "pé enroscado, lama funda", "esquiva": -2, "bloqueio": 0 },
+        { "id": "parcial-pernas", "rotulo": "Corpo, parcial nas pernas", "exemplo": "uma perna presa; Preso por boleadeira ou por Arte de prender", "esquiva": -4, "bloqueio": 0 },
+        { "id": "parcial-bracos", "rotulo": "Corpo, parcial nos braços", "exemplo": "um braço preso, arma travada", "esquiva": 0, "bloqueio": -4 },
+        { "id": "grave", "rotulo": "Corpo, grave", "exemplo": "preso pela cintura; Agarrado (só contra quem está de fora)", "esquiva": -8, "bloqueio": -4 },
+        { "id": "total", "rotulo": "Corpo, total", "exemplo": "amarrado, soterrado; Imobilizado", "esquiva": "zera", "bloqueio": "zera" },
+        { "id": "pouco-espaco", "rotulo": "Lugar: pouco espaço", "exemplo": "corredor estreito, entre galhos, túnel", "esquiva": -2, "bloqueio": -4, "escudoPerdeOBonus": true },
+        { "id": "sem-equilibrio", "rotulo": "Lugar: sem equilíbrio", "exemplo": "corda bamba, telhado inclinado, convés no temporal", "esquiva": -4, "bloqueio": -2 }
+      ],
+      "agarrado": { "linha": "grave", "esquiva": -8, "bloqueio": -4, "soContraDeFora": true, "entreOsDois": "sem penalidade" },
+      "imobilizado": { "linha": "total", "esquiva": "zera", "bloqueio": "zera", "defesaDeAgarrao": "não zera" },
+      "preso": {
+        "tabela": { "esquiva": -4, "bloqueio": 0, "origens": ["boleadeira", "Arte de prender"] },
+        "rede": { "esquiva": -2, "bloqueio": -2, "porGrauDeMargem": -1, "tetoDeMargem": null, "paraSeSoltar": "Força + Atletismo contra o total do lançamento" }
+      }
     }
   },
   "porteAcerto": {
@@ -2635,7 +2653,7 @@
         "corpoACorpo": [
           { "id": "leve", "nome": "Leve", "velocidade": 5, "preparo": 1, "golpe": 1, "recuperacao": 3, "armas": ["adaga", "espada-curta", "machadinha", "bastao", "sabre"] },
           { "id": "media", "nome": "Média", "velocidade": 6, "preparo": 2, "golpe": 1, "recuperacao": 3, "armas": ["espada-longa", "machado", "espada-serrilhada", "maca", "picareta-de-guerra", "martelo", "maca-estrela"] },
-          { "id": "haste-media", "nome": "Haste média", "velocidade": 6, "preparo": 2, "golpe": 1, "recuperacao": 3, "armas": ["lanca"] },
+          { "id": "haste-media", "nome": "Haste média", "velocidade": 6, "preparo": 2, "golpe": 1, "recuperacao": 3, "armas": ["lanca", "bordao"] },
           { "id": "haste-guerra", "nome": "Haste de Guerra", "velocidade": 7, "preparo": 3, "golpe": 1, "recuperacao": 3, "armas": ["alabarda", "lanca-longa"] },
           { "id": "pesada", "nome": "Pesada", "velocidade": 7, "preparo": 3, "golpe": 1, "recuperacao": 3, "armas": ["montante", "martelo-de-guerra", "machado-pesado"] },
           { "id": "punhos", "nome": "Punhos", "velocidade": 5, "preparo": 1, "golpe": 1, "recuperacao": 3, "armas": ["desarmado"] }

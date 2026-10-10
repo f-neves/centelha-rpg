@@ -201,6 +201,8 @@ const blocoArma = z.object({
   defesaArma: z.number().int(),
   maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0),
   forcaMult: z.number().optional(),
+  // A Rede não causa dano (D-076): a página e a ficha mostram isso; `dado` e `tipoDano` ficam, porque o Grid os lê.
+  semDano: z.boolean().optional(),
   forcaCap: z.number().int().optional(), forcaMin: z.number().int().optional(),
   alcance: z.enum(['curto', 'medio', 'longo']).optional(),
   // distância máxima da arma, em metros. Só as de Distância e Arremesso têm.

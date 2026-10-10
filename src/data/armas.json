@@ -312,6 +312,39 @@
     "municao": null
   },
   {
+    "id": "bordao",
+    "nome": "Bordão",
+    "tipo": "arma",
+    "peso": 2,
+    "descricao": "Haste de madeira de duas mãos, também chamada Cajado: controla a distância e defende muito, sem ponta nem fio. Dano de Impacto.",
+    "tags": [
+      "alcance"
+    ],
+    "arma": {
+      "classe": "haste",
+      "atrib": "destreza",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 1,
+      "defesaArma": 2,
+      "maos": 2,
+      "ticks": 6,
+      "folego": 24,
+      "tipoDano": "impacto",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "impacto",
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
     "id": "alabarda",
     "nome": "Alabarda",
     "tipo": "arma",
@@ -972,6 +1005,7 @@
       "pericia": "arremesso",
       "dado": 1,
       "danoBonus": 0,
+      "semDano": true,
       "acerto": 0,
       "defesaArma": 0,
       "maos": 1,

@@ -1695,7 +1695,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   capítulo. O gerador (`CONDICAO_APARENTE`, mesmo arquivo, perto de `CONDICAO`) também foi atualizado: era
   quem regenerava `grid.condicao` para os 9 e travava o `--check` do `npm run validate` até fazer isso.
 
-  **VALIDADOR, confere os DOIS campos depois do split (fechado):** `scripts/validate-data.mjs:185` (`if (g.condicao && !COND_IDS.has(g.condicao))`), mais o invariante
+  **VALIDADOR, confere os DOIS campos depois do split (fechado):** `scripts/validate-data.mjs:187` (`if (g.condicao && !COND_IDS.has(g.condicao))`), mais o invariante
   `(g.forma === 'nenhuma') === (g.alvo === 'nenhum')` logo abaixo, na mesma função.
 
   **O que isto mudou no split:** os sete blocos de MOTOR não precisaram de auditoria individual,

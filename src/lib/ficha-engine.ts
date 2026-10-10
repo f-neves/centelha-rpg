@@ -1409,7 +1409,7 @@ export function montarFicha(opts: FichaOpts) {
   const statsBlocos = (w: any) => `<div class="eq-nums">
     <span class="eq-n"><b>Veloc.</b>${w.ticks}</span>
     <span class="eq-n"><b>Acerto</b>${sgn(w.acerto || 0)}</span>
-    <span class="eq-n"><b>Dano</b>${danoStr(w)}</span>
+    <span class="eq-n"><b>Dano</b>${w.semDano ? 'não causa dano' : danoStr(w)}</span>
     ${w.efetiva
       ? `<span class="eq-n"><b>Efetiva</b>${w.efetiva} m</span>`
       : w.distMax
@@ -1491,7 +1491,7 @@ export function montarFicha(opts: FichaOpts) {
   const camposItem = (it: any) => (it.kind === 'escudo' ? CAMPOS_ESCUDO : CAMPOS_ARMA);
   function statsConj(c: any, trava: boolean) {
     const atk = `${c.dados}d6${c.bonus ? '+2' : ''}${c.flat ? ' ' + sgn(c.flat) : ''}`;
-    const dano = c.versoes.map((v: any) => `${v.rot ? v.rot + ': ' : ''}${c.atk.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
+    const dano = c.atk.semDano ? 'não causa dano' : c.versoes.map((v: any) => `${v.rot ? v.rot + ': ' : ''}${c.atk.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
     return `<b>Acerto</b> ${atk} · <b>Dano</b> ${dano} · <b>Defesa</b> ${sgn(c.defSum)}` +
       `${trava ? ' <span class="muted">(2 mãos: inábil travada)</span>' : ''}` +
       `${c.reqForca ? ` · <span class="conj-req" title="A arma não fica proibida: ela rende o patamar comum (Força×1 e sem o bônus da curva) até o braço alcançar o requisito.">sem a Força ${c.reqForca}: rende o comum</span>` : ''}`;
@@ -1648,7 +1648,7 @@ export function montarFicha(opts: FichaOpts) {
     const act = calcConj(conjAtivo());
     const w = act.atk, C = S.centelha || 0, armorPen = act.armorPen;
     const atk = `${act.dados}d6${act.bonus ? '+2' : ''}${act.flat ? ' ' + sgn(act.flat) : ''}`;
-    const dano = act.versoes.map((v) => `${v.rot ? v.rot + ': ' : ''}${w.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
+    const dano = w.semDano ? 'não causa dano' : act.versoes.map((v) => `${v.rot ? v.rot + ': ' : ''}${w.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
     const modos = ((w.modos ?? [{ tipo: w.tipoDano, perf: w.pen, principal: true }]) as any[]).slice().sort((a, b) => ((MODO_ORDEM as any)[a.tipo] ?? 9) - ((MODO_ORDEM as any)[b.tipo] ?? 9));
     const modoStr = modos.map((m) => `${MODO_NOME[m.tipo as keyof typeof MODO_NOME]}${m.perf != null ? ` (N${m.perf})` : ''}${m.principal ? '' : ' *'}`).join(' · ');
     const temSec = modos.some((m) => !m.principal);
