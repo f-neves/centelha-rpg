@@ -1,0 +1,1 @@
+- 4d: 40 armas medidas por mim, 13 divergencias reproduzidas, funda/fallback/mesa conferidos, 12 mutacoes, ficha medida na tela. Veredito 156: PROCEDE.
