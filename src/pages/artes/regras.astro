@@ -56,7 +56,7 @@ const EX_CONTA: [string, string, number][] = [
     </a>
   </nav>
 
-  <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong>, rápido, em combate: custa Ticks como uma ação (<strong>5</strong> quando o maior grau investido na conjuração vai de 0 a 3, <strong>6</strong> quando é 4, <strong>7</strong> quando é 5 ou 6; o nível da Arte de quem conjura não entra nessa conta), mais o Mana. Esses Ticks são de <strong>preparo</strong>, e a Arte sai no <a href="#tempo"><strong>último</strong></a> deles, ao contrário da ação comum, que resolve no primeiro. &nbsp; <strong><a href="#rituais">Ritual</a></strong>, estendido: a conjuração passa a levar minutos ou horas e, em troca, sai mais barato ou alcança mais alto do que a sua Arte permitiria.</div>
+  <div class="callout regra"><span class="lbl">Os dois modos</span><strong>Feitiço</strong>, rápido, em combate: custa Ticks como uma ação (<strong>5</strong> quando o maior grau investido na conjuração vai de 0 a 3, <strong>6</strong> quando é 4, <strong>7</strong> quando é 5 ou 6; o nível da Arte de quem conjura não entra nessa conta), mais o Mana. Esses Ticks são a Velocidade da conjuração, e a Arte sai no <a href="#tempo"><strong>Tick do Golpe, o penúltimo</strong></a>, ao contrário da ação comum, que resolve no primeiro. &nbsp; <strong><a href="#rituais">Ritual</a></strong>, estendido: a conjuração passa a levar minutos ou horas e, em troca, sai mais barato ou alcança mais alto do que a sua Arte permitiria.</div>
 
   <section class="arcano-regras">
     <h2>Como se aprende uma Arte</h2>
@@ -312,7 +312,7 @@ const EX_CONTA: [string, string, number][] = [
 
     <h2 id="tempo">O tempo da Arte, e quem está no caminho</h2>
     <p>{TEMPO.nota}</p>
-    <div class="callout regra"><span class="lbl">A Arte sai no último Tick</span>
+    <div class="callout regra"><span class="lbl">A Arte sai no Tick do Golpe</span>
       {TEMPO.ultimoTick.regra}
     </div>
     <p class="muted">{TEMPO.ultimoTick.excecao}</p>
@@ -489,8 +489,9 @@ const EX_CONTA: [string, string, number][] = [
     <p class="muted">A Velocidade que o esticar multiplica é a do conjuro antes de esticar, pelo maior grau investido até o seu nível de Arte. No exemplo abaixo, o maior grau é 2 (Velocidade 5), e esticar dá 10 e depois 15.</p>
     <p class="formula">Centelha 2, Arte 2, um jorro sustentado. Volume 2 + Dano 2 + Duração 2 = <strong>6 pontos</strong>, Velocidade 5. Puxando para Volume 3, um nível acima: 3×2 + 2 + 2 = <strong>10 pontos</strong>, Velocidade 10. Para Volume 4, dois acima: 4×3 + 2 + 2 = <strong>16 pontos</strong>, Velocidade 15.</p>
     <div class="callout regra"><span class="lbl">Você decide no fim</span>
-      Não é preciso anunciar de saída até onde vai. No <strong>tick final de cada Velocidade</strong> você escolhe: soltar o efeito agora, ou segurar e subir mais um nível de um parâmetro. Numa ação de Velocidade 5, você decide no tick 5; se esticar, decide de novo no 10, e outra vez no 15. Quem interromper você no meio leva a conjuração junto.
+      Não é preciso anunciar de saída até onde vai. No <strong>Tick do Golpe de cada ciclo</strong> você escolhe: soltar o efeito agora, ou segurar e subir mais um nível de um parâmetro. O Golpe do ciclo n cai no Tick <strong>n × V − 1</strong>, em que V é a Velocidade da conjuração: numa ação de Velocidade 5, você decide no Tick 4; se esticar, decide de novo no 9, e outra vez no 14. Quem interromper você no meio leva a conjuração junto. Só o ciclo final leva Recuperação, e o sinal esticado dura T − 1 Ticks (T é a Velocidade esticada: 9 Ticks quando a ação passa a 10).
     </div>
+    <p class="muted">O Tick em que você decide esticar ainda é Preparo (−2 na Defesa), e só o Tick em que a Arte sai é Golpe (−4). Quem segura no Tick 4 da Velocidade 5 não tem Recuperação no 5: esse Tick já é Preparo do ciclo seguinte.</p>
     <p class="muted">O preço sobe rápido de propósito: forçar o limite é recurso de momento decisivo, não atalho para o estudo. E o desconto da Centelha continua valendo sobre o total.</p>
 
     <h2>Conjuração composta</h2>

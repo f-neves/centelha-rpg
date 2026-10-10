@@ -396,9 +396,10 @@ function conferir(cap, armas, regras, comb = COMB, acoes = ACOES) {
 }
 
 const falhas = [];
+let TOTAL_ARTE = 0;
 // A ficha (informativa) mostra o P/G/R do corpo a corpo pela reforma da D-082 (Punhos 1/1/3), e não pela fórmula velha do motor
 const FICHA = ler('src/lib/ficha-engine.ts');
-if (!FICHA.includes('anatomiaDaFicha(w, regras)')) falhas.push('ficha-engine: o linhaPGR não chama anatomiaDaFicha (ficha-pgr.ts), que lê a régua do livro (os Punhos sairiam 0/1/4)');
+if (!/^\s*const a = anatomiaDaFicha\(w, regras\);$/m.test(FICHA)) falhas.push('ficha-engine: o linhaPGR não chama anatomiaDaFicha (ficha-pgr.ts), que lê a régua do livro (os Punhos sairiam 0/1/4)');
 if (!/reforma??.corpoACorpo|ref.corpoACorpo/.test(ler('src/lib/ficha-pgr.ts')) || !/ref.tiro/.test(ler('src/lib/ficha-pgr.ts'))) falhas.push('ficha-pgr: não lê combate.pgr.reforma.corpoACorpo e .tiro');
 if (JSON.stringify(ARMAS.find((a) => a.id === 'desarmado').arma.ticks) !== '5' || REGRAS.combate.pgr.reforma.corpoACorpo.find((c) => c.id === 'punhos').preparo !== 1) falhas.push('Punhos: Velocidade 5 no catálogo e Preparo 1 na reforma (1/1/3)');
 const real = conferir(CAP, ARMAS, REGRAS, COMB, ACOES);
@@ -581,10 +582,129 @@ function conferirFicha(mostra, comb, armas) {
   if (CT.classeDeTempo('arma-inventada', 4) === 'leve' && inv.ciclo !== 4) falhas.push('ficha: a arma sem catálogo devia cair na fórmula do motor (ciclo = Velocidade)');
 }
 
+// ---- o tempo da Arte: a Arte sai no Tick do Golpe, o penúltimo (D-084, rodada 4c)
+// O que se prende: a tabela de Preparo, Golpe e Recuperação do capítulo (as três linhas da Arte, LINHA INTEIRA), o texto do
+// capítulo Combate Físico, os textos de regras.json `arcano.tempoDaArte` e `arcano.esticar`, e a página As Artes (regras.astro).
+// Os pinos de texto casam a linha toda ou a frase toda, e não um pedaço solto: um pedaço solto sobrevive num comentário ou numa
+// frase velha ao lado da nova (o furo que a revisão 153 achou no linhaPGR da 4b e a 156 achou na 4d).
+function conferirArte(comb, R, astro) {
+  const f = [];
+  const arte = R?.combate?.pgr?.reforma?.arte;
+  const T = R?.arcano?.tempoDaArte;
+  if (!arte || !T) return ['regras.json sem combate.pgr.reforma.arte ou arcano.tempoDaArte'];
+  const tab = tabelaApos(comb, MARCA_TABELA_PGR);
+  if (!tab) return ['Combate: falta a tabela "Preparo, Golpe e Recuperação"'];
+  // 1. as três linhas da Arte, inteiras, e nenhuma linha velha de Arte
+  const celulas = (c) => [c.nome, String(c.velocidade), String(c.preparo), String(c.golpe), String(c.recuperacao)];
+  for (const c of arte.graus) {
+    if (c.preparo !== c.velocidade - 1 - c.recuperacao || c.golpe !== 1 || c.recuperacao !== 1) f.push(`regras.json, ${c.nome}: Preparo = Velocidade − 1 − Recuperação, Golpe 1 e Recuperação 1 (D-082)`);
+    const l = tab.linhas.find((r) => r[0] === c.nome);
+    if (!l) { f.push(`Combate: falta a linha "${c.nome}" na tabela de Preparo, Golpe e Recuperação`); continue; }
+    if (JSON.stringify(l) !== JSON.stringify(celulas(c))) f.push(`Combate, ${c.nome}: a linha é "${l.join(' | ')}", pelo dado devia ser "${celulas(c).join(' | ')}"`);
+  }
+  if (arte.graus.map((c) => c.velocidade).join() !== '5,6,7') f.push('regras.json: as Velocidades da Arte são 5, 6 e 7 por grau (D-082)');
+  const velhas = tab.linhas.filter((r) => /^Arte/.test(r[0])).length;
+  if (velhas !== arte.graus.length) f.push(`Combate: a tabela tem ${velhas} linhas de Arte, e o dado ${arte.graus.length} (sobrou a "Arte (conjuração) | 5 a 7")`);
+  // 2. a regra do esticar em regras.json: n × V − 1, o exemplo da V5 e só o ciclo final leva Recuperação
+  const est = arte.esticar;
+  if (!est || est.tickDoGolpeDoCiclo !== 'n × V − 1' || est.soOCicloFinalLevaRecuperacao !== true) f.push('regras.json reforma.arte.esticar: faltam "n × V − 1" e "só o ciclo final leva Recuperação"');
+  else if (JSON.stringify(est.exemploV5) !== JSON.stringify([1, 2, 3].map((n) => n * 5 - 1))) f.push(`regras.json reforma.arte.esticar: o exemplo da V5 devia ser 4, 9, 14 (n × 5 − 1), e é ${JSON.stringify(est.exemploV5)}`);
+  // 3. o capítulo Combate Físico, frase por frase
+  const linhasComb = comb.split('\n');
+  const LINHA_60 = '| 5 a 7 (esticada: 10 em diante) | Arte | conjurar uma Arte: 5 a 7 Ticks, pela escada de As Artes; esticar a conjuração a leva a duas, três ou quatro vezes essa Velocidade (10, 15 e 20 na Velocidade 5) |';
+  if (!linhasComb.includes(LINHA_60)) f.push('Combate: a linha da Arte na tabela de Velocidades devia ser a nova (esticar a duas, três ou quatro vezes a Velocidade), inteira');
+  const pArte = linhasComb.find((l) => l.startsWith('A **Arte** tem a mesma forma'));
+  if (!pArte) f.push('Combate: falta o parágrafo da Arte depois da tabela de Preparo, Golpe e Recuperação');
+  else {
+    for (const frase of ['Ela sai no **Tick do Golpe, o penúltimo da Velocidade** (a Velocidade menos um), e não no último', 'na Velocidade 5 o Preparo ocupa os Ticks 1 a 3, o Golpe é o Tick 4 e a Recuperação é o 5', 'na Velocidade 7, o Golpe é o Tick 6', 'de **4 a 6 Ticks**', 'A Recuperação da Arte cobra −2, como a de qualquer ataque']) {
+      if (!pArte.includes(frase)) f.push(`Combate, parágrafo da Arte: falta "${frase}"`);
+    }
+  }
+  const pNormal = linhasComb.find((l) => l.includes('A **Arte** é a exceção:'));
+  if (!pNormal || !pNormal.includes('e a Arte rola e produz o efeito no Tick do Golpe, o penúltimo da Velocidade (ver O tempo da Arte, em As Artes).')) f.push('Combate, Normal: a Arte devia rolar e produzir o efeito no Tick do Golpe, o penúltimo da Velocidade');
+  if (/no último Tick da Velocidade/.test(comb)) f.push('Combate: sobrou "no último Tick da Velocidade"');
+  // 4. regras.json, arcano.tempoDaArte e o esticar
+  const U = T.ultimoTick || {};
+  const tem = (txt, frase, onde) => { if (!String(txt).includes(frase)) f.push(`${onde}: falta "${frase}"`); };
+  const nao = (txt, re, onde) => { if (re.test(String(txt))) f.push(`${onde}: sobrou ${re}`); };
+  tem(T.nota, 'a Arte resolve no TICK DO GOLPE, o penúltimo da ação.', 'tempoDaArte.nota');
+  tem(U.regra, 'A ARTE resolve no TICK DO GOLPE, o penúltimo (a Velocidade menos um): uma conjuração de 7 Ticks acontece no sexto.', 'ultimoTick.regra');
+  tem(U.regra, 'Na Velocidade 5 o Golpe é o Tick 4, na 6 é o 5 e na 7 é o 6', 'ultimoTick.regra');
+  nao(U.regra, /sétimo|ÚLTIMO/, 'ultimoTick.regra');
+  tem(U.porque, 'Como a Arte se anuncia por quatro a seis Ticks (o Preparo e o Golpe),', 'ultimoTick.porque');
+  nao(U.porque, /se anuncia por cinco a sete/, 'ultimoTick.porque');
+  if (!U.tabela || U.tabela[1]?.momento !== 'Tick do Golpe, quando sai') f.push('ultimoTick.tabela: o segundo momento devia ser "Tick do Golpe, quando sai"');
+  tem(U.resumo, 'no Tick do Golpe se dá a forma e a mira', 'ultimoTick.resumo');
+  nao(U.resumo, /sete Ticks antes|no último Tick/, 'ultimoTick.resumo');
+  tem(T.identificar?.teste, 'no Tick do Golpe é uma bola de fogo pronta na mão.', 'identificar.teste');
+  tem(T.area?.deslocamentoLivre?.semGabarito, 'só travam no Tick do Golpe, durante o Preparo', 'semGabarito');
+  nao(T.area?.deslocamentoLivre?.semGabarito, /sete Ticks|último Tick/, 'semGabarito');
+  const DT = R?.arcano?.esticar?.decisaoTardia ?? R?.arcano?.decisaoTardia ?? Object.values(R?.arcano || {}).map((x) => x?.decisaoTardia).find(Boolean);
+  if (!DT) f.push('regras.json: não achei a decisaoTardia');
+  else {
+    tem(DT, 'No Tick do Golpe de cada ciclo ele escolhe', 'decisaoTardia');
+    tem(DT, 'O Golpe do ciclo n cai no Tick n × V − 1', 'decisaoTardia');
+    tem(DT, 'uma ação de Velocidade 5 decide no Tick 4; se esticar, decide de novo no 9, e assim por diante (14, 19).', 'decisaoTardia');
+    tem(DT, 'Só o ciclo final leva Recuperação.', 'decisaoTardia');
+    tem(DT, 'O Tick em que se decide esticar ainda é Preparo (−2 na Defesa), e só o Tick em que a Arte sai é Golpe (−4).', 'decisaoTardia');
+    nao(DT, /tick final|no 10/, 'decisaoTardia');
+  }
+  const FTN = Object.values(R?.arcano || {}).map((x) => x?.feiticoTicksNota).find(Boolean) ?? R?.arcano?.feiticoTicksNota;
+  if (!FTN) f.push('regras.json: não achei a feiticoTicksNota');
+  else { tem(FTN, 'a Arte resolve no Tick do Golpe, o penúltimo, ao contrário da ação comum', 'feiticoTicksNota'); nao(FTN, /ÚLTIMO/, 'feiticoTicksNota'); }
+  // 5. a página As Artes (regras.astro), linha inteira
+  const la = astro.split('\n');
+  if (!la.some((l) => /^\s*<div class="callout regra"><span class="lbl">A Arte sai no Tick do Golpe<\/span>$/.test(l))) f.push('regras.astro: o rótulo do callout devia ser "A Arte sai no Tick do Golpe" (linha inteira)');
+  const modos = la.find((l) => l.includes('<span class="lbl">Os dois modos</span>'));
+  if (!modos || !modos.includes('e a Arte sai no <a href="#tempo"><strong>Tick do Golpe, o penúltimo</strong></a>, ao contrário da ação comum, que resolve no primeiro.')) f.push('regras.astro, Os dois modos: a Arte devia sair no Tick do Golpe, o penúltimo');
+  const dec = la.find((l) => /^\s*Não é preciso anunciar de saída até onde vai\./.test(l));
+  if (!dec) f.push('regras.astro: falta o callout "Você decide no fim"');
+  else for (const frase of ['No <strong>Tick do Golpe de cada ciclo</strong> você escolhe', 'O Golpe do ciclo n cai no Tick <strong>n × V − 1</strong>', 'numa ação de Velocidade 5, você decide no Tick 4; se esticar, decide de novo no 9, e outra vez no 14.', 'Só o ciclo final leva Recuperação, e o sinal esticado dura T − 1 Ticks']) {
+    if (!dec.includes(frase)) f.push(`regras.astro, esticar: falta "${frase}"`);
+  }
+  if (!la.some((l) => /^\s*<p class="muted">O Tick em que você decide esticar ainda é Preparo \(−2 na Defesa\), e só o Tick em que a Arte sai é Golpe \(−4\)\. Quem segura no Tick 4 da Velocidade 5 não tem Recuperação no 5: esse Tick já é Preparo do ciclo seguinte\.<\/p>$/.test(l))) f.push('regras.astro: falta a frase separada do Tick de decisão (Preparo, −2), inteira');
+  nao(astro, /tick final de cada Velocidade|<strong>último<\/strong>|A Arte sai no último Tick/, 'regras.astro');
+  return f;
+}
+{
+  const ASTRO = ler('src/pages/artes/regras.astro').replace(/\r\n/g, '\n');
+  const realArte = conferirArte(COMB, REGRAS, ASTRO);
+  for (const x of realArte) falhas.push(x);
+  const mut = realArte.length ? {} : {
+    'a linha da Arte graus 0 a 3 no capítulo': (c, r, a) => [c.replace('| Arte, graus 0 a 3 | 5 | 3 | 1 | 1 |', '| Arte, graus 0 a 3 | 5 | 3 | 1 | 0 |'), r, a],
+    'a linha velha da Arte de volta no capítulo': (c, r, a) => [c.replace('| Arte, grau 4 | 6 | 4 | 1 | 1 |', '| Arte, grau 4 | 6 | 4 | 1 | 1 |\n| Arte (conjuração) | 5 a 7 | Velocidade − 1 | 1 | 0 |'), r, a],
+    'o penúltimo no parágrafo da Arte': (c, r, a) => [c.replace('Ela sai no **Tick do Golpe, o penúltimo da Velocidade**', 'Ela sai no **último Tick da Velocidade**'), r, a],
+    '4 a 6 Ticks de aviso': (c, r, a) => [c.replace('de **4 a 6 Ticks**', 'de **5 a 7 Ticks**'), r, a],
+    'a Arte no último Tick, no Normal': (c, r, a) => [c.replace('produz o efeito no Tick do Golpe, o penúltimo da Velocidade (ver', 'produz o efeito no último Tick da Velocidade (ver'), r, a],
+    'a linha 60 do capítulo (10, 15, 20 e adiante)': (c, r, a) => [c.replace('a leva a duas, três ou quatro vezes essa Velocidade (10, 15 e 20 na Velocidade 5)', 'a leva a 10, 15, 20 e adiante'), r, a],
+    'o sétimo em regras.json': (c, r, a) => [c, edita(r, (x) => { x.arcano.tempoDaArte.ultimoTick.regra = x.arcano.tempoDaArte.ultimoTick.regra.replace('acontece no sexto', 'acontece no sétimo'); }), a],
+    'o "cinco a sete Ticks" do sinal em regras.json': (c, r, a) => [c, edita(r, (x) => { x.arcano.tempoDaArte.ultimoTick.porque = x.arcano.tempoDaArte.ultimoTick.porque.replace('quatro a seis Ticks (o Preparo e o Golpe)', 'cinco a sete Ticks'); }), a],
+    'a tabela "Último Tick, quando sai" de volta': (c, r, a) => [c, edita(r, (x) => { x.arcano.tempoDaArte.ultimoTick.tabela[1].momento = 'Último Tick, quando sai'; }), a],
+    'o "último" do identificar.teste': (c, r, a) => [c, edita(r, (x) => { x.arcano.tempoDaArte.identificar.teste = x.arcano.tempoDaArte.identificar.teste.replace('no Tick do Golpe é uma bola', 'no último é uma bola'); }), a],
+    'os "sete Ticks" do semGabarito': (c, r, a) => [c, edita(r, (x) => { const d = x.arcano.tempoDaArte.area.deslocamentoLivre; d.semGabarito = d.semGabarito.replace('durante o Preparo:', 'durante os sete Ticks:'); }), a],
+    'o 10 no lugar do 9 na decisaoTardia': (c, r, a) => [c, edita(r, (x) => { const k = Object.values(x.arcano).find((y) => y?.decisaoTardia); k.decisaoTardia = k.decisaoTardia.replace('decide de novo no 9', 'decide de novo no 10'); }), a],
+    'sem "Só o ciclo final leva Recuperação" na decisaoTardia': (c, r, a) => [c, edita(r, (x) => { const k = Object.values(x.arcano).find((y) => y?.decisaoTardia); k.decisaoTardia = k.decisaoTardia.replace('Só o ciclo final leva Recuperação. ', ''); }), a],
+    'o exemplo da V5 estragado em reforma.arte.esticar': (c, r, a) => [c, edita(r, (x) => { x.combate.pgr.reforma.arte.esticar.exemploV5 = [5, 10, 15]; }), a],
+    'a feiticoTicksNota com ÚLTIMO': (c, r, a) => [c, edita(r, (x) => { x.arcano.feiticoTicksNota = String(x.arcano.feiticoTicksNota).replace('Tick do Golpe, o penúltimo', 'ÚLTIMO'); }), a],
+    'o rótulo do callout da página': (c, r, a) => [c, r, a.replace('<span class="lbl">A Arte sai no Tick do Golpe</span>', '<span class="lbl">A Arte sai no último Tick</span>')],
+    'Os dois modos na página': (c, r, a) => [c, r, a.replace('<strong>Tick do Golpe, o penúltimo</strong></a>', '<strong>último</strong></a>')],
+    'o esticar na página (tick 5, 10, 15)': (c, r, a) => [c, r, a.replace('você decide no Tick 4; se esticar, decide de novo no 9, e outra vez no 14.', 'você decide no tick 5; se esticar, decide de novo no 10, e outra vez no 15.')],
+    'a frase do Tick de decisão sumida da página': (c, r, a) => [c, r, a.replace(/ *<p class="muted">O Tick em que você decide esticar[^\n]*\n/, '')],
+    'a frase velha ao lado da nova na página': (c, r, a) => [c, r, a + '\n<p>No tick final de cada Velocidade você escolhe.</p>\n'],
+  };
+  const edita = (r, fn) => { const x = copia(r); fn(x); return x; };
+  for (const [nome, estraga] of Object.entries(mut)) {
+    const [c, r, a] = estraga(COMB, REGRAS, ASTRO);
+    if (c === COMB && JSON.stringify(r) === JSON.stringify(REGRAS) && a === ASTRO) { falhas.push(`o estrago "${nome}" não alterou nada (o teste de teste está torto)`); continue; }
+    if (conferirArte(c, r, a).length === 0) falhas.push(`o teste NÃO acusou o estrago da Arte "${nome}"`);
+  }
+  TOTAL_ARTE = Object.keys(mut).length;
+}
+
 if (falhas.length) {
   console.error(`✘ test-capitulo-armas: ${falhas.length} falha(s)`);
   for (const f of falhas) console.error('  · ' + f);
   process.exit(1);
 }
-const total = Object.keys(estragosTexto).length + Object.keys(estragosCatalogo).length + 2 + 7 + 1 + 9 + 13 + 9 + 3;
+const total = TOTAL_ARTE + Object.keys(estragosTexto).length + Object.keys(estragosCatalogo).length + 2 + 7 + 1 + 9 + 13 + 9 + 3;
 console.log(`✓ test-capitulo-armas · as tabelas de Arremesso, Atirador, Classes e a Máxima por Força do capítulo batem com armas.json e regras.json · ${total} estragos acusados`);

@@ -70,7 +70,7 @@ nova reusa esse nome e essa fórmula, e não inventa um terceiro.
 
 | para quê | qual conta | onde está |
 |---|---|---|
-| **quanto CUSTA** (Mana) | a **SOMA** dos graus investidos | `artes-grid.ts:331-335` (`interface Custo`) e `regras.astro:401` (`Some os níveis investidos`) |
+| **quanto CUSTA** (Mana) | a **SOMA** dos graus investidos | `artes-grid.ts:331-335` (`interface Custo`) e `regras.astro:402` (`Some os níveis investidos`) |
 | **quanto DEMORA** (Preparação) e o gating | o **MÁXIMO** · o nível efetivo | `artes-grid-mesa.ts:1527-1530`, `arcano.composta` |
 
 Isto não é contradição, é uma distinção que o sistema já tem. **Toda linha desta régua diz qual
@@ -131,7 +131,7 @@ custa um Tick a mais" e mandou conferir contra o que existe. O que existe é
 `regras.json:2441-2444` · `preparoBase: 2, preparoPorNivel: 1`, consumido por `reguaDaArte`. **O
 incremento bate; a base 2 é o que a descrição não menciona.** Fica a base 2, porque a instrução foi
 "se a escala já estiver definida em outro lugar, vale a que existe", e porque ela já está publicada
-no site (`src/pages/artes/regras.astro:314-331` · `A Arte sai no último Tick`, a Arte sai no ÚLTIMO Tick da montagem).
+no site (`src/pages/artes/regras.astro:315-332` · `A Arte sai no Tick do Golpe`; quando este parágrafo foi escrito o rótulo era "A Arte sai no último Tick", e o livro passou a soltar a Arte no Tick do Golpe, o penúltimo, pela D-084 (rodada 4c). O que este documento descreve é o Grid, que segue no último Tick da montagem até a passada do Grid, N22).
 
 **A Arte sai no ÚLTIMO Tick, e esse Tick é o GOLPE.** É a §5.3 do Arcano, já no ar, e a régua nova
 não a toca.
@@ -240,7 +240,7 @@ persistência, sem inventar armazenamento.
 
 **O teste é reusado, e não inventado:** `regras.json:arcano.tempo` →
 `improviso.combinacoes.concentracao.aoSofrerDano` · **Vontade + Acerto Arcano** para segurar;
-falhando, cai. Está publicado em `src/pages/artes/regras.astro:157` (`concentracao.aoSofrerDano`).
+falhando, cai. Está publicado em `src/pages/artes/regras.astro:158` (`concentracao.aoSofrerDano`).
 
 **Três ressalvas honestas sobre esse reuso:**
 

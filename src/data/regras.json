@@ -1906,27 +1906,28 @@
       }
     },
     "tempoDaArte": {
-      "nota": "A manifestação diz ONDE o elemento aparece. Esta parte diz o que acontece com quem está lá, e ela nasce de uma regra de tempo: a Arte resolve no ÚLTIMO Tick da ação.",
+      "nota": "A manifestação diz ONDE o elemento aparece. Esta parte diz o que acontece com quem está lá, e ela nasce de uma regra de tempo: a Arte resolve no TICK DO GOLPE, o penúltimo da ação.",
       "ultimoTick": {
-        "regra": "Ação comum resolve no primeiro Tick (ou nos primeiros), e o resto da Velocidade é recuperação. A ARTE resolve no ÚLTIMO: uma conjuração de 7 Ticks acontece no sétimo.",
+        "nomeDaChave": "O nome ultimoTick é histórico (até a D-084 a Arte saía no último Tick); a chave guarda a regra do Tick do Golpe. Renomear fica para a passada do Grid (D-054), porque os comentários do Grid e do test-artes-grid.mjs citam este nome.",
+        "regra": "Ação comum resolve no primeiro Tick (ou nos primeiros), e o resto da Velocidade é recuperação. A ARTE resolve no TICK DO GOLPE, o penúltimo (a Velocidade menos um): uma conjuração de 7 Ticks acontece no sexto. Na Velocidade 5 o Golpe é o Tick 4, na 6 é o 5 e na 7 é o 6; o Preparo ocupa os Ticks antes dele e a Recuperação, o último.",
         "excecao": "Vale mesmo quando a conjuração ocupa várias ações, e vale a não ser que o Efeito Especial diga o contrário: um Efeito pode comprar o direito de sair na hora, e é dele o ônus de dizer isso na própria ficha.",
-        "porque": "Não é detalhe de cronometragem, é a peça que sustenta o resto. Como a Arte se anuncia por cinco a sete Ticks, sair de perto pode ser movimento normal, na vez do alvo, e não uma reação fora de hora. E é o que faz da Arte uma decisão tomada com antecedência: o feiticeiro compromete cinco a sete Ticks montando uma coisa que os outros podem ver se juntando, e tem de acertar onde o inimigo VAI ESTAR, não onde ele está.",
+        "porque": "Não é detalhe de cronometragem, é a peça que sustenta o resto. Como a Arte se anuncia por quatro a seis Ticks (o Preparo e o Golpe), sair de perto pode ser movimento normal, na vez do alvo, e não uma reação fora de hora. E é o que faz da Arte uma decisão tomada com antecedência: o feiticeiro compromete a Velocidade inteira, de cinco a sete Ticks, montando uma coisa que os outros podem ver se juntando, e tem de acertar onde o inimigo VAI ESTAR, não onde ele está.",
         "tabela": [
           {
             "momento": "Declaração, no primeiro Tick",
             "decide": "se é improviso ou Efeito Especial, e QUANTO de cada parâmetro: Duração, Alcance, Volume, Dano, Alvos"
           },
           {
-            "momento": "Último Tick, quando sai",
+            "momento": "Tick do Golpe, quando sai",
             "decide": "PARA ONDE e COMO: o alvo, a direção, a abertura das fatias, o ângulo, onde a base pousa"
           }
         ],
-        "resumo": "Na declaração se compra o tamanho, no último Tick se dá a forma e a mira. O feiticeiro não fica preso à posição que o inimigo tinha sete Ticks antes, e também não pode trocar de feitiço porque a situação mudou."
+        "resumo": "Na declaração se compra o tamanho, no Tick do Golpe se dá a forma e a mira. O feiticeiro não fica preso à posição que o inimigo tinha na declaração, e também não pode trocar de feitiço porque a situação mudou."
       },
       "identificar": {
         "nota": "Nem todo mundo entende o que está vendo se juntar. Há duas maneiras de saber.",
         "deGraca": "Sem teste: quem tem a mesma Tradição daquela Arte, o nível da Arte e, sendo Efeito Especial, conhece aquele Efeito, reconhece na hora. Você identifica de imediato o que você mesmo saberia fazer.",
-        "teste": "Para todos os outros: Inteligência + Ocultismo (ou a habilidade específica que aquela Arte pedir) contra uma Dificuldade que CAI a cada Tick que passa. No primeiro Tick o sinal é um arrepio no ar; no último é uma bola de fogo pronta na mão.",
+        "teste": "Para todos os outros: Inteligência + Ocultismo (ou a habilidade específica que aquela Arte pedir) contra uma Dificuldade que CAI a cada Tick que passa. No primeiro Tick o sinal é um arrepio no ar; no Tick do Golpe é uma bola de fogo pronta na mão.",
         "regras": [
           "Um teste por efeito. Não se insiste.",
           "O jogador escolhe em que Tick testa, e essa é a decisão interessante: cedo é difícil e rende tempo para agir, tarde é fácil e não rende nada.",
@@ -1939,7 +1940,7 @@
         "deslocamentoLivre": {
           "titulo": "Livre, com a vez na mão: o próprio deslocamento",
           "texto": "Quem ainda não agiu sai pelas próprias pernas: o Deslocamento de Batalha, 2 + (Destreza + Atletismo) ÷ 4 metros num Tick (3 m para o camponês, 4 para o aventureiro, 5 para o herói), ou o Arranque da Corrida, que rende mais. Esse Tick é GASTO: sair da área é o movimento, e não o passo de brinde que acompanha outra ação. E a jogada é a mesma de quem desvia fora da vez, porque a área pegou os dois. A vantagem de estar livre é dupla e é grande: um Tick só cobre vários metros, em vez de um metro por Tick, e a rolagem sai limpa, sem a escada de Preparo, Golpe ou Recuperação pesando no total. Depois do movimento você continua livre para agir.",
-          "semGabarito": "Como a mira e a forma só travam no último Tick, durante o preparo o molde AINDA NÃO TEM LUGAR NO CHÃO. Não se sai de uma área que ainda não existe: o que se faz é ficar fora do alcance dela, e o alcance do improviso é a distância da fatia (no grau 6: 5,2 m a 60°, 3 m a 90°, 1,7 m a 120°), contra um Deslocamento de Batalha de 3 a 5 m: a 60° andando você não escapa, correndo sim (o Arranque chega a 7 m para quem tem Força, Destreza e Atletismo 5). Por isso a mesa não precisa de gabarito desenhado durante os sete Ticks: o que está em jogo é distância do feiticeiro, não a borda de um desenho."
+          "semGabarito": "Como a mira e a forma só travam no Tick do Golpe, durante o Preparo o molde AINDA NÃO TEM LUGAR NO CHÃO. Não se sai de uma área que ainda não existe: o que se faz é ficar fora do alcance dela, e o alcance do improviso é a distância da fatia (no grau 6: 5,2 m a 60°, 3 m a 90°, 1,7 m a 120°), contra um Deslocamento de Batalha de 3 a 5 m: a 60° andando você não escapa, correndo sim (o Arranque chega a 7 m para quem tem Força, Destreza e Atletismo 5). Por isso a mesa não precisa de gabarito desenhado durante o Preparo: o que está em jogo é distância do feiticeiro, não a borda de um desenho."
         },
         "desvio": {
           "titulo": "Fora da vez, no Tick em que a Arte sai: o desvio de emergência",
@@ -2093,7 +2094,7 @@
       "nota": "Passar do nível da Arte num parâmetro. Investir mais Mana NÃO fura o teto sozinho: quem tem Fogo 3 leva tudo até o 3 pagando o normal, mas para alcançar o 4 tem de esticar.",
       "custo": "Um parâmetro N níveis ACIMA do nível da Arte custa (nível do parâmetro) × (N + 1) pontos.",
       "speed": "CADA nível acima soma outra vez a Velocidade da ação, somando entre todos os parâmetros esticados. Velocidade 5 vira 10 com um nível acima, 15 com dois.",
-      "decisaoTardia": "O feiticeiro NÃO decide de saída até onde vai. No tick final de cada Velocidade ele escolhe: soltar o efeito agora, ou segurar e subir mais um nível de um parâmetro. Se segurar, decide de novo no fim da Velocidade seguinte. Uma ação de Velocidade 5 decide no tick 5; se esticar, decide de novo no 10, e assim por diante.",
+      "decisaoTardia": "O feiticeiro NÃO decide de saída até onde vai. No Tick do Golpe de cada ciclo ele escolhe: soltar o efeito agora, ou segurar e subir mais um nível de um parâmetro. Se segurar, decide de novo no Tick do Golpe do ciclo seguinte. O Golpe do ciclo n cai no Tick n × V − 1, em que V é a Velocidade da conjuração: uma ação de Velocidade 5 decide no Tick 4; se esticar, decide de novo no 9, e assim por diante (14, 19). Só o ciclo final leva Recuperação. O Tick em que se decide esticar ainda é Preparo (−2 na Defesa), e só o Tick em que a Arte sai é Golpe (−4).",
       "tabela": [
         {
           "acima": 0,
@@ -2382,7 +2383,7 @@
       "nota": "O desconto da Centelha continua valendo sobre o total, e no modo Ritual ele é multiplicado pelo tempo gasto: é assim que o curandeiro trata os feridos depois da luta quase de graça, mesmo tendo pouco Mana para gastar durante ela."
     },
     "papelDoFeiticeiro": "Feitiçaria não é build barata nem para personagem iniciante: nos primeiros níveis as conjurações são escassas, como o mago de D&D. No Centelha o feiticeiro precisa de um papel secundário, e não necessariamente de combate. Quando o Mana acaba, ele depende de outros recursos para ser útil.",
-    "feiticoTicksNota": "Os Ticks são o tempo de PREPARO, e a Arte resolve no ÚLTIMO deles, ao contrário da ação comum, que resolve no primeiro. Ver `tempoDaArte`."
+    "feiticoTicksNota": "Os Ticks são a Velocidade da conjuração (Preparo, Golpe e Recuperação), e a Arte resolve no Tick do Golpe, o penúltimo, ao contrário da ação comum, que resolve no primeiro. Ver `tempoDaArte`."
   },
   "combate": {
     "nota": "A linha do tempo do combate. O jogo tem DOIS sistemas de tempo, à escolha do mestre por mesa, e UM conjunto de regras: tudo aqui está escrito em moeda comum (Ticks de Velocidade, dados de rolagem e pontos de Defesa) e vale nos dois. Ver `Combate_Tempo.md`, seção 15.",
@@ -2615,7 +2616,7 @@
         "nota": "A Arte sai no ÚLTIMO Tick da montagem: Preparo = 2 + nível, ciclo = nível + 3. É a §5.3 do Arcano, já no site."
       },
       "reforma": {
-        "nota": "A reforma de P/G/R da D-082 (tiro e arremesso na rodada 4a, corpo a corpo na 4b, 10/10/2026): Preparo = Velocidade − 1 − Recuperação, com o Golpe sempre em 1 Tick, e toda arma de tiro tem Recuperação. Fica numa chave à parte porque `preparo` (a fórmula por classe, acima) é lida pelo motor do Grid (combate-tempo.ts), congelado pela D-054: o motor passa a ler esta na passada do Grid (N22 em N-grid-pendencias.md). Os números são os da tabela 'Preparo, Golpe e Recuperação' do capítulo Combate Físico, e o test-capitulo-armas.mjs os prende nos dois lados. O corpo a corpo, a Investida, a Rajada e a dupla (rodada 4b) estão em `corpoACorpo`, `investida`, `rajada` e `dupla`, na mesma chave e com o mesmo motivo.",
+        "nota": "A reforma de P/G/R da D-082 (tiro e arremesso na rodada 4a, corpo a corpo na 4b, a Arte na 4c, 10/10/2026): Preparo = Velocidade − 1 − Recuperação, com o Golpe sempre em 1 Tick, e toda arma de tiro tem Recuperação. Fica numa chave à parte porque `preparo` (a fórmula por classe, acima) é lida pelo motor do Grid (combate-tempo.ts), congelado pela D-054: o motor passa a ler esta na passada do Grid (N22 em N-grid-pendencias.md). Os números são os da tabela 'Preparo, Golpe e Recuperação' do capítulo Combate Físico, e o test-capitulo-armas.mjs os prende nos dois lados. O corpo a corpo, a Investida, a Rajada e a dupla (rodada 4b) estão em `corpoACorpo`, `investida`, `rajada` e `dupla`, na mesma chave e com o mesmo motivo.",
         "corpoACorpo": [
           { "id": "leve", "nome": "Leve", "velocidade": 5, "preparo": 1, "golpe": 1, "recuperacao": 3, "armas": ["adaga", "espada-curta", "machadinha", "bastao", "sabre"] },
           { "id": "media", "nome": "Média", "velocidade": 6, "preparo": 2, "golpe": 1, "recuperacao": 3, "armas": ["espada-longa", "machado", "espada-serrilhada", "maca", "picareta-de-guerra", "martelo", "maca-estrela"] },
@@ -2642,6 +2643,21 @@
           "parDeLeves": { "preparo": 1, "golpes": 2, "recuperacao": 2, "ciclo": 5 },
           "comMedia": { "preparo": 2, "golpes": 2, "recuperacao": 3, "ciclo": 7 },
           "golpeSemGolpear": -2
+        },
+        "arte": {
+          "nota": "A Arte na D-082 e na D-084 (rodada 4c): sai no Tick do Golpe, o penúltimo (Velocidade − 1), com 1 Tick de Recuperação, que cobra −2 como a de qualquer ataque. A Velocidade vem do maior grau investido na conjuração (feiticoTicks). O motor do Grid segue em combate.pgr.preparo.arte e combate.pgr.arte, congelados pela D-054 (N22).",
+          "graus": [
+            { "id": "arte-0-3", "nome": "Arte, graus 0 a 3", "velocidade": 5, "preparo": 3, "golpe": 1, "recuperacao": 1 },
+            { "id": "arte-4", "nome": "Arte, grau 4", "velocidade": 6, "preparo": 4, "golpe": 1, "recuperacao": 1 },
+            { "id": "arte-5-6", "nome": "Arte, graus 5 e 6", "velocidade": 7, "preparo": 5, "golpe": 1, "recuperacao": 1 }
+          ],
+          "esticar": {
+            "nota": "Esticar soma a Velocidade outra vez (T = n × V, n de 1 a 4). O Golpe do ciclo n cai no Tick n × V − 1 (V5: 4, 9, 14, 19); só o ciclo final leva Recuperação; o Tick em que se decide esticar ainda é Preparo (−2), e só o Tick em que a Arte sai é Golpe (−4). Custo total 2 × T + 2, o mesmo do Normal. O sinal dura T − 1 Ticks.",
+            "tickDoGolpeDoCiclo": "n × V − 1",
+            "exemploV5": [4, 9, 14],
+            "soOCicloFinalLevaRecuperacao": true,
+            "sinal": "T − 1"
+          }
         },
         "tiro": [
           { "id": "arremesso-leve", "nome": "Arremesso leve", "velocidade": 4, "preparo": 2, "golpe": 1, "recuperacao": 1, "armas": ["shuriken", "mini-faca", "kunai"] },

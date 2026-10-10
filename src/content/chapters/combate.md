@@ -57,7 +57,7 @@ Cada ação tem uma **Velocidade**, quantos Ticks ela custa antes de você poder
 | 6 | Ataque médio | espada longa, machado de uma mão, lança, arco curto, azagaia |
 | 7 | Ataque pesado | martelo de guerra, montante, alabarda, arco longo e composto |
 | 9 a 15 | Ação demorada | recarregar uma besta |
-| 5 a 7 (esticada: 10 em diante) | Arte | conjurar uma Arte: 5 a 7 Ticks, pela escada de As Artes; esticar a conjuração a leva a 10, 15, 20 e adiante |
+| 5 a 7 (esticada: 10 em diante) | Arte | conjurar uma Arte: 5 a 7 Ticks, pela escada de As Artes; esticar a conjuração a leva a duas, três ou quatro vezes essa Velocidade (10, 15 e 20 na Velocidade 5) |
 
 <p class="muted">Armas leves agem mais vezes e defendem melhor; as pesadas batem como um trovão, mas deixam você exposto entre os golpes. A arma define o seu estilo. A tabela é uma <strong>lista de exemplos</strong>, não um contrato: o "Tipo de ação" é só orientação de leitura, e a Velocidade real de cada arma está no catálogo de <a href="/centelha-rpg/regras/armas-e-armaduras">Armas &amp; Armaduras</a>.</p>
 
@@ -92,9 +92,13 @@ Toda arma tem **ao menos 1 Tick de Preparo**, e a conta é **Preparo = Velocidad
 | Besta Média | 12 | 9 | 1 | 2 |
 | Besta Grande | 15 | 12 | 1 | 2 |
 | Azagaia com atlatl | 8 | 5 | 1 | 2 |
-| Arte (conjuração) | 5 a 7 | Velocidade − 1 | 1 | 0 |
+| Arte, graus 0 a 3 | 5 | 3 | 1 | 1 |
+| Arte, grau 4 | 6 | 4 | 1 | 1 |
+| Arte, graus 5 e 6 | 7 | 5 | 1 | 1 |
 
 A **Haste** se divide em duas: a **média** (Lança, Bordão, Cajado, Tridente, Arpão) e a **de Guerra** (Foice Grande, Lança Longa, Alabarda, Glaive, Guisarme, Poleaxe), maior e mais lenta. No corpo a corpo o Golpe cai no Tick logo depois do Preparo, e sobram três Ticks de Recuperação. Nas armas de **tiro** (os arcos, as bestas, a Funda e o Arremesso) o Golpe cai no Tick **imediatamente antes da Recuperação**, que **toda arma de tiro tem**: quase toda a Velocidade é Preparo, e é por isso que a Besta Grande (Velocidade 15) passa **doze Ticks** armando, com a guarda aberta, um Tick de Golpe e dois de Recuperação. No sistema Normal, o padrão deste capítulo, o tiro já foi rolado na declaração (ver *Dois sistemas de tempo*); esses Ticks marcam quanto tempo a guarda fica aberta. Até o Arremesso leve tem um Tick de Recuperação depois do Golpe, o de voltar à postura.
+
+A **Arte** tem a mesma forma, com 1 Tick de Recuperação, e a Velocidade vem do maior grau investido na conjuração (5, 6 ou 7). Ela sai no **Tick do Golpe, o penúltimo da Velocidade** (a Velocidade menos um), e não no último: na Velocidade 5 o Preparo ocupa os Ticks 1 a 3, o Golpe é o Tick 4 e a Recuperação é o 5; na Velocidade 7, o Golpe é o Tick 6. Quem vê a Arte se juntar tem o Preparo mais o Golpe de aviso, de **4 a 6 Ticks**. A Recuperação da Arte cobra −2, como a de qualquer ataque. Esticar a conjuração, que se decide a cada Tick do Golpe, está em *O tempo da Arte*, em As Artes.
 
 Cada fase custa Defesa, pela mesma moeda: estar comprometido com um gesto abre a guarda.
 
@@ -128,7 +132,7 @@ Preparo, Golpe e Recuperação em Ticks distintos.
   Tick da declaração, com a Defesa em −2 durante o Preparo e −4 no Tick do golpe, exatamente
   como descrito acima, e **−2 até a próxima ação** pelo ataque que acabou de fazer (a Guarda sob pressão). **Rola-se ao declarar**, em todo golpe de arma: o acerto e o
   dano valem no Tick da declaração, e o Preparo e o Golpe que vêm depois só marcam a Defesa em −2 e
-  em −4. A Velocidade é a soma do Preparo, do Golpe e da Recuperação, e a Defesa fica aberta em todos os Ticks da ação, num custo total de **2 × Velocidade + 2**, seja qual for a divisão entre Preparo e Recuperação. A **Arte** é a exceção: só o tamanho de cada parâmetro se declara no primeiro Tick, e a Arte rola e produz o efeito no último Tick da Velocidade (ver O tempo da Arte, em As Artes). Não há um Tick isolado de Recuperação: a Velocidade inteira empurra a
+  em −4. A Velocidade é a soma do Preparo, do Golpe e da Recuperação, e a Defesa fica aberta em todos os Ticks da ação, num custo total de **2 × Velocidade + 2**, seja qual for a divisão entre Preparo e Recuperação. A **Arte** é a exceção: só o tamanho de cada parâmetro se declara no primeiro Tick, e a Arte rola e produz o efeito no Tick do Golpe, o penúltimo da Velocidade (ver O tempo da Arte, em As Artes). Não há um Tick isolado de Recuperação: a Velocidade inteira empurra a
   próxima ação, e é por isso que este capítulo fala em "Velocidade" e raramente em
   "Recuperação" sozinha.
 - **Três fases (P/G/R)**, usado na mesa tática (o Grid): a mesma Velocidade se abre em Ticks
