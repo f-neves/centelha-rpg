@@ -1,0 +1,1 @@
+- Rodada 6: leitores do porte (so o Grid), tabela e glossario conferidos, 30 mutacoes (29 pegas), mesa medida com bancada 390/1300. Veredito 161: PROCEDE.
