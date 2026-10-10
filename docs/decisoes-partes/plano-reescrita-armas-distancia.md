@@ -109,7 +109,25 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
   O livro já tem a Rajada (com duas linhas de P/G/R) e a dupla no Normal; a rodada confere e acrescenta o que
   falta, sobre a régua nova.
 - **Trava (cumprida em 10/10/2026): só começa depois de a D-083 estar registrada**, para o `combate.md` não ser
-  reescrito duas vezes. Continua fora: a Ambidestria (K18), a D-068 e o par de Punhos.
+  reescrito duas vezes. **Solta em 10/10/2026 (resposta do autor, mensagem sobre a D-068 e os dois Punhos):**
+  entram na 4b, além do acima:
+  - **D-068:** o parágrafo da Executora de e462681a, como estava, em `combate.md`, onde fala de ações de ataque
+    ("Nada dá ataque extra sem dizer que dá... Os golpes a mais são os que uma regra dá pelo nome, como a Rajada e
+    a empunhadura dupla, abaixo.").
+  - **Dois Punhos (cláusula da D-083):** duas armas leves, cada um com as estatísticas de Punhos (1/1/3), valendo
+    como par para a empunhadura dupla, a Rajada (teto 3), o Bloqueio (+1 cada) e a Guarda sob pressão (2 ataques);
+    só as mãos fazem par (os dois punhos e a mão que conta como arma, D-070); chute, mordida, cauda e patas de animal
+    seguem a D-068. Uma frase de Mestre para a dupla mista (ciclo da arma mais lenta, em qualquer mão), com exemplo.
+  - **D-088 (Bloqueio desarmado contra arma):** no lugar do parágrafo "Contra lâmina, o corpo não segura"
+    (`armas-e-armaduras.md`, Luta desarmada) e na remissão de `combate.md`, Esquivar ou Bloquear: a mão nua bloqueia
+    qualquer ataque armado, sem os dados de Margem do ataque, e toma o dano da arma. As leituras a, b e d entram
+    como frase; **a leitura c (dupla mista) NÃO entra até o autor responder** (conflito com a D-065 item 3).
+    Sem código novo: a ficha só calcula o valor do Bloqueio.
+  - **Ficha:** o `armas.json` e o P/G/R dos Punhos passam a 1/1/3 (hoje a ficha lê a régua antiga, 0/1/4, para
+    todas as armas); a dupla Punhos/Punhos da ficha continua como está. A ficha cobra hoje −1d6 na hábil e −2d6 na
+    inábil: **não mexer**, depende da K18 ("se há penalidade por atacar com a mão inábil").
+  - **Criaturas:** nada se edita (B14); a nota das medições infladas está em B-bestiario.md (B14) e no T4.
+  Continua fora: a Ambidestria (K18).
 - Espera o veredito da rodada 14.
 
 **Rodada 4c · As Artes: a Arte sai no Tick do Golpe** (D-084; 2b §3 e §4 item 7)

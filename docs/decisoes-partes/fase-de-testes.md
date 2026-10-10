@@ -65,6 +65,10 @@ Estado de todos os itens: **abertos**. Nenhum deve rodar antes de existir o que 
 - Medir: se as criaturas grandes ficam fáceis demais de acertar com o bônus do menor sem teto (o Verme Púrpura
   Imenso do bestiário tem Defesa 4); o papel da Couraça de Porte; se a nota ao Mestre sobre aumentar a Defesa
   de criaturas maiores que Médio entre si basta.
+- **Nota de 10/10/2026 (D-068 e a cláusula dos dois Punhos da D-083):** criatura não tem dupla de garras ou
+  patas; só as mãos fazem par. A bancada de 01/10/2026 modelou "duas armas naturais, uma por pata", e essas
+  medições estão **infladas**: não valem como base. As fichas refeitas (B14) nascem com **uma arma natural por
+  ação**, e é com elas que este item roda (B-bestiario.md, B14, nota das armas naturais).
 - Depende de: **as fichas das criaturas refeitas e os desafios recalculados (B14)**. O autor adiou isso: não
   se recalcula nada agora, e as fichas serão refeitas antes da fase de testes. Este item só roda depois.
 

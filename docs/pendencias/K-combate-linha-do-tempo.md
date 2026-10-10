@@ -113,7 +113,9 @@ revistos por ela.
   fica a −2. A dupla ganha da rajada em todas as colunas, que era a exigência. *(A geometria de
   19/08, `P→G→P→G→R` com freio de dado, está registrada e superada nas §14.4/§14.5/§14.11.)*
   - **Nota de 10/10/2026: registrada como D-083** (a Rajada e a dupla não tinham número no registro). Dois
-    Punhos como par de leves: em espera (D-068).
+    Punhos: **decidido pelo autor em 10/10/2026** (cláusula da D-083): contam como duas armas leves (1/1/3, D-082)
+    para a empunhadura dupla, a Rajada (teto 3), o Bloqueio (+1 cada) e a Guarda sob pressão (2 ataques); só as
+    mãos fazem par (os dois punhos e a mão que conta como arma, D-070); chute, mordida, cauda e patas seguem a D-068.
 - [ ] **K20 · [DECIDIR] O que se pode fazer no Preparo e na Recuperação.** A §14.6 do
   `Combate_Tempo.md` tem um primeiro recorte, mas ele foi escrito antes de duas coisas mudarem, e
   precisa de uma passada inteira. O que já está resolvido: **no Preparo você aborta** (perdendo os
@@ -140,6 +142,11 @@ revistos por ela.
   Lâmina) é exatamente apagar o dado extra da mão fraca, e isso virou o padrão. Ou ela ganha outro
   benefício, ou a paridade da dupla fica atrás dela e a dupla sem treino continua armadilha
   (22,9% contra 54,0%). §14.4.
+  - **Nota de 10/10/2026 (autor):** a Ambidestria continua aberta. **O que falta decidir nela é se há
+    penalidade por atacar com a mão inábil.** (O livro diz "as duas mãos atacam a −1d6" e a Ambidestria
+    apaga esse dado; a ficha hoje cobra −1d6 na hábil e −2d6 na inábil, −1d6 com a Técnica. A divergência
+    entre ficha e livro depende desta decisão, e a rodada 4b não mexe na ficha por causa dela.) A mão inábil
+    vale para qualquer coisa usada nas mãos da dupla, inclusive os dois Punhos (cláusula da D-083).
 - [ ] **K19 · [FAZER] A cadeia foi medida só na arma leve.** Na média e na pesada cada elo custa 2
   e 3 Ticks, e as três curvas de freio não foram varridas ali. Bateria `--so T`.
 - [ ] **K21 · [FAZER/DECIDIR] As armas versáteis: a regra, a lista e o preço da forma de duas

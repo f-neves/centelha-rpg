@@ -137,6 +137,12 @@ limitações conhecidas, que são as três de baixo.
       bloqueiam sem tomar dano, e o Mestre julga as exceções;
     - o ataque e a defesa do Golem de Ferro e do Golem de Pedra são revistos com essa regra. A fixação
       dos dois como "media" no `gen-monsters.mjs` (N20) fica como está até lá.
+  - **Criatura não tem dupla de garras ou patas (D-068 e a cláusula dos dois Punhos da D-083, 10/10/2026).**
+    Só as mãos fazem par (os dois punhos e a mão que conta como arma); chute, mordida, cauda e patas de animal
+    são opções de ataque, não par. **As medições da bancada de 01/10/2026 que modelaram "duas armas naturais,
+    uma por pata" estão infladas** (davam à criatura o segundo golpe da empunhadura dupla que ela não tem).
+    Não as use como base de desafio. **As fichas refeitas nascem com uma arma natural por ação.** O bestiário
+    não se edita agora; a divergência fica aqui até a B14 chegar nas fichas.
 - [x] **B15 · [CORRIGIDO em 28/09/2026, achado da própria rodada estava ERRADO] O bônus de
   Centelha NÃO sai 0 em toda criatura.** Registrado em 28/09/2026, Fase 1 da Reforma da
   Centelha, como "as 309 fichas do bestiário não têm bloco `pericias`, o bônus de Centelha em
