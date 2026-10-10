@@ -135,6 +135,10 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
 - Espera o veredito da rodada 14.
 
 **Rodada 4c · As Artes: a Arte sai no Tick do Golpe** (D-084; 2b §3 e §4 item 7)
+- **FEITA em 10/10/2026:** b56d78f5 (`combate.md`, `artes/regras.astro`, `regras.json`, `test-capitulo-armas.mjs`,
+  `CONJURACAO.md`), veredito 157 PROCEDE (0 BLOQUEIA, 0 CORRIGE), Validar e Deploy verdes em b56d78f5. Nada
+  recalibrado, Grid intocado. A frase do Tick de decisão mora em três lugares (página, `decisaoTardia`,
+  `reforma.arte.esticar.nota`): se o autor a vetar, são as três.
 - **Escopo fechado (ordem do usuário, 10/10/2026): só o TEMPO das Artes.** Não recalibra nenhuma Arte (ART-34, ART-5,
   ART-38, ART-40 e a A34 seguem na fila), não mexe no Grid (`artes-grid*.ts`, `grid.astro`, `combate.astro` seguem
   no tempo antigo até a passada, N22) e não decide equilíbrio: o efeito da Arte mais cedo no equilíbrio é o **T6** de
@@ -277,7 +281,14 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
   7. **(156) O fallback por Velocidade de `ficha-pgr.ts` não é exercitado** (4 de 12 mutações passam, porque as 40 armas
      casam por id; a asserção da "arma inventada" é condicional e o comentário diz "V6" onde o código usa 4). Uma
      asserção por grupo, sem condicional, e o comentário certo. Dono: Executora-2. Conferência: Revisora.
-  8. Mutantes equivalentes da 156 ("não troca o ciclo", `c.id !== 'punhos'`): sem ação.
+  8. Mutantes equivalentes da 156 ("não troca o ciclo", `c.id !== 'punhos'`): sem ação. **A 6 foi fechada na 4c**
+     (b56d78f5, conferida no 157).
+  9. **(157) Pinar "9 Ticks quando a ação passa a 10"** no callout do esticar e a frase final do parágrafo da Arte em
+     `combate.md`. Dono: Executora-2. Conferência: Revisora.
+  10. **(157) Pinar "Esses Ticks são a Velocidade da conjuração"** (callout "Os dois modos"). Dono: Executora-2.
+  11. **(157) Renomear `nomeDaChave` para `nota`** em `regras.json` (cosmético; conferir quem lê). Dono: Executora-2.
+  12. (157) `ultimoTick.regra` diz o mesmo duas vezes, e a frase do Tick de decisão está em três lugares (ver a 4c):
+     sem ação.
 - **A mensagem do 8748735d diz que a mesa não importa a ficha-engine** antes de a Executora conferir; a 156 confirmou
   que é verdade (os imports são `ficha.astro` e `personagem.astro`). Não se reescreve.
 - **Pendências guardadas da Missão 2 que o 2b §5 lista e nenhuma rodada cobria:** o "caso 11 forte" (veterana-2, item
@@ -306,16 +317,16 @@ Fonte: `veterana-2b-reforma-pgr.md` §4, "Textos a reescrever". "Feito" quer diz
 
 | Item do 2b §4 | Estado | Rodada |
 | --- | --- | --- |
-| 1. Tabela de Preparo (Preparo e Recuperação) | Feito para o corpo a corpo e o tiro (`combate.md` l.77 a 94). **Resta a linha "Arte (conjuração) 5 a 7, Velocidade − 1, 1, 0"** (l.95), velha frente à D-082 | 4a e 4b (feito); a linha da Arte na **4c** |
+| 1. Tabela de Preparo (Preparo e Recuperação) | Feito para o corpo a corpo e o tiro (`combate.md` l.77 a 94). A linha da Arte virou as três da D-082 na 4c | 4a, 4b e 4c (feito) |
 | 2. Parágrafo do Golpe nas armas de Distância; sai "No Arremesso sobra um Tick" | Feito (`combate.md` l.97) | 4a (feito) |
 | 3. Tabela de Velocidades (linhas 6 e 7) | Feito (`combate.md` l.57 e 58) | 4b (feito) |
 | 4. Recarga (doze Ticks) e exemplo do Bram | Feito (`combate.md` l.417 a 424) | 4a (feito) |
 | 5. "Contra 6 de todos os arcos" | Feito (a frase não existe mais no texto de hoje) | 4a (feito) |
 | 6. Golpes no mesmo instante (Tick 3, Tick 4) | Feito (`combate.md` l.466) | 4b (feito) |
-| 7. A Arte (os dois modos, "sai no último Tick", "sétimo", tabela, "cinco a sete", esticar nos Ticks 5, 10 e 15, e o Normal) | **Pendente** (`combate.md` l.131, `artes/regras.astro`, `regras.json`; ver a 4c) | **4c** |
+| 7. A Arte (os dois modos, "sai no último Tick", "sétimo", tabela, "cinco a sete", esticar nos Ticks 5, 10 e 15, e o Normal) | Feito (`combate.md`, `artes/regras.astro`, `regras.json`; b56d78f5, veredito 157) | 4c (feito) |
 | 8. Catálogo de armas (classes; Lança 1d6; Alabarda na Haste de Guerra; Dardos para Plumbata e dados do Arremesso; Rede sem dano) | Feito (`armas-e-armaduras.md` l.40, 78, 98, 105) | 1, 2 e 4b (feito) |
 | 9. Distâncias de Arremesso | Feito pelas D-075 e D-076 (Efetiva e Máxima, no lugar da coluna Distância) | 1 e 2 (feito) |
-| 10. Investida e Normal | Feito (`combate.md` l.131 e 393 a 401). **Resta só a frase da Arte no Normal** (l.131) | 4b (feito); a frase da Arte na **4c** |
+| 10. Investida e Normal | Feito (`combate.md` l.131 e 393 a 401). A frase da Arte no Normal passou ao Tick do Golpe na 4c | 4b e 4c (feito) |
 
 Pendências do 2b §5: o CONFLITO do Normal fechou na D-082 (a pressão vale em todos os Ticks); a Recuperação da Arte
 cobrar −2 e a seção 3 (a Arte no Tick do Golpe) fecharam na D-082 e na D-084; as distâncias do Arremesso fecharam nas
@@ -331,7 +342,7 @@ na D-083; o "caso 11 forte" e a "janela de aborto" estão na **rodada 8** (triag
 - Conferido por sha em 10/10/2026: 85461925, 32924728, 4450f70c, 2ef4f5b8, 3909629a, 33ab2068 e 8c04d6a6, Validar e
   Deploy verdes. Depois: e5ab6925 verde; **8748735d (4d): Validar verde, Deploy "cancelled"** porque o push seguinte
   (adee7295) o substituiu na fila do Pages (`deploy.yml`: `concurrency: pages`, `cancel-in-progress: true`), o que não é falha; o Deploy de adee7295, que já contém a 4d, ficou verde,
-  assim como o de 20ec3e89.
+  assim como o de 20ec3e89. **b56d78f5 (4c): Validar e Deploy verdes.**
 
 ## Ordem e custo
 
