@@ -113,7 +113,7 @@ Cada arma de tiro tem uma **Efetiva** (a coluna Efetiva em [Armas & Armaduras](/
 - Na **Guarda sob pressão**, o ataque conta como **recebido** no Tick da chegada, e não no do Golpe.
 - O **bumerangue de retorno** volta no mesmo número de Ticks que levou para ir. Até a Efetiva, a ida leva 0 Ticks e a volta também, porque a arma está na mão ao fim do Golpe.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>A <strong>Adaga de Arremesso</strong> (Efetiva 10 m) contra um alvo a <strong>25 m</strong>: n = 3, <strong>−9</strong> no acerto, e o projétil chega <strong>3 Ticks depois do Golpe</strong>. O <strong>Arco Longo</strong> (Efetiva 50 m) contra um alvo a <strong>150 m</strong>: n = 4, <strong>−12</strong>, chega 4 Ticks depois. Na Máxima do arco, a 250 m: n = 8, <strong>−24</strong>, 8 Ticks de voo.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>A <strong>Adaga de Arremesso</strong> (Efetiva 10 m) contra um alvo a <strong>25 m</strong>: n = 3, <strong>−9</strong> no acerto, e o projétil chega <strong>3 Ticks depois do Golpe</strong>. O <strong>Arco Longo</strong> (Efetiva 50 m) contra um alvo a <strong>150 m</strong>: n = 4, <strong>−12</strong>, chega 4 Ticks depois. Na Máxima do arco (Arco Longo com Força 3: 250 m): n = 8, <strong>−24</strong>, 8 Ticks de voo.</div>
 
 **O sistema Normal não tem tempo de voo**: o tiro continua rolado na declaração, e o projétil chega no mesmo instante. Isso favorece um pouco quem atira de longe, e é aceito: o equilíbrio do jogo é medido no P/G/R.
 

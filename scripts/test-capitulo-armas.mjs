@@ -250,6 +250,16 @@ function conferir(cap, armas, regras, comb = COMB, acoes = ACOES) {
         f.push(`Combate: o exemplo do Bram diz Preparo ate o Tick ${m[1]}, Golpe no ${m[2]}, Recuperacao ${m[3]} e ${m[4]}; a Besta Media (P${media.preparo}) pede ${media.preparo - 1}, ${media.preparo}, ${media.preparo + 1} e ${media.preparo + 2}`);
       }
     }
+    // as constantes da regra do tempo de voo no texto (regras.json distancia.efetiva) e as frases que não podem sumir
+    const DEF = regras?.combate?.distancia?.efetiva;
+    if (DEF?.penPorIncremento !== -3 || !comb.includes('−3 × n')) f.push('Combate: a penalidade de −3 × n (regras.json distancia.efetiva.penPorIncremento) não está no texto');
+    if (DEF?.ticksDeVooPorIncremento !== 1 || !comb.includes('soma 1 Tick')) f.push('Combate: "soma 1 Tick" por incremento (ticksDeVooPorIncremento) não está no texto');
+    if (!comb.includes('O sistema Normal não tem tempo de voo')) f.push('Combate: falta a frase de que o Normal não tem tempo de voo');
+    if (!comb.includes('A Plumbata é a exceção')) f.push('Combate: falta a exceção da Plumbata (Bloqueável) na lista de projétil rápido');
+    // o JSON da Recarga vence o capítulo: tem de dizer o mesmo (Tick do Golpe, doze Ticks), sem o "catorze" velho
+    const rec = regras?.combate?.movimento?.recarga;
+    if (!rec || /catorze|último Tick do ciclo/.test(`${rec.texto} ${rec.porque}`)) f.push('regras.json movimento.recarga ainda diz "catorze" ou "último Tick do ciclo"');
+    else if (!/Tick do Golpe/.test(rec.texto) || !/doze Ticks/.test(rec.porque)) f.push('regras.json movimento.recarga não diz "Tick do Golpe" e "doze Ticks"');
     // os exemplos do tempo de voo saem da formula e da Efetiva do catalogo
     const ef = (id) => armas.find((x) => x.id === id)?.arma.efetiva;
     const n = (E, d) => Math.ceil((d - E) / (E / 2));

@@ -58,7 +58,9 @@ ok(danoArco('arco-longo', 7) === 7 && danoArco('arco-longo', 9) === 8, 'Arco Lon
 // a ficha chama a função nas duas mãos; a mesa ainda não (divergência registrada no N22)
 const ficha = fs.readFileSync(path.join(ROOT, 'src/lib/ficha-engine.ts'), 'utf8');
 ok((ficha.match(/forcaNoArco\(/g) || []).length === 2, 'a ficha chama forcaNoArco nas duas mãos (hábil e inábil)');
-ok(/capF = forcaNoArco\(atk,/.test(ficha) && /capFI = forcaNoArco\(inabilArma,/.test(ficha), 'as duas chamadas estão nas contas capF e capFI');
+// a expressão INTEIRA, nas duas mãos: o forcaCap (a Força máxima do Curto) tem de entrar no 2º argumento
+ok(/const capF = forcaNoArco\(atk, atk\.forcaCap != null \? Math\.min\(forca, atk\.forcaCap\) : forca\);/.test(ficha), 'a mão hábil: capF = forcaNoArco(atk, o menor entre a Força e o forcaCap)');
+ok(/const capFI = forcaNoArco\(inabilArma, inabilArma\.forcaCap != null \? Math\.min\(forca, inabilArma\.forcaCap\) : forca\);/.test(ficha), 'a mão inábil: capFI = forcaNoArco(inabilArma, o menor entre a Força e o forcaCap)');
 const mesa = fs.readFileSync(path.join(ROOT, 'src/lib/combate-resumo.ts'), 'utf8');
 ok(!/forcaNoArco/.test(mesa), 'a mesa (combate-resumo.ts, congelado) ainda NÃO chama forcaNoArco: a divergência está no N22; se isto falhar, a passada do Grid ligou a função e este teste muda');
 const n = fs.readFileSync(path.join(ROOT, 'docs/pendencias/N-grid-pendencias.md'), 'utf8');
