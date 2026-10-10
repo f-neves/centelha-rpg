@@ -2513,7 +2513,7 @@
         "nota": "O que sobra entre o alcance LIVRE e o MÁXIMO, cortado em partes iguais. Cada parte custa penPorParte no acerto. Ver Arremesso.md: os quartos são do que sobra, e não do total, e é isso que faz a mesma regra servir ao dardo e ao machado.",
         "partes": 4,
         "penPorParte": -3,
-        "ondeEntra": "na jogada de acerto, e não na Defesa do alvo: o alvo não ficou mais difícil, você é que ficou pior de mira. Por isso não respeita o teto de +/-6 dos modificadores de Defesa.",
+        "ondeEntra": "na jogada de acerto, e não na Defesa do alvo: o alvo não ficou mais difícil, você é que ficou pior de mira. Por isso não é modificador de Defesa e não entra no teto de +6 dos bônus de Defesa.",
         "alemDoMaximo": "não chega: o objeto cai antes e não há jogada a fazer."
       },
       "mostraNaoAplica": "O Grid MOSTRA a faixa e a penalidade, e não desconta nada sozinho. Quem põe o valor final do ataque é o mestre, de acordo com o que o jogador rolou na mesa."
@@ -2561,7 +2561,7 @@
         "titulo": "Corrida",
         "defesa": -4,
         "ataque": 0,
-        "texto": "Vai 50 a 67% mais longe por Tick, e cobra a guarda: Defesa −4 enquanto corre e até se recompor, que é o mesmo −4 do Tick do Golpe e das condições surpreso, cego e imobilizado. Correndo não se apara nem se esquiva. O acerto não sofre: quem parou, parou."
+        "texto": "Vai 50 a 67% mais longe por Tick, e cobra a guarda: Defesa −4 enquanto corre e até se recompor, que é o mesmo −4 do Tick do Golpe. Correndo não se apara nem se esquiva. O acerto não sofre: quem parou, parou."
       },
       "investida": {
         "titulo": "Investida",

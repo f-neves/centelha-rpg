@@ -738,6 +738,26 @@ function conferirDefesa(comb, cap, sent, R) {
   linha(LA, '- **Alcance**: ataca a 1 m de distância (uma casa); **+2 no acerto** contra quem se aproxima, **−2** contra quem já está colado. É bônus de acerto de quem ataca, e não modificador de Defesa: não entra no teto de +6 dos bônus de Defesa.', 'Armas & Armaduras, Alcance');
   if (cap.includes('teto de ±6')) f.push('Armas & Armaduras: sobrou "teto de ±6"');
   comeca(LS, '**Antes de um ataque** ·', ['é o que separa o alvo surpreso, de Defesa zerada, do que se defende', 'Quem ataca rola **Furtividade**, como no Esgueirar-se, contra a **Percepção Passiva** do defendido.', 'Falhou: ele sabe, e se defende normalmente. O atacante invisível usa o mesmo teste.'], 'Ações, Sentidos e Engano');
+  // a parte presa conta: a frase que abre a tabela de restrição
+  comeca(L, 'Para o Mestre. O corpo preso ou o lugar apertado tiram da Esquiva e do Bloqueio', ['**só a parte presa conta**: quem tem uma perna presa perde Esquiva e conserva o Bloqueio dos braços.'], 'Combate, restrição');
+  // os espelhos em dado das frases do capítulo (rodada 5-bis): o Correndo e a faixa de distância
+  const CO = R?.combate?.movimento?.corrida?.texto;
+  if (!CO || !CO.includes('que é o mesmo −4 do Tick do Golpe. Correndo não se apara nem se esquiva.')) f.push('regras.json movimento.corrida.texto: devia dizer "que é o mesmo −4 do Tick do Golpe." como o capítulo');
+  const OE = R?.combate?.alcance?.faixas?.ondeEntra;
+  if (!OE || !OE.includes('Por isso não é modificador de Defesa e não entra no teto de +6 dos bônus de Defesa.')) f.push('regras.json alcance.faixas.ondeEntra: devia dizer que não entra no teto de +6 dos bônus de Defesa');
+  // varredura: nenhum texto de regras.json fala do teto velho nem das condições surpreso/cego/imobilizado a -4, salvo as exceções abaixo
+  const EXCECOES_TETO = {
+    'derivados.defesaSocial.reguaNota': 'a régua social tem o próprio ±6, que é outro assunto',
+    'porteAcerto.nota': 'o porte é da rodada 6; a rodada 6 reescreve a frase e tira esta exceção',
+  };
+  const varre = (o, caminho) => {
+    for (const [k, v] of Object.entries(o || {})) {
+      const c = caminho ? `${caminho}.${k}` : k;
+      if (typeof v === 'string') { if (/±6|\+\/-6|\+-6|condições surpreso/.test(v) && !(c in EXCECOES_TETO)) f.push(`regras.json ${c}: fala do teto velho (±6) ou das "condições surpreso, cego e imobilizado"; só valem as exceções listadas no teste`); }
+      else if (v && typeof v === 'object') varre(v, c);
+    }
+  };
+  varre(R, '');
   const DR = R?.empilhamentoProezas?.defesaReflexiva;
   if (!DR) f.push('regras.json: não achei empilhamentoProezas.defesaReflexiva');
   else {
@@ -760,6 +780,10 @@ function conferirDefesa(comb, cap, sent, R) {
     'o Imobilizado a −4': (c, a, t, r) => [c.replace('amarrado, soterrado; Imobilizado | zerada | zerado |', 'amarrado, soterrado; Imobilizado | −4 | −4 |'), a, t, r],
     'o pouco espaço': (c, a, t, r) => [c.replace('entre galhos, túnel | −2 | −4 |', 'entre galhos, túnel | −4 | −2 |'), a, t, r],
     'a rede nas pernas na tabela': (c, a, t, r) => [c.replace('| **Corpo, leve** | pé enroscado, lama funda | −2 | 0 |', '| **Corpo, leve** | pé enroscado, lama funda, rede nas pernas | −2 | 0 |'), a, t, r],
+    'a parte presa conta sumida': (c, a, t, r) => [c.replace('**só a parte presa conta**: quem tem uma perna presa perde Esquiva e conserva o Bloqueio dos braços.', 'a restrição vale no corpo inteiro.'), a, t, r],
+    'o Correndo em regras.json com as condições': (c, a, t, r) => [c, a, t, edita2(r, (x) => { x.combate.movimento.corrida.texto = x.combate.movimento.corrida.texto.replace('do Tick do Golpe.', 'do Tick do Golpe e das condições surpreso, cego e imobilizado.'); })],
+    'a faixa de distância com o teto velho': (c, a, t, r) => [c, a, t, edita2(r, (x) => { x.combate.alcance.faixas.ondeEntra = x.combate.alcance.faixas.ondeEntra.replace('não entra no teto de +6 dos bônus de Defesa.', 'não respeita o teto de +/-6 dos modificadores de Defesa.'); })],
+    'um ±6 novo em outra chave de regras.json': (c, a, t, r) => [c, a, t, edita2(r, (x) => { x.combate.movimento.corrida.nota = 'o teto de ±6 da Defesa'; })],
     'a frase da D-086': (c, a, t, r) => [c.replace('**Alguns estados se substituem em vez de se somar**', 'Alguns estados se somam'), a, t, r],
     'o teto de ±6 de volta': (c, a, t, r) => [c.replace('somam no máximo <strong>+6</strong>, e as penalidades <strong>não têm teto nenhum</strong>.', 'somam no máximo <strong>±6</strong>.'), a, t, r],
     'o piso 0 sumido': (c, a, t, r) => [c.replace('O piso é um só: a Defesa <strong>nunca fica abaixo de 0</strong>.', 'Sem piso.'), a, t, r],
