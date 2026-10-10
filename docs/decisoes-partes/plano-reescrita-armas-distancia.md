@@ -2,7 +2,7 @@
 
 Montado em 09/10/2026 pelo Arquiteto, a partir da seção 14 do `veterana-2f-distancia-e-precisao.md` e das
 decisões D-072 a D-087. **Estado: autorizado inteiro pelo autor em 10/10/2026, com travas (abaixo).** Ordem:
-**1, 2 e 3, 4a, 4b, 4c, 5, 6, 7, 8.** Os números dos itens (§14.N) são os da seção 14 do 2f; as linhas citadas lá
+**1, 2 e 3, 4a, 4b, 4c, 4d, 5, 6, 7, 8.** Os números dos itens (§14.N) são os da seção 14 do 2f; as linhas citadas lá
 (`armas l.68-87` etc.) são do site de 06/10/2026 e envelhecem, então a Executora relocaliza cada trecho por busca
 de texto antes de editar.
 
@@ -34,10 +34,10 @@ de texto antes de editar.
 | Item | Por quê |
 | --- | --- |
 | Ambidestria (K18) | sem decisão do autor |
-| D-068 (nada dá ataque extra sem dizer) | o parágrafo saiu de `combate.md` em 0fab8b13 até o autor decidir |
-| Dois Punhos como par de leves | em espera: conflito com a D-068 (ver D-083) |
+| D-068 (nada dá ataque extra sem dizer) | **entrou na 4b** (liberada pelo autor em 10/10/2026) |
+| Dois Punhos como par de leves | **entrou na 4b** (cláusula da D-083) |
 | Bestiário (inclui a redação da Constrição) | as fichas de criatura serão refeitas; a divergência vai para a B14 |
-| Rodada 14 das armas sem veredito da Revisora (e462681a, 0fab8b13) | qualquer rodada que edite `combate.md` (4a, 4b, 4c, 5, 6) espera esse veredito |
+| Rodada 14 das armas (e462681a, 0fab8b13) | veredito 150 PROCEDE (10/10/2026): a trava está cumprida |
 
 Pendências do autor que existiam e fecharam: a mecânica do agarrado (a D-081 corrigida diz que não há jogada nem
 Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestre) e o preço da Plumbata (D-085, 35 pc).
@@ -134,10 +134,53 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
 - Espera o veredito da rodada 14.
 
 **Rodada 4c · As Artes: a Arte sai no Tick do Golpe** (D-084; 2b §3 e §4 item 7)
+- **Escopo fechado (ordem do usuário, 10/10/2026): só o TEMPO das Artes.** Não recalibra nenhuma Arte (ART-34, ART-5,
+  ART-38, ART-40 e a A34 seguem na fila), não mexe no Grid (`artes-grid*.ts`, `grid.astro`, `combate.astro` seguem
+  no tempo antigo até a passada, N22) e não decide equilíbrio: o efeito da Arte mais cedo no equilíbrio é o **T6** de
+  `fase-de-testes.md`.
+- **Onde mora o texto da Arte (achado de 10/10/2026, a Executora relocaliza por busca):** `combate.md` l.95 (a linha
+  "Arte (conjuração) 5 a 7 | Velocidade − 1 | 1 | 0" da tabela de P/G/R, que está velha frente à D-082: Arte graus 0 a 3
+  é 3/1/1, V5; grau 4, 4/1/1, V6; graus 5 e 6, 5/1/1, V7, com a Recuperação cobrando −2) e l.131 (Normal: "a Arte rola e
+  produz o efeito no último Tick da Velocidade"); `src/pages/artes/regras.astro` (l.315 "A Arte sai no último Tick";
+  l.492, a decisão de esticar nos Ticks 5, 10 e 15, que passam a 4, 9 e 14); `src/data/regras.json` (l.1909 a 1924:
+  o pilar, "sétimo", "cinco a sete Ticks", a tabela "Último Tick, quando sai"; l.2096 `decisaoTardia`; l.2385
+  `feiticoTicksNota`; `combate.pgr.preparo.arte` e `combate.pgr.arte`, que o motor do Grid lê, **congelados**: a
+  régua nova da Arte entra em `combate.pgr.reforma`, como a do corpo a corpo e a do tiro).
+  `src/lib/combate-tempo.ts` (`reguaDaArte`, l.269 e l.545, comentários "ÚLTIMO Tick") é compartilhado com o Grid:
+  a Executora confere quem o lê antes de tocar, e não toca se o Grid o lê.
 - A Arte sai no penúltimo Tick, o sinal se anuncia por quatro a seis Ticks, a decisão de esticar cai no Tick
   do Golpe (4, 9, 14). Texto dos dois modos, "A Arte sai no último Tick", tabela "Último Tick, quando sai",
   "O tempo da Arte" no Normal, e o pilar do capítulo. Vai depois da 4 porque usa as mesmas classes. A recalibração
   das Artes (A34) parte deste tempo.
+
+**Rodada 4d · Ficha: uma régua só (OBRIGATÓRIA, não é sugestão)** (achado de 10/10/2026, veredito 153 da Revisora, N22)
+- **O problema.** A ficha publicada hoje mostra duas réguas de P/G/R misturadas, por classe de arma
+  (`ficha-engine.ts`, `linhaPGR`, l.1633). O corpo a corpo lê a régua nova (`combate.pgr.reforma.corpoACorpo`, entregue
+  na 4b); o tiro e o arremesso leem a velha (`combate.pgr.preparo`, via `preparoDe` de `combate-tempo.ts`), embora a
+  régua nova do tiro já esteja em `combate.pgr.reforma.tiro` desde a 4a. Medido em 10/10/2026 sobre as 40 armas de
+  `armas.json`:
+  - **Régua NOVA (19 armas, corpo a corpo):** Adaga, Espada Curta, Machadinha, Bastão, Sabre e Punhos (`desarmado`), 1/1/3;
+    Espada Longa, Machado, Espada Serrilhada, Maça, Picareta de Guerra, Martelo, Maça-estrela e Lança, 2/1/3; Alabarda,
+    Lança Longa, Montante, Martelo de Guerra e Machado Pesado, 3/1/3.
+  - **Régua VELHA, igual à do livro por coincidência (8 armas de tiro):** Shuriken, Mini-faca, Kunai (2/1/1), Adaga de
+    Arremesso, Plumbata, Bumerangue e Bumerangue de Retorno Cortante (3/1/1), Funda (4/1/1).
+  - **Régua VELHA, DIVERGE do livro (13 armas de tiro):** Arco Curto 5/1/0 (livro 4/1/1); Arco Longo e Composto 6/1/0
+    (4/1/2); Besta Pequena 8/1/0 (7/1/1); Besta Média 11/1/0 (9/1/2); Besta Grande 14/1/0 (12/1/2); Machado de
+    Arremesso, Azagaia, Pilum, Rede, Boleadeira, Bumerangue de Caça e o Cortante dele 4/1/1 (3/1/2).
+  - A Arte não aparece na ficha (nenhuma entrada em `armas.json`), então a 4c não cria divergência nela.
+- **É código compartilhado com o Grid?** NÃO no ponto que importa. `linhaPGR` mora só em `ficha-engine.ts`, que não
+  está na lista do congelamento (D-054: `artes-grid*.ts`, `mesa-*.ts`, `grid.astro`, `combate.astro`,
+  `gen-grid-artes.mjs`, `equip.ts`, `combate-resumo.ts`). O que o Grid compartilha é `combate-tempo.ts` (`preparoDe`,
+  que `grid.astro` e `combate.astro` importam) e a chave `combate.pgr.preparo` de `regras.json`: essas **ficam como
+  estão**, presas à D-054, e a divergência Grid × livro continua no N22 até a passada do Grid. Ler `reforma.tiro` na
+  ficha, como a 4b fez com `corpoACorpo`, não toca o Grid.
+- **A rodada (depois da 4c, antes da 5):** `linhaPGR` passa a ler `combate.pgr.reforma.tiro` pelo id da arma (com o
+  mesmo fallback por Velocidade que o corpo a corpo tem), e a ficha mostra a régua do livro em TODAS as armas. Prova
+  exigida: um teste que percorre as 40 armas e compara o que `linhaPGR` mostra com a tabela do capítulo (isto é a
+  sugestão 1 da Revisora, feita aqui porque é a mesma conta), com controle negativo. **Não** mexer em
+  `combate-tempo.ts`, `equip.ts`, `combate-resumo.ts` nem na mão inábil (K18).
+- **Resolução do Grid:** a passada única do Grid (D-054, N22; religa `test-grid`, D-071). Até lá a ficha mostra o
+  livro, e o Grid mostra o K15. A nota do N22 passa a listar as 13 armas de tiro divergentes.
 
 **Rodada 5 · Defesa: fim do teto de penalidades, piso 0, restrição, cego** (§14.9, §14.10, §14.11, §14.13, §14.14, §14.16)
 - Fim do teto de ±6 nas **penalidades** (`combate`, tag Alcance e porte em `armas-e-armaduras`, `defesas`),
@@ -177,12 +220,57 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
 - Divergências com `condicoes.json` e o Grid vão para o N-grid-pendencias.md (D-064).
 
 **Rodada 8 · Fechamento**
+- **Sugestões da Revisora (153 e 154), cada uma com dono; sem veredito (D-087), mas listadas aqui para não se perderem:**
+  1. **`linhaPGR` testado por arma, não só por substring.** Dono: Executora-2. Antecipada e entregue na 4d (o teste das
+     40 armas); a 8 só confere que continua verde.
+  2. **A ficha mostra tiro e arremesso na régua velha.** Dono: Executora-2. Resolvida na 4d (ficha) e no N22 (Grid).
+  3. **Pinar no texto "−1d6 acumulando", "só corpo a corpo", "2 ataques para a Guarda" e "Esquiva 8".** Dono: Executora-2,
+     em `test-capitulo-armas.mjs`, com controle negativo cada uma. Conferência: Revisora.
+  4. **Pinar o começo e o fim da frase do Mestre da Luta desarmada** ("Os punhos não barram o dano de arma nenhuma" e "sem
+     ela, o dano passa"; a 154 mutou as duas e o teste não acusou). Dono: Executora-2. Conferência: Revisora.
+  5. **A mensagem do 0dcb1e56 diz "todo o corpo a corpo como 1/1/3", e só Leve e Punhos são 1/1/3.** Commit já
+     publicado, não se reescreve. Dono: nenhum; a prova que vale é o texto do livro e a tabela da 4d.
+- **Pendências guardadas da Missão 2 que o 2b §5 lista e nenhuma rodada cobria:** o "caso 11 forte" (veterana-2, item
+  14: a Rajada rende pouco contra o forte blindado, porque a Absorção repete a cada golpe) e a "janela de aborto com
+  declaração simultânea" (sem texto-fonte achado nos documentos da Veterana). Dono: **Arquiteto**, que na abertura da
+  8 passa cada um pelos três filtros da D-087; só vai ao autor o que atravessar os três. Nenhum deles muda texto
+  antes dessa passada.
 - Varredura de texto em `src/` e nos dados por "Dardos", "±6" (só o de Defesa), "Distância" no sentido antigo
   e "teto de ±12"; passada da Leitora-novata nos capítulos tocados (lê `origin/main`, sem `docs/simulacao/`);
   Estado das D-072 a D-087 em `decisoes.md`; atualização de `fase-de-testes.md` se a escrita revelar algo a
   medir; resumo final em forma de prompt para o autor.
 
+## Mapa do 2b §4, item por item (conferido no texto de 10/10/2026; nada fica sem rodada)
+
+Fonte: `veterana-2b-reforma-pgr.md` §4, "Textos a reescrever". "Feito" quer dizer que o texto já está no livro de hoje.
+
+| Item do 2b §4 | Estado | Rodada |
+| --- | --- | --- |
+| 1. Tabela de Preparo (Preparo e Recuperação) | Feito para o corpo a corpo e o tiro (`combate.md` l.77 a 94). **Resta a linha "Arte (conjuração) 5 a 7, Velocidade − 1, 1, 0"** (l.95), velha frente à D-082 | 4a e 4b (feito); a linha da Arte na **4c** |
+| 2. Parágrafo do Golpe nas armas de Distância; sai "No Arremesso sobra um Tick" | Feito (`combate.md` l.97) | 4a (feito) |
+| 3. Tabela de Velocidades (linhas 6 e 7) | Feito (`combate.md` l.57 e 58) | 4b (feito) |
+| 4. Recarga (doze Ticks) e exemplo do Bram | Feito (`combate.md` l.417 a 424) | 4a (feito) |
+| 5. "Contra 6 de todos os arcos" | Feito (a frase não existe mais no texto de hoje) | 4a (feito) |
+| 6. Golpes no mesmo instante (Tick 3, Tick 4) | Feito (`combate.md` l.466) | 4b (feito) |
+| 7. A Arte (os dois modos, "sai no último Tick", "sétimo", tabela, "cinco a sete", esticar nos Ticks 5, 10 e 15, e o Normal) | **Pendente** (`combate.md` l.131, `artes/regras.astro`, `regras.json`; ver a 4c) | **4c** |
+| 8. Catálogo de armas (classes; Lança 1d6; Alabarda na Haste de Guerra; Dardos para Plumbata e dados do Arremesso; Rede sem dano) | Feito (`armas-e-armaduras.md` l.40, 78, 98, 105) | 1, 2 e 4b (feito) |
+| 9. Distâncias de Arremesso | Feito pelas D-075 e D-076 (Efetiva e Máxima, no lugar da coluna Distância) | 1 e 2 (feito) |
+| 10. Investida e Normal | Feito (`combate.md` l.131 e 393 a 401). **Resta só a frase da Arte no Normal** (l.131) | 4b (feito); a frase da Arte na **4c** |
+
+Pendências do 2b §5: o CONFLITO do Normal fechou na D-082 (a pressão vale em todos os Ticks); a Recuperação da Arte
+cobrar −2 e a seção 3 (a Arte no Tick do Golpe) fecharam na D-082 e na D-084; as distâncias do Arremesso fecharam nas
+D-075 e D-076; Ambidestria é a K18 (em aberto, do autor); dado e teto da mistura e os Punhos nas duas mãos fecharam
+na D-083; o "caso 11 forte" e a "janela de aborto" estão na **rodada 8** (triagem do Arquiteto, acima).
+
+## Registro de CI
+
+- **cda8845d: Validar vermelho por infra, 10/10/2026.** `TimeoutError: Timed out after 30000 ms while waiting for the
+  WS endpoint URL` ao abrir o Chrome em `test-l70-ocupacao-mesa` (smoke). A mesma árvore de código passou em 85461925 e
+  nos commits seguintes. Não é defeito do commit. **Regra: se o `test-l70-ocupacao-mesa` cair de novo por tempo, o
+  Arquiteto abre pendência de teste instável** (e não reexecuta em silêncio); uma queda só não abre.
+- Conferido por sha em 10/10/2026: 85461925, 32924728, 4450f70c, 2ef4f5b8, 3909629a e 33ab2068, Validar e Deploy verdes.
+
 ## Ordem e custo
 
-1 → (2 e 3) → 4a → 4b → 4c → 5 → 6 → 7 → 8. Cada rodada é pequena e revisável; as rodadas 4a a 6 mexem no mesmo
+1 → (2 e 3) → 4a → 4b → 4c → 4d → 5 → 6 → 7 → 8. Cada rodada é pequena e revisável; as rodadas 4a a 6 mexem no mesmo
 `combate.md` e por isso andam em fila, não em paralelo.
