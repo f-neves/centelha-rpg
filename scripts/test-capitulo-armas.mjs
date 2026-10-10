@@ -1365,6 +1365,59 @@ function conferirNoveB(T) {
   TOTAL_ARTE += Object.keys(mutB9).length;
 }
 
+// ---- rodada 9, B11: "Perícia" no texto visível e travessão em prosa nos dados (as células vazias '—' de tabela não são prosa)
+function conferirTermos(T) {
+  const f = [];
+  // nos dados, toda string com travessão tem de ser só a célula vazia '—'
+  const varre = (o, caminho, onde) => {
+    for (const [k, v] of Object.entries(o || {})) {
+      const c = caminho ? `${caminho}.${k}` : k;
+      if (typeof v === 'string') { if (v.includes('—') && v !== '—') f.push(`${onde} ${c}: travessão em prosa (${v.slice(Math.max(0, v.indexOf('—') - 30), v.indexOf('—') + 30)})`); }
+      else if (v && typeof v === 'object') varre(v, c, onde);
+    }
+  };
+  varre(T.regras, '', 'regras.json'); varre(T.gloss, '', 'glossario.json'); varre(T.tecnicas, '', 'tecnicas.json');
+  // a página da mesa: a lista da Horda
+  if (/<strong>(Ataques|Defesa|Baixas|Fim)<\/strong> —/.test(T.ref)) f.push('mesa/referencia.astro: travessão na lista da Horda');
+  for (const rot of ['Ataques', 'Defesa', 'Baixas', 'Fim']) if (!T.ref.includes(`<li><strong>${rot}</strong>: {HORDA.`)) f.push(`mesa/referencia.astro: a linha da Horda "${rot}" devia usar dois-pontos`);
+  // "Perícia" é Habilidade no texto que o jogador lê
+  for (const [nome, txt, re] of [['CalculadoraRecompensa.astro', T.calc, /<option value="pericia">Perícia|`Perícia:|'a perícia'/], ['custo-servicos.md', T.custo, /Trabalho de perícia/], ['coracao-do-sistema.md', T.coracao, /Defesa, perícia/]]) {
+    if (re.test(txt)) f.push(nome + ': "Perícia" no texto visível (use Habilidade)');
+  }
+  if (!T.calc.includes('<option value="pericia">Habilidade (Dificuldade)</option>') || !T.calc.includes('`Habilidade: Dificuldade ${des(r.dificuldade!)}') || !T.calc.includes("'a Habilidade' : 'o confronto'")) f.push('CalculadoraRecompensa.astro: faltam os três "Habilidade" (opção, linha e o maior dos dois)');
+  if (!T.custo.includes('**Trabalho de Habilidade** (investigar, roubar, invadir, entregar)')) f.push('custo-servicos.md: falta "Trabalho de Habilidade"');
+  if (!T.coracao.includes('ela sustenta ataque, Defesa, Habilidade e o bestiário inteiro')) f.push('coracao-do-sistema.md: falta "Habilidade" na frase da fórmula');
+  return f;
+}
+{
+  const T0 = {
+    regras: REGRAS, gloss: JSON.parse(ler('src/data/glossario.json')), tecnicas: JSON.parse(ler('src/data/tecnicas.json')),
+    ref: ler('src/pages/mesa/referencia.astro').replace(/\r\n/g, '\n'), calc: ler('src/components/CalculadoraRecompensa.astro').replace(/\r\n/g, '\n'),
+    custo: ler('src/content/chapters/custo-servicos.md').replace(/\r\n/g, '\n'), coracao: ler('src/content/chapters/coracao-do-sistema.md').replace(/\r\n/g, '\n'),
+  };
+  const realT = conferirTermos(T0);
+  for (const x of realT) falhas.push(x);
+  const troca = (k, de, para) => (T) => ({ ...T, [k]: T[k].replace(de, para) });
+  const mutT = realT.length ? {} : {
+    'um travessão em regras.json': (T) => ({ ...T, regras: (() => { const x = copia(T.regras); x.combateTatico.modificadores[0].nome += ' — x'; return x; })() }),
+    'o "Alvo prono —" de volta': (T) => ({ ...T, regras: (() => { const x = copia(T.regras); const m = x.combateTatico.modificadores.find((y) => /prono/.test(y.nome)); m.nome = m.nome.replace(', ', ' — '); return x; })() }),
+    'um travessão no glossário': (T) => ({ ...T, gloss: T.gloss.map((g, i) => (i === 0 ? { ...g, definicao: g.definicao + ' — x' } : g)) }),
+    'um travessão em tecnicas.json': (T) => ({ ...T, tecnicas: T.tecnicas.map((t, i) => (i === 0 ? { ...t, texto: t.texto + ' — x' } : t)) }),
+    'a lista da Horda com travessão': troca('ref', '<li><strong>Fim</strong>: {HORDA.', '<li><strong>Fim</strong> — {HORDA.'),
+    'a opção da calculadora com Perícia': troca('calc', '<option value="pericia">Habilidade (Dificuldade)</option>', '<option value="pericia">Perícia (Dificuldade)</option>'),
+    'a linha da calculadora com Perícia': troca('calc', 'Habilidade: Dificuldade', 'Perícia: Dificuldade'),
+    'o "a perícia" da calculadora': troca('calc', "'a Habilidade' : 'o confronto'", "'a perícia' : 'o confronto'"),
+    'o Trabalho de perícia': troca('custo', '**Trabalho de Habilidade**', '**Trabalho de perícia**'),
+    'a fórmula com perícia': troca('coracao', 'Defesa, Habilidade e o bestiário', 'Defesa, perícia e o bestiário'),
+  };
+  for (const [nome, estraga] of Object.entries(mutT)) {
+    const T = estraga(T0);
+    if (JSON.stringify(T) === JSON.stringify(T0)) { falhas.push(`o estrago "${nome}" não alterou nada (o teste de teste está torto)`); continue; }
+    if (conferirTermos(T).length === 0) falhas.push(`o teste NÃO acusou o estrago dos termos "${nome}"`);
+  }
+  TOTAL_ARTE += Object.keys(mutT).length;
+}
+
 if (falhas.length) {
   console.error(`✘ test-capitulo-armas: ${falhas.length} falha(s)`);
   for (const f of falhas) console.error('  · ' + f);

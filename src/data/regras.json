@@ -630,7 +630,7 @@
       "base": 5,
       "mult": 5,
       "piso": 0,
-      "nota": "Por Proeza, sem acumular: 10·15·20·25·30·35. Subir uma Proeza de nível paga só a diferença. O nível N exige Centelha ≥ N, e é esse portão que limita a profundidade. É de propósito: a Centelha é o eixo de história do sistema, concedida pelo Mestre num marco, e não se compra com XP — travar a profundidade de Técnica a ela é o desenho pretendido, não acidente."
+      "nota": "Por Proeza, sem acumular: 10·15·20·25·30·35. Subir uma Proeza de nível paga só a diferença. O nível N exige Centelha ≥ N, e é esse portão que limita a profundidade. É de propósito: a Centelha é o eixo de história do sistema, concedida pelo Mestre num marco, e não se compra com XP: travar a profundidade de Técnica a ela é o desenho pretendido, não acidente."
     },
     "arte": {
       "tipo": "acum",
@@ -865,7 +865,7 @@
       "empateNoTopo": "Os dois entram juntos no Tick 1. Quem age primeiro dentro do instante é o desempate: maior Raciocínio, e persistindo o empate, o dado."
     },
     "deslocamento": {
-      "nota": "Tick ≈ 1 segundo. Livre = distância grátis (m) na ação, e ela é UM TICK de movimento: com Tick ≈ 1 segundo, o número em metros é a velocidade em m/s. A faixa é humana de propósito (2 a 5 m/s): 2 + (Destreza + Atletismo) ÷ 4. Andar normal é 1,4 m/s e fechar distância numa briga fica entre 2 e 4; o teto de 5 é o acrobata. Corrida (Velocidade 3, interrompível a qualquer Tick): Arranque nos 3 primeiros Ticks, Corrida do 4º em diante (m/s = m por Tick). As duas ganharam BASE em 22/08: sem ela o piso caía em trote (o camponês \"corria\" a 2,5 m/s, mais devagar do que um destreinado esprinta) e o teto passava do recorde mundial (15 m/s contra os 12,4 de pico do Bolt). A Força pesa menos no Arranque do que pesava, porque com o peso antigo quem tinha Força alta arrancava mais rápido do que corria, e a média dos três primeiros segundos não pode passar da velocidade de topo. Salto (Velocidade 3, NÃO interrompível): Vertical em CM, Horizontais em M (o Correndo soma a velocidade atual — na ficha, a de Corrida, impulso pleno; coef. já expandidos). Arredonda ao inteiro.",
+      "nota": "Tick ≈ 1 segundo. Livre = distância grátis (m) na ação, e ela é UM TICK de movimento: com Tick ≈ 1 segundo, o número em metros é a velocidade em m/s. A faixa é humana de propósito (2 a 5 m/s): 2 + (Destreza + Atletismo) ÷ 4. Andar normal é 1,4 m/s e fechar distância numa briga fica entre 2 e 4; o teto de 5 é o acrobata. Corrida (Velocidade 3, interrompível a qualquer Tick): Arranque nos 3 primeiros Ticks, Corrida do 4º em diante (m/s = m por Tick). As duas ganharam BASE em 22/08: sem ela o piso caía em trote (o camponês \"corria\" a 2,5 m/s, mais devagar do que um destreinado esprinta) e o teto passava do recorde mundial (15 m/s contra os 12,4 de pico do Bolt). A Força pesa menos no Arranque do que pesava, porque com o peso antigo quem tinha Força alta arrancava mais rápido do que corria, e a média dos três primeiros segundos não pode passar da velocidade de topo. Salto (Velocidade 3, NÃO interrompível): Vertical em CM, Horizontais em M (o Correndo soma a velocidade atual, na ficha a de Corrida, impulso pleno; coef. já expandidos). Arredonda ao inteiro.",
       "arranque": {
         "base": 2,
         "forca": 0.25,
@@ -1038,13 +1038,13 @@
         "nota": "gasta uma ação preparando o golpe"
       },
       {
-        "nome": "Alvo prono — corpo a corpo",
+        "nome": "Alvo prono, corpo a corpo",
         "valor": -2,
         "alvo": "defesa",
         "nota": "caído é fácil de alcançar de perto"
       },
       {
-        "nome": "Alvo prono — à distância",
+        "nome": "Alvo prono, à distância",
         "valor": 2,
         "alvo": "defesa",
         "nota": "deitado é um alvo menor de longe"
@@ -1197,7 +1197,7 @@
   "horda": {
     "nota": "Esquadrão único: muitos capangas iguais lutam como UMA unidade. A Magnitude mede o tamanho e soma dados; o dano acumulado vira baixas. Cumpre o pilar 'um herói vence vários fracos, mas perde para a multidão'.",
     "magnitude": {
-      "formula": "Magnitude = [log2(membros)] — cada degrau exige cerca do dobro de gente",
+      "formula": "Magnitude = [log2(membros)]: cada degrau exige cerca do dobro de gente",
       "tabela": [
         {
           "membros": "2–3",
@@ -1225,9 +1225,9 @@
         }
       ]
     },
-    "ataque": "O esquadrão faz UM ataque por inimigo engajado, até Magnitude + 1 ataques (teto de frente de combate). Contra um alvo só os golpes concentram numa única rolagem; contra vários, espalham-se um por inimigo. Cada ataque rola o pool de um capanga + Magnitude d6 no ACERTO e + Magnitude d6 no DANO (o enxame que conecta cai todo em cima). Sem penalidade de guarda extra da Pressão — a ameaça já é a chuva de dados.",
+    "ataque": "O esquadrão faz UM ataque por inimigo engajado, até Magnitude + 1 ataques (teto de frente de combate). Contra um alvo só os golpes concentram numa única rolagem; contra vários, espalham-se um por inimigo. Cada ataque rola o pool de um capanga + Magnitude d6 no ACERTO e + Magnitude d6 no DANO (o enxame que conecta cai todo em cima). Sem penalidade de guarda extra da Pressão: a ameaça já é a chuva de dados.",
     "ataquesPorSeisTicks": "um por inimigo engajado, até Magnitude + 1, a cada 6 Ticks",
-    "modos": "Os ataques podem ser de modos diferentes (Impacto / Corte / Perfuração, corpo a corpo ou à distância). Um esquadrão híbrido o bastante — armas variadas — ataca sempre pelo modo de MENOR Absorção do alvo.",
+    "modos": "Os ataques podem ser de modos diferentes (Impacto / Corte / Perfuração, corpo a corpo ou à distância). Um esquadrão híbrido o bastante (armas variadas) ataca sempre pelo modo de MENOR Absorção do alvo.",
     "defesa": -2,
     "defesaNota": "Defesa do esquadrão = a de um capanga −2 (aglomerado, alvo fácil).",
     "pv": {
@@ -1319,7 +1319,7 @@
         },
         {
           "efeito": "Mente e alma",
-          "resiste": "Defesa Mental (passiva) — a conjuração precisa superá-la; passando, o alvo ainda pode pagar Força de Vontade para recusar o efeito ou encurtá-lo (ver Defesas)",
+          "resiste": "Defesa Mental (passiva): a conjuração precisa superá-la; passando, o alvo ainda pode pagar Força de Vontade para recusar o efeito ou encurtá-lo (ver Defesas)",
           "ex": "medo, fascínio, ilusão, domínio"
         },
         {
@@ -2778,12 +2778,12 @@
       "espelho": true
     },
     "interpor": {
-      "nota": "As seis perguntas do Interpor, fechadas em 07/09/2026 (Pendencias.md, L34 §6). Quem leva o dano: o acerto e o dano já resolvidos contra o alvo original passam inteiros para o interpositor (nenhum novo teste de acerto); a Absorção que se aplica é a do interpositor, nunca a do alvo original. Teste: nenhum dedicado — pagando os Ticks e estando dentro do alcance, a interposição acontece, determinística (mesmo regime de 'Avançar para fechar distância' no catálogo). Alcance: teto = alcance da arma original medido do agressor; só à distância, o interpositor também precisa terminar numa casa que a reta (coordenadas cúbicas) do agressor até a posição original do aliado cruza — no corpo a corpo isso é redundante. Escudo: nada de novo, a bandeira `bloqueio` decide como em qualquer golpe. Duração: um golpe só, o que disparou a interposição; a tela tem de dizer contra qual golpe ela vale.",
-      "duasPortas": "NÃO SÃO PREÇOS CONCORRENTES, são duas portas já precificadas desde 20-21/08/2026 (Combate_Tempo.md §14.6): no Preparo, interpor é um dos destinos do abortar (`combate.abortar.para`), a `combate.abortar.ticksPorMetro` — você desiste do próprio gesto, sem teste, perde o investido; na Recuperação, interpor é a ação fora de hora do catálogo (§4.3), pelos dois campos abaixo, com o teste que a mesa fizer ali a `combate.recuperacao.penDadosAcaoNaFase`.",
+      "nota": "As seis perguntas do Interpor, fechadas em 07/09/2026 (Pendencias.md, L34 §6). Quem leva o dano: o acerto e o dano já resolvidos contra o alvo original passam inteiros para o interpositor (nenhum novo teste de acerto); a Absorção que se aplica é a do interpositor, nunca a do alvo original. Teste: nenhum dedicado; pagando os Ticks e estando dentro do alcance, a interposição acontece, determinística (mesmo regime de 'Avançar para fechar distância' no catálogo). Alcance: teto = alcance da arma original medido do agressor; só à distância, o interpositor também precisa terminar numa casa que a reta (coordenadas cúbicas) do agressor até a posição original do aliado cruza; no corpo a corpo isso é redundante. Escudo: nada de novo, a bandeira `bloqueio` decide como em qualquer golpe. Duração: um golpe só, o que disparou a interposição; a tela tem de dizer contra qual golpe ela vale.",
+      "duasPortas": "NÃO SÃO PREÇOS CONCORRENTES, são duas portas já precificadas desde 20-21/08/2026 (Combate_Tempo.md §14.6): no Preparo, interpor é um dos destinos do abortar (`combate.abortar.para`), a `combate.abortar.ticksPorMetro`: você desiste do próprio gesto, sem teste, perde o investido; na Recuperação, interpor é a ação fora de hora do catálogo (§4.3), pelos dois campos abaixo, com o teste que a mesa fizer ali a `combate.recuperacao.penDadosAcaoNaFase`.",
       "recuperacao": {
         "ticksPorMetro": 1,
         "minimoTicks": 2,
-        "nota": "O catálogo (§4.3): 'a distância em metros, mínimo 2'. O custo em Ticks é a distância percorrida, com piso de 2 — quem já está a 1 metro ou menos ainda paga 2. Some ao `foraDeHora` como a Velocidade da reação: é a mesma transação, com outro número de entrada."
+        "nota": "O catálogo (§4.3): 'a distância em metros, mínimo 2'. O custo em Ticks é a distância percorrida, com piso de 2: quem já está a 1 metro ou menos ainda paga 2. Some ao `foraDeHora` como a Velocidade da reação: é a mesma transação, com outro número de entrada."
       }
     }
   },

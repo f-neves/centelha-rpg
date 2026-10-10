@@ -16,7 +16,7 @@ const x = (n: number) => String(n).replace('.', ',');
     <label>Caminho
       <select data-rc="caminho">
         <option value="confronto">Confronto (desafio)</option>
-        <option value="pericia">Perícia (Dificuldade)</option>
+        <option value="pericia">Habilidade (Dificuldade)</option>
         <option value="ambos">Os dois (vale o maior)</option>
       </select>
     </label>
@@ -154,10 +154,10 @@ const x = (n: number) => String(n).replace('.', ',');
       const comoPericia = !p ? '' : p.como === 'degrau' ? `degrau ${faixa(p.de)}${p.desafio != null ? ` (desafio ${des(p.desafio)})` : ''}`
         : p.como === 'piso' ? 'abaixo do primeiro degrau, o piso'
         : `entre os degraus ${faixa(p.de)} (${pc(p.de.preco.pc)}) e ${faixa(p.ate)} (${pc(p.ate.preco.pc)}), interpolada e arredondada`;
-      const linhaPericia = p ? `Perícia: Dificuldade ${des(r.dificuldade!)}, ${comoPericia}, ${pc(p.pc)}` : null;
+      const linhaPericia = p ? `Habilidade: Dificuldade ${des(r.dificuldade!)}, ${comoPericia}, ${pc(p.pc)}` : null;
       const itens = [
         ...([linhaConfronto, linhaPericia].filter(Boolean) as string[]),
-        `Valor por pessoa, por semana: ${pc(r.valor)}${linhaConfronto && linhaPericia ? `, o maior dos dois (${r.caminho === 'pericia' ? 'a perícia' : 'o confronto'})` : ''}`,
+        `Valor por pessoa, por semana: ${pc(r.valor)}${linhaConfronto && linhaPericia ? `, o maior dos dois (${r.caminho === 'pericia' ? 'a Habilidade' : 'o confronto'})` : ''}`,
         `Semanas = trabalho ${ptNum(Math.max(1, e.semanas), 1)} + metade da viagem (${ptNum(e.viagemDias)} dias ÷ 2 ÷ ${REC.dias_semana}) = ${ptNum(r.semanas, 1)}`,
         `Tom: ${r.tom.nome} ×${m(r.tom.mult)} · Tarefa: ${r.trabalho.nome}, ${r.tarefa.nome} ×${m(r.tarefa.mult)} · Risco: ${r.risco.nome} ×${m(r.risco.mult)} · Outro ×${m(r.outro)}`,
         `Bolsa = ${pc(r.valor)} × ${m(r.tom.mult)} × ${ptNum(r.semanas, 1)} × ${m(r.tarefa.mult)} × ${m(r.risco.mult)} × ${m(r.outro)} × ${r.pessoas} pessoas = ${ptNum(r.exata, r.exata % 1 ? 1 : 0)} pc, arredondada: ${pc(r.bolsa)}`,

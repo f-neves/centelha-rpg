@@ -170,7 +170,7 @@
       "borrao"
     ],
     "aliases": [],
-    "texto": "1× a cada 6 Ticks, faça um **ataque extra** a custo de Ticks reduzido — golpe antes que percebam.",
+    "texto": "1× a cada 6 Ticks, faça um **ataque extra** a custo de Ticks reduzido: golpe antes que percebam.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -671,7 +671,7 @@
       "pressentimento"
     ],
     "aliases": [],
-    "texto": "Sente quando algo está \"errado\" — uma mentira, uma armadilha, uma traição — mesmo sem prova.",
+    "texto": "Sente quando algo está \"errado\" (uma mentira, uma armadilha, uma traição) mesmo sem prova.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -817,7 +817,7 @@
       "ler-o-fio"
     ],
     "aliases": [],
-    "texto": "Verdadeira precognição: faça ao Mestre uma pergunta significativa sobre o futuro e receba uma resposta enigmática, porém verdadeira — ou reescreva um resultado uma vez.",
+    "texto": "Verdadeira precognição: faça ao Mestre uma pergunta significativa sobre o futuro e receba uma resposta enigmática, porém verdadeira, ou reescreva um resultado uma vez.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -2227,7 +2227,7 @@
       "mente-palaciana"
     ],
     "aliases": [],
-    "texto": "Por um instante, compreende um sistema inteiro — uma cidade, uma conspiração, uma máquina — como se o estudasse por anos.",
+    "texto": "Por um instante, compreende um sistema inteiro (uma cidade, uma conspiração, uma máquina) como se o estudasse por anos.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -3241,7 +3241,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "Recupera **+2× Vigor** de Fôlego por Tick — o dobro da recuperação normal.",
+    "texto": "Recupera **+2× Vigor** de Fôlego por Tick, o dobro da recuperação normal.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3260,7 +3260,7 @@
       "folego-profundo"
     ],
     "aliases": [],
-    "texto": "Uma vez por cena, recupere **metade do Fôlego máximo** numa ação **rápida (Velocidade 1)** — o respiro que quase não custa tempo.",
+    "texto": "Uma vez por cena, recupere **metade do Fôlego máximo** numa ação **rápida (Velocidade 1)**, o respiro que quase não custa tempo.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3333,7 +3333,7 @@
       "pulmoes-de-ferro"
     ],
     "aliases": [],
-    "texto": "**Postura:** enquanto sustentada, o **Esforço custa um grau de duplicação a menos** — o +1d6 sai pelo custo normal do golpe; o +2d6 dobra só uma vez. Age no auge por horas.",
+    "texto": "**Postura:** enquanto sustentada, o **Esforço custa um grau de duplicação a menos**: o +1d6 sai pelo custo normal do golpe; o +2d6 dobra só uma vez. Age no auge por horas.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -3917,7 +3917,7 @@
       "obra-prima"
     ],
     "aliases": [],
-    "texto": "a arte restaura o espírito — remove trauma, medo, desespero.",
+    "texto": "a arte restaura o espírito: remove trauma, medo, desespero.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -5061,7 +5061,7 @@
       "impostor"
     ],
     "aliases": [],
-    "texto": "altera o corpo livremente — altura, idade, feições — à vontade.",
+    "texto": "altera o corpo livremente (altura, idade, feições) à vontade.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -7267,7 +7267,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "Ao encontrar alguém, sente de imediato o **humor dominante** e se ele está hostil, amedrontado ou mentindo de forma escancarada — sem rolar.",
+    "texto": "Ao encontrar alguém, sente de imediato o **humor dominante** e se ele está hostil, amedrontado ou mentindo de forma escancarada, sem rolar.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
