@@ -167,6 +167,10 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
   do Golpe de cada Velocidade (V5: 4, 9, 14). Texto dos dois modos, "A Arte sai no último Tick", tabela "Último Tick, quando sai",
   "O tempo da Arte" no Normal, e o pilar do capítulo. Vai depois da 4 porque usa as mesmas classes. A recalibração
   das Artes (A34) parte deste tempo.
+- **Nota do usuário para o despacho (10/10/2026), vai no texto do despacho.** Na Arte esticada, o livro escreve a regra
+  geral (o Golpe do ciclo n cai no Tick n × V − 1; só o ciclo final leva Recuperação) com o exemplo da V5 (4, 9 e 14),
+  como o 2b faz. **Sem tabela de V6 e V7**: é conta da regra, e o leitor faz. O Abortar segue a regra geral do livro
+  ("No Preparo ainda dá para desistir"), e a 4c não acrescenta nem tira exceção para a Arte.
 
 **Rodada 4d · Ficha: uma régua só (OBRIGATÓRIA, não é sugestão)** (achado de 10/10/2026, veredito 153 da Revisora, N22)
 - **O problema.** A ficha publicada hoje mostra duas réguas de P/G/R misturadas, por classe de arma
