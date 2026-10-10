@@ -228,6 +228,13 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
   livro, e o Grid mostra o K15. A nota do N22 passa a listar as 13 armas de tiro divergentes.
 
 **Rodada 5 · Defesa: fim do teto de penalidades, piso 0, restrição, cego** (§14.9, §14.10, §14.11, §14.13, §14.14, §14.16)
+- **FEITA em 10/10/2026:** 63817b4f (veredito 158, PROCEDE com um CORRIGE de dado), 5-bis 0a87a64d (veredito 159: o
+  CORRIGE fechado; achou a referência da mesa com o teto velho), 5-ter 1efe2ad9 (veredito 160 PROCEDE: `combateTatico`,
+  `/mesa` e `/mesa/referencia` espelhando o livro, medidas pela bancada a 390 e 1300 px). Validar e Deploy verdes nos
+  três. **Contradições no ar até as rodadas 6 e 7:** o porte ainda cita o teto de ±6 (`combate.md` ~l.514,
+  `porteAcerto.nota`, a tabela e a frase do porte na mesa); "O agarrado" diz −2 e o Imobilizado −4 com a remissão
+  "(Vantagem tática)" (`combate.md` ~l.240 e 246). O teste lista `porteAcerto.nota` como exceção da varredura do ±6:
+  a rodada 6 a tira.
 - Fim do teto de ±6 nas **penalidades** (`combate`, tag Alcance e porte em `armas-e-armaduras`, `defesas`),
   tabela de situações dividida (surpreso Defesa 0; cego Esquiva −4 e Bloqueio −8), tabela de restrição de
   corpo e de lugar, parágrafo "A Defesa é um valor fixo e passivo" (alvo sem Defesa), linha do Correndo
@@ -289,6 +296,13 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
   11. **(157) Renomear `nomeDaChave` para `nota`** em `regras.json` (cosmético; conferir quem lê). Dono: Executora-2.
   12. (157) `ultimoTick.regra` diz o mesmo duas vezes, e a frase do Tick de decisão está em três lugares (ver a 4c):
      sem ação.
+  13. **(160) Pinar a tabelinha "Defesa zerada ou cego" de `mesa.astro` e a ordem das colunas Esquiva e Bloqueio** nas
+     duas páginas da mesa (removida ou trocada, passa). Dono: Executora-2. Conferência: Revisora.
+  14. **(160) `/mesa/referencia` rola na horizontal a 390 px** (494 contra 390): os blocos "Pela arma" e "Pela armadura
+     do alvo" do Quase-Acerto (482 px, fora do `tab-wrap`). Defeito de ANTES da 5-ter (reproduzido em fd0058dc), da
+     frente da mesa. Dono: Executora-2, como conserto de CSS da página, com a medida pela bancada (`astro dev --config
+     astro.bancada.mjs`, `MESA_BANCADA`). Não é do Grid congelado.
+  15. (158) A frase da D-086 também na tabela de situações: caso do Mestre (D-087), sem ação.
 - **A mensagem do 8748735d diz que a mesa não importa a ficha-engine** antes de a Executora conferir; a 156 confirmou
   que é verdade (os imports são `ficha.astro` e `personagem.astro`). Não se reescreve.
 - **Pendências guardadas da Missão 2 que o 2b §5 lista e nenhuma rodada cobria:** o "caso 11 forte" (veterana-2, item
@@ -342,7 +356,8 @@ na D-083; o "caso 11 forte" e a "janela de aborto" estão na **rodada 8** (triag
 - Conferido por sha em 10/10/2026: 85461925, 32924728, 4450f70c, 2ef4f5b8, 3909629a, 33ab2068 e 8c04d6a6, Validar e
   Deploy verdes. Depois: e5ab6925 verde; **8748735d (4d): Validar verde, Deploy "cancelled"** porque o push seguinte
   (adee7295) o substituiu na fila do Pages (`deploy.yml`: `concurrency: pages`, `cancel-in-progress: true`), o que não é falha; o Deploy de adee7295, que já contém a 4d, ficou verde,
-  assim como o de 20ec3e89. **b56d78f5 (4c): Validar e Deploy verdes.**
+  assim como o de 20ec3e89. **b56d78f5 (4c): Validar e Deploy verdes.** 63817b4f (5), 0a87a64d (5-bis) e 1efe2ad9 (5-ter): Validar e Deploy
+  verdes.
 
 ## Ordem e custo
 
