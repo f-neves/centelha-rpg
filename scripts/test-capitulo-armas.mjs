@@ -24,6 +24,7 @@ const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^
 const ler = (rel) => fs.readFileSync(path.join(ROOT, rel), 'utf8');
 const CAP = ler('src/content/chapters/armas-e-armaduras.md').replace(/\r\n/g, '\n');
 const COMB = ler('src/content/chapters/combate.md').replace(/\r\n/g, '\n');
+const ACOES = ler('src/content/chapters/acoes-corpo-e-movimento.md').replace(/\r\n/g, '\n');
 const ARMAS = JSON.parse(ler('src/data/armas.json'));
 const REGRAS = JSON.parse(ler('src/data/regras.json'));
 
@@ -55,8 +56,10 @@ function pesoKg(s) {
   return m ? (m[2] === 'kg' ? num(m[1]) : num(m[1]) / 1000) : null;
 }
 const TIPO = { I: 'impacto', C: 'corte', P: 'perfurante' };
+const sinal = (b) => (b ? (b > 0 ? `+${b}` : `-${Math.abs(b)}`) : ''); // o `limpa` já troca o − por -
+const d6 = (b) => `1d6${sinal(b)}`;
 
-function conferir(cap, armas, regras, comb = COMB) {
+function conferir(cap, armas, regras, comb = COMB, acoes = ACOES) {
   const f = [];
   const porNome = Object.fromEntries(armas.map((x) => [x.nome, x]));
   const col = (tab, nome) => tab.cab.findIndex((c) => c.toLowerCase() === nome.toLowerCase());
@@ -66,6 +69,8 @@ function conferir(cap, armas, regras, comb = COMB) {
     if (!tab) { f.push(`o capítulo não tem a tabela de ${marcador.slice(5)}`); continue; }
     const I = Object.fromEntries(['Arma', 'Modos', 'Velocidade', 'Dano', 'Acerto', 'Efetiva', 'Mãos'].map((n) => [n, col(tab, n)]));
     const iPeso = col(tab, 'Peso');
+    const iClasse = col(tab, 'Classe');
+    const VEL_CLASSE = { Leve: 4, 'Média': 5, Pesada: 6, Funda: 6 };
     if (Object.values(I).some((v) => v < 0) || (comPeso && iPeso < 0)) { f.push(`${marcador}: colunas faltando (${tab.cab.join(' | ')})`); continue; }
     for (const l of tab.linhas) {
       const nome = l[I.Arma];
@@ -84,7 +89,16 @@ function conferir(cap, armas, regras, comb = COMB) {
       } else {
         const d = dano(l[I.Dano]);
         if (!d) f.push(`${quando}: dano "${l[I.Dano]}" ilegível`);
-        else if (d.dado !== a.dado || d.bonus !== (a.danoBonus || 0)) f.push(`${quando}: dano ${l[I.Dano]} no capítulo, ${a.dado}d6${a.danoBonus || ''} no catálogo`);
+        else if (d.dado !== a.dado || d.bonus !== (a.danoBonus || 0)) f.push(`${quando}: dano ${l[I.Dano]} no capítulo, ${a.dado > 1 ? a.dado : ''}${d6(a.danoBonus || 0)} no catálogo`);
+      }
+      // a coluna Classe contra a Velocidade (Arremesso: leve 4, média 5, pesada 6, Funda 6)
+      if (comPeso && VEL_CLASSE[l[iClasse]] !== a.ticks) f.push(`${quando}: classe ${l[iClasse]} (Velocidade ${VEL_CLASSE[l[iClasse]]}) no capítulo, Velocidade ${a.ticks} no catálogo`);
+      // os modos secundários: "★C · I" lista os secundários depois do ponto-médio; "★I ou ★C" é variante, não modo
+      if (!/ ou /.test(l[I.Modos]) && l[I.Modos] !== '·') {
+        const partes = l[I.Modos].split('·').map((x) => x.trim());
+        const sec = partes.slice(1).map((x) => TIPO[x[0]]).sort();
+        const realSec = (a.modos || []).filter((m) => !m.principal).map((m) => m.tipo).sort();
+        if (JSON.stringify(sec) !== JSON.stringify(realSec)) f.push(`${quando}: modos secundários ${JSON.stringify(sec)} no capítulo, ${JSON.stringify(realSec)} no catálogo`);
       }
       // modo principal e Nível de Perfuração
       const m = /★([ICP])(?:\(N(\d)\))?/.exec(l[I.Modos]);
@@ -138,6 +152,42 @@ function conferir(cap, armas, regras, comb = COMB) {
   };
   if (!cl) f.push('o capítulo não tem a tabela de Classes');
   else {
+    const RFT = regras?.combate?.pgr?.reforma?.tiro || [];
+    const classe = (id) => RFT.find((c) => c.id === id)?.armas.map((aid) => armas.find((x) => x.id === aid)).filter(Boolean) || [];
+    const faixa = (vs, un = '') => { const u = [...new Set(vs)].sort((x, y) => x - y); return u.length === 1 ? `${sinalA(u[0])}${un}` : `${sinalA(u[0])} a ${sinalA(u[u.length - 1])}${un}`; };
+    const sinalA = (n) => (n >= 0 ? `+${n}` : `-${Math.abs(n)}`);
+    const ef = (xs) => { const u = [...new Set(xs.map((x) => x.arma.efetiva))].sort((x, y) => x - y); return u; };
+    const ESPT = [
+      // [linha, classes da reforma, sem a exceção da classe (a Boleadeira e a Rede não pesam no dano), Mãos]
+      ['Arremesso leve', ['arremesso-leve'], 1],
+      ['Arremesso médio', ['arremesso-medio'], 1],
+      ['Arremesso pesado', ['arremesso-pesado'], 1],
+      ['Funda', ['funda'], 1],
+      ['Arco Curto', ['arco-curto'], 2],
+      ['Arco Longo e Composto', ['arco-longo-composto'], 2],
+      ['Besta', ['besta-pequena', 'besta-media', 'besta-grande'], 2],
+    ];
+    const iD = cl.cab.indexOf('Dano'), iA = cl.cab.indexOf('Acerto'), iM = cl.cab.indexOf('Mãos'), iE = cl.cab.indexOf('Estilo');
+    for (const [rot, ids, maos] of ESPT) {
+      const l = cl.linhas.find((r) => r[0] === rot);
+      if (!l) continue; // a falta da linha já foi acusada acima
+      const ws = ids.flatMap(classe);
+      if (!ws.length) { f.push(`Classes, ${rot}: nenhuma arma na classe da reforma`); continue; }
+      // dano: o bônus que a classe de fato tem (a Boleadeira, 1d6−4 na classe pesada, é a exceção declarada)
+      const dws = rot === 'Arremesso pesado' ? ws.filter((x) => x.id !== 'boleadeira') : ws;
+      const bons = [...new Set(dws.map((x) => x.arma.danoBonus || 0))].sort((x, y) => x - y);
+      const esperado = rot === 'Besta' ? '1d6+2, +4 e +8' : rot === 'Arco Longo e Composto' ? `${d6(bons[0])} e ${d6(bons[1])}` : d6(bons[0]);
+      const dano = l[iD].replace(/\s*\(.*?\)/g, '').trim();
+      if (bons.length > (rot === 'Besta' || rot === 'Arco Longo e Composto' ? 3 : 1)) f.push(`Classes, ${rot}: as armas da classe têm danos diferentes demais (${bons.join(', ')})`);
+      else if (dano !== esperado) f.push(`Classes, ${rot}: dano "${dano}" no capítulo, "${esperado}" pelo catálogo`);
+      const ace = faixa(ws.map((x) => x.arma.acerto));
+      if (l[iA] !== ace) f.push(`Classes, ${rot}: Acerto "${l[iA]}" no capítulo, "${ace}" pelo catálogo`);
+      if (num(l[iM]) !== maos || ws.some((x) => x.arma.maos !== maos)) f.push(`Classes, ${rot}: Mãos ${l[iM]} no capítulo, ${maos} esperado (catálogo ${[...new Set(ws.map((x) => x.arma.maos))]})`);
+      // a faixa de Efetiva que o Estilo repete
+      const es = ef(ws);
+      const txt = es.length === 1 ? `Efetiva de ${es[0]} m` : (rot === 'Besta' ? `Efetiva de ${es[0]}, ${es[1]} e ${es[2]} m` : (rot === 'Arco Longo e Composto' ? `Efetiva de ${es[0]} e de ${es[1]} m` : `Efetiva de ${es[0]} a ${es[es.length - 1]} m`));
+      if (!l[iE].includes(txt)) f.push(`Classes, ${rot}: o Estilo não diz "${txt}" (Efetiva pelo catálogo)`);
+    }
     const iv = cl.cab.findIndex((c) => c === 'Velocidade');
     for (const [rot, v] of Object.entries(ESP)) {
       const l = cl.linhas.find((r) => r[0] === rot);
@@ -145,6 +195,24 @@ function conferir(cap, armas, regras, comb = COMB) {
       if (l[iv] !== v) f.push(`Classes, ${rot}: Velocidade "${l[iv]}" no capítulo, "${v}" no catálogo`);
     }
   }
+  // ---- a prosa com número
+  const RFB = regras?.combate?.distancia?.maxima?.bestas;
+  if (RFB && !cap.includes(`Pequena ${RFB.pequena} m, Média ${RFB.media} m, Grande ${RFB.grande} m`)) f.push('Armas & Armaduras: o parágrafo das bestas não diz as Máximas de regras.json');
+  const efa = (id) => armas.find((x) => x.id === id)?.arma.efetiva;
+  const npas = (E, d) => Math.ceil((d - E) / (E / 2));
+  for (const [id, d] of [['adaga-de-arremesso', 25], ['arco-longo', 150]]) {
+    const E = efa(id); const k = npas(E, d);
+    if (!cap.includes(`Efetiva ${E} m) contra um alvo a 25 m dá n = ${npas(efa('adaga-de-arremesso'), 25)} e −${3 * npas(efa('adaga-de-arremesso'), 25)}`) && id === 'adaga-de-arremesso') f.push(`Armas & Armaduras: o exemplo da faca (25 m) não bate com a Efetiva ${E} m (n = ${k})`);
+    if (id === 'arco-longo' && !cap.includes(`dá n = ${k} e −${3 * k}`)) f.push(`Armas & Armaduras: o exemplo do Arco Longo (150 m) pede n = ${k} e −${3 * k}`);
+  }
+  const FX = regras?.forca;
+  const maxima = (faa, kg) => FX.arremessoConst * Math.pow(faa, FX.arremessoExpFaa) / Math.pow(Math.max(kg, FX.arremessoApice), FX.arremessoExpMassa);
+  const pilum = armas.find((x) => x.id === 'pilum');
+  const m86 = String(Math.round(maxima(2, pilum.peso) * 10) / 10).replace('.', ',');
+  if (!acoes.includes(`FAA 2 e um pilum de ${String(pilum.peso).replace('.', ',')} kg a Máxima é de uns ${m86} m, contra ${pilum.arma.efetiva} m de Efetiva`)) f.push(`Corpo e Movimento: o exemplo do pilum pede "${m86} m" de Máxima e ${pilum.arma.efetiva} m de Efetiva`);
+  const funda = armas.find((x) => x.id === 'funda');
+  const vf = [4, 10, 16, 24].map((faa) => Math.round(maxima(faa, funda.peso) * 2));
+  if (!acoes.includes(`${vf.slice(0, 3).join(', ')} e ${vf[3]} m com FAA 4, 10, 16 e 24`)) f.push(`Corpo e Movimento: a Máxima da Funda pede "${vf.join(', ')}" para FAA 4, 10, 16 e 24`);
   // ---- o capítulo Combate Físico: a tabela de Preparo, Golpe e Recuperação (rodada 4a) e o que o texto repete dela
   const pg = tabelaApos(comb, '| Classe | Velocidade | Preparo | Golpe | Recuperação |');
   const RF = regras?.combate?.pgr?.reforma?.tiro;
@@ -198,7 +266,7 @@ function conferir(cap, armas, regras, comb = COMB) {
 }
 
 const falhas = [];
-const real = conferir(CAP, ARMAS, REGRAS, COMB);
+const real = conferir(CAP, ARMAS, REGRAS, COMB, ACOES);
 for (const x of real) falhas.push(x);
 
 // ---- o teste acusa: estragos no TEXTO e no CATÁLOGO ----
@@ -252,6 +320,22 @@ for (const [nome, estraga] of Object.entries(estragosCatalogo)) {
     if (t === COMB) { falhas.push(`o estrago "${nome}" nao alterou Combate (o teste de teste esta torto)`); continue; }
     if (conferir(CAP, ARMAS, REGRAS, t).length === 0) falhas.push(`o teste NÃO acusou o estrago "${nome}"`);
   }
+  const estragosMais = {
+    'Classe da Plumbata (Pesada) no capítulo': (c, a) => [c.replace('| Plumbata | Média |', '| Plumbata | Pesada |'), a],
+    'modo secundário do Machado no capítulo': (c, a) => [c.replace('| Machado de Arremesso | Pesada | ★C · I |', '| Machado de Arremesso | Pesada | ★C |'), a],
+    'dano do Arremesso leve nas Classes': (c, a) => [c.replace('| Arremesso leve | 4 | 1d6−4 |', '| Arremesso leve | 4 | 1d6−2 |'), a],
+    'Efetiva do Arremesso pesado nas Classes': (c, a) => [c.replace('Efetiva de 4 a 16 m', 'Efetiva de 4 a 18 m'), a],
+    'Acerto do Arco Curto nas Classes': (c, a) => [c.replace('| Arco Curto | 6 | 1d6−2 (+Força até 3) | +2 |', '| Arco Curto | 6 | 1d6−2 (+Força até 3) | +1 |'), a],
+    'Máximas das bestas na prosa': (c, a) => [c.replace('Média 200 m, Grande 300 m', 'Média 200 m, Grande 350 m'), a],
+    'exemplo da faca na prosa': (c, a) => [c.replace('dá n = 3 e −9', 'dá n = 3 e −6'), a],
+    'exemplo do pilum em Corpo e Movimento': (c, a) => [c, a.replace('uns 8,6 m', 'uns 9,6 m')],
+    'Máxima da Funda em Corpo e Movimento': (c, a) => [c, a.replace('93, 176, 245', '93, 176, 250')],
+  };
+  for (const [nome, estraga] of Object.entries(estragosMais)) {
+    const [c, a] = estraga(CAP, ACOES);
+    if (c === CAP && a === ACOES) { falhas.push(`o estrago "${nome}" não alterou nada (o teste de teste está torto)`); continue; }
+    if (conferir(c, ARMAS, REGRAS, COMB, a).length === 0) falhas.push(`o teste NÃO acusou o estrago "${nome}"`);
+  }
   const R5 = copia(REGRAS); R5.combate.pgr.reforma.tiro.find((c) => c.id === 'arco-curto').preparo = 5;
   if (conferir(CAP, ARMAS, R5, COMB).length === 0) falhas.push('o teste NÃO acusou o Preparo do Arco Curto alterado em regras.json');
 }
@@ -261,5 +345,5 @@ if (falhas.length) {
   for (const f of falhas) console.error('  · ' + f);
   process.exit(1);
 }
-const total = Object.keys(estragosTexto).length + Object.keys(estragosCatalogo).length + 2 + 7 + 1;
+const total = Object.keys(estragosTexto).length + Object.keys(estragosCatalogo).length + 2 + 7 + 1 + 9;
 console.log(`✓ test-capitulo-armas · as tabelas de Arremesso, Atirador, Classes e a Máxima por Força do capítulo batem com armas.json e regras.json · ${total} estragos acusados`);
