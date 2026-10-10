@@ -163,6 +163,25 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
   Velocidade 5; o livro de hoje também só exemplifica a V5 ("tick 5, 10, 15"), e a 4c escreve a regra geral
   (Tick do Golpe de cada Velocidade) mais o exemplo da V5.** Isto é conta minha sobre a fonte, e não está escrito
   no 2b para V6 e V7: por isso a Revisora a refaz antes da escrita.
+  **CONFERIDA pela Revisora (veredito 155, `adee7295`):** os números batem (até n = 4, o teto da tabela do esticar:
+  V5 4, 9, 14, 19; V6 5, 11, 17, 23; V7 6, 13, 20, 27); V6 e V7 são a D-082 aplicada à Velocidade esticada
+  T = n × V (Preparo T − 2, Golpe T − 1, Recuperação T), e "só o ciclo final leva Recuperação" está no 2b §3.
+- **O que a 4c escreve além do Tick (veredito 155, itens 3 e 5).**
+  - **O Tick em que se decide esticar conta como Preparo (−2 na Defesa), e só o Tick em que a Arte sai é Golpe (−4).**
+    Quem segura no Tick 4 da V5 não tem Recuperação no 5: esse Tick já é Preparo do ciclo seguinte. É o que mantém o
+    custo em 2 × T + 2, o mesmo 2 × Velocidade + 2 do Normal (V5: 12, 22, 32, 42). O 2b não diz isso com todas as
+    letras; passa pelos filtros da D-087 sem pergunta ao autor, porque decorre do custo que já está no livro (com −4 em
+    cada Tick de decisão o custo deixaria de ser 2 × T + 2) e porque o Golpe é o Tick em que a Arte sai.
+  - O sinal "4 a 6 Ticks" vale para a Arte sem esticar; esticada, o sinal dura T − 1.
+  - Lugares que a conta muda e a lista acima não tinha: `artes/regras.astro` l.59 (callout "Os dois modos", "a Arte
+    sai no último deles"); `regras.json` l.1929 (`identificar.teste`, "no último é uma bola de fogo pronta") e l.1942
+    (`semGabarito`, "só travam no último Tick" e "durante os sete Ticks": o grau 6 tem seis Ticks até o Golpe); a
+    chave `ultimoTick`, lida em 5 pontos de `regras.astro` (l.315 a 330): renomear a chave troca a página junto;
+    `combate.md` l.60 ("esticar leva a 10, 15, 20", que só vale para a V5: passa à regra geral com o exemplo da V5).
+  - Não muda: contas por metro e Dificuldade do desvio, a janela de sustentar de 6 Ticks, a Duração contada depois de
+    sair, graus e preços do esticar.
+  - Fora da 4c: o Grid (resolve a Arte no último Tick, sem Recuperação) e as três escalas de Velocidade da Arte no
+    repositório. Os dois estão no N22 desde 10/10/2026.
 - A Arte sai no penúltimo Tick, o sinal se anuncia por quatro a seis Ticks, a decisão de esticar cai no Tick
   do Golpe de cada Velocidade (V5: 4, 9, 14). Texto dos dois modos, "A Arte sai no último Tick", tabela "Último Tick, quando sai",
   "O tempo da Arte" no Normal, e o pilar do capítulo. Vai depois da 4 porque usa as mesmas classes. A recalibração
