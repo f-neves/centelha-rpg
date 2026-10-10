@@ -478,7 +478,7 @@ if (!process.env.CI) {
   if (path.basename(mae).toLowerCase() === 'centelha') {
     secao('· nada solto na pasta mãe das árvores (' + mae + ')');
     const PERMITIDOS = new Set(['rpg-system', 'centelha-executora', 'centelha-techlead-revisora',
-      'centelha-mapa', 'tmp', 'LEIA-ME.md', 'centelha-mudanca']);
+      'centelha-mapa', 'tmp', 'LEIA-ME.md', 'centelha-mudanca', 'fontes-bestiario']);
     const soltos = fs.readdirSync(mae).filter((n) => !PERMITIDOS.has(n));
     ok(soltos.length === 0, soltos.length === 0
       ? `só as quatro árvores, \`tmp/\`, o \`LEIA-ME.md\` e a \`centelha-mudanca/\``
