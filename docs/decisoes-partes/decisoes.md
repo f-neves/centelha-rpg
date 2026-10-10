@@ -1551,31 +1551,31 @@ Origem de todas: "conversa do autor, 04/10/2026, respostas às 12 dúvidas da en
 - Data: 2026-10-05
 - Decisão: "O chute não é arma de equipamento. Remover 'chutes' do armas.json, da ficha (incluindo a lógica do Bloqueio que trata Chutes na mão inábil) e do teste de contrato. Ele nunca esteve na mesa nem no Grid; se houver item na N-grid-pendencias.md sobre 'Chutes ausente na mesa/Grid', retire. Os Punhos ficam como estão na ficha (id 'desarmado'), como opção para quem escolhe lutar desarmado. O chute vira só regra de texto, na seção 'Luta desarmada' do Cap. XIII, para o Mestre consultar quando um jogador quiser chutar: média, Velocidade 6, Acerto +0, Defesa −1, dano 1d6 + Força. Pode ser feito mesmo com armas nas mãos, e gasta a própria ação como qualquer golpe. Defender com as pernas (−1) continua valendo quando as mãos não podem ser usadas. Antes de remover, confira se 'chutes' é lido em algum outro lugar além dos que você já listou. Se for, avise."
 - Origem: conversa do autor, 05/10/2026, respostas sobre Chutes, armas naturais e manutenção, item 1
-- Estado: a implementar (rodada 14). SUBSTITUI, no que toca ao id `chutes` como arma e à lógica de Chutes no Bloqueio da ficha, a D-057 (Chutes como arma) e a D-065 itens 1 e 3 (parte dos Chutes). Os Punhos (D-057, D-065) e as demais regras da D-065 continuam.
+- Estado: no ar (rodada 14, e462681a; veredito 150 da Revisora: PROCEDE, 10/10/2026). SUBSTITUI, no que toca ao id `chutes` como arma e à lógica de Chutes no Bloqueio da ficha, a D-057 (Chutes como arma) e a D-065 itens 1 e 3 (parte dos Chutes). Os Punhos (D-057, D-065) e as demais regras da D-065 continuam.
 
 ### D-068 · Regra geral: nada dá ataque extra sem dizer explicitamente [tags: combate, ataque-extra, armas-naturais, opcoes-de-ataque]
 - Data: 2026-10-05
 - Decisão: "Nada dá ataque extra se não disser explicitamente que dá. Ter várias armas, ou partes do corpo que servem de arma, é ter opções de ataque, não ataques a mais. Exemplo para o texto: um gato pode atacar com qualquer das quatro patas ou com a mordida, e isso não lhe dá ataques extras. Escreva em combate.md, onde fala de ações de ataque."
 - Origem: conversa do autor, 05/10/2026, item 2
-- Estado: a implementar (rodada 14, texto em combate.md). Conferir contra a regra de empunhadura dupla (uma arma = 1 ataque; 1 por mão): se divergir, parar e perguntar.
+- Estado: **NÃO aplicada**: o parágrafo entrou em e462681a e foi retirado de `combate.md` em 0fab8b13, "até o autor decidir" (veredito 150 confirma que `combate.md` voltou byte a byte ao texto de antes). Conferir contra a regra de empunhadura dupla (uma arma = 1 ataque; 1 por mão): se divergir, parar e perguntar. Hoje a ficha oferece DOIS ataques com Punhos/Punhos (a:desarmado entra como arma e a dupla monta a mão inábil), o que é a pergunta pendente da D-083 (dois Punhos como par de leves).
 
 ### D-069 · Armas naturais: Garra e Presa, Forma Bestial e Pele de Pedra (complemento da D-066) [tags: armas-naturais, metamorfose, forma-bestial, pele-de-pedra, bloqueio]
 - Data: 2026-10-05
 - Decisão: "Arte Metamorfose 1, 'Garra e Presa' (artes.json:1956-1962), e Técnica Forma Bestial (tecnicas.json:2341): as garras contam como arma natural enquanto durarem e defendem como armas. Proeza Pele de Pedra (caminhos.json): a partir do nível 2, conta como arma natural para bloquear golpes com o corpo. Os níveis 1 a 4 continuam com o que já dão (Absorção etc.). O nível 1 não bloqueia. O Efeito Pele de Pedra (efeitos.json:1131) e o Efeito Arma Conjurada (efeitos.json:519) não mudam."
 - Origem: conversa do autor, 05/10/2026, item 3
-- Estado: a implementar (rodada 14, só texto). Complementa a D-066 e a D-065 item 2.
+- Estado: no ar (rodada 14, e462681a; veredito 150: PROCEDE, só texto). Complementa a D-066 e a D-065 item 2.
 
 ### D-070 · Mão que conta como arma bloqueia armas e soma com outras armas na defesa [tags: mao-de-ferro, punho, bloqueio, arma, lamina]
 - Data: 2026-10-05
 - Decisão: "Regra geral: sempre que uma mão contar como arma (ex.: Mão de Ferro N1, tecnicas.json:268; Punho que Parte Pedra N4), ela pode bloquear ataques de armas, inclusive cortantes e perfurantes, a não ser que a Proeza ou a magia diga o contrário. E, por contar como arma, soma com outras armas na defesa. Aplique no texto (Luta desarmada e na descrição das duas Técnicas, se precisar de ajuste). Na ficha, só aplique se ela já calcula o efeito da Mão de Ferro; se não calcula, não crie cálculo novo, só me avise."
 - Origem: conversa do autor, 05/10/2026, item 4
-- Estado: a implementar (rodada 14, só texto; ficha só se já calcula a Mão de Ferro). Complementa a D-065 (item 2).
+- Estado: no ar (rodada 14, e462681a; veredito 150: PROCEDE; só texto, a ficha não calcula a Mão de Ferro, conferido). Complementa a D-065 (item 2). Sugestão da Revisora, ainda sem dono: o Punho que Parte Pedra (N4) não diz que as mãos contam como arma; frase possível "Suas mãos contam como arma (veja Luta desarmada)".
 
 ### D-071 · test-grid desligado do Validar; religa na passada única do Grid [tags: grid, ci, test-grid, flake, aquece]
 - Data: 2026-10-05
 - Decisão: "Não é para testar o Grid agora. Desligue o test-grid do Validar (desligar, não apagar), para o flake '[aquece]' parar de travar as rodadas. Registre na N-grid-pendencias.md que a passada única do Grid começa religando esse teste e conferindo o que quebrou com as mudanças do livro nos dados compartilhados (armas.json, condicoes.json etc.)."
 - Origem: conversa do autor, 05/10/2026, item 5
-- Estado: a implementar (rodada 14). Consistente com a D-054.
+- Estado: no ar (rodada 14, e462681a; veredito 150: PROCEDE; o test-grid foi desligado sem apagar, N21). Consistente com a D-054.
 
 ## Distância, precisão, Defesa e porte (veterana-2f e adendo do autor, 09/10/2026)
 
@@ -1641,7 +1641,7 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
 - Data: 2026-10-09
 - Decisão (2f §1 item 12, §11, §13, §14; [autor]; despacho de 09/10/2026): "Os textos do site são reescritos depois que a parte de armas de arremesso e distância estiver fechada." Nada se reescreve agora. O Arquiteto monta o plano de rodadas a partir da seção 14 do 2f e o entrega ao autor para autorizar (`plano-reescrita-armas-distancia.md`). A tabela de preços dos arcos e das armas novas fica com o modelo de economia. O artefato `alcance-e-precisao.html` da Veterana segue desatualizado e só se atualiza se o autor pedir. Fichas e Defesas das criaturas grandes e o recálculo de desafios ficam fora desta fase (D-077). Os itens a testar nas simulações estão em `fase-de-testes.md`.
 - Origem: 2f §1, §11, §13, §14; despacho do autor ao Arquiteto, 09/10/2026
-- Estado: plano de rodadas **autorizado inteiro pelo autor em 10/10/2026**, na ordem 1, 2 e 3, 4a, 4b, 4c, 5, 6, 7, 8, com as travas registradas no plano (`plano-reescrita-armas-distancia.md`). A pendência de "Sem equilíbrio" × Caído foi encerrada (D-086) e a dos Punhos na reforma de P/G/R foi fechada pela D-082. A Plumbata deixou de esperar o modelo de economia (D-085).
+- Estado: plano de rodadas **autorizado inteiro pelo autor em 10/10/2026**, na ordem 1, 2 e 3, 4a, 4b, 4c, 5, 6, 7, 8, com as travas registradas no plano (`plano-reescrita-armas-distancia.md`). A pendência de "Sem equilíbrio" × Caído foi encerrada (D-086) e a dos Punhos na reforma de P/G/R foi fechada pela D-082. A Plumbata deixou de esperar o modelo de economia (D-085). **Andamento (10/10/2026):** rodada 1 (dados) no ar em f3d52086 + 0dcf5788, veredito 147 e 148 PROCEDE; rodadas 2 e 3 (textos) em 5c4bb201 e 53574bf0, veredito 149 CORRIGE (teste do capítulo, em andamento); veredito da rodada 14 das armas (150) PROCEDE, que libera as rodadas 4a a 6. Os Estados das D-072 a D-079 só fecham quando as rodadas de texto correspondentes (4a a 7) estiverem no ar.
 
 ### D-081 · Agarrado e Imobilizado: Defesas do agarrado contra os de fora e Imobilizado com Defesas zeradas [tags: agarrado, imobilizado, agarrao, defesa, manobra, preso]
 - Data: 2026-10-09; corrigida em 2026-10-10
