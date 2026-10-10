@@ -879,6 +879,9 @@
     "id": "plumbata",
     "nome": "Plumbata",
     "tipo": "arma",
+    "preco": {
+      "pc": 35
+    },
     "peso": 0.2,
     "descricao": "Dardo de guerra, curto e pesado, com chumbo: fura couro (N1). É projétil rápido, mas é lançada à mão, então pode ser defendida também com Bloqueio (além da Esquiva e do escudo hábil).",
     "tags": [

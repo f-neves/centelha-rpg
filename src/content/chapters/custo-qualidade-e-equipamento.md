@@ -129,6 +129,7 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 | Funda | 10 pc |
 | Machado de Arremesso | 80 pc |
 | Pilum | 50 pc |
+| Plumbata | 35 pc |
 | Rede | 30 pc |
 | Flechas (10) | 10 pc |
 | Virotes (10) | 10 pc |

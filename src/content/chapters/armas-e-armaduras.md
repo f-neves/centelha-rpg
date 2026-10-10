@@ -14,7 +14,7 @@ Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a
 Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra no [Combate](/regras/combate):
 
 - **Velocidade**: quantos **Ticks** o ataque custa na linha do tempo (leve 5, média 6, pesada 7): a leve age mais vezes; a pesada bate mais forte, mas te expõe entre os golpes.
-- **Dano**: o **dado de dano** do golpe (com um bônus fixo por classe), ao qual se somam a **Força** (o dobro nas de duas mãos) e cada Margem (+1d6). A régua por peso: leve **1d6−2**, média **1d6**, pesada **2d6**, haste **1d6+2**, arremesso **1d6−2 a 1d6+2**. **Arcos** somam Força (curto até +3, longo inteira, composto ×2); **bestas** não usam Força e já vêm com o bônus embutido (**1d6+2 / +4 / +8**).
+- **Dano**: o **dado de dano** do golpe (com um bônus fixo por classe), ao qual se somam a **Força** (o dobro nas de duas mãos) e cada Margem (+1d6). A régua por peso: leve **1d6−2**, média **1d6**, pesada **2d6**, haste **1d6+2**, arremesso **1d6−4 a 1d6**. **Arcos** somam a **Força no arco** (a menor entre a sua Força e a Força máxima do arco: o Curto tem Força máxima 3, o Longo e o Composto não têm, e o Composto soma ×2); **bestas** não usam Força e já vêm com o bônus embutido (**1d6+2 / +4 / +8**).
 - **Acerto**: um bônus que **soma no seu pool de ataque** (a leve mira melhor; a pesada, pior).
 - **Def. (Defesa da Arma)**: quanto a arma acrescenta ao seu **Bloqueio**.
 - **Mãos**: uma ou duas; algumas são *Versáteis* e servem nas duas formas.
@@ -37,8 +37,13 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 | Média | 6 | 1d6 | +1 | +1 | 1\* | equilíbrio sem fraquezas (versátil) |
 | Pesada | 7 | 2d6 | +0 | −2 | 2 | dano que vence armadura, mas lenta e te expõe, com guarda baixa |
 | Haste | 6 | 1d6+2 | +1 | +2 | 2 | alcance: controla a distância e defende muito |
-| Distância | 6–15 | 1d6−1 a 1d6+2 (+Força) / 1d6+2 a +8 | +0 a +1 | — | 2 | domina antes do contato; arco soma Força, besta vem embutida; depende de munição. Alcance de 100 a 300 m |
-| Arremesso | 4–6 | 1d6−2 a 1d6+2 | +0 a +2 | — | 1 | lançar com a mão: uma mão, projétil recuperável, alcance de 5 a 200 m conforme o objeto |
+| Arremesso leve | 4 | 1d6−4 | +1 | · | 1 | lançar com a mão o que cabe na palma, às dezenas: mira boa, dano pequeno. Efetiva de 8 a 10 m |
+| Arremesso médio | 5 | 1d6−2 | +0 a +1 | · | 1 | uma mão, projétil recuperável: o meio-termo. Efetiva de 10 a 20 m |
+| Arremesso pesado | 6 | 1d6 | +0 a +1 | · | 1 | golpe forte e curto, mas lento. Efetiva de 4 a 16 m |
+| Funda | 6 | 1d6 | +1 | · | 1 | pedra lançada pela corda: Efetiva de 26 m e Máxima dobrada |
+| Arco Curto | 6 | 1d6−2 (+Força até 3) | +2 | · | 2 | domina antes do contato; depende de munição. Efetiva de 30 m |
+| Arco Longo e Composto | 7 | 1d6 e 1d6+2 (+Força) | +0 | · | 2 | alcance e dano maiores, e a Máxima vem da Força. Efetiva de 50 e de 70 m |
+| Besta | 9, 12 e 15 | 1d6+2, +4 e +8 | +1 | · | 2 | o dano vem embutido, sem Força; recarga parada. Efetiva de 40, 60 e 80 m, Máxima fixa |
 
 </div>
 
@@ -49,6 +54,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 - **Versátil**, 1 ou 2 mãos: com uma mão soma Força no dano; com as duas, Força×2.
 - **Sangramento**, um golpe que abre Margem deixa uma ferida que continua drenando: **Sangramento igual à Margem** (máx 3). Ver *Sangramento e Estabilização* em Vida & Ferimentos.
 - **Arremessável · Munição · Pesada**: lançar; gastar munição; usar Força total.
+- **Bloqueável**: projétil rápido lançado à mão, que por isso também se bloqueia com a arma, além da Esquiva e do escudo hábil. Só a Plumbata.
 - **Prende**, não causa dano: um acerto deixa o alvo **Preso** (não se desloca, mas age; [Combate](/regras/combate), Manobras) até escapar: Força + Atletismo contra o total do lançamento, e cada tentativa gasta a ação.
 
 ## Armas de Exemplo
@@ -76,32 +82,75 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 
 ### Armas à Distância
 
-<p class="muted">Aqui a <strong>Defesa</strong> dá lugar à <strong>Distância</strong>: o alcance máximo do disparo ou do arremesso, em metros. Arma de projétil não guarda, então não acrescenta nada ao Bloqueio. Os valores são o <em>tiro extremo</em>, não a distância em que se acerta com facilidade; para mirar bem, conte com algo em torno de metade. Nas armas de <strong>Arremesso</strong> o número é um teto do objeto, não uma promessa: o braço também limita, e vale <em>o menor</em> entre ele e o que o seu <strong>FAA</strong> alcança com aquele peso (a tabela de Arremessar, em Corpo e Movimento, e o bloco <em>Peso, Arremesso e Corrida</em> da ficha fazem essa conta). Um arco não tem essa segunda trava, porque quem lança a flecha é o arco.</p>
+<p class="muted">Aqui a <strong>Defesa</strong> dá lugar à <strong>Efetiva</strong>: a distância, em metros, até a qual você mira com tudo o que tem sem a distância atrapalhar. É um número da arma, para um alvo Médio, o mesmo para qualquer personagem (o treino entra no seu pool, e não na Efetiva). Além dela, cada <em>meia Efetiva</em> a mais custa <strong>−3</strong> no acerto, sem teto: com a Efetiva E e o alvo a uma distância d, são n = ⌈(d − E) ÷ (E ÷ 2)⌉ passos, e a penalidade é −3 × n. A faca de arremesso (Efetiva 10 m) contra um alvo a 25 m dá n = 3 e −9; o Arco Longo (50 m) contra um alvo a 150 m dá n = 4 e −12. Alvo longe e em movimento é quase impossível de acertar sem magia, Proeza ou muitos dados, e é assim mesmo. Arma de projétil não guarda, então não acrescenta nada ao Bloqueio. A <strong>Máxima</strong> é outra conta, o <em>tiro extremo</em>: nos arcos vem da <strong>Força no arco</strong> (tabela abaixo), nas bestas é fixa, e no <strong>Arremesso</strong> vem do seu <strong>FAA</strong> e do peso (a tabela de Arremessar, em Corpo e Movimento, e o bloco <em>Peso, Arremesso e Corrida</em> da ficha fazem essa conta). A Efetiva pode passar da Máxima de um arremessador fraco: ele joga sempre sem penalidade.</p>
+
+#### Arremesso
 
 <div class="table-wrap sem-ultima-coluna">
 
-| Arma | Classe | Modos | Velocidade | Dano | Acerto | Distância | Mãos | Destaque |
-|---|:---:|---|:---:|:---:|:---:|:---:|:---:|---|
-| Arco Curto | Distância | ★P(N1) | 6 | 1d6−1 | +1 | 120 m | 2 | Munição. Soma Força **até +3**; resvala na placa |
-| Arco Longo | Distância | ★P(N1) | 6 | 1d6 | +0 | 250 m | 2 | Munição. Soma **Força inteira**; resvala na placa |
-| Arco Composto | Distância | ★P(N1) | 6 | 1d6+2 | +0 | 300 m | 2 | Munição, **caro**. Com **Força 4+**, soma **Força×2** e o `+2`; **abaixo disso rende como um Arco Longo** (Força×1, sem o `+2`). Resvala na placa |
-| Besta Pequena | Distância | ★P(N1) | 9 | 1d6+2 | +1 | 100 m | 2 | Munição, recarga **parado**. Não usa Força (mecanismo) |
-| Besta Média | Distância | ★P(N1) | 12 | 1d6+4 | +1 | 200 m | 2 | Munição, recarga **parado**. Não usa Força; o virote (N1) fura couro e malha, resvala na placa |
-| Besta Grande | Distância | ★P(N2) | 15 | 1d6+8 | +1 | 300 m | 2 | Munição, recarga **parado**, pesada. Arbalesta; o virote pesado (N2) fura brigandina; dano bruto altíssimo, mas resvala na placa |
-| Funda | Arremesso | ★I | 6 | 1d6 | +1 | 200 m | 1 | Munição. Pedras a longa distância; Impacto (sem gate) |
-| Bumerangue | Arremesso | ★I | 5 | 1d6 | +1 | 50 m | 1 | Atinge em curva e volta à mão se erra |
-| Azagaia | Arremesso | ★P(N1) | 5 | 1d6+1 | +1 | 40 m | 1 | Javelina: fura à distância ou na estocada em punho |
-| Dardos | Arremesso | ★P(N1) | 4 | 1d6 | +2 | 30 m | 1 | Ágil, munição. Velozes em sequência |
-| Pilum | Arremesso | ★P(N2) | 5 | 1d6+2 | +1 | 25 m | 1 | Anti-escudo: fura placa de N2 e entorta ao cravar |
-| Machado de Arremesso | Arremesso | ★C · I | 5 | 1d6+2 | +1 | 12 m | 1 | Gira no ar; golpe forte e curto |
-| Adaga de Arremesso | Arremesso | ★P(N0) | 5 | 1d6−2 | +1 | 10 m | 1 | Ágil, munição. Facas às dezenas; só fura pele |
-| Rede | Arremesso | ★I | 5 | 1d6 | +0 | 5 m | 1 | Prende. Deixa o alvo Preso em vez de feri-lo |
+| Arma | Classe | Modos | Velocidade | Dano | Acerto | Efetiva | Peso | Mãos | Destaque |
+|---|:---:|---|:---:|:---:|:---:|:---:|:---:|:---:|---|
+| Shuriken | Leve | ★P(N0) | 4 | 1d6−4 | +1 | 10 m | 50 g | 1 | Ágil, munição. Fina e rasa; só fura pele |
+| Mini-faca | Leve | ★P(N0) | 4 | 1d6−4 | +1 | 8 m | 100 g | 1 | Ágil, munição. Faca pequena, fácil de esconder; só fura pele |
+| Kunai | Leve | ★P(N0) | 4 | 1d6−4 | +1 | 8 m | 150 g | 1 | Ágil, munição. Mais pesada que a mini-faca, com argola; serve também de ferramenta (o Mestre julga) |
+| Adaga de Arremesso | Média | ★P(N0) | 5 | 1d6−2 | +1 | 10 m | 250 g | 1 | Ágil, munição. Facas às dezenas; só fura pele |
+| Plumbata | Média | ★P(N1) | 5 | 1d6−2 | +0 | 14 m | 200 g | 1 | Munição, bloqueável. Dardo de guerra, curto e pesado, com chumbo; fura couro |
+| Bumerangue de retorno | Média | ★I ou ★C | 5 | 1d6−2 | +1 | 20 m | 300 g | 1 | Em curva; volta à mão no fim da ação se errar |
+| Bumerangue de caça | Pesada | ★I ou ★C | 6 | 1d6 | +0 | 16 m | 700 g | 1 | Reto e baixo; não volta. Troca alcance por dano |
+| Machado de Arremesso | Pesada | ★C · I | 6 | 1d6 | +1 | 12 m | 700 g | 1 | Gira no ar; golpe forte e curto |
+| Azagaia | Pesada | ★P(N1) | 6 | 1d6 | +1 | 16 m | 800 g | 1 | Javelina: fura à distância ou na estocada em punho. Aceita atlatl |
+| Pilum | Pesada | ★P(N2) | 6 | 1d6 | +1 | 12 m | 2 kg | 1 | Anti-escudo: fura placa de N2 e entorta ao cravar |
+| Boleadeira | Pesada | ★I | 6 | 1d6−4 | +0 | 16 m | 600 g | 1 | Prende. Deixa o alvo Preso pelas pernas |
+| Rede | Pesada | · | 6 | não causa dano | +0 | 4 m | 3 kg | 1 | Prende. Deixa o alvo Preso em vez de feri-lo |
+| Funda | Funda | ★I | 6 | 1d6 | +1 | 26 m | pedra de 100 g | 1 | Munição. Pedras a longa distância; Máxima ×2; Impacto (sem gate) |
 
 </div>
 
-<p class="muted"><strong>Modos:</strong> <strong>I</strong> = Impacto · <strong>C</strong> = Cortante · <strong>P</strong> = Perfurante (estocada ou projétil, sem distinção). <strong>★</strong> = modo principal (sem custo); os secundários saem com <strong>−2 ao acerto e −1d6 no dano</strong>. O <strong>(N0)–(N2)</strong> após o P é o <strong>Nível de Perfuração</strong>. <strong>Velocidade</strong> = Ticks da ação · <strong>Defesa</strong> = bônus de Bloqueio da arma · <strong>Distância</strong> = alcance máximo · <strong>Mãos</strong> = empunhadura (a <em>Versátil</em> soma Força×2 quando usada com as duas mãos). O <strong>Quase-Acerto</strong> é fixo pela classe (peso) da arma; ver o <a href="/centelha-rpg/regras/quase-acerto">capítulo próprio</a>.</p>
+- **Projétil rápido.** A Shuriken, a Mini-faca, a Kunai e a Adaga de Arremesso contam como projétil rápido (só Esquiva ou escudo hábil defendem; veja *Escudos*, abaixo, e [Combate](/regras/combate)); o Mestre julga o que for diferente. A **Plumbata** também é projétil rápido, mas é lançada à mão, e por isso pode ser defendida **também com Bloqueio**, além da Esquiva e do escudo hábil.
+- **Bumerangues.** Os dois existem em **Impacto** (madeira, borda arredondada: a versão comum) ou **Cortante** (borda afiada ou de metal, mais cara). O **de retorno** voa em curva e, se errar, volta à mão no fim da ação, no mesmo número de Ticks que levou para ir; até a Efetiva, a ida leva 0 Ticks e a volta também, porque a arma está na mão ao fim do Golpe. Pegar o de retorno **Cortante** de volta pede **Destreza + Arremesso, Dificuldade Média (10)**; se falhar, ele cai a 1 ou 2 m de você. O de retorno de Impacto volta à mão sem teste. O **de caça**, mais pesado, voa reto e baixo e não volta: troca alcance por dano.
+- **Boleadeira.** Pesos ligados por corda que enroscam nas pernas: um acerto deixa o alvo **Preso pelas pernas** (Esquiva −4; não se desloca, mas age). Para se soltar, **Força + Atletismo** contra o total do lançamento, e cada tentativa gasta a ação. O dano é pequeno (1d6−4), uma exceção à classe pesada.
+- **Rede.** **Não causa dano**: a coluna Dano não se aplica a ela, e o que ela faz é prender. Um acerto deixa o alvo **Preso pela Rede**: **−2 na Esquiva e −2 no Bloqueio**, e mais **−1 em cada** por grau de Margem do lançamento, sem teto. Para se soltar, **Força + Atletismo** contra o total do lançamento, e cada tentativa gasta a ação.
+- **Funda.** Uma pedra de 100 g. A Máxima dela é o **dobro** da que o FAA dá (calcula-se a Máxima normal e dobra-se). Impacto, com a Força inteira no dano.
+- **Atlatl** (item extra, não é arma). Propulsor de dardo que funciona **só com a azagaia** (a Plumbata se lança à mão e não usa atlatl). Na arma lançada: **×2 na Máxima**, **+1× Força no dano** (a azagaia, que somava 1× Força, passa a somar 2× Força) e **+2 no Preparo** (a azagaia com atlatl tem Velocidade 8, a mais lenta do Arremesso). Usa **uma mão**, a mesma que lança, e **não muda a Efetiva**. A exposição maior é o preço aceito pelo ganho.
 
-<div class="callout regra"><span class="lbl">Besta: o preço da manivela</span>A besta não usa Força e fura melhor que qualquer arco, e paga por isso em tempo: <strong>Velocidade 9, 12 e 15</strong>, contra 6 de todos os arcos. E paga de outro jeito também: <strong>recarregar exige estar parado</strong>. O Preparo da besta é o único do jogo que não admite deslocamento nenhum, nem o primeiro Tick de Deslocamento de Batalha que toda outra ação ganha de graça. É o espelho exato da <a href="/centelha-rpg/regras/combate#investida">Investida</a>, que gasta o Preparo correndo: a besta gasta o dela plantada. Quem atira de arbalesta fica <strong>catorze Ticks</strong> comprometido antes de o virote sair, com a escada de Defesa aberta em cima o tempo todo, e é por isso que o pavês existe.</div>
+#### Atirador
+
+<div class="table-wrap sem-ultima-coluna">
+
+| Arma | Classe | Modos | Velocidade | Dano | Acerto | Efetiva | Mãos | Destaque |
+|---|:---:|---|:---:|:---:|:---:|:---:|:---:|---|
+| Arco Curto | Distância | ★P(N1) | 6 | 1d6−2 | +2 | 30 m | 2 | Munição. Soma Força **até 3** (a Força máxima padrão do Curto); resvala na placa |
+| Arco Longo | Distância | ★P(N1) | 7 | 1d6 | +0 | 50 m | 2 | Munição. Soma **Força inteira**; resvala na placa |
+| Arco Composto | Distância | ★P(N1) | 7 | 1d6+2 | +0 | 70 m | 2 | Munição, **caro**. Com **Força 4+**, soma **Força×2** e o `+2`; **abaixo disso rende como um Arco Longo** (Força×1, sem o `+2`). Resvala na placa |
+| Besta Pequena | Distância | ★P(N1) | 9 | 1d6+2 | +1 | 40 m | 2 | Munição, recarga **parado**. Não usa Força (mecanismo). Máxima 100 m |
+| Besta Média | Distância | ★P(N1) | 12 | 1d6+4 | +1 | 60 m | 2 | Munição, recarga **parado**. Não usa Força; o virote (N1) fura couro e malha, resvala na placa. Máxima 200 m |
+| Besta Grande | Distância | ★P(N2) | 15 | 1d6+8 | +1 | 80 m | 2 | Munição, recarga **parado**, pesada. Arbalesta; o virote pesado (N2) fura brigandina; dano bruto altíssimo, mas resvala na placa. Máxima 300 m |
+
+</div>
+
+A **Máxima** de um arco sai da **Força no arco**: o **menor valor entre a sua Força e a Força máxima do arco**. As bestas não usam Força, e a Máxima delas é fixa (Pequena 100 m, Média 200 m, Grande 300 m).
+
+<div class="table-wrap">
+
+| Máxima (m) por Força no arco | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Arco Curto | 50 | 90 | 120 | 140 | 155 | 170 | 180 | 190 |
+| Arco Longo | 100 | 180 | 250 | 295 | 325 | 350 | 370 | 390 |
+| Arco Composto | 120 | 215 | 300 | 355 | 390 | 420 | 445 | 465 |
+
+</div>
+
+<p class="muted">Força 1 é uma criança ou um pré-adolescente (um arco juvenil); Força 2, um adulto comum; Força 3, um adulto forte; Força 6, o máximo humano. As Forças 7 e 8 dão margem a personagens e criaturas muito fortes, com ganho pequeno, porque acima do humano o limite é o arco e a flecha. Força acima de 8 conta como 8 nesta tabela. A Máxima maior do Composto, em qualquer Força, é intencional.</p>
+
+- **Força máxima do arco.** Só o **Arco Curto** tem uma por padrão: **3**. Existem Curtos reforçados, com Força máxima maior e mais caros. O Longo e o Composto **não têm** Força máxima por padrão: neles a Força no arco é a sua Força.
+- **Força mínima.** É a Força máxima do arco **menos 3**, e **só vale nos arcos que têm Força máxima definida** (os reforçados e os de criatura): quem não a alcança não consegue armar o arco.
+- **Dano.** A mesma Força no arco limita o bônus de Força no dano.
+- **O Arco Composto e a Força.** O Composto só rende o dobro da Força, e o `+2`, com Força 4 ou mais; com menos, rende como um Arco Longo. Isso não é a Força mínima dos arcos reforçados, que é uma regra à parte.
+- **Preço.** O preço de um arco varia com o que ele entrega: uma Efetiva maior, uma Máxima maior e uma Força máxima maior. Os valores de cada tipo de arco vêm do modelo de economia.
+
+<p class="muted"><strong>Modos:</strong> <strong>I</strong> = Impacto · <strong>C</strong> = Cortante · <strong>P</strong> = Perfurante (estocada ou projétil, sem distinção). <strong>★</strong> = modo principal (sem custo); os secundários saem com <strong>−2 ao acerto e −1d6 no dano</strong>. O <strong>(N0)–(N2)</strong> após o P é o <strong>Nível de Perfuração</strong>. <strong>Velocidade</strong> = Ticks da ação · <strong>Defesa</strong> = bônus de Bloqueio da arma · <strong>Efetiva</strong> = distância sem penalidade de mira, para alvo Médio · <strong>Peso</strong> = o peso do objeto lançado, que entra na Máxima do arremesso · <strong>Mãos</strong> = empunhadura (a <em>Versátil</em> soma Força×2 quando usada com as duas mãos). O <strong>Quase-Acerto</strong> é fixo pela classe (peso) da arma; ver o <a href="/centelha-rpg/regras/quase-acerto">capítulo próprio</a>.</p>
+
+<div class="callout regra"><span class="lbl">Besta: o preço da manivela</span>A besta não usa Força e fura melhor que qualquer arco, e paga por isso em tempo: <strong>Velocidade 9, 12 e 15</strong>, contra 6 e 7 dos arcos. E paga de outro jeito também: <strong>recarregar exige estar parado</strong>. O Preparo da besta é o único do jogo que não admite deslocamento nenhum, nem o primeiro Tick de Deslocamento de Batalha que toda outra ação ganha de graça. É o espelho exato da <a href="/centelha-rpg/regras/combate#investida">Investida</a>, que gasta o Preparo correndo: a besta gasta o dela plantada. Quem atira de arbalesta fica <strong>catorze Ticks</strong> comprometido antes de o virote sair, com a escada de Defesa aberta em cima o tempo todo, e é por isso que o pavês existe.</div>
 
 ## Luta desarmada
 
@@ -146,7 +195,7 @@ A armadura **absorve dano depois do acerto**, com **três Absorções**: **Impac
 
 O escudo não absorve: é **bônus de Defesa** (ajuda a *não* ser acertado), e só quando usado. Cada escudo tem **um valor de Defesa** que entra no seu **Bloqueio**, como a Defesa de uma arma. A **Penalidade** incide nas outras ações físicas (esquiva etc.), **nunca** no bloqueio do próprio escudo.
 
-Contra **projéteis rápidos** (flecha, virote, bala de funda, dardo), o escudo é a *única* forma de bloquear: veja *Projéteis rápidos: só Esquiva ou escudo* em [Combate](/regras/combate). Só bloqueia quem tem um escudo **hábil** (cobre ≥30% do corpo, do redondo para cima num usuário Médio) e está **apto** a manejá-lo; sem isso, resta a Esquiva. O broquel e o targe são pequenos demais para isso; o **pavês** é o extremo oposto, a parede portátil do besteiro.
+Contra **projéteis rápidos** (flecha, virote, bala de funda, faca de arremesso), o escudo é a *única* forma de bloquear (a Plumbata, lançada à mão, é a exceção: também se bloqueia com a arma): veja *Projéteis rápidos: só Esquiva ou escudo* em [Combate](/regras/combate). Só bloqueia quem tem um escudo **hábil** (cobre ≥30% do corpo, do redondo para cima num usuário Médio) e está **apto** a manejá-lo; sem isso, resta a Esquiva. O broquel e o targe são pequenos demais para isso; o **pavês** é o extremo oposto, a parede portátil do besteiro.
 
 <div class="table-wrap">
 

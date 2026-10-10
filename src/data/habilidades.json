@@ -101,7 +101,7 @@
       "destreza",
       "forca"
     ],
-    "descricao": "Fazer um objeto chegar longe e no lugar certo: adaga, azagaia, machado de arremesso, dardo, funda, e também a pedra, a tocha, o frasco e o banco que estavam ali por perto. Governa a mira e o alcance ao mesmo tempo, porque quem tem braço joga mais longe. É a Habilidade dos improvisos, e por isso rende tanto fora do combate quanto dentro dele: acertar a corda, jogar a chave para o outro lado da grade, apagar a lamparina do vigia. Arco e besta não entram aqui, isso é Atirador.",
+    "descricao": "Fazer um objeto chegar longe e no lugar certo: adaga, azagaia, machado de arremesso, plumbata, funda, e também a pedra, a tocha, o frasco e o banco que estavam ali por perto. Governa a mira e o alcance ao mesmo tempo, porque quem tem braço joga mais longe. É a Habilidade dos improvisos, e por isso rende tanto fora do combate quanto dentro dele: acertar a corda, jogar a chave para o outro lado da grade, apagar a lamparina do vigia. Arco e besta não entram aqui, isso é Atirador.",
     "niveis": [
       {
         "nivel": 0,
