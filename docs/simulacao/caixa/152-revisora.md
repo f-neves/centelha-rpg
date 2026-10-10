@@ -97,6 +97,13 @@ grande): você bloqueia normalmente", e a Executora a manteve, trocando só o no
 Arremesso, Funda, Plumbata, Shuriken, Mini-faca, Kunai). Se o autor quiser o de retorno como rápido seria decisão nova, com pergunta; pelos três filtros do D-087 não há o que perguntar agora (o registro e a Veterana
 silenciam, e o Mestre resolve o caso). O que existe é uma **tensão de desenho**, não de regra: o bumerangue de retorno é média V5 como a Adaga de Arremesso, que é rápida; é o tipo de coisa para a fase de testes.
 
+## Nota de delta (entrou no `main` depois do pino, antes de eu publicar este veredito)
+
+O commit `f893a279` ("test-capitulo-armas: Classe contra Velocidade, modo secundário, tabela de Classes do tiro e prosa com número") **fecha as lacunas de teste que eu listei na seção 4**:
+reexecutei as mesmas 24 mutações contra o teste novo (rebaseei a minha árvore sobre ele) e **as 24 são agora acusadas**, inclusive a Classe da Azagaia, o modo secundário do Machado, o dano da tabela de Classes, a
+fórmula "−3 × n" do texto, "soma 1 Tick", a frase do Normal, a exceção da Plumbata, o bumerangue e os "3 Ticks" e "8 Ticks" dos exemplos; o teste sai 0 com "35 estragos acusados". **Isto vale para o `f893a279`, não para o
+pino `83d84cf5`** (o veredito acima é sobre o pino). Esse commit **não toca** `regras.json` nem o `test-forca-arco`, então os dois CORRIGE abaixo seguem de pé. Não revisei o `f893a279` além disso.
+
 ## CORRIGE
 
 1. **`regras.json` `combate.movimento.recarga.texto` e `.porque` dizem o contrário do capítulo.** O texto diz "O tiro sai **no último Tick do ciclo**, como em qualquer arma de distância" e o `porque`
