@@ -15,7 +15,7 @@ const xp = custoTecnica(t.nivel);
     <span class="badge" title="Custo em XP para comprar esta Técnica">{xp} XP</span>
     <span class={`badge ${t.tipo}`}>{custoTagTecnica(t)}</span>
     {mod && <span class="badge mod" title={mod.t}>{mod.v}</span>}
-    {t.pendente && <span class="badge pendente" title="Texto provisório — revisar">Rascunho</span>}
+    {t.pendente && <span class="badge pendente" title="Texto provisório: revisar">Rascunho</span>}
     <button class="bm" data-bm={`tecnica:${t.id}`} title="Marcar" aria-label={`Marcar ${t.nome}`}>☆</button>
   </div>
   <p class="tec-eff" set:html={t.texto.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')} />

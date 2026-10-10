@@ -20,7 +20,7 @@ export const caminhoComArtigo = (nome: string) => `Proeza ${FEM.has(nome) ? 'da'
 export const TRILHA_LABEL: Record<string, string> = { corpo: 'Corpo', voz: 'Voz', mente: 'Mente' };
 export const TRILHA_SUB: Record<string, string> = {
   corpo: 'força, agilidade e resiliência do corpo',
-  voz: 'a alma social — inspirar, dobrar e encantar',
+  voz: 'a alma social: inspirar, dobrar e encantar',
   mente: 'perceber, saber e reagir',
 };
 

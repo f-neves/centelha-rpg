@@ -32,7 +32,7 @@ const linhaDados = (a: any) => ({
   'data-txt': (a.nome + ' ' + a.tags.join(' ') + ' ' + a.notas).toLowerCase(),
 });
 ---
-<Base title="Equipamentos" largura="wide" descricao="Catálogo filtrável de armas, armaduras e escudos — com dano, Absorção e os trade-offs.">
+<Base title="Equipamentos" largura="wide" descricao="Catálogo filtrável de armas, armaduras e escudos, com dano, Absorção e os trade-offs.">
   <h1>Equipamentos</h1>
   <p class="lead">A arma define o <em>estilo</em>, não a potência bruta. As regras completas estão em <a href={url('regras/armas-e-armaduras')}>Armas &amp; Armaduras</a>; aqui está o catálogo para filtrar e comparar.</p>
 
@@ -100,7 +100,7 @@ const linhaDados = (a: any) => ({
   {/* TOLERÂNCIA: cinco armaduras ainda com números de simulação (K2b do veterana-1e). */}
   {/* LEVANTA QUANDO: o balanceamento final das armaduras fechar os números delas. */}
   <p class="muted">Peitoral, Camisa de malha, Peitoral reforçado, Placa articulada e Malha completa: valores provisórios, sujeitos a balanceamento final, exceto o preço.</p>
-  <p class="muted">Três Absorções: <strong>Impacto</strong>, <strong>Corte</strong> e <strong>Perfuração</strong> (o dano Perfurante usa o de Perfuração). O <strong>Nível</strong> entre parênteses é a Resistência à Perfuração: a Perfuração da arma precisa ser ≥ ele, senão resvala — e ele <em>não soma</em> ao empilhar (vale o maior). A <strong>Penalidade</strong> incide em qualquer ação física (Ataque, Esquiva, Bloqueio, Deslocamento, Salto) e <strong>dobra</strong> para Furtividade e atividades delicadas (na Furtividade, esse dobro é a Circunstância da armadura na Dificuldade, e é uma cobrança só; na natação, a Circunstância da armadura substitui a Penalidade). Empilhar vale o maior Absorção de cada categoria; as penalidades somam.</p>
+  <p class="muted">Três Absorções: <strong>Impacto</strong>, <strong>Corte</strong> e <strong>Perfuração</strong> (o dano Perfurante usa o de Perfuração). O <strong>Nível</strong> entre parênteses é a Resistência à Perfuração: a Perfuração da arma precisa ser ≥ ele, senão resvala, e ele <em>não soma</em> ao empilhar (vale o maior). A <strong>Penalidade</strong> incide em qualquer ação física (Ataque, Esquiva, Bloqueio, Deslocamento, Salto) e <strong>dobra</strong> para Furtividade e atividades delicadas (na Furtividade, esse dobro é a Circunstância da armadura na Dificuldade, e é uma cobrança só; na natação, a Circunstância da armadura substitui a Penalidade). Empilhar vale o maior Absorção de cada categoria; as penalidades somam.</p>
   <div class="table-wrap">
     <table>
       <thead><tr><th>Armadura</th><th class="c">Classe</th><th class="c">Impacto</th><th class="c">Corte</th><th class="c">Perfuração (Nível)</th><th class="c">Penalidade</th><th>Notas</th></tr></thead>

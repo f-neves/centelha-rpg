@@ -1557,6 +1557,66 @@ function conferirNoveBis(T) {
   TOTAL_ARTE += Object.keys(mutBis).length + Object.keys(mutFP).length;
 }
 
+// ---- rodada 9-bis, E: nenhum travessão em texto visível (rótulos, títulos de página, prosa das páginas), fora o que o Grid lê
+// O que fica: a célula vazia de tabela (o travessão sozinho entre aspas, entre > e <, ou numa linha de tabela do capítulo),
+// os comentários de código, o regex que normaliza o que o jogador digita (lance.ts, rolagem.ts), o monsters.json e o bestiário (B14),
+// e o que só o Grid lê (grid.astro, mesa/combate.astro, artes-grid*, mesa-*, comando-*): vão para o N22.
+function acharTravessoesVisiveis(arquivos) {
+  const achados = [];
+  for (const [rel, txt] of arquivos) {
+    let emBloco = false, emHtml = false;
+    txt.split('\n').forEach((l0, i) => {
+      let l = l0;
+      if (emBloco) { if (l.includes('*/')) { emBloco = false; l = l.slice(l.indexOf('*/') + 2); } else return; }
+      if (emHtml) { if (l.includes('-->')) { emHtml = false; l = l.slice(l.indexOf('-->') + 3); } else return; }
+      l = l.replace(/\/\*.*?\*\//g, '').replace(/<!--.*?-->/g, '');
+      if (l.includes('/*')) { emBloco = true; l = l.slice(0, l.indexOf('/*')); }
+      if (l.includes('<!--')) { emHtml = true; l = l.slice(0, l.indexOf('<!--')); }
+      if (/^\s*(\/\/|\*)/.test(l)) return;
+      l = l.replace(/(^|\s)\/\/\s.*$/, '');
+      if (rel.endsWith('.md') && /^\s*\|/.test(l)) return;               // linha de tabela do capítulo (o gate de src/content cuida dela)
+      const resto = l.replace(/['"`]—['"`]/g, '').replace(/>—</g, '><').replace(/"—",?/g, '');
+      if (resto.includes('—')) achados.push(rel + ':' + (i + 1) + ': ' + resto.trim().slice(Math.max(0, resto.indexOf('—') - 40), resto.indexOf('—') + 40));
+    });
+  }
+  return achados;
+}
+function arquivosVisiveis() {
+  const lista = [];
+  const EXCETO = /(^|\/)(bestiario|node_modules)(\/|$)|monsters|inimigos|ref-index|package-lock|grid\.astro|mesa\/combate\.astro|artes-grid|\/mesa-[a-z-]+\.ts|comando-(barra|voz)\.ts|\/lance\.ts|\/rolagem\.ts/;
+  const anda = (d) => {
+    for (const f of fs.readdirSync(path.join(ROOT, d), { withFileTypes: true })) {
+      const rel = d + '/' + f.name;
+      if (f.isDirectory()) { if (!EXCETO.test(rel + '/')) anda(rel); }
+      else if (/\.(astro|ts|css|json|md)$/.test(f.name) && !EXCETO.test(rel)) lista.push([rel, ler(rel)]);
+    }
+  };
+  anda('src');
+  return lista;
+}
+{
+  const ARQ = arquivosVisiveis();
+  const realE = acharTravessoesVisiveis(ARQ);
+  for (const x of realE) falhas.push('travessão em texto visível (9-bis): ' + x);
+  const limpo = (rel) => ARQ.find(([r]) => r === rel)?.[1] ?? '';
+  const mutE = realE.length ? {} : {
+    'o título da página de volta': ['src/layouts/Base.astro', (t) => t.replace('`${title} · Centelha`', '`${title} — Centelha`')],
+    'o rótulo Arcano · Artes de volta': ['src/components/FichaSkeleton.astro', (t) => t.replace('Arcano · Artes', 'Arcano — Artes')],
+    'o rótulo No tempo de volta': ['src/lib/ficha-engine.ts', (t) => t.replace('<b>No tempo</b>: Preparo', '<b>No tempo</b> — Preparo')],
+    'a prosa de /equipamentos de volta': ['src/pages/equipamentos.astro', (t) => t.replace('escudos, com dano', 'escudos — com dano')],
+    'a prosa da página inicial de volta': ['src/pages/index.astro', (t) => t.replace('cinematográfica,', 'cinematográfica —')],
+    'o "também" do glossário de volta': ['src/pages/glossario.astro', (t) => t.replace('al"> · também:', 'al"> — também:')],
+    'a prosa de /tecnicas de volta': ['src/pages/tecnicas.astro', (t) => t.replace('tipo, ou busque', 'tipo — ou busque')],
+    'um travessão em dados (src/lib/data.ts)': ['src/lib/data.ts', (t) => t.replace('a alma social: inspirar', 'a alma social — inspirar')],
+  };
+  for (const [nome, [rel, fn]] of Object.entries(mutE)) {
+    const orig = limpo(rel), mut = fn(orig);
+    if (!orig || mut === orig) { falhas.push('o estrago "' + nome + '" não alterou nada (o teste de teste está torto)'); continue; }
+    if (acharTravessoesVisiveis([[rel, mut]]).length === 0) falhas.push('o teste NÃO acusou o travessão "' + nome + '"');
+  }
+  TOTAL_ARTE += Object.keys(mutE).length;
+}
+
 if (falhas.length) {
   console.error(`✘ test-capitulo-armas: ${falhas.length} falha(s)`);
   for (const f of falhas) console.error('  · ' + f);

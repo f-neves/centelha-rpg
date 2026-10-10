@@ -6,14 +6,14 @@ const termos = [...d.glossario].sort((a, b) => a.termo.localeCompare(b.termo, 'p
 ---
 <Base title="Glossário" descricao="Os termos-chave do sistema, com sinônimos e definições.">
   <h1>Glossário</h1>
-  <p class="lead">Os termos que aparecem por todo o livro. No corpo do texto, eles viram um balão ao passar o mouse. Os sinônimos ajudam a busca — procure por <em>willpower</em> e chegue a Vontade.</p>
+  <p class="lead">Os termos que aparecem por todo o livro. No corpo do texto, eles viram um balão ao passar o mouse. Os sinônimos ajudam a busca: procure por <em>willpower</em> e chegue a Vontade.</p>
   <dl class="gloss-list no-gloss">
     {termos.map((g) => (
       <div id={g.id} data-permalink class="gloss-item">
         <dt class="cinzel">{g.termo}</dt>
         <dd>
           {g.definicao}
-          {g.aliases.length > 0 && <span class="muted al"> — também: {g.aliases.join(', ')}</span>}
+          {g.aliases.length > 0 && <span class="muted al"> · também: {g.aliases.join(', ')}</span>}
         </dd>
       </div>
     ))}

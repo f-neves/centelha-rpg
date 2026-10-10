@@ -32,7 +32,7 @@ import Busca from '../components/Busca.astro';
  * carregado no primeiro apontar, e não na abertura. O que muda é quem paga.
  */
 interface Props { title: string; descricao?: string; largura?: 'prose' | 'wide' | 'full'; telaCheia?: boolean; referencias?: boolean; }
-const { title, descricao = 'Centelha — sistema de RPG de mesa em d6, do mortal ao semideus.', largura = 'prose', telaCheia = false, referencias = true } = Astro.props;
+const { title, descricao = 'Centelha: sistema de RPG de mesa em d6, do mortal ao semideus.', largura = 'prose', telaCheia = false, referencias = true } = Astro.props;
 
 const here = Astro.url.pathname.replace(/\/+$/, '');
 const isActive = (slug: string) => here === url(slug).replace(/\/+$/, '');
@@ -40,7 +40,7 @@ const isActive = (slug: string) => here === url(slug).replace(/\/+$/, '');
 // A marca sai daqui, por rota, e não de front-matter ou de detecção no cliente:
 // é o único lugar por onde as duas passam, e vale já na primeira pintura.
 const ehFicha = ['ficha', 'personagem'].some((s) => here === url(s).replace(/\/+$/, ''));
-const fullTitle = title === 'Início' ? 'Centelha' : `${title} — Centelha`;
+const fullTitle = title === 'Início' ? 'Centelha' : `${title} · Centelha`;
 const ogUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href;
 // A prévia de link (WhatsApp, Discord, redes) usa o ícone do app. É o terceiro
 // lugar que aponta para ele, junto do manifest e do apple-touch-icon.

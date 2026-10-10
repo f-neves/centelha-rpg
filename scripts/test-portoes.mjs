@@ -197,7 +197,7 @@ const JANELA = 16;   // linhas acima em que a marca pode estar
 // linha se move, texto não. Cada entrada diz por que aquela ocorrência não é
 // código fazendo menos do que a regra manda.
 const NAO_E_TOLERANCIA = [
-  ['src/components/TecnicaItem.astro', 'Texto provisório — revisar',
+  ['src/components/TecnicaItem.astro', 'Texto provisório: revisar',
     'rótulo de tela, dirigido ao leitor: é o dado `t.pendente` do JSON aparecendo, e não uma trava afrouxada.'],
   ['src/pages/artes/efeitos.astro', 'Sem Efeitos por enquanto',
     'frase de tela para uma lista vazia.'],

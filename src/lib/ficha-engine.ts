@@ -429,7 +429,7 @@ export function montarFicha(opts: FichaOpts) {
     let h = `<span class="dots" data-kind="${kind}" data-key="${key}" tabindex="0" role="slider" aria-valuemin="${floor}" aria-valuemax="${cap}" aria-valuenow="${value}" aria-label="${key.replace(/-/g, ' ')} (use as setas)">`;
     for (let d = 1; d <= max; d++) {
       const capped = d > cap;
-      const tip = capped ? ' title="Limite de criação — ative \'Evolução\' na barra de XP para passar daqui"' : '';
+      const tip = capped ? ' title="Limite de criação: ative \'Evolução\' na barra de XP para passar daqui"' : '';
       h += `<span class="dot${d <= value ? ' on' : ''}${d <= floor ? ' free' : ''}${capped ? ' cap' : ''}" data-d="${d}"${tip}>`
         + (kind === 'centelha' ? sparkSVG(d <= value) : '') + `</span>`;
     }
@@ -489,7 +489,7 @@ export function montarFicha(opts: FichaOpts) {
         return `<div class="specpop-row"><input data-spname="${i}" value="${escapeHtml(e.s)}" placeholder="nome da especialidade" /><span class="specpop-sq">${sq}</span><button class="spec-x" data-sprm="${i}" title="Remover" aria-label="Remover">×</button></div>`;
       }).join('');
       const add = arr.length < cap ? `<button class="spec-add" data-spadd type="button">+ Nova Especialidade</button>` : '';
-      specPop!.innerHTML = `<div class="specpop-h">Especialidades — ${escapeHtml(nome)} <small>(até ${cap} · nível até ${cap})</small></div>${linhas}${add}<div class="specpop-f"><button class="btn" data-specpop-close type="button">Fechar</button></div>`;
+      specPop!.innerHTML = `<div class="specpop-h">Especialidades · ${escapeHtml(nome)} <small>(até ${cap} · nível até ${cap})</small></div>${linhas}${add}<div class="specpop-f"><button class="btn" data-specpop-close type="button">Fechar</button></div>`;
       specPop!.querySelectorAll<HTMLElement>('[data-spsq]').forEach((s) => s.addEventListener('click', () => {
         if (s.classList.contains('dis')) return;
         const [i, d] = s.dataset.spsq!.split(':').map(Number);
@@ -593,12 +593,12 @@ export function montarFicha(opts: FichaOpts) {
   // aparece ao passar o mouse (ou ao tabular até as bolinhas). São 24 Artes de 6 níveis
   // cada, e abrir umas quantas empurrava a lista inteira para baixo.
   const arteFx = (a: any, lvl: number) =>
-    a.niveis.map((n: any) => `<div class="fxline${n.nivel <= lvl ? ' hi' : ''}">${n.nivel} — <b>${n.nome}</b>: ${n.efeito}</div>`).join('');
+    a.niveis.map((n: any) => `<div class="fxline${n.nivel <= lvl ? ' hi' : ''}">${n.nivel} · <b>${n.nome}</b>: ${n.efeito}</div>`).join('');
   // No papel não existe hover. Cada Arte que o personagem tem imprime os níveis que ele
   // alcançou (os outros não fazem falta na mesa); Arte em zero não imprime nada.
   const artePrint = (a: any, lvl: number) =>
     !lvl ? '' : `<div class="arte-print">${a.niveis.filter((n: any) => n.nivel <= lvl)
-      .map((n: any) => `<div class="fxline hi">${n.nivel} — <b>${n.nome}</b>: ${n.efeito}</div>`).join('')}</div>`;
+      .map((n: any) => `<div class="fxline hi">${n.nivel} · <b>${n.nome}</b>: ${n.efeito}</div>`).join('')}</div>`;
   // ---- Cartão flutuante: níveis da Arte, detalhe do Efeito ----
   // Um por vez, preso ao documento e ancorado em quem o abriu, como o das formas
   // (FormasPop.astro). No toque não há hover: tocar prende o cartão, tocar de novo,
@@ -1641,7 +1641,7 @@ export function montarFicha(opts: FichaOpts) {
     if (a.ciclo <= 1) return '';
     const teto = tetoDaRajada(cls);
     const extras = linhasComExtra(w, regras);
-    return `<div class="cmb"><b>No tempo</b> — Preparo <b>${a.preparo}</b> · Golpe <b>${a.golpes}</b>`
+    return `<div class="cmb"><b>No tempo</b>: Preparo <b>${a.preparo}</b> · Golpe <b>${a.golpes}</b>`
       + ` · Recuperação <b>${a.recuperacao}</b> <span class="muted">(os ${a.ciclo} Ticks da Velocidade, repartidos)</span></div>`
       + `<div class="cmb muted">Atacar abre a guarda: −2 no Preparo, −4 no Tick do Golpe, −2 por golpe dado`
       + ` na Recuperação.${teto > 1 ? ` Dá para golpear até <b>${teto}</b> vezes numa ação só, a −1d6 acumulativo e +2 Ticks por golpe extra.` : ''}`
@@ -1662,11 +1662,11 @@ export function montarFicha(opts: FichaOpts) {
     const escudos = [act.habil, act.inabil].filter((it: any) => it.kind === 'escudo');
     const pecas = pecasArmadura();
     el('combate').innerHTML =
-      `<div class="cmb"><b>Conjunto em uso</b> — ${nomeSet}</div>` +
-      `<div class="cmb"><b>Ataque</b> — ${w.nome}: rola <b>${atk}</b> · dano <b>${dano}</b> · Velocidade ${w.ticks}</div>` +
+      `<div class="cmb"><b>Conjunto em uso</b>: ${nomeSet}</div>` +
+      `<div class="cmb"><b>Ataque</b>: ${w.nome}, rola <b>${atk}</b> · dano <b>${dano}</b> · Velocidade ${w.ticks}</div>` +
       (w.semDano ? '' : `<div class="cmb"><b>Modos</b>: ${modoStr}${temSec ? ' <span class="muted">(* secundário: −2 acerto e −1d6 de dano)</span>' : ''}</div>`) +
       linhaPGR(w) +
-      (act.dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b> — <b>${blk}</b> <span class="muted">(inclui a Defesa das armas do conjunto)</span></div>`) +
+      (act.dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b>: <b>${blk}</b> <span class="muted">(inclui a Defesa das armas do conjunto)</span></div>`) +
       (escudos.length
         ? `<div class="cmb muted">Projétil rápido: ${escudos.some((e: any) => e.vsProjetilRapido?.bloqueia) ? 'você tem escudo hábil, dá para Bloquear se estiver apto (consciente, braço livre, espaço para manobrar)' : 'escudo pequeno demais, não bloqueia projétil rápido, só Esquiva'}.</div>`
         : `<div class="cmb muted">Projétil rápido (flecha, virote, bala de funda): sem escudo hábil, só Esquiva.</div>`) +

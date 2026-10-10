@@ -100,7 +100,7 @@ Três regras que decorrem disso, e que valem para cada fase adiante:
 
 Já existem dois precedentes prontos no repositório, e o plano os copia em vez de inventar:
 
-- **A ficha em abas** (`FichaSkeleton.astro:1130-1292`): `body.ficha-abas` ligada por
+- **A ficha em abas** (`FichaSkeleton.astro:1129-1291`): `body.ficha-abas` ligada por
   `matchMedia('(max-width: 900px)')`, painel por aba, barra fixa no pé com
   `env(safe-area-inset-bottom)`, folha de ações atrás do ⋯, e linhas de 48px.
 - **A mira no dedo** (`artes-grid-mesa.ts:537-542`): a pergunta certa é `pointer: coarse`, e não a
