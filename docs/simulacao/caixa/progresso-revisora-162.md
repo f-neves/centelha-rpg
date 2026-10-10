@@ -1,0 +1,1 @@
+- Rodada 7: leitura de D-081/D-079/D-043, origem do sem dobro (1d/1e), 28 mutacoes (24 pegas), Constricao do bestiario, N22 conferido. Veredito 162: PROCEDE.
