@@ -1,6 +1,6 @@
 # Lista da fase de testes (simulações)
 
-Criada em 09/10/2026 pelo Arquiteto, a pedido do autor, ao registrar as decisões D-072 a D-080 (T5 a T7 e o cenário (d) do T2 vieram do despacho de 10/10/2026). Reúne o que as
+Criada em 09/10/2026 pelo Arquiteto, a pedido do autor, ao registrar as decisões D-072 a D-080 (T5 a T7 e o cenário (d) do T2 vieram do despacho de 10/10/2026; o T8 veio da triagem da rodada 8, no mesmo dia). Reúne o que as
 regras novas de distância, precisão, Defesa e porte deixaram para medir nas simulações, em vez de decidir no
 papel. Fica fora do índice `Pendencias.md` (o `gen-pendencias.mjs` lê só `[A-LN]-*.md`): é uma lista de medição,
 não de pendência de texto. Quem acrescentar um item põe a decisão que o origina e o que muda se a medição
@@ -29,8 +29,8 @@ Estado de todos os itens: **abertos**. Nenhum deve rodar antes de existir o que 
 - O que testar: a Margem sem teto contra Defesa 0 (um total de 28 dá +4d6). O autor quer que quem está dormindo,
   imobilizado ou com a guarda destruída leve muito dano, podendo morrer com um golpe só.
 - Cenários: (a) **assassino**: ataque contra alvo surpreso, dormindo ou desacordado (Defesa 0); (b) **agarrar**:
-  o agarrado e o imobilizado contra quem ataca de fora, com as Defesas da regra que o autor fechar para esses
-  estados; (c) **o aliado bater**: o aliado ataca o alvo que o grupo deixou imobilizado, agarrado ou com a guarda
+  o agarrado e o imobilizado contra quem ataca de fora, com as Defesas da D-081 (no livro desde a rodada 7,
+  f4c5f136; ver abaixo); (c) **o aliado bater**: o aliado ataca o alvo que o grupo deixou imobilizado, agarrado ou com a guarda
   destruída pela Guarda sob pressão (a Defesa pode chegar a 0 por acúmulo, sem teto).
 - Medir: a distribuição do dano em um golpe e a fração de mortes com um golpe só, por Centelha do atacante e por
   Vida do alvo; se a Defesa 0 por acúmulo vira acerto automático cedo demais; como isso conversa com a Absorção
@@ -97,7 +97,9 @@ Estado de todos os itens: **abertos**. Nenhum deve rodar antes de existir o que 
 - Medir: a taxa de acerto e de esquiva de cada grau, contra o corpo a corpo e contra a interrupção, antes e depois
   do tempo novo. **Se as Artes ficarem fortes demais, a alternativa a testar é manter a Preparação de hoje com
   Recuperação 1** (nota do autor, D-084).
-- Depende de: a rodada 4c escrita e do `scripts/sim/` aceitar o Tick do Golpe da Arte. A recalibração das Artes
+- Depende de: o `scripts/sim/` aceitar o Tick do Golpe da Arte (a rodada 4c já está no livro, b56d78f5). Medir
+  também o Tick de decisão do esticar (Preparo −2, Golpe −4 só no Tick em que a Arte sai), que entrou na 4c sem
+  pergunta ao autor e pode ser vetado. A recalibração das Artes
   (A34: ART-34, ART-5, ART-38, ART-40) parte do tempo novo.
 
 ## T7 · A reforma de P/G/R inteira (D-082)
@@ -117,3 +119,21 @@ Estado de todos os itens: **abertos**. Nenhum deve rodar antes de existir o que 
   ciclos novos, e a legibilidade (nenhuma ação resolve no Tick em que é declarada).
 - Depende de: a bancada rodar a régua nova (hoje `scripts/sim/` e `test-combate-tempo.mjs` seguem o K15) e do
   tempo de voo (T1) para o arqueiro.
+
+## T8 · A Rajada contra o forte blindado (o "caso 11 forte")
+
+- Decisão: D-083 (Rajada: −1d6 acumulativo e +1 Tick de Recuperação por golpe extra) e C-026 (Absorção). Item
+  acrescentado pelo Arquiteto em 10/10/2026, na rodada 8, pela triagem da D-087.
+- Origem: `veterana-2-ataques-multiplos.md`, item 14 (e o item 5, caso 2, "concentrar pressão num forte"): a
+  Absorção, a Força e a Centelha repetem a cada golpe; contra alvo sem armadura o golpe extra vale quase o dobro,
+  contra armadura pesada quase nada (salvo o raspão do Quase-Acerto, que ignora a Absorção). A Veterana pergunta
+  "em que alvo quer que valha?".
+- Triagem: (1) o registro não responde (a D-083 fixa o preço da Rajada, não em que alvo ela rende); (2) a Veterana
+  só levanta a pergunta, sem número; (3) não é caso de borda para o Mestre, é propriedade do sistema. Por isso
+  vai para medição antes de ir ao autor (medir antes de decidir): **nenhuma pergunta ao autor agora.**
+- O que testar: a Rajada de 2 e 3 golpes (leve e média) contra um único golpe, com o mesmo ciclo de Ticks, contra
+  alvo sem armadura, com armadura média e com Placa; com e sem Centelha alta no alvo.
+- Medir: o dano por ciclo da Rajada sobre o do golpe único, por Absorção do alvo; quanto do dano da Rajada contra
+  Placa vem do raspão do Quase-Acerto; se a Rajada vira opção morta contra o forte blindado (o caso 2 da Veterana).
+  **Se vier opção morta, isso vira pergunta ao autor**, com o número na mão.
+- Depende de: a bancada rodar a régua nova (T7) e a Rajada da D-083.

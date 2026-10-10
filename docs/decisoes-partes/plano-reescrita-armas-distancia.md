@@ -45,6 +45,11 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
 
 ## Rodadas
 
+**Rodadas 1 a 4b, registradas no fechamento (10/10/2026):** rodada 1, f3d52086 e 0dcf5788 (vereditos 147 CORRIGE e 148
+PROCEDE); rodadas 2 e 3, 5c4bb201, 53574bf0 e 9bd51dd3 (vereditos 149 CORRIGE e 151 PROCEDE); rodada 4a, 83d84cf5 e
+6628d27b (vereditos 152 CORRIGE e 153 PROCEDE); rodada 4b, 8a7a6eb0, 0dcb1e56 e cda8845d (veredito 153 PROCEDE), e
+4b-bis 2ef4f5b8 (veredito 154 PROCEDE). Todas FEITAS.
+
 **Rodada 1 · Dados do catálogo de Arremesso e Atirador** (§14.1 na parte de dados, §14.7 nos dados)
 - Arquivos prováveis: `armas.json` (Plumbata no lugar dos Dardos, Shuriken, Kunai, Mini-faca, Boleadeira, dois
   bumerangues, Rede, Funda, Efetiva no lugar da Distância, Peso, atlatl como item extra, classes P/G/R de
@@ -324,7 +329,10 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
 - **Pendências guardadas da Missão 2 que o 2b §5 lista e nenhuma rodada cobria:** o "caso 11 forte" (veterana-2, item
   14: a Rajada rende pouco contra o forte blindado, porque a Absorção repete a cada golpe) e a "janela de aborto com
   declaração simultânea" (sem texto-fonte achado nos documentos da Veterana). Dono: **Arquiteto**; só vai ao autor o
-  que atravessar os três filtros da D-087. O "caso 11 forte" fica para a abertura da 8. **A janela de aborto foi
+  que atravessar os três filtros da D-087. **O "caso 11 forte" foi triado na abertura da 8 (10/10/2026):** o registro
+  não responde (a D-083 fixa o preço da Rajada, não em que alvo ela rende), a Veterana só pergunta, e não é caso de
+  borda do Mestre, é propriedade do sistema; vai para a medição como **T8 em `fase-de-testes.md`**, e só vira
+  pergunta ao autor se a Rajada sair opção morta contra o forte blindado. **A janela de aborto foi
   triada em 10/10/2026, antes da 4c, e não muda o tempo da Arte:** (a) o 2b §5 l.87 só a nomeia, copiada da lista
   da Missão 2 (`veterana-2-ataques-multiplos.md`), que não tem "aborto" no texto; o mais perto é o item 5, caso 4
   ("parar" um Preparo) e a Q5, que perguntam se há regra de interromper por dano, e dizem que no Normal o tiro já
@@ -361,7 +369,8 @@ Fonte: `veterana-2b-reforma-pgr.md` §4, "Textos a reescrever". "Feito" quer diz
 Pendências do 2b §5: o CONFLITO do Normal fechou na D-082 (a pressão vale em todos os Ticks); a Recuperação da Arte
 cobrar −2 e a seção 3 (a Arte no Tick do Golpe) fecharam na D-082 e na D-084; as distâncias do Arremesso fecharam nas
 D-075 e D-076; Ambidestria é a K18 (em aberto, do autor); dado e teto da mistura e os Punhos nas duas mãos fecharam
-na D-083; o "caso 11 forte" e a "janela de aborto" estão na **rodada 8** (triagem do Arquiteto, acima).
+na D-083; o "caso 11 forte" (T8 da fase de testes) e a "janela de aborto" (questão do Grid, N22) foram triados na
+**rodada 8** (triagem do Arquiteto, acima), sem pergunta ao autor.
 
 ## Registro de CI
 
