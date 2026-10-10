@@ -252,6 +252,10 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
 - Espera o veredito da rodada 14.
 
 **Rodada 6 · Porte** (§14.17)
+- **FEITA em 10/10/2026:** c0085104 (veredito 161 PROCEDE, 0 CORRIGE; Validar e Deploy verdes). O Grid lê o porte
+  (`modificadorPorte` em `calc.ts`, só por `grid.astro`), então a forma velha do dado ficou e a regra nova entrou em
+  `regras.json` `porteAcerto.reforma`, com `gridNota` e a linha no N22. O glossário (Porte) também foi corrigido. A
+  ficha não calcula porte. A exceção `porteAcerto.nota` saiu da varredura do ±6.
 - `combate` (porte sem teto; corpo a corpo só o menor ganha; à distância relativo nos dois sentidos; tamanho
   que o alvo apresenta nos dois papéis, enxame incluso; nota ao Mestre sobre criaturas maiores que Médio entre
   si; a frase de Manobras que remete ao porte; exclusão de Sociais e Mentais e de Artes de área sem rolagem de
@@ -303,6 +307,8 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
      frente da mesa. Dono: Executora-2, como conserto de CSS da página, com a medida pela bancada (`astro dev --config
      astro.bancada.mjs`, `MESA_BANCADA`). Não é do Grid congelado.
   15. (158) A frase da D-086 também na tabela de situações: caso do Mestre (D-087), sem ação.
+  16. **(161) Pinar as células da tabela do porte em `/mesa/referencia`** (o sinal de "À distância, alvo menor" trocado
+     de − para + passa no teste; a página está certa). Mesmo buraco da 13. Dono: Executora-2. Conferência: Revisora.
 - **A mensagem do 8748735d diz que a mesa não importa a ficha-engine** antes de a Executora conferir; a 156 confirmou
   que é verdade (os imports são `ficha.astro` e `personagem.astro`). Não se reescreve.
 - **Pendências guardadas da Missão 2 que o 2b §5 lista e nenhuma rodada cobria:** o "caso 11 forte" (veterana-2, item
@@ -357,7 +363,7 @@ na D-083; o "caso 11 forte" e a "janela de aborto" estão na **rodada 8** (triag
   Deploy verdes. Depois: e5ab6925 verde; **8748735d (4d): Validar verde, Deploy "cancelled"** porque o push seguinte
   (adee7295) o substituiu na fila do Pages (`deploy.yml`: `concurrency: pages`, `cancel-in-progress: true`), o que não é falha; o Deploy de adee7295, que já contém a 4d, ficou verde,
   assim como o de 20ec3e89. **b56d78f5 (4c): Validar e Deploy verdes.** 63817b4f (5), 0a87a64d (5-bis) e 1efe2ad9 (5-ter): Validar e Deploy
-  verdes.
+  verdes. c0085104 (6): Validar e Deploy verdes.
 
 ## Ordem e custo
 
