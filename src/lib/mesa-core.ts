@@ -260,7 +260,7 @@ export function condChipHTML(c: Condicao, rm = false, dono = '') {
   const cont = c.porSeisTicks ?? c.porRodada ?? 0;
   if (cont) partes.push(`−${cont}/6 Ticks`);
   const dica = [c.nota, partes.length ? `(${partes.join(' · ')})` : '',
-    c.defesaCaC != null && (c.defesaCaC ?? 0) !== (c.defesaDist ?? 0) ? '— o par é perto/longe.' : '',
+    c.defesaCaC != null && (c.defesaCaC ?? 0) !== (c.defesaDist ?? 0) ? '(o par é perto/longe).' : '',
   ].filter(Boolean).join(' ');
   return `<span class="cond cond-${esc(c.cor || 'neutro')}" title="${esc(dica)}">
     ${c.icone ? `<span class="cond-i">${esc(c.icone)}</span>` : ''}<span class="cond-n">${esc(c.nome)}</span>${partes.length ? `<span class="cond-m">${esc(partes[0])}</span>` : ''}${rm ? `<button class="cond-x" data-cond="${esc(c.id)}" data-dono="${esc(dono)}" title="Remover condição" type="button">✕</button>` : ''}
@@ -611,7 +611,7 @@ export async function abrirMesa(aba: string): Promise<CtxMesa | null> {
     { label: mesa.nome, href: aba === 'escudo' || (!ehMestre && aba === 'grupo') ? undefined : casa + '?id=' + id },
     ...(aba === 'escudo' || (!ehMestre && aba === 'grupo') ? [] : [{ label: atual?.nome || '' }]),
   ]);
-  document.title = `${atual && aba !== 'escudo' ? atual.nome + ' · ' : ''}${mesa.nome} — Centelha`;
+  document.title = `${atual && aba !== 'escudo' ? atual.nome + ' · ' : ''}${mesa.nome} · Centelha`;
 
   const renomear = (n: string, d: string) => {
     mesa.nome = n; mesa.descricao = d;

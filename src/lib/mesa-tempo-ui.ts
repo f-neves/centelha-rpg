@@ -355,7 +355,7 @@ export function abrirAbortar(
   corpo.innerHTML = `
     <p class="tempo-intro">${esc(nome)} está no <b>Preparo</b>, e o golpe ainda não saiu. Dá para
       desistir dele: <b>os Ticks já investidos não voltam</b>, e o que sobrava do ciclo volta.
-      Só para <b>mover, desviar ou se interpor</b> — nunca para atacar.</p>
+      Só para <b>mover, desviar ou se interpor</b>, nunca para atacar.</p>
     <div class="ab-conta">
       <span><b>${base.perdidos}</b> Tick(s) investidos, perdidos</span>
       <span><b>${base.devolvidos}</b> Tick(s) do ciclo, devolvidos</span>
@@ -515,7 +515,7 @@ export function abrirForaDeHora(
     <div id="fh-interpor-cx" hidden>
       <label class="ab-m">Metros percorridos
         <input type="number" id="fh-interpor-m" min="0" step="1" value="0" />
-        <small>1 Tick por metro, com piso de 2 — quem já está perto ainda paga 2.</small>
+        <small>1 Tick por metro, com piso de 2: quem já está perto ainda paga 2.</small>
       </label>
       <div class="rev-h">Contra qual golpe</div>
       ${interporCandidatos.length ? `<p class="tempo-nota">Vale para ESTE golpe, e só ele: um

@@ -358,7 +358,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   - o item no menu da peça: `condicoes', '◈ Condições'` (`grid.astro:7806`);
   - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:6787`);
-  - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1879`), para
+  - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1876`), para
     não haver duas cópias divergindo no primeiro conserto que só uma receber.
 
   Asserção em par, em `cenaCondicaoAMao` (`scripts/test-grid.mjs`): a mesma folha do golpe aberta
@@ -5526,7 +5526,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **E UM ACHADO QUE SAIU DESSA CONFERÊNCIA, sem relação com a cura:** existe exatamente UM caminho que
   escreve Vida negativa, e é a caixa de editar peça do mestre:
-  `pvat = Math.min(pvat, pvmax)` (`src/pages/mesa/combate.astro:1833`) grampeia o teto e não grampeia
+  `pvat = Math.min(pvat, pvmax)` (`src/pages/mesa/combate.astro:1830`) grampeia o teto e não grampeia
   o piso, enquanto o campo do relógio, duas linhas abaixo, ganha o grampo de baixo que falta a este.
   Pode ser liberdade de mestre deliberada e pode ser
   descuido, e **não decido isto aqui**: fica anotado com o vizinho que o denuncia.

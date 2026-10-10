@@ -1994,7 +1994,7 @@ import CondDlg from '../../components/CondDlg.astro';
         : `<div>Precisa <b>superar ${alvoDef}</b> <span class="muted">(${esc(detalhe)})</span></div>
            <div>Seu acerto: <b>${esc(meuPool)}</b>${aj.flat ? ` <span class="ruim">${sinal(aj.flat)}</span>` : ''}${aj.dados ? ` <span class="ruim">${sinal(aj.dados)}d6</span>` : ''}
              ${aj.ferimento ? `<span class="muted"> · ferimento ${sinal(aj.ferimento)}</span>` : ''}</div>
-           ${(RESUMO[alvo.id]?.resistPerf && tipoSel.value === 'ataque') ? `<div class="muted">Gate de Perfuração do alvo: N${RESUMO[alvo.id].resistPerf} — abaixo disso o Perfurante resvala.</div>` : ''}`;
+           ${(RESUMO[alvo.id]?.resistPerf && tipoSel.value === 'ataque') ? `<div class="muted">Gate de Perfuração do alvo: N${RESUMO[alvo.id].resistPerf}, abaixo disso o Perfurante resvala.</div>` : ''}`;
     };
     const syncTudo = () => { sync(); syncTempo(); };
     tipoSel.onchange = syncTudo; alvoSel.onchange = syncTudo; alcSel.onchange = syncTudo; syncTudo();

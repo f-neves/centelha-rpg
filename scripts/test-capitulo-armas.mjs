@@ -1560,7 +1560,8 @@ function conferirNoveBis(T) {
 // ---- rodada 9-bis, E: nenhum travessão em texto visível (rótulos, títulos de página, prosa das páginas), fora o que o Grid lê
 // O que fica: a célula vazia de tabela (o travessão sozinho entre aspas, entre > e <, ou numa linha de tabela do capítulo),
 // os comentários de código, o regex que normaliza o que o jogador digita (lance.ts, rolagem.ts), o monsters.json e o bestiário (B14),
-// e o que só o Grid lê (grid.astro, mesa/combate.astro, artes-grid*, mesa-*, comando-*): vão para o N22.
+// e o que só o Grid lê (grid.astro, artes-grid*, comando-barra e comando-voz): vão para o N22. As abas da mesa (mesa/combate.astro,
+// mesa-core.ts, mesa-tempo-ui.ts) são lidas por outras páginas e ENTRAM na varredura (veredito 166).
 function acharTravessoesVisiveis(arquivos) {
   const achados = [];
   for (const [rel, txt] of arquivos) {
@@ -1583,7 +1584,7 @@ function acharTravessoesVisiveis(arquivos) {
 }
 function arquivosVisiveis() {
   const lista = [];
-  const EXCETO = /(^|\/)(bestiario|node_modules)(\/|$)|monsters|inimigos|ref-index|package-lock|grid\.astro|mesa\/combate\.astro|artes-grid|\/mesa-[a-z-]+\.ts|comando-(barra|voz)\.ts|\/lance\.ts|\/rolagem\.ts/;
+  const EXCETO = /(^|\/)(bestiario|node_modules)(\/|$)|monsters|inimigos|ref-index|package-lock|grid\.astro|artes-grid|comando-(barra|voz)\.ts|\/lance\.ts|\/rolagem\.ts/;
   const anda = (d) => {
     for (const f of fs.readdirSync(path.join(ROOT, d), { withFileTypes: true })) {
       const rel = d + '/' + f.name;
@@ -1608,6 +1609,11 @@ function arquivosVisiveis() {
     'o "também" do glossário de volta': ['src/pages/glossario.astro', (t) => t.replace('al"> · também:', 'al"> — também:')],
     'a prosa de /tecnicas de volta': ['src/pages/tecnicas.astro', (t) => t.replace('tipo, ou busque', 'tipo — ou busque')],
     'um travessão em dados (src/lib/data.ts)': ['src/lib/data.ts', (t) => t.replace('a alma social: inspirar', 'a alma social — inspirar')],
+    'o título da aba da mesa de volta (mesa-core.ts)': ['src/lib/mesa-core.ts', (t) => t.replace('${mesa.nome} · Centelha`', '${mesa.nome} \u2014 Centelha`')],
+    'a dica da condição de volta (mesa-core.ts)': ['src/lib/mesa-core.ts', (t) => t.replace("'(o par é perto/longe).'", "'\u2014 o par é perto/longe.'")],
+    'a ajuda da reação de volta (mesa-tempo-ui.ts)': ['src/lib/mesa-tempo-ui.ts', (t) => t.replace('se interpor</b>, nunca para atacar', 'se interpor</b> \u2014 nunca para atacar')],
+    'a ajuda do desvio de volta (mesa-tempo-ui.ts)': ['src/lib/mesa-tempo-ui.ts', (t) => t.replace('com piso de 2: quem já está perto', 'com piso de 2 \u2014 quem já está perto')],
+    'o aviso do gate de volta (mesa/combate.astro)': ['src/pages/mesa/combate.astro', (t) => t.replace('resistPerf}, abaixo disso', 'resistPerf} \u2014 abaixo disso')],
   };
   for (const [nome, [rel, fn]] of Object.entries(mutE)) {
     const orig = limpo(rel), mut = fn(orig);
