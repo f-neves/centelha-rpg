@@ -256,6 +256,13 @@ limitações conhecidas, que são as três de baixo.
     saem do ChatGPT, com guia de estilo e descrição visual por criatura.
   - **Fontes (D-103):** `C:\Users\Neves\ClaudeCode\centelha\fontes-bestiario\` (livros, pesquisa, fatos), fora do
     repositório. Espera o ajuste do portão da pasta mãe (`test-portoes.mjs` seção 7).
+  - **Respostas ao inventário (10/10/2026):** o teto 6 é o humano, e cada espécie tem a sua faixa natural (D-104);
+    animal gigante continua animal, com Centelha 0, e os 16 entram no piloto (D-105); leituras de Prontidão,
+    Atributo mínimo 1, Vontade recalculada, absorção que soma com a couraça, `docs/bestiario/visual/<id>.md` e os
+    sete "atroz" que são espécie extinta e entram como pré-históricos (D-106).
+  - **Rodada de texto (anotada, sem escrever):** `src/content/chapters/atributos.md` l.74 ganha a frase da D-104
+    (o teto 6 é o humano; cada espécie tem a sua faixa natural; a Centelha abre o que passa dela).
+  - **Próxima etapa:** pesquisa e regra de construção, que esperam a lista de referência do autor. Não começou.
   - **Absorve:** a B14 (desafio, Centelha e revisão das fichas) e a N20 (classe de ataque dos golems) passam a ser
     feitas dentro desta frente quando ela chegar a essas criaturas.
   - **Leitura de apoio, fora do repositório:** `../tmp/arquiteto/bestiario/diagnostico.md`,

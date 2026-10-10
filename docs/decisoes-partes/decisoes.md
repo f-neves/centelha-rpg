@@ -1754,13 +1754,13 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): todo animal comum tem Centelha 0. O piloto são todos os animais, inclusive os pré-históricos (dinossauros de vários tipos e portes, pterossauros, répteis marinhos, mamute e outros), na versão adulta. Filhote, atroz e de guerra ficam para depois.
 - Origem: mensagem do autor ao Arquiteto, 10/10/2026. Hoje há 84 fichas na categoria Animal, todas com Centelha 0 (diagnóstico, seção g).
-- Estado: a implementar (B20). Nove pré-históricos já têm ficha, e os outros são criaturas novas (inventário de 10/10/2026, `../tmp/arquiteto/bestiario/inventario.md`, item 10). Bordas que o inventário deixa para o autor: 10 animais "atroz" (6 com nome de espécie extinta) e 16 "gigantes" sem animal real daquele tamanho.
+- Estado: a implementar (B20). Nove pré-históricos já têm ficha, e os outros são criaturas novas (inventário de 10/10/2026, `../tmp/arquiteto/bestiario/inventario.md`, item 10). As bordas do inventário fecharam em 10/10/2026: os 16 "gigantes" entram no piloto como animais, com Centelha 0 (D-105); os "atroz" com nome de espécie extinta entram como pré-históricos, e não como "versão atroz" (D-106, leitura g). Ficam para depois só os atroz sem espécie real (Morcego, Rato e Carcaju Atroz).
 
 ### D-099 · Habilidades dos animais: Briga, Bloqueio e Esquiva sempre; nunca Atirador, Armas ou Arremesso [tags: bestiario, animal, habilidades, briga, bloqueio, esquiva, b20]
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): todo animal tem Briga, Bloqueio e Esquiva; nenhum tem Atirador, Armas ou Arremesso. Percepção, Furtividade e Atletismo entram quando o animal real se destaca nisso (leitura aceita pelo autor). Criaturas complexas e humanoides têm também as outras Habilidades e os conhecimentos.
 - Origem: mensagem do autor ao Arquiteto, 10/10/2026.
-- Estado: a implementar (B20).
+- Estado: a implementar (B20). Leitura de 10/10/2026 (D-106, a): "Percepção" aqui quer dizer Prontidão, a Habilidade de notar (Percepção é Atributo). Pela D-106 (d), Prontidão e Integridade ficam ao lado de Briga, Bloqueio e Esquiva, e a regra de construção decide em quais animais.
 
 ### D-100 · Bloqueio de animal: como a mão nua; chifre, galhada e carapaça bloqueiam como arma [tags: bestiario, animal, bloqueio, mao-nua, d-088, b20]
 - Data: 2026-10-10
@@ -1784,7 +1784,32 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): as fontes ficam em `C:\Users\Neves\ClaudeCode\centelha\fontes-bestiario\`, com três subpastas: `livros\` (os livros que o autor fornecer, que nunca entram no rpg-system), `pesquisa\` (dados de animais reais e extintos, um arquivo por animal, com o link de cada dado) e `fatos\` (o que foi extraído dos livros e da pesquisa, um arquivo por criatura). Só a ficha final entra no repositório; texto de livro não é copiado para ficha nem para site, só os fatos.
 - Origem: mensagem do autor ao Arquiteto, 10/10/2026.
-- Estado: a pasta espera um ajuste do portão: a seção 7 de `scripts/test-portoes.mjs` (l.480-481) só aceita as quatro árvores, `tmp/`, `LEIA-ME.md` e `centelha-mudanca/` na pasta `centelha\`, e uma pasta nova ali deixa vermelho o `pre-commit` de todas as frentes. O ajuste é acrescentar `fontes-bestiario` à lista, e ainda não foi autorizado.
+- Estado: a pasta espera um ajuste do portão: a seção 7 de `scripts/test-portoes.mjs` (l.480-481) só aceita as quatro árvores, `tmp/`, `LEIA-ME.md` e `centelha-mudanca/` na pasta `centelha\`, e uma pasta nova ali deixa vermelho o `pre-commit` de todas as frentes. O ajuste é acrescentar `fontes-bestiario` à lista. **Feito em 10/10/2026** (019f0298, autorizado pelo autor, CI verde): nenhuma pasta acima de `centelha\` é repositório, então não precisou de `.gitignore`; a pasta, as três subpastas e o `README.md` existem.
+
+### D-104 · Atributo acima de 6: o teto 6 é o humano, e cada espécie tem a sua faixa natural [tags: bestiario, atributos, teto, especie, centelha, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): o teto 6 é o teto humano. Cada espécie tem a sua faixa natural, que vem da realidade, e a Centelha abre o que passa da faixa da espécie.
+- Origem: resposta do autor ao inventário do bestiário (`../tmp/arquiteto/bestiario/inventario.md`, item 8): 27 dos 84 animais têm Força acima de 6 com Centelha 0, contra `atributos.md` l.74 ("acima de 6 só se abrem pela Centelha"). Completa a D-095 (o gorila mais fraco é mais forte que qualquer humano).
+- Estado: a implementar. O livro (`src/content/chapters/atributos.md` l.74) ganha uma frase dizendo isso, numa rodada de texto (item anotado na B20); nada escrito ainda.
+
+### D-105 · Animal gigante continua animal, com Centelha 0 [tags: bestiario, gigante, animal, centelha, porte, piloto, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): animal gigante continua animal, com Centelha 0. Centelha é sobrenatural, não tamanho nem força. Os 16 gigantes entram no piloto; a ficha parte do animal real e escala pelo porte, e o motivo de existirem fica na descrição, não na mecânica.
+- Origem: resposta do autor ao inventário do bestiário (item 10, `bordas.gigantesSemAnimalReal`): formiga, vespa, centopeia, caranguejo, aranha, escorpião, louva-a-deus, besouro-veado, sanguessuga, lesma, rã, rato, lagarto de gola, moreia, polvo e lula.
+- Estado: a implementar (B20). Ajusta o Estado da D-098, que listava os gigantes como borda aberta.
+
+### D-106 · Leituras do inventário do bestiário (o autor não vetou) [tags: bestiario, leitura, prontidao, atributos, vontade, absorcao, visual, pre-historico, b20]
+- Data: 2026-10-10
+- Leituras (Arquiteto e instância de leitura, apresentadas ao autor em 10/10/2026; o autor não vetou):
+  - a) A D-099 troca "Percepção" por "Prontidão", que é a Habilidade de notar.
+  - b) Nenhum Atributo fica em 0 (o livro, `atributos.md` l.18): os 13 animais com algum Atributo em 0 sobem para 1. A Inteligência 1 de um animal é instinto. O 0 fica para quem não tem a faculdade (construto, limo), quando chegarmos neles.
+  - c) A Vontade 5 de 81 animais é o padrão do código, não a régua do livro. A regra de construção recalcula a Vontade de cada animal.
+  - d) Prontidão e Integridade ficam ao lado de Briga, Bloqueio e Esquiva; a regra de construção decide em quais animais.
+  - e) A armadura natural é "absorção extra" (D-101): soma com a couraça do porte, não a substitui.
+  - f) A descrição visual de cada criatura (D-102) fica em `docs/bestiario/visual/<id>.md`.
+  - g) Os "atroz" com nome de espécie extinta são animais reais e entram como pré-históricos, não como "versão atroz": Símio Atroz (`mon-dire-ape-gigantopithecus`, gigantopiteco), Urso Atroz (`mon-dire-bear-cave-bear`, urso-das-cavernas), Javali Atroz (`mon-dire-boar-daeodon`, daeodon), Hiena Atroz (`mon-dire-hyena-hyaenodon`, hienodonte), Leão Atroz (`mon-dire-lion-spotted-lion`, leão-das-cavernas), Tubarão Atroz (`mon-dire-shark-megalodon`, megalodonte) e Lobo Atroz (`mon-lobo-atroz`, o lobo-terrível que o autor cita). Ficam como "versão atroz", para depois (D-098): Morcego Atroz, Rato Atroz e Carcaju Atroz, sem espécie real no nome.
+- Origem: inventário do bestiário (`../tmp/arquiteto/bestiario/inventario.md`, itens 8 a 10 e a ressalva sobre a D-099); resposta do autor de 10/10/2026.
+- Estado: leituras registradas para a regra de construção da B20. O inventário e o `escala.md` (`../tmp/arquiteto/bestiario/`) ficam como base. A próxima etapa (pesquisa e regra de construção) espera a lista de referência do autor e não começou.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
