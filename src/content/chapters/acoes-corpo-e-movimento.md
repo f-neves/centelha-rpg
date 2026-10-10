@@ -262,7 +262,7 @@ Repare que a régua de carga e a de altura se encontram: a **Leve** termina exat
 
 ### Arremessar: o FAA
 
-**FAA = Força × 2 + Atletismo + Arremesso**, de 2 a 24. A distância máxima, na melhor situação possível (correndo e girando), é **7 × FAA^0,7 ÷ peso^0,4** metros, com o peso em kg. Só se arremessa o que cabe na coluna "Arremessa até" da tabela do FAH, e a partir de 80% desse teto a distância cai em linha reta até zero. A fórmula vale de 100 g para cima: abaixo disso a distância cai com o peso (o ápice é 100 g, como diz "O que o motor já responde"). A coluna Distância das armas de Arremesso é o teto do objeto, e vale o menor dos dois.
+**FAA = Força × 2 + Atletismo + Arremesso**, de 2 a 24. A **Máxima**, na melhor situação possível (correndo e girando), é **7 × FAA^0,7 ÷ peso^0,4** metros, com o peso em kg. Só se arremessa o que cabe na coluna "Arremessa até" da tabela do FAH, e a partir de 80% desse teto a distância cai em linha reta até zero. A fórmula vale de 100 g para cima: abaixo disso a distância cai com o peso (o ápice é 100 g, como diz "O que o motor já responde"). A **Funda** e o **atlatl** dobram a Máxima final: calcula-se a Máxima normal pela fórmula e dobra-se (a pedra de 100 g de uma Funda vai a 93, 176, 245 e 325 m com FAA 4, 10, 16 e 24). O peso de cada arma de Arremesso está na coluna Peso da tabela de [Armas & Armaduras](/regras/armas-e-armaduras).
 
 | FAA | 0,5 kg | 1 kg | 2 kg | 5 kg |
 | --- | --- | --- | --- | --- |
@@ -272,6 +272,8 @@ Repare que a régua de carga e a de altura se encontram: a **Leve** termina exat
 | **16** | 64 m | 49 m | 37 m | 26 m |
 | **20** | 75 m | 57 m | 43 m | 30 m |
 | **24** | 85 m | 65 m | 49 m | 34 m |
+
+**A Máxima não é a Efetiva.** A **Efetiva** é um número da arma (coluna Efetiva em [Armas & Armaduras](/regras/armas-e-armaduras)): até ela você acerta sem a distância atrapalhar, seja quem for, e além dela a mira custa −3 por meia Efetiva. A Efetiva pode passar da Máxima: com FAA 2 e um pilum de 2 kg a Máxima é de uns 8,6 m, contra 12 m de Efetiva, e quem arremessa joga sempre sem penalidade. Já a Máxima é o teto de verdade: passou dela, o objeto cai antes e não há jogada a fazer.
 
 ## O que o motor já responde
 
@@ -289,7 +291,7 @@ Três ações desta família não têm jogada nenhuma: o número sai direto da f
 - **Acrobacia.** Rolar, passar por baixo, torcer o corpo para caber onde ele não cabe. Reflexiva, Destreza + Atletismo, secundária Ginástica.
 - **Cavalgar e conduzir.** A diferença para o resto da família é que aqui o veículo tem opinião, e o cavalo em particular tem medo, cansaço e vontade própria. Direta, Destreza + Cavalgar.
 - **Escapar de amarras.** Corda, algema, saco. Nunca aparece numa hora conveniente. Acumulada, Destreza + Prestidigitação, secundária Escapismo, e o que interessa quase sempre é o tempo até soltar. Quem está amarrado está **Imobilizado** sem agarrão: tenta se soltar sozinho, e essa tentativa sofre uma penalidade grande para agir ([Combate](/regras/combate), Manobras).
-- **Escapar de rede, de Arte que prende e de agarrão.** Quem está **Preso** (rede, Arte que prende) escapa pela jogada que a rede ou a Arte indicam (Força + Atletismo, secundária Escapismo), e cada tentativa gasta a ação. Quem está **Agarrado** não rola: só se solta quando quem o controla erra ([Combate](/regras/combate), Manobras).
+- **Escapar de rede, de boleadeira, de Arte que prende e de agarrão.** Quem está **Preso** (rede, boleadeira, Arte que prende) escapa pela jogada que a arma ou a Arte indicam. Na **rede** e na **boleadeira** é **Força + Atletismo** (secundária Escapismo) contra o total do lançamento. **Preso pela Rede**: −2 na Esquiva e −2 no Bloqueio, e mais −1 em cada por grau de Margem do lançamento, sem teto. **Preso pela boleadeira** (pelas pernas): Esquiva −4. Cada tentativa gasta a ação. Quem está **Agarrado** não rola: só se solta quando quem o controla erra ([Combate](/regras/combate), Manobras).
 - **Agarrar, imobilizar, derrubar, empurrar** vivem no capítulo de [Combate](/regras/combate), seção Manobras, porque é corpo contra corpo com intenção de controlar em vez de ferir.
 
 ---
