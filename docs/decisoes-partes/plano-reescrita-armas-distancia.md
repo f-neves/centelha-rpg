@@ -425,6 +425,17 @@ PROCEDE); rodadas 2 e 3, 5c4bb201, 53574bf0 e 9bd51dd3 (vereditos 149 CORRIGE e 
   rolador, e a prosa de página que o 165 listou (D-094). Fora: `monsters.json` e o bestiário (B14), e o Grid.
 - Sugestões do 165: esconder o Modo da Rede quando `semDano`; prender `escudoPerdeOBonus` e `soContraDeFora` no
   teste; tirar o caractere literal do comentário do teste.
+- **FEITA em 10/10/2026:** 2fecd972 (preço, atlatl, Modo da Rede, pinos, comentários) e 1b605f3e (travessão em texto
+  visível), com o B13 (827026ac), veredito **166**: PROCEDE com um CORRIGE (cinco textos da mesa com travessão, que a
+  exceção do teste escondia por "só o Grid lê"). **9-ter:** 4c7067f4 (só as strings de `mesa-core.ts`,
+  `mesa-tempo-ui.ts` e `mesa/combate.astro`; exceção do teste estreitada para o que só o Grid lê), veredito **167
+  PROCEDE**, CORRIGE fechado. CI verde por sha em todos (o Deploy de 827026ac foi cancelado pelo push seguinte, verde).
+  A Revisora viu no navegador a linha "Com Atlatl" da ficha, a migração do B13 numa ficha salva e o título
+  "X · Centelha" nas abas da mesa.
+- **N22 da 9-bis e da 9-ter:** o limite do B13 na mesa (`armaDoSlot` congelado), o atlatl e o preço do Bordão, e o
+  travessão que fica no que só o Grid lê (`grid.astro`, `artes-grid*`, `comando-barra`, `comando-voz`).
+- **A rodada 9 está fechada**, e com ela o plano das armas. Sugestão de estilo do 167, sem veredito, fica para a
+  próxima passada de texto: a dica da condição tem dois parênteses seguidos.
 
 ## Mapa do 2b §4, item por item (conferido no texto de 10/10/2026; nada fica sem rodada)
 

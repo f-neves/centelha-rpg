@@ -1718,19 +1718,19 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026, escolha entre 30, 40 e 50 pc): 30 pc, mais barato que a Lança (50) e que o Bastão leve (40), por ser haste de madeira sem ponta de metal.
 - Origem: pergunta do Arquiteto depois da rodada 9; a D-089 pedia "preço pelo gerador", e não existe gerador de preço de arma (os preços estão escritos item a item em `armas.json`; confirmado pela Executora-2 e pelo veredito 165, item B3).
-- Estado: a implementar (rodada 9-bis).
+- Estado: **NO AR desde a 9-bis** (2fecd972, veredito 166): o Bordão está a 30 pc na tabela de preços gerada.
 
 ### D-093 · Atlatl na ficha: as duas linhas da azagaia, sem campo novo [tags: atlatl, azagaia, ficha, tiro, b7]
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026, escolha entre lacuna registrada, as duas linhas e um campo "com atlatl"): quem tem azagaia vê na ficha a linha normal e a "com atlatl" (`regras.json`, `reforma.tiro`, `azagaia-com-atlatl`); o jogador escolhe qual vale.
 - Origem: o B7 da rodada 9 parou porque a ficha não guarda o atlatl (item de `armas-extras.json` que a ficha, a mesa e o Grid não leem); relato da Executora-2 e veredito 165, item B7.
-- Estado: a implementar (rodada 9-bis). O Grid não muda (D-054); o que ele herdar vai para o N22.
+- Estado: **NO AR desde a 9-bis** (2fecd972, `linhasComExtra` em `ficha-pgr.ts`; veredito 166, visto no navegador: só a azagaia ganha a linha "Com Atlatl", V8, 5/1/2). O Grid não muda (D-054); a lacuna vai no N22.
 
 ### D-094 · Sem travessão também no texto de tela [tags: travessao, escrita, interface, titulo]
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026, escolha entre trocar todos, só os de frase e deixar como está): trocar todos os travessões do texto visível fora das células vazias de tabela, inclusive o título das páginas ("X · Centelha") e os rótulos da ficha e do rolador.
 - Origem: o B11 da rodada 9 tirou o travessão da prosa dos dados e deixou uns 25 rótulos de interface (relato da Executora-2); o veredito 165 (a ESCALA) achou também prosa de página fora da lista (`index.astro` l.24, `caminhos/index.astro` l.11, `tecnicas.astro` l.18, `glossario.astro` l.9, `equipamentos.astro` l.35 e l.103, `ficha.astro` l.5, `mesa/combate.astro` l.1997).
-- Estado: a implementar (rodada 9-bis). Ficam de fora as células vazias de tabela, o `monsters.json` e o bestiário (B14) e o que só o Grid lê (D-054).
+- Estado: **NO AR desde a 9-ter** (1b605f3e e 4c7067f4, vereditos 166 e 167): títulos "X · Centelha", rótulos e prosa de página sem travessão, e o teste falha se ele voltar. Ficam de fora as células vazias de tabela, o `monsters.json` e o bestiário (B14) e o que só o Grid lê (D-054).
 
 ### D-095 · Bestiário novo: a ficha de criatura sai das descrições da ficha humana, sem fórmula única [tags: bestiario, metodo, criatura, atributos, conversao, b20]
 - Data: 2026-10-10
