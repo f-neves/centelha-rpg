@@ -17,7 +17,8 @@ import EFEITO_D from '../data/efeitos.json';
 import RACA_D from '../data/racas.json';
 // a mesma formatação de parâmetros do capítulo XV, para a ficha não inventar outra
 import { ordemPar, valorPar, formaDe, rank, PAR_FORMA } from './artes-fmt';
-import { anatomia as anatomiaTempo, classeDeTempo, tetoDaRajada } from './combate-tempo';
+import { classeDeTempo, tetoDaRajada } from './combate-tempo';
+import { anatomiaDaFicha } from './ficha-pgr';
 import { sparkSVG } from './centelha-spark';
 import { url } from './site';
 import {
@@ -1632,16 +1633,10 @@ export function montarFicha(opts: FichaOpts) {
    */
   function linhaPGR(w: any) {
     const cls = classeDeTempo(w?.id || w?.nome, w?.ticks);
-    const a = anatomiaTempo({ classe: cls, velocidade: w?.ticks ?? 5, sistema: 'pgr' });
+    // A régua do livro (D-082, `combate.pgr.reforma`, corpo a corpo e tiro), e não a fórmula velha do motor do Grid
+    // (`combate.pgr.preparo`, congelado pela D-054, N22). A conta mora em `ficha-pgr.ts`, que o teste percorre.
+    const a = anatomiaDaFicha(w, regras);
     if (a.ciclo <= 1) return '';
-    // Corpo a corpo: a régua da D-082 (rodada 4b), de `combate.pgr.reforma`. O motor do Grid segue a velha
-    // (`combate.pgr.preparo`, congelado pela D-054, N22), e a ficha, que é informativa, mostra a do livro:
-    // Leve e Punhos 1/1/3, Média 2/1/3, Pesada 3/1/3. Distância e Arte seguem o motor até a passada do Grid.
-    const reforma = ((regras as any).combate?.pgr?.reforma?.corpoACorpo || []) as any[];
-    const corpo = ['leve', 'media', 'haste', 'pesada'].includes(cls)
-      ? reforma.find((c) => c.velocidade === (w?.ticks ?? 5) && (c.armas || []).includes(w?.id)) || reforma.find((c) => c.id !== 'punhos' && c.velocidade === (w?.ticks ?? 5))
-      : null;
-    if (corpo) { a.preparo = corpo.preparo; a.golpes = corpo.golpe; a.recuperacao = corpo.recuperacao; a.ciclo = corpo.velocidade; }
     const teto = tetoDaRajada(cls);
     return `<div class="cmb"><b>No tempo</b> — Preparo <b>${a.preparo}</b> · Golpe <b>${a.golpes}</b>`
       + ` · Recuperação <b>${a.recuperacao}</b> <span class="muted">(os ${a.ciclo} Ticks da Velocidade, repartidos)</span></div>`

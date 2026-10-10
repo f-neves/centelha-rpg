@@ -19,6 +19,9 @@
 // CATÁLOGO (uma célula de cada tabela, uma linha sumida, a tabela da Máxima) e exige que cada estrago seja acusado.
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
+import { pathToFileURL } from 'node:url';
+import { build } from 'esbuild';
 
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const ler = (rel) => fs.readFileSync(path.join(ROOT, rel), 'utf8');
@@ -395,7 +398,8 @@ function conferir(cap, armas, regras, comb = COMB, acoes = ACOES) {
 const falhas = [];
 // A ficha (informativa) mostra o P/G/R do corpo a corpo pela reforma da D-082 (Punhos 1/1/3), e não pela fórmula velha do motor
 const FICHA = ler('src/lib/ficha-engine.ts');
-if (!FICHA.includes('combate?.pgr?.reforma?.corpoACorpo')) falhas.push('ficha-engine: o linhaPGR não lê combate.pgr.reforma.corpoACorpo (os Punhos sairiam 0/1/4)');
+if (!FICHA.includes('anatomiaDaFicha(w, regras)')) falhas.push('ficha-engine: o linhaPGR não chama anatomiaDaFicha (ficha-pgr.ts), que lê a régua do livro (os Punhos sairiam 0/1/4)');
+if (!/reforma??.corpoACorpo|ref.corpoACorpo/.test(ler('src/lib/ficha-pgr.ts')) || !/ref.tiro/.test(ler('src/lib/ficha-pgr.ts'))) falhas.push('ficha-pgr: não lê combate.pgr.reforma.corpoACorpo e .tiro');
 if (JSON.stringify(ARMAS.find((a) => a.id === 'desarmado').arma.ticks) !== '5' || REGRAS.combate.pgr.reforma.corpoACorpo.find((c) => c.id === 'punhos').preparo !== 1) falhas.push('Punhos: Velocidade 5 no catálogo e Preparo 1 na reforma (1/1/3)');
 const real = conferir(CAP, ARMAS, REGRAS, COMB, ACOES);
 for (const x of real) falhas.push(x);
@@ -500,10 +504,87 @@ for (const [nome, estraga] of Object.entries(estragosCatalogo)) {
   if (conferir(CAP, ARMAS, R5, COMB).length === 0) falhas.push('o teste NÃO acusou o Preparo do Arco Curto alterado em regras.json');
 }
 
+// ---- a ficha mostra a régua do LIVRO em TODAS as armas (rodada 4d)
+// `linhaPGR` (ficha-engine.ts) mostra o que `anatomiaDaFicha` (ficha-pgr.ts) devolve. Aqui se percorrem as 40 armas do
+// catálogo e se compara essa anatomia com a tabela "Preparo, Golpe e Recuperação" do capítulo Combate Físico. A coluna
+// "qual linha da tabela é a de cada arma" é escrita à mão abaixo (a medição de 10/10/2026 do plano, rodada 4d), de
+// propósito: se viesse de regras.json, a ficha e o teste leriam a mesma lista e concordariam errado.
+const LINHA_DA_ARMA = {
+  'Leve': ['adaga', 'espada-curta', 'machadinha', 'bastao', 'sabre'],
+  'Média': ['espada-longa', 'machado', 'espada-serrilhada', 'maca', 'picareta-de-guerra', 'martelo', 'maca-estrela'],
+  'Haste média': ['lanca'],
+  'Haste de Guerra': ['alabarda', 'lanca-longa'],
+  'Pesada': ['montante', 'martelo-de-guerra', 'machado-pesado'],
+  'Punhos': ['desarmado'],
+  'Arremesso leve': ['shuriken', 'mini-faca', 'kunai'],
+  'Arremesso médio': ['adaga-de-arremesso', 'plumbata', 'bumerangue', 'bumerangue-de-retorno-cortante'],
+  'Arremesso pesado': ['bumerangue-de-caca', 'bumerangue-de-caca-cortante', 'machado-de-arremesso', 'azagaia', 'pilum', 'boleadeira', 'rede'],
+  'Funda': ['funda'],
+  'Arco Curto': ['arco-curto'],
+  'Arco Longo e Composto': ['arco-longo', 'arco-composto'],
+  'Besta Pequena': ['besta-pequena'],
+  'Besta Média': ['besta-media'],
+  'Besta Grande': ['besta-grande'],
+};
+const MARCA_TABELA_PGR = '| Classe | Velocidade | Preparo | Golpe | Recuperação |';
+async function carregarTS(rel) {
+  const saida = path.join(os.tmpdir(), `${path.basename(rel, '.ts')}-capitulo-armas-${process.pid}.mjs`);
+  await build({
+    entryPoints: [path.join(ROOT, rel)], outfile: saida, bundle: true, format: 'esm', platform: 'node',
+    loader: { '.json': 'json' }, logLevel: 'error', define: { 'import.meta.env': 'globalThis.__ENV__' },
+  });
+  globalThis.__ENV__ = globalThis.__ENV__ || { BASE_URL: '/', MODE: 'test' };
+  try { return await import(pathToFileURL(saida).href); } finally { try { fs.unlinkSync(saida); } catch { /* o sistema limpa */ } }
+}
+/** Percorre as armas e devolve o que a ficha mostra que difere da tabela do capítulo. `mostra(w)` devolve a anatomia. */
+function conferirFicha(mostra, comb, armas) {
+  const f = [];
+  const tab = tabelaApos(comb, MARCA_TABELA_PGR);
+  if (!tab) return ['Combate: falta a tabela "Preparo, Golpe e Recuperação"'];
+  const vistas = new Set();
+  for (const [nome, ids] of Object.entries(LINHA_DA_ARMA)) {
+    const l = tab.linhas.find((r) => r[0] === nome);
+    if (!l) { f.push(`ficha: a tabela do capítulo não tem a linha "${nome}"`); continue; }
+    const [V, P, G, R] = l.slice(1).map(num);
+    for (const id of ids) {
+      vistas.add(id);
+      const x = armas.find((y) => y.id === id);
+      if (!x) { f.push(`ficha: "${id}" não existe no catálogo`); continue; }
+      if (x.arma.ticks !== V) f.push(`ficha, ${id}: Velocidade ${x.arma.ticks} no catálogo, ${V} na linha "${nome}" do capítulo`);
+      const a = mostra({ id: x.id, nome: x.nome, ...x.arma });
+      const vem = [a.preparo, a.golpes, a.recuperacao, a.ciclo], deve = [P, G, R, V];
+      if (JSON.stringify(vem) !== JSON.stringify(deve)) f.push(`ficha, ${id}: mostra P/G/R/ciclo ${vem.join('/')}, o capítulo (${nome}) diz ${deve.join('/')}`);
+    }
+  }
+  for (const x of armas.filter((y) => y.arma)) if (!vistas.has(x.id)) f.push(`ficha: "${x.id}" está no catálogo e falta em LINHA_DA_ARMA`);
+  return f;
+}
+{
+  const catalogo = ARMAS.filter((x) => x.arma);
+  if (catalogo.length !== 40) falhas.push(`ficha: o catálogo tem ${catalogo.length} armas, e o teste foi escrito para 40 (acrescente a nova em LINHA_DA_ARMA)`);
+  const FP = await carregarTS('src/lib/ficha-pgr.ts');
+  const CT = await carregarTS('src/lib/combate-tempo.ts');
+  const dela = (R) => (w) => FP.anatomiaDaFicha(w, R);
+  for (const x of conferirFicha(dela(REGRAS), COMB, catalogo)) falhas.push(x);
+  // controle negativo 1: a ficha de ANTES da 4d (o tiro e o arremesso saíam da fórmula velha do motor) tem de ser acusada
+  const velha = (w) => CT.anatomia({ classe: CT.classeDeTempo(w.id || w.nome, w.ticks), velocidade: w.ticks ?? 5, sistema: 'pgr' });
+  const divVelha = conferirFicha(velha, COMB, catalogo).length;
+  if (divVelha === 0) falhas.push('ficha: o teste NÃO acusou a régua velha do motor (o controle negativo deixou de ser negativo; se a passada do Grid alinhou o motor ao livro, troque o controle)');
+  // controle negativo 2: a 4d sem a chave `tiro` de regras.json (a ficha cairia na fórmula velha do tiro)
+  const R2 = copia(REGRAS); delete R2.combate.pgr.reforma.tiro;
+  if (conferirFicha(dela(R2), COMB, catalogo).length === 0) falhas.push('ficha: o teste NÃO acusou a ficha sem combate.pgr.reforma.tiro');
+  // controle negativo 3: uma célula da tabela do capítulo estragada (a recuperação do Arco Curto)
+  const comb2 = COMB.replace('| Arco Curto | 6 | 4 | 1 | 1 |', '| Arco Curto | 6 | 5 | 1 | 0 |');
+  if (comb2 === COMB || conferirFicha(dela(REGRAS), comb2, catalogo).length === 0) falhas.push('ficha: o teste NÃO acusou o Arco Curto estragado na tabela do capítulo');
+  // o fallback por Velocidade de uma arma que não está no catálogo (id inventado, V6 de arremesso) segue a linha do livro
+  const inv = FP.anatomiaDaFicha({ id: 'arma-inventada', nome: 'Arma inventada', ticks: 4, classe: 'arremesso' }, REGRAS);
+  if (CT.classeDeTempo('arma-inventada', 4) === 'leve' && inv.ciclo !== 4) falhas.push('ficha: a arma sem catálogo devia cair na fórmula do motor (ciclo = Velocidade)');
+}
+
 if (falhas.length) {
   console.error(`✘ test-capitulo-armas: ${falhas.length} falha(s)`);
   for (const f of falhas) console.error('  · ' + f);
   process.exit(1);
 }
-const total = Object.keys(estragosTexto).length + Object.keys(estragosCatalogo).length + 2 + 7 + 1 + 9 + 13 + 9;
+const total = Object.keys(estragosTexto).length + Object.keys(estragosCatalogo).length + 2 + 7 + 1 + 9 + 13 + 9 + 3;
 console.log(`✓ test-capitulo-armas · as tabelas de Arremesso, Atirador, Classes e a Máxima por Força do capítulo batem com armas.json e regras.json · ${total} estragos acusados`);
