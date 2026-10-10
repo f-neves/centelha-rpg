@@ -1,0 +1,1 @@
+- 5-bis: 16 mutacoes proprias, 3 grafias fora do regex, e combateTatico (teto ±6 e linha -4) ainda exibido em /mesa e /mesa/referencia. Veredito 159: PROCEDE + decisao pedida.
