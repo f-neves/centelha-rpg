@@ -1,0 +1,1 @@
+- Conta do tempo da Arte refeita (V5/V6/V7, n ate 4); 6 lugares fora do plano; conflito de 3 escalas de Velocidade. Veredito 155 escrito.
