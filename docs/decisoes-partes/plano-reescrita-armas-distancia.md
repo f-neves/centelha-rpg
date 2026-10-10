@@ -263,6 +263,12 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
 - Não recalcula desafios nem mexe em fichas de criaturas (D-077). Espera o veredito da rodada 14.
 
 **Rodada 7 · Preso, Agarrado e Imobilizado** (§14.12 e §14.15, o que sobrar)
+- **FEITA em 10/10/2026:** f4c5f136 (veredito 162 PROCEDE, 0 CORRIGE; Validar e Deploy verdes). "O agarrado" com
+  −8/−4 contra os de fora, o Preso com os dois perfis, "o agarrão comum só gera Agarrado", o Imobilizado com Esquiva e
+  Bloqueio zerados (não a Defesa de agarrão). O "sem dobro" ganhou um parêntese (a linha *Corpo, grave* é a mesma
+  penalidade, contada uma vez); a origem é redação da Veterana (1d l.953, 1e r5), e o parêntese sai se o autor ler
+  outra coisa. A etiqueta Prende e a Rede já estavam certas. A Constrição do bestiário bate com a D-081 (só o Kraken
+  diz Imobilizado, poder de criatura): nada para a B14. `condicoes.json` no N22 (agarrado −2, imobilizado −4, sem Preso).
 - **Trava (cumprida em 10/10/2026): só depois de a correção da D-081 estar registrada.**
 - Parágrafo "O agarrado" (já no ar desde 3dc09c71; muda só a Esquiva −8 e o Bloqueio −4 contra os de fora, no lugar
   do −2, e o resto fica: o agarrado não age, não rola, só se solta quando quem controla erra), item Imobilizado
@@ -309,6 +315,10 @@ Tick novo para o agarrado), "Sem equilíbrio" × Caído (D-086, a cargo do Mestr
   15. (158) A frase da D-086 também na tabela de situações: caso do Mestre (D-087), sem ação.
   16. **(161) Pinar as células da tabela do porte em `/mesa/referencia`** (o sinal de "À distância, alvo menor" trocado
      de − para + passa no teste; a página está certa). Mesmo buraco da 13. Dono: Executora-2. Conferência: Revisora.
+  17. **(162) Pinar o parêntese do "sem dobro"** em "O agarrado" (removido ou invertido, passa): é o único texto novo da
+     7 sem pino, e o que o autor pode vetar. Dono: Executora-2. Conferência: Revisora.
+  18. **(162) Pinar "Quem controla sofre as penalidades da Preparação" e a frase do imobilizado que tenta se soltar
+     sozinho** (mutadas, passam). Dono: Executora-2. Conferência: Revisora.
 - **A mensagem do 8748735d diz que a mesa não importa a ficha-engine** antes de a Executora conferir; a 156 confirmou
   que é verdade (os imports são `ficha.astro` e `personagem.astro`). Não se reescreve.
 - **Pendências guardadas da Missão 2 que o 2b §5 lista e nenhuma rodada cobria:** o "caso 11 forte" (veterana-2, item
@@ -363,7 +373,7 @@ na D-083; o "caso 11 forte" e a "janela de aborto" estão na **rodada 8** (triag
   Deploy verdes. Depois: e5ab6925 verde; **8748735d (4d): Validar verde, Deploy "cancelled"** porque o push seguinte
   (adee7295) o substituiu na fila do Pages (`deploy.yml`: `concurrency: pages`, `cancel-in-progress: true`), o que não é falha; o Deploy de adee7295, que já contém a 4d, ficou verde,
   assim como o de 20ec3e89. **b56d78f5 (4c): Validar e Deploy verdes.** 63817b4f (5), 0a87a64d (5-bis) e 1efe2ad9 (5-ter): Validar e Deploy
-  verdes. c0085104 (6): Validar e Deploy verdes.
+  verdes. c0085104 (6) e f4c5f136 (7): Validar e Deploy verdes.
 
 ## Ordem e custo
 
