@@ -1,0 +1,1 @@
+- Rodada 9: B1 a B12 conferidos, navegador (equipamentos, mesa/referencia, ficha), 41 mutacoes (38 pegas), Bordao como PERGUNTA, travessao em prosa de pagina como ESCALA. Veredito 165: PROCEDE.
