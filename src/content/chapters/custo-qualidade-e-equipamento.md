@@ -115,6 +115,7 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 | Martelo de Guerra | 600 pc |
 | Montante | 700 pc |
 | Alabarda | 280 pc |
+| Bordão | 30 pc |
 | Lança | 50 pc |
 | Lança Longa | 90 pc |
 | Arco Composto | 550 pc |

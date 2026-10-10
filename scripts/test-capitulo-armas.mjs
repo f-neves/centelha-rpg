@@ -1365,10 +1365,10 @@ function conferirNoveB(T) {
   TOTAL_ARTE += Object.keys(mutB9).length;
 }
 
-// ---- rodada 9, B11: "Perícia" no texto visível e travessão em prosa nos dados (as células vazias '—' de tabela não são prosa)
+// ---- rodada 9, B11: "Perícia" no texto visível e travessão em prosa nos dados (a célula vazia de tabela não é prosa)
 function conferirTermos(T) {
   const f = [];
-  // nos dados, toda string com travessão tem de ser só a célula vazia '—'
+  // nos dados, toda string com travessão tem de ser só a célula vazia
   const varre = (o, caminho, onde) => {
     for (const [k, v] of Object.entries(o || {})) {
       const c = caminho ? `${caminho}.${k}` : k;
@@ -1470,6 +1470,91 @@ function conferirMigracaoDeArma(MG, F, armas) {
     if (conferirMigracaoDeArma(mg, fic, catalogo2).length === 0) falhas.push(`o teste NÃO acusou o estrago da migração de arma "${nome}"`);
   }
   TOTAL_ARTE += Object.keys(mutM).length;
+}
+
+// ---- rodada 9-bis: o preço do Bordão, o atlatl na ficha (as duas linhas), o Modo escondido na Rede e os pinos da restrição
+function conferirNoveBis(T) {
+  const f = [];
+  const arma = (id) => (T.armas || []).find((x) => x.id === id);
+  // o preço do Bordão (30 pc, do autor) e a tabela de preços gerada
+  const b = arma('bordao');
+  if (!b || b.preco?.pc !== 30) f.push('armas.json (9-bis): o Bordão devia custar 30 pc');
+  if (!T.custo.split('\n').some((x) => x === '| Bordão | 30 pc |')) f.push('custo-qualidade-e-equipamento.md (9-bis): a tabela de preços gerada devia trazer "| Bordão | 30 pc |" (rode gen-cap-itens)');
+  // o Modo escondido quando a arma não causa dano, em /equipamentos e na ficha
+  if (!T.equip.split('\n').some((x) => x.startsWith('const modosDe = (a: any) => a.semDano ?'))) f.push("equipamentos.astro (9-bis): a função modosDe devia devolver o vazio quando a.semDano");
+  if (!T.ficha.split('\n').some((x) => x.includes("(w.semDano ? '' : `<div class=\"cmb\"><b>Modos</b>: ")) ) f.push('ficha-engine.ts (9-bis): a linha "Modos" do combate devia sumir quando w.semDano');
+  // os pinos de restrição que o veredito 165 achou faltando
+  const RE = T.regras?.combateTatico?.restricao;
+  if (!RE) f.push('regras.json (9-bis): falta combateTatico.restricao');
+  else {
+    if (RE.linhas.find((l) => l.id === 'pouco-espaco')?.escudoPerdeOBonus !== true) f.push('regras.json restricao (9-bis): o pouco espaço devia trazer escudoPerdeOBonus: true (o escudo perde o bônus)');
+    if (RE.linhas.filter((l) => l.escudoPerdeOBonus).length !== 1) f.push('regras.json restricao (9-bis): só o pouco espaço perde o bônus do escudo');
+    if (RE.agarrado?.soContraDeFora !== true) f.push('regras.json restricao (9-bis): o Agarrado devia ter soContraDeFora: true');
+  }
+  // o atlatl: a ficha mostra as duas linhas da azagaia
+  const FP = T.fp;
+  if (!FP) return f;
+  if (typeof FP.linhasComExtra !== 'function') { f.push('ficha-pgr (9-bis): falta linhasComExtra (as duas linhas da azagaia)'); return f; }
+  const LX = (id) => { const w = arma(id); return w ? FP.linhasComExtra({ id: w.id, nome: w.nome, ...w.arma }, T.regras) : []; };
+  const az = LX('azagaia');
+  if (az.length !== 1 || az[0].id !== 'atlatl' || JSON.stringify([az[0].preparo, az[0].golpes, az[0].recuperacao, az[0].ciclo]) !== JSON.stringify([5, 1, 2, 8])) f.push('ficha-pgr (9-bis): a azagaia devia trazer a linha "com atlatl" 5/1/2, ciclo 8, e trouxe ' + JSON.stringify(az));
+  for (const id of ['pilum', 'plumbata', 'machado-de-arremesso', 'arco-longo', 'adaga', 'lanca']) if (LX(id).length) f.push('ficha-pgr (9-bis): so a azagaia usa o atlatl, e o ' + id + ' trouxe a linha dele');
+  const normal = arma('azagaia') ? FP.anatomiaDaFicha({ id: 'azagaia', nome: 'Azagaia', ...arma('azagaia').arma }, T.regras) : null;
+  if (!normal || JSON.stringify([normal.preparo, normal.golpes, normal.recuperacao, normal.ciclo]) !== JSON.stringify([3, 1, 2, 6])) f.push('ficha-pgr (9-bis): a linha normal da azagaia continua 3/1/2, ciclo 6');
+  const ex = (T.extras || []).find((x) => x.id === 'atlatl');
+  if (!ex || JSON.stringify(ex.so) !== JSON.stringify(['azagaia'])) f.push('armas-extras.json (9-bis): o atlatl só serve à azagaia');
+  const linha = (T.regras?.combate?.pgr?.reforma?.tiro || []).find((c) => c.extra === 'atlatl');
+  if (!linha || linha.velocidade !== ex?.efeito?.velocidadeDaAzagaia) f.push('regras.json (9-bis): a linha do atlatl em reforma.tiro devia ter a Velocidade da azagaia com atlatl (' + ex?.efeito?.velocidadeDaAzagaia + ')');
+  const FL = T.ficha.split('\n').map((x) => x.trim());
+  if (!FL.includes('const extras = linhasComExtra(w, regras);')) f.push('ficha-engine.ts (9-bis): o linhaPGR devia pedir linhasComExtra(w, regras)');
+  if (!FL.some((x) => x.startsWith('+ extras.map((e: any) => `<div class="cmb"><b>Com ${e.nome}</b>'))) f.push('ficha-engine.ts (9-bis): o linhaPGR devia mostrar a linha "Com <extra>" depois da normal');
+  return f;
+}
+{
+  const FPmod = await carregarTS('src/lib/ficha-pgr.ts');
+  const T0 = {
+    armas: ARMAS, regras: REGRAS, extras: JSON.parse(ler('src/data/armas-extras.json')), fp: FPmod,
+    custo: ler('src/content/chapters/custo-qualidade-e-equipamento.md').replace(/\r\n/g, '\n'),
+    equip: ler('src/pages/equipamentos.astro').replace(/\r\n/g, '\n'), ficha: ler('src/lib/ficha-engine.ts').replace(/\r\n/g, '\n'),
+  };
+  const realBis = conferirNoveBis(T0);
+  for (const x of realBis) falhas.push(x);
+  const troca = (k, de, para) => (T) => ({ ...T, [k]: T[k].replace(de, para) });
+  const trocaR = (fn) => (T) => ({ ...T, regras: (() => { const x = copia(T.regras); fn(x); return x; })() });
+  const trocaA = (fn) => (T) => ({ ...T, armas: (() => { const x = copia(T.armas); fn(x); return x; })() });
+  const FONTE_FP = ler('src/lib/ficha-pgr.ts');
+  const comFP = async (de, para) => ({ ...T0, fp: await carregarTSdoTexto(FONTE_FP.replace(de, () => para), 'src/lib') });
+  const mutBis = realBis.length ? {} : {
+    'o Bordão sem preço': trocaA((a) => { delete a.find((x) => x.id === 'bordao').preco; }),
+    'o Bordão a 40 pc': trocaA((a) => { a.find((x) => x.id === 'bordao').preco.pc = 40; }),
+    'a tabela gerada sem o Bordão': troca('custo', '| Bordão | 30 pc |', '| Lança | 5 pp |'),
+    'o Modo da Rede de volta na página': troca('equip', 'const modosDe = (a: any) => a.semDano ?', 'const modosDe = (a: any) => false ?'),
+    'o Modo da Rede de volta na ficha': troca('ficha', "(w.semDano ? '' : `<div class=\"cmb\"><b>Modos</b>: ", "(false ? '' : `<div class=\"cmb\"><b>Modos</b>: "),
+    'o pouco espaço sem escudoPerdeOBonus': trocaR((x) => { delete x.combateTatico.restricao.linhas.find((l) => l.id === 'pouco-espaco').escudoPerdeOBonus; }),
+    'a lugar sem equilíbrio perdendo o escudo': trocaR((x) => { x.combateTatico.restricao.linhas.find((l) => l.id === 'sem-equilibrio').escudoPerdeOBonus = true; }),
+    'o Agarrado sem soContraDeFora': trocaR((x) => { x.combateTatico.restricao.agarrado.soContraDeFora = false; }),
+    'a linha do atlatl fora da reforma': trocaR((x) => { x.combate.pgr.reforma.tiro = x.combate.pgr.reforma.tiro.filter((c) => c.extra !== 'atlatl'); }),
+    'a velocidade do atlatl trocada': trocaR((x) => { x.combate.pgr.reforma.tiro.find((c) => c.extra === 'atlatl').preparo = 4; }),
+    'a ficha sem pedir as linhas do extra': troca('ficha', 'const extras = linhasComExtra(w, regras);', 'const extras: any[] = [];'),
+    'a ficha sem a linha Com atlatl': troca('ficha', '+ extras.map((e: any) => `<div class="cmb"><b>Com ${e.nome}</b>', '+ [].map((e: any) => `<div class="cmb"><b>Com ${e.nome}</b>'),
+  };
+  for (const [nome, estraga] of Object.entries(mutBis)) {
+    const T = estraga(T0);
+    if (JSON.stringify({ ...T, fp: 0 }) === JSON.stringify({ ...T0, fp: 0 })) { falhas.push('o estrago "' + nome + '" não alterou nada (o teste de teste está torto)'); continue; }
+    if (conferirNoveBis(T).length === 0) falhas.push('o teste NÃO acusou o estrago da 9-bis "' + nome + '"');
+  }
+  // os mutantes do próprio ficha-pgr.ts (sem a linha do extra, ignorando o `so`, lendo a linha errada)
+  const mutFP = {
+    'o ficha-pgr sem linhasComExtra': ["return out;", 'return [];'],
+    'o ficha-pgr que ignora o `so` do extra': ["(ex.so || []).includes(w?.id)", 'true'],
+    'o ficha-pgr que lê a linha errada': ["x.extra === ex.id", 'x.extra === "zzz"'],
+  };
+  for (const [nome, [de, para]] of Object.entries(mutFP)) {
+    if (FONTE_FP.split(de).length !== 2) { falhas.push('o mutante "' + nome + '" não casa com ficha-pgr.ts (o teste de teste está torto)'); continue; }
+    const T = await comFP(de, para);
+    if (conferirNoveBis(T).length === 0) falhas.push('o teste NÃO acusou o mutante de ficha-pgr.ts "' + nome + '"');
+  }
+  TOTAL_ARTE += Object.keys(mutBis).length + Object.keys(mutFP).length;
 }
 
 if (falhas.length) {

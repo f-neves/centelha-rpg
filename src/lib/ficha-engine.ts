@@ -18,7 +18,7 @@ import RACA_D from '../data/racas.json';
 // a mesma formatação de parâmetros do capítulo XV, para a ficha não inventar outra
 import { ordemPar, valorPar, formaDe, rank, PAR_FORMA } from './artes-fmt';
 import { classeDeTempo, tetoDaRajada } from './combate-tempo';
-import { anatomiaDaFicha } from './ficha-pgr';
+import { anatomiaDaFicha, linhasComExtra } from './ficha-pgr';
 import { migrarRefsDeArma } from './ficha-migra';
 import { sparkSVG } from './centelha-spark';
 import { url } from './site';
@@ -1640,11 +1640,13 @@ export function montarFicha(opts: FichaOpts) {
     const a = anatomiaDaFicha(w, regras);
     if (a.ciclo <= 1) return '';
     const teto = tetoDaRajada(cls);
+    const extras = linhasComExtra(w, regras);
     return `<div class="cmb"><b>No tempo</b> — Preparo <b>${a.preparo}</b> · Golpe <b>${a.golpes}</b>`
       + ` · Recuperação <b>${a.recuperacao}</b> <span class="muted">(os ${a.ciclo} Ticks da Velocidade, repartidos)</span></div>`
       + `<div class="cmb muted">Atacar abre a guarda: −2 no Preparo, −4 no Tick do Golpe, −2 por golpe dado`
       + ` na Recuperação.${teto > 1 ? ` Dá para golpear até <b>${teto}</b> vezes numa ação só, a −1d6 acumulativo e +2 Ticks por golpe extra.` : ''}`
-      + ` Numa mesa que não usa as três fases, tudo isso vale igual: só o Preparo some.</div>`;
+      + ` Numa mesa que não usa as três fases, tudo isso vale igual: só o Preparo some.</div>`
+      + extras.map((e: any) => `<div class="cmb"><b>Com ${e.nome}</b> (Velocidade ${e.ciclo}): Preparo <b>${e.preparo}</b> · Golpe <b>${e.golpes}</b> · Recuperação <b>${e.recuperacao}</b> <span class="muted">(item extra: o jogador escolhe a linha que vale, com ou sem ele)</span></div>`).join('');
   }
 
   function renderCombate() {
@@ -1662,7 +1664,7 @@ export function montarFicha(opts: FichaOpts) {
     el('combate').innerHTML =
       `<div class="cmb"><b>Conjunto em uso</b> — ${nomeSet}</div>` +
       `<div class="cmb"><b>Ataque</b> — ${w.nome}: rola <b>${atk}</b> · dano <b>${dano}</b> · Velocidade ${w.ticks}</div>` +
-      `<div class="cmb"><b>Modos</b> — ${modoStr}${temSec ? ' <span class="muted">(* secundário: −2 acerto e −1d6 de dano)</span>' : ''}</div>` +
+      (w.semDano ? '' : `<div class="cmb"><b>Modos</b>: ${modoStr}${temSec ? ' <span class="muted">(* secundário: −2 acerto e −1d6 de dano)</span>' : ''}</div>`) +
       linhaPGR(w) +
       (act.dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b> — <b>${blk}</b> <span class="muted">(inclui a Defesa das armas do conjunto)</span></div>`) +
       (escudos.length

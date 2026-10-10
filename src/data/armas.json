@@ -315,6 +315,9 @@
     "id": "bordao",
     "nome": "Bordão",
     "tipo": "arma",
+    "preco": {
+      "pc": 30
+    },
     "peso": 2,
     "descricao": "Haste de madeira de duas mãos, também chamada Cajado: controla a distância e defende muito, sem ponta nem fio. Dano de Impacto.",
     "tags": [

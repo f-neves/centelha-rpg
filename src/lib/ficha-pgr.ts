@@ -8,6 +8,8 @@
 // catálogo e comparar o que a ficha mostra com a tabela do capítulo.
 import { anatomia as anatomiaTempo, classeDeTempo, type Anatomia } from './combate-tempo';
 
+import EXTRAS from '../data/armas-extras.json';
+
 const CORPO_A_CORPO = ['leve', 'media', 'haste', 'pesada'];
 // No catálogo a Funda é da classe `arremesso`, mas a tabela do livro lhe dá linha própria: ela fica com o arremesso.
 const ARREMESSO = /^(arremesso|funda)/;
@@ -33,4 +35,20 @@ export function anatomiaDaFicha(w: any, regras: any): Anatomia {
     a.preparo = linha.preparo; a.golpes = linha.golpe; a.recuperacao = linha.recuperacao; a.ciclo = linha.velocidade;
   }
   return a;
+}
+
+/**
+ * As linhas EXTRAS de uma arma: o item extra que a muda (o atlatl, da azagaia) tem linha própria em `combate.pgr.reforma.tiro`
+ * (`extra`), e a ficha mostra as duas: a normal e a "com o extra". A ficha não guarda o atlatl (é item extra, que ninguém lê):
+ * o jogador escolhe qual das duas vale. Quais armas aceitam o extra vem de `armas-extras.json` (`so`).
+ */
+export function linhasComExtra(w: any, regras: any) {
+  const tiro: any[] = regras?.combate?.pgr?.reforma?.tiro || [];
+  const out: any[] = [];
+  for (const ex of EXTRAS as any[]) {
+    if (!(ex.so || []).includes(w?.id)) continue;
+    const c = tiro.find((x) => x.extra === ex.id);
+    if (c) out.push({ id: ex.id, nome: ex.nome, preparo: c.preparo, golpes: c.golpe, recuperacao: c.recuperacao, ciclo: c.velocidade });
+  }
+  return out;
 }
