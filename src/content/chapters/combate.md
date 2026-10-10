@@ -166,6 +166,8 @@ Uma ação, um golpe: essa é a régua padrão. Duas coisas rendem mais: lutar c
 seguir) ou puxar uma **Rajada**, vários golpes com a **mesma** arma, corpo a corpo, declarados de
 uma vez, sem parar no meio.
 
+**Nada dá ataque extra sem dizer que dá.** Ter várias armas, ou partes do corpo que servem de arma, é ter opções de ataque, e não ataques a mais: um gato pode atacar com qualquer das quatro patas ou com a mordida, e nem por isso ataca mais vezes. Os golpes a mais são os que uma regra dá pelo nome, como a Rajada e a empunhadura dupla, abaixo.
+
 A Rajada tem a forma **P → G → G → … → R**: um Preparo, os golpes em Ticks seguidos e uma Recuperação, declarada de uma vez e sem parar no meio. Cada golpe **além do primeiro** custa duas coisas: **−1d6 no acerto, acumulando** (o **1º golpe** sai **sem penalidade**, o **2º** a **−1d6** e o **3º** a **−2d6**) e **+1 Tick de Recuperação**, além do Tick de Golpe que ele próprio ocupa. Cada golpe extra soma, portanto, **+2 de Velocidade** ao ciclo inteiro (no Normal também). Há um teto de golpes por Rajada, pela classe da arma, e o ciclo fica assim:
 
 | Classe | Golpes no teto | Ciclo com 1, 2 e 3 golpes |
@@ -208,6 +210,10 @@ No sistema P/G/R a dupla ganha **um Tick de Golpe para cada mão**, as duas a �
 | Arma média na mão hábil | 2 | 2 | 3 | 7 |
 
 No par de leves o segundo Golpe **come um Tick da Recuperação**, e o ciclo não muda; com arma média na mão hábil o ciclo **cresce 1**. Segurando a segunda arma (ou o escudo) **sem golpear com ela**, o Tick de Golpe fica a **−2** em vez de −4: a outra mão continua guardando. Os dois golpes contam, os dois, como ataques feitos para a Guarda sob pressão. O tempo é a identidade da dupla, e os dados são o preço dela.
+
+**Dois Punhos contam como duas armas leves**, cada um com as estatísticas dos Punhos (1/1/3). Fazem par para a empunhadura dupla (a linha do par de leves), para a Rajada (teto de 3 golpes, o da classe leve), para o Bloqueio (+1 cada) e contam como **2 ataques** para a Guarda sob pressão. **Só as mãos fazem par**: os dois punhos e qualquer mão que conta como arma (a Mão de Ferro, por exemplo). Chute, mordida, cauda e patas de animal seguem a regra de que nada dá ataque extra sem dizer que dá: são opções de ataque, não um par.
+
+A dupla de armas de Velocidades diferentes fica a critério do Mestre: o ciclo é o da arma **mais lenta** das duas, em qualquer mão que ela esteja. Uma adaga na mão hábil e uma espada longa na inábil têm o ciclo da espada, 7 Ticks, como se ela estivesse na mão hábil.
 
 O preço não está tanto nos dados (pela régua da Margem, um golpe que **encosta** já rende quase todo o dano), e sim na **exposição**: cada ataque que você faz baixa a Esquiva e o Bloqueio (ver *Guarda sob pressão*), então brigar com as duas mãos derruba a sua guarda o **dobro** de um golpe só, até a sua próxima ação. Em troca, a **Defesa das armas continua valendo** para aparar: empunhar duas lâminas ataca e defende ao mesmo tempo: o que custa é ficar aberto, não largar a guarda da arma.
 
@@ -302,7 +308,7 @@ Errar por pouco ainda raspa o alvo. Como o **Quase-Acerto** funciona em detalhe 
 Sua Defesa pode vir de duas fontes, e você usa **a melhor** delas contra cada golpe:
 
 - **Esquiva**: com a habilidade Esquiva, mais a mobilidade do terreno. Some sai da frente.
-- **Bloqueio**: com a Habilidade **Bloqueio** (a mesma para qualquer arma, escudo ou mão), mais a **Defesa da Arma** e o escudo. Apara o golpe. Sem nada nas mãos, o corpo defende pela regra da [luta desarmada](/regras/armas-e-armaduras#luta-desarmada) (Cap. XIII).
+- **Bloqueio**: com a Habilidade **Bloqueio** (a mesma para qualquer arma, escudo ou mão), mais a **Defesa da Arma** e o escudo. Apara o golpe. Sem nada nas mãos, o corpo defende pela regra da [luta desarmada](/regras/armas-e-armaduras#luta-desarmada) (Cap. XIII), que também diz o que acontece quando a mão nua bloqueia um ataque armado: o dano da arma passa, a Margem não.
 
 A **Defesa da Arma** (coluna *Defesa* em [Armas & Armaduras](/regras/armas-e-armaduras)) entra no **Bloqueio**: uma espada acrescenta **+1**, uma haste média **+2** (o alcance afasta o golpe; a Haste de Guerra, grande demais para aparar, **0**), e as **armas pesadas de duas mãos −2** (o espadão e o martelo dão muito dano, mas comprometem a guarda e **expõem o lutador entre os golpes**). Quem usa **uma só mão** pode ocupar a outra: um **escudo** (+1 a +3) ou uma **arma na mão inábil** (+1) eleva o Bloqueio. E a arma da mão inábil não só defende: ela rende um **segundo ataque** na ação (ver *Empunhadura dupla*), e o Bloqueio dela continua valendo mesmo quando você golpeia com ela. É a troca central da empunhadura: **dano concentrado e alcance com as duas mãos, a muralha do escudo, ou dois golpes por vez com uma arma em cada mão.**
 

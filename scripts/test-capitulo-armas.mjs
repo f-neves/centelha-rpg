@@ -328,6 +328,18 @@ function conferir(cap, armas, regras, comb = COMB, acoes = ACOES) {
     // a regra geral e o custo do Normal
     if (!comb.includes('Toda arma tem **ao menos 1 Tick de Preparo**') || !comb.includes('**2 × Velocidade + 2**')) f.push('Combate: faltam a regra de 1 Tick de Preparo e o custo 2 × Velocidade + 2 do Normal');
     if (/carga voluntária/i.test(comb)) f.push('Combate: sobrou a "carga voluntária" (a Investida vale para toda arma)');
+    // D-068, os dois Punhos (cláusula da D-083) e a dupla mista: o texto do livro, sem regra nova
+    if (!comb.includes('**Nada dá ataque extra sem dizer que dá.**') || !comb.includes('um gato pode atacar com qualquer das quatro patas ou com a mordida')) f.push('Combate: falta o parágrafo da D-068 (nada dá ataque extra sem dizer que dá, com o gato)');
+    if (!comb.includes('**Dois Punhos contam como duas armas leves**') || !comb.includes('(teto de 3 golpes, o da classe leve)') || !comb.includes('**Só as mãos fazem par**') || !comb.includes('Chute, mordida, cauda e patas de animal')) f.push('Combate: falta a cláusula dos dois Punhos (D-083): duas armas leves, Rajada com teto 3, só as mãos fazem par, chute e patas fora');
+    if (!comb.includes('o ciclo é o da arma **mais lenta** das duas, em qualquer mão que ela esteja') || !comb.includes('têm o ciclo da espada, 7 Ticks')) f.push('Combate: falta a frase do Mestre para a dupla mista (ciclo da arma mais lenta, com o exemplo da adaga e da espada longa)');
+    // D-088: o Bloqueio com a mão nua contra ataque armado (a Margem se perde, o dano da arma passa)
+    if (!comb.includes('o dano da arma passa, a Margem não')) f.push('Combate, Esquivar ou Bloquear: falta a remissão da D-088 (o dano da arma passa, a Margem não)');
+    if (!cap.includes('A mão nua bloqueia **qualquer ataque armado**') || !cap.includes('**perde os dados de Margem**') || !cap.includes('**toma o dano da arma normalmente**') || !cap.includes('garra, mordida e chifre contam; contra um soco, o Bloqueio com as mãos para tudo')) f.push('Armas & Armaduras, Luta desarmada: falta o parágrafo da D-088 (a mão nua bloqueia qualquer ataque armado, perde a Margem, toma o dano da arma)');
+    if (!cap.includes('Bloqueio 14, mais 1 de cada punho: <strong>16</strong>') || !cap.includes('<strong>só o dano da arma</strong>')) f.push('Armas & Armaduras, Luta desarmada: falta o exemplo do autor da D-088 (Bloqueio 16, Esquiva 8, acerto 15)');
+    if (cap.includes('Contra lâmina, o corpo não segura')) f.push('Armas & Armaduras: sobrou o parágrafo "Contra lâmina, o corpo não segura" (a D-088 o substitui)');
+    // a leitura c da D-088 (arma numa mão e punho na outra) está em aberto com o autor: nenhuma frase pode somar punho com arma
+    const desarmada = (cap.split('## Luta desarmada')[1] || '').split('## Armaduras')[0];
+    if (/punho[^.]{0,60}soma[^.]{0,40}(arma|escudo)/i.test(desarmada.replace(/arma ou escudo não somam com ele/g, ''))) f.push('Luta desarmada: uma frase soma punho com arma (leitura c da D-088, em aberto com o autor)');
     // o capítulo Armas & Armaduras: a tabela de exemplos do corpo a corpo e as linhas do corpo a corpo da tabela de Classes
     const NOMECLASSE = {};
     for (const c of CC) for (const aid of c.armas) NOMECLASSE[aid] = c.id === 'punhos' ? 'Leve' : c.nome; // os Punhos são da classe Leve no catálogo, e têm linha própria só no P/G/R
@@ -381,6 +393,10 @@ function conferir(cap, armas, regras, comb = COMB, acoes = ACOES) {
 }
 
 const falhas = [];
+// A ficha (informativa) mostra o P/G/R do corpo a corpo pela reforma da D-082 (Punhos 1/1/3), e não pela fórmula velha do motor
+const FICHA = ler('src/lib/ficha-engine.ts');
+if (!FICHA.includes('combate?.pgr?.reforma?.corpoACorpo')) falhas.push('ficha-engine: o linhaPGR não lê combate.pgr.reforma.corpoACorpo (os Punhos sairiam 0/1/4)');
+if (JSON.stringify(ARMAS.find((a) => a.id === 'desarmado').arma.ticks) !== '5' || REGRAS.combate.pgr.reforma.corpoACorpo.find((c) => c.id === 'punhos').preparo !== 1) falhas.push('Punhos: Velocidade 5 no catálogo e Preparo 1 na reforma (1/1/3)');
 const real = conferir(CAP, ARMAS, REGRAS, COMB, ACOES);
 for (const x of real) falhas.push(x);
 
@@ -460,6 +476,14 @@ for (const [nome, estraga] of Object.entries(estragosCatalogo)) {
     'Investida da Pesada em Combate': (c, t) => [c.replace('| Haste de Guerra e Pesada | 3 | 12 m | 21 m |', '| Haste de Guerra e Pesada | 3 | 12 m | 24 m |'), t],
     'exemplo da Sora em Combate': (c, t) => [c.replace('de martelo (Preparo 3)', 'de martelo (Preparo 2)'), t],
     'exemplo dos golpes no mesmo instante em Combate': (c, t) => [c.replace('Duas adagas (Preparo 1) declaradas no <strong>Tick 3</strong>', 'Duas adagas (Preparo 1) declaradas no <strong>Tick 2</strong>'), t],
+    'parágrafo da D-068 em Combate': (c, t) => [c.replace('**Nada dá ataque extra sem dizer que dá.**', 'Ataque extra.'), t],
+    'cláusula dos dois Punhos em Combate': (c, t) => [c.replace('**Dois Punhos contam como duas armas leves**', 'Dois Punhos contam como uma arma'), t],
+    'teto dos dois Punhos em Combate': (c, t) => [c.replace('(teto de 3 golpes, o da classe leve)', '(teto de 2 golpes)'), t],
+    'frase da dupla mista em Combate': (c, t) => [c.replace('o ciclo é o da arma **mais lenta** das duas', 'o ciclo é o da arma mais rápida das duas'), t],
+    'remissão da D-088 em Combate': (c, t) => [c.replace('o dano da arma passa, a Margem não', 'o corpo não segura'), t],
+    'parágrafo da D-088 em Luta desarmada': (c, t) => [c, t.replace('**perde os dados de Margem**', 'perde o dano')],
+    'exemplo da D-088 em Luta desarmada': (c, t) => [c, t.replace('Bloqueio 14, mais 1 de cada punho: <strong>16</strong>', 'Bloqueio 14, mais 1 de cada punho: <strong>15</strong>')],
+    'parágrafo da lâmina de volta em Luta desarmada': (c, t) => [c, t + '\nContra lâmina, o corpo não segura.\n'],
     'carga voluntária de volta em Combate': (c, t) => [c + '\nA carga voluntária compra Preparo.\n', t],
     'Alabarda no capítulo (Velocidade 6)': (c, t) => [c, t.replace('| Alabarda | Haste de Guerra | ★C · ★P(N1) · ★I | 7 |', '| Alabarda | Haste de Guerra | ★C · ★P(N1) · ★I | 6 |')],
     'Lança no capítulo (1d6+2)': (c, t) => [c, t.replace('| Lança | Haste média | ★P(N1) | 6 | 1d6 |', '| Lança | Haste média | ★P(N1) | 6 | 1d6+2 |')],
@@ -480,5 +504,5 @@ if (falhas.length) {
   for (const f of falhas) console.error('  · ' + f);
   process.exit(1);
 }
-const total = Object.keys(estragosTexto).length + Object.keys(estragosCatalogo).length + 2 + 7 + 1 + 9 + 13;
+const total = Object.keys(estragosTexto).length + Object.keys(estragosCatalogo).length + 2 + 7 + 1 + 9 + 13 + 8;
 console.log(`✓ test-capitulo-armas · as tabelas de Arremesso, Atirador, Classes e a Máxima por Força do capítulo batem com armas.json e regras.json · ${total} estragos acusados`);

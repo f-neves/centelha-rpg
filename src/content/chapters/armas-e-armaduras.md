@@ -156,11 +156,13 @@ A **Máxima** de um arco sai da **Força no arco**: o **menor valor entre a sua 
 
 ## Luta desarmada
 
-Sem arma, o corpo luta com o que tem, e os golpes dele são de Briga. Os **Punhos** são arma leve: Velocidade 5, Acerto +1, Defesa +1, dano 1d6−2 + Força, Impacto. O **chute** não é arma de equipamento: é um golpe médio, de Velocidade 6, Acerto +0, Defesa −1, dano 1d6 + Força, Impacto. Ele pode ser dado mesmo com armas nas mãos, e gasta a própria ação, como qualquer golpe.
+Sem arma, o corpo luta com o que tem, e os golpes dele são de Briga. Os **Punhos** são arma leve: Velocidade 5, Acerto +1, Defesa +1, dano 1d6−2 + Força, Impacto, e os dois Punhos contam como duas armas leves (par para a [empunhadura dupla](/regras/combate#empunhadura-dupla-um-ataque-por-mão), a Rajada, o Bloqueio e a Guarda sob pressão). O **chute** não é arma de equipamento: é um golpe médio, de Velocidade 6, Acerto +0, Defesa −1, dano 1d6 + Força, Impacto. Ele pode ser dado mesmo com armas nas mãos, e gasta a própria ação, como qualquer golpe.
 
 No Bloqueio, você usa o que tem nas mãos: as armas e os escudos que estiver empunhando somam a Defesa deles (dois escudos, os dois contam), como a arma da mão inábil já soma. O corpo só defende quando nada nas mãos é usado, e arma ou escudo não somam com ele. Das partes do corpo, só os dois punhos somam entre si: +1 cada, +2 com as duas mãos livres. As pernas não somam com eles: defender com as pernas (−1) é para quem não pode usar as mãos, como quem está amarrado. A ficha mostra o Bloqueio com a melhor combinação que você tem; quem muda a escolha é a situação, e o Mestre ajusta.
 
-Contra lâmina, o corpo não segura. Quem Bloqueia sem arma um ataque cortante ou perfurante, com qualquer parte do corpo, recebe o dano normalmente, mesmo que o Bloqueio supere o ataque. A Esquiva não muda: contra a lâmina você ainda pode sair da frente, pela regra da melhor das duas ([Combate](/regras/combate), Esquivar ou Bloquear).
+A mão nua bloqueia **qualquer ataque armado**, cortante, perfurante ou contundente. Se o Bloqueio supera o acerto, o ataque **perde os dados de Margem**, mas você **toma o dano da arma normalmente** (a armadura funciona como sempre contra o dano que passa). A Esquiva não muda: você ainda pode sair da frente, pela regra da melhor das duas ([Combate](/regras/combate), Esquivar ou Bloquear). "Arma" aqui é todo ataque que não seja desarmado: garra, mordida e chifre contam; contra um soco, o Bloqueio com as mãos para tudo.
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Bloqueio 14, mais 1 de cada punho: <strong>16</strong>. Esquiva <strong>8</strong>. Um ataque armado chega com <strong>15</strong> de acerto. Esquivando, o golpe passa por 7 pontos (uma Margem) e rende o dano da arma <strong>mais 1d6</strong>. Bloqueando com as mãos, o golpe não passa do Bloqueio, perde a Margem e rende <strong>só o dano da arma</strong>.</div>
 
 Quem tem armas naturais no corpo (garras, chifres, carapaça, corpo de pedra ou de ferro) ataca e se defende com elas, e quase sempre bloqueia a lâmina sem tomar o dano; o Mestre julga os casos em que o golpe bloqueado fere mesmo assim.
 
