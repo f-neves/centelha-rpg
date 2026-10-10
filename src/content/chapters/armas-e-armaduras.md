@@ -50,7 +50,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 
 ## Tags
 
-- **Alcance**: ataca a 1 m de distância (uma casa); **+2 no acerto** contra quem se aproxima, **−2** contra quem já está colado. É bônus de acerto de quem ataca, e não entra no teto de ±6 da Defesa.
+- **Alcance**: ataca a 1 m de distância (uma casa); **+2 no acerto** contra quem se aproxima, **−2** contra quem já está colado. É bônus de acerto de quem ataca, e não modificador de Defesa: não entra no teto de +6 dos bônus de Defesa.
 - **Ágil**: só descritiva, sem efeito mecânico próprio; o jeito ágil da arma já está nos números dela (dano baixo, acerto alto).
 - **Versátil**, 1 ou 2 mãos: com uma mão soma Força no dano; com as duas, Força×2.
 - **Sangramento**, um golpe que abre Margem deixa uma ferida que continua drenando: **Sangramento igual à Margem** (máx 3). Ver *Sangramento e Estabilização* em Vida & Ferimentos.

@@ -82,6 +82,8 @@ A leitura é simples: **o estado de alerta é o que apaga a banda morta**. Um gu
 
 **Circunstância** · escuridão **−4** · chuva, vento ou barulho de fundo **−2** · distração criada por outro personagem **−2** · armadura: **o dobro da Penalidade dela** (+4 nas de −2, +6 nas de −3, para toda armadura com Penalidade; é a Penalidade da armadura, cobrada uma vez só, aqui) · carga acima da faixa Leve **+2** · cascalho, folha seca ou tábua solta **+2** · campo aberto e iluminado **+4**.
 
+**Antes de um ataque** · saber que vai ser atacado é o que separa o alvo surpreso, de Defesa zerada, do que se defende ([Combate](/regras/combate#quando-a-defesa-zera-e-quando-o-alvo-não-vê)). Quem ataca rola **Furtividade**, como no Esgueirar-se, contra a **Percepção Passiva** do defendido. Passou: ele não sabe do ataque. Falhou: ele sabe, e se defende normalmente. O atacante invisível usa o mesmo teste.
+
 ### As que ainda não têm ficha
 
 - **Esconder-se.** Sumir de vista e continuar sumido, que é coisa diferente de atravessar. Direta, Destreza + Furtividade, secundária Ocultação.

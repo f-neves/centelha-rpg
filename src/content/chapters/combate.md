@@ -155,12 +155,12 @@ Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma*
 
 <p class="muted">O <strong>Atributo</strong> usado em combate corpo a corpo (armas ou punhos) é <strong>Destreza ou Força</strong>, à escolha de quem ataca, normalmente o maior dos dois (Força 5 e Destreza 2? use a Força). Para <strong>arremessos</strong>, sempre Destreza; para <strong>atirar</strong> (arco ou besta), sempre Percepção.</p>
 
-A Defesa é um valor **fixo** e **passivo**, o alvo não rola para se defender. A Habilidade que
+A Defesa é um valor **fixo** e **passivo**, o alvo não rola para se defender, e ela **nunca fica abaixo de 0**. Quem **não sabe do ataque** ou **não tem como se defender** fica com a Defesa correspondente **zerada** (ver *Vantagem tática*). A Habilidade que
 entra é **Esquiva ou Bloqueio**, detalhado a seguir em *Esquivar ou Bloquear*:
 
 <p class="formula">Defesa = (Destreza + Habilidade) × 2 + Especialidade + 2 × menor(Centelha, Habilidade)</p>
 
-Acertar não é tudo ou nada: a cada **6 pontos acima da Defesa**, você ganha **1 Margem**, e cada Margem vira **+1d6 de dano**. Um acerto raspando arranha; um acerto folgado despedaça.
+Acertar não é tudo ou nada: a cada **6 pontos acima da Defesa**, você ganha **1 Margem**, e cada Margem vira **+1d6 de dano**. Um acerto raspando arranha; um acerto folgado despedaça. Contra uma Defesa zerada a Margem **não tem teto**: quem dorme, está imobilizado ou ficou sem guarda pode morrer num golpe só.
 
 <p class="muted">A <strong>Centelha</strong> soma <strong>2 × o menor entre ela e a Habilidade da jogada</strong> (Habilidade 0 dá bônus 0), dos dois lados, ao ataque e a todas as defesas: quem tem a fagulha acesa e nenhuma prática ainda ganha só o que a prática sustenta, que com Habilidade 0 é nada. Entre Centelhas iguais (e Habilidade suficiente dos dois lados) ela se cancela, e o duelo joga igual do mortal ao semideus; contra quem tem menos Centelha, a diferença vira vantagem líquida no acerto e na guarda. No <strong>dano</strong> a conta é outra: a Centelha do atacante soma inteira, sem esse teto (veja abaixo).</p>
 
@@ -323,7 +323,7 @@ Contra um **projétil rápido** (flecha, virote, bala de funda, faca de arremess
 - **Esquivar**, sempre.
 - **Bloquear**, só com um **escudo hábil** e se você estiver **apto** a manejá-lo.
 
-Um escudo é **hábil** quando cobre pelo menos **30% do seu corpo** (um escudo médio para uma criatura Média): o broquel e o targe são pequenos demais e não valem; do escudo redondo para cima, sim. Estar **apto** exige estar consciente, não ser pego de surpresa, ter o braço do escudo livre e ter **espaço para manobrá-lo** (não vale encurralado ou no meio de galhos). Sem escudo hábil (ou sem estar apto), contra o projétil rápido resta só a Esquiva. **A Plumbata é a exceção**: é projétil rápido, mas é lançada à mão, e por isso se bloqueia também com a arma.
+Um escudo é **hábil** quando cobre pelo menos **30% do seu corpo** (um escudo médio para uma criatura Média): o broquel e o targe são pequenos demais e não valem; do escudo redondo para cima, sim. Estar **apto** exige estar consciente, não ser pego de surpresa, ter o braço do escudo livre e ter **espaço para manobrá-lo** (não vale encurralado ou no meio de galhos: é o *pouco espaço* da tabela de restrição, em que o escudo perde o bônus). Sem escudo hábil (ou sem estar apto), contra o projétil rápido resta só a Esquiva. **A Plumbata é a exceção**: é projétil rápido, mas é lançada à mão, e por isso se bloqueia também com a arma.
 
 Já as armas de arremesso **lentas** (a lança ou o machado lançado, o pilum, o bumerangue de caça e o de retorno, uma pedra grande) são pesadas e visíveis: essas você **bloqueia normalmente**, com arma, escudo ou mão, como no corpo a corpo.
 
@@ -370,7 +370,7 @@ Vai mais longe por Tick que o Deslocamento de Batalha: no Arranque, uns 40% a ma
 
 <p class="formula">Correndo: <strong>Defesa −4</strong>, enquanto corre e até se recompor</p>
 
-É o mesmo −4 do Tick do Golpe e das condições surpreso, cego e imobilizado, e ele diz uma coisa
+É o mesmo −4 do Tick do Golpe, e ele diz uma coisa
 só: **correndo não se apara nem se esquiva**. O acerto não sofre, porque quem parou, parou.
 
 A Corrida é uma **ação de 3 Ticks**, interrompível a **qualquer Tick**: você decide quando parar. A largada acelera: os **3 primeiros Ticks** correm à **Velocidade de Arranque** (a explosão do disparo). Para seguir correndo, declara-se outra Corrida sem parar: a declaração e o custo recomeçam, mas a velocidade não, e a Corrida seguinte já corre à **Velocidade de Corrida** (o ritmo sustentado), do **4º Tick em diante**. Kael (Força 3, Destreza 4, Atletismo 3) corre a **6 m por Tick** (5,5, arredondado) no Arranque e a **9 m por Tick** (8,5, arredondado) na Corrida. Cada valor é em metros por Tick.
@@ -455,13 +455,40 @@ Posição, cobertura e postura mudam o combate sem mudar suas fichas: todos eles
 | Mirar (gasta uma ação preparando o golpe) | **−2** |
 | Alvo prono, atacado **corpo a corpo** | **−2** |
 | Alvo prono, atacado **à distância** | **+2** |
-| Alvo agarrado, atacado por quem não o agarra (ver Manobras) | **−2** |
 | Flanco ou pelas costas | **−2** |
-| Alvo surpreso, cego ou imobilizado (Imobilizado: ver Manobras) | **−4** |
 
-<p class="muted">A <strong>postura agressiva</strong> é a exceção que mexe nos dois lados: você baixa <strong>−2</strong> a sua própria Defesa até a próxima ação em troca de <strong>+2</strong> no seu ataque. O empilhamento <strong>destes modificadores situacionais</strong> (cobertura, flanco, postura, prono e os outros desta tabela) numa mesma Defesa é limitado a <strong>±6</strong>: nenhuma soma de vantagens transforma o golpe em acerto (ou erro) automático. É um teto diferente do "sem teto" da Pressão (<em>Guarda sob pressão</em>, adiante) e do porte, que também fica fora dele.</p>
+<p class="muted">A <strong>postura agressiva</strong> é a exceção que mexe nos dois lados: você baixa <strong>−2</strong> a sua própria Defesa até a próxima ação em troca de <strong>+2</strong> no seu ataque. Os modificadores desta tabela, a condição, a tabela de restrição e a Guarda sob pressão (adiante) **se somam todos na mesma Defesa**. **Os bônus têm teto, as penalidades não:** os bônus de Defesa (cobertura, postura defensiva, alvo errático, prono à distância e a defesa reflexiva de Proeza) somam no máximo <strong>+6</strong>, e as penalidades <strong>não têm teto nenhum</strong>. O piso é um só: a Defesa <strong>nunca fica abaixo de 0</strong>.</p>
 
 <p class="formula">Cobertura total (sem nenhuma linha de visão) não pode ser alvejada; primeiro é preciso flanquear ou destruir o anteparo.</p>
+
+### Quando a Defesa zera, e quando o alvo não vê
+
+Sempre que o personagem **não souber do ataque** ou **não tiver como se defender**, a Defesa correspondente é **zerada**: basta um total de 1 para acertar. Um ataque **imbloqueável** zera só o Bloqueio, um **inesquivável** zera só a Esquiva, e os dois juntos zeram tudo. Quem se mexe e **vê o ataque** tem a Defesa normal.
+
+| Situação | Esquiva | Bloqueio |
+|---|:---:|:---:|
+| **Surpreso** (não sabe do ataque) | 0 | 0 |
+| **Totalmente imobilizado** (amarrado, soterrado) | 0 | 0 |
+| **Dormindo** ou **desacordado** | 0 | 0 |
+| **Cego, vendado ou no escuro total**, sabendo que vai ser atacado | −4 | −8 |
+
+Cego sem saber do ataque vale como surpreso. A penumbra fica sem regra, a critério do Mestre. **Saber que vai ser atacado** se decide numa jogada: o atacante rola **Furtividade** contra a **Percepção Passiva** do defendido ([Furtividade e engano](/regras/acoes-sentidos-e-engano#furtividade-e-engano)), e o atacante invisível usa o mesmo teste.
+
+### Restrição de corpo e de lugar
+
+Para o Mestre. O corpo preso ou o lugar apertado tiram da Esquiva e do Bloqueio, e **só a parte presa conta**: quem tem uma perna presa perde Esquiva e conserva o Bloqueio dos braços.
+
+| Restrição | Exemplo | Esquiva | Bloqueio |
+|---|---|:---:|:---:|
+| **Corpo, leve** | pé enroscado, lama funda | −2 | 0 |
+| **Corpo, parcial nas pernas** | uma perna presa; Preso por boleadeira ou por Arte de prender | −4 | 0 |
+| **Corpo, parcial nos braços** | um braço preso, arma travada | 0 | −4 |
+| **Corpo, grave** | preso pela cintura; Agarrado (só contra quem está de fora) | −8 | −4 |
+| **Corpo, total** | amarrado, soterrado; Imobilizado | zerada | zerado |
+| **Lugar: pouco espaço** | corredor estreito, entre galhos, túnel | −2 | −4 |
+| **Lugar: sem equilíbrio** | corda bamba, telhado inclinado, convés no temporal | −4 | −2 |
+
+No Total, as Defesas zeradas são a Esquiva e o Bloqueio, e **não** a Defesa de agarrão. Em pouco espaço o escudo **perde o bônus**: ele não está *apto* (ver *Projéteis rápidos: só Esquiva ou escudo*). Quem está Preso (parcial nas pernas) não se desloca, mas age, e a Rede tem regra própria, em Armas & Armaduras. **Alguns estados se substituem em vez de se somar**, e o Mestre decide quais: quem está Prono (Caído), por exemplo, não está também "sem equilíbrio" só porque a tabela tem as duas linhas.
 
 ### Golpes no mesmo instante
 
@@ -547,6 +574,6 @@ Algumas ativas são **guardas que você assume**: paga a Energia **uma vez** e a
 Proezas dão bônus, e bônus que se somam sem limite quebram o combate. Quatro travas mantêm o número no lugar:
 
 - **Absorção de Proeza** não soma entre passivas: vale a **maior** de cada tipo de dano (Impacto, Corte, Perfuração). Bônus reflexivos ou de cena (como Tensionar) entram por cima só naquele golpe. A Absorção de Proeza soma normalmente com a da **armadura** e com a **natural** (Vigor/Centelha).
-- **Defesa reflexiva** de Proeza (Aparar, Reflexos de Vento, Voz Calma, +3) conta para o **teto de ±6** dos modificadores situacionais: não empilha além disso com cobertura, flanco e postura.
+- **Defesa reflexiva** de Proeza (Aparar, Reflexos de Vento, Voz Calma, +3) conta para o **teto de +6** dos bônus de Defesa: não empilha além disso com cobertura e postura defensiva.
 - **Ação extra** não acumula: no máximo **uma ação extra a cada 6 Ticks**, não importa de quantas fontes (Proeza ou Arte). Os vários "aja de novo" não se somam.
 - **Ignorar a Absorção da armadura** (Punho que Parte Pedra, Esmagar) afeta só a parte da **armadura**; a Absorção **natural** do alvo continua valendo.
