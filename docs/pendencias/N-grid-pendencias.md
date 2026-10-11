@@ -188,3 +188,12 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
       - o voo em Batalha, Cruzeiro e Mergulho, com a marca "caça mergulhando" (D-136, D-137), e o Grid só lê `locomocao.terra`;
       - as Especialidades (Atletismo "fôlego", D-134);
       - a Aparência de 4 a 8 (D-138), quando o código põe 4 (`AP_BASE`, `scripts/lib-bestiario.mjs`).
+    - **Os portes da lista acima são da régua da D-132, que a D-139 trocou, e a D-148 trocou de novo (11/10/2026):** o porte passa a combinar a massa com a maior área. A lista se refaz quando o autor aprovar a regra (`../tmp/arquiteto/bestiario/porte-area-forca.md` §1). O voador terá dois portes, com as asas abertas e fechadas (D-149).
+    - **O espaço sai das dimensões (D-147, 11/10/2026), e o Grid não sabe disso.** A ficha passa a ter altura, comprimento e largura, e o espaço que a criatura ocupa sai delas: o cavalo é um retângulo de cerca de 1 × 3 m, e a píton de 7 m esticada é fina e comprida. Hoje o Grid dá a cada porte um círculo (a tabela de diâmetro do L77). Questões em aberto, para a passada do Grid:
+      - como uma forma retangular gira na malha de hexágonos;
+      - a serpente esticada e a enrolada ocupam espaços diferentes;
+      - de qual lado o alcance vale (a mordida na frente, o coice atrás);
+      - o cavaleiro montado no espaço do cavalo.
+    - **Força e Vigor acima de 6 (D-143, D-144, D-146):**
+      - a FAH das criaturas vai além da 40, e `forca-empurrao.ts` para nela e não soma Musculatura;
+      - o Vigor alto sobe os PV, a Absorção de Impacto e a Energia das fichas grandes.

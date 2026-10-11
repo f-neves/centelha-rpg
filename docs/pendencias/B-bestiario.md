@@ -326,9 +326,28 @@ limitações conhecidas, que são as três de baixo.
     O teste nos 30 está em `../tmp/arquiteto/bestiario/regua-d139.md`: mudam 12. Duas questões ao autor:
     - o cavalo sai Médio, contra a D-133;
     - o 0,7 do réptil perdeu a razão.
-  - **Próxima etapa:** o autor ver o teste e responder as duas questões. Depois, numa passada só, as 30 fichas
-    recebem o porte novo e as faixas numeradas. Os lotes 1, 2, 3 e 5 só começam depois disso; o lote 4 (voadores)
-    já tem o voo. Depois, a bancada do dano dos grandes.
+  - **A resposta do autor ao teste (11/10/2026, D-143 a D-153):**
+    - Força e Vigor passam de 6 pela física, e os outros Atributos só com a Centelha (D-143);
+    - a tabela de PV vale para qualquer Vigor, o que resolve o platô (D-144);
+    - a inversão de Vigor é sinal, e não defeito (D-145);
+    - a FAH vale para todas as criaturas, e a tabela vai além da 40 (D-146);
+    - o espaço sai das dimensões (D-147, anotado na N22);
+    - o porte combina massa e maior área, e a D-139 sai (D-148);
+    - o voador tem dois portes (D-149);
+    - os sentidos entram por bônus, Especialidade ou secundária (D-150);
+    - o Arranque segue com Força até 6 (D-151);
+    - as paradas e o dano já estão calibrados, e a bancada do dano dos grandes sai (D-152);
+    - a besta deslocadora sai, e entra uma criatura nossa (D-153).
+    O trabalho está em `../tmp/arquiteto/bestiario/porte-area-forca.md`, com cinco questões ao autor:
+    - a regra de porte (recomendada a R1 sem a cauda);
+    - a régua de Força e Vigor, com a Força 15 do braquiossauro;
+    - a carga e a FAH no quadrúpede, que mexe na D-118;
+    - a curva da extensão da FAH;
+    - a criatura nova (três conceitos).
+  - **Próxima etapa:** o autor responder. Depois, numa passada só, as 30 fichas recebem o porte, a faixa
+    numerada, o Vigor novo e os PV. Em seguida vêm o 0,7 do réptil e as serpentes contra a velocidade real.
+    Os lotes 1, 2, 3 e 5 só começam depois disso; o lote 4 (voadores) já tem o voo. A largura entra na pesquisa
+    dos lotes (D-147).
   - **Anotado, sem regra (D-115):** o porte afeta o agarrar (o grande agarra o pequeno com mais facilidade).
   - **N22, quando a ficha entrar:** o Grid não multiplica o P por porte nem anatomia; o `pesoDoPorte` do Grid
     (`artes-grid-mesa.ts` l.1362) usa pesos que não batem com as faixas novas; o Grid lê só `locomocao.terra` e
