@@ -290,9 +290,10 @@ limitações conhecidas, que são as três de baixo.
   - **Quadro de Regras de Criaturas (D-118), só a lista; o texto entra numa rodada futura:** o quadrúpede ergue com
     a boca só uma fração da Força (Mestre), e o peso da ficha é a capacidade de carga; secundárias exclusivas por
     anatomia ou raça (Corrida, Musculatura, Voo depois); o agarrar pelo porte (anotado, sem regra); o piso de 1 m
-    por Tick para bichos muito lentos (Mestre); o PV por massa dentro do porte (D-125: acima do meio geométrico da
-    faixa de massa, mais 2 pontos de Vigor do porte, mínimo 5); a arrancada curta do bote do crocodilo, do Mestre
-    (D-126).
+    por Tick para bichos muito lentos (Mestre); o PV por massa dentro do porte (D-129, que substituiu o degrau da
+    D-125: de 0 no início da faixa de massa ao máximo do porte no fim, em escala de multiplicação; Pequeno +5, Médio
+    +6, Grande +8, Enorme para cima +10), mostrado à parte na ficha; a arrancada curta do bote do crocodilo, do
+    Mestre (D-126).
   - **Os 30 animais APROVADOS pelo autor (D-128, 11/10/2026):** as cinco pilotos e os outros 25 no modelo final, com o
     PV por massa (D-125) e o nado das D-124 e D-126, em `../tmp/arquiteto/bestiario/aprovacao-30.md`. A Força dos
     animais Enorme para cima fica provisória até a bancada do dano (D-116 d). O primata continua em 0,6 (D-127).
@@ -305,8 +306,12 @@ limitações conhecidas, que são as três de baixo.
     l.1713-1721 (tabela de Deslocamento com carga; a armadura na água passa a tirar 40% por ponto de penMov, com piso
     0, em vez de subtrair em m/s); `scripts/test-kael.mjs`, se guardar a Vel. de Natação; no quadro de Regras de
     Criaturas, o PV por massa (D-125) e a frase da arrancada do bote (D-126).
-  - **Próxima etapa:** o plano dos animais que faltam (as 84 fichas da categoria Animal, com os 16 gigantes da D-105),
-    em `../tmp/arquiteto/bestiario/plano-proximos.md`, à espera do autor; depois, a bancada do dano dos grandes.
+  - **Plano dos animais que faltam (11/10/2026):** as 84 fichas da categoria Animal, com os 16 gigantes da D-105, em
+    `../tmp/arquiteto/bestiario/plano-proximos.md`: 62 por fazer, em 9 lotes.
+  - **Antes dos lotes (D-130, D-131):** o esquema da ficha (`esquema-ficha.md`) e a fórmula do voo (`voo.md`), em
+    rascunho, à espera do autor. Os lotes 1, 2, 3 e 5 vão às Bestiaristas só depois do esquema aprovado; o lote 4
+    espera o voo.
+  - **Próxima etapa:** a aprovação do esquema e do voo; depois, os lotes e a bancada do dano dos grandes.
   - **Anotado, sem regra (D-115):** o porte afeta o agarrar (o grande agarra o pequeno com mais facilidade).
   - **N22, quando a ficha entrar:** o Grid não multiplica o P por porte nem anatomia; o `pesoDoPorte` do Grid
     (`artes-grid-mesa.ts` l.1362) usa pesos que não batem com as faixas novas; o Grid lê só `locomocao.terra` e
