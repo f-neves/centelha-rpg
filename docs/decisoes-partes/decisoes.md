@@ -49,6 +49,14 @@ uma decisao registrada, pare e pergunte ao autor.
 1. D-116 a) e c) · 10/10/2026 · o gorila e Grande; sem secundaria de Corrida. **Substituidas.**
 2. D-117, D-119 e D-121 a) · 11/10/2026 · o gorila volta a ser Medio, e passa o humano pela Musculatura; a fronteira Medio/Grande fica em 220 kg; a Corrida e secundaria so de quadrupedes. **A implementar (B20).**
 
+**Peso do quadrupede (bestiario)**
+1. D-115 · 10/10/2026 · peso por porte x anatomia, com fator 0,7 do quadrupede no rascunho. **Mudada pela D-118 nos quadrupedes** (o 0,7 saiu, D-121 e).
+2. D-118 · 11/10/2026 · o peso da ficha do quadrupede e a capacidade de carga real. **Completada pela D-122** (11/10/2026): a Leve e a carga medida, ou massa x fracao pela estrutura x fator de porte; P = 4 x Leve. **A implementar (B20).**
+
+**Peso de halfling e gnomo**
+1. Proposta de 0,75 (rascunho de porte e anatomia, fora do registro). **Nao entrou.**
+2. D-123 · 11/10/2026 · fator 0,5 no peso erguido; a velocidade nao muda. **A implementar** (rodada de texto e de codigo: racas.md, ficha-engine.ts).
+
 **Dano e Absorcao:** a Centelha inteira soma no dano do atacante (bestia-editor.ts:145) e na Absorcao do alvo uma vez (calc.ts:~297). O raspao do Quase-Acerto (regras.json `quaseAcerto.dano`) soma a do atacante e desconta a do alvo, e ignora a Absorcao (`ignoraSoak`); nao ha desconto em dobro (conferido pelo Arquiteto em 03/10/2026).
 
 ## Indice
@@ -1892,7 +1900,7 @@ As D-107 a D-114 são a resposta do autor ao rascunho da regra de construção e
 
 ## O modelo do bestiário fechado: Musculatura, carga dos quadrúpedes e velocidade (11/10/2026)
 
-As D-117 a D-121 são a resposta do autor ao rascunho de porte e anatomia (`../tmp/arquiteto/bestiario/porte-anatomia.md`, fora do repositório). Nada disso foi para `src/`. Fica fora do registro, como proposta que espera o autor: o fator de peso 0,75 para halfling e gnomo, que mudaria uma regra de raça publicada.
+As D-117 a D-121 são a resposta do autor ao rascunho de porte e anatomia (`../tmp/arquiteto/bestiario/porte-anatomia.md`, fora do repositório). Nada disso foi para `src/`. Fica fora do registro, como proposta que espera o autor: o fator de peso 0,75 para halfling e gnomo, que mudaria uma regra de raça publicada. **Atualizado em 11/10/2026:** o autor decidiu o fator 0,5 (D-123), que substitui a proposta.
 
 ### D-117 · Musculatura: Habilidade secundária que soma na FAH, exclusiva por raça ou tipo de corpo; o gorila volta a ser Médio [tags: bestiario, criatura, musculatura, habilidades-secundarias, fah, forca, peso, gorila, urso, d-095, d-111, d-116, b20]
 - Data: 2026-10-11
@@ -1904,7 +1912,7 @@ As D-117 a D-121 são a resposta do autor ao rascunho de porte e anatomia (`../t
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "QUADRÚPEDES: o peso da ficha de um quadrúpede é a CAPACIDADE DE CARGA, especificada animal por animal a partir do dado real, e não o peso erguido do chão. O quadrúpede não tem multiplicador de anatomia para peso. Vai para um quadro novo de 'Regras de Criaturas' (regras muito específicas ou quase exclusivas de criaturas), com o texto: para quadrúpedes, o Mestre pode considerar só uma fração da Força quando eles erguem coisas com a boca, e o peso da ficha é a capacidade de carga."
 - Origem: mensagem do autor de 11/10/2026.
-- Estado: a implementar (B20). Muda a D-115 no peso dos quadrúpedes; o modificador de anatomia continua na velocidade. **O quadro de Regras de Criaturas, só a lista** (o texto entra numa rodada futura): 1) o quadrúpede ergue com a boca só uma fração da Força (Mestre), e o peso da ficha é a capacidade de carga; 2) secundárias exclusivas por anatomia ou raça: Corrida (quadrúpedes, D-119), Musculatura (por tipo de corpo, D-117), Voo (voadores, depois); 3) o agarrar pelo porte (anotado, sem regra, D-115); 4) o piso de 1 m por Tick para bichos muito lentos (Mestre). A pesquisa da carga real por quadrúpede foi pedida às Bestiaristas em 11/10/2026 (`../tmp/arquiteto/bestiario/pedido-carga.md`).
+- Estado: a implementar (B20). Muda a D-115 no peso dos quadrúpedes; o modificador de anatomia continua na velocidade. **O quadro de Regras de Criaturas, só a lista** (o texto entra numa rodada futura): 1) o quadrúpede ergue com a boca só uma fração da Força (Mestre), e o peso da ficha é a capacidade de carga; 2) secundárias exclusivas por anatomia ou raça: Corrida (quadrúpedes, D-119), Musculatura (por tipo de corpo, D-117), Voo (voadores, depois); 3) o agarrar pelo porte (anotado, sem regra, D-115); 4) o piso de 1 m por Tick para bichos muito lentos (Mestre). A pesquisa da carga real por quadrúpede foi pedida às Bestiaristas em 11/10/2026 (`../tmp/arquiteto/bestiario/pedido-carga.md`). **Atualizado em 11/10/2026:** a pesquisa chegou (`fontes-bestiario/pesquisa/<id>-carga.md`; carga medida só no cavalo, no elefante e no rato, e um piso no lobo), e a D-122 diz como o número entra nas faixas e o que fazer sem dado.
 
 ### D-119 · Velocidade da criatura: (fórmula do livro + secundária do modo × 0,5) × porte × anatomia; a Corrida é secundária só de quadrúpedes [tags: bestiario, criatura, velocidade, deslocamento, corrida, natacao, voo, especialidade, arranque, forca, d-114, d-116, b20]
 - Data: 2026-10-11
@@ -1928,6 +1936,22 @@ As D-117 a D-121 são a resposta do autor ao rascunho de porte e anatomia (`../t
   - e) Saem do rascunho o fator de peso 0,7 do quadrúpede e a anatomia "velocista".
 - Origem: mensagem do autor de 11/10/2026, junto das D-117 a D-120.
 - Estado: leituras registradas para a regra de construção da B20. A a) substitui a fronteira de 130 kg proposta no rascunho e a leitura a) da D-116.
+
+## Carga dos quadrúpedes e peso de halfling e gnomo (11/10/2026)
+
+As D-122 e D-123 são a resposta do autor às questões do rascunho das cinco fichas piloto (`../tmp/arquiteto/bestiario/porte-anatomia.md`, fora do repositório). Nada disso foi para `src/`.
+
+### D-122 · Carga dos quadrúpedes: a Leve é a carga medida, ou massa × fração pela estrutura × fator de porte; o peso máximo é 4 vezes a Leve [tags: bestiario, criatura, quadrupede, carga, peso, porte, estrutura, elefante, lobo, d-118, b20]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "CARGA DOS QUADRÚPEDES, regra única: o fim da faixa Leve é a carga medida, quando houver. Quando não houver, é o peso do corpo × uma fração pela estrutura × um fator de porte. Frações: 20% para quem tem estrutura de carga (cavalo, boi, camelo, mula); 10% para quem não tem (felinos, ursos, lobos). Fator de porte: 1 para Médio e Grande, 0,75 para Enorme (calibrado pelo elefante, 15% contra os 20% do cavalo); os outros portes a calibrar e mostrar. O peso máximo é 4 vezes a Leve, e daí saem as faixas do livro (Média até P/2, Pesada até 3P/4, Máxima até P). O mínimo medido sempre vale (o lobo e o castor de 13,6 kg). A carga medida no próprio animal já inclui o tamanho e não leva o fator de porte. Isso responde as suas questões 1 e 2."
+- Origem: mensagem do autor de 11/10/2026, resposta às questões 1 (como a carga entra nas faixas) e 2 (o quadrúpede sem carga medida) do rascunho de porte e anatomia.
+- Estado: a implementar (B20). Completa a D-118 (que disse o que o número é, sem dizer como entra nas faixas nem o que fazer sem dado); não a substitui. As faixas do livro (`regras.json` `forca.notaCarga`) não mudam: o quadrúpede só ganha outro jeito de chegar ao P. Os fatores de porte que faltam (Miúdo, Pequeno, Imenso e Colossal) e as cinco fichas fechadas estão em rascunho (`../tmp/arquiteto/bestiario/porte-anatomia.md`).
+
+### D-123 · Halfling e gnomo: o peso erguido leva fator 0,5; a velocidade não muda [tags: racas, halfling, gnomo, peso, fah, forca, levantamento, porte, ficha, perna-curta, d-115]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "HALFLING E GNOMO: o peso erguido leva fator 0,5 (o halfling de Força 2 ergue 38 kg; o do máximo da raça, 130 kg). A velocidade não muda, porque a 'perna curta' (dois terços) já a corta. Isso muda uma regra de raça publicada e a ficha de jogador: anote como item de rodada de texto e de código (racas.md, ficha-engine.ts), sem fazer agora."
+- Origem: mensagem do autor de 11/10/2026, resposta à proposta do fator 0,75 do rascunho de porte e anatomia (que estava fora do registro).
+- Estado: a implementar, **item anotado de rodada de texto e de código, sem fazer agora**: `src/content/chapters/racas.md` (a linha da raça) e `src/lib/ficha-engine.ts` (que chama `pesoMaximoErguido`); o Grid não muda. Substitui a proposta de 0,75. Conta conferida pelo Arquiteto em `regras.json` `forca.levantamento`: Força 2 é FAH 6, P 76 kg, × 0,5 = 38 kg; os 130 kg do exemplo são a Força 5 sem Halterofilismo (FAH 15, P 260 kg, × 0,5); com Halterofilismo 6 (FAH 21, P 420 kg) o máximo da raça fica em 210 kg.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15

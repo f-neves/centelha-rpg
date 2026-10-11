@@ -278,16 +278,22 @@ limitações conhecidas, que são as três de baixo.
     Médio (D-117); o peso da ficha do quadrúpede é a capacidade de carga real, sem modificador de anatomia (D-118);
     velocidade = (fórmula do livro + secundária do modo × 0,5) × porte × anatomia, com a Corrida só para
     quadrúpedes (D-119); Grande 1,5 (D-120); fronteira Médio/Grande em 220 kg, guepardo com Corrida 6, cavalo de
-    sela com Corrida 1 e puro-sangue com Corrida 3 (D-121). Proposta fora do registro: peso 0,75 para halfling e
-    gnomo (muda regra de raça publicada; espera o autor).
+    sela com Corrida 1 e puro-sangue com Corrida 3 (D-121). A proposta de peso 0,75 para halfling e gnomo não
+    entrou: o autor decidiu 0,5 (D-123, abaixo).
+  - **Carga e cinco pilotos fechados (11/10/2026):** a Leve do quadrúpede é a carga medida, ou massa × fração pela
+    estrutura (20% com estrutura de carga, 10% sem) × fator de porte (Médio e Grande 1, Enorme 0,75; os outros a
+    calibrar); P = 4 × Leve; o mínimo medido sempre vale (D-122). A pesquisa de carga e da velocidade dos pequenos
+    chegou (`fontes-bestiario/pesquisa/<id>-carga.md` e `-velocidade.md`).
+  - **Rodada de texto e de código, anotada, sem fazer agora (D-123):** halfling e gnomo erguem com fator 0,5, e a
+    velocidade não muda; mexe em `src/content/chapters/racas.md` e em `src/lib/ficha-engine.ts`
+    (`pesoMaximoErguido`). Não toca no Grid.
   - **Quadro de Regras de Criaturas (D-118), só a lista; o texto entra numa rodada futura:** o quadrúpede ergue com
     a boca só uma fração da Força (Mestre), e o peso da ficha é a capacidade de carga; secundárias exclusivas por
     anatomia ou raça (Corrida, Musculatura, Voo depois); o agarrar pelo porte (anotado, sem regra); o piso de 1 m
     por Tick para bichos muito lentos (Mestre).
-  - **Próxima etapa:** a pesquisa da capacidade de carga dos quadrúpedes e da velocidade dos pequenos (pedida às
-    Bestiaristas em 11/10/2026) e as cinco fichas piloto no modelo final (lobo, cavalo, urso-pardo, jararaca e
-    gorila), em `../tmp/arquiteto/bestiario/porte-anatomia.md`, para o autor. Depois, a bancada da Força dos
-    grandes. Os outros animais esperam.
+  - **Próxima etapa (11/10/2026):** fechar as cinco fichas piloto com a carga da D-122 e fazer os outros 25 animais
+    da lista de 30 no modelo final, com o teste de ordem completo, em `../tmp/arquiteto/bestiario/`, para o autor.
+    A Força dos animais Enorme para cima fica provisória até a bancada do dano (D-116 d).
   - **Anotado, sem regra (D-115):** o porte afeta o agarrar (o grande agarra o pequeno com mais facilidade).
   - **N22, quando a ficha entrar:** o Grid não multiplica o P por porte nem anatomia; o `pesoDoPorte` do Grid
     (`artes-grid-mesa.ts` l.1362) usa pesos que não batem com as faixas novas; o Grid lê só `locomocao.terra` e
