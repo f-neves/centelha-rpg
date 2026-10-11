@@ -274,13 +274,25 @@ limitações conhecidas, que são as três de baixo.
     velocidade), modificador de anatomia e Habilidades, secundárias e Especialidades para o resto; a Força é
     universal e o porte muda o peso, não o dano. Leituras (D-116): o gorila é Grande; a Força entra no Arranque da
     criatura só até 6; sem secundária de Corrida; a Força dos grandes sai do dano, conferido na bancada.
-  - **Próxima etapa:** o autor responde ao rascunho das tabelas de porte e de anatomia e às quatro fichas refeitas
-    (`../tmp/arquiteto/bestiario/porte-anatomia.md`, com três questões). Depois, a bancada da Força dos grandes. Os
-    outros 26 animais esperam.
+  - **Modelo fechado (11/10/2026):** Musculatura, secundária de espécie que soma na FAH, e o gorila volta a ser
+    Médio (D-117); o peso da ficha do quadrúpede é a capacidade de carga real, sem modificador de anatomia (D-118);
+    velocidade = (fórmula do livro + secundária do modo × 0,5) × porte × anatomia, com a Corrida só para
+    quadrúpedes (D-119); Grande 1,5 (D-120); fronteira Médio/Grande em 220 kg, guepardo com Corrida 6, cavalo de
+    sela com Corrida 1 e puro-sangue com Corrida 3 (D-121). Proposta fora do registro: peso 0,75 para halfling e
+    gnomo (muda regra de raça publicada; espera o autor).
+  - **Quadro de Regras de Criaturas (D-118), só a lista; o texto entra numa rodada futura:** o quadrúpede ergue com
+    a boca só uma fração da Força (Mestre), e o peso da ficha é a capacidade de carga; secundárias exclusivas por
+    anatomia ou raça (Corrida, Musculatura, Voo depois); o agarrar pelo porte (anotado, sem regra); o piso de 1 m
+    por Tick para bichos muito lentos (Mestre).
+  - **Próxima etapa:** a pesquisa da capacidade de carga dos quadrúpedes e da velocidade dos pequenos (pedida às
+    Bestiaristas em 11/10/2026) e as cinco fichas piloto no modelo final (lobo, cavalo, urso-pardo, jararaca e
+    gorila), em `../tmp/arquiteto/bestiario/porte-anatomia.md`, para o autor. Depois, a bancada da Força dos
+    grandes. Os outros animais esperam.
   - **Anotado, sem regra (D-115):** o porte afeta o agarrar (o grande agarra o pequeno com mais facilidade).
   - **N22, quando a ficha entrar:** o Grid não multiplica o P por porte nem anatomia; o `pesoDoPorte` do Grid
     (`artes-grid-mesa.ts` l.1362) usa pesos que não batem com as faixas novas; o Grid lê só `locomocao.terra` e
-    carrega a criatura com `skills2: {}`.
+    carrega a criatura com `skills2: {}` (então nem Musculatura nem Corrida chegam a ele); a FAH do Grid
+    (`forca-empurrao.ts`) não soma Musculatura.
   - **Absorve:** a B14 (desafio, Centelha e revisão das fichas) e a N20 (classe de ataque dos golems) passam a ser
     feitas dentro desta frente quando ela chegar a essas criaturas.
   - **Leitura de apoio, fora do repositório:** `../tmp/arquiteto/bestiario/diagnostico.md`,

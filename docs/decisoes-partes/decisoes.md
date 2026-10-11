@@ -45,6 +45,10 @@ uma decisao registrada, pare e pergunte ao autor.
 2. B-029 · 01/10/2026: Atributo puro leva +1 por ponto de Centelha (D12).
 3. C-049 · 02/10/2026 · "regra do maior" (`4aaf0fce`, `58869f2f`, `ae1889c9`): **sem decisao do autor, cancelada** pelo Adendo 1 da correcao da Reforma (`0ebc9917`, `a5d66a27`). Valem C-024 e B-029, mais o criterio de Atributo puro (`4fca4a3f`, centelha.md:44).
 
+**Porte do gorila e secundaria Corrida (bestiario)**
+1. D-116 a) e c) · 10/10/2026 · o gorila e Grande; sem secundaria de Corrida. **Substituidas.**
+2. D-117, D-119 e D-121 a) · 11/10/2026 · o gorila volta a ser Medio, e passa o humano pela Musculatura; a fronteira Medio/Grande fica em 220 kg; a Corrida e secundaria so de quadrupedes. **A implementar (B20).**
+
 **Dano e Absorcao:** a Centelha inteira soma no dano do atacante (bestia-editor.ts:145) e na Absorcao do alvo uma vez (calc.ts:~297). O raspao do Quase-Acerto (regras.json `quaseAcerto.dano`) soma a do atacante e desconta a do alvo, e ignora a Absorcao (`ignoraSoak`); nao ha desconto em dobro (conferido pelo Arquiteto em 03/10/2026).
 
 ## Indice
@@ -1736,7 +1740,7 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): a ficha de criatura sai das descrições da ficha humana (Atributos, Habilidades, Força de Vontade etc.), porque o sistema se baseia no mundo real. Não há fórmula única. Cada número leva justificativa (qual descrição do sistema ele cumpre) e passa por um teste de ordem entre criaturas (exemplo do autor: o gorila mais fraco é mais forte que qualquer humano, ao contrário do Pathfinder). Ordem do trabalho: regra de construção; fichas de referência aprovadas pelo autor; bancada; comparação com D&D e Pathfinder; tabela de conversão; conversão do resto com validador.
 - Origem: mensagem do autor ao Arquiteto, 10/10/2026, depois do diagnóstico do bestiário (`../tmp/arquiteto/bestiario/diagnostico.md`, fora do repositório), que mostrou que as 309 fichas vieram de uma tabela de equivalência a partir dos valores de D&D e Pathfinder.
-- Estado: a implementar (pendência B20). Substitui, para as fichas refeitas, o método da conversão de 2026 (tabela de equivalência D&D → Centelha, `conversao-monstros.html`), que passa a ser só um passo de comparação.
+- Estado: a implementar (pendência B20). Substitui, para as fichas refeitas, o método da conversão de 2026 (tabela de equivalência D&D → Centelha, `conversao-monstros.html`), que passa a ser só um passo de comparação. **Atualizado em 11/10/2026:** o gorila fica acima do humano no máximo pela Musculatura (D-117), e não pelo porte.
 
 ### D-096 · O trabalho do bestiário é todo em P/G/R [tags: bestiario, pgr, normal, b20]
 - Data: 2026-10-10
@@ -1843,7 +1847,7 @@ As D-107 a D-114 são a resposta do autor ao rascunho da regra de construção e
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): "Habilidades secundárias: criaturas podem ter Habilidades secundárias, inclusive algumas que não existem na ficha de personagem. É por elas que se corrigem os extremos (por exemplo, o animal mais forte que qualquer humano). Isso substitui a questão 2 do seu rascunho."
 - Origem: questão 2 do rascunho (em qual régua o animal é "mais forte que qualquer humano": Força crua, peso máximo P acima de 500 kg, ou Halterofilismo equivalente). O conflito: o humano de Força 6 e Halterofilismo 6 levanta 500 kg, o mesmo que um animal de Força 8 sem Halterofilismo.
-- Estado: a implementar (B20). Completa a D-095 e a D-104. Quais secundárias, e com que números, depende da análise da curva dos Atributos (em aberto). **Atualizado em 10/10/2026:** as secundárias são a terceira camada da D-115, para o que o porte e a anatomia não encaixam; sem secundária de Corrida por enquanto (D-116 c).
+- Estado: a implementar (B20). Completa a D-095 e a D-104. Quais secundárias, e com que números, depende da análise da curva dos Atributos (em aberto). **Atualizado em 10/10/2026:** as secundárias são a terceira camada da D-115, para o que o porte e a anatomia não encaixam; sem secundária de Corrida por enquanto (D-116 c). **Atualizado em 11/10/2026:** as primeiras secundárias de criatura são a Musculatura (D-117) e a Corrida (D-119, que substitui a D-116 c); a Voo fica para quando o voo tiver fórmula.
 
 ### D-112 · Jararaca é a quarta ficha piloto; o catálogo de venenos ganha a peçonha botrópica só com o nome [tags: bestiario, animal, jararaca, veneno, piloto, d-101, b20]
 - Data: 2026-10-10
@@ -1861,7 +1865,7 @@ As D-107 a D-114 são a resposta do autor ao rascunho da regra de construção e
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): "Cavalo e quadrúpedes: o recorde do puro-sangue não vale como velocidade do cavalo de sela. A questão de velocidade fica aberta."
 - Origem: o deslocamento 9/14/20 do cavalo piloto, tirado do recorde do puro-sangue em 402 m (70,35 km/h), e a questão 3 do rascunho (a velocidade real contra a C-009, que diz "ft ÷ 10 = m/Tick de batalha").
-- Estado: aberta. A C-009 segue no ar. O autor levantou três caminhos, nenhum decidido: velocidade por criatura a partir do dado real; bônus de velocidade por criatura somado à fórmula humana; uma Habilidade secundária Corrida com Especialização. A análise com os números vai em `../tmp/arquiteto/bestiario/crescimento-atributos.md`. **Atualizado em 10/10/2026:** o modelo da velocidade foi decidido pela D-115 (fórmula humana × porte × anatomia, e a camada 3 para o resto), e a secundária Corrida saiu por enquanto (D-116 c). Os números (os modificadores e a velocidade do cavalo de sela) seguem em rascunho, em `../tmp/arquiteto/bestiario/porte-anatomia.md`.
+- Estado: aberta. A C-009 segue no ar. O autor levantou três caminhos, nenhum decidido: velocidade por criatura a partir do dado real; bônus de velocidade por criatura somado à fórmula humana; uma Habilidade secundária Corrida com Especialização. A análise com os números vai em `../tmp/arquiteto/bestiario/crescimento-atributos.md`. **Atualizado em 10/10/2026:** o modelo da velocidade foi decidido pela D-115 (fórmula humana × porte × anatomia, e a camada 3 para o resto), e a secundária Corrida saiu por enquanto (D-116 c). Os números (os modificadores e a velocidade do cavalo de sela) seguem em rascunho, em `../tmp/arquiteto/bestiario/porte-anatomia.md`. **Atualizado em 11/10/2026:** o cavalo de sela tem Corrida 1 (cerca de 61 km/h), e o puro-sangue vira variante com Corrida 3 (cerca de 70 km/h) (D-121 d); a secundária Corrida existe, só para quadrúpedes (D-119).
 
 ## Três camadas para o tamanho e a anatomia das criaturas (10/10/2026)
 
@@ -1873,7 +1877,7 @@ As D-107 a D-114 são a resposta do autor ao rascunho da regra de construção e
   3. Habilidades, Habilidades secundárias e Especialidades (em ambas) cobrem os casos que os modificadores não encaixam.
   A Força é universal: Força 4 bate como Força 4 em qualquer criatura (dano, limite do Bloqueio, agarrão). O porte muda o peso, não o dano."
 - Origem: resposta do autor à análise da curva dos Atributos e da velocidade (`../tmp/arquiteto/bestiario/crescimento-atributos.md`), 10/10/2026.
-- Estado: a implementar (B20). Os números (faixas de massa, os modificadores de cada porte e de cada anatomia, as quatro fichas refeitas) estão em rascunho em `../tmp/arquiteto/bestiario/porte-anatomia.md`, esperando o autor. **O agarrar pelo porte fica anotado, sem regra**, como o autor pediu. Completa a D-104 e a D-111; dá modelo à velocidade aberta pela D-114.
+- Estado: a implementar (B20). Os números (faixas de massa, os modificadores de cada porte e de cada anatomia, as quatro fichas refeitas) estão em rascunho em `../tmp/arquiteto/bestiario/porte-anatomia.md`, esperando o autor. **O agarrar pelo porte fica anotado, sem regra**, como o autor pediu. Completa a D-104 e a D-111; dá modelo à velocidade aberta pela D-114. **Atualizado em 11/10/2026:** nos quadrúpedes, o peso da ficha é a capacidade de carga, sem modificador de anatomia (D-118); a velocidade ganha a secundária do modo (D-119); o peso do Grande é 1,5 (D-120); a fronteira Médio/Grande fica em 220 kg (D-121 a).
 
 ### D-116 · Leituras da D-115 (o autor não vetou) [tags: bestiario, leitura, porte, gorila, arranque, forca, corrida, dano, bancada, b20]
 - Data: 2026-10-10
@@ -1884,7 +1888,46 @@ As D-107 a D-114 são a resposta do autor ao rascunho da regra de construção e
   - d) A Força dos animais grandes se escolhe pelo dano que eles devem causar, conferido na bancada; o peso vem do porte. Saem as faixas de Força 30 a 100 (tiranossauro) e similares.
   - e) As leituras do Arquiteto na D-113 (o urso ganha Sobrevivência e Aparência) e na D-110 (o lobo com Bloqueio 1) ficam.
 - Origem: mensagem do autor de 10/10/2026, junto da D-115.
-- Estado: leituras registradas para a regra de construção da B20. Pelo rascunho (`../tmp/arquiteto/bestiario/porte-anatomia.md`), a fronteira da leitura a) desce de 220 para 130 kg (o gorila macho pesa em média de 136 a 180 kg); isso ainda é proposta, não decisão.
+- Estado: leituras registradas para a regra de construção da B20. Pelo rascunho (`../tmp/arquiteto/bestiario/porte-anatomia.md`), a fronteira da leitura a) desce de 220 para 130 kg (o gorila macho pesa em média de 136 a 180 kg); isso ainda é proposta, não decisão. **Atualizado em 11/10/2026:** a leitura a) foi **substituída** pela D-117 (o gorila volta a ser Médio, pela Musculatura) e pela D-121 a) (a fronteira volta para 220 kg; a de 130 kg não entrou); a leitura c) foi **substituída** pela D-119 (a secundária Corrida existe, só para quadrúpedes). As leituras b), d) e e) ficam.
+
+## O modelo do bestiário fechado: Musculatura, carga dos quadrúpedes e velocidade (11/10/2026)
+
+As D-117 a D-121 são a resposta do autor ao rascunho de porte e anatomia (`../tmp/arquiteto/bestiario/porte-anatomia.md`, fora do repositório). Nada disso foi para `src/`. Fica fora do registro, como proposta que espera o autor: o fator de peso 0,75 para halfling e gnomo, que mudaria uma regra de raça publicada.
+
+### D-117 · Musculatura: Habilidade secundária que soma na FAH, exclusiva por raça ou tipo de corpo; o gorila volta a ser Médio [tags: bestiario, criatura, musculatura, habilidades-secundarias, fah, forca, peso, gorila, urso, d-095, d-111, d-116, b20]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "MUSCULATURA: uma Habilidade secundária nova, 'Musculatura', que soma na FAH como o Halterofilismo (FAH = Força × 3 + Halterofilismo + Musculatura). Não pode ser comprada: é exclusiva por raça ou tipo de corpo, e o valor vem na ficha da espécie. Ela substitui o 'gorila Grande': o gorila volta a ser Médio. Exemplos para calibrar: gorila de Força 7 com Musculatura 4 (FAH 25, 525 kg); urso com Musculatura conforme a pesquisa."
+- Origem: mensagem do autor de 11/10/2026, resposta ao rascunho de porte e anatomia.
+- Estado: a implementar (B20). Substitui a D-116 a) ("o gorila é Grande"). No gorila, cumpre a D-095 ("o gorila mais fraco é mais forte que qualquer humano"): FAH 25 dá 525 kg, acima dos 500 kg do humano de Força 6 e Halterofilismo 6. A FAH do personagem (`regras.json` `forca.notaLevantamento`) não muda: a Musculatura só existe em ficha de espécie. Os números do gorila e do urso estão em rascunho.
+
+### D-118 · Quadrúpedes: o peso da ficha é a capacidade de carga, pelo dado real de cada animal, sem modificador de anatomia; nasce o quadro de Regras de Criaturas [tags: bestiario, criatura, quadrupede, carga, peso, anatomia, regras-de-criaturas, mestre, d-087, d-115, b20]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "QUADRÚPEDES: o peso da ficha de um quadrúpede é a CAPACIDADE DE CARGA, especificada animal por animal a partir do dado real, e não o peso erguido do chão. O quadrúpede não tem multiplicador de anatomia para peso. Vai para um quadro novo de 'Regras de Criaturas' (regras muito específicas ou quase exclusivas de criaturas), com o texto: para quadrúpedes, o Mestre pode considerar só uma fração da Força quando eles erguem coisas com a boca, e o peso da ficha é a capacidade de carga."
+- Origem: mensagem do autor de 11/10/2026.
+- Estado: a implementar (B20). Muda a D-115 no peso dos quadrúpedes; o modificador de anatomia continua na velocidade. **O quadro de Regras de Criaturas, só a lista** (o texto entra numa rodada futura): 1) o quadrúpede ergue com a boca só uma fração da Força (Mestre), e o peso da ficha é a capacidade de carga; 2) secundárias exclusivas por anatomia ou raça: Corrida (quadrúpedes, D-119), Musculatura (por tipo de corpo, D-117), Voo (voadores, depois); 3) o agarrar pelo porte (anotado, sem regra, D-115); 4) o piso de 1 m por Tick para bichos muito lentos (Mestre). A pesquisa da carga real por quadrúpede foi pedida às Bestiaristas em 11/10/2026 (`../tmp/arquiteto/bestiario/pedido-carga.md`).
+
+### D-119 · Velocidade da criatura: (fórmula do livro + secundária do modo × 0,5) × porte × anatomia; a Corrida é secundária só de quadrúpedes [tags: bestiario, criatura, velocidade, deslocamento, corrida, natacao, voo, especialidade, arranque, forca, d-114, d-116, b20]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "VELOCIDADE: velocidade = (fórmula do livro + secundária do modo × 0,5) × porte × anatomia. A secundária Corrida é só para quadrúpedes e soma 0,5 por nível na Corrida e 0,25 no Arranque (os pesos do Atletismo). No nado, a secundária é a Natação, como já está no livro. A secundária Voo, só para quem voa, fica para quando o voo tiver fórmula (o autor quer corrigir o voo depois de fechar o bestiário). As Especialidades valem só nas jogadas. Humanos não mudam. Na criatura, a Força entra no Arranque só até 6 (D-116 b)."
+- Origem: mensagem do autor de 11/10/2026.
+- Estado: a implementar (B20). Substitui a D-116 c) ("sem secundária de Corrida por enquanto"). As fórmulas do personagem (`regras.json` `derivados.deslocamento`, `calc.ts` `deslocamento()`) não mudam. O voo fica sem fórmula até a correção que o autor anunciou.
+
+### D-120 · O modificador de peso do Grande é 1,5 [tags: bestiario, criatura, porte, grande, peso, d-115, b20]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "O peso do Grande fica em 1,5."
+- Origem: resposta do autor à questão 1 do rascunho de porte e anatomia (opções 1,25, 1,5 e 2; o 1,5 era a proposta).
+- Estado: a implementar (B20). Pela D-121 b), vale para quem ergue normalmente; o fator de quadrúpede 0,7 que vinha junto na opção saiu (D-121 e).
+
+### D-121 · Leituras do modelo fechado (o autor não vetou) [tags: bestiario, leitura, porte, fronteira, gorila, leao, urso, guepardo, cavalo, corrida, quadrupede, b20]
+- Data: 2026-10-11
+- Leituras (Arquiteto, apresentadas ao autor em 11/10/2026; o autor não vetou):
+  - a) A fronteira entre Médio e Grande volta para 220 kg. Gorila e leão macho voltam a ser Médios.
+  - b) O modificador de peso do porte continua valendo para quem ergue normalmente (bípedes, primatas). Para quadrúpedes vale a capacidade de carga da D-118.
+  - c) O urso é caso de fronteira (quadrúpede que ergue e vira coisas com as patas da frente): a ficha traz a capacidade de carga, e o resto é do Mestre pelo quadro de Regras de Criaturas.
+  - d) Guepardo: Corrida 6, sem anatomia própria. Cavalo de sela: Corrida 1 (cerca de 61 km/h); o puro-sangue vira variante com Corrida 3 (cerca de 70 km/h).
+  - e) Saem do rascunho o fator de peso 0,7 do quadrúpede e a anatomia "velocista".
+- Origem: mensagem do autor de 11/10/2026, junto das D-117 a D-120.
+- Estado: leituras registradas para a regra de construção da B20. A a) substitui a fronteira de 130 kg proposta no rascunho e a leitura a) da D-116.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
