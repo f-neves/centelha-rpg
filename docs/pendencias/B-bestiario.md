@@ -290,19 +290,23 @@ limitações conhecidas, que são as três de baixo.
   - **Quadro de Regras de Criaturas (D-118), só a lista; o texto entra numa rodada futura:** o quadrúpede ergue com
     a boca só uma fração da Força (Mestre), e o peso da ficha é a capacidade de carga; secundárias exclusivas por
     anatomia ou raça (Corrida, Musculatura, Voo depois); o agarrar pelo porte (anotado, sem regra); o piso de 1 m
-    por Tick para bichos muito lentos (Mestre).
-  - **Os 30 animais prontos para aprovação (11/10/2026):** as cinco pilotos fechadas com a carga da D-122 e os
-    outros 25 no modelo final, com o teste de ordem completo, em `../tmp/arquiteto/bestiario/aprovacao-30.md`. A
-    Força dos animais Enorme para cima fica provisória até a bancada do dano (D-116 d).
-  - **Nado na proporção real (D-124, 11/10/2026):** a fórmula humana passa a 0,5 + Vigor × 0,15 + (Atletismo +
-    Natação) × 0,1, a calibrar; as anatomias de nado foram recalibradas no rascunho (nadador e réptil de corpo baixo
-    3,8, quadrúpede 1,5). Três questões ao autor no `aprovacao-30.md`: o teto humano (Vigor 6 dá 2,60 m/s, acima do
-    recorde de 2,39), o nado do crocodilo e a armadura na Vel. de Natação.
-  - **Rodada de texto e de código, anotada, sem fazer agora (D-124):** `src/data/regras.json`
+    por Tick para bichos muito lentos (Mestre); o PV por massa dentro do porte (D-125: acima do meio geométrico da
+    faixa de massa, mais 2 pontos de Vigor do porte, mínimo 5); a arrancada curta do bote do crocodilo, do Mestre
+    (D-126).
+  - **Os 30 animais APROVADOS pelo autor (D-128, 11/10/2026):** as cinco pilotos e os outros 25 no modelo final, com o
+    PV por massa (D-125) e o nado das D-124 e D-126, em `../tmp/arquiteto/bestiario/aprovacao-30.md`. A Força dos
+    animais Enorme para cima fica provisória até a bancada do dano (D-116 d). O primata continua em 0,6 (D-127).
+  - **Nado na proporção real (D-124 e D-126, 11/10/2026):** a fórmula humana passa a 0,5 + Vigor × 0,15 + (Atletismo
+    + Natação) ÷ 12 (comum 0,80 m/s, teto 2,40); anatomias de nado: nadador e réptil de corpo baixo 3,8, quadrúpede
+    1,5, o resto 1.
+  - **Rodada de texto e de código, anotada, sem fazer agora (D-124, D-125, D-126):** `src/data/regras.json`
     `derivados.deslocamento.natacao`; `src/content/chapters/acoes-corpo-e-movimento.md` l.49-55 (fórmula e exemplo);
     `src/lib/calc.ts` `deslocamento()` (o nado pede uma casa decimal); `src/lib/ficha-engine.ts` l.1619 (rótulo) e
-    l.1713-1721 (tabela de Deslocamento com carga e armadura); `scripts/test-kael.mjs`, se guardar a Vel. de Natação.
-  - **Próxima etapa:** a aprovação do autor sobre `aprovacao-30.md`, e depois a bancada do dano dos grandes.
+    l.1713-1721 (tabela de Deslocamento com carga; a armadura na água passa a tirar 40% por ponto de penMov, com piso
+    0, em vez de subtrair em m/s); `scripts/test-kael.mjs`, se guardar a Vel. de Natação; no quadro de Regras de
+    Criaturas, o PV por massa (D-125) e a frase da arrancada do bote (D-126).
+  - **Próxima etapa:** o plano dos animais que faltam (as 84 fichas da categoria Animal, com os 16 gigantes da D-105),
+    em `../tmp/arquiteto/bestiario/plano-proximos.md`, à espera do autor; depois, a bancada do dano dos grandes.
   - **Anotado, sem regra (D-115):** o porte afeta o agarrar (o grande agarra o pequeno com mais facilidade).
   - **N22, quando a ficha entrar:** o Grid não multiplica o P por porte nem anatomia; o `pesoDoPorte` do Grid
     (`artes-grid-mesa.ts` l.1362) usa pesos que não batem com as faixas novas; o Grid lê só `locomocao.terra` e
