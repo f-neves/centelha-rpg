@@ -309,7 +309,7 @@ limitações conhecidas, que são as três de baixo.
     `../tmp/arquiteto/bestiario/plano-proximos.md`: 62 por fazer, em 9 lotes.
   - **Antes dos lotes (D-130, D-131):** o esquema da ficha (`esquema-ficha.md`) e a fórmula do voo (`voo.md`).
     **Respondidos em 11/10/2026 (D-132 a D-138):**
-    - o porte vem das dimensões, e a massa vai para faixas de massa (Arrátel a Nau) que levam peso, carga, PV e
+    - o porte vem das dimensões, e a massa vai para faixas de massa (Arrátel a Nau, numeradas depois pela D-141) que levam peso, carga, PV e
       couraça (D-132), pelas referências do autor (D-133);
     - o Vigor do animal pesa a resistência do corpo, e o fôlego vai para a Especialidade de Atletismo (D-134);
     - o PV por massa sai, e entra um bônus por criatura (D-135);
@@ -318,8 +318,17 @@ limitações conhecidas, que são as três de baixo.
     - o esquema está aprovado (D-138).
     A régua de porte e as faixas estão em `../tmp/arquiteto/bestiario/porte-faixas.md`; as 30 fichas, refeitas e
     consolidadas, em `fichas/`; o teste de ordem, em `teste-de-ordem.md`.
-  - **Próxima etapa:** a aprovação da régua de porte pelo autor. Os lotes 1, 2, 3 e 5 só começam depois dela; o
-    lote 4 (voadores) já tem o voo. Depois, a bancada do dano dos grandes.
+  - **A régua do autor (11/10/2026, D-139 a D-142):**
+    - o porte é o maior entre a altura total e metade do comprimento total, com os mesmos cortes (D-139);
+    - as raças jogáveis ficam no porte publicado (D-140);
+    - as faixas de massa ficam numeradas, de Faixa 1 a Faixa 7 (D-141);
+    - as leituras do Arquiteto estão aprovadas (D-142).
+    O teste nos 30 está em `../tmp/arquiteto/bestiario/regua-d139.md`: mudam 12. Duas questões ao autor:
+    - o cavalo sai Médio, contra a D-133;
+    - o 0,7 do réptil perdeu a razão.
+  - **Próxima etapa:** o autor ver o teste e responder as duas questões. Depois, numa passada só, as 30 fichas
+    recebem o porte novo e as faixas numeradas. Os lotes 1, 2, 3 e 5 só começam depois disso; o lote 4 (voadores)
+    já tem o voo. Depois, a bancada do dano dos grandes.
   - **Anotado, sem regra (D-115):** o porte afeta o agarrar (o grande agarra o pequeno com mais facilidade).
   - **N22, quando a ficha entrar:** o Grid não multiplica o P por porte nem anatomia; o `pesoDoPorte` do Grid
     (`artes-grid-mesa.ts` l.1362) usa pesos que não batem com as faixas novas; o Grid lê só `locomocao.terra` e

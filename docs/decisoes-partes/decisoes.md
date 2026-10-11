@@ -2019,7 +2019,7 @@ As D-132 a D-138 são a resposta do autor às questões do relatório de PV cont
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "TAMANHO E MASSA SEPARADOS. O PORTE vem das DIMENSÕES (altura, comprimento, largura), não do peso: 'Uma criatura de 4 metros de altura é considerada grande mesmo que tenha 25 kg'. O porte decide o espaço, o alcance, o acerto (D-077) e a velocidade (D-119: o porte multiplica a velocidade em terra). A MASSA decide o peso erguido, a carga, os PV e a couraça. Os multiplicadores que hoje são do porte (peso, carga, PV pela tabela 15 + Vigor × 1 até 45 + Vigor × 5, couraça) passam a ser FAIXAS DE MASSA. Dê às faixas nomes que não se confundam com o porte nem com as faixas de carga (Mínima, Leve, Média, Pesada, Máxima). Uma criatura muito grande e muito leve tende a ter pouca Força e pouco Vigor: isso se resolve nos Atributos dela, sem regra nova."
 - Origem: mensagem do autor de 11/10/2026, resposta ao relatório de PV contínuo, voo e esquema.
-- Estado: a implementar (B20). A régua e as faixas estão em rascunho (`../tmp/arquiteto/bestiario/porte-faixas.md`), à espera do autor.
+- Estado: a implementar (B20). A régua e as faixas estão em rascunho (`../tmp/arquiteto/bestiario/porte-faixas.md`), à espera do autor. **A régua proposta foi substituída pela D-139, e os nomes das faixas pela D-141 (numeradas)**; os números das faixas ficam.
   - **A régua proposta:** medida = √(altura × comprimento do corpo sem cauda); para quem fica ereto, a medida é a altura. Os cortes são Miúdo abaixo de 0,6 m, Pequeno até 1,2, Médio até 1,9, Grande até 4,2, Enorme até 8,5, Imenso até 17 e Colossal acima disso.
   - **As faixas:** Arrátel (até 4 kg), Arroba (até 25), Quintal (até 220), Tonel (até 1,8 t), Barca (até 14 t), Galé (até 110 t) e Nau, com os números que eram do porte.
   - **Substitui em parte:**
@@ -2034,7 +2034,7 @@ As D-132 a D-138 são a resposta do autor às questões do relatório de PV cont
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "REFERÊNCIAS DE PORTE (o autor): humano e anão são Médios; halfling e gnomo são Pequenos; troll e ogro são Grandes. Entre os animais: lobo Pequeno, leão Médio, gorila Médio, cavalo Grande. O critério do autor para o lobo: 'o maior lobo ainda seria menor do que o menor dos leões. Um lobo com 1,5 m de comprimento de corpo está mais para uma criatura pequena do que para uma criatura média, considerando que tem menos de 1 m de cernelha'. Ou seja, a regra junta altura e comprimento."
 - Origem: mensagem do autor de 11/10/2026, junto da D-132.
-- Estado: a régua proposta na D-132 respeita todas as referências, e as alternativas que falham estão em `porte-faixas.md` §1.2 (altura sozinha; comprimento sozinho; o maior entre altura e metade do comprimento). O orc da raça jogável (1,80 a 2,30 m) não fecha: a régua o põe no Grande, e `racas.json` o publica Médio. Questão ao autor no relatório.
+- Estado: a régua proposta na D-132 respeita todas as referências, e as alternativas que falham estão em `porte-faixas.md` §1.2 (altura sozinha; comprimento sozinho; o maior entre altura e metade do comprimento). O orc da raça jogável (1,80 a 2,30 m) não fecha: a régua o põe no Grande, e `racas.json` o publica Médio. Questão ao autor no relatório. **O orc está respondido pela D-140** (as raças jogáveis ficam no porte publicado). **Com a régua da D-139, o cavalo de sela sai Médio (1,84)**, contra o "cavalo Grande" desta decisão: questão ao autor em `../tmp/arquiteto/bestiario/regua-d139.md` §7.
 
 ### D-134 · Vigor dos animais: pesa a resistência do corpo, e o fôlego vai para Especialidade de Atletismo ou texto [tags: bestiario, animal, vigor, folego, especialidade, atletismo, pv, d-125, b20]
 - Data: 2026-10-11
@@ -2085,6 +2085,49 @@ As D-132 a D-138 são a resposta do autor às questões do relatório de PV cont
   - As 30 fichas foram refeitas no formato (`../tmp/arquiteto/bestiario/modelo-ficha.md`): as pilotos consolidadas, as variantes e o comportamento fora da prosa, os zeros de regra escritos e a procedência gerada por `procedencia.mjs`.
   - A Aparência: 7 no cavalo, no guepardo, no leão e na águia-real; 5 no enxame de ratos; 6 nos outros.
   - `docs/bestiario/visual/` ainda não existe: os arquivos nascem com o guia de estilo (D-102).
+
+## Régua de porte, raças jogáveis e faixas numeradas (11/10/2026)
+
+As D-139 a D-142 respondem ao relatório da régua de porte e das faixas de massa (`../tmp/arquiteto/bestiario/porte-faixas.md`). O teste da régua nova nos 30 animais está em `../tmp/arquiteto/bestiario/regua-d139.md`, fora do repositório. Nada disso foi para `src/`. Os lotes 1, 2, 3 e 5 seguem parados até o autor ver o teste.
+
+### D-139 · Régua de porte: o maior entre a altura total e metade do comprimento total [tags: bestiario, criatura, porte, dimensoes, altura, comprimento, cauda, d-132, d-133, b20]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "A medida de porte é a maior entre a altura total (até o alto da cabeça, na postura normal do animal) e metade do comprimento total (com cauda e pescoço). Os cortes continuam: Miúdo abaixo de 0,6 m; Pequeno até 1,2; Médio até 1,9; Grande até 4,2; Enorme até 8,5; Imenso até 17; Colossal acima."
+- Origem: mensagem do autor de 11/10/2026, resposta ao relatório da régua (D-132).
+- Estado: a implementar (B20). **Substitui a régua proposta na D-132** (√ de altura × comprimento do corpo sem cauda).
+  - **Leitura dos cortes:** "os cortes continuam" são os de `porte-dimensoes.mjs`, em que a medida igual ao corte já é do porte de cima (0,60 é Pequeno, 1,20 é Médio).
+  - **O teste nos 30 animais:** mudam 12.
+    - Para o Pequeno: urso-negro e pteranodonte.
+    - Para o Médio: cavalo, alce, urso-polar, boi, deinonico e jiboia.
+    - Jararaca, do Miúdo para o Pequeno. Crocodilo, do Pequeno para o Grande.
+    - Para o Enorme: quetzalcoatlo e mosassauro.
+  - **A altura até o alto da cabeça não está na pesquisa** de quase nenhum animal: o teste usa a cernelha, o ombro ou o quadril como piso, com a marca [sem dado].
+  - **Contra a D-133:** o cavalo de sela dá 1,84 e cai no Médio. A D-133 diz "cavalo Grande". Questão ao autor no relatório.
+  - **Contra a D-142:** o crocodilo volta ao Grande, e o 0,7 em terra que fora aprovado para ele no Pequeno dá +21% contra o real. Questão ao autor no relatório.
+
+### D-140 · As raças jogáveis ficam no porte publicado [tags: racas, porte, orc, d-133, d-139]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "As raças jogáveis ficam no porte publicado no livro. A régua de porte vale para criaturas sem raça jogável."
+- Origem: mensagem do autor de 11/10/2026, resposta à questão do orc (D-133).
+- Estado: no ar (nada muda no livro nem em `racas.json`).
+  - Pela régua, o orc típico (2,05 m) seria Grande. Nos extremos da faixa da raça, também mudariam: o halfling de 1,20 e o gnomo de 1,30 (Médios), e o meio-elfo de 1,90 (Grande).
+  - Leitura do Arquiteto: o `mon-orc` do bestiário segue a raça (Médio).
+
+### D-141 · Faixas de massa numeradas, sem nome [tags: bestiario, criatura, massa, faixa-de-massa, ficha, d-132, b20]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "Faixas de massa: os nomes Arrátel, Arroba, Quintal, Tonel, Barca, Galé e Nau saem. Ficam numeradas: Faixa 1 (até 4 kg), Faixa 2 (até 25 kg), Faixa 3 (até 220 kg), Faixa 4 (até 1,8 t), Faixa 5 (até 14 t), Faixa 6 (até 110 t), Faixa 7 (acima de 110 t). Na ficha, o campo diz "Massa: Faixa N (até X)". Não use a palavra "categoria" para massa; categoria é do porte."
+- Origem: mensagem do autor de 11/10/2026.
+- Estado: a implementar (B20).
+  - **Substitui os nomes propostos na D-132.** Os números das faixas não mudam.
+  - As 30 fichas do rascunho mudam numa passada só, junto com o porte da D-139, depois que o autor ver o teste.
+
+### D-142 · As leituras vetáveis do Arquiteto ficam aprovadas [tags: bestiario, criatura, velocidade, porte, anatomia, reptil, natacao, aparencia, d-119, d-124, d-134, d-138, b20]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "As suas leituras vetáveis ficam aprovadas: Pequeno com 0,95 de velocidade, réptil de corpo baixo com 0,7 em terra, fôlego longo indo para a Natação (alce, tubarão) e Aparência 7 no cavalo e no guepardo."
+- Origem: mensagem do autor de 11/10/2026, sobre `porte-faixas.md` §3 e as fichas refeitas.
+- Estado: aprovada.
+  - **O 0,7 do réptil perdeu a razão com a D-139.** Ele existia porque o crocodilo tinha ido para o Pequeno, e com a D-139 o crocodilo volta ao Grande. Questão ao autor no relatório do teste, com o 0,6 de antes como opção.
+  - **A Aparência 7 do leão e da águia-real** (D-138) não foi citada nesta aprovação e fica como está.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
