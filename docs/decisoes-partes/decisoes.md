@@ -1760,19 +1760,19 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): todo animal tem Briga, Bloqueio e Esquiva; nenhum tem Atirador, Armas ou Arremesso. Percepção, Furtividade e Atletismo entram quando o animal real se destaca nisso (leitura aceita pelo autor). Criaturas complexas e humanoides têm também as outras Habilidades e os conhecimentos.
 - Origem: mensagem do autor ao Arquiteto, 10/10/2026.
-- Estado: a implementar (B20). Leitura de 10/10/2026 (D-106, a): "Percepção" aqui quer dizer Prontidão, a Habilidade de notar (Percepção é Atributo). Pela D-106 (d), Prontidão e Integridade ficam ao lado de Briga, Bloqueio e Esquiva, e a regra de construção decide em quais animais.
+- Estado: a implementar (B20). Leitura de 10/10/2026 (D-106, a): "Percepção" aqui quer dizer Prontidão, a Habilidade de notar (Percepção é Atributo). Pela D-106 (d), Prontidão e Integridade ficam ao lado de Briga, Bloqueio e Esquiva, e a regra de construção decide em quais animais. Pela D-109 (10/10/2026), todo animal ganha também Sobrevivência; pela D-111, criaturas podem ter Habilidades secundárias.
 
 ### D-100 · Bloqueio de animal: como a mão nua; chifre, galhada e carapaça bloqueiam como arma [tags: bestiario, animal, bloqueio, mao-nua, d-088, b20]
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): a maioria dos animais prefere esquivar, mas todos têm algum Bloqueio (o gato apara com a pata). O animal bloqueia como a mão nua (D-088): tira a Margem e toma o dano. Chifre, galhada e carapaça bloqueiam como arma.
 - Origem: mensagem do autor ao Arquiteto, 10/10/2026. Ajusta a linha da D-066 anotada na B14 ("quase todas bloqueiam sem tomar dano"): para os animais, só chifre, galhada e carapaça bloqueiam sem tomar dano.
-- Estado: a implementar (B20).
+- Estado: a implementar (B20). O efeito continua este; o VALOR do Bloqueio passou a sair do quanto o animal bloqueia na vida real (D-110).
 
 ### D-101 · O que não é ponto vai num campo próprio, por categoria; armadura natural, veneno, constrição, enxame, montaria e comportamento [tags: bestiario, esquema, veneno, absorcao, agarrao, enxame, montaria, carga, comportamento, b20]
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): o que não é ponto na ficha vai num campo próprio, padronizado e por categoria, para ser consultado depois (por exemplo, puxar todos os venenos). Armadura natural é absorção extra, não Defesa. Veneno: só o id do veneno, num catálogo próprio de venenos, sem a regra completa por enquanto. Constrição é Agarrão; o animal só imobiliza com toxina ou algo que paralise. Enxame é uma criatura só. Montaria e animal de carga são duas marcas separadas, sem regra agora. Comportamento vem do animal real; no extinto, da pesquisa, ou de extrapolação marcada como tal.
 - Origem: mensagem do autor ao Arquiteto, 10/10/2026. O esquema proposto sai do inventário (`../tmp/arquiteto/bestiario/inventario.md`).
-- Estado: a implementar (B20). O Grid lê `monsters.json`, `monsters-mesa.json` e `inimigos.json` e está congelado (D-054): a ficha nova continua gerando esses arquivos no formato velho, ou a diferença vai para o N22.
+- Estado: a implementar (B20). O Grid lê `monsters.json`, `monsters-mesa.json` e `inimigos.json` e está congelado (D-054): a ficha nova continua gerando esses arquivos no formato velho, ou a diferença vai para o N22. A primeira entrada nova do catálogo de venenos é a peçonha botrópica, só com o nome (D-112).
 
 ### D-102 · Imagens do bestiário: as atuais ficam até a troca; as novas saem do ChatGPT com guia de estilo [tags: bestiario, imagens, estilo, licenca, b20]
 - Data: 2026-10-10
@@ -1790,7 +1790,7 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): o teto 6 é o teto humano. Cada espécie tem a sua faixa natural, que vem da realidade, e a Centelha abre o que passa da faixa da espécie.
 - Origem: resposta do autor ao inventário do bestiário (`../tmp/arquiteto/bestiario/inventario.md`, item 8): 27 dos 84 animais têm Força acima de 6 com Centelha 0, contra `atributos.md` l.74 ("acima de 6 só se abrem pela Centelha"). Completa a D-095 (o gorila mais fraco é mais forte que qualquer humano).
-- Estado: a implementar. O livro (`src/content/chapters/atributos.md` l.74) ganha uma frase dizendo isso, numa rodada de texto (item anotado na B20); nada escrito ainda.
+- Estado: a implementar. O livro (`src/content/chapters/atributos.md` l.74) ganha uma frase dizendo isso, numa rodada de texto (item anotado na B20); nada escrito ainda. Os extremos (o animal mais forte que qualquer humano) se corrigem por Habilidades secundárias de criatura (D-111).
 
 ### D-105 · Animal gigante continua animal, com Centelha 0 [tags: bestiario, gigante, animal, centelha, porte, piloto, b20]
 - Data: 2026-10-10
@@ -1809,7 +1809,59 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
   - f) A descrição visual de cada criatura (D-102) fica em `docs/bestiario/visual/<id>.md`.
   - g) Os "atroz" com nome de espécie extinta são animais reais e entram como pré-históricos, não como "versão atroz": Símio Atroz (`mon-dire-ape-gigantopithecus`, gigantopiteco), Urso Atroz (`mon-dire-bear-cave-bear`, urso-das-cavernas), Javali Atroz (`mon-dire-boar-daeodon`, daeodon), Hiena Atroz (`mon-dire-hyena-hyaenodon`, hienodonte), Leão Atroz (`mon-dire-lion-spotted-lion`, leão-das-cavernas), Tubarão Atroz (`mon-dire-shark-megalodon`, megalodonte) e Lobo Atroz (`mon-lobo-atroz`, o lobo-terrível que o autor cita). Ficam como "versão atroz", para depois (D-098): Morcego Atroz, Rato Atroz e Carcaju Atroz, sem espécie real no nome.
 - Origem: inventário do bestiário (`../tmp/arquiteto/bestiario/inventario.md`, itens 8 a 10 e a ressalva sobre a D-099); resposta do autor de 10/10/2026.
-- Estado: leituras registradas para a regra de construção da B20. O inventário e o `escala.md` (`../tmp/arquiteto/bestiario/`) ficam como base. A próxima etapa (pesquisa e regra de construção) espera a lista de referência do autor e não começou.
+- Estado: leituras registradas para a regra de construção da B20. O inventário e o `escala.md` (`../tmp/arquiteto/bestiario/`) ficam como base. A próxima etapa (pesquisa e regra de construção) espera a lista de referência do autor e não começou. **Atualizado em 10/10/2026:** a leitura c) foi fechada pela D-108 (Vontade do animal de 3 a 6).
+
+## Respostas do autor à regra de construção e às fichas piloto do bestiário (10/10/2026)
+
+As D-107 a D-114 são a resposta do autor ao rascunho da regra de construção e às três fichas piloto (lobo, cavalo e urso-pardo), que estão fora do repositório em `../tmp/arquiteto/bestiario/` (`regra-construcao.md`, `fichas-piloto.md`, `tabela-comparada.md`, `resumo-pesquisa.md`). Nada disso foi para `src/`. Ficaram abertas, para análise antes de decidir, a curva dos Atributos acima de 6 (a Força acima de 13 entra aqui) e a velocidade dos animais (`../tmp/arquiteto/bestiario/crescimento-atributos.md`).
+
+### D-107 · Aparência dos animais: régua de comparação humana, a maioria no 6 [tags: bestiario, animal, aparencia, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): "Aparência dos animais: régua de comparação humana. A maioria fica no 6 (comum), alguns acima ou abaixo pela pelagem, pele, penas e cuidado. A faixa vai de 4 (Feio) a 8 (Atraente), e alguns podem ter Aparência bem baixa, medonha. A repulsa humana (aranha, rato, cobra) não precisa entrar na mecânica."
+- Origem: questão 6 do rascunho da regra de construção (opções: manter 4 em todos, tirar a Aparência do animal, faixa pela reação humana).
+- Estado: a implementar (B20). Substitui, para as fichas novas, o padrão 4 do código (`AP_BASE`, `scripts/lib-bestiario.mjs` l.246). Os rótulos são os de `regras.json` `escalaAparencia` (4 Feio, 6 Comum, 8 Atraente).
+
+### D-108 · Força de Vontade dos animais: de 3 a 6, a maioria perto de 3 [tags: bestiario, animal, vontade, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): "Força de Vontade dos animais: de 3 a 6, a maioria perto de 3. Isso substitui a escala de 1 a 5 da seção 4 da regra."
+- Origem: seção 4 do rascunho da regra de construção (1 a presa que foge, 2 ou 3 o predador comum, 4 ou 5 a espécie que não desiste).
+- Estado: a implementar (B20). Fecha a leitura c) da D-106 (a Vontade 5 de 81 animais era o padrão do código). Nenhum animal fica abaixo de 3.
+
+### D-109 · Defesa Social do animal: ele ganha Sobrevivência, e a fórmula da fera fica como está [tags: bestiario, animal, defesa-social, sobrevivencia, habilidades, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): "Defesa Social: o animal ganha Sobrevivência, e a fórmula da fera no livro fica como está. Um dos motivos de refazer as fichas é cobrir Habilidades que não estavam contadas."
+- Origem: questão 4 do rascunho (a Defesa Social da fera é (Compostura + Sobrevivência) × 2, `defesas.md` l.75, e a D-099 não dava Sobrevivência ao animal).
+- Estado: a implementar (B20). Acrescenta Sobrevivência à lista fixa da D-099 (Briga, Bloqueio e Esquiva, com Prontidão e Integridade ao lado, D-106 d). Não muda fórmula nenhuma do livro.
+
+### D-110 · Bloqueio do animal: o valor sai do quanto ele bloqueia na vida real; o efeito segue a D-100 [tags: bestiario, animal, bloqueio, d-100, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): "Bloqueio: o VALOR mede o quanto o animal bloqueia na vida real (o lobo quase não bloqueia, porque a mordida não defende; o gato apara com patadas; o alce bloqueia muito com a galhada e pode ter 3). O EFEITO segue a D-100 (pata, focinho e corpo: tira só a Margem; chifre, galhada e carapaça: param o golpe). A tabela da seção 3 deixa de decidir o valor pelo tipo de defesa. O urso com Bloqueio 2 está certo."
+- Origem: linha do Bloqueio na tabela da seção 3 do rascunho (1 para quem apara com pata ou corpo, 2 a 3 para chifre, galhada ou carapaça) e o Bloqueio 2 do urso-pardo piloto.
+- Estado: a implementar (B20). Não muda a D-100 nem a D-088 (o efeito). "Quase não bloqueia" é 1, e não 0, porque a D-100 diz que todos os animais têm algum Bloqueio.
+
+### D-111 · Criaturas podem ter Habilidades secundárias, inclusive próprias; é por elas que se corrigem os extremos [tags: bestiario, criatura, habilidades-secundarias, forca, d-095, d-104, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): "Habilidades secundárias: criaturas podem ter Habilidades secundárias, inclusive algumas que não existem na ficha de personagem. É por elas que se corrigem os extremos (por exemplo, o animal mais forte que qualquer humano). Isso substitui a questão 2 do seu rascunho."
+- Origem: questão 2 do rascunho (em qual régua o animal é "mais forte que qualquer humano": Força crua, peso máximo P acima de 500 kg, ou Halterofilismo equivalente). O conflito: o humano de Força 6 e Halterofilismo 6 levanta 500 kg, o mesmo que um animal de Força 8 sem Halterofilismo.
+- Estado: a implementar (B20). Completa a D-095 e a D-104. Quais secundárias, e com que números, depende da análise da curva dos Atributos (em aberto).
+
+### D-112 · Jararaca é a quarta ficha piloto; o catálogo de venenos ganha a peçonha botrópica só com o nome [tags: bestiario, animal, jararaca, veneno, piloto, d-101, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): "Jararaca: entra como a quarta ficha piloto. Ela ganha uma entrada no catálogo de venenos só com o nome (peçonha botrópica), sem regra nem números, como o autor já tinha decidido para os venenos."
+- Origem: questão 5 do rascunho (`src/data/venenos.json` não tem entrada para ela). "Como o autor já tinha decidido" é a D-101 (veneno só por id, num catálogo próprio, sem a regra completa por enquanto).
+- Estado: a implementar (B20). A entrada em `venenos.json` entra quando a ficha for para o repositório, e não antes: a ordem de 10/10/2026 é que nada vá para `src/` nesta etapa. A ficha rascunho aponta o id `peconha-botropica`.
+
+### D-113 · Urso-pardo piloto aprovado como está [tags: bestiario, animal, urso, piloto, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): "Urso-pardo: aprovado como está."
+- Origem: ficha piloto do urso-pardo (`../tmp/arquiteto/bestiario/fichas-piloto.md`, seção 3): Força 8, Destreza 3, Vigor 5, Briga 4, Bloqueio 2, Vontade 4, patada 1d6 + 8.
+- Estado: aprovado, fora do repositório. Leitura do Arquiteto: as regras gerais da mesma resposta valem por cima da ficha aprovada, e a ficha ganha Sobrevivência (D-109) e Aparência pela D-107, que ela não tinha. O deslocamento dela (8/12/17 m por Tick) fica fora da aprovação, porque a velocidade dos quadrúpedes ficou aberta (D-114).
+
+### D-114 · Cavalo: o recorde do puro-sangue não vale para o cavalo de sela; a velocidade dos animais fica aberta [tags: bestiario, animal, cavalo, deslocamento, velocidade, c-009, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): "Cavalo e quadrúpedes: o recorde do puro-sangue não vale como velocidade do cavalo de sela. A questão de velocidade fica aberta."
+- Origem: o deslocamento 9/14/20 do cavalo piloto, tirado do recorde do puro-sangue em 402 m (70,35 km/h), e a questão 3 do rascunho (a velocidade real contra a C-009, que diz "ft ÷ 10 = m/Tick de batalha").
+- Estado: aberta. A C-009 segue no ar. O autor levantou três caminhos, nenhum decidido: velocidade por criatura a partir do dado real; bônus de velocidade por criatura somado à fórmula humana; uma Habilidade secundária Corrida com Especialização. A análise com os números vai em `../tmp/arquiteto/bestiario/crescimento-atributos.md`.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15

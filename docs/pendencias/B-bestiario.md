@@ -262,7 +262,16 @@ limitações conhecidas, que são as três de baixo.
     sete "atroz" que são espécie extinta e entram como pré-históricos (D-106).
   - **Rodada de texto (anotada, sem escrever):** `src/content/chapters/atributos.md` l.74 ganha a frase da D-104
     (o teto 6 é o humano; cada espécie tem a sua faixa natural; a Centelha abre o que passa dela).
-  - **Próxima etapa:** pesquisa e regra de construção, que esperam a lista de referência do autor. Não começou.
+  - **Pesquisa, regra de construção e pilotos (10/10/2026):** 30 animais pesquisados (`fontes-bestiario/pesquisa/`),
+    tabela comparada, regra de construção e três fichas piloto (lobo, cavalo, urso-pardo), tudo fora do repositório
+    em `../tmp/arquiteto/bestiario/`. Respostas do autor (D-107 a D-114): Aparência pela régua humana, a maioria no 6;
+    Vontade do animal de 3 a 6; Sobrevivência entra na lista fixa; o valor do Bloqueio sai do quanto o animal bloqueia
+    na vida real; criaturas podem ter Habilidades secundárias, inclusive próprias; a jararaca é a quarta piloto, e a
+    peçonha botrópica entra no catálogo só com o nome quando a ficha entrar; o urso-pardo está aprovado; o recorde do
+    puro-sangue não vale para o cavalo de sela.
+  - **Próxima etapa:** a análise da curva dos Atributos e da velocidade dos animais
+    (`../tmp/arquiteto/bestiario/crescimento-atributos.md`) e a ficha da jararaca. Os outros 26 animais esperam o autor
+    decidir a curva e a velocidade.
   - **Absorve:** a B14 (desafio, Centelha e revisão das fichas) e a N20 (classe de ataque dos golems) passam a ser
     feitas dentro desta frente quando ela chegar a essas criaturas.
   - **Leitura de apoio, fora do repositório:** `../tmp/arquiteto/bestiario/diagnostico.md`,
