@@ -1885,7 +1885,7 @@ As D-107 a D-114 são a resposta do autor ao rascunho da regra de construção e
   3. Habilidades, Habilidades secundárias e Especialidades (em ambas) cobrem os casos que os modificadores não encaixam.
   A Força é universal: Força 4 bate como Força 4 em qualquer criatura (dano, limite do Bloqueio, agarrão). O porte muda o peso, não o dano."
 - Origem: resposta do autor à análise da curva dos Atributos e da velocidade (`../tmp/arquiteto/bestiario/crescimento-atributos.md`), 10/10/2026.
-- Estado: a implementar (B20). Os números (faixas de massa, os modificadores de cada porte e de cada anatomia, as quatro fichas refeitas) estão em rascunho em `../tmp/arquiteto/bestiario/porte-anatomia.md`, esperando o autor. **O agarrar pelo porte fica anotado, sem regra**, como o autor pediu. Completa a D-104 e a D-111; dá modelo à velocidade aberta pela D-114. **Atualizado em 11/10/2026:** nos quadrúpedes, o peso da ficha é a capacidade de carga, sem modificador de anatomia (D-118); a velocidade ganha a secundária do modo (D-119); o peso do Grande é 1,5 (D-120); a fronteira Médio/Grande fica em 220 kg (D-121 a).
+- Estado: a implementar (B20). Os números (faixas de massa, os modificadores de cada porte e de cada anatomia, as quatro fichas refeitas) estão em rascunho em `../tmp/arquiteto/bestiario/porte-anatomia.md`, esperando o autor. **O agarrar pelo porte fica anotado, sem regra**, como o autor pediu. Completa a D-104 e a D-111; dá modelo à velocidade aberta pela D-114. **Atualizado em 11/10/2026:** nos quadrúpedes, o peso da ficha é a capacidade de carga, sem modificador de anatomia (D-118); a velocidade ganha a secundária do modo (D-119); o peso do Grande é 1,5 (D-120); a fronteira Médio/Grande fica em 220 kg (D-121 a). **Substituída em parte pela D-132 (11/10/2026):** o "criaturas maiores erguem mais peso" passa a ser da massa (faixas de massa), e o porte, que agora vem das dimensões, segue multiplicando a velocidade.
 
 ### D-116 · Leituras da D-115 (o autor não vetou) [tags: bestiario, leitura, porte, gorila, arranque, forca, corrida, dano, bancada, b20]
 - Data: 2026-10-10
@@ -1924,7 +1924,7 @@ As D-117 a D-121 são a resposta do autor ao rascunho de porte e anatomia (`../t
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "O peso do Grande fica em 1,5."
 - Origem: resposta do autor à questão 1 do rascunho de porte e anatomia (opções 1,25, 1,5 e 2; o 1,5 era a proposta).
-- Estado: a implementar (B20). Pela D-121 b), vale para quem ergue normalmente; o fator de quadrúpede 0,7 que vinha junto na opção saiu (D-121 e).
+- Estado: a implementar (B20). Pela D-121 b), vale para quem ergue normalmente; o fator de quadrúpede 0,7 que vinha junto na opção saiu (D-121 e). **Substituída em parte pela D-132 (11/10/2026):** o 1,5 passa a ser da faixa de massa Tonel (220 kg a 1,8 t), e não do porte Grande.
 
 ### D-121 · Leituras do modelo fechado (o autor não vetou) [tags: bestiario, leitura, porte, fronteira, gorila, leao, urso, guepardo, cavalo, corrida, quadrupede, b20]
 - Data: 2026-10-11
@@ -1935,7 +1935,7 @@ As D-117 a D-121 são a resposta do autor ao rascunho de porte e anatomia (`../t
   - d) Guepardo: Corrida 6, sem anatomia própria. Cavalo de sela: Corrida 1 (cerca de 61 km/h); o puro-sangue vira variante com Corrida 3 (cerca de 70 km/h).
   - e) Saem do rascunho o fator de peso 0,7 do quadrúpede e a anatomia "velocista".
 - Origem: mensagem do autor de 11/10/2026, junto das D-117 a D-120.
-- Estado: leituras registradas para a regra de construção da B20. A a) substitui a fronteira de 130 kg proposta no rascunho e a leitura a) da D-116.
+- Estado: leituras registradas para a regra de construção da B20. A a) substitui a fronteira de 130 kg proposta no rascunho e a leitura a) da D-116. **A leitura a) foi substituída em parte pela D-132 (11/10/2026):** os 220 kg viram o limite da faixa de massa Quintal/Tonel; o porte passa a sair das dimensões (o gorila e o leão seguem Médios pela régua nova, D-133).
 
 ## Carga dos quadrúpedes e peso de halfling e gnomo (11/10/2026)
 
@@ -1945,7 +1945,7 @@ As D-122 e D-123 são a resposta do autor às questões do rascunho das cinco fi
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "CARGA DOS QUADRÚPEDES, regra única: o fim da faixa Leve é a carga medida, quando houver. Quando não houver, é o peso do corpo × uma fração pela estrutura × um fator de porte. Frações: 20% para quem tem estrutura de carga (cavalo, boi, camelo, mula); 10% para quem não tem (felinos, ursos, lobos). Fator de porte: 1 para Médio e Grande, 0,75 para Enorme (calibrado pelo elefante, 15% contra os 20% do cavalo); os outros portes a calibrar e mostrar. O peso máximo é 4 vezes a Leve, e daí saem as faixas do livro (Média até P/2, Pesada até 3P/4, Máxima até P). O mínimo medido sempre vale (o lobo e o castor de 13,6 kg). A carga medida no próprio animal já inclui o tamanho e não leva o fator de porte. Isso responde as suas questões 1 e 2."
 - Origem: mensagem do autor de 11/10/2026, resposta às questões 1 (como a carga entra nas faixas) e 2 (o quadrúpede sem carga medida) do rascunho de porte e anatomia.
-- Estado: a implementar (B20). Completa a D-118 (que disse o que o número é, sem dizer como entra nas faixas nem o que fazer sem dado); não a substitui. As faixas do livro (`regras.json` `forca.notaCarga`) não mudam: o quadrúpede só ganha outro jeito de chegar ao P. Os fatores de porte que faltam (Miúdo, Pequeno, Imenso e Colossal) e as cinco fichas fechadas estão em rascunho (`../tmp/arquiteto/bestiario/porte-anatomia.md`).
+- Estado: a implementar (B20). Completa a D-118 (que disse o que o número é, sem dizer como entra nas faixas nem o que fazer sem dado); não a substitui. As faixas do livro (`regras.json` `forca.notaCarga`) não mudam: o quadrúpede só ganha outro jeito de chegar ao P. Os fatores de porte que faltam (Miúdo, Pequeno, Imenso e Colossal) e as cinco fichas fechadas estão em rascunho (`../tmp/arquiteto/bestiario/porte-anatomia.md`). **Substituída em parte pela D-132 (11/10/2026):** o "Fator de porte" passa a ser da faixa de massa (Barca 0,75 no lugar do Enorme), e a regra da carga fica.
 
 ### D-123 · Halfling e gnomo: o peso erguido leva fator 0,5; a velocidade não muda [tags: racas, halfling, gnomo, peso, fah, forca, levantamento, porte, ficha, perna-curta, d-115]
 - Data: 2026-10-11
@@ -1969,7 +1969,7 @@ As D-125 a D-128 são a resposta do autor ao documento de aprovação (`../tmp/a
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "PV POR MASSA DENTRO DO PORTE: quem fica na metade de cima da faixa de massa do seu porte ganha PV extra (de +5 a +10, a calibrar). Vai para o quadro de Regras de Criaturas. Motivo: com o Médio indo de 25 a 220 kg, o leão (190 kg) e o gorila (160 kg) tinham os mesmos 34 PV de um humano de Vigor 3, e menos que o lobo de 50 kg (40). O Vigor continua medindo também o fôlego, e não muda por isso."
 - Origem: mensagem do autor de 11/10/2026, resposta ao documento de aprovação dos 30 animais.
-- Estado: a implementar (B20), calibrada pelo Arquiteto no mesmo dia (`../tmp/arquiteto/bestiario/pv-massa.mjs`). **"Metade de cima" = acima do meio geométrico da faixa** (o porte cresce cerca de oito vezes por degrau, e o meio geométrico é o centro dessa escala): Miúdo 1,4 kg (com piso de 0,5 kg, um oitavo do teto), Pequeno 10 kg, Médio 74 kg, Grande 629 kg, Enorme 5,0 t, Imenso 39 t, Colossal 311 t. **Valor = 2 pontos de Vigor do porte, com mínimo de 5**: Miúdo e Pequeno +5, Médio +6, Grande +8, Enorme, Imenso e Colossal +10 (a faixa de +5 a +10 do autor). Conferido: leão e gorila 40 e urso-negro 43, acima do humano de Vigor 3 (34); o lobo (40) empata com o leão sem passá-lo; o humano típico (70 kg) fica abaixo do meio do Médio, e a regra é só de criatura. O +5 fixo não serviria (o leão ficaria em 39, abaixo do lobo). As inversões novas entre portes são todas de Vigor (o mais leve tem Vigor maior: javali, urso-negro e deinonico acima do tigre-dentes-de-sabre e do crocodilo; boi e tubarão acima do estegossauro). Sem massa de referência (o plesiossauro), não há PV por massa. **Item anotado de rodada de texto, sem fazer agora:** a linha no quadro de Regras de Criaturas (D-118). **Substituída em parte pela D-129 (11/10/2026):** o degrau no meio da faixa virou escala contínua; os máximos por porte e o motivo ficam.
+- Estado: a implementar (B20), calibrada pelo Arquiteto no mesmo dia (`../tmp/arquiteto/bestiario/pv-massa.mjs`). **"Metade de cima" = acima do meio geométrico da faixa** (o porte cresce cerca de oito vezes por degrau, e o meio geométrico é o centro dessa escala): Miúdo 1,4 kg (com piso de 0,5 kg, um oitavo do teto), Pequeno 10 kg, Médio 74 kg, Grande 629 kg, Enorme 5,0 t, Imenso 39 t, Colossal 311 t. **Valor = 2 pontos de Vigor do porte, com mínimo de 5**: Miúdo e Pequeno +5, Médio +6, Grande +8, Enorme, Imenso e Colossal +10 (a faixa de +5 a +10 do autor). Conferido: leão e gorila 40 e urso-negro 43, acima do humano de Vigor 3 (34); o lobo (40) empata com o leão sem passá-lo; o humano típico (70 kg) fica abaixo do meio do Médio, e a regra é só de criatura. O +5 fixo não serviria (o leão ficaria em 39, abaixo do lobo). As inversões novas entre portes são todas de Vigor (o mais leve tem Vigor maior: javali, urso-negro e deinonico acima do tigre-dentes-de-sabre e do crocodilo; boi e tubarão acima do estegossauro). Sem massa de referência (o plesiossauro), não há PV por massa. **Item anotado de rodada de texto, sem fazer agora:** a linha no quadro de Regras de Criaturas (D-118). **Substituída em parte pela D-129 (11/10/2026):** o degrau no meio da faixa virou escala contínua; os máximos por porte e o motivo ficam. **Substituída pela D-135 (11/10/2026):** sai o PV por massa, e entra um bônus por criatura, com justificativa. A frase "O Vigor continua medindo também o fôlego" foi **substituída pela D-134**.
 
 ### D-126 · Nado: o teto humano em (Atletismo + Natação) ÷ 12; o réptil de corpo baixo nada como o nadador; a armadura tira 40% por ponto na água [tags: natacao, nado, velocidade, humano, crocodilo, reptil, anatomia, armadura, penalidade, carga, ficha, regras-de-criaturas, d-124, b20]
 - Data: 2026-10-11
@@ -1987,7 +1987,7 @@ As D-125 a D-128 são a resposta do autor ao documento de aprovação (`../tmp/a
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "Com isso, as 30 fichas ficam aprovadas pelo autor."
 - Origem: mensagem do autor de 11/10/2026, depois de aplicadas as D-125 e D-126.
-- Estado: aprovadas, em rascunho fora do repositório (`../tmp/arquiteto/bestiario/fichas/` com 25, mais as cinco pilotos em `porte-anatomia.md` §4, `fichas-piloto.md` e `ficha-jararaca.md`); `calc-fichas.mjs --fichas` dá "todas as fichas batem com a conta". Entram em `src/` na rodada de código da B20 (fichas em JSON e o gerador do formato velho para o Grid, N22), com Executora e Revisora. A Força do Enorme para cima continua provisória até a bancada (D-116 d).
+- Estado: aprovadas, em rascunho fora do repositório (`../tmp/arquiteto/bestiario/fichas/` com 25, mais as cinco pilotos em `porte-anatomia.md` §4, `fichas-piloto.md` e `ficha-jararaca.md`); `calc-fichas.mjs --fichas` dá "todas as fichas batem com a conta". Entram em `src/` na rodada de código da B20 (fichas em JSON e o gerador do formato velho para o Grid, N22), com Executora e Revisora. A Força do Enorme para cima continua provisória até a bancada (D-116 d). **Revistas em 11/10/2026 pelas D-132 a D-138** (porte pelas dimensões, faixa de massa, Vigor, PV, voo e o formato do esquema), e consolidadas em `../tmp/arquiteto/bestiario/fichas/` (as 30, com as pilotos); a nova aprovação vem com a régua de porte.
 
 ## PV contínuo, voo e esquema (11/10/2026)
 
@@ -1997,19 +1997,94 @@ As D-129 a D-131 são a resposta do autor ao plano dos animais que faltam (`../t
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "PV POR MASSA, ESCALA CONTÍNUA: o extra vai de 0, no início da faixa de massa do porte, ao máximo do porte (Pequeno +5, Médio +6, Grande +8, Enorme para cima +10), no fim da faixa, proporcional à posição da massa na faixa em escala de multiplicação (logarítmica), como as faixas. Substitui o degrau único da D-125. Cada ficha mostra esse bônus SEPARADO (PV base, PV por massa, PV total), para o autor analisar depois."
 - Origem: mensagem do autor de 11/10/2026, resposta ao plano dos animais que faltam.
-- Estado: a implementar (B20); aplicada no rascunho (`../tmp/arquiteto/bestiario/pv-continuo.mjs` e `pv-continuo.md`), com as 30 fichas em três linhas de PV. Conta: extra = máximo × log(massa ÷ início) ÷ log(fim ÷ início), arredondado, preso entre 0 e o máximo. O Miúdo, fora da lista, fica com o +5 da calibração da D-125. O Colossal vai até 880 t (oito vezes o início). **Substitui em parte a D-125** (o degrau). Ficaram 31 inversões de PV contra massa, todas de Vigor; entre elas, o lobo (42) passa o leão (40), o que a calibração da D-125 evitava: questão ao autor no rascunho.
+- Estado: a implementar (B20); aplicada no rascunho (`../tmp/arquiteto/bestiario/pv-continuo.mjs` e `pv-continuo.md`), com as 30 fichas em três linhas de PV. Conta: extra = máximo × log(massa ÷ início) ÷ log(fim ÷ início), arredondado, preso entre 0 e o máximo. O Miúdo, fora da lista, fica com o +5 da calibração da D-125. O Colossal vai até 880 t (oito vezes o início). **Substitui em parte a D-125** (o degrau). Ficaram 31 inversões de PV contra massa, todas de Vigor; entre elas, o lobo (42) passa o leão (40), o que a calibração da D-125 evitava: questão ao autor no rascunho. **Substituída pela D-135 (11/10/2026):** sai o PV por massa; a questão do lobo e do leão foi resolvida pela D-134 (Vigor).
 
 ### D-130 · O voo ganha fórmula antes do lote 4 [tags: bestiario, criatura, voo, velocidade, deslocamento, ave, anatomia, secundaria, d-119, b20]
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "VOO AGORA: a fórmula do voo é feita antes do lote 4, pelo mesmo método do nado: fórmula, secundária Voo (só para quem voa) e anatomia, calibradas contra aves medidas (com fonte). Os outros lotes não esperam por ela."
 - Origem: mensagem do autor de 11/10/2026, resposta ao plano dos animais que faltam.
-- Estado: proposta em rascunho (`../tmp/arquiteto/bestiario/voo.md`), à espera do autor. Completa a D-119, que tinha deixado "A secundária Voo, só para quem voa, [...] para quando o voo tiver fórmula".
+- Estado: proposta em rascunho (`../tmp/arquiteto/bestiario/voo.md`), à espera do autor. Completa a D-119, que tinha deixado "A secundária Voo, só para quem voa, [...] para quando o voo tiver fórmula". **Respondida pelas D-136 e D-137 (11/10/2026):** o porte de voo da proposta saiu (1 para todos), a anatomia de ave passou a 1,43, e o mergulho ficou só para quem caça mergulhando.
 
 ### D-131 · O esquema da ficha de criatura fecha antes dos lotes [tags: bestiario, criatura, esquema, ficha, formato, procedencia, b20]
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "ESQUEMA PRIMEIRO: antes dos lotes, fecha-se o formato da ficha de criatura, para saber quais informações já temos e quais precisamos ter. Isto não é a rodada de código nem trata do Grid."
 - Origem: mensagem do autor de 11/10/2026, resposta ao plano dos animais que faltam.
-- Estado: proposta em rascunho (`../tmp/arquiteto/bestiario/esquema-ficha.md`), à espera do autor. Os lotes 1, 2, 3 e 5 do plano só vão às Bestiaristas depois de aprovada.
+- Estado: proposta em rascunho (`../tmp/arquiteto/bestiario/esquema-ficha.md`), à espera do autor. Os lotes 1, 2, 3 e 5 do plano só vão às Bestiaristas depois de aprovada. **Fechada pela D-138 (11/10/2026):** o esquema está aprovado, com duas correções.
+
+## Tamanho e massa separados, Vigor, PV, voo e esquema (11/10/2026)
+
+As D-132 a D-138 são a resposta do autor às questões do relatório de PV contínuo, voo e esquema (`../tmp/arquiteto/bestiario/pv-continuo.md`, `voo.md` e `esquema-ficha.md`, fora do repositório). Nada disso foi para `src/`. A régua de porte e as faixas de massa estão em rascunho (`../tmp/arquiteto/bestiario/porte-faixas.md`), e os lotes 1, 2, 3 e 5 só começam depois que o autor aprovar a régua.
+
+### D-132 · Tamanho e massa separados: o porte vem das dimensões, e a massa decide peso, carga, PV e couraça por faixas de massa [tags: bestiario, criatura, porte, massa, dimensoes, peso, carga, pv, couraca, acerto, velocidade, faixa-de-massa, d-077, d-115, d-119, d-120, d-121, d-122, b20, n22]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "TAMANHO E MASSA SEPARADOS. O PORTE vem das DIMENSÕES (altura, comprimento, largura), não do peso: 'Uma criatura de 4 metros de altura é considerada grande mesmo que tenha 25 kg'. O porte decide o espaço, o alcance, o acerto (D-077) e a velocidade (D-119: o porte multiplica a velocidade em terra). A MASSA decide o peso erguido, a carga, os PV e a couraça. Os multiplicadores que hoje são do porte (peso, carga, PV pela tabela 15 + Vigor × 1 até 45 + Vigor × 5, couraça) passam a ser FAIXAS DE MASSA. Dê às faixas nomes que não se confundam com o porte nem com as faixas de carga (Mínima, Leve, Média, Pesada, Máxima). Uma criatura muito grande e muito leve tende a ter pouca Força e pouco Vigor: isso se resolve nos Atributos dela, sem regra nova."
+- Origem: mensagem do autor de 11/10/2026, resposta ao relatório de PV contínuo, voo e esquema.
+- Estado: a implementar (B20). A régua e as faixas estão em rascunho (`../tmp/arquiteto/bestiario/porte-faixas.md`), à espera do autor.
+  - **A régua proposta:** medida = √(altura × comprimento do corpo sem cauda); para quem fica ereto, a medida é a altura. Os cortes são Miúdo abaixo de 0,6 m, Pequeno até 1,2, Médio até 1,9, Grande até 4,2, Enorme até 8,5, Imenso até 17 e Colossal acima disso.
+  - **As faixas:** Arrátel (até 4 kg), Arroba (até 25), Quintal (até 220), Tonel (até 1,8 t), Barca (até 14 t), Galé (até 110 t) e Nau, com os números que eram do porte.
+  - **Substitui em parte:**
+    - a D-115, no peso: "criaturas maiores erguem mais peso" passa a ser da massa; a velocidade segue do porte;
+    - a D-120: o 1,5 é da faixa Tonel;
+    - a leitura a) da D-121: os 220 kg viram o limite de uma faixa de massa, e não do porte;
+    - a D-122, no "Fator de porte", que passa a ser da faixa.
+  - **Item anotado de rodada de texto e de código, sem fazer agora:** `regras.json` `derivados.pv.porte` e `dano.couracaPorte` passam a ser por faixa de massa, e o exemplo "Um urso (Grande) de Vigor 5 tem 50 PV" (`vida-ferimentos-cura.md`) perde o "(Grande)": o urso-pardo fica Médio pela régua, com os mesmos 50 PV pela faixa Tonel.
+  - **O Grid não muda (D-054):** o que muda para ele está no N22.
+
+### D-133 · Referências de porte: humano e anão Médios, halfling e gnomo Pequenos, troll e ogro Grandes; lobo Pequeno, leão e gorila Médios, cavalo Grande [tags: bestiario, criatura, porte, dimensoes, racas, lobo, leao, gorila, cavalo, b20]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "REFERÊNCIAS DE PORTE (o autor): humano e anão são Médios; halfling e gnomo são Pequenos; troll e ogro são Grandes. Entre os animais: lobo Pequeno, leão Médio, gorila Médio, cavalo Grande. O critério do autor para o lobo: 'o maior lobo ainda seria menor do que o menor dos leões. Um lobo com 1,5 m de comprimento de corpo está mais para uma criatura pequena do que para uma criatura média, considerando que tem menos de 1 m de cernelha'. Ou seja, a regra junta altura e comprimento."
+- Origem: mensagem do autor de 11/10/2026, junto da D-132.
+- Estado: a régua proposta na D-132 respeita todas as referências, e as alternativas que falham estão em `porte-faixas.md` §1.2 (altura sozinha; comprimento sozinho; o maior entre altura e metade do comprimento). O orc da raça jogável (1,80 a 2,30 m) não fecha: a régua o põe no Grande, e `racas.json` o publica Médio. Questão ao autor no relatório.
+
+### D-134 · Vigor dos animais: pesa a resistência do corpo, e o fôlego vai para Especialidade de Atletismo ou texto [tags: bestiario, animal, vigor, folego, especialidade, atletismo, pv, d-125, b20]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "VIGOR: nos animais, pesa mais a resistência do corpo (aguentar ferimento, dor e doença) e menos o fôlego. O fôlego longo, como o do lobo, vai para uma Especialidade de Atletismo ou para o texto. O leão sobe, o lobo desce, e as 30 fichas são revistas por esse critério."
+- Origem: mensagem do autor de 11/10/2026, resposta à questão 1 do relatório (o lobo passava o leão nos PV).
+- Estado: aplicada no rascunho às 30 fichas (`../tmp/arquiteto/bestiario/fichas/`). Mudaram 15:
+  - **sobem:** leão, gorila e tigre-dentes-de-sabre, de 3 para 4;
+  - **descem:**
+    - lobo, lobo-terrível, cavalo e boi, de 5 para 3;
+    - tubarão-branco, de 5 para 3;
+    - alce, águia-real, pteranodonte, quetzalcoatlo, plesiossauro e braquiossauro, de 4 para 3;
+    - mamute, de 5 para 4.
+  - O fôlego foi para a Especialidade de Atletismo "fôlego" +2.
+  - **Substitui em parte a D-125**, na frase "O Vigor continua medindo também o fôlego".
+
+### D-135 · PV: um bônus por criatura, com justificativa, no lugar do PV por massa [tags: bestiario, criatura, pv, vigor, massa, regras-de-criaturas, d-125, d-129, b20]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "PV: em vez do PV por massa geral (D-125 e D-129), um bônus de PV por criatura, só onde o animal real é mais resistente do que a faixa de massa e o Vigor indicam, sempre com justificativa e numa linha separada na ficha (o autor quer analisar depois)."
+- Origem: mensagem do autor de 11/10/2026, junto da D-134.
+- Estado: aplicada no rascunho.
+  - PV = base da faixa de massa (D-132) + bônus da criatura.
+  - Nas 30, o bônus é 0, com a linha escrita: nada na pesquisa mostra um animal mais resistente do que a faixa e o Vigor dão.
+  - **Substitui a D-125 e a D-129**, inteiras.
+
+### D-136 · Voo: o porte não multiplica a velocidade no ar; as espécies se separam pela secundária Voo [tags: bestiario, criatura, voo, velocidade, porte, ave, anatomia, secundaria, d-119, d-130, b20]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "VOO: o porte vale para os PV e para tudo o mais, mas o multiplicador de velocidade no voo é 1 para todos ('porte é tamanho ou PV, não velocidade'). As diferenças entre espécies vêm da secundária Voo. Recalibre a anatomia de ave para a águia-real continuar batendo com os 41 km/h medidos. As criaturas sobrenaturais que voam podem ter bônus próprio."
+- Origem: mensagem do autor de 11/10/2026, resposta à questão 2 do relatório (o porte de voo).
+- Estado: aplicada no rascunho (`../tmp/arquiteto/bestiario/porte-faixas.md` §4).
+  - A anatomia de ave passa de 2,0 para 1,43: a águia faz 41 km/h, 0% contra os 11,4 m/s medidos.
+  - Secundária Voo: águia 0, pteranodonte 2 (acima do estol de 8 m/s), quetzalcoatlo 6 (no começo do planeio do modelo, 13,3 a 24,9 m/s).
+  - **Leitura do Arquiteto:** "o porte vale para os PV" se lê pela D-132, que é da mesma mensagem (os PV saem da faixa de massa; o porte decide acerto, espaço e alcance).
+  - Substitui o porte de voo da proposta de `voo.md` (0,6 a 2,9). Completa a D-130.
+
+### D-137 · Mergulho só para quem caça mergulhando [tags: bestiario, criatura, voo, mergulho, comportamento, ave, d-130, b20]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "MERGULHO: 4 vezes o cruzeiro só para quem caça mergulhando, com uma marca em 'comportamento'. Os outros voadores descem no cruzeiro."
+- Origem: mensagem do autor de 11/10/2026, resposta à questão 3 do relatório.
+- Estado: aplicada no rascunho.
+  - Só a águia-real tem a marca, e mergulha a 165 km/h (−15% contra os 193 do San Diego Zoo, sem método).
+  - Pteranodonte e quetzalcoatlo descem no cruzeiro.
+
+### D-138 · O esquema da ficha está aprovado, com a Aparência de 4 a 8 e a descrição visual em arquivo próprio [tags: bestiario, criatura, esquema, ficha, aparencia, visual, procedencia, d-102, d-106, d-107, d-131, b20]
+- Data: 2026-10-11
+- Decisão (autor, 11/10/2026): "ESQUEMA, duas correções: a Aparência varia por animal, de 4 (Feio) a 8 (Atraente), a maioria no 6, com justificativa (D-107); a descrição visual mora em docs/bestiario/visual/<id>.md (leitura aprovada pelo autor em 10/10). Com elas, o esquema está aprovado."
+- Origem: mensagem do autor de 11/10/2026, sobre `esquema-ficha.md`.
+- Estado: aprovado. Fecha a D-131.
+  - As 30 fichas foram refeitas no formato (`../tmp/arquiteto/bestiario/modelo-ficha.md`): as pilotos consolidadas, as variantes e o comportamento fora da prosa, os zeros de regra escritos e a procedência gerada por `procedencia.mjs`.
+  - A Aparência: 7 no cavalo, no guepardo, no leão e na águia-real; 5 no enxame de ratos; 6 nos outros.
+  - `docs/bestiario/visual/` ainda não existe: os arquivos nascem com o guia de estilo (D-102).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15

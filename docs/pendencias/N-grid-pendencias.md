@@ -161,3 +161,30 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
   - **O `dardos` de uma ficha antiga só é consertado na mesa depois de a ficha ser aberta e salva (B13, rodada 9).** A ficha migra `a:dardos` para `a:plumbata` ao carregar (`ficha-migra.ts`, nos slots dos conjuntos, no arsenal e no legado `S.equip.arma`). A mesa lê a ficha gravada direto do banco e chama `armaDoSlot` (`equip.ts`, congelado pela D-054), que devolve null para um id fora do catálogo: uma ficha antiga com `a:dardos` fica sem arma no rastreador até alguém abri-la e salvá-la. Fechar isso é um alias em `armaDoSlot` (por `RENOMES_ARMA`), da passada do Grid. O autor confirmou em 10/10/2026 que nenhuma ficha usava Dardos (a consulta no banco fica dispensada), e o B13 cobre qualquer exceção.
   - **O atlatl na ficha (9-bis) e o Bordão com preço.** A ficha mostra, para a azagaia, a linha normal (3/1/2, Velocidade 6) e a "Com Atlatl" (5/1/2, Velocidade 8, `reforma.tiro`, `extra: atlatl`), e o jogador escolhe qual vale; não há campo novo, porque o atlatl segue sem lugar na ficha, na mesa e no Grid (nada o lê). O Grid herda só o catálogo (o Bordão agora com `preco: 30 pc`) e não mostra nenhuma das linhas do atlatl: a azagaia do Grid sai 3/1/2 pela fórmula velha do motor, com ou sem atlatl.
   - **Travessão em texto do Grid (9-bis, E, corrigida na 9-ter).** Os rótulos e a prosa das páginas do site, da ficha e das abas da mesa trocaram o travessão por `·`, dois-pontos, vírgula ou parêntese, e o `test-capitulo-armas.mjs` falha se ele voltar. Ficaram de fora só os arquivos que o Grid lê sozinho: `grid.astro`, `artes-grid*.ts`, `comando-barra.ts` e `comando-voz.ts` (só o `grid.astro` os lê). `mesa-core.ts` (o título de toda aba da mesa e a dica das condições), `mesa-tempo-ui.ts` (lido também por `mesa/combate.astro` e `MesaCab.astro`) e `mesa/combate.astro` (a aba Combate da mesa) NÃO são do Grid e entraram na varredura na 9-ter (veredito 166). O regex que normaliza o que o jogador digita em `lance.ts` e `rolagem.ts` (`[−–—]`) é código e fica. Na passada do Grid a varredura do teste passa a cobrir os quatro arquivos que sobraram.
+  - **O bestiário novo separa porte e massa (D-132 a D-138, 11/10/2026), e nada disso chegou ao Grid.** Anotado sem mexer nele (D-054); as fichas estão em rascunho (`../tmp/arquiteto/bestiario/fichas/`) e entram em `src/` na rodada de código da B20.
+    - **Portes das fichas no ar que mudam pela régua nova** (as 20 cobertas pelos 30 animais aprovados; as outras mudam quando os lotes chegarem):
+      - de Médio para Pequeno: `mon-lobo`, `mon-cheetah`, `mon-javali`, `mon-deinonychus`;
+      - de Grande para Pequeno: `mon-lobo-atroz` (o lobo-terrível), `mon-crocodilo`;
+      - de Grande para Médio: `mon-leao`, `mon-gorila`, `mon-urso-pardo`, `mon-grizzly-bear`, `mon-pteranodon`;
+      - de Médio para Miúdo: `mon-cobra-constritora` (a jiboia);
+      - de Enorme para Grande: `mon-stegosaurus`, `mon-ankylosaurus`;
+      - de Imenso para Enorme: `mon-tyrannosaurus`.
+      - Ficam como estão: `mon-horse`, `mon-shark`, `mon-triceratops`, `mon-brachiosaurus`, `mon-rat-swarm` e `mon-viper`.
+    - **O que fica no porte:**
+      - o acerto (`modificadorPorte`, `porteAcerto`);
+      - a Furtividade de criatura (`furtividadeCriatura.porte`);
+      - o limite do Bloqueio (`bloqueioLimite`);
+      - a velocidade em terra e no nado.
+    - **O que passa do porte para a faixa de massa** (Arrátel, Arroba, Quintal, Tonel, Barca, Galé, Nau):
+      - o PV base (`derivados.pv.porte`);
+      - a Couraça e o `resistPerf` (`dano.couracaPorte`);
+      - o peso erguido e a carga.
+      - O `pesoDoPorte` do Grid (`artes-grid-mesa.ts`, perto da l.1362) é do porte e passa a ser da faixa.
+    - **Campos novos da ficha, que o Grid não lê:**
+      - a faixa de massa;
+      - as dimensões em número (altura, comprimento) e a medida do porte;
+      - os PV em base e bônus (D-135);
+      - as secundárias Voo e Natação;
+      - o voo em Batalha, Cruzeiro e Mergulho, com a marca "caça mergulhando" (D-136, D-137), e o Grid só lê `locomocao.terra`;
+      - as Especialidades (Atletismo "fôlego", D-134);
+      - a Aparência de 4 a 8 (D-138), quando o código põe 4 (`AP_BASE`, `scripts/lib-bestiario.mjs`).

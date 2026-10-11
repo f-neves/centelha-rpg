@@ -290,9 +290,8 @@ limitações conhecidas, que são as três de baixo.
   - **Quadro de Regras de Criaturas (D-118), só a lista; o texto entra numa rodada futura:** o quadrúpede ergue com
     a boca só uma fração da Força (Mestre), e o peso da ficha é a capacidade de carga; secundárias exclusivas por
     anatomia ou raça (Corrida, Musculatura, Voo depois); o agarrar pelo porte (anotado, sem regra); o piso de 1 m
-    por Tick para bichos muito lentos (Mestre); o PV por massa dentro do porte (D-129, que substituiu o degrau da
-    D-125: de 0 no início da faixa de massa ao máximo do porte no fim, em escala de multiplicação; Pequeno +5, Médio
-    +6, Grande +8, Enorme para cima +10), mostrado à parte na ficha; a arrancada curta do bote do crocodilo, do
+    por Tick para bichos muito lentos (Mestre); o bônus de PV por criatura, com justificativa, numa linha à parte na
+    ficha (D-135, que substituiu o PV por massa das D-125 e D-129); a arrancada curta do bote do crocodilo, do
     Mestre (D-126).
   - **Os 30 animais APROVADOS pelo autor (D-128, 11/10/2026):** as cinco pilotos e os outros 25 no modelo final, com o
     PV por massa (D-125) e o nado das D-124 e D-126, em `../tmp/arquiteto/bestiario/aprovacao-30.md`. A Força dos
@@ -308,10 +307,19 @@ limitações conhecidas, que são as três de baixo.
     Criaturas, o PV por massa (D-125) e a frase da arrancada do bote (D-126).
   - **Plano dos animais que faltam (11/10/2026):** as 84 fichas da categoria Animal, com os 16 gigantes da D-105, em
     `../tmp/arquiteto/bestiario/plano-proximos.md`: 62 por fazer, em 9 lotes.
-  - **Antes dos lotes (D-130, D-131):** o esquema da ficha (`esquema-ficha.md`) e a fórmula do voo (`voo.md`), em
-    rascunho, à espera do autor. Os lotes 1, 2, 3 e 5 vão às Bestiaristas só depois do esquema aprovado; o lote 4
-    espera o voo.
-  - **Próxima etapa:** a aprovação do esquema e do voo; depois, os lotes e a bancada do dano dos grandes.
+  - **Antes dos lotes (D-130, D-131):** o esquema da ficha (`esquema-ficha.md`) e a fórmula do voo (`voo.md`).
+    **Respondidos em 11/10/2026 (D-132 a D-138):**
+    - o porte vem das dimensões, e a massa vai para faixas de massa (Arrátel a Nau) que levam peso, carga, PV e
+      couraça (D-132), pelas referências do autor (D-133);
+    - o Vigor do animal pesa a resistência do corpo, e o fôlego vai para a Especialidade de Atletismo (D-134);
+    - o PV por massa sai, e entra um bônus por criatura (D-135);
+    - o voo fica sem porte, e as espécies se separam pela secundária Voo (D-136);
+    - o mergulho é só de quem caça mergulhando (D-137);
+    - o esquema está aprovado (D-138).
+    A régua de porte e as faixas estão em `../tmp/arquiteto/bestiario/porte-faixas.md`; as 30 fichas, refeitas e
+    consolidadas, em `fichas/`; o teste de ordem, em `teste-de-ordem.md`.
+  - **Próxima etapa:** a aprovação da régua de porte pelo autor. Os lotes 1, 2, 3 e 5 só começam depois dela; o
+    lote 4 (voadores) já tem o voo. Depois, a bancada do dano dos grandes.
   - **Anotado, sem regra (D-115):** o porte afeta o agarrar (o grande agarra o pequeno com mais facilidade).
   - **N22, quando a ficha entrar:** o Grid não multiplica o P por porte nem anatomia; o `pesoDoPorte` do Grid
     (`artes-grid-mesa.ts` l.1362) usa pesos que não batem com as faixas novas; o Grid lê só `locomocao.terra` e
