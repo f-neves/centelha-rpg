@@ -291,14 +291,24 @@ limitações conhecidas, que são as três de baixo.
     a boca só uma fração da Força (Mestre), e o peso da ficha é a capacidade de carga; secundárias exclusivas por
     anatomia ou raça (Corrida, Musculatura, Voo depois); o agarrar pelo porte (anotado, sem regra); o piso de 1 m
     por Tick para bichos muito lentos (Mestre).
-  - **Próxima etapa (11/10/2026):** fechar as cinco fichas piloto com a carga da D-122 e fazer os outros 25 animais
-    da lista de 30 no modelo final, com o teste de ordem completo, em `../tmp/arquiteto/bestiario/`, para o autor.
-    A Força dos animais Enorme para cima fica provisória até a bancada do dano (D-116 d).
+  - **Os 30 animais prontos para aprovação (11/10/2026):** as cinco pilotos fechadas com a carga da D-122 e os
+    outros 25 no modelo final, com o teste de ordem completo, em `../tmp/arquiteto/bestiario/aprovacao-30.md`. A
+    Força dos animais Enorme para cima fica provisória até a bancada do dano (D-116 d).
+  - **Nado na proporção real (D-124, 11/10/2026):** a fórmula humana passa a 0,5 + Vigor × 0,15 + (Atletismo +
+    Natação) × 0,1, a calibrar; as anatomias de nado foram recalibradas no rascunho (nadador e réptil de corpo baixo
+    3,8, quadrúpede 1,5). Três questões ao autor no `aprovacao-30.md`: o teto humano (Vigor 6 dá 2,60 m/s, acima do
+    recorde de 2,39), o nado do crocodilo e a armadura na Vel. de Natação.
+  - **Rodada de texto e de código, anotada, sem fazer agora (D-124):** `src/data/regras.json`
+    `derivados.deslocamento.natacao`; `src/content/chapters/acoes-corpo-e-movimento.md` l.49-55 (fórmula e exemplo);
+    `src/lib/calc.ts` `deslocamento()` (o nado pede uma casa decimal); `src/lib/ficha-engine.ts` l.1619 (rótulo) e
+    l.1713-1721 (tabela de Deslocamento com carga e armadura); `scripts/test-kael.mjs`, se guardar a Vel. de Natação.
+  - **Próxima etapa:** a aprovação do autor sobre `aprovacao-30.md`, e depois a bancada do dano dos grandes.
   - **Anotado, sem regra (D-115):** o porte afeta o agarrar (o grande agarra o pequeno com mais facilidade).
   - **N22, quando a ficha entrar:** o Grid não multiplica o P por porte nem anatomia; o `pesoDoPorte` do Grid
     (`artes-grid-mesa.ts` l.1362) usa pesos que não batem com as faixas novas; o Grid lê só `locomocao.terra` e
     carrega a criatura com `skills2: {}` (então nem Musculatura nem Corrida chegam a ele); a FAH do Grid
-    (`forca-empurrao.ts`) não soma Musculatura.
+    (`forca-empurrao.ts`) não soma Musculatura. O Grid não lê nado hoje; quando ler, o metro por Tick inteiro erra
+    até 25% perto de 1 m/s (D-124).
   - **Absorve:** a B14 (desafio, Centelha e revisão das fichas) e a N20 (classe de ataque dos golems) passam a ser
     feitas dentro desta frente quando ela chegar a essas criaturas.
   - **Leitura de apoio, fora do repositório:** `../tmp/arquiteto/bestiario/diagnostico.md`,
