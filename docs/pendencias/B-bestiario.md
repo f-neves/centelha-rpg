@@ -269,9 +269,18 @@ limitações conhecidas, que são as três de baixo.
     na vida real; criaturas podem ter Habilidades secundárias, inclusive próprias; a jararaca é a quarta piloto, e a
     peçonha botrópica entra no catálogo só com o nome quando a ficha entrar; o urso-pardo está aprovado; o recorde do
     puro-sangue não vale para o cavalo de sela.
-  - **Próxima etapa:** a análise da curva dos Atributos e da velocidade dos animais
-    (`../tmp/arquiteto/bestiario/crescimento-atributos.md`) e a ficha da jararaca. Os outros 26 animais esperam o autor
-    decidir a curva e a velocidade.
+  - **Curva e velocidade (10/10/2026):** a análise (`../tmp/arquiteto/bestiario/crescimento-atributos.md`) e a ficha
+    da jararaca foram entregues. Resposta do autor (D-115): três camadas, modificador de porte (peso, arremesso e
+    velocidade), modificador de anatomia e Habilidades, secundárias e Especialidades para o resto; a Força é
+    universal e o porte muda o peso, não o dano. Leituras (D-116): o gorila é Grande; a Força entra no Arranque da
+    criatura só até 6; sem secundária de Corrida; a Força dos grandes sai do dano, conferido na bancada.
+  - **Próxima etapa:** o autor responde ao rascunho das tabelas de porte e de anatomia e às quatro fichas refeitas
+    (`../tmp/arquiteto/bestiario/porte-anatomia.md`, com três questões). Depois, a bancada da Força dos grandes. Os
+    outros 26 animais esperam.
+  - **Anotado, sem regra (D-115):** o porte afeta o agarrar (o grande agarra o pequeno com mais facilidade).
+  - **N22, quando a ficha entrar:** o Grid não multiplica o P por porte nem anatomia; o `pesoDoPorte` do Grid
+    (`artes-grid-mesa.ts` l.1362) usa pesos que não batem com as faixas novas; o Grid lê só `locomocao.terra` e
+    carrega a criatura com `skills2: {}`.
   - **Absorve:** a B14 (desafio, Centelha e revisão das fichas) e a N20 (classe de ataque dos golems) passam a ser
     feitas dentro desta frente quando ela chegar a essas criaturas.
   - **Leitura de apoio, fora do repositório:** `../tmp/arquiteto/bestiario/diagnostico.md`,

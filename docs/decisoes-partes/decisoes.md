@@ -622,7 +622,7 @@ uma decisao registrada, pare e pergunte ao autor.
 - Data: 2026-09-26
 - Decisão: "as criaturas que voam na fonte ganham locomocao.voo; a velocidade em terra passa a ser a da fonte (hoje há casos com a velocidade de voo lida como terra, ex.: mon-roc)." Reforçado depois: "ft ÷ 10 = m/Tick de batalha, como o resto do deslocamento ... Terra passa a ser a velocidade de terra da fonte ... Os outros modos (natação, escalada, escavação) entram do mesmo jeito."
 - Origem: b14-fase2-despacho.md:46-48 (C.10); b14-fase2-resposta-despacho.md:26-29 (item 4)
-- Estado: no ar (deslocamento resolvido em 28/08 e estendido; 309 criaturas, ver memória "Deslocamento do bestiário"; não conferido por criatura)
+- Estado: no ar (deslocamento resolvido em 28/08 e estendido; 309 criaturas, ver memória "Deslocamento do bestiário"; não conferido por criatura). **Atualizado em 10/10/2026:** nos animais, o "ft ÷ 10" vai ser substituído pela fórmula humana × porte × anatomia (D-115) quando a ficha nova entrar no repositório; até lá, segue no ar.
 
 ### C-010 · Orc: atributos fixos e poderes da raça [tags: bestiario, orc, racas, atributos]
 - Data: 2026-09-26
@@ -1790,7 +1790,7 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): o teto 6 é o teto humano. Cada espécie tem a sua faixa natural, que vem da realidade, e a Centelha abre o que passa da faixa da espécie.
 - Origem: resposta do autor ao inventário do bestiário (`../tmp/arquiteto/bestiario/inventario.md`, item 8): 27 dos 84 animais têm Força acima de 6 com Centelha 0, contra `atributos.md` l.74 ("acima de 6 só se abrem pela Centelha"). Completa a D-095 (o gorila mais fraco é mais forte que qualquer humano).
-- Estado: a implementar. O livro (`src/content/chapters/atributos.md` l.74) ganha uma frase dizendo isso, numa rodada de texto (item anotado na B20); nada escrito ainda. Os extremos (o animal mais forte que qualquer humano) se corrigem por Habilidades secundárias de criatura (D-111).
+- Estado: a implementar. O livro (`src/content/chapters/atributos.md` l.74) ganha uma frase dizendo isso, numa rodada de texto (item anotado na B20); nada escrito ainda. Os extremos (o animal mais forte que qualquer humano) se corrigem por Habilidades secundárias de criatura (D-111). **Atualizado em 10/10/2026 (D-115):** os extremos se corrigem pelo porte, pela anatomia e pelas secundárias.
 
 ### D-105 · Animal gigante continua animal, com Centelha 0 [tags: bestiario, gigante, animal, centelha, porte, piloto, b20]
 - Data: 2026-10-10
@@ -1837,13 +1837,13 @@ As D-107 a D-114 são a resposta do autor ao rascunho da regra de construção e
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): "Bloqueio: o VALOR mede o quanto o animal bloqueia na vida real (o lobo quase não bloqueia, porque a mordida não defende; o gato apara com patadas; o alce bloqueia muito com a galhada e pode ter 3). O EFEITO segue a D-100 (pata, focinho e corpo: tira só a Margem; chifre, galhada e carapaça: param o golpe). A tabela da seção 3 deixa de decidir o valor pelo tipo de defesa. O urso com Bloqueio 2 está certo."
 - Origem: linha do Bloqueio na tabela da seção 3 do rascunho (1 para quem apara com pata ou corpo, 2 a 3 para chifre, galhada ou carapaça) e o Bloqueio 2 do urso-pardo piloto.
-- Estado: a implementar (B20). Não muda a D-100 nem a D-088 (o efeito). "Quase não bloqueia" é 1, e não 0, porque a D-100 diz que todos os animais têm algum Bloqueio.
+- Estado: a implementar (B20). Não muda a D-100 nem a D-088 (o efeito). "Quase não bloqueia" é 1, e não 0, porque a D-100 diz que todos os animais têm algum Bloqueio. Essa leitura ficou (D-116 e, 10/10/2026).
 
 ### D-111 · Criaturas podem ter Habilidades secundárias, inclusive próprias; é por elas que se corrigem os extremos [tags: bestiario, criatura, habilidades-secundarias, forca, d-095, d-104, b20]
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): "Habilidades secundárias: criaturas podem ter Habilidades secundárias, inclusive algumas que não existem na ficha de personagem. É por elas que se corrigem os extremos (por exemplo, o animal mais forte que qualquer humano). Isso substitui a questão 2 do seu rascunho."
 - Origem: questão 2 do rascunho (em qual régua o animal é "mais forte que qualquer humano": Força crua, peso máximo P acima de 500 kg, ou Halterofilismo equivalente). O conflito: o humano de Força 6 e Halterofilismo 6 levanta 500 kg, o mesmo que um animal de Força 8 sem Halterofilismo.
-- Estado: a implementar (B20). Completa a D-095 e a D-104. Quais secundárias, e com que números, depende da análise da curva dos Atributos (em aberto).
+- Estado: a implementar (B20). Completa a D-095 e a D-104. Quais secundárias, e com que números, depende da análise da curva dos Atributos (em aberto). **Atualizado em 10/10/2026:** as secundárias são a terceira camada da D-115, para o que o porte e a anatomia não encaixam; sem secundária de Corrida por enquanto (D-116 c).
 
 ### D-112 · Jararaca é a quarta ficha piloto; o catálogo de venenos ganha a peçonha botrópica só com o nome [tags: bestiario, animal, jararaca, veneno, piloto, d-101, b20]
 - Data: 2026-10-10
@@ -1855,13 +1855,36 @@ As D-107 a D-114 são a resposta do autor ao rascunho da regra de construção e
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): "Urso-pardo: aprovado como está."
 - Origem: ficha piloto do urso-pardo (`../tmp/arquiteto/bestiario/fichas-piloto.md`, seção 3): Força 8, Destreza 3, Vigor 5, Briga 4, Bloqueio 2, Vontade 4, patada 1d6 + 8.
-- Estado: aprovado, fora do repositório. Leitura do Arquiteto: as regras gerais da mesma resposta valem por cima da ficha aprovada, e a ficha ganha Sobrevivência (D-109) e Aparência pela D-107, que ela não tinha. O deslocamento dela (8/12/17 m por Tick) fica fora da aprovação, porque a velocidade dos quadrúpedes ficou aberta (D-114).
+- Estado: aprovado, fora do repositório. Leitura do Arquiteto: as regras gerais da mesma resposta valem por cima da ficha aprovada, e a ficha ganha Sobrevivência (D-109) e Aparência pela D-107, que ela não tinha. O deslocamento dela (8/12/17 m por Tick) fica fora da aprovação, porque a velocidade dos quadrúpedes ficou aberta (D-114). A leitura ficou (D-116 e, 10/10/2026).
 
 ### D-114 · Cavalo: o recorde do puro-sangue não vale para o cavalo de sela; a velocidade dos animais fica aberta [tags: bestiario, animal, cavalo, deslocamento, velocidade, c-009, b20]
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): "Cavalo e quadrúpedes: o recorde do puro-sangue não vale como velocidade do cavalo de sela. A questão de velocidade fica aberta."
 - Origem: o deslocamento 9/14/20 do cavalo piloto, tirado do recorde do puro-sangue em 402 m (70,35 km/h), e a questão 3 do rascunho (a velocidade real contra a C-009, que diz "ft ÷ 10 = m/Tick de batalha").
-- Estado: aberta. A C-009 segue no ar. O autor levantou três caminhos, nenhum decidido: velocidade por criatura a partir do dado real; bônus de velocidade por criatura somado à fórmula humana; uma Habilidade secundária Corrida com Especialização. A análise com os números vai em `../tmp/arquiteto/bestiario/crescimento-atributos.md`.
+- Estado: aberta. A C-009 segue no ar. O autor levantou três caminhos, nenhum decidido: velocidade por criatura a partir do dado real; bônus de velocidade por criatura somado à fórmula humana; uma Habilidade secundária Corrida com Especialização. A análise com os números vai em `../tmp/arquiteto/bestiario/crescimento-atributos.md`. **Atualizado em 10/10/2026:** o modelo da velocidade foi decidido pela D-115 (fórmula humana × porte × anatomia, e a camada 3 para o resto), e a secundária Corrida saiu por enquanto (D-116 c). Os números (os modificadores e a velocidade do cavalo de sela) seguem em rascunho, em `../tmp/arquiteto/bestiario/porte-anatomia.md`.
+
+## Três camadas para o tamanho e a anatomia das criaturas (10/10/2026)
+
+### D-115 · Três camadas: modificador de porte, modificador de anatomia e Habilidades; a Força é universal [tags: bestiario, criatura, porte, anatomia, forca, peso, arremesso, deslocamento, velocidade, agarrao, habilidades-secundarias, d-104, d-111, d-114, b20]
+- Data: 2026-10-10
+- Decisão (autor, 10/10/2026): "Três camadas, usadas juntas:
+  1. MODIFICADOR DE PORTE: criaturas maiores erguem mais peso e correm mais rápido que as menores. É um multiplicador acima de 1 para os portes maiores que Médio e entre 0 e 1 para os menores. O arremesso segue o peso que se ergue, então leva o mesmo modificador. O porte também afeta o agarrar (o grande agarra o pequeno com mais facilidade que o contrário) e já afeta o acerto (regra existente). O autor deu esses exemplos sem entrar nas regras: o agarrar e o resto ficam para depois; não escreva regra para eles agora, só anote.
+  2. MODIFICADOR DE ANATOMIA: criaturas com anatomia diferente do humanoide puro têm modificadores para a velocidade e, se for o caso, para o peso erguido, o arremesso e o resto. Também é multiplicador, acima de 1 ou entre 0 e 1. Exemplo do autor: pelo porte, o gorila correria mais que o humano, mas a anatomia dele não deixa; o modificador de anatomia corrige isso.
+  3. Habilidades, Habilidades secundárias e Especialidades (em ambas) cobrem os casos que os modificadores não encaixam.
+  A Força é universal: Força 4 bate como Força 4 em qualquer criatura (dano, limite do Bloqueio, agarrão). O porte muda o peso, não o dano."
+- Origem: resposta do autor à análise da curva dos Atributos e da velocidade (`../tmp/arquiteto/bestiario/crescimento-atributos.md`), 10/10/2026.
+- Estado: a implementar (B20). Os números (faixas de massa, os modificadores de cada porte e de cada anatomia, as quatro fichas refeitas) estão em rascunho em `../tmp/arquiteto/bestiario/porte-anatomia.md`, esperando o autor. **O agarrar pelo porte fica anotado, sem regra**, como o autor pediu. Completa a D-104 e a D-111; dá modelo à velocidade aberta pela D-114.
+
+### D-116 · Leituras da D-115 (o autor não vetou) [tags: bestiario, leitura, porte, gorila, arranque, forca, corrida, dano, bancada, b20]
+- Data: 2026-10-10
+- Leituras (Arquiteto, apresentadas ao autor em 10/10/2026; o autor não vetou):
+  - a) O gorila é Grande (dito pelo autor). A fronteira entre Médio e Grande da régua de porte por massa se ajusta para que ele caia em Grande.
+  - b) Na criatura, a Força entra no Arranque só até 6; acima disso a velocidade vem do porte e da anatomia. Nos humanos nada muda.
+  - c) Sem secundária de Corrida por enquanto.
+  - d) A Força dos animais grandes se escolhe pelo dano que eles devem causar, conferido na bancada; o peso vem do porte. Saem as faixas de Força 30 a 100 (tiranossauro) e similares.
+  - e) As leituras do Arquiteto na D-113 (o urso ganha Sobrevivência e Aparência) e na D-110 (o lobo com Bloqueio 1) ficam.
+- Origem: mensagem do autor de 10/10/2026, junto da D-115.
+- Estado: leituras registradas para a regra de construção da B20. Pelo rascunho (`../tmp/arquiteto/bestiario/porte-anatomia.md`), a fronteira da leitura a) desce de 220 para 130 kg (o gorila macho pesa em média de 136 a 180 kg); isso ainda é proposta, não decisão.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
