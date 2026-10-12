@@ -2269,7 +2269,7 @@ As D-154 a D-161 são a resposta do autor às cinco questões de `../tmp/arquite
 - Origem: mensagem do autor de 11/10/2026, resposta à questão 2 de `porte-area-forca.md`.
 - Estado: a implementar (B20).
   - **Substitui em parte a D-134** ("nos animais, pesa mais a resistência do corpo (...) e menos o fôlego"): o fôlego volta a pesar no Vigor, e a resistência específica vai para a Habilidade Resistência com Especialidade.
-  - **Substitui a régua de Vigor proposta na D-143 e na D-144.** Os alvos do autor na D-144 (estegossauro perto de 7 ou 8, braquiossauro com pelo menos 10) ficam como encaixe, e não como conta.
+  - **Substitui a régua de Vigor proposta na D-143 e na D-144.** Leitura do Arquiteto, vetável: os alvos do autor na D-144 (estegossauro perto de 7 ou 8, braquiossauro com pelo menos 10) podem ficar como encaixe, e não como conta. Está em questão ao autor (`../tmp/arquiteto/bestiario/levantamento-novo.md`, questão 4).
 
 ### D-158 · Força e Vigor se encaixam na criatura, extrapolando; a régua de Força fica só como conferência [tags: bestiario, criatura, animal, forca, vigor, extrapolacao, outros-rpgs, comparacao, d-143, b20]
 - Data: 2026-10-11
