@@ -59,6 +59,19 @@ uma decisao registrada, pare e pergunte ao autor.
 2. D-123 · 11/10/2026 · fator 0,5 no peso erguido; a velocidade nao muda. **Substituida no peso pela D-162** (12/10/2026); a velocidade continua.
 3. D-162 · 12/10/2026 · fator de corpo leve, (massa / 80)^(2/3) abaixo de 80 kg, para todos. **Provisoria:** a formula passou para outra frente, com a Veterana (12/10/2026).
 
+**Forca 0 dos bichos**
+1. D-106 b) · 10/10/2026 · nenhum Atributo fica em 0; o 0 fica para quem nao tem a faculdade. **Substituida em parte pela D-167** na Forca.
+2. D-167 · 12/10/2026 · Forca 0 para os bichos menores que Pequeno, e alguns Pequenos; personagem jogavel tem Forca minima 1. **A implementar (B20).**
+
+**Vigor dos gigantes**
+1. D-143 e D-144 · 11/10/2026 · a regua proposta (resistencia + 1 por dobra de massa) e os alvos do autor (estegossauro 8, braquiossauro 10). **A regua saiu pela D-157.**
+2. D-157 · 11/10/2026 · Vigor e resistencia e folego, e nao tem a ver com peso.
+3. D-164 · 12/10/2026 · os gigantes tem Vigor alto, caso a caso (D-143 e D-157 valem juntas). **A implementar (B20).**
+
+**Forca dos gigantes**
+1. D-143 · 11/10/2026 · a regua proposta (+1 por dobra de massa). **Saiu como regra pela D-158**, que manda encaixar.
+2. D-163 · 12/10/2026 · comparacao com o mamute, conferida no Pathfinder; "todos sobem 5" nao entrou. **A implementar (B20).**
+
 **Dano e Absorcao:** a Centelha inteira soma no dano do atacante (bestia-editor.ts:145) e na Absorcao do alvo uma vez (calc.ts:~297). O raspao do Quase-Acerto (regras.json `quaseAcerto.dano`) soma a do atacante e desconta a do alvo, e ignora a Absorcao (`ignoraSoak`); nao ha desconto em dobro (conferido pelo Arquiteto em 03/10/2026).
 
 ## Indice
@@ -2367,7 +2380,7 @@ As D-163 a D-168 respondem às questões 3 e 4 de `../tmp/arquiteto/bestiario/le
 - Data: 2026-10-12
 - Decisão (autor, 12/10/2026): "A Enguia-do-Entremeio fica parada até o fim do bestiário, junto com a retirada da besta deslocadora. Quando for retirada, o id antigo passa a apontar para a Enguia, para não quebrar as mesas salvas."
 - Origem: mensagem do autor de 12/10/2026.
-- Estado: parada. Quando entrar: o id `mon-besta-deslocadora` vira um apelido no código para o id da Enguia, e as mesas salvas continuam abrindo a ficha. É trabalho de código, sem mexer no banco.
+- Estado: parada. Quando entrar, o id `mon-besta-deslocadora` aponta para a Enguia. Está a conferir na rodada de código como a mesa salva guarda a criatura: se guarda só o id, basta um apelido no código; se guarda uma cópia da ficha, o Arquiteto para e avisa antes de mexer, porque aí o caminho passa pelo banco.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
