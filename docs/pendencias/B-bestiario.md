@@ -344,7 +344,22 @@ limitações conhecidas, que são as três de baixo.
     - a carga e a FAH no quadrúpede, que mexe na D-118;
     - a curva da extensão da FAH;
     - a criatura nova (três conceitos).
-  - **Próxima etapa:** o autor responder. Depois, numa passada só, as 30 fichas recebem o porte, a faixa
+  - **A resposta do autor (11/10/2026, D-154 a D-161):**
+    - porte pela R2, com o peso e a área exatos (D-154);
+    - a cauda grossa conta, e o JSON ganha dados de pesquisa (D-155);
+    - o troll pesa cerca de 350 kg (D-156);
+    - o Vigor é resistência e fôlego, sem a régua por massa (D-157);
+    - a Força se encaixa no animal, e a régua fica só como conferência (D-158);
+    - a tabela de levantamento muda para todos, com o bônus do corpo (D-159);
+    - Carga e Peso erguido no quadrúpede (D-160);
+    - a Enguia-do-Entremeio entra no lugar da besta (D-161).
+    O trabalho está em `../tmp/arquiteto/bestiario/levantamento-novo.md` e `enguia-do-entremeio.md`, com questões
+    ao autor: a forma de rebalancear a carga, o bônus do corpo contra a D-123 e os multiplicadores de faixa,
+    a Força e o Vigor dos gigantes, e as da Enguia.
+  - **Próxima etapa (substitui a de baixo):** o autor responder. Depois, numa passada só, as 30 fichas recebem o
+    porte pela R2, o Vigor e a Força de encaixe e o P novo; a tabela de levantamento e a carga entram numa rodada
+    de código própria (`regras.json`, `forca-empurrao.ts`, `ficha-engine.ts`, o capítulo e o `test-l85`).
+  - **Etapa anterior:** o autor responder. Depois, numa passada só, as 30 fichas recebem o porte, a faixa
     numerada, o Vigor novo e os PV. Em seguida vêm o 0,7 do réptil e as serpentes contra a velocidade real.
     Os lotes 1, 2, 3 e 5 só começam depois disso; o lote 4 (voadores) já tem o voo. A largura entra na pesquisa
     dos lotes (D-147).
