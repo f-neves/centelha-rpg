@@ -368,7 +368,18 @@ limitações conhecidas, que são as três de baixo.
     A passada nas 30 está em `../tmp/arquiteto/bestiario/passada-30.md`, com quatro questões ao autor (a raposa
     no Miúdo, a serpente e o porte, o nado do mosassauro e o PV do Minúsculo). O pacote dos Bestiaristas está em
     `bestiaristas-esquema.md` e `bestiaristas-escala.md`, na mesma pasta.
-  - **Próxima etapa (substitui a de baixo):** o autor aprovar a passada e o pacote dos Bestiaristas. Depois, as
+  - **A resposta do autor (12/10/2026, D-169 a D-174):**
+    - as faixas de PV dos minúsculos e o peso erguido ficam adiados (D-169);
+    - a velocidade fica para o fim, depois do peso erguido; o estranho vira observação (D-170);
+    - a raposa fica Miúda, e o corte de massa do Pequeno fica em 4 kg (D-171);
+    - os Bestiaristas liberados para os 62, em rascunho, com peso e velocidade provisórios (D-172);
+    - nada vai ao ar antes de todas as fichas e do código (D-173);
+    - na dúvida, decisão provisória do Arquiteto ou da Veterana, com nota de observação (D-174).
+  - **Próxima etapa (substitui a de baixo):** os Bestiaristas produzem os 62 em rascunho, em
+    `../tmp/arquiteto/bestiario/`, a partir das 30 aprovadas. Depois, a rodada de código (com o identificador novo
+    do Minúsculo), a releitura das notas de observação, e só então a publicação (D-173). O P e a velocidade se
+    refazem quando a outra frente fechar a fórmula (D-169, D-170).
+  - **Etapa anterior (feita pela D-172):** o autor aprovar a passada e o pacote dos Bestiaristas. Depois, as
     30 fichas são gravadas, e os lotes 1, 2, 3 e 5 começam. O P só vai para o site quando a outra frente fechar a
     fórmula.
   - **Etapa anterior:** o autor responder. Depois, numa passada só, as 30 fichas recebem o

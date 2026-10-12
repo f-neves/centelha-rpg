@@ -57,7 +57,15 @@ uma decisao registrada, pare e pergunte ao autor.
 **Peso de halfling e gnomo**
 1. Proposta de 0,75 (rascunho de porte e anatomia, fora do registro). **Nao entrou.**
 2. D-123 · 11/10/2026 · fator 0,5 no peso erguido; a velocidade nao muda. **Substituida no peso pela D-162** (12/10/2026); a velocidade continua.
-3. D-162 · 12/10/2026 · fator de corpo leve, (massa / 80)^(2/3) abaixo de 80 kg, para todos. **Provisoria:** a formula passou para outra frente, com a Veterana (12/10/2026).
+3. D-162 · 12/10/2026 · fator de corpo leve, (massa / 80)^(2/3) abaixo de 80 kg, para todos. **Provisoria:** a formula passou para outra frente, com a Veterana (12/10/2026). Adiada pela D-169; a velocidade do bestiario so e revista depois dela (D-170).
+
+**Porte da raposa e o corte de 4 kg**
+1. D-154 e D-166 · 11 e 12/10/2026 · porte pela R2; a raposa e referencia do Miudo, e a R2 a da Pequena.
+2. D-171 · 12/10/2026 · o corte fica em 4 kg; a raposa fica Miuda por encaixe, com nota de observacao. **A implementar (B20).**
+
+**Publicacao do bestiario**
+1. D-172 · 12/10/2026 · os Bestiaristas liberados para os 62, em rascunho, com peso e velocidade provisorios.
+2. D-173 · 12/10/2026 · nada vai ao ar antes de todas as fichas e do codigo. D-174: na duvida, decisao provisoria com nota.
 
 **Forca 0 dos bichos**
 1. D-106 b) · 10/10/2026 · nenhum Atributo fica em 0; o 0 fica para quem nao tem a faculdade. **Substituida em parte pela D-167** na Forca.
@@ -2136,7 +2144,7 @@ As D-139 a D-142 respondem ao relatório da régua de porte e das faixas de mass
 - Origem: mensagem do autor de 11/10/2026.
 - Estado: a implementar (B20).
   - **Substitui os nomes propostos na D-132.** Os números das faixas não mudam.
-  - **Desde a D-166 (12/10/2026)** há oito portes e sete faixas: o Minúsculo não tem faixa própria. Em questão ao autor (`../tmp/arquiteto/bestiario/passada-30.md`): o corte de massa do Pequeno na R2 (questão 1) e uma Faixa 0 para o PV (questão 4).
+  - **Desde a D-166 (12/10/2026)** há oito portes e sete faixas: o Minúsculo não tem faixa própria. Em questão ao autor (`../tmp/arquiteto/bestiario/passada-30.md`): o corte de massa do Pequeno na R2 (questão 1) e uma Faixa 0 para o PV (questão 4). **Respondidas em 12/10/2026:** o corte fica em 4 kg (D-171), e a Faixa 0 fica adiada (D-169).
   - As 30 fichas do rascunho mudam numa passada só, junto com o porte da D-139, depois que o autor ver o teste.
 
 ### D-142 · As leituras vetáveis do Arquiteto ficam aprovadas [tags: bestiario, criatura, velocidade, porte, anatomia, reptil, natacao, aparencia, d-119, d-124, d-134, d-138, b20]
@@ -2350,13 +2358,13 @@ As D-163 a D-168 respondem às questões 3 e 4 de `../tmp/arquiteto/bestiario/le
 - Data: 2026-10-12
 - Decisão (autor, 12/10/2026): "Cada gigante recebe a Força por comparação com o mamute, ajustada pelo corpo dele, conferida com a escala do Pathfinder (que dá braquiossauro perto de 20, tiranossauro 17, estegossauro, anquilossauro e tricerátops 14 a 15). O Arquiteto justifica cada um numa linha." A opção do Arquiteto, "todos sobem 5", não foi aceita: "é uma regra tirada de um exemplo só".
 - Origem: mensagem do autor de 12/10/2026, resposta à questão 3 de `levantamento-novo.md`.
-- Estado: proposta na passada (`passada-30.md` §2.3), a aprovar: estegossauro, anquilossauro e tricerátops 15, mosassauro 16, tiranossauro 17, braquiossauro 20. A Força 18 do mamute vem de um feito de arrasto e é provisória (D-162); se ela mudar, a comparação dos seis se refaz.
+- Estado: aprovada como base pela D-172 (12/10/2026): estegossauro, anquilossauro e tricerátops 15, mosassauro 16, tiranossauro 17, braquiossauro 20. A Força 18 do mamute vem de um feito de arrasto e é provisória (D-162); se ela mudar, a comparação dos seis se refaz.
 
 ### D-164 · O Vigor dos gigantes: alto, justificado caso a caso [tags: bestiario, criatura, vigor, gigante, ferida-curada, longevidade, folego, tigre, d-143, d-144, d-157, b20]
 - Data: 2026-10-12
 - Decisão (autor, 12/10/2026): "Os gigantes recebem Vigor alto justificado caso a caso pela D-143 (ferida curada, vida longa, fôlego): anquilossauro, tricerátops e tiranossauro perto de 8, mosassauro 7, mamute 6, estegossauro 8, braquiossauro 10. O tigre fica em 4 porque não é gigante." A recomendação do Arquiteto (os gigantes em 4) "leu só a D-157 ('não tem a ver com peso') e ignorou a D-143 ('Criaturas grandes têm mais Força e Vigor'). As duas valem juntas: o Vigor não sai de fórmula de peso, mas o gigante costuma ter Vigor alto, justificado caso a caso."
 - Origem: mensagem do autor de 12/10/2026, resposta à questão 4 de `levantamento-novo.md`.
-- Estado: proposta na passada (`passada-30.md` §2.4), a aprovar, com uma linha de justificativa por animal. Responde à leitura vetável que o Arquiteto anotou na D-157 e confirma os alvos da D-144.
+- Estado: aprovada como base pela D-172 (12/10/2026), com uma linha de justificativa por animal. Responde à leitura vetável que o Arquiteto anotou na D-157 e confirma os alvos da D-144.
 
 ### D-165 · As faixas de carga e o equipamento ficam como estão [tags: carga, equipamento, armadura, faixas, levantamento, d-159]
 - Data: 2026-10-12
@@ -2368,7 +2376,7 @@ As D-163 a D-168 respondem às questões 3 e 4 de `../tmp/arquiteto/bestiario/le
 - Data: 2026-10-12
 - Decisão (autor, 12/10/2026): "Criar o Minúsculo, abaixo do Miúdo: rato, aranha, morcego pequeno e pardal no Minúsculo; gato, coelho, galinha e raposa no Miúdo." O corte se calibra pela R2, com essas referências. O acerto segue a D-077 (no corpo a corpo, só o menor ganha +3 por categoria), então o Minúsculo ganha +9 contra um Médio.
 - Origem: mensagem do autor de 12/10/2026.
-- Estado: a implementar (B20). Calibração em `passada-30.md` §2.2: o Minúsculo começa em 0,0625 kg e 0,019 m². A raposa só fica Miúda subindo o corte de massa do Pequeno, na R2, de 4 para 8 kg; isso separa a escala da R2 da faixa de massa do PV, e está em questão ao autor (questão 1). O identificador `minusculo` já é o do Miúdo no código (`calc.ts`, `regras.json`): a categoria nova precisa de outro, na rodada de código.
+- Estado: a implementar (B20). Calibração em `passada-30.md` §2.2: o Minúsculo começa em 0,0625 kg e 0,019 m². A raposa só fica Miúda subindo o corte de massa do Pequeno, na R2, de 4 para 8 kg; isso separa a escala da R2 da faixa de massa do PV, e está em questão ao autor (questão 1). O identificador `minusculo` já é o do Miúdo no código (`calc.ts`, `regras.json`): a categoria nova precisa de outro, na rodada de código. **Respondida pela D-171 (12/10/2026):** o corte fica em 4 kg, e a raposa fica Miúda por encaixe, com nota.
 
 ### D-167 · Força 0 para os bichos menores que Pequeno, e alguns Pequenos [tags: bestiario, criatura, forca, forca-zero, atributos, miudo, minusculo, dano, agarrao, d-106, d-115, d-158, b20]
 - Data: 2026-10-12
@@ -2381,6 +2389,52 @@ As D-163 a D-168 respondem às questões 3 e 4 de `../tmp/arquiteto/bestiario/le
 - Decisão (autor, 12/10/2026): "A Enguia-do-Entremeio fica parada até o fim do bestiário, junto com a retirada da besta deslocadora. Quando for retirada, o id antigo passa a apontar para a Enguia, para não quebrar as mesas salvas."
 - Origem: mensagem do autor de 12/10/2026.
 - Estado: parada. Quando entrar, o id `mon-besta-deslocadora` aponta para a Enguia. Está a conferir na rodada de código como a mesa salva guarda a criatura: se guarda só o id, basta um apelido no código; se guarda uma cópia da ficha, o Arquiteto para e avisa antes de mexer, porque aí o caminho passa pelo banco.
+
+## Adiamentos, a raposa e os Bestiaristas liberados (12/10/2026)
+
+As D-169 a D-174 respondem às quatro questões de `../tmp/arquiteto/bestiario/passada-30.md` (a 1 pela D-171; a 2, a 3 e a 4 ficam adiadas pela D-169 e pela D-170) e liberam o trabalho dos lotes. Com elas, a passada nas 30 está aprovada como base das fichas novas, em rascunho; nada vai para `src/` nem para o site antes da D-173.
+
+### D-169 · As faixas de PV dos minúsculos e o peso erguido ficam adiados [tags: bestiario, criatura, pv, faixa-de-massa, minusculo, rato, peso-erguido, d-132, d-141, d-162, d-166, b20]
+- Data: 2026-10-12
+- Decisão (autor, 12/10/2026): "Faixas de peso de vida (criaturas minúsculas tipo rato) e peso erguido: ficam ADIADAS. Não mexer agora. O autor vai decidir depois. O rato de ~300g continua caindo na faixa atual até lá."
+- Origem: mensagem do autor de 12/10/2026, resposta à questão 4 de `passada-30.md`.
+- Estado: adiada. O Minúsculo fica na Faixa 1 da D-132 (15 + Vigor): o rato do enxame com 19 PV e a jararaca com 17, marcados **[provisório]** com nota de observação na ficha. A Faixa 0 proposta (5 + Vigor abaixo de 1 kg) não entrou. O P segue pela D-162, provisório, com a outra frente.
+
+### D-170 · A velocidade fica para o fim, depois do peso erguido [tags: bestiario, criatura, velocidade, deslocamento, terra, nado, serpente, reptil, mosassauro, minusculo, d-119, d-124, d-136, d-158, d-164, b20]
+- Data: 2026-10-12
+- Decisão (autor, 12/10/2026): "Velocidade (terra, nado, serpentes, mosassauro, fator do réptil): ADIADA para o fim, depois do peso erguido. O que estiver estranho, só anotar como observação, não corrigir."
+- Origem: mensagem do autor de 12/10/2026, resposta às questões 2 e 3 de `passada-30.md`.
+- Estado: adiada. Nas fichas, a velocidade sai pela fórmula de hoje (D-119, D-124, D-136) e fica **[provisório]**. O que a passada achou entra como observação, sem correção:
+  - o fator do réptil de corpo baixo (0,7 dá o crocodilo acima dos 14 km/h medidos);
+  - a serpente com o porte (a jiboia andaria quase cinco vezes mais que a jararaca);
+  - o nado do mosassauro com Vigor 7 (25 km/h, contra 14 a 18 do bote estimado);
+  - o multiplicador do Minúsculo, que não existe hoje (o 0,2 calibrado no rato fica como proposta);
+  - o Miúdo sem âncora de velocidade, desde que o rato saiu para o Minúsculo.
+  A provisória do Minúsculo, pela D-174: usa o multiplicador do Miúdo (0,4) até a velocidade ser revista.
+
+### D-171 · A raposa fica Miúda; o corte de massa do Pequeno fica em 4 kg [tags: bestiario, criatura, porte, raposa, miudo, pequeno, r2, corte, d-141, d-154, d-166, b20]
+- Data: 2026-10-12
+- Decisão (autor, 12/10/2026): "Raposa: continua no porte atual (Miúda). NÃO subir o corte de peso de 4 para 8 kg, porque isso poderia reclassificar outras criaturas ainda não vistas (ex.: cachorro de 7 kg). Deixar como observação futura, para revisar quando olharmos de novo as criaturas pequenas."
+- Origem: mensagem do autor de 12/10/2026, resposta à questão 1 de `passada-30.md`.
+- Estado: a implementar (B20). A escala da R2 fica com o corte em 4 kg, como as faixas de massa (D-141). Conferido pelo Arquiteto: com o corte em 4 kg, nenhum dos 30 muda de porte. **Decisão provisória do Arquiteto, pela D-174:** a R2 com o corte em 4 kg dá a raposa de 6 kg Pequena; ela fica Miúda por encaixe (D-158 e a referência da D-166), com a nota de observação na ficha dizendo que a conta dá Pequeno. Os outros bichos de 4 a 8 kg ficam com o porte da conta, e a ficha que cair perto da borda diz.
+
+### D-172 · Os Bestiaristas estão liberados para os 62 que faltam, em rascunho [tags: bestiario, criatura, bestiaristas, lotes, rascunho, fichas, provisorio, d-128, d-138, b20]
+- Data: 2026-10-12
+- Decisão (autor, 12/10/2026): "Bestiaristas: LIBERADOS para produzir as fichas dos ~62 animais restantes em rascunho, usando as 30 fichas de referência aprovadas como base. Peso e velocidade entram como campos provisórios, para não travar."
+- Origem: mensagem do autor de 12/10/2026.
+- Estado: liberada. Levanta a parada dos lotes 1, 2, 3 e 5 (mensagem do autor de 12/10/2026, seção acima). A base é a passada (`passada-30.md`), o esquema (`bestiaristas-esquema.md`) e a escala (`bestiaristas-escala.md`), com a D-169 a D-171 aplicadas. O peso (carga e P) e a velocidade entram marcados **[provisório]**. Os lotes que esperam anatomia nova (6, 8, 9 e os anfíbios do 7) seguem a D-174: a anatomia entra provisória, com nota.
+
+### D-173 · Nada vai ao ar antes de todas as fichas e do código [tags: bestiario, criatura, publicacao, site, deploy, src, b20]
+- Data: 2026-10-12
+- Decisão (autor, 12/10/2026): "Publicação: segurar TUDO. Só publicar no site quando todas as fichas estiverem prontas E o código atualizado. Nada vai ao ar antes."
+- Origem: mensagem do autor de 12/10/2026.
+- Estado: vale até o fim do bestiário. Como todo push no `main` publica (deploy automático), nenhuma ficha nova e nenhuma mudança de regra do bestiário entra em `src/` antes disso. Os rascunhos ficam em `../tmp/arquiteto/bestiario/`.
+
+### D-174 · Na dúvida, decisão provisória com nota de observação [tags: bestiario, metodo, provisorio, observacao, veterana, arquiteto, d-087]
+- Data: 2026-10-12
+- Decisão (autor, 12/10/2026): "Regra geral: sempre que houver dúvida em qualquer ponto, você (Arquiteto) ou a Veterana tomam a decisão provisória E deixam uma NOTA DE OBSERVAÇÃO na ficha ou no registro, para ser relida na hora de implementar no site."
+- Origem: mensagem do autor de 12/10/2026.
+- Estado: vale. Completa a D-087: a dúvida que passa pelos três filtros não trava o trabalho; recebe a decisão provisória e a nota, e a nota se relê antes de a ficha ir para o site (D-173). Leitura do Arquiteto: a contradição real com decisão registrada continua indo ao autor, como manda a regra do registro; a decisão provisória serve para não parar enquanto ele não responde.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
