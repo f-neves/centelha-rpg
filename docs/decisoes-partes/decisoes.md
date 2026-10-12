@@ -56,7 +56,8 @@ uma decisao registrada, pare e pergunte ao autor.
 
 **Peso de halfling e gnomo**
 1. Proposta de 0,75 (rascunho de porte e anatomia, fora do registro). **Nao entrou.**
-2. D-123 · 11/10/2026 · fator 0,5 no peso erguido; a velocidade nao muda. **A implementar** (rodada de texto e de codigo: racas.md, ficha-engine.ts).
+2. D-123 · 11/10/2026 · fator 0,5 no peso erguido; a velocidade nao muda. **Substituida no peso pela D-162** (12/10/2026); a velocidade continua.
+3. D-162 · 12/10/2026 · fator de corpo leve, (massa / 80)^(2/3) abaixo de 80 kg, para todos. **A implementar (B20).**
 
 **Dano e Absorcao:** a Centelha inteira soma no dano do atacante (bestia-editor.ts:145) e na Absorcao do alvo uma vez (calc.ts:~297). O raspao do Quase-Acerto (regras.json `quaseAcerto.dano`) soma a do atacante e desconta a do alvo, e ignora a Absorcao (`ignoraSoak`); nao ha desconto em dobro (conferido pelo Arquiteto em 03/10/2026).
 
@@ -1952,7 +1953,7 @@ As D-122 e D-123 são a resposta do autor às questões do rascunho das cinco fi
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "HALFLING E GNOMO: o peso erguido leva fator 0,5 (o halfling de Força 2 ergue 38 kg; o do máximo da raça, 130 kg). A velocidade não muda, porque a 'perna curta' (dois terços) já a corta. Isso muda uma regra de raça publicada e a ficha de jogador: anote como item de rodada de texto e de código (racas.md, ficha-engine.ts), sem fazer agora."
 - Origem: mensagem do autor de 11/10/2026, resposta à proposta do fator 0,75 do rascunho de porte e anatomia (que estava fora do registro).
-- Estado: a implementar, **item anotado de rodada de texto e de código, sem fazer agora**: `src/content/chapters/racas.md` (a linha da raça) e `src/lib/ficha-engine.ts` (que chama `pesoMaximoErguido`); o Grid não muda. Substitui a proposta de 0,75. Conta conferida pelo Arquiteto em `regras.json` `forca.levantamento`: Força 2 é FAH 6, P 76 kg, × 0,5 = 38 kg; os 130 kg do exemplo são a Força 5 sem Halterofilismo (FAH 15, P 260 kg, × 0,5); com Halterofilismo 6 (FAH 21, P 420 kg) o máximo da raça fica em 210 kg. (Esta frase foi parar por engano no fim da D-124 no commit `a5e6c18a` e voltou para cá no seguinte.) **Em questão desde a D-159 (11/10/2026):** o bônus do corpo também mede o tamanho, e o exemplo do autor na D-159 (halfling de 30 kg e Força 3 com cerca de 95 kg) não leva o 0,5. Questão ao autor em `../tmp/arquiteto/bestiario/levantamento-novo.md`.
+- Estado: a implementar, **item anotado de rodada de texto e de código, sem fazer agora**: `src/content/chapters/racas.md` (a linha da raça) e `src/lib/ficha-engine.ts` (que chama `pesoMaximoErguido`); o Grid não muda. Substitui a proposta de 0,75. Conta conferida pelo Arquiteto em `regras.json` `forca.levantamento`: Força 2 é FAH 6, P 76 kg, × 0,5 = 38 kg; os 130 kg do exemplo são a Força 5 sem Halterofilismo (FAH 15, P 260 kg, × 0,5); com Halterofilismo 6 (FAH 21, P 420 kg) o máximo da raça fica em 210 kg. (Esta frase foi parar por engano no fim da D-124 no commit `a5e6c18a` e voltou para cá no seguinte.) **Em questão desde a D-159 (11/10/2026):** o bônus do corpo também mede o tamanho, e o exemplo do autor na D-159 (halfling de 30 kg e Força 3 com cerca de 95 kg) não leva o 0,5. Questão ao autor em `../tmp/arquiteto/bestiario/levantamento-novo.md`. **Substituída no peso pela D-162 (12/10/2026):** o fator 0,5 sai, e entra o fator de corpo leve, (massa ÷ 80)^(2/3), para todos abaixo de 80 kg. A outra metade fica: a velocidade não muda.
 
 ## O nado na proporção real (11/10/2026)
 
@@ -2292,6 +2293,9 @@ As D-154 a D-161 são a resposta do autor às cinco questões de `../tmp/arquite
   - **Substitui** a tabela `forca.levantamento` de hoje (FAH 3 = 30 kg até FAH 40 = 1.000 kg) e a extensão proposta na D-146.
   - Conta conferida pelo Arquiteto: os doze valores do autor batem com a fórmula, arredondados ao quilo. No bônus do corpo, 500 kg dá 126 e 4 t dá 504 (o autor escreveu "cerca de" 125 e 500); o humano de Força 6 e Halterofilismo 6 dá 465 + 34 = 499 kg.
   - **Contra decisões registradas, questão ao autor no relatório:** o fator 0,5 do halfling e do gnomo (D-123) e os multiplicadores de peso por faixa de massa (D-115, D-120, D-132) também medem o tamanho do corpo, e o bônus do corpo passa a medir o mesmo.
+  - **Completada pela D-162 (12/10/2026):** o P leva o fator de corpo leve abaixo de 80 kg. A metade da D-123 está respondida; a dos multiplicadores por massa está em questão (`../tmp/arquiteto/bestiario/d162-analise.md`, questão 3). Duas frases desta decisão deixam de valer com a D-162:
+    - o humano de 70 kg com Força 6 e Halterofilismo 6 dá 456 kg, e só o de 80 kg dá cerca de 500 (questão 1 do mesmo relatório);
+    - o halfling de 30 kg e Força 3 dá cerca de 50 kg, e não 95.
 
 ### D-160 · Quadrúpede: Carga e Peso erguido na ficha, com rótulo [tags: bestiario, criatura, quadrupede, carga, peso-erguido, arrastar, d-118, d-122, d-146, d-159, b20]
 - Data: 2026-10-11
@@ -2304,6 +2308,23 @@ As D-154 a D-161 são a resposta do autor às cinco questões de `../tmp/arquite
 - Decisão (autor, 11/10/2026): "A criatura no lugar da besta deslocadora: Enguia-do-Entremeio, que abre poças de breu."
 - Origem: mensagem do autor de 11/10/2026, resposta à questão 5 de `porte-area-forca.md`.
 - Estado: ficha proposta em rascunho (`../tmp/arquiteto/bestiario/enguia-do-entremeio.md`). A marca `outroRpg` dos quatro arquivos foi descartada sem commit. A retirada da besta e a entrada da Enguia em `src/` só com o ok do autor.
+
+## O fator de corpo leve (12/10/2026)
+
+### D-162 · O peso erguido leva o fator de corpo leve abaixo de 80 kg; o 0,5 do halfling e do gnomo sai [tags: forca, fah, levantamento, peso, peso-erguido, corpo, massa, halfling, gnomo, racas, quadrado-cubo, d-123, d-143, d-159, b20]
+- Data: 2026-10-12
+- Decisão (autor, 12/10/2026): "vamos fechar dessa maneira mesmo, com duas fórmulas se encontrando".
+  - P = (1,3154 × FAH^1,8464 + 2 × massa^(2/3)) × fator de corpo leve.
+  - FAH = Força × 3 + Halterofilismo + Musculatura (a Musculatura só em criaturas).
+  - 2 × massa^(2/3) é o bônus do corpo da D-159, com a massa em kg.
+  - Fator de corpo leve = (massa ÷ 80)^(2/3) quando a massa é menor que 80 kg; 1 de 80 kg para cima.
+  - Acima de 80 kg é a D-159 sem mudança: a Força alta dos grandes carrega o tamanho (D-143). Abaixo de 80 kg, o fator freia a criatura leve com Força alta.
+  - O fator de corpo leve substitui o fator 0,5 da D-123 ("o peso erguido leva fator 0,5"). Para um halfling de cerca de 30 kg ele dá cerca de 0,52.
+- Origem: mensagem do autor de 12/10/2026, depois do relatório `../tmp/arquiteto/bestiario/levantamento-novo.md`.
+- Estado: a implementar (B20). Análise em `../tmp/arquiteto/bestiario/d162-analise.md`, com cinco questões ao autor; nada em `src/`.
+  - Conta conferida pelo Arquiteto: os onze valores do autor batem, arredondados ao quilo (80 kg com Força 6 dá 310,6; 200 kg, 341,8).
+  - **Substitui** a D-123 no peso; a velocidade da D-123 fica.
+  - **Completa** a D-159.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
