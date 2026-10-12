@@ -57,7 +57,7 @@ uma decisao registrada, pare e pergunte ao autor.
 **Peso de halfling e gnomo**
 1. Proposta de 0,75 (rascunho de porte e anatomia, fora do registro). **Nao entrou.**
 2. D-123 · 11/10/2026 · fator 0,5 no peso erguido; a velocidade nao muda. **Substituida no peso pela D-162** (12/10/2026); a velocidade continua.
-3. D-162 · 12/10/2026 · fator de corpo leve, (massa / 80)^(2/3) abaixo de 80 kg, para todos. **A implementar (B20).**
+3. D-162 · 12/10/2026 · fator de corpo leve, (massa / 80)^(2/3) abaixo de 80 kg, para todos. **Provisoria:** a formula passou para outra frente, com a Veterana (12/10/2026).
 
 **Dano e Absorcao:** a Centelha inteira soma no dano do atacante (bestia-editor.ts:145) e na Absorcao do alvo uma vez (calc.ts:~297). O raspao do Quase-Acerto (regras.json `quaseAcerto.dano`) soma a do atacante e desconta a do alvo, e ignora a Absorcao (`ignoraSoak`); nao ha desconto em dobro (conferido pelo Arquiteto em 03/10/2026).
 
@@ -1823,7 +1823,7 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
   - f) A descrição visual de cada criatura (D-102) fica em `docs/bestiario/visual/<id>.md`.
   - g) Os "atroz" com nome de espécie extinta são animais reais e entram como pré-históricos, não como "versão atroz": Símio Atroz (`mon-dire-ape-gigantopithecus`, gigantopiteco), Urso Atroz (`mon-dire-bear-cave-bear`, urso-das-cavernas), Javali Atroz (`mon-dire-boar-daeodon`, daeodon), Hiena Atroz (`mon-dire-hyena-hyaenodon`, hienodonte), Leão Atroz (`mon-dire-lion-spotted-lion`, leão-das-cavernas), Tubarão Atroz (`mon-dire-shark-megalodon`, megalodonte) e Lobo Atroz (`mon-lobo-atroz`, o lobo-terrível que o autor cita). Ficam como "versão atroz", para depois (D-098): Morcego Atroz, Rato Atroz e Carcaju Atroz, sem espécie real no nome.
 - Origem: inventário do bestiário (`../tmp/arquiteto/bestiario/inventario.md`, itens 8 a 10 e a ressalva sobre a D-099); resposta do autor de 10/10/2026.
-- Estado: leituras registradas para a regra de construção da B20. O inventário e o `escala.md` (`../tmp/arquiteto/bestiario/`) ficam como base. A próxima etapa (pesquisa e regra de construção) espera a lista de referência do autor e não começou. **Atualizado em 10/10/2026:** a leitura c) foi fechada pela D-108 (Vontade do animal de 3 a 6).
+- Estado: leituras registradas para a regra de construção da B20. O inventário e o `escala.md` (`../tmp/arquiteto/bestiario/`) ficam como base. A próxima etapa (pesquisa e regra de construção) espera a lista de referência do autor e não começou. **Atualizado em 10/10/2026:** a leitura c) foi fechada pela D-108 (Vontade do animal de 3 a 6). **Substituída em parte pela D-167 (12/10/2026):** a leitura b) deixa de valer para a Força dos bichos menores que Pequeno (e de alguns Pequenos), que pode ser 0; segue valendo para os outros Atributos.
 
 ## Respostas do autor à regra de construção e às fichas piloto do bestiário (10/10/2026)
 
@@ -2123,6 +2123,7 @@ As D-139 a D-142 respondem ao relatório da régua de porte e das faixas de mass
 - Origem: mensagem do autor de 11/10/2026.
 - Estado: a implementar (B20).
   - **Substitui os nomes propostos na D-132.** Os números das faixas não mudam.
+  - **Desde a D-166 (12/10/2026)** há oito portes e sete faixas: o Minúsculo não tem faixa própria. Em questão ao autor (`../tmp/arquiteto/bestiario/passada-30.md`): o corte de massa do Pequeno na R2 (questão 1) e uma Faixa 0 para o PV (questão 4).
   - As 30 fichas do rascunho mudam numa passada só, junto com o porte da D-139, depois que o autor ver o teste.
 
 ### D-142 · As leituras vetáveis do Arquiteto ficam aprovadas [tags: bestiario, criatura, velocidade, porte, anatomia, reptil, natacao, aparencia, d-119, d-124, d-134, d-138, b20]
@@ -2158,6 +2159,7 @@ As D-143 a D-153 respondem ao teste da régua da D-139 (`../tmp/arquiteto/bestia
   - Completa a tabela da D-132 ("15 + Vigor × 1 até 45 + Vigor × 5").
   - O Vigor 3 que a D-134 deu ao braquiossauro passa a 10 pela régua da D-143 (3 de resistência + 7 dobras de massa).
   - Pela régua, os dois exemplos do autor saem exatos: 90 e 75 PV. Os PV dos 30 estão em `porte-area-forca.md` §2.3.
+  - **Desde a D-157 (11/10/2026) e a D-164 (12/10/2026)** a régua saiu, e os alvos ficam por caso: estegossauro 8 e braquiossauro 10, com os outros gigantes da D-164.
   - **A régua de Vigor saiu pela D-157 (11/10/2026).** A tabela de PV desta decisão fica; os Vigores dos 30 são refeitos por encaixe (`../tmp/arquiteto/bestiario/levantamento-novo.md`).
 
 ### D-145 · Os Vigores invertidos: dentro de uma faixa, quem separa os PV é o Vigor [tags: bestiario, criatura, vigor, pv, inversao, tigre, urso-polar, d-134, d-135, b20]
@@ -2250,7 +2252,7 @@ As D-154 a D-161 são a resposta do autor às cinco questões de `../tmp/arquite
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "Porte: regra R2 sem cauda. O peso e a área exatos, sem passar pelas faixas antes."
 - Origem: mensagem do autor de 11/10/2026, resposta à questão 1 de `porte-area-forca.md`.
-- Estado: a implementar (B20). Completa a D-148 (que deixou a regra em aberto entre R1 e R2). A R1, recomendada pelo Arquiteto, não entrou. A cauda grossa conta na área pela D-155.
+- Estado: a implementar (B20). Completa a D-148 (que deixou a regra em aberto entre R1 e R2). A R1, recomendada pelo Arquiteto, não entrou. A cauda grossa conta na área pela D-155. **Estendida pela D-166 (12/10/2026):** a escala ganha o Minúsculo embaixo.
 
 ### D-155 · Cauda fina não conta, cauda grossa conta; o JSON ganha um grupo de dados de pesquisa [tags: bestiario, criatura, porte, area, cauda, esquema, pesquisa, json, d-148, d-154, b20]
 - Data: 2026-10-11
@@ -2270,7 +2272,7 @@ As D-154 a D-161 são a resposta do autor às cinco questões de `../tmp/arquite
 - Origem: mensagem do autor de 11/10/2026, resposta à questão 2 de `porte-area-forca.md`.
 - Estado: a implementar (B20).
   - **Substitui em parte a D-134** ("nos animais, pesa mais a resistência do corpo (...) e menos o fôlego"): o fôlego volta a pesar no Vigor, e a resistência específica vai para a Habilidade Resistência com Especialidade.
-  - **Substitui a régua de Vigor proposta na D-143 e na D-144.** Leitura do Arquiteto, vetável: os alvos do autor na D-144 (estegossauro perto de 7 ou 8, braquiossauro com pelo menos 10) podem ficar como encaixe, e não como conta. Está em questão ao autor (`../tmp/arquiteto/bestiario/levantamento-novo.md`, questão 4).
+  - **Substitui a régua de Vigor proposta na D-143 e na D-144.** Leitura do Arquiteto, vetável: os alvos do autor na D-144 (estegossauro perto de 7 ou 8, braquiossauro com pelo menos 10) podem ficar como encaixe, e não como conta. Está em questão ao autor (`../tmp/arquiteto/bestiario/levantamento-novo.md`, questão 4). **Respondida pela D-164 (12/10/2026):** a leitura do Arquiteto (os gigantes em 4) não entrou; a D-157 e a D-143 valem juntas, e o gigante tem Vigor alto justificado caso a caso.
 
 ### D-158 · Força e Vigor se encaixam na criatura, extrapolando; a régua de Força fica só como conferência [tags: bestiario, criatura, animal, forca, vigor, extrapolacao, outros-rpgs, comparacao, d-143, b20]
 - Data: 2026-10-11
@@ -2307,7 +2309,7 @@ As D-154 a D-161 são a resposta do autor às cinco questões de `../tmp/arquite
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "A criatura no lugar da besta deslocadora: Enguia-do-Entremeio, que abre poças de breu."
 - Origem: mensagem do autor de 11/10/2026, resposta à questão 5 de `porte-area-forca.md`.
-- Estado: ficha proposta em rascunho (`../tmp/arquiteto/bestiario/enguia-do-entremeio.md`). A marca `outroRpg` dos quatro arquivos foi descartada sem commit. A retirada da besta e a entrada da Enguia em `src/` só com o ok do autor.
+- Estado: ficha proposta em rascunho (`../tmp/arquiteto/bestiario/enguia-do-entremeio.md`). A marca `outroRpg` dos quatro arquivos foi descartada sem commit. A retirada da besta e a entrada da Enguia em `src/` só com o ok do autor. **Parada pela D-168 (12/10/2026)** até o fim do bestiário; o id antigo passa a apontar para a Enguia.
 
 ## O fator de corpo leve (12/10/2026)
 
@@ -2325,6 +2327,47 @@ As D-154 a D-161 são a resposta do autor às cinco questões de `../tmp/arquite
   - Conta conferida pelo Arquiteto: os onze valores do autor batem, arredondados ao quilo (80 kg com Força 6 dá 310,6; 200 kg, 341,8).
   - **Substitui** a D-123 no peso; a velocidade da D-123 fica.
   - **Completa** a D-159.
+  - **Passou para outra frente (12/10/2026):** "A regra de peso erguido (a D-162 e as suas cinco perguntas sobre ela) passou para outra frente, com a Veterana." O P das fichas fica pela D-162, marcado como provisório, e as Forças encaixadas por feito de levantar ou arrastar também. Nada disso vai para o site antes de a fórmula fechar. A questão 4 do relatório (o kit do Pequeno) parece respondida pela D-165; fica para a outra frente confirmar.
+
+## Gigantes, Minúsculo, Força 0 e a Enguia parada (12/10/2026)
+
+As D-163 a D-168 respondem às questões 3 e 4 de `../tmp/arquiteto/bestiario/levantamento-novo.md` e trazem o resto do que o autor decidiu na mesma mensagem. A passada nas 30 fichas está em `../tmp/arquiteto/bestiario/passada-30.md`, e o pacote dos Bestiaristas em `bestiaristas-esquema.md` e `bestiaristas-escala.md` (mesma pasta). Nada foi para `src/`; os lotes 1, 2, 3 e 5 seguem parados até o autor aprovar a passada e o pacote.
+
+### D-163 · A Força dos gigantes sem feito medido: comparação com o mamute, conferida no Pathfinder [tags: bestiario, criatura, forca, gigante, mamute, pathfinder, extrapolacao, comparacao, d-143, d-158, b20]
+- Data: 2026-10-12
+- Decisão (autor, 12/10/2026): "Cada gigante recebe a Força por comparação com o mamute, ajustada pelo corpo dele, conferida com a escala do Pathfinder (que dá braquiossauro perto de 20, tiranossauro 17, estegossauro, anquilossauro e tricerátops 14 a 15). O Arquiteto justifica cada um numa linha." A opção do Arquiteto, "todos sobem 5", não foi aceita: "é uma regra tirada de um exemplo só".
+- Origem: mensagem do autor de 12/10/2026, resposta à questão 3 de `levantamento-novo.md`.
+- Estado: proposta na passada (`passada-30.md` §2.3), a aprovar: estegossauro, anquilossauro e tricerátops 15, mosassauro 16, tiranossauro 17, braquiossauro 20. A Força 18 do mamute vem de um feito de arrasto e é provisória (D-162); se ela mudar, a comparação dos seis se refaz.
+
+### D-164 · O Vigor dos gigantes: alto, justificado caso a caso [tags: bestiario, criatura, vigor, gigante, ferida-curada, longevidade, folego, tigre, d-143, d-144, d-157, b20]
+- Data: 2026-10-12
+- Decisão (autor, 12/10/2026): "Os gigantes recebem Vigor alto justificado caso a caso pela D-143 (ferida curada, vida longa, fôlego): anquilossauro, tricerátops e tiranossauro perto de 8, mosassauro 7, mamute 6, estegossauro 8, braquiossauro 10. O tigre fica em 4 porque não é gigante." A recomendação do Arquiteto (os gigantes em 4) "leu só a D-157 ('não tem a ver com peso') e ignorou a D-143 ('Criaturas grandes têm mais Força e Vigor'). As duas valem juntas: o Vigor não sai de fórmula de peso, mas o gigante costuma ter Vigor alto, justificado caso a caso."
+- Origem: mensagem do autor de 12/10/2026, resposta à questão 4 de `levantamento-novo.md`.
+- Estado: proposta na passada (`passada-30.md` §2.4), a aprovar, com uma linha de justificativa por animal. Responde à leitura vetável que o Arquiteto anotou na D-157 e confirma os alvos da D-144.
+
+### D-165 · As faixas de carga e o equipamento ficam como estão [tags: carga, equipamento, armadura, faixas, levantamento, d-159]
+- Data: 2026-10-12
+- Decisão (autor, 12/10/2026): "As faixas de carga e o equipamento ficam como estão."
+- Origem: mensagem do autor de 12/10/2026, resposta à questão 1 de `levantamento-novo.md`.
+- Estado: nada a fazer (é a opção a) da questão 1).
+
+### D-166 · O Minúsculo, abaixo do Miúdo [tags: bestiario, criatura, porte, minusculo, miudo, r2, acerto, d-077, d-148, d-154, b20]
+- Data: 2026-10-12
+- Decisão (autor, 12/10/2026): "Criar o Minúsculo, abaixo do Miúdo: rato, aranha, morcego pequeno e pardal no Minúsculo; gato, coelho, galinha e raposa no Miúdo." O corte se calibra pela R2, com essas referências. O acerto segue a D-077 (no corpo a corpo, só o menor ganha +3 por categoria), então o Minúsculo ganha +9 contra um Médio.
+- Origem: mensagem do autor de 12/10/2026.
+- Estado: a implementar (B20). Calibração em `passada-30.md` §2.2: o Minúsculo começa em 0,0625 kg e 0,019 m². A raposa só fica Miúda subindo o corte de massa do Pequeno, na R2, de 4 para 8 kg; isso separa a escala da R2 da faixa de massa do PV, e está em questão ao autor (questão 1). O identificador `minusculo` já é o do Miúdo no código (`calc.ts`, `regras.json`): a categoria nova precisa de outro, na rodada de código.
+
+### D-167 · Força 0 para os bichos menores que Pequeno, e alguns Pequenos [tags: bestiario, criatura, forca, forca-zero, atributos, miudo, minusculo, dano, agarrao, d-106, d-115, d-158, b20]
+- Data: 2026-10-12
+- Decisão (autor, 12/10/2026): "A Força 0 vale para todo bicho menor que Pequeno, e até alguns Pequenos." O critério segue a D-158 ("O certo é encaixar os atributos nas criaturas"): Força 0 quando a força do bicho não fere nem segura nada que importe a um humano. Personagem jogável tem Força mínima 1 (o halfling e o gnomo ficam de fora). Pela D-115 ("Força 4 bate como Força 4 em qualquer criatura"), a Força 0 também zera o dano de Força da mordida e do agarrão.
+- Origem: mensagem do autor de 12/10/2026.
+- Estado: a implementar (B20). Na passada, o rato do enxame e a jararaca vão a Força 0; a águia não (a garra fere). **Substitui em parte a D-106 b)** ("Nenhum Atributo fica em 0 (...) O 0 fica para quem não tem a faculdade"), que segue valendo para os outros Atributos. A ficha de jogador já não deixa a raça baixar o piso (`ficha-engine.ts`, `pisoRacialAttr`). O livro diz "Nenhum Atributo chega a 0 num personagem vivo e desperto" (`atributos.md`:18); precisa de uma frase para os bichos na rodada de texto.
+
+### D-168 · A Enguia-do-Entremeio fica parada até o fim do bestiário; o id da besta passa a apontar para ela [tags: bestiario, criatura, enguia-do-entremeio, besta-deslocadora, id, mesa, d-161]
+- Data: 2026-10-12
+- Decisão (autor, 12/10/2026): "A Enguia-do-Entremeio fica parada até o fim do bestiário, junto com a retirada da besta deslocadora. Quando for retirada, o id antigo passa a apontar para a Enguia, para não quebrar as mesas salvas."
+- Origem: mensagem do autor de 12/10/2026.
+- Estado: parada. Quando entrar: o id `mon-besta-deslocadora` vira um apelido no código para o id da Enguia, e as mesas salvas continuam abrindo a ficha. É trabalho de código, sem mexer no banco.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15

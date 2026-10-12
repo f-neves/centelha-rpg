@@ -356,10 +356,25 @@ limitações conhecidas, que são as três de baixo.
     O trabalho está em `../tmp/arquiteto/bestiario/levantamento-novo.md` e `enguia-do-entremeio.md`, com questões
     ao autor: a forma de rebalancear a carga, o bônus do corpo contra a D-123 e os multiplicadores de faixa,
     a Força e o Vigor dos gigantes, e as da Enguia.
-  - **Próxima etapa (substitui a de baixo):** o autor responder. Depois, numa passada só, as 30 fichas recebem o
+  - **A fórmula do peso erguido (12/10/2026, D-162):** fechada pelo autor, e depois passada a outra frente, com a
+    Veterana. O P das fichas fica provisório, e as Forças encaixadas por feito de levantar ou arrastar também.
+  - **A resposta do autor (12/10/2026, D-163 a D-168):**
+    - a Força dos gigantes por comparação com o mamute, conferida no Pathfinder (D-163);
+    - o Vigor alto dos gigantes, caso a caso (D-164);
+    - a carga e o equipamento ficam (D-165);
+    - o Minúsculo abaixo do Miúdo (D-166);
+    - a Força 0 dos bichos menores que Pequeno (D-167);
+    - a Enguia parada até o fim do bestiário (D-168).
+    A passada nas 30 está em `../tmp/arquiteto/bestiario/passada-30.md`, com quatro questões ao autor (a raposa
+    no Miúdo, a serpente e o porte, o nado do mosassauro e o PV do Minúsculo). O pacote dos Bestiaristas está em
+    `bestiaristas-esquema.md` e `bestiaristas-escala.md`, na mesma pasta.
+  - **Próxima etapa (substitui a de baixo):** o autor aprovar a passada e o pacote dos Bestiaristas. Depois, as
+    30 fichas são gravadas, e os lotes 1, 2, 3 e 5 começam. O P só vai para o site quando a outra frente fechar a
+    fórmula.
+  - **Etapa anterior:** o autor responder. Depois, numa passada só, as 30 fichas recebem o
     porte pela R2, o Vigor e a Força de encaixe e o P novo; a tabela de levantamento e a carga entram numa rodada
     de código própria (`regras.json`, `forca-empurrao.ts`, `ficha-engine.ts`, o capítulo e o `test-l85`).
-  - **Etapa anterior:** o autor responder. Depois, numa passada só, as 30 fichas recebem o porte, a faixa
+  - **Etapa mais antiga:** o autor responder. Depois, numa passada só, as 30 fichas recebem o porte, a faixa
     numerada, o Vigor novo e os PV. Em seguida vêm o 0,7 do réptil e as serpentes contra a velocidade real.
     Os lotes 1, 2, 3 e 5 só começam depois disso; o lote 4 (voadores) já tem o voo. A largura entra na pesquisa
     dos lotes (D-147).
