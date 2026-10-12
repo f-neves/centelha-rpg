@@ -2422,7 +2422,7 @@ As D-169 a D-174 respondem às quatro questões de `../tmp/arquiteto/bestiario/p
 - Data: 2026-10-12
 - Decisão (autor, 12/10/2026): "Bestiaristas: LIBERADOS para produzir as fichas dos ~62 animais restantes em rascunho, usando as 30 fichas de referência aprovadas como base. Peso e velocidade entram como campos provisórios, para não travar."
 - Origem: mensagem do autor de 12/10/2026.
-- Estado: liberada. Levanta a parada dos lotes 1, 2, 3 e 5 (mensagem do autor de 12/10/2026, seção acima). A base é a passada (`passada-30.md`), o esquema (`bestiaristas-esquema.md`) e a escala (`bestiaristas-escala.md`), com a D-169 a D-171 aplicadas. O peso (carga e P) e a velocidade entram marcados **[provisório]**. Os lotes que esperam anatomia nova (6, 8, 9 e os anfíbios do 7) seguem a D-174: a anatomia entra provisória, com nota.
+- Estado: liberada. Levanta a parada dos lotes 1, 2, 3 e 5 (mensagem do autor de 12/10/2026, seção acima). A base é a passada (`passada-30.md`), o esquema (`bestiaristas-esquema.md`) e a escala (`bestiaristas-escala.md`), com a D-169 a D-171 aplicadas. O peso (carga e P) e a velocidade entram marcados **[provisório]**. Os lotes que esperam anatomia nova (6, 8, 9 e os anfíbios do 7) ou o voo (o lote 4 e os alados): leitura do Arquiteto, vetável, pela D-174, a anatomia entra provisória, com nota, em vez de esperar a proposta ao autor que o plano previa (`plano-proximos.md` §3). A velocidade dessas anatomias já é provisória pela D-170.
 
 ### D-173 · Nada vai ao ar antes de todas as fichas e do código [tags: bestiario, criatura, publicacao, site, deploy, src, b20]
 - Data: 2026-10-12
