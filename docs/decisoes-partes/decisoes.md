@@ -2406,7 +2406,7 @@ As D-169 a D-174 respondem às quatro questões de `../tmp/arquiteto/bestiario/p
 - Origem: mensagem do autor de 12/10/2026, resposta às questões 2 e 3 de `passada-30.md`.
 - Estado: adiada. Nas fichas, a velocidade sai pela fórmula de hoje (D-119, D-124, D-136) e fica **[provisório]**. O que a passada achou entra como observação, sem correção:
   - o fator do réptil de corpo baixo (0,7 dá o crocodilo acima dos 14 km/h medidos);
-  - a serpente com o porte (a jiboia andaria quase cinco vezes mais que a jararaca);
+  - a serpente com o porte (a jiboia anda 2,3 vezes a jararaca com o 0,4 de hoje no Minúsculo, e andaria quase cinco vezes com o 0,2 proposto; as duas andam parecido no real);
   - o nado do mosassauro com Vigor 7 (25 km/h, contra 14 a 18 do bote estimado);
   - o multiplicador do Minúsculo, que não existe hoje (o 0,2 calibrado no rato fica como proposta);
   - o Miúdo sem âncora de velocidade, desde que o rato saiu para o Minúsculo.
