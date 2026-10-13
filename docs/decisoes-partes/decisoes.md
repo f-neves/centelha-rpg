@@ -75,6 +75,7 @@ uma decisao registrada, pare e pergunte ao autor.
 1. D-143 e D-144 · 11/10/2026 · a regua proposta (resistencia + 1 por dobra de massa) e os alvos do autor (estegossauro 8, braquiossauro 10). **A regua saiu pela D-157.**
 2. D-157 · 11/10/2026 · Vigor e resistencia e folego, e nao tem a ver com peso.
 3. D-164 · 12/10/2026 · os gigantes tem Vigor alto, caso a caso (D-143 e D-157 valem juntas). **A implementar (B20).**
+4. D-176 · 13/10/2026 · "Criaturas maiores costumam ter mais Forca e Vigor"; a versao maior de um animal tem Forca e Vigor maiores que ele (gigantes da D-105 e atrozes). A D-143 vem primeiro; a D-157 nao segura o Vigor do grande no nivel do pequeno. **A implementar (B20).**
 
 **Forca dos gigantes**
 1. D-143 · 11/10/2026 · a regua proposta (+1 por dobra de massa). **Saiu como regra pela D-158**, que manda encaixar.
@@ -2170,6 +2171,7 @@ As D-143 a D-153 respondem ao teste da régua da D-139 (`../tmp/arquiteto/bestia
   - Completa a D-104 ("acima de 6, só quando o fato medido passa do ápice humano"), que fica para os outros Atributos dos animais.
   - **Substitui a D-116 d)** ("A Força dos animais grandes se escolhe pelo dano que eles devem causar, conferido na bancada"): a Força sai da física, e a bancada do dano não é mais condição (D-152).
   - Nenhum dos 30 passa de 4 em Destreza: nada muda nisso.
+  - **Lida junto com a D-157 pela D-176 (13/10/2026):** esta vem primeiro ("Criaturas grandes têm mais Força e Vigor"); a D-157 não segura o Vigor de um bicho grande no nível de um pequeno.
   - **As duas réguas saem (D-157 e D-158, 11/10/2026):** a Força e o Vigor se encaixam em cada criatura, extrapolando pelos dados reais; a régua de Força fica só como conferência, e a de Vigor sai.
 
 ### D-144 · A tabela de PV vale para qualquer Vigor; o platô de 55 PV está resolvido [tags: bestiario, criatura, pv, vigor, faixa-de-massa, braquiossauro, estegossauro, d-132, d-134, d-135, b20]
@@ -2293,7 +2295,7 @@ As D-154 a D-161 são a resposta do autor às cinco questões de `../tmp/arquite
 - Origem: mensagem do autor de 11/10/2026, resposta à questão 2 de `porte-area-forca.md`.
 - Estado: a implementar (B20).
   - **Substitui em parte a D-134** ("nos animais, pesa mais a resistência do corpo (...) e menos o fôlego"): o fôlego volta a pesar no Vigor, e a resistência específica vai para a Habilidade Resistência com Especialidade.
-  - **Substitui a régua de Vigor proposta na D-143 e na D-144.** Leitura do Arquiteto, vetável: os alvos do autor na D-144 (estegossauro perto de 7 ou 8, braquiossauro com pelo menos 10) podem ficar como encaixe, e não como conta. Está em questão ao autor (`../tmp/arquiteto/bestiario/levantamento-novo.md`, questão 4). **Respondida pela D-164 (12/10/2026):** a leitura do Arquiteto (os gigantes em 4) não entrou; a D-157 e a D-143 valem juntas, e o gigante tem Vigor alto justificado caso a caso.
+  - **Substitui a régua de Vigor proposta na D-143 e na D-144.** Leitura do Arquiteto, vetável: os alvos do autor na D-144 (estegossauro perto de 7 ou 8, braquiossauro com pelo menos 10) podem ficar como encaixe, e não como conta. Está em questão ao autor (`../tmp/arquiteto/bestiario/levantamento-novo.md`, questão 4). **Respondida pela D-164 (12/10/2026):** a leitura do Arquiteto (os gigantes em 4) não entrou; a D-157 e a D-143 valem juntas, e o gigante tem Vigor alto justificado caso a caso. **Lida pela D-176 (13/10/2026):** a D-143 vem primeiro; esta decisão só diz que o Vigor não sai de fórmula de peso e que um bicho pequeno também pode ter Vigor alto, e não segura o Vigor de um bicho grande no nível de um pequeno.
 
 ### D-158 · Força e Vigor se encaixam na criatura, extrapolando; a régua de Força fica só como conferência [tags: bestiario, criatura, animal, forca, vigor, extrapolacao, outros-rpgs, comparacao, d-143, b20]
 - Data: 2026-10-11
@@ -2441,6 +2443,28 @@ As D-169 a D-174 respondem às quatro questões de `../tmp/arquiteto/bestiario/p
 - Decisão (autor, 12/10/2026): "Opção (a) aprovada, com um ajuste: solte TODOS os lotes de uma vez. 1. Primeiro aplique a passada nas 30 fichas de referência (em rascunho, com as notas de observação), para a base ficar correta. 2. Depois solte os Bestiaristas em todos os nove lotes (os 62 animais restantes). 3. Os lotes com anatomia nova ou que dependem do voo entram com a anatomia provisória e uma nota de observação, como você sugeriu. 4. Mantido: peso e velocidade como campos provisórios; nada vai ao ar; toda dúvida vira nota de observação."
 - Origem: mensagem do autor de 12/10/2026, resposta à pergunta do Arquiteto sobre como soltar os Bestiaristas.
 - Estado: feita em rascunho (13/10/2026): as 92 fichas (as 30 e os 62) batem com a conta, a moreia, a lula e o polvo gigantes foram refeitos pela D-105, e a pesquisa foi refeita pelos números de porte, Força e Vigor. Sete questões ao autor em `../tmp/arquiteto/bestiario/relatorio-leva-62.md` (os três atrozes sem espécie real contra a D-098, a Força do leopardo, o Vigor fora da lista da D-164, o que conta na área, os portes que mudam no ar e o pônei, o Cão de Montaria, e o feito do animal real no gigante). **Confirma a leitura do Arquiteto na D-172** (a anatomia provisória com nota), que deixa de ser vetável. Os fatores das anatomias novas são fixados pelo Arquiteto numa tabela só, para os 62 ficarem na mesma escala (D-174).
+
+## O tamanho manda primeiro: a versão maior tem mais Força e Vigor (13/10/2026)
+
+As D-176 a D-178 respondem às questões 1, 2 e 3a de `../tmp/arquiteto/bestiario/relatorio-leva-62.md`. A 3b e as questões 4 a 7 seguem com o autor.
+
+### D-176 · Criaturas maiores costumam ter mais Força e Vigor; a versão maior de um animal tem mais que ele [tags: bestiario, criatura, forca, vigor, gigante, atroz, porte, massa, d-105, d-143, d-157, d-164, b20]
+- Data: 2026-10-13
+- Decisão (autor, 13/10/2026): "A primeira regra deve ser 'Criaturas maiores costumam ter mais Força e Vigor'. Especialmente se uma criatura é uma versão maior da outra. Então se um gato tem Vigor X, um gato gigante tem que ter Vigor maior do que X." A leitura certa das duas decisões juntas: a D-143 ("Criaturas grandes têm mais Força e Vigor") vem primeiro; a D-157 só quer dizer que o Vigor não sai de uma fórmula de peso, e que um bicho pequeno também pode ter Vigor alto. Ela não serve para segurar o Vigor de um bicho grande no nível de um pequeno.
+- Origem: mensagem do autor de 13/10/2026, resposta à questão 3a do relatório da leva ("correção de leitura": o Arquiteto vinha usando a D-157 em casos que têm a ver com o peso).
+- Estado: a implementar (B20). Vale para todos os gigantes da D-105, os atrozes e qualquer outra versão maior de um animal com ficha: a versão maior tem Força e Vigor maiores que os do animal de base, cada um com uma linha de justificativa, e uma tabela compara os pares. A Força dessas fichas segue provisória enquanto a fórmula do peso erguido não fecha (D-169). **Decisão provisória do Arquiteto (D-174), sobre quanto sobe o Vigor:** +1 a cada dois portes acima do animal de base, arredondado para cima, no mínimo +1; a ficha diz a conta. **Corrige a leitura** que o Arquiteto anotou na D-157 e pôs no pedido dos lotes ("Vigor alto só no gigante real").
+
+### D-177 · Os três atrozes sem espécie real ficam como estão, provisórios [tags: bestiario, criatura, atroz, carcaju, morcego, rato, provisorio, d-098, d-105, d-174, b20]
+- Data: 2026-10-13
+- Decisão (autor, 13/10/2026): "As fichas do carcaju atroz, do morcego atroz e do rato atroz ficam como estão, marcadas como provisórias. Quando chegar a vez das versões atrozes, elas são revistas. Nota de observação nas três."
+- Origem: mensagem do autor de 13/10/2026, resposta à questão 1 do relatório da leva.
+- Estado: a implementar (B20). Convive com a D-098 ("Ficam para depois só os atroz sem espécie real (Morcego, Rato e Carcaju Atroz)"): as fichas existem, provisórias, e a revisão delas fica para a vez dos atrozes. A D-176 vale para elas (Força e Vigor acima do animal de base).
+
+### D-178 · O leopardo tem Força 5, por comparação [tags: bestiario, criatura, leopardo, forca, felino, comparacao, d-118, d-158, d-159, b20]
+- Data: 2026-10-13
+- Decisão (autor, 13/10/2026): "Força 5. O leopardo de 60 kg fica acima da hiena e do lobo-terrível (Força 4) e igual ao javali. Justifique por comparação, como um felino que sobe em árvore carregando presa; o içar com a boca não é a base do número (D-159 e D-118). Recalcule a mordida e os campos provisórios que dependem da Força."
+- Origem: mensagem do autor de 13/10/2026, resposta à questão 2 do relatório da leva (nenhuma das três opções do Arquiteto).
+- Estado: a implementar (B20). A marca [provisório] por feito sai do leopardo; a Força segue provisória como a de todos (D-169).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
