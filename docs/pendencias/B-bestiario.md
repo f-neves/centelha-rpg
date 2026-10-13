@@ -375,7 +375,12 @@ limitações conhecidas, que são as três de baixo.
     - os Bestiaristas liberados para os 62, em rascunho, com peso e velocidade provisórios (D-172);
     - nada vai ao ar antes de todas as fichas e do código (D-173);
     - na dúvida, decisão provisória do Arquiteto ou da Veterana, com nota de observação (D-174).
-  - **Em andamento (D-175, 12/10/2026):** primeiro a passada nas 30 fichas de referência, em rascunho e com
+  - **Feito em rascunho (D-175, 13/10/2026):** as 92 fichas em `../tmp/arquiteto/bestiario/fichas/`, todas
+    batendo com `calc-fichas2.mjs`, e as pesquisas refeitas. **Próximo passo:** o autor responder às sete
+    questões de `../tmp/arquiteto/bestiario/relatorio-leva-62.md`; depois, aplicar as respostas nas fichas.
+    A rodada de código (Minúsculo com identificador novo, venenos novos no catálogo, o gerador para o Grid)
+    só depois, e nada vai ao ar antes de tudo pronto (D-173).
+  - **Etapa anterior (D-175, 12/10/2026):** primeiro a passada nas 30 fichas de referência, em rascunho e com
     as notas de observação; depois os nove lotes de uma vez, com a anatomia provisória onde for nova.
   - **Próxima etapa (substitui a de baixo):** os Bestiaristas produzem os 62 em rascunho, em
     `../tmp/arquiteto/bestiario/`, a partir das 30 aprovadas. Depois, a rodada de código (com o identificador novo
