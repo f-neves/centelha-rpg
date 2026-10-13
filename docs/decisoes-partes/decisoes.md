@@ -2436,6 +2436,12 @@ As D-169 a D-174 respondem às quatro questões de `../tmp/arquiteto/bestiario/p
 - Origem: mensagem do autor de 12/10/2026.
 - Estado: vale. Completa a D-087: a dúvida que passa pelos três filtros não trava o trabalho; recebe a decisão provisória e a nota, e a nota se relê antes de a ficha ir para o site (D-173). Leitura do Arquiteto: a contradição real com decisão registrada continua indo ao autor, como manda a regra do registro; a decisão provisória serve para não parar enquanto ele não responde.
 
+### D-175 · As 30 recebem a passada primeiro; depois os nove lotes de uma vez, com anatomia provisória [tags: bestiario, criatura, bestiaristas, lotes, anatomia, voo, provisorio, observacao, d-172, d-174, b20]
+- Data: 2026-10-12
+- Decisão (autor, 12/10/2026): "Opção (a) aprovada, com um ajuste: solte TODOS os lotes de uma vez. 1. Primeiro aplique a passada nas 30 fichas de referência (em rascunho, com as notas de observação), para a base ficar correta. 2. Depois solte os Bestiaristas em todos os nove lotes (os 62 animais restantes). 3. Os lotes com anatomia nova ou que dependem do voo entram com a anatomia provisória e uma nota de observação, como você sugeriu. 4. Mantido: peso e velocidade como campos provisórios; nada vai ao ar; toda dúvida vira nota de observação."
+- Origem: mensagem do autor de 12/10/2026, resposta à pergunta do Arquiteto sobre como soltar os Bestiaristas.
+- Estado: em andamento. **Confirma a leitura do Arquiteto na D-172** (a anatomia provisória com nota), que deixa de ser vetável. Os fatores das anatomias novas são fixados pelo Arquiteto numa tabela só, para os 62 ficarem na mesma escala (D-174).
+
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
 - Decisão (texto completo em `docs/simulacao/caixa/jogador-novo-decisoes.md`, seção "M-32"): abaixo de Força 4, o Arco Composto soma `Força×1` e parte de `+0`, os números do Arco Longo; a arma não fica proibida, fica "um arco comum caro". O campo é `forcaMin: 4` em `armas.json`, lido por `calc.ts` (`comRequisitoDeForca`), `ficha-engine.ts` e `combate-resumo.ts`.
