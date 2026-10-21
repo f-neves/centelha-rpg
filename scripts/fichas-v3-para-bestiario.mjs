@@ -118,6 +118,15 @@ function tiraCitacao(dentro) {
   return segs.map((x) => x.trim()).filter(Boolean).join('; ');
 }
 const TRABALHO = /\bera\b|◆|`[^`]*`|\.md\b|\bD-\d{3}\b|\bdecis[aã]o (de )?\d|\b\d{1,2}\/\d{1,2}\/\d{4}\b|\bsétima rodada\b|\bquinta rodada\b/i;
+// O NOME EM INGLÊS SEM A PROCEDÊNCIA (etapa 8a, aprovado pelo Arquiteto): a célula traz
+// o nome e, junto, de que bloco do d20 ele saiu ("Cane toad (bloco parecido: Toad,
+// D&D 3.5 e Pathfinder 1)"). Fica o que vem antes do primeiro " (" ou ";"; a célula que
+// começa por "não há ficha" não tem nome em inglês.
+function nomeEmIngles(celulaTxt) {
+  const t = limpa(celulaTxt);
+  if (!t || /^não há ficha/i.test(t)) return null;
+  return t.split(/ \(|;/)[0].trim() || null;
+}
 function limpa(s) {
   let t = String(s || '');
   t = t.replace(/\*\*\[[^\]]*\]\*\*/g, '').replace(/\[(provis[óo]rio|extrapolação|sem dado|medido|comparação|conta|piso medido|estimado)[^\]]*\]/gi, '');
@@ -369,7 +378,7 @@ function converte(arq) {
     if (b.alvo !== alvo) aviso.push(`bloco: alvo ${b.alvo} ≠ ${alvo}`);
   } else aviso.push('sem bloco de conferência');
 
-  return { arq, id, site, nome, nomeIngles: limpa(celula(ident, 'Nome em inglês (D&D, Pathfinder)')) || null, categoria, papel, centelha: Number(cent),
+  return { arq, id, site, nome, nomeIngles: nomeEmIngles(celula(ident, 'Nome em inglês (D&D, Pathfinder)')), categoria, papel, centelha: Number(cent),
     ameaca: celula(ident, 'Ameaça') ? parseInt(celula(ident, 'Ameaça'), 10) : null,
     terreno: celula(ident, 'Terreno') ? celula(ident, 'Terreno').split(',').map((x) => TERRENO[x.trim()] ?? `?${x.trim()}`) : null,
     clima: celula(ident, 'Clima') ? celula(ident, 'Clima').split(',').map((x) => CLIMA[x.trim()] ?? `?${x.trim()}`) : null,

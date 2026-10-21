@@ -476,7 +476,7 @@
  {
   "id": "aguia-real",
   "nome": "Águia-real",
-  "nomeIngles": "Golden eagle (bloco \"Eagle\", genérico)",
+  "nomeIngles": "Golden eagle",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Médio",
@@ -863,7 +863,7 @@
  {
   "id": "anquilossauro",
   "nome": "Anquilossauro",
-  "nomeIngles": "Ankylosaurus (Pathfinder 1; D&D 3.5 não tem)",
+  "nomeIngles": "Ankylosaurus",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Enorme",
@@ -1140,7 +1140,7 @@
  {
   "id": "aranha-gigante",
   "nome": "Aranha-gigante",
-  "nomeIngles": "Giant Spider (PF1); Monstrous Spider, Medium (D&D 3.5)",
+  "nomeIngles": "Giant Spider",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "praga Médio",
@@ -2212,7 +2212,7 @@
  {
   "id": "auroque",
   "nome": "Auroque",
-  "nomeIngles": "Aurochs (Pathfinder 1 tem ficha; D&D 3.5 não, parecida: Bison)",
+  "nomeIngles": "Aurochs",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -4053,7 +4053,7 @@
  {
   "id": "bisao",
   "nome": "Bisão-americano",
-  "nomeIngles": "Bison (D&D 3.5 e Pathfinder 1)",
+  "nomeIngles": "Bison",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -4630,7 +4630,7 @@
  {
   "id": "boi",
   "nome": "Boi de tração",
-  "nomeIngles": "Ox (sem ficha nos dois; parecidos: Bison, Aurochs)",
+  "nomeIngles": "Ox",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -6543,7 +6543,7 @@
  {
   "id": "cachorro-de-guarda",
   "nome": "Cão de guarda",
-  "nomeIngles": "Riding Dog (a ficha do d20); Mastiff (a raça)",
+  "nomeIngles": "Riding Dog",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "monstro Médio",
@@ -7310,7 +7310,7 @@
  {
   "id": "caranguejo-gigante",
   "nome": "Caranguejo-gigante",
-  "nomeIngles": "Giant Crab (PF1; o SRD do 3.5 não tem)",
+  "nomeIngles": "Giant Crab",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "praga Médio",
@@ -7995,7 +7995,7 @@
  {
   "id": "cavalo",
   "nome": "Cavalo (de sela)",
-  "nomeIngles": "Horse (D&D 3.5: Light Horse, Heavy Horse)",
+  "nomeIngles": "Horse",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -8269,7 +8269,7 @@
  {
   "id": "centopeia-gigante",
   "nome": "Centopeia-gigante",
-  "nomeIngles": "Giant Centipede (PF1); Monstrous Centipede, Medium (D&D 3.5)",
+  "nomeIngles": "Giant Centipede",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "praga Médio",
@@ -9538,7 +9538,7 @@
  {
   "id": "crocodilo-do-nilo",
   "nome": "Crocodilo-do-nilo",
-  "nomeIngles": "Nile crocodile (blocos: Crocodile, Giant Crocodile)",
+  "nomeIngles": "Nile crocodile",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -9672,7 +9672,7 @@
  {
   "id": "crocodilo-do-nilo-femea",
   "nome": "Crocodilo-do-nilo",
-  "nomeIngles": "Nile crocodile (blocos: Crocodile, Giant Crocodile)",
+  "nomeIngles": "Nile crocodile",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Médio",
@@ -10075,7 +10075,7 @@
  {
   "id": "daeodon",
   "nome": "Daeodon",
-  "nomeIngles": "Dire Boar (D&D 3.5); Dire Boar (Daeodon) (Pathfinder 1)",
+  "nomeIngles": "Dire Boar",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -14131,7 +14131,7 @@
  {
   "id": "varano",
   "nome": "Dragão-de-komodo",
-  "nomeIngles": "Komodo dragon (bloco parecido: Monitor Lizard, que lá descreve lagartos de 3 a 5 pés)",
+  "nomeIngles": "Komodo dragon",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Médio",
@@ -14269,7 +14269,7 @@
  {
   "id": "varano-femea",
   "nome": "Dragão-de-komodo, fêmea",
-  "nomeIngles": "Komodo dragon (bloco parecido: Monitor Lizard, que lá descreve lagartos de 3 a 5 pés)",
+  "nomeIngles": "Komodo dragon",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Pequeno",
@@ -15417,7 +15417,7 @@
  {
   "id": "elasmossauro",
   "nome": "Elasmossauro",
-  "nomeIngles": "Elasmosaurus (nos dois, entre os dinossauros)",
+  "nomeIngles": "Elasmosaurus",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Enorme",
@@ -15533,7 +15533,7 @@
  {
   "id": "elefante",
   "nome": "Elefante-asiático",
-  "nomeIngles": "Asian elephant (D&D 3.5 e Pathfinder 1: Elephant)",
+  "nomeIngles": "Asian elephant",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Enorme",
@@ -17509,7 +17509,7 @@
  {
   "id": "escorpiao-gigante",
   "nome": "Escorpião-gigante",
-  "nomeIngles": "Giant Scorpion (PF1); Monstrous Scorpion, Large (D&D 3.5)",
+  "nomeIngles": "Giant Scorpion",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "praga Grande",
@@ -18411,7 +18411,7 @@
  {
   "id": "estegossauro",
   "nome": "Estegossauro",
-  "nomeIngles": "Stegosaurus (Pathfinder 1; D&D 3.5 não tem)",
+  "nomeIngles": "Stegosaurus",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Enorme",
@@ -18917,7 +18917,7 @@
  {
   "id": "falcao-peregrino",
   "nome": "Falcão-peregrino",
-  "nomeIngles": "Peregrine falcon (ficha genérica \"Hawk\"; no Pathfinder também o companheiro \"Falcon\")",
+  "nomeIngles": "Peregrine falcon",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Minúsculo",
@@ -22039,7 +22039,7 @@
  {
   "id": "gigantopiteco",
   "nome": "Gigantopiteco",
-  "nomeIngles": "Dire Ape (D&D 3.5); Dire Ape (Gigantopithecus) (Pathfinder 1)",
+  "nomeIngles": "Dire Ape",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -23365,7 +23365,7 @@
  {
   "id": "golfinho",
   "nome": "Golfinho-nariz-de-garrafa",
-  "nomeIngles": "Dolphin (Pathfinder 1, Bestiary); D&D 3.5 só tem Porpoise",
+  "nomeIngles": "Dolphin",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Médio",
@@ -23655,7 +23655,7 @@
  {
   "id": "gorila",
   "nome": "Gorila",
-  "nomeIngles": "Gorilla (Pathfinder 1); Ape (D&D 3.5, a parecida: não há \"Gorilla\")",
+  "nomeIngles": "Gorilla",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -24865,7 +24865,7 @@
  {
   "id": "hiena-malhada",
   "nome": "Hiena-malhada",
-  "nomeIngles": "Hyena (Spotted hyena)",
+  "nomeIngles": "Hyena",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Médio",
@@ -24998,7 +24998,7 @@
  {
   "id": "hienodonte",
   "nome": "Hienodonte",
-  "nomeIngles": "Dire Hyena (Hyaenodon)",
+  "nomeIngles": "Dire Hyena",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -25899,7 +25899,7 @@
  {
   "id": "jararaca",
   "nome": "Jararaca",
-  "nomeIngles": "não há ficha da espécie; parecidas: Medium Viper (D&D 3.5), Viper e Venomous Snake (Pathfinder 1)",
+  "nomeIngles": null,
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Minúsculo",
@@ -26023,7 +26023,7 @@
  {
   "id": "javali",
   "nome": "Javali",
-  "nomeIngles": "Boar (Wild boar)",
+  "nomeIngles": "Boar",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Médio",
@@ -26167,7 +26167,7 @@
  {
   "id": "jiboia",
   "nome": "Jiboia",
-  "nomeIngles": "Boa constrictor (bloco parecido: \"Constrictor Snake\", genérico)",
+  "nomeIngles": "Boa constrictor",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Médio",
@@ -27041,7 +27041,7 @@
  {
   "id": "lagarto-de-gola-gigante",
   "nome": "Lagarto-de-gola gigante",
-  "nomeIngles": "Giant Frilled Lizard (Pathfinder 1)",
+  "nomeIngles": "Giant Frilled Lizard",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -27495,7 +27495,7 @@
  {
   "id": "leao-das-cavernas",
   "nome": "Leão-das-cavernas",
-  "nomeIngles": "Dire Lion (Spotted Lion); Cave lion",
+  "nomeIngles": "Dire Lion",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "monstro Médio",
@@ -27632,7 +27632,7 @@
  {
   "id": "leao-das-cavernas-tardio",
   "nome": "Leão-das-cavernas",
-  "nomeIngles": "Dire Lion (Spotted Lion); Cave lion",
+  "nomeIngles": "Dire Lion",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Pequeno",
@@ -28042,7 +28042,7 @@
  {
   "id": "lesma-gigante",
   "nome": "Lesma-gigante",
-  "nomeIngles": "Giant slug (Pathfinder 1; o D&D 3.5 não foi conferido)",
+  "nomeIngles": "Giant slug",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "praga Enorme",
@@ -29615,7 +29615,7 @@
  {
   "id": "louva-a-deus-gigante",
   "nome": "Louva-a-deus-gigante",
-  "nomeIngles": "Giant Mantis (PF1); Giant Praying Mantis (D&D 3.5)",
+  "nomeIngles": "Giant Mantis",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "praga Grande",
@@ -29760,7 +29760,7 @@
  {
   "id": "lula-de-humboldt-grande",
   "nome": "Lula-de-humboldt",
-  "nomeIngles": "Humboldt squid; D&D 3.5 e Pathfinder 1 só têm \"Squid\", genérica",
+  "nomeIngles": "Humboldt squid",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Médio",
@@ -29902,7 +29902,7 @@
  {
   "id": "lula-de-humboldt",
   "nome": "Lula-de-humboldt",
-  "nomeIngles": "Humboldt squid; D&D 3.5 e Pathfinder 1 só têm \"Squid\", genérica",
+  "nomeIngles": "Humboldt squid",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Miúdo",
@@ -30034,7 +30034,7 @@
  {
   "id": "lula-gigante",
   "nome": "Lula-gigante",
-  "nomeIngles": "Giant squid (D&D 3.5 e Pathfinder 1)",
+  "nomeIngles": "Giant squid",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Enorme",
@@ -30187,7 +30187,7 @@
  {
   "id": "macaco",
   "nome": "Macaco-prego",
-  "nomeIngles": "Monkey (genérico); capuchin",
+  "nomeIngles": "Monkey",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Minúsculo",
@@ -30457,7 +30457,7 @@
  {
   "id": "mamute",
   "nome": "Mamute-lanoso",
-  "nomeIngles": "Woolly mammoth (sem ficha própria nos dois; parecidos: Elephant, Mastodon)",
+  "nomeIngles": "Woolly mammoth",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Enorme",
@@ -31163,7 +31163,7 @@
  {
   "id": "mastodonte",
   "nome": "Mastodonte-americano",
-  "nomeIngles": "American mastodon (Pathfinder 1: Mastodon; D&D 3.5 não tem)",
+  "nomeIngles": "American mastodon",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Enorme",
@@ -31469,7 +31469,7 @@
  {
   "id": "megalodonte",
   "nome": "Megalodonte",
-  "nomeIngles": "Megalodon; Dire Shark nos dois d20",
+  "nomeIngles": "Megalodon",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Imenso",
@@ -32710,7 +32710,7 @@
  {
   "id": "morcego",
   "nome": "Morcego (morcego-vampiro)",
-  "nomeIngles": "Common vampire bat (ficha genérica \"Bat\")",
+  "nomeIngles": "Common vampire bat",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Minúsculo",
@@ -32972,7 +32972,7 @@
  {
   "id": "moreia-gigante",
   "nome": "Moreia-gigante",
-  "nomeIngles": "Giant moray eel (Pathfinder 1, Bestiary); não existe no SRD do D&D 3.5",
+  "nomeIngles": "Giant moray eel",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -33240,7 +33240,7 @@
  {
   "id": "mosassauro",
   "nome": "Mosassauro",
-  "nomeIngles": "Mosasaurus (sem ficha; o parecido no PF1 é o Tylosaurus)",
+  "nomeIngles": "Mosasaurus",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Enorme",
@@ -34156,7 +34156,7 @@
  {
   "id": "serpente-venenosa",
   "nome": "Naja-real",
-  "nomeIngles": "King cobra; não há ficha da espécie. Parecidas: Medium Viper e Large Viper (D&D 3.5), Venomous Snake (Pathfinder 1)",
+  "nomeIngles": "King cobra",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Médio",
@@ -35441,7 +35441,7 @@
  {
   "id": "orca",
   "nome": "Orca",
-  "nomeIngles": "Orca (D&D 3.5, entre as baleias; Pathfinder 1, entre os golfinhos)",
+  "nomeIngles": "Orca",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Enorme",
@@ -36865,7 +36865,7 @@
  {
   "id": "polvo",
   "nome": "Polvo-comum",
-  "nomeIngles": "Common octopus; D&D 3.5 e Pathfinder 1 têm \"Octopus\", genérico",
+  "nomeIngles": "Common octopus",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Pequeno",
@@ -36999,7 +36999,7 @@
  {
   "id": "polvo-gigante",
   "nome": "Polvo-gigante",
-  "nomeIngles": "Giant octopus (D&D 3.5 e Pathfinder 1)",
+  "nomeIngles": "Giant octopus",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -37144,7 +37144,7 @@
  {
   "id": "ponei",
   "nome": "Pônei",
-  "nomeIngles": "Pony (D&D 3.5 e Pathfinder 1)",
+  "nomeIngles": "Pony",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Médio",
@@ -37288,7 +37288,7 @@
  {
   "id": "poraque",
   "nome": "Poraquê",
-  "nomeIngles": "Electric eel (Pathfinder 1, Bestiary); não existe no SRD do D&D 3.5",
+  "nomeIngles": "Electric eel",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Pequeno",
@@ -38240,7 +38240,7 @@
  {
   "id": "ra-gigante",
   "nome": "Rã gigante",
-  "nomeIngles": "Giant Frog (Pathfinder 1)",
+  "nomeIngles": "Giant Frog",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Médio",
@@ -38379,7 +38379,7 @@
  {
   "id": "ra-venenosa",
   "nome": "Rã-dourada-venenosa",
-  "nomeIngles": "Golden poison frog (bloco parecido: Poison Frog, Pathfinder 1)",
+  "nomeIngles": "Golden poison frog",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Minúsculo",
@@ -39193,7 +39193,7 @@
  {
   "id": "rinoceronte",
   "nome": "Rinoceronte-branco",
-  "nomeIngles": "White rhinoceros (D&D 3.5 e Pathfinder 1: Rhinoceros)",
+  "nomeIngles": "White rhinoceros",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -39792,7 +39792,7 @@
  {
   "id": "sanguessuga-gigante",
   "nome": "Sanguessuga-gigante",
-  "nomeIngles": "Giant leech (Pathfinder 1; o D&D 3.5 não foi conferido)",
+  "nomeIngles": "Giant leech",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "praga Médio",
@@ -39938,7 +39938,7 @@
  {
   "id": "sapo",
   "nome": "Sapo-cururu",
-  "nomeIngles": "Cane toad (bloco parecido: Toad, D&D 3.5 e Pathfinder 1)",
+  "nomeIngles": "Cane toad",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Minúsculo",
@@ -42383,7 +42383,7 @@
  {
   "id": "tigre-dentes-de-sabre",
   "nome": "Tigre-dentes-de-sabre",
-  "nomeIngles": "Smilodon; Dire Tiger (o bloco parecido)",
+  "nomeIngles": "Smilodon",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Médio",
@@ -43355,7 +43355,7 @@
  {
   "id": "tubarao-branco",
   "nome": "Tubarão-branco",
-  "nomeIngles": "Great white shark (Pathfinder 1, Bestiary 4); D&D 3.5 só tem Shark",
+  "nomeIngles": "Great white shark",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -43759,7 +43759,7 @@
  {
   "id": "urso-das-cavernas",
   "nome": "Urso-das-cavernas",
-  "nomeIngles": "Dire Bear (D&D 3.5); Dire Bear (Cave Bear) (Pathfinder 1)",
+  "nomeIngles": "Dire Bear",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -44012,7 +44012,7 @@
  {
   "id": "urso-pardo",
   "nome": "Urso-pardo",
-  "nomeIngles": "Brown Bear (D&D 3.5); Grizzly Bear (Pathfinder 1)",
+  "nomeIngles": "Brown Bear",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",
@@ -44150,7 +44150,7 @@
  {
   "id": "urso-pardo-litoral",
   "nome": "Urso-pardo",
-  "nomeIngles": "Brown Bear (D&D 3.5); Grizzly Bear (Pathfinder 1)",
+  "nomeIngles": "Brown Bear",
   "categoria": "Animal",
   "tipo": "fera",
   "conceito": "animal Grande",

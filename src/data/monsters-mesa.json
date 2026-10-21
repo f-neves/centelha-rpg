@@ -253,7 +253,7 @@
  {
   "id": "aguia-real",
   "nome": "Águia-real",
-  "nomeIngles": "Golden eagle (bloco \"Eagle\", genérico)",
+  "nomeIngles": "Golden eagle",
   "ameaca": 1,
   "centelha": 0,
   "categoria": "Animal",
@@ -527,7 +527,7 @@
  {
   "id": "anquilossauro",
   "nome": "Anquilossauro",
-  "nomeIngles": "Ankylosaurus (Pathfinder 1; D&D 3.5 não tem)",
+  "nomeIngles": "Ankylosaurus",
   "ameaca": 4,
   "centelha": 0,
   "categoria": "Animal",
@@ -696,7 +696,7 @@
  {
   "id": "aranha-gigante",
   "nome": "Aranha-gigante",
-  "nomeIngles": "Giant Spider (PF1); Monstrous Spider, Medium (D&D 3.5)",
+  "nomeIngles": "Giant Spider",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -1332,7 +1332,7 @@
  {
   "id": "auroque",
   "nome": "Auroque",
-  "nomeIngles": "Aurochs (Pathfinder 1 tem ficha; D&D 3.5 não, parecida: Bison)",
+  "nomeIngles": "Aurochs",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -2440,7 +2440,7 @@
  {
   "id": "bisao",
   "nome": "Bisão-americano",
-  "nomeIngles": "Bison (D&D 3.5 e Pathfinder 1)",
+  "nomeIngles": "Bison",
   "ameaca": 3,
   "centelha": 0,
   "categoria": "Animal",
@@ -2787,7 +2787,7 @@
  {
   "id": "boi",
   "nome": "Boi de tração",
-  "nomeIngles": "Ox (sem ficha nos dois; parecidos: Bison, Aurochs)",
+  "nomeIngles": "Ox",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -3996,7 +3996,7 @@
  {
   "id": "cachorro-de-guarda",
   "nome": "Cão de guarda",
-  "nomeIngles": "Riding Dog (a ficha do d20); Mastiff (a raça)",
+  "nomeIngles": "Riding Dog",
   "ameaca": 1,
   "centelha": 0,
   "categoria": "Animal",
@@ -4495,7 +4495,7 @@
  {
   "id": "caranguejo-gigante",
   "nome": "Caranguejo-gigante",
-  "nomeIngles": "Giant Crab (PF1; o SRD do 3.5 não tem)",
+  "nomeIngles": "Giant Crab",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -4951,7 +4951,7 @@
  {
   "id": "cavalo",
   "nome": "Cavalo (de sela)",
-  "nomeIngles": "Horse (D&D 3.5: Light Horse, Heavy Horse)",
+  "nomeIngles": "Horse",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -5122,7 +5122,7 @@
  {
   "id": "centopeia-gigante",
   "nome": "Centopeia-gigante",
-  "nomeIngles": "Giant Centipede (PF1); Monstrous Centipede, Medium (D&D 3.5)",
+  "nomeIngles": "Giant Centipede",
   "ameaca": 1,
   "centelha": 0,
   "categoria": "Animal",
@@ -5916,7 +5916,7 @@
  {
   "id": "crocodilo-do-nilo",
   "nome": "Crocodilo-do-nilo",
-  "nomeIngles": "Nile crocodile (blocos: Crocodile, Giant Crocodile)",
+  "nomeIngles": "Nile crocodile",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -5998,7 +5998,7 @@
  {
   "id": "crocodilo-do-nilo-femea",
   "nome": "Crocodilo-do-nilo",
-  "nomeIngles": "Nile crocodile (blocos: Crocodile, Giant Crocodile)",
+  "nomeIngles": "Nile crocodile",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -6250,7 +6250,7 @@
  {
   "id": "daeodon",
   "nome": "Daeodon",
-  "nomeIngles": "Dire Boar (D&D 3.5); Dire Boar (Daeodon) (Pathfinder 1)",
+  "nomeIngles": "Dire Boar",
   "ameaca": 3,
   "centelha": 0,
   "categoria": "Animal",
@@ -8340,7 +8340,7 @@
  {
   "id": "varano",
   "nome": "Dragão-de-komodo",
-  "nomeIngles": "Komodo dragon (bloco parecido: Monitor Lizard, que lá descreve lagartos de 3 a 5 pés)",
+  "nomeIngles": "Komodo dragon",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -8422,7 +8422,7 @@
  {
   "id": "varano-femea",
   "nome": "Dragão-de-komodo, fêmea",
-  "nomeIngles": "Komodo dragon (bloco parecido: Monitor Lizard, que lá descreve lagartos de 3 a 5 pés)",
+  "nomeIngles": "Komodo dragon",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -9123,7 +9123,7 @@
  {
   "id": "elasmossauro",
   "nome": "Elasmossauro",
-  "nomeIngles": "Elasmosaurus (nos dois, entre os dinossauros)",
+  "nomeIngles": "Elasmosaurus",
   "ameaca": 4,
   "centelha": 0,
   "categoria": "Animal",
@@ -9204,7 +9204,7 @@
  {
   "id": "elefante",
   "nome": "Elefante-asiático",
-  "nomeIngles": "Asian elephant (D&D 3.5 e Pathfinder 1: Elephant)",
+  "nomeIngles": "Asian elephant",
   "ameaca": 4,
   "centelha": 0,
   "categoria": "Animal",
@@ -10502,7 +10502,7 @@
  {
   "id": "escorpiao-gigante",
   "nome": "Escorpião-gigante",
-  "nomeIngles": "Giant Scorpion (PF1); Monstrous Scorpion, Large (D&D 3.5)",
+  "nomeIngles": "Giant Scorpion",
   "ameaca": 3,
   "centelha": 0,
   "categoria": "Animal",
@@ -11031,7 +11031,7 @@
  {
   "id": "estegossauro",
   "nome": "Estegossauro",
-  "nomeIngles": "Stegosaurus (Pathfinder 1; D&D 3.5 não tem)",
+  "nomeIngles": "Stegosaurus",
   "ameaca": 4,
   "centelha": 0,
   "categoria": "Animal",
@@ -11357,7 +11357,7 @@
  {
   "id": "falcao-peregrino",
   "nome": "Falcão-peregrino",
-  "nomeIngles": "Peregrine falcon (ficha genérica \"Hawk\"; no Pathfinder também o companheiro \"Falcon\")",
+  "nomeIngles": "Peregrine falcon",
   "ameaca": 1,
   "centelha": 0,
   "categoria": "Animal",
@@ -13214,7 +13214,7 @@
  {
   "id": "gigantopiteco",
   "nome": "Gigantopiteco",
-  "nomeIngles": "Dire Ape (D&D 3.5); Dire Ape (Gigantopithecus) (Pathfinder 1)",
+  "nomeIngles": "Dire Ape",
   "ameaca": 3,
   "centelha": 0,
   "categoria": "Animal",
@@ -14084,7 +14084,7 @@
  {
   "id": "golfinho",
   "nome": "Golfinho-nariz-de-garrafa",
-  "nomeIngles": "Dolphin (Pathfinder 1, Bestiary); D&D 3.5 só tem Porpoise",
+  "nomeIngles": "Dolphin",
   "ameaca": 1,
   "centelha": 0,
   "categoria": "Animal",
@@ -14261,7 +14261,7 @@
  {
   "id": "gorila",
   "nome": "Gorila",
-  "nomeIngles": "Gorilla (Pathfinder 1); Ape (D&D 3.5, a parecida: não há \"Gorilla\")",
+  "nomeIngles": "Gorilla",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -14974,7 +14974,7 @@
  {
   "id": "hiena-malhada",
   "nome": "Hiena-malhada",
-  "nomeIngles": "Hyena (Spotted hyena)",
+  "nomeIngles": "Hyena",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -15055,7 +15055,7 @@
  {
   "id": "hienodonte",
   "nome": "Hienodonte",
-  "nomeIngles": "Dire Hyena (Hyaenodon)",
+  "nomeIngles": "Dire Hyena",
   "ameaca": 3,
   "centelha": 0,
   "categoria": "Animal",
@@ -15631,7 +15631,7 @@
  {
   "id": "jararaca",
   "nome": "Jararaca",
-  "nomeIngles": "não há ficha da espécie; parecidas: Medium Viper (D&D 3.5), Viper e Venomous Snake (Pathfinder 1)",
+  "nomeIngles": null,
   "ameaca": 1,
   "centelha": 0,
   "categoria": "Animal",
@@ -15715,7 +15715,7 @@
  {
   "id": "javali",
   "nome": "Javali",
-  "nomeIngles": "Boar (Wild boar)",
+  "nomeIngles": "Boar",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -15804,7 +15804,7 @@
  {
   "id": "jiboia",
   "nome": "Jiboia",
-  "nomeIngles": "Boa constrictor (bloco parecido: \"Constrictor Snake\", genérico)",
+  "nomeIngles": "Boa constrictor",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -16308,7 +16308,7 @@
  {
   "id": "lagarto-de-gola-gigante",
   "nome": "Lagarto-de-gola gigante",
-  "nomeIngles": "Giant Frilled Lizard (Pathfinder 1)",
+  "nomeIngles": "Giant Frilled Lizard",
   "ameaca": 4,
   "centelha": 0,
   "categoria": "Animal",
@@ -16579,7 +16579,7 @@
  {
   "id": "leao-das-cavernas",
   "nome": "Leão-das-cavernas",
-  "nomeIngles": "Dire Lion (Spotted Lion); Cave lion",
+  "nomeIngles": "Dire Lion",
   "ameaca": 4,
   "centelha": 0,
   "categoria": "Animal",
@@ -16669,7 +16669,7 @@
  {
   "id": "leao-das-cavernas-tardio",
   "nome": "Leão-das-cavernas",
-  "nomeIngles": "Dire Lion (Spotted Lion); Cave lion",
+  "nomeIngles": "Dire Lion",
   "ameaca": 4,
   "centelha": 0,
   "categoria": "Animal",
@@ -16938,7 +16938,7 @@
  {
   "id": "lesma-gigante",
   "nome": "Lesma-gigante",
-  "nomeIngles": "Giant slug (Pathfinder 1; o D&D 3.5 não foi conferido)",
+  "nomeIngles": "Giant slug",
   "ameaca": 5,
   "centelha": 0,
   "categoria": "Animal",
@@ -17894,7 +17894,7 @@
  {
   "id": "louva-a-deus-gigante",
   "nome": "Louva-a-deus-gigante",
-  "nomeIngles": "Giant Mantis (PF1); Giant Praying Mantis (D&D 3.5)",
+  "nomeIngles": "Giant Mantis",
   "ameaca": 3,
   "centelha": 0,
   "categoria": "Animal",
@@ -17983,7 +17983,7 @@
  {
   "id": "lula-de-humboldt-grande",
   "nome": "Lula-de-humboldt",
-  "nomeIngles": "Humboldt squid; D&D 3.5 e Pathfinder 1 só têm \"Squid\", genérica",
+  "nomeIngles": "Humboldt squid",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -18074,7 +18074,7 @@
  {
   "id": "lula-de-humboldt",
   "nome": "Lula-de-humboldt",
-  "nomeIngles": "Humboldt squid; D&D 3.5 e Pathfinder 1 só têm \"Squid\", genérica",
+  "nomeIngles": "Humboldt squid",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -18165,7 +18165,7 @@
  {
   "id": "lula-gigante",
   "nome": "Lula-gigante",
-  "nomeIngles": "Giant squid (D&D 3.5 e Pathfinder 1)",
+  "nomeIngles": "Giant squid",
   "ameaca": 5,
   "centelha": 0,
   "categoria": "Animal",
@@ -18255,7 +18255,7 @@
  {
   "id": "macaco",
   "nome": "Macaco-prego",
-  "nomeIngles": "Monkey (genérico); capuchin",
+  "nomeIngles": "Monkey",
   "ameaca": 1,
   "centelha": 0,
   "categoria": "Animal",
@@ -18428,7 +18428,7 @@
  {
   "id": "mamute",
   "nome": "Mamute-lanoso",
-  "nomeIngles": "Woolly mammoth (sem ficha própria nos dois; parecidos: Elephant, Mastodon)",
+  "nomeIngles": "Woolly mammoth",
   "ameaca": 5,
   "centelha": 0,
   "categoria": "Animal",
@@ -18883,7 +18883,7 @@
  {
   "id": "mastodonte",
   "nome": "Mastodonte-americano",
-  "nomeIngles": "American mastodon (Pathfinder 1: Mastodon; D&D 3.5 não tem)",
+  "nomeIngles": "American mastodon",
   "ameaca": 5,
   "centelha": 0,
   "categoria": "Animal",
@@ -19062,7 +19062,7 @@
  {
   "id": "megalodonte",
   "nome": "Megalodonte",
-  "nomeIngles": "Megalodon; Dire Shark nos dois d20",
+  "nomeIngles": "Megalodon",
   "ameaca": 5,
   "centelha": 0,
   "categoria": "Animal",
@@ -19823,7 +19823,7 @@
  {
   "id": "morcego",
   "nome": "Morcego (morcego-vampiro)",
-  "nomeIngles": "Common vampire bat (ficha genérica \"Bat\")",
+  "nomeIngles": "Common vampire bat",
   "ameaca": 1,
   "centelha": 0,
   "categoria": "Animal",
@@ -19989,7 +19989,7 @@
  {
   "id": "moreia-gigante",
   "nome": "Moreia-gigante",
-  "nomeIngles": "Giant moray eel (Pathfinder 1, Bestiary); não existe no SRD do D&D 3.5",
+  "nomeIngles": "Giant moray eel",
   "ameaca": 4,
   "centelha": 0,
   "categoria": "Animal",
@@ -20153,7 +20153,7 @@
  {
   "id": "mosassauro",
   "nome": "Mosassauro",
-  "nomeIngles": "Mosasaurus (sem ficha; o parecido no PF1 é o Tylosaurus)",
+  "nomeIngles": "Mosasaurus",
   "ameaca": 5,
   "centelha": 0,
   "categoria": "Animal",
@@ -20679,7 +20679,7 @@
  {
   "id": "serpente-venenosa",
   "nome": "Naja-real",
-  "nomeIngles": "King cobra; não há ficha da espécie. Parecidas: Medium Viper e Large Viper (D&D 3.5), Venomous Snake (Pathfinder 1)",
+  "nomeIngles": "King cobra",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -21473,7 +21473,7 @@
  {
   "id": "orca",
   "nome": "Orca",
-  "nomeIngles": "Orca (D&D 3.5, entre as baleias; Pathfinder 1, entre os golfinhos)",
+  "nomeIngles": "Orca",
   "ameaca": 4,
   "centelha": 0,
   "categoria": "Animal",
@@ -22356,7 +22356,7 @@
  {
   "id": "polvo",
   "nome": "Polvo-comum",
-  "nomeIngles": "Common octopus; D&D 3.5 e Pathfinder 1 têm \"Octopus\", genérico",
+  "nomeIngles": "Common octopus",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -22439,7 +22439,7 @@
  {
   "id": "polvo-gigante",
   "nome": "Polvo-gigante",
-  "nomeIngles": "Giant octopus (D&D 3.5 e Pathfinder 1)",
+  "nomeIngles": "Giant octopus",
   "ameaca": 5,
   "centelha": 0,
   "categoria": "Animal",
@@ -22529,7 +22529,7 @@
  {
   "id": "ponei",
   "nome": "Pônei",
-  "nomeIngles": "Pony (D&D 3.5 e Pathfinder 1)",
+  "nomeIngles": "Pony",
   "ameaca": 1,
   "centelha": 0,
   "categoria": "Animal",
@@ -22618,7 +22618,7 @@
  {
   "id": "poraque",
   "nome": "Poraquê",
-  "nomeIngles": "Electric eel (Pathfinder 1, Bestiary); não existe no SRD do D&D 3.5",
+  "nomeIngles": "Electric eel",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -23220,7 +23220,7 @@
  {
   "id": "ra-gigante",
   "nome": "Rã gigante",
-  "nomeIngles": "Giant Frog (Pathfinder 1)",
+  "nomeIngles": "Giant Frog",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -23303,7 +23303,7 @@
  {
   "id": "ra-venenosa",
   "nome": "Rã-dourada-venenosa",
-  "nomeIngles": "Golden poison frog (bloco parecido: Poison Frog, Pathfinder 1)",
+  "nomeIngles": "Golden poison frog",
   "ameaca": 1,
   "centelha": 0,
   "categoria": "Animal",
@@ -23809,7 +23809,7 @@
  {
   "id": "rinoceronte",
   "nome": "Rinoceronte-branco",
-  "nomeIngles": "White rhinoceros (D&D 3.5 e Pathfinder 1: Rhinoceros)",
+  "nomeIngles": "White rhinoceros",
   "ameaca": 3,
   "centelha": 0,
   "categoria": "Animal",
@@ -24174,7 +24174,7 @@
  {
   "id": "sanguessuga-gigante",
   "nome": "Sanguessuga-gigante",
-  "nomeIngles": "Giant leech (Pathfinder 1; o D&D 3.5 não foi conferido)",
+  "nomeIngles": "Giant leech",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -24257,7 +24257,7 @@
  {
   "id": "sapo",
   "nome": "Sapo-cururu",
-  "nomeIngles": "Cane toad (bloco parecido: Toad, D&D 3.5 e Pathfinder 1)",
+  "nomeIngles": "Cane toad",
   "ameaca": 1,
   "centelha": 0,
   "categoria": "Animal",
@@ -25730,7 +25730,7 @@
  {
   "id": "tigre-dentes-de-sabre",
   "nome": "Tigre-dentes-de-sabre",
-  "nomeIngles": "Smilodon; Dire Tiger (o bloco parecido)",
+  "nomeIngles": "Smilodon",
   "ameaca": 4,
   "centelha": 0,
   "categoria": "Animal",
@@ -26347,7 +26347,7 @@
  {
   "id": "tubarao-branco",
   "nome": "Tubarão-branco",
-  "nomeIngles": "Great white shark (Pathfinder 1, Bestiary 4); D&D 3.5 só tem Shark",
+  "nomeIngles": "Great white shark",
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Animal",
@@ -26606,7 +26606,7 @@
  {
   "id": "urso-das-cavernas",
   "nome": "Urso-das-cavernas",
-  "nomeIngles": "Dire Bear (D&D 3.5); Dire Bear (Cave Bear) (Pathfinder 1)",
+  "nomeIngles": "Dire Bear",
   "ameaca": 4,
   "centelha": 0,
   "categoria": "Animal",
@@ -26787,7 +26787,7 @@
  {
   "id": "urso-pardo",
   "nome": "Urso-pardo",
-  "nomeIngles": "Brown Bear (D&D 3.5); Grizzly Bear (Pathfinder 1)",
+  "nomeIngles": "Brown Bear",
   "ameaca": 3,
   "centelha": 0,
   "categoria": "Animal",
@@ -26878,7 +26878,7 @@
  {
   "id": "urso-pardo-litoral",
   "nome": "Urso-pardo",
-  "nomeIngles": "Brown Bear (D&D 3.5); Grizzly Bear (Pathfinder 1)",
+  "nomeIngles": "Brown Bear",
   "ameaca": 3,
   "centelha": 0,
   "categoria": "Animal",
