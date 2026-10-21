@@ -8,70 +8,104 @@
   "categoriaLegada": "Fera",
   "papel": "fera",
   "conceito": "animal Minúsculo",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "O menor carnívoro, que caça roedores dentro das galerias deles e mata com uma mordida na nuca. Vive pouco e come o tempo todo.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/weasel.webp",
   "porte": "Miúdo",
   "dimensoes": {
-    "medida": "30 cm de comprimento",
-    "peso": "1 kg"
+    "medida": "0,23 m de comprimento, 0,05 m de altura",
+    "peso": "0,099 kg",
+    "comprimento": 0.23,
+    "largura": 0.03,
+    "altura": 0.05
   },
   "locomocao": {
-    "terra": 2,
+    "terra": 3,
     "escalada": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 4,
+    "corrida": 6
   },
   "centelha": 0,
   "attrs": {
-    "forca": 1,
-    "destreza": 4,
-    "vigor": 2,
-    "influencia": 1,
-    "perspicacia": 1,
-    "compostura": 2,
+    "forca": 0,
+    "destreza": 3,
+    "vigor": 3,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 1
+    "raciocinio": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
-    "briga": 1,
-    "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "briga": 3,
+    "esquiva": 3,
+    "atletismo": 2,
+    "furtividade": 3,
+    "integridade": 1,
+    "prontidao": 2,
+    "resistencia": 2,
+    "sobrevivencia": 3
   },
+  "skills2": {
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "em tocas",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
+    "conviccao": 1,
+    "temperanca": 1,
     "valor": 2
   },
-  "willpower": 5,
-  "aparencia": 4,
+  "willpower": 3,
+  "aparencia": 6,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
   "habilidades": [
     {
-      "nome": "Sentidos de Predadora",
-      "descricao": "Visão que perfura a penumbra e faro afiado tornam quase impossível se esconder dela em terreno aberto."
+      "nome": "morder e não largar",
+      "descricao": "Mordida: crava os dentes e não solta; com Força 0, o agarrão do livro não tira nada.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Mordida que Gruda",
-      "descricao": "Ao acertar, cravam os dentes e não soltam: continuam mordendo a cada instante enquanto a vítima tenta se libertar."
+      "nome": "corpo flexível",
+      "descricao": "escorrega por frestas e escapa de agarrão e de corda.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Corpo Flexível",
-      "descricao": "Escorrega por frestas e armadilhas com facilidade, escapando de agarrões e cordas."
+      "nome": "Sentidos",
+      "descricao": "faro: Prontidão (faro) +2; alcance."
     }
   ],
   "lore": [
@@ -82,6 +116,14 @@
     {
       "titulo": "Pequena e implacável",
       "texto": "Apesar do tamanho, ataca criaturas muito maiores quando encurralada, sem hesitar diante do próprio risco."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Minúscula: ganha +9 no corpo a corpo contra um humano Médio. A mordida tira 1,5 em média, só o dado. 1 PV (99 g, na zona de transição de 70 a 130 g, desce): um golpe de humano a derruba. Pela Força 0, qualquer atacante de Força 4 ou mais tira o Bloqueio dela. O perigo dela é para o rato e o coelho, e não para a gente."
     }
   ],
   "ecologia": {
@@ -118,5 +160,51 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 1
+  "ameacaLegada": 1,
+  "v3": {
+    "pv": 1,
+    "esquiva": 12,
+    "bloqueio": 6,
+    "defesa": 12,
+    "defesaMental": 7,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 0.32,
+    "carga": {
+      "leve": 0.02,
+      "media": 0.04,
+      "pesada": 0.05,
+      "maxima": 0.07
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 4,
+        "corrida": 6
+      }
+    }
+  },
+  "notasObservacao": [
+    "forca: 0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): a força de 90 g não fere nem segura a mão de um humano. O feito de matar coelho de 5 a 10 vezes o próprio peso é de matar, e não de levantar; o peso levado não foi achado (D-162).",
+    "pv: 1 (em vigor na Etapa 2, 20/10/2026); antes: 8 pela decisão 21 (5 + Vigor), e 11 pela outra proposta do autor (10 + metade do Vigor); eram 18 pela Faixa 1 antiga (D-169, D-174).",
+    "pesoErguido: 0,32 kg (em vigor na Etapa 2, 20/10/2026); antes: 0,28 kg pela fórmula nova (`calc6.mjs`, com 0,09025 kg), provisório; era 0,01 kg pela D-162 (decisões 14 e 16).",
+    "carga: 0,02 kg de Leve pela conta da D-122, provisória (D-169).",
+    "musculatura: 3 ◆, robusta para o tamanho, pela presa de 5 a 10 vezes o próprio peso (só pela Wikipédia; a Mammal Society confirma só coelho jovem) (D-174).",
+    "resistencia: 2 **[extrapolação]**; o levantamento a aponta como candidata a 1 pelo metabolismo sem reserva, sem tempo medido de jejum (D-174).",
+    "atributos.compostura: desce a 1 por não ser espécie social (diretriz 1); a Defesa Social cai de 10 para 8 (D-174).",
+    "escalada: 0 por falta de dado na pesquisa, e não por fato contrário; o d20 dá escalar 20 pés, sem fonte real (D-174).",
+    "velocidade: congelada (decisão 23), com o 0,4 do Miúdo no Minúsculo; sem real para conferir (D-170).",
+    "dimensoes: a altura (0,045) e a largura (0,032) saem da estimativa da Bestiarista-2 para o macho, sem fonte; o comprimento é o do macho britânico (Mammal Society); os quatro escalados pelo cubo da massa para o típico de 90,25 g (D-147, D-174).",
+    "alvo: Minúsculo, sem borda; a área está abaixo do começo do Minúsculo (D-166, D-174).",
+    "briga: 4 pela técnica de matar presa maior; com Força 0 o dano fica no dado (D-115, D-174).",
+    "raciocinio: 3 pelo bote, sem tempo de reação medido (D-174).",
+    "atletismo: 2 é escolha da Bestiarista-2, sem fonte de escalada ou salto medidos (D-174).",
+    "couraca: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): sem velocidade, distância por dia nem tempo de perseguição (`doninha.md`). O que há: área de vida de 0,2 a 1,0 km² (ADW)."
+  ]
 }

@@ -2,79 +2,107 @@
   "ordem": 201,
   "id": "moreia-gigante",
   "idAntigo": "mon-giant-moray-eel",
-  "nome": "Moreia Gigante",
-  "nomeIngles": "Giant Moray Eel",
+  "nome": "Moreia-gigante",
+  "nomeIngles": "Giant moray eel (Pathfinder 1, Bestiary); não existe no SRD do D&D 3.5",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
   "papel": "fera",
   "conceito": "animal Grande",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Uma moreia do tamanho de um barco a remo, numa caverna submersa: espera, morde o que passa na boca da toca e puxa para dentro. Por que cresceu tanto fica na descrição.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/giant-moray-eel.webp",
   "porte": "Grande",
   "dimensoes": {
-    "medida": "3,5 metros de comprimento",
-    "peso": "90 kg"
+    "medida": "5,5 m de comprimento, 0,46 m de altura",
+    "peso": "345 kg",
+    "comprimento": 5.5,
+    "largura": 0.37,
+    "altura": 0.46
   },
   "locomocao": {
-    "natacao": 3
+    "natacao": 5
   },
   "centelha": 0,
   "attrs": {
-    "forca": 8,
-    "destreza": 4,
-    "vigor": 6,
-    "influencia": 2,
-    "perspicacia": 1,
-    "compostura": 2,
-    "percepcao": 3,
+    "forca": 7,
+    "destreza": 3,
+    "vigor": 4,
+    "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 1
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
-    "briga": 4,
-    "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "briga": 3,
+    "esquiva": 2,
+    "furtividade": 3,
+    "integridade": 3,
+    "prontidao": 2,
+    "resistencia": 3,
+    "sobrevivencia": 2
   },
+  "skills2": {
+    "natacao": 2,
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "na toca",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
-    "valor": 2
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
   },
-  "willpower": 5,
-  "aparencia": 4,
+  "willpower": 3,
+  "aparencia": 6,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 6
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
     }
   ],
   "habilidades": [
     {
-      "nome": "Mordida e agarrão",
-      "descricao": "Prende a presa entre os dentes e não solta, imobilizando-a para os ataques seguintes."
+      "nome": "agarrar",
+      "descricao": "mordida: Dano do agarrão: 2 × Força = 14 por manutenção.",
+      "classe": "livro"
     },
     {
-      "nome": "Segunda goela",
-      "descricao": "Enquanto segura um inimigo agarrado, um segundo par de mandíbulas na garganta desfere outra dentada, sem gastar mais esforço."
+      "nome": "mandíbulas da garganta",
+      "descricao": "Mordida: Agarrar: a segunda mandíbula puxa a presa agarrada para dentro; não é segundo golpe.",
+      "classe": "livro"
     },
     {
-      "nome": "Faro na água",
-      "descricao": "Localiza presas pelo cheiro mesmo em água turva ou escura, além de enxergar bem com pouca luz."
+      "nome": "caça em dupla",
+      "descricao": "caça junto com outro predador, que aponta a presa escondida.",
+      "classe": "como luta"
     },
     {
-      "nome": "Furtiva nas profundezas",
-      "descricao": "Desliza e se esconde entre corais e rochas com facilidade incomum para o tamanho."
+      "nome": "Sentidos",
+      "descricao": "nenhum sentido achado com fonte; fica só a Percepção, sem Especialidade natural. · faro na água: \"Localiza presas pelo cheiro mesmo em água turva ou escura, além de enxergar bem com pouca luz\"; texto do Mestre, sem Especialidade (nenhum sentido da real achado com fonte)."
+    }
+  ],
+  "doencas": [
+    {
+      "nome": "Doença no jogo (ao comer)",
+      "texto": "Ciguatera · Virulência 7 · dia · quem come a carne rola uma vez"
     }
   ],
   "lore": [
@@ -85,6 +113,18 @@
     {
       "titulo": "Mandíbulas duplas",
       "texto": "Marinheiros contam histórias de morays que mastigam suas vítimas por dentro, engolindo pedaço a pedaço."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Doença no jogo (ao comer): Ciguatera · Virulência 7 · dia · quem come a carne rola uma vez"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande: o humano Médio acerta com +3 no corpo a corpo; a Força 7 tira o Bloqueio de quem tem Força 3 ou menos. A mordida faz 10,5 em média e agarra; o agarrão tira 14 por manutenção, enquanto as mandíbulas da garganta puxam. 46 PV, Impacto 4 e Couraça nível 1 (pele grossa e lisa); o quanto ela tira fica para depois. Sai da fresta sem aviso (Furtividade 3, +1 na toca). É o perigo de quem mergulha em caverna e passa perto da boca errada."
     }
   ],
   "ecologia": {
@@ -122,5 +162,41 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 46,
+    "esquiva": 10,
+    "bloqueio": 6,
+    "defesa": 10,
+    "defesaMental": 8,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 851.56,
+    "deslocamento": {
+      "nado": 5
+    }
+  },
+  "notasObservacao": [
+    "gigante escalado (D-105): tudo o que é tamanho e massa é [extrapolação]. A moreia real típica (1,4 m, 5,69 kg) foi escalada 3,93 vezes no comprimento, na altura e na largura, e pelo cubo na massa (345 kg). Era 3,5 m e 47,6 kg (o tamanho do site, sobre o máximo da real), e antes 7 m e 381 kg.",
+    "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; os 3,5 m do site davam Médio, uma categoria só acima da real típica (Pequeno), e os 5,5 m dão Grande, entre os 16 pés do Pathfinder e os 7 m da v3, a 38% do corte do Médio (21% com a altura de Dimensions.com) (D-174).",
+    "alvo: Grande pela silhueta (2,005 m², de lado); era Médio. A real típica fica Pequena (0,130 m²), a 8% do corte do Miúdo: com a altura de Dimensions.com seria Miúda (cerca de 0,114 m²), e aí o Médio já bastaria ao gigante.",
+    "dimensoes.altura e largura: as da real são estimadas (0,083 e 0,067 do comprimento, sem dado), e a escala as multiplica.",
+    "forca: 7 pelos vizinhos de massa (hienodonte 7, urso-pardo 7, crocodilo 8), com a Força de referência de 6,9 em 345 kg; a da real típica é 2 [provisório] (D-158, D-169).",
+    "vigor: 4, revisto na oitava rodada pelo corpo e pela massa, e fica: +1 sobre o animal de base (moreia real, Vigor 3), o mínimo da D-176; peixe de 345 kg, ao lado do golfinho (260 kg, 4) e do tubarão-branco (1,15 t, 4), abaixo do cavalo (470 kg, 5) (D-174, D-176).",
+    "compostura: 1 por não ser espécie social (diretriz 1); era 3 pelo emboscador. O hábito da toca foi para Furtividade (na toca) +1. Provisória (D-174).",
+    "especialidade Furtividade (na toca) +1: nova, pela real [comparação]; provisória (D-174).",
+    "variante real: agora o adulto típico (1,4 m, 5,69 kg), e não o máximo (3 m, 30 kg); Faixa 2, PV 26; o Alvo pela silhueta sai das dimensões estimadas, 0,130 m², Pequeno (sem linha própria na `tamanho-fichas-v2`); Força 2, revista pelo item 8.",
+    "pesoErguido: 851,56 kg pelo `calc6.mjs`, provisório (era 413,49 com 47,6 kg). A ficha de hoje dizia \"não se aplica (nadador)\"; na água vale para puxar.",
+    "carga: não se aplica (nadador).",
+    "velocidade: congelada (decisão 23); sem velocidade real achada.",
+    "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "doenca: a ciguatera é de quem come a carne, e não ataque; sem id no catálogo de venenos, e não precisa (D-112).",
+    "sentidos: nenhum achado com fonte; o faro e a visão da ficha atual ficaram fora, e não há Especialidade natural.",
+    "fonte: nenhuma mordida medida, nem na real; a Força 7 segue por comparação com o crocodilo-do-nilo (D-158, D-174)."
+  ]
 }

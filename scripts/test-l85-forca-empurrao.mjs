@@ -126,7 +126,7 @@ console.log('\n· os dois tetos, contra pesos reais de porte (Arte nível 3: FAH
   // TRÊS PORTES DE VERDADE (`pesoDoPorte`, com criaturas reais do
   // bestiário) DENTRO DO ALCANCE DE ARREMESSO, decrescendo com o peso: a
   // régua PESA, e não é um número fixo por nível.
-  const pesoMiudo = pesoDoPorte({ monstro_id: 'corvo' });          // Miúdo
+  const pesoMiudo = pesoDoPorte({ monstro_id: 'pixie' });          // Miúdo (o corvo passou a Pequeno com a ficha v3)
   const pesoPequeno = pesoDoPorte({ monstro_id: 'arconte-lanterna' }); // Pequeno
   const pesoMedio = pesoDoPorte({ monstro_id: 'aasimar' });         // Médio
   const rMiudo = resultadoDoEmpurrao(faa, pesoMiudo, maxKg, F);

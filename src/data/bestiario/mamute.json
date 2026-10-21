@@ -1,0 +1,179 @@
+{
+  "id": "mamute",
+  "nome": "Mamute-lanoso",
+  "nomeIngles": "Woolly mammoth (sem ficha própria nos dois; parecidos: Elephant, Mastodon)",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Enorme",
+  "descricao": "Parente peludo do elefante, das estepes geladas. Vive em manada guiada pelas fêmeas, que cercam os filhotes em vez de fugir; caçado por gente pela carne, pelo couro e pelo marfim.",
+  "tags": [],
+  "imagem": null,
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "5,65 m de comprimento, 2,96 m de altura",
+    "peso": "5.000 kg",
+    "comprimento": 5.65,
+    "largura": 1.69,
+    "altura": 2.96
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 13,
+    "destreza": 2,
+    "vigor": 11,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
+  },
+  "skills": {
+    "briga": 3,
+    "bloqueio": 2,
+    "esquiva": 1,
+    "integridade": 2,
+    "prontidao": 1,
+    "resistencia": 4,
+    "empatia": 2,
+    "sobrevivencia": 3
+  },
+  "skills2": {
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "resistencia",
+      "foco": "frio",
+      "valor": 3,
+      "origem": "natural"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Presada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 1,
+      "ticks": 7,
+      "classe": "pesada"
+    },
+    {
+      "nome": "Pisão (ou investida)",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 2,
+      "tipo": "impacto",
+      "ticks": 7,
+      "classe": "pesada"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "agarrar",
+      "descricao": "tromba",
+      "classe": "livro"
+    },
+    {
+      "nome": "atropelar",
+      "descricao": "Pisão: Investida.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "nada achado. Orelhas pequenas, de cerca de 38 cm de comprimento e 18 a 28 cm de largura, adaptadas ao frio. O faro do elefante não passou ao mamute por falta de dado próprio."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: manada."
+    },
+    {
+      "titulo": "Aptidões",
+      "texto": "montaria: não. O elefante-asiático é montaria, mas não há dado algum do mamute com gente montada. carga: sim (o elefante-asiático é animal de carga, Tailândia e Mianmar; a marca é pelo parente vivo). tração: sim (o elefante de trabalho de Mianmar arrasta toras)."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme: o humano Médio acerta com +6 no corpo a corpo. Não bloqueia o mamute pelo Alvo, e a Força 13 também tira o Bloqueio de quem tem Força 6 ou menos (o dobro e ao menos 4 a mais): contra o pisão, quase sempre só a Esquiva. O couro é Couraça nível 3; quanto ele tira do golpe fica para depois. O pisão faz 33 em média e a presada 20. 90 PV. Aguenta o frio da estepe glacial (+3). Corre 7 m por Tick (24 km/h), perto do elefante."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains",
+      "Cold"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "variantes": [],
+  "ameacaLegada": 5,
+  "v3": {
+    "pv": 90,
+    "esquiva": 6,
+    "bloqueio": 8,
+    "defesa": 8,
+    "defesaMental": 7,
+    "defesaSocial": 10,
+    "absorcao": {
+      "impacto": 11,
+      "corte": 11,
+      "perfuracao": 11
+    },
+    "couracaNivel": 3,
+    "pesoErguido": 2121.31,
+    "carga": {
+      "leve": 750,
+      "media": 1500,
+      "pesada": 2250,
+      "maxima": 3000
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    }
+  },
+  "notasObservacao": [
+    "forca: 13 pela âncora do autor (12 a 14; decisão 9), proposta do Arquiteto. Era 18 e era a âncora dos seis gigantes comparados (D-163); a comparação se refaz com o 13. Sem força medida do mamute; o peso erguido (2.035 kg) fica dentro do arrasto do elefante de trabalho (1 a 3 t).",
+    "massa: 5.000 kg (em vigor na Etapa 2, 20/10/2026); antes: 4.700 kg, a média simples do macho europeu (6 t, Larramendi 2016) e da fêmea (meio da faixa de 2,8 a 4 t, Wikipédia), fontes misturadas, **[comparação]**; era o macho de 6 t (sexta rodada, item 4).",
+    "pesoErguido: 2.035 kg pelo `calc6.mjs` com a massa de 4.700 kg, provisório (decisões 14 e 16). Era 3.032 kg pela fórmula de FAH, e 2.399 kg com o macho de 6 t.",
+    "carga: Leve 705 a Máxima 2.820 kg, provisória; sai da massa, e não muda com a Força.",
+    "velocidade: congelada (decisão 23). A corrida de 24 km/h bate com o elefante-asiático (25 km/h, −4%); não há número do mamute.",
+    "area: 7,48 m², vista de lado: os 8,80 m² da medição da `tamanho-fichas-v2` (macho de 6 t) escalados pela massa, (4.700 ÷ 6.000)^(2/3); era 15,12 m² (retângulo cheio). O Alvo segue Enorme.",
+    "couraca: nível 3 (faixa 2 a 3) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "especialidades: Resistência (frio) passou de Especialidade comum +2 a natural +3, pelo corpo medido (pelo, subpelo, gordura, orelha). Se o autor quiser separar o calor (o mamute devia sofrer no calor), cabe uma linha \"Resistência (calor)\" negativa como texto; não há dado.",
+    "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2; o Fôlego +2 sai (não tinha dado próprio) e o forrageio fica na nota de pesquisa (jornada) (diretriz 2).",
+    "jornada (nota de pesquisa, não é regra): do próprio, forrageava talvez 20 horas por dia para os cerca de 180 kg de comida (cálculo das fontes da Wikipédia) **[extrapolação]**; passada adulta de cerca de 2 m numa pista de manada (Canadá, Wikipédia). Pelo parente vivo **[comparação]**: o elefante de trabalho marcha até 25 km por dia no plano, com no máximo 3 marchas pesadas seguidas (MTE, em FAO). Era a Resistência (Fôlego) +2.",
+    "empatia: 2 nova, **[extrapolação pelo elefante]**; a única evidência social do próprio mamute é a pista de pegadas da manada.",
+    "musculatura: 3 (robusto) na escala nova; o 4 de hoje era da escala velha.",
+    "dimensoes.largura e comprimento total: estimados pelo Arquiteto para o macho de 6 t [sem dado] e escalados, com a altura, pelo cubo da massa (fator 0,922); a altura escalada (2,90 m) cai entre o macho (2,99 a 3,31) e a fêmea (2,3 a 2,6); não decidem o Alvo, que vem do `calc.mjs`."
+  ]
+}

@@ -2,83 +2,99 @@
   "ordem": 156,
   "id": "urso-das-cavernas",
   "idAntigo": "mon-dire-bear-cave-bear",
-  "nome": "Urso Atroz",
-  "nomeIngles": "Dire Bear",
+  "nome": "Urso-das-cavernas",
+  "nomeIngles": "Dire Bear (D&D 3.5); Dire Bear (Cave Bear) (Pathfinder 1)",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
   "papel": "fera",
   "conceito": "animal Grande",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Urso enorme da Europa da Era do Gelo, que comia sobretudo planta e hibernava fundo nas cavernas, onde defendia a toca de lobos, hienas e leões.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/dire-bear-cave-bear.webp",
   "porte": "Grande",
   "dimensoes": {
-    "medida": "3,5 m de comprimento",
-    "peso": "900 kg"
+    "medida": "2,36 m de comprimento, 1,41 m de altura",
+    "peso": "378 kg",
+    "comprimento": 2.36,
+    "largura": 0.94,
+    "altura": 1.41
   },
   "locomocao": {
-    "terra": 4
+    "terra": 7
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 7,
+    "arranque": 13,
+    "corrida": 16
   },
   "centelha": 0,
   "attrs": {
-    "forca": 9,
+    "forca": 8,
     "destreza": 3,
-    "vigor": 7,
-    "influencia": 2,
-    "perspicacia": 1,
-    "compostura": 2,
+    "vigor": 6,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 1
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
-    "briga": 4,
+    "briga": 3,
+    "bloqueio": 2,
     "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "atletismo": 2,
+    "furtividade": 2,
+    "integridade": 3,
+    "prontidao": 2,
+    "resistencia": 4,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "musculatura": 4
   },
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
-    "valor": 2
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
   },
-  "willpower": 5,
-  "aparencia": 4,
+  "willpower": 4,
+  "aparencia": 6,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Patada",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 6
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
     }
   ],
   "habilidades": [
     {
-      "nome": "Garras Devastadoras",
-      "descricao": "Rasga o alvo com as duas garras e pode agarrá-lo, mantendo-o preso para continuar o ataque com a mordida."
+      "nome": "agarrar (o \"abraço\")",
+      "descricao": "Patada: Dano do agarrão: 2 × Força = 16 por manutenção, mais 1d6 por Margem.",
+      "classe": "livro"
     },
     {
-      "nome": "Mordida Selvagem",
-      "descricao": "Uma vez com a presa agarrada, prefere abandonar as garras e cravar as presas repetidamente, muito mais disposto a isso do que um urso comum."
-    },
-    {
-      "nome": "Reflexos Fulminantes",
-      "descricao": "Reage com uma rapidez impressionante para um animal de seu tamanho, quase sempre agindo antes do adversário."
-    },
-    {
-      "nome": "Vontade Inabalável",
-      "descricao": "Resiste com firmeza a medo, ilusões e tentativas de dominar sua mente."
-    },
-    {
-      "nome": "Faro e Visão Crepuscular",
-      "descricao": "Sente o cheiro de presas a distância e enxerga bem mesmo com pouca luz."
+      "nome": "Sentidos",
+      "descricao": "faro: Prontidão (faro) +3 pelo urso-pardo. · audição e visão: nada que passe do humano."
     }
   ],
   "lore": [
@@ -88,11 +104,15 @@
     },
     {
       "titulo": "Comportamento",
-      "texto": "Evita as regiões mais civilizadas do mundo, preferindo os recantos mais remotos da natureza selvagem; é curto de temperamento e rápido a se enfurecer com qualquer intruso em seu território."
+      "texto": "Evita as regiões mais civilizadas do mundo, preferindo os recantos mais remotos da natureza selvagem; é curto de temperamento e rápido a se enfurecer com qualquer intruso em seu território. Social: solitário."
     },
     {
       "titulo": "Caçada",
       "texto": "Avistar um urso das cavernas é raro e aterrorizante, mesmo para quem já conhece ursos comuns."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Força 8: quem tem Força 4 ou menos não apara a patada. Grande pelo Alvo: o humano Médio ganha +3 no corpo a corpo contra ele. A pele fica no nível 2 de Couraça, e quanto ela tira do golpe fica para depois; o Vigor 6 segura o Impacto, e tem 54 PV. O abraço tira 16 por manutenção. Corre como o urso-pardo, aguenta ferida e passa o inverno inteiro sem comer."
     }
   ],
   "ecologia": {
@@ -129,5 +149,49 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 54,
+    "esquiva": 8,
+    "bloqueio": 10,
+    "defesa": 10,
+    "defesaMental": 9,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 6,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "couracaNivel": 2,
+    "pesoErguido": 1263.24,
+    "carga": {
+      "leve": 37.8,
+      "media": 75.6,
+      "pesada": 113.4,
+      "maxima": 151.2
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 7,
+        "arranque": 13,
+        "corrida": 16
+      }
+    }
+  },
+  "notasObservacao": [
+    "pesoErguido: 1.263,24 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.262,14 kg pela fórmula das decisões 14 e 16 (`calc6.mjs`, com o adulto típico de 343,75 kg), provisório até a fórmula fechar (D-169, D-174).",
+    "carga: 34,38 kg de Leve pela conta da D-122 (sem carga medida), provisória (D-169, D-172).",
+    "velocidade: congelada (decisão 23); os números são os de 12/10. Sem velocidade real para conferir; sai 59 km/h, 2 acima do urso-pardo, só porque o Grande multiplicava 1,1 na fórmula de então (D-170).",
+    "fonte (repesquisa de 13/10/2026): a massa tem a fonte primária (Christiansen 1999, lido no PDF), e o Vigor tem Marciszak 2024 (D-174).",
+    "dimensoes: altura, comprimento e largura eram o urso-pardo da v3 de então (o macho de 230 kg) escalado pela raiz cúbica da massa até o macho grande de 450 kg (fator 1,25), com o corpo arredondado de 2,50 para 2,40 por causa dos \"até 2 m\" de Palmer; agora escalados de novo pelo cubo da massa até o adulto típico de 343,75 kg (fator 0,914); tudo [extrapolação]. O Alvo sai da silhueta de lado (D-147, D-174).",
+    "forca: 8 por comparação, sem feito, igual ao urso-polar de mesma massa; a dieta de planta pediria até menos, e o 8 fica pela massa e pelo uso da pata de cavador (D-158, D-174).",
+    "vigor: 6, um acima do urso-pardo, pela massa e pelas lesões aguentadas; a mesma lesão sustenta a Resistência 3, e a hibernação vai só para a Especialidade natural (fome) +3 (D-174).",
+    "habilidades.musculatura: 4 sem peso medido, pelo cavar (Wikipédia) e pelas fraturas da pata dianteira (Marciszak 2024); comparação com o urso-pardo, provisória (D-174).",
+    "habilidades.furtividade: 2 por comparação com o urso-pardo; do animal extinto nada se sabe da atividade (D-174).",
+    "atletismo: 1, sem fonte, mantido pela velocidade congelada (D-174, decisão 23).",
+    "sobrevivencia: 2 por depender de caverna e viver só na Europa; leitura da pesquisa, sem fonte de habitat detalhada (D-174).",
+    "especialidades.fome: +3 por comparação (o pardo fica até 8 meses na toca, e o das cavernas hibernava mais); a duração da hibernação dele não tem número (D-174).",
+    "variantes.femea: com 237,5 kg, a área escalada (1,17 m²) dá Médio, um abaixo da principal; as dimensões são as do macho escaladas, e não medidas da fêmea (D-174).",
+    "couraca: nível 2 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois."
+  ]
 }

@@ -2,61 +2,77 @@
   "ordem": 238,
   "id": "cavalo",
   "idAntigo": "mon-horse",
-  "nome": "Cavalo",
-  "nomeIngles": "Horse",
+  "nome": "Cavalo (de sela)",
+  "nomeIngles": "Horse (D&D 3.5: Light Horse, Heavy Horse)",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
   "papel": "fera",
   "conceito": "animal Grande",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Presa de bando, sempre de olho, que foge ao primeiro susto; encurralado, escoiceia. Doméstico no mundo todo, com populações ferais.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/horse.webp",
   "porte": "Grande",
   "dimensoes": {
-    "medida": "1,5 a 1,8 m de altura no ombro",
-    "peso": "450 a 680 kg"
+    "medida": "2,45 m de comprimento, 1,88 m de altura",
+    "peso": "500 kg",
+    "comprimento": 2.45,
+    "largura": 0.61,
+    "altura": 1.88
   },
   "locomocao": {
-    "terra": 5
+    "terra": 7
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 7,
+    "arranque": 13,
+    "corrida": 17
   },
   "centelha": 0,
   "attrs": {
-    "forca": 6,
-    "destreza": 4,
+    "forca": 7,
+    "destreza": 2,
     "vigor": 6,
-    "influencia": 1,
-    "perspicacia": 1,
-    "compostura": 2,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 2,
+    "compostura": 1
   },
   "skills": {
-    "briga": 2,
-    "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "briga": 1,
+    "esquiva": 2,
+    "atletismo": 3,
+    "integridade": 1,
+    "prontidao": 3,
+    "resistencia": 5,
+    "empatia": 2,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "corrida": 1,
+    "musculatura": 2
   },
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
-    "valor": 2
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 1
   },
-  "willpower": 5,
-  "aparencia": 4,
+  "willpower": 3,
+  "aparencia": 7,
   "ataques": [
     {
-      "nome": "Cascos",
+      "nome": "Coice",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 2,
       "mao": 1,
       "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 6
+      "ticks": 7,
+      "classe": "pesada"
     },
     {
       "nome": "Mordida",
@@ -65,26 +81,38 @@
       "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
   "habilidades": [
     {
-      "nome": "Coice duplo",
-      "descricao": "Golpeia com os dois cascos dianteiros; sem treino de combate, o ataque conta apenas como reforço secundário."
+      "nome": "atropelar",
+      "descricao": "Coice: Investida.",
+      "classe": "livro"
     },
     {
-      "nome": "Fôlego de estrada",
-      "descricao": "Corre por longas distâncias sem se cansar facilmente."
+      "nome": "fôlego de estrada",
+      "descricao": "corre longas distâncias sem se cansar fácil.",
+      "classe": "como luta"
     },
     {
-      "nome": "Sentidos de manada",
-      "descricao": "Faro e visão na penumbra ajudam a perceber perigos à distância."
+      "nome": "dócil",
+      "descricao": "só briga de fato quando adestrado para o combate; do contrário, foge.",
+      "classe": "como luta"
     },
     {
-      "nome": "Dócil por natureza",
-      "descricao": "Só briga de fato quando adestrado para o combate; do contrário prefere fugir."
+      "nome": "Sentidos",
+      "descricao": "visão: Prontidão (visão periférica) +2, natural; campo de cada olho até 228°, média perto de 195°, com ponto cego pequeno atrás; campo binocular de só 55 a 65° ou 65 a 80°. Acuidade pior que a da maioria dos mamíferos terrestres. · penumbra: texto; vê melhor que o humano com pouca luz. · audição: texto; de cerca de 50 Hz a 33 kHz, com ganho de 10 a 20 dB pela orelha em funil. · faro: texto; reconhece indivíduos do grupo pelo cheiro.."
+    }
+  ],
+  "doencas": [
+    {
+      "nome": "Doença no jogo (ao tratar)",
+      "texto": "Mormo · Virulência 10 · dia · pelo contato com o animal doente: quem cuida dele rola uma vez por dia contra a metade da Virulência (o Contágio do livro)"
     }
   ],
   "lore": [
@@ -95,6 +123,22 @@
     {
       "titulo": "Duas linhagens",
       "texto": "Cavalos leves de montaria e cavalos pesados de tração diferem em porte e resistência, mas compartilham o mesmo temperamento dócil."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: bando (5 a 11 éguas com 1 a 4 garanhões e as crias; até 26 éguas e 5 garanhões)."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Doença no jogo (ao tratar): Mormo · Virulência 10 · dia · pelo contato com o animal doente: quem cuida dele rola uma vez por dia contra a metade da Virulência (o Contágio do livro)"
+    },
+    {
+      "titulo": "Aptidões",
+      "texto": "montaria sim · carga sim · tração sim"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Força 7 contra o humano: quem tem Força 3 ou menos não apara o coice, e quem tem 4 ou mais apara. Grande, ele não ganha bônus no corpo a corpo contra o humano Médio, e o humano ganha +3 contra ele; à distância, quem atira nele também ganha +3. 54 PV e Couraça nível 1: quanto ela tira da espada e da flecha fica para depois, e o Impacto perde 6. O coice tira 14 em média. Leva um cavaleiro de 100 kg no limite da carga Leve."
     }
   ],
   "ecologia": {
@@ -130,5 +174,47 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 54,
+    "esquiva": 8,
+    "bloqueio": 4,
+    "defesa": 8,
+    "defesaMental": 6,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 6,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 696.24,
+    "carga": {
+      "leve": 100,
+      "media": 200,
+      "pesada": 300,
+      "maxima": 400
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 7,
+        "arranque": 13,
+        "corrida": 17
+      }
+    }
+  },
+  "notasObservacao": [
+    "dimensoes.comprimentoSemCauda: 2,50 m (ponto médio da espécie inteira, ADW) passa do comprimento total de 2,40 m (Wikipédia, \"Horse length\"); as duas fontes não se casam (`porte-area-forca.md` §1.2). A entrada não foi mudada, e o Alvo, que usa a silhueta de lado (1,79 m²), não depende dela (D-147, D-174).",
+    "dimensoes.altura: 1,84 m até a nuca é a cernelha × 1,2 por uma proporção de 1843 cujo texto não foi conferido (D-147, D-174).",
+    "dimensoes.largura: 0,60 m estimada pelo Arquiteto, sem fonte (D-147, D-174).",
+    "pesoErguido: 698 kg pela conta das decisões 14 e 16, provisório; a fórmula está com outra frente (D-162, D-169). O pônei, com menos da metade da massa, ergue 681 kg pela mesma conta, quase o mesmo: a Musculatura 3 do pônei contra a 2 do cavalo compensa a massa. A ordem fica certa (o cavalo ergue mais), mas por pouco (D-174).",
+    "carga: medida (94 kg de Leve, Powell 2008), mas fica provisória com o peso erguido até a outra frente fechar (D-169, D-172).",
+    "velocidade: congelada (decisão 23), pela fórmula de hoje (D-170).",
+    "resistencia: 5 (em vigor na Etapa 2, 20/10/2026); antes: 2, e não o 3 do levantamento, porque a tração de 32 km por dia e o enduro de 160 km são distância por dia, e não Resistência (diretriz 2); o dado fica na nota de pesquisa (jornada) (D-174).",
+    "especialidades: a Resistência (Fôlego) 2 saiu; o dado fica na nota de pesquisa (jornada) (quinta rodada, item 1; D-174).",
+    "jornada (nota de pesquisa, não é regra): tração sustentada de 1/10 a 1/8 da massa andando 32 km por dia (Iowa State, dinamômetro, pela Farm Collector) **[medido]**; enduro de 160 km num dia em árabes com até 30% da massa (Garlinghouse e Burrill 1999, citado por Kongsawasdi 2021; não conferido).",
+    "empatia: 2 é escolha minha, pela leitura da linguagem do corpo e pelo reconhecimento dos do grupo (Rørvang 2020), sem número; provisória (D-174).",
+    "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "forca: 7 fixada pela v2; o coice de 8.722 N (von Wachenfelt 2011) não mede a Força de empurrar e não a decide (D-158, D-174)."
+  ]
 }

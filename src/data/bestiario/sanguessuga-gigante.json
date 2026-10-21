@@ -2,83 +2,127 @@
   "ordem": 246,
   "id": "sanguessuga-gigante",
   "idAntigo": "mon-giant-leech",
-  "nome": "Sanguessuga Gigante",
-  "nomeIngles": "Giant Leech",
+  "nome": "Sanguessuga-gigante",
+  "nomeIngles": "Giant leech (Pathfinder 1; o D&D 3.5 não foi conferido)",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
   "papel": "fera",
   "conceito": "praga Médio",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Espera no fundo de lama; quando alguém entra quente na água, vem ondulando e fixa a ventosa.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/giant-leech.webp",
-  "porte": "Médio",
+  "porte": "Grande",
   "dimensoes": {
-    "medida": "3 m de comprimento",
-    "peso": "80 kg"
+    "medida": "3 m de comprimento, 0,06 m de altura",
+    "peso": "23,1 kg",
+    "comprimento": 3,
+    "largura": 0.67,
+    "altura": 0.06
   },
   "locomocao": {
-    "natacao": 2
+    "natacao": 1
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 1,
+    "arranque": 1,
+    "corrida": 1
   },
   "centelha": 0,
   "attrs": {
     "forca": 2,
-    "destreza": 3,
+    "destreza": 2,
     "vigor": 4,
-    "influencia": 0,
-    "perspicacia": 0,
-    "compostura": 1,
     "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 1,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
     "briga": 2,
     "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "furtividade": 1,
+    "prontidao": 2,
+    "resistencia": 2,
+    "sobrevivencia": 2
   },
+  "skills2": {
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "resistencia",
+      "foco": "fome",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "calor e vibração",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
+    "conviccao": 1,
+    "temperanca": 1,
     "valor": 2
   },
-  "willpower": 5,
-  "aparencia": 4,
+  "willpower": 3,
+  "aparencia": 6,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
   "habilidades": [
     {
-      "nome": "Sentir sem Ver",
-      "descricao": "Percebe vibrações e calor à sua volta sem depender da visão, e fareja sangue à distância."
+      "nome": "fixar = agarrar",
+      "descricao": "Mordida: Dano do agarrão 2 × Força = 4 por manutenção. Presa, a ventosa segura cerca de 20 vezes o peso do corpo.",
+      "classe": "livro"
     },
     {
-      "nome": "Mente Vazia",
-      "descricao": "Imune a qualquer efeito que dependa de pensamento ou vontade, por não possuir intelecto algum."
+      "nome": "sugar",
+      "descricao": "Mordida: enquanto presa, bebe sangue; o dano por manutenção e o fim da refeição ficam com o Mestre.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Fisgar e Sugar",
-      "descricao": "Ao morder com sucesso, prende-se com força bruta ao alvo e continua a drená-lo automaticamente a cada rodada, até ser arrancada ou vencer o alvo numa disputa de Força."
+      "nome": "sangramento",
+      "descricao": "Mordida: a ferida sangra por horas depois que ela solta.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Drenar Sangue",
-      "descricao": "Enquanto grudada, suga o sangue da vítima, causando dano contínuo de Vigor além do dano da mordida."
+      "nome": "contrair-se",
+      "descricao": "tocada, vira quase uma bola.",
+      "classe": "como luta"
     },
     {
-      "nome": "Fraqueza ao Sal",
-      "descricao": "Uma pitada de sal queima sua carne mole como ácido puro, causando dano severo imediato."
+      "nome": "sal",
+      "descricao": "uma pitada de sal queima a carne mole dela; o dano fica a definir.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "calor e vibração: Especialidade natural Prontidão (calor e vibração) +2; vai para o calor de 37 a 40 °C e percebe vibração e movimento. Alcance. · visão: olhos simples (5 pares na Hirudo); só luz e sombra; sem Especialidade. · química: percebe química; CO2."
+    }
+  ],
+  "doencas": [
+    {
+      "nome": "Doença no jogo",
+      "texto": "Infecção por Aeromonas · Virulência 4 · dia · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
     }
   ],
   "lore": [
@@ -93,6 +137,18 @@
     {
       "titulo": "Remédio de Viajante",
       "texto": "Quem cruza pântanos sempre carrega um saquinho de sal, sabendo ser a defesa mais simples contra essa mordida pegajosa."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Doença no jogo: Infecção por Aeromonas · Virulência 4 · dia · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande: o humano Médio acerta com +3 no corpo a corpo, e ela não ganha bônus. A Força 2 não tira o Bloqueio de ninguém. A mordida faz 3,5; o perigo é ficar presa (agarrão a 4 por manutenção) e sugar, e depois o sangramento que dura horas, pelo Mestre. Acha quem entra quente na água (Prontidão +2 natural no calor e na vibração). Fora d'água anda menos de 1 m por Tick; na água, 1. 28 PV, Impacto 4, Couraça nível 0 (o valor do nível fica para depois). Aguenta meses sem comer (Resistência +3 natural na fome): pode estar à espera no fundo de qualquer lagoa esquecida."
     }
   ],
   "ecologia": {
@@ -131,5 +187,47 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 28,
+    "esquiva": 6,
+    "bloqueio": 4,
+    "defesa": 6,
+    "defesaMental": 4,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 96.89,
+    "deslocamento": {
+      "terra": {
+        "batalha": 0,
+        "arranque": 1,
+        "corrida": 1
+      },
+      "nado": 1
+    }
+  },
+  "notasObservacao": [
+    "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (sétima rodada); fica o do site (3 m), que passa no item 7: Grande (1,58 m², de cima), quatro portes acima da Haementeria de base (Minúscula, 0,016 m² no mesmo modo). A área fica 9% acima do corte do Grande (1,45 m²) (D-174).",
+    "alvo: **passa de Médio a Grande** pela área de cima (1,58 m²) da tamanho-fichas-v2; na conta de hoje a massa de 23,7 kg (a de 15/10) puxava a média para Médio (3,18). O Alvo só pela área deixa um verme largo e leve no mesmo Alvo de um cavalo. Provisório até os cortes fecharem (D-174).",
+    "pesoErguido: provisório, 96,89 kg pela fórmula das decisões 14 e 16 (calc6, 23,1 kg); verme não tem `carga` (D-160, D-175). Era 97,96 kg com 23,7 kg, e antes 23,31 kg.",
+    "anatomia: verme, anatomia provisória (D-175), não calibrada em animal medido; `nado: true` porque a sanguessuga nada.",
+    "velocidade: congelada (decisão 23). Nado: 1,25 m/s contra 4,3 cm/s da Hirudo real (cerca de +2.800%) e contra 1,6 m/s da mesma proporção escalada (−22%).",
+    "gigante escalado (D-105): massa, largura e espessura são extrapolação a partir da Haementeria; a massa típica da base (23,1 g) é a média dos seis adultos da tabela II de Sawyer e colegas 1981, entre refeições; o comprimento de 30 cm vem de outra fonte (Discover Wildlife), [comparação], e confere com o cubo do par máximo (29,7 cm) (D-174).",
+    "massa: a ficha atual do bestiário diz 80 kg; a conta pelo cubo dá 23,1 kg (era 23,7 pela base de 80 g), Faixa 2, longe do corte de 35 kg (decisão 22). Os 80 g são a sanguessuga \"excepcionalmente grande\" de Sawyer 1981, e não animal cheio.",
+    "forca: 2, [provisório]; a adesão da ventosa não entra na Força e fica em Manobras (D-174).",
+    "musculatura: 2 (comum), sem medida de força além da ventosa.",
+    "resistencia: 2 pela régua, [comparação] pela base; o jejum fica na Especialidade natural.",
+    "vigor: 4 ◆, revisto na oitava rodada pelo corpo e pela massa: +1 sobre a Haementeria de base (3), o mínimo da D-176; verme mole de 23,1 kg, sem esqueleto nem casca, ao lado da vespa, da aranha e da centopeia gigantes (4). Era 5 (D-174)",
+    "especialidades: a Fome +3 passa de comum a natural (é do metabolismo), e por isso fica +3, e não 1 como o levantamento pedia pelo limite do livro. Escolha provisória (D-174). O jejum de um ano não cabe na tabela da Fome (Severidade 5 + 1 por dia): falta de regra anotada no levantamento.",
+    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): só a velocidade de nado da Hirudo, 4,3 cm/s num animal de 8 cm (Taylor 1952), sem duração; logo depois de comer nada a 27% da velocidade de antes e recupera 50% em cerca de 1 h (Claflin et al., SICB 2009) **[medido, na Hirudo]**.",
+    "comportamento.sal: a ficha atual tem \"Fraqueza ao Sal\"; a pesquisa não achou fonte para sanguessuga. Se o autor quiser o sal, ele entra como texto do Mestre, como na lesma (D-174).",
+    "sugar: o volume de sangue da gigante (mais de 4 L) é extrapolação pelo cubo; o dano por manutenção é do Mestre.",
+    "fonte: as massas da Haementeria agora têm fonte primária (Sawyer, Lepont, Stuart e Kramer 1981, Biological Bulletin 160:322-331, PDF em archive.org, biostor-9651); a largura de 10 cm continua sem fonte primária; a espessura de 0,06 m continua por estimativa (D-174)."
+  ]
 }

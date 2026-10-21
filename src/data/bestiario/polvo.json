@@ -2,86 +2,143 @@
   "ordem": 269,
   "id": "polvo",
   "idAntigo": "mon-octopus",
-  "nome": "Polvo",
-  "nomeIngles": "Octopus",
+  "nome": "Polvo-comum",
+  "nomeIngles": "Common octopus; D&D 3.5 e Pathfinder 1 têm \"Octopus\", genérico",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
   "papel": "fera",
   "conceito": "animal Pequeno",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Some no fundo mudando de cor e textura; pego, morde, e a mordida inflama por dias.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/octopus.webp",
-  "porte": "Pequeno",
+  "porte": "Miúdo",
   "dimensoes": {
-    "medida": "60 cm de envergadura",
-    "peso": "4,5 kg"
+    "medida": "0,82 m de comprimento, 0,13 m de altura",
+    "peso": "2,2 kg",
+    "comprimento": 0.82,
+    "largura": 0.27,
+    "altura": 0.13
   },
   "locomocao": {
-    "terra": 2,
-    "natacao": 3
+    "natacao": 1
   },
   "centelha": 0,
   "attrs": {
-    "forca": 3,
-    "destreza": 5,
-    "vigor": 4,
+    "forca": 1,
+    "destreza": 4,
+    "vigor": 2,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 3,
     "influencia": 1,
     "perspicacia": 1,
-    "compostura": 2,
-    "percepcao": 3,
-    "inteligencia": 1,
-    "raciocinio": 2
+    "compostura": 1
   },
   "skills": {
     "briga": 2,
-    "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "esquiva": 3,
+    "furtividade": 4,
+    "integridade": 1,
+    "prontidao": 2,
+    "resistencia": 2,
+    "sobrevivencia": 2
   },
+  "skills2": {
+    "natacao": 2,
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "camuflagem de cor e textura, parado",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "tato e gosto nas ventosas",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "Agarrão",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
-    "valor": 2
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 1
   },
-  "willpower": 5,
-  "aparencia": 4,
+  "willpower": 3,
+  "aparencia": 6,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Bico",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
   "habilidades": [
     {
-      "nome": "Visão em pouca luz",
-      "descricao": "Enxerga bem mesmo com pouca iluminação."
+      "nome": "agarrar",
+      "descricao": "Braços: Dano do agarrão 2 × Força = 2: segura a presa pequena; contra um humano, o Mestre decide se o braço segura uma mão (40 N por braço).",
+      "classe": "livro"
     },
     {
-      "nome": "Nuvem de tinta",
-      "descricao": "Libera uma nuvem de tinta que oculta totalmente sua posição na água por cerca de um minuto."
+      "nome": "nuvem de tinta",
+      "descricao": "solta uma nuvem de tinta que esconde a fuga.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Jato propulsor",
-      "descricao": "Pode disparar para trás em linha reta a uma velocidade impressionante, sem se expor a golpes enquanto foge."
+      "nome": "jato para trás",
+      "descricao": "foge em jato.",
+      "classe": "como luta"
     },
     {
-      "nome": "Mordida venenosa",
-      "descricao": "Sua mordida injeta um veneno que enfraquece a força da vítima ao longo de vários instantes."
+      "nome": "espremer por fenda",
+      "descricao": "passa por abertura de pouco mais de 2,5 cm.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "tato e gosto nas ventosas: Especialidade natural Prontidão (tato e gosto nas ventosas) +2; quimiorreceptores. · visão: sem cor; distingue brilho, forma e orientação. Sem Especialidade. · equilíbrio: dois estatocistos. Sem Especialidade."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Cefalotoxina · Potência 8 · minuto (sangue) · a cada 1 hora · pool 4 (PV) · Desgaste 1 · pelo Bico"
     }
   ],
   "lore": [
     {
       "titulo": "Caçadora astuta",
       "texto": "Usa táticas surpreendentemente complexas para emboscar e capturar suas presas nas águas costeiras."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Cefalotoxina · Potência 8 · minuto (sangue) · a cada 1 hora · pool 4 (PV) · Desgaste 1 · pelo Bico"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Miúdo: +6 no acerto corpo a corpo contra um humano Médio; com os braços abertos, fica Médio e perde o bônus. Muito difícil de achar parado (Furtividade 4 e +3 natural na camuflagem). A mordida faz 2,5 em média; o que fica é a ferida que inflama por dias: a cefalotoxina, de Potência 8, pesa pelo Desgaste e não mata. Agarra e prende a mão (agarrão de 2, com a Briga (Agarrão) +2), mas não segura um adulto inteiro. Foge a jato e por fenda. 6 PV."
     }
   ],
   "ecologia": {
@@ -119,5 +176,41 @@
     "crConf": "conhecido"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 6,
+    "esquiva": 14,
+    "bloqueio": 8,
+    "defesa": 14,
+    "defesaMental": 7,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 2,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 23.14,
+    "deslocamento": {
+      "nado": 1
+    }
+  },
+  "notasObservacao": [
+    "forca: 1 ◆ na sétima rodada (item 8 da `tamanho-decisoes-5.md`): os braços puxam e prendem a mão de um humano; era 0 pela leitura automática da D-167. O bico sobe de 1,5 para 2,5 de média e o agarrão de 0 para 2 (D-115).",
+    "pesoErguido: 23,14 kg (em vigor na Etapa 2, 20/10/2026); antes: provisório, 21,45 kg ◆ (17,62 com a Força 0) pela fórmula das decisões 14 e 16 (calc6, massa de 2 kg); cefalópode não tem `carga` (D-160, D-175). Os 40 N por braço (Margheri 2009, trecho de busca, não conferido) somam uns 32 kg-força nos oito, na mesma ordem: o conflito de feito contra regra da ficha de 12/10 (0,47 kg) se desfaz, mas o feito segue não conferido.",
+    "alvo: Miúdo pela área de cima com os braços juntos, 0,12 m² (0,1177), escalada pelo cubo da massa a partir dos 0,15 m² do polvo de 3 kg da tamanho-fichas-v2. Fica rente ao corte de 0,12: o de 3 kg é Pequeno. Segundo Alvo Médio com os braços abertos (0,61 m², decisão 8). Provisório até os cortes fecharem (D-174).",
+    "pv: 6 (em vigor na Etapa 2, 20/10/2026); antes: faixa 1 nas duas versões do autor; o PV total usa 5 + Vigor = 7 (decisão 21, delegada). Com 10 + metade do Vigor seriam 11.",
+    "inteligencia: 2 pela lista fechada da diretriz 1; nota \"2 não é inteligência humana\".",
+    "compostura: desce de 3 para 1 por não ser espécie social (diretriz 1); a camuflagem, que a sustentava, passou a Especialidade natural de Furtividade.",
+    "resistencia: 2 sem dado de fome, frio, veneno ou ferida **[extrapolação]**, pela régua (2 é o normal no próprio meio).",
+    "musculatura: 3 (robusto), sem medida do corpo inteiro; só a puxada do braço (trecho de busca).",
+    "furtividade: 4, com o levantamento apontando candidato a 5; a camuflagem fica como Especialidade natural +3 (do corpo), e não como Especialidade do livro (que pela Furtividade 4 abriria só 2).",
+    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "anatomia: cefalópode, anatomia provisória (D-175), não calibrada em animal medido. Ela não tem terra: o rastejar no fundo (Huffard 2006, outra espécie: 7,3 cm/s) e a saída breve da água ficam em texto (D-174).",
+    "velocidade: congelada (decisão 23), provisória pela fórmula de hoje (D-170); nenhuma velocidade medida da espécie.",
+    "veneno: veneno sem id no catálogo (D-112); o efeito real está na pesquisa e em Veneno e doença.",
+    "fonte: os 40 N do braço continuam só pelo resumo de busca (Margheri e colegas, Scuola Sant'Anna; PubMed pediu cookies e o repositório IRIS deu 403) (D-174).",
+    "massa: 2,2 kg (em vigor na Etapa 2, 20/10/2026); antes: 2 kg, o meio da faixa comum de 1 a 3 kg da FAO (sexta rodada, item 4 da tamanho-decisoes-5.md: o adulto típico); era 3 kg, o alto do comum. Meio de faixa, não média: a média por sexo não foi achada. Dimensões, área e segundo Alvo escalados pelo cubo da massa.",
+    "dimensoes: altura e largura estimadas pela Bestiarista, sem fonte (D-174), agora escaladas pelo cubo (0,13 e 0,26 m)."
+  ]
 }

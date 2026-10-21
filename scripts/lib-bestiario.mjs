@@ -92,15 +92,17 @@ export function stat(b) {
     const pool = `${dados}d6${bonus ? '+2' : ''}${acerto ? ` +${acerto}` : ''}`;
     const fm = D.danoForca; const forcaAp = a.mao === 2 ? at.forca * fm.duasMaos : at.forca * fm.umaMao;
     // +1 POR PONTO DE CENTELHA DO ATACANTE NO DANO, SEM LIMITE (item 3 da Fase 1).
-    const fa = ((a.distancia && !a.arremesso) ? 0 : forcaAp) + C;
+    // `forca: false`: o golpe da ficha v3 que não soma a Força (o bico do falcão).
+    const fa = ((a.distancia && !a.arremesso) || a.forca === false ? 0 : forcaAp) + C + (a.danoBonus || 0);
     const perf = a.perf ?? a.pen;
-    const dano = `${a.dado}d6${fa ? ` +${fa}` : ''} ${a.tipo}${perf != null ? ` · perf. ${perf}` : ''}`;
+    // o menos tipográfico, que o `rolarExpr` (rolagem.ts) já lê: "1d6 −2"
+    const dano = `${a.dado}d6${fa > 0 ? ` +${fa}` : fa < 0 ? ` −${-fa}` : ''} ${a.tipo}${perf != null ? ` · perf. ${perf}` : ''}`;
     // O NÍVEL DE PERFURAÇÃO como campo numérico, e não só dentro da string do
     // `dano`: é dele que o gate (`gatePerfuracaoAbre`) lê, do mesmo jeito que lê
     // `perfArma` do lado do PC (`combate-resumo.ts`). `null` quando o ataque não
     // é Perfurante, e não Nível 0 (que resvalaria em qualquer armadura).
     const perfArma = a.tipo === 'perfurante' ? (perf ?? 0) : null;
-    return { nome: a.nome, pool, dano, perfArma, ticks: a.ticks, ...(a.notas ? { notas: a.notas } : {}) };
+    return { nome: a.nome, pool, dano, perfArma, ticks: a.ticks, ...(a.notas ? { notas: a.notas } : {}), ...(a.classe ? { classe: a.classe } : {}) };
   });
   const cv = couracaDe(b);
   const soak = Object.fromEntries(SOAKCATS.map((m) => {
@@ -136,6 +138,19 @@ export function stat(b) {
   if (bn.iniciativa) out.iniciativa = `1d6 + ${ini + bn.iniciativa}`;
   if (bn.absorcao) for (const m of SOAKCATS) out.soak[m] += bn.absorcao;
   for (const m of SOAKCATS) if (bn[`absorcao_${m}`]) out.soak[m] += bn[`absorcao_${m}`];
+
+  // A FICHA V3 TRAZ OS NÚMEROS PRONTOS (D-179, decisoes-etapa-6.md §3). Quando a
+  // fonte tem `v3`, eles valem no lugar da conta pelo porte; as criaturas sem ficha
+  // nova seguem a conta acima. A Couraça fica fora da Absorção até o autor decidir o
+  // valor dos níveis, e o nível de Perfuração da Absorção fica ausente (0).
+  if (b.v3) {
+    out.pv = b.v3.pv;
+    out.defesa = b.v3.defesa;
+    out.defesaMental = intel <= 0 ? '-' : b.v3.defesaMental;
+    out.defesaSocial = intel >= 1 ? b.v3.defesaSocial : '-';
+    out.soak = { ...b.v3.absorcao };
+    out.resistPerf = 0;
+  }
   return out;
 }
 // categoria dos NPCs feitos à mão (pelos tags), quando não vem explícita
@@ -194,7 +209,7 @@ function inverteComCentelha(valor, resto, mult, C) {
   if (satura >= C) return satura;
   return alvo / (mult + 2);
 }
-export function periciasDe(x, slug) {
+export function periciasDe(x, slug, b = null) {
   const at = x.atributos || {};
   const C = x.centelha || 0;
   const V = x.vontade || 0;
@@ -213,6 +228,13 @@ export function periciasDe(x, slug) {
       ? inteiro(inverteComCentelha(x.defesaSocial, 2 * (at.compostura || 0), 2, C)) : undefined,
     furtividade: furtividadeDe(x, slug),
   };
+  // Com a ficha v3 as Habilidades estão escritas, e não se inverte nada que a ficha
+  // diga: o `defesa` dela é o maior entre Esquiva e Bloqueio, e invertê-lo daria uma
+  // Esquiva alta demais quando o Bloqueio ganha (decisoes-etapa-6.md §3).
+  if (b?.v3) {
+    const pe = b.pericias || {};
+    for (const k of ['esquiva', 'integridade', 'prontidao', 'furtividade']) p[k] = pe[k] ?? 0;
+  }
   const saida = {};
   for (const k of Object.keys(p)) if (p[k] !== undefined) saida[k] = p[k];
   return saida;
@@ -338,6 +360,7 @@ export function paraStat(f) {
     ...(f.poderes ? { poderes: f.poderes } : {}),
     ...(f.bonus ? { bonus: f.bonus } : {}),
     ...(f.couraca ? { couraca: f.couraca } : {}),
+    ...(f.v3 ? { v3: f.v3 } : {}),
     notas: f.notas, pendente: f.pendente,
     porteSlug: porteSlug(f.porte),
   };

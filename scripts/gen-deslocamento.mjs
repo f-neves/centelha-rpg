@@ -63,6 +63,7 @@
 // uso: node scripts/gen-deslocamento.mjs
 import fs from 'node:fs';
 import path from 'node:path';
+import { passoDaPeca, tres as tresDoPasso } from './lib-bestiario.mjs';
 
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const p = (f) => path.join(ROOT, 'src/data', f);
@@ -455,16 +456,21 @@ function tres(ft) {
 
 // --- montagem ---------------------------------------------------------------
 const saida = {};
-let nFonte = 0, nTabela = 0;
+let nFonte = 0, nTabela = 0, nFicha = 0;
 
 for (const m of TODAS) {
   const f = FONTE[m.id];
   const ft = f ? f.ft : daTabela(m.ecologia?.tipo, m.porte);
   if (!Number.isFinite(ft) || ft < 0) throw new Error(`velocidade inválida em ${m.id}: ${ft}`);
-  const v = tres(ft);
+  // A FICHA V3 TRAZ O DESLOCAMENTO CONGELADO (D-179; decisoes-etapa-6.md §9, itens 3 e
+  // 3b): o satélite grava o mesmo que o gen-monsters.mjs usa, com a origem 'ficha'. O
+  // `ft` fica como metadado da semeadura.
+  const fonteSite = JSON.parse(fs.readFileSync(p(`bestiario/${m.id}.json`), 'utf8'));
+  const daFicha = fonteSite.v3 ? (fonteSite.deslocamentoDeclarado ?? (passoDaPeca(fonteSite.locomocao) ? tresDoPasso(passoDaPeca(fonteSite.locomocao)) : null)) : null;
+  const v = daFicha ? { batalha: daFicha.batalha, arranque: daFicha.arranque, corrida: daFicha.corrida } : tres(ft);
   if (v.batalha < 1 || v.batalha > 20) throw new Error(`batalha fora da faixa em ${m.id}: ${v.batalha} (${ft} ft)`);
-  saida[m.id] = { ...v, ft, origem: f ? 'fonte' : 'tabela', ...(f?.nota ? { nota: f.nota } : {}) };
-  if (f) nFonte++; else nTabela++;
+  saida[m.id] = { ...v, ft, origem: daFicha ? 'ficha' : f ? 'fonte' : 'tabela', ...(f?.nota ? { nota: f.nota } : {}) };
+  if (daFicha) nFicha++; else if (f) nFonte++; else nTabela++;
 }
 
 const idsBons = new Set(TODAS.map((m) => m.id));
@@ -501,6 +507,6 @@ if (process.argv.includes('--check')) {
 fs.writeFileSync(out, SAIDA_TXT);
 const ord = Object.entries(saida).sort((a, b) => b[1].batalha - a[1].batalha);
 const nome = (id) => TODAS.find((m) => m.id === id).nome;
-console.log(`deslocamento-bestiario.json: ${TODAS.length} criaturas · ${nFonte} da fonte · ${nTabela} da tabela.`);
+console.log(`deslocamento-bestiario.json: ${TODAS.length} criaturas · ${nFicha} da ficha · ${nFonte} da fonte · ${nTabela} da tabela.`);
 console.log(`  mais rápidas: ${ord.slice(0, 5).map(([id, v]) => `${nome(id)} ${v.batalha}`).join(' · ')}`);
 console.log(`  mais lentas:  ${ord.slice(-5).map(([id, v]) => `${nome(id)} ${v.batalha}`).join(' · ')}`);

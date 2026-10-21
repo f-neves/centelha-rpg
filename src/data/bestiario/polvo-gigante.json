@@ -2,90 +2,160 @@
   "ordem": 270,
   "id": "polvo-gigante",
   "idAntigo": "mon-giant-octopus",
-  "nome": "Polvo Gigante",
-  "nomeIngles": "Giant Octopus",
+  "nome": "Polvo-gigante",
+  "nomeIngles": "Giant octopus (D&D 3.5 e Pathfinder 1)",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
-  "papel": "chefe",
+  "papel": "fera",
   "conceito": "animal Grande",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Espera na toca, com a cor da rocha; o que passa perto vai para os braços e para o bico.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/giant-octopus.webp",
-  "porte": "Grande",
+  "porte": "Enorme",
   "dimensoes": {
-    "medida": "tentáculos de até 6 m de comprimento",
-    "peso": "270 kg"
+    "medida": "8,05 m de comprimento, 1,23 m de altura",
+    "peso": "1.350,6 kg",
+    "comprimento": 8.05,
+    "largura": 1.75,
+    "altura": 1.23
   },
   "locomocao": {
-    "terra": 2,
-    "natacao": 3
+    "natacao": 4
   },
   "centelha": 0,
   "attrs": {
     "forca": 7,
     "destreza": 4,
-    "vigor": 6,
+    "vigor": 4,
+    "percepcao": 3,
+    "inteligencia": 2,
+    "raciocinio": 3,
     "influencia": 1,
     "perspicacia": 1,
-    "compostura": 2,
-    "percepcao": 3,
-    "inteligencia": 1,
-    "raciocinio": 1
+    "compostura": 1
   },
   "skills": {
-    "briga": 5,
-    "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "briga": 3,
+    "esquiva": 2,
+    "furtividade": 4,
+    "integridade": 2,
+    "prontidao": 2,
+    "resistencia": 3,
+    "sobrevivencia": 3
   },
+  "skills2": {
+    "natacao": 2,
+    "musculatura": 4
+  },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "camuflagem de cor e textura, parado",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "tato e gosto nas ventosas",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "Agarrão",
+      "valor": 3,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
-    "valor": 3
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 2
   },
-  "willpower": 5,
-  "aparencia": 4,
+  "willpower": 3,
+  "aparencia": 6,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Bico",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 6
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    },
+    {
+      "nome": "Braços",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
   "habilidades": [
     {
-      "nome": "Visão em pouca luz",
-      "descricao": "Enxerga bem mesmo com pouca iluminação."
+      "nome": "constrição = agarrar",
+      "descricao": "Braços: Dano do agarrão 2 × Força = 14 por manutenção. Foi assim que a real matou os cações do Seattle Aquarium.",
+      "classe": "livro"
     },
     {
-      "nome": "Nuvem de tinta ampla",
-      "descricao": "Libera uma nuvem de tinta imensa que cobre uma grande área da água, ocultando totalmente sua posição."
+      "nome": "arrastar para a toca",
+      "descricao": "Braços: leva o que agarrou para a toca ou para o fundo, até o Peso erguido.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Jato propulsor",
-      "descricao": "Dispara para trás em linha reta a uma velocidade impressionante."
+      "nome": "nuvem de tinta",
+      "descricao": "solta uma nuvem de tinta que esconde a fuga.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Oito tentáculos constritores",
-      "descricao": "Agarra e aperta vários alvos ao mesmo tempo com seus oito braços cobertos de ventosas."
+      "nome": "jato para trás",
+      "descricao": "foge em jato.",
+      "classe": "como luta"
     },
     {
-      "nome": "Mordida venenosa",
-      "descricao": "Sua mordida injeta um veneno que enfraquece a força da vítima ao longo de vários instantes."
+      "nome": "espremer por fenda",
+      "descricao": "passa por fenda muito menor que o corpo.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "tato e gosto nas ventosas: Especialidade natural Prontidão (tato e gosto nas ventosas) +2; \"milhares\" de receptores químicos. · visão, estatocisto: sem número para a espécie; sem Especialidade."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Ferrão de gigante · Potência 16 · Tick (sangue) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pelo Bico"
     }
   ],
   "lore": [
     {
       "titulo": "Monstro dos oceanos",
       "texto": "Capaz de capturar e devorar tubarões, marinheiros ou qualquer coisa que consiga agarrar com seus tentáculos gigantescos."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Ferrão de gigante · Potência 16 · Tick (sangue) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pelo Bico"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme: o humano Médio acerta com +6 no corpo a corpo, e ele não ganha bônus; com os braços abertos fica Imenso, e o bônus de quem o ataca sobe a +9. A Força 7 tira o Bloqueio de quem tem Força 3 ou menos. Esconde-se muito bem (Furtividade 4 e +3 natural parado). Agarra e aperta a 14 por manutenção, e a mordida faz 8,5, com a ferida que inflama e infecciona, pelo Mestre. Arrasta para o fundo quem não se solta. 46 PV, Impacto 4, Couraça nível 0 (o valor do nível fica para depois). Nada a 4 m por Tick; fora d'água não anda."
     }
   ],
   "ecologia": {
@@ -122,5 +192,42 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "v3": {
+    "pv": 46,
+    "esquiva": 12,
+    "bloqueio": 8,
+    "defesa": 12,
+    "defesaMental": 8,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 918.96,
+    "deslocamento": {
+      "nado": 4
+    }
+  },
+  "notasObservacao": [
+    "gigante escalado (D-105): dimensões do adulto real × 3,5 (envergadura de 14 m, braços de cerca de 6,1 m, os do site com o disco somado); a massa é a base típica de 31,5 kg × 3,5³ = 1.350,6 kg (era 31,5 × 3,0³ = 850,5, e antes 292 e 259). Massa e envergadura da base saem da mesma fonte (Seattle Aquarium). Tudo [extrapolação] (D-174).",
+    "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; com k = 3,0 o gigante ficava Grande de braços juntos, uma categoria acima da base (Média), e a 2% do corte; com k = 3,5 fica Enorme, a 33% do corte. O D&D 3.5 e o Pathfinder 1 dão Grande (D-174).",
+    "alvo: Enorme pela área de cima com os braços juntos (8,0 m²); segundo Alvo Imenso com os braços abertos (47,96 m², decisão 8). Provisório até os cortes fecharem (D-174).",
+    "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8, era 7; pelos vizinhos de massa (tubarão-branco, boi, rinoceronte), abaixo da referência (9,15) por não ter osso [provisório] (D-158, D-169).",
+    "pesoErguido: 918,96 kg (em vigor na Etapa 2, 20/10/2026); antes: provisório, 1.118,81 kg (calc6, 1.350,6 kg e Força 8; era 988,32 com 850,5 kg) pela fórmula das decisões 14 e 16; cefalópode não tem `carga` (D-160, D-175). Sem feito medido para conferir.",
+    "inteligencia: 2 pela lista fechada da diretriz 1, igual ao polvo-comum; nota \"2 não é inteligência humana\".",
+    "compostura: desce de 3 para 1 por não ser espécie social (diretriz 1); a camuflagem foi para a Especialidade natural.",
+    "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua (o frio de 7 a 9,5 °C é o meio dela); a Especialidade de Resistência (Frio) +2 sai pelo mesmo motivo. Se o Mestre puser o polvo em água mais fria que a do Pacífico Norte, é caso dele (D-087).",
+    "musculatura: 4 (excepcional), sem medida do corpo inteiro; os 16 kg por ventosa são cálculo.",
+    "furtividade: 4, com o levantamento apontando candidato a 5; a camuflagem como Especialidade natural +3.",
+    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "anatomia: cefalópode, anatomia provisória (D-175); sem terra, e o rastejar no fundo fica em texto.",
+    "velocidade: congelada (decisão 23); nenhuma velocidade medida da real.",
+    "vigor: 4 ◆, revisto na oitava rodada pelo corpo e pela massa: dois acima da base real (2), um acima do mínimo da D-176, pela massa de 1,35 t (tubarão-branco 4; boi e rinoceronte 5); o corpo mole sem osso o deixa no lado de baixo, ao lado da lula-gigante (4). Era 3 (D-174, D-176).",
+    "veneno: veneno sem id no catálogo (D-112); o efeito real (caso DAN) está na pesquisa e em Veneno e doença.",
+    "comportamento: a reação a gente fica [sem dado]; na escala, gente vira presa possível, pelo Mestre (D-174).",
+    "fonte: a altura, a largura e o comprimento da base (0,35, 0,5 e 2,3 m) continuam por estimativa a partir da envergadura (Seattle Aquarium) e do manto (ADW) (D-174)."
+  ]
 }

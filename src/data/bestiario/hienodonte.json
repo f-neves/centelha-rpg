@@ -2,79 +2,94 @@
   "ordem": 241,
   "id": "hienodonte",
   "idAntigo": "mon-dire-hyena-hyaenodon",
-  "nome": "Hiena Atroz",
-  "nomeIngles": "Dire Hyena",
+  "nome": "Hienodonte",
+  "nomeIngles": "Dire Hyena (Hyaenodon)",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
   "papel": "fera",
   "conceito": "animal Grande",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Predador corredor da Mongólia do fim do Eoceno, maior que um leão, com cabeça grande e dentes de quebrar osso, numa paisagem que secava e se abria.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/dire-hyena-hyaenodon.webp",
-  "porte": "Grande",
+  "porte": "Médio",
   "dimensoes": {
-    "medida": "1,8 m de altura no ombro e mais de 3,6 m de comprimento",
-    "peso": "400 kg"
+    "medida": "2,79 m de comprimento, 1,24 m de altura",
+    "peso": "330 kg",
+    "comprimento": 2.79,
+    "largura": 0.57,
+    "altura": 1.24
   },
   "locomocao": {
-    "terra": 5
+    "terra": 8
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 8,
+    "arranque": 13,
+    "corrida": 18
   },
   "centelha": 0,
   "attrs": {
-    "forca": 6,
-    "destreza": 4,
-    "vigor": 5,
+    "forca": 7,
+    "destreza": 3,
+    "vigor": 4,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2,
     "influencia": 1,
     "perspicacia": 1,
-    "compostura": 2,
-    "percepcao": 3,
-    "inteligencia": 1,
-    "raciocinio": 2
+    "compostura": 1
   },
   "skills": {
-    "briga": 3,
-    "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "briga": 4,
+    "esquiva": 4,
+    "atletismo": 2,
+    "furtividade": 2,
+    "integridade": 2,
+    "prontidao": 2,
+    "resistencia": 4,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "musculatura": 3
   },
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
-    "valor": 2
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
   },
-  "willpower": 5,
-  "aparencia": 4,
+  "willpower": 3,
+  "aparencia": 6,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 6
+      "perf": 1,
+      "ticks": 6,
+      "classe": "media"
     }
   ],
   "habilidades": [
     {
-      "nome": "Mordida derrubadora",
-      "descricao": "Sua dentada poderosa pode arremessar o alvo ao chão."
+      "nome": "derrubar",
+      "descricao": "Mordida (na perna da presa em corrida): pelo corredor.",
+      "classe": "livro"
     },
     {
-      "nome": "Tática de matilha",
-      "descricao": "Caça em grupos que raramente param de se mover, cercando a presa sem descanso."
+      "nome": "agarrar",
+      "descricao": "Mordida: Dano do agarrão: 2 × Força = 14 por manutenção.",
+      "classe": "livro"
     },
     {
-      "nome": "Furtividade na relva",
-      "descricao": "Esconde-se com facilidade notável em vegetação alta ou densa."
-    },
-    {
-      "nome": "Sentidos de manada",
-      "descricao": "Faro apurado e visão na penumbra ajudam a localizar presas a distância."
+      "nome": "tática de matilha",
+      "descricao": "caça em grupo que quase não para, cercando a presa; o flanco (−2 na Defesa do alvo) e a Pressão do livro dão o ganho do bando.",
+      "classe": "como luta"
     }
   ],
   "lore": [
@@ -85,6 +100,10 @@
     {
       "titulo": "Montaria selvagem",
       "texto": "Gnolls por vezes domam hienodontes para servir como guardiões de suas tocas ou montarias temíveis em batalha."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Força 7: quem tem Força 3 ou menos não apara a mordida. Médio como o humano, sem bônus de porte para nenhum dos dois. 46 PV, Impacto 4 e Couraça nível 1 (quanto o nível vale fica para depois); é o Vigor que o segura. A mordida N1 passa o couro e a malha, e dá 10,5 de média. Arrasta ou vira cerca de 851 kg."
     }
   ],
   "ecologia": {
@@ -120,5 +139,45 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 46,
+    "esquiva": 14,
+    "bloqueio": 6,
+    "defesa": 14,
+    "defesaMental": 7,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 850.83,
+    "carga": {
+      "leve": 33,
+      "media": 66,
+      "pesada": 99,
+      "maxima": 132
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 8,
+        "arranque": 13,
+        "corrida": 18
+      }
+    }
+  },
+  "notasObservacao": [
+    "`massa`: 330 kg (em vigor na Etapa 2, 20/10/2026); antes: 300 kg **[extrapolação]**. Não há massa publicada para o H. gigas. Estimativas concorrentes: \"maior que um leão\", sem número (Morlo e Nagel 2006, via Wikipédia); 200 a 400 kg, conta da pesquisa sobre o leão de 189 kg; 408 kg no texto do Pathfinder e 400 kg na ficha atual, sem base científica; os parentes gigantes de outra subfamília (Hyainailouros, Megistotherium) mostram que a família chegava a esse tamanho",
+    "`alvo`: Médio pela silhueta (1,13 m²), era Grande na borda (4,08). Todas as medidas são extrapolação, e a silhueta também",
+    "`dimensoes`: altura, comprimento e largura são extrapolação, sem esqueleto: só há dentes, um fragmento de maxila e uma garra. O crânio de 60 cm da Wikipédia é dado ao H. gigas e ao H. mongoliensis juntos, o que não fecha com o primeiro ser \"claramente\" maior (Lange-Badré e Dashzeveg 1989)",
+    "`pesoErguido` e `carga`: 850,83 kg (em vigor na Etapa 2, 20/10/2026); antes: provisórios. A carga sai da massa e da faixa (30 kg de Leve); o peso erguido sai de `calc.mjs` (848,4 kg), e era 554,66 kg pela fórmula da D-162 (decisões 14 e 16)",
+    "`velocidade`: congelada (decisão 23); 63 km/h, que saiu da Força 8 e do fator do Grande",
+    "`ataques.mordida`: N1 por extrapolação da hiena-malhada e da função de quebrar osso; sem estimativa própria",
+    "`vigor`: 4 pela comparação de massa com a hiena (3) e o leão (4), sem nenhum dado de corpo",
+    "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "`musculatura`: 3 pela comparação com a hiena, de mesma função; era 0 por falta de dado",
+    "`social`: Influência, Compostura e Empatia em 1, 1 e 0 por não haver vida em grupo conhecida; se a pesquisa achar caça em bando, sobem"
+  ]
 }

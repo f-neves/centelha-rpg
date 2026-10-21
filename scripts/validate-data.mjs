@@ -1053,7 +1053,8 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
 // calados. (O deslocamento é conferido pelo test-deslocamento.mjs, que compara o
 // monsters.json com o satélite.)
 {
-  const { criaturaSchema, PERICIAS_LEGADAS } = await import('./criatura-schema.mjs');
+  const { criaturaSchema, PERICIAS_LEGADAS, HABILIDADES_DE_CRIATURA } = await import('./criatura-schema.mjs');
+  const SO_CRIATURA = new Set(HABILIDADES_DE_CRIATURA);
   const PASTA = path.join(DIR, 'bestiario');
   const SEC = new Set((data['habilidades-secundarias'] || []).map((x) => x.id));
   const ARMD = new Set((data.armaduras || []).map((x) => x.id));
@@ -1073,10 +1074,10 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
       ordens.set(c.ordem, f);
     }
     for (const k of Object.keys(c.skills)) if (!H.has(k) && !PERICIAS_LEGADAS[k]) fail(`${onde}: skills.${k} não é Habilidade primária${SEC.has(k) ? ' (é secundária: vai em skills2)' : ''}`);
-    for (const k of Object.keys(c.skills2 || {})) if (!SEC.has(k)) fail(`${onde}: skills2.${k} não é Habilidade secundária`);
+    for (const k of Object.keys(c.skills2 || {})) if (!SEC.has(k) && !SO_CRIATURA.has(k)) fail(`${onde}: skills2.${k} não é Habilidade secundária`);
     for (const a of c.ataques) {
       if (!A.has(a.atrib)) fail(`${onde}: ataque "${a.nome}" usa o atributo inexistente "${a.atrib}"`);
-      if (!H.has(a.pericia) && !SEC.has(a.pericia) && !PERICIAS_LEGADAS[a.pericia]) fail(`${onde}: ataque "${a.nome}" usa a perícia inexistente "${a.pericia}"`);
+      if (!H.has(a.pericia) && !SEC.has(a.pericia) && !SO_CRIATURA.has(a.pericia) && !PERICIAS_LEGADAS[a.pericia]) fail(`${onde}: ataque "${a.nome}" usa a perícia inexistente "${a.pericia}"`);
     }
     for (const id of Object.keys(c.arte || {})) if (!ART.has(id)) fail(`${onde}: arte inexistente "${id}"`);
     for (const id of Object.keys(c.tech || {})) if (!T.has(id)) fail(`${onde}: técnica inexistente "${id}"`);

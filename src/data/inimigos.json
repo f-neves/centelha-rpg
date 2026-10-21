@@ -2110,40 +2110,41 @@
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Caça em matilha e cerca a presa grande; sozinho, pega castor e lebre. Defende território de 130 a 13.000 km² por uivo e cheiro, e ataca gente raramente, quase sempre com raiva.",
     "tags": [
       "fera"
     ],
-    "pv": 37,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "pv": 34,
+    "defesa": 12,
+    "defesaSocial": 10,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
-      "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 3,
-      "destreza": 4,
-      "vigor": 4,
+      "destreza": 3,
+      "vigor": 3,
       "influencia": 1,
-      "perspicacia": 1,
+      "perspicacia": 2,
       "compostura": 2,
       "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "2d6+2",
-        "dano": "1d6 +3 perfurante",
+        "nome": "Mordida",
+        "pool": "3d6",
+        "dano": "1d6 +3 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -2151,11 +2152,11 @@
     "notas": "Habilidades notáveis: Prontidão 2, Furtividade 2, Sobrevivência 2.",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
+      "prontidao": 3,
+      "esquiva": 3,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 3
+      "sociabilidade": 3,
+      "furtividade": 2
     }
   },
   {
@@ -2166,40 +2167,41 @@
     "ameaca": 3,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Lobo do tamanho de um lobo-cinzento grande e mais pesado, que caçava presa grande em matilha. Extinto há cerca de 10.000 anos, com o fim da megafauna.",
     "tags": [
       "fera"
     ],
-    "pv": 54,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "pv": 37,
+    "defesa": 12,
+    "defesaSocial": 8,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
-      "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 9,
-      "destreza": 4,
-      "vigor": 6,
-      "influencia": 2,
-      "perspicacia": 1,
+      "forca": 5,
+      "destreza": 3,
+      "vigor": 4,
+      "influencia": 1,
+      "perspicacia": 2,
       "compostura": 2,
-      "percepcao": 3,
+      "percepcao": 2,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "6d6",
-        "dano": "2d6 +9 perfurante",
+        "nome": "Mordida",
+        "pool": "4d6+2",
+        "dano": "1d6 +5 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -2207,10 +2209,10 @@
     "notas": "Habilidades notáveis: Prontidão 2, Furtividade 2.",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
+      "prontidao": 3,
+      "esquiva": 3,
+      "integridade": 1,
+      "sociabilidade": 2,
       "furtividade": 2
     }
   },
@@ -2222,40 +2224,49 @@
     "ameaca": 3,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Solitário e onívoro, que foge de gente na maior parte das vezes. Ataca sobretudo a fêmea defendendo filhotes (47%), no encontro de surpresa (20%) ou quando é atacado (10%); 14,3% dos 664 ataques de 2000 a 2015 foram fatais.",
     "tags": [
       "fera"
     ],
-    "pv": 54,
-    "defesa": 8,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "pv": 50,
+    "defesa": 10,
+    "defesaSocial": 8,
+    "defesaMental": 9,
+    "vontade": 4,
     "soak": {
-      "impacto": 6,
+      "impacto": 5,
       "corte": 5,
       "perfuracao": 5
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 9,
+      "forca": 7,
       "destreza": 3,
-      "vigor": 6,
+      "vigor": 5,
       "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
+      "compostura": 1,
       "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "6d6",
-        "dano": "2d6 +9 perfurante",
+        "nome": "Patada",
+        "pool": "5d6+2",
+        "dano": "1d6 +7 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "5d6+2",
+        "dano": "1d6 +7 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -2263,10 +2274,10 @@
     "notas": "Habilidades notáveis: Atletismo 3, Prontidão 1.",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 2,
       "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
+      "integridade": 3,
+      "sociabilidade": 3,
       "furtividade": 2
     }
   },
@@ -2278,40 +2289,49 @@
     "ameaca": 3,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Em geral foge de quem está a pé, mas há antropofagia ocasional: os leões de Tsavo comeram cerca de 35 pessoas.",
     "tags": [
       "fera"
     ],
-    "pv": 50,
-    "defesa": 12,
-    "defesaSocial": 6,
-    "defesaMental": 10,
-    "vontade": 5,
+    "pv": 40,
+    "defesa": 14,
+    "defesaSocial": 10,
+    "defesaMental": 9,
+    "vontade": 3,
     "soak": {
       "impacto": 5,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 4",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 7,
-      "destreza": 5,
+      "forca": 6,
+      "destreza": 4,
       "vigor": 5,
-      "influencia": 2,
-      "perspicacia": 1,
-      "compostura": 3,
-      "percepcao": 4,
+      "influencia": 3,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 2
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Mordida",
         "pool": "5d6",
-        "dano": "2d6 +7 perfurante",
+        "dano": "1d6 +6 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Patada",
+        "pool": "5d6 +1",
+        "dano": "1d6 +4 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -2320,10 +2340,10 @@
     "pendente": true,
     "pericias": {
       "prontidao": 2,
-      "esquiva": 1,
+      "esquiva": 3,
       "integridade": 3,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "sociabilidade": 3,
+      "furtividade": 3
     }
   },
   {
@@ -2334,40 +2354,49 @@
     "ameaca": 3,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Emboscador solitário que mata presa maior que ele e a arrasta para o mato. Atravessa rios a nado. Evita gente onde pode; nos Sundarbans, caça gente.",
     "tags": [
       "fera"
     ],
-    "pv": 54,
-    "defesa": 10,
-    "defesaSocial": 6,
-    "defesaMental": 10,
-    "vontade": 5,
+    "pv": 50,
+    "defesa": 12,
+    "defesaSocial": 8,
+    "defesaMental": 9,
+    "vontade": 3,
     "soak": {
-      "impacto": 6,
+      "impacto": 5,
       "corte": 5,
       "perfuracao": 5
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 4",
+    "iniciativa": "1d6 + 6",
     "atributos": {
-      "forca": 8,
-      "destreza": 4,
-      "vigor": 6,
-      "influencia": 2,
+      "forca": 7,
+      "destreza": 3,
+      "vigor": 5,
+      "influencia": 1,
       "perspicacia": 1,
-      "compostura": 3,
-      "percepcao": 4,
+      "compostura": 1,
+      "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 2
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Mordida",
         "pool": "5d6+2",
-        "dano": "2d6 +8 perfurante",
+        "dano": "1d6 +7 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Patada",
+        "pool": "5d6+2 +1",
+        "dano": "1d6 +5 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -2375,11 +2404,11 @@
     "notas": "Habilidades notáveis: Furtividade 3, Atletismo 2.",
     "pendente": true,
     "pericias": {
-      "prontidao": 2,
-      "esquiva": 1,
+      "prontidao": 3,
+      "esquiva": 3,
       "integridade": 3,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "sociabilidade": 3,
+      "furtividade": 4
     }
   },
   {
@@ -2390,40 +2419,49 @@
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "O macho grande e sozinho ataca gente sem provocação, mais no inverno e de dia, e fere sobretudo pernas e pés. A vítima típica é um homem adulto sozinho a pé.",
     "tags": [
       "fera"
     ],
     "pv": 40,
-    "defesa": 4,
-    "defesaSocial": 4,
+    "defesa": 8,
+    "defesaSocial": 10,
     "defesaMental": 9,
     "vontade": 5,
     "soak": {
       "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 4,
+      "forca": 5,
       "destreza": 2,
       "vigor": 5,
-      "influencia": 1,
+      "influencia": 3,
       "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 3,
+      "compostura": 1,
+      "percepcao": 2,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "3d6",
-        "dano": "1d6 +4 perfurante",
+        "nome": "Presada (golpe de presa)",
+        "pool": "4d6",
+        "dano": "1d6 +5 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Investida",
+        "pool": "4d6",
+        "dano": "2d6 +10 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -2431,55 +2469,64 @@
     "notas": "Habilidades notáveis: Prontidão 1.",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 0,
+      "prontidao": 2,
+      "esquiva": 2,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 3
+      "sociabilidade": 4,
+      "furtividade": 0
     }
   },
   {
     "id": "rinoceronte",
-    "nome": "Rinoceronte",
+    "nome": "Rinoceronte-branco",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Os machos guardam o território: a maioria dos encontros é ritual, de cabeça erguida e chifres tocados, mas alguns acabam em feridas fundas ou morte. Míope, fareja e ouve bem. Vive até 50 anos.",
     "tags": [
       "fera"
     ],
-    "pv": 58,
+    "pv": 75,
     "defesa": 8,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 9,
-    "vontade": 5,
+    "vontade": 4,
     "soak": {
-      "impacto": 7,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 8,
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
       "forca": 8,
-      "destreza": 3,
-      "vigor": 7,
+      "destreza": 2,
+      "vigor": 8,
       "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 3,
+      "compostura": 1,
+      "percepcao": 2,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Chifrada",
         "pool": "5d6+2",
-        "dano": "2d6 +8 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "dano": "1d6 +8 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Investida",
+        "pool": "5d6+2",
+        "dano": "2d6 +16 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -2489,53 +2536,62 @@
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "integridade": 3,
+      "sociabilidade": 2,
+      "furtividade": 0
     }
   },
   {
     "id": "elefante",
-    "nome": "Elefante",
+    "nome": "Elefante-asiático",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 4,
     "centelha": 0,
     "conceito": "animal Enorme",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Domesticado há séculos para o transporte, a madeira e a guerra; um macho de trabalho arrasta toneladas de tora por dia. Vive 60 anos ou mais.",
     "tags": [
       "fera"
     ],
-    "pv": 75,
-    "defesa": 4,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 80,
+    "defesa": 6,
+    "defesaSocial": 8,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
-      "impacto": 8,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 9,
+      "corte": 9,
+      "perfuracao": 9
     },
-    "resistPerf": 1,
+    "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
-      "forca": 11,
-      "destreza": 2,
-      "vigor": 8,
-      "influencia": 1,
-      "perspicacia": 1,
+      "forca": 10,
+      "destreza": 1,
+      "vigor": 9,
+      "influencia": 3,
+      "perspicacia": 2,
       "compostura": 2,
-      "percepcao": 3,
-      "inteligencia": 1,
+      "percepcao": 2,
+      "inteligencia": 2,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "7d6+2",
-        "dano": "3d6 +11 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "nome": "Presada (só o macho com presa)",
+        "pool": "6d6+2",
+        "dano": "2d6 +10 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Pisão (ou investida)",
+        "pool": "6d6+2",
+        "dano": "2d6 +20 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -2544,10 +2600,10 @@
     "pendente": true,
     "pericias": {
       "prontidao": 1,
-      "esquiva": 0,
+      "esquiva": 1,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "sociabilidade": 2,
+      "furtividade": 0
     }
   },
   {
@@ -2558,40 +2614,49 @@
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "O dorso-prateado fica de pé, bate no peito, rosna e investe, mas raramente acerta: passa direto e pode investir de novo. Não defende território (as áreas dos grupos se sobrepõem), e ataca roças.",
     "tags": [
       "fera"
     ],
-    "pv": 50,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 54,
+    "defesa": 14,
+    "defesaSocial": 8,
+    "defesaMental": 8,
+    "vontade": 3,
     "soak": {
-      "impacto": 5,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 6,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
-      "forca": 6,
+      "forca": 7,
       "destreza": 4,
-      "vigor": 5,
-      "influencia": 1,
-      "perspicacia": 1,
+      "vigor": 6,
+      "influencia": 3,
+      "perspicacia": 2,
       "compostura": 2,
-      "percepcao": 3,
-      "inteligencia": 1,
+      "percepcao": 2,
+      "inteligencia": 2,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "4d6",
-        "dano": "2d6 +6 perfurante",
+        "nome": "Pancada",
+        "pool": "5d6",
+        "dano": "1d6 +7 impacto",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "5d6",
+        "dano": "1d6 +7 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -2600,235 +2665,211 @@
     "pendente": true,
     "pericias": {
       "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "esquiva": 3,
+      "integridade": 3,
+      "sociabilidade": 2,
+      "furtividade": 1
     }
   },
   {
     "id": "crocodilo-do-nilo",
-    "nome": "Crocodilo",
+    "nome": "Crocodilo-do-nilo",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Espera na margem o mamífero que vem beber, agarra, arrasta para a água e gira. Come até 20% da própria massa numa refeição; a fêmea guarda o ninho e leva os filhotes na boca até a água.",
     "tags": [
       "fera"
     ],
-    "pv": 50,
+    "pv": 42,
     "defesa": 8,
-    "defesaSocial": 2,
-    "defesaMental": 8,
-    "vontade": 5,
-    "soak": {
-      "impacto": 5,
-      "corte": 4,
-      "perfuracao": 4
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
-    "atributos": {
-      "forca": 6,
-      "destreza": 3,
-      "vigor": 5,
-      "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 1,
-      "percepcao": 3,
-      "inteligencia": 1,
-      "raciocinio": 1
-    },
-    "ataques": [
-      {
-        "nome": "Garras e presas",
-        "pool": "4d6",
-        "dano": "2d6 +6 perfurante",
-        "perfArma": 0,
-        "ticks": 6
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "notas": "Habilidades notáveis: Furtividade 2, Atletismo 2.",
-    "pendente": true,
-    "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 2
-    }
-  },
-  {
-    "id": "jiboia",
-    "nome": "Cobra Constritora",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 2,
-    "centelha": 0,
-    "conceito": "animal Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 34,
-    "defesa": 12,
-    "defesaSocial": 2,
-    "defesaMental": 8,
-    "vontade": 5,
+    "defesaSocial": 6,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
       "impacto": 3,
-      "corte": 1,
-      "perfuracao": 1
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 5,
-      "destreza": 5,
+      "forca": 7,
+      "destreza": 2,
       "vigor": 3,
       "influencia": 1,
       "perspicacia": 1,
       "compostura": 1,
       "percepcao": 3,
-      "inteligencia": 1,
-      "raciocinio": 1
-    },
-    "ataques": [
-      {
-        "nome": "Garras e presas",
-        "pool": "3d6+2",
-        "dano": "1d6 +5 perfurante",
-        "perfArma": 0,
-        "ticks": 5
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "notas": "Habilidades notáveis: Furtividade 2, Atletismo 2.",
-    "pendente": true,
-    "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 3
-    }
-  },
-  {
-    "id": "aranha-gigante",
-    "nome": "Aranha Gigante",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 2,
-    "centelha": 0,
-    "conceito": "praga Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 34,
-    "defesa": 12,
-    "defesaSocial": 2,
-    "defesaMental": 9,
-    "vontade": 5,
-    "soak": {
-      "impacto": 3,
-      "corte": 1,
-      "perfuracao": 1
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
-    "atributos": {
-      "forca": 2,
-      "destreza": 5,
-      "vigor": 3,
-      "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 1,
-      "percepcao": 2,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "2d6",
-        "dano": "1d6 +2 perfurante",
+        "nome": "Mordida",
+        "pool": "5d6+2",
+        "dano": "2d6 +7 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 7,
+        "classe": "pesada"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Habilidades notáveis: Furtividade 2, Atletismo 2.",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 1,
+      "sociabilidade": 2,
+      "furtividade": 3
+    }
+  },
+  {
+    "id": "jiboia",
+    "nome": "Jiboia",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "animal Médio",
+    "descricao": "Espera imóvel, à noite ou no crepúsculo, a presa passar; morde para segurar e aperta até o coração da presa parar.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 26,
+    "defesa": 10,
+    "defesaSocial": 8,
+    "defesaMental": 7,
+    "vontade": 3,
+    "soak": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 5,
+      "destreza": 2,
+      "vigor": 3,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Mordida (bote para agarrar)",
+        "pool": "4d6+2 +1",
+        "dano": "1d6 +3 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "Habilidades notáveis: Furtividade 2, Atletismo 2.",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 3,
+      "integridade": 1,
+      "sociabilidade": 3,
+      "furtividade": 3
+    }
+  },
+  {
+    "id": "aranha-gigante",
+    "nome": "Aranha-gigante",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "praga Médio",
+    "descricao": "Espera na toca funda do chão alagado da mata; sai à noite, agarra a presa, morde e arrasta para dentro. Acuada, ergue as patas e chia antes de morder.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 28,
+    "defesa": 10,
+    "defesaSocial": 6,
+    "defesaMental": 8,
+    "vontade": 3,
+    "soak": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 5",
+    "atributos": {
+      "forca": 3,
+      "destreza": 3,
+      "vigor": 4,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Presas (quelíceras)",
+        "pool": "3d6",
+        "dano": "1d6 +3 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "Habilidades notáveis: Furtividade 3, Atletismo 3.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "teia",
-        "nome": "Teia",
-        "tipo": "natural",
-        "resiste": "esquiva",
-        "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 3,
-          "recarga": "1 hora"
-        }
-      },
-      {
-        "id": "mordida-venenosa",
-        "nome": "Mordida venenosa",
-        "tipo": "natural",
-        "resiste": "corpo",
-        "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 3,
-          "recarga": "1 hora"
-        },
-        "ataque": "Garras e presas"
-      }
-    ],
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
+      "prontidao": 2,
+      "esquiva": 2,
       "integridade": 2,
-      "sociabilidade": 0,
+      "sociabilidade": 2,
       "furtividade": 3
     }
   },
   {
     "id": "escorpiao-gigante",
-    "nome": "Escorpião Gigante",
+    "nome": "Escorpião-gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
     "centelha": 0,
     "conceito": "praga Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Sai da toca à noite, agarra a presa com as pinças e a esmaga; o ferrão fica para a presa que resiste.",
     "tags": [
       "fera"
     ],
-    "pv": 54,
-    "defesa": 8,
-    "defesaSocial": 2,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 37,
+    "defesa": 12,
+    "defesaSocial": 6,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
-      "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 6,
+      "forca": 5,
       "destreza": 3,
-      "vigor": 6,
+      "vigor": 4,
       "influencia": 1,
       "perspicacia": 1,
       "compostura": 1,
@@ -2838,37 +2879,31 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "4d6+2",
-        "dano": "2d6 +6 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "nome": "Pinça",
+        "pool": "4d6",
+        "dano": "1d6 +5 impacto",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Ferrão",
+        "pool": "4d6 +1",
+        "dano": "1d6 +3 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "Habilidades notáveis: Furtividade 1.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "ferrao-venenoso",
-        "nome": "Ferrão venenoso",
-        "tipo": "natural",
-        "resiste": "corpo",
-        "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 3,
-          "recarga": "1 hora"
-        },
-        "ataque": "Garras e presas"
-      }
-    ],
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 3,
       "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
+      "integridade": 1,
+      "sociabilidade": 2,
       "furtividade": 2
     }
   },
@@ -2934,45 +2969,62 @@
   {
     "id": "roc",
     "nome": "Roc",
-    "tipo": "chefe",
+    "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 5,
     "centelha": 0,
     "conceito": "animal Imenso",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Ninho em picos isolados; leva a presa nas garras e a larga de grande altura. O mito vem de Marco Polo e de Simbad, e talvez dos ovos do Aepyornis de Madagascar.",
     "tags": [
       "fera"
     ],
-    "pv": 85,
+    "pv": 46,
     "defesa": 8,
-    "defesaSocial": 6,
+    "defesaSocial": 8,
     "defesaMental": 10,
-    "vontade": 5,
+    "vontade": 4,
     "soak": {
-      "impacto": 9,
+      "impacto": 4,
       "corte": 4,
       "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 4",
+    "iniciativa": "1d6 + 6",
     "atributos": {
-      "forca": 13,
+      "forca": 7,
       "destreza": 3,
-      "vigor": 9,
-      "influencia": 2,
+      "vigor": 4,
+      "influencia": 1,
       "perspicacia": 1,
-      "compostura": 3,
-      "percepcao": 4,
+      "compostura": 1,
+      "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 2
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "9d6",
-        "dano": "3d6 +13 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "nome": "Garras (talões)",
+        "pool": "5d6+2",
+        "dano": "1d6 +7 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Bico",
+        "pool": "5d6+2",
+        "dano": "1d6 +7 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras em mergulho",
+        "pool": "5d6+2",
+        "dano": "2d6 +14 corte",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -2980,55 +3032,56 @@
     "notas": "Habilidades notáveis: Prontidão 3.",
     "pendente": true,
     "pericias": {
-      "prontidao": 2,
+      "prontidao": 3,
       "esquiva": 1,
       "integridade": 3,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "sociabilidade": 3,
+      "furtividade": 2
     }
   },
   {
     "id": "rato-gigante",
-    "nome": "Rato Gigante",
+    "nome": "Rato gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
     "centelha": 0,
     "conceito": "animal Pequeno",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Um rato do tamanho de um cão pequeno, que vive em bando nos esgotos e porões; morde e foge pela fresta, e a mordida suja carrega doença.",
     "tags": [
       "fera"
     ],
-    "pv": 26,
+    "pv": 30,
     "defesa": 12,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "defesaSocial": 10,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
-      "impacto": 3,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 5,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 2,
-      "destreza": 5,
-      "vigor": 3,
+      "destreza": 3,
+      "vigor": 5,
       "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 2,
+      "perspicacia": 2,
+      "compostura": 1,
       "percepcao": 3,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "1d6+2",
-        "dano": "1d6 +2 perfurante",
+        "nome": "Mordida",
+        "pool": "2d6 +1",
+        "dano": "1d6 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -3036,11 +3089,11 @@
     "notas": "Habilidades notáveis: Furtividade 2, Atletismo 2.",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 4
+      "prontidao": 2,
+      "esquiva": 3,
+      "integridade": 1,
+      "sociabilidade": 4,
+      "furtividade": 2
     }
   },
   {
@@ -10946,46 +10999,55 @@
   },
   {
     "id": "enxame-de-formigas",
-    "nome": "Enxame de Formigas",
+    "nome": "Enxame de formigas (formigas-de-correição)",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 4,
     "centelha": 0,
     "conceito": "praga Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "A frente de uma marcha de formigas de correição, que cobre e desmancha o que não foge; quem está preso, caído ou imóvel sofre mais.",
     "tags": [
       "fera"
     ],
-    "pv": 17,
-    "defesa": 10,
-    "defesaSocial": "-",
-    "defesaMental": "-",
-    "vontade": 5,
+    "pv": 26,
+    "defesa": 6,
+    "defesaSocial": 6,
+    "defesaMental": 6,
+    "vontade": 4,
     "soak": {
-      "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 0,
-      "destreza": 4,
-      "vigor": 2,
-      "influencia": 0,
+      "destreza": 3,
+      "vigor": 3,
+      "influencia": 1,
       "perspicacia": 1,
       "compostura": 1,
       "percepcao": 2,
-      "inteligencia": 0,
+      "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "2d6",
-        "dano": "1d6 perfurante",
+        "nome": "Mordida do enxame",
+        "pool": "1d6+2 +1",
+        "dano": "1d6 −2 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Ferroada do enxame",
+        "pool": "1d6+2 +1",
+        "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -10993,53 +11055,64 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "furtividade": 5
+      "prontidao": 2,
+      "esquiva": 0,
+      "integridade": 0,
+      "sociabilidade": 2,
+      "furtividade": 0
     }
   },
   {
     "id": "formiga-gigante",
-    "nome": "Formiga Gigante",
+    "nome": "Formiga-gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "praga Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Anda sozinha pelo chão da mata atrás de presa; o ninho fica raso no solo, com algumas dezenas de irmãs.",
     "tags": [
       "fera"
     ],
-    "pv": 40,
-    "defesa": 4,
+    "pv": 37,
+    "defesa": 12,
     "defesaSocial": 6,
-    "defesaMental": 11,
-    "vontade": 5,
+    "defesaMental": 5,
+    "vontade": 3,
     "soak": {
-      "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 4,
-      "destreza": 2,
-      "vigor": 5,
-      "influencia": 2,
-      "perspicacia": 2,
-      "compostura": 3,
-      "percepcao": 3,
+      "forca": 3,
+      "destreza": 3,
+      "vigor": 4,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 2,
       "inteligencia": 1,
-      "raciocinio": 3
+      "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Mandíbulas",
         "pool": "3d6",
-        "dano": "1d6 +4 perfurante",
+        "dano": "1d6 +3 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Ferrão",
+        "pool": "3d6 +1",
+        "dano": "1d6 +1 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -11047,55 +11120,64 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 0,
-      "integridade": 3,
-      "sociabilidade": 0,
-      "furtividade": 3
+      "prontidao": 2,
+      "esquiva": 3,
+      "integridade": 0,
+      "sociabilidade": 2,
+      "furtividade": 2
     }
   },
   {
     "id": "gigantopiteco",
-    "nome": "Símio Atroz",
+    "nome": "Gigantopiteco",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Símio gigante das florestas do sul da China, herbívoro, que sumiu quando a floresta abriu e ele não conseguiu mudar de dieta.",
     "tags": [
       "fera"
     ],
-    "pv": 54,
-    "defesa": 10,
-    "defesaSocial": 4,
+    "pv": 58,
+    "defesa": 14,
+    "defesaSocial": 8,
     "defesaMental": 8,
-    "vontade": 5,
+    "vontade": 3,
     "soak": {
-      "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 7,
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 6,
+      "forca": 9,
       "destreza": 4,
-      "vigor": 6,
-      "influencia": 1,
-      "perspicacia": 1,
+      "vigor": 7,
+      "influencia": 3,
+      "perspicacia": 2,
       "compostura": 2,
-      "percepcao": 3,
-      "inteligencia": 1,
-      "raciocinio": 1
+      "percepcao": 2,
+      "inteligencia": 2,
+      "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "4d6+2",
-        "dano": "2d6 +6 perfurante",
+        "nome": "Pancada",
+        "pool": "7d6",
+        "dano": "1d6 +9 impacto",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "7d6",
+        "dano": "1d6 +9 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -11103,11 +11185,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "prontidao": 3,
+      "esquiva": 3,
+      "integridade": 3,
+      "sociabilidade": 2,
+      "furtividade": 1
     }
   },
   {
@@ -11633,21 +11715,21 @@
   },
   {
     "id": "morcego-atroz",
-    "nome": "Morcego Atroz",
+    "nome": "Morcego atroz",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Mora em caverna e sai à noite atrás de gado; numa refeição levaria de 5 a 8 kg de sangue, se seguisse o vampiro (20 a 30% da massa).",
     "tags": [
       "fera"
     ],
-    "pv": 46,
+    "pv": 28,
     "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "defesaSocial": 8,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
       "impacto": 4,
       "corte": 4,
@@ -11656,23 +11738,24 @@
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 6,
-      "destreza": 4,
+      "forca": 3,
+      "destreza": 3,
       "vigor": 4,
-      "influencia": 1,
-      "perspicacia": 1,
+      "influencia": 2,
+      "perspicacia": 2,
       "compostura": 2,
-      "percepcao": 4,
+      "percepcao": 3,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "4d6",
-        "dano": "2d6 +6 perfurante",
+        "nome": "Mordida",
+        "pool": "2d6+2",
+        "dano": "1d6 +3 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -11681,54 +11764,55 @@
     "pendente": true,
     "pericias": {
       "prontidao": 2,
-      "esquiva": 1,
+      "esquiva": 2,
       "integridade": 2,
-      "sociabilidade": 0,
+      "sociabilidade": 2,
       "furtividade": 2
     }
   },
   {
     "id": "enxame-de-morcegos",
-    "nome": "Enxame de Morcegos",
+    "nome": "Enxame de morcegos",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "A nuvem de morcegos que sai da caverna ao anoitecer e envolve quem está na boca dela; o perigo maior é o pó de guano da caverna.",
     "tags": [
       "fera"
     ],
-    "pv": 17,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 34,
+    "defesa": 6,
+    "defesaSocial": 8,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
-      "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 1,
-      "destreza": 4,
-      "vigor": 2,
-      "influencia": 0,
+      "forca": 0,
+      "destreza": 3,
+      "vigor": 3,
+      "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 4,
+      "compostura": 1,
+      "percepcao": 3,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "1d6+2",
-        "dano": "1d6 +1 perfurante",
+        "nome": "Mordida do enxame",
+        "pool": "0d6+2 +1",
+        "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -11737,10 +11821,10 @@
     "pendente": true,
     "pericias": {
       "prontidao": 2,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 5
+      "esquiva": 0,
+      "integridade": 1,
+      "sociabilidade": 3,
+      "furtividade": 2
     }
   },
   {
@@ -11801,46 +11885,55 @@
   },
   {
     "id": "urso-das-cavernas",
-    "nome": "Urso Atroz",
+    "nome": "Urso-das-cavernas",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 4,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Urso enorme da Europa da Era do Gelo, que comia sobretudo planta e hibernava fundo nas cavernas, onde defendia a toca de lobos, hienas e leões.",
     "tags": [
       "fera"
     ],
-    "pv": 58,
-    "defesa": 8,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "pv": 54,
+    "defesa": 10,
+    "defesaSocial": 6,
+    "defesaMental": 9,
+    "vontade": 4,
     "soak": {
-      "impacto": 7,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 6,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 9,
+      "forca": 8,
       "destreza": 3,
-      "vigor": 7,
-      "influencia": 2,
+      "vigor": 6,
+      "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
+      "compostura": 1,
       "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "6d6+2",
-        "dano": "2d6 +9 perfurante",
+        "nome": "Patada",
+        "pool": "5d6+2",
+        "dano": "1d6 +8 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "5d6+2",
+        "dano": "1d6 +8 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -11848,10 +11941,10 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 2,
       "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
+      "integridade": 3,
+      "sociabilidade": 2,
       "furtividade": 2
     }
   },
@@ -11914,102 +12007,47 @@
   },
   {
     "id": "besouro-de-fogo",
-    "nome": "Besouro de Fogo",
+    "nome": "Besouro-de-fogo",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
     "centelha": 0,
     "conceito": "praga Pequeno",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Na mata escura, dois pontos verdes que se movem; mineiros e viajantes o prendem em gaiola como lanterna.",
     "tags": [
       "fera"
     ],
-    "pv": 24,
-    "defesa": 4,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 4,
+    "defesa": 8,
+    "defesaSocial": 6,
+    "defesaMental": 5,
+    "vontade": 3,
     "soak": {
-      "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
-    "atributos": {
-      "forca": 2,
-      "destreza": 2,
-      "vigor": 2,
-      "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 2,
-      "inteligencia": 1,
-      "raciocinio": 2
-    },
-    "ataques": [
-      {
-        "nome": "Garras e presas",
-        "pool": "1d6+2",
-        "dano": "1d6 +2 perfurante",
-        "perfArma": 0,
-        "ticks": 5
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "notas": "",
-    "pendente": true,
-    "pericias": {
-      "prontidao": 1,
-      "esquiva": 0,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 4
-    }
-  },
-  {
-    "id": "besouro-veado-gigante",
-    "nome": "Besouro-Veado Gigante",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 3,
-    "centelha": 0,
-    "conceito": "praga Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 50,
-    "defesa": 4,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
-    "soak": {
-      "impacto": 5,
+      "impacto": 4,
       "corte": 4,
       "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
-      "forca": 6,
+      "forca": 1,
       "destreza": 2,
-      "vigor": 5,
-      "influencia": 2,
-      "perspicacia": 2,
-      "compostura": 2,
+      "vigor": 4,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
       "percepcao": 2,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "4d6+2",
-        "dano": "2d6 +6 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "nome": "Mandíbulas",
+        "pool": "1d6+2 +1",
+        "dano": "1d6 −1 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -12018,10 +12056,67 @@
     "pendente": true,
     "pericias": {
       "prontidao": 1,
-      "esquiva": 0,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "esquiva": 2,
+      "integridade": 0,
+      "sociabilidade": 2,
+      "furtividade": 1
+    }
+  },
+  {
+    "id": "besouro-veado-gigante",
+    "nome": "Besouro-veado-gigante",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "praga Grande",
+    "descricao": "Decola do alto de uma árvore ao entardecer, voa pesado e zumbindo; os machos se agarram pelas mandíbulas e o maior joga o outro do galho.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 37,
+    "defesa": 13,
+    "defesaSocial": 6,
+    "defesaMental": 5,
+    "vontade": 3,
+    "soak": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 4,
+      "destreza": 2,
+      "vigor": 4,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Mandíbulas",
+        "pool": "3d6+2",
+        "dano": "1d6 +4 perfurante · perf. 2",
+        "perfArma": 2,
+        "ticks": 6,
+        "classe": "media"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 0,
+      "sociabilidade": 2,
+      "furtividade": 1
     }
   },
   {
@@ -12081,46 +12176,47 @@
   },
   {
     "id": "daeodon",
-    "nome": "Javali Atroz",
+    "nome": "Daeodon",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Onívoro do tamanho de um boi, com crânio de quase um metro, que quebrava osso e brigava mordendo a cara dos rivais.",
     "tags": [
       "fera"
     ],
-    "pv": 54,
-    "defesa": 4,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 50,
+    "defesa": 8,
+    "defesaSocial": 6,
+    "defesaMental": 8,
+    "vontade": 4,
     "soak": {
-      "impacto": 6,
+      "impacto": 5,
       "corte": 5,
       "perfuracao": 5
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 8,
+      "forca": 7,
       "destreza": 2,
-      "vigor": 6,
-      "influencia": 2,
+      "vigor": 5,
+      "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 3,
+      "compostura": 1,
+      "percepcao": 2,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "5d6+2",
-        "dano": "2d6 +8 perfurante",
+        "nome": "Mordida",
+        "pool": "5d6",
+        "dano": "2d6 +7 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -12128,11 +12224,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 0,
+      "prontidao": 2,
+      "esquiva": 2,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "sociabilidade": 2,
+      "furtividade": 0
     }
   },
   {
@@ -12200,40 +12296,49 @@
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Espreita de perto e dispara numa arrancada de poucos segundos; se não pega, desiste. Cede a presa a qualquer predador maior que chegue.",
     "tags": [
       "fera"
     ],
-    "pv": 37,
-    "defesa": 12,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "pv": 34,
+    "defesa": 18,
+    "defesaSocial": 6,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
-      "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 6",
     "atributos": {
-      "forca": 5,
+      "forca": 3,
       "destreza": 5,
-      "vigor": 4,
+      "vigor": 3,
       "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
+      "compostura": 1,
       "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "3d6+2",
-        "dano": "1d6 +5 perfurante",
+        "nome": "Mordida",
+        "pool": "3d6 +1",
+        "dano": "1d6 +1 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Patada com o ergot",
+        "pool": "3d6 +1",
+        "dano": "1d6 +1 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -12241,10 +12346,10 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
+      "prontidao": 3,
+      "esquiva": 4,
+      "integridade": 1,
+      "sociabilidade": 2,
       "furtividade": 3
     }
   },
@@ -12256,40 +12361,49 @@
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Emboscador solitário que chega a poucos metros da presa e a leva árvore acima para não perdê-la. Vive em quase todo lugar, inclusive na periferia das cidades, e os comedores de gente da história (Rudraprayag, Panar) eram leopardos.",
     "tags": [
       "fera"
     ],
     "pv": 37,
-    "defesa": 12,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "defesa": 14,
+    "defesaSocial": 10,
+    "defesaMental": 8,
+    "vontade": 3,
     "soak": {
       "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 6",
     "atributos": {
       "forca": 5,
-      "destreza": 5,
+      "destreza": 4,
       "vigor": 4,
       "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
+      "compostura": 1,
       "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 2
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "3d6+2",
-        "dano": "1d6 +5 perfurante",
+        "nome": "Mordida",
+        "pool": "4d6+2",
+        "dano": "1d6 +5 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Patada",
+        "pool": "4d6+2 +1",
+        "dano": "1d6 +3 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -12297,11 +12411,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
+      "prontidao": 3,
+      "esquiva": 3,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 3
+      "sociabilidade": 4,
+      "furtividade": 4
     }
   },
   {
@@ -12419,46 +12533,47 @@
   },
   {
     "id": "centopeia-gigante",
-    "nome": "Centopéia Gigante",
+    "nome": "Centopeia-gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
     "centelha": 0,
     "conceito": "praga Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Pendura-se no teto da caverna pelos últimos pares de patas, agarra o morcego com os da frente e come ali mesmo, de cabeça para baixo; não larga a presa.",
     "tags": [
       "fera"
     ],
-    "pv": 34,
-    "defesa": 10,
-    "defesaSocial": 2,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 28,
+    "defesa": 14,
+    "defesaSocial": 6,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
-      "impacto": 3,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 2,
+      "forca": 4,
       "destreza": 4,
-      "vigor": 3,
+      "vigor": 4,
       "influencia": 1,
       "perspicacia": 1,
       "compostura": 1,
       "percepcao": 2,
       "inteligencia": 1,
-      "raciocinio": 2
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "1d6+2",
-        "dano": "1d6 +2 perfurante",
-        "perfArma": 0,
-        "ticks": 5
+        "nome": "Forcípulas",
+        "pool": "4d6 +1",
+        "dano": "1d6 +2 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -12466,55 +12581,56 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 3
+      "prontidao": 2,
+      "esquiva": 3,
+      "integridade": 0,
+      "sociabilidade": 2,
+      "furtividade": 2
     }
   },
   {
     "id": "enxame-de-centopeias",
-    "nome": "Enxame de Centopéia",
+    "nome": "Enxame de centopeias",
     "tipo": "fera",
     "categoria": "Fera",
-    "ameaca": 3,
+    "ameaca": 2,
     "centelha": 0,
     "conceito": "praga Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Lacraias que sozinhas quase não ferem gente, mas que aos centos cobrem quem cai entre elas de picadas que doem como de abelha.",
     "tags": [
       "fera"
     ],
-    "pv": 17,
-    "defesa": 12,
-    "defesaSocial": "-",
-    "defesaMental": "-",
-    "vontade": 5,
+    "pv": 24,
+    "defesa": 6,
+    "defesaSocial": 6,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
       "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 0,
-      "destreza": 5,
+      "destreza": 3,
       "vigor": 2,
-      "influencia": 0,
+      "influencia": 1,
       "perspicacia": 1,
       "compostura": 1,
-      "percepcao": 2,
-      "inteligencia": 0,
-      "raciocinio": 2
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "1d6+2",
-        "dano": "1d6 perfurante",
+        "nome": "Garra de veneno",
+        "pool": "1d6 +1",
+        "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -12522,9 +12638,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "furtividade": 5
+      "prontidao": 2,
+      "esquiva": 0,
+      "integridade": 0,
+      "sociabilidade": 2,
+      "furtividade": 2
     }
   },
   {
@@ -12700,32 +12818,32 @@
   },
   {
     "id": "caranguejo-gigante",
-    "nome": "Caranguejo Gigante",
+    "nome": "Caranguejo-gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "praga Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Passa a maré na toca da margem do mangue; sai com a água subindo para quebrar ostras e caranguejos menores com as pinças.",
     "tags": [
       "fera"
     ],
-    "pv": 37,
-    "defesa": 8,
-    "defesaSocial": 2,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 50,
+    "defesa": 11,
+    "defesaSocial": 6,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
-      "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 5,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 4,
-      "destreza": 3,
-      "vigor": 4,
+      "forca": 5,
+      "destreza": 2,
+      "vigor": 5,
       "influencia": 1,
       "perspicacia": 1,
       "compostura": 1,
@@ -12735,11 +12853,12 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "3d6",
-        "dano": "1d6 +4 perfurante",
-        "perfArma": 0,
-        "ticks": 5
+        "nome": "Pinça",
+        "pool": "4d6",
+        "dano": "1d6 +5 impacto",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -12747,55 +12866,56 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 2,
       "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 3
+      "integridade": 1,
+      "sociabilidade": 2,
+      "furtividade": 2
     }
   },
   {
     "id": "enxame-de-caranguejos",
-    "nome": "Enxame de Caranguejo",
+    "nome": "Enxame de caranguejos",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
     "centelha": 0,
     "conceito": "praga Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Uma maré de caranguejos que atravessa a praia num rumo só e belisca o que não sai do caminho; mais obstáculo do que caçador.",
     "tags": [
       "fera"
     ],
-    "pv": 18,
-    "defesa": 10,
-    "defesaSocial": "-",
-    "defesaMental": "-",
-    "vontade": 5,
+    "pv": 26,
+    "defesa": 4,
+    "defesaSocial": 6,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
       "impacto": 3,
-      "corte": 1,
-      "perfuracao": 1
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 0,
-      "destreza": 4,
+      "destreza": 2,
       "vigor": 3,
-      "influencia": 0,
+      "influencia": 1,
       "perspicacia": 1,
       "compostura": 1,
       "percepcao": 2,
-      "inteligencia": 0,
+      "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "1d6+2",
-        "dano": "1d6 perfurante",
-        "perfArma": 0,
-        "ticks": 5
+        "nome": "Pinça do enxame",
+        "pool": "1d6 +1",
+        "dano": "1d6 −2 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -12803,9 +12923,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "furtividade": 5
+      "prontidao": 2,
+      "esquiva": 0,
+      "integridade": 1,
+      "sociabilidade": 2,
+      "furtividade": 0
     }
   },
   {
@@ -13378,153 +13500,41 @@
     "ameaca": 4,
     "centelha": 0,
     "conceito": "animal Enorme",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 70,
-    "defesa": 4,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
-    "soak": {
-      "impacto": 7,
-      "corte": 7,
-      "perfuracao": 7
-    },
-    "resistPerf": 1,
-    "iniciativa": "1d6 + 3",
-    "atributos": {
-      "forca": 10,
-      "destreza": 2,
-      "vigor": 7,
-      "influencia": 2,
-      "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 3,
-      "inteligencia": 1,
-      "raciocinio": 2
-    },
-    "ataques": [
-      {
-        "nome": "Cauda em maça",
-        "pool": "7d6",
-        "dano": "3d6 +10 impacto",
-        "perfArma": null,
-        "ticks": 7,
-        "notas": "acerto forte pode atordoar o alvo por um Tick"
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "notas": "",
-    "pendente": true,
-    "pericias": {
-      "prontidao": 1,
-      "esquiva": 0,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 1
-    }
-  },
-  {
-    "id": "braquiossauro",
-    "nome": "Braquiossauro",
-    "tipo": "chefe",
-    "categoria": "Fera",
-    "ameaca": 5,
-    "centelha": 0,
-    "conceito": "animal Imenso",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Raro; talvez vivesse nas terras altas, longe da costa (Carpenter,). Luta entre si com a clava.",
     "tags": [
       "fera"
     ],
     "pv": 85,
-    "defesa": 4,
+    "defesa": 8,
     "defesaSocial": 6,
-    "defesaMental": 10,
-    "vontade": 5,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
-      "impacto": 9,
-      "corte": 11,
-      "perfuracao": 11
-    },
-    "resistPerf": 2,
-    "iniciativa": "1d6 + 3",
-    "atributos": {
-      "forca": 14,
-      "destreza": 2,
-      "vigor": 9,
-      "influencia": 2,
-      "perspicacia": 1,
-      "compostura": 3,
-      "percepcao": 3,
-      "inteligencia": 1,
-      "raciocinio": 2
-    },
-    "ataques": [
-      {
-        "nome": "Pisoteio e cauda",
-        "pool": "9d6+2",
-        "dano": "3d6 +14 impacto",
-        "perfArma": null,
-        "ticks": 7
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "notas": "",
-    "pendente": true,
-    "pericias": {
-      "prontidao": 1,
-      "esquiva": 0,
-      "integridade": 3,
-      "sociabilidade": 0,
-      "furtividade": 1
-    }
-  },
-  {
-    "id": "deinonico",
-    "nome": "Deinonychus",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 3,
-    "centelha": 0,
-    "conceito": "animal Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 40,
-    "defesa": 10,
-    "defesaSocial": 6,
-    "defesaMental": 9,
-    "vontade": 5,
-    "soak": {
-      "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 10,
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 2",
     "atributos": {
-      "forca": 4,
-      "destreza": 4,
-      "vigor": 5,
-      "influencia": 4,
-      "perspicacia": 2,
-      "compostura": 3,
-      "percepcao": 3,
+      "forca": 11,
+      "destreza": 1,
+      "vigor": 10,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 2,
       "inteligencia": 1,
       "raciocinio": 1
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "3d6+2",
-        "dano": "1d6 +4 perfurante",
-        "perfArma": 0,
-        "ticks": 5
+        "nome": "Clava da cauda",
+        "pool": "7d6",
+        "dano": "2d6 +22 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -13533,10 +13543,140 @@
     "pendente": true,
     "pericias": {
       "prontidao": 1,
-      "esquiva": 1,
+      "esquiva": 0,
       "integridade": 3,
-      "sociabilidade": 0,
-      "furtividade": 3
+      "sociabilidade": 2,
+      "furtividade": 0
+    }
+  },
+  {
+    "id": "braquiossauro",
+    "nome": "Braquiossauro",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 5,
+    "centelha": 0,
+    "conceito": "animal Imenso",
+    "descricao": "Herbívoro de copa alta, raro, que se defende pelo tamanho. Provável sangue quente no crescimento.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 90,
+    "defesa": 6,
+    "defesaSocial": 6,
+    "defesaMental": 6,
+    "vontade": 3,
+    "soak": {
+      "impacto": 10,
+      "corte": 10,
+      "perfuracao": 10
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 1",
+    "atributos": {
+      "forca": 14,
+      "destreza": 1,
+      "vigor": 10,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 1
+    },
+    "ataques": [
+      {
+        "nome": "Pisão",
+        "pool": "8d6",
+        "dano": "2d6 +28 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 0,
+      "esquiva": 0,
+      "integridade": 2,
+      "sociabilidade": 2,
+      "furtividade": 0
+    }
+  },
+  {
+    "id": "deinonico",
+    "nome": "Deinonico",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "animal Médio",
+    "descricao": "Predador do peso de um homem grande, de garra em foice no pé, que furava e prendia. Achado junto de herbívoros de uma tonelada, sozinho ou em grupo (em disputa).",
+    "tags": [
+      "fera"
+    ],
+    "pv": 37,
+    "defesa": 12,
+    "defesaSocial": 6,
+    "defesaMental": 7,
+    "vontade": 3,
+    "soak": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 4,
+      "destreza": 3,
+      "vigor": 4,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Garra em foice do pé",
+        "pool": "3d6+2",
+        "dano": "1d6 +4 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "3d6+2 +1",
+        "dano": "1d6 +2 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Garras da mão",
+        "pool": "3d6+2 +1",
+        "dano": "1d6 +2 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 3,
+      "integridade": 2,
+      "sociabilidade": 2,
+      "furtividade": 2
     }
   },
   {
@@ -13547,40 +13687,41 @@
     "ameaca": 4,
     "centelha": 0,
     "conceito": "animal Enorme",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "O monstro de pescoço comprido das histórias: um corpo do tamanho de um barco pequeno, um pescoço de 7 m e uma cabeça pequena que pega peixe. Não erguia o pescoço como um cisne.",
     "tags": [
       "fera"
     ],
-    "pv": 75,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 70,
+    "defesa": 8,
+    "defesaSocial": 6,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
-      "impacto": 8,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 7,
+      "corte": 7,
+      "perfuracao": 7
     },
-    "resistPerf": 1,
-    "iniciativa": "1d6 + 3",
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 10,
-      "destreza": 4,
-      "vigor": 8,
-      "influencia": 2,
+      "forca": 9,
+      "destreza": 2,
+      "vigor": 7,
+      "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 3,
+      "compostura": 1,
+      "percepcao": 2,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "7d6",
-        "dano": "3d6 +10 perfurante",
+        "nome": "Mordida",
+        "pool": "5d6+2 +1",
+        "dano": "1d6 +7 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 7
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -13588,11 +13729,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 1,
+      "sociabilidade": 2,
+      "furtividade": 2
     }
   },
   {
@@ -13603,40 +13744,41 @@
     "ameaca": 3,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Pescador de mar aberto, que pousava na água para pegar peixe com o bico. Presa de plesiossauro e de tubarão.",
     "tags": [
       "fera"
     ],
-    "pv": 50,
-    "defesa": 12,
-    "defesaSocial": 8,
-    "defesaMental": 11,
-    "vontade": 5,
+    "pv": 24,
+    "defesa": 8,
+    "defesaSocial": 6,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
-      "impacto": 5,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 2,
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 6,
-      "destreza": 5,
-      "vigor": 5,
-      "influencia": 3,
+      "forca": 2,
+      "destreza": 2,
+      "vigor": 2,
+      "influencia": 1,
       "perspicacia": 1,
-      "compostura": 4,
-      "percepcao": 4,
+      "compostura": 1,
+      "percepcao": 2,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "4d6+2",
-        "dano": "2d6 +6 perfurante",
+        "nome": "Bicada",
+        "pool": "2d6 +1",
+        "dano": "1d6 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -13645,10 +13787,10 @@
     "pendente": true,
     "pericias": {
       "prontidao": 2,
-      "esquiva": 1,
-      "integridade": 4,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "esquiva": 2,
+      "integridade": 1,
+      "sociabilidade": 2,
+      "furtividade": 0
     }
   },
   {
@@ -13659,40 +13801,41 @@
     "ameaca": 4,
     "centelha": 0,
     "conceito": "animal Enorme",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Presa provável do Allosaurus, e reage com a cauda. Talvez preferisse ambientes mais secos que os saurópodes da mesma região.",
     "tags": [
       "fera"
     ],
-    "pv": 70,
-    "defesa": 6,
+    "pv": 85,
+    "defesa": 8,
     "defesaSocial": 6,
-    "defesaMental": 10,
-    "vontade": 5,
+    "defesaMental": 5,
+    "vontade": 3,
     "soak": {
-      "impacto": 7,
-      "corte": 7,
-      "perfuracao": 7
+      "impacto": 10,
+      "corte": 10,
+      "perfuracao": 10
     },
-    "resistPerf": 1,
-    "iniciativa": "1d6 + 3",
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 2",
     "atributos": {
-      "forca": 10,
-      "destreza": 2,
-      "vigor": 7,
-      "influencia": 2,
+      "forca": 11,
+      "destreza": 1,
+      "vigor": 10,
+      "influencia": 1,
       "perspicacia": 1,
-      "compostura": 3,
-      "percepcao": 3,
+      "compostura": 1,
+      "percepcao": 2,
       "inteligencia": 1,
-      "raciocinio": 2
+      "raciocinio": 1
     },
     "ataques": [
       {
-        "nome": "Cauda de espinhos",
+        "nome": "Cauda de espinhos (thagomizer)",
         "pool": "7d6",
-        "dano": "3d6 +10 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "dano": "2d6 +22 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -13702,53 +13845,54 @@
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
-      "integridade": 3,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "integridade": 1,
+      "sociabilidade": 2,
+      "furtividade": 0
     }
   },
   {
     "id": "tiranossauro",
     "nome": "Tiranossauro",
-    "tipo": "chefe",
+    "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 5,
     "centelha": 0,
     "conceito": "animal Imenso",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Predador do topo e carniceiro, que quebra osso a mordidas. Caminhante econômico, de andar preferido de 4,6 km/h (van Bijlert e colegas 2021): cobre terreno andando, sem correr.",
     "tags": [
       "fera"
     ],
-    "pv": 80,
-    "defesa": 8,
+    "pv": 85,
+    "defesa": 6,
     "defesaSocial": 6,
-    "defesaMental": 10,
-    "vontade": 5,
+    "defesaMental": 8,
+    "vontade": 3,
     "soak": {
-      "impacto": 8,
-      "corte": 11,
-      "perfuracao": 11
+      "impacto": 10,
+      "corte": 10,
+      "perfuracao": 10
     },
-    "resistPerf": 2,
+    "resistPerf": 0,
     "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 13,
-      "destreza": 3,
-      "vigor": 8,
-      "influencia": 2,
+      "forca": 12,
+      "destreza": 2,
+      "vigor": 10,
+      "influencia": 1,
       "perspicacia": 1,
-      "compostura": 3,
-      "percepcao": 4,
+      "compostura": 1,
+      "percepcao": 2,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "9d6",
-        "dano": "3d6 +13 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "nome": "Mordida",
+        "pool": "8d6",
+        "dano": "2d6 +12 perfurante · perf. 2",
+        "perfArma": 2,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -13759,108 +13903,61 @@
       "prontidao": 2,
       "esquiva": 1,
       "integridade": 3,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "sociabilidade": 2,
+      "furtividade": 2
     }
   },
   {
     "id": "triceratops",
     "nome": "Tricerátops",
-    "tipo": "chefe",
+    "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 5,
     "centelha": 0,
     "conceito": "animal Enorme",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Herbívoro dos mais comuns do fim do Cretáceo, presa do tiranossauro, que luta de chifre com os da própria espécie.",
     "tags": [
       "fera"
     ],
-    "pv": 70,
-    "defesa": 4,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "pv": 85,
+    "defesa": 6,
+    "defesaSocial": 6,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
-      "impacto": 7,
-      "corte": 7,
-      "perfuracao": 7
-    },
-    "resistPerf": 1,
-    "iniciativa": "1d6 + 2",
-    "atributos": {
-      "forca": 10,
-      "destreza": 2,
-      "vigor": 7,
-      "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 3,
-      "inteligencia": 1,
-      "raciocinio": 1
-    },
-    "ataques": [
-      {
-        "nome": "Garras e presas",
-        "pool": "7d6+2",
-        "dano": "3d6 +10 perfurante",
-        "perfArma": 0,
-        "ticks": 7
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "notas": "",
-    "pendente": true,
-    "pericias": {
-      "prontidao": 1,
-      "esquiva": 0,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 1
-    }
-  },
-  {
-    "id": "cachorro",
-    "nome": "Cachorro",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 1,
-    "centelha": 0,
-    "conceito": "animal Pequeno",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 28,
-    "defesa": 8,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
-    "soak": {
-      "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 10,
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 2",
     "atributos": {
-      "forca": 3,
-      "destreza": 3,
-      "vigor": 4,
+      "forca": 11,
+      "destreza": 1,
+      "vigor": 10,
       "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 3,
+      "compostura": 1,
+      "percepcao": 2,
       "inteligencia": 1,
       "raciocinio": 1
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "2d6",
-        "dano": "1d6 +3 perfurante",
-        "perfArma": 0,
-        "ticks": 5
+        "nome": "Chifrada",
+        "pool": "7d6",
+        "dano": "1d6 +11 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Investida de chifre",
+        "pool": "7d6",
+        "dano": "2d6 +22 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -13870,15 +13967,72 @@
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 2,
+      "furtividade": 0
+    }
+  },
+  {
+    "id": "cachorro",
+    "nome": "Cão",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 1,
+    "centelha": 0,
+    "conceito": "animal Pequeno",
+    "descricao": "O cão vive com gente, puxa trenó e travois, e vigia pelo faro e pelo ouvido. O perigo dele é a mordida em quem invade o território e, onde não há vacina, a raiva.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 26,
+    "defesa": 10,
+    "defesaSocial": 6,
+    "defesaMental": 7,
+    "vontade": 3,
+    "soak": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 5",
+    "atributos": {
+      "forca": 2,
+      "destreza": 3,
+      "vigor": 3,
+      "influencia": 1,
+      "perspicacia": 2,
+      "compostura": 1,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Mordida",
+        "pool": "2d6 +1",
+        "dano": "1d6 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 5,
+        "classe": "leve"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 2,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 4
+      "sociabilidade": 2,
+      "furtividade": 2
     }
   },
   {
     "id": "cachorro-de-guarda",
-    "nome": "Cão de Montaria",
-    "tipo": "capanga",
+    "nome": "Cão de guarda",
+    "tipo": "fera",
     "categoria": "Monstro",
     "ameaca": 1,
     "centelha": 0,
@@ -13887,37 +14041,37 @@
     "tags": [
       "monstro"
     ],
-    "pv": 37,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 6,
+    "pv": 34,
+    "defesa": 12,
+    "defesaSocial": 8,
+    "defesaMental": 8,
+    "vontade": 3,
     "soak": {
-      "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 6",
     "atributos": {
-      "forca": 4,
-      "destreza": 4,
-      "vigor": 4,
-      "influencia": 1,
-      "perspicacia": 1,
+      "forca": 3,
+      "destreza": 3,
+      "vigor": 3,
+      "influencia": 2,
+      "perspicacia": 2,
       "compostura": 2,
       "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 2
     },
     "ataques": [
       {
         "nome": "Mordida",
         "pool": "3d6",
-        "dano": "1d6 +4 perfurante",
+        "dano": "1d6 +3 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5,
-        "notas": "acerto forte pode derrubar o alvo"
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -13925,11 +14079,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "prontidao": 4,
+      "esquiva": 3,
+      "integridade": 3,
+      "sociabilidade": 2,
+      "furtividade": 3
     }
   },
   {
@@ -13940,40 +14094,41 @@
     "ameaca": 4,
     "centelha": 0,
     "conceito": "animal Enorme",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Caça em grupo, com técnica própria de cada população, passada entre gerações. O tubarão-branco foge quando ela chega.",
     "tags": [
       "fera"
     ],
-    "pv": 70,
-    "defesa": 10,
-    "defesaSocial": 4,
+    "pv": 65,
+    "defesa": 6,
+    "defesaSocial": 12,
     "defesaMental": 9,
-    "vontade": 5,
+    "vontade": 4,
     "soak": {
-      "impacto": 7,
-      "corte": 7,
-      "perfuracao": 7
+      "impacto": 6,
+      "corte": 6,
+      "perfuracao": 6
     },
-    "resistPerf": 1,
+    "resistPerf": 0,
     "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 10,
-      "destreza": 4,
-      "vigor": 7,
-      "influencia": 1,
-      "perspicacia": 1,
+      "destreza": 2,
+      "vigor": 6,
+      "influencia": 2,
+      "perspicacia": 2,
       "compostura": 2,
-      "percepcao": 4,
-      "inteligencia": 1,
+      "percepcao": 3,
+      "inteligencia": 2,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "7d6",
-        "dano": "3d6 +10 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "nome": "Mordida",
+        "pool": "7d6+2",
+        "dano": "2d6 +10 perfurante · perf. 2",
+        "perfArma": 2,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -13983,53 +14138,62 @@
     "pericias": {
       "prontidao": 2,
       "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
+      "integridade": 3,
+      "sociabilidade": 4,
       "furtividade": 1
     }
   },
   {
     "id": "golfinho",
-    "nome": "Golfinho",
+    "nome": "Golfinho-nariz-de-garrafa",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
     "centelha": 0,
     "conceito": "animal Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Caça em grupo e mata toninhas a golpes de corpo, sem comer. Tubarões grandes caçam os filhotes e as fêmeas.",
     "tags": [
       "fera"
     ],
-    "pv": 34,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 46,
+    "defesa": 12,
+    "defesaSocial": 10,
+    "defesaMental": 8,
+    "vontade": 3,
     "soak": {
-      "impacto": 3,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 3,
-      "destreza": 4,
-      "vigor": 3,
+      "forca": 5,
+      "destreza": 3,
+      "vigor": 4,
       "influencia": 1,
-      "perspicacia": 1,
+      "perspicacia": 2,
       "compostura": 2,
       "percepcao": 3,
-      "inteligencia": 1,
+      "inteligencia": 2,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "2d6",
-        "dano": "1d6 +3 perfurante",
+        "nome": "Investida de focinho",
+        "pool": "4d6",
+        "dano": "2d6 +10 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "4d6 +1",
+        "dano": "1d6 +3 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -14037,11 +14201,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 3
+      "prontidao": 2,
+      "esquiva": 3,
+      "integridade": 3,
+      "sociabilidade": 3,
+      "furtividade": 4
     }
   },
   {
@@ -14331,46 +14495,55 @@
   },
   {
     "id": "poraque",
-    "nome": "Enguia Elétrica",
+    "nome": "Poraquê",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Pequeno",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Quem pisa na água dele leva o choque; quem o tira da água leva o pior, porque o ar não deixa a corrente fugir.",
     "tags": [
       "fera"
     ],
-    "pv": 30,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "pv": 13,
+    "defesa": 6,
+    "defesaSocial": 6,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
-      "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 3,
-      "destreza": 4,
-      "vigor": 5,
+      "forca": 0,
+      "destreza": 2,
+      "vigor": 3,
       "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
+      "compostura": 1,
       "percepcao": 2,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "2d6+2",
-        "dano": "1d6 +3 perfurante",
+        "nome": "Descarga elétrica",
+        "pool": "1d6 +1",
+        "dano": "2d6 eletricidade",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "1d6 +1",
+        "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -14378,55 +14551,56 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 2,
       "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 4
+      "integridade": 1,
+      "sociabilidade": 2,
+      "furtividade": 2
     }
   },
   {
     "id": "moreia-gigante",
-    "nome": "Moreia Gigante",
+    "nome": "Moreia-gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 4,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Uma moreia do tamanho de um barco a remo, numa caverna submersa: espera, morde o que passa na boca da toca e puxa para dentro. Por que cresceu tanto fica na descrição.",
     "tags": [
       "fera"
     ],
-    "pv": 54,
+    "pv": 46,
     "defesa": 10,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "defesaMental": 8,
-    "vontade": 5,
+    "vontade": 3,
     "soak": {
-      "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 8,
-      "destreza": 4,
-      "vigor": 6,
-      "influencia": 2,
+      "forca": 7,
+      "destreza": 3,
+      "vigor": 4,
+      "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 3,
+      "compostura": 1,
+      "percepcao": 2,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "6d6",
-        "dano": "2d6 +8 perfurante",
+        "nome": "Mordida",
+        "pool": "5d6",
+        "dano": "1d6 +7 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -14434,11 +14608,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 3,
+      "sociabilidade": 2,
+      "furtividade": 3
     }
   },
   {
@@ -14672,46 +14846,55 @@
   },
   {
     "id": "mastodonte",
-    "nome": "Mastodonte (Mamute)",
-    "tipo": "chefe",
+    "nome": "Mastodonte-americano",
+    "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 5,
     "centelha": 0,
     "conceito": "animal Enorme",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Primo distante do elefante, de outra família, que vivia nas florestas da América do Norte; caçado pelos paleoíndios, inclusive os de Clovis.",
     "tags": [
       "fera"
     ],
-    "pv": 75,
+    "pv": 90,
     "defesa": 8,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "defesaSocial": 8,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
-      "impacto": 8,
-      "corte": 8,
-      "perfuracao": 8
+      "impacto": 11,
+      "corte": 11,
+      "perfuracao": 11
     },
-    "resistPerf": 1,
+    "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
-      "forca": 12,
-      "destreza": 3,
-      "vigor": 8,
-      "influencia": 1,
-      "perspicacia": 1,
+      "forca": 13,
+      "destreza": 2,
+      "vigor": 11,
+      "influencia": 2,
+      "perspicacia": 2,
       "compostura": 2,
-      "percepcao": 3,
+      "percepcao": 2,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "8d6+2",
-        "dano": "3d6 +12 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "nome": "Presada",
+        "pool": "8d6",
+        "dano": "2d6 +13 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Pisão (ou investida)",
+        "pool": "8d6",
+        "dano": "2d6 +26 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -14722,8 +14905,8 @@
       "prontidao": 1,
       "esquiva": 1,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "sociabilidade": 2,
+      "furtividade": 0
     }
   },
   {
@@ -14785,46 +14968,47 @@
   },
   {
     "id": "morcego",
-    "nome": "Morcego",
+    "nome": "Morcego (morcego-vampiro)",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
     "centelha": 0,
     "conceito": "animal Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Surtos de mordidas e de raiva em comunidades da Amazônia e dos Andes.",
     "tags": [
       "fera"
     ],
-    "pv": 16,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 1,
+    "defesa": 12,
+    "defesaSocial": 8,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
-      "impacto": 1,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 2,
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 0,
-      "destreza": 4,
-      "vigor": 1,
+      "destreza": 3,
+      "vigor": 2,
       "influencia": 1,
-      "perspicacia": 1,
+      "perspicacia": 2,
       "compostura": 2,
-      "percepcao": 4,
+      "percepcao": 3,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "0d6+2",
-        "dano": "1d6 perfurante",
+        "nome": "Mordida (incisivos)",
+        "pool": "0d6+2 +1",
+        "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -14833,10 +15017,10 @@
     "pendente": true,
     "pericias": {
       "prontidao": 2,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 5
+      "esquiva": 3,
+      "integridade": 1,
+      "sociabilidade": 2,
+      "furtividade": 3
     }
   },
   {
@@ -14847,40 +15031,49 @@
     "ameaca": 1,
     "centelha": 0,
     "conceito": "animal Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Caçador de emboscada de presa pequena, que mata bilhões de aves e mamíferos por ano onde é solto. Diante de gente não é perigo de luta; o perigo é a doença do arranhão e da mordida.",
     "tags": [
       "fera"
     ],
-    "pv": 17,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "pv": 6,
+    "defesa": 16,
+    "defesaSocial": 8,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
       "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 7",
     "atributos": {
-      "forca": 1,
+      "forca": 0,
       "destreza": 4,
       "vigor": 2,
       "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
+      "compostura": 1,
       "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "1d6",
-        "dano": "1d6 +1 perfurante",
+        "nome": "Garra",
+        "pool": "1d6 +1",
+        "dano": "1d6 −2 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "1d6 +1",
+        "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -14888,55 +15081,121 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 5
+      "prontidao": 4,
+      "esquiva": 4,
+      "integridade": 1,
+      "sociabilidade": 3,
+      "furtividade": 4
     }
   },
   {
     "id": "falcao-peregrino",
-    "nome": "Falcão",
+    "nome": "Falcão-peregrino",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
     "centelha": 0,
     "conceito": "animal Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Sobe alto, escolhe a ave e desce em espiral; golpeia no ar e mata pelo pescoço. Migra entre continentes.",
     "tags": [
       "fera"
     ],
-    "pv": 17,
-    "defesa": 12,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 2,
+    "defesa": 18,
+    "defesaSocial": 10,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
       "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 4",
+    "iniciativa": "1d6 + 6",
     "atributos": {
       "forca": 1,
       "destreza": 5,
       "vigor": 2,
       "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 4,
+      "compostura": 1,
+      "percepcao": 3,
       "inteligencia": 1,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Garras (golpe do mergulho)",
+        "pool": "2d6 +1",
+        "dano": "1d6 −1 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Bico (dente tomial)",
+        "pool": "2d6 +1",
+        "dano": "1d6 −2 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 5,
+        "classe": "leve"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 4,
+      "integridade": 1,
+      "sociabilidade": 4,
+      "furtividade": 3
+    }
+  },
+  {
+    "id": "macaco",
+    "nome": "Macaco-prego",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 1,
+    "centelha": 0,
+    "conceito": "animal Minúsculo",
+    "descricao": "Macaco de bando do Brasil, do tamanho de um gato, que quebra coco batendo com pedras de quase metade do próprio peso.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 6,
+    "defesa": 14,
+    "defesaSocial": 8,
+    "defesaMental": 7,
+    "vontade": 3,
+    "soak": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 2,
+      "destreza": 4,
+      "vigor": 3,
+      "influencia": 1,
+      "perspicacia": 2,
+      "compostura": 1,
+      "percepcao": 3,
+      "inteligencia": 2,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "1d6",
-        "dano": "1d6 +1 perfurante",
+        "nome": "Mordida",
+        "pool": "2d6 +1",
+        "dano": "1d6 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -14945,66 +15204,10 @@
     "pendente": true,
     "pericias": {
       "prontidao": 2,
-      "esquiva": 1,
+      "esquiva": 3,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 5
-    }
-  },
-  {
-    "id": "macaco",
-    "nome": "Macaco",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 1,
-    "centelha": 0,
-    "conceito": "animal Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 17,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
-    "soak": {
-      "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
-    "atributos": {
-      "forca": 1,
-      "destreza": 4,
-      "vigor": 2,
-      "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 3,
-      "inteligencia": 1,
-      "raciocinio": 1
-    },
-    "ataques": [
-      {
-        "nome": "Garras e presas",
-        "pool": "1d6",
-        "dano": "1d6 +1 perfurante",
-        "perfArma": 0,
-        "ticks": 5
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "notas": "",
-    "pendente": true,
-    "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 5
+      "sociabilidade": 3,
+      "furtividade": 1
     }
   },
   {
@@ -15015,40 +15218,41 @@
     "ameaca": 1,
     "centelha": 0,
     "conceito": "animal Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Segue lobos no inverno até as carcaças e rouba o que outros corvos esconderam. Resolve problemas de ferramenta em laboratório.",
     "tags": [
       "fera"
     ],
-    "pv": 17,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 2,
+    "defesa": 12,
+    "defesaSocial": 12,
+    "defesaMental": 8,
+    "vontade": 3,
     "soak": {
       "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 4",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 1,
-      "destreza": 4,
+      "forca": 0,
+      "destreza": 3,
       "vigor": 2,
       "influencia": 1,
-      "perspicacia": 1,
+      "perspicacia": 2,
       "compostura": 2,
-      "percepcao": 4,
-      "inteligencia": 1,
+      "percepcao": 3,
+      "inteligencia": 2,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "1d6",
-        "dano": "1d6 +1 perfurante",
+        "nome": "Bicada",
+        "pool": "0d6+2 +1",
+        "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -15056,57 +15260,49 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 2,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 5
+      "prontidao": 3,
+      "esquiva": 3,
+      "integridade": 3,
+      "sociabilidade": 4,
+      "furtividade": 3
     }
   },
   {
     "id": "sapo",
-    "nome": "Sapo",
+    "nome": "Sapo-cururu",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
     "centelha": 0,
     "conceito": "animal Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Pula em saltos curtos pelo quintal, pela roça e pela beira da mata, comendo o inseto que achar. Quem o morde, o cão sobretudo, se envenena.",
     "tags": [
       "fera"
     ],
-    "pv": 16,
-    "defesa": 8,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 3,
+    "defesa": 6,
+    "defesaSocial": 10,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
-      "impacto": 1,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 0,
-      "destreza": 3,
-      "vigor": 1,
+      "destreza": 2,
+      "vigor": 3,
       "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 4,
+      "compostura": 1,
+      "percepcao": 2,
       "inteligencia": 1,
       "raciocinio": 2
     },
-    "ataques": [
-      {
-        "nome": "Garras e presas",
-        "pool": "0d6+2",
-        "dano": "1d6 perfurante",
-        "perfArma": 0,
-        "ticks": 5
-      }
-    ],
+    "ataques": [],
     "tecnicas": [],
     "artes": [],
     "notas": "",
@@ -15114,53 +15310,54 @@
     "pericias": {
       "prontidao": 2,
       "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 5
+      "integridade": 1,
+      "sociabilidade": 4,
+      "furtividade": 2
     }
   },
   {
     "id": "jararaca",
-    "nome": "Víbora",
+    "nome": "Jararaca",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
     "centelha": 0,
     "conceito": "animal Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "De dia fica abrigada na folhagem; à noite espera a presa imóvel e dá o bote. Comum em zonas rurais e periferias urbanas.",
     "tags": [
       "fera"
     ],
-    "pv": 17,
-    "defesa": 12,
-    "defesaSocial": 4,
+    "pv": 2,
+    "defesa": 14,
+    "defesaSocial": 8,
     "defesaMental": 8,
-    "vontade": 5,
+    "vontade": 3,
     "soak": {
       "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 6",
     "atributos": {
-      "forca": 1,
-      "destreza": 5,
+      "forca": 0,
+      "destreza": 3,
       "vigor": 2,
       "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
+      "compostura": 1,
       "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "1d6",
-        "dano": "1d6 +1 perfurante",
+        "nome": "Bote",
+        "pool": "1d6+2 +1",
+        "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -15168,11 +15365,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
+      "prontidao": 3,
+      "esquiva": 4,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 5
+      "sociabilidade": 3,
+      "furtividade": 3
     }
   },
   {
@@ -15183,40 +15380,41 @@
     "ameaca": 1,
     "centelha": 0,
     "conceito": "animal Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "O menor carnívoro, que caça roedores dentro das galerias deles e mata com uma mordida na nuca. Vive pouco e come o tempo todo.",
     "tags": [
       "fera"
     ],
-    "pv": 17,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "pv": 1,
+    "defesa": 12,
+    "defesaSocial": 8,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
-      "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 1,
-      "destreza": 4,
-      "vigor": 2,
+      "forca": 0,
+      "destreza": 3,
+      "vigor": 3,
       "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
+      "compostura": 1,
       "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "1d6",
-        "dano": "1d6 +1 perfurante",
+        "nome": "Mordida",
+        "pool": "1d6+2 +1",
+        "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -15224,11 +15422,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 5
+      "prontidao": 2,
+      "esquiva": 3,
+      "integridade": 1,
+      "sociabilidade": 3,
+      "furtividade": 3
     }
   },
   {
@@ -15287,8 +15485,8 @@
   },
   {
     "id": "ra-gigante",
-    "nome": "Rã Gigante",
-    "tipo": "soldado",
+    "nome": "Rã gigante",
+    "tipo": "fera",
     "categoria": "Monstro",
     "ameaca": 2,
     "centelha": 0,
@@ -15297,37 +15495,37 @@
     "tags": [
       "monstro"
     ],
-    "pv": 40,
+    "pv": 34,
     "defesa": 8,
-    "defesaSocial": 2,
-    "defesaMental": 9,
-    "vontade": 6,
+    "defesaSocial": 6,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
-      "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 6",
     "atributos": {
-      "forca": 4,
-      "destreza": 3,
-      "vigor": 5,
+      "forca": 3,
+      "destreza": 2,
+      "vigor": 3,
       "influencia": 1,
       "perspicacia": 1,
       "compostura": 1,
-      "percepcao": 2,
+      "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Mordida",
-        "pool": "3d6+2",
-        "dano": "1d6 +4 perfurante",
-        "perfArma": 0,
+        "nome": "Bocada",
+        "pool": "2d6+2 +1",
+        "dano": "1d6 +1 impacto",
+        "perfArma": null,
         "ticks": 5,
-        "notas": "acerto pode agarrar o alvo"
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -15335,67 +15533,59 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
+      "prontidao": 3,
+      "esquiva": 2,
+      "integridade": 1,
+      "sociabilidade": 2,
       "furtividade": 2
     }
   },
   {
     "id": "ra-venenosa",
-    "nome": "Rã Venenosa",
+    "nome": "Rã-dourada-venenosa",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
     "centelha": 0,
     "conceito": "animal Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Anda de dia pelo chão úmido da mata, à vista, pegando formigas. Ninguém a come: o adulto quase não tem predador, e quem a toca com a mão ferida pode morrer.",
     "tags": [
       "fera"
     ],
-    "pv": 17,
-    "defesa": 8,
+    "pv": 1,
+    "defesa": 10,
     "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
       "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 1,
-      "destreza": 3,
+      "forca": 0,
+      "destreza": 2,
       "vigor": 2,
-      "influencia": 2,
+      "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 2,
+      "compostura": 1,
+      "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 2
     },
-    "ataques": [
-      {
-        "nome": "Garras e presas",
-        "pool": "1d6",
-        "dano": "1d6 +1 perfurante",
-        "perfArma": 0,
-        "ticks": 5
-      }
-    ],
+    "ataques": [],
     "tecnicas": [],
     "artes": [],
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 5
+      "prontidao": 2,
+      "esquiva": 3,
+      "integridade": 1,
+      "sociabilidade": 1,
+      "furtividade": 0
     }
   },
   {
@@ -16337,34 +16527,34 @@
   },
   {
     "id": "auroque",
-    "nome": "Aurochs",
+    "nome": "Auroque",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "O touro selvagem de que vem o gado. Caçado desde a Antiguidade; o último rebanho, na Polônia, minguou de cerca de 50 animais para 4 em 1601, e a última vaca morreu em 1627.",
     "tags": [
       "fera"
     ],
     "pv": 54,
-    "defesa": 4,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "defesa": 8,
+    "defesaSocial": 8,
+    "defesaMental": 7,
+    "vontade": 4,
     "soak": {
       "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 3",
     "atributos": {
-      "forca": 8,
+      "forca": 7,
       "destreza": 2,
       "vigor": 6,
-      "influencia": 1,
-      "perspicacia": 1,
+      "influencia": 2,
+      "perspicacia": 2,
       "compostura": 2,
       "percepcao": 2,
       "inteligencia": 1,
@@ -16372,11 +16562,20 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Chifrada",
         "pool": "5d6",
-        "dano": "2d6 +8 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "dano": "1d6 +7 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Investida (marrada)",
+        "pool": "5d6",
+        "dano": "2d6 +14 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -16384,55 +16583,64 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 0,
+      "prontidao": 2,
+      "esquiva": 1,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "sociabilidade": 2,
+      "furtividade": 1
     }
   },
   {
     "id": "bisao",
-    "nome": "Bisão",
+    "nome": "Bisão-americano",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Em Yellowstone fere mais gente que os ursos. Cruza rios largos a nado e salta cercas de 1,5 m. Vive de 12 a 20 anos.",
     "tags": [
       "fera"
     ],
     "pv": 54,
-    "defesa": 4,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "defesa": 8,
+    "defesaSocial": 8,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
       "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 9,
+      "forca": 7,
       "destreza": 2,
       "vigor": 6,
-      "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 2,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 1,
       "percepcao": 2,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "6d6",
-        "dano": "2d6 +9 perfurante",
+        "nome": "Chifrada",
+        "pool": "4d6+2",
+        "dano": "1d6 +7 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Investida (marrada)",
+        "pool": "4d6+2",
+        "dano": "2d6 +14 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -16440,11 +16648,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 0,
+      "prontidao": 2,
+      "esquiva": 1,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "sociabilidade": 3,
+      "furtividade": 0
     }
   },
   {
@@ -16506,53 +16714,55 @@
   },
   {
     "id": "cavalo",
-    "nome": "Cavalo",
+    "nome": "Cavalo (de sela)",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Presa de bando, sempre de olho, que foge ao primeiro susto; encurralado, escoiceia. Doméstico no mundo todo, com populações ferais.",
     "tags": [
       "fera"
     ],
     "pv": 54,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "defesa": 8,
+    "defesaSocial": 6,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
       "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 6,
-      "destreza": 4,
+      "forca": 7,
+      "destreza": 2,
       "vigor": 6,
       "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 2,
+      "perspicacia": 2,
+      "compostura": 1,
       "percepcao": 3,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Cascos",
+        "nome": "Coice",
         "pool": "4d6",
-        "dano": "2d6 +6 impacto",
+        "dano": "2d6 +7 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 7,
+        "classe": "pesada"
       },
       {
         "nome": "Mordida",
-        "pool": "4d6",
-        "dano": "1d6 +6 perfurante",
+        "pool": "4d6 +1",
+        "dano": "1d6 +5 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -16560,11 +16770,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "prontidao": 3,
+      "esquiva": 2,
+      "integridade": 1,
+      "sociabilidade": 2,
+      "furtividade": 0
     }
   },
   {
@@ -16575,40 +16785,49 @@
     "ameaca": 1,
     "centelha": 0,
     "conceito": "animal Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Raça pequena de uma ilha do sul do Japão, que serviu na lavoura, na carga e na guerra; hoje rara (85 animais em 2008). Leva até cerca de um terço do próprio peso a trote.",
     "tags": [
       "fera"
     ],
-    "pv": 37,
+    "pv": 46,
     "defesa": 8,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "defesaSocial": 6,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
       "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 3,
-      "destreza": 3,
+      "forca": 6,
+      "destreza": 2,
       "vigor": 4,
       "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 2,
+      "perspicacia": 2,
+      "compostura": 1,
+      "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Cascos",
-        "pool": "2d6",
-        "dano": "1d6 +3 impacto",
+        "nome": "Coice",
+        "pool": "3d6+2",
+        "dano": "2d6 +6 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "3d6+2 +1",
+        "dano": "1d6 +4 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -16616,43 +16835,43 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 3
+      "prontidao": 3,
+      "esquiva": 2,
+      "integridade": 1,
+      "sociabilidade": 2,
+      "furtividade": 0
     }
   },
   {
     "id": "hiena-malhada",
-    "nome": "Hiena",
+    "nome": "Hiena-malhada",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Caça em clã e persegue até a presa cair; perde a carcaça para o leão e toma a do leopardo. Ataca gente sobretudo à noite, e a vítima típica é a criança sozinha.",
     "tags": [
       "fera"
     ],
-    "pv": 37,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 34,
+    "defesa": 12,
+    "defesaSocial": 10,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
-      "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 4,
-      "destreza": 4,
-      "vigor": 4,
-      "influencia": 1,
-      "perspicacia": 1,
+      "destreza": 3,
+      "vigor": 3,
+      "influencia": 2,
+      "perspicacia": 2,
       "compostura": 2,
       "percepcao": 3,
       "inteligencia": 1,
@@ -16660,11 +16879,12 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "3d6",
-        "dano": "1d6 +4 perfurante",
-        "perfArma": 0,
-        "ticks": 5
+        "nome": "Mordida",
+        "pool": "3d6+2",
+        "dano": "1d6 +4 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -16672,55 +16892,56 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
+      "prontidao": 3,
+      "esquiva": 3,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 3
+      "sociabilidade": 3,
+      "furtividade": 2
     }
   },
   {
     "id": "hienodonte",
-    "nome": "Hiena Atroz",
+    "nome": "Hienodonte",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Predador corredor da Mongólia do fim do Eoceno, maior que um leão, com cabeça grande e dentes de quebrar osso, numa paisagem que secava e se abria.",
     "tags": [
       "fera"
     ],
-    "pv": 50,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 46,
+    "defesa": 14,
+    "defesaSocial": 6,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
-      "impacto": 5,
+      "impacto": 4,
       "corte": 4,
       "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 6,
-      "destreza": 4,
-      "vigor": 5,
+      "forca": 7,
+      "destreza": 3,
+      "vigor": 4,
       "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 3,
+      "compostura": 1,
+      "percepcao": 2,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "4d6+2",
-        "dano": "2d6 +6 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "nome": "Mordida",
+        "pool": "5d6+2",
+        "dano": "1d6 +7 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -16728,10 +16949,10 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
+      "prontidao": 2,
+      "esquiva": 4,
       "integridade": 2,
-      "sociabilidade": 0,
+      "sociabilidade": 2,
       "furtividade": 2
     }
   },
@@ -16962,34 +17183,91 @@
   },
   {
     "id": "sanguessuga-gigante",
-    "nome": "Sanguessuga Gigante",
+    "nome": "Sanguessuga-gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "praga Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Espera no fundo de lama; quando alguém entra quente na água, vem ondulando e fixa a ventosa.",
     "tags": [
       "fera"
     ],
-    "pv": 37,
-    "defesa": 8,
-    "defesaSocial": 2,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 28,
+    "defesa": 6,
+    "defesaSocial": 6,
+    "defesaMental": 4,
+    "vontade": 3,
     "soak": {
       "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
       "forca": 2,
-      "destreza": 3,
+      "destreza": 2,
       "vigor": 4,
-      "influencia": 0,
-      "perspicacia": 0,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 1
+    },
+    "ataques": [
+      {
+        "nome": "Mordida",
+        "pool": "2d6 +1",
+        "dano": "1d6 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 0,
+      "sociabilidade": 2,
+      "furtividade": 1
+    }
+  },
+  {
+    "id": "enxame-de-sanguessugas",
+    "nome": "Enxame de sanguessugas",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "praga Minúsculo",
+    "descricao": "Centenas de sanguessugas no fundo da lagoa parada, que acham quem entra pelo calor e pela onda; a ferida sangra por horas.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 26,
+    "defesa": 4,
+    "defesaSocial": 6,
+    "defesaMental": 5,
+    "vontade": 3,
+    "soak": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 0,
+      "destreza": 2,
+      "vigor": 3,
+      "influencia": 1,
+      "perspicacia": 1,
       "compostura": 1,
       "percepcao": 2,
       "inteligencia": 1,
@@ -16997,11 +17275,12 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "2d6",
-        "dano": "1d6 +2 perfurante",
-        "perfArma": 0,
-        "ticks": 5
+        "nome": "Mordida do enxame",
+        "pool": "1d6 +1",
+        "dano": "1d6 −2 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -17009,65 +17288,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 3
-    }
-  },
-  {
-    "id": "enxame-de-sanguessugas",
-    "nome": "Enxame de Sanguessugas",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 3,
-    "centelha": 0,
-    "conceito": "praga Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 19,
-    "defesa": 12,
-    "defesaSocial": "-",
-    "defesaMental": "-",
-    "vontade": 5,
-    "soak": {
-      "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
-    "atributos": {
-      "forca": 0,
-      "destreza": 5,
-      "vigor": 4,
-      "influencia": 0,
-      "perspicacia": 1,
-      "compostura": 1,
-      "percepcao": 2,
-      "inteligencia": 0,
-      "raciocinio": 2
-    },
-    "ataques": [
-      {
-        "nome": "Garras e presas",
-        "pool": "1d6+2",
-        "dano": "1d6 perfurante",
-        "perfArma": 0,
-        "ticks": 5
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "notas": "",
-    "pendente": true,
-    "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "furtividade": 5
+      "prontidao": 2,
+      "esquiva": 0,
+      "integridade": 0,
+      "sociabilidade": 2,
+      "furtividade": 2
     }
   },
   {
@@ -17251,8 +17476,8 @@
   },
   {
     "id": "leao-das-cavernas",
-    "nome": "Leão Atroz",
-    "tipo": "elite",
+    "nome": "Leão-das-cavernas",
+    "tipo": "fera",
     "categoria": "Monstro",
     "ameaca": 4,
     "centelha": 0,
@@ -17261,36 +17486,45 @@
     "tags": [
       "monstro"
     ],
-    "pv": 50,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 12,
-    "vontade": 9,
+    "pv": 54,
+    "defesa": 14,
+    "defesaSocial": 10,
+    "defesaMental": 9,
+    "vontade": 3,
     "soak": {
-      "impacto": 5,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 6,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 8,
-      "destreza": 4,
-      "vigor": 5,
-      "influencia": 2,
+      "forca": 7,
+      "destreza": 3,
+      "vigor": 6,
+      "influencia": 3,
       "perspicacia": 1,
       "compostura": 2,
-      "percepcao": 3,
+      "percepcao": 2,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
-        "pool": "6d6+2",
-        "dano": "2d6 +8 corte",
+        "nome": "Mordida",
+        "pool": "5d6+2",
+        "dano": "1d6 +7 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Patada",
+        "pool": "5d6+2 +1",
+        "dano": "1d6 +5 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -17298,111 +17532,56 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "prontidao": 2,
+      "esquiva": 4,
+      "integridade": 3,
+      "sociabilidade": 3,
+      "furtividade": 3
     }
   },
   {
     "id": "varano",
-    "nome": "Lagarto-Monitor",
+    "nome": "Dragão-de-komodo",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Anda o dia pela área de vida seguindo o cheiro de carniça e de presa; chega perto sem ser visto, joga a presa no chão e rasga com os dentes serrilhados. O veneno faz o sangue não coagular. Os grandes comem primeiro.",
     "tags": [
       "fera"
     ],
-    "pv": 40,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "pv": 34,
+    "defesa": 6,
+    "defesaSocial": 6,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
-      "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 5,
-      "destreza": 4,
-      "vigor": 5,
+      "destreza": 2,
+      "vigor": 3,
       "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
+      "compostura": 1,
       "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "3d6+2",
-        "dano": "1d6 +5 perfurante",
+        "nome": "Mordida (morde e rasga)",
+        "pool": "4d6+2",
+        "dano": "1d6 +5 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "notas": "",
-    "pendente": true,
-    "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 3
-    }
-  },
-  {
-    "id": "lagarto-de-gola-gigante",
-    "nome": "Lagarto de Gola Gigante",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 4,
-    "centelha": 0,
-    "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 54,
-    "defesa": 8,
-    "defesaSocial": 6,
-    "defesaMental": 10,
-    "vontade": 5,
-    "soak": {
-      "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 4",
-    "atributos": {
-      "forca": 7,
-      "destreza": 3,
-      "vigor": 6,
-      "influencia": 2,
-      "perspicacia": 1,
-      "compostura": 3,
-      "percepcao": 4,
-      "inteligencia": 1,
-      "raciocinio": 2
-    },
-    "ataques": [
-      {
-        "nome": "Garras e presas",
-        "pool": "5d6+2",
-        "dano": "2d6 +7 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -17412,8 +17591,73 @@
     "pericias": {
       "prontidao": 2,
       "esquiva": 1,
-      "integridade": 3,
-      "sociabilidade": 0,
+      "integridade": 1,
+      "sociabilidade": 2,
+      "furtividade": 3
+    }
+  },
+  {
+    "id": "lagarto-de-gola-gigante",
+    "nome": "Lagarto-de-gola gigante",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 4,
+    "centelha": 0,
+    "conceito": "animal Grande",
+    "descricao": "Passa o dia na árvore e desce para pegar a presa. Ameaçado, abre a gola, escancara a boca, chia e chicoteia a cauda; se não adianta, corre de pé nas patas de trás para a árvore mais próxima.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 37,
+    "defesa": 10,
+    "defesaSocial": 6,
+    "defesaMental": 8,
+    "vontade": 3,
+    "soak": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 3,
+      "destreza": 3,
+      "vigor": 4,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Mordida",
+        "pool": "2d6+2",
+        "dano": "1d6 +3 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Chicotada de cauda",
+        "pool": "2d6+2 +1",
+        "dano": "1d6 +1 impacto",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 2,
+      "integridade": 2,
+      "sociabilidade": 2,
       "furtividade": 2
     }
   },
@@ -17533,46 +17777,55 @@
   },
   {
     "id": "louva-a-deus-gigante",
-    "nome": "Louva-a-Deus Gigante",
+    "nome": "Louva-a-deus-gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
     "centelha": 0,
     "conceito": "praga Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Espera imóvel no mato, o tórax erguido e as patas dobradas; quando a presa entra no alcance, o golpe sai rápido demais para ser corrigido no meio, prende e ela come ali, viva.",
     "tags": [
       "fera"
     ],
-    "pv": 54,
-    "defesa": 8,
+    "pv": 19,
+    "defesa": 16,
     "defesaSocial": 6,
-    "defesaMental": 12,
-    "vontade": 5,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
-      "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 6",
+    "iniciativa": "1d6 + 7",
     "atributos": {
-      "forca": 6,
-      "destreza": 3,
-      "vigor": 6,
-      "influencia": 2,
-      "perspicacia": 2,
-      "compostura": 3,
-      "percepcao": 4,
+      "forca": 4,
+      "destreza": 4,
+      "vigor": 4,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 3,
       "inteligencia": 1,
       "raciocinio": 4
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "4d6+2",
-        "dano": "2d6 +6 perfurante",
+        "nome": "Patas raptoriais",
+        "pool": "4d6 +1",
+        "dano": "1d6 +2 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Mandíbulas",
+        "pool": "4d6 +1",
+        "dano": "1d6 +2 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -17580,10 +17833,10 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 2,
-      "esquiva": 1,
-      "integridade": 3,
-      "sociabilidade": 0,
+      "prontidao": 3,
+      "esquiva": 4,
+      "integridade": 0,
+      "sociabilidade": 2,
       "furtividade": 2
     }
   },
@@ -18305,46 +18558,47 @@
   },
   {
     "id": "polvo",
-    "nome": "Polvo",
+    "nome": "Polvo-comum",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Pequeno",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Some no fundo mudando de cor e textura; pego, morde, e a mordida inflama por dias.",
     "tags": [
       "fera"
     ],
-    "pv": 28,
-    "defesa": 12,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 6,
+    "defesa": 14,
+    "defesaSocial": 6,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
-      "impacto": 4,
+      "impacto": 2,
       "corte": 2,
       "perfuracao": 2
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 3,
-      "destreza": 5,
-      "vigor": 4,
+      "forca": 1,
+      "destreza": 4,
+      "vigor": 2,
       "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
+      "compostura": 1,
       "percepcao": 3,
-      "inteligencia": 1,
-      "raciocinio": 2
+      "inteligencia": 2,
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "2d6+2",
-        "dano": "1d6 +3 perfurante",
-        "perfArma": 0,
-        "ticks": 5
+        "nome": "Bico",
+        "pool": "1d6+2 +1",
+        "dano": "1d6 −1 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -18352,55 +18606,64 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
+      "prontidao": 2,
+      "esquiva": 3,
+      "integridade": 1,
+      "sociabilidade": 2,
       "furtividade": 4
     }
   },
   {
     "id": "polvo-gigante",
-    "nome": "Polvo Gigante",
-    "tipo": "chefe",
+    "nome": "Polvo-gigante",
+    "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 5,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Espera na toca, com a cor da rocha; o que passa perto vai para os braços e para o bico.",
     "tags": [
       "fera"
     ],
-    "pv": 54,
-    "defesa": 10,
-    "defesaSocial": 4,
+    "pv": 46,
+    "defesa": 12,
+    "defesaSocial": 8,
     "defesaMental": 8,
-    "vontade": 5,
+    "vontade": 3,
     "soak": {
-      "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 7,
       "destreza": 4,
-      "vigor": 6,
+      "vigor": 4,
       "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
+      "compostura": 1,
       "percepcao": 3,
-      "inteligencia": 1,
-      "raciocinio": 1
+      "inteligencia": 2,
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "6d6",
-        "dano": "2d6 +7 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "nome": "Bico",
+        "pool": "5d6 +1",
+        "dano": "1d6 +5 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Braços",
+        "pool": "5d6 +1",
+        "dano": "1d6 +5 impacto",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -18408,11 +18671,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
+      "prontidao": 2,
+      "esquiva": 2,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "sociabilidade": 3,
+      "furtividade": 4
     }
   },
   {
@@ -18588,46 +18851,47 @@
   },
   {
     "id": "rato-atroz",
-    "nome": "Rato Atroz",
+    "nome": "Rato atroz",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 1,
     "centelha": 0,
     "conceito": "animal Pequeno",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Um rato do tamanho de um cão, que defende o ninho e o território com mais ferocidade que o rato comum; raramente anda sozinho, e a mordida carrega febre.",
     "tags": [
       "fera"
     ],
-    "pv": 26,
+    "pv": 30,
     "defesa": 12,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "defesaSocial": 10,
+    "defesaMental": 8,
+    "vontade": 4,
     "soak": {
-      "impacto": 3,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 5,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 2,
-      "destreza": 5,
-      "vigor": 3,
+      "forca": 3,
+      "destreza": 3,
+      "vigor": 5,
       "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 2,
+      "perspicacia": 2,
+      "compostura": 1,
       "percepcao": 3,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "1d6+2",
-        "dano": "1d6 +2 perfurante",
+        "nome": "Mordida",
+        "pool": "3d6 +1",
+        "dano": "1d6 +1 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -18635,55 +18899,56 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
+      "prontidao": 2,
+      "esquiva": 3,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 4
+      "sociabilidade": 4,
+      "furtividade": 2
     }
   },
   {
     "id": "enxame-de-ratos",
-    "nome": "Enxame de Ratos",
+    "nome": "Enxame de ratos",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Dezenas de ratos famintos que cercam quem dorme ou não se mexe; cada mordida tira pouco, e o perigo real é a doença.",
     "tags": [
       "fera"
     ],
-    "pv": 18,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 9,
-    "vontade": 5,
+    "pv": 28,
+    "defesa": 6,
+    "defesaSocial": 10,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
-      "impacto": 3,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 1,
-      "destreza": 4,
-      "vigor": 3,
-      "influencia": 0,
+      "forca": 0,
+      "destreza": 3,
+      "vigor": 4,
+      "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
+      "compostura": 1,
       "percepcao": 3,
       "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "1d6+2",
-        "dano": "1d6 +1 perfurante",
+        "nome": "Mordida do enxame",
+        "pool": "1d6 +1",
+        "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -18691,11 +18956,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 5
+      "prontidao": 2,
+      "esquiva": 0,
+      "integridade": 1,
+      "sociabilidade": 4,
+      "furtividade": 2
     }
   },
   {
@@ -19041,46 +19306,47 @@
   },
   {
     "id": "tubarao-branco",
-    "nome": "Tubarão",
+    "nome": "Tubarão-branco",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Chega por baixo e sem aviso. Amadurece tarde: com cerca de 26 anos o macho e 33 a fêmea.",
     "tags": [
       "fera"
     ],
     "pv": 46,
-    "defesa": 8,
-    "defesaSocial": 2,
-    "defesaMental": 8,
-    "vontade": 5,
+    "defesa": 6,
+    "defesaSocial": 8,
+    "defesaMental": 7,
+    "vontade": 3,
     "soak": {
       "impacto": 4,
       "corte": 4,
       "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 6,
-      "destreza": 3,
+      "forca": 9,
+      "destreza": 2,
       "vigor": 4,
       "influencia": 1,
       "perspicacia": 1,
       "compostura": 1,
       "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "4d6",
-        "dano": "2d6 +6 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "nome": "Mordida",
+        "pool": "6d6+2",
+        "dano": "2d6 +9 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -19088,55 +19354,56 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 2,
       "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
+      "integridade": 1,
+      "sociabilidade": 3,
       "furtividade": 2
     }
   },
   {
     "id": "megalodonte",
-    "nome": "Tubarão Atroz",
-    "tipo": "chefe",
+    "nome": "Megalodonte",
+    "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 5,
     "centelha": 0,
     "conceito": "animal Imenso",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "O maior tubarão predador conhecido: mordia o peito da baleia ou a nadadeira, para imobilizá-la, e nascia em berçários de água rasa e quente.",
     "tags": [
       "fera"
     ],
     "pv": 80,
-    "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "defesa": 6,
+    "defesaSocial": 8,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
       "impacto": 8,
-      "corte": 11,
-      "perfuracao": 11
+      "corte": 8,
+      "perfuracao": 8
     },
-    "resistPerf": 2,
-    "iniciativa": "1d6 + 2",
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 12,
-      "destreza": 4,
+      "forca": 13,
+      "destreza": 2,
       "vigor": 8,
-      "influencia": 2,
+      "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 3,
+      "compostura": 1,
+      "percepcao": 2,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "8d6+2",
-        "dano": "3d6 +12 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "nome": "Mordida",
+        "pool": "9d6",
+        "dano": "2d6 +13 perfurante · perf. 3",
+        "perfArma": 3,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -19144,11 +19411,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 2,
       "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "integridade": 1,
+      "sociabilidade": 3,
+      "furtividade": 2
     }
   },
   {
@@ -19381,101 +19648,47 @@
   },
   {
     "id": "lesma-gigante",
-    "nome": "Lesma Gigante",
-    "tipo": "chefe",
+    "nome": "Lesma-gigante",
+    "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 5,
     "centelha": 0,
     "conceito": "praga Enorme",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Sai à noite da mata úmida e raspa o que encontra no caminho; de dia, se esconde do sol e do seco.",
     "tags": [
       "fera"
     ],
-    "pv": 70,
+    "pv": 65,
     "defesa": 2,
-    "defesaSocial": "-",
-    "defesaMental": "-",
-    "vontade": 5,
+    "defesaSocial": 6,
+    "defesaMental": 4,
+    "vontade": 3,
     "soak": {
-      "impacto": 7,
-      "corte": 7,
-      "perfuracao": 7
-    },
-    "resistPerf": 1,
-    "iniciativa": "1d6 + 3",
-    "atributos": {
-      "forca": 10,
-      "destreza": 1,
-      "vigor": 7,
-      "influencia": 0,
-      "perspicacia": 0,
-      "compostura": 1,
-      "percepcao": 2,
-      "inteligencia": 0,
-      "raciocinio": 2
-    },
-    "ataques": [
-      {
-        "nome": "Língua raspadora",
-        "pool": "7d6+2",
-        "dano": "3d6 +10 perfurante",
-        "perfArma": 0,
-        "ticks": 7,
-        "notas": "dano corrosivo (pendência B16: sem palavra \"ácido\" no vocabulário)"
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "notas": "",
-    "pendente": true,
-    "pericias": {
-      "prontidao": 1,
-      "esquiva": 0,
-      "furtividade": 1
-    }
-  },
-  {
-    "id": "serpente-venenosa",
-    "nome": "Serpente Venenosa",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 2,
-    "centelha": 0,
-    "conceito": "animal Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 37,
-    "defesa": 8,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
-    "soak": {
-      "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 6,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 1",
     "atributos": {
-      "forca": 2,
-      "destreza": 3,
-      "vigor": 4,
+      "forca": 7,
+      "destreza": 1,
+      "vigor": 6,
       "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
-      "percepcao": 3,
+      "compostura": 1,
+      "percepcao": 2,
       "inteligencia": 1,
       "raciocinio": 1
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "2d6",
-        "dano": "1d6 +2 perfurante",
-        "perfArma": 0,
-        "ticks": 5
+        "nome": "Rádula",
+        "pool": "4d6+2",
+        "dano": "1d6 +7 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -19483,55 +19696,113 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 3
+      "prontidao": 0,
+      "esquiva": 0,
+      "integridade": 0,
+      "sociabilidade": 2,
+      "furtividade": 2
+    }
+  },
+  {
+    "id": "serpente-venenosa",
+    "nome": "Naja-real",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "animal Médio",
+    "descricao": "Anda de dia pelo mato seguindo o cheiro de outras serpentes, que mata com o veneno e engole inteiras. Acuada, ergue o corpo à altura de um homem, abre o capuz e rosna. A fêmea faz um monte de folhas para os ovos e o guarda.",
+    "tags": [
+      "fera"
+    ],
+    "pv": 6,
+    "defesa": 12,
+    "defesaSocial": 6,
+    "defesaMental": 7,
+    "vontade": 3,
+    "soak": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 1,
+      "destreza": 3,
+      "vigor": 3,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Bote",
+        "pool": "2d6 +1",
+        "dano": "1d6 −1 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 5,
+        "classe": "leve"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 3,
+      "integridade": 1,
+      "sociabilidade": 2,
+      "furtividade": 2
     }
   },
   {
     "id": "enxame-de-aranhas",
-    "nome": "Enxame de Aranhas",
+    "nome": "Enxame de aranhas",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "praga Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Um tapete de milhares de aranhas pequenas, que sai da teia comum e cobre quem cai nela; cada picada é fraca, mas são muitas.",
     "tags": [
       "fera"
     ],
-    "pv": 17,
-    "defesa": 12,
-    "defesaSocial": "-",
-    "defesaMental": "-",
-    "vontade": 5,
+    "pv": 24,
+    "defesa": 6,
+    "defesaSocial": 6,
+    "defesaMental": 5,
+    "vontade": 3,
     "soak": {
       "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 0,
-      "destreza": 5,
+      "destreza": 3,
       "vigor": 2,
-      "influencia": 0,
+      "influencia": 1,
       "perspicacia": 1,
       "compostura": 1,
-      "percepcao": 2,
-      "inteligencia": 0,
+      "percepcao": 3,
+      "inteligencia": 1,
       "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "1d6",
-        "dano": "1d6 perfurante",
+        "nome": "Picada do enxame",
+        "pool": "1d6 +1",
+        "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -19539,53 +19810,64 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "furtividade": 5
+      "prontidao": 2,
+      "esquiva": 0,
+      "integridade": 0,
+      "sociabilidade": 2,
+      "furtividade": 4
     }
   },
   {
     "id": "lula-de-humboldt-grande",
-    "nome": "Lula",
+    "nome": "Lula-de-humboldt",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Sobe da escuridão à noite em cardume, piscando vermelho e branco, e cerca o que se move.",
     "tags": [
       "fera"
     ],
-    "pv": 31,
-    "defesa": 10,
-    "defesaSocial": 2,
+    "pv": 34,
+    "defesa": 12,
+    "defesaSocial": 10,
     "defesaMental": 8,
-    "vontade": 5,
+    "vontade": 3,
     "soak": {
-      "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 4,
-      "destreza": 4,
-      "vigor": 2,
+      "destreza": 3,
+      "vigor": 3,
       "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 1,
+      "perspicacia": 2,
+      "compostura": 2,
       "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "3d6",
-        "dano": "1d6 +4 perfurante",
-        "perfArma": 0,
-        "ticks": 5
+        "nome": "Bico",
+        "pool": "3d6+2 +1",
+        "dano": "1d6 +2 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Braços e tentáculos",
+        "pool": "3d6+2 +1",
+        "dano": "1d6 +2 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -19593,55 +19875,64 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
+      "prontidao": 2,
+      "esquiva": 3,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 3
+      "sociabilidade": 3,
+      "furtividade": 1
     }
   },
   {
     "id": "lula-gigante",
-    "nome": "Lula Gigante",
-    "tipo": "chefe",
+    "nome": "Lula-gigante",
+    "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 5,
     "centelha": 0,
     "conceito": "animal Enorme",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Vive no escuro de 300 a 1.000 m; os tentáculos de mais de 20 m alcançam o barco antes que se veja o corpo.",
     "tags": [
       "fera"
     ],
-    "pv": 70,
-    "defesa": 12,
-    "defesaSocial": 2,
+    "pv": 55,
+    "defesa": 6,
+    "defesaSocial": 8,
     "defesaMental": 8,
-    "vontade": 5,
+    "vontade": 4,
     "soak": {
-      "impacto": 7,
-      "corte": 7,
-      "perfuracao": 7
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
     },
-    "resistPerf": 1,
-    "iniciativa": "1d6 + 2",
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 10,
-      "destreza": 5,
-      "vigor": 7,
+      "forca": 7,
+      "destreza": 2,
+      "vigor": 4,
       "influencia": 1,
       "perspicacia": 1,
       "compostura": 1,
       "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "7d6+2",
-        "dano": "3d6 +10 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "nome": "Bico",
+        "pool": "5d6",
+        "dano": "1d6 +7 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Tentáculos",
+        "pool": "5d6 +1",
+        "dano": "1d6 +5 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -19649,10 +19940,10 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 2,
       "esquiva": 1,
       "integridade": 2,
-      "sociabilidade": 0,
+      "sociabilidade": 3,
       "furtividade": 1
     }
   },
@@ -20053,46 +20344,55 @@
   },
   {
     "id": "vespa-gigante",
-    "nome": "Vespa Gigante",
+    "nome": "Vespa-gigante",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
     "centelha": 0,
     "conceito": "praga Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Voa baixo procurando a toca da aranha; luta com ela, ferroa entre as pernas, arrasta o corpo paralisado de volta para a toca e fecha a entrada com o ovo lá dentro.",
     "tags": [
       "fera"
     ],
-    "pv": 54,
-    "defesa": 8,
-    "defesaSocial": "-",
-    "defesaMental": "-",
-    "vontade": 5,
+    "pv": 26,
+    "defesa": 16,
+    "defesaSocial": 8,
+    "defesaMental": 6,
+    "vontade": 3,
     "soak": {
-      "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 4",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 6,
-      "destreza": 3,
-      "vigor": 6,
-      "influencia": 2,
-      "perspicacia": 2,
-      "compostura": 3,
+      "forca": 2,
+      "destreza": 4,
+      "vigor": 3,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
       "percepcao": 3,
-      "inteligencia": 0,
+      "inteligencia": 1,
       "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "4d6+2",
-        "dano": "2d6 +6 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "nome": "Ferrão",
+        "pool": "3d6 +1",
+        "dano": "1d6 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Mandíbulas",
+        "pool": "3d6 +1",
+        "dano": "1d6 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -20100,53 +20400,56 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "furtividade": 2
+      "prontidao": 2,
+      "esquiva": 4,
+      "integridade": 0,
+      "sociabilidade": 3,
+      "furtividade": 0
     }
   },
   {
     "id": "enxame-de-vespas",
-    "nome": "Enxame de Vespas",
+    "nome": "Enxame de vespas",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
     "centelha": 0,
     "conceito": "praga Minúsculo",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "A parte da colônia que sai na defesa do ninho e persegue quem mexeu nele; cada picada é pequena, mas são centenas.",
     "tags": [
       "fera"
     ],
-    "pv": 17,
-    "defesa": 8,
-    "defesaSocial": "-",
-    "defesaMental": "-",
-    "vontade": 5,
+    "pv": 24,
+    "defesa": 6,
+    "defesaSocial": 6,
+    "defesaMental": 6,
+    "vontade": 4,
     "soak": {
       "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 4",
+    "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 0,
       "destreza": 3,
       "vigor": 2,
-      "influencia": 0,
-      "perspicacia": 2,
-      "compostura": 2,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
       "percepcao": 3,
-      "inteligencia": 0,
-      "raciocinio": 3
+      "inteligencia": 1,
+      "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "1d6+2",
-        "dano": "1d6 perfurante",
+        "nome": "Ferroada do enxame",
+        "pool": "1d6+2 +1",
+        "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -20154,9 +20457,11 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "furtividade": 5
+      "prontidao": 3,
+      "esquiva": 0,
+      "integridade": 0,
+      "sociabilidade": 2,
+      "furtividade": 0
     }
   },
   {
@@ -20167,40 +20472,49 @@
     "ameaca": 2,
     "centelha": 0,
     "conceito": "animal Médio",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "Mustelídeo do tamanho de um cão médio que vive de carniça no inverno ártico e mata caribu depois de persegui-lo por até 62 km. Esconde a comida para voltar a ela.",
     "tags": [
       "fera"
     ],
-    "pv": 37,
+    "pv": 19,
     "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "defesaSocial": 8,
+    "defesaMental": 10,
+    "vontade": 4,
     "soak": {
       "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 4,
-      "destreza": 4,
+      "forca": 2,
+      "destreza": 3,
       "vigor": 4,
-      "influencia": 2,
+      "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
+      "compostura": 1,
       "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "3d6",
-        "dano": "1d6 +4 perfurante",
+        "nome": "Mordida",
+        "pool": "2d6+2 +1",
+        "dano": "1d6 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Garra",
+        "pool": "2d6+2 +1",
+        "dano": "1d6 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -20208,55 +20522,64 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 3
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 4,
+      "sociabilidade": 3,
+      "furtividade": 2
     }
   },
   {
     "id": "carcaju-atroz",
-    "nome": "Carcaju Atroz",
+    "nome": "Carcaju atroz",
     "tipo": "fera",
     "categoria": "Fera",
     "ameaca": 3,
     "centelha": 0,
     "conceito": "animal Grande",
-    "descricao": "Animal selvagem, perigo puro sem malícia.",
+    "descricao": "O carcaju no tamanho de um urso grande. O motivo de existir fica na descrição, não na mecânica.",
     "tags": [
       "fera"
     ],
     "pv": 54,
-    "defesa": 12,
-    "defesaSocial": 4,
-    "defesaMental": 8,
-    "vontade": 5,
+    "defesa": 16,
+    "defesaSocial": 8,
+    "defesaMental": 10,
+    "vontade": 4,
     "soak": {
       "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 2",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 6,
-      "destreza": 5,
+      "forca": 7,
+      "destreza": 3,
       "vigor": 6,
-      "influencia": 2,
+      "influencia": 1,
       "perspicacia": 1,
-      "compostura": 2,
+      "compostura": 1,
       "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 1
+      "raciocinio": 2
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "4d6+2",
-        "dano": "2d6 +6 perfurante",
+        "nome": "Patada",
+        "pool": "5d6+2",
+        "dano": "1d6 +7 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "5d6+2",
+        "dano": "1d6 +7 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -20264,10 +20587,10 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
+      "prontidao": 3,
+      "esquiva": 5,
+      "integridade": 4,
+      "sociabilidade": 3,
       "furtividade": 2
     }
   },
@@ -20608,6 +20931,919 @@
       "integridade": 2,
       "sociabilidade": 0,
       "furtividade": 1
+    }
+  },
+  {
+    "id": "aguia-real",
+    "nome": "Águia-real",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 1,
+    "centelha": 0,
+    "conceito": "animal Médio",
+    "descricao": "Caça do alto: desce em mergulho sobre a lebre ou a marmota e a leva nos talões. Na época da cria, o casal guarda um território grande e expulsa outras águias.",
+    "tags": [],
+    "pv": 6,
+    "defesa": 14,
+    "defesaSocial": 8,
+    "defesaMental": 8,
+    "vontade": 3,
+    "soak": {
+      "impacto": 2,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 2,
+      "destreza": 4,
+      "vigor": 2,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Garras (talões)",
+        "pool": "2d6+2 +1",
+        "dano": "1d6 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Bico",
+        "pool": "2d6+2 +1",
+        "dano": "1d6 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 5,
+        "classe": "leve"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 3,
+      "integridade": 2,
+      "sociabilidade": 3,
+      "furtividade": 3
+    }
+  },
+  {
+    "id": "alce",
+    "nome": "Alce",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "animal Grande",
+    "descricao": "O maior cervo, solitário nas florestas frias. Ataca quem fica entre a mãe e o filhote, e o macho acossado no inverno, com fome e cansado da neve funda, investe e pisoteia.",
+    "tags": [],
+    "pv": 50,
+    "defesa": 10,
+    "defesaSocial": 6,
+    "defesaMental": 7,
+    "vontade": 3,
+    "soak": {
+      "impacto": 5,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 7,
+      "destreza": 2,
+      "vigor": 5,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Coice (pata dianteira)",
+        "pool": "5d6",
+        "dano": "1d6 +7 impacto",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Pisão (ergue-se e pisoteia)",
+        "pool": "5d6",
+        "dano": "2d6 +14 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Galhada (só macho)",
+        "pool": "5d6",
+        "dano": "1d6 +7 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 6,
+        "classe": "media"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 2,
+      "sociabilidade": 2,
+      "furtividade": 1
+    }
+  },
+  {
+    "id": "boi",
+    "nome": "Boi de tração",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "animal Grande",
+    "descricao": "Animal de tração e de carga das fazendas. O boi castrado foge do susto; o touro ataca, e a vaca com bezerro defende a cria. Grito e batida de porteira o agitam.",
+    "tags": [],
+    "pv": 54,
+    "defesa": 6,
+    "defesaSocial": 6,
+    "defesaMental": 5,
+    "vontade": 3,
+    "soak": {
+      "impacto": 6,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 7,
+      "destreza": 1,
+      "vigor": 6,
+      "influencia": 1,
+      "perspicacia": 2,
+      "compostura": 1,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 1
+    },
+    "ataques": [
+      {
+        "nome": "Chifrada",
+        "pool": "4d6+2",
+        "dano": "1d6 +7 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Investida (marrada)",
+        "pool": "4d6+2",
+        "dano": "2d6 +14 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 1,
+      "sociabilidade": 2,
+      "furtividade": 0
+    }
+  },
+  {
+    "id": "crocodilo-do-nilo-femea",
+    "nome": "Crocodilo-do-nilo",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "animal Médio",
+    "descricao": "Espera na margem o mamífero que vem beber, agarra, arrasta para a água e gira. Come até 20% da própria massa numa refeição; a fêmea guarda o ninho e leva os filhotes na boca até a água: abre a boca, abaixa a língua para dar espaço, junta os filhotes, leva-os do ninho até a água e lá os solta balançando a cabeça. Quantos leva de uma vez: confiável.",
+    "tags": [],
+    "pv": 34,
+    "defesa": 8,
+    "defesaSocial": 6,
+    "defesaMental": 6,
+    "vontade": 3,
+    "soak": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 6,
+      "destreza": 2,
+      "vigor": 3,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Mordida",
+        "pool": "5d6",
+        "dano": "2d6 +6 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 7,
+        "classe": "pesada"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 1,
+      "sociabilidade": 2,
+      "furtividade": 3
+    }
+  },
+  {
+    "id": "leao-das-cavernas-tardio",
+    "nome": "Leão-das-cavernas",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 4,
+    "centelha": 0,
+    "conceito": "animal Pequeno",
+    "descricao": "O último leão da estepe gelada, sem juba e já do tamanho de um leão pequeno de hoje, no fim da última glaciação, antes de sumir. Apesar do nome, quase não usava caverna.",
+    "tags": [],
+    "pv": 40,
+    "defesa": 14,
+    "defesaSocial": 10,
+    "defesaMental": 9,
+    "vontade": 3,
+    "soak": {
+      "impacto": 5,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
+    "atributos": {
+      "forca": 5,
+      "destreza": 4,
+      "vigor": 5,
+      "influencia": 3,
+      "perspicacia": 1,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Mordida",
+        "pool": "4d6+2",
+        "dano": "1d6 +5 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Patada",
+        "pool": "4d6+2 +1",
+        "dano": "1d6 +3 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 3,
+      "esquiva": 3,
+      "integridade": 3,
+      "sociabilidade": 3,
+      "furtividade": 3
+    }
+  },
+  {
+    "id": "lula-de-humboldt",
+    "nome": "Lula-de-humboldt",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "animal Miúdo",
+    "descricao": "Sobe da escuridão à noite em cardume, piscando vermelho e branco, e cerca o que se move.",
+    "tags": [],
+    "pv": 6,
+    "defesa": 12,
+    "defesaSocial": 10,
+    "defesaMental": 8,
+    "vontade": 3,
+    "soak": {
+      "impacto": 2,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 5",
+    "atributos": {
+      "forca": 1,
+      "destreza": 3,
+      "vigor": 2,
+      "influencia": 1,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Bico",
+        "pool": "2d6 +1",
+        "dano": "1d6 −1 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Braços e tentáculos",
+        "pool": "2d6 +1",
+        "dano": "1d6 −1 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 3,
+      "integridade": 2,
+      "sociabilidade": 3,
+      "furtividade": 1
+    }
+  },
+  {
+    "id": "mamute",
+    "nome": "Mamute-lanoso",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 5,
+    "centelha": 0,
+    "conceito": "animal Enorme",
+    "descricao": "Parente peludo do elefante, das estepes geladas. Vive em manada guiada pelas fêmeas, que cercam os filhotes em vez de fugir; caçado por gente pela carne, pelo couro e pelo marfim.",
+    "tags": [],
+    "pv": 90,
+    "defesa": 8,
+    "defesaSocial": 10,
+    "defesaMental": 7,
+    "vontade": 3,
+    "soak": {
+      "impacto": 11,
+      "corte": 11,
+      "perfuracao": 11
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 3",
+    "atributos": {
+      "forca": 13,
+      "destreza": 2,
+      "vigor": 11,
+      "influencia": 2,
+      "perspicacia": 2,
+      "compostura": 2,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Presada",
+        "pool": "8d6",
+        "dano": "2d6 +13 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Pisão (ou investida)",
+        "pool": "8d6",
+        "dano": "2d6 +26 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 1,
+      "esquiva": 1,
+      "integridade": 2,
+      "sociabilidade": 3,
+      "furtividade": 0
+    }
+  },
+  {
+    "id": "mosassauro",
+    "nome": "Mosassauro",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 5,
+    "centelha": 0,
+    "conceito": "animal Enorme",
+    "descricao": "Réptil marinho de 11 m, predador de topo do mar aberto. Ataca de baixo, perto da superfície, come de peixes a tartarugas e outros répteis marinhos, e briga com os da própria espécie.",
+    "tags": [],
+    "pv": 70,
+    "defesa": 6,
+    "defesaSocial": 8,
+    "defesaMental": 6,
+    "vontade": 3,
+    "soak": {
+      "impacto": 7,
+      "corte": 7,
+      "perfuracao": 7
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 12,
+      "destreza": 2,
+      "vigor": 7,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Mordida",
+        "pool": "8d6",
+        "dano": "2d6 +12 perfurante · perf. 2",
+        "perfArma": 2,
+        "ticks": 7,
+        "classe": "pesada"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 1,
+      "sociabilidade": 3,
+      "furtividade": 2
+    }
+  },
+  {
+    "id": "plesiossauro",
+    "nome": "Plesiossauro",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "animal Médio",
+    "descricao": "Réptil marinho do tamanho de um crocodilo pequeno, de pescoço longo e cabeça pequena. Caça peixe de tocaia, pela vista, e é presa de tubarões e de répteis marinhos maiores.",
+    "tags": [],
+    "pv": 34,
+    "defesa": 8,
+    "defesaSocial": 6,
+    "defesaMental": 6,
+    "vontade": 3,
+    "soak": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 5,
+      "destreza": 2,
+      "vigor": 3,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Mordida",
+        "pool": "3d6+2 +1",
+        "dano": "1d6 +3 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 5,
+        "classe": "leve"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 1,
+      "sociabilidade": 2,
+      "furtividade": 2
+    }
+  },
+  {
+    "id": "quetzalcoatlo",
+    "nome": "Quetzalcoatlo",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "animal Enorme",
+    "descricao": "Pterossauro do tamanho de uma girafa, que anda pela planície como uma cegonha e pega presa pequena no chão. Voa pouco, mas pode cruzar longas distâncias.",
+    "tags": [],
+    "pv": 34,
+    "defesa": 8,
+    "defesaSocial": 6,
+    "defesaMental": 7,
+    "vontade": 3,
+    "soak": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 5,
+      "destreza": 2,
+      "vigor": 3,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Bicada",
+        "pool": "3d6+2",
+        "dano": "1d6 +5 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 6,
+        "classe": "media"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 2,
+      "sociabilidade": 2,
+      "furtividade": 2
+    }
+  },
+  {
+    "id": "tigre-dentes-de-sabre",
+    "nome": "Tigre-dentes-de-sabre",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 4,
+    "centelha": 0,
+    "conceito": "animal Médio",
+    "descricao": "Felino de emboscada, de caninos longos como facas. Agarra a presa grande com os antebraços e só então crava os dentes no pescoço.",
+    "tags": [],
+    "pv": 50,
+    "defesa": 10,
+    "defesaSocial": 6,
+    "defesaMental": 9,
+    "vontade": 3,
+    "soak": {
+      "impacto": 5,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 5",
+    "atributos": {
+      "forca": 8,
+      "destreza": 3,
+      "vigor": 5,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Mordida de sabre",
+        "pool": "6d6",
+        "dano": "1d6 +8 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Patada",
+        "pool": "6d6 +1",
+        "dano": "1d6 +6 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 3,
+      "sociabilidade": 2,
+      "furtividade": 3
+    }
+  },
+  {
+    "id": "urso-negro",
+    "nome": "Urso-negro-americano",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "animal Médio",
+    "descricao": "Urso tímido e curioso das florestas, que foge de gente e sobe em árvore. Ataca pouco, mas o macho que ataca costuma estar caçando, e não se defendendo.",
+    "tags": [],
+    "pv": 37,
+    "defesa": 10,
+    "defesaSocial": 8,
+    "defesaMental": 6,
+    "vontade": 3,
+    "soak": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 6,
+      "destreza": 3,
+      "vigor": 4,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Patada",
+        "pool": "4d6",
+        "dano": "1d6 +6 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "4d6",
+        "dano": "1d6 +6 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 6,
+        "classe": "media"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 2,
+      "integridade": 1,
+      "sociabilidade": 3,
+      "furtividade": 2
+    }
+  },
+  {
+    "id": "urso-pardo-litoral",
+    "nome": "Urso-pardo",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "animal Grande",
+    "descricao": "Solitário e onívoro, que foge de gente na maior parte das vezes. Ataca sobretudo a fêmea defendendo filhotes (47%), no encontro de surpresa (20%) ou quando é atacado (10%); 14,3% dos 664 ataques de 2000 a 2015 foram fatais.",
+    "tags": [],
+    "pv": 54,
+    "defesa": 10,
+    "defesaSocial": 8,
+    "defesaMental": 9,
+    "vontade": 4,
+    "soak": {
+      "impacto": 6,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 7,
+      "destreza": 3,
+      "vigor": 6,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Patada",
+        "pool": "5d6+2",
+        "dano": "1d6 +7 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "5d6+2",
+        "dano": "1d6 +7 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 6,
+        "classe": "media"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 3,
+      "furtividade": 2
+    }
+  },
+  {
+    "id": "urso-polar",
+    "nome": "Urso-polar",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 4,
+    "centelha": 0,
+    "conceito": "animal Grande",
+    "descricao": "O maior urso, caçador de focas na banquisa. Espera no respiradouro ou chega rastejando e nadando pelas fendas; o macho faminto caça gente, e a fêmea ataca para defender os filhotes.",
+    "tags": [],
+    "pv": 50,
+    "defesa": 10,
+    "defesaSocial": 6,
+    "defesaMental": 9,
+    "vontade": 4,
+    "soak": {
+      "impacto": 5,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 8,
+      "destreza": 3,
+      "vigor": 5,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2
+    },
+    "ataques": [
+      {
+        "nome": "Patada",
+        "pool": "6d6",
+        "dano": "1d6 +8 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "6d6",
+        "dano": "1d6 +8 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 6,
+        "classe": "media"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 3,
+      "sociabilidade": 2,
+      "furtividade": 2
+    }
+  },
+  {
+    "id": "varano-femea",
+    "nome": "Dragão-de-komodo, fêmea",
+    "tipo": "fera",
+    "categoria": "Fera",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "animal Pequeno",
+    "descricao": "Anda o dia pela área de vida seguindo o cheiro de carniça e de presa; chega perto sem ser visto, joga a presa no chão e rasga com os dentes serrilhados. O veneno faz o sangue não coagular. Os grandes comem primeiro.",
+    "tags": [],
+    "pv": 26,
+    "defesa": 6,
+    "defesaSocial": 6,
+    "defesaMental": 7,
+    "vontade": 3,
+    "soak": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 5",
+    "atributos": {
+      "forca": 5,
+      "destreza": 2,
+      "vigor": 3,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 3
+    },
+    "ataques": [
+      {
+        "nome": "Mordida (morde e rasga)",
+        "pool": "4d6+2",
+        "dano": "1d6 +5 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 6,
+        "classe": "media"
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "notas": "",
+    "pendente": true,
+    "pericias": {
+      "prontidao": 2,
+      "esquiva": 1,
+      "integridade": 1,
+      "sociabilidade": 2,
+      "furtividade": 3
     }
   }
 ]

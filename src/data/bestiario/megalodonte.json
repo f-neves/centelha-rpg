@@ -2,83 +2,123 @@
   "ordem": 283,
   "id": "megalodonte",
   "idAntigo": "mon-dire-shark-megalodon",
-  "nome": "Tubarão Atroz",
-  "nomeIngles": "Dire Shark",
+  "nome": "Megalodonte",
+  "nomeIngles": "Megalodon; Dire Shark nos dois d20",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
-  "papel": "chefe",
+  "papel": "fera",
   "conceito": "animal Imenso",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "O maior tubarão predador conhecido: mordia o peito da baleia ou a nadadeira, para imobilizá-la, e nascia em berçários de água rasa e quente.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/dire-shark-megalodon.webp",
   "porte": "Imenso",
   "dimensoes": {
-    "medida": "18 metros de comprimento",
-    "peso": "45000 kg"
+    "medida": "14,57 m de comprimento, 3,37 m de altura",
+    "peso": "36.000 kg",
+    "comprimento": 14.57,
+    "largura": 3.08,
+    "altura": 3.37
   },
   "locomocao": {
-    "natacao": 6
+    "natacao": 8
   },
   "centelha": 0,
   "attrs": {
-    "forca": 12,
-    "destreza": 4,
+    "forca": 13,
+    "destreza": 2,
     "vigor": 8,
-    "influencia": 2,
-    "perspicacia": 1,
-    "compostura": 2,
-    "percepcao": 3,
+    "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 1
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
     "briga": 5,
     "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "furtividade": 2,
+    "integridade": 1,
+    "prontidao": 2,
+    "resistencia": 4,
+    "sobrevivencia": 3
   },
+  "skills2": {
+    "natacao": 2,
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "eletrorrecepção",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "linha lateral e faro",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "presa grande: nadadeira e cauda",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
+    "conviccao": 1,
+    "temperanca": 1,
     "valor": 3
   },
-  "willpower": 5,
-  "aparencia": 4,
+  "willpower": 3,
+  "aparencia": 6,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 3,
+      "dado": 2,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 7
+      "perf": 3,
+      "ticks": 7,
+      "classe": "pesada"
     }
   ],
   "habilidades": [
     {
-      "nome": "Mordida devastadora",
-      "descricao": "Ataca com mandíbulas capazes de abrir feridas profundas, causando dano contínuo de Sangramento, e pode agarrar a presa para tragá-la."
+      "nome": "agarrar",
+      "descricao": "mordida: Dano do agarrão: 2 × Força = 26 por manutenção.",
+      "classe": "livro"
     },
     {
-      "nome": "Engolir por inteiro",
-      "descricao": "Pode tragar uma presa já agarrada, causando dano contínuo por dentro de seu estômago até ela escapar ou perecer."
+      "nome": "investida de baixo",
+      "descricao": "Mordida: Investida.",
+      "classe": "livro"
     },
     {
-      "nome": "Olfato sanguinário",
-      "descricao": "Percebe sangue na água a quilômetros e sente presas próximas mesmo sem vê-las."
+      "nome": "morder a nadadeira",
+      "descricao": "morde a nadadeira ou a cauda da presa grande para imobilizá-la antes de matar (Especialidade Briga (presa grande: nadadeira e cauda) +1).",
+      "classe": "como luta"
     },
     {
-      "nome": "Sentidos aguçados",
-      "descricao": "Sua percepção excepcional torna quase impossível surpreendê-lo."
+      "nome": "sangramento",
+      "descricao": "Mordida: a mordida abre ferida que continua sangrando.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Nadador colossal",
-      "descricao": "Move-se na água com grande velocidade apesar do tamanho monstruoso."
+      "nome": "engolir",
+      "descricao": "Mordida: traga a presa já agarrada, que segue ferida por dentro até escapar ou morrer.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "eletrorrecepção: Prontidão (eletrorrecepção) +3, Especialidade natural; alcance. · linha lateral e faro: Prontidão (linha lateral e faro) +2, Especialidade natural; alcance."
     }
   ],
   "lore": [
@@ -89,6 +129,10 @@
     {
       "titulo": "Lendas de navios devorados",
       "texto": "Muitas histórias de embarcações que desaparecem no mar aberto encontram nesse gigante das profundezas sua explicação mais provável."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Imenso: o humano Médio acerta com +9 e não apara nada dele pelo porte; a Força 13 também tira o Bloqueio de quem tem Força 6 ou menos. A mordida faz 20 em média e fura placa (N3); o agarrão tira 26 por manutenção. 80 PV e Couraça nível 3 (pele de dentículos num corpo de 36 t); o quanto ela tira fica para depois. Na água, pela conta de hoje, chega a 8 m por Tick na arrancada."
     }
   ],
   "ecologia": {
@@ -126,5 +170,40 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "v3": {
+    "pv": 80,
+    "esquiva": 6,
+    "bloqueio": 4,
+    "defesa": 6,
+    "defesaMental": 6,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 8,
+      "corte": 8,
+      "perfuracao": 8
+    },
+    "couracaNivel": 3,
+    "pesoErguido": 6608.02,
+    "deslocamento": {
+      "nado": 8
+    }
+  },
+  "notasObservacao": [
+    "pesoErguido: 6.608,02 kg (em vigor na Etapa 2, 20/10/2026); antes: 8.024,9 kg pelo `calc.mjs`, provisório. A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar.",
+    "carga: não se aplica (nadador).",
+    "massa: 36.000 kg (em vigor na Etapa 2, 20/10/2026); antes: 33.325 kg, o adulto típico (sexta rodada): a média simples dos meios das faixas dos machos maduros (23,25 t) e das fêmeas maduras (43,4 t) de Gottfried e colegas 1996, com as dimensões do animal de 16 m escaladas pelo cubo da massa (× 0,885, 14,2 m). Era 48 t, o de 16 m pela mesma regressão (a que a Wikipédia dá a Prothero 2015). As estimativas primárias para cerca de 16 m vão de cerca de 30 t (Shimada e colegas 2025, corpo esguio) a 62 t (Cooper e colegas 2022, corpo de tubarão-branco); sem consenso entre os estudos. Toda a faixa fica na Faixa 6 (o mesmo PV).",
+    "dimensoes.altura, comprimentoSemCauda e largura: pela proporção do tubarão-branco [extrapolação]; se o corpo for esguio, serão menores. O Alvo (44,8 m²) fica longe das bordas.",
+    "velocidade: congelada (decisão 23). Os números publicados são de cruzeiro e de modelo (5 a 18 km/h); a ficha dá a arrancada (30 km/h).",
+    "forca: 13, igual ao mamute da régua nova (D-158); era 18 com o mamute em 18. Se o mamute mudar, esta se refaz.",
+    "vigor: 8 pela vida longa (Shimada e colegas 2021) e pela endotermia regional (D-164).",
+    "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua, [extrapolação]; o cruzeiro de modelo ficou na nota de pesquisa (jornada).",
+    "compostura: 1 por não ser espécie social (diretriz 1); era 3 pelo emboscador.",
+    "especialidade Briga (presa grande: nadadeira e cauda) +1: nova, provisória (D-174), lida de marcas de mordida em osso [extrapolação].",
+    "sentidos: eletrorrecepção +3 e linha lateral +2 vêm do grupo dos tubarões, não medidos no megalodonte [extrapolação]. A eletrorrecepção desceu de +4 para +3 pelo teto da decisão 3.",
+    "couraca: nível 3 (faixa 2 a 3) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): só cruzeiro de modelo [extrapolação dos autores]: 18 km/h supondo 48 t (Jacoby e colegas 2015); cerca de 1,4 m/s, 5 km/h, para um de 16 m (Cooper e colegas 2022); 2,1 a 3,5 km/h para o de 24,3 m, pela forma das escamas (Shimada e colegas 2025). \"Em geral não um nadador rápido\" (Wikipédia).",
+    "fonte: os 48 t são a regressão de Gottfried e colegas 1996 (o artigo não foi lido; a atribuição vem de Shimada e colegas 2025 e a Wikipédia os dá a Prothero 2015), e a endotermia regional continuam só pela Wikipédia (D-174).",
+    "fonte: a mordida de Wroe e colegas 2008 foi conferida pelo resumo da busca (UNE, National Geographic), e não pelo artigo; o número não muda."
+  ]
 }

@@ -2,79 +2,122 @@
   "ordem": 194,
   "id": "golfinho",
   "idAntigo": "mon-dolphin",
-  "nome": "Golfinho",
-  "nomeIngles": "Dolphin",
+  "nome": "Golfinho-nariz-de-garrafa",
+  "nomeIngles": "Dolphin (Pathfinder 1, Bestiary); D&D 3.5 só tem Porpoise",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
   "papel": "fera",
   "conceito": "animal Médio",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Caça em grupo e mata toninhas a golpes de corpo, sem comer. Tubarões grandes caçam os filhotes e as fêmeas.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/dolphin.webp",
   "porte": "Médio",
   "dimensoes": {
-    "medida": "2,5 metros de comprimento",
-    "peso": "150 kg"
+    "medida": "2,68 m de comprimento, 0,57 m de altura",
+    "peso": "285 kg",
+    "comprimento": 2.68,
+    "largura": 0.46,
+    "altura": 0.57
   },
   "locomocao": {
-    "natacao": 8
+    "natacao": 6
   },
   "centelha": 0,
   "attrs": {
-    "forca": 3,
-    "destreza": 4,
-    "vigor": 3,
-    "influencia": 1,
-    "perspicacia": 1,
-    "compostura": 2,
+    "forca": 5,
+    "destreza": 3,
+    "vigor": 4,
     "percepcao": 3,
-    "inteligencia": 1,
-    "raciocinio": 2
+    "inteligencia": 2,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
-    "briga": 1,
-    "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "briga": 3,
+    "esquiva": 3,
+    "atletismo": 3,
+    "furtividade": 4,
+    "integridade": 3,
+    "prontidao": 2,
+    "resistencia": 3,
+    "empatia": 2,
+    "sobrevivencia": 3
   },
+  "skills2": {
+    "natacao": 6,
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "ecolocalização",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "resistencia",
+      "foco": "apneia",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "investida de baixo",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
+    "conviccao": 1,
+    "temperanca": 1,
     "valor": 2
   },
-  "willpower": 5,
-  "aparencia": 4,
+  "willpower": 3,
+  "aparencia": 7,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Investida de focinho",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 2,
+      "tipo": "impacto",
+      "ticks": 7,
+      "classe": "pesada"
+    },
+    {
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
   "habilidades": [
     {
-      "nome": "Ecolocalização",
-      "descricao": "Percebe o que está ao redor por ecos sonoros, mesmo sem conseguir enxergar."
+      "nome": "investida de baixo",
+      "descricao": "Investida de focinho: Investida.",
+      "classe": "livro"
     },
     {
-      "nome": "Nado veloz",
-      "descricao": "Nada com uma velocidade muito superior à de criaturas terrestres."
+      "nome": "jogar a presa para fora da água",
+      "descricao": "Investida de focinho: arremessa a presa pequena para fora da água.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Fôlego prolongado",
-      "descricao": "Prende a respiração por vários minutos antes de correr risco de afogamento."
-    },
-    {
-      "nome": "Golpe de focinho",
-      "descricao": "Ataca com uma cabeçada certeira do focinho robusto."
+      "nome": "Sentidos",
+      "descricao": "ecolocalização: Prontidão (ecolocalização) +3, Especialidade natural; achar presa e obstáculo pelos ecos, no escuro e na água turva; alcance. · audição: até cerca de 120 kHz; cobre o mesmo uso da ecolocalização, sem Especialidade à parte."
     }
   ],
   "lore": [
@@ -85,6 +128,14 @@
     {
       "titulo": "Aliada dos marinheiros",
       "texto": "Contam-se histórias de golfinhos que salvam náufragos ou afugentam predadores com golpes certeiros do focinho."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: bando."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, como o humano: nenhum bônus de acerto pelo Alvo. Rápido na água (6 m por Tick), difícil de acertar (Esquiva 12) e com uma investida que faz 17 em média, a do javali. Couraça nível 1 (pele lisa sobre gordura); o quanto ela tira fica para depois. Acha quem está escondido na água escura pela ecolocalização (+3) e fica até 4,5 minutos debaixo da água. Fora da água não anda."
     }
   ],
   "ecologia": {
@@ -122,5 +173,39 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 1
+  "ameacaLegada": 1,
+  "v3": {
+    "pv": 46,
+    "esquiva": 12,
+    "bloqueio": 6,
+    "defesa": 12,
+    "defesaMental": 8,
+    "defesaSocial": 10,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 469.15,
+    "deslocamento": {
+      "nado": 6
+    }
+  },
+  "notasObservacao": [
+    "pesoErguido: 469,15 kg (em vigor na Etapa 2, 20/10/2026); antes: 466,9 kg pelo `calc.mjs`, provisório. A ficha de hoje dizia \"não se aplica (nadador)\" pelo esquema §3; o número entra pelo pedido v3 e vale, na água, como empurrar.",
+    "carga: não se aplica (nadador).",
+    "velocidade: congelada (decisão 23). O nado de 6,5 m/s fica 21% abaixo da máxima de piscina (8,2 m/s) e 8% acima da arrancada realista dos autores (6 m/s), Rohr e colegas 2002.",
+    "massa: 285 kg (em vigor na Etapa 2, 20/10/2026); antes: 260 kg, a ponta de baixo da ADW, e isso decide a Faixa 4 (PV 46). Com menos de 220 kg (o golfinho treinado de Rohr 2002 tinha 149 kg) a ficha cairia na Faixa 3: PV 37. A Couraça não depende mais disso.",
+    "dimensoes.altura, comprimentoSemCauda e largura: estimadas pela Bestiarista-5 [extrapolação, sem dado].",
+    "forca: 5 por comparação, sem feito medido de levantar ou arrastar (D-158).",
+    "inteligencia: 2 pela lista do autor (diretriz 1: o golfinho está nela); decisão provisória (D-174).",
+    "empatia: 2, linha nova, pelo assobio individual e pelos grupos de fissão e fusão; sem medida de leitura de humano. Escolha provisória (D-174).",
+    "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua (normal da espécie no próprio meio); o levantamento propunha 3, mas o dado dele era o nado sem fim, que fica na nota de pesquisa (jornada).",
+    "especialidade Resistência (apneia) +3: 4,5 minutos contra cerca de 1 minuto do humano comum; o +3 é o teto. Escolha provisória (D-174).",
+    "especialidade Briga (investida de baixo) +1: hábito documentado numa população (Moray Firth); provisória (D-174).",
+    "couraca: nível 1 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): 3,08 m/s \"indefinidamente\"; 6,09 m/s por 50 s; 7,01 m/s por 10 s; 8,3 m/s por 7,5 s (Lang e Norris 1966, citado em Rohr 2002) [medido].",
+    "aparencia: 7 pela pele lisa (D-107, D-138), escolha da Bestiarista-5 sem fonte que a mande."
+  ]
 }

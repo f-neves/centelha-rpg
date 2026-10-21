@@ -2,76 +2,76 @@
   "ordem": 218,
   "id": "ra-venenosa",
   "idAntigo": "mon-poison-frog",
-  "nome": "Rã Venenosa",
-  "nomeIngles": "Poison Frog",
+  "nome": "Rã-dourada-venenosa",
+  "nomeIngles": "Golden poison frog (bloco parecido: Poison Frog, Pathfinder 1)",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
   "papel": "fera",
   "conceito": "animal Minúsculo",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Anda de dia pelo chão úmido da mata, à vista, pegando formigas. Ninguém a come: o adulto quase não tem predador, e quem a toca com a mão ferida pode morrer.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/poison-frog.webp",
   "porte": "Miúdo",
   "dimensoes": {
-    "medida": "35 cm de comprimento",
-    "peso": "4,5 kg"
+    "medida": "0,042 m de comprimento, 0,022 m de altura",
+    "peso": "0,0085 kg (8,5 g)",
+    "comprimento": 0.042,
+    "largura": 0.022,
+    "altura": 0.022
   },
   "locomocao": {
-    "terra": 2,
-    "natacao": 2
+    "terra": 1
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 1,
+    "arranque": 1,
+    "corrida": 2
   },
   "centelha": 0,
   "attrs": {
-    "forca": 1,
-    "destreza": 3,
+    "forca": 0,
+    "destreza": 2,
     "vigor": 2,
-    "influencia": 2,
-    "perspicacia": 1,
-    "compostura": 2,
-    "percepcao": 2,
+    "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 1
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
     "briga": 1,
-    "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "esquiva": 3,
+    "atletismo": 1,
+    "integridade": 1,
+    "prontidao": 2,
+    "resistencia": 2,
+    "sobrevivencia": 1
+  },
+  "skills2": {
+    "musculatura": 2
   },
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
-    "valor": 2
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 1
   },
-  "willpower": 5,
-  "aparencia": 4,
-  "ataques": [
-    {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
-    }
-  ],
+  "willpower": 3,
+  "aparencia": 7,
+  "ataques": [],
   "habilidades": [
     {
-      "nome": "Pele e Presa Tóxicas",
-      "descricao": "A mordida (por vezes o mero toque da pele) injeta um veneno que causa dano contínuo, exigindo um teste de Vigor para ser debelado."
-    },
+      "nome": "Sentidos",
+      "descricao": "nada achado."
+    }
+  ],
+  "venenos": [
     {
-      "nome": "Cores de Aviso",
-      "descricao": "As manchas vivas em sua pele avisam predadores de que ela é perigosa demais para valer a pena comer."
-    },
-    {
-      "nome": "Saltos Precisos",
-      "descricao": "Salta com surpreendente precisão mesmo em terreno irregular ou molhado."
+      "nome": "Veneno no jogo",
+      "texto": "Batracotoxina · Potência 20 · minuto (ingerido ou toque) · a cada 1 minuto · pool 3 (Vigor) · Desgaste 1 · passivo: quem a come, morde ou toca (ingerido ou toque)"
     }
   ],
   "lore": [
@@ -82,6 +82,18 @@
     {
       "titulo": "Beleza que mata",
       "texto": "As cores vibrantes da pele já seduziram muitos incautos a pegá-la com as mãos nuas, um erro raramente repetido."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Batracotoxina · Potência 20 · minuto (ingerido ou toque) · a cada 1 minuto · pool 3 (Vigor) · Desgaste 1 · passivo: quem a come, morde ou toca (ingerido ou toque)"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "- Ela não ataca. O perigo é para quem a pega com a mão ferida, a põe na boca ou come a carne: o veneno, pela via do toque ou da ingestão, quando tiver id. - Minúscula contra um humano: +9 no acerto corpo a corpo dela, que não usa; quem a acerta à distância leva −9. - Com 1 PV, um golpe qualquer que acerte a mata; matar não é o problema, tocar é."
     }
   ],
   "ecologia": {
@@ -118,5 +130,46 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 1
+  "ameacaLegada": 1,
+  "v3": {
+    "pv": 1,
+    "esquiva": 10,
+    "bloqueio": 4,
+    "defesa": 10,
+    "defesaMental": 6,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 2,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 0,
+    "deslocamento": {
+      "terra": {
+        "batalha": 1,
+        "arranque": 1,
+        "corrida": 2
+      }
+    }
+  },
+  "notasObservacao": [
+    "`anatomia`: anfíbio saltador, anatomia provisória (D-175), não calibrada em animal medido",
+    "`alvo`: Minúsculo no piso da escala (massa e área abaixo do começo do Minúsculo); igual ao de hoje (decisões 7 e 25)",
+    "`forca`: 0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): sem arma de ataque, não fere nem segura um humano pela força; o perigo é o veneno da pele",
+    "fonte: os 30 g da Wikipédia saíram (sem pesagem; procurado na ADW, na AmphibiaWeb, que não abriu, no Catalogue of American Amphibians and Reptiles, que não abriu, e na National Geographic Brasil). A massa nova é 7,87 g pelo cubo do comprimento típico sobre o cururu e a rã-golias **[comparação]**, por decisão do autor (\"uns 10 g, com a conta\"); não muda o Alvo (piso da escala), a Faixa 1 nem o PV (D-174)",
+    "`dimensoes.comprimento`: 0,04215 m, a média simples de machos e fêmeas (Myers e colegas 1978); era 0,047 pela ADW (13/10) e 0,06 pela Wikipédia; o Alvo não muda",
+    "`dimensoes.altura` e `dimensoes.largura`: 0,0224 m, estimadas sem fonte para 47 mm (0,025) e escaladas a 42,15 mm (D-147, D-174)",
+    "`vigor`: 2, sem dado de frio, fome, ferida ou doença; o meio estreito (26 °C, 80 a 90% de umidade) é o que se sabe (D-174)",
+    "`musculatura`: 2, animal comum, sem feito de força nem salto medido; provisória (decisão 12, D-174). Era sem linha",
+    "`resistencia`: 2, o normal da espécie no próprio meio (diretriz 2). O levantamento a apontava como candidata a 1 pelo meio estreito; fica 2 porque a régua mede o quanto aguenta no meio, e o fora do meio é do Mestre (D-087, D-174)",
+    "`especialidadesNaturais`: nenhuma; a tolerância da rã à própria batracotoxina não foi achada na pesquisa. Se a fonte aparecer, é a candidata a Resistência (batracotoxina) natural (decisão 3 da quarta rodada, D-174)",
+    "`pv`: 1 (em vigor na Etapa 2, 20/10/2026); antes: 7 pela decisão 21 (5 + Vigor); a outra proposta do autor dá 11; era 17 (D-132, D-169)",
+    "`pesoErguido`: 0,00 kg (em vigor na Etapa 2, 20/10/2026); antes: 0,0029 kg pela decisão 14, provisório: é o valor da curva no piso da Força de referência 0 com 7,87 g, sem feito que o confirme; era 0,04 kg com 30 g, e cerca de 1 g antes (D-162)",
+    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "`massa` (sexta rodada): 0,009 kg (em vigor na Etapa 2, 20/10/2026); antes: 7,87 g **[comparação]**, a média das contas pelo cubo de 42,15 mm sobre o cururu (7,43 g) e a rã-golias (8,32 g); a conta pelo parente da mesma família (D. tinctorius, 4,26 g) não foi usada porque os 3 g da ADW não se confirmaram como pesagem. Era 30 g da Wikipédia, sem pesagem achada. Falta abrir a descrição de 1978 (Bull. AMNH 161) ou achar uma pesagem de cativeiro",
+    "`velocidade`: congelada pela decisão 23, com o 0,4 do Miúdo no Minúsculo (D-170): 9 km/h, quase o dobro da jararaca (5 km/h); parece alta para uma rã de 4,2 cm, e não há velocidade real (D-170, D-175)",
+    "`ataques`: nenhum; a mordida venenosa da ficha atual sai, porque o veneno é da pele (D-174)",
+    "`veneno`: veneno sem id no catálogo (batracotoxina), pela pele, via ingerido e toque; a regra do toque do catálogo (−4 na potência) serve quando houver id (D-112)"
+  ]
 }

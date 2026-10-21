@@ -1,0 +1,186 @@
+{
+  "id": "leao-das-cavernas-tardio",
+  "nome": "Leão-das-cavernas",
+  "nomeIngles": "Dire Lion (Spotted Lion); Cave lion",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Pequeno",
+  "descricao": "O último leão da estepe gelada, sem juba e já do tamanho de um leão pequeno de hoje, no fim da última glaciação, antes de sumir. Apesar do nome, quase não usava caverna.",
+  "tags": [],
+  "imagem": null,
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "1,82 m de comprimento, 0,75 m de altura",
+    "peso": "88 kg",
+    "comprimento": 1.82,
+    "largura": 0.31,
+    "altura": 0.75
+  },
+  "locomocao": {
+    "terra": 7
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 7,
+    "arranque": 12,
+    "corrida": 16
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 5,
+    "destreza": 4,
+    "vigor": 5,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 3,
+    "influencia": 3,
+    "perspicacia": 1,
+    "compostura": 2
+  },
+  "skills": {
+    "briga": 4,
+    "bloqueio": 2,
+    "esquiva": 3,
+    "atletismo": 3,
+    "furtividade": 3,
+    "integridade": 3,
+    "prontidao": 3,
+    "resistencia": 4,
+    "empatia": 1,
+    "sobrevivencia": 3
+  },
+  "skills2": {
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "resistencia",
+      "foco": "frio",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Patada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "agarrar",
+      "descricao": "Mordida (na garganta): Dano do agarrão: 2 × Força = 10 por manutenção.",
+      "classe": "livro"
+    },
+    {
+      "nome": "derrubar",
+      "descricao": "Patada",
+      "classe": "livro"
+    },
+    {
+      "nome": "investida avassaladora",
+      "descricao": "Mordida: Investida e Derrubar.",
+      "classe": "livro"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Leão das Cavernas",
+      "texto": "Também chamado de leão-manchado; a forma tardia, das últimas eras do gelo, é bem menor que a antiga, do porte de uma leoa grande."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário ou em pequeno grupo pelos isótopos; bando pelo painel de Chauvet."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Força 5 (edição do autor): quem tem Força 1 ou menos não apara a mordida. Pequeno: contra o humano Médio, ele ganha +3 no corpo a corpo, e quem atira nele leva −3. Fica abaixo da principal em tudo o que sai do corpo: Força 5 contra 7, Vigor 5 contra 6 e 40 PV contra 54 (a principal passou à Faixa 4 com os 235 kg do autor), num corpo de 88 kg que carrega Leve 8,8 kg e ergue 373,33 kg. Num cenário de fim de era glacial, é o leão que encolheu e está sumindo."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains",
+      "Mountain"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "variantes": [],
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 40,
+    "esquiva": 14,
+    "bloqueio": 12,
+    "defesa": 14,
+    "defesaMental": 9,
+    "defesaSocial": 10,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 373.33,
+    "carga": {
+      "leve": 8.8,
+      "media": 17.6,
+      "pesada": 26.4,
+      "maxima": 35.2
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 7,
+        "arranque": 12,
+        "corrida": 16
+      }
+    }
+  },
+  "notasObservacao": [
+    "`massa`: 88 kg (em vigor na Etapa 2, 20/10/2026); antes: 80 kg ◆, o meio da faixa de 70 a 90 kg das últimas populações, no fim da última glaciação (Marciszak e Gornig 2024, lido via Wikipédia; o artigo não abriu); sem sexo nem região na fonte lida. A principal (o adulto típico do Pleistoceno Superior) tem 205 kg (Marciszak et al. 2022) (D-174)",
+    "`faixa`: 80 kg fica na Faixa 3, a da principal, com 40 PV (D-141, D-174)",
+    "`alvo`: 0,40 m² ◆ de lado, a silhueta do macho de Siegsdorf (1,10 m²) reduzida pelo ombro (0,725 ÷ 1,20) e pelo corpo (1,25 ÷ 2,10) publicados; Pequeno, 11% abaixo do corte do Médio. Pelo cubo da massa a partir da principal daria 0,51 m², Médio: as dimensões e a massa publicadas não fecham entre si num corpo de proporção igual (decisões 7 e 25, D-174)",
+    "`forca`: 5 (em vigor na Etapa 2, 20/10/2026); antes: 8, igual à principal (topo das âncoras, um acima do leão, sem feito medido **[extrapolação]**); a variante de 80 kg pode descer, a critério do autor (D-158, D-174)",
+    "`vigor`: 5, igual à principal (era 4 na ficha de hoje), pela fratura de úmero que sarou (Ghezzo et al. 2026, só por resumo de busca) e pelas mordidas de luta nos crânios (Rothschild e Diedrich 2012, o resumo não diz se sararam); provisório (D-174)",
+    "`social`: a espécie fica social (Influência 3, Compostura 2 como hoje) pelo painel de Chauvet e pelo pequeno grupo dos isótopos; a vida em grupo está em debate, e a Perspicácia fica em 1. Ver \"desvios\" no resumo do lote (D-174)",
+    "`empatia`: 1, nova, **[extrapolação]** do leão; sem fonte de leitura do outro (D-174)",
+    "`furtividade`: 3, a de hoje. Rothschild e Diedrich 2012 leem as lesões como de predador de perseguição, e não de emboscada; o levantamento a aponta como candidata a descer para 2 (D-174)",
+    "`especialidadesNaturais`: Resistência (frio) +2 pelo subpelo dos filhotes congelados, sem temperatura medida; o levantamento propunha 1 (D-174)",
+    "`pesoErguido` e `carga`: 373,33 kg (em vigor na Etapa 2, 20/10/2026); antes: provisórios. A carga sai da conta (8 kg de Leve com 80 kg ◆); o peso erguido sai do `calc6.mjs` (431,02 kg ◆, com a Força 6 da oitava rodada) com a Força, a Musculatura e a massa desta variante (decisões 14 e 16)",
+    "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): extinto, sem estimativa de velocidade, distância por dia ou perseguição; Rothschild e Diedrich 2012 o leem como predador de perseguição pelas lesões, interpretação sem número.",
+    "`velocidade`: congelada (decisão 23): 57 km/h, sem número real; dentro da arrancada do leão de Schaller (D-170)",
+    "`dimensoes`: ◆ a altura (0,725 m) e o corpo (1,25 m) são os meios das faixas publicadas para as últimas populações (ombro 70 a 75 cm, corpo 1,2 a 1,3 m; Marciszak e Gornig 2024, via Wikipédia); a cauda (0,51 m) e a largura (0,30 m) saem das estimativas da principal reduzidas na mesma proporção, sem fonte (D-147, D-174)",
+    "`id`: o `mon-dire-lion-spotted-lion` aponta para o leão-das-cavernas real, e o nome muda de \"Leão Atroz\" para \"Leão-das-cavernas\"; a imagem atual mostra um leão com juba (D-102, D-174)"
+  ]
+}

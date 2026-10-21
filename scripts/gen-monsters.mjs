@@ -127,7 +127,7 @@ function build(c) {
         const d = f.deslocamentoDeclarado ?? (passo ? tres(passo) : DESL[c.id] ?? { batalha: 3, arranque: 5, corrida: 7 });
         return { batalha: d.batalha, arranque: d.arranque, corrida: d.corrida };
       })(),
-      ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
+      ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: a.classe ?? classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
     },
     habilidades: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao })),
     // Dois formatos de poder convivem desde o B14 fase 2 (ver criatura-schema.mjs,
@@ -160,7 +160,7 @@ const problemas = Object.keys(CLASSE_OVERRIDE).filter((id) => !inim.some((c) => 
 for (const m of monsters) {
   if (!m.atributos) problemas.push(`${m.id}: sem atributos`);
   if (m.combate.pv == null) problemas.push(`${m.id}: sem combate.pv`);
-  if (!m.habilidades.length) problemas.push(`${m.id}: sem habilidades`);
+  if (!m.habilidades.length && !FICHA[m.id]?.v3) problemas.push(`${m.id}: sem habilidades`); // a ficha v3 pode não ter manobra nenhuma (o pteranodonte)
   if (!m.lore.length) problemas.push(`${m.id}: sem lore`);
   if (!m.dimensoes.medida) problemas.push(`${m.id}: sem dimensoes`);
   if (!m.ecologia.tipo) problemas.push(`${m.id}: sem ecologia.tipo`);

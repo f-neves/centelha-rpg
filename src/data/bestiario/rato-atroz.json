@@ -2,81 +2,108 @@
   "ordem": 274,
   "id": "rato-atroz",
   "idAntigo": "mon-dire-rat",
-  "nome": "Rato Atroz",
+  "nome": "Rato atroz",
   "nomeIngles": "Dire Rat",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
   "papel": "fera",
   "conceito": "animal Pequeno",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Um rato do tamanho de um cão, que defende o ninho e o território com mais ferocidade que o rato comum; raramente anda sozinho, e a mordida carrega febre.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/dire-rat.webp",
   "porte": "Pequeno",
   "dimensoes": {
-    "medida": "60 cm de comprimento",
-    "peso": "até 11 kg"
+    "medida": "1,62 m de comprimento, 0,32 m de altura",
+    "peso": "20 kg",
+    "comprimento": 1.62,
+    "largura": 0.24,
+    "altura": 0.32
   },
   "locomocao": {
-    "terra": 4,
+    "terra": 7,
     "natacao": 2,
     "escalada": 2
   },
+  "deslocamentoDeclarado": {
+    "batalha": 7,
+    "arranque": 10,
+    "corrida": 15
+  },
   "centelha": 0,
   "attrs": {
-    "forca": 2,
-    "destreza": 5,
-    "vigor": 3,
-    "influencia": 1,
-    "perspicacia": 1,
-    "compostura": 2,
+    "forca": 3,
+    "destreza": 3,
+    "vigor": 5,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 2,
+    "compostura": 1
   },
   "skills": {
-    "briga": 1,
-    "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "briga": 3,
+    "esquiva": 3,
+    "atletismo": 2,
+    "furtividade": 2,
+    "integridade": 2,
+    "prontidao": 2,
+    "resistencia": 2,
+    "empatia": 1,
+    "sobrevivencia": 4
+  },
+  "skills2": {
+    "equilibrio": 2,
+    "escalada": 2,
+    "natacao": 2,
+    "musculatura": 2
   },
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
+    "conviccao": 1,
+    "temperanca": 1,
     "valor": 2
   },
-  "willpower": 5,
-  "aparencia": 4,
+  "willpower": 4,
+  "aparencia": 5,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": 1,
+      "forca": false,
+      "classe": "leve"
     }
   ],
   "habilidades": [
     {
-      "nome": "Sentidos aguçados",
-      "descricao": "Enxerga na penumbra e sente cheiros com precisão incomum, raramente sendo pego de surpresa."
+      "nome": "morder e segurar",
+      "descricao": "morde e segura o território.",
+      "classe": "como luta"
     },
     {
-      "nome": "Mordida doentia",
-      "descricao": "Sua saliva carrega uma febre imunda; quem é mordido deve testar Vigor ou sofrer dano contínuo de fraqueza até se curar."
+      "nome": "em bando",
+      "descricao": "raramente age sozinho; ataca em número, cercando presa maior; o flanco e a Pressão do livro dão o ganho do bando.",
+      "classe": "como luta"
     },
     {
-      "nome": "Trepador e nadador",
-      "descricao": "Escala paredes e nada com a mesma facilidade com que corre, escapando por qualquer fresta."
-    },
+      "nome": "Sentidos",
+      "descricao": "faro: Prontidão (faro) +2; audição: Prontidão (audição) +2 (Especialidades naturais, as do rato). · vibração e visão fraca: texto, como no rato."
+    }
+  ],
+  "doencas": [
     {
-      "nome": "Vive em bando",
-      "descricao": "Raramente age sozinho; costuma atacar em número, cercando presas maiores."
+      "nome": "Doença no jogo",
+      "texto": "Leptospirose · Virulência 10 · dia · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
     }
   ],
   "lore": [
@@ -91,6 +118,18 @@
     {
       "titulo": "Companheiro de necessidade",
       "texto": "Alguns batedores e ladrões criam ratos-selvagens como aliados leais, aproveitando sua agilidade para escalar paredes e vasculhar túneis estreitos."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: colônia."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Doença no jogo: Leptospirose · Virulência 10 · dia · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Um rato do tamanho de um cão grande, que morde a 4,5, defende o ninho e não se assusta fácil (Defesa Mental 8). 30 PV e Absorção de Impacto 5, como o rato gigante: os dois estão na Faixa 2 com o mesmo Vigor (5, um acima do rato). Ergue 110,7 kg. Ficha provisória: revista quando chegar a vez das versões atrozes. Contra um humano Médio, +3 no acerto corpo a corpo."
     }
   ],
   "ecologia": {
@@ -127,5 +166,51 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 1
+  "ameacaLegada": 1,
+  "v3": {
+    "pv": 30,
+    "esquiva": 12,
+    "bloqueio": 6,
+    "defesa": 12,
+    "defesaMental": 8,
+    "defesaSocial": 10,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 110.71,
+    "carga": {
+      "leve": 2.66,
+      "media": 5.32,
+      "pesada": 7.98,
+      "maxima": 10.64
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 7,
+        "arranque": 10,
+        "corrida": 15
+      }
+    }
+  },
+  "notasObservacao": [
+    "`ficha`: provisória; revista quando chegar a vez das versões atrozes (D-177)",
+    "`massa`: 20 kg por escolha da Bestiarista, para o atroz ser maior que o rato gigante; a ficha atual dá até 11 kg e 60 cm, e os mesmos números do gigante (D-105, D-174)",
+    "`gigante`: gigante da D-105 escalado do rato de 0,3 kg pelo cubo (fator 4,05); todas as medidas são extrapolação (D-105)",
+    "`area`: 0,20 m² de lado pela conta nova, contra 0,28 da ficha de hoje; o Alvo segue Pequeno (decisões 7 e 25)",
+    "`forca`: 3, um acima do rato gigante e abaixo da Força de referência de 20 kg (4,2), sem feito medido (D-158, D-169, D-177)",
+    "`vigor`: +1 sobre o animal de base (rato, Vigor 4) (D-176, D-177)",
+    "`habilidades`: Briga 3, Integridade 2, a Especialidade Briga (defendendo o ninho) 1 e Vontade 4, acima do rato, são extrapolação do \"atroz\" mais feroz, sem dado real (D-174)",
+    "`empatia`: 1 pela colônia do rato e pelo bando do d20; nenhum dado de leitura do humano (D-174)",
+    "`natacao` e `escalada`: 2 cada, pelas do rato, sem número (D-174)",
+    "`velocidade`: congelada (decisão 23); 55 km/h contra 9,7 km/h do rato real, +467% (D-170)",
+    "`pesoErguido` e `carga`: provisórios (decisões 14 e 16); a carga é só registro (D-162, D-169)",
+    "`pv`: 30, igual ao do rato gigante: mesma faixa e mesmo Vigor; a D-135 não dá bônus sem justificativa (D-135, D-145)",
+    "`couraca`: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): sem dado do atroz. Do rato, [comparação]: esteira até a exaustão a 1,0 a 1,1 km/h (Dellavechia-De-Carvalho 2025, teste aeróbico de laboratório); forrageia de 30 a 150 m do ninho toda noite (UC IPM).",
+    "`resistencia`: 2 e Resistência (doenças) +2, os dois pelo rato, [comparação] (D-174)",
+    "fonte: a largura do rato de base (0,06 m), que a escala multiplica, continua só por estimativa do Arquiteto (D-174)"
+  ]
 }

@@ -2,86 +2,123 @@
   "ordem": 251,
   "id": "leao-das-cavernas",
   "idAntigo": "mon-dire-lion-spotted-lion",
-  "nome": "Leão Atroz",
-  "nomeIngles": "Dire Lion",
+  "nome": "Leão-das-cavernas",
+  "nomeIngles": "Dire Lion (Spotted Lion); Cave lion",
   "categoria": "Animal",
   "categoriaLegada": "Monstro",
-  "papel": "elite",
+  "papel": "fera",
   "conceito": "monstro Médio",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Leão sem juba da estepe gelada, do tamanho de um leão grande de hoje, que caçava rena e roubava o filhote do urso-das-cavernas. Apesar do nome, quase não usava caverna.",
   "descricaoLegada": "Aberração humanoide de lendas antigas.",
   "tags": [
     "monstro"
   ],
   "imagem": "bestiario/dire-lion-spotted-lion.webp",
-  "porte": "Grande",
+  "porte": "Médio",
   "dimensoes": {
-    "medida": "2,5 m de comprimento",
-    "peso": "300 kg"
+    "medida": "2,89 m de comprimento, 1,17 m de altura",
+    "peso": "235 kg",
+    "comprimento": 2.89,
+    "largura": 0.49,
+    "altura": 1.17
   },
   "locomocao": {
-    "terra": 4
+    "terra": 7
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 7,
+    "arranque": 12,
+    "corrida": 16
   },
   "centelha": 0,
   "attrs": {
-    "forca": 8,
-    "destreza": 4,
-    "vigor": 5,
-    "influencia": 2,
-    "perspicacia": 1,
-    "compostura": 2,
-    "percepcao": 3,
+    "forca": 7,
+    "destreza": 3,
+    "vigor": 6,
+    "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 1
+    "raciocinio": 3,
+    "influencia": 3,
+    "perspicacia": 1,
+    "compostura": 2
   },
   "skills": {
-    "briga": 5,
-    "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "briga": 4,
+    "bloqueio": 2,
+    "esquiva": 4,
+    "atletismo": 4,
+    "furtividade": 3,
+    "integridade": 3,
+    "prontidao": 2,
+    "resistencia": 4,
+    "empatia": 1,
+    "sobrevivencia": 3
   },
+  "skills2": {
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "resistencia",
+      "foco": "frio",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
-    "valor": 2
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
   },
-  "willpower": 9,
-  "aparencia": 4,
+  "willpower": 3,
+  "aparencia": 6,
   "ataques": [
     {
-      "nome": "Garras e mordida",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Patada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
       "mao": 1,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
   "habilidades": [
     {
-      "nome": "Investida Avassaladora",
-      "descricao": "Ao avançar em carga, ataca com a mordida e as duas garras no mesmo movimento, derrubando a presa antes que ela reaja."
+      "nome": "agarrar",
+      "descricao": "Mordida (na garganta): Dano do agarrão: 2 × Força = 14 por manutenção.",
+      "classe": "livro"
     },
     {
-      "nome": "Garras Rasgando",
-      "descricao": "Agarra o alvo com a mordida e crava as garras traseiras repetidamente enquanto o segura, rasgando a carne a cada rodada."
+      "nome": "derrubar",
+      "descricao": "Patada",
+      "classe": "livro"
     },
     {
-      "nome": "Faro e Visão Noturna",
-      "descricao": "Enxerga bem na penumbra e fareja presas mesmo escondidas ou distantes."
-    },
-    {
-      "nome": "Predador Furtivo",
-      "descricao": "Move-se com grande agilidade e quase sem ruído entre a vegetação densa, perfeito para emboscadas."
+      "nome": "investida avassaladora",
+      "descricao": "Mordida: Investida e Derrubar.",
+      "classe": "livro"
     }
   ],
   "lore": [
     {
       "titulo": "Leão das Cavernas",
-      "texto": "Também chamado de leão-manchado, este predador imenso pode medir mais de quatro metros e pesar toneladas."
+      "texto": "Também chamado de leão-manchado, este predador passa de 2,5 m do focinho à cauda e de 200 kg, maior que o leão de hoje."
     },
     {
       "titulo": "Crueldade Selvagem",
@@ -90,6 +127,14 @@
     {
       "titulo": "Prole de Deuses Cruéis",
       "texto": "Muitas tribos creem que estes leões descendem de divindades malignas e caçam a fera assim que percebem sua presença nas redondezas."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário ou em pequeno grupo pelos isótopos; bando pelo painel de Chauvet."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Força 7: quem tem Força 3 ou menos não apara a mordida. Médio como o humano, sem bônus de Alvo. É o leão com um degrau a mais de Força (7 contra 6) e um de Vigor (6 contra 5), que pelos 235 kg dá 54 PV, e o frio da estepe; os dois ficam na Couraça nível 1, e quanto ela vale fica para depois. Num cenário de era glacial, é o predador que disputa a caverna com o urso."
     }
   ],
   "ecologia": {
@@ -126,5 +171,50 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 54,
+    "esquiva": 14,
+    "bloqueio": 10,
+    "defesa": 14,
+    "defesaMental": 9,
+    "defesaSocial": 10,
+    "absorcao": {
+      "impacto": 6,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 836.88,
+    "carga": {
+      "leve": 23.5,
+      "media": 47,
+      "pesada": 70.5,
+      "maxima": 94
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 7,
+        "arranque": 12,
+        "corrida": 16
+      }
+    }
+  },
+  "notasObservacao": [
+    "`massa`: 235 kg (em vigor na Etapa 2, 20/10/2026); antes: 205 kg, o adulto típico: a média simples dos meios das faixas publicadas para o macho (200 a 300 kg, 250) e para a fêmea (140 a 180 kg, 160) do Pleistoceno Superior (Marciszak et al. 2022, estimativa pelos ossos). Era 250 kg, o macho. Outras estimativas: P. fossilis de 400 a 500 kg e últimas populações de 70 a 90 kg (Marciszak e Gornig 2024); ficha atual de 300 kg e o d20 até 1,6 t, sem base científica (D-174)",
+    "`faixa`: o típico de 205 kg fica 7% abaixo do corte de 220 kg, na Faixa 3, com 40 PV; o macho (250 kg, 14% acima do corte) fica na Faixa 4, com 50 PV, e por isso é a candidata a segunda ficha (D-141, D-174)",
+    "`alvo`: 0,96 m² de lado, a silhueta do leão escalada para 205 kg (1,10 m² no macho); a borda da R2 de hoje (3,99) não vale mais, e o Alvo fica Médio com folga (decisões 7 e 25, D-174)",
+    "`forca`: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8 ◆ (era 9), topo das âncoras, um acima do leão, sem feito medido **[extrapolação]** (D-158, D-174)",
+    "`vigor`: 6 (em vigor na Etapa 2, 20/10/2026); antes: 5 ◆ (era 4), pela fratura de úmero que sarou (Ghezzo et al. 2026, só por resumo de busca) e pelas mordidas de luta nos crânios (Rothschild e Diedrich 2012, o resumo não diz se sararam); provisório (D-174)",
+    "`social`: a espécie fica social (Influência 3, Compostura 2 como hoje) pelo painel de Chauvet e pelo pequeno grupo dos isótopos; a vida em grupo está em debate, e a Perspicácia fica em 1. Ver \"desvios\" no resumo do lote (D-174)",
+    "`empatia`: 1, nova, **[extrapolação]** do leão; sem fonte de leitura do outro (D-174)",
+    "`furtividade`: 3, a de hoje. Rothschild e Diedrich 2012 leem as lesões como de predador de perseguição, e não de emboscada; o levantamento a aponta como candidata a descer para 2 (D-174)",
+    "`especialidadesNaturais`: Resistência (frio) +2 pelo subpelo dos filhotes congelados, sem temperatura medida; o levantamento propunha 1 (D-174)",
+    "`pesoErguido` e `carga`: provisórios. A carga sai da conta (20,5 kg de Leve com 205 kg); o peso erguido sai do `calc6.mjs` (1.007,1 kg), e era 657,37 kg pela D-162 (decisões 14 e 16)",
+    "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): extinto, sem estimativa de velocidade, distância por dia ou perseguição; Rothschild e Diedrich 2012 o leem como predador de perseguição pelas lesões, interpretação sem número.",
+    "`velocidade`: congelada (decisão 23): 57 km/h, sem número real; dentro da arrancada do leão de Schaller (D-170)",
+    "`dimensoes`: a altura (1,12 m) e o corpo (1,97 m) são os do esqueleto do macho de Siegsdorf (1,20 m e 2,10 m) escalados pelo cubo da massa para 205 kg (Gross 1992, tese não aberta, citado por Marciszak et al. 2022, que diz \"estimado\"); a cauda (0,85 m) e a largura (0,50 m, a do leão) são estimadas sem fonte (D-147, D-174)",
+    "`id`: o `mon-dire-lion-spotted-lion` aponta para o leão-das-cavernas real, e o nome muda de \"Leão Atroz\" para \"Leão-das-cavernas\"; a imagem atual mostra um leão com juba (D-102, D-174)"
+  ]
 }

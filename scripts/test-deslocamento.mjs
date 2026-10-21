@@ -73,7 +73,7 @@ ok(Math.round(3 * frac) === 2, `baixa estatura sobre 3 deu ${Math.round(3 * frac
 // E o bestiário do outro: uma criatura de 30 ft tem de sair com batalha 3, uma de
 // 20 ft com 2. Procuramos um exemplar real de cada, para a prova não virar
 // aritmética sobre si mesma.
-const de = (ft) => Object.entries(DESL).find(([, v]) => v.ft === ft);
+const de = (ft) => Object.entries(DESL).find(([, v]) => v.ft === ft && v.origem !== 'ficha'); // a ficha v3 não passa pela régua dos pés
 const trinta = de(30), vinte = de(20);
 ok(trinta && trinta[1].batalha === 3, `30 ft deveria dar batalha 3, veio ${trinta?.[1].batalha}`);
 ok(trinta && trinta[1].arranque === 5 && trinta[1].corrida === 7,
@@ -83,7 +83,7 @@ ok(vinte && vinte[1].batalha === 2, `20 ft deveria dar batalha 2, veio ${vinte?.
 // -------------------------------------------------- o número em pés é plausível
 for (const [id, v] of Object.entries(DESL)) {
   if (!Number.isFinite(v.ft) || v.ft < 0 || v.ft > 300) falhas.push(`${id}: ft fora da faixa (${v.ft})`);
-  if (!['fonte', 'tabela'].includes(v.origem)) falhas.push(`${id}: origem desconhecida (${v.origem})`);
+  if (!['fonte', 'tabela', 'ficha'].includes(v.origem)) falhas.push(`${id}: origem desconhecida (${v.origem})`);
 }
 
 // ------------------------------------------------- o bestiário ainda tem relevo

@@ -2,90 +2,149 @@
   "ordem": 143,
   "id": "formiga-gigante",
   "idAntigo": "mon-giant-ant",
-  "nome": "Formiga Gigante",
+  "nome": "Formiga-gigante",
   "nomeIngles": "Giant Ant",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
   "papel": "fera",
   "conceito": "praga Médio",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Anda sozinha pelo chão da mata atrás de presa; o ninho fica raso no solo, com algumas dezenas de irmãs.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/giant-ant.webp",
   "porte": "Médio",
   "dimensoes": {
-    "medida": "2 m de comprimento",
-    "peso": "150 kg"
+    "medida": "2 m de comprimento, 0,65 m de altura",
+    "peso": "41 kg",
+    "comprimento": 2,
+    "largura": 0.35,
+    "altura": 0.65
   },
   "locomocao": {
-    "terra": 5,
+    "terra": 3,
     "escalada": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 0,
   "attrs": {
-    "forca": 4,
-    "destreza": 2,
-    "vigor": 5,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 3,
-    "percepcao": 3,
+    "forca": 3,
+    "destreza": 3,
+    "vigor": 4,
+    "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 3
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
-    "briga": 2,
-    "esquiva": 0,
-    "prontidao": 1,
-    "integridade": 3
+    "briga": 3,
+    "bloqueio": 2,
+    "esquiva": 3,
+    "atletismo": 3,
+    "furtividade": 2,
+    "prontidao": 2,
+    "resistencia": 2,
+    "sobrevivencia": 2
   },
+  "skills2": {
+    "escalada": 1,
+    "musculatura": 5
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
-    "valor": 2
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
   },
-  "willpower": 5,
-  "aparencia": 4,
+  "willpower": 3,
+  "aparencia": 6,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Mandíbulas",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Ferrão",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
   "habilidades": [
     {
-      "nome": "Mandíbulas Prensoras",
-      "descricao": "A mordida da formiga gigante pode prender a vítima no lugar, facilitando golpes seguintes."
+      "nome": "agarrar",
+      "descricao": "Mandíbulas: Dano do agarrão: 2 × Força = 6. A ficha antiga do bestiário prende com a mandíbula e ferroa em seguida; aqui é um ataque por ação.",
+      "classe": "livro"
     },
     {
-      "nome": "Ferrão Venenoso",
-      "descricao": "O ferrão injeta um veneno que enfraquece o corpo da vítima a cada rodada, drenando sua força física até ser tratado."
+      "nome": "arrastar a presa",
+      "descricao": "Mandíbulas: leva o que agarrou, até o Peso erguido.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Mente Simples",
-      "descricao": "Sendo um inseto, a formiga gigante é imune a efeitos que manipulam ou perturbam a mente."
+      "nome": "escalar",
+      "descricao": "anda em parede e barranco com a mesma facilidade do chão.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Escaladora Ágil",
-      "descricao": "Move-se com a mesma facilidade no chão e em superfícies verticais, perseguindo presas por paredes e barrancos."
+      "nome": "Sentidos",
+      "descricao": "faro pelas antenas: Prontidão (faro) +2 (Especialidade natural), alcance. · visão: nada achado."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Ferrão de gigante · Potência 16 · Tick (sangue) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pelo Ferrão"
     }
   ],
   "lore": [
     {
       "titulo": "Sociedade",
-      "texto": "Assim como suas primas minúsculas, as formigas gigantes vivem em colônias organizadas, com operárias, soldados, zangões e uma rainha, tudo em escala aterrorizante."
+      "texto": "Vive em colônia pequena, de umas quarenta operárias e sem rainha, cada uma do tamanho de um cão."
     },
     {
       "titulo": "Caçada",
-      "texto": "Trabalham em conjunto, cercando presas maiores e usando o número para compensar qualquer desvantagem individual."
+      "texto": "Caça sozinha: segura a presa com as mandíbulas, ferroa e a arrasta para o ninho."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: colônia pequena (média de 41 operárias, 30 a 96), sem rainha; caça sozinha."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Ferrão de gigante · Potência 16 · Tick (sangue) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pelo Ferrão"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio contra Médio: sem bônus de Alvo. A Força 3 não tira o Bloqueio de ninguém (precisaria do dobro e ao menos 4 a mais). Mandíbula 6,5 em média, ferrão 4,5 com o veneno. A cutícula é Couraça nível 2, e quanto ela tira da espada, da flecha, da lança e do golpe de Impacto fica para depois. 37 PV (Vigor 4), Resistência 2. Arrasta 265,55 kg pela Musculatura 5. O perigo da formiga é o número: onde há uma, a colônia está perto."
     }
   ],
   "ecologia": {
@@ -122,5 +181,49 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 37,
+    "esquiva": 12,
+    "bloqueio": 10,
+    "defesa": 12,
+    "defesaMental": 5,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 2,
+    "pesoErguido": 265.55,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    }
+  },
+  "notasObservacao": [
+    "gigante: escalada da Dinoponera gigantea aos 2 m da ficha atual do Centelha (correção da sexta rodada: vale o tamanho do site), k = 58,82 no comprimento e k³ na massa: 41 kg (era 2,21 m, k = 65 e 55 kg); tudo do tamanho é [extrapolação] (D-105, `pedido-lotes.md` §3)",
+    "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; os 2 m do site passam no critério (a Dinoponera de base é Minúscula, cerca de 0,0002 m² de cima, e a gigante é Média, três categorias acima, o porte normal do item 7) e ficam; a área de 0,786 m² está 75% acima do corte do Pequeno e 46% abaixo do do Grande (D-174)",
+    "alvo: Médio pela área de cima (0,79 m², a de 0,96 m² na razão (2 ÷ 2,21)², `tamanho-fichas-v2`); a área de hoje (1,59 m²) era altura × comprimento. A categoria não muda. O Alvo decide acerto e furtividade, e não o Vigor (oitava rodada)",
+    "massa: 0,2 g na real, deduzido de Fourcassié e Oliveira 2002, e não pesagem direta",
+    "dimensoes: altura (11 mm) e largura (6 mm) da real estimadas; a largura repete a largura medida da cabeça",
+    "anatomia: artrópode, provisória (D-175), não calibrada",
+    "pesoErguido: 265,55 kg pela fórmula das decisões 14 e 16, provisório; subiu de 81,75 kg (ficha de hoje) pela Musculatura 5. Não tem Carga",
+    "velocidade: congelada (decisão 23); 26 km/h, sem velocidade real para comparar (D-170)",
+    "forca: 3, abaixo da referência da massa (5,4), com a força de carregar na Musculatura (D-158); reanalisada na sétima rodada e mantida, para não contar a força das formigas duas vezes (D-174)",
+    "musculatura: 5, excepcional pela força de carregar das formigas; os feitos reais não escalam inteiros, por isso não 6 (D-174)",
+    "escalada: 1, nova, por comparação com outras formigas e pelo texto da ficha de hoje; a D. gigantea forrageia no chão (D-174)",
+    "furtividade: 2, nova, pelo levantamento (caça sozinha no folhiço, tegumento pardo)",
+    "social: a colônia tem hierarquia linear e ritual de fronteira com antena e mandíbula (Wikipédia; Fourcassié e Oliveira 2002), e a ficha a trata como não social. Influência, Perspicácia e Compostura já eram 1 hoje, então nada muda no número (D-174)",
+    "veneno: sem id no catálogo; o efeito real está na pesquisa (D-112)",
+    "couraca: nível 2 (faixa 1 a 2), reanalisado na sétima rodada com os 41 kg (era 3, posto com 55 kg); a vespa-gigante (2, de outro lote) tem na razão \"abaixo da formiga, que é mais rígida\", e as duas ficam agora no mesmo nível; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): arrasta presa grande até o ninho por até 15 min (Fourcassié e Oliveira 2002, observação de campo, [medido]); forrageia de manhã cedo e à tarde (Wikipédia). Distância por dia não achada.",
+    "integridade: 3 pelo ritual de fronteira entre colônias (Fourcassié e Oliveira 2002); reação a gente não achada",
+    "comparacao: a ficha do D&D 3.5 não foi lida (site bloqueado)",
+    "vigor: 4 ◆, revisto na oitava rodada pelo corpo e pela massa: +1 sobre o animal de base (Dinoponera gigantea, Vigor 3, presumido), o mínimo da D-176; corpo de inseto de 41 kg (cutícula na Couraça, traqueia), ao lado do besouro-veado-gigante (39 kg, 4) e acima do lobo (50 kg, 3). Era 5 (D-174)",
+    "base: o animal de base não tem ficha; Vigor 3 presumido; PV pela decisão 21 [provisório]"
+  ]
 }

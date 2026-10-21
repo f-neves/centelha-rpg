@@ -3,77 +3,83 @@
   "id": "pteranodonte",
   "idAntigo": "mon-pteranodon",
   "nome": "Pteranodonte",
-  "nomeIngles": "Dinosaur, Pteranodon",
+  "nomeIngles": "Pteranodon",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
   "papel": "fera",
   "conceito": "animal Grande",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Pescador de mar aberto, que pousava na água para pegar peixe com o bico. Presa de plesiossauro e de tubarão.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/pteranodon.webp",
   "porte": "Grande",
   "dimensoes": {
-    "medida": "envergadura de 9 metros",
-    "peso": "18 kg"
+    "medida": "2,1 m de comprimento, 0,92 m de altura",
+    "peso": "25,5 kg",
+    "comprimento": 2.1,
+    "largura": 0.46,
+    "altura": 0.92,
+    "envergadura": 5.15
   },
   "locomocao": {
-    "voo": 5,
+    "voo": 4,
     "terra": 1
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 3
   },
   "centelha": 0,
   "attrs": {
-    "forca": 6,
-    "destreza": 5,
-    "vigor": 5,
-    "influencia": 3,
-    "perspicacia": 1,
-    "compostura": 4,
-    "percepcao": 4,
+    "forca": 2,
+    "destreza": 2,
+    "vigor": 2,
+    "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
-    "briga": 3,
-    "esquiva": 1,
+    "briga": 2,
+    "esquiva": 2,
+    "atletismo": 1,
+    "integridade": 1,
     "prontidao": 2,
-    "integridade": 4
+    "resistencia": 2,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "natacao": 1,
+    "voo": 2
   },
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
-    "valor": 2
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 1
   },
-  "willpower": 5,
-  "aparencia": 4,
+  "willpower": 3,
+  "aparencia": 6,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Bicada",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 6
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
-  "habilidades": [
-    {
-      "nome": "Visão penumbra e faro",
-      "descricao": "Enxerga bem em pouca luz e fareja presas."
-    },
-    {
-      "nome": "Voo desajeitado",
-      "descricao": "Voa razoavelmente rápido, mas sem manobra alguma; prefere pousar no chão para lutar com presas que não consegue carregar pelos ares."
-    },
-    {
-      "nome": "Bicada",
-      "descricao": "Golpeia com o bico comprido e pontudo, sem dentes, perfurando pelo impacto."
-    }
-  ],
+  "habilidades": [],
   "lore": [
     {
       "titulo": "Réptil alado, não dinossauro",
@@ -82,6 +88,14 @@
     {
       "titulo": "Caçador costeiro",
       "texto": "Voa em bandos sobre litorais e recifes, mergulhando para arrancar presas da água ou da praia."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: colônia."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Em voo é Grande: o humano Médio ganha +3 no acerto corpo a corpo contra ele, e quem atira nele também ganha +3; ele não ganha nada contra o humano. No chão, de asas fechadas, é Médio, sem bônus para ninguém. Um humano de Força 6 tira o Bloqueio dele; ele não tira o de ninguém. No chão é lento (3 m por Tick) e frágil (24 PV, Impacto 2). No ar faz 10 m por Tick em cruzeiro, pouco acima da velocidade em que cairia; não mergulha, desce planando. A bicada de 3,5 incomoda e não mata."
     }
   ],
   "ecologia": {
@@ -119,5 +133,43 @@
     "crConf": "conhecido"
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 24,
+    "esquiva": 8,
+    "bloqueio": 4,
+    "defesa": 8,
+    "defesaMental": 6,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 2,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 68.15,
+    "deslocamento": {
+      "terra": {
+        "batalha": 1,
+        "arranque": 2,
+        "corrida": 3
+      },
+      "voo": {
+        "batalha": 4,
+        "cruzeiro": 10
+      }
+    }
+  },
+  "notasObservacao": [
+    "`faixa`: o adulto típico de 23,605 kg (média simples do macho de 36,68 e da fêmea de 10,53 kg, Witton 2008) fica na Faixa 2 (até 35 kg), PV 24; era Faixa 3 e 34 PV antes da v3. O macho sozinho cruza o corte e iria à Faixa 3 (31 PV). As estimativas do macho vão de 18,6 a 36,7 kg (Goto 2022) e a 50 kg (USNM 50130) (D-174)",
+    "`vigor`: 2, provisório: réptil voador de osso oco, sem dado (decisão 10, D-174)",
+    "`pesoErguido`: 68,15 kg (em vigor na Etapa 2, 20/10/2026); antes: 65,98 kg pela fórmula nova (decisões 14 e 16), com os 23,605 kg, provisório: quase três vezes a massa, sem nenhum feito de carga para conferir. Era 69,77 kg pelos 27 kg de trabalho. Não é quadrúpede, então não tem `carga` (D-160, D-174)",
+    "`alvo`: Grande pela silhueta de asas abertas, 3,40 m²: a da `tamanho-fichas-v2` (4,02 m², macho de 5,6 m) escalada pelo cubo da massa ao adulto típico. A fêmea (10,53 kg) segue Grande de asas abertas (1,98 m²) e cai a Pequeno de asas fechadas (0,34 m²), pela mesma escala sobre a forma do macho (D-174)",
+    "`perspicacia`: 1 pela diretriz 1 (não é espécie social). As colônias são extrapolação da razão de sexos nos fósseis; se o autor ler a colônia como vida social, volta a 2 (D-174)",
+    "`natacao`: 1, nova, provisória e **[extrapolação]**: boiaria e pescaria nadando (Bennett 1994). A ficha de hoje dizia que a anatomia de ave não nada; a Habilidade não mexe no deslocamento, que está congelado (decisão 23, D-174)",
+    "`empatia`: 0, provisória (D-174)",
+    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois. As picnofibras não foram confirmadas no Pteranodon (pesquisa, Defesa natural)",
+    "jornada (nota de pesquisa, não é regra): sem dado medido. Asa de proporção 9:1, como a do albatroz (Padian 1983, não confirmado no resumo); planeio dinâmico sobre o mar com batida de asa de vez em quando (Witton e Habib 2010), contra planeio em térmicas, ruim no voo dinâmico (Goto e colegas 2022); razão de planeio dos pterossauros estudados de 10 a 17 (Goto 2022) [extrapolação]. A leitura do voo está em disputa entre os dois estudos.",
+    "`dimensoes.largura`: 0,46 m, a estimativa do Arquiteto para o macho (0,5 m, sem fonte) escalada pelo cubo da massa; a altura (no ombro) e o comprimento sem a cauda também são estimativa pela escala do USNM 50130, escalados da mesma forma (fator 0,919)"
+  ]
 }

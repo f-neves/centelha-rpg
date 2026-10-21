@@ -1,0 +1,166 @@
+{
+  "id": "urso-negro",
+  "nome": "Urso-negro-americano",
+  "nomeIngles": "Black Bear",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Médio",
+  "descricao": "Urso tímido e curioso das florestas, que foge de gente e sobe em árvore. Ataca pouco, mas o macho que ataca costuma estar caçando, e não se defendendo.",
+  "tags": [],
+  "imagem": null,
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,62 m de comprimento, 0,87 m de altura",
+    "peso": "107 kg",
+    "comprimento": 1.62,
+    "largura": 0.57,
+    "altura": 0.87
+  },
+  "locomocao": {
+    "terra": 6
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 6,
+    "arranque": 11,
+    "corrida": 14
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 6,
+    "destreza": 3,
+    "vigor": 4,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 2,
+    "bloqueio": 2,
+    "esquiva": 2,
+    "furtividade": 2,
+    "integridade": 1,
+    "prontidao": 2,
+    "resistencia": 3,
+    "sobrevivencia": 3
+  },
+  "skills2": {
+    "escalada": 2,
+    "musculatura": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Patada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "arrastar a presa para o mato",
+      "descricao": "Mordida: arrasta a presa para comer escondido, até o Peso erguido.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "virar pedra",
+      "descricao": "vira pedra e tronco com a pata atrás de comida.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "faro: Prontidão (faro) +3; notar e rastrear pelo cheiro; alcance. NPS e ADW. · visão e audição: sem Especialidade; \"comparáveis às humanas\"."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Força 6: quem tem Força 2 ou menos não apara a patada. Médio como o humano, então ninguém ganha o bônus de acerto pelo Alvo. A pele fica no nível 1 de Couraça, ao lado do cavalo; quanto ela tira do golpe fica para depois, e o Vigor 4 segura o Impacto. Corre mais que qualquer humano e sobe em árvore (Escalada 2, mais a das garras), então fugir dele para cima de uma árvore não funciona. Aguenta meses sem comer."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Mountain"
+    ],
+    "clima": [
+      "Temperate",
+      "Cold"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "variantes": [],
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 37,
+    "esquiva": 10,
+    "bloqueio": 10,
+    "defesa": 10,
+    "defesaMental": 6,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 504.59,
+    "carga": {
+      "leve": 10.7,
+      "media": 21.4,
+      "pesada": 32.1,
+      "maxima": 42.8
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 6,
+        "arranque": 11,
+        "corrida": 14
+      }
+    }
+  },
+  "notasObservacao": [
+    "pesoErguido: 504,59 kg (em vigor na Etapa 2, 20/10/2026); antes: 480,47 kg pela fórmula das decisões 14 e 16 (`calc6.mjs`, com o adulto típico de 97,5 kg), provisório até a fórmula fechar (D-169, D-174).",
+    "carga: 9,75 kg de Leve pela conta da D-122 (sem carga medida), provisória pela mesma razão (D-169, D-172).",
+    "velocidade: congelada (decisão 23); os números são os de 12/10, e batem com o real dentro da divergência das fontes (D-170).",
+    "dimensoes.largura: 0,55 m (os 0,60 m estimados pelo Arquiteto para o macho, sem fonte, escalados pelo cubo da massa); o Alvo sai da silhueta de lado (D-147, D-174).",
+    "variantes.machoGrande: a faixa (4) muda os PV, e não mais a Couraça; o Alvo do macho de até 409 kg não sai sem as dimensões dele (D-174).",
+    "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "habilidades.resistencia: 2, e não o 3 do levantamento, porque o fato que o sustentava (a hibernação) foi para a Especialidade natural (fome) +3; contar nos dois lugares seria contar duas vezes (D-174).",
+    "habilidades.escalada: 2, e a Especialidade natural (árvore) +1, sem velocidade de escalada medida; o valor é leitura do \"escala com habilidade\" (NPS), provisório (D-174).",
+    "habilidades.natacao: 0 por falta de dado; ursos nadam, mas a pesquisa não traz número do urso-negro (D-174).",
+    "especialidades.sobrevivencia: a navegação \"extraordinária e pouco entendida\" (ADW) pode ser do corpo (sentido de direção) e não hábito; ficou como Especialidade do livro até a pesquisa dizer o mecanismo (D-174)."
+  ]
+}

@@ -2,113 +2,133 @@
   "ordem": 46,
   "id": "aranha-gigante",
   "idAntigo": "mon-aranha-gigante",
-  "nome": "Aranha Gigante",
-  "nomeIngles": "Giant Spider",
+  "nome": "Aranha-gigante",
+  "nomeIngles": "Giant Spider (PF1); Monstrous Spider, Medium (D&D 3.5)",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
   "papel": "fera",
   "conceito": "praga Médio",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Espera na toca funda do chão alagado da mata; sai à noite, agarra a presa, morde e arrasta para dentro. Acuada, ergue as patas e chia antes de morder.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/aranha-gigante.webp",
   "porte": "Médio",
   "dimensoes": {
-    "medida": "Corpo 0,6 m, envergadura das pernas 1,8 m",
-    "peso": "25 kg"
+    "medida": "0,6 m de comprimento, 0,33 m de altura",
+    "peso": "17,2 kg",
+    "comprimento": 0.6,
+    "largura": 0.27,
+    "altura": 0.33
   },
   "locomocao": {
     "terra": 3,
     "escalada": 2
   },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 6,
+    "corrida": 7
+  },
   "centelha": 0,
   "attrs": {
-    "forca": 2,
-    "destreza": 5,
-    "vigor": 3,
+    "forca": 3,
+    "destreza": 3,
+    "vigor": 4,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 3,
     "influencia": 1,
     "perspicacia": 1,
-    "compostura": 1,
-    "percepcao": 2,
-    "inteligencia": 1,
-    "raciocinio": 2
+    "compostura": 1
   },
   "skills": {
-    "briga": 2,
-    "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "briga": 3,
+    "bloqueio": 1,
+    "esquiva": 2,
+    "atletismo": 2,
+    "furtividade": 3,
+    "integridade": 2,
+    "prontidao": 2,
+    "resistencia": 2,
+    "sobrevivencia": 2
   },
+  "skills2": {
+    "escalada": 3,
+    "musculatura": 2,
+    "disparo": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "vibração",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "na toca",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
+    "conviccao": 1,
+    "temperanca": 1,
     "valor": 2
   },
-  "willpower": 5,
-  "aparencia": 4,
+  "willpower": 3,
+  "aparencia": 6,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Presas (quelíceras)",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
-    }
-  ],
-  "poderes": [
-    {
-      "id": "teia",
-      "nome": "Teia",
-      "tipo": "natural",
-      "resiste": "esquiva",
-      "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
-      "usos": {
-        "periodo": "cena",
-        "quantidade": 3,
-        "recarga": "1 hora"
-      }
-    },
-    {
-      "id": "mordida-venenosa",
-      "nome": "Mordida venenosa",
-      "tipo": "natural",
-      "resiste": "corpo",
-      "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-      "usos": {
-        "periodo": "cena",
-        "quantidade": 3,
-        "recarga": "1 hora"
-      },
-      "ataque": "Garras e presas"
+      "perf": 1,
+      "ticks": 6,
+      "classe": "media"
     }
   ],
   "habilidades": [
     {
-      "nome": "Teia",
-      "descricao": "dispara teia a 6m; alvo preso precisa de Atletismo para se soltar"
+      "nome": "agarrar",
+      "descricao": "patas da frente: Dano do agarrão: 2 × Força = 6.",
+      "classe": "livro"
     },
     {
-      "nome": "Mordida venenosa",
-      "descricao": "acerto injeta veneno; falha em Vigor causa dano contínuo e Abalado"
+      "nome": "arrastar a presa até a toca",
+      "descricao": "Presas: leva o que agarrou até a toca, até o Peso erguido.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Andar em teias",
-      "descricao": "move sobre teias e superfícies verticais sem penalidade"
+      "nome": "cerdas urticantes",
+      "descricao": "esfrega o abdome e solta cerdas que irritam a pele, os olhos e as mucosas de quem está perto; não é ataque com dano.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Emboscada",
-      "descricao": "bônus de Furtividade ao atacar de surpresa"
+      "nome": "teia",
+      "descricao": "fieiras: ataque a distância, Vigor + Disparo, até 6 m, 3 vezes por cena (recarga de 1 hora), Velocidade 6, tipo do ataque teia. Não causa dano. Acerto: o alvo fica Preso pela teia, como Preso pela Rede: não se desloca, mas age, com −2 na Esquiva e −2 no Bloqueio, e mais −1 em cada por grau de Margem do lançamento. Para se soltar: Força + Atletismo contra o total do lançamento, uma tentativa por ação. A teia não aguenta o peso da aranha: serve para prender, e não para ela andar.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "vibração: Prontidão (vibração) +2 (Especialidade natural), pelas cerdas das pernas, alcance. · visão: fraca; nada acima do humano."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Peçonha de aranha gigante · Potência 18 · Tick (sangue) · a cada 1 minuto · pool 4 (Destreza) · Desgaste 1 · pelas Presas"
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Tece teias densas entre árvores ou em bocas de caverna e espera vibrarem; injeta veneno paralisante e embrulha a presa para comer com calma, ou guardar para depois."
+      "texto": "Espera na toca funda, no chão alagado da mata, e sai quando a vibração denuncia a presa; prende de longe com um jato de teia e injeta veneno que paralisa. Social: solitária."
     },
     {
       "titulo": "Hábitat",
@@ -116,11 +136,19 @@
     },
     {
       "titulo": "Ecologia",
-      "texto": "Vive em ninhadas: onde há uma, costuma haver dezenas de filhotes crescendo depressa, o que torna um ninho descoberto tarde um perigo sério para vilarejos próximos."
+      "texto": "Vive sozinha: onde há uma toca, há uma aranha só. Descoberta tarde, perto de um vilarejo, come o que passa pela trilha, de rato a cachorro."
     },
     {
       "titulo": "No mundo de Centelha",
-      "texto": "O povo comum, temperado pela Supressão a desconfiar de qualquer coisa fora do natural, vê um ninho de aranhas do tamanho de um cão como maldição ou praga enviada, não como mero acidente da natureza."
+      "texto": "O povo comum, temperado pela Supressão a desconfiar de qualquer coisa fora do natural, vê uma aranha do tamanho de um cão como maldição ou praga enviada, não como mero acidente da natureza."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Peçonha de aranha gigante · Potência 18 · Tick (sangue) · a cada 1 minuto · pool 4 (Destreza) · Desgaste 1 · pelas Presas"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Média contra Média: sem bônus de Alvo; corpo de 0,6 m e 17,2 kg, com as pernas abertas em cerca de 1,5 m. A Força 3 não tira o Bloqueio de ninguém. A mordida faz 6,5 em média e injeta a peçonha. De até 6 m, ela lança a teia (3 vezes por cena, Vigor + Disparo, tipo teia): quem é atingido fica Preso, sem sair do lugar, com Esquiva e Bloqueio menores, até se soltar com Força + Atletismo. Sobe pela parede e anda no teto (Escalada 3), mas não na teia, que não a aguenta. A cutícula é Couraça nível 1, e quanto ela tira do golpe fica para depois. Com 28 PV (Vigor 4) e Resistência 2. O perigo é a emboscada no escuro: Furtividade 3, mais 1 na toca, e a teia que prende antes da mordida."
     }
   ],
   "ecologia": {
@@ -160,5 +188,47 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 28,
+    "esquiva": 10,
+    "bloqueio": 8,
+    "defesa": 10,
+    "defesaMental": 8,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 103.25,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 6,
+        "corrida": 7
+      }
+    }
+  },
+  "notasObservacao": [
+    "gigante: escalada da aranha-golias ao corpo de 0,6 m do site, k = 0,6 ÷ 0,11 = 5,45 no comprimento e k³ na massa, com as proporções da real; tudo do tamanho é [extrapolação] (D-105, `pedido-lotes.md` §3). Era k = 10 (corpo de 1,10 m) na v3",
+    "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; o corpo de 0,6 m do site passa no critério (a Theraphosa de base é Minúscula, cerca de 0,017 m² de cima, e a gigante é Média, três categorias acima) e fica; a área de 0,50 m² está 11% acima do corte do Pequeno e 66% abaixo do do Grande (D-174)",
+    "alvo: Médio pela área de cima com as oito pernas (0,50 m², a da v2 × (0,6 ÷ 1,10)²), 11% acima do corte do Pequeno, dentro do erro do método; a ficha de hoje, com as pernas fora (D-155), também dava Médio (D-174)",
+    "anatomia: artrópode, anatomia provisória (D-175), não calibrada em animal medido",
+    "pesoErguido: 103,25 kg pela fórmula das decisões 14 e 16 (`calc6.mjs`, com os 17,2 kg), provisório. Não tem Carga (não é quadrúpede)",
+    "velocidade: congelada (decisão 23); 26 km/h, sem velocidade real da aranha-golias para comparar",
+    "dimensoes: altura e largura (0,06 e 0,05 m na real) estimadas sem fonte; o comprimento de 11 cm é o meio entre o medido (84 mm) e o máximo citado (13 cm)",
+    "massa: 17,2 kg pela base típica estimada (106 g, o cubo do par de máximos 175 g e 13 cm, levado ao corpo de 11 cm) e o corpo de 0,6 m do site, [extrapolação]; era 106 kg com o corpo de 1,10 m da v3; 170 g é o recorde (Guinness), e não a média; a massa média de adulto e a massa por sexo não foram achadas (quinta e sexta rodadas). Se aparecer pesagem de adulto típico com o comprimento, a massa se refaz pelo cubo dela (D-174)",
+    "forca: 3, reanalisada na sétima rodada com os 17,2 kg (referência 3,94), um abaixo por matar pelo veneno; era 6, escolhida com 106 kg. Sem força medida; o feito real (o sapo maior que ela) não escala, pelo quadrado e cubo (D-158, D-174)",
+    "vigor: 4 ◆, revisto na oitava rodada pelo corpo e pela massa: o mínimo da D-176, um acima da Theraphosa de base (Vigor 3, presumido); cutícula fina, abdome mole e perna de pressão de sangue, ao lado da centopeia, do louva-a-deus e da vespa gigantes (4) e do carcaju (11,75 kg, 4). Era 5 (D-174)",
+    "resistencia: 2 pela régua, [extrapolação]; falta o jejum da Theraphosa. Se aparecer jejum de meses (como nos escorpiões), pode ganhar Resistência (fome) natural (D-174)",
+    "especialidades: Prontidão (vibração) +2 sem medida; se aparecer número de sensibilidade, pode subir ao teto de +3 (decisão 3)",
+    "escalada: 0 na espécie de base; se o autor quiser a aranha do D&D, que escala, a Escalada entra na variante tecelã (D-174)",
+    "couraca: nível 1 (faixa 0 a 1) pela escala da quinta rodada, reanalisado na sétima com os 17,2 kg; o valor em absorção fica para depois.",
+    "influencia e compostura: 1 por não ser espécie social (diretriz 1); a exibição de ameaça fica no texto",
+    "teia: a base não tece teia de captura; a teia foi para a variante tecelã, com os números da Trichonephila na pesquisa. Decisão provisória (D-105, D-174)",
+    "veneno: `peconha-de-aranha-gigante` existe no catálogo; o veneno real da aranha-golias é fraco para gente (D-112)",
+    "base: o animal de base não tem ficha; Vigor 3 presumido; PV pela decisão 21 [provisório]"
+  ]
 }

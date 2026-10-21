@@ -1,0 +1,181 @@
+{
+  "id": "alce",
+  "nome": "Alce",
+  "nomeIngles": "Moose",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "O maior cervo, solitário nas florestas frias. Ataca quem fica entre a mãe e o filhote, e o macho acossado no inverno, com fome e cansado da neve funda, investe e pisoteia.",
+  "tags": [],
+  "imagem": null,
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,92 m de comprimento, 1,8 m de altura",
+    "peso": "440 kg",
+    "comprimento": 2.92,
+    "largura": 0.72,
+    "altura": 1.8
+  },
+  "locomocao": {
+    "terra": 7,
+    "natacao": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 7,
+    "arranque": 12,
+    "corrida": 16
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 7,
+    "destreza": 2,
+    "vigor": 5,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 3,
+    "bloqueio": 3,
+    "esquiva": 2,
+    "atletismo": 2,
+    "furtividade": 1,
+    "integridade": 2,
+    "prontidao": 2,
+    "resistencia": 4,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "natacao": 2,
+    "musculatura": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Coice (pata dianteira)",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Pisão (ergue-se e pisoteia)",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 2,
+      "tipo": "impacto",
+      "ticks": 7,
+      "classe": "pesada"
+    },
+    {
+      "nome": "Galhada (só macho)",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "derrubar",
+      "descricao": "coice e pisão",
+      "classe": "livro"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "faro: Prontidão (faro) +2, natural; alcance. Olfato \"excepcional\". · audição: Prontidão (audição) +2, natural; alcance. Orelhas que giram de forma independente. · visão: fraca, sem número."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário (o cervídeo menos social; fora do cio)."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Força 7: quem tem Força 3 ou menos não apara o pisão. Grande, ele dá ao humano +3 de acerto no corpo a corpo, e quem atira nele também ganha +3. Com a galhada, bloqueia 12: o macho é difícil de passar de frente. 50 PV e Couraça nível 1: quanto ela tira da espada e da flecha fica para depois, e o Impacto perde 5. O pisão tira 21 em média. Corre quase como o cavalo (16 contra 17) e nada longe, mas devagar (2 m por Tick)."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Swamp"
+    ],
+    "clima": [
+      "Cold",
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "variantes": [],
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 50,
+    "esquiva": 8,
+    "bloqueio": 10,
+    "defesa": 10,
+    "defesaMental": 7,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 699,
+    "carga": {
+      "leve": 88,
+      "media": 176,
+      "pesada": 264,
+      "maxima": 352
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 7,
+        "arranque": 12,
+        "corrida": 16
+      },
+      "nado": 2
+    }
+  },
+  "notasObservacao": [
+    "forca: 7 pelas âncoras do autor, igual ao cavalo; sem força medida (D-158, D-174).",
+    "influencia: 1 pela diretriz 1 (não é espécie social); a ficha de hoje tinha 2 pelo alce que fere mais gente que o urso no Alasca (ADF&G 2020). Se o autor quiser a Influência de quem faz gente recuar fora da espécie social, o alce é o caso a rever (D-174).",
+    "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2, e não o 3 do levantamento: o nado de 20 km e a travessia de 10 km são distância, e não Resistência (diretriz 2); o dado fica na nota de pesquisa (jornada) (D-174).",
+    "especialidade natural Resistência (frio) +1: nova, pelo inverno boreal, sem temperatura medida; provisória (D-174).",
+    "especialidades: a Resistência (Fôlego) 2 saiu; o dado fica na nota de pesquisa (jornada) (quinta rodada, item 1; D-174).",
+    "empatia: 0 pela vida solitária (ADW); provisória (D-174).",
+    "musculatura: 2, o animal comum; a tração \"baixa demais\" de Pechora não tem número (D-174).",
+    "nado: congelado em 2 m por Tick (decisão 23). Pela fórmula da D-124 com o Vigor 5, daria cerca de 2,6 m/s (9,3 km/h), perto dos 9,5 km/h reais; não refeito (D-170, D-174).",
+    "massa: 440 kg (em vigor na Etapa 2, 20/10/2026); antes: 407,5 kg, a média simples dos meios de faixa do macho (480) e da fêmea (335), ADW; era o macho de 480 kg (sexta rodada, item 4). A área fica, porque as dimensões já eram as do adulto dos dois sexos.",
+    "pesoErguido: 700 kg pela conta das decisões 14 e 16 com a massa de 407,5 kg, provisório; a fórmula está com outra frente (D-162, D-169).",
+    "carga: 81,5 kg de Leve pela conta da D-122 (sem carga medida, estrutura de 20% por leitura do Arquiteto), provisória (D-169, D-172).",
+    "velocidade: congelada (decisão 23). A terra bate (+2%); o nado fica 20% abaixo do real (D-170).",
+    "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): nado de até 20 km a até 9,5 km/h (ADW) **[medido]**; travessia de cerca de 10 km no estreito de Clarence (ADF&G) **[medido]**; corrida sustentada de 9,6 km/h (ADW) **[medido]**; trenó de mensageiros na Suécia, cerca de 370 km por dia (Jackson 2009, via Wikipédia), fonte secundária e sem peso.",
+    "dimensoes.largura: 0,70 m estimada pelo Arquiteto, sem fonte (D-147, D-174).",
+    "dimensoes.altura: é a cernelha; as fontes divergem de 1,8 a 2,3 m no topo da faixa (D-147, D-174).",
+    "variantes.femea e variantes.machoAlasca: Alvo [sem dado] sem dimensões próprias; Grande provável pela massa (D-174)."
+  ]
+}

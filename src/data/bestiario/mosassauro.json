@@ -1,0 +1,150 @@
+{
+  "id": "mosassauro",
+  "nome": "Mosassauro",
+  "nomeIngles": "Mosasaurus (sem ficha; o parecido no PF1 é o Tylosaurus)",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Enorme",
+  "descricao": "Réptil marinho de 11 m, predador de topo do mar aberto. Ataca de baixo, perto da superfície, come de peixes a tartarugas e outros répteis marinhos, e briga com os da própria espécie.",
+  "tags": [],
+  "imagem": null,
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "11 m de comprimento, 1,5 m de altura",
+    "peso": "11.000 kg",
+    "comprimento": 11,
+    "largura": 1.5,
+    "altura": 1.5
+  },
+  "locomocao": {
+    "natacao": 7
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 12,
+    "destreza": 2,
+    "vigor": 7,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "furtividade": 2,
+    "integridade": 1,
+    "prontidao": 2,
+    "resistencia": 3,
+    "sobrevivencia": 3
+  },
+  "skills2": {
+    "natacao": 3,
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "visão",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 2,
+      "ticks": 7,
+      "classe": "pesada"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "agarrar",
+      "descricao": "mordida: Dano do agarrão: 2 × Força = 24 por manutenção.",
+      "classe": "livro"
+    },
+    {
+      "nome": "luta pelo focinho",
+      "descricao": "entre os da espécie, briga agarrando pelo focinho.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão: Prontidão (visão) +2, Especialidade natural. Órbitas grandes com anéis escleróticos grandes; olhos nos lados, campo binocular de cerca de 28,5°. · faro: fraco, sem Especialidade (bulbo olfatório e órgão vomeronasal pouco desenvolvidos). · O tímpano ficava numa depressão do osso quadrado; número não achado."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme: um humano Médio que o ataca corpo a corpo acerta com +6. Pelo porte, o Médio não apara a mordida, e a Força 12 também trava quem tem Força 6 ou menos (o dobro e ao menos 4 a mais). A mordida faz 19 em média e fura até N2; o agarrão tira 24 por manutenção. 70 PV e Couraça nível 2 (escama pequena num corpo de 11 t); o quanto ela tira fica para depois. Na água, pela conta de hoje, nada a 7 m por Tick, mais que o tubarão-branco (6); o número é provisório e fica acima do bote estimado."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Tropical",
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "variantes": [],
+  "ameacaLegada": 5,
+  "v3": {
+    "pv": 70,
+    "esquiva": 6,
+    "bloqueio": 4,
+    "defesa": 6,
+    "defesaMental": 6,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 7,
+      "corte": 7,
+      "perfuracao": 7
+    },
+    "couracaNivel": 2,
+    "pesoErguido": 2967.37,
+    "deslocamento": {
+      "nado": 7
+    }
+  },
+  "notasObservacao": [
+    "pesoErguido: 2.967,37 kg (em vigor na Etapa 2, 20/10/2026); antes: 2.782,4 kg pelo `calc.mjs`, provisório. A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar.",
+    "carga: não se aplica (nadador).",
+    "velocidade: congelada (decisão 23). O nado dá 25 km/h contra o bote de 14 a 18 km/h estimado (Formoso e colegas 2026, pela notícia): de 39 a 79% acima. Com o número de hoje o mosassauro nada mais rápido que o tubarão-branco (7 contra 6 m por Tick).",
+    "alvo: Enorme pela silhueta (12,35 m², de cima), longe das bordas; altura e largura de 1,5 m continuam estimadas pelo Arquiteto [extrapolação, sem dado].",
+    "forca: 12 pela régua nova (D-158), um abaixo do mamute (13), igual ao tiranossauro. Era 16 com o mamute em 18. Se o mamute mudar, esta se refaz.",
+    "vigor: 7 pela ferida curada (Lingham-Soliar 1995) (D-164).",
+    "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela ferida curada e pelo habitat do tropical ao subpolar; o sangue quente provável é extrapolação e ficou na nota de pesquisa (jornada).",
+    "musculatura: 3 (robusto) pela cauda de nado e pelo ílio com esforço repetido; provisória, sem medida direta (D-174).",
+    "compostura: 1 por não ser espécie social (diretriz 1); era 3 pelo emboscador.",
+    "especialidade Prontidão (visão) +2: passou de comum a natural, com o mesmo valor; é do corpo (órbitas e anéis escleróticos).",
+    "couraca: nível 2 (faixa 2 a 3) pela escala da quinta rodada; o valor em absorção fica para depois. Os dados de escama são de parentes, e não do M. hoffmannii.",
+    "jornada (nota de pesquisa, não é regra): cruzeiro e distância [sem dado]. Provável sangue quente (metabolismo de repouso entre o da tartaruga-de-couro e o de ictiossauros e plesiossauros, Houssaye e colegas 2013), o que daria fôlego para forragear longe [extrapolação] para o Mosasaurus.",
+    "ataques.mordida.nivel: N2 sem força de mordida medida [extrapolação], acima do crocodilo (N1)."
+  ]
+}

@@ -22,6 +22,20 @@
   "origem": "fonte",
   "nota": "voo 80; em terra a águia salta 10 ft"
  },
+ "aguia-real": {
+  "batalha": 2,
+  "arranque": 2,
+  "corrida": 4,
+  "ft": 40,
+  "origem": "ficha"
+ },
+ "alce": {
+  "batalha": 7,
+  "arranque": 12,
+  "corrida": 16,
+  "ft": 40,
+  "origem": "ficha"
+ },
  "ankheg": {
   "batalha": 3,
   "arranque": 5,
@@ -32,9 +46,9 @@
  "anquilossauro": {
   "batalha": 3,
   "arranque": 5,
-  "corrida": 7,
+  "corrida": 6,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "aranha-das-fases": {
   "batalha": 4,
@@ -45,10 +59,10 @@
  },
  "aranha-gigante": {
   "batalha": 3,
-  "arranque": 5,
+  "arranque": 6,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "arconte-cao": {
   "batalha": 4,
@@ -95,11 +109,11 @@
   "nota": "voo 60: incorpórea, não pisa"
  },
  "auroque": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+  "batalha": 7,
+  "arranque": 11,
+  "corrida": 15,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "babau": {
   "batalha": 3,
@@ -165,18 +179,18 @@
   "origem": "fonte"
  },
  "besouro-de-fogo": {
-  "batalha": 3,
-  "arranque": 5,
-  "corrida": 7,
+  "batalha": 1,
+  "arranque": 1,
+  "corrida": 2,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "besouro-veado-gigante": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 6,
   "ft": 40,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "besta-deslocadora": {
   "batalha": 4,
@@ -186,11 +200,11 @@
   "origem": "fonte"
  },
  "bisao": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+  "batalha": 7,
+  "arranque": 13,
+  "corrida": 17,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "boca-tagarela": {
   "batalha": 1,
@@ -213,6 +227,13 @@
   "ft": 20,
   "origem": "fonte"
  },
+ "boi": {
+  "batalha": 5,
+  "arranque": 10,
+  "corrida": 11,
+  "ft": 40,
+  "origem": "ficha"
+ },
  "bralani": {
   "batalha": 4,
   "arranque": 6,
@@ -223,9 +244,9 @@
  "braquiossauro": {
   "batalha": 3,
   "arranque": 5,
-  "corrida": 7,
+  "corrida": 6,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "bruto": {
   "batalha": 3,
@@ -276,13 +297,6 @@
   "ft": 50,
   "origem": "fonte"
  },
- "cachorro": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
-  "ft": 40,
-  "origem": "fonte"
- },
  "campeao": {
   "batalha": 3,
   "arranque": 5,
@@ -304,14 +318,21 @@
   "ft": 30,
   "origem": "tabela"
  },
- "cao-de-guerra-nessiano": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+ "cachorro": {
+  "batalha": 7,
+  "arranque": 9,
+  "corrida": 15,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "cachorro-de-guarda": {
+  "batalha": 6,
+  "arranque": 9,
+  "corrida": 12,
+  "ft": 40,
+  "origem": "ficha"
+ },
+ "cao-de-guerra-nessiano": {
   "batalha": 4,
   "arranque": 6,
   "corrida": 9,
@@ -350,23 +371,23 @@
  "caranguejo-gigante": {
   "batalha": 3,
   "arranque": 5,
-  "corrida": 7,
+  "corrida": 6,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "carcaju": {
-  "batalha": 3,
-  "arranque": 5,
-  "corrida": 7,
+  "batalha": 7,
+  "arranque": 9,
+  "corrida": 15,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "carcaju-atroz": {
-  "batalha": 3,
-  "arranque": 5,
-  "corrida": 7,
+  "batalha": 8,
+  "arranque": 13,
+  "corrida": 18,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "cauchemar": {
   "batalha": 4,
@@ -383,11 +404,11 @@
   "origem": "tabela"
  },
  "cavalo": {
-  "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
+  "batalha": 7,
+  "arranque": 13,
+  "corrida": 17,
   "ft": 50,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "centauro": {
   "batalha": 5,
@@ -397,11 +418,11 @@
   "origem": "fonte"
  },
  "centopeia-gigante": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "chuul": {
   "batalha": 3,
@@ -415,13 +436,6 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
- },
- "jiboia": {
-  "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
-  "ft": 20,
   "origem": "fonte"
  },
  "cobra-de-ferro": {
@@ -455,10 +469,10 @@
  },
  "corvo": {
   "batalha": 1,
-  "arranque": 2,
-  "corrida": 2,
+  "arranque": 1,
+  "corrida": 1,
   "ft": 10,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 40; em terra 10"
  },
  "couatl": {
@@ -471,10 +485,17 @@
  },
  "crocodilo-do-nilo": {
   "batalha": 2,
-  "arranque": 3,
+  "arranque": 4,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
+ },
+ "crocodilo-do-nilo-femea": {
+  "batalha": 2,
+  "arranque": 4,
+  "corrida": 5,
+  "ft": 40,
+  "origem": "ficha"
  },
  "cubo-gelatinoso": {
   "batalha": 2,
@@ -490,12 +511,19 @@
   "ft": 30,
   "origem": "tabela"
  },
+ "daeodon": {
+  "batalha": 7,
+  "arranque": 11,
+  "corrida": 15,
+  "ft": 40,
+  "origem": "ficha"
+ },
  "deinonico": {
-  "batalha": 6,
-  "arranque": 10,
-  "corrida": 14,
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
   "ft": 60,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "derro": {
   "batalha": 2,
@@ -576,11 +604,11 @@
   "origem": "fonte"
  },
  "doninha": {
-  "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
+  "batalha": 3,
+  "arranque": 4,
+  "corrida": 6,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "doppelganger": {
   "batalha": 3,
@@ -645,6 +673,20 @@
   "ft": 40,
   "origem": "fonte"
  },
+ "varano": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 4,
+  "ft": 30,
+  "origem": "ficha"
+ },
+ "varano-femea": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 4,
+  "ft": 30,
+  "origem": "ficha"
+ },
  "dretch": {
   "batalha": 2,
   "arranque": 3,
@@ -695,19 +737,19 @@
   "origem": "fonte"
  },
  "elasmossauro": {
-  "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
-  "ft": 20,
-  "origem": "fonte",
-  "nota": "nado 50; em terra 20, e ele quase não sai da água"
- },
- "elefante": {
   "batalha": 4,
   "arranque": 6,
   "corrida": 9,
+  "ft": 20,
+  "origem": "ficha",
+  "nota": "nado 50; em terra 20, e ele quase não sai da água"
+ },
+ "elefante": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "elemental-da-agua-pequeno": {
   "batalha": 2,
@@ -745,71 +787,63 @@
   "ft": 50,
   "origem": "fonte"
  },
- "poraque": {
-  "batalha": 3,
-  "arranque": 5,
-  "corrida": 7,
-  "ft": 30,
-  "origem": "fonte",
-  "nota": "nado 30; em terra a enguia se arrasta 5 ft"
- },
  "enxame-de-aranhas": {
-  "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 3,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "enxame-de-caranguejos": {
-  "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
+  "batalha": 1,
+  "arranque": 1,
+  "corrida": 2,
   "ft": 20,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "enxame-de-centopeias": {
-  "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 3,
   "ft": 20,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "enxame-de-formigas": {
-  "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 3,
   "ft": 20,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "enxame-de-morcegos": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+  "batalha": 1,
+  "arranque": 1,
+  "corrida": 2,
   "ft": 40,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 40: a nuvem de morcegos não pousa"
  },
  "enxame-de-ratos": {
-  "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
+  "batalha": 3,
+  "arranque": 4,
+  "corrida": 6,
   "ft": 15,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "enxame-de-sanguessugas": {
-  "batalha": 3,
-  "arranque": 5,
-  "corrida": 7,
+  "batalha": 1,
+  "arranque": 1,
+  "corrida": 1,
   "ft": 30,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "nado 30: o enxame de sanguessugas vive na água"
  },
  "enxame-de-vespas": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 3,
   "ft": 40,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 40: a nuvem de vespas não pousa"
  },
  "erinia": {
@@ -820,11 +854,11 @@
   "origem": "fonte"
  },
  "escorpiao-gigante": {
-  "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
+  "batalha": 3,
+  "arranque": 6,
+  "corrida": 7,
   "ft": 50,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "esfinge-ginosfinge": {
   "batalha": 4,
@@ -865,9 +899,9 @@
  "estegossauro": {
   "batalha": 3,
   "arranque": 5,
-  "corrida": 7,
+  "corrida": 6,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "estrangulador": {
   "batalha": 2,
@@ -892,10 +926,10 @@
  },
  "falcao-peregrino": {
   "batalha": 1,
-  "arranque": 2,
+  "arranque": 1,
   "corrida": 2,
   "ft": 10,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 60; em terra 10"
  },
  "fantasma": {
@@ -935,11 +969,11 @@
   "nota": "voo 50 (perfeito): o fogo-fátuo não tem corpo que pise"
  },
  "formiga-gigante": {
-  "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
   "ft": 50,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "froghemoth": {
   "batalha": 2,
@@ -964,10 +998,10 @@
  },
  "gato": {
   "batalha": 3,
-  "arranque": 5,
+  "arranque": 4,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "geleia-ocre": {
   "batalha": 1,
@@ -1039,6 +1073,13 @@
   "ft": 40,
   "origem": "fonte"
  },
+ "gigantopiteco": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
+  "ft": 30,
+  "origem": "ficha"
+ },
  "girallon": {
   "batalha": 4,
   "arranque": 6,
@@ -1103,11 +1144,11 @@
   "origem": "fonte"
  },
  "golfinho": {
-  "batalha": 8,
-  "arranque": 13,
-  "corrida": 18,
+  "batalha": 6,
+  "arranque": 10,
+  "corrida": 14,
   "ft": 80,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "nado 80: sem velocidade em terra"
  },
  "gorgona-touro-de-ferro": {
@@ -1118,11 +1159,11 @@
   "origem": "fonte"
  },
  "gorila": {
-  "batalha": 3,
-  "arranque": 5,
-  "corrida": 7,
+  "batalha": 2,
+  "arranque": 4,
+  "corrida": 5,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "grande-wyrm-vermelho": {
   "batalha": 4,
@@ -1146,11 +1187,11 @@
   "origem": "tabela"
  },
  "guepardo": {
-  "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
+  "batalha": 9,
+  "arranque": 15,
+  "corrida": 26,
   "ft": 50,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "harpia": {
   "batalha": 2,
@@ -1175,18 +1216,18 @@
   "origem": "fonte"
  },
  "hiena-malhada": {
-  "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
+  "batalha": 8,
+  "arranque": 12,
+  "corrida": 17,
   "ft": 50,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "hienodonte": {
-  "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
+  "batalha": 8,
+  "arranque": 13,
+  "corrida": 18,
   "ft": 50,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "hipogrifo": {
   "batalha": 4,
@@ -1231,19 +1272,26 @@
   "ft": 30,
   "origem": "tabela"
  },
- "javali": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
-  "ft": 40,
-  "origem": "fonte"
+ "jararaca": {
+  "batalha": 1,
+  "arranque": 1,
+  "corrida": 1,
+  "ft": 20,
+  "origem": "ficha"
  },
- "daeodon": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+ "javali": {
+  "batalha": 6,
+  "arranque": 9,
+  "corrida": 12,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
+ },
+ "jiboia": {
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 3,
+  "ft": 20,
+  "origem": "ficha"
  },
  "kobold": {
   "batalha": 3,
@@ -1274,13 +1322,6 @@
   "ft": 10,
   "origem": "fonte"
  },
- "lagarto-de-gola-gigante": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
-  "ft": 40,
-  "origem": "tabela"
- },
  "lagarto-eletrico": {
   "batalha": 3,
   "arranque": 5,
@@ -1288,12 +1329,12 @@
   "ft": 30,
   "origem": "tabela"
  },
- "varano": {
-  "batalha": 3,
-  "arranque": 5,
-  "corrida": 7,
+ "lagarto-de-gola-gigante": {
+  "batalha": 2,
+  "arranque": 4,
+  "corrida": 5,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "lamia": {
   "batalha": 6,
@@ -1303,18 +1344,25 @@
   "origem": "fonte"
  },
  "leao": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+  "batalha": 7,
+  "arranque": 12,
+  "corrida": 16,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "leao-das-cavernas": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+  "batalha": 7,
+  "arranque": 12,
+  "corrida": 16,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
+ },
+ "leao-das-cavernas-tardio": {
+  "batalha": 7,
+  "arranque": 12,
+  "corrida": 16,
+  "ft": 30,
+  "origem": "ficha"
  },
  "lemure": {
   "batalha": 2,
@@ -1324,18 +1372,18 @@
   "origem": "fonte"
  },
  "leopardo": {
-  "batalha": 3,
-  "arranque": 5,
-  "corrida": 7,
+  "batalha": 8,
+  "arranque": 13,
+  "corrida": 19,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "lesma-gigante": {
-  "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
+  "batalha": 1,
+  "arranque": 1,
+  "corrida": 1,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "lich": {
   "batalha": 3,
@@ -1387,18 +1435,18 @@
   "origem": "tabela"
  },
  "lobo": {
-  "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
+  "batalha": 7,
+  "arranque": 10,
+  "corrida": 16,
   "ft": 50,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "lobo-atroz": {
-  "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
+  "batalha": 8,
+  "arranque": 12,
+  "corrida": 17,
   "ft": 50,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "lobo-do-inverno": {
   "batalha": 5,
@@ -1408,34 +1456,41 @@
   "origem": "fonte"
  },
  "louva-a-deus-gigante": {
-  "batalha": 3,
-  "arranque": 5,
-  "corrida": 7,
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 8,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "lula-de-humboldt-grande": {
-  "batalha": 6,
-  "arranque": 10,
-  "corrida": 14,
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
   "ft": 60,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "nado 60 (o jato de 240 é fuga, não deslocamento)"
  },
+ "lula-de-humboldt": {
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
+  "ft": 20,
+  "origem": "ficha"
+ },
  "lula-gigante": {
-  "batalha": 6,
-  "arranque": 10,
-  "corrida": 14,
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
   "ft": 60,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "nado 60 (o jato de 260 é fuga)"
  },
  "macaco": {
-  "batalha": 3,
-  "arranque": 5,
-  "corrida": 7,
+  "batalha": 1,
+  "arranque": 1,
+  "corrida": 2,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "mago-de-batalha": {
   "batalha": 3,
@@ -1443,6 +1498,13 @@
   "corrida": 7,
   "ft": 30,
   "origem": "tabela"
+ },
+ "mamute": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 40,
+  "origem": "ficha"
  },
  "manticora": {
   "batalha": 3,
@@ -1473,11 +1535,11 @@
   "origem": "fonte"
  },
  "mastodonte": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "medusa": {
   "batalha": 3,
@@ -1485,6 +1547,14 @@
   "corrida": 7,
   "ft": 30,
   "origem": "fonte"
+ },
+ "megalodonte": {
+  "batalha": 8,
+  "arranque": 13,
+  "corrida": 18,
+  "ft": 60,
+  "origem": "ficha",
+  "nota": "nado 60, como o tubarão comum"
  },
  "mephit": {
   "batalha": 3,
@@ -1544,27 +1614,27 @@
   "origem": "fonte"
  },
  "morcego": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+  "batalha": 1,
+  "arranque": 1,
+  "corrida": 1,
   "ft": 40,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 40; em terra o morcego se arrasta 5 ft"
  },
  "morcego-atroz": {
   "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
+  "arranque": 2,
+  "corrida": 4,
   "ft": 20,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 40; em terra 20"
  },
  "moreia-gigante": {
-  "batalha": 3,
-  "arranque": 5,
-  "corrida": 7,
+  "batalha": 5,
+  "arranque": 8,
+  "corrida": 12,
   "ft": 30,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "nado 30: sem velocidade em terra"
  },
  "morlock": {
@@ -1573,6 +1643,13 @@
   "corrida": 9,
   "ft": 40,
   "origem": "fonte"
+ },
+ "mosassauro": {
+  "batalha": 7,
+  "arranque": 11,
+  "corrida": 16,
+  "ft": 40,
+  "origem": "ficha"
  },
  "mumia": {
   "batalha": 2,
@@ -1608,6 +1685,13 @@
   "corrida": 9,
   "ft": 40,
   "origem": "fonte"
+ },
+ "serpente-venenosa": {
+  "batalha": 1,
+  "arranque": 1,
+  "corrida": 1,
+  "ft": 20,
+  "origem": "ficha"
  },
  "nalfeshnee": {
   "batalha": 3,
@@ -1670,7 +1754,7 @@
   "arranque": 13,
   "corrida": 18,
   "ft": 80,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "nado 80: sem velocidade em terra"
  },
  "otyugh": {
@@ -1730,26 +1814,41 @@
   "ft": 30,
   "origem": "fonte"
  },
- "polvo": {
-  "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
-  "ft": 20,
-  "origem": "fonte"
- },
- "polvo-gigante": {
-  "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
-  "ft": 20,
-  "origem": "fonte"
- },
- "ponei": {
+ "plesiossauro": {
   "batalha": 4,
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
+ },
+ "polvo": {
+  "batalha": 1,
+  "arranque": 2,
+  "corrida": 2,
+  "ft": 20,
+  "origem": "ficha"
+ },
+ "polvo-gigante": {
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 9,
+  "ft": 20,
+  "origem": "ficha"
+ },
+ "ponei": {
+  "batalha": 7,
+  "arranque": 11,
+  "corrida": 14,
+  "ft": 40,
+  "origem": "ficha"
+ },
+ "poraque": {
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
+  "ft": 30,
+  "origem": "ficha",
+  "nota": "nado 30; em terra a enguia se arrasta 5 ft"
  },
  "pseudodragao": {
   "batalha": 2,
@@ -1762,9 +1861,9 @@
  "pteranodonte": {
   "batalha": 1,
   "arranque": 2,
-  "corrida": 2,
+  "corrida": 3,
   "ft": 10,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 50; em terra 10, e o pterossauro não caça a pé"
  },
  "pudim-negro": {
@@ -1782,6 +1881,13 @@
   "origem": "fonte",
   "nota": "voo 50 (perfeito); em terra 20"
  },
+ "quetzalcoatlo": {
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 4,
+  "ft": 40,
+  "origem": "ficha"
+ },
  "quimera": {
   "batalha": 3,
   "arranque": 5,
@@ -1794,14 +1900,14 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "ra-venenosa": {
-  "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
+  "batalha": 1,
+  "arranque": 1,
+  "corrida": 2,
   "ft": 20,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "rakshasa": {
   "batalha": 4,
@@ -1818,18 +1924,18 @@
   "origem": "fonte"
  },
  "rato-atroz": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+  "batalha": 7,
+  "arranque": 10,
+  "corrida": 15,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "rato-gigante": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+  "batalha": 7,
+  "arranque": 9,
+  "corrida": 15,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "remorhaz": {
   "batalha": 3,
@@ -1839,18 +1945,18 @@
   "origem": "fonte"
  },
  "rinoceronte": {
-  "batalha": 4,
+  "batalha": 3,
   "arranque": 6,
-  "corrida": 9,
+  "corrida": 8,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "roc": {
   "batalha": 2,
   "arranque": 3,
-  "corrida": 5,
+  "corrida": 4,
   "ft": 20,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 80; em terra 20"
  },
  "sahuagin": {
@@ -1868,19 +1974,19 @@
   "origem": "fonte"
  },
  "sanguessuga-gigante": {
-  "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
+  "batalha": 1,
+  "arranque": 1,
+  "corrida": 1,
   "ft": 20,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "nado 20; em terra a sanguessuga se arrasta 5"
  },
  "sapo": {
   "batalha": 1,
-  "arranque": 2,
+  "arranque": 1,
   "corrida": 2,
   "ft": 5,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "satiro": {
   "batalha": 4,
@@ -1897,13 +2003,6 @@
   "origem": "fonte",
   "nota": "nado 60; em terra 20, e ela não sai do mar"
  },
- "serpente-venenosa": {
-  "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
-  "ft": 20,
-  "origem": "fonte"
- },
  "shaitan": {
   "batalha": 2,
   "arranque": 3,
@@ -1916,13 +2015,6 @@
   "arranque": 8,
   "corrida": 12,
   "ft": 50,
-  "origem": "fonte"
- },
- "gigantopiteco": {
-  "batalha": 3,
-  "arranque": 5,
-  "corrida": 7,
-  "ft": 30,
   "origem": "fonte"
  },
  "skum-ulat-kini": {
@@ -2005,18 +2097,25 @@
   "origem": "tabela"
  },
  "tigre": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+  "batalha": 7,
+  "arranque": 12,
+  "corrida": 16,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
+ },
+ "tigre-dentes-de-sabre": {
+  "batalha": 6,
+  "arranque": 11,
+  "corrida": 14,
+  "ft": 40,
+  "origem": "ficha"
  },
  "tiranossauro": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+  "batalha": 3,
+  "arranque": 5,
+  "corrida": 7,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "treant": {
   "batalha": 3,
@@ -2035,9 +2134,9 @@
  "triceratops": {
   "batalha": 3,
   "arranque": 5,
-  "corrida": 7,
+  "corrida": 6,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "trogloditas": {
   "batalha": 3,
@@ -2058,29 +2157,14 @@
   "arranque": 10,
   "corrida": 14,
   "ft": 60,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "nado 60: o tubarão não tem passo em terra"
- },
- "megalodonte": {
-  "batalha": 6,
-  "arranque": 10,
-  "corrida": 14,
-  "ft": 60,
-  "origem": "fonte",
-  "nota": "nado 60, como o tubarão comum"
  },
  "unicornio": {
   "batalha": 6,
   "arranque": 10,
   "corrida": 14,
   "ft": 60,
-  "origem": "fonte"
- },
- "urso-das-cavernas": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
-  "ft": 40,
   "origem": "fonte"
  },
  "urso-cinzento": {
@@ -2090,12 +2174,40 @@
   "ft": 40,
   "origem": "fonte"
  },
- "urso-pardo": {
-  "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+ "urso-das-cavernas": {
+  "batalha": 7,
+  "arranque": 13,
+  "corrida": 16,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
+ },
+ "urso-negro": {
+  "batalha": 6,
+  "arranque": 11,
+  "corrida": 14,
+  "ft": 40,
+  "origem": "ficha"
+ },
+ "urso-pardo": {
+  "batalha": 7,
+  "arranque": 12,
+  "corrida": 16,
+  "ft": 40,
+  "origem": "ficha"
+ },
+ "urso-pardo-litoral": {
+  "batalha": 7,
+  "arranque": 12,
+  "corrida": 16,
+  "ft": 40,
+  "origem": "ficha"
+ },
+ "urso-polar": {
+  "batalha": 7,
+  "arranque": 12,
+  "corrida": 15,
+  "ft": 40,
+  "origem": "ficha"
  },
  "vampiro": {
   "batalha": 3,
@@ -2127,19 +2239,12 @@
   "origem": "fonte"
  },
  "vespa-gigante": {
-  "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
+  "batalha": 4,
+  "arranque": 6,
+  "corrida": 8,
   "ft": 20,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 60; em terra 20"
- },
- "jararaca": {
-  "batalha": 2,
-  "arranque": 3,
-  "corrida": 5,
-  "ft": 20,
-  "origem": "fonte"
  },
  "vinha-assassina": {
   "batalha": 1,

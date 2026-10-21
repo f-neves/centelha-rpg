@@ -144,8 +144,10 @@ eq(T.previsaoDeEncontro(1, 3, 0, 1), 0, 'já no alcance: zero Ticks');
 {
   const M = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/monsters.json'), 'utf8'));
   const VOCAB = ['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso', 'arte'];
-  const fora = M.filter((c) => !VOCAB.includes(c.combate?.ataques?.[0]?.classe));
-  eq(fora.map((c) => c.id), [], 'toda criatura tem classe de ataque no vocabulário');
+  const fora = M.filter((c) => c.combate?.ataques?.length && !VOCAB.includes(c.combate.ataques[0].classe));
+  eq(fora.map((c) => c.id), [], 'toda criatura com ataque tem classe de ataque no vocabulário');
+  // a ficha v3 diz "nenhum" ataque para estas duas (o veneno está na pele; D-179)
+  eq(M.filter((c) => !c.combate?.ataques?.length).map((c) => c.id).sort(), ['ra-venenosa', 'sapo'], 'só o sapo e a rã-venenosa ficam sem ataque');
   const de = (nome) => M.find((c) => c.nome === nome)?.combate.ataques[0].classe;
   eq(de('Arqueiro'), 'distancia', 'o Arqueiro atira');
   eq(de('Camponês Assustado'), 'haste', 'o forcado do camponês alcança dois hexágonos');

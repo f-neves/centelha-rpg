@@ -3,79 +3,102 @@
   "id": "anquilossauro",
   "idAntigo": "mon-ankylosaurus",
   "nome": "Anquilossauro",
-  "nomeIngles": "Dinosaur, Ankylosaurus",
+  "nomeIngles": "Ankylosaurus (Pathfinder 1; D&D 3.5 não tem)",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
   "papel": "fera",
   "conceito": "animal Enorme",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Raro; talvez vivesse nas terras altas, longe da costa (Carpenter,). Luta entre si com a clava.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/ankylosaurus.webp",
   "porte": "Enorme",
   "dimensoes": {
-    "medida": "9 m de comprimento",
-    "peso": "cerca de 6,4 t (4,8 a 8 t na fonte)"
+    "medida": "7,2 m de comprimento, 1,59 m de altura",
+    "peso": "5.200 kg",
+    "comprimento": 7.2,
+    "largura": 1.75,
+    "altura": 1.59
   },
   "locomocao": {
     "terra": 3
   },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 6
+  },
   "centelha": 0,
   "attrs": {
-    "forca": 10,
-    "destreza": 2,
-    "vigor": 7,
-    "influencia": 2,
-    "perspicacia": 1,
-    "compostura": 2,
-    "percepcao": 3,
+    "forca": 11,
+    "destreza": 1,
+    "vigor": 10,
+    "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 1,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
-    "briga": 4,
-    "esquiva": 0,
+    "briga": 3,
+    "bloqueio": 3,
+    "integridade": 3,
     "prontidao": 1,
-    "integridade": 2
+    "resistencia": 3,
+    "sobrevivencia": 2
   },
+  "skills2": {
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
-    "valor": 2
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
   },
-  "willpower": 5,
-  "aparencia": 4,
+  "willpower": 3,
+  "aparencia": 6,
   "ataques": [
     {
-      "nome": "Cauda em maça",
+      "nome": "Clava da cauda",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 3,
-      "mao": 1,
+      "dado": 2,
+      "mao": 2,
       "tipo": "impacto",
-      "acerto": 0,
       "ticks": 7,
-      "notas": "acerto forte pode atordoar o alvo por um Tick"
+      "classe": "pesada"
     }
   ],
   "habilidades": [
     {
-      "nome": "Cauda Atordoante",
-      "descricao": "Um golpe certeiro de sua cauda em forma de maça pode deixar o alvo zonzo por um instante; um acerto crítico pode atordoá-lo por muito mais tempo."
+      "nome": "derrubar",
+      "descricao": "Clava da cauda",
+      "classe": "livro"
     },
     {
-      "nome": "Blindagem Natural",
-      "descricao": "Placas ósseas grossas cobrem suas costas, oferecendo proteção natural excepcional contra golpes."
+      "nome": "atordoar",
+      "descricao": "Clava da cauda: o golpe certeiro da cauda deixa o alvo zonzo por um instante.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Olfato Aguçado",
-      "descricao": "Detecta presas e predadores pelo cheiro a boa distância, mesmo sem enxergá-los."
+      "nome": "teimosia",
+      "descricao": "raramente foge; planta-se no lugar e usa a cauda até vencer ou cair.",
+      "classe": "como luta"
     },
     {
-      "nome": "Teimosia de Combate",
-      "descricao": "Raramente foge de um confronto, preferindo manter terreno e usar a cauda repetidamente até vencer ou cair."
+      "nome": "Sentidos",
+      "descricao": "faro: Prontidão (faro) +2, Especialidade natural; região olfatória ampliada; as narinas muito separadas talvez dessem olfato direcional. · audição: de baixa frequência, texto (ouvido de Euoplocephalus,). · visão: órbitas sugerem alguma visão estereoscópica; nada que passe do humano."
     }
   ],
   "lore": [
@@ -86,6 +109,10 @@
     {
       "titulo": "Gigante das Planícies Quentes",
       "texto": "Vive em manadas por florestas e planícies de clima quente, usando o peso e a armadura natural para dissuadir qualquer coisa disposta a caçá-lo."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme: um humano Médio acerta com +6 no corpo a corpo. Pelo Alvo, o Médio não bloqueia a clava, e a Força 11 também tira o Bloqueio de quem tem Força 5 ou menos (o dobro e ao menos 4 a mais). A carapaça é Couraça nível 8, o teto dos animais reais; quanto ela tira do golpe fica para depois. A clava faz 29 em média. 85 PV."
     }
   ],
   "ecologia": {
@@ -122,5 +149,47 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 85,
+    "esquiva": 2,
+    "bloqueio": 8,
+    "defesa": 8,
+    "defesaMental": 7,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 10,
+      "corte": 10,
+      "perfuracao": 10
+    },
+    "couracaNivel": 8,
+    "pesoErguido": 1469.58,
+    "carga": {
+      "leve": 780,
+      "media": 1560,
+      "pesada": 2340,
+      "maxima": 3120
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 6
+      }
+    }
+  },
+  "notasObservacao": [
+    "forca: 11 pela comparação com o mamute (13), proposta do Arquiteto; se o mamute mudar, esta se refaz.",
+    "pesoErguido: 1.469,58 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.388,33 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com os 4.780 kg. Era 1.619 kg (6.000 kg de trabalho) e, antes, 2.145 kg pela fórmula de FAH.",
+    "carga: Leve 717 a Máxima 2.868 kg, provisória (era Leve 900 pelos 6.000 kg); sai da massa; a fração de 20% não tem análogo vivo citado.",
+    "velocidade: congelada (decisão 23). 21 km/h, sem número real para comparar.",
+    "area: 7,39 m², vista de cima, da medição da `tamanho-fichas-v2`; era 11,9 m² (retângulo cheio). O Alvo segue Enorme. Decisão provisória: usar o número do `calc.mjs`.",
+    "couraca: nível 8 (faixa 7 a 8) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "massa: 5.200 kg (em vigor na Etapa 2, 20/10/2026); antes: 4,78 t, o AMNH 5214 pela circunferência do úmero e do fêmur (Arbour e Mallon 2017; o mesmo número no Dataset S1 de Benson e colegas 2014). Alternativa: CMN 8880, 7,95 t por escala, provisório pelos próprios autores. Era 6 t. Na sexta rodada a faixa, o PV, o peso erguido e a Carga passaram aos 4,78 t (faixa e PV não mudam). A área fica a dos 7 m da ficha (meio de 6 a 8 m), maior que o AMNH 5214 de cerca de 5,4 m; o Alvo segue Enorme.",
+    "vigor: 10 (em vigor na Etapa 2, 20/10/2026); antes: 8 pela ferida curada nos parentes Zuul (Arbour 2022) e no anquilossaurídeo da Nemegt (Park 2021); não há lesão curada achada no próprio Ankylosaurus (D-164).",
+    "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela mesma ferida curada, **[comparação]** pelos parentes.",
+    "musculatura: 3 (robusto) pela cauda de clava, provisória; sem medida de força do corpo.",
+    "especialidades: a Prontidão (faro) +2 passou de comum a natural, sem mudar de valor.",
+    "dimensoes.largura: 1,7 m estimada pelo Arquiteto [sem dado]; só serve ao espaço."
+  ]
 }

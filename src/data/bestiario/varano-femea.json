@@ -1,0 +1,186 @@
+{
+  "id": "varano-femea",
+  "nome": "Dragão-de-komodo, fêmea",
+  "nomeIngles": "Komodo dragon (bloco parecido: Monitor Lizard, que lá descreve lagartos de 3 a 5 pés)",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Pequeno",
+  "descricao": "Anda o dia pela área de vida seguindo o cheiro de carniça e de presa; chega perto sem ser visto, joga a presa no chão e rasga com os dentes serrilhados. O veneno faz o sangue não coagular. Os grandes comem primeiro.",
+  "tags": [],
+  "imagem": null,
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "1,81 m de comprimento, 0,28 m de altura",
+    "peso": "27 kg",
+    "comprimento": 1.81,
+    "largura": 0.24,
+    "altura": 0.28
+  },
+  "locomocao": {
+    "terra": 2,
+    "natacao": 4
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 5,
+    "destreza": 2,
+    "vigor": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "atletismo": 1,
+    "furtividade": 3,
+    "integridade": 1,
+    "prontidao": 2,
+    "resistencia": 3,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "natacao": 1,
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 3,
+      "origem": "natural"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Mordida (morde e rasga)",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "derrubar",
+      "descricao": "corpo: \"joga a presa no chão\".",
+      "classe": "livro"
+    },
+    {
+      "nome": "rasgar puxando",
+      "descricao": "morde e puxa para rasgar; o veneno entra pela mordida que rasga.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "fisgar com a boca",
+      "descricao": "Mordida: Agarrar.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "faro: Prontidão (faro) +3, Especialidade natural; carniça a 4 a 9,5 km, \"até 11 km\" (ficha da espécie). · visão: vê a 300 m: texto, sem Especialidade. · audição: de 400 a 2.000 Hz, pior que o humano: texto."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Anticoagulante de varano · Potência 12 · minuto (sangue) · a cada 1 hora · pool 12 (PV) · Desgaste 1 · pela Mordida"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário; hierarquia por tamanho na carcaça."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Anticoagulante de varano · Potência 12 · minuto (sangue) · a cada 1 hora · pool 12 (PV) · Desgaste 1 · pela Mordida"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "- Pequeno contra o humano Médio: ele ganha +3 de acerto no corpo a corpo, e o humano nada. Força 5 não tira o Bloqueio de um humano (seria preciso o dobro e 4 a mais). - A mordida dá 8,5 de média e é Média; o perigo é o veneno, que ignora a Absorção. Uma vítima que fugiu ferida pode cair horas depois: é o caçador que segue o rastro pelo faro (+3). - A pele de osteodermos tem Couraça nível 4; quanto ela tira da lâmina, da flecha e da maça fica para depois (a maça perde ao menos 3, o Vigor). 26 PV (a principal tem 34)."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "variantes": [],
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 26,
+    "esquiva": 6,
+    "bloqueio": 4,
+    "defesa": 6,
+    "defesaMental": 7,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 4,
+    "pesoErguido": 186.61,
+    "carga": {
+      "leve": 3.59,
+      "media": 7.18,
+      "pesada": 10.77,
+      "maxima": 14.36
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 4
+      },
+      "nado": 4
+    }
+  },
+  "notasObservacao": [
+    "area: 0,26 m², vista de lado: a da principal (0,398 m², a medição da `tamanho-fichas-v2` do macho de 2,59 m de Wood 1983 escalada aos 47,5 kg) × (25 ÷ 47,5)^(2/3) = 0,259. Sem dimensões próprias da fêmea que casem com os 25 kg (Wood dá 2,29 m, mas a uma fêmea de 68 a 73 kg), as dimensões vão pelo cubo (fator 0,807). Alvo Pequeno, o mesmo da principal.",
+    "`pesquisa.caudaGrossa`: sim, pela comparação com o crocodilo da D-155; nenhuma fonte diz \"grossa\" (D-155, D-174)",
+    "fonte: a largura (0,35 m no macho, 0,29 m na principal, 0,23 m na fêmea, escaladas) continua só pela estimativa; o comprimento sem cauda continua só pela Wikipédia (\"cauda tão longa quanto o corpo\") (D-174)",
+    "pesoErguido: 186,61 kg (em vigor na Etapa 2, 20/10/2026); antes: 180,79 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com os 25 kg e os Atributos da principal (Força 5, Musculatura 2). Principal: 228,98 kg.",
+    "carga: 3,33 kg de Leve pela conta da D-122 (estrutura 0,1, como o crocodilo; fator 1,33 da Faixa 2) com os 25 kg, sem carga medida. Principal: 4,75 kg.",
+    "velocidade: congelada (decisão 23). Terra 15 km/h contra \"até 20 km/h\" sem método (−25%); nado sem velocidade real achada.",
+    "musculatura: 2 (animal comum), provisória, sem peso arrastado medido.",
+    "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pelo normal da espécie. O peptídeo antibacteriano do sangue (VK25) caberia numa Resistência (doenças), mas a fonte é de laboratório e não diz que o animal resiste mais a infecção; não entra.",
+    "couraca: nível 4 (faixa 3 a 4) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "massa: 27 kg (em vigor na Etapa 2, 20/10/2026); antes: 25 kg **[medido]**, a fêmea selvagem (Laver e colegas 2012), 0,53 da principal (47,5 kg, a média simples dos sexos). A faixa cai à 2 (até 35 kg) e o PV a 26; o Alvo fica Pequeno.",
+    "atributos: Força, Vigor e Musculatura iguais aos da principal (5, 3, 2); a variante menor pode descer, a critério do autor. A Força de referência dos 25 kg é 4,56.",
+    "jornada (nota de pesquisa, não é regra): anda o dia pela área de vida de cerca de 1,9 km² (ADW); corre só em arrancadas curtas até 20 km/h (Wikipédia, sem método); a caçada mata em poucos minutos, quase sempre em menos de meia hora (Wikipédia). Sem distância por dia nem tempo de nado.",
+    "influencia, compostura: descem a 1 por não ser espécie social (diretriz 1).",
+    "`ataques.mordida`: Perfuração pela regra do dente; o serrilhado que rasga pode pedir Corte. N0 pela mordida de 39 N, que é de modelo do crânio e não de animal vivo (Fry 2009) (D-174)",
+    "`veneno`: veneno sem id no catálogo (anticoagulante, Fry 2009) (D-112)",
+    "`especialidades`: a Prontidão (faro) desceu de +4 para +3 pelo teto da decisão 3, e passou de bônus fixo a Especialidade natural."
+  ]
+}

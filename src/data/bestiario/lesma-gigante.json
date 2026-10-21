@@ -2,94 +2,125 @@
   "ordem": 288,
   "id": "lesma-gigante",
   "idAntigo": "mon-giant-slug",
-  "nome": "Lesma Gigante",
-  "nomeIngles": "Giant Slug",
+  "nome": "Lesma-gigante",
+  "nomeIngles": "Giant slug (Pathfinder 1; o D&D 3.5 não foi conferido)",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
-  "papel": "chefe",
+  "papel": "fera",
   "conceito": "praga Enorme",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Sai à noite da mata úmida e raspa o que encontra no caminho; de dia, se esconde do sol e do seco.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/giant-slug.webp",
   "porte": "Enorme",
   "dimensoes": {
-    "medida": "6 a 9 metros de comprimento",
-    "peso": "várias t de massa viscosa"
+    "medida": "9 m de comprimento, 0,75 m de altura",
+    "peso": "3.518 kg",
+    "comprimento": 9,
+    "largura": 1.08,
+    "altura": 0.75
   },
-  "locomocao": {
-    "terra": 2
+  "locomocao": {},
+  "deslocamentoDeclarado": {
+    "batalha": 1,
+    "arranque": 1,
+    "corrida": 1
   },
   "centelha": 0,
   "attrs": {
-    "forca": 10,
+    "forca": 7,
     "destreza": 1,
-    "vigor": 7,
-    "influencia": 0,
-    "perspicacia": 0,
-    "compostura": 1,
+    "vigor": 6,
     "percepcao": 2,
-    "inteligencia": 0,
-    "raciocinio": 2
+    "inteligencia": 1,
+    "raciocinio": 1,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
-    "briga": 5,
-    "esquiva": 0,
-    "prontidao": 1,
-    "integridade": 2
+    "briga": 2,
+    "furtividade": 2,
+    "resistencia": 4,
+    "sobrevivencia": 2
   },
+  "skills2": {
+    "musculatura": 1,
+    "disparo": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
-    "valor": 3
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 1
   },
-  "willpower": 5,
-  "aparencia": 4,
+  "willpower": 3,
+  "aparencia": 6,
   "ataques": [
     {
-      "nome": "Língua raspadora",
+      "nome": "Rádula",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 3,
+      "dado": 1,
       "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 7,
-      "notas": "dano corrosivo (pendência B16: sem palavra \"ácido\" no vocabulário)"
+      "tipo": "corte",
+      "ticks": 6,
+      "classe": "media"
     }
+  ],
+  "resistencias": [
+    "impacto"
   ],
   "habilidades": [
     {
-      "nome": "Cuspir ácido",
-      "descricao": "Pode cuspir um jato de ácido em um alvo a distância, causando dano severo sem chance de esquiva."
+      "nome": "atropelar",
+      "descricao": "corpo: passa por cima de quem está no chão, com 3,5 t de corpo.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Língua ácida",
-      "descricao": "Sua língua raspadora impregna a vítima com ácido corrosivo a cada mordida."
+      "nome": "muco",
+      "descricao": "gruda e pode prender quem a toca, e adormece a boca e a língua de quem a morde.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Redução de dano",
-      "descricao": "Sua carne mole absorve grande parte dos golpes cortantes e perfurantes."
+      "nome": "encolher",
+      "descricao": "tocada, encolhe o corpo.",
+      "classe": "como luta"
     },
     {
-      "nome": "Corpo maleável",
-      "descricao": "Consegue se espremer por passagens muito mais estreitas do que seu tamanho sugeriria."
+      "nome": "cuspir ácido",
+      "descricao": "ataque a distância, Vigor + Disparo, alcance de um metro por ponto de Vigor (6 m), 3 vezes por cena (recarga de 1 hora), Velocidade 6, tipo do ataque líquido. Dano 2d6 mais o Vigor (6) de ácido; não há Absorção natural contra ácido, e a da armadura fica a decidir.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Vulnerabilidade ao sal",
-      "descricao": "Sal comum queima sua carne como se fosse ácido puro."
+      "nome": "língua ácida",
+      "descricao": "Rádula: cada mordida que fere soma 1d6 de ácido; não há Absorção natural contra ácido, e a da armadura fica a decidir.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Sentido sísmico",
-      "descricao": "Percebe vibrações ao redor mesmo sem enxergar, sendo imune a efeitos que afetam a mente."
+      "nome": "Sentidos",
+      "descricao": "faro: Especialidade natural Prontidão (faro) +2; tentáculos de baixo para tato e olfato. · visão: olhos na ponta dos tentáculos de cima; sem Especialidade. · sentido sísmico: \"Percebe vibrações ao redor mesmo sem enxergar\" (ficha publicada). Texto do Mestre; alcance."
+    }
+  ],
+  "doencas": [
+    {
+      "nome": "Doença no jogo (ao comer)",
+      "texto": "Meningite do verme-do-pulmão · Virulência 10 · dia · quem come a carne crua, ou a verdura por onde ela passou, rola uma vez"
     }
   ],
   "lore": [
     {
       "titulo": "Devoradora de pântanos",
-      "texto": "Vilarejos próximos a pântanos aprendem a temer as lesmas gigantes, que devoram gado e lavouras inteiras em sua busca incessante por carne."
+      "texto": "Vilarejos próximos a pântanos aprendem a temer as lesmas gigantes, que devoram lavouras inteiras e tudo o que apodrece pelo caminho, e esmagam quem cai diante delas."
     },
     {
       "titulo": "Ritual de reprodução monstruoso",
@@ -98,6 +129,18 @@
     {
       "titulo": "Montaria das profundezas",
       "texto": "Certas raças subterrâneas domesticam lesmas gigantes como bestas de guerra e carga, embora mantê-las dóceis exija cuidado e fartura constante de alimento."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Doença no jogo (ao comer): Meningite do verme-do-pulmão · Virulência 10 · dia · quem come a carne crua, ou a verdura por onde ela passou, rola uma vez"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme: o humano Médio acerta com +6 no corpo a corpo, e ela não ganha bônus. A Força 7 tira o Bloqueio de quem tem Força 3 ou menos. A rádula faz 10,5 em média, e cada mordida deixa ácido; de longe, ela cospe ácido (Vigor + Disparo, ataque do tipo líquido, até 6 m, um metro por ponto de Vigor: 2d6 + 6 de ácido, e não há Absorção natural contra ácido; a da armadura fica a decidir). Golpe de impacto, corte e perfuração entram mal na carne mole (resistência, valor a definir). O perigo é o atropelo, o muco que gruda e o cuspe. Mente simples: não se deixa convencer nem intimidar pela fala, mas o medo e a magia mental pegam nela. Anda menos de 1 m por Tick: qualquer um foge dela, a pé, mas não do cuspe. 65 PV, Impacto 6, Couraça nível 0 (o valor do nível fica para depois). O sal mata lesma de verdade, e o Mestre decide quanto."
     }
   ],
   "ecologia": {
@@ -136,7 +179,47 @@
   },
   "variantes": [],
   "ameacaLegada": 5,
-  "resistencias": [
-    "impacto"
+  "v3": {
+    "pv": 65,
+    "esquiva": 2,
+    "bloqueio": 2,
+    "defesa": 2,
+    "defesaMental": 4,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 6,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 394.81,
+    "deslocamento": {
+      "terra": {
+        "batalha": 0,
+        "arranque": 1,
+        "corrida": 1
+      }
+    }
+  },
+  "notasObservacao": [
+    "gigante escalado (D-105): massa, largura e altura são extrapolação pelo cubo a partir da lesma-banana (25 cm, 75,4 g) (D-174).",
+    "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (sétima rodada); fica o de hoje (9 m), Enorme, cinco portes acima da lesma-banana de base (Minúscula, 0,0059 m²); a área fica 27% acima do corte do Grande (6 m²) e 69% abaixo do do Imenso (25 m²). Acima do Médio porque a ficha antiga e o Pathfinder pedem Enorme, como o `pedido-v7.md` (seção 2) exige (D-174).",
+    "alvo: Enorme pela área de cima (7,63 m²) da tamanho-fichas-v2; era 9,72 m² pela conta de hoje, com o mesmo resultado. Provisório até os cortes fecharem (D-174).",
+    "pesoErguido: provisório, 394,81 kg pela fórmula das decisões 14 e 16, com a Força 7 do autor; verme não tem `carga` (D-160, D-175). Caiu de 1.445,76 kg (480,67 com a Força 8) com a Força 7 e a Musculatura 1.",
+    "forca: 7 (edição do autor, 19/10/2026), um abaixo do rinoceronte, pela falta de esqueleto; antes 8, e na ficha atual 12. Sem feito medido; [provisório] (D-158, D-174).",
+    "musculatura: 1, entre o corpo de resistência e o comum; sem medida de força do pé.",
+    "resistencia: 4 (edição do autor, 19/10/2026); antes 2 pela base, [comparação]; falta a duração da estivação e da hibernação.",
+    "furtividade: 2, nova, pela atividade noturna e pela fuga do sol (levantamento, [comparação]).",
+    "especialidades: o faro +2 passa a natural; o valor não muda.",
+    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "anatomia: verme, anatomia provisória (D-175), não calibrada em animal medido; sem nado.",
+    "velocidade: congelada (decisão 23). A Corrida de 0,86 m/s está muito acima da lesma real escalada (cerca de 0,1 m/s, +760%).",
+    "escalada: [sem dado]; o que ela sobe com 3,5 t é do Mestre (D-087).",
+    "fonte: a largura (3 cm) e a altura (2 cm) da lesma-banana continuam por estimativa; o comprimento de 25 cm vem da ADW, sem par medido com o peso de 75,4 g (D-174).",
+    "ataques: o ácido e a redução de dano voltam pela decisão de 20/10/2026 (manobras, resistências e texto); o dano do ácido e o valor da resistência ficam a definir até o valor da Couraça fechar.",
+    "mente: a imunidade a efeitos mentais do monstro publicado sai; mente simples, imune à influência social, vulnerável a medo e a magia mental (resposta do autor ao lote 1, 20/10/2026).",
+    "comportamento: a ficha atual a põe devorando gado; a lesma real é herbívora e detritívora (ADW). Vale o real (D-101).",
+    "sal: morre no sal por osmose (Wikipédia \"Slug\"); sem regra, texto do Mestre.",
+    "vigor: 6 ◆ (edição do autor, 19/10/2026; abaixo do elefante, 9, e do rinoceronte, 8, pela seção 14 das decisões); antes 5, revisto na oitava rodada pelo corpo e pela massa: dois acima da lesma-banana de base (Vigor 3), pela massa de 3,5 t (elefante 6, rinoceronte 5) e pela cura de ferida medida na base (Pearson, Pearson e Ralph 2006), abaixo do elefante pelo corpo mole sem esqueleto; um acima da lula-gigante e do polvo-gigante (4), moluscos sem dado de cura no Vigor. Era 6 (D-174)"
   ]
 }

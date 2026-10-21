@@ -2,81 +2,106 @@
   "ordem": 213,
   "id": "sapo",
   "idAntigo": "mon-toad",
-  "nome": "Sapo",
-  "nomeIngles": "Toad",
+  "nome": "Sapo-cururu",
+  "nomeIngles": "Cane toad (bloco parecido: Toad, D&D 3.5 e Pathfinder 1)",
   "categoria": "Animal",
   "categoriaLegada": "Fera",
   "papel": "fera",
   "conceito": "animal Minúsculo",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
+  "descricao": "Pula em saltos curtos pelo quintal, pela roça e pela beira da mata, comendo o inseto que achar. Quem o morde, o cão sobretudo, se envenena.",
   "tags": [
     "fera"
   ],
   "imagem": "bestiario/toad.webp",
   "porte": "Miúdo",
   "dimensoes": {
-    "medida": "10 centímetros de comprimento",
-    "peso": "poucos gramas"
+    "medida": "0,125 m de comprimento, 0,05 m de altura",
+    "peso": "0,115 kg",
+    "comprimento": 0.125,
+    "largura": 0.07,
+    "altura": 0.05
   },
   "locomocao": {
     "terra": 1
   },
+  "deslocamentoDeclarado": {
+    "batalha": 1,
+    "arranque": 1,
+    "corrida": 2
+  },
   "centelha": 0,
   "attrs": {
     "forca": 0,
-    "destreza": 3,
-    "vigor": 1,
+    "destreza": 2,
+    "vigor": 3,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2,
     "influencia": 1,
     "perspicacia": 1,
-    "compostura": 2,
-    "percepcao": 4,
-    "inteligencia": 1,
-    "raciocinio": 2
+    "compostura": 1
   },
   "skills": {
     "briga": 1,
     "esquiva": 1,
+    "furtividade": 2,
+    "integridade": 1,
     "prontidao": 2,
-    "integridade": 2
+    "resistencia": 2,
+    "sobrevivencia": 4
   },
-  "virtues": {
-    "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
-    "valor": 2
+  "skills2": {
+    "musculatura": 2
   },
-  "willpower": 5,
-  "aparencia": 4,
-  "ataques": [
+  "especialidades": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "habilidade": "resistencia",
+      "foco": "seca",
+      "valor": 3,
+      "origem": "natural"
     }
   ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 1
+  },
+  "willpower": 3,
+  "aparencia": 5,
+  "ataques": [],
   "habilidades": [
     {
-      "nome": "Pele áspera e discreta",
-      "descricao": "Sua textura e coloração a escondem bem entre folhas e lama, tornando-a quase invisível quando imóvel."
-    },
+      "nome": "Sentidos",
+      "descricao": "nada achado."
+    }
+  ],
+  "venenos": [
     {
-      "nome": "Visão na penumbra",
-      "descricao": "Enxerga bem mesmo com pouca luz e sente cheiros no ar úmido ao redor."
+      "nome": "Veneno no jogo",
+      "texto": "Toxina de anfíbio · Potência 12 · 10 minutos (ingerido) · a cada 1 hora · pool 3 (Vigor) · Desgaste 1 · passivo: só quem o morde, lambe ou põe na boca (ingerido ou mucosa)"
     }
   ],
   "lore": [
     {
-      "titulo": "Inofensiva",
-      "texto": "Anfíbio de pele rugosa e hábitos discretos, não representa perigo algum além de ser presa fácil para muitos predadores."
+      "titulo": "Perigo só para quem o come",
+      "texto": "Anfíbio de pele rugosa e hábitos discretos, presa fácil para muitos predadores; só é perigoso para quem o morde ou põe na boca: o leite das glândulas mata cão, e já matou gente que comeu sapo."
     },
     {
       "titulo": "Coro noturno",
       "texto": "Aparece aos montes perto de brejos e poças, enchendo as noites úmidas com seu coaxar."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Toxina de anfíbio · Potência 12 · 10 minutos (ingerido) · a cada 1 hora · pool 3 (Vigor) · Desgaste 1 · passivo: só quem o morde, lambe ou põe na boca (ingerido ou mucosa)"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "- Não é ameaça para gente. O perigo é para o cão do grupo, ou para quem o põe na boca. - Com Sobrevivência 4, é o bicho que aparece em qualquer lugar úmido; com a Resistência (seca) +3, aguenta também a estiagem que mata outros anfíbios. - Com 3 PV, cai com um golpe; o problema é o que vem depois, para quem o mordeu."
     }
   ],
   "ecologia": {
@@ -114,5 +139,48 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 1
+  "ameacaLegada": 1,
+  "v3": {
+    "pv": 3,
+    "esquiva": 6,
+    "bloqueio": 4,
+    "defesa": 6,
+    "defesaMental": 6,
+    "defesaSocial": 10,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 0.33,
+    "deslocamento": {
+      "terra": {
+        "batalha": 1,
+        "arranque": 1,
+        "corrida": 2
+      }
+    }
+  },
+  "notasObservacao": [
+    "`anatomia`: anfíbio saltador, anatomia provisória (D-175), não calibrada em animal medido",
+    "`forca`: 0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): sem dente nem garra, não fere nem segura um humano pela força",
+    "`dimensoes.comprimento`: 12,5 cm (Wikipédia, 10 a 15 cm); a ADW dá 15 a 23,8 cm. Com 15 cm, a área continua abaixo do começo da escala e o Alvo não muda (D-174)",
+    "`dimensoes.altura` e `dimensoes.largura`: estimadas sem fonte (D-147, D-174)",
+    "`vigor`: 3, pela resistência medida à seca e ao calor e pela vida longa; a seca vai também na Resistência (seca) +3 natural (decisão 10, D-174)",
+    "fonte: a perda de 52,6% da água e a faixa de 10 a 42 °C, que sustentam o Vigor 3 e a Especialidade natural, continuam só pela Wikipédia; não houve cota de busca para a fonte primária (D-174)",
+    "`atributos.compostura`: 1 pela diretriz 1 (não social, solitário por comparação); era 2 pela espera parada. Se o autor quiser a espera do bicho de emboscada na Compostura de animal solitário, ela volta a 2, e a Defesa Social volta a 12 e a Energia a 5 (D-174)",
+    "`musculatura`: 2, animal comum, sem feito de força medido; provisória (decisão 12, D-174). Era sem linha",
+    "`resistencia`: 2, o normal da espécie (diretriz 2); o levantamento propunha 3 com a seca dentro, e a seca está na Especialidade natural +3, que é o caso de \"uma coisa só\" (D-174)",
+    "`especialidadesNaturais.seca`: +3 pela perda de 52,6% da água, medida; era \"desidratação +2\" no limite do livro. O levantamento a punha em Sede 1 pelo teto do livro; como natural, o teto é +3 (decisão 3 da quarta rodada, D-174)",
+    "`pv`: 3 (em vigor na Etapa 2, 20/10/2026); antes: 8 pela decisão 21 (5 + Vigor); a outra proposta do autor dá 11; era 18 (D-132, D-169)",
+    "`pesoErguido`: 0,33 kg (em vigor na Etapa 2, 20/10/2026); antes: 0,29 kg pela decisão 14, provisório: é o valor da curva no piso da Força de referência 0, quase três vezes o corpo de 106 g, sem feito que o confirme; era cerca de 5 g (D-162)",
+    "jornada (nota de pesquisa, não é regra): a frente da invasão australiana avançava 40 km por ano em 1994 e cerca de 60 km por ano em 2014 na frente oeste, com os sapos da frente de pernas mais longas (Phillips e Shine 2006 e outros, pela Wikipédia) **[medido]**. É a dispersão da população, e não o quanto um sapo anda por dia; a distância diária de um sapo não foi achada.",
+    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "`massa` (quinta rodada): 0,115 kg (em vigor na Etapa 2, 20/10/2026); antes: 106 g da ADW, conferida com as amostras de campo da Austrália (de 70 a 135 g de média); o 500 a 800 g de Guinness e zoológicos fica de fora, sem amostra. Falta o artigo de Ishigaki aberto, com os gramas por sexo",
+    "`velocidade`: congelada pela decisão 23, com o 0,4 do Miúdo no Minúsculo: 8 km/h, sem velocidade real de um sapo; parece alta para quem anda em saltos curtos (D-170, D-175)",
+    "fonte: a massa de 106 g segue pela ADW; o comprimento de 12,5 cm continua só pela Wikipédia (10 a 15 cm), contra 15 a 23,8 da ADW; procurado na ADW e na Wikipédia (D-174)",
+    "`veneno`: veneno sem id no catálogo (bufotoxina), via ingerido ou mucosa; a regra do toque do catálogo serve quando houver id (D-112)",
+    "`comportamento.atividade` e `comportamento.social`: noturno e solitário por comparação, sem frase conferida; a Furtividade 2 e a Compostura 1 dependem deles (D-174)"
+  ]
 }
