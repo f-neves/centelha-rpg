@@ -651,7 +651,7 @@ const opcoesEditor = {
   // abrir no lugar errado.
   if (location.hash) {
     montarTodas();
-    const alvo = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    const alvo = alvoDoEndereco(decodeURIComponent(location.hash.slice(1)));
     // Chegando por permalink, o `content-visibility` SAI.
     //
     // Ele deixa a altura das fichas ainda não medidas por conta de um palpite
@@ -866,4 +866,21 @@ const opcoesEditor = {
       abrirMesas(card.id, nome);
     });
   });
+
+  // O ENDEREÇO VELHO (`#mon-lobo`) AINDA ACHA O CARD (D-179, item 10). Os ids do
+  // bestiário perderam o `mon-` e alguns mudaram de nome; quem guardou um link de
+  // antes cai no card do id novo, e a barra de endereço passa a mostrar o novo.
+  // Só traduz quando o id pedido não existe na página, então um id que existe
+  // nunca é desviado. Mora aqui no fim, e não junto do permalink lá em cima, para
+  // não empurrar as linhas que os documentos citam deste arquivo.
+  function alvoDoEndereco(pedido: string): HTMLElement | null {
+    const proprio = document.getElementById(pedido);
+    const novo = proprio ? null : (IDS_ANTIGOS as Record<string, string>)[pedido];
+    if (!novo) return proprio;
+    history.replaceState(null, '', '#' + novo);
+    // o realce do `Base.astro` lê o hash; sem o aviso ele procuraria o id velho
+    window.dispatchEvent(new HashChangeEvent('hashchange'));
+    return document.getElementById(novo);
+  }
+  import IDS_ANTIGOS from '../data/ids-antigos.json';
 </script>

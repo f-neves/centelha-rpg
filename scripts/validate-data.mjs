@@ -1112,6 +1112,38 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
   if (!arqs.length) fail('src/data/bestiario/: nenhuma ficha de criatura');
 }
 
+// ------------------------------------------- D-179 · os ids antigos do bestiário
+//
+// `ids-antigos.json` leva cada id antigo (`mon-lobo`) ao definitivo (`lobo`), para
+// o `#mon-lobo` de um link velho ainda achar o card. Ele é gerado do
+// `ids-definitivos.tsv` do Arquiteto, que fica fora do repositório.
+//
+// A TROCA ACONTECE EM DUAS ETAPAS (plano de publicação, etapas 3 e 4), e o portão
+// diz em qual delas os dados estão. `ANTES`: a tabela existe e os dados ainda usam
+// os ids antigos (toda chave é id, nenhum valor é). `DEPOIS`: os dados já usam os
+// definitivos (todo valor é id, nenhuma chave é). Par fora do estado declarado
+// para aqui, e é o que pega uma troca feita pela metade. A etapa 4 vira esta
+// constante para 'depois' e apaga o ramo 'antes'.
+{
+  const ESTADO_DA_TROCA = 'antes';
+  const ARQ = path.join(DIR, 'ids-antigos.json');
+  if (!fs.existsSync(ARQ)) fail('ids-antigos.json: arquivo ausente');
+  else {
+    const pares = read('ids-antigos.json');
+    const ids = new Set(fs.readdirSync(path.join(DIR, 'bestiario')).filter((f) => f.endsWith('.json')).map((f) => f.slice(0, -5)));
+    const vistos = new Map();
+    for (const [antigo, novo] of Object.entries(pares)) {
+      if (typeof novo !== 'string' || !/^[a-z0-9-]+$/.test(novo)) { fail(`ids-antigos.json: "${antigo}" leva a um id inválido (${JSON.stringify(novo)})`); continue; }
+      if (antigo === novo) fail(`ids-antigos.json: "${antigo}" leva a ele mesmo`);
+      if (vistos.has(novo)) fail(`ids-antigos.json: "${antigo}" e "${vistos.get(novo)}" levam ao mesmo id "${novo}"`);
+      vistos.set(novo, antigo);
+      const [deveExistir, naoPode] = ESTADO_DA_TROCA === 'antes' ? [antigo, novo] : [novo, antigo];
+      if (!ids.has(deveExistir)) fail(`ids-antigos.json: "${deveExistir}" não é id de criatura (estado da troca: ${ESTADO_DA_TROCA})`);
+      if (ids.has(naoPode)) fail(`ids-antigos.json: "${naoPode}" ainda é id de criatura (estado da troca: ${ESTADO_DA_TROCA})`);
+    }
+  }
+}
+
 if (erros.length) {
   console.error(`\n✘ Validação de dados FALHOU (${erros.length} erro(s)):`);
   for (const e of erros) console.error('  • ' + e);
