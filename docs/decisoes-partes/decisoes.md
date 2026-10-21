@@ -2430,7 +2430,7 @@ As D-169 a D-174 respondem às quatro questões de `../tmp/arquiteto/bestiario/p
 - Data: 2026-10-12
 - Decisão (autor, 12/10/2026): "Publicação: segurar TUDO. Só publicar no site quando todas as fichas estiverem prontas E o código atualizado. Nada vai ao ar antes."
 - Origem: mensagem do autor de 12/10/2026.
-- Estado: vale até o fim do bestiário. Como todo push no `main` publica (deploy automático), nenhuma ficha nova e nenhuma mudança de regra do bestiário entra em `src/` antes disso. Os rascunhos ficam em `../tmp/arquiteto/bestiario/`.
+- Estado: **substituída pela D-179** (21/10/2026): publicar agora o que já está decidido, com o ok final do autor antes de ir ao ar. Até a D-179, como todo push no `main` publica (deploy automático), nenhuma ficha nova e nenhuma mudança de regra do bestiário entrava em `src/`. Os rascunhos ficam em `../tmp/arquiteto/bestiario/`.
 
 ### D-174 · Na dúvida, decisão provisória com nota de observação [tags: bestiario, metodo, provisorio, observacao, veterana, arquiteto, d-087]
 - Data: 2026-10-12
@@ -2465,6 +2465,21 @@ As D-176 a D-178 respondem às questões 1, 2 e 3a de `../tmp/arquiteto/bestiari
 - Decisão (autor, 13/10/2026): "Força 5. O leopardo de 60 kg fica acima da hiena e do lobo-terrível (Força 4) e igual ao javali. Justifique por comparação, como um felino que sobe em árvore carregando presa; o içar com a boca não é a base do número (D-159 e D-118). Recalcule a mordida e os campos provisórios que dependem da Força."
 - Origem: mensagem do autor de 13/10/2026, resposta à questão 2 do relatório da leva (nenhuma das três opções do Arquiteto).
 - Estado: a implementar (B20). A marca [provisório] por feito sai do leopardo; a Força segue provisória como a de todos (D-169).
+
+## Publicar agora o que já está decidido (21/10/2026)
+
+### D-179 · O bestiário vai ao ar com o que já está decidido; substitui a D-173 [tags: bestiario, criatura, publicacao, site, deploy, src, ids, imagens, esqueleto, d-173, b20]
+- Data: 2026-10-21
+- Decisão (autor, 21/10/2026): "A D-173 («segurar TUDO. Só publicar no site quando todas as fichas estiverem prontas E o código atualizado.») fica substituída: publicar agora o que já está decidido." O que já está decidido, nas palavras do autor:
+  - Escopo: "os ids novos das 309 criaturas, as imagens novas no padrão de imagens-padronizadas em todas, as 97 fichas novas e um esqueleto de ficha para cada uma das restantes, com o id definitivo, o nome e o id antigo. O conteúdo antigo dessas continua no ar até a ficha nova de cada uma ficar pronta."
+  - Ids: "com o esqueleto, toda criatura ganha o id definitivo agora. Para as 26 com ficha, vale o campo «id antigo do bestiário». mon-deinonychus vira deinonico. Para as 11 sem ficha, proponha o id no esqueleto e me mostre a lista."
+  - Id antigo dividido por duas fichas: "herda a criatura que o site mostrava. Confirme pelo texto do site em cada caso (mon-dire-lion-spotted-lion, mon-monitor-lizard, mon-squid). A outra ficha ganha id novo."
+  - Regras que as fichas usam e o site não tem, como Disparo: "publicar sem explicação. Não crie página de regras e não mexa no livro nem no habilidades.json."
+  - Criatura sem imagem no padrão novo: "nenhuma imagem, para ficar fácil de identificar. Teste se o card e a lista do bestiário continuam íntegros sem imagem."
+  - "As imagens que mostram duas criaturas juntas não serão recortadas: serão feitas imagens novas."
+  - "Nada vai ao ar sem o ok final dele."
+- Origem: mensagem do autor de 21/10/2026, resposta às decisões do Arquiteto sobre o levantamento da Executora (`../tmp/executora/levantamento-ids.md`).
+- Estado: a implementar. Plano em `../tmp/arquiteto/bestiario/publicacao/plano-publicacao.md`; ids em `ids-definitivos.tsv` e imagens a fazer em `imagens-a-fazer.md`, na mesma pasta. Ficam com o autor: o `mon-grizzly-bear`, renomear ou não os `.webp`, a regra de junção da `unique(mesa_id, monstro_id)` no banco, os 11 ids propostos, e o banco depois das consultas 1a a 1e. **Substitui a D-173.** A D-174 ("a nota se relê antes de a ficha ir para o site (D-173)") continua: a nota se relê antes da publicação.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
