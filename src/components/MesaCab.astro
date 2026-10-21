@@ -880,3 +880,16 @@ const { aba } = Astro.props;
     addEventListener('resize', medir, { passive: true });
   }
 </script>
+
+<style is:global>
+  /* Duas imagens no card da criatura (D-179, item 16): o selo diz qual está à vista. Na
+     aba Criaturas o clique na arte do card troca (mesa/criaturas.astro); no Combate e no
+     Grid o card só mostra a escolhida. */
+  .card-modal .arte img[data-troca], #card-modal .arte img[data-troca] { cursor: pointer; }
+  .arte .arte-selo {
+    position: absolute; right: .55rem; bottom: .45rem; z-index: 2;
+    font-family: 'Cinzel'; font-size: var(--fs-aux); font-weight: 600; letter-spacing: .04em;
+    padding: .1rem .5rem; border-radius: 999px; pointer-events: none;
+    color: #f3e8cf; background: color-mix(in srgb, #1a120a 55%, transparent);
+  }
+</style>

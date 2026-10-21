@@ -1383,7 +1383,7 @@ export function abrirNPC(
 
 /** O catálogo de retratos: as criaturas do bestiário que têm arte. */
 async function escolherRetrato(): Promise<string | null> {
-  const { MON_LIST } = await import('./mesa-bestiario');
+  const { MON_LIST, imagemDe } = await import('./mesa-bestiario');
   const { u } = await import('./mesa-core');
   const com = (MON_LIST as any[]).filter((m) => m.imagem);
   return uiEscolher('Retrato do bestiário', com.map((m) => ({
@@ -1391,7 +1391,7 @@ async function escolherRetrato(): Promise<string | null> {
     rotulo: m.nome,
     busca: m.busca,
     grupo: m.categoria || 'Sem categoria',
-    html: `<span class="ag-ret-op"><img src="${esc(u(m.imagem))}" alt="" loading="lazy" />
+    html: `<span class="ag-ret-op"><img src="${esc(u(imagemDe(m) || m.imagem))}" alt="" loading="lazy" />
       <span><b>${esc(m.nome)}</b><small>${esc(m.categoria || '')}${m.porte ? ` · ${esc(m.porte)}` : ''}</small></span></span>`,
   })), {
     filtro: 'Procurar criatura…',

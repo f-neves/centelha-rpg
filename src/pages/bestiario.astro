@@ -694,8 +694,8 @@ const opcoesEditor = {
   // (montarAosPoucos, depois deste bloco rodar), então ligar o clique uma vez só
   // aqui deixava a arte delas sem lightbox. Delegar cobre a que ainda não existe.
   list.addEventListener('click', (e) => {
-    const im = (e.target as HTMLElement).closest<HTMLImageElement>('.arte img[data-full]');
-    if (im) abrir(im.dataset.full!, im.dataset.nome || '');
+    const im = (e.target as HTMLElement).closest<HTMLElement>('.arte img[data-full], .arte .arte-lupa');
+    if (im) cliqueNaArte(im);
   });
   lb.addEventListener('click', (e) => { if (e.target === lb || (e.target as HTMLElement).classList.contains('lb-fechar')) fechar(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) fechar(); });
@@ -883,4 +883,37 @@ const opcoesEditor = {
     return document.getElementById(novo);
   }
   import IDS_ANTIGOS from '../data/ids-antigos.json';
+
+  // AS DUAS IMAGENS (D-179, item 16). Na criatura com `imagem2`, o clique na arte troca
+  // a imagem e a lupa abre a lightbox com a que está à vista; na de uma imagem só, o
+  // clique abre a lightbox como sempre. A escolha é do aparelho (imagem-escolhida.ts).
+  // Mora no fim pelo mesmo motivo da `alvoDoEndereco`.
+  function mostrarEscolha(img: HTMLImageElement) {
+    const card = img.closest<HTMLElement>('.besta');
+    if (!card || !img.dataset.img2) return;
+    const n = escolhaDe(card.id);
+    const src = n === 2 ? img.dataset.img2 : img.dataset.img1!;
+    if (img.getAttribute('src') !== src) img.src = src;
+    img.dataset.full = src;
+    const selo = card.querySelector('.arte-selo');
+    if (selo) selo.textContent = `${n}/2`;
+  }
+  function cliqueNaArte(alvo: HTMLElement) {
+    const img = alvo.closest('.arte')?.querySelector<HTMLImageElement>('img[data-full]');
+    if (!img) return;
+    if (alvo.classList.contains('arte-lupa') || !img.dataset.img2) { abrir(img.dataset.full!, img.dataset.nome || ''); return; }
+    const card = img.closest<HTMLElement>('.besta')!;
+    alternarImagem({ id: card.id, imagem2: img.dataset.img2 });
+    mostrarEscolha(img);
+  }
+  // A escolha guardada vale desde a carga, também nas fichas que ainda estão no <template>.
+  document.querySelectorAll<HTMLImageElement>('.besta img[data-img2]').forEach(mostrarEscolha);
+  document.querySelectorAll<HTMLTemplateElement>('template.besta-adiada').forEach((t) =>
+    t.content.querySelectorAll<HTMLImageElement>('.besta img[data-img2]').forEach((img) => {
+      const card = img.closest<HTMLElement>('.besta'); if (!card) return;
+      const n = escolhaDe(card.id);
+      if (n === 2) { img.src = img.dataset.img2!; img.dataset.full = img.dataset.img2!; }
+      const selo = card.querySelector('.arte-selo'); if (selo) selo.textContent = `${n}/2`;
+    }));
+  import { escolhaDe, alternarImagem } from '../lib/imagem-escolhida';
 </script>

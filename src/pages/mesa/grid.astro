@@ -2424,7 +2424,7 @@ const SETAS = [
   import {
     abrirCanal, nomeParaPresenca, type Canal, type Assunto, type Motivo, type Ping,
   } from '../../lib/mesa-tempo-real';
-  import { MON, resumoDe, iniDeMonstro, d6, cardCriaturaHTML, criaturaCompleta } from '../../lib/mesa-bestiario';
+  import { MON, resumoDe, iniDeMonstro, d6, cardCriaturaHTML, criaturaCompleta, imagemDe } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC, resumoFicha } from '../../lib/mesa-ficha';
   import { mana as manaDaFicha, modificadorPorte, porteDeRotulo, gatePerfuracaoAbre, limiteDaMorte, passouDoLimite } from '../../lib/calc';
   import {
@@ -3596,7 +3596,7 @@ const SETAS = [
       // O `monstro_id` vale para qualquer tipo, e não só para a criatura: o NPC
       // de cena pode emprestar o retrato de um bicho do bestiário sem herdar o
       // bloco de combate dele.
-      || (MON[c.monstro_id]?.imagem ? u(MON[c.monstro_id].imagem) : null);
+      || (imagemDe(MON[c.monstro_id]) ? u(imagemDe(MON[c.monstro_id])!) : null);
     const besta = MON[c.monstro_id]?.imagem && !(c.imagem && IMGS[c.imagem]) ? ' av-besta' : '';
     return avatarHTML(c.nome, src, (extra + besta).trim(), pctDe100(c));
   }

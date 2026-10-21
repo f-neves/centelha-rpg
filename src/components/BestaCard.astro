@@ -88,8 +88,15 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
         <figure class={`arte${i.imagem ? '' : ' sem-arte'}`} data-cent={i.centelha}>
           {i.imagem
             ? <img src={url(i.imagem)} alt={`Ilustração de ${i.nome}`} loading="lazy" decoding="async"
-                   data-full={url(i.imagem)} data-nome={i.nome} />
+                   data-full={url(i.imagem)} data-nome={i.nome}
+                   {...(i.imagem2 ? { 'data-img1': url(i.imagem), 'data-img2': url(i.imagem2), title: 'Clique para ver a outra imagem' } : {})} />
             : <span class="capitular cinzel" aria-hidden="true">{i.nome.trim()[0]}</span>}
+          {/* Duas imagens (D-179, item 16): o clique na arte troca, a lupa abre a lightbox e o
+              selo diz qual está à vista. A escolha mora em src/lib/imagem-escolhida.ts. */}
+          {i.imagem2 && (<>
+            <span class="arte-selo" aria-hidden="true">1/2</span>
+            <button class="arte-lupa" type="button" title="Ampliar" aria-label="Ampliar a imagem">⌕</button>
+          </>)}
           <span class="arte-ameaca" title={`Ameaça ${i.ameaca}/6`}>{stars(i.ameaca)}</span>
           {i.centelha > 0 && <span class="arte-cent" title={`Centelha ${i.centelha}`}><CentelhaSpark /> {i.centelha}</span>}
           {/* Fixar para comparar: estado mora só em localStorage (src/pages/bestiario.astro,
@@ -238,3 +245,25 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
           )}
         </div>
       </article>
+
+<style is:global>
+  /* Duas imagens (D-179, item 16). O selo fica no canto de baixo à direita, livre (a
+     Ameaça está no de baixo à esquerda, a Centelha e o pino nos de cima); a lupa, acima
+     dele. Global porque a ficha nasce também dentro de <template>. */
+  .arte img[data-img2] { cursor: pointer; }
+  .arte-selo {
+    position: absolute; right: .55rem; bottom: .45rem; z-index: 2;
+    font-family: 'Cinzel'; font-size: var(--fs-aux); font-weight: 600; letter-spacing: .04em;
+    padding: .1rem .5rem; border-radius: 999px; pointer-events: none;
+    color: #f3e8cf; background: color-mix(in srgb, #1a120a 55%, transparent);
+  }
+  .arte-lupa {
+    position: absolute; right: .5rem; bottom: 2.1rem; z-index: 3;
+    width: 2.1rem; height: 2.1rem; display: flex; align-items: center; justify-content: center;
+    border: none; border-radius: 50%; cursor: zoom-in;
+    background: color-mix(in srgb, #1a120a 55%, transparent);
+    color: #f3e8cf; font-size: var(--fs-h3); line-height: 1;
+    box-shadow: 0 2px 5px rgba(0,0,0,.4);
+  }
+  .arte-lupa:hover { background: color-mix(in srgb, #1a120a 75%, transparent); }
+</style>
