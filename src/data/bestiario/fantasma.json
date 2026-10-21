@@ -1,0 +1,180 @@
+{
+  "ordem": 223,
+  "id": "fantasma",
+  "idAntigo": "mon-ghost",
+  "nome": "Fantasma",
+  "nomeIngles": "Ghost",
+  "categoria": "Morto-vivo",
+  "papel": "elite",
+  "conceito": "morto-vivo Médio",
+  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "tags": [
+    "morto-vivo",
+    "centelha",
+    "incorpóreo"
+  ],
+  "imagem": "bestiario/ghost.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "1,7 m de altura",
+    "peso": "sem peso material (incorpóreo)"
+  },
+  "locomocao": {
+    "terra": 3,
+    "voo": 3
+  },
+  "centelha": 4,
+  "attrs": {
+    "forca": 0,
+    "destreza": 3,
+    "vigor": 6,
+    "influencia": 6,
+    "perspicacia": 4,
+    "compostura": 5,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2
+  },
+  "skills": {
+    "briga": 5,
+    "esquiva": 1,
+    "prontidao": 1,
+    "integridade": 5
+  },
+  "virtues": {
+    "compaixao": 0,
+    "conviccao": 4,
+    "temperanca": 2,
+    "valor": 3
+  },
+  "willpower": 9,
+  "aparencia": 2,
+  "ataques": [
+    {
+      "nome": "Toque corrupto",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 0,
+      "ticks": 5,
+      "notas": "incorpóreo: o toque atravessa armadura, só a Centelha do alvo ajuda a resistir (pendência K36)"
+    }
+  ],
+  "fraquezas": [
+    "luz",
+    "sagrado"
+  ],
+  "resistencias": [
+    "corte",
+    "impacto",
+    "perfuracao"
+  ],
+  "habilidades": [
+    {
+      "nome": "Corpo Incorpóreo",
+      "descricao": "Atravessa paredes e portas como se não existissem, e resiste a corte, impacto e perfuração (dano pela metade); arma comum ainda o fere."
+    },
+    {
+      "nome": "Renascer da Fúria",
+      "descricao": "Mesmo destruído, sua raiva pode trazê-lo de volta à existência depois de algum tempo, a menos que a injustiça que o prende seja finalmente resolvida."
+    },
+    {
+      "nome": "Toque Corruptor",
+      "descricao": "Seu toque gélido consome a vitalidade da vítima, causando dano contínuo severo que um teste de Vigor pode reduzir pela metade."
+    },
+    {
+      "nome": "Lamento Aterrador",
+      "descricao": "Uma vez por cena, solta um gemido que gela o sangue, forçando quem ouvir a resistir com um teste de Compostura ou fugir tomado de pavor."
+    },
+    {
+      "nome": "Voo Silencioso",
+      "descricao": "Flutua pelo ar com perfeita destreza, sem fazer o menor ruído."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Uma injustiça sem descanso",
+      "texto": "Toda assombração carrega uma história não resolvida: uma traição, um assassinato, uma promessa quebrada que o prende a este mundo."
+    },
+    {
+      "titulo": "Ódio que corrói a alma",
+      "texto": "Mesmo os mais nobres em vida tendem a emergir cruéis e vingativos depois da morte, corrompidos pela própria permanência entre os vivos."
+    },
+    {
+      "titulo": "Ecos do que restou",
+      "texto": "Costuma manter cópias etéreas dos pertences que mais valorizava em vida, objetos que atravessam a matéria tão livremente quanto ele."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Undead",
+    "terreno": [
+      "Ruins",
+      "Urban",
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Ghost",
+    "cr": "7",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": "-",
+      "des": 12,
+      "con": "-",
+      "int": 10,
+      "sab": 11,
+      "car": 20
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 4,
+  "imunidades": [],
+  "poderes": [
+    {
+      "id": "possessao",
+      "nome": "Possessão",
+      "tipo": "natural",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 4
+      },
+      "resiste": "mente",
+      "efeito": "toma o controle do corpo de quem falhar em resistir, por uma cena",
+      "descricao": "O fantasma desliza para dentro do corpo de alguém que falhou em resistir e assume o controle por uma cena, agindo como se fosse essa pessoa.",
+      "usos": {
+        "periodo": "dia",
+        "quantidade": 1
+      }
+    },
+    {
+      "id": "telecinese-fantasma",
+      "nome": "Telecinese",
+      "tipo": "natural",
+      "base": {
+        "arte": "forcas",
+        "nivel": 3
+      },
+      "resiste": "nenhum",
+      "efeito": "move objetos à distância, sem tocá-los",
+      "descricao": "O fantasma move objetos pela sala com a força da própria vontade, sem precisar tocá-los.",
+      "usos": {
+        "periodo": "avontade"
+      }
+    }
+  ]
+}

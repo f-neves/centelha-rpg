@@ -49,8 +49,8 @@ const CLASSE_OVERRIDE = {
   // batia, e a Velocidade os punha em "media". Com a arma Punhos (leve) no catálogo (D-065),
   // o nome os jogaria em "leve", e a mesa mudaria. O Grid está congelado (D-054), então eles
   // ficam em "media" até a passada do Grid (N-grid-pendencias.md, N20).
-  'mon-iron-golem': 'media',
-  'mon-stone-golem': 'media',
+  'golem-de-ferro': 'media',
+  'golem-de-pedra': 'media',
 };
 function classeDoAtaque(id, nome, ticks) {
   if (CLASSE_OVERRIDE[id]) return CLASSE_OVERRIDE[id];
@@ -156,7 +156,7 @@ function build(c) {
 const monsters = inim.map(build).sort((a, b) => a.nome.localeCompare(b.nome, 'pt'));
 
 // checagem de integridade: todas as fontes presentes por criatura
-const problemas = [];
+const problemas = Object.keys(CLASSE_OVERRIDE).filter((id) => !inim.some((c) => c.id === id)).map((id) => `CLASSE_OVERRIDE para id inexistente: ${id}`); // a guarda de chave órfã dos outros satélites (D-179): sem ela, a exceção de um id trocado sumiria calada
 for (const m of monsters) {
   if (!m.atributos) problemas.push(`${m.id}: sem atributos`);
   if (m.combate.pv == null) problemas.push(`${m.id}: sem combate.pv`);

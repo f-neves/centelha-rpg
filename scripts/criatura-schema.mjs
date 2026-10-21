@@ -108,6 +108,9 @@ export const dimensoesSchema = z.object({
 export const criaturaSchema = z.object({
   ordem: z.number().int().min(1).optional(),
   id: z.string().regex(/^[a-z0-9-]+$/, 'id em minúsculas, números e hífen'),
+  /** O id de antes da troca da D-179 (`mon-lobo`, `camponis-assustado`). Tem de
+   *  bater com o par do `ids-antigos.json` (o validate confere nos dois sentidos). */
+  idAntigo: z.string().regex(/^[a-z0-9-]+$/).optional(),
   nome: texto.min(1),
   nomeIngles: texto.nullable(),
   categoria: texto.min(1),

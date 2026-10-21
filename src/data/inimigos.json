@@ -1,6 +1,6 @@
 [
   {
-    "id": "camponis-assustado",
+    "id": "campones-assustado",
     "nome": "Camponês Assustado",
     "tipo": "capanga",
     "categoria": "Humano",
@@ -890,7 +890,7 @@
     }
   },
   {
-    "id": "mon-exemplo-espantalho",
+    "id": "espantalho-desperto",
     "nome": "Espantalho Desperto",
     "tipo": "soldado",
     "categoria": "Construto",
@@ -947,7 +947,7 @@
     }
   },
   {
-    "id": "mon-goblin",
+    "id": "goblin",
     "nome": "Goblin",
     "tipo": "capanga",
     "categoria": "Humanoide",
@@ -1003,7 +1003,7 @@
     }
   },
   {
-    "id": "mon-kobold",
+    "id": "kobold",
     "nome": "Kobold",
     "tipo": "capanga",
     "categoria": "Humanoide",
@@ -1059,7 +1059,7 @@
     }
   },
   {
-    "id": "mon-orc",
+    "id": "orc",
     "nome": "Orc",
     "tipo": "capanga",
     "categoria": "Humanoide",
@@ -1127,7 +1127,7 @@
     }
   },
   {
-    "id": "mon-hobgoblin",
+    "id": "hobgoblin",
     "nome": "Hobgoblin",
     "tipo": "capanga",
     "categoria": "Humanoide",
@@ -1183,7 +1183,7 @@
     }
   },
   {
-    "id": "mon-gnoll",
+    "id": "gnoll",
     "nome": "Gnoll",
     "tipo": "soldado",
     "categoria": "Humanoide",
@@ -1239,7 +1239,7 @@
     }
   },
   {
-    "id": "mon-bugbear",
+    "id": "bugbear",
     "nome": "Bugbear",
     "tipo": "soldado",
     "categoria": "Humanoide",
@@ -1295,7 +1295,7 @@
     }
   },
   {
-    "id": "mon-homem-lagarto",
+    "id": "homem-lagarto",
     "nome": "Homem-lagarto",
     "tipo": "soldado",
     "categoria": "Humanoide",
@@ -1351,7 +1351,7 @@
     }
   },
   {
-    "id": "mon-trogloditas",
+    "id": "trogloditas",
     "nome": "Trogloditas",
     "tipo": "soldado",
     "categoria": "Humanoide",
@@ -1407,7 +1407,7 @@
     }
   },
   {
-    "id": "mon-ogro",
+    "id": "ogro",
     "nome": "Ogro",
     "tipo": "soldado",
     "categoria": "Gigante",
@@ -1463,7 +1463,7 @@
     }
   },
   {
-    "id": "mon-ettin",
+    "id": "ettin",
     "nome": "Ettin",
     "tipo": "elite",
     "categoria": "Gigante",
@@ -1519,7 +1519,7 @@
     }
   },
   {
-    "id": "mon-trol",
+    "id": "trol",
     "nome": "Trol",
     "tipo": "elite",
     "categoria": "Gigante",
@@ -1597,7 +1597,7 @@
     }
   },
   {
-    "id": "mon-gigante-da-colina",
+    "id": "gigante-da-colina",
     "nome": "Gigante da Colina",
     "tipo": "elite",
     "categoria": "Gigante",
@@ -1654,7 +1654,7 @@
     }
   },
   {
-    "id": "mon-gigante-da-pedra",
+    "id": "gigante-da-pedra",
     "nome": "Gigante da Pedra",
     "tipo": "chefe",
     "categoria": "Gigante",
@@ -1710,7 +1710,7 @@
     }
   },
   {
-    "id": "mon-gigante-do-fogo",
+    "id": "gigante-do-fogo",
     "nome": "Gigante do Fogo",
     "tipo": "chefe",
     "categoria": "Gigante",
@@ -1775,7 +1775,7 @@
     }
   },
   {
-    "id": "mon-gigante-do-gelo",
+    "id": "gigante-do-gelo",
     "nome": "Gigante do Gelo",
     "tipo": "chefe",
     "categoria": "Gigante",
@@ -1832,7 +1832,7 @@
     }
   },
   {
-    "id": "mon-gigante-das-nuvens",
+    "id": "gigante-das-nuvens",
     "nome": "Gigante das Nuvens",
     "tipo": "chefe",
     "categoria": "Gigante",
@@ -1932,7 +1932,7 @@
     }
   },
   {
-    "id": "mon-gigante-da-tempestade",
+    "id": "gigante-da-tempestade",
     "nome": "Gigante da Tempestade",
     "tipo": "chefe",
     "categoria": "Gigante",
@@ -2040,7 +2040,7 @@
     }
   },
   {
-    "id": "mon-ciclope",
+    "id": "ciclope",
     "nome": "Ciclope",
     "tipo": "elite",
     "categoria": "Gigante",
@@ -2103,7 +2103,7 @@
     }
   },
   {
-    "id": "mon-lobo",
+    "id": "lobo",
     "nome": "Lobo",
     "tipo": "fera",
     "categoria": "Fera",
@@ -2159,7 +2159,7 @@
     }
   },
   {
-    "id": "mon-lobo-atroz",
+    "id": "lobo-atroz",
     "nome": "Lobo Atroz",
     "tipo": "fera",
     "categoria": "Fera",
@@ -2215,7 +2215,7 @@
     }
   },
   {
-    "id": "mon-urso-pardo",
+    "id": "urso-pardo",
     "nome": "Urso-pardo",
     "tipo": "fera",
     "categoria": "Fera",
@@ -2271,7 +2271,7 @@
     }
   },
   {
-    "id": "mon-leao",
+    "id": "leao",
     "nome": "Leão",
     "tipo": "fera",
     "categoria": "Fera",
@@ -2327,7 +2327,7 @@
     }
   },
   {
-    "id": "mon-tigre",
+    "id": "tigre",
     "nome": "Tigre",
     "tipo": "fera",
     "categoria": "Fera",
@@ -2383,7 +2383,7 @@
     }
   },
   {
-    "id": "mon-javali",
+    "id": "javali",
     "nome": "Javali",
     "tipo": "fera",
     "categoria": "Fera",
@@ -2439,7 +2439,7 @@
     }
   },
   {
-    "id": "mon-rinoceronte",
+    "id": "rinoceronte",
     "nome": "Rinoceronte",
     "tipo": "fera",
     "categoria": "Fera",
@@ -2495,7 +2495,7 @@
     }
   },
   {
-    "id": "mon-elefante",
+    "id": "elefante",
     "nome": "Elefante",
     "tipo": "fera",
     "categoria": "Fera",
@@ -2551,7 +2551,7 @@
     }
   },
   {
-    "id": "mon-gorila",
+    "id": "gorila",
     "nome": "Gorila",
     "tipo": "fera",
     "categoria": "Fera",
@@ -2607,7 +2607,7 @@
     }
   },
   {
-    "id": "mon-crocodilo",
+    "id": "crocodilo-do-nilo",
     "nome": "Crocodilo",
     "tipo": "fera",
     "categoria": "Fera",
@@ -2663,7 +2663,7 @@
     }
   },
   {
-    "id": "mon-cobra-constritora",
+    "id": "jiboia",
     "nome": "Cobra Constritora",
     "tipo": "fera",
     "categoria": "Fera",
@@ -2719,7 +2719,7 @@
     }
   },
   {
-    "id": "mon-aranha-gigante",
+    "id": "aranha-gigante",
     "nome": "Aranha Gigante",
     "tipo": "fera",
     "categoria": "Fera",
@@ -2802,7 +2802,7 @@
     }
   },
   {
-    "id": "mon-escorpiao-gigante",
+    "id": "escorpiao-gigante",
     "nome": "Escorpião Gigante",
     "tipo": "fera",
     "categoria": "Fera",
@@ -2873,7 +2873,7 @@
     }
   },
   {
-    "id": "mon-aguia-gigante",
+    "id": "aguia-gigante",
     "nome": "Águia Gigante",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -2932,7 +2932,7 @@
     }
   },
   {
-    "id": "mon-roc",
+    "id": "roc",
     "nome": "Roc",
     "tipo": "chefe",
     "categoria": "Fera",
@@ -2988,7 +2988,7 @@
     }
   },
   {
-    "id": "mon-rato-gigante",
+    "id": "rato-gigante",
     "nome": "Rato Gigante",
     "tipo": "fera",
     "categoria": "Fera",
@@ -3044,7 +3044,7 @@
     }
   },
   {
-    "id": "mon-corujurso",
+    "id": "corujurso",
     "nome": "Corujurso",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -3103,7 +3103,7 @@
     }
   },
   {
-    "id": "mon-minotauro",
+    "id": "minotauro",
     "nome": "Minotauro",
     "tipo": "soldado",
     "categoria": "Monstro",
@@ -3162,7 +3162,7 @@
     }
   },
   {
-    "id": "mon-harpia",
+    "id": "harpia",
     "nome": "Harpia",
     "tipo": "soldado",
     "categoria": "Monstro",
@@ -3241,7 +3241,7 @@
     }
   },
   {
-    "id": "mon-gargula",
+    "id": "gargula",
     "nome": "Gárgula",
     "tipo": "soldado",
     "categoria": "Monstro",
@@ -3298,7 +3298,7 @@
     }
   },
   {
-    "id": "mon-grifo",
+    "id": "grifo",
     "nome": "Grifo",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -3355,7 +3355,7 @@
     }
   },
   {
-    "id": "mon-hipogrifo",
+    "id": "hipogrifo",
     "nome": "Hipogrifo",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -3412,7 +3412,7 @@
     }
   },
   {
-    "id": "mon-manticora",
+    "id": "manticora",
     "nome": "Mantícora",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -3491,7 +3491,7 @@
     }
   },
   {
-    "id": "mon-quimera",
+    "id": "quimera",
     "nome": "Quimera",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -3572,7 +3572,7 @@
     }
   },
   {
-    "id": "mon-wyvern",
+    "id": "wyvern",
     "nome": "Wyvern",
     "tipo": "elite",
     "categoria": "Dragão",
@@ -3644,7 +3644,7 @@
     }
   },
   {
-    "id": "mon-hidra-5-cabecas",
+    "id": "hidra-5-cabecas",
     "nome": "Hidra (5 cabeças)",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -3714,7 +3714,7 @@
     }
   },
   {
-    "id": "mon-basilisco",
+    "id": "basilisco",
     "nome": "Basilisco",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -3789,7 +3789,7 @@
     }
   },
   {
-    "id": "mon-cocatriz",
+    "id": "cocatriz",
     "nome": "Cocatriz",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -3869,7 +3869,7 @@
     }
   },
   {
-    "id": "mon-gorgona-touro-de-ferro",
+    "id": "gorgona-touro-de-ferro",
     "nome": "Górgona (touro de ferro)",
     "tipo": "chefe",
     "categoria": "Besta mágica",
@@ -3950,7 +3950,7 @@
     }
   },
   {
-    "id": "mon-besta-deslocadora",
+    "id": "besta-deslocadora",
     "nome": "Besta Deslocadora",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -4031,7 +4031,7 @@
     }
   },
   {
-    "id": "mon-aranha-das-fases",
+    "id": "aranha-das-fases",
     "nome": "Aranha das Fases",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -4110,7 +4110,7 @@
     }
   },
   {
-    "id": "mon-monstro-da-ferrugem",
+    "id": "monstro-da-ferrugem",
     "nome": "Monstro da Ferrugem",
     "tipo": "soldado",
     "categoria": "Aberração",
@@ -4190,7 +4190,7 @@
     }
   },
   {
-    "id": "mon-cubo-gelatinoso",
+    "id": "cubo-gelatinoso",
     "nome": "Cubo Gelatinoso",
     "tipo": "soldado",
     "categoria": "Limo",
@@ -4262,7 +4262,7 @@
     }
   },
   {
-    "id": "mon-mimico",
+    "id": "mimico",
     "nome": "Mímico",
     "tipo": "soldado",
     "categoria": "Aberração",
@@ -4343,7 +4343,7 @@
     }
   },
   {
-    "id": "mon-montao-tropecante",
+    "id": "montao-tropecante",
     "nome": "Montão Tropeçante",
     "tipo": "elite",
     "categoria": "Planta",
@@ -4401,7 +4401,7 @@
     }
   },
   {
-    "id": "mon-treant",
+    "id": "treant",
     "nome": "Treant",
     "tipo": "chefe",
     "categoria": "Planta",
@@ -4479,7 +4479,7 @@
     }
   },
   {
-    "id": "mon-verme-purpura",
+    "id": "verme-purpura",
     "nome": "Verme Púrpura",
     "tipo": "chefe",
     "categoria": "Besta mágica",
@@ -4536,7 +4536,7 @@
     }
   },
   {
-    "id": "mon-bulette",
+    "id": "bulette",
     "nome": "Bulette",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -4593,7 +4593,7 @@
     }
   },
   {
-    "id": "mon-aboleth",
+    "id": "aboleth",
     "nome": "Aboleth",
     "tipo": "elite",
     "categoria": "Aberração",
@@ -4701,7 +4701,7 @@
     }
   },
   {
-    "id": "mon-esqueleto-humano",
+    "id": "esqueleto-humano",
     "nome": "Esqueleto Humano",
     "tipo": "capanga",
     "categoria": "Morto-vivo",
@@ -4755,7 +4755,7 @@
     }
   },
   {
-    "id": "mon-zumbi-humano",
+    "id": "zumbi-humano",
     "nome": "Zumbi Humano",
     "tipo": "capanga",
     "categoria": "Morto-vivo",
@@ -4810,7 +4810,7 @@
     }
   },
   {
-    "id": "mon-ghoul",
+    "id": "ghoul",
     "nome": "Ghoul",
     "tipo": "soldado",
     "categoria": "Morto-vivo",
@@ -4891,7 +4891,7 @@
     }
   },
   {
-    "id": "mon-ghast",
+    "id": "ghast",
     "nome": "Ghast",
     "tipo": "soldado",
     "categoria": "Morto-vivo",
@@ -4971,7 +4971,7 @@
     }
   },
   {
-    "id": "mon-sombra",
+    "id": "sombra",
     "nome": "Sombra",
     "tipo": "soldado",
     "categoria": "Morto-vivo",
@@ -5064,7 +5064,7 @@
     }
   },
   {
-    "id": "mon-wight",
+    "id": "wight",
     "nome": "Wight",
     "tipo": "soldado",
     "categoria": "Morto-vivo",
@@ -5143,7 +5143,7 @@
     }
   },
   {
-    "id": "mon-assombracao-wraith",
+    "id": "assombracao",
     "nome": "Assombração",
     "tipo": "elite",
     "categoria": "Morto-vivo",
@@ -5243,7 +5243,7 @@
     }
   },
   {
-    "id": "mon-espectro",
+    "id": "espectro",
     "nome": "Espectro",
     "tipo": "elite",
     "categoria": "Morto-vivo",
@@ -5343,7 +5343,7 @@
     }
   },
   {
-    "id": "mon-mumia",
+    "id": "mumia",
     "nome": "Múmia",
     "tipo": "elite",
     "categoria": "Morto-vivo",
@@ -5437,7 +5437,7 @@
     }
   },
   {
-    "id": "mon-bodak",
+    "id": "bodak",
     "nome": "Bodak",
     "tipo": "chefe",
     "categoria": "Morto-vivo",
@@ -5516,7 +5516,7 @@
     }
   },
   {
-    "id": "mon-vampiro",
+    "id": "vampiro",
     "nome": "Vampiro",
     "tipo": "chefe",
     "categoria": "Morto-vivo",
@@ -5645,7 +5645,7 @@
     }
   },
   {
-    "id": "mon-lich",
+    "id": "lich",
     "nome": "Lich",
     "tipo": "chefe",
     "categoria": "Morto-vivo",
@@ -5751,7 +5751,7 @@
     }
   },
   {
-    "id": "mon-dretch",
+    "id": "dretch",
     "nome": "Dretch",
     "tipo": "soldado",
     "categoria": "Demônio",
@@ -5818,7 +5818,7 @@
     }
   },
   {
-    "id": "mon-quasit",
+    "id": "quasit",
     "nome": "Quasit",
     "tipo": "soldado",
     "categoria": "Demônio",
@@ -5905,7 +5905,7 @@
     }
   },
   {
-    "id": "mon-sucubo",
+    "id": "sucubo",
     "nome": "Súcubo",
     "tipo": "elite",
     "categoria": "Demônio",
@@ -5994,7 +5994,7 @@
     }
   },
   {
-    "id": "mon-vrock",
+    "id": "vrock",
     "nome": "Vrock",
     "tipo": "chefe",
     "categoria": "Demônio",
@@ -6074,7 +6074,7 @@
     }
   },
   {
-    "id": "mon-hezrou",
+    "id": "hezrou",
     "nome": "Hezrou",
     "tipo": "chefe",
     "categoria": "Demônio",
@@ -6158,7 +6158,7 @@
     }
   },
   {
-    "id": "mon-glabrezu",
+    "id": "glabrezu",
     "nome": "Glabrezu",
     "tipo": "chefe",
     "categoria": "Demônio",
@@ -6233,7 +6233,7 @@
     }
   },
   {
-    "id": "mon-marilith",
+    "id": "marilith",
     "nome": "Marilith",
     "tipo": "chefe",
     "categoria": "Demônio",
@@ -6309,7 +6309,7 @@
     }
   },
   {
-    "id": "mon-balor",
+    "id": "balor",
     "nome": "Balor",
     "tipo": "chefe",
     "categoria": "Demônio",
@@ -6416,7 +6416,7 @@
     }
   },
   {
-    "id": "mon-lemure",
+    "id": "lemure",
     "nome": "Lêmure",
     "tipo": "soldado",
     "categoria": "Diabo",
@@ -6486,7 +6486,7 @@
     }
   },
   {
-    "id": "mon-diabrete-imp",
+    "id": "diabrete-imp",
     "nome": "Diabrete (Imp)",
     "tipo": "soldado",
     "categoria": "Diabo",
@@ -6585,7 +6585,7 @@
     }
   },
   {
-    "id": "mon-diabo-barbado",
+    "id": "diabo-barbado",
     "nome": "Diabo Barbado",
     "tipo": "elite",
     "categoria": "Diabo",
@@ -6688,7 +6688,7 @@
     }
   },
   {
-    "id": "mon-erinia",
+    "id": "erinia",
     "nome": "Erínia",
     "tipo": "chefe",
     "categoria": "Diabo",
@@ -6763,7 +6763,7 @@
     }
   },
   {
-    "id": "mon-diabo-osseo",
+    "id": "diabo-osseo",
     "nome": "Diabo Ósseo",
     "tipo": "chefe",
     "categoria": "Diabo",
@@ -6864,7 +6864,7 @@
     }
   },
   {
-    "id": "mon-diabo-de-gelo",
+    "id": "diabo-de-gelo",
     "nome": "Diabo de Gelo",
     "tipo": "chefe",
     "categoria": "Diabo",
@@ -6971,7 +6971,7 @@
     }
   },
   {
-    "id": "mon-rakshasa",
+    "id": "rakshasa",
     "nome": "Rakshasa",
     "tipo": "chefe",
     "categoria": "Exterior",
@@ -7062,7 +7062,7 @@
     }
   },
   {
-    "id": "mon-diabo-do-fosso-pit-fiend",
+    "id": "diabo-do-fosso-pit-fiend",
     "nome": "Diabo do Fosso (Pit Fiend)",
     "tipo": "chefe",
     "categoria": "Diabo",
@@ -7202,7 +7202,7 @@
     }
   },
   {
-    "id": "mon-archon-cao",
+    "id": "arconte-cao",
     "nome": "Arconte Cão",
     "tipo": "soldado",
     "categoria": "Celestial",
@@ -7290,7 +7290,7 @@
     }
   },
   {
-    "id": "mon-deva-astral",
+    "id": "deva-astral",
     "nome": "Deva Astral",
     "tipo": "chefe",
     "categoria": "Celestial",
@@ -7411,7 +7411,7 @@
     }
   },
   {
-    "id": "mon-planetar",
+    "id": "planetar",
     "nome": "Planetar",
     "tipo": "chefe",
     "categoria": "Celestial",
@@ -7520,7 +7520,7 @@
     }
   },
   {
-    "id": "mon-solar",
+    "id": "solar",
     "nome": "Solar",
     "tipo": "chefe",
     "categoria": "Celestial",
@@ -7639,7 +7639,7 @@
     }
   },
   {
-    "id": "mon-couatl",
+    "id": "couatl",
     "nome": "Couatl",
     "tipo": "chefe",
     "categoria": "Exterior",
@@ -7747,7 +7747,7 @@
     }
   },
   {
-    "id": "mon-ghaele-azata",
+    "id": "ghaele-azata",
     "nome": "Ghaele (azata)",
     "tipo": "chefe",
     "categoria": "Celestial",
@@ -7842,7 +7842,7 @@
     }
   },
   {
-    "id": "mon-djinn",
+    "id": "djinn",
     "nome": "Djinn",
     "tipo": "elite",
     "categoria": "Elemental",
@@ -7948,7 +7948,7 @@
     }
   },
   {
-    "id": "mon-efreeti",
+    "id": "efreeti",
     "nome": "Efreeti",
     "tipo": "chefe",
     "categoria": "Elemental",
@@ -8056,7 +8056,7 @@
     }
   },
   {
-    "id": "mon-salamandra",
+    "id": "salamandra",
     "nome": "Salamandra",
     "tipo": "elite",
     "categoria": "Elemental",
@@ -8134,7 +8134,7 @@
     }
   },
   {
-    "id": "mon-elemental-da-terra-grande",
+    "id": "elemental-da-terra-grande",
     "nome": "Elemental da Terra (Grande)",
     "tipo": "elite",
     "categoria": "Elemental",
@@ -8211,7 +8211,7 @@
     }
   },
   {
-    "id": "mon-xorn",
+    "id": "xorn",
     "nome": "Xorn",
     "tipo": "elite",
     "categoria": "Elemental",
@@ -8290,7 +8290,7 @@
     }
   },
   {
-    "id": "mon-driade",
+    "id": "driade",
     "nome": "Dríade",
     "tipo": "soldado",
     "categoria": "Fada",
@@ -8377,7 +8377,7 @@
     }
   },
   {
-    "id": "mon-ninfa",
+    "id": "ninfa",
     "nome": "Ninfa",
     "tipo": "elite",
     "categoria": "Fada",
@@ -8470,7 +8470,7 @@
     }
   },
   {
-    "id": "mon-satiro",
+    "id": "satiro",
     "nome": "Sátiro",
     "tipo": "soldado",
     "categoria": "Fada",
@@ -8546,7 +8546,7 @@
     }
   },
   {
-    "id": "mon-pixie",
+    "id": "pixie",
     "nome": "Pixie",
     "tipo": "soldado",
     "categoria": "Fada",
@@ -8643,7 +8643,7 @@
     }
   },
   {
-    "id": "mon-fogo-fatuo",
+    "id": "fogo-fatuo",
     "nome": "Fogo-fátuo",
     "tipo": "elite",
     "categoria": "Aberração",
@@ -8718,7 +8718,7 @@
     }
   },
   {
-    "id": "mon-medusa",
+    "id": "medusa",
     "nome": "Medusa",
     "tipo": "elite",
     "categoria": "Monstro",
@@ -8809,7 +8809,7 @@
     }
   },
   {
-    "id": "mon-doppelganger",
+    "id": "doppelganger",
     "nome": "Doppelganger",
     "tipo": "soldado",
     "categoria": "Monstro",
@@ -8888,7 +8888,7 @@
     }
   },
   {
-    "id": "mon-pegaso",
+    "id": "pegaso",
     "nome": "Pégaso",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -8951,7 +8951,7 @@
     }
   },
   {
-    "id": "mon-unicornio",
+    "id": "unicornio",
     "nome": "Unicórnio",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -9035,7 +9035,7 @@
     }
   },
   {
-    "id": "mon-ogro-mago-oni",
+    "id": "ogro-mago-oni",
     "nome": "Ogro Mago (Oni)",
     "tipo": "chefe",
     "categoria": "Exterior",
@@ -9125,7 +9125,7 @@
     }
   },
   {
-    "id": "mon-esfinge-ginosfinge",
+    "id": "esfinge-ginosfinge",
     "nome": "Esfinge (Ginosfinge)",
     "tipo": "chefe",
     "categoria": "Besta mágica",
@@ -9233,7 +9233,7 @@
     }
   },
   {
-    "id": "mon-naga-espirita",
+    "id": "naga-espirita",
     "nome": "Naga Espírita",
     "tipo": "chefe",
     "categoria": "Aberração",
@@ -9337,7 +9337,7 @@
     }
   },
   {
-    "id": "mon-behir",
+    "id": "behir",
     "nome": "Behir",
     "tipo": "chefe",
     "categoria": "Besta mágica",
@@ -9418,7 +9418,7 @@
     }
   },
   {
-    "id": "mon-lamia",
+    "id": "lamia",
     "nome": "Lâmia",
     "tipo": "elite",
     "categoria": "Monstro",
@@ -9501,7 +9501,7 @@
     }
   },
   {
-    "id": "mon-bruxa-verde-hag",
+    "id": "bruxa-verde",
     "nome": "Bruxa Verde",
     "tipo": "elite",
     "categoria": "Monstro",
@@ -9592,7 +9592,7 @@
     }
   },
   {
-    "id": "mon-kraken",
+    "id": "kraken",
     "nome": "Kraken",
     "tipo": "chefe",
     "categoria": "Besta mágica",
@@ -9703,7 +9703,7 @@
     }
   },
   {
-    "id": "mon-tarrasque",
+    "id": "tarrasque",
     "nome": "Tarrasque",
     "tipo": "chefe",
     "categoria": "Besta mágica",
@@ -9797,7 +9797,7 @@
     }
   },
   {
-    "id": "mon-filhote-de-dragao-vermelho",
+    "id": "filhote-de-dragao-vermelho",
     "nome": "Filhote de Dragão Vermelho",
     "tipo": "elite",
     "categoria": "Dragão",
@@ -9898,7 +9898,7 @@
     }
   },
   {
-    "id": "mon-dragao-vermelho-jovem",
+    "id": "dragao-vermelho-jovem",
     "nome": "Dragão Vermelho Jovem",
     "tipo": "chefe",
     "categoria": "Dragão",
@@ -9997,7 +9997,7 @@
     }
   },
   {
-    "id": "mon-dragao-vermelho-adulto",
+    "id": "dragao-vermelho-adulto",
     "nome": "Dragão Vermelho Adulto",
     "tipo": "chefe",
     "categoria": "Dragão",
@@ -10125,7 +10125,7 @@
     }
   },
   {
-    "id": "mon-dragao-vermelho-anciao",
+    "id": "dragao-vermelho-anciao",
     "nome": "Dragão Vermelho Ancião",
     "tipo": "chefe",
     "categoria": "Dragão",
@@ -10238,7 +10238,7 @@
     }
   },
   {
-    "id": "mon-grande-wyrm-vermelho",
+    "id": "grande-wyrm-vermelho",
     "nome": "Grande Wyrm Vermelho",
     "tipo": "chefe",
     "categoria": "Dragão",
@@ -10350,7 +10350,7 @@
     }
   },
   {
-    "id": "mon-dragao-branco-jovem",
+    "id": "dragao-branco-jovem",
     "nome": "Dragão Branco Jovem",
     "tipo": "elite",
     "categoria": "Dragão",
@@ -10464,7 +10464,7 @@
     }
   },
   {
-    "id": "mon-dragao-azul-adulto",
+    "id": "dragao-azul-adulto",
     "nome": "Dragão Azul Adulto",
     "tipo": "chefe",
     "categoria": "Dragão",
@@ -10568,7 +10568,7 @@
     }
   },
   {
-    "id": "mon-dragao-verde-adulto",
+    "id": "dragao-verde-adulto",
     "nome": "Dragão Verde Adulto",
     "tipo": "chefe",
     "categoria": "Dragão",
@@ -10653,7 +10653,7 @@
     }
   },
   {
-    "id": "mon-dragao-dourado-adulto",
+    "id": "dragao-dourado-adulto",
     "nome": "Dragão Dourado Adulto",
     "tipo": "chefe",
     "categoria": "Dragão",
@@ -10776,7 +10776,7 @@
     }
   },
   {
-    "id": "mon-aasimar",
+    "id": "aasimar",
     "nome": "Aasimar",
     "tipo": "capanga",
     "categoria": "Exterior",
@@ -10833,7 +10833,7 @@
     }
   },
   {
-    "id": "mon-animated-object",
+    "id": "objeto-animado",
     "nome": "Objeto Animado",
     "tipo": "soldado",
     "categoria": "Monstro",
@@ -10888,7 +10888,7 @@
     }
   },
   {
-    "id": "mon-ankheg",
+    "id": "ankheg",
     "nome": "Ankheg",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -10945,7 +10945,7 @@
     }
   },
   {
-    "id": "mon-army-ant-swarm",
+    "id": "enxame-de-formigas",
     "nome": "Enxame de Formigas",
     "tipo": "fera",
     "categoria": "Fera",
@@ -10999,7 +10999,7 @@
     }
   },
   {
-    "id": "mon-giant-ant",
+    "id": "formiga-gigante",
     "nome": "Formiga Gigante",
     "tipo": "fera",
     "categoria": "Fera",
@@ -11055,7 +11055,7 @@
     }
   },
   {
-    "id": "mon-dire-ape-gigantopithecus",
+    "id": "gigantopiteco",
     "nome": "Símio Atroz",
     "tipo": "fera",
     "categoria": "Fera",
@@ -11111,7 +11111,7 @@
     }
   },
   {
-    "id": "mon-lantern-archon",
+    "id": "arconte-lanterna",
     "nome": "Arconte Lanterna",
     "tipo": "soldado",
     "categoria": "Celestial",
@@ -11217,7 +11217,7 @@
     }
   },
   {
-    "id": "mon-trumpet-archon",
+    "id": "arconte-trombeta",
     "nome": "Arconte Trombeta",
     "tipo": "chefe",
     "categoria": "Celestial",
@@ -11275,7 +11275,7 @@
     }
   },
   {
-    "id": "mon-assassin-vine",
+    "id": "vinha-assassina",
     "nome": "Vinha Assassina",
     "tipo": "soldado",
     "categoria": "Planta",
@@ -11348,7 +11348,7 @@
     }
   },
   {
-    "id": "mon-bralani",
+    "id": "bralani",
     "nome": "Bralani",
     "tipo": "elite",
     "categoria": "Exterior",
@@ -11405,7 +11405,7 @@
     }
   },
   {
-    "id": "mon-lillend",
+    "id": "lillend",
     "nome": "Lillend",
     "tipo": "elite",
     "categoria": "Celestial",
@@ -11462,7 +11462,7 @@
     }
   },
   {
-    "id": "mon-barghest",
+    "id": "barghest",
     "nome": "Barghest",
     "tipo": "soldado",
     "categoria": "Exterior",
@@ -11519,8 +11519,8 @@
     }
   },
   {
-    "id": "mon-greater-barghest",
-    "nome": "Greater Barghest",
+    "id": "barghest-maior",
+    "nome": "Barghest Maior",
     "tipo": "elite",
     "categoria": "Exterior",
     "ameaca": 4,
@@ -11576,7 +11576,7 @@
     }
   },
   {
-    "id": "mon-basidirond",
+    "id": "basidirond",
     "nome": "Basidirond",
     "tipo": "elite",
     "categoria": "Planta",
@@ -11632,7 +11632,7 @@
     }
   },
   {
-    "id": "mon-dire-bat",
+    "id": "morcego-atroz",
     "nome": "Morcego Atroz",
     "tipo": "fera",
     "categoria": "Fera",
@@ -11688,7 +11688,7 @@
     }
   },
   {
-    "id": "mon-bat-swarm",
+    "id": "enxame-de-morcegos",
     "nome": "Enxame de Morcegos",
     "tipo": "fera",
     "categoria": "Fera",
@@ -11744,7 +11744,7 @@
     }
   },
   {
-    "id": "mon-grizzly-bear",
+    "id": "urso-cinzento",
     "nome": "Urso Cinzento",
     "tipo": "fera",
     "categoria": "Fera",
@@ -11800,7 +11800,7 @@
     }
   },
   {
-    "id": "mon-dire-bear-cave-bear",
+    "id": "urso-das-cavernas",
     "nome": "Urso Atroz",
     "tipo": "fera",
     "categoria": "Fera",
@@ -11856,7 +11856,7 @@
     }
   },
   {
-    "id": "mon-bebilith",
+    "id": "bebilith",
     "nome": "Bebilith",
     "tipo": "chefe",
     "categoria": "Exterior",
@@ -11913,7 +11913,7 @@
     }
   },
   {
-    "id": "mon-fire-beetle",
+    "id": "besouro-de-fogo",
     "nome": "Besouro de Fogo",
     "tipo": "fera",
     "categoria": "Fera",
@@ -11969,7 +11969,7 @@
     }
   },
   {
-    "id": "mon-giant-stag-beetle",
+    "id": "besouro-veado-gigante",
     "nome": "Besouro-Veado Gigante",
     "tipo": "fera",
     "categoria": "Fera",
@@ -12025,7 +12025,7 @@
     }
   },
   {
-    "id": "mon-black-pudding",
+    "id": "pudim-negro",
     "nome": "Pudim Negro",
     "tipo": "elite",
     "categoria": "Limo",
@@ -12080,7 +12080,7 @@
     }
   },
   {
-    "id": "mon-dire-boar-daeodon",
+    "id": "daeodon",
     "nome": "Javali Atroz",
     "tipo": "fera",
     "categoria": "Fera",
@@ -12136,7 +12136,7 @@
     }
   },
   {
-    "id": "mon-boggard",
+    "id": "boggard",
     "nome": "Boggard",
     "tipo": "soldado",
     "categoria": "Humanoide",
@@ -12193,7 +12193,7 @@
     }
   },
   {
-    "id": "mon-cheetah",
+    "id": "guepardo",
     "nome": "Guepardo",
     "tipo": "fera",
     "categoria": "Fera",
@@ -12249,7 +12249,7 @@
     }
   },
   {
-    "id": "mon-leopard",
+    "id": "leopardo",
     "nome": "Leopardo",
     "tipo": "fera",
     "categoria": "Fera",
@@ -12305,7 +12305,7 @@
     }
   },
   {
-    "id": "mon-cave-fisher",
+    "id": "pescador-das-cavernas",
     "nome": "Pescador das Cavernas",
     "tipo": "fera",
     "categoria": "Fera",
@@ -12361,7 +12361,7 @@
     }
   },
   {
-    "id": "mon-centaur",
+    "id": "centauro",
     "nome": "Centauro",
     "tipo": "soldado",
     "categoria": "Monstro",
@@ -12418,7 +12418,7 @@
     }
   },
   {
-    "id": "mon-giant-centipede",
+    "id": "centopeia-gigante",
     "nome": "Centopéia Gigante",
     "tipo": "fera",
     "categoria": "Fera",
@@ -12474,7 +12474,7 @@
     }
   },
   {
-    "id": "mon-centipede-swarm",
+    "id": "enxame-de-centopeias",
     "nome": "Enxame de Centopéia",
     "tipo": "fera",
     "categoria": "Fera",
@@ -12528,7 +12528,7 @@
     }
   },
   {
-    "id": "mon-choker",
+    "id": "estrangulador",
     "nome": "Estrangulador",
     "tipo": "soldado",
     "categoria": "Aberração",
@@ -12585,7 +12585,7 @@
     }
   },
   {
-    "id": "mon-chuul",
+    "id": "chuul",
     "nome": "Chuul",
     "tipo": "elite",
     "categoria": "Aberração",
@@ -12642,8 +12642,8 @@
     }
   },
   {
-    "id": "mon-cloaker",
-    "nome": "Cloaker",
+    "id": "capa-sombria",
+    "nome": "Capa Sombria",
     "tipo": "elite",
     "categoria": "Aberração",
     "ameaca": 4,
@@ -12699,7 +12699,7 @@
     }
   },
   {
-    "id": "mon-giant-crab",
+    "id": "caranguejo-gigante",
     "nome": "Caranguejo Gigante",
     "tipo": "fera",
     "categoria": "Fera",
@@ -12755,7 +12755,7 @@
     }
   },
   {
-    "id": "mon-crab-swarm",
+    "id": "enxame-de-caranguejos",
     "nome": "Enxame de Caranguejo",
     "tipo": "fera",
     "categoria": "Fera",
@@ -12809,8 +12809,8 @@
     }
   },
   {
-    "id": "mon-dark-creeper",
-    "nome": "Dark Creeper",
+    "id": "rastejador-sombrio",
+    "nome": "Rastejador Sombrio",
     "tipo": "soldado",
     "categoria": "Humanoide",
     "ameaca": 2,
@@ -12866,8 +12866,8 @@
     }
   },
   {
-    "id": "mon-dark-stalker",
-    "nome": "Dark Stalker",
+    "id": "espreitador-sombrio",
+    "nome": "Espreitador Sombrio",
     "tipo": "soldado",
     "categoria": "Humanoide",
     "ameaca": 3,
@@ -12923,8 +12923,8 @@
     }
   },
   {
-    "id": "mon-darkmantle",
-    "nome": "Darkmantle",
+    "id": "manto-escuro",
+    "nome": "Manto Escuro",
     "tipo": "fera",
     "categoria": "Besta mágica",
     "ameaca": 2,
@@ -12980,7 +12980,7 @@
     }
   },
   {
-    "id": "mon-babau",
+    "id": "babau",
     "nome": "Babau",
     "tipo": "elite",
     "categoria": "Demônio",
@@ -13037,7 +13037,7 @@
     }
   },
   {
-    "id": "mon-nabasu",
+    "id": "nabasu",
     "nome": "Nabasu",
     "tipo": "chefe",
     "categoria": "Demônio",
@@ -13143,7 +13143,7 @@
     }
   },
   {
-    "id": "mon-nalfeshnee",
+    "id": "nalfeshnee",
     "nome": "Nalfeshnee",
     "tipo": "chefe",
     "categoria": "Demônio",
@@ -13200,7 +13200,7 @@
     }
   },
   {
-    "id": "mon-derro",
+    "id": "derro",
     "nome": "Derro",
     "tipo": "soldado",
     "categoria": "Humanoide",
@@ -13257,7 +13257,7 @@
     }
   },
   {
-    "id": "mon-barbed-devil-hamatula",
+    "id": "diabo-espinhoso",
     "nome": "Diabo Espinhoso",
     "tipo": "chefe",
     "categoria": "Diabo",
@@ -13314,7 +13314,7 @@
     }
   },
   {
-    "id": "mon-horned-devil-cornugon",
+    "id": "diabo-chifrudo",
     "nome": "Diabo Chifrudo",
     "tipo": "chefe",
     "categoria": "Diabo",
@@ -13371,7 +13371,7 @@
     }
   },
   {
-    "id": "mon-ankylosaurus",
+    "id": "anquilossauro",
     "nome": "Anquilossauro",
     "tipo": "fera",
     "categoria": "Fera",
@@ -13428,7 +13428,7 @@
     }
   },
   {
-    "id": "mon-brachiosaurus",
+    "id": "braquiossauro",
     "nome": "Braquiossauro",
     "tipo": "chefe",
     "categoria": "Fera",
@@ -13484,7 +13484,7 @@
     }
   },
   {
-    "id": "mon-deinonychus",
+    "id": "deinonico",
     "nome": "Deinonychus",
     "tipo": "fera",
     "categoria": "Fera",
@@ -13540,7 +13540,7 @@
     }
   },
   {
-    "id": "mon-elasmosaurus",
+    "id": "elasmossauro",
     "nome": "Elasmossauro",
     "tipo": "fera",
     "categoria": "Fera",
@@ -13596,7 +13596,7 @@
     }
   },
   {
-    "id": "mon-pteranodon",
+    "id": "pteranodonte",
     "nome": "Pteranodonte",
     "tipo": "fera",
     "categoria": "Fera",
@@ -13652,7 +13652,7 @@
     }
   },
   {
-    "id": "mon-stegosaurus",
+    "id": "estegossauro",
     "nome": "Estegossauro",
     "tipo": "fera",
     "categoria": "Fera",
@@ -13708,7 +13708,7 @@
     }
   },
   {
-    "id": "mon-tyrannosaurus",
+    "id": "tiranossauro",
     "nome": "Tiranossauro",
     "tipo": "chefe",
     "categoria": "Fera",
@@ -13764,7 +13764,7 @@
     }
   },
   {
-    "id": "mon-triceratops",
+    "id": "triceratops",
     "nome": "Tricerátops",
     "tipo": "chefe",
     "categoria": "Fera",
@@ -13820,7 +13820,7 @@
     }
   },
   {
-    "id": "mon-dog",
+    "id": "cachorro",
     "nome": "Cachorro",
     "tipo": "fera",
     "categoria": "Fera",
@@ -13876,7 +13876,7 @@
     }
   },
   {
-    "id": "mon-riding-dog",
+    "id": "cachorro-de-guarda",
     "nome": "Cão de Montaria",
     "tipo": "capanga",
     "categoria": "Monstro",
@@ -13933,7 +13933,7 @@
     }
   },
   {
-    "id": "mon-orca",
+    "id": "orca",
     "nome": "Orca",
     "tipo": "fera",
     "categoria": "Fera",
@@ -13989,7 +13989,7 @@
     }
   },
   {
-    "id": "mon-dolphin",
+    "id": "golfinho",
     "nome": "Golfinho",
     "tipo": "fera",
     "categoria": "Fera",
@@ -14045,7 +14045,7 @@
     }
   },
   {
-    "id": "mon-dragon-turtle",
+    "id": "tartaruga-dragao",
     "nome": "Tartaruga-Dragão",
     "tipo": "chefe",
     "categoria": "Dragão",
@@ -14102,7 +14102,7 @@
     }
   },
   {
-    "id": "mon-drider",
+    "id": "drider",
     "nome": "Drider",
     "tipo": "elite",
     "categoria": "Aberração",
@@ -14159,7 +14159,7 @@
     }
   },
   {
-    "id": "mon-drow",
+    "id": "drow",
     "nome": "Drow",
     "tipo": "capanga",
     "categoria": "Humanoide",
@@ -14216,8 +14216,8 @@
     }
   },
   {
-    "id": "mon-drow-noble",
-    "nome": "Drow Noble",
+    "id": "nobre-drow",
+    "nome": "Nobre Drow",
     "tipo": "soldado",
     "categoria": "Humanoide",
     "ameaca": 3,
@@ -14273,7 +14273,7 @@
     }
   },
   {
-    "id": "mon-duergar",
+    "id": "duergar",
     "nome": "Duergar",
     "tipo": "capanga",
     "categoria": "Humanoide",
@@ -14330,7 +14330,7 @@
     }
   },
   {
-    "id": "mon-electric-eel",
+    "id": "poraque",
     "nome": "Enguia Elétrica",
     "tipo": "fera",
     "categoria": "Fera",
@@ -14386,7 +14386,7 @@
     }
   },
   {
-    "id": "mon-giant-moray-eel",
+    "id": "moreia-gigante",
     "nome": "Moreia Gigante",
     "tipo": "fera",
     "categoria": "Fera",
@@ -14442,7 +14442,7 @@
     }
   },
   {
-    "id": "mon-small-air-elemental",
+    "id": "elemental-do-ar-pequeno",
     "nome": "Elemental do Ar (Pequeno)",
     "tipo": "soldado",
     "categoria": "Elemental",
@@ -14499,7 +14499,7 @@
     }
   },
   {
-    "id": "mon-small-earth-elemental",
+    "id": "elemental-da-terra-pequeno",
     "nome": "Elemental da Terra (Pequeno)",
     "tipo": "soldado",
     "categoria": "Elemental",
@@ -14556,7 +14556,7 @@
     }
   },
   {
-    "id": "mon-small-fire-elemental",
+    "id": "elemental-do-fogo-pequeno",
     "nome": "Elemental do Fogo (Pequeno)",
     "tipo": "soldado",
     "categoria": "Elemental",
@@ -14614,7 +14614,7 @@
     }
   },
   {
-    "id": "mon-small-water-elemental",
+    "id": "elemental-da-agua-pequeno",
     "nome": "Elemental da Água (Pequeno)",
     "tipo": "soldado",
     "categoria": "Elemental",
@@ -14671,7 +14671,7 @@
     }
   },
   {
-    "id": "mon-mastodon",
+    "id": "mastodonte",
     "nome": "Mastodonte (Mamute)",
     "tipo": "chefe",
     "categoria": "Fera",
@@ -14727,7 +14727,7 @@
     }
   },
   {
-    "id": "mon-ettercap",
+    "id": "ettercap",
     "nome": "Ettercap",
     "tipo": "soldado",
     "categoria": "Aberração",
@@ -14784,7 +14784,7 @@
     }
   },
   {
-    "id": "mon-bat",
+    "id": "morcego",
     "nome": "Morcego",
     "tipo": "fera",
     "categoria": "Fera",
@@ -14840,7 +14840,7 @@
     }
   },
   {
-    "id": "mon-cat",
+    "id": "gato",
     "nome": "Gato",
     "tipo": "fera",
     "categoria": "Fera",
@@ -14896,7 +14896,7 @@
     }
   },
   {
-    "id": "mon-hawk",
+    "id": "falcao-peregrino",
     "nome": "Falcão",
     "tipo": "fera",
     "categoria": "Fera",
@@ -14952,7 +14952,7 @@
     }
   },
   {
-    "id": "mon-monkey",
+    "id": "macaco",
     "nome": "Macaco",
     "tipo": "fera",
     "categoria": "Fera",
@@ -15008,7 +15008,7 @@
     }
   },
   {
-    "id": "mon-raven",
+    "id": "corvo",
     "nome": "Corvo",
     "tipo": "fera",
     "categoria": "Fera",
@@ -15064,7 +15064,7 @@
     }
   },
   {
-    "id": "mon-toad",
+    "id": "sapo",
     "nome": "Sapo",
     "tipo": "fera",
     "categoria": "Fera",
@@ -15120,7 +15120,7 @@
     }
   },
   {
-    "id": "mon-viper",
+    "id": "jararaca",
     "nome": "Víbora",
     "tipo": "fera",
     "categoria": "Fera",
@@ -15176,7 +15176,7 @@
     }
   },
   {
-    "id": "mon-weasel",
+    "id": "doninha",
     "nome": "Doninha",
     "tipo": "fera",
     "categoria": "Fera",
@@ -15232,7 +15232,7 @@
     }
   },
   {
-    "id": "mon-giant-flytrap",
+    "id": "papa-moscas-gigante",
     "nome": "Papa-Moscas Gigante",
     "tipo": "chefe",
     "categoria": "Planta",
@@ -15286,7 +15286,7 @@
     }
   },
   {
-    "id": "mon-giant-frog",
+    "id": "ra-gigante",
     "nome": "Rã Gigante",
     "tipo": "soldado",
     "categoria": "Monstro",
@@ -15343,7 +15343,7 @@
     }
   },
   {
-    "id": "mon-poison-frog",
+    "id": "ra-venenosa",
     "nome": "Rã Venenosa",
     "tipo": "fera",
     "categoria": "Fera",
@@ -15399,7 +15399,7 @@
     }
   },
   {
-    "id": "mon-froghemoth",
+    "id": "froghemoth",
     "nome": "Froghemoth",
     "tipo": "chefe",
     "categoria": "Aberração",
@@ -15457,7 +15457,7 @@
     }
   },
   {
-    "id": "mon-janni",
+    "id": "janni",
     "nome": "Janni",
     "tipo": "soldado",
     "categoria": "Exterior",
@@ -15514,7 +15514,7 @@
     }
   },
   {
-    "id": "mon-marid",
+    "id": "marid",
     "nome": "Marid",
     "tipo": "chefe",
     "categoria": "Elemental",
@@ -15571,7 +15571,7 @@
     }
   },
   {
-    "id": "mon-shaitan",
+    "id": "shaitan",
     "nome": "Shaitan",
     "tipo": "elite",
     "categoria": "Elemental",
@@ -15628,7 +15628,7 @@
     }
   },
   {
-    "id": "mon-ghost",
+    "id": "fantasma",
     "nome": "Fantasma",
     "tipo": "elite",
     "categoria": "Morto-vivo",
@@ -15720,8 +15720,8 @@
     }
   },
   {
-    "id": "mon-gibbering-mouther",
-    "nome": "Gibbering Mouther",
+    "id": "boca-tagarela",
+    "nome": "Boca Tagarela",
     "tipo": "elite",
     "categoria": "Aberração",
     "ameaca": 4,
@@ -15777,7 +15777,7 @@
     }
   },
   {
-    "id": "mon-girallon",
+    "id": "girallon",
     "nome": "Girallon",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -15834,7 +15834,7 @@
     }
   },
   {
-    "id": "mon-clay-golem",
+    "id": "golem-de-argila",
     "nome": "Golem de Argila",
     "tipo": "chefe",
     "categoria": "Monstro",
@@ -15889,7 +15889,7 @@
     }
   },
   {
-    "id": "mon-flesh-golem",
+    "id": "golem-de-carne",
     "nome": "Golem de Carne",
     "tipo": "elite",
     "categoria": "Monstro",
@@ -15944,7 +15944,7 @@
     }
   },
   {
-    "id": "mon-ice-golem",
+    "id": "golem-de-gelo",
     "nome": "Golem de Gelo",
     "tipo": "elite",
     "categoria": "Monstro",
@@ -16000,7 +16000,7 @@
     }
   },
   {
-    "id": "mon-iron-golem",
+    "id": "golem-de-ferro",
     "nome": "Golem de Ferro",
     "tipo": "chefe",
     "categoria": "Monstro",
@@ -16055,7 +16055,7 @@
     }
   },
   {
-    "id": "mon-stone-golem",
+    "id": "golem-de-pedra",
     "nome": "Golem de Pedra",
     "tipo": "chefe",
     "categoria": "Monstro",
@@ -16110,7 +16110,7 @@
     }
   },
   {
-    "id": "mon-gray-ooze",
+    "id": "limo-cinzento",
     "nome": "Limo Cinzento",
     "tipo": "soldado",
     "categoria": "Limo",
@@ -16165,7 +16165,7 @@
     }
   },
   {
-    "id": "mon-dracolisk",
+    "id": "dracolisk",
     "nome": "Dracolisk",
     "tipo": "elite",
     "categoria": "Dragão",
@@ -16222,7 +16222,7 @@
     }
   },
   {
-    "id": "mon-hell-hound",
+    "id": "cao-infernal",
     "nome": "Cão Infernal",
     "tipo": "soldado",
     "categoria": "Elemental",
@@ -16279,8 +16279,8 @@
     }
   },
   {
-    "id": "mon-nessian-warhound",
-    "nome": "Nessian Warhound",
+    "id": "cao-de-guerra-nessiano",
+    "nome": "Cão de Guerra Nessiano",
     "tipo": "chefe",
     "categoria": "Elemental",
     "ameaca": 5,
@@ -16336,7 +16336,7 @@
     }
   },
   {
-    "id": "mon-aurochs",
+    "id": "auroque",
     "nome": "Aurochs",
     "tipo": "fera",
     "categoria": "Fera",
@@ -16392,7 +16392,7 @@
     }
   },
   {
-    "id": "mon-bison",
+    "id": "bisao",
     "nome": "Bisão",
     "tipo": "fera",
     "categoria": "Fera",
@@ -16448,7 +16448,7 @@
     }
   },
   {
-    "id": "mon-homunculus",
+    "id": "homunculus",
     "nome": "Homunculus",
     "tipo": "soldado",
     "categoria": "Monstro",
@@ -16505,7 +16505,7 @@
     }
   },
   {
-    "id": "mon-horse",
+    "id": "cavalo",
     "nome": "Cavalo",
     "tipo": "fera",
     "categoria": "Fera",
@@ -16568,7 +16568,7 @@
     }
   },
   {
-    "id": "mon-pony",
+    "id": "ponei",
     "nome": "Pônei",
     "tipo": "fera",
     "categoria": "Fera",
@@ -16624,7 +16624,7 @@
     }
   },
   {
-    "id": "mon-hyena",
+    "id": "hiena-malhada",
     "nome": "Hiena",
     "tipo": "fera",
     "categoria": "Fera",
@@ -16680,7 +16680,7 @@
     }
   },
   {
-    "id": "mon-dire-hyena-hyaenodon",
+    "id": "hienodonte",
     "nome": "Hiena Atroz",
     "tipo": "fera",
     "categoria": "Fera",
@@ -16736,8 +16736,8 @@
     }
   },
   {
-    "id": "mon-intellect-devourer",
-    "nome": "Intellect Devourer",
+    "id": "devorador-de-intelecto",
+    "nome": "Devorador de Intelecto",
     "tipo": "chefe",
     "categoria": "Aberração",
     "ameaca": 5,
@@ -16793,7 +16793,7 @@
     }
   },
   {
-    "id": "mon-invisible-stalker",
+    "id": "perseguidor-invisivel",
     "nome": "Perseguidor Invisível",
     "tipo": "elite",
     "categoria": "Elemental",
@@ -16850,7 +16850,7 @@
     }
   },
   {
-    "id": "mon-iron-cobra",
+    "id": "cobra-de-ferro",
     "nome": "Cobra de Ferro",
     "tipo": "soldado",
     "categoria": "Monstro",
@@ -16904,7 +16904,7 @@
     }
   },
   {
-    "id": "mon-kyton",
+    "id": "kyton",
     "nome": "Kyton",
     "tipo": "elite",
     "categoria": "Exterior",
@@ -16961,7 +16961,7 @@
     }
   },
   {
-    "id": "mon-giant-leech",
+    "id": "sanguessuga-gigante",
     "nome": "Sanguessuga Gigante",
     "tipo": "fera",
     "categoria": "Fera",
@@ -17017,7 +17017,7 @@
     }
   },
   {
-    "id": "mon-leech-swarm",
+    "id": "enxame-de-sanguessugas",
     "nome": "Enxame de Sanguessugas",
     "tipo": "fera",
     "categoria": "Fera",
@@ -17071,8 +17071,8 @@
     }
   },
   {
-    "id": "mon-crag-linnorm",
-    "nome": "Crag Linnorm",
+    "id": "linnorm-dos-penhascos",
+    "nome": "Linnorm dos Penhascos",
     "tipo": "chefe",
     "categoria": "Dragão",
     "ameaca": 6,
@@ -17128,8 +17128,8 @@
     }
   },
   {
-    "id": "mon-ice-linnorm",
-    "nome": "Ice Linnorm",
+    "id": "linnorm-do-gelo",
+    "nome": "Linnorm do Gelo",
     "tipo": "chefe",
     "categoria": "Dragão",
     "ameaca": 6,
@@ -17185,8 +17185,8 @@
     }
   },
   {
-    "id": "mon-tarn-linnorm",
-    "nome": "Tarn Linnorm",
+    "id": "linnorm-dos-lagos",
+    "nome": "Linnorm dos Lagos",
     "tipo": "chefe",
     "categoria": "Dragão",
     "ameaca": 6,
@@ -17250,7 +17250,7 @@
     }
   },
   {
-    "id": "mon-dire-lion-spotted-lion",
+    "id": "leao-das-cavernas",
     "nome": "Leão Atroz",
     "tipo": "elite",
     "categoria": "Monstro",
@@ -17306,7 +17306,7 @@
     }
   },
   {
-    "id": "mon-monitor-lizard",
+    "id": "varano",
     "nome": "Lagarto-Monitor",
     "tipo": "fera",
     "categoria": "Fera",
@@ -17362,7 +17362,7 @@
     }
   },
   {
-    "id": "mon-giant-frilled-lizard",
+    "id": "lagarto-de-gola-gigante",
     "nome": "Lagarto de Gola Gigante",
     "tipo": "fera",
     "categoria": "Fera",
@@ -17418,7 +17418,7 @@
     }
   },
   {
-    "id": "mon-wererat-human-form",
+    "id": "homem-rato-forma-humana",
     "nome": "Homem-Rato (forma humana)",
     "tipo": "soldado",
     "categoria": "Humanoide",
@@ -17475,7 +17475,7 @@
     }
   },
   {
-    "id": "mon-werewolf",
+    "id": "lobisomem",
     "nome": "Lobisomem",
     "tipo": "soldado",
     "categoria": "Humanoide",
@@ -17532,7 +17532,7 @@
     }
   },
   {
-    "id": "mon-giant-mantis",
+    "id": "louva-a-deus-gigante",
     "nome": "Louva-a-Deus Gigante",
     "tipo": "fera",
     "categoria": "Fera",
@@ -17588,7 +17588,7 @@
     }
   },
   {
-    "id": "mon-mephit",
+    "id": "mephit",
     "nome": "Mephit",
     "tipo": "soldado",
     "categoria": "Exterior",
@@ -17645,7 +17645,7 @@
     }
   },
   {
-    "id": "mon-merfolk",
+    "id": "merfolk",
     "nome": "Merfolk",
     "tipo": "capanga",
     "categoria": "Humanoide",
@@ -17702,7 +17702,7 @@
     }
   },
   {
-    "id": "mon-mite",
+    "id": "mite",
     "nome": "Mite",
     "tipo": "capanga",
     "categoria": "Fada",
@@ -17759,7 +17759,7 @@
     }
   },
   {
-    "id": "mon-mohrg",
+    "id": "mohrg",
     "nome": "Mohrg",
     "tipo": "chefe",
     "categoria": "Morto-vivo",
@@ -17816,7 +17816,7 @@
     }
   },
   {
-    "id": "mon-morlock",
+    "id": "morlock",
     "nome": "Morlock",
     "tipo": "soldado",
     "categoria": "Monstro",
@@ -17873,7 +17873,7 @@
     }
   },
   {
-    "id": "mon-dark-naga",
+    "id": "naga-negra",
     "nome": "Naga Negra",
     "tipo": "chefe",
     "categoria": "Aberração",
@@ -17930,7 +17930,7 @@
     }
   },
   {
-    "id": "mon-guardian-naga",
+    "id": "naga-guardia",
     "nome": "Naga Guardiã",
     "tipo": "chefe",
     "categoria": "Aberração",
@@ -17987,7 +17987,7 @@
     }
   },
   {
-    "id": "mon-neothelid",
+    "id": "neothelid",
     "nome": "Neothelid",
     "tipo": "chefe",
     "categoria": "Aberração",
@@ -18044,7 +18044,7 @@
     }
   },
   {
-    "id": "mon-night-hag",
+    "id": "bruxa-noturna",
     "nome": "Bruxa Noturna",
     "tipo": "chefe",
     "categoria": "Exterior",
@@ -18101,7 +18101,7 @@
     }
   },
   {
-    "id": "mon-nightmare",
+    "id": "pesadelo",
     "nome": "Pesadelo",
     "tipo": "elite",
     "categoria": "Exterior",
@@ -18184,7 +18184,7 @@
     }
   },
   {
-    "id": "mon-cauchemar",
+    "id": "cauchemar",
     "nome": "Cauchemar",
     "tipo": "chefe",
     "categoria": "Exterior",
@@ -18249,7 +18249,7 @@
     }
   },
   {
-    "id": "mon-ochre-jelly",
+    "id": "geleia-ocre",
     "nome": "Geleia Ocre",
     "tipo": "elite",
     "categoria": "Limo",
@@ -18304,7 +18304,7 @@
     }
   },
   {
-    "id": "mon-octopus",
+    "id": "polvo",
     "nome": "Polvo",
     "tipo": "fera",
     "categoria": "Fera",
@@ -18360,7 +18360,7 @@
     }
   },
   {
-    "id": "mon-giant-octopus",
+    "id": "polvo-gigante",
     "nome": "Polvo Gigante",
     "tipo": "chefe",
     "categoria": "Fera",
@@ -18416,7 +18416,7 @@
     }
   },
   {
-    "id": "mon-otyugh",
+    "id": "otyugh",
     "nome": "Otyugh",
     "tipo": "soldado",
     "categoria": "Aberração",
@@ -18473,7 +18473,7 @@
     }
   },
   {
-    "id": "mon-phoenix",
+    "id": "fenix",
     "nome": "Fênix",
     "tipo": "chefe",
     "categoria": "Besta mágica",
@@ -18530,8 +18530,8 @@
     }
   },
   {
-    "id": "mon-pseudodragon",
-    "nome": "Pseudodragon",
+    "id": "pseudodragao",
+    "nome": "Pseudodragão",
     "tipo": "soldado",
     "categoria": "Dragão",
     "ameaca": 2,
@@ -18587,7 +18587,7 @@
     }
   },
   {
-    "id": "mon-dire-rat",
+    "id": "rato-atroz",
     "nome": "Rato Atroz",
     "tipo": "fera",
     "categoria": "Fera",
@@ -18643,7 +18643,7 @@
     }
   },
   {
-    "id": "mon-rat-swarm",
+    "id": "enxame-de-ratos",
     "nome": "Enxame de Ratos",
     "tipo": "fera",
     "categoria": "Fera",
@@ -18699,7 +18699,7 @@
     }
   },
   {
-    "id": "mon-remorhaz",
+    "id": "remorhaz",
     "nome": "Remorhaz",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -18756,8 +18756,8 @@
     }
   },
   {
-    "id": "mon-retriever",
-    "nome": "Retriever",
+    "id": "buscador",
+    "nome": "Buscador",
     "tipo": "chefe",
     "categoria": "Monstro",
     "ameaca": 5,
@@ -18812,8 +18812,8 @@
     }
   },
   {
-    "id": "mon-roper",
-    "nome": "Roper",
+    "id": "lacador",
+    "nome": "Laçador",
     "tipo": "chefe",
     "categoria": "Aberração",
     "ameaca": 5,
@@ -18869,7 +18869,7 @@
     }
   },
   {
-    "id": "mon-sahuagin",
+    "id": "sahuagin",
     "nome": "Sahuagin",
     "tipo": "soldado",
     "categoria": "Monstro",
@@ -18926,7 +18926,7 @@
     }
   },
   {
-    "id": "mon-sea-hag",
+    "id": "bruxa-do-mar",
     "nome": "Bruxa do Mar",
     "tipo": "soldado",
     "categoria": "Monstro",
@@ -18983,7 +18983,7 @@
     }
   },
   {
-    "id": "mon-sea-serpent",
+    "id": "serpente-marinha",
     "nome": "Serpente Marinha",
     "tipo": "chefe",
     "categoria": "Besta mágica",
@@ -19040,7 +19040,7 @@
     }
   },
   {
-    "id": "mon-shark",
+    "id": "tubarao-branco",
     "nome": "Tubarão",
     "tipo": "fera",
     "categoria": "Fera",
@@ -19096,7 +19096,7 @@
     }
   },
   {
-    "id": "mon-dire-shark-megalodon",
+    "id": "megalodonte",
     "nome": "Tubarão Atroz",
     "tipo": "chefe",
     "categoria": "Fera",
@@ -19152,8 +19152,8 @@
     }
   },
   {
-    "id": "mon-shocker-lizard",
-    "nome": "Shocker Lizard",
+    "id": "lagarto-eletrico",
+    "nome": "Lagarto Elétrico",
     "tipo": "fera",
     "categoria": "Besta mágica",
     "ameaca": 2,
@@ -19209,7 +19209,7 @@
     }
   },
   {
-    "id": "mon-shoggoth",
+    "id": "shoggoth",
     "nome": "Shoggoth",
     "tipo": "chefe",
     "categoria": "Limo",
@@ -19265,7 +19265,7 @@
     }
   },
   {
-    "id": "mon-skeletal-champion",
+    "id": "campeao-esqueletico",
     "nome": "Campeão Esquelético",
     "tipo": "soldado",
     "categoria": "Morto-vivo",
@@ -19323,7 +19323,7 @@
     }
   },
   {
-    "id": "mon-skum-ulat-kini",
+    "id": "skum-ulat-kini",
     "nome": "Skum (Ulat-Kini)",
     "tipo": "soldado",
     "categoria": "Monstro",
@@ -19380,7 +19380,7 @@
     }
   },
   {
-    "id": "mon-giant-slug",
+    "id": "lesma-gigante",
     "nome": "Lesma Gigante",
     "tipo": "chefe",
     "categoria": "Fera",
@@ -19435,7 +19435,7 @@
     }
   },
   {
-    "id": "mon-venomous-snake",
+    "id": "serpente-venenosa",
     "nome": "Serpente Venenosa",
     "tipo": "fera",
     "categoria": "Fera",
@@ -19491,7 +19491,7 @@
     }
   },
   {
-    "id": "mon-spider-swarm",
+    "id": "enxame-de-aranhas",
     "nome": "Enxame de Aranhas",
     "tipo": "fera",
     "categoria": "Fera",
@@ -19545,7 +19545,7 @@
     }
   },
   {
-    "id": "mon-squid",
+    "id": "lula-de-humboldt-grande",
     "nome": "Lula",
     "tipo": "fera",
     "categoria": "Fera",
@@ -19601,7 +19601,7 @@
     }
   },
   {
-    "id": "mon-giant-squid",
+    "id": "lula-gigante",
     "nome": "Lula Gigante",
     "tipo": "chefe",
     "categoria": "Fera",
@@ -19657,7 +19657,7 @@
     }
   },
   {
-    "id": "mon-stirge",
+    "id": "stirge",
     "nome": "Stirge",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -19714,7 +19714,7 @@
     }
   },
   {
-    "id": "mon-svirfneblin",
+    "id": "svirfneblin",
     "nome": "Svirfneblin",
     "tipo": "soldado",
     "categoria": "Humanoide",
@@ -19771,7 +19771,7 @@
     }
   },
   {
-    "id": "mon-tengu",
+    "id": "tengu",
     "nome": "Tengu",
     "tipo": "capanga",
     "categoria": "Humanoide",
@@ -19828,7 +19828,7 @@
     }
   },
   {
-    "id": "mon-tiefling",
+    "id": "tiefling",
     "nome": "Tiefling",
     "tipo": "capanga",
     "categoria": "Exterior",
@@ -19885,7 +19885,7 @@
     }
   },
   {
-    "id": "mon-vargouille",
+    "id": "vargouille",
     "nome": "Vargouille",
     "tipo": "soldado",
     "categoria": "Exterior",
@@ -19942,7 +19942,7 @@
     }
   },
   {
-    "id": "mon-vegepygmy",
+    "id": "vegepygmy",
     "nome": "Vegepygmy",
     "tipo": "capanga",
     "categoria": "Planta",
@@ -19998,7 +19998,7 @@
     }
   },
   {
-    "id": "mon-violet-fungus",
+    "id": "fungo-violeta",
     "nome": "Fungo Violeta",
     "tipo": "soldado",
     "categoria": "Planta",
@@ -20052,7 +20052,7 @@
     }
   },
   {
-    "id": "mon-giant-wasp",
+    "id": "vespa-gigante",
     "nome": "Vespa Gigante",
     "tipo": "fera",
     "categoria": "Fera",
@@ -20106,7 +20106,7 @@
     }
   },
   {
-    "id": "mon-wasp-swarm",
+    "id": "enxame-de-vespas",
     "nome": "Enxame de Vespas",
     "tipo": "fera",
     "categoria": "Fera",
@@ -20160,7 +20160,7 @@
     }
   },
   {
-    "id": "mon-wolverine",
+    "id": "carcaju",
     "nome": "Carcaju",
     "tipo": "fera",
     "categoria": "Fera",
@@ -20216,7 +20216,7 @@
     }
   },
   {
-    "id": "mon-dire-wolverine",
+    "id": "carcaju-atroz",
     "nome": "Carcaju Atroz",
     "tipo": "fera",
     "categoria": "Fera",
@@ -20272,7 +20272,7 @@
     }
   },
   {
-    "id": "mon-worg",
+    "id": "worg",
     "nome": "Worg",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -20329,7 +20329,7 @@
     }
   },
   {
-    "id": "mon-winter-wolf",
+    "id": "lobo-do-inverno",
     "nome": "Lobo do Inverno",
     "tipo": "fera",
     "categoria": "Besta mágica",
@@ -20386,7 +20386,7 @@
     }
   },
   {
-    "id": "mon-xill",
+    "id": "xill",
     "nome": "Xill",
     "tipo": "elite",
     "categoria": "Exterior",
@@ -20443,7 +20443,7 @@
     }
   },
   {
-    "id": "mon-yellow-musk-creeper",
+    "id": "trepadeira-de-almiscar-amarelo",
     "nome": "Trepadeira de Almíscar Amarelo",
     "tipo": "soldado",
     "categoria": "Planta",
@@ -20497,8 +20497,8 @@
     }
   },
   {
-    "id": "mon-yeth-hound",
-    "nome": "Yeth Hound",
+    "id": "cao-yeth",
+    "nome": "Cão Yeth",
     "tipo": "soldado",
     "categoria": "Exterior",
     "ameaca": 3,
@@ -20554,7 +20554,7 @@
     }
   },
   {
-    "id": "mon-yeti",
+    "id": "yeti",
     "nome": "Yeti",
     "tipo": "soldado",
     "categoria": "Monstro",

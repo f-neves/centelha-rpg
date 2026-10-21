@@ -8,9 +8,9 @@ const N = 200;
 const pct = (x) => x == null ? 'n/d' : `${(100 * x).toFixed(1)}%`;
 
 const ALVOS = [
-  ['mon-filhote-de-dragao-vermelho', '3 ou 4'],
-  ['mon-dragao-vermelho-jovem', '5 ou 6'],
-  ['mon-dragao-vermelho-adulto', '6 a 8'],
+  ['filhote-de-dragao-vermelho', '3 ou 4'],
+  ['dragao-vermelho-jovem', '5 ou 6'],
+  ['dragao-vermelho-adulto', '6 a 8'],
 ];
 
 function acertoContraPers1(criatura, centelha) {

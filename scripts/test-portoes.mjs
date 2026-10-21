@@ -143,7 +143,7 @@ secao('· o smoke do package.json e a matriz do CI concordam');
   // qualquer um dos dois lados quebrar (o YAML mudar de forma, o `smoke` do
   // `package.json` ficar vazio), as duas listas virariam `[]` e a comparação
   // de subconjunto passaria por não ter o que reprovar — o mesmo defeito que
-  // fez `mon-aboleth` parecer prova de gate. `test-luas` é o mais antigo dos
+  // fez `aboleth` parecer prova de gate. `test-luas` é o mais antigo dos
   // dois lados e serve de sentinela.
   ok(smoke.includes('test-luas') && smoke.length >= 5,
     `a extração do \`smoke\` do package.json achou algo de verdade (${smoke.length}: ${smoke.join(', ')})`);

@@ -1,6 +1,6 @@
 [
  {
-  "id": "mon-aasimar",
+  "id": "aasimar",
   "nome": "Aasimar",
   "nomeIngles": "Aasimar",
   "ameaca": 1,
@@ -81,7 +81,7 @@
   }
  },
  {
-  "id": "mon-aboleth",
+  "id": "aboleth",
   "nome": "Aboleth",
   "nomeIngles": "Aboleth",
   "ameaca": 4,
@@ -163,7 +163,7 @@
   }
  },
  {
-  "id": "mon-aguia-gigante",
+  "id": "aguia-gigante",
   "nome": "Águia Gigante",
   "nomeIngles": "Giant Eagle",
   "ameaca": 3,
@@ -251,7 +251,7 @@
   }
  },
  {
-  "id": "mon-ankheg",
+  "id": "ankheg",
   "nome": "Ankheg",
   "nomeIngles": "Ankheg",
   "ameaca": 3,
@@ -334,7 +334,7 @@
   }
  },
  {
-  "id": "mon-ankylosaurus",
+  "id": "anquilossauro",
   "nome": "Anquilossauro",
   "nomeIngles": "Dinosaur, Ankylosaurus",
   "ameaca": 4,
@@ -417,7 +417,7 @@
   }
  },
  {
-  "id": "mon-aranha-das-fases",
+  "id": "aranha-das-fases",
   "nome": "Aranha das Fases",
   "nomeIngles": "Phase Spider",
   "ameaca": 4,
@@ -504,7 +504,7 @@
   }
  },
  {
-  "id": "mon-aranha-gigante",
+  "id": "aranha-gigante",
   "nome": "Aranha Gigante",
   "nomeIngles": "Giant Spider",
   "ameaca": 2,
@@ -586,7 +586,7 @@
   }
  },
  {
-  "id": "mon-archon-cao",
+  "id": "arconte-cao",
   "nome": "Arconte Cão",
   "nomeIngles": "Archon, Hound",
   "ameaca": 3,
@@ -684,7 +684,7 @@
   }
  },
  {
-  "id": "mon-lantern-archon",
+  "id": "arconte-lanterna",
   "nome": "Arconte Lanterna",
   "nomeIngles": "Archon, Lantern",
   "ameaca": 2,
@@ -770,7 +770,7 @@
   }
  },
  {
-  "id": "mon-trumpet-archon",
+  "id": "arconte-trombeta",
   "nome": "Arconte Trombeta",
   "nomeIngles": "Archon, Trumpet",
   "ameaca": 6,
@@ -1039,7 +1039,7 @@
   }
  },
  {
-  "id": "mon-assombracao-wraith",
+  "id": "assombracao",
   "nome": "Assombração",
   "nomeIngles": "Wraith",
   "ameaca": 4,
@@ -1140,7 +1140,7 @@
   }
  },
  {
-  "id": "mon-aurochs",
+  "id": "auroque",
   "nome": "Aurochs",
   "nomeIngles": "Aurochs",
   "ameaca": 2,
@@ -1221,7 +1221,7 @@
   }
  },
  {
-  "id": "mon-babau",
+  "id": "babau",
   "nome": "Babau",
   "nomeIngles": "Demon, Babau",
   "ameaca": 4,
@@ -1306,7 +1306,7 @@
   }
  },
  {
-  "id": "mon-balor",
+  "id": "balor",
   "nome": "Balor",
   "nomeIngles": "Demon, Balor",
   "ameaca": 6,
@@ -1472,7 +1472,7 @@
   }
  },
  {
-  "id": "mon-barghest",
+  "id": "barghest",
   "nome": "Barghest",
   "nomeIngles": "Barghest",
   "ameaca": 3,
@@ -1558,7 +1558,93 @@
   }
  },
  {
-  "id": "mon-basidirond",
+  "id": "barghest-maior",
+  "nome": "Barghest Maior",
+  "nomeIngles": "Greater Barghest",
+  "ameaca": 4,
+  "centelha": 4,
+  "categoria": "Corruptor",
+  "porte": "Grande",
+  "imagem": "bestiario/greater-barghest.webp",
+  "semImagem": false,
+  "tipo": "elite",
+  "atributos": {
+   "forca": 8,
+   "destreza": 4,
+   "vigor": 6,
+   "influencia": 5,
+   "perspicacia": 5,
+   "compostura": 5,
+   "percepcao": 5,
+   "inteligencia": 5,
+   "raciocinio": 5
+  },
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
+  },
+  "vontade": 9,
+  "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 5,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 54,
+   "defesa": 12,
+   "defesaSocial": 10,
+   "defesaMental": 27,
+   "absorcao": {
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
+   },
+   "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "iniciativa": "1d6 + 7",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
+   "ataques": [
+    {
+     "nome": "Golpe planar",
+     "pool": "6d6+2 +8",
+     "dano": "2d6 +12 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any",
+    "Mountain"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "dimensoes": {
+   "medida": "2,7 m de altura",
+   "peso": "350 kg"
+  }
+ },
+ {
+  "id": "basidirond",
   "nome": "Basidirond",
   "nomeIngles": "Basidirond",
   "ameaca": 4,
@@ -1645,7 +1731,7 @@
   }
  },
  {
-  "id": "mon-basilisco",
+  "id": "basilisco",
   "nome": "Basilisco",
   "nomeIngles": "Basilisk",
   "ameaca": 4,
@@ -1727,7 +1813,7 @@
   }
  },
  {
-  "id": "mon-bebilith",
+  "id": "bebilith",
   "nome": "Bebilith",
   "nomeIngles": "Bebilith",
   "ameaca": 5,
@@ -1812,7 +1898,7 @@
   }
  },
  {
-  "id": "mon-behir",
+  "id": "behir",
   "nome": "Behir",
   "nomeIngles": "Behir",
   "ameaca": 5,
@@ -1899,7 +1985,7 @@
   }
  },
  {
-  "id": "mon-fire-beetle",
+  "id": "besouro-de-fogo",
   "nome": "Besouro de Fogo",
   "nomeIngles": "Fire Beetle",
   "ameaca": 1,
@@ -1981,7 +2067,7 @@
   }
  },
  {
-  "id": "mon-giant-stag-beetle",
+  "id": "besouro-veado-gigante",
   "nome": "Besouro-Veado Gigante",
   "nomeIngles": "Giant Stag Beetle",
   "ameaca": 3,
@@ -2062,7 +2148,7 @@
   }
  },
  {
-  "id": "mon-besta-deslocadora",
+  "id": "besta-deslocadora",
   "nome": "Besta Deslocadora",
   "nomeIngles": "Displacer Beast",
   "ameaca": 3,
@@ -2154,7 +2240,7 @@
   }
  },
  {
-  "id": "mon-bison",
+  "id": "bisao",
   "nome": "Bisão",
   "nomeIngles": "Bison",
   "ameaca": 3,
@@ -2236,7 +2322,88 @@
   }
  },
  {
-  "id": "mon-bodak",
+  "id": "boca-tagarela",
+  "nome": "Boca Tagarela",
+  "nomeIngles": "Gibbering Mouther",
+  "ameaca": 4,
+  "centelha": 4,
+  "categoria": "Aberração",
+  "porte": "Médio",
+  "imagem": "bestiario/gibbering-mouther.webp",
+  "semImagem": false,
+  "tipo": "elite",
+  "atributos": {
+   "forca": 2,
+   "destreza": 5,
+   "vigor": 7,
+   "influencia": 3,
+   "perspicacia": 2,
+   "compostura": 3,
+   "percepcao": 3,
+   "inteligencia": 1,
+   "raciocinio": 2
+  },
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "vontade": 9,
+  "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 46,
+   "defesa": 14,
+   "defesaSocial": 6,
+   "defesaMental": 20,
+   "absorcao": {
+    "impacto": 11,
+    "corte": 7,
+    "perfuracao": 7
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+   },
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "3d6+2 +8",
+     "dano": "1d6 +6 perfurante",
+     "perfArma": 0,
+     "speed": 5,
+     "classe": "leve"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Aberration",
+   "terreno": [
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "dimensoes": {
+   "medida": "1,5 m de diâmetro",
+   "peso": "80 kg"
+  }
+ },
+ {
+  "id": "bodak",
   "nome": "Bodak",
   "nomeIngles": "Bodak",
   "ameaca": 5,
@@ -2330,7 +2497,7 @@
   }
  },
  {
-  "id": "mon-boggard",
+  "id": "boggard",
   "nome": "Boggard",
   "nomeIngles": "Boggard",
   "ameaca": 2,
@@ -2412,7 +2579,7 @@
   }
  },
  {
-  "id": "mon-bralani",
+  "id": "bralani",
   "nome": "Bralani",
   "nomeIngles": "Bralani",
   "ameaca": 4,
@@ -2494,7 +2661,7 @@
   }
  },
  {
-  "id": "mon-brachiosaurus",
+  "id": "braquiossauro",
   "nome": "Braquiossauro",
   "nomeIngles": "Dinosaur, Brachiosaurus",
   "ameaca": 5,
@@ -2657,7 +2824,7 @@
   }
  },
  {
-  "id": "mon-sea-hag",
+  "id": "bruxa-do-mar",
   "nome": "Bruxa do Mar",
   "nomeIngles": "Hag, Sea",
   "ameaca": 3,
@@ -2739,7 +2906,7 @@
   }
  },
  {
-  "id": "mon-night-hag",
+  "id": "bruxa-noturna",
   "nome": "Bruxa Noturna",
   "nomeIngles": "Hag, Night",
   "ameaca": 5,
@@ -2824,7 +2991,7 @@
   }
  },
  {
-  "id": "mon-bruxa-verde-hag",
+  "id": "bruxa-verde",
   "nome": "Bruxa Verde",
   "nomeIngles": "Hag, Green",
   "ameaca": 4,
@@ -2923,7 +3090,7 @@
   }
  },
  {
-  "id": "mon-bugbear",
+  "id": "bugbear",
   "nome": "Bugbear",
   "nomeIngles": "Bugbear",
   "ameaca": 2,
@@ -3005,7 +3172,7 @@
   }
  },
  {
-  "id": "mon-bulette",
+  "id": "bulette",
   "nome": "Bulette",
   "nomeIngles": "Bulette",
   "ameaca": 4,
@@ -3087,7 +3254,97 @@
   }
  },
  {
-  "id": "mon-dog",
+  "id": "buscador",
+  "nome": "Buscador",
+  "nomeIngles": "Retriever",
+  "ameaca": 5,
+  "centelha": 0,
+  "categoria": "Construto",
+  "porte": "Enorme",
+  "imagem": "bestiario/retriever.webp",
+  "semImagem": false,
+  "tipo": "chefe",
+  "atributos": {
+   "forca": 9,
+   "destreza": 5,
+   "vigor": 2,
+   "influencia": 0,
+   "perspicacia": 1,
+   "compostura": 1,
+   "percepcao": 2,
+   "inteligencia": 1,
+   "raciocinio": 1
+  },
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 3,
+   "valor": 4
+  },
+  "vontade": 5,
+  "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 45,
+   "defesa": 12,
+   "defesaSocial": 2,
+   "defesaMental": 8,
+   "absorcao": {
+    "impacto": 2,
+    "corte": 5,
+    "perfuracao": 5
+   },
+   "resistenciaPerfuracao": 1,
+   "fraquezas": [
+    "raio"
+   ],
+   "resistencias": [
+    "corte",
+    "fogo",
+    "perfuracao"
+   ],
+   "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+   },
+   "ataques": [
+    {
+     "nome": "Arma",
+     "pool": "7d6",
+     "dano": "3d6 +9 corte",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "pesada"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Construct",
+   "terreno": [
+    "Any",
+    "Ruins"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
+  "dimensoes": {
+   "medida": "corpo do tamanho de um elefante, cerca de 4,5 metros de comprimento",
+   "peso": "várias t"
+  }
+ },
+ {
+  "id": "cachorro",
   "nome": "Cachorro",
   "nomeIngles": "Dog",
   "ameaca": 1,
@@ -3267,7 +3524,7 @@
   }
  },
  {
-  "id": "mon-skeletal-champion",
+  "id": "campeao-esqueletico",
   "nome": "Campeão Esquelético",
   "nomeIngles": "Skeletal Champion",
   "ameaca": 2,
@@ -3359,7 +3616,7 @@
   }
  },
  {
-  "id": "camponis-assustado",
+  "id": "campones-assustado",
   "nome": "Camponês Assustado",
   "nomeIngles": "Frightened Peasant",
   "ameaca": 1,
@@ -3441,7 +3698,92 @@
   }
  },
  {
-  "id": "mon-riding-dog",
+  "id": "cao-de-guerra-nessiano",
+  "nome": "Cão de Guerra Nessiano",
+  "nomeIngles": "Nessian Warhound",
+  "ameaca": 5,
+  "centelha": 5,
+  "categoria": "Corruptor",
+  "porte": "Grande",
+  "imagem": "bestiario/nessian-warhound.webp",
+  "semImagem": false,
+  "tipo": "chefe",
+  "atributos": {
+   "forca": 9,
+   "destreza": 4,
+   "vigor": 7,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 2,
+   "percepcao": 3,
+   "inteligencia": 1,
+   "raciocinio": 2
+  },
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 6
+  },
+  "vontade": 10,
+  "aparencia": 0,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 58,
+   "defesa": 12,
+   "defesaSocial": 4,
+   "defesaMental": 18,
+   "absorcao": {
+    "impacto": 12,
+    "corte": 10,
+    "perfuracao": 10
+   },
+   "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
+   "ataques": [
+    {
+     "nome": "Golpe planar",
+     "pool": "7d6 +10",
+     "dano": "2d6 +14 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Any"
+   ],
+   "clima": [
+    "Extraplanar"
+   ]
+  },
+  "dimensoes": {
+   "medida": "tamanho de um cavalo de tração, cerca de 2,1 m de comprimento",
+   "peso": "450 kg"
+  }
+ },
+ {
+  "id": "cachorro-de-guarda",
   "nome": "Cão de Montaria",
   "nomeIngles": "Riding Dog",
   "ameaca": 1,
@@ -3523,7 +3865,7 @@
   }
  },
  {
-  "id": "mon-hell-hound",
+  "id": "cao-infernal",
   "nome": "Cão Infernal",
   "nomeIngles": "Hell Hound",
   "ameaca": 3,
@@ -3608,6 +3950,174 @@
   }
  },
  {
+  "id": "cao-yeth",
+  "nome": "Cão Yeth",
+  "nomeIngles": "Yeth Hound",
+  "ameaca": 3,
+  "centelha": 2,
+  "categoria": "Corruptor",
+  "porte": "Médio",
+  "imagem": "bestiario/yeth-hound.webp",
+  "semImagem": false,
+  "tipo": "soldado",
+  "atributos": {
+   "forca": 5,
+   "destreza": 4,
+   "vigor": 4,
+   "influencia": 2,
+   "perspicacia": 2,
+   "compostura": 3,
+   "percepcao": 4,
+   "inteligencia": 1,
+   "raciocinio": 2
+  },
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 5,
+   "temperanca": 1,
+   "valor": 5
+  },
+  "vontade": 7,
+  "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 37,
+   "defesa": 12,
+   "defesaSocial": 6,
+   "defesaMental": 16,
+   "absorcao": {
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
+   },
+   "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "luz",
+    "sagrado"
+   ],
+   "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
+   "ataques": [
+    {
+     "nome": "Golpe planar",
+     "pool": "4d6+2 +4",
+     "dano": "1d6 +7 corte",
+     "perfArma": null,
+     "speed": 5,
+     "classe": "leve"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Fiend",
+   "terreno": [
+    "Sky",
+    "Any"
+   ],
+   "clima": [
+    "Temperate",
+    "Extraplanar"
+   ]
+  },
+  "dimensoes": {
+   "medida": "1,2 m de altura na cernelha, com asas membranosas como as de um morcego",
+   "peso": "180 kg"
+  }
+ },
+ {
+  "id": "capa-sombria",
+  "nome": "Capa Sombria",
+  "nomeIngles": "Cloaker",
+  "ameaca": 4,
+  "centelha": 4,
+  "categoria": "Aberração",
+  "porte": "Grande",
+  "imagem": "bestiario/cloaker.webp",
+  "semImagem": false,
+  "tipo": "elite",
+  "atributos": {
+   "forca": 7,
+   "destreza": 5,
+   "vigor": 6,
+   "influencia": 4,
+   "perspicacia": 4,
+   "compostura": 4,
+   "percepcao": 4,
+   "inteligencia": 4,
+   "raciocinio": 4
+  },
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "vontade": 9,
+  "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 54,
+   "defesa": 14,
+   "defesaSocial": 8,
+   "defesaMental": 25,
+   "absorcao": {
+    "impacto": 10,
+    "corte": 9,
+    "perfuracao": 9
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+   },
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "6d6 +8",
+     "dano": "2d6 +11 perfurante",
+     "perfArma": 0,
+     "speed": 6,
+     "classe": "media"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Aberration",
+   "terreno": [
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "dimensoes": {
+   "medida": "2,4 m de envergadura",
+   "peso": "45 kg"
+  }
+ },
+ {
   "id": "capitao-da-guarda",
   "nome": "Capitão da Guarda",
   "nomeIngles": "Captain of the Guard",
@@ -3688,7 +4198,7 @@
   }
  },
  {
-  "id": "mon-giant-crab",
+  "id": "caranguejo-gigante",
   "nome": "Caranguejo Gigante",
   "nomeIngles": "Giant Crab",
   "ameaca": 2,
@@ -3770,7 +4280,7 @@
   }
  },
  {
-  "id": "mon-wolverine",
+  "id": "carcaju",
   "nome": "Carcaju",
   "nomeIngles": "Wolverine",
   "ameaca": 2,
@@ -3852,7 +4362,7 @@
   }
  },
  {
-  "id": "mon-dire-wolverine",
+  "id": "carcaju-atroz",
   "nome": "Carcaju Atroz",
   "nomeIngles": "Dire Wolverine",
   "ameaca": 3,
@@ -3934,7 +4444,7 @@
   }
  },
  {
-  "id": "mon-cauchemar",
+  "id": "cauchemar",
   "nome": "Cauchemar",
   "nomeIngles": "Cauchemar",
   "ameaca": 5,
@@ -4128,7 +4638,7 @@
   }
  },
  {
-  "id": "mon-horse",
+  "id": "cavalo",
   "nome": "Cavalo",
   "nomeIngles": "Horse",
   "ameaca": 2,
@@ -4217,7 +4727,7 @@
   }
  },
  {
-  "id": "mon-centaur",
+  "id": "centauro",
   "nome": "Centauro",
   "nomeIngles": "Centaur",
   "ameaca": 3,
@@ -4299,7 +4809,7 @@
   }
  },
  {
-  "id": "mon-giant-centipede",
+  "id": "centopeia-gigante",
   "nome": "Centopéia Gigante",
   "nomeIngles": "Giant Centipede",
   "ameaca": 1,
@@ -4382,7 +4892,7 @@
   }
  },
  {
-  "id": "mon-chuul",
+  "id": "chuul",
   "nome": "Chuul",
   "nomeIngles": "Chuul",
   "ameaca": 4,
@@ -4464,7 +4974,7 @@
   }
  },
  {
-  "id": "mon-ciclope",
+  "id": "ciclope",
   "nome": "Ciclope",
   "nomeIngles": "Cyclops",
   "ameaca": 4,
@@ -4550,88 +5060,7 @@
   }
  },
  {
-  "id": "mon-cloaker",
-  "nome": "Cloaker",
-  "nomeIngles": "Cloaker",
-  "ameaca": 4,
-  "centelha": 4,
-  "categoria": "Aberração",
-  "porte": "Grande",
-  "imagem": "bestiario/cloaker.webp",
-  "semImagem": false,
-  "tipo": "elite",
-  "atributos": {
-   "forca": 7,
-   "destreza": 5,
-   "vigor": 6,
-   "influencia": 4,
-   "perspicacia": 4,
-   "compostura": 4,
-   "percepcao": 4,
-   "inteligencia": 4,
-   "raciocinio": 4
-  },
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "vontade": 9,
-  "aparencia": 1,
-  "pericias": {
-   "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
-   "furtividade": 1
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 54,
-   "defesa": 14,
-   "defesaSocial": 8,
-   "defesaMental": 25,
-   "absorcao": {
-    "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 6",
-   "deslocamento": {
-    "batalha": 1,
-    "arranque": 2,
-    "corrida": 2
-   },
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "6d6 +8",
-     "dano": "2d6 +11 perfurante",
-     "perfArma": 0,
-     "speed": 6,
-     "classe": "media"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Aberration",
-   "terreno": [
-    "Underground"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "dimensoes": {
-   "medida": "2,4 m de envergadura",
-   "peso": "45 kg"
-  }
- },
- {
-  "id": "mon-cobra-constritora",
+  "id": "jiboia",
   "nome": "Cobra Constritora",
   "nomeIngles": "Constrictor Snake",
   "ameaca": 2,
@@ -4713,7 +5142,7 @@
   }
  },
  {
-  "id": "mon-iron-cobra",
+  "id": "cobra-de-ferro",
   "nome": "Cobra de Ferro",
   "nomeIngles": "Iron Cobra",
   "ameaca": 2,
@@ -4800,7 +5229,7 @@
   }
  },
  {
-  "id": "mon-cocatriz",
+  "id": "cocatriz",
   "nome": "Cocatriz",
   "nomeIngles": "Cockatrice",
   "ameaca": 3,
@@ -4984,7 +5413,7 @@
   }
  },
  {
-  "id": "mon-corujurso",
+  "id": "corujurso",
   "nome": "Corujurso",
   "nomeIngles": "Owlbear",
   "ameaca": 3,
@@ -5071,7 +5500,7 @@
   }
  },
  {
-  "id": "mon-raven",
+  "id": "corvo",
   "nome": "Corvo",
   "nomeIngles": "Raven",
   "ameaca": 1,
@@ -5152,7 +5581,7 @@
   }
  },
  {
-  "id": "mon-couatl",
+  "id": "couatl",
   "nome": "Couatl",
   "nomeIngles": "Couatl",
   "ameaca": 5,
@@ -5256,88 +5685,7 @@
   }
  },
  {
-  "id": "mon-crag-linnorm",
-  "nome": "Crag Linnorm",
-  "nomeIngles": "Crag Linnorm",
-  "ameaca": 6,
-  "centelha": 6,
-  "categoria": "Dragão",
-  "porte": "Imenso",
-  "imagem": "bestiario/crag-linnorm.webp",
-  "semImagem": false,
-  "tipo": "chefe",
-  "atributos": {
-   "forca": 13,
-   "destreza": 5,
-   "vigor": 11,
-   "influencia": 6,
-   "perspicacia": 3,
-   "compostura": 6,
-   "percepcao": 5,
-   "inteligencia": 1,
-   "raciocinio": 3
-  },
-  "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
-   "temperanca": 3,
-   "valor": 6
-  },
-  "vontade": 11,
-  "aparencia": 9,
-  "pericias": {
-   "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 6,
-   "sociabilidade": 0,
-   "furtividade": 0
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 95,
-   "defesa": 14,
-   "defesaSocial": 12,
-   "defesaMental": 32,
-   "absorcao": {
-    "impacto": 17,
-    "corte": 18,
-    "perfuracao": 18
-   },
-   "resistenciaPerfuracao": 2,
-   "iniciativa": "1d6 + 5",
-   "deslocamento": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-   },
-   "ataques": [
-    {
-     "nome": "Garras e mordida",
-     "pool": "9d6 +10",
-     "dano": "3d6 +19 perfurante",
-     "perfArma": 0,
-     "speed": 7,
-     "classe": "pesada"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Dragon",
-   "terreno": [
-    "Mountain"
-   ],
-   "clima": [
-    "Cold"
-   ]
-  },
-  "dimensoes": {
-   "medida": "18 m de comprimento",
-   "peso": "cerca de 5.400 kg"
-  }
- },
- {
-  "id": "mon-crocodilo",
+  "id": "crocodilo-do-nilo",
   "nome": "Crocodilo",
   "nomeIngles": "Crocodile",
   "ameaca": 2,
@@ -5419,7 +5767,7 @@
   }
  },
  {
-  "id": "mon-cubo-gelatinoso",
+  "id": "cubo-gelatinoso",
   "nome": "Cubo Gelatinoso",
   "nomeIngles": "Gelatinous Cube",
   "ameaca": 3,
@@ -5589,254 +5937,7 @@
   }
  },
  {
-  "id": "mon-dark-creeper",
-  "nome": "Dark Creeper",
-  "nomeIngles": "Dark Creeper",
-  "ameaca": 2,
-  "centelha": 2,
-  "categoria": "Humanoide",
-  "porte": "Pequeno",
-  "imagem": "bestiario/dark-creeper.webp",
-  "semImagem": false,
-  "tipo": "soldado",
-  "atributos": {
-   "forca": 2,
-   "destreza": 5,
-   "vigor": 4,
-   "influencia": 2,
-   "perspicacia": 2,
-   "compostura": 2,
-   "percepcao": 2,
-   "inteligencia": 2,
-   "raciocinio": 2
-  },
-  "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "vontade": 7,
-  "aparencia": 4,
-  "pericias": {
-   "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 3
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 28,
-   "defesa": 14,
-   "defesaSocial": 4,
-   "defesaMental": 15,
-   "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
-   "deslocamento": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-   },
-   "ataques": [
-    {
-     "nome": "Arma",
-     "pool": "2d6+2 +4",
-     "dano": "1d6 +4 corte",
-     "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Humanoid",
-   "terreno": [
-    "Underground",
-    "Urban"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "dimensoes": {
-   "medida": "1,2 m de altura",
-   "peso": "36 kg"
-  }
- },
- {
-  "id": "mon-dark-stalker",
-  "nome": "Dark Stalker",
-  "nomeIngles": "Dark Stalker",
-  "ameaca": 3,
-  "centelha": 2,
-  "categoria": "Humanoide",
-  "porte": "Médio",
-  "imagem": "bestiario/dark-stalker.webp",
-  "semImagem": false,
-  "tipo": "soldado",
-  "atributos": {
-   "forca": 4,
-   "destreza": 5,
-   "vigor": 4,
-   "influencia": 3,
-   "perspicacia": 2,
-   "compostura": 3,
-   "percepcao": 2,
-   "inteligencia": 2,
-   "raciocinio": 2
-  },
-  "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "vontade": 7,
-  "aparencia": 4,
-  "pericias": {
-   "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
-   "furtividade": 2
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 37,
-   "defesa": 14,
-   "defesaSocial": 6,
-   "defesaMental": 16,
-   "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
-   "deslocamento": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-   },
-   "ataques": [
-    {
-     "nome": "Arma",
-     "pool": "4d6 +4",
-     "dano": "1d6 +6 corte",
-     "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Humanoid",
-   "terreno": [
-    "Underground",
-    "Urban"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "dimensoes": {
-   "medida": "1,8 m de altura",
-   "peso": "45 kg"
-  }
- },
- {
-  "id": "mon-darkmantle",
-  "nome": "Darkmantle",
-  "nomeIngles": "Darkmantle",
-  "ameaca": 2,
-  "centelha": 1,
-  "categoria": "Besta mágica",
-  "porte": "Pequeno",
-  "imagem": "bestiario/darkmantle.webp",
-  "semImagem": false,
-  "tipo": "fera",
-  "atributos": {
-   "forca": 2,
-   "destreza": 4,
-   "vigor": 4,
-   "influencia": 2,
-   "perspicacia": 1,
-   "compostura": 2,
-   "percepcao": 2,
-   "inteligencia": 1,
-   "raciocinio": 1
-  },
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "vontade": 6,
-  "aparencia": 5,
-  "pericias": {
-   "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 3
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 28,
-   "defesa": 12,
-   "defesaSocial": 4,
-   "defesaMental": 11,
-   "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 2",
-   "deslocamento": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 5
-   },
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "2d6+2 +2",
-     "dano": "1d6 +3 perfurante",
-     "perfArma": 0,
-     "speed": 5,
-     "classe": "leve"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Beast",
-   "terreno": [
-    "Underground",
-    "Ruins",
-    "Urban"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "dimensoes": {
-   "medida": "envergadura de tentáculos 1,5 m",
-   "peso": "18 kg"
-  }
- },
- {
-  "id": "mon-deinonychus",
+  "id": "deinonico",
   "nome": "Deinonychus",
   "nomeIngles": "Dinosaur, Deinonychus",
   "ameaca": 3,
@@ -5917,7 +6018,7 @@
   }
  },
  {
-  "id": "mon-derro",
+  "id": "derro",
   "nome": "Derro",
   "nomeIngles": "Derro",
   "ameaca": 3,
@@ -5998,7 +6099,7 @@
   }
  },
  {
-  "id": "mon-deva-astral",
+  "id": "deva-astral",
   "nome": "Deva Astral",
   "nomeIngles": "Angel, Astral Deva",
   "ameaca": 6,
@@ -6082,7 +6183,88 @@
   }
  },
  {
-  "id": "mon-diabo-barbado",
+  "id": "devorador-de-intelecto",
+  "nome": "Devorador de Intelecto",
+  "nomeIngles": "Intellect Devourer",
+  "ameaca": 5,
+  "centelha": 4,
+  "categoria": "Aberração",
+  "porte": "Pequeno",
+  "imagem": "bestiario/intellect-devourer.webp",
+  "semImagem": false,
+  "tipo": "chefe",
+  "atributos": {
+   "forca": 3,
+   "destreza": 7,
+   "vigor": 6,
+   "influencia": 5,
+   "perspicacia": 5,
+   "compostura": 4,
+   "percepcao": 2,
+   "inteligencia": 5,
+   "raciocinio": 3
+  },
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
+  },
+  "vontade": 9,
+  "aparencia": 1,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 2,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 32,
+   "defesa": 22,
+   "defesaSocial": 8,
+   "defesaMental": 24,
+   "absorcao": {
+    "impacto": 10,
+    "corte": 7,
+    "perfuracao": 7
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 4",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "4d6 +8",
+     "dano": "1d6 +7 perfurante",
+     "perfArma": 0,
+     "speed": 5,
+     "classe": "leve"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Aberration",
+   "terreno": [
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "dimensoes": {
+   "medida": "60 cm de altura",
+   "peso": "18 kg"
+  }
+ },
+ {
+  "id": "diabo-barbado",
   "nome": "Diabo Barbado",
   "nomeIngles": "Devil, Bearded (Barbazu)",
   "ameaca": 4,
@@ -6167,7 +6349,7 @@
   }
  },
  {
-  "id": "mon-horned-devil-cornugon",
+  "id": "diabo-chifrudo",
   "nome": "Diabo Chifrudo",
   "nomeIngles": "Devil, Horned",
   "ameaca": 6,
@@ -6252,7 +6434,7 @@
   }
  },
  {
-  "id": "mon-diabo-de-gelo",
+  "id": "diabo-de-gelo",
   "nome": "Diabo de Gelo",
   "nomeIngles": "Devil, Ice (Gelugon)",
   "ameaca": 5,
@@ -6338,7 +6520,7 @@
   }
  },
  {
-  "id": "mon-diabo-do-fosso-pit-fiend",
+  "id": "diabo-do-fosso-pit-fiend",
   "nome": "Diabo do Fosso (Pit Fiend)",
   "nomeIngles": "Pit Fiend",
   "ameaca": 6,
@@ -6423,7 +6605,7 @@
   }
  },
  {
-  "id": "mon-barbed-devil-hamatula",
+  "id": "diabo-espinhoso",
   "nome": "Diabo Espinhoso",
   "nomeIngles": "Devil, Barbed",
   "ameaca": 5,
@@ -6508,7 +6690,7 @@
   }
  },
  {
-  "id": "mon-diabo-osseo",
+  "id": "diabo-osseo",
   "nome": "Diabo Ósseo",
   "nomeIngles": "Devil, Bone (Osyluth)",
   "ameaca": 5,
@@ -6606,7 +6788,7 @@
   }
  },
  {
-  "id": "mon-diabrete-imp",
+  "id": "diabrete-imp",
   "nome": "Diabrete (Imp)",
   "nomeIngles": "Imp",
   "ameaca": 2,
@@ -6704,7 +6886,7 @@
   }
  },
  {
-  "id": "mon-djinn",
+  "id": "djinn",
   "nome": "Djinn",
   "nomeIngles": "Djinn",
   "ameaca": 4,
@@ -6790,7 +6972,7 @@
   }
  },
  {
-  "id": "mon-weasel",
+  "id": "doninha",
   "nome": "Doninha",
   "nomeIngles": "Weasel",
   "ameaca": 1,
@@ -6872,7 +7054,7 @@
   }
  },
  {
-  "id": "mon-doppelganger",
+  "id": "doppelganger",
   "nome": "Doppelganger",
   "nomeIngles": "Doppelganger",
   "ameaca": 3,
@@ -6962,7 +7144,7 @@
   }
  },
  {
-  "id": "mon-dracolisk",
+  "id": "dracolisk",
   "nome": "Dracolisk",
   "nomeIngles": "Dracolisk",
   "ameaca": 4,
@@ -7044,7 +7226,7 @@
   }
  },
  {
-  "id": "mon-dragao-azul-adulto",
+  "id": "dragao-azul-adulto",
   "nome": "Dragão Azul Adulto",
   "nomeIngles": "Dragon, Adult Blue",
   "ameaca": 5,
@@ -7142,7 +7324,7 @@
   }
  },
  {
-  "id": "mon-dragao-branco-jovem",
+  "id": "dragao-branco-jovem",
   "nome": "Dragão Branco Jovem",
   "nomeIngles": "Dragon, Young White",
   "ameaca": 4,
@@ -7239,7 +7421,7 @@
   }
  },
  {
-  "id": "mon-dragao-dourado-adulto",
+  "id": "dragao-dourado-adulto",
   "nome": "Dragão Dourado Adulto",
   "nomeIngles": "Dragon, Adult Gold",
   "ameaca": 6,
@@ -7342,7 +7524,7 @@
   }
  },
  {
-  "id": "mon-dragao-verde-adulto",
+  "id": "dragao-verde-adulto",
   "nome": "Dragão Verde Adulto",
   "nomeIngles": "Dragon, Adult Green",
   "ameaca": 5,
@@ -7434,7 +7616,7 @@
   }
  },
  {
-  "id": "mon-dragao-vermelho-adulto",
+  "id": "dragao-vermelho-adulto",
   "nome": "Dragão Vermelho Adulto",
   "nomeIngles": "Dragon, Adult Red",
   "ameaca": 6,
@@ -7540,7 +7722,7 @@
   }
  },
  {
-  "id": "mon-dragao-vermelho-anciao",
+  "id": "dragao-vermelho-anciao",
   "nome": "Dragão Vermelho Ancião",
   "nomeIngles": "Dragon, Ancient Red",
   "ameaca": 6,
@@ -7647,7 +7829,7 @@
   }
  },
  {
-  "id": "mon-dragao-vermelho-jovem",
+  "id": "dragao-vermelho-jovem",
   "nome": "Dragão Vermelho Jovem",
   "nomeIngles": "Dragon, Young Red",
   "ameaca": 5,
@@ -7747,7 +7929,7 @@
   }
  },
  {
-  "id": "mon-dretch",
+  "id": "dretch",
   "nome": "Dretch",
   "nomeIngles": "Demon, Dretch",
   "ameaca": 2,
@@ -7841,7 +8023,7 @@
   }
  },
  {
-  "id": "mon-driade",
+  "id": "driade",
   "nome": "Dríade",
   "nomeIngles": "Dryad",
   "ameaca": 3,
@@ -7935,7 +8117,7 @@
   }
  },
  {
-  "id": "mon-drider",
+  "id": "drider",
   "nome": "Drider",
   "nomeIngles": "Drider",
   "ameaca": 4,
@@ -8016,7 +8198,7 @@
   }
  },
  {
-  "id": "mon-drow",
+  "id": "drow",
   "nome": "Drow",
   "nomeIngles": "Drow",
   "ameaca": 1,
@@ -8076,87 +8258,6 @@
      "nome": "Arma",
      "pool": "2d6 +2",
      "dano": "1d6 +3 corte",
-     "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Humanoid",
-   "terreno": [
-    "Underground"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "dimensoes": {
-   "medida": "1,6 metro de altura",
-   "peso": "55 kg"
-  }
- },
- {
-  "id": "mon-drow-noble",
-  "nome": "Drow Noble",
-  "nomeIngles": "Drow Noble",
-  "ameaca": 3,
-  "centelha": 2,
-  "categoria": "Humanoide",
-  "porte": "Médio",
-  "imagem": "bestiario/drow-noble.webp",
-  "semImagem": false,
-  "tipo": "soldado",
-  "atributos": {
-   "forca": 3,
-   "destreza": 5,
-   "vigor": 3,
-   "influencia": 3,
-   "perspicacia": 2,
-   "compostura": 4,
-   "percepcao": 5,
-   "inteligencia": 2,
-   "raciocinio": 4
-  },
-  "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "vontade": 7,
-  "aparencia": 4,
-  "pericias": {
-   "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
-   "furtividade": 2
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 34,
-   "defesa": 14,
-   "defesaSocial": 8,
-   "defesaMental": 19,
-   "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 6",
-   "deslocamento": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-   },
-   "ataques": [
-    {
-     "nome": "Arma",
-     "pool": "3d6+2 +4",
-     "dano": "1d6 +5 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -8279,7 +8380,7 @@
   }
  },
  {
-  "id": "mon-duergar",
+  "id": "duergar",
   "nome": "Duergar",
   "nomeIngles": "Duergar",
   "ameaca": 1,
@@ -8360,7 +8461,7 @@
   }
  },
  {
-  "id": "mon-efreeti",
+  "id": "efreeti",
   "nome": "Efreeti",
   "nomeIngles": "Genie, Efreeti",
   "ameaca": 5,
@@ -8447,7 +8548,7 @@
   }
  },
  {
-  "id": "mon-elasmosaurus",
+  "id": "elasmossauro",
   "nome": "Elasmossauro",
   "nomeIngles": "Dinosaur, Elasmosaurus",
   "ameaca": 4,
@@ -8528,7 +8629,7 @@
   }
  },
  {
-  "id": "mon-elefante",
+  "id": "elefante",
   "nome": "Elefante",
   "nomeIngles": "Elephant",
   "ameaca": 4,
@@ -8610,7 +8711,7 @@
   }
  },
  {
-  "id": "mon-small-water-elemental",
+  "id": "elemental-da-agua-pequeno",
   "nome": "Elemental da Água (Pequeno)",
   "nomeIngles": "Elemental, Water",
   "ameaca": 2,
@@ -8691,7 +8792,7 @@
   }
  },
  {
-  "id": "mon-elemental-da-terra-grande",
+  "id": "elemental-da-terra-grande",
   "nome": "Elemental da Terra (Grande)",
   "nomeIngles": "Elemental, Large Earth",
   "ameaca": 4,
@@ -8784,7 +8885,7 @@
   }
  },
  {
-  "id": "mon-small-earth-elemental",
+  "id": "elemental-da-terra-pequeno",
   "nome": "Elemental da Terra (Pequeno)",
   "nomeIngles": "Elemental, Earth",
   "ameaca": 2,
@@ -8872,7 +8973,7 @@
   }
  },
  {
-  "id": "mon-small-air-elemental",
+  "id": "elemental-do-ar-pequeno",
   "nome": "Elemental do Ar (Pequeno)",
   "nomeIngles": "Elemental, Air",
   "ameaca": 2,
@@ -8958,7 +9059,7 @@
   }
  },
  {
-  "id": "mon-small-fire-elemental",
+  "id": "elemental-do-fogo-pequeno",
   "nome": "Elemental do Fogo (Pequeno)",
   "nomeIngles": "Elemental, Fire",
   "ameaca": 2,
@@ -9046,7 +9147,7 @@
   }
  },
  {
-  "id": "mon-electric-eel",
+  "id": "poraque",
   "nome": "Enguia Elétrica",
   "nomeIngles": "Electric Eel",
   "ameaca": 2,
@@ -9127,7 +9228,7 @@
   }
  },
  {
-  "id": "mon-spider-swarm",
+  "id": "enxame-de-aranhas",
   "nome": "Enxame de Aranhas",
   "nomeIngles": "Swarm, Spider",
   "ameaca": 2,
@@ -9209,7 +9310,7 @@
   }
  },
  {
-  "id": "mon-crab-swarm",
+  "id": "enxame-de-caranguejos",
   "nome": "Enxame de Caranguejo",
   "nomeIngles": "Swarm, Crab",
   "ameaca": 3,
@@ -9289,7 +9390,7 @@
   }
  },
  {
-  "id": "mon-centipede-swarm",
+  "id": "enxame-de-centopeias",
   "nome": "Enxame de Centopéia",
   "nomeIngles": "Swarm, Centipede",
   "ameaca": 3,
@@ -9370,7 +9471,7 @@
   }
  },
  {
-  "id": "mon-army-ant-swarm",
+  "id": "enxame-de-formigas",
   "nome": "Enxame de Formigas",
   "nomeIngles": "Swarm, Army Ant",
   "ameaca": 4,
@@ -9449,7 +9550,7 @@
   }
  },
  {
-  "id": "mon-bat-swarm",
+  "id": "enxame-de-morcegos",
   "nome": "Enxame de Morcegos",
   "nomeIngles": "Swarm, Bat",
   "ameaca": 2,
@@ -9533,7 +9634,7 @@
   }
  },
  {
-  "id": "mon-rat-swarm",
+  "id": "enxame-de-ratos",
   "nome": "Enxame de Ratos",
   "nomeIngles": "Swarm, Rat",
   "ameaca": 2,
@@ -9616,7 +9717,7 @@
   }
  },
  {
-  "id": "mon-leech-swarm",
+  "id": "enxame-de-sanguessugas",
   "nome": "Enxame de Sanguessugas",
   "nomeIngles": "Swarm, Leech",
   "ameaca": 3,
@@ -9697,7 +9798,7 @@
   }
  },
  {
-  "id": "mon-wasp-swarm",
+  "id": "enxame-de-vespas",
   "nome": "Enxame de Vespas",
   "nomeIngles": "Swarm, Wasp",
   "ameaca": 3,
@@ -9776,7 +9877,7 @@
   }
  },
  {
-  "id": "mon-erinia",
+  "id": "erinia",
   "nome": "Erínia",
   "nomeIngles": "Erinyes",
   "ameaca": 5,
@@ -9879,7 +9980,7 @@
   }
  },
  {
-  "id": "mon-escorpiao-gigante",
+  "id": "escorpiao-gigante",
   "nome": "Escorpião Gigante",
   "nomeIngles": "Giant Scorpion",
   "ameaca": 3,
@@ -9960,7 +10061,7 @@
   }
  },
  {
-  "id": "mon-esfinge-ginosfinge",
+  "id": "esfinge-ginosfinge",
   "nome": "Esfinge (Ginosfinge)",
   "nomeIngles": "Sphinx (Gynosphinx)",
   "ameaca": 5,
@@ -10042,7 +10143,7 @@
   }
  },
  {
-  "id": "mon-exemplo-espantalho",
+  "id": "espantalho-desperto",
   "nome": "Espantalho Desperto",
   "nomeIngles": "Awakened Scarecrow",
   "ameaca": 2,
@@ -10129,7 +10230,7 @@
   }
  },
  {
-  "id": "mon-espectro",
+  "id": "espectro",
   "nome": "Espectro",
   "nomeIngles": "Spectre",
   "ameaca": 4,
@@ -10230,7 +10331,89 @@
   }
  },
  {
-  "id": "mon-esqueleto-humano",
+  "id": "espreitador-sombrio",
+  "nome": "Espreitador Sombrio",
+  "nomeIngles": "Dark Stalker",
+  "ameaca": 3,
+  "centelha": 2,
+  "categoria": "Humanoide",
+  "porte": "Médio",
+  "imagem": "bestiario/dark-stalker.webp",
+  "semImagem": false,
+  "tipo": "soldado",
+  "atributos": {
+   "forca": 4,
+   "destreza": 5,
+   "vigor": 4,
+   "influencia": 3,
+   "perspicacia": 2,
+   "compostura": 3,
+   "percepcao": 2,
+   "inteligencia": 2,
+   "raciocinio": 2
+  },
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 3,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 37,
+   "defesa": 14,
+   "defesaSocial": 6,
+   "defesaMental": 16,
+   "absorcao": {
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
+   "ataques": [
+    {
+     "nome": "Arma",
+     "pool": "4d6 +4",
+     "dano": "1d6 +6 corte",
+     "perfArma": null,
+     "speed": 5,
+     "classe": "leve"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Underground",
+    "Urban"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "dimensoes": {
+   "medida": "1,8 m de altura",
+   "peso": "45 kg"
+  }
+ },
+ {
+  "id": "esqueleto-humano",
   "nome": "Esqueleto Humano",
   "nomeIngles": "Human Skeleton",
   "ameaca": 1,
@@ -10318,7 +10501,7 @@
   }
  },
  {
-  "id": "mon-stegosaurus",
+  "id": "estegossauro",
   "nome": "Estegossauro",
   "nomeIngles": "Dinosaur, Stegosaurus",
   "ameaca": 4,
@@ -10399,7 +10582,7 @@
   }
  },
  {
-  "id": "mon-choker",
+  "id": "estrangulador",
   "nome": "Estrangulador",
   "nomeIngles": "Choker",
   "ameaca": 2,
@@ -10481,7 +10664,7 @@
   }
  },
  {
-  "id": "mon-ettercap",
+  "id": "ettercap",
   "nome": "Ettercap",
   "nomeIngles": "Ettercap",
   "ameaca": 3,
@@ -10562,7 +10745,7 @@
   }
  },
  {
-  "id": "mon-ettin",
+  "id": "ettin",
   "nome": "Ettin",
   "nomeIngles": "Ettin",
   "ameaca": 4,
@@ -10644,7 +10827,7 @@
   }
  },
  {
-  "id": "mon-hawk",
+  "id": "falcao-peregrino",
   "nome": "Falcão",
   "nomeIngles": "Hawk",
   "ameaca": 1,
@@ -10726,7 +10909,7 @@
   }
  },
  {
-  "id": "mon-ghost",
+  "id": "fantasma",
   "nome": "Fantasma",
   "nomeIngles": "Ghost",
   "ameaca": 4,
@@ -10906,7 +11089,7 @@
   }
  },
  {
-  "id": "mon-phoenix",
+  "id": "fenix",
   "nome": "Fênix",
   "nomeIngles": "Phoenix",
   "ameaca": 6,
@@ -10988,7 +11171,7 @@
   }
  },
  {
-  "id": "mon-filhote-de-dragao-vermelho",
+  "id": "filhote-de-dragao-vermelho",
   "nome": "Filhote de Dragão Vermelho",
   "nomeIngles": "Dragon, Wyrmling Red",
   "ameaca": 4,
@@ -11082,7 +11265,7 @@
   }
  },
  {
-  "id": "mon-fogo-fatuo",
+  "id": "fogo-fatuo",
   "nome": "Fogo-fátuo",
   "nomeIngles": "Will-o'-Wisp",
   "ameaca": 4,
@@ -11163,7 +11346,7 @@
   }
  },
  {
-  "id": "mon-giant-ant",
+  "id": "formiga-gigante",
   "nome": "Formiga Gigante",
   "nomeIngles": "Giant Ant",
   "ameaca": 2,
@@ -11245,7 +11428,7 @@
   }
  },
  {
-  "id": "mon-froghemoth",
+  "id": "froghemoth",
   "nome": "Froghemoth",
   "nomeIngles": "Froghemoth",
   "ameaca": 5,
@@ -11328,7 +11511,7 @@
   }
  },
  {
-  "id": "mon-violet-fungus",
+  "id": "fungo-violeta",
   "nome": "Fungo Violeta",
   "nomeIngles": "Violet Fungus",
   "ameaca": 3,
@@ -11413,7 +11596,7 @@
   }
  },
  {
-  "id": "mon-gargula",
+  "id": "gargula",
   "nome": "Gárgula",
   "nomeIngles": "Gargoyle",
   "ameaca": 3,
@@ -11495,7 +11678,7 @@
   }
  },
  {
-  "id": "mon-cat",
+  "id": "gato",
   "nome": "Gato",
   "nomeIngles": "Cat",
   "ameaca": 1,
@@ -11578,7 +11761,7 @@
   }
  },
  {
-  "id": "mon-ochre-jelly",
+  "id": "geleia-ocre",
   "nome": "Geleia Ocre",
   "nomeIngles": "Ochre Jelly",
   "ameaca": 4,
@@ -11662,7 +11845,7 @@
   }
  },
  {
-  "id": "mon-ghaele-azata",
+  "id": "ghaele-azata",
   "nome": "Ghaele (azata)",
   "nomeIngles": "Ghaele",
   "ameaca": 5,
@@ -11767,7 +11950,7 @@
   }
  },
  {
-  "id": "mon-ghast",
+  "id": "ghast",
   "nome": "Ghast",
   "nomeIngles": "Ghast",
   "ameaca": 2,
@@ -11861,7 +12044,7 @@
   }
  },
  {
-  "id": "mon-ghoul",
+  "id": "ghoul",
   "nome": "Ghoul",
   "nomeIngles": "Ghoul",
   "ameaca": 2,
@@ -11961,88 +12144,7 @@
   }
  },
  {
-  "id": "mon-gibbering-mouther",
-  "nome": "Gibbering Mouther",
-  "nomeIngles": "Gibbering Mouther",
-  "ameaca": 4,
-  "centelha": 4,
-  "categoria": "Aberração",
-  "porte": "Médio",
-  "imagem": "bestiario/gibbering-mouther.webp",
-  "semImagem": false,
-  "tipo": "elite",
-  "atributos": {
-   "forca": 2,
-   "destreza": 5,
-   "vigor": 7,
-   "influencia": 3,
-   "perspicacia": 2,
-   "compostura": 3,
-   "percepcao": 3,
-   "inteligencia": 1,
-   "raciocinio": 2
-  },
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "vontade": 9,
-  "aparencia": 1,
-  "pericias": {
-   "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
-   "furtividade": 2
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 46,
-   "defesa": 14,
-   "defesaSocial": 6,
-   "defesaMental": 20,
-   "absorcao": {
-    "impacto": 11,
-    "corte": 7,
-    "perfuracao": 7
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
-   "deslocamento": {
-    "batalha": 1,
-    "arranque": 2,
-    "corrida": 2
-   },
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "3d6+2 +8",
-     "dano": "1d6 +6 perfurante",
-     "perfArma": 0,
-     "speed": 5,
-     "classe": "leve"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Aberration",
-   "terreno": [
-    "Underground"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "dimensoes": {
-   "medida": "1,5 m de diâmetro",
-   "peso": "80 kg"
-  }
- },
- {
-  "id": "mon-gigante-da-colina",
+  "id": "gigante-da-colina",
   "nome": "Gigante da Colina",
   "nomeIngles": "Giant, Hill",
   "ameaca": 4,
@@ -12124,7 +12226,7 @@
   }
  },
  {
-  "id": "mon-gigante-da-pedra",
+  "id": "gigante-da-pedra",
   "nome": "Gigante da Pedra",
   "nomeIngles": "Giant, Stone",
   "ameaca": 5,
@@ -12206,7 +12308,7 @@
   }
  },
  {
-  "id": "mon-gigante-da-tempestade",
+  "id": "gigante-da-tempestade",
   "nome": "Gigante da Tempestade",
   "nomeIngles": "Giant, Storm",
   "ameaca": 5,
@@ -12288,7 +12390,7 @@
   }
  },
  {
-  "id": "mon-gigante-das-nuvens",
+  "id": "gigante-das-nuvens",
   "nome": "Gigante das Nuvens",
   "nomeIngles": "Giant, Cloud",
   "ameaca": 5,
@@ -12379,7 +12481,7 @@
   }
  },
  {
-  "id": "mon-gigante-do-fogo",
+  "id": "gigante-do-fogo",
   "nome": "Gigante do Fogo",
   "nomeIngles": "Giant, Fire",
   "ameaca": 5,
@@ -12476,7 +12578,7 @@
   }
  },
  {
-  "id": "mon-gigante-do-gelo",
+  "id": "gigante-do-gelo",
   "nome": "Gigante do Gelo",
   "nomeIngles": "Giant, Frost",
   "ameaca": 5,
@@ -12558,7 +12660,7 @@
   }
  },
  {
-  "id": "mon-girallon",
+  "id": "girallon",
   "nome": "Girallon",
   "nomeIngles": "Girallon",
   "ameaca": 4,
@@ -12640,7 +12742,7 @@
   }
  },
  {
-  "id": "mon-glabrezu",
+  "id": "glabrezu",
   "nome": "Glabrezu",
   "nomeIngles": "Demon, Glabrezu",
   "ameaca": 5,
@@ -12742,7 +12844,7 @@
   }
  },
  {
-  "id": "mon-gnoll",
+  "id": "gnoll",
   "nome": "Gnoll",
   "nomeIngles": "Gnoll",
   "ameaca": 2,
@@ -12825,7 +12927,7 @@
   }
  },
  {
-  "id": "mon-goblin",
+  "id": "goblin",
   "nome": "Goblin",
   "nomeIngles": "Goblin",
   "ameaca": 1,
@@ -12907,7 +13009,7 @@
   }
  },
  {
-  "id": "mon-clay-golem",
+  "id": "golem-de-argila",
   "nome": "Golem de Argila",
   "nomeIngles": "Golem, Clay",
   "ameaca": 5,
@@ -12993,7 +13095,7 @@
   }
  },
  {
-  "id": "mon-flesh-golem",
+  "id": "golem-de-carne",
   "nome": "Golem de Carne",
   "nomeIngles": "Golem, Flesh",
   "ameaca": 4,
@@ -13076,7 +13178,7 @@
   }
  },
  {
-  "id": "mon-iron-golem",
+  "id": "golem-de-ferro",
   "nome": "Golem de Ferro",
   "nomeIngles": "Golem, Iron",
   "ameaca": 5,
@@ -13165,7 +13267,7 @@
   }
  },
  {
-  "id": "mon-ice-golem",
+  "id": "golem-de-gelo",
   "nome": "Golem de Gelo",
   "nomeIngles": "Golem, Ice",
   "ameaca": 4,
@@ -13253,7 +13355,7 @@
   }
  },
  {
-  "id": "mon-stone-golem",
+  "id": "golem-de-pedra",
   "nome": "Golem de Pedra",
   "nomeIngles": "Golem, Stone",
   "ameaca": 5,
@@ -13339,7 +13441,7 @@
   }
  },
  {
-  "id": "mon-dolphin",
+  "id": "golfinho",
   "nome": "Golfinho",
   "nomeIngles": "Dolphin",
   "ameaca": 1,
@@ -13421,7 +13523,7 @@
   }
  },
  {
-  "id": "mon-gorgona-touro-de-ferro",
+  "id": "gorgona-touro-de-ferro",
   "nome": "Górgona (touro de ferro)",
   "nomeIngles": "Gorgon (Iron Bull)",
   "ameaca": 5,
@@ -13508,7 +13610,7 @@
   }
  },
  {
-  "id": "mon-gorila",
+  "id": "gorila",
   "nome": "Gorila",
   "nomeIngles": "Gorilla",
   "ameaca": 2,
@@ -13590,7 +13692,7 @@
   }
  },
  {
-  "id": "mon-grande-wyrm-vermelho",
+  "id": "grande-wyrm-vermelho",
   "nome": "Grande Wyrm Vermelho",
   "nomeIngles": "Dragon, Great Wyrm Red",
   "ameaca": 6,
@@ -13697,93 +13799,7 @@
   }
  },
  {
-  "id": "mon-greater-barghest",
-  "nome": "Greater Barghest",
-  "nomeIngles": "Greater Barghest",
-  "ameaca": 4,
-  "centelha": 4,
-  "categoria": "Corruptor",
-  "porte": "Grande",
-  "imagem": "bestiario/greater-barghest.webp",
-  "semImagem": false,
-  "tipo": "elite",
-  "atributos": {
-   "forca": 8,
-   "destreza": 4,
-   "vigor": 6,
-   "influencia": 5,
-   "perspicacia": 5,
-   "compostura": 5,
-   "percepcao": 5,
-   "inteligencia": 5,
-   "raciocinio": 5
-  },
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 5,
-   "temperanca": 1,
-   "valor": 5
-  },
-  "vontade": 9,
-  "aparencia": 1,
-  "pericias": {
-   "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 1
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 54,
-   "defesa": 12,
-   "defesaSocial": 10,
-   "defesaMental": 27,
-   "absorcao": {
-    "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
-   },
-   "resistenciaPerfuracao": 0,
-   "fraquezas": [
-    "luz",
-    "sagrado"
-   ],
-   "iniciativa": "1d6 + 7",
-   "deslocamento": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-   },
-   "ataques": [
-    {
-     "nome": "Golpe planar",
-     "pool": "6d6+2 +8",
-     "dano": "2d6 +12 corte",
-     "perfArma": null,
-     "speed": 6,
-     "classe": "media"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Fiend",
-   "terreno": [
-    "Any",
-    "Mountain"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "dimensoes": {
-   "medida": "2,7 m de altura",
-   "peso": "350 kg"
-  }
- },
- {
-  "id": "mon-grifo",
+  "id": "grifo",
   "nome": "Grifo",
   "nomeIngles": "Griffon",
   "ameaca": 3,
@@ -13946,7 +13962,7 @@
   }
  },
  {
-  "id": "mon-cheetah",
+  "id": "guepardo",
   "nome": "Guepardo",
   "nomeIngles": "Cheetah",
   "ameaca": 2,
@@ -14027,7 +14043,7 @@
   }
  },
  {
-  "id": "mon-harpia",
+  "id": "harpia",
   "nome": "Harpia",
   "nomeIngles": "Harpy",
   "ameaca": 3,
@@ -14115,7 +14131,7 @@
   }
  },
  {
-  "id": "mon-hezrou",
+  "id": "hezrou",
   "nome": "Hezrou",
   "nomeIngles": "Demon, Hezrou",
   "ameaca": 5,
@@ -14209,7 +14225,7 @@
   }
  },
  {
-  "id": "mon-hidra-5-cabecas",
+  "id": "hidra-5-cabecas",
   "nome": "Hidra (5 cabeças)",
   "nomeIngles": "Hydra (5-headed)",
   "ameaca": 3,
@@ -14291,7 +14307,7 @@
   }
  },
  {
-  "id": "mon-hyena",
+  "id": "hiena-malhada",
   "nome": "Hiena",
   "nomeIngles": "Hyena",
   "ameaca": 2,
@@ -14372,7 +14388,7 @@
   }
  },
  {
-  "id": "mon-dire-hyena-hyaenodon",
+  "id": "hienodonte",
   "nome": "Hiena Atroz",
   "nomeIngles": "Dire Hyena",
   "ameaca": 3,
@@ -14453,7 +14469,7 @@
   }
  },
  {
-  "id": "mon-hipogrifo",
+  "id": "hipogrifo",
   "nome": "Hipogrifo",
   "nomeIngles": "Hippogriff",
   "ameaca": 2,
@@ -14535,7 +14551,7 @@
   }
  },
  {
-  "id": "mon-hobgoblin",
+  "id": "hobgoblin",
   "nome": "Hobgoblin",
   "nomeIngles": "Hobgoblin",
   "ameaca": 1,
@@ -14617,7 +14633,7 @@
   }
  },
  {
-  "id": "mon-homem-lagarto",
+  "id": "homem-lagarto",
   "nome": "Homem-lagarto",
   "nomeIngles": "Lizardfolk",
   "ameaca": 2,
@@ -14699,7 +14715,7 @@
   }
  },
  {
-  "id": "mon-wererat-human-form",
+  "id": "homem-rato-forma-humana",
   "nome": "Homem-Rato (forma humana)",
   "nomeIngles": "Lycanthrope, Wererat",
   "ameaca": 2,
@@ -14780,7 +14796,7 @@
   }
  },
  {
-  "id": "mon-homunculus",
+  "id": "homunculus",
   "nome": "Homunculus",
   "nomeIngles": "Homunculus",
   "ameaca": 2,
@@ -14866,175 +14882,7 @@
   }
  },
  {
-  "id": "mon-ice-linnorm",
-  "nome": "Ice Linnorm",
-  "nomeIngles": "Ice Linnorm",
-  "ameaca": 6,
-  "centelha": 6,
-  "categoria": "Dragão",
-  "porte": "Colossal",
-  "imagem": "bestiario/ice-linnorm.webp",
-  "semImagem": false,
-  "tipo": "chefe",
-  "atributos": {
-   "forca": 15,
-   "destreza": 7,
-   "vigor": 13,
-   "influencia": 7,
-   "perspicacia": 4,
-   "compostura": 7,
-   "percepcao": 6,
-   "inteligencia": 1,
-   "raciocinio": 3
-  },
-  "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
-   "temperanca": 3,
-   "valor": 6
-  },
-  "vontade": 11,
-  "aparencia": 9,
-  "pericias": {
-   "prontidao": 3,
-   "esquiva": 2,
-   "integridade": 7,
-   "sociabilidade": 0,
-   "furtividade": 0
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 110,
-   "defesa": 22,
-   "defesaSocial": 14,
-   "defesaMental": 33,
-   "absorcao": {
-    "impacto": 19,
-    "corte": 22,
-    "perfuracao": 22
-   },
-   "resistenciaPerfuracao": 3,
-   "fraquezas": [
-    "fogo"
-   ],
-   "resistencias": [
-    "gelo"
-   ],
-   "iniciativa": "1d6 + 6",
-   "deslocamento": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-   },
-   "ataques": [
-    {
-     "nome": "Garras e mordida",
-     "pool": "10d6 +10",
-     "dano": "4d6 +21 perfurante",
-     "perfArma": 0,
-     "speed": 7,
-     "classe": "pesada"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Dragon",
-   "terreno": [
-    "Mountain"
-   ],
-   "clima": [
-    "Cold"
-   ]
-  },
-  "dimensoes": {
-   "medida": "24 m de comprimento",
-   "peso": "14.000 kg"
-  }
- },
- {
-  "id": "mon-intellect-devourer",
-  "nome": "Intellect Devourer",
-  "nomeIngles": "Intellect Devourer",
-  "ameaca": 5,
-  "centelha": 4,
-  "categoria": "Aberração",
-  "porte": "Pequeno",
-  "imagem": "bestiario/intellect-devourer.webp",
-  "semImagem": false,
-  "tipo": "chefe",
-  "atributos": {
-   "forca": 3,
-   "destreza": 7,
-   "vigor": 6,
-   "influencia": 5,
-   "perspicacia": 5,
-   "compostura": 4,
-   "percepcao": 2,
-   "inteligencia": 5,
-   "raciocinio": 3
-  },
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 4
-  },
-  "vontade": 9,
-  "aparencia": 1,
-  "pericias": {
-   "prontidao": 1,
-   "esquiva": 2,
-   "integridade": 4,
-   "sociabilidade": 0,
-   "furtividade": 3
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 32,
-   "defesa": 22,
-   "defesaSocial": 8,
-   "defesaMental": 24,
-   "absorcao": {
-    "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 4",
-   "deslocamento": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-   },
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "4d6 +8",
-     "dano": "1d6 +7 perfurante",
-     "perfArma": 0,
-     "speed": 5,
-     "classe": "leve"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Aberration",
-   "terreno": [
-    "Underground"
-   ],
-   "clima": [
-    "Temperate"
-   ]
-  },
-  "dimensoes": {
-   "medida": "60 cm de altura",
-   "peso": "18 kg"
-  }
- },
- {
-  "id": "mon-janni",
+  "id": "janni",
   "nome": "Janni",
   "nomeIngles": "Janni",
   "ameaca": 3,
@@ -15116,7 +14964,7 @@
   }
  },
  {
-  "id": "mon-javali",
+  "id": "javali",
   "nome": "Javali",
   "nomeIngles": "Boar",
   "ameaca": 2,
@@ -15197,7 +15045,7 @@
   }
  },
  {
-  "id": "mon-dire-boar-daeodon",
+  "id": "daeodon",
   "nome": "Javali Atroz",
   "nomeIngles": "Dire Boar",
   "ameaca": 3,
@@ -15279,7 +15127,7 @@
   }
  },
  {
-  "id": "mon-kobold",
+  "id": "kobold",
   "nome": "Kobold",
   "nomeIngles": "Kobold",
   "ameaca": 1,
@@ -15360,7 +15208,7 @@
   }
  },
  {
-  "id": "mon-kraken",
+  "id": "kraken",
   "nome": "Kraken",
   "nomeIngles": "Kraken",
   "ameaca": 6,
@@ -15447,7 +15295,7 @@
   }
  },
  {
-  "id": "mon-kyton",
+  "id": "kyton",
   "nome": "Kyton",
   "nomeIngles": "Kyton",
   "ameaca": 4,
@@ -15533,7 +15381,93 @@
   }
  },
  {
-  "id": "mon-giant-frilled-lizard",
+  "id": "lacador",
+  "nome": "Laçador",
+  "nomeIngles": "Roper",
+  "ameaca": 5,
+  "centelha": 5,
+  "categoria": "Aberração",
+  "porte": "Grande",
+  "imagem": "bestiario/roper.webp",
+  "semImagem": false,
+  "tipo": "chefe",
+  "atributos": {
+   "forca": 11,
+   "destreza": 3,
+   "vigor": 10,
+   "influencia": 3,
+   "perspicacia": 3,
+   "compostura": 4,
+   "percepcao": 5,
+   "inteligencia": 3,
+   "raciocinio": 4
+  },
+  "virtudes": {
+   "compaixao": 0,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 4
+  },
+  "vontade": 10,
+  "aparencia": 1,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 1
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 70,
+   "defesa": 10,
+   "defesaSocial": 8,
+   "defesaMental": 26,
+   "absorcao": {
+    "impacto": 15,
+    "corte": 12,
+    "perfuracao": 12
+   },
+   "resistenciaPerfuracao": 0,
+   "imunidades": [
+    "raio"
+   ],
+   "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+   },
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "8d6 +10",
+     "dano": "2d6 +16 perfurante",
+     "perfArma": 0,
+     "speed": 6,
+     "classe": "media"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Aberration",
+   "terreno": [
+    "Underground",
+    "Cold"
+   ],
+   "clima": [
+    "Cold",
+    "Temperate"
+   ]
+  },
+  "dimensoes": {
+   "medida": "3 metros de altura",
+   "peso": "cerca de 1.000 kg"
+  }
+ },
+ {
+  "id": "lagarto-de-gola-gigante",
   "nome": "Lagarto de Gola Gigante",
   "nomeIngles": "Giant Frilled Lizard",
   "ameaca": 4,
@@ -15616,7 +15550,89 @@
   }
  },
  {
-  "id": "mon-monitor-lizard",
+  "id": "lagarto-eletrico",
+  "nome": "Lagarto Elétrico",
+  "nomeIngles": "Shocker Lizard",
+  "ameaca": 2,
+  "centelha": 2,
+  "categoria": "Besta mágica",
+  "porte": "Pequeno",
+  "imagem": "bestiario/shocker-lizard.webp",
+  "semImagem": false,
+  "tipo": "fera",
+  "atributos": {
+   "forca": 2,
+   "destreza": 4,
+   "vigor": 3,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 2,
+   "percepcao": 3,
+   "inteligencia": 1,
+   "raciocinio": 2
+  },
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "vontade": 7,
+  "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 26,
+   "defesa": 12,
+   "defesaSocial": 4,
+   "defesaMental": 15,
+   "absorcao": {
+    "impacto": 5,
+    "corte": 3,
+    "perfuracao": 3
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "2d6+2 +4",
+     "dano": "1d6 +4 perfurante",
+     "perfArma": 0,
+     "speed": 5,
+     "classe": "leve"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Swamp"
+   ],
+   "clima": [
+    "Tropical",
+    "Temperate"
+   ]
+  },
+  "dimensoes": {
+   "medida": "90 cm de comprimento",
+   "peso": "11 kg"
+  }
+ },
+ {
+  "id": "varano",
   "nome": "Lagarto-Monitor",
   "nomeIngles": "Monitor Lizard",
   "ameaca": 2,
@@ -15698,7 +15714,7 @@
   }
  },
  {
-  "id": "mon-lamia",
+  "id": "lamia",
   "nome": "Lâmia",
   "nomeIngles": "Lamia",
   "ameaca": 4,
@@ -15789,7 +15805,7 @@
   }
  },
  {
-  "id": "mon-leao",
+  "id": "leao",
   "nome": "Leão",
   "nomeIngles": "Lion",
   "ameaca": 3,
@@ -15870,7 +15886,7 @@
   }
  },
  {
-  "id": "mon-dire-lion-spotted-lion",
+  "id": "leao-das-cavernas",
   "nome": "Leão Atroz",
   "nomeIngles": "Dire Lion",
   "ameaca": 4,
@@ -15952,7 +15968,7 @@
   }
  },
  {
-  "id": "mon-lemure",
+  "id": "lemure",
   "nome": "Lêmure",
   "nomeIngles": "Lemure",
   "ameaca": 2,
@@ -16041,7 +16057,7 @@
   }
  },
  {
-  "id": "mon-leopard",
+  "id": "leopardo",
   "nome": "Leopardo",
   "nomeIngles": "Leopard",
   "ameaca": 2,
@@ -16123,7 +16139,7 @@
   }
  },
  {
-  "id": "mon-giant-slug",
+  "id": "lesma-gigante",
   "nome": "Lesma Gigante",
   "nomeIngles": "Giant Slug",
   "ameaca": 5,
@@ -16208,7 +16224,7 @@
   }
  },
  {
-  "id": "mon-lich",
+  "id": "lich",
   "nome": "Lich",
   "nomeIngles": "Lich",
   "ameaca": 5,
@@ -16314,7 +16330,7 @@
   }
  },
  {
-  "id": "mon-lillend",
+  "id": "lillend",
   "nome": "Lillend",
   "nomeIngles": "Lillend",
   "ameaca": 4,
@@ -16399,7 +16415,7 @@
   }
  },
  {
-  "id": "mon-gray-ooze",
+  "id": "limo-cinzento",
   "nome": "Limo Cinzento",
   "nomeIngles": "Gray Ooze",
   "ameaca": 3,
@@ -16484,7 +16500,266 @@
   }
  },
  {
-  "id": "mon-werewolf",
+  "id": "linnorm-do-gelo",
+  "nome": "Linnorm do Gelo",
+  "nomeIngles": "Ice Linnorm",
+  "ameaca": 6,
+  "centelha": 6,
+  "categoria": "Dragão",
+  "porte": "Colossal",
+  "imagem": "bestiario/ice-linnorm.webp",
+  "semImagem": false,
+  "tipo": "chefe",
+  "atributos": {
+   "forca": 15,
+   "destreza": 7,
+   "vigor": 13,
+   "influencia": 7,
+   "perspicacia": 4,
+   "compostura": 7,
+   "percepcao": 6,
+   "inteligencia": 1,
+   "raciocinio": 3
+  },
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 6
+  },
+  "vontade": 11,
+  "aparencia": 9,
+  "pericias": {
+   "prontidao": 3,
+   "esquiva": 2,
+   "integridade": 7,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 110,
+   "defesa": 22,
+   "defesaSocial": 14,
+   "defesaMental": 33,
+   "absorcao": {
+    "impacto": 19,
+    "corte": 22,
+    "perfuracao": 22
+   },
+   "resistenciaPerfuracao": 3,
+   "fraquezas": [
+    "fogo"
+   ],
+   "resistencias": [
+    "gelo"
+   ],
+   "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
+   "ataques": [
+    {
+     "nome": "Garras e mordida",
+     "pool": "10d6 +10",
+     "dano": "4d6 +21 perfurante",
+     "perfArma": 0,
+     "speed": 7,
+     "classe": "pesada"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Dragon",
+   "terreno": [
+    "Mountain"
+   ],
+   "clima": [
+    "Cold"
+   ]
+  },
+  "dimensoes": {
+   "medida": "24 m de comprimento",
+   "peso": "14.000 kg"
+  }
+ },
+ {
+  "id": "linnorm-dos-lagos",
+  "nome": "Linnorm dos Lagos",
+  "nomeIngles": "Tarn Linnorm",
+  "ameaca": 6,
+  "centelha": 6,
+  "categoria": "Dragão",
+  "porte": "Colossal",
+  "imagem": "bestiario/tarn-linnorm.webp",
+  "semImagem": false,
+  "tipo": "chefe",
+  "atributos": {
+   "forca": 16,
+   "destreza": 8,
+   "vigor": 14,
+   "influencia": 8,
+   "perspicacia": 5,
+   "compostura": 8,
+   "percepcao": 8,
+   "inteligencia": 2,
+   "raciocinio": 5
+  },
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 6
+  },
+  "vontade": 11,
+  "aparencia": 9,
+  "pericias": {
+   "prontidao": 4,
+   "esquiva": 2,
+   "integridade": 8,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 115,
+   "defesa": 24,
+   "defesaSocial": 16,
+   "defesaMental": 36,
+   "absorcao": {
+    "impacto": 20,
+    "corte": 23,
+    "perfuracao": 23
+   },
+   "resistenciaPerfuracao": 3,
+   "iniciativa": "1d6 + 9",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
+   "ataques": [
+    {
+     "nome": "Garras e mordida",
+     "pool": "10d6+2 +10",
+     "dano": "4d6 +22 perfurante",
+     "perfArma": 0,
+     "speed": 7,
+     "classe": "pesada"
+    },
+    {
+     "nome": "Cauda",
+     "pool": "10d6+2 +10",
+     "dano": "2d6 +22 impacto",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media",
+     "notas": "pode agarrar e constringir"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Dragon",
+   "terreno": [
+    "Water",
+    "Swamp"
+   ],
+   "clima": [
+    "Cold"
+   ]
+  },
+  "dimensoes": {
+   "medida": "cerca de 36 m de comprimento",
+   "peso": "cerca de 11.000 kg"
+  }
+ },
+ {
+  "id": "linnorm-dos-penhascos",
+  "nome": "Linnorm dos Penhascos",
+  "nomeIngles": "Crag Linnorm",
+  "ameaca": 6,
+  "centelha": 6,
+  "categoria": "Dragão",
+  "porte": "Imenso",
+  "imagem": "bestiario/crag-linnorm.webp",
+  "semImagem": false,
+  "tipo": "chefe",
+  "atributos": {
+   "forca": 13,
+   "destreza": 5,
+   "vigor": 11,
+   "influencia": 6,
+   "perspicacia": 3,
+   "compostura": 6,
+   "percepcao": 5,
+   "inteligencia": 1,
+   "raciocinio": 3
+  },
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 5,
+   "temperanca": 3,
+   "valor": 6
+  },
+  "vontade": 11,
+  "aparencia": 9,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 6,
+   "sociabilidade": 0,
+   "furtividade": 0
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 95,
+   "defesa": 14,
+   "defesaSocial": 12,
+   "defesaMental": 32,
+   "absorcao": {
+    "impacto": 17,
+    "corte": 18,
+    "perfuracao": 18
+   },
+   "resistenciaPerfuracao": 2,
+   "iniciativa": "1d6 + 5",
+   "deslocamento": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+   },
+   "ataques": [
+    {
+     "nome": "Garras e mordida",
+     "pool": "9d6 +10",
+     "dano": "3d6 +19 perfurante",
+     "perfArma": 0,
+     "speed": 7,
+     "classe": "pesada"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Dragon",
+   "terreno": [
+    "Mountain"
+   ],
+   "clima": [
+    "Cold"
+   ]
+  },
+  "dimensoes": {
+   "medida": "18 m de comprimento",
+   "peso": "cerca de 5.400 kg"
+  }
+ },
+ {
+  "id": "lobisomem",
   "nome": "Lobisomem",
   "nomeIngles": "Lycanthrope, Werewolf",
   "ameaca": 2,
@@ -16569,7 +16844,7 @@
   }
  },
  {
-  "id": "mon-lobo",
+  "id": "lobo",
   "nome": "Lobo",
   "nomeIngles": "Wolf",
   "ameaca": 2,
@@ -16653,7 +16928,7 @@
   }
  },
  {
-  "id": "mon-lobo-atroz",
+  "id": "lobo-atroz",
   "nome": "Lobo Atroz",
   "nomeIngles": "Dire Wolf",
   "ameaca": 3,
@@ -16737,7 +17012,7 @@
   }
  },
  {
-  "id": "mon-winter-wolf",
+  "id": "lobo-do-inverno",
   "nome": "Lobo do Inverno",
   "nomeIngles": "Winter Wolf",
   "ameaca": 4,
@@ -16819,7 +17094,7 @@
   }
  },
  {
-  "id": "mon-giant-mantis",
+  "id": "louva-a-deus-gigante",
   "nome": "Louva-a-Deus Gigante",
   "nomeIngles": "Giant Mantis",
   "ameaca": 3,
@@ -16900,7 +17175,7 @@
   }
  },
  {
-  "id": "mon-squid",
+  "id": "lula-de-humboldt-grande",
   "nome": "Lula",
   "nomeIngles": "Squid",
   "ameaca": 2,
@@ -16983,7 +17258,7 @@
   }
  },
  {
-  "id": "mon-giant-squid",
+  "id": "lula-gigante",
   "nome": "Lula Gigante",
   "nomeIngles": "Giant Squid",
   "ameaca": 5,
@@ -17065,7 +17340,7 @@
   }
  },
  {
-  "id": "mon-monkey",
+  "id": "macaco",
   "nome": "Macaco",
   "nomeIngles": "Monkey",
   "ameaca": 1,
@@ -17238,7 +17513,7 @@
   }
  },
  {
-  "id": "mon-manticora",
+  "id": "manticora",
   "nome": "Mantícora",
   "nomeIngles": "Manticore",
   "ameaca": 4,
@@ -17328,7 +17603,90 @@
   }
  },
  {
-  "id": "mon-marid",
+  "id": "manto-escuro",
+  "nome": "Manto Escuro",
+  "nomeIngles": "Darkmantle",
+  "ameaca": 2,
+  "centelha": 1,
+  "categoria": "Besta mágica",
+  "porte": "Pequeno",
+  "imagem": "bestiario/darkmantle.webp",
+  "semImagem": false,
+  "tipo": "fera",
+  "atributos": {
+   "forca": 2,
+   "destreza": 4,
+   "vigor": 4,
+   "influencia": 2,
+   "perspicacia": 1,
+   "compostura": 2,
+   "percepcao": 2,
+   "inteligencia": 1,
+   "raciocinio": 1
+  },
+  "virtudes": {
+   "compaixao": 1,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "vontade": 6,
+  "aparencia": 5,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 28,
+   "defesa": 12,
+   "defesaSocial": 4,
+   "defesaMental": 11,
+   "absorcao": {
+    "impacto": 5,
+    "corte": 3,
+    "perfuracao": 3
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 2",
+   "deslocamento": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+   },
+   "ataques": [
+    {
+     "nome": "Garras e presas",
+     "pool": "2d6+2 +2",
+     "dano": "1d6 +3 perfurante",
+     "perfArma": 0,
+     "speed": 5,
+     "classe": "leve"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Beast",
+   "terreno": [
+    "Underground",
+    "Ruins",
+    "Urban"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "dimensoes": {
+   "medida": "envergadura de tentáculos 1,5 m",
+   "peso": "18 kg"
+  }
+ },
+ {
+  "id": "marid",
   "nome": "Marid",
   "nomeIngles": "Marid",
   "ameaca": 5,
@@ -17412,7 +17770,7 @@
   }
  },
  {
-  "id": "mon-marilith",
+  "id": "marilith",
   "nome": "Marilith",
   "nomeIngles": "Demon, Marilith",
   "ameaca": 6,
@@ -17520,7 +17878,7 @@
   }
  },
  {
-  "id": "mon-mastodon",
+  "id": "mastodonte",
   "nome": "Mastodonte (Mamute)",
   "nomeIngles": "Mastodon",
   "ameaca": 5,
@@ -17603,7 +17961,7 @@
   }
  },
  {
-  "id": "mon-medusa",
+  "id": "medusa",
   "nome": "Medusa",
   "nomeIngles": "Medusa",
   "ameaca": 4,
@@ -17691,7 +18049,7 @@
   }
  },
  {
-  "id": "mon-mephit",
+  "id": "mephit",
   "nome": "Mephit",
   "nomeIngles": "Mephit",
   "ameaca": 3,
@@ -17772,7 +18130,7 @@
   }
  },
  {
-  "id": "mon-merfolk",
+  "id": "merfolk",
   "nome": "Merfolk",
   "nomeIngles": "Merfolk",
   "ameaca": 1,
@@ -17854,7 +18212,7 @@
   }
  },
  {
-  "id": "mon-mimico",
+  "id": "mimico",
   "nome": "Mímico",
   "nomeIngles": "Mimic",
   "ameaca": 3,
@@ -17936,7 +18294,7 @@
   }
  },
  {
-  "id": "mon-minotauro",
+  "id": "minotauro",
   "nome": "Minotauro",
   "nomeIngles": "Minotaur",
   "ameaca": 3,
@@ -18024,7 +18382,7 @@
   }
  },
  {
-  "id": "mon-mite",
+  "id": "mite",
   "nome": "Mite",
   "nomeIngles": "Mite",
   "ameaca": 1,
@@ -18105,7 +18463,7 @@
   }
  },
  {
-  "id": "mon-mohrg",
+  "id": "mohrg",
   "nome": "Mohrg",
   "nomeIngles": "Mohrg",
   "ameaca": 5,
@@ -18195,7 +18553,7 @@
   }
  },
  {
-  "id": "mon-monstro-da-ferrugem",
+  "id": "monstro-da-ferrugem",
   "nome": "Monstro da Ferrugem",
   "nomeIngles": "Rust Monster",
   "ameaca": 3,
@@ -18281,7 +18639,7 @@
   }
  },
  {
-  "id": "mon-montao-tropecante",
+  "id": "montao-tropecante",
   "nome": "Montão Tropeçante",
   "nomeIngles": "Shambling Mound",
   "ameaca": 4,
@@ -18370,7 +18728,7 @@
   }
  },
  {
-  "id": "mon-bat",
+  "id": "morcego",
   "nome": "Morcego",
   "nomeIngles": "Bat",
   "ameaca": 1,
@@ -18453,7 +18811,7 @@
   }
  },
  {
-  "id": "mon-dire-bat",
+  "id": "morcego-atroz",
   "nome": "Morcego Atroz",
   "nomeIngles": "Dire Bat",
   "ameaca": 2,
@@ -18536,7 +18894,7 @@
   }
  },
  {
-  "id": "mon-giant-moray-eel",
+  "id": "moreia-gigante",
   "nome": "Moreia Gigante",
   "nomeIngles": "Giant Moray Eel",
   "ameaca": 4,
@@ -18618,7 +18976,7 @@
   }
  },
  {
-  "id": "mon-morlock",
+  "id": "morlock",
   "nome": "Morlock",
   "nomeIngles": "Morlock",
   "ameaca": 2,
@@ -18700,7 +19058,7 @@
   }
  },
  {
-  "id": "mon-mumia",
+  "id": "mumia",
   "nome": "Múmia",
   "nomeIngles": "Mummy",
   "ameaca": 4,
@@ -18795,7 +19153,7 @@
   }
  },
  {
-  "id": "mon-nabasu",
+  "id": "nabasu",
   "nome": "Nabasu",
   "nomeIngles": "Demon, Nabasu",
   "ameaca": 5,
@@ -18880,7 +19238,7 @@
   }
  },
  {
-  "id": "mon-naga-espirita",
+  "id": "naga-espirita",
   "nome": "Naga Espírita",
   "nomeIngles": "Naga, Spirit",
   "ameaca": 5,
@@ -18980,7 +19338,7 @@
   }
  },
  {
-  "id": "mon-guardian-naga",
+  "id": "naga-guardia",
   "nome": "Naga Guardiã",
   "nomeIngles": "Naga, Guardian",
   "ameaca": 5,
@@ -19062,7 +19420,7 @@
   }
  },
  {
-  "id": "mon-dark-naga",
+  "id": "naga-negra",
   "nome": "Naga Negra",
   "nomeIngles": "Naga, Dark",
   "ameaca": 5,
@@ -19144,7 +19502,7 @@
   }
  },
  {
-  "id": "mon-nalfeshnee",
+  "id": "nalfeshnee",
   "nome": "Nalfeshnee",
   "nomeIngles": "Demon, Nalfeshnee",
   "ameaca": 6,
@@ -19229,7 +19587,7 @@
   }
  },
  {
-  "id": "mon-neothelid",
+  "id": "neothelid",
   "nome": "Neothelid",
   "nomeIngles": "Neothelid",
   "ameaca": 6,
@@ -19310,92 +19668,7 @@
   }
  },
  {
-  "id": "mon-nessian-warhound",
-  "nome": "Nessian Warhound",
-  "nomeIngles": "Nessian Warhound",
-  "ameaca": 5,
-  "centelha": 5,
-  "categoria": "Corruptor",
-  "porte": "Grande",
-  "imagem": "bestiario/nessian-warhound.webp",
-  "semImagem": false,
-  "tipo": "chefe",
-  "atributos": {
-   "forca": 9,
-   "destreza": 4,
-   "vigor": 7,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 2,
-   "percepcao": 3,
-   "inteligencia": 1,
-   "raciocinio": 2
-  },
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 5,
-   "temperanca": 1,
-   "valor": 6
-  },
-  "vontade": 10,
-  "aparencia": 0,
-  "pericias": {
-   "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 0
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 58,
-   "defesa": 12,
-   "defesaSocial": 4,
-   "defesaMental": 18,
-   "absorcao": {
-    "impacto": 12,
-    "corte": 10,
-    "perfuracao": 10
-   },
-   "resistenciaPerfuracao": 0,
-   "fraquezas": [
-    "luz",
-    "sagrado"
-   ],
-   "iniciativa": "1d6 + 3",
-   "deslocamento": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-   },
-   "ataques": [
-    {
-     "nome": "Golpe planar",
-     "pool": "7d6 +10",
-     "dano": "2d6 +14 corte",
-     "perfArma": null,
-     "speed": 6,
-     "classe": "media"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Fiend",
-   "terreno": [
-    "Any"
-   ],
-   "clima": [
-    "Extraplanar"
-   ]
-  },
-  "dimensoes": {
-   "medida": "tamanho de um cavalo de tração, cerca de 2,1 m de comprimento",
-   "peso": "450 kg"
-  }
- },
- {
-  "id": "mon-ninfa",
+  "id": "ninfa",
   "nome": "Ninfa",
   "nomeIngles": "Nymph",
   "ameaca": 4,
@@ -19504,7 +19777,88 @@
   }
  },
  {
-  "id": "mon-animated-object",
+  "id": "nobre-drow",
+  "nome": "Nobre Drow",
+  "nomeIngles": "Drow Noble",
+  "ameaca": 3,
+  "centelha": 2,
+  "categoria": "Humanoide",
+  "porte": "Médio",
+  "imagem": "bestiario/drow-noble.webp",
+  "semImagem": false,
+  "tipo": "soldado",
+  "atributos": {
+   "forca": 3,
+   "destreza": 5,
+   "vigor": 3,
+   "influencia": 3,
+   "perspicacia": 2,
+   "compostura": 4,
+   "percepcao": 5,
+   "inteligencia": 2,
+   "raciocinio": 4
+  },
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "pericias": {
+   "prontidao": 2,
+   "esquiva": 1,
+   "integridade": 4,
+   "sociabilidade": 0,
+   "furtividade": 2
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 34,
+   "defesa": 14,
+   "defesaSocial": 8,
+   "defesaMental": 19,
+   "absorcao": {
+    "impacto": 5,
+    "corte": 3,
+    "perfuracao": 3
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 6",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
+   "ataques": [
+    {
+     "nome": "Arma",
+     "pool": "3d6+2 +4",
+     "dano": "1d6 +5 corte",
+     "perfArma": null,
+     "speed": 5,
+     "classe": "leve"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Underground"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "dimensoes": {
+   "medida": "1,6 metro de altura",
+   "peso": "55 kg"
+  }
+ },
+ {
+  "id": "objeto-animado",
   "nome": "Objeto Animado",
   "nomeIngles": "Animated Object",
   "ameaca": 3,
@@ -19587,7 +19941,7 @@
   }
  },
  {
-  "id": "mon-ogro",
+  "id": "ogro",
   "nome": "Ogro",
   "nomeIngles": "Ogre",
   "ameaca": 3,
@@ -19670,7 +20024,7 @@
   }
  },
  {
-  "id": "mon-ogro-mago-oni",
+  "id": "ogro-mago-oni",
   "nome": "Ogro Mago (Oni)",
   "nomeIngles": "Ogre Mage (Oni)",
   "ameaca": 5,
@@ -19775,7 +20129,7 @@
   }
  },
  {
-  "id": "mon-orc",
+  "id": "orc",
   "nome": "Orc",
   "nomeIngles": "Orc",
   "ameaca": 1,
@@ -19858,7 +20212,7 @@
   }
  },
  {
-  "id": "mon-orca",
+  "id": "orca",
   "nome": "Orca",
   "nomeIngles": "Orca",
   "ameaca": 4,
@@ -19939,7 +20293,7 @@
   }
  },
  {
-  "id": "mon-otyugh",
+  "id": "otyugh",
   "nome": "Otyugh",
   "nomeIngles": "Otyugh",
   "ameaca": 3,
@@ -20022,7 +20376,7 @@
   }
  },
  {
-  "id": "mon-giant-flytrap",
+  "id": "papa-moscas-gigante",
   "nome": "Papa-Moscas Gigante",
   "nomeIngles": "Giant Flytrap",
   "ameaca": 5,
@@ -20108,7 +20462,7 @@
   }
  },
  {
-  "id": "mon-pegaso",
+  "id": "pegaso",
   "nome": "Pégaso",
   "nomeIngles": "Pegasus",
   "ameaca": 3,
@@ -20196,7 +20550,7 @@
   }
  },
  {
-  "id": "mon-invisible-stalker",
+  "id": "perseguidor-invisivel",
   "nome": "Perseguidor Invisível",
   "nomeIngles": "Invisible Stalker",
   "ameaca": 4,
@@ -20278,7 +20632,7 @@
   }
  },
  {
-  "id": "mon-nightmare",
+  "id": "pesadelo",
   "nome": "Pesadelo",
   "nomeIngles": "Nightmare",
   "ameaca": 4,
@@ -20372,7 +20726,7 @@
   }
  },
  {
-  "id": "mon-cave-fisher",
+  "id": "pescador-das-cavernas",
   "nome": "Pescador das Cavernas",
   "nomeIngles": "Cave Fisher",
   "ameaca": 2,
@@ -20453,7 +20807,7 @@
   }
  },
  {
-  "id": "mon-pixie",
+  "id": "pixie",
   "nome": "Pixie",
   "nomeIngles": "Pixie",
   "ameaca": 3,
@@ -20547,7 +20901,7 @@
   }
  },
  {
-  "id": "mon-planetar",
+  "id": "planetar",
   "nome": "Planetar",
   "nomeIngles": "Angel, Planetar",
   "ameaca": 6,
@@ -20658,7 +21012,7 @@
   }
  },
  {
-  "id": "mon-octopus",
+  "id": "polvo",
   "nome": "Polvo",
   "nomeIngles": "Octopus",
   "ameaca": 2,
@@ -20741,7 +21095,7 @@
   }
  },
  {
-  "id": "mon-giant-octopus",
+  "id": "polvo-gigante",
   "nome": "Polvo Gigante",
   "nomeIngles": "Giant Octopus",
   "ameaca": 5,
@@ -20823,7 +21177,7 @@
   }
  },
  {
-  "id": "mon-pony",
+  "id": "ponei",
   "nome": "Pônei",
   "nomeIngles": "Pony",
   "ameaca": 1,
@@ -20904,8 +21258,8 @@
   }
  },
  {
-  "id": "mon-pseudodragon",
-  "nome": "Pseudodragon",
+  "id": "pseudodragao",
+  "nome": "Pseudodragão",
   "nomeIngles": "Pseudodragon",
   "ameaca": 2,
   "centelha": 1,
@@ -20985,7 +21339,7 @@
   }
  },
  {
-  "id": "mon-pteranodon",
+  "id": "pteranodonte",
   "nome": "Pteranodonte",
   "nomeIngles": "Dinosaur, Pteranodon",
   "ameaca": 3,
@@ -21067,7 +21421,7 @@
   }
  },
  {
-  "id": "mon-black-pudding",
+  "id": "pudim-negro",
   "nome": "Pudim Negro",
   "nomeIngles": "Black Pudding",
   "ameaca": 4,
@@ -21150,7 +21504,7 @@
   }
  },
  {
-  "id": "mon-quasit",
+  "id": "quasit",
   "nome": "Quasit",
   "nomeIngles": "Demon, Quasit",
   "ameaca": 2,
@@ -21248,7 +21602,7 @@
   }
  },
  {
-  "id": "mon-quimera",
+  "id": "quimera",
   "nome": "Quimera",
   "nomeIngles": "Chimera",
   "ameaca": 4,
@@ -21334,7 +21688,7 @@
   }
  },
  {
-  "id": "mon-giant-frog",
+  "id": "ra-gigante",
   "nome": "Rã Gigante",
   "nomeIngles": "Giant Frog",
   "ameaca": 2,
@@ -21418,7 +21772,7 @@
   }
  },
  {
-  "id": "mon-poison-frog",
+  "id": "ra-venenosa",
   "nome": "Rã Venenosa",
   "nomeIngles": "Poison Frog",
   "ameaca": 1,
@@ -21500,7 +21854,7 @@
   }
  },
  {
-  "id": "mon-rakshasa",
+  "id": "rakshasa",
   "nome": "Rakshasa",
   "nomeIngles": "Rakshasa",
   "ameaca": 5,
@@ -21604,7 +21958,89 @@
   }
  },
  {
-  "id": "mon-dire-rat",
+  "id": "rastejador-sombrio",
+  "nome": "Rastejador Sombrio",
+  "nomeIngles": "Dark Creeper",
+  "ameaca": 2,
+  "centelha": 2,
+  "categoria": "Humanoide",
+  "porte": "Pequeno",
+  "imagem": "bestiario/dark-creeper.webp",
+  "semImagem": false,
+  "tipo": "soldado",
+  "atributos": {
+   "forca": 2,
+   "destreza": 5,
+   "vigor": 4,
+   "influencia": 2,
+   "perspicacia": 2,
+   "compostura": 2,
+   "percepcao": 2,
+   "inteligencia": 2,
+   "raciocinio": 2
+  },
+  "virtudes": {
+   "compaixao": 2,
+   "conviccao": 3,
+   "temperanca": 2,
+   "valor": 3
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "pericias": {
+   "prontidao": 1,
+   "esquiva": 1,
+   "integridade": 2,
+   "sociabilidade": 0,
+   "furtividade": 3
+  },
+  "artes": [],
+  "tecnicas": [],
+  "combate": {
+   "pv": 28,
+   "defesa": 14,
+   "defesaSocial": 4,
+   "defesaMental": 15,
+   "absorcao": {
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
+   },
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 3",
+   "deslocamento": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+   },
+   "ataques": [
+    {
+     "nome": "Arma",
+     "pool": "2d6+2 +4",
+     "dano": "1d6 +4 corte",
+     "perfArma": null,
+     "speed": 5,
+     "classe": "leve"
+    }
+   ]
+  },
+  "ecologia": {
+   "tipo": "Humanoid",
+   "terreno": [
+    "Underground",
+    "Urban"
+   ],
+   "clima": [
+    "Temperate"
+   ]
+  },
+  "dimensoes": {
+   "medida": "1,2 m de altura",
+   "peso": "36 kg"
+  }
+ },
+ {
+  "id": "rato-atroz",
   "nome": "Rato Atroz",
   "nomeIngles": "Dire Rat",
   "ameaca": 1,
@@ -21686,7 +22122,7 @@
   }
  },
  {
-  "id": "mon-rato-gigante",
+  "id": "rato-gigante",
   "nome": "Rato Gigante",
   "nomeIngles": "Giant Rat",
   "ameaca": 1,
@@ -21769,7 +22205,7 @@
   }
  },
  {
-  "id": "mon-remorhaz",
+  "id": "remorhaz",
   "nome": "Remorhaz",
   "nomeIngles": "Remorhaz",
   "ameaca": 4,
@@ -21851,97 +22287,7 @@
   }
  },
  {
-  "id": "mon-retriever",
-  "nome": "Retriever",
-  "nomeIngles": "Retriever",
-  "ameaca": 5,
-  "centelha": 0,
-  "categoria": "Construto",
-  "porte": "Enorme",
-  "imagem": "bestiario/retriever.webp",
-  "semImagem": false,
-  "tipo": "chefe",
-  "atributos": {
-   "forca": 9,
-   "destreza": 5,
-   "vigor": 2,
-   "influencia": 0,
-   "perspicacia": 1,
-   "compostura": 1,
-   "percepcao": 2,
-   "inteligencia": 1,
-   "raciocinio": 1
-  },
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 3,
-   "valor": 4
-  },
-  "vontade": 5,
-  "aparencia": 4,
-  "pericias": {
-   "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 0
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 45,
-   "defesa": 12,
-   "defesaSocial": 2,
-   "defesaMental": 8,
-   "absorcao": {
-    "impacto": 2,
-    "corte": 5,
-    "perfuracao": 5
-   },
-   "resistenciaPerfuracao": 1,
-   "fraquezas": [
-    "raio"
-   ],
-   "resistencias": [
-    "corte",
-    "fogo",
-    "perfuracao"
-   ],
-   "iniciativa": "1d6 + 2",
-   "deslocamento": {
-    "batalha": 5,
-    "arranque": 8,
-    "corrida": 12
-   },
-   "ataques": [
-    {
-     "nome": "Arma",
-     "pool": "7d6",
-     "dano": "3d6 +9 corte",
-     "perfArma": null,
-     "speed": 7,
-     "classe": "pesada"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Construct",
-   "terreno": [
-    "Any",
-    "Ruins"
-   ],
-   "clima": [
-    "Extraplanar"
-   ]
-  },
-  "dimensoes": {
-   "medida": "corpo do tamanho de um elefante, cerca de 4,5 metros de comprimento",
-   "peso": "várias t"
-  }
- },
- {
-  "id": "mon-rinoceronte",
+  "id": "rinoceronte",
   "nome": "Rinoceronte",
   "nomeIngles": "Rhinoceros",
   "ameaca": 3,
@@ -22023,7 +22369,7 @@
   }
  },
  {
-  "id": "mon-roc",
+  "id": "roc",
   "nome": "Roc",
   "nomeIngles": "Roc",
   "ameaca": 5,
@@ -22105,93 +22451,7 @@
   }
  },
  {
-  "id": "mon-roper",
-  "nome": "Roper",
-  "nomeIngles": "Roper",
-  "ameaca": 5,
-  "centelha": 5,
-  "categoria": "Aberração",
-  "porte": "Grande",
-  "imagem": "bestiario/roper.webp",
-  "semImagem": false,
-  "tipo": "chefe",
-  "atributos": {
-   "forca": 11,
-   "destreza": 3,
-   "vigor": 10,
-   "influencia": 3,
-   "perspicacia": 3,
-   "compostura": 4,
-   "percepcao": 5,
-   "inteligencia": 3,
-   "raciocinio": 4
-  },
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 4
-  },
-  "vontade": 10,
-  "aparencia": 1,
-  "pericias": {
-   "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 4,
-   "sociabilidade": 0,
-   "furtividade": 1
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 70,
-   "defesa": 10,
-   "defesaSocial": 8,
-   "defesaMental": 26,
-   "absorcao": {
-    "impacto": 15,
-    "corte": 12,
-    "perfuracao": 12
-   },
-   "resistenciaPerfuracao": 0,
-   "imunidades": [
-    "raio"
-   ],
-   "iniciativa": "1d6 + 6",
-   "deslocamento": {
-    "batalha": 1,
-    "arranque": 2,
-    "corrida": 2
-   },
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "8d6 +10",
-     "dano": "2d6 +16 perfurante",
-     "perfArma": 0,
-     "speed": 6,
-     "classe": "media"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Aberration",
-   "terreno": [
-    "Underground",
-    "Cold"
-   ],
-   "clima": [
-    "Cold",
-    "Temperate"
-   ]
-  },
-  "dimensoes": {
-   "medida": "3 metros de altura",
-   "peso": "cerca de 1.000 kg"
-  }
- },
- {
-  "id": "mon-sahuagin",
+  "id": "sahuagin",
   "nome": "Sahuagin",
   "nomeIngles": "Sahuagin",
   "ameaca": 2,
@@ -22274,7 +22534,7 @@
   }
  },
  {
-  "id": "mon-salamandra",
+  "id": "salamandra",
   "nome": "Salamandra",
   "nomeIngles": "Salamander",
   "ameaca": 4,
@@ -22368,7 +22628,7 @@
   }
  },
  {
-  "id": "mon-giant-leech",
+  "id": "sanguessuga-gigante",
   "nome": "Sanguessuga Gigante",
   "nomeIngles": "Giant Leech",
   "ameaca": 2,
@@ -22451,7 +22711,7 @@
   }
  },
  {
-  "id": "mon-toad",
+  "id": "sapo",
   "nome": "Sapo",
   "nomeIngles": "Toad",
   "ameaca": 1,
@@ -22534,7 +22794,7 @@
   }
  },
  {
-  "id": "mon-satiro",
+  "id": "satiro",
   "nome": "Sátiro",
   "nomeIngles": "Satyr",
   "ameaca": 3,
@@ -22615,7 +22875,7 @@
   }
  },
  {
-  "id": "mon-sea-serpent",
+  "id": "serpente-marinha",
   "nome": "Serpente Marinha",
   "nomeIngles": "Sea Serpent",
   "ameaca": 5,
@@ -22697,7 +22957,7 @@
   }
  },
  {
-  "id": "mon-venomous-snake",
+  "id": "serpente-venenosa",
   "nome": "Serpente Venenosa",
   "nomeIngles": "Venomous Snake",
   "ameaca": 2,
@@ -22781,7 +23041,7 @@
   }
  },
  {
-  "id": "mon-shaitan",
+  "id": "shaitan",
   "nome": "Shaitan",
   "nomeIngles": "Shaitan",
   "ameaca": 4,
@@ -22869,89 +23129,7 @@
   }
  },
  {
-  "id": "mon-shocker-lizard",
-  "nome": "Shocker Lizard",
-  "nomeIngles": "Shocker Lizard",
-  "ameaca": 2,
-  "centelha": 2,
-  "categoria": "Besta mágica",
-  "porte": "Pequeno",
-  "imagem": "bestiario/shocker-lizard.webp",
-  "semImagem": false,
-  "tipo": "fera",
-  "atributos": {
-   "forca": 2,
-   "destreza": 4,
-   "vigor": 3,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 2,
-   "percepcao": 3,
-   "inteligencia": 1,
-   "raciocinio": 2
-  },
-  "virtudes": {
-   "compaixao": 1,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
-  },
-  "vontade": 7,
-  "aparencia": 5,
-  "pericias": {
-   "prontidao": 1,
-   "esquiva": 1,
-   "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 3
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 26,
-   "defesa": 12,
-   "defesaSocial": 4,
-   "defesaMental": 15,
-   "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
-   },
-   "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
-   "deslocamento": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-   },
-   "ataques": [
-    {
-     "nome": "Garras e presas",
-     "pool": "2d6+2 +4",
-     "dano": "1d6 +4 perfurante",
-     "perfArma": 0,
-     "speed": 5,
-     "classe": "leve"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Beast",
-   "terreno": [
-    "Swamp"
-   ],
-   "clima": [
-    "Tropical",
-    "Temperate"
-   ]
-  },
-  "dimensoes": {
-   "medida": "90 cm de comprimento",
-   "peso": "11 kg"
-  }
- },
- {
-  "id": "mon-shoggoth",
+  "id": "shoggoth",
   "nome": "Shoggoth",
   "nomeIngles": "Shoggoth",
   "ameaca": 6,
@@ -23038,7 +23216,7 @@
   }
  },
  {
-  "id": "mon-dire-ape-gigantopithecus",
+  "id": "gigantopiteco",
   "nome": "Símio Atroz",
   "nomeIngles": "Dire Ape",
   "ameaca": 3,
@@ -23119,7 +23297,7 @@
   }
  },
  {
-  "id": "mon-skum-ulat-kini",
+  "id": "skum-ulat-kini",
   "nome": "Skum (Ulat-Kini)",
   "nomeIngles": "Skum",
   "ameaca": 2,
@@ -23202,7 +23380,7 @@
   }
  },
  {
-  "id": "mon-solar",
+  "id": "solar",
   "nome": "Solar",
   "nomeIngles": "Angel, Solar",
   "ameaca": 6,
@@ -23397,7 +23575,7 @@
   }
  },
  {
-  "id": "mon-sombra",
+  "id": "sombra",
   "nome": "Sombra",
   "nomeIngles": "Shadow",
   "ameaca": 3,
@@ -23489,7 +23667,7 @@
   }
  },
  {
-  "id": "mon-stirge",
+  "id": "stirge",
   "nome": "Stirge",
   "nomeIngles": "Stirge",
   "ameaca": 1,
@@ -23571,7 +23749,7 @@
   }
  },
  {
-  "id": "mon-sucubo",
+  "id": "sucubo",
   "nome": "Súcubo",
   "nomeIngles": "Demon, Succubus",
   "ameaca": 4,
@@ -23675,7 +23853,7 @@
   }
  },
  {
-  "id": "mon-svirfneblin",
+  "id": "svirfneblin",
   "nome": "Svirfneblin",
   "nomeIngles": "Svirfneblin",
   "ameaca": 2,
@@ -23756,98 +23934,7 @@
   }
  },
  {
-  "id": "mon-tarn-linnorm",
-  "nome": "Tarn Linnorm",
-  "nomeIngles": "Tarn Linnorm",
-  "ameaca": 6,
-  "centelha": 6,
-  "categoria": "Dragão",
-  "porte": "Colossal",
-  "imagem": "bestiario/tarn-linnorm.webp",
-  "semImagem": false,
-  "tipo": "chefe",
-  "atributos": {
-   "forca": 16,
-   "destreza": 8,
-   "vigor": 14,
-   "influencia": 8,
-   "perspicacia": 5,
-   "compostura": 8,
-   "percepcao": 8,
-   "inteligencia": 2,
-   "raciocinio": 5
-  },
-  "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
-   "temperanca": 3,
-   "valor": 6
-  },
-  "vontade": 11,
-  "aparencia": 9,
-  "pericias": {
-   "prontidao": 4,
-   "esquiva": 2,
-   "integridade": 8,
-   "sociabilidade": 0,
-   "furtividade": 0
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 115,
-   "defesa": 24,
-   "defesaSocial": 16,
-   "defesaMental": 36,
-   "absorcao": {
-    "impacto": 20,
-    "corte": 23,
-    "perfuracao": 23
-   },
-   "resistenciaPerfuracao": 3,
-   "iniciativa": "1d6 + 9",
-   "deslocamento": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-   },
-   "ataques": [
-    {
-     "nome": "Garras e mordida",
-     "pool": "10d6+2 +10",
-     "dano": "4d6 +22 perfurante",
-     "perfArma": 0,
-     "speed": 7,
-     "classe": "pesada"
-    },
-    {
-     "nome": "Cauda",
-     "pool": "10d6+2 +10",
-     "dano": "2d6 +22 impacto",
-     "perfArma": null,
-     "speed": 6,
-     "classe": "media",
-     "notas": "pode agarrar e constringir"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Dragon",
-   "terreno": [
-    "Water",
-    "Swamp"
-   ],
-   "clima": [
-    "Cold"
-   ]
-  },
-  "dimensoes": {
-   "medida": "cerca de 36 m de comprimento",
-   "peso": "cerca de 11.000 kg"
-  }
- },
- {
-  "id": "mon-tarrasque",
+  "id": "tarrasque",
   "nome": "Tarrasque",
   "nomeIngles": "Tarrasque",
   "ameaca": 6,
@@ -23934,7 +24021,7 @@
   }
  },
  {
-  "id": "mon-dragon-turtle",
+  "id": "tartaruga-dragao",
   "nome": "Tartaruga-Dragão",
   "nomeIngles": "Dragon Turtle",
   "ameaca": 5,
@@ -24016,7 +24103,7 @@
   }
  },
  {
-  "id": "mon-tengu",
+  "id": "tengu",
   "nome": "Tengu",
   "nomeIngles": "Tengu",
   "ameaca": 1,
@@ -24098,7 +24185,7 @@
   }
  },
  {
-  "id": "mon-tiefling",
+  "id": "tiefling",
   "nome": "Tiefling",
   "nomeIngles": "Tiefling",
   "ameaca": 1,
@@ -24181,7 +24268,7 @@
   }
  },
  {
-  "id": "mon-tigre",
+  "id": "tigre",
   "nome": "Tigre",
   "nomeIngles": "Tiger",
   "ameaca": 3,
@@ -24263,7 +24350,7 @@
   }
  },
  {
-  "id": "mon-tyrannosaurus",
+  "id": "tiranossauro",
   "nome": "Tiranossauro",
   "nomeIngles": "Dinosaur, Tyrannosaurus",
   "ameaca": 5,
@@ -24345,7 +24432,7 @@
   }
  },
  {
-  "id": "mon-treant",
+  "id": "treant",
   "nome": "Treant",
   "nomeIngles": "Treant",
   "ameaca": 5,
@@ -24439,7 +24526,7 @@
   }
  },
  {
-  "id": "mon-yellow-musk-creeper",
+  "id": "trepadeira-de-almiscar-amarelo",
   "nome": "Trepadeira de Almíscar Amarelo",
   "nomeIngles": "Yellow Musk Creeper",
   "ameaca": 2,
@@ -24526,7 +24613,7 @@
   }
  },
  {
-  "id": "mon-triceratops",
+  "id": "triceratops",
   "nome": "Tricerátops",
   "nomeIngles": "Dinosaur, Triceratops",
   "ameaca": 5,
@@ -24607,7 +24694,7 @@
   }
  },
  {
-  "id": "mon-trogloditas",
+  "id": "trogloditas",
   "nome": "Trogloditas",
   "nomeIngles": "Troglodyte",
   "ameaca": 2,
@@ -24689,7 +24776,7 @@
   }
  },
  {
-  "id": "mon-trol",
+  "id": "trol",
   "nome": "Trol",
   "nomeIngles": "Troll",
   "ameaca": 4,
@@ -24781,7 +24868,7 @@
   }
  },
  {
-  "id": "mon-shark",
+  "id": "tubarao-branco",
   "nome": "Tubarão",
   "nomeIngles": "Shark",
   "ameaca": 2,
@@ -24863,7 +24950,7 @@
   }
  },
  {
-  "id": "mon-dire-shark-megalodon",
+  "id": "megalodonte",
   "nome": "Tubarão Atroz",
   "nomeIngles": "Dire Shark",
   "ameaca": 5,
@@ -24945,7 +25032,7 @@
   }
  },
  {
-  "id": "mon-unicornio",
+  "id": "unicornio",
   "nome": "Unicórnio",
   "nomeIngles": "Unicorn",
   "ameaca": 3,
@@ -25041,7 +25128,7 @@
   }
  },
  {
-  "id": "mon-dire-bear-cave-bear",
+  "id": "urso-das-cavernas",
   "nome": "Urso Atroz",
   "nomeIngles": "Dire Bear",
   "ameaca": 4,
@@ -25123,7 +25210,7 @@
   }
  },
  {
-  "id": "mon-grizzly-bear",
+  "id": "urso-cinzento",
   "nome": "Urso Cinzento",
   "nomeIngles": "Grizzly Bear",
   "ameaca": 3,
@@ -25204,7 +25291,7 @@
   }
  },
  {
-  "id": "mon-urso-pardo",
+  "id": "urso-pardo",
   "nome": "Urso-pardo",
   "nomeIngles": "Brown Bear",
   "ameaca": 3,
@@ -25287,7 +25374,7 @@
   }
  },
  {
-  "id": "mon-vampiro",
+  "id": "vampiro",
   "nome": "Vampiro",
   "nomeIngles": "Vampire",
   "ameaca": 5,
@@ -25402,7 +25489,7 @@
   }
  },
  {
-  "id": "mon-vargouille",
+  "id": "vargouille",
   "nome": "Vargouille",
   "nomeIngles": "Vargouille",
   "ameaca": 2,
@@ -25488,7 +25575,7 @@
   }
  },
  {
-  "id": "mon-vegepygmy",
+  "id": "vegepygmy",
   "nome": "Vegepygmy",
   "nomeIngles": "Vegepygmy",
   "ameaca": 1,
@@ -25575,7 +25662,7 @@
   }
  },
  {
-  "id": "mon-verme-purpura",
+  "id": "verme-purpura",
   "nome": "Verme Púrpura",
   "nomeIngles": "Purple Worm",
   "ameaca": 5,
@@ -25656,7 +25743,7 @@
   }
  },
  {
-  "id": "mon-giant-wasp",
+  "id": "vespa-gigante",
   "nome": "Vespa Gigante",
   "nomeIngles": "Giant Wasp",
   "ameaca": 3,
@@ -25735,7 +25822,7 @@
   }
  },
  {
-  "id": "mon-viper",
+  "id": "jararaca",
   "nome": "Víbora",
   "nomeIngles": "Viper",
   "ameaca": 1,
@@ -25819,7 +25906,7 @@
   }
  },
  {
-  "id": "mon-assassin-vine",
+  "id": "vinha-assassina",
   "nome": "Vinha Assassina",
   "nomeIngles": "Assassin Vine",
   "ameaca": 3,
@@ -25908,7 +25995,7 @@
   }
  },
  {
-  "id": "mon-vrock",
+  "id": "vrock",
   "nome": "Vrock",
   "nomeIngles": "Demon, Vrock",
   "ameaca": 5,
@@ -26002,7 +26089,7 @@
   }
  },
  {
-  "id": "mon-wight",
+  "id": "wight",
   "nome": "Wight",
   "nomeIngles": "Wight",
   "ameaca": 3,
@@ -26096,7 +26183,7 @@
   }
  },
  {
-  "id": "mon-worg",
+  "id": "worg",
   "nome": "Worg",
   "nomeIngles": "Worg",
   "ameaca": 2,
@@ -26178,7 +26265,7 @@
   }
  },
  {
-  "id": "mon-wyvern",
+  "id": "wyvern",
   "nome": "Wyvern",
   "nomeIngles": "Wyvern",
   "ameaca": 4,
@@ -26259,7 +26346,7 @@
   }
  },
  {
-  "id": "mon-xill",
+  "id": "xill",
   "nome": "Xill",
   "nomeIngles": "Xill",
   "ameaca": 4,
@@ -26346,7 +26433,7 @@
   }
  },
  {
-  "id": "mon-xorn",
+  "id": "xorn",
   "nome": "Xorn",
   "nomeIngles": "Xorn",
   "ameaca": 4,
@@ -26439,94 +26526,7 @@
   }
  },
  {
-  "id": "mon-yeth-hound",
-  "nome": "Yeth Hound",
-  "nomeIngles": "Yeth Hound",
-  "ameaca": 3,
-  "centelha": 2,
-  "categoria": "Corruptor",
-  "porte": "Médio",
-  "imagem": "bestiario/yeth-hound.webp",
-  "semImagem": false,
-  "tipo": "soldado",
-  "atributos": {
-   "forca": 5,
-   "destreza": 4,
-   "vigor": 4,
-   "influencia": 2,
-   "perspicacia": 2,
-   "compostura": 3,
-   "percepcao": 4,
-   "inteligencia": 1,
-   "raciocinio": 2
-  },
-  "virtudes": {
-   "compaixao": 0,
-   "conviccao": 5,
-   "temperanca": 1,
-   "valor": 5
-  },
-  "vontade": 7,
-  "aparencia": 1,
-  "pericias": {
-   "prontidao": 2,
-   "esquiva": 1,
-   "integridade": 3,
-   "sociabilidade": 0,
-   "furtividade": 2
-  },
-  "artes": [],
-  "tecnicas": [],
-  "combate": {
-   "pv": 37,
-   "defesa": 12,
-   "defesaSocial": 6,
-   "defesaMental": 16,
-   "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
-   },
-   "resistenciaPerfuracao": 0,
-   "fraquezas": [
-    "luz",
-    "sagrado"
-   ],
-   "iniciativa": "1d6 + 4",
-   "deslocamento": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-   },
-   "ataques": [
-    {
-     "nome": "Golpe planar",
-     "pool": "4d6+2 +4",
-     "dano": "1d6 +7 corte",
-     "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
-    }
-   ]
-  },
-  "ecologia": {
-   "tipo": "Fiend",
-   "terreno": [
-    "Sky",
-    "Any"
-   ],
-   "clima": [
-    "Temperate",
-    "Extraplanar"
-   ]
-  },
-  "dimensoes": {
-   "medida": "1,2 m de altura na cernelha, com asas membranosas como as de um morcego",
-   "peso": "180 kg"
-  }
- },
- {
-  "id": "mon-yeti",
+  "id": "yeti",
   "nome": "Yeti",
   "nomeIngles": "Yeti",
   "ameaca": 3,
@@ -26608,7 +26608,7 @@
   }
  },
  {
-  "id": "mon-zumbi-humano",
+  "id": "zumbi-humano",
   "nome": "Zumbi Humano",
   "nomeIngles": "Human Zombie",
   "ameaca": 1,

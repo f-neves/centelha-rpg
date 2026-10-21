@@ -284,7 +284,7 @@ const ENC = '00000000-0000-4000-8000-0000000000cc';
 
 // Ids reais do bestiário: o porte deles decide o tamanho da peça no tabuleiro, e
 // uma cena só de médios não exercitaria o empilhamento nem a regra de ocupação.
-const MONS = ['mon-aasimar', 'mon-aguia-gigante', 'mon-aboleth'];
+const MONS = ['aasimar', 'aguia-gigante', 'aboleth'];
 
 const offsetParaAxial = (col, row) => ({ q: col - Math.floor(row / 2), r: row });
 
@@ -565,15 +565,15 @@ if (CAIDO) {
  * vir de `MON[monstro_id].porte`, que uma ficha de mentira sem `monstro_id`
  * não tem como fornecer (`porteRotuloDe`, `grid.astro`):
  *
- *   `b0` · `mon-aguia-gigante`, porte GRANDE, resistPerf 0 · porte BÔNUS
+ *   `b0` · `aguia-gigante`, porte GRANDE, resistPerf 0 · porte BÔNUS
  *          (alvo maior) e gate ABRE (Perf. 0 ≥ resistPerf 0): a dupla que
  *          prova que ligar as bandeiras não impede o caminho comum.
- *   `b1` · `mon-dog`, porte PEQUENO, resistPerf 0 · porte PENALIDADE (alvo
+ *   `b1` · `cachorro`, porte PEQUENO, resistPerf 0 · porte PENALIDADE (alvo
  *          menor), o sinal invertido do par com `b0`.
  *   `b2` · `guarda-da-cidade`, porte Médio, resistPerf 1, Absorção de
  *          Perfuração só 2 · gate RESVALA (Perf. 0 < resistPerf 1): a Vida
  *          NÃO pode descer, e não basta o registro dizer que resvalou. NÃO
- *          é `mon-aboleth` (Absorção de Perfuração 13): contra ele a Vida
+ *          é `aboleth` (Absorção de Perfuração 13): contra ele a Vida
  *          também não desceria com o gate DESLIGADO, porque a Adaga (1d6+1)
  *          nunca fura 13 de Absorção sozinha — o teste provaria a Absorção,
  *          não o gate. Achado no ensaio dos três sentidos desta rodada.
@@ -611,8 +611,8 @@ if (BANDEIRAS) {
     { id: 'a0', tipo: 'pc', monstro_id: null, q: 2, r: 4, alvo: 'b0' },
     { id: 'a1', tipo: 'pc', monstro_id: null, q: 3, r: 5, alvo: 'b1' },
     { id: 'a2', tipo: 'pc', monstro_id: null, q: 3, r: 6, alvo: 'b2' },
-    { id: 'b0', tipo: 'criatura', monstro_id: 'mon-aguia-gigante', q: 4, r: 4 },
-    { id: 'b1', tipo: 'criatura', monstro_id: 'mon-dog', q: 5, r: 5 },
+    { id: 'b0', tipo: 'criatura', monstro_id: 'aguia-gigante', q: 4, r: 4 },
+    { id: 'b1', tipo: 'criatura', monstro_id: 'cachorro', q: 5, r: 5 },
     { id: 'b2', tipo: 'criatura', monstro_id: 'guarda-da-cidade', q: 5, r: 6 },
   ];
   let k = 0;
@@ -646,7 +646,7 @@ if (BANDEIRAS) {
  * BORDA, somando o raio do alvo, e o critério de aceitação é uma PROIBIÇÃO
  * (não remover a segunda passada de `caminharHex` que afrouxa o veto, porque
  * ela serve outro caso). Esta cena prova as duas coisas com a mesma peça
- * parada: um Aboleth (Enorme, `mon-aboleth`, diâmetro 4 m) em `q:4,r:4`,
+ * parada: um Aboleth (Enorme, `aboleth`, diâmetro 4 m) em `q:4,r:4`,
  * numa arena de `escala_m: 1` (a folga até o canto é só para o zigue-zague
  * lateral das duas passadas não cruzar q ou r negativo).
  *
@@ -699,7 +699,7 @@ if (CORPOACORPO) {
     // peça sem ficha (o ajuste por instância vence a base do bestiário), só
     // para não depender do ataque natural real do Aboleth ter Velocidade 5.
     {
-      id: 'en', tipo: 'criatura', monstro_id: 'mon-aboleth', q: 4, r: 4,
+      id: 'en', tipo: 'criatura', monstro_id: 'aboleth', q: 4, r: 4,
       acao: {
         golpes: [2], livre: 7, desde: 0, tipo: 'simples', arma: null,
         alvo: 'md', aResolver: [2],
@@ -1036,7 +1036,7 @@ if (OCUPACAODETECTOR) {
 
 /**
  * A CENA DO PASSO CERCADO `?cena=passocolossal` (docs/pendencias/L-simulacao-simultaneo.md L93, rodada
- * 53): `md` (Médio) nasce colado num Colossal (`mon-tarrasque`, raio 8 m) e
+ * 53): `md` (Médio) nasce colado num Colossal (`tarrasque`, raio 8 m) e
  * declara um deslocamento puro de 1 hexágono. O passo estrito
  * (`ocupadoPor`) não avança nenhum passo (tudo ao redor está no raio do
  * Colossal), então o traçado cai na segunda passada (`casaExata`), que só
@@ -1052,7 +1052,7 @@ if (PASSOCOLOSSAL) {
   const posMd = offsetParaAxial(10, 9);
   COMBS.push({
     id: 'co', encontro_id: ENC, nome: 'Peça co',
-    tipo: 'criatura', grupo: 'inimigo', monstro_id: 'mon-tarrasque', personagem_id: null,
+    tipo: 'criatura', grupo: 'inimigo', monstro_id: 'tarrasque', personagem_id: null,
     pv_max: 999, pv_atual: 999, mana_max: null, mana_atual: null,
     tick: 0, iniciativa: 20, acao: {}, dados: {},
     condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,

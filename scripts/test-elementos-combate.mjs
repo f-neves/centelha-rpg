@@ -34,34 +34,34 @@ const ok = (cond, msg) => { if (!cond) falhas.push(msg); };
 
 // -------------------------------------------------- o caso que o B12 quebrava
 //
-// mon-archon-cao TEM fraqueza (`combate.fraquezas: ['profano']`). Se isto vier
+// arconte-cao TEM fraqueza (`combate.fraquezas: ['profano']`). Se isto vier
 // vazio, o defeito voltou: alguém trocou `elementosCombate` de volta para ler
 // do topo, ou um quinto lugar nasceu lendo `m.fraquezas` direto de novo.
-const cao = porId('mon-archon-cao');
-ok(!!cao, 'fixture mon-archon-cao existe em monsters-mesa.json');
+const cao = porId('arconte-cao');
+ok(!!cao, 'fixture arconte-cao existe em monsters-mesa.json');
 const elCao = M.elementosCombate(cao);
-ok(elCao.fraquezas.length > 0, 'mon-archon-cao tem fraqueza em combate.fraquezas, e elementosCombate() devolveu vazio');
-ok(elCao.fraquezas.includes('profano'), `mon-archon-cao deveria ter fraqueza "profano", veio [${elCao.fraquezas}]`);
+ok(elCao.fraquezas.length > 0, 'arconte-cao tem fraqueza em combate.fraquezas, e elementosCombate() devolveu vazio');
+ok(elCao.fraquezas.includes('profano'), `arconte-cao deveria ter fraqueza "profano", veio [${elCao.fraquezas}]`);
 
-const raksh = porId('mon-rakshasa');
+const raksh = porId('rakshasa');
 const elRaksh = M.elementosCombate(raksh);
-ok(elRaksh.resistencias.length > 0, 'mon-rakshasa tem resistência em combate.resistencias, e elementosCombate() devolveu vazio');
-ok(elRaksh.fraquezas.length === 0, 'mon-rakshasa não tem fraqueza nenhuma, e elementosCombate() achou uma');
+ok(elRaksh.resistencias.length > 0, 'rakshasa tem resistência em combate.resistencias, e elementosCombate() devolveu vazio');
+ok(elRaksh.fraquezas.length === 0, 'rakshasa não tem fraqueza nenhuma, e elementosCombate() achou uma');
 
 // Imunidade (B14 fase 4, 29/09/2026): mesmo caso do B12, agora para o terceiro campo.
-const cubo = porId('mon-cubo-gelatinoso');
+const cubo = porId('cubo-gelatinoso');
 const elCubo = M.elementosCombate(cubo);
-ok(elCubo.imunidades.length > 0, 'mon-cubo-gelatinoso tem imunidade em combate.imunidades, e elementosCombate() devolveu vazio');
-ok(elCubo.imunidades.includes('raio'), `mon-cubo-gelatinoso deveria ter imunidade "raio", veio [${elCubo.imunidades}]`);
-ok(elCubo.resistencias.length === 0, 'mon-cubo-gelatinoso não tem resistência nenhuma (a fonte não sustenta), e elementosCombate() achou uma');
+ok(elCubo.imunidades.length > 0, 'cubo-gelatinoso tem imunidade em combate.imunidades, e elementosCombate() devolveu vazio');
+ok(elCubo.imunidades.includes('raio'), `cubo-gelatinoso deveria ter imunidade "raio", veio [${elCubo.imunidades}]`);
+ok(elCubo.resistencias.length === 0, 'cubo-gelatinoso não tem resistência nenhuma (a fonte não sustenta), e elementosCombate() achou uma');
 
 // Criatura sem fraqueza nem resistência: as duas listas têm de vir vazias, não
 // `undefined` (os quatro pontos de leitura fazem `.length`/`.map` sem checar).
-const semNada = porId('mon-aasimar');
+const semNada = porId('aasimar');
 const elSemNada = M.elementosCombate(semNada);
-ok(Array.isArray(elSemNada.fraquezas) && elSemNada.fraquezas.length === 0, 'mon-aasimar deveria ter fraquezas: []');
-ok(Array.isArray(elSemNada.resistencias) && elSemNada.resistencias.length === 0, 'mon-aasimar deveria ter resistencias: []');
-ok(Array.isArray(elSemNada.imunidades) && elSemNada.imunidades.length === 0, 'mon-aasimar deveria ter imunidades: []');
+ok(Array.isArray(elSemNada.fraquezas) && elSemNada.fraquezas.length === 0, 'aasimar deveria ter fraquezas: []');
+ok(Array.isArray(elSemNada.resistencias) && elSemNada.resistencias.length === 0, 'aasimar deveria ter resistencias: []');
+ok(Array.isArray(elSemNada.imunidades) && elSemNada.imunidades.length === 0, 'aasimar deveria ter imunidades: []');
 
 // -------------------------------------------------- a forma exata do defeito
 //

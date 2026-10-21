@@ -619,7 +619,7 @@ const PORTES = Object.keys(PORTE_LBL);
       }
       if ((e.target as HTMLElement).closest('#besta-nova')) {
         abrir({
-          id: 'mon-nova-' + Date.now().toString(36),
+          id: 'nova-' + Date.now().toString(36),
           nome: '', conceito: '', ameaca: 1, centelha: 0, porte: 'medio', tipo: 'soldado',
           atributos: Object.fromEntries(ATRIBS.map((k) => [k, 2])),
           pericias: {}, vontade: 4, integridade: 2, prontidao: 1,

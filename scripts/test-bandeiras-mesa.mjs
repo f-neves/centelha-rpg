@@ -18,10 +18,10 @@
 // modo principal) contra três criaturas REAIS do bestiário, cada uma com o
 // golpe já agendado pro Tick 2 (como a cena `caido` já faz):
 //
-//   a0 → b0 · mon-aguia-gigante, Grande,  resistPerf 0 · porte BÔNUS (+3) · gate ABRE
-//   a1 → b1 · mon-dog,           Pequeno, resistPerf 0 · porte PENALIDADE (−3)
+//   a0 → b0 · aguia-gigante, Grande,  resistPerf 0 · porte BÔNUS (+3) · gate ABRE
+//   a1 → b1 · cachorro,           Pequeno, resistPerf 0 · porte PENALIDADE (−3)
 //   a2 → b2 · guarda-da-cidade,  Médio,   resistPerf 1, Absorção Perf. só 2 ·
-//            gate RESVALA (Perf. 0 < 1) — NÃO usa mon-aboleth (Absorção 13):
+//            gate RESVALA (Perf. 0 < 1) — NÃO usa aboleth (Absorção 13):
 //            contra ele a Vida também não desceria com o gate desligado, e o
 //            teste provaria a Absorção, não o gate (achado no ensaio desta
 //            rodada, ver o comentário da cena em mesa-mock.mjs)
@@ -86,7 +86,7 @@ try {
   ok(!erros.length, `a mesa rodou sem erro de página${erros.length ? `: ${erros[0]}` : ''}`);
 
   // -------------------------------------------------- 1 · porte, alvo MAIOR
-  console.log('\n· a0 ataca b0 (mon-aguia-gigante, Grande) — porte tem de somar');
+  console.log('\n· a0 ataca b0 (aguia-gigante, Grande) — porte tem de somar');
   {
     const f = await abrirEFolhear(p, 'a0', 2);
     ok(!!f, 'a folha abriu contra o alvo agendado');
@@ -103,7 +103,7 @@ try {
   }
 
   // -------------------------------------------------- 2 · porte, alvo MENOR
-  console.log('\n· a1 ataca b1 (mon-dog, Pequeno) — porte tem de subtrair');
+  console.log('\n· a1 ataca b1 (cachorro, Pequeno) — porte tem de subtrair');
   {
     const f = await abrirEFolhear(p, 'a1', 2);
     ok(!!f, 'a folha abriu contra o alvo agendado');

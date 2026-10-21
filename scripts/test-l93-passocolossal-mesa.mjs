@@ -17,7 +17,7 @@
 // encontram: o traçado PERMITE o que a gravação RECUSA.
 //
 // A CENA `?cena=passocolossal` (`mesa-mock.mjs`): `md` (Médio) nasce colado
-// num Colossal (`mon-tarrasque`) e declara um deslocamento puro de 1
+// num Colossal (`tarrasque`) e declara um deslocamento puro de 1
 // hexágono. O passo estrito (`ocupadoPor`) não avança nada (tudo ao redor
 // está no raio do Colossal), cai na segunda passada (`casaExata`), que acha
 // um destino ainda dentro do raio de verdade, e `gravarToken` recusa.
