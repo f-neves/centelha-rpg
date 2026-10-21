@@ -11,7 +11,7 @@
   "tags": [
     "humanoide"
   ],
-  "imagem": "bestiario/kobold.webp",
+  "imagem": "bestiario/kobold_criatura.webp",
   "porte": "Pequeno",
   "dimensoes": {
     "medida": "0,75 m de altura",

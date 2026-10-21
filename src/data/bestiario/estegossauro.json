@@ -12,7 +12,8 @@
   "tags": [
     "fera"
   ],
-  "imagem": "bestiario/stegosaurus.webp",
+  "imagem": "bestiario/estegossauro_criatura.webp",
+  "imagem2": "bestiario/estegossauro_criatura_2.webp",
   "porte": "Enorme",
   "dimensoes": {
     "medida": "7,18 m de comprimento, 2,97 m de altura",

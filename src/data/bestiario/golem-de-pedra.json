@@ -17,7 +17,7 @@
     "monstro",
     "centelha"
   ],
-  "imagem": "bestiario/stone-golem.webp",
+  "imagem": null,
   "porte": "Grande",
   "dimensoes": {
     "medida": "2,7 m de altura",

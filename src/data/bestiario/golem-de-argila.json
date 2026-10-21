@@ -17,7 +17,7 @@
     "monstro",
     "centelha"
   ],
-  "imagem": "bestiario/clay-golem.webp",
+  "imagem": null,
   "porte": "Grande",
   "dimensoes": {
     "medida": "2,4 m de altura",

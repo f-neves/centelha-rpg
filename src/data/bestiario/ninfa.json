@@ -13,7 +13,8 @@
     "centelha",
     "mágico"
   ],
-  "imagem": "bestiario/ninfa.webp",
+  "imagem": "bestiario/ninfa_criatura.webp",
+  "imagem2": "bestiario/ninfa_criatura_2.webp",
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,7 m de altura",

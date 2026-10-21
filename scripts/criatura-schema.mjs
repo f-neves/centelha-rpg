@@ -127,6 +127,8 @@ export const criaturaSchema = z.object({
   descricaoLegada: texto.optional(),
   tags: z.array(texto),
   imagem: texto.nullable(),
+  /** A segunda imagem (D-179, item 16): só onde há `imagem`; o clique no card troca. */
+  imagem2: texto.optional(),
   porte: z.enum(['Miúdo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal']),
   dimensoes: dimensoesSchema,
   material: texto.optional(),

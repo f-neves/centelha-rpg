@@ -8,7 +8,7 @@
   "conceito": "animal Grande",
   "descricao": "Animal de tração e de carga das fazendas. O boi castrado foge do susto; o touro ataca, e a vaca com bezerro defende a cria. Grito e batida de porteira o agitam.",
   "tags": [],
-  "imagem": null,
+  "imagem": "bestiario/boi_criatura.webp",
   "porte": "Grande",
   "dimensoes": {
     "medida": "3,49 m de comprimento, 1,59 m de altura",

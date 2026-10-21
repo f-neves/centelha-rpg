@@ -12,7 +12,7 @@
   "tags": [
     "humanoide"
   ],
-  "imagem": "bestiario/goblin.webp",
+  "imagem": "bestiario/goblin_criatura.webp",
   "porte": "Pequeno",
   "dimensoes": {
     "medida": "0,95 m de altura",

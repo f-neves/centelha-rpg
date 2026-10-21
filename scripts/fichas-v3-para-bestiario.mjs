@@ -159,7 +159,10 @@ const porFicha = {};
 for (const l of linhasTsv) {
   const fv = l[ct('ficha_v3')];
   if (!fv || fv === '(esqueleto)') continue;
-  porFicha[fv] = { site: l[ct('id_site')] === '(nenhum)' ? null : l[ct('id_site')], id: l[ct('id_definitivo')] };
+  porFicha[fv] = { site: l[ct('id_site')] === '(nenhum)' ? null : l[ct('id_site')], id: l[ct('id_definitivo')],
+    // as imagens do padrão novo (D-179, item 14): a coluna diz o caminho, ou 'null'
+    imagem: [l[ct('imagem_nova')]].map((v) => (!v || v === 'null' ? null : v))[0],
+    imagem2: [l[ct('imagem_2_nova')]].map((v) => (!v || v === 'null' ? null : v))[0] };
 }
 // A FONTE DE ANTES vem do commit da etapa 4 (`--base`, ea564c19 por padrão), e não da
 // pasta: a pasta já tem o resultado deste conversor depois da primeira rodada, e ler
@@ -187,7 +190,7 @@ const idDaFicha = (arq) => {
 function converte(arq) {
   const txt = fs.readFileSync(path.join(PASTA_FICHAS, arq + '.md'), 'utf8').replace(/\r\n/g, '\n');
   const S = secoes(txt);
-  const { site, id } = idDaFicha(arq);
+  const { site, id, imagem, imagem2 } = idDaFicha(arq);
   const aviso = [];
   const ident = S['Identidade'];
   const corpoPorte = S['Corpo, área e porte'] ?? S['Corpo e porte'];
@@ -378,7 +381,7 @@ function converte(arq) {
     if (b.alvo !== alvo) aviso.push(`bloco: alvo ${b.alvo} ≠ ${alvo}`);
   } else aviso.push('sem bloco de conferência');
 
-  return { arq, id, site, nome, nomeIngles: nomeEmIngles(celula(ident, 'Nome em inglês (D&D, Pathfinder)')), categoria, papel, centelha: Number(cent),
+  return { arq, id, site, imagem, imagem2, nome, nomeIngles: nomeEmIngles(celula(ident, 'Nome em inglês (D&D, Pathfinder)')), categoria, papel, centelha: Number(cent),
     ameaca: celula(ident, 'Ameaça') ? parseInt(celula(ident, 'Ameaça'), 10) : null,
     terreno: celula(ident, 'Terreno') ? celula(ident, 'Terreno').split(',').map((x) => TERRENO[x.trim()] ?? `?${x.trim()}`) : null,
     clima: celula(ident, 'Clima') ? celula(ident, 'Clima').split(',').map((x) => CLIMA[x.trim()] ?? `?${x.trim()}`) : null,
@@ -428,7 +431,8 @@ function montaFonte(f, todas) {
     descricao: f.descricao,
     ...(velha?.descricaoLegada ? { descricaoLegada: velha.descricaoLegada } : {}),
     tags: velha?.tags ?? [],
-    imagem: velha ? velha.imagem : null,
+    imagem: f.imagem,
+    ...(f.imagem2 ? { imagem2: f.imagem2 } : {}),
     porte: f.porte,
     dimensoes: f.dimensoes,
     locomocao: Object.fromEntries(Object.entries({ ...(velha?.locomocao || {}), ...f.locomocao }).filter(([, v]) => v != null)),

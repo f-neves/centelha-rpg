@@ -12,7 +12,8 @@
   "tags": [
     "fera"
   ],
-  "imagem": "bestiario/brachiosaurus.webp",
+  "imagem": "bestiario/braquiossauro_criatura.webp",
+  "imagem2": "bestiario/braquiossauro_criatura_2.webp",
   "porte": "Imenso",
   "dimensoes": {
     "medida": "20,52 m de comprimento, 11,29 m de altura",

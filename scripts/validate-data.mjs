@@ -1113,6 +1113,25 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
   if (!arqs.length) fail('src/data/bestiario/: nenhuma ficha de criatura');
 }
 
+// ------------------------------------------- D-179 · a arte do bestiário existe
+//
+// Caminho para arquivo que não existe vira <img> quebrado no card, e calado. Todo
+// `imagem` e todo `imagem2` que não é null aponta para um arquivo de `public/`, e a
+// segunda imagem só existe onde há a primeira (D-179, itens 14 e 16).
+{
+  const PUB = path.join(DIR, '..', '..', 'public');
+  const PASTA = path.join(DIR, 'bestiario');
+  for (const f of fs.readdirSync(PASTA).filter((x) => x.endsWith('.json'))) {
+    let c; try { c = JSON.parse(fs.readFileSync(path.join(PASTA, f), 'utf8')); } catch { continue; }
+    for (const k of ['imagem', 'imagem2']) {
+      if (c[k] == null) continue;
+      if (/^(https?:|data:)/.test(c[k])) continue;
+      if (!fs.existsSync(path.join(PUB, c[k]))) fail(`bestiario/${f}: ${k} "${c[k]}" não existe em public/`);
+    }
+    if (c.imagem2 != null && c.imagem == null) fail(`bestiario/${f}: imagem2 sem imagem`);
+  }
+}
+
 // ------------------------------------------- D-179 · os ids antigos do bestiário
 //
 // `ids-antigos.json` leva cada id antigo (`mon-lobo`) ao definitivo (`lobo`), para

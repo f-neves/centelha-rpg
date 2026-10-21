@@ -12,7 +12,8 @@
   "tags": [
     "fera"
   ],
-  "imagem": "bestiario/triceratops.webp",
+  "imagem": "bestiario/triceratops_criatura.webp",
+  "imagem2": "bestiario/triceratops_criatura_2.webp",
   "porte": "Enorme",
   "dimensoes": {
     "medida": "8,72 m de comprimento, 3,08 m de altura",

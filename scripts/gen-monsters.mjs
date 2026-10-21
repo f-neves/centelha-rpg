@@ -93,7 +93,7 @@ function build(c) {
     porte: f.porte || null,
     dimensoes: { medida: f.dimensoes?.medida || null, peso: f.dimensoes?.peso || null },
     ecologia: { tipo: e.tipo || null, terreno: e.terreno || [], clima: e.clima || [] },
-    imagem: f.imagem || null,
+    imagem: f.imagem || null, ...(f.imagem2 ? { imagem2: f.imagem2 } : {}),
     semImagem: !f.imagem,
     atributos: c.atributos,
     // AS PERICIAS, desde 04/09/2026. Quatro vem da conta invertida dos derivados
@@ -232,7 +232,7 @@ const resolverTecnicas = (ids, catalogo) => (ids || []).map((t) => {
 });
 
 const CAMPOS_MESA = [
-  'id', 'nome', 'nomeIngles', 'ameaca', 'centelha', 'categoria', 'porte', 'imagem',
+  'id', 'nome', 'nomeIngles', 'ameaca', 'centelha', 'categoria', 'porte', 'imagem', 'imagem2',
   'semImagem', 'tipo', 'atributos', 'virtudes', 'vontade', 'aparencia',
   // `pericias` ENTROU EM 04/09/2026, e a ausencia dela aqui foi um zero ambiguo
   // de verdade: o bloco `sentidos` do ResumoCombate le `MON[id].pericias`, `MON`

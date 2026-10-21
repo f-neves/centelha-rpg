@@ -17,7 +17,7 @@
     "monstro",
     "centelha"
   ],
-  "imagem": "bestiario/iron-golem.webp",
+  "imagem": null,
   "porte": "Grande",
   "dimensoes": {
     "medida": "3,6 m de altura",

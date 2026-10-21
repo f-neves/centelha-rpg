@@ -7,7 +7,7 @@
   "centelha": 1,
   "categoria": "Outsider",
   "porte": "Médio",
-  "imagem": "bestiario/aasimar.webp",
+  "imagem": "bestiario/aasimar_criatura.webp",
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
@@ -88,7 +88,7 @@
   "centelha": 5,
   "categoria": "Aberração",
   "porte": "Enorme",
-  "imagem": "bestiario/aboleth.webp",
+  "imagem": "bestiario/aboleth_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -170,7 +170,7 @@
   "centelha": 1,
   "categoria": "Besta mágica",
   "porte": "Grande",
-  "imagem": "bestiario/aguia-gigante.webp",
+  "imagem": "bestiario/aguia-gigante_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -258,8 +258,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/aguia-real_criatura.webp",
+  "semImagem": false,
   "tipo": "fera",
   "atributos": {
    "forca": 2,
@@ -350,8 +350,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/alce_criatura.webp",
+  "semImagem": false,
   "tipo": "fera",
   "atributos": {
    "forca": 7,
@@ -449,7 +449,7 @@
   "centelha": 2,
   "categoria": "Besta mágica",
   "porte": "Grande",
-  "imagem": "bestiario/ankheg.webp",
+  "imagem": "bestiario/ankheg_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -532,7 +532,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Enorme",
-  "imagem": "bestiario/ankylosaurus.webp",
+  "imagem": "bestiario/anquilossauro_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -614,7 +614,7 @@
   "centelha": 3,
   "categoria": "Besta mágica",
   "porte": "Grande",
-  "imagem": "bestiario/aranha-das-fases.webp",
+  "imagem": "bestiario/aranha-das-fases_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -701,7 +701,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": "bestiario/aranha-gigante.webp",
+  "imagem": "bestiario/aranha-gigante_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -783,7 +783,7 @@
   "centelha": 4,
   "categoria": "Celestial",
   "porte": "Médio",
-  "imagem": "bestiario/archon-cao.webp",
+  "imagem": "bestiario/arconte-cao_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -881,7 +881,7 @@
   "centelha": 2,
   "categoria": "Celestial",
   "porte": "Pequeno",
-  "imagem": "bestiario/lantern-archon.webp",
+  "imagem": "bestiario/arconte-lanterna_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -967,7 +967,7 @@
   "centelha": 6,
   "categoria": "Celestial",
   "porte": "Médio",
-  "imagem": "bestiario/trumpet-archon.webp",
+  "imagem": "bestiario/arconte-trombeta_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -1053,7 +1053,7 @@
   "centelha": 0,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/arqueiro.webp",
+  "imagem": "bestiario/arqueiro_pdm.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -1134,7 +1134,7 @@
   "centelha": 3,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/assassino-das-sombras.webp",
+  "imagem": "bestiario/assassino-das-sombras_pdm.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -1236,8 +1236,8 @@
   "centelha": 3,
   "categoria": "Morto-vivo",
   "porte": "Médio",
-  "imagem": "bestiario/assombracao-wraith.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "elite",
   "atributos": {
    "forca": 0,
@@ -1337,7 +1337,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/aurochs.webp",
+  "imagem": "bestiario/auroque_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -1426,7 +1426,7 @@
   "centelha": 4,
   "categoria": "Corruptor",
   "porte": "Médio",
-  "imagem": "bestiario/babau.webp",
+  "imagem": "bestiario/babau_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -1511,7 +1511,7 @@
   "centelha": 9,
   "categoria": "Corruptor",
   "porte": "Grande",
-  "imagem": "bestiario/balor.webp",
+  "imagem": "bestiario/balor_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -1596,7 +1596,7 @@
   "centelha": 0,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/bandido-de-estrada.webp",
+  "imagem": "bestiario/bandido-de-estrada_pdm.webp",
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
@@ -1677,7 +1677,7 @@
   "centelha": 2,
   "categoria": "Corruptor",
   "porte": "Médio",
-  "imagem": "bestiario/barghest.webp",
+  "imagem": "bestiario/barghest_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -1763,7 +1763,7 @@
   "centelha": 4,
   "categoria": "Corruptor",
   "porte": "Grande",
-  "imagem": "bestiario/greater-barghest.webp",
+  "imagem": "bestiario/barghest-maior_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -1849,7 +1849,7 @@
   "centelha": 0,
   "categoria": "Planta",
   "porte": "Médio",
-  "imagem": "bestiario/basidirond.webp",
+  "imagem": "bestiario/basidirond_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -1936,7 +1936,7 @@
   "centelha": 3,
   "categoria": "Besta mágica",
   "porte": "Médio",
-  "imagem": "bestiario/basilisco.webp",
+  "imagem": "bestiario/basilisco_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -2018,7 +2018,7 @@
   "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Enorme",
-  "imagem": "bestiario/bebilith.webp",
+  "imagem": "bestiario/bebilith_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -2103,7 +2103,7 @@
   "centelha": 1,
   "categoria": "Besta mágica",
   "porte": "Enorme",
-  "imagem": "bestiario/behir.webp",
+  "imagem": "bestiario/behir_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -2190,7 +2190,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/fire-beetle.webp",
+  "imagem": "bestiario/besouro-de-fogo_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -2272,8 +2272,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/giant-stag-beetle.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 4,
@@ -2353,8 +2353,8 @@
   "centelha": 2,
   "categoria": "Besta mágica",
   "porte": "Grande",
-  "imagem": "bestiario/besta-deslocadora.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 6,
@@ -2445,7 +2445,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/bison.webp",
+  "imagem": "bestiario/bisao_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -2535,7 +2535,7 @@
   "centelha": 4,
   "categoria": "Aberração",
   "porte": "Médio",
-  "imagem": "bestiario/gibbering-mouther.webp",
+  "imagem": "bestiario/boca-tagarela_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -2616,7 +2616,7 @@
   "centelha": 4,
   "categoria": "Morto-vivo",
   "porte": "Médio",
-  "imagem": "bestiario/bodak.webp",
+  "imagem": "bestiario/bodak_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -2710,7 +2710,7 @@
   "centelha": 2,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/boggard.webp",
+  "imagem": "bestiario/boggard_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -2792,8 +2792,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/boi_criatura.webp",
+  "semImagem": false,
   "tipo": "fera",
   "atributos": {
    "forca": 7,
@@ -2882,7 +2882,7 @@
   "centelha": 4,
   "categoria": "Outsider",
   "porte": "Médio",
-  "imagem": "bestiario/bralani.webp",
+  "imagem": "bestiario/bralani_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -2964,7 +2964,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Imenso",
-  "imagem": "bestiario/brachiosaurus.webp",
+  "imagem": "bestiario/braquiossauro_criatura.webp",
+  "imagem2": "bestiario/braquiossauro_criatura_2.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -3046,7 +3047,7 @@
   "centelha": 0,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/bruto.webp",
+  "imagem": "bestiario/bruto_pdm.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -3127,7 +3128,7 @@
   "centelha": 2,
   "categoria": "Humanoide monstruoso",
   "porte": "Médio",
-  "imagem": "bestiario/sea-hag.webp",
+  "imagem": "bestiario/bruxa-do-mar_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -3209,7 +3210,7 @@
   "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Médio",
-  "imagem": "bestiario/night-hag.webp",
+  "imagem": "bestiario/bruxa-noturna_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -3294,7 +3295,7 @@
   "centelha": 4,
   "categoria": "Humanoide monstruoso",
   "porte": "Médio",
-  "imagem": "bestiario/bruxa-verde-hag.webp",
+  "imagem": "bestiario/bruxa-verde_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -3393,7 +3394,7 @@
   "centelha": 0,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/bugbear.webp",
+  "imagem": "bestiario/bugbear_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -3475,7 +3476,7 @@
   "centelha": 1,
   "categoria": "Besta mágica",
   "porte": "Enorme",
-  "imagem": "bestiario/bulette.webp",
+  "imagem": "bestiario/bulette_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -3557,7 +3558,7 @@
   "centelha": 0,
   "categoria": "Construto",
   "porte": "Enorme",
-  "imagem": "bestiario/retriever.webp",
+  "imagem": "bestiario/buscador_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -3647,7 +3648,7 @@
   "centelha": 3,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/campeao.webp",
+  "imagem": "bestiario/campeao_pdm.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -3746,7 +3747,7 @@
   "centelha": 2,
   "categoria": "Morto-vivo",
   "porte": "Médio",
-  "imagem": "bestiario/skeletal-champion.webp",
+  "imagem": "bestiario/campeao-esqueletico_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -3838,7 +3839,7 @@
   "centelha": 0,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/camponis-assustado.webp",
+  "imagem": "bestiario/campones-assustado_pdm.webp",
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
@@ -3920,8 +3921,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/dog.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 2,
@@ -4001,8 +4002,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/riding-dog.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 3,
@@ -4082,7 +4083,7 @@
   "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Grande",
-  "imagem": "bestiario/nessian-warhound.webp",
+  "imagem": "bestiario/cao-de-guerra-nessiano_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -4167,7 +4168,7 @@
   "centelha": 2,
   "categoria": "Corruptor",
   "porte": "Médio",
-  "imagem": "bestiario/hell-hound.webp",
+  "imagem": "bestiario/cao-infernal_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -4252,7 +4253,7 @@
   "centelha": 2,
   "categoria": "Corruptor",
   "porte": "Médio",
-  "imagem": "bestiario/yeth-hound.webp",
+  "imagem": "bestiario/cao-yeth_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -4339,7 +4340,7 @@
   "centelha": 4,
   "categoria": "Aberração",
   "porte": "Grande",
-  "imagem": "bestiario/cloaker.webp",
+  "imagem": "bestiario/capa-sombria_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -4420,7 +4421,7 @@
   "centelha": 1,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/capitao-da-guarda.webp",
+  "imagem": "bestiario/capitao-da-guarda_pdm.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -4500,7 +4501,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": "bestiario/giant-crab.webp",
+  "imagem": "bestiario/caranguejo-gigante_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -4582,8 +4583,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/wolverine.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 2,
@@ -4672,8 +4673,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/dire-wolverine.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 7,
@@ -4762,7 +4763,7 @@
   "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Enorme",
-  "imagem": "bestiario/cauchemar.webp",
+  "imagem": "bestiario/cauchemar_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -4859,7 +4860,7 @@
   "centelha": 1,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/cavaleiro-de-elite.webp",
+  "imagem": "bestiario/cavaleiro-de-elite_pdm.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -4956,7 +4957,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/horse.webp",
+  "imagem": "bestiario/cavalo_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -5045,7 +5046,7 @@
   "centelha": 2,
   "categoria": "Humanoide monstruoso",
   "porte": "Grande",
-  "imagem": "bestiario/centaur.webp",
+  "imagem": "bestiario/centauro_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -5127,7 +5128,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/giant-centipede.webp",
+  "imagem": "bestiario/centopeia-gigante_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -5210,7 +5211,7 @@
   "centelha": 4,
   "categoria": "Aberração",
   "porte": "Grande",
-  "imagem": "bestiario/chuul.webp",
+  "imagem": "bestiario/chuul_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -5292,7 +5293,7 @@
   "centelha": 1,
   "categoria": "Gigante",
   "porte": "Grande",
-  "imagem": "bestiario/ciclope.webp",
+  "imagem": "bestiario/ciclope_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -5378,7 +5379,7 @@
   "centelha": 0,
   "categoria": "Construto",
   "porte": "Pequeno",
-  "imagem": "bestiario/iron-cobra.webp",
+  "imagem": "bestiario/cobra-de-ferro_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -5465,7 +5466,7 @@
   "centelha": 2,
   "categoria": "Besta mágica",
   "porte": "Pequeno",
-  "imagem": "bestiario/cocatriz.webp",
+  "imagem": "bestiario/cocatriz_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -5552,7 +5553,7 @@
   "centelha": 1,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/comandante.webp",
+  "imagem": "bestiario/comandante_pdm.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -5649,7 +5650,7 @@
   "centelha": 0,
   "categoria": "Besta mágica",
   "porte": "Grande",
-  "imagem": "bestiario/corujurso.webp",
+  "imagem": "bestiario/corujurso_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -5736,7 +5737,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/raven.webp",
+  "imagem": "bestiario/corvo_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -5817,7 +5818,7 @@
   "centelha": 5,
   "categoria": "Outsider",
   "porte": "Grande",
-  "imagem": "bestiario/couatl.webp",
+  "imagem": "bestiario/couatl_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -5921,7 +5922,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/crocodilo.webp",
+  "imagem": "bestiario/crocodilo-do-nilo_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -6003,8 +6004,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/crocodilo-do-nilo-femea_criatura.webp",
+  "semImagem": false,
   "tipo": "fera",
   "atributos": {
    "forca": 6,
@@ -6085,7 +6086,7 @@
   "centelha": 1,
   "categoria": "Limo",
   "porte": "Grande",
-  "imagem": "bestiario/cubo-gelatinoso.webp",
+  "imagem": "bestiario/cubo-gelatinoso_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -6167,7 +6168,7 @@
   "centelha": 1,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/cultista.webp",
+  "imagem": "bestiario/cultista_pdm.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -6255,8 +6256,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/dire-boar-daeodon.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 7,
@@ -6337,7 +6338,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": "bestiario/deinonychus.webp",
+  "imagem": "bestiario/deinonico_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -6434,7 +6435,7 @@
   "centelha": 2,
   "categoria": "Humanoide",
   "porte": "Pequeno",
-  "imagem": "bestiario/derro.webp",
+  "imagem": "bestiario/derro_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -6515,7 +6516,7 @@
   "centelha": 6,
   "categoria": "Celestial",
   "porte": "Médio",
-  "imagem": "bestiario/deva-astral.webp",
+  "imagem": "bestiario/deva-astral_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -6599,7 +6600,7 @@
   "centelha": 4,
   "categoria": "Aberração",
   "porte": "Pequeno",
-  "imagem": "bestiario/intellect-devourer.webp",
+  "imagem": "bestiario/devorador-de-intelecto_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -6680,7 +6681,7 @@
   "centelha": 4,
   "categoria": "Corruptor",
   "porte": "Médio",
-  "imagem": "bestiario/diabo-barbado.webp",
+  "imagem": "bestiario/diabo-barbado_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -6765,7 +6766,7 @@
   "centelha": 6,
   "categoria": "Corruptor",
   "porte": "Grande",
-  "imagem": "bestiario/horned-devil-cornugon.webp",
+  "imagem": "bestiario/diabo-chifrudo_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -6850,7 +6851,7 @@
   "centelha": 6,
   "categoria": "Corruptor",
   "porte": "Grande",
-  "imagem": "bestiario/diabo-de-gelo.webp",
+  "imagem": "bestiario/diabo-de-gelo_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -6936,7 +6937,7 @@
   "centelha": 9,
   "categoria": "Corruptor",
   "porte": "Grande",
-  "imagem": "bestiario/diabo-do-fosso-pit-fiend.webp",
+  "imagem": "bestiario/diabo-do-fosso-pit-fiend_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -7021,7 +7022,7 @@
   "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Médio",
-  "imagem": "bestiario/barbed-devil-hamatula.webp",
+  "imagem": "bestiario/diabo-espinhoso_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -7106,7 +7107,7 @@
   "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Grande",
-  "imagem": "bestiario/diabo-osseo.webp",
+  "imagem": "bestiario/diabo-osseo_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -7204,7 +7205,7 @@
   "centelha": 2,
   "categoria": "Corruptor",
   "porte": "Miúdo",
-  "imagem": "bestiario/diabrete-imp.webp",
+  "imagem": "bestiario/diabrete-imp_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -7302,7 +7303,7 @@
   "centelha": 4,
   "categoria": "Elemental",
   "porte": "Grande",
-  "imagem": "bestiario/djinn.webp",
+  "imagem": "bestiario/djinn_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -7388,7 +7389,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/weasel.webp",
+  "imagem": "bestiario/doninha_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -7470,7 +7471,7 @@
   "centelha": 2,
   "categoria": "Aberração",
   "porte": "Médio",
-  "imagem": "bestiario/doppelganger.webp",
+  "imagem": "bestiario/doppelganger_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -7560,7 +7561,7 @@
   "centelha": 4,
   "categoria": "Dragão",
   "porte": "Médio",
-  "imagem": "bestiario/dracolisk.webp",
+  "imagem": "bestiario/dracolisk_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -7642,7 +7643,7 @@
   "centelha": 6,
   "categoria": "Dragão",
   "porte": "Enorme",
-  "imagem": "bestiario/dragao-azul-adulto.webp",
+  "imagem": "bestiario/dragao-azul-adulto_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -7740,7 +7741,7 @@
   "centelha": 4,
   "categoria": "Dragão",
   "porte": "Grande",
-  "imagem": "bestiario/dragao-branco-jovem.webp",
+  "imagem": "bestiario/dragao-branco-jovem_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -7837,7 +7838,7 @@
   "centelha": 7,
   "categoria": "Dragão",
   "porte": "Enorme",
-  "imagem": "bestiario/dragao-dourado-adulto.webp",
+  "imagem": "bestiario/dragao-dourado-adulto_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -7940,7 +7941,7 @@
   "centelha": 6,
   "categoria": "Dragão",
   "porte": "Enorme",
-  "imagem": "bestiario/dragao-verde-adulto.webp",
+  "imagem": "bestiario/dragao-verde-adulto_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -8032,7 +8033,7 @@
   "centelha": 6,
   "categoria": "Dragão",
   "porte": "Enorme",
-  "imagem": "bestiario/dragao-vermelho-adulto.webp",
+  "imagem": "bestiario/dragao-vermelho-adulto_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -8138,7 +8139,7 @@
   "centelha": 7,
   "categoria": "Dragão",
   "porte": "Imenso",
-  "imagem": "bestiario/dragao-vermelho-anciao.webp",
+  "imagem": "bestiario/dragao-vermelho-anciao_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -8245,7 +8246,7 @@
   "centelha": 5,
   "categoria": "Dragão",
   "porte": "Grande",
-  "imagem": "bestiario/dragao-vermelho-jovem.webp",
+  "imagem": "bestiario/dragao-vermelho-jovem_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -8345,7 +8346,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/monitor-lizard.webp",
+  "imagem": "bestiario/varano_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -8427,8 +8428,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/varano-femea_criatura.webp",
+  "semImagem": false,
   "tipo": "fera",
   "atributos": {
    "forca": 5,
@@ -8509,7 +8510,7 @@
   "centelha": 2,
   "categoria": "Corruptor",
   "porte": "Pequeno",
-  "imagem": "bestiario/dretch.webp",
+  "imagem": "bestiario/dretch_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -8603,7 +8604,7 @@
   "centelha": 4,
   "categoria": "Fada",
   "porte": "Médio",
-  "imagem": "bestiario/driade.webp",
+  "imagem": "bestiario/driade_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -8697,7 +8698,7 @@
   "centelha": 4,
   "categoria": "Aberração",
   "porte": "Grande",
-  "imagem": "bestiario/drider.webp",
+  "imagem": "bestiario/drider_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -8778,7 +8779,7 @@
   "centelha": 1,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/drow.webp",
+  "imagem": "bestiario/drow_criatura.webp",
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
@@ -8859,7 +8860,7 @@
   "centelha": 3,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/duelista.webp",
+  "imagem": "bestiario/duelista_pdm.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -8960,7 +8961,7 @@
   "centelha": 1,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/duergar.webp",
+  "imagem": "bestiario/duergar_criatura.webp",
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
@@ -9041,7 +9042,7 @@
   "centelha": 4,
   "categoria": "Elemental",
   "porte": "Grande",
-  "imagem": "bestiario/efreeti.webp",
+  "imagem": "bestiario/efreeti_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -9128,7 +9129,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Enorme",
-  "imagem": "bestiario/elasmosaurus.webp",
+  "imagem": "bestiario/elasmossauro_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -9209,8 +9210,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Enorme",
-  "imagem": "bestiario/elefante.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 10,
@@ -9299,8 +9300,8 @@
   "centelha": 1,
   "categoria": "Elemental",
   "porte": "Pequeno",
-  "imagem": "bestiario/small-water-elemental.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "soldado",
   "atributos": {
    "forca": 4,
@@ -9380,7 +9381,7 @@
   "centelha": 3,
   "categoria": "Elemental",
   "porte": "Grande",
-  "imagem": "bestiario/elemental-da-terra-grande.webp",
+  "imagem": "bestiario/elemental-da-terra-grande_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -9473,8 +9474,8 @@
   "centelha": 1,
   "categoria": "Elemental",
   "porte": "Pequeno",
-  "imagem": "bestiario/small-earth-elemental.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "soldado",
   "atributos": {
    "forca": 5,
@@ -9561,8 +9562,8 @@
   "centelha": 1,
   "categoria": "Elemental",
   "porte": "Pequeno",
-  "imagem": "bestiario/small-air-elemental.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "soldado",
   "atributos": {
    "forca": 3,
@@ -9647,8 +9648,8 @@
   "centelha": 1,
   "categoria": "Elemental",
   "porte": "Pequeno",
-  "imagem": "bestiario/small-fire-elemental.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "soldado",
   "atributos": {
    "forca": 2,
@@ -9735,7 +9736,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/spider-swarm.webp",
+  "imagem": "bestiario/enxame-de-aranhas_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -9819,7 +9820,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/crab-swarm.webp",
+  "imagem": "bestiario/enxame-de-caranguejos_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -9901,7 +9902,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/centipede-swarm.webp",
+  "imagem": "bestiario/enxame-de-centopeias_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -9984,7 +9985,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/army-ant-swarm.webp",
+  "imagem": "bestiario/enxame-de-formigas_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -10073,7 +10074,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/bat-swarm.webp",
+  "imagem": "bestiario/enxame-de-morcegos_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -10157,7 +10158,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/rat-swarm.webp",
+  "imagem": "bestiario/enxame-de-ratos_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -10240,7 +10241,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/leech-swarm.webp",
+  "imagem": "bestiario/enxame-de-sanguessugas_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -10323,7 +10324,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/wasp-swarm.webp",
+  "imagem": "bestiario/enxame-de-vespas_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -10404,7 +10405,7 @@
   "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Médio",
-  "imagem": "bestiario/erinia.webp",
+  "imagem": "bestiario/erinia_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -10507,7 +10508,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/escorpiao-gigante.webp",
+  "imagem": "bestiario/escorpiao-gigante_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -10596,7 +10597,7 @@
   "centelha": 5,
   "categoria": "Besta mágica",
   "porte": "Grande",
-  "imagem": "bestiario/esfinge-ginosfinge.webp",
+  "imagem": "bestiario/esfinge-ginosfinge_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -10678,8 +10679,8 @@
   "centelha": 1,
   "categoria": "Construto",
   "porte": "Médio",
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/espantalho-desperto_criatura.webp",
+  "semImagem": false,
   "tipo": "soldado",
   "atributos": {
    "forca": 3,
@@ -10765,8 +10766,8 @@
   "centelha": 4,
   "categoria": "Morto-vivo",
   "porte": "Médio",
-  "imagem": "bestiario/espectro.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "elite",
   "atributos": {
    "forca": 0,
@@ -10866,7 +10867,7 @@
   "centelha": 2,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/dark-stalker.webp",
+  "imagem": "bestiario/espreitador-sombrio_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -10948,7 +10949,7 @@
   "centelha": 0,
   "categoria": "Morto-vivo",
   "porte": "Médio",
-  "imagem": "bestiario/esqueleto-humano.webp",
+  "imagem": "bestiario/esqueleto-humano_criatura.webp",
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
@@ -11036,7 +11037,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Enorme",
-  "imagem": "bestiario/stegosaurus.webp",
+  "imagem": "bestiario/estegossauro_criatura.webp",
+  "imagem2": "bestiario/estegossauro_criatura_2.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -11117,7 +11119,7 @@
   "centelha": 2,
   "categoria": "Aberração",
   "porte": "Pequeno",
-  "imagem": "bestiario/choker.webp",
+  "imagem": "bestiario/estrangulador_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -11199,7 +11201,7 @@
   "centelha": 2,
   "categoria": "Aberração",
   "porte": "Médio",
-  "imagem": "bestiario/ettercap.webp",
+  "imagem": "bestiario/ettercap_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -11280,7 +11282,7 @@
   "centelha": 0,
   "categoria": "Gigante",
   "porte": "Grande",
-  "imagem": "bestiario/ettin.webp",
+  "imagem": "bestiario/ettin_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -11362,7 +11364,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/hawk.webp",
+  "imagem": "bestiario/falcao-peregrino_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -11452,7 +11454,7 @@
   "centelha": 4,
   "categoria": "Morto-vivo",
   "porte": "Médio",
-  "imagem": "bestiario/ghost.webp",
+  "imagem": "bestiario/fantasma_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -11545,7 +11547,7 @@
   "centelha": 1,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/feiticeiro-menor.webp",
+  "imagem": "bestiario/feiticeiro-menor_pdm.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -11632,7 +11634,7 @@
   "centelha": 6,
   "categoria": "Besta mágica",
   "porte": "Imenso",
-  "imagem": "bestiario/phoenix.webp",
+  "imagem": "bestiario/fenix_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -11714,7 +11716,7 @@
   "centelha": 4,
   "categoria": "Dragão",
   "porte": "Médio",
-  "imagem": "bestiario/filhote-de-dragao-vermelho.webp",
+  "imagem": "bestiario/filhote-de-dragao-vermelho_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -11808,7 +11810,7 @@
   "centelha": 4,
   "categoria": "Aberração",
   "porte": "Miúdo",
-  "imagem": "bestiario/fogo-fatuo.webp",
+  "imagem": "bestiario/fogo-fatuo_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -11889,7 +11891,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": "bestiario/giant-ant.webp",
+  "imagem": "bestiario/formiga-gigante_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -11979,7 +11981,7 @@
   "centelha": 0,
   "categoria": "Aberração",
   "porte": "Enorme",
-  "imagem": "bestiario/froghemoth.webp",
+  "imagem": "bestiario/froghemoth_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -12062,7 +12064,7 @@
   "centelha": 0,
   "categoria": "Planta",
   "porte": "Médio",
-  "imagem": "bestiario/violet-fungus.webp",
+  "imagem": "bestiario/fungo-violeta_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -12147,7 +12149,7 @@
   "centelha": 1,
   "categoria": "Humanoide monstruoso",
   "porte": "Médio",
-  "imagem": "bestiario/gargula.webp",
+  "imagem": "bestiario/gargula_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -12229,7 +12231,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/cat.webp",
+  "imagem": "bestiario/gato_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -12320,7 +12322,7 @@
   "centelha": 1,
   "categoria": "Limo",
   "porte": "Grande",
-  "imagem": "bestiario/ochre-jelly.webp",
+  "imagem": "bestiario/geleia-ocre_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -12404,7 +12406,7 @@
   "centelha": 6,
   "categoria": "Celestial",
   "porte": "Médio",
-  "imagem": "bestiario/ghaele-azata.webp",
+  "imagem": "bestiario/ghaele-azata_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -12509,7 +12511,7 @@
   "centelha": 2,
   "categoria": "Morto-vivo",
   "porte": "Médio",
-  "imagem": "bestiario/ghast.webp",
+  "imagem": "bestiario/ghast_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -12603,7 +12605,7 @@
   "centelha": 1,
   "categoria": "Morto-vivo",
   "porte": "Médio",
-  "imagem": "bestiario/ghoul.webp",
+  "imagem": "bestiario/ghoul_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -12703,7 +12705,7 @@
   "centelha": 1,
   "categoria": "Gigante",
   "porte": "Grande",
-  "imagem": "bestiario/gigante-da-colina.webp",
+  "imagem": "bestiario/gigante-da-colina_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -12785,7 +12787,7 @@
   "centelha": 0,
   "categoria": "Gigante",
   "porte": "Grande",
-  "imagem": "bestiario/gigante-da-pedra.webp",
+  "imagem": "bestiario/gigante-da-pedra_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -12867,7 +12869,7 @@
   "centelha": 4,
   "categoria": "Gigante",
   "porte": "Enorme",
-  "imagem": "bestiario/gigante-da-tempestade.webp",
+  "imagem": "bestiario/gigante-da-tempestade_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -12949,7 +12951,7 @@
   "centelha": 2,
   "categoria": "Gigante",
   "porte": "Enorme",
-  "imagem": "bestiario/gigante-das-nuvens.webp",
+  "imagem": "bestiario/gigante-das-nuvens_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -13040,7 +13042,7 @@
   "centelha": 1,
   "categoria": "Gigante",
   "porte": "Grande",
-  "imagem": "bestiario/gigante-do-fogo.webp",
+  "imagem": "bestiario/gigante-do-fogo_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -13137,7 +13139,7 @@
   "centelha": 1,
   "categoria": "Gigante",
   "porte": "Grande",
-  "imagem": "bestiario/gigante-do-gelo.webp",
+  "imagem": "bestiario/gigante-do-gelo_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -13219,7 +13221,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/dire-ape-gigantopithecus.webp",
+  "imagem": "bestiario/gigantopiteco_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -13308,7 +13310,7 @@
   "centelha": 1,
   "categoria": "Besta mágica",
   "porte": "Grande",
-  "imagem": "bestiario/girallon.webp",
+  "imagem": "bestiario/girallon_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -13390,7 +13392,7 @@
   "centelha": 6,
   "categoria": "Corruptor",
   "porte": "Enorme",
-  "imagem": "bestiario/glabrezu.webp",
+  "imagem": "bestiario/glabrezu_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -13492,7 +13494,7 @@
   "centelha": 0,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/gnoll.webp",
+  "imagem": "bestiario/gnoll_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -13575,7 +13577,7 @@
   "centelha": 0,
   "categoria": "Humanoide",
   "porte": "Pequeno",
-  "imagem": "bestiario/goblin.webp",
+  "imagem": "bestiario/goblin_criatura.webp",
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
@@ -13657,8 +13659,8 @@
   "centelha": 3,
   "categoria": "Construto",
   "porte": "Grande",
-  "imagem": "bestiario/clay-golem.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "chefe",
   "atributos": {
    "forca": 8,
@@ -13743,8 +13745,8 @@
   "centelha": 3,
   "categoria": "Construto",
   "porte": "Grande",
-  "imagem": "bestiario/flesh-golem.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "elite",
   "atributos": {
    "forca": 7,
@@ -13826,8 +13828,8 @@
   "centelha": 4,
   "categoria": "Construto",
   "porte": "Grande",
-  "imagem": "bestiario/iron-golem.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "chefe",
   "atributos": {
    "forca": 11,
@@ -13915,7 +13917,7 @@
   "centelha": 1,
   "categoria": "Construto",
   "porte": "Médio",
-  "imagem": "bestiario/ice-golem.webp",
+  "imagem": "bestiario/golem-de-gelo_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -14003,8 +14005,8 @@
   "centelha": 3,
   "categoria": "Construto",
   "porte": "Grande",
-  "imagem": "bestiario/stone-golem.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "chefe",
   "atributos": {
    "forca": 10,
@@ -14089,7 +14091,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": "bestiario/dolphin.webp",
+  "imagem": "bestiario/golfinho_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -14179,7 +14181,7 @@
   "centelha": 3,
   "categoria": "Besta mágica",
   "porte": "Grande",
-  "imagem": "bestiario/gorgona-touro-de-ferro.webp",
+  "imagem": "bestiario/gorgona-touro-de-ferro_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -14266,8 +14268,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": "bestiario/gorila.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 7,
@@ -14356,7 +14358,7 @@
   "centelha": 9,
   "categoria": "Dragão",
   "porte": "Colossal",
-  "imagem": "bestiario/grande-wyrm-vermelho.webp",
+  "imagem": "bestiario/grande-wyrm-vermelho_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -14463,7 +14465,7 @@
   "centelha": 1,
   "categoria": "Besta mágica",
   "porte": "Grande",
-  "imagem": "bestiario/grifo.webp",
+  "imagem": "bestiario/grifo_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -14545,7 +14547,7 @@
   "centelha": 0,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/guarda-da-cidade.webp",
+  "imagem": "bestiario/guarda-da-cidade_pdm.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -14626,7 +14628,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/cheetah.webp",
+  "imagem": "bestiario/guepardo_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -14715,7 +14717,7 @@
   "centelha": 2,
   "categoria": "Humanoide monstruoso",
   "porte": "Médio",
-  "imagem": "bestiario/harpia.webp",
+  "imagem": "bestiario/harpia_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -14803,7 +14805,7 @@
   "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Grande",
-  "imagem": "bestiario/hezrou.webp",
+  "imagem": "bestiario/hezrou_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -14897,7 +14899,7 @@
   "centelha": 1,
   "categoria": "Besta mágica",
   "porte": "Enorme",
-  "imagem": "bestiario/hidra-5-cabecas.webp",
+  "imagem": "bestiario/hidra-5-cabecas_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -14979,8 +14981,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/hyena.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 4,
@@ -15060,8 +15062,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": "bestiario/dire-hyena-hyaenodon.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 7,
@@ -15141,7 +15143,7 @@
   "centelha": 1,
   "categoria": "Besta mágica",
   "porte": "Grande",
-  "imagem": "bestiario/hipogrifo.webp",
+  "imagem": "bestiario/hipogrifo_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -15223,7 +15225,7 @@
   "centelha": 0,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/hobgoblin.webp",
+  "imagem": "bestiario/hobgoblin_criatura.webp",
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
@@ -15305,7 +15307,7 @@
   "centelha": 0,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/homem-lagarto.webp",
+  "imagem": "bestiario/homem-lagarto_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -15387,7 +15389,7 @@
   "centelha": 2,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/wererat-human-form.webp",
+  "imagem": "bestiario/homem-rato-forma-humana_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -15468,7 +15470,7 @@
   "centelha": 1,
   "categoria": "Construto",
   "porte": "Miúdo",
-  "imagem": "bestiario/homunculus.webp",
+  "imagem": "bestiario/homunculus_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -15554,7 +15556,7 @@
   "centelha": 2,
   "categoria": "Outsider",
   "porte": "Médio",
-  "imagem": "bestiario/janni.webp",
+  "imagem": "bestiario/janni_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -15636,7 +15638,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/viper.webp",
+  "imagem": "bestiario/jararaca_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -15720,8 +15722,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": "bestiario/javali.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 5,
@@ -15809,7 +15811,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/cobra-constritora.webp",
+  "imagem": "bestiario/jiboia_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -15891,7 +15893,7 @@
   "centelha": 0,
   "categoria": "Humanoide",
   "porte": "Pequeno",
-  "imagem": "bestiario/kobold.webp",
+  "imagem": "bestiario/kobold_criatura.webp",
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
@@ -15972,7 +15974,7 @@
   "centelha": 7,
   "categoria": "Besta mágica",
   "porte": "Colossal",
-  "imagem": "bestiario/kraken.webp",
+  "imagem": "bestiario/kraken_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -16059,7 +16061,7 @@
   "centelha": 4,
   "categoria": "Corruptor",
   "porte": "Médio",
-  "imagem": "bestiario/kyton.webp",
+  "imagem": "bestiario/kyton_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -16145,7 +16147,7 @@
   "centelha": 5,
   "categoria": "Aberração",
   "porte": "Grande",
-  "imagem": "bestiario/roper.webp",
+  "imagem": "bestiario/lacador_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -16231,7 +16233,7 @@
   "centelha": 2,
   "categoria": "Besta mágica",
   "porte": "Pequeno",
-  "imagem": "bestiario/shocker-lizard.webp",
+  "imagem": "bestiario/lagarto-eletrico_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -16313,7 +16315,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/giant-frilled-lizard.webp",
+  "imagem": "bestiario/lagarto-de-gola-gigante_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -16404,7 +16406,7 @@
   "centelha": 4,
   "categoria": "Humanoide monstruoso",
   "porte": "Grande",
-  "imagem": "bestiario/lamia.webp",
+  "imagem": "bestiario/lamia_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -16495,8 +16497,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": "bestiario/leao.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 6,
@@ -16584,8 +16586,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": "bestiario/dire-lion-spotted-lion.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 7,
@@ -16764,7 +16766,7 @@
   "centelha": 1,
   "categoria": "Corruptor",
   "porte": "Médio",
-  "imagem": "bestiario/lemure.webp",
+  "imagem": "bestiario/lemure_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -16853,7 +16855,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/leopard.webp",
+  "imagem": "bestiario/leopardo_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -16943,7 +16945,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Enorme",
-  "imagem": "bestiario/giant-slug.webp",
+  "imagem": "bestiario/lesma-gigante_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -17029,7 +17031,7 @@
   "centelha": 6,
   "categoria": "Morto-vivo",
   "porte": "Médio",
-  "imagem": "bestiario/lich.webp",
+  "imagem": "bestiario/lich_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -17135,7 +17137,7 @@
   "centelha": 4,
   "categoria": "Celestial",
   "porte": "Grande",
-  "imagem": "bestiario/lillend.webp",
+  "imagem": "bestiario/lillend_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -17220,7 +17222,7 @@
   "centelha": 1,
   "categoria": "Limo",
   "porte": "Médio",
-  "imagem": "bestiario/gray-ooze.webp",
+  "imagem": "bestiario/limo-cinzento_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -17305,7 +17307,7 @@
   "centelha": 6,
   "categoria": "Dragão",
   "porte": "Colossal",
-  "imagem": "bestiario/ice-linnorm.webp",
+  "imagem": "bestiario/linnorm-do-gelo_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -17392,7 +17394,7 @@
   "centelha": 6,
   "categoria": "Dragão",
   "porte": "Colossal",
-  "imagem": "bestiario/tarn-linnorm.webp",
+  "imagem": "bestiario/linnorm-dos-lagos_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -17483,7 +17485,7 @@
   "centelha": 6,
   "categoria": "Dragão",
   "porte": "Imenso",
-  "imagem": "bestiario/crag-linnorm.webp",
+  "imagem": "bestiario/linnorm-dos-penhascos_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -17564,7 +17566,7 @@
   "centelha": 2,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/werewolf.webp",
+  "imagem": "bestiario/lobisomem_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -17649,8 +17651,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/lobo.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 3,
@@ -17733,8 +17735,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/lobo-atroz.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 5,
@@ -17817,7 +17819,7 @@
   "centelha": 4,
   "categoria": "Besta mágica",
   "porte": "Grande",
-  "imagem": "bestiario/winter-wolf.webp",
+  "imagem": "bestiario/lobo-do-inverno_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -17899,8 +17901,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/giant-mantis.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 4,
@@ -17988,8 +17990,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/squid.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 4,
@@ -18170,7 +18172,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Enorme",
-  "imagem": "bestiario/giant-squid.webp",
+  "imagem": "bestiario/lula-gigante_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -18260,7 +18262,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/monkey.webp",
+  "imagem": "bestiario/macaco_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -18342,7 +18344,7 @@
   "centelha": 3,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/mago-de-batalha.webp",
+  "imagem": "bestiario/mago-de-batalha_pdm.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -18433,8 +18435,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Enorme",
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/mamute_criatura.webp",
+  "semImagem": false,
   "tipo": "fera",
   "atributos": {
    "forca": 13,
@@ -18523,7 +18525,7 @@
   "centelha": 0,
   "categoria": "Besta mágica",
   "porte": "Grande",
-  "imagem": "bestiario/manticora.webp",
+  "imagem": "bestiario/manticora_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -18613,7 +18615,7 @@
   "centelha": 1,
   "categoria": "Besta mágica",
   "porte": "Pequeno",
-  "imagem": "bestiario/darkmantle.webp",
+  "imagem": "bestiario/manto-escuro_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -18696,7 +18698,7 @@
   "centelha": 5,
   "categoria": "Elemental",
   "porte": "Grande",
-  "imagem": "bestiario/marid.webp",
+  "imagem": "bestiario/marid_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -18780,7 +18782,7 @@
   "centelha": 7,
   "categoria": "Corruptor",
   "porte": "Grande",
-  "imagem": "bestiario/marilith.webp",
+  "imagem": "bestiario/marilith_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -18888,7 +18890,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Enorme",
-  "imagem": "bestiario/mastodon.webp",
+  "imagem": "bestiario/mastodonte_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -18979,7 +18981,7 @@
   "centelha": 3,
   "categoria": "Humanoide monstruoso",
   "porte": "Médio",
-  "imagem": "bestiario/medusa.webp",
+  "imagem": "bestiario/medusa_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -19067,7 +19069,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Imenso",
-  "imagem": "bestiario/dire-shark-megalodon.webp",
+  "imagem": "bestiario/megalodonte_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -19149,7 +19151,7 @@
   "centelha": 2,
   "categoria": "Outsider",
   "porte": "Pequeno",
-  "imagem": "bestiario/mephit.webp",
+  "imagem": "bestiario/mephit_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -19230,7 +19232,7 @@
   "centelha": 1,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/merfolk.webp",
+  "imagem": "bestiario/merfolk_criatura.webp",
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
@@ -19312,7 +19314,7 @@
   "centelha": 1,
   "categoria": "Aberração",
   "porte": "Médio",
-  "imagem": "bestiario/mimico.webp",
+  "imagem": "bestiario/mimico_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -19394,7 +19396,7 @@
   "centelha": 1,
   "categoria": "Humanoide monstruoso",
   "porte": "Grande",
-  "imagem": "bestiario/minotauro.webp",
+  "imagem": "bestiario/minotauro_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -19482,7 +19484,7 @@
   "centelha": 1,
   "categoria": "Fada",
   "porte": "Pequeno",
-  "imagem": "bestiario/mite.webp",
+  "imagem": "bestiario/mite_criatura.webp",
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
@@ -19563,7 +19565,7 @@
   "centelha": 4,
   "categoria": "Morto-vivo",
   "porte": "Médio",
-  "imagem": "bestiario/mohrg.webp",
+  "imagem": "bestiario/mohrg_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -19653,7 +19655,7 @@
   "centelha": 1,
   "categoria": "Aberração",
   "porte": "Médio",
-  "imagem": "bestiario/monstro-da-ferrugem.webp",
+  "imagem": "bestiario/monstro-da-ferrugem_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -19739,7 +19741,7 @@
   "centelha": 0,
   "categoria": "Planta",
   "porte": "Grande",
-  "imagem": "bestiario/montao-tropecante.webp",
+  "imagem": "bestiario/montao-tropecante_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -19828,7 +19830,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/bat.webp",
+  "imagem": "bestiario/morcego_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -19911,7 +19913,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/dire-bat.webp",
+  "imagem": "bestiario/morcego-atroz_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -19994,8 +19996,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/giant-moray-eel.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 7,
@@ -20076,7 +20078,7 @@
   "centelha": 2,
   "categoria": "Humanoide monstruoso",
   "porte": "Médio",
-  "imagem": "bestiario/morlock.webp",
+  "imagem": "bestiario/morlock_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -20158,8 +20160,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Enorme",
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/mosassauro_criatura.webp",
+  "semImagem": false,
   "tipo": "fera",
   "atributos": {
    "forca": 12,
@@ -20240,7 +20242,7 @@
   "centelha": 4,
   "categoria": "Morto-vivo",
   "porte": "Médio",
-  "imagem": "bestiario/mumia.webp",
+  "imagem": "bestiario/mumia_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -20335,7 +20337,7 @@
   "centelha": 4,
   "categoria": "Corruptor",
   "porte": "Médio",
-  "imagem": "bestiario/nabasu.webp",
+  "imagem": "bestiario/nabasu_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -20420,7 +20422,7 @@
   "centelha": 5,
   "categoria": "Aberração",
   "porte": "Grande",
-  "imagem": "bestiario/naga-espirita.webp",
+  "imagem": "bestiario/naga-espirita_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -20520,8 +20522,8 @@
   "centelha": 5,
   "categoria": "Aberração",
   "porte": "Grande",
-  "imagem": "bestiario/guardian-naga.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "chefe",
   "atributos": {
    "forca": 7,
@@ -20602,8 +20604,8 @@
   "centelha": 4,
   "categoria": "Aberração",
   "porte": "Grande",
-  "imagem": "bestiario/dark-naga.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "chefe",
   "atributos": {
    "forca": 5,
@@ -20684,7 +20686,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/venomous-snake.webp",
+  "imagem": "bestiario/serpente-venenosa_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -20768,7 +20770,7 @@
   "centelha": 6,
   "categoria": "Corruptor",
   "porte": "Enorme",
-  "imagem": "bestiario/nalfeshnee.webp",
+  "imagem": "bestiario/nalfeshnee_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -20853,7 +20855,7 @@
   "centelha": 6,
   "categoria": "Aberração",
   "porte": "Imenso",
-  "imagem": "bestiario/neothelid.webp",
+  "imagem": "bestiario/neothelid_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -20934,7 +20936,8 @@
   "centelha": 5,
   "categoria": "Fada",
   "porte": "Médio",
-  "imagem": "bestiario/ninfa.webp",
+  "imagem": "bestiario/ninfa_criatura.webp",
+  "imagem2": "bestiario/ninfa_criatura_2.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -21043,7 +21046,7 @@
   "centelha": 2,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/drow-noble.webp",
+  "imagem": "bestiario/nobre-drow_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -21124,7 +21127,7 @@
   "centelha": 1,
   "categoria": "Construto",
   "porte": "Médio",
-  "imagem": "bestiario/animated-object.webp",
+  "imagem": "bestiario/objeto-animado_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -21207,7 +21210,7 @@
   "centelha": 0,
   "categoria": "Gigante",
   "porte": "Grande",
-  "imagem": "bestiario/ogro.webp",
+  "imagem": "bestiario/ogro_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -21290,7 +21293,7 @@
   "centelha": 5,
   "categoria": "Gigante",
   "porte": "Grande",
-  "imagem": "bestiario/ogro-mago-oni.webp",
+  "imagem": "bestiario/ogro-mago-oni_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -21395,7 +21398,7 @@
   "centelha": 0,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/orc.webp",
+  "imagem": "bestiario/orc_criatura.webp",
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
@@ -21478,7 +21481,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Enorme",
-  "imagem": "bestiario/orca.webp",
+  "imagem": "bestiario/orca_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -21559,7 +21562,7 @@
   "centelha": 2,
   "categoria": "Aberração",
   "porte": "Grande",
-  "imagem": "bestiario/otyugh.webp",
+  "imagem": "bestiario/otyugh_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -21642,7 +21645,7 @@
   "centelha": 0,
   "categoria": "Planta",
   "porte": "Enorme",
-  "imagem": "bestiario/giant-flytrap.webp",
+  "imagem": "bestiario/papa-moscas-gigante_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -21728,7 +21731,7 @@
   "centelha": 4,
   "categoria": "Besta mágica",
   "porte": "Grande",
-  "imagem": "bestiario/pegaso.webp",
+  "imagem": "bestiario/pegaso_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -21816,7 +21819,7 @@
   "centelha": 4,
   "categoria": "Elemental",
   "porte": "Médio",
-  "imagem": "bestiario/invisible-stalker.webp",
+  "imagem": "bestiario/perseguidor-invisivel_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -21898,7 +21901,7 @@
   "centelha": 4,
   "categoria": "Corruptor",
   "porte": "Grande",
-  "imagem": "bestiario/nightmare.webp",
+  "imagem": "bestiario/pesadelo_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -21992,7 +21995,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": "bestiario/cave-fisher.webp",
+  "imagem": "bestiario/pescador-das-cavernas_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -22073,7 +22076,7 @@
   "centelha": 4,
   "categoria": "Fada",
   "porte": "Miúdo",
-  "imagem": "bestiario/pixie.webp",
+  "imagem": "bestiario/pixie_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -22167,7 +22170,7 @@
   "centelha": 7,
   "categoria": "Celestial",
   "porte": "Grande",
-  "imagem": "bestiario/planetar.webp",
+  "imagem": "bestiario/planetar_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -22278,8 +22281,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/plesiossauro_criatura.webp",
+  "semImagem": false,
   "tipo": "fera",
   "atributos": {
    "forca": 5,
@@ -22361,8 +22364,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/octopus.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 1,
@@ -22444,7 +22447,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Enorme",
-  "imagem": "bestiario/giant-octopus.webp",
+  "imagem": "bestiario/polvo-gigante_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -22534,7 +22537,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": "bestiario/pony.webp",
+  "imagem": "bestiario/ponei_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -22623,7 +22626,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/electric-eel.webp",
+  "imagem": "bestiario/poraque_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -22712,7 +22715,7 @@
   "centelha": 1,
   "categoria": "Dragão",
   "porte": "Miúdo",
-  "imagem": "bestiario/pseudodragon.webp",
+  "imagem": "bestiario/pseudodragao_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -22793,7 +22796,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/pteranodon.webp",
+  "imagem": "bestiario/pteranodonte_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -22875,7 +22878,7 @@
   "centelha": 0,
   "categoria": "Limo",
   "porte": "Enorme",
-  "imagem": "bestiario/black-pudding.webp",
+  "imagem": "bestiario/pudim-negro_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -22958,7 +22961,7 @@
   "centelha": 2,
   "categoria": "Corruptor",
   "porte": "Miúdo",
-  "imagem": "bestiario/quasit.webp",
+  "imagem": "bestiario/quasit_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -23056,8 +23059,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Enorme",
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/quetzalcoatlo_criatura.webp",
+  "semImagem": false,
   "tipo": "fera",
   "atributos": {
    "forca": 5,
@@ -23139,7 +23142,7 @@
   "centelha": 3,
   "categoria": "Besta mágica",
   "porte": "Grande",
-  "imagem": "bestiario/quimera.webp",
+  "imagem": "bestiario/quimera_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -23225,7 +23228,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/giant-frog.webp",
+  "imagem": "bestiario/ra-gigante_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -23308,8 +23311,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/poison-frog.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 0,
@@ -23381,7 +23384,7 @@
   "centelha": 5,
   "categoria": "Outsider",
   "porte": "Médio",
-  "imagem": "bestiario/rakshasa.webp",
+  "imagem": "bestiario/rakshasa_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -23485,7 +23488,7 @@
   "centelha": 2,
   "categoria": "Humanoide",
   "porte": "Pequeno",
-  "imagem": "bestiario/dark-creeper.webp",
+  "imagem": "bestiario/rastejador-sombrio_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -23567,7 +23570,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/dire-rat.webp",
+  "imagem": "bestiario/rato-atroz_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -23649,7 +23652,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Pequeno",
-  "imagem": "bestiario/rato-gigante.webp",
+  "imagem": "bestiario/rato-gigante_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -23732,7 +23735,7 @@
   "centelha": 4,
   "categoria": "Besta mágica",
   "porte": "Enorme",
-  "imagem": "bestiario/remorhaz.webp",
+  "imagem": "bestiario/remorhaz_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -23814,7 +23817,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/rinoceronte.webp",
+  "imagem": "bestiario/rinoceronte_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -23904,7 +23907,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Imenso",
-  "imagem": "bestiario/roc.webp",
+  "imagem": "bestiario/roc_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -24002,7 +24005,7 @@
   "centelha": 2,
   "categoria": "Humanoide monstruoso",
   "porte": "Médio",
-  "imagem": "bestiario/sahuagin.webp",
+  "imagem": "bestiario/sahuagin_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -24085,7 +24088,7 @@
   "centelha": 3,
   "categoria": "Elemental",
   "porte": "Médio",
-  "imagem": "bestiario/salamandra.webp",
+  "imagem": "bestiario/salamandra_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -24179,7 +24182,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/giant-leech.webp",
+  "imagem": "bestiario/sanguessuga-gigante_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -24262,8 +24265,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Miúdo",
-  "imagem": "bestiario/toad.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 0,
@@ -24336,7 +24339,7 @@
   "centelha": 2,
   "categoria": "Fada",
   "porte": "Médio",
-  "imagem": "bestiario/satiro.webp",
+  "imagem": "bestiario/satiro_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -24417,7 +24420,7 @@
   "centelha": 5,
   "categoria": "Besta mágica",
   "porte": "Imenso",
-  "imagem": "bestiario/sea-serpent.webp",
+  "imagem": "bestiario/serpente-marinha_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -24499,7 +24502,7 @@
   "centelha": 4,
   "categoria": "Elemental",
   "porte": "Grande",
-  "imagem": "bestiario/shaitan.webp",
+  "imagem": "bestiario/shaitan_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -24587,7 +24590,7 @@
   "centelha": 0,
   "categoria": "Limo",
   "porte": "Enorme",
-  "imagem": "bestiario/shoggoth.webp",
+  "imagem": "bestiario/shoggoth_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -24674,7 +24677,7 @@
   "centelha": 2,
   "categoria": "Humanoide monstruoso",
   "porte": "Médio",
-  "imagem": "bestiario/skum-ulat-kini.webp",
+  "imagem": "bestiario/skum-ulat-kini_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -24757,7 +24760,7 @@
   "centelha": 9,
   "categoria": "Celestial",
   "porte": "Grande",
-  "imagem": "bestiario/solar.webp",
+  "imagem": "bestiario/solar_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -24870,7 +24873,7 @@
   "centelha": 0,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/soldado-veterano.webp",
+  "imagem": "bestiario/soldado-veterano_pdm.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -24952,7 +24955,7 @@
   "centelha": 2,
   "categoria": "Morto-vivo",
   "porte": "Médio",
-  "imagem": "bestiario/sombra.webp",
+  "imagem": "bestiario/sombra_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -25044,7 +25047,7 @@
   "centelha": 1,
   "categoria": "Besta mágica",
   "porte": "Miúdo",
-  "imagem": "bestiario/stirge.webp",
+  "imagem": "bestiario/stirge_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -25126,7 +25129,7 @@
   "centelha": 4,
   "categoria": "Corruptor",
   "porte": "Médio",
-  "imagem": "bestiario/sucubo.webp",
+  "imagem": "bestiario/sucubo_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -25230,7 +25233,7 @@
   "centelha": 1,
   "categoria": "Humanoide",
   "porte": "Pequeno",
-  "imagem": "bestiario/svirfneblin.webp",
+  "imagem": "bestiario/svirfneblin_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -25311,7 +25314,7 @@
   "centelha": 10,
   "categoria": "Besta mágica",
   "porte": "Colossal",
-  "imagem": "bestiario/tarrasque.webp",
+  "imagem": "bestiario/tarrasque_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -25398,7 +25401,7 @@
   "centelha": 5,
   "categoria": "Dragão",
   "porte": "Enorme",
-  "imagem": "bestiario/dragon-turtle.webp",
+  "imagem": "bestiario/tartaruga-dragao_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -25480,7 +25483,7 @@
   "centelha": 1,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/tengu.webp",
+  "imagem": "bestiario/tengu_criatura.webp",
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
@@ -25562,7 +25565,7 @@
   "centelha": 1,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/tiefling.webp",
+  "imagem": "bestiario/tiefling_criatura.webp",
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
@@ -25645,7 +25648,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": "bestiario/tigre.webp",
+  "imagem": "bestiario/tigre_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -25735,8 +25738,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/tigre-dentes-de-sabre_criatura.webp",
+  "semImagem": false,
   "tipo": "fera",
   "atributos": {
    "forca": 8,
@@ -25826,7 +25829,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Enorme",
-  "imagem": "bestiario/tyrannosaurus.webp",
+  "imagem": "bestiario/tiranossauro_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -25908,7 +25911,7 @@
   "centelha": 3,
   "categoria": "Planta",
   "porte": "Enorme",
-  "imagem": "bestiario/treant.webp",
+  "imagem": "bestiario/treant_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -26002,7 +26005,7 @@
   "centelha": 0,
   "categoria": "Planta",
   "porte": "Médio",
-  "imagem": "bestiario/yellow-musk-creeper.webp",
+  "imagem": "bestiario/trepadeira-de-almiscar-amarelo_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -26089,7 +26092,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Enorme",
-  "imagem": "bestiario/triceratops.webp",
+  "imagem": "bestiario/triceratops_criatura.webp",
+  "imagem2": "bestiario/triceratops_criatura_2.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -26178,7 +26182,7 @@
   "centelha": 0,
   "categoria": "Humanoide",
   "porte": "Médio",
-  "imagem": "bestiario/trogloditas.webp",
+  "imagem": "bestiario/trogloditas_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -26260,7 +26264,7 @@
   "centelha": 1,
   "categoria": "Gigante",
   "porte": "Grande",
-  "imagem": "bestiario/trol.webp",
+  "imagem": "bestiario/trol_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -26352,8 +26356,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/shark.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 9,
@@ -26434,7 +26438,7 @@
   "centelha": 4,
   "categoria": "Besta mágica",
   "porte": "Grande",
-  "imagem": "bestiario/unicornio.webp",
+  "imagem": "bestiario/unicornio_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -26530,8 +26534,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/grizzly-bear.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 7,
@@ -26611,7 +26615,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": "bestiario/dire-bear-cave-bear.webp",
+  "imagem": "bestiario/urso-das-cavernas_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -26701,8 +26705,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/urso-negro_criatura.webp",
+  "semImagem": false,
   "tipo": "fera",
   "atributos": {
    "forca": 6,
@@ -26792,8 +26796,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Médio",
-  "imagem": "bestiario/urso-pardo.webp",
-  "semImagem": false,
+  "imagem": null,
+  "semImagem": true,
   "tipo": "fera",
   "atributos": {
    "forca": 7,
@@ -26974,8 +26978,8 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Grande",
-  "imagem": null,
-  "semImagem": true,
+  "imagem": "bestiario/urso-polar_criatura.webp",
+  "semImagem": false,
   "tipo": "fera",
   "atributos": {
    "forca": 8,
@@ -27065,7 +27069,7 @@
   "centelha": 5,
   "categoria": "Morto-vivo",
   "porte": "Médio",
-  "imagem": "bestiario/vampiro.webp",
+  "imagem": "bestiario/vampiro_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -27180,7 +27184,7 @@
   "centelha": 2,
   "categoria": "Corruptor",
   "porte": "Pequeno",
-  "imagem": "bestiario/vargouille.webp",
+  "imagem": "bestiario/vargouille_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -27266,7 +27270,7 @@
   "centelha": 0,
   "categoria": "Planta",
   "porte": "Pequeno",
-  "imagem": "bestiario/vegepygmy.webp",
+  "imagem": "bestiario/vegepygmy_criatura.webp",
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
@@ -27353,7 +27357,7 @@
   "centelha": 1,
   "categoria": "Besta mágica",
   "porte": "Imenso",
-  "imagem": "bestiario/verme-purpura.webp",
+  "imagem": "bestiario/verme-purpura_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -27434,7 +27438,7 @@
   "centelha": 0,
   "categoria": "Animal",
   "porte": "Enorme",
-  "imagem": "bestiario/giant-wasp.webp",
+  "imagem": "bestiario/vespa-gigante_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -27523,7 +27527,7 @@
   "centelha": 1,
   "categoria": "Planta",
   "porte": "Grande",
-  "imagem": "bestiario/assassin-vine.webp",
+  "imagem": "bestiario/vinha-assassina_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -27612,7 +27616,7 @@
   "centelha": 5,
   "categoria": "Corruptor",
   "porte": "Grande",
-  "imagem": "bestiario/vrock.webp",
+  "imagem": "bestiario/vrock_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
@@ -27706,7 +27710,7 @@
   "centelha": 2,
   "categoria": "Morto-vivo",
   "porte": "Médio",
-  "imagem": "bestiario/wight.webp",
+  "imagem": "bestiario/wight_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -27800,7 +27804,7 @@
   "centelha": 1,
   "categoria": "Besta mágica",
   "porte": "Médio",
-  "imagem": "bestiario/worg.webp",
+  "imagem": "bestiario/worg_criatura.webp",
   "semImagem": false,
   "tipo": "fera",
   "atributos": {
@@ -27882,7 +27886,7 @@
   "centelha": 3,
   "categoria": "Dragão",
   "porte": "Grande",
-  "imagem": "bestiario/wyvern.webp",
+  "imagem": "bestiario/wyvern_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -27963,7 +27967,7 @@
   "centelha": 4,
   "categoria": "Corruptor",
   "porte": "Médio",
-  "imagem": "bestiario/xill.webp",
+  "imagem": "bestiario/xill_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -28050,7 +28054,7 @@
   "centelha": 3,
   "categoria": "Elemental",
   "porte": "Médio",
-  "imagem": "bestiario/xorn.webp",
+  "imagem": "bestiario/xorn_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
@@ -28143,7 +28147,7 @@
   "centelha": 2,
   "categoria": "Humanoide monstruoso",
   "porte": "Grande",
-  "imagem": "bestiario/yeti.webp",
+  "imagem": "bestiario/yeti_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
@@ -28225,7 +28229,7 @@
   "centelha": 1,
   "categoria": "Morto-vivo",
   "porte": "Médio",
-  "imagem": "bestiario/zumbi-humano.webp",
+  "imagem": "bestiario/zumbi-humano_criatura.webp",
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
