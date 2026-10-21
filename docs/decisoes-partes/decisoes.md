@@ -2477,9 +2477,8 @@ As D-176 a D-178 respondem às questões 1, 2 e 3a de `../tmp/arquiteto/bestiari
   - Regras que as fichas usam e o site não tem, como Disparo: "publicar sem explicação. Não crie página de regras e não mexa no livro nem no habilidades.json."
   - Criatura sem imagem no padrão novo: "nenhuma imagem, para ficar fácil de identificar. Teste se o card e a lista do bestiário continuam íntegros sem imagem."
   - "As imagens que mostram duas criaturas juntas não serão recortadas: serão feitas imagens novas."
-  - "Nada vai ao ar sem o ok final dele."
 - Origem: mensagem do autor de 21/10/2026, resposta às decisões do Arquiteto sobre o levantamento da Executora (`../tmp/executora/levantamento-ids.md`).
-- Estado: a implementar. Plano em `../tmp/arquiteto/bestiario/publicacao/plano-publicacao.md`; ids em `ids-definitivos.tsv` e imagens a fazer em `imagens-a-fazer.md`, na mesma pasta. Ficam com o autor: o `mon-grizzly-bear`, renomear ou não os `.webp`, a regra de junção da `unique(mesa_id, monstro_id)` no banco, os 11 ids propostos, e o banco depois das consultas 1a a 1e. **Substitui a D-173.** A D-174 ("a nota se relê antes de a ficha ir para o site (D-173)") continua: a nota se relê antes da publicação.
+- Estado: a implementar, com uma condição posta na mesma mensagem: nada vai ao ar sem o ok final do autor. Plano em `../tmp/arquiteto/bestiario/publicacao/plano-publicacao.md`; ids em `ids-definitivos.tsv` e imagens a fazer em `imagens-a-fazer.md`, na mesma pasta. Ficam com o autor: o `mon-grizzly-bear`, renomear ou não os `.webp`, a regra de junção da `unique(mesa_id, monstro_id)` no banco, os 11 ids propostos, os três ids em que a ficha troca um id já em português (`jiboia`, `lobo-terrivel`, `crocodilo-do-nilo`), qual ficha herda o `mon-urso-pardo` (o texto do site aponta para as duas), e o banco depois das consultas 1a a 1e. **Substitui a D-173.** A D-174 ("a nota se relê antes de a ficha ir para o site (D-173)") continua: a nota se relê antes da publicação.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
