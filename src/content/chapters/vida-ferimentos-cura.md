@@ -19,6 +19,7 @@ Essa é a durabilidade de uma criatura de **porte Médio**, o padrão dos humano
 
 | Porte | PV |
 |---|---|
+| Minúsculo | 15 + (Vigor × 1) |
 | Miúdo | 15 + (Vigor × 1) |
 | Pequeno | 20 + (Vigor × 2) |
 | Médio | 25 + (Vigor × 3) |

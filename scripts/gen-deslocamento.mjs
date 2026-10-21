@@ -113,7 +113,7 @@ const POR_TIPO = {
 const daTabela = (tipo, porte) => {
   const t = POR_TIPO[tipo];
   if (!t) return PADRAO;
-  return t[porte] ?? t.padrao;
+  return t[porte === 'Minúsculo' ? 'Miúdo' : porte] ?? t.padrao; // o Minúsculo (D-179) herda o Miúdo
 };
 
 // --- camada 2: o número colhido da fonte ------------------------------------

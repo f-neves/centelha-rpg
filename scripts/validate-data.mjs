@@ -63,7 +63,7 @@ const S = {
   // bonusCondicional e a forma unica dos dez tracos numericos, bonus e escopo
   // sempre juntos (o campo `campo` so existe na Vitalidade, que aplica direto
   // num derivado em vez de so ser oferecida).
-  racas: z.object({ id: z.string(), nome: z.string(), porte: z.enum(['minusculo', 'pequeno', 'medio', 'grande', 'enorme', 'imenso', 'colossal']), custo: z.number().int().nonnegative(), atributos: z.record(z.number().int()), aparenciaMod: z.number().int(), aparenciaUniversal: z.boolean(), descricao: z.string(), tracos: z.array(z.string()), deslocamentoFrac: z.number().positive().optional(), longevidade: z.enum(['curta', 'padrao', 'longa', 'muito-longa']).optional(), bonusCondicional: z.array(z.object({ bonus: z.string(), escopo: z.string(), campo: z.string().optional(), nome: z.string().optional() })).optional() }),
+  racas: z.object({ id: z.string(), nome: z.string(), porte: z.enum(['minusculo', 'miudo', 'pequeno', 'medio', 'grande', 'enorme', 'imenso', 'colossal']), custo: z.number().int().nonnegative(), atributos: z.record(z.number().int()), aparenciaMod: z.number().int(), aparenciaUniversal: z.boolean(), descricao: z.string(), tracos: z.array(z.string()), deslocamentoFrac: z.number().positive().optional(), longevidade: z.enum(['curta', 'padrao', 'longa', 'muito-longa']).optional(), bonusCondicional: z.array(z.object({ bonus: z.string(), escopo: z.string(), campo: z.string().optional(), nome: z.string().optional() })).optional() }),
   inimigos: z.object({
     id: z.string(), nome: z.string(), tipo: z.enum(['capanga', 'soldado', 'elite', 'fera', 'chefe']),
     categoria: z.string().optional(),

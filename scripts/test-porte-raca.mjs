@@ -50,7 +50,7 @@ const ok = (c, m) => { if (!c) falhas.push(m); };
 const eq = (a, b, m) => ok(JSON.stringify(a) === JSON.stringify(b), `${m} · esperado ${JSON.stringify(b)}, veio ${JSON.stringify(a)}`);
 
 // ---------------------------------------- 1. o campo existe nas OITO, e é válido
-const PORTES = ['minusculo', 'pequeno', 'medio', 'grande', 'enorme', 'imenso', 'colossal'];
+const PORTES = ['minusculo', 'miudo', 'pequeno', 'medio', 'grande', 'enorme', 'imenso', 'colossal'];
 eq(RACAS.length, 8, 'as oito raças jogáveis');
 for (const r of RACAS) {
   ok(r.porte != null, `a raça ${r.id} não declara porte, e ausente é indistinguível de Médio decidido`);
@@ -161,7 +161,7 @@ eq(C.pv(3, 'Pequeno'), 34, 'porte escrito errado cai em Médio, calado: é por i
   // ---- e o rótulo de porte que o capítulo usa tem de ser o porte do dado ----
   //
   // O DEFEITO que isto guarda é medido e não hipotético: o Gnomo e o Halfling
-  // eram descritos como "miúdo", e `Miúdo` é o rótulo de `minusculo` no
+  // eram descritos como "miúdo", e `Miúdo` é o rótulo de `miudo` no
   // vocabulário do próprio jogo (`grid.astro`, `bestia-editor.ts`), contra
   // `Pequeno` que é o porte real dos dois. Fator DOIS entre os dois rótulos na
   // tabela de diâmetro, e o capítulo dizendo um enquanto o dado diz o outro.
@@ -172,7 +172,7 @@ eq(C.pv(3, 'Pequeno'), 34, 'porte escrito errado cai em Médio, calado: é por i
   // com falso positivo é um portão que alguém desliga. `miúdo` e `minúsculo`
   // não são adjetivos comuns descrevendo raça jogável, e é essa a classe de
   // defeito que existe aqui.
-  const ROTULO = { miúdo: 'minusculo', miúda: 'minusculo', miúdos: 'minusculo', miúdas: 'minusculo', minúsculo: 'minusculo', minúsculos: 'minusculo' };
+  const ROTULO = { miúdo: 'miudo', miúda: 'miudo', miúdos: 'miudo', miúdas: 'miudo', minúsculo: 'minusculo', minúsculos: 'minusculo' };
   for (const [nome, sec] of Object.entries(secoes)) {
     const r = RACAS.find((x) => x.nome === nome);
     if (!r) continue;

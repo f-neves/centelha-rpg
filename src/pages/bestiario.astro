@@ -42,7 +42,7 @@ const categoriasUsadas = [...new Set(inimigos.map((i) => i.categoria).filter(Boo
 const terrenosUsados = [...new Set(inimigos.flatMap((i) => i.ecologia?.terreno || []))].map((k) => ({ k, nome: ECO_TERR[k] || k })).sort((a, b) => a.nome.localeCompare(b.nome));
 const climasUsados = [...new Set(inimigos.flatMap((i) => i.ecologia?.clima || []))].map((k) => ({ k, nome: ECO_CLIMA[k] || k })).sort((a, b) => a.nome.localeCompare(b.nome));
 // Tamanho na ordem da régua (D-141), e não em ordem alfabética; porte fora da régua vai para o fim.
-const PORTES = ['Miúdo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal'];
+const PORTES = ['Minúsculo', 'Miúdo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal'];
 const portesUsados = [...new Set(inimigos.map((i) => i.porte).filter(Boolean))].sort((a, b) => (PORTES.indexOf(a) + 1 || 99) - (PORTES.indexOf(b) + 1 || 99));
 
 // Opções do editor colhidas do bestiário e da data viva INTEIROS: o form oferece o

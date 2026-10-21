@@ -87,20 +87,19 @@ ok(B.gatePerfuracaoAbre('corte', 0, 3) === true, 'modo Cortante nunca passa pelo
 ok(Object.values(RESIST_POR_ARMADURA).every((n) => typeof n === 'number'),
   `as 9 armaduras da régua publicada, para referência de quem ler este teste: ${Object.keys(RESIST_POR_ARMADURA).join(', ')}`);
 
-// ---- 2b: o modificador de porte, com sinal e teto conferidos ----
+// ---- 2b: o modificador de porte, com sinal e sem teto (D-077, no Grid desde a D-179) ----
 //
 // O sinal é o que um teste unitário comum não pega: o número sai plausível
-// nos dois sentidos, e só a direção errada. Médio atacando Colossal tem de
-// somar (o alvo é maior); Colossal atacando Médio tem de subtrair o MESMO
-// valor (é o mesmo par, invertido).
-ok(B.modificadorPorte('medio', 'colossal') === 12,
-  `médio ataca colossal: +12 (${B.modificadorPorte('medio', 'colossal')})`);
-ok(B.modificadorPorte('colossal', 'medio') === -12,
-  `colossal ataca médio: −12, não +12 (${B.modificadorPorte('colossal', 'medio')})`);
-ok(B.modificadorPorte('medio', 'medio') === 0, 'mesmo porte: zero');
-ok(B.modificadorPorte('minusculo', 'colossal') === 12,
-  'a diferença tem teto de capCategorias (4): minúsculo × colossal (6 categorias de distância) satura em +12, não em +18');
-ok(B.porteDeRotulo('Miúdo') === 'minusculo' && B.porteDeRotulo('Médio') === 'medio'
+// nos dois sentidos, e só a direção errada. De perto só o menor ganha (o
+// Colossal ataca o Médio a 0); de longe é relativo (o mesmo par dá −12).
+ok(B.modificadorPorte('medio', 'colossal') === 12 && B.modificadorPorte('medio', 'colossal', true) === 12,
+  `médio ataca colossal: +12 de perto e de longe (${B.modificadorPorte('medio', 'colossal')})`);
+ok(B.modificadorPorte('colossal', 'medio') === 0 && B.modificadorPorte('colossal', 'medio', true) === -12,
+  `colossal ataca médio: 0 de perto, −12 de longe (${B.modificadorPorte('colossal', 'medio')}, ${B.modificadorPorte('colossal', 'medio', true)})`);
+ok(B.modificadorPorte('medio', 'medio') === 0 && B.modificadorPorte('medio', 'medio', true) === 0, 'mesmo porte: zero');
+ok(B.modificadorPorte('minusculo', 'colossal') === 21 && B.modificadorPorte('miudo', 'colossal') === 18,
+  'sem teto: minúsculo × colossal (7 categorias) dá +21, e o miúdo (6) dá os +18 do exemplo do livro');
+ok(B.porteDeRotulo('Miúdo') === 'miudo' && B.porteDeRotulo('Minúsculo') === 'minusculo' && B.porteDeRotulo('Médio') === 'medio'
   && B.porteDeRotulo(null) === 'medio' && B.porteDeRotulo('lixo') === 'medio',
   'o rótulo do bestiário normaliza certo, e o que não bate cai em medio, não quebra');
 ok(regras.combate?.simultaneo?.decideEmValeDepois === 1 && B.PERFIL_CORRENTE.n1 === false,

@@ -29,11 +29,11 @@ const AJUSTE_FICHA = {
   'cao': { id: 'cachorro' },
   'cao-de-guarda': { id: 'cachorro-de-guarda' },
 };
-// A ficha tem oito portes e o site sete. A D-166 ("Criar o Minúsculo, abaixo do
-// Miúdo") está a implementar; até o autor decidir o oitavo porte, o Minúsculo da
-// ficha vira o Miúdo do site (decisoes-etapa-6.md §2).
+// A ficha e o site têm os mesmos oito portes desde a D-179 (o Minúsculo da D-166,
+// abaixo do Miúdo). A tabela fica para recusar porte fora da lista, e não para
+// traduzir: cada um vai com o próprio nome.
 const PORTE_DO_SITE = {
-  'Minúsculo': 'Miúdo', 'Miúdo': 'Miúdo', 'Pequeno': 'Pequeno', 'Médio': 'Médio',
+  'Minúsculo': 'Minúsculo', 'Miúdo': 'Miúdo', 'Pequeno': 'Pequeno', 'Médio': 'Médio',
   'Grande': 'Grande', 'Enorme': 'Enorme', 'Imenso': 'Imenso', 'Colossal': 'Colossal',
 };
 // As segundas fichas herdam Ameaça, Terreno e Clima da irmã (decisoes-etapa-6.md §6).

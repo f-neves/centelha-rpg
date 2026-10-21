@@ -921,9 +921,9 @@ function conferirPorte(comb, R, gloss, ref, mesa) {
     if (PA.reforma.porCategoria !== 3 || PA.reforma.teto !== null) f.push('porteAcerto.reforma: porCategoria 3 e teto null (D-077)');
     for (const k of ['corpoACorpo', 'aDistancia', 'enxame', 'fora', 'efetiva']) if (!PA.reforma[k]) f.push(`porteAcerto.reforma: falta ${k}`);
     if (!/só o menor ganha/.test(PA.reforma.corpoACorpo) || !/relativo nos dois sentidos/.test(PA.reforma.aDistancia)) f.push('porteAcerto.reforma: corpo a corpo só o menor ganha, à distância relativo');
-    // o Grid lê ordem, porDiferenca e capCategorias, e esses ficam como estão
-    if (PA.capCategorias !== 4 || JSON.stringify(PA.porDiferenca) !== JSON.stringify([0, 3, 6, 9, 12])) f.push('porteAcerto: capCategorias 4 e porDiferenca [0,3,6,9,12] são o que o Grid lê (calc.ts) e não mudam nesta rodada');
-    if (!PA.gridNota || !/Grid lê/.test(PA.gridNota)) f.push('porteAcerto.gridNota: falta a nota de que o Grid ainda lê a regra velha');
+    // o Grid lê ordem e reforma.porCategoria (calc.ts): a D-077 desde a D-179, com os oito portes
+    if ('capCategorias' in PA || 'porDiferenca' in PA || JSON.stringify(PA.ordem) !== JSON.stringify(['minusculo', 'miudo', 'pequeno', 'medio', 'grande', 'enorme', 'imenso', 'colossal'])) f.push('porteAcerto: o teto velho do Grid (capCategorias, porDiferenca) saiu, e a ordem tem os oito portes, do Minúsculo ao Colossal');
+    if (!PA.gridNota || !/Grid segue a regra acima/.test(PA.gridNota)) f.push('porteAcerto.gridNota: falta a nota de que o Grid segue a D-077');
     for (const fr of ['+3 por categoria, SEM TETO (D-077)', 'CORPO A CORPO: só o menor ganha (+3 por categoria contra o maior); o maior ataca o menor sem penalidade.', 'À DISTÂNCIA (arremesso, projétil, arco, besta, ataque mágico, Artes físicas à distância): relativo nos dois sentidos, alvo maior +3 por categoria, alvo menor −3 por categoria.', 'O enxame usa o tamanho que apresenta, nos dois papéis.', 'O porte não escala a Efetiva.', 'nem para Artes de área sem rolagem de ataque']) if (!PA.nota.includes(fr)) f.push(`porteAcerto.nota: falta "${fr.slice(0, 70)}"`);
     if (/teto de 4 categorias \(diferenças|Relativo e simétrico|teto ±6/.test(PA.nota)) f.push('porteAcerto.nota: sobrou a regra velha (teto de 4 categorias, simétrico, teto ±6)');
   }
@@ -963,8 +963,9 @@ function conferirPorte(comb, R, gloss, ref, mesa) {
     'a Efetiva escalada pelo porte': (c) => [c.replace('o porte não escala a Efetiva', 'o porte escala a Efetiva')],
     'o teto de 4 categorias em regras.json': (c, r) => [c, ed(r, (x) => { x.porteAcerto.nota += ' Conta a diferença de categorias na ordem dos portes, com teto de 4 categorias (diferenças maiores contam como 4).'; })],
     'o porCategoria estragado': (c, r) => [c, ed(r, (x) => { x.porteAcerto.reforma.porCategoria = 4; })],
-    'o capCategorias do Grid mexido': (c, r) => [c, ed(r, (x) => { x.porteAcerto.capCategorias = 6; })],
+    'o capCategorias do Grid de volta': (c, r) => [c, ed(r, (x) => { x.porteAcerto.capCategorias = 4; })],
     'a gridNota sumida': (c, r) => [c, ed(r, (x) => { delete x.porteAcerto.gridNota; })],
+    'a ordem sem o Miúdo': (c, r) => [c, ed(r, (x) => { x.porteAcerto.ordem.splice(1, 1); })],
     'o glossário com o teto de 4 categorias': (c, r, g) => [c, r, g.map((t) => (t.id === 'porte' ? { ...t, definicao: t.definicao + ' (simétrico, teto de 4 categorias)' } : t))],
     'a tabela da referência lendo o teto velho': (c, r, g, rf) => [c, r, g, rf.replace('Sem teto.</p>', 'Teto de {PORTE.capCategorias} categorias.</p>')],
     'a frase da mesa com o teto': (c, r, g, rf, m) => [c, r, g, rf, m.replace('O porte entra no <em>acerto</em>, sem teto:', 'O porte entra no <em>acerto</em>, fora deste teto:')],

@@ -499,7 +499,7 @@ Quando dois golpes caem no **mesmo Tick**, os dois atacantes estão abertos ao m
 
 ### Porte: o grande é fácil de acertar, o pequeno é difícil
 
-O tamanho conta na **jogada de acerto** dos **ataques físicos**: cada **categoria de porte** de diferença (Miúdo · Pequeno · Médio · Grande · Enorme · Imenso · Colossal) soma **+3**, **sem teto**. O corpo a corpo e a distância fazem a conta de jeitos diferentes:
+O tamanho conta na **jogada de acerto** dos **ataques físicos**: cada **categoria de porte** de diferença (Minúsculo · Miúdo · Pequeno · Médio · Grande · Enorme · Imenso · Colossal) soma **+3**, **sem teto**. O corpo a corpo e a distância fazem a conta de jeitos diferentes:
 
 - **Corpo a corpo: só o menor ganha.** Quem é menor que o alvo soma **+3 por categoria** de diferença contra ele. Quem é igual ou maior ataca **sem penalidade** e sem bônus. O motivo é de jogo: as criaturas grandes devem ser temidas pelas menores.
 - **À distância, relativo nos dois sentidos.** Qualquer ataque à distância (arremesso, projétil, arco, besta, ataque mágico e Artes físicas à distância) segue a regra do tiro: alvo **maior** que quem ataca, **+3 por categoria**; alvo **menor**, **−3 por categoria**.

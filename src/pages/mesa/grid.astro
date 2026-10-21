@@ -3429,7 +3429,7 @@ const SETAS = [
    * MESMO Médio cobre dois de largura, sem ninguém reconfigurar nada.
    */
   const PORTE_M: Record<string, number> = {
-    'Miúdo': 0.25, 'Pequeno': 0.5, 'Médio': 1, 'Grande': 2,
+    'Minúsculo': 0.125, 'Miúdo': 0.25, 'Pequeno': 0.5, 'Médio': 1, 'Grande': 2,
     'Enorme': 4, 'Imenso': 8, 'Colossal': 16,
   };
   /** Diâmetro do combatente em metros. PC e NPC de cena são médios. */
@@ -10265,7 +10265,7 @@ const SETAS = [
       const f = tf.penAcao ?? 0;
       const c2 = somarCondicoes((atacante.condicoes || []).map((k: any) => ({ ...(COND[k.id] || {}), ...k })));
       const porte = REGRAS_CENA.porte
-        ? modificadorPorte(porteDeRotulo(porteRotuloDe(atacante)), porteDeRotulo(porteRotuloDe(alvo)))
+        ? modificadorPorte(porteDeRotulo(porteRotuloDe(atacante)), porteDeRotulo(porteRotuloDe(alvo)), classe === 'distancia' || classe === 'arremesso')
         : 0;
       return { flat: f + (c2.acao || 0) + (c2.ataque || 0) + porte, dados: (c2.dados || 0) + (tf.penAcaoDados ?? 0) };
     })();

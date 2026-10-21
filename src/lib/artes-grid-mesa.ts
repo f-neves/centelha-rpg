@@ -1361,7 +1361,7 @@ async function deslocar(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLElement):
 /** Peso estimado pelo porte, quando o bloco não declara quilos. */
 export function pesoDoPorte(c: any): number {
   const P: Record<string, number> = {
-    'Miúdo': 3, 'Pequeno': 20, 'Médio': 70, 'Grande': 250,
+    'Minúsculo': 3, 'Miúdo': 3, 'Pequeno': 20, 'Médio': 70, 'Grande': 250,
     'Enorme': 1200, 'Imenso': 8000, 'Colossal': 40000,
   };
   return P[MON[c.monstro_id]?.porte] || 0;

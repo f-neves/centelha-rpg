@@ -29,7 +29,7 @@ export const ATRIBUTOS = ['forca', 'destreza', 'vigor', 'influencia', 'perspicac
 // O arquivo guarda o RÓTULO ("Médio", "Enorme"), o mesmo que o card mostra. A
 // conta (PV, couraça, furtividade) usa o slug. Rótulo desconhecido cai em Médio,
 // como sempre caiu.
-const PORTE_NORM = { miudo: 'minusculo', minusculo: 'minusculo', pequeno: 'pequeno', medio: 'medio', grande: 'grande', enorme: 'enorme', imenso: 'imenso', colossal: 'colossal' };
+const PORTE_NORM = { miudo: 'miudo', minusculo: 'minusculo', pequeno: 'pequeno', medio: 'medio', grande: 'grande', enorme: 'enorme', imenso: 'imenso', colossal: 'colossal' };
 export const NORM = (t) => String(t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 export const porteSlug = (rotulo) => PORTE_NORM[NORM(rotulo)] || 'medio';
 
