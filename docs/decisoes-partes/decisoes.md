@@ -688,7 +688,7 @@ uma decisao registrada, pare e pergunte ao autor.
 - Data: 2026-09-26
 - Decisão: "`disparo` vira entrada em `ataques` (distancia: true); `manobra` vira efeito do ataque (bote, investida) ou texto em `habilidades`; `agarrao` e constrição viram efeito do ataque ("agarra ao acertar"); `sentido` vira texto em `habilidades`. Poder formal (resiste/area/usos) só para sopro, olhar, aura, presenca, toque, veneno, teia, regeneracao, forma, travessia, invisivel, convocar, explosao, canto e dominio. Veneno e toque ganham `ataque: <id do ataque>`"
 - Origem: b14-fase2-resposta-despacho.md:15-20 (item 1)
-- Estado: no ar (não conferido)
+- Estado: no ar (não conferido) **Substituída em parte pela D-180 (21/10/2026), ponto 21:** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
 
 ### C-015 · Proezas de criatura viram proezaFutura, inertes [tags: bestiario, proeza, poder-natural]
 - Data: 2026-09-26
@@ -1796,13 +1796,13 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): todo animal tem Briga, Bloqueio e Esquiva; nenhum tem Atirador, Armas ou Arremesso. Percepção, Furtividade e Atletismo entram quando o animal real se destaca nisso (leitura aceita pelo autor). Criaturas complexas e humanoides têm também as outras Habilidades e os conhecimentos.
 - Origem: mensagem do autor ao Arquiteto, 10/10/2026.
-- Estado: a implementar (B20). Leitura de 10/10/2026 (D-106, a): "Percepção" aqui quer dizer Prontidão, a Habilidade de notar (Percepção é Atributo). Pela D-106 (d), Prontidão e Integridade ficam ao lado de Briga, Bloqueio e Esquiva, e a regra de construção decide em quais animais. Pela D-109 (10/10/2026), todo animal ganha também Sobrevivência; pela D-111, criaturas podem ter Habilidades secundárias.
+- Estado: a implementar (B20). Leitura de 10/10/2026 (D-106, a): "Percepção" aqui quer dizer Prontidão, a Habilidade de notar (Percepção é Atributo). Pela D-106 (d), Prontidão e Integridade ficam ao lado de Briga, Bloqueio e Esquiva, e a regra de construção decide em quais animais. Pela D-109 (10/10/2026), todo animal ganha também Sobrevivência; pela D-111, criaturas podem ter Habilidades secundárias. **Substituída em parte pela D-180 (21/10/2026), ponto 1 e 2:** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
 
 ### D-100 · Bloqueio de animal: como a mão nua; chifre, galhada e carapaça bloqueiam como arma [tags: bestiario, animal, bloqueio, mao-nua, d-088, b20]
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): a maioria dos animais prefere esquivar, mas todos têm algum Bloqueio (o gato apara com a pata). O animal bloqueia como a mão nua (D-088): tira a Margem e toma o dano. Chifre, galhada e carapaça bloqueiam como arma.
 - Origem: mensagem do autor ao Arquiteto, 10/10/2026. Ajusta a linha da D-066 anotada na B14 ("quase todas bloqueiam sem tomar dano"): para os animais, só chifre, galhada e carapaça bloqueiam sem tomar dano.
-- Estado: a implementar (B20). O efeito continua este; o VALOR do Bloqueio passou a sair do quanto o animal bloqueia na vida real (D-110).
+- Estado: a implementar (B20). O efeito continua este; o VALOR do Bloqueio passou a sair do quanto o animal bloqueia na vida real (D-110). **Substituída em parte pela D-180 (21/10/2026), ponto 1:** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
 
 ### D-101 · O que não é ponto vai num campo próprio, por categoria; armadura natural, veneno, constrição, enxame, montaria e comportamento [tags: bestiario, esquema, veneno, absorcao, agarrao, enxame, montaria, carga, comportamento, b20]
 - Data: 2026-10-10
@@ -1832,7 +1832,7 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): animal gigante continua animal, com Centelha 0. Centelha é sobrenatural, não tamanho nem força. Os 16 gigantes entram no piloto; a ficha parte do animal real e escala pelo porte, e o motivo de existirem fica na descrição, não na mecânica.
 - Origem: resposta do autor ao inventário do bestiário (item 10, `bordas.gigantesSemAnimalReal`): formiga, vespa, centopeia, caranguejo, aranha, escorpião, louva-a-deus, besouro-veado, sanguessuga, lesma, rã, rato, lagarto de gola, moreia, polvo e lula.
-- Estado: a implementar (B20). Ajusta o Estado da D-098, que listava os gigantes como borda aberta.
+- Estado: a implementar (B20). Ajusta o Estado da D-098, que listava os gigantes como borda aberta. **Substituída em parte pela D-180 (21/10/2026), ponto 7 e 8:** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
 
 ### D-106 · Leituras do inventário do bestiário (o autor não vetou) [tags: bestiario, leitura, prontidao, atributos, vontade, absorcao, visual, pre-historico, b20]
 - Data: 2026-10-10
@@ -1845,7 +1845,7 @@ Golpe, o preço da Plumbata, "Sem equilíbrio" × Caído e o Princípio do Mestr
   - f) A descrição visual de cada criatura (D-102) fica em `docs/bestiario/visual/<id>.md`.
   - g) Os "atroz" com nome de espécie extinta são animais reais e entram como pré-históricos, não como "versão atroz": Símio Atroz (`mon-dire-ape-gigantopithecus`, gigantopiteco), Urso Atroz (`mon-dire-bear-cave-bear`, urso-das-cavernas), Javali Atroz (`mon-dire-boar-daeodon`, daeodon), Hiena Atroz (`mon-dire-hyena-hyaenodon`, hienodonte), Leão Atroz (`mon-dire-lion-spotted-lion`, leão-das-cavernas), Tubarão Atroz (`mon-dire-shark-megalodon`, megalodonte) e Lobo Atroz (`mon-lobo-atroz`, o lobo-terrível que o autor cita). Ficam como "versão atroz", para depois (D-098): Morcego Atroz, Rato Atroz e Carcaju Atroz, sem espécie real no nome.
 - Origem: inventário do bestiário (`../tmp/arquiteto/bestiario/inventario.md`, itens 8 a 10 e a ressalva sobre a D-099); resposta do autor de 10/10/2026.
-- Estado: leituras registradas para a regra de construção da B20. O inventário e o `escala.md` (`../tmp/arquiteto/bestiario/`) ficam como base. A próxima etapa (pesquisa e regra de construção) espera a lista de referência do autor e não começou. **Atualizado em 10/10/2026:** a leitura c) foi fechada pela D-108 (Vontade do animal de 3 a 6). **Substituída em parte pela D-167 (12/10/2026):** a leitura b) deixa de valer para a Força dos bichos menores que Pequeno (e de alguns Pequenos), que pode ser 0; segue valendo para os outros Atributos.
+- Estado: leituras registradas para a regra de construção da B20. O inventário e o `escala.md` (`../tmp/arquiteto/bestiario/`) ficam como base. A próxima etapa (pesquisa e regra de construção) espera a lista de referência do autor e não começou. **Atualizado em 10/10/2026:** a leitura c) foi fechada pela D-108 (Vontade do animal de 3 a 6). **Substituída em parte pela D-167 (12/10/2026):** a leitura b) deixa de valer para a Força dos bichos menores que Pequeno (e de alguns Pequenos), que pode ser 0; segue valendo para os outros Atributos. **Substituída em parte pela D-180 (21/10/2026), ponto 4 (a parte e, a armadura natural que soma com a couraça do porte):** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
 
 ## Respostas do autor à regra de construção e às fichas piloto do bestiário (10/10/2026)
 
@@ -1855,7 +1855,7 @@ As D-107 a D-114 são a resposta do autor ao rascunho da regra de construção e
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): "Aparência dos animais: régua de comparação humana. A maioria fica no 6 (comum), alguns acima ou abaixo pela pelagem, pele, penas e cuidado. A faixa vai de 4 (Feio) a 8 (Atraente), e alguns podem ter Aparência bem baixa, medonha. A repulsa humana (aranha, rato, cobra) não precisa entrar na mecânica."
 - Origem: questão 6 do rascunho da regra de construção (opções: manter 4 em todos, tirar a Aparência do animal, faixa pela reação humana).
-- Estado: a implementar (B20). Substitui, para as fichas novas, o padrão 4 do código (`AP_BASE`, `scripts/lib-bestiario.mjs` l.246). Os rótulos são os de `regras.json` `escalaAparencia` (4 Feio, 6 Comum, 8 Atraente).
+- Estado: a implementar (B20). Substitui, para as fichas novas, o padrão 4 do código (`AP_BASE`, `scripts/lib-bestiario.mjs` l.246). Os rótulos são os de `regras.json` `escalaAparencia` (4 Feio, 6 Comum, 8 Atraente). **Substituída em parte pela D-181 (21/10/2026):** o "de 4 (Feio) a 8 (Atraente)" passa a ser a faixa típica dos animais, e não limite; a escala vai de 0 a 12 para qualquer criatura, e o medonho é habilidade especial "sem regra ainda".
 
 ### D-108 · Força de Vontade dos animais: de 3 a 6, a maioria perto de 3 [tags: bestiario, animal, vontade, b20]
 - Data: 2026-10-10
@@ -1909,7 +1909,7 @@ As D-107 a D-114 são a resposta do autor ao rascunho da regra de construção e
   3. Habilidades, Habilidades secundárias e Especialidades (em ambas) cobrem os casos que os modificadores não encaixam.
   A Força é universal: Força 4 bate como Força 4 em qualquer criatura (dano, limite do Bloqueio, agarrão). O porte muda o peso, não o dano."
 - Origem: resposta do autor à análise da curva dos Atributos e da velocidade (`../tmp/arquiteto/bestiario/crescimento-atributos.md`), 10/10/2026.
-- Estado: a implementar (B20). Os números (faixas de massa, os modificadores de cada porte e de cada anatomia, as quatro fichas refeitas) estão em rascunho em `../tmp/arquiteto/bestiario/porte-anatomia.md`, esperando o autor. **O agarrar pelo porte fica anotado, sem regra**, como o autor pediu. Completa a D-104 e a D-111; dá modelo à velocidade aberta pela D-114. **Atualizado em 11/10/2026:** nos quadrúpedes, o peso da ficha é a capacidade de carga, sem modificador de anatomia (D-118); a velocidade ganha a secundária do modo (D-119); o peso do Grande é 1,5 (D-120); a fronteira Médio/Grande fica em 220 kg (D-121 a). **Substituída em parte pela D-132 (11/10/2026):** o "criaturas maiores erguem mais peso" passa a ser da massa (faixas de massa), e o porte, que agora vem das dimensões, segue multiplicando a velocidade.
+- Estado: a implementar (B20). Os números (faixas de massa, os modificadores de cada porte e de cada anatomia, as quatro fichas refeitas) estão em rascunho em `../tmp/arquiteto/bestiario/porte-anatomia.md`, esperando o autor. **O agarrar pelo porte fica anotado, sem regra**, como o autor pediu. Completa a D-104 e a D-111; dá modelo à velocidade aberta pela D-114. **Atualizado em 11/10/2026:** nos quadrúpedes, o peso da ficha é a capacidade de carga, sem modificador de anatomia (D-118); a velocidade ganha a secundária do modo (D-119); o peso do Grande é 1,5 (D-120); a fronteira Médio/Grande fica em 220 kg (D-121 a). **Substituída em parte pela D-132 (11/10/2026):** o "criaturas maiores erguem mais peso" passa a ser da massa (faixas de massa), e o porte, que agora vem das dimensões, segue multiplicando a velocidade. **Substituída em parte pela D-180 (21/10/2026), ponto 20:** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
 
 ### D-116 · Leituras da D-115 (o autor não vetou) [tags: bestiario, leitura, porte, gorila, arranque, forca, corrida, dano, bancada, b20]
 - Data: 2026-10-10
@@ -2043,7 +2043,7 @@ As D-132 a D-138 são a resposta do autor às questões do relatório de PV cont
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "TAMANHO E MASSA SEPARADOS. O PORTE vem das DIMENSÕES (altura, comprimento, largura), não do peso: 'Uma criatura de 4 metros de altura é considerada grande mesmo que tenha 25 kg'. O porte decide o espaço, o alcance, o acerto (D-077) e a velocidade (D-119: o porte multiplica a velocidade em terra). A MASSA decide o peso erguido, a carga, os PV e a couraça. Os multiplicadores que hoje são do porte (peso, carga, PV pela tabela 15 + Vigor × 1 até 45 + Vigor × 5, couraça) passam a ser FAIXAS DE MASSA. Dê às faixas nomes que não se confundam com o porte nem com as faixas de carga (Mínima, Leve, Média, Pesada, Máxima). Uma criatura muito grande e muito leve tende a ter pouca Força e pouco Vigor: isso se resolve nos Atributos dela, sem regra nova."
 - Origem: mensagem do autor de 11/10/2026, resposta ao relatório de PV contínuo, voo e esquema.
-- Estado: a implementar (B20). A régua e as faixas estão em rascunho (`../tmp/arquiteto/bestiario/porte-faixas.md`), à espera do autor. **A régua proposta foi substituída pela D-139 (e esta pela D-148: massa e área), e os nomes das faixas pela D-141 (numeradas)**; os números das faixas ficam. O espaço também passa a sair das dimensões (D-147).
+- Estado: a implementar (B20). A régua e as faixas estão em rascunho (`../tmp/arquiteto/bestiario/porte-faixas.md`), à espera do autor. **A régua proposta foi substituída pela D-139 (e esta pela D-148: massa e área), e os nomes das faixas pela D-141 (numeradas)**; os números das faixas ficam. O espaço também passa a sair das dimensões (D-147). **Substituída em parte pela D-180 (21/10/2026), ponto 4, 9 e 19:** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
   - **A régua proposta:** medida = √(altura × comprimento do corpo sem cauda); para quem fica ereto, a medida é a altura. Os cortes são Miúdo abaixo de 0,6 m, Pequeno até 1,2, Médio até 1,9, Grande até 4,2, Enorme até 8,5, Imenso até 17 e Colossal acima disso.
   - **As faixas:** Arrátel (até 4 kg), Arroba (até 25), Quintal (até 220), Tonel (até 1,8 t), Barca (até 14 t), Galé (até 110 t) e Nau, com os números que eram do porte.
   - **Substitui em parte:**
@@ -2064,7 +2064,7 @@ As D-132 a D-138 são a resposta do autor às questões do relatório de PV cont
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "VIGOR: nos animais, pesa mais a resistência do corpo (aguentar ferimento, dor e doença) e menos o fôlego. O fôlego longo, como o do lobo, vai para uma Especialidade de Atletismo ou para o texto. O leão sobe, o lobo desce, e as 30 fichas são revistas por esse critério."
 - Origem: mensagem do autor de 11/10/2026, resposta à questão 1 do relatório (o lobo passava o leão nos PV).
-- Estado: aplicada no rascunho às 30 fichas (`../tmp/arquiteto/bestiario/fichas/`). Mudaram 15:
+- Estado: aplicada no rascunho às 30 fichas (`../tmp/arquiteto/bestiario/fichas/`). Mudaram 15: **Substituída em parte pela D-180 (21/10/2026), ponto 16:** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
   - **sobem:** leão, gorila e tigre-dentes-de-sabre, de 3 para 4;
   - **descem:**
     - lobo, lobo-terrível, cavalo e boi, de 5 para 3;
@@ -2089,7 +2089,7 @@ As D-132 a D-138 são a resposta do autor às questões do relatório de PV cont
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "VOO: o porte vale para os PV e para tudo o mais, mas o multiplicador de velocidade no voo é 1 para todos ('porte é tamanho ou PV, não velocidade'). As diferenças entre espécies vêm da secundária Voo. Recalibre a anatomia de ave para a águia-real continuar batendo com os 41 km/h medidos. As criaturas sobrenaturais que voam podem ter bônus próprio."
 - Origem: mensagem do autor de 11/10/2026, resposta à questão 2 do relatório (o porte de voo).
-- Estado: aplicada no rascunho (`../tmp/arquiteto/bestiario/porte-faixas.md` §4).
+- Estado: aplicada no rascunho (`../tmp/arquiteto/bestiario/porte-faixas.md` §4). **Substituída em parte pela D-180 (21/10/2026), ponto 18:** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
   - A anatomia de ave passa de 2,0 para 1,43: a águia faz 41 km/h, 0% contra os 11,4 m/s medidos.
   - Secundária Voo: águia 0, pteranodonte 2 (acima do estol de 8 m/s), quetzalcoatlo 6 (no começo do planeio do modelo, 13,3 a 24,9 m/s).
   - **Leitura do Arquiteto:** "o porte vale para os PV" se lê pela D-132, que é da mesma mensagem (os PV saem da faixa de massa; o porte decide acerto, espaço e alcance).
@@ -2107,7 +2107,7 @@ As D-132 a D-138 são a resposta do autor às questões do relatório de PV cont
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "ESQUEMA, duas correções: a Aparência varia por animal, de 4 (Feio) a 8 (Atraente), a maioria no 6, com justificativa (D-107); a descrição visual mora em docs/bestiario/visual/<id>.md (leitura aprovada pelo autor em 10/10). Com elas, o esquema está aprovado."
 - Origem: mensagem do autor de 11/10/2026, sobre `esquema-ficha.md`.
-- Estado: aprovado. Fecha a D-131.
+- Estado: aprovado. Fecha a D-131. **Substituída em parte pela D-181 (21/10/2026):** o "de 4 (Feio) a 8 (Atraente)" passa a ser a faixa típica dos animais, e não limite; a escala vai de 0 a 12 para qualquer criatura, e o medonho é habilidade especial "sem regra ainda".
   - As 30 fichas foram refeitas no formato (`../tmp/arquiteto/bestiario/modelo-ficha.md`): as pilotos consolidadas, as variantes e o comportamento fora da prosa, os zeros de regra escritos e a procedência gerada por `procedencia.mjs`.
   - A Aparência: 7 no cavalo, no guepardo, no leão e na águia-real; 5 no enxame de ratos; 6 nos outros.
   - `docs/bestiario/visual/` ainda não existe: os arquivos nascem com o guia de estilo (D-102).
@@ -2143,7 +2143,7 @@ As D-139 a D-142 respondem ao relatório da régua de porte e das faixas de mass
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "Faixas de massa: os nomes Arrátel, Arroba, Quintal, Tonel, Barca, Galé e Nau saem. Ficam numeradas: Faixa 1 (até 4 kg), Faixa 2 (até 25 kg), Faixa 3 (até 220 kg), Faixa 4 (até 1,8 t), Faixa 5 (até 14 t), Faixa 6 (até 110 t), Faixa 7 (acima de 110 t). Na ficha, o campo diz "Massa: Faixa N (até X)". Não use a palavra "categoria" para massa; categoria é do porte."
 - Origem: mensagem do autor de 11/10/2026.
-- Estado: a implementar (B20).
+- Estado: a implementar (B20). **Substituída em parte pela D-180 (21/10/2026), ponto 10:** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
   - **Substitui os nomes propostos na D-132.** Os números das faixas não mudam.
   - **Desde a D-166 (12/10/2026)** há oito portes e sete faixas: o Minúsculo não tem faixa própria. Em questão ao autor (`../tmp/arquiteto/bestiario/passada-30.md`): o corte de massa do Pequeno na R2 (questão 1) e uma Faixa 0 para o PV (questão 4). **Respondidas em 12/10/2026:** o corte fica em 4 kg (D-171), e a Faixa 0 fica adiada (D-169).
   - As 30 fichas do rascunho mudam numa passada só, junto com o porte da D-139, depois que o autor ver o teste.
@@ -2152,7 +2152,7 @@ As D-139 a D-142 respondem ao relatório da régua de porte e das faixas de mass
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "As suas leituras vetáveis ficam aprovadas: Pequeno com 0,95 de velocidade, réptil de corpo baixo com 0,7 em terra, fôlego longo indo para a Natação (alce, tubarão) e Aparência 7 no cavalo e no guepardo."
 - Origem: mensagem do autor de 11/10/2026, sobre `porte-faixas.md` §3 e as fichas refeitas.
-- Estado: aprovada.
+- Estado: aprovada. **Substituída em parte pela D-180 (21/10/2026), ponto 16 (o fôlego longo na Natação):** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
   - **O 0,7 do réptil perdeu a razão com a D-139.** Ele existia porque o crocodilo tinha ido para o Pequeno, e com a D-139 o crocodilo volta ao Grande. Questão ao autor no relatório do teste, com o 0,6 de antes como opção.
   - **A Aparência 7 do leão e da águia-real** (D-138) não foi citada nesta aprovação e fica como está.
 
@@ -2214,7 +2214,7 @@ As D-143 a D-153 respondem ao teste da régua da D-139 (`../tmp/arquiteto/bestia
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "O porte (acerto, alcance, velocidade) passa a combinar a massa com a maior área da criatura (a maior entre altura × comprimento, largura × comprimento e altura × largura). Nas palavras do autor: 'uma criatura é considerada grande se é mais fácil de ser acertada'. A D-139 sai. Referências do autor: halfling e gnomo Pequenos; humano e anão Médios; ogro e troll Grandes; lobo Pequeno; leão Médio; cavalo, boi, urso-polar e alce Grandes; ursos do tamanho humano Médios; píton de 7 m Média (volume pequeno); raia-jamanta Grande (área grande, altura pequena)."
 - Origem: mensagem do autor de 11/10/2026, resposta ao teste da régua da D-139.
-- Estado: regra proposta em rascunho (`porte-area-forca.md` §1), à espera do autor.
+- Estado: regra proposta em rascunho (`porte-area-forca.md` §1), à espera do autor. **Substituída em parte pela D-180 (21/10/2026), ponto 19:** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
   - **Substitui a D-139** inteira.
   - **Responde a questão do cavalo da D-133:** o cavalo é Grande entre as referências.
   - Testadas duas regras, as duas com a área do corpo sem a cauda (leitura do Arquiteto, vetável):
@@ -2240,7 +2240,7 @@ As D-143 a D-153 respondem ao teste da régua da D-139 (`../tmp/arquiteto/bestia
 - Data: 2026-10-11
 - Decisão (autor, 11/10/2026): "Sentidos: a Percepção vale para todos os sentidos. O sentido melhor que o humano entra por bônus fixo, Especialidade ou secundária, e o mesmo vale para os sentidos que o humano não tem (eletrorrecepção, ecolocalização, visão na penumbra)."
 - Origem: mensagem do autor de 11/10/2026.
-- Estado: a implementar (B20).
+- Estado: a implementar (B20). **Substituída em parte pela D-180 (21/10/2026), ponto 17:** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
   - Confirma a regra de construção, que já não subia a Percepção pelo melhor sentido (`regra-construcao.md` §2: a Especialidade situacional de +2 ou +4).
   - Abre mais dois caminhos: o bônus fixo e a secundária. O campo `sentidos` do esquema ganha o "como entra" (`porte-area-forca.md` §5).
 
@@ -2314,7 +2314,7 @@ As D-154 a D-161 são a resposta do autor às cinco questões de `../tmp/arquite
   - Humanoides erguem. Quadrúpedes só arrastam e puxam; o 'Peso erguido' da ficha deles já é isso.
   - Acima do limite do próprio porte, só com Proeza. Os Caminhos já separam isso: Atlas (erguer, arremessar, arrancar) e Agarrão do Urso (agarrar, imobilizar)."
 - Origem: mensagem do autor de 11/10/2026, resposta à questão 4 de `porte-area-forca.md` (a extensão da FAH).
-- Estado: a implementar, com rebalanceamento da carga e do equipamento pedido pelo autor (`../tmp/arquiteto/bestiario/levantamento-novo.md`). `regras.json` não foi tocado.
+- Estado: a implementar, com rebalanceamento da carga e do equipamento pedido pelo autor (`../tmp/arquiteto/bestiario/levantamento-novo.md`). `regras.json` não foi tocado. **Substituída em parte pela D-180 (21/10/2026), ponto 11 (nas fichas de criatura):** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
   - **Substitui** a tabela `forca.levantamento` de hoje (FAH 3 = 30 kg até FAH 40 = 1.000 kg) e a extensão proposta na D-146.
   - Conta conferida pelo Arquiteto: os doze valores do autor batem com a fórmula, arredondados ao quilo. No bônus do corpo, 500 kg dá 126 e 4 t dá 504 (o autor escreveu "cerca de" 125 e 500); o humano de Força 6 e Halterofilismo 6 dá 465 + 34 = 499 kg.
   - **Contra decisões registradas, questão ao autor no relatório:** o fator 0,5 do halfling e do gnomo (D-123) e os multiplicadores de peso por faixa de massa (D-115, D-120, D-132) também medem o tamanho do corpo, e o bônus do corpo passa a medir o mesmo.
@@ -2346,7 +2346,7 @@ As D-154 a D-161 são a resposta do autor às cinco questões de `../tmp/arquite
   - Acima de 80 kg é a D-159 sem mudança: a Força alta dos grandes carrega o tamanho (D-143). Abaixo de 80 kg, o fator freia a criatura leve com Força alta.
   - O fator de corpo leve substitui o fator 0,5 da D-123 ("o peso erguido leva fator 0,5"). Para um halfling de cerca de 30 kg ele dá cerca de 0,52.
 - Origem: mensagem do autor de 12/10/2026, depois do relatório `../tmp/arquiteto/bestiario/levantamento-novo.md`.
-- Estado: a implementar (B20). Análise em `../tmp/arquiteto/bestiario/d162-analise.md`, com cinco questões ao autor; nada em `src/`.
+- Estado: a implementar (B20). Análise em `../tmp/arquiteto/bestiario/d162-analise.md`, com cinco questões ao autor; nada em `src/`. **Substituída em parte pela D-180 (21/10/2026), ponto 11 (nas fichas de criatura):** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
   - Conta conferida pelo Arquiteto: os onze valores do autor batem, arredondados ao quilo (80 kg com Força 6 dá 310,6; 200 kg, 341,8).
   - **Substitui** a D-123 no peso; a velocidade da D-123 fica.
   - **Completa** a D-159.
@@ -2360,13 +2360,13 @@ As D-163 a D-168 respondem às questões 3 e 4 de `../tmp/arquiteto/bestiario/le
 - Data: 2026-10-12
 - Decisão (autor, 12/10/2026): "Cada gigante recebe a Força por comparação com o mamute, ajustada pelo corpo dele, conferida com a escala do Pathfinder (que dá braquiossauro perto de 20, tiranossauro 17, estegossauro, anquilossauro e tricerátops 14 a 15). O Arquiteto justifica cada um numa linha." A opção do Arquiteto, "todos sobem 5", não foi aceita: "é uma regra tirada de um exemplo só".
 - Origem: mensagem do autor de 12/10/2026, resposta à questão 3 de `levantamento-novo.md`.
-- Estado: aprovada como base pela D-172 (12/10/2026): estegossauro, anquilossauro e tricerátops 15, mosassauro 16, tiranossauro 17, braquiossauro 20. A Força 18 do mamute vem de um feito de arrasto e é provisória (D-162); se ela mudar, a comparação dos seis se refaz.
+- Estado: aprovada como base pela D-172 (12/10/2026): estegossauro, anquilossauro e tricerátops 15, mosassauro 16, tiranossauro 17, braquiossauro 20. A Força 18 do mamute vem de um feito de arrasto e é provisória (D-162); se ela mudar, a comparação dos seis se refaz. **Substituída em parte pela D-180 (21/10/2026), ponto 12:** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
 
 ### D-164 · O Vigor dos gigantes: alto, justificado caso a caso [tags: bestiario, criatura, vigor, gigante, ferida-curada, longevidade, folego, tigre, d-143, d-144, d-157, b20]
 - Data: 2026-10-12
 - Decisão (autor, 12/10/2026): "Os gigantes recebem Vigor alto justificado caso a caso pela D-143 (ferida curada, vida longa, fôlego): anquilossauro, tricerátops e tiranossauro perto de 8, mosassauro 7, mamute 6, estegossauro 8, braquiossauro 10. O tigre fica em 4 porque não é gigante." A recomendação do Arquiteto (os gigantes em 4) "leu só a D-157 ('não tem a ver com peso') e ignorou a D-143 ('Criaturas grandes têm mais Força e Vigor'). As duas valem juntas: o Vigor não sai de fórmula de peso, mas o gigante costuma ter Vigor alto, justificado caso a caso."
 - Origem: mensagem do autor de 12/10/2026, resposta à questão 4 de `levantamento-novo.md`.
-- Estado: aprovada como base pela D-172 (12/10/2026), com uma linha de justificativa por animal. Responde à leitura vetável que o Arquiteto anotou na D-157 e confirma os alvos da D-144.
+- Estado: aprovada como base pela D-172 (12/10/2026), com uma linha de justificativa por animal. Responde à leitura vetável que o Arquiteto anotou na D-157 e confirma os alvos da D-144. **Substituída em parte pela D-180 (21/10/2026), ponto 13:** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
 
 ### D-165 · As faixas de carga e o equipamento ficam como estão [tags: carga, equipamento, armadura, faixas, levantamento, d-159]
 - Data: 2026-10-12
@@ -2384,7 +2384,7 @@ As D-163 a D-168 respondem às questões 3 e 4 de `../tmp/arquiteto/bestiario/le
 - Data: 2026-10-12
 - Decisão (autor, 12/10/2026): "A Força 0 vale para todo bicho menor que Pequeno, e até alguns Pequenos." O critério segue a D-158 ("O certo é encaixar os atributos nas criaturas"): Força 0 quando a força do bicho não fere nem segura nada que importe a um humano. Personagem jogável tem Força mínima 1 (o halfling e o gnomo ficam de fora). Pela D-115 ("Força 4 bate como Força 4 em qualquer criatura"), a Força 0 também zera o dano de Força da mordida e do agarrão.
 - Origem: mensagem do autor de 12/10/2026.
-- Estado: a implementar (B20). Na passada, o rato do enxame e a jararaca vão a Força 0; a águia não (a garra fere). **Substitui em parte a D-106 b)** ("Nenhum Atributo fica em 0 (...) O 0 fica para quem não tem a faculdade"), que segue valendo para os outros Atributos. A ficha de jogador já não deixa a raça baixar o piso (`ficha-engine.ts`, `pisoRacialAttr`). O livro diz "Nenhum Atributo chega a 0 num personagem vivo e desperto" (`atributos.md`:18); precisa de uma frase para os bichos na rodada de texto.
+- Estado: a implementar (B20). Na passada, o rato do enxame e a jararaca vão a Força 0; a águia não (a garra fere). **Substitui em parte a D-106 b)** ("Nenhum Atributo fica em 0 (...) O 0 fica para quem não tem a faculdade"), que segue valendo para os outros Atributos. A ficha de jogador já não deixa a raça baixar o piso (`ficha-engine.ts`, `pisoRacialAttr`). O livro diz "Nenhum Atributo chega a 0 num personagem vivo e desperto" (`atributos.md`:18); precisa de uma frase para os bichos na rodada de texto. **Substituída em parte pela D-180 (21/10/2026), ponto 3:** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
 
 ### D-168 · A Enguia-do-Entremeio fica parada até o fim do bestiário; o id da besta passa a apontar para ela [tags: bestiario, criatura, enguia-do-entremeio, besta-deslocadora, id, mesa, d-161]
 - Data: 2026-10-12
@@ -2400,7 +2400,7 @@ As D-169 a D-174 respondem às quatro questões de `../tmp/arquiteto/bestiario/p
 - Data: 2026-10-12
 - Decisão (autor, 12/10/2026): "Faixas de peso de vida (criaturas minúsculas tipo rato) e peso erguido: ficam ADIADAS. Não mexer agora. O autor vai decidir depois. O rato de ~300g continua caindo na faixa atual até lá."
 - Origem: mensagem do autor de 12/10/2026, resposta à questão 4 de `passada-30.md`.
-- Estado: adiada. O Minúsculo fica na Faixa 1 da D-132 (15 + Vigor): o rato do enxame com 19 PV e a jararaca com 17, marcados **[provisório]** com nota de observação na ficha. A Faixa 0 proposta (5 + Vigor abaixo de 1 kg) não entrou. O P segue pela D-162, provisório, com a outra frente.
+- Estado: adiada. O Minúsculo fica na Faixa 1 da D-132 (15 + Vigor): o rato do enxame com 19 PV e a jararaca com 17, marcados **[provisório]** com nota de observação na ficha. A Faixa 0 proposta (5 + Vigor abaixo de 1 kg) não entrou. O P segue pela D-162, provisório, com a outra frente. **Substituída em parte pela D-180 (21/10/2026), ponto 9 e 11:** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
 
 ### D-170 · A velocidade fica para o fim, depois do peso erguido [tags: bestiario, criatura, velocidade, deslocamento, terra, nado, serpente, reptil, mosassauro, minusculo, d-119, d-124, d-136, d-158, d-164, b20]
 - Data: 2026-10-12
@@ -2424,7 +2424,7 @@ As D-169 a D-174 respondem às quatro questões de `../tmp/arquiteto/bestiario/p
 - Data: 2026-10-12
 - Decisão (autor, 12/10/2026): "Bestiaristas: LIBERADOS para produzir as fichas dos ~62 animais restantes em rascunho, usando as 30 fichas de referência aprovadas como base. Peso e velocidade entram como campos provisórios, para não travar."
 - Origem: mensagem do autor de 12/10/2026.
-- Estado: liberada. Levanta a parada dos lotes 1, 2, 3 e 5 (mensagem do autor de 12/10/2026, seção acima). A base é a passada (`passada-30.md`), o esquema (`bestiaristas-esquema.md`) e a escala (`bestiaristas-escala.md`), com a D-169 a D-171 aplicadas. O peso (carga e P) e a velocidade entram marcados **[provisório]**. Os lotes que esperam anatomia nova (6, 8, 9 e os anfíbios do 7) ou o voo (o lote 4 e os alados): leitura do Arquiteto, vetável, pela D-174, a anatomia entra provisória, com nota, em vez de esperar a proposta ao autor que o plano previa (`plano-proximos.md` §3). A velocidade dessas anatomias já é provisória pela D-170.
+- Estado: liberada. Levanta a parada dos lotes 1, 2, 3 e 5 (mensagem do autor de 12/10/2026, seção acima). A base é a passada (`passada-30.md`), o esquema (`bestiaristas-esquema.md`) e a escala (`bestiaristas-escala.md`), com a D-169 a D-171 aplicadas. O peso (carga e P) e a velocidade entram marcados **[provisório]**. Os lotes que esperam anatomia nova (6, 8, 9 e os anfíbios do 7) ou o voo (o lote 4 e os alados): leitura do Arquiteto, vetável, pela D-174, a anatomia entra provisória, com nota, em vez de esperar a proposta ao autor que o plano previa (`plano-proximos.md` §3). A velocidade dessas anatomias já é provisória pela D-170. **Substituída em parte pela D-180 (21/10/2026), ponto 12 (o mamute 18):** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
 
 ### D-173 · Nada vai ao ar antes de todas as fichas e do código [tags: bestiario, criatura, publicacao, site, deploy, src, b20]
 - Data: 2026-10-12
@@ -2452,7 +2452,7 @@ As D-176 a D-178 respondem às questões 1, 2 e 3a de `../tmp/arquiteto/bestiari
 - Data: 2026-10-13
 - Decisão (autor, 13/10/2026): "A primeira regra deve ser 'Criaturas maiores costumam ter mais Força e Vigor'. Especialmente se uma criatura é uma versão maior da outra. Então se um gato tem Vigor X, um gato gigante tem que ter Vigor maior do que X." A leitura certa das duas decisões juntas: a D-143 ("Criaturas grandes têm mais Força e Vigor") vem primeiro; a D-157 só quer dizer que o Vigor não sai de uma fórmula de peso, e que um bicho pequeno também pode ter Vigor alto. Ela não serve para segurar o Vigor de um bicho grande no nível de um pequeno.
 - Origem: mensagem do autor de 13/10/2026, resposta à questão 3a do relatório da leva ("correção de leitura": o Arquiteto vinha usando a D-157 em casos que têm a ver com o peso).
-- Estado: aplicada em rascunho em 13/10/2026 nas 21 versões maiores e no leopardo (D-178); a tabela dos pares está em `../tmp/arquiteto/bestiario/pares-d176.md`. A implementar no site (B20). Vale para todos os gigantes da D-105, os atrozes e qualquer outra versão maior de um animal com ficha: a versão maior tem Força e Vigor maiores que os do animal de base, cada um com uma linha de justificativa, e uma tabela compara os pares. A Força dessas fichas segue provisória enquanto a fórmula do peso erguido não fecha (D-169). **Decisão provisória do Arquiteto (D-174), sobre quanto sobe o Vigor:** +1 a cada dois portes acima do animal de base, arredondado para cima, no mínimo +1; a ficha diz a conta. **Corrige a leitura** que o Arquiteto anotou na D-157 e pôs no pedido dos lotes ("Vigor alto só no gigante real").
+- Estado: aplicada em rascunho em 13/10/2026 nas 21 versões maiores e no leopardo (D-178); a tabela dos pares está em `../tmp/arquiteto/bestiario/pares-d176.md`. A implementar no site (B20). Vale para todos os gigantes da D-105, os atrozes e qualquer outra versão maior de um animal com ficha: a versão maior tem Força e Vigor maiores que os do animal de base, cada um com uma linha de justificativa, e uma tabela compara os pares. A Força dessas fichas segue provisória enquanto a fórmula do peso erguido não fecha (D-169). **Decisão provisória do Arquiteto (D-174), sobre quanto sobe o Vigor:** +1 a cada dois portes acima do animal de base, arredondado para cima, no mínimo +1; a ficha diz a conta. **Corrige a leitura** que o Arquiteto anotou na D-157 e pôs no pedido dos lotes ("Vigor alto só no gigante real"). **Substituída em parte pela D-180 (21/10/2026), ponto 14 e 15:** nas fichas de criatura vale o texto mais novo do autor, citado lá ao lado do texto desta decisão.
 
 ### D-177 · Os três atrozes sem espécie real ficam como estão, provisórios [tags: bestiario, criatura, atroz, carcaju, morcego, rato, provisorio, d-098, d-105, d-174, b20]
 - Data: 2026-10-13
@@ -2494,6 +2494,49 @@ As D-176 a D-178 respondem às questões 1, 2 e 3a de `../tmp/arquiteto/bestiari
   - 19: "Nesta publicação entram só os oito Alvos. As manobras pela faixa de massa (R13), o alcance pelas dimensões e a velocidade congelada ficam para uma etapa posterior. O site continua fazendo manobra, alcance e velocidade como faz hoje."
   - 20: "Depois do merge, renomeie fichas-v3\lobo-terrivel.md para lobo-atroz.md e tire o ajuste do conversor. Nada disso agora."
 - Estado: a implementar, com uma condição posta na mesma mensagem: nada vai ao ar sem o ok final do autor. Plano em `../tmp/arquiteto/bestiario/publicacao/plano-publicacao.md`; ids em `ids-definitivos.tsv` e imagens a fazer em `imagens-a-fazer.md`, na mesma pasta. Com o complemento ficam decididos o `mon-grizzly-bear` e o herdeiro do `mon-urso-pardo` (item 9), o nome dos `.webp` (item 11) e os três ids em que a ficha troca um id já em português (item 12); o banco, as consultas 1a a 1e e a regra da `unique(mesa_id, monstro_id)` saem do escopo (item 10). Os 11 ids propostos pelo Arquiteto para as criaturas sem ficha (`assombracao`, os quatro elementais pequenos, os quatro golens, `naga-guardia`, `naga-negra`) foram propostos pelo Arquiteto e **aprovados pelo autor no item 15**, junto com o `urso-cinzento`. O item 12 muda o id da ficha `lobo-terrivel.md` para `lobo-atroz`: a D-106, a D-134 e a D-178 dizem "lobo-terrível" e ficam como foram escritas; a criatura é a mesma. A falta de imagem no padrão novo chega a 40 criaturas (lista em `imagens-a-fazer.md`). **Substitui a D-173.** A D-174 ("a nota se relê antes de a ficha ir para o site (D-173)") continua: a nota se relê antes da publicação. **Com o complemento 2:** o item 13 implementa a D-166 nesta publicação (o oitavo porte no site, no Grid e no livro) e leva ao Grid o bônus da D-077 pela tabela 3.1, que até aqui o Grid não seguia (teto de 4 categorias e simétrico, N22); o resto da tabela de tamanho (R13, alcance pelas dimensões, velocidade congelada) fica para depois (item 19). As imagens `_2` que entram são as do braquiossauro, da ninfa, do estegossauro e do triceratops (item 16; o roc fica fora pelo item 18). A renomeação de `lobo-terrivel.md` é depois do merge (item 20).
+
+### D-180 · Nas fichas de criatura vale sempre o texto mais novo do autor; as 24 divergências do manual se fecham assim [tags: bestiario, criatura, fichas, manual, divergencias, delegados, especialidade, bloqueio, esquiva, forca-zero, couraca, pv, peso-erguido, voo, alvo, manobras, disparo, b20]
+- Data: 2026-10-21
+- Decisão (autor, 21/10/2026): "Divergências do manual (os 24 pontos de divergencias-manual.md): vale sempre o texto mais novo do autor, que é o que as 97 fichas já seguem. Registre uma decisão só que marca cada D antiga como substituída no ponto em que diverge, citando o texto da D e o do arquivo novo. No ponto 17 (teto de +3), vale a leitura que as fichas usam hoje. As decisões delegadas do tamanho-decisoes-3 passam a valer como regra."
+- Origem: mensagem do autor de 21/10/2026, resposta a `../tmp/arquiteto/bestiario/publicacao/divergencias-manual.md`. Os arquivos novos citados abaixo estão em `../tmp/arquiteto/bestiario/`: `decisoes-autor-2026-10-19.md` ("decisoes-autor §N") e `tamanho-decisoes-2.md` a `-5.md` ("tamanho-decisoes-N, item M").
+- Os pontos, com o texto da decisão antiga e o do arquivo novo, que é o que vale:
+  - 1 · Bloqueio. D-099: "todo animal tem Briga, Bloqueio e Esquiva"; D-100: "todos têm algum Bloqueio". Vale decisoes-autor §1: "Bloqueio só para quem tem o reflexo de aparar... Quem só tenta esquivar ou fugir fica com 0". A D-110 ("«Quase não bloqueia» é 1, e não 0") segue para quem apara pouco.
+  - 2 · Esquiva. D-099: "todo animal tem ... Esquiva". Vale decisoes-autor §2: "Ficam com 0 os que não costumam desviar (a tartaruga, dinossauros muito grandes)".
+  - 3 · Força 0. D-167: "A Força 0 vale para todo bicho menor que Pequeno, e até alguns Pequenos". Vale tamanho-decisoes-5, item 8: "Não é tudo criatura que é menor que o tamanho pequeno que tem força zero". O critério da D-167 (0 "quando a força do bicho não fere nem segura nada que importe a um humano") continua como critério, caso a caso.
+  - 4 · Couraça. D-132: "A MASSA decide o peso erguido, a carga, os PV e a couraça"; D-106 e): armadura natural "soma com a couraça do porte". Vale tamanho-decisoes-4, item 4: "Couraça vem só da pele... A D-132 perde a parte da Couraça por faixa"; tamanho-decisoes-5, item 2 (escala de 0 a 12 por comparação); decisoes-autor §16: o nível fica, "IGNORADO no cálculo da Absorção".
+  - 5 · Qual adulto é a ficha principal (nenhuma D). Vale decisoes-autor §5: "uma versão um pouco acima da média da espécie, e não o adulto típico", no lugar de tamanho-decisoes-5, item 4 ("A ficha principal é o adulto típico").
+  - 6 · A base do gigante escalado (nenhuma D). Vale tamanho-decisoes-5, item 5: "A base é o mesmo adulto típico do item 4", lido como o adulto típico real, que é o que as fichas usam; o §5 não trata da base.
+  - 7 · Tamanho do gigante. D-105: "a ficha parte do animal real e escala pelo porte". Vale decisoes-autor §6: "escolhido por criatura, sem mínimo de categorias" (substitui também tamanho-decisoes-5, item 7, "pelo menos 2 categorias de Alvo acima").
+  - 8 · Habilidades do gigante. D-105: "o motivo de existirem fica na descrição, não na mecânica". Vale decisoes-autor §11: "o gigante de fantasia mantém as habilidades do monstro publicado, adaptadas ao formato novo".
+  - 9 · Tabela de PV. D-132: de "15 + Vigor × 1 (Faixa 1)" até "45 + Vigor × 5"; D-169: as faixas dos minúsculos "ficam ADIADAS". Vale decisoes-autor §9: a tabela de 11 linhas (até 100 g: 1; 100 g a 1 kg: Vigor; ...), que "substitui a faixa 1 e divide a faixa 2" (e substitui também tamanho-decisoes-3, item 21, "Faixa 1 (até 4 kg): PV = 5 + Vigor").
+  - 10 · Corte da Faixa 2 de massa. D-141: "Faixa 2 (até 25 kg)". Vale tamanho-decisoes-3, item 22: "O corte de 35 kg substitui o «até 25 kg» da D-141".
+  - 11 · Peso erguido. D-159 e D-162: "P = (1,3154 × FAH^1,8464 + 2 × massa^(2/3)) × fator de corpo leve". Vale tamanho-decisoes-3, item 14: "P = max(curva(massa) ; 0,25 × massa) × 1,3^(E − E típica)". A D-159 continua para o personagem e para `regras.json` até a rodada de código; nas fichas de criatura vale o item 14.
+  - 12 · Força do mamute. D-163 e D-172: mamute 18. Vale tamanho-decisoes-3, item 9: "Mamute no máximo 14 (substitui o 18 da D-163 e D-172...)".
+  - 13 · Vigor dos dinossauros. D-164: "perto de 8", estegossauro 8. Vale decisoes-autor §11: "a D-164 era diretriz, e o estegossauro fica com 10"; §14: "Dinossauros grandes ficam com Vigor 10".
+  - 14 · Vigor por portes. D-176 (Estado): "+1 a cada dois portes acima do animal de base, arredondado para cima, no mínimo +1". Vale decisoes-autor §6: "Força e Vigor pela massa final; o resto pelo corpo".
+  - 15 · A versão maior. D-176: "se um gato tem Vigor X, um gato gigante tem que ter Vigor maior do que X". Vale para gigante e atroz; na segunda ficha da mesma espécie vale decisoes-autor §11: "a maior (litoral, grande) fica igual ou acima (D-176)".
+  - 16 · Fôlego. D-134: "para Especialidade de Atletismo ou texto"; D-142: "fôlego longo indo para a Natação". Vale tamanho-decisoes-3, item 10: "Fôlego, tempo de corrida e de voo e resistência a veneno saem de Vigor + Resistência, e o que vale só em algumas situações vira Especialidade".
+  - 17 · Especialidade natural. D-150: o sentido melhor "entra por bônus fixo, Especialidade ou secundária". Vale tamanho-decisoes-4, item 3: "Fica fora do limite do livro", "Teto de +3", "Substitui o «bônus fixo de sentido» da D-150". **O teto de +3 é por Especialidade, e não no total da criatura**: é a leitura que as fichas usam (`tmp/veterana/tamanho-regras-final-3.md` l.251), confirmada pelo autor nesta decisão.
+  - 18 · Voo. D-136: "As diferenças entre espécies vêm da secundária Voo" (na velocidade). Vale decisoes-autor §11: Natação e Voo valem "nas jogadas (manobrar no ar ou na água), e a velocidade continua congelada"; §18: "a Habilidade de Voo mede manobra". O bônus próprio do voador sobrenatural (D-136) segue.
+  - 19 · O que o tamanho decide. D-132: o porte "vem das DIMENSÕES" e decide espaço, alcance, acerto e velocidade; D-148: o porte "(acerto, alcance, velocidade) passa a combinar a massa com a maior área". Vale tamanho-decisoes-3, item 25 ("Nome «Alvo» para a categoria de tamanho pela área") e item 26 ("Alcance do corpo a corpo pelas dimensões... e não pelo Alvo"), com a velocidade congelada (item 23).
+  - 20 · Manobras pela massa. D-115: "Força 4 bate como Força 4 em qualquer criatura (dano, limite do Bloqueio, agarrão)". Vale tamanho-decisoes-2, item 1: "a manobra e o Bloqueio usam a massa", +3 por faixa e trava de 2 faixas. O dano continua universal pela Força.
+  - 21 · Disparo. C-014: "`disparo` vira entrada em `ataques` (distancia: true)". Vale decisoes-autor §14: Habilidade secundária "Disparo", jogada Vigor + Disparo.
+  - 22 · Esforço contínuo (nenhuma D). Vale tamanho-decisoes-5, item 1: "é observação do mundo real, não regra... O campo «Esforço contínuo» sai das fichas", no lugar de tamanho-decisoes-4, item 5.
+  - 23 · Aparência medonha. Fechado pela D-181.
+  - 24 · Os delegados do tamanho-decisoes-3 (itens 15, 16, 19, 20, 21, 22, 23, 24, 25 e 26) passam a valer como regra, e deixam de ser revisáveis só por serem delegados. Onde um arquivo mais novo trata do mesmo ponto, vale o mais novo: o item 21 (Faixa 1 de PV) cede à tabela de 11 linhas (ponto 9), e o item 19 (custos da massa alta) continua sendo sugestão para a fase de testes, que é o que ele diz.
+- Estado: decidida; vale para as fichas de criatura e para o manual (`../tmp/arquiteto/bestiario/manual-fichas-criatura.md`, seção 3, que passa a ter uma fonte só). Cada decisão antiga citada leva no Estado a marca "substituída em parte pela D-180" no ponto em que diverge. **O site não muda por esta decisão:** a publicação do bestiário (D-179, item 19) segue fazendo manobra, alcance e velocidade como hoje, e o nome "Porte" continua no site (D-179, item 13), embora o item 25 ("Alvo") agora seja regra; a troca do nome no site e no livro é rodada à parte, com ordem do autor.
+
+### D-181 · Aparência de criatura: escala de 0 a 12; o medonho é habilidade especial, e não número [tags: bestiario, criatura, aparencia, medonho, habilidade-especial, sem-regra-ainda, d-107, d-138, b20]
+- Data: 2026-10-21
+- Decisão (autor, 21/10/2026): "Aparência: a escala vai de 0 a 12 para qualquer criatura. As D-107 e D-138 («de 4 (Feio) a 8 (Atraente)») ficam como faixa típica dos animais, não como limite. Criaturas especialmente medonhas ou feitas para isso (demônios, aberrações e similares) podem ter uma habilidade especial que piora a aparência. Essa habilidade é um efeito (medo, repulsa, não conseguir olhar) e não um número abaixo de 0; entra na ficha como «sem regra ainda», com a descrição do que faz."
+- Origem: mensagem do autor de 21/10/2026, resposta ao grupo 7 de `divergencias-manual.md` (ponto 23).
+- Estado: decidida; vale para as fichas de criatura. Substitui em parte a D-107 e a D-138 (o "de 4 a 8" deixa de ser limite e vira faixa típica dos animais). A habilidade de aparência medonha não tem mecânica: linha `sem regra ainda:` nas Manobras da ficha, sem número.
+
+### D-182 · Nem tudo na ficha precisa ter regra [tags: bestiario, criatura, fichas, sem-regra-ainda, manual, bestiarista, d-087, b20]
+- Data: 2026-10-21
+- Decisão (autor, 21/10/2026, princípio para o topo do manual): "nem tudo o que vai na ficha precisa ter regra. A ficha registra o que a criatura é e faz; o que não tem regra fica marcado «sem regra ainda» e a regra vem depois. A Bestiarista não inventa regra nem para a ficha por falta dela."
+- Origem: mensagem do autor de 21/10/2026.
+- Estado: decidida; no topo de `../tmp/arquiteto/bestiario/manual-fichas-criatura.md`. Convive com a D-087 (o caso de borda é do Mestre) e com a D-174 (dúvida que não bloqueia vira decisão provisória com nota): a falta de regra não é dúvida que bloqueia, e não vira pergunta ao autor.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
