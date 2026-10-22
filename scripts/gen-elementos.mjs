@@ -47,7 +47,7 @@ const M = TODAS.filter((m) => !CUSTOM_IDS.has(m.id));
 // Vocabulário fechado. Mistura três eixos de propósito, porque as três coisas
 // machucam: elemento das Artes, tipo de dano físico, e natureza ou material.
 const VOCAB = new Set([
-  'fogo', 'agua', 'gelo', 'raio', 'vento', 'terra', 'luz', 'sombra',
+  'fogo', 'agua', 'gelo', 'raio', 'vento', 'terra', 'luz', 'sombra', 'acido',
   'corte', 'perfuracao', 'impacto',
   'sagrado', 'profano', 'prata', 'sol',
 ]);

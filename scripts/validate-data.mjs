@@ -215,7 +215,7 @@ for (const w of data.armas || []) {
 // Fraquezas e resistências do bestiário (satélite semeado por gen-elementos.mjs).
 // Vocabulário FECHADO de propósito: palavra nova aqui é decisão de regra, não digitação.
 const ELEM_VOCAB = new Set([
-  'fogo', 'agua', 'gelo', 'raio', 'vento', 'terra', 'luz', 'sombra',
+  'fogo', 'agua', 'gelo', 'raio', 'vento', 'terra', 'luz', 'sombra', 'acido',
   'corte', 'perfuracao', 'impacto', 'sagrado', 'profano', 'prata', 'sol',
 ]);
 // A projeção no tabuleiro (bloco `grid`, semeado por gen-grid-artes.mjs).
