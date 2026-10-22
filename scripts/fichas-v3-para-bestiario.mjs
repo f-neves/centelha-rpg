@@ -24,8 +24,9 @@ if (!PASTA_FICHAS || !TSV) { console.error('uso: --fichas <pasta> --tsv <arquivo
 // ------------------------------------------------------------------ os ajustes
 // O que a ficha não carrega (decisoes-etapa-6.md §1; D-179, item 12). Chave: o nome
 // do arquivo em fichas-v3. O id de toda ficha sai do .tsv, nunca da célula `id`.
+// O lobo-terrivel saiu em 22/10/2026 (D-179, item 20): a ficha virou lobo-atroz.md, com o
+// nome Lobo Atroz na célula Nome, e as 97 fontes saem iguais byte a byte.
 const AJUSTE_FICHA = {
-  'lobo-terrivel': { id: 'lobo-atroz', nome: 'Lobo Atroz' },
   'cao': { id: 'cachorro' },
   'cao-de-guarda': { id: 'cachorro-de-guarda' },
 };
