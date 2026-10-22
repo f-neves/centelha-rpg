@@ -2542,7 +2542,7 @@ As D-176 a D-178 respondem às questões 1, 2 e 3a de `../tmp/arquiteto/bestiari
 - Data: 2026-10-22
 - Decisão (autor, 22/10/2026): "Não quero «Alvo», quero «Tamanho». Porque é a «Categoria de Tamanho» do alvo. Então é Tamanho: Grande, Médio, Pequeno, Enorme, etc"
 - Origem: mensagem do autor de 22/10/2026, resposta à pergunta do Arquiteto sobre a troca de "Porte" por "Alvo" (D-179, item 13).
-- Estado: a implementar. Substitui o nome "Alvo" do item 25 do tamanho-decisoes-3 (delegado que a D-180, ponto 24, tornou regra) e o "O nome «Porte» continua" do item 13 da D-179. Só o nome muda: as oito categorias (Minúsculo, Miúdo, Pequeno, Médio, Grande, Enorme, Imenso, Colossal), o que elas decidem e os números ficam. A troca no site, no livro e na mesa é texto visível; as chaves internos dos dados (`porte` nos JSON) não mudam.
+- Estado: a implementar. Substitui o nome "Alvo" do item 25 do tamanho-decisoes-3 (delegado que a D-180, ponto 24, tornou regra) e o "O nome «Porte» continua" do item 13 da D-179. Só o nome muda: as oito categorias (Minúsculo, Miúdo, Pequeno, Médio, Grande, Enorme, Imenso, Colossal), o que elas decidem e os números ficam. A troca no site, no livro e na mesa é texto visível; as chaves internas dos dados (`porte` nos JSON) não mudam.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
