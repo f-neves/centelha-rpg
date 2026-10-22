@@ -308,11 +308,11 @@ O modo **Perfurante** tem um **Nível de Perfuração** (0–3) e enfrenta o **N
 
 A **Couraça** é a armadura natural de uma criatura, e vem **só da pele**: couro grosso, escama, placa, carapaça. A massa não dá Couraça; ela decide a Vida (ver [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura)). Nas coberturas mais duras, a ficha também pode dar **Perfuração natural**, o mesmo gate da armadura.
 
-Cada criatura tem um **nível de Couraça de 0 a 12**, numa escala só para animais, extintos, gigantes e criaturas sobrenaturais. O nível é de comparação: a criatura fica no nível em que cai quando posta ao lado das outras. Bicho grande tende a ter pele mais grossa, mas o tamanho não manda sozinho: um tatu de carapaça fica acima de um elefante. Para comparar: humano 0; cavalo 1; porco 1 a 2; búfalo e elefante 2 a 3; hipopótamo e rinoceronte 3 a 4; crocodilo e tatu 4 a 5; tartaruga grande, cerca de 6; anquilossauro 7 a 8. Acima disso ficam as criaturas sobrenaturais.
+Cada criatura tem um **nível de Couraça de 0 a 12**, numa escala única para animais, extintos, gigantes e criaturas sobrenaturais. O nível é de comparação: a criatura fica no nível em que cai quando posta ao lado das outras. Bicho grande tende a ter pele mais grossa, mas o tamanho não manda sozinho: um tatu de carapaça fica acima de um elefante. Para comparar: humano 0; cavalo 1; porco 1 a 2; búfalo e elefante 2 a 3; hipopótamo e rinoceronte 3 a 4; crocodilo e tatu 4 a 5; tartaruga grande, cerca de 6; anquilossauro 7 a 8. Acima disso ficam as criaturas sobrenaturais.
 
 **Quanto cada nível vale na Absorção: sem regra ainda.** Até essa regra sair, o nível fica na ficha e não entra na Absorção.
 
-<p class="muted">A mesa ainda faz a conta antiga (Couraça pelo tamanho, de +2 no Grande a +10 no Colossal) para as criaturas sem ficha nova, até o código mudar.</p>
+<p class="muted">A mesa ainda faz a conta antiga (Couraça pelo tamanho, de +2 no Grande a +10 no Colossal, e Perfuração natural de N1 no Enorme a N3 no Colossal) para as criaturas sem ficha nova, até o código mudar.</p>
 
 ### Trocar de modo
 
