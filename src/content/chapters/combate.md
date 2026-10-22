@@ -264,9 +264,9 @@ A massa se conta em **sete faixas**:
 | 6 | até 110 t |
 | 7 | acima de 110 t |
 
-- **+3 por faixa:** o mais pesado soma **+3 por faixa de massa de diferença**, sem teto, na jogada da Manobra quando ataca e na Defesa de agarrão (ou na Defesa contra derrubar e empurrar) quando é o alvo. Esse +3 não entra na Margem.
+- **+3 por faixa:** o mais pesado soma **+3 por faixa de massa de diferença**, sem teto <small>(provisório)</small>, na jogada da Manobra quando ataca e na Defesa de agarrão (ou na Defesa contra derrubar e empurrar) quando é o alvo. Esse +3 não entra na Margem. <small>(provisório)</small>
 - **Trava de 2 faixas:** quem está **2 faixas ou mais acima** não pode ser agarrado, derrubado nem empurrado, nem ter o golpe aparado (ver *Força e massa*). Cada ponto de Centelha de quem está embaixo sobe a trava em uma faixa.
-- **Agarrão contra a trava:** se o mais pesado perde a manutenção, o agarrado só se solta; os papéis não se invertem.
+- **Agarrão contra a trava:** se o mais pesado perde a manutenção, o agarrado só se solta; os papéis não se invertem. <small>(provisório)</small>
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>O humano é da faixa 3. Contra um halfling de 25 kg (faixa 2), o humano tem +3; contra um lobo ou um gorila (faixa 3), nada, e decidem a Força e a Briga; contra um cavalo, um urso ou um roc de 750 kg (faixa 4), o bicho tem +3; contra um rinoceronte ou um elefante (faixa 5), o humano não agarra, não derruba, não empurra e não apara sem Centelha.</div>
 
@@ -346,10 +346,10 @@ Já as armas de arremesso **lentas** (a lança ou o machado lançado, o pilum, o
 
 Aparar exige **força e massa para bancar o impacto**. Num golpe **corpo a corpo**, se o atacante te atropela demais, a rota de **Bloqueio some** e resta só a Esquiva:
 
-- **Massa:** você não bloqueia um atacante **2 ou mais faixas de massa acima** da sua (ver *Massa nas Manobras*). O humano (faixa 3) ainda apara um cavalo ou um urso (faixa 4), mas não um rinoceronte nem um elefante (faixa 5). No Bloqueio vale só a trava: o +3 por faixa das Manobras não entra.
+- **Massa:** você não bloqueia um atacante **2 ou mais faixas de massa acima** da sua (ver *Massa nas Manobras*). O humano (faixa 3) ainda apara um cavalo ou um urso (faixa 4), mas não um rinoceronte nem um elefante (faixa 5). No Bloqueio vale só a trava: o +3 por faixa das Manobras não entra. <small>(provisório)</small>
 - **Força:** mesmo com a mesma massa, você não bloqueia quem tem **Força pelo menos o dobro da sua e ao menos +4 acima** (o brutamontes que arranca a arma da sua mão no impacto).
 
-A **Centelha rompe o limite mortal:** cada ponto de Centelha do defensor **sobe a trava de massa em uma faixa** (com Centelha 1, o humano já apara um elefante). E se a **sua Centelha for maior que 0 e igual ou maior que a do atacante**, a regra de Força é ignorada: poder equipara poder. Entre dois mortais (Centelha 0 contra Centelha 0), a regra de Força vale.
+A **Centelha rompe o limite mortal:** cada ponto de Centelha do defensor **sobe a trava de massa em uma faixa** (com Centelha 1, o humano já apara um elefante). E se a **sua Centelha for maior que 0 e igual ou maior que a do atacante**, a regra de Força é ignorada: poder equipara poder. Entre dois mortais (Centelha 0 contra Centelha 0), a regra de Força vale. <small>(provisório)</small>
 
 **Escudo grande escora:** plantar um escudo de tronco (heater, kite, scutum ou pavês) deixa você aguentar **uma faixa de massa acima** do seu limite, porque você escora a massa com o corpo todo em vez de aparar no braço.
 

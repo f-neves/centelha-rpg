@@ -1194,7 +1194,7 @@
     ]
   },
   "bloqueioLimite": {
-    "nota": "Limite físico do Bloqueio no CORPO A CORPO (D-180, ponto 20): não se apara atacante 2 faixas de massa ou mais acima; cada ponto de Centelha do defensor sobe a trava em uma faixa; o escudo grande plantado soma uma faixa. Força: trava se a do atacante for >= forcaRatio × a do defensor E >= defensor + forcaGapMin; só uma Centelha do defensor maior que 0 e igual ou maior que a do atacante ignora essa trava (entre mortais ela vale). Não vale à distância (lá vale a regra de projéteis). Só trava a rota de Bloqueio; a Esquiva continua sempre. Os campos porteMaxDiferenca, centelhaSobePorte e escudoGrandeBonusPorte guardam a conta antiga, pela diferença de tamanho, e ficam nos dados até o código mudar; nenhum código os aplica.",
+    "nota": "Limite físico do Bloqueio no CORPO A CORPO (D-180, ponto 20): não se apara atacante 2 faixas de massa ou mais acima; cada ponto de Centelha do defensor sobe a trava em uma faixa; o escudo grande plantado soma uma faixa. Força: trava se a do atacante for >= forcaRatio × a do defensor E >= defensor + forcaGapMin; só uma Centelha do defensor maior que 0 e igual ou maior que a do atacante ignora essa trava (entre mortais ela vale) (provisório). Não vale à distância (lá vale a regra de projéteis). Só trava a rota de Bloqueio; a Esquiva continua sempre. Os campos porteMaxDiferenca, centelhaSobePorte e escudoGrandeBonusPorte guardam a conta antiga, pela diferença de tamanho, e ficam nos dados até o código mudar; nenhum código os aplica.",
     "porteMaxDiferenca": 1,
     "centelhaSobePorte": 1,
     "escudoGrandeBonusPorte": 1,

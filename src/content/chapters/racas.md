@@ -70,7 +70,7 @@ Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das ou
 
 ### Gnomo
 
-Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Idade adulta aos 18 anos; podem viver mais de **300 anos**.
+Pequenos e resistentes. Pesam **20–30 kg** e medem **1,00–1,30 m**. Idade adulta aos 18 anos; podem viver mais de **300 anos**.
 
 - **Custo de XP:** 30 <small>(provisório: desceu de 40 quando o Gnomo passou a ser de tamanho **Pequeno** e perdeu PV)</small>
 - **Vida pela massa** (de 15 a 35 kg): a Vida é 20 + Vigor × 2, a linha de 15 a 35 kg da tabela de [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura).

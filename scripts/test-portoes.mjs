@@ -200,7 +200,7 @@ const NAO_E_TOLERANCIA = [
   ['src/components/TecnicaItem.astro', 'Texto provisório: revisar',
     'rótulo de tela, dirigido ao leitor: é o dado `t.pendente` do JSON aparecendo, e não uma trava afrouxada.'],
   ['src/pages/artes/efeitos.astro', 'Sem Efeitos por enquanto',
-    'frase de tela para uma lista vazia.'],
+    'frase de tela para uma lista vazia.'], ['src/pages/mesa/referencia.astro', 'a regra de Força. <small>(provisório)</small>', 'rótulo de tela, dirigido ao leitor: a marca de regra provisória do autor (D-183, complemento 3), igual à do livro, e não uma trava afrouxada no código.'],
   ['scripts/gen-lista-equip.mjs', 'Sem imagem por enquanto',
     'frase do texto gerado, dirigida a quem o lê.'],
   ['src/pages/mesa/grid.astro', 'dividem um metro quadrado, e por ora a resposta é não',
