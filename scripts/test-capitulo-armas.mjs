@@ -910,9 +910,9 @@ function conferirPorte(comb, R, gloss, ref, mesa) {
   for (const l of ['| **Maior** em *n* categorias | **+3 × n** | **+3 × n** |', '| **Do mesmo tamanho** | 0 | 0 |', '| **Menor** em *n* categorias | **0** | **−3 × n** |']) linha(l, 'Combate, Porte, tabela');
   comeca('Sem teto quer dizer sem teto:', ['um Miúdo que ataca um Colossal soma **+18**, de perto ou de longe.', 'rola sem penalidade', '**−18**'], 'Combate, Porte, exemplo');
   comeca('Atirar num Colossal **muito longe** continua difícil:', ['o tamanho não escala a Efetiva', 'entra só como bônus fixo no acerto.', 'Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.'], 'Combate, Porte, Colossal e enxame');
-  comeca('Isso é **só no acerto**:', ['não é modificador de Defesa (então fica fora do teto de +6 dos bônus de Defesa)', 'ataques **Sociais** ou **Mentais**, nem a Artes de **área** sem rolagem de ataque.', 'a **Couraça de Porte**'], 'Combate, Porte, exclusões');
+  comeca('Isso é **só no acerto**:', ['não é modificador de Defesa (então fica fora do teto de +6 dos bônus de Defesa)', 'ataques **Sociais** ou **Mentais**, nem a Artes de **área** sem rolagem de ataque.', 'a pele pode dar Couraça (ver *Couraça*).'], 'Combate, Porte, exclusões');
   linha('<div class="callout regra"><span class="lbl">Nota ao Mestre</span>O tamanho não dá Defesa a ninguém. Quando duas criaturas maiores que Médio lutam <strong>entre si</strong>, o Mestre pode aumentar a Defesa delas.</div>', 'Combate, Porte, nota ao Mestre');
-  comeca('Controlar alguém em vez de feri-lo é uma **Manobra**', ['O tamanho conta no acerto como em qualquer ataque de corpo a corpo: só o menor ganha bônus contra o maior (ver *Tamanho*).'], 'Combate, Manobras');
+  comeca('Controlar alguém em vez de feri-lo é uma **Manobra**', ['Na Manobra quem pesa é a **massa**, e não o tamanho: o bônus de tamanho do acerto não entra em agarrar, derrubar e empurrar (ver *Massa nas Manobras*, abaixo).'], 'Combate, Manobras');
   if (/\+12\*\* \(teto\)|\*\*Simétrico:\*\*|até 4 categorias|\| Alvo \*\*\d\*\* categorias? maiores?/.test(comb)) f.push('Combate: sobrou o teto de 4 categorias, o "+12 (teto)" ou o "Simétrico" do porte velho');
   // regras.json: porteAcerto
   const PA = R?.porteAcerto;
@@ -959,7 +959,7 @@ function conferirPorte(comb, R, gloss, ref, mesa) {
     'a exclusão social/mental/área sumida': (c) => [c.replace('ataques **Sociais** ou **Mentais**, nem a Artes de **área** sem rolagem de ataque.', 'ataques Sociais.')],
     'a nota ao Mestre sumida': (c) => [c.replace('<div class="callout regra"><span class="lbl">Nota ao Mestre</span>O tamanho não dá Defesa a ninguém.', '<div class="callout regra"><span class="lbl">Aviso</span>O tamanho não dá Defesa a ninguém.')],
     'o teto de ±6 de volta no porte': (c) => [c.replace('(então fica fora do teto de +6 dos bônus de Defesa)', 'e não entra no teto de ±6')],
-    'a frase de Manobras com a penalidade': (c) => [c.replace('só o menor ganha bônus contra o maior (ver *Tamanho*).', 'o bônus e a penalidade valem como em qualquer ataque.')],
+    'a frase de Manobras com a penalidade': (c) => [c.replace('o bônus de tamanho do acerto não entra em agarrar, derrubar e empurrar', 'o bônus de tamanho do acerto vale como em qualquer ataque')],
     'a Efetiva escalada pelo porte': (c) => [c.replace('o tamanho não escala a Efetiva', 'o tamanho escala a Efetiva')],
     'o teto de 4 categorias em regras.json': (c, r) => [c, ed(r, (x) => { x.porteAcerto.nota += ' Conta a diferença de categorias na ordem dos portes, com teto de 4 categorias (diferenças maiores contam como 4).'; })],
     'o porCategoria estragado': (c, r) => [c, ed(r, (x) => { x.porteAcerto.reforma.porCategoria = 4; })],

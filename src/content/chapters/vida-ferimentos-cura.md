@@ -15,18 +15,25 @@ O tipo do golpe importa, e importa **antes**: é ele que escolhe a Absorção co
 
 <p class="formula">PV = 25 + (Vigor × 3)</p>
 
-Essa é a durabilidade de uma criatura de **porte Médio**, o padrão dos humanoides e dos personagens. Criaturas maiores aguentam mais e as menores bem menos, mesmo com o mesmo Vigor: a base sobe com o tamanho o tempo todo, e o multiplicador de Vigor sobe até Enorme e para em 5 dali em diante (Imenso e Colossal só ganham base). Um urso (Grande) de Vigor 5 tem 50 PV, enquanto um elfo (Médio) de mesmo Vigor tem 40.
+Essa é a Vida de quem pesa **de 35 a 220 kg**, como os humanoides e os personagens. A Vida vem da **massa**, e não do tamanho: quem pesa mais aguenta mais, e quem pesa menos aguenta bem menos, mesmo com o mesmo Vigor. A base sobe com a massa, e o multiplicador do Vigor também, até × 5. Um urso de 400 kg com Vigor 5 tem 30 + 5 × 4 = 50 PV; um elfo de 55 kg com o mesmo Vigor tem 40.
 
-| Porte | PV |
-|---|---|
-| Minúsculo | 15 + (Vigor × 1) |
-| Miúdo | 15 + (Vigor × 1) |
-| Pequeno | 20 + (Vigor × 2) |
-| Médio | 25 + (Vigor × 3) |
-| Grande | 30 + (Vigor × 4) |
-| Enorme | 35 + (Vigor × 5) |
-| Imenso | 40 + (Vigor × 5) |
-| Colossal | 45 + (Vigor × 5) |
+| Massa | PV | Com Vigor 3 | Zona de transição |
+|---|---|---|---|
+| até 100 g | 1 | 1 | 70 a 130 g |
+| 100 g a 1 kg | Vigor | 3 | 0,7 a 1,3 kg |
+| 1 a 4 kg | 5 + (Vigor ÷ 2, para baixo) | 6 | 3 a 5 kg |
+| 4 a 8 kg | 10 + Vigor | 13 | 6,4 a 9,6 kg |
+| 8 a 15 kg | 15 + Vigor | 18 | 12 a 18 kg |
+| 15 a 35 kg | 20 + (Vigor × 2) | 26 | 28 a 42 kg |
+| 35 a 220 kg | 25 + (Vigor × 3) | 34 | 187 a 253 kg |
+| 220 kg a 1,8 t | 30 + (Vigor × 4) | 42 | 1,62 a 1,98 t |
+| 1,8 a 14 t | 35 + (Vigor × 5) | 50 | 12,6 a 15,4 t |
+| 14 a 110 t | 40 + (Vigor × 5) | 55 | 104,5 a 115,5 t |
+| acima de 110 t | 45 + (Vigor × 5) | 60 | |
+
+Na **zona de transição**, perto de um corte, a ficha da criatura escolhe a linha pelo corpo (o robusto sobe, o frágil desce) e diz por quê. Criaturas sem massa de verdade (um elemental, um fantasma, uma geleia) usam o volume no lugar da massa. Esta tabela é só da Vida: as Manobras e o Bloqueio usam sete faixas de massa (ver [Combate](/regras/combate#massa-nas-manobras)).
+
+<p class="muted">O bestiário e a mesa ainda dão a Vida pelo tamanho (a tabela antiga, de 15 + Vigor no Minúsculo e no Miúdo a 45 + Vigor × 5 no Colossal) às criaturas sem ficha nova, até o código mudar.</p>
 
 A sua **Vida restante** é o PV máximo menos o dano total marcado; é a porcentagem dela que diz em que estado você está, na tabela abaixo.
 

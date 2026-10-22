@@ -797,6 +797,77 @@
           "base": 45,
           "vigorMult": 5
         }
+      },
+      "massa": {
+        "nota": "Regra nova (decisoes-autor §9; D-180, ponto 9): a Vida pela massa. O motor ainda usa derivados.pv.porte até o código mudar.",
+        "linhas": [
+          {
+            "massa": "até 100 g",
+            "pv": "1",
+            "comVigor3": 1,
+            "transicao": "70 a 130 g"
+          },
+          {
+            "massa": "100 g a 1 kg",
+            "pv": "Vigor",
+            "comVigor3": 3,
+            "transicao": "0,7 a 1,3 kg"
+          },
+          {
+            "massa": "1 a 4 kg",
+            "pv": "5 + (Vigor ÷ 2, para baixo)",
+            "comVigor3": 6,
+            "transicao": "3 a 5 kg"
+          },
+          {
+            "massa": "4 a 8 kg",
+            "pv": "10 + Vigor",
+            "comVigor3": 13,
+            "transicao": "6,4 a 9,6 kg"
+          },
+          {
+            "massa": "8 a 15 kg",
+            "pv": "15 + Vigor",
+            "comVigor3": 18,
+            "transicao": "12 a 18 kg"
+          },
+          {
+            "massa": "15 a 35 kg",
+            "pv": "20 + (Vigor × 2)",
+            "comVigor3": 26,
+            "transicao": "28 a 42 kg"
+          },
+          {
+            "massa": "35 a 220 kg",
+            "pv": "25 + (Vigor × 3)",
+            "comVigor3": 34,
+            "transicao": "187 a 253 kg"
+          },
+          {
+            "massa": "220 kg a 1,8 t",
+            "pv": "30 + (Vigor × 4)",
+            "comVigor3": 42,
+            "transicao": "1,62 a 1,98 t"
+          },
+          {
+            "massa": "1,8 a 14 t",
+            "pv": "35 + (Vigor × 5)",
+            "comVigor3": 50,
+            "transicao": "12,6 a 15,4 t"
+          },
+          {
+            "massa": "14 a 110 t",
+            "pv": "40 + (Vigor × 5)",
+            "comVigor3": 55,
+            "transicao": "104,5 a 115,5 t"
+          },
+          {
+            "massa": "acima de 110 t",
+            "pv": "45 + (Vigor × 5)",
+            "comVigor3": 60,
+            "transicao": ""
+          }
+        ]
       }
     },
     "danoForca": {
@@ -946,7 +1017,7 @@
     },
     "centelhaNoSoak": 1,
     "couracaPorte": {
-      "nota": "Couraça natural pela MASSA/pele/escamas/casco da criatura, por porte. Absorção EXTRA aplicada SÓ a Corte e Perfuração: o Impacto NÃO recebe couraça (continua sendo o abridor de lata contra massa, do mesmo modo que é a resposta contra placa). 'resistPerf' = gate natural de Perfuração: ataque Perfurante com Nível de Perfuração ABAIXO dele resvala (0, nem rola). Empilha com armadura: a couraça SOMA na Absorção; o resistPerf pega o MAIOR (nunca soma). Porte lido do campo porte da ficha de criatura (src/data/bestiario/<id>.json); Médio (humanoide padrão) e menores = 0.",
+      "nota": "CONTA ANTIGA, que o bestiário ainda aplica às criaturas sem ficha nova até o código mudar (D-179, item 19). A regra nova (D-180, ponto 4): a Couraça vem só da pele, nível de 0 a 12 na ficha; quanto cada nível vale na Absorção está sem regra ainda, e por enquanto o nível não entra na Absorção. Os valores abaixo são os da conta antiga: Couraça pelo tamanho, somada SÓ a Corte e Perfuração; 'resistPerf' = gate natural de Perfuração (ataque Perfurante com Nível de Perfuração ABAIXO dele resvala); empilha com armadura (a couraça SOMA; o resistPerf pega o MAIOR). Tamanho lido do campo porte da ficha de criatura (src/data/bestiario/<id>.json); Médio e menores = 0.",
       "minusculo": {
         "couraca": 0,
         "resistPerf": 0
@@ -1100,7 +1171,7 @@
     }
   },
   "porteAcerto": {
-    "nota": "Modificador à JOGADA DE ACERTO de ataques FÍSICOS, pela diferença de categorias de tamanho entre atacante e alvo: +3 por categoria, SEM TETO (D-077). Só no acerto: NÃO altera a Defesa passiva do alvo, não é modificador de Defesa (fica fora do teto de +6 dos bônus de Defesa) e NÃO vale p/ ataques Sociais ou Mentais, nem para Artes de área sem rolagem de ataque. CORPO A CORPO: só o menor ganha (+3 por categoria contra o maior); o maior ataca o menor sem penalidade. À DISTÂNCIA (arremesso, projétil, arco, besta, ataque mágico, Artes físicas à distância): relativo nos dois sentidos, alvo maior +3 por categoria, alvo menor −3 por categoria. O enxame usa o tamanho que apresenta, nos dois papéis. O tamanho não escala a Efetiva. Bichos Enormes+ compensam a facilidade de acerto com a Couraça de Porte, que corta o dano de quem é menor.",
+    "nota": "Modificador à JOGADA DE ACERTO de ataques FÍSICOS, pela diferença de categorias de tamanho entre atacante e alvo: +3 por categoria, SEM TETO (D-077). Só no acerto: NÃO altera a Defesa passiva do alvo, não é modificador de Defesa (fica fora do teto de +6 dos bônus de Defesa) e NÃO vale p/ ataques Sociais ou Mentais, nem para Artes de área sem rolagem de ataque. CORPO A CORPO: só o menor ganha (+3 por categoria contra o maior); o maior ataca o menor sem penalidade. À DISTÂNCIA (arremesso, projétil, arco, besta, ataque mágico, Artes físicas à distância): relativo nos dois sentidos, alvo maior +3 por categoria, alvo menor −3 por categoria. O enxame usa o tamanho que apresenta, nos dois papéis. O tamanho não escala a Efetiva. O tamanho não decide a Vida, a Couraça nem as Manobras: a Vida e as Manobras vêm da massa, e a Couraça vem da pele.",
     "gridNota": "O Grid segue a regra acima desde a D-179 (calc.ts, modificadorPorte, chamado em grid.astro com o ataque de perto ou de longe): sem teto, corpo a corpo só o menor ganha, à distância relativo nos dois sentidos, +3 por categoria pela ordem abaixo (do Minúsculo ao Colossal)",
     "reforma": {
       "porCategoria": 3,
@@ -1123,7 +1194,7 @@
     ]
   },
   "bloqueioLimite": {
-    "nota": "Limite físico do Bloqueio no CORPO A CORPO: quem é muito atropelado em porte ou Força não consegue interpor a guarda e só pode Esquivar. Não vale à distância (lá vale a regra de projéteis). Só trava a rota de Bloqueio; a Esquiva continua sempre. porteMaxDiferenca = maior diferença de porte (atacante − defensor) ainda bloqueável (1 = segura até 1 categoria maior; 2+ trava). centelhaSobePorte = cada ponto de Centelha do defensor soma a esse teto. escudoGrandeBonusPorte = plantar um escudo grande (escudosGrandes) soma +1 ao teto. Força: trava se a Força do atacante for >= forcaRatio × a do defensor E >= defensor + forcaGapMin. centelhaIgnoraForca = se a Centelha do defensor >= a do atacante, a regra de Força é ignorada.",
+    "nota": "Limite físico do Bloqueio no CORPO A CORPO (D-180, ponto 20): não se apara atacante 2 faixas de massa ou mais acima; cada ponto de Centelha do defensor sobe a trava em uma faixa; o escudo grande plantado soma uma faixa. Força: trava se a do atacante for >= forcaRatio × a do defensor E >= defensor + forcaGapMin; só uma Centelha do defensor maior que 0 e igual ou maior que a do atacante ignora essa trava (entre mortais ela vale). Não vale à distância (lá vale a regra de projéteis). Só trava a rota de Bloqueio; a Esquiva continua sempre. Os campos de porte abaixo são da CONTA ANTIGA, pela diferença de tamanho (porteMaxDiferenca = maior diferença ainda bloqueável; centelhaSobePorte; escudoGrandeBonusPorte), e ficam até o código mudar.",
     "porteMaxDiferenca": 1,
     "centelhaSobePorte": 1,
     "escudoGrandeBonusPorte": 1,

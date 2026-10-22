@@ -241,6 +241,8 @@ function converte(arq) {
   const alvo = (/\*\*([A-Za-zÀ-ú]+)\*\*/.exec(celula(corpoPorte, 'Tamanho')) || [])[1] || (celula(corpoPorte, 'Tamanho') || '').split(/[\s(]/)[0];
   const porte = PORTE_DO_SITE[alvo];
   if (!porte) throw new Error(`${arq}: Tamanho desconhecido "${alvo}" (a linha | Tamanho | da ficha, D-183)`);
+  // O segundo tamanho não vai para os dados; a linha só tem de existir com o nome novo (D-183, complemento 2).
+  if (celula(corpoPorte, 'Segundo Tamanho') == null) throw new Error(`${arq}: sem a linha | Segundo Tamanho | (D-183, complemento 2)`);
   const medida = (rot) => { const v = negrito(celula(corpoPorte, rot)); return v && v > 0 ? v : undefined; };
   const massaTxt = (/\*\*([^*]+)\*\*/.exec(celula(corpoPorte, 'Massa')) || [])[1];
   const comp = medida('Comprimento total') ?? medida('Comprimento');

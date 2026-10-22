@@ -226,10 +226,11 @@ const PORTE_NOME: Record<string, string> = {
       <h3>Bloqueio: quando não dá</h3>
       <p class="ref-nota">{BLOQ.nota}</p>
       <ul class="ref-lista">
-        <li>Porte: bloqueia até <strong>{BLOQ.porteMaxDiferenca}</strong> categoria acima, <strong>+{BLOQ.centelhaSobePorte}</strong> por ponto de Centelha, <strong>+{BLOQ.escudoGrandeBonusPorte}</strong> com escudo grande plantado.</li>
+        <li>Massa: não apara quem está <strong>2 faixas de massa</strong> ou mais acima; <strong>+1 faixa</strong> por ponto de Centelha e <strong>+1</strong> com escudo grande plantado.</li>
         <li>Força: trava se a do atacante for <strong>≥ {BLOQ.forcaRatio}×</strong> a do defensor <em>e</em> pelo menos <strong>{BLOQ.forcaGapMin}</strong> pontos acima.</li>
-        {BLOQ.centelhaIgnoraForca && <li>Centelha do defensor <strong>≥</strong> a do atacante ignora a regra de Força.</li>}
+        {BLOQ.centelhaIgnoraForca && <li>Centelha do defensor <strong>maior que 0</strong> e <strong>≥</strong> a do atacante ignora a regra de Força.</li>}
       </ul>
+      <p class="ref-nota muted">A mesa não aplica esta trava sozinha: quem decide é o Mestre.</p>
     </section>
 
     <!-- ============ PORTE ============ -->
@@ -247,24 +248,15 @@ const PORTE_NOME: Record<string, string> = {
       </table></div>
       <p class="ref-nota muted">Colunas: a diferença em categorias. Ordem dos tamanhos: {PORTE.ordem.map((p: string) => PORTE_NOME[p] || p).join(' · ')}. Sem teto.</p>
 
-      <h3>Couraça de Porte</h3>
-      <p class="ref-nota">{DANO.couracaPorte.nota}</p>
+      <h3>Couraça</h3>
+      <p class="ref-nota">Vem só da pele: nível de 0 a 12 na ficha. Quanto cada nível vale na Absorção: sem regra ainda; até essa regra sair, o nível não entra na Absorção.</p>
+      <p class="ref-nota muted">A mesa ainda faz a conta antiga (Couraça pelo tamanho, de +2 no Grande a +10 no Colossal) para as criaturas sem ficha nova, até o código mudar.</p>
+      <h3>Vida pela massa</h3>
       <div class="tab-wrap"><table class="tab-mesa">
-        <thead><tr><th>Porte</th><th class="num">Couraça (Corte e Perfuração)</th><th class="num">Gate natural de Perfuração</th></tr></thead>
-        <tbody>{PORTES.map((p) => (
-          <tr><td>{PORTE_NOME[p]}</td>
-            <td class="num">{DANO.couracaPorte[p]?.couraca ?? 0}</td>
-            <td class="num">{DANO.couracaPorte[p]?.resistPerf ? `N${DANO.couracaPorte[p].resistPerf}` : '—'}</td></tr>))}</tbody>
+        <thead><tr><th>Massa</th><th>PV</th><th class="num">Com Vigor 3</th><th>Zona de transição</th></tr></thead>
+        <tbody>{(regras.derivados as any).pv.massa.linhas.map((l: any) => (<tr><td>{l.massa}</td><td>{l.pv}</td><td class="num">{l.comVigor3}</td><td class="muted">{l.transicao}</td></tr>))}</tbody>
       </table></div>
-      <h3>Vida por porte</h3>
-      <div class="tab-wrap"><table class="tab-mesa">
-        <thead><tr><th>Porte</th><th class="num">Base</th><th class="num">× Vigor</th><th class="num">Exemplo (Vigor 3)</th></tr></thead>
-        <tbody>{PORTES.map((p) => {
-          const t = (regras.derivados as any).pv.porte[p];
-          return (<tr><td>{PORTE_NOME[p]}</td><td class="num">{t.base}</td><td class="num">×{t.vigorMult}</td>
-            <td class="num muted">{t.base + 3 * t.vigorMult}</td></tr>);
-        })}</tbody>
-      </table></div>
+      <p class="ref-nota muted">O bestiário e a mesa ainda dão a Vida pelo tamanho (a tabela antiga, de 15 + Vigor no Minúsculo e no Miúdo a 45 + Vigor × 5 no Colossal) às criaturas sem ficha nova, até o código mudar.</p>
     </section>
 
     <!-- ============ DANO ============ -->
