@@ -1978,12 +1978,12 @@
       {
         "nivel": 3,
         "nome": "Forma Bestial",
-        "efeito": "vira por inteiro um animal do seu porte ou menor, com os sentidos e o deslocamento dele",
+        "efeito": "vira por inteiro um animal do seu tamanho ou menor, com os sentidos e o deslocamento dele",
         "custo": {
           "mana": 3
         },
         "exemplos": [
-          "virar por inteiro um animal do seu porte ou menor"
+          "virar por inteiro um animal do seu tamanho ou menor"
         ]
       },
       {

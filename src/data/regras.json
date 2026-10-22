@@ -230,14 +230,14 @@
       },
       "tamanho": {
         "rotulo": "Tamanho",
-        "unidade": "porte que consegue afetar",
+        "unidade": "tamanho que consegue afetar",
         "valores": [
-          "seu porte",
-          "seu porte",
+          "seu tamanho",
+          "seu tamanho",
           "+1 categoria",
           "+2 categorias",
           "+3 categorias",
-          "qualquer porte"
+          "qualquer tamanho"
         ],
         "uso": "agarrar, bloquear, dominar criatura maior"
       },
@@ -1100,7 +1100,7 @@
     }
   },
   "porteAcerto": {
-    "nota": "Modificador à JOGADA DE ACERTO de ataques FÍSICOS, pela diferença de categorias de porte entre atacante e alvo: +3 por categoria, SEM TETO (D-077). Só no acerto: NÃO altera a Defesa passiva do alvo, não é modificador de Defesa (fica fora do teto de +6 dos bônus de Defesa) e NÃO vale p/ ataques Sociais ou Mentais, nem para Artes de área sem rolagem de ataque. CORPO A CORPO: só o menor ganha (+3 por categoria contra o maior); o maior ataca o menor sem penalidade. À DISTÂNCIA (arremesso, projétil, arco, besta, ataque mágico, Artes físicas à distância): relativo nos dois sentidos, alvo maior +3 por categoria, alvo menor −3 por categoria. O enxame usa o tamanho que apresenta, nos dois papéis. O porte não escala a Efetiva. Bichos Enormes+ compensam a facilidade de acerto com a Couraça de Porte, que corta o dano de quem é menor.",
+    "nota": "Modificador à JOGADA DE ACERTO de ataques FÍSICOS, pela diferença de categorias de tamanho entre atacante e alvo: +3 por categoria, SEM TETO (D-077). Só no acerto: NÃO altera a Defesa passiva do alvo, não é modificador de Defesa (fica fora do teto de +6 dos bônus de Defesa) e NÃO vale p/ ataques Sociais ou Mentais, nem para Artes de área sem rolagem de ataque. CORPO A CORPO: só o menor ganha (+3 por categoria contra o maior); o maior ataca o menor sem penalidade. À DISTÂNCIA (arremesso, projétil, arco, besta, ataque mágico, Artes físicas à distância): relativo nos dois sentidos, alvo maior +3 por categoria, alvo menor −3 por categoria. O enxame usa o tamanho que apresenta, nos dois papéis. O tamanho não escala a Efetiva. Bichos Enormes+ compensam a facilidade de acerto com a Couraça de Porte, que corta o dano de quem é menor.",
     "gridNota": "O Grid segue a regra acima desde a D-179 (calc.ts, modificadorPorte, chamado em grid.astro com o ataque de perto ou de longe): sem teto, corpo a corpo só o menor ganha, à distância relativo nos dois sentidos, +3 por categoria pela ordem abaixo (do Minúsculo ao Colossal)",
     "reforma": {
       "porCategoria": 3,

@@ -51,7 +51,7 @@ const PORTES = Object.keys(PORTE_LBL);
           <label class="ed-f ed-wide">Papel em combate
             <select data-ed="tipo">{TIPOS_INIMIGO.map((t) => <option value={t}>{t}</option>)}</select>
           </label>
-          <label class="ed-f ed-wide">Porte
+          <label class="ed-f ed-wide">Tamanho
             <select data-ed="porte">{PORTES.map((p) => <option value={p}>{PORTE_LBL[p]}</option>)}</select>
           </label>
           <label class="ed-f">Ameaça <input type="number" data-ed="ameaca" min="1" max="6" /></label>

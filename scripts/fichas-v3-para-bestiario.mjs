@@ -193,7 +193,7 @@ function converte(arq) {
   const { site, id, imagem, imagem2 } = idDaFicha(arq);
   const aviso = [];
   const ident = S['Identidade'];
-  const corpoPorte = S['Corpo, área e porte'] ?? S['Corpo e porte'];
+  const corpoPorte = S['Corpo, área e tamanho'] ?? S['Corpo e tamanho'] ?? S['Corpo, área e porte'] ?? S['Corpo e porte']; // D-183
   const mov = S['Corpo e movimento'];
 
   // Identidade
@@ -238,9 +238,9 @@ function converte(arq) {
     for (const [k, rot] of [['compaixao', 'Compaixão'], ['conviccao', 'Convicção'], ['temperanca', 'Temperança'], ['valor', 'Valor']]) if (parte.includes(rot)) virtues[k] = Number(n[1]);
   }
   // Corpo e porte
-  const alvo = (/\*\*([A-Za-zÀ-ú]+)\*\*/.exec(celula(corpoPorte, 'Alvo')) || [])[1] || celula(corpoPorte, 'Alvo').split(/[\s(]/)[0];
+  const alvo = (/\*\*([A-Za-zÀ-ú]+)\*\*/.exec(celula(corpoPorte, 'Tamanho')) || [])[1] || (celula(corpoPorte, 'Tamanho') || '').split(/[\s(]/)[0];
   const porte = PORTE_DO_SITE[alvo];
-  if (!porte) throw new Error(`${arq}: Alvo desconhecido "${alvo}"`);
+  if (!porte) throw new Error(`${arq}: Tamanho desconhecido "${alvo}" (a linha | Tamanho | da ficha, D-183)`);
   const medida = (rot) => { const v = negrito(celula(corpoPorte, rot)); return v && v > 0 ? v : undefined; };
   const massaTxt = (/\*\*([^*]+)\*\*/.exec(celula(corpoPorte, 'Massa')) || [])[1];
   const comp = medida('Comprimento total') ?? medida('Comprimento');

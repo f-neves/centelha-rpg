@@ -224,7 +224,7 @@ Uma **arma de duas mãos** ocupa as duas e não permite o segundo ataque; um **e
 
 ## Manobras: agarrar, derrubar, empurrar
 
-Controlar alguém em vez de feri-lo é uma **Manobra**: agarrar, derrubar ou empurrar. É um ataque desarmado, rola-se ao declarar, como em todo golpe, e conta como ataque feito para a Guarda sob pressão. O porte conta no acerto como em qualquer ataque de corpo a corpo: só o menor ganha bônus contra o maior (ver *Porte*). Uma Proeza pode transformar um soco que acerta em agarrão.
+Controlar alguém em vez de feri-lo é uma **Manobra**: agarrar, derrubar ou empurrar. É um ataque desarmado, rola-se ao declarar, como em todo golpe, e conta como ataque feito para a Guarda sob pressão. O tamanho conta no acerto como em qualquer ataque de corpo a corpo: só o menor ganha bônus contra o maior (ver *Tamanho*). Uma Proeza pode transformar um soco que acerta em agarrão.
 
 **Agarrar.** Jogada de ataque: Força ou Destreza (à escolha, normalmente a maior) + Briga, mais a Centelha como em qualquer ataque (2 × menor entre Centelha e Briga), contra a **Defesa de agarrão** do alvo. A Defesa de agarrão é passiva: (Força ou Destreza + Briga ou Atletismo) × 2 + 2 × menor(Centelha, Habilidade usada), sempre o maior de cada par. Total que supera: o alvo fica **Agarrado**, e quem agarrou **controla**. Errar a primeira tentativa é um erro comum de ataque. **Não existe Rajada de agarrão.** O acerto agarra e não fere, e a Margem dele não rende nada: o dano vem na manutenção.
 
@@ -497,9 +497,9 @@ Quando dois golpes caem no **mesmo Tick**, os dois atacantes estão abertos ao m
 
 <p class="muted">Vale a pena dizer por que a regra é essa: se a guarda de quem ainda não narrou a jogada contasse como inteira, a jogada certa seria sempre <em>deixar o outro atacar primeiro</em>, e a vantagem de ter rolado bem na Iniciativa se voltaria contra quem a ganhou.</p>
 
-### Porte: o grande é fácil de acertar, o pequeno é difícil
+### Tamanho: o grande é fácil de acertar, o pequeno é difícil
 
-O tamanho conta na **jogada de acerto** dos **ataques físicos**: cada **categoria de porte** de diferença (Minúsculo · Miúdo · Pequeno · Médio · Grande · Enorme · Imenso · Colossal) soma **+3**, **sem teto**. O corpo a corpo e a distância fazem a conta de jeitos diferentes:
+O tamanho conta na **jogada de acerto** dos **ataques físicos**: cada **categoria de tamanho** de diferença (Minúsculo · Miúdo · Pequeno · Médio · Grande · Enorme · Imenso · Colossal) soma **+3**, **sem teto**. O corpo a corpo e a distância fazem a conta de jeitos diferentes:
 
 - **Corpo a corpo: só o menor ganha.** Quem é menor que o alvo soma **+3 por categoria** de diferença contra ele. Quem é igual ou maior ataca **sem penalidade** e sem bônus. O motivo é de jogo: as criaturas grandes devem ser temidas pelas menores.
 - **À distância, relativo nos dois sentidos.** Qualquer ataque à distância (arremesso, projétil, arco, besta, ataque mágico e Artes físicas à distância) segue a regra do tiro: alvo **maior** que quem ataca, **+3 por categoria**; alvo **menor**, **−3 por categoria**.
@@ -507,16 +507,16 @@ O tamanho conta na **jogada de acerto** dos **ataques físicos**: cada **categor
 | Alvo, comparado a quem ataca | Corpo a corpo | À distância |
 |---|:---:|:---:|
 | **Maior** em *n* categorias | **+3 × n** | **+3 × n** |
-| **Do mesmo porte** | 0 | 0 |
+| **Do mesmo tamanho** | 0 | 0 |
 | **Menor** em *n* categorias | **0** | **−3 × n** |
 
 Sem teto quer dizer sem teto: um Miúdo que ataca um Colossal soma **+18**, de perto ou de longe. O Colossal que bate no Miúdo de perto rola sem penalidade, e o que o atinge de longe (uma Arte, um arremesso) tem **−18**.
 
-Atirar num Colossal **muito longe** continua difícil: o porte não escala a Efetiva (a distância em que a pontaria cai), entra só como bônus fixo no acerto. Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.
+Atirar num Colossal **muito longe** continua difícil: o tamanho não escala a Efetiva (a distância em que a pontaria cai), entra só como bônus fixo no acerto. Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.
 
 Isso é **só no acerto**: não muda a Defesa passiva do alvo, não é modificador de Defesa (então fica fora do teto de +6 dos bônus de Defesa), e não se aplica a ataques **Sociais** ou **Mentais**, nem a Artes de **área** sem rolagem de ataque. E não deixa o gigante indefeso: a **Couraça de Porte** (ver *Dano e Armadura*) devora o dano de quem é menor, então acertá-lo é fácil, mas feri-lo de verdade não é.
 
-<div class="callout regra"><span class="lbl">Nota ao Mestre</span>O porte não dá Defesa a ninguém. Quando duas criaturas maiores que Médio lutam <strong>entre si</strong>, o Mestre pode aumentar a Defesa delas.</div>
+<div class="callout regra"><span class="lbl">Nota ao Mestre</span>O tamanho não dá Defesa a ninguém. Quando duas criaturas maiores que Médio lutam <strong>entre si</strong>, o Mestre pode aumentar a Defesa delas.</div>
 
 ### Pressão: muitos contra um
 

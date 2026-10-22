@@ -828,7 +828,7 @@ function conferirDefesa(comb, cap, sent, R, mesa = '', ref = '') {
     for (const fr of frases) if (!l.includes(fr)) f.push(`${onde}: a linha "${ini.slice(0, 40)}" não tem "${fr.slice(0, 70)}"`);
   };
   if (mesa) {
-    paginaPina(lm, '<p class="muted nota-mini">Os <strong>bônus</strong> de Defesa vão até', ['<strong>+{(regras.combateTatico as any).bonusCap}</strong>', '<strong>penalidades não têm teto</strong>', '<strong>nunca fica abaixo de 0</strong>', 'O porte entra no <em>acerto</em>, sem teto: <strong>+{(regras.porteAcerto as any).reforma.porCategoria} por categoria</strong>, e no corpo a corpo só o menor ganha.</p>'], 'mesa.astro');
+    paginaPina(lm, '<p class="muted nota-mini">Os <strong>bônus</strong> de Defesa vão até', ['<strong>+{(regras.combateTatico as any).bonusCap}</strong>', '<strong>penalidades não têm teto</strong>', '<strong>nunca fica abaixo de 0</strong>', 'O tamanho entra no <em>acerto</em>, sem teto: <strong>+{(regras.porteAcerto as any).reforma.porCategoria} por categoria</strong>, e no corpo a corpo só o menor ganha.</p>'], 'mesa.astro');
     if (/modificadorCap|Teto de <strong>±|somando tudo/.test(mesa)) f.push('mesa.astro: sobrou o teto de ±6 somando tudo ou modificadorCap');
   }
   if (ref) {
@@ -863,7 +863,7 @@ function conferirDefesa(comb, cap, sent, R, mesa = '', ref = '') {
     'a linha do surpreso a -4 de volta': (c, a, t, r, m, rf) => [c, a, t, edita2(r, (x) => { x.combateTatico.modificadores.push({ nome: 'Surpreso, cego ou imobilizado', valor: -4, alvo: 'defesa', nota: 'x' }); }), m, rf],
     'o cego com -4/-4 em combateTatico': (c, a, t, r, m, rf) => [c, a, t, edita2(r, (x) => { x.combateTatico.defesaZerada.linhas[3].bloqueio = -4; }), m, rf],
     'o teto de penalidade em combateTatico': (c, a, t, r, m, rf) => [c, a, t, edita2(r, (x) => { x.combateTatico.penalidadeCap = 6; }), m, rf],
-    'o teto de ±6 somando tudo na mesa': (c, a, t, r, m, rf) => [c, a, t, r, m.replace('<strong>nunca fica abaixo de 0</strong>. O porte', '<strong>nunca fica abaixo de 0</strong>. Teto de <strong>±6</strong> somando tudo. O porte'), rf],
+    'o teto de ±6 somando tudo na mesa': (c, a, t, r, m, rf) => [c, a, t, r, m.replace('<strong>nunca fica abaixo de 0</strong>. O tamanho', '<strong>nunca fica abaixo de 0</strong>. Teto de <strong>±6</strong> somando tudo. O tamanho'), rf],
     'o teto de ±6 somando tudo na referência': (c, a, t, r, m, rf) => [c, a, t, r, m, rf.replace('<strong>+{CT.bonusCap}</strong>', 'Teto de <strong>±{CT.modificadorCap}</strong> somando tudo')],
     'um "de −6 a +6" novo em regras.json': (c, a, t, r, m, rf) => [c, a, t, edita2(r, (x) => { x.combate.movimento.corrida.nota = 'a Defesa vai de −6 a +6'; }), m, rf],
     'um "± 6" com espaço em regras.json': (c, a, t, r, m, rf) => [c, a, t, edita2(r, (x) => { x.combate.movimento.corrida.nota = 'teto de ± 6'; }), m, rf],
@@ -907,12 +907,12 @@ function conferirPorte(comb, R, gloss, ref, mesa) {
   comeca('O tamanho conta na **jogada de acerto** dos **ataques físicos**:', ['soma **+3**, **sem teto**.'], 'Combate, Porte');
   comeca('- **Corpo a corpo: só o menor ganha.**', ['Quem é menor que o alvo soma **+3 por categoria** de diferença contra ele.', 'Quem é igual ou maior ataca **sem penalidade** e sem bônus.', 'as criaturas grandes devem ser temidas pelas menores.'], 'Combate, Porte, corpo a corpo');
   comeca('- **À distância, relativo nos dois sentidos.**', ['(arremesso, projétil, arco, besta, ataque mágico e Artes físicas à distância)', 'alvo **maior** que quem ataca, **+3 por categoria**; alvo **menor**, **−3 por categoria**.'], 'Combate, Porte, à distância');
-  for (const l of ['| **Maior** em *n* categorias | **+3 × n** | **+3 × n** |', '| **Do mesmo porte** | 0 | 0 |', '| **Menor** em *n* categorias | **0** | **−3 × n** |']) linha(l, 'Combate, Porte, tabela');
+  for (const l of ['| **Maior** em *n* categorias | **+3 × n** | **+3 × n** |', '| **Do mesmo tamanho** | 0 | 0 |', '| **Menor** em *n* categorias | **0** | **−3 × n** |']) linha(l, 'Combate, Porte, tabela');
   comeca('Sem teto quer dizer sem teto:', ['um Miúdo que ataca um Colossal soma **+18**, de perto ou de longe.', 'rola sem penalidade', '**−18**'], 'Combate, Porte, exemplo');
-  comeca('Atirar num Colossal **muito longe** continua difícil:', ['o porte não escala a Efetiva', 'entra só como bônus fixo no acerto.', 'Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.'], 'Combate, Porte, Colossal e enxame');
+  comeca('Atirar num Colossal **muito longe** continua difícil:', ['o tamanho não escala a Efetiva', 'entra só como bônus fixo no acerto.', 'Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.'], 'Combate, Porte, Colossal e enxame');
   comeca('Isso é **só no acerto**:', ['não é modificador de Defesa (então fica fora do teto de +6 dos bônus de Defesa)', 'ataques **Sociais** ou **Mentais**, nem a Artes de **área** sem rolagem de ataque.', 'a **Couraça de Porte**'], 'Combate, Porte, exclusões');
-  linha('<div class="callout regra"><span class="lbl">Nota ao Mestre</span>O porte não dá Defesa a ninguém. Quando duas criaturas maiores que Médio lutam <strong>entre si</strong>, o Mestre pode aumentar a Defesa delas.</div>', 'Combate, Porte, nota ao Mestre');
-  comeca('Controlar alguém em vez de feri-lo é uma **Manobra**', ['O porte conta no acerto como em qualquer ataque de corpo a corpo: só o menor ganha bônus contra o maior (ver *Porte*).'], 'Combate, Manobras');
+  linha('<div class="callout regra"><span class="lbl">Nota ao Mestre</span>O tamanho não dá Defesa a ninguém. Quando duas criaturas maiores que Médio lutam <strong>entre si</strong>, o Mestre pode aumentar a Defesa delas.</div>', 'Combate, Porte, nota ao Mestre');
+  comeca('Controlar alguém em vez de feri-lo é uma **Manobra**', ['O tamanho conta no acerto como em qualquer ataque de corpo a corpo: só o menor ganha bônus contra o maior (ver *Tamanho*).'], 'Combate, Manobras');
   if (/\+12\*\* \(teto\)|\*\*Simétrico:\*\*|até 4 categorias|\| Alvo \*\*\d\*\* categorias? maiores?/.test(comb)) f.push('Combate: sobrou o teto de 4 categorias, o "+12 (teto)" ou o "Simétrico" do porte velho');
   // regras.json: porteAcerto
   const PA = R?.porteAcerto;
@@ -924,7 +924,7 @@ function conferirPorte(comb, R, gloss, ref, mesa) {
     // o Grid lê ordem e reforma.porCategoria (calc.ts): a D-077 desde a D-179, com os oito portes
     if ('capCategorias' in PA || 'porDiferenca' in PA || JSON.stringify(PA.ordem) !== JSON.stringify(['minusculo', 'miudo', 'pequeno', 'medio', 'grande', 'enorme', 'imenso', 'colossal'])) f.push('porteAcerto: o teto velho do Grid (capCategorias, porDiferenca) saiu, e a ordem tem os oito portes, do Minúsculo ao Colossal');
     if (!PA.gridNota || !/Grid segue a regra acima/.test(PA.gridNota)) f.push('porteAcerto.gridNota: falta a nota de que o Grid segue a D-077');
-    for (const fr of ['+3 por categoria, SEM TETO (D-077)', 'CORPO A CORPO: só o menor ganha (+3 por categoria contra o maior); o maior ataca o menor sem penalidade.', 'À DISTÂNCIA (arremesso, projétil, arco, besta, ataque mágico, Artes físicas à distância): relativo nos dois sentidos, alvo maior +3 por categoria, alvo menor −3 por categoria.', 'O enxame usa o tamanho que apresenta, nos dois papéis.', 'O porte não escala a Efetiva.', 'nem para Artes de área sem rolagem de ataque']) if (!PA.nota.includes(fr)) f.push(`porteAcerto.nota: falta "${fr.slice(0, 70)}"`);
+    for (const fr of ['+3 por categoria, SEM TETO (D-077)', 'CORPO A CORPO: só o menor ganha (+3 por categoria contra o maior); o maior ataca o menor sem penalidade.', 'À DISTÂNCIA (arremesso, projétil, arco, besta, ataque mágico, Artes físicas à distância): relativo nos dois sentidos, alvo maior +3 por categoria, alvo menor −3 por categoria.', 'O enxame usa o tamanho que apresenta, nos dois papéis.', 'O tamanho não escala a Efetiva.', 'nem para Artes de área sem rolagem de ataque']) if (!PA.nota.includes(fr)) f.push(`porteAcerto.nota: falta "${fr.slice(0, 70)}"`);
     if (/teto de 4 categorias \(diferenças|Relativo e simétrico|teto ±6/.test(PA.nota)) f.push('porteAcerto.nota: sobrou a regra velha (teto de 4 categorias, simétrico, teto ±6)');
   }
   // glossário
@@ -957,10 +957,10 @@ function conferirPorte(comb, R, gloss, ref, mesa) {
     'sem o "sem teto"': (c) => [c.replace('soma **+3**, **sem teto**.', 'soma **+3**, até 4 categorias.')],
     'o enxame sumido': (c) => [c.replace('Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.', '')],
     'a exclusão social/mental/área sumida': (c) => [c.replace('ataques **Sociais** ou **Mentais**, nem a Artes de **área** sem rolagem de ataque.', 'ataques Sociais.')],
-    'a nota ao Mestre sumida': (c) => [c.replace('<div class="callout regra"><span class="lbl">Nota ao Mestre</span>O porte não dá Defesa a ninguém.', '<div class="callout regra"><span class="lbl">Aviso</span>O porte não dá Defesa a ninguém.')],
+    'a nota ao Mestre sumida': (c) => [c.replace('<div class="callout regra"><span class="lbl">Nota ao Mestre</span>O tamanho não dá Defesa a ninguém.', '<div class="callout regra"><span class="lbl">Aviso</span>O tamanho não dá Defesa a ninguém.')],
     'o teto de ±6 de volta no porte': (c) => [c.replace('(então fica fora do teto de +6 dos bônus de Defesa)', 'e não entra no teto de ±6')],
-    'a frase de Manobras com a penalidade': (c) => [c.replace('só o menor ganha bônus contra o maior (ver *Porte*).', 'o bônus e a penalidade valem como em qualquer ataque.')],
-    'a Efetiva escalada pelo porte': (c) => [c.replace('o porte não escala a Efetiva', 'o porte escala a Efetiva')],
+    'a frase de Manobras com a penalidade': (c) => [c.replace('só o menor ganha bônus contra o maior (ver *Tamanho*).', 'o bônus e a penalidade valem como em qualquer ataque.')],
+    'a Efetiva escalada pelo porte': (c) => [c.replace('o tamanho não escala a Efetiva', 'o tamanho escala a Efetiva')],
     'o teto de 4 categorias em regras.json': (c, r) => [c, ed(r, (x) => { x.porteAcerto.nota += ' Conta a diferença de categorias na ordem dos portes, com teto de 4 categorias (diferenças maiores contam como 4).'; })],
     'o porCategoria estragado': (c, r) => [c, ed(r, (x) => { x.porteAcerto.reforma.porCategoria = 4; })],
     'o capCategorias do Grid de volta': (c, r) => [c, ed(r, (x) => { x.porteAcerto.capCategorias = 4; })],
@@ -968,7 +968,7 @@ function conferirPorte(comb, R, gloss, ref, mesa) {
     'a ordem sem o Miúdo': (c, r) => [c, ed(r, (x) => { x.porteAcerto.ordem.splice(1, 1); })],
     'o glossário com o teto de 4 categorias': (c, r, g) => [c, r, g.map((t) => (t.id === 'porte' ? { ...t, definicao: t.definicao + ' (simétrico, teto de 4 categorias)' } : t))],
     'a tabela da referência lendo o teto velho': (c, r, g, rf) => [c, r, g, rf.replace('Sem teto.</p>', 'Teto de {PORTE.capCategorias} categorias.</p>')],
-    'a frase da mesa com o teto': (c, r, g, rf, m) => [c, r, g, rf, m.replace('O porte entra no <em>acerto</em>, sem teto:', 'O porte entra no <em>acerto</em>, fora deste teto:')],
+    'a frase da mesa com o teto': (c, r, g, rf, m) => [c, r, g, rf, m.replace('O tamanho entra no <em>acerto</em>, sem teto:', 'O tamanho entra no <em>acerto</em>, fora deste teto:')],
   };
   for (const [nome, estraga] of Object.entries(mutP)) {
     const [c, r = REGRAS, g = GL, rf = REF2, m = MESA2] = estraga(COMB, REGRAS, GL, REF2, MESA2);

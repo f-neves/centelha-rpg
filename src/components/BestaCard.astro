@@ -119,7 +119,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
             {i.semImagem && <span class="badge sem-img" title="Arte ainda não adicionada">Sem imagem</span>}
           </div>
           {i.porte && (
-            <p class="besta-porte"><span class="pt-lbl">Porte</span><span class="pt-cat">{i.porte}</span><span class="pt-sep">·</span>{i.dimensoes.medida}<span class="pt-sep">·</span>{i.dimensoes.peso}</p>
+            <p class="besta-porte"><span class="pt-lbl">Tamanho</span><span class="pt-cat">{i.porte}</span><span class="pt-sep">·</span>{i.dimensoes.medida}<span class="pt-sep">·</span>{i.dimensoes.peso}</p>
           )}
           {locoDe(i).length > 0 && (
             <p class="besta-porte besta-loco"><span class="pt-lbl">Desloc.</span>{locoDe(i).map((m, n) => (<>{n > 0 && <span class="pt-sep">·</span>}<span>{`${m.nome} ${m.v} m/Tick`}</span></>))}</p>

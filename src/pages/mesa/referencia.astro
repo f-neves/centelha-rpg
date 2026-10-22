@@ -95,7 +95,7 @@ const PORTE_NOME: Record<string, string> = {
 
     <nav class="ref-indice">
       <a href="#dificuldade">Dificuldade</a><a href="#area">Sair da área</a><a href="#ferimentos">Ferimentos</a><a href="#condicoes">Condições</a>
-      <a href="#combate">Modificadores</a><a href="#porte">Porte</a><a href="#dano">Dano &amp; Absorção</a>
+      <a href="#combate">Modificadores</a><a href="#porte">Tamanho</a><a href="#dano">Dano &amp; Absorção</a>
       <a href="#qa">Quase-Acerto</a><a href="#horda">Hordas</a><a href="#escalas">Escalas</a>
     </nav>
 
@@ -234,7 +234,7 @@ const PORTE_NOME: Record<string, string> = {
 
     <!-- ============ PORTE ============ -->
     <section class="ref-bloco" id="porte">
-      <h2>Porte no acerto</h2>
+      <h2>Tamanho no acerto</h2>
       <p class="ref-nota">{PORTE.nota}</p>
       <div class="tab-wrap"><table class="tab-mesa">
         <thead><tr><th>Alvo, comparado a quem ataca</th>{DIFS.map((n: number) => (<th class="num">{n}</th>))}</tr></thead>
@@ -245,7 +245,7 @@ const PORTE_NOME: Record<string, string> = {
           <tr><td>À distância, alvo menor</td>{DIFS.map((n: number) => (<td class="num">{`−${PORTE.reforma.porCategoria * n}`}</td>))}</tr>
         </tbody>
       </table></div>
-      <p class="ref-nota muted">Colunas: a diferença em categorias. Ordem dos portes: {PORTE.ordem.map((p: string) => PORTE_NOME[p] || p).join(' · ')}. Sem teto.</p>
+      <p class="ref-nota muted">Colunas: a diferença em categorias. Ordem dos tamanhos: {PORTE.ordem.map((p: string) => PORTE_NOME[p] || p).join(' · ')}. Sem teto.</p>
 
       <h3>Couraça de Porte</h3>
       <p class="ref-nota">{DANO.couracaPorte.nota}</p>
