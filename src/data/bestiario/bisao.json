@@ -1,0 +1,236 @@
+{
+  "ordem": 236,
+  "id": "bisao",
+  "idAntigo": "mon-bison",
+  "nome": "Bisão-americano",
+  "nomeIngles": "Bison",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Em Yellowstone fere mais gente que os ursos. Cruza rios largos a nado e salta cercas de 1,5 m. Vive de 12 a 20 anos.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/bisao_criatura.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,24 m de comprimento, 1,69 m de altura",
+    "peso": "610 kg",
+    "comprimento": 3.24,
+    "largura": 0.86,
+    "altura": 1.69
+  },
+  "locomocao": {
+    "terra": 7,
+    "natacao": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 7,
+    "arranque": 13,
+    "corrida": 17
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 7,
+    "destreza": 2,
+    "vigor": 6,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 2,
+    "bloqueio": 2,
+    "esquiva": 1,
+    "atletismo": 2,
+    "integridade": 2,
+    "prontidao": 2,
+    "resistencia": 5,
+    "empatia": 1,
+    "sobrevivencia": 3
+  },
+  "skills2": {
+    "natacao": 1,
+    "corrida": 1,
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "resistencia",
+      "foco": "frio",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Chifrada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Investida (marrada)",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 2,
+      "tipo": "impacto",
+      "ticks": 7,
+      "classe": "pesada"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "derrubar",
+      "descricao": "Investida",
+      "classe": "livro"
+    },
+    {
+      "nome": "empurrar",
+      "descricao": "Investida",
+      "classe": "livro"
+    },
+    {
+      "nome": "pisotear",
+      "descricao": "Investida (marrada): Investida.",
+      "classe": "livro"
+    },
+    {
+      "nome": "arremessar com os chifres",
+      "descricao": "Chifrada: Empurrar.",
+      "classe": "livro"
+    },
+    {
+      "nome": "debandada",
+      "descricao": "junto de outros bisões, atropela o que estiver à frente com mais força.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "faro: Prontidão (faro) +2, natural; \"essencial para notar o perigo\". · visão: distingue objetos grandes a 1 km e em movimento a 2 km. Texto. · audição: \"ouve muito bem\". Texto."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Gigante das pradarias",
+      "texto": "Pesando mais de meia tonelada, o bisão pasta livre nas planícies frias e temperadas, formando manadas imensas."
+    },
+    {
+      "titulo": "Fúria de cio",
+      "texto": "Na época de acasalamento, touros adultos se enfrentam com violência, por vezes até a morte, disputando fêmeas."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: manada; machos em grupos de até 30."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande: o humano Médio acerta com +3 no corpo a corpo. A Força 7 tira o Bloqueio de quem tem Força 3 ou menos. Corre a 61 km/h, como o cavalo de sela, e salta a cerca. A investida faz 21 em média (2d6 + 2 × Força 7). 54 PV e Couraça nível 2: quanto ela tira da espada e da flecha fica para depois, e o Impacto perde 6. Nada cruzando o rio, a 7 km/h, e passa a nevasca ao relento."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Cold",
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Bison",
+    "cr": "4",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 27,
+      "des": 10,
+      "con": 19,
+      "int": 2,
+      "sab": 11,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 54,
+    "esquiva": 6,
+    "bloqueio": 8,
+    "defesa": 8,
+    "defesaMental": 7,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 6,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "couracaNivel": 2,
+    "pesoErguido": 838.27,
+    "carga": {
+      "leve": 122,
+      "media": 244,
+      "pesada": 366,
+      "maxima": 488
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 7,
+        "arranque": 13,
+        "corrida": 17
+      },
+      "nado": 2
+    }
+  },
+  "notasObservacao": [
+    "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8 pelas âncoras do autor, igual ao boi; sem feito medido (o limpa-neve não tem número). A ficha de hoje tinha 10 pelo encaixe com o boi de então (D-158, D-174).",
+    "vigor: 6, igual ao boi (Etapa 2, 20/10/2026: o boi sobe para 6, resposta do autor, fim da seção 13); antes: um acima do boi, pelo inverno ao relento e pela pelagem (NPS; Peters e Slen 1964); provisório (D-174).",
+    "nado: congelado em 2 m por Tick (decisão 23). Pela fórmula da D-124 com o Vigor 6, daria cerca de 2,6 m/s, 3 m por Tick; não refeito (D-170, D-174).",
+    "especialidades naturais: Resistência (frio) +2 pela pelagem, e Prontidão (faro) +2, que era Percepção (faro) +2: o recorte passou do Atributo para a Habilidade; escolha minha, provisória (D-174).",
+    "empatia: 1 pela manada e pelo cio ritualizado (ADW; NPS), sem número; provisória (D-174).",
+    "variante vaca: Força 6, um abaixo da principal (7) (Etapa 2, 20/10/2026); antes: dois abaixo do touro, como a ficha de hoje fazia (8 contra 10) (D-174).",
+    "pesoErguido: 1.025 kg pela conta das decisões 14 e 16 com a massa de 570 kg, provisório; pouco acima do boi (997 kg), com a mesma Força e Musculatura e menos massa, porque a Força de referência cai com a massa (D-162, D-169).",
+    "massa: 610 kg (em vigor na Etapa 2, 20/10/2026); antes: 570 kg é a média simples do macho (699) e da fêmea (441) de Wind Cave (Martin e Barboza 2020), as duas da mesma população; era o touro de 700 kg (sexta rodada, item 4).",
+    "carga: Leve 114 a Máxima 456 kg, provisória pela conta (estrutura 0,2 do bovino), sem carga medida (D-122, D-169, D-172).",
+    "velocidade: congelada (decisão 23). Corrida 61 km/h contra quase 60 (Meagher 1986), +2% (D-170).",
+    "couraca: nível 2 (faixa 2 a 3) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): atravessava a nado rios de cerca de 1 km de largura com correnteza de talvez 3 a 6 km/h (Fuller 1960, por Meagher 1986) **[medido]**. Mantém o esforço máximo por cerca de 800 m quando perseguido: página de divulgação de zoológico, sem estudo, não usado como número.",
+    "dimensoes.comprimentoSemCauda: 2,61 m; no macho, 2,8 m, o total médio menos a cauda média, conta sobre as faixas de Meagher 1986, escalado pelo cubo da massa até 570 kg (D-147, D-174).",
+    "dimensoes.largura: 0,84 m, os 0,9 m estimados para o touro, sem fonte, escalados pelo cubo da massa (D-147, D-174).",
+    "dimensoes: altura e comprimentos eram do macho (Meagher 1986) e foram escalados pelo cubo da massa, (570 ÷ 700)^(1/3) = 0,934; a altura escalada (1,65 m) cai entre o macho (1,67 a 1,86) e a vaca (1,52 a 1,57), como cabe ao típico."
+  ]
+}

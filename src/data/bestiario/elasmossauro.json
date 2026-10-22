@@ -1,0 +1,179 @@
+{
+  "ordem": 186,
+  "id": "elasmossauro",
+  "idAntigo": "mon-elasmosaurus",
+  "nome": "Elasmossauro",
+  "nomeIngles": "Elasmosaurus",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Enorme",
+  "descricao": "O monstro de pescoço comprido das histórias: um corpo do tamanho de um barco pequeno, um pescoço de 7 m e uma cabeça pequena que pega peixe. Não erguia o pescoço como um cisne.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/elasmossauro_criatura.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "10,3 m de comprimento, 0,9 m de altura",
+    "peso": "2.100 kg",
+    "comprimento": 10.3,
+    "largura": 1.2,
+    "altura": 0.9
+  },
+  "locomocao": {
+    "natacao": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 9,
+    "destreza": 2,
+    "vigor": 7,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 2,
+    "atletismo": 4,
+    "furtividade": 2,
+    "integridade": 1,
+    "prontidao": 2,
+    "resistencia": 4,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "natacao": 3,
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "visão",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "bote de pescoço longo",
+      "descricao": "Mordida: morde de lado ou de baixo, a vários metros do corpo; a cabeça não sobe acima da água mais que ela mesma.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão: Prontidão (visão) +2, Especialidade natural; via diretamente para cima."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Réptil das profundezas",
+      "texto": "Pescoço longo e corpo esguio permitem deslizar pelas águas com uma ferocidade traiçoeira, escondida sob a superfície calma."
+    },
+    {
+      "titulo": "Não é um dinossauro verdadeiro",
+      "texto": "Convive com dinossauros em lagos e mares quentes, mas pertence a uma linhagem distinta de répteis aquáticos."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme: o humano Médio acerta com +6 e não apara pelo porte, mas a Força 9 só tira o Bloqueio de quem tem Força 4 ou menos. A mordida é fraca para o tamanho (10, 5) e não fura armadura; o perigo é o pescoço, que traz a boca de longe. 70 PV e Couraça nível 1 (pele lisa); o quanto ela tira fica para depois."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Elasmosaurus",
+    "cr": "7",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 26,
+      "des": 15,
+      "con": 20,
+      "int": 2,
+      "sab": 13,
+      "car": 9
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte",
+      "nota": "nado 50; em terra 20, e ele quase não sai da água"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 70,
+    "esquiva": 8,
+    "bloqueio": 4,
+    "defesa": 8,
+    "defesaMental": 6,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 7,
+      "corte": 7,
+      "perfuracao": 7
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 831.56,
+    "deslocamento": {
+      "nado": 4
+    }
+  },
+  "notasObservacao": [
+    "pesoErguido: 831,56 kg (em vigor na Etapa 2, 20/10/2026); antes: 575,4 kg pelo `calc.mjs`, provisório. A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar.",
+    "carga: não se aplica (nadador).",
+    "velocidade: congelada (decisão 23); sem velocidade do gênero; +8% contra o cruzeiro do grupo (Massare).",
+    "massa: 2.100 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.900 kg [comparação] pelo volume de um parente levado pelo cubo do Albertonectes (Zhao 2026); o Pathfinder dá 1,8 t. Pelo cubo do Styxosaurus seria 2,35 t, e do Hydrotherosaurus, 3,02 t. Sempre Faixa 5.",
+    "alvo: Enorme pela silhueta de cima (8,45 m²), com o pescoço; a ficha de hoje estava na borda (5,08) e o pescoço decidia. A questão do pescoço fino na área (D-155 fala de cauda, e a D-148 põe a píton de 7 m em Média) segue para o Arquiteto (D-174).",
+    "dimensoes.altura, comprimentoSemCauda e largura: estimadas pela Bestiarista-5 [extrapolação, sem dado].",
+    "forca: 9 (em vigor na Etapa 2, 20/10/2026); antes: 7 pela régua nova (D-158), na faixa das âncoras, abaixo do topo; a força não está na boca pequena. Era 9.",
+    "vigor: 7 (em vigor na Etapa 2, 20/10/2026); antes: 4, um acima do plesiossauro (3) pela massa quase quatro vezes maior (D-143); réptil, sem ferida curada na pesquisa [extrapolação]. Provisório (D-174).",
+    "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua [comparação, do grupo]; a Resistência (Fôlego) +2 de hoje saiu, e o dado ficou na nota de pesquisa (jornada).",
+    "furtividade: 2, linha nova, pelas hipóteses de caça no fundo ou com o pescoço recolhido [extrapolação].",
+    "compostura: 1 por não ser espécie social (diretriz 1); era 2.",
+    "especialidade Prontidão (visão) +2: passou de comum a natural, com o mesmo valor; o dado é do grupo [extrapolação].",
+    "couraca: nível 1 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): sem dado do Elasmosaurus. Do grupo [extrapolação]: cruzeiro de 4 m/s se de sangue quente (Massare); 0,5 a 1,5 m/s recalculado (Motani 2002); sangue quente possível (Houssaye 2013) (todos via a pesquisa do plesiossauro). \"O tamanho grande compensa o arrasto alto das proporções extremas\" (Gutarra e colegas 2022, via Wikipédia).",
+    "espaco: o retângulo de 1,2 × 10,3 m superestima o que o corpo ocupa; o pescoço fino é a maior parte (N22)."
+  ]
+}

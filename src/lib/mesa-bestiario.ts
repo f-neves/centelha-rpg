@@ -17,6 +17,8 @@ import { esc, u, norm, fmtDano, elementosCombate } from './mesa-core';
 import { sparkSVG } from './centelha-spark';
 import { d6 } from './rolagem';
 import { qaDaPeca, type QACombate } from './quase-acerto';
+import { imagemDe, escolhaDe } from './imagem-escolhida';
+export { imagemDe, alternarImagem } from './imagem-escolhida';
 
 
 export const MONSTROS = monstersData as any[];
@@ -27,7 +29,7 @@ export const ARTE_NOME: Record<string, string> = Object.fromEntries((artesData a
 export const MON_LIST = MONSTROS.map((m) => ({
   id: m.id, nome: m.nome, nomeIngles: m.nomeIngles || '', ameaca: m.ameaca,
   centelha: m.centelha, categoria: m.categoria || '', porte: m.porte || '',
-  imagem: m.imagem || '', pv: m.combate?.pv ?? null, defesa: m.combate?.defesa ?? null,
+  imagem: m.imagem || '', imagem2: m.imagem2 || '', pv: m.combate?.pv ?? null, defesa: m.combate?.defesa ?? null,
   terreno: m.ecologia?.terreno || [], clima: m.ecologia?.clima || [],
   busca: norm(`${m.nome} ${m.nomeIngles || ''} ${m.categoria || ''}`),
 }));
@@ -327,10 +329,10 @@ export function cardCriaturaHTML(m: any): string {
   const en = m.nomeIngles && m.nomeIngles.toLowerCase() !== m.nome.toLowerCase()
     ? ` <span class="besta-nome-en">(${esc(m.nomeIngles)})</span>` : '';
   const arte = m.imagem
-    ? `<figure class="arte"><img src="${u(m.imagem)}" alt="${esc(m.nome)}" /><span class="arte-ameaca" title="Ameaça ${m.ameaca}/6">${estrelas(m.ameaca)}</span>${m.centelha > 0 ? `<span class="arte-cent">${sparkSVG(true)} ${m.centelha}</span>` : ''}</figure>`
+    ? `<figure class="arte"><img src="${u(imagemDe(m)!)}" alt="${esc(m.nome)}"${m.imagem2 ? ` data-troca="${esc(m.id)}"` : ''} />${m.imagem2 ? `<span class="arte-selo">${escolhaDe(m.id)}/2</span>` : ''}<span class="arte-ameaca" title="Ameaça ${m.ameaca}/6">${estrelas(m.ameaca)}</span>${m.centelha > 0 ? `<span class="arte-cent">${sparkSVG(true)} ${m.centelha}</span>` : ''}</figure>`
     : `<figure class="arte sem-arte"><span class="capitular cinzel">${esc((m.nome || '?').trim()[0])}</span><span class="arte-ameaca">${estrelas(m.ameaca)}</span></figure>`;
   const badges = `${m.categoria ? `<span class="badge cat">${esc(m.categoria)}</span>` : ''}${(m.ecologia?.terreno || []).map((t: string) => `<span class="badge terr">${esc(ECO_TERR[t] || t)}</span>`).join('')}${(m.ecologia?.clima || []).map((c: string) => `<span class="badge clima">${esc(ECO_CLIMA[c] || c)}</span>`).join('')}`;
-  const porte = m.porte ? `<p class="besta-porte"><span class="pt-lbl">Porte</span><span class="pt-cat">${esc(m.porte)}</span><span class="pt-sep">·</span>${esc(m.dimensoes?.medida || '')}<span class="pt-sep">·</span>${esc(m.dimensoes?.peso || '')}</p>` : '';
+  const porte = m.porte ? `<p class="besta-porte"><span class="pt-lbl">Tamanho</span><span class="pt-cat">${esc(m.porte)}</span><span class="pt-sep">·</span>${esc(m.dimensoes?.medida || '')}<span class="pt-sep">·</span>${esc(m.dimensoes?.peso || '')}</p>` : '';
   const abs = cb.absorcao ? `${cb.absorcao.impacto}/${cb.absorcao.corte}/${cb.absorcao.perfuracao}${cb.resistenciaPerfuracao ? `·N${cb.resistenciaPerfuracao}` : ''}` : '-';
   const stat = (dt: string, dd: any) => `<div><dt>${dt}</dt><dd>${dd ?? '-'}</dd></div>`;
   const stats = `<dl class="besta-stats">${stat('PV', cb.pv)}${stat('Defesa', cb.defesa)}${stat('Def. Social', cb.defesaSocial)}${stat('Def. Mental', cb.defesaMental)}${stat('Absorção', abs)}${stat('Iniciativa', esc(cb.iniciativa || '-'))}</dl>`;

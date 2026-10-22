@@ -1,0 +1,210 @@
+{
+  "ordem": 190,
+  "id": "triceratops",
+  "idAntigo": "mon-triceratops",
+  "nome": "Tricerátops",
+  "nomeIngles": "Triceratops",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Enorme",
+  "descricao": "Herbívoro dos mais comuns do fim do Cretáceo, presa do tiranossauro, que luta de chifre com os da própria espécie.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/triceratops_criatura.webp",
+  "imagem2": "bestiario/triceratops_criatura_2.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "8,72 m de comprimento, 3,08 m de altura",
+    "peso": "8.000 kg",
+    "comprimento": 8.72,
+    "largura": 2.05,
+    "altura": 3.08
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 6
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 11,
+    "destreza": 1,
+    "vigor": 10,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 1,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 3,
+    "bloqueio": 2,
+    "esquiva": 1,
+    "integridade": 3,
+    "prontidao": 1,
+    "resistencia": 4,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "musculatura": 3
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Chifrada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 1,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Investida de chifre",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 2,
+      "tipo": "perfurante",
+      "perf": 1,
+      "ticks": 7,
+      "classe": "pesada"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "derrubar",
+      "descricao": "investida de chifre",
+      "classe": "livro"
+    },
+    {
+      "nome": "empurrar",
+      "descricao": "investida de chifre",
+      "classe": "livro"
+    },
+    {
+      "nome": "atropelar",
+      "descricao": "corpo: Investida.",
+      "classe": "livro"
+    },
+    {
+      "nome": "escudo de osso",
+      "descricao": "a gola protege o pescoço; difícil de derrubar ou de empurrar à força.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "faro: fraco, sem Especialidade. · audição: de baixa frequência (cóclea curta), sem Especialidade; texto. · Nada que passe do humano com número. Cabeça mantida a cerca de 45 graus do chão."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Fera birrenta",
+      "texto": "Teimoso e de temperamento curto, ataca por qualquer motivo, por menor que seja a provocação."
+    },
+    {
+      "titulo": "Escudo de osso",
+      "texto": "A grande gola que emoldura a cabeça protege o pescoço dos golpes que viriam de frente."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: família."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme: um humano Médio acerta com +6 no corpo a corpo. Um humano Médio de Centelha 0 não bloqueia o Enorme, e a Força 11 também trava quem tem Força 5 ou menos (o dobro e ao menos 4 a mais): contra a investida, quase sempre só a Esquiva. A pele de escamas grandes é Couraça nível 3; quanto ela tira do golpe fica para depois. A investida faz 29 em média e a chifrada 14,5, as duas furando até N1. 85 PV."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Triceratops",
+    "cr": "8",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 26,
+      "des": 9,
+      "con": 19,
+      "int": 2,
+      "sab": 12,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 5,
+  "v3": {
+    "pv": 85,
+    "esquiva": 4,
+    "bloqueio": 6,
+    "defesa": 6,
+    "defesaMental": 7,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 10,
+      "corte": 10,
+      "perfuracao": 10
+    },
+    "couracaNivel": 3,
+    "pesoErguido": 1965.73,
+    "carga": {
+      "leve": 1200,
+      "media": 2400,
+      "pesada": 3600,
+      "maxima": 4800
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 6
+      }
+    }
+  },
+  "notasObservacao": [
+    "forca: 11 pela comparação com o mamute (13), proposta do Arquiteto; se o mamute mudar, esta se refaz.",
+    "pesoErguido: 1.965,73 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.864,92 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com os 7.400 kg. Era 1.966 kg (8.000 kg de trabalho) e, antes, 2.284 kg pela fórmula de FAH.",
+    "carga: Leve 1.110 a Máxima 4.440 kg, provisória (era Leve 1.200 pelos 8.000 kg); sai da massa.",
+    "velocidade: congelada (decisão 23). 21 km/h, sem número real para comparar.",
+    "area: 10,47 m², vista de lado, da medição da `tamanho-fichas-v2`; era 25,5 m² (retângulo cheio). O Alvo segue Enorme. Decisão provisória: usar o número do `calc.mjs`.",
+    "couraca: nível 3 (faixa 3 a 4) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "massa: 8.000 kg (em vigor na Etapa 2, 20/10/2026); antes: 7,4 t, o *T. horridus* NSM PV 20379 pela circunferência do úmero e do fêmur (Campione e Evans 2012, tabela 6; 5,55 a 9,25 t), sem consenso entre os estudos. Para o mesmo esqueleto, os volumétricos vão de 3,9 t (Henderson 1999) a 8,5 t (Colbert 1962); o AMNH 5033, grande, dá 13,5 t pelo mesmo método (Benson 2014, Dataset S1). Paul 2010 segue sem leitura. Era 8 t. Na sexta rodada a faixa, o PV, o peso erguido e a Carga passaram aos 7,4 t (faixa e PV não mudam).",
+    "social: tratado como não social (Influência e Perspicácia 1), embora haja leito de ossos com três jovens **[extrapolação]**; ver desvios.",
+    "vigor: 10 (em vigor na Etapa 2, 20/10/2026); antes: 8 pela ferida curada (Happ 2008; Peterson e colegas 2013), pela gola que cicatriza rápido (Horner e Lamm 2011) e pela vida longa do \"Big John\" (reportagem) (D-164).",
+    "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela ferida curada; a cicatrização foi para o Vigor.",
+    "musculatura: 3 (robusto) pelo pescoço de chifrar, provisória; sem medida de força.",
+    "dimensoes.largura: 2,0 m estimada pelo Arquiteto [sem dado]; só serve ao espaço.",
+    "dimensoes.altura: os 3,0 m do \"Big John\" não dizem onde se mede (ombro, quadril ou cabeça)."
+  ]
+}

@@ -52,7 +52,7 @@ function winRate(criatura, centelha, reps) {
 
 console.log(`# Diagnóstico · filhote de dragão vermelho vs grupo Centelha ${CENTELHA_GRUPO}\n`);
 
-const filhote = carregarCriatura('mon-filhote-de-dragao-vermelho');
+const filhote = carregarCriatura('filhote-de-dragao-vermelho');
 const grupo = grupoCombatentes(CENTELHA_GRUPO);
 const pers1 = grupo.find((p) => p.id === 'pers1');
 const pers2 = grupo.find((p) => p.id === 'pers2');

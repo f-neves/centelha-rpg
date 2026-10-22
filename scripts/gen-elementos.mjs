@@ -77,79 +77,79 @@ const POR_TAG = {
 // dela para resolver o `material` de uma criatura sua sem uma segunda passada.
 
 // De que a criatura é feita. Só quem não é de carne precisa aparecer aqui.
-// mon-gargula (B14 fase 3): saiu daqui, ganhou bonus.absorcao na ficha em vez de resistência de
+// gargula (B14 fase 3): saiu daqui, ganhou bonus.absorcao na ficha em vez de resistência de
 // material (a fonte não dá as três resistências que o material "pedra" geral daria).
-// mon-elemental-da-terra-grande (B14 fase 3): saiu daqui, a ficha agora se descreve sozinha
+// elemental-da-terra-grande (B14 fase 3): saiu daqui, a ficha agora se descreve sozinha
 // (campo `material`), então o script pula ela (CUSTOM_IDS) e não pode mais citá-la aqui.
 const MATERIAL_DE = {
-  'mon-stone-golem': 'pedra', 'mon-clay-golem': 'pedra',
-  'mon-iron-golem': 'metal', 'mon-iron-cobra': 'metal', 'mon-retriever': 'metal',
-  'mon-ice-golem': 'gelo',
-  'mon-flesh-golem': 'carne animada', 'mon-homunculus': 'carne animada',
-  'mon-small-fire-elemental': 'fogo', 'mon-salamandra': 'fogo', 'mon-efreeti': 'fogo',
-  'mon-small-water-elemental': 'agua', 'mon-marid': 'agua',
-  'mon-small-earth-elemental': 'terra',
-  'mon-shaitan': 'terra', 'mon-xorn': 'terra',
-  'mon-small-air-elemental': 'ar', 'mon-djinn': 'ar', 'mon-invisible-stalker': 'ar',
+  'golem-de-pedra': 'pedra', 'golem-de-argila': 'pedra',
+  'golem-de-ferro': 'metal', 'cobra-de-ferro': 'metal', 'buscador': 'metal',
+  'golem-de-gelo': 'gelo',
+  'golem-de-carne': 'carne animada', 'homunculus': 'carne animada',
+  'elemental-do-fogo-pequeno': 'fogo', 'salamandra': 'fogo', 'efreeti': 'fogo',
+  'elemental-da-agua-pequeno': 'agua', 'marid': 'agua',
+  'elemental-da-terra-pequeno': 'terra',
+  'shaitan': 'terra', 'xorn': 'terra',
+  'elemental-do-ar-pequeno': 'ar', 'djinn': 'ar', 'perseguidor-invisivel': 'ar',
 };
 
 // --- camada 3: as exceções, à mão -----------------------------------------
 // Só o que não sai nem da categoria nem do material: natureza sobrenatural e o
 // sopro do dragão. Cada linha tem um porquê.
 const EXCECOES = {
-  'mon-vampiro': { fraquezas: ['luz', 'sagrado', 'sol', 'prata', 'fogo'], resistencias: ['perfuracao'] },
-  'mon-werewolf': { fraquezas: ['prata'] },
+  'vampiro': { fraquezas: ['luz', 'sagrado', 'sol', 'prata', 'fogo'], resistencias: ['perfuracao'] },
+  'lobisomem': { fraquezas: ['prata'] },
   // Bandagem e pele secas: a múmia queima como estopa
-  'mon-mumia': { fraquezas: ['luz', 'sagrado', 'fogo'], resistencias: ['perfuracao'] },
+  'mumia': { fraquezas: ['luz', 'sagrado', 'fogo'], resistencias: ['perfuracao'] },
   // Osso solto: a ponta e o fio passam entre as costelas, a maça não
-  'mon-esqueleto-humano': { fraquezas: ['luz', 'sagrado'], resistencias: ['perfuracao', 'corte'] },
-  'mon-skeletal-champion': { fraquezas: ['luz', 'sagrado'], resistencias: ['perfuracao', 'corte'] },
+  'esqueleto-humano': { fraquezas: ['luz', 'sagrado'], resistencias: ['perfuracao', 'corte'] },
+  'campeao-esqueletico': { fraquezas: ['luz', 'sagrado'], resistencias: ['perfuracao', 'corte'] },
   // Tronco vivo: a ponta entra e não acha órgão (perfuração), o impacto amortece na
   // madeira elástica; o corte do machado é o que funciona (B14 fase 3, decisoes-fase3.md).
-  'mon-treant': { fraquezas: ['fogo'], resistencias: ['perfuracao', 'impacto'] },
+  'treant': { fraquezas: ['fogo'], resistencias: ['perfuracao', 'impacto'] },
   // Gigante do Fogo (B14 fase 3): forjado no calor da fornalha, sofre no gelo.
-  'mon-gigante-do-fogo': { fraquezas: ['gelo'], resistencias: ['fogo'] },
+  'gigante-do-fogo': { fraquezas: ['gelo'], resistencias: ['fogo'] },
   // Montão Tropeçante (B14 fase 4, achado da revisão dos graves): a fraqueza a fogo virou
   // resistência (a fonte não sustenta fraqueza aqui); "imune a raio" na fonte vira
   // resistência, e o dano que a resistência cortaria pela metade vira cura na mesma
   // proporção (texto na habilidade).
-  'mon-montao-tropecante': { resistencias: ['perfuracao', 'raio', 'fogo'] },
+  'montao-tropecante': { resistencias: ['perfuracao', 'raio', 'fogo'] },
   // Vinha Assassina (B14 fase 4): a fonte não sustenta fraqueza a fogo, e sim resistência
   // a fogo e frio (a planta é resistente ao clima, não sensível a ele).
-  'mon-assassin-vine': { resistencias: ['perfuracao', 'fogo', 'gelo'] },
+  'vinha-assassina': { resistencias: ['perfuracao', 'fogo', 'gelo'] },
   // Cubo Gelatinoso (B14 fase 4): a fonte não dá resistência a corte/perfuração, ao
   // contrário do default da categoria Limo; sem nenhuma fraqueza/resistência de dano
   // físico (a imunidade a eletricidade da fonte não entra aqui, é `imunidades`, campo à
   // parte que este satélite não cobre).
-  'mon-cubo-gelatinoso': {},
+  'cubo-gelatinoso': {},
   // Rakshasa (B14 fase 3): a fonte não sustenta imunidade total, e sim resistência a corte e
   // impacto; perfurante passa.
-  'mon-rakshasa': { resistencias: ['corte', 'impacto'] },
+  'rakshasa': { resistencias: ['corte', 'impacto'] },
   // Lesma Gigante (B14 fase 4): só armas de impacto são absorvidas pela carne (a fonte
   // inverte a resistência de corte/perfuração para só impacto).
-  'mon-giant-slug': { resistencias: ['impacto'] },
+  'lesma-gigante': { resistencias: ['impacto'] },
   // Perseguidor Invisível (B14 fase 4): a fonte não sustenta resistência a corte/perfuração.
-  'mon-invisible-stalker': {},
+  'perseguidor-invisivel': {},
   // Elemental do Fogo Pequeno (B14 fase 4): a resistência a fogo da fonte vira imunidade
   // (campo à parte); aqui fica só a fraqueza a água.
-  'mon-small-fire-elemental': { fraquezas: ['agua'] },
+  'elemental-do-fogo-pequeno': { fraquezas: ['agua'] },
   // Elemental da Água Pequeno (B14 fase 4): a fraqueza a raio e a resistência a fogo não
   // vêm da fonte.
-  'mon-small-water-elemental': {},
+  'elemental-da-agua-pequeno': {},
   // Marid (B14 fase 4): "resiste na fonte", tira a fraqueza a raio que o Djinn tinha por
   // padrão de categoria; mantém a resistência a fogo.
-  'mon-marid': { resistencias: ['fogo'] },
+  'marid': { resistencias: ['fogo'] },
 
   // Dragões: o bicho resiste ao que ele mesmo cospe
-  'mon-dragao-vermelho-adulto': { resistencias: ['fogo'] },
-  'mon-dragao-vermelho-anciao': { resistencias: ['fogo'] },
-  'mon-dragao-vermelho-jovem': { resistencias: ['fogo'] },
-  'mon-filhote-de-dragao-vermelho': { resistencias: ['fogo'] },
-  'mon-grande-wyrm-vermelho': { resistencias: ['fogo'] },
-  'mon-dragao-dourado-adulto': { resistencias: ['fogo'] },
-  'mon-dragao-azul-adulto': { resistencias: ['raio'] },
-  'mon-dragao-branco-jovem': { fraquezas: ['fogo'], resistencias: ['gelo'] },
-  'mon-ice-linnorm': { fraquezas: ['fogo'], resistencias: ['gelo'] },
+  'dragao-vermelho-adulto': { resistencias: ['fogo'] },
+  'dragao-vermelho-anciao': { resistencias: ['fogo'] },
+  'dragao-vermelho-jovem': { resistencias: ['fogo'] },
+  'filhote-de-dragao-vermelho': { resistencias: ['fogo'] },
+  'grande-wyrm-vermelho': { resistencias: ['fogo'] },
+  'dragao-dourado-adulto': { resistencias: ['fogo'] },
+  'dragao-azul-adulto': { resistencias: ['raio'] },
+  'dragao-branco-jovem': { fraquezas: ['fogo'], resistencias: ['gelo'] },
+  'linnorm-do-gelo': { fraquezas: ['fogo'], resistencias: ['gelo'] },
 };
 
 // --- montagem --------------------------------------------------------------

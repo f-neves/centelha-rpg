@@ -5422,7 +5422,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Vira uma criatura muito maior do que você: urso de guerra, serpente de rio, ave de rapina do tamanho de um cavalo. Ganha o porte, a força e o alcance dela, e perde as mãos, a fala e o que elas fazem.",
+    "efeito": "Vira uma criatura muito maior do que você: urso de guerra, serpente de rio, ave de rapina do tamanho de um cavalo. Ganha o tamanho, a força e o alcance dela, e perde as mãos, a fala e o que elas fazem.",
     "grid": {
       "forma": "alvo",
       "ancora": "conjurador",

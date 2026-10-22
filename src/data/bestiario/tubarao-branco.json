@@ -1,0 +1,192 @@
+{
+  "ordem": 282,
+  "id": "tubarao-branco",
+  "idAntigo": "mon-shark",
+  "nome": "Tubarão-branco",
+  "nomeIngles": "Great white shark",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Chega por baixo e sem aviso. Amadurece tarde: com cerca de 26 anos o macho e 33 a fêmea.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": null,
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "4,91 m de comprimento, 1,15 m de altura",
+    "peso": "1.260 kg",
+    "comprimento": 4.91,
+    "largura": 1.04,
+    "altura": 1.15
+  },
+  "locomocao": {
+    "natacao": 6
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 9,
+    "destreza": 2,
+    "vigor": 4,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 1,
+    "furtividade": 2,
+    "integridade": 1,
+    "prontidao": 2,
+    "resistencia": 3,
+    "sobrevivencia": 3
+  },
+  "skills2": {
+    "natacao": 6,
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "eletrorrecepção",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "linha lateral e faro",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "investida de baixo",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 1,
+      "ticks": 7,
+      "classe": "pesada"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "bote vertical",
+      "descricao": "Mordida: Investida: sai de baixo d'água, com a Especialidade Furtividade (investida de baixo) +1 na aproximação.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "eletrorrecepção: Prontidão (eletrorrecepção) +3, Especialidade natural; achar presa escondida ou ferida pelo campo elétrico; alcance. Ampolas de Lorenzini. · linha lateral: Prontidão (linha lateral e faro) +2, Especialidade natural (notar movimento na água); alcance. · faro: a mesma Especialidade natural (sangue na água); bulbo olfativo grande; alcance. · visão: mais cones que bastonetes; nada que passe do humano com número."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Máquina de caçar perfeita",
+      "texto": "Moldado por eras de evolução para uma única função, o tubarão é visto por povos do mar como a fúria dos próprios deuses das profundezas."
+    },
+    {
+      "titulo": "Sangue no ar",
+      "texto": "Capaz de sentir uma única gota de sangue a quilômetros de distância, raramente ignora um ferido que se aventura em suas águas."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande: o humano Médio acerta com +3 no corpo a corpo, e pelo porte ainda poderia bloquear. Mas a Força 9 tira o Bloqueio de quem tem Força 4 ou menos (o dobro e ao menos 4 a mais). Só existe na água; fora dela, a ficha não anda. A mordida faz 16 em média e fura até N1. 46 PV e Couraça nível 2 (pele de dentículos); o quanto ela tira fica para depois. Chega por baixo (Furtividade 2, +1 na investida de baixo) e acha a presa ferida pela eletrorrecepção (+3)."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Shark",
+    "cr": "2",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 17,
+      "des": 12,
+      "con": 13,
+      "int": 1,
+      "sab": 12,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "nado 60: o tubarão não tem passo em terra"
+    },
+    "crConf": "conhecido"
+  },
+  "variantes": [],
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 46,
+    "esquiva": 6,
+    "bloqueio": 4,
+    "defesa": 6,
+    "defesaMental": 7,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 2,
+    "pesoErguido": 931,
+    "deslocamento": {
+      "nado": 6
+    }
+  },
+  "notasObservacao": [
+    "pesoErguido: 931,00 kg (em vigor na Etapa 2, 20/10/2026); antes: 782,7 kg pelo `calc.mjs`, provisório. A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar.",
+    "carga: não se aplica (nadador).",
+    "velocidade: congelada (decisão 23). O nado de 6,1 m/s bate com a arrancada filmada (6,7 m/s, −9%).",
+    "alvo: Grande pela silhueta (3,92 m², de lado), longe das bordas; a largura de 1,0 m continua estimada pelo Arquiteto [sem dado].",
+    "forca: 9 (em vigor na Etapa 2, 20/10/2026); antes: 8 pela régua nova (D-158), no topo das âncoras de 7 a 8; a mordida só tem modelo (Wroe 2008). Era 11 pela régua do mamute em 18.",
+    "massa e dimensoes: 1.145 kg, a média simples dos meios das faixas dos dois sexos maduros (Wikipédia); era 1.100 kg, a fêmea. As dimensões eram da fêmea de 4,7 m e foram escaladas pelo cubo da massa (× 1,013), como pede o pedido da sexta rodada; o meio das faixas de comprimento dos dois sexos (4,75 e 3,7 m) daria 4,2 m, porque a fêmea de 4,7 m com 1.100 kg já estava abaixo do meio da faixa de massa dela. Decisão do Arquiteto (`desvios`).",
+    "vigor: 4, um acima de hoje, pelo corpo de 1,15 t, a termorregulação regional e a vida de 70 anos (NOAA); a pesquisa não tem ferida curada nem doença. Provisório (D-174); ver os desvios do resumo.",
+    "compostura: 1 por não ser espécie social (diretriz 1); era 3 pelo emboscador. O hábito de chegar por baixo foi para Furtividade (investida de baixo) +1. Provisória (D-174).",
+    "especialidade Furtividade (investida de baixo) +1: nova, provisória (D-174); o levantamento dava a Furtividade como candidata a 3.",
+    "especialidade Prontidão (eletrorrecepção): desceu de +4 para +3 pelo teto da decisão 3.",
+    "especialidade Resistência (Fôlego) +2: saiu; o cruzeiro ficou na nota de pesquisa (jornada). A termorregulação regional poderia dar Resistência (frio) +1 [comparação]; ficou de fora (ver os desvios do resumo).",
+    "couraca: nível 2 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): cruzeiro por telemetria de 0,6 a 2,25 m/s: jovens com mediana de 0,6 m/s e trânsito de 0,98 m/s; 0,89 m/s num de 4,57 m (Carey 1982); 2,25 m/s em tubarões de 2,8 a 4,5 m (Semmens 2013) (Anderson et al. 2022) [medido]. Migração: [sem dado].",
+    "ataques.mordida: 2d6 + 8 = 15; era 18. O Nível N1 fica (modelo de Wroe 2008)."
+  ]
+}

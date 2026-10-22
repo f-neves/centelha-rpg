@@ -1,0 +1,229 @@
+{
+  "ordem": 44,
+  "id": "crocodilo-do-nilo",
+  "idAntigo": "mon-crocodilo",
+  "nome": "Crocodilo-do-nilo",
+  "nomeIngles": "Nile crocodile",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Espera na margem o mamífero que vem beber, agarra, arrasta para a água e gira. Come até 20% da própria massa numa refeição; a fêmea guarda o ninho e leva os filhotes na boca até a água.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/crocodilo-do-nilo_criatura.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,84 m de comprimento, 0,5 m de altura",
+    "peso": "215 kg",
+    "comprimento": 3.84,
+    "largura": 0.64,
+    "altura": 0.5
+  },
+  "locomocao": {
+    "terra": 2,
+    "natacao": 4
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 4,
+    "corrida": 5
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 7,
+    "destreza": 2,
+    "vigor": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 4,
+    "bloqueio": 2,
+    "esquiva": 2,
+    "atletismo": 2,
+    "furtividade": 3,
+    "integridade": 1,
+    "prontidao": 2,
+    "resistencia": 3,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "natacao": 2,
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "vibração na água",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "resistencia",
+      "foco": "apneia",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "submerso",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 1,
+      "ticks": 7,
+      "classe": "pesada"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "agarrar",
+      "descricao": "mordida: 2 × Força = 14 por manutenção.",
+      "classe": "livro"
+    },
+    {
+      "nome": "rolamento (giro da morte)",
+      "descricao": "Mordida: Agarrar: é a manutenção do agarrão, rolando na água.",
+      "classe": "livro"
+    },
+    {
+      "nome": "arrastar para a água",
+      "descricao": "Mordida: leva o que agarrou para a água e o afoga, até o Peso erguido.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "emboscada aquática",
+      "descricao": "espera submerso e ataca de surpresa (Furtividade); o alvo surpreso tem a Defesa zerada (Combate, Quando a Defesa zera).",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "vibração: Prontidão (vibração na água) +2, Especialidade natural (notar presa pela pressão e vibração na água); alcance. Órgãos tegumentares. · visão: campo de 270° e sobreposição binocular de 25°: texto, sem Especialidade. · audição: de 100 a 4.000 Hz: texto, nada que passe do humano."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Caçador de emboscada: fica imóvel por horas, quase todo submerso, até fechar as mandíbulas sobre a presa e arrastá-la para debaixo d'água. Não tem malícia nem plano, só fome e paciência. Social: solitário na caça; agrega-se no sol e na carcaça grande, com hierarquia rígida por tamanho, e anda centenas de metros até ela."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Vive em rios lentos, pântanos e mangues, sobretudo nas terras baixas e alagadas de Mére e nas margens quentes do sul de Calin."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Topo da cadeia alimentar de sua lagoa: come peixes, aves, mamíferos que vêm beber água e, sem hesitar, gente descuidada na beira do rio."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Força 7: quem tem Força 3 ou menos não apara a mordida. Grande, ele dá ao humano +3 de acerto no corpo a corpo, e quem atira nele também ganha +3. Na água anda quase o mesmo que em terra (4 contra 5 m por Tick), mas sem esforço, e é lá que espera, até 2 horas debaixo da água. A mordida faz 14 em média e o agarrão 14 por manutenção. A pele de osteodermos tem Couraça nível 5; quanto ela tira da lâmina, da flecha e da maça fica para depois (a maça perde ao menos 3, o Vigor). 42 PV."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water",
+      "Swamp"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 2, Atletismo 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Crocodilo",
+    "cr": "2",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 12,
+      "con": 15,
+      "int": 1,
+      "sab": 12,
+      "car": 2
+    },
+    "pericias": [
+      "Furtividade 2",
+      "Atletismo 2"
+    ],
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 42,
+    "esquiva": 8,
+    "bloqueio": 8,
+    "defesa": 8,
+    "defesaMental": 6,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 5,
+    "pesoErguido": 830.84,
+    "carga": {
+      "leve": 21.5,
+      "media": 43,
+      "pesada": 64.5,
+      "maxima": 86
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 4,
+        "corrida": 5
+      },
+      "nado": 4
+    }
+  },
+  "notasObservacao": [
+    "area: 1,50 m², vista de cima: a medição da `tamanho-fichas-v2` (1,89 m², o macho de 4,20 m) escalada pelo cubo da massa ao adulto típico de 198 kg, com a base no macho de 280 kg; era 2,94 m² (largura × comprimento, um retângulo cheio). O Alvo segue Grande, na borda (3,7% acima do corte). Com a base nos 400 kg de trabalho, daria 1,19 m², Médio.",
+    "pesquisa.caudaGrossa: sim (D-155).",
+    "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8 pela v2 (D-158), no topo das âncoras de 7 a 8; era 9. A mordida medida é de animal pequeno; se aparecer a de um adulto grande, a Força se revê.",
+    "musculatura: 3 (robusto) pelo giro da morte e pelo arrasto; provisória, sem peso de presa medido.",
+    "pesoErguido: 830,84 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.000,4 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com os 198 kg. Era 1.037 kg (400 kg de trabalho) e, antes, 687 kg pela fórmula de FAH.",
+    "carga: 19,8 kg de Leve pela conta da D-122 com os 198 kg (sem carga medida); era 40 kg pelos 400 kg.",
+    "velocidade: congelada (decisão 23). Terra 17 km/h contra 14 medidos (+21%); o 0,6 daria os 14 da pesquisa. Nado 16 km/h entre os 14 de um resumo de busca e os 30 a 35 da Wikipédia (fontes não lidas).",
+    "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pelo normal da espécie; a apneia virou Especialidade natural (+3), e o tempo segue no campo \"Prende a respiração\".",
+    "couraca: nível 5 (faixa 4 a 5) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "massa: 215 kg (em vigor na Etapa 2, 20/10/2026); antes: 198 kg **[medido]**, a média simples do macho (280 kg) e da fêmea (116 kg) (Cott 1961, Graham 1968, Hutton, via Wikipédia); era 400 kg, escolha dentro da faixa, e 280 kg (o macho) na quinta rodada. Na sexta rodada a faixa, o PV, o peso erguido e a Carga passaram aos 198 kg: Faixa 3, PV 34.",
+    "jornada (nota de pesquisa, não é regra): em terra, galope só em arrancada curta, até 14 km/h (Wikipédia), e \"fica exausto fácil em terra\" (SDZG, só na ficha); não se afasta mais de cerca de 50 m da margem para caçar, mas grupos andam centenas de metros até uma carcaça (Wikipédia, citando Pooley). Na água, até 30 minutos nadando submerso se ameaçado (Wikipédia) **[medido]**. Sem distância por dia nem tempo de nado na superfície.",
+    "influencia, compostura: descem de 3 para 1 por não ser espécie social (diretriz 1). A hierarquia por tamanho na carcaça e no sol é uso entre os seus; se o autor a contar como vida social, as duas voltam a ser lidas.",
+    "furtividade: 3, candidata a 4 no levantamento, sem dado novo; a espera submersa entra como Especialidade (+1).",
+    "dimensoes.largura: 0,62 m, a estimativa do Arquiteto para o macho (0,70 m, sem fonte) escalada pelo cubo da massa (fator 0,891).",
+    "dimensoes.altura e dimensoes.comprimentoSemCauda: estimativas do Arquiteto para o macho (0,55 m e 2,20 m), sem fonte, escaladas da mesma forma (0,49 e 1,96 m)."
+  ]
+}

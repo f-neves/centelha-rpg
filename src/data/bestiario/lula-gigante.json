@@ -1,0 +1,229 @@
+{
+  "ordem": 292,
+  "id": "lula-gigante",
+  "idAntigo": "mon-giant-squid",
+  "nome": "Lula-gigante",
+  "nomeIngles": "Giant squid",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Enorme",
+  "descricao": "Vive no escuro de 300 a 1.000 m; os tentáculos de mais de 20 m alcançam o barco antes que se veja o corpo.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/lula-gigante_criatura.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "26,4 m de comprimento, 1,36 m de altura",
+    "peso": "3.170 kg",
+    "comprimento": 26.4,
+    "largura": 1.36,
+    "altura": 1.36
+  },
+  "locomocao": {
+    "natacao": 5
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 7,
+    "destreza": 2,
+    "vigor": 4,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 1,
+    "furtividade": 1,
+    "integridade": 2,
+    "prontidao": 2,
+    "resistencia": 3,
+    "sobrevivencia": 3
+  },
+  "skills2": {
+    "natacao": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "visão no escuro",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "Agarrão",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 4,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Bico",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Tentáculos",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "agarrar",
+      "descricao": "Tentáculos: Dano do agarrão 2 × Força = 14 por manutenção. Os tentáculos enrolam a presa e a levam aos braços e ao bico.",
+      "classe": "livro"
+    },
+    {
+      "nome": "alcance dos tentáculos",
+      "descricao": "Tentáculos: os tentáculos alcançam muito além do corpo, cerca de 22 m.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "arrastar para o fundo",
+      "descricao": "Tentáculos: leva o que agarrou para o fundo, até o Peso erguido.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "soltar o tentáculo",
+      "descricao": "presa, solta um tentáculo para fugir.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "jato de água",
+      "descricao": "dispara em linha reta pela água sem dar brecha a quem está perto.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "muitos apêndices",
+      "descricao": "escolhe a cada ação entre o bico e os tentáculos (um ataque por ação).",
+      "classe": "como luta"
+    },
+    {
+      "nome": "nuvem de tinta",
+      "descricao": "solta uma nuvem de tinta que esconde a fuga.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: Especialidade natural Prontidão (visão no escuro) +3; o olho real de 27 cm detecta um cachalote a mais de 120 m abaixo de 600 m. Na escala o olho teria cerca de 59 cm, sem número de alcance."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Lenda das profundezas",
+      "texto": "Marujos veneram e temem igualmente o monstro que emerge das fossas abissais quando a fome supera o medo da luz do sol."
+    },
+    {
+      "titulo": "Fome sem limites",
+      "texto": "Quando a caça escasseia nas profundezas, a criatura sobe à superfície e ataca o que encontra; marujos juram que até navios."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme: o humano Médio acerta com +6 no corpo a corpo, e ela não ganha bônus. A Força 7 tira o Bloqueio de quem tem Força 3 ou menos. O que ela tem é o alcance: os tentáculos de mais de 20 m pegam o barco de longe, e o agarrão aperta a 14 por manutenção. A mordida faz 10,5 em média. 55 PV, Impacto 4, Couraça nível 0 (o valor do nível fica para depois). Aguenta horas de luta presa (Resistência 3). Nada a 5 m por Tick e vê no escuro do fundo (Prontidão +3 natural). Vive de 300 a 1.000 m: encontrá-la perto da superfície é caso do Mestre."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Cold",
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Squid",
+    "cr": "9",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 25,
+      "des": 17,
+      "con": 19,
+      "int": 2,
+      "sab": 12,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "nado 60 (o jato de 260 é fuga)"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 5,
+  "v3": {
+    "pv": 55,
+    "esquiva": 6,
+    "bloqueio": 4,
+    "defesa": 6,
+    "defesaMental": 8,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 335.67,
+    "deslocamento": {
+      "nado": 5
+    }
+  },
+  "notasObservacao": [
+    "gigante escalado (D-105): altura, largura e comprimentos são os da fêmea real de manto de 2,0 m × 2,2, e ficam (o tamanho da ficha fica, item 5 da tamanho-decisoes-5.md); a massa sai do adulto típico de 77 kg e manto de 1,274 m, × (4,4 ÷ 1,274)³ = 3.170 kg (era 2.130). Tudo [extrapolação]. A forma do corpo das duas bases não é a mesma: a fêmea de 81 kg e manto de 1,35 m, levada a 2,0 m pelo cubo, daria 263 kg, e não 200; por isso a massa sobe. A altura segue igual à largura, por estimativa (D-174).",
+    "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (sétima rodada); fica o da v3 (manto de 4,4 m, 26,4 m com os tentáculos), Enorme, dois portes acima da Architeuthis típica (Média, 1,05 m² de lado). Os 13,7 m do site dariam Grande, a um porte só (D-174).",
+    "alvo: Enorme pela área de lado (12,54 m²) da tamanho-fichas-v2; era 16,46 m² pela conta de hoje, com o mesmo resultado. Provisório até os cortes fecharem (D-174).",
+    "dimensoes.tentaculos: os dois tentáculos de captura ficam fora da área, como a cauda fina (D-155); os oito braços contam.",
+    "pesoErguido: 335,67 kg (em vigor na Etapa 2, 20/10/2026); antes: provisório, 408,66 kg pela fórmula das decisões 14 e 16 (calc6, 3.170 kg); cefalópode não tem `carga` (D-160, D-175). Era 459,11 kg com 2.130 kg, e antes 1.168,32 kg com a Força 11; cai com a Força 8 e a Musculatura 0 abaixo da referência da massa. Sem feito com massa para conferir.",
+    "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8, topo das âncoras, contida pelo tecido de amônio; era 11. Sem feito com massa; [provisório] (D-158, D-174).",
+    "musculatura: 0 (corpo que não é de força), pelo amônio no músculo; sem medida de força de músculo.",
+    "resistencia: 3 pela luta de 4 h 13 min e pelo tentáculo perdido (Kubodera e Mori 2005), na real; é feito de aguentar ferida, e não de distância.",
+    "vigor: 4, revisto na oitava rodada pelo corpo e pela massa, e fica: o mínimo da D-176 sobre a Architeuthis de base (3); a massa de 3,2 t pediria mais, e o corpo mole de amônio, sem esqueleto, a segura, ao lado do polvo-gigante (1.350,6 kg, 4) e um abaixo da lesma-gigante (3.518 kg, 5, pela cura de ferida medida). A luta presa à linha já está na Resistência (D-174)",
+    "compostura: desce de 2 para 1 por não ser espécie social (diretriz 1); era [sem dado].",
+    "especialidades: a visão no escuro desce de +4 para +3 pelo teto da decisão 3 e passa a natural.",
+    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): presa à isca, lutou 4 h 13 min e puxou o equipamento de 900 para 600 m (Kubodera e Mori 2005) **[medido, na real]**; nenhuma distância por dia nem velocidade achada.",
+    "anatomia: cefalópode, anatomia provisória (D-175), não calibrada em animal medido.",
+    "velocidade: congelada (decisão 23); nenhuma velocidade real achada para comparar.",
+    "comportamento: social, atividade e reação a gente ficam [sem dado]; o solitário é escolha provisória (D-174).",
+    "fonte: a base típica (77 kg) sai de Guerra, González e Rocha 2004, conferido no PDF; o manto da fêmea de 100 kg é pelo cubo da fêmea medida de 81 kg [comparação]. A fêmea de 200 kg (variante) continua pelo cubo de uma fêmea medida (148 kg, manto de 1,8 m); os máximos de 275 e 150 kg continuam só pela Wikipédia (D-174)."
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "ordem": 45,
+  "id": "jiboia",
+  "idAntigo": "mon-cobra-constritora",
+  "nome": "Jiboia",
+  "nomeIngles": "Boa constrictor",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Médio",
+  "descricao": "Espera imóvel, à noite ou no crepúsculo, a presa passar; morde para segurar e aperta até o coração da presa parar.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/jiboia_criatura.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "3,28 m de comprimento, 0,105 m de altura",
+    "peso": "27 kg",
+    "comprimento": 3.28,
+    "largura": 0.131,
+    "altura": 0.105
+  },
+  "locomocao": {
+    "terra": 1,
+    "escalada": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 5,
+    "destreza": 2,
+    "vigor": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 3,
+    "atletismo": 4,
+    "furtividade": 3,
+    "integridade": 1,
+    "prontidao": 3,
+    "resistencia": 3,
+    "sobrevivencia": 3
+  },
+  "skills2": {
+    "escalada": 1,
+    "musculatura": 4
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "vibração",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "Agarrão",
+      "valor": 3,
+      "origem": "natural"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Mordida (bote para agarrar)",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "constrição = agarrar",
+      "descricao": "Mordida (bote para agarrar): Dano do agarrão 2 × Força 5 = 10 por manutenção (Força 5 do autor), com a Briga (Agarrão) +3 natural. As voltas sobre o tórax param a circulação: em 6 s a pressão arterial cai à metade, em 60 s o coração bate a metade, e ao fim (cerca de 6, 5 min) 10 de 11 ratos tinham falha elétrica do coração. Pressão em kPa: não conferida. O humano adulto é grande demais para ser presa.",
+      "classe": "livro"
+    },
+    {
+      "nome": "bote",
+      "descricao": "Mordida (bote para agarrar): dá o bote de emboscada do galho baixo ou da toca.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "engolir",
+      "descricao": "Mordida: depois do agarrão, engole inteira a presa pequena.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "sem pernas",
+      "descricao": "difícil de derrubar.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "vibração: Prontidão (vibração) +2, Especialidade natural; pelo chão e pelo osso da mandíbula. Alcance. · visão: alcança o ultravioleta; sem Especialidade, sem número. · calor: texto, sem Especialidade. As fontes divergem: a ADW diz que não tem fossetas térmicas; a Wikipédia diz que ainda sente calor por células dos lábios."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Não usa veneno: enrosca o corpo em torno da presa e aperta a cada expiração dela, até sufocar, depois engole inteiro. Ataca só quando faminta ou encurralada. Social: solitário."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Prefere selvas úmidas e ribeirinhas quentes, comuns nas florestas fechadas de Mére e nos brejos do interior de Syl."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Predadora solitária e paciente, caça por emboscada em galhos baixos ou tocas alheias; sua pele grossa e seu tamanho a deixam quase sem inimigos naturais adultos."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "A mordida é fraca (6, 5); o perigo é o agarrão, que aperta 10 por manutenção (2 × Força 5), com a Briga (Agarrão) +3, e o corpo de Musculatura 4 arrasta até 276,60 kg. Pequena enrolada e esticada, ela ganha +3 no acerto corpo a corpo contra um humano; à distância, quem atira nela leva −3. Ela não apara golpe (Bloqueio 0), e a Força 5 tira o Bloqueio de quem tem Força 1 ou menos. Anda 3 m por Tick na corrida: não persegue ninguém, espera. Contra um humano adulto, ela agarra e não mata: é presa grande demais. Contra cão, galinha ou criança pequena, é outra conversa, pelo Mestre. 26 PV."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Jungle",
+      "Swamp"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 2, Atletismo 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Cobra Constritora",
+    "cr": "2",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 17,
+      "con": 13,
+      "int": 1,
+      "sab": 12,
+      "car": 2
+    },
+    "pericias": [
+      "Furtividade 2",
+      "Atletismo 2"
+    ],
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 2,
+  "proezaFutura": [
+    {
+      "caminho": "agarrao-do-urso"
+    }
+  ],
+  "v3": {
+    "pv": 26,
+    "esquiva": 10,
+    "bloqueio": 4,
+    "defesa": 10,
+    "defesaMental": 7,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 276.6,
+    "deslocamento": {
+      "terra": {
+        "batalha": 1,
+        "arranque": 2,
+        "corrida": 3
+      }
+    }
+  },
+  "notasObservacao": [
+    "alvo: Pequeno na Etapa 2 (20/10/2026): a massa (27 kg) do autor, com o comprimento pelo cubo, dá 0,126 m² enrolada, e a ficha fica Pequena pelo corpo (resposta do autor, seção 13); antes: passa de Pequeno a Miúdo pela medição enrolada da `tamanho-fichas-v2` (decisão 8: o Alvo principal é a postura de repouso); esticada, segue Pequena. Decisão provisória: usar o número do `calc.mjs`, que é o mesmo para as 92 fichas.",
+    "`forca`: 5 (em vigor na Etapa 2, 20/10/2026); antes: fica 3, decidido pelo autor no item 8 da `tamanho-decisoes-5.md` (\"A jiboia fica com Força 3 (mata por constrição)\"). A ficha é Miúda enrolada, e o Alvo não decide a Força (item 8). Três fichas usam a jiboia como âncora do agarrão (\"jiboia (3, 12 kg)\").",
+    "pesoErguido: 276,60 kg (em vigor na Etapa 2, 20/10/2026); antes: 115,5 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com Força 3 e o adulto típico de 9,97 kg. Era 127,74 kg (a fêmea, Força 3) e, antes, 24,42 kg pela fórmula de FAH.",
+    "musculatura: 4 (excepcional) pela constrição medida em ratos; provisória, sem a pressão em kPa.",
+    "escalada: 1, nova linha; antes estava dentro do Atletismo 1. Decisão provisória: separar, como pede a lista de referência (diretriz 2).",
+    "compostura: desce de 3 para 1 por não ser espécie social (diretriz 1).",
+    "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pelo normal da espécie; o tempo de jejum não foi achado.",
+    "couraca: nível 1 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "massa: 27 kg (edição do autor; em vigor na Etapa 2, 20/10/2026); antes: 9,97 kg **[comparação]**, a média simples da fêmea (12 kg, escolha dentro dos 10 a 15 kg de divulgação, SeaWorld, via Wikipédia) e do macho pela razão de 1,51 da subespécie argentina (7,95 kg). Era 12 kg (a fêmea). Falta pesagem de campo publicada dos dois sexos.",
+    "jornada (nota de pesquisa, não é regra): sem distância por dia nem velocidade. O esforço medido é o da constrição: em média 6,5 minutos de aperto (variação de 1 minuto) até a parada circulatória do rato (Boback e colegas 2015, resumo conferido) **[medido]**.",
+    "velocidade: congelada (decisão 23); 10 km/h pela fórmula de hoje com o porte Pequeno, que agora é o segundo Alvo. Sem velocidade medida da espécie.",
+    "`dimensoes.largura`: 0,094 m, a estimativa do Arquiteto para a fêmea (0,10 m), sem fonte, escalada pelo cubo da massa; a altura de 0,075 m (o diâmetro) também é estimativa, escalada do mesmo jeito"
+  ]
+}

@@ -9,7 +9,7 @@ Nem todo herói nasce humano. Cada povo carrega uma **herança** que molda corpo
 
 <div class="callout regra"><span class="lbl">Como ler um traço racial</span>O <strong><code>+1</code> racial faz duas coisas</strong>, e é preciso ler as duas. Ele <strong>levanta o teto</strong> daquele Atributo para <strong>7</strong>, um ponto acima do teto humano de 6, mesmo em quem tem Centelha 0, e já na criação: o Atributo com o <code>+1</code> pode ser comprado até 7 (Cap. XVIII). É o único ponto acima de 6 que a herança dá, e os seguintes só vêm da Centelha (Atributos e Centelha), <strong>e levanta o piso</strong>: aquele Atributo <strong>começa em 2</strong> em vez de 1, e esse ponto <strong>vem de graça</strong>. O <strong><code>−1</code> racial</strong> é diferente: ele trava o Atributo em <strong>5</strong> e <strong>não mexe no piso</strong>, que continua sendo 1 como o de todo mundo. Fora o ponto de brinde, você compra cada nível com XP (Atributo = 5 + novo × 5).</div>
 
-<div class="callout"><span class="lbl">Provisório</span>Os <strong>custos de XP</strong> das raças são uma primeira passada, recusteada da tabela antiga para a economia atual (orçamentos de 1500–2600). Tratam-se de números a calibrar conforme o peso real de cada herança na mesa. <strong>Os custos E as idades das oito serão refeitos de uma vez</strong>, depois que as inconsistências de herança fecharem: o que está na tabela hoje vale para jogar e não vale como régua fechada. O <strong>Gnomo</strong> é o caso vivo disso: caiu de 40 para 30 ao virar de porte pequeno, e esse 30 entra na conta futura como qualquer outro.</div>
+<div class="callout"><span class="lbl">Provisório</span>Os <strong>custos de XP</strong> das raças são uma primeira passada, recusteada da tabela antiga para a economia atual (orçamentos de 1500–2600). Tratam-se de números a calibrar conforme o peso real de cada herança na mesa. <strong>Os custos E as idades das oito serão refeitos de uma vez</strong>, depois que as inconsistências de herança fecharem: o que está na tabela hoje vale para jogar e não vale como régua fechada. O <strong>Gnomo</strong> é o caso vivo disso: caiu de 40 para 30 ao passar a ser de tamanho Pequeno, e esse 30 entra na conta futura como qualquer outro.</div>
 
 ## O Humano: a régua do mundo
 
@@ -29,7 +29,7 @@ Em Relações Sociais, o humano não tem inimizades naturais: começa em **Neutr
 
 <div class="table-wrap">
 
-| Raça | Custo XP | `+1` racial (começa em 2, vai até 7) | `−1` racial (máx 5) | Porte |
+| Raça | Custo XP | `+1` racial (começa em 2, vai até 7) | `−1` racial (máx 5) | Tamanho |
 |---|:---:|---|---|---|
 | Humano | 0 | — | — | Médio |
 | Anão | 30 | Vigor | Perspicácia | Médio (baixo, corpulento) |
@@ -47,7 +47,7 @@ Em Relações Sociais, o humano não tem inimizades naturais: começa em **Neutr
 Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e colinas, muitas vezes **dentro** delas. Têm pele de tons mais morenos e raramente cabelos ou olhos claros. Medem de **1,20 a 1,50 m** e pesam **70–100 kg**. Atingem a idade adulta aos **20 anos**, a maturidade plena por volta dos **100**, e podem viver mais de **300 anos**.
 
 - **Custo de XP:** 30
-- **Porte médio**: a Vida é 25 + Vigor × 3, a linha Médio da tabela de [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura). A baixa estatura já está paga no deslocamento, e não muda o porte.
+- **Vida pela massa** (de 35 a 220 kg): a Vida é 25 + Vigor × 3, a linha de 35 a 220 kg da tabela de [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura). A baixa estatura já está paga no deslocamento, e não muda o tamanho.
 - **`+1` de Vigor**: começa em **2** e vai até **7**. Corpulência de pedra.
 - **`−1` teto de Perspicácia** (máx 5, piso normal): arrogantes e prepotentes, pouco tato social.
 - **Baixa estatura**, pernas curtas: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
@@ -70,10 +70,10 @@ Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das ou
 
 ### Gnomo
 
-Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Idade adulta aos 18 anos; podem viver mais de **300 anos**.
+Pequenos e resistentes. Pesam **20–30 kg** e medem **1,00–1,30 m**. Idade adulta aos 18 anos; podem viver mais de **300 anos**.
 
-- **Custo de XP:** 30 <small>(provisório: desceu de 40 quando o Gnomo virou de porte **pequeno** e perdeu PV)</small>
-- **Porte pequeno**: a Vida é 20 + Vigor × 2, a linha Pequeno da tabela de [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura).
+- **Custo de XP:** 30 <small>(provisório: desceu de 40 quando o Gnomo passou a ser de tamanho **Pequeno** e perdeu PV)</small>
+- **Vida pela massa** (de 15 a 35 kg): a Vida é 20 + Vigor × 2, a linha de 15 a 35 kg da tabela de [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura).
 - **`+1` de Vigor**: começa em **2** e vai até **7**. Resistência teimosa num corpo pequeno.
 - **`−1` teto de Força** (máx 5, piso normal): pequenos demais para grande força bruta.
 - **Baixa estatura**: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
@@ -87,9 +87,9 @@ Pequenos e resistentes. Pesam **20–45 kg** e medem **1,00–1,30 m**. Idade ad
 Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atingem a idade adulta por volta dos 18 anos e podem viver por volta de **200 anos**.
 
 - **Custo de XP:** 30
-- **Porte pequeno**: a Vida é **20 + Vigor × 2**, a linha Pequeno da tabela de [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura).
+- **Vida pela massa** (de 15 a 35 kg): a Vida é **20 + Vigor × 2**, a linha de 15 a 35 kg da tabela de [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura).
 - **`+1` de Destreza**: começa em **2** e vai até **7**. Mãos e pés leves.
-- **`−1` teto de Força** (máx 5, piso normal): porte pequeno, sem massa para força bruta.
+- **`−1` teto de Força** (máx 5, piso normal): tamanho Pequeno, sem massa para força bruta.
 - **Baixa estatura**: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
 - **Atletas**, corpos incansáveis: **+1d6** em **Atletismo** e nas Habilidades secundárias correlatas.
 - **Relações Sociais:** desconfiam de quem é grande e sério demais: **−1 (Antipatia)** com **Anão** (sem volta: o Anão os trata como Neutro) e com **Elfo**; **+1 (Simpatia)** com o Gnomo, recíproco; **Neutro** com Humano e Orc.
@@ -99,7 +99,7 @@ Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atinge
 Filhos de pais humanos com mães elfas. A concepção é rara, e o resultado se parece mais com um elfo do que com um humano, sem, contudo, herdar tudo. Altura e peso puxam ao elfo: **1,60–1,90 m** e **50–90 kg**. Têm poucos pelos, como os elfos, e vivem mais que humanos: até **200 anos**. Por serem híbridos, são **inférteis**.
 
 - **Custo de XP:** 20
-- **Porte médio**: a Vida é 25 + Vigor × 3.
+- **Vida pela massa** (de 35 a 220 kg): a Vida é 25 + Vigor × 3.
 - **Sem deslocamento de tetos**: herdam o equilíbrio físico humano.
 - **Aparência Universal**, o sangue feérico se reflete na aparência: ao lidar com outras raças humanoides, o modificador negativo de Aparência do meio-elfo (Aparência de 0 a 5) não conta: vale 0. É só a Aparência: as relações entre os povos, na Régua de Relação, abaixo, continuam como estão.
 - **Resiliência Mental**, versão mais branda da do ancestral élfico: **+2** para resistir a qualquer efeito de controle mental.
@@ -110,7 +110,7 @@ Filhos de pais humanos com mães elfas. A concepção é rara, e o resultado se 
 Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangue humano. Pele e pelos puxam ao marrom ou ao verde e as feições são rudes, mas menos que as de um orc puro. São altos e robustos. Atingem a idade adulta por volta dos 14 anos; vida curta, pouco mais de **70 anos**.
 
 - **Custo de XP:** 40
-- **Porte médio**, apesar do tamanho: a Vida é 25 + Vigor × 3, e a Vitalidade soma +Vigor por cima.
+- **Vida pela massa** (de 35 a 220 kg): a Vida é 25 + Vigor × 3, e a Vitalidade soma +Vigor por cima.
 - **`+1` de Força e de Vigor**: os dois começam em **2** e vão até **7**. A compleição forte da herança orc.
 - **`−1` teto de Compostura e de Inteligência** (máx 5, piso normal): o temperamento bruto e a lógica mais curta que a humana; o sangue humano poupa o tato social (a Perspicácia) que um orc puro perderia.
 - **Vitalidade**, couro grosso: ganha **+Vigor** pontos de vida adicionais (PV = 25 + Vigor×3 + Vigor).
@@ -126,7 +126,7 @@ Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangu
 Humanóides de herança metamorfa, com constituição física superior a qualquer outra raça mediana. Pele e pelos variam do marrom ao verde; olhos e cabelos costumam ser pretos. Medem **1,80–2,30 m** e pesam **80–140 kg**. Idade adulta por volta dos 14 anos; vivem pouco mais de **60 anos**. São mais bestiais que os meio-orcs, e pagam por isso em juízo e trato.
 
 - **Custo de XP:** 40
-- **Porte médio**, apesar do tamanho: a Vida é 25 + Vigor × 3, e a Vitalidade soma +Vigor por cima.
+- **Vida pela massa** (de 35 a 220 kg): a Vida é 25 + Vigor × 3, e a Vitalidade soma +Vigor por cima.
 - **`+1` de Força e de Vigor**: os dois começam em **2** e vão até **7**. Criaturas poderosas e truculentas.
 - **`−1` teto de Perspicácia, Compostura e Inteligência** (máx 5, piso normal): a força não vem acompanhada de tato social nem de lógica fina.
 - **Aparência rebaixada**: a Aparência do orc vale **1 a menos** que o nível pago (paga Aparência 7, vale 6).

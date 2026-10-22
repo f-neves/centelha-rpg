@@ -36,6 +36,12 @@ export const ataqueSchema = z.object({
   perf: naoNeg.optional(),
   ticks: z.number().int().min(1),
   notas: texto.optional(),
+  /** Ficha v3 (D-179, decisoes-etapa-6.md §4): o que soma ao dado, que pode ser
+   *  negativo ("1d6 − 2"), e a classe pronta, que vale no lugar da deduzida. */
+  danoBonus: inteiro.optional(),
+  /** `false`: o golpe não soma a Força (o bico do falcão-peregrino). */
+  forca: z.literal(false).optional(),
+  classe: z.enum(['leve', 'media', 'pesada']).optional(),
 }).strict();
 
 /** Poder natural: o dom da própria criatura (B14 fase 2, item A.2). NÃO passa pelo
@@ -108,6 +114,9 @@ export const dimensoesSchema = z.object({
 export const criaturaSchema = z.object({
   ordem: z.number().int().min(1).optional(),
   id: z.string().regex(/^[a-z0-9-]+$/, 'id em minúsculas, números e hífen'),
+  /** O id de antes da troca da D-179 (`mon-lobo`, `camponis-assustado`). Tem de
+   *  bater com o par do `ids-antigos.json` (o validate confere nos dois sentidos). */
+  idAntigo: z.string().regex(/^[a-z0-9-]+$/).optional(),
   nome: texto.min(1),
   nomeIngles: texto.nullable(),
   categoria: texto.min(1),
@@ -118,7 +127,9 @@ export const criaturaSchema = z.object({
   descricaoLegada: texto.optional(),
   tags: z.array(texto),
   imagem: texto.nullable(),
-  porte: z.enum(['Miúdo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal']),
+  /** A segunda imagem (D-179, item 16): só onde há `imagem`; o clique no card troca. */
+  imagem2: texto.optional(),
+  porte: z.enum(['Minúsculo', 'Miúdo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal']),
   dimensoes: dimensoesSchema,
   material: texto.optional(),
   constructo: z.object({ semVida: z.literal(true) }).strict().optional(),
@@ -165,7 +176,11 @@ export const criaturaSchema = z.object({
    *  o dano volta a ser normal (regras.json, ao lado de fraqueza/resistência). Mesmo
    *  vocabulário fechado de fraquezas/resistencias. */
   imunidades: z.array(texto).optional(),
-  habilidades: z.array(z.object({ nome: texto, descricao: texto }).strict()),
+  habilidades: z.array(z.object({
+    nome: texto, descricao: texto,
+    /** Ficha v3: de onde vem a regra da manobra (manual §5.2, item 9). */
+    classe: z.enum(['livro', 'regra da ficha', 'sem regra ainda', 'como luta']).optional(),
+  }).strict()),
   lore: z.array(z.object({ titulo: texto, texto }).strict()),
   ecologia: z.object({ tipo: texto, terreno: z.array(texto), clima: z.array(texto) }).strict(),
   notas: texto,
@@ -195,7 +210,47 @@ export const criaturaSchema = z.object({
     maisUm: naoNeg.optional(),
     bando: z.object({ quantidade: naoNeg, desafio: z.number().int().min(0).max(12) }).strict().optional(),
   }).strict().optional(),
+
+  // ---- a ficha v3 (D-179; formato em decisoes-etapa-6.md §3 e §4) ----
+  /** Os números prontos da ficha. Quando existe, o `stat()` usa estes no lugar da
+   *  conta pelo porte (lib-bestiario.mjs); as criaturas sem ficha nova seguem a conta. */
+  v3: z.object({
+    pv: naoNeg,
+    esquiva: naoNeg,
+    bloqueio: naoNeg,
+    /** o maior entre Esquiva e Bloqueio, que é a Defesa do card (manual §5.2, item 7) */
+    defesa: naoNeg,
+    defesaMental: naoNeg,
+    defesaSocial: naoNeg,
+    /** Corte e Perfuração levam o valor do Impacto: a Couraça fica fora da Absorção
+     *  até o autor decidir o valor dos níveis (manual, linha 102). */
+    absorcao: z.object({ impacto: naoNeg, corte: naoNeg, perfuracao: naoNeg }).strict(),
+    couracaNivel: naoNeg,
+    pesoErguido: z.number().nonnegative(),
+    carga: z.object({ leve: z.number(), media: z.number(), pesada: z.number(), maxima: z.number() }).strict().optional(),
+    deslocamento: z.object({
+      terra: z.object({ batalha: naoNeg, arranque: naoNeg, corrida: naoNeg }).strict().optional(),
+      voo: z.object({ batalha: naoNeg, cruzeiro: naoNeg.optional(), mergulho: naoNeg.optional() }).strict().optional(),
+      nado: naoNeg.optional(),
+    }).strict(),
+  }).strict().optional(),
+  /** Batalha, Arranque e Corrida congelados na ficha (o gen-monsters.mjs já lê). */
+  deslocamentoDeclarado: z.object({ batalha: velocidade, arranque: velocidade, corrida: z.number().int().min(1).max(40) }).strict().optional(),
+  especialidades: z.array(z.object({
+    habilidade: texto, foco: texto, valor: z.number().int().min(1),
+    origem: z.enum(['natural', 'livro']),
+  }).strict()).optional(),
+  /** As linhas de jogo da ficha (manual §5.4), com o texto inteiro. */
+  venenos: z.array(z.object({ nome: texto, texto }).strict()).optional(),
+  doencas: z.array(z.object({ nome: texto, texto }).strict()).optional(),
+  enxame: z.array(z.object({ nome: texto, texto }).strict()).optional(),
+  /** Ficam na fonte e não vão ao monsters.json nem ao card (D-173, D-174). */
+  notasObservacao: z.array(texto).optional(),
 }).strict();
+
+/** As Habilidades só de criatura (decisoes-etapa-6.md §8): o portão as aceita em
+ *  `skills2` e como Habilidade de ataque, e nenhum JSON do livro as recebe. */
+export const HABILIDADES_DE_CRIATURA = ['musculatura', 'corrida', 'voo', 'disparo'];
 
 /**
  * Chaves de perícia que a ficha de criatura ainda usa e o catálogo já não tem.

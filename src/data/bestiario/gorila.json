@@ -1,0 +1,224 @@
+{
+  "ordem": 43,
+  "id": "gorila",
+  "idAntigo": "mon-gorila",
+  "nome": "Gorila",
+  "nomeIngles": "Gorilla",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "O dorso-prateado fica de pé, bate no peito, rosna e investe, mas raramente acerta: passa direto e pode investir de novo. Não defende território (as áreas dos grupos se sobrepõem), e ataca roças.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": null,
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "0,55 m de comprimento, 1,72 m de altura",
+    "peso": "206 kg",
+    "comprimento": 0.55,
+    "largura": 0.83,
+    "altura": 1.72
+  },
+  "locomocao": {
+    "terra": 2,
+    "escalada": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 4,
+    "corrida": 5
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 7,
+    "destreza": 4,
+    "vigor": 6,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2,
+    "influencia": 3,
+    "perspicacia": 2,
+    "compostura": 2
+  },
+  "skills": {
+    "briga": 3,
+    "bloqueio": 3,
+    "esquiva": 3,
+    "atletismo": 4,
+    "furtividade": 1,
+    "integridade": 3,
+    "prontidao": 1,
+    "resistencia": 4,
+    "empatia": 2,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "escalada": 3,
+    "musculatura": 4
+  },
+  "especialidades": [
+    {
+      "habilidade": "resistencia",
+      "foco": "frio",
+      "valor": 1,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "equilibrio",
+      "foco": "galhos",
+      "valor": 1,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "integridade",
+      "foco": "defender o grupo",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Pancada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "agarrar",
+      "descricao": "Pancada (a mão): Dano do agarrão: 2 × Força = 14 por manutenção.",
+      "classe": "livro"
+    },
+    {
+      "nome": "carga simulada",
+      "descricao": "investe e passa direto, e raramente acerta.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "arremessar",
+      "descricao": "Pancada: agarra e lança objeto ou inimigo pequeno a alguns metros.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "Nada que passe do humano com número. Olhos pequenos; números de visão, audição e olfato não achados. Sem Especialidade natural de sentido."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Vive em grupos familiares liderados por um macho dominante, geralmente pacífico a menos que provocado ou defendendo o grupo. Social: bando (um macho dominante, várias fêmeas e filhotes; 5 a 15 ou 5 a 30); o macho deslocado vive solitário."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Habita florestas densas e encostas montanhosas, raramente se afastando da cobertura das árvores."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Encontrado nas selvas mais remotas de Mére, raramente avistado por forasteiros, e tratado pelas lendas locais como guardião silencioso da mata."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Força 7: quem tem Força 3 ou menos não apara a pancada. Médio como o humano, então ninguém ganha o bônus de acerto pelo Alvo. Ergue 1,01 t, bem mais que qualquer humano, e corre mais devagar que o humano comum (17 km/h, congelada). Sobe em árvore (Escalada 3, edição do autor). Com 54 PV e Absorção de Impacto 6, custa a cair; a pele fica no nível 1 de Couraça, e quanto ela tira do golpe fica para depois."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Jungle",
+      "Forest"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Atletismo 3.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Gorila",
+    "cr": "2",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 15,
+      "con": 14,
+      "int": 2,
+      "sab": 13,
+      "car": 7
+    },
+    "pericias": [
+      "Atletismo 3"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 54,
+    "esquiva": 14,
+    "bloqueio": 14,
+    "defesa": 14,
+    "defesaMental": 8,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 6,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 1007.57,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 4,
+        "corrida": 5
+      }
+    }
+  },
+  "notasObservacao": [
+    "pesoErguido: 1.007,57 kg (em vigor na Etapa 2, 20/10/2026); antes: 812,56 kg pela fórmula das decisões 14 e 16 (`calc6.mjs`, com o adulto típico de 126 kg), provisório até a fórmula fechar; o teto de arremesso (um quarto dele, 203,1 kg) segue o mesmo número (D-169, D-174).",
+    "carga: não se aplica; o gorila não é quadrúpede de carga (D-160).",
+    "velocidade: congelada (decisão 23); os números são os de 12/10. Sem velocidade real medida para conferir; os 32 a 40 km/h de divulgação ficam fora, como antes (D-170).",
+    "dimensoes.largura e dimensoes.comprimento: 0,83 m e 0,55 m (os 0,90 m e 0,60 m estimados pelo Arquiteto para o macho, sem fonte, escalados pelo cubo da massa); o Alvo sai da silhueta de frente, em pé (D-147, D-174).",
+    "dimensoes.postura: tratado como ereto (área de frente e espaço em círculo), embora ande de quatro a maior parte do tempo; é a leitura do Arquiteto, mantida (D-174).",
+    "inteligencia: 2 pela lista fechada da diretriz 1 (grande símio); a pesquisa do gorila não traz uso de ferramenta com fonte, e o 2 se apoia na comunicação do grupo e no parentesco (D-174).",
+    "habilidades.empatia: 1 pela comunicação do grupo (ADW), sem estudo de leitura do humano (D-174).",
+    "habilidades.escalada: 2 pelos 15 m de árvore (ADW), sem velocidade de escalada; a Especialidade natural (galhos) +1 é o exemplo do autor para o símio, com valor [extrapolação] (D-174).",
+    "especialidades.frio: +1 pelo gorila-das-montanhas; o gorila-ocidental, da floresta de planície, não passa frio, e a Especialidade vale para a espécie inteira por simplicidade (D-174).",
+    "variantes.femea: com 92 kg, a área escalada (0,73 m²) dá Médio; as dimensões são as do macho escaladas, e não medidas da fêmea (1,25 a 1,5 m de altura, sem largura medida) (D-174).",
+    "couraca: nível 1 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): **[medido]** o gorila-ocidental anda em geral menos de 1,6 km por dia (Smithsonian); o gorila-das-montanhas passa cerca de 30% do dia se deslocando, 30% comendo e 40% descansando (ADW). Sem tempo de perseguição nem de investida."
+  ]
+}

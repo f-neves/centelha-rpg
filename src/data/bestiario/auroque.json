@@ -1,0 +1,220 @@
+{
+  "ordem": 235,
+  "id": "auroque",
+  "idAntigo": "mon-aurochs",
+  "nome": "Auroque",
+  "nomeIngles": "Aurochs",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "O touro selvagem de que vem o gado. Caçado desde a Antiguidade; o último rebanho, na Polônia, minguou de cerca de 50 animais para 4 em 1601, e a última vaca morreu em 1627.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/auroque_criatura.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,3 m de comprimento, 1,63 m de altura",
+    "peso": "800 kg",
+    "comprimento": 3.3,
+    "largura": 0.8,
+    "altura": 1.63
+  },
+  "locomocao": {
+    "terra": 7
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 7,
+    "arranque": 11,
+    "corrida": 15
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 7,
+    "destreza": 2,
+    "vigor": 6,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 1,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
+  },
+  "skills": {
+    "briga": 3,
+    "bloqueio": 2,
+    "esquiva": 1,
+    "atletismo": 1,
+    "furtividade": 1,
+    "integridade": 2,
+    "prontidao": 2,
+    "resistencia": 5,
+    "empatia": 1,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "visão",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 4,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Chifrada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 1,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Investida (marrada)",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 2,
+      "tipo": "impacto",
+      "ticks": 7,
+      "classe": "pesada"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "derrubar",
+      "descricao": "Investida",
+      "classe": "livro"
+    },
+    {
+      "nome": "empurrar",
+      "descricao": "Investida",
+      "classe": "livro"
+    },
+    {
+      "nome": "pisotear",
+      "descricao": "Investida (marrada): Investida.",
+      "classe": "livro"
+    },
+    {
+      "nome": "debandada",
+      "descricao": "três ou mais avançando lado a lado atropelam o que estiver no caminho, com força redobrada.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "nada achado. A visão de 300° fica pela Especialidade natural, pelo boi."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Boi selvagem ancestral",
+      "texto": "Parente robusto do gado domesticado, o aurochs vive em manadas que pastam livres pelas planícies abertas."
+    },
+    {
+      "titulo": "Fúria coletiva",
+      "texto": "Quando ameaçada, a manada inteira avança em bloco, transformando dezenas de chifres e cascos numa muralha destrutiva."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: rebanho pequeno no inverno; sozinho ou em grupos menores no verão."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande: o humano Médio acerta com +3 no corpo a corpo. A Força 7 tira o Bloqueio de quem tem Força 3 ou menos. Bloqueia bem com os chifres (9), mas é fácil de acertar (Esquiva 6). 54 PV e Couraça nível 2: quanto ela tira da espada e da flecha fica para depois, e o Impacto perde 6. A investida faz 21 em média (2d6 + 2 × Força 7), e o touro não recua do humano: diferente do boi, ele vem."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Aurochs",
+    "cr": "2",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 10,
+      "con": 17,
+      "int": 2,
+      "sab": 11,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 54,
+    "esquiva": 6,
+    "bloqueio": 8,
+    "defesa": 8,
+    "defesaMental": 7,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 6,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "couracaNivel": 2,
+    "pesoErguido": 817.64,
+    "carga": {
+      "leve": 160,
+      "media": 320,
+      "pesada": 480,
+      "maxima": 640
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 7,
+        "arranque": 11,
+        "corrida": 15
+      }
+    }
+  },
+  "notasObservacao": [
+    "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8, igual ao boi e ao bisão, pelas âncoras do autor; a ficha de hoje tinha 11, um acima do boi. Com a mesma Força e Musculatura e mais massa, o peso erguido do auroque (995 kg) fica um pouco abaixo do do boi (997 kg, com 788 kg), porque a Força de referência sobe com a massa. A ordem dos bovinos se inverte por 2 kg; eu daria 9 ao touro selvagem, que é o que a ficha de hoje ordenava (ver desvios). Provisória (D-158, D-174).",
+    "vigor: 6 sem dado medido (extinto), igual ao boi (Etapa 2, 20/10/2026: o boi sobe para 6, resposta do autor, fim da seção 13); antes: um acima do boi pela vida selvagem; **[extrapolação]** (D-174).",
+    "resistencia: 5 (em vigor na Etapa 2, 20/10/2026); antes: 2, o valor de quem não tem dado (extinto) (D-174).",
+    "empatia: 1 pelo boi, do mesmo gênero; provisória (D-174).",
+    "couraca: nível 2 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "variante vaca: Força 6, um abaixo da principal (7) (Etapa 2, 20/10/2026); antes: Força 7, um abaixo do touro, como a ficha de hoje fazia (9 contra 11) (D-174).",
+    "pesoErguido: 995 kg pela conta das decisões 14 e 16, provisório; a fórmula está com outra frente (D-162, D-169).",
+    "carga: Leve 160 a Máxima 640 kg, provisória pela conta (estrutura 0,2 do bovino), sem carga medida (extinto) (D-122, D-169, D-172).",
+    "velocidade: congelada (decisão 23); 52 km/h sem número real (D-170).",
+    "massa: 800 kg é a média de Star Carr (795,9 kg, Saarinen 2016), que junta touros e vacas; com os 1.121 kg do Pleistoceno o Alvo seguiria Grande (D-174).",
+    "dimensoes.altura: 1,63 m pelos esqueletos de Soro e St. Damme, lidos só por resumo de busca (Folia Archaeologica 38) (D-174).",
+    "dimensoes.comprimento e largura: sem fonte; o corpo de 2,6 m sai da frase \"a altura de ombro quase igualava o tronco\", e a largura é a do boi (D-147, D-174).",
+    "ataque Chifrada: N1 pelo tamanho do chifre, contra N0 do boi; leitura da ficha de hoje, mantida (D-174).",
+    "especialidade Prontidão (visão): extrapolada do boi, do mesmo gênero (D-174)."
+  ]
+}

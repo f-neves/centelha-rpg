@@ -1,0 +1,210 @@
+{
+  "ordem": 144,
+  "id": "gigantopiteco",
+  "idAntigo": "mon-dire-ape-gigantopithecus",
+  "nome": "Gigantopiteco",
+  "nomeIngles": "Dire Ape",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Símio gigante das florestas do sul da China, herbívoro, que sumiu quando a floresta abriu e ele não conseguiu mudar de dieta.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/gigantopiteco_criatura.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "1 m de comprimento, 3 m de altura",
+    "peso": "300 kg",
+    "comprimento": 1,
+    "largura": 1.55,
+    "altura": 3
+  },
+  "locomocao": {
+    "terra": 2,
+    "escalada": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 9,
+    "destreza": 4,
+    "vigor": 7,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2,
+    "influencia": 3,
+    "perspicacia": 2,
+    "compostura": 2
+  },
+  "skills": {
+    "briga": 5,
+    "bloqueio": 3,
+    "esquiva": 3,
+    "atletismo": 4,
+    "furtividade": 1,
+    "integridade": 3,
+    "prontidao": 3,
+    "resistencia": 4,
+    "empatia": 3,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "escalada": 3,
+    "musculatura": 4
+  },
+  "especialidades": [
+    {
+      "habilidade": "briga",
+      "foco": "disputa entre machos",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Pancada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "agarrar",
+      "descricao": "Pancada (a mão): Dano do agarrão: 2 × Força = 18 por manutenção.",
+      "classe": "livro"
+    },
+    {
+      "nome": "carga simulada",
+      "descricao": "investe e passa direto, para assustar.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "trepador",
+      "descricao": "escala árvore e penhasco com a mesma velocidade com que anda no chão.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "Nada que passe do humano com número. Sem Especialidade natural de sentido."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Território",
+      "texto": "O dire ape ataca sem aviso qualquer coisa que invada seu território, incluindo outros de sua espécie fora do próprio bando, e só recua quando o intruso está morto ou fugiu."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Contra oponentes bem protegidos, prefere agarrar e imobilizar o alvo no chão antes de dilacerá-lo com as garras. Social: bando, como o gorila."
+    },
+    {
+      "titulo": "Aparência",
+      "texto": "Um macho adulto chega a quase três metros de altura, com testa protuberante, olhos fundos e braços musculosos que quase tocam o chão."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Força 9: quem tem Força 4 ou menos não apara a pancada. Grande pelas medidas do autor: o humano Médio ganha +3 no corpo a corpo contra ele. Ergue cerca de 1,53 t. Corre devagar, como o gorila (congelada). 58 PV e Absorção de Impacto 7; a pele fica no nível 1 de Couraça, e quanto ela tira do golpe fica para depois."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Ape (Gigantopithecus)",
+    "cr": "3",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 15,
+      "con": 16,
+      "int": 2,
+      "sab": 12,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 58,
+    "esquiva": 14,
+    "bloqueio": 14,
+    "defesa": 14,
+    "defesaMental": 8,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 7,
+      "corte": 7,
+      "perfuracao": 7
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 1530.99,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
+      }
+    }
+  },
+  "notasObservacao": [
+    "fonte: a massa tem o resumo de Zhang e Harrison 2017; as alturas publicadas (Willoughby 1,85; Hawley 2,3; Simons e Ettel 2,7; Pei 3,7) continuam só pela Wikipédia, e só a de Zhang 2024 (cerca de 3 m) tem fonte primária (D-174).",
+    "fonte: a Força, a Musculatura, o Vigor e as Habilidades saem só da comparação com o gorila; não há osso do corpo (D-174).",
+    "dimensoes: altura, largura e profundidade são o gorila da ficha escalado pela raiz cúbica da massa (fator 1,16), [extrapolação]; as alturas publicadas vão de 1,85 a 3 m (D-147, D-174).",
+    "alvo: Médio pela silhueta de frente (1,41 m²), a 0,04 m² do corte do Grande. Com os 3 m de Zhang 2024 a silhueta passa do corte e ele vira Grande. Fica a altura escalada do gorila, dentro do teto de 2,3 m de Hawley 2019; decisão provisória (decisão 7, D-174).",
+    "massa: 300 kg (em vigor na Etapa 2, 20/10/2026); antes: 250 kg, meio da faixa de 200 a 300 kg de Zhang e Harrison 2017, pelos dentes e pela mandíbula; a faixa não diz o sexo, e a ficha a lê como a do macho (D-174; quinta rodada, item 3).",
+    "inteligencia: 2 pela quinta rodada: grande símio da linha dos orangotangos (Welker e colegas 2019, Nature, proteoma do esmalte), e \"grandes símios\" está na lista do autor; do próprio animal só há dentes.",
+    "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "vigor: 7 (em vigor na Etapa 2, 20/10/2026); antes: 5 pela regra da versão maior (D-176), sem dado do corpo (D-174).",
+    "esquiva, atletismo e escalada: abaixo do gorila pelo corpo mais pesado; leitura sem fonte, e o Atletismo fica pela velocidade congelada (D-174, decisão 23).",
+    "especialidades.briga: +1 pela competição entre machos que o dimorfismo sugere (Zhang e Harrison 2017); é inferência dos dentes, provisória (D-174).",
+    "pesoErguido e arremesso: 1.245,83 kg e 311,5 kg pela fórmula das decisões 14 e 16 (`calc.mjs`), provisórios (D-169, D-174).",
+    "velocidade: congelada (decisão 23), sem real para conferir (D-170).",
+    "dimensoes.postura: tratado como ereto, a leitura do gorila (D-174)."
+  ]
+}

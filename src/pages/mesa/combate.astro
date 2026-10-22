@@ -564,7 +564,7 @@ import CondDlg from '../../components/CondDlg.astro';
     classeDeTempo, velocidadeDaArma, tetoDaRajada, temGesto, FASE_ROTULO,
     type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
-  import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, resumoDe, iniDeMonstro, d6 } from '../../lib/mesa-bestiario';
+  import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, resumoDe, iniDeMonstro, d6, imagemDe } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC } from '../../lib/mesa-ficha';
   import { pv as pvDe, mana as manaDe, limiteDaMorte, passouDoLimite } from '../../lib/calc';
   import { armaDoSlot } from '../../lib/equip';
@@ -828,7 +828,7 @@ import CondDlg from '../../components/CondDlg.astro';
   const avatarDe = (c: any) => {
     const src = IMGS['own:' + c.id]
       || (c.tipo === 'pc' ? IMGS['pc:' + c.personagem_id] : null)
-      || (c.tipo === 'criatura' && MON[c.monstro_id]?.imagem ? u(MON[c.monstro_id].imagem) : null);
+      || (c.tipo === 'criatura' && imagemDe(MON[c.monstro_id]) ? u(imagemDe(MON[c.monstro_id])!) : null);
     const cls = c.tipo === 'criatura' && !IMGS['own:' + c.id] ? 'av-besta' : '';
     return avatarHTML(c.nome, src, cls, pctVida(c));
   };
@@ -1733,7 +1733,7 @@ import CondDlg from '../../components/CondDlg.astro';
       const q = norm(busca.value.trim());
       const hits = (q ? fonte.filter((f: any) => (f.busca || norm(f.nome)).includes(q)) : fonte).slice(0, 60);
       el('add-lista').innerHTML = hits.length ? hits.map((f: any) => `<div class="add-item" data-k="${esc(f.id)}">
-        ${avatarHTML(f.nome, f.imagem ? u(f.imagem) : (f.npc?.imagem && /^https?:/.test(f.npc.imagem) ? f.npc.imagem : null), f.imagem ? 'av-besta av-p' : 'av-p')}
+        ${avatarHTML(f.nome, f.imagem ? u(imagemDe(f) || f.imagem) : (f.npc?.imagem && /^https?:/.test(f.npc.imagem) ? f.npc.imagem : null), f.imagem ? 'av-besta av-p' : 'av-p')}
         <span class="ai-n">${esc(f.nome)}${f.sep ? ' <small class="muted">· da campanha</small>' : ''}</span>
         <span class="ai-m">${f.ameaca != null ? `A${f.ameaca} · PV ${f.pv ?? '—'} · Def ${f.defesa ?? '—'}` : esc(f.npc?.resumo || '')}</span>
       </div>`).join('') : '<p class="vazio" style="padding:.5rem">nada encontrado</p>';

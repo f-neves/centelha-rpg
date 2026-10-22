@@ -1,0 +1,198 @@
+{
+  "id": "urso-polar",
+  "nome": "Urso-polar",
+  "nomeIngles": "Polar Bear",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "O maior urso, caçador de focas na banquisa. Espera no respiradouro ou chega rastejando e nadando pelas fendas; o macho faminto caça gente, e a fêmea ataca para defender os filhotes.",
+  "tags": [],
+  "imagem": "bestiario/urso-polar_criatura.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "2,36 m de comprimento, 1,52 m de altura",
+    "peso": "380 kg",
+    "comprimento": 2.36,
+    "largura": 0.85,
+    "altura": 1.52
+  },
+  "locomocao": {
+    "terra": 7,
+    "natacao": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 7,
+    "arranque": 12,
+    "corrida": 15
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 8,
+    "destreza": 3,
+    "vigor": 5,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 4,
+    "bloqueio": 2,
+    "esquiva": 1,
+    "furtividade": 2,
+    "integridade": 3,
+    "prontidao": 2,
+    "resistencia": 4,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "natacao": 3,
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "resistencia",
+      "foco": "frio",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "equilibrio",
+      "foco": "gelo e neve",
+      "valor": 1,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "no gelo, junto ao respiradouro",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 4,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Patada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "agarrar",
+      "descricao": "patada (segura a presa com a pata): 2 × Força = 16 por manutenção.",
+      "classe": "livro"
+    },
+    {
+      "nome": "arrastar para o gelo",
+      "descricao": "Mordida: tira a presa da água para o gelo, até o Peso erguido.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "faro: Prontidão (faro) +3; alcance: 32 km para foca no gelo, 1,6 km para respiradouro, 64 km, todos sem método. · visão: enxerga bem debaixo d'água, a 4,6 m: texto. Fora d'água, nada que passe do humano."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário (exceto a mãe com filhotes e os casais no acasalamento)."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Força 8: quem tem Força 4 ou menos não apara a patada. Grande, ele dá ao humano +3 de acerto no corpo a corpo, e quem atira nele também ganha +3. A pele fica no nível 2 de Couraça, e quanto ela tira do golpe fica para depois; o Vigor 5 segura o Impacto, e tem 50 PV. Arrasta quase uma tonelada, nada dias seguidos e não sente o frio do Ártico."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Cold",
+      "Coast",
+      "Water"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "variantes": [],
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 50,
+    "esquiva": 8,
+    "bloqueio": 10,
+    "defesa": 10,
+    "defesaMental": 9,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "couracaNivel": 2,
+    "pesoErguido": 1037.61,
+    "carga": {
+      "leve": 38,
+      "media": 76,
+      "pesada": 114,
+      "maxima": 152
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 7,
+        "arranque": 12,
+        "corrida": 15
+      },
+      "nado": 2
+    }
+  },
+  "notasObservacao": [
+    "forca: 8, proposta do Arquiteto pela âncora dos ursos; o arrasto da beluga de cerca de 935 kg por 7 m (Freeman 1973) cabe no peso erguido de 1.036,81 kg. O feito é de uma fêmea de 130 a 180 kg, e a ficha é do adulto típico de 346,25 kg; a Força não se apoia no feito, só não o contradiz (D-158, D-174).",
+    "vigor: 5, e não o 4 da D-145; o 5 sai da gordura e do jejum do próprio polar, e não da comparação com o pardo. PV, Energia e Absorção de Impacto se refizeram com ele; o nado congelado não (decisões 10 e 23, D-174).",
+    "pesoErguido: 1.037,61 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.036,81 kg pela fórmula das decisões 14 e 16 (`calc6.mjs`, com o adulto típico de 346,25 kg), provisório até a fórmula fechar (D-169, D-174).",
+    "carga: 34,63 kg de Leve pela conta da D-122 (sem carga medida), provisória pela mesma razão (D-169, D-172).",
+    "velocidade: congelada (decisão 23); os números são os de 12/10. A terra (54 km/h) fica 35% acima da estimativa de 40 km/h, que não tem medição; o nado (6,5 km/h) fica 9% acima dos 6 km/h de Ellis 2009 (D-170).",
+    "habilidades.resistencia: 3 pelo jejum, com a perda de 22% da ursa do nado de 687 km ainda não conferida; os nados ficam na nota de pesquisa (jornada) e o frio para a Especialidade natural, para não contar duas vezes (D-174).",
+    "especialidades: a \"Resistência (Fôlego) 2\" de hoje saiu, porque o nado longo fica na nota de pesquisa (jornada) (diretriz 2; decisão 5).",
+    "couraca: nível 2 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): **[medido]** 50 nados longos de 20 ursas, de 53,7 a 687,1 km (média 154,2 km) e de 0,7 a 9,7 dias (média 3,4) na água, por colar GPS (Pagano 2012). Mais de 1.000 km numa estação seguindo o gelo (PBI; ADW). Cruzeiro em terra de cerca de 5,5 km/h (Stirling 2011, via Wikipédia).",
+    "especialidades.equilibrio: +1 pela sola peluda e a pata larga, sem medida de tração; o valor é extrapolação (D-174).",
+    "habilidades.furtividade: 2, candidato a 3 pela espera no respiradouro, que é emboscada habitual; ficou no 2 do levantamento, com a Especialidade de Furtividade +1 no gelo (D-174).",
+    "habilidades.natacao: 0 congelado, num animal que nada dias seguidos; a Natação baixa é efeito da fórmula de nado de hoje, que já dá acima do real (D-170, decisão 23).",
+    "dimensoes.largura: 0,82 m (os 0,90 m estimados pelo Arquiteto para o macho, sem fonte, escalados pelo cubo da massa); o Alvo sai da silhueta de lado (D-147, D-174).",
+    "variantes.femea: com 222,5 kg, a área escalada (1,20 m²) dá Médio, um abaixo da principal; as dimensões são as do macho escaladas pela massa, e não medidas da fêmea (o comprimento de 1,8 a 2 m da ADW cabe) (D-174)."
+  ]
+}

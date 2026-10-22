@@ -126,9 +126,9 @@ console.log('\n· os dois tetos, contra pesos reais de porte (Arte nível 3: FAH
   // TRÊS PORTES DE VERDADE (`pesoDoPorte`, com criaturas reais do
   // bestiário) DENTRO DO ALCANCE DE ARREMESSO, decrescendo com o peso: a
   // régua PESA, e não é um número fixo por nível.
-  const pesoMiudo = pesoDoPorte({ monstro_id: 'mon-raven' });          // Miúdo
-  const pesoPequeno = pesoDoPorte({ monstro_id: 'mon-lantern-archon' }); // Pequeno
-  const pesoMedio = pesoDoPorte({ monstro_id: 'mon-aasimar' });         // Médio
+  const pesoMiudo = pesoDoPorte({ monstro_id: 'pixie' });          // Miúdo (o corvo passou a Pequeno com a ficha v3)
+  const pesoPequeno = pesoDoPorte({ monstro_id: 'arconte-lanterna' }); // Pequeno
+  const pesoMedio = pesoDoPorte({ monstro_id: 'aasimar' });         // Médio
   const rMiudo = resultadoDoEmpurrao(faa, pesoMiudo, maxKg, F);
   const rPequeno = resultadoDoEmpurrao(faa, pesoPequeno, maxKg, F);
   const rMedio = resultadoDoEmpurrao(faa, pesoMedio, maxKg, F);
@@ -139,7 +139,7 @@ console.log('\n· os dois tetos, contra pesos reais de porte (Arte nível 3: FAH
     `mais pesado voa menos longe (${rMiudo.metros} > ${rPequeno.metros} > ${rMedio.metros})`);
 
   // ACIMA DO TETO DE ARREMESSO, DENTRO DO DE ERGUER: DERRUBA, NÃO VOA.
-  const pesoGrande = pesoDoPorte({ monstro_id: 'mon-aguia-gigante' }); // Grande: 250 kg, < 360 (erguido), > 90 (arremessado)
+  const pesoGrande = pesoDoPorte({ monstro_id: 'aguia-gigante' }); // Grande: 250 kg, < 360 (erguido), > 90 (arremessado)
   const rGrande = resultadoDoEmpurrao(faa, pesoGrande, maxKg, F);
   ok(rGrande.metros === 0 && !rGrande.pesaDemais,
     `Grande (${pesoGrande} kg): 0 m, mas NÃO pesa demais (${JSON.stringify(rGrande)})`);
@@ -148,11 +148,11 @@ console.log('\n· os dois tetos, contra pesos reais de porte (Arte nível 3: FAH
     `e a condição da Arte (caido) ainda se aplica: derruba parado (${JSON.stringify(condsGrande)})`);
 
   // ACIMA DO TETO DE ERGUER: NADA ACONTECE.
-  const pesoEnorme = pesoDoPorte({ monstro_id: 'mon-aboleth' }); // Enorme: 1200 kg, > 360
+  const pesoEnorme = pesoDoPorte({ monstro_id: 'aboleth' }); // Enorme: 1200 kg, > 360
   const rEnorme = resultadoDoEmpurrao(faa, pesoEnorme, maxKg, F);
   ok(rEnorme.pesaDemais && rEnorme.metros === 0,
     `Enorme (${pesoEnorme} kg): pesa demais, nada acontece (${JSON.stringify(rEnorme)})`);
-  const pesoColossal = pesoDoPorte({ monstro_id: 'mon-grande-wyrm-vermelho' }); // Colossal: 40000 kg
+  const pesoColossal = pesoDoPorte({ monstro_id: 'grande-wyrm-vermelho' }); // Colossal: 40000 kg
   const rColossal = resultadoDoEmpurrao(faa, pesoColossal, maxKg, F);
   ok(rColossal.pesaDemais,
     `Colossal (${pesoColossal} kg) também: uma Arte de nível 3 não derruba 40 toneladas (${JSON.stringify(rColossal)})`);

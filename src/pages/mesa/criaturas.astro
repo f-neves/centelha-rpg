@@ -125,7 +125,7 @@ import MesaCab from '../../components/MesaCab.astro';
 
 <script>
   import { abrirMesa, u, esc, norm, avatarHTML, debounce, bancoAntigo, semMigracao14, elementosCombate } from '../../lib/mesa-core';
-  import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, estrelas, resumoDe, iniDeMonstro } from '../../lib/mesa-bestiario';
+  import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, estrelas, resumoDe, iniDeMonstro, imagemDe, alternarImagem } from '../../lib/mesa-bestiario';
   import { uiConfirmar, uiErro, uiAviso } from '../../lib/ui-dialog';
 
   const el = (i: string) => document.getElementById(i)!;
@@ -176,7 +176,7 @@ import MesaCab from '../../components/MesaCab.astro';
       if (q.length < 2) { res.hidden = true; return; }
       const hits = MON_LIST.filter((m) => m.busca.includes(q)).slice(0, 12);
       res.innerHTML = hits.length ? hits.map((m) => `<li data-mon="${m.id}">
-        ${avatarHTML(m.nome, m.imagem ? u(m.imagem) : null, 'av-besta av-p')}
+        ${avatarHTML(m.nome, m.imagem ? u(imagemDe(m) || m.imagem) : null, 'av-besta av-p')}
         <span class="r-n">${esc(m.nome)}${m.nomeIngles && m.nomeIngles !== m.nome ? ` <span class="muted">(${esc(m.nomeIngles)})</span>` : ''}</span>
         <span class="r-m">A${m.ameaca} · PV ${m.pv ?? '—'} · Def ${m.defesa ?? '—'}</span>
       </li>`).join('') : '<li class="muted vazio">nada encontrado</li>';
@@ -271,7 +271,7 @@ import MesaCab from '../../components/MesaCab.astro';
       const pvv = c.dados?.pv ?? cb.pv;
       const variante = !!(c.apelido || (c.dados && Object.keys(c.dados).length));
       const arte = m.imagem
-        ? `<figure class="cri-arte" data-mon="${m.id}"><img src="${u(m.imagem)}" alt="${esc(m.nome)}" loading="lazy" />
+        ? `<figure class="cri-arte" data-mon="${m.id}"><img src="${u(imagemDe(m)!)}" alt="${esc(m.nome)}" loading="lazy" />
              <span class="cri-am" title="Ameaça ${m.ameaca}/6">${estrelas(m.ameaca)}</span>
              ${variante ? '<span class="cri-var">variante</span>' : ''}</figure>`
         : `<figure class="cri-arte" data-mon="${m.id}"><span class="cap">${esc((m.nome || '?').trim()[0])}</span>
@@ -420,4 +420,20 @@ import MesaCab from '../../components/MesaCab.astro';
   }
 
   main();
+
+  // AS DUAS IMAGENS (D-179, item 16). Na aba Criaturas, o clique na arte do CARD (o modal)
+  // troca a imagem da criatura que tem duas; a miniatura da lista continua abrindo o card,
+  // como sempre, e passa a mostrar a escolhida. A escolha é do aparelho
+  // (imagem-escolhida.ts) e não vai ao banco. Mora no fim para não mover as linhas acima.
+  el('card-modal-body').addEventListener('click', (e) => {
+    const img = (e.target as HTMLElement).closest<HTMLImageElement>('img[data-troca]');
+    const m = img && MON[img.dataset.troca!];
+    if (!img || !m) return;
+    const n = alternarImagem(m);
+    const src = u(imagemDe(m)!);
+    img.src = src;
+    const selo = img.parentElement?.querySelector('.arte-selo');
+    if (selo) selo.textContent = `${n}/2`;
+    document.querySelectorAll<HTMLImageElement>(`.cri-arte[data-mon="${m.id}"] img`).forEach((i) => { i.src = src; });
+  });
 </script>

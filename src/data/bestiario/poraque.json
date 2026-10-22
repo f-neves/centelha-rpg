@@ -1,0 +1,213 @@
+{
+  "ordem": 200,
+  "id": "poraque",
+  "idAntigo": "mon-electric-eel",
+  "nome": "Poraquê",
+  "nomeIngles": "Electric eel",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Pequeno",
+  "descricao": "Quem pisa na água dele leva o choque; quem o tira da água leva o pior, porque o ar não deixa a corrente fugir.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/poraque_criatura.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "1,55 m de comprimento, 0,09 m de altura",
+    "peso": "4,75 kg",
+    "comprimento": 1.55,
+    "largura": 0.07,
+    "altura": 0.09
+  },
+  "locomocao": {
+    "natacao": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 0,
+    "destreza": 2,
+    "vigor": 3,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 1,
+    "furtividade": 2,
+    "integridade": 1,
+    "prontidao": 2,
+    "resistencia": 2,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "natacao": 1
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "eletrorrecepção",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "resistencia",
+      "foco": "hipóxia",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Descarga elétrica",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "eletricidade",
+      "acerto": 1,
+      "ticks": 5,
+      "classe": "leve"
+    },
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "salto com descarga",
+      "descricao": "Descarga elétrica: salta parcialmente fora da água, encosta o queixo na ameaça e descarrega.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "choque na água",
+      "descricao": "Descarga elétrica: na água, a descarga atinge uma área de 2 m de raio: 1d6 de eletricidade, e não há Absorção natural contra ela (a da armadura fica a decidir); sair da área evita.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "descarga elétrica",
+      "descricao": "Descarga elétrica: quem leva a descarga rola Vigor + Resistência contra 12; falhou, cai Prono e perde 6 Ticks.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "respira ar",
+      "descricao": "sobe à tona de tempos em tempos para respirar.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "eletrorrecepção: Especialidade natural Prontidão (eletrorrecepção) +3 (achar presa e se orientar pelas descargas fracas do órgão de Sachs, cerca de 10 V); alcance. · visão: fraca, olhos pequenos; sem penalidade escrita, só a Percepção 2."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Rio que morde e queima",
+      "texto": "Habita águas doces quentes e paradas, onde emboscada presas com uma descarga que paralisa antes mesmo da mordida."
+    },
+    {
+      "titulo": "Curiosidade traiçoeira",
+      "texto": "Apesar do temperamento curioso, poucos predadores se arriscam a perturbá-lo duas vezes."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Miúdo: ganha +6 de acerto contra um humano Médio no corpo a corpo, e quem atira nele leva −6. Não morde nada que importe; a arma é a descarga: 2d6 de eletricidade (não há Absorção natural contra eletricidade; a da armadura fica a decidir), e quem a leva rola Vigor + Resistência contra 12 ou cai Prono e perde 6 Ticks. Na água, o choque se espalha por 2 m de raio (1d6). Acha quem está na água turva sem ver (Prontidão +3 natural na eletrorrecepção) e aguenta a água parada sem oxigênio. 13 PV, Impacto 3, Couraça nível 0 (o valor do nível fica para depois)."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Electric Eel",
+    "cr": "2",
+    "tipo": "animal Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 13,
+      "des": 14,
+      "con": 19,
+      "int": 1,
+      "sab": 10,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte",
+      "nota": "nado 30; em terra a enguia se arrasta 5 ft"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 13,
+    "esquiva": 6,
+    "bloqueio": 4,
+    "defesa": 6,
+    "defesaMental": 6,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 18.47,
+    "deslocamento": {
+      "nado": 3
+    }
+  },
+  "notasObservacao": [
+    "pesoErguido: 18,47 kg (em vigor na Etapa 2, 20/10/2026); antes: 17,32 kg pelo `calc6.mjs`, provisório (decisões 14 e 16); era 41,39 kg (o de 20 kg). A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar. Carga continua não se aplicando.",
+    "alvo: Miúdo pela área de lado do adulto típico (0,108 m², a de 0,30 m² do de 2,5 m escalada pela massa); era Pequeno (0,30 m², e 0,38 m² pela conta de hoje). O resultado depende do comprimento típico escolhido (1,5 m): acima de 1,58 m volta a Pequeno. Provisório até os cortes fecharem (D-174).",
+    "massa: 4,75 kg (em vigor na Etapa 2, 20/10/2026); antes: 4,32 kg **[extrapolação]**, a lei do cubo sobre o par dos máximos do FishBase (250 cm e 20 kg) com o comprimento típico escolhido de 1,5 m, porque não há média nem comprimento comum publicados. Era 20 kg, o máximo.",
+    "velocidade: congelada (decisão 23). Sem velocidade real achada; 3,4 m/s (12 km/h) parece alto para um peixe descrito como lento. Não corrigido.",
+    "ataques.descarga: vai como ataque com o efeito do Mestre. O dano não tem dado, o tipo (eletricidade) não é dos três do livro, e o Grid não lê ataque sem dado (N22). Os números medidos (Catania 2016 e 2017) são de animais jovens e de laboratório.",
+    "especie: a ficha é de E. electricus pelo tamanho; o choque de 860 V é de E. voltai, e a espécie dos poraquês de Catania não foi conferida.",
+    "forca: 0 num bicho de 4,3 kg (era Pequeno de 20 kg), revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): a força dele não fere nem segura nada que importe a um humano; o perigo é o choque (D-174).",
+    "musculatura: 0 pelo corpo tomado pelos órgãos elétricos; sem medida da fração de músculo.",
+    "compostura: desce de 2 para 1 por não ser espécie social (diretriz 1).",
+    "resistencia: 2 pela régua; a hipóxia fica na Especialidade natural +2, que era o \"Fôlego\" comum de hoje.",
+    "especialidades: a eletrorrecepção desce de +4 para +3 pelo teto da decisão 3 e passa a natural.",
+    "prendeRespiracao: os 2 min da ficha de hoje são o intervalo entre subidas, e não a apneia máxima, que não foi achada.",
+    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "elementos: a \"resistência a eletricidade\" da ficha atual e do PF não tem fonte na pesquisa; ficou fora.",
+    "dimensoes: altura (0,09 m) e largura (0,072 m) são as estimativas da Bestiarista-5 para o de 2,5 m (0,15 e 0,12 m) escaladas pelo cubo da massa; 20 kg e 2,5 m são os máximos do FishBase, e não um par medido no mesmo animal, e a massa típica sai desse par (D-174)."
+  ]
+}

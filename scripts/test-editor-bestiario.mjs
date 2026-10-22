@@ -76,8 +76,8 @@ try{
 
   const nCards=(await page.$$('.besta')).length, nEdit=(await page.$$('.besta-editar')).length;
   ok(nCards>300&&nEdit===nCards,`botao Editar em todas as criaturas (${nEdit} de ${nCards})`);
-  ok(!!(await page.$('#mon-exemplo-espantalho')),'criatura do inimigos-custom.json aparece no bestiario');
-  const esp=await page.$eval('#mon-exemplo-espantalho',(e)=>{
+  ok(!!(await page.$('#espantalho-desperto')),'criatura do inimigos-custom.json aparece no bestiario');
+  const esp=await page.$eval('#espantalho-desperto',(e)=>{
     const dd=[...e.querySelectorAll('.besta-stats dd')].map(x=>x.textContent.trim());
     const el=[...e.querySelectorAll('.besta-elem .el')].map(x=>x.textContent.trim());
     return {pv:dd[0],elem:el};
@@ -88,7 +88,7 @@ try{
   ok(await page.$eval('#editbox',(e)=>e.hidden),'modal comeca fechado');
 
   // abre o do Treant
-  await page.evaluate(()=>{ document.querySelector('#mon-treant .besta-editar').click(); });
+  await page.evaluate(()=>{ document.querySelector('#treant .besta-editar').click(); });
   await new Promise(s=>setTimeout(s,300));
   ok(!(await page.$eval('#editbox',(e)=>e.hidden)),'modal abre no clique');
   const nome=await page.$eval('[data-ed="nome"]',(e)=>e.value);
@@ -106,7 +106,7 @@ try{
   // Casa por RÓTULO, nunca por posição: o painel de derivados cresceu e um índice
   // fixo passou a comparar Iniciativa com outra coisa.
   const bate=await page.evaluate(()=>{
-    const card=document.getElementById('mon-treant');
+    const card=document.getElementById('treant');
     const doCard={}; card.querySelectorAll('.besta-stats div').forEach(d=>{
       doCard[d.querySelector('dt').textContent.trim()]=d.querySelector('dd').textContent.trim();
     });
@@ -144,15 +144,15 @@ try{
   await page.evaluate(()=>document.getElementById('ed-salvar').click());
   await new Promise(s=>setTimeout(s,200));
   const salvo=await page.evaluate(()=>JSON.parse(localStorage.getItem('centelha:bestiario:edicoes')||'{}'));
-  ok(!!salvo['mon-treant'],'edicao gravada no localStorage');
-  ok(salvo['mon-treant']?.atributos?.vigor===10,`Vigor gravado (${salvo['mon-treant']?.atributos?.vigor})`);
-  ok(await page.$eval('#mon-treant',(e)=>e.classList.contains('editada')),'card marcado como editado');
+  ok(!!salvo['treant'],'edicao gravada no localStorage');
+  ok(salvo['treant']?.atributos?.vigor===10,`Vigor gravado (${salvo['treant']?.atributos?.vigor})`);
+  ok(await page.$eval('#treant',(e)=>e.classList.contains('editada')),'card marcado como editado');
 
   // reverter
   await page.evaluate(()=>document.getElementById('ed-reverter').click());
   await new Promise(s=>setTimeout(s,200));
   const depois=await page.evaluate(()=>JSON.parse(localStorage.getItem('centelha:bestiario:edicoes')||'{}'));
-  ok(!depois['mon-treant'],'reverter apaga a edicao');
+  ok(!depois['treant'],'reverter apaga a edicao');
 
   // criatura nova
   await page.evaluate(()=>document.querySelector('.ed-fechar').click());

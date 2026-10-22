@@ -1,0 +1,209 @@
+{
+  "ordem": 159,
+  "id": "besouro-veado-gigante",
+  "idAntigo": "mon-giant-stag-beetle",
+  "nome": "Besouro-veado-gigante",
+  "nomeIngles": "Giant Stag Beetle",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Grande",
+  "descricao": "Decola do alto de uma árvore ao entardecer, voa pesado e zumbindo; os machos se agarram pelas mandíbulas e o maior joga o outro do galho.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": null,
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3 m de comprimento, 1,11 m de altura",
+    "peso": "39 kg",
+    "comprimento": 3,
+    "largura": 0.89,
+    "altura": 1.11,
+    "envergadura": 5
+  },
+  "locomocao": {
+    "terra": 3,
+    "voo": 4
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 6
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 4,
+    "destreza": 2,
+    "vigor": 4,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 3,
+    "bloqueio": 4,
+    "esquiva": 1,
+    "atletismo": 4,
+    "furtividade": 1,
+    "prontidao": 1,
+    "resistencia": 2,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "escalada": 1,
+    "musculatura": 5
+  },
+  "especialidades": [
+    {
+      "habilidade": "briga",
+      "foco": "derrubar o rival do galho",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Mandíbulas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 2,
+      "ticks": 6,
+      "classe": "media"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "agarrar",
+      "descricao": "Mandíbulas: Dano do agarrão: 2 × Força = 8.",
+      "classe": "livro"
+    },
+    {
+      "nome": "derrubar",
+      "descricao": "Mandíbulas: ergue o rival e o joga para trás (C. metallifer).",
+      "classe": "livro"
+    },
+    {
+      "nome": "atropelar",
+      "descricao": "corpo: Investida.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "nada achado com número; o acasalamento é guiado por feromônio (só o resumo). · visão no escuro: \"Enxerga perfeitamente mesmo na escuridão total\"; texto do Mestre, sem Especialidade."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Com quase três metros de comprimento, esses besouros gigantes viram um perigo sério quando invadem acampamentos de lenhadores atrás de madeira em decomposição, seu alimento favorito. Social: solitário; agregações de acasalamento."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "O nome vem das mandíbulas enormes, parecidas com galhadas de cervo, usadas para disputar rivais na época de acasalamento e para afastar qualquer ameaça com igual ferocidade."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande contra um humano Médio: o humano ganha +3 no acerto corpo a corpo e ainda bloqueia. A Força 4 tira o Bloqueio só de quem tem Força 0 ou menos. A mandíbula faz 7,5 em média, fura brigandina (N2) e agarra (8 por Tick); bloqueia como arma. O élitro é Couraça nível 4, e quanto ele tira da espada, da lança e da maça fica para depois. 37 PV (Faixa 3 e Vigor 4), Resistência 2. Ergue e vira 317,76 kg pela Musculatura 5."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Stag Beetle",
+    "cr": "4",
+    "tipo": "praga Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 10,
+      "con": 15,
+      "int": "-",
+      "sab": 10,
+      "car": 9
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 37,
+    "esquiva": 6,
+    "bloqueio": 13,
+    "defesa": 13,
+    "defesaMental": 5,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 4,
+    "pesoErguido": 317.76,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 6
+      },
+      "voo": {
+        "batalha": 4,
+        "cruzeiro": 8
+      }
+    }
+  },
+  "notasObservacao": [
+    "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (D-174); os 3 m do site ficam: o gigante está 4 portes acima do Lucanus (Minúsculo para Grande), e o critério pede 2. Longe dos cortes: 4,24 m² fica 193% acima do corte do Grande (1,45) e 29% abaixo do do Enorme (6)",
+    "gigante: escalado aos 3 m de comprimento da ficha atual do Centelha, lidos com as mandíbulas (correção da sexta rodada: vale o tamanho do site); contra o adulto típico de 4,62 cm, k = 64,94 (era 3,24 m, k = 70,13, e k = 60 sobre o macho de 5,4 cm); a forma fica a do macho; tudo do tamanho é [extrapolação] (D-105, `pedido-lotes.md` §3)",
+    "medida do site: o site diz só \"3 m de comprimento\". Lido com as mandíbulas, porque é assim que a base (Rink 2006, Tab. 8.3) e a v3 medem. Se os 3 m forem o corpo sem as mandíbulas, o total vai a 3 × 3,24 ÷ 2,40 = 4,05 m, k = 87,66, envergadura 6,75 m: regra do roc 82,69 kg, reta 77,84 kg, meio em log 80,2 kg (cubo 2.071 kg); Faixa 3, a mesma, mas a área vai a 4,95 × 1,25² = 7,73 m², Enorme, com segundo Alvo Grande (asas fechadas 4,11 m²); o Alvo não mexe no Vigor, e a massa de 80 kg pediria olhar o Vigor de novo pelo corpo (D-174)",
+    "massa: 39 kg pela decisão 13 (meio em log de 41,72 kg pela regra do roc, com a base típica dos dois sexos de 3,075 g e 4,62 cm, e 35,57 kg pela reta dos voadores reais com a envergadura de 5,0 m), e não os 841,9 kg do cubo; era 46 kg com os 3,24 m. A base típica mistura o macho de mandíbulas longas com a fêmea curta, e o gigante tem a forma do macho; pela linha do macho (3,5 g e 5,44 cm), a conta daria cerca de 34 kg (D-174)",
+    "faixa: Faixa 3, a mesma; PV 37 com o Vigor 4 da oitava rodada (40 na sétima; 50 na ficha de hoje). A fêmea (cerca de 34 kg) cai na Faixa 2",
+    "alvo: Grande de asas abertas (4,24 m²) e de asas fechadas (2,26 m²), a silhueta da `tamanho-fichas-v2` na razão (3 ÷ 3,24)² (decisão 8); sem segundo Alvo. O Alvo decide acerto e furtividade, e não o Vigor (oitava rodada)",
+    "porte: as mandíbulas ficaram fora da área, como a cauda fina. Decisão provisória (D-155, D-174)",
+    "dimensoes: altura (2 cm), comprimento sem mandíbula (4 cm) e envergadura (9 cm) da real estimados; a largura (16 mm) está dentro da faixa medida",
+    "anatomia: artrópode alado, provisória (D-175)",
+    "pesoErguido: 317,76 kg (em vigor na Etapa 2, 20/10/2026); antes: 386,87 kg pela fórmula das decisões 14 e 16, provisório. Não tem Carga",
+    "velocidade: congelada (decisão 23); terra 22 km/h e voo 28 km/h, sem pico real para comparar (D-170)",
+    "forca: 4 (em vigor na Etapa 2, 20/10/2026); antes: 5, a referência da massa (D-158); o erguer e arremessar o rival foi para a Musculatura 5, e não escala inteiro. Reanalisada na sétima rodada pelos vizinhos de massa (formiga-gigante 3, varano 5, leopardo 5) e mantida. O Lucanus de base fica com Força 0 pelo item 8 (o beliscão não fere nem segura um humano), e não pela D-167 automática",
+    "musculatura: 5, excepcional pela pinça; a força medida é de outra espécie (C. metallifer) (D-174)",
+    "ataque: N2, escolha da ficha de hoje. A mordida do C. metallifer escalada pelo quadrado do tamanho passaria de 25.000 N; ficou N2 porque a força real é de outra espécie e porque a mandíbula do macho é feita para agarrar e torcer o rival (Goyens et al. 2016), e não para furar (D-174)",
+    "bloqueio: a mandíbula bloqueia como arma, lida como a galhada da D-100; o +1, e não o +2 da galhada larga, por cautela. Se o autor não aceitar mandíbula como galhada, os élitros ainda contam como carapaça",
+    "couraca: nível 4 pela escala da quinta rodada, reanalisado na sétima com a massa de 39 kg e mantido; a faixa passa de 4 a 5 para 3 a 4 (ao lado do rinoceronte, abaixo do crocodilo e do tatu, porque o élitro cobre só o dorso). O valor em absorção fica para depois.",
+    "resistencia: 2 pela régua; o levantamento a dava como candidata a 1 pelo voo curto, que agora fica na nota de pesquisa (jornada) (D-174)",
+    "jornada (nota de pesquisa, não é regra): voo único de mediana 188,6 m (10 a 1.720 m) e total voado de mediana 876 m (105 a 1.950 m) no macho; 1 a 6 voos por animal; só voa entre 11 e 27 °C; a pé, até 4,0 m por hora no macho e 9,1 na fêmea (Rink 2006; Rink e Sinsch 2007, rádio-telemetria, [medido]).",
+    "furtividade: 1, nova, pelo levantamento (zumbido grave, voo lento)",
+    "escalada e atletismo: 1, novos, pelo voo que parte do alto e pela luta de erguer o rival (D-174)",
+    "influencia: 1 por não ser espécie social (diretriz 1); a ameaça de mandíbulas abertas ao rival fica no texto",
+    "vigor: 4 ◆, revisto na oitava rodada pelo corpo e pela massa: +1 sobre o animal de base (Lucanus cervus, Vigor 3, presumido), o mínimo da D-176; o élitro está na Couraça nível 4, e o corpo de inseto de 39 kg fica ao lado da formiga-gigante (41 kg, 4). Era 5 (D-174)",
+    "base: o animal de base não tem ficha; Vigor 3 presumido; PV pela decisão 21 [provisório]"
+  ]
+}

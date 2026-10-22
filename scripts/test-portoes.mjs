@@ -143,7 +143,7 @@ secao('· o smoke do package.json e a matriz do CI concordam');
   // qualquer um dos dois lados quebrar (o YAML mudar de forma, o `smoke` do
   // `package.json` ficar vazio), as duas listas virariam `[]` e a comparação
   // de subconjunto passaria por não ter o que reprovar — o mesmo defeito que
-  // fez `mon-aboleth` parecer prova de gate. `test-luas` é o mais antigo dos
+  // fez `aboleth` parecer prova de gate. `test-luas` é o mais antigo dos
   // dois lados e serve de sentinela.
   ok(smoke.includes('test-luas') && smoke.length >= 5,
     `a extração do \`smoke\` do package.json achou algo de verdade (${smoke.length}: ${smoke.join(', ')})`);
@@ -200,7 +200,7 @@ const NAO_E_TOLERANCIA = [
   ['src/components/TecnicaItem.astro', 'Texto provisório: revisar',
     'rótulo de tela, dirigido ao leitor: é o dado `t.pendente` do JSON aparecendo, e não uma trava afrouxada.'],
   ['src/pages/artes/efeitos.astro', 'Sem Efeitos por enquanto',
-    'frase de tela para uma lista vazia.'],
+    'frase de tela para uma lista vazia.'], ['src/pages/mesa/referencia.astro', 'a regra de Força. <small>(provisório)</small>', 'rótulo de tela, dirigido ao leitor: a marca de regra provisória do autor (D-183, complemento 3), igual à do livro, e não uma trava afrouxada no código.'],
   ['scripts/gen-lista-equip.mjs', 'Sem imagem por enquanto',
     'frase do texto gerado, dirigida a quem o lê.'],
   ['src/pages/mesa/grid.astro', 'dividem um metro quadrado, e por ora a resposta é não',

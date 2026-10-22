@@ -595,7 +595,7 @@ const SETAS = [
         <label>Linhas <input type="number" id="ar-rows" min="2" max="60" value="16" /></label>
         <label>Metros por hexágono <input type="number" id="ar-escala" min="0.25" max="10" step="0.25" value="1" /></label>
       </div>
-      <p class="muted dlg-txt">Uma criatura de porte médio ocupa um hexágono.</p>
+      <p class="muted dlg-txt">Pela regra, o espaço sai das dimensões da criatura (altura, comprimento e largura), e o alcance do corpo a corpo, do corpo dela (braço, pescoço, cauda); como isso vira hexágono está sem regra ainda. Até o código mudar, o Grid desenha a peça e mede o alcance pelo tamanho, e o Médio ocupa um hexágono.</p>
       <div class="dlg-btns">
         <button type="button" class="btn" id="ar-cancelar">Cancelar</button>
         <button type="button" class="btn primary" id="ar-salvar">Salvar</button>
@@ -2424,7 +2424,7 @@ const SETAS = [
   import {
     abrirCanal, nomeParaPresenca, type Canal, type Assunto, type Motivo, type Ping,
   } from '../../lib/mesa-tempo-real';
-  import { MON, resumoDe, iniDeMonstro, d6, cardCriaturaHTML, criaturaCompleta } from '../../lib/mesa-bestiario';
+  import { MON, resumoDe, iniDeMonstro, d6, cardCriaturaHTML, criaturaCompleta, imagemDe } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC, resumoFicha } from '../../lib/mesa-ficha';
   import { mana as manaDaFicha, modificadorPorte, porteDeRotulo, gatePerfuracaoAbre, limiteDaMorte, passouDoLimite } from '../../lib/calc';
   import {
@@ -3429,7 +3429,7 @@ const SETAS = [
    * MESMO Médio cobre dois de largura, sem ninguém reconfigurar nada.
    */
   const PORTE_M: Record<string, number> = {
-    'Miúdo': 0.25, 'Pequeno': 0.5, 'Médio': 1, 'Grande': 2,
+    'Minúsculo': 0.125, 'Miúdo': 0.25, 'Pequeno': 0.5, 'Médio': 1, 'Grande': 2,
     'Enorme': 4, 'Imenso': 8, 'Colossal': 16,
   };
   /** Diâmetro do combatente em metros. PC e NPC de cena são médios. */
@@ -3596,7 +3596,7 @@ const SETAS = [
       // O `monstro_id` vale para qualquer tipo, e não só para a criatura: o NPC
       // de cena pode emprestar o retrato de um bicho do bestiário sem herdar o
       // bloco de combate dele.
-      || (MON[c.monstro_id]?.imagem ? u(MON[c.monstro_id].imagem) : null);
+      || (imagemDe(MON[c.monstro_id]) ? u(imagemDe(MON[c.monstro_id])!) : null);
     const besta = MON[c.monstro_id]?.imagem && !(c.imagem && IMGS[c.imagem]) ? ' av-besta' : '';
     return avatarHTML(c.nome, src, (extra + besta).trim(), pctDe100(c));
   }
@@ -10265,7 +10265,7 @@ const SETAS = [
       const f = tf.penAcao ?? 0;
       const c2 = somarCondicoes((atacante.condicoes || []).map((k: any) => ({ ...(COND[k.id] || {}), ...k })));
       const porte = REGRAS_CENA.porte
-        ? modificadorPorte(porteDeRotulo(porteRotuloDe(atacante)), porteDeRotulo(porteRotuloDe(alvo)))
+        ? modificadorPorte(porteDeRotulo(porteRotuloDe(atacante)), porteDeRotulo(porteRotuloDe(alvo)), classe === 'distancia' || classe === 'arremesso' || classe === 'arte')
         : 0;
       return { flat: f + (c2.acao || 0) + (c2.ataque || 0) + porte, dados: (c2.dados || 0) + (tf.penAcaoDados ?? 0) };
     })();

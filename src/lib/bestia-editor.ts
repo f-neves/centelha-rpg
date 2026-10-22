@@ -19,10 +19,10 @@ export const VOCAB_ELEM = GRUPOS_ELEM.flatMap((g) => g.palavras);
 export const rotuloElem = (k: string) => ROTULO_ELEM[k] ?? k;
 
 /** O bestiário guarda o porte como RÓTULO ("Enorme", "Miúdo") e o `calc.ts` espera
- *  slug ("enorme", "minusculo"). Sem esta ponte o porte cai no padrão Médio em
+ *  slug ("enorme", "miudo"). Sem esta ponte o porte cai no padrão Médio em
  *  silêncio, e um Treant perde 26 PV sem ninguém perceber. */
 export const PORTE_LBL: Record<string, string> = {
-  minusculo: 'Miúdo', pequeno: 'Pequeno', medio: 'Médio', grande: 'Grande',
+  minusculo: 'Minúsculo', miudo: 'Miúdo', pequeno: 'Pequeno', medio: 'Médio', grande: 'Grande',
   enorme: 'Enorme', imenso: 'Imenso', colossal: 'Colossal',
 };
 const PORTE_SLUG: Record<string, Porte> = Object.fromEntries(
@@ -153,7 +153,7 @@ export function rolagemAtaque(c: CriaturaEdit, a: Ataque) {
 const CHAVE = 'centelha:bestiario:edicoes';
 
 export function lerEdicoes(): Record<string, Partial<CriaturaEdit>> {
-  try { return JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch { return {}; }
+  try { return migrarPorte(JSON.parse(localStorage.getItem(CHAVE) || '{}')); } catch { return {}; }
 }
 export function salvarEdicao(id: string, dados: Partial<CriaturaEdit>) {
   const todas = lerEdicoes();
@@ -205,4 +205,21 @@ export function paraJson(c: CriaturaEdit) {
   if (c.lore?.length) out.lore = c.lore.filter((s) => s.titulo || s.texto);
   if (c.notas) out.notas = c.notas;
   return JSON.stringify(out, null, 2);
+}
+
+// A D-179 deu ao slug "minusculo" outro porte (o oitavo, Minúsculo), e o Miúdo
+// passou a "miudo". Edição salva antes disso não tem a marca de versão e guarda
+// "minusculo" querendo dizer Miúdo: sem esta migração ela abriria Minúscula.
+// Migra uma vez, regrava e marca; sem armazenamento, devolve migrado em memória.
+const VERSAO = 'centelha:bestiario:edicoes:versao';
+const VERSAO_ATUAL = '2';
+function migrarPorte(todas: Record<string, Partial<CriaturaEdit>>): Record<string, Partial<CriaturaEdit>> {
+  try {
+    if (localStorage.getItem(VERSAO) === VERSAO_ATUAL) return todas;
+    let mudou = false;
+    for (const e of Object.values(todas)) if (e && e.porte === 'minusculo') { e.porte = 'miudo'; mudou = true; }
+    if (mudou) localStorage.setItem(CHAVE, JSON.stringify(todas));
+    localStorage.setItem(VERSAO, VERSAO_ATUAL);
+  } catch { /* sem armazenamento: a migração vale só nesta leitura */ }
+  return todas;
 }

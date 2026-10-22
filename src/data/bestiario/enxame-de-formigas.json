@@ -1,0 +1,215 @@
+{
+  "ordem": 142,
+  "id": "enxame-de-formigas",
+  "idAntigo": "mon-army-ant-swarm",
+  "nome": "Enxame de formigas (formigas-de-correição)",
+  "nomeIngles": "Army Ant Swarm",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Minúsculo",
+  "descricao": "A frente de uma marcha de formigas de correição, que cobre e desmancha o que não foge; quem está preso, caído ou imóvel sofre mais.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/enxame-de-formigas_criatura.webp",
+  "porte": "Minúsculo",
+  "dimensoes": {
+    "medida": "0,006 m de comprimento, 0,002 m de altura",
+    "peso": "0,000003 kg",
+    "comprimento": 0.006,
+    "largura": 0.0015,
+    "altura": 0.002
+  },
+  "locomocao": {
+    "terra": 1,
+    "escalada": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 0,
+    "destreza": 3,
+    "vigor": 3,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 3,
+    "atletismo": 2,
+    "prontidao": 2,
+    "resistencia": 2,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "equilibrio": 1,
+    "escalada": 2,
+    "musculatura": 5
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "feromônio",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "sobre o que não foge",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 4,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Mordida do enxame",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    },
+    {
+      "nome": "Ferroada do enxame",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentidos",
+      "descricao": "feromônio: Prontidão (feromônio) +2 (Especialidade natural; o mesmo +2 de hoje, agora na lista do corpo); a trilha química organiza o ataque. · visão: quase cega, olhos de uma faceta. Texto."
+    }
+  ],
+  "enxame": [
+    {
+      "nome": "Enxame no jogo",
+      "texto": "7.000 operárias por quadrado · cobre o chão e sobe em tudo · quem fere: só ataque em área · armadura: ignora · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Natureza",
+      "texto": "Um enxame de formigas-soldado nunca para. Ele avança como uma maré viva, consumindo tudo (plantas, animais, o que for) que encontra pelo caminho."
+    },
+    {
+      "titulo": "Habitat",
+      "texto": "Comum nas selvas quentes, o enxame se desloca em marchas constantes, obrigando comunidades próximas a fugir ou se trancar até a passagem da praga."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: colônia de 100 mil a 2 milhões (estimativas concorrentes); bivaque nômade."
+    },
+    {
+      "titulo": "Enxame",
+      "texto": "7.000 operárias por quadrado · cobre o chão e sobe em tudo · quem fere: só ataque em área · armadura: ignora · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Cada quadrado cheio tem 26 PV (7.000 operárias), e o PV cai com elas: metade, 13 PV. Só ataque em área alcança a frente. Não esquiva nem apara. Lenta de verdade (a frente anda 12 m por hora), mas a ficha corre a 10 km/h pela velocidade congelada: o Mestre que quiser o real move a frente devagar e deixa a vítima sair, ou não, se estiver presa. Quem está cercado leva o pulso a cada 5 Ticks, sem rolar acerto (1d6 + 5 pela Ameaça 4, provisório), e a armadura não protege. Dentro, só fugir ou tirar as formigas de cima sai sem teste. Mente simples (Integridade 0): o que a mantém no ataque é a frente química, e não a coragem. Não se esconde: a frente se vê e se ouve chegando."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Jungle"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Army Ant Swarm",
+    "cr": "5",
+    "tipo": "praga Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 15,
+      "con": 10,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 26,
+    "esquiva": 6,
+    "bloqueio": 6,
+    "defesa": 6,
+    "defesaMental": 6,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 0,
+    "deslocamento": {
+      "terra": {
+        "batalha": 1,
+        "arranque": 2,
+        "corrida": 3
+      }
+    }
+  },
+  "notasObservacao": [
+    "`anatomia`: artrópode, anatomia provisória (D-175)",
+    "`velocidade`: congelada (decisão 23). 10 km/h contra 0,47 km/h da operária medida, +2.030%; a frente anda 12 m por hora (D-170)",
+    "`forca`: 0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): a formiga sozinha não fere nem segura um humano pela força. O feito real (equipes que levam presas desproporcionalmente pesadas, Franks 1986, sem o número da razão) vai para a Musculatura 5 (D-162)",
+    "`musculatura`: 5, e não 6, porque a razão entre a presa e a formiga não foi achada; o 5 é a leitura de \"excepcional\" pela formiga como exemplo de força pelo tamanho (D-117, D-174)",
+    "`pesoErguido`: 0,00 kg pela fórmula provisória (decisões 14 e 16); a Musculatura 5 multiplica uma curva que dá zero em 3 mg; carga \"não (enxame)\" (D-162, D-169)",
+    "`pv`: 26 por quadrado cheio (Etapa 2, 20/10/2026: o quadrado cheio conta como criatura Pequena, decisão de 20/10/2026; metade dos indivíduos, metade do PV); antes, 8 na Faixa 1 pela decisão 21 (5 + Vigor), o de um indivíduo.",
+    "`alvo`: o Minúsculo é o da operária; o enxame usa o tamanho que apresenta no acerto (D-077, D-166)",
+    "`massa` e `dimensoes`: massa (3 mg), altura (2 mm) e largura (1,5 mm) estimadas pela Bestiarista, sem fonte; a largura é a do corpo, sem as patas (D-147, D-174)",
+    "`veneno`: veneno sem id no catálogo (D-112)",
+    "`ataques`: duas opções (mordida e ferroada), escolha da Bestiarista; a pesquisa não diz qual a operária usa mais (D-097, D-174)",
+    "`atributosSociais`: a colônia é social no sentido da biologia, mas a coordenação é química, sem um bicho lendo ou intimidando o outro; lida como não social para a diretriz 1, e os três ficam em 1, como hoje (D-174)",
+    "`resistencia`: 2 pelo levantamento; o ciclo de 15 dias de ataque fica na nota de pesquisa (jornada) (decisão 5) (D-174)",
+    "`escalada`: Escalada 2 pela ficha de hoje e pelo Pathfinder; a pesquisa não traz número (D-174)",
+    "`couraca`: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): fase nômade de cerca de 15 dias com ataque todo dia, e mudança de bivaque de 6 a 8 horas à noite (Wikipédia, [medido]); a frente avança 0,2 m/min, 12 m por hora (relatório MTBI 2004, fonte fraca).",
+    "fonte: a massa (3 mg), a altura (2 mm) e a largura (1,5 mm) continuam só por estimativa; o artigo de castas de Jaffé 2007 (PMC2391184) não abriu, e Whelden 1963 não traz massa; a ordem de grandeza dos 3 mg tem apoio fraco na passagem de carregadora sozinha para equipe entre 5 e 10 mg de peso seco (Franks, via resumo de busca) (D-174)",
+    "fonte: o ciclo de ataques de cerca de 15 dias e o limite de 43 °C (Vigor 3) continuam só pela Wikipédia (D-174)"
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "ordem": 41,
+  "id": "rinoceronte",
+  "idAntigo": "mon-rinoceronte",
+  "nome": "Rinoceronte-branco",
+  "nomeIngles": "White rhinoceros",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Os machos guardam o território: a maioria dos encontros é ritual, de cabeça erguida e chifres tocados, mas alguns acabam em feridas fundas ou morte. Míope, fareja e ouve bem. Vive até 50 anos.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/rinoceronte_criatura.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "4,66 m de comprimento, 1,78 m de altura",
+    "peso": "2.250 kg",
+    "comprimento": 4.66,
+    "largura": 0.99,
+    "altura": 1.78
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 6,
+    "corrida": 8
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 8,
+    "destreza": 2,
+    "vigor": 8,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 3,
+    "bloqueio": 2,
+    "esquiva": 1,
+    "atletismo": 1,
+    "integridade": 3,
+    "prontidao": 1,
+    "resistencia": 4,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "corrida": 2,
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 4,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Chifrada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 1,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Investida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 2,
+      "tipo": "perfurante",
+      "perf": 1,
+      "ticks": 7,
+      "classe": "pesada"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "derrubar",
+      "descricao": "Investida",
+      "classe": "livro"
+    },
+    {
+      "nome": "empurrar",
+      "descricao": "Investida",
+      "classe": "livro"
+    },
+    {
+      "nome": "arremessar com o chifre",
+      "descricao": "Chifrada: Empurrar.",
+      "classe": "livro"
+    },
+    {
+      "nome": "pisotear",
+      "descricao": "Investida: Investida.",
+      "classe": "livro"
+    },
+    {
+      "nome": "investida que derruba",
+      "descricao": "Investida: Investida e Derrubar.",
+      "classe": "livro"
+    },
+    {
+      "nome": "fúria cega",
+      "descricao": "abalado, carrega contra o alvo mais próximo sem hesitar.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "faro: Prontidão (faro) +2, natural; \"apurado\". · audição: \"apurada\". Texto. · visão: míope. Texto: o Mestre pode dificultar notar o que está parado a distância."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Solitário e de vista curta, geralmente pacato se não provocado, mas carrega com violência total quando se sente ameaçado. Social: machos solitários e territoriais (0, 7 a 3 km²); fêmeas com cria."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Ocupa savanas abertas e áreas de vegetação rasteira, longe de florestas fechadas."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Habita as planícies mais amplas de Mére, respeitado pelos povos locais como símbolo de resistência bruta e teimosia."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande: o humano Médio acerta com +3 no corpo a corpo. A Força 8 tira o Bloqueio de quem tem Força 4 ou menos: o humano comum não apara a investida, que faz 23 em média. O couro é Couraça nível 4, o mais alto dos animais de pele: quanto tira de cada golpe, e se a flecha e a lança resvalam, fica para depois; o Impacto perde 8. 75 PV. Míope: quem fica parado longe passa despercebido mais fácil; quem chega perto do território, não."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains",
+      "Jungle"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 1.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Rinoceronte",
+    "cr": "4",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 24,
+      "des": 12,
+      "con": 20,
+      "int": 2,
+      "sab": 13,
+      "car": 6
+    },
+    "pericias": [
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "variantes": [],
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 75,
+    "esquiva": 6,
+    "bloqueio": 8,
+    "defesa": 8,
+    "defesaMental": 9,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 8,
+      "corte": 8,
+      "perfuracao": 8
+    },
+    "couracaNivel": 4,
+    "pesoErguido": 816.47,
+    "carga": {
+      "leve": 168.8,
+      "media": 337.5,
+      "pesada": 506.2,
+      "maxima": 675
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 6,
+        "corrida": 8
+      }
+    }
+  },
+  "notasObservacao": [
+    "massa: 2.250 kg (em vigor na Etapa 2, 20/10/2026); antes: 2.050 kg, a média simples do macho (2.300) e da fêmea (1.800) do Zoológico de San Diego, a mesma fonte; era o macho de 2.300 kg (sexta rodada, item 4).",
+    "pesoErguido: 837 kg pela conta das decisões 14 e 16 com a massa de 2.050 kg, provisório. Com a Força 8 e a Musculatura 3 do boi e 2,6 vezes a massa, o rinoceronte ergue menos que o boi (997 kg) e pouco mais que o cavalo (698 kg): a Força de referência da massa de 2,05 t (9,84) passa da Força 8, e o expoente fica negativo. A ordem entre o rinoceronte e os bois sai invertida; fica como dado para a frente do peso erguido, sem mexer na Força, que é âncora do autor (D-162, D-169, D-174).",
+    "forca: 8, a âncora do autor; a ficha de hoje tinha 12 pelo encaixe no buraco entre 11 e 15 da escala antiga (D-158, D-174).",
+    "couraca: nível 4 (faixa 3 a 4) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "vigor: 8 (em vigor na Etapa 2, 20/10/2026); antes: 5, abaixo do elefante (6); a vida de até 50 anos continua só pela Wikipédia e pela ADW (D-174).",
+    "influencia: 1 pela diretriz 1 (não é espécie social); a ficha de hoje tinha 2 pela investida que faz gente recuar. A fêmea com filhote perdeu a Influência 2 da variante pela mesma razão (D-174).",
+    "empatia: 0 pela vida solitária do macho (ADW); provisória (D-174).",
+    "musculatura: 3 pela corcova e pela luta de empurrar, sem feito medido (D-174).",
+    "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2; falta a distância por dia, o tempo sem água e o calor (D-174).",
+    "especialidade natural Prontidão (faro) +2: era Percepção (faro) +2; só o recorte mudou de lugar (D-174).",
+    "especie: o branco, e não o negro, para a ficha cair onde a nota do lote a põe (D-174).",
+    "carga: estrutura 0,1 (sem estrutura de carga), escolha da ficha de hoje; com 0,2 a Leve seria 307,5 kg. Provisória (D-122, D-169, D-172, D-174).",
+    "velocidade: congelada (decisão 23). A corrida dá 28 km/h contra 40 km/h de arrancada (ADW), −30%: a anatomia do quadrúpede pesado (1,0) é a do elefante, que não galopa (D-170).",
+    "dimensoes.largura: 0,96 m, o 1,0 m estimado para o macho escalado pelo cubo da massa; não decide o Alvo (D-147, D-174).",
+    "dimensoes: altura e comprimentos eram do macho e foram escalados pelo cubo da massa, (2.050 ÷ 2.300)^(1/3) = 0,962; a altura (1,73 m) e o corpo (3,66 m) caem entre o macho e a fêmea da Wikipédia.",
+    "ataque Investida: Perfuração, e não Impacto como o boi, porque a carga vem com o chifre à frente; leitura da ficha de hoje, mantida (D-174)."
+  ]
+}

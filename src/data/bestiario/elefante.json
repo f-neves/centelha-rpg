@@ -1,0 +1,252 @@
+{
+  "ordem": 42,
+  "id": "elefante",
+  "idAntigo": "mon-elefante",
+  "nome": "Elefante-asiático",
+  "nomeIngles": "Asian elephant",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Enorme",
+  "descricao": "Domesticado há séculos para o transporte, a madeira e a guerra; um macho de trabalho arrasta toneladas de tora por dia. Vive 60 anos ou mais.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": null,
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "5,8 m de comprimento, 2,65 m de altura",
+    "peso": "3.600 kg",
+    "comprimento": 5.8,
+    "largura": 1.44,
+    "altura": 2.65
+  },
+  "locomocao": {
+    "terra": 3,
+    "natacao": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 10,
+    "destreza": 1,
+    "vigor": 9,
+    "percepcao": 2,
+    "inteligencia": 2,
+    "raciocinio": 2,
+    "influencia": 3,
+    "perspicacia": 2,
+    "compostura": 2
+  },
+  "skills": {
+    "briga": 3,
+    "bloqueio": 2,
+    "esquiva": 1,
+    "integridade": 2,
+    "prontidao": 1,
+    "resistencia": 5,
+    "empatia": 2,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 3,
+      "origem": "natural"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Presada (só o macho com presa)",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 1,
+      "ticks": 7,
+      "classe": "pesada"
+    },
+    {
+      "nome": "Pisão (ou investida)",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 2,
+      "tipo": "impacto",
+      "ticks": 7,
+      "classe": "pesada"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "agarrar",
+      "descricao": "tromba",
+      "classe": "livro"
+    },
+    {
+      "nome": "empurrar",
+      "descricao": "corpo: (o empurrão é o modo comum de briga)",
+      "classe": "livro"
+    },
+    {
+      "nome": "atropelar",
+      "descricao": "Pisão: Investida.",
+      "classe": "livro"
+    },
+    {
+      "nome": "arremessar o que agarrou",
+      "descricao": "tromba: lança o alvo que agarrou com a tromba.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "pisoteio em área",
+      "descricao": "Pisão: esmaga quem está sob as patas numa área de uns 3 m.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "investida que empurra",
+      "descricao": "Pisão: Investida e Empurrar.",
+      "classe": "livro"
+    },
+    {
+      "nome": "corpo enorme",
+      "descricao": "dificilmente cai Prono.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "faro: Prontidão (faro) +3, Especialidade natural. \"Talvez quatro vezes maior que o de um cão de caça\", sem método claro: nota. · audição: texto; ouve e se comunica por infrassom e pela vibração do chão a longa distância. Números: não achados. · visão: texto; enxerga bem na penumbra e mal na luz forte."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Vive em manadas matriarcais, com forte laço social entre fêmeas e crias e uma memória apurada para rotas e perigos. Social: grupos de fêmeas e filhotes; machos sós ou em grupos de solteiros."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Herbívoro que migra por longas distâncias em busca de água e pasto, moldando a paisagem por onde passa."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "As manadas cruzam as savanas e florestas de Mére, tratadas por alguns povos locais como animais quase sagrados pela sabedoria aparente e a longevidade, sem qualquer laço real com magia."
+    },
+    {
+      "titulo": "Aptidões",
+      "texto": "montaria: sim (turismo e trabalho na Tailândia). carga: sim (elefantes de bagagem de Mianmar). tração: sim (arrasto de tora)."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme: o humano Médio acerta com +6 no corpo a corpo. Não bloqueia o elefante pelo Alvo, e a Força 10 também tira o Bloqueio de quem tem Força 5 ou menos (o dobro e ao menos 4 a mais). O couro é Couraça nível 3; quanto ele tira do golpe fica para depois. O pisão faz 27 em média e a presada 17; 80 PV. Corre a 24 km/h, e leva cerca de 540 kg no lombo sem mudar a marcha. Fareja longe (+3)."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains",
+      "Jungle"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Prontidão 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Elefante",
+    "cr": "9",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 30,
+      "des": 10,
+      "con": 21,
+      "int": 2,
+      "sab": 13,
+      "car": 7
+    },
+    "pericias": [
+      "Prontidão 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 4,
+  "proezaFutura": [
+    {
+      "caminho": "quebra-muralhas"
+    },
+    {
+      "caminho": "agarrao-do-urso"
+    }
+  ],
+  "v3": {
+    "pv": 80,
+    "esquiva": 4,
+    "bloqueio": 6,
+    "defesa": 6,
+    "defesaMental": 7,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 9,
+      "corte": 9,
+      "perfuracao": 9
+    },
+    "couracaNivel": 3,
+    "pesoErguido": 1047.77,
+    "carga": {
+      "leve": 540,
+      "media": 1080,
+      "pesada": 1620,
+      "maxima": 2160
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      },
+      "nado": 3
+    }
+  },
+  "notasObservacao": [
+    "forca: 10 pela âncora do autor (9 a 10), proposta do Arquiteto. O feito de arrasto (1 a 3 t, Htun) fica acima do peso erguido novo (1.074 kg), que só alcança o piso dele. O topo da âncora (10) foi escolhido para o macho de 4 t; com o adulto típico de 3,35 t, o argumento do topo enfraquece, e a Força fica pela regra da sexta rodada (ver desvios). Decisão provisória: manter a âncora e deixar a diferença à fórmula de P ou a uma leitura do arrasto (tora no chão, com corrente, não é peso erguido inteiro) (D-174).",
+    "massa: 3.600 kg (em vigor na Etapa 2, 20/10/2026); antes: 3.350 kg, a média simples do macho (4 t) e da fêmea (2,7 t) da tabela 8 de Larramendi 2016; era o macho de 4 t (sexta rodada, item 4).",
+    "pesoErguido: 1.074 kg pelo `calc6.mjs` com a massa de 3.350 kg, provisório (decisões 14 e 16). Era 2.050 kg pela fórmula de FAH, e 1.011 kg com o macho de 4 t.",
+    "carga: Leve 502,5 kg, os 15% da carga medida (Kongsawasdi 2021) sobre a massa de 3.350 kg; não sai da Força.",
+    "velocidade: congelada (decisão 23). O nado sai a 9 km/h contra 2,1 km/h do real (+330%); só anotado.",
+    "area: 6,34 m², vista de lado: os 7,13 m² da medição da `tamanho-fichas-v2` (macho de 4 t) escalados pela massa, (3.350 ÷ 4.000)^(2/3); era 12,93 m² (retângulo cheio). O Alvo segue Enorme, a 6% do corte; a fêmea (5,49 m²) cai no Grande.",
+    "inteligencia: 2 pela quinta rodada: reconhece-se no espelho (Plotnik, de Waal e Reiss 2006, PNAS 103: 17053-17057, elefante-asiático do zoológico do Bronx); usa ferramenta e tem memória longa.",
+    "couraca: nível 3 (faixa 2 a 3) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "resistencia: 5 (em vigor na Etapa 2, 20/10/2026); antes: 2; a marcha, o arrasto e o nado ficam na nota de pesquisa (jornada) (diretriz 2).",
+    "jornada (nota de pesquisa, não é regra): marcha de até 25 km por dia no plano e 16 km em trilha de montanha ou lama, com no máximo 3 marchas pesadas seguidas (MTE, em FAO) **[medido]**; arrasto de tora de 4 a 8 h por dia, 5 dias por semana, de junho a fevereiro (FAO) **[medido]**; turismo de 2 a 3 h e 4 a 5 km por dia (Kongsawasdi 2021); nado de até 6 h a 2,1 km/h e travessia de 48 km (Wikipédia, elefantes em geral) **[comparação]**. Era a Resistência (Fôlego) +2.",
+    "empatia: 2 nova, sem número na fonte: leitura do grupo e do cornaca.",
+    "musculatura: 3 (robusto) na escala nova; o 4 de hoje era da escala velha.",
+    "natacao: 0 mantida; o elefante nada bem, mas a velocidade está congelada e a distância fica na nota de pesquisa (jornada). Se o autor quiser Natação 1 para quem nada horas, esta é candidata.",
+    "sentidos: faro +3 pela decisão 3 (era +4); a fonte (\"quatro vezes o de um cão de caça\") é divulgação, sem método.",
+    "presada: N1 mantido como Nível da própria presa (tamanho do \"chifre\"), e não do porte, que saiu da absorção.",
+    "dimensoes: altura, comprimentos e largura eram do macho de 4 t e foram escalados pelo cubo da massa (fator 0,943); comprimento sem cauda (4,43 m) e largura (1,41 m) só pela estimativa; não decidem o Alvo, que vem do `calc.mjs`."
+  ]
+}

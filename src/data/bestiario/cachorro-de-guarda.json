@@ -1,0 +1,224 @@
+{
+  "ordem": 192,
+  "id": "cachorro-de-guarda",
+  "idAntigo": "mon-riding-dog",
+  "nome": "Cão de guarda",
+  "nomeIngles": "Riding Dog",
+  "categoria": "Animal",
+  "categoriaLegada": "Monstro",
+  "papel": "fera",
+  "conceito": "monstro Médio",
+  "descricao": "Cão grande de guarda e de guerra, levado às arenas de Roma e usado pelos conquistadores espanhóis; calmo em casa, derruba e segura quem invade.",
+  "descricaoLegada": "Aberração humanoide de lendas antigas.",
+  "tags": [
+    "monstro"
+  ],
+  "imagem": null,
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "1,76 m de comprimento, 0,79 m de altura",
+    "peso": "85 kg",
+    "comprimento": 1.76,
+    "largura": 0.35,
+    "altura": 0.79
+  },
+  "locomocao": {
+    "terra": 6
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 6,
+    "arranque": 9,
+    "corrida": 12
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 3,
+    "destreza": 3,
+    "vigor": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 3,
+    "atletismo": 2,
+    "furtividade": 3,
+    "integridade": 3,
+    "prontidao": 4,
+    "resistencia": 3,
+    "empatia": 2,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "audição",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "derrubar e segurar no chão",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "derrubar",
+      "descricao": "Mordida, ou o peso do corpo em carga: O bullmastiff derrubava a pessoa e a segurava no chão. Briga (derrubar e segurar no chão) 1 entra aqui.",
+      "classe": "livro"
+    },
+    {
+      "nome": "agarrar",
+      "descricao": "Mordida: Dano do agarrão: 2 × Força = 6 por manutenção.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "faro: Prontidão (faro) +3; o do cão. · audição: Prontidão (audição) +2 (o do cão). · penumbra: texto; tapetum lucidum, como no cão."
+    }
+  ],
+  "doencas": [
+    {
+      "nome": "Variante cão raivoso",
+      "texto": "Raiva · Virulência 14 · dia · só no animal raivoso, ao critério do Mestre, e nunca no comum · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Raças robustas",
+      "texto": "Vem de linhagens maiores e mais fortes, como os mastins, criadas para guardar a casa e o rebanho e para puxar carroça pequena."
+    },
+    {
+      "titulo": "Parceiro de estrada",
+      "texto": "Guarda a casa da família que cuida dele e puxa a carroça pequena dos povos menores, como halflings e gnomos."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: vive com a família que cuida dele."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Variante cão raivoso: Raiva · Virulência 14 · dia · só no animal raivoso, ao critério do Mestre, e nunca no comum · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
+    },
+    {
+      "titulo": "Aptidões",
+      "texto": "montaria não (ver as notas) · carga não · tração sim (carroça de cão; ver Corpo e movimento)"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Força 3: nenhum humano perde o Bloqueio contra a mordida dele, e só quem tem Força 7 ou mais tira o dele. Pequeno, ganha +3 no corpo a corpo contra o humano Médio, e quem atira nele leva −3. Desvia pouco (Esquiva 12, com a Esquiva 3 do autor) e não apara (Bloqueio 0), mas segura: morde, derruba e prende no chão (Briga com a Especialidade de derrubar e segurar), 6 de dano por manutenção do agarrão (2 × Força 3). Arrasta ou vira cerca de 247 kg. 34 PV, e Couraça nível 0 (quanto o nível vale fica para depois)."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Riding Dog",
+    "cr": "1",
+    "tipo": "monstro Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": 15,
+      "int": 2,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 1,
+  "v3": {
+    "pv": 34,
+    "esquiva": 12,
+    "bloqueio": 6,
+    "defesa": 12,
+    "defesaMental": 8,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 247.09,
+    "carga": {
+      "leve": 8.5,
+      "media": 17,
+      "pesada": 25.5,
+      "maxima": 34
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 6,
+        "arranque": 9,
+        "corrida": 12
+      }
+    }
+  },
+  "notasObservacao": [
+    "`pesoErguido` e `carga`: 247,09 kg (em vigor na Etapa 2, 20/10/2026); antes: provisórios. A carga sai da massa e da faixa (7,7 kg de Leve com 77 kg, sem carga medida); o peso erguido sai de `calc6.mjs` (284,56 kg), e era 157,94 kg pela fórmula da D-162 (decisões 14 e 16)",
+    "`velocidade`: congelada (decisão 23); 44 km/h contra cerca de 34 km/h do mastim mais rápido do Fast CAT, +28%, e saiu do fator do Médio, quando o Alvo agora é Pequeno",
+    "`alvo`: 0,37 m², Pequeno pela decisão 7; o mastim do extremo (Zorba, 145 kg) pode sair Médio",
+    "`dimensoes`: o comprimento total (1,70 m), o sem cauda (1,20 m) e a largura (0,34 m) são estimativas da pesquisa, sem medida de mastim típico em centímetros (só o recordista Zorba)",
+    "`aptidoes.montaria`: não. A ficha antiga era o \"Cão de Montaria\" do d20; o cão real leva 7,7 kg de Leve e 30,8 kg de Máxima (provisório), e um halfling de cerca de 30 kg é quase a Máxima inteira. Se um halfling monta um cão grande, é decisão do Mestre (D-087, D-174)",
+    "`id`: o `mon-riding-dog` aponta para um cão de guarda real, e o nome muda de \"Cão de Montaria\" para \"Cão de guarda\"; a imagem atual mostra outro animal (D-102, D-174)",
+    "`resistencia`: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2, **[comparação]**; o dado de fôlego (cão de carroça de 64 a 80 km por dia) é de blog e fica na nota de pesquisa (jornada)",
+    "jornada (nota de pesquisa, não é regra): cão de carroça na Inglaterra do século XIX, 64 a 80 km por dia em estrada dura, Brighton a Portsmouth num dia (blog de historiador, fonte fraca) **[comparação]**; o cão de carga pesado \"não acompanha os rápidos em viagem longa\" (FM 25-6, §3a). Do mastim: **[sem dado]**.",
+    "`furtividade`: 2, nova, pelo bullmastiff que seguia de noite quem caçava ilegalmente, raça vizinha e não o mastim inglês",
+    "`empatia`: 2, nova, **[extrapolação]** do temperamento do padrão FCI (família contra estranho)",
+    "`especialidades`: Prontidão (faro) desce de +4 para +3 pelo teto da decisão 3; Briga (derrubar e segurar no chão) 1, nova, pelo bullmastiff",
+    "`musculatura`: 3, robusto, sem carga medida do mastim (a carroça de 136 kg pela lei belga só aparece num blog, e não entra)"
+  ]
+}

@@ -64,8 +64,8 @@ const TICKS_POR_TURNO = 6;
 // As criaturas que conjuram Arte de verdade "como classe" (item 3 do despacho da Fase 4).
 // Reconhecidas por CATEGORIA (dragões) ou por ID (as nomeadas).
 const CASTERS_ID = new Set([
-  'mon-lich', 'mon-couatl', 'mon-ninfa', 'mon-planetar', 'mon-solar', 'mon-ghaele',
-  'mon-rakshasa', 'mon-naga',
+  'lich', 'couatl', 'ninfa', 'planetar', 'solar', 'mon-ghaele',
+  'rakshasa', 'mon-naga',
 ]);
 const ehCaster = (ficha) => ficha.categoria === 'Dragão' || CASTERS_ID.has(ficha.id);
 

@@ -136,11 +136,11 @@ const INTERPOR = P.get('cena') === 'interpor';
  */
 const INTERPOR_FASE = P.get('fase') === 'recuperacao' ? 'recuperacao' : 'preparo';
 
-const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : BANDEIRAS ? 10 : CORPOACORPO ? 20
+const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : BANDEIRAS ? 12 : CORPOACORPO ? 20
   : FORADAVEZ ? 16 : OCUPACAO ? 16 : CAIDOFILA ? 12 : LEVANTAR ? 16 : OCUPACAODETECTOR ? 16
   : PASSOCOLOSSAL ? 20
   : INTERPOR ? 10 : parseInt(P.get('cols') || '24', 10);
-const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : BANDEIRAS ? 8 : CORPOACORPO ? 18
+const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : BANDEIRAS ? 16 : CORPOACORPO ? 18
   : FORADAVEZ ? 12 : OCUPACAO ? 12 : CAIDOFILA ? 8 : LEVANTAR ? 10 : OCUPACAODETECTOR ? 10
   : PASSOCOLOSSAL ? 18
   : INTERPOR ? 8 : parseInt(P.get('rows') || '16', 10);
@@ -284,7 +284,7 @@ const ENC = '00000000-0000-4000-8000-0000000000cc';
 
 // Ids reais do bestiário: o porte deles decide o tamanho da peça no tabuleiro, e
 // uma cena só de médios não exercitaria o empilhamento nem a regra de ocupação.
-const MONS = ['mon-aasimar', 'mon-aguia-gigante', 'mon-aboleth'];
+const MONS = ['aasimar', 'aguia-gigante', 'aboleth'];
 
 const offsetParaAxial = (col, row) => ({ q: col - Math.floor(row / 2), r: row });
 
@@ -565,15 +565,15 @@ if (CAIDO) {
  * vir de `MON[monstro_id].porte`, que uma ficha de mentira sem `monstro_id`
  * não tem como fornecer (`porteRotuloDe`, `grid.astro`):
  *
- *   `b0` · `mon-aguia-gigante`, porte GRANDE, resistPerf 0 · porte BÔNUS
+ *   `b0` · `aguia-gigante`, porte GRANDE, resistPerf 0 · porte BÔNUS
  *          (alvo maior) e gate ABRE (Perf. 0 ≥ resistPerf 0): a dupla que
  *          prova que ligar as bandeiras não impede o caminho comum.
- *   `b1` · `mon-dog`, porte PEQUENO, resistPerf 0 · porte PENALIDADE (alvo
+ *   `b1` · `cachorro`, porte PEQUENO, resistPerf 0 · porte PENALIDADE (alvo
  *          menor), o sinal invertido do par com `b0`.
  *   `b2` · `guarda-da-cidade`, porte Médio, resistPerf 1, Absorção de
  *          Perfuração só 2 · gate RESVALA (Perf. 0 < resistPerf 1): a Vida
  *          NÃO pode descer, e não basta o registro dizer que resvalou. NÃO
- *          é `mon-aboleth` (Absorção de Perfuração 13): contra ele a Vida
+ *          é `aboleth` (Absorção de Perfuração 13): contra ele a Vida
  *          também não desceria com o gate DESLIGADO, porque a Adaga (1d6+1)
  *          nunca fura 13 de Absorção sozinha — o teste provaria a Absorção,
  *          não o gate. Achado no ensaio dos três sentidos desta rodada.
@@ -611,8 +611,8 @@ if (BANDEIRAS) {
     { id: 'a0', tipo: 'pc', monstro_id: null, q: 2, r: 4, alvo: 'b0' },
     { id: 'a1', tipo: 'pc', monstro_id: null, q: 3, r: 5, alvo: 'b1' },
     { id: 'a2', tipo: 'pc', monstro_id: null, q: 3, r: 6, alvo: 'b2' },
-    { id: 'b0', tipo: 'criatura', monstro_id: 'mon-aguia-gigante', q: 4, r: 4 },
-    { id: 'b1', tipo: 'criatura', monstro_id: 'mon-dog', q: 5, r: 5 },
+    { id: 'b0', tipo: 'criatura', monstro_id: 'aguia-gigante', q: 4, r: 4 },
+    { id: 'b1', tipo: 'criatura', monstro_id: 'cachorro', q: 5, r: 5 },
     { id: 'b2', tipo: 'criatura', monstro_id: 'guarda-da-cidade', q: 5, r: 6 },
   ];
   let k = 0;
@@ -646,7 +646,7 @@ if (BANDEIRAS) {
  * BORDA, somando o raio do alvo, e o critério de aceitação é uma PROIBIÇÃO
  * (não remover a segunda passada de `caminharHex` que afrouxa o veto, porque
  * ela serve outro caso). Esta cena prova as duas coisas com a mesma peça
- * parada: um Aboleth (Enorme, `mon-aboleth`, diâmetro 4 m) em `q:4,r:4`,
+ * parada: um Aboleth (Enorme, `aboleth`, diâmetro 4 m) em `q:4,r:4`,
  * numa arena de `escala_m: 1` (a folga até o canto é só para o zigue-zague
  * lateral das duas passadas não cruzar q ou r negativo).
  *
@@ -699,7 +699,7 @@ if (CORPOACORPO) {
     // peça sem ficha (o ajuste por instância vence a base do bestiário), só
     // para não depender do ataque natural real do Aboleth ter Velocidade 5.
     {
-      id: 'en', tipo: 'criatura', monstro_id: 'mon-aboleth', q: 4, r: 4,
+      id: 'en', tipo: 'criatura', monstro_id: 'aboleth', q: 4, r: 4,
       acao: {
         golpes: [2], livre: 7, desde: 0, tipo: 'simples', arma: null,
         alvo: 'md', aResolver: [2],
@@ -1036,7 +1036,7 @@ if (OCUPACAODETECTOR) {
 
 /**
  * A CENA DO PASSO CERCADO `?cena=passocolossal` (docs/pendencias/L-simulacao-simultaneo.md L93, rodada
- * 53): `md` (Médio) nasce colado num Colossal (`mon-tarrasque`, raio 8 m) e
+ * 53): `md` (Médio) nasce colado num Colossal (`tarrasque`, raio 8 m) e
  * declara um deslocamento puro de 1 hexágono. O passo estrito
  * (`ocupadoPor`) não avança nenhum passo (tudo ao redor está no raio do
  * Colossal), então o traçado cai na segunda passada (`casaExata`), que só
@@ -1052,7 +1052,7 @@ if (PASSOCOLOSSAL) {
   const posMd = offsetParaAxial(10, 9);
   COMBS.push({
     id: 'co', encontro_id: ENC, nome: 'Peça co',
-    tipo: 'criatura', grupo: 'inimigo', monstro_id: 'mon-tarrasque', personagem_id: null,
+    tipo: 'criatura', grupo: 'inimigo', monstro_id: 'tarrasque', personagem_id: null,
     pv_max: 999, pv_atual: 999, mana_max: null, mana_atual: null,
     tick: 0, iniciativa: 20, acao: {}, dados: {},
     condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
@@ -1805,3 +1805,57 @@ export function createClient() {
 }
 
 export default { createClient };
+
+// A CENA DAS BANDEIRAS, segunda parte: o oitavo porte e a D-077 (etapa 8b da
+// publicação do bestiário, D-179). Fica no fim do arquivo, e não na lista do
+// bloco `if (BANDEIRAS)` lá em cima, para não mover as linhas que os documentos
+// citam. As peças entram nas mesmas COMBS e TOKENS, com o golpe agendado pro
+// Tick 2 e os números da mesma Adaga. O arco é de mentira: um nome fora do
+// catálogo com `classe: 'distancia'`, que é o que `classeDeTempo` lê quando o
+// catálogo não acha a arma. As criaturas que atacam usam os números da Adaga
+// por `dados`; o porte delas vem do MON.
+if (BANDEIRAS) {
+  const r = resumoCombatePC({
+    ...KAEL,
+    conjuntos: [{ ativo: true, habil: { ref: 'a:adaga' }, inabil: { ref: 'nada' } }],
+    equip: { armaduras: [] },
+  });
+  const numeros = {
+    arma: r.arma, ataque: r.ataque, dano: r.dano,
+    defesa: r.defesa, soak: r.soak, resistPerf: r.resistPerf, perfArma: r.perfArma,
+    velocidade: 5, classe: 'leve', passo: r.passo, qa: r.qa,
+  };
+  const ARCO = 'arco de teste';
+  const por = [
+    { id: 'a3', tipo: 'pc', monstro_id: null, q: 1, r: 8, alvo: 'b3', arco: true },
+    { id: 'a4', tipo: 'pc', monstro_id: null, q: 1, r: 9, alvo: 'b4', arco: true },
+    { id: 'a5', tipo: 'pc', monstro_id: null, q: 1, r: 10, alvo: 'b5' },
+    { id: 'a6', tipo: 'criatura', monstro_id: 'doninha', q: 1, r: 11, alvo: 'b6' },
+    { id: 'a7', tipo: 'criatura', monstro_id: 'gato', q: 1, r: 12, alvo: 'b7' },
+    { id: 'b3', tipo: 'criatura', monstro_id: 'cachorro', q: 4, r: 8 },
+    { id: 'b4', tipo: 'criatura', monstro_id: 'doninha', q: 4, r: 9 },
+    { id: 'b5', tipo: 'criatura', monstro_id: 'doninha', q: 2, r: 10 },
+    { id: 'b6', tipo: 'pc', monstro_id: null, q: 2, r: 11 },
+    { id: 'b7', tipo: 'criatura', monstro_id: 'tarrasque', q: 9, r: 13 },
+  ];
+  let k = COMBS.length;
+  for (const p of por) {
+    COMBS.push({
+      id: p.id, encontro_id: ENC, nome: `Peça ${p.id}`,
+      tipo: p.tipo, grupo: p.tipo === 'pc' ? 'aliado' : 'inimigo',
+      monstro_id: p.monstro_id, personagem_id: null,
+      pv_max: 999, pv_atual: 999,
+      mana_max: null, mana_atual: null,
+      tick: 0, iniciativa: 20 - k,
+      acao: p.alvo ? {
+        golpes: [2], livre: 7, desde: 0, tipo: 'simples', arma: p.arco ? ARCO : numeros.arma, alvo: p.alvo, aResolver: [2],
+      } : {},
+      dados: p.arco ? { ...numeros, arma: ARCO, classe: 'distancia' } : (p.tipo === 'pc' || p.alvo) ? { ...numeros } : {},
+      condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+    });
+    TOKENS.push({
+      arena_id: ARENA, combatente_id: p.id, q: p.q, r: p.r,
+      movido_em: new Date(1700000000000 + (k++) * 1000).toISOString(),
+    });
+  }
+}

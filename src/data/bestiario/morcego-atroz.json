@@ -1,0 +1,228 @@
+{
+  "ordem": 153,
+  "id": "morcego-atroz",
+  "idAntigo": "mon-dire-bat",
+  "nome": "Morcego atroz",
+  "nomeIngles": "Dire Bat",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Mora em caverna e sai à noite atrás de gado; numa refeição levaria de 5 a 8 kg de sangue, se seguisse o vampiro (20 a 30% da massa).",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/morcego-atroz_criatura.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "1,2 m de comprimento, 0,75 m de altura",
+    "peso": "27 kg",
+    "comprimento": 1.2,
+    "largura": 0.53,
+    "altura": 0.75,
+    "envergadura": 5.4
+  },
+  "locomocao": {
+    "voo": 5,
+    "terra": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 2,
+    "corrida": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 3,
+    "destreza": 3,
+    "vigor": 4,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 2,
+    "atletismo": 2,
+    "furtividade": 2,
+    "integridade": 2,
+    "prontidao": 2,
+    "resistencia": 3,
+    "empatia": 1,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "escalada": 1,
+    "voo": 1
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "ecolocalização",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "calor",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "sobre quem dorme",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 3,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "morder quem dorme",
+      "descricao": "morde sem acordar quem dorme (Furtividade, com a Especialidade sobre quem dorme).",
+      "classe": "como luta"
+    },
+    {
+      "nome": "agarrar",
+      "descricao": "Mordida: dano do agarrão 2 × Força = 6: o vampiro real não agarra.",
+      "classe": "livro"
+    },
+    {
+      "nome": "sangramento",
+      "descricao": "Mordida: a ferida sangra por muito tempo, porque a saliva não deixa coagular.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "ecolocalização: Prontidão (ecolocalização) +3, herdada do vampiro. Vale no escuro. · calor: Prontidão (calor) +3, herdada do vampiro (fossetas que respondem acima de 29 °C)."
+    }
+  ],
+  "doencas": [
+    {
+      "nome": "Variante morcego raivoso",
+      "texto": "Raiva · Virulência 14 · dia · só no animal raivoso, ao critério do Mestre, e nunca no comum · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Habitat",
+      "texto": "O morcego atroz costuma se abrigar em cavernas e áreas desoladas durante o dia, saindo à noite para caçar. Sua envergadura passa de cinco metros."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Raramente forma colônias grandes, preferindo viver sozinho ou em pequenos grupos, e prefere caçar gado e animais de rebanho quando disponíveis. Social: pequeno grupo."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Variante morcego raivoso: Raiva · Virulência 14 · dia · só no animal raivoso, ao critério do Mestre, e nunca no comum · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Em voo, Grande: o humano Médio ganha +3 no corpo a corpo contra ele. No chão, Médio, sem bônus. A mordida faz 6,5 de dano médio e sangra; 28 PV e Absorção de Impacto 4 (Vigor 4, dois acima do vampiro); Couraça nível 0, e o valor do nível fica para depois. Ficha provisória: revista quando chegar a vez das versões atrozes. Força 3: só quem tem Força 7 ou mais tira o Bloqueio dele, e ele não tira o de ninguém. No ar, 10 m por Tick; no chão, 4."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Underground",
+      "Forest"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Bat",
+    "cr": "2",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 17,
+      "des": 15,
+      "con": 13,
+      "int": 2,
+      "sab": 14,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "voo 40; em terra 20"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 28,
+    "esquiva": 10,
+    "bloqueio": 6,
+    "defesa": 10,
+    "defesaMental": 7,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 84.94,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 2,
+        "corrida": 4
+      },
+      "voo": {
+        "batalha": 5,
+        "cruzeiro": 10
+      }
+    }
+  },
+  "notasObservacao": [
+    "`ficha`: provisória; revista quando chegar a vez das versões atrozes (D-177)",
+    "`anatomia`: morcego na anatomia ave, provisória (D-175)",
+    "`gigante`: dimensões do vampiro × 15; massa de 27 kg pelo meio, em escala de log, das duas contas da decisão 13 (16,8 e 43,5 kg). Tudo é extrapolação (D-105, D-174)",
+    "`massa` e `faixa`: 118 kg passaram a 27 kg, e a Faixa 3 a 2; o PV cai de 37 para 28. As dimensões ficaram as do k = 15, o que faz um corpo de 1,2 m × 0,53 m pesar 27 kg: leve para o volume, como um morcego. Se o autor quiser corpo e massa coerentes, um dos dois muda (D-174)",
+    "`forca`: 3, provisória, abaixo da referência da massa (4,7) pela membrana, sem feito medido (D-158, D-177)",
+    "`vigor`: 4, provisório: dois acima do vampiro (D-176, D-177)",
+    "`pesoErguido`: 84,94 kg pela fórmula nova (decisões 14 e 16), provisório: três vezes a massa (D-174)",
+    "`furtividade`: 2, um abaixo do vampiro (3). A régua do levantamento diz que o tamanho não entra; o levantamento marca o caso como estranho (porte). Fica o de hoje (D-174)",
+    "`influencia`: 2, a de hoje, com a razão de fazer gente recuar, que a v3 do roc recusou como Influência. Eu daria 1; o desvio vai no resumo (D-174)",
+    "`empatia` e `escalada`: 1, novas, provisórias, herdadas do vampiro (D-174)",
+    "`especialidades`: Furtividade (sobre quem dorme) 1, provisória, herdada do vampiro (D-174)",
+    "`fisica`: não voaria por músculo (Norberg e Norberg 2012). Não se corrige (D-105, D-174)",
+    "`dimensoes.altura` e `dimensoes.largura`: escaladas de estimativas do vampiro, sem medida",
+    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): sem dado próprio (fantasia). Pela base: o vampiro forrageia a 5 a 8 km do abrigo (Nowak 1991) e voa a 13,6 km/h de média (Sánchez-Hernández et al. 2006); o maior morcego real, a raposa-voadora, voa até 50 km por noite (ADW) [comparação].",
+    "`doenca`: raiva em texto, sem id (D-112)"
+  ]
+}

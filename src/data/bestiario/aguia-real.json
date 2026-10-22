@@ -1,0 +1,197 @@
+{
+  "id": "aguia-real",
+  "nome": "Águia-real",
+  "nomeIngles": "Golden eagle",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Médio",
+  "descricao": "Caça do alto: desce em mergulho sobre a lebre ou a marmota e a leva nos talões. Na época da cria, o casal guarda um território grande e expulsa outras águias.",
+  "tags": [],
+  "imagem": "bestiario/aguia-real_criatura.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "0,77 m de comprimento, 0,83 m de altura",
+    "peso": "4,6 kg",
+    "comprimento": 0.77,
+    "largura": 0.3,
+    "altura": 0.83,
+    "envergadura": 2
+  },
+  "locomocao": {
+    "terra": 2,
+    "voo": 5
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 2,
+    "corrida": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 2,
+    "destreza": 4,
+    "vigor": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 3,
+    "atletismo": 2,
+    "furtividade": 3,
+    "integridade": 2,
+    "prontidao": 3,
+    "resistencia": 2,
+    "sobrevivencia": 3
+  },
+  "skills2": {
+    "equilibrio": 1,
+    "voo": 3,
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "visão",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "mergulho sobre a presa",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 3,
+  "aparencia": 7,
+  "ataques": [
+    {
+      "nome": "Garras (talões)",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    },
+    {
+      "nome": "Bico",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "agarrar",
+      "descricao": "Garras (talões): Dano do agarrão: 2 × Força = 4.",
+      "classe": "livro"
+    },
+    {
+      "nome": "mergulho sobre a presa",
+      "descricao": "Garras (talões): Investida, com a velocidade de Mergulho do voo (só descendo).",
+      "classe": "livro"
+    },
+    {
+      "nome": "erguer e largar",
+      "descricao": "Garras (talões): sobe com o que agarrou, até o Peso erguido, e solta do alto; a queda é a de Cair (Corpo e Movimento).",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "caça em casal",
+      "descricao": "uma ave do casal cansa a presa enquanto a outra desce para matar.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão: Prontidão (visão) +3, notar e mirar de longe, com luz; com pouca luz não vale (Reymond e Wolfe). · Gira a cabeça cerca de 270°."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: par."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Em voo é Média como um humano: ninguém ganha o +3 de Alvo. Pousada fica Pequena, e aí ela ganha +3 no acerto corpo a corpo e quem atira nela leva −3. O dano das garras é pequeno (3, 5); o perigo dela é a surpresa do mergulho e o olho, que vê o grupo muito antes de ser vista. Um humano de Força 6 tira o Bloqueio dela; ela não tira o de ninguém. No chão é lenta (4 m por Tick); no ar faz 11 m por Tick em cruzeiro e 46 descendo em mergulho. Com 6 PV, Impacto 2 e Couraça nível 0 (o valor do nível fica para depois), um bom golpe a derruba."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Mountain",
+      "Sky",
+      "Plains"
+    ],
+    "clima": [
+      "Temperate",
+      "Cold"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "variantes": [],
+  "ameacaLegada": 1,
+  "v3": {
+    "pv": 6,
+    "esquiva": 14,
+    "bloqueio": 8,
+    "defesa": 14,
+    "defesaMental": 8,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 2,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 48.35,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 2,
+        "corrida": 4
+      },
+      "voo": {
+        "batalha": 5,
+        "cruzeiro": 11,
+        "mergulho": 46
+      }
+    }
+  },
+  "notasObservacao": [
+    "`forca`: 2, fixada em `valores.mjs`; provisória por feito (3,6 kg em voo, ADW, sem método). Se a fórmula do peso erguido mudar, a Força se refaz (D-162, D-167)",
+    "`pesoErguido`: 51,13 kg pela fórmula nova (decisões 14 e 16), [provisório]. Fica muito acima do que ela leva em voo (3,6 kg): o peso erguido é o que arrasta ou vira no chão, e a Musculatura 3 o puxa para cima. Conferir quando a fórmula fechar (D-174)",
+    "`alvo`: Médio pela silhueta de asas abertas da `tamanho-fichas-v2` (0,84 m², 86% acima do corte de 0,45). Fica perto do corte de baixo; uma envergadura menor (macho, subespécie japonica) a põe Pequena (D-174)",
+    "`equilibrio`: 1, nova, provisória: pousa em penhasco e árvore alta, sem dado de pouso difícil (D-174)",
+    "`empatia`: 0, provisória: não é espécie social, e o casal não basta para ler o outro (D-174)",
+    "`especialidades`: Briga (mergulho sobre a presa) 1, provisória: o hábito de caça do alto (D-174)",
+    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): cruzeiro de 41 km/h medido por GPS circulando (Garstang et al. 2022) [medido]; voo médio de 45 a 51 km/h (ADW, sem método); populações do Alasca e do Canadá migram para o sul no outono, sem distância nem duração (ADW). Faltam a distância de voo por dia, a da migração e as horas de voo por dia [sem dado].",
+    "`dimensoes.largura`: 0,30 m, estimada pelo Arquiteto, sem fonte",
+    "`id antigo`: nenhum. `mon-aguia-gigante` é outra criatura e não foi tratada como variante (D-174)"
+  ]
+}

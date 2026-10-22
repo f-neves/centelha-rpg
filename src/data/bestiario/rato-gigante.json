@@ -1,0 +1,244 @@
+{
+  "ordem": 50,
+  "id": "rato-gigante",
+  "idAntigo": "mon-rato-gigante",
+  "nome": "Rato gigante",
+  "nomeIngles": "Giant Rat",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Pequeno",
+  "descricao": "Um rato do tamanho de um cão pequeno, que vive em bando nos esgotos e porões; morde e foge pela fresta, e a mordida suja carrega doença.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/rato-gigante_criatura.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "1,4 m de comprimento, 0,28 m de altura",
+    "peso": "12,38 kg",
+    "comprimento": 1.4,
+    "largura": 0.21,
+    "altura": 0.28
+  },
+  "locomocao": {
+    "terra": 7
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 7,
+    "arranque": 9,
+    "corrida": 15
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 2,
+    "destreza": 3,
+    "vigor": 5,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 2,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 3,
+    "atletismo": 2,
+    "furtividade": 2,
+    "integridade": 1,
+    "prontidao": 2,
+    "resistencia": 2,
+    "empatia": 1,
+    "sobrevivencia": 4
+  },
+  "skills2": {
+    "equilibrio": 2,
+    "escalada": 2,
+    "natacao": 2,
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "audição",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "resistencia",
+      "foco": "doenças",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "sobre quem dorme",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 1
+  },
+  "willpower": 3,
+  "aparencia": 5,
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "forca": false,
+      "classe": "leve"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "morder e fugir",
+      "descricao": "morde e foge pela fresta.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "em bando",
+      "descricao": "em grupo com outros ratos, cerca a presa; o flanco (−2 na Defesa do alvo) e a Pressão do livro dão o ganho do bando.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "fuga pelas frestas",
+      "descricao": "foge por buraco e esgoto onde quase nada o segue; o tamanho do bônus fica com o Mestre.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "faro: Prontidão (faro) +2; audição: Prontidão (audição) +2 (Especialidades naturais, as do rato). · vibração: percebe vibrações mínimas. Texto. · visão: fraca (a do rato). Texto."
+    }
+  ],
+  "doencas": [
+    {
+      "nome": "Doença no jogo",
+      "texto": "Leptospirose · Virulência 10 · dia · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Vive em bandos oportunistas, ataca em grupo quando encurralado e foge à primeira chance; morde e some, confiando em número e velocidade. Social: colônia."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Infesta esgotos, porões e depósitos de grão, tanto nas grandes cidades de Calin quanto nos entrepostos costeiros de Mére."
+    },
+    {
+      "titulo": "Ecologia",
+      "texto": "Prolifera onde há lixo e comida fácil; sua mordida suja carrega doença, o que faz dele mais temido pela praga que espalha do que pela força bruta."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Doença no jogo: Leptospirose · Virulência 10 · dia · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Um rato do tamanho de um cão médio, que morde a 3,5 e corre a 55 km/h pela velocidade congelada. 30 PV e Absorção de Impacto 5 (Vigor 5, 1 acima do rato). Contra um humano Médio, o Pequeno ganha +3 no acerto corpo a corpo, e quem atira nele leva −3. Força 2: atacante de Força 6 ou mais tira o Bloqueio dele (o dobro e ao menos 4 a mais). Ergue 72 kg: arrasta uma pessoa caída."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Urban",
+      "Underground",
+      "Swamp"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 2, Atletismo 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Rato Gigante",
+    "cr": "1/3",
+    "tipo": "animal Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 10,
+      "des": 17,
+      "con": 13,
+      "int": 2,
+      "sab": 13,
+      "car": 4
+    },
+    "pericias": [
+      "Furtividade 2",
+      "Atletismo 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado",
+    "nota": "Corrigido em 29/09/2026 (B14 fase 4): os valores gravados antes (For 2, Des 15, Con 11) eram do rato comum (Bestiary 1); o Rato Gigante de porte Pequeno é o Dire Rat (For 10, Des 17, Con 13), CR 1/3."
+  },
+  "variantes": [],
+  "ameacaLegada": 1,
+  "v3": {
+    "pv": 30,
+    "esquiva": 12,
+    "bloqueio": 6,
+    "defesa": 12,
+    "defesaMental": 6,
+    "defesaSocial": 10,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 71.96,
+    "carga": {
+      "leve": 1.65,
+      "media": 3.29,
+      "pesada": 4.94,
+      "maxima": 6.59
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 7,
+        "arranque": 9,
+        "corrida": 15
+      }
+    }
+  },
+  "notasObservacao": [
+    "`gigante`: gigante da D-105 escalado da ratazana típica (0,2887 kg e 0,40 m com a cauda) pelo cubo, com 1,4 m com a cauda: fator 3,5, 12,38 kg; era 0,9 m e 3,29 kg (fator 2,25), o tamanho do site. Todas as medidas são extrapolação (D-105)",
+    "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; o 0,9 m do site dava Miúdo, um porte só acima do rato (Minúsculo), e o 1,4 m dá Pequeno, a 23% do corte do Miúdo, perto da v3 (1,37 m) e abaixo do rato atroz (1,62 m, 20 kg) (D-174)",
+    "`dimensoes`: a largura vem de estimativa do Arquiteto para o rato (D-105, D-147, D-174)",
+    "`area`: 0,1475 m² de lado (a da v3 × (1,4 ÷ 1,37)²), contra 0,20 da ficha de hoje; o Alvo volta a Pequeno (decisões 7 e 25)",
+    "`forca`: 2 pelo item 8 da `tamanho-decisoes-5.md` (era 0); a mordida escalada do rato (cerca de 159 N) é extrapolação (D-158, D-169, D-176)",
+    "`vigor`: 5, revisto na oitava rodada pelo corpo e pela massa, e fica: +1 sobre o animal de base (rato, Vigor 4), o mínimo da D-176; corpo de roedor duro de 12,38 kg, ao lado do rato-atroz (20 kg, 5) (D-174, D-176)",
+    "`velocidade`: congelada (decisão 23); 55 km/h contra 9,7 km/h do rato real, +467% (D-170)",
+    "`pesoErguido` e `carga`: provisórios (decisões 14 e 16); a carga é só registro, o rato não leva carga (D-162, D-169)",
+    "`empatia`: 1 pela colônia hierárquica do rato; nenhum dado de leitura do humano (D-174)",
+    "`furtividade`: 2, e não o 3 de que o levantamento o dá como candidato; a mordida em quem dorme vai na Especialidade (sobre quem dorme) 1, que no gigante é extrapolação (D-174)",
+    "`natacao` e `escalada`: 2 cada, pelas do rato, sem número (D-174)",
+    "`couraca`: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): sem dado do gigante. Do rato, [comparação]: forrageia de 30 a 150 m do ninho toda noite (UC IPM); em esteira de laboratório chega à exaustão a 1,0 a 1,1 km/h (Dellavechia-De-Carvalho 2025, teste aeróbico).",
+    "`resistencia`: 2 e Resistência (doenças) +2, os dois pelo rato, [comparação] (D-174)",
+    "fonte: a largura do rato de base (0,06 m), que a escala multiplica, continua só por estimativa do Arquiteto (D-174)"
+  ]
+}

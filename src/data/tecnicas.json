@@ -2940,7 +2940,7 @@
       "aperto-esmagador"
     ],
     "aliases": [],
-    "texto": "agarra e esmaga criaturas de qualquer porte; nada escapa.",
+    "texto": "agarra e esmaga criaturas de qualquer tamanho; nada escapa.",
     "pendente": false,
     "nivel": 6,
     "efeito": "tamanho"

@@ -1,0 +1,198 @@
+{
+  "ordem": 301,
+  "id": "enxame-de-vespas",
+  "idAntigo": "mon-wasp-swarm",
+  "nome": "Enxame de vespas",
+  "nomeIngles": "Wasp Swarm",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Minúsculo",
+  "descricao": "A parte da colônia que sai na defesa do ninho e persegue quem mexeu nele; cada picada é pequena, mas são centenas.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/enxame-de-vespas_criatura.webp",
+  "porte": "Minúsculo",
+  "dimensoes": {
+    "medida": "0,015 m de comprimento, 0,005 m de altura",
+    "peso": "0,000084 kg",
+    "comprimento": 0.015,
+    "largura": 0.004,
+    "altura": 0.005,
+    "envergadura": 0.02
+  },
+  "locomocao": {
+    "voo": 5,
+    "terra": 1
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 3
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 0,
+    "destreza": 3,
+    "vigor": 2,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 3,
+    "atletismo": 2,
+    "prontidao": 3,
+    "resistencia": 2,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "à entrada do ninho",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 4,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Ferroada do enxame",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentidos",
+      "descricao": "nada com número achado. Marca o agressor: texto. O alarme à entrada do ninho é a Especialidade Prontidão (à entrada do ninho) 1."
+    }
+  ],
+  "enxame": [
+    {
+      "nome": "Enxame no jogo",
+      "texto": "300 vespas por quadrado · voa · quem fere: só ataque em área · armadura: ignora, menos a vedação fechada (véu e luva de apicultor) · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Fúria sem fim",
+      "texto": "Uma vez provocado, um enxame de vespas pode perder de vista a origem de sua raiva e seguir atacando qualquer novo alvo que encontrar, sem parar até ser disperso."
+    },
+    {
+      "titulo": "Zumbido da morte",
+      "texto": "Um zumbido grave e constante anuncia a aproximação de milhares de vespas furiosas antes que alguém as veja."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: colônia de 3 mil a 8 mil larvas por ninho; pico de 1 mil a 3 mil operárias nas vespas-comuns de clima temperado."
+    },
+    {
+      "titulo": "Enxame",
+      "texto": "300 vespas por quadrado · voa · quem fere: só ataque em área · armadura: ignora, menos a vedação fechada (véu e luva de apicultor) · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Cada quadrado cheio tem 24 PV (300 vespas), e o PV cai com elas: metade, 12 PV. Só ataque em área alcança a nuvem. Rápido no ar (10 m por Tick de cruzeiro), mas não esquiva nem apara. Quem está cercado leva o pulso a cada 5 Ticks, sem rolar acerto (1d6 + 3 pela Ameaça 3, provisório), e a armadura não protege, menos a vedação fechada de apicultor; o veneno das picadas já está no pulso. Dentro, só fugir sai sem teste: as vespas não ficam em cima, picam e voltam ao ar. Mente simples (Integridade 0): o que a mantém no ataque é a defesa do ninho. Não se esconde: o zumbido avisa. Quem é alérgico fica ao critério do Mestre."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Wasp Swarm",
+    "cr": "3",
+    "tipo": "praga Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 13,
+      "con": 10,
+      "int": "-",
+      "sab": 12,
+      "car": 9
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "voo 40: a nuvem de vespas não pousa"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 24,
+    "esquiva": 6,
+    "bloqueio": 6,
+    "defesa": 6,
+    "defesaMental": 6,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 2,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 0,
+    "deslocamento": {
+      "terra": {
+        "batalha": 1,
+        "arranque": 2,
+        "corrida": 3
+      },
+      "voo": {
+        "batalha": 5,
+        "cruzeiro": 10
+      }
+    }
+  },
+  "notasObservacao": [
+    "`anatomia`: artrópode alado, anatomia provisória (D-175)",
+    "`velocidade`: congelada (decisão 23). Voo de 37 km/h contra 20 km/h de fonte fraca sem método, +85%; Voo fica 0 porque só sobe (D-136, D-170)",
+    "`pesoErguido`: 0,00 kg pela fórmula provisória (decisões 14 e 16); carga \"não (enxame)\" (D-162, D-169)",
+    "`pv`: 24 por quadrado cheio (Etapa 2, 20/10/2026: o quadrado cheio conta como criatura Pequena, decisão de 20/10/2026; metade dos indivíduos, metade do PV); antes, 7 na Faixa 1 pela decisão 21 (5 + Vigor), o de um indivíduo.",
+    "`alvo`: Minúsculo de asas abertas e fechadas; o enxame usa o tamanho que apresenta no acerto (D-077, D-166)",
+    "`dimensoes`: altura (5 mm) e largura (4 mm) estimadas pela Bestiarista, sem fonte; a envergadura (2 cm) vem de fonte fraca. A largura de 4 mm arredonda para 0,00 no espaço (D-147, D-174)",
+    "`influencia`: de 2 para 1 pela diretriz 1, que trata a vespa como não social. A exibição de alarme é real e faz gente recuar pela picada (D-107); ver os desvios (D-174)",
+    "`resistencia`: 2 pelo levantamento; nenhum feito de frio, fome, veneno ou ferida (D-174)",
+    "`furtividade`: 0 pelo levantamento; o zumbido que entrega é texto da ficha de hoje, sem fonte (D-174)",
+    "`especialidade`: Prontidão (à entrada do ninho) 1, escolha minha pelo alarme descrito na Wikipédia; a pesquisa não diz quantas operárias defendem (D-174)",
+    "`couraca`: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "`veneno`: veneno sem id no catálogo (D-112)",
+    "fonte: a massa de 84 mg continua só pela Wikipédia (Steinmetz e Schmolz 2005 foi localizado, mas o número não foi conferido nele); a altura (5 mm) e a largura (4 mm) continuam só por estimativa (D-174)",
+    "fonte: a vida da operária de cerca de 2 semanas (Vigor 2) continua só pela Wikipédia, que cita Potter 1964 (D-174)"
+  ]
+}

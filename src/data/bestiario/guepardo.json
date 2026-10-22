@@ -1,0 +1,223 @@
+{
+  "ordem": 163,
+  "id": "guepardo",
+  "idAntigo": "mon-cheetah",
+  "nome": "Guepardo",
+  "nomeIngles": "Cheetah",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Médio",
+  "descricao": "Espreita de perto e dispara numa arrancada de poucos segundos; se não pega, desiste. Cede a presa a qualquer predador maior que chegue.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/guepardo_criatura.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "2,05 m de comprimento, 0,79 m de altura",
+    "peso": "58 kg",
+    "comprimento": 2.05,
+    "largura": 0.31,
+    "altura": 0.79
+  },
+  "locomocao": {
+    "terra": 9
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 9,
+    "arranque": 15,
+    "corrida": 26
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 3,
+    "destreza": 5,
+    "vigor": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 4,
+    "atletismo": 4,
+    "furtividade": 3,
+    "integridade": 1,
+    "prontidao": 3,
+    "resistencia": 3,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "escalada": 1,
+    "corrida": 6
+  },
+  "especialidades": [
+    {
+      "habilidade": "briga",
+      "foco": "derrubar a presa em corrida",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 1
+  },
+  "willpower": 3,
+  "aparencia": 7,
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    },
+    {
+      "nome": "Patada com o ergot",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "derrubar",
+      "descricao": "Patada com o ergot (a pata na perna da presa em corrida): e a Especialidade Briga (derrubar a presa em corrida) +1.",
+      "classe": "livro"
+    },
+    {
+      "nome": "agarrar",
+      "descricao": "Mordida (na garganta): Dano do agarrão: 2 × Força = 6.",
+      "classe": "livro"
+    },
+    {
+      "nome": "arrastar",
+      "descricao": "Mordida: leva a presa até o abrigo, até o Peso erguido.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "disparada",
+      "descricao": "uma vez por caça, a arrancada mais rápida de todas (a Corrida do Desloc.).",
+      "classe": "como luta"
+    },
+    {
+      "nome": "camuflagem no capim",
+      "descricao": "esconde-se no capim alto antes de atacar (Furtividade).",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão: texto, sem Especialidade. Vê a presa a 70 a 100 m e fêmeas se observam a até 2 km; acuidade sem número. · faro: passagens nasais grandes em comparação com outros felinos; sem Especialidade."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Predador veloz e mortal, capaz de se mover com uma rapidez incrível que lhe permite alcançar presas desavisadas a centenas de passos de distância. Social: solitário."
+    },
+    {
+      "titulo": "Caçada",
+      "texto": "Evita áreas de mata fechada e emaranhada, preferindo campos abertos, mas é mestre em se esconder entre o capim alto antes de atacar."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Ninguém a pé alcança um guepardo, e ele alcança qualquer um: corre 26 m por Tick e arranca a 15 (congelado). Pequeno, ele ganha +3 no corpo a corpo contra o humano Médio, e à distância quem atira nele leva −3; com Esquiva 18 (Destreza 5 e Esquiva 4 do autor), ele é difícil de tocar, e ele não apara (Bloqueio 0). Um humano de Força 7 tira o Bloqueio dele; ele não tira o de ninguém. A mordida e a patada são fracas (4, 5), e com 34 PV ele não aguenta luta longa; o real foge e cede a presa, e o Mestre decide quando ele desiste. Arrasta a presa de até cerca de 111 kg."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Cheetah",
+    "cr": "2",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 19,
+      "con": 15,
+      "int": 2,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 34,
+    "esquiva": 18,
+    "bloqueio": 10,
+    "defesa": 18,
+    "defesaMental": 7,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 110.74,
+    "carga": {
+      "leve": 5.3,
+      "media": 10.6,
+      "pesada": 15.9,
+      "maxima": 21.2
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 9,
+        "arranque": 15,
+        "corrida": 26
+      }
+    }
+  },
+  "notasObservacao": [
+    "`pesoErguido` e `carga`: 110,74 kg (em vigor na Etapa 2, 20/10/2026); antes: provisórios. A carga sai da conta (5,3 kg de Leve); o peso erguido sai do `calc.mjs` (88,57 kg), e era 48,77 kg pela D-162. Com o número novo, a presa de 20 a 60 kg arrastada até o abrigo (Hunter, Durant e Caro 2007) cabe (decisões 14 e 16)",
+    "`alvo`: 0,38 m², 15% abaixo do corte de 0,45 m² entre Pequeno e Médio; a decisão 7 o põe Pequeno. A borda da R2 de hoje (3,01) não vale mais (D-174)",
+    "`vigor`: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pelo corpo frágil (diversidade genética baixa, ADW), e não pelo fôlego curto, que fica na nota de pesquisa (jornada) (decisão 5 da quarta rodada, D-174)",
+    "couraca: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): velocidade máxima mantida só por 1 a 2 s; corrida média de 173 m (desvio de 116 m); deslocamento diário médio de 6.040 m (Wilson et al. 2013, 367 corridas de 5 guepardos com colar) **[medido]**. De 96 a 112 km/h por até cerca de 274 m (Smithsonian, sem método); o superaquecimento como causa da desistência está em disputa (ADW contra Biology Letters 2013).",
+    "`resistencia`: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2, o normal; o levantamento a aponta como candidata a 1 pelo fôlego curto, que a diretriz 2 tira da conta (D-174)",
+    "`musculatura`: 0, corpo de velocista; com Força 2 e Musculatura 0 o peso erguido fica em um terço do típico de 53 kg (277 kg) (D-174)",
+    "`atributos.compostura`: desce a 1 por não ser espécie social (diretriz 1); a Defesa Social cai de 8 para 6 e a Energia de 5 para 4 (D-174)",
+    "`empatia`: 0; a coalizão de irmãos (ADW) não traz como agem juntos; provisória (D-174)",
+    "`escalada`: 1, nova, pelo \"de vez em quando\" da ADW, sem número (D-174)",
+    "`velocidade`: congelada (decisão 23): 95 km/h contra 93 medidos (Wilson et al. 2013), +2%. A conta é a do porte Médio de 12/10/2026, e o Alvo agora é Pequeno; não se refaz (D-170)",
+    "`variantes.cativeiro`: 33 kg cai na Faixa 2 pelo corte novo (decisão 22), com 24 PV (D-174)",
+    "`dimensoes.largura`: 0,30 m, estimada pelo Arquiteto, sem fonte; o comprimento total de 1,99 m soma o corpo e o ponto médio da cauda (D-174)"
+  ]
+}

@@ -51,7 +51,7 @@ const PORTES = Object.keys(PORTE_LBL);
           <label class="ed-f ed-wide">Papel em combate
             <select data-ed="tipo">{TIPOS_INIMIGO.map((t) => <option value={t}>{t}</option>)}</select>
           </label>
-          <label class="ed-f ed-wide">Porte
+          <label class="ed-f ed-wide">Tamanho
             <select data-ed="porte">{PORTES.map((p) => <option value={p}>{PORTE_LBL[p]}</option>)}</select>
           </label>
           <label class="ed-f">Ameaça <input type="number" data-ed="ameaca" min="1" max="6" /></label>
@@ -619,7 +619,7 @@ const PORTES = Object.keys(PORTE_LBL);
       }
       if ((e.target as HTMLElement).closest('#besta-nova')) {
         abrir({
-          id: 'mon-nova-' + Date.now().toString(36),
+          id: 'nova-' + Date.now().toString(36),
           nome: '', conceito: '', ameaca: 1, centelha: 0, porte: 'medio', tipo: 'soldado',
           atributos: Object.fromEntries(ATRIBS.map((k) => [k, 2])),
           pericias: {}, vontade: 4, integridade: 2, prontidao: 1,

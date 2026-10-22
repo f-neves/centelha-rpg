@@ -1,0 +1,239 @@
+{
+  "ordem": 303,
+  "id": "carcaju-atroz",
+  "idAntigo": "mon-dire-wolverine",
+  "nome": "Carcaju atroz",
+  "nomeIngles": "Dire Wolverine",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "O carcaju no tamanho de um urso grande. O motivo de existir fica na descrição, não na mecânica.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": null,
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,15 m de comprimento, 1,26 m de altura",
+    "peso": "405 kg: Faixa 4 (até 1,8 t)",
+    "comprimento": 3.15,
+    "largura": 0.75,
+    "altura": 1.26
+  },
+  "locomocao": {
+    "terra": 8,
+    "escalada": 1
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 8,
+    "arranque": 13,
+    "corrida": 18
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 7,
+    "destreza": 3,
+    "vigor": 6,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 4,
+    "bloqueio": 5,
+    "esquiva": 5,
+    "atletismo": 4,
+    "furtividade": 2,
+    "integridade": 4,
+    "prontidao": 3,
+    "resistencia": 4,
+    "sobrevivencia": 3
+  },
+  "skills2": {
+    "escalada": 1,
+    "musculatura": 4
+  },
+  "especialidades": [
+    {
+      "habilidade": "resistencia",
+      "foco": "frio",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "presa atolada na neve",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "sobrevivencia",
+      "foco": "esconder comida",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 4,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Patada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "perseguição longa",
+      "descricao": "segue a presa por quilômetros na neve até ela cansar.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "fúria ao ferimento",
+      "descricao": "ferido, entra em fúria na ação seguinte, mais forte e mais resistente, e descuida da própria defesa; não sai da fúria por vontade própria.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "presença aterradora",
+      "descricao": "do tamanho de um urso, a simples aproximação dele assusta presas e rivais.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "escalada",
+      "descricao": "sobe barranco e rocha íngreme com facilidade.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "faro: Prontidão (faro) +2, o do carcaju."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Fúria territorial",
+      "texto": "Ainda mais territorial que seus parentes menores, não hesita em atacar até vilarejos inteiros construídos em suas terras."
+    },
+    {
+      "titulo": "Gigante das terras frias",
+      "texto": "Passa de 3 m de comprimento e de 400 kg, um pesadelo peludo das florestas geladas."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Força 7: quem tem Força 3 ou menos não apara a patada. Grande: o humano Médio ganha +3 no corpo a corpo contra ele. Não recua (Defesa Mental 10). 54 PV, Impacto 6 e Couraça nível 1 (quanto o nível vale fica para depois); o que o segura é o Vigor. 10,5 de média por golpe (1d6 + Força 7). Arrasta ou vira cerca de 1,04 t. Ficha provisória: revista quando chegar a vez das versões atrozes."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Mountain"
+    ],
+    "clima": [
+      "Cold"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Wolverine",
+    "cr": "4",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 17,
+      "con": 17,
+      "int": 2,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 54,
+    "esquiva": 16,
+    "bloqueio": 16,
+    "defesa": 16,
+    "defesaMental": 10,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 6,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 1037.36,
+    "carga": {
+      "leve": 40.5,
+      "media": 81,
+      "pesada": 121.5,
+      "maxima": 162
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 8,
+        "arranque": 13,
+        "corrida": 18
+      }
+    }
+  },
+  "notasObservacao": [
+    "ficha: provisória; revista quando chegar a vez das versões atrozes (D-177)",
+    "**contra o registro:** a D-105 lista 16 gigantes, e o carcaju atroz não está entre eles; a D-098 e a D-106 g dizem que o Carcaju Atroz fica \"como 'versão atroz', para depois\". Decisão provisória, a confirmar com o autor (D-098, D-106, D-174)",
+    "gigante escalado: todo número de corpo é o carcaju × 3 (massa × 27), **[extrapolação]**",
+    "`forca`: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8, era 9, pela comparação com os ursos e o crocodilo de massa parecida, sem feito; provisória (D-169)",
+    "`vigor`: 6 (em vigor na Etapa 2, 20/10/2026); antes: 5, um acima do carcaju (D-176)",
+    "`esquiva`: 1 em vez dos 2 do carcaju, pelo corpo pesado",
+    "`escalada`: 1, nova, abaixo do carcaju (2) pelo corpo de 400 kg; **[extrapolação]**",
+    "`social`: Influência e Compostura descem a 1 pela diretriz 1 (solitário); a Defesa Social cai de 10 para 8",
+    "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "`resistencia`: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2, sem a corrida (diretriz 2); o levantamento dava 4 só pelas perseguições do carcaju",
+    "jornada (nota de pesquisa, não é regra): **[sem dado]**, não há animal real. **[comparação]** pelo carcaju: perseguiu caribus de 4 a 62 km na neve (Magoun 2018); até 40 milhas (64 km) num dia (ADF&G).",
+    "`pesoErguido` e `carga`: 1.037,36 kg (em vigor na Etapa 2, 20/10/2026); antes: provisórios. A carga sai da massa e da faixa (40,5 kg de Leve); o peso erguido sai de `calc.mjs` (1.262,96 kg), e era 687,48 kg pela fórmula da D-162 (decisões 14 e 16)",
+    "`velocidade`: congelada (decisão 23); 63 km/h, sem real para conferir"
+  ]
+}

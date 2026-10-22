@@ -39,7 +39,7 @@ const { defesaMental } = await carregar('src/lib/calc.ts');
 // Uma criatura mínima, SEM `skills.integridade` (o caso que a Reforma escancarou: nenhuma das
 // 309 fichas do bestiário tem esse campo hoje, achado da Fase 1).
 const semIntegridade = {
-  id: 'mon-teste-sem-integridade', nome: 'Teste', papel: 'soldado', porteSlug: 'medio',
+  id: 'teste-sem-integridade', nome: 'Teste', papel: 'soldado', porteSlug: 'medio',
   centelha: 3, attrs: { raciocinio: 4, inteligencia: 3 }, skills: {}, willpower: 6,
 };
 console.log('\n· sem Integridade na ficha: o card e o modal caem no MESMO default (0)');
@@ -57,7 +57,7 @@ console.log('\n· sem Integridade na ficha: o card e o modal caem no MESMO defau
 // A mesma prova, agora com Integridade REAL na ficha (o caminho que não estava quebrado):
 // o round-trip (stat -> periciasDe) tem de devolver o mesmo número que a ficha fonte tem.
 const comIntegridade = {
-  ...semIntegridade, id: 'mon-teste-com-integridade', skills: { integridade: 5 },
+  ...semIntegridade, id: 'teste-com-integridade', skills: { integridade: 5 },
 };
 console.log('\n· com Integridade 5 na ficha: o round-trip devolve 5, não outro número');
 {

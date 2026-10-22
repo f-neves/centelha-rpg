@@ -1,0 +1,242 @@
+{
+  "ordem": 38,
+  "id": "leao",
+  "idAntigo": "mon-leao",
+  "nome": "Leão",
+  "nomeIngles": "Lion",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Em geral foge de quem está a pé, mas há antropofagia ocasional: os leões de Tsavo comeram cerca de 35 pessoas.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": null,
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "3 m de comprimento, 1,43 m de altura",
+    "peso": "173 kg",
+    "comprimento": 3,
+    "largura": 0.75,
+    "altura": 1.43
+  },
+  "locomocao": {
+    "terra": 7
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 7,
+    "arranque": 12,
+    "corrida": 16
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 6,
+    "destreza": 4,
+    "vigor": 5,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 3,
+    "influencia": 3,
+    "perspicacia": 2,
+    "compostura": 2
+  },
+  "skills": {
+    "briga": 4,
+    "bloqueio": 2,
+    "esquiva": 3,
+    "atletismo": 2,
+    "furtividade": 3,
+    "integridade": 3,
+    "prontidao": 2,
+    "resistencia": 4,
+    "empatia": 1,
+    "sobrevivencia": 3
+  },
+  "skills2": {
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "resistencia",
+      "foco": "doenças",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "segurar pela garganta",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 3,
+  "aparencia": 7,
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Patada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "agarrar",
+      "descricao": "mordida: segura a garganta por até 13 minutos. Dano do agarrão: 2 × Força = 12 por manutenção.",
+      "classe": "livro"
+    },
+    {
+      "nome": "derrubar",
+      "descricao": "patada",
+      "classe": "livro"
+    },
+    {
+      "nome": "bote",
+      "descricao": "Mordida: Investida.",
+      "classe": "livro"
+    },
+    {
+      "nome": "emboscar",
+      "descricao": "sai da Furtividade; o alvo surpreso tem a Defesa zerada (Combate, Quando a Defesa zera).",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "Caça sobretudo à noite e de madrugada; visão noturna sem número. Nada que passe do humano com número. · faro: (olfato sem número)."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Vive em bando liderado por fêmeas caçadoras, enquanto o macho protege o território e disputa domínio com rivais de fora. Social: bando (2 a 40, média 13; coalizões de machos tomam bandos)."
+    },
+    {
+      "titulo": "Sociedade",
+      "texto": "Divide o cuidado dos filhotes entre as fêmeas do bando, um arranjo social raro entre os grandes felinos."
+    },
+    {
+      "titulo": "Hábitat",
+      "texto": "Prefere savanas e planícies abertas, típicas das terras mais quentes de Mére."
+    },
+    {
+      "titulo": "No mundo de Centelha",
+      "texto": "Nas planícies de Mére é símbolo de realeza e coragem para diversos povos locais, caçado tanto por respeito quanto como prova de valentia."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Força 6: quem tem Força 2 ou menos não apara a mordida, com a Força 6 do autor (com a Força 8 da v3 eram os de Força 4 ou menos). Médio como o humano, então ninguém ganha o bônus de acerto pelo Alvo. Com 40 PV, aguenta mais que um humano de Vigor 3 (34). A mordida dá 9,5 de média, e o agarrão 12 por manutenção."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF B1",
+    "nome": "Leão",
+    "cr": "3",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 17,
+      "con": 15,
+      "int": 2,
+      "sab": 15,
+      "car": 10
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Prontidão 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 3,
+  "proezaFutura": [
+    {
+      "caminho": "sangue-fervente"
+    },
+    {
+      "caminho": "sombra"
+    }
+  ],
+  "v3": {
+    "pv": 40,
+    "esquiva": 14,
+    "bloqueio": 12,
+    "defesa": 14,
+    "defesaMental": 9,
+    "defesaSocial": 10,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 636.37,
+    "carga": {
+      "leve": 17.3,
+      "media": 34.6,
+      "pesada": 51.9,
+      "maxima": 69.2
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 7,
+        "arranque": 12,
+        "corrida": 16
+      }
+    }
+  },
+  "notasObservacao": [
+    "alvo: 0,98 m² de lado pela área da `tamanho-fichas-v2.md` escalada para o típico de 157,5 kg (1,10 m² no macho), 33% abaixo do corte de 1,45 m² do Grande. A posição de 3,93 \"na borda\" da R2 de hoje não vale mais; pela área, o leão fica Médio com folga (decisões 7 e 25, D-174).",
+    "pesoErguido: 636,37 kg (em vigor na Etapa 2, 20/10/2026); antes: 742,48 kg pela fórmula nova (`calc6.mjs`, com 157,5 kg), provisório; nenhum peso medido de presa arrastada (`leao-carga.md`) (D-169, D-174).",
+    "carga: 15,75 kg de Leve pela conta da D-122, com 157,5 kg (sem carga medida), provisória; sai da massa e não muda com a Força (D-169, D-172).",
+    "velocidade: congelada (decisão 23). Os 57 km/h ficam dentro da arrancada de Schaller (48 a 59) e 23% abaixo do pico por GPS (74,1 km/h, um animal); não corrigido (D-170).",
+    "especialidadesNaturais: Resistência (doenças) +2 fixada em `valores.mjs`; o levantamento propunha 1. A FIV é um vírus só, e o 2 lê nela a resistência a doença em geral; provisório (D-174).",
+    "empatia: 1 pela caça em grupo e pela coalizão, sem fonte de leitura do humano; provisória (D-174).",
+    "equilibrio, escalada e natacao: 0 por falta de dado na pesquisa, e não por fato contrário; provisórios (D-174).",
+    "dimensoes.largura: 0,50 m estimada pelo Arquiteto, sem fonte; não decide a área (D-147, D-174).",
+    "dimensoes.altura: é a cernelha, e não o alto da cabeça (D-147, D-174).",
+    "variantes.leoa: o Alvo sai Médio (126 kg, 0,84 m² pela área do típico escalada), com a largura estimada; a conferir quando houver largura medida (D-174).",
+    "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): sem dado de distância por dia nem de tempo de perseguição. O que há: arrancada curta de 48 a 59 km/h, \"precisa chegar perto\" (Schaller 1972, via Wikipédia) **[medido]**; dorme até 20 horas por dia (ADW).",
+    "variantes.machoGrande: o macho de 272 kg muda de faixa (4, PV 46), mas sem dimensões do recordista o Alvo fica [sem dado] (D-174)."
+  ]
+}

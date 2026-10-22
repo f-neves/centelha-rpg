@@ -1,0 +1,174 @@
+{
+  "id": "tigre-dentes-de-sabre",
+  "nome": "Tigre-dentes-de-sabre",
+  "nomeIngles": "Smilodon",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Médio",
+  "descricao": "Felino de emboscada, de caninos longos como facas. Agarra a presa grande com os antebraços e só então crava os dentes no pescoço.",
+  "tags": [],
+  "imagem": "bestiario/tigre-dentes-de-sabre_criatura.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "2,27 m de comprimento, 1,24 m de altura",
+    "peso": "320 kg",
+    "comprimento": 2.27,
+    "largura": 0.62,
+    "altura": 1.24
+  },
+  "locomocao": {
+    "terra": 6
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 6,
+    "arranque": 11,
+    "corrida": 14
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 8,
+    "destreza": 3,
+    "vigor": 5,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 4,
+    "bloqueio": 2,
+    "esquiva": 2,
+    "furtividade": 3,
+    "integridade": 3,
+    "prontidao": 2,
+    "resistencia": 4,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "musculatura": 4
+  },
+  "especialidades": [
+    {
+      "habilidade": "briga",
+      "foco": "segurar com os antebraços",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Mordida de sabre",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Patada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "agarrar",
+      "descricao": "patada (os antebraços seguram a presa): Dano do agarrão: 2 × Força = 16 por manutenção. Pela leitura dos paleontólogos, o golpe dos caninos vem depois que a presa está presa.",
+      "classe": "livro"
+    },
+    {
+      "nome": "derrubar",
+      "descricao": "patada",
+      "classe": "livro"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário: a vida em grupo está em debate (PMC2657756; Science News; o Florida Museum não conclui)."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Força 8: quem tem Força 4 ou menos não apara a mordida. Médio como o humano, então ninguém ganha o bônus de acerto pelo Alvo. Do tamanho do leão, mas mais pesado: 50 PV contra 40, Impacto 5 e Couraça nível 1, como o leão (quanto ela vale fica para depois), e corre um pouco menos (14 contra 16 m por Tick). A mordida dá 11,5 de média e o agarrão 16; arrasta ou vira cerca de 1,26 t."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains",
+      "Forest"
+    ],
+    "clima": [
+      "Tropical",
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "variantes": [],
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 50,
+    "esquiva": 10,
+    "bloqueio": 10,
+    "defesa": 10,
+    "defesaMental": 9,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 1260.15,
+    "carga": {
+      "leve": 32,
+      "media": 64,
+      "pesada": 96,
+      "maxima": 128
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 6,
+        "arranque": 11,
+        "corrida": 14
+      }
+    }
+  },
+  "notasObservacao": [
+    "alvo: 1,07 m² de lado pela área da `tamanho-fichas-v2.md`, 26% abaixo do corte de 1,45 m² do Grande. A borda da R2 de hoje (3,97) não vale mais; o comprimento extrapolado do S. fatalis e a largura estimada pesam menos na silhueta (decisões 7 e 25, D-174).",
+    "forca: 8 ◆ (era 9), topo das âncoras, igual ao tigre; a força do braço vai na Musculatura 4 (D-158, D-174).",
+    "vigor: 5 ◆ (era 4), pelas fraturas curadas e pela doença óssea aguentada; as duas por resumo e citação, sem o artigo aberto; provisório (D-174).",
+    "musculatura: 4 ◆ (era 0), pela anatomia dos membros anteriores; extinto, nenhum peso medido; provisória (D-174).",
+    "pesoErguido: 1.260,15 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.255,82 kg pela fórmula nova (`calc.mjs`), provisório; era 666 kg pela D-162 (decisões 14 e 16).",
+    "carga: 29 kg de Leve pela conta da D-122 (extinto, sem carga medida), provisória; sai da massa e não muda com a Força (D-169, D-172).",
+    "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "social: Influência, Perspicácia e Compostura em 1 pelo solitário; se a vida em grupo de La Brea for aceita, a Perspicácia é a primeira a subir (para 2). Ver \"desvios\" no resumo do lote (D-174).",
+    "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 **[extrapolação]**, o normal da espécie; extinto (D-174).",
+    "empatia, equilibrio, escalada e natacao: 0 por falta de dado (extinto), e não por fato contrário; provisórios (D-174).",
+    "velocidade: congelada (decisão 23). Sem número real do animal; os 50 km/h ficam dentro da arrancada do leão (Schaller 1972) (D-170).",
+    "dimensoes.largura: 0,60 m estimada pelo Arquiteto, sem fonte; não decide a área (D-147, D-174).",
+    "dimensoes.comprimento: o total (2,20) e o sem cauda (2,00) são extrapolação do S. fatalis na escala do ombro (D-147, D-174)."
+  ]
+}

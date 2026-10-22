@@ -80,7 +80,7 @@ O nível 2 (Desperto) é o meio-degrau entre o Tocado (1) e o Herói (3): os val
 | **Carga** | × peso que ergue | ×2 | ×3 | ×4 | ×10 | ×30 | ×100 |
 | **Salto** | × distância do salto | ×2 | ×3 | ×4 | ×8 | ×20 | ×50 |
 | **Velocidade** | × deslocamento | ×1,5 | ×1,75 | ×2 | ×3 | ×5 | ×10 |
-| **Tamanho** | porte que afeta | igual | igual | +1 | +2 | +3 | qualquer |
+| **Tamanho** | tamanho que afeta | igual | igual | +1 | +2 | +3 | qualquer |
 
 A **maioria** das Técnicas, porém, não tem número nenhum: são **estados e capacidades** (ver no escuro, ficar invisível, imune a veneno, voar, controlar uma besta). O nível dessas é a régua de quão absoluto o efeito é: em disputa, só cede a quem traz poder efetivamente maior. Alcance, área, número de alvos e duração são **parâmetros** que uma Técnica pode esticar por cima do efeito principal, na mesma lógica do improviso do Arcano.
 

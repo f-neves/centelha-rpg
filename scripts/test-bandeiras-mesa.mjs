@@ -18,10 +18,10 @@
 // modo principal) contra três criaturas REAIS do bestiário, cada uma com o
 // golpe já agendado pro Tick 2 (como a cena `caido` já faz):
 //
-//   a0 → b0 · mon-aguia-gigante, Grande,  resistPerf 0 · porte BÔNUS (+3) · gate ABRE
-//   a1 → b1 · mon-dog,           Pequeno, resistPerf 0 · porte PENALIDADE (−3)
+//   a0 → b0 · aguia-gigante, Grande,  resistPerf 0 · porte BÔNUS (+3) · gate ABRE
+//   a1 → b1 · cachorro,           Pequeno, resistPerf 0 · porte ZERO (de perto o maior não perde, D-077)
 //   a2 → b2 · guarda-da-cidade,  Médio,   resistPerf 1, Absorção Perf. só 2 ·
-//            gate RESVALA (Perf. 0 < 1) — NÃO usa mon-aboleth (Absorção 13):
+//            gate RESVALA (Perf. 0 < 1) — NÃO usa aboleth (Absorção 13):
 //            contra ele a Vida também não desceria com o gate desligado, e o
 //            teste provaria a Absorção, não o gate (achado no ensaio desta
 //            rodada, ver o comentário da cena em mesa-mock.mjs)
@@ -85,8 +85,9 @@ try {
   await p.waitForFunction(() => window.__ESPELHO, { timeout: 20000 });
   ok(!erros.length, `a mesa rodou sem erro de página${erros.length ? `: ${erros[0]}` : ''}`);
 
+  let poolSemPorte = ''; // o pool do a0 sem o " +3", que é o que o a1 tem de mostrar
   // -------------------------------------------------- 1 · porte, alvo MAIOR
-  console.log('\n· a0 ataca b0 (mon-aguia-gigante, Grande) — porte tem de somar');
+  console.log('\n· a0 ataca b0 (aguia-gigante, Grande) — porte tem de somar');
   {
     const f = await abrirEFolhear(p, 'a0', 2);
     ok(!!f, 'a folha abriu contra o alvo agendado');
@@ -95,6 +96,7 @@ try {
     // entram nestas fichas novas, e `ajAtq.dados` é zero: nada mais some
     // depois dele). "+3" e não "3": o sinal É o que se está conferindo.
     ok(/\s\+3$/.test((f?.pool || '').trim()), `o pool termina em " +3" (bônus de alvo maior): "${f?.pool}"`);
+    poolSemPorte = (f?.pool || '').trim().replace(/\s\+3$/, '');
     const antes = await p.evaluate(() => window.__ESPELHO.pvDe('b0'));
     await decidir(p, 'al-sim');
     const depois = await p.evaluate(() => window.__ESPELHO.pvDe('b0'));
@@ -103,12 +105,15 @@ try {
   }
 
   // -------------------------------------------------- 2 · porte, alvo MENOR
-  console.log('\n· a1 ataca b1 (mon-dog, Pequeno) — porte tem de subtrair');
+  console.log('\n· a1 ataca b1 (cachorro, Pequeno) de perto: porte zero (D-077, no Grid desde a D-179)');
   {
     const f = await abrirEFolhear(p, 'a1', 2);
     ok(!!f, 'a folha abriu contra o alvo agendado');
     ok(/b1/.test(f?.titulo || ''), `a folha é contra b1: "${f?.titulo}"`);
-    ok(/\s−3$/.test((f?.pool || '').trim()), `o pool termina em " −3" (penalidade de alvo menor): "${f?.pool}"`);
+    // O mesmo PC com a mesma Adaga do a0: o pool tem de ser o dele SEM o " +3"
+    // do porte, e não com um "−3" nem com outro token no lugar.
+    ok(!!poolSemPorte && (f?.pool || '').trim() === poolSemPorte,
+      `o pool é o do a0 sem token de porte (o maior ataca o menor de perto sem penalidade): "${f?.pool}" contra "${poolSemPorte}"`);
     await decidir(p, 'al-nao'); // não importa pra este par: só o sinal do pool
   }
 
@@ -127,6 +132,28 @@ try {
     ok(antes === 999 && depois === 999,
       `a Vida de b2 NÃO desceu (Perf. 0 < resistPerf 1, o golpe resvala): ${antes} → ${depois}`);
   }
+
+  // ---------------------- 4 · o oitavo porte e a D-077 (etapa 8b, D-179)
+  //
+  // O VALOR EXATO, e não "tem um token": as duas quedas caladas do código dão
+  // número plausível (`porteDeRotulo` cai em 'medio' e o bônus vira 0). O
+  // "de longe" é um arco de mentira (`classe: 'distancia'`, mesa-mock.mjs).
+  const PORTE = [
+    ['a3', 'b3', 'Médio atira em Pequeno (cachorro)', ' −3'],
+    ['a4', 'b4', 'Médio atira em Minúscula (doninha)', ' −9'],
+    ['a5', 'b5', 'Médio ataca Minúscula (doninha) de perto', null],
+    ['a6', 'b6', 'Minúscula (doninha) ataca Médio de perto', ' +9'],
+    ['a7', 'b7', 'Miúdo (gato) ataca Colossal (tarrasque) de perto', ' +18'],
+  ];
+  for (const [a, b, rotulo, fim] of PORTE) {
+    console.log(`\n· ${a} → ${b}: ${rotulo}`);
+    const f = await abrirEFolhear(p, a, 2);
+    ok(!!f && new RegExp(b).test(f?.titulo || ''), `a folha abriu contra ${b}: "${f?.titulo}"`);
+    const pool = (f?.pool || '').trim();
+    if (fim) ok(pool === poolSemPorte + fim, `o pool é "${poolSemPorte}${fim}": "${pool}"`);
+    else ok(pool === poolSemPorte, `o pool é "${poolSemPorte}", sem token de porte: "${pool}"`);
+    await decidir(p, 'al-nao');
+  }
 } finally {
   await br.close();
   await dev.parar?.();
@@ -134,6 +161,6 @@ try {
 
 console.log(falhas.length
   ? `\n✘ bandeiras na mesa: ${falhas.length} falha(s)`
-  : '\n✓ Bandeiras na mesa OK · porte soma no alvo maior e subtrai no menor, e o gate zera a Vida, não só o registro');
+  : '\n✓ Bandeiras na mesa OK · porte soma no alvo maior e é zero no menor de perto, e o gate zera a Vida, não só o registro');
 if (!falhas.length) carimbar('test-bandeiras-mesa');
 process.exit(falhas.length ? 1 : 0);

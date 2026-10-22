@@ -49,8 +49,8 @@ const CLASSE_OVERRIDE = {
   // batia, e a Velocidade os punha em "media". Com a arma Punhos (leve) no catálogo (D-065),
   // o nome os jogaria em "leve", e a mesa mudaria. O Grid está congelado (D-054), então eles
   // ficam em "media" até a passada do Grid (N-grid-pendencias.md, N20).
-  'mon-iron-golem': 'media',
-  'mon-stone-golem': 'media',
+  'golem-de-ferro': 'media',
+  'golem-de-pedra': 'media',
 };
 function classeDoAtaque(id, nome, ticks) {
   if (CLASSE_OVERRIDE[id]) return CLASSE_OVERRIDE[id];
@@ -93,7 +93,7 @@ function build(c) {
     porte: f.porte || null,
     dimensoes: { medida: f.dimensoes?.medida || null, peso: f.dimensoes?.peso || null },
     ecologia: { tipo: e.tipo || null, terreno: e.terreno || [], clima: e.clima || [] },
-    imagem: f.imagem || null,
+    imagem: f.imagem || null, ...(f.imagem2 ? { imagem2: f.imagem2 } : {}),
     semImagem: !f.imagem,
     atributos: c.atributos,
     // AS PERICIAS, desde 04/09/2026. Quatro vem da conta invertida dos derivados
@@ -127,7 +127,7 @@ function build(c) {
         const d = f.deslocamentoDeclarado ?? (passo ? tres(passo) : DESL[c.id] ?? { batalha: 3, arranque: 5, corrida: 7 });
         return { batalha: d.batalha, arranque: d.arranque, corrida: d.corrida };
       })(),
-      ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
+      ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: a.classe ?? classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
     },
     habilidades: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao })),
     // Dois formatos de poder convivem desde o B14 fase 2 (ver criatura-schema.mjs,
@@ -156,11 +156,11 @@ function build(c) {
 const monsters = inim.map(build).sort((a, b) => a.nome.localeCompare(b.nome, 'pt'));
 
 // checagem de integridade: todas as fontes presentes por criatura
-const problemas = [];
+const problemas = Object.keys(CLASSE_OVERRIDE).filter((id) => !inim.some((c) => c.id === id)).map((id) => `CLASSE_OVERRIDE para id inexistente: ${id}`); // a guarda de chave órfã dos outros satélites (D-179): sem ela, a exceção de um id trocado sumiria calada
 for (const m of monsters) {
   if (!m.atributos) problemas.push(`${m.id}: sem atributos`);
   if (m.combate.pv == null) problemas.push(`${m.id}: sem combate.pv`);
-  if (!m.habilidades.length) problemas.push(`${m.id}: sem habilidades`);
+  if (!m.habilidades.length && !FICHA[m.id]?.v3) problemas.push(`${m.id}: sem habilidades`); // a ficha v3 pode não ter manobra nenhuma (o pteranodonte)
   if (!m.lore.length) problemas.push(`${m.id}: sem lore`);
   if (!m.dimensoes.medida) problemas.push(`${m.id}: sem dimensoes`);
   if (!m.ecologia.tipo) problemas.push(`${m.id}: sem ecologia.tipo`);
@@ -232,7 +232,7 @@ const resolverTecnicas = (ids, catalogo) => (ids || []).map((t) => {
 });
 
 const CAMPOS_MESA = [
-  'id', 'nome', 'nomeIngles', 'ameaca', 'centelha', 'categoria', 'porte', 'imagem',
+  'id', 'nome', 'nomeIngles', 'ameaca', 'centelha', 'categoria', 'porte', 'imagem', 'imagem2',
   'semImagem', 'tipo', 'atributos', 'virtudes', 'vontade', 'aparencia',
   // `pericias` ENTROU EM 04/09/2026, e a ausencia dela aqui foi um zero ambiguo
   // de verdade: o bloco `sentidos` do ResumoCombate le `MON[id].pericias`, `MON`

@@ -1,20 +1,20 @@
 {
- "mon-archon-cao": {
+ "arconte-cao": {
   "fraquezas": [
    "profano"
   ]
  },
- "mon-lantern-archon": {
+ "arconte-lanterna": {
   "fraquezas": [
    "profano"
   ]
  },
- "mon-trumpet-archon": {
+ "arconte-trombeta": {
   "fraquezas": [
    "profano"
   ]
  },
- "mon-assombracao-wraith": {
+ "assombracao": {
   "fraquezas": [
    "luz",
    "sagrado"
@@ -25,25 +25,31 @@
    "perfuracao"
   ]
  },
- "mon-babau": {
+ "babau": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-balor": {
+ "balor": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-barghest": {
+ "barghest": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-basidirond": {
+ "barghest-maior": {
+  "fraquezas": [
+   "luz",
+   "sagrado"
+  ]
+ },
+ "basidirond": {
   "fraquezas": [
    "fogo"
   ],
@@ -51,13 +57,13 @@
    "perfuracao"
   ]
  },
- "mon-bebilith": {
+ "bebilith": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-bodak": {
+ "bodak": {
   "fraquezas": [
    "luz",
    "sagrado"
@@ -66,35 +72,13 @@
    "perfuracao"
   ]
  },
- "mon-night-hag": {
+ "bruxa-noturna": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-skeletal-champion": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ],
-  "resistencias": [
-   "corte",
-   "perfuracao"
-  ]
- },
- "mon-hell-hound": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "mon-cauchemar": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "mon-iron-cobra": {
+ "buscador": {
   "fraquezas": [
    "raio"
   ],
@@ -104,65 +88,109 @@
    "perfuracao"
   ]
  },
- "mon-deva-astral": {
-  "fraquezas": [
-   "profano"
-  ]
- },
- "mon-diabo-barbado": {
+ "campeao-esqueletico": {
   "fraquezas": [
    "luz",
    "sagrado"
-  ]
- },
- "mon-horned-devil-cornugon": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "mon-diabo-de-gelo": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "mon-diabo-do-fosso-pit-fiend": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "mon-barbed-devil-hamatula": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "mon-diabo-osseo": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "mon-diabrete-imp": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "mon-djinn": {
+  ],
   "resistencias": [
    "corte",
    "perfuracao"
   ]
  },
- "mon-dragao-azul-adulto": {
+ "cao-de-guerra-nessiano": {
+  "fraquezas": [
+   "luz",
+   "sagrado"
+  ]
+ },
+ "cao-infernal": {
+  "fraquezas": [
+   "luz",
+   "sagrado"
+  ]
+ },
+ "cao-yeth": {
+  "fraquezas": [
+   "luz",
+   "sagrado"
+  ]
+ },
+ "cauchemar": {
+  "fraquezas": [
+   "luz",
+   "sagrado"
+  ]
+ },
+ "cobra-de-ferro": {
+  "fraquezas": [
+   "raio"
+  ],
+  "resistencias": [
+   "corte",
+   "fogo",
+   "perfuracao"
+  ]
+ },
+ "deva-astral": {
+  "fraquezas": [
+   "profano"
+  ]
+ },
+ "diabo-barbado": {
+  "fraquezas": [
+   "luz",
+   "sagrado"
+  ]
+ },
+ "diabo-chifrudo": {
+  "fraquezas": [
+   "luz",
+   "sagrado"
+  ]
+ },
+ "diabo-de-gelo": {
+  "fraquezas": [
+   "luz",
+   "sagrado"
+  ]
+ },
+ "diabo-do-fosso-pit-fiend": {
+  "fraquezas": [
+   "luz",
+   "sagrado"
+  ]
+ },
+ "diabo-espinhoso": {
+  "fraquezas": [
+   "luz",
+   "sagrado"
+  ]
+ },
+ "diabo-osseo": {
+  "fraquezas": [
+   "luz",
+   "sagrado"
+  ]
+ },
+ "diabrete-imp": {
+  "fraquezas": [
+   "luz",
+   "sagrado"
+  ]
+ },
+ "djinn": {
+  "resistencias": [
+   "corte",
+   "perfuracao"
+  ]
+ },
+ "dragao-azul-adulto": {
   "resistencias": [
    "raio"
   ]
  },
- "mon-dragao-branco-jovem": {
+ "dragao-branco-jovem": {
   "fraquezas": [
    "fogo"
   ],
@@ -170,33 +198,33 @@
    "gelo"
   ]
  },
- "mon-dragao-dourado-adulto": {
+ "dragao-dourado-adulto": {
   "resistencias": [
    "fogo"
   ]
  },
- "mon-dragao-vermelho-adulto": {
+ "dragao-vermelho-adulto": {
   "resistencias": [
    "fogo"
   ]
  },
- "mon-dragao-vermelho-anciao": {
+ "dragao-vermelho-anciao": {
   "resistencias": [
    "fogo"
   ]
  },
- "mon-dragao-vermelho-jovem": {
+ "dragao-vermelho-jovem": {
   "resistencias": [
    "fogo"
   ]
  },
- "mon-dretch": {
+ "dretch": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-efreeti": {
+ "efreeti": {
   "fraquezas": [
    "agua"
   ],
@@ -204,7 +232,7 @@
    "fogo"
   ]
  },
- "mon-small-earth-elemental": {
+ "elemental-da-terra-pequeno": {
   "fraquezas": [
    "agua"
   ],
@@ -212,24 +240,24 @@
    "fogo"
   ]
  },
- "mon-small-air-elemental": {
+ "elemental-do-ar-pequeno": {
   "resistencias": [
    "corte",
    "perfuracao"
   ]
  },
- "mon-small-fire-elemental": {
+ "elemental-do-fogo-pequeno": {
   "fraquezas": [
    "agua"
   ]
  },
- "mon-erinia": {
+ "erinia": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-espectro": {
+ "espectro": {
   "fraquezas": [
    "luz",
    "sagrado"
@@ -240,7 +268,7 @@
    "perfuracao"
   ]
  },
- "mon-esqueleto-humano": {
+ "esqueleto-humano": {
   "fraquezas": [
    "luz",
    "sagrado"
@@ -250,7 +278,7 @@
    "perfuracao"
   ]
  },
- "mon-ghost": {
+ "fantasma": {
   "fraquezas": [
    "luz",
    "sagrado"
@@ -261,12 +289,12 @@
    "perfuracao"
   ]
  },
- "mon-filhote-de-dragao-vermelho": {
+ "filhote-de-dragao-vermelho": {
   "resistencias": [
    "fogo"
   ]
  },
- "mon-violet-fungus": {
+ "fungo-violeta": {
   "fraquezas": [
    "fogo"
   ],
@@ -274,18 +302,18 @@
    "perfuracao"
   ]
  },
- "mon-ochre-jelly": {
+ "geleia-ocre": {
   "resistencias": [
    "corte",
    "perfuracao"
   ]
  },
- "mon-ghaele-azata": {
+ "ghaele-azata": {
   "fraquezas": [
    "profano"
   ]
  },
- "mon-ghast": {
+ "ghast": {
   "fraquezas": [
    "luz",
    "sagrado"
@@ -294,7 +322,7 @@
    "perfuracao"
   ]
  },
- "mon-ghoul": {
+ "ghoul": {
   "fraquezas": [
    "luz",
    "sagrado"
@@ -303,7 +331,7 @@
    "perfuracao"
   ]
  },
- "mon-gigante-do-fogo": {
+ "gigante-do-fogo": {
   "fraquezas": [
    "gelo"
   ],
@@ -311,25 +339,25 @@
    "fogo"
   ]
  },
- "mon-glabrezu": {
+ "glabrezu": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-clay-golem": {
+ "golem-de-argila": {
   "resistencias": [
    "corte",
    "fogo",
    "perfuracao"
   ]
  },
- "mon-flesh-golem": {
+ "golem-de-carne": {
   "resistencias": [
    "perfuracao"
   ]
  },
- "mon-iron-golem": {
+ "golem-de-ferro": {
   "fraquezas": [
    "raio"
   ],
@@ -339,7 +367,7 @@
    "perfuracao"
   ]
  },
- "mon-ice-golem": {
+ "golem-de-gelo": {
   "fraquezas": [
    "fogo"
   ],
@@ -348,36 +376,67 @@
    "perfuracao"
   ]
  },
- "mon-stone-golem": {
+ "golem-de-pedra": {
   "resistencias": [
    "corte",
    "fogo",
    "perfuracao"
   ]
  },
- "mon-grande-wyrm-vermelho": {
+ "grande-wyrm-vermelho": {
   "resistencias": [
    "fogo"
   ]
  },
- "mon-greater-barghest": {
+ "hezrou": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-hezrou": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "mon-homunculus": {
+ "homunculus": {
   "resistencias": [
    "perfuracao"
   ]
  },
- "mon-ice-linnorm": {
+ "kyton": {
+  "fraquezas": [
+   "luz",
+   "sagrado"
+  ]
+ },
+ "lemure": {
+  "fraquezas": [
+   "luz",
+   "sagrado"
+  ]
+ },
+ "lesma-gigante": {
+  "resistencias": [
+   "impacto"
+  ]
+ },
+ "lich": {
+  "fraquezas": [
+   "luz",
+   "sagrado"
+  ],
+  "resistencias": [
+   "perfuracao"
+  ]
+ },
+ "lillend": {
+  "fraquezas": [
+   "profano"
+  ]
+ },
+ "limo-cinzento": {
+  "resistencias": [
+   "corte",
+   "perfuracao"
+  ]
+ },
+ "linnorm-do-gelo": {
   "fraquezas": [
    "fogo"
   ],
@@ -385,60 +444,23 @@
    "gelo"
   ]
  },
- "mon-kyton": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "mon-lemure": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "mon-giant-slug": {
-  "resistencias": [
-   "impacto"
-  ]
- },
- "mon-lich": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ],
-  "resistencias": [
-   "perfuracao"
-  ]
- },
- "mon-lillend": {
-  "fraquezas": [
-   "profano"
-  ]
- },
- "mon-gray-ooze": {
-  "resistencias": [
-   "corte",
-   "perfuracao"
-  ]
- },
- "mon-werewolf": {
+ "lobisomem": {
   "fraquezas": [
    "prata"
   ]
  },
- "mon-marid": {
+ "marid": {
   "resistencias": [
    "fogo"
   ]
  },
- "mon-marilith": {
+ "marilith": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-mohrg": {
+ "mohrg": {
   "fraquezas": [
    "luz",
    "sagrado"
@@ -447,14 +469,14 @@
    "perfuracao"
   ]
  },
- "mon-montao-tropecante": {
+ "montao-tropecante": {
   "resistencias": [
    "fogo",
    "perfuracao",
    "raio"
   ]
  },
- "mon-mumia": {
+ "mumia": {
   "fraquezas": [
    "fogo",
    "luz",
@@ -464,30 +486,24 @@
    "perfuracao"
   ]
  },
- "mon-nabasu": {
+ "nabasu": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-nalfeshnee": {
+ "nalfeshnee": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-nessian-warhound": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "mon-animated-object": {
+ "objeto-animado": {
   "resistencias": [
    "perfuracao"
   ]
  },
- "mon-giant-flytrap": {
+ "papa-moscas-gigante": {
   "fraquezas": [
    "fogo"
   ],
@@ -495,46 +511,36 @@
    "perfuracao"
   ]
  },
- "mon-nightmare": {
+ "pesadelo": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-planetar": {
+ "planetar": {
   "fraquezas": [
    "profano"
   ]
  },
- "mon-black-pudding": {
+ "pudim-negro": {
   "resistencias": [
    "corte",
    "perfuracao"
   ]
  },
- "mon-quasit": {
+ "quasit": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-rakshasa": {
+ "rakshasa": {
   "resistencias": [
    "corte",
    "impacto"
   ]
  },
- "mon-retriever": {
-  "fraquezas": [
-   "raio"
-  ],
-  "resistencias": [
-   "corte",
-   "fogo",
-   "perfuracao"
-  ]
- },
- "mon-salamandra": {
+ "salamandra": {
   "fraquezas": [
    "agua"
   ],
@@ -542,7 +548,7 @@
    "fogo"
   ]
  },
- "mon-shaitan": {
+ "shaitan": {
   "fraquezas": [
    "agua"
   ],
@@ -550,18 +556,18 @@
    "fogo"
   ]
  },
- "mon-shoggoth": {
+ "shoggoth": {
   "resistencias": [
    "corte",
    "perfuracao"
   ]
  },
- "mon-solar": {
+ "solar": {
   "fraquezas": [
    "profano"
   ]
  },
- "mon-sombra": {
+ "sombra": {
   "fraquezas": [
    "luz",
    "sagrado"
@@ -572,13 +578,13 @@
    "perfuracao"
   ]
  },
- "mon-sucubo": {
+ "sucubo": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-treant": {
+ "treant": {
   "fraquezas": [
    "fogo"
   ],
@@ -587,7 +593,7 @@
    "perfuracao"
   ]
  },
- "mon-yellow-musk-creeper": {
+ "trepadeira-de-almiscar-amarelo": {
   "fraquezas": [
    "fogo"
   ],
@@ -595,7 +601,7 @@
    "perfuracao"
   ]
  },
- "mon-vampiro": {
+ "vampiro": {
   "fraquezas": [
    "fogo",
    "luz",
@@ -607,13 +613,13 @@
    "perfuracao"
   ]
  },
- "mon-vargouille": {
+ "vargouille": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-vegepygmy": {
+ "vegepygmy": {
   "fraquezas": [
    "fogo"
   ],
@@ -621,20 +627,20 @@
    "perfuracao"
   ]
  },
- "mon-assassin-vine": {
+ "vinha-assassina": {
   "resistencias": [
    "fogo",
    "gelo",
    "perfuracao"
   ]
  },
- "mon-vrock": {
+ "vrock": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-wight": {
+ "wight": {
   "fraquezas": [
    "luz",
    "sagrado"
@@ -643,13 +649,13 @@
    "perfuracao"
   ]
  },
- "mon-xill": {
+ "xill": {
   "fraquezas": [
    "luz",
    "sagrado"
   ]
  },
- "mon-xorn": {
+ "xorn": {
   "fraquezas": [
    "agua"
   ],
@@ -657,13 +663,7 @@
    "fogo"
   ]
  },
- "mon-yeth-hound": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "mon-zumbi-humano": {
+ "zumbi-humano": {
   "fraquezas": [
    "luz",
    "sagrado"

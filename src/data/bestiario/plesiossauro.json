@@ -1,0 +1,139 @@
+{
+  "id": "plesiossauro",
+  "nome": "Plesiossauro",
+  "nomeIngles": "Plesiosaurus",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Médio",
+  "descricao": "Réptil marinho do tamanho de um crocodilo pequeno, de pescoço longo e cabeça pequena. Caça peixe de tocaia, pela vista, e é presa de tubarões e de répteis marinhos maiores.",
+  "tags": [],
+  "imagem": "bestiario/plesiossauro_criatura.webp",
+  "porte": "Médio",
+  "dimensoes": {
+    "medida": "3,2 m de comprimento, 0,6 m de altura",
+    "peso": "143 kg",
+    "comprimento": 3.2,
+    "largura": 0.8,
+    "altura": 0.6
+  },
+  "locomocao": {
+    "natacao": 4
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 5,
+    "destreza": 2,
+    "vigor": 3,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 2,
+    "furtividade": 2,
+    "integridade": 1,
+    "prontidao": 2,
+    "resistencia": 2,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "natacao": 3,
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "visão",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "Sentidos",
+      "descricao": "visão: Prontidão (visão) +2, Especialidade natural; notar presa na água; alcance.: olhos grandes, voltados para cima e para os lados, com anel esclerótico de olho achatado para o mergulho, e caça visual. · faro: sem Especialidade. No Plesiosaurus, as narinas não parecem adaptadas a cheirar debaixo d'água."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "No jogo",
+      "texto": "Médio como o humano: ninguém ganha bônus de Alvo no corpo a corpo. A Força 5 só tira o Bloqueio de quem tem Força 1 ou menos (o dobro e ao menos 4 a mais). É um predador de peixe do tamanho de um crocodilo pequeno, e não o monstro de pescoço comprido das histórias: esse é o Elasmosaurus. Nada a 14 km/h; 34 PV e Couraça nível 1 (pele lisa); o quanto ela tira fica para depois."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Water",
+      "Coast"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "variantes": [],
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 34,
+    "esquiva": 8,
+    "bloqueio": 4,
+    "defesa": 8,
+    "defesaMental": 6,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 393.26,
+    "deslocamento": {
+      "nado": 4
+    }
+  },
+  "notasObservacao": [
+    "forca: 5 ◆, reanalisada na sétima rodada pela massa de 130 kg (referência 6) e pelo corpo de nadador que pega peixe, com o golfinho (260 kg, 5) e o elasmossauro (1,9 t, 7); era 6, escolhida com 500 kg (D-158, D-174).",
+    "pesoErguido: 393,26 kg (em vigor na Etapa 2, 20/10/2026); antes: 375,58 kg pelo `calc6.mjs`, provisório, com os 130 kg e a Força 5. Era 457,26 kg com a Força 6 e 571,9 kg pelos 500 kg de trabalho. A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar.",
+    "carga: não se aplica (nadador).",
+    "velocidade: congelada (decisão 23). O nado de 14 km/h bate com o cruzeiro de Massare (4 m/s, −1%) e fica muito acima do recalculado por Motani 2002.",
+    "alvo: Médio (Etapa 2, 20/10/2026), pelo corpo esguio, na beira do corte (resposta do autor, fim da seção 13); antes: **na borda.** Grande pela silhueta de cima (1,47 m²), só 1,2% acima do corte de 1,45 m²; os outros dois métodos da `tamanho-fichas-v2` davam Médio. A área depende da largura (0,8 m, sem dado), estimada pelo Arquiteto quando a massa de trabalho era 500 kg. Na sexta rodada a área ficou (`--area fixa`, extinto reestimado); um corpo de 130 kg com 3,2 m pode ser mais estreito que 0,8 m, e com menos de 1,2% de folga o Alvo cairia em Médio. Fica Grande pela conta, como hoje e como o Pathfinder (D-174).",
+    "massa: 143 kg (em vigor na Etapa 2, 20/10/2026); antes: referência nova de cerca de 130 kg [comparação], pelo Seeleyosaurus de Zhao 2026 levado pelo cubo a 3,2 m; era 500 kg [sem dado], estimativa do Arquiteto pela tartaruga-de-couro. Na sexta rodada a faixa, o PV e o peso erguido passaram aos 130 kg: Faixa 3 (até 220 kg), era 4; PV 34, era 42.",
+    "dimensoes.caudaGrossa: marcada \"sim\" na conta do Arquiteto; a D-155 nomeia o crocodilo, os dinossauros e o mosassauro, e não o plesiossauro. Provisória (D-174).",
+    "resistencia: 2 pela régua [extrapolação]; a Resistência (Fôlego) +2 de hoje saiu, e o cruzeiro de modelo ficou na nota de pesquisa (jornada).",
+    "furtividade: 2, linha nova, pela tocaia que o estudo de hidrodinâmica de 2017 sugere; hipótese [extrapolação].",
+    "compostura: 1 por não ser espécie social (diretriz 1); era 2.",
+    "especialidade Prontidão (visão) +2: passou de comum a natural, com o mesmo valor; o dado é do grupo [extrapolação].",
+    "couraca: nível 1 pela escala da quinta rodada, reanalisado na sétima com os 130 kg e mantido, na faixa 0 a 1 (ao lado do golfinho); o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): só modelos do grupo, e não do Plesiosaurus [extrapolação]: cruzeiro de 4 m/s se de sangue quente (Massare, via Wikipédia); recalculado, 1,5 m/s se de sangue quente e 0,5 m/s se de sangue frio (Motani 2002, via Wikipédia). Sangue quente possível (Houssaye 2013)."
+  ]
+}

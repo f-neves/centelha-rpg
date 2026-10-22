@@ -1,0 +1,189 @@
+{
+  "id": "boi",
+  "nome": "Boi de tração",
+  "nomeIngles": "Ox",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Grande",
+  "descricao": "Animal de tração e de carga das fazendas. O boi castrado foge do susto; o touro ataca, e a vaca com bezerro defende a cria. Grito e batida de porteira o agitam.",
+  "tags": [],
+  "imagem": "bestiario/boi_criatura.webp",
+  "porte": "Grande",
+  "dimensoes": {
+    "medida": "3,49 m de comprimento, 1,59 m de altura",
+    "peso": "830 kg",
+    "comprimento": 3.49,
+    "largura": 0.84,
+    "altura": 1.59
+  },
+  "locomocao": {
+    "terra": 5
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 5,
+    "arranque": 10,
+    "corrida": 11
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 7,
+    "destreza": 1,
+    "vigor": 6,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 1,
+    "influencia": 1,
+    "perspicacia": 2,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 2,
+    "bloqueio": 2,
+    "esquiva": 1,
+    "atletismo": 2,
+    "integridade": 1,
+    "prontidao": 2,
+    "resistencia": 4,
+    "empatia": 1,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "visão",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 1
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Chifrada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Investida (marrada)",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 2,
+      "tipo": "impacto",
+      "ticks": 7,
+      "classe": "pesada"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "derrubar",
+      "descricao": "Investida",
+      "classe": "livro"
+    },
+    {
+      "nome": "empurrar",
+      "descricao": "Investida",
+      "classe": "livro"
+    },
+    {
+      "nome": "pisotear",
+      "descricao": "Investida (marrada): Investida.",
+      "classe": "livro"
+    },
+    {
+      "nome": "esmagar contra a cerca",
+      "descricao": "Investida (marrada): prensa o alvo contra cerca, porteira ou parede.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão: campo de 300°, Prontidão (visão) +2, natural (notar o que vem pelo lado e por trás); ponto cego pequeno logo atrás. · audição: mais sensível que a humana a sons agudos; gritos e batida de porteira aumentam o batimento e a movimentação. Texto. · faro: evita lugares e objetos marcados com urina de vaca estressada. Texto."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: manada."
+    },
+    {
+      "titulo": "Aptidões",
+      "texto": "montaria: não (não achado em fonte). carga: sim (regra legal indiana). tração: sim (arado e carroça; regra legal indiana)."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande: o humano Médio acerta com +3 no corpo a corpo. A Força 7 tira o Bloqueio de quem tem Força 3 ou menos. Leva cerca de 166 kg sem perder a corrida e chega a 664 kg andando a passo; arrasta, empurra ou vira cerca de 814 kg. Fácil de acertar (Esquiva 4), com 54 PV e Couraça nível 1: quanto ela tira da espada e da flecha fica para depois, e o Impacto perde 6. A investida faz 21 em média (2d6 + 2 × Força 7, do autor). O dia inteiro de trabalho fica na nota de pesquisa (jornada), e não numa Especialidade."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "variantes": [],
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 54,
+    "esquiva": 4,
+    "bloqueio": 6,
+    "defesa": 6,
+    "defesaMental": 5,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 6,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 814.17,
+    "carga": {
+      "leve": 166,
+      "media": 332,
+      "pesada": 498,
+      "maxima": 664
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 5,
+        "arranque": 10,
+        "corrida": 11
+      }
+    }
+  },
+  "notasObservacao": [
+    "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8 pelas âncoras do autor (decisão 9), e não pelos 900 N do arado, que é trabalho e não máximo. A ficha de hoje tinha 10 pela faixa 9 a 12 do teste de ordem; a queda é da escala nova, e não de dado novo (D-158, D-174).",
+    "pesoErguido: 997 kg pela conta das decisões 14 e 16 com a massa de 788 kg, provisório; a fórmula está com outra frente. A prova de arrasto da parelha (trenó de cerca de 300% da massa dela, Bondville Fair) daria cerca de 2,1 t por boi; arrastar trenó não é erguer nem virar, e o atrito não foi medido. Fica como dado para a outra frente (D-162, D-174).",
+    "carga: Leve 157,6 a Máxima 630,5 kg, pela conta de hoje (massa de 788 kg e faixa), provisória (D-169, D-172).",
+    "massa: 830 kg (em vigor na Etapa 2, 20/10/2026); antes: 788 kg é o adulto típico do bovino de tração (boi e vaca juntos), conta pelas quatro raças da Rural Heritage, **[extrapolação]**; o número depende das raças escolhidas (sem o Dexter, cerca de 915 kg). O boi castrado sozinho, pelas mesmas raças, dá 941 kg (sexta rodada, item 4).",
+    "vigor: 6 (em vigor na Etapa 2, 20/10/2026); antes: 5, e não o 6 que a diretriz deixa aberto: nada de frio, fome ou ferida acima do normal na pesquisa. O 6 vai para o auroque e o bisão, selvagens (D-174).",
+    "empatia: 1 é escolha minha, pela hierarquia da manada (ADW) e pelo faro do medo (Penn State), sem número; provisória (D-174).",
+    "musculatura: 3 pelo animal criado para puxar; a tração medida é de trabalho, e não de força máxima (D-174).",
+    "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2; o dia de trabalho fica na nota de pesquisa (jornada) (diretriz 2; quinta rodada, item 1; D-174).",
+    "couraca: nível 1 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): tração de 10 a 12% da massa o dia todo (Tillers International) **[medido]**; parelha no arado a 1,03 m/s (3,7 km/h) com 900 N, em jornada de 4 h por dia no estudo (Nengomasha 1999) **[medido]**; o mestiço iaque x gado leva 75 kg por 30 km em 6 h (FAO, \"The Yak\") **[comparação]**.",
+    "velocidade: congelada (decisão 23). A corrida de 41 km/h não tem número real para comparar (D-170).",
+    "dimensoes: altura de 1,56 m, comprimentos de 3,43 e 2,70 m e largura de 0,83 m são as estimativas do Arquiteto para o boi de 700 kg (1,5, 3,3, 2,6 e 0,8 m) escaladas pelo cubo da massa até 788 kg; o Alvo vem da silhueta de lado (D-147, D-174)."
+  ]
+}

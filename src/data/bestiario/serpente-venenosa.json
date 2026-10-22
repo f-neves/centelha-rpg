@@ -1,0 +1,214 @@
+{
+  "ordem": 289,
+  "id": "serpente-venenosa",
+  "idAntigo": "mon-venomous-snake",
+  "nome": "Naja-real",
+  "nomeIngles": "King cobra",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Médio",
+  "descricao": "Anda de dia pelo mato seguindo o cheiro de outras serpentes, que mata com o veneno e engole inteiras. Acuada, ergue o corpo à altura de um homem, abre o capuz e rosna. A fêmea faz um monte de folhas para os ovos e o guarda.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/serpente-venenosa_criatura.webp",
+  "porte": "Miúdo",
+  "dimensoes": {
+    "medida": "3,28 m de comprimento, 0,04 m de altura",
+    "peso": "3,7 kg",
+    "comprimento": 3.28,
+    "largura": 0.04,
+    "altura": 0.04
+  },
+  "locomocao": {
+    "terra": 1
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 1,
+    "arranque": 1,
+    "corrida": 1
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 1,
+    "destreza": 3,
+    "vigor": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 3,
+    "esquiva": 3,
+    "furtividade": 2,
+    "integridade": 1,
+    "prontidao": 3,
+    "resistencia": 2,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "resistencia",
+      "foco": "fome",
+      "valor": 1,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "contra serpentes",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Bote",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "exibição",
+      "descricao": "ergue um terço do corpo, abre o capuz e chia grave; erguida, ainda avança e dá o bote a distância.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "sem pernas",
+      "descricao": "difícil de derrubar.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "faro (língua e órgão de Jacobson): texto, sem Especialidade; alcance. · calor: não tem (elapídeo, sem fosseta). · Os outros: nada achado."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Neurotoxina de elapídeo · Potência 16 · Tick (sangue) · a cada 10 minutos · pool 4 (Vigor) · Desgaste 1 · pelo Bote"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Serpentes das profundezas",
+      "texto": "A naja-real é a maior das serpentes peçonhentas, e dizem que as maiores nascem onde a terra foi maldita por magia antiga."
+    },
+    {
+      "titulo": "Presságio",
+      "texto": "Camponeses evitam matar serpentes grandes por medo de atrair a ira de espíritos da mata que as consideram guardiãs."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Neurotoxina de elapídeo · Potência 16 · Tick (sangue) · a cada 10 minutos · pool 4 (Vigor) · Desgaste 1 · pelo Bote"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "- Miúda (enrolada ou esticada) contra um humano Médio, ganha +6 no acerto corpo a corpo. Quem atira nela leva −6. O bote acerta quase sempre; o que decide é o veneno. - Erguida, a cabeça fica na altura do peito de um adulto: o bote não precisa mirar a perna. Isso é do Mestre. - O dano do bote é o dado mais a Força 1 (2, 5); o veneno ignora a Absorção. O veneno entra se o bote fere: 1 de dano ou mais depois da Absorção, e o Nível do bote (N0) tem de passar o da armadura. - Contra outra serpente ela briga com +1 (Especialidade). Com 6 PV e 1 m por Tick (provisórios), não persegue: ameaça, e foge se pode."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest",
+      "Jungle",
+      "Swamp"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Venomous Snake",
+    "cr": "1",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 8,
+      "des": 13,
+      "con": 14,
+      "int": 1,
+      "sab": 13,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 6,
+    "esquiva": 12,
+    "bloqueio": 6,
+    "defesa": 12,
+    "defesaMental": 7,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 28.06,
+    "deslocamento": {
+      "terra": {
+        "batalha": 1,
+        "arranque": 1,
+        "corrida": 1
+      }
+    }
+  },
+  "notasObservacao": [
+    "area: 0,043 m² enrolada e 0,116 m² esticada, escaladas pela massa (`calc6.mjs`) a partir da medição do macho na `tamanho-fichas-v2` (0,052 e 0,14 m²); antes, 0,14 m² (largura × comprimento). O Alvo segue Miúdo, e o segundo Alvo cai de Pequeno a Miúdo por 0,004 m² abaixo do corte. Decisão provisória: usar o número do `calc6.mjs`, que é o mesmo para as 92 fichas.",
+    "pv: 6 (em vigor na Etapa 2, 20/10/2026); antes: Faixa 1 nas duas versões do autor; o PV total usa 5 + Vigor = 8 (decisão 21). Com 10 + metade do Vigor seriam 11. Era 26 (Faixa 2, o macho).",
+    "`porte` (exibição): erguida, a naja tem altura de um homem; a área de quem a ataca muda. A ficha usa a postura de repouso (decisão 8). Fica para o Mestre e para a N22 (D-054, D-087)",
+    "`forca`: 1 (em vigor na Etapa 2, 20/10/2026); antes: 0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): o corpo não segura nem aperta, e quem mata é o veneno; o dano do Bote fica 1d6 − 2 (D-115)",
+    "`referencia`: 3,375 kg, o adulto típico (sexta rodada): o macho de 4,5 kg medidos (média de 79 machos) e a fêmea de 2,25 kg pela razão dos máximos **[comparação]**; era o macho. Não os 6 kg sugeridos no plano; a população medida é O. kaalinga, depois da divisão de Das et al. 2024 (D-174)",
+    "pesoErguido: 28,06 kg (em vigor na Etapa 2, 20/10/2026); antes: 21,58 kg pelo `calc6.mjs`, provisório (decisões 14 e 16). Era 26,4 kg (o macho) e, antes, 0,8 kg pela fórmula de FAH com o fator de corpo leve. Como ela não agarra, quase não entra em jogo.",
+    "velocidade: congelada (decisão 23); 5 km/h pela fórmula de hoje, igual à jararaca, sem velocidade medida confiável.",
+    "musculatura: 2 (animal comum), provisória.",
+    "influencia, compostura: descem a 1 por não ser espécie social (diretriz 1); a exibição fica em texto.",
+    "resistencia: 2 pelo normal da espécie, com Resistência (fome) +1 pelos meses de jejum sem número. A imunidade ao veneno de víboras é só especulação (Fry, comunicação pessoal, em Bhaisare et al. 2010) e não entra.",
+    "especialidades.briga: Briga (contra serpentes) +1 pela dieta ofiófaga medida. Decisão provisória: tratar a caça de serpentes como hábito, e não como corpo.",
+    "couraca: nível 0 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "jornada (nota de pesquisa, não é regra): o macho M1 foi seguido por mais de 100 km em nove meses; o M2 andou 35,6 km de 7 de junho a 22 de novembro, numa área de 6,3 km², saindo do abrigo por volta das 9 h e se recolhendo antes do pôr do sol (Bhaisare et al. 2010, artigo lido) **[medido]**. Sem distância por dia nem velocidade.",
+    "`dimensoes.largura` e `dimensoes.altura`: 0,036 m, o diâmetro estimado para o macho (0,04 m, cilindro de 4,5 kg em 3,5 m) escalado pelo cubo da massa, sem fonte (D-147, D-174)",
+    "`veneno`: veneno sem id no catálogo; neurotóxico de elapídeo, com os fatos na pesquisa. A `peconha-de-vibora` não serve (outro efeito) (D-112)",
+    "`atletismo`: 0 porque as fontes lidas não acham nado nem escalada; a ficha atual dava \"trepadora e nadadora\", sem fonte (D-174)"
+  ]
+}

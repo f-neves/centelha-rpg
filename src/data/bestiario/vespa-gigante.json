@@ -1,0 +1,232 @@
+{
+  "ordem": 300,
+  "id": "vespa-gigante",
+  "idAntigo": "mon-giant-wasp",
+  "nome": "Vespa-gigante",
+  "nomeIngles": "Giant Wasp",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Grande",
+  "descricao": "Voa baixo procurando a toca da aranha; luta com ela, ferroa entre as pernas, arrasta o corpo paralisado de volta para a toca e fecha a entrada com o ovo lá dentro.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/vespa-gigante_criatura.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "3 m de comprimento, 0,8 m de altura",
+    "peso": "23 kg",
+    "comprimento": 3,
+    "largura": 0.6,
+    "altura": 0.8,
+    "envergadura": 7
+  },
+  "locomocao": {
+    "voo": 5,
+    "terra": 4
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 8
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 2,
+    "destreza": 4,
+    "vigor": 3,
+    "percepcao": 3,
+    "inteligencia": 1,
+    "raciocinio": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 4,
+    "esquiva": 4,
+    "atletismo": 3,
+    "prontidao": 2,
+    "resistencia": 3,
+    "sobrevivencia": 3
+  },
+  "skills2": {
+    "voo": 1,
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "briga",
+      "foco": "contra aranhas",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 2
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Ferrão",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    },
+    {
+      "nome": "Mandíbulas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "agarrar",
+      "descricao": "patas: Dano do agarrão: 2 × Força = 4. Segura a presa para ferroar.",
+      "classe": "livro"
+    },
+    {
+      "nome": "paralisar",
+      "descricao": "Ferrão: o ferrão paralisa a presa (o veneno tira Destreza, e Destreza 0 é paralisia, pelo livro).",
+      "classe": "como luta"
+    },
+    {
+      "nome": "arrastar a presa até a toca",
+      "descricao": "leva a presa paralisada até a toca, até o Peso erguido.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "nada achado com número. · visão no escuro: \"Enxerga bem mesmo nas partes mais escuras de seu ninho\"; texto do Mestre, sem Especialidade."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Ferrão de gigante · Potência 18 · Tick (sangue) · a cada 1 minuto · pool 4 (Destreza) · Desgaste 1 · pelo Ferrão"
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Caçadora solitária",
+      "texto": "Vespa do tamanho de um cão grande, caça sozinha ou em pequenos grupos, paralisando a presa com o ferrão antes de arrastá-la de volta."
+    },
+    {
+      "titulo": "Berço de pesadelo",
+      "texto": "A presa paralisada vira incubadora viva: a vespa põe os ovos nela e as larvas a devoram por dentro ao nascer."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitária."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Ferrão de gigante · Potência 18 · Tick (sangue) · a cada 1 minuto · pool 4 (Destreza) · Desgaste 1 · pelo Ferrão"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Em voo é Enorme (asas abertas): quem a ataca mira um Alvo bem maior; pousada, volta ao Grande. A Força 2 não tira o Bloqueio de ninguém (precisaria do dobro e ao menos 4 a mais). Ferrão de 3,5 em média com o veneno que paralisa; a cutícula é Couraça nível 2, e quanto ela tira da espada, da lança e do golpe de Impacto fica para depois. Em voo faz 10 m por Tick e não mergulha. 26 PV (Faixa 2 e Vigor 3), Resistência 3. Não se esconde (Furtividade 0): a cor avisa de longe."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Forest"
+    ],
+    "clima": [
+      "Temperate"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Wasp",
+    "cr": "3",
+    "tipo": "praga Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 12,
+      "con": 18,
+      "int": "-",
+      "sab": 13,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60; em terra 20"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 26,
+    "esquiva": 16,
+    "bloqueio": 8,
+    "defesa": 16,
+    "defesaMental": 6,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 2,
+    "pesoErguido": 96.71,
+    "deslocamento": {
+      "terra": {
+        "batalha": 4,
+        "arranque": 6,
+        "corrida": 8
+      },
+      "voo": {
+        "batalha": 5,
+        "cruzeiro": 10
+      }
+    }
+  },
+  "notasObservacao": [
+    "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (D-174); os 3 m do site ficam: de asas abertas a gigante está 5 portes acima da Pepsis (Minúsculo para Enorme) e pousada 4 (para Grande), e o critério pede 2. Acima do Médio porque a ficha atual do Centelha e o Pathfinder 1 a dão Grande. Longe dos cortes: 8,46 m² fica 41% acima do corte do Enorme (6) e 66% abaixo do do Imenso (25); pousada, 1,92 m² fica 32% acima do corte do Grande (1,45)",
+    "gigante: escalada da Pepsis aos 3 m de comprimento da ficha atual do Centelha (correção da sexta rodada: vale o tamanho do site); contra o adulto típico de 36,74 mm, k = 81,65 (era 3,6 m, k = 97,98, e k = 80 sobre a fêmea de 45 mm); tudo do tamanho é [extrapolação] (D-105, `pedido-lotes.md` §3)",
+    "massa: 23 kg pela decisão 13 (meio em log de 6,22 kg pela regra do roc, com a base típica dos dois sexos de 0,2721 g e 36,74 mm, e 85,59 kg pela reta dos voadores reais com a envergadura de 7,0 m), e não os 148,1 kg do cubo; era 36 kg com os 3,6 m. A massa da Pepsis não foi achada em fonte boa (as duas por sexo são do volume); se a real aparecer, a regra do roc se refaz (D-174)",
+    "alvo: Enorme de asas abertas (8,46 m²) e Grande pousada (1,92 m²), a silhueta da `tamanho-fichas-v2` na razão (3 ÷ 3,6)² (decisão 8). A ficha de hoje dava Grande nas duas posturas, pela R2. O Alvo decide acerto e furtividade, e não o Vigor (oitava rodada)",
+    "faixa: a massa nova põe a vespa na Faixa 2; PV de 40 para 30 na sexta rodada, 32 na sétima e 28 na oitava, com o Vigor 4 (50 na ficha de hoje). A fêmea (cerca de 31 kg) e o macho (cerca de 15 kg) ficam na mesma faixa",
+    "dimensoes: altura, largura e envergadura estimadas; a envergadura usa a razão do recorde da P. heros (2,34 vezes o corpo, Guinness)",
+    "anatomia: artrópode alado, provisória (D-175); o voo usa o 1,43 da ave, sem calibração em inseto",
+    "pesoErguido: 96,71 kg (em vigor na Etapa 2, 20/10/2026); antes: 143,35 kg pela fórmula das decisões 14 e 16, provisório. Não tem Carga",
+    "velocidade: congelada (decisão 23). O voo dá 37 km/h, −7% contra os 40 km/h da Vespa mandarinia, de fonte fraca e de outra espécie",
+    "forca: 2 (em vigor na Etapa 2, 20/10/2026); antes: 4, abaixo da referência da massa (4,4), pelo corpo de voador que mata pelo veneno (D-158); reanalisada na sétima rodada pelos vizinhos de massa (centopeia-gigante 4 e louva-a-deus-gigante 4, iguais; aranha-gigante 3, rato-atroz 3 e cão 2, abaixo) e mantida. A Pepsis de base fica com Força 0 pelo item 8 (a força dela não fere nem segura um humano), e não pela D-167 automática",
+    "couraca: nível 2 (faixa 1 a 2) pela escala da quinta rodada, reanalisado na sétima com a massa de 23 kg e mantido; o valor em absorção fica para depois.",
+    "furtividade: 0, nova, pela cor de aviso (levantamento)",
+    "especialidades: Briga (contra aranhas) 1, pelo encurtamento da caçada com a experiência (Punzo 1994); decisão provisória (D-174)",
+    "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua; a caçada de horas e os voos de mais de 3 km ficam na nota de pesquisa (jornada)",
+    "jornada (nota de pesquisa, não é regra): voos de forrageio que podem passar de 3 km; sequência de caça de 208 a 150 min, com arraste da presa até a toca; atividade mínima acima de 38 °C (Punzo 1994, P. thisbe, [medido], campo). Comparação: Vespa mandarinia, até 100 km num dia (Wikipédia, página de amador, fonte fraca) e raio de 1 a 2 km, máximo 8 (Matsuura e Sakagami 1973) [comparação].",
+    "veneno: sem id no catálogo; o efeito real (paralisia da presa, dor de Schmidt 4, DL50 65 mg/kg) está na pesquisa. A paralisia da manobra é do Mestre até o veneno ter id (D-101, D-112)",
+    "compostura: 1 por não ser espécie social (diretriz 1)",
+    "vigor: 3 (em vigor na Etapa 2, 20/10/2026); antes: 4 ◆, revisto na oitava rodada pelo corpo e pela massa: o mínimo da D-176, um acima da Pepsis de base (Vigor 3, presumido); inseto de 23 kg, cutícula por fora, traqueia, músculo de voo, ao lado da centopeia, da aranha, do louva-a-deus e da sanguessuga gigantes (4) e acima do cão (20 kg, 3). Era 6 na sétima rodada e 5 na sexta (D-174)",
+    "base: o animal de base não tem ficha; Vigor 3 presumido; PV pela decisão 21 [provisório]"
+  ]
+}

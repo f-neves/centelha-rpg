@@ -1,0 +1,189 @@
+{
+  "ordem": 188,
+  "id": "estegossauro",
+  "idAntigo": "mon-stegosaurus",
+  "nome": "Estegossauro",
+  "nomeIngles": "Stegosaurus",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "animal Enorme",
+  "descricao": "Presa provável do Allosaurus, e reage com a cauda. Talvez preferisse ambientes mais secos que os saurópodes da mesma região.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/estegossauro_criatura.webp",
+  "imagem2": "bestiario/estegossauro_criatura_2.webp",
+  "porte": "Enorme",
+  "dimensoes": {
+    "medida": "7,18 m de comprimento, 2,97 m de altura",
+    "peso": "4.100 kg",
+    "comprimento": 7.18,
+    "largura": 1.64,
+    "altura": 2.97
+  },
+  "locomocao": {
+    "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 6
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 11,
+    "destreza": 1,
+    "vigor": 10,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 1,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 3,
+    "bloqueio": 3,
+    "esquiva": 1,
+    "atletismo": 4,
+    "integridade": 1,
+    "prontidao": 1,
+    "resistencia": 4,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "musculatura": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 3
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Cauda de espinhos (thagomizer)",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 2,
+      "tipo": "perfurante",
+      "perf": 1,
+      "ticks": 7,
+      "classe": "pesada"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "derrubar",
+      "descricao": "Cauda de espinhos",
+      "classe": "livro"
+    },
+    {
+      "nome": "atropelar",
+      "descricao": "corpo: Investida.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "nada com número; cabeça baixa, no máximo cerca de 1 m do chão."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Placas e espinhos",
+      "texto": "Duas fileiras de placas ósseas ao longo do dorso e uma cauda repleta de espinhos bastam para fazer qualquer predador pensar duas vezes."
+    },
+    {
+      "titulo": "Herbívoro imponente",
+      "texto": "Vive em manadas nas planícies quentes, pastando tranquilo até ser provocado."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: manada."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme: um humano Médio acerta com +6 no corpo a corpo. Pelo Alvo, o Médio não bloqueia a cauda, e a Força 11 também tira o Bloqueio de quem tem Força 5 ou menos (o dobro e ao menos 4 a mais): contra a cauda, quase sempre só a Esquiva. As placas e o couro são Couraça nível 4; quanto tiram do golpe fica para depois. A cauda faz 29 em média e fura até N1. 85 PV; anda a 6 m por Tick."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Plains"
+    ],
+    "clima": [
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Stegosaurus",
+    "cr": "7",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 27,
+      "des": 14,
+      "con": 17,
+      "int": 2,
+      "sab": 13,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "variantes": [],
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 85,
+    "esquiva": 4,
+    "bloqueio": 8,
+    "defesa": 8,
+    "defesaMental": 5,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 10,
+      "corte": 10,
+      "perfuracao": 10
+    },
+    "couracaNivel": 4,
+    "pesoErguido": 1028.1,
+    "carga": {
+      "leve": 615,
+      "media": 1230,
+      "pesada": 1845,
+      "maxima": 2460
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 6
+      }
+    }
+  },
+  "notasObservacao": [
+    "forca: 11 pela comparação com o mamute (13), proposta do Arquiteto; se o mamute mudar, esta se refaz.",
+    "pesoErguido: 1.028,10 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.028,32 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com os 3.800 kg. Era 1.011 kg (4.000 kg de trabalho) e, antes, 1.988 kg pela fórmula de FAH.",
+    "carga: Leve 570 a Máxima 2.280 kg, provisória (era Leve 600 pelos 4.000 kg); sai da massa; a fração de 20% não tem análogo vivo citado.",
+    "velocidade: congelada (decisão 23). A corrida de 21 km/h fica de 17 a 37% acima da estimativa (secundária). Não corrigido.",
+    "area: 8,28 m², vista de lado, da medição da `tamanho-fichas-v2`; era 20,3 m² (retângulo cheio, com as placas e a cauda). O Alvo segue Enorme. Decisão provisória: usar o número do `calc.mjs`.",
+    "couraca: nível 4 (faixa 3 a 4) pela escala da quinta rodada; o valor em absorção fica para depois.",
+    "massa: 4.100 kg (em vigor na Etapa 2, 20/10/2026); antes: 3,8 t do *S. ungulatus* de 7 m (Paul 2016, via Wikipédia; método não conferido), sem consenso entre os estudos. Alternativas: 3,5 t (*S. stenops*, Paul 2016); Sophie 1,56 t volumétrico, subadulta (Brassey 2015); grandes 5,0 a 5,3 t; 6,95 t para o YPM 1853 por regressão (Benson 2014, Dataset S1, que bate de perto com o 6,9 t da Wikipédia). Era 4 t. Na sexta rodada a faixa, o PV, o peso erguido e a Carga passaram aos 3,8 t (faixa e PV não mudam).",
+    "social: tratado como não social (Influência e Perspicácia 1), embora haja pegadas de grupos de várias idades **[extrapolação]**; ver desvios.",
+    "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela ferida curada dos espinhos, sem duração nem frio (diretriz 2).",
+    "musculatura: 2 (animal comum), provisória; sem medida de força.",
+    "dimensoes.altura: 2,9 m (a Sophie), que pode incluir as placas; não decide o Alvo, que vem do `calc.mjs`.",
+    "dimensoes.largura: 1,6 m estimada pelo Arquiteto [sem dado]; só serve ao espaço."
+  ]
+}

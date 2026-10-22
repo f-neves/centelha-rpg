@@ -224,7 +224,7 @@ Uma **arma de duas mãos** ocupa as duas e não permite o segundo ataque; um **e
 
 ## Manobras: agarrar, derrubar, empurrar
 
-Controlar alguém em vez de feri-lo é uma **Manobra**: agarrar, derrubar ou empurrar. É um ataque desarmado, rola-se ao declarar, como em todo golpe, e conta como ataque feito para a Guarda sob pressão. O porte conta no acerto como em qualquer ataque de corpo a corpo: só o menor ganha bônus contra o maior (ver *Porte*). Uma Proeza pode transformar um soco que acerta em agarrão.
+Controlar alguém em vez de feri-lo é uma **Manobra**: agarrar, derrubar ou empurrar. É um ataque desarmado, rola-se ao declarar, como em todo golpe, e conta como ataque feito para a Guarda sob pressão. Na Manobra quem pesa é a **massa**, e não o tamanho: o bônus de tamanho do acerto não entra em agarrar, derrubar e empurrar (ver *Massa nas Manobras*, abaixo). Uma Proeza pode transformar um soco que acerta em agarrão.
 
 **Agarrar.** Jogada de ataque: Força ou Destreza (à escolha, normalmente a maior) + Briga, mais a Centelha como em qualquer ataque (2 × menor entre Centelha e Briga), contra a **Defesa de agarrão** do alvo. A Defesa de agarrão é passiva: (Força ou Destreza + Briga ou Atletismo) × 2 + 2 × menor(Centelha, Habilidade usada), sempre o maior de cada par. Total que supera: o alvo fica **Agarrado**, e quem agarrou **controla**. Errar a primeira tentativa é um erro comum de ataque. **Não existe Rajada de agarrão.** O acerto agarra e não fere, e a Margem dele não rende nada: o dano vem na manutenção.
 
@@ -249,6 +249,30 @@ Controlar alguém em vez de feri-lo é uma **Manobra**: agarrar, derrubar ou emp
 **Derrubar.** Ataque comum, Força ou Destreza (à escolha) + Briga, contra a Defesa do alvo (a melhor entre Esquiva e Bloqueio). O alvo fica **Prono** (o Bestiário o chama de Caído): −2 na Defesa contra corpo a corpo e +2 contra distância (Vantagem tática). Levantar-se é uma ação de Velocidade 3.
 
 **Empurrar.** Ataque comum, contra a Defesa do alvo. O alvo recua 1 m mais 1 m por Margem, afastando-se de quem empurra. Se o recuo o leva a uma borda, valem [Cair](/regras/acoes-corpo-e-movimento) e Agarrar a borda, no Cap. VIII.
+
+### Massa nas Manobras
+
+A massa se conta em **sete faixas**:
+
+| Faixa | Massa |
+|---|---|
+| 1 | até 4 kg |
+| 2 | até 35 kg |
+| 3 | até 220 kg |
+| 4 | até 1,8 t |
+| 5 | até 14 t |
+| 6 | até 110 t |
+| 7 | acima de 110 t |
+
+- **+3 por faixa:** o mais pesado soma **+3 por faixa de massa de diferença**, sem teto <small>(provisório)</small>, na jogada da Manobra quando ataca e na Defesa de agarrão (ou na Defesa contra derrubar e empurrar) quando é o alvo. Esse +3 não entra na Margem. <small>(provisório)</small>
+- **Trava de 2 faixas:** quem está **2 faixas ou mais acima** não pode ser agarrado, derrubado nem empurrado, nem ter o golpe aparado (ver *Força e massa*). Cada ponto de Centelha de quem está embaixo sobe a trava em uma faixa.
+- **Agarrão contra a trava:** se o mais pesado perde a manutenção, o agarrado só se solta; os papéis não se invertem. <small>(provisório)</small>
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>O humano é da faixa 3. Contra um halfling de 25 kg (faixa 2), o humano tem +3; contra um lobo ou um gorila (faixa 3), nada, e decidem a Força e a Briga; contra um cavalo, um urso ou um roc de 750 kg (faixa 4), o bicho tem +3; contra um rinoceronte ou um elefante (faixa 5), o humano não agarra, não derruba, não empurra e não apara sem Centelha.</div>
+
+Estas sete faixas são só das Manobras e do Bloqueio; a Vida tem uma tabela própria, também pela massa ([Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura)).
+
+<p class="muted">A mesa não resolve as Manobras sozinha; se o Mestre usar a folha do golpe para uma, ela soma o bônus de tamanho do acerto, que nas Manobras não vale.</p>
 
 ## Dano e Armadura
 
@@ -280,23 +304,15 @@ O modo **Perfurante** tem um **Nível de Perfuração** (0–3) e enfrenta o **N
 
 **Cortante e Impacto não passam pelo gate**: sempre subtraem a absorção direto. É por isso que a placa completa (Nível 3) é à prova de qualquer arma de mão (espada, flecha, lança, besta, picareta param em N0–N2), cedendo só ao Impacto, à perfuração nível 3+ (cerco, magia), Proeza ou feitiçaria. O **Nível nunca soma** ao empilhar armaduras: vale sempre o maior.
 
-### Couraça de Porte
+### Couraça
 
-Bichos muito maiores que um homem não são só sacos de vida maiores: a pura massa, a pele grossa, as escamas e o casco viram **armadura de carne**. Cada porte acima do Médio soma uma **Couraça** à Absorção, e os maiores ganham um **Nível de Perfuração natural** (o mesmo gate da placa: flecha e lança comuns resvalam).
+A **Couraça** é a armadura natural de uma criatura, e vem **só da pele**: couro grosso, escama, placa, carapaça. A massa não dá Couraça; ela decide a Vida (ver [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura)). Nas coberturas mais duras, a ficha também pode dar **Perfuração natural**, o mesmo gate da armadura.
 
-A Couraça incide **só em Corte e Perfuração**: o **Impacto a ignora**. Cortar ou furar uma montanha de carne arranha a superfície; já uma pancada concentrada (maça, martelo, malho, um pedregulho) transfere a energia para dentro, do mesmo jeito que o Impacto vence a placa. Contra um titã, **esmague, não corte**, e contra os maiores, nem isso basta sem Centelha.
+Cada criatura tem um **nível de Couraça de 0 a 12**, numa escala única para animais, extintos, gigantes e criaturas sobrenaturais. O nível é de comparação: a criatura fica no nível em que cai quando posta ao lado das outras. Bicho grande tende a ter pele mais grossa, mas o tamanho não manda sozinho: um tatu de carapaça fica acima de um elefante. Para comparar: humano 0; cavalo 1; porco 1 a 2; búfalo e elefante 2 a 3; hipopótamo e rinoceronte 3 a 4; crocodilo e tatu 4 a 5; tartaruga grande, cerca de 6; anquilossauro 7 a 8. Acima disso ficam as criaturas sobrenaturais.
 
-| Porte | Couraça (Corte/Perf.) | Perfuração natural |
-|---|---|---|
-| Médio e menores | — | — |
-| Grande | +2 | — |
-| Enorme | +4 | 1 |
-| Imenso | +7 | 2 |
-| Colossal | +10 | 3 |
+**Quanto cada nível vale na Absorção: sem regra ainda.** Até essa regra sair, o nível fica na ficha e não entra na Absorção.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Um <strong>Verme Púrpura</strong> (Imenso) tem Absorção <strong>13</strong> contra lâminas. Um soldado com espada longa (1d6, média 3,5) não abre um arranhão; a flecha (Perf. 1) resvala na Perfuração natural 2. Um herói de montante (2d6, média 7) ainda não crava fundo, e uma Proeza que rasga ou um martelo no <strong>Impacto</strong> (que ignora a Couraça, Absorção 12) é o caminho para feri-lo de verdade. Já o <strong>Tarrasque</strong> (Colossal, Absorção 27 contra Corte, Perf. 3) zomba de qualquer aço mortal: só Centelha, Proeza ou feitiçaria o marcam.</div>
-
-A Couraça **empilha** com armadura (soma na Absorção) e com a Absorção de Proeza; o Nível de Perfuração natural entra no gate como o de uma armadura (vale sempre o **maior**, nunca soma).
+<p class="muted">A mesa ainda faz a conta antiga (Couraça pelo tamanho, de +2 no Grande a +10 no Colossal, e Perfuração natural de N1 no Enorme a N3 no Colossal) para as criaturas sem ficha nova, até o código mudar.</p>
 
 ### Trocar de modo
 
@@ -326,16 +342,18 @@ Um escudo é **hábil** quando cobre pelo menos **30% do seu corpo** (um escudo 
 
 Já as armas de arremesso **lentas** (a lança ou o machado lançado, o pilum, o bumerangue de caça e o de retorno, uma pedra grande) são pesadas e visíveis: essas você **bloqueia normalmente**, com arma, escudo ou mão, como no corpo a corpo.
 
-### Força e porte: quando a guarda não segura
+### Força e massa: quando a guarda não segura
 
-Aparar exige **força e tamanho para bancar o impacto**. Num golpe **corpo a corpo**, se o atacante te atropela demais, a rota de **Bloqueio some** e resta só a Esquiva:
+Aparar exige **força e massa para bancar o impacto**. Num golpe **corpo a corpo**, se o atacante te atropela demais, a rota de **Bloqueio some** e resta só a Esquiva:
 
-- **Porte:** você não bloqueia um atacante **2 ou mais categorias de porte maior** que você. Um Médio ainda segura um Grande (ogro) com esforço, mas não um Enorme+: um humano não apara a clava de um gigante.
-- **Força:** mesmo do mesmo tamanho, você não bloqueia quem tem **Força pelo menos o dobro da sua e ao menos +4 acima** (o brutamontes que arranca a arma da sua mão no impacto).
+- **Massa:** você não bloqueia um atacante **2 ou mais faixas de massa acima** da sua (ver *Massa nas Manobras*). O humano (faixa 3) ainda apara um cavalo ou um urso (faixa 4), mas não um rinoceronte nem um elefante (faixa 5). No Bloqueio vale só a trava: o +3 por faixa das Manobras não entra. <small>(provisório)</small>
+- **Força:** mesmo com a mesma massa, você não bloqueia quem tem **Força pelo menos o dobro da sua e ao menos +4 acima** (o brutamontes que arranca a arma da sua mão no impacto).
 
-A **Centelha rompe o limite mortal:** cada ponto de Centelha do defensor **sobe o teto de porte em uma categoria** (com Centelha 1 já se apara um Enorme; um semideus segura um titã). E se a **sua Centelha for igual ou maior que a do atacante**, a regra de Força é ignorada: poder equipara poder.
+A **Centelha rompe o limite mortal:** cada ponto de Centelha do defensor **sobe a trava de massa em uma faixa** (com Centelha 1, o humano já apara um elefante). E se a **sua Centelha for maior que 0 e igual ou maior que a do atacante**, a regra de Força é ignorada: poder equipara poder. Entre dois mortais (Centelha 0 contra Centelha 0), a regra de Força vale. <small>(provisório)</small>
 
-**Escudo grande escora:** plantar um escudo de tronco (heater, kite, scutum ou pavês) deixa você aguentar **uma categoria de porte acima** do seu limite, porque você escora a massa com o corpo todo em vez de aparar no braço.
+**Escudo grande escora:** plantar um escudo de tronco (heater, kite, scutum ou pavês) deixa você aguentar **uma faixa de massa acima** do seu limite, porque você escora a massa com o corpo todo em vez de aparar no braço.
+
+<p class="muted">A mesa não aplica esta trava sozinha: quem decide é o Mestre.</p>
 
 Mas **nem tudo se bloqueia ou se esquiva**: uma avalanche e uma onda de fogo cobram outra saída.
 
@@ -497,9 +515,9 @@ Quando dois golpes caem no **mesmo Tick**, os dois atacantes estão abertos ao m
 
 <p class="muted">Vale a pena dizer por que a regra é essa: se a guarda de quem ainda não narrou a jogada contasse como inteira, a jogada certa seria sempre <em>deixar o outro atacar primeiro</em>, e a vantagem de ter rolado bem na Iniciativa se voltaria contra quem a ganhou.</p>
 
-### Porte: o grande é fácil de acertar, o pequeno é difícil
+### Tamanho: o grande é fácil de acertar, o pequeno é difícil
 
-O tamanho conta na **jogada de acerto** dos **ataques físicos**: cada **categoria de porte** de diferença (Miúdo · Pequeno · Médio · Grande · Enorme · Imenso · Colossal) soma **+3**, **sem teto**. O corpo a corpo e a distância fazem a conta de jeitos diferentes:
+O tamanho conta na **jogada de acerto** dos **ataques físicos**: cada **categoria de tamanho** de diferença (Minúsculo · Miúdo · Pequeno · Médio · Grande · Enorme · Imenso · Colossal) soma **+3**, **sem teto**. O corpo a corpo e a distância fazem a conta de jeitos diferentes:
 
 - **Corpo a corpo: só o menor ganha.** Quem é menor que o alvo soma **+3 por categoria** de diferença contra ele. Quem é igual ou maior ataca **sem penalidade** e sem bônus. O motivo é de jogo: as criaturas grandes devem ser temidas pelas menores.
 - **À distância, relativo nos dois sentidos.** Qualquer ataque à distância (arremesso, projétil, arco, besta, ataque mágico e Artes físicas à distância) segue a regra do tiro: alvo **maior** que quem ataca, **+3 por categoria**; alvo **menor**, **−3 por categoria**.
@@ -507,16 +525,16 @@ O tamanho conta na **jogada de acerto** dos **ataques físicos**: cada **categor
 | Alvo, comparado a quem ataca | Corpo a corpo | À distância |
 |---|:---:|:---:|
 | **Maior** em *n* categorias | **+3 × n** | **+3 × n** |
-| **Do mesmo porte** | 0 | 0 |
+| **Do mesmo tamanho** | 0 | 0 |
 | **Menor** em *n* categorias | **0** | **−3 × n** |
 
 Sem teto quer dizer sem teto: um Miúdo que ataca um Colossal soma **+18**, de perto ou de longe. O Colossal que bate no Miúdo de perto rola sem penalidade, e o que o atinge de longe (uma Arte, um arremesso) tem **−18**.
 
-Atirar num Colossal **muito longe** continua difícil: o porte não escala a Efetiva (a distância em que a pontaria cai), entra só como bônus fixo no acerto. Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.
+Atirar num Colossal **muito longe** continua difícil: o tamanho não escala a Efetiva (a distância em que a pontaria cai), entra só como bônus fixo no acerto. Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.
 
-Isso é **só no acerto**: não muda a Defesa passiva do alvo, não é modificador de Defesa (então fica fora do teto de +6 dos bônus de Defesa), e não se aplica a ataques **Sociais** ou **Mentais**, nem a Artes de **área** sem rolagem de ataque. E não deixa o gigante indefeso: a **Couraça de Porte** (ver *Dano e Armadura*) devora o dano de quem é menor, então acertá-lo é fácil, mas feri-lo de verdade não é.
+Isso é **só no acerto**: não muda a Defesa passiva do alvo, não é modificador de Defesa (então fica fora do teto de +6 dos bônus de Defesa), e não se aplica a ataques **Sociais** ou **Mentais**, nem a Artes de **área** sem rolagem de ataque. Acertar o gigante fica fácil, e feri-lo é outra conta: a Vida dele sobe com a massa (ver [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura)), e a pele pode dar Couraça (ver *Couraça*).
 
-<div class="callout regra"><span class="lbl">Nota ao Mestre</span>O porte não dá Defesa a ninguém. Quando duas criaturas maiores que Médio lutam <strong>entre si</strong>, o Mestre pode aumentar a Defesa delas.</div>
+<div class="callout regra"><span class="lbl">Nota ao Mestre</span>O tamanho não dá Defesa a ninguém. Quando duas criaturas maiores que Médio lutam <strong>entre si</strong>, o Mestre pode aumentar a Defesa delas.</div>
 
 ### Pressão: muitos contra um
 

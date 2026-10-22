@@ -1,0 +1,189 @@
+{
+  "ordem": 158,
+  "id": "besouro-de-fogo",
+  "idAntigo": "mon-fire-beetle",
+  "nome": "Besouro-de-fogo",
+  "nomeIngles": "Fire Beetle",
+  "categoria": "Animal",
+  "categoriaLegada": "Fera",
+  "papel": "fera",
+  "conceito": "praga Pequeno",
+  "descricao": "Na mata escura, dois pontos verdes que se movem; mineiros e viajantes o prendem em gaiola como lanterna.",
+  "tags": [
+    "fera"
+  ],
+  "imagem": "bestiario/besouro-de-fogo_criatura.webp",
+  "porte": "Pequeno",
+  "dimensoes": {
+    "medida": "0,6 m de comprimento, 0,12 m de altura",
+    "peso": "0,55 kg",
+    "comprimento": 0.6,
+    "largura": 0.18,
+    "altura": 0.12,
+    "envergadura": 1
+  },
+  "locomocao": {
+    "terra": 1,
+    "voo": 4
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 1,
+    "arranque": 1,
+    "corrida": 2
+  },
+  "centelha": 0,
+  "attrs": {
+    "forca": 1,
+    "destreza": 2,
+    "vigor": 4,
+    "percepcao": 2,
+    "inteligencia": 1,
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
+  },
+  "skills": {
+    "briga": 2,
+    "esquiva": 2,
+    "atletismo": 1,
+    "furtividade": 1,
+    "prontidao": 1,
+    "resistencia": 2,
+    "sobrevivencia": 2
+  },
+  "skills2": {
+    "escalada": 1,
+    "musculatura": 2
+  },
+  "virtues": {
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 1
+  },
+  "willpower": 3,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Mandíbulas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -1,
+      "forca": false,
+      "classe": "leve"
+    }
+  ],
+  "habilidades": [
+    {
+      "nome": "o clique",
+      "descricao": "virado de costas, estala e salta para desvirar ou fugir.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "Antenas serreadas. Nenhum sentido acima do humano com número. Sem Especialidade natural. · visão crepuscular: \"Enxerga bem com pouca luz, embora dependa do próprio brilho para se guiar na escuridão total, já que não vê no escuro absoluto\"; texto do Mestre, sem Especialidade."
+    }
+  ],
+  "lore": [
+    {
+      "titulo": "Comportamento",
+      "texto": "Noturno por hábito, mas sem visão no escuro absoluto: por isso depende do próprio brilho para se orientar durante a noite. Social: solitário."
+    },
+    {
+      "titulo": "Uso Humano",
+      "texto": "Mineradores e excêntricos gostam de manter besouros-de-fogo engaiolados como fonte de luz barata e duradoura, já que o brilho persiste mesmo após a morte da criatura."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Em voo, Pequeno: o humano Médio não ganha nada; o besouro ganha +3 no corpo a corpo e quem atira nele leva −3. Parado, Miúdo, +6 e −6. O dano é 2,5 e os PV, 4: ninguém morre de besouro-de-fogo, e ele morre de um golpe de Impacto bem dado. O élitro é Couraça nível 1, e quanto ele tira da espada, da flecha e do golpe de Impacto fica para depois. O valor dele no jogo é a luz: uma lanterna viva, que não esquenta e que denuncia quem a leva. Força 1: atacante de Força 5 ou mais tira o Bloqueio dele (o dobro e ao menos 4 a mais)."
+    }
+  ],
+  "ecologia": {
+    "tipo": "Animal",
+    "terreno": [
+      "Any"
+    ],
+    "clima": [
+      "Temperate",
+      "Tropical"
+    ]
+  },
+  "notas": "",
+  "pendente": true,
+  "fonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Fire Beetle",
+    "cr": "1/3",
+    "tipo": "praga Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 10,
+      "des": 11,
+      "con": 11,
+      "int": "-",
+      "sab": 10,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "variantes": [],
+  "ameacaLegada": 1,
+  "v3": {
+    "pv": 4,
+    "esquiva": 8,
+    "bloqueio": 4,
+    "defesa": 8,
+    "defesaMental": 5,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 3.9,
+    "deslocamento": {
+      "terra": {
+        "batalha": 1,
+        "arranque": 1,
+        "corrida": 2
+      },
+      "voo": {
+        "batalha": 4,
+        "cruzeiro": 9
+      }
+    }
+  },
+  "notasObservacao": [
+    "`gigante`: o besouro-de-fogo não está na lista dos 16 gigantes da D-105. A ficha o trata como gigante do cucujo (k = 15, 60 cm; era k = 7,5 e 30 cm, o da ficha antiga); a alternativa é o cucujo real, Minúsculo e de cerca de 1 g, que fica como variante (D-105, D-174)",
+    "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; os 30 cm davam Miúdo de asas abertas, uma categoria só acima do cucujo, e os 60 cm (os \"about 2 feet\" do D&D 3.5) dão Pequeno, a 47% do corte do Miúdo (D-174)",
+    "`massa`: 0,55 kg pela decisão 13 (meio em log de 576,3 g pela regra do roc e 533 g pela reta dos voadores reais), e não os 4,05 kg do cubo. A massa do cucujo (1,2 g) é estimada pela escala de elaterídeos (Bolmin et al. 2022) (D-174)",
+    "`pv`: 4 (em vigor na Etapa 2, 20/10/2026); antes: 9 pela decisão 21 (5 + Vigor); pela outra proposta do autor seria 12. Era 19 pela tabela antiga [provisório]",
+    "`alvo`: Pequeno de asas abertas (0,176 m²) e Miúdo de asas fechadas (0,10 m², a 17% do corte do Pequeno), pela `tamanho-fichas-v2` (decisão 8)",
+    "`dimensoes`: a largura vem da razão medida no Pyrophorus divergens (Costa 1971); a altura e a envergadura continuam só por estimativa (D-174)",
+    "`anatomia`: artrópode alado, provisória (D-175)",
+    "`vigor`: 4, +1 sobre o animal de base (cucujo real, Vigor 3), o mínimo da D-176; revisto na oitava rodada pelo corpo (élitro na Couraça, traqueia) e pela massa (0,55 kg, ao lado do rato, 4), e fica (D-174). O cucujo não tem ficha, então a D-176 vale por leitura do Arquiteto",
+    "`forca`: 1 pela mandíbula, acima do cucujo (0), pelo item 8 da `tamanho-decisoes-5.md` e pela D-176; era 0. Provisória (D-169). A força relativa dos besouros (100 a 1.141 vezes a massa) não entra",
+    "`musculatura`: 2, animal comum; era 0. O clique é mola do tórax, e não músculo de erguer (D-174)",
+    "`pesoErguido`: 3,90 kg (em vigor na Etapa 2, 20/10/2026); antes: 3,9 kg pela fórmula das decisões 14 e 16, provisório (era 0,27)",
+    "`velocidade`: congelada (decisão 23). A corrida de 2,4 m/s quase alcança o besouro mais rápido medido (besouro-tigre, 2,5 m/s), o que parece alto para um elaterídeo; o voo de 31 km/h não tem real para conferir (D-170)",
+    "couraca: nível 1 (faixa 1 a 2) pela escala da quinta rodada, reanalisado na sétima (era 2): casca de cerca de 4 mm num corpo de 0,55 kg; o valor em absorção fica para depois.",
+    "`bloqueio`: a D-100 deixa a carapaça bloquear como arma; ficou como a mão nua, porque o élitro do elaterídeo é fino em absoluto (D-100, D-174)",
+    "`furtividade`: 1, nova, pelo levantamento: a luz o mostra em voo; apagado no chão, some (D-174)",
+    "`escalada`: 1, nova, sem dado do cucujo [extrapolação]",
+    "`resistencia`: 2 pela régua [extrapolação]; nada de jejum, água ou temperatura na pesquisa",
+    "`elementos`: nenhum. A luz é fria (bioluminescência), e não fogo; a ficha antiga também não tinha elemento. O nome fica pela tradição do d20 (D-174)",
+    "`luz`: sem raio em metros nem duração depois da morte, por falta de medida; o Pathfinder dá 10 pés e 1d6 dias, que não se copiam (D-158). Fica com o Mestre (D-087)"
+  ]
+}

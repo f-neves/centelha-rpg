@@ -63,7 +63,7 @@ const S = {
   // bonusCondicional e a forma unica dos dez tracos numericos, bonus e escopo
   // sempre juntos (o campo `campo` so existe na Vitalidade, que aplica direto
   // num derivado em vez de so ser oferecida).
-  racas: z.object({ id: z.string(), nome: z.string(), porte: z.enum(['minusculo', 'pequeno', 'medio', 'grande', 'enorme', 'imenso', 'colossal']), custo: z.number().int().nonnegative(), atributos: z.record(z.number().int()), aparenciaMod: z.number().int(), aparenciaUniversal: z.boolean(), descricao: z.string(), tracos: z.array(z.string()), deslocamentoFrac: z.number().positive().optional(), longevidade: z.enum(['curta', 'padrao', 'longa', 'muito-longa']).optional(), bonusCondicional: z.array(z.object({ bonus: z.string(), escopo: z.string(), campo: z.string().optional(), nome: z.string().optional() })).optional() }),
+  racas: z.object({ id: z.string(), nome: z.string(), porte: z.enum(['minusculo', 'miudo', 'pequeno', 'medio', 'grande', 'enorme', 'imenso', 'colossal']), custo: z.number().int().nonnegative(), atributos: z.record(z.number().int()), aparenciaMod: z.number().int(), aparenciaUniversal: z.boolean(), descricao: z.string(), tracos: z.array(z.string()), deslocamentoFrac: z.number().positive().optional(), longevidade: z.enum(['curta', 'padrao', 'longa', 'muito-longa']).optional(), bonusCondicional: z.array(z.object({ bonus: z.string(), escopo: z.string(), campo: z.string().optional(), nome: z.string().optional() })).optional() }),
   inimigos: z.object({
     id: z.string(), nome: z.string(), tipo: z.enum(['capanga', 'soldado', 'elite', 'fera', 'chefe']),
     categoria: z.string().optional(),
@@ -1053,7 +1053,8 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
 // calados. (O deslocamento é conferido pelo test-deslocamento.mjs, que compara o
 // monsters.json com o satélite.)
 {
-  const { criaturaSchema, PERICIAS_LEGADAS } = await import('./criatura-schema.mjs');
+  const { criaturaSchema, PERICIAS_LEGADAS, HABILIDADES_DE_CRIATURA } = await import('./criatura-schema.mjs');
+  const SO_CRIATURA = new Set(HABILIDADES_DE_CRIATURA);
   const PASTA = path.join(DIR, 'bestiario');
   const SEC = new Set((data['habilidades-secundarias'] || []).map((x) => x.id));
   const ARMD = new Set((data.armaduras || []).map((x) => x.id));
@@ -1073,10 +1074,10 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
       ordens.set(c.ordem, f);
     }
     for (const k of Object.keys(c.skills)) if (!H.has(k) && !PERICIAS_LEGADAS[k]) fail(`${onde}: skills.${k} não é Habilidade primária${SEC.has(k) ? ' (é secundária: vai em skills2)' : ''}`);
-    for (const k of Object.keys(c.skills2 || {})) if (!SEC.has(k)) fail(`${onde}: skills2.${k} não é Habilidade secundária`);
+    for (const k of Object.keys(c.skills2 || {})) if (!SEC.has(k) && !SO_CRIATURA.has(k)) fail(`${onde}: skills2.${k} não é Habilidade secundária`);
     for (const a of c.ataques) {
       if (!A.has(a.atrib)) fail(`${onde}: ataque "${a.nome}" usa o atributo inexistente "${a.atrib}"`);
-      if (!H.has(a.pericia) && !SEC.has(a.pericia) && !PERICIAS_LEGADAS[a.pericia]) fail(`${onde}: ataque "${a.nome}" usa a perícia inexistente "${a.pericia}"`);
+      if (!H.has(a.pericia) && !SEC.has(a.pericia) && !SO_CRIATURA.has(a.pericia) && !PERICIAS_LEGADAS[a.pericia]) fail(`${onde}: ataque "${a.nome}" usa a perícia inexistente "${a.pericia}"`);
     }
     for (const id of Object.keys(c.arte || {})) if (!ART.has(id)) fail(`${onde}: arte inexistente "${id}"`);
     for (const id of Object.keys(c.tech || {})) if (!T.has(id)) fail(`${onde}: técnica inexistente "${id}"`);
@@ -1110,6 +1111,63 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
     }
   }
   if (!arqs.length) fail('src/data/bestiario/: nenhuma ficha de criatura');
+}
+
+// ------------------------------------------- D-179 · a arte do bestiário existe
+//
+// Caminho para arquivo que não existe vira <img> quebrado no card, e calado. Todo
+// `imagem` e todo `imagem2` que não é null aponta para um arquivo de `public/`, e a
+// segunda imagem só existe onde há a primeira (D-179, itens 14 e 16).
+{
+  const PUB = path.join(DIR, '..', '..', 'public');
+  const PASTA = path.join(DIR, 'bestiario');
+  for (const f of fs.readdirSync(PASTA).filter((x) => x.endsWith('.json'))) {
+    let c; try { c = JSON.parse(fs.readFileSync(path.join(PASTA, f), 'utf8')); } catch { continue; }
+    for (const k of ['imagem', 'imagem2']) {
+      if (c[k] == null) continue;
+      if (/^(https?:|data:)/.test(c[k])) continue;
+      if (!fs.existsSync(path.join(PUB, c[k]))) fail(`bestiario/${f}: ${k} "${c[k]}" não existe em public/`);
+    }
+    if (c.imagem2 != null && c.imagem == null) fail(`bestiario/${f}: imagem2 sem imagem`);
+  }
+}
+
+// ------------------------------------------- D-179 · os ids antigos do bestiário
+//
+// `ids-antigos.json` leva cada id antigo (`mon-lobo`) ao definitivo (`lobo`), para
+// o `#mon-lobo` de um link velho ainda achar o card. Ele é gerado do
+// `ids-definitivos.tsv` do Arquiteto, que fica fora do repositório.
+//
+// A troca foi feita (etapa 4 do plano de publicação): todo valor é id de criatura e
+// nenhuma chave é. E O PAR TEM DE ESTAR DOS DOIS LADOS: cada fonte que mudou de id
+// guarda o de antes em `idAntigo`, e o par do `ids-antigos.json` tem de dizer o
+// mesmo. Isso pega o par apagado da tabela (a fonte ainda tem `idAntigo`) e o par
+// inventado (nenhuma fonte o reclama).
+{
+  const ARQ = path.join(DIR, 'ids-antigos.json');
+  if (!fs.existsSync(ARQ)) fail('ids-antigos.json: arquivo ausente');
+  else {
+    const pares = read('ids-antigos.json');
+    const PASTA = path.join(DIR, 'bestiario');
+    const fontes = fs.readdirSync(PASTA).filter((f) => f.endsWith('.json'))
+      .map((f) => { try { return JSON.parse(fs.readFileSync(path.join(PASTA, f), 'utf8')); } catch { return null; } })
+      .filter(Boolean);
+    const ids = new Set(fontes.map((c) => c.id));
+    const antigoDe = new Map(fontes.filter((c) => c.idAntigo).map((c) => [c.id, c.idAntigo]));
+    const vistos = new Map();
+    for (const [antigo, novo] of Object.entries(pares)) {
+      if (typeof novo !== 'string' || !/^[a-z0-9-]+$/.test(novo)) { fail(`ids-antigos.json: "${antigo}" leva a um id inválido (${JSON.stringify(novo)})`); continue; }
+      if (antigo === novo) fail(`ids-antigos.json: "${antigo}" leva a ele mesmo`);
+      if (vistos.has(novo)) fail(`ids-antigos.json: "${antigo}" e "${vistos.get(novo)}" levam ao mesmo id "${novo}"`);
+      vistos.set(novo, antigo);
+      if (!ids.has(novo)) fail(`ids-antigos.json: "${novo}" não é id de criatura`);
+      if (ids.has(antigo)) fail(`ids-antigos.json: "${antigo}" ainda é id de criatura`);
+      if (ids.has(novo) && antigoDe.get(novo) !== antigo) fail(`ids-antigos.json: "${antigo}" leva a "${novo}", mas a fonte de "${novo}" diz idAntigo ${JSON.stringify(antigoDe.get(novo) ?? null)}`);
+    }
+    for (const [id, antigo] of antigoDe) {
+      if (pares[antigo] !== id) fail(`bestiario/${id}.json: idAntigo "${antigo}" sem o par em ids-antigos.json`);
+    }
+  }
 }
 
 if (erros.length) {

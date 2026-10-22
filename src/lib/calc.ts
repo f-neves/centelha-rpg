@@ -24,7 +24,7 @@ export function poolStr(atributo: number, habilidade: number) {
   return `${dados}d6${bonus ? ` + ${bonus}` : ''}`;
 }
 
-export type Porte = 'minusculo' | 'pequeno' | 'medio' | 'grande' | 'enorme' | 'imenso' | 'colossal';
+export type Porte = 'minusculo' | 'miudo' | 'pequeno' | 'medio' | 'grande' | 'enorme' | 'imenso' | 'colossal';
 
 /**
  * A LINHA de `derivados.pv.porte` em uso, para quem precisa EXPLICAR a conta e
@@ -93,14 +93,14 @@ export function passouDoLimite(
 /**
  * O rótulo do porte, como o bestiário escreve ("Miúdo", "Médio"), normalizado
  * para a chave de `Porte`. MESMA FORMA e MESMO MOTIVO do `norm` de
- * `gen-bestiario.mjs`: minúsculas, sem acento, com "miudo" mapeado para
- * "minusculo" — reescrever esta conversão à mão em outro lugar já custou 24
- * criaturas sem Furtividade (`regras.json → furtividadeCriatura.porte.nota`),
+ * `gen-bestiario.mjs`: minúsculas, sem acento; desde a D-179 "miudo" e
+ * "minusculo" são dois portes (o Minúsculo é o oitavo). Reescrever esta
+ * conversão à mão em outro lugar já custou 24 criaturas sem Furtividade (`regras.json → furtividadeCriatura.porte.nota`),
  * porque "miudo" não batia com a chave certa. As duas conversões precisam
  * andar juntas: mudou uma, olhe a outra.
  */
 const NORM_PORTE: Record<string, Porte> = {
-  miudo: 'minusculo', minusculo: 'minusculo', pequeno: 'pequeno', medio: 'medio',
+  miudo: 'miudo', minusculo: 'minusculo', pequeno: 'pequeno', medio: 'medio',
   grande: 'grande', enorme: 'enorme', imenso: 'imenso', colossal: 'colossal',
 };
 export function porteDeRotulo(rotulo: string | null | undefined): Porte {
@@ -111,21 +111,21 @@ export function porteDeRotulo(rotulo: string | null | undefined): Porte {
 /**
  * O modificador de acerto por diferença de porte (`regras.json → porteAcerto`).
  *
- * Positivo quando o ALVO é MAIOR que o atacante (acertar alvo maior soma);
- * negativo quando o alvo é menor. Simétrico e com teto de `capCategorias`
- * categorias de diferença. Só a metade da compensação: a outra metade
+ * A D-077, sem teto: +3 por categoria (`reforma.porCategoria`) pela `ordem`.
+ * Corpo a corpo só o menor ganha; à distância é relativo nos dois sentidos
+ * (alvo menor dá −3 por categoria). Só a metade da compensação: a outra metade
  * (Couraça de Porte, que corta o dano de quem é menor) já está aplicada em
  * tempo de geração (`gen-bestiario.mjs`), somada na `absorcao` de cada
  * criatura — esta função completa o par, não inventa um novo.
  */
-export function modificadorPorte(porteAtacante: Porte, porteAlvo: Porte): number {
-  const t = regras.porteAcerto as { ordem: string[]; porDiferenca: number[]; capCategorias: number };
+export function modificadorPorte(porteAtacante: Porte, porteAlvo: Porte, aDistancia = false): number {
+  const t = regras.porteAcerto as { ordem: string[]; reforma: { porCategoria: number } };
   const ia = t.ordem.indexOf(porteAtacante);
   const ib = t.ordem.indexOf(porteAlvo);
   if (ia < 0 || ib < 0) return 0;
   const diff = ib - ia; // positivo: o alvo está mais alto na ordem, é maior
-  const cat = Math.min(Math.abs(diff), t.capCategorias);
-  return Math.sign(diff) * (t.porDiferenca[cat] ?? 0);
+  if (diff <= 0 && !aDistancia) return 0; // de perto, o maior ataca o menor sem penalidade
+  return diff * t.reforma.porCategoria;
 }
 
 /**
