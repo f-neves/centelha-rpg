@@ -2524,7 +2524,7 @@ As D-176 a D-178 respondem às questões 1, 2 e 3a de `../tmp/arquiteto/bestiari
   - 22 · Esforço contínuo (nenhuma D). Vale tamanho-decisoes-5, item 1: "é observação do mundo real, não regra... O campo «Esforço contínuo» sai das fichas", no lugar de tamanho-decisoes-4, item 5.
   - 23 · Aparência medonha. Fechado pela D-181.
   - 24 · Os delegados do tamanho-decisoes-3 (itens 15, 16, 19, 20, 21, 22, 23, 24, 25 e 26) passam a valer como regra, e deixam de ser revisáveis só por serem delegados. Onde um arquivo mais novo trata do mesmo ponto, vale o mais novo: o item 21 (Faixa 1 de PV) cede à tabela de 11 linhas (ponto 9), e o item 19 (custos da massa alta) continua sendo sugestão para a fase de testes, que é o que ele diz.
-- Estado: decidida; vale para as fichas de criatura e para o manual (`../tmp/arquiteto/bestiario/manual-fichas-criatura.md`, seção 3, que passa a ter uma fonte só). Cada decisão antiga citada leva no Estado a marca "substituída em parte pela D-180" no ponto em que diverge. **O site não muda por esta decisão:** a publicação do bestiário (D-179, item 19) segue fazendo manobra, alcance e velocidade como hoje, e o nome "Porte" continua no site (D-179, item 13), embora o item 25 ("Alvo") agora seja regra; a troca do nome no site e no livro é rodada à parte, com ordem do autor.
+- Estado: decidida; vale para as fichas de criatura e para o manual (`../tmp/arquiteto/bestiario/manual-fichas-criatura.md`, seção 3, que passa a ter uma fonte só). Cada decisão antiga citada leva no Estado a marca "substituída em parte pela D-180" no ponto em que diverge. **O site não muda por esta decisão:** a publicação do bestiário (D-179, item 19) segue fazendo manobra, alcance e velocidade como hoje, e o nome "Porte" continua no site (D-179, item 13), embora o item 25 ("Alvo") agora seja regra; a troca do nome no site e no livro é rodada à parte, com ordem do autor. **O nome "Alvo" foi substituído pela D-183 (22/10/2026): a categoria se chama "Tamanho".**
 
 ### D-181 · Aparência de criatura: escala de 0 a 12; o medonho é habilidade especial, e não número [tags: bestiario, criatura, aparencia, medonho, habilidade-especial, sem-regra-ainda, d-107, d-138, b20]
 - Data: 2026-10-21
@@ -2537,6 +2537,12 @@ As D-176 a D-178 respondem às questões 1, 2 e 3a de `../tmp/arquiteto/bestiari
 - Decisão (autor, 21/10/2026, princípio para o topo do manual): "nem tudo o que vai na ficha precisa ter regra. A ficha registra o que a criatura é e faz; o que não tem regra fica marcado «sem regra ainda» e a regra vem depois. A Bestiarista não inventa regra nem para a ficha por falta dela."
 - Origem: mensagem do autor de 21/10/2026.
 - Estado: decidida; no topo de `../tmp/arquiteto/bestiario/manual-fichas-criatura.md`. Convive com a D-087 (o caso de borda é do Mestre) e com a D-174 (dúvida que não bloqueia vira decisão provisória com nota): a falta de regra não é dúvida que bloqueia, e não vira pergunta ao autor.
+
+### D-183 · A categoria de tamanho se chama "Tamanho", e não "Alvo" nem "Porte" [tags: bestiario, criatura, tamanho, porte, alvo, nome, glossario, mesa, d-077, d-166, d-179, d-180, b20]
+- Data: 2026-10-22
+- Decisão (autor, 22/10/2026): "Não quero «Alvo», quero «Tamanho». Porque é a «Categoria de Tamanho» do alvo. Então é Tamanho: Grande, Médio, Pequeno, Enorme, etc"
+- Origem: mensagem do autor de 22/10/2026, resposta à pergunta do Arquiteto sobre a troca de "Porte" por "Alvo" (D-179, item 13).
+- Estado: a implementar. Substitui o nome "Alvo" do item 25 do tamanho-decisoes-3 (delegado que a D-180, ponto 24, tornou regra) e o "O nome «Porte» continua" do item 13 da D-179. Só o nome muda: as oito categorias (Minúsculo, Miúdo, Pequeno, Médio, Grande, Enorme, Imenso, Colossal), o que elas decidem e os números ficam. A troca no site, no livro e na mesa é texto visível; as chaves internos dos dados (`porte` nos JSON) não mudam.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
