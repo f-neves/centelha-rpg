@@ -140,7 +140,7 @@
     "pv": 90,
     "esquiva": 6,
     "bloqueio": 8,
-    "defesa": 8,
+    "defesa": 9,
     "defesaMental": 7,
     "defesaSocial": 10,
     "absorcao": {
@@ -162,7 +162,8 @@
         "arranque": 5,
         "corrida": 7
       }
-    }
+    },
+    "bloqueioArma": 1
   },
   "notasObservacao": [
     "forca: 13 pela âncora do autor (12 a 14; decisão 9), proposta do Arquiteto. Era 18 e era a âncora dos seis gigantes comparados (D-163); a comparação se refaz com o 13. Sem força medida do mamute; o peso erguido (2.035 kg) fica dentro do arrasto do elefante de trabalho (1 a 3 t).",

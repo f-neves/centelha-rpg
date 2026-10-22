@@ -569,7 +569,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Garras (talões): Dano do agarrão: 2 × Força = 4."
+    "descricao": "Garras (talões)"
    },
    {
     "nome": "mergulho sobre a presa",
@@ -665,7 +665,7 @@
   },
   "combate": {
    "pv": 50,
-   "defesa": 10,
+   "defesa": 12,
    "defesaSocial": 6,
    "defesaMental": 7,
    "absorcao": {
@@ -1225,7 +1225,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "patas da frente: Dano do agarrão: 2 × Força = 6."
+    "descricao": "patas da frente"
    },
    {
     "nome": "arrastar a presa até a toca",
@@ -2267,7 +2267,7 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 8,
+   "defesa": 9,
    "defesaSocial": 8,
    "defesaMental": 7,
    "absorcao": {
@@ -3852,7 +3852,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Mandíbulas: Dano do agarrão: 2 × Força = 8."
+    "descricao": "Mandíbulas"
    },
    {
     "nome": "derrubar",
@@ -4109,7 +4109,7 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 8,
+   "defesa": 9,
    "defesaSocial": 8,
    "defesaMental": 7,
    "absorcao": {
@@ -4684,7 +4684,7 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": 6,
    "defesaMental": 5,
    "absorcao": {
@@ -6491,7 +6491,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Mordida (segura e sacode): Dano do agarrão: 2 × Força = 4 por manutenção."
+    "descricao": "Mordida (segura e sacode)"
    },
    {
     "nome": "derrubar",
@@ -6632,7 +6632,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "Mordida: Dano do agarrão: 2 × Força = 6 por manutenção."
+    "descricao": "Mordida"
    },
    {
     "nome": "Sentidos",
@@ -7396,7 +7396,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Pinça: Dano do agarrão: 2 × Força = 10. O \"Constrição\" da ficha atual é este Agarrão."
+    "descricao": "Pinça: O \"Constrição\" da ficha atual é este Agarrão."
    },
    {
     "nome": "puxar para a água",
@@ -8356,7 +8356,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "patas da frente e o corpo que enrola: Dano do agarrão: 2 × Força = 8. Segura com até 8 pares de patas."
+    "descricao": "patas da frente e o corpo que enrola: Segura com até 8 pares de patas."
    },
    {
     "nome": "espinhos das patas de trás",
@@ -10309,7 +10309,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "garras da mão (puxam a presa) e garra do pé (prende no chão): Dano do agarrão: 2 × Força = 8 (não muda)."
+    "descricao": "garras da mão (puxam a presa) e garra do pé (prende no chão)"
    },
    {
     "nome": "prender com o peso do corpo",
@@ -15590,7 +15590,7 @@
   },
   "combate": {
    "pv": 80,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": 8,
    "defesaMental": 7,
    "absorcao": {
@@ -17602,7 +17602,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Pinça: Dano do agarrão: 2 × Força = 10. As \"garras duplas\" da ficha antiga do bestiário viram um agarrão, um ataque por ação."
+    "descricao": "Pinça: As \"garras duplas\" da ficha antiga do bestiário viram um agarrão, um ataque por ação."
    },
    {
     "nome": "ferroar o agarrado",
@@ -19932,7 +19932,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Mandíbulas: Dano do agarrão: 2 × Força = 6. A ficha antiga do bestiário prende com a mandíbula e ferroa em seguida; aqui é um ataque por ação."
+    "descricao": "Mandíbulas: A ficha antiga do bestiário prende com a mandíbula e ferroa em seguida; aqui é um ataque por ação."
    },
    {
     "nome": "arrastar a presa",
@@ -22133,7 +22133,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Pancada (a mão): Dano do agarrão: 2 × Força = 18 por manutenção."
+    "descricao": "Pancada (a mão)"
    },
    {
     "nome": "carga simulada",
@@ -23750,7 +23750,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Pancada (a mão): Dano do agarrão: 2 × Força = 14 por manutenção."
+    "descricao": "Pancada (a mão)"
    },
    {
     "nome": "carga simulada",
@@ -24359,7 +24359,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "Mordida (na garganta): Dano do agarrão: 2 × Força = 6."
+    "descricao": "Mordida (na garganta)"
    },
    {
     "nome": "arrastar",
@@ -24955,7 +24955,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "Mordida: Dano do agarrão: 2 × Força = 8 por manutenção."
+    "descricao": "Mordida"
    },
    {
     "nome": "tática de matilha",
@@ -25088,7 +25088,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "Mordida: Dano do agarrão: 2 × Força = 14 por manutenção."
+    "descricao": "Mordida"
    },
    {
     "nome": "tática de matilha",
@@ -26254,7 +26254,7 @@
   "habilidades": [
    {
     "nome": "constrição = agarrar",
-    "descricao": "Mordida (bote para agarrar): Dano do agarrão 2 × Força 5 = 10 por manutenção (Força 5 do autor), com a Briga (Agarrão) +3 natural. As voltas sobre o tórax param a circulação: em 6 s a pressão arterial cai à metade, em 60 s o coração bate a metade, e ao fim (cerca de 6, 5 min) 10 de 11 ratos tinham falha elétrica do coração. Pressão em kPa: não conferida. O humano adulto é grande demais para ser presa."
+    "descricao": "Mordida (bote para agarrar): As voltas sobre o tórax param a circulação: em 6 s a pressão arterial cai à metade, em 60 s o coração bate a metade, e ao fim (cerca de 6, 5 min) 10 de 11 ratos tinham falha elétrica do coração. Pressão em kPa: não conferida. O humano adulto é grande demais para ser presa."
    },
    {
     "nome": "bote",
@@ -27445,7 +27445,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "mordida: segura a garganta por até 13 minutos. Dano do agarrão: 2 × Força = 12 por manutenção."
+    "descricao": "mordida: segura a garganta por até 13 minutos."
    },
    {
     "nome": "derrubar",
@@ -27590,7 +27590,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Mordida (na garganta): Dano do agarrão: 2 × Força = 14 por manutenção."
+    "descricao": "Mordida (na garganta)"
    },
    {
     "nome": "derrubar",
@@ -27725,7 +27725,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Mordida (na garganta): Dano do agarrão: 2 × Força = 10 por manutenção."
+    "descricao": "Mordida (na garganta)"
    },
    {
     "nome": "derrubar",
@@ -27995,7 +27995,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Mordida (na garganta ou na nuca): Dano do agarrão: 2 × Força = 10 por manutenção."
+    "descricao": "Mordida (na garganta ou na nuca)"
    },
    {
     "nome": "derrubar",
@@ -29714,7 +29714,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Patas raptoriais: Dano do agarrão: 2 × Força = 8. O golpe que agarra e a mordida na presa presa são dois ataques, um por ação."
+    "descricao": "Patas raptoriais: O golpe que agarra e a mordida na presa presa são dois ataques, um por ação."
    },
    {
     "nome": "bote",
@@ -29861,7 +29861,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Braços e tentáculos: Dano do agarrão 2 × Força = 8 por manutenção. Agarrada, a presa vai ao bico."
+    "descricao": "Braços e tentáculos: Agarrada, a presa vai ao bico."
    },
    {
     "nome": "arrastar para o fundo",
@@ -30001,7 +30001,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Braços e tentáculos: Dano do agarrão 2 × Força = 2 por manutenção: segura o peixe pequeno e o leva ao bico; contra um humano, o Mestre decide se segura uma mão."
+    "descricao": "Braços e tentáculos: Segura o peixe pequeno e o leva ao bico; contra um humano, o Mestre decide se segura uma mão."
    },
    {
     "nome": "arrastar para o fundo",
@@ -30134,7 +30134,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Tentáculos: Dano do agarrão 2 × Força = 14 por manutenção. Os tentáculos enrolam a presa e a levam aos braços e ao bico."
+    "descricao": "Tentáculos: Os tentáculos enrolam a presa e a levam aos braços e ao bico."
    },
    {
     "nome": "alcance dos tentáculos",
@@ -30518,7 +30518,7 @@
   },
   "combate": {
    "pv": 90,
-   "defesa": 8,
+   "defesa": 9,
    "defesaSocial": 10,
    "defesaMental": 7,
    "absorcao": {
@@ -31227,7 +31227,7 @@
   },
   "combate": {
    "pv": 90,
-   "defesa": 8,
+   "defesa": 9,
    "defesaSocial": 8,
    "defesaMental": 7,
    "absorcao": {
@@ -31561,7 +31561,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "mordida: Dano do agarrão: 2 × Força = 26 por manutenção."
+    "descricao": "mordida"
    },
    {
     "nome": "investida de baixo",
@@ -33064,7 +33064,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "mordida: Dano do agarrão: 2 × Força = 14 por manutenção."
+    "descricao": "mordida"
    },
    {
     "nome": "mandíbulas da garganta",
@@ -33330,7 +33330,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "mordida: Dano do agarrão: 2 × Força = 24 por manutenção."
+    "descricao": "mordida"
    },
    {
     "nome": "luta pelo focinho",
@@ -35533,7 +35533,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "mordida: Dano do agarrão: 2 × Força = 20 por manutenção."
+    "descricao": "mordida"
    },
    {
     "nome": "tapa de cauda",
@@ -36959,7 +36959,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Braços: Dano do agarrão 2 × Força = 2: segura a presa pequena; contra um humano, o Mestre decide se o braço segura uma mão (40 N por braço)."
+    "descricao": "Braços: Segura a presa pequena; contra um humano, o Mestre decide se o braço segura uma mão (40 N por braço)."
    },
    {
     "nome": "nuvem de tinta",
@@ -37100,7 +37100,7 @@
   "habilidades": [
    {
     "nome": "constrição = agarrar",
-    "descricao": "Braços: Dano do agarrão 2 × Força = 14 por manutenção. Foi assim que a real matou os cações do Seattle Aquarium."
+    "descricao": "Braços: Foi assim que a real matou os cações do Seattle Aquarium."
    },
    {
     "nome": "arrastar para a toca",
@@ -39257,7 +39257,7 @@
   },
   "combate": {
    "pv": 75,
-   "defesa": 8,
+   "defesa": 9,
    "defesaSocial": 6,
    "defesaMental": 9,
    "absorcao": {
@@ -39451,7 +39451,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Garras (talões): Dano do agarrão: 2 × Força = 14."
+    "descricao": "Garras (talões)"
    },
    {
     "nome": "mergulho sobre a presa",
@@ -39886,7 +39886,7 @@
   "habilidades": [
    {
     "nome": "fixar = agarrar",
-    "descricao": "Mordida: Dano do agarrão 2 × Força = 4 por manutenção. Presa, a ventosa segura cerca de 20 vezes o peso do corpo."
+    "descricao": "Mordida: Presa, a ventosa segura cerca de 20 vezes o peso do corpo."
    },
    {
     "nome": "sugar",
@@ -42346,7 +42346,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "Mordida (na garganta): Dano do agarrão: 2 × Força = 14 por manutenção."
+    "descricao": "Mordida (na garganta)"
    },
    {
     "nome": "derrubar",
@@ -42483,7 +42483,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "patada (os antebraços seguram a presa): Dano do agarrão: 2 × Força = 16 por manutenção. Pela leitura dos paleontólogos, o golpe dos caninos vem depois que a presa está presa."
+    "descricao": "patada (os antebraços seguram a presa): Pela leitura dos paleontólogos, o golpe dos caninos vem depois que a presa está presa."
    },
    {
     "nome": "derrubar",
@@ -42596,7 +42596,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "mordida: Dano do agarrão: 2 × Força = 24 por manutenção."
+    "descricao": "mordida"
    },
    {
     "nome": "engolir",
@@ -42994,7 +42994,7 @@
   },
   "combate": {
    "pv": 85,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": 6,
    "defesaMental": 7,
    "absorcao": {
@@ -43861,7 +43861,7 @@
   "habilidades": [
    {
     "nome": "agarrar (o \"abraço\")",
-    "descricao": "Patada: Dano do agarrão: 2 × Força = 16 por manutenção, mais 1d6 por Margem."
+    "descricao": "Patada"
    },
    {
     "nome": "Sentidos",
@@ -44115,7 +44115,7 @@
   "habilidades": [
    {
     "nome": "agarrar (o \"abraço\")",
-    "descricao": "Patada: Dano do agarrão: 2 × Força = 14 por manutenção, mais 1d6 por Margem."
+    "descricao": "Patada"
    },
    {
     "nome": "fúria ferida",
@@ -44251,7 +44251,7 @@
   "habilidades": [
    {
     "nome": "agarrar (o \"abraço\")",
-    "descricao": "Patada: Dano do agarrão: 2 × Força = 14 por manutenção, mais 1d6 por Margem."
+    "descricao": "Patada"
    },
    {
     "nome": "fúria ferida",
@@ -45131,7 +45131,7 @@
   "habilidades": [
    {
     "nome": "agarrar",
-    "descricao": "patas: Dano do agarrão: 2 × Força = 4. Segura a presa para ferroar."
+    "descricao": "patas: Segura a presa para ferroar."
    },
    {
     "nome": "paralisar",

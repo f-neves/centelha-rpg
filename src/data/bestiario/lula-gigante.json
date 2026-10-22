@@ -100,7 +100,7 @@
   "habilidades": [
     {
       "nome": "agarrar",
-      "descricao": "Tentáculos: Dano do agarrão 2 × Força = 14 por manutenção. Os tentáculos enrolam a presa e a levam aos braços e ao bico.",
+      "descricao": "Tentáculos: Os tentáculos enrolam a presa e a levam aos braços e ao bico.",
       "classe": "livro"
     },
     {

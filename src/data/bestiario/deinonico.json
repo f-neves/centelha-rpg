@@ -114,7 +114,7 @@
   "habilidades": [
     {
       "nome": "agarrar",
-      "descricao": "garras da mão (puxam a presa) e garra do pé (prende no chão): Dano do agarrão: 2 × Força = 8 (não muda).",
+      "descricao": "garras da mão (puxam a presa) e garra do pé (prende no chão)",
       "classe": "livro"
     },
     {

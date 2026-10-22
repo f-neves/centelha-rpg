@@ -94,7 +94,7 @@
   "habilidades": [
     {
       "nome": "fixar = agarrar",
-      "descricao": "Mordida: Dano do agarrão 2 × Força = 4 por manutenção. Presa, a ventosa segura cerca de 20 vezes o peso do corpo.",
+      "descricao": "Mordida: Presa, a ventosa segura cerca de 20 vezes o peso do corpo.",
       "classe": "livro"
     },
     {

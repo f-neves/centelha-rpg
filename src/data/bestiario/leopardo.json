@@ -123,7 +123,7 @@
   "habilidades": [
     {
       "nome": "agarrar",
-      "descricao": "Mordida (na garganta ou na nuca): Dano do agarrão: 2 × Força = 10 por manutenção.",
+      "descricao": "Mordida (na garganta ou na nuca)",
       "classe": "livro"
     },
     {

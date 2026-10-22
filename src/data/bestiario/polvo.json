@@ -97,7 +97,7 @@
   "habilidades": [
     {
       "nome": "agarrar",
-      "descricao": "Braços: Dano do agarrão 2 × Força = 2: segura a presa pequena; contra um humano, o Mestre decide se o braço segura uma mão (40 N por braço).",
+      "descricao": "Braços: Segura a presa pequena; contra um humano, o Mestre decide se o braço segura uma mão (40 N por braço).",
       "classe": "livro"
     },
     {

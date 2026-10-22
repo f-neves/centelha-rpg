@@ -118,7 +118,7 @@
   "habilidades": [
     {
       "nome": "agarrar",
-      "descricao": "Patas raptoriais: Dano do agarrão: 2 × Força = 8. O golpe que agarra e a mordida na presa presa são dois ataques, um por ação.",
+      "descricao": "Patas raptoriais: O golpe que agarra e a mordida na presa presa são dois ataques, um por ação.",
       "classe": "livro"
     },
     {

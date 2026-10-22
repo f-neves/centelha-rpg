@@ -193,7 +193,7 @@
     "pv": 75,
     "esquiva": 6,
     "bloqueio": 8,
-    "defesa": 8,
+    "defesa": 9,
     "defesaMental": 9,
     "defesaSocial": 6,
     "absorcao": {
@@ -215,7 +215,8 @@
         "arranque": 6,
         "corrida": 8
       }
-    }
+    },
+    "bloqueioArma": 1
   },
   "notasObservacao": [
     "massa: 2.250 kg (em vigor na Etapa 2, 20/10/2026); antes: 2.050 kg, a média simples do macho (2.300) e da fêmea (1.800) do Zoológico de San Diego, a mesma fonte; era o macho de 2.300 kg (sexta rodada, item 4).",

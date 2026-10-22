@@ -157,7 +157,7 @@
     "pv": 50,
     "esquiva": 8,
     "bloqueio": 10,
-    "defesa": 10,
+    "defesa": 12,
     "defesaMental": 7,
     "defesaSocial": 6,
     "absorcao": {
@@ -180,7 +180,8 @@
         "corrida": 16
       },
       "nado": 2
-    }
+    },
+    "bloqueioArma": 2
   },
   "notasObservacao": [
     "forca: 7 pelas âncoras do autor, igual ao cavalo; sem força medida (D-158, D-174).",

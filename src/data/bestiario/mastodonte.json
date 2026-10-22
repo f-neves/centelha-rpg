@@ -162,7 +162,7 @@
     "pv": 90,
     "esquiva": 6,
     "bloqueio": 8,
-    "defesa": 8,
+    "defesa": 9,
     "defesaMental": 7,
     "defesaSocial": 8,
     "absorcao": {
@@ -184,7 +184,8 @@
         "arranque": 5,
         "corrida": 7
       }
-    }
+    },
+    "bloqueioArma": 1
   },
   "notasObservacao": [
     "forca: 13 igual ao mamute, proposta do Arquiteto. Alternativa: 14 pelo corpo mais pesado, que encostaria no braquiossauro (14, 28,7 t); fico no 13, e a massa maior entra só pelo peso erguido (2.585 kg contra 2.035 do mamute).",

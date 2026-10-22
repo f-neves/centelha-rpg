@@ -106,7 +106,7 @@
   "habilidades": [
     {
       "nome": "agarrar (o \"abraço\")",
-      "descricao": "Patada: Dano do agarrão: 2 × Força = 16 por manutenção, mais 1d6 por Margem.",
+      "descricao": "Patada",
       "classe": "livro"
     },
     {

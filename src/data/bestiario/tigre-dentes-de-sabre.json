@@ -97,7 +97,7 @@
   "habilidades": [
     {
       "nome": "agarrar",
-      "descricao": "patada (os antebraços seguram a presa): Dano do agarrão: 2 × Força = 16 por manutenção. Pela leitura dos paleontólogos, o golpe dos caninos vem depois que a presa está presa.",
+      "descricao": "patada (os antebraços seguram a presa): Pela leitura dos paleontólogos, o golpe dos caninos vem depois que a presa está presa.",
       "classe": "livro"
     },
     {

@@ -92,7 +92,7 @@
   "habilidades": [
     {
       "nome": "agarrar",
-      "descricao": "Mandíbulas: Dano do agarrão: 2 × Força = 8.",
+      "descricao": "Mandíbulas",
       "classe": "livro"
     },
     {
@@ -161,7 +161,7 @@
   "v3": {
     "pv": 37,
     "esquiva": 6,
-    "bloqueio": 13,
+    "bloqueio": 12,
     "defesa": 13,
     "defesaMental": 5,
     "defesaSocial": 6,
@@ -182,7 +182,8 @@
         "batalha": 4,
         "cruzeiro": 8
       }
-    }
+    },
+    "bloqueioArma": 1
   },
   "notasObservacao": [
     "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (D-174); os 3 m do site ficam: o gigante está 4 portes acima do Lucanus (Minúsculo para Grande), e o critério pede 2. Longe dos cortes: 4,24 m² fica 193% acima do corte do Grande (1,45) e 29% abaixo do do Enorme (6)",

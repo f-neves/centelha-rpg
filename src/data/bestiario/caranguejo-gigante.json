@@ -97,7 +97,7 @@
   "habilidades": [
     {
       "nome": "agarrar",
-      "descricao": "Pinça: Dano do agarrão: 2 × Força = 10. O \"Constrição\" da ficha atual é este Agarrão.",
+      "descricao": "Pinça: O \"Constrição\" da ficha atual é este Agarrão.",
       "classe": "livro"
     },
     {
@@ -166,7 +166,7 @@
   "v3": {
     "pv": 50,
     "esquiva": 6,
-    "bloqueio": 11,
+    "bloqueio": 10,
     "defesa": 11,
     "defesaMental": 6,
     "defesaSocial": 6,
@@ -183,7 +183,8 @@
         "arranque": 5,
         "corrida": 6
       }
-    }
+    },
+    "bloqueioArma": 1
   },
   "notasObservacao": [
     "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (sétima rodada); fica o do site (largura de carapaça de 1,5 m), que passa no item 7: Grande (2,47 m², de cima com as patas), quatro portes acima da Scylla de base (Minúscula, 0,020 m² no mesmo modo). A área fica 70% acima do corte do Médio (1,45 m²) e 59% abaixo do do Enorme (6 m²) (D-174)",

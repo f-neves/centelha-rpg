@@ -194,7 +194,7 @@
     "pv": 54,
     "esquiva": 6,
     "bloqueio": 8,
-    "defesa": 8,
+    "defesa": 9,
     "defesaMental": 7,
     "defesaSocial": 8,
     "absorcao": {
@@ -217,7 +217,8 @@
         "corrida": 17
       },
       "nado": 2
-    }
+    },
+    "bloqueioArma": 1
   },
   "notasObservacao": [
     "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8 pelas âncoras do autor, igual ao boi; sem feito medido (o limpa-neve não tem número). A ficha de hoje tinha 10 pelo encaixe com o boi de então (D-158, D-174).",
