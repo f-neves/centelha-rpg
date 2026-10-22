@@ -136,11 +136,11 @@ const INTERPOR = P.get('cena') === 'interpor';
  */
 const INTERPOR_FASE = P.get('fase') === 'recuperacao' ? 'recuperacao' : 'preparo';
 
-const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : BANDEIRAS ? 10 : CORPOACORPO ? 20
+const COLS = ESPELHO ? ESPELHO.tab.cols : CAIDO ? 14 : BANDEIRAS ? 12 : CORPOACORPO ? 20
   : FORADAVEZ ? 16 : OCUPACAO ? 16 : CAIDOFILA ? 12 : LEVANTAR ? 16 : OCUPACAODETECTOR ? 16
   : PASSOCOLOSSAL ? 20
   : INTERPOR ? 10 : parseInt(P.get('cols') || '24', 10);
-const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : BANDEIRAS ? 8 : CORPOACORPO ? 18
+const ROWS = ESPELHO ? ESPELHO.tab.rows : CAIDO ? 8 : BANDEIRAS ? 16 : CORPOACORPO ? 18
   : FORADAVEZ ? 12 : OCUPACAO ? 12 : CAIDOFILA ? 8 : LEVANTAR ? 10 : OCUPACAODETECTOR ? 10
   : PASSOCOLOSSAL ? 18
   : INTERPOR ? 8 : parseInt(P.get('rows') || '16', 10);
@@ -1805,3 +1805,57 @@ export function createClient() {
 }
 
 export default { createClient };
+
+// A CENA DAS BANDEIRAS, segunda parte: o oitavo porte e a D-077 (etapa 8b da
+// publicação do bestiário, D-179). Fica no fim do arquivo, e não na lista do
+// bloco `if (BANDEIRAS)` lá em cima, para não mover as linhas que os documentos
+// citam. As peças entram nas mesmas COMBS e TOKENS, com o golpe agendado pro
+// Tick 2 e os números da mesma Adaga. O arco é de mentira: um nome fora do
+// catálogo com `classe: 'distancia'`, que é o que `classeDeTempo` lê quando o
+// catálogo não acha a arma. As criaturas que atacam usam os números da Adaga
+// por `dados`; o porte delas vem do MON.
+if (BANDEIRAS) {
+  const r = resumoCombatePC({
+    ...KAEL,
+    conjuntos: [{ ativo: true, habil: { ref: 'a:adaga' }, inabil: { ref: 'nada' } }],
+    equip: { armaduras: [] },
+  });
+  const numeros = {
+    arma: r.arma, ataque: r.ataque, dano: r.dano,
+    defesa: r.defesa, soak: r.soak, resistPerf: r.resistPerf, perfArma: r.perfArma,
+    velocidade: 5, classe: 'leve', passo: r.passo, qa: r.qa,
+  };
+  const ARCO = 'arco de teste';
+  const por = [
+    { id: 'a3', tipo: 'pc', monstro_id: null, q: 1, r: 8, alvo: 'b3', arco: true },
+    { id: 'a4', tipo: 'pc', monstro_id: null, q: 1, r: 9, alvo: 'b4', arco: true },
+    { id: 'a5', tipo: 'pc', monstro_id: null, q: 1, r: 10, alvo: 'b5' },
+    { id: 'a6', tipo: 'criatura', monstro_id: 'doninha', q: 1, r: 11, alvo: 'b6' },
+    { id: 'a7', tipo: 'criatura', monstro_id: 'gato', q: 1, r: 12, alvo: 'b7' },
+    { id: 'b3', tipo: 'criatura', monstro_id: 'cachorro', q: 4, r: 8 },
+    { id: 'b4', tipo: 'criatura', monstro_id: 'doninha', q: 4, r: 9 },
+    { id: 'b5', tipo: 'criatura', monstro_id: 'doninha', q: 2, r: 10 },
+    { id: 'b6', tipo: 'pc', monstro_id: null, q: 2, r: 11 },
+    { id: 'b7', tipo: 'criatura', monstro_id: 'tarrasque', q: 9, r: 13 },
+  ];
+  let k = COMBS.length;
+  for (const p of por) {
+    COMBS.push({
+      id: p.id, encontro_id: ENC, nome: `Peça ${p.id}`,
+      tipo: p.tipo, grupo: p.tipo === 'pc' ? 'aliado' : 'inimigo',
+      monstro_id: p.monstro_id, personagem_id: null,
+      pv_max: 999, pv_atual: 999,
+      mana_max: null, mana_atual: null,
+      tick: 0, iniciativa: 20 - k,
+      acao: p.alvo ? {
+        golpes: [2], livre: 7, desde: 0, tipo: 'simples', arma: p.arco ? ARCO : numeros.arma, alvo: p.alvo, aResolver: [2],
+      } : {},
+      dados: p.arco ? { ...numeros, arma: ARCO, classe: 'distancia' } : (p.tipo === 'pc' || p.alvo) ? { ...numeros } : {},
+      condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+    });
+    TOKENS.push({
+      arena_id: ARENA, combatente_id: p.id, q: p.q, r: p.r,
+      movido_em: new Date(1700000000000 + (k++) * 1000).toISOString(),
+    });
+  }
+}

@@ -10265,7 +10265,7 @@ const SETAS = [
       const f = tf.penAcao ?? 0;
       const c2 = somarCondicoes((atacante.condicoes || []).map((k: any) => ({ ...(COND[k.id] || {}), ...k })));
       const porte = REGRAS_CENA.porte
-        ? modificadorPorte(porteDeRotulo(porteRotuloDe(atacante)), porteDeRotulo(porteRotuloDe(alvo)), classe === 'distancia' || classe === 'arremesso')
+        ? modificadorPorte(porteDeRotulo(porteRotuloDe(atacante)), porteDeRotulo(porteRotuloDe(alvo)), classe === 'distancia' || classe === 'arremesso' || classe === 'arte')
         : 0;
       return { flat: f + (c2.acao || 0) + (c2.ataque || 0) + porte, dados: (c2.dados || 0) + (tf.penAcaoDados ?? 0) };
     })();

@@ -132,6 +132,28 @@ try {
     ok(antes === 999 && depois === 999,
       `a Vida de b2 NÃO desceu (Perf. 0 < resistPerf 1, o golpe resvala): ${antes} → ${depois}`);
   }
+
+  // ---------------------- 4 · o oitavo porte e a D-077 (etapa 8b, D-179)
+  //
+  // O VALOR EXATO, e não "tem um token": as duas quedas caladas do código dão
+  // número plausível (`porteDeRotulo` cai em 'medio' e o bônus vira 0). O
+  // "de longe" é um arco de mentira (`classe: 'distancia'`, mesa-mock.mjs).
+  const PORTE = [
+    ['a3', 'b3', 'Médio atira em Pequeno (cachorro)', ' −3'],
+    ['a4', 'b4', 'Médio atira em Minúscula (doninha)', ' −9'],
+    ['a5', 'b5', 'Médio ataca Minúscula (doninha) de perto', null],
+    ['a6', 'b6', 'Minúscula (doninha) ataca Médio de perto', ' +9'],
+    ['a7', 'b7', 'Miúdo (gato) ataca Colossal (tarrasque) de perto', ' +18'],
+  ];
+  for (const [a, b, rotulo, fim] of PORTE) {
+    console.log(`\n· ${a} → ${b}: ${rotulo}`);
+    const f = await abrirEFolhear(p, a, 2);
+    ok(!!f && new RegExp(b).test(f?.titulo || ''), `a folha abriu contra ${b}: "${f?.titulo}"`);
+    const pool = (f?.pool || '').trim();
+    if (fim) ok(pool === poolSemPorte + fim, `o pool é "${poolSemPorte}${fim}": "${pool}"`);
+    else ok(pool === poolSemPorte, `o pool é "${poolSemPorte}", sem token de porte: "${pool}"`);
+    await decidir(p, 'al-nao');
+  }
 } finally {
   await br.close();
   await dev.parar?.();
