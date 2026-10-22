@@ -229,8 +229,10 @@ function converte(arq) {
   const virtues = { compaixao: 0, conviccao: 0, temperanca: 0, valor: 0 };
   for (const parte of celula(vva, 'Virtudes').replace(/\*/g, '').split(';')) {
     const n = /(\d+)\s*$/.exec(parte.trim()); if (!n) continue;
-    for (const [k, rot] of [['compaixao', 'Compaixão'], ['conviccao', 'Convicção'], ['temperanca', 'Temperança'], ['valor', 'Valor']]) if (parte.includes(rot)) virtues[k] = Number(n[1]);
+    // A Virtude se chama Bravura na ficha desde 22/10/2026 (decisão 40 do autor); o id no JSON continua `valor` (C-15)
+    for (const [k, rot] of [['compaixao', 'Compaixão'], ['conviccao', 'Convicção'], ['temperanca', 'Temperança'], ['valor', 'Bravura']]) if (parte.includes(rot)) virtues[k] = Number(n[1]);
   }
+  if (/\bValor\b/.test(celula(vva, 'Virtudes'))) throw new Error(`${arq}.md: a linha Virtudes diz "Valor"; o nome é Bravura (decisão 40 do autor)`);
   // Corpo e porte
   const alvo = (/\*\*([A-Za-zÀ-ú]+)\*\*/.exec(celula(corpoPorte, 'Tamanho')) || [])[1] || (celula(corpoPorte, 'Tamanho') || '').split(/[\s(]/)[0];
   const porte = PORTE_DO_SITE[alvo];
