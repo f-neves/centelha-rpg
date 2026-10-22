@@ -22,14 +22,11 @@ const SAIDA = arg('--saida') || path.join(RAIZ, 'src/data/bestiario');
 if (!PASTA_FICHAS || !TSV) { console.error('uso: --fichas <pasta> --tsv <arquivo> [--saida <pasta>]'); process.exit(2); }
 
 // ------------------------------------------------------------------ os ajustes
-// O que a ficha não carrega (decisoes-etapa-6.md §1; D-179, item 12). Chave: o nome
-// do arquivo em fichas-v3. O id de toda ficha sai do .tsv, nunca da célula `id`.
-// O lobo-terrivel saiu em 22/10/2026 (D-179, item 20): a ficha virou lobo-atroz.md, com o
-// nome Lobo Atroz na célula Nome, e as 97 fontes saem iguais byte a byte.
-const AJUSTE_FICHA = {
-  'cao': { id: 'cachorro' },
-  'cao-de-guarda': { id: 'cachorro-de-guarda' },
-};
+// O id de toda ficha sai do .tsv (coluna ficha_v3 igual ao nome do arquivo), nunca da
+// célula `id`. O AJUSTE_FICHA (decisoes-etapa-6.md §1; D-179, item 12) saiu em 22/10/2026,
+// sem nenhuma entrada: o lobo-terrivel virou lobo-atroz.md (D-179, item 20), e cao e
+// cao-de-guarda viraram cachorro.md e cachorro-de-guarda.md (decisão do autor de
+// 19/10/2026). Nos dois casos as 97 fontes saem iguais byte a byte.
 // A ficha e o site têm os mesmos oito portes desde a D-179 (o Minúsculo da D-166,
 // abaixo do Miúdo). A tabela fica para recusar porte fora da lista, e não para
 // traduzir: cada um vai com o próprio nome.
@@ -176,14 +173,10 @@ const fontePorId = (id) => {
   } catch { return null; }
 };
 
-// as duas guardas do AJUSTE_FICHA (mapa §9)
 const arquivos = fs.readdirSync(PASTA_FICHAS).filter((f) => f.endsWith('.md')).map((f) => f.slice(0, -3)).sort();
-for (const k of Object.keys(AJUSTE_FICHA)) if (!arquivos.includes(k)) throw new Error(`AJUSTE_FICHA: a ficha ${k}.md não existe`);
 const idDaFicha = (arq) => {
-  const aj = AJUSTE_FICHA[arq];
-  const linha = porFicha[arq] ?? (aj?.id ? porFicha[aj.id] : undefined);
+  const linha = porFicha[arq];
   if (!linha) throw new Error(`${arq}.md: sem linha no .tsv`);
-  if (aj?.id && linha.id !== aj.id) throw new Error(`${arq}.md: o .tsv diz ${linha.id}, o ajuste diz ${aj.id}`);
   return linha;
 };
 
@@ -198,7 +191,7 @@ function converte(arq) {
   const mov = S['Corpo e movimento'];
 
   // Identidade
-  const nome = AJUSTE_FICHA[arq]?.nome ?? limpa(celula(ident, 'Nome'));
+  const nome = limpa(celula(ident, 'Nome'));
   const [categoria, papel, cent] = celula(ident, 'Categoria · papel · Centelha').split('·').map((x) => x.trim());
   // Atributos
   const attrs = {};
