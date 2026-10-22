@@ -55,6 +55,14 @@
     "corrida": 2,
     "musculatura": 3
   },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 1,

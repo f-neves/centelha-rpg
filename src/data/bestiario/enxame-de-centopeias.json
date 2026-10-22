@@ -55,6 +55,20 @@
     "escalada": 2,
     "musculatura": 2
   },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "antenas",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "em frestas",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 1,

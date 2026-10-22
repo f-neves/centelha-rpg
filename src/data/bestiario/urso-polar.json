@@ -52,6 +52,32 @@
     "natacao": 3,
     "musculatura": 3
   },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "resistencia",
+      "foco": "frio",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "equilibrio",
+      "foco": "gelo e neve",
+      "valor": 1,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "no gelo, junto ao respiradouro",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 1,

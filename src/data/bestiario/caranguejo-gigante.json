@@ -57,6 +57,20 @@
     "natacao": 2,
     "musculatura": 4
   },
+  "especialidades": [
+    {
+      "habilidade": "resistencia",
+      "foco": "fora da água",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "na toca",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 1,

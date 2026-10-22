@@ -147,7 +147,7 @@ function limpa(s) {
   // frase de trabalho: "Era 1d6 + 9, média 12,5." / "era +4; ..."
   t = t.split(/(?<=[.;])\s+/).filter((fr) => !/^(era|antes:)\b/i.test(fr.trim())).join(' ');
   t = t.replace(/`([^`]*)`/g, '$1');
-  t = t.replace(/\s+([,.;:])/g, '$1').replace(/\(\s*\)/g, '').replace(/\s{2,}/g, ' ').replace(/;\s*\./g, '.').trim();
+  t = t.replace(/\s+([,.;:])/g, '$1').replace(/\(\s*\)/g, '').replace(/\s{2,}/g, ' ').replace(/;\s*\./g, '.').replace(/([^.])\.\.(?!\.)/g, '$1.').trim(); // ".." de marca tirada entre dois pontos
   return t.replace(/^[.;:,\s]+/, '');
 }
 
@@ -213,9 +213,13 @@ function converte(arq) {
   }
   // Especialidades
   const especialidades = [];
-  for (const bloco of (S['Habilidades'] || '').split(/\n\*\*/).slice(1)) {
+  // O cabeçalho vem com ou sem negrito: 26 das 97 escrevem sem (etapa 9, CORRIGE da Revisora).
+  const cabecalhosEsp = (S['Habilidades'] || '').split('\n').filter((l) => /^(\*\*)?Especialidades (naturais|\(o limite)/.test(l)).length;
+  let blocosEsp = 0;
+  for (const bloco of (S['Habilidades'] || '').split(/\n\*\*|\n(?=Especialidades)/).slice(1)) {
     const origem = /^Especialidades naturais/.test(bloco) ? 'natural' : /^Especialidades \(o limite/.test(bloco) ? 'livro' : null;
     if (!origem) continue;
+    blocosEsp++;
     for (const l of bloco.split('\n').filter((x) => /^- /.test(x))) {
       const m = /^- ([A-Za-zÀ-ú]+) \(([^)]+)\) \+?(\d+)/.exec(l);
       if (!m) continue; // "nenhuma.", "A ... de hoje sai", "Sem Resistência (frio)": texto de trabalho
@@ -385,6 +389,7 @@ function converte(arq) {
     ameaca: celula(ident, 'Ameaça') ? parseInt(celula(ident, 'Ameaça'), 10) : null,
     terreno: celula(ident, 'Terreno') ? celula(ident, 'Terreno').split(',').map((x) => TERRENO[x.trim()] ?? `?${x.trim()}`) : null,
     clima: celula(ident, 'Clima') ? celula(ident, 'Clima').split(',').map((x) => CLIMA[x.trim()] ?? `?${x.trim()}`) : null,
+    faltaEsp: blocosEsp === cabecalhosEsp ? null : `${cabecalhosEsp} cabeçalho(s) de Especialidade, ${blocosEsp} bloco(s) lido(s)`,
     porte, dimensoes, locomocao, attrs, skills, skills2, especialidades, willpower, virtues, aparencia,
     ataques, habilidades, venenos, doencas, enxame: enxameL, descricao, ambientacao, noJogo, notasObservacao, v3,
     social, aptidoes: limpa(itens(S['Aptidões']).join(' ') || (S['Aptidões'] || '').trim()), aviso };
@@ -467,6 +472,13 @@ function montaFonte(f, todas) {
 }
 
 const todas = arquivos.map(converte);
+// Ficha com cabeçalho de Especialidade cujo bloco o laço não leu falha alto, e antes de
+// gravar qualquer fonte: sair sem nenhuma Especialidade, calado, foi o defeito da etapa 9.
+const semEsp = todas.filter((f) => f.faltaEsp);
+if (semEsp.length) {
+  console.error(`✘ ${semEsp.length} ficha(s) com Especialidade que o conversor não leu:\n` + semEsp.map((f) => `  ${f.arq}: ${f.faltaEsp}`).join('\n'));
+  process.exit(1);
+}
 let gravadas = 0;
 const avisos = [];
 fs.mkdirSync(SAIDA, { recursive: true });

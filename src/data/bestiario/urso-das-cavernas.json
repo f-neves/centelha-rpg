@@ -55,6 +55,20 @@
   "skills2": {
     "musculatura": 4
   },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "resistencia",
+      "foco": "fome",
+      "valor": 3,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 1,

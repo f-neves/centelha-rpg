@@ -53,6 +53,14 @@
   "skills2": {
     "musculatura": 2
   },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "à entrada do ninho",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 1,

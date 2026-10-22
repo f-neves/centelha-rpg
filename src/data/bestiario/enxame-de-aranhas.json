@@ -55,6 +55,26 @@
     "escalada": 2,
     "musculatura": 2
   },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "vibração da teia",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "escalada",
+      "foco": "na teia",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "na teia",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 1,

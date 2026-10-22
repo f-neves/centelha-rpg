@@ -55,6 +55,14 @@
     "corrida": 1,
     "musculatura": 2
   },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "visão periférica",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 1,
@@ -106,7 +114,7 @@
     },
     {
       "nome": "Sentidos",
-      "descricao": "visão: Prontidão (visão periférica) +2, natural; campo de cada olho até 228°, média perto de 195°, com ponto cego pequeno atrás; campo binocular de só 55 a 65° ou 65 a 80°. Acuidade pior que a da maioria dos mamíferos terrestres. · penumbra: texto; vê melhor que o humano com pouca luz. · audição: texto; de cerca de 50 Hz a 33 kHz, com ganho de 10 a 20 dB pela orelha em funil. · faro: texto; reconhece indivíduos do grupo pelo cheiro.."
+      "descricao": "visão: Prontidão (visão periférica) +2, natural; campo de cada olho até 228°, média perto de 195°, com ponto cego pequeno atrás; campo binocular de só 55 a 65° ou 65 a 80°. Acuidade pior que a da maioria dos mamíferos terrestres. · penumbra: texto; vê melhor que o humano com pouca luz. · audição: texto; de cerca de 50 Hz a 33 kHz, com ganho de 10 a 20 dB pela orelha em funil. · faro: texto; reconhece indivíduos do grupo pelo cheiro."
     }
   ],
   "doencas": [

@@ -54,6 +54,20 @@
     "escalada": 2,
     "musculatura": 5
   },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "feromônio",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "sobre o que não foge",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 1,

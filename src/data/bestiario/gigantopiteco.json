@@ -58,6 +58,14 @@
     "escalada": 3,
     "musculatura": 4
   },
+  "especialidades": [
+    {
+      "habilidade": "briga",
+      "foco": "disputa entre machos",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 1,

@@ -55,6 +55,26 @@
     "natacao": 2,
     "musculatura": 3
   },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "audição",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "sobrevivencia",
+      "foco": "fuçar raiz e bolota",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 1,

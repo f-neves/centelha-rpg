@@ -51,6 +51,32 @@
     "escalada": 2,
     "musculatura": 3
   },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "resistencia",
+      "foco": "fome",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "escalada",
+      "foco": "árvore",
+      "valor": 1,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "sobrevivencia",
+      "foco": "achar o caminho de volta",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 1,

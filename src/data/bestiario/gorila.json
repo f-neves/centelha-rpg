@@ -58,6 +58,26 @@
     "escalada": 3,
     "musculatura": 4
   },
+  "especialidades": [
+    {
+      "habilidade": "resistencia",
+      "foco": "frio",
+      "valor": 1,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "equilibrio",
+      "foco": "galhos",
+      "valor": 1,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "integridade",
+      "foco": "defender o grupo",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 1,

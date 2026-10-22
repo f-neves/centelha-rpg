@@ -59,6 +59,26 @@
     "escalada": 2,
     "musculatura": 2
   },
+  "especialidades": [
+    {
+      "habilidade": "equilibrio",
+      "foco": "galhos",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "sobrevivencia",
+      "foco": "quebrar coco com pedra",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "vigiar o céu",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 1,

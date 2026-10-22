@@ -58,6 +58,32 @@
     "natacao": 2,
     "musculatura": 2
   },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "audição",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "resistencia",
+      "foco": "doenças",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "sobre quem dorme",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 1,
