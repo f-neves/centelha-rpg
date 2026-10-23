@@ -237,6 +237,15 @@ try {
   para('tiro fora de Percepção + Atirador', 'Jogada: Percepção 3 + Atirador 2', 'Jogada: Destreza 3 + Atirador 2', /o tiro é Percepção \+ Atirador/);
   para('arremesso fora de Destreza + Arremesso', '| +0 | não | 3,5 | |', '| +0 | não | 3,5 | Jogada: Força 4 + Arremesso 0 |', /o arremesso é Destreza \+ Arremesso/);
   para('Disparo natural fora de Vigor', '| +0 | não | 3,5 | |', '| +0 | não | 3,5 | Jogada: Força 4 + Disparo 0 |', /o Disparo natural é Vigor \+ Disparo/);
+  // As células da tabela Ataques com o conjunto do que aceitam (CORRIGE da Revisora, rodada 16).
+  para('Bloqueia como arma fora do conjunto', '| +1 | sim (+1) | 9,5 |', '| +1 | talvez | 9,5 |', /Bloqueia como arma "talvez" fora do que se aceita/);
+  para('Acerto fora do conjunto', '| N1 | +2 | não |', '| N1 | bom | não |', /Acerto "bom" fora do que se aceita/);
+  para('Nível de Perfuração acima do teto', '| N1 | +2 | não |', '| N9 | +2 | não |', /Nível de Perfuração "N9" fora do que se aceita/);
+  para('Perfurante sem Nível', '| N1 | +2 | não |', '| | +2 | não |', /Perfurante tem de ter/);
+  const celulas = roda(FICHA.replace('| +1 | sim (+1) | 9,5 |', '| −1 | o mesmo chifre (+1) | 9,5 |'), 'o mesmo chifre e o acerto negativo');
+  const esp1 = (celulas.json?.ataques || []).find((a) => a.nome === 'Espada longa');
+  ok(celulas.status === 0 && esp1?.acerto === -1 && celulas.json?.v3?.bloqueioArma === 1, `"o mesmo chifre (+1)" é aceito e o "−1" tipográfico é −1: acerto ${esp1?.acerto}, bloqueioArma ${celulas.json?.v3?.bloqueioArma}${celulas.status ? ' (exit ' + celulas.status + ')' : ''}`);
+
   // A jogada comum, sem frase: o corpo a corpo vai pelo maior (o animal ágil, como o gato).
   const agil = roda(FICHA.replace('| Força | 4 |', '| Força | 2 |').replace('"forca":4', '"forca":2').replace('Jogada: Força 4 + Armas 3', 'Jogada: Destreza 3 + Armas 3'), 'jogada comum pelo maior');
   const toque = (agil.json?.ataques || []).find((a) => a.nome === 'Toque gelado');

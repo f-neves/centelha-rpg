@@ -465,6 +465,14 @@ function converte(arq) {
   // soma"): o bônus sai da coluna "Bloqueia como arma" ("sim, +1", "sim (+1; ...)",
   // "sim, Defesa +2"), o maior entre os ataques, e a Defesa do card soma. Sem número, 0.
   const iArma = atq.cab.indexOf('Bloqueia como arma');
+  // O que a célula Bloqueia aceita (CORRIGE da Revisora, rodada 16): "não", "sim" (com ou sem o número,
+  // "sim, +1", "sim (+1; ...)", "sim, Defesa +2", "sim (−2)"), e "o mesmo <parte> (+N)" (o segundo golpe
+  // do mesmo chifre do tricerátops, que bloqueia como o primeiro). O texto entre parênteses depois é nota.
+  // Fora disso, para: um "talvez" baixava a Defesa calado.
+  if (iArma >= 0) for (const r of atq.rows) {
+    const b = String(r[iArma] || '').replace(/\*\*/g, '').trim();
+    if (!/^(não|sim)(\b|$)/i.test(b) && !/^o mesmo [a-zà-ú ]+\(\+\d+\)$/i.test(b)) aviso.push(`ataque "${limpa(r[0])}": Bloqueia como arma "${r[iArma]}" fora do que se aceita (não, sim, sim +N, o mesmo ... (+N))`);
+  }
   const bonusArma = iArma < 0 ? 0 : bonusDaArma(atq.rows.map((r) => r[iArma])); // o maior, uma vez (lib-ficha-v3.mjs)
   if (bonusArma) { v3.bloqueioArma = bonusArma; v3.defesa = defesaComArma(v3, bonusArma); }
   // A CRIATURA VESTIDA (D-206: "mostra as duas, mas normalmente se escolhe a maior. Essa é uma escolha do
@@ -506,8 +514,18 @@ function converte(arq) {
     const tipo = TIPO_DANO[tipoTxt];
     // Tipo fora do que o manual aceita (§5.2, item 8: Impacto, Corte, Perfuração, palavra do vocabulário, "fenômeno") para.
     if (!tipo) throw new Error(`${arq}: ataque "${nomeA}": Tipo "${r[col('Tipo')]}" fora do que o manual aceita`);
-    const nivel = /N(\d+)/.exec(r[col('Nível de Perfuração', 'Nível')] || '');
-    const acerto = parseInt((r[col('Acerto')] || '0').replace(/[^\d-]/g, ''), 10) || 0;
+    // O Nível de Perfuração aceita N0 a N3 (combate.md:300, "Nível de Perfuração (0–3)"), com nota depois
+    // ("N1 (estocada, modo secundário)", "N0 [sem dado]"); vazio, "não se aplica" ou "n/a" só fora do
+    // Perfurante. No golpe que não é Perfurante o nível é lido e conferido, e não vai ao card: o motor só lê
+    // a Perfuração do modo Perfurante (o N1 da estocada do Corte é o modo secundário, que o card não tem).
+    const nivelTxt = String(r[col('Nível de Perfuração', 'Nível')] || '').replace(/\*\*/g, '').replace(/\[[^\]]*\]/g, '').trim();
+    const nivel = /^N([0-3])(?:\s*\(.*\))?$/.exec(nivelTxt);
+    if (!nivel && !(tipo !== 'perfurante' && /^(|não se aplica|n\/a)$/i.test(nivelTxt))) aviso.push(`ataque "${nomeA}": Nível de Perfuração "${r[col('Nível de Perfuração', 'Nível')]}" fora do que se aceita (N0 a N3${tipo === 'perfurante' ? ', e o Perfurante tem de ter' : ', vazio ou "não se aplica"'})`);
+    // O Acerto aceita +N, −N ou vazio. Antes um "bom" sumia calado, e o "−1" tipográfico virava +1.
+    const acertoTxt = String(r[col('Acerto')] || '').replace(/\*\*/g, '').trim();
+    const acertoM = /^([+−-])\s*(\d+)$/.exec(acertoTxt);
+    if (acertoTxt && !acertoM) aviso.push(`ataque "${nomeA}": Acerto "${r[col('Acerto')]}" fora do que se aceita (+N, −N ou vazio)`);
+    const acerto = acertoM ? (acertoM[1] === '+' ? 1 : -1) * Number(acertoM[2]) : 0;
     // A Classe: as seis do armas.json; Distância e Arremesso são ataque à distância. Classe que não existe para.
     const classeTxt = sem(r[col('Classe')] || '').trim();
     const classe = CLASSES[classeTxt] ?? null;
