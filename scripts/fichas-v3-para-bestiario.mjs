@@ -660,6 +660,17 @@ function converte(arq) {
 }
 
 // ------------------------------------------------------------- a fonte do site
+// A CATEGORIA LEGADA, que o inimigos.json usa como categoria (lib-bestiario.mjs) e de onde sai a Furtividade
+// publicada (regras.json, furtividadeCriatura). Antes caía em "Fera" calada para toda fonte base sem o campo, e
+// a pixie, o grifo, o lich e outros 12 não animais viraram Fera no merge 2df6cdaa. Agora, nesta ordem: a
+// categoriaLegada da fonte base; senão a categoria da fonte base (o que o inimigos.json usava antes); senão, sem
+// fonte base, a ficha "Animal" é "Fera" (a categoria das feras do bestiário). Qualquer outro caso para.
+function categoriaLegadaDe(f, velha) {
+  if (velha?.categoriaLegada) return velha.categoriaLegada;
+  if (velha?.categoria) return velha.categoria;
+  if (!velha && f.categoria === 'Animal') return 'Fera';
+  throw new Error(`${f.arq}: sem categoria legada (${velha ? 'a fonte base não tem categoria nem categoriaLegada' : `sem fonte base, e a categoria da ficha é "${f.categoria}", não "Animal"`})`);
+}
 function montaFonte(f, todas) {
   const velha = f.site ? fontePorId(f.id) : null; // depois da etapa 4, a fonte de hoje já está no id definitivo
   const irma = IRMA[f.arq] ? todas.find((x) => x.arq === IRMA[f.arq]) : null;
@@ -694,7 +705,7 @@ function montaFonte(f, todas) {
     nome: f.nome,
     nomeIngles: f.nomeIngles,
     categoria: f.categoria,
-    categoriaLegada: velha?.categoriaLegada ?? 'Fera',
+    categoriaLegada: categoriaLegadaDe(f, velha),
     papel: f.papel,
     conceito: velha?.conceito ?? `animal ${f.porte}`,
     descricao: f.descricao,
@@ -757,8 +768,11 @@ if (semEsp.length) {
 }
 let gravadas = 0;
 fs.mkdirSync(SAIDA, { recursive: true });
-for (const f of todas) {
-  const fonte = montaFonte(f, todas);
+// Monta todas antes de gravar a primeira: uma que pare no montaFonte (a categoria legada) não deixa metade gravada.
+const paradasFonte = [];
+const fontes = todas.map((f) => { try { return montaFonte(f, todas); } catch (e) { paradasFonte.push(e.message); return null; } });
+if (paradasFonte.length) { console.error(`✘ ${paradasFonte.length} ficha(s) que o conversor não entendeu:\n` + paradasFonte.map((m) => '  ' + m).join('\n')); process.exit(1); }
+for (const fonte of fontes) {
   fs.writeFileSync(path.join(SAIDA, fonte.id + '.json'), JSON.stringify(fonte, null, 2) + '\n');
   gravadas++;
 }
