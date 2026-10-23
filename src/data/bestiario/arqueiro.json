@@ -85,7 +85,8 @@
       "perf": 1,
       "ticks": 7,
       "classe": "distancia",
-      "distancia": true
+      "distancia": true,
+      "arma": "arco-longo"
     },
     {
       "nome": "Punhos",

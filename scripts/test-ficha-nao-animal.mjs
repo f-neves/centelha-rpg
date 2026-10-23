@@ -19,7 +19,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { jogadaDoAtaque, artesDaFicha } from './lib-ficha-v3.mjs';
+import { jogadaDoAtaque, artesDaFicha } from './lib-ficha-v3.mjs'; import { stat, paraStat } from './lib-bestiario.mjs';
 
 const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const falhas = [];
@@ -292,6 +292,15 @@ try {
   para('Técnica que não existe', MAN, MAN + '- Voo Sombrio · Técnica voo-sombrio, nível 1 · livro: voa.\n', /Técnica "voo-sombrio" não está no tecnicas.json/);
   para('Técnica com o nível errado', MAN, MAN + '- Pisar Leve · Técnica pisar-leve, nível 3 · livro: +3 em Furtividade.\n', /Técnica "pisar-leve": nível 3 na ficha, 1 no tecnicas.json/);
   para('Técnica fora do formato', MAN, MAN + '- Pisar Leve · Técnica pisar-leve · livro: +3 em Furtividade.\n', /Técnica fora do formato/);
+
+  // O DANO DO TIRO com a Força da arma (pedido do Arquiteto, 23/10/2026): o arco curto soma a Força até +3
+  // (armas.json, forcaCap). A ficha de teste tem Força 4: o arco dá +3, e não +4 nem 0.
+  const ARCO_DE = '| 1d6 + Centelha (2) | Perfuração |', ARCO_PARA = '| 1d6 − 2 + Força × 1 (3) + Centelha (2) | Perfuração |';
+  const tiro = roda(FICHA.replace(ARCO_DE, ARCO_PARA).replace('armas: espada-longa · armaduras', 'armas: espada-longa, arco-curto · armaduras'), 'tiro com a Força');
+  const arcoT = (tiro.json?.ataques || []).find((a) => a.nome === 'Arco curto');
+  const danoArco = tiro.json ? (stat(paraStat(tiro.json)).ataques || []).find((a) => a.nome === 'Arco curto')?.dano : null;
+  ok(tiro.status === 0 && arcoT?.arma === 'arco-curto' && /^1d6 \+3 perfurante/.test(danoArco || ''), `o arco curto leva o id da arma e soma a Força até +3: arma ${arcoT?.arma}, dano "${danoArco}"`);
+  para('tiro que soma a Força sem arma de tiro', ARCO_DE, ARCO_PARA, /tiro que soma a Força sem a arma de tiro no Equipamento/);
 
   // A jogada comum, sem frase: o corpo a corpo vai pelo maior (o animal ágil, como o gato).
   const agil = roda(FICHA.replace('| Força | 4 |', '| Força | 2 |').replace('"forca":4', '"forca":2').replace('Jogada: Força 4 + Armas 3', 'Jogada: Destreza 3 + Armas 3'), 'jogada comum pelo maior');

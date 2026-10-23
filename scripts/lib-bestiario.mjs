@@ -93,7 +93,7 @@ export function stat(b) {
     const fm = D.danoForca; const forcaAp = a.mao === 2 ? at.forca * fm.duasMaos : at.forca * fm.umaMao;
     // +1 POR PONTO DE CENTELHA DO ATACANTE NO DANO, SEM LIMITE (item 3 da Fase 1).
     // `forca: false`: o golpe da ficha v3 que não soma a Força (o bico do falcão).
-    const fa = ((a.distancia && !a.arremesso) || a.forca === false ? 0 : forcaAp) + C + (a.danoBonus || 0);
+    const fa = (a.forca === false ? 0 : a.distancia && !a.arremesso ? forcaDoTiro(a, at.forca) : forcaAp) + C + (a.danoBonus || 0); // o tiro soma a Força pela regra da arma (forcaDoTiro, no fim do arquivo)
     const perf = a.perf ?? a.pen;
     // o menos tipográfico, que o `rolarExpr` (rolagem.ts) já lê: "1d6 −2"
     const dano = `${a.dado}d6${fa > 0 ? ` +${fa}` : fa < 0 ? ` −${-fa}` : ''} ${a.tipo}${perf != null ? ` · perf. ${perf}` : ''}`;
@@ -364,4 +364,23 @@ export function paraStat(f) {
     notas: f.notas, pendente: f.pendente,
     porteSlug: porteSlug(f.porte),
   };
+}
+
+/**
+ * A FORÇA NO DANO DO TIRO, pela regra da arma (pedido do Arquiteto, 23/10/2026): a mesma conta da ficha do
+ * personagem (`ficha-engine.ts`, `calc.ts`). O arco longo soma a Força inteira, o curto até +3 (`forcaCap`), o
+ * composto ×2 com Força mínima 4 (abaixo dela, ×1), e a besta nada (`forcaMult` 0); no arco, Força acima de 8
+ * conta 8 (`combate.distancia.maxima.forcaAcimaDeContaComo`, D-075). Sem a arma (o sopro, a rajada), o tiro não
+ * soma a Força, como antes.
+ */
+const ARMAS_TIRO = Object.fromEntries(ler('armas.json').map((w) => [w.id, w.arma]));
+function forcaDoTiro(a, forca) {
+  const w = a.arma ? ARMAS_TIRO[a.arma] : null;
+  if (!w) return 0;
+  let mult = w.forcaMult ?? 0;
+  if (w.forcaMin && forca < w.forcaMin) mult = Math.min(mult, 1);
+  if (!mult) return 0;
+  const teto = Number(regras?.combate?.distancia?.maxima?.forcaAcimaDeContaComo ?? 8);
+  const f = Math.min(forca, w.forcaCap ?? Infinity, teto);
+  return f * mult;
 }
