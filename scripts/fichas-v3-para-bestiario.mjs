@@ -53,6 +53,9 @@ const TIPO_DANO = { 'perfuracao': 'perfurante', 'corte': 'corte', 'impacto': 'im
 const TERRENO = { 'Gélido': 'Cold', 'Deserto': 'Desert', 'Floresta': 'Forest', 'Selva': 'Jungle', 'Montanha': 'Mountain',
   'Planície': 'Plains', 'Pântano': 'Swamp', 'Subterrâneo': 'Underground', 'Urbano': 'Urban', 'Aquático': 'Water',
   'Litoral': 'Coast', 'Céu': 'Sky', 'Ruínas': 'Ruins', 'Qualquer': 'Any' };
+// Os sinônimos que as fichas usam no Terreno: "Cidade" é o Urbano, e "Frio" é o Gélido (o dragão branco).
+const TERRENO_SINONIMO = { 'cidade': 'Urbano', 'frio': 'Gélido' };
+const terrenoDe = (x) => { const k = x.trim().toLowerCase(); const n = TERRENO_SINONIMO[k] ?? Object.keys(TERRENO).find((t) => t.toLowerCase() === k); return n ? TERRENO[n] : null; };
 const CLIMA = { 'Frio': 'Cold', 'Temperado': 'Temperate', 'Tropical': 'Tropical', 'Extraplanar': 'Extraplanar' };
 const ATRIB = { 'Força': 'forca', 'Destreza': 'destreza', 'Vigor': 'vigor', 'Percepção': 'percepcao',
   'Inteligência': 'inteligencia', 'Raciocínio': 'raciocinio', 'Influência': 'influencia',
@@ -101,6 +104,79 @@ function elementosDaFicha(arq, corpo) {
   }
   for (const k of Object.keys(out)) out[k].sort((a, b) => ORDEM_ELEM.indexOf(a) - ORDEM_ELEM.indexOf(b));
   return out;
+}
+// A PLANTA DA FICHA (adendo do autor de 23/10/2026, item 1): o conversor para diante de qualquer
+// seção ou linha que não conhece. Cada uma é LIDA (o código a usa) ou IGNORADA (com o motivo).
+// Linha que começa com um dos prefixos vale como a linha do prefixo ("Carga (o que leva andando)").
+const PLANTA = {
+  secoes: {
+    lidas: ['Identidade', 'Corpo, área e tamanho', 'Corpo e tamanho', 'Corpo, área e porte', 'Corpo e porte', 'Corpo e movimento',
+      'Variantes', 'Atributos', 'Habilidades', 'Elementos', 'Vontade, Virtudes e Aparência', 'Ataques', 'Manobras', 'Sentidos',
+      'Veneno e doença', 'Corpo', 'Comportamento', 'No jogo', 'Notas de observação', 'Bloco de conferência', 'Aptidões'],
+    ignoradas: {
+      'Comparação com D&D 3.5 e Pathfinder 1': 'trabalho da Bestiarista: a conversa com o bloco publicado não vai ao site',
+      'Comparação com o animal de base': 'trabalho da Bestiarista: a conta da versão maior não vai ao site',
+      'Procedência': 'as fontes da pesquisa, que ficam com a Bestiarista',
+      'Visual': 'a descrição para a arte, que não vai ao card',
+      'Luz': 'texto de pesquisa sobre a luz do corpo; o que vale em jogo está nas Manobras (besouro-de-fogo, elemental do fogo)',
+    },
+  },
+  linhas: {
+    'Identidade': {
+      lidas: ['Nome', 'Nome em inglês (D&D, Pathfinder)', 'Categoria · papel · Centelha', 'Ameaça', 'Terreno', 'Clima', 'Equipamento', 'Artes', 'Mana', 'Formas'],
+      ignoradas: {
+        'id': 'o id sai do ids-definitivos.tsv, nunca da ficha', 'id antigo do bestiário': 'sai do ids-definitivos.tsv',
+        'Nome científico': 'não vai ao card', 'Extinto': 'não vai ao card', 'Referência': 'o modelo da ficha, não vai ao card',
+        'Anatomia': 'não vai ao card', 'Escala': 'nota de trabalho sobre a escala da versão maior',
+        'Por que ': 'a escolha da espécie de base, texto de pesquisa',
+      },
+    },
+    'Corpo, área e porte': 'CORPO', 'Corpo, área e tamanho': 'CORPO', 'Corpo e porte': 'CORPO', 'Corpo e tamanho': 'CORPO',
+    'CORPO': {
+      lidas: ['Massa', 'Tamanho', 'Segundo Tamanho', 'Altura', 'Largura', 'Comprimento total', 'Comprimento', 'Envergadura'],
+      ignoradas: {
+        'Postura': 'não vai ao card', 'Cauda grossa': 'entrou na conta da área, que a ficha já fez',
+        'Comprimento sem ': 'medida de pesquisa; o card mostra o comprimento total', 'Envergadura das pernas': 'medida de pesquisa',
+        'Espaço': 'o espaço pelas dimensões ainda não tem regra no Grid (D-147)', 'Espaço parado': 'o espaço da criatura pousada (quetzalcoatlo); o Grid não tem regra de espaço (D-147)', 'Espaço em voo': 'o espaço de asas abertas; idem', 'Área': 'entrou no Tamanho, que a ficha já fez',
+      },
+    },
+    'Corpo e movimento': {
+      lidas: ['Absorção', 'Bloqueio', 'Esquiva', 'Carga', 'Defesa Mental', 'Defesa Social', 'Deslocamento em terra', 'Escalada, escavação',
+        'Escalada', 'Nado / Voo', 'Nado, voo', 'Nado', 'Voo', 'PV total', 'Peso erguido'],
+      ignoradas: {
+        'PV base': 'a conta do PV; vale o PV total', 'Bônus de PV': 'já está no PV total', 'Energia': 'o card não mostra a Energia',
+        'Iniciativa': 'o motor faz a conta (Raciocínio + Prontidão)', 'Velocidade contra o real': 'conferência da Bestiarista',
+        'Feito': 'feito de pesquisa', 'Feitos': 'feitos de pesquisa', 'Arrasto': 'conta de pesquisa (o card usa o Peso erguido)', 'Arremesso': 'conta de pesquisa',
+        'Tração': 'conta de pesquisa', 'Içar': 'conta de pesquisa', 'Erguer ': 'conta de pesquisa', 'Virar com a pata': 'conta de pesquisa',
+        'Comer': 'texto do corpo', 'Fuçar': 'texto do corpo', 'Tromba': 'texto do corpo', 'Salto': 'texto do corpo',
+        'Mergulho': 'texto do corpo', 'Corrida bípede': 'texto do corpo', 'O que leva em voo': 'texto do corpo',
+      },
+    },
+    'Vontade, Virtudes e Aparência': { lidas: ['Vontade', 'Virtudes', 'Aparência'], ignoradas: {} },
+    'Comportamento': {
+      lidas: ['Texto curto', 'Social', 'Ambientação:'],
+      ignoradas: { 'Atividade': 'não vai ao card', 'Dieta': 'não vai ao card', 'Caça ou forrageio': 'não vai ao card', 'Diante de gente': 'não vai ao card' },
+    },
+  },
+};
+const casa = (rotulo, nome) => rotulo === nome || rotulo.startsWith(nome + ' (') || (/[ :]$/.test(nome) && rotulo.startsWith(nome));
+function conferePlanta(arq, S) {
+  const erros = [];
+  for (const t of Object.keys(S)) {
+    if (t === '_titulo') continue;
+    if (!PLANTA.secoes.lidas.includes(t) && !(t in PLANTA.secoes.ignoradas)) erros.push(`seção "## ${t}" que o conversor não conhece`);
+  }
+  for (const [sec, regra0] of Object.entries(PLANTA.linhas)) {
+    if (!S[sec] || sec === 'CORPO') continue;
+    const regra = typeof regra0 === 'string' ? PLANTA.linhas[regra0] : regra0;
+    for (const r of tabela(S[sec]).rows) {
+      const rot = (r[0] || '').replace(/\*\*/g, '').trim();
+      if (!rot) continue;
+      const conhecida = regra.lidas.some((n) => casa(rot, n)) || Object.keys(regra.ignoradas).some((n) => casa(rot, n));
+      if (!conhecida) erros.push(`linha "${rot}" da seção "${sec}" que o conversor não conhece`);
+    }
+  }
+  if (erros.length) throw new Error(`${arq}: ${erros.join('; ')}`);
 }
 function secoes(txt) {
   const out = {};
@@ -227,6 +303,7 @@ function converte(arq) {
   const S = secoes(txt);
   const { site, id, imagem, imagem2 } = idDaFicha(arq);
   const aviso = [];
+  conferePlanta(arq, S);
   const ident = S['Identidade'];
   const corpoPorte = S['Corpo, área e tamanho'] ?? S['Corpo e tamanho'] ?? S['Corpo, área e porte'] ?? S['Corpo e porte']; // D-183
   const mov = S['Corpo e movimento'];
@@ -240,7 +317,7 @@ function converte(arq) {
   const [categoria, papel, cent] = celula(ident, 'Categoria · papel · Centelha').split('·').map((x) => x.trim());
   // Atributos
   const attrs = {};
-  for (const r of tabela(S['Atributos']).rows) attrs[ATRIB[r[0]]] = parseInt(r[1].replace(/\*/g, ''), 10);
+  for (const r of tabela(S['Atributos']).rows) { if (!ATRIB[r[0]]) { aviso.push(`Atributo desconhecido: ${r[0]}`); continue; } attrs[ATRIB[r[0]]] = parseInt(r[1].replace(/\*/g, ''), 10); if (Number.isNaN(attrs[ATRIB[r[0]]])) aviso.push(`Atributo ${r[0]} sem número: "${r[1]}"`); }
   // Habilidades
   const skills = {}, skills2 = {};
   for (const r of tabela(S['Habilidades']).rows) {
@@ -248,6 +325,8 @@ function converte(arq) {
     const v = parseInt(r[1].replace(/\*/g, ''), 10);
     const destino = HAB[base];
     if (!destino) { aviso.push(`Habilidade sem destino: ${r[0]}`); continue; }
+    if (Number.isNaN(v) && /^não tem\b/.test(r[1].trim())) continue; // "não tem": a Habilidade em zero (o macaco e a Corrida)
+    if (Number.isNaN(v)) { aviso.push(`Habilidade ${r[0]} sem número: "${r[1]}"`); continue; }
     if (v > 0) (destino[0] === 'skills' ? skills : skills2)[destino[1]] = v;
   }
   // Especialidades
@@ -261,6 +340,12 @@ function converte(arq) {
     blocosEsp++;
     for (const l of bloco.split('\n').filter((x) => /^- /.test(x))) {
       // "- Armas (espada longa) +1; Bloqueio (escudo) +1.": cada pedaço é uma Especialidade
+      // O PRIMEIRO pedaço da linha é uma Especialidade, "nenhuma", ou a nota de trabalho da Bestiarista sobre a
+      // Especialidade que saiu ("A Resistência (Fôlego) 2 de hoje sai") ou que não entrou ("Sem Resistência (frio)",
+      // "Os sentidos não foram achados"); os pedaços depois do primeiro ";" podem ser texto. Fora disso, para.
+      const primeira = l.slice(2).split(';')[0];
+      if (!/^\s*([A-ZÀ-Ú][a-zà-ú]+(?: [A-ZÀ-Ú][a-zà-ú]+)*) \(([^)]+)\) \+?(\d+)/.test(primeira) && !/^\s*nenhuma\b/i.test(primeira)
+        && !/^\s*(A "?Resistência \([^)]+\) \+?\d+"? de hoje sai|Sem [A-ZÀ-Ú]|Os sentidos não foram achados)/.test(primeira)) aviso.push(`linha de Especialidade fora do formato: ${l.slice(0, 60)}`);
       for (const parte of l.slice(2).split(';')) {
         // o nome é uma ou mais palavras com maiúscula ("Acerto Arcano"); "A Resistência (Fôlego) ... de hoje sai" não casa
         const m = /^\s*([A-ZÀ-Ú][a-zà-ú]+(?: [A-ZÀ-Ú][a-zà-ú]+)*) \(([^)]+)\) \+?(\d+)/.exec(parte);
@@ -365,6 +450,10 @@ function converte(arq) {
   // Ataques
   const atq = tabela(S['Ataques']);
   const col = (...n) => n.map((x) => atq.cab.indexOf(x)).find((i) => i >= 0);
+  // As colunas que a tabela pode ter. P/G/R e Dano médio não se leem: o tempo do golpe sai da Classe e o
+  // dano médio, da conta do motor. Coluna que não está aqui para.
+  const COLUNAS_ATQ = ['Nome', 'Ataque', 'Parte', 'Classe', 'P/G/R', 'Velocidade', 'Dano', 'Tipo', 'Nível de Perfuração', 'Nível', 'Acerto', 'Bloqueia como arma', 'Dano médio', 'Justificativa'];
+  for (const c of atq.cab) if (!COLUNAS_ATQ.includes(c)) aviso.push(`coluna "${c}" da tabela Ataques que o conversor não conhece`);
   const ataques = [];
   const semDano = []; // a Língua da rã: não é ataque (decisoes-etapa-6.md §9, item 2)
   const jogadaPorParte = {};
@@ -411,7 +500,7 @@ function converte(arq) {
       tipo: tipo || tipoTxt,
       ...(acerto ? { acerto } : {}),
       ...(tipo === 'perfurante' && nivel ? { perf: Number(nivel[1]) } : {}),
-      ticks: parseInt(r[col('Velocidade')], 10),
+      ticks: parseInt(r[col('Velocidade')], 10) || (aviso.push(`ataque "${nomeA}": Velocidade sem número: "${r[col('Velocidade')]}"`), null),
       ...(menos ? { danoBonus: -Number(menos[1]) } : mais ? { danoBonus: Number(mais[1]) } : {}),
       // sem a Força: o golpe que não a soma (o bico do falcão, §9 item 2) e a conta já
       // feita ("1d6 − 2 + 2 = 1d6"), em que o lado direito é o final; com Força 0 não muda nada
@@ -476,8 +565,9 @@ function converte(arq) {
 
   return { arq, id, site, imagem, imagem2, elementos, transforma, artes, mana, nome, nomeIngles: nomeEmIngles(celula(ident, 'Nome em inglês (D&D, Pathfinder)')), categoria, papel, centelha: Number(cent),
     ameaca: celula(ident, 'Ameaça') ? parseInt(celula(ident, 'Ameaça'), 10) : null,
-    terreno: celula(ident, 'Terreno') ? celula(ident, 'Terreno').split(',').map((x) => TERRENO[x.trim()] ?? `?${x.trim()}`) : null,
-    clima: celula(ident, 'Clima') ? celula(ident, 'Clima').split(',').map((x) => CLIMA[x.trim()] ?? `?${x.trim()}`) : null,
+    // no Terreno, o que vem depois do ';' é a nota de onde a criatura prefere ficar ('qualquer; pântano e imundície', o hezrou): o card mostra os terrenos, e a nota não tem campo
+    terreno: celula(ident, 'Terreno') ? celula(ident, 'Terreno').split(';')[0].split(',').map((x) => terrenoDe(x) ?? (aviso.push(`Terreno fora do conjunto: ${x.trim()}`), null)) : null,
+    clima: celula(ident, 'Clima') ? celula(ident, 'Clima').split(',').map((x) => CLIMA[x.trim()] ?? (aviso.push(`Clima fora do conjunto: ${x.trim()}`), null)) : null,
     faltaEsp: blocosEsp === cabecalhosEsp ? null : `${cabecalhosEsp} cabeçalho(s) de Especialidade, ${blocosEsp} bloco(s) lido(s)`,
     porte, dimensoes, locomocao, attrs, skills, skills2, especialidades, willpower, virtues, aparencia,
     ataques, habilidades, venenos, doencas, enxame: enxameL, descricao, ambientacao, noJogo, notasObservacao, v3,
@@ -562,19 +652,27 @@ function montaFonte(f, todas) {
   return fonte;
 }
 
-const todas = arquivos.map(converte);
+// Cada ficha que o conversor não entende entra na lista, e ele para depois de ler todas, sem gravar nada.
+const paradas = [];
+const todas = arquivos.map((a) => { try { return converte(a); } catch (e) { paradas.push(e.message); return null; } });
+if (paradas.length) { console.error(`✘ ${paradas.length} ficha(s) que o conversor não entendeu:\n` + paradas.map((m) => '  ' + m).join('\n')); process.exit(1); }
 // Ficha com cabeçalho de Especialidade cujo bloco o laço não leu falha alto, e antes de
 // gravar qualquer fonte: sair sem nenhuma Especialidade, calado, foi o defeito da etapa 9.
 const semEsp = todas.filter((f) => f.faltaEsp);
+// O ADENDO DO AUTOR (23/10/2026, item 1): aviso não segue. Tudo o que o conversor não entendeu numa ficha
+// (Habilidade sem destino, ataque sem dado, valor sem número, o bloco de conferência que não bate) para aqui.
+const comAviso = todas.filter((f) => f.aviso.length);
+if (comAviso.length) {
+  console.error(`✘ ${comAviso.length} ficha(s) com o que o conversor não entendeu:\n` + comAviso.map((f) => f.aviso.map((a) => `  ${f.arq}: ${a}`).join('\n')).join('\n'));
+  process.exit(1);
+}
 if (semEsp.length) {
   console.error(`✘ ${semEsp.length} ficha(s) com Especialidade que o conversor não leu:\n` + semEsp.map((f) => `  ${f.arq}: ${f.faltaEsp}`).join('\n'));
   process.exit(1);
 }
 let gravadas = 0;
-const avisos = [];
 fs.mkdirSync(SAIDA, { recursive: true });
 for (const f of todas) {
-  for (const a of f.aviso) avisos.push(`${f.arq}: ${a}`);
   const fonte = montaFonte(f, todas);
   fs.writeFileSync(path.join(SAIDA, fonte.id + '.json'), JSON.stringify(fonte, null, 2) + '\n');
   gravadas++;
@@ -582,4 +680,3 @@ for (const f of todas) {
 console.log(`${gravadas} fontes gravadas em ${SAIDA}`);
 if (arg('--log')) fs.writeFileSync(arg('--log'), JSON.stringify(CITACOES, null, 1) + '\n');
 console.log(`${CITACOES.length} parêntese(s) com citação de fonte limpos`);
-if (avisos.length) { console.log(`${avisos.length} aviso(s):`); for (const a of avisos) console.log('  · ' + a); }

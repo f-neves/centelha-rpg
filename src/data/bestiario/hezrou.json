@@ -201,7 +201,7 @@
   "ecologia": {
     "tipo": "Fiend",
     "terreno": [
-      "?qualquer; pântano e imundície"
+      "Any"
     ],
     "clima": [
       "Extraplanar"

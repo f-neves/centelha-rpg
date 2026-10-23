@@ -3189,25 +3189,25 @@
     "ameaca": 3,
     "centelha": 1,
     "conceito": "humanoide monstruoso Grande",
-    "descricao": "Aberração humanoide de lendas antigas.",
+    "descricao": "Homem de 2,4 m com cabeça de touro que guarda labirintos e ruínas. Investe com os chifres, racha com um machado de duas mãos e nunca se perde nos corredores que conhece de cor.",
     "tags": [
       "monstro",
       "centelha"
     ],
     "pv": 50,
-    "defesa": 4,
+    "defesa": 9,
     "defesaSocial": 4,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
       "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 6,
+      "forca": 7,
       "destreza": 2,
       "vigor": 5,
       "influencia": 2,
@@ -3219,21 +3219,28 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "5d6 +2",
-        "dano": "2d6 +7 corte",
+        "nome": "Machado pesado",
+        "pool": "5d6+2 +2",
+        "dano": "2d6 +15 corte",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Chifrada",
+        "pool": "5d6 +2",
+        "dano": "1d6 +8 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "media"
       }
     ],
-    "tecnicas": [
-      "faro"
-    ],
+    "tecnicas": [],
     "artes": [],
     "notas": "Habilidades notáveis: Prontidão 3, Sobrevivência 2.",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 3,
       "esquiva": 0,
       "integridade": 2,
       "sociabilidade": 0,
@@ -6989,7 +6996,7 @@
     "ameaca": 5,
     "centelha": 5,
     "conceito": "exterior Médio",
-    "descricao": "Nativo de outro plano, alheio às leis mortais.",
+    "descricao": "Fera de cabeça de tigre que vive décadas disfarçada de nobre, mercador ou sacerdote, lendo pensamentos e tecendo intrigas. Conjura ilusões e encantos, e só mostra as garras quando a vítima já não tem saída.",
     "tags": [
       "exterior",
       "centelha",
@@ -6997,13 +7004,13 @@
     ],
     "pv": 40,
     "defesa": 14,
-    "defesaSocial": 8,
-    "defesaMental": 29,
+    "defesaSocial": 20,
+    "defesaMental": 25,
     "vontade": 10,
     "soak": {
       "impacto": 10,
-      "corte": 7,
-      "perfuracao": 7
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -7020,11 +7027,12 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
-        "pool": "4d6+2 +10",
-        "dano": "1d6 +9 corte",
+        "nome": "Garras",
+        "pool": "4d6+2 +11",
+        "dano": "1d6 +7 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -7048,28 +7056,12 @@
     ],
     "notas": "Habilidades notáveis: Manha 5, Furtividade 4, Persuasão 3.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "mudar-de-forma",
-        "nome": "Mudar de forma",
-        "tipo": "natural",
-        "base": {
-          "arte": "materia",
-          "nivel": 3
-        },
-        "resiste": "nenhum",
-        "efeito": "Mudar de forma",
-        "usos": {
-          "periodo": "avontade"
-        }
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
-      "integridade": 6,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "integridade": 4,
+      "sociabilidade": 3,
+      "furtividade": 4
     }
   },
   {
@@ -8742,14 +8734,14 @@
       "mágico"
     ],
     "pv": 37,
-    "defesa": 10,
-    "defesaSocial": 8,
+    "defesa": 14,
+    "defesaSocial": 16,
     "defesaMental": 19,
     "vontade": 7,
     "soak": {
       "impacto": 6,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -8766,43 +8758,23 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "3d6+2 +4",
-        "dano": "1d6 +5 corte",
+        "nome": "Espada curta",
+        "pool": "3d6 +6",
+        "dano": "1d6 +3 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "materia",
-        "nivel": 2
-      },
-      {
-        "id": "adivinhacao",
-        "nivel": 1
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Manha 4, Empatia 3, Furtividade 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "mudar-de-forma",
-        "nome": "Mudar de forma",
-        "tipo": "natural",
-        "resiste": "nenhum",
-        "efeito": "Mudar de forma",
-        "usos": {
-          "periodo": "avontade"
-        }
-      }
-    ],
     "pericias": {
       "prontidao": 2,
-      "esquiva": 1,
+      "esquiva": 2,
       "integridade": 4,
-      "sociabilidade": 0,
+      "sociabilidade": 2,
       "furtividade": 2
     }
   },
@@ -18515,24 +18487,24 @@
     "id": "otyugh",
     "nome": "Otyugh",
     "tipo": "soldado",
-    "categoria": "Aberração",
+    "categoria": "Fera",
     "ameaca": 3,
     "centelha": 2,
     "conceito": "aberração Grande",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Massa redonda sobre três pernas que vive enterrada no lixo de fossas e esgotos. Agarra com dois tentáculos longos, puxa para a boca e passa uma febre imunda pela mordida; quem o alimenta pode ganhar um guardião.",
     "tags": [
       "aberracao",
       "centelha"
     ],
     "pv": 46,
-    "defesa": 4,
+    "defesa": 8,
     "defesaSocial": 4,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
       "impacto": 6,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -18549,11 +18521,20 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Mordida",
         "pool": "5d6 +4",
-        "dano": "2d6 +8 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "dano": "2d6 +8 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Tentáculo",
+        "pool": "5d6 +4",
+        "dano": "1d6 +8 impacto",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],

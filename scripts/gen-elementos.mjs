@@ -124,7 +124,7 @@ const EXCECOES = {
   'cubo-gelatinoso': {},
   // Rakshasa (B14 fase 3): a fonte não sustenta imunidade total, e sim resistência a corte e
   // impacto; perfurante passa.
-  'rakshasa': { resistencias: ['corte', 'impacto'] },
+  // rakshasa saiu (ficha v3 desde o lote 5 da bestiario-nao-animal: a linha Elementos da ficha vai à fonte)
   // (A Lesma Gigante saiu daqui com a D-195: tem ficha v3, e a linha Elementos da ficha
   // vai direto à fonte, com resistência a impacto, corte e perfuração e imunidade a ácido.
   // As 97 de ficha v3 não passam por este satélite; ver CUSTOM_IDS acima.)

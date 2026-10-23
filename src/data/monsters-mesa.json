@@ -7488,40 +7488,31 @@
    "raciocinio": 4
   },
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
+   "temperanca": 3,
+   "valor": 2
   },
   "vontade": 7,
   "aparencia": 4,
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
+   "esquiva": 2,
    "integridade": 4,
-   "sociabilidade": 0,
+   "sociabilidade": 2,
    "furtividade": 2
   },
-  "artes": [
-   {
-    "id": "materia",
-    "nivel": 2
-   },
-   {
-    "id": "adivinhacao",
-    "nivel": 1
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 10,
-   "defesaSocial": 8,
+   "defesa": 14,
+   "defesaSocial": 16,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
@@ -7532,9 +7523,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6+2 +4",
-     "dano": "1d6 +5 corte",
+     "nome": "Espada curta",
+     "pool": "3d6 +6",
+     "dano": "1d6 +3 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -7551,7 +7542,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "1,8 m de altura na forma humana padrão",
+   "medida": "1,8 m de altura",
    "peso": "70 kg"
   }
  },
@@ -7836,7 +7827,7 @@
   "ecologia": {
    "tipo": "Dragon",
    "terreno": [
-    "?Frio",
+    "Cold",
     "Mountain"
    ],
    "clima": [
@@ -11622,7 +11613,7 @@
   "ecologia": {
    "tipo": "Humanoid",
    "terreno": [
-    "?Cidade"
+    "Urban"
    ],
    "clima": [
     "Temperate"
@@ -14090,7 +14081,7 @@
    "terreno": [
     "Ruins",
     "Underground",
-    "?qualquer"
+    "Any"
    ],
    "clima": [
     "Temperate"
@@ -14920,7 +14911,7 @@
   "ecologia": {
    "tipo": "Fiend",
    "terreno": [
-    "?qualquer; pântano e imundície"
+    "Any"
    ],
    "clima": [
     "Extraplanar"
@@ -19461,7 +19452,7 @@
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
-   "forca": 6,
+   "forca": 7,
    "destreza": 2,
    "vigor": 5,
    "influencia": 2,
@@ -19472,40 +19463,34 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 4
   },
   "vontade": 6,
   "aparencia": 4,
   "pericias": {
-   "prontidao": 1,
+   "prontidao": 3,
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
    "furtividade": 1
   },
   "artes": [],
-  "tecnicas": [
-   {
-    "id": "faro",
-    "nome": "Faro",
-    "caminho": "cacador"
-   }
-  ],
+  "tecnicas": [],
   "combate": {
    "pv": 50,
-   "defesa": 4,
+   "defesa": 9,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 6,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
+   "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
     "arranque": 5,
@@ -19513,10 +19498,18 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "5d6 +2",
-     "dano": "2d6 +7 corte",
+     "nome": "Machado pesado",
+     "pool": "5d6+2 +2",
+     "dano": "2d6 +15 corte",
      "perfArma": null,
+     "speed": 7,
+     "classe": "pesada"
+    },
+    {
+     "nome": "Chifrada",
+     "pool": "5d6 +2",
+     "dano": "1d6 +8 perfurante · perf. 1",
+     "perfArma": 1,
      "speed": 6,
      "classe": "media"
     }
@@ -21637,9 +21630,9 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
    "valor": 3
   },
   "vontade": 7,
@@ -21655,13 +21648,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 46,
-   "defesa": 4,
+   "defesa": 8,
    "defesaSocial": 4,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -21672,10 +21665,18 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Mordida",
      "pool": "5d6 +4",
-     "dano": "2d6 +8 perfurante",
-     "perfArma": 0,
+     "dano": "2d6 +8 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 7,
+     "classe": "pesada"
+    },
+    {
+     "nome": "Tentáculo",
+     "pool": "5d6 +4",
+     "dano": "1d6 +8 impacto",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -21693,7 +21694,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "2,4 m de altura, tentáculos alcançam até 4,5 m",
+   "medida": "2,4 m de altura",
    "peso": "500 kg"
   }
  },
@@ -23454,19 +23455,19 @@
    "raciocinio": 3
   },
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 5,
+   "compaixao": 1,
+   "conviccao": 1,
    "temperanca": 1,
    "valor": 6
   },
   "vontade": 10,
-  "aparencia": 0,
+  "aparencia": 6,
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 6,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "integridade": 4,
+   "sociabilidade": 3,
+   "furtividade": 4
   },
   "artes": [
    {
@@ -23490,12 +23491,12 @@
   "combate": {
    "pv": 40,
    "defesa": 14,
-   "defesaSocial": 8,
-   "defesaMental": 29,
+   "defesaSocial": 20,
+   "defesaMental": 25,
    "absorcao": {
     "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -23510,9 +23511,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "4d6+2 +10",
-     "dano": "1d6 +9 corte",
+     "nome": "Garras",
+     "pool": "4d6+2 +11",
+     "dano": "1d6 +7 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -25006,7 +25007,7 @@
   "ecologia": {
    "tipo": "Humanoid",
    "terreno": [
-    "?Cidade",
+    "Urban",
     "Plains"
    ],
    "clima": [
@@ -28369,7 +28370,7 @@
    "tipo": "Undead",
    "terreno": [
     "Ruins",
-    "?Cidade"
+    "Urban"
    ],
    "clima": [
     "Temperate"

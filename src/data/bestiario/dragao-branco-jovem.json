@@ -196,7 +196,7 @@
   "ecologia": {
     "tipo": "Dragon",
     "terreno": [
-      "?Frio",
+      "Cold",
       "Mountain"
     ],
     "clima": [

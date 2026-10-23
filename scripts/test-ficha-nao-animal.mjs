@@ -8,7 +8,13 @@
 // aqui mesmo, roda o conversor de verdade numa pasta do sistema (apagada no fim) e confere o JSON campo a
 // campo; depois estraga a ficha, um item por vez, e exige que o conversor PARE.
 //
-//   node scripts/test-ficha-nao-animal.mjs
+// O ADENDO DO AUTOR (23/10/2026, item 1): o conversor para em tudo o que não entende. Os casos de
+// parada cobrem um de cada tipo: valor fora do conjunto, linha que ele não conhece, seção nova,
+// coluna nova, Atributo, Habilidade, Tipo, Classe, Arte, o bloco de conferência que não bate.
+// O CONTROLE NEGATIVO roda este mesmo teste contra o conversor de antes, que grava calado:
+//   node scripts/test-ficha-nao-animal.mjs --conversor <cópia antiga>/scripts/fichas-v3-para-bestiario.mjs
+//
+//   node scripts/test-ficha-nao-animal.mjs [--conversor <arquivo>]
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -19,6 +25,8 @@ const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^
 const falhas = [];
 const ok = (c, m) => { console.log((c ? '  ✓ ' : '  ✘ ') + m); if (!c) falhas.push(m); };
 const ID = 'teste-nao-animal';
+const iConv = process.argv.indexOf('--conversor');
+const CONVERSOR = iConv > 0 ? path.resolve(process.argv[iConv + 1]) : path.join(RAIZ, 'scripts/fichas-v3-para-bestiario.mjs');
 
 const FICHA = `# Teste Não Animal
 
@@ -163,7 +171,7 @@ const roda = (ficha, rotulo) => {
   fs.mkdirSync(path.join(dir, 'saida'));
   fs.writeFileSync(path.join(dir, 'fichas', ID + '.md'), ficha);
   fs.writeFileSync(path.join(dir, 'ids.tsv'), TSV);
-  const r = spawnSync('node', [path.join(RAIZ, 'scripts/fichas-v3-para-bestiario.mjs'), '--raiz', RAIZ, '--fichas', path.join(dir, 'fichas'), '--tsv', path.join(dir, 'ids.tsv'), '--saida', path.join(dir, 'saida')], { encoding: 'utf8' });
+  const r = spawnSync('node', [CONVERSOR, '--raiz', RAIZ, '--fichas', path.join(dir, 'fichas'), '--tsv', path.join(dir, 'ids.tsv'), '--saida', path.join(dir, 'saida')], { encoding: 'utf8' });
   const arq = path.join(dir, 'saida', ID + '.json');
   return { status: r.status, saida: r.stdout + r.stderr, json: fs.existsSync(arq) ? JSON.parse(fs.readFileSync(arq, 'utf8')) : null };
 };
@@ -201,7 +209,9 @@ try {
   const para = (rotulo, de, para_, re) => {
     if (!FICHA.includes(de)) throw new Error(`o teste não achou "${de}" na ficha`);
     const r = roda(FICHA.replace(de, para_), rotulo);
-    const msg = r.saida.split('\n').find((l) => /Error:/.test(l)) || '';
+    // a parada vem como "Error: ..." (o que para na hora) ou na lista "✘ ... não entendeu" (o que para depois de ler tudo)
+    const linhas = r.saida.split('\n').filter((l) => /Error:|^\s+(· )?teste-nao-animal/.test(l));
+    const msg = linhas.find((l) => re.test(l)) || linhas[0] || '';
     ok(r.status !== 0 && !r.json && re.test(msg), `${rotulo}: ${msg.trim() || `exit ${r.status}`}`);
   };
   para('Classe que não existe', '| arco | Distância |', '| arco | Longe |', /Classe "Longe" não existe/);
@@ -209,9 +219,21 @@ try {
   para('Arte que não existe', '| Artes | fogo 2 · Proteção 1 |', '| Artes | fogo 2 · Teleporte 1 |', /"Teleporte" não é Arte/);
   para('Mana sem número', 'Centelha 2 × 2 + Vontade 6 = **10**', 'a conferir', /Mana sem número/);
   para('jogada com Habilidade que não existe', 'Jogada: Percepção 3 + Atirador 2', 'Jogada: Percepção 3 + Arremessar 2', /Atributo ou Habilidade que não existe/);
+  para('linha de Identidade que não existe', '| Clima | Temperado | |\n', '| Clima | Temperado | |\n| Origem | o Abismo | |\n', /linha "Origem" da seção "Identidade" que o conversor não conhece/);
+  para('linha de Corpo e movimento que não existe', '| PV total | **20** | |\n', '| PV total | **20** | |\n| Fôlego | 3 | |\n', /linha "Fôlego" da seção "Corpo e movimento"/);
+  para('seção nova', '## No jogo\n', '## Tesouro\n\nnada\n\n## No jogo\n', /seção "## Tesouro" que o conversor não conhece/);
+  para('coluna nova em Ataques', '| Dano médio | Justificativa |', '| Dano extra | Justificativa |', /coluna "Dano extra" da tabela Ataques/);
+  para('Terreno fora do conjunto', '| Terreno | Ruínas |', '| Terreno | Vulcão |', /Terreno fora do conjunto: Vulcão/);
+  para('Clima fora do conjunto', '| Clima | Temperado |', '| Clima | Abafado |', /Clima fora do conjunto: Abafado/);
+  para('Atributo que não existe', '| Compostura | 2 |', '| Sorte | 2 |', /Atributo desconhecido: Sorte/);
+  para('Atributo sem número', '| Força | 4 |', '| Força | forte |', /Atributo Força sem número/);
+  para('Habilidade que não existe', '| Briga | 1 |', '| Arremessar | 1 |', /Habilidade sem destino: Arremessar/);
+  para('Especialidade fora do formato', '- Armas (espada longa) +1; Atirador (arco) +1.', '- armas de lâmina +1.', /linha de Especialidade fora do formato/);
+  para('Velocidade sem número', '| 1/1/3 | 5 | 1d6 + Centelha (2) | Perfuração |', '| 1/1/3 | rápida | 1d6 + Centelha (2) | Perfuração |', /Velocidade sem número/);
+  para('bloco de conferência que não bate', '"pv":20', '"pv":21', /bloco: pv 21 ≠ 20/);
 } finally {
   fs.rmSync(tmp, { recursive: true, force: true });
 }
 
 if (falhas.length) { console.error(`\n✘ ficha-nao-animal: ${falhas.length} falha(s)`); process.exit(1); }
-console.log('\n✓ ficha-nao-animal: o conversor lê as Habilidades, a jogada, a Classe, o Tipo, a Absorção, a massa, a Defesa imune, Artes e Mana, e para no que não conhece');
+console.log('\n✓ ficha-nao-animal: o conversor lê as Habilidades, a jogada, a Classe, o Tipo, a Absorção, a massa, a Defesa imune, Artes e Mana, e para em tudo o que não conhece (seção, linha, coluna, valor)');

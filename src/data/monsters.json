@@ -12361,7 +12361,7 @@
   "categoria": "Aberração",
   "tipo": "soldado",
   "conceito": "humanoide monstruoso Médio",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Coisa cinzenta de rosto liso que mata uma pessoa e vive anos com o rosto, a voz e as memórias dela. Lê o que os outros pensam e foge ao primeiro sinal de suspeita, para voltar com outro rosto.",
   "tags": [
    "monstro",
    "centelha",
@@ -12372,7 +12372,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "1,8 m de altura na forma humana padrão",
+   "medida": "1,8 m de altura",
    "peso": "70 kg"
   },
   "ecologia": {
@@ -12399,28 +12399,28 @@
   },
   "pericias": {
    "prontidao": 2,
-   "esquiva": 1,
+   "esquiva": 2,
    "integridade": 4,
-   "sociabilidade": 0,
+   "sociabilidade": 2,
    "furtividade": 2
   },
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
+   "temperanca": 3,
+   "valor": 2
   },
   "combate": {
    "pv": 37,
-   "defesa": 10,
-   "defesaSocial": 8,
+   "defesa": 14,
+   "defesaSocial": 16,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
@@ -12431,9 +12431,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6+2 +4",
-     "dano": "1d6 +5 corte",
+     "nome": "Espada curta",
+     "pool": "3d6 +6",
+     "dano": "1d6 +3 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -12443,60 +12443,44 @@
   "habilidades": [
    {
     "nome": "Mudar de forma",
-    "descricao": "1 ação, assume a aparência de qualquer humanoide já visto"
+    "descricao": "poder natural (base Matéria 2): Ativação: uma ação, Velocidade 6. Duração: até ele desfazer, ou até cair inconsciente. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume o corpo, o rosto, a voz e o cheiro de qualquer humanoide de Tamanho perto do dele que já tenha visto; os números ficam os dele; só a magia ou a Manha de quem conviveu muito com o original percebe a troca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
    },
    {
     "nome": "Ler pensamentos",
-    "descricao": "perto do alvo, sonda a mente; falha em Vontade revela um segredo"
+    "descricao": "poder natural (base Adivinhação 1): Ativação: nenhuma; sempre ativo, e uma ação, Velocidade 6, para sondar fundo. Duração: enquanto o alvo estiver perto. Alcance: 9 m. Área: um alvo por vez. Efeito: sempre ativo, ouve os pensamentos de superfície de quem está perto; na sondagem, quem falha revela um segredo ou uma intenção. Dano: nenhum. Resistência: mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem. Limite de uso: a sondagem, uma vez por cena para cada alvo."
    },
    {
     "nome": "Mímica perfeita",
-    "descricao": "+3d6 em Manha ao se passar por outra pessoa"
-   },
-   {
-    "nome": "Mente protegida",
-    "descricao": "imune a efeitos simples de leitura ou controle mental"
+    "descricao": "Manha, com a Especialidade natural (passar-se pela pessoa cujo rosto usa) +3."
    },
    {
     "nome": "Reflexos ágeis",
-    "descricao": "+1 Esquiva, prefere fugir a lutar quando desmascarado"
+    "descricao": "Esquiva 2."
    },
    {
-    "nome": "Ler pensamentos",
-    "descricao": "Sentido passivo."
-   }
-  ],
-  "poderes": [
+    "nome": "Mente protegida",
+    "descricao": "leitura de mente e controle mental simples não o pegam."
+   },
    {
-    "id": "mudar-de-forma",
-    "nome": "Mudar de forma",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "Mudar de forma",
-    "usos": {
-     "periodo": "avontade"
-    }
+    "nome": "rosto roubado",
+    "descricao": "evita a luta; quando é descoberto, ataca com a espada para abrir caminho e foge; mais tarde volta com outro rosto."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano. · mente: ouve os pensamentos de superfície de quem está a 9 m (Ler pensamentos, nas Manobras)."
    }
   ],
+  "poderes": [],
   "locomocao": {
    "terra": 3
   },
   "tecnicas": [],
-  "artes": [
-   {
-    "id": "materia",
-    "nivel": 2
-   },
-   {
-    "id": "adivinhacao",
-    "nivel": 1
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Manha 4, Empatia 3, Furtividade 2.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Elimina ou substitui alguém e assume sua forma e memórias, infiltrando-se em vilas e cortes para viver anos a fio sem ser notado."
+    "texto": "Elimina ou substitui alguém e assume sua forma e memórias, infiltrando-se em vilas e cortes para viver anos a fio sem ser notado. Social: sozinho."
    },
    {
     "titulo": "Sociedade",
@@ -12513,6 +12497,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Prospera na desconfiança generalizada que a Supressão semeou, pois ninguém espera magia tão sutil e silenciosa; em Calin, onde caçam 'possuídos' com fervor, aprendeu a apontar o dedo primeiro para desviar suspeita de si."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 37 PV, Impacto 6, Corte e Perfuração 2. Esquiva 14, Bloqueio 10 (11 com a espada). A espada curta dá dano médio 6,5. O perigo dele não é a luta: assume o rosto e a voz de quem já viu, ouve os pensamentos de quem está perto e passa por qualquer conhecido. Descoberto, foge. Defesa Mental 19."
    }
   ]
  },
@@ -12868,7 +12856,7 @@
   "ecologia": {
    "tipo": "Dragon",
    "terreno": [
-    "?Frio",
+    "Cold",
     "Mountain"
    ],
    "clima": [
@@ -19180,7 +19168,7 @@
   "ecologia": {
    "tipo": "Humanoid",
    "terreno": [
-    "?Cidade"
+    "Urban"
    ],
    "clima": [
     "Temperate"
@@ -23240,7 +23228,7 @@
    "terreno": [
     "Ruins",
     "Underground",
-    "?qualquer"
+    "Any"
    ],
    "clima": [
     "Temperate"
@@ -24628,7 +24616,7 @@
   "ecologia": {
    "tipo": "Fiend",
    "terreno": [
-    "?qualquer; pântano e imundície"
+    "Any"
    ],
    "clima": [
     "Extraplanar"
@@ -32082,7 +32070,7 @@
   "categoria": "Humanoide monstruoso",
   "tipo": "soldado",
   "conceito": "humanoide monstruoso Grande",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Homem de 2,4 m com cabeça de touro que guarda labirintos e ruínas. Investe com os chifres, racha com um machado de duas mãos e nunca se perde nos corredores que conhece de cor.",
   "tags": [
    "monstro",
    "centelha"
@@ -32108,7 +32096,7 @@
   "imagem": "bestiario/minotauro_criatura.webp",
   "semImagem": false,
   "atributos": {
-   "forca": 6,
+   "forca": 7,
    "destreza": 2,
    "vigor": 5,
    "influencia": 2,
@@ -32119,7 +32107,7 @@
    "raciocinio": 2
   },
   "pericias": {
-   "prontidao": 1,
+   "prontidao": 3,
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
@@ -32128,23 +32116,23 @@
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 4
   },
   "combate": {
    "pv": 50,
-   "defesa": 4,
+   "defesa": 9,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 6,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
+   "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
     "arranque": 5,
@@ -32152,10 +32140,18 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "5d6 +2",
-     "dano": "2d6 +7 corte",
+     "nome": "Machado pesado",
+     "pool": "5d6+2 +2",
+     "dano": "2d6 +15 corte",
      "perfArma": null,
+     "speed": 7,
+     "classe": "pesada"
+    },
+    {
+     "nome": "Chifrada",
+     "pool": "5d6 +2",
+     "dano": "1d6 +8 perfurante · perf. 1",
+     "perfArma": 1,
      "speed": 6,
      "classe": "media"
     }
@@ -32163,47 +32159,45 @@
   },
   "habilidades": [
    {
-    "nome": "Investida chifruda",
-    "descricao": "move 4m ou mais antes de atacar; dano extra com os chifres e pode Derrubar"
+    "nome": "Investida",
+    "descricao": "corre no Preparo do golpe, com −2 a mais na Defesa e +1d6 no dano."
    },
    {
-    "nome": "Faro no labirinto (Su)",
-    "descricao": "nunca se perde e sempre sabe o caminho de volta em passagens e labirintos"
+    "nome": "Investida chifruda",
+    "descricao": "Chifrada: Ativação: a Investida com a Chifrada, depois de correr 4 m ou mais. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o corpo inteiro entra no golpe, e o alvo atingido pode cair, pelas travas de massa do livro. Dano: 1d6 + 1d6 da Investida + Força × 2 + Centelha, Perfuração. Resistência: corpo, Força + Atletismo do alvo contra a jogada do golpe; quem falha fica Caído. Limite de uso: uma por Investida."
    },
    {
     "nome": "Fúria de touro",
-    "descricao": "quando Abalado, ganha bônus de dano mas penalidade em Defesa"
-   },
-   {
-    "nome": "Machado duplo",
-    "descricao": "ataque corpo a corpo pesado com dano alto"
-   },
-   {
-    "nome": "Casco firme",
-    "descricao": "resistente a Derrubar e terrenos difíceis"
+    "descricao": "Ativação: ao ficar Abalado ou ao cair abaixo da metade dos PV. Duração: até o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Enfurecido (+2 no ataque, −2 nas Defesas; ataca o mais perto, não recua) e soma +2 no dano dos golpes. Dano: +2 nos golpes. Resistência: nenhum. Limite de uso: uma vez por cena."
    },
    {
     "nome": "Faro no labirinto",
-    "descricao": "Sentido passivo."
+    "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: nunca se perde em passagens, túneis e labirintos e sempre sabe o caminho de volta. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Investida chifruda",
-    "descricao": "Manobra de combate, sem limite de uso."
+    "nome": "Casco firme",
+    "descricao": "Atletismo, com a Especialidade natural (ficar de pé) +2, contra Derrubar e no terreno difícil."
+   },
+   {
+    "nome": "dono do labirinto",
+    "descricao": "espera numa curva, investe com os chifres e acaba com o machado; persegue quem foge pelos corredores e não recua."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "faro: o de um touro; Prontidão (faro) +2. · visão e audição: as de um humano."
    }
   ],
   "poderes": [],
   "locomocao": {
    "terra": 3
   },
-  "tecnicas": [
-   "faro"
-  ],
+  "tecnicas": [],
   "artes": [],
   "notas": "Habilidades notáveis: Prontidão 3, Sobrevivência 2.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Força bruta e fúria primitiva guiam o minotauro em combate; carrega machado enorme e não recua diante de nada, confiando no instinto e na violência para resolver qualquer impasse."
+    "texto": "Força bruta e fúria primitiva guiam o minotauro em combate; carrega machado enorme e não recua diante de nada, confiando no instinto e na violência para resolver qualquer impasse. Social: sozinho ou em clã pequeno, típico 2 a 4."
    },
    {
     "titulo": "Sociedade",
@@ -32216,6 +32210,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "As selvas de Mére escondem cidades e complexos labirínticos antigos demais para qualquer mapa comum, e é lá, entre pedra esquecida e cultos caídos, que os minotauros mais temidos ainda vivem, isolados do resto do mundo."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, 50 PV, Impacto 6, Corte e Perfuração 1. Defesa baixa (Bloqueio 8, 6 com o machado, 9 com os chifres; Esquiva 4): quem chega perto acerta, e leva o machado de dano médio 22. Investe de longe com os chifres e derruba. Abalado ou ferido pela metade, enfurece: bate mais e se defende pior. Nunca se perde no labirinto."
    }
   ]
  },
@@ -35659,7 +35657,7 @@
   "categoria": "Aberração",
   "tipo": "soldado",
   "conceito": "aberração Grande",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Massa redonda sobre três pernas que vive enterrada no lixo de fossas e esgotos. Agarra com dois tentáculos longos, puxa para a boca e passa uma febre imunda pela mordida; quem o alimenta pode ganhar um guardião.",
   "tags": [
    "aberracao",
    "centelha"
@@ -35669,7 +35667,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "2,4 m de altura, tentáculos alcançam até 4,5 m",
+   "medida": "2,4 m de altura",
    "peso": "500 kg"
   },
   "ecologia": {
@@ -35706,20 +35704,20 @@
   "vontade": 7,
   "aparencia": 1,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
    "valor": 3
   },
   "combate": {
    "pv": 46,
-   "defesa": 4,
+   "defesa": 8,
    "defesaSocial": 4,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -35730,10 +35728,18 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Mordida",
      "pool": "5d6 +4",
-     "dano": "2d6 +8 perfurante",
-     "perfArma": 0,
+     "dano": "2d6 +8 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 7,
+     "classe": "pesada"
+    },
+    {
+     "nome": "Tentáculo",
+     "pool": "5d6 +4",
+     "dano": "1d6 +8 impacto",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
     }
@@ -35741,24 +35747,32 @@
   },
   "habilidades": [
    {
-    "nome": "Visão no escuro e faro",
-    "descricao": "Enxerga no escuro e localiza presas e imundície pelo cheiro."
+    "nome": "Tentáculos que agarram",
+    "descricao": "Tentáculo: Ativação: o Tentáculo que acerta, se ele quiser. Duração: até o alvo se soltar ou ele soltar. Alcance: 4,5 m. Área: um alvo por tentáculo. Efeito: o alvo fica Agarrado, sem jogada de Agarrar, e pode ser puxado até a boca. Dano: o do Tentáculo. Resistência: corpo, para escapar, pela jogada de Agarrar do livro contra a Força 6 + Briga 4 dele, com o Agarrão +2. Limite de uso: dois alvos agarrados, um em cada tentáculo."
    },
    {
-    "nome": "Imune a doenças",
-    "descricao": "Vivendo entre dejetos e carniça, seu corpo não sofre com pragas e infecções."
+    "nome": "Esmagar",
+    "descricao": "Tentáculo: Ativação: a cada 6 Ticks em que mantém o agarrão. Duração: enquanto agarra. Alcance: 4,5 m. Área: quem está agarrado. Efeito: aperta e esmaga sem nova jogada de ataque. Dano: 1d6 + Força, Impacto. Resistência: nenhum; quem se solta para de sofrer. Limite de uso: um por alvo agarrado."
    },
    {
     "nome": "Mordida contaminada",
-    "descricao": "Transmite pela mordida uma febre imunda que drena Vigor da vítima com o passar dos dias."
+    "descricao": "Mordida: Ativação: a Mordida que fere (1 de dano ou mais depois da Absorção). Duração: a da doença. Alcance: o do corpo a corpo. Área: um alvo. Efeito: passa a febre do lixo (Veneno e doença). Dano: nenhum além da Mordida. Resistência: corpo, pela jogada da doença. Limite de uso: uma jogada de doença por Mordida que fere."
    },
    {
-    "nome": "Tentáculos que agarram",
-    "descricao": "Dois tentáculos prendem e esmagam continuamente quem está por perto."
+    "nome": "Imune a doenças",
+    "descricao": "doença não pega nele."
    },
    {
     "nome": "Camuflagem no covil",
-    "descricao": "Entre a própria sujeira e lixo, torna-se muito mais difícil de detectar."
+    "descricao": "Furtividade, com a Especialidade natural (enterrado no próprio lixo) +3."
+   },
+   {
+    "nome": "fossa guardada",
+    "descricao": "espera enterrado no lixo do covil, agarra quem chega com os tentáculos, puxa para a boca e morde; não sai de perto do covil e aceita trégua de quem traz comida."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga no escuro como de dia (site). · faro: localiza presa e imundície pelo cheiro; Prontidão (faro) +2."
    }
   ],
   "poderes": [],
@@ -35776,6 +35790,18 @@
    {
     "titulo": "Aliança de conveniência",
     "texto": "Certos povos subterrâneos alimentam otyughs com refugo e carne crua em troca de que a criatura os deixe em paz, às vezes até agindo como guardiã."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinho."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Doença no jogo: Febre do lixo · Virulência 10 · dia · pela Mordida que fere: o alvo rola uma vez, Vigor + Resistência contra a Virulência; na falha, começa em Incubação"
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, 46 PV, Impacto 6, Corte e Perfuração 2. Defesa baixa (Bloqueio 8, Esquiva 4): fácil de acertar e difícil de derrubar. Os tentáculos alcançam 4,5 m, agarram até dois alvos e esmagam a cada 6 Ticks; a Mordida dá dano médio 15 e passa a febre do lixo (Virulência 10, por dia). Enterrado no lixo, quase não se vê."
    }
   ]
  },
@@ -38562,7 +38588,7 @@
   "categoria": "Outsider",
   "tipo": "chefe",
   "conceito": "exterior Médio",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "Fera de cabeça de tigre que vive décadas disfarçada de nobre, mercador ou sacerdote, lendo pensamentos e tecendo intrigas. Conjura ilusões e encantos, e só mostra as garras quando a vítima já não tem saída.",
   "tags": [
    "exterior",
    "centelha",
@@ -38603,27 +38629,27 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
-   "integridade": 6,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "integridade": 4,
+   "sociabilidade": 3,
+   "furtividade": 4
   },
   "vontade": 10,
-  "aparencia": 0,
+  "aparencia": 6,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 5,
+   "compaixao": 1,
+   "conviccao": 1,
    "temperanca": 1,
    "valor": 6
   },
   "combate": {
    "pv": 40,
    "defesa": 14,
-   "defesaSocial": 8,
-   "defesaMental": 29,
+   "defesaSocial": 20,
+   "defesaMental": 25,
    "absorcao": {
     "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -38638,9 +38664,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "4d6+2 +10",
-     "dano": "1d6 +9 corte",
+     "nome": "Garras",
+     "pool": "4d6+2 +11",
+     "dano": "1d6 +7 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -38650,41 +38676,38 @@
   "habilidades": [
    {
     "nome": "Garras traiçoeiras",
-    "descricao": "dois ataques corpo a corpo na mesma ação, dano médio cada"
+    "descricao": "Garras: Ativação: uma ação de Garras, com Velocidade 7 no lugar de 5. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo, ou dois lado a lado. Efeito: duas jogadas de Garras na mesma ação, cada uma contra a Defesa do alvo. Dano: o das Garras em cada uma que acerta. Resistência: nenhum. Limite de uso: a cada ação de Garras."
    },
    {
     "nome": "Mudar de forma",
-    "descricao": "feitiçaria; assume qualquer forma humanoide à vontade, indistinguível sem magia"
+    "descricao": "poder natural (base Matéria 3): Ativação: uma ação, Velocidade 6. Duração: até ele desfazer, ou até cair inconsciente. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume o corpo, o rosto e a voz de qualquer humanoide de Tamanho perto do dele; os números ficam os dele; sem magia, ninguém vê a troca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
    },
    {
     "nome": "Ler pensamentos",
-    "descricao": "feitiçaria; sonda a mente de um alvo próximo e revela intenções ou segredos"
+    "descricao": "poder natural (base Adivinhação 2): Ativação: uma ação, Velocidade 6, olhando o alvo. Duração: enquanto se concentra, até o fim da cena. Alcance: 18 m. Área: um alvo. Efeito: ouve os pensamentos de superfície do alvo e descobre uma intenção ou um segredo dele. Dano: nenhum. Resistência: mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem. Limite de uso: à vontade, um alvo por vez."
    },
    {
     "nome": "Ilusões",
-    "descricao": "feitiçaria; cria imagens sensoriais convincentes para enganar ou distrair"
+    "descricao": "poder natural (base Fascinação 4): Ativação: uma ação, Velocidade 8. Duração: até o fim da cena, ou enquanto ele mantiver. Alcance: 36 m. Área: uma imagem de até 6 m de lado. Efeito: uma imagem com som e cheiro, que se move como ele quer, para enganar ou distrair; quem toca ou desconfia e testa vê através dela. Dano: nenhum. Resistência: mente, contra Influência + Manha dele, só para quem desconfia. Limite de uso: uma ilusão por vez."
    },
    {
     "nome": "Magia reversa",
-    "descricao": "alguns feitiços lançados contra ele produzem o efeito oposto ao pretendido; +4 na Defesa Mental e nas resistências contra Artes"
-   }
-  ],
-  "poderes": [
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +4 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+   },
    {
-    "id": "mudar-de-forma",
-    "nome": "Mudar de forma",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "Mudar de forma",
-    "base": {
-     "arte": "materia",
-     "nivel": 3
-    },
-    "usos": {
-     "periodo": "avontade"
-    }
+    "nome": "Feitiço que volta",
+    "descricao": "alguns feitiços lançados contra ele produzem o efeito oposto ao que o conjurador queria."
+   },
+   {
+    "nome": "trama de corte",
+    "descricao": "evita a luta aberta; deixa os servos e as vítimas enganadas na frente, confunde com ilusões e com Fascinação, e só entra com as garras quando a vitória é certa; ferido, muda de forma e some."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão, audição e faro: os de um humano, com os olhos de tigre."
    }
   ],
+  "poderes": [],
   "locomocao": {
    "terra": 4
   },
@@ -38707,11 +38730,12 @@
     "nivel": 4
    }
   ],
+  "mana": 20,
   "notas": "Habilidades notáveis: Manha 5, Furtividade 4, Persuasão 3.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Predador social por excelência: disfarça-se de nobre, mercador ou sacerdote e manipula suas vítimas ao longo de anos, satisfazendo apetites cruéis sob uma máscara de refinamento impecável."
+    "texto": "Predador social por excelência: disfarça-se de nobre, mercador ou sacerdote e manipula suas vítimas ao longo de anos, satisfazendo apetites cruéis sob uma máscara de refinamento impecável. Social: sozinho; raramente em grupo."
    },
    {
     "titulo": "Sociedade",
@@ -38728,6 +38752,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "As igrejas supressoras vigiam feitiços óbvios, mas não a sedução e a mentira: um rakshasa entrincheirado numa corte de Calin ou nas cidades ocultas de Mère passa décadas sem ser descoberto. A Lei que barra os deuses de tocar mortais nunca o alcançou, pois ele jamais foi mortal."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 40 PV, Impacto 10, Corte e Perfuração 5, metade do dano de corte e de impacto. Esquiva e Bloqueio 14. Duas garradas por ação (dano médio 10, 5 cada). Conjura com 20 de Mana: Fascinação e Proteção até o 4, Matéria até o 3, Adivinhação até o 2. Muda de forma, lê pensamentos e cria ilusões à vontade. Defesa Mental 25, 29 contra Artes. Ferido, foge com outro rosto."
    }
   ]
  },
@@ -41038,7 +41066,7 @@
   "ecologia": {
    "tipo": "Humanoid",
    "terreno": [
-    "?Cidade",
+    "Urban",
     "Plains"
    ],
    "clima": [
@@ -46489,7 +46517,7 @@
    "tipo": "Undead",
    "terreno": [
     "Ruins",
-    "?Cidade"
+    "Urban"
    ],
    "clima": [
     "Temperate"

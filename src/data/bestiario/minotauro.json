@@ -8,7 +8,7 @@
   "categoriaLegada": "Monstro",
   "papel": "soldado",
   "conceito": "humanoide monstruoso Grande",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Homem de 2,4 m com cabeça de touro que guarda labirintos e ruínas. Investe com os chifres, racha com um machado de duas mãos e nunca se perde nos corredores que conhece de cor.",
   "tags": [
     "monstro",
     "centelha"
@@ -17,86 +17,145 @@
   "porte": "Grande",
   "dimensoes": {
     "medida": "2,4 m de altura",
-    "peso": "250 kg"
+    "peso": "250 kg",
+    "largura": 0.69,
+    "altura": 2.4
   },
   "locomocao": {
     "terra": 3
   },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+  },
   "centelha": 1,
   "attrs": {
-    "forca": 6,
+    "forca": 7,
     "destreza": 2,
     "vigor": 5,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
-    "briga": 4,
-    "esquiva": 0,
-    "prontidao": 1,
-    "integridade": 2
+    "armas": 4,
+    "briga": 3,
+    "bloqueio": 1,
+    "atletismo": 3,
+    "furtividade": 1,
+    "prontidao": 3,
+    "resistencia": 3,
+    "integridade": 2,
+    "sobrevivencia": 2
   },
+  "skills2": {
+    "intimidacao": 3,
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "atletismo",
+      "foco": "ficar de pé",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "armas",
+      "foco": "machado",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "intimidacao",
+      "foco": "urro",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 4
   },
   "willpower": 6,
   "aparencia": 4,
-  "tech": {
-    "faro": true
-  },
   "ataques": [
     {
-      "nome": "Arma",
+      "nome": "Machado pesado",
       "atrib": "forca",
-      "pericia": "briga",
+      "pericia": "armas",
       "dado": 2,
-      "mao": 1,
+      "mao": 2,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 6
-    }
-  ],
-  "habilidades": [
-    {
-      "nome": "Investida chifruda",
-      "descricao": "move 4m ou mais antes de atacar; dano extra com os chifres e pode Derrubar"
+      "ticks": 7,
+      "classe": "pesada"
     },
     {
-      "nome": "Faro no labirinto (Su)",
-      "descricao": "nunca se perde e sempre sabe o caminho de volta em passagens e labirintos"
+      "nome": "Chifrada",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 1,
+      "ticks": 6,
+      "classe": "media"
+    }
+  ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
+  "habilidades": [
+    {
+      "nome": "Investida",
+      "descricao": "corre no Preparo do golpe, com −2 a mais na Defesa e +1d6 no dano.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Investida chifruda",
+      "descricao": "Chifrada: Ativação: a Investida com a Chifrada, depois de correr 4 m ou mais. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o corpo inteiro entra no golpe, e o alvo atingido pode cair, pelas travas de massa do livro. Dano: 1d6 + 1d6 da Investida + Força × 2 + Centelha, Perfuração. Resistência: corpo, Força + Atletismo do alvo contra a jogada do golpe; quem falha fica Caído. Limite de uso: uma por Investida.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Fúria de touro",
-      "descricao": "quando Abalado, ganha bônus de dano mas penalidade em Defesa"
-    },
-    {
-      "nome": "Machado duplo",
-      "descricao": "ataque corpo a corpo pesado com dano alto"
-    },
-    {
-      "nome": "Casco firme",
-      "descricao": "resistente a Derrubar e terrenos difíceis"
+      "descricao": "Ativação: ao ficar Abalado ou ao cair abaixo da metade dos PV. Duração: até o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Enfurecido (+2 no ataque, −2 nas Defesas; ataca o mais perto, não recua) e soma +2 no dano dos golpes. Dano: +2 nos golpes. Resistência: nenhum. Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Faro no labirinto",
-      "descricao": "Sentido passivo."
+      "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: nunca se perde em passagens, túneis e labirintos e sempre sabe o caminho de volta. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Investida chifruda",
-      "descricao": "Manobra de combate, sem limite de uso."
+      "nome": "Casco firme",
+      "descricao": "Atletismo, com a Especialidade natural (ficar de pé) +2, contra Derrubar e no terreno difícil.",
+      "classe": "livro"
+    },
+    {
+      "nome": "dono do labirinto",
+      "descricao": "espera numa curva, investe com os chifres e acaba com o machado; persegue quem foge pelos corredores e não recua.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "faro: o de um touro; Prontidão (faro) +2. · visão e audição: as de um humano."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Força bruta e fúria primitiva guiam o minotauro em combate; carrega machado enorme e não recua diante de nada, confiando no instinto e na violência para resolver qualquer impasse."
+      "texto": "Força bruta e fúria primitiva guiam o minotauro em combate; carrega machado enorme e não recua diante de nada, confiando no instinto e na violência para resolver qualquer impasse. Social: sozinho ou em clã pequeno, típico 2 a 4."
     },
     {
       "titulo": "Sociedade",
@@ -109,6 +168,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "As selvas de Mére escondem cidades e complexos labirínticos antigos demais para qualquer mapa comum, e é lá, entre pedra esquecida e cultos caídos, que os minotauros mais temidos ainda vivem, isolados do resto do mundo."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande, 50 PV, Impacto 6, Corte e Perfuração 1. Defesa baixa (Bloqueio 8, 6 com o machado, 9 com os chifres; Esquiva 4): quem chega perto acerta, e leva o machado de dano médio 22. Investe de longe com os chifres e derruba. Abalado ou ferido pela metade, enfurece: bate mais e se defende pior. Nunca se perde no labirinto."
     }
   ],
   "ecologia": {
@@ -157,5 +220,37 @@
     {
       "caminho": "sangue-fervente"
     }
+  ],
+  "v3": {
+    "pv": 50,
+    "esquiva": 4,
+    "bloqueio": 8,
+    "defesa": 9,
+    "defesaMental": 12,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 6,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 840.51,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    },
+    "bloqueioArma": 1
+  },
+  "notasObservacao": [
+    "`tamanho`: Grande pelo corpo; sem os chifres, 1,47 m² passa o corte de 1,45 por 1,5% **[conta]**",
+    "`faixa`: 250 kg na zona de transição (187 a 253 kg); robusto, sobe. Na faixa de baixo seriam 40 PV",
+    "`forca`: 7; o site tinha 6 **[provisório]**",
+    "`briga`: 3, para a Chifrada; o site gravava 4, que era a Habilidade da arma **[provisório]**",
+    "`virtudes`: Bravura 4 e Temperança 1; o site tinha 3 e 2 **[provisório]**",
+    "`casco firme`: Especialidade natural +2 em Atletismo **[provisório]**",
+    "`investida chifruda`, `fúria de touro`, `faro no labirinto`: números sugeridos pela ficha (D-197)"
   ]
 }
