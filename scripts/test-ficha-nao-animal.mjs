@@ -257,8 +257,18 @@ try {
     `o Nado e o Voo nas três velocidades, a Escalada em Batalha, e duas armas no Equipamento: nado ${JSON.stringify(dm?.nado)}, voo ${JSON.stringify(dm?.voo)}, locomoção ${JSON.stringify(lc)}${mov.status ? ' (exit ' + mov.status + ')' : ''}`);
   const nadoUm = roda(comMov('| Nado | Batalha **3** (m por Tick) | |\n'), 'nado em Batalha');
   ok(nadoUm.json?.v3?.deslocamento?.nado === 3 && nadoUm.json?.locomocao?.natacao === 3, `o Nado em "Batalha **3** (m por Tick)", como o hezrou: ${nadoUm.json?.v3?.deslocamento?.nado}`);
-  para('Nado com número que o conversor não lê', TERRA, TERRA + '| Nado | cerca de **4** m por Tick | |\n', /Nado "cerca de \*\*4\*\* m por Tick": número que o conversor não lê/);
-  para('Voo com rótulo que o conversor não lê', TERRA, TERRA + '| Voo | Batalha **8** · Pairar **2** | |\n', /número com o rótulo "Pairar"/);
+  para('Nado com número que o conversor não lê', TERRA, TERRA + '| Nado | cerca de **4** m por Tick | |\n', /Nado "cerca de \*\*4\*\* m por Tick": velocidades "de" fora das formas/);
+  para('Voo com rótulo que o conversor não lê', TERRA, TERRA + '| Voo | Batalha **8** · Pairar **2** | |\n', /velocidades "Batalha · Pairar" fora das formas/);
+  // Só as formas completas (CORRIGE da Revisora na 146d85a9): a velocidade parcial perdia um número calada.
+  // O levantamento das 147 fichas da entrada do lote 12 (23/10/2026), sequência dos rótulos em negrito:
+  //   Deslocamento em terra: 131 "Batalha · Arranque · Corrida", 16 sem número;
+  //   Nado: 28 número único, 5 "Batalha", 1 "Batalha · Arranque · Corrida", 87 sem número;
+  //   Voo: 4 "Batalha", 11 "Batalha · Cruzeiro", 3 "Batalha · Cruzeiro · Mergulho",
+  //        1 "Batalha · Arranque · Corrida", 1 sem número;
+  //   Escalada: 1 "Batalha", 65 sem número; Escalada, escavação, Nado / Voo e Nado, voo: sem número.
+  // Nenhuma forma parcial: a regra não muda fonte nenhuma.
+  para('Nado parcial, sem a Corrida', TERRA, TERRA + '| Nado | Batalha **3** · Arranque **5** (m por Tick) | |\n', /Nado "Batalha \*\*3\*\* · Arranque \*\*5\*\*.*": velocidades "Batalha · Arranque" fora das formas/);
+  para('Voo parcial, sem o Arranque', TERRA, TERRA + '| Voo | Batalha **8** · Corrida **18** (m por Tick) | |\n', /Voo "Batalha \*\*8\*\* · Corrida \*\*18\*\*.*": velocidades "Batalha · Corrida" fora das formas/);
 
   // A jogada comum, sem frase: o corpo a corpo vai pelo maior (o animal ágil, como o gato).
   const agil = roda(FICHA.replace('| Força | 4 |', '| Força | 2 |').replace('"forca":4', '"forca":2').replace('Jogada: Força 4 + Armas 3', 'Jogada: Destreza 3 + Armas 3'), 'jogada comum pelo maior');

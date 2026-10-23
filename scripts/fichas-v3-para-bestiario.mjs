@@ -425,17 +425,26 @@ function converte(arq) {
   const nado3 = /^Batalha\s*\*\*(\d+)\*\*\s*·\s*Arranque\s*\*\*(\d+)\*\*\s*·\s*Corrida\s*\*\*(\d+)\*\*/.exec(nadoTxt.trim());
   const voo3 = /Arranque\s*\*\*(\d+)\*\*\s*·\s*Corrida\s*\*\*(\d+)\*\*/.exec(vooTxt);
   const escNum = /^Batalha\s*\*\*(\d+)\*\*/.exec(String(celula(mov, 'Escalada') ?? '').trim());
-  // Número em negrito que o conversor não lê para: o rótulo de cada um tem de ser uma das velocidades, e o
-  // modo tem de ter sido lido. Texto sem número não decide (decisoes-etapa-6.md §9, item 11) e segue.
-  const ROT_VEL = ['Batalha', 'Arranque', 'Corrida', 'Cruzeiro', 'Mergulho'];
-  const confereNumeros = (rot, txt, lido) => {
-    const t = String(txt ?? '');
-    if (!/\*\*\s*\d/.test(t)) return;
-    if (!lido) { aviso.push(`${rot} "${t.slice(0, 80)}": número que o conversor não lê`); return; }
-    for (const m of t.matchAll(/(?:^|([A-Za-zÀ-ú]+))\s*\*\*\s*\d+/g)) if (m[1] && !ROT_VEL.includes(m[1])) aviso.push(`${rot} "${t.slice(0, 80)}": número com o rótulo "${m[1]}", que o conversor não lê`);
+  // AS FORMAS DE VELOCIDADE QUE O CONVERSOR LÊ, e só elas (CORRIGE da Revisora, rodada 16, na 146d85a9): a
+  // sequência dos rótulos dos números em negrito da célula tem de ser uma destas, e todo número de uma forma
+  // aceita vai ao JSON. Qualquer outra combinação para: "Batalha **3** · Arranque **5**" sem a Corrida
+  // perdia o Arranque calado. "" é o número único do começo ("**5** m por Tick"). Texto sem número não
+  // decide (decisoes-etapa-6.md §9, item 11) e segue.
+  const opc = (base, ...extras) => extras.reduce((acc, e) => [...acc, ...acc.map((x) => `${x} · ${e}`)], [base]);
+  const FORMAS = {
+    'Nado': ['', 'Batalha', 'Batalha · Arranque · Corrida'],
+    'Voo': [...opc('Batalha', 'Cruzeiro', 'Mergulho'), ...opc('Batalha · Arranque · Corrida', 'Cruzeiro', 'Mergulho')],
+    'Escalada': ['Batalha'],
+    'Deslocamento em terra': ['Batalha · Arranque · Corrida'],
+    'Nado / Voo': [], 'Escalada, escavação': [],
   };
-  confereNumeros('Nado', nadoTxt, nado); confereNumeros('Voo', vooTxt, /Batalha\s*\*\*\d/.test(vooTxt)); confereNumeros('Escalada', celula(mov, 'Escalada'), escNum);
-  confereNumeros('Deslocamento em terra', terraTxt, /Batalha\s*\*\*\d+\*\*\s*·\s*Arranque/.test(terraTxt)); confereNumeros('Nado / Voo', celula(mov, 'Nado / Voo') ?? celula(mov, 'Nado, voo'), false); confereNumeros('Escalada, escavação', celula(mov, 'Escalada, escavação'), false);
+  const confereNumeros = (rot, txt) => {
+    const t = String(txt ?? '').trim();
+    const seq = [...t.matchAll(/(?:^|([A-Za-zÀ-ú]+))\s*\*\*\s*\d+/g)].map((m) => m[1] ?? '').join(' · ');
+    if (seq !== '' || /^\*\*\s*\d/.test(t)) if (!FORMAS[rot].includes(seq)) aviso.push(`${rot} "${t.slice(0, 80)}": velocidades "${seq || 'número único'}" fora das formas que o conversor lê (${FORMAS[rot].map((f) => f || 'número único').join('; ') || 'nenhuma: esta célula não leva número'})`);
+  };
+  confereNumeros('Nado', nadoTxt); confereNumeros('Voo', vooTxt); confereNumeros('Escalada', celula(mov, 'Escalada'));
+  confereNumeros('Deslocamento em terra', terraTxt); confereNumeros('Nado / Voo', celula(mov, 'Nado / Voo') ?? celula(mov, 'Nado, voo')); confereNumeros('Escalada, escavação', celula(mov, 'Escalada, escavação'));
   const deslocamento = {
     ...(tres ? { terra: { batalha: +tres[1], arranque: +tres[2], corrida: +tres[3] } } : {}),
     ...(voo ? { voo: { batalha: +voo[1], ...(/Cruzeiro\s*\*\*(\d+)/.exec(vooTxt) ? { cruzeiro: +/Cruzeiro\s*\*\*(\d+)/.exec(vooTxt)[1] } : {}), ...(/Mergulho\s*\*\*(\d+)/.exec(vooTxt) ? { mergulho: +/Mergulho\s*\*\*(\d+)/.exec(vooTxt)[1] } : {}), ...(voo3 ? { arranque: +voo3[1], corrida: +voo3[2] } : {}) } } : {}),
