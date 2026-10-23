@@ -149,7 +149,7 @@ export function stat(b) {
     out.defesaMental = intel <= 0 ? '-' : b.v3.defesaMental;
     out.defesaSocial = intel >= 1 ? b.v3.defesaSocial : '-';
     out.soak = { ...b.v3.absorcao };
-    out.resistPerf = 0;
+    out.resistPerf = 0; if (b.v3.vestida) out.vestida = b.v3.vestida; // D-206: a vestida vai junto; o Mestre escolhe na mesa
   }
   return out;
 }

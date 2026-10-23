@@ -231,6 +231,26 @@ try {
   para('Especialidade fora do formato', '- Armas (espada longa) +1; Atirador (arco) +1.', '- armas de lâmina +1.', /linha de Especialidade fora do formato/);
   para('Velocidade sem número', '| 1/1/3 | 5 | 1d6 + Centelha (2) | Perfuração |', '| 1/1/3 | rápida | 1d6 + Centelha (2) | Perfuração |', /Velocidade sem número/);
   para('bloco de conferência que não bate', '"pv":20', '"pv":21', /bloco: pv 21 ≠ 20/);
+
+  // D-206: a criatura vestida. A conta do livro e a frase da linha Absorção têm de bater.
+  const J = (x) => JSON.stringify(x);
+  const EQ = 'armas: espada-longa · armaduras: nenhuma · escudos: nenhum', ABS = 'Couraça **nível 0** |';
+  const comMalha = (frase) => FICHA.replace(EQ, 'armas: espada-longa · armaduras: malha · escudos: nenhum').replace(ABS, `Couraça **nível 0**. ${frase} |`);
+  const certa = 'Com a cota de malha: Esquiva **6**, Bloqueio **8**; Impacto **6**, Corte **8**, Perfuração **3** (Nível N1); Penalidade −2';
+  const v = roda(comMalha(certa), 'vestida certa');
+  ok(v.status === 0 && J(v.json?.v3?.vestida) === J({ esquiva: 6, bloqueio: 8, defesa: 9, contraTiro: 6, absorcao: { impacto: 6, corte: 8, perfuracao: 3 }, nivel: 1, penalidade: 2 }) && v.json?.v3?.defesa === 11,
+    `D-206, com a malha: v3.vestida ${J(v.json?.v3?.vestida)}, e a Defesa sem o equipamento fica ${v.json?.v3?.defesa}`);
+  const paraFicha = (rotulo, ficha, re) => {
+    const r = roda(ficha, rotulo);
+    const linhas = r.saida.split('\n').filter((l) => /Error:|^\s+(· )?teste-nao-animal/.test(l));
+    const msg = linhas.find((l) => re.test(l)) || linhas[0] || '';
+    ok(r.status !== 0 && !r.json && re.test(msg), `${rotulo}: ${msg.trim() || `exit ${r.status}`}`);
+  };
+  paraFicha('a frase vestida que não bate com o livro', comMalha(certa.replace('Esquiva **6**', 'Esquiva **7**')), /não bate com a conta do livro: esquiva 7 \(livro 6\)/);
+  paraFicha('veste armadura e não tem a frase', comMalha(''), /veste armadura ou escudo e a linha Absorção não tem a frase/);
+  paraFicha('a frase sem armadura nem escudo', FICHA.replace(ABS, `Couraça **nível 0**. ${certa} |`), /tem a frase vestida e o Equipamento não tem armadura nem escudo/);
+  para('armadura que não existe', 'armaduras: nenhuma', 'armaduras: cota-de-titanio', /armadura "cota-de-titanio" não está no armaduras\.json/);
+  para('Equipamento fora do formato', EQ, 'espada e escudo', /Equipamento fora do formato/);
 } finally {
   fs.rmSync(tmp, { recursive: true, force: true });
 }

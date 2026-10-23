@@ -242,7 +242,20 @@
         "corrida": 7
       }
     },
-    "bloqueioArma": 1
+    "bloqueioArma": 1,
+    "vestida": {
+      "esquiva": 12,
+      "bloqueio": 10,
+      "defesa": 12,
+      "contraTiro": 12,
+      "absorcao": {
+        "impacto": 4,
+        "corte": 6,
+        "perfuracao": 1
+      },
+      "nivel": 1,
+      "penalidade": 2
+    }
   },
   "notasObservacao": [
     "`pesoErguido`: 143,31 kg pela R15 (D-184), E = (Força × 3 + Halterofilismo + Musculatura × 3) ÷ 4, com Halterofilismo 1; o `confere_etapa2.py` lê o Halterofilismo desde a nona atualização do pacote. Com Halterofilismo 0 o número seria 134,21",

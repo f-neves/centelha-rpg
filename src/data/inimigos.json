@@ -231,6 +231,19 @@
     "artes": [],
     "notas": "Aproveita Quase Acerto e foca alvos isolados.",
     "pendente": false,
+    "vestida": {
+      "esquiva": 12,
+      "bloqueio": 10,
+      "defesa": 12,
+      "contraTiro": 12,
+      "absorcao": {
+        "impacto": 4,
+        "corte": 6,
+        "perfuracao": 1
+      },
+      "nivel": 1,
+      "penalidade": 2
+    },
     "pericias": {
       "prontidao": 3,
       "esquiva": 3,
@@ -19395,6 +19408,19 @@
     "artes": [],
     "notas": "",
     "pendente": true,
+    "vestida": {
+      "esquiva": 7,
+      "bloqueio": 16,
+      "defesa": 17,
+      "contraTiro": 16,
+      "absorcao": {
+        "impacto": 8,
+        "corte": 5,
+        "perfuracao": 3
+      },
+      "nivel": 1,
+      "penalidade": 1
+    },
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,

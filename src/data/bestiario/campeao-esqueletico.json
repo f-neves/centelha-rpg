@@ -210,7 +210,20 @@
         "corrida": 7
       }
     },
-    "bloqueioArma": 1
+    "bloqueioArma": 1,
+    "vestida": {
+      "esquiva": 7,
+      "bloqueio": 16,
+      "defesa": 17,
+      "contraTiro": 16,
+      "absorcao": {
+        "impacto": 8,
+        "corte": 5,
+        "perfuracao": 3
+      },
+      "nivel": 1,
+      "penalidade": 1
+    }
   },
   "notasObservacao": [
     "`massa`: 12 kg, 15% do corpo de base; a fração do esqueleto é de memória, a conferir **[extrapolação]**",

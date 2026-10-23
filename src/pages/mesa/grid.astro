@@ -12693,5 +12693,15 @@ let roladoDano = '';
     RT?.avisar('arena');
   }
 
+  // D-206: o Mestre trocou, no card, a Defesa com ou sem o equipamento de uma criatura
+  // (defesa-vestida.ts; a escolha fica só neste aparelho, e não vai ao banco). O resumo das
+  // peças dessa criatura se refaz aqui, e o próximo lance já usa a escolha. Só o mestre monta
+  // o resumo de criatura (ver `carregar`): o jogador não recebe a Absorção do ogro.
+  window.addEventListener('centelha:vestida', (e: Event) => {
+    if (!MESTRE) return;
+    const id = (e as CustomEvent).detail?.id;
+    for (const c of COMBS) if (c.tipo === 'criatura' && c.monstro_id === id) { try { RESUMO[c.id] = resumoDe(c, FICHAS); } catch { /* segue com o antigo */ } }
+  });
+
   main();
 </script>

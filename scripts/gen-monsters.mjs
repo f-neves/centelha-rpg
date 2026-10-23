@@ -111,7 +111,7 @@ function build(c) {
       defesaSocial: c.defesaSocial,
       defesaMental: c.defesaMental,
       absorcao: { impacto: c.soak.impacto, corte: c.soak.corte, perfuracao: c.soak.perfuracao },
-      resistenciaPerfuracao: c.resistPerf || 0,
+      resistenciaPerfuracao: c.resistPerf || 0, ...(c.vestida ? { vestida: c.vestida } : {}), // D-206: com o equipamento; a mesa escolhe (defesa-vestida.ts)
       // Fraqueza e resistência a elemento, tipo de dano ou natureza. A maioria das
       // criaturas não tem nenhuma, então os campos só aparecem em quem tem.
       ...(elem.fraquezas.length ? { fraquezas: elem.fraquezas } : {}),

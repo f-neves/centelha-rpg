@@ -12,7 +12,7 @@
 // ficha diz entra como está, só sem as marcas de trabalho (manual §7.5).
 import fs from 'node:fs';
 import path from 'node:path';
-import { execFileSync } from 'node:child_process'; import { bonusDaArma, defesaComArma, formasDaFicha, jogadaDoAtaque, artesDaFicha } from './lib-ficha-v3.mjs';
+import { execFileSync } from 'node:child_process'; import { vestidaDoLivro, vestidaDaFicha, bonusDaArma, defesaComArma, formasDaFicha, jogadaDoAtaque, artesDaFicha } from './lib-ficha-v3.mjs';
 
 const arg = (n) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : null; };
 const RAIZ = arg('--raiz') || path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
@@ -56,6 +56,10 @@ const TERRENO = { 'Gélido': 'Cold', 'Deserto': 'Desert', 'Floresta': 'Forest', 
 // Os sinônimos que as fichas usam no Terreno: "Cidade" é o Urbano, e "Frio" é o Gélido (o dragão branco).
 const TERRENO_SINONIMO = { 'cidade': 'Urbano', 'frio': 'Gélido' };
 const terrenoDe = (x) => { const k = x.trim().toLowerCase(); const n = TERRENO_SINONIMO[k] ?? Object.keys(TERRENO).find((t) => t.toLowerCase() === k); return n ? TERRENO[n] : null; };
+// D-206: o catálogo do livro para a criatura vestida.
+const ARMAS_IDS = new Set(JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/armas.json'), 'utf8')).map((a) => a.id));
+const ARMADURAS = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/armaduras.json'), 'utf8')).map((a) => [a.id, a.armadura]));
+const ESCUDOS = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/escudos.json'), 'utf8')).filter((e) => e.id !== 'nenhum').map((e) => [e.id, e.escudo]));
 const CLIMA = { 'Frio': 'Cold', 'Temperado': 'Temperate', 'Tropical': 'Tropical', 'Extraplanar': 'Extraplanar' };
 const ATRIB = { 'Força': 'forca', 'Destreza': 'destreza', 'Vigor': 'vigor', 'Percepção': 'percepcao',
   'Inteligência': 'inteligencia', 'Raciocínio': 'raciocinio', 'Influência': 'influencia',
@@ -463,6 +467,30 @@ function converte(arq) {
   const iArma = atq.cab.indexOf('Bloqueia como arma');
   const bonusArma = iArma < 0 ? 0 : bonusDaArma(atq.rows.map((r) => r[iArma])); // o maior, uma vez (lib-ficha-v3.mjs)
   if (bonusArma) { v3.bloqueioArma = bonusArma; v3.defesa = defesaComArma(v3, bonusArma); }
+  // A CRIATURA VESTIDA (D-206: "mostra as duas, mas normalmente se escolhe a maior. Essa é uma escolha do
+  // mestre, não nossa. Mas as Defesas são influenciadas pelos equipamentos da criatura"). O Equipamento da
+  // Identidade é "nenhum" ou "armas: <id> · armaduras: <id|nenhuma> · escudos: <id|nenhum>", com os ids do
+  // livro; a conta do livro (vestidaDoLivro) e a frase da linha Absorção (vestidaDaFicha) têm de bater.
+  // Uma peça só por categoria: empilhar (gambeson sob a malha) é Variante, e não entra aqui.
+  const equipTxt = String(celula(ident, 'Equipamento') ?? 'nenhum').replace(/`/g, '').trim();
+  let peca = { armadura: null, escudo: null };
+  if (!/^nenhum$/.test(equipTxt)) {
+    const eq = /^armas: ([a-z0-9-]+) · armaduras: ([a-z0-9-]+) · escudos: ([a-z0-9-]+)$/.exec(equipTxt);
+    if (!eq) throw new Error(`${arq}: Equipamento fora do formato "armas: <id> · armaduras: <id> · escudos: <id>": "${equipTxt}"`);
+    if (!ARMAS_IDS.has(eq[1])) throw new Error(`${arq}: Equipamento: arma "${eq[1]}" não está no armas.json`);
+    if (eq[2] !== 'nenhuma') { peca.armadura = ARMADURAS[eq[2]]; if (!peca.armadura) throw new Error(`${arq}: Equipamento: armadura "${eq[2]}" não está no armaduras.json`); }
+    if (eq[3] !== 'nenhum') { peca.escudo = ESCUDOS[eq[3]]; if (!peca.escudo) throw new Error(`${arq}: Equipamento: escudo "${eq[3]}" não está no escudos.json`); }
+  }
+  const fraseVestida = vestidaDaFicha(absTxt);
+  if (peca.armadura || peca.escudo) {
+    const livro = vestidaDoLivro(v3, peca.armadura, peca.escudo, bonusArma);
+    if (!fraseVestida) throw new Error(`${arq}: veste armadura ou escudo e a linha Absorção não tem a frase "Com o ...: Esquiva, Bloqueio; Impacto, Corte, Perfuração (Nível); Penalidade"`);
+    const dif = [];
+    for (const k of ['esquiva', 'bloqueio', 'nivel', 'penalidade', 'contraTiro']) if (fraseVestida[k] != null && fraseVestida[k] !== livro[k]) dif.push(`${k} ${fraseVestida[k]} (livro ${livro[k]})`);
+    for (const k of ['impacto', 'corte', 'perfuracao']) if (fraseVestida.absorcao[k] !== livro.absorcao[k]) dif.push(`${k} ${fraseVestida.absorcao[k]} (livro ${livro.absorcao[k]})`);
+    if (dif.length) throw new Error(`${arq}: a frase vestida da Absorção não bate com a conta do livro: ${dif.join(', ')}`);
+    v3.vestida = livro;
+  } else if (fraseVestida) throw new Error(`${arq}: a linha Absorção tem a frase vestida e o Equipamento não tem armadura nem escudo`);
   for (const r of atq.rows) {
     const nomeA = limpa(r[col('Nome', 'Ataque')]);
     const danoTxt = r[col('Dano')].replace(/◆/g, '').replace(/\*\*/g, '');
