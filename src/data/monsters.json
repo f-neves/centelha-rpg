@@ -32040,7 +32040,7 @@
     {
      "nome": "Arco curto",
      "pool": "2d6+2 +6",
-     "dano": "1d6 +1 perfurante · perf. 1",
+     "dano": "1d6 +3 perfurante · perf. 1",
      "perfArma": 1,
      "speed": 6,
      "classe": "distancia"
