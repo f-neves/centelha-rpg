@@ -176,6 +176,13 @@ export const criaturaSchema = z.object({
    *  o dano volta a ser normal (regras.json, ao lado de fraqueza/resistência). Mesmo
    *  vocabulário fechado de fraquezas/resistencias. */
   imunidades: z.array(texto).optional(),
+  /** Quem muda de forma (D-201; manual §5.2, item 1): as formas, a da ficha primeiro, e o id
+   *  dela em `principal`. Sem a linha Formas na ficha, o campo não existe. Lido por
+   *  `formasDaFicha` (lib-ficha-v3.mjs); o site vai deixar alternar entre elas. */
+  transforma: z.object({
+    principal: z.string().min(1),
+    formas: z.array(z.object({ id: z.string().min(1), nome: z.string().min(1) }).strict()).min(2),
+  }).strict().refine((t) => t.formas[0].id === t.principal, { message: '`principal` tem de ser o id da primeira forma' }).optional(),
   habilidades: z.array(z.object({
     nome: texto, descricao: texto,
     /** Ficha v3: de onde vem a regra da manobra (manual §5.2, item 9). */
