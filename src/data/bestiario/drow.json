@@ -5,9 +5,10 @@
   "nome": "Drow",
   "nomeIngles": "Drow",
   "categoria": "Humanoide",
+  "categoriaLegada": "Humanoide",
   "papel": "capanga",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Elfo das profundezas, de pele escura e cabelo branco, servo das casas nobres governadas por matriarcas. Apaga a luz com trevas, marca o alvo com fogo feérico e o captura vivo com o veneno do sono na lâmina.",
   "tags": [
     "humanoide",
     "centelha"
@@ -15,33 +16,59 @@
   "imagem": "bestiario/drow_criatura.webp",
   "porte": "Médio",
   "dimensoes": {
-    "medida": "1,6 metro de altura",
-    "peso": "55 kg"
+    "medida": "1,6 m de altura",
+    "peso": "55 kg",
+    "largura": 0.4,
+    "altura": 1.6
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 1,
   "attrs": {
     "forca": 2,
     "destreza": 4,
     "vigor": 2,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 2,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
-    "briga": 2,
+    "armas": 2,
+    "briga": 1,
+    "bloqueio": 1,
     "esquiva": 1,
+    "atletismo": 1,
+    "furtividade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "integridade": 2,
+    "manha": 1
   },
+  "especialidades": [
+    {
+      "habilidade": "armas",
+      "foco": "espada curta",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "no escuro",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 2,
-    "conviccao": 3,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
@@ -49,36 +76,61 @@
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Arma",
-      "atrib": "forca",
-      "pericia": "briga",
+      "nome": "Espada curta",
+      "atrib": "destreza",
+      "pericia": "armas",
       "dado": 1,
       "mao": 1,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 2,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Visão no escuro",
-      "descricao": "Enxerga no escuro absoluto a uma distância considerável."
+      "nome": "Feitiçaria inata",
+      "descricao": "poder natural (base Sombra 1): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até ele desfazer. Alcance: 18 m. Área: à escolha: trevas numa esfera de 6 m; luzes dançantes que se movem como ele quer; ou fogo feérico que contorna um alvo de luz fraca. Efeito: as trevas apagam a luz comum (ele enxerga nelas); as luzes enganam e iluminam; o alvo do fogo feérico não pode ficar Escondido nem Invisível enquanto durar. Dano: nenhum. Resistência: esquiva, contra Influência + Manha dele, só para o fogo feérico. Limite de uso: cada um, uma vez por cena.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Veneno do sono",
+      "descricao": "Espada curta: Ativação: o golpe envenenado que fere. Duração: 1 hora de sono, ou até alguém sacudir o alvo. Alcance: o do corpo a corpo. Área: um alvo. Efeito: quem perde os dois pontos do pool do veneno (Veneno e doença) cai Inconsciente, dormindo; é como o drow captura escravos sem matar. Dano: nenhum além do golpe. Resistência: corpo, Vigor + Resistência pela regra do veneno. Limite de uso: uma dose por lâmina, preparada antes da luta.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Sensibilidade à luz",
-      "descricao": "Luzes muito fortes o atrapalham, deixando-o momentaneamente ofuscado e desorientado."
+      "descricao": "Ativação: luz forte (sol, Arte de Luz, lanterna de perto). Duração: enquanto estiver na luz forte. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Ofuscado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Resistência a encantamentos e ao sono",
-      "descricao": "É naturalmente mais resistente a efeitos que tentam enfeitiçá-lo e imune a magias de sono."
+      "nome": "Resiliência mental",
+      "descricao": "a do Elfo, a raça parente: controle mental contra ele tem +4 de dificuldade, ou ele soma +1d6 para resistir, o que for melhor.",
+      "classe": "livro"
     },
     {
-      "nome": "Feitiçaria inata",
-      "descricao": "Consegue criar luzes dançantes, escuridão e fogo féerico sem precisar aprender magia de verdade."
+      "nome": "Imune ao sono mágico",
+      "descricao": "Arte ou poder que faz dormir não o pega.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Uso de veneno",
-      "descricao": "Aplica em suas armas um veneno que mergulha a vítima em sono profundo caso ela falhe em resistir com um teste de Vigor; é a forma predileta dos drow para capturar escravos sem matar."
+      "nome": "caçador de escravos",
+      "descricao": "apaga a luz com as trevas, marca o alvo com o fogo feérico e golpeia com a lâmina envenenada para levar o adormecido vivo.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: enxerga no escuro absoluto a uma distância considerável (site). · audição e olfato: os de um humano."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Veneno do sono drow · Potência 13 · 1 minuto (sangue) · a cada 1 minuto · pool 2 (sono) · Desgaste 1 · pela Espada curta"
     }
   ],
   "lore": [
@@ -89,6 +141,18 @@
     {
       "titulo": "Sociedade de matriarcas",
       "texto": "Cidades subterrâneas são governadas por casas nobres rivais, chefiadas por matriarcas implacáveis que tramam umas contra as outras."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: em patrulha de uma casa nobre, típico 4 a 12."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Veneno do sono drow · Potência 13 · 1 minuto (sangue) · a cada 1 minuto · pool 2 (sono) · Desgaste 1 · pela Espada curta"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, 31 PV, Impacto 3, Corte e Perfuração 1. Esquiva e Bloqueio 12 (13 com a espada). A espada dá dano médio 4,5 e põe para dormir quem perde o pool do veneno. Cria trevas, luzes e fogo feérico; resiste a controle mental e não dorme por magia. A luz forte o ofusca."
     }
   ],
   "ecologia": {
@@ -124,5 +188,35 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 1
+  "ameacaLegada": 1,
+  "v3": {
+    "pv": 31,
+    "esquiva": 12,
+    "bloqueio": 12,
+    "defesa": 13,
+    "defesaMental": 12,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 89.56,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    },
+    "bloqueioArma": 1
+  },
+  "notasObservacao": [
+    "`raça parente`: Elfo (D-207); os números são os do site",
+    "`veneno do sono`: Potência 13, pool 2, fora do catálogo **[provisório]**",
+    "`aparência`: 4, a do site; a Aparência Universal do Elfo não passa ao drow **[provisório]**",
+    "`compaixão`: 1; o site tinha 2 **[provisório]**",
+    "`feitiçaria inata`, `veneno do sono`, `sensibilidade à luz`: números sugeridos pela ficha (D-197)"
+  ]
 }

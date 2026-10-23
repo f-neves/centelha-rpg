@@ -7,7 +7,7 @@
   "categoriaLegada": "Humano",
   "papel": "elite",
   "conceito": "líder de guerra",
-  "descricao": "Inspira tropas e quebra a moral inimiga; luta bem, mas comanda melhor.",
+  "descricao": "Líder de guerra tocado pela Centelha, de placa e espada longa. Luta bem, mas comanda melhor: reorganiza a tropa, quebra a moral do inimigo, e a queda dele abala todo o lado que lidera.",
   "tags": [
     "humano",
     "centelha"
@@ -16,91 +16,138 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,85 m de altura",
-    "peso": "88 kg"
+    "peso": "88 kg",
+    "largura": 0.46,
+    "altura": 1.85
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 1,
   "attrs": {
     "forca": 3,
     "destreza": 4,
     "vigor": 4,
-    "influencia": 5,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 2,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 5,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
-    "armas-uma-mao": 4,
+    "armas": 4,
     "esquiva": 3,
-    "escudos": 3,
+    "bloqueio": 3,
     "oratoria": 4,
-    "tatica": 4,
     "prontidao": 3,
-    "integridade": 6
+    "integridade": 6,
+    "sociabilidade": 2,
+    "atletismo": 2
   },
   "skills2": {
+    "estrategia": 4,
+    "lideranca": 4,
     "intimidacao": 4
   },
+  "especialidades": [
+    {
+      "habilidade": "oratoria",
+      "foco": "diante da tropa",
+      "valor": 2,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "intimidacao",
+      "foco": "quebrar a moral",
+      "valor": 2,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 2,
-    "conviccao": 3,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 4
   },
   "willpower": 7,
   "aparencia": 4,
-  "tech": {
-    "voz-de-lider": true,
-    "coordenar": true,
-    "tom-de-autoridade": true
-  },
-  "equip": {
-    "armaduras": [
-      "placa-completa"
-    ]
-  },
   "ataques": [
     {
       "nome": "Espada longa",
       "atrib": "destreza",
-      "pericia": "armas-uma-mao",
-      "dado": 2,
+      "pericia": "armas",
+      "dado": 1,
       "mao": 1,
       "tipo": "corte",
       "acerto": 1,
-      "ticks": 6
+      "ticks": 6,
+      "classe": "media"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Estandarte de Comando",
-      "descricao": "concede ação extra ou bônus de ataque/Defesa a aliados próximos"
+      "nome": "Voz de Líder",
+      "descricao": "Técnica voz-de-lider, nível 1: os aliados que o seguem ganham +3 de moral; ordens claras.",
+      "classe": "livro"
     },
     {
-      "nome": "Inspira tropas",
-      "descricao": "gasta Influência para erguer a moral do próprio lado"
+      "nome": "Coordenar",
+      "descricao": "Técnica coordenar, nível 1: por 1 de Energia, um aliado age no melhor momento (reação ou nova posição na Iniciativa).",
+      "classe": "livro"
+    },
+    {
+      "nome": "Tom de Autoridade",
+      "descricao": "Técnica tom-de-autoridade, nível 1: quando ele dá ordens ou intimida, a Defesa Mental do alvo é −3.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Estandarte de Comando",
+      "descricao": "Ativação: uma ação, Velocidade 3, erguendo o estandarte e dando a ordem. Duração: até a próxima ação dele. Alcance: 18 m, onde o veem e ouvem. Área: até seis aliados. Efeito: à escolha dele, os aliados somam +1 no ataque ou +1 na Defesa; com o Coordenar, um deles ainda age no melhor momento. Dano: nenhum. Resistência: nenhum. Limite de uso: uma ordem por ação dele.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Quebra de moral",
-      "descricao": "pode forçar teste de Vontade em inimigos, deixando-os Abalados"
-    },
-    {
-      "nome": "Comanda melhor que luta",
-      "descricao": "combate competente, mas seu real poder é coordenar outros"
+      "descricao": "Ativação: uma ação, Velocidade 6, gritando contra o inimigo. Duração: até o fim da cena, ou até o alvo se recompor. Alcance: 18 m. Área: os inimigos que o ouvem, até seis. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência + Intimidação dele, com o Tom de Autoridade (−3 na Defesa Mental). Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Ponto de colapso",
-      "descricao": "a queda do comandante abala a moral de toda a tropa que lidera"
+      "descricao": "Ativação: ele cai a 0 PV ou foge. Duração: até o fim da cena. Alcance: a tropa que ele lidera e que o vê cair. Área: os aliados dele em campo. Efeito: cada um faz um teste de Bravura (a Virtude sozinha) contra Dificuldade 7; quem falha fica Abalado e tende a recuar. Dano: nenhum. Resistência: Bravura, o teste de Virtude. Limite de uso: uma vez.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Inspira tropas",
+      "descricao": "Voz de Líder e Oratória (diante da tropa) +2.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Sem inimizades naturais",
+      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
+      "classe": "livro"
+    },
+    {
+      "nome": "comanda melhor que luta",
+      "descricao": "fica atrás da primeira linha, reorganiza a tropa, quebra a moral do inimigo antes do choque e só luta quando precisa.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão, audição, olfato: humanos."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Luta bem, mas comanda melhor: sua presença no campo reorganiza tropas em pânico e quebra a moral do lado inimigo antes mesmo do choque das lâminas."
+      "texto": "Luta bem, mas comanda melhor: sua presença no campo reorganiza tropas em pânico e quebra a moral do lado inimigo antes mesmo do choque das lâminas. Social: à frente de uma tropa, típico 6 a 20."
     },
     {
       "titulo": "Sociedade",
@@ -109,6 +156,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Foi tocado pela Centelha o suficiente para liderar como poucos líderes mortais conseguem, um dom que faz dele figura central em qualquer conflito de Uldun, de Calin a Mére."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Humano Médio, Centelha 1, 37 PV, de placa (Impacto 9, Corte 9, Perfuração 5, N3). Esquiva e Bloqueio 13 (14 com a espada). A espada dá dano médio 7,5. A cada ação dá +1 no ataque ou na Defesa de até seis aliados; uma vez por cena deixa os inimigos Abalados. Mate-o e a tropa testa a Bravura."
     }
   ],
   "ecologia": {
@@ -132,5 +183,52 @@
     "crConf": "estimado"
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "v3": {
+    "pv": 37,
+    "esquiva": 16,
+    "bloqueio": 16,
+    "defesa": 17,
+    "defesaMental": 17,
+    "defesaSocial": 10,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 139.57,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    },
+    "bloqueioArma": 1,
+    "vestida": {
+      "esquiva": 13,
+      "bloqueio": 13,
+      "defesa": 14,
+      "contraTiro": 13,
+      "absorcao": {
+        "impacto": 9,
+        "corte": 9,
+        "perfuracao": 5
+      },
+      "nivel": 3,
+      "penalidade": 3
+    }
+  },
+  "tech": {
+    "voz-de-lider": true,
+    "coordenar": true,
+    "tom-de-autoridade": true
+  },
+  "notasObservacao": [
+    "`estrategia`: o `tatica` do site não existe no livro (manual 3.5, D-190) **[provisório]**",
+    "`escudo`: Variante, porque o site não o põe no equipamento",
+    "`estandarte de comando`, `quebra de moral`, `ponto de colapso`: números sugeridos pela ficha (D-197)",
+    "`card e equipamento`: a placa está sempre vestida (D-188)"
+  ]
 }

@@ -5,9 +5,10 @@
   "nome": "Merfolk",
   "nomeIngles": "Merfolk",
   "categoria": "Humanoide",
+  "categoriaLegada": "Humanoide",
   "papel": "capanga",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Povo do mar de torso humano e cauda de peixe, rápido na água e quase parado em terra. Luta com lança e besta, guarda um segredo nas profundezas e afasta navegantes dos seus domínios.",
   "tags": [
     "humanoide",
     "centelha"
@@ -15,8 +16,11 @@
   "imagem": "bestiario/merfolk_criatura.webp",
   "porte": "Médio",
   "dimensoes": {
-    "medida": "2 m de comprimento",
-    "peso": "90 kg"
+    "medida": "2 m de comprimento, 0,9 m de altura",
+    "peso": "90 kg",
+    "comprimento": 2,
+    "largura": 0.45,
+    "altura": 0.9
   },
   "locomocao": {
     "natacao": 5
@@ -26,22 +30,43 @@
     "forca": 3,
     "destreza": 3,
     "vigor": 4,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 2,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
-    "briga": 2,
+    "armas": 2,
+    "atirador": 2,
+    "briga": 1,
+    "bloqueio": 1,
     "esquiva": 1,
     "prontidao": 1,
-    "integridade": 2
+    "integridade": 2,
+    "sobrevivencia": 2
   },
+  "skills2": {
+    "natacao": 4
+  },
+  "especialidades": [
+    {
+      "habilidade": "armas",
+      "foco": "lança, debaixo d'água",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "atirador",
+      "foco": "besta",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 2,
-    "conviccao": 3,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
@@ -49,32 +74,60 @@
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Arma",
-      "atrib": "forca",
-      "pericia": "briga",
+      "nome": "Lança",
+      "atrib": "destreza",
+      "pericia": "armas",
+      "dado": 1,
+      "mao": 2,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 1,
+      "ticks": 6,
+      "classe": "haste"
+    },
+    {
+      "nome": "Besta média",
+      "atrib": "percepcao",
+      "pericia": "atirador",
       "dado": 1,
       "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 1,
+      "ticks": 12,
+      "danoBonus": 4,
+      "forca": false,
+      "classe": "distancia",
+      "distancia": true
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Nadador Nato",
-      "descricao": "Desliza pela água com grande velocidade, muito mais ágil no mar do que em terra firme."
-    },
-    {
       "nome": "Anfíbio",
-      "descricao": "Respira tanto na água quanto no ar, embora se mova com dificuldade fora do mar."
+      "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: respira na água e no ar; fora d'água só se arrasta. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Visão na Penumbra",
-      "descricao": "Enxerga bem em condições de pouca luz, útil nas profundezas onde o sol não alcança."
+      "nome": "Nadador nato",
+      "descricao": "Natação 4 e o nado do site.",
+      "classe": "livro"
     },
     {
-      "nome": "Guerreiro do Mar",
-      "descricao": "Luta com tridente e besta pesada, armas adaptadas para combate tanto debaixo d'água quanto na superfície."
+      "nome": "Guerreiro do mar",
+      "descricao": "a lança e a besta do livro, que servem debaixo d'água e na superfície (o Mestre decide o alcance da besta debaixo d'água).",
+      "classe": "livro"
+    },
+    {
+      "nome": "guarda do segredo",
+      "descricao": "atira com a besta da água, chega perto com a lança só contra quem caiu no mar; afasta navegantes dos seus domínios e não sai da água.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão na penumbra: enxerga bem com pouca luz, nas profundezas (site). · audição e olfato: os de um humano."
     }
   ],
   "lore": [
@@ -89,6 +142,14 @@
     {
       "titulo": "Sussurros de Corrupção",
       "texto": "Sábios e marinheiros falam de merfolk degenerados nas águas mais isoladas, corrompidos por poderes sombrios que talvez controlem até os que se julgam livres."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: em grupo, típico 4 a 12."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, 37 PV, Impacto 5. Esquiva e Bloqueio 10 (12 com a lança). Na água nada rápido (5 · 8 · 12); em terra só se arrasta. Lança a duas mãos (dano médio 10, 5) ou besta (8, 5, a cada 12 Ticks). Respira na água e no ar."
     }
   ],
   "ecologia": {
@@ -126,5 +187,34 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 1
+  "ameacaLegada": 1,
+  "v3": {
+    "pv": 37,
+    "esquiva": 10,
+    "bloqueio": 10,
+    "defesa": 12,
+    "defesaMental": 12,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 141.3,
+    "deslocamento": {
+      "nado": {
+        "batalha": 5,
+        "arranque": 8,
+        "corrida": 12
+      }
+    },
+    "bloqueioArma": 2
+  },
+  "notasObservacao": [
+    "`equipamento`: lança no lugar do tridente e besta média no lugar da besta pesada **[provisório]**",
+    "`area`: de lado, nadando; as medidas são estimadas **[extrapolação]**",
+    "`aparência`: 4, a do site; o texto fala de beleza **[provisório]**",
+    "`anfíbio`: números sugeridos pela ficha (D-197)"
+  ]
 }

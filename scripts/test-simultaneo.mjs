@@ -151,9 +151,9 @@ eq(T.previsaoDeEncontro(1, 3, 0, 1), 0, 'já no alcance: zero Ticks');
   const de = (nome) => M.find((c) => c.nome === nome)?.combate.ataques[0].classe;
   eq(de('Arqueiro'), 'distancia', 'o Arqueiro atira');
   eq(de('Camponês Assustado'), 'haste', 'o forcado do camponês alcança dois hexágonos');
-  eq(de('Mago de Batalha'), 'arte', 'a Bola de fogo é conjuração');
+  eq(de('Mago de Batalha'), 'leve', 'o Mago de Batalha da ficha v3 só soca: a Bola de fogo foi para a linha Artes (D-196), Mana 14');
   eq(de('Feiticeiro Menor'), 'leve', 'o Feiticeiro Menor da ficha v3 só soca: o Dardo flamejante foi para a linha Artes (D-196)');
-  eq(de('Cultista Sombrio'), 'arte', 'o Toque mórbido é conjuração');
+  eq(de('Cultista Sombrio'), 'leve', 'o Cultista da ficha v3 só soca: o Toque mórbido foi para a linha Artes (D-196), Mana 9');
 
   // A precedência: catálogo > classe explícita > velocidade.
   eq(T.classeDeTempo('espada-longa', 5, 'pesada'), 'media', 'a arma do catálogo vence a estimativa');

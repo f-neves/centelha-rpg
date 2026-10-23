@@ -7,7 +7,7 @@
   "categoriaLegada": "Humano",
   "papel": "soldado",
   "conceito": "músculo pesado",
-  "descricao": "Lento, mas cada golpe derruba. Mira em quebrar a guarda.",
+  "descricao": "Homem enorme de martelo de duas mãos, lento para se mover e rápido para esmagar. Aceita levar um corte se puder devolver um golpe que derruba.",
   "tags": [
     "humano"
   ],
@@ -15,77 +15,119 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,9 m de altura",
-    "peso": "110 kg"
+    "peso": "110 kg",
+    "largura": 0.51,
+    "altura": 1.9
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 0,
   "attrs": {
     "forca": 5,
     "destreza": 2,
     "vigor": 4,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 2,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
-    "armas-duas-maos": 3,
+    "armas": 3,
     "esquiva": 1,
     "resistencia": 3,
-    "integridade": 4
+    "integridade": 4,
+    "bloqueio": 1,
+    "briga": 2,
+    "atletismo": 2
   },
+  "skills2": {
+    "intimidacao": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "armas",
+      "foco": "martelo de guerra",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "intimidacao",
+      "foco": "pelo tamanho",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 2,
-    "conviccao": 3,
+    "conviccao": 2,
     "temperanca": 2,
-    "valor": 3
+    "valor": 4
   },
   "willpower": 5,
   "aparencia": 4,
-  "equip": {
-    "armaduras": [
-      "couro"
-    ]
-  },
   "ataques": [
     {
       "nome": "Martelo de guerra",
       "atrib": "forca",
-      "pericia": "armas-duas-maos",
-      "dado": 3,
+      "pericia": "armas",
+      "dado": 2,
       "mao": 2,
       "tipo": "impacto",
-      "acerto": 0,
       "ticks": 7,
-      "notas": "Impacto: a armadura quase não absorve (anti-placa)"
+      "classe": "pesada"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
       "nome": "Golpe pesado",
-      "descricao": "dano alto por acerto, mira em quebrar a guarda do alvo"
-    },
-    {
-      "nome": "Passo lento",
-      "descricao": "Velocidade 7, age com atraso e reage mal a cercos"
+      "descricao": "o martelo de guerra a duas mãos (2d6 + Força × 2).",
+      "classe": "livro"
     },
     {
       "nome": "Força bruta",
-      "descricao": "ignora parte da Absorção leve ao acertar"
+      "descricao": "o Impacto do martelo, que a armadura quase não absorve.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Passo lento",
+      "descricao": "a Velocidade 7 do martelo; age menos vezes.",
+      "classe": "livro"
     },
     {
       "nome": "Vulnerável ao cerco",
-      "descricao": "perde eficácia quando flanqueado por vários oponentes"
+      "descricao": "a Guarda sob pressão (cada ataque que recebe baixa a Esquiva e o Bloqueio em 2 até a próxima ação dele).",
+      "classe": "livro"
+    },
+    {
+      "nome": "quebra a guarda",
+      "descricao": "avança devagar, aceita o primeiro corte e devolve um esmagamento; mira derrubar de vez quem está na frente.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sem inimizades naturais",
+      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão, audição, olfato: humanos."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Lento para se mover, rápido para golpear: cada ataque busca quebrar a guarda ou derrubar de vez. Não se importa em levar um corte se puder devolver um esmagamento."
+      "texto": "Lento para se mover, rápido para golpear: cada ataque busca quebrar a guarda ou derrubar de vez. Não se importa em levar um corte se puder devolver um esmagamento. Social: num bando ou milícia."
     },
     {
       "titulo": "Personalidade",
@@ -94,6 +136,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "O músculo pesado de bandos e milícias por toda Uldun; sem Centelha alguma, vive da força bruta num mundo onde poder mágico é raro e temido."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Humano Médio, 37 PV, de couro (Impacto 6, Corte 2, Perfuração 1). Defesa baixa (Esquiva e Bloqueio 5). O martelo dá dano médio 17 a cada 7 Ticks e quase não se absorve na armadura. Cerque-o: cada golpe que leva baixa a Defesa dele, e ele age devagar."
     }
   ],
   "ecologia": {
@@ -116,5 +162,45 @@
     "crConf": "estimado"
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 37,
+    "esquiva": 6,
+    "bloqueio": 6,
+    "defesa": 6,
+    "defesaMental": 11,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 232.98,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    },
+    "vestida": {
+      "esquiva": 5,
+      "bloqueio": 5,
+      "defesa": 5,
+      "contraTiro": 5,
+      "absorcao": {
+        "impacto": 6,
+        "corte": 2,
+        "perfuracao": 1
+      },
+      "nivel": 1,
+      "penalidade": 1
+    }
+  },
+  "notasObservacao": [
+    "`martelo`: 2d6 + Força × 2 (17 de média), o do livro; o site dava 3 dados",
+    "`bravura`: 4; o site tinha 3 **[provisório]**",
+    "`card e equipamento`: o couro está sempre vestido (D-188)"
+  ]
 }

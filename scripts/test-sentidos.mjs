@@ -130,7 +130,11 @@ const exc = FURT.excecoes || {};
 // abaixo: exceçao sem motivo escrito vira palpite anonimo em seis meses.
 const valorDa = (v) => (typeof v === 'number' ? v : v?.valor);
 const ids = Object.keys(exc).filter((k) => k !== 'nota');
-ok(ids.length > 0, `a exceção por criatura é EXERCIDA, e não só declarada (${ids.length} verbete(s))`);
+// SEM EXCEÇÃO NENHUMA HOJE, e isso é certo (Arquiteto, 23/10/2026): a única, a do assassino-das-sombras (6),
+// saiu quando a ficha v3 dele entrou. A régua e a exceção só valem para quem não tem Habilidade guardada ("Existe
+// porque o bestiário não guarda Habilidade nenhuma", a nota da furtividadeCriatura), e a ficha v3 guarda a
+// Furtividade (5). Quando houver exceção, o laço abaixo cobra que ela vença a tabela; sem nenhuma, não há o que cobrar.
+ok(true, ids.length ? `a exceção por criatura é EXERCIDA, e não só declarada (${ids.length} verbete(s))` : 'nenhuma exceção declarada hoje (a do assassino saiu com a ficha v3 dele): o laço abaixo não tem o que cobrar');
 for (const id of ids) {
   const m = CHEIO.find((x) => x.id === id);
   ok(!!m, `  a criatura "${id}" da exceção existe no bestiário`);
@@ -155,4 +159,4 @@ if (falhas.length) {
   process.exit(1);
 }
 console.log('✓ Sentidos OK · a Passiva chega à mesa, a Prontidão move o número,'
-  + ' a tabela separa por porte e categoria, e a exceção vence de verdade');
+  + ' a tabela separa por porte e categoria, e ' + (ids.length ? 'a exceção vence de verdade' : 'não há exceção declarada hoje'));

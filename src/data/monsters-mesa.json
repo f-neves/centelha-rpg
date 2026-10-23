@@ -1069,7 +1069,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -1077,6 +1077,7 @@
   "aparencia": 4,
   "pericias": {
    "prontidao": 3,
+   "esquiva": 2,
    "integridade": 4,
    "sociabilidade": 0,
    "furtividade": 2
@@ -1085,15 +1086,28 @@
   "tecnicas": [],
   "combate": {
    "pv": 31,
-   "defesa": 11,
+   "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 11,
    "absorcao": {
-    "impacto": 4,
-    "corte": 3,
-    "perfuracao": 2
+    "impacto": 2,
+    "corte": 0,
+    "perfuracao": 0
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 11,
+    "bloqueio": 9,
+    "defesa": 11,
+    "contraTiro": 11,
+    "absorcao": {
+     "impacto": 4,
+     "corte": 2,
+     "perfuracao": 1
+    },
+    "nivel": 1,
+    "penalidade": 1
+   },
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -1102,12 +1116,20 @@
    },
    "ataques": [
     {
-     "nome": "Arco",
-     "pool": "4d6 +1",
-     "dano": "2d6 perfurante · perf. 1",
+     "nome": "Arco longo",
+     "pool": "3d6+2",
+     "dano": "1d6 perfurante · perf. 1",
      "perfArma": 1,
-     "speed": 6,
+     "speed": 7,
      "classe": "distancia"
+    },
+    {
+     "nome": "Punhos",
+     "pool": "2d6+2 +1",
+     "dano": "1d6 impacto",
+     "perfArma": null,
+     "speed": 5,
+     "classe": "leve"
     }
    ]
   },
@@ -1149,18 +1171,19 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "vontade": 6,
   "aparencia": 4,
   "pericias": {
    "prontidao": 4,
+   "esquiva": 4,
    "integridade": 4,
-   "sociabilidade": 3,
-   "furtividade": 6
+   "sociabilidade": 1,
+   "furtividade": 5
   },
   "artes": [],
   "tecnicas": [
@@ -1175,27 +1198,40 @@
     "caminho": "sombra"
    },
    {
-    "id": "bote-silencioso",
-    "nome": "Bote Silencioso",
+    "id": "manto-de-sombras",
+    "nome": "Manto de Sombras",
     "caminho": "sombra"
    },
    {
-    "id": "manto-de-sombras",
-    "nome": "Manto de Sombras",
+    "id": "bote-silencioso",
+    "nome": "Bote Silencioso",
     "caminho": "sombra"
    }
   ],
   "combate": {
    "pv": 34,
-   "defesa": 23,
-   "defesaSocial": 16,
+   "defesa": 24,
+   "defesaSocial": 8,
    "defesaMental": 18,
    "absorcao": {
-    "impacto": 8,
-    "corte": 6,
-    "perfuracao": 5
+    "impacto": 6,
+    "corte": 3,
+    "perfuracao": 3
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 23,
+    "bloqueio": 13,
+    "defesa": 23,
+    "contraTiro": 23,
+    "absorcao": {
+     "impacto": 8,
+     "corte": 5,
+     "perfuracao": 4
+    },
+    "nivel": 1,
+    "penalidade": 1
+   },
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 3,
@@ -1204,13 +1240,12 @@
    },
    "ataques": [
     {
-     "nome": "Adaga (Ágil)",
+     "nome": "Adaga",
      "pool": "4d6+2 +8",
-     "dano": "1d6 +6 perfurante · perf. 0",
+     "dano": "1d6 +4 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve",
-     "notas": "Ágil: usa Destreza no dano. Perf. 0: contra armadura, mira na fresta ou no alvo desprevenido"
+     "classe": "leve"
     }
    ]
   },
@@ -1612,14 +1647,15 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
-   "valor": 3
+   "valor": 2
   },
   "vontade": 5,
   "aparencia": 4,
   "pericias": {
    "prontidao": 2,
+   "esquiva": 2,
    "integridade": 4,
    "sociabilidade": 0,
    "furtividade": 2
@@ -1628,15 +1664,28 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
-   "defesa": 9,
+   "defesa": 10,
    "defesaSocial": 4,
    "defesaMental": 11,
    "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 2
+    "impacto": 3,
+    "corte": 0,
+    "perfuracao": 0
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 9,
+    "bloqueio": 7,
+    "defesa": 9,
+    "contraTiro": 9,
+    "absorcao": {
+     "impacto": 5,
+     "corte": 2,
+     "perfuracao": 1
+    },
+    "nivel": 1,
+    "penalidade": 1
+   },
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
@@ -1647,7 +1696,7 @@
     {
      "nome": "Facão",
      "pool": "2d6+2 +2",
-     "dano": "1d6 +3 corte",
+     "dano": "1d6 +1 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -2726,7 +2775,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -2737,19 +2786,19 @@
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 4,
+   "defesa": 9,
    "defesaSocial": 4,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -2760,12 +2809,12 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6+2 +4",
-     "dano": "1d6 +6 corte",
+     "nome": "Maça estrela",
+     "pool": "3d6 +5",
+     "dano": "1d6 +6 impacto",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -3063,31 +3112,45 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
-   "valor": 3
+   "valor": 4
   },
   "vontade": 5,
   "aparencia": 4,
   "pericias": {
    "prontidao": 0,
+   "esquiva": 1,
    "integridade": 4,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 5,
+   "defesa": 6,
    "defesaSocial": 4,
    "defesaMental": 11,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 3
+    "impacto": 4,
+    "corte": 0,
+    "perfuracao": 0
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 5,
+    "bloqueio": 5,
+    "defesa": 5,
+    "contraTiro": 5,
+    "absorcao": {
+     "impacto": 6,
+     "corte": 2,
+     "perfuracao": 1
+    },
+    "nivel": 1,
+    "penalidade": 1
+   },
    "iniciativa": "1d6 + 2",
    "deslocamento": {
     "batalha": 3,
@@ -3098,11 +3161,10 @@
     {
      "nome": "Martelo de guerra",
      "pool": "4d6",
-     "dano": "3d6 +10 impacto",
+     "dano": "2d6 +10 impacto",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada",
-     "notas": "Impacto: a armadura quase não absorve (anti-placa)"
+     "classe": "pesada"
     }
    ]
   },
@@ -3410,18 +3472,18 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "vontade": 5,
   "aparencia": 4,
   "pericias": {
-   "prontidao": 1,
+   "prontidao": 2,
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 3
   },
   "artes": [],
   "tecnicas": [],
@@ -3432,11 +3494,11 @@
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
-    "corte": 1,
-    "perfuracao": 1
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
+   "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
     "arranque": 5,
@@ -3444,12 +3506,12 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6+2",
+     "nome": "Machado",
+     "pool": "4d6 +1",
      "dano": "1d6 +5 corte",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -3643,7 +3705,7 @@
  {
   "id": "campeao",
   "nome": "Campeão (herói inimigo)",
-  "nomeIngles": "Champion (Minor Demigod)",
+  "nomeIngles": "Champion",
   "ameaca": 6,
   "centelha": 3,
   "categoria": "Humanoide",
@@ -3664,7 +3726,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 4
   },
@@ -3672,10 +3734,10 @@
   "aparencia": 4,
   "pericias": {
    "prontidao": 5,
-   "esquiva": 3,
+   "esquiva": 4,
    "integridade": 6,
-   "sociabilidade": 3,
-   "furtividade": 2
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [
@@ -3697,15 +3759,28 @@
   ],
   "combate": {
    "pv": 37,
-   "defesa": 22,
-   "defesaSocial": 16,
+   "defesa": 24,
+   "defesaSocial": 4,
    "defesaMental": 22,
    "absorcao": {
-    "impacto": 8,
-    "corte": 11,
-    "perfuracao": 6
+    "impacto": 7,
+    "corte": 3,
+    "perfuracao": 3
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 22,
+    "bloqueio": 20,
+    "defesa": 22,
+    "contraTiro": 22,
+    "absorcao": {
+     "impacto": 8,
+     "corte": 9,
+     "perfuracao": 4
+    },
+    "nivel": 1,
+    "penalidade": 2
+   },
    "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 3,
@@ -3714,13 +3789,20 @@
    },
    "ataques": [
     {
-     "nome": "Espada longa (golpe duplo)",
+     "nome": "Espada longa",
      "pool": "5d6 +7",
-     "dano": "2d6 +7 corte",
+     "dano": "1d6 +7 corte",
      "perfArma": null,
      "speed": 6,
-     "classe": "media",
-     "notas": "Pode dividir em 2 ataques (−1d6/−2d6)"
+     "classe": "media"
+    },
+    {
+     "nome": "Espada longa a duas mãos",
+     "pool": "5d6 +7",
+     "dano": "1d6 +11 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -4451,32 +4533,46 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "vontade": 7,
   "aparencia": 4,
   "pericias": {
    "prontidao": 4,
+   "esquiva": 3,
    "integridade": 6,
-   "sociabilidade": 3,
-   "furtividade": 2
+   "sociabilidade": 2,
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 13,
-   "defesaSocial": 12,
+   "defesa": 17,
+   "defesaSocial": 10,
    "defesaMental": 17,
    "absorcao": {
-    "impacto": 9,
-    "corte": 11,
-    "perfuracao": 7
+    "impacto": 5,
+    "corte": 1,
+    "perfuracao": 1
    },
-   "resistenciaPerfuracao": 3,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 11,
+    "bloqueio": 16,
+    "defesa": 17,
+    "contraTiro": 16,
+    "absorcao": {
+     "impacto": 9,
+     "corte": 9,
+     "perfuracao": 5
+    },
+    "nivel": 3,
+    "penalidade": 3
+   },
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 3,
@@ -4487,7 +4583,7 @@
     {
      "nome": "Espada longa",
      "pool": "4d6 +3",
-     "dano": "2d6 +4 corte",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -4890,18 +4986,19 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 4
   },
   "vontade": 7,
   "aparencia": 4,
   "pericias": {
    "prontidao": 3,
+   "esquiva": 3,
    "integridade": 6,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [
@@ -4923,15 +5020,28 @@
   ],
   "combate": {
    "pv": 40,
-   "defesa": 11,
+   "defesa": 14,
    "defesaSocial": 4,
    "defesaMental": 17,
    "absorcao": {
-    "impacto": 10,
-    "corte": 11,
-    "perfuracao": 7
+    "impacto": 6,
+    "corte": 1,
+    "perfuracao": 1
    },
-   "resistenciaPerfuracao": 3,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 11,
+    "bloqueio": 11,
+    "defesa": 11,
+    "contraTiro": 11,
+    "absorcao": {
+     "impacto": 10,
+     "corte": 9,
+     "perfuracao": 5
+    },
+    "nivel": 3,
+    "penalidade": 3
+   },
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -4942,7 +5052,7 @@
     {
      "nome": "Montante",
      "pool": "4d6 +2",
-     "dano": "3d6 +9 corte",
+     "dano": "2d6 +9 corte",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
@@ -5584,7 +5694,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 4
   },
@@ -5592,9 +5702,10 @@
   "aparencia": 4,
   "pericias": {
    "prontidao": 3,
+   "esquiva": 3,
    "integridade": 6,
-   "sociabilidade": 4,
-   "furtividade": 2
+   "sociabilidade": 2,
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [
@@ -5616,15 +5727,28 @@
   ],
   "combate": {
    "pv": 37,
-   "defesa": 13,
-   "defesaSocial": 14,
+   "defesa": 17,
+   "defesaSocial": 10,
    "defesaMental": 17,
    "absorcao": {
-    "impacto": 9,
-    "corte": 11,
-    "perfuracao": 7
+    "impacto": 5,
+    "corte": 1,
+    "perfuracao": 1
    },
-   "resistenciaPerfuracao": 3,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 13,
+    "bloqueio": 13,
+    "defesa": 14,
+    "contraTiro": 13,
+    "absorcao": {
+     "impacto": 9,
+     "corte": 9,
+     "perfuracao": 5
+    },
+    "nivel": 3,
+    "penalidade": 3
+   },
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -5635,7 +5759,7 @@
     {
      "nome": "Espada longa",
      "pool": "4d6 +3",
-     "dano": "2d6 +4 corte",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -6199,7 +6323,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -6209,8 +6333,8 @@
    "prontidao": 2,
    "esquiva": 2,
    "integridade": 3,
-   "sociabilidade": 3,
-   "furtividade": 2
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "artes": [
    {
@@ -6222,12 +6346,12 @@
   "combate": {
    "pv": 34,
    "defesa": 12,
-   "defesaSocial": 12,
+   "defesaSocial": 4,
    "defesaMental": 14,
    "absorcao": {
     "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -6238,13 +6362,12 @@
    },
    "ataques": [
     {
-     "nome": "Toque mórbido (Morte 1)",
-     "pool": "3d6+2 +2",
-     "dano": "1d6 +1 necrótico",
+     "nome": "Soco",
+     "pool": "1d6+2 +1",
+     "dano": "1d6 +1 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "arte",
-     "notas": "Dreno: cura o cultista"
+     "speed": 5,
+     "classe": "leve"
     }
    ]
   },
@@ -6465,9 +6588,9 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
    "valor": 3
   },
   "vontade": 7,
@@ -6482,14 +6605,14 @@
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 30,
-   "defesa": 12,
+   "pv": 40,
+   "defesa": 13,
    "defesaSocial": 4,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
@@ -6500,9 +6623,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6 +4",
-     "dano": "1d6 +4 corte",
+     "nome": "Espada curta",
+     "pool": "4d6 +6",
+     "dano": "1d6 +2 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -8817,7 +8940,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -8834,13 +8957,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 31,
-   "defesa": 12,
+   "defesa": 13,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 3,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -8851,9 +8974,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6 +2",
-     "dano": "1d6 +3 corte",
+     "nome": "Espada curta",
+     "pool": "3d6 +4",
+     "dano": "1d6 +1 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -8870,7 +8993,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "1,6 metro de altura",
+   "medida": "1,6 m de altura",
    "peso": "55 kg"
   }
  },
@@ -8898,7 +9021,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -8906,9 +9029,10 @@
   "aparencia": 4,
   "pericias": {
    "prontidao": 4,
+   "esquiva": 4,
    "integridade": 5,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [
@@ -8935,15 +9059,28 @@
   ],
   "combate": {
    "pv": 34,
-   "defesa": 23,
+   "defesa": 25,
    "defesaSocial": 4,
    "defesaMental": 19,
    "absorcao": {
-    "impacto": 8,
-    "corte": 6,
-    "perfuracao": 5
+    "impacto": 6,
+    "corte": 3,
+    "perfuracao": 3
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 23,
+    "bloqueio": 23,
+    "defesa": 24,
+    "contraTiro": 23,
+    "absorcao": {
+     "impacto": 8,
+     "corte": 5,
+     "perfuracao": 4
+    },
+    "nivel": 1,
+    "penalidade": 1
+   },
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 3,
@@ -8952,10 +9089,10 @@
    },
    "ataques": [
     {
-     "nome": "Florete (Ágil)",
+     "nome": "Lâmina leve",
      "pool": "5d6 +8",
-     "dano": "1d6 +6 perfurante · perf. 1",
-     "perfArma": 1,
+     "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -8999,7 +9136,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -9010,19 +9147,19 @@
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 1
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 4,
+   "defesa": 8,
    "defesaSocial": 4,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -9033,12 +9170,12 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2 +2",
+     "nome": "Machado",
+     "pool": "2d6+2 +3",
      "dano": "1d6 +4 corte",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -9052,7 +9189,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "1,2 metro de altura",
+   "medida": "1,2 m de altura",
    "peso": "55 kg"
   }
  },
@@ -10894,9 +11031,9 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "vontade": 7,
@@ -10905,20 +11042,20 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 3,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "sociabilidade": 1,
+   "furtividade": 3
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 14,
-   "defesaSocial": 6,
+   "defesa": 19,
+   "defesaSocial": 10,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -10929,9 +11066,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "4d6 +4",
-     "dano": "1d6 +6 corte",
+     "nome": "Espada curta",
+     "pool": "4d6+2 +6",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -13530,9 +13667,9 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
    "valor": 3
   },
   "vontade": 5,
@@ -13542,19 +13679,19 @@
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 1
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 34,
-   "defesa": 4,
+   "defesa": 6,
    "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
-    "corte": 1,
-    "perfuracao": 1
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -13565,12 +13702,20 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6",
+     "nome": "Machado",
+     "pool": "3d6 +1",
      "dano": "1d6 +4 corte",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Mordida",
+     "pool": "3d6",
+     "dano": "1d6 +4 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -13614,9 +13759,9 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
-   "valor": 3
+   "valor": 2
   },
   "vontade": 5,
   "aparencia": 4,
@@ -13625,19 +13770,19 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 3
+   "furtividade": 2
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 26,
-   "defesa": 10,
+   "defesa": 11,
    "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
-    "corte": 1,
-    "perfuracao": 1
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -13648,9 +13793,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "1d6+2",
-     "dano": "1d6 +2 corte",
+     "nome": "Espada curta",
+     "pool": "3d6 +2",
+     "dano": "1d6 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -14601,33 +14746,46 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "vontade": 5,
   "aparencia": 4,
   "pericias": {
    "prontidao": 3,
-   "esquiva": 1,
+   "esquiva": 2,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "sociabilidade": 1,
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 34,
-   "defesa": 8,
-   "defesaSocial": 4,
+   "defesa": 11,
+   "defesaSocial": 6,
    "defesaMental": 12,
    "absorcao": {
-    "impacto": 4,
-    "corte": 7,
-    "perfuracao": 2
+    "impacto": 3,
+    "corte": 0,
+    "perfuracao": 0
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 7,
+    "bloqueio": 10,
+    "defesa": 11,
+    "contraTiro": 10,
+    "absorcao": {
+     "impacto": 4,
+     "corte": 6,
+     "perfuracao": 1
+    },
+    "nivel": 1,
+    "penalidade": 2
+   },
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -14638,7 +14796,7 @@
     {
      "nome": "Espada curta",
      "pool": "3d6 +2",
-     "dano": "1d6 +3 corte",
+     "dano": "1d6 +1 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -15284,9 +15442,9 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "vontade": 5,
@@ -15302,13 +15460,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 10,
+   "defesa": 13,
    "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -15319,12 +15477,12 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2",
+     "nome": "Espada longa",
+     "pool": "3d6+2 +1",
      "dano": "1d6 +4 corte",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -15366,9 +15524,9 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "vontade": 5,
@@ -15377,20 +15535,20 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "sociabilidade": 1,
+   "furtividade": 1
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 34,
-   "defesa": 4,
-   "defesaSocial": 4,
+   "defesa": 7,
+   "defesaSocial": 6,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
-    "corte": 1,
-    "perfuracao": 1
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -15401,12 +15559,20 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2",
-     "dano": "1d6 +3 corte",
+     "nome": "Maça estrela",
+     "pool": "2d6+2 +1",
+     "dano": "1d6 +3 impacto",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Rabada",
+     "pool": "2d6+2",
+     "dano": "1d6 +6 impacto",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -15421,13 +15587,13 @@
    ]
   },
   "dimensoes": {
-   "medida": "1,8 m de altura (cerca de 2,4 m de comprimento com a cauda)",
+   "medida": "2,4 m de comprimento, 1,8 m de altura",
    "peso": "90 kg"
   }
  },
  {
   "id": "homem-rato-forma-humana",
-  "nome": "Homem-Rato (forma humana)",
+  "nome": "Homem-Rato",
   "nomeIngles": "Lycanthrope, Wererat",
   "ameaca": 2,
   "centelha": 2,
@@ -15438,7 +15604,7 @@
   "tipo": "soldado",
   "atributos": {
    "forca": 3,
-   "destreza": 4,
+   "destreza": 5,
    "vigor": 4,
    "influencia": 1,
    "perspicacia": 2,
@@ -15449,32 +15615,40 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "vontade": 7,
-  "aparencia": 4,
+  "aparencia": 3,
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 3
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 12,
+   "defesa": 15,
    "defesaSocial": 4,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "prata"
+   ],
+   "resistencias": [
+    "corte",
+    "perfuracao",
+    "impacto"
+   ],
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -15483,10 +15657,18 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6 +4",
-     "dano": "1d6 +5 corte",
+     "nome": "Espada curta",
+     "pool": "4d6 +6",
+     "dano": "1d6 +3 corte",
      "perfArma": null,
+     "speed": 5,
+     "classe": "leve"
+    },
+    {
+     "nome": "Mordida",
+     "pool": "4d6 +5",
+     "dano": "1d6 +3 perfurante · perf. 0",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -15952,10 +16134,10 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
+   "temperanca": 3,
+   "valor": 2
   },
   "vontade": 5,
   "aparencia": 4,
@@ -15963,20 +16145,20 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 3
+   "sociabilidade": 1,
+   "furtividade": 1
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 24,
-   "defesa": 8,
-   "defesaSocial": 4,
+   "pv": 17,
+   "defesa": 10,
+   "defesaSocial": 6,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
-    "corte": 1,
-    "perfuracao": 1
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -15987,12 +16169,12 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "1d6+2",
-     "dano": "1d6 +2 corte",
-     "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "nome": "Lança",
+     "pool": "2d6+2 +1",
+     "dano": "1d6 +4 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "haste"
     }
    ]
   },
@@ -16006,7 +16188,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "0,75 m de altura",
+   "medida": "1,1 m de comprimento, 0,75 m de altura",
    "peso": "16 kg"
   }
  },
@@ -18424,9 +18606,9 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 4
   },
   "vontade": 8,
@@ -18436,12 +18618,12 @@
    "esquiva": 3,
    "integridade": 5,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "artes": [
    {
     "id": "fogo",
-    "nivel": 3
+    "nivel": 4
    },
    {
     "id": "forcas",
@@ -18456,8 +18638,8 @@
    "defesaMental": 21,
    "absorcao": {
     "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
@@ -18468,13 +18650,12 @@
    },
    "ataques": [
     {
-     "nome": "Bola de fogo (Fogo 3)",
-     "pool": "5d6 +6",
-     "dano": "3d6 +3 fogo (área)",
+     "nome": "Soco",
+     "pool": "1d6+2 +1",
+     "dano": "1d6 +3 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "arte",
-     "notas": "3 Mana; explosão em área. O pool vale enquanto a pendência 25 do Arcano não fechar: área talvez não tenha pontaria"
+     "speed": 5,
+     "classe": "leve"
     }
    ]
   },
@@ -19313,7 +19494,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -19324,19 +19505,19 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 10,
+   "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -19347,12 +19528,20 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2 +2",
-     "dano": "1d6 +4 corte",
-     "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "nome": "Lança",
+     "pool": "2d6+2 +3",
+     "dano": "1d6 +7 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "haste"
+    },
+    {
+     "nome": "Besta média",
+     "pool": "2d6 +3",
+     "dano": "1d6 +5 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 12,
+     "classe": "distancia"
     }
    ]
   },
@@ -19367,7 +19556,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "2 m de comprimento",
+   "medida": "2 m de comprimento, 0,9 m de altura",
    "peso": "90 kg"
   }
  },
@@ -21128,7 +21317,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -21138,20 +21327,20 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 4,
-   "sociabilidade": 0,
+   "sociabilidade": 1,
    "furtividade": 2
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 34,
-   "defesa": 14,
-   "defesaSocial": 8,
+   "defesa": 15,
+   "defesaSocial": 12,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
@@ -21162,9 +21351,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6+2 +4",
-     "dano": "1d6 +5 corte",
+     "nome": "Espada curta",
+     "pool": "4d6+2 +6",
+     "dano": "1d6 +3 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -21181,7 +21370,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "1,6 metro de altura",
+   "medida": "1,6 m de altura",
    "peso": "55 kg"
   }
  },
@@ -21480,9 +21669,9 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
-   "valor": 3
+   "valor": 4
   },
   "vontade": 5,
   "aparencia": 4,
@@ -21491,19 +21680,19 @@
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 40,
-   "defesa": 6,
+   "pv": 45,
+   "defesa": 8,
    "defesaSocial": 2,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -21514,12 +21703,12 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6",
+     "nome": "Machado",
+     "pool": "4d6 +1",
      "dano": "1d6 +5 corte",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -21536,7 +21725,7 @@
   },
   "dimensoes": {
    "medida": "2 m de altura",
-   "peso": "95 kg"
+   "peso": "110 kg"
   }
  },
  {
@@ -23572,9 +23761,9 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
    "valor": 3
   },
   "vontade": 7,
@@ -23595,8 +23784,8 @@
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -23607,10 +23796,10 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2 +4",
-     "dano": "1d6 +4 corte",
-     "perfArma": null,
+     "nome": "Adaga",
+     "pool": "4d6 +6",
+     "dano": "1d6 +2 perfurante · perf. 0",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -25346,9 +25535,9 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "vontade": 6,
@@ -25364,13 +25553,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 28,
-   "defesa": 12,
+   "defesa": 13,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -25381,12 +25570,12 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6 +2",
-     "dano": "1d6 +4 corte",
-     "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "nome": "Picareta de guerra",
+     "pool": "3d6+2 +3",
+     "dano": "1d6 +4 perfurante · perf. 2",
+     "perfArma": 2,
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -25400,7 +25589,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "90 centímetros de altura",
+   "medida": "0,9 m de altura",
    "peso": "18 kg"
   }
  },
@@ -25597,7 +25786,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -25614,13 +25803,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
-   "defesa": 14,
+   "defesa": 15,
    "defesaSocial": 6,
    "defesaMental": 14,
    "absorcao": {
     "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
@@ -25631,10 +25820,18 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2 +2",
+     "nome": "Espada longa",
+     "pool": "4d6 +3",
      "dano": "1d6 +4 corte",
      "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Bico",
+     "pool": "3d6+2 +3",
+     "dano": "1d6 +2 perfurante · perf. 0",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -25651,7 +25848,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "1,75 metro de altura",
+   "medida": "1,75 m de altura",
    "peso": "55 kg"
   }
  },
@@ -25679,7 +25876,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -25696,15 +25893,20 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 14,
+   "defesa": 15,
    "defesaSocial": 4,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "fogo",
+    "gelo",
+    "raio"
+   ],
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
@@ -25713,9 +25915,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "2d6+2 +2",
-     "dano": "1d6 +4 corte",
+     "nome": "Sabre",
+     "pool": "3d6+2 +4",
+     "dano": "1d6 +2 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -25734,7 +25936,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "1,75 metro de altura",
+   "medida": "1,75 m de altura",
    "peso": "68 kg"
   }
  },
@@ -26295,9 +26497,9 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
    "valor": 3
   },
   "vontade": 5,
@@ -26307,19 +26509,19 @@
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 1
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 4,
+   "defesa": 7,
    "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -26330,9 +26532,17 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2",
-     "dano": "1d6 +3 corte",
+     "nome": "Martelo",
+     "pool": "2d6+2 +1",
+     "dano": "1d6 +3 impacto",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Garras",
+     "pool": "2d6+2 +1",
+     "dano": "1d6 +1 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"

@@ -5,9 +5,10 @@
   "nome": "Duergar",
   "nomeIngles": "Duergar",
   "categoria": "Humanoide",
+  "categoriaLegada": "Humanoide",
   "papel": "capanga",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Anão cinzento das profundezas, amargo e cruel, que vive em clãs senhores de escravos. Cresce até o dobro do tamanho ou some da vista por um instante, e não sente veneno nem paralisia, mas a luz forte o ofusca.",
   "tags": [
     "humanoide",
     "centelha"
@@ -15,33 +16,68 @@
   "imagem": "bestiario/duergar_criatura.webp",
   "porte": "Médio",
   "dimensoes": {
-    "medida": "1,2 metro de altura",
-    "peso": "55 kg"
+    "medida": "1,2 m de altura",
+    "peso": "55 kg",
+    "largura": 0.46,
+    "altura": 1.2
   },
   "locomocao": {
     "terra": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
   },
   "centelha": 1,
   "attrs": {
     "forca": 3,
     "destreza": 2,
     "vigor": 4,
-    "influencia": 1,
-    "perspicacia": 1,
-    "compostura": 2,
     "percepcao": 3,
     "inteligencia": 2,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2
   },
   "skills": {
-    "briga": 2,
-    "esquiva": 0,
+    "armas": 2,
+    "briga": 1,
+    "bloqueio": 1,
+    "atletismo": 1,
+    "furtividade": 1,
     "prontidao": 1,
-    "integridade": 2
+    "resistencia": 3,
+    "integridade": 2,
+    "oficios-gerais": 2
   },
+  "skills2": {
+    "intimidacao": 1
+  },
+  "especialidades": [
+    {
+      "habilidade": "atletismo",
+      "foco": "ficar de pé em solo firme",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "armas",
+      "foco": "machado",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "oficios-gerais",
+      "foco": "mineração",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 2,
-    "conviccao": 3,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
@@ -49,36 +85,59 @@
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Arma",
+      "nome": "Machado",
       "atrib": "forca",
-      "pericia": "briga",
+      "pericia": "armas",
       "dado": 1,
       "mao": 1,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "ticks": 6,
+      "classe": "media"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Visão no escuro",
-      "descricao": "Enxerga no escuro até 36 metros, mesmo em cavernas sem luz alguma."
+      "nome": "Crescer",
+      "descricao": "poder natural (base Metamorfose 2): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até ele desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: o corpo e o que ele veste dobram de altura (Tamanho Grande); soma +1 na Força e perde 2 na Esquiva enquanto durar. Dano: o dos golpes, com a Força maior. Resistência: nenhum. Limite de uso: uma vez por cena, contando com o Sumir.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Imune a paralisia e venenos",
-      "descricao": "Não sofre com toxinas nem efeitos que imobilizam o corpo; também resiste melhor a ilusões que tentam enganar a mente."
+      "nome": "Sumir",
+      "descricao": "poder natural (base Ofuscação 2): Ativação: uma ação, Velocidade 6. Duração: 12 Ticks, ou até ele atacar. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Invisível. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena, contando com o Crescer.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Sensibilidade à luz",
-      "descricao": "Luz forte ofusca o duergar, impondo penalidade em testes de percepção e ataque enquanto exposto a ela."
+      "descricao": "Ativação: luz forte (sol, Arte de Luz, lanterna de perto). Duração: enquanto estiver na luz forte. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Ofuscado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Poderes inatos",
-      "descricao": "Uma vez por cena pode aumentar o próprio corpo ou desaparecer da visão dos inimigos por alguns instantes."
+      "nome": "Resiste a ilusões",
+      "descricao": "Ativação: uma ilusão o tem como alvo. Duração: a da ilusão. Alcance: o próprio corpo. Área: não se aplica. Efeito: a ilusão pega menos nele. Dano: nenhum. Resistência: mente, com +2 na Defesa Mental contra ilusão. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Imune a paralisia e venenos",
+      "descricao": "veneno e paralisia não pegam nele (o Anão parente tem só +1d6 contra veneno; o duergar é imune).",
+      "classe": "sem regra ainda"
     },
     {
       "nome": "Firme como pedra",
-      "descricao": "Dificilmente é derrubado ou empurrado enquanto pisa em solo sólido."
+      "descricao": "Atletismo, com a Especialidade natural (ficar de pé em solo firme) +2, contra Derrubar e Empurrar.",
+      "classe": "livro"
+    },
+    {
+      "nome": "senhor de escravos",
+      "descricao": "luta em grupo, cresce para esmagar o primeiro, some para cercar o fraco e captura em vez de matar; foge da luz.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: enxerga no escuro até 36 m, em caverna sem luz nenhuma (site), como o Anão parente. · audição e olfato: os de um humano."
     }
   ],
   "lore": [
@@ -89,6 +148,14 @@
     {
       "titulo": "Senhores de escravos",
       "texto": "Vivem em clãs que capturam forasteiros para o trabalho forçado; prisioneiros anões raramente sobrevivem ao primeiro dia de cativeiro."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: em clã, típico 4 a 12."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, 37 PV, Impacto 5, Corte e Perfuração 1. Defesa baixa (Bloqueio 8, Esquiva 4). O machado dá dano médio 7,5. Uma vez por cena cresce (Grande, +1 de Força) ou some (Invisível por 12 Ticks). Veneno e paralisia não o pegam; a luz forte o ofusca."
     }
   ],
   "ecologia": {
@@ -124,5 +191,34 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 1
+  "ameacaLegada": 1,
+  "v3": {
+    "pv": 37,
+    "esquiva": 4,
+    "bloqueio": 8,
+    "defesa": 8,
+    "defesaMental": 13,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 109.04,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
+      }
+    }
+  },
+  "notasObservacao": [
+    "`raça parente`: Anão (D-207); os números são os do site",
+    "`equipamento`: machado do livro **[provisório]**",
+    "`compaixão`: 1; o site tinha 2 **[provisório]**",
+    "`firme como pedra`: Especialidade natural +2 em Atletismo **[provisório]**",
+    "`crescer`, `sumir`, `sensibilidade à luz`, `resiste a ilusões`: números sugeridos pela ficha (D-197)"
+  ]
 }

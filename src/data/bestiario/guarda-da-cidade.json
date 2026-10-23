@@ -7,7 +7,7 @@
   "categoriaLegada": "Humano",
   "papel": "soldado",
   "conceito": "milícia treinada",
-  "descricao": "Patrulha disciplinada, luta em formação com escudo.",
+  "descricao": "Miliciano de cota de malha e escudo que patrulha em dupla e luta em formação fechada. Contém o problema até o reforço chegar e reporta qualquer sinal de magia à igreja.",
   "tags": [
     "humano"
   ],
@@ -15,77 +15,119 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,75 m de altura",
-    "peso": "78 kg"
+    "peso": "78 kg",
+    "largura": 0.45,
+    "altura": 1.75
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 0,
   "attrs": {
     "forca": 3,
     "destreza": 3,
     "vigor": 3,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 2,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
-    "armas-uma-mao": 3,
+    "armas": 3,
+    "bloqueio": 2,
     "esquiva": 2,
-    "escudos": 2,
     "prontidao": 3,
-    "integridade": 5
+    "integridade": 5,
+    "briga": 2,
+    "atletismo": 2,
+    "resistencia": 2,
+    "investigacao": 1,
+    "sociabilidade": 1
   },
+  "skills2": {
+    "intimidacao": 1
+  },
+  "especialidades": [
+    {
+      "habilidade": "armas",
+      "foco": "em formação",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "bloqueio",
+      "foco": "com escudo",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 2,
+    "compaixao": 3,
     "conviccao": 3,
-    "temperanca": 2,
+    "temperanca": 3,
     "valor": 3
   },
   "willpower": 5,
   "aparencia": 4,
-  "equip": {
-    "armaduras": [
-      "malha"
-    ]
-  },
   "ataques": [
     {
       "nome": "Espada curta",
       "atrib": "destreza",
-      "pericia": "armas-uma-mao",
+      "pericia": "armas",
       "dado": 1,
       "mao": 1,
       "tipo": "corte",
       "acerto": 2,
-      "ticks": 5
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Malha",
-      "descricao": "Absorção +4, mas Esquiva −1"
-    },
-    {
-      "nome": "Escudo",
-      "descricao": "+2 ao Bloqueio"
-    },
-    {
       "nome": "Formação",
-      "descricao": "ganha bônus de Defesa lutando lado a lado com outro guarda"
+      "descricao": "Ativação: nenhuma; vale enquanto luta ombro a ombro com outro guarda de escudo. Duração: enquanto a formação se mantiver. Alcance: 1 m, o companheiro ao lado. Área: ele e o companheiro. Efeito: soma +1 na Defesa e não pode ser flanqueado pelo lado do companheiro. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Chamar reforço",
-      "descricao": "grita por apoio; mais guardas chegam em poucas rodadas"
+      "descricao": "Ativação: uma ação, Velocidade 3, gritando ou apitando. Duração: instantânea. Alcance: onde o grito ou o apito é ouvido, dentro da cidade. Área: não se aplica. Efeito: chegam 1d6 guardas da patrulha mais perto em 30 Ticks, se houver patrulha por perto (o Mestre decide). Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Malha e escudo",
+      "descricao": "a cota de malha e o hoplon na frase da linha Absorção.",
+      "classe": "livro"
+    },
+    {
+      "nome": "conter até o reforço",
+      "descricao": "fecha a formação, apara com o escudo, segura o problema e chama reforço; contra magia, recua e reporta à igreja.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sem inimizades naturais",
+      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão, audição, olfato: humanos."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Patrulha em duplas ou pequenos pelotões, luta em formação fechada com escudo e lança curta, e prioriza conter o problema até chegar reforço."
+      "texto": "Patrulha em duplas ou pequenos pelotões, luta em formação fechada com escudo e lança curta, e prioriza conter o problema até chegar reforço. Social: em dupla ou pelotão, típico 2 a 6."
     },
     {
       "titulo": "Sociedade",
@@ -94,6 +136,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "É a disciplina greco-romana de Calin em carne e osso: milícia treinada, hierárquica, que enxerga em qualquer sinal de magia um problema a ser reportado à igreja antes de ser combatido."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Humano Médio, 34 PV, de malha e escudo (Impacto 4, Corte 6, Perfuração 1). Bloqueio 10 (11 com a espada), Esquiva 7, contra tiro 10; em formação, +1. A espada curta dá dano médio 4,5. Contém e chama reforço: 1d6 guardas em 30 Ticks."
     }
   ],
   "ecologia": {
@@ -116,5 +162,47 @@
     "crConf": "estimado"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 34,
+    "esquiva": 10,
+    "bloqueio": 10,
+    "defesa": 11,
+    "defesaMental": 12,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 130.48,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    },
+    "bloqueioArma": 1,
+    "vestida": {
+      "esquiva": 7,
+      "bloqueio": 10,
+      "defesa": 11,
+      "contraTiro": 10,
+      "absorcao": {
+        "impacto": 4,
+        "corte": 6,
+        "perfuracao": 1
+      },
+      "nivel": 1,
+      "penalidade": 2
+    }
+  },
+  "notasObservacao": [
+    "`escudo`: o hoplon do livro, sempre carregado, para o \"+2 ao Bloqueio\" do site **[provisório]**",
+    "`temperanca`: 3; o site tinha 2 **[provisório]**",
+    "`formação`, `chamar reforço`: números sugeridos pela ficha (D-197)",
+    "`card e equipamento`: a malha e o escudo estão sempre com ele (D-188); a frase da linha Absorção dá os números com eles"
+  ]
 }

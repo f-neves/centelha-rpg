@@ -91,14 +91,14 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "assassino-das-sombras": {
   "batalha": 3,
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "assombracao": {
   "batalha": 6,
@@ -134,7 +134,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "barghest": {
   "batalha": 3,
@@ -225,7 +225,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "boi": {
   "batalha": 5,
@@ -253,7 +253,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "bruxa-do-mar": {
   "batalha": 3,
@@ -281,7 +281,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "bulette": {
   "batalha": 4,
@@ -302,7 +302,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "campeao-esqueletico": {
   "batalha": 3,
@@ -366,7 +366,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "caranguejo-gigante": {
   "batalha": 3,
@@ -401,7 +401,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "cavalo": {
   "batalha": 7,
@@ -458,7 +458,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "corujurso": {
   "batalha": 3,
@@ -509,7 +509,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "daeodon": {
   "batalha": 7,
@@ -530,7 +530,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "deva-astral": {
   "batalha": 5,
@@ -713,21 +713,21 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "duelista": {
   "batalha": 3,
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "duergar": {
   "batalha": 2,
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "efreeti": {
   "batalha": 2,
@@ -887,7 +887,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "esqueleto-humano": {
   "batalha": 3,
@@ -1099,14 +1099,14 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "goblin": {
   "batalha": 3,
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "golem-de-argila": {
   "batalha": 2,
@@ -1184,7 +1184,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "guepardo": {
   "batalha": 9,
@@ -1241,21 +1241,21 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "homem-lagarto": {
   "batalha": 3,
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "homem-rato-forma-humana": {
   "batalha": 3,
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "homunculus": {
   "batalha": 2,
@@ -1298,7 +1298,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "kraken": {
   "batalha": 1,
@@ -1497,7 +1497,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "mamute": {
   "batalha": 3,
@@ -1568,7 +1568,7 @@
   "arranque": 8,
   "corrida": 12,
   "ft": 50,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "nado 50: em terra o povo do mar se arrasta 5 ft"
  },
  "mimico": {
@@ -1719,7 +1719,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "objeto-animado": {
   "batalha": 3,
@@ -1747,7 +1747,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "orca": {
   "batalha": 8,
@@ -1921,7 +1921,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "rato-atroz": {
   "batalha": 7,
@@ -2066,7 +2066,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "tarrasque": {
   "batalha": 4,
@@ -2087,14 +2087,14 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "tiefling": {
   "batalha": 3,
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "tigre": {
   "batalha": 7,
@@ -2143,7 +2143,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "trol": {
   "batalha": 3,

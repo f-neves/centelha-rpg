@@ -5,9 +5,10 @@
   "nome": "Svirfneblin",
   "nomeIngles": "Svirfneblin",
   "categoria": "Humanoide",
+  "categoriaLegada": "Humanoide",
   "papel": "soldado",
   "conceito": "humanoide Pequeno",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Gnomo das profundezas, de pele cinzenta de pedra, mineiro de cidades escondidas e desconfiado de tudo. Some contra a rocha, nubla a forma ou se disfarça, e a magia custa a pegá-lo.",
   "tags": [
     "humanoide",
     "centelha"
@@ -15,70 +16,116 @@
   "imagem": "bestiario/svirfneblin_criatura.webp",
   "porte": "Pequeno",
   "dimensoes": {
-    "medida": "90 centímetros de altura",
-    "peso": "18 kg"
+    "medida": "0,9 m de altura",
+    "peso": "18 kg",
+    "largura": 0.3,
+    "altura": 0.9
   },
   "locomocao": {
     "terra": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
   },
   "centelha": 1,
   "attrs": {
     "forca": 3,
     "destreza": 4,
     "vigor": 4,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 2,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
-    "briga": 3,
+    "armas": 3,
+    "briga": 1,
+    "bloqueio": 1,
     "esquiva": 1,
+    "atletismo": 2,
+    "furtividade": 3,
     "prontidao": 1,
-    "integridade": 2
+    "integridade": 2,
+    "oficios-gerais": 2
   },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "parado contra a rocha",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "armas",
+      "foco": "picareta",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "oficios-gerais",
+      "foco": "mineração",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 2,
+    "compaixao": 3,
     "conviccao": 3,
-    "temperanca": 2,
+    "temperanca": 3,
     "valor": 3
   },
   "willpower": 6,
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Arma",
-      "atrib": "forca",
-      "pericia": "briga",
+      "nome": "Picareta de guerra",
+      "atrib": "destreza",
+      "pericia": "armas",
       "dado": 1,
       "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 2,
+      "ticks": 6,
+      "classe": "media"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Visão no escuro profunda",
-      "descricao": "Enxerga no breu total das profundezas muito além do alcance comum, essencial para uma vida inteira sob a terra."
+      "nome": "Disfarce e sombra",
+      "descricao": "poder natural (base Ofuscação 1): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até ele desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: à escolha: nubla a forma (quem o ataca tem −2 no acerto); assume a aparência de outro humanoide pequeno; ou some numa sombra instantânea (fica Escondido, se houver sombra perto). Dano: nenhum. Resistência: nenhum; quem desconfia do disfarce testa a Percepção contra a Manha dele. Limite de uso: três vezes por dia, somados.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Resistência a magia",
-      "descricao": "Seu sangue feérico dificulta que magias hostis o afetem, exigindo mais poder do lançador para superar essa resistência natural."
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Inconspícuo",
-      "descricao": "Permanece constantemente difícil de detectar por magia de adivinhação, um dom natural de seu povo."
-    },
-    {
-      "nome": "Disfarce e sombra",
-      "descricao": "Pode nublar a própria forma ou assumir outra aparência algumas vezes ao dia, além de se ocultar em sombra instantânea."
+      "descricao": "magia de adivinhação tem dificuldade de achá-lo.",
+      "classe": "sem regra ainda"
     },
     {
       "nome": "Furtividade nas profundezas",
-      "descricao": "Move-se em silêncio quase perfeito entre pedras e túneis, quase invisível quando parado contra a rocha."
+      "descricao": "Furtividade 3, com a Especialidade natural (parado contra a rocha) +3 e o Tamanho Pequeno.",
+      "classe": "livro"
+    },
+    {
+      "nome": "mineiro desconfiado",
+      "descricao": "some contra a rocha, deixa o intruso passar ou o ataca de surpresa com a picareta; nubla a forma e foge para os túneis que conhece.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro profunda: enxerga no breu total muito além do alcance comum (site), como o Gnomo parente e além dele. · audição e olfato: os de um humano."
     }
   ],
   "lore": [
@@ -89,6 +136,14 @@
     {
       "titulo": "Sangue feérico distante",
       "texto": "O laço com o mundo feérico que corre em seu sangue os torna estranhos até para os próprios parentes gnomos da superfície."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: em grupo de mineiros, típico 3 a 8."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Pequeno, 28 PV, Impacto 5, Corte e Perfuração 1. Esquiva e Bloqueio 12 (13 com a picareta). A picareta dá dano médio 7,5 e fura N2. Três vezes por dia nubla a forma, se disfarça ou some na sombra; parado contra a rocha, quase não se vê. +2 contra Artes."
     }
   ],
   "ecologia": {
@@ -124,5 +179,35 @@
     "crConf": "conhecido"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 28,
+    "esquiva": 12,
+    "bloqueio": 12,
+    "defesa": 13,
+    "defesaMental": 12,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 71.16,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
+      }
+    },
+    "bloqueioArma": 1
+  },
+  "notasObservacao": [
+    "`raça parente`: Gnomo (D-207); os números são os do site",
+    "`massa`: 18 kg na borda de cima da zona de transição de 12 a 18 kg; na faixa de baixo seriam 19 PV",
+    "`equipamento`: picareta de guerra do livro **[provisório]**",
+    "`temperança`: 3; o site tinha 2 **[provisório]**",
+    "`disfarce e sombra`, `resistência a magia`: números sugeridos pela ficha (D-197)"
+  ]
 }

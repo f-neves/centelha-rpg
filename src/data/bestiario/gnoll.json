@@ -5,9 +5,10 @@
   "nome": "Gnoll",
   "nomeIngles": "Gnoll",
   "categoria": "Humanoide",
+  "categoriaLegada": "Humanoide",
   "papel": "soldado",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Humanoide alto com cabeça de hiena que caça em bando uivante, segue caravanas e devora o que mata. Morde além da arma e ataca melhor quando outro gnoll cerca a mesma presa.",
   "tags": [
     "humanoide"
   ],
@@ -15,71 +16,128 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "2,15 m de altura",
-    "peso": "135 kg"
+    "peso": "135 kg",
+    "largura": 0.54,
+    "altura": 2.15
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 0,
   "attrs": {
     "forca": 4,
     "destreza": 2,
     "vigor": 3,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 2,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
+    "armas": 2,
     "briga": 2,
-    "esquiva": 0,
+    "bloqueio": 1,
+    "atletismo": 2,
+    "furtividade": 1,
     "prontidao": 1,
-    "integridade": 2
+    "integridade": 2,
+    "sobrevivencia": 2
   },
+  "skills2": {
+    "intimidacao": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "armas",
+      "foco": "atacar com o bando",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "mordida",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 3,
-    "temperanca": 2,
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
     "valor": 3
   },
   "willpower": 5,
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Arma",
+      "nome": "Machado",
+      "atrib": "forca",
+      "pericia": "armas",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "tipo": "perfurante",
+      "perf": 1,
+      "ticks": 6,
+      "classe": "media"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Mordida selvagem",
-      "descricao": "ataque de mordida além da arma"
+      "nome": "Caçador em matilha",
+      "descricao": "Ativação: nenhuma; vale quando outro gnoll está em contato com o mesmo alvo. Duração: enquanto o companheiro estiver ali. Alcance: o do corpo a corpo. Área: um alvo. Efeito: soma +1 na jogada de ataque contra esse alvo. Dano: nenhum além do golpe. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Caçador em matilha",
-      "descricao": "bônus ao atacar acompanhado de outro gnoll"
+      "nome": "Mordida selvagem",
+      "descricao": "a Mordida da tabela, no lugar do golpe de machado (um ataque por ação).",
+      "classe": "livro"
     },
     {
       "nome": "Alerta",
-      "descricao": "Prontidão 1; raramente é pego de surpresa"
+      "descricao": "Prontidão 1.",
+      "classe": "livro"
     },
     {
-      "nome": "Visão no escuro",
-      "descricao": "enxerga sem penalidade no escuro"
+      "nome": "bando uivante",
+      "descricao": "cerca a presa em grupo, uiva para assustar, morde e bate no mais fraco; devora o que mata e foge se o bando perde metade.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: enxerga sem penalidade no escuro (site). · faro: o de uma hiena; Prontidão (faro) +2."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Caçam em bando uivante, devoram o que matam sem cerimônia e atacam tanto por fome quanto pelo puro prazer de destruir."
+      "texto": "Caçam em bando uivante, devoram o que matam sem cerimônia e atacam tanto por fome quanto pelo puro prazer de destruir. Social: em bando, típico 4 a 12."
     },
     {
       "titulo": "Hábitos",
@@ -92,6 +150,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Gnolls não nascem, eles rasgam caminho para fora de carcaças tocadas por uma fome vinda de além mundo; corre entre os caçadores de Mére o boato de que os primeiros bandos surgiram perto da Fenda, e desde então toda alcateia carrega um cheiro de coisa que não deveria existir neste plano."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, 34 PV, Impacto 3. Defesa baixa (Bloqueio 6, Esquiva 4). Machado ou mordida, dano médio 7,5 cada; +1 no ataque quando outro gnoll cerca o mesmo alvo. Vem em bando."
     }
   ],
   "ecologia": {
@@ -131,5 +193,33 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 34,
+    "esquiva": 4,
+    "bloqueio": 6,
+    "defesa": 6,
+    "defesaMental": 9,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 211.99,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    }
+  },
+  "notasObservacao": [
+    "`equipamento`: machado do livro, sem armadura **[provisório]**",
+    "`mordida`: N1 pela mordida de hiena, sem medida no pacote **[provisório]**",
+    "`virtudes`: Compaixão 1 e Temperança 1; o site tinha 2 e 2 **[provisório]**",
+    "`caçador em matilha`: números sugeridos pela ficha (D-197)"
+  ]
 }
