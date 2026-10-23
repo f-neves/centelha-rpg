@@ -12,7 +12,7 @@
 // ficha diz entra como está, só sem as marcas de trabalho (manual §7.5).
 import fs from 'node:fs';
 import path from 'node:path';
-import { execFileSync } from 'node:child_process'; import { bonusDaArma, defesaComArma } from './lib-ficha-v3.mjs';
+import { execFileSync } from 'node:child_process'; import { bonusDaArma, defesaComArma, formasDaFicha } from './lib-ficha-v3.mjs';
 
 const arg = (n) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : null; };
 const RAIZ = arg('--raiz') || path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
@@ -219,6 +219,10 @@ function converte(arq) {
 
   // Identidade
   const nome = limpa(celula(ident, 'Nome'));
+  // Formas (D-201; manual §5.2, item 1): só em quem muda de forma. Erro na linha para o conversor.
+  const linhaFormas = celula(ident, 'Formas');
+  let transforma = null;
+  if (linhaFormas != null) { try { transforma = formasDaFicha(linhaFormas, tabela(S['Variantes']).rows.map((r) => r[0])); } catch (e) { throw new Error(`${arq}: ${e.message}`); } }
   const [categoria, papel, cent] = celula(ident, 'Categoria · papel · Centelha').split('·').map((x) => x.trim());
   // Atributos
   const attrs = {};
@@ -417,7 +421,7 @@ function converte(arq) {
     if (b.alvo !== alvo) aviso.push(`bloco: alvo ${b.alvo} ≠ ${alvo}`);
   } else aviso.push('sem bloco de conferência');
 
-  return { arq, id, site, imagem, imagem2, elementos, nome, nomeIngles: nomeEmIngles(celula(ident, 'Nome em inglês (D&D, Pathfinder)')), categoria, papel, centelha: Number(cent),
+  return { arq, id, site, imagem, imagem2, elementos, transforma, nome, nomeIngles: nomeEmIngles(celula(ident, 'Nome em inglês (D&D, Pathfinder)')), categoria, papel, centelha: Number(cent),
     ameaca: celula(ident, 'Ameaça') ? parseInt(celula(ident, 'Ameaça'), 10) : null,
     terreno: celula(ident, 'Terreno') ? celula(ident, 'Terreno').split(',').map((x) => TERRENO[x.trim()] ?? `?${x.trim()}`) : null,
     clima: celula(ident, 'Clima') ? celula(ident, 'Clima').split(',').map((x) => CLIMA[x.trim()] ?? `?${x.trim()}`) : null,
@@ -485,7 +489,7 @@ function montaFonte(f, todas) {
     aparencia: f.aparencia,
     ataques: f.ataques,
     // D-195: as três sempre, mesmo vazias, da linha Elementos da ficha (e não da fonte velha).
-    fraquezas: f.elementos.fraquezas, resistencias: f.elementos.resistencias, imunidades: f.elementos.imunidades,
+    fraquezas: f.elementos.fraquezas, resistencias: f.elementos.resistencias, imunidades: f.elementos.imunidades, ...(f.transforma ? { transforma: f.transforma } : {}),
     habilidades: f.habilidades,
     ...(f.venenos.length ? { venenos: f.venenos } : {}),
     ...(f.doencas.length ? { doencas: f.doencas } : {}),
