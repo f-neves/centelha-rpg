@@ -165,13 +165,17 @@ const TSV_CAB = 'id_site\tid_definitivo\tnome_no_site\tcategoria\torigem_do_id\t
 const TSV = `${TSV_CAB}\n${ID}\t${ID}\tTeste Não Animal\tMorto-vivo\tteste\t${ID}\tNÃO\tnão\t\t\tnull\t\t\n`;
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'ficha-nao-animal-'));
-const roda = (ficha, rotulo, tsv = TSV) => {
+// A FONTE BASE é uma pasta do próprio teste (--base-pasta), e nunca o git: o CI clona raso (--depth 1), e o commit
+// ea564c19 não existe lá. `base` é { <id>: <fonte> }; vazio, nenhuma criatura tem fonte base.
+const roda = (ficha, rotulo, tsv = TSV, base = {}) => {
   const dir = path.join(tmp, rotulo);
   fs.mkdirSync(path.join(dir, 'fichas'), { recursive: true });
   fs.mkdirSync(path.join(dir, 'saida'));
   fs.writeFileSync(path.join(dir, 'fichas', ID + '.md'), ficha);
   fs.writeFileSync(path.join(dir, 'ids.tsv'), tsv);
-  const r = spawnSync('node', [CONVERSOR, '--raiz', RAIZ, '--fichas', path.join(dir, 'fichas'), '--tsv', path.join(dir, 'ids.tsv'), '--saida', path.join(dir, 'saida')], { encoding: 'utf8' });
+  fs.mkdirSync(path.join(dir, 'base'));
+  for (const [id, f] of Object.entries(base)) fs.writeFileSync(path.join(dir, 'base', id + '.json'), JSON.stringify(f));
+  const r = spawnSync('node', [CONVERSOR, '--raiz', RAIZ, '--fichas', path.join(dir, 'fichas'), '--tsv', path.join(dir, 'ids.tsv'), '--saida', path.join(dir, 'saida'), '--base-pasta', path.join(dir, 'base')], { encoding: 'utf8' });
   const arq = path.join(dir, 'saida', ID + '.json');
   return { status: r.status, saida: r.stdout + r.stderr, json: fs.existsSync(arq) ? JSON.parse(fs.readFileSync(arq, 'utf8')) : null };
 };
@@ -274,9 +278,9 @@ try {
   // base, e sem fonte base só a ficha "Animal" vira "Fera". Qualquer outro caso para.
   ok(j.categoriaLegada === 'Fera', `sem fonte base, a ficha "Animal" fica com a categoria legada "Fera": ${j.categoriaLegada}`);
   para('sem fonte base e não animal', '| Animal · soldado · 2 |', '| Morto-vivo · soldado · 2 |', /sem categoria legada \(sem fonte base, e a categoria da ficha é "Morto-vivo", não "Animal"\)/);
-  // com fonte base (o lich da ea564c19: categoria "Morto-vivo", sem categoriaLegada), a categoria legada é a da base
+  // com fonte base (uma fixture como o lich da ea564c19: categoria "Morto-vivo", sem categoriaLegada), a categoria legada é a da base
   const TSV_LICH = `${TSV_CAB}\nlich\tlich\tLich\tMorto-vivo\tteste\t${ID}\tNÃO\tnão\t\t\tnull\t\t\n`;
-  const comBase = roda(FICHA.replace('| Animal · soldado · 2 |', '| Morto-vivo · soldado · 2 |'), 'com fonte base', TSV_LICH);
+  const comBase = roda(FICHA.replace('| Animal · soldado · 2 |', '| Morto-vivo · soldado · 2 |'), 'com fonte base', TSV_LICH, { lich: { id: 'lich', nome: 'Lich', categoria: 'Morto-vivo' } });
   const lichArq = path.join(tmp, 'com fonte base', 'saida', 'lich.json');
   const lich = fs.existsSync(lichArq) ? JSON.parse(fs.readFileSync(lichArq, 'utf8')) : null;
   ok(comBase.status === 0 && lich?.categoriaLegada === 'Morto-vivo', `com fonte base sem categoriaLegada, a categoria da base: ${lich?.categoriaLegada}${comBase.status ? ' (exit ' + comBase.status + ')' : ''}`);

@@ -290,7 +290,16 @@ for (const l of linhasTsv) {
 // dela de novo somaria o "No jogo" e o Social duas vezes. Assim o conversor dá sempre a
 // mesma saída.
 const BASE = arg('--base') || 'ea564c19';
+// A FONTE BASE vem do commit BASE pelo git, ou de uma pasta (`--base-pasta`, os testes: o CI clona raso, com
+// --depth 1, e o ea564c19 não existe lá). Sem a pasta, o commit tem de existir: antes, a falta dele virava
+// "fonte base nenhuma" calada em todas as fichas (achado do CI vermelho no 683d881a).
+const BASE_PASTA = arg('--base-pasta');
+if (!BASE_PASTA) {
+  try { execFileSync('git', ['-C', RAIZ, 'cat-file', '-e', `${BASE}^{commit}`], { stdio: 'ignore' }); }
+  catch { console.error(`✘ o commit da fonte base (${BASE}) não existe neste clone (raso?); passe --base-pasta ou busque o histórico`); process.exit(1); }
+}
 const fontePorId = (id) => {
+  if (BASE_PASTA) { const p = path.join(BASE_PASTA, `${id}.json`); return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : null; }
   try {
     return JSON.parse(execFileSync('git', ['-C', RAIZ, 'show', `${BASE}:src/data/bestiario/${id}.json`], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }));
   } catch { return null; }
