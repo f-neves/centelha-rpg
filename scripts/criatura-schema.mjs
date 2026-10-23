@@ -169,8 +169,8 @@ export const criaturaSchema = z.object({
    *  fase 2) moveu para natural/ataques/habilidades, inerte até as Proezas fecharem
    *  (resposta do autor, item 2). Nenhum gerador lê ainda. */
   proezaFutura: z.array(z.object({ caminho: texto, tecnica: texto.optional() }).strict()).optional(),
-  fraquezas: z.array(texto).optional(),
-  resistencias: z.array(texto).optional(),
+  fraquezas: z.array(texto).optional(), // D-195: ids do elementos-vocab.json ("acido", "perfuracao"), na ordem dele; o validate-data cobra o vocabulário, a repetição e o choque entre as três
+  resistencias: z.array(texto).optional(), // na ficha v3 as três vêm sempre, mesmo vazias, da linha Elementos; veneno, doença e magia ficam fora (D-190: "sem regra ainda:" nas Manobras)
   /** Imunidade a um tipo de dano (B14 fase 4, item 5): dano daquele tipo é zero. Se um
    *  efeito (não o dado da própria criatura) impuser fraqueza ao mesmo tipo por cima,
    *  o dano volta a ser normal (regras.json, ao lado de fraqueza/resistência). Mesmo

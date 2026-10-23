@@ -78,6 +78,9 @@
       "classe": "media"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
       "nome": "agarrar",

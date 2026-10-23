@@ -104,6 +104,9 @@
       "classe": "leve"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
       "nome": "investida de baixo",

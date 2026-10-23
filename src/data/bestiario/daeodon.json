@@ -75,6 +75,9 @@
       "classe": "pesada"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
       "nome": "derrubar",

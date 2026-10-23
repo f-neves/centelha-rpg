@@ -70,6 +70,9 @@
   "willpower": 3,
   "aparencia": 5,
   "ataques": [],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
       "nome": "Sentidos",

@@ -16988,7 +16988,12 @@
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
+    "corte",
+    "perfuracao",
     "impacto"
+   ],
+   "imunidades": [
+    "acido"
    ],
    "iniciativa": "1d6 + 1",
    "deslocamento": {

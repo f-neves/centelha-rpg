@@ -108,6 +108,9 @@
       "classe": "media"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
       "nome": "arrastar a presa para o mato",

@@ -61,6 +61,33 @@ const ATRIB = { 'Força': 'forca', 'Destreza': 'destreza', 'Vigor': 'vigor', 'Pe
 // ------------------------------------------------------------------ a leitura
 const sem = (s) => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 const numBR = (s) => Number(String(s).replace(/\./g, '').replace(',', '.'));
+// FRAQUEZAS, RESISTÊNCIAS E IMUNIDADES (D-195; manual §5.2, item 15). A primeira linha não
+// vazia da seção "## Elementos": "nenhum", ou "fraquezas: ... · resistências: ... ·
+// imunidades: ...", com as palavras como o livro as escreve ("ácido", "perfuração"). A
+// palavra vira id pelo rótulo (ou pelo próprio id) do elementos-vocab.json; palavra fora
+// dele para o conversor, nomeando a ficha. Saem as três listas, na ordem do vocabulário.
+const VOCAB_ELEM = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/elementos-vocab.json'), 'utf8'));
+const ORDEM_ELEM = VOCAB_ELEM.grupos.flatMap((g) => g.palavras);
+const ID_ELEM = Object.fromEntries([...ORDEM_ELEM.map((id) => [sem(id), id]), ...Object.entries(VOCAB_ELEM.rotulos).map(([id, r]) => [sem(r), id])]);
+function elementosDaFicha(arq, corpo) {
+  if (corpo == null) throw new Error(`${arq}: sem a seção "## Elementos"`);
+  const linha = (corpo.split('\n').map((l) => l.trim()).find((l) => l) || '').replace(/^-\s*/, '').replace(/\.$/, '');
+  const out = { fraquezas: [], resistencias: [], imunidades: [] };
+  if (/^nenhum$/i.test(linha)) return out;
+  for (const parte of linha.split('·')) {
+    const m = /^\s*([^:]+):\s*(.+)$/.exec(parte);
+    const campo = m && { fraquezas: 'fraquezas', resistencias: 'resistencias', imunidades: 'imunidades' }[sem(m[1]).trim()];
+    if (!campo) throw new Error(`${arq}: linha de Elementos fora do formato: "${linha}"`);
+    for (const w of m[2].split(/,|\s+e\s+/).map((x) => x.trim()).filter(Boolean)) {
+      const id = ID_ELEM[sem(w)];
+      if (!id) throw new Error(`${arq}: palavra fora do vocabulário em Elementos: "${w}"`);
+      if (Object.values(out).some((l) => l.includes(id))) throw new Error(`${arq}: "${w}" repetida em Elementos`);
+      out[campo].push(id);
+    }
+  }
+  for (const k of Object.keys(out)) out[k].sort((a, b) => ORDEM_ELEM.indexOf(a) - ORDEM_ELEM.indexOf(b));
+  return out;
+}
 function secoes(txt) {
   const out = {};
   const corpo = txt.split(/^## /m);
@@ -222,6 +249,7 @@ function converte(arq) {
       especialidades.push({ habilidade: h[1], foco: m[2], valor: Number(m[3]), origem });
     }
   }
+  const elementos = elementosDaFicha(arq, S['Elementos']);
   // Vontade, Virtudes, Aparência
   const vva = S['Vontade, Virtudes e Aparência'];
   const willpower = parseInt(celula(vva, 'Vontade').replace(/\*/g, ''), 10);
@@ -383,7 +411,7 @@ function converte(arq) {
     if (b.alvo !== alvo) aviso.push(`bloco: alvo ${b.alvo} ≠ ${alvo}`);
   } else aviso.push('sem bloco de conferência');
 
-  return { arq, id, site, imagem, imagem2, nome, nomeIngles: nomeEmIngles(celula(ident, 'Nome em inglês (D&D, Pathfinder)')), categoria, papel, centelha: Number(cent),
+  return { arq, id, site, imagem, imagem2, elementos, nome, nomeIngles: nomeEmIngles(celula(ident, 'Nome em inglês (D&D, Pathfinder)')), categoria, papel, centelha: Number(cent),
     ameaca: celula(ident, 'Ameaça') ? parseInt(celula(ident, 'Ameaça'), 10) : null,
     terreno: celula(ident, 'Terreno') ? celula(ident, 'Terreno').split(',').map((x) => TERRENO[x.trim()] ?? `?${x.trim()}`) : null,
     clima: celula(ident, 'Clima') ? celula(ident, 'Clima').split(',').map((x) => CLIMA[x.trim()] ?? `?${x.trim()}`) : null,
@@ -450,7 +478,8 @@ function montaFonte(f, todas) {
     willpower: f.willpower,
     aparencia: f.aparencia,
     ataques: f.ataques,
-    ...(velha?.resistencias ? { resistencias: velha.resistencias } : {}),
+    // D-195: as três sempre, mesmo vazias, da linha Elementos da ficha (e não da fonte velha).
+    fraquezas: f.elementos.fraquezas, resistencias: f.elementos.resistencias, imunidades: f.elementos.imunidades,
     habilidades: f.habilidades,
     ...(f.venenos.length ? { venenos: f.venenos } : {}),
     ...(f.doencas.length ? { doencas: f.doencas } : {}),

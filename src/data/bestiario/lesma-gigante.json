@@ -77,8 +77,14 @@
       "classe": "media"
     }
   ],
+  "fraquezas": [],
   "resistencias": [
+    "corte",
+    "perfuracao",
     "impacto"
+  ],
+  "imunidades": [
+    "acido"
   ],
   "habilidades": [
     {

@@ -40,7 +40,7 @@ const CUSTOM_IDS = new Set([
   })(),
   ...fs.readdirSync(p('bestiario')).filter((f) => f.endsWith('.json'))
     .map((f) => JSON.parse(fs.readFileSync(p(`bestiario/${f}`), 'utf8')))
-    .filter((c) => c.material).map((c) => c.id),
+    .filter((c) => c.material || c.v3).map((c) => c.id), // D-195: a ficha v3 traz as três listas na fonte
 ]);
 const M = TODAS.filter((m) => !CUSTOM_IDS.has(m.id));
 
@@ -125,9 +125,9 @@ const EXCECOES = {
   // Rakshasa (B14 fase 3): a fonte não sustenta imunidade total, e sim resistência a corte e
   // impacto; perfurante passa.
   'rakshasa': { resistencias: ['corte', 'impacto'] },
-  // Lesma Gigante (B14 fase 4): só armas de impacto são absorvidas pela carne (a fonte
-  // inverte a resistência de corte/perfuração para só impacto).
-  'lesma-gigante': { resistencias: ['impacto'] },
+  // (A Lesma Gigante saiu daqui com a D-195: tem ficha v3, e a linha Elementos da ficha
+  // vai direto à fonte, com resistência a impacto, corte e perfuração e imunidade a ácido.
+  // As 97 de ficha v3 não passam por este satélite; ver CUSTOM_IDS acima.)
   // Perseguidor Invisível (B14 fase 4): a fonte não sustenta resistência a corte/perfuração.
   'perseguidor-invisivel': {},
   // Elemental do Fogo Pequeno (B14 fase 4): a resistência a fogo da fonte vira imunidade

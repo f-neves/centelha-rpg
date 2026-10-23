@@ -1097,13 +1097,13 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
     const fr = c.fraquezas || [], rs = c.resistencias || [], im = c.imunidades || [];
     for (const k of [...fr, ...rs, ...im]) if (!ELEM_VOCAB.has(k)) fail(`${onde}: palavra fora do vocabulário "${k}"`);
     const choque = fr.filter((x) => rs.includes(x));
-    if (choque.length) fail(`${onde}: "${choque.join(', ')}" é fraqueza e resistência ao mesmo tempo`);
+    if (choque.length) fail(`${onde}: "${choque.join(', ')}" é fraqueza e resistência ao mesmo tempo`); for (const [nome, l] of [['fraquezas', fr], ['resistencias', rs], ['imunidades', im]]) { if (new Set(l).size !== l.length) fail(`${onde}: palavra repetida em ${nome}`); if (c.v3 && !Array.isArray(c[nome])) fail(`${onde}: ficha v3 sem a lista ${nome} (D-195: as três, mesmo vazias)`); } if (im.some((x) => rs.includes(x))) fail(`${onde}: "${im.filter((x) => rs.includes(x)).join(', ')}" é resistência e imunidade ao mesmo tempo`);
     // Imunidade e fraqueza ao mesmo tipo, pelo DADO DA CRIATURA, nunca deveriam coexistir
     // (a regra em regras.json diz que essa combinação só existe por efeito de jogo, nunca
     // pela ficha): se a ficha grava as duas, é erro de digitação, não a exceção da regra.
     const choqueImune = im.filter((x) => fr.includes(x));
     if (choqueImune.length) fail(`${onde}: "${choqueImune.join(', ')}" é fraqueza e imunidade ao mesmo tempo (só um efeito de jogo faz essa combinação, nunca a própria ficha)`);
-    if (!c.material) {
+    if (!c.material && !c.v3) { // a ficha v3 traz as três listas da linha Elementos (D-195), fora do satélite
       const s = ELE[c.id] || {};
       if (JSON.stringify(fr) !== JSON.stringify(s.fraquezas || []) || JSON.stringify(rs) !== JSON.stringify(s.resistencias || [])) {
         fail(`${onde}: fraquezas/resistências diferentes das do elementos-bestiario.json (a semente do gen-elementos.mjs). Mude as duas juntas`);
