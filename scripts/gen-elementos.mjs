@@ -82,11 +82,11 @@ const POR_TAG = {
 // elemental-da-terra-grande (B14 fase 3): saiu daqui, a ficha agora se descreve sozinha
 // (campo `material`), então o script pula ela (CUSTOM_IDS) e não pode mais citá-la aqui.
 const MATERIAL_DE = {
-  'golem-de-pedra': 'pedra', 'golem-de-argila': 'pedra',
+  'golem-de-argila': 'pedra', // golem-de-pedra saiu (ficha v3 desde a bestiario-nao-animal: a linha Elementos da ficha vai à fonte)
   'golem-de-ferro': 'metal', 'cobra-de-ferro': 'metal', 'buscador': 'metal',
   'golem-de-gelo': 'gelo',
   'golem-de-carne': 'carne animada', 'homunculus': 'carne animada',
-  'elemental-do-fogo-pequeno': 'fogo', 'salamandra': 'fogo', 'efreeti': 'fogo',
+  'salamandra': 'fogo', 'efreeti': 'fogo', // elemental-do-fogo-pequeno saiu (ficha v3 desde a bestiario-nao-animal: a linha Elementos da ficha vai à fonte)
   'elemental-da-agua-pequeno': 'agua', 'marid': 'agua',
   'elemental-da-terra-pequeno': 'terra',
   'shaitan': 'terra', 'xorn': 'terra',
@@ -98,12 +98,12 @@ const MATERIAL_DE = {
 // sopro do dragão. Cada linha tem um porquê.
 const EXCECOES = {
   'vampiro': { fraquezas: ['luz', 'sagrado', 'sol', 'prata', 'fogo'], resistencias: ['perfuracao'] },
-  'lobisomem': { fraquezas: ['prata'] },
+  // lobisomem saiu (ficha v3 desde a bestiario-nao-animal: a linha Elementos da ficha vai à fonte)
   // Bandagem e pele secas: a múmia queima como estopa
   'mumia': { fraquezas: ['luz', 'sagrado', 'fogo'], resistencias: ['perfuracao'] },
   // Osso solto: a ponta e o fio passam entre as costelas, a maça não
   'esqueleto-humano': { fraquezas: ['luz', 'sagrado'], resistencias: ['perfuracao', 'corte'] },
-  'campeao-esqueletico': { fraquezas: ['luz', 'sagrado'], resistencias: ['perfuracao', 'corte'] },
+  // campeao-esqueletico saiu (ficha v3 desde a bestiario-nao-animal: a linha Elementos da ficha vai à fonte)
   // Tronco vivo: a ponta entra e não acha órgão (perfuração), o impacto amortece na
   // madeira elástica; o corte do machado é o que funciona (B14 fase 3, decisoes-fase3.md).
   'treant': { fraquezas: ['fogo'], resistencias: ['perfuracao', 'impacto'] },
@@ -113,10 +113,10 @@ const EXCECOES = {
   // resistência (a fonte não sustenta fraqueza aqui); "imune a raio" na fonte vira
   // resistência, e o dano que a resistência cortaria pela metade vira cura na mesma
   // proporção (texto na habilidade).
-  'montao-tropecante': { resistencias: ['perfuracao', 'raio', 'fogo'] },
+  // montao-tropecante saiu (ficha v3 desde a bestiario-nao-animal: a linha Elementos da ficha vai à fonte)
   // Vinha Assassina (B14 fase 4): a fonte não sustenta fraqueza a fogo, e sim resistência
   // a fogo e frio (a planta é resistente ao clima, não sensível a ele).
-  'vinha-assassina': { resistencias: ['perfuracao', 'fogo', 'gelo'] },
+  // vinha-assassina saiu (ficha v3 desde a bestiario-nao-animal: a linha Elementos da ficha vai à fonte)
   // Cubo Gelatinoso (B14 fase 4): a fonte não dá resistência a corte/perfuração, ao
   // contrário do default da categoria Limo; sem nenhuma fraqueza/resistência de dano
   // físico (a imunidade a eletricidade da fonte não entra aqui, é `imunidades`, campo à
@@ -132,7 +132,7 @@ const EXCECOES = {
   'perseguidor-invisivel': {},
   // Elemental do Fogo Pequeno (B14 fase 4): a resistência a fogo da fonte vira imunidade
   // (campo à parte); aqui fica só a fraqueza a água.
-  'elemental-do-fogo-pequeno': { fraquezas: ['agua'] },
+  // elemental-do-fogo-pequeno saiu (ficha v3 desde a bestiario-nao-animal: a linha Elementos da ficha vai à fonte)
   // Elemental da Água Pequeno (B14 fase 4): a fraqueza a raio e a resistência a fogo não
   // vêm da fonte.
   'elemental-da-agua-pequeno': {},
@@ -148,7 +148,7 @@ const EXCECOES = {
   'grande-wyrm-vermelho': { resistencias: ['fogo'] },
   'dragao-dourado-adulto': { resistencias: ['fogo'] },
   'dragao-azul-adulto': { resistencias: ['raio'] },
-  'dragao-branco-jovem': { fraquezas: ['fogo'], resistencias: ['gelo'] },
+  // dragao-branco-jovem saiu (ficha v3 desde a bestiario-nao-animal: a linha Elementos da ficha vai à fonte)
   'linnorm-do-gelo': { fraquezas: ['fogo'], resistencias: ['gelo'] },
 };
 

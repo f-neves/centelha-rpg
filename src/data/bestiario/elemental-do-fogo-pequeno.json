@@ -5,9 +5,10 @@
   "nome": "Elemental do Fogo (Pequeno)",
   "nomeIngles": "Elemental, Fire",
   "categoria": "Elemental",
+  "categoriaLegada": "Fera",
   "papel": "soldado",
   "conceito": "exterior (fogo) Pequeno",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Fragmento de um plano onde tudo arde: corre como labareda, incendeia o que toca e só se apaga com água ou gelo.",
   "tags": [
     "elemental",
     "centelha"
@@ -15,34 +16,51 @@
   "imagem": null,
   "porte": "Pequeno",
   "dimensoes": {
-    "medida": "1,2 metro de altura, silhueta de chamas",
-    "peso": "praticamente sem peso"
+    "medida": "1,2 m de altura",
+    "peso": "sem massa (volume 0,0234 m³)",
+    "largura": 0.3,
+    "altura": 1.2
   },
   "locomocao": {
     "terra": 5
   },
+  "deslocamentoDeclarado": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+  },
   "centelha": 1,
   "attrs": {
-    "forca": 2,
+    "forca": 1,
     "destreza": 3,
     "vigor": 2,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
     "briga": 3,
     "esquiva": 1,
+    "atletismo": 2,
+    "integridade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "sobrevivencia": 1
   },
+  "especialidades": [
+    {
+      "habilidade": "atletismo",
+      "foco": "correr",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
-    "conviccao": 3,
-    "temperanca": 2,
+    "conviccao": 1,
+    "temperanca": 1,
     "valor": 3
   },
   "willpower": 6,
@@ -54,32 +72,45 @@
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
-      "tipo": "impacto",
-      "acerto": 0,
+      "tipo": "fogo",
+      "acerto": 1,
       "ticks": 5,
-      "notas": "cada acerto soma dano de fogo"
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
   "fraquezas": [
-    "agua"
+    "agua",
+    "gelo"
   ],
   "resistencias": [],
+  "imunidades": [
+    "fogo"
+  ],
   "habilidades": [
     {
       "nome": "Toque em chamas",
-      "descricao": "Seu golpe deixa a vítima queimando, sofrendo dano contínuo até que alguém apague o fogo ou o efeito passe."
+      "descricao": "Pancada flamejante: Ativação: a Pancada flamejante que fere. Duração: até alguém gastar uma ação para apagar o fogo, ou 18 Ticks. Alcance: toque. Área: um alvo. Efeito: a roupa, o cabelo ou o pelo do alvo pegam fogo. Dano: 1d6, fogo, a cada 6 Ticks enquanto queima. Resistência: corpo, contra a jogada da pancada; quem passa não pega fogo. Limite de uso: um por golpe.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Corpo incandescente",
-      "descricao": "Imune ao próprio fogo e a queimaduras, mas a água fria e o gelo o enfraquecem visivelmente."
+      "nome": "Incendeia",
+      "descricao": "Ativação: tocar ou atravessar material que queima (palha, pano, madeira seca, óleo). Duração: o fogo segue por conta própria, como fogo comum. Alcance: toque. Área: o que ele tocou. Efeito: o material pega fogo; ele não escolhe não incendiar. Dano: o do fogo comum, a critério do Mestre. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Veloz como labareda",
-      "descricao": "Corre e se espalha com rapidez incomum, quase como o próprio fogo se alastrando."
+      "nome": "feito de chama pura",
+      "descricao": "não sente cansaço, veneno nem doença; não respira, não come, não dorme.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Feito de chama pura",
-      "descricao": "Não sente cansaço, veneno ou doença; é feito de puro elemento, não de carne."
+      "nome": "veloz como labareda",
+      "descricao": "corre de alvo em alvo e se espalha pelo que queima, sem se importar com amigo ou inimigo.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um humano."
     }
   ],
   "lore": [
@@ -90,6 +121,14 @@
     {
       "titulo": "Fome de queimar",
       "texto": "Não distingue amigo de inimigo quando solto perto de algo inflamável; sua natureza é simplesmente consumir."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: sozinho, ou com quem o conjurou."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Pequeno, rápido (5 m por Tick). Bate com dano médio 3,5 de fogo e deixa o alvo queimando (1d6 a cada 6 Ticks até apagar). Incendeia palha, pano e madeira seca sem querer. Esquiva 10, Bloqueio 6, 24 PV, Impacto 3, Corte e Perfuração 1. Fogo não o fere; água e gelo passam toda a Absorção. Ilumina em volta e não se esconde."
     }
   ],
   "ecologia": {
@@ -126,7 +165,32 @@
   },
   "variantes": [],
   "ameacaLegada": 2,
-  "imunidades": [
-    "fogo"
+  "v3": {
+    "pv": 24,
+    "esquiva": 10,
+    "bloqueio": 6,
+    "defesa": 10,
+    "defesaMental": 12,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 0,
+    "pesoErguido": null,
+    "deslocamento": {
+      "terra": {
+        "batalha": 5,
+        "arranque": 8,
+        "corrida": 12
+      }
+    }
+  },
+  "notasObservacao": [
+    "`massa`: sem massa; o volume do corpo de base escalado a 1,2 m (0,0234 m³) entra no PV e na faixa como 23,6 kg **[conta]**",
+    "`forca`: 1; o site tinha 2. Com 2 o dano médio seria 4,5 **[provisório]**",
+    "`vontade`, `virtudes`: pela régua do livro, a única (decisão do autor de 22/10/2026, resposta à pergunta 2 do lote 3); a Temperança desce de 2 para 1 pelo texto do site",
+    "`toque em chamas`, `incendeia`: números sugeridos pela ficha (D-197)"
   ]
 }

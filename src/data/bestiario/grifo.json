@@ -5,83 +5,168 @@
   "nome": "Grifo",
   "nomeIngles": "Griffon",
   "categoria": "Besta mágica",
+  "categoriaLegada": "Fera",
   "papel": "fera",
   "conceito": "besta mágica Grande",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
+  "descricao": "Caça em mergulho, com a vista da águia e a força do leão. Vive em casal ou bando pequeno em ninhos de penhasco e ataca qualquer coisa que cruze o espaço aéreo dele.",
   "tags": [
     "besta-magica",
     "centelha"
   ],
   "imagem": "bestiario/grifo_criatura.webp",
-  "porte": "Grande",
+  "porte": "Enorme",
   "dimensoes": {
-    "medida": "Corpo 2,4 m, envergadura 4,5 m",
-    "peso": "230 kg"
+    "medida": "3,2 m de comprimento, 1,32 m de altura",
+    "peso": "230 kg",
+    "comprimento": 3.2,
+    "largura": 0.82,
+    "altura": 1.32,
+    "envergadura": 6.2
   },
   "locomocao": {
     "terra": 3,
     "voo": 8
   },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+  },
   "centelha": 1,
   "attrs": {
     "forca": 6,
     "destreza": 4,
-    "vigor": 6,
-    "influencia": 2,
-    "perspicacia": 1,
-    "compostura": 2,
+    "vigor": 5,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 3,
+    "influencia": 1,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
     "briga": 4,
-    "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "bloqueio": 1,
+    "esquiva": 2,
+    "atletismo": 3,
+    "furtividade": 2,
+    "integridade": 3,
+    "prontidao": 3,
+    "resistencia": 3,
+    "empatia": 2,
+    "sobrevivencia": 3
   },
+  "skills2": {
+    "equilibrio": 1,
+    "voo": 3,
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "visão",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "mergulho sobre a presa",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "integridade",
+      "foco": "defender o ninho",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
-    "conviccao": 3,
-    "temperanca": 2,
+    "conviccao": 1,
+    "temperanca": 1,
     "valor": 3
   },
-  "willpower": 6,
-  "aparencia": 5,
+  "willpower": 4,
+  "aparencia": 7,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Garras",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    },
+    {
+      "nome": "Bico",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 1,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Garras em mergulho",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 6
+      "mao": 2,
+      "tipo": "corte",
+      "ticks": 7,
+      "classe": "pesada"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Voo veloz",
-      "descricao": "desloca no ar com grande velocidade e agilidade"
+      "nome": "agarrar",
+      "descricao": "Garras: Agarrar.",
+      "classe": "livro"
     },
     {
-      "nome": "Garras de mergulho",
-      "descricao": "ataque após mergulho causa dano extra e pode Derrubar"
+      "nome": "mergulho sobre a presa",
+      "descricao": "Garras em mergulho: Investida, com a velocidade do voo, só descendo.",
+      "classe": "livro"
     },
     {
-      "nome": "Bico de águia",
-      "descricao": "ataque corpo a corpo adicional com dano moderado"
+      "nome": "derrubar",
+      "descricao": "Garras em mergulho: Derrubar, como ataque próprio. Sem regra ainda: no mergulho, o mesmo golpe que fere pode derrubar a presa.",
+      "classe": "livro"
     },
     {
-      "nome": "Visão de caçador",
-      "descricao": "detecta presas em movimento a grande distância"
+      "nome": "garra e bico",
+      "descricao": "na mesma ação, além das garras, ataca também com o bico.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "caça em dupla",
+      "descricao": "com presa grande demais para um só, o casal ataca junto, um de cada lado.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "território",
+      "descricao": "ataca qualquer coisa que cruze o espaço aéreo dele, até hipogrifos, e defende o ninho até o fim.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão: Prontidão (visão) +3, de águia: nota presa em movimento a grande distância, só com luz. · faro e audição: de felino, sem nada além do comum."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Caça em mergulho, combinando a velocidade da águia com a força do leão; é territorial ao extremo e ataca qualquer coisa, inclusive hipogrifos, que cruze seu espaço aéreo."
+      "texto": "Caça em mergulho, com a velocidade da águia e a força do leão; é territorial ao extremo e ataca qualquer coisa, inclusive hipogrifos, que cruze seu espaço aéreo. Social: casal ou bando pequeno (2 a 6)."
     },
     {
       "titulo": "Sociedade",
@@ -94,13 +179,22 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Ovos e filhotes de grifo são disputados havia gerações por cavaleiros de Calin que sonham montá-los em batalha, embora domar um adulto continue sendo tarefa de poucos e caro demais para a maioria."
+    },
+    {
+      "titulo": "Aptidões",
+      "texto": "montaria sim · carga não · tração não"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Em voo é Enorme: o humano ganha +6 no acerto contra ele, de perto ou de longe. Pousado, Grande (+3). O perigo é o mergulho: as garras em mergulho fazem em média 20 e, como Investida, mais 1d6; no chão, bico (10, 5) ou garras (8, 5). Agarra com as garras (dano 13). Esquiva 14, Bloqueio 12. 40 PV, Impacto 6, Corte e Perfuração 1. Na Faixa 4, o humano não o derruba nem o empurra com facilidade (+3 para ele). Ataca quem entra no território e não larga."
     }
   ],
   "ecologia": {
     "tipo": "Beast",
     "terreno": [
       "Mountain",
-      "Plains"
+      "Plains",
+      "Sky"
     ],
     "clima": [
       "Temperate"
@@ -133,5 +227,45 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 40,
+    "esquiva": 14,
+    "bloqueio": 12,
+    "defesa": 14,
+    "defesaMental": 12,
+    "defesaSocial": 12,
+    "absorcao": {
+      "impacto": 6,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 686.27,
+    "carga": {
+      "leve": 23,
+      "media": 46,
+      "pesada": 69,
+      "maxima": 92
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      },
+      "voo": {
+        "batalha": 8
+      }
+    }
+  },
+  "notasObservacao": [
+    "`envergadura`: 6,2 m pela proporção da águia-real, escolhida contra os 4,5 m do site pela D-187 (caso a caso, com justificativa na ficha): a asa de 4,5 m seria curta demais para a metade de águia. Com os 4,5 m a área seria cerca de 0,84 × 2,25² = 4,25 m², e o Tamanho em voo cairia para Grande; com os 7,6 m do 3.5, 12,1 m², Enorme. A física pediria 10 m ou mais (o quetzalcoatlo); o grifo voa por ser sobrenatural. A imagem do site parece mostrar a asa de 4,5 m: conferir no Visual",
+    "`pv`: na zona de transição, desceu (voador). Subindo seria 50 **[provisório]**",
+    "`segundo Tamanho`: Grande por escolha de borda (4,8% abaixo do corte); Médio seria a leitura estrita da área, como o leão **[provisório]**",
+    "`carga`: 10% do corpo, sem estrutura de carga, fator de porte 1 sem dado; um cavaleiro passa da Pesada. O texto do site diz que domar um adulto é \"tarefa de poucos\": montaria sim, com esse peso como limite **[provisório]**",
+    "`vigor`: 5, um abaixo do site, pela comparação com o leão e a tendência das aves **[provisório]**",
+    "`aparencia`: 7, como a águia e o leão; o site tinha 5",
+    "`centelha`: 1, a publicada, justificada pelo voo impossível para o corpo"
+  ]
 }

@@ -7,7 +7,7 @@
   "categoriaLegada": "Humano",
   "papel": "soldado",
   "conceito": "lâmina experiente",
-  "descricao": "Anos de guerra; lê o combate e explora aberturas.",
+  "descricao": "Soldado de muitas guerras, que lê a postura do inimigo e responde com economia. Foca quem luta sem apoio e não morre por bravura: recua quando a luta está perdida.",
   "tags": [
     "humano"
   ],
@@ -15,78 +15,176 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,78 m de altura",
-    "peso": "82 kg"
+    "peso": "82 kg",
+    "largura": 0.48,
+    "altura": 1.78
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 0,
   "attrs": {
     "forca": 3,
     "destreza": 4,
     "vigor": 3,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 2,
-    "raciocinio": 2
+    "raciocinio": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 3
   },
   "skills": {
-    "armas-uma-mao": 4,
+    "armas": 4,
+    "bloqueio": 2,
     "esquiva": 3,
-    "escudos": 2,
+    "briga": 2,
+    "arremesso": 1,
+    "atirador": 1,
+    "atletismo": 2,
+    "furtividade": 1,
+    "integridade": 5,
     "prontidao": 3,
-    "tatica": 2,
-    "integridade": 5
+    "resistencia": 3,
+    "empatia": 1,
+    "sociabilidade": 1,
+    "sobrevivencia": 2
   },
+  "skills2": {
+    "estrategia": 2,
+    "lideranca": 1,
+    "intimidacao": 1,
+    "cura": 1,
+    "halterofilismo": 1
+  },
+  "especialidades": [
+    {
+      "habilidade": "armas",
+      "foco": "contra inimigo isolado",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "armas",
+      "foco": "espada longa",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "emboscada",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "integridade",
+      "foco": "medo na batalha",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 2,
-    "conviccao": 3,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
   "willpower": 6,
   "aparencia": 4,
-  "equip": {
-    "armaduras": [
-      "malha"
-    ]
-  },
   "ataques": [
     {
       "nome": "Espada longa",
       "atrib": "destreza",
-      "pericia": "armas-uma-mao",
-      "dado": 2,
+      "pericia": "armas",
+      "dado": 1,
       "mao": 1,
       "tipo": "corte",
       "acerto": 1,
-      "ticks": 6
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Espada longa a duas mãos",
+      "atrib": "destreza",
+      "pericia": "armas",
+      "dado": 1,
+      "mao": 2,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Punhos",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Olho de guerra",
-      "descricao": "lê a luta e nunca é pego de surpresa fácil"
+      "nome": "derrubar",
+      "descricao": "Espada longa ou Punhos: Derrubar.",
+      "classe": "livro"
     },
     {
-      "nome": "Explora aberturas",
-      "descricao": "converte Quase Acerto do alvo em bônus de dano no contra-ataque"
+      "nome": "empurrar",
+      "descricao": "Punhos: Empurrar.",
+      "classe": "livro"
     },
     {
-      "nome": "Foco no isolado",
-      "descricao": "prioriza e ganha bônus de ataque contra quem está sem apoio"
+      "nome": "agarrar",
+      "descricao": "Punhos: Agarrar.",
+      "classe": "livro"
     },
     {
-      "nome": "Golpe calculado",
-      "descricao": "ataque básico confiável, poucos desperdícios"
+      "nome": "foco no isolado",
+      "descricao": "Especialidade Armas (contra inimigo isolado) 1; e o flanco e a Guarda sob pressão do livro contra quem luta sem apoio.",
+      "classe": "livro"
+    },
+    {
+      "nome": "olho de guerra",
+      "descricao": "Prontidão 3 e a Especialidade Prontidão (emboscada) 1; dificilmente é pego de surpresa.",
+      "classe": "livro"
+    },
+    {
+      "nome": "explora aberturas",
+      "descricao": "quando o golpe de quem o ataca passa raspando, ele aproveita a abertura e devolve um contra-ataque que fere mais.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "golpe calculado",
+      "descricao": "não desperdiça movimento; lê a postura do inimigo, espera a abertura e responde com economia.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "saber quando não lutar",
+      "descricao": "recua, cede terreno e foge se a luta está perdida; não morre por bravura.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão, audição, olfato: humanos."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Não desperdiça movimento: lê a postura do inimigo, espera a abertura e responde com economia. Anos de campanha ensinaram que bravura sem cálculo mata cedo."
+      "texto": "Não desperdiça movimento: lê a postura do inimigo, espera a abertura e responde com economia. Anos de campanha lhe ensinaram que bravura sem cálculo mata cedo. Social: sozinho ou numa companhia de soldados (típico 4 a 10)."
     },
     {
       "titulo": "Personalidade",
@@ -95,12 +193,16 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Homens assim sobraram das guerras de fronteira de Calin e das campanhas contra os horrores da Fenda no White Wall: sobreviveram por saber quando não lutar."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Humano Médio: ninguém ganha o +3 de Tamanho contra ele, e ele não ganha contra o humano. Ataca com Destreza + Armas e a espada longa (dano médio 6, 5 com uma mão, 9, 5 com as duas). De malha, absorve bem o corte (Corte 6) e mal a pancada (Impacto 4): a maça e o martelo são o caminho. De malha, Esquiva 12 e Bloqueio 11 com a espada; Defesa Mental 14, difícil de assustar por magia. 34 PV. Prefere o inimigo isolado e recua quando a luta vira."
     }
   ],
   "ecologia": {
     "tipo": "Humanoid",
     "terreno": [
-      "Urban",
+      "?Cidade",
       "Plains"
     ],
     "clima": [
@@ -118,5 +220,39 @@
     "crConf": "estimado"
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 34,
+    "esquiva": 14,
+    "bloqueio": 12,
+    "defesa": 14,
+    "defesaMental": 14,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 143.31,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    },
+    "bloqueioArma": 1
+  },
+  "notasObservacao": [
+    "`pesoErguido`: 143,31 kg pela R15 (D-184), E = (Força × 3 + Halterofilismo + Musculatura × 3) ÷ 4, com Halterofilismo 1; o `confere_etapa2.py` lê o Halterofilismo desde a nona atualização do pacote. Com Halterofilismo 0 o número seria 134,21",
+    "`halterofilismo`: 1 por julgamento (noções de quem carregou peso em campanha). Com 0 ou 2 o Peso erguido seria 134,21 ou 153,02 kg",
+    "`deslocamento`: o do site, congelado (3 · 5 · 7), pela D-190. A fórmula do personagem daria 4 · 5 · 8; anotado, não corrigido (D-170)",
+    "`estrategia`: o `tatica` do site não existe no livro; na tabela das Habilidades antigas (manual 3.5, D-190), `tatica` para Estratégia é provisório. Estratégia é conhecimento (planejar a campanha), e o que a ficha publicada descreve é ler a luta na hora, que já está em Raciocínio e Prontidão. Se o autor preferir, a linha sai e o 2 vira uma Especialidade de Prontidão **[provisório]**",
+    "`raciocinio` e `compostura`: sobem de 2 para 3 pela descrição publicada. Se o autor quiser a ficha publicada intacta nos Atributos, voltam a 2 (a Defesa Social cai para 6, a Defesa Mental para 13, a Iniciativa para 1d6 + 5, a Energia para 6) **[provisório]**",
+    "`largura`: 0,48 m nos ombros, estimada, sem fonte",
+    "`area`: 0,64 m² por formas simples; não há silhueta medida",
+    "`card e equipamento`: a cota de malha está sempre vestida (D-188). A ficha guarda nas linhas Esquiva, Bloqueio e Absorção os números sem ela, em negrito, e a frase \"Com a cota de malha: ...\" da linha Absorção dá os números com ela, que o card mostra (manual 5.2, item 7). O Bloqueio da frase é sem a espada; com ela, o card mostra 11",
+    "`explora aberturas`: parece Proeza (Quase-Acerto que vira dano), mas com Centelha 0 não há Proeza; fica sem regra ainda"
+  ]
 }

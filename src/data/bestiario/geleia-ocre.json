@@ -5,85 +5,116 @@
   "nome": "Geleia Ocre",
   "nomeIngles": "Ochre Jelly",
   "categoria": "Limo",
+  "categoriaLegada": "Fera",
   "papel": "elite",
   "conceito": "limo Grande",
-  "descricao": "Massa informe que digere tudo que toca.",
+  "descricao": "Massa amarelada que espera no escuro e cai sobre a presa: aperta, dissolve a carne e deixa os ossos limpos. Espada e lança só a dividem em duas.",
   "tags": [
     "limo",
     "centelha"
   ],
   "imagem": "bestiario/geleia-ocre_criatura.webp",
-  "porte": "Grande",
+  "porte": "Médio",
   "dimensoes": {
-    "medida": "15 cm de altura em repouso, alastrando-se muito mais quando ativa",
-    "peso": "230 kg"
+    "medida": "0,76 m de comprimento, 0,76 m de altura",
+    "peso": "230 kg",
+    "comprimento": 0.76,
+    "largura": 0.76,
+    "altura": 0.76
   },
   "locomocao": {
     "terra": 1,
     "escalada": 1
   },
+  "deslocamentoDeclarado": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+  },
   "centelha": 1,
   "attrs": {
     "forca": 5,
-    "destreza": 0,
+    "destreza": 1,
     "vigor": 8,
-    "influencia": 0,
-    "perspicacia": 0,
-    "compostura": 0,
-    "percepcao": 0,
+    "percepcao": 1,
     "inteligencia": 0,
-    "raciocinio": 0
+    "raciocinio": 1,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
-    "briga": 5,
-    "esquiva": 0,
-    "prontidao": 0,
-    "integridade": 2
+    "briga": 4,
+    "furtividade": 2
   },
+  "skills2": {
+    "escalada": 2,
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "briga",
+      "foco": "Agarrão",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
-    "compaixao": 0,
+    "compaixao": 1,
     "conviccao": 1,
     "temperanca": 1,
-    "valor": 2
+    "valor": 6
   },
-  "willpower": 6,
+  "willpower": 3,
   "aparencia": 1,
   "ataques": [
     {
       "nome": "Pseudópode",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
-      "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 6
+      "tipo": "acido",
+      "ticks": 6,
+      "classe": "media"
     }
   ],
-  "resistencias": [
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [
+    "raio",
     "corte",
     "perfuracao"
   ],
   "habilidades": [
     {
-      "nome": "Sentido cego",
-      "descricao": "Percebe o ambiente ao redor sem depender de olhos, o que compensa sua quase completa cegueira."
-    },
-    {
-      "nome": "Corpo imune a golpes cortantes e perfurantes",
-      "descricao": "Armas de corte, de perfuração e eletricidade não a ferem, apenas a fazem se dividir; nada que afete a mente a atinge."
-    },
-    {
-      "nome": "Divisão",
-      "descricao": "Ao ser cortada, perfurada ou eletrocutada, racha-se em duas massas idênticas, cada uma com metade da vitalidade da original, até ficarem pequenas demais para se dividir de novo."
-    },
-    {
-      "nome": "Ácido que só dissolve carne",
-      "descricao": "Seu toque secreta um ácido que corrói apenas tecido vivo, deixando ossos e materiais inertes intactos."
+      "nome": "agarrar",
+      "descricao": "Pseudópode: Agarrar.",
+      "classe": "livro"
     },
     {
       "nome": "Abraço constritor",
-      "descricao": "Agarra e aperta a vítima continuamente, somando o ácido ao esmagamento."
+      "descricao": "Pseudópode: Ativação: a cada 6 Ticks em que mantém o agarrão. Duração: enquanto agarra. Alcance: toque. Área: quem está agarrado. Efeito: aperta e dissolve ao mesmo tempo, sem precisar de nova jogada de ataque. Dano: 1d6 + Força + Centelha, ácido. Resistência: nenhum; quem se solta do agarrão para de sofrer. Limite de uso: um alvo por vez.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Ácido que só dissolve carne",
+      "descricao": "Ativação: o ácido dela em contato com o que for. Duração: enquanto toca. Alcance: toque. Área: o que ela toca. Efeito: dissolve pele, carne, couro e madeira viva; não corrói osso, pedra, metal nem pano seco, e a armadura de metal fica inteira. Dano: o do Pseudópode e o do Abraço constritor. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Divisão",
+      "descricao": "Ativação: um golpe de corte, de perfuração ou de raio que a acertaria. Duração: permanente. Alcance: o próprio corpo. Área: ela mesma. Efeito: não sofre dano desse golpe e se racha em duas geleias iguais, cada uma com metade dos PV que tinha (arredondado para baixo), que agem cada uma na sua vez. Dano: nenhum. Resistência: nenhum. Limite de uso: não se divide com 10 PV ou menos; com isso, o golpe só não a fere.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "espera no teto",
+      "descricao": "sobe pela parede, se espalha no teto ou numa poça escura e cai sobre quem passa; não foge.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "sentido cego: percebe pelo tato e pela vibração tudo o que se move a até 18 m, sem olhos; não é enganada por escuro nem por invisibilidade."
     }
   ],
   "lore": [
@@ -94,6 +125,14 @@
     {
       "titulo": "Costume funerário sombrio",
       "texto": "Certos povos seguem um rito antigo de selar cadáveres com uma dessas criaturas dentro de sarcófagos, deixando-a dissolver a carne até restar apenas um esqueleto polido."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitária."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio quando rola, Grande quando se espalha. Lenta (1 m por Tick) e fácil de acertar (Esquiva e Bloqueio 2), mas espada, lança, flecha e raio não a ferem: a dividem em duas, cada uma com metade dos PV. Maça, fogo e gelo funcionam. Bate com ácido (dano médio 9, 5), agarra e segue dissolvendo a cada 6 Ticks. O ácido não estraga metal nem osso. 62 PV, Impacto 9. Não tem mente: medo e conversa não servem."
     }
   ],
   "ecologia": {
@@ -130,5 +169,34 @@
     "crConf": "conhecido"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 62,
+    "esquiva": 2,
+    "bloqueio": 2,
+    "defesa": 2,
+    "defesaMental": null,
+    "defesaSocial": null,
+    "absorcao": {
+      "impacto": 9,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 463,
+    "deslocamento": {
+      "terra": {
+        "batalha": 1,
+        "arranque": 2,
+        "corrida": 2
+      }
+    }
+  },
+  "notasObservacao": [
+    "`tamanho`: Médio pela bola ativa, na borda de 5% do corte de 0,45 m²; Grande espalhada. O site dizia Grande **[conta]**",
+    "`pv`: 62 na zona de transição, pelo \"robusto sobe\"; com \"frágil desce\" seria 49",
+    "`imunidades`: corte, perfuração e raio, pela Divisão; o site gravava `resistencias: corte, perfuracao` e não tinha raio no campo, só no texto. A perfuração está no texto do site e na fonte dele (Pathfinder); se o autor preferir a versão do 5e (corte e raio), a perfuração volta para resistência e sai da Divisão **[provisório]**",
+    "`divisão`, `abraço constritor`, `ácido`: números sugeridos pela ficha (D-197). O piso de 10 PV para a Divisão é meu",
+    "`briga`: 4; o site tinha 5 **[provisório]**"
+  ]
 }

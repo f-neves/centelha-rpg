@@ -12,7 +12,7 @@
 // ficha diz entra como está, só sem as marcas de trabalho (manual §7.5).
 import fs from 'node:fs';
 import path from 'node:path';
-import { execFileSync } from 'node:child_process'; import { bonusDaArma, defesaComArma, formasDaFicha } from './lib-ficha-v3.mjs';
+import { execFileSync } from 'node:child_process'; import { bonusDaArma, defesaComArma, formasDaFicha, jogadaDoAtaque, artesDaFicha } from './lib-ficha-v3.mjs';
 
 const arg = (n) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : null; };
 const RAIZ = arg('--raiz') || path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
@@ -61,6 +61,13 @@ const ATRIB = { 'Força': 'forca', 'Destreza': 'destreza', 'Vigor': 'vigor', 'Pe
 // ------------------------------------------------------------------ a leitura
 const sem = (s) => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 const numBR = (s) => Number(String(s).replace(/\./g, '').replace(',', '.'));
+// AS HABILIDADES DO LIVRO (criaturas não animais): além das 17 do animal, toda Habilidade de
+// habilidades.json (vai em skills) e de habilidades-secundarias.json (em skills2), pelo nome.
+// Armas, Atirador, Ocultismo, Intimidação, Acerto Arcano e as outras. As do animal não mudam.
+for (const [arquivo, campo] of [['habilidades.json', 'skills'], ['habilidades-secundarias.json', 'skills2']]) {
+  const lista = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data', arquivo), 'utf8'));
+  for (const h of (Array.isArray(lista) ? lista : Object.values(lista))) if (h && h.nome && !HAB[sem(h.nome)]) HAB[sem(h.nome)] = [campo, h.id];
+}
 // FRAQUEZAS, RESISTÊNCIAS E IMUNIDADES (D-195; manual §5.2, item 15). A primeira linha não
 // vazia da seção "## Elementos": "nenhum", ou "fraquezas: ... · resistências: ... ·
 // imunidades: ...", com as palavras como o livro as escreve ("ácido", "perfuração"). A
@@ -68,6 +75,13 @@ const numBR = (s) => Number(String(s).replace(/\./g, '').replace(',', '.'));
 // dele para o conversor, nomeando a ficha. Saem as três listas, na ordem do vocabulário.
 const VOCAB_ELEM = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/elementos-vocab.json'), 'utf8'));
 const ORDEM_ELEM = VOCAB_ELEM.grupos.flatMap((g) => g.palavras);
+// O Tipo do dano (manual §5.2, item 8): além dos três físicos, toda palavra do vocabulário de elementos
+// ("fogo", "ácido") e o "fenômeno" (o dano que a armadura não absorve, só a Centelha; C-008, C-041).
+// O "eletricidade" do poraque fica, de antes; o manual pede a palavra "raio" (relato da rodada).
+for (const id of ORDEM_ELEM) TIPO_DANO[id] ??= id;
+TIPO_DANO.fenomeno = 'fenomeno';
+const CLASSES = { leve: 'leve', media: 'media', haste: 'haste', pesada: 'pesada', distancia: 'distancia', arremesso: 'arremesso' };
+const ARTES_IDS = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/artes.json'), 'utf8')).map((a) => a.id);
 const ID_ELEM = Object.fromEntries([...ORDEM_ELEM.map((id) => [sem(id), id]), ...Object.entries(VOCAB_ELEM.rotulos).map(([id, r]) => [sem(r), id])]);
 function elementosDaFicha(arq, corpo) {
   if (corpo == null) throw new Error(`${arq}: sem a seção "## Elementos"`);
@@ -246,14 +260,25 @@ function converte(arq) {
     if (!origem) continue;
     blocosEsp++;
     for (const l of bloco.split('\n').filter((x) => /^- /.test(x))) {
-      const m = /^- ([A-Za-zÀ-ú]+) \(([^)]+)\) \+?(\d+)/.exec(l);
-      if (!m) continue; // "nenhuma.", "A ... de hoje sai", "Sem Resistência (frio)": texto de trabalho
-      const h = HAB[sem(m[1])];
-      if (!h) { aviso.push(`Especialidade com Habilidade desconhecida: ${l.slice(0, 50)}`); continue; }
-      especialidades.push({ habilidade: h[1], foco: m[2], valor: Number(m[3]), origem });
+      // "- Armas (espada longa) +1; Bloqueio (escudo) +1.": cada pedaço é uma Especialidade
+      for (const parte of l.slice(2).split(';')) {
+        // o nome é uma ou mais palavras com maiúscula ("Acerto Arcano"); "A Resistência (Fôlego) ... de hoje sai" não casa
+        const m = /^\s*([A-ZÀ-Ú][a-zà-ú]+(?: [A-ZÀ-Ú][a-zà-ú]+)*) \(([^)]+)\) \+?(\d+)/.exec(parte);
+        if (!m) continue; // "nenhuma.", "A ... de hoje sai", "Sem Resistência (frio)": texto de trabalho
+        const h = HAB[sem(m[1])];
+        if (!h) { aviso.push(`Especialidade com Habilidade desconhecida: ${parte.trim().slice(0, 50)}`); continue; }
+        especialidades.push({ habilidade: h[1], foco: m[2], valor: Number(m[3]), origem });
+      }
     }
   }
   const elementos = elementosDaFicha(arq, S['Elementos']);
+  // Artes e Mana (D-196; manual §5.2): "nenhuma" ou "morte 6 · fogo 4"; a Mana é o número em negrito.
+  let artes = null;
+  try { artes = artesDaFicha(celula(ident, 'Artes'), ARTES_IDS); } catch (e) { throw new Error(`${arq}: ${e.message}`); }
+  const manaTxt = celula(ident, 'Mana');
+  const mana = manaTxt == null || /^não tem/i.test(manaTxt.replace(/\*/g, '').trim()) ? null : negrito(manaTxt);
+  if (manaTxt != null && mana == null && !/^não tem/i.test(manaTxt.replace(/\*/g, '').trim())) throw new Error(`${arq}: Mana sem número: "${manaTxt}"`);
+  if ((artes == null) !== (mana == null)) throw new Error(`${arq}: Artes e Mana não concordam (Artes ${artes ? 'tem' : 'nenhuma'}, Mana ${mana ?? 'não tem'})`);
   // Vontade, Virtudes, Aparência
   const vva = S['Vontade, Virtudes e Aparência'];
   const willpower = parseInt(celula(vva, 'Vontade').replace(/\*/g, ''), 10);
@@ -277,13 +302,24 @@ function converte(arq) {
   const alt = medida('Altura');
   const dimensoes = {
     medida: [comp ? `${String(comp).replace('.', ',')} m de comprimento` : null, alt ? `${String(alt).replace('.', ',')} m de altura` : null].filter(Boolean).join(', ') || 'sem medida',
-    peso: massaTxt ? massaTxt.trim() : 'sem peso',
+    // "**sem massa** · volume **0,079 m³**": o card diz que não tem massa e mostra o volume
+    peso: /^sem massa$/i.test((massaTxt || '').trim())
+      ? `sem massa${(/volume\s*\*\*([^*]+)\*\*/.exec(celula(corpoPorte, 'Massa') || '') || [])[1] ? ` (volume ${(/volume\s*\*\*([^*]+)\*\*/.exec(celula(corpoPorte, 'Massa')))[1].trim()})` : ''}`
+      : massaTxt ? massaTxt.trim() : 'sem peso',
     ...(comp ? { comprimento: comp } : {}), ...(medida('Largura') ? { largura: medida('Largura') } : {}),
     ...(alt ? { altura: alt } : {}), ...(medida('Envergadura') ? { envergadura: medida('Envergadura') } : {}),
   };
   // Corpo e movimento: os números prontos (decisoes-etapa-6.md §3)
   const absTxt = celula(mov, 'Absorção') || '';
   const impacto = Number((/Impacto\s*\*\*(\d+)\*\*/.exec(absTxt) || [])[1]);
+  // Corte e Perfuração: o número da ficha, antes da frase do equipamento ("Com o peitoral ...");
+  // os animais escrevem "a definir" e ficam com o valor do Impacto (decisoes-etapa-6.md §3).
+  const absNatural = absTxt.split(/\bCom (?:o|a|os|as) /)[0];
+  const corteN = /Corte\s*\*\*(\d+)\*\*/.exec(absNatural), perfN = /Perfuração\s*\*\*(\d+)\*\*/.exec(absNatural);
+  // "**não ergue**" (Peso erguido) e "**imune**" (Defesa Mental e Social) são nulos que a ficha decide
+  const declara = (rot, re) => re.test(String(celula(mov, rot) || '').replace(/\*/g, '').trim());
+  const naoErgue = declara('Peso erguido', /^não ergue\b/i);
+  const imuneMental = declara('Defesa Mental', /^imune\b/i), imuneSocial = declara('Defesa Social', /^imune\b/i);
   const couracaNivel = Number((/Couraça\s*\*{0,2}\s*nível\s*(\d+)/i.exec(absTxt) || [])[1] ?? 0);
   const esquiva = negrito(celula(mov, 'Esquiva')), bloqueio = negrito(celula(mov, 'Bloqueio'));
   const cargaTxt = celula(mov, 'Carga') || '';
@@ -305,13 +341,14 @@ function converte(arq) {
     esquiva, bloqueio, defesa: Math.max(esquiva ?? 0, bloqueio ?? 0),
     defesaMental: negrito(celula(mov, 'Defesa Mental')),
     defesaSocial: negrito(celula(mov, 'Defesa Social')),
-    absorcao: { impacto, corte: impacto, perfuracao: impacto },
+    absorcao: { impacto, corte: corteN ? Number(corteN[1]) : impacto, perfuracao: perfN ? Number(perfN[1]) : impacto },
     couracaNivel,
-    pesoErguido: negrito(celula(mov, 'Peso erguido')),
+    pesoErguido: naoErgue ? null : negrito(celula(mov, 'Peso erguido')),
     ...(carga ? { carga } : {}),
     deslocamento,
   };
-  for (const [k, v] of Object.entries(v3)) if (v == null || Number.isNaN(v)) aviso.push(`v3.${k} sem valor`);
+  const nuloDeclarado = { pesoErguido: naoErgue, defesaMental: imuneMental, defesaSocial: imuneSocial };
+  for (const [k, v] of Object.entries(v3)) if ((v == null || Number.isNaN(v)) && !nuloDeclarado[k]) aviso.push(`v3.${k} sem valor`);
   // OS MODOS QUE A FICHA DECIDE (decisoes-etapa-6.md §9, item 11): número decide; "não",
   // "não tem", "não se aplica" decidem que o modo não existe; "[sem dado]", "não entra
   // na conta", "texto" e "sem número" não decidem, e o modo de hoje fica. Valor `null`
@@ -330,6 +367,7 @@ function converte(arq) {
   const col = (...n) => n.map((x) => atq.cab.indexOf(x)).find((i) => i >= 0);
   const ataques = [];
   const semDano = []; // a Língua da rã: não é ataque (decisoes-etapa-6.md §9, item 2)
+  const jogadaPorParte = {};
   // O Bloqueio da ficha vem SEM a arma desde a D-190 ("o Bloqueio sem a arma, que o card
   // soma"): o bônus sai da coluna "Bloqueia como arma" ("sim, +1", "sim (+1; ...)",
   // "sim, Defesa +2"), o maior entre os ataques, e a Defesa do card soma. Sem número, 0.
@@ -349,12 +387,26 @@ function converte(arq) {
     const menos = /[−-]\s*(\d+)/.exec(lado.replace(/\d+d6/, ''));
     const mais = !/Força/.test(lado) && /\+\s*(\d+)/.exec(lado.replace(/\d+d6/, ''));
     const tipo = TIPO_DANO[tipoTxt];
-    if (!tipo) aviso.push(`ataque com tipo desconhecido: ${nomeA} (${r[col('Tipo')]})`);
+    // Tipo fora do que o manual aceita (§5.2, item 8: Impacto, Corte, Perfuração, palavra do vocabulário, "fenômeno") para.
+    if (!tipo) throw new Error(`${arq}: ataque "${nomeA}": Tipo "${r[col('Tipo')]}" fora do que o manual aceita`);
     const nivel = /N(\d+)/.exec(r[col('Nível de Perfuração', 'Nível')] || '');
     const acerto = parseInt((r[col('Acerto')] || '0').replace(/[^\d-]/g, ''), 10) || 0;
-    const classe = { leve: 'leve', 'média': 'media', media: 'media', pesada: 'pesada' }[sem(r[col('Classe')]).trim()] ?? null;
+    // A Classe: as seis do armas.json; Distância e Arremesso são ataque à distância. Classe que não existe para.
+    const classeTxt = sem(r[col('Classe')] || '').trim();
+    const classe = CLASSES[classeTxt] ?? null;
+    if (classeTxt && !classe) throw new Error(`${arq}: ataque "${nomeA}": Classe "${r[col('Classe')]}" não existe no armas.json`);
+    // A jogada ("Jogada: Destreza 3 + Armas 3", na Justificativa). Sem ela, a da linha de antes com a mesma
+    // arma ("espada longa (duas mãos)" segue "espada longa (uma mão)"); sem nenhuma, Força + Briga, como no animal.
+    const parteBase = sem(r[col('Parte')] || '').replace(/\s*\(.*$/, '').trim();
+    const jg = jogadaDoAtaque(r[col('Justificativa')] || '');
+    let atrib = 'forca', pericia = 'briga';
+    if (jg) {
+      atrib = ATRIB[jg.atributo]; pericia = HAB[sem(jg.habilidade)]?.[1];
+      if (!atrib || !pericia) throw new Error(`${arq}: ataque "${nomeA}": a jogada "${jg.atributo} + ${jg.habilidade}" tem Atributo ou Habilidade que não existe`);
+      jogadaPorParte[parteBase] = { atrib, pericia };
+    } else if (jogadaPorParte[parteBase]) ({ atrib, pericia } = jogadaPorParte[parteBase]);
     ataques.push({
-      nome: nomeA, atrib: 'forca', pericia: 'briga', dado: Number(dado[1]),
+      nome: nomeA, atrib, pericia, dado: Number(dado[1]),
       ...(/Força\s*×\s*2/.test(danoTxt) ? { mao: 2 } : { mao: 1 }),
       tipo: tipo || tipoTxt,
       ...(acerto ? { acerto } : {}),
@@ -365,6 +417,7 @@ function converte(arq) {
       // feita ("1d6 − 2 + 2 = 1d6"), em que o lado direito é o final; com Força 0 não muda nada
       ...(!/Força/.test(lado) && (attrs.forca > 0 || danoTxt.includes('=')) ? { forca: false } : {}),
       ...(classe ? { classe } : {}),
+      ...(classe === 'distancia' ? { distancia: true } : classe === 'arremesso' ? { distancia: true, arremesso: true } : {}),
     });
   }
   // Manobras e Sentidos (decisoes-etapa-6.md §4 e §5)
@@ -421,7 +474,7 @@ function converte(arq) {
     if (b.alvo !== alvo) aviso.push(`bloco: alvo ${b.alvo} ≠ ${alvo}`);
   } else aviso.push('sem bloco de conferência');
 
-  return { arq, id, site, imagem, imagem2, elementos, transforma, nome, nomeIngles: nomeEmIngles(celula(ident, 'Nome em inglês (D&D, Pathfinder)')), categoria, papel, centelha: Number(cent),
+  return { arq, id, site, imagem, imagem2, elementos, transforma, artes, mana, nome, nomeIngles: nomeEmIngles(celula(ident, 'Nome em inglês (D&D, Pathfinder)')), categoria, papel, centelha: Number(cent),
     ameaca: celula(ident, 'Ameaça') ? parseInt(celula(ident, 'Ameaça'), 10) : null,
     terreno: celula(ident, 'Terreno') ? celula(ident, 'Terreno').split(',').map((x) => TERRENO[x.trim()] ?? `?${x.trim()}`) : null,
     clima: celula(ident, 'Clima') ? celula(ident, 'Clima').split(',').map((x) => CLIMA[x.trim()] ?? `?${x.trim()}`) : null,
@@ -490,6 +543,7 @@ function montaFonte(f, todas) {
     ataques: f.ataques,
     // D-195: as três sempre, mesmo vazias, da linha Elementos da ficha (e não da fonte velha).
     fraquezas: f.elementos.fraquezas, resistencias: f.elementos.resistencias, imunidades: f.elementos.imunidades, ...(f.transforma ? { transforma: f.transforma } : {}),
+    ...(f.artes ? { arte: f.artes } : {}), ...(f.mana != null ? { mana: f.mana } : {}), // D-196
     habilidades: f.habilidades,
     ...(f.venenos.length ? { venenos: f.venenos } : {}),
     ...(f.doencas.length ? { doencas: f.doencas } : {}),

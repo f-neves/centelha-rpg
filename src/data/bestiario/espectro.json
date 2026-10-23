@@ -5,9 +5,10 @@
   "nome": "Espectro",
   "nomeIngles": "Spectre",
   "categoria": "Morto-vivo",
+  "categoriaLegada": "Fera",
   "papel": "elite",
   "conceito": "morto-vivo Médio (incorpóreo)",
-  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "descricao": "Alma presa ao mundo pelo próprio ódio: voa através das paredes, persegue os vivos sem descanso e drena a força de quem toca. As armas comuns mal o ferem.",
   "tags": [
     "morto-vivo",
     "centelha",
@@ -17,8 +18,10 @@
   "imagem": null,
   "porte": "Médio",
   "dimensoes": {
-    "medida": "1,8 m de altura, silhueta humanoide flutuante",
-    "peso": "sem peso, forma incorpórea"
+    "medida": "1,8 m de altura",
+    "peso": "sem massa (volume 0,079 m³)",
+    "largura": 0.45,
+    "altura": 1.8
   },
   "locomocao": {
     "voo": 8
@@ -28,72 +31,52 @@
     "forca": 0,
     "destreza": 5,
     "vigor": 5,
-    "influencia": 5,
-    "perspicacia": 5,
-    "compostura": 5,
     "percepcao": 4,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5
   },
   "skills": {
     "briga": 5,
     "esquiva": 1,
-    "prontidao": 2,
-    "integridade": 5
+    "furtividade": 4,
+    "integridade": 5,
+    "prontidao": 3
   },
+  "skills2": {
+    "intimidacao": 3,
+    "voo": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "atravessando paredes",
+      "valor": 2,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 4,
+    "compaixao": 2,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
   "willpower": 9,
   "aparencia": 2,
-  "arte": {
-    "morte": 3,
-    "espirito": 3
-  },
   "ataques": [
     {
       "nome": "Toque dilacerante",
-      "atrib": "influencia",
+      "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
-      "tipo": "necrótico (vs Def. Mental)",
+      "tipo": "fenomeno",
+      "acerto": 1,
       "ticks": 5,
-      "notas": "atravessa matéria; resiste a corte, impacto e perfuração (dano pela metade), arma comum ainda fere"
-    }
-  ],
-  "poderes": [
-    {
-      "id": "dreno-de-nivel",
-      "nome": "Dreno de nível",
-      "tipo": "natural",
-      "base": {
-        "arte": "morte",
-        "nivel": 3
-      },
-      "resiste": "corpo",
-      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-      "usos": {
-        "periodo": "golpe"
-      },
-      "ataque": "Toque dilacerante"
-    },
-    {
-      "id": "voo-e-incorporeo",
-      "nome": "Voo e incorpóreo",
-      "tipo": "natural",
-      "base": {
-        "arte": "espirito",
-        "nivel": 3
-      },
-      "resiste": "nenhum",
-      "efeito": "Voo e incorpóreo",
-      "usos": {
-        "periodo": "avontade"
-      }
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
   "fraquezas": [
@@ -102,43 +85,70 @@
   ],
   "resistencias": [
     "corte",
-    "impacto",
-    "perfuracao"
+    "perfuracao",
+    "impacto"
   ],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Incorpóreo",
-      "descricao": "ignora armaduras físicas, atravessa paredes e obstáculos"
+      "nome": "toque que atravessa",
+      "descricao": "Toque dilacerante: o dano é fenômeno; a armadura do alvo não absorve, só a Centelha dele.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Voo e incorpóreo",
+      "descricao": "poder natural (base Espírito 3): Ativação: nenhuma, sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: voa e atravessa paredes, portas e obstáculos; não agarra, não empurra e não pode ser agarrado nem empurrado; a arma comum ainda o fere, pela metade (Elementos). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Dreno de nível",
-      "descricao": "toque impõe penalidade duradoura em testes do alvo até ser removida por magia"
+      "descricao": "poder natural (base Morte 3): Ativação: o Toque dilacerante que fere. Duração: até ser tirado por magia de Morte ou de Proteção de nível 3 ou mais. Alcance: toque. Área: um alvo. Efeito: −1 em todas as jogadas do alvo a cada dreno que pega, até −4. Dano: nenhum além do toque. Resistência: corpo, contra a jogada do toque; quem passa não sofre o dreno daquele toque. Limite de uso: um por golpe.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Voo veloz",
-      "descricao": "desloca-se voando em alta velocidade mesmo perseguindo fugitivos"
+      "nome": "Regenera com o dreno",
+      "descricao": "Ativação: o Dreno de nível que pega. Duração: instantânea. Alcance: toque. Área: ele mesmo. Efeito: a força roubada fecha as feridas dele. Dano: nenhum; cura 1d6 PV do espectro. Resistência: nenhum. Limite de uso: um por dreno.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Cria espectros",
+      "descricao": "Ativação: a vítima morre com pelo menos um dreno de nível. Duração: permanente. Alcance: o corpo da vítima. Área: um corpo. Efeito: a alma se ergue como espectro no fim da cena, sob o comando dele, até ele ser destruído; então fica livre. Dano: nenhum. Resistência: nenhum. Limite de uso: um por vítima.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Terror sepulcral",
-      "descricao": "presença próxima força teste de Vontade; falha deixa Abalado"
-    },
-    {
-      "nome": "Regenera-se com o dreno",
-      "descricao": "recupera PV ao drenar uma vítima"
-    },
-    {
-      "nome": "Cria espectros subordinados",
-      "descricao": "vítimas mortas pelo dreno podem ressurgir sob seu comando"
+      "descricao": "Ativação: nenhuma, sempre ativo. Duração: Abalado até o fim da cena. Alcance: 9 m. Área: esfera de 9 m em volta dele. Efeito: quem entra na área pela primeira vez na cena testa contra o medo; na falha, fica Abalado. Dano: nenhum. Resistência: mente, contra Influência + Intimidação dele; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena para cada pessoa.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Frio sobrenatural",
-      "descricao": "sua aproximação é sentida como queda brusca de temperatura"
+      "descricao": "Ativação: nenhuma, sempre ativo. Duração: enquanto ele estiver perto. Alcance: 9 m. Área: esfera de 9 m em volta dele. Efeito: o ar esfria de repente, a respiração vira vapor e as chamas pequenas tremem; é o aviso de que ele chegou. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "imune a veneno e doença",
+      "descricao": "não tem corpo que se envenene ou adoeça.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "sem corpo",
+      "descricao": "não respira, não come, não dorme e não se cansa.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "caça pela parede",
+      "descricao": "atravessa a parede, toca e volta para dentro dela; persegue quem foge, voando mais rápido que qualquer corredor.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "percepção dos vivos: sente os vivos a até 30 m, através de paredes, pelo ódio que tem deles. · visão e audição: as de um humano."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Incorpóreo e implacável, persegue os vivos com uma velocidade e um ódio que não conhecem descanso nem piedade."
+      "texto": "Incorpóreo e implacável, persegue os vivos com uma velocidade e um ódio que não conhecem descanso nem piedade. Social: solitário, ou com os espectros que criou."
     },
     {
       "titulo": "Personalidade",
@@ -151,6 +161,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Os sacerdotes da Ceifadora ensinam que um espectro nasce quando uma alma morre com tanto ódio que a própria deusa da morte se recusa a recebê-la, deixando-a presa entre o mundo e o além. É considerada a mais pura expressão de uma Centelha que apodreceu por dentro."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, voa a 8 m por Tick e atravessa paredes. Acerta o toque com facilidade e a armadura não ajuda: só a Centelha de quem é tocado absorve (dano médio 5, 5). Cada toque que fere deixa uma penalidade que se acumula e não sai sem magia. Esquiva 14, Bloqueio 10; Defesa Mental 26: quase não se assusta nem se engana. Corte, perfuração e impacto fazem metade, depois da armadura; luz e golpe sagrado passam toda a Absorção. 40 PV, Impacto 9, Corte e Perfuração 4. Quem chega perto testa a Vontade contra o terror. Quem morre pelo dreno pode voltar como espectro."
     }
   ],
   "ecologia": {
@@ -192,5 +206,31 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 40,
+    "esquiva": 14,
+    "bloqueio": 10,
+    "defesa": 14,
+    "defesaMental": 26,
+    "defesaSocial": 10,
+    "absorcao": {
+      "impacto": 9,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 0,
+    "pesoErguido": null,
+    "deslocamento": {
+      "voo": {
+        "batalha": 8
+      }
+    }
+  },
+  "notasObservacao": [
+    "`massa`: sem massa; o volume do corpo de base (0,079 m³) entra no PV e nas faixas como 80 kg. Com qualquer volume humano (de 0,06 a 0,10 m³) o PV seria o mesmo (Faixa de 35 a 220 kg) **[conta]**",
+    "`vigor`: 5, o do site; para a alma sem corpo o Vigor mede o quanto ela aguenta antes de se desfazer **[provisório]**",
+    "`ataque`: o \"vs Def. Mental\" e a Influência do site saíram; a jogada é a comum. Se o autor quiser o toque contra a Defesa Mental, é regra nova",
+    "`tipo do dano`: \"fenômeno\" não é um dos três tipos (Impacto, Corte, Perfuração); o card pode não saber ler. Ver o relato"
+  ]
 }

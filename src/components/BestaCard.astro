@@ -44,7 +44,9 @@ const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
 // ataque: "7d6+2 +8" → "7d6 +2 +8"; dano: tipo por extenso → sigla (I)/(C)/(P)
 const DANO_AB: Record<string, string> = { impacto: '(I)', corte: '(C)', perfurante: '(P)' };
 const fmtPool = (s: string) => String(s || '').replace(/(\d+d6)\+/, '$1 +');
-const fmtDano = (s: string) => String(s || '').replace(/\b(impacto|corte|perfurante)\b/g, (m) => DANO_AB[m]);
+// o Tipo fora dos três (manual §5.2, item 8): "fenômeno" e a palavra do vocabulário, pelo rótulo ("Ácido", "Fogo")
+const fmtDano = (s: string) => String(s || '').replace(/\b(impacto|corte|perfurante)\b/g, (m) => DANO_AB[m])
+  .replace(/\b(fenomeno|[a-z]+)$/, (m) => (m === 'fenomeno' ? 'fenômeno' : ELEM[m] ?? m));
 // Locomoção (B14 fase 4, Adendo 3 item 5): só os modos que a criatura tem, m/Tick.
 const LOCO: [string, string][] = [
   ['terra', 'Terra'], ['voo', 'Voo'], ['natacao', 'Natação'],
@@ -233,6 +235,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
                   {(i.tecnicas.length > 0 || i.artes.length > 0 || i.notas) && (<>
                     <h4>Técnicas, Artes &amp; Notas</h4>
                     {i.tecnicas.length > 0 && (<p class="ib-ref"><b>Técnicas:</b> {i.tecnicas.map((t: any, n: number) => (<>{n > 0 && ' · '}<a href={tecLink(t)}>{d.T[t]?.nome ?? t}</a></>))}</p>)}
+                    {i.mana != null && (<p class="ib-ref"><b>Mana:</b> {i.mana}</p>)}
                     {i.artes.length > 0 && (<p class="ib-ref"><b>Artes:</b> {i.artes.map((a: any, n: number) => (<>{n > 0 && ' · '}<a href={url('arcano') + '#' + a.id}>{arteNome[a.id] ?? a.id}</a> {a.nivel}</>))}</p>)}
                     {i.notas && <p class="ib-notas">{i.notas}</p>}
                   </>)}

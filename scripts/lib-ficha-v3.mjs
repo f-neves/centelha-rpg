@@ -49,6 +49,45 @@ export function formasDaFicha(valor, variantes = []) {
   return { principal: formas[0].id, formas };
 }
 
+/**
+ * A jogada de um ataque, como a ficha a escreve na Justificativa: "Jogada: Destreza 3 + Armas 3
+ * + 2 × ...", "Jogada: Percepção 4 + Atirador 4", "Jogada: Destreza + Armas, (4 + 4)". Devolve
+ * os nomes `{ atributo, habilidade }` como estão no texto, ou `null` quando não há "Jogada:".
+ * Quem chama troca os nomes pelos ids (e para se um deles não existir).
+ */
+export function jogadaDoAtaque(texto) {
+  const t = String(texto || '');
+  const m = /Jogada:\s*([A-Za-zÀ-ú]+)(?:\s+\d+)?\s*\+\s*([A-Za-zÀ-ú][A-Za-zÀ-ú ]*?)(?=\s*(?:\d|,|\(|\+|\.|$))/.exec(t)
+    // sem "Jogada:", o Atributo com o número e a Habilidade ("ataque natural a distância: Vigor 6 + Disparo")
+    ?? /\b(Força|Destreza|Vigor|Percepção|Inteligência|Raciocínio|Influência|Perspicácia|Compostura)\s+\d+\s*\+\s*([A-ZÀ-Ú][a-zà-ú]+(?: [A-ZÀ-Ú][a-zà-ú]+)*)/.exec(t);
+  return m ? { atributo: m[1], habilidade: m[2].trim() } : null;
+}
+
+/**
+ * As Artes da Identidade (D-196): "nenhuma", ou "morte 6 · fogo 4 · gelo 4 · protecao 4" (o id
+ * ou o nome, sem caixa e sem acento, e o nível de 1 a 6). Devolve `{ <id>: nivel }` ou `null`
+ * (nenhuma, ou linha ausente). Arte que não existe em `ids`, nível fora de 1 a 6, Arte repetida
+ * ou pedaço fora do formato lançam erro.
+ */
+export function artesDaFicha(valor, ids) {
+  const txt = String(valor ?? '').replace(/\*\*/g, '').trim();
+  if (!txt || /^nenhuma\b/i.test(txt)) return null;
+  const norm = (s) => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim().replace(/\s+/g, '-');
+  const conhecidos = new Map(ids.map((id) => [norm(id), id]));
+  const out = {};
+  for (const parte of txt.split(' · ')) {
+    const m = /^(.+?)\s+(\d+)$/.exec(parte.trim());
+    if (!m) throw new Error(`Artes: "${parte.trim()}" fora do formato "<Arte> <nível>"`);
+    const id = conhecidos.get(norm(m[1]));
+    if (!id) throw new Error(`Artes: "${m[1]}" não é Arte do artes.json`);
+    const nivel = Number(m[2]);
+    if (nivel < 1 || nivel > 6) throw new Error(`Artes: "${parte.trim()}" com nível fora de 1 a 6`);
+    if (out[id] != null) throw new Error(`Artes: "${id}" repetida`);
+    out[id] = nivel;
+  }
+  return out;
+}
+
 /** A Defesa do card: o maior entre a Esquiva e o Bloqueio com a arma. */
 export function defesaComArma({ esquiva, bloqueio }, bonus) {
   return Math.max(esquiva ?? 0, (bloqueio ?? 0) + bonus);

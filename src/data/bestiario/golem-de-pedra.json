@@ -3,15 +3,12 @@
   "id": "golem-de-pedra",
   "idAntigo": "mon-stone-golem",
   "nome": "Golem de Pedra",
-  "nomeIngles": "Golem, Stone",
+  "nomeIngles": "Stone Golem",
   "categoria": "Construto",
   "categoriaLegada": "Monstro",
-  "constructo": {
-    "semVida": true
-  },
   "papel": "chefe",
   "conceito": "constructo Grande",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricao": "Guardião talhado num bloco de granito, na forma que o criador escolheu. Cumpre a ordem sem pressa e sem hesitação, e a maior parte da magia não o toca.",
   "descricaoLegada": "Aberração humanoide de lendas antigas.",
   "tags": [
     "monstro",
@@ -21,80 +18,133 @@
   "porte": "Grande",
   "dimensoes": {
     "medida": "2,7 m de altura",
-    "peso": "900 kg"
+    "peso": "900 kg",
+    "largura": 0.84,
+    "altura": 2.7
   },
   "locomocao": {
     "terra": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
   },
   "centelha": 3,
   "attrs": {
     "forca": 10,
     "destreza": 2,
-    "vigor": 1,
-    "influencia": 0,
-    "perspicacia": 0,
-    "compostura": 1,
+    "vigor": 6,
     "percepcao": 2,
     "inteligencia": 0,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
-    "briga": 5,
-    "esquiva": 0,
-    "prontidao": 1,
-    "integridade": 2
+    "briga": 4,
+    "bloqueio": 2,
+    "atletismo": 1,
+    "prontidao": 2
+  },
+  "skills2": {
+    "musculatura": 3
   },
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 3,
-    "temperanca": 3,
-    "valor": 4
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 6
   },
-  "willpower": 8,
+  "willpower": 3,
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Punhos",
+      "nome": "Punho de pedra",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
       "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 6
+      "ticks": 6,
+      "classe": "media"
     }
   ],
+  "fraquezas": [],
   "resistencias": [
-    "corte",
     "fogo",
+    "corte",
     "perfuracao"
   ],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Onda de lentidão",
-      "descricao": "Pode invocar ao seu redor um campo que deixa qualquer um por perto lento por vários turnos, sem chance de resistência."
+      "nome": "agarrar",
+      "descricao": "Punho de pedra: Agarrar.",
+      "classe": "livro"
     },
     {
-      "nome": "Imunidade a magia",
-      "descricao": "Incólume à maioria das magias. Encantamentos de transmutação de pedra o afetam de forma diferente, podendo lentificá-lo ou restaurar seus ferimentos por completo."
+      "nome": "derrubar",
+      "descricao": "Punho de pedra: Derrubar.",
+      "classe": "livro"
     },
     {
-      "nome": "Casco pétreo",
-      "descricao": "Seu corpo de pedra maciça resiste bem a golpes comuns, cedendo apenas a armas de adamantina."
+      "nome": "empurrar",
+      "descricao": "Punho de pedra: Empurrar.",
+      "classe": "livro"
     },
     {
-      "nome": "Passos silenciosos",
-      "descricao": "Não fala nem produz som algum além do ranger da pedra quando se move."
+      "nome": "sem vida",
+      "descricao": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "onda de lentidão",
+      "descricao": "algumas vezes por cena, solta em volta de si um campo que deixa lento quem estiver perto por várias rodadas; quem é pego fica Retardado (as ações custam 2 Ticks a mais).",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "imune à magia",
+      "descricao": "a maior parte das Artes não o afeta; a magia que molda a pedra o afeta de outro jeito, e pode deixá-lo lento ou restaurar o corpo inteiro.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "casco pétreo",
+      "descricao": "resistência a Corte e Perfuração (metade do dano). Sem regra ainda: só a arma de adamantina o fere por inteiro.",
+      "classe": "livro"
+    },
+    {
+      "nome": "obedece ao criador",
+      "descricao": "cumpre a última ordem até o fim, sem pressa e sem hesitação; não persegue além do que guarda se a ordem não mandar.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "mudo",
+      "descricao": "não fala nem grita; só se ouve o ranger da pedra quando anda.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um guarda humano; nota quem entra no lugar guardado."
     }
   ],
   "lore": [
     {
       "titulo": "Guardião esculpido",
-      "texto": "Talhado num único bloco de granito, o golem de pedra veste a forma que seu criador escolheu, com frequência a de um guerreiro arcaico e armado."
+      "texto": "Talhado num único bloco de granito, o golem de pedra veste a forma que o criador escolheu, quase sempre a de um guerreiro arcaico."
     },
     {
       "titulo": "Inabalável",
       "texto": "Avança com passos pesados e implacáveis, sem pressa e sem hesitação, como se o tempo não lhe dissesse respeito."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande: o humano ganha +3 no corpo a corpo contra ele, e à distância também. Lento (Esquiva 4), mas apara com o corpo de pedra (Bloqueio 13 com o punho). O soco dói (dano médio 16, 5) e, com Força 10, quem tem Força 5 ou menos não consegue aparar esse golpe; quem tem Centelha de 3 para cima ignora a regra de Força. Sem mente: não se assusta, não se convence, não se encanta. Lâmina e ponta fazem metade do dano depois da armadura, e a Absorção natural dele é 3 contra elas e 9 contra pancada. 54 PV, e não se cura sozinho. A maior parte da magia não o toca, e algumas vezes por cena ele deixa lento quem está por perto."
     }
   ],
   "ecologia": {
@@ -102,7 +152,7 @@
     "terreno": [
       "Ruins",
       "Underground",
-      "Any"
+      "?qualquer"
     ],
     "clima": [
       "Temperate"
@@ -132,5 +182,39 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "v3": {
+    "pv": 54,
+    "esquiva": 4,
+    "bloqueio": 12,
+    "defesa": 13,
+    "defesaMental": null,
+    "defesaSocial": null,
+    "absorcao": {
+      "impacto": 9,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 9,
+    "pesoErguido": 1454.49,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
+      }
+    },
+    "bloqueioArma": 1
+  },
+  "notasObservacao": [
+    "`massa`: 900 kg, a publicada (D-187), o alto da faixa da conta pelo corpo de base da D-192 (1,80 m, 80 kg, 0,079 m³) e pelo granito de referência (720 a 900 kg). Com o corpo de base de 1,75 m (D-190) a faixa era de 734 a 917 kg, e no lote 1, pelo soldado, o meu número era 956 kg. A Faixa, a linha de PV e o Tamanho não mudam. A largura e o Espaço passaram de 0,91 × 0,46 m (o soldado escalado) para 0,84 × 0,35 m (os ombros e o tronco do boneco, sem os braços), e a área de 2,02 para 2,03 m²",
+    "`vigor`: 6 por julgamento (pedra maciça); o site tinha 1. Com Vigor 1 o PV seria 34 e o Impacto 4 **[provisório]**",
+    "`forca`: 10, a do site, igual à do elefante **[provisório]**",
+    "`musculatura`: 3, julgada pelo material e pela forma (manual 3.5, décima atualização do pacote: \"O golem do lote 1 já fez assim e não muda\"). Com 4 o Peso erguido iria a 1.770,80 kg; com 2, a 1.194,69 kg",
+    "`couracaNivel`: 9, o primeiro nível sem referência na escala. O autor ainda não deu exemplo de criatura sobrenatural na escala **[provisório]**",
+    "`atributos sociais`, `vontade`, `virtudes`: sociais em 1, Vontade 3 e Virtudes pelo método do animal, decididos pelo autor para toda criatura de Inteligência 0 (D-186)",
+    "`fraqueza do material`: a C-002 diz que o golem herda a fraqueza do material (`lib-materiais.mjs`, fora do pacote). O livro diz que pedra resiste a fogo (Elementos), e não dá fraqueza à pedra. A ficha não põe fraqueza",
+    "`centelha`: 3, a publicada. O manual não diz como medir a Centelha de um construto (a magia é do criador, e não dele) **[provisório]**",
+    "conferidor: desde a oitava atualização do pacote (22/10/2026) o `confere_etapa2.py` confere Impacto = Vigor + Centelha e Corte e Perfuração = Centelha; a linha de Absorção (Impacto 9, Corte e Perfuração 3) passa sem mudança"
+  ]
 }

@@ -309,7 +309,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "campones-assustado": {
   "batalha": 3,
@@ -537,7 +537,7 @@
   "arranque": 8,
   "corrida": 12,
   "ft": 50,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "devorador-de-intelecto": {
   "batalha": 4,
@@ -636,7 +636,7 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "dragao-dourado-adulto": {
   "batalha": 4,
@@ -785,7 +785,7 @@
   "arranque": 8,
   "corrida": 12,
   "ft": 50,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "enxame-de-aranhas": {
   "batalha": 1,
@@ -879,7 +879,7 @@
   "arranque": 13,
   "corrida": 18,
   "ft": 80,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 80 (perfeito): incorpóreo"
  },
  "espreitador-sombrio": {
@@ -944,7 +944,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "fenix": {
   "batalha": 3,
@@ -1008,7 +1008,7 @@
   "arranque": 2,
   "corrida": 2,
   "ft": 10,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "ghaele-azata": {
   "batalha": 5,
@@ -1036,7 +1036,7 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "gigante-da-pedra": {
   "batalha": 4,
@@ -1141,7 +1141,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "golfinho": {
   "batalha": 6,
@@ -1177,7 +1177,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "guarda-da-cidade": {
   "batalha": 3,
@@ -1206,7 +1206,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "hidra-5-cabecas": {
   "batalha": 2,
@@ -1390,7 +1390,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "lillend": {
   "batalha": 3,
@@ -1432,7 +1432,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "lobo": {
   "batalha": 7,
@@ -1611,7 +1611,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "morcego": {
   "batalha": 1,
@@ -1804,7 +1804,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 60; em terra 20"
  },
  "planetar": {
@@ -2036,7 +2036,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "sombra": {
   "batalha": 4,
@@ -2251,7 +2251,7 @@
   "arranque": 2,
   "corrida": 2,
   "ft": 5,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "vrock": {
   "batalha": 3,
@@ -2308,6 +2308,6 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  }
 }
