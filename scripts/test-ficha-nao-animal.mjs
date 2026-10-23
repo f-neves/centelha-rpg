@@ -37,7 +37,7 @@ const FICHA = `# Teste Não Animal
 | id | ${ID} | |
 | Nome | Teste Não Animal | |
 | Nome em inglês (D&D, Pathfinder) | não há ficha | |
-| Categoria · papel · Centelha | Morto-vivo · soldado · 2 | |
+| Categoria · papel · Centelha | Animal · soldado · 2 | |
 | Ameaça | 2 | |
 | Terreno | Ruínas | |
 | Clima | Temperado | |
@@ -165,12 +165,12 @@ const TSV_CAB = 'id_site\tid_definitivo\tnome_no_site\tcategoria\torigem_do_id\t
 const TSV = `${TSV_CAB}\n${ID}\t${ID}\tTeste Não Animal\tMorto-vivo\tteste\t${ID}\tNÃO\tnão\t\t\tnull\t\t\n`;
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'ficha-nao-animal-'));
-const roda = (ficha, rotulo) => {
+const roda = (ficha, rotulo, tsv = TSV) => {
   const dir = path.join(tmp, rotulo);
   fs.mkdirSync(path.join(dir, 'fichas'), { recursive: true });
   fs.mkdirSync(path.join(dir, 'saida'));
   fs.writeFileSync(path.join(dir, 'fichas', ID + '.md'), ficha);
-  fs.writeFileSync(path.join(dir, 'ids.tsv'), TSV);
+  fs.writeFileSync(path.join(dir, 'ids.tsv'), tsv);
   const r = spawnSync('node', [CONVERSOR, '--raiz', RAIZ, '--fichas', path.join(dir, 'fichas'), '--tsv', path.join(dir, 'ids.tsv'), '--saida', path.join(dir, 'saida')], { encoding: 'utf8' });
   const arq = path.join(dir, 'saida', ID + '.json');
   return { status: r.status, saida: r.stdout + r.stderr, json: fs.existsSync(arq) ? JSON.parse(fs.readFileSync(arq, 'utf8')) : null };
@@ -269,6 +269,17 @@ try {
   // Nenhuma forma parcial: a regra não muda fonte nenhuma.
   para('Nado parcial, sem a Corrida', TERRA, TERRA + '| Nado | Batalha **3** · Arranque **5** (m por Tick) | |\n', /Nado "Batalha \*\*3\*\* · Arranque \*\*5\*\*.*": velocidades "Batalha · Arranque" fora das formas/);
   para('Voo parcial, sem o Arranque', TERRA, TERRA + '| Voo | Batalha **8** · Corrida **18** (m por Tick) | |\n', /Voo "Batalha \*\*8\*\* · Corrida \*\*18\*\*.*": velocidades "Batalha · Corrida" fora das formas/);
+
+  // A categoria legada (o inimigos.json a usa como categoria): antes caía em "Fera" calada; agora sai da fonte
+  // base, e sem fonte base só a ficha "Animal" vira "Fera". Qualquer outro caso para.
+  ok(j.categoriaLegada === 'Fera', `sem fonte base, a ficha "Animal" fica com a categoria legada "Fera": ${j.categoriaLegada}`);
+  para('sem fonte base e não animal', '| Animal · soldado · 2 |', '| Morto-vivo · soldado · 2 |', /sem categoria legada \(sem fonte base, e a categoria da ficha é "Morto-vivo", não "Animal"\)/);
+  // com fonte base (o lich da ea564c19: categoria "Morto-vivo", sem categoriaLegada), a categoria legada é a da base
+  const TSV_LICH = `${TSV_CAB}\nlich\tlich\tLich\tMorto-vivo\tteste\t${ID}\tNÃO\tnão\t\t\tnull\t\t\n`;
+  const comBase = roda(FICHA.replace('| Animal · soldado · 2 |', '| Morto-vivo · soldado · 2 |'), 'com fonte base', TSV_LICH);
+  const lichArq = path.join(tmp, 'com fonte base', 'saida', 'lich.json');
+  const lich = fs.existsSync(lichArq) ? JSON.parse(fs.readFileSync(lichArq, 'utf8')) : null;
+  ok(comBase.status === 0 && lich?.categoriaLegada === 'Morto-vivo', `com fonte base sem categoriaLegada, a categoria da base: ${lich?.categoriaLegada}${comBase.status ? ' (exit ' + comBase.status + ')' : ''}`);
 
   // A jogada comum, sem frase: o corpo a corpo vai pelo maior (o animal ágil, como o gato).
   const agil = roda(FICHA.replace('| Força | 4 |', '| Força | 2 |').replace('"forca":4', '"forca":2').replace('Jogada: Força 4 + Armas 3', 'Jogada: Destreza 3 + Armas 3'), 'jogada comum pelo maior');
