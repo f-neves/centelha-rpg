@@ -5,82 +5,146 @@
   "nome": "Homem-lagarto",
   "nomeIngles": "Lizardfolk",
   "categoria": "Humanoide",
+  "categoriaLegada": "Humanoide",
   "papel": "soldado",
   "conceito": "humanoide Médio (reptiliano)",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Réptil bípede dos brejos, frio e prático, que nada sem esforço e prende o fôlego por muito tempo. Luta com maça de espigões e com a cauda, e trata os outros povos como presa ou aliado de ocasião.",
   "tags": [
     "humanoide"
   ],
   "imagem": "bestiario/homem-lagarto_criatura.webp",
   "porte": "Médio",
   "dimensoes": {
-    "medida": "1,8 m de altura (cerca de 2,4 m de comprimento com a cauda)",
-    "peso": "90 kg"
+    "medida": "2,4 m de comprimento, 1,8 m de altura",
+    "peso": "90 kg",
+    "comprimento": 2.4,
+    "largura": 0.45,
+    "altura": 1.8
   },
   "locomocao": {
     "terra": 3,
     "natacao": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 0,
   "attrs": {
     "forca": 3,
     "destreza": 2,
     "vigor": 3,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 3,
     "inteligencia": 2,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
+    "armas": 2,
     "briga": 2,
-    "esquiva": 0,
+    "bloqueio": 1,
+    "atletismo": 1,
+    "furtividade": 1,
     "prontidao": 1,
-    "integridade": 2
+    "resistencia": 2,
+    "integridade": 2,
+    "sobrevivencia": 1
   },
+  "skills2": {
+    "natacao": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "resistencia",
+      "foco": "prender a respiração",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "no alagado",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "armas",
+      "foco": "maça",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 2,
+    "compaixao": 3,
     "conviccao": 3,
-    "temperanca": 2,
+    "temperanca": 3,
     "valor": 3
   },
   "willpower": 5,
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Arma",
+      "nome": "Maça estrela",
       "atrib": "forca",
-      "pericia": "briga",
+      "pericia": "armas",
       "dado": 1,
       "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
-    }
-  ],
-  "habilidades": [
-    {
-      "nome": "Nadador nato",
-      "descricao": "nada sem penalidade e prende a respiração por longos períodos"
+      "tipo": "impacto",
+      "acerto": 1,
+      "ticks": 6,
+      "classe": "media"
     },
     {
       "nome": "Rabada",
-      "descricao": "ataque de cauda além da arma principal"
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 2,
+      "tipo": "impacto",
+      "ticks": 6,
+      "classe": "media"
+    }
+  ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
+  "habilidades": [
+    {
+      "nome": "Nadador nato",
+      "descricao": "Natação 3 e o nado do site; prende a respiração com Resistência (prender a respiração) +3.",
+      "classe": "livro"
     },
     {
-      "nome": "Atlético",
-      "descricao": "Atletismo 1; escala e salta bem"
+      "nome": "Rabada",
+      "descricao": "a Rabada da tabela, no lugar do golpe de maça (um ataque por ação).",
+      "classe": "livro"
     },
     {
       "nome": "Sobrevivente do pântano",
-      "descricao": "Sobrevivência 1; rastreia e se camufla em áreas alagadas"
+      "descricao": "Sobrevivência 1 e Furtividade (no alagado) +2.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Atlético",
+      "descricao": "Atletismo 1.",
+      "classe": "livro"
+    },
+    {
+      "nome": "caçador do brejo",
+      "descricao": "espera dentro da água, ataca de surpresa, alterna a maça e a cauda; recua para a água se a luta vira.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão, audição e olfato: os de um humano."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Frios e pragmáticos, avaliam cada situação apenas por sobrevivência e proveito, sem a noção humana de bem e mal."
+      "texto": "Frios e pragmáticos, avaliam cada situação apenas por sobrevivência e proveito, sem a noção humana de bem e mal. Social: em tribo, típico 4 a 12."
     },
     {
       "titulo": "Hábitos",
@@ -93,6 +157,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Prosperam nos brejos e deltas de Mére, onde a selva esconde tanto perigo quanto cidade escondida; para eles humanos e elfos são só mais uma presa ou aliança passageira, sem o peso das rixas antigas que outras raças carregam."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, 34 PV, Impacto 3. Defesa baixa (Bloqueio 6, 7 com a maça; Esquiva 4). Maça (dano médio 6, 5) ou cauda (9, 5). Na água, nada bem e prende o fôlego muito tempo: ataca de dentro do brejo."
     }
   ],
   "ecologia": {
@@ -132,5 +200,35 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 34,
+    "esquiva": 4,
+    "bloqueio": 6,
+    "defesa": 7,
+    "defesaMental": 9,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "couracaNivel": 2,
+    "pesoErguido": 141.3,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      },
+      "nado": 2
+    },
+    "bloqueioArma": 1
+  },
+  "notasObservacao": [
+    "`equipamento`: maça estrela do livro, sem armadura **[provisório]**",
+    "`couraca`: nível 2 pelas escamas **[provisório]**",
+    "`rabada`: Média, Força × 2 **[provisório]**",
+    "`virtudes`: Compaixão 1 e Temperança 3; o site tinha 2 e 2 **[provisório]**"
+  ]
 }

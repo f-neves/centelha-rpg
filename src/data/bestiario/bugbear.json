@@ -5,9 +5,10 @@
   "nome": "Bugbear",
   "nomeIngles": "Bugbear",
   "categoria": "Humanoide",
+  "categoriaLegada": "Humanoide",
   "papel": "soldado",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "O maior dos goblinoides, peludo e de braços compridos, que anda em silêncio apesar dos 2 m e bate forte em quem não o viu chegar.",
   "tags": [
     "humanoide"
   ],
@@ -15,32 +16,61 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "2,15 m de altura",
-    "peso": "113 kg"
+    "peso": "113 kg",
+    "largura": 0.49,
+    "altura": 2.15
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 0,
   "attrs": {
     "forca": 5,
     "destreza": 3,
     "vigor": 3,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 2,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
+    "armas": 3,
     "briga": 2,
+    "bloqueio": 1,
     "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "atletismo": 2,
+    "furtividade": 3,
+    "prontidao": 2,
+    "integridade": 2,
+    "sobrevivencia": 2
   },
+  "skills2": {
+    "intimidacao": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "passo leve",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "armas",
+      "foco": "alvo desprevenido",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 2,
-    "conviccao": 3,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
@@ -48,38 +78,50 @@
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Arma",
+      "nome": "Machado",
       "atrib": "forca",
-      "pericia": "briga",
+      "pericia": "armas",
       "dado": 1,
       "mao": 1,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "ticks": 6,
+      "classe": "media"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Furtividade surpreendente",
-      "descricao": "Furtividade 3 apesar do porte; emboscadas eficazes"
+      "nome": "Golpe surpresa",
+      "descricao": "Machado: Ativação: o golpe que acerta um alvo Surpreso ou que não o viu chegar. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o golpe entra onde o alvo não guarda. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe, só contra quem está desprevenido.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Golpe surpresa",
-      "descricao": "dano extra ao acertar um alvo desprevenido"
+      "nome": "Furtividade surpreendente",
+      "descricao": "Furtividade 3, com a Especialidade natural (passo leve) +2.",
+      "classe": "livro"
     },
     {
       "nome": "Alerta",
-      "descricao": "Prontidão 2; dificilmente é surpreendido"
+      "descricao": "Prontidão 2.",
+      "classe": "livro"
     },
     {
-      "nome": "Visão no escuro",
-      "descricao": "enxerga sem luz"
+      "nome": "caçador de emboscada",
+      "descricao": "segue a presa em silêncio, ataca primeiro de surpresa e bate no mais fraco; foge se a emboscada falha.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: enxerga sem luz (site). · audição e olfato: os de um humano."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Predadores furtivos apesar do tamanho avantajado, preferem emboscar na escuridão a enfrentar qualquer inimigo de frente."
+      "texto": "Predadores furtivos apesar do tamanho avantajado, preferem emboscar na escuridão a enfrentar qualquer inimigo de frente. Social: sozinho ou em grupo pequeno, típico 2 a 4."
     },
     {
       "titulo": "Hábitos",
@@ -92,6 +134,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Mais um ramo dos povos ásperos saídos da forja incompleta dos anões, os bugbears cresceram grandes e sorrateiros o bastante para aterrorizar sozinhos vilarejos isolados nas bordas de Mére e do The Neck."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, 34 PV, Impacto 3. Defesa baixa (Esquiva e Bloqueio 8). O machado dá dano médio 8,5, e 12 contra quem está desprevenido. O perigo é a primeira pancada da emboscada; descoberto, é um guerreiro comum."
     }
   ],
   "ecologia": {
@@ -131,5 +177,33 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 34,
+    "esquiva": 8,
+    "bloqueio": 8,
+    "defesa": 8,
+    "defesaMental": 9,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 236.22,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    }
+  },
+  "notasObservacao": [
+    "`equipamento`: machado do livro, sem armadura **[provisório]**",
+    "`armas`: 3; o site gravava `briga` 2 para a arma **[provisório]**",
+    "`furtividade`: Especialidade natural +2 pelo passo leve **[provisório]**",
+    "`golpe surpresa`: números sugeridos pela ficha (D-197)"
+  ]
 }

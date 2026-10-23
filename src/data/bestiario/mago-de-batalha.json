@@ -7,7 +7,7 @@
   "categoriaLegada": "Conjurador",
   "papel": "chefe",
   "conceito": "artilharia arcana",
-  "descricao": "Conjura fogo e força sobre o campo; perigoso a qualquer distância.",
+  "descricao": "Mago de guerra frio e calculista que abre o combate com fogo em área, se cobre com escudo de força e trata a tropa comum como escudo descartável. Perigoso a qualquer distância; frágil de perto.",
   "tags": [
     "humano",
     "centelha",
@@ -17,22 +17,29 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,75 m de altura",
-    "peso": "75 kg"
+    "peso": "75 kg",
+    "largura": 0.45,
+    "altura": 1.75
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 3,
   "attrs": {
     "forca": 2,
     "destreza": 3,
     "vigor": 3,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 5,
     "inteligencia": 5,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
     "ocultismo": 5,
@@ -42,62 +49,103 @@
     "integridade": 5
   },
   "skills2": {
-    "acerto-arcano": 5
+    "acerto-arcano": 5,
+    "concentracao": 3
   },
+  "especialidades": [
+    {
+      "habilidade": "ocultismo",
+      "foco": "magia de guerra",
+      "valor": 2,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "acerto-arcano",
+      "foco": "área",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 2,
+    "compaixao": 3,
     "conviccao": 3,
-    "temperanca": 2,
+    "temperanca": 3,
     "valor": 4
   },
   "willpower": 8,
   "aparencia": 4,
-  "arte": {
-    "fogo": 3,
-    "forcas": 2
-  },
   "ataques": [
     {
-      "nome": "Bola de fogo (Fogo 3)",
-      "atrib": "percepcao",
-      "pericia": "acerto-arcano",
-      "dado": 3,
-      "distancia": true,
-      "tipo": "fogo (área)",
-      "ticks": 6,
-      "notas": "3 Mana; explosão em área. O pool vale enquanto a pendência 25 do Arcano não fechar: área talvez não tenha pontaria"
+      "nome": "Soco",
+      "atrib": "destreza",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
+  "arte": {
+    "fogo": 4,
+    "forcas": 2
+  },
+  "mana": 14,
   "habilidades": [
     {
       "nome": "Bola de fogo",
-      "descricao": "explosão numa área; dano alto a todos dentro, metade se Esquivar"
-    },
-    {
-      "nome": "Escudo de força",
-      "descricao": "camada extra de Absorção (Forças) que bloqueia golpes até se esgotar"
-    },
-    {
-      "nome": "Concentração arcana",
-      "descricao": "se sofrer dano em corpo a corpo, arrisca perder a conjuração seguinte"
+      "descricao": "Arte Fogo 4: Bola de Fogo, explosão em área de 3d6 que pega quatro inimigos juntos; quem se esquiva leva metade; por 4 de Mana.",
+      "classe": "livro"
     },
     {
       "nome": "Raio de energia",
-      "descricao": "ataque à distância confiável que ignora cobertura leve"
+      "descricao": "Arte Fogo 1: Faísca, dardo flamejante de 1d6 num alvo, por 1 de Mana (o \"ignora cobertura leve\" do site não tem regra no livro e sai; perda anotada no relato).",
+      "classe": "livro"
+    },
+    {
+      "nome": "Labareda",
+      "descricao": "Arte Fogo 3: jato de fogo em leque, 2d6, por 3 de Mana.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Escudo de força",
+      "descricao": "Arte Forças 2: Anteparo, escudo invisível que soma Absorção contra tudo o que vem de fora enquanto durar; Repelir empurra e derruba quem chega perto.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Concentração arcana",
+      "descricao": "ao sofrer dano enquanto sustenta uma Arte, Compostura + Concentração contra Dificuldade 10 para segurar.",
+      "classe": "livro"
     },
     {
       "nome": "Grande reserva arcana",
-      "descricao": "Mana 12 sustenta múltiplas magias ativas na mesma cena"
+      "descricao": "Mana 14.",
+      "classe": "livro"
     },
     {
-      "nome": "Mantém distância",
-      "descricao": "evita corpo a corpo; reposiciona-se para conjurar com segurança"
+      "nome": "Sem inimizades naturais",
+      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
+      "classe": "livro"
+    },
+    {
+      "nome": "mantém distância",
+      "descricao": "usa o terreno e a tropa como escudo, abre com a Bola de Fogo nos que vêm juntos, se cobre com o Anteparo e repele quem chega perto.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão, audição, olfato: humanos."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Mantém distância do combate corpo a corpo, usa o terreno a seu favor e abre o confronto com rajadas de fogo e força para quebrar formações antes de qualquer aproximação."
+      "texto": "Mantém distância do combate corpo a corpo, usa o terreno a seu favor e abre o confronto com rajadas de fogo e força para quebrar formações antes de qualquer aproximação. Social: sozinho, ou com tropa a servir de escudo."
     },
     {
       "titulo": "Hábitos",
@@ -110,6 +158,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "A Supressão tornou a arte arcana tabu e temida em Calin e no The Neck, então um mago de guerra deste calibre só floresce longe da vista das igrejas supressoras, formado nas escolas escondidas de Mére ou a soldo de um senhor de guerra disposto a arriscar a fúria do povo em troca de vantagem no campo de batalha."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Humano Médio, Centelha 3, 34 PV, Impacto 6, Corte e Perfuração 3, sem armadura. Esquiva 18, Bloqueio 6. Tem 14 de Mana e conjura Fogo até o 4 (Bola de Fogo 3d6 em área, Labareda 2d6 em leque, dardo 1d6) e Forças até o 2 (Anteparo, Repelir). Feche a distância: dano enquanto ele sustenta pede Compostura + Concentração contra 10."
     }
   ],
   "ecologia": {
@@ -132,5 +184,33 @@
     "crConf": "estimado"
   },
   "variantes": [],
-  "ameacaLegada": 6
+  "ameacaLegada": 6,
+  "v3": {
+    "pv": 34,
+    "esquiva": 18,
+    "bloqueio": 6,
+    "defesa": 18,
+    "defesaMental": 21,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 6,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 104.8,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    }
+  },
+  "notasObservacao": [
+    "`artes`: Fogo 4, um acima do site, para a Bola de Fogo que o site já dava **[provisório]**",
+    "`mana`: 14 pela conta do livro; o site escrevia 12",
+    "`raio de energia`: o \"ignora cobertura leve\" sai (perda anotada no relato)",
+    "`virtudes`: Compaixão 1 e Temperança 3; o site tinha 2 e 2 **[provisório]**"
+  ]
 }

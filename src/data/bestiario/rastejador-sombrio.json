@@ -5,9 +5,10 @@
   "nome": "Rastejador Sombrio",
   "nomeIngles": "Dark Creeper",
   "categoria": "Humanoide",
+  "categoriaLegada": "Humanoide",
   "papel": "soldado",
   "conceito": "humanoide Pequeno",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Ladrão pequeno das profundezas, coberto de camadas de trapos imundos, que sai à noite para roubar e espalhar caos. Golpeia de surpresa com a adaga envenenada e, ao morrer, explode num clarão que cega.",
   "tags": [
     "humanoide",
     "centelha"
@@ -16,69 +17,109 @@
   "porte": "Pequeno",
   "dimensoes": {
     "medida": "1,2 m de altura",
-    "peso": "36 kg"
+    "peso": "36 kg",
+    "largura": 0.37,
+    "altura": 1.2
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 2,
   "attrs": {
     "forca": 2,
     "destreza": 5,
     "vigor": 4,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 2,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
-    "briga": 3,
+    "armas": 3,
+    "briga": 1,
     "esquiva": 1,
+    "atletismo": 1,
+    "furtividade": 3,
+    "prestidigitacao": 2,
     "prontidao": 1,
     "integridade": 2
   },
+  "especialidades": [
+    {
+      "habilidade": "armas",
+      "foco": "alvo desprevenido",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "no escuro",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 3,
-    "temperanca": 2,
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
     "valor": 3
   },
   "willpower": 7,
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Arma",
-      "atrib": "forca",
-      "pericia": "briga",
+      "nome": "Adaga",
+      "atrib": "destreza",
+      "pericia": "armas",
       "dado": 1,
       "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "tipo": "perfurante",
+      "acerto": 2,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Explosão Mortal",
-      "descricao": "Ao morrer, seu corpo explode em um clarão branco ofuscante; todos próximos podem ficar cegos por vários instantes, e outros de sua espécie nas redondezas são cegados automaticamente."
+      "nome": "Ataque furtivo",
+      "descricao": "Adaga: Ativação: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a adaga entra onde o alvo não guarda. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Ataque Furtivo",
-      "descricao": "Golpeia com precisão mortal quando pega o alvo desprevenido ou desprotegido, causando dano extra."
+      "nome": "Explosão mortal",
+      "descricao": "Ativação: ele morre. Duração: Cego por 6 Ticks. Alcance: 3 m. Área: esfera de 3 m em volta do corpo. Efeito: o corpo explode num clarão branco; quem está na área e falha fica Cego; outros rastejadores na área ficam Cegos sem teste. Dano: nenhum. Resistência: corpo, Vigor + Resistência contra Dificuldade 10; quem desvia o olhar a tempo (o Mestre decide) não testa. Limite de uso: uma vez, ao morrer.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Visão Perfeita no Escuro",
-      "descricao": "Enxerga com clareza total em qualquer escuridão, incluindo trevas mágicas mais densas."
+      "nome": "Cegueira pela luz",
+      "descricao": "Ativação: luz forte (sol, Arte de Luz, lanterna de perto). Duração: enquanto estiver na luz forte. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Ofuscado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Uso de Veneno",
-      "descricao": "Manipula venenos com destreza absoluta, nunca correndo o risco de se intoxicar acidentalmente ao aplicá-los em suas lâminas."
+      "nome": "Uso de veneno",
+      "descricao": "aplica veneno na lâmina sem nunca se envenenar ao aplicar. O veneno é o que ele tiver (o Mestre escolhe do catálogo).",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Cegueira pela Luz",
-      "descricao": "A luz forte ofusca e prejudica seus sentidos, tornando-o vulnerável fora da escuridão."
+      "nome": "ladrão das trevas",
+      "descricao": "ataca de surpresa no escuro, rouba e foge; em grupo, cerca o alvo para o ataque furtivo; foge da luz.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: enxerga com clareza em qualquer escuridão, inclusive a criada por magia (site). · audição e olfato: os de um humano."
     }
   ],
   "lore": [
@@ -89,6 +130,14 @@
     {
       "titulo": "Trapos e Fedor",
       "texto": "Cobertos por infinitas camadas de pano imundo, nunca trocam as roupas, apenas empilham novas sobre as antigas, exalando um cheiro de suor e comida estragada."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: em bando, típico 3 a 8, servindo a um espreitador."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Pequeno, 28 PV, Impacto 6, Corte e Perfuração 2. Esquiva 14, Bloqueio 10 (11 com a adaga). A adaga dá dano médio 5,5, e +1d6 contra quem não o viu ou está flanqueado. Na luz forte fica Ofuscado; ao morrer, cega quem está a 3 m."
     }
   ],
   "ecologia": {
@@ -125,5 +174,34 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 28,
+    "esquiva": 14,
+    "bloqueio": 10,
+    "defesa": 14,
+    "defesaMental": 15,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 6,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 77.9,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    },
+    "bloqueioArma": 1
+  },
+  "notasObservacao": [
+    "`pv`: 28, a linha de baixo da zona de transição; na de cima seriam 37",
+    "`equipamento`: adaga do livro; os trapos não contam como armadura **[provisório]**",
+    "`temperanca`: 1; o site tinha 2 **[provisório]**",
+    "`ataque furtivo`, `explosão mortal`, `cegueira pela luz`: números sugeridos pela ficha (D-197)"
+  ]
 }

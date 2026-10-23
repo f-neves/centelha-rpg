@@ -8,7 +8,7 @@
   "categoriaLegada": "Exterior",
   "papel": "capanga",
   "conceito": "exterior Médio",
-  "descricao": "Mortal marcado por sangue infernal, vive à margem dos povos.",
+  "descricao": "Mortal marcado por sangue infernal, de chifres pequenos e cauda farpada, perseguido pela aparência e pela fama. Resiste a fogo, frio e raio, cria trevas uma vez por dia e golpeia quem se distrai.",
   "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
   "tags": [
     "exterior",
@@ -17,33 +17,62 @@
   "imagem": "bestiario/tiefling_criatura.webp",
   "porte": "Médio",
   "dimensoes": {
-    "medida": "1,75 metro de altura",
-    "peso": "68 kg"
+    "medida": "1,75 m de altura",
+    "peso": "68 kg",
+    "largura": 0.42,
+    "altura": 1.75
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 1,
   "attrs": {
     "forca": 3,
     "destreza": 5,
     "vigor": 4,
-    "influencia": 1,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 3,
     "inteligencia": 3,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 1,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
-    "briga": 2,
+    "armas": 2,
+    "briga": 1,
+    "bloqueio": 1,
     "esquiva": 1,
+    "atletismo": 2,
+    "furtividade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "integridade": 2,
+    "manha": 2
   },
+  "skills2": {
+    "disfarce": 1
+  },
+  "especialidades": [
+    {
+      "habilidade": "armas",
+      "foco": "alvo desprevenido",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "no escuro",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 2,
-    "conviccao": 3,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
@@ -51,32 +80,49 @@
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
+      "nome": "Sabre",
+      "atrib": "destreza",
+      "pericia": "armas",
       "dado": 1,
       "mao": 1,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 2,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [
+    "fogo",
+    "gelo",
+    "raio"
+  ],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Visão no escuro",
-      "descricao": "Enxerga no breu quase tão bem quanto na penumbra, herança de seu sangue infernal."
-    },
-    {
-      "nome": "Sangue resistente",
-      "descricao": "Sua ascendência abissal ou infernal confere resistência parcial a frio, eletricidade e fogo."
-    },
-    {
       "nome": "Manto de trevas",
-      "descricao": "Uma vez por dia pode envolver uma área em escuridão sobrenatural, útil para escapar ou emboscar."
+      "descricao": "poder natural (base Sombra 1): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até ele desfazer. Alcance: 18 m. Área: esfera de 6 m num ponto que ele vê. Efeito: escuridão sobrenatural que a luz comum não atravessa; ele enxerga nela. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Golpe certeiro",
-      "descricao": "Ataca com precisão traiçoeira quando o alvo está distraído ou em desvantagem, causando dano adicional."
+      "descricao": "Sabre: Ativação: o golpe que acerta um alvo Surpreso, ou distraído, ou flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a lâmina entra onde o alvo não guarda. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Sangue resistente",
+      "descricao": "resistência a fogo, gelo e raio (Elementos; metade do dano, C-039).",
+      "classe": "livro"
+    },
+    {
+      "nome": "à margem",
+      "descricao": "evita a luta aberta; cria trevas para fugir ou emboscar e golpeia quem se distrai.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: enxerga no breu quase tão bem quanto na penumbra (site). · audição e olfato: os de um humano."
     }
   ],
   "lore": [
@@ -87,6 +133,14 @@
     {
       "titulo": "Vida à margem",
       "texto": "Perseguidos pela aparência e fama que não escolheram, muitos escondem sua natureza ou vivem nas franjas da sociedade."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: sozinho, à margem."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, 37 PV, Impacto 5, Corte e Perfuração 1; fogo, gelo e raio fazem metade. Esquiva e Bloqueio 14 (15 com o sabre). O sabre dá dano médio 5,5, e +1d6 contra quem se distrai. Uma vez por dia cria uma esfera de trevas de 6 m."
     }
   ],
   "ecologia": {
@@ -124,5 +178,33 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 1
+  "ameacaLegada": 1,
+  "v3": {
+    "pv": 37,
+    "esquiva": 14,
+    "bloqueio": 14,
+    "defesa": 15,
+    "defesaMental": 13,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 120.52,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    },
+    "bloqueioArma": 1
+  },
+  "notasObservacao": [
+    "`raça parente`: Humano (D-207); o traço social do Humano não vale, pelo texto do site",
+    "`equipamento`: sabre do livro **[provisório]**",
+    "`manto de trevas`, `golpe certeiro`: números sugeridos pela ficha (D-197)"
+  ]
 }

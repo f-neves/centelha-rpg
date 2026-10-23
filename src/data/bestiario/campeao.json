@@ -2,12 +2,12 @@
   "ordem": 12,
   "id": "campeao",
   "nome": "Campeão (herói inimigo)",
-  "nomeIngles": "Champion (Minor Demigod)",
+  "nomeIngles": "Champion",
   "categoria": "Humanoide",
   "categoriaLegada": "Humano",
   "papel": "chefe",
   "conceito": "herói inimigo",
-  "descricao": "Um adversário à altura dos PJs: rápido, forte e com Técnicas de herói.",
+  "descricao": "Herói inimigo, rápido, forte e convicto da própria causa, com Técnicas que vão além do treino mortal. Quebra a guarda, golpeia duas vezes na mesma ação e derruba com um soco que troveja.",
   "tags": [
     "humano",
     "centelha"
@@ -16,95 +16,138 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,9 m de altura",
-    "peso": "90 kg"
+    "peso": "90 kg",
+    "largura": 0.46,
+    "altura": 1.9
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 3,
   "attrs": {
     "forca": 4,
     "destreza": 5,
     "vigor": 4,
-    "influencia": 4,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 2,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 4,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
-    "armas-uma-mao": 5,
+    "armas": 5,
     "esquiva": 4,
-    "escudos": 3,
+    "bloqueio": 3,
     "prontidao": 5,
     "oratoria": 3,
-    "integridade": 6
+    "integridade": 6,
+    "briga": 3,
+    "atletismo": 3,
+    "resistencia": 3
   },
   "skills2": {
     "intimidacao": 4
   },
+  "especialidades": [
+    {
+      "habilidade": "armas",
+      "foco": "espada longa",
+      "valor": 2,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "intimidacao",
+      "foco": "diante de inimigos",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 2,
-    "conviccao": 3,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 4
   },
   "willpower": 8,
   "aparencia": 4,
-  "tech": {
-    "golpe-pesado": true,
-    "quebrar-guarda": true,
-    "soco-trovejante": true
-  },
-  "equip": {
-    "armaduras": [
-      "malha"
-    ]
-  },
   "ataques": [
     {
-      "nome": "Espada longa (golpe duplo)",
+      "nome": "Espada longa",
       "atrib": "destreza",
-      "pericia": "armas-uma-mao",
-      "dado": 2,
+      "pericia": "armas",
+      "dado": 1,
       "mao": 1,
       "tipo": "corte",
       "acerto": 1,
       "ticks": 6,
-      "notas": "Pode dividir em 2 ataques (−1d6/−2d6)"
+      "classe": "media"
+    },
+    {
+      "nome": "Espada longa a duas mãos",
+      "atrib": "destreza",
+      "pericia": "armas",
+      "dado": 1,
+      "mao": 2,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 6,
+      "classe": "media"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Reserva de Energia",
-      "descricao": "Energia ≈ Centelha×3 + Virtudes + Vontade"
+      "nome": "Golpe duplo",
+      "descricao": "a Rajada: dois golpes com a espada na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação.",
+      "classe": "livro"
     },
     {
-      "nome": "Técnica de herói",
-      "descricao": "pode gastar Energia em Técnicas de nível 1 a 3 em combate"
+      "nome": "Golpe Pesado",
+      "descricao": "Técnica golpe-pesado, nível 1: os ataques de Força corpo a corpo somam +1d6 de dano (quando ele ataca pela Força 4, e não pela Destreza).",
+      "classe": "livro"
     },
     {
-      "nome": "Velocidade sobre-humana",
-      "descricao": "age antes da maioria dos oponentes na Iniciativa"
+      "nome": "Quebrar Guarda",
+      "descricao": "Técnica quebrar-guarda, nível 1: por 1 de Energia, se acertar, o alvo tem −3 na Defesa até a próxima ação dele.",
+      "classe": "livro"
     },
     {
-      "nome": "Golpe de herói",
-      "descricao": "dano bem acima do de um humano comum"
+      "nome": "Soco Trovejante",
+      "descricao": "Técnica soco-trovejante, nível 3: por 3 de Energia, arremessa o alvo (empurrão) e o atordoa se ele falhar num teste de Vigor.",
+      "classe": "livro"
     },
     {
       "nome": "Resistência tocada",
-      "descricao": "Absorção e PV muito acima do normal para um mortal"
+      "descricao": "a Centelha 3 na Absorção (Impacto 7, Corte e Perfuração 3 sem a malha).",
+      "classe": "livro"
     },
     {
-      "nome": "Adversário à altura",
-      "descricao": "pensado para desafiar diretamente um grupo de PJs"
+      "nome": "adversário à altura",
+      "descricao": "enfrenta o mais forte do grupo, quebra a guarda dele e avança; não se vê como vilão, mas como o obstáculo necessário.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sem inimizades naturais",
+      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão, audição, olfato: humanos."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Luta como poucos: rápido, forte, e capaz de golpes que vão além do treino mortal comum, um adversário à altura de heróis."
+      "texto": "Luta como poucos: rápido, forte, e capaz de golpes que vão além do treino mortal comum, um adversário à altura de heróis. Social: sozinho, ou à frente de seguidores."
     },
     {
       "titulo": "Personalidade",
@@ -113,6 +156,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "É um herói de verdade, alguém que ascendeu na escala da Centelha o bastante para manifestar Técnicas de herói, algo raríssimo em Uldun e que marca seu portador para sempre aos olhos do povo e das igrejas supressoras."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Humano Médio, Centelha 3, 37 PV, de malha (Impacto 8, Corte 9, Perfuração 4). Esquiva 22, Bloqueio 20 (21 com a espada). A espada dá dano médio 10,5 com uma mão e 14,5 com as duas; em Rajada, dois golpes por ação. Tem 14 de Energia para quebrar a guarda e dar o Soco Trovejante. Defesa Mental 22."
     }
   ],
   "ecologia": {
@@ -136,5 +183,47 @@
     "crConf": "estimado"
   },
   "variantes": [],
-  "ameacaLegada": 6
+  "ameacaLegada": 6,
+  "v3": {
+    "pv": 37,
+    "esquiva": 24,
+    "bloqueio": 22,
+    "defesa": 24,
+    "defesaMental": 22,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 7,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 172.03,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    },
+    "bloqueioArma": 1,
+    "vestida": {
+      "esquiva": 22,
+      "bloqueio": 20,
+      "defesa": 22,
+      "contraTiro": 22,
+      "absorcao": {
+        "impacto": 8,
+        "corte": 9,
+        "perfuracao": 4
+      },
+      "nivel": 1,
+      "penalidade": 2
+    }
+  },
+  "notasObservacao": [
+    "`energia`: 14 pela fórmula do livro; o site escrevia \"Centelha × 3 + Virtudes + Vontade\"",
+    "`convicção`: 4; o site tinha 3 **[provisório]**",
+    "`escudo`: Variante, porque o site não o põe no equipamento",
+    "`card e equipamento`: a malha está sempre vestida (D-188)"
+  ]
 }

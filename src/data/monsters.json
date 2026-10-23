@@ -1773,7 +1773,7 @@
   "categoria": "Humanoide",
   "tipo": "soldado",
   "conceito": "fogo à distância",
-  "descricao": "Domina o campo antes do contato; recua se cercado.",
+  "descricao": "Arqueiro de milícia ou caçador dos ermos que escolhe a altura e a distância antes de tudo. Abre o combate com flechas e recua quando a linha inimiga o alcança.",
   "tags": [
    "humano"
   ],
@@ -1810,6 +1810,7 @@
   },
   "pericias": {
    "prontidao": 3,
+   "esquiva": 2,
    "integridade": 4,
    "sociabilidade": 0,
    "furtividade": 2
@@ -1818,21 +1819,34 @@
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "combate": {
    "pv": 31,
-   "defesa": 11,
+   "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 11,
    "absorcao": {
-    "impacto": 4,
-    "corte": 3,
-    "perfuracao": 2
+    "impacto": 2,
+    "corte": 0,
+    "perfuracao": 0
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 11,
+    "bloqueio": 9,
+    "defesa": 11,
+    "contraTiro": 11,
+    "absorcao": {
+     "impacto": 4,
+     "corte": 2,
+     "perfuracao": 1
+    },
+    "nivel": 1,
+    "penalidade": 1
+   },
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -1841,31 +1855,47 @@
    },
    "ataques": [
     {
-     "nome": "Arco",
-     "pool": "4d6 +1",
-     "dano": "2d6 perfurante · perf. 1",
+     "nome": "Arco longo",
+     "pool": "3d6+2",
+     "dano": "1d6 perfurante · perf. 1",
      "perfArma": 1,
-     "speed": 6,
+     "speed": 7,
      "classe": "distancia"
+    },
+    {
+     "nome": "Punhos",
+     "pool": "2d6+2 +1",
+     "dano": "1d6 impacto",
+     "perfArma": null,
+     "speed": 5,
+     "classe": "leve"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Arco",
-    "descricao": "ataque à distância com Perfuração nível 1: fura couro e malha, resvala em placa (Resistência 2)"
-   },
-   {
     "nome": "Mira",
-    "descricao": "gasta uma ação para mirar e ganha +2 no próximo disparo"
+    "descricao": "Mirar (compra Preparo para o primeiro disparo)."
    },
    {
     "nome": "Domina o campo",
-    "descricao": "prioriza alvos antes que cheguem ao corpo a corpo"
+    "descricao": "Atirador (alvo que ainda não chegou ao corpo a corpo) +1."
    },
    {
     "nome": "Recuo tático",
-    "descricao": "recua e reposiciona se for cercado"
+    "descricao": "se o cercam, recua e se reposiciona longe do corpo a corpo antes de atirar de novo."
+   },
+   {
+    "nome": "terreno alto",
+    "descricao": "escolhe a altura e a distância antes de tudo e abre o combate com flechas."
+   },
+   {
+    "nome": "Sem inimizades naturais",
+    "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão, audição, olfato: humanos."
    }
   ],
   "poderes": [],
@@ -1878,7 +1908,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Escolhe o terreno alto ou a distância antes de qualquer coisa, abre o combate com flechas e recua se a linha inimiga o alcança, pois sabe que corpo a corpo não é seu jogo."
+    "texto": "Escolhe o terreno alto ou a distância antes de qualquer coisa, abre o combate com flechas e recua se a linha inimiga o alcança, pois sabe que corpo a corpo não é seu jogo. Social: sozinho ou numa milícia, típico 3 a 8."
    },
    {
     "titulo": "Hábitos",
@@ -1887,6 +1917,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Comum entre milícias de Calin e caçadores dos ermos de Syl e Mére, onde dominar o arco é sobrevivência tanto contra bestas quanto contra bandidos."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Humano Médio, 31 PV, de couro (Impacto 4, Corte 2, Perfuração 1). Esquiva 11, Bloqueio 9. O arco longo dá dano médio 5,5, fura couro e malha (N1) e resvala na placa. Mira quando pode; se o alcançam, recua."
    }
   ]
  },
@@ -1897,7 +1931,7 @@
   "categoria": "Humanoide",
   "tipo": "elite",
   "conceito": "lâmina silenciosa",
-  "descricao": "Surge das sombras, aplica um golpe e some.",
+  "descricao": "Matador de aluguel que estuda o alvo, espera o momento de menor atenção, golpeia uma vez das sombras e some antes que alguém reaja.",
   "tags": [
    "humano",
    "centelha"
@@ -1934,29 +1968,43 @@
   },
   "pericias": {
    "prontidao": 4,
+   "esquiva": 4,
    "integridade": 4,
-   "sociabilidade": 3,
-   "furtividade": 6
+   "sociabilidade": 1,
+   "furtividade": 5
   },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "combate": {
    "pv": 34,
-   "defesa": 23,
-   "defesaSocial": 16,
+   "defesa": 24,
+   "defesaSocial": 8,
    "defesaMental": 18,
    "absorcao": {
-    "impacto": 8,
-    "corte": 6,
-    "perfuracao": 5
+    "impacto": 6,
+    "corte": 3,
+    "perfuracao": 3
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 23,
+    "bloqueio": 13,
+    "defesa": 23,
+    "contraTiro": 23,
+    "absorcao": {
+     "impacto": 8,
+     "corte": 5,
+     "perfuracao": 4
+    },
+    "nivel": 1,
+    "penalidade": 1
+   },
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 3,
@@ -1965,50 +2013,60 @@
    },
    "ataques": [
     {
-     "nome": "Adaga (Ágil)",
+     "nome": "Adaga",
      "pool": "4d6+2 +8",
-     "dano": "1d6 +6 perfurante · perf. 0",
+     "dano": "1d6 +4 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve",
-     "notas": "Ágil: usa Destreza no dano. Perf. 0: contra armadura, mira na fresta ou no alvo desprevenido"
+     "classe": "leve"
     }
    ]
   },
   "habilidades": [
    {
+    "nome": "Pisar Leve",
+    "descricao": "Técnica pisar-leve, nível 1: +3 em Furtividade; move-se em silêncio mesmo em ritmo normal."
+   },
+   {
+    "nome": "Esgueirar",
+    "descricao": "Técnica esgueirar, nível 1: por 1 de Energia, some de vista ao quebrar a linha de visão e se reposiciona sem ser notado."
+   },
+   {
+    "nome": "Manto de Sombras",
+    "descricao": "Técnica manto-de-sombras, nível 3: por 3 de Energia, nas sombras fica quase invisível enquanto anda devagar."
+   },
+   {
     "nome": "Bote Silencioso",
-    "descricao": "+2d6 de dano contra alvo desavisado (que já sofre penalidade de Defesa por surpresa)"
-   },
-   {
-    "nome": "Andar nas sombras",
-    "descricao": "esconde-se e aproxima-se sem ser notado"
-   },
-   {
-    "nome": "Golpe e sumiço",
-    "descricao": "ataca e desaparece de cena antes da reação do alvo"
+    "descricao": "Técnica bote-silencioso, nível 3: por 3 de Energia, ataque furtivo contra alvo desavisado com +2d6 de dano."
    },
    {
     "nome": "Lâmina precisa",
-    "descricao": "ataques confiáveis mesmo sem o bônus de surpresa"
+    "descricao": "Armas 4 com a Especialidade (alvo que ainda não o viu) +1."
+   },
+   {
+    "nome": "golpe e sumiço",
+    "descricao": "estuda o alvo, espera a distração, dá o Bote Silencioso e some com Esgueirar antes que alguém reaja; não fica para a luta aberta."
+   },
+   {
+    "nome": "Sem inimizades naturais",
+    "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão, audição, olfato: humanos."
    }
   ],
   "poderes": [],
   "locomocao": {
    "terra": 3
   },
-  "tecnicas": [
-   "pisar-leve",
-   "esgueirar",
-   "bote-silencioso",
-   "manto-de-sombras"
-  ],
+  "tecnicas": [],
   "artes": [],
   "notas": "Bote Silencioso: +2d6 de dano contra alvo desavisado (que já sofre a penalidade de Defesa por surpresa).",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Estuda o alvo, espera o momento de menor atenção, ataca uma vez e desaparece antes que alguém reaja."
+    "texto": "Estuda o alvo, espera o momento de menor atenção, ataca uma vez e desaparece antes que alguém reaja. Social: sozinho, ou para uma guilda."
    },
    {
     "titulo": "Sociedade",
@@ -2017,6 +2075,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Carrega Centelha suficiente para se mover como sombra entre sombras, um talento raro que o torna valioso (e temido) tanto para nobres de Calin quanto para cultos escusos de Mére."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Humano Médio, Centelha 3, 34 PV, de couro (Impacto 8, Corte 5, Perfuração 4). Esquiva 23: quase não se acerta. A adaga dá dano médio 7,5, e o Bote Silencioso soma +2d6 contra quem não o viu. Some quando quebra a linha de visão. Tem 12 de Energia: dois botes, ou um bote e um sumiço."
    }
   ]
  },
@@ -2700,7 +2762,7 @@
   "categoria": "Humanoide",
   "tipo": "capanga",
   "conceito": "salteador oportunista",
-  "descricao": "Ataca em bando, recua se a luta vira.",
+  "descricao": "Salteador de estrada que ataca em bando, de emboscada, carroças isoladas e viajantes cansados. Se a luta emperra ou os companheiros caem, foge sem vergonha.",
   "tags": [
    "humano"
   ],
@@ -2737,6 +2799,7 @@
   },
   "pericias": {
    "prontidao": 2,
+   "esquiva": 2,
    "integridade": 4,
    "sociabilidade": 0,
    "furtividade": 2
@@ -2745,21 +2808,34 @@
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
-   "valor": 3
+   "valor": 2
   },
   "combate": {
    "pv": 34,
-   "defesa": 9,
+   "defesa": 10,
    "defesaSocial": 4,
    "defesaMental": 11,
    "absorcao": {
-    "impacto": 5,
-    "corte": 3,
-    "perfuracao": 2
+    "impacto": 3,
+    "corte": 0,
+    "perfuracao": 0
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 9,
+    "bloqueio": 7,
+    "defesa": 9,
+    "contraTiro": 9,
+    "absorcao": {
+     "impacto": 5,
+     "corte": 2,
+     "perfuracao": 1
+    },
+    "nivel": 1,
+    "penalidade": 1
+   },
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
@@ -2770,7 +2846,7 @@
     {
      "nome": "Facão",
      "pool": "2d6+2 +2",
-     "dano": "1d6 +3 corte",
+     "dano": "1d6 +1 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -2779,20 +2855,28 @@
   },
   "habilidades": [
    {
-    "nome": "Couro leve",
-    "descricao": "Absorção +2 contra golpes"
-   },
-   {
     "nome": "Emboscada",
-    "descricao": "ataca de surpresa quando pode escolher o terreno"
+    "descricao": "ataque contra quem está Surpreso (Defesa zerada pela Vantagem tática), com Furtividade (emboscada na estrada) +1."
    },
    {
     "nome": "Matar em bando",
-    "descricao": "ganha vantagem lutando em grupo contra um alvo isolado"
+    "descricao": "flanquear (Flanqueado) e Armas (alvo isolado) +1."
+   },
+   {
+    "nome": "Couro leve",
+    "descricao": "a armadura de couro na linha Absorção."
    },
    {
     "nome": "Recuo oportunista",
-    "descricao": "foge da luta assim que ela vira contra o bando"
+    "descricao": "foge da luta assim que ela vira contra o bando ou os companheiros caem."
+   },
+   {
+    "nome": "Sem inimizades naturais",
+    "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão, audição, olfato: humanos."
    }
   ],
   "poderes": [],
@@ -2805,7 +2889,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Ataca em bando, de emboscada, mirando carroças isoladas e viajantes cansados. Se a luta emperra ou os companheiros caem, recua sem vergonha: prefere viver pobre a morrer rico."
+    "texto": "Ataca em bando, de emboscada, mirando carroças isoladas e viajantes cansados. Se a luta emperra ou os companheiros caem, recua sem vergonha: prefere viver pobre a morrer rico. Social: em quadrilha, típico 4 a 10."
    },
    {
     "titulo": "Sociedade",
@@ -2814,6 +2898,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Prospera nas estradas entre cidades de Calin e nos ermos de The Neck, onde a milícia é escassa e a fome empurra gente comum para o roubo."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Humano Médio, 34 PV, de couro (Impacto 5, Corte 2, Perfuração 1). Esquiva 9, Bloqueio 7 (8 com o facão). O facão dá dano médio 4,5. Vem em quadrilha, de emboscada; foge quando a luta vira."
    }
   ]
  },
@@ -4503,7 +4591,7 @@
   "categoria": "Humanoide",
   "tipo": "soldado",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Homem-rã dos pântanos, de boca larga e olhos enormes, que vive em aldeias de lama. Prende a presa com a língua grudenta, apavora com um coaxar horrível e fica muito tempo debaixo d'água.",
   "tags": [
    "humanoide",
    "centelha"
@@ -4544,25 +4632,25 @@
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "combate": {
    "pv": 37,
-   "defesa": 4,
+   "defesa": 9,
    "defesaSocial": 4,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -4573,35 +4661,43 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6+2 +4",
-     "dano": "1d6 +6 corte",
+     "nome": "Maça estrela",
+     "pool": "3d6 +5",
+     "dano": "1d6 +6 impacto",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Língua Grudenta",
-    "descricao": "Atinge o alvo à distância com a língua pegajosa, prendendo-o e impedindo que se afaste mais do que alguns passos até que a língua seja arrancada ou cortada."
+    "nome": "Língua grudenta",
+    "descricao": "Ativação: uma ação, Velocidade 5, a jogada de Agarrar do livro com a língua (Força + Briga, mais a Centelha, contra a Defesa de agarrão do alvo). Duração: até a língua ser arrancada ou cortada, ou ele soltar. Alcance: 3 m. Área: um alvo. Efeito: o alvo fica Agarrado pela língua e não se afasta mais que 3 m dele; para soltar, escapa pela regra do Agarrar ou corta a língua (um golpe de arma de corte que fira 3 ou mais). Dano: nenhum. Resistência: corpo, pela regra do Agarrar, com o Agarrão +2 dele. Limite de uso: um alvo por vez."
    },
    {
-    "nome": "Grito Aterrorizante",
-    "descricao": "Uma vez por cena, solta um coaxar alto e horripilante que ameaça amedrontar todas as criaturas próximas que não sejam da sua espécie."
+    "nome": "Grito aterrorizante",
+    "descricao": "Ativação: uma ação, Velocidade 6, um coaxar alto e horrível. Duração: Amedrontado até o fim da próxima ação de cada alvo. Alcance: 9 m. Área: esfera de 9 m em volta dele. Efeito: quem não é boggard e falha fica Amedrontado (não avança na direção dele, −2 em tudo enquanto ele estiver à vista). Dano: nenhum. Resistência: mente, contra Influência + Intimidação dele; quem passa fica imune ao grito até o fim da cena. Limite de uso: uma vez por cena."
    },
    {
-    "nome": "Andar do Pântano",
-    "descricao": "Move-se por qualquer terreno difícil natural de um pântano em sua velocidade normal, sem ser atrapalhado pela lama ou vegetação."
+    "nome": "Andar do pântano",
+    "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: a lama, a água rasa e a vegetação do pântano não são terreno difícil para ele. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Fôlego Longo",
-    "descricao": "Prende a respiração por muito mais tempo que um humano, podendo permanecer submerso por longos períodos sem se afogar."
+    "nome": "Fôlego longo",
+    "descricao": "Vigor + Resistência, com a Especialidade natural (prender a respiração) +3."
    },
    {
-    "nome": "Nadador Ágil e Visão no Escuro",
-    "descricao": "Nada com grande facilidade e enxerga tanto no escuro quanto em pouca luz."
+    "nome": "Nadador ágil",
+    "descricao": "Natação 3 e o nado do site."
+   },
+   {
+    "nome": "emboscada do brejo",
+    "descricao": "espera dentro da água, prende o alvo com a língua, coaxa para apavorar o grupo e bate com a maça; recua para o fundo se a luta vira."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga no escuro e na penumbra (site). · audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -4623,7 +4719,11 @@
    },
    {
     "titulo": "Comportamento",
-    "texto": "A aceitação de um jovem no clã depende de como ele se desenvolve durante essa transformação, tornando a chegada à vida adulta um verdadeiro rito de passagem."
+    "texto": "A aceitação de um jovem no clã depende de como ele se desenvolve durante essa transformação, tornando a chegada à vida adulta um verdadeiro rito de passagem. Social: em clã, numa aldeia de lama, típico 4 a 12."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 37 PV, Impacto 6, Corte e Perfuração 2. Defesa baixa (Bloqueio 8, 9 com a maça; Esquiva 4). A maça dá dano médio 9,5. Prende a 3 m com a língua e, uma vez por cena, apavora quem está a 9 m. Na água e na lama, anda e nada sem atraso."
    }
   ]
  },
@@ -5034,7 +5134,7 @@
   "categoria": "Humanoide",
   "tipo": "soldado",
   "conceito": "músculo pesado",
-  "descricao": "Lento, mas cada golpe derruba. Mira em quebrar a guarda.",
+  "descricao": "Homem enorme de martelo de duas mãos, lento para se mover e rápido para esmagar. Aceita levar um corte se puder devolver um golpe que derruba.",
   "tags": [
    "humano"
   ],
@@ -5070,29 +5170,43 @@
   },
   "pericias": {
    "prontidao": 0,
+   "esquiva": 1,
    "integridade": 4,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
-   "valor": 3
+   "valor": 4
   },
   "combate": {
    "pv": 37,
-   "defesa": 5,
+   "defesa": 6,
    "defesaSocial": 4,
    "defesaMental": 11,
    "absorcao": {
-    "impacto": 6,
-    "corte": 4,
-    "perfuracao": 3
+    "impacto": 4,
+    "corte": 0,
+    "perfuracao": 0
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 5,
+    "bloqueio": 5,
+    "defesa": 5,
+    "contraTiro": 5,
+    "absorcao": {
+     "impacto": 6,
+     "corte": 2,
+     "perfuracao": 1
+    },
+    "nivel": 1,
+    "penalidade": 1
+   },
    "iniciativa": "1d6 + 2",
    "deslocamento": {
     "batalha": 3,
@@ -5103,30 +5217,41 @@
     {
      "nome": "Martelo de guerra",
      "pool": "4d6",
-     "dano": "3d6 +10 impacto",
+     "dano": "2d6 +10 impacto",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada",
-     "notas": "Impacto: a armadura quase não absorve (anti-placa)"
+     "classe": "pesada"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Golpe pesado",
-    "descricao": "dano alto por acerto, mira em quebrar a guarda do alvo"
-   },
-   {
-    "nome": "Passo lento",
-    "descricao": "Velocidade 7, age com atraso e reage mal a cercos"
+    "descricao": "o martelo de guerra a duas mãos (2d6 + Força × 2)."
    },
    {
     "nome": "Força bruta",
-    "descricao": "ignora parte da Absorção leve ao acertar"
+    "descricao": "o Impacto do martelo, que a armadura quase não absorve."
+   },
+   {
+    "nome": "Passo lento",
+    "descricao": "a Velocidade 7 do martelo; age menos vezes."
    },
    {
     "nome": "Vulnerável ao cerco",
-    "descricao": "perde eficácia quando flanqueado por vários oponentes"
+    "descricao": "a Guarda sob pressão (cada ataque que recebe baixa a Esquiva e o Bloqueio em 2 até a próxima ação dele)."
+   },
+   {
+    "nome": "quebra a guarda",
+    "descricao": "avança devagar, aceita o primeiro corte e devolve um esmagamento; mira derrubar de vez quem está na frente."
+   },
+   {
+    "nome": "Sem inimizades naturais",
+    "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão, audição, olfato: humanos."
    }
   ],
   "poderes": [],
@@ -5139,7 +5264,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Lento para se mover, rápido para golpear: cada ataque busca quebrar a guarda ou derrubar de vez. Não se importa em levar um corte se puder devolver um esmagamento."
+    "texto": "Lento para se mover, rápido para golpear: cada ataque busca quebrar a guarda ou derrubar de vez. Não se importa em levar um corte se puder devolver um esmagamento. Social: num bando ou milícia."
    },
    {
     "titulo": "Personalidade",
@@ -5148,6 +5273,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "O músculo pesado de bandos e milícias por toda Uldun; sem Centelha alguma, vive da força bruta num mundo onde poder mágico é raro e temido."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Humano Médio, 37 PV, de couro (Impacto 6, Corte 2, Perfuração 1). Defesa baixa (Esquiva e Bloqueio 5). O martelo dá dano médio 17 a cada 7 Ticks e quase não se absorve na armadura. Cerque-o: cada golpe que leva baixa a Defesa dele, e ele age devagar."
    }
   ]
  },
@@ -5602,7 +5731,7 @@
   "categoria": "Humanoide",
   "tipo": "soldado",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "O maior dos goblinoides, peludo e de braços compridos, que anda em silêncio apesar dos 2 m e bate forte em quem não o viu chegar.",
   "tags": [
    "humanoide"
   ],
@@ -5638,17 +5767,17 @@
    "raciocinio": 2
   },
   "pericias": {
-   "prontidao": 1,
+   "prontidao": 2,
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 3
   },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -5659,11 +5788,11 @@
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
-    "corte": 1,
-    "perfuracao": 1
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
+   "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
     "arranque": 5,
@@ -5671,31 +5800,35 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6+2",
+     "nome": "Machado",
+     "pool": "4d6 +1",
      "dano": "1d6 +5 corte",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Furtividade surpreendente",
-    "descricao": "Furtividade 3 apesar do porte; emboscadas eficazes"
+    "nome": "Golpe surpresa",
+    "descricao": "Machado: Ativação: o golpe que acerta um alvo Surpreso ou que não o viu chegar. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o golpe entra onde o alvo não guarda. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe, só contra quem está desprevenido."
    },
    {
-    "nome": "Golpe surpresa",
-    "descricao": "dano extra ao acertar um alvo desprevenido"
+    "nome": "Furtividade surpreendente",
+    "descricao": "Furtividade 3, com a Especialidade natural (passo leve) +2."
    },
    {
     "nome": "Alerta",
-    "descricao": "Prontidão 2; dificilmente é surpreendido"
+    "descricao": "Prontidão 2."
    },
    {
-    "nome": "Visão no escuro",
-    "descricao": "enxerga sem luz"
+    "nome": "caçador de emboscada",
+    "descricao": "segue a presa em silêncio, ataca primeiro de surpresa e bate no mais fraco; foge se a emboscada falha."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga sem luz (site). · audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -5708,7 +5841,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Predadores furtivos apesar do tamanho avantajado, preferem emboscar na escuridão a enfrentar qualquer inimigo de frente."
+    "texto": "Predadores furtivos apesar do tamanho avantajado, preferem emboscar na escuridão a enfrentar qualquer inimigo de frente. Social: sozinho ou em grupo pequeno, típico 2 a 4."
    },
    {
     "titulo": "Hábitos",
@@ -5721,6 +5854,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Mais um ramo dos povos ásperos saídos da forja incompleta dos anões, os bugbears cresceram grandes e sorrateiros o bastante para aterrorizar sozinhos vilarejos isolados nas bordas de Mére e do The Neck."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 34 PV, Impacto 3. Defesa baixa (Esquiva e Bloqueio 8). O machado dá dano médio 8,5, e 12 contra quem está desprevenido. O perigo é a primeira pancada da emboscada; descoberto, é um guerreiro comum."
    }
   ]
  },
@@ -6003,11 +6140,11 @@
  {
   "id": "campeao",
   "nome": "Campeão (herói inimigo)",
-  "nomeIngles": "Champion (Minor Demigod)",
+  "nomeIngles": "Champion",
   "categoria": "Humanoide",
   "tipo": "chefe",
   "conceito": "herói inimigo",
-  "descricao": "Um adversário à altura dos PJs: rápido, forte e com Técnicas de herói.",
+  "descricao": "Herói inimigo, rápido, forte e convicto da própria causa, com Técnicas que vão além do treino mortal. Quebra a guarda, golpeia duas vezes na mesma ação e derruba com um soco que troveja.",
   "tags": [
    "humano",
    "centelha"
@@ -6045,30 +6182,43 @@
   },
   "pericias": {
    "prontidao": 5,
-   "esquiva": 3,
+   "esquiva": 4,
    "integridade": 6,
-   "sociabilidade": 3,
-   "furtividade": 2
+   "sociabilidade": 0,
+   "furtividade": 0
   },
   "vontade": 8,
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 4
   },
   "combate": {
    "pv": 37,
-   "defesa": 22,
-   "defesaSocial": 16,
+   "defesa": 24,
+   "defesaSocial": 4,
    "defesaMental": 22,
    "absorcao": {
-    "impacto": 8,
-    "corte": 11,
-    "perfuracao": 6
+    "impacto": 7,
+    "corte": 3,
+    "perfuracao": 3
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 22,
+    "bloqueio": 20,
+    "defesa": 22,
+    "contraTiro": 22,
+    "absorcao": {
+     "impacto": 8,
+     "corte": 9,
+     "perfuracao": 4
+    },
+    "nivel": 1,
+    "penalidade": 2
+   },
    "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 3,
@@ -6077,57 +6227,68 @@
    },
    "ataques": [
     {
-     "nome": "Espada longa (golpe duplo)",
+     "nome": "Espada longa",
      "pool": "5d6 +7",
-     "dano": "2d6 +7 corte",
+     "dano": "1d6 +7 corte",
      "perfArma": null,
      "speed": 6,
-     "classe": "media",
-     "notas": "Pode dividir em 2 ataques (−1d6/−2d6)"
+     "classe": "media"
+    },
+    {
+     "nome": "Espada longa a duas mãos",
+     "pool": "5d6 +7",
+     "dano": "1d6 +11 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Reserva de Energia",
-    "descricao": "Energia ≈ Centelha×3 + Virtudes + Vontade"
+    "nome": "Golpe duplo",
+    "descricao": "a Rajada: dois golpes com a espada na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação."
    },
    {
-    "nome": "Técnica de herói",
-    "descricao": "pode gastar Energia em Técnicas de nível 1 a 3 em combate"
+    "nome": "Golpe Pesado",
+    "descricao": "Técnica golpe-pesado, nível 1: os ataques de Força corpo a corpo somam +1d6 de dano (quando ele ataca pela Força 4, e não pela Destreza)."
    },
    {
-    "nome": "Velocidade sobre-humana",
-    "descricao": "age antes da maioria dos oponentes na Iniciativa"
+    "nome": "Quebrar Guarda",
+    "descricao": "Técnica quebrar-guarda, nível 1: por 1 de Energia, se acertar, o alvo tem −3 na Defesa até a próxima ação dele."
    },
    {
-    "nome": "Golpe de herói",
-    "descricao": "dano bem acima do de um humano comum"
+    "nome": "Soco Trovejante",
+    "descricao": "Técnica soco-trovejante, nível 3: por 3 de Energia, arremessa o alvo (empurrão) e o atordoa se ele falhar num teste de Vigor."
    },
    {
     "nome": "Resistência tocada",
-    "descricao": "Absorção e PV muito acima do normal para um mortal"
+    "descricao": "a Centelha 3 na Absorção (Impacto 7, Corte e Perfuração 3 sem a malha)."
    },
    {
-    "nome": "Adversário à altura",
-    "descricao": "pensado para desafiar diretamente um grupo de PJs"
+    "nome": "adversário à altura",
+    "descricao": "enfrenta o mais forte do grupo, quebra a guarda dele e avança; não se vê como vilão, mas como o obstáculo necessário."
+   },
+   {
+    "nome": "Sem inimizades naturais",
+    "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão, audição, olfato: humanos."
    }
   ],
   "poderes": [],
   "locomocao": {
    "terra": 3
   },
-  "tecnicas": [
-   "golpe-pesado",
-   "quebrar-guarda",
-   "soco-trovejante"
-  ],
+  "tecnicas": [],
   "artes": [],
   "notas": "Energia ≈ Centelha×3 + Virtudes + Vontade. Reservar para Técnicas de nível 1 a 3.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Luta como poucos: rápido, forte, e capaz de golpes que vão além do treino mortal comum, um adversário à altura de heróis."
+    "texto": "Luta como poucos: rápido, forte, e capaz de golpes que vão além do treino mortal comum, um adversário à altura de heróis. Social: sozinho, ou à frente de seguidores."
    },
    {
     "titulo": "Personalidade",
@@ -6136,6 +6297,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "É um herói de verdade, alguém que ascendeu na escala da Centelha o bastante para manifestar Técnicas de herói, algo raríssimo em Uldun e que marca seu portador para sempre aos olhos do povo e das igrejas supressoras."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Humano Médio, Centelha 3, 37 PV, de malha (Impacto 8, Corte 9, Perfuração 4). Esquiva 22, Bloqueio 20 (21 com a espada). A espada dá dano médio 10,5 com uma mão e 14,5 com as duas; em Rajada, dois golpes por ação. Tem 14 de Energia para quebrar a guarda e dar o Soco Trovejante. Defesa Mental 22."
    }
   ]
  },
@@ -7219,7 +7384,7 @@
   "categoria": "Humanoide",
   "tipo": "elite",
   "conceito": "comandante mortal",
-  "descricao": "Líder competente; coordena subordinados e segura a linha.",
+  "descricao": "Comandante de placa e escudo que distribui os guardas, segura a linha sob pressão e prefere vencer pela disciplina do grupo a arriscar um duelo pessoal.",
   "tags": [
    "humano"
   ],
@@ -7255,29 +7420,43 @@
   },
   "pericias": {
    "prontidao": 4,
+   "esquiva": 3,
    "integridade": 6,
-   "sociabilidade": 3,
-   "furtividade": 2
+   "sociabilidade": 2,
+   "furtividade": 0
   },
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "combate": {
    "pv": 37,
-   "defesa": 13,
-   "defesaSocial": 12,
+   "defesa": 17,
+   "defesaSocial": 10,
    "defesaMental": 17,
    "absorcao": {
-    "impacto": 9,
-    "corte": 11,
-    "perfuracao": 7
+    "impacto": 5,
+    "corte": 1,
+    "perfuracao": 1
    },
-   "resistenciaPerfuracao": 3,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 11,
+    "bloqueio": 16,
+    "defesa": 17,
+    "contraTiro": 16,
+    "absorcao": {
+     "impacto": 9,
+     "corte": 9,
+     "perfuracao": 5
+    },
+    "nivel": 3,
+    "penalidade": 3
+   },
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 3,
@@ -7288,7 +7467,7 @@
     {
      "nome": "Espada longa",
      "pool": "4d6 +3",
-     "dano": "2d6 +4 corte",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -7297,20 +7476,28 @@
   },
   "habilidades": [
    {
-    "nome": "Placa",
-    "descricao": "Absorção +6, mas Esquiva −2 e movimento lento"
-   },
-   {
-    "nome": "Escudo",
-    "descricao": "bônus adicional ao Bloqueio"
-   },
-   {
     "nome": "Comando de tropa",
-    "descricao": "coordena subordinados, dando-lhes bônus de ataque ou Defesa"
+    "descricao": "Ativação: uma ação, Velocidade 3, dando a ordem em voz alta. Duração: até a próxima ação dele. Alcance: 18 m, onde o ouvem. Área: até seis subordinados que o ouvem. Efeito: à escolha dele, os subordinados somam +1 no ataque ou +1 na Defesa. Dano: nenhum. Resistência: nenhum. Limite de uso: uma ordem por ação dele."
+   },
+   {
+    "nome": "Placa e escudo",
+    "descricao": "a placa completa e o heater na frase da linha Absorção; a Penalidade −3 pesa no movimento."
    },
    {
     "nome": "Pico do mortal",
-    "descricao": "melhores números que um humano comum alcança sem Centelha"
+    "descricao": "os números de humano treinado no topo da régua (Integridade 6, Armas 4)."
+   },
+   {
+    "nome": "segura a linha",
+    "descricao": "distribui os guardas, fecha a linha com o escudo e decide quando chamar reforço ou dar o alarme; evita o duelo pessoal."
+   },
+   {
+    "nome": "Sem inimizades naturais",
+    "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão, audição, olfato: humanos."
    }
   ],
   "poderes": [],
@@ -7323,7 +7510,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Coordena subordinados, distribui posições e mantém a linha mesmo sob pressão; prefere vencer pela disciplina do grupo a arriscar um duelo pessoal."
+    "texto": "Coordena subordinados, distribui posições e mantém a linha mesmo sob pressão; prefere vencer pela disciplina do grupo a arriscar um duelo pessoal. Social: à frente de guardas, típico 4 a 12."
    },
    {
     "titulo": "Sociedade",
@@ -7332,6 +7519,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Encarna o comando mortal das cidades de Calin: sem faísca divina, apenas competência, experiência e a confiança de quem já segurou a linha antes."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Humano Médio, Centelha 1, 37 PV, de placa e escudo (Impacto 9, Corte 9, Perfuração 5, N3: só arma de N3 fura). Bloqueio 16 (17 com a espada), Esquiva 11, contra tiro 16. A espada dá dano médio 7,5. A cada ação pode dar +1 no ataque ou na Defesa de até seis guardas. Defesa Mental 17."
    }
   ]
  },
@@ -7894,7 +8085,7 @@
   "categoria": "Humanoide",
   "tipo": "elite",
   "conceito": "tanque tocado pela Centelha",
-  "descricao": "Muralha de aço e pele de pedra; aguenta o que poucos aguentam.",
+  "descricao": "Cavaleiro de placa completa e montante, tocado pela Centelha a ponto de a pele resistir como pedra. Avança como muralha, aguenta golpes que derrubariam outro soldado e segura a posição.",
   "tags": [
    "humano",
    "centelha"
@@ -7932,29 +8123,43 @@
   },
   "pericias": {
    "prontidao": 3,
+   "esquiva": 3,
    "integridade": 6,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 4
   },
   "combate": {
    "pv": 40,
-   "defesa": 11,
+   "defesa": 14,
    "defesaSocial": 4,
    "defesaMental": 17,
    "absorcao": {
-    "impacto": 10,
-    "corte": 11,
-    "perfuracao": 7
+    "impacto": 6,
+    "corte": 1,
+    "perfuracao": 1
    },
-   "resistenciaPerfuracao": 3,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 11,
+    "bloqueio": 11,
+    "defesa": 11,
+    "contraTiro": 11,
+    "absorcao": {
+     "impacto": 10,
+     "corte": 9,
+     "perfuracao": 5
+    },
+    "nivel": 3,
+    "penalidade": 3
+   },
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -7965,7 +8170,7 @@
     {
      "nome": "Montante",
      "pool": "4d6 +2",
-     "dano": "3d6 +9 corte",
+     "dano": "2d6 +9 corte",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
@@ -7974,41 +8179,53 @@
   },
   "habilidades": [
    {
-    "nome": "Placa",
-    "descricao": "Absorção alta, Esquiva reduzida pelo peso da armadura"
+    "nome": "Pele Curtida",
+    "descricao": "Técnica pele-curtida, nível 1: +2 de Absorção contra Impacto."
    },
    {
-    "nome": "Pele de Pedra",
-    "descricao": "Absorção altíssima contra dano de corte"
+    "nome": "Aguentar o Tranco",
+    "descricao": "Técnica aguentar-o-tranco, nível 1: ignora a penalidade do estado Machucado."
+   },
+   {
+    "nome": "Tensionar",
+    "descricao": "Técnica tensionar, nível 1: por 1 de Energia, ao ser atingido, +2 de Absorção contra aquele golpe."
+   },
+   {
+    "nome": "Placa e Pele de Pedra",
+    "descricao": "a placa completa (Corte 9 vestido) e as Técnicas do caminho Pele de Pedra."
    },
    {
     "nome": "Falha de Impacto",
-    "descricao": "vulnerável a dano de Impacto, que a placa quase não absorve"
+    "descricao": "a placa segura pouco Impacto (Impacto 4 da armadura, 10 vestido com a natural)."
    },
    {
     "nome": "Falha de perfuração",
-    "descricao": "perfuração nível 2+ ou uma Proeza atravessa sua defesa"
+    "descricao": "a placa completa é N3; só perfuração N3 ou acima passa o gate (o site dizia N2)."
    },
    {
-    "nome": "Muralha de aço",
-    "descricao": "aguenta punição prolongada sem cair"
+    "nome": "Sem inimizades naturais",
+    "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação."
+   },
+   {
+    "nome": "muralha de aço",
+    "descricao": "avança devagar à frente da linha, absorve os golpes e segura a posição; não recua."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão, audição, olfato: humanos."
    }
   ],
   "poderes": [],
   "locomocao": {
    "terra": 3
   },
-  "tecnicas": [
-   "pele-curtida",
-   "aguentar-o-tranco",
-   "tensionar"
-  ],
+  "tecnicas": [],
   "artes": [],
   "notas": "Placa + Pele de Pedra: Absorção altíssima contra corte. Vença-o com Impacto (a placa quase não absorve), perfuração nível 2+ ou Proeza.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Avança como muralha, absorve golpes que derrubariam outro soldado e segura posições que ninguém mais aguentaria segurar."
+    "texto": "Avança como muralha, absorve golpes que derrubariam outro soldado e segura posições que ninguém mais aguentaria segurar. Social: à frente da linha, com um comandante."
    },
    {
     "titulo": "Personalidade",
@@ -8017,6 +8234,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Foi tocado pela Centelha o bastante para que sua pele resista como pedra, um dom raro entre humanos que o eleva acima da tropa comum e desperta tanto respeito quanto desconfiança."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Humano Médio, Centelha 1, 40 PV, de placa (Impacto 10, Corte 9, Perfuração 5, N3), mais +2 contra Impacto da Pele Curtida e +2 contra um golpe do Tensionar. Esquiva e Bloqueio 11. O montante dá dano médio 16. Vença-o com maça e martelo ou com perfuração N3."
    }
   ]
  },
@@ -8977,7 +9198,7 @@
   "categoria": "Humanoide",
   "tipo": "elite",
   "conceito": "líder de guerra",
-  "descricao": "Inspira tropas e quebra a moral inimiga; luta bem, mas comanda melhor.",
+  "descricao": "Líder de guerra tocado pela Centelha, de placa e espada longa. Luta bem, mas comanda melhor: reorganiza a tropa, quebra a moral do inimigo, e a queda dele abala todo o lado que lidera.",
   "tags": [
    "humano",
    "centelha"
@@ -9015,29 +9236,43 @@
   },
   "pericias": {
    "prontidao": 3,
+   "esquiva": 3,
    "integridade": 6,
-   "sociabilidade": 4,
-   "furtividade": 2
+   "sociabilidade": 2,
+   "furtividade": 0
   },
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 4
   },
   "combate": {
    "pv": 37,
-   "defesa": 13,
-   "defesaSocial": 14,
+   "defesa": 17,
+   "defesaSocial": 10,
    "defesaMental": 17,
    "absorcao": {
-    "impacto": 9,
-    "corte": 11,
-    "perfuracao": 7
+    "impacto": 5,
+    "corte": 1,
+    "perfuracao": 1
    },
-   "resistenciaPerfuracao": 3,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 13,
+    "bloqueio": 13,
+    "defesa": 14,
+    "contraTiro": 13,
+    "absorcao": {
+     "impacto": 9,
+     "corte": 9,
+     "perfuracao": 5
+    },
+    "nivel": 3,
+    "penalidade": 3
+   },
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -9048,7 +9283,7 @@
     {
      "nome": "Espada longa",
      "pool": "4d6 +3",
-     "dano": "2d6 +4 corte",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -9057,41 +9292,57 @@
   },
   "habilidades": [
    {
-    "nome": "Estandarte de Comando",
-    "descricao": "concede ação extra ou bônus de ataque/Defesa a aliados próximos"
+    "nome": "Voz de Líder",
+    "descricao": "Técnica voz-de-lider, nível 1: os aliados que o seguem ganham +3 de moral; ordens claras."
    },
    {
-    "nome": "Inspira tropas",
-    "descricao": "gasta Influência para erguer a moral do próprio lado"
+    "nome": "Coordenar",
+    "descricao": "Técnica coordenar, nível 1: por 1 de Energia, um aliado age no melhor momento (reação ou nova posição na Iniciativa)."
+   },
+   {
+    "nome": "Tom de Autoridade",
+    "descricao": "Técnica tom-de-autoridade, nível 1: quando ele dá ordens ou intimida, a Defesa Mental do alvo é −3."
+   },
+   {
+    "nome": "Estandarte de Comando",
+    "descricao": "Ativação: uma ação, Velocidade 3, erguendo o estandarte e dando a ordem. Duração: até a próxima ação dele. Alcance: 18 m, onde o veem e ouvem. Área: até seis aliados. Efeito: à escolha dele, os aliados somam +1 no ataque ou +1 na Defesa; com o Coordenar, um deles ainda age no melhor momento. Dano: nenhum. Resistência: nenhum. Limite de uso: uma ordem por ação dele."
    },
    {
     "nome": "Quebra de moral",
-    "descricao": "pode forçar teste de Vontade em inimigos, deixando-os Abalados"
-   },
-   {
-    "nome": "Comanda melhor que luta",
-    "descricao": "combate competente, mas seu real poder é coordenar outros"
+    "descricao": "Ativação: uma ação, Velocidade 6, gritando contra o inimigo. Duração: até o fim da cena, ou até o alvo se recompor. Alcance: 18 m. Área: os inimigos que o ouvem, até seis. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência + Intimidação dele, com o Tom de Autoridade (−3 na Defesa Mental). Limite de uso: uma vez por cena."
    },
    {
     "nome": "Ponto de colapso",
-    "descricao": "a queda do comandante abala a moral de toda a tropa que lidera"
+    "descricao": "Ativação: ele cai a 0 PV ou foge. Duração: até o fim da cena. Alcance: a tropa que ele lidera e que o vê cair. Área: os aliados dele em campo. Efeito: cada um faz um teste de Bravura (a Virtude sozinha) contra Dificuldade 7; quem falha fica Abalado e tende a recuar. Dano: nenhum. Resistência: Bravura, o teste de Virtude. Limite de uso: uma vez."
+   },
+   {
+    "nome": "Inspira tropas",
+    "descricao": "Voz de Líder e Oratória (diante da tropa) +2."
+   },
+   {
+    "nome": "Sem inimizades naturais",
+    "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação."
+   },
+   {
+    "nome": "comanda melhor que luta",
+    "descricao": "fica atrás da primeira linha, reorganiza a tropa, quebra a moral do inimigo antes do choque e só luta quando precisa."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão, audição, olfato: humanos."
    }
   ],
   "poderes": [],
   "locomocao": {
    "terra": 3
   },
-  "tecnicas": [
-   "voz-de-lider",
-   "coordenar",
-   "tom-de-autoridade"
-  ],
+  "tecnicas": [],
   "artes": [],
   "notas": "Concede ações e bônus aos aliados (Estandarte/Comando). Some Influência quando inspira. Mate-o e a tropa vacila.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Luta bem, mas comanda melhor: sua presença no campo reorganiza tropas em pânico e quebra a moral do lado inimigo antes mesmo do choque das lâminas."
+    "texto": "Luta bem, mas comanda melhor: sua presença no campo reorganiza tropas em pânico e quebra a moral do lado inimigo antes mesmo do choque das lâminas. Social: à frente de uma tropa, típico 6 a 20."
    },
    {
     "titulo": "Sociedade",
@@ -9100,6 +9351,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Foi tocado pela Centelha o suficiente para liderar como poucos líderes mortais conseguem, um dom que faz dele figura central em qualquer conflito de Uldun, de Calin a Mére."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Humano Médio, Centelha 1, 37 PV, de placa (Impacto 9, Corte 9, Perfuração 5, N3). Esquiva e Bloqueio 13 (14 com a espada). A espada dá dano médio 7,5. A cada ação dá +1 no ataque ou na Defesa de até seis aliados; uma vez por cena deixa os inimigos Abalados. Mate-o e a tropa testa a Bravura."
    }
   ]
  },
@@ -9974,7 +10229,7 @@
   "categoria": "Humanoide",
   "tipo": "elite",
   "conceito": "feiticeiro da morte",
-  "descricao": "Servo de poderes proibidos; drena a vida e ergue os mortos.",
+  "descricao": "Servo de uma seita da morte que drena a vida das vítimas, apodrece o corpo de quem o enfrenta e ergue mortos em ritual. Frágil de perto: deixa os mortos e os seguidores na frente.",
   "tags": [
    "humano",
    "centelha",
@@ -10015,26 +10270,26 @@
    "prontidao": 2,
    "esquiva": 2,
    "integridade": 3,
-   "sociabilidade": 3,
-   "furtividade": 2
+   "sociabilidade": 0,
+   "furtividade": 1
   },
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "combate": {
    "pv": 34,
    "defesa": 12,
-   "defesaSocial": 12,
+   "defesaSocial": 4,
    "defesaMental": 14,
    "absorcao": {
     "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -10045,32 +10300,43 @@
    },
    "ataques": [
     {
-     "nome": "Toque mórbido (Morte 1)",
-     "pool": "3d6+2 +2",
-     "dano": "1d6 +1 necrótico",
+     "nome": "Soco",
+     "pool": "1d6+2 +1",
+     "dano": "1d6 +1 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "arte",
-     "notas": "Dreno: cura o cultista"
+     "speed": 5,
+     "classe": "leve"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Drenar vida",
-    "descricao": "toque corpo a corpo causa dano e cura o cultista no mesmo tanto"
-   },
-   {
-    "nome": "Ritual da morte",
-    "descricao": "em poucos minutos ergue um morto-vivo (Morte 3) para lutar ao seu lado"
+    "descricao": "Arte Morte 1: Dreno; toque que tira vida (dano que a armadura não para) e cura o cultista em metade do que passou; o alvo aguenta com Vigor + Resistência."
    },
    {
     "nome": "Maldição do apodrecer",
-    "descricao": "toque ou olhar; quem falha em Vontade fica Abalado e sofre penalidade em Vigor na cena"
+    "descricao": "Arte Morte 2: Definhar; a Força e o Vigor do alvo contam um nível abaixo por nível investido, com o dano, a carga, o PV e a Absorção que vêm deles; o alvo aguenta com Vigor + Resistência."
    },
    {
-    "nome": "Frágil no corpo a corpo",
-    "descricao": "Absorção e Defesa baixas em combate direto; prefere manter distância e usar mortos-vivos como escudo"
+    "nome": "Podridão",
+    "descricao": "Arte Morte 1: apodrece corda, couro, madeira e comida, sem ferir criatura viva."
+   },
+   {
+    "nome": "Ritual da morte",
+    "descricao": "em poucos minutos de ritual ergue um morto-vivo para lutar ao lado dele. O efeito do livro que levanta cadáver (Servo de Ossos) é Morte 4, acima da Arte dele."
+   },
+   {
+    "nome": "frágil no corpo a corpo",
+    "descricao": "Bloqueio 6, 34 PV e Absorção baixa; mantém distância, põe os mortos-vivos e os seguidores na frente e drena quem chega perto."
+   },
+   {
+    "nome": "Sem inimizades naturais",
+    "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão, audição, olfato: humanos."
    }
   ],
   "poderes": [],
@@ -10084,11 +10350,12 @@
     "nivel": 2
    }
   ],
+  "mana": 9,
   "notas": "Mana 9. Em ritual, ergue um morto-vivo (Morte nível 3). Frágil no corpo a corpo.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Serve poderes que a maioria teme nomear, drenando a vida de vítimas e erguendo os mortos para servir sua vontade."
+    "texto": "Serve poderes que a maioria teme nomear, drenando a vida de vítimas e erguendo os mortos para servir sua vontade. Social: numa seita escondida, com seguidores e mortos-vivos."
    },
    {
     "titulo": "Sociedade",
@@ -10097,6 +10364,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Aprendeu a colher a Centelha dos mortos em vez de deixá-la voltar à Primeira Luz, um crime que a Ceifadora e as igrejas de Calin igualmente condenam; muitos desses cultos rastreiam sua doutrina até horrores vindos da Fenda, no White Wall."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Humano Médio, 34 PV, Impacto 4, Corte e Perfuração 1. Esquiva 12, Bloqueio 6. Tem 9 de Mana e conjura Morte até o nível 2: Dreno (tira vida e se cura), Definhar (tira Força e Vigor do alvo), Podridão. Em ritual, fora do combate, ergue um morto-vivo. Defesa Mental 14. De perto, cai fácil."
    }
   ]
  },
@@ -10384,7 +10655,7 @@
   "categoria": "Humanoide",
   "tipo": "soldado",
   "conceito": "humanoide Pequeno",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Humanoide pequeno e louco das profundezas, que o sol queima e que sequestra gente da superfície para experimentos cruéis. Atordoa e cria trevas com poderes menores e golpeia com a espada envenenada.",
   "tags": [
    "humanoide",
    "centelha"
@@ -10429,20 +10700,20 @@
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
    "valor": 3
   },
   "combate": {
-   "pv": 30,
-   "defesa": 12,
+   "pv": 40,
+   "defesa": 13,
    "defesaSocial": 4,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 2",
@@ -10453,9 +10724,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6 +4",
-     "dano": "1d6 +4 corte",
+     "nome": "Espada curta",
+     "pool": "4d6 +6",
+     "dano": "1d6 +2 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -10464,28 +10735,36 @@
   },
   "habilidades": [
    {
-    "nome": "Ataque Furtivo",
-    "descricao": "Golpeia com precisão extra quando pega o inimigo despreparado."
+    "nome": "Ataque furtivo",
+    "descricao": "Espada curta: Ativação: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a lâmina entra onde o alvo não guarda. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe."
    },
    {
-    "nome": "Loucura Inata",
-    "descricao": "Sua mente já está tão fraturada que se torna imune a efeitos de insanidade e confusão, resistindo com força de espírito onde outros usariam a sabedoria."
+    "nome": "Poderes menores",
+    "descricao": "poder natural (base Ofuscação 1): Ativação: uma ação, Velocidade 6. Duração: as trevas e os sons, até o fim da cena; o atordoamento, até o fim da próxima ação do alvo. Alcance: 18 m. Área: à escolha: trevas numa esfera de 6 m; sons ilusórios num ponto que ele vê; um alvo atordoado; ou um estrondo numa esfera de 3 m. Efeito: as trevas apagam a luz comum (ele enxerga nelas); os sons enganam quem ouve; o alvo atordoado perde a próxima ação; o estrondo atordoa quem está na esfera. Dano: o estrondo, 1d6 + Centelha, Impacto; os outros, nenhum. Resistência: mente, contra Influência + Ocultismo dele, para o atordoamento e os sons; corpo, Vigor + Resistência contra Dificuldade 10, para o estrondo. Limite de uso: três vezes por dia, somados."
    },
    {
-    "nome": "Uso de Veneno",
-    "descricao": "Aplica veneno de aranha em suas armas sem correr risco de se intoxicar."
+    "nome": "Resistência mágica",
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Vulnerabilidade ao Sol",
-    "descricao": "Sofre dano físico gradual a cada hora exposto à luz do sol."
+    "nome": "Vulnerabilidade ao sol",
+    "descricao": "Ativação: cada hora inteira à luz do sol. Duração: enquanto estiver ao sol. Alcance: o próprio corpo. Área: não se aplica. Efeito: o sol queima a pele e enfraquece o corpo. Dano: 1d6 por hora, que a Absorção não segura. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Poderes Menores",
-    "descricao": "Pode criar trevas, sons ilusórios, atordoar um inimigo à distância ou emitir um estrondo atordoante algumas vezes ao dia."
+    "nome": "Loucura inata",
+    "descricao": "a mente já fraturada o deixa imune a efeitos de insanidade e de confusão (a condição Confuso não o pega)."
    },
    {
-    "nome": "Resistência Mágica",
-    "descricao": "Seu corpo naturalmente dificulta que magias inimigas o afetem."
+    "nome": "Uso de veneno",
+    "descricao": "a Peçonha de aranha gigante na espada (Veneno e doença); aplica sem risco de se envenenar."
+   },
+   {
+    "nome": "caçador da superfície",
+    "descricao": "sobe à noite, atordoa e envenena um alvo isolado e o arrasta para baixo; foge do sol e da luz."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga no escuro das profundezas (site). · audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -10503,6 +10782,18 @@
    {
     "titulo": "Experimentos Cruéis",
     "texto": "Sequestram moradores da superfície para experimentos macabros na eterna e fútil busca por entender o que protege os outros da morte solar, condenados sempre ao fracasso por sua própria insanidade."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: em bando, típico 3 a 8."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Peçonha de aranha gigante · Potência 18 · Tick (sangue) · a cada 1 minuto · pool 4 (Destreza) · Desgaste 1 · pela Espada curta"
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Pequeno, 40 PV, Impacto 7, Corte e Perfuração 2. Esquiva e Bloqueio 12 (13 com a espada). A espada dá dano médio 5,5 e envenena (Peçonha de aranha gigante, Potência 18); +1d6 contra quem não o viu. Três vezes por dia cria trevas, sons, atordoa ou solta um estrondo. Ao sol, perde 1d6 PV por hora."
    }
   ]
  },
@@ -14785,7 +15076,7 @@
   "categoria": "Humanoide",
   "tipo": "capanga",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Elfo das profundezas, de pele escura e cabelo branco, servo das casas nobres governadas por matriarcas. Apaga a luz com trevas, marca o alvo com fogo feérico e o captura vivo com o veneno do sono na lâmina.",
   "tags": [
    "humanoide",
    "centelha"
@@ -14795,7 +15086,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "1,6 metro de altura",
+   "medida": "1,6 m de altura",
    "peso": "55 kg"
   },
   "ecologia": {
@@ -14831,19 +15122,19 @@
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "combate": {
    "pv": 31,
-   "defesa": 12,
+   "defesa": 13,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 3,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -14854,9 +15145,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6 +2",
-     "dano": "1d6 +3 corte",
+     "nome": "Espada curta",
+     "pool": "3d6 +4",
+     "dano": "1d6 +1 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -14865,24 +15156,32 @@
   },
   "habilidades": [
    {
-    "nome": "Visão no escuro",
-    "descricao": "Enxerga no escuro absoluto a uma distância considerável."
+    "nome": "Feitiçaria inata",
+    "descricao": "poder natural (base Sombra 1): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até ele desfazer. Alcance: 18 m. Área: à escolha: trevas numa esfera de 6 m; luzes dançantes que se movem como ele quer; ou fogo feérico que contorna um alvo de luz fraca. Efeito: as trevas apagam a luz comum (ele enxerga nelas); as luzes enganam e iluminam; o alvo do fogo feérico não pode ficar Escondido nem Invisível enquanto durar. Dano: nenhum. Resistência: esquiva, contra Influência + Manha dele, só para o fogo feérico. Limite de uso: cada um, uma vez por cena."
+   },
+   {
+    "nome": "Veneno do sono",
+    "descricao": "Espada curta: Ativação: o golpe envenenado que fere. Duração: 1 hora de sono, ou até alguém sacudir o alvo. Alcance: o do corpo a corpo. Área: um alvo. Efeito: quem perde os dois pontos do pool do veneno (Veneno e doença) cai Inconsciente, dormindo; é como o drow captura escravos sem matar. Dano: nenhum além do golpe. Resistência: corpo, Vigor + Resistência pela regra do veneno. Limite de uso: uma dose por lâmina, preparada antes da luta."
    },
    {
     "nome": "Sensibilidade à luz",
-    "descricao": "Luzes muito fortes o atrapalham, deixando-o momentaneamente ofuscado e desorientado."
+    "descricao": "Ativação: luz forte (sol, Arte de Luz, lanterna de perto). Duração: enquanto estiver na luz forte. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Ofuscado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Resistência a encantamentos e ao sono",
-    "descricao": "É naturalmente mais resistente a efeitos que tentam enfeitiçá-lo e imune a magias de sono."
+    "nome": "Resiliência mental",
+    "descricao": "a do Elfo, a raça parente: controle mental contra ele tem +4 de dificuldade, ou ele soma +1d6 para resistir, o que for melhor."
    },
    {
-    "nome": "Feitiçaria inata",
-    "descricao": "Consegue criar luzes dançantes, escuridão e fogo féerico sem precisar aprender magia de verdade."
+    "nome": "Imune ao sono mágico",
+    "descricao": "Arte ou poder que faz dormir não o pega."
    },
    {
-    "nome": "Uso de veneno",
-    "descricao": "Aplica em suas armas um veneno que mergulha a vítima em sono profundo caso ela falhe em resistir com um teste de Vigor; é a forma predileta dos drow para capturar escravos sem matar."
+    "nome": "caçador de escravos",
+    "descricao": "apaga a luz com as trevas, marca o alvo com o fogo feérico e golpeia com a lâmina envenenada para levar o adormecido vivo."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga no escuro absoluto a uma distância considerável (site). · audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -14900,6 +15199,18 @@
    {
     "titulo": "Sociedade de matriarcas",
     "texto": "Cidades subterrâneas são governadas por casas nobres rivais, chefiadas por matriarcas implacáveis que tramam umas contra as outras."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: em patrulha de uma casa nobre, típico 4 a 12."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Veneno do sono drow · Potência 13 · 1 minuto (sangue) · a cada 1 minuto · pool 2 (sono) · Desgaste 1 · pela Espada curta"
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 31 PV, Impacto 3, Corte e Perfuração 1. Esquiva e Bloqueio 12 (13 com a espada). A espada dá dano médio 4,5 e põe para dormir quem perde o pool do veneno. Cria trevas, luzes e fogo feérico; resiste a controle mental e não dorme por magia. A luz forte o ofusca."
    }
   ]
  },
@@ -14910,7 +15221,7 @@
   "categoria": "Humanoide",
   "tipo": "elite",
   "conceito": "esgrimista exímio",
-  "descricao": "Vive do duelo: apara, finta e responde com a ripose.",
+  "descricao": "Esgrimista exímio dos salões de Calin, que apara, finta e responde com a ripose. Trata a espada como conversa e despreza quem luta sujo.",
   "tags": [
    "humano",
    "centelha"
@@ -14947,29 +15258,43 @@
   },
   "pericias": {
    "prontidao": 4,
+   "esquiva": 4,
    "integridade": 5,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "combate": {
    "pv": 34,
-   "defesa": 23,
+   "defesa": 25,
    "defesaSocial": 4,
    "defesaMental": 19,
    "absorcao": {
-    "impacto": 8,
-    "corte": 6,
-    "perfuracao": 5
+    "impacto": 6,
+    "corte": 3,
+    "perfuracao": 3
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 23,
+    "bloqueio": 23,
+    "defesa": 24,
+    "contraTiro": 23,
+    "absorcao": {
+     "impacto": 8,
+     "corte": 5,
+     "perfuracao": 4
+    },
+    "nivel": 1,
+    "penalidade": 1
+   },
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 3,
@@ -14978,10 +15303,10 @@
    },
    "ataques": [
     {
-     "nome": "Florete (Ágil)",
+     "nome": "Lâmina leve",
      "pool": "5d6 +8",
-     "dano": "1d6 +6 perfurante · perf. 1",
-     "perfArma": 1,
+     "dano": "1d6 +4 corte",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -14989,38 +15314,49 @@
   },
   "habilidades": [
    {
-    "nome": "Aparar",
-    "descricao": "+3 na Defesa ao usar a ação de aparar"
+    "nome": "Postura Fluida",
+    "descricao": "Técnica postura-fluida, nível 1: +3 ao Bloqueio com armas de corte; apara sem penalidade."
    },
    {
-    "nome": "Riposte",
-    "descricao": "contra-ataca automaticamente quando apara com sucesso"
+    "nome": "Aparar",
+    "descricao": "Técnica aparar, nível 1: por 1 de Energia, +3 na Defesa por Bloqueio contra um golpe."
    },
    {
     "nome": "Finta",
-    "descricao": "engana a guarda do alvo, reduzindo a Defesa dele no próximo golpe"
+    "descricao": "Técnica finta, nível 1: por 1 de Energia, engana a guarda: −3 na Defesa do alvo no próximo ataque dele."
+   },
+   {
+    "nome": "Riposte",
+    "descricao": "Técnica riposte, nível 3: por 3 de Energia, ao aparar com sucesso, contra-ataca na hora."
    },
    {
     "nome": "Estocada precisa",
-    "descricao": "ataque rápido e certeiro, pouco dano bruto mas difícil de evitar"
+    "descricao": "Armas 5 com a Especialidade (duelo) +2."
+   },
+   {
+    "nome": "Sem inimizades naturais",
+    "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação."
+   },
+   {
+    "nome": "a espada como conversa",
+    "descricao": "um adversário por vez; apara, finta para abrir espaço e responde com a ripose; recusa luta suja e desafia o melhor do grupo."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão, audição, olfato: humanos."
    }
   ],
   "poderes": [],
   "locomocao": {
    "terra": 3
   },
-  "tecnicas": [
-   "postura-fluida",
-   "aparar",
-   "finta",
-   "riposte"
-  ],
+  "tecnicas": [],
   "artes": [],
   "notas": "Aparar: +3 na Defesa; Riposte contra-ataca ao aparar.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Vive do duelo: para golpes com precisão, finta para abrir espaço e responde com a ripose certeira, tratando a espada como conversa e não como açougue."
+    "texto": "Vive do duelo: para golpes com precisão, finta para abrir espaço e responde com a ripose certeira, tratando a espada como conversa e não como açougue. Social: sozinho."
    },
    {
     "titulo": "Personalidade",
@@ -15029,6 +15365,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Figura comum nos salões e academias de esgrima das cidades de Calin, onde o duelo formal ainda é visto como arte civilizada, longe do tabu que recai sobre a magia."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Humano Médio, Centelha 3, 34 PV, de couro (Impacto 8, Corte 5, Perfuração 4). Esquiva e Bloqueio 23 (24 com a lâmina, 27 com a Postura Fluida). A lâmina dá dano médio 7,5. Tem 12 de Energia para Aparar, Fintar e o Riposte: quem erra o golpe leva o contra-ataque."
    }
   ]
  },
@@ -15039,7 +15379,7 @@
   "categoria": "Humanoide",
   "tipo": "capanga",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Anão cinzento das profundezas, amargo e cruel, que vive em clãs senhores de escravos. Cresce até o dobro do tamanho ou some da vista por um instante, e não sente veneno nem paralisia, mas a luz forte o ofusca.",
   "tags": [
    "humanoide",
    "centelha"
@@ -15049,7 +15389,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "1,2 metro de altura",
+   "medida": "1,2 m de altura",
    "peso": "55 kg"
   },
   "ecologia": {
@@ -15079,25 +15419,25 @@
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 1
   },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "combate": {
    "pv": 37,
-   "defesa": 4,
+   "defesa": 8,
    "defesaSocial": 4,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -15108,35 +15448,47 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2 +2",
+     "nome": "Machado",
+     "pool": "2d6+2 +3",
      "dano": "1d6 +4 corte",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Visão no escuro",
-    "descricao": "Enxerga no escuro até 36 metros, mesmo em cavernas sem luz alguma."
+    "nome": "Crescer",
+    "descricao": "poder natural (base Metamorfose 2): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até ele desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: o corpo e o que ele veste dobram de altura (Tamanho Grande); soma +1 na Força e perde 2 na Esquiva enquanto durar. Dano: o dos golpes, com a Força maior. Resistência: nenhum. Limite de uso: uma vez por cena, contando com o Sumir."
    },
    {
-    "nome": "Imune a paralisia e venenos",
-    "descricao": "Não sofre com toxinas nem efeitos que imobilizam o corpo; também resiste melhor a ilusões que tentam enganar a mente."
+    "nome": "Sumir",
+    "descricao": "poder natural (base Ofuscação 2): Ativação: uma ação, Velocidade 6. Duração: 12 Ticks, ou até ele atacar. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Invisível. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena, contando com o Crescer."
    },
    {
     "nome": "Sensibilidade à luz",
-    "descricao": "Luz forte ofusca o duergar, impondo penalidade em testes de percepção e ataque enquanto exposto a ela."
+    "descricao": "Ativação: luz forte (sol, Arte de Luz, lanterna de perto). Duração: enquanto estiver na luz forte. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Ofuscado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Poderes inatos",
-    "descricao": "Uma vez por cena pode aumentar o próprio corpo ou desaparecer da visão dos inimigos por alguns instantes."
+    "nome": "Resiste a ilusões",
+    "descricao": "Ativação: uma ilusão o tem como alvo. Duração: a da ilusão. Alcance: o próprio corpo. Área: não se aplica. Efeito: a ilusão pega menos nele. Dano: nenhum. Resistência: mente, com +2 na Defesa Mental contra ilusão. Limite de uso: nenhum."
+   },
+   {
+    "nome": "Imune a paralisia e venenos",
+    "descricao": "veneno e paralisia não pegam nele (o Anão parente tem só +1d6 contra veneno; o duergar é imune)."
    },
    {
     "nome": "Firme como pedra",
-    "descricao": "Dificilmente é derrubado ou empurrado enquanto pisa em solo sólido."
+    "descricao": "Atletismo, com a Especialidade natural (ficar de pé em solo firme) +2, contra Derrubar e Empurrar."
+   },
+   {
+    "nome": "senhor de escravos",
+    "descricao": "luta em grupo, cresce para esmagar o primeiro, some para cercar o fraco e captura em vez de matar; foge da luz."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga no escuro até 36 m, em caverna sem luz nenhuma (site), como o Anão parente. · audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -15154,6 +15506,14 @@
    {
     "titulo": "Senhores de escravos",
     "texto": "Vivem em clãs que capturam forasteiros para o trabalho forçado; prisioneiros anões raramente sobrevivem ao primeiro dia de cativeiro."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: em clã, típico 4 a 12."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 37 PV, Impacto 5, Corte e Perfuração 1. Defesa baixa (Bloqueio 8, Esquiva 4). O machado dá dano médio 7,5. Uma vez por cena cresce (Grande, +1 de Força) ou some (Invisível por 12 Ticks). Veneno e paralisia não o pegam; a luz forte o ofusca."
    }
   ]
  },
@@ -18087,7 +18447,7 @@
   "categoria": "Humanoide",
   "tipo": "soldado",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Senhor esguio dos povos das trevas, de roupa escura sempre limpa e uma espada curta em cada mão. Golpeia de surpresa no escuro, foge da luz e, ao morrer, explode numa bola de fogo branco.",
   "tags": [
    "humanoide",
    "centelha"
@@ -18127,26 +18487,26 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 3,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "sociabilidade": 1,
+   "furtividade": 3
   },
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "combate": {
    "pv": 37,
-   "defesa": 14,
-   "defesaSocial": 6,
+   "defesa": 19,
+   "defesaSocial": 10,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -18157,9 +18517,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "4d6 +4",
-     "dano": "1d6 +6 corte",
+     "nome": "Espada curta",
+     "pool": "4d6+2 +6",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -18168,28 +18528,32 @@
   },
   "habilidades": [
    {
-    "nome": "Explosão de Chamas",
-    "descricao": "Ao morrer, seu corpo estoura em uma bola de fogo branco-quente, queimando todos próximos que não conseguirem se esquivar a tempo."
+    "nome": "Duas lâminas",
+    "descricao": "a empunhadura dupla: um golpe por mão na mesma ação, as duas a −1d6, cada uma com o próprio acerto e dano."
    },
    {
-    "nome": "Ataque Furtivo",
-    "descricao": "Ataca com precisão letal contra alvos desprevenidos, causando dano considerável adicional."
+    "nome": "Ataque furtivo",
+    "descricao": "Espada curta: Ativação: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a lâmina entra onde o alvo não guarda. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe."
    },
    {
-    "nome": "Duas Lâminas",
-    "descricao": "Luta com uma espada curta em cada mão, golpeando duas vezes por ataque com igual destreza."
+    "nome": "Explosão de chamas",
+    "descricao": "Ativação: ele morre. Duração: instantânea. Alcance: 3 m. Área: esfera de 3 m em volta do corpo. Efeito: o corpo estoura numa bola de fogo branco-quente. Dano: 3d6, fogo. Resistência: esquiva, contra Dificuldade 15; quem passa leva metade. Limite de uso: uma vez, ao morrer."
    },
    {
-    "nome": "Visão Perfeita no Escuro",
-    "descricao": "Enxerga com clareza total em qualquer escuridão, mesmo a mais densa e mágica."
+    "nome": "Cegueira pela luz",
+    "descricao": "Ativação: luz forte (sol, Arte de Luz, lanterna de perto). Duração: enquanto estiver na luz forte. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Ofuscado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Uso de Veneno",
-    "descricao": "Aplica veneno nas lâminas sem risco de se intoxicar."
+    "nome": "Uso de veneno",
+    "descricao": "aplica veneno nas lâminas sem nunca se envenenar ao aplicar. O veneno é o que ele tiver (o Mestre escolhe do catálogo)."
    },
    {
-    "nome": "Cegueira pela Luz",
-    "descricao": "A luz intensa ofusca seus sentidos, prejudicando-o fora da escuridão."
+    "nome": "senhor das trevas",
+    "descricao": "deixa os rastejadores na frente, ataca de surpresa no escuro com as duas lâminas e foge da luz; ao cair, a explosão pega quem está perto."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga com clareza em qualquer escuridão, inclusive a criada por magia (site). · audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -18207,6 +18571,14 @@
    {
     "titulo": "Vestes Impecáveis",
     "texto": "Ao contrário de seus servos maltrapilhos, vestem panos escuros e couro sempre limpos, carregando um par de espadas curtas que preferem a qualquer outra arma."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: senhor de um bando de rastejadores, típico 1 com 4 a 12 servos."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 37 PV, Impacto 6, Corte e Perfuração 2. Bloqueio 18 (19 com a espada), Esquiva 14. Uma espada curta em cada mão: dois golpes por ação a −1d6, dano médio 7,5 cada, e +1d6 contra quem não o viu. Na luz forte fica Ofuscado; ao morrer, a explosão faz 3d6 de fogo a 3 m."
    }
   ]
  },
@@ -22454,7 +22826,7 @@
   "categoria": "Humanoide",
   "tipo": "soldado",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Humanoide alto com cabeça de hiena que caça em bando uivante, segue caravanas e devora o que mata. Morde além da arma e ataca melhor quando outro gnoll cerca a mesma presa.",
   "tags": [
    "humanoide"
   ],
@@ -22495,25 +22867,25 @@
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 1
   },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
    "valor": 3
   },
   "combate": {
    "pv": 34,
-   "defesa": 4,
+   "defesa": 6,
    "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
-    "corte": 1,
-    "perfuracao": 1
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -22524,31 +22896,43 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6",
+     "nome": "Machado",
+     "pool": "3d6 +1",
      "dano": "1d6 +4 corte",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Mordida",
+     "pool": "3d6",
+     "dano": "1d6 +4 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Mordida selvagem",
-    "descricao": "ataque de mordida além da arma"
+    "nome": "Caçador em matilha",
+    "descricao": "Ativação: nenhuma; vale quando outro gnoll está em contato com o mesmo alvo. Duração: enquanto o companheiro estiver ali. Alcance: o do corpo a corpo. Área: um alvo. Efeito: soma +1 na jogada de ataque contra esse alvo. Dano: nenhum além do golpe. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Caçador em matilha",
-    "descricao": "bônus ao atacar acompanhado de outro gnoll"
+    "nome": "Mordida selvagem",
+    "descricao": "a Mordida da tabela, no lugar do golpe de machado (um ataque por ação)."
    },
    {
     "nome": "Alerta",
-    "descricao": "Prontidão 1; raramente é pego de surpresa"
+    "descricao": "Prontidão 1."
    },
    {
-    "nome": "Visão no escuro",
-    "descricao": "enxerga sem penalidade no escuro"
+    "nome": "bando uivante",
+    "descricao": "cerca a presa em grupo, uiva para assustar, morde e bate no mais fraco; devora o que mata e foge se o bando perde metade."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga sem penalidade no escuro (site). · faro: o de uma hiena; Prontidão (faro) +2."
    }
   ],
   "poderes": [],
@@ -22561,7 +22945,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Caçam em bando uivante, devoram o que matam sem cerimônia e atacam tanto por fome quanto pelo puro prazer de destruir."
+    "texto": "Caçam em bando uivante, devoram o que matam sem cerimônia e atacam tanto por fome quanto pelo puro prazer de destruir. Social: em bando, típico 4 a 12."
    },
    {
     "titulo": "Hábitos",
@@ -22574,6 +22958,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Gnolls não nascem, eles rasgam caminho para fora de carcaças tocadas por uma fome vinda de além mundo; corre entre os caçadores de Mére o boato de que os primeiros bandos surgiram perto da Fenda, e desde então toda alcateia carrega um cheiro de coisa que não deveria existir neste plano."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 34 PV, Impacto 3. Defesa baixa (Bloqueio 6, Esquiva 4). Machado ou mordida, dano médio 7,5 cada; +1 no ataque quando outro gnoll cerca o mesmo alvo. Vem em bando."
    }
   ]
  },
@@ -22584,7 +22972,7 @@
   "categoria": "Humanoide",
   "tipo": "capanga",
   "conceito": "humanoide Pequeno",
-  "descricao": "Humanoide pequeno e covarde, perigoso mesmo assim em bando.",
+  "descricao": "Humanoide pequeno, covarde sozinho e perigoso em bando. Some entre sombras e mato, enxerga no escuro e cerca a presa maior para atacar de vários lados.",
   "tags": [
    "humanoide"
   ],
@@ -22624,25 +23012,25 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 3
+   "furtividade": 2
   },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
-   "valor": 3
+   "valor": 2
   },
   "combate": {
    "pv": 26,
-   "defesa": 10,
+   "defesa": 11,
    "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
-    "corte": 1,
-    "perfuracao": 1
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -22653,9 +23041,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "1d6+2",
-     "dano": "1d6 +2 corte",
+     "nome": "Espada curta",
+     "pool": "3d6 +2",
+     "dano": "1d6 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -22664,20 +23052,24 @@
   },
   "habilidades": [
    {
-    "nome": "Pequeno e furtivo",
-    "descricao": "Furtividade 2; some entre sombras e vegetação com facilidade"
-   },
-   {
-    "nome": "Visão no escuro",
-    "descricao": "enxerga sem penalidade em ambientes escuros"
-   },
-   {
     "nome": "Emboscada em bando",
-    "descricao": "ataca em grupo e flanqueia presas maiores"
+    "descricao": "flanquear (Flanqueado) e atacar junto; Armas (atacar em bando) +1."
+   },
+   {
+    "nome": "Pequeno e furtivo",
+    "descricao": "Furtividade, com a Especialidade natural (entre sombras e mato) +2 e o Tamanho Pequeno."
    },
    {
     "nome": "Faro de sobrevivente",
-    "descricao": "Sobrevivência 1; rastreia e se orienta no território"
+    "descricao": "Sobrevivência 1."
+   },
+   {
+    "nome": "bando covarde",
+    "descricao": "só ataca em número e de emboscada; cerca o mais fraco, foge quando metade do bando cai."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga sem luz como de dia (site). · audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -22690,7 +23082,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Covardes quando sozinhos ou em desvantagem, cruéis com qualquer coisa mais fraca, preferem emboscada e armadilha a luta franca."
+    "texto": "Covardes quando sozinhos ou em desvantagem, cruéis com qualquer coisa mais fraca, preferem emboscada e armadilha a luta franca. Social: em bando, típico 4 a 12."
    },
    {
     "titulo": "Sociedade",
@@ -22703,6 +23095,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "São um dos povos ásperos que os anões moldaram da própria rocha da montanha, usando técnicas aprendidas pela metade dos elfos; sem a lapidação que os anões deram a si mesmos, os goblins saíram numerosos, de vida curta e sempre à margem das cidades humanas."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Pequeno: mais difícil de acertar que um homem, pela regra de Tamanho. 26 PV, Impacto 3. Esquiva e Bloqueio 10 (11 com a espada). A espada curta dá dano médio 3,5. Sozinho, cai rápido; o perigo é o bando que cerca e flanqueia no escuro."
    }
   ]
  },
@@ -24195,7 +24591,7 @@
   "categoria": "Humanoide",
   "tipo": "soldado",
   "conceito": "milícia treinada",
-  "descricao": "Patrulha disciplinada, luta em formação com escudo.",
+  "descricao": "Miliciano de cota de malha e escudo que patrulha em dupla e luta em formação fechada. Contém o problema até o reforço chegar e reporta qualquer sinal de magia à igreja.",
   "tags": [
    "humano"
   ],
@@ -24231,30 +24627,43 @@
   },
   "pericias": {
    "prontidao": 3,
-   "esquiva": 1,
+   "esquiva": 2,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "sociabilidade": 1,
+   "furtividade": 0
   },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "combate": {
    "pv": 34,
-   "defesa": 8,
-   "defesaSocial": 4,
+   "defesa": 11,
+   "defesaSocial": 6,
    "defesaMental": 12,
    "absorcao": {
-    "impacto": 4,
-    "corte": 7,
-    "perfuracao": 2
+    "impacto": 3,
+    "corte": 0,
+    "perfuracao": 0
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 7,
+    "bloqueio": 10,
+    "defesa": 11,
+    "contraTiro": 10,
+    "absorcao": {
+     "impacto": 4,
+     "corte": 6,
+     "perfuracao": 1
+    },
+    "nivel": 1,
+    "penalidade": 2
+   },
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -24265,7 +24674,7 @@
     {
      "nome": "Espada curta",
      "pool": "3d6 +2",
-     "dano": "1d6 +3 corte",
+     "dano": "1d6 +1 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -24274,20 +24683,28 @@
   },
   "habilidades": [
    {
-    "nome": "Malha",
-    "descricao": "Absorção +4, mas Esquiva −1"
-   },
-   {
-    "nome": "Escudo",
-    "descricao": "+2 ao Bloqueio"
-   },
-   {
     "nome": "Formação",
-    "descricao": "ganha bônus de Defesa lutando lado a lado com outro guarda"
+    "descricao": "Ativação: nenhuma; vale enquanto luta ombro a ombro com outro guarda de escudo. Duração: enquanto a formação se mantiver. Alcance: 1 m, o companheiro ao lado. Área: ele e o companheiro. Efeito: soma +1 na Defesa e não pode ser flanqueado pelo lado do companheiro. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
     "nome": "Chamar reforço",
-    "descricao": "grita por apoio; mais guardas chegam em poucas rodadas"
+    "descricao": "Ativação: uma ação, Velocidade 3, gritando ou apitando. Duração: instantânea. Alcance: onde o grito ou o apito é ouvido, dentro da cidade. Área: não se aplica. Efeito: chegam 1d6 guardas da patrulha mais perto em 30 Ticks, se houver patrulha por perto (o Mestre decide). Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena."
+   },
+   {
+    "nome": "Malha e escudo",
+    "descricao": "a cota de malha e o hoplon na frase da linha Absorção."
+   },
+   {
+    "nome": "conter até o reforço",
+    "descricao": "fecha a formação, apara com o escudo, segura o problema e chama reforço; contra magia, recua e reporta à igreja."
+   },
+   {
+    "nome": "Sem inimizades naturais",
+    "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão, audição, olfato: humanos."
    }
   ],
   "poderes": [],
@@ -24300,7 +24717,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Patrulha em duplas ou pequenos pelotões, luta em formação fechada com escudo e lança curta, e prioriza conter o problema até chegar reforço."
+    "texto": "Patrulha em duplas ou pequenos pelotões, luta em formação fechada com escudo e lança curta, e prioriza conter o problema até chegar reforço. Social: em dupla ou pelotão, típico 2 a 6."
    },
    {
     "titulo": "Sociedade",
@@ -24309,6 +24726,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "É a disciplina greco-romana de Calin em carne e osso: milícia treinada, hierárquica, que enxerga em qualquer sinal de magia um problema a ser reportado à igreja antes de ser combatido."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Humano Médio, 34 PV, de malha e escudo (Impacto 4, Corte 6, Perfuração 1). Bloqueio 10 (11 com a espada), Esquiva 7, contra tiro 10; em formação, +1. A espada curta dá dano médio 4,5. Contém e chama reforço: 1d6 guardas em 30 Ticks."
    }
   ]
  },
@@ -25316,7 +25737,7 @@
   "categoria": "Humanoide",
   "tipo": "capanga",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Goblinoide do tamanho de um homem, soldado nato que luta em formação, de espada longa. Coordena emboscadas em silêncio e enxerga no escuro.",
   "tags": [
    "humanoide"
   ],
@@ -25361,20 +25782,20 @@
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "combate": {
    "pv": 40,
-   "defesa": 10,
+   "defesa": 13,
    "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -25385,31 +25806,35 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2",
+     "nome": "Espada longa",
+     "pool": "3d6+2 +1",
      "dano": "1d6 +4 corte",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Disciplina militar",
-    "descricao": "ganha bônus ao lutar em formação ao lado de aliados"
+    "descricao": "Ativação: nenhuma; vale enquanto luta ombro a ombro com um aliado que também tem Disciplina militar. Duração: enquanto a formação se mantiver. Alcance: 1 m, o aliado ao lado. Área: ele e o aliado. Efeito: soma +1 na Defesa e não pode ser flanqueado pelo lado do aliado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
     "nome": "Furtivo",
-    "descricao": "Furtividade 2; coordena emboscadas em silêncio"
+    "descricao": "Furtividade 2; arma emboscadas em silêncio."
    },
    {
     "nome": "Alerta",
-    "descricao": "Prontidão 1; evita surpresas"
+    "descricao": "Prontidão 1."
    },
    {
-    "nome": "Visão no escuro",
-    "descricao": "enxerga sem luz"
+    "nome": "linha de escudos",
+    "descricao": "avança em formação, cobre o companheiro, recua em ordem; obedece ao comandante e não foge sozinho."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga sem luz (site). · audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -25422,7 +25847,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Disciplinados e metódicos, lutam em formação fechada e valorizam hierarquia militar acima de tudo, ao contrário dos goblins soltos."
+    "texto": "Disciplinados e metódicos, lutam em formação fechada e valorizam hierarquia militar acima de tudo, ao contrário dos goblins soltos. Social: em tropa, típico 4 a 12."
    },
    {
     "titulo": "Sociedade",
@@ -25435,6 +25860,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Entre os filhos que os anões moldaram da rocha, os hobgoblins foram os que melhor herdaram o senso de ordem da forja; erguem acampamentos fortificados nas terras selvagens de Mére, disciplinados o bastante para preocupar até exércitos humanos."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 40 PV, Impacto 5. Bloqueio 12 (13 com a espada), Esquiva 10; em formação, +1. A espada longa dá dano médio 7,5 (10, 5 com as duas mãos). Vem em tropa e não foge sozinho."
    }
   ]
  },
@@ -25445,7 +25874,7 @@
   "categoria": "Humanoide",
   "tipo": "soldado",
   "conceito": "humanoide Médio (reptiliano)",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Réptil bípede dos brejos, frio e prático, que nada sem esforço e prende o fôlego por muito tempo. Luta com maça de espigões e com a cauda, e trata os outros povos como presa ou aliado de ocasião.",
   "tags": [
    "humanoide"
   ],
@@ -25454,7 +25883,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "1,8 m de altura (cerca de 2,4 m de comprimento com a cauda)",
+   "medida": "2,4 m de comprimento, 1,8 m de altura",
    "peso": "90 kg"
   },
   "ecologia": {
@@ -25484,26 +25913,26 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "sociabilidade": 1,
+   "furtividade": 1
   },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "combate": {
    "pv": 34,
-   "defesa": 4,
-   "defesaSocial": 4,
+   "defesa": 7,
+   "defesaSocial": 6,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
-    "corte": 1,
-    "perfuracao": 1
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -25514,31 +25943,47 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2",
-     "dano": "1d6 +3 corte",
+     "nome": "Maça estrela",
+     "pool": "2d6+2 +1",
+     "dano": "1d6 +3 impacto",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Rabada",
+     "pool": "2d6+2",
+     "dano": "1d6 +6 impacto",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Nadador nato",
-    "descricao": "nada sem penalidade e prende a respiração por longos períodos"
+    "descricao": "Natação 3 e o nado do site; prende a respiração com Resistência (prender a respiração) +3."
    },
    {
     "nome": "Rabada",
-    "descricao": "ataque de cauda além da arma principal"
-   },
-   {
-    "nome": "Atlético",
-    "descricao": "Atletismo 1; escala e salta bem"
+    "descricao": "a Rabada da tabela, no lugar do golpe de maça (um ataque por ação)."
    },
    {
     "nome": "Sobrevivente do pântano",
-    "descricao": "Sobrevivência 1; rastreia e se camufla em áreas alagadas"
+    "descricao": "Sobrevivência 1 e Furtividade (no alagado) +2."
+   },
+   {
+    "nome": "Atlético",
+    "descricao": "Atletismo 1."
+   },
+   {
+    "nome": "caçador do brejo",
+    "descricao": "espera dentro da água, ataca de surpresa, alterna a maça e a cauda; recua para a água se a luta vira."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão, audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -25552,7 +25997,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Frios e pragmáticos, avaliam cada situação apenas por sobrevivência e proveito, sem a noção humana de bem e mal."
+    "texto": "Frios e pragmáticos, avaliam cada situação apenas por sobrevivência e proveito, sem a noção humana de bem e mal. Social: em tribo, típico 4 a 12."
    },
    {
     "titulo": "Hábitos",
@@ -25565,17 +26010,21 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Prosperam nos brejos e deltas de Mére, onde a selva esconde tanto perigo quanto cidade escondida; para eles humanos e elfos são só mais uma presa ou aliança passageira, sem o peso das rixas antigas que outras raças carregam."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 34 PV, Impacto 3. Defesa baixa (Bloqueio 6, 7 com a maça; Esquiva 4). Maça (dano médio 6, 5) ou cauda (9, 5). Na água, nada bem e prende o fôlego muito tempo: ataca de dentro do brejo."
    }
   ]
  },
  {
   "id": "homem-rato-forma-humana",
-  "nome": "Homem-Rato (forma humana)",
+  "nome": "Homem-Rato",
   "nomeIngles": "Lycanthrope, Wererat",
   "categoria": "Humanoide",
   "tipo": "soldado",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Homem-rato das guildas escondidas sob a cidade: de dia vive como gente comum, à noite ataca de surpresa com espada e dentes. Só a prata o fere de verdade, e quem sobrevive à mordida pode virar homem-rato.",
   "tags": [
    "humanoide",
    "centelha"
@@ -25601,7 +26050,7 @@
   "semImagem": false,
   "atributos": {
    "forca": 3,
-   "destreza": 4,
+   "destreza": 5,
    "vigor": 4,
    "influencia": 1,
    "perspicacia": 2,
@@ -25615,27 +26064,35 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 3
   },
   "vontade": 7,
-  "aparencia": 4,
+  "aparencia": 3,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "combate": {
    "pv": 37,
-   "defesa": 12,
+   "defesa": 15,
    "defesaSocial": 4,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "prata"
+   ],
+   "resistencias": [
+    "corte",
+    "perfuracao",
+    "impacto"
+   ],
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -25644,10 +26101,18 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6 +4",
-     "dano": "1d6 +5 corte",
+     "nome": "Espada curta",
+     "pool": "4d6 +6",
+     "dano": "1d6 +3 corte",
      "perfArma": null,
+     "speed": 5,
+     "classe": "leve"
+    },
+    {
+     "nome": "Mordida",
+     "pool": "4d6 +5",
+     "dano": "1d6 +3 perfurante · perf. 0",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -25655,28 +26120,32 @@
   },
   "habilidades": [
    {
-    "nome": "Forma Mutável",
-    "descricao": "Pode assumir forma humana, híbrida ou de rato gigante à vontade, cada uma com vantagens diferentes em combate ou disfarce."
+    "nome": "Forma mutável",
+    "descricao": "Ativação: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Efeito: vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia."
    },
    {
-    "nome": "Ataque Furtivo",
-    "descricao": "Golpeia com precisão cirúrgica quando a vítima está distraída ou cercada, causando dano extra."
+    "nome": "Mordida maldita",
+    "descricao": "Mordida: Ativação: a Mordida que fere (1 de dano ou mais depois da Absorção). Duração: permanente, se pegar. Alcance: o do corpo a corpo. Área: um alvo. Efeito: quem sobrevive à mordida e não trata a ferida até o fim do dia vira homem-rato na próxima lua cheia. Dano: o da Mordida. Resistência: corpo, Vigor + Resistência contra Dificuldade 10; a maldição só não pega se a ferida for tratada a tempo. Limite de uso: um por golpe."
    },
    {
-    "nome": "Esquiva Sobrenatural",
-    "descricao": "Evita quase por completo efeitos de área ao tentar escapar, saindo praticamente ileso onde outros se feririam gravemente."
+    "nome": "Ataque furtivo",
+    "descricao": "Espada curta ou Mordida: Ativação: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o golpe entra onde o alvo não guarda. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe."
    },
    {
-    "nome": "Pele Resistente em Forma Híbrida",
-    "descricao": "Na forma de meio-rato, sua pele grossa absorve boa parte dos golpes comuns; apenas prata a fere por completo."
+    "nome": "Esquiva sobrenatural",
+    "descricao": "Ativação: um efeito de área que pede esquiva. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Efeito: se passa na esquiva, não leva dano nenhum, em vez de metade. Dano: nenhum. Resistência: esquiva, a do próprio efeito. Limite de uso: nenhum."
    },
    {
-    "nome": "Mordida Maldita",
-    "descricao": "Em forma híbrida, a mordida transmite uma doença sombria; se não for curada, a vítima corre o risco de se tornar uma nova criatura amaldiçoada como ela."
+    "nome": "Afinidade com ratos",
+    "descricao": "Ativação: uma ação, Velocidade 6, um guincho ou um gesto. Duração: até o fim da cena. Alcance: onde o guincho é ouvido. Área: os ratos comuns e gigantes que o ouvem. Efeito: eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. Dano: nenhum. Resistência: nenhum. Limite de uso: um enxame ou até 6 ratos gigantes por vez."
    },
    {
-    "nome": "Afinidade com Ratos",
-    "descricao": "Entende e se comunica com ratos comuns e gigantes, que raramente atacam um dos seus."
+    "nome": "ladrão da guilda",
+    "descricao": "de dia é gente comum; à noite ataca de surpresa no beco, morde para amaldiçoar e foge pelo esgoto na forma de rato."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "faro: de rato, em todas as formas; Prontidão (faro) +2. · visão e audição: apuradas."
    }
   ],
   "poderes": [],
@@ -25698,6 +26167,14 @@
    {
     "titulo": "Disfarce Perfeito",
     "texto": "Durante o dia, muitos vivem vidas comuns como mercadores, ladrões ou guardas, escondendo a fera sob a pele humana."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: numa guilda escondida, com outros homens-rato e ratos."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Homem-rato de 1,7 m: espada curta ou mordida (dano médio 6, 5 cada), +1d6 contra quem não o viu, e a mordida pode passar a maldição. 37 PV, Esquiva e Bloqueio 14. Corte, perfuração e impacto fazem metade; a prata passa. Contra área, se esquiva sai ileso. Chama os ratos e foge pelo esgoto na forma de rato."
    }
   ]
  },
@@ -26368,7 +26845,7 @@
   "categoria": "Humanoide",
   "tipo": "capanga",
   "conceito": "humanoide Pequeno (reptiliano)",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Réptil pequeno de cauda grossa que vive em túneis cheios de armadilhas. Covarde de frente, ataca em grupo com lanças de trás das engenhocas e venera qualquer dragão que o proteja.",
   "tags": [
    "humanoide"
   ],
@@ -26377,7 +26854,7 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "0,75 m de altura",
+   "medida": "1,1 m de comprimento, 0,75 m de altura",
    "peso": "16 kg"
   },
   "ecologia": {
@@ -26406,26 +26883,26 @@
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 3
+   "sociabilidade": 1,
+   "furtividade": 1
   },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
-   "valor": 3
+   "temperanca": 3,
+   "valor": 2
   },
   "combate": {
-   "pv": 24,
-   "defesa": 8,
-   "defesaSocial": 4,
+   "pv": 17,
+   "defesa": 10,
+   "defesaSocial": 6,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 2,
-    "corte": 1,
-    "perfuracao": 1
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -26436,35 +26913,39 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "1d6+2",
-     "dano": "1d6 +2 corte",
-     "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "nome": "Lança",
+     "pool": "2d6+2 +1",
+     "dano": "1d6 +4 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "haste"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Visão no escuro",
-    "descricao": "enxerga bem em túneis e cavernas sem luz"
-   },
-   {
     "nome": "Armadilheiro",
-    "descricao": "Ofícios 1; monta armadilhas simples antes do combate"
-   },
-   {
-    "nome": "Furtivo",
-    "descricao": "Furtividade 1 para se esconder e vigiar"
-   },
-   {
-    "nome": "Alerta",
-    "descricao": "Prontidão 1; dificilmente é surpreendido"
+    "descricao": "Ofícios Gerais 1; monta armadilhas simples no túnel antes do combate, e o efeito de cada uma fica com o Mestre."
    },
    {
     "nome": "Corpo frágil",
-    "descricao": "poucos PV; prefere lutar em grupo ou de dentro de armadilhas"
+    "descricao": "a Vida pela linha de baixo da zona de transição (17 PV)."
+   },
+   {
+    "nome": "Furtivo",
+    "descricao": "Furtividade 1 e o Tamanho Pequeno."
+   },
+   {
+    "nome": "Alerta",
+    "descricao": "Prontidão 1."
+   },
+   {
+    "nome": "túnel armado",
+    "descricao": "não luta de frente; atrai o inimigo para a armadilha, ataca com a lança de trás do companheiro e foge pelos túneis se a luta vira."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga bem em túnel e caverna sem luz (site). · audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -26477,7 +26958,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Covardes em combate direto, letais quando podem escolher o momento, através de armadilhas, túneis colapsáveis e emboscadas planejadas com paciência."
+    "texto": "Covardes em combate direto, letais quando podem escolher o momento, através de armadilhas, túneis colapsáveis e emboscadas planejadas com paciência. Social: em clã, típico 4 a 12."
    },
    {
     "titulo": "Hábitos",
@@ -26490,6 +26971,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Primos distantes dos lagartos e trogloditas que povoam as profundezas de Mére e das ruínas do White Wall, os kobolds prosperam nos túneis abandonados desde que a Fenda expulsou os anões, ocupando galerias que ninguém mais ousa reclamar."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Pequeno, 17 PV, Impacto 2. Esquiva e Bloqueio 8 (10 com a lança). A lança a duas mãos dá dano médio 7,5, com alcance. Um golpe bom derruba um kobold; o perigo é o túnel armado e o grupo que ataca de trás das armadilhas."
    }
   ]
  },
@@ -30384,7 +30869,7 @@
   "categoria": "Humanoide",
   "tipo": "chefe",
   "conceito": "artilharia arcana",
-  "descricao": "Conjura fogo e força sobre o campo; perigoso a qualquer distância.",
+  "descricao": "Mago de guerra frio e calculista que abre o combate com fogo em área, se cobre com escudo de força e trata a tropa comum como escudo descartável. Perigoso a qualquer distância; frágil de perto.",
   "tags": [
    "humano",
    "centelha",
@@ -30425,14 +30910,14 @@
    "esquiva": 3,
    "integridade": 5,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "vontade": 8,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 4
   },
   "combate": {
@@ -30442,8 +30927,8 @@
    "defesaMental": 21,
    "absorcao": {
     "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
@@ -30454,40 +30939,51 @@
    },
    "ataques": [
     {
-     "nome": "Bola de fogo (Fogo 3)",
-     "pool": "5d6 +6",
-     "dano": "3d6 +3 fogo (área)",
+     "nome": "Soco",
+     "pool": "1d6+2 +1",
+     "dano": "1d6 +3 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "arte",
-     "notas": "3 Mana; explosão em área. O pool vale enquanto a pendência 25 do Arcano não fechar: área talvez não tenha pontaria"
+     "speed": 5,
+     "classe": "leve"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Bola de fogo",
-    "descricao": "explosão numa área; dano alto a todos dentro, metade se Esquivar"
-   },
-   {
-    "nome": "Escudo de força",
-    "descricao": "camada extra de Absorção (Forças) que bloqueia golpes até se esgotar"
-   },
-   {
-    "nome": "Concentração arcana",
-    "descricao": "se sofrer dano em corpo a corpo, arrisca perder a conjuração seguinte"
+    "descricao": "Arte Fogo 4: Bola de Fogo, explosão em área de 3d6 que pega quatro inimigos juntos; quem se esquiva leva metade; por 4 de Mana."
    },
    {
     "nome": "Raio de energia",
-    "descricao": "ataque à distância confiável que ignora cobertura leve"
+    "descricao": "Arte Fogo 1: Faísca, dardo flamejante de 1d6 num alvo, por 1 de Mana (o \"ignora cobertura leve\" do site não tem regra no livro e sai; perda anotada no relato)."
+   },
+   {
+    "nome": "Labareda",
+    "descricao": "Arte Fogo 3: jato de fogo em leque, 2d6, por 3 de Mana."
+   },
+   {
+    "nome": "Escudo de força",
+    "descricao": "Arte Forças 2: Anteparo, escudo invisível que soma Absorção contra tudo o que vem de fora enquanto durar; Repelir empurra e derruba quem chega perto."
+   },
+   {
+    "nome": "Concentração arcana",
+    "descricao": "ao sofrer dano enquanto sustenta uma Arte, Compostura + Concentração contra Dificuldade 10 para segurar."
    },
    {
     "nome": "Grande reserva arcana",
-    "descricao": "Mana 12 sustenta múltiplas magias ativas na mesma cena"
+    "descricao": "Mana 14."
    },
    {
-    "nome": "Mantém distância",
-    "descricao": "evita corpo a corpo; reposiciona-se para conjurar com segurança"
+    "nome": "Sem inimizades naturais",
+    "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação."
+   },
+   {
+    "nome": "mantém distância",
+    "descricao": "usa o terreno e a tropa como escudo, abre com a Bola de Fogo nos que vêm juntos, se cobre com o Anteparo e repele quem chega perto."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão, audição, olfato: humanos."
    }
   ],
   "poderes": [],
@@ -30498,18 +30994,19 @@
   "artes": [
    {
     "id": "fogo",
-    "nivel": 3
+    "nivel": 4
    },
    {
     "id": "forcas",
     "nivel": 2
    }
   ],
+  "mana": 14,
   "notas": "Mana 12. Escudo de Força (Forças) o protege; Bola de Fogo atinge grupos. Feche a distância e quebre a concentração.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Mantém distância do combate corpo a corpo, usa o terreno a seu favor e abre o confronto com rajadas de fogo e força para quebrar formações antes de qualquer aproximação."
+    "texto": "Mantém distância do combate corpo a corpo, usa o terreno a seu favor e abre o confronto com rajadas de fogo e força para quebrar formações antes de qualquer aproximação. Social: sozinho, ou com tropa a servir de escudo."
    },
    {
     "titulo": "Hábitos",
@@ -30522,6 +31019,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "A Supressão tornou a arte arcana tabu e temida em Calin e no The Neck, então um mago de guerra deste calibre só floresce longe da vista das igrejas supressoras, formado nas escolas escondidas de Mére ou a soldo de um senhor de guerra disposto a arriscar a fúria do povo em troca de vantagem no campo de batalha."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Humano Médio, Centelha 3, 34 PV, Impacto 6, Corte e Perfuração 3, sem armadura. Esquiva 18, Bloqueio 6. Tem 14 de Mana e conjura Fogo até o 4 (Bola de Fogo 3d6 em área, Labareda 2d6 em leque, dardo 1d6) e Forças até o 2 (Anteparo, Repelir). Feche a distância: dano enquanto ele sustenta pede Compostura + Concentração contra 10."
    }
   ]
  },
@@ -31807,7 +32308,7 @@
   "categoria": "Humanoide",
   "tipo": "capanga",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Povo do mar de torso humano e cauda de peixe, rápido na água e quase parado em terra. Luta com lança e besta, guarda um segredo nas profundezas e afasta navegantes dos seus domínios.",
   "tags": [
    "humanoide",
    "centelha"
@@ -31817,7 +32318,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "2 m de comprimento",
+   "medida": "2 m de comprimento, 0,9 m de altura",
    "peso": "90 kg"
   },
   "ecologia": {
@@ -31848,25 +32349,25 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "combate": {
    "pv": 37,
-   "defesa": 10,
+   "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -31877,31 +32378,43 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2 +2",
-     "dano": "1d6 +4 corte",
-     "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "nome": "Lança",
+     "pool": "2d6+2 +3",
+     "dano": "1d6 +7 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "haste"
+    },
+    {
+     "nome": "Besta média",
+     "pool": "2d6 +3",
+     "dano": "1d6 +5 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 12,
+     "classe": "distancia"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Nadador Nato",
-    "descricao": "Desliza pela água com grande velocidade, muito mais ágil no mar do que em terra firme."
-   },
-   {
     "nome": "Anfíbio",
-    "descricao": "Respira tanto na água quanto no ar, embora se mova com dificuldade fora do mar."
+    "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: respira na água e no ar; fora d'água só se arrasta. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Visão na Penumbra",
-    "descricao": "Enxerga bem em condições de pouca luz, útil nas profundezas onde o sol não alcança."
+    "nome": "Nadador nato",
+    "descricao": "Natação 4 e o nado do site."
    },
    {
-    "nome": "Guerreiro do Mar",
-    "descricao": "Luta com tridente e besta pesada, armas adaptadas para combate tanto debaixo d'água quanto na superfície."
+    "nome": "Guerreiro do mar",
+    "descricao": "a lança e a besta do livro, que servem debaixo d'água e na superfície (o Mestre decide o alcance da besta debaixo d'água)."
+   },
+   {
+    "nome": "guarda do segredo",
+    "descricao": "atira com a besta da água, chega perto com a lança só contra quem caiu no mar; afasta navegantes dos seus domínios e não sai da água."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão na penumbra: enxerga bem com pouca luz, nas profundezas (site). · audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -31923,6 +32436,14 @@
    {
     "titulo": "Sussurros de Corrupção",
     "texto": "Sábios e marinheiros falam de merfolk degenerados nas águas mais isoladas, corrompidos por poderes sombrios que talvez controlem até os que se julgam livres."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: em grupo, típico 4 a 12."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 37 PV, Impacto 5. Esquiva e Bloqueio 10 (12 com a lança). Na água nada rápido (5 · 8 · 12); em terra só se arrasta. Lança a duas mãos (dano médio 10, 5) ou besta (8, 5, a cada 12 Ticks). Respira na água e no ar."
    }
   ]
  },
@@ -34824,7 +35345,7 @@
   "categoria": "Humanoide",
   "tipo": "soldado",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Sacerdotisa de uma casa nobre drow, servidora de deusas do caos e da morte. Abre ferida que sangra com um toque, solta uma onda de energia corruptora e abençoa os seus; treinada desde cedo para intrigar e eliminar rivais.",
   "tags": [
    "humanoide",
    "centelha"
@@ -34834,7 +35355,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "1,6 metro de altura",
+   "medida": "1,6 m de altura",
    "peso": "55 kg"
   },
   "ecologia": {
@@ -34863,26 +35384,26 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 4,
-   "sociabilidade": 0,
+   "sociabilidade": 1,
    "furtividade": 2
   },
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "combate": {
    "pv": 34,
-   "defesa": 14,
-   "defesaSocial": 8,
+   "defesa": 15,
+   "defesaSocial": 12,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
@@ -34893,9 +35414,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6+2 +4",
-     "dano": "1d6 +5 corte",
+     "nome": "Espada curta",
+     "pool": "4d6+2 +6",
+     "dano": "1d6 +3 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -34904,28 +35425,32 @@
   },
   "habilidades": [
    {
-    "nome": "Visão no escuro",
-    "descricao": "Enxerga no escuro absoluto a uma distância considerável."
-   },
-   {
-    "nome": "Sensibilidade à luz",
-    "descricao": "Luzes muito fortes a atrapalham, deixando-a momentaneamente ofuscada."
-   },
-   {
     "nome": "Toque sangrento",
-    "descricao": "Um toque que provoca Sangramento na vítima, um dano contínuo que persiste até ser tratado; pode fazer isso algumas vezes por cena."
+    "descricao": "poder natural (base Morte 1): Ativação: uma ação, Velocidade 5, a jogada de Briga para tocar. Duração: até a ferida ser tratada (Estabilizar). Alcance: toque. Área: um alvo. Efeito: abre uma ferida que sangra: o alvo fica Sangrando (Sangramento 2). Dano: o do Sangramento, pela regra do livro. Resistência: corpo, Vigor + Resistência contra a jogada do toque; quem passa não sangra. Limite de uso: três vezes por cena."
    },
    {
     "nome": "Canalizar energia negativa",
-    "descricao": "Emite uma onda de energia corruptora que fere todos ao redor, algumas vezes por cena."
+    "descricao": "poder natural (base Morte 2): Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 9 m. Área: esfera de 9 m em volta dela. Efeito: uma onda de energia corruptora fere os vivos em volta; ela escolhe quem fica de fora. Dano: 1d6 + Centelha, fenômeno. Resistência: corpo, Vigor + Resistência contra Dificuldade 10; quem passa leva metade. Limite de uso: duas vezes por cena."
    },
    {
     "nome": "Toque do caos",
-    "descricao": "Um toque que introduz o acaso no destino do alvo: o próximo resultado importante que ele obtiver é sorteado de novo, para melhor ou para pior."
+    "descricao": "poder natural (base Fortuna 1): Ativação: uma ação, Velocidade 5, tocando o alvo. Duração: até o próximo resultado importante do alvo, ou o fim da cena. Alcance: toque. Área: um alvo. Efeito: o próximo resultado importante do alvo é rolado de novo, e vale o segundo, para melhor ou para pior. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dela. Limite de uso: uma vez por cena."
    },
    {
     "nome": "Bênçãos sombrias",
-    "descricao": "Serve divindades das trevas e recebe delas poderes menores, como criar escuridão, iludir os sentidos alheios ou lançar favores divinos em batalha."
+    "descricao": "poder natural (base Sombra 1): Ativação: uma ação, Velocidade 6. Duração: as trevas e a ilusão, até o fim da cena; o favor, até a próxima jogada do aliado. Alcance: 18 m. Área: à escolha: trevas numa esfera de 6 m; uma ilusão de som ou de imagem pequena; ou um aliado. Efeito: as trevas apagam a luz comum; a ilusão engana quem não desconfia; o favor soma +1d6 na próxima jogada importante do aliado. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dela, só para quem desconfia da ilusão. Limite de uso: três vezes por cena, somadas."
+   },
+   {
+    "nome": "Sensibilidade à luz",
+    "descricao": "Ativação: luz forte (sol, Arte de Luz, lanterna de perto). Duração: enquanto estiver na luz forte. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Ofuscada. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "sacerdotisa da casa",
+    "descricao": "fica atrás dos guerreiros drow, abre com as trevas, fere o grupo com a onda negativa, sangra o mais perigoso e abençoa os seus; foge da luz."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga no escuro absoluto a uma distância considerável (site). · audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -34943,6 +35468,14 @@
    {
     "titulo": "Nobreza implacável",
     "texto": "Nasceu em uma das grandes casas nobres, treinada desde cedo para intrigar, seduzir e eliminar rivais sem hesitar."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: à frente de uma patrulha da casa, com guerreiros drow."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Média, 34 PV, Impacto 5, Corte e Perfuração 2. Esquiva e Bloqueio 14 (15 com a espada). A espada dá dano médio 6,5. Três vezes por cena sangra um alvo pelo toque; duas, fere todos a 9 m (1d6 + 2); abençoa os seus com +1d6 e cria trevas. Defesa Mental 19. A luz forte a ofusca."
    }
   ]
  },
@@ -35393,7 +35926,7 @@
   "categoria": "Humanoide",
   "tipo": "capanga",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Guerreiro de pele esverdeada, alto e truculento, que bate com o machado e entra em fúria quando a luta aperta. Em fúria não sente as feridas, não recua e só para quando cai.",
   "tags": [
    "humanoide"
   ],
@@ -35403,7 +35936,7 @@
   "porte": "Médio",
   "dimensoes": {
    "medida": "2 m de altura",
-   "peso": "95 kg"
+   "peso": "110 kg"
   },
   "ecologia": {
    "tipo": "Humanoid",
@@ -35434,25 +35967,25 @@
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
-   "valor": 3
+   "valor": 4
   },
   "combate": {
-   "pv": 40,
-   "defesa": 6,
+   "pv": 45,
+   "defesa": 8,
    "defesaSocial": 2,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -35463,49 +35996,42 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6",
+     "nome": "Machado",
+     "pool": "4d6 +1",
      "dano": "1d6 +5 corte",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Fúria de combate",
-    "descricao": "ataca com força bruta; dano corpo a corpo acima do humano"
+    "nome": "Frenesi",
+    "descricao": "o Frenesi da raça: entra ao falhar num teste de Temperança; em fúria ignora a penalidade de ferimento até Incapacitado, soma +2 nas ações físicas, perde 2 em Esquiva e Bloqueio e intimida como reflexo com +2 dados; duas fúrias por cena (metade do Vigor 5); ressaca ao sair."
    },
    {
-    "nome": "Visão no escuro",
-    "descricao": "enxerga sem penalidade no escuro"
+    "nome": "Vitalidade",
+    "descricao": "+Vigor de PV, no Bônus de PV."
+   },
+   {
+    "nome": "Fúria de combate",
+    "descricao": "a Força 5 da raça no dano do machado."
    },
    {
     "nome": "Alerta",
-    "descricao": "Prontidão 1; raramente é pego de surpresa"
+    "descricao": "Prontidão 1."
    },
    {
-    "nome": "Selvagem",
-    "descricao": "luta até PV baixos, sem recuar"
+    "nome": "selvagem",
+    "descricao": "avança gritando, entra em fúria no primeiro golpe forte, luta até cair e não recua."
    },
    {
-    "nome": "Frenesi",
-    "descricao": "entra em fúria ao falhar num teste de Temperança; em fúria só faz ações físicas (+2 no teste), ignora as penalidades de ferimento até Incapacitado, tem −2 em Esquiva e Bloqueio, e Intimidar vira reflexo com +2d6 na parada. Regra inteira no capítulo Raças, seção Frenesi."
+    "nome": "Sentidos",
+    "descricao": "visão noturna: enxerga sem penalidade na penumbra, mas não na escuridão total. · audição e olfato: os de um humano."
    }
   ],
-  "poderes": [
-   {
-    "id": "vitalidade",
-    "nome": "Vitalidade",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "+Vigor de PV extra, sempre.",
-    "usos": {
-     "periodo": "passivo"
-    }
-   }
-  ],
+  "poderes": [],
   "locomocao": {
    "terra": 3
   },
@@ -35515,7 +36041,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Guerreiros ferozes que só respeitam força bruta e coragem provada em combate, e desprezam abertamente qualquer sinal de fraqueza."
+    "texto": "Guerreiros ferozes que só respeitam força bruta e coragem provada em combate, e desprezam abertamente qualquer sinal de fraqueza. Social: em bando, típico 4 a 12."
    },
    {
     "titulo": "Sociedade",
@@ -35528,6 +36054,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Assim como os goblins, são filhos ásperos moldados pelos anões a partir da própria rocha da montanha; livres desde o nascimento, nunca escravizados, cresceram bárbaros e sem lugar fixo, e por isso vagam pelas fronteiras selvagens de Mére e do White Wall perdido."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 45 PV, Impacto 5. Defesa baixa (Bloqueio 8, Esquiva 6), e 2 a menos em fúria. O machado dá dano médio 8,5. Um golpe que tire 9 PV ou mais (20% da Vida) o obriga ao teste de Frenesi, e com Temperança 2 ele quase sempre entra: ignora as feridas até cair e intimida como reflexo."
    }
   ]
  },
@@ -38783,7 +39313,7 @@
   "categoria": "Humanoide",
   "tipo": "soldado",
   "conceito": "humanoide Pequeno",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Ladrão pequeno das profundezas, coberto de camadas de trapos imundos, que sai à noite para roubar e espalhar caos. Golpeia de surpresa com a adaga envenenada e, ao morrer, explode num clarão que cega.",
   "tags": [
    "humanoide",
    "centelha"
@@ -38829,9 +39359,9 @@
   "vontade": 7,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
    "valor": 3
   },
   "combate": {
@@ -38841,8 +39371,8 @@
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -38853,10 +39383,10 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2 +4",
-     "dano": "1d6 +4 corte",
-     "perfArma": null,
+     "nome": "Adaga",
+     "pool": "4d6 +6",
+     "dano": "1d6 +2 perfurante · perf. 0",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -38864,24 +39394,28 @@
   },
   "habilidades": [
    {
-    "nome": "Explosão Mortal",
-    "descricao": "Ao morrer, seu corpo explode em um clarão branco ofuscante; todos próximos podem ficar cegos por vários instantes, e outros de sua espécie nas redondezas são cegados automaticamente."
+    "nome": "Ataque furtivo",
+    "descricao": "Adaga: Ativação: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a adaga entra onde o alvo não guarda. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe."
    },
    {
-    "nome": "Ataque Furtivo",
-    "descricao": "Golpeia com precisão mortal quando pega o alvo desprevenido ou desprotegido, causando dano extra."
+    "nome": "Explosão mortal",
+    "descricao": "Ativação: ele morre. Duração: Cego por 6 Ticks. Alcance: 3 m. Área: esfera de 3 m em volta do corpo. Efeito: o corpo explode num clarão branco; quem está na área e falha fica Cego; outros rastejadores na área ficam Cegos sem teste. Dano: nenhum. Resistência: corpo, Vigor + Resistência contra Dificuldade 10; quem desvia o olhar a tempo (o Mestre decide) não testa. Limite de uso: uma vez, ao morrer."
    },
    {
-    "nome": "Visão Perfeita no Escuro",
-    "descricao": "Enxerga com clareza total em qualquer escuridão, incluindo trevas mágicas mais densas."
+    "nome": "Cegueira pela luz",
+    "descricao": "Ativação: luz forte (sol, Arte de Luz, lanterna de perto). Duração: enquanto estiver na luz forte. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Ofuscado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Uso de Veneno",
-    "descricao": "Manipula venenos com destreza absoluta, nunca correndo o risco de se intoxicar acidentalmente ao aplicá-los em suas lâminas."
+    "nome": "Uso de veneno",
+    "descricao": "aplica veneno na lâmina sem nunca se envenenar ao aplicar. O veneno é o que ele tiver (o Mestre escolhe do catálogo)."
    },
    {
-    "nome": "Cegueira pela Luz",
-    "descricao": "A luz forte ofusca e prejudica seus sentidos, tornando-o vulnerável fora da escuridão."
+    "nome": "ladrão das trevas",
+    "descricao": "ataca de surpresa no escuro, rouba e foge; em grupo, cerca o alvo para o ataque furtivo; foge da luz."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga com clareza em qualquer escuridão, inclusive a criada por magia (site). · audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -38899,6 +39433,14 @@
    {
     "titulo": "Trapos e Fedor",
     "texto": "Cobertos por infinitas camadas de pano imundo, nunca trocam as roupas, apenas empilham novas sobre as antigas, exalando um cheiro de suor e comida estragada."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: em bando, típico 3 a 8, servindo a um espreitador."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Pequeno, 28 PV, Impacto 6, Corte e Perfuração 2. Esquiva 14, Bloqueio 10 (11 com a adaga). A adaga dá dano médio 5,5, e +1d6 contra quem não o viu ou está flanqueado. Na luz forte fica Ofuscado; ao morrer, cega quem está a 3 m."
    }
   ]
  },
@@ -41732,7 +42274,7 @@
   "categoria": "Humanoide",
   "tipo": "soldado",
   "conceito": "humanoide Pequeno",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Gnomo das profundezas, de pele cinzenta de pedra, mineiro de cidades escondidas e desconfiado de tudo. Some contra a rocha, nubla a forma ou se disfarça, e a magia custa a pegá-lo.",
   "tags": [
    "humanoide",
    "centelha"
@@ -41742,7 +42284,7 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "90 centímetros de altura",
+   "medida": "0,9 m de altura",
    "peso": "18 kg"
   },
   "ecologia": {
@@ -41777,20 +42319,20 @@
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "combate": {
    "pv": 28,
-   "defesa": 12,
+   "defesa": 13,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -41801,35 +42343,39 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6 +2",
-     "dano": "1d6 +4 corte",
-     "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "nome": "Picareta de guerra",
+     "pool": "3d6+2 +3",
+     "dano": "1d6 +4 perfurante · perf. 2",
+     "perfArma": 2,
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Visão no escuro profunda",
-    "descricao": "Enxerga no breu total das profundezas muito além do alcance comum, essencial para uma vida inteira sob a terra."
+    "nome": "Disfarce e sombra",
+    "descricao": "poder natural (base Ofuscação 1): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até ele desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: à escolha: nubla a forma (quem o ataca tem −2 no acerto); assume a aparência de outro humanoide pequeno; ou some numa sombra instantânea (fica Escondido, se houver sombra perto). Dano: nenhum. Resistência: nenhum; quem desconfia do disfarce testa a Percepção contra a Manha dele. Limite de uso: três vezes por dia, somados."
    },
    {
     "nome": "Resistência a magia",
-    "descricao": "Seu sangue feérico dificulta que magias hostis o afetem, exigindo mais poder do lançador para superar essa resistência natural."
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
     "nome": "Inconspícuo",
-    "descricao": "Permanece constantemente difícil de detectar por magia de adivinhação, um dom natural de seu povo."
-   },
-   {
-    "nome": "Disfarce e sombra",
-    "descricao": "Pode nublar a própria forma ou assumir outra aparência algumas vezes ao dia, além de se ocultar em sombra instantânea."
+    "descricao": "magia de adivinhação tem dificuldade de achá-lo."
    },
    {
     "nome": "Furtividade nas profundezas",
-    "descricao": "Move-se em silêncio quase perfeito entre pedras e túneis, quase invisível quando parado contra a rocha."
+    "descricao": "Furtividade 3, com a Especialidade natural (parado contra a rocha) +3 e o Tamanho Pequeno."
+   },
+   {
+    "nome": "mineiro desconfiado",
+    "descricao": "some contra a rocha, deixa o intruso passar ou o ataca de surpresa com a picareta; nubla a forma e foge para os túneis que conhece."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro profunda: enxerga no breu total muito além do alcance comum (site), como o Gnomo parente e além dele. · audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -41847,6 +42393,14 @@
    {
     "titulo": "Sangue feérico distante",
     "texto": "O laço com o mundo feérico que corre em seu sangue os torna estranhos até para os próprios parentes gnomos da superfície."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: em grupo de mineiros, típico 3 a 8."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Pequeno, 28 PV, Impacto 5, Corte e Perfuração 1. Esquiva e Bloqueio 12 (13 com a picareta). A picareta dá dano médio 7,5 e fura N2. Três vezes por dia nubla a forma, se disfarça ou some na sombra; parado contra a rocha, quase não se vê. +2 contra Artes."
    }
   ]
  },
@@ -42169,7 +42723,7 @@
   "categoria": "Humanoide",
   "tipo": "capanga",
   "conceito": "humanoide Médio",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Humanoide de cabeça de corvo, ágil e de olhos atentos, que nasce com talento para espadas e vive em ninhos nos prédios abandonados das cidades. Golpeia rápido quem se distrai, com a espada ou com o bico.",
   "tags": [
    "humanoide",
    "centelha"
@@ -42179,7 +42733,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "1,75 metro de altura",
+   "medida": "1,75 m de altura",
    "peso": "55 kg"
   },
   "ecologia": {
@@ -42216,19 +42770,19 @@
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "combate": {
    "pv": 34,
-   "defesa": 14,
+   "defesa": 15,
    "defesaSocial": 6,
    "defesaMental": 14,
    "absorcao": {
     "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
@@ -42239,10 +42793,18 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2 +2",
+     "nome": "Espada longa",
+     "pool": "4d6 +3",
      "dano": "1d6 +4 corte",
      "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Bico",
+     "pool": "3d6+2 +3",
+     "dano": "1d6 +2 perfurante · perf. 0",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -42250,24 +42812,28 @@
   },
   "habilidades": [
    {
-    "nome": "Sentidos de corvo",
-    "descricao": "Enxerga bem em pouca luz e percebe detalhes que passam despercebidos à maioria, refletindo sua natureza alerta e aviária."
-   },
-   {
     "nome": "Golpe certeiro",
-    "descricao": "Quando ataca um alvo distraído ou em desvantagem, seu golpe rápido causa dano extra antes que a vítima perceba o ataque."
-   },
-   {
-    "nome": "Bico afiado",
-    "descricao": "Além das armas, pode atacar com uma bicada rápida, um reflexo de sua ascendência de ave."
+    "descricao": "Espada longa ou Bico: Ativação: o golpe que acerta um alvo Surpreso, ou distraído, ou flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o golpe rápido entra antes que a vítima perceba. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe."
    },
    {
     "nome": "Talento com espadas",
-    "descricao": "Nasce treinado no manejo de lâminas de todo tipo, empunhando-as com naturalidade incomum para um humanoide tão jovem."
+    "descricao": "Armas 3 com a Especialidade (espadas) +1."
+   },
+   {
+    "nome": "Bico afiado",
+    "descricao": "o Bico da tabela, no lugar do golpe de espada (um ataque por ação)."
    },
    {
     "nome": "Dom para línguas",
-    "descricao": "Aprende idiomas com facilidade extraordinária, absorvendo o dobro do que outros povos conseguem no mesmo tempo."
+    "descricao": "aprende idiomas com facilidade extraordinária, o dobro do que outros povos aprendem no mesmo tempo."
+   },
+   {
+    "nome": "poleiro na cidade",
+    "descricao": "ataca do alto, golpeia rápido quem está distraído e some pelos telhados."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão de corvo: enxerga bem em pouca luz e percebe detalhes; Prontidão (visão de corvo) +2. · audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -42285,6 +42851,14 @@
    {
     "titulo": "Ninhos urbanos",
     "texto": "Armazéns abandonados e prédios condenados viram poleiros e esconderijos, muitas vezes confundidos com covis de ladrões, e a confusão nem sempre é infundada."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: em ninho urbano, típico 3 a 8."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 34 PV, Impacto 4, Corte e Perfuração 1. Esquiva e Bloqueio 14 (15 com a espada). Espada (dano médio 7, 5) ou bico (5, 5); +1d6 contra quem se distrai. Vê detalhes que os outros não veem."
    }
   ]
  },
@@ -42295,7 +42869,7 @@
   "categoria": "Humanoide",
   "tipo": "capanga",
   "conceito": "exterior Médio",
-  "descricao": "Mortal marcado por sangue infernal, vive à margem dos povos.",
+  "descricao": "Mortal marcado por sangue infernal, de chifres pequenos e cauda farpada, perseguido pela aparência e pela fama. Resiste a fogo, frio e raio, cria trevas uma vez por dia e golpeia quem se distrai.",
   "tags": [
    "exterior",
    "centelha"
@@ -42305,7 +42879,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "1,75 metro de altura",
+   "medida": "1,75 m de altura",
    "peso": "68 kg"
   },
   "ecologia": {
@@ -42343,21 +42917,26 @@
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "combate": {
    "pv": 37,
-   "defesa": 14,
+   "defesa": 15,
    "defesaSocial": 4,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "fogo",
+    "gelo",
+    "raio"
+   ],
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
@@ -42366,9 +42945,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "2d6+2 +2",
-     "dano": "1d6 +4 corte",
+     "nome": "Sabre",
+     "pool": "3d6+2 +4",
+     "dano": "1d6 +2 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -42377,20 +42956,24 @@
   },
   "habilidades": [
    {
-    "nome": "Visão no escuro",
-    "descricao": "Enxerga no breu quase tão bem quanto na penumbra, herança de seu sangue infernal."
-   },
-   {
-    "nome": "Sangue resistente",
-    "descricao": "Sua ascendência abissal ou infernal confere resistência parcial a frio, eletricidade e fogo."
-   },
-   {
     "nome": "Manto de trevas",
-    "descricao": "Uma vez por dia pode envolver uma área em escuridão sobrenatural, útil para escapar ou emboscar."
+    "descricao": "poder natural (base Sombra 1): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até ele desfazer. Alcance: 18 m. Área: esfera de 6 m num ponto que ele vê. Efeito: escuridão sobrenatural que a luz comum não atravessa; ele enxerga nela. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia."
    },
    {
     "nome": "Golpe certeiro",
-    "descricao": "Ataca com precisão traiçoeira quando o alvo está distraído ou em desvantagem, causando dano adicional."
+    "descricao": "Sabre: Ativação: o golpe que acerta um alvo Surpreso, ou distraído, ou flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a lâmina entra onde o alvo não guarda. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe."
+   },
+   {
+    "nome": "Sangue resistente",
+    "descricao": "resistência a fogo, gelo e raio (Elementos; metade do dano, C-039)."
+   },
+   {
+    "nome": "à margem",
+    "descricao": "evita a luta aberta; cria trevas para fugir ou emboscar e golpeia quem se distrai."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga no breu quase tão bem quanto na penumbra (site). · audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -42408,6 +42991,14 @@
    {
     "titulo": "Vida à margem",
     "texto": "Perseguidos pela aparência e fama que não escolheram, muitos escondem sua natureza ou vivem nas franjas da sociedade."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinho, à margem."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 37 PV, Impacto 5, Corte e Perfuração 1; fogo, gelo e raio fazem metade. Esquiva e Bloqueio 14 (15 com o sabre). O sabre dá dano médio 5,5, e +1d6 contra quem se distrai. Uma vez por dia cria uma esfera de trevas de 6 m."
    }
   ]
  },
@@ -43244,7 +43835,7 @@
   "categoria": "Humanoide",
   "tipo": "soldado",
   "conceito": "humanoide Médio (reptiliano)",
-  "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+  "descricao": "Réptil bípede das cavernas, de couro que some contra a pedra e cheiro que enjoa quem chega perto. Defende a toca com garras e martelo e quase nunca sobe à superfície.",
   "tags": [
    "humanoide"
   ],
@@ -43284,25 +43875,25 @@
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 1
   },
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
    "valor": 3
   },
   "combate": {
    "pv": 37,
-   "defesa": 4,
+   "defesa": 7,
    "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -43313,9 +43904,17 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2",
-     "dano": "1d6 +3 corte",
+     "nome": "Martelo",
+     "pool": "2d6+2 +1",
+     "dano": "1d6 +3 impacto",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Garras",
+     "pool": "2d6+2 +1",
+     "dano": "1d6 +1 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -43324,20 +43923,24 @@
   },
   "habilidades": [
    {
-    "nome": "Pele camaleão",
-    "descricao": "camuflagem natural contra pedra; Furtividade 1 elevada em cavernas"
+    "nome": "Fedor nauseante",
+    "descricao": "Ativação: nenhuma; sempre ativo, e mais forte quando ele se irrita ou luta. Duração: Abalado até sair do cheiro e passar 6 Ticks fora dele. Alcance: 3 m. Área: esfera de 3 m em volta dele. Efeito: quem entra na área pela primeira vez na cena testa contra o enjoo; na falha, fica Abalado. Dano: nenhum. Resistência: corpo, Vigor + Resistência contra Dificuldade 10; quem passa fica imune ao cheiro dos trogloditas até o fim da cena. Limite de uso: uma vez por cena para cada pessoa."
    },
    {
-    "nome": "Fedor nauseante",
-    "descricao": "quem chega perto e falha em Vigor fica Abalado por enjoo"
+    "nome": "Pele camaleão",
+    "descricao": "Furtividade, com a Especialidade natural (contra pedra) +3."
    },
    {
     "nome": "Garras",
-    "descricao": "ataque corpo a corpo além da arma primitiva"
+    "descricao": "as Garras da tabela, no lugar do golpe de martelo (um ataque por ação)."
    },
    {
-    "nome": "Visão no escuro",
-    "descricao": "enxerga sem luz em cavernas"
+    "nome": "toca defendida",
+    "descricao": "espera camuflado na pedra, ataca quem entra na toca, solta o fedor e bate; não persegue para fora das galerias."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga sem luz em cavernas (site). · audição e olfato: os de um humano."
    }
   ],
   "poderes": [],
@@ -43350,7 +43953,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Agressivos e territoriais, atacam por instinto puro quando encurralados ou famintos."
+    "texto": "Agressivos e territoriais, atacam por instinto puro quando encurralados ou famintos. Social: em clã pequeno, típico 3 a 8."
    },
    {
     "titulo": "Hábitos",
@@ -43363,6 +43966,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Parentes distantes e degenerados dos lagartos, multiplicaram-se nas profundezas abandonadas do White Wall depois que a Fenda expulsou os anões, reivindicando túneis que antes eram forja e hoje são só caverna."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 37 PV, Impacto 4. Defesa baixa (Bloqueio 6, 7 com o martelo; Esquiva 4). Martelo (dano médio 6, 5) ou garras (4, 5). Quem chega a 3 m testa contra o enjoo e pode ficar Abalado. Camuflado na pedra, quase não se vê."
    }
   ]
  },
