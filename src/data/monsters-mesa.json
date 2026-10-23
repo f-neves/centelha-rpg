@@ -12777,7 +12777,7 @@
     },
     {
      "nome": "Rocha arremessada",
-     "pool": "6d6 +2",
+     "pool": "2d6+2 +2",
      "dano": "2d6 +10 impacto",
      "perfArma": null,
      "speed": 7,

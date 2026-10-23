@@ -522,6 +522,13 @@ function converte(arq) {
       if (!atrib || !pericia) throw new Error(`${arq}: ataque "${nomeA}": a jogada "${jg.atributo} + ${jg.habilidade}" tem Atributo ou Habilidade que não existe`);
       jogadaPorParte[parteBase] = { atrib, pericia };
     } else if (jogadaPorParte[parteBase]) ({ atrib, pericia } = jogadaPorParte[parteBase]);
+    // O LIVRO MANDA NO ATRIBUTO DO TIRO E DO ARREMESSO, e não a frase (combate.md:156: "Para arremessos,
+    // sempre Destreza; para atirar (arco ou besta), sempre Percepção"), como o card do editor desde
+    // 23/10/2026 (tiro-2026-10-23): Classe Distância vai por Percepção + Atirador; o ataque com a
+    // Habilidade Arremesso, por Destreza + Arremesso. O Disparo natural (o sopro) fica Vigor + Disparo.
+    // A frase que diz outra coisa (a rocha do gigante, "Força 9 + Arremesso 3") é da Bestiarista acertar.
+    if (pericia === 'arremesso') atrib = 'destreza';
+    else if (classe === 'distancia' && pericia !== 'disparo') { atrib = 'percepcao'; pericia = 'atirador'; }
     ataques.push({
       nome: nomeA, atrib, pericia, dado: Number(dado[1]),
       ...(/Força\s*×\s*2/.test(danoTxt) ? { mao: 2 } : { mao: 1 }),

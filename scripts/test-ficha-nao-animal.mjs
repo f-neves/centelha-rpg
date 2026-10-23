@@ -232,6 +232,14 @@ try {
   para('Velocidade sem número', '| 1/1/3 | 5 | 1d6 + Centelha (2) | Perfuração |', '| 1/1/3 | rápida | 1d6 + Centelha (2) | Perfuração |', /Velocidade sem número/);
   para('bloco de conferência que não bate', '"pv":20', '"pv":21', /bloco: pv 21 ≠ 20/);
 
+  // O tiro e o arremesso (combate.md:156): o livro manda no Atributo, e não a frase (tiro-2026-10-23).
+  const tiro = roda(FICHA.replace('Jogada: Percepção 3 + Atirador 2', 'Jogada: Destreza 3 + Atirador 2'), 'tiro pela Destreza');
+  const arco = (tiro.json?.ataques || []).find((a) => a.nome === 'Arco curto');
+  ok(arco?.atrib === 'percepcao' && arco?.pericia === 'atirador', `a frase diz Destreza no arco, e o livro manda Percepção + Atirador: ${arco?.atrib} + ${arco?.pericia}`);
+  const arr = roda(FICHA.replace('| +0 | não | 3,5 | |', '| +0 | não | 3,5 | Jogada: Força 4 + Arremesso 0 |'), 'arremesso pela Força');
+  const cuspe = (arr.json?.ataques || []).find((a) => a.nome === 'Cuspe');
+  ok(cuspe?.atrib === 'destreza' && cuspe?.pericia === 'arremesso', `a frase diz Força no arremesso (a rocha do gigante), e o livro manda Destreza + Arremesso: ${cuspe?.atrib} + ${cuspe?.pericia}`);
+
   // D-206: a criatura vestida. A conta do livro e a frase da linha Absorção têm de bater.
   const J = (x) => JSON.stringify(x);
   const EQ = 'armas: espada-longa · armaduras: nenhuma · escudos: nenhum', ABS = 'Couraça **nível 0** |';
