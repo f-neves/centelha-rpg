@@ -55,7 +55,24 @@ export function escolhaDe(id: string, cb: { defesa?: number | null; vestida?: Ve
 export function combateNaEscolha(cb: any, escolha: Escolha | null): any {
   if (!cb?.vestida || escolha !== 'com') return cb;
   const v: Vestida = cb.vestida;
-  return { ...cb, defesa: v.defesa, absorcao: { ...v.absorcao }, resistenciaPerfuracao: v.nivel };
+  return {
+    ...cb, defesa: v.defesa, absorcao: { ...v.absorcao }, resistenciaPerfuracao: v.nivel,
+    ataques: (cb.ataques || []).map((a: any) => ({ ...a, pool: poolComPenalidade(a.pool, v.penalidade) })),
+  };
+}
+
+/**
+ * O ataque vestido: a Penalidade da armadura sai da jogada, como na ficha do personagem (D-206,
+ * resposta do Arquiteto de 23/10/2026, caminho (a): "o ataque segue o estado"). O pool do
+ * bestiário é "Nd6", "Nd6+2" (a soma ímpar) e o acerto: "3d6+2 +5" com Penalidade 1 dá
+ * "3d6+2 +4"; "4d6 +1" com 2 dá "4d6 −1" (o menos tipográfico, que o `rolarExpr` lê).
+ */
+export function poolComPenalidade(pool: string, pen: number): string {
+  if (!pen) return pool;
+  const m = /^(\d+d6(?:\+2)?)(?:\s*([+−-])\s*(\d+))?$/.exec(String(pool || '').trim());
+  if (!m) return pool;
+  const a = (m[3] ? Number(m[3]) * (m[2] === '+' ? 1 : -1) : 0) - pen;
+  return `${m[1]}${a > 0 ? ` +${a}` : a < 0 ? ` −${-a}` : ''}`;
 }
 
 /** Troca a escolha da criatura e devolve a nova. Sem `vestida`, não faz nada. */
@@ -70,4 +87,21 @@ export function alternarVestida(id: string, cb: { defesa?: number | null; vestid
     localStorage.setItem(CHAVE, JSON.stringify(o));
   } catch { /* sem armazenamento: a troca vale só até recarregar */ }
   return nova;
+}
+
+/**
+ * O SALVAR DO EDITAR (aba Combate) da criatura vestida: "Gravar menos", decisão do autor de
+ * 23/10/2026. Nos quatro campos que a escolha mexe (ataque, Defesa, Absorção, nível de
+ * Perfuração), o campo vazio OMITE a chave dos `dados`, em vez de gravar "" ou 0, e a peça
+ * segue a escolha do Mestre na leitura. O que o Mestre digitar continua sendo gravado. `crus`
+ * são os textos dos campos como estão no diálogo.
+ */
+export function dadosSemOsVaziosDaEscolha(dados: any, crus: { ataque: string; defesa: string; absI: string; absC: string; absP: string; rperf: string }): any {
+  const o: any = { ...dados, soak: { ...(dados?.soak || {}) } };
+  if (!crus.ataque.trim()) delete o.ataque;
+  if (!crus.defesa.trim()) delete o.defesa;
+  if (!crus.rperf.trim()) delete o.resistPerf;
+  for (const [k, c] of [['impacto', 'absI'], ['corte', 'absC'], ['perfuracao', 'absP']] as const) if (!crus[c].trim()) delete o.soak[k];
+  if (!Object.keys(o.soak).length) delete o.soak;
+  return o;
 }

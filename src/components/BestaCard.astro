@@ -14,7 +14,7 @@
  */
 import CentelhaSpark from './CentelhaSpark.astro';
 import { url } from '../lib/site';
-import { loadData } from '../lib/data';
+import { loadData } from '../lib/data'; import { poolComPenalidade } from '../lib/defesa-vestida';
 
 interface Props { i: any }
 const { i } = Astro.props;
@@ -187,7 +187,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
 
           <ul class="besta-atk">
             {i.combate.ataques.map((a: any) => (
-              <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">Ataque: <b>{fmtPool(a.pool)}</b> · Dano <b>{fmtDano(a.dano)}</b> · Velocidade {a.speed}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
+              <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">Ataque: <b>{fmtPool(a.pool)}</b>{i.combate.vestida && <> sem o equipamento · <b>{fmtPool(poolComPenalidade(a.pool, i.combate.vestida.penalidade))}</b> com</>} · Dano <b>{fmtDano(a.dano)}</b> · Velocidade {a.speed}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
             ))}
           </ul>
 

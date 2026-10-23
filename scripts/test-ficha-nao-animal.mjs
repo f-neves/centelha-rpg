@@ -117,7 +117,7 @@ const FICHA = `# Teste Não Animal
 
 | Nome | Parte | Classe | P/G/R | Velocidade | Dano | Tipo | Nível de Perfuração | Acerto | Bloqueia como arma | Dano médio | Justificativa |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Espada longa | espada longa (uma mão) | Média | 2/1/3 | 6 | 1d6 + Força × 1 (4) + Centelha (2) | Corte | | +1 | sim (+1) | 9,5 | Jogada: Destreza 3 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4) |
+| Espada longa | espada longa (uma mão) | Média | 2/1/3 | 6 | 1d6 + Força × 1 (4) + Centelha (2) | Corte | | +1 | sim (+1) | 9,5 | Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4) |
 | Espada longa a duas mãos | espada longa (duas mãos) | Média | 2/1/3 | 6 | 1d6 + Força × 2 (4) + Centelha (2) | Corte | | +1 | sim (+1) | 13,5 | Versátil |
 | Arco curto | arco | Distância | 1/1/3 | 5 | 1d6 + Centelha (2) | Perfuração | N1 | +2 | não | 5,5 | Jogada: Percepção 3 + Atirador 2 |
 | Toque gelado | mão | Leve | 1/1/3 | 5 | 1d6 − 2 + Força × 1 (4) + Centelha (2) | fenômeno | | +1 | não | 7,5 | atravessa a armadura |
@@ -186,8 +186,8 @@ try {
   const esp = (j.especialidades || []).map((e) => `${e.habilidade}:${e.foco}:${e.valor}`).join(' | ');
   ok(esp === 'armas:espada longa:1 | atirador:arco:1', `as duas Especialidades da mesma linha: ${esp}`);
   const at = Object.fromEntries((j.ataques || []).map((a) => [a.nome, a]));
-  ok(at['Espada longa']?.atrib === 'destreza' && at['Espada longa']?.pericia === 'armas', `a jogada da espada: ${at['Espada longa']?.atrib} + ${at['Espada longa']?.pericia}`);
-  ok(at['Espada longa a duas mãos']?.atrib === 'destreza' && at['Espada longa a duas mãos']?.pericia === 'armas', `a linha sem jogada herda a da mesma arma: ${at['Espada longa a duas mãos']?.atrib} + ${at['Espada longa a duas mãos']?.pericia}`);
+  ok(at['Espada longa']?.atrib === 'forca' && at['Espada longa']?.pericia === 'armas', `a jogada da espada: ${at['Espada longa']?.atrib} + ${at['Espada longa']?.pericia}`);
+  ok(at['Espada longa a duas mãos']?.atrib === 'forca' && at['Espada longa a duas mãos']?.pericia === 'armas', `a linha sem jogada herda a da mesma arma: ${at['Espada longa a duas mãos']?.atrib} + ${at['Espada longa a duas mãos']?.pericia}`);
   ok(at['Arco curto']?.classe === 'distancia' && at['Arco curto']?.distancia === true && at['Arco curto']?.atrib === 'percepcao' && at['Arco curto']?.pericia === 'atirador', `a Classe Distância: classe ${at['Arco curto']?.classe}, distancia ${at['Arco curto']?.distancia}, ${at['Arco curto']?.atrib} + ${at['Arco curto']?.pericia}`);
   ok(at['Toque gelado']?.tipo === 'fenomeno' && at['Toque gelado']?.atrib === 'forca' && at['Toque gelado']?.pericia === 'briga', `o Tipo fenômeno, e sem jogada fica Força + Briga: ${at['Toque gelado']?.tipo}, ${at['Toque gelado']?.atrib} + ${at['Toque gelado']?.pericia}`);
   ok(at['Cuspe']?.tipo === 'acido', `a palavra do vocabulário como Tipo: ${at['Cuspe']?.tipo}`);
@@ -232,13 +232,15 @@ try {
   para('Velocidade sem número', '| 1/1/3 | 5 | 1d6 + Centelha (2) | Perfuração |', '| 1/1/3 | rápida | 1d6 + Centelha (2) | Perfuração |', /Velocidade sem número/);
   para('bloco de conferência que não bate', '"pv":20', '"pv":21', /bloco: pv 21 ≠ 20/);
 
-  // O tiro e o arremesso (combate.md:156): o livro manda no Atributo, e não a frase (tiro-2026-10-23).
-  const tiro = roda(FICHA.replace('Jogada: Percepção 3 + Atirador 2', 'Jogada: Destreza 3 + Atirador 2'), 'tiro pela Destreza');
-  const arco = (tiro.json?.ataques || []).find((a) => a.nome === 'Arco curto');
-  ok(arco?.atrib === 'percepcao' && arco?.pericia === 'atirador', `a frase diz Destreza no arco, e o livro manda Percepção + Atirador: ${arco?.atrib} + ${arco?.pericia}`);
-  const arr = roda(FICHA.replace('| +0 | não | 3,5 | |', '| +0 | não | 3,5 | Jogada: Força 4 + Arremesso 0 |'), 'arremesso pela Força');
-  const cuspe = (arr.json?.ataques || []).find((a) => a.nome === 'Cuspe');
-  ok(cuspe?.atrib === 'destreza' && cuspe?.pericia === 'arremesso', `a frase diz Força no arremesso (a rocha do gigante), e o livro manda Destreza + Arremesso: ${cuspe?.atrib} + ${cuspe?.pericia}`);
+  // A jogada contra o livro (combate.md:156; a ordem do autor, "nenhum pode passar errado sem aviso"): para.
+  para('corpo a corpo pelo menor dos dois', 'Jogada: Força 4 + Armas 3', 'Jogada: Destreza 3 + Armas 3', /o corpo a corpo usa o maior entre Destreza e Força/);
+  para('tiro fora de Percepção + Atirador', 'Jogada: Percepção 3 + Atirador 2', 'Jogada: Destreza 3 + Atirador 2', /o tiro é Percepção \+ Atirador/);
+  para('arremesso fora de Destreza + Arremesso', '| +0 | não | 3,5 | |', '| +0 | não | 3,5 | Jogada: Força 4 + Arremesso 0 |', /o arremesso é Destreza \+ Arremesso/);
+  para('Disparo natural fora de Vigor', '| +0 | não | 3,5 | |', '| +0 | não | 3,5 | Jogada: Força 4 + Disparo 0 |', /o Disparo natural é Vigor \+ Disparo/);
+  // A jogada comum, sem frase: o corpo a corpo vai pelo maior (o animal ágil, como o gato).
+  const agil = roda(FICHA.replace('| Força | 4 |', '| Força | 2 |').replace('"forca":4', '"forca":2').replace('Jogada: Força 4 + Armas 3', 'Jogada: Destreza 3 + Armas 3'), 'jogada comum pelo maior');
+  const toque = (agil.json?.ataques || []).find((a) => a.nome === 'Toque gelado');
+  ok(agil.status === 0 && toque?.atrib === 'destreza' && toque?.pericia === 'briga', `sem frase e com Destreza 3 > Força 2, o golpe vai por Destreza + Briga: ${toque?.atrib} + ${toque?.pericia}${agil.status ? ' (exit ' + agil.status + ')' : ''}`);
 
   // D-206: a criatura vestida. A conta do livro e a frase da linha Absorção têm de bater.
   const J = (x) => JSON.stringify(x);

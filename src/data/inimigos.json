@@ -220,7 +220,7 @@
       },
       {
         "nome": "Punhos",
-        "pool": "2d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 +1 impacto",
         "perfArma": null,
         "ticks": 5,
@@ -3116,7 +3116,7 @@
     "ataques": [
       {
         "nome": "Mordida",
-        "pool": "2d6 +1",
+        "pool": "2d6+2 +1",
         "dano": "1d6 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -10856,7 +10856,7 @@
     "ataques": [
       {
         "nome": "Mordida do enxame",
-        "pool": "1d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −2 corte",
         "perfArma": null,
         "ticks": 5,
@@ -10864,7 +10864,7 @@
       },
       {
         "nome": "Ferroada do enxame",
-        "pool": "1d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -11613,7 +11613,7 @@
     "ataques": [
       {
         "nome": "Mordida do enxame",
-        "pool": "0d6+2 +1",
+        "pool": "2d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -11848,7 +11848,7 @@
     "ataques": [
       {
         "nome": "Mandíbulas",
-        "pool": "1d6+2 +1",
+        "pool": "2d6 +1",
         "dano": "1d6 −1 corte",
         "perfArma": null,
         "ticks": 5,
@@ -12131,7 +12131,7 @@
     "ataques": [
       {
         "nome": "Mordida",
-        "pool": "3d6 +1",
+        "pool": "4d6 +1",
         "dano": "1d6 +1 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -12139,7 +12139,7 @@
       },
       {
         "nome": "Patada com o ergot",
-        "pool": "3d6 +1",
+        "pool": "4d6 +1",
         "dano": "1d6 +1 corte",
         "perfArma": null,
         "ticks": 5,
@@ -12431,7 +12431,7 @@
     "ataques": [
       {
         "nome": "Garra de veneno",
-        "pool": "1d6 +1",
+        "pool": "2d6+2 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -12716,7 +12716,7 @@
     "ataques": [
       {
         "nome": "Pinça do enxame",
-        "pool": "1d6 +1",
+        "pool": "2d6 +1",
         "dano": "1d6 −2 corte",
         "perfArma": null,
         "ticks": 5,
@@ -13815,7 +13815,7 @@
     "ataques": [
       {
         "nome": "Mordida",
-        "pool": "2d6 +1",
+        "pool": "2d6+2 +1",
         "dano": "1d6 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -14336,7 +14336,7 @@
     "ataques": [
       {
         "nome": "Descarga elétrica",
-        "pool": "1d6 +1",
+        "pool": "2d6 +1",
         "dano": "2d6 eletricidade",
         "perfArma": null,
         "ticks": 5,
@@ -14344,7 +14344,7 @@
       },
       {
         "nome": "Mordida",
-        "pool": "1d6 +1",
+        "pool": "2d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -14809,7 +14809,7 @@
     "ataques": [
       {
         "nome": "Mordida (incisivos)",
-        "pool": "0d6+2 +1",
+        "pool": "2d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -14866,7 +14866,7 @@
     "ataques": [
       {
         "nome": "Garra",
-        "pool": "1d6 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −2 corte",
         "perfArma": null,
         "ticks": 5,
@@ -14874,7 +14874,7 @@
       },
       {
         "nome": "Mordida",
-        "pool": "1d6 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -14931,7 +14931,7 @@
     "ataques": [
       {
         "nome": "Garras (golpe do mergulho)",
-        "pool": "2d6 +1",
+        "pool": "4d6 +1",
         "dano": "1d6 −1 corte",
         "perfArma": null,
         "ticks": 5,
@@ -14939,7 +14939,7 @@
       },
       {
         "nome": "Bico (dente tomial)",
-        "pool": "2d6 +1",
+        "pool": "4d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -14996,7 +14996,7 @@
     "ataques": [
       {
         "nome": "Mordida",
-        "pool": "2d6 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -15053,7 +15053,7 @@
     "ataques": [
       {
         "nome": "Bicada",
-        "pool": "0d6+2 +1",
+        "pool": "2d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -15158,7 +15158,7 @@
     "ataques": [
       {
         "nome": "Bote",
-        "pool": "1d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -15215,7 +15215,7 @@
     "ataques": [
       {
         "nome": "Mordida",
-        "pool": "1d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -17083,7 +17083,7 @@
     "ataques": [
       {
         "nome": "Mordida do enxame",
-        "pool": "1d6 +1",
+        "pool": "2d6 +1",
         "dano": "1d6 −2 corte",
         "perfArma": null,
         "ticks": 5,
@@ -18412,7 +18412,7 @@
     "ataques": [
       {
         "nome": "Bico",
-        "pool": "1d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −1 corte",
         "perfArma": null,
         "ticks": 5,
@@ -18771,7 +18771,7 @@
     "ataques": [
       {
         "nome": "Mordida do enxame",
-        "pool": "1d6 +1",
+        "pool": "2d6+2 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -19581,7 +19581,7 @@
     "ataques": [
       {
         "nome": "Bote",
-        "pool": "2d6 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −1 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -19638,7 +19638,7 @@
     "ataques": [
       {
         "nome": "Picada do enxame",
-        "pool": "1d6 +1",
+        "pool": "2d6+2 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -20220,7 +20220,7 @@
     "ataques": [
       {
         "nome": "Ferrão",
-        "pool": "3d6 +1",
+        "pool": "4d6 +1",
         "dano": "1d6 perfurante · perf. 1",
         "perfArma": 1,
         "ticks": 5,
@@ -20228,7 +20228,7 @@
       },
       {
         "nome": "Mandíbulas",
-        "pool": "3d6 +1",
+        "pool": "4d6 +1",
         "dano": "1d6 corte",
         "perfArma": null,
         "ticks": 5,
@@ -20285,7 +20285,7 @@
     "ataques": [
       {
         "nome": "Ferroada do enxame",
-        "pool": "1d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -20342,7 +20342,7 @@
     "ataques": [
       {
         "nome": "Mordida",
-        "pool": "2d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -20350,7 +20350,7 @@
       },
       {
         "nome": "Garra",
-        "pool": "2d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 corte",
         "perfArma": null,
         "ticks": 5,
@@ -20809,7 +20809,7 @@
     "ataques": [
       {
         "nome": "Garras (talões)",
-        "pool": "2d6+2 +1",
+        "pool": "3d6+2 +1",
         "dano": "1d6 corte",
         "perfArma": null,
         "ticks": 5,
@@ -20817,7 +20817,7 @@
       },
       {
         "nome": "Bico",
-        "pool": "2d6+2 +1",
+        "pool": "3d6+2 +1",
         "dano": "1d6 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -21124,7 +21124,7 @@
     "ataques": [
       {
         "nome": "Bico",
-        "pool": "2d6 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −1 corte",
         "perfArma": null,
         "ticks": 5,
@@ -21132,7 +21132,7 @@
       },
       {
         "nome": "Braços e tentáculos",
-        "pool": "2d6 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −1 corte",
         "perfArma": null,
         "ticks": 5,

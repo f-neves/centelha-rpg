@@ -65,8 +65,8 @@ const saida = path.join(os.tmpdir(), `defesa-vestida-${process.pid}.mjs`);
 await build({
   stdin: {
     contents: `
-      export { resumoDe, MON, cardCriaturaHTML } from './src/lib/mesa-bestiario';
-      export { escolhaDe, escolhaPadrao, combateNaEscolha, alternarVestida } from './src/lib/defesa-vestida';
+      export { resumoDe, MON, cardCriaturaHTML, defesaOutraDe, defesaNaMesaDe } from './src/lib/mesa-bestiario';
+      export { escolhaDe, escolhaPadrao, combateNaEscolha, alternarVestida, poolComPenalidade, dadosSemOsVaziosDaEscolha } from './src/lib/defesa-vestida';
     `,
     resolveDir: ROOT, loader: 'ts',
   },
@@ -86,23 +86,52 @@ const peca = (monstro_id, dados = {}) => ({ id: 'c-' + monstro_id, tipo: 'criatu
 const resumo = (c) => { const r = M.resumoDe(c); return `${r.defesa} ${r.soak.impacto}/${r.soak.corte}/${r.soak.perfuracao} N${r.resistPerf}`; };
 ok(resumo(peca('campeao-esqueletico')) === '17 8/5/3 N1', `campeão, sem escolha: a maior Defesa, e o conjunto vestido inteiro (${resumo(peca('campeao-esqueletico'))})`);
 ok(resumo(peca('soldado-veterano')) === '14 3/0/0 N0', `soldado, sem escolha: a maior Defesa é a sem a malha (${resumo(peca('soldado-veterano'))})`);
+// o ataque segue o estado (D-206, caminho (a)): a Penalidade da armadura sai da jogada
+const atq = (c) => M.resumoDe(c).ataque;
+ok(M.poolComPenalidade('3d6+2 +5', 1) === '3d6+2 +4' && M.poolComPenalidade('4d6 +1', 2) === '4d6 −1' && M.poolComPenalidade('2d6 +2', 2) === '2d6' && M.poolComPenalidade('4d6 +1', 0) === '4d6 +1', 'a Penalidade sai do acerto do pool (3d6+2 +5 com 1 = 3d6+2 +4; 4d6 +1 com 2 = 4d6 −1)');
+ok(atq(peca('campeao-esqueletico')) === '3d6+2 +4', `campeão vestido por padrão: a espada com o −1 do peitoral (${atq(peca('campeao-esqueletico'))}, o 3d6 +6 do editor)`);
+ok(atq(peca('soldado-veterano')) === '4d6 +1', `soldado sem a malha por padrão: a espada sem Penalidade (${atq(peca('soldado-veterano'))})`);
+ok(M.defesaNaMesaDe('campeao-esqueletico') === 17 && M.defesaOutraDe('campeao-esqueletico') === 15 && M.defesaOutraDe('lobo') === null, 'a lista da aba Criaturas: a Defesa da mesa (17) e a outra ao lado (15)');
 const dadosAntes = { arma: 'Espada longa' };
 const c1 = peca('campeao-esqueletico', dadosAntes);
 const antesJ = J(c1);
 M.alternarVestida('campeao-esqueletico', M.MON['campeao-esqueletico'].combate);
 ok(resumo(c1) === '15 5/2/2 N0', `o Mestre troca: o campeão sem o equipamento (${resumo(c1)})`);
+ok(atq(c1) === '3d6+2 +5', `sem o equipamento, o ataque volta (${atq(c1)})`);
+ok(M.defesaNaMesaDe('campeao-esqueletico') === 15 && M.defesaOutraDe('campeao-esqueletico') === 17, 'a lista acompanha a troca');
 ok(J(c1) === antesJ, 'a troca não entra nos `dados` do combatente (o que vai ao Supabase)');
 ok(resumo(peca('campeao-esqueletico', { defesa: 20 })).startsWith('20 '), 'o ajuste por instância (`dados.defesa`) vence por cima da escolha');
 ok(resumo(peca('soldado-veterano')) === '14 3/0/0 N0', 'a troca de uma criatura não mexe na outra');
 M.alternarVestida('soldado-veterano', M.MON['soldado-veterano'].combate);
+ok(atq(peca('soldado-veterano')) === '4d6 −1', `o soldado de malha ataca com o −2 (${atq(peca('soldado-veterano'))})`);
 ok(resumo(peca('soldado-veterano')) === '12 4/6/1 N1', `o soldado com a malha (${resumo(peca('soldado-veterano'))})`);
 ok(resumo(peca('lobo')) === resumo(peca('lobo')) && M.escolhaDe('lobo', M.MON.lobo?.combate) === null && M.alternarVestida('lobo', M.MON.lobo?.combate) === null, 'criatura sem equipamento: sem escolha, e a troca não faz nada');
 const html = M.cardCriaturaHTML(M.MON['campeao-esqueletico']);
 ok(/<b>15<\/b> · 17 <small>c\/ equip\.<\/small>/.test(html) && /data-vestida="campeao-esqueletico"/.test(html) && /A mesa usa: sem o equipamento/.test(html), 'o card da mesa mostra as duas, a da mesa em negrito, e o botão de trocar');
+ok(html.includes('<b>3d6+2 +5</b> sem o equipamento · 3d6+2 +4 com'), 'o card da mesa mostra os dois ataques, o da mesa em negrito');
+
+console.log('· 3b. o Salvar do Editar ("Gravar menos", decisão do autor)');
+{
+  // o diálogo como a aba Combate monta: os campos que a escolha mexe vazios, o resto preenchido
+  const montado = { ataque: '', dano: '1d6 +6 corte', defesa: null, defesaSocial: 8, defesaMental: 15, resistPerf: 0, velocidade: 6, soak: { impacto: 0, corte: 0, perfuracao: 0 } };
+  const vazio = { ataque: '', defesa: '', absI: '', absC: '', absP: '', rperf: '' };
+  const gravado = M.dadosSemOsVaziosDaEscolha(montado, vazio);
+  ok(!('ataque' in gravado) && !('defesa' in gravado) && !('soak' in gravado) && !('resistPerf' in gravado) && gravado.defesaSocial === 8 && gravado.dano === '1d6 +6 corte',
+    `o vazio não grava a chave, e o resto do diálogo grava como sempre: ${J(gravado)}`);
+  M.alternarVestida('campeao-esqueletico', M.MON['campeao-esqueletico'].combate); // volta ao padrão (com)
+  ok(resumo(peca('campeao-esqueletico', gravado)) === '17 8/5/3 N1' && atq(peca('campeao-esqueletico', gravado)) === '3d6+2 +4', `salvo assim, o campeão segue a escolha: ${resumo(peca('campeao-esqueletico', gravado))}, ${atq(peca('campeao-esqueletico', gravado))}`);
+  const digitado = M.dadosSemOsVaziosDaEscolha({ ...montado, defesa: 20, soak: { impacto: 9, corte: 0, perfuracao: 0 } }, { ...vazio, defesa: '20', absI: '9' });
+  ok(digitado.defesa === 20 && J(digitado.soak) === J({ impacto: 9 }), `o digitado grava: ${J({ defesa: digitado.defesa, soak: digitado.soak })}`);
+  ok(resumo(peca('campeao-esqueletico', digitado)) === '20 9/5/3 N1', `e vence a escolha campo a campo: ${resumo(peca('campeao-esqueletico', digitado))}`);
+  // CONTROLE NEGATIVO: o Salvar de antes gravava o diálogo inteiro, "" e 0 no vazio
+  ok(resumo(peca('campeao-esqueletico', montado)) === '17 0/0/0 N0' && atq(peca('campeao-esqueletico', montado)) === '',
+    `controle negativo, o Salvar de antes (sem a omissão): o 0 e o "" vencem a escolha e zeram a Absorção e o ataque (${resumo(peca('campeao-esqueletico', montado))}, ataque "${atq(peca('campeao-esqueletico', montado))}")`);
+  M.alternarVestida('campeao-esqueletico', M.MON['campeao-esqueletico'].combate); // devolve ao estado do bloco 4 (sem)
+}
 
 console.log('· 4. onde a escolha mora');
 ok(J([...GUARDADO.keys()]) === J(['centelha:mesa:vestida']), `uma chave só no localStorage: ${[...GUARDADO.keys()].join(', ')}`);
-ok(GUARDADO.get('centelha:mesa:vestida') === J({ 'campeao-esqueletico': 'sem', 'soldado-veterano': 'com' }), `com o que difere do padrão: ${GUARDADO.get('centelha:mesa:vestida')}`);
+ok(J(Object.entries(JSON.parse(GUARDADO.get('centelha:mesa:vestida'))).sort()) === J([['campeao-esqueletico', 'sem'], ['soldado-veterano', 'com']]), `com o que difere do padrão: ${GUARDADO.get('centelha:mesa:vestida')}`);
 M.alternarVestida('campeao-esqueletico', M.MON['campeao-esqueletico'].combate);
 ok(GUARDADO.get('centelha:mesa:vestida') === J({ 'soldado-veterano': 'com' }), 'voltar ao padrão apaga a entrada');
 globalThis.localStorage = { getItem: () => { throw new Error('bloqueado'); }, setItem: () => { throw new Error('bloqueado'); } };

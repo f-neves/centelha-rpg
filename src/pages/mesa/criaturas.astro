@@ -125,7 +125,7 @@ import MesaCab from '../../components/MesaCab.astro';
 
 <script>
   import { abrirMesa, u, esc, norm, avatarHTML, debounce, bancoAntigo, semMigracao14, elementosCombate } from '../../lib/mesa-core';
-  import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, estrelas, resumoDe, iniDeMonstro, imagemDe, alternarImagem } from '../../lib/mesa-bestiario';
+  import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, estrelas, resumoDe, iniDeMonstro, imagemDe, alternarImagem, defesaOutraDe, defesaNaMesaDe } from '../../lib/mesa-bestiario';
   import { uiConfirmar, uiErro, uiAviso } from '../../lib/ui-dialog';
 
   const el = (i: string) => document.getElementById(i)!;
@@ -178,7 +178,7 @@ import MesaCab from '../../components/MesaCab.astro';
       res.innerHTML = hits.length ? hits.map((m) => `<li data-mon="${m.id}">
         ${avatarHTML(m.nome, m.imagem ? u(imagemDe(m) || m.imagem) : null, 'av-besta av-p')}
         <span class="r-n">${esc(m.nome)}${m.nomeIngles && m.nomeIngles !== m.nome ? ` <span class="muted">(${esc(m.nomeIngles)})</span>` : ''}</span>
-        <span class="r-m">A${m.ameaca} · PV ${m.pv ?? '—'} · Def ${m.defesa ?? '—'}</span>
+        <span class="r-m">A${m.ameaca} · PV ${m.pv ?? '—'} · Def ${defesaNaMesaDe(m.id) ?? m.defesa ?? '—'}${defesaOutraDe(m.id) != null ? ` <span class="muted" title="A outra Defesa: com ou sem o equipamento (D-206)">(${defesaOutraDe(m.id)})</span>` : ''}</span>
       </li>`).join('') : '<li class="muted vazio">nada encontrado</li>';
       res.hidden = false;
       res.querySelectorAll<HTMLElement>('li[data-mon]').forEach((li) => li.addEventListener('click', async () => {
@@ -288,7 +288,7 @@ import MesaCab from '../../components/MesaCab.astro';
             <span class="cri-b">A${m.ameaca}</span>
             ${m.centelha ? `<span class="cri-b">Cent ${m.centelha}</span>` : ''}
             <span class="cri-b">PV ${pvv ?? '—'}</span>
-            <span class="cri-b">Def ${r?.defesa ?? '—'}</span>
+            <span class="cri-b">Def ${r?.defesa ?? '—'}${c.dados?.defesa == null && defesaOutraDe(c.monstro_id) != null ? ` <span class="muted" title="A outra Defesa: com ou sem o equipamento; troque no card (D-206)">(${defesaOutraDe(c.monstro_id)})</span>` : ''}</span>
             ${m.porte ? `<span class="cri-b">${esc(m.porte)}</span>` : ''}
           </div>
           ${r?.ataque ? `<div class="cri-atk">${esc(r.arma || 'Ataque')}: <b>${esc(r.ataque)}</b> · dano <b>${esc(r.dano)}</b>${r.velocidade != null ? ` · vel ${r.velocidade}` : ''}</div>` : ''}
@@ -436,4 +436,8 @@ import MesaCab from '../../components/MesaCab.astro';
     if (selo) selo.textContent = `${n}/2`;
     document.querySelectorAll<HTMLImageElement>(`.cri-arte[data-mon="${m.id}"] img`).forEach((i) => { i.src = src; });
   });
+
+  // D-206: o Mestre trocou no card a Defesa com ou sem o equipamento; a lista se repinta com a escolha
+  // (a escolha fica no aparelho, defesa-vestida.ts, e não vai ao banco).
+  window.addEventListener('centelha:vestida', () => pintar());
 </script>

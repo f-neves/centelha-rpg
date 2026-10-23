@@ -522,13 +522,19 @@ function converte(arq) {
       if (!atrib || !pericia) throw new Error(`${arq}: ataque "${nomeA}": a jogada "${jg.atributo} + ${jg.habilidade}" tem Atributo ou Habilidade que não existe`);
       jogadaPorParte[parteBase] = { atrib, pericia };
     } else if (jogadaPorParte[parteBase]) ({ atrib, pericia } = jogadaPorParte[parteBase]);
-    // O LIVRO MANDA NO ATRIBUTO DO TIRO E DO ARREMESSO, e não a frase (combate.md:156: "Para arremessos,
-    // sempre Destreza; para atirar (arco ou besta), sempre Percepção"), como o card do editor desde
-    // 23/10/2026 (tiro-2026-10-23): Classe Distância vai por Percepção + Atirador; o ataque com a
-    // Habilidade Arremesso, por Destreza + Arremesso. O Disparo natural (o sopro) fica Vigor + Disparo.
-    // A frase que diz outra coisa (a rocha do gigante, "Força 9 + Arremesso 3") é da Bestiarista acertar.
-    if (pericia === 'arremesso') atrib = 'destreza';
-    else if (classe === 'distancia' && pericia !== 'disparo') { atrib = 'percepcao'; pericia = 'atirador'; }
+    // A jogada comum, sem frase: o corpo a corpo vai pelo maior entre Destreza e Força (combate.md:156,
+    // "normalmente o maior dos dois"; decisão do Arquiteto de 23/10/2026, como no card do editor).
+    else if ((attrs.destreza ?? 0) > (attrs.forca ?? 0)) atrib = 'destreza';
+    // A JOGADA TEM DE SER A DO LIVRO, e a que não for para (combate.md:156; ordem do autor, "nenhum pode
+    // passar errado sem aviso"): o Disparo natural (o sopro) é Vigor + Disparo; a Classe Distância,
+    // Percepção + Atirador; o Arremesso, Destreza + Arremesso; o corpo a corpo, "Destreza ou Força, à
+    // escolha de quem ataca, normalmente o maior dos dois", e a frase com o menor para.
+    const regraJogada = pericia === 'disparo' ? (atrib === 'vigor' ? null : 'o Disparo natural é Vigor + Disparo')
+      : classe === 'distancia' ? (atrib === 'percepcao' && pericia === 'atirador' ? null : 'o tiro é Percepção + Atirador')
+      : pericia === 'arremesso' ? (atrib === 'destreza' ? null : 'o arremesso é Destreza + Arremesso')
+      : (atrib === 'forca' || atrib === 'destreza') ? ((attrs[atrib] ?? 0) < (attrs[atrib === 'forca' ? 'destreza' : 'forca'] ?? 0) ? 'o corpo a corpo usa o maior entre Destreza e Força' : null)
+      : 'o corpo a corpo é Destreza ou Força';
+    if (regraJogada) aviso.push(`ataque "${nomeA}": a jogada ${atrib} + ${pericia} contra o livro (combate.md:156: ${regraJogada})${jg ? '' : ', sem frase "Jogada:" (a jogada comum Força + Briga)'}`);
     ataques.push({
       nome: nomeA, atrib, pericia, dado: Number(dado[1]),
       ...(/Força\s*×\s*2/.test(danoTxt) ? { mao: 2 } : { mao: 1 }),

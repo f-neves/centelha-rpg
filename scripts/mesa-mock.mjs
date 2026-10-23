@@ -1859,3 +1859,45 @@ if (BANDEIRAS) {
     });
   }
 }
+
+// A CENA DA D-206 `?cena=vestida`: a Defesa com e sem o equipamento, que o Mestre
+// escolhe no card (defesa-vestida.ts). Um PC (`v1`, com os números da Adaga do
+// Kael) golpeia o campeão esquelético (`v2`, que veste peitoral e heater) no Tick 2;
+// o soldado veterano (`v3`, cota de malha) fica ao lado, sem ser atacado, para
+// provar que a troca de um não mexe no outro. Fica no fim do arquivo para não
+// mover as linhas que os documentos citam.
+if (P.get('cena') === 'vestida') {
+  const r = resumoCombatePC({
+    ...KAEL,
+    conjuntos: [{ ativo: true, habil: { ref: 'a:adaga' }, inabil: { ref: 'nada' } }],
+    equip: { armaduras: [] },
+  });
+  const numeros = {
+    arma: r.arma, ataque: r.ataque, dano: r.dano,
+    defesa: r.defesa, soak: r.soak, resistPerf: r.resistPerf, perfArma: r.perfArma,
+    velocidade: 5, classe: 'leve', passo: r.passo, qa: r.qa,
+  };
+  const por = [
+    { id: 'v1', tipo: 'pc', monstro_id: null, q: 3, r: 8, alvo: 'v2' },
+    { id: 'v2', tipo: 'criatura', monstro_id: 'campeao-esqueletico', q: 4, r: 8 },
+    { id: 'v3', tipo: 'criatura', monstro_id: 'soldado-veterano', q: 6, r: 8 },
+  ];
+  let k = COMBS.length;
+  for (const p of por) {
+    COMBS.push({
+      id: p.id, encontro_id: ENC, nome: `Peça ${p.id}`,
+      tipo: p.tipo, grupo: p.tipo === 'pc' ? 'aliado' : 'inimigo',
+      monstro_id: p.monstro_id, personagem_id: null,
+      pv_max: 999, pv_atual: 999,
+      mana_max: null, mana_atual: null,
+      tick: 0, iniciativa: 20 - k,
+      acao: p.alvo ? { golpes: [2], livre: 7, desde: 0, tipo: 'simples', arma: numeros.arma, alvo: p.alvo, aResolver: [2] } : {},
+      dados: p.tipo === 'pc' ? { ...numeros } : {},
+      condicoes: [], ativo: true, oculto: false, imagem: null, retrato: null,
+    });
+    TOKENS.push({
+      arena_id: ARENA, combatente_id: p.id, q: p.q, r: p.r,
+      movido_em: new Date(1700000000000 + (k++) * 1000).toISOString(),
+    });
+  }
+}

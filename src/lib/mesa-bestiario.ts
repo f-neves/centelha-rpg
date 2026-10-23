@@ -18,7 +18,7 @@ import { sparkSVG } from './centelha-spark';
 import { d6 } from './rolagem';
 import { qaDaPeca, type QACombate } from './quase-acerto';
 import { imagemDe, escolhaDe } from './imagem-escolhida';
-export { imagemDe, alternarImagem } from './imagem-escolhida'; import { escolhaDe as escolhaVestidaDe, combateNaEscolha, alternarVestida as alternarVestidaAqui } from './defesa-vestida'; export { alternarVestida } from './defesa-vestida';
+export { imagemDe, alternarImagem } from './imagem-escolhida'; import { escolhaDe as escolhaVestidaDe, combateNaEscolha, poolComPenalidade, alternarVestida as alternarVestidaAqui } from './defesa-vestida'; /** D-206: a Defesa do OUTRO estado (a que a mesa não usa agora), para listas que mostram as duas; null sem equipamento. */ export const defesaOutraDe = (id: string): number | null => { const cb = MON[id]?.combate; const e = escolhaVestidaDe(id, cb); return e == null ? null : e === 'com' ? cb.defesa : cb.vestida.defesa; }; /** D-206: a Defesa que a mesa usa para a criatura, pela escolha deste aparelho. */ export const defesaNaMesaDe = (id: string): number | null => combateNaEscolha(MON[id]?.combate || {}, escolhaVestidaDe(id, MON[id]?.combate)).defesa ?? null; export { alternarVestida } from './defesa-vestida';
 
 
 export const MONSTROS = monstersData as any[];
@@ -341,7 +341,7 @@ export function cardCriaturaHTML(m: any): string {
   const { fraquezas: elFraq, resistencias: elRes, imunidades: elImu } = elementosCombate(m);
   const elem = (elFraq.length || elRes.length || elImu.length)
     ? `<div class="besta-elem">${elFraq.map((f: string) => `<span class="el el-fraco" title="Fraqueza">▼ ${esc(f)}</span>`).join('')}${elRes.map((r: string) => `<span class="el el-forte" title="Resistência">▲ ${esc(r)}</span>`).join('')}${elImu.map((i: string) => `<span class="el el-imune" title="Imunidade">◆ ${esc(i)}</span>`).join('')}</div>` : '';
-  const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: <b>${esc(a.pool)}</b> · Dano <b>${fmtDano(esc(a.dano))}</b> · Velocidade ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
+  const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: ${cb.vestida ? `${vMarca(esc(a.pool), vEsc === 'sem')} sem o equipamento · ${vMarca(esc(poolComPenalidade(a.pool, cb.vestida.penalidade)), vEsc === 'com')} com` : `<b>${esc(a.pool)}</b>`} · Dano <b>${fmtDano(esc(a.dano))}</b> · Velocidade ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
   const habs = (m.habilidades || []).length ? `<h4 class="cc-h">Habilidades</h4><ul class="ib-hab">${m.habilidades.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}</li>`).join('')}</ul>` : '';
   const pods = (m.poderes || []).length ? `<h4 class="cc-h">Poderes <span class="muted">(sistema)</span></h4><ul class="ib-pod">${m.poderes.map((p: any) => p.id
     ? `<li><span class="pw-ef">${esc(p.nome)}</span> → <span class="pw-alvo">${esc(p.efeito)}${p.resiste !== 'nenhum' ? ` (resiste ${esc(p.resiste)})` : ''}</span></li>`

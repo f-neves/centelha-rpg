@@ -74,7 +74,7 @@
   "ataques": [
     {
       "nome": "Ferrão",
-      "atrib": "forca",
+      "atrib": "destreza",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
@@ -87,7 +87,7 @@
     },
     {
       "nome": "Mandíbulas",
-      "atrib": "forca",
+      "atrib": "destreza",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,

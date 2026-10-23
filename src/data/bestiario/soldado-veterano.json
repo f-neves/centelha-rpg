@@ -121,7 +121,7 @@
     },
     {
       "nome": "Punhos",
-      "atrib": "forca",
+      "atrib": "destreza",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
@@ -175,6 +175,11 @@
       "nome": "saber quando não lutar",
       "descricao": "recua, cede terreno e foge se a luta está perdida; não morre por bravura.",
       "classe": "como luta"
+    },
+    {
+      "nome": "Sem inimizades naturais",
+      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
+      "classe": "livro"
     },
     {
       "nome": "Sentidos",

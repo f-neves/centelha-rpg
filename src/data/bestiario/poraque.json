@@ -73,7 +73,7 @@
   "ataques": [
     {
       "nome": "Descarga elétrica",
-      "atrib": "forca",
+      "atrib": "destreza",
       "pericia": "briga",
       "dado": 2,
       "mao": 1,
@@ -84,7 +84,7 @@
     },
     {
       "nome": "Mordida",
-      "atrib": "forca",
+      "atrib": "destreza",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,

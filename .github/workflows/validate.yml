@@ -107,6 +107,7 @@ jobs:
           - test-l88-ocupacao-detector-mesa
           - test-l93-passocolossal-mesa
           - test-l77-alcancecentro-mesa
+          - test-vestida-mesa
           - test-grid-simultaneo
           - test-etapa0
           - test-bench-tempo

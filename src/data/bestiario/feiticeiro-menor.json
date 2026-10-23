@@ -118,6 +118,11 @@
       "classe": "como luta"
     },
     {
+      "nome": "Sem inimizades naturais",
+      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
+      "classe": "livro"
+    },
+    {
       "nome": "Sentidos",
       "descricao": "visão e audição: as de um humano."
     }

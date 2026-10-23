@@ -564,7 +564,7 @@ import CondDlg from '../../components/CondDlg.astro';
     classeDeTempo, velocidadeDaArma, tetoDaRajada, temGesto, FASE_ROTULO,
     type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
-  import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, resumoDe, iniDeMonstro, d6, imagemDe } from '../../lib/mesa-bestiario';
+  import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, resumoDe, iniDeMonstro, d6, imagemDe } from '../../lib/mesa-bestiario'; import { dadosSemOsVaziosDaEscolha } from '../../lib/defesa-vestida';
   import { rolarIniciativaPC } from '../../lib/mesa-ficha';
   import { pv as pvDe, mana as manaDe, limiteDaMorte, passouDoLimite } from '../../lib/calc';
   import { armaDoSlot } from '../../lib/equip';
@@ -1814,7 +1814,7 @@ import CondDlg from '../../components/CondDlg.astro';
     g('edit-abs-i').value = sk.impacto != null ? String(sk.impacto) : '';
     g('edit-abs-c').value = sk.corte != null ? String(sk.corte) : '';
     g('edit-abs-p').value = sk.perfuracao != null ? String(sk.perfuracao) : '';
-    g('edit-rperf').value = r.resistPerf ? String(r.resistPerf) : '';
+    g('edit-rperf').value = r.resistPerf ? String(r.resistPerf) : ''; const vestEd = row.tipo === 'criatura' && !!MON[row.monstro_id]?.combate?.vestida; const dEd = row.dados || {}; for (const [i, v, ph] of [['edit-atq', dEd.ataque, r.ataque], ['edit-def', dEd.defesa, r.defesa], ['edit-abs-i', dEd.soak?.impacto, sk.impacto], ['edit-abs-c', dEd.soak?.corte, sk.corte], ['edit-abs-p', dEd.soak?.perfuracao, sk.perfuracao], ['edit-rperf', dEd.resistPerf, r.resistPerf]] as [string, any, any][]) { g(i).placeholder = vestEd && ph != null ? String(ph) : ''; if (vestEd) g(i).value = v != null ? String(v) : ''; } // D-206, "Gravar menos" (decisão do autor): na criatura vestida, os campos que a escolha mexe vêm com o guardado do combatente, e o vazio segue a escolha (o número dela em cinza)
     g('edit-vel').value = r.velocidade != null ? String(r.velocidade) : '';
     g('edit-img').value = row.imagem || '';
     (el('edit-notas') as HTMLTextAreaElement).value = row.notas || '';
@@ -1838,13 +1838,13 @@ import CondDlg from '../../components/CondDlg.astro';
         imagem: g('edit-img').value.trim() || null,
         notas: (el('edit-notas') as HTMLTextAreaElement).value,
         oculto: g('edit-oculto').checked,
-        dados: {
+        dados: ((dd: any) => (vestEd ? dadosSemOsVaziosDaEscolha(dd, { ataque: g('edit-atq').value, defesa: g('edit-def').value, absI: g('edit-abs-i').value, absC: g('edit-abs-c').value, absP: g('edit-abs-p').value, rperf: g('edit-rperf').value }) : dd))({ // D-206: o vazio da criatura vestida não grava a chave
           ataque: g('edit-atq').value.trim(), dano: g('edit-dano').value.trim(),
           defesa: numN(g('edit-def').value), defesaSocial: numN(g('edit-defs').value),
           defesaMental: numN(g('edit-defm').value), resistPerf: num0(g('edit-rperf').value),
           velocidade: numN(g('edit-vel').value),
           soak: { impacto: num0(g('edit-abs-i').value), corte: num0(g('edit-abs-c').value), perfuracao: num0(g('edit-abs-p').value) },
-        },
+        }),
       };
       dlg.close();
       if (row.id) {
