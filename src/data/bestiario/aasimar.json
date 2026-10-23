@@ -8,7 +8,7 @@
   "categoriaLegada": "Exterior",
   "papel": "capanga",
   "conceito": "exterior Médio",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "Humano com sangue celestial distante na linhagem, quase indistinguível dos outros, a não ser por um brilho no cabelo, nos olhos ou uma leve auréola. Cura aliados, ilumina o escuro e queima mortos-vivos.",
   "tags": [
     "exterior",
     "centelha"
@@ -17,32 +17,61 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,75 m de altura",
-    "peso": "70 kg"
+    "peso": "70 kg",
+    "largura": 0.43,
+    "altura": 1.75
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 1,
   "attrs": {
     "forca": 2,
     "destreza": 2,
     "vigor": 4,
-    "influencia": 4,
-    "perspicacia": 4,
-    "compostura": 5,
     "percepcao": 5,
     "inteligencia": 3,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 5
   },
   "skills": {
-    "briga": 2,
-    "esquiva": 0,
+    "armas": 2,
+    "briga": 1,
+    "bloqueio": 1,
     "prontidao": 2,
-    "integridade": 5
+    "integridade": 5,
+    "empatia": 3,
+    "persuasao": 2,
+    "sociabilidade": 1
   },
+  "skills2": {
+    "cura": 2,
+    "religiao": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "integridade",
+      "foco": "contra o mal",
+      "valor": 2,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "empatia",
+      "foco": "quem sofre",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 4,
+    "compaixao": 3,
+    "conviccao": 3,
     "temperanca": 3,
     "valor": 4
   },
@@ -50,36 +79,58 @@
   "aparencia": 6,
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
+      "nome": "Espada longa",
+      "atrib": "destreza",
+      "pericia": "armas",
       "dado": 1,
       "mao": 1,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "ticks": 6,
+      "classe": "media"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [
+    "gelo",
+    "raio",
+    "acido"
+  ],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Sangue Celestial",
-      "descricao": "O aasimar enxerga no escuro como se fosse dia e resiste a ácido, frio e eletricidade, absorvendo parte do dano dessas fontes."
+      "nome": "Canalizar luz",
+      "descricao": "poder natural (base Luz 2): Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 9 m. Área: esfera de 9 m em volta dele. Efeito: à escolha: cura os aliados vivos na área, ou queima os mortos-vivos. Dano: aos mortos-vivos, 2d6 + Centelha, sagrado; a cura devolve 2d6 + Centelha PV a cada aliado. Resistência: esquiva, só para os mortos-vivos; quem passa leva metade. Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Canalizar Luz",
-      "descricao": "Uma vez por cena, o aasimar libera uma pulsação de energia sagrada que cura aliados próximos ou queima mortos-vivos."
+      "nome": "Repúdio da morte",
+      "descricao": "poder natural (base Cura 1): Ativação: uma ação, Velocidade 6, tocando um aliado moribundo. Duração: instantânea. Alcance: toque. Área: um aliado. Efeito: estabiliza o aliado (para o Sangramento e a queda) e devolve 1d6 PV. Dano: nenhum. Resistência: nenhum. Limite de uso: três vezes por cena.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Repúdio da Morte",
-      "descricao": "Ao tocar um aliado moribundo, o aasimar pode estabilizá-lo e devolver um pouco de vitalidade, algumas vezes por cena."
+      "nome": "Toque do bem",
+      "descricao": "poder natural (base Proteção 1): Ativação: uma ação, Velocidade 5, tocando um aliado. Duração: até a próxima jogada importante do aliado, ou o fim da cena. Alcance: toque. Área: um aliado. Efeito: fortalece a resolução: o aliado soma +1d6 na próxima jogada importante. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Toque do Bem",
-      "descricao": "O toque do aasimar fortalece brevemente a resolução de um aliado, dando vantagem no próximo teste que ele fizer."
+      "nome": "Luz do dia",
+      "descricao": "poder natural (base Luz 2): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena. Alcance: o próprio corpo, ou um objeto que ele toca. Área: esfera de 18 m de luz forte. Efeito: ilumina como o dia; quem é sensível à luz fica Ofuscado na área. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Luz do Dia",
-      "descricao": "Uma vez por cena, o aasimar convoca uma radiância que ilumina uma grande área e ofusca criaturas sensíveis à luz."
+      "nome": "Sangue celestial",
+      "descricao": "resistência a gelo, raio e ácido (Elementos; metade do dano, C-039).",
+      "classe": "livro"
+    },
+    {
+      "nome": "servo da causa",
+      "descricao": "protege os aliados, ilumina a área contra as criaturas da escuridão, cura quem cai e queima os mortos-vivos.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: enxerga no escuro como se fosse dia (site). · audição e olfato: os de um humano."
     }
   ],
   "lore": [
@@ -94,6 +145,14 @@
     {
       "titulo": "Temperamento",
       "texto": "Nem todo aasimar é virtuoso, mas a maioria sente atração natural por causas justas e organizações devotadas ao bem, ainda que muitos escondam sua origem por medo ou modéstia."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: sozinho, ou numa ordem devotada ao bem."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, 37 PV, Impacto 5, Corte e Perfuração 1; gelo, raio e ácido fazem metade. Esquiva 4, Bloqueio 8 (9 com a espada). A espada dá dano médio 6,5. Uma vez por cena cura os aliados a 9 m ou queima os mortos-vivos (2d6 + 1); estabiliza moribundos; ilumina como o dia. Defesa Mental 17, Social 14."
     }
   ],
   "ecologia": {
@@ -129,5 +188,33 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 1
+  "ameacaLegada": 1,
+  "v3": {
+    "pv": 37,
+    "esquiva": 4,
+    "bloqueio": 8,
+    "defesa": 9,
+    "defesaMental": 17,
+    "defesaSocial": 14,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 100.69,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    },
+    "bloqueioArma": 1
+  },
+  "notasObservacao": [
+    "`raça parente`: Humano (D-207); os números são os do site",
+    "`equipamento`: espada longa do livro **[provisório]**",
+    "`canalizar luz`, `repúdio da morte`, `toque do bem`, `luz do dia`: números sugeridos pela ficha (D-197)"
+  ]
 }

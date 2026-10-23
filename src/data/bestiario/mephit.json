@@ -8,79 +8,139 @@
   "categoriaLegada": "Exterior",
   "papel": "soldado",
   "conceito": "exterior Pequeno",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "Diabrete alado de matéria elemental, servo de senhores elementais, irritante e imprevisível. Provoca de cima, sopra o próprio elemento num cone e foge, e as armas comuns mal o ferem.",
   "tags": [
     "exterior",
     "centelha"
   ],
   "imagem": "bestiario/mephit_criatura.webp",
-  "porte": "Pequeno",
+  "porte": "Médio",
   "dimensoes": {
     "medida": "1 m de altura",
-    "peso": "18 kg"
+    "peso": "18 kg",
+    "largura": 0.29,
+    "altura": 1,
+    "envergadura": 1.6
   },
   "locomocao": {
     "terra": 3,
     "voo": 4
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 2,
   "attrs": {
     "forca": 3,
     "destreza": 4,
     "vigor": 3,
-    "influencia": 4,
-    "perspicacia": 2,
-    "compostura": 3,
     "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 4,
+    "perspicacia": 2,
+    "compostura": 3
   },
   "skills": {
     "briga": 4,
     "esquiva": 1,
+    "atletismo": 1,
+    "furtividade": 2,
     "prontidao": 1,
     "integridade": 3
   },
+  "skills2": {
+    "labia": 2,
+    "voo": 2,
+    "disparo": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "briga",
+      "foco": "atacar de cima",
+      "valor": 2,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 2,
-    "conviccao": 4,
-    "temperanca": 3,
-    "valor": 4
+    "conviccao": 2,
+    "temperanca": 2,
+    "valor": 2
   },
   "willpower": 7,
   "aparencia": 6,
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
+      "nome": "Garras",
+      "atrib": "destreza",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    },
+    {
+      "nome": "Sopro elemental",
+      "atrib": "vigor",
+      "pericia": "disparo",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "fogo",
+      "ticks": 7,
+      "forca": false,
+      "classe": "distancia",
+      "distancia": true
     }
+  ],
+  "fraquezas": [],
+  "resistencias": [
+    "corte",
+    "perfuracao",
+    "impacto"
+  ],
+  "imunidades": [
+    "fogo"
   ],
   "habilidades": [
     {
-      "nome": "Cura Acelerada",
-      "descricao": "Em ambientes ligados ao seu elemento, fecha ferimentos rapidamente sozinho."
+      "nome": "Sopro elemental",
+      "descricao": "poder natural (base Fogo 2) · Sopro elemental: Ativação: uma ação, Velocidade 7, a jogada da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 3 m à frente. Área: cone de 3 m. Efeito: um jato do elemento dele queima todos no cone. Dano: 2d6 + Centelha, fogo (na Variante, o tipo do elemento). Resistência: esquiva, contra a jogada; quem se abaixa a tempo leva metade. Limite de uso: uma vez a cada 24 Ticks.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Sopro Elemental",
-      "descricao": "A cada poucos rounds, expele um cone de energia do seu elemento, ferindo todos à frente; quem se abaixa a tempo sofre só metade do dano."
+      "nome": "Cura acelerada",
+      "descricao": "Ativação: nenhuma; vale num ambiente ligado ao elemento dele (fogo aceso por perto, para o de fogo). Duração: enquanto estiver no ambiente. Alcance: o próprio corpo. Área: não se aplica. Efeito: fecha ferimentos sozinho. Dano: nenhum; recupera 1 PV a cada 6 Ticks. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Convocar Semelhante",
-      "descricao": "Uma vez por dia, pode chamar outro mefite do mesmo tipo elemental para vir em seu auxílio."
+      "nome": "Convocar semelhante",
+      "descricao": "Ativação: uma ação, Velocidade 8. Duração: até o fim da cena. Alcance: o plano dele. Área: não se aplica. Efeito: chama outro mephit do mesmo elemento, que chega em 30 Ticks se houver um a responder (o Mestre decide). Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Corpo Semi-Etéreo",
-      "descricao": "Sendo feito de matéria elemental pura, absorve parte de golpes comuns; só armas encantadas o ferem de verdade."
+      "nome": "Corpo semi-etéreo",
+      "descricao": "resistência a Corte, Perfuração e Impacto, e imunidade a fogo (Elementos; C-039).",
+      "classe": "livro"
     },
     {
-      "nome": "Voo Instável",
-      "descricao": "Voa com razoável destreza, usando isso tanto para fugir quanto para hostilizar de cima."
+      "nome": "Voo instável",
+      "descricao": "Voo 2 e o voo do site.",
+      "classe": "livro"
+    },
+    {
+      "nome": "praga alada",
+      "descricao": "provoca de cima, sopra no grupo, arranha quem está sozinho e foge para o alto quando o atacam de frente.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um humano."
     }
   ],
   "lore": [
@@ -95,6 +155,14 @@
     {
       "titulo": "Muitas Formas, um Só Propósito",
       "texto": "Existem mefites de ar, poeira, terra, fogo e outros elementos, cada um com seu próprio sopro e talento, mas todos compartilham a mesma natureza travessa e serviçal."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: em grupo, típico 3 a 8."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio no ar, Pequeno no chão, 18 PV, Impacto 5, Corte e Perfuração 2; armas comuns fazem metade, o fogo não o fere. Esquiva 12. Garras (6, 5) ou sopro em cone de 3 m (2d6 + 2, metade a quem se abaixa), a cada 24 Ticks. Perto de fogo, fecha ferimentos sozinho. Voa a 4."
     }
   ],
   "ecologia": {
@@ -130,5 +198,38 @@
     "crConf": "conhecido"
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 18,
+    "esquiva": 12,
+    "bloqueio": 8,
+    "defesa": 12,
+    "defesaMental": 16,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 71.16,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      },
+      "voo": {
+        "batalha": 4
+      }
+    }
+  },
+  "notasObservacao": [
+    "`elemento`: o de fogo como principal; o site é genérico **[provisório]**",
+    "`envergadura`: 1,6 m, estimada; o site não dá **[extrapolação]**",
+    "`pv`: 18, a linha de baixo da zona de transição; na de cima seriam 26",
+    "`corpo semi-etéreo`: resistência a Corte, Perfuração e Impacto **[provisório]**",
+    "`virtudes`: Bravura 2 e Temperança 2; o site tinha 4 e 3 **[provisório]**",
+    "`sopro elemental`, `cura acelerada`, `convocar semelhante`: números sugeridos pela ficha (D-197)"
+  ]
 }

@@ -285,6 +285,11 @@ try {
   const lich = fs.existsSync(lichArq) ? JSON.parse(fs.readFileSync(lichArq, 'utf8')) : null;
   ok(comBase.status === 0 && lich?.categoriaLegada === 'Morto-vivo', `com fonte base sem categoriaLegada, a categoria da base: ${lich?.categoriaLegada}${comBase.status ? ' (exit ' + comBase.status + ')' : ''}`);
 
+  // O Segundo Tamanho (D-183): não vai aos dados, mas o valor tem de ser um Tamanho, "não se aplica" ou "igual ao principal".
+  para('Segundo Tamanho fora do conjunto', '| Segundo Tamanho | não se aplica |', '| Segundo Tamanho | gigantesco |', /Segundo Tamanho "gigantesco" fora do que se aceita/);
+  const seg2 = roda(FICHA.replace('| Segundo Tamanho | não se aplica |', '| Segundo Tamanho | **Médio** (0,65 m², de pé, asas fechadas) |'), 'segundo tamanho de pé');
+  ok(seg2.status === 0, `o Segundo Tamanho "**Médio** (0,65 m², de pé...)", como na gárgula, é aceito (exit ${seg2.status})`);
+
   // As Técnicas das Manobras (CORRIGE da Revisora na d1b893a9): "Técnica <id>, nível N" vai ao `tech` da fonte.
   const MAN = '- corpo morto · sem regra ainda: não respira.\n';
   const comTec = roda(FICHA.replace(MAN, MAN + '- Pisar Leve · Técnica pisar-leve, nível 1 · livro: +3 em Furtividade.\n- Esgueirar · Técnica esgueirar, nível 1 · livro: some de vista.\n'), 'técnicas');

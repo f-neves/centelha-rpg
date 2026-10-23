@@ -8,7 +8,7 @@
   "categoriaLegada": "Monstro",
   "papel": "soldado",
   "conceito": "humanoide monstruoso Grande",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Metade homem, metade cavalo: caçador lendário das fronteiras, que atira azagaias a galope, golpeia com a espada e escoiceia na mesma investida. Povo antigo e distante, que só aos poucos aceita o mundo de fora.",
   "tags": [
     "monstro",
     "centelha"
@@ -16,33 +16,58 @@
   "imagem": "bestiario/centauro_criatura.webp",
   "porte": "Grande",
   "dimensoes": {
-    "medida": "2,1 m de altura",
-    "peso": "900 kg"
+    "medida": "2,9 m de comprimento, 2,1 m de altura",
+    "peso": "900 kg",
+    "comprimento": 2.9,
+    "largura": 0.74,
+    "altura": 2.1
   },
   "locomocao": {
     "terra": 5
   },
+  "deslocamentoDeclarado": {
+    "batalha": 5,
+    "arranque": 8,
+    "corrida": 12
+  },
   "centelha": 2,
   "attrs": {
-    "forca": 5,
+    "forca": 7,
     "destreza": 4,
-    "vigor": 5,
-    "influencia": 3,
-    "perspicacia": 3,
-    "compostura": 3,
+    "vigor": 6,
     "percepcao": 4,
     "inteligencia": 2,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 3
   },
   "skills": {
-    "briga": 4,
+    "armas": 4,
+    "arremesso": 3,
+    "briga": 3,
+    "bloqueio": 1,
     "esquiva": 1,
+    "atletismo": 3,
     "prontidao": 2,
-    "integridade": 3
+    "integridade": 3,
+    "sobrevivencia": 3,
+    "resistencia": 3
   },
+  "skills2": {
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "sobrevivencia",
+      "foco": "rastrear",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 2,
-    "conviccao": 3,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
@@ -50,36 +75,78 @@
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Arma",
+      "nome": "Espada longa",
+      "atrib": "forca",
+      "pericia": "armas",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Azagaia",
+      "atrib": "destreza",
+      "pericia": "arremesso",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 1,
+      "ticks": 6,
+      "classe": "arremesso",
+      "distancia": true,
+      "arremesso": true
+    },
+    {
+      "nome": "Coice",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 2,
       "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 6
+      "tipo": "impacto",
+      "ticks": 7,
+      "classe": "pesada"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Ataque Duplo",
-      "descricao": "Combina golpes de arma com coices das patas traseiras, atacando com as duas frentes ao mesmo tempo."
+      "nome": "Ataque duplo",
+      "descricao": "Espada longa e Coice: Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo, ou dois, um na frente e um atrás. Efeito: um golpe de espada e um Coice na mesma ação, os dois a −1d6, cada um com o próprio acerto e dano (a conta da empunhadura dupla do livro). Dano: o de cada golpe. Resistência: nenhum. Limite de uso: a cada ação.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Lançador Certeiro",
-      "descricao": "Arremessa lanças com grande precisão mesmo em movimento, unindo a mira humana à velocidade equina."
+      "nome": "Lançador certeiro",
+      "descricao": "a Azagaia com Arremesso 3 e a Especialidade (azagaia a galope) +1; atira em movimento.",
+      "classe": "livro"
     },
     {
-      "nome": "Visão no Escuro",
-      "descricao": "Enxerga perfeitamente mesmo na escuridão total."
+      "nome": "Investida",
+      "descricao": "corre no Preparo do golpe, com −2 a mais na Defesa e +1d6 no dano.",
+      "classe": "livro"
     },
     {
-      "nome": "Rastreador Nato",
-      "descricao": "Possui um talento natural para rastrear presas e sobreviver em território selvagem."
+      "nome": "Armas de porte humano",
+      "descricao": "usa as armas do livro feitas para gente, sem perda.",
+      "classe": "livro"
     },
     {
-      "nome": "Armas de Porte Humano",
-      "descricao": "Apesar do corpo grande, empunha armas feitas para humanos, um tamanho abaixo do que o próprio corpo permitiria, sem qualquer perda de destreza no manejo."
+      "nome": "Rastreador nato",
+      "descricao": "Sobrevivência 3 com a Especialidade (rastrear) +1.",
+      "classe": "livro"
+    },
+    {
+      "nome": "tribo da fronteira",
+      "descricao": "atira azagaias a galope, investe com a espada e escoiceia quem passa por trás; recua para a mata se a luta vira.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: enxerga mesmo na escuridão total (site). · audição e olfato: os de um cavalo."
     }
   ],
   "lore": [
@@ -89,11 +156,19 @@
     },
     {
       "titulo": "Comportamento",
-      "texto": "Distantes das outras raças e até mesmo entre si, são um povo antigo que só lentamente aceita o mundo moderno; alguns abandonam o isolamento ancestral para viver nas cidades mais cosmopolitas, tornando-se muitas vezes párias entre a própria tribo."
+      "texto": "Distantes das outras raças e até mesmo entre si, são um povo antigo que só lentamente aceita o mundo moderno; alguns abandonam o isolamento ancestral para viver nas cidades mais cosmopolitas, tornando-se muitas vezes párias entre a própria tribo. Social: em tribo, típico 4 a 12."
     },
     {
       "titulo": "Natureza",
       "texto": "Em raros casos, tribos inteiras sob líderes progressistas chegam a negociar ou firmar alianças com outros povos, sobretudo elfos, e mais raramente gnomos, humanos ou anões; vivem em média sessenta anos."
+    },
+    {
+      "titulo": "Aptidões",
+      "texto": "montaria não · carga sim · tração sim"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande, 54 PV, Impacto 8, Corte e Perfuração 2. Esquiva e Bloqueio 12 (13 com a espada). Espada (dano médio 12, 5), azagaia a 16 m (12, 5) ou coice (16); em uma ação, espada e coice juntos a −1d6. Corre a 5 · 8 · 12 e investe."
     }
   ],
   "ecologia": {
@@ -130,5 +205,40 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 54,
+    "esquiva": 12,
+    "bloqueio": 12,
+    "defesa": 13,
+    "defesaMental": 17,
+    "defesaSocial": 10,
+    "absorcao": {
+      "impacto": 8,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 662.03,
+    "carga": {
+      "leve": 180,
+      "media": 360,
+      "pesada": 540,
+      "maxima": 720
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 5,
+        "arranque": 8,
+        "corrida": 12
+      }
+    },
+    "bloqueioArma": 1
+  },
+  "notasObservacao": [
+    "`forca`, `vigor`: 7 e 6, pelo cavalo do molde; o site tinha 5 e 5 **[provisório]**",
+    "`equipamento`: espada longa e azagaia do livro **[provisório]**",
+    "`carga`: 20% da massa, a fração do cavalo **[provisório]**",
+    "`ataque duplo`: números sugeridos pela ficha (D-197)"
+  ]
 }

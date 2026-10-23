@@ -3449,7 +3449,7 @@
     "ameaca": 3,
     "centelha": 2,
     "conceito": "humanoide monstruoso Médio",
-    "descricao": "Aberração humanoide de lendas antigas.",
+    "descricao": "Mulher-ave de asas largas que faz ninho em penhascos e ruínas à beira-mar. Atrai viajantes e marinheiros com um canto que cativa, e o bando despedaça a presa hipnotizada com garras e dentes.",
     "tags": [
       "monstro",
       "centelha",
@@ -3462,8 +3462,8 @@
     "vontade": 7,
     "soak": {
       "impacto": 4,
-      "corte": 3,
-      "perfuracao": 3
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -3480,38 +3480,18 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "3d6+2 +4",
-        "dano": "1d6 +5 corte",
+        "nome": "Garras",
+        "pool": "4d6+2 +5",
+        "dano": "1d6 +3 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "fascinacao",
-        "nivel": 2
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Oratória 2, Furtividade 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "cancao-cativante",
-        "nome": "Canção cativante",
-        "tipo": "natural",
-        "base": {
-          "arte": "fascinacao",
-          "nivel": 2
-        },
-        "resiste": "mente",
-        "efeito": "Defesa Mental; área de audição.",
-        "usos": {
-          "periodo": "cena"
-        }
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
@@ -3528,20 +3508,20 @@
     "ameaca": 3,
     "centelha": 1,
     "conceito": "humanoide monstruoso Médio",
-    "descricao": "Aberração humanoide de lendas antigas.",
+    "descricao": "Guardiã alada de pedra viva que passa dias imóvel como estátua em templos e ruínas, e desperta em silêncio para cair do alto sobre quem profanou o lugar. Não come, não dorme e não respira.",
     "tags": [
       "monstro",
       "centelha"
     ],
     "pv": 40,
-    "defesa": 12,
+    "defesa": 13,
     "defesaSocial": 4,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
-      "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 6,
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -3558,11 +3538,20 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "4d6 +2",
-        "dano": "1d6 +5 corte",
+        "nome": "Garras",
+        "pool": "4d6 +3",
+        "dano": "1d6 +3 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Chifres",
+        "pool": "4d6 +2",
+        "dano": "1d6 +5 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -3574,7 +3563,7 @@
       "esquiva": 1,
       "integridade": 2,
       "sociabilidade": 0,
-      "furtividade": 2
+      "furtividade": 3
     }
   },
   {
@@ -7781,7 +7770,7 @@
     "ameaca": 5,
     "centelha": 5,
     "conceito": "exterior Médio",
-    "descricao": "Nativo de outro plano, alheio às leis mortais.",
+    "descricao": "Serpente emplumada, guardiã antiga e telepata de templos esquecidos, que fala por imagens na mente de quem se aproxima com respeito. Conjura portais, barreiras e encantos, muda de forma e, quando precisa, morde com veneno e esmaga.",
     "tags": [
       "exterior",
       "centelha",
@@ -7789,18 +7778,18 @@
     ],
     "pv": 50,
     "defesa": 20,
-    "defesaSocial": 12,
+    "defesaSocial": 16,
     "defesaMental": 31,
     "vontade": 10,
     "soak": {
       "impacto": 10,
-      "corte": 9,
-      "perfuracao": 9
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 8",
+    "iniciativa": "1d6 + 9",
     "atributos": {
-      "forca": 4,
+      "forca": 6,
       "destreza": 6,
       "vigor": 5,
       "influencia": 5,
@@ -7812,12 +7801,12 @@
     },
     "ataques": [
       {
-        "nome": "Mordida venenosa e constrição",
-        "pool": "4d6+2 +10",
-        "dano": "1d6 +9 perfurante",
+        "nome": "Mordida venenosa",
+        "pool": "5d6+2 +11",
+        "dano": "1d6 +9 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
-        "notas": "veneno drena Força; pode constringir em seguida"
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -7845,40 +7834,12 @@
     ],
     "notas": "Habilidades notáveis: Ocultismo 4, Persuasão 3, Prontidão 4.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "constricao-venenosa",
-        "nome": "Constrição venenosa",
-        "tipo": "natural",
-        "resiste": "corpo",
-        "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 3,
-          "recarga": "1 hora"
-        }
-      },
-      {
-        "id": "mudar-de-forma",
-        "nome": "Mudar de forma",
-        "tipo": "natural",
-        "base": {
-          "arte": "materia",
-          "nivel": 2
-        },
-        "resiste": "nenhum",
-        "efeito": "Mudar de forma",
-        "usos": {
-          "periodo": "avontade"
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 3,
+      "prontidao": 4,
       "esquiva": 2,
       "integridade": 6,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "sociabilidade": 1,
+      "furtividade": 2
     }
   },
   {
@@ -8830,21 +8791,21 @@
     "ameaca": 4,
     "centelha": 3,
     "conceito": "humanoide monstruoso Médio",
-    "descricao": "Aberração humanoide de lendas antigas.",
+    "descricao": "Mulher amaldiçoada de cabelos de serpente, cujo olhar transforma em pedra quem a encara. Vive sozinha em ruínas cercada de estátuas, cobre o rosto e só ataca quando encurralada ou traída.",
     "tags": [
       "monstro",
       "centelha",
       "mágico"
     ],
     "pv": 40,
-    "defesa": 12,
+    "defesa": 13,
     "defesaSocial": 8,
     "defesaMental": 21,
     "vontade": 8,
     "soak": {
       "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -8861,56 +8822,40 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "3d6+2 +6",
-        "dano": "1d6 +5 corte",
+        "nome": "Arco curto",
+        "pool": "2d6+2 +6",
+        "dano": "1d6 +1 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "distancia"
+      },
+      {
+        "nome": "Espada curta",
+        "pool": "3d6+2 +8",
+        "dano": "1d6 +3 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Serpentes",
+        "pool": "3d6+2 +7",
+        "dano": "1d6 +3 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "materia",
-        "nivel": 3
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Furtividade 3, Atirador 2, Manha 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "olhar-petrificante",
-        "nome": "Olhar petrificante",
-        "tipo": "natural",
-        "base": {
-          "arte": "materia",
-          "nivel": 3
-        },
-        "resiste": "corpo",
-        "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
-        "usos": {
-          "periodo": "cena"
-        }
-      },
-      {
-        "id": "cabelos-serpente",
-        "nome": "Cabelos-serpente",
-        "tipo": "natural",
-        "resiste": "corpo",
-        "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 3,
-          "recarga": "1 hora"
-        }
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
       "integridade": 4,
       "sociabilidade": 0,
-      "furtividade": 2
+      "furtividade": 3
     }
   },
   {
@@ -9510,21 +9455,21 @@
     "ameaca": 4,
     "centelha": 4,
     "conceito": "humanoide monstruoso Grande",
-    "descricao": "Aberração humanoide de lendas antigas.",
+    "descricao": "Torso de mulher sobre corpo de leão, que vive em ruínas e oásis enganosos no limite do deserto. Seduz viajantes com ilusões de beleza e drena pelo toque a sabedoria e a vontade de quem cai no encanto.",
     "tags": [
       "monstro",
       "centelha",
       "mágico"
     ],
-    "pv": 54,
+    "pv": 43,
     "defesa": 20,
-    "defesaSocial": 10,
+    "defesaSocial": 14,
     "defesaMental": 27,
     "vontade": 9,
     "soak": {
       "impacto": 10,
-      "corte": 9,
-      "perfuracao": 9
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 8",
@@ -9541,48 +9486,24 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
+        "nome": "Garras",
         "pool": "5d6+2 +8",
-        "dano": "2d6 +10 corte",
+        "dano": "1d6 +10 corte",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "morte",
-        "nivel": 2
-      },
-      {
-        "id": "fascinacao",
-        "nivel": 3
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Manha 4, Furtividade 3, Ocultismo 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "dreno-de-sabedoria",
-        "nome": "Dreno de Sabedoria",
-        "tipo": "natural",
-        "base": {
-          "arte": "morte",
-          "nivel": 2
-        },
-        "resiste": "corpo",
-        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-        "usos": {
-          "periodo": "golpe"
-        }
-      }
-    ],
     "pericias": {
       "prontidao": 3,
       "esquiva": 2,
       "integridade": 5,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "sociabilidade": 1,
+      "furtividade": 3
     }
   },
   {
@@ -9593,7 +9514,7 @@
     "ameaca": 4,
     "centelha": 4,
     "conceito": "humanoide monstruoso Médio",
-    "descricao": "Aberração humanoide de lendas antigas.",
+    "descricao": "Velha de pele verde dos pântanos que se disfarça de camponesa ou donzela e imita vozes para atrair vítimas. Revela as garras, enfraquece com o toque e lança feitiços de maldição e engano.",
     "tags": [
       "monstro",
       "centelha",
@@ -9606,8 +9527,8 @@
     "vontade": 9,
     "soak": {
       "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -9624,50 +9545,18 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "5d6+2 +8",
-        "dano": "1d6 +10 corte",
+        "nome": "Garras",
+        "pool": "5d6+2 +9",
+        "dano": "1d6 +8 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "ofuscacao",
-        "nivel": 3
-      },
-      {
-        "id": "natureza",
-        "nivel": 3
-      },
-      {
-        "id": "morte",
-        "nivel": 2
-      },
-      {
-        "id": "metamorfose",
-        "nivel": 2
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Ocultismo 3, Manha 3, Furtividade 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "fraqueza-mistica",
-        "nome": "Fraqueza mística",
-        "tipo": "natural",
-        "base": {
-          "arte": "morte",
-          "nivel": 2
-        },
-        "resiste": "corpo",
-        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-        "usos": {
-          "periodo": "golpe"
-        }
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
@@ -10838,20 +10727,20 @@
     "ameaca": 1,
     "centelha": 1,
     "conceito": "exterior Médio",
-    "descricao": "Nativo de outro plano, alheio às leis mortais.",
+    "descricao": "Humano com sangue celestial distante na linhagem, quase indistinguível dos outros, a não ser por um brilho no cabelo, nos olhos ou uma leve auréola. Cura aliados, ilumina o escuro e queima mortos-vivos.",
     "tags": [
       "exterior",
       "centelha"
     ],
     "pv": 37,
-    "defesa": 4,
-    "defesaSocial": 10,
+    "defesa": 9,
+    "defesaSocial": 14,
     "defesaMental": 17,
     "vontade": 6,
     "soak": {
       "impacto": 5,
-      "corte": 3,
-      "perfuracao": 3
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -10868,11 +10757,12 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
-        "pool": "2d6 +2",
+        "nome": "Espada longa",
+        "pool": "2d6 +3",
         "dano": "1d6 +3 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -10883,8 +10773,8 @@
       "prontidao": 2,
       "esquiva": 0,
       "integridade": 5,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "sociabilidade": 1,
+      "furtividade": 0
     }
   },
   {
@@ -11423,20 +11313,20 @@
     "ameaca": 4,
     "centelha": 4,
     "conceito": "exterior Médio",
-    "descricao": "Nativo de outro plano, alheio às leis mortais.",
+    "descricao": "Espírito do vento, o mais selvagem dos espíritos do bem: vira um redemoinho de poeira, neve ou areia, corta com lâminas de ar e cura os aliados com o vento. Na outra forma, é um elfo alto que luta com espada.",
     "tags": [
       "exterior",
       "centelha"
     ],
     "pv": 40,
     "defesa": 14,
-    "defesaSocial": 8,
+    "defesaSocial": 12,
     "defesaMental": 25,
     "vontade": 9,
     "soak": {
       "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -11453,11 +11343,20 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
+        "nome": "Golpe de vento",
         "pool": "5d6+2 +8",
-        "dano": "1d6 +10 corte",
+        "dano": "1d6 +10 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Rajada cortante",
+        "pool": "4d6 +6",
+        "dano": "3d6 +4 corte",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "distancia"
       }
     ],
     "tecnicas": [],
@@ -11468,8 +11367,8 @@
       "prontidao": 2,
       "esquiva": 1,
       "integridade": 4,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "sociabilidade": 1,
+      "furtividade": 0
     }
   },
   {
@@ -12469,27 +12368,27 @@
     "ameaca": 3,
     "centelha": 2,
     "conceito": "humanoide monstruoso Grande",
-    "descricao": "Aberração humanoide de lendas antigas.",
+    "descricao": "Metade homem, metade cavalo: caçador lendário das fronteiras, que atira azagaias a galope, golpeia com a espada e escoiceia na mesma investida. Povo antigo e distante, que só aos poucos aceita o mundo de fora.",
     "tags": [
       "monstro",
       "centelha"
     ],
-    "pv": 50,
-    "defesa": 12,
-    "defesaSocial": 6,
+    "pv": 54,
+    "defesa": 13,
+    "defesaSocial": 10,
     "defesaMental": 17,
     "vontade": 7,
     "soak": {
-      "impacto": 7,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 8,
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 5,
+      "forca": 7,
       "destreza": 4,
-      "vigor": 5,
+      "vigor": 6,
       "influencia": 3,
       "perspicacia": 3,
       "compostura": 3,
@@ -12499,11 +12398,28 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "4d6+2 +4",
-        "dano": "2d6 +7 corte",
+        "nome": "Espada longa",
+        "pool": "5d6+2 +5",
+        "dano": "1d6 +9 corte",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Azagaia",
+        "pool": "3d6+2 +5",
+        "dano": "1d6 +9 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "arremesso"
+      },
+      {
+        "nome": "Coice",
+        "pool": "5d6 +4",
+        "dano": "2d6 +9 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -12514,8 +12430,8 @@
       "prontidao": 2,
       "esquiva": 1,
       "integridade": 3,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "sociabilidade": 1,
+      "furtividade": 0
     }
   },
   {
@@ -15647,20 +15563,20 @@
     "ameaca": 3,
     "centelha": 2,
     "conceito": "exterior Médio",
-    "descricao": "Nativo de outro plano, alheio às leis mortais.",
+    "descricao": "O mais humano dos gênios, insulto que responde na ponta da espada: guarda poços e oásis no fundo do deserto, voa, some da vista, muda o tamanho do inimigo e abre passagem para os planos elementais.",
     "tags": [
       "exterior",
       "centelha"
     ],
     "pv": 34,
-    "defesa": 12,
-    "defesaSocial": 8,
+    "defesa": 17,
+    "defesaSocial": 12,
     "defesaMental": 19,
     "vontade": 7,
     "soak": {
       "impacto": 5,
-      "corte": 3,
-      "perfuracao": 3
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -15677,11 +15593,12 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
-        "pool": "4d6+2 +4",
+        "nome": "Espada longa",
+        "pool": "4d6+2 +5",
         "dano": "1d6 +7 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -15692,8 +15609,8 @@
       "prontidao": 2,
       "esquiva": 1,
       "integridade": 4,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "sociabilidade": 1,
+      "furtividade": 0
     }
   },
   {
@@ -17861,20 +17778,20 @@
     "ameaca": 3,
     "centelha": 2,
     "conceito": "exterior Pequeno",
-    "descricao": "Nativo de outro plano, alheio às leis mortais.",
+    "descricao": "Diabrete alado de matéria elemental, servo de senhores elementais, irritante e imprevisível. Provoca de cima, sopra o próprio elemento num cone e foge, e as armas comuns mal o ferem.",
     "tags": [
       "exterior",
       "centelha"
     ],
-    "pv": 26,
+    "pv": 18,
     "defesa": 12,
     "defesaSocial": 6,
     "defesaMental": 16,
     "vontade": 7,
     "soak": {
       "impacto": 5,
-      "corte": 3,
-      "perfuracao": 3
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -17891,11 +17808,20 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
-        "pool": "3d6+2 +4",
-        "dano": "1d6 +5 corte",
+        "nome": "Garras",
+        "pool": "4d6 +5",
+        "dano": "1d6 +3 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Sopro elemental",
+        "pool": "2d6+2 +4",
+        "dano": "2d6 +2 fogo",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "distancia"
       }
     ],
     "tecnicas": [],
@@ -17907,7 +17833,7 @@
       "esquiva": 1,
       "integridade": 3,
       "sociabilidade": 0,
-      "furtividade": 3
+      "furtividade": 2
     }
   },
   {
@@ -18098,7 +18024,7 @@
     "ameaca": 2,
     "centelha": 2,
     "conceito": "humanoide monstruoso Médio",
-    "descricao": "Aberração humanoide de lendas antigas.",
+    "descricao": "Humano degenerado das profundezas que perdeu a fala e anda de quatro, escala paredes e tetos como aranha e ataca em bando, dois a dois em cada presa. Cultua as estátuas das cidades em ruínas e foge da luz.",
     "tags": [
       "monstro",
       "centelha"
@@ -18110,8 +18036,8 @@
     "vontade": 7,
     "soak": {
       "impacto": 6,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -18128,11 +18054,12 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "3d6+2 +4",
-        "dano": "1d6 +6 corte",
+        "nome": "Bastão",
+        "pool": "3d6+2 +6",
+        "dano": "1d6 +4 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -18144,7 +18071,7 @@
       "esquiva": 1,
       "integridade": 2,
       "sociabilidade": 0,
-      "furtividade": 2
+      "furtividade": 3
     }
   },
   {
@@ -19174,20 +19101,20 @@
     "ameaca": 2,
     "centelha": 2,
     "conceito": "humanoide monstruoso Médio",
-    "descricao": "Aberração humanoide de lendas antigas.",
+    "descricao": "Homem-peixe dos impérios das trincheiras oceânicas, que ataca a costa com lanças e tubarões. Ferido, entra num frenesi de sangue, mais forte e descuidado com a própria defesa.",
     "tags": [
       "monstro",
       "centelha"
     ],
     "pv": 37,
-    "defesa": 10,
+    "defesa": 12,
     "defesaSocial": 4,
     "defesaMental": 17,
     "vontade": 7,
     "soak": {
       "impacto": 6,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -19204,11 +19131,20 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "3d6+2 +4",
-        "dano": "1d6 +6 corte",
+        "nome": "Lança",
+        "pool": "3d6+2 +5",
+        "dano": "1d6 +10 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "haste"
+      },
+      {
+        "nome": "Garras",
+        "pool": "3d6 +5",
+        "dano": "1d6 +4 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -19231,7 +19167,7 @@
     "ameaca": 3,
     "centelha": 2,
     "conceito": "humanoide monstruoso Médio",
-    "descricao": "Aberração humanoide de lendas antigas.",
+    "descricao": "Velha horrenda das águas, cuja visão enfraquece quem a encara de perto e cujo olhar paralisa de terror. Vive em coven de três em enseadas afastadas e trama contra marinheiros e povoados da costa.",
     "tags": [
       "monstro",
       "centelha"
@@ -19243,8 +19179,8 @@
     "vontade": 7,
     "soak": {
       "impacto": 7,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -19261,11 +19197,12 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "4d6+2 +4",
-        "dano": "1d6 +7 corte",
+        "nome": "Garras",
+        "pool": "4d6+2 +5",
+        "dano": "1d6 +5 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -19643,20 +19580,20 @@
     "ameaca": 2,
     "centelha": 2,
     "conceito": "humanoide monstruoso Médio",
-    "descricao": "Aberração humanoide de lendas antigas.",
+    "descricao": "Homem-peixe anfíbio, escravo abandonado dos aboleths, que sobrevive em ruínas submersas e só se reproduz corrompendo humanos. Luta com tridente, garras e dentes, na água e fora dela.",
     "tags": [
       "monstro",
       "centelha"
     ],
     "pv": 40,
-    "defesa": 10,
+    "defesa": 12,
     "defesaSocial": 4,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
       "impacto": 7,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -19673,11 +19610,28 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "3d6+2 +4",
-        "dano": "1d6 +6 corte",
+        "nome": "Lança",
+        "pool": "3d6+2 +5",
+        "dano": "1d6 +10 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "haste"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "3d6 +5",
+        "dano": "1d6 +4 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Garras",
+        "pool": "3d6 +5",
+        "dano": "1d6 +4 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -19689,7 +19643,7 @@
       "esquiva": 1,
       "integridade": 2,
       "sociabilidade": 0,
-      "furtividade": 2
+      "furtividade": 1
     }
   },
   {
@@ -20941,7 +20895,7 @@
     "ameaca": 3,
     "centelha": 2,
     "conceito": "humanoide monstruoso Grande",
-    "descricao": "Aberração humanoide de lendas antigas.",
+    "descricao": "Homem das neves de 2,7 m e pelagem branca, que vive em clãs isolados no alto das montanhas. Paralisa com o olhar, rasga com as duas garras geladas e some contra a neve; o fogo o fere fundo.",
     "tags": [
       "monstro",
       "centelha"
@@ -20953,13 +20907,13 @@
     "vontade": 7,
     "soak": {
       "impacto": 7,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
-      "forca": 6,
+      "forca": 7,
       "destreza": 3,
       "vigor": 5,
       "influencia": 2,
@@ -20971,11 +20925,12 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "5d6 +4",
-        "dano": "2d6 +8 corte",
+        "nome": "Garras",
+        "pool": "5d6+2 +4",
+        "dano": "1d6 +9 corte",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -20987,7 +20942,7 @@
       "esquiva": 1,
       "integridade": 2,
       "sociabilidade": 0,
-      "furtividade": 1
+      "furtividade": 2
     }
   },
   {

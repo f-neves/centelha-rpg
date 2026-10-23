@@ -8,7 +8,7 @@
   "categoriaLegada": "Monstro",
   "papel": "soldado",
   "conceito": "humanoide monstruoso Médio",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Homem-peixe dos impérios das trincheiras oceânicas, que ataca a costa com lanças e tubarões. Ferido, entra num frenesi de sangue, mais forte e descuidado com a própria defesa.",
   "tags": [
     "monstro",
     "centelha"
@@ -16,71 +16,131 @@
   "imagem": "bestiario/sahuagin_criatura.webp",
   "porte": "Médio",
   "dimensoes": {
-    "medida": "2,1 metros de altura",
-    "peso": "113 kg"
+    "medida": "2,1 m de altura",
+    "peso": "113 kg",
+    "largura": 0.49,
+    "altura": 2.1
   },
   "locomocao": {
     "terra": 3,
     "natacao": 6
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 2,
   "attrs": {
     "forca": 4,
     "destreza": 3,
     "vigor": 4,
-    "influencia": 2,
-    "perspicacia": 3,
-    "compostura": 2,
     "percepcao": 3,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 2,
+    "perspicacia": 3,
+    "compostura": 2
   },
   "skills": {
-    "briga": 3,
+    "armas": 3,
+    "briga": 2,
+    "bloqueio": 1,
     "esquiva": 1,
+    "atletismo": 2,
+    "furtividade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "integridade": 2,
+    "sobrevivencia": 2
   },
+  "skills2": {
+    "natacao": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "vibração na água",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "armas",
+      "foco": "lança, debaixo d'água",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 3,
-    "temperanca": 2,
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
     "valor": 3
   },
   "willpower": 7,
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Arma",
+      "nome": "Lança",
+      "atrib": "forca",
+      "pericia": "armas",
+      "dado": 1,
+      "mao": 2,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 1,
+      "ticks": 6,
+      "classe": "haste"
+    },
+    {
+      "nome": "Garras",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
       "nome": "Fúria sanguinária",
-      "descricao": "Uma vez por cena, ao ser ferido em combate, entra em fúria e ganha Físico e Vigor extras à custa da própria Defesa enquanto durar a luta."
+      "descricao": "Ativação: ao ser ferido em combate (1 de dano ou mais depois da Absorção), se quiser. Duração: até o fim da luta. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Enfurecido (+2 no ataque, −2 nas Defesas; ataca o mais perto, não recua) e soma +1 na Força, com o dano que vem dela. Dano: +1 por golpe, da Força. Resistência: nenhum. Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Fala com tubarões",
-      "descricao": "Comunica-se telepaticamente com tubarões próximos, comandando-os como aliados em conceitos simples."
+      "descricao": "Ativação: uma ação, Velocidade 6. Duração: até o fim da cena. Alcance: 50 m, debaixo d'água. Área: os tubarões ao alcance. Efeito: fala com eles em ideias simples, pela mente, e eles o tratam como parente e seguem ordens simples. Dano: nenhum. Resistência: nenhum. Limite de uso: até 6 tubarões por vez.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Cegueira pela luz",
-      "descricao": "Luz forte incomoda seus olhos adaptados às profundezas, prejudicando sua pontaria e percepção."
+      "descricao": "Ativação: luz forte (sol fora d'água, Arte de Luz, lanterna de perto). Duração: enquanto estiver na luz forte. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Ofuscado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Sentidos aquáticos",
-      "descricao": "Percebe vibrações na água e enxerga no escuro, orientando-se mesmo em total escuridão submersa."
+      "descricao": "Prontidão, com a Especialidade natural (vibração na água) +3.",
+      "classe": "livro"
     },
     {
       "nome": "Nadador nato",
-      "descricao": "Desloca-se na água com a mesma facilidade de um predador marinho nascido para caçar."
+      "descricao": "Natação 3 e o nado do site.",
+      "classe": "livro"
+    },
+    {
+      "nome": "incursão das ondas",
+      "descricao": "chega com os tubarões, ataca o barco ou a vila da costa com a lança, entra em fúria quando ferido e volta para o fundo com os presos.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: enxerga na escuridão submersa (site). · vibração na água: percebe o movimento debaixo d'água; Prontidão (vibração na água) +3."
     }
   ],
   "lore": [
@@ -95,6 +155,14 @@
     {
       "titulo": "Sangue que desperta fúria",
       "texto": "Ferido em combate, um sahuagin pode entrar num frenesi sanguinário, ficando momentaneamente mais forte e resistente, ainda que descuidado com a própria guarda."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: em bando de guerra, típico 4 a 12, com tubarões."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, 37 PV, Impacto 6, Corte e Perfuração 2. Esquiva e Bloqueio 10 (12 com a lança). Lança a duas mãos (dano médio 13, 5) ou garras (7, 5). Ferido, fica Enfurecido e mais forte. Chama e comanda tubarões; nada a 6. A luz forte o ofusca."
     }
   ],
   "ecologia": {
@@ -132,5 +200,35 @@
     "crConf": "conhecido"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 37,
+    "esquiva": 10,
+    "bloqueio": 10,
+    "defesa": 12,
+    "defesaMental": 17,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 6,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 194.03,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      },
+      "nado": 6
+    },
+    "bloqueioArma": 2
+  },
+  "notasObservacao": [
+    "`equipamento`: lança no lugar do tridente **[provisório]**",
+    "`couraca`: nível 1 pelas escamas **[provisório]**",
+    "`virtudes`: Compaixão 1 e Temperança 1; o site tinha 2 e 2 **[provisório]**",
+    "`fúria sanguinária`, `fala com tubarões`, `cegueira pela luz`: números sugeridos pela ficha (D-197)"
+  ]
 }

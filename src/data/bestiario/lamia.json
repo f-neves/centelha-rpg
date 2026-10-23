@@ -8,109 +8,138 @@
   "categoriaLegada": "Monstro",
   "papel": "elite",
   "conceito": "humanoide monstruoso Grande",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Torso de mulher sobre corpo de leão, que vive em ruínas e oásis enganosos no limite do deserto. Seduz viajantes com ilusões de beleza e drena pelo toque a sabedoria e a vontade de quem cai no encanto.",
   "tags": [
     "monstro",
     "centelha",
     "mágico"
   ],
   "imagem": "bestiario/lamia_criatura.webp",
-  "porte": "Grande",
+  "porte": "Médio",
   "dimensoes": {
-    "medida": "3 m de comprimento, corpo com quartos traseiros de leão",
-    "peso": "160 kg"
+    "medida": "3 m de comprimento, 1,9 m de altura",
+    "peso": "160 kg",
+    "comprimento": 3,
+    "largura": 0.45,
+    "altura": 1.9
   },
   "locomocao": {
     "terra": 6
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 6,
+    "arranque": 10,
+    "corrida": 14
   },
   "centelha": 4,
   "attrs": {
     "forca": 6,
     "destreza": 6,
     "vigor": 6,
-    "influencia": 5,
-    "perspicacia": 4,
-    "compostura": 5,
     "percepcao": 6,
     "inteligencia": 3,
-    "raciocinio": 5
+    "raciocinio": 5,
+    "influencia": 5,
+    "perspicacia": 4,
+    "compostura": 5
   },
   "skills": {
     "briga": 5,
     "esquiva": 2,
+    "atletismo": 3,
+    "furtividade": 3,
     "prontidao": 3,
-    "integridade": 5
+    "integridade": 5,
+    "manha": 4,
+    "ocultismo": 2,
+    "sociabilidade": 1
   },
+  "skills2": {
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "atletismo",
+      "foco": "correr e saltar",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "deserto e rocha",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "manha",
+      "foco": "seduzir",
+      "valor": 2,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 2,
-    "conviccao": 3,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
   "willpower": 9,
   "aparencia": 4,
-  "arte": {
-    "morte": 2,
-    "fascinacao": 3
-  },
   "ataques": [
     {
-      "nome": "Arma",
-      "atrib": "forca",
+      "nome": "Garras",
+      "atrib": "destreza",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 6
+      "ticks": 6,
+      "classe": "media"
     }
   ],
-  "poderes": [
-    {
-      "id": "dreno-de-sabedoria",
-      "nome": "Dreno de Sabedoria",
-      "tipo": "natural",
-      "base": {
-        "arte": "morte",
-        "nivel": 2
-      },
-      "resiste": "corpo",
-      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-      "usos": {
-        "periodo": "golpe"
-      }
-    }
-  ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
       "nome": "Toque drenante",
-      "descricao": "corpo a corpo; falha em Vontade: perde Sabedoria e fica Abalado"
+      "descricao": "poder natural (base Morte 2): Ativação: uma ação, Velocidade 5, a jogada de Briga para tocar, ou as Garras que ferem. Duração: até o fim do dia; acumula. Alcance: toque. Área: um alvo. Efeito: quem falha perde a firmeza da mente: a Percepção e a Integridade contam um nível abaixo, e fica Abalado; cada toque que pega desce mais um; quem chega a 0 vira servo dela até o efeito passar. Dano: nenhum além do golpe. Resistência: mente, contra a jogada do toque. Limite de uso: um por golpe.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Ilusões",
-      "descricao": "cria imagens falsas para emboscar; falha em Vontade e o alvo é enganado"
-    },
-    {
-      "nome": "Garras",
-      "descricao": "ataque corpo a corpo secundário"
+      "descricao": "poder natural (base Fascinação 3): Ativação: uma ação, Velocidade 7. Duração: até o fim da cena, ou enquanto ela mantiver. Alcance: 36 m. Área: uma imagem de até 6 m de lado, ou a aparência dela. Efeito: uma imagem falsa (um oásis, uma mulher bela, um caminho seguro) para atrair ou emboscar; quem desconfia e testa vê através. Dano: nenhum. Resistência: mente, contra Influência + Manha dela, só para quem desconfia. Limite de uso: à vontade, uma ilusão por vez.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Corpo híbrido",
-      "descricao": "parte inferior animal dá +2d6 em Atletismo"
-    },
-    {
-      "nome": "Sedução enganosa",
-      "descricao": "+3d6 em Manha para atrair vítimas"
+      "descricao": "Atletismo 3 com a Especialidade natural (correr e saltar) +3.",
+      "classe": "livro"
     },
     {
       "nome": "Sentidos do deserto",
-      "descricao": "+2d6 em Furtividade em terreno árido e rochoso"
+      "descricao": "Furtividade, com a Especialidade natural (deserto e rocha) +2.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Sedução enganosa",
+      "descricao": "Manha (seduzir) +2; o resto da sedução é ilusão (acima).",
+      "classe": "livro"
+    },
+    {
+      "nome": "oásis enganoso",
+      "descricao": "atrai a presa com a ilusão de um oásis ou de uma mulher bela, drena com o toque até deixá-la servo e ataca com as garras quem resiste.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão: enxerga no escuro. · audição e olfato: os de um leão."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Seduz viajantes com ilusão de beleza e promessas doces, drenando a sabedoria e a vontade de quem cai em seu encanto até deixá-lo uma casca vazia."
+      "texto": "Seduz viajantes com ilusão de beleza e promessas doces, drenando a sabedoria e a vontade de quem cai em seu encanto até deixá-lo uma casca vazia. Social: sozinha, com servos enfeitiçados."
     },
     {
       "titulo": "Hábitat",
@@ -127,6 +156,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Dita descendente de um antigo pacto ou maldição de antes da Supressão; em Mére, onde cidades escondidas guardam magias esquecidas, corre a lenda de que lâmias já foram sacerdotisas caídas em desgraça."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Média, 43 PV, Impacto 10, Corte e Perfuração 4. Esquiva 20, Bloqueio 12. Garras de leão (dano médio 13, 5); o toque que pega baixa a Percepção e a Integridade e abala, e quem chega a 0 vira servo. Cria ilusões à vontade. Defesa Mental 27. Corre a 6 · 10 · 14."
     }
   ],
   "ecologia": {
@@ -168,5 +201,34 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 43,
+    "esquiva": 20,
+    "bloqueio": 12,
+    "defesa": 20,
+    "defesaMental": 27,
+    "defesaSocial": 14,
+    "absorcao": {
+      "impacto": 10,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 614.28,
+    "deslocamento": {
+      "terra": {
+        "batalha": 6,
+        "arranque": 10,
+        "corrida": 14
+      }
+    }
+  },
+  "notasObservacao": [
+    "`tamanho`: Médio pela área de lado; o site tinha Grande **[conta]**",
+    "`toque drenante`: a Sabedoria do site vira Percepção e Integridade **[provisório]**",
+    "`sedução enganosa`: Manha +2, o limite do livro; o site dava +3d6 (perda anotada no relato)",
+    "`compaixão`: 1; o site tinha 2 **[provisório]**",
+    "`toque drenante`, `ilusões`: números sugeridos pela ficha (D-197)"
+  ]
 }

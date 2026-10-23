@@ -22,8 +22,8 @@
    "raciocinio": 4
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 4,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 3,
    "valor": 4
   },
@@ -33,22 +33,27 @@
    "prontidao": 2,
    "esquiva": 0,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "sociabilidade": 1,
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 4,
-   "defesaSocial": 10,
+   "defesa": 9,
+   "defesaSocial": 14,
    "defesaMental": 17,
    "absorcao": {
     "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "gelo",
+    "raio",
+    "acido"
+   ],
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 3,
@@ -57,12 +62,12 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "2d6 +2",
+     "nome": "Espada longa",
+     "pool": "2d6 +3",
      "dano": "1d6 +3 corte",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -2947,8 +2952,8 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 4,
-   "temperanca": 3,
+   "conviccao": 2,
+   "temperanca": 2,
    "valor": 4
   },
   "vontade": 9,
@@ -2957,22 +2962,27 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 4,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "sociabilidade": 1,
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 40,
    "defesa": 14,
-   "defesaSocial": 8,
+   "defesaSocial": 12,
    "defesaMental": 25,
    "absorcao": {
     "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "corte",
+    "perfuracao",
+    "impacto"
+   ],
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 4,
@@ -2981,12 +2991,20 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Golpe de vento",
      "pool": "5d6+2 +8",
-     "dano": "1d6 +10 corte",
+     "dano": "1d6 +10 impacto",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Rajada cortante",
+     "pool": "4d6 +6",
+     "dano": "3d6 +4 corte",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "distancia"
     }
    ]
   },
@@ -3206,12 +3224,12 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "vontade": 7,
-  "aparencia": 4,
+  "aparencia": 1,
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
@@ -3228,8 +3246,8 @@
    "defesaMental": 18,
    "absorcao": {
     "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -3240,9 +3258,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "4d6+2 +4",
-     "dano": "1d6 +7 corte",
+     "nome": "Garras",
+     "pool": "4d6+2 +5",
+     "dano": "1d6 +5 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -3260,7 +3278,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "1,8 metro de altura",
+   "medida": "1,8 m de altura",
    "peso": "68 kg"
   }
  },
@@ -3372,13 +3390,13 @@
    "raciocinio": 3
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "vontade": 9,
-  "aparencia": 8,
+  "aparencia": 2,
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
@@ -3386,24 +3404,7 @@
    "sociabilidade": 0,
    "furtividade": 2
   },
-  "artes": [
-   {
-    "id": "ofuscacao",
-    "nivel": 3
-   },
-   {
-    "id": "natureza",
-    "nivel": 3
-   },
-   {
-    "id": "morte",
-    "nivel": 2
-   },
-   {
-    "id": "metamorfose",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 40,
@@ -3412,8 +3413,8 @@
    "defesaMental": 24,
    "absorcao": {
     "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -3424,9 +3425,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "5d6+2 +8",
-     "dano": "1d6 +10 corte",
+     "nome": "Garras",
+     "pool": "5d6+2 +9",
+     "dano": "1d6 +8 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -5175,9 +5176,9 @@
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
-   "forca": 5,
+   "forca": 7,
    "destreza": 4,
-   "vigor": 5,
+   "vigor": 6,
    "influencia": 3,
    "perspicacia": 3,
    "compostura": 3,
@@ -5187,7 +5188,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -5197,20 +5198,20 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 3,
-   "sociabilidade": 0,
-   "furtividade": 1
+   "sociabilidade": 1,
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 50,
-   "defesa": 12,
-   "defesaSocial": 6,
+   "pv": 54,
+   "defesa": 13,
+   "defesaSocial": 10,
    "defesaMental": 17,
    "absorcao": {
-    "impacto": 7,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 8,
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
@@ -5221,12 +5222,28 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "4d6+2 +4",
-     "dano": "2d6 +7 corte",
+     "nome": "Espada longa",
+     "pool": "5d6+2 +5",
+     "dano": "1d6 +9 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
+    },
+    {
+     "nome": "Azagaia",
+     "pool": "3d6+2 +5",
+     "dano": "1d6 +9 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "arremesso"
+    },
+    {
+     "nome": "Coice",
+     "pool": "5d6 +4",
+     "dano": "2d6 +9 impacto",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -5241,7 +5258,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "2,1 m de altura",
+   "medida": "2,9 m de comprimento, 2,1 m de altura",
    "peso": "900 kg"
   }
  },
@@ -5961,7 +5978,7 @@
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
-   "forca": 4,
+   "forca": 6,
    "destreza": 6,
    "vigor": 5,
    "influencia": 5,
@@ -5972,19 +5989,19 @@
    "raciocinio": 5
   },
   "virtudes": {
-   "compaixao": 5,
-   "conviccao": 5,
+   "compaixao": 4,
+   "conviccao": 4,
    "temperanca": 4,
    "valor": 5
   },
   "vontade": 10,
   "aparencia": 9,
   "pericias": {
-   "prontidao": 3,
+   "prontidao": 4,
    "esquiva": 2,
    "integridade": 6,
-   "sociabilidade": 0,
-   "furtividade": 1
+   "sociabilidade": 1,
+   "furtividade": 2
   },
   "artes": [
    {
@@ -6012,29 +6029,28 @@
   "combate": {
    "pv": 50,
    "defesa": 20,
-   "defesaSocial": 12,
+   "defesaSocial": 16,
    "defesaMental": 31,
    "absorcao": {
     "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 8",
+   "iniciativa": "1d6 + 9",
    "deslocamento": {
-    "batalha": 6,
-    "arranque": 10,
-    "corrida": 14
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
    },
    "ataques": [
     {
-     "nome": "Mordida venenosa e constrição",
-     "pool": "4d6+2 +10",
-     "dano": "1d6 +9 perfurante",
+     "nome": "Mordida venenosa",
+     "pool": "5d6+2 +11",
+     "dano": "1d6 +9 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve",
-     "notas": "veneno drena Força; pode constringir em seguida"
+     "classe": "leve"
     }
    ]
   },
@@ -6049,8 +6065,8 @@
    ]
   },
   "dimensoes": {
-   "medida": "cerca de 3,7 m de comprimento",
-   "peso": "cerca de 800 kg"
+   "medida": "3,7 m de comprimento, 0,3 m de altura",
+   "peso": "270 kg"
   }
  },
  {
@@ -12296,7 +12312,7 @@
   "ameaca": 3,
   "centelha": 1,
   "categoria": "Humanoide monstruoso",
-  "porte": "Médio",
+  "porte": "Grande",
   "imagem": "bestiario/gargula_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
@@ -12312,9 +12328,9 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "vontade": 6,
@@ -12324,19 +12340,19 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 3
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 12,
+   "defesa": 13,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
-    "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 6,
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -12347,12 +12363,20 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "4d6 +2",
-     "dano": "1d6 +5 corte",
+     "nome": "Garras",
+     "pool": "4d6 +3",
+     "dano": "1d6 +3 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
+    },
+    {
+     "nome": "Chifres",
+     "pool": "4d6 +2",
+     "dano": "1d6 +5 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -12368,7 +12392,7 @@
   },
   "dimensoes": {
    "medida": "1,5 m de altura",
-   "peso": "180 kg (pedra densa)"
+   "peso": "180 kg"
   }
  },
  {
@@ -14913,7 +14937,7 @@
   "ameaca": 3,
   "centelha": 2,
   "categoria": "Humanoide monstruoso",
-  "porte": "Médio",
+  "porte": "Grande",
   "imagem": "bestiario/harpia_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
@@ -14930,7 +14954,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -14943,12 +14967,7 @@
    "sociabilidade": 0,
    "furtividade": 2
   },
-  "artes": [
-   {
-    "id": "fascinacao",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 31,
@@ -14957,8 +14976,8 @@
    "defesaMental": 17,
    "absorcao": {
     "impacto": 4,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -14969,9 +14988,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6+2 +4",
-     "dano": "1d6 +5 corte",
+     "nome": "Garras",
+     "pool": "4d6+2 +5",
+     "dano": "1d6 +3 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -14990,7 +15009,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "1,6 m de altura, envergadura 4,5 m",
+   "medida": "1,6 m de altura",
    "peso": "55 kg"
   }
  },
@@ -15798,8 +15817,8 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 4,
-   "temperanca": 3,
+   "conviccao": 2,
+   "temperanca": 2,
    "valor": 4
   },
   "vontade": 7,
@@ -15808,22 +15827,25 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 4,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "sociabilidade": 1,
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 34,
-   "defesa": 12,
-   "defesaSocial": 8,
+   "defesa": 17,
+   "defesaSocial": 12,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 3,
@@ -15832,12 +15854,12 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "4d6+2 +4",
+     "nome": "Espada longa",
+     "pool": "4d6+2 +5",
      "dano": "1d6 +7 corte",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -16631,7 +16653,7 @@
   "ameaca": 4,
   "centelha": 4,
   "categoria": "Humanoide monstruoso",
-  "porte": "Grande",
+  "porte": "Médio",
   "imagem": "bestiario/lamia_criatura.webp",
   "semImagem": false,
   "tipo": "elite",
@@ -16648,7 +16670,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -16658,29 +16680,20 @@
    "prontidao": 3,
    "esquiva": 2,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 1
+   "sociabilidade": 1,
+   "furtividade": 3
   },
-  "artes": [
-   {
-    "id": "morte",
-    "nivel": 2
-   },
-   {
-    "id": "fascinacao",
-    "nivel": 3
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 54,
+   "pv": 43,
    "defesa": 20,
-   "defesaSocial": 10,
+   "defesaSocial": 14,
    "defesaMental": 27,
    "absorcao": {
     "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 8",
@@ -16691,9 +16704,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
+     "nome": "Garras",
      "pool": "5d6+2 +8",
-     "dano": "2d6 +10 corte",
+     "dano": "1d6 +10 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -16711,7 +16724,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "3 m de comprimento, corpo com quartos traseiros de leão",
+   "medida": "3 m de comprimento, 1,9 m de altura",
    "peso": "160 kg"
   }
  },
@@ -19242,9 +19255,9 @@
    "raciocinio": 3
   },
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "vontade": 8,
@@ -19254,24 +19267,19 @@
    "esquiva": 1,
    "integridade": 4,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 3
   },
-  "artes": [
-   {
-    "id": "materia",
-    "nivel": 3
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 12,
+   "defesa": 13,
    "defesaSocial": 8,
    "defesaMental": 21,
    "absorcao": {
     "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -19282,10 +19290,26 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6+2 +6",
-     "dano": "1d6 +5 corte",
+     "nome": "Arco curto",
+     "pool": "2d6+2 +6",
+     "dano": "1d6 +1 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "distancia"
+    },
+    {
+     "nome": "Espada curta",
+     "pool": "3d6+2 +8",
+     "dano": "1d6 +3 corte",
      "perfArma": null,
+     "speed": 5,
+     "classe": "leve"
+    },
+    {
+     "nome": "Serpentes",
+     "pool": "3d6+2 +7",
+     "dano": "1d6 +3 perfurante · perf. 0",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -19396,7 +19420,7 @@
   "ameaca": 3,
   "centelha": 2,
   "categoria": "Outsider",
-  "porte": "Pequeno",
+  "porte": "Médio",
   "imagem": "bestiario/mephit_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
@@ -19413,9 +19437,9 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 4,
-   "temperanca": 3,
-   "valor": 4
+   "conviccao": 2,
+   "temperanca": 2,
+   "valor": 2
   },
   "vontade": 7,
   "aparencia": 6,
@@ -19424,21 +19448,29 @@
    "esquiva": 1,
    "integridade": 3,
    "sociabilidade": 0,
-   "furtividade": 3
+   "furtividade": 2
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 26,
+   "pv": 18,
    "defesa": 12,
    "defesaSocial": 6,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "corte",
+    "perfuracao",
+    "impacto"
+   ],
+   "imunidades": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -19447,12 +19479,20 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "3d6+2 +4",
-     "dano": "1d6 +5 corte",
+     "nome": "Garras",
+     "pool": "4d6 +5",
+     "dano": "1d6 +3 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
+    },
+    {
+     "nome": "Sopro elemental",
+     "pool": "2d6+2 +4",
+     "dano": "2d6 +2 fogo",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "distancia"
     }
    ]
   },
@@ -20348,9 +20388,9 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
    "valor": 3
   },
   "vontade": 7,
@@ -20360,7 +20400,7 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 3
   },
   "artes": [],
   "tecnicas": [],
@@ -20371,8 +20411,8 @@
    "defesaMental": 15,
    "absorcao": {
     "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -20383,9 +20423,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6+2 +4",
-     "dano": "1d6 +6 corte",
+     "nome": "Bastão",
+     "pool": "3d6+2 +6",
+     "dano": "1d6 +4 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -20403,7 +20443,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "pouco mais de 1,50 m de altura",
+   "medida": "1,5 m de altura",
    "peso": "68 kg"
   }
  },
@@ -24278,9 +24318,9 @@
    "raciocinio": 4
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
    "valor": 3
   },
   "vontade": 7,
@@ -24296,13 +24336,13 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
-   "defesa": 10,
+   "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 17,
    "absorcao": {
     "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
@@ -24313,9 +24353,17 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6+2 +4",
-     "dano": "1d6 +6 corte",
+     "nome": "Lança",
+     "pool": "3d6+2 +5",
+     "dano": "1d6 +10 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "haste"
+    },
+    {
+     "nome": "Garras",
+     "pool": "3d6 +5",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -24334,7 +24382,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "2,1 metros de altura",
+   "medida": "2,1 m de altura",
    "peso": "113 kg"
   }
  },
@@ -24951,32 +24999,35 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "vontade": 7,
-  "aparencia": 4,
+  "aparencia": 3,
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 1
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 10,
+   "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "gelo"
+   ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 2,
@@ -24985,9 +25036,25 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "3d6+2 +4",
-     "dano": "1d6 +6 corte",
+     "nome": "Lança",
+     "pool": "3d6+2 +5",
+     "dano": "1d6 +10 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "haste"
+    },
+    {
+     "nome": "Mordida",
+     "pool": "3d6 +5",
+     "dano": "1d6 +4 perfurante · perf. 0",
+     "perfArma": 0,
+     "speed": 5,
+     "classe": "leve"
+    },
+    {
+     "nome": "Garras",
+     "pool": "3d6 +5",
+     "dano": "1d6 +4 corte",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -25006,7 +25073,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "1,8 metro de altura",
+   "medida": "1,8 m de altura",
    "peso": "80 kg"
   }
  },
@@ -28459,7 +28526,7 @@
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
-   "forca": 6,
+   "forca": 7,
    "destreza": 3,
    "vigor": 5,
    "influencia": 2,
@@ -28471,7 +28538,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -28482,7 +28549,7 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 1
+   "furtividade": 2
   },
   "artes": [],
   "tecnicas": [],
@@ -28493,10 +28560,16 @@
    "defesaMental": 15,
    "absorcao": {
     "impacto": 7,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "fogo"
+   ],
+   "imunidades": [
+    "gelo"
+   ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 4,
@@ -28505,9 +28578,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "5d6 +4",
-     "dano": "2d6 +8 corte",
+     "nome": "Garras",
+     "pool": "5d6+2 +4",
+     "dano": "1d6 +9 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -28525,7 +28598,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "2,7 m de altura, coberto por pelagem branca e espessa",
+   "medida": "2,7 m de altura",
    "peso": "360 kg"
   }
  },

@@ -8,7 +8,7 @@
   "categoriaLegada": "Monstro",
   "papel": "elite",
   "conceito": "humanoide monstruoso Médio",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Mulher amaldiçoada de cabelos de serpente, cujo olhar transforma em pedra quem a encara. Vive sozinha em ruínas cercada de estátuas, cobre o rosto e só ataca quando encurralada ou traída.",
   "tags": [
     "monstro",
     "centelha",
@@ -18,106 +18,152 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,75 m de altura",
-    "peso": "55 kg"
+    "peso": "55 kg",
+    "largura": 0.38,
+    "altura": 1.75
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 3,
   "attrs": {
     "forca": 2,
     "destreza": 4,
     "vigor": 5,
-    "influencia": 4,
-    "perspicacia": 4,
-    "compostura": 4,
     "percepcao": 3,
     "inteligencia": 3,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4
   },
   "skills": {
-    "briga": 5,
+    "armas": 3,
+    "briga": 3,
+    "atirador": 2,
+    "bloqueio": 1,
     "esquiva": 1,
+    "atletismo": 1,
+    "furtividade": 3,
+    "manha": 2,
     "prontidao": 1,
-    "integridade": 4
+    "integridade": 4,
+    "ocultismo": 2
   },
+  "skills2": {
+    "disfarce": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "atirador",
+      "foco": "alvo desprevenido",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 2,
+    "compaixao": 3,
     "conviccao": 3,
-    "temperanca": 2,
+    "temperanca": 3,
     "valor": 3
   },
   "willpower": 8,
   "aparencia": 7,
-  "arte": {
-    "materia": 3
-  },
   "ataques": [
     {
-      "nome": "Arma",
-      "atrib": "forca",
-      "pericia": "briga",
+      "nome": "Arco curto",
+      "atrib": "percepcao",
+      "pericia": "atirador",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 2,
+      "perf": 1,
+      "ticks": 6,
+      "danoBonus": -2,
+      "classe": "distancia",
+      "distancia": true
+    },
+    {
+      "nome": "Espada curta",
+      "atrib": "destreza",
+      "pericia": "armas",
       "dado": 1,
       "mao": 1,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
-    }
-  ],
-  "poderes": [
-    {
-      "id": "olhar-petrificante",
-      "nome": "Olhar petrificante",
-      "tipo": "natural",
-      "base": {
-        "arte": "materia",
-        "nivel": 3
-      },
-      "resiste": "corpo",
-      "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
-      "usos": {
-        "periodo": "cena"
-      }
+      "acerto": 2,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     },
     {
-      "id": "cabelos-serpente",
-      "nome": "Cabelos-serpente",
-      "tipo": "natural",
-      "resiste": "corpo",
-      "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-      "usos": {
-        "periodo": "cena",
-        "quantidade": 3,
-        "recarga": "1 hora"
-      }
+      "nome": "Serpentes",
+      "atrib": "destreza",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
       "nome": "Olhar petrificante",
-      "descricao": "quem encara a medusa em combate faz Vontade; falha: Petrificado (imóvel, morre em falhas seguidas)"
+      "descricao": "poder natural (base Matéria 3): Ativação: nenhuma; vale para quem cruza o olhar dela em combate, com o rosto descoberto. Duração: permanente, até a pedra ser desfeita por Arte ou efeito que cure a petrificação. Alcance: 9 m, à vista dela. Área: cada um que a encara. Efeito: quem falha vira pedra: o corpo e o que veste ficam estátua, sem morrer, e o Mestre decide o que desfaz. Quem desvia o rosto para não encará-la não testa, mas ataca a −4. Dano: nenhum. Resistência: corpo, Vigor + Resistência contra Dificuldade 15; quem passa não testa de novo até o fim da cena. Limite de uso: uma vez por cena para cada pessoa.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Cabelos-serpente",
-      "descricao": "ataque adicional corpo a corpo; acerto injeta veneno, falha em Fortitude: Abalado"
+      "descricao": "Serpentes: Ativação: na mesma ação de um golpe de espada, as serpentes mordem também. Duração: instantânea; o Abalado, até o fim da cena. Alcance: o do corpo a corpo. Área: o alvo do golpe. Efeito: um golpe de espada e uma mordida de serpente na mesma ação, os dois a −1d6 (a conta da empunhadura dupla do livro); a mordida que fere envenena, e quem é envenenado fica Abalado. Dano: o de cada golpe. Resistência: corpo, pela regra do veneno. Limite de uso: três vezes por cena; recupera em 1 hora.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Véu do olhar",
-      "descricao": "pode cobrir o rosto para não petrificar aliados sem querer"
+      "descricao": "Ativação: uma ação, Velocidade 3, cobrindo ou descobrindo o rosto. Duração: até ela mudar de novo. Alcance: o próprio corpo. Área: não se aplica. Efeito: coberta, o olhar não petrifica ninguém. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Imune a petrificação e veneno",
-      "descricao": "a própria magia e venenos de serpente não afetam a medusa"
+      "descricao": "o próprio olhar, o reflexo dele e o veneno das serpentes não a afetam.",
+      "classe": "sem regra ainda"
     },
     {
       "nome": "Tiro traiçoeiro",
-      "descricao": "ataque à distância adicional com arco, ignora parte da Absorção"
+      "descricao": "o Arco curto com a Especialidade de Atirador (alvo desprevenido) +1; o \"ignora parte da Absorção\" do site não tem regra no livro e sai (perda anotada no relato).",
+      "classe": "livro"
+    },
+    {
+      "nome": "jardim de estátuas",
+      "descricao": "evita ser vista, atira de longe coberta; encurralada, descobre o rosto, petrifica quem a encara e morde com as serpentes quem chega perto.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão, audição e olfato: os de um humano; as serpentes sentem o calor de quem chega perto."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Veneno das serpentes da medusa · Potência 12 · 1 Tick (sangue) · a cada 1 minuto · pool 2 (Vigor) · Desgaste 1 · pelas Serpentes"
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Evita ser vista, cobrindo o rosto e as serpentes que lhe cobrem a cabeça, e só ataca quando encurralada ou traída, transformando o intruso em estátua de pedra com um único olhar."
+      "texto": "Evita ser vista, cobrindo o rosto e as serpentes que lhe cobrem a cabeça, e só ataca quando encurralada ou traída, transformando o intruso em estátua de pedra com um único olhar. Social: sozinha."
     },
     {
       "titulo": "Hábitat",
@@ -134,6 +180,14 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Sua maldição é mais antiga que a Grande Guerra, relíquia de um tempo mais mágico; o povo comum, sob o peso da Supressão, só enxerga o monstro e nunca a tragédia por trás do véu."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Veneno das serpentes da medusa · Potência 12 · 1 Tick (sangue) · a cada 1 minuto · pool 2 (Vigor) · Desgaste 1 · pelas Serpentes"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Média, 40 PV, Impacto 8, Corte e Perfuração 3. Esquiva e Bloqueio 12 (13 com a espada). Arco (6, 5) de longe; de perto, espada e serpentes juntas a −1d6, e a mordida envenena e abala. Descoberta, quem a encara testa o corpo contra 15 ou vira pedra; desviar o rosto dá −4 no ataque. Defesa Mental 21."
     }
   ],
   "ecologia": {
@@ -176,5 +230,36 @@
     "crConf": "conhecido"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 40,
+    "esquiva": 12,
+    "bloqueio": 12,
+    "defesa": 13,
+    "defesaMental": 21,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 8,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 89.56,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    },
+    "bloqueioArma": 1
+  },
+  "notasObservacao": [
+    "`equipamento`: arco curto e espada curta do livro **[provisório]**",
+    "`armas`, `briga`: 3 e 3, o 5 do site dividido entre a lâmina e as serpentes **[provisório]**",
+    "`veneno das serpentes`: Potência 12, pool 2, fora do catálogo **[provisório]**",
+    "`tiro traiçoeiro`: o \"ignora parte da Absorção\" sai (perda anotada no relato)",
+    "`temperança`: 3; o site tinha 2 **[provisório]**",
+    "`olhar petrificante`, `cabelos-serpente`, `véu do olhar`: números sugeridos pela ficha (D-197)"
+  ]
 }
