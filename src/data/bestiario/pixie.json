@@ -5,9 +5,10 @@
   "nome": "Pixie",
   "nomeIngles": "Pixie",
   "categoria": "Fada",
+  "categoriaLegada": "Fera",
   "papel": "soldado",
   "conceito": "fada Pequeno",
-  "descricao": "Espírito da natureza, belo e caprichoso.",
+  "descricao": "Fadinha de 30 cm, invisível quando quer, que prega peças nos viajantes: a flecha dela faz dormir ou esquecer a última hora. Raramente faz mal de verdade, mas não perdoa quem fere o bosque.",
   "tags": [
     "fada",
     "centelha",
@@ -16,113 +17,149 @@
   "imagem": "bestiario/pixie_criatura.webp",
   "porte": "Miúdo",
   "dimensoes": {
-    "medida": "30 cm de altura",
-    "peso": "3 kg"
+    "medida": "0,3 m de altura",
+    "peso": "0,4 kg",
+    "largura": 0.075,
+    "altura": 0.3,
+    "envergadura": 0.45
   },
   "locomocao": {
     "voo": 6,
     "terra": 2
   },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+  },
   "centelha": 4,
   "attrs": {
-    "forca": 1,
+    "forca": 0,
     "destreza": 6,
     "vigor": 2,
-    "influencia": 5,
-    "perspicacia": 5,
-    "compostura": 5,
     "percepcao": 4,
     "inteligencia": 5,
-    "raciocinio": 5
+    "raciocinio": 5,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5
   },
   "skills": {
-    "briga": 4,
+    "atirador": 4,
+    "briga": 2,
     "esquiva": 2,
+    "atletismo": 1,
+    "furtividade": 5,
+    "integridade": 5,
     "prontidao": 2,
-    "integridade": 5
+    "ocultismo": 2,
+    "empatia": 2,
+    "sociabilidade": 2,
+    "sobrevivencia": 2
   },
+  "skills2": {
+    "labia": 3,
+    "danca": 2,
+    "voo": 4
+  },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "no mato",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "atirador",
+      "foco": "flecha do sono",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 3,
-    "conviccao": 3,
+    "compaixao": 2,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
   "willpower": 9,
   "aparencia": 8,
-  "arte": {
-    "fascinacao": 2
-  },
   "ataques": [
     {
+      "nome": "Flecha",
+      "atrib": "percepcao",
+      "pericia": "atirador",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 2,
+      "perf": 1,
+      "ticks": 6,
+      "danoBonus": -2,
+      "classe": "distancia",
+      "distancia": true
+    },
+    {
       "nome": "Garras e presas",
-      "atrib": "forca",
+      "atrib": "destreza",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
-    },
-    {
-      "nome": "Flechas do sono",
-      "atrib": "percepcao",
-      "pericia": "atirador",
-      "dado": 1,
-      "distancia": true,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 6
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
-  "poderes": [
-    {
-      "id": "invisibilidade-natural",
-      "nome": "Invisibilidade natural",
-      "tipo": "natural",
-      "base": {
-        "arte": "fascinacao",
-        "nivel": 1
-      },
-      "resiste": "nenhum",
-      "efeito": "Invisibilidade natural",
-      "usos": {
-        "periodo": "avontade"
-      }
-    },
-    {
-      "id": "flecha-do-sono-ou-amnesia",
-      "nome": "Efeito da flecha (sono ou amnésia)",
-      "tipo": "natural",
-      "resiste": "mente",
-      "efeito": "À escolha da pixie: sono (Inconsciente até o fim da cena) ou amnésia (perde as memórias da última hora). A flecha do esquecimento é narrativa.",
-      "ataque": "Flechas do sono",
-      "usos": {
-        "periodo": "golpe"
-      }
-    }
-  ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Voo veloz",
-      "descricao": "desloca 12m voando; ignora terreno difícil, +1 Esquiva contra ataques corpo a corpo"
+      "nome": "Invisibilidade natural",
+      "descricao": "poder natural (base Fascinação 1): Ativação: uma ação, Velocidade 5. Duração: até ela atacar ou desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica com a condição Invisível; o que ela carrega some junto; a flecha que ela solta aparece quando sai do arco. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Corpo minúsculo",
-      "descricao": "+1 Defesa contra criaturas Médias ou maiores, difícil de acertar"
+      "nome": "Flecha do sono ou do esquecimento",
+      "descricao": "poder natural (base Fascinação 2) · Flecha: Ativação: a Flecha que fere (1 de dano ou mais depois da Absorção). Duração: o sono, até o fim da cena ou até alguém sacudir o alvo ou ele levar dano; o esquecimento, permanente. Alcance: o da Flecha. Área: um alvo. Efeito: à escolha da pixie antes de atirar: sono (o alvo fica Inconsciente) ou esquecimento (o alvo perde as memórias da última hora). Dano: o da Flecha. Resistência: mente, contra a jogada da flecha; quem passa só leva o dano. Limite de uso: um por flecha.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Glamour distrativo",
-      "descricao": "1x por cena, cria uma ilusão que desvia a atenção; falha em Vontade faz o alvo perder a próxima ação"
+      "descricao": "poder natural (base Fascinação 1): Ativação: uma ação, Velocidade 5. Duração: até o fim da próxima ação do alvo. Alcance: 18 m, à vista dela. Área: um alvo. Efeito: uma ilusão (um brilho, um som, um vulto) puxa a atenção do alvo, que perde a próxima ação. Dano: nenhum. Resistência: mente, contra Influência + Lábia da pixie; quem passa vê a ilusão pelo que é. Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Fuga élfica",
-      "descricao": "abaixo de metade dos PV, pode ficar invisível e voar para longe como reação"
+      "descricao": "Ativação: reação, ao levar o primeiro dano da cena (com 2 PV, qualquer ferida já é metade). Duração: até o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Invisível e voa, na mesma reação, até o Arranque do voo, para longe de quem a feriu. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Voo veloz",
+      "descricao": "Ativação: nenhuma; vale enquanto voa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: ignora o terreno difícil e soma +1 na Esquiva contra golpe corpo a corpo. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "corpo minúsculo",
+      "descricao": "o Alvo Miúdo (no ar) e Minúsculo (pousada) pesa contra quem a ataca (R8).",
+      "classe": "livro"
+    },
+    {
+      "nome": "peça na clareira",
+      "descricao": "invisível, atira do alto e das árvores; faz dormir quem a ameaça e esquecer quem a viu; ferida, some.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um humano, mais apuradas no escuro do bosque."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Adora pregar peças, usando invisibilidade e um pó que apaga memórias para brincar com viajantes sem nunca deixar rastro de sua passagem."
+      "texto": "Adora pregar peças, usando invisibilidade e um pó que apaga memórias para brincar com viajantes sem nunca deixar rastro de sua passagem. Social: sozinha ou em bando pequeno."
     },
     {
       "titulo": "Hábitos",
@@ -139,6 +176,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Ligada à mesma origem feérica que precede a Queda dos elfos, em Syl é tratada como pequeno kami travesso e benigno; no supersticioso Neck, camponeses deixam oferendas simples só para afastar suas peças."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Miúda no ar e Minúscula pousada, invisível à vontade. Atira com o arco (dano médio 5, 5) e escolhe: o alvo que ela fere dorme até o fim da cena ou esquece a última hora (mente). Esquiva 20, Defesa Mental 27, mas só 2 PV: qualquer golpe que passa a derruba. Ferida, fica invisível e foge. Distrai um alvo por cena com uma ilusão."
     }
   ],
   "ecologia": {
@@ -179,5 +220,38 @@
     "crConf": "conhecido"
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 2,
+    "esquiva": 20,
+    "bloqueio": 12,
+    "defesa": 20,
+    "defesaMental": 27,
+    "defesaSocial": 18,
+    "absorcao": {
+      "impacto": 6,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 1.41,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
+      },
+      "voo": {
+        "batalha": 6
+      }
+    }
+  },
+  "notasObservacao": [
+    "`massa`: 0,4 kg pela altura do site; os 3 kg do site ficam fora de um corpo de 30 cm (D-187) **[conta]**",
+    "`pv`: 2, pela tabela de PV com a massa calculada; com os 3 kg do site seriam 6",
+    "`forca`: 0, pelo critério da D-167; o site tinha 1",
+    "`equipamento`: o arco curto do livro na escala dela **[provisório]**",
+    "`atirador`, `briga`: 4 e 2; o site tinha só Briga 4 **[provisório]**",
+    "`invisibilidade`, `flecha do sono ou do esquecimento`, `glamour distrativo`, `fuga élfica`, `voo veloz`: números sugeridos pela ficha (D-197)"
+  ]
 }

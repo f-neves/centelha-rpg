@@ -5,9 +5,10 @@
   "nome": "Gigante da Colina",
   "nomeIngles": "Giant, Hill",
   "categoria": "Gigante",
+  "categoriaLegada": "Fera",
   "papel": "elite",
   "conceito": "humanoide Grande (gigante)",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "descricao": "Gigante guloso e mal-humorado das colinas: atira rochas, esmaga com os punhos e leva o rebanho inteiro. Não pensa muito e não para de lutar.",
   "tags": [
     "gigante",
     "centelha"
@@ -16,33 +17,55 @@
   "porte": "Grande",
   "dimensoes": {
     "medida": "4,3 m de altura",
-    "peso": "590 kg"
+    "peso": "1.305 kg",
+    "largura": 1.08,
+    "altura": 4.3
   },
   "locomocao": {
     "terra": 4
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
   },
   "centelha": 1,
   "attrs": {
     "forca": 9,
     "destreza": 2,
     "vigor": 6,
-    "influencia": 1,
-    "perspicacia": 1,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2
   },
   "skills": {
-    "briga": 5,
-    "esquiva": 0,
+    "briga": 4,
+    "arremesso": 3,
+    "bloqueio": 1,
+    "atletismo": 2,
+    "integridade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "sobrevivencia": 2
   },
+  "skills2": {
+    "intimidacao": 3,
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "arremesso",
+      "foco": "rocha",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
-    "conviccao": 3,
-    "temperanca": 2,
+    "conviccao": 1,
+    "temperanca": 1,
     "valor": 4
   },
   "willpower": 6,
@@ -55,36 +78,58 @@
       "dado": 2,
       "mao": 1,
       "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 6
+      "ticks": 7,
+      "classe": "pesada"
+    },
+    {
+      "nome": "Rocha arremessada",
+      "atrib": "destreza",
+      "pericia": "arremesso",
+      "dado": 2,
+      "mao": 1,
+      "tipo": "impacto",
+      "ticks": 7,
+      "classe": "pesada"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
       "nome": "Arremesso de rocha",
-      "descricao": "ataque à distância de até 36m, dano de arma grande"
+      "descricao": "Rocha arremessada: Ativação: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: até 36 m; acima de 12 m, −2 na jogada. Área: um alvo. Efeito: a rocha derruba o alvo Médio ou menor que ela fere. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Marretada",
-      "descricao": "acerto forte pode derrubar alvo Médio ou menor"
+      "descricao": "Pancada descomunal: Ativação: a Pancada descomunal que fere um alvo Médio ou menor. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo cai no chão e é empurrado 1 m. Dano: o da Pancada. Resistência: corpo, contra a jogada da pancada; quem passa fica de pé. Limite de uso: um por golpe.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Brutalidade cega",
-      "descricao": "continua lutando normalmente mesmo Abalado"
+      "descricao": "Ativação: ficar Abalado. Duração: até o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Efeito: o Abalado não tira nada das jogadas de ataque e de dano dele; ainda conta para fugir e para as outras jogadas. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Couro grosso",
-      "descricao": "Absorção alta"
+      "nome": "agarrar",
+      "descricao": "Pancada descomunal: Agarrar.",
+      "classe": "livro"
     },
     {
-      "nome": "Faro de caçador",
-      "descricao": "Prontidão alta para notar emboscadas e presas"
+      "nome": "briga no braço",
+      "descricao": "avança reto, atira rocha em quem foge e esmaga quem fica; foge da batalha perdida e volta com a família.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "faro de caçador: nota a presa e a emboscada pelo cheiro, como um cão de caça. · visão e audição: as de um humano."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Guloso e pouco esperto, resolve tudo com força e mau humor, e ataca rebanhos e vilarejos atrás de comida fácil."
+      "texto": "Guloso e pouco esperto, resolve tudo com força e mau humor, e ataca rebanhos e vilarejos atrás de comida fácil. Social: bando familiar (típico 2 a 6)."
     },
     {
       "titulo": "Hábitos",
@@ -97,6 +142,14 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "O mais rude entre os gigantes, ainda segue à sua maneira grosseira a velha ordem que coloca a tempestade e o Senhor da Guerra e da Tempestade acima de todos eles; para o povo comum de Mére e do White Wall é só mais um monstro faminto descendo da colina."
+    },
+    {
+      "titulo": "Aptidões",
+      "texto": "montaria não · carga sim · tração sim"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande, lento em terra (4 m por Tick) e fácil de acertar (Esquiva 4, Bloqueio 8). Atira rocha até 36 m e esmaga de perto, dano médio 17 nos dois, e derruba quem é do tamanho de um homem. Ficar Abalado não o atrapalha. 54 PV, Impacto 7, Corte e Perfuração 1. Defesa Social 4: se engana fácil, com comida."
     }
   ],
   "ecologia": {
@@ -136,5 +189,33 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 54,
+    "esquiva": 4,
+    "bloqueio": 8,
+    "defesa": 8,
+    "defesaMental": 12,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 7,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 2,
+    "pesoErguido": 1126.14,
+    "deslocamento": {
+      "terra": {
+        "batalha": 4,
+        "arranque": 6,
+        "corrida": 9
+      }
+    }
+  },
+  "notasObservacao": [
+    "`massa`: 1.305 kg pela altura do site; os 590 kg do site ficam fora de qualquer corpo de 4,3 m (D-187) **[conta]**",
+    "`couraca`: 2, couro grosso, no baixo da faixa do búfalo **[provisório]**",
+    "`briga`: 4; o site tinha 5 **[provisório]**",
+    "`arremesso`, `marretada`, `brutalidade cega`: números sugeridos pela ficha (D-197)"
+  ]
 }

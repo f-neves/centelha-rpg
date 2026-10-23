@@ -8,7 +8,7 @@
   "categoriaLegada": "Exterior",
   "papel": "chefe",
   "conceito": "exterior Médio",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "Fera de cabeça de tigre que vive décadas disfarçada de nobre, mercador ou sacerdote, lendo pensamentos e tecendo intrigas. Conjura ilusões e encantos, e só mostra as garras quando a vítima já não tem saída.",
   "tags": [
     "exterior",
     "centelha",
@@ -18,104 +18,163 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,8 m de altura",
-    "peso": "80 kg"
+    "peso": "80 kg",
+    "largura": 0.45,
+    "altura": 1.8
   },
   "locomocao": {
     "terra": 4
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
   },
   "centelha": 5,
   "attrs": {
     "forca": 4,
     "destreza": 5,
     "vigor": 5,
-    "influencia": 5,
-    "perspicacia": 4,
-    "compostura": 4,
     "percepcao": 3,
     "inteligencia": 3,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 5,
+    "perspicacia": 4,
+    "compostura": 4
   },
   "skills": {
     "briga": 5,
+    "bloqueio": 1,
     "esquiva": 1,
+    "atletismo": 2,
+    "furtividade": 4,
     "prontidao": 1,
-    "integridade": 4
+    "integridade": 4,
+    "manha": 5,
+    "persuasao": 3,
+    "empatia": 3,
+    "sociabilidade": 3,
+    "ocultismo": 3,
+    "politica": 3
   },
+  "skills2": {
+    "etiqueta": 3,
+    "labia": 3,
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "manha",
+      "foco": "enganar",
+      "valor": 2,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "persuasao",
+      "foco": "seduzir com promessas",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "politica",
+      "foco": "intriga de corte",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 5,
+    "compaixao": 1,
+    "conviccao": 1,
     "temperanca": 1,
     "valor": 6
   },
   "willpower": 10,
-  "aparencia": 0,
+  "aparencia": 6,
+  "ataques": [
+    {
+      "nome": "Garras",
+      "atrib": "destreza",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "fraquezas": [],
+  "resistencias": [
+    "corte",
+    "impacto"
+  ],
+  "imunidades": [],
+  "transforma": {
+    "principal": "verdadeira",
+    "formas": [
+      {
+        "id": "verdadeira",
+        "nome": "forma verdadeira"
+      },
+      {
+        "id": "disfarce",
+        "nome": "disfarce"
+      }
+    ]
+  },
   "arte": {
     "fascinacao": 4,
     "adivinhacao": 2,
     "materia": 3,
     "protecao": 4
   },
-  "ataques": [
-    {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
-    }
-  ],
-  "poderes": [
-    {
-      "id": "mudar-de-forma",
-      "nome": "Mudar de forma",
-      "tipo": "natural",
-      "base": {
-        "arte": "materia",
-        "nivel": 3
-      },
-      "resiste": "nenhum",
-      "efeito": "Mudar de forma",
-      "usos": {
-        "periodo": "avontade"
-      }
-    }
-  ],
-  "bonus": {
-    "defesaMental": 4
-  },
-  "resistencias": [
-    "corte",
-    "impacto"
-  ],
+  "mana": 20,
   "habilidades": [
     {
       "nome": "Garras traiçoeiras",
-      "descricao": "dois ataques corpo a corpo na mesma ação, dano médio cada"
+      "descricao": "Garras: Ativação: uma ação de Garras, com Velocidade 7 no lugar de 5. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo, ou dois lado a lado. Efeito: duas jogadas de Garras na mesma ação, cada uma contra a Defesa do alvo. Dano: o das Garras em cada uma que acerta. Resistência: nenhum. Limite de uso: a cada ação de Garras.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Mudar de forma",
-      "descricao": "feitiçaria; assume qualquer forma humanoide à vontade, indistinguível sem magia"
+      "descricao": "poder natural (base Matéria 3): Ativação: uma ação, Velocidade 6. Duração: até ele desfazer, ou até cair inconsciente. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume o corpo, o rosto e a voz de qualquer humanoide de Tamanho perto do dele; os números ficam os dele; sem magia, ninguém vê a troca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Ler pensamentos",
-      "descricao": "feitiçaria; sonda a mente de um alvo próximo e revela intenções ou segredos"
+      "descricao": "poder natural (base Adivinhação 2): Ativação: uma ação, Velocidade 6, olhando o alvo. Duração: enquanto se concentra, até o fim da cena. Alcance: 18 m. Área: um alvo. Efeito: ouve os pensamentos de superfície do alvo e descobre uma intenção ou um segredo dele. Dano: nenhum. Resistência: mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem. Limite de uso: à vontade, um alvo por vez.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Ilusões",
-      "descricao": "feitiçaria; cria imagens sensoriais convincentes para enganar ou distrair"
+      "descricao": "poder natural (base Fascinação 4): Ativação: uma ação, Velocidade 8. Duração: até o fim da cena, ou enquanto ele mantiver. Alcance: 36 m. Área: uma imagem de até 6 m de lado. Efeito: uma imagem com som e cheiro, que se move como ele quer, para enganar ou distrair; quem toca ou desconfia e testa vê através dela. Dano: nenhum. Resistência: mente, contra Influência + Manha dele, só para quem desconfia. Limite de uso: uma ilusão por vez.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Magia reversa",
-      "descricao": "alguns feitiços lançados contra ele produzem o efeito oposto ao pretendido; +4 na Defesa Mental e nas resistências contra Artes"
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +4 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Feitiço que volta",
+      "descricao": "alguns feitiços lançados contra ele produzem o efeito oposto ao que o conjurador queria.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "trama de corte",
+      "descricao": "evita a luta aberta; deixa os servos e as vítimas enganadas na frente, confunde com ilusões e com Fascinação, e só entra com as garras quando a vitória é certa; ferido, muda de forma e some.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão, audição e faro: os de um humano, com os olhos de tigre."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Predador social por excelência: disfarça-se de nobre, mercador ou sacerdote e manipula suas vítimas ao longo de anos, satisfazendo apetites cruéis sob uma máscara de refinamento impecável."
+      "texto": "Predador social por excelência: disfarça-se de nobre, mercador ou sacerdote e manipula suas vítimas ao longo de anos, satisfazendo apetites cruéis sob uma máscara de refinamento impecável. Social: sozinho; raramente em grupo."
     },
     {
       "titulo": "Sociedade",
@@ -132,6 +191,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "As igrejas supressoras vigiam feitiços óbvios, mas não a sedução e a mentira: um rakshasa entrincheirado numa corte de Calin ou nas cidades ocultas de Mère passa décadas sem ser descoberto. A Lei que barra os deuses de tocar mortais nunca o alcançou, pois ele jamais foi mortal."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, 40 PV, Impacto 10, Corte e Perfuração 5, metade do dano de corte e de impacto. Esquiva e Bloqueio 14. Duas garradas por ação (dano médio 10, 5 cada). Conjura com 20 de Mana: Fascinação e Proteção até o 4, Matéria até o 3, Adivinhação até o 2. Muda de forma, lê pensamentos e cria ilusões à vontade. Defesa Mental 25, 29 contra Artes. Ferido, foge com outro rosto."
     }
   ],
   "ecologia": {
@@ -174,5 +237,35 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "v3": {
+    "pv": 40,
+    "esquiva": 14,
+    "bloqueio": 14,
+    "defesa": 14,
+    "defesaMental": 25,
+    "defesaSocial": 20,
+    "absorcao": {
+      "impacto": 10,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 238.85,
+    "deslocamento": {
+      "terra": {
+        "batalha": 4,
+        "arranque": 6,
+        "corrida": 9
+      }
+    }
+  },
+  "notasObservacao": [
+    "`formas`: forma verdadeira e disfarce (D-201), como o deva astral e o doppelganger **[provisório]**",
+    "`bloqueio`: 1; o site não gravava Bloqueio **[provisório]**",
+    "`aparencia`: 6; o site tinha 0 **[provisório]**",
+    "`compaixao`: 1, o piso da régua; o site tinha 0",
+    "`garras traiçoeiras`: duas jogadas numa ação, com Velocidade 7 **[provisório]**",
+    "`mudar de forma`, `ler pensamentos`, `ilusões`, `magia reversa`: números sugeridos pela ficha (D-197). A Magia reversa fica +4, o número do site"
+  ]
 }

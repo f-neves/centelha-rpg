@@ -5,9 +5,10 @@
   "nome": "Otyugh",
   "nomeIngles": "Otyugh",
   "categoria": "Aberração",
+  "categoriaLegada": "Fera",
   "papel": "soldado",
   "conceito": "aberração Grande",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Massa redonda sobre três pernas que vive enterrada no lixo de fossas e esgotos. Agarra com dois tentáculos longos, puxa para a boca e passa uma febre imunda pela mordida; quem o alimenta pode ganhar um guardião.",
   "tags": [
     "aberracao",
     "centelha"
@@ -15,70 +16,144 @@
   "imagem": "bestiario/otyugh_criatura.webp",
   "porte": "Grande",
   "dimensoes": {
-    "medida": "2,4 m de altura, tentáculos alcançam até 4,5 m",
-    "peso": "500 kg"
+    "medida": "2,4 m de altura",
+    "peso": "500 kg",
+    "largura": 1.2,
+    "altura": 2.4
   },
   "locomocao": {
     "terra": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
   },
   "centelha": 2,
   "attrs": {
     "forca": 6,
     "destreza": 2,
     "vigor": 4,
-    "influencia": 1,
-    "perspicacia": 1,
-    "compostura": 2,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2
   },
   "skills": {
     "briga": 4,
-    "esquiva": 0,
+    "bloqueio": 1,
+    "atletismo": 1,
+    "furtividade": 1,
     "prontidao": 1,
-    "integridade": 2
+    "resistencia": 4,
+    "integridade": 2,
+    "sobrevivencia": 2
   },
+  "skills2": {
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "briga",
+      "foco": "Agarrão",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "enterrado no próprio lixo",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "resistencia",
+      "foco": "doenças",
+      "valor": 3,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 3,
-    "temperanca": 2,
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
     "valor": 3
   },
   "willpower": 7,
   "aparencia": 1,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 2,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 6
-    }
-  ],
-  "habilidades": [
-    {
-      "nome": "Visão no escuro e faro",
-      "descricao": "Enxerga no escuro e localiza presas e imundície pelo cheiro."
+      "perf": 1,
+      "ticks": 7,
+      "classe": "pesada"
     },
     {
-      "nome": "Imune a doenças",
-      "descricao": "Vivendo entre dejetos e carniça, seu corpo não sofre com pragas e infecções."
+      "nome": "Tentáculo",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "ticks": 6,
+      "classe": "media"
+    }
+  ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
+  "habilidades": [
+    {
+      "nome": "Tentáculos que agarram",
+      "descricao": "Tentáculo: Ativação: o Tentáculo que acerta, se ele quiser. Duração: até o alvo se soltar ou ele soltar. Alcance: 4,5 m. Área: um alvo por tentáculo. Efeito: o alvo fica Agarrado, sem jogada de Agarrar, e pode ser puxado até a boca. Dano: o do Tentáculo. Resistência: corpo, para escapar, pela jogada de Agarrar do livro contra a Força 6 + Briga 4 dele, com o Agarrão +2. Limite de uso: dois alvos agarrados, um em cada tentáculo.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Esmagar",
+      "descricao": "Tentáculo: Ativação: a cada 6 Ticks em que mantém o agarrão. Duração: enquanto agarra. Alcance: 4,5 m. Área: quem está agarrado. Efeito: aperta e esmaga sem nova jogada de ataque. Dano: 1d6 + Força, Impacto. Resistência: nenhum; quem se solta para de sofrer. Limite de uso: um por alvo agarrado.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Mordida contaminada",
-      "descricao": "Transmite pela mordida uma febre imunda que drena Vigor da vítima com o passar dos dias."
+      "descricao": "Mordida: Ativação: a Mordida que fere (1 de dano ou mais depois da Absorção). Duração: a da doença. Alcance: o do corpo a corpo. Área: um alvo. Efeito: passa a febre do lixo (Veneno e doença). Dano: nenhum além da Mordida. Resistência: corpo, pela jogada da doença. Limite de uso: uma jogada de doença por Mordida que fere.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Tentáculos que agarram",
-      "descricao": "Dois tentáculos prendem e esmagam continuamente quem está por perto."
+      "nome": "Imune a doenças",
+      "descricao": "doença não pega nele.",
+      "classe": "sem regra ainda"
     },
     {
       "nome": "Camuflagem no covil",
-      "descricao": "Entre a própria sujeira e lixo, torna-se muito mais difícil de detectar."
+      "descricao": "Furtividade, com a Especialidade natural (enterrado no próprio lixo) +3.",
+      "classe": "livro"
+    },
+    {
+      "nome": "fossa guardada",
+      "descricao": "espera enterrado no lixo do covil, agarra quem chega com os tentáculos, puxa para a boca e morde; não sai de perto do covil e aceita trégua de quem traz comida.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: enxerga no escuro como de dia (site). · faro: localiza presa e imundície pelo cheiro; Prontidão (faro) +2."
+    }
+  ],
+  "doencas": [
+    {
+      "nome": "Doença no jogo",
+      "texto": "Febre do lixo · Virulência 10 · dia · pela Mordida que fere: o alvo rola uma vez, Vigor + Resistência contra a Virulência; na falha, começa em Incubação"
     }
   ],
   "lore": [
@@ -89,6 +164,18 @@
     {
       "titulo": "Aliança de conveniência",
       "texto": "Certos povos subterrâneos alimentam otyughs com refugo e carne crua em troca de que a criatura os deixe em paz, às vezes até agindo como guardiã."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: sozinho."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Doença no jogo: Febre do lixo · Virulência 10 · dia · pela Mordida que fere: o alvo rola uma vez, Vigor + Resistência contra a Virulência; na falha, começa em Incubação"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande, 46 PV, Impacto 6, Corte e Perfuração 2. Defesa baixa (Bloqueio 8, Esquiva 4): fácil de acertar e difícil de derrubar. Os tentáculos alcançam 4,5 m, agarram até dois alvos e esmagam a cada 6 Ticks; a Mordida dá dano médio 15 e passa a febre do lixo (Virulência 10, por dia). Enterrado no lixo, quase não se vê."
     }
   ],
   "ecologia": {
@@ -126,5 +213,36 @@
     "crConf": "conhecido"
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 46,
+    "esquiva": 4,
+    "bloqueio": 8,
+    "defesa": 8,
+    "defesaMental": 15,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 6,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "couracaNivel": 2,
+    "pesoErguido": 571.88,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
+      }
+    }
+  },
+  "notasObservacao": [
+    "`area`: 1,87 m² com os tentáculos erguidos; as medidas das partes são estimadas, e sem os tentáculos ele seria Médio **[extrapolação]**",
+    "`couraca`: nível 2 pelo couro rugoso **[provisório]**",
+    "`bloqueio`: 1, pelos tentáculos; o site não gravava Bloqueio **[provisório]**",
+    "`ataques`: Mordida Pesada e Tentáculo Médio no lugar das \"Garras e presas\" de 2 dados e 6 Ticks **[provisório]**",
+    "`temperanca`: 1; o site tinha 2. `compaixao`: 1, o piso da régua; o site tinha 0",
+    "`febre do lixo`: Virulência 10, a da febre dos pântanos do livro; o site dizia que a febre \"drena Vigor\", e no livro a doença anda por estágios e Desgaste **[provisório]**",
+    "`tentáculos que agarram`, `esmagar`, `mordida contaminada`: números sugeridos pela ficha (D-197)"
+  ]
 }

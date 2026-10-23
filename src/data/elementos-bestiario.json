@@ -88,16 +88,6 @@
    "perfuracao"
   ]
  },
- "campeao-esqueletico": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ],
-  "resistencias": [
-   "corte",
-   "perfuracao"
-  ]
- },
  "cao-de-guerra-nessiano": {
   "fraquezas": [
    "luz",
@@ -130,11 +120,6 @@
    "corte",
    "fogo",
    "perfuracao"
-  ]
- },
- "deva-astral": {
-  "fraquezas": [
-   "profano"
   ]
  },
  "diabo-barbado": {
@@ -190,14 +175,6 @@
    "raio"
   ]
  },
- "dragao-branco-jovem": {
-  "fraquezas": [
-   "fogo"
-  ],
-  "resistencias": [
-   "gelo"
-  ]
- },
  "dragao-dourado-adulto": {
   "resistencias": [
    "fogo"
@@ -246,26 +223,10 @@
    "perfuracao"
   ]
  },
- "elemental-do-fogo-pequeno": {
-  "fraquezas": [
-   "agua"
-  ]
- },
  "erinia": {
   "fraquezas": [
    "luz",
    "sagrado"
-  ]
- },
- "espectro": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ],
-  "resistencias": [
-   "corte",
-   "impacto",
-   "perfuracao"
   ]
  },
  "esqueleto-humano": {
@@ -299,12 +260,6 @@
    "fogo"
   ],
   "resistencias": [
-   "perfuracao"
-  ]
- },
- "geleia-ocre": {
-  "resistencias": [
-   "corte",
    "perfuracao"
   ]
  },
@@ -376,22 +331,9 @@
    "perfuracao"
   ]
  },
- "golem-de-pedra": {
-  "resistencias": [
-   "corte",
-   "fogo",
-   "perfuracao"
-  ]
- },
  "grande-wyrm-vermelho": {
   "resistencias": [
    "fogo"
-  ]
- },
- "hezrou": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
   ]
  },
  "homunculus": {
@@ -409,15 +351,6 @@
   "fraquezas": [
    "luz",
    "sagrado"
-  ]
- },
- "lich": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ],
-  "resistencias": [
-   "perfuracao"
   ]
  },
  "lillend": {
@@ -439,11 +372,6 @@
    "gelo"
   ]
  },
- "lobisomem": {
-  "fraquezas": [
-   "prata"
-  ]
- },
  "marid": {
   "resistencias": [
    "fogo"
@@ -462,13 +390,6 @@
   ],
   "resistencias": [
    "perfuracao"
-  ]
- },
- "montao-tropecante": {
-  "resistencias": [
-   "fogo",
-   "perfuracao",
-   "raio"
   ]
  },
  "mumia": {
@@ -527,12 +448,6 @@
   "fraquezas": [
    "luz",
    "sagrado"
-  ]
- },
- "rakshasa": {
-  "resistencias": [
-   "corte",
-   "impacto"
   ]
  },
  "salamandra": {
@@ -622,13 +537,6 @@
    "perfuracao"
   ]
  },
- "vinha-assassina": {
-  "resistencias": [
-   "fogo",
-   "gelo",
-   "perfuracao"
-  ]
- },
  "vrock": {
   "fraquezas": [
    "luz",
@@ -656,15 +564,6 @@
   ],
   "resistencias": [
    "fogo"
-  ]
- },
- "zumbi-humano": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ],
-  "resistencias": [
-   "perfuracao"
   ]
  }
 }

@@ -152,7 +152,7 @@ eq(T.previsaoDeEncontro(1, 3, 0, 1), 0, 'já no alcance: zero Ticks');
   eq(de('Arqueiro'), 'distancia', 'o Arqueiro atira');
   eq(de('Camponês Assustado'), 'haste', 'o forcado do camponês alcança dois hexágonos');
   eq(de('Mago de Batalha'), 'arte', 'a Bola de fogo é conjuração');
-  eq(de('Feiticeiro Menor'), 'arte', 'o Dardo flamejante é conjuração');
+  eq(de('Feiticeiro Menor'), 'leve', 'o Feiticeiro Menor da ficha v3 só soca: o Dardo flamejante foi para a linha Artes (D-196)');
   eq(de('Cultista Sombrio'), 'arte', 'o Toque mórbido é conjuração');
 
   // A precedência: catálogo > classe explícita > velocidade.

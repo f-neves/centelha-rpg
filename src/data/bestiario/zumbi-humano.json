@@ -5,9 +5,10 @@
   "nome": "Zumbi Humano",
   "nomeIngles": "Human Zombie",
   "categoria": "Morto-vivo",
+  "categoriaLegada": "Fera",
   "papel": "capanga",
   "conceito": "morto-vivo Médio",
-  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+  "descricao": "Morto que não descansa: lento, desajeitado e incansável, avança direto sobre o vivo mais próximo. Não sente dor nem medo e só para quando o corpo se desfaz.",
   "tags": [
     "morto-vivo",
     "centelha"
@@ -16,47 +17,52 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,7 m de altura",
-    "peso": "75 kg"
+    "peso": "70 kg",
+    "largura": 0.45,
+    "altura": 1.7
   },
   "locomocao": {
     "terra": 3
   },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+  },
   "centelha": 1,
   "attrs": {
-    "forca": 5,
-    "destreza": 2,
-    "vigor": 2,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
+    "forca": 4,
+    "destreza": 1,
+    "vigor": 3,
     "percepcao": 2,
     "inteligencia": 0,
-    "raciocinio": 2
+    "raciocinio": 1,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
     "briga": 2,
-    "esquiva": 0,
-    "prontidao": 1,
-    "integridade": 2
+    "prontidao": 1
   },
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 4,
-    "temperanca": 2,
-    "valor": 3
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 6
   },
-  "willpower": 6,
+  "willpower": 3,
   "aparencia": 2,
   "ataques": [
     {
-      "nome": "Golpe",
+      "nome": "Pancada",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 5
+      "ticks": 6,
+      "classe": "media"
     }
   ],
   "fraquezas": [
@@ -66,24 +72,52 @@
   "resistencias": [
     "perfuracao"
   ],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Sem carne",
-      "descricao": "imune a veneno, doença e efeitos mentais"
+      "nome": "agarrar",
+      "descricao": "Pancada: Agarrar.",
+      "classe": "livro"
     },
     {
-      "nome": "Golpe pesado e lento",
-      "descricao": "dano alto mas Iniciativa reduzida"
+      "nome": "imune a veneno e doença",
+      "descricao": "veneno e doença não o afetam; o corpo morto não tem o que envenenar nem infectar.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Últimos estertores",
-      "descricao": "uma vez por cena, um golpe que zeraria seus PV o deixa com 1 PV"
+      "nome": "corpo morto",
+      "descricao": "não respira, não come, não bebe, não dorme e não se cansa; fica parado o tempo que for preciso.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "sem dor",
+      "descricao": "não sente dor; as penalidades de ferimento não o atrasam.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "últimos estertores",
+      "descricao": "uma vez por cena, o golpe que o derrubaria o deixa de pé com 1 PV.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "avança sem tática",
+      "descricao": "vai direto ao vivo mais próximo, sem medo nem hesitação, e não larga o alvo.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "golpe pesado e lento",
+      "descricao": "bate forte (Pancada Média) e age tarde (Iniciativa baixa).",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um humano, embotadas; acha o vivo mais próximo."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Lento, desajeitado e obtuso, mas incansável: avança direto ao alvo mais próximo, sem tática, medo ou hesitação."
+      "texto": "Lento, desajeitado e obtuso, mas incansável: avança direto ao alvo mais próximo, sem tática, medo ou hesitação. Social: bando (típico 3 a 12)."
     },
     {
       "titulo": "Ecologia",
@@ -95,7 +129,11 @@
     },
     {
       "titulo": "No mundo de Centelha",
-      "texto": "Aqui a Centelha já partiu, e o cadáver é reanimado por uma compulsão bruta imposta de fora. Erguer um zumbi é um dos atos mais reprimidos pelas ortodoxias de Calin, prova imediata de necromancia ativa numa comunidade."
+      "texto": "A Centelha da pessoa já partiu; o que ergue o cadáver é a magia de quem o reanimou, uma compulsão bruta imposta de fora, e é ela que dá ao corpo morto a pouca força sobrenatural que ele tem. Erguer um zumbi é um dos atos mais reprimidos pelas ortodoxias de Calin, prova imediata de necromancia ativa numa comunidade."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio como o humano. Lento: age tarde (Iniciativa 1d6 + 2) e não desvia nem apara (Esquiva 2, Bloqueio 2), então quase todo golpe acerta. Bate forte para um capanga (dano médio 8, 5) e agarra. Não adianta assustar, convencer nem encantar: não tem mente. A lança, a flecha e a estocada fazem metade do dano depois da armadura; o machado e a maça, o dano inteiro. Luz e golpe sagrado passam toda a Absorção. 34 PV, Impacto 4, Corte e Perfuração 1. Uma vez por cena, fica de pé com 1 PV no golpe que o derrubaria. O perigo é o bando."
     }
   ],
   "ecologia": {
@@ -131,5 +169,37 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 1
+  "ameacaLegada": 1,
+  "v3": {
+    "pv": 34,
+    "esquiva": 2,
+    "bloqueio": 2,
+    "defesa": 2,
+    "defesaMental": null,
+    "defesaSocial": null,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 149.25,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    }
+  },
+  "notasObservacao": [
+    "`centelha`: 1, decidida pelo autor (D-185). O texto do site foi adaptado na linha \"Ambientação: No mundo de Centelha\"",
+    "`forca`: 4 por julgamento (o corpo comum sem freio de dor); o site tinha 5 **[provisório]**",
+    "`vigor`: 3 por julgamento; o site tinha 2 **[provisório]**",
+    "`atributos sociais`, `vontade`, `virtudes`: sociais em 1, Vontade 3 e Virtudes pelo método do animal, decididos pelo autor para toda criatura de Inteligência 0 (D-186)",
+    "`massa`: 70 kg, a do vivo menos cerca de 7% de água; não há dado de zumbi, e a fonte de decomposição é de cadáver parado, não de corpo animado **[extrapolação]**",
+    "`deslocamento`: o do site, congelado; o \"lento\" do texto fica na Iniciativa e na Velocidade do golpe, e não na velocidade",
+    "`couraca`: 0, pele humana podre; nada a comparar na escala além do humano",
+    "conferidor: desde a oitava atualização do pacote (22/10/2026) o `confere_etapa2.py` confere Impacto = Vigor + Centelha e Corte e Perfuração = Centelha; a linha de Absorção (Impacto 4, Corte e Perfuração 1) passa sem mudança"
+  ]
 }

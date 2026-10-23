@@ -174,52 +174,82 @@
     "ameaca": 3,
     "centelha": 0,
     "conceito": "lâmina experiente",
-    "descricao": "Anos de guerra; lê o combate e explora aberturas.",
+    "descricao": "Soldado de muitas guerras, que lê a postura do inimigo e responde com economia. Foca quem luta sem apoio e não morre por bravura: recua quando a luta está perdida.",
     "tags": [
       "humano"
     ],
     "pv": 34,
-    "defesa": 12,
-    "defesaSocial": 4,
-    "defesaMental": 13,
+    "defesa": 14,
+    "defesaSocial": 8,
+    "defesaMental": 14,
     "vontade": 6,
     "soak": {
-      "impacto": 4,
-      "corte": 7,
-      "perfuracao": 2
+      "impacto": 3,
+      "corte": 0,
+      "perfuracao": 0
     },
-    "resistPerf": 1,
-    "iniciativa": "1d6 + 5",
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 6",
     "atributos": {
       "forca": 3,
       "destreza": 4,
       "vigor": 3,
       "influencia": 2,
       "perspicacia": 2,
-      "compostura": 2,
+      "compostura": 3,
       "percepcao": 2,
       "inteligencia": 2,
-      "raciocinio": 2
+      "raciocinio": 3
     },
     "ataques": [
       {
         "nome": "Espada longa",
         "pool": "4d6 +1",
-        "dano": "2d6 +3 corte",
+        "dano": "1d6 +3 corte",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Espada longa a duas mãos",
+        "pool": "4d6 +1",
+        "dano": "1d6 +6 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Punhos",
+        "pool": "3d6 +1",
+        "dano": "1d6 +1 impacto",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "Aproveita Quase Acerto e foca alvos isolados.",
     "pendente": false,
+    "vestida": {
+      "esquiva": 12,
+      "bloqueio": 10,
+      "defesa": 12,
+      "contraTiro": 12,
+      "absorcao": {
+        "impacto": 4,
+        "corte": 6,
+        "perfuracao": 1
+      },
+      "nivel": 1,
+      "penalidade": 2
+    },
     "pericias": {
       "prontidao": 3,
-      "esquiva": 2,
+      "esquiva": 3,
       "integridade": 5,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "sociabilidade": 1,
+      "furtividade": 1
     }
   },
   {
@@ -519,7 +549,7 @@
     "ameaca": 4,
     "centelha": 1,
     "conceito": "conjurador iniciante",
-    "descricao": "Frágil no corpo a corpo, perigoso à distância com fogo.",
+    "descricao": "Conjurador iniciante, frágil de perto e perigoso de longe: abre distância e lança dardos de fogo antes que o inimigo o alcance.",
     "tags": [
       "humano",
       "centelha",
@@ -527,13 +557,13 @@
     ],
     "pv": 31,
     "defesa": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 8,
     "defesaMental": 15,
     "vontade": 6,
     "soak": {
       "impacto": 3,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -550,12 +580,12 @@
     },
     "ataques": [
       {
-        "nome": "Dardo flamejante (Fogo 1)",
-        "pool": "3d6+2 +2",
-        "dano": "1d6 +1 fogo",
+        "nome": "Soco",
+        "pool": "1d6+2 +1",
+        "dano": "1d6 +1 impacto",
         "perfArma": null,
-        "ticks": 6,
-        "notas": "Custa 1 Mana; resistido por Absorção/Esquiva"
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -571,8 +601,8 @@
       "prontidao": 2,
       "esquiva": 2,
       "integridade": 5,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "sociabilidade": 1,
+      "furtividade": 1
     }
   },
   {
@@ -1600,24 +1630,24 @@
     "id": "gigante-da-colina",
     "nome": "Gigante da Colina",
     "tipo": "elite",
-    "categoria": "Gigante",
+    "categoria": "Fera",
     "ameaca": 4,
     "centelha": 1,
     "conceito": "humanoide Grande (gigante)",
-    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "descricao": "Gigante guloso e mal-humorado das colinas: atira rochas, esmaga com os punhos e leva o rebanho inteiro. Não pensa muito e não para de lutar.",
     "tags": [
       "gigante",
       "centelha"
     ],
     "pv": 54,
-    "defesa": 4,
+    "defesa": 8,
     "defesaSocial": 4,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
       "impacto": 7,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -1635,10 +1665,19 @@
     "ataques": [
       {
         "nome": "Pancada descomunal",
-        "pool": "7d6 +2",
+        "pool": "6d6+2 +2",
         "dano": "2d6 +10 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Rocha arremessada",
+        "pool": "2d6+2 +2",
+        "dano": "2d6 +10 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -3077,7 +3116,7 @@
     "ataques": [
       {
         "nome": "Mordida",
-        "pool": "2d6 +1",
+        "pool": "2d6+2 +1",
         "dano": "1d6 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -3163,25 +3202,25 @@
     "ameaca": 3,
     "centelha": 1,
     "conceito": "humanoide monstruoso Grande",
-    "descricao": "Aberração humanoide de lendas antigas.",
+    "descricao": "Homem de 2,4 m com cabeça de touro que guarda labirintos e ruínas. Investe com os chifres, racha com um machado de duas mãos e nunca se perde nos corredores que conhece de cor.",
     "tags": [
       "monstro",
       "centelha"
     ],
     "pv": 50,
-    "defesa": 4,
+    "defesa": 9,
     "defesaSocial": 4,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
       "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 6,
+      "forca": 7,
       "destreza": 2,
       "vigor": 5,
       "influencia": 2,
@@ -3193,21 +3232,28 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "5d6 +2",
-        "dano": "2d6 +7 corte",
+        "nome": "Machado pesado",
+        "pool": "5d6+2 +2",
+        "dano": "2d6 +15 corte",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Chifrada",
+        "pool": "5d6 +2",
+        "dano": "1d6 +8 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "media"
       }
     ],
-    "tecnicas": [
-      "faro"
-    ],
+    "tecnicas": [],
     "artes": [],
     "notas": "Habilidades notáveis: Prontidão 3, Sobrevivência 2.",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 3,
       "esquiva": 0,
       "integridade": 2,
       "sociabilidade": 0,
@@ -3354,45 +3400,62 @@
     "id": "grifo",
     "nome": "Grifo",
     "tipo": "fera",
-    "categoria": "Besta mágica",
+    "categoria": "Fera",
     "ameaca": 3,
     "centelha": 1,
     "conceito": "besta mágica Grande",
-    "descricao": "Fera tocada pela magia, além do reino natural.",
+    "descricao": "Caça em mergulho, com a vista da águia e a força do leão. Vive em casal ou bando pequeno em ninhos de penhasco e ataca qualquer coisa que cruze o espaço aéreo dele.",
     "tags": [
       "besta-magica",
       "centelha"
     ],
-    "pv": 54,
-    "defesa": 12,
-    "defesaSocial": 4,
+    "pv": 40,
+    "defesa": 14,
+    "defesaSocial": 12,
     "defesaMental": 12,
-    "vontade": 6,
+    "vontade": 4,
     "soak": {
-      "impacto": 7,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 6,
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 6",
     "atributos": {
       "forca": 6,
       "destreza": 4,
-      "vigor": 6,
-      "influencia": 2,
-      "perspicacia": 1,
+      "vigor": 5,
+      "influencia": 1,
+      "perspicacia": 2,
       "compostura": 2,
       "percepcao": 3,
       "inteligencia": 1,
-      "raciocinio": 2
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Garras",
+        "pool": "5d6 +3",
+        "dano": "1d6 +5 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Bico",
         "pool": "5d6 +2",
-        "dano": "2d6 +7 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "dano": "1d6 +7 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras em mergulho",
+        "pool": "5d6 +2",
+        "dano": "2d6 +13 corte",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -3400,11 +3463,11 @@
     "notas": "Habilidades notáveis: Prontidão 2, Atletismo 2.",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
-      "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "prontidao": 3,
+      "esquiva": 2,
+      "integridade": 3,
+      "sociabilidade": 3,
+      "furtividade": 2
     }
   },
   {
@@ -4399,11 +4462,11 @@
     "id": "montao-tropecante",
     "nome": "Montão Tropeçante",
     "tipo": "elite",
-    "categoria": "Planta",
+    "categoria": "Fera",
     "ameaca": 4,
     "centelha": 0,
     "conceito": "planta Grande",
-    "descricao": "Vegetal desperto, lento e implacável.",
+    "descricao": "Monte de vegetação podre e lodo que ganhou vontade própria depois de uma morte violenta: anda devagar pelo brejo, agarra e esmaga, e o raio o cura em vez de feri-lo.",
     "tags": [
       "planta",
       "centelha"
@@ -4415,11 +4478,11 @@
     "vontade": 6,
     "soak": {
       "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 0,
+      "perfuracao": 0
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 7,
       "destreza": 2,
@@ -4437,8 +4500,8 @@
         "pool": "6d6",
         "dano": "2d6 +7 impacto",
         "perfArma": null,
-        "ticks": 6,
-        "notas": "acerto pode agarrar e constringir"
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -4446,11 +4509,11 @@
     "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 2,
       "esquiva": 0,
       "integridade": 2,
       "sociabilidade": 0,
-      "furtividade": 0
+      "furtividade": 3
     }
   },
   {
@@ -4811,45 +4874,46 @@
     "id": "zumbi-humano",
     "nome": "Zumbi Humano",
     "tipo": "capanga",
-    "categoria": "Morto-vivo",
+    "categoria": "Fera",
     "ameaca": 1,
     "centelha": 1,
     "conceito": "morto-vivo Médio",
-    "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+    "descricao": "Morto que não descansa: lento, desajeitado e incansável, avança direto sobre o vivo mais próximo. Não sente dor nem medo e só para quando o corpo se desfaz.",
     "tags": [
       "morto-vivo",
       "centelha"
     ],
-    "pv": 31,
-    "defesa": 4,
+    "pv": 34,
+    "defesa": 2,
     "defesaSocial": "-",
     "defesaMental": "-",
-    "vontade": 6,
+    "vontade": 3,
     "soak": {
-      "impacto": 3,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 4,
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 2",
     "atributos": {
-      "forca": 5,
-      "destreza": 2,
-      "vigor": 2,
-      "influencia": 2,
-      "perspicacia": 2,
-      "compostura": 2,
+      "forca": 4,
+      "destreza": 1,
+      "vigor": 3,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
       "percepcao": 2,
       "inteligencia": 0,
-      "raciocinio": 2
+      "raciocinio": 1
     },
     "ataques": [
       {
-        "nome": "Golpe",
-        "pool": "3d6+2 +2",
-        "dano": "1d6 +6 impacto",
+        "nome": "Pancada",
+        "pool": "3d6 +2",
+        "dano": "1d6 +5 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -4859,7 +4923,8 @@
     "pericias": {
       "prontidao": 1,
       "esquiva": 0,
-      "furtividade": 1
+      "integridade": 0,
+      "furtividade": 0
     }
   },
   {
@@ -5299,11 +5364,11 @@
     "id": "espectro",
     "nome": "Espectro",
     "tipo": "elite",
-    "categoria": "Morto-vivo",
+    "categoria": "Fera",
     "ameaca": 4,
     "centelha": 4,
     "conceito": "morto-vivo Médio (incorpóreo)",
-    "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+    "descricao": "Alma presa ao mundo pelo próprio ódio: voa através das paredes, persegue os vivos sem descanso e drena a força de quem toca. As armas comuns mal o ferem.",
     "tags": [
       "morto-vivo",
       "centelha",
@@ -5317,11 +5382,11 @@
     "vontade": 9,
     "soak": {
       "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 6",
+    "iniciativa": "1d6 + 7",
     "atributos": {
       "forca": 0,
       "destreza": 5,
@@ -5336,63 +5401,23 @@
     "ataques": [
       {
         "nome": "Toque dilacerante",
-        "pool": "5d6 +8",
-        "dano": "2d6 +4 necrótico (vs Def. Mental)",
+        "pool": "5d6 +9",
+        "dano": "1d6 +2 fenomeno",
         "perfArma": null,
         "ticks": 5,
-        "notas": "atravessa matéria; resiste a corte, impacto e perfuração (dano pela metade), arma comum ainda fere"
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "morte",
-        "nivel": 3
-      },
-      {
-        "id": "espirito",
-        "nivel": 3
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Furtividade 4, Prontidão 3.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "dreno-de-nivel",
-        "nome": "Dreno de nível",
-        "tipo": "natural",
-        "base": {
-          "arte": "morte",
-          "nivel": 3
-        },
-        "resiste": "corpo",
-        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-        "usos": {
-          "periodo": "golpe"
-        },
-        "ataque": "Toque dilacerante"
-      },
-      {
-        "id": "voo-e-incorporeo",
-        "nome": "Voo e incorpóreo",
-        "tipo": "natural",
-        "base": {
-          "arte": "espirito",
-          "nivel": 3
-        },
-        "resiste": "nenhum",
-        "efeito": "Voo e incorpóreo",
-        "usos": {
-          "periodo": "avontade"
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 2,
+      "prontidao": 3,
       "esquiva": 1,
       "integridade": 5,
       "sociabilidade": 0,
-      "furtividade": 3
+      "furtividade": 4
     }
   },
   {
@@ -5701,28 +5726,28 @@
     "id": "lich",
     "nome": "Lich",
     "tipo": "chefe",
-    "categoria": "Morto-vivo",
+    "categoria": "Fera",
     "ameaca": 5,
     "centelha": 6,
     "conceito": "morto-vivo Médio",
-    "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+    "descricao": "Mago de antes da Supressão que venceu a própria morte: conjura Morte, Fogo, Gelo e Proteção, cercado de servos, e volta do filactério se o corpo cai.",
     "tags": [
       "morto-vivo",
       "centelha",
       "mágico"
     ],
-    "pv": 40,
+    "pv": 30,
     "defesa": 12,
-    "defesaSocial": 8,
+    "defesaSocial": 16,
     "defesaMental": 28,
     "vontade": 11,
     "soak": {
       "impacto": 11,
-      "corte": 8,
-      "perfuracao": 8
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 7",
+    "iniciativa": "1d6 + 8",
     "atributos": {
       "forca": 2,
       "destreza": 4,
@@ -5736,11 +5761,12 @@
     },
     "ataques": [
       {
-        "nome": "Golpe",
-        "pool": "3d6+2 +10",
-        "dano": "1d6 +8 impacto",
+        "nome": "Toque",
+        "pool": "4d6+2 +11",
+        "dano": "1d6 +6 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -5764,42 +5790,11 @@
     ],
     "notas": "Habilidades notáveis: Ocultismo 5, Conhecimentos 5, Prontidão 3.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "toque-paralisante",
-        "nome": "Toque paralisante",
-        "tipo": "natural",
-        "base": {
-          "arte": "morte",
-          "nivel": 2
-        },
-        "resiste": "corpo",
-        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-        "usos": {
-          "periodo": "golpe"
-        }
-      },
-      {
-        "id": "aura-de-medo",
-        "nome": "Aura de medo",
-        "tipo": "natural",
-        "base": {
-          "arte": "morte",
-          "nivel": 3
-        },
-        "resiste": "mente",
-        "efeito": "Resiste ao entrar, 1 vez por cena.",
-        "usos": {
-          "periodo": "passivo",
-          "recarga": "contínua"
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 2,
+      "prontidao": 3,
       "esquiva": 1,
       "integridade": 4,
-      "sociabilidade": 0,
+      "sociabilidade": 2,
       "furtividade": 1
     }
   },
@@ -6141,73 +6136,56 @@
       "mágico"
     ],
     "pv": 66,
-    "defesa": 12,
-    "defesaSocial": 10,
-    "defesaMental": 29,
-    "vontade": 10,
+    "defesa": 14,
+    "defesaSocial": 8,
+    "defesaMental": 23,
+    "vontade": 8,
     "soak": {
       "impacto": 14,
-      "corte": 11,
-      "perfuracao": 11
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 6",
+    "iniciativa": "1d6 + 7",
     "atributos": {
       "forca": 9,
-      "destreza": 4,
+      "destreza": 3,
       "vigor": 9,
-      "influencia": 5,
-      "perspicacia": 5,
-      "compostura": 5,
-      "percepcao": 5,
-      "inteligencia": 4,
-      "raciocinio": 4
+      "influencia": 3,
+      "perspicacia": 3,
+      "compostura": 2,
+      "percepcao": 4,
+      "inteligencia": 2,
+      "raciocinio": 3
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
+        "nome": "Mordida",
         "pool": "7d6 +10",
-        "dano": "2d6 +14 corte",
+        "dano": "1d6 +14 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "7d6 +10",
+        "dano": "1d6 +14 corte",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "vento",
-        "nivel": 2
-      },
-      {
-        "id": "espirito",
-        "nivel": 4
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Prontidão 4, Atletismo 3.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "fedor-nauseante",
-        "nome": "Fedor nauseante",
-        "tipo": "natural",
-        "base": {
-          "arte": "vento",
-          "nivel": 2
-        },
-        "resiste": "corpo",
-        "efeito": "Resiste ao entrar, 1 vez por cena.",
-        "usos": {
-          "periodo": "passivo",
-          "recarga": "contínua"
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 2,
+      "prontidao": 4,
       "esquiva": 1,
-      "integridade": 5,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "integridade": 4,
+      "sociabilidade": 1,
+      "furtividade": 0
     }
   },
   {
@@ -7031,7 +7009,7 @@
     "ameaca": 5,
     "centelha": 5,
     "conceito": "exterior Médio",
-    "descricao": "Nativo de outro plano, alheio às leis mortais.",
+    "descricao": "Fera de cabeça de tigre que vive décadas disfarçada de nobre, mercador ou sacerdote, lendo pensamentos e tecendo intrigas. Conjura ilusões e encantos, e só mostra as garras quando a vítima já não tem saída.",
     "tags": [
       "exterior",
       "centelha",
@@ -7039,13 +7017,13 @@
     ],
     "pv": 40,
     "defesa": 14,
-    "defesaSocial": 8,
-    "defesaMental": 29,
+    "defesaSocial": 20,
+    "defesaMental": 25,
     "vontade": 10,
     "soak": {
       "impacto": 10,
-      "corte": 7,
-      "perfuracao": 7
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -7062,11 +7040,12 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
-        "pool": "4d6+2 +10",
-        "dano": "1d6 +9 corte",
+        "nome": "Garras",
+        "pool": "5d6 +11",
+        "dano": "1d6 +7 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -7090,28 +7069,12 @@
     ],
     "notas": "Habilidades notáveis: Manha 5, Furtividade 4, Persuasão 3.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "mudar-de-forma",
-        "nome": "Mudar de forma",
-        "tipo": "natural",
-        "base": {
-          "arte": "materia",
-          "nivel": 3
-        },
-        "resiste": "nenhum",
-        "efeito": "Mudar de forma",
-        "usos": {
-          "periodo": "avontade"
-        }
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
-      "integridade": 6,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "integridade": 4,
+      "sociabilidade": 3,
+      "furtividade": 4
     }
   },
   {
@@ -7346,28 +7309,28 @@
     "id": "deva-astral",
     "nome": "Deva Astral",
     "tipo": "chefe",
-    "categoria": "Celestial",
+    "categoria": "Fera",
     "ameaca": 6,
     "centelha": 6,
     "conceito": "exterior Médio (anjo)",
-    "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
+    "descricao": "Anjo de asas brancas que anda disfarçado de peregrina entre os mortais: cura, aconselha e protege. Quando o mal ataca primeiro, luta com a maça, e a luz do golpe queima demônios e mortos-vivos.",
     "tags": [
       "celestial",
       "centelha",
       "mágico"
     ],
     "pv": 43,
-    "defesa": 14,
-    "defesaSocial": 12,
+    "defesa": 15,
+    "defesaSocial": 24,
     "defesaMental": 34,
     "vontade": 11,
     "soak": {
       "impacto": 12,
-      "corte": 9,
-      "perfuracao": 9
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 7",
+    "iniciativa": "1d6 + 9",
     "atributos": {
       "forca": 8,
       "destreza": 5,
@@ -7381,86 +7344,24 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
-        "pool": "6d6+2 +10",
-        "dano": "1d6 +14 corte",
+        "nome": "Maça",
+        "pool": "6d6 +9",
+        "dano": "1d6 +14 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "Habilidades notáveis: Armas 4, Ocultismo 4, Persuasão 4, Prontidão 4.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "mudar-de-forma",
-        "nome": "Mudar de forma",
-        "tipo": "natural",
-        "base": {
-          "arte": "metamorfose",
-          "nivel": 3
-        },
-        "resiste": "nenhum",
-        "efeito": "Mudar de forma",
-        "usos": {
-          "periodo": "avontade"
-        },
-        "descricao": "Assume a forma de um humano ou animal comum por uma cena inteira, incluindo voz e cheiro; a arma e a armadura não acompanham a troca."
-      },
-      {
-        "id": "feiticos-celestiais",
-        "nome": "Feitiços celestiais",
-        "tipo": "natural",
-        "base": {
-          "arte": "cura",
-          "nivel": 4
-        },
-        "resiste": "nenhum",
-        "efeito": "cura ferimentos, remove doença ou maldição, ou abençoa um aliado, 1 vez por cena",
-        "descricao": "Uma vez por cena, o deva toca alguém e escolhe: fecha ferimentos, limpa uma doença ou maldição, ou abençoa (o aliado ganha um bônus passageiro na próxima jogada importante).",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 1
-        }
-      },
-      {
-        "id": "aura-protetora",
-        "nome": "Aura protetora",
-        "tipo": "natural",
-        "base": {
-          "arte": "protecao",
-          "nivel": 5
-        },
-        "resiste": "nenhum",
-        "efeito": "aliados a 6m ganham +1 dado na Defesa contra ataques de origem maligna",
-        "descricao": "Uma auréola constante em volta do deva: qualquer aliado a até 6 metros ganha +1 dado ao se defender de um golpe, feitiço ou efeito vindo de algo maligno. Não precisa de ação para manter.",
-        "usos": {
-          "periodo": "passivo"
-        }
-      },
-      {
-        "id": "teleporte-sem-erro",
-        "nome": "Teleporte sem erro",
-        "tipo": "natural",
-        "base": {
-          "arte": "conjuracao",
-          "nivel": 5
-        },
-        "resiste": "nenhum",
-        "efeito": "desloca-se a qualquer distância dentro do mesmo plano, sem chance de erro",
-        "descricao": "O deva desaparece e reaparece em qualquer ponto que conheça no mesmo plano, levando até seis companheiros consigo. Nunca erra o destino.",
-        "usos": {
-          "periodo": "avontade"
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 2,
+      "prontidao": 4,
       "esquiva": 1,
       "integridade": 6,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "sociabilidade": 3,
+      "furtividade": 0
     }
   },
   {
@@ -8602,30 +8503,30 @@
     "id": "pixie",
     "nome": "Pixie",
     "tipo": "soldado",
-    "categoria": "Fada",
+    "categoria": "Fera",
     "ameaca": 3,
     "centelha": 4,
     "conceito": "fada Pequeno",
-    "descricao": "Espírito da natureza, belo e caprichoso.",
+    "descricao": "Fadinha de 30 cm, invisível quando quer, que prega peças nos viajantes: a flecha dela faz dormir ou esquecer a última hora. Raramente faz mal de verdade, mas não perdoa quem fere o bosque.",
     "tags": [
       "fada",
       "centelha",
       "mágico"
     ],
-    "pv": 17,
+    "pv": 2,
     "defesa": 20,
-    "defesaSocial": 10,
+    "defesaSocial": 18,
     "defesaMental": 27,
     "vontade": 9,
     "soak": {
       "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
     "atributos": {
-      "forca": 1,
+      "forca": 0,
       "destreza": 6,
       "vigor": 2,
       "influencia": 5,
@@ -8637,62 +8538,32 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "2d6+2 +8",
-        "dano": "1d6 +5 perfurante",
-        "perfArma": 0,
-        "ticks": 5
+        "nome": "Flecha",
+        "pool": "4d6 +10",
+        "dano": "1d6 +2 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "distancia"
       },
       {
-        "nome": "Flechas do sono",
-        "pool": "2d6",
-        "dano": "1d6 +4 perfurante",
+        "nome": "Garras e presas",
+        "pool": "4d6 +4",
+        "dano": "1d6 +2 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "fascinacao",
-        "nivel": 2
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Furtividade 5, Ocultismo 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "invisibilidade-natural",
-        "nome": "Invisibilidade natural",
-        "tipo": "natural",
-        "base": {
-          "arte": "fascinacao",
-          "nivel": 1
-        },
-        "resiste": "nenhum",
-        "efeito": "Invisibilidade natural",
-        "usos": {
-          "periodo": "avontade"
-        }
-      },
-      {
-        "id": "flecha-do-sono-ou-amnesia",
-        "nome": "Efeito da flecha (sono ou amnésia)",
-        "tipo": "natural",
-        "resiste": "mente",
-        "efeito": "À escolha da pixie: sono (Inconsciente até o fim da cena) ou amnésia (perde as memórias da última hora). A flecha do esquecimento é narrativa.",
-        "ataque": "Flechas do sono",
-        "usos": {
-          "periodo": "golpe"
-        }
-      }
-    ],
     "pericias": {
       "prontidao": 2,
       "esquiva": 2,
       "integridade": 5,
-      "sociabilidade": 0,
-      "furtividade": 6
+      "sociabilidade": 2,
+      "furtividade": 5
     }
   },
   {
@@ -8876,14 +8747,14 @@
       "mágico"
     ],
     "pv": 37,
-    "defesa": 10,
-    "defesaSocial": 8,
+    "defesa": 14,
+    "defesaSocial": 16,
     "defesaMental": 19,
     "vontade": 7,
     "soak": {
       "impacto": 6,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -8900,43 +8771,23 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "3d6+2 +4",
-        "dano": "1d6 +5 corte",
+        "nome": "Espada curta",
+        "pool": "3d6 +6",
+        "dano": "1d6 +3 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "materia",
-        "nivel": 2
-      },
-      {
-        "id": "adivinhacao",
-        "nivel": 1
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Manha 4, Empatia 3, Furtividade 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "mudar-de-forma",
-        "nome": "Mudar de forma",
-        "tipo": "natural",
-        "resiste": "nenhum",
-        "efeito": "Mudar de forma",
-        "usos": {
-          "periodo": "avontade"
-        }
-      }
-    ],
     "pericias": {
       "prontidao": 2,
-      "esquiva": 1,
+      "esquiva": 2,
       "integridade": 4,
-      "sociabilidade": 0,
+      "sociabilidade": 2,
       "furtividade": 2
     }
   },
@@ -10406,11 +10257,11 @@
     "id": "dragao-branco-jovem",
     "nome": "Dragão Branco Jovem",
     "tipo": "elite",
-    "categoria": "Dragão",
+    "categoria": "Fera",
     "ameaca": 4,
     "centelha": 4,
     "conceito": "dragão Grande",
-    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "descricao": "Predador alado das montanhas geladas: sopra frio de cima, desce para morder e some na neve. Orgulhoso e ganancioso, mais fera que os outros dragões.",
     "tags": [
       "dragao",
       "centelha",
@@ -10418,18 +10269,18 @@
     ],
     "pv": 54,
     "defesa": 4,
-    "defesaSocial": 4,
+    "defesaSocial": 8,
     "defesaMental": 17,
     "vontade": 9,
     "soak": {
       "impacto": 10,
-      "corte": 9,
-      "perfuracao": 9
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 7,
+      "forca": 8,
       "destreza": 2,
       "vigor": 6,
       "influencia": 2,
@@ -10441,11 +10292,28 @@
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
-        "pool": "6d6 +8",
-        "dano": "2d6 +11 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "nome": "Mordida",
+        "pool": "6d6+2 +8",
+        "dano": "1d6 +12 perfurante · perf. 2",
+        "perfArma": 2,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "6d6+2 +8",
+        "dano": "1d6 +12 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Sopro de frio",
+        "pool": "4d6+2 +6",
+        "dano": "6d6 +4 gelo",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "distancia"
       }
     ],
     "tecnicas": [],
@@ -10461,59 +10329,12 @@
     ],
     "notas": "Habilidades notáveis: Prontidão 3, Furtividade 3.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "sopro-de-frio",
-        "nome": "Sopro de frio",
-        "tipo": "natural",
-        "base": {
-          "arte": "gelo",
-          "nivel": 3
-        },
-        "resiste": "esquiva",
-        "efeito": "Cone ou linha. Esquiva para metade.",
-        "usos": {
-          "periodo": "ticks",
-          "quantidade": 1,
-          "recarga": "24 ticks"
-        }
-      },
-      {
-        "id": "andar-no-gelo-e-nevasca",
-        "nome": "Andar no gelo e nevasca",
-        "tipo": "natural",
-        "base": {
-          "arte": "gelo",
-          "nivel": 2
-        },
-        "resiste": "nenhum",
-        "efeito": "Anda no gelo sem cair; nevasca vira Arte se for conjurada.",
-        "usos": {
-          "periodo": "passivo"
-        }
-      },
-      {
-        "id": "presenca",
-        "nome": "Presença",
-        "tipo": "natural",
-        "base": {
-          "arte": "morte",
-          "nivel": 3
-        },
-        "resiste": "mente",
-        "efeito": "Área; quem resiste fica imune na cena.",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 1
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 3,
       "esquiva": 0,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "sociabilidade": 1,
+      "furtividade": 3
     }
   },
   {
@@ -11035,7 +10856,7 @@
     "ataques": [
       {
         "nome": "Mordida do enxame",
-        "pool": "1d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −2 corte",
         "perfArma": null,
         "ticks": 5,
@@ -11043,7 +10864,7 @@
       },
       {
         "nome": "Ferroada do enxame",
-        "pool": "1d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -11360,11 +11181,11 @@
     "id": "vinha-assassina",
     "nome": "Vinha Assassina",
     "tipo": "soldado",
-    "categoria": "Planta",
+    "categoria": "Fera",
     "ameaca": 3,
     "centelha": 1,
     "conceito": "planta Grande",
-    "descricao": "Vegetal desperto, lento e implacável.",
+    "descricao": "Trepadeira carnívora que parece planta comum até a presa chegar perto: agarra, esmaga e deixa o corpo junto às raízes. Dizem que as mais assassinas dão os frutos mais doces.",
     "tags": [
       "planta",
       "centelha"
@@ -11373,11 +11194,11 @@
     "defesa": 4,
     "defesaSocial": "-",
     "defesaMental": "-",
-    "vontade": 6,
+    "vontade": 3,
     "soak": {
       "impacto": 7,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -11385,9 +11206,9 @@
       "forca": 7,
       "destreza": 2,
       "vigor": 6,
-      "influencia": 2,
-      "perspicacia": 2,
-      "compostura": 2,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
       "percepcao": 3,
       "inteligencia": 0,
       "raciocinio": 3
@@ -11398,35 +11219,19 @@
         "pool": "5d6+2 +2",
         "dano": "2d6 +8 impacto",
         "perfArma": null,
-        "ticks": 6,
-        "notas": "acerto agarra e constringe o alvo"
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "emaranhar",
-        "nome": "Emaranhar",
-        "tipo": "natural",
-        "base": {
-          "arte": "vida",
-          "nivel": 2
-        },
-        "resiste": "esquiva",
-        "efeito": "vinhas ao redor prendem quem estiver numa área, dificultando o movimento",
-        "descricao": "Vinhas do chão ao redor da planta se agitam e prendem quem estiver por perto, tornando difícil sair do lugar sem se debater.",
-        "usos": {
-          "periodo": "golpe"
-        }
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 0,
-      "furtividade": 0
+      "integridade": 0,
+      "furtividade": 3
     }
   },
   {
@@ -11808,7 +11613,7 @@
     "ataques": [
       {
         "nome": "Mordida do enxame",
-        "pool": "0d6+2 +1",
+        "pool": "2d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -12043,7 +11848,7 @@
     "ataques": [
       {
         "nome": "Mandíbulas",
-        "pool": "1d6+2 +1",
+        "pool": "2d6 +1",
         "dano": "1d6 −1 corte",
         "perfArma": null,
         "ticks": 5,
@@ -12326,7 +12131,7 @@
     "ataques": [
       {
         "nome": "Mordida",
-        "pool": "3d6 +1",
+        "pool": "4d6 +1",
         "dano": "1d6 +1 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -12334,7 +12139,7 @@
       },
       {
         "nome": "Patada com o ergot",
-        "pool": "3d6 +1",
+        "pool": "4d6 +1",
         "dano": "1d6 +1 corte",
         "perfArma": null,
         "ticks": 5,
@@ -12626,7 +12431,7 @@
     "ataques": [
       {
         "nome": "Garra de veneno",
-        "pool": "1d6 +1",
+        "pool": "2d6+2 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -12911,7 +12716,7 @@
     "ataques": [
       {
         "nome": "Pinça do enxame",
-        "pool": "1d6 +1",
+        "pool": "2d6 +1",
         "dano": "1d6 −2 corte",
         "perfArma": null,
         "ticks": 5,
@@ -14010,7 +13815,7 @@
     "ataques": [
       {
         "nome": "Mordida",
-        "pool": "2d6 +1",
+        "pool": "2d6+2 +1",
         "dano": "1d6 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -14531,7 +14336,7 @@
     "ataques": [
       {
         "nome": "Descarga elétrica",
-        "pool": "1d6 +1",
+        "pool": "2d6 +1",
         "dano": "2d6 eletricidade",
         "perfArma": null,
         "ticks": 5,
@@ -14539,7 +14344,7 @@
       },
       {
         "nome": "Mordida",
-        "pool": "1d6 +1",
+        "pool": "2d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -14733,11 +14538,11 @@
     "id": "elemental-do-fogo-pequeno",
     "nome": "Elemental do Fogo (Pequeno)",
     "tipo": "soldado",
-    "categoria": "Elemental",
+    "categoria": "Fera",
     "ameaca": 2,
     "centelha": 1,
     "conceito": "exterior (fogo) Pequeno",
-    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "descricao": "Fragmento de um plano onde tudo arde: corre como labareda, incendeia o que toca e só se apaga com água ou gelo.",
     "tags": [
       "elemental",
       "centelha"
@@ -14749,13 +14554,13 @@
     "vontade": 6,
     "soak": {
       "impacto": 3,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
-      "forca": 2,
+      "forca": 1,
       "destreza": 3,
       "vigor": 2,
       "influencia": 2,
@@ -14768,11 +14573,11 @@
     "ataques": [
       {
         "nome": "Pancada flamejante",
-        "pool": "2d6+2 +2",
-        "dano": "1d6 +3 impacto",
+        "pool": "3d6 +3",
+        "dano": "1d6 fogo",
         "perfArma": null,
         "ticks": 5,
-        "notas": "cada acerto soma dano de fogo"
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -14784,7 +14589,7 @@
       "esquiva": 1,
       "integridade": 2,
       "sociabilidade": 0,
-      "furtividade": 2
+      "furtividade": 0
     }
   },
   {
@@ -15004,7 +14809,7 @@
     "ataques": [
       {
         "nome": "Mordida (incisivos)",
-        "pool": "0d6+2 +1",
+        "pool": "2d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -15061,7 +14866,7 @@
     "ataques": [
       {
         "nome": "Garra",
-        "pool": "1d6 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −2 corte",
         "perfArma": null,
         "ticks": 5,
@@ -15069,7 +14874,7 @@
       },
       {
         "nome": "Mordida",
-        "pool": "1d6 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -15126,7 +14931,7 @@
     "ataques": [
       {
         "nome": "Garras (golpe do mergulho)",
-        "pool": "2d6 +1",
+        "pool": "4d6 +1",
         "dano": "1d6 −1 corte",
         "perfArma": null,
         "ticks": 5,
@@ -15134,7 +14939,7 @@
       },
       {
         "nome": "Bico (dente tomial)",
-        "pool": "2d6 +1",
+        "pool": "4d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -15191,7 +14996,7 @@
     "ataques": [
       {
         "nome": "Mordida",
-        "pool": "2d6 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -15248,7 +15053,7 @@
     "ataques": [
       {
         "nome": "Bicada",
-        "pool": "0d6+2 +1",
+        "pool": "2d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -15353,7 +15158,7 @@
     "ataques": [
       {
         "nome": "Bote",
-        "pool": "1d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -15410,7 +15215,7 @@
     "ataques": [
       {
         "nome": "Mordida",
-        "pool": "1d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -16257,24 +16062,24 @@
       "monstro",
       "centelha"
     ],
-    "pv": 34,
-    "defesa": 4,
+    "pv": 54,
+    "defesa": 13,
     "defesaSocial": "-",
     "defesaMental": "-",
-    "vontade": 8,
+    "vontade": 3,
     "soak": {
-      "impacto": 4,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 9,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 10,
       "destreza": 2,
-      "vigor": 1,
-      "influencia": 0,
-      "perspicacia": 0,
+      "vigor": 6,
+      "influencia": 1,
+      "perspicacia": 1,
       "compostura": 1,
       "percepcao": 2,
       "inteligencia": 0,
@@ -16282,11 +16087,12 @@
     },
     "ataques": [
       {
-        "nome": "Punhos",
-        "pool": "7d6+2 +6",
-        "dano": "2d6 +13 impacto",
+        "nome": "Punho de pedra",
+        "pool": "7d6 +6",
+        "dano": "1d6 +13 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -16294,9 +16100,10 @@
     "notas": "",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 2,
       "esquiva": 0,
-      "furtividade": 1
+      "integridade": 0,
+      "furtividade": 0
     }
   },
   {
@@ -17276,7 +17083,7 @@
     "ataques": [
       {
         "nome": "Mordida do enxame",
-        "pool": "1d6 +1",
+        "pool": "2d6 +1",
         "dano": "1d6 −2 corte",
         "perfArma": null,
         "ticks": 5,
@@ -17722,31 +17529,31 @@
     "id": "lobisomem",
     "nome": "Lobisomem",
     "tipo": "soldado",
-    "categoria": "Humanoide",
+    "categoria": "Fera",
     "ameaca": 2,
     "centelha": 2,
     "conceito": "humanoide Médio",
-    "descricao": "Povo civilizado ou selvagem, do tamanho de um homem.",
+    "descricao": "Homem-lobo de pé, mais alto que um homem: morde, rasga e derruba. De dia é gente comum, e troca de forma quando quer; na lua cheia, sem querer. Só a prata o fere de verdade, e quem sobrevive à mordida pode virar lobisomem.",
     "tags": [
       "humanoide",
       "centelha"
     ],
-    "pv": 37,
+    "pv": 40,
     "defesa": 10,
-    "defesaSocial": 4,
-    "defesaMental": 15,
+    "defesaSocial": 8,
+    "defesaMental": 16,
     "vontade": 7,
     "soak": {
-      "impacto": 6,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 7,
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 5,
+      "forca": 6,
       "destreza": 3,
-      "vigor": 4,
+      "vigor": 5,
       "influencia": 2,
       "perspicacia": 2,
       "compostura": 2,
@@ -17756,11 +17563,20 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "4d6 +4",
-        "dano": "1d6 +7 corte",
+        "nome": "Mordida",
+        "pool": "4d6+2 +4",
+        "dano": "1d6 +8 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "4d6+2 +4",
+        "dano": "1d6 +8 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -17770,8 +17586,8 @@
     "pericias": {
       "prontidao": 2,
       "esquiva": 1,
-      "integridade": 2,
-      "sociabilidade": 0,
+      "integridade": 3,
+      "sociabilidade": 1,
       "furtividade": 2
     }
   },
@@ -18505,45 +18321,46 @@
     "id": "geleia-ocre",
     "nome": "Geleia Ocre",
     "tipo": "elite",
-    "categoria": "Limo",
+    "categoria": "Fera",
     "ameaca": 4,
     "centelha": 1,
     "conceito": "limo Grande",
-    "descricao": "Massa informe que digere tudo que toca.",
+    "descricao": "Massa amarelada que espera no escuro e cai sobre a presa: aperta, dissolve a carne e deixa os ossos limpos. Espada e lança só a dividem em duas.",
     "tags": [
       "limo",
       "centelha"
     ],
     "pv": 62,
-    "defesa": 0,
+    "defesa": 2,
     "defesaSocial": "-",
     "defesaMental": "-",
-    "vontade": 6,
+    "vontade": 3,
     "soak": {
       "impacto": 9,
-      "corte": 7,
-      "perfuracao": 7
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 0",
+    "iniciativa": "1d6 + 1",
     "atributos": {
       "forca": 5,
-      "destreza": 0,
+      "destreza": 1,
       "vigor": 8,
-      "influencia": 0,
-      "perspicacia": 0,
-      "compostura": 0,
-      "percepcao": 0,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 1,
       "inteligencia": 0,
-      "raciocinio": 0
+      "raciocinio": 1
     },
     "ataques": [
       {
         "nome": "Pseudópode",
-        "pool": "5d6 +2",
-        "dano": "2d6 +6 impacto",
+        "pool": "4d6+2 +2",
+        "dano": "1d6 +6 acido",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -18553,7 +18370,8 @@
     "pericias": {
       "prontidao": 0,
       "esquiva": 0,
-      "furtividade": 0
+      "integridade": 0,
+      "furtividade": 2
     }
   },
   {
@@ -18594,7 +18412,7 @@
     "ataques": [
       {
         "nome": "Bico",
-        "pool": "1d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −1 corte",
         "perfArma": null,
         "ticks": 5,
@@ -18682,24 +18500,24 @@
     "id": "otyugh",
     "nome": "Otyugh",
     "tipo": "soldado",
-    "categoria": "Aberração",
+    "categoria": "Fera",
     "ameaca": 3,
     "centelha": 2,
     "conceito": "aberração Grande",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Massa redonda sobre três pernas que vive enterrada no lixo de fossas e esgotos. Agarra com dois tentáculos longos, puxa para a boca e passa uma febre imunda pela mordida; quem o alimenta pode ganhar um guardião.",
     "tags": [
       "aberracao",
       "centelha"
     ],
     "pv": 46,
-    "defesa": 4,
+    "defesa": 8,
     "defesaSocial": 4,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
       "impacto": 6,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -18716,11 +18534,20 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Mordida",
         "pool": "5d6 +4",
-        "dano": "2d6 +8 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "dano": "2d6 +8 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Tentáculo",
+        "pool": "5d6 +4",
+        "dano": "1d6 +8 impacto",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -18944,7 +18771,7 @@
     "ataques": [
       {
         "nome": "Mordida do enxame",
-        "pool": "1d6 +1",
+        "pool": "2d6+2 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -19535,29 +19362,29 @@
     "id": "campeao-esqueletico",
     "nome": "Campeão Esquelético",
     "tipo": "soldado",
-    "categoria": "Morto-vivo",
+    "categoria": "Fera",
     "ameaca": 2,
     "centelha": 2,
     "conceito": "morto-vivo Médio",
-    "descricao": "Um morto que não descansa, movido por magia ou ódio.",
+    "descricao": "Guerreiro morto que guardou a técnica e a disciplina de vivo: avança atrás do escudo, à frente de uma fileira de esqueletos, e não recua.",
     "tags": [
       "morto-vivo",
       "centelha"
     ],
-    "pv": 34,
-    "defesa": 10,
-    "defesaSocial": 4,
+    "pv": 18,
+    "defesa": 15,
+    "defesaSocial": 8,
     "defesaMental": 15,
     "vontade": 7,
     "soak": {
       "impacto": 5,
-      "corte": 3,
-      "perfuracao": 3
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
-      "forca": 5,
+      "forca": 4,
       "destreza": 3,
       "vigor": 3,
       "influencia": 3,
@@ -19570,23 +19397,36 @@
     "ataques": [
       {
         "nome": "Espada longa",
-        "pool": "4d6 +4",
-        "dano": "1d6 +7 corte",
+        "pool": "3d6+2 +5",
+        "dano": "1d6 +6 corte",
         "perfArma": null,
-        "ticks": 5,
-        "notas": "luta com escudo"
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "",
     "pendente": true,
+    "vestida": {
+      "esquiva": 7,
+      "bloqueio": 16,
+      "defesa": 17,
+      "contraTiro": 16,
+      "absorcao": {
+        "impacto": 8,
+        "corte": 5,
+        "perfuracao": 3
+      },
+      "nivel": 1,
+      "penalidade": 1
+    },
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
       "integridade": 2,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "sociabilidade": 1,
+      "furtividade": 0
     }
   },
   {
@@ -19741,7 +19581,7 @@
     "ataques": [
       {
         "nome": "Bote",
-        "pool": "2d6 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −1 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -19798,7 +19638,7 @@
     "ataques": [
       {
         "nome": "Picada do enxame",
-        "pool": "1d6 +1",
+        "pool": "2d6+2 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -20380,7 +20220,7 @@
     "ataques": [
       {
         "nome": "Ferrão",
-        "pool": "3d6 +1",
+        "pool": "4d6 +1",
         "dano": "1d6 perfurante · perf. 1",
         "perfArma": 1,
         "ticks": 5,
@@ -20388,7 +20228,7 @@
       },
       {
         "nome": "Mandíbulas",
-        "pool": "3d6 +1",
+        "pool": "4d6 +1",
         "dano": "1d6 corte",
         "perfArma": null,
         "ticks": 5,
@@ -20445,7 +20285,7 @@
     "ataques": [
       {
         "nome": "Ferroada do enxame",
-        "pool": "1d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −2 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -20502,7 +20342,7 @@
     "ataques": [
       {
         "nome": "Mordida",
-        "pool": "2d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -20510,7 +20350,7 @@
       },
       {
         "nome": "Garra",
-        "pool": "2d6+2 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 corte",
         "perfArma": null,
         "ticks": 5,
@@ -20969,7 +20809,7 @@
     "ataques": [
       {
         "nome": "Garras (talões)",
-        "pool": "2d6+2 +1",
+        "pool": "3d6+2 +1",
         "dano": "1d6 corte",
         "perfArma": null,
         "ticks": 5,
@@ -20977,7 +20817,7 @@
       },
       {
         "nome": "Bico",
-        "pool": "2d6+2 +1",
+        "pool": "3d6+2 +1",
         "dano": "1d6 perfurante · perf. 0",
         "perfArma": 0,
         "ticks": 5,
@@ -21284,7 +21124,7 @@
     "ataques": [
       {
         "nome": "Bico",
-        "pool": "2d6 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −1 corte",
         "perfArma": null,
         "ticks": 5,
@@ -21292,7 +21132,7 @@
       },
       {
         "nome": "Braços e tentáculos",
-        "pool": "2d6 +1",
+        "pool": "3d6 +1",
         "dano": "1d6 −1 corte",
         "perfArma": null,
         "ticks": 5,

@@ -49,7 +49,86 @@ export function formasDaFicha(valor, variantes = []) {
   return { principal: formas[0].id, formas };
 }
 
+/**
+ * A jogada de um ataque, como a ficha a escreve na Justificativa: "Jogada: Destreza 3 + Armas 3
+ * + 2 × ...", "Jogada: Percepção 4 + Atirador 4", "Jogada: Destreza + Armas, (4 + 4)". Devolve
+ * os nomes `{ atributo, habilidade }` como estão no texto, ou `null` quando não há "Jogada:".
+ * Quem chama troca os nomes pelos ids (e para se um deles não existir).
+ */
+export function jogadaDoAtaque(texto) {
+  const t = String(texto || '');
+  const m = /Jogada:\s*([A-Za-zÀ-ú]+)(?:\s+\d+)?\s*\+\s*([A-Za-zÀ-ú][A-Za-zÀ-ú ]*?)(?=\s*(?:\d|,|\(|\+|\.|$))/.exec(t)
+    // sem "Jogada:", o Atributo com o número e a Habilidade ("ataque natural a distância: Vigor 6 + Disparo")
+    ?? /\b(Força|Destreza|Vigor|Percepção|Inteligência|Raciocínio|Influência|Perspicácia|Compostura)\s+\d+\s*\+\s*([A-ZÀ-Ú][a-zà-ú]+(?: [A-ZÀ-Ú][a-zà-ú]+)*)/.exec(t);
+  return m ? { atributo: m[1], habilidade: m[2].trim() } : null;
+}
+
+/**
+ * As Artes da Identidade (D-196): "nenhuma", ou "morte 6 · fogo 4 · gelo 4 · protecao 4" (o id
+ * ou o nome, sem caixa e sem acento, e o nível de 1 a 6). Devolve `{ <id>: nivel }` ou `null`
+ * (nenhuma, ou linha ausente). Arte que não existe em `ids`, nível fora de 1 a 6, Arte repetida
+ * ou pedaço fora do formato lançam erro.
+ */
+export function artesDaFicha(valor, ids) {
+  const txt = String(valor ?? '').replace(/\*\*/g, '').trim();
+  if (!txt || /^nenhuma\b/i.test(txt)) return null;
+  const norm = (s) => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim().replace(/\s+/g, '-');
+  const conhecidos = new Map(ids.map((id) => [norm(id), id]));
+  const out = {};
+  for (const parte of txt.split(' · ')) {
+    const m = /^(.+?)\s+(\d+)$/.exec(parte.trim());
+    if (!m) throw new Error(`Artes: "${parte.trim()}" fora do formato "<Arte> <nível>"`);
+    const id = conhecidos.get(norm(m[1]));
+    if (!id) throw new Error(`Artes: "${m[1]}" não é Arte do artes.json`);
+    const nivel = Number(m[2]);
+    if (nivel < 1 || nivel > 6) throw new Error(`Artes: "${parte.trim()}" com nível fora de 1 a 6`);
+    if (out[id] != null) throw new Error(`Artes: "${id}" repetida`);
+    out[id] = nivel;
+  }
+  return out;
+}
+
 /** A Defesa do card: o maior entre a Esquiva e o Bloqueio com a arma. */
 export function defesaComArma({ esquiva, bloqueio }, bonus) {
   return Math.max(esquiva ?? 0, (bloqueio ?? 0) + bonus);
+}
+
+/**
+ * A criatura VESTIDA (D-206), pela conta do livro (`armas-e-armaduras.md`; manual 5.2): a
+ * Penalidade da armadura sai da Esquiva e do Bloqueio, a do escudo só da Esquiva; a Defesa do
+ * escudo (`bloqCaC`) soma no Bloqueio; a Absorção da armadura soma por cima da natural, e o
+ * nível é o maior entre a Couraça e o da armadura. Contra tiro, o Bloqueio vestido só vale com
+ * escudo hábil contra projétil (mais o bônus dele); sem isso, a Esquiva vestida. A Defesa é a
+ * do card, com o bônus da arma (`defesaComArma`). `armadura` e `escudo` são os blocos
+ * `armadura`/`escudo` do armaduras.json e do escudos.json, ou null.
+ */
+export function vestidaDoLivro({ esquiva, bloqueio, absorcao, couracaNivel }, armadura, escudo, bonusArma = 0) {
+  const pa = armadura?.penalidade ?? 0, pe = escudo?.penalidade ?? 0;
+  const e = esquiva - pa - pe;
+  const b = bloqueio - pa + (escudo?.bloqCaC ?? 0);
+  const so = armadura?.soak ?? { impacto: 0, corte: 0, perfuracao: 0 };
+  const tiro = escudo?.vsProjetilRapido?.bloqueia ? Math.max(e, b + (escudo.vsProjetilRapido.bonus ?? 0)) : e;
+  return {
+    esquiva: e, bloqueio: b, defesa: defesaComArma({ esquiva: e, bloqueio: b }, bonusArma), contraTiro: tiro,
+    absorcao: { impacto: absorcao.impacto + so.impacto, corte: absorcao.corte + so.corte, perfuracao: absorcao.perfuracao + so.perfuracao },
+    nivel: Math.max(couracaNivel ?? 0, armadura?.resistPerf ?? 0),
+    penalidade: pa,
+  };
+}
+
+/**
+ * A frase vestida da linha Absorção (D-188): "Com o peitoral e o escudo heater: Esquiva **7**,
+ * Bloqueio **16**; Impacto **8**, Corte **5**, Perfuração **3** (Nível N1); Penalidade −1;
+ * contra tiro **16**". Devolve os números, ou null se a linha não tem a frase. Frase que começa
+ * e não fecha o formato lança erro. O "contra tiro" é opcional (sem escudo, a ficha não o escreve).
+ */
+export function vestidaDaFicha(texto) {
+  const t = String(texto || '');
+  const i = t.search(/\bCom (?:o|a|os|as) [^:]*:\s*Esquiva/);
+  if (i < 0) return null;
+  const f = t.slice(i).replace(/\*\*/g, '');
+  const m = /^Com (?:o|a|os|as) [^:]*:\s*Esquiva (\d+), Bloqueio (\d+); Impacto (\d+), Corte (\d+), Perfuração (\d+) \(Nível N(\d+)\); Penalidade [−-](\d+)(?:; contra tiro (\d+))?/.exec(f);
+  if (!m) throw new Error(`a frase vestida da Absorção fora do formato: "${f.slice(0, 120)}"`);
+  const n = m.slice(1).map((x) => (x == null ? null : Number(x)));
+  return { esquiva: n[0], bloqueio: n[1], absorcao: { impacto: n[2], corte: n[3], perfuracao: n[4] }, nivel: n[5], penalidade: n[6], ...(n[7] != null ? { contraTiro: n[7] } : {}) };
 }

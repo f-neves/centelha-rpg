@@ -77,7 +77,7 @@
   "ataques": [
     {
       "nome": "Bico",
-      "atrib": "forca",
+      "atrib": "destreza",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
@@ -89,7 +89,7 @@
     },
     {
       "nome": "Braços e tentáculos",
-      "atrib": "forca",
+      "atrib": "destreza",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,

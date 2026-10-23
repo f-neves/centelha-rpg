@@ -5,9 +5,10 @@
   "nome": "Vinha Assassina",
   "nomeIngles": "Assassin Vine",
   "categoria": "Planta",
+  "categoriaLegada": "Fera",
   "papel": "soldado",
   "conceito": "planta Grande",
-  "descricao": "Vegetal desperto, lento e implacável.",
+  "descricao": "Trepadeira carnívora que parece planta comum até a presa chegar perto: agarra, esmaga e deixa o corpo junto às raízes. Dizem que as mais assassinas dão os frutos mais doces.",
   "tags": [
     "planta",
     "centelha"
@@ -15,37 +16,56 @@
   "imagem": "bestiario/vinha-assassina_criatura.webp",
   "porte": "Grande",
   "dimensoes": {
-    "medida": "6 m de comprimento",
-    "peso": "cerca de 360 kg"
+    "medida": "6 m de comprimento, 1,5 m de altura",
+    "peso": "360 kg",
+    "comprimento": 6,
+    "largura": 2,
+    "altura": 1.5
   },
   "locomocao": {
     "terra": 1
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
   },
   "centelha": 1,
   "attrs": {
     "forca": 7,
     "destreza": 2,
     "vigor": 6,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 3,
     "inteligencia": 0,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
     "briga": 4,
-    "esquiva": 0,
+    "furtividade": 3,
     "prontidao": 1,
-    "integridade": 2
+    "resistencia": 3
   },
+  "skills2": {
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "parada, entre plantas",
+      "valor": 3,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 2,
+    "compaixao": 1,
+    "conviccao": 1,
     "temperanca": 1,
-    "valor": 2
+    "valor": 6
   },
-  "willpower": 6,
+  "willpower": 3,
   "aparencia": 3,
   "ataques": [
     {
@@ -55,9 +75,8 @@
       "dado": 2,
       "mao": 1,
       "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 6,
-      "notas": "acerto agarra e constringe o alvo"
+      "ticks": 7,
+      "classe": "pesada"
     }
   ],
   "fraquezas": [],
@@ -66,26 +85,38 @@
     "gelo",
     "perfuracao"
   ],
+  "imunidades": [
+    "raio"
+  ],
   "habilidades": [
     {
-      "nome": "Camuflagem",
-      "descricao": "Parada, a trepadeira-assassina parece uma planta comum; só um observador muito atento nota o perigo antes do primeiro ataque."
-    },
-    {
-      "nome": "Emaranhar",
-      "descricao": "Faz plantas próximas despertarem e se agarrarem aos pés de quem estiver ao redor, dificultando a fuga."
+      "nome": "Vinha que agarra",
+      "descricao": "Vinha constritora: Ativação: a Vinha constritora que acerta. Duração: até o alvo se soltar ou a vinha soltar. Alcance: 3 m. Área: um alvo. Efeito: o acerto já agarra, sem jogada de Agarrar; o alvo fica Agarrado e é puxado para junto do caule. Dano: o da Vinha. Resistência: corpo, para escapar, pela jogada de Agarrar do livro contra a Força 7 + Briga 4 dela. Limite de uso: um alvo agarrado por vez.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Constrição",
-      "descricao": "Envolve a vítima em seus caules lenhosos e a esmaga lentamente enquanto a mantém presa."
+      "descricao": "Vinha constritora: Ativação: a cada 6 Ticks em que mantém o agarrão. Duração: enquanto agarra. Alcance: 3 m. Área: quem está agarrado. Efeito: esmaga sem nova jogada de ataque. Dano: 1d6 + Força + Centelha, Impacto. Resistência: nenhum; quem se solta para de sofrer. Limite de uso: um alvo por vez.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Sentidos Sem Olhos",
-      "descricao": "Percebe movimento e calor ao redor mesmo sem ter olhos, através de suas folhas sensíveis."
+      "nome": "Emaranhar",
+      "descricao": "poder natural (base Vida 2): Ativação: uma ação, Velocidade 7. Duração: até o fim da cena, ou até a vinha morrer. Alcance: 9 m em volta. Área: círculo de 9 m de raio em volta do caule. Efeito: as plantas do chão se agitam e prendem os pés; quem falha fica Imobilizado até gastar uma ação e passar Força + Atletismo, Dificuldade 15; quem passa anda pela metade do deslocamento dentro da área. Dano: nenhum. Resistência: esquiva, contra Raciocínio + Briga da vinha. Limite de uso: uma vez a cada 24 Ticks.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Resistências Naturais",
-      "descricao": "É imune a eletricidade e resiste bem a frio e fogo."
+      "nome": "camuflagem",
+      "descricao": "Furtividade, com a Especialidade natural (parada, entre plantas) +3.",
+      "classe": "livro"
+    },
+    {
+      "nome": "espera e esmaga",
+      "descricao": "fica imóvel até a presa entrar no alcance; agarra a primeira, prende as outras com o Emaranhar e esmaga uma por vez; quando a presa sai do alcance, volta a ficar quieta.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "sem olhos: sente movimento e calor pelas folhas a até 9 m, inclusive no escuro."
     }
   ],
   "lore": [
@@ -100,6 +131,14 @@
     {
       "titulo": "Curiosidade",
       "texto": "Produz frutinhas escuras e amargas, alimentadas pelo que a planta compostou; dizem que as trepadeiras mais assassinas dão os frutos mais doces."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: sozinha."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande e enraizada: não sai do lugar e é fácil de acertar (Esquiva e Bloqueio 4), mas só se nota de perto. Agarra no acerto até 3 m (dano médio 15) e esmaga a cada 6 Ticks; prende os pés de quem está a 9 m. Fogo, gelo e flecha fazem metade; raio não a fere. 54 PV, Impacto 7. Sem mente: medo e conversa não servem."
     }
   ],
   "ecologia": {
@@ -137,24 +176,34 @@
   },
   "variantes": [],
   "ameacaLegada": 3,
-  "imunidades": [
-    "raio"
-  ],
-  "poderes": [
-    {
-      "id": "emaranhar",
-      "nome": "Emaranhar",
-      "tipo": "natural",
-      "base": {
-        "arte": "vida",
-        "nivel": 2
-      },
-      "resiste": "esquiva",
-      "efeito": "vinhas ao redor prendem quem estiver numa área, dificultando o movimento",
-      "descricao": "Vinhas do chão ao redor da planta se agitam e prendem quem estiver por perto, tornando difícil sair do lugar sem se debater.",
-      "usos": {
-        "periodo": "golpe"
+  "v3": {
+    "pv": 54,
+    "esquiva": 4,
+    "bloqueio": 4,
+    "defesa": 4,
+    "defesaMental": null,
+    "defesaSocial": null,
+    "absorcao": {
+      "impacto": 7,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 699.83,
+    "deslocamento": {
+      "terra": {
+        "batalha": 1,
+        "arranque": 2,
+        "corrida": 2
       }
     }
+  },
+  "notasObservacao": [
+    "`atributos sociais`, `vontade`, `virtudes`, `integridade`: pela exceção da Inteligência 0 (D-186)",
+    "`altura`, `largura`, `area`: a moita erguida, estimada **[extrapolação]**",
+    "`alcance`: 3 m na vinha **[provisório]**",
+    "`couraca`: nível 1 pelo caule lenhoso **[provisório]**",
+    "`musculatura`: 2 **[provisório]**",
+    "`vinha que agarra`, `constrição`, `emaranhar`: números sugeridos pela ficha (D-197)"
   ]
 }

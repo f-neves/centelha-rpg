@@ -7,7 +7,7 @@
   "categoriaLegada": "Conjurador",
   "papel": "elite",
   "conceito": "conjurador iniciante",
-  "descricao": "Frágil no corpo a corpo, perigoso à distância com fogo.",
+  "descricao": "Conjurador iniciante, frágil de perto e perigoso de longe: abre distância e lança dardos de fogo antes que o inimigo o alcance.",
   "tags": [
     "humano",
     "centelha",
@@ -17,77 +17,120 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,68 m de altura",
-    "peso": "60 kg"
+    "peso": "60 kg",
+    "largura": 0.42,
+    "altura": 1.68
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 1,
   "attrs": {
     "forca": 2,
     "destreza": 3,
     "vigor": 2,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 4,
     "inteligencia": 4,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
-    "ocultismo": 3,
     "esquiva": 2,
+    "atletismo": 1,
+    "furtividade": 1,
+    "integridade": 5,
+    "ocultismo": 3,
     "prontidao": 2,
-    "integridade": 5
+    "sociabilidade": 1,
+    "empatia": 1
   },
   "skills2": {
     "acerto-arcano": 3
   },
+  "especialidades": [
+    {
+      "habilidade": "ocultismo",
+      "foco": "a Centelha",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 2,
-    "conviccao": 3,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
   "willpower": 6,
   "aparencia": 4,
+  "ataques": [
+    {
+      "nome": "Soco",
+      "atrib": "destreza",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "arte": {
     "fogo": 2
   },
-  "ataques": [
-    {
-      "nome": "Dardo flamejante (Fogo 1)",
-      "atrib": "percepcao",
-      "pericia": "acerto-arcano",
-      "dado": 1,
-      "distancia": true,
-      "tipo": "fogo",
-      "ticks": 6,
-      "notas": "Custa 1 Mana; resistido por Absorção/Esquiva"
-    }
-  ],
+  "mana": 8,
   "habilidades": [
     {
-      "nome": "Reserva de Mana",
-      "descricao": "Mana = Centelha×2 + Vontade, total 8"
+      "nome": "dardo flamejante",
+      "descricao": "Arte Fogo 1: Faísca, dardo flamejante de 1d6 num alvo a 1 m, por 1 Mana.",
+      "classe": "livro"
     },
     {
-      "nome": "Labareda",
-      "descricao": "magia nível 2, 2d6 de dano à distância, custa 2 Mana"
+      "nome": "chama que gruda",
+      "descricao": "Arte Fogo 2: Chama Aderente, dardo de fogo de 1d6 que gruda e queima por mais de 6 Ticks e acende à distância, por 2 Mana.",
+      "classe": "livro"
     },
     {
-      "nome": "Frágil no corpo a corpo",
-      "descricao": "Defesa e Absorção baixas, evita combate direto"
+      "nome": "acende e apaga",
+      "descricao": "Arte Fogo 1: acende ou apaga uma tocha com a mão, esquenta o corpo numa noite fria.",
+      "classe": "livro"
     },
     {
-      "nome": "Mantém distância",
-      "descricao": "reposiciona para conjurar fora do alcance do inimigo"
+      "nome": "mantém distância",
+      "descricao": "abre distância antes de conjurar e se reposiciona fora do alcance do inimigo; com 8 de Mana, conjura de quatro a oito vezes por cena.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "frágil no corpo a corpo",
+      "descricao": "Bloqueio 6, 31 PV e Absorção baixa; se alguém o alcança, foge ou se rende.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sem inimizades naturais",
+      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um humano."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Evita o corpo a corpo, onde é frágil, e prefere abrir distância para golpear com fogo antes que o inimigo chegue perto."
+      "texto": "Evita o corpo a corpo, onde é frágil, e prefere abrir distância para golpear com fogo antes que o inimigo chegue perto. Social: sozinho ou com um grupo pequeno que o protege."
     },
     {
       "titulo": "Personalidade",
@@ -96,6 +139,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "É exatamente o tipo de figura que a Supressão ensinou o povo a temer: um conjurador iniciante, tocado por um poder que as igrejas ortodoxas de Calin chamam de herança da Tecelã e pregam contra."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, humano. De longe, lança um dardo de fogo de 1d6 por 1 Mana ou um que gruda e segue queimando por 2 Mana; tem 8 de Mana, então quatro a oito disparos por cena. De perto é fácil: Esquiva 12, Bloqueio 6, 31 PV, Impacto 3, Corte e Perfuração 1. Defesa Mental 15: a mente treinada resiste melhor que o corpo. Foge ou se rende quando alcançado."
     }
   ],
   "ecologia": {
@@ -118,5 +165,33 @@
     "crConf": "estimado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 31,
+    "esquiva": 12,
+    "bloqueio": 6,
+    "defesa": 12,
+    "defesaMental": 15,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 3,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 91.85,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    }
+  },
+  "notasObservacao": [
+    "`artes`: Fogo 2 pela C-043. O teto Centelha + 2 é, pela C-043, só da bancada, e o conferidor o confere; aqui não pesa, porque 2 fica abaixo de 3",
+    "`Artes`: fora da tabela de Ataques (D-196); a jogada da Arte depende do efeito e segue as regras das Artes do livro",
+    "`integridade`: 5, a do site, alta para um iniciante; fica como referência de jogo",
+    "`massa`: 60 kg, a do site, um pouco abaixo do corpo de base escalado (65 kg), pelo \"franzino\""
+  ]
 }

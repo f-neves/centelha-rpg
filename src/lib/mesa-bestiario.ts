@@ -18,7 +18,7 @@ import { sparkSVG } from './centelha-spark';
 import { d6 } from './rolagem';
 import { qaDaPeca, type QACombate } from './quase-acerto';
 import { imagemDe, escolhaDe } from './imagem-escolhida';
-export { imagemDe, alternarImagem } from './imagem-escolhida';
+export { imagemDe, alternarImagem } from './imagem-escolhida'; import { escolhaDe as escolhaVestidaDe, combateNaEscolha, poolComPenalidade, alternarVestida as alternarVestidaAqui } from './defesa-vestida'; /** D-206: a Defesa do OUTRO estado (a que a mesa não usa agora), para listas que mostram as duas; null sem equipamento. */ export const defesaOutraDe = (id: string): number | null => { const cb = MON[id]?.combate; const e = escolhaVestidaDe(id, cb); return e == null ? null : e === 'com' ? cb.defesa : cb.vestida.defesa; }; /** D-206: a Defesa que a mesa usa para a criatura, pela escolha deste aparelho. */ export const defesaNaMesaDe = (id: string): number | null => combateNaEscolha(MON[id]?.combate || {}, escolhaVestidaDe(id, MON[id]?.combate)).defesa ?? null; export { alternarVestida } from './defesa-vestida';
 
 
 export const MONSTROS = monstersData as any[];
@@ -203,7 +203,7 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
     } catch { return null; }
   }
   if (c.tipo === 'criatura') {
-    const cb = MON[c.monstro_id]?.combate || {};
+    const cb = combateNaEscolha(MON[c.monstro_id]?.combate || {}, escolhaVestidaDe(c.monstro_id, MON[c.monstro_id]?.combate)); // D-206: com ou sem o equipamento, pela escolha do Mestre (defesa-vestida.ts)
     const a0 = (cb.ataques || [])[0];
     const ab = cb.absorcao;
     return {
@@ -333,15 +333,15 @@ export function cardCriaturaHTML(m: any): string {
     : `<figure class="arte sem-arte"><span class="capitular cinzel">${esc((m.nome || '?').trim()[0])}</span><span class="arte-ameaca">${estrelas(m.ameaca)}</span></figure>`;
   const badges = `${m.categoria ? `<span class="badge cat">${esc(m.categoria)}</span>` : ''}${(m.ecologia?.terreno || []).map((t: string) => `<span class="badge terr">${esc(ECO_TERR[t] || t)}</span>`).join('')}${(m.ecologia?.clima || []).map((c: string) => `<span class="badge clima">${esc(ECO_CLIMA[c] || c)}</span>`).join('')}`;
   const porte = m.porte ? `<p class="besta-porte"><span class="pt-lbl">Tamanho</span><span class="pt-cat">${esc(m.porte)}</span><span class="pt-sep">·</span>${esc(m.dimensoes?.medida || '')}<span class="pt-sep">·</span>${esc(m.dimensoes?.peso || '')}</p>` : '';
-  const abs = cb.absorcao ? `${cb.absorcao.impacto}/${cb.absorcao.corte}/${cb.absorcao.perfuracao}${cb.resistenciaPerfuracao ? `·N${cb.resistenciaPerfuracao}` : ''}` : '-';
+  const fAbs = (a: any, n: number) => `${a.impacto}/${a.corte}/${a.perfuracao}${n ? `·N${n}` : ''}`; const vEsc = escolhaVestidaDe(m.id, cb); const vMarca = (x: any, sim: boolean) => (sim ? `<b>${x}</b>` : `${x}`); const abs = cb.absorcao ? (cb.vestida ? `${vMarca(fAbs(cb.absorcao, cb.resistenciaPerfuracao), vEsc === 'sem')} · ${vMarca(fAbs(cb.vestida.absorcao, cb.vestida.nivel), vEsc === 'com')} <small>c/ equip.</small>` : fAbs(cb.absorcao, cb.resistenciaPerfuracao)) : '-'; // D-206: as duas, a da mesa em negrito
   const stat = (dt: string, dd: any) => `<div><dt>${dt}</dt><dd>${dd ?? '-'}</dd></div>`;
-  const stats = `<dl class="besta-stats">${stat('PV', cb.pv)}${stat('Defesa', cb.defesa)}${stat('Def. Social', cb.defesaSocial)}${stat('Def. Mental', cb.defesaMental)}${stat('Absorção', abs)}${stat('Iniciativa', esc(cb.iniciativa || '-'))}</dl>`;
+  const stats = `<dl class="besta-stats">${stat('PV', cb.pv)}${stat('Defesa', cb.vestida ? `${vMarca(cb.defesa, vEsc === 'sem')} · ${vMarca(cb.vestida.defesa, vEsc === 'com')} <small>c/ equip.</small>` : cb.defesa)}${stat('Def. Social', cb.defesaSocial)}${stat('Def. Mental', cb.defesaMental)}${stat('Absorção', abs)}${stat('Iniciativa', esc(cb.iniciativa || '-'))}</dl>${cb.vestida ? `<p class="ib-ref besta-vestida"><b>Com o equipamento:</b> Esquiva ${cb.vestida.esquiva}, Bloqueio ${cb.vestida.bloqueio}, contra tiro ${cb.vestida.contraTiro}, Penalidade −${cb.vestida.penalidade}. <button type="button" class="btn-mini" data-vestida="${esc(m.id)}" title="A escolha do Mestre fica só neste aparelho (D-206)">A mesa usa: ${vEsc === 'com' ? 'com' : 'sem'} o equipamento · trocar</button></p>` : ''}`;
   const atrib = m.atributos ? `<div class="besta-atrib"><span class="atr-lbl">Atributos</span><div class="atr-grid">${ATR.map(([k, full]) => `<span class="atr"><span class="atr-nm">${full}</span><span class="atr-v">${m.atributos[k] ?? 0}</span></span>`).join('')}</div></div>` : '';
   const tracos = m.virtudes ? `<div class="besta-tracos"><div class="tr-linha"><span class="tr"><span class="tr-nm">Vontade</span><span class="tr-v">${m.vontade ?? '-'}</span></span><span class="tr"><span class="tr-nm">Aparência</span><span class="tr-v">${m.aparencia ?? '-'} <small class="tr-mod">(${apMod(m.aparencia) >= 0 ? '+' : ''}${apMod(m.aparencia)})</small></span></span></div><div class="tr-virt"><span class="tr-nm">Virtudes</span><span class="tr-vv">Comp ${m.virtudes.compaixao} · Conv ${m.virtudes.conviccao} · Temp ${m.virtudes.temperanca} · Val ${m.virtudes.valor}</span></div></div>` : '';
   const { fraquezas: elFraq, resistencias: elRes, imunidades: elImu } = elementosCombate(m);
   const elem = (elFraq.length || elRes.length || elImu.length)
     ? `<div class="besta-elem">${elFraq.map((f: string) => `<span class="el el-fraco" title="Fraqueza">▼ ${esc(f)}</span>`).join('')}${elRes.map((r: string) => `<span class="el el-forte" title="Resistência">▲ ${esc(r)}</span>`).join('')}${elImu.map((i: string) => `<span class="el el-imune" title="Imunidade">◆ ${esc(i)}</span>`).join('')}</div>` : '';
-  const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: <b>${esc(a.pool)}</b> · Dano <b>${fmtDano(esc(a.dano))}</b> · Velocidade ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
+  const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: ${cb.vestida ? `${vMarca(esc(a.pool), vEsc === 'sem')} sem o equipamento · ${vMarca(esc(poolComPenalidade(a.pool, cb.vestida.penalidade)), vEsc === 'com')} com` : `<b>${esc(a.pool)}</b>`} · Dano <b>${fmtDano(esc(a.dano))}</b> · Velocidade ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
   const habs = (m.habilidades || []).length ? `<h4 class="cc-h">Habilidades</h4><ul class="ib-hab">${m.habilidades.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}</li>`).join('')}</ul>` : '';
   const pods = (m.poderes || []).length ? `<h4 class="cc-h">Poderes <span class="muted">(sistema)</span></h4><ul class="ib-pod">${m.poderes.map((p: any) => p.id
     ? `<li><span class="pw-ef">${esc(p.nome)}</span> → <span class="pw-alvo">${esc(p.efeito)}${p.resiste !== 'nenhum' ? ` (resiste ${esc(p.resiste)})` : ''}</span></li>`
@@ -372,4 +372,20 @@ export function cardCriaturaHTML(m: any): string {
     ${porte}${m.descricao ? `<p class="besta-con muted">${esc(m.descricao)}</p>` : ''}
     ${stats}${elem}${atrib}${tracos}${atk}${habs}${pods}${refs}${notas}${lore}
   </div></article>`;
+}
+
+// D-206: o botão "A mesa usa: ... · trocar" do card (abas Criaturas e Combate, e o Grid). Um
+// ouvinte só, aqui, para as três: troca a escolha (só neste aparelho, defesa-vestida.ts),
+// redesenha o card aberto e avisa a página (`centelha:vestida`), para o Grid refazer o resumo
+// das peças dessa criatura. Nada vai ao banco.
+if (typeof document !== 'undefined') {
+  document.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement | null)?.closest?.('[data-vestida]') as HTMLElement | null;
+    const m = b && MON[b.dataset.vestida || ''];
+    if (!b || !m) return;
+    alternarVestidaAqui(m.id, m.combate);
+    const corpo = b.closest('#card-modal-body') as HTMLElement | null;
+    if (corpo) criaturaCompleta(m.id).then((cheia) => { corpo.innerHTML = cardCriaturaHTML(cheia || m); });
+    window.dispatchEvent(new CustomEvent('centelha:vestida', { detail: { id: m.id } }));
+  });
 }

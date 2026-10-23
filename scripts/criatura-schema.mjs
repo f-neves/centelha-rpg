@@ -41,7 +41,7 @@ export const ataqueSchema = z.object({
   danoBonus: inteiro.optional(),
   /** `false`: o golpe não soma a Força (o bico do falcão-peregrino). */
   forca: z.literal(false).optional(),
-  classe: z.enum(['leve', 'media', 'pesada']).optional(),
+  classe: z.enum(['leve', 'media', 'haste', 'pesada', 'distancia', 'arremesso']).optional(), // as seis do armas.json
 }).strict();
 
 /** Poder natural: o dom da própria criatura (B14 fase 2, item A.2). NÃO passa pelo
@@ -153,6 +153,8 @@ export const criaturaSchema = z.object({
   willpower: naoNeg,
   aparencia: inteiro,
   arte: z.record(z.string(), z.number().int().min(1).max(6)).optional(),
+  /** A Mana da ficha (D-196), só em quem tem Artes. */
+  mana: z.number().int().nonnegative().optional(),
   tech: z.record(z.string(), z.boolean()).optional(),
   conjuntos: z.array(conjuntoSchema).optional(),
   equip: equipSchema.optional(),
@@ -230,19 +232,19 @@ export const criaturaSchema = z.object({
     bloqueioArma: naoNeg.optional(),
     /** o maior entre Esquiva e Bloqueio (com a arma), que é a Defesa do card (manual §5.2, item 7) */
     defesa: naoNeg,
-    defesaMental: naoNeg,
-    defesaSocial: naoNeg,
+    defesaMental: naoNeg.nullable(), // null: "imune" na ficha (Inteligência 0)
+    defesaSocial: naoNeg.nullable(),
     /** Corte e Perfuração levam o valor do Impacto: a Couraça fica fora da Absorção
      *  até o autor decidir o valor dos níveis (manual, linha 102). */
     absorcao: z.object({ impacto: naoNeg, corte: naoNeg, perfuracao: naoNeg }).strict(),
     couracaNivel: naoNeg,
-    pesoErguido: z.number().nonnegative(),
+    pesoErguido: z.number().nonnegative().nullable(), // null: "não ergue" na ficha (o incorpóreo)
     carga: z.object({ leve: z.number(), media: z.number(), pesada: z.number(), maxima: z.number() }).strict().optional(),
     deslocamento: z.object({
       terra: z.object({ batalha: naoNeg, arranque: naoNeg, corrida: naoNeg }).strict().optional(),
-      voo: z.object({ batalha: naoNeg, cruzeiro: naoNeg.optional(), mergulho: naoNeg.optional() }).strict().optional(),
-      nado: naoNeg.optional(),
-    }).strict(),
+      voo: z.object({ batalha: naoNeg, arranque: naoNeg.optional(), corrida: naoNeg.optional(), cruzeiro: naoNeg.optional(), mergulho: naoNeg.optional() }).strict().optional(),
+      nado: naoNeg.or(z.object({ batalha: naoNeg, arranque: naoNeg, corrida: naoNeg }).strict()).optional(),
+    }).strict(), /** D-206: a criatura vestida (o Equipamento da ficha pela conta do livro); só quem veste armadura ou escudo */ vestida: z.object({ esquiva: z.number().int(), bloqueio: z.number().int(), defesa: naoNeg, contraTiro: z.number().int(), absorcao: z.object({ impacto: naoNeg, corte: naoNeg, perfuracao: naoNeg }).strict(), nivel: naoNeg, penalidade: naoNeg }).strict().optional(),
   }).strict().optional(),
   /** Batalha, Arranque e Corrida congelados na ficha (o gen-monsters.mjs já lê). */
   deslocamentoDeclarado: z.object({ batalha: velocidade, arranque: velocidade, corrida: z.number().int().min(1).max(40) }).strict().optional(),

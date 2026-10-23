@@ -111,7 +111,7 @@ function build(c) {
       defesaSocial: c.defesaSocial,
       defesaMental: c.defesaMental,
       absorcao: { impacto: c.soak.impacto, corte: c.soak.corte, perfuracao: c.soak.perfuracao },
-      resistenciaPerfuracao: c.resistPerf || 0,
+      resistenciaPerfuracao: c.resistPerf || 0, ...(c.vestida ? { vestida: c.vestida } : {}), // D-206: com o equipamento; a mesa escolhe (defesa-vestida.ts)
       // Fraqueza e resistência a elemento, tipo de dano ou natureza. A maioria das
       // criaturas não tem nenhuma, então os campos só aparecem em quem tem.
       ...(elem.fraquezas.length ? { fraquezas: elem.fraquezas } : {}),
@@ -147,7 +147,7 @@ function build(c) {
     // agora só alimentava `passoDaPeca` por baixo dos panos.
     ...(f.locomocao && Object.keys(f.locomocao).length ? { locomocao: f.locomocao } : {}),
     tecnicas: c.tecnicas || [],
-    artes: (c.artes || []).map((a) => ({ id: a.id && a.id.id ? a.id.id : a.id, nivel: a.nivel })),
+    artes: (c.artes || []).map((a) => ({ id: a.id && a.id.id ? a.id.id : a.id, nivel: a.nivel })), ...(f.mana != null ? { mana: f.mana } : {}), // a Mana da ficha (D-196)
     notas: c.notas || '',
     lore: (f.lore || []).map((s) => ({ titulo: s.titulo, texto: s.texto })),
   };
@@ -263,7 +263,7 @@ const FORA_DA_MESA = {
   lore: 'prosa do card (24%)',
   poderes: 'prosa do card',
   notas: 'caderno do mestre; não desce nem para a aba, quanto mais para o pacote',
-  pendente: 'marca de trabalho do bestiário, não é dado de jogo',
+  pendente: 'marca de trabalho do bestiário, não é dado de jogo', mana: 'a Mana da ficha (D-196) só aparece no card; a mesa ainda não lê Mana de criatura, e levá-la ao Grid é decisão da frente da mesa',
   tags: 'usadas no editor e na busca do bestiário, não no tabuleiro',
   // O Grid anda pelo passo único de `combate.deslocamento` (já derivado, já em
   // CAMPOS_MESA); isto é só o detalhe por modo que o card mostra (B14 fase 4,

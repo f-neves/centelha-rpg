@@ -88,7 +88,7 @@
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
+      "atrib": "destreza",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,

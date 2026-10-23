@@ -8,7 +8,7 @@
   "categoriaLegada": "Demônio",
   "papel": "chefe",
   "conceito": "exterior Grande (demônio)",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
+  "descricao": "Demônio em forma de sapo gigante, brutal e direto, envolto num fedor que derruba o estômago de quem chega perto. Serve de músculo nas hostes demoníacas: forte demais para bucha de canhão, sem cabeça para comandar.",
   "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
   "tags": [
     "demonio",
@@ -19,105 +19,167 @@
   "porte": "Grande",
   "dimensoes": {
     "medida": "3 m de altura",
-    "peso": "320 kg"
+    "peso": "621 kg",
+    "largura": 1.05,
+    "altura": 3
   },
   "locomocao": {
     "terra": 3,
     "natacao": 3
   },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+  },
   "centelha": 5,
   "attrs": {
     "forca": 9,
-    "destreza": 4,
+    "destreza": 3,
     "vigor": 9,
-    "influencia": 5,
-    "perspicacia": 5,
-    "compostura": 5,
-    "percepcao": 5,
-    "inteligencia": 4,
-    "raciocinio": 4
+    "percepcao": 4,
+    "inteligencia": 2,
+    "raciocinio": 3,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 2
   },
   "skills": {
     "briga": 5,
+    "bloqueio": 2,
     "esquiva": 1,
-    "prontidao": 2,
-    "integridade": 5
+    "atletismo": 3,
+    "integridade": 4,
+    "prontidao": 4,
+    "resistencia": 5,
+    "empatia": 1,
+    "sociabilidade": 1,
+    "sobrevivencia": 2,
+    "ocultismo": 2
   },
+  "skills2": {
+    "natacao": 3,
+    "intimidacao": 3,
+    "escalada": 1,
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "resistencia",
+      "foco": "doença e podridão",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "agarrar",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "faro",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 5,
+    "compaixao": 1,
+    "conviccao": 1,
     "temperanca": 1,
     "valor": 6
   },
-  "willpower": 10,
+  "willpower": 8,
   "aparencia": 0,
-  "arte": {
-    "vento": 2,
-    "espirito": 4
-  },
   "ataques": [
     {
-      "nome": "Golpe planar",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 1,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Garras",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
       "mao": 1,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 6
-    }
-  ],
-  "poderes": [
-    {
-      "id": "fedor-nauseante",
-      "nome": "Fedor nauseante",
-      "tipo": "natural",
-      "base": {
-        "arte": "vento",
-        "nivel": 2
-      },
-      "resiste": "corpo",
-      "efeito": "Resiste ao entrar, 1 vez por cena.",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
-      }
+      "ticks": 6,
+      "classe": "media"
     }
   ],
   "fraquezas": [
     "luz",
     "sagrado"
   ],
+  "resistencias": [
+    "fogo",
+    "gelo",
+    "raio",
+    "acido"
+  ],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Fedor nauseante",
-      "descricao": "aura de 6m; falha em Fortitude = Enjoado enquanto permanecer perto"
+      "nome": "agarrar",
+      "descricao": "Mordida ou Garras: Agarrar.",
+      "classe": "livro"
     },
     {
-      "nome": "Mordida e garras",
-      "descricao": "ataque corpo a corpo; crítico permite Agarrar o alvo"
+      "nome": "agarra no golpe forte",
+      "descricao": "quando a mordida ou as garras acertam com folga, a presa já fica Agarrada, sem a manobra à parte.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Convocar",
-      "descricao": "feitiçaria, 1x por cena; traz outro demônio para reforçar a luta"
+      "nome": "arrombar",
+      "descricao": "Força 9 e o Peso erguido contra portas, grades e objetos.",
+      "classe": "livro"
     },
     {
-      "nome": "Corpo maciço",
-      "descricao": "Absorção alta e força suficiente para arrombar portas e objetos"
+      "nome": "fedor nauseante",
+      "descricao": "um fedor em volta dele, de uns 6 m. Quem entra resiste uma vez por cena com Vigor + Resistência; quem falha fica enjoado enquanto ficar perto.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Teleporte",
-      "descricao": "feitiçaria, 1x por cena; desloca-se instantaneamente, podendo levar um alvo Agarrado"
+      "nome": "medonho",
+      "descricao": "quem vê o hezrou pela primeira vez sente repulsa e medo; o estômago vira, e o corpo quer recuar antes de qualquer golpe.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Sangue abissal",
-      "descricao": "resistente a fogo, frio, ácido e eletricidade"
+      "nome": "convocar",
+      "descricao": "uma vez por cena, por feitiçaria, traz outro demônio para reforçar a luta.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "teleporte",
+      "descricao": "uma vez por cena, por feitiçaria, some e reaparece em outro lugar, e pode levar junto quem estiver agarrando.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "sangue abissal",
+      "descricao": "resistência a Fogo, Gelo, Raio e Ácido (metade do dano).",
+      "classe": "livro"
+    },
+    {
+      "nome": "brutal",
+      "descricao": "sem tática nem paciência, avança sobre o mais próximo e morde, rasga e agarra; arrasa vilarejos antes que um exército chegue.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "faro: Prontidão (faro) 1: acha presa pelo cheiro de medo e de sangue. · visão e audição: de demônio, sem nada além do que a Percepção 4 já dá."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Brutal e direto, ataca com força bruta e mordidas, envolto no próprio fedor nauseante, sem tática nem paciência, apenas fome de destruição."
+      "texto": "Brutal e direto, ataca com força bruta e mordidas, envolto no próprio fedor nauseante, sem tática nem paciência, apenas fome de destruição. Social: sozinho ou em grupo de demônios (2 a 4), sob o comando de outro."
     },
     {
       "titulo": "Hábitos",
@@ -130,6 +192,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Onde a Fenda vaza mais fundo, sacerdotes contam de sapos gigantes fedorentos que arrasam vilarejos inteiros antes de qualquer exército conseguir reagir."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande: o humano ganha +3 no acerto contra ele. Morde ou rasga com dano médio 17,5 e agarra; com Força 9 e Centelha 5, nenhum humano de Força 4 ou menos e Centelha abaixo de 5 consegue aparar o golpe dele. Esquiva 10, Bloqueio 14, Defesa Mental 23, Defesa Social 8 (a conversa o engana mais que a magia). Absorção natural 14 contra pancada e 5 contra lâmina e ponta; fogo, frio, raio e ácido fazem metade; luz e golpe sagrado passam toda a Absorção. 66 PV. O fedor enjoa quem chega perto, e uma vez por cena ele some e reaparece em outro lugar ou traz outro demônio."
     }
   ],
   "ecologia": {
@@ -168,5 +234,38 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "v3": {
+    "pv": 66,
+    "esquiva": 10,
+    "bloqueio": 14,
+    "defesa": 14,
+    "defesaMental": 23,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 14,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "couracaNivel": 4,
+    "pesoErguido": 1240.89,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      },
+      "nado": 3
+    }
+  },
+  "notasObservacao": [
+    "`massa`: 621 kg pelo corpo de base da D-192 (1,80 m, 80 kg, 0,079 m³) e pela densidade do manual, escolhida contra os 320 kg do site pela D-187 (caso a caso, com justificativa na ficha): o publicado fica fora de qualquer conta pelo volume. O alargamento (40% e 20%) é julgamento; com o corpo de proporção humana daria 369 kg. Com o corpo de base de 1,75 m (D-190) eram 633 kg, e no lote 1, pelo soldado, 653 kg. O Peso erguido passou de 1.239,10 para 1.240,89 kg; a largura e o Espaço, de 1,13 × 0,61 m (o soldado escalado) para 1,05 × 0,46 m (os ombros e o tronco do boneco, sem os braços). A área (2,80 m²), a Faixa, a linha de PV e o Tamanho não mudam **[extrapolação]**",
+    "`centelha`: 5, a publicada; o texto põe o hezrou como músculo, abaixo de quem comanda. Se o autor rever, a Centelha mexe em todo o dano, nas Defesas e na Absorção **[provisório]**",
+    "`artes`: o site tinha `arte: vento 2, espirito 4` e um poder natural \"fedor nauseante\" com base Vento 2. Pela C-037 a Arte com Mana é só da lista de conjuradores (dragões, Lich, Couatl, Ninfa, Planetar, Solar, Ghaele, Rakshasa, Naga); o resto vira poder natural, \"com base e nível mantidos como parâmetro\". A ficha não tem Mana e guarda Vento 2 (fedor) e Espírito 4 (convocar e teleporte, ao que parece) só como parâmetro aqui **[provisório]**",
+    "`inteligencia` e sociais: descem pelo texto do site; o Pathfinder tem Int 14 e Car 18 **[provisório]**",
+    "`couracaNivel`: 4, como o rinoceronte; a pele de demônio não tem referência na escala **[provisório]**",
+    "`aparencia`: 0 é o piso da régua, e não \"abaixo de 0\"; a linha medonho foi acrescentada pela D-181, sem estar na ficha publicada (o LEIA-ME do lote pede o teste). O efeito em quem olha (repulsa e medo) é descrição, sem número **[provisório]**",
+    "`fedor`: a resistência por Vigor + Resistência é a do livro para o que invade o corpo (`aparencia-virtudes-vontade.md`); o enjoo não tem condição no livro (`condicoes.json` não tem \"Enjoado\")",
+    "conferidor: desde a oitava atualização do pacote (22/10/2026) o `confere_etapa2.py` confere Impacto = Vigor + Centelha e Corte e Perfuração = Centelha; a linha de Absorção (Impacto 14, Corte e Perfuração 5) passa sem mudança"
+  ]
 }

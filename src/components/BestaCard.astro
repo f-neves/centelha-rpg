@@ -14,7 +14,7 @@
  */
 import CentelhaSpark from './CentelhaSpark.astro';
 import { url } from '../lib/site';
-import { loadData } from '../lib/data';
+import { loadData } from '../lib/data'; import { poolComPenalidade } from '../lib/defesa-vestida';
 
 interface Props { i: any }
 const { i } = Astro.props;
@@ -44,7 +44,9 @@ const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
 // ataque: "7d6+2 +8" → "7d6 +2 +8"; dano: tipo por extenso → sigla (I)/(C)/(P)
 const DANO_AB: Record<string, string> = { impacto: '(I)', corte: '(C)', perfurante: '(P)' };
 const fmtPool = (s: string) => String(s || '').replace(/(\d+d6)\+/, '$1 +');
-const fmtDano = (s: string) => String(s || '').replace(/\b(impacto|corte|perfurante)\b/g, (m) => DANO_AB[m]);
+// o Tipo fora dos três (manual §5.2, item 8): "fenômeno" e a palavra do vocabulário, pelo rótulo ("Ácido", "Fogo")
+const fmtDano = (s: string) => String(s || '').replace(/\b(impacto|corte|perfurante)\b/g, (m) => DANO_AB[m])
+  .replace(/\b(fenomeno|[a-z]+)$/, (m) => (m === 'fenomeno' ? 'fenômeno' : ELEM[m] ?? m));
 // Locomoção (B14 fase 4, Adendo 3 item 5): só os modos que a criatura tem, m/Tick.
 const LOCO: [string, string][] = [
   ['terra', 'Terra'], ['voo', 'Voo'], ['natacao', 'Natação'],
@@ -129,12 +131,12 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
 
           <dl class="besta-stats">
             <div><dt>PV</dt><dd>{i.combate.pv}</dd></div>
-            <div><dt>Defesa</dt><dd>{i.combate.defesa}</dd></div>
+            <div><dt>Defesa</dt><dd>{i.combate.defesa}{i.combate.vestida && <> · {i.combate.vestida.defesa}<small> c/ equip.</small></>}</dd></div>
             <div><dt>Def. Social</dt><dd>{i.combate.defesaSocial}</dd></div>
             <div><dt>Def. Mental</dt><dd>{i.combate.defesaMental}</dd></div>
-            <div><dt>Absorção</dt><dd>{i.combate.absorcao.impacto}/{i.combate.absorcao.corte}/{i.combate.absorcao.perfuracao}{i.combate.resistenciaPerfuracao ? `·N${i.combate.resistenciaPerfuracao}` : ''}</dd></div>
+            <div><dt>Absorção</dt><dd>{i.combate.absorcao.impacto}/{i.combate.absorcao.corte}/{i.combate.absorcao.perfuracao}{i.combate.resistenciaPerfuracao ? `·N${i.combate.resistenciaPerfuracao}` : ''}{i.combate.vestida && <> · {i.combate.vestida.absorcao.impacto}/{i.combate.vestida.absorcao.corte}/{i.combate.vestida.absorcao.perfuracao}{i.combate.vestida.nivel ? `·N${i.combate.vestida.nivel}` : ''}<small> c/ equip.</small></>}</dd></div>
             <div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>
-          </dl>
+          </dl>{i.combate.vestida && (<p class="ib-ref besta-vestida"><b>Com o equipamento:</b> Esquiva {i.combate.vestida.esquiva}, Bloqueio {i.combate.vestida.bloqueio}, contra tiro {i.combate.vestida.contraTiro}, Penalidade −{i.combate.vestida.penalidade}. Na mesa, o Mestre escolhe qual usar; sem escolha, vale a maior Defesa (D-206).</p>)}
 
           {(i.combate.fraquezas?.length || i.combate.resistencias?.length || i.combate.imunidades?.length) && (
             <div class="besta-elem">
@@ -185,7 +187,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
 
           <ul class="besta-atk">
             {i.combate.ataques.map((a: any) => (
-              <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">Ataque: <b>{fmtPool(a.pool)}</b> · Dano <b>{fmtDano(a.dano)}</b> · Velocidade {a.speed}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
+              <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">Ataque: <b>{fmtPool(a.pool)}</b>{i.combate.vestida && <> sem o equipamento · <b>{fmtPool(poolComPenalidade(a.pool, i.combate.vestida.penalidade))}</b> com</>} · Dano <b>{fmtDano(a.dano)}</b> · Velocidade {a.speed}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
             ))}
           </ul>
 
@@ -233,6 +235,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
                   {(i.tecnicas.length > 0 || i.artes.length > 0 || i.notas) && (<>
                     <h4>Técnicas, Artes &amp; Notas</h4>
                     {i.tecnicas.length > 0 && (<p class="ib-ref"><b>Técnicas:</b> {i.tecnicas.map((t: any, n: number) => (<>{n > 0 && ' · '}<a href={tecLink(t)}>{d.T[t]?.nome ?? t}</a></>))}</p>)}
+                    {i.mana != null && (<p class="ib-ref"><b>Mana:</b> {i.mana}</p>)}
                     {i.artes.length > 0 && (<p class="ib-ref"><b>Artes:</b> {i.artes.map((a: any, n: number) => (<>{n > 0 && ' · '}<a href={url('arcano') + '#' + a.id}>{arteNome[a.id] ?? a.id}</a> {a.nivel}</>))}</p>)}
                     {i.notas && <p class="ib-notas">{i.notas}</p>}
                   </>)}
