@@ -281,6 +281,14 @@ try {
   const lich = fs.existsSync(lichArq) ? JSON.parse(fs.readFileSync(lichArq, 'utf8')) : null;
   ok(comBase.status === 0 && lich?.categoriaLegada === 'Morto-vivo', `com fonte base sem categoriaLegada, a categoria da base: ${lich?.categoriaLegada}${comBase.status ? ' (exit ' + comBase.status + ')' : ''}`);
 
+  // As Técnicas das Manobras (CORRIGE da Revisora na d1b893a9): "Técnica <id>, nível N" vai ao `tech` da fonte.
+  const MAN = '- corpo morto · sem regra ainda: não respira.\n';
+  const comTec = roda(FICHA.replace(MAN, MAN + '- Pisar Leve · Técnica pisar-leve, nível 1 · livro: +3 em Furtividade.\n- Esgueirar · Técnica esgueirar, nível 1 · livro: some de vista.\n'), 'técnicas');
+  ok(comTec.status === 0 && JSON.stringify(comTec.json?.tech) === JSON.stringify({ 'pisar-leve': true, esgueirar: true }), `a linha "Técnica <id>, nível N" vai ao tech: ${JSON.stringify(comTec.json?.tech)}`);
+  para('Técnica que não existe', MAN, MAN + '- Voo Sombrio · Técnica voo-sombrio, nível 1 · livro: voa.\n', /Técnica "voo-sombrio" não está no tecnicas.json/);
+  para('Técnica com o nível errado', MAN, MAN + '- Pisar Leve · Técnica pisar-leve, nível 3 · livro: +3 em Furtividade.\n', /Técnica "pisar-leve": nível 3 na ficha, 1 no tecnicas.json/);
+  para('Técnica fora do formato', MAN, MAN + '- Pisar Leve · Técnica pisar-leve · livro: +3 em Furtividade.\n', /Técnica fora do formato/);
+
   // A jogada comum, sem frase: o corpo a corpo vai pelo maior (o animal ágil, como o gato).
   const agil = roda(FICHA.replace('| Força | 4 |', '| Força | 2 |').replace('"forca":4', '"forca":2').replace('Jogada: Força 4 + Armas 3', 'Jogada: Destreza 3 + Armas 3'), 'jogada comum pelo maior');
   const toque = (agil.json?.ataques || []).find((a) => a.nome === 'Toque gelado');

@@ -201,6 +201,12 @@
       "penalidade": 1
     }
   },
+  "tech": {
+    "postura-fluida": true,
+    "aparar": true,
+    "finta": true,
+    "riposte": true
+  },
   "notasObservacao": [
     "`equipamento`: a espada curta no lugar do florete do site; a estocada N1 do florete era o golpe principal, e na espada curta é o modo secundário (perda anotada no relato) **[provisório]**",
     "`bloqueio`: 4; o site não gravava Bloqueio **[provisório]**",

@@ -1186,7 +1186,28 @@
    "furtividade": 5
   },
   "artes": [],
-  "tecnicas": [],
+  "tecnicas": [
+   {
+    "id": "pisar-leve",
+    "nome": "Pisar Leve",
+    "caminho": "sombra"
+   },
+   {
+    "id": "esgueirar",
+    "nome": "Esgueirar",
+    "caminho": "sombra"
+   },
+   {
+    "id": "manto-de-sombras",
+    "nome": "Manto de Sombras",
+    "caminho": "sombra"
+   },
+   {
+    "id": "bote-silencioso",
+    "nome": "Bote Silencioso",
+    "caminho": "sombra"
+   }
+  ],
   "combate": {
    "pv": 34,
    "defesa": 24,
@@ -3719,7 +3740,23 @@
    "furtividade": 0
   },
   "artes": [],
-  "tecnicas": [],
+  "tecnicas": [
+   {
+    "id": "golpe-pesado",
+    "nome": "Golpe Pesado",
+    "caminho": "punho-de-ferro"
+   },
+   {
+    "id": "quebrar-guarda",
+    "nome": "Quebrar Guarda",
+    "caminho": "punho-de-ferro"
+   },
+   {
+    "id": "soco-trovejante",
+    "nome": "Soco Trovejante",
+    "caminho": "punho-de-ferro"
+   }
+  ],
   "combate": {
    "pv": 37,
    "defesa": 24,
@@ -4964,7 +5001,23 @@
    "furtividade": 0
   },
   "artes": [],
-  "tecnicas": [],
+  "tecnicas": [
+   {
+    "id": "pele-curtida",
+    "nome": "Pele Curtida",
+    "caminho": "pele-de-pedra"
+   },
+   {
+    "id": "aguentar-o-tranco",
+    "nome": "Aguentar o Tranco",
+    "caminho": "pele-de-pedra"
+   },
+   {
+    "id": "tensionar",
+    "nome": "Tensionar",
+    "caminho": "pele-de-pedra"
+   }
+  ],
   "combate": {
    "pv": 40,
    "defesa": 14,
@@ -5655,7 +5708,23 @@
    "furtividade": 0
   },
   "artes": [],
-  "tecnicas": [],
+  "tecnicas": [
+   {
+    "id": "voz-de-lider",
+    "nome": "Voz de Líder",
+    "caminho": "estandarte"
+   },
+   {
+    "id": "coordenar",
+    "nome": "Coordenar",
+    "caminho": "estandarte"
+   },
+   {
+    "id": "tom-de-autoridade",
+    "nome": "Tom de Autoridade",
+    "caminho": "comando"
+   }
+  ],
   "combate": {
    "pv": 37,
    "defesa": 17,
@@ -8966,7 +9035,28 @@
    "furtividade": 0
   },
   "artes": [],
-  "tecnicas": [],
+  "tecnicas": [
+   {
+    "id": "postura-fluida",
+    "nome": "Postura Fluida",
+    "caminho": "danca-da-lamina"
+   },
+   {
+    "id": "aparar",
+    "nome": "Aparar",
+    "caminho": "danca-da-lamina"
+   },
+   {
+    "id": "finta",
+    "nome": "Finta",
+    "caminho": "danca-da-lamina"
+   },
+   {
+    "id": "riposte",
+    "nome": "Riposte",
+    "caminho": "danca-da-lamina"
+   }
+  ],
   "combate": {
    "pv": 34,
    "defesa": 25,

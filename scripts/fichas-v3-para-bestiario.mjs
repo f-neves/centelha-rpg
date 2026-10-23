@@ -60,6 +60,8 @@ const terrenoDe = (x) => { const k = x.trim().toLowerCase(); const n = TERRENO_S
 const ARMAS_IDS = new Set(JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/armas.json'), 'utf8')).map((a) => a.id));
 const ARMADURAS = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/armaduras.json'), 'utf8')).map((a) => [a.id, a.armadura]));
 const ESCUDOS = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/escudos.json'), 'utf8')).filter((e) => e.id !== 'nenhum').map((e) => [e.id, e.escudo]));
+// As Técnicas do livro, para a linha "Técnica <id>, nível N" das Manobras (a ficha v3 do humano com Centelha).
+const TECNICAS = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/tecnicas.json'), 'utf8')).map((t) => [t.id, t]));
 const CLIMA = { 'Frio': 'Cold', 'Temperado': 'Temperate', 'Tropical': 'Tropical', 'Extraplanar': 'Extraplanar' };
 const ATRIB = { 'Força': 'forca', 'Destreza': 'destreza', 'Vigor': 'vigor', 'Percepção': 'percepcao',
   'Inteligência': 'inteligencia', 'Raciocínio': 'raciocinio', 'Influência': 'influencia',
@@ -602,6 +604,19 @@ function converte(arq) {
   const CLASSE_MAN = /^(com regra no livro|regra do livro|regra no livro|livro|regra da ficha|sem regra ainda|como luta)\b[:.]?\s*/i;
   const CLASSE_NOME = (s) => (/sem regra/i.test(s) ? 'sem regra ainda' : /da ficha/i.test(s) ? 'regra da ficha' : /como luta/i.test(s) ? 'como luta' : 'livro');
   const habilidades = [...semDano];
+  // AS TÉCNICAS (CORRIGE da Revisora na d1b893a9): "Pisar Leve · Técnica pisar-leve, nível 1 · livro: ..." vai
+  // ao `tech` da fonte, de onde o card e a mesa tiram o bloco "Técnicas:". O id e o nível têm de bater com o
+  // tecnicas.json; a linha que começa um segmento com "Técnica" e não fecha o formato para.
+  const tech = {};
+  for (const it of itens(S['Manobras'])) {
+    const tm = /(?:^|·)\s*Técnica ([a-z0-9-]+), nível (\d+)\s*(?:·|$)/.exec(it);
+    if (!tm) { if (/(?:^|·)\s*Técnica\s/.test(it)) aviso.push(`Técnica fora do formato "Técnica <id>, nível N": ${it.slice(0, 70)}`); continue; }
+    const t = TECNICAS[tm[1]];
+    if (!t) { aviso.push(`Técnica "${tm[1]}" não está no tecnicas.json`); continue; }
+    if (Number(tm[2]) !== t.nivel) aviso.push(`Técnica "${tm[1]}": nível ${tm[2]} na ficha, ${t.nivel} no tecnicas.json`);
+    if (tech[tm[1]]) aviso.push(`Técnica "${tm[1]}" repetida`);
+    tech[tm[1]] = true;
+  }
   for (const it of itens(S['Manobras']).filter((l) => !/^nenhuma\b/i.test(l))) {
     if (/não manobra|não entra\b/i.test(it)) continue;
     const m = /^([^·:]+?)\s*(?:·|:)\s*(.*)$/.exec(it);
@@ -655,7 +670,7 @@ function converte(arq) {
     clima: celula(ident, 'Clima') ? celula(ident, 'Clima').split(',').map((x) => CLIMA[x.trim()] ?? (aviso.push(`Clima fora do conjunto: ${x.trim()}`), null)) : null,
     faltaEsp: blocosEsp === cabecalhosEsp ? null : `${cabecalhosEsp} cabeçalho(s) de Especialidade, ${blocosEsp} bloco(s) lido(s)`,
     porte, dimensoes, locomocao, attrs, skills, skills2, especialidades, willpower, virtues, aparencia,
-    ataques, habilidades, venenos, doencas, enxame: enxameL, descricao, ambientacao, noJogo, notasObservacao, v3,
+    ataques, habilidades, tech, venenos, doencas, enxame: enxameL, descricao, ambientacao, noJogo, notasObservacao, v3,
     social, aptidoes: limpa(itens(S['Aptidões']).join(' ') || (S['Aptidões'] || '').trim()), aviso };
 }
 
@@ -743,6 +758,7 @@ function montaFonte(f, todas) {
     ameacaLegada: ameaca,
     ...(velha?.proezaFutura ? { proezaFutura: velha.proezaFutura } : {}),
     v3: f.v3,
+    ...(Object.keys(f.tech).length ? { tech: f.tech } : {}),
     ...(f.notasObservacao.length ? { notasObservacao: f.notasObservacao } : {}),
   };
   return fonte;

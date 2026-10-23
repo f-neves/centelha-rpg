@@ -2060,7 +2060,12 @@
   "locomocao": {
    "terra": 3
   },
-  "tecnicas": [],
+  "tecnicas": [
+   "pisar-leve",
+   "esgueirar",
+   "manto-de-sombras",
+   "bote-silencioso"
+  ],
   "artes": [],
   "notas": "Bote Silencioso: +2d6 de dano contra alvo desavisado (que já sofre a penalidade de Defesa por surpresa).",
   "lore": [
@@ -6282,7 +6287,11 @@
   "locomocao": {
    "terra": 3
   },
-  "tecnicas": [],
+  "tecnicas": [
+   "golpe-pesado",
+   "quebrar-guarda",
+   "soco-trovejante"
+  ],
   "artes": [],
   "notas": "Energia ≈ Centelha×3 + Virtudes + Vontade. Reservar para Técnicas de nível 1 a 3.",
   "lore": [
@@ -8219,7 +8228,11 @@
   "locomocao": {
    "terra": 3
   },
-  "tecnicas": [],
+  "tecnicas": [
+   "pele-curtida",
+   "aguentar-o-tranco",
+   "tensionar"
+  ],
   "artes": [],
   "notas": "Placa + Pele de Pedra: Absorção altíssima contra corte. Vença-o com Impacto (a placa quase não absorve), perfuração nível 2+ ou Proeza.",
   "lore": [
@@ -9336,7 +9349,11 @@
   "locomocao": {
    "terra": 3
   },
-  "tecnicas": [],
+  "tecnicas": [
+   "voz-de-lider",
+   "coordenar",
+   "tom-de-autoridade"
+  ],
   "artes": [],
   "notas": "Concede ações e bônus aos aliados (Estandarte/Comando). Some Influência quando inspira. Mate-o e a tropa vacila.",
   "lore": [
@@ -15350,7 +15367,12 @@
   "locomocao": {
    "terra": 3
   },
-  "tecnicas": [],
+  "tecnicas": [
+   "postura-fluida",
+   "aparar",
+   "finta",
+   "riposte"
+  ],
   "artes": [],
   "notas": "Aparar: +3 na Defesa; Riposte contra-ataca ao aparar.",
   "lore": [

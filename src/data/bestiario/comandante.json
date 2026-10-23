@@ -220,6 +220,11 @@
       "penalidade": 3
     }
   },
+  "tech": {
+    "voz-de-lider": true,
+    "coordenar": true,
+    "tom-de-autoridade": true
+  },
   "notasObservacao": [
     "`estrategia`: o `tatica` do site não existe no livro (manual 3.5, D-190) **[provisório]**",
     "`escudo`: Variante, porque o site não o põe no equipamento",

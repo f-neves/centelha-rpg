@@ -220,6 +220,11 @@
       "penalidade": 2
     }
   },
+  "tech": {
+    "golpe-pesado": true,
+    "quebrar-guarda": true,
+    "soco-trovejante": true
+  },
   "notasObservacao": [
     "`energia`: 14 pela fórmula do livro; o site escrevia \"Centelha × 3 + Virtudes + Vontade\"",
     "`convicção`: 4; o site tinha 3 **[provisório]**",

@@ -209,6 +209,12 @@
       "penalidade": 1
     }
   },
+  "tech": {
+    "pisar-leve": true,
+    "esgueirar": true,
+    "manto-de-sombras": true,
+    "bote-silencioso": true
+  },
   "notasObservacao": [
     "`dano da adaga`: soma a Força 3; o site somava a Destreza 5 (\"Ágil\"); perda anotada no relato",
     "`virtudes`: Compaixão 1 e Temperança 3; o site tinha 2 e 2 **[provisório]**",

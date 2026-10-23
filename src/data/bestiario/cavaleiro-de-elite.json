@@ -217,6 +217,11 @@
       "penalidade": 3
     }
   },
+  "tech": {
+    "pele-curtida": true,
+    "aguentar-o-tranco": true,
+    "tensionar": true
+  },
   "notasObservacao": [
     "`montante`: 2d6 + Força × 2, o do livro; o site dava 3 dados",
     "`absorcao`: a Pele Curtida (+2 contra Impacto) não entra no número da linha Absorção, que segue a conta do livro; fica nas Manobras",
