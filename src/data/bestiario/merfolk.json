@@ -98,7 +98,8 @@
       "danoBonus": 4,
       "forca": false,
       "classe": "distancia",
-      "distancia": true
+      "distancia": true,
+      "arma": "besta-media"
     }
   ],
   "fraquezas": [],

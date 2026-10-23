@@ -42,6 +42,8 @@ export const ataqueSchema = z.object({
   /** `false`: o golpe não soma a Força (o bico do falcão-peregrino). */
   forca: z.literal(false).optional(),
   classe: z.enum(['leve', 'media', 'haste', 'pesada', 'distancia', 'arremesso']).optional(), // as seis do armas.json
+  /** O id da arma de tiro no armas.json (o arco, a besta): a Força no dano segue a regra dela (forcaMult, forcaCap, forcaMin), como na ficha do personagem. */
+  arma: texto.optional(),
 }).strict();
 
 /** Poder natural: o dom da própria criatura (B14 fase 2, item A.2). NÃO passa pelo

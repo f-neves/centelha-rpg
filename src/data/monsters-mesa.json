@@ -1118,7 +1118,7 @@
     {
      "nome": "Arco longo",
      "pool": "3d6+2",
-     "dano": "1d6 perfurante · perf. 1",
+     "dano": "1d6 +2 perfurante · perf. 1",
      "perfArma": 1,
      "speed": 7,
      "classe": "distancia"

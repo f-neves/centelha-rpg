@@ -97,7 +97,8 @@
       "ticks": 6,
       "danoBonus": -2,
       "classe": "distancia",
-      "distancia": true
+      "distancia": true,
+      "arma": "arco-curto"
     },
     {
       "nome": "Garras e presas",

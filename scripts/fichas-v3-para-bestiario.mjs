@@ -62,6 +62,8 @@ const ARMADURAS = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(RAIZ, 
 const ESCUDOS = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/escudos.json'), 'utf8')).filter((e) => e.id !== 'nenhum').map((e) => [e.id, e.escudo]));
 // As Técnicas do livro, para a linha "Técnica <id>, nível N" das Manobras (a ficha v3 do humano com Centelha).
 const TECNICAS = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/tecnicas.json'), 'utf8')).map((t) => [t.id, t]));
+// As armas do livro pelo id, para achar a arma de tiro de um ataque (a regra de Força dela vai ao lib-bestiario).
+const ARMAS_POR_ID = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/armas.json'), 'utf8')).map((a) => [a.id, a]));
 const CLIMA = { 'Frio': 'Cold', 'Temperado': 'Temperate', 'Tropical': 'Tropical', 'Extraplanar': 'Extraplanar' };
 const ATRIB = { 'Força': 'forca', 'Destreza': 'destreza', 'Vigor': 'vigor', 'Percepção': 'percepcao',
   'Inteligência': 'inteligencia', 'Raciocínio': 'raciocinio', 'Influência': 'influencia',
@@ -290,7 +292,16 @@ for (const l of linhasTsv) {
 // dela de novo somaria o "No jogo" e o Social duas vezes. Assim o conversor dá sempre a
 // mesma saída.
 const BASE = arg('--base') || 'ea564c19';
+// A FONTE BASE vem do commit BASE pelo git, ou de uma pasta (`--base-pasta`, os testes: o CI clona raso, com
+// --depth 1, e o ea564c19 não existe lá). Sem a pasta, o commit tem de existir: antes, a falta dele virava
+// "fonte base nenhuma" calada em todas as fichas (achado do CI vermelho no 683d881a).
+const BASE_PASTA = arg('--base-pasta');
+if (!BASE_PASTA) {
+  try { execFileSync('git', ['-C', RAIZ, 'cat-file', '-e', `${BASE}^{commit}`], { stdio: 'ignore' }); }
+  catch { console.error(`✘ o commit da fonte base (${BASE}) não existe neste clone (raso?); passe --base-pasta ou busque o histórico`); process.exit(1); }
+}
 const fontePorId = (id) => {
+  if (BASE_PASTA) { const p = path.join(BASE_PASTA, `${id}.json`); return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : null; }
   try {
     return JSON.parse(execFileSync('git', ['-C', RAIZ, 'show', `${BASE}:src/data/bestiario/${id}.json`], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }));
   } catch { return null; }
@@ -581,6 +592,18 @@ function converte(arq) {
       : (atrib === 'forca' || atrib === 'destreza') ? ((attrs[atrib] ?? 0) < (attrs[atrib === 'forca' ? 'destreza' : 'forca'] ?? 0) ? 'o corpo a corpo usa o maior entre Destreza e Força' : null)
       : 'o corpo a corpo é Destreza ou Força';
     if (regraJogada) aviso.push(`ataque "${nomeA}": a jogada ${atrib} + ${pericia} contra o livro (combate.md:156: ${regraJogada})${jg ? '' : ', sem frase "Jogada:" (a jogada comum Força + Briga)'}`);
+    // A ARMA DE TIRO (o arco, a besta): o ataque de Classe Distância leva o id da arma do Equipamento cujo nome é o
+    // do ataque ou o da Parte ("Arco longo", "arco curto, à distância"); com uma arma de tiro só, é ela. A Força
+    // no dano segue a regra dela no lib-bestiario. Tiro que soma a Força sem arma identificada para; o sopro e a
+    // rajada, que não somam, seguem sem arma.
+    let armaTiro = null;
+    if (classe === 'distancia') {
+      const nm = (x) => sem(String(x || '')).replace(/\s*\(.*$/, '').replace(/,.*$/, '').trim();
+      const armasEq = (/^armas: ([^·]+)/.exec(equipTxt)?.[1] || '').split(',').map((x) => x.trim()).filter(Boolean);
+      const cands = armasEq.filter((id) => ARMAS_POR_ID[id]?.arma?.classe === 'distancia');
+      armaTiro = cands.find((id) => [nm(nomeA), nm(r[col('Parte')])].includes(nm(ARMAS_POR_ID[id].nome))) ?? (cands.length === 1 ? cands[0] : null);
+      if (!armaTiro && /Força/.test(lado)) aviso.push(`ataque "${nomeA}": tiro que soma a Força sem a arma de tiro no Equipamento`);
+    }
     ataques.push({
       nome: nomeA, atrib, pericia, dado: Number(dado[1]),
       ...(/Força\s*×\s*2/.test(danoTxt) ? { mao: 2 } : { mao: 1 }),
@@ -594,6 +617,7 @@ function converte(arq) {
       ...(!/Força/.test(lado) && (attrs.forca > 0 || danoTxt.includes('=')) ? { forca: false } : {}),
       ...(classe ? { classe } : {}),
       ...(classe === 'distancia' ? { distancia: true } : classe === 'arremesso' ? { distancia: true, arremesso: true } : {}),
+      ...(armaTiro ? { arma: armaTiro } : {}),
     });
   }
   // Manobras e Sentidos (decisoes-etapa-6.md §4 e §5)
