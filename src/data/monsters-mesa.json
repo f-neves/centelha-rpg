@@ -3822,7 +3822,7 @@
    "ataques": [
     {
      "nome": "Espada longa",
-     "pool": "3d6 +5",
+     "pool": "3d6+2 +5",
      "dano": "1d6 +6 corte",
      "perfArma": null,
      "speed": 6,
@@ -7829,11 +7829,11 @@
     },
     {
      "nome": "Sopro de frio",
-     "pool": "3d6",
+     "pool": "4d6+2 +6",
      "dano": "6d6 +4 gelo",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "distancia"
     }
    ]
   },
@@ -9728,7 +9728,7 @@
    "ataques": [
     {
      "nome": "Pancada flamejante",
-     "pool": "2d6 +3",
+     "pool": "3d6 +3",
      "dano": "1d6 fogo",
      "perfArma": null,
      "speed": 5,
@@ -10848,7 +10848,7 @@
    "ataques": [
     {
      "nome": "Toque dilacerante",
-     "pool": "2d6+2 +9",
+     "pool": "5d6 +9",
      "dano": "1d6 +2 fenomeno",
      "perfArma": null,
      "speed": 5,
@@ -11615,7 +11615,7 @@
    "ataques": [
     {
      "nome": "Soco",
-     "pool": "1d6 +1",
+     "pool": "1d6+2 +1",
      "dano": "1d6 +1 impacto",
      "perfArma": null,
      "speed": 5,
@@ -17158,7 +17158,7 @@
    "ataques": [
     {
      "nome": "Toque",
-     "pool": "3d6+2 +11",
+     "pool": "4d6+2 +11",
      "dano": "1d6 +6 impacto",
      "perfArma": null,
      "speed": 5,
@@ -22209,7 +22209,7 @@
     },
     {
      "nome": "Garras e presas",
-     "pool": "1d6 +4",
+     "pool": "4d6 +4",
      "dano": "1d6 +2 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 5,
@@ -23525,7 +23525,7 @@
    "ataques": [
     {
      "nome": "Garras",
-     "pool": "4d6+2 +11",
+     "pool": "5d6 +11",
      "dano": "1d6 +7 corte",
      "perfArma": null,
      "speed": 5,

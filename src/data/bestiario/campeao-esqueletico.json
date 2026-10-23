@@ -79,7 +79,7 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "atrib": "destreza",
+      "atrib": "forca",
       "pericia": "armas",
       "dado": 1,
       "mao": 1,

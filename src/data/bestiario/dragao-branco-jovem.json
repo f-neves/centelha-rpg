@@ -61,7 +61,8 @@
     "voo": 2,
     "natacao": 2,
     "escalada": 1,
-    "musculatura": 3
+    "musculatura": 3,
+    "disparo": 3
   },
   "especialidades": [
     {
@@ -110,7 +111,8 @@
       "tipo": "gelo",
       "ticks": 7,
       "forca": false,
-      "classe": "pesada"
+      "classe": "distancia",
+      "distancia": true
     }
   ],
   "fraquezas": [
