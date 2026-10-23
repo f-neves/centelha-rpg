@@ -180,7 +180,7 @@
     "pv": 54,
     "esquiva": 6,
     "bloqueio": 8,
-    "defesa": 8,
+    "defesa": 9,
     "defesaMental": 7,
     "defesaSocial": 8,
     "absorcao": {
@@ -202,7 +202,8 @@
         "arranque": 11,
         "corrida": 15
       }
-    }
+    },
+    "bloqueioArma": 1
   },
   "notasObservacao": [
     "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8, igual ao boi e ao bisão, pelas âncoras do autor; a ficha de hoje tinha 11, um acima do boi. Com a mesma Força e Musculatura e mais massa, o peso erguido do auroque (995 kg) fica um pouco abaixo do do boi (997 kg, com 788 kg), porque a Força de referência sobe com a massa. A ordem dos bovinos se inverte por 2 kg; eu daria 9 ao touro selvagem, que é o que a ficha de hoje ordenava (ver desvios). Provisória (D-158, D-174).",

@@ -104,7 +104,7 @@
   "habilidades": [
     {
       "nome": "agarrar",
-      "descricao": "patas: Dano do agarrão: 2 × Força = 4. Segura a presa para ferroar.",
+      "descricao": "patas: Segura a presa para ferroar.",
       "classe": "livro"
     },
     {

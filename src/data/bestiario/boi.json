@@ -151,7 +151,7 @@
     "pv": 54,
     "esquiva": 4,
     "bloqueio": 6,
-    "defesa": 6,
+    "defesa": 7,
     "defesaMental": 5,
     "defesaSocial": 6,
     "absorcao": {
@@ -173,7 +173,8 @@
         "arranque": 10,
         "corrida": 11
       }
-    }
+    },
+    "bloqueioArma": 1
   },
   "notasObservacao": [
     "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8 pelas âncoras do autor (decisão 9), e não pelos 900 N do arado, que é trabalho e não máximo. A ficha de hoje tinha 10 pela faixa 9 a 12 do teste de ordem; a queda é da escala nova, e não de dado novo (D-158, D-174).",

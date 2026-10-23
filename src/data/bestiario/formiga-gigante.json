@@ -104,7 +104,7 @@
   "habilidades": [
     {
       "nome": "agarrar",
-      "descricao": "Mandíbulas: Dano do agarrão: 2 × Força = 6. A ficha antiga do bestiário prende com a mandíbula e ferroa em seguida; aqui é um ataque por ação.",
+      "descricao": "Mandíbulas: A ficha antiga do bestiário prende com a mandíbula e ferroa em seguida; aqui é um ataque por ação.",
       "classe": "livro"
     },
     {

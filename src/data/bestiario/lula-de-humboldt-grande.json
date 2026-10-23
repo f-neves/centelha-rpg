@@ -110,7 +110,7 @@
   "habilidades": [
     {
       "nome": "agarrar",
-      "descricao": "Braços e tentáculos: Dano do agarrão 2 × Força = 8 por manutenção. Agarrada, a presa vai ao bico.",
+      "descricao": "Braços e tentáculos: Agarrada, a presa vai ao bico.",
       "classe": "livro"
     },
     {

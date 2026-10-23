@@ -109,7 +109,7 @@
   "habilidades": [
     {
       "nome": "agarrar",
-      "descricao": "mordida: segura a garganta por até 13 minutos. Dano do agarrão: 2 × Força = 12 por manutenção.",
+      "descricao": "mordida: segura a garganta por até 13 minutos.",
       "classe": "livro"
     },
     {

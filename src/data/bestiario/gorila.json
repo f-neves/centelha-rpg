@@ -115,7 +115,7 @@
   "habilidades": [
     {
       "nome": "agarrar",
-      "descricao": "Pancada (a mão): Dano do agarrão: 2 × Força = 14 por manutenção.",
+      "descricao": "Pancada (a mão)",
       "classe": "livro"
     },
     {

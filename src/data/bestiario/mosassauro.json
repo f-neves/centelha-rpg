@@ -80,7 +80,7 @@
   "habilidades": [
     {
       "nome": "agarrar",
-      "descricao": "mordida: Dano do agarrão: 2 × Força = 24 por manutenção.",
+      "descricao": "mordida",
       "classe": "livro"
     },
     {

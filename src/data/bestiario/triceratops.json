@@ -171,7 +171,7 @@
     "pv": 85,
     "esquiva": 4,
     "bloqueio": 6,
-    "defesa": 6,
+    "defesa": 7,
     "defesaMental": 7,
     "defesaSocial": 6,
     "absorcao": {
@@ -193,7 +193,8 @@
         "arranque": 5,
         "corrida": 6
       }
-    }
+    },
+    "bloqueioArma": 1
   },
   "notasObservacao": [
     "forca: 11 pela comparação com o mamute (13), proposta do Arquiteto; se o mamute mudar, esta se refaz.",

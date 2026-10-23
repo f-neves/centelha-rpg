@@ -106,7 +106,7 @@
   "habilidades": [
     {
       "nome": "agarrar",
-      "descricao": "Mordida (segura e sacode): Dano do agarrão: 2 × Força = 4 por manutenção.",
+      "descricao": "Mordida (segura e sacode)",
       "classe": "livro"
     },
     {

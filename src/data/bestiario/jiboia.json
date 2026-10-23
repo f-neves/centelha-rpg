@@ -99,7 +99,7 @@
   "habilidades": [
     {
       "nome": "constrição = agarrar",
-      "descricao": "Mordida (bote para agarrar): Dano do agarrão 2 × Força 5 = 10 por manutenção (Força 5 do autor), com a Briga (Agarrão) +3 natural. As voltas sobre o tórax param a circulação: em 6 s a pressão arterial cai à metade, em 60 s o coração bate a metade, e ao fim (cerca de 6, 5 min) 10 de 11 ratos tinham falha elétrica do coração. Pressão em kPa: não conferida. O humano adulto é grande demais para ser presa.",
+      "descricao": "Mordida (bote para agarrar): As voltas sobre o tórax param a circulação: em 6 s a pressão arterial cai à metade, em 60 s o coração bate a metade, e ao fim (cerca de 6, 5 min) 10 de 11 ratos tinham falha elétrica do coração. Pressão em kPa: não conferida. O humano adulto é grande demais para ser presa.",
       "classe": "livro"
     },
     {

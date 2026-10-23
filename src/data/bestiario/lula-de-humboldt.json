@@ -106,7 +106,7 @@
   "habilidades": [
     {
       "nome": "agarrar",
-      "descricao": "Braços e tentáculos: Dano do agarrão 2 × Força = 2 por manutenção: segura o peixe pequeno e o leva ao bico; contra um humano, o Mestre decide se segura uma mão.",
+      "descricao": "Braços e tentáculos: Segura o peixe pequeno e o leva ao bico; contra um humano, o Mestre decide se segura uma mão.",
       "classe": "livro"
     },
     {

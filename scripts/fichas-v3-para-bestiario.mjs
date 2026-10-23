@@ -12,7 +12,7 @@
 // ficha diz entra como está, só sem as marcas de trabalho (manual §7.5).
 import fs from 'node:fs';
 import path from 'node:path';
-import { execFileSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process'; import { bonusDaArma, defesaComArma } from './lib-ficha-v3.mjs';
 
 const arg = (n) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : null; };
 const RAIZ = arg('--raiz') || path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
@@ -326,6 +326,12 @@ function converte(arq) {
   const col = (...n) => n.map((x) => atq.cab.indexOf(x)).find((i) => i >= 0);
   const ataques = [];
   const semDano = []; // a Língua da rã: não é ataque (decisoes-etapa-6.md §9, item 2)
+  // O Bloqueio da ficha vem SEM a arma desde a D-190 ("o Bloqueio sem a arma, que o card
+  // soma"): o bônus sai da coluna "Bloqueia como arma" ("sim, +1", "sim (+1; ...)",
+  // "sim, Defesa +2"), o maior entre os ataques, e a Defesa do card soma. Sem número, 0.
+  const iArma = atq.cab.indexOf('Bloqueia como arma');
+  const bonusArma = iArma < 0 ? 0 : bonusDaArma(atq.rows.map((r) => r[iArma])); // o maior, uma vez (lib-ficha-v3.mjs)
+  if (bonusArma) { v3.bloqueioArma = bonusArma; v3.defesa = defesaComArma(v3, bonusArma); }
   for (const r of atq.rows) {
     const nomeA = limpa(r[col('Nome', 'Ataque')]);
     const danoTxt = r[col('Dano')].replace(/◆/g, '').replace(/\*\*/g, '');

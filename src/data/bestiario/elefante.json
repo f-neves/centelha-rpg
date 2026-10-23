@@ -209,7 +209,7 @@
     "pv": 80,
     "esquiva": 4,
     "bloqueio": 6,
-    "defesa": 6,
+    "defesa": 7,
     "defesaMental": 7,
     "defesaSocial": 8,
     "absorcao": {
@@ -232,7 +232,8 @@
         "corrida": 7
       },
       "nado": 3
-    }
+    },
+    "bloqueioArma": 1
   },
   "notasObservacao": [
     "forca: 10 pela âncora do autor (9 a 10), proposta do Arquiteto. O feito de arrasto (1 a 3 t, Htun) fica acima do peso erguido novo (1.074 kg), que só alcança o piso dele. O topo da âncora (10) foi escolhido para o macho de 4 t; com o adulto típico de 3,35 t, o argumento do topo enfraquece, e a Força fica pela regra da sexta rodada (ver desvios). Decisão provisória: manter a âncora e deixar a diferença à fórmula de P ou a uma leitura do arrasto (tora no chão, com corrente, não é peso erguido inteiro) (D-174).",

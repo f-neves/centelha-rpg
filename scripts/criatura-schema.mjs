@@ -218,7 +218,10 @@ export const criaturaSchema = z.object({
     pv: naoNeg,
     esquiva: naoNeg,
     bloqueio: naoNeg,
-    /** o maior entre Esquiva e Bloqueio, que é a Defesa do card (manual §5.2, item 7) */
+    /** o bônus da arma que bloqueia (coluna "Bloqueia como arma" da ficha). O `bloqueio`
+     *  acima vem sem ele desde a D-190, e a `defesa` já o soma. */
+    bloqueioArma: naoNeg.optional(),
+    /** o maior entre Esquiva e Bloqueio (com a arma), que é a Defesa do card (manual §5.2, item 7) */
     defesa: naoNeg,
     defesaMental: naoNeg,
     defesaSocial: naoNeg,

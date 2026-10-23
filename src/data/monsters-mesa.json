@@ -383,7 +383,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 50,
-   "defesa": 10,
+   "defesa": 12,
    "defesaSocial": 6,
    "defesaMental": 7,
    "absorcao": {
@@ -1370,7 +1370,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 8,
+   "defesa": 9,
    "defesaSocial": 8,
    "defesaMental": 7,
    "absorcao": {
@@ -2478,7 +2478,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 8,
+   "defesa": 9,
    "defesaSocial": 8,
    "defesaMental": 7,
    "absorcao": {
@@ -2825,7 +2825,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": 6,
    "defesaMental": 5,
    "absorcao": {
@@ -9243,7 +9243,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 80,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": 8,
    "defesaMental": 7,
    "absorcao": {
@@ -18473,7 +18473,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 90,
-   "defesa": 8,
+   "defesa": 9,
    "defesaSocial": 10,
    "defesaMental": 7,
    "absorcao": {
@@ -18928,7 +18928,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 90,
-   "defesa": 8,
+   "defesa": 9,
    "defesaSocial": 8,
    "defesaMental": 7,
    "absorcao": {
@@ -23855,7 +23855,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 75,
-   "defesa": 8,
+   "defesa": 9,
    "defesaSocial": 6,
    "defesaMental": 9,
    "absorcao": {
@@ -26131,7 +26131,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 85,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": 6,
    "defesaMental": 7,
    "absorcao": {
