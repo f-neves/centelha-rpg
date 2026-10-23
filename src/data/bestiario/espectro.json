@@ -223,7 +223,9 @@
     "pesoErguido": null,
     "deslocamento": {
       "voo": {
-        "batalha": 8
+        "batalha": 8,
+        "arranque": 13,
+        "corrida": 18
       }
     }
   },

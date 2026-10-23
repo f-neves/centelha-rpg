@@ -419,11 +419,27 @@ function converte(arq) {
   const vooTxt = celula(mov, 'Voo') || '';
   const voo = /Batalha\s*\*\*(\d+)\*\*/.exec(vooTxt);
   const nadoTxt = celula(mov, 'Nado') || '';
-  const nado = /^\*\*(\d+)\*\*/.exec(nadoTxt.trim());
+  // O Nado vem em número único ("**5** m por Tick", a lula) ou em velocidades ("Batalha **3** (m por Tick)",
+  // o hezrou; "Batalha **5** · Arranque **8** · Corrida **12**", o merfolk). As duas formas se leem.
+  const nado = /^\*\*(\d+)\*\*/.exec(nadoTxt.trim()) ?? /^Batalha\s*\*\*(\d+)\*\*/.exec(nadoTxt.trim());
+  const nado3 = /^Batalha\s*\*\*(\d+)\*\*\s*·\s*Arranque\s*\*\*(\d+)\*\*\s*·\s*Corrida\s*\*\*(\d+)\*\*/.exec(nadoTxt.trim());
+  const voo3 = /Arranque\s*\*\*(\d+)\*\*\s*·\s*Corrida\s*\*\*(\d+)\*\*/.exec(vooTxt);
+  const escNum = /^Batalha\s*\*\*(\d+)\*\*/.exec(String(celula(mov, 'Escalada') ?? '').trim());
+  // Número em negrito que o conversor não lê para: o rótulo de cada um tem de ser uma das velocidades, e o
+  // modo tem de ter sido lido. Texto sem número não decide (decisoes-etapa-6.md §9, item 11) e segue.
+  const ROT_VEL = ['Batalha', 'Arranque', 'Corrida', 'Cruzeiro', 'Mergulho'];
+  const confereNumeros = (rot, txt, lido) => {
+    const t = String(txt ?? '');
+    if (!/\*\*\s*\d/.test(t)) return;
+    if (!lido) { aviso.push(`${rot} "${t.slice(0, 80)}": número que o conversor não lê`); return; }
+    for (const m of t.matchAll(/(?:^|([A-Za-zÀ-ú]+))\s*\*\*\s*\d+/g)) if (m[1] && !ROT_VEL.includes(m[1])) aviso.push(`${rot} "${t.slice(0, 80)}": número com o rótulo "${m[1]}", que o conversor não lê`);
+  };
+  confereNumeros('Nado', nadoTxt, nado); confereNumeros('Voo', vooTxt, /Batalha\s*\*\*\d/.test(vooTxt)); confereNumeros('Escalada', celula(mov, 'Escalada'), escNum);
+  confereNumeros('Deslocamento em terra', terraTxt, /Batalha\s*\*\*\d+\*\*\s*·\s*Arranque/.test(terraTxt)); confereNumeros('Nado / Voo', celula(mov, 'Nado / Voo') ?? celula(mov, 'Nado, voo'), false); confereNumeros('Escalada, escavação', celula(mov, 'Escalada, escavação'), false);
   const deslocamento = {
     ...(tres ? { terra: { batalha: +tres[1], arranque: +tres[2], corrida: +tres[3] } } : {}),
-    ...(voo ? { voo: { batalha: +voo[1], ...(/Cruzeiro\s*\*\*(\d+)/.exec(vooTxt) ? { cruzeiro: +/Cruzeiro\s*\*\*(\d+)/.exec(vooTxt)[1] } : {}), ...(/Mergulho\s*\*\*(\d+)/.exec(vooTxt) ? { mergulho: +/Mergulho\s*\*\*(\d+)/.exec(vooTxt)[1] } : {}) } } : {}),
-    ...(nado ? { nado: +nado[1] } : {}),
+    ...(voo ? { voo: { batalha: +voo[1], ...(/Cruzeiro\s*\*\*(\d+)/.exec(vooTxt) ? { cruzeiro: +/Cruzeiro\s*\*\*(\d+)/.exec(vooTxt)[1] } : {}), ...(/Mergulho\s*\*\*(\d+)/.exec(vooTxt) ? { mergulho: +/Mergulho\s*\*\*(\d+)/.exec(vooTxt)[1] } : {}), ...(voo3 ? { arranque: +voo3[1], corrida: +voo3[2] } : {}) } } : {}),
+    ...(nado3 ? { nado: { batalha: +nado3[1], arranque: +nado3[2], corrida: +nado3[3] } } : nado ? { nado: +nado[1] } : {}),
   };
   const v3 = {
     pv: negrito(celula(mov, 'PV total')),
@@ -450,7 +466,8 @@ function converte(arq) {
   if (tres) locomocao.terra = +tres[1] >= 1 ? +tres[1] : null; else if (nega(terraTxt)) locomocao.terra = null;
   if (voo) locomocao.voo = +voo[1] >= 1 ? Math.min(30, +voo[1]) : null; else if (nega(vooTxt) || nega(comb)) locomocao.voo = null;
   if (nado) locomocao.natacao = +nado[1] >= 1 ? +nado[1] : null; else if (nega(nadoTxt) || nega(comb)) locomocao.natacao = null;
-  if (nega(escTxt)) { locomocao.escalada = null; if (/escava/.test(String(celula(mov, 'Escalada, escavação') ?? ''))) locomocao.escavacao = null; }
+  if (escNum) locomocao.escalada = +escNum[1] >= 1 ? +escNum[1] : null; // "Batalha **1** (m por Tick), em parede e teto" (a geleia ocre)
+  else if (nega(escTxt)) { locomocao.escalada = null; if (/escava/.test(String(celula(mov, 'Escalada, escavação') ?? ''))) locomocao.escavacao = null; }
   // Ataques
   const atq = tabela(S['Ataques']);
   const col = (...n) => n.map((x) => atq.cab.indexOf(x)).find((i) => i >= 0);
@@ -483,9 +500,9 @@ function converte(arq) {
   const equipTxt = String(celula(ident, 'Equipamento') ?? 'nenhum').replace(/`/g, '').trim();
   let peca = { armadura: null, escudo: null };
   if (!/^nenhum$/.test(equipTxt)) {
-    const eq = /^armas: ([a-z0-9-]+) · armaduras: ([a-z0-9-]+) · escudos: ([a-z0-9-]+)$/.exec(equipTxt);
-    if (!eq) throw new Error(`${arq}: Equipamento fora do formato "armas: <id> · armaduras: <id> · escudos: <id>": "${equipTxt}"`);
-    if (!ARMAS_IDS.has(eq[1])) throw new Error(`${arq}: Equipamento: arma "${eq[1]}" não está no armas.json`);
+    const eq = /^armas: ([a-z0-9-]+(?:, [a-z0-9-]+)*) · armaduras: ([a-z0-9-]+) · escudos: ([a-z0-9-]+)$/.exec(equipTxt);
+    if (!eq) throw new Error(`${arq}: Equipamento fora do formato "armas: <id>[, <id>] · armaduras: <id> · escudos: <id>": "${equipTxt}"`);
+    for (const a of eq[1].split(', ')) if (!ARMAS_IDS.has(a)) throw new Error(`${arq}: Equipamento: arma "${a}" não está no armas.json`); // mais de uma arma: "lanca, besta-media" (o merfolk)
     if (eq[2] !== 'nenhuma') { peca.armadura = ARMADURAS[eq[2]]; if (!peca.armadura) throw new Error(`${arq}: Equipamento: armadura "${eq[2]}" não está no armaduras.json`); }
     if (eq[3] !== 'nenhum') { peca.escudo = ESCUDOS[eq[3]]; if (!peca.escudo) throw new Error(`${arq}: Equipamento: escudo "${eq[3]}" não está no escudos.json`); }
   }

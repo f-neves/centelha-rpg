@@ -242,8 +242,8 @@ export const criaturaSchema = z.object({
     carga: z.object({ leve: z.number(), media: z.number(), pesada: z.number(), maxima: z.number() }).strict().optional(),
     deslocamento: z.object({
       terra: z.object({ batalha: naoNeg, arranque: naoNeg, corrida: naoNeg }).strict().optional(),
-      voo: z.object({ batalha: naoNeg, cruzeiro: naoNeg.optional(), mergulho: naoNeg.optional() }).strict().optional(),
-      nado: naoNeg.optional(),
+      voo: z.object({ batalha: naoNeg, arranque: naoNeg.optional(), corrida: naoNeg.optional(), cruzeiro: naoNeg.optional(), mergulho: naoNeg.optional() }).strict().optional(),
+      nado: naoNeg.or(z.object({ batalha: naoNeg, arranque: naoNeg, corrida: naoNeg }).strict()).optional(),
     }).strict(), /** D-206: a criatura vestida (o Equipamento da ficha pela conta do livro); só quem veste armadura ou escudo */ vestida: z.object({ esquiva: z.number().int(), bloqueio: z.number().int(), defesa: naoNeg, contraTiro: z.number().int(), absorcao: z.object({ impacto: naoNeg, corte: naoNeg, perfuracao: naoNeg }).strict(), nivel: naoNeg, penalidade: naoNeg }).strict().optional(),
   }).strict().optional(),
   /** Batalha, Arranque e Corrida congelados na ficha (o gen-monsters.mjs já lê). */

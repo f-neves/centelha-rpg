@@ -246,6 +246,20 @@ try {
   const esp1 = (celulas.json?.ataques || []).find((a) => a.nome === 'Espada longa');
   ok(celulas.status === 0 && esp1?.acerto === -1 && celulas.json?.v3?.bloqueioArma === 1, `"o mesmo chifre (+1)" é aceito e o "−1" tipográfico é −1: acerto ${esp1?.acerto}, bloqueioArma ${celulas.json?.v3?.bloqueioArma}${celulas.status ? ' (exit ' + celulas.status + ')' : ''}`);
 
+  // Nado, Voo e Escalada em velocidades (o merfolk, o hezrou, o espectro, a geleia ocre): o número se lê, e o
+  // número que o conversor não lê para.
+  const TERRA = '| Deslocamento em terra | Batalha **3** · Arranque **5** · Corrida **7** (m por Tick) | |\n';
+  const comMov = (linhas) => FICHA.replace(TERRA, TERRA + linhas);
+  const mov = roda(comMov('| Nado | Batalha **5** · Arranque **8** · Corrida **12** (m por Tick) | |\n| Voo | Batalha **8** · Arranque **13** · Corrida **18** (m por Tick) | |\n| Escalada | Batalha **1** (m por Tick), em parede e teto | |\n')
+    .replace('armas: espada-longa · armaduras', 'armas: espada-longa, arco-curto · armaduras'), 'velocidades');
+  const dm = mov.json?.v3?.deslocamento, lc = mov.json?.locomocao;
+  ok(mov.status === 0 && JSON.stringify(dm?.nado) === JSON.stringify({ batalha: 5, arranque: 8, corrida: 12 }) && dm?.voo?.arranque === 13 && dm?.voo?.corrida === 18 && lc?.natacao === 5 && lc?.voo === 8 && lc?.escalada === 1,
+    `o Nado e o Voo nas três velocidades, a Escalada em Batalha, e duas armas no Equipamento: nado ${JSON.stringify(dm?.nado)}, voo ${JSON.stringify(dm?.voo)}, locomoção ${JSON.stringify(lc)}${mov.status ? ' (exit ' + mov.status + ')' : ''}`);
+  const nadoUm = roda(comMov('| Nado | Batalha **3** (m por Tick) | |\n'), 'nado em Batalha');
+  ok(nadoUm.json?.v3?.deslocamento?.nado === 3 && nadoUm.json?.locomocao?.natacao === 3, `o Nado em "Batalha **3** (m por Tick)", como o hezrou: ${nadoUm.json?.v3?.deslocamento?.nado}`);
+  para('Nado com número que o conversor não lê', TERRA, TERRA + '| Nado | cerca de **4** m por Tick | |\n', /Nado "cerca de \*\*4\*\* m por Tick": número que o conversor não lê/);
+  para('Voo com rótulo que o conversor não lê', TERRA, TERRA + '| Voo | Batalha **8** · Pairar **2** | |\n', /número com o rótulo "Pairar"/);
+
   // A jogada comum, sem frase: o corpo a corpo vai pelo maior (o animal ágil, como o gato).
   const agil = roda(FICHA.replace('| Força | 4 |', '| Força | 2 |').replace('"forca":4', '"forca":2').replace('Jogada: Força 4 + Armas 3', 'Jogada: Destreza 3 + Armas 3'), 'jogada comum pelo maior');
   const toque = (agil.json?.ataques || []).find((a) => a.nome === 'Toque gelado');
