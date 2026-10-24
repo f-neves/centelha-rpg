@@ -731,6 +731,16 @@ function categoriaLegadaDe(f, velha) {
   if (!velha && f.categoria === 'Animal') return 'Fera';
   throw new Error(`${f.arq}: sem categoria legada (${velha ? 'a fonte base não tem categoria nem categoriaLegada' : `sem fonte base, e a categoria da ficha é "${f.categoria}", não "Animal"`})`);
 }
+// O CONCEITO NÃO DESMENTE O TAMANHO (D-180, D-213, D-215; despacho do Arquiteto de 24/10/2026). O conceito vem da
+// fonte base, com a palavra de tamanho do molde de antes ("animal Pequeno" no polvo, que é Médio); ela entra na
+// busca do bestiário e no editor. A palavra de tamanho, com ou sem acento e em qualquer caixa, vira o porte
+// publicado; o resto do texto fica. Sem palavra de tamanho ("herói inimigo"), nada muda. Duas palavras param.
+const RE_TAMANHO = /(^|[^\p{L}])(min[uú]sculo|mi[uú]do|pequeno|m[eé]dio|grande|enorme|imenso|colossal)(?=$|[^\p{L}])/giu;
+function conceitoComPorte(conceito, porte, arq) {
+  const n = [...String(conceito).matchAll(RE_TAMANHO)].length;
+  if (n > 1) throw new Error(`${arq}: o conceito da base "${conceito}" tem ${n} palavras de tamanho, e o conversor não sabe qual trocar`);
+  return n ? String(conceito).replace(RE_TAMANHO, (m, antes) => antes + porte) : conceito;
+}
 function montaFonte(f, todas) {
   const velha = f.site ? fontePorId(f.id) : null; // depois da etapa 4, a fonte de hoje já está no id definitivo
   const irma = IRMA[f.arq] ? todas.find((x) => x.arq === IRMA[f.arq]) : null;
@@ -767,7 +777,7 @@ function montaFonte(f, todas) {
     categoria: f.categoria,
     categoriaLegada: categoriaLegadaDe(f, velha),
     papel: f.papel,
-    conceito: velha?.conceito ?? `animal ${f.porte}`,
+    conceito: velha?.conceito != null ? conceitoComPorte(velha.conceito, f.porte, f.arq) : `animal ${f.porte}`,
     descricao: f.descricao,
     ...(velha?.descricaoLegada ? { descricaoLegada: velha.descricaoLegada } : {}),
     tags: velha?.tags ?? [],

@@ -330,6 +330,17 @@ try {
   para('Escavação fora da forma', TERRA, TERRA + '| Escavação | rápida | |\n', /Escavação "rápida" fora da forma que o conversor lê/);
   para('Terreno vizinho que não é sinônimo', '| Terreno | Ruínas |', '| Terreno | Mar |', /Terreno fora do conjunto: Mar/);
 
+  // O CONCEITO NÃO DESMENTE O TAMANHO (despacho do Arquiteto de 24/10/2026): a palavra de tamanho do conceito da
+  // base vira o porte da ficha (Médio). A base é uma fixture como a do polvo ("animal Pequeno").
+  const TSV_POLVO = `${TSV_CAB}\npolvo\tpolvo\tPolvo\tAnimal\tteste\t${ID}\tNÃO\tnão\t\t\tnull\t\t\n`;
+  const lerSaida = (rotulo, id) => { const a = path.join(tmp, rotulo, 'saida', id + '.json'); return fs.existsSync(a) ? JSON.parse(fs.readFileSync(a, 'utf8')) : null; };
+  const cp = roda(FICHA, 'conceito com porte', TSV_POLVO, { polvo: { id: 'polvo', nome: 'Polvo', categoria: 'Animal', conceito: 'animal Pequeno' } });
+  ok(cp.status === 0 && lerSaida('conceito com porte', 'polvo')?.conceito === 'animal Médio', `o conceito "animal Pequeno" da base vira o porte da ficha: "${lerSaida('conceito com porte', 'polvo')?.conceito}"`);
+  const cs = roda(FICHA, 'conceito sem tamanho', TSV_POLVO, { polvo: { id: 'polvo', nome: 'Polvo', categoria: 'Animal', conceito: 'herói inimigo' } });
+  ok(cs.status === 0 && lerSaida('conceito sem tamanho', 'polvo')?.conceito === 'herói inimigo', `o conceito sem palavra de tamanho fica: "${lerSaida('conceito sem tamanho', 'polvo')?.conceito}"`);
+  const c2 = roda(FICHA, 'conceito com dois tamanhos', TSV_POLVO, { polvo: { id: 'polvo', nome: 'Polvo', categoria: 'Animal', conceito: 'animal Pequeno ou grande' } });
+  ok(c2.status !== 0 && /tem 2 palavras de tamanho/.test(c2.saida), `o conceito com duas palavras de tamanho para: ${(c2.saida.split('\n').find((l) => /palavras de tamanho/.test(l)) || 'exit ' + c2.status).trim()}`);
+
   // A jogada comum, sem frase: o corpo a corpo vai pelo maior (o animal ágil, como o gato).
   const agil = roda(FICHA.replace('| Força | 4 |', '| Força | 2 |').replace('"forca":4', '"forca":2').replace('Jogada: Força 4 + Armas 3', 'Jogada: Destreza 3 + Armas 3'), 'jogada comum pelo maior');
   const toque = (agil.json?.ataques || []).find((a) => a.nome === 'Toque gelado');

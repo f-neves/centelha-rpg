@@ -6793,7 +6793,7 @@
   "nomeIngles": "Riding Dog",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "monstro Médio",
+  "conceito": "monstro Pequeno",
   "descricao": "Cão grande de guarda e de guerra, levado às arenas de Roma e usado pelos conquistadores espanhóis; calmo em casa, derruba e segura quem invade.",
   "tags": [
    "monstro"
@@ -7731,7 +7731,7 @@
   "nomeIngles": "Wolverine",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Médio",
+  "conceito": "animal Pequeno",
   "descricao": "Mustelídeo do tamanho de um cão médio que vive de carniça no inverno ártico e mata caribu depois de persegui-lo por até 62 km. Esconde a comida para voltar a ela.",
   "tags": [
    "fera"
@@ -8631,7 +8631,7 @@
   "nomeIngles": "Giant Centipede",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "praga Médio",
+  "conceito": "praga Pequeno",
   "descricao": "Pendura-se no teto da caverna pelos últimos pares de patas, agarra o morcego com os da frente e come ali mesmo, de cabeça para baixo; não larga a presa.",
   "tags": [
    "fera"
@@ -9653,7 +9653,7 @@
   "nomeIngles": "Raven",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Minúsculo",
+  "conceito": "animal Pequeno",
   "descricao": "Segue lobos no inverno até as carcaças e rouba o que outros corvos esconderam. Resolve problemas de ferramenta em laboratório.",
   "tags": [
    "fera"
@@ -9778,7 +9778,7 @@
   "nomeIngles": "Couatl",
   "categoria": "Outsider",
   "tipo": "chefe",
-  "conceito": "exterior Médio",
+  "conceito": "exterior Grande",
   "descricao": "Serpente emplumada, guardiã antiga e telepata de templos esquecidos, que fala por imagens na mente de quem se aproxima com respeito. Conjura portais, barreiras e encantos, muda de forma e, quando precisa, morde com veneno e esmaga.",
   "tags": [
    "exterior",
@@ -10218,7 +10218,7 @@
   "nomeIngles": "Gelatinous Cube",
   "categoria": "Limo",
   "tipo": "soldado",
-  "conceito": "limo Grande",
+  "conceito": "limo Enorme",
   "descricao": "Massa transparente e quase invisível que desliza por corredores e câmaras subterrâneas, dissolvendo devagar tudo o que toca. Não persegue: avança e engole. Dentro dele ficam moedas, ossos e fivelas de todos que morreram ali.",
   "tags": [
    "limo",
@@ -10932,7 +10932,7 @@
   "nomeIngles": "Angel, Astral Deva",
   "categoria": "Celestial",
   "tipo": "chefe",
-  "conceito": "exterior Médio (anjo)",
+  "conceito": "exterior Grande (anjo)",
   "descricao": "Anjo de asas brancas que anda disfarçado de peregrina entre os mortais: cura, aconselha e protege. Quando o mal ataca primeiro, luta com a maça, e a luz do golpe queima demônios e mortos-vivos.",
   "tags": [
    "celestial",
@@ -12979,7 +12979,7 @@
   "nomeIngles": "Dracolisk",
   "categoria": "Dragão",
   "tipo": "elite",
-  "conceito": "dragão Médio",
+  "conceito": "dragão Enorme",
   "descricao": "Dragão menor nascido de dragões negros e basiliscos, de patas curtas e voo pesado. Sopra uma linha de ácido de longe e transforma em pedra com o olhar quem chega perto.",
   "tags": [
    "dragao",
@@ -13137,7 +13137,7 @@
   "nomeIngles": "Dragon, Adult Blue",
   "categoria": "Dragão",
   "tipo": "chefe",
-  "conceito": "dragão Enorme",
+  "conceito": "dragão Imenso",
   "descricao": "Dragão azul adulto de 9,5 m, ilusionista do deserto. Espera enterrado na areia, emerge com um relâmpago em linha de 18 m e esconde onde está com miragens.",
   "tags": [
    "dragao",
@@ -13339,7 +13339,7 @@
   "nomeIngles": "Dragon, Young White",
   "categoria": "Dragão",
   "tipo": "elite",
-  "conceito": "dragão Grande",
+  "conceito": "dragão Enorme",
   "descricao": "Predador alado das montanhas geladas: sopra frio de cima, desce para morder e some na neve. Orgulhoso e ganancioso, mais fera que os outros dragões.",
   "tags": [
    "dragao",
@@ -13533,7 +13533,7 @@
   "nomeIngles": "Dragon, Adult Gold",
   "categoria": "Dragão",
   "tipo": "chefe",
-  "conceito": "dragão Enorme (metálico)",
+  "conceito": "dragão Imenso (metálico)",
   "descricao": "Dragão dourado adulto de 9,5 m, o mais nobre dos dragões. Anda entre as pessoas em forma humana, cura e protege os aliados, enfraquece com um sopro de gás quem pode ser poupado e queima com fogo quem não pode.",
   "tags": [
    "dragao",
@@ -13736,7 +13736,7 @@
   "nomeIngles": "Dragon, Adult Green",
   "categoria": "Dragão",
   "tipo": "chefe",
-  "conceito": "dragão Enorme",
+  "conceito": "dragão Imenso",
   "descricao": "Dragão verde adulto de 9 m, manipulador das florestas. Engana e manobra antes de lutar; se luta, prende com vinhas, sopra ácido em cone de 12 m e morde quem ficou preso.",
   "tags": [
    "dragao",
@@ -13923,7 +13923,7 @@
   "nomeIngles": "Dragon, Adult Red",
   "categoria": "Dragão",
   "tipo": "chefe",
-  "conceito": "dragão Enorme",
+  "conceito": "dragão Imenso",
   "descricao": "Dragão vermelho adulto de 9 m, feiticeiro alado temível. Sopra fogo em cone de 12 m, queima quem o toca com a aura das escamas e conjura encantos, ilusões e barreiras. Orgulhoso e ganancioso.",
   "tags": [
    "dragao",
@@ -14132,7 +14132,7 @@
   "nomeIngles": "Dragon, Ancient Red",
   "categoria": "Dragão",
   "tipo": "chefe",
-  "conceito": "dragão Imenso",
+  "conceito": "dragão Colossal",
   "descricao": "Dragão vermelho de séculos, de 16,5 m. Sopra fogo em cone de 15 m, paralisa de medo quem o vê e conjura portais, barreiras e telecinese. Ninguém o surpreende.",
   "tags": [
    "dragao",
@@ -14350,7 +14350,7 @@
   "nomeIngles": "Dragon, Young Red",
   "categoria": "Dragão",
   "tipo": "chefe",
-  "conceito": "dragão Grande",
+  "conceito": "dragão Enorme",
   "descricao": "Dragão vermelho jovem de 4,9 m, ainda longe do tamanho adulto. Mergulha do alto, sopra fogo em cone de 9 m e faz inimigos comuns hesitarem só com a presença.",
   "tags": [
    "dragao",
@@ -14541,7 +14541,7 @@
   "nomeIngles": "Komodo dragon",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Médio",
+  "conceito": "animal Pequeno",
   "descricao": "Anda o dia pela área de vida seguindo o cheiro de carniça e de presa; chega perto sem ser visto, joga a presa no chão e rasga com os dentes serrilhados. O veneno faz o sangue não coagular. Os grandes comem primeiro.",
   "tags": [
    "fera"
@@ -19466,7 +19466,7 @@
   "nomeIngles": "Peregrine falcon",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Minúsculo",
+  "conceito": "animal Pequeno",
   "descricao": "Sobe alto, escolhe a ave e desce em espiral; golpeia no ar e mata pelo pescoço. Migra entre continentes.",
   "tags": [
    "fera"
@@ -20054,7 +20054,7 @@
   "nomeIngles": "Dragon, Wyrmling Red",
   "categoria": "Dragão",
   "tipo": "elite",
-  "conceito": "dragão Médio",
+  "conceito": "dragão Grande",
   "descricao": "Filhote de dragão vermelho de 2,7 m, que já nasce mágico. Sopra fogo em cone de 9 m, morde e rasga, e já guarda um pequeno tesouro com o orgulho dos adultos.",
   "tags": [
    "dragao",
@@ -20232,7 +20232,7 @@
   "nomeIngles": "Will-o'-Wisp",
   "categoria": "Aberração",
   "tipo": "elite",
-  "conceito": "aberração Pequeno",
+  "conceito": "aberração Miúdo",
   "descricao": "Luz que paira sobre pântanos e charcos imitando uma fogueira distante ou uma lanterna amiga. Leva o viajante perdido para longe da segurança, saboreia o pânico de quem ainda acredita estar sendo salvo e o fere com um toque elétrico. Some de vista quando quer.",
   "tags": [
    "aberracao",
@@ -20822,7 +20822,7 @@
   "nomeIngles": "Gargoyle",
   "categoria": "Humanoide monstruoso",
   "tipo": "soldado",
-  "conceito": "humanoide monstruoso Médio",
+  "conceito": "humanoide monstruoso Grande",
   "descricao": "Guardiã alada de pedra viva que passa dias imóvel como estátua em templos e ruínas, e desperta em silêncio para cair do alto sobre quem profanou o lugar. Não come, não dorme e não respira.",
   "tags": [
    "monstro",
@@ -20977,7 +20977,7 @@
   "nomeIngles": "Cat",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Minúsculo",
+  "conceito": "animal Miúdo",
   "descricao": "Caçador de emboscada de presa pequena, que mata bilhões de aves e mamíferos por ano onde é solto. Diante de gente não é perigo de luta; o perigo é a doença do arranhão e da mordida.",
   "tags": [
    "fera"
@@ -21112,7 +21112,7 @@
   "nomeIngles": "Ochre Jelly",
   "categoria": "Limo",
   "tipo": "elite",
-  "conceito": "limo Grande",
+  "conceito": "limo Médio",
   "descricao": "Massa amarelada que espera no escuro e cai sobre a presa: aperta, dissolve a carne e deixa os ossos limpos. Espada e lança só a dividem em duas.",
   "tags": [
    "limo",
@@ -24357,7 +24357,7 @@
   "nomeIngles": "Gorilla",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Grande",
+  "conceito": "animal Médio",
   "descricao": "O dorso-prateado fica de pé, bate no peito, rosna e investe, mas raramente acerta: passa direto e pode investir de novo. Não defende território (as áreas dos grupos se sobrepõem), e ataca roças.",
   "tags": [
    "fera"
@@ -24721,7 +24721,7 @@
   "nomeIngles": "Griffon",
   "categoria": "Besta mágica",
   "tipo": "fera",
-  "conceito": "besta mágica Grande",
+  "conceito": "besta mágica Enorme",
   "descricao": "Caça em mergulho, com a vista da águia e a força do leão. Vive em casal ou bando pequeno em ninhos de penhasco e ataca qualquer coisa que cruze o espaço aéreo dele.",
   "tags": [
    "besta-magica",
@@ -25038,7 +25038,7 @@
   "nomeIngles": "Cheetah",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Médio",
+  "conceito": "animal Pequeno",
   "descricao": "Espreita de perto e dispara numa arrancada de poucos segundos; se não pega, desiste. Cede a presa a qualquer predador maior que chegue.",
   "tags": [
    "fera"
@@ -25178,7 +25178,7 @@
   "nomeIngles": "Harpy",
   "categoria": "Humanoide monstruoso",
   "tipo": "soldado",
-  "conceito": "humanoide monstruoso Médio",
+  "conceito": "humanoide monstruoso Grande",
   "descricao": "Mulher-ave de asas largas que faz ninho em penhascos e ruínas à beira-mar. Atrai viajantes e marinheiros com um canto que cativa, e o bando despedaça a presa hipnotizada com garras e dentes.",
   "tags": [
    "monstro",
@@ -25639,7 +25639,7 @@
   "nomeIngles": "Hyena",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Médio",
+  "conceito": "animal Pequeno",
   "descricao": "Caça em clã e persegue até a presa cair; perde a carcaça para o leão e toma a do leopardo. Ataca gente sobretudo à noite, e a vítima típica é a criança sozinha.",
   "tags": [
    "fera"
@@ -25772,7 +25772,7 @@
   "nomeIngles": "Dire Hyena",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Grande",
+  "conceito": "animal Médio",
   "descricao": "Predador corredor da Mongólia do fim do Eoceno, maior que um leão, com cabeça grande e dentes de quebrar osso, numa paisagem que secava e se abria.",
   "tags": [
    "fera"
@@ -27016,7 +27016,7 @@
   "nomeIngles": "Boa constrictor",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Médio",
+  "conceito": "animal Pequeno",
   "descricao": "Espera imóvel, à noite ou no crepúsculo, a presa passar; morde para segurar e aperta até o coração da presa parar.",
   "tags": [
    "fera"
@@ -28063,7 +28063,7 @@
   "nomeIngles": "Lamia",
   "categoria": "Humanoide monstruoso",
   "tipo": "elite",
-  "conceito": "humanoide monstruoso Grande",
+  "conceito": "humanoide monstruoso Médio",
   "descricao": "Torso de mulher sobre corpo de leão, que vive em ruínas e oásis enganosos no limite do deserto. Seduz viajantes com ilusões de beleza e drena pelo toque a sabedoria e a vontade de quem cai no encanto.",
   "tags": [
    "monstro",
@@ -28214,7 +28214,7 @@
   "nomeIngles": "Lion",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Grande",
+  "conceito": "animal Médio",
   "descricao": "Em geral foge de quem está a pé, mas há antropofagia ocasional: os leões de Tsavo comeram cerca de 35 pessoas.",
   "tags": [
    "fera"
@@ -28763,7 +28763,7 @@
   "nomeIngles": "Leopard",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Médio",
+  "conceito": "animal Pequeno",
   "descricao": "Emboscador solitário que chega a poucos metros da presa e a leva árvore acima para não perdê-la. Vive em quase todo lugar, inclusive na periferia das cidades, e os comedores de gente da história (Rudraprayag, Panar) eram leopardos.",
   "tags": [
    "fera"
@@ -29519,7 +29519,7 @@
   "nomeIngles": "Ice Linnorm",
   "categoria": "Dragão",
   "tipo": "chefe",
-  "conceito": "dragão Colossal",
+  "conceito": "dragão Enorme",
   "descricao": "Serpente-dragão sem asas de 24 m, senhor das geleiras e dos picos varridos pelo vento. Cospe uma geleia que endurece em gelo e prende quem atinge; as vítimas aparecem anos depois, inteiras dentro de blocos de gelo.",
   "tags": [
    "dragao",
@@ -29701,7 +29701,7 @@
   "nomeIngles": "Tarn Linnorm",
   "categoria": "Dragão",
   "tipo": "chefe",
-  "conceito": "dragão Colossal",
+  "conceito": "dragão Enorme",
   "descricao": "O mais antigo e mortal dos linnorms, serpente-dragão de duas cabeças e 36 m dos lagos gelados. Cospe ácido, morde com as duas cabeças, prende com a cauda e fecha as próprias feridas; quem o mata nunca mais sara direito.",
   "tags": [
    "dragao",
@@ -29908,7 +29908,7 @@
   "nomeIngles": "Crag Linnorm",
   "categoria": "Dragão",
   "tipo": "chefe",
-  "conceito": "dragão Imenso",
+  "conceito": "dragão Enorme",
   "descricao": "O menor dos linnorms, serpente-dragão sem asas de 18 m e sangue vulcânico. Cospe lava, morde com veneno que arde por dentro e fecha as próprias feridas; quem o mata carrega a maldição do fogo.",
   "tags": [
    "dragao",
@@ -30248,7 +30248,7 @@
   "nomeIngles": "Wolf",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Médio",
+  "conceito": "animal Pequeno",
   "descricao": "Caça em matilha e cerca a presa grande; sozinho, pega castor e lebre. Defende território de 130 a 13.000 km² por uivo e cheiro, e ataca gente raramente, quase sempre com raiva.",
   "tags": [
    "fera"
@@ -30379,7 +30379,7 @@
   "nomeIngles": "Dire Wolf",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Grande",
+  "conceito": "animal Pequeno",
   "descricao": "Lobo do tamanho de um lobo-cinzento grande e mais pesado, que caçava presa grande em matilha. Extinto há cerca de 10.000 anos, com o fim da megafauna.",
   "tags": [
    "fera"
@@ -30640,7 +30640,7 @@
   "nomeIngles": "Giant Mantis",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "praga Grande",
+  "conceito": "praga Médio",
   "descricao": "Espera imóvel no mato, o tórax erguido e as patas dobradas; quando a presa entra no alcance, o golpe sai rápido demais para ser corrigido no meio, prende e ela come ali, viva.",
   "tags": [
    "fera"
@@ -30785,7 +30785,7 @@
   "nomeIngles": "Humboldt squid",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Médio",
+  "conceito": "animal Pequeno",
   "descricao": "Sobe da escuridão à noite em cardume, piscando vermelho e branco, e cerca o que se move.",
   "tags": [
    "fera"
@@ -31212,7 +31212,7 @@
   "nomeIngles": "Monkey",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Minúsculo",
+  "conceito": "animal Miúdo",
   "descricao": "Macaco de bando do Brasil, do tamanho de um gato, que quebra coco batendo com pedras de quase metade do próprio peso.",
   "tags": [
    "fera"
@@ -32643,7 +32643,7 @@
   "nomeIngles": "Mephit",
   "categoria": "Outsider",
   "tipo": "soldado",
-  "conceito": "exterior Pequeno",
+  "conceito": "exterior Médio",
   "descricao": "Diabrete alado de matéria elemental, servo de senhores elementais, irritante e imprevisível. Provoca de cima, sopra o próprio elemento num cone e foge, e as armas comuns mal o ferem.",
   "tags": [
    "exterior",
@@ -34825,7 +34825,7 @@
   "nomeIngles": "Spirit Naga",
   "categoria": "Aberração",
   "tipo": "chefe",
-  "conceito": "aberração Grande",
+  "conceito": "aberração Médio",
   "descricao": "Serpente longeva e arrogante que se enrosca sobre tesouros em templos afundados e ruínas de civilizações que ela viu cair. Encanta com o olhar, cospe veneno e conjura fogo e ilusões antes mesmo de pensar em negociar.",
   "tags": [
    "aberracao",
@@ -34999,7 +34999,7 @@
   "nomeIngles": "Guardian Naga",
   "categoria": "Aberração",
   "tipo": "chefe",
-  "conceito": "aberração Grande",
+  "conceito": "aberração Médio",
   "descricao": "Serpente de escamas radiantes e capuz de cobra que protege cachoeiras, picos e templos dignos de reverência. Um casal se instala perto do lugar e cria a ninhada ali; os filhotes partem ou assumem a guarda. Morde e cospe veneno, e conjura proteção e cura.",
   "tags": [
    "aberracao",
@@ -35151,7 +35151,7 @@
   "nomeIngles": "Dark Naga",
   "categoria": "Aberração",
   "tipo": "chefe",
-  "conceito": "aberração Grande",
+  "conceito": "aberração Médio",
   "descricao": "Serpente de escamas negras e brilhantes que desliza por ruínas atrás de tesouros e joias mórbidas. Lê os pensamentos de quem está perto, manipula com mentiras quem não consegue subjugar e destrói com veneno e raios quem resiste.",
   "tags": [
    "aberracao",
@@ -35315,7 +35315,7 @@
   "nomeIngles": "King cobra",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Médio",
+  "conceito": "animal Miúdo",
   "descricao": "Anda de dia pelo mato seguindo o cheiro de outras serpentes, que mata com o veneno e engole inteiras. Acuada, ergue o corpo à altura de um homem, abre o capuz e rosna. A fêmea faz um monte de folhas para os ovos e o guarda.",
   "tags": [
    "fera"
@@ -35576,7 +35576,7 @@
   "nomeIngles": "Neothelid",
   "categoria": "Aberração",
   "tipo": "chefe",
-  "conceito": "aberração Imenso",
+  "conceito": "aberração Enorme",
   "descricao": "Verme colossal que já governou impérios inteiros no fundo do mundo subterrâneo e hoje sobrevive em lendas de horror. Esmaga a mente de quem o enfrenta, cospe ácido, prende com as línguas tentaculares e engole a presa viva. Encanta, move as coisas com a mente e some por teletransporte.",
   "tags": [
    "aberracao",
@@ -37616,7 +37616,7 @@
   "nomeIngles": "Pixie",
   "categoria": "Fada",
   "tipo": "soldado",
-  "conceito": "fada Pequeno",
+  "conceito": "fada Miúdo",
   "descricao": "Fadinha de 30 cm, invisível quando quer, que prega peças nos viajantes: a flecha dela faz dormir ou esquecer a última hora. Raramente faz mal de verdade, mas não perdoa quem fere o bosque.",
   "tags": [
    "fada",
@@ -38079,7 +38079,7 @@
   "nomeIngles": "Common octopus",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Pequeno",
+  "conceito": "animal Médio",
   "descricao": "Some no fundo mudando de cor e textura; pego, morde, e a mordida inflama por dias.",
   "tags": [
    "fera"
@@ -38213,7 +38213,7 @@
   "nomeIngles": "Giant octopus",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Grande",
+  "conceito": "animal Imenso",
   "descricao": "Espera na toca, com a cor da rocha; o que passa perto vai para os braços e para o bico.",
   "tags": [
    "fera"
@@ -38502,7 +38502,7 @@
   "nomeIngles": "Electric eel",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Pequeno",
+  "conceito": "animal Miúdo",
   "descricao": "Quem pisa na água dele leva o choque; quem o tira da água leva o pior, porque o ar não deixa a corrente fugir.",
   "tags": [
    "fera"
@@ -38642,7 +38642,7 @@
   "nomeIngles": "Pseudodragon",
   "categoria": "Dragão",
   "tipo": "soldado",
-  "conceito": "dragão Minúsculo",
+  "conceito": "dragão Médio",
   "descricao": "Primo pequeno dos dragões, do tamanho de um gato com asas. Tímido e brincalhão, fala pela mente e por ronronados, e segue de bom grado quem o trata como igual. Quando precisa, crava o ferrão da cauda, que faz dormir.",
   "tags": [
    "dragao",
@@ -39490,7 +39490,7 @@
   "nomeIngles": "Giant Frog",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Médio",
+  "conceito": "animal Pequeno",
   "descricao": "Fica parada nas pedras molhadas das corredeiras e abocanha o que passa. Ao menor sinal de gente, salta para a água. O macho cava uma poça na margem para os ovos, arrastando pedras.",
   "tags": [
    "monstro"
@@ -41080,7 +41080,7 @@
   "nomeIngles": "Giant leech",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "praga Médio",
+  "conceito": "praga Grande",
   "descricao": "Espera no fundo de lama; quando alguém entra quente na água, vem ondulando e fixa a ventosa.",
   "tags": [
    "fera"
@@ -43705,7 +43705,7 @@
   "nomeIngles": "Tiger",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Grande",
+  "conceito": "animal Médio",
   "descricao": "Emboscador solitário que mata presa maior que ele e a arrasta para o mato. Atravessa rios a nado. Evita gente onde pode; nos Sundarbans, caça gente.",
   "tags": [
    "fera"
@@ -43963,7 +43963,7 @@
   "nomeIngles": "Tyrannosaurus",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Imenso",
+  "conceito": "animal Enorme",
   "descricao": "Predador do topo e carniceiro, que quebra osso a mordidas. Caminhante econômico, de andar preferido de 4,6 km/h (van Bijlert e colegas 2021): cobre terreno andando, sem correr.",
   "tags": [
    "fera"
@@ -45489,7 +45489,7 @@
   "nomeIngles": "Brown Bear",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Grande",
+  "conceito": "animal Médio",
   "descricao": "Solitário e onívoro, que foge de gente na maior parte das vezes. Ataca sobretudo a fêmea defendendo filhotes (47%), no encontro de surpresa (20%) ou quando é atacado (10%); 14,3% dos 664 ataques de 2000 a 2015 foram fatais.",
   "tags": [
    "fera"
@@ -46507,7 +46507,7 @@
   "nomeIngles": "Giant Wasp",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "praga Grande",
+  "conceito": "praga Enorme",
   "descricao": "Voa baixo procurando a toca da aranha; luta com ela, ferroa entre as pernas, arrasta o corpo paralisado de volta para a toca e fecha a entrada com o ovo lá dentro.",
   "tags": [
    "fera"
@@ -47257,7 +47257,7 @@
   "nomeIngles": "Wyvern",
   "categoria": "Dragão",
   "tipo": "elite",
-  "conceito": "dragão Grande",
+  "conceito": "dragão Enorme",
   "descricao": "Dragão menor de duas patas e asas de couro, caçador territorial das montanhas. Mergulha do alto sobre o gado e o viajante isolado, crava o ferrão venenoso da cauda e espera o veneno agir. Orcs e goblins às vezes o domam como montaria de guerra.",
   "tags": [
    "dragao",
