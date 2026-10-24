@@ -341,6 +341,16 @@ try {
   const c2 = roda(FICHA, 'conceito com dois tamanhos', TSV_POLVO, { polvo: { id: 'polvo', nome: 'Polvo', categoria: 'Animal', conceito: 'animal Pequeno ou grande' } });
   ok(c2.status !== 0 && /tem 2 palavras de tamanho/.test(c2.saida), `o conceito com duas palavras de tamanho para: ${(c2.saida.split('\n').find((l) => /palavras de tamanho/.test(l)) || 'exit ' + c2.status).trim()}`);
 
+  // AS VIRTUDES, cada uma com o próprio número (achado do Arquiteto de 24/10/2026: "Compaixão 2, Convicção 3,
+  // Temperança 1" saía 1, 1 e 1, o lobisomem e o aasimar). A ficha de teste tem "Bravura 3; Compaixão 1, Convicção 3,
+  // Temperança 2"; a forma "Compaixão, Convicção e Temperança 1" vale as três; Virtude sem número para.
+  const vt = (x) => JSON.stringify(x?.virtues);
+  ok(vt(j) === JSON.stringify({ compaixao: 1, conviccao: 3, temperanca: 2, valor: 3 }), `cada Virtude com o próprio número: ${vt(j)}`);
+  const VIRT = '| Virtudes | Bravura 3; Compaixão 1, Convicção 3, Temperança 2 |';
+  const vj = roda(FICHA.replace(VIRT, '| Virtudes | Bravura 4; Compaixão, Convicção e Temperança 2 |'), 'virtudes juntas');
+  ok(vj.status === 0 && vt(vj.json) === JSON.stringify({ compaixao: 2, conviccao: 2, temperanca: 2, valor: 4 }), `"Compaixão, Convicção e Temperança 2" vale as três: ${vt(vj.json)}`);
+  para('Virtude sem número', VIRT, '| Virtudes | Bravura 3; Compaixão, Convicção 3, Temperança 2 |', /Virtudes: "Compaixão, Convicção 3, Temperança 2" fora das formas/);
+
   // A jogada comum, sem frase: o corpo a corpo vai pelo maior (o animal ágil, como o gato).
   const agil = roda(FICHA.replace('| Força | 4 |', '| Força | 2 |').replace('"forca":4', '"forca":2').replace('Jogada: Força 4 + Armas 3', 'Jogada: Destreza 3 + Armas 3'), 'jogada comum pelo maior');
   const toque = (agil.json?.ataques || []).find((a) => a.nome === 'Toque gelado');

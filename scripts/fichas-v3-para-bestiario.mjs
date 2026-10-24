@@ -392,11 +392,24 @@ function converte(arq) {
   const willpower = parseInt(celula(vva, 'Vontade').replace(/\*/g, ''), 10);
   const aparencia = parseInt(celula(vva, 'Aparência').replace(/\*/g, ''), 10);
   const virtues = { compaixao: 0, conviccao: 0, temperanca: 0, valor: 0 };
-  for (const parte of celula(vva, 'Virtudes').replace(/\*/g, '').split(';')) {
-    const n = /(\d+)\s*$/.exec(parte.trim()); if (!n) continue;
-    // A Virtude se chama Bravura na ficha desde 22/10/2026 (decisão 40 do autor); o id no JSON continua `valor` (C-15)
-    for (const [k, rot] of [['compaixao', 'Compaixão'], ['conviccao', 'Convicção'], ['temperanca', 'Temperança'], ['valor', 'Bravura']]) if (parte.includes(rot)) virtues[k] = Number(n[1]);
+  // CADA VIRTUDE COM O PRÓPRIO NÚMERO (achado do Arquiteto de 24/10/2026): antes a linha se partia só por ";" e cada
+  // parte levava o último número dela, e "Compaixão 2, Convicção 3, Temperança 1" saía 1, 1 e 1. As duas formas
+  // das fichas: "Compaixão 2, Convicção 3, Temperança 1" (cada uma o seu) e "Compaixão, Convicção e Temperança 1"
+  // (um número para as listadas). As partes vão separadas por ";". As quatro têm de sair, cada uma uma vez; qualquer
+  // outra forma para. A Virtude se chama Bravura na ficha desde 22/10/2026 (decisão 40); o id é `valor` (C-15).
+  const VIRTUDE = { 'Compaixão': 'compaixao', 'Convicção': 'conviccao', 'Temperança': 'temperanca', 'Bravura': 'valor' };
+  const NOME_V = '(Compaixão|Convicção|Temperança|Bravura)';
+  const vistas = new Set();
+  const poe = (nome, n) => { const k = VIRTUDE[nome]; if (vistas.has(k)) aviso.push(`Virtudes: "${nome}" repetida`); vistas.add(k); virtues[k] = n; };
+  for (const seg of celula(vva, 'Virtudes').replace(/\*/g, '').split(';').map((x) => x.trim()).filter(Boolean)) {
+    const itens = seg.split(/,\s*/);
+    const cada = itens.map((it) => new RegExp(`^${NOME_V}\\s+(\\d+)$`).exec(it.trim()));
+    if (cada.every(Boolean)) { for (const m of cada) poe(m[1], Number(m[2])); continue; }
+    const junto = new RegExp(`^(${NOME_V}(?:,\\s*${NOME_V})*\\s+e\\s+${NOME_V})\\s+(\\d+)$`).exec(seg);
+    if (junto) { for (const nome of junto[1].split(/,\s*|\s+e\s+/)) poe(nome.trim(), Number(junto[junto.length - 1])); continue; }
+    aviso.push(`Virtudes: "${seg}" fora das formas que o conversor lê ("Compaixão 2, Convicção 3" ou "Compaixão, Convicção e Temperança 1")`);
   }
+  for (const [nome, k] of Object.entries(VIRTUDE)) if (!vistas.has(k)) aviso.push(`Virtudes: falta ${nome}`);
   if (/\bValor\b/.test(celula(vva, 'Virtudes'))) throw new Error(`${arq}.md: a linha Virtudes diz "Valor"; o nome é Bravura (decisão 40 do autor)`);
   // Corpo e porte
   const alvo = (/\*\*([A-Za-zÀ-ú]+)\*\*/.exec(celula(corpoPorte, 'Tamanho')) || [])[1] || (celula(corpoPorte, 'Tamanho') || '').split(/[\s(]/)[0];
