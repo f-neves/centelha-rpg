@@ -5,9 +5,10 @@
   "nome": "Boca Tagarela",
   "nomeIngles": "Gibbering Mouther",
   "categoria": "Aberração",
+  "categoriaLegada": "Aberração",
   "papel": "elite",
   "conceito": "aberração Médio",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Massa disforme de olhos e bocas que balbuciam sem parar, como se mil vozes tentassem falar ao mesmo tempo. O coro confunde quem ouve, o chão vira lama em volta dela, e as bocas prendem, sugam o sangue e engolem.",
   "tags": [
     "aberracao",
     "centelha"
@@ -15,75 +16,139 @@
   "imagem": "bestiario/boca-tagarela_criatura.webp",
   "porte": "Médio",
   "dimensoes": {
-    "medida": "1,5 m de diâmetro",
-    "peso": "80 kg"
+    "medida": "0,8 m de comprimento, 0,24 m de altura",
+    "peso": "80 kg",
+    "comprimento": 0.8,
+    "largura": 0.8,
+    "altura": 0.24
   },
   "locomocao": {
     "terra": 1,
     "natacao": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
   },
   "centelha": 4,
   "attrs": {
     "forca": 2,
     "destreza": 5,
     "vigor": 7,
-    "influencia": 3,
-    "perspicacia": 2,
-    "compostura": 3,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 3,
+    "perspicacia": 2,
+    "compostura": 3
   },
   "skills": {
     "briga": 5,
     "esquiva": 1,
+    "atletismo": 1,
+    "furtividade": 1,
     "prontidao": 1,
+    "resistencia": 3,
     "integridade": 3
   },
+  "skills2": {
+    "natacao": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "surpresa",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "Agarrão",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 3,
+    "compaixao": 2,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
   "willpower": 9,
-  "aparencia": 1,
+  "aparencia": 0,
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
+      "nome": "Bocas",
+      "atrib": "destreza",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Olhos por Todo Lado",
-      "descricao": "Enxerga em todas as direções ao mesmo tempo e vê perfeitamente no escuro: jamais pode ser pego de surpresa por flancos."
+      "nome": "muitas bocas",
+      "descricao": "Bocas: a Rajada: até três golpes de Bocas na mesma ação, o teto da classe Leve, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
+      "classe": "livro"
     },
     {
-      "nome": "Massa Amorfa",
-      "descricao": "Seu corpo disforme absorve golpes certeiros e ataques furtivos sem sofrer mais do que o normal, e se espreme por qualquer fresta."
+      "nome": "agarrar",
+      "descricao": "Bocas: o Agarrão, com a Especialidade natural Briga (Agarrão) +2.",
+      "classe": "livro"
     },
     {
-      "nome": "Sugar o Sangue",
-      "descricao": "Ao prender uma vítima entre suas bocas, drena sangue dela a cada instante, causando dano contínuo enquanto a segura."
+      "nome": "Sugar o sangue",
+      "descricao": "Bocas: o dano do agarrão do livro, 2 × Força + Centelha = 8, de Impacto, e +1d6 por Margem da manutenção, a cada 6 Ticks: as bocas presas drenam o sangue.",
+      "classe": "livro"
     },
     {
-      "nome": "Engolir em Vida",
-      "descricao": "Pode tragar um inimigo de seu tamanho ou menor para dentro de si, onde várias bocas continuam a se alimentar até que ele corte caminho para fora."
+      "nome": "Engolir em vida",
+      "descricao": "espalhada, traga para dentro de si um inimigo do tamanho dela ou menor; dentro, as bocas seguem comendo até ele abrir caminho para fora cortando.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Coro Enlouquecedor",
-      "descricao": "Livremente, emite um coro de vozes desconexas que confunde a mente de todos ao redor, a menos que resistam com um teste de Compostura."
+      "nome": "Coro enlouquecedor",
+      "descricao": "poder natural (base Fascinação 2): Ativação: uma ação, Velocidade 5. Duração: até o fim da próxima ação de cada alvo. Alcance: 18 m, quem a ouve. Área: todos ao alcance, menos ela. Efeito: o balbuciar de mil vozes deixa o alvo Confuso. Dano: nenhum. Resistência: mente, contra Influência 3 + Integridade 3 + 2 × o menor entre Centelha 4 e Integridade 3 (6) = 12 mais a rolagem; quem passa fica livre dela até o fim da cena. Limite de uso: à vontade (site).",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Terreno Lodoso",
-      "descricao": "Pode amolecer o chão sob si à vontade, transformando pedra e terra em lama que atrapalha qualquer um menos ela."
+      "nome": "Terreno lodoso",
+      "descricao": "poder natural (base Terra 1): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena. Alcance: o chão sob ela. Área: círculo de 3 m em volta dela. Efeito: pedra e terra viram lama: Terreno difícil para todos, menos para ela. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Olhos por todo lado",
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: não fica Flanqueada. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Massa amorfa",
+      "descricao": "golpe certeiro e ataque furtivo não fazem nela mais do que o dano comum.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "passa por frestas",
+      "descricao": "o corpo sem forma se espreme por qualquer fresta (site).",
+      "classe": "como luta"
+    },
+    {
+      "nome": "coro e lama",
+      "descricao": "amolece o chão, enche o ar com o coro para confundir quem chega e cai sobre o mais próximo com as bocas; engole quem fica preso.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão em todas as direções e no escuro, pelos olhos espalhados (site)."
     }
   ],
   "lore": [
@@ -94,6 +159,14 @@
     {
       "titulo": "Origem nas profundezas",
       "texto": "Sábios especulam que nasceram de magia corrompida nas profundezas do mundo, criaturas que a natureza jamais pretendeu existir."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: sozinha."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Média amontoada, Grande espalhada. 46 PV, Impacto 11, Corte e Perfuração 4. Esquiva 14, Bloqueio 10. Bocas de dano médio 7,5, até três por ação (Rajada); agarra (+2) e suga 8 a cada manutenção. O coro deixa Confuso quem ouve (mente); o chão em volta vira lama. Não fica Flanqueada. Engole quem prende."
     }
   ],
   "ecologia": {
@@ -129,5 +202,35 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 46,
+    "esquiva": 14,
+    "bloqueio": 10,
+    "defesa": 14,
+    "defesaMental": 20,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 11,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 108.72,
+    "deslocamento": {
+      "terra": {
+        "batalha": 1,
+        "arranque": 2,
+        "corrida": 2
+      },
+      "nado": 2
+    }
+  },
+  "notasObservacao": [
+    "`medidas`: o diâmetro de 1,5 m do site é o da massa espalhada; amontoada, 0,8 m pela massa **[conta]**",
+    "`aparencia`: 0; o site tinha 1 (D-205) **[provisório]**",
+    "`ataques`: Bocas Leve no lugar das \"Garras e presas\" **[provisório]**",
+    "`compaixao`: 1, o piso da régua; o site tinha 0",
+    "`coro enlouquecedor`, `terreno lodoso`, `olhos por todo lado`: números sugeridos pela ficha (D-197)"
+  ]
 }

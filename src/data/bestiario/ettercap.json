@@ -5,9 +5,10 @@
   "nome": "Ettercap",
   "nomeIngles": "Ettercap",
   "categoria": "Aberração",
+  "categoriaLegada": "Aberração",
   "papel": "soldado",
   "conceito": "aberração Médio",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Figura quase humana de rosto de aranha e mãos em foice, que vive sozinho nas copas das florestas. Arma armadilhas de teia, prende de longe, morde com um veneno que tira a destreza e cria aranhas gigantes como sentinelas.",
   "tags": [
     "aberracao",
     "centelha"
@@ -15,34 +16,65 @@
   "imagem": "bestiario/ettercap_criatura.webp",
   "porte": "Médio",
   "dimensoes": {
-    "medida": "1,8 metro de altura",
-    "peso": "90 kg"
+    "medida": "1,8 m de altura",
+    "peso": "90 kg",
+    "largura": 0.48,
+    "altura": 1.8
   },
   "locomocao": {
     "terra": 3,
     "escalada": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 2,
   "attrs": {
     "forca": 4,
     "destreza": 5,
     "vigor": 5,
-    "influencia": 2,
-    "perspicacia": 1,
-    "compostura": 3,
     "percepcao": 4,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 3
   },
   "skills": {
     "briga": 4,
+    "bloqueio": 1,
     "esquiva": 1,
+    "atletismo": 2,
+    "furtividade": 3,
     "prontidao": 2,
-    "integridade": 3
+    "integridade": 3,
+    "sobrevivencia": 3
   },
+  "skills2": {
+    "escalada": 3,
+    "disparo": 2,
+    "adestramento": 2,
+    "musculatura": 1
+  },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "na teia",
+      "valor": 1,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "sobrevivencia",
+      "foco": "armadilhas de teia",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 3,
+    "compaixao": 2,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
@@ -50,36 +82,67 @@
   "aparencia": 1,
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
+      "nome": "Foices",
+      "atrib": "destreza",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Mordida",
+      "atrib": "destreza",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Mordida venenosa",
-      "descricao": "O veneno da mordida corrói a destreza da vítima a cada rodada, exigindo dois testes de Vigor seguidos para se livrar do efeito."
+      "nome": "teia",
+      "descricao": "fieiras: a da aranha-gigante do molde: ataque a distância, Vigor + Disparo (Vigor 5 + Disparo 2 + 2 × o menor entre Centelha 2 e Disparo 2, 4), até 6 m, 3 vezes por cena (recarga de 1 hora), Velocidade 6, tipo do ataque teia. Não causa dano. Acerto: o alvo fica Preso pela teia, como Preso pela Rede: não se desloca, mas age, com −2 na Esquiva e −2 no Bloqueio, e mais −1 em cada por grau de Margem do lançamento. Para se soltar: Força + Atletismo contra o total do lançamento, uma tentativa por ação.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Teia arremessada",
-      "descricao": "Lança fios pegajosos que prendem o alvo a distância, dificultando muito qualquer movimento."
+      "nome": "Mordida venenosa",
+      "descricao": "Mordida: a regra do veneno, com o veneno da linha Veneno e doença.",
+      "classe": "livro"
     },
     {
       "nome": "Mestre de armadilhas",
-      "descricao": "Constrói armadilhas de teia (fossos, laços, lanças ocultas) sem precisar de nada além de tempo e paciência."
+      "descricao": "arma armadilhas de teia (fossos cobertos, laços, lanças escondidas) só com tempo e paciência, sem ferramenta. O livro não tem regra de armadilha.",
+      "classe": "sem regra ainda"
     },
     {
       "nome": "Empatia com aranhas",
-      "descricao": "Consegue se comunicar e comandar aranhas gigantes, usando-as como sentinelas e guardiãs de seu covil."
+      "descricao": "fala com aranhas e manda nas aranhas gigantes, que lhe servem de sentinela e de guarda do covil.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Sentidos aguçados",
-      "descricao": "Enxerga no escuro e com pouca luz, e raramente é pego de surpresa."
+      "nome": "tecelão das copas",
+      "descricao": "espera nas copas, deixa a presa cair no fosso ou no laço, prende de longe com a teia, desce e morde; as aranhas que ele cria fecham o caminho.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro e com pouca luz: \"enxerga no escuro e com pouca luz, e raramente é pego de surpresa\" (site); a surpresa vai na Prontidão."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Peçonha de aranha gigante · Potência 18 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Destreza) · Desgaste 1 · pela Mordida. É o veneno do livro que tira a Destreza; os \"dois testes de Vigor seguidos\" do site viram o pool do livro."
     }
   ],
   "lore": [
@@ -90,6 +153,18 @@
     {
       "titulo": "Tecelão solitário",
       "texto": "Vive isolado nas copas das florestas, longe até dos de sua espécie, cercado apenas pelas teias e pelas aranhas que domestica."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: sozinho, com as aranhas que doma."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Peçonha de aranha gigante · Potência 18 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Destreza) · Desgaste 1 · pela Mordida. É o veneno do livro que tira a Destreza; os \"dois testes de Vigor seguidos\" do site viram o pool do livro."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, 40 PV, Impacto 7, Corte e Perfuração 2. Esquiva 14, Bloqueio 14 (15 com as foices). Teia a 6 m que prende (três vezes por cena); Foices de dano médio 9,5 e Mordida de 7,5 com a peçonha de aranha gigante do livro, que tira a Destreza. Sobe nas árvores a 3. Arma armadilhas e cria aranhas."
     }
   ],
   "ecologia": {
@@ -125,5 +200,36 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 40,
+    "esquiva": 14,
+    "bloqueio": 14,
+    "defesa": 15,
+    "defesaMental": 16,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 7,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 209.44,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    },
+    "bloqueioArma": 1
+  },
+  "notasObservacao": [
+    "`area`: escalada do corpo de base pela massa **[conta]**",
+    "`couraca`: nível 1 **[provisório]**",
+    "`bloqueio`: 1, pelas foices; o site não gravava Bloqueio **[provisório]**",
+    "`ataques`: Foices Média e Mordida Leve no lugar das \"Garras e presas\" **[provisório]**",
+    "`disparo`, `adestramento`, `musculatura`: 2, 2 e 1 **[provisório]**",
+    "`compaixao`: 1, o piso da régua; o site tinha 0"
+  ]
 }

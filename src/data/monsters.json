@@ -156,7 +156,7 @@
   "categoria": "Aberração",
   "tipo": "elite",
   "conceito": "aberração Enorme",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Peixe imenso das profundezas, mais velho que a memória dos povos, que fala dentro da cabeça das vítimas. Domina mentes, engana com ilusões e transforma quem toca com o muco dos tentáculos em escravo da água.",
   "tags": [
    "aberracao",
    "centelha",
@@ -167,7 +167,7 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "6,5 m de comprimento, corpo alongado com tentáculos",
+   "medida": "6,5 m de comprimento, 1,2 m de altura",
    "peso": "2,7 t"
   },
   "ecologia": {
@@ -194,7 +194,7 @@
    "raciocinio": 5
   },
   "pericias": {
-   "prontidao": 2,
+   "prontidao": 3,
    "esquiva": 1,
    "integridade": 5,
    "sociabilidade": 0,
@@ -203,9 +203,9 @@
   "vontade": 10,
   "aparencia": 1,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 4,
+   "conviccao": 4,
+   "temperanca": 4,
    "valor": 3
   },
   "combate": {
@@ -215,11 +215,11 @@
    "defesaMental": 30,
    "absorcao": {
     "impacto": 13,
-    "corte": 13,
-    "perfuracao": 13
+    "corte": 5,
+    "perfuracao": 5
    },
-   "resistenciaPerfuracao": 1,
-   "iniciativa": "1d6 + 7",
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 8",
    "deslocamento": {
     "batalha": 1,
     "arranque": 2,
@@ -227,10 +227,10 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Tentáculo",
      "pool": "7d6+2 +10",
-     "dano": "3d6 +15 perfurante",
-     "perfArma": 0,
+     "dano": "2d6 +15 impacto",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     }
@@ -238,92 +238,47 @@
   },
   "habilidades": [
    {
+    "nome": "Tentáculos múltiplos",
+    "descricao": "a Rajada: dois golpes de Tentáculo na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação. O site dava \"até quatro ataques secundários na mesma rodada\"; o livro deixa vários ataques por ação só por Rajada, empunhadura dupla, Poder Especial ou Proeza (C-046), e a Rajada é o caminho que o autor deu ao golpe duplo do rakshasa e do campeão (23/10)."
+   },
+   {
     "nome": "Muco transmutador",
-    "descricao": "toque de tentáculo transforma a pele do alvo, permitindo respirar água mas exigindo umidade constante (senão dano contínuo em terra seca)"
+    "descricao": "poder natural (base Matéria 3) · Tentáculo: Ativação: o Tentáculo que fere (1 de dano ou mais depois da Absorção). Duração: permanente, até uma Arte de Cura ou de Matéria desfazer (o Mestre decide o nível). Alcance: o do Tentáculo. Área: um alvo. Efeito: a pele do alvo vira membrana viscosa: respira água como ar; fora d'água, cada hora sem molhar a pele dá Desgaste 1, até molhá-la. Dano: nenhum além do Tentáculo. Resistência: corpo, Vigor + Resistência contra a jogada do Tentáculo. Limite de uso: uma vez por Tentáculo que fere."
    },
    {
     "nome": "Domínio psíquico",
-    "descricao": "falha em teste de Vontade torna o alvo Dominado, obedece ordens simples por cena"
+    "descricao": "poder natural (base Fascinação 4): Ativação: uma ação, Velocidade 7, olhando ou tocando o alvo. Duração: até o fim da cena, enquanto ele mantiver o contato. Alcance: 18 m. Área: um alvo. Efeito: o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (site). Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dele. Limite de uso: três vezes por dia."
+   },
+   {
+    "nome": "Ilusões",
+    "descricao": "poder natural (base Fascinação 5): Ativação: uma ação, Velocidade 8. Duração: até o fim da cena, ou enquanto ele mantiver. Alcance: 36 m. Área: uma cena de até 9 m de lado, projetada na mente de quem o encara. Efeito: vista e som que não existem: um caminho seguro que é precipício, um aliado que é ele, um perigo falso; quem toca ou desconfia e testa vê através dela. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dele, só para quem desconfia. Limite de uso: três vezes por dia."
    },
    {
     "nome": "Telepatia",
-    "descricao": "comunica-se mentalmente com qualquer criatura em alcance amplo, sem barreira de idioma"
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 90 m (site). Área: quem ele escolher ao alcance. Efeito: fala com qualquer criatura pela mente, sem língua em comum e sem abrir a boca. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Tentáculos múltiplos",
-    "descricao": "até quatro ataques secundários na mesma rodada"
+    "nome": "Preso à água",
+    "descricao": "Ativação: ficar fora d'água. Duração: até voltar à água. Alcance: o próprio corpo. Área: não se aplica. Efeito: a cada 10 minutos fora d'água, Desgaste 1 (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
     "nome": "Memória ancestral",
-    "descricao": "bônus em Conhecimentos e Ocultismo por lembranças de eras esquecidas"
+    "descricao": "as Especialidades naturais de Conhecimentos Gerais e Ocultismo."
    },
    {
     "nome": "Pele antiga e escamosa",
-    "descricao": "Absorção alta"
+    "descricao": "a Couraça nível 3."
    },
    {
-    "nome": "Respiração aquática obrigatória",
-    "descricao": "fora d'água por muito tempo fica Enfraquecido progressivamente"
+    "nome": "senhor do lago fundo",
+    "descricao": "não sobe à superfície; manda os escravos na frente, domina o mais forte do grupo, engana com ilusões e só agarra com os tentáculos quem chega perto da água."
    },
    {
-    "nome": "Presença alienígena",
-    "descricao": "quem falha ao resistir ao domínio também fica Abalado pelo contato mental"
-   },
-   {
-    "nome": "Telepatia",
-    "descricao": "Sentido passivo."
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga na água escura das profundezas. · telepatia: sente as mentes ao alcance dela (Manobras)."
    }
   ],
-  "poderes": [
-   {
-    "id": "muco-que-transforma-pele",
-    "nome": "Muco que transforma pele",
-    "tipo": "natural",
-    "resiste": "corpo",
-    "efeito": "toque que transforma a pele do alvo, dando respiração aquática mas exigindo umidade constante depois",
-    "base": {
-     "arte": "materia",
-     "nivel": 3
-    },
-    "ataque": "Garras e presas",
-    "descricao": "O toque de um tentáculo do aboleth cobre a pele do alvo com um muco que muda sua respiração: passa a respirar água como se fosse ar, mas se afastar da água por muito tempo sofre com a pele ressecando.",
-    "usos": {
-     "periodo": "golpe"
-    }
-   },
-   {
-    "id": "dominio-psiquico",
-    "nome": "Domínio psíquico",
-    "tipo": "natural",
-    "resiste": "mente",
-    "efeito": "domina a mente de quem falhar em resistir, que obedece ordens simples enquanto o aboleth mantiver o contato",
-    "base": {
-     "arte": "fascinacao",
-     "nivel": 4
-    },
-    "descricao": "O aboleth invade a mente de quem ele tocou ou encarou; falhando em resistir, a vítima obedece ordens simples do aboleth enquanto ele mantiver esse contato mental.",
-    "usos": {
-     "periodo": "dia",
-     "quantidade": 3
-    }
-   },
-   {
-    "id": "ilusoes-aboleth",
-    "nome": "Ilusões",
-    "tipo": "natural",
-    "resiste": "mente",
-    "efeito": "cria uma ilusão convincente (visão, som) para confundir ou enganar, poucas vezes por dia",
-    "base": {
-     "arte": "fascinacao",
-     "nivel": 5
-    },
-    "descricao": "O aboleth projeta diretamente na mente de quem o encara uma cena que não existe: um caminho seguro que é precipício, um aliado que é ele disfarçado, um perigo que não é real.",
-    "usos": {
-     "periodo": "dia",
-     "quantidade": 3
-    }
-   }
-  ],
+  "poderes": [],
   "locomocao": {
    "natacao": 6,
    "terra": 1
@@ -334,7 +289,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Paciente além de qualquer medida mortal, prefere manipular e escravizar a atacar diretamente. Fala dentro da mente das vítimas, sem precisar abrir a boca."
+    "texto": "Paciente além de qualquer medida mortal, prefere manipular e escravizar a atacar diretamente. Fala dentro da mente das vítimas, sem precisar abrir a boca. Social: colônias antigas, servidas por escravos transformados."
    },
    {
     "titulo": "Sociedade",
@@ -351,6 +306,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Os aboleths parecem mais velhos que a própria Fenda, talvez até mais velhos que a divisão da Primeira Luz em Centelhas individuais. Os sábios de Syl sussurram que são restos de uma era que o mundo esqueceu de matar."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Enorme, 75 PV, Impacto 13, Corte e Perfuração 5. Esquiva e Bloqueio 10. Tentáculo de 3 m, dano médio 22, dois por Rajada; quem é ferido ganha guelras e passa a depender da água. Três vezes por dia domina uma mente (Dominado e Abalado) e três vezes por dia cria ilusões. Nada a 6, em terra rasteja a 1 e se desgasta fora d'água. Defesa Mental 30."
    }
   ]
  },
@@ -4317,7 +4276,7 @@
   "categoria": "Aberração",
   "tipo": "elite",
   "conceito": "aberração Médio",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Massa disforme de olhos e bocas que balbuciam sem parar, como se mil vozes tentassem falar ao mesmo tempo. O coro confunde quem ouve, o chão vira lama em volta dela, e as bocas prendem, sugam o sangue e engolem.",
   "tags": [
    "aberracao",
    "centelha"
@@ -4327,7 +4286,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "1,5 m de diâmetro",
+   "medida": "0,8 m de comprimento, 0,24 m de altura",
    "peso": "80 kg"
   },
   "ecologia": {
@@ -4357,13 +4316,13 @@
    "esquiva": 1,
    "integridade": 3,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 1
   },
   "vontade": 9,
-  "aparencia": 1,
+  "aparencia": 0,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -4374,8 +4333,8 @@
    "defesaMental": 20,
    "absorcao": {
     "impacto": 11,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -4386,9 +4345,9 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "3d6+2 +8",
-     "dano": "1d6 +6 perfurante",
+     "nome": "Bocas",
+     "pool": "5d6 +9",
+     "dano": "1d6 +4 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -4397,28 +4356,48 @@
   },
   "habilidades": [
    {
-    "nome": "Olhos por Todo Lado",
-    "descricao": "Enxerga em todas as direções ao mesmo tempo e vê perfeitamente no escuro: jamais pode ser pego de surpresa por flancos."
+    "nome": "muitas bocas",
+    "descricao": "Bocas: a Rajada: até três golpes de Bocas na mesma ação, o teto da classe Leve, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
    },
    {
-    "nome": "Massa Amorfa",
-    "descricao": "Seu corpo disforme absorve golpes certeiros e ataques furtivos sem sofrer mais do que o normal, e se espreme por qualquer fresta."
+    "nome": "agarrar",
+    "descricao": "Bocas: o Agarrão, com a Especialidade natural Briga (Agarrão) +2."
    },
    {
-    "nome": "Sugar o Sangue",
-    "descricao": "Ao prender uma vítima entre suas bocas, drena sangue dela a cada instante, causando dano contínuo enquanto a segura."
+    "nome": "Sugar o sangue",
+    "descricao": "Bocas: o dano do agarrão do livro, 2 × Força + Centelha = 8, de Impacto, e +1d6 por Margem da manutenção, a cada 6 Ticks: as bocas presas drenam o sangue."
    },
    {
-    "nome": "Engolir em Vida",
-    "descricao": "Pode tragar um inimigo de seu tamanho ou menor para dentro de si, onde várias bocas continuam a se alimentar até que ele corte caminho para fora."
+    "nome": "Engolir em vida",
+    "descricao": "espalhada, traga para dentro de si um inimigo do tamanho dela ou menor; dentro, as bocas seguem comendo até ele abrir caminho para fora cortando."
    },
    {
-    "nome": "Coro Enlouquecedor",
-    "descricao": "Livremente, emite um coro de vozes desconexas que confunde a mente de todos ao redor, a menos que resistam com um teste de Compostura."
+    "nome": "Coro enlouquecedor",
+    "descricao": "poder natural (base Fascinação 2): Ativação: uma ação, Velocidade 5. Duração: até o fim da próxima ação de cada alvo. Alcance: 18 m, quem a ouve. Área: todos ao alcance, menos ela. Efeito: o balbuciar de mil vozes deixa o alvo Confuso. Dano: nenhum. Resistência: mente, contra Influência 3 + Integridade 3 + 2 × o menor entre Centelha 4 e Integridade 3 (6) = 12 mais a rolagem; quem passa fica livre dela até o fim da cena. Limite de uso: à vontade (site)."
    },
    {
-    "nome": "Terreno Lodoso",
-    "descricao": "Pode amolecer o chão sob si à vontade, transformando pedra e terra em lama que atrapalha qualquer um menos ela."
+    "nome": "Terreno lodoso",
+    "descricao": "poder natural (base Terra 1): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena. Alcance: o chão sob ela. Área: círculo de 3 m em volta dela. Efeito: pedra e terra viram lama: Terreno difícil para todos, menos para ela. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
+   },
+   {
+    "nome": "Olhos por todo lado",
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: não fica Flanqueada. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "Massa amorfa",
+    "descricao": "golpe certeiro e ataque furtivo não fazem nela mais do que o dano comum."
+   },
+   {
+    "nome": "passa por frestas",
+    "descricao": "o corpo sem forma se espreme por qualquer fresta (site)."
+   },
+   {
+    "nome": "coro e lama",
+    "descricao": "amolece o chão, enche o ar com o coro para confundir quem chega e cai sobre o mais próximo com as bocas; engole quem fica preso."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão em todas as direções e no escuro, pelos olhos espalhados (site)."
    }
   ],
   "poderes": [],
@@ -4437,6 +4416,14 @@
    {
     "titulo": "Origem nas profundezas",
     "texto": "Sábios especulam que nasceram de magia corrompida nas profundezas do mundo, criaturas que a natureza jamais pretendeu existir."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinha."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Média amontoada, Grande espalhada. 46 PV, Impacto 11, Corte e Perfuração 4. Esquiva 14, Bloqueio 10. Bocas de dano médio 7,5, até três por ação (Rajada); agarra (+2) e suga 8 a cada manutenção. O coro deixa Confuso quem ouve (mente); o chão em volta vira lama. Não fica Flanqueada. Engole quem prende."
    }
   ]
  },
@@ -7313,7 +7300,7 @@
   "categoria": "Aberração",
   "tipo": "elite",
   "conceito": "aberração Grande",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Arraia de couro negro que desliza sem som pelos túneis e passa por manto pendurado até atacar. Envolve a vítima no próprio corpo, geme num lamento que apavora, derruba ou paralisa, e se multiplica nas sombras.",
   "tags": [
    "aberracao",
    "centelha"
@@ -7323,7 +7310,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "2,4 m de envergadura",
+   "medida": "1,8 m de comprimento, 0,15 m de altura",
    "peso": "45 kg"
   },
   "ecologia": {
@@ -7338,7 +7325,7 @@
   "imagem": "bestiario/capa-sombria_criatura.webp",
   "semImagem": false,
   "atributos": {
-   "forca": 7,
+   "forca": 5,
    "destreza": 5,
    "vigor": 6,
    "influencia": 4,
@@ -7353,25 +7340,25 @@
    "esquiva": 1,
    "integridade": 4,
    "sociabilidade": 0,
-   "furtividade": 1
+   "furtividade": 3
   },
   "vontade": 9,
   "aparencia": 1,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "combate": {
-   "pv": 54,
+   "pv": 43,
    "defesa": 14,
    "defesaSocial": 8,
    "defesaMental": 25,
    "absorcao": {
     "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
@@ -7382,35 +7369,47 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "6d6 +8",
-     "dano": "2d6 +11 perfurante",
+     "nome": "Mordida",
+     "pool": "5d6 +8",
+     "dano": "1d6 +9 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
+    },
+    {
+     "nome": "Cauda",
+     "pool": "5d6 +9",
+     "dano": "1d6 +7 impacto",
+     "perfArma": null,
+     "speed": 5,
+     "classe": "leve"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Envolver",
-    "descricao": "Lança-se sobre um oponente de tamanho igual ou menor, envolvendo-o completamente no próprio corpo; parte do dano que a vítima causaria a ele recai sobre o próprio corpo enquanto ela está presa."
+    "descricao": "Mordida: Ativação: uma ação, Velocidade 7, lançando-se sobre um alvo de Tamanho Grande ou menor. Duração: até o alvo se soltar ou ela soltar. Alcance: o do corpo a corpo. Área: um alvo. Efeito: na jogada de Agarrar do livro que acerta, envolve o alvo no próprio corpo: ele fica Agarrado e Cego, e a Mordida acerta sem jogada a cada 6 Ticks; quem ataca a capa enquanto ela envolve alguém faz metade do dano nela e metade na vítima (site). Dano: o da Mordida. Resistência: corpo, para escapar, pela jogada de Agarrar do livro. Limite de uso: um alvo envolvido por vez."
    },
    {
-    "nome": "Gemido Sônico",
-    "descricao": "Emite um lamento infrassônico com efeitos variados: espalha pavor que deixa os alvos em pânico, causa náusea e queda, mergulha um único inimigo em torpor paralisante, ou impõe penalidades de combate a todos ao redor."
+    "nome": "Gemido sônico",
+    "descricao": "poder natural (base Fascinação 3): Ativação: uma ação, Velocidade 7. Duração: à escolha, abaixo. Alcance: 9 m em volta dela. Área: à escolha: pavor, todos na área ficam Em pânico até o fim da cena; náusea, todos na área ficam Caídos e passam o próximo Tick só levantando; torpor, um alvo fica Imobilizado por 12 Ticks; lamento, todos na área ficam Abalados até o fim da cena. Efeito: o lamento infrassônico não pega nela nem em outra capa sombria (site). Dano: nenhum. Resistência: mente, contra Influência + Integridade dela. Limite de uso: o pavor, uma vez por dia; os outros, um gemido a cada 12 Ticks."
    },
    {
-    "nome": "Manipulação de Sombras",
-    "descricao": "Em penumbra, distorce as sombras ao seu redor para se tornar borrado, criar duplicatas ilusórias de si mesmo ou projetar imagens falsas."
+    "nome": "Manipulação de sombras",
+    "descricao": "poder natural (base Ofuscação 3): Ativação: uma ação, Velocidade 6, só em penumbra ou escuridão. Duração: até o fim da cena, ou até ela desfazer. Alcance: o próprio corpo, ou 18 m para a imagem falsa. Área: à escolha: borrada, conta como em Cobertura parcial contra quem a ataca; duplicatas, três imagens dela, e quem a ataca escolhe uma ao acaso (uma em quatro é ela, e a imagem acertada some); imagem falsa, uma cena de sombras de até 6 m. Efeito: o descrito na escolha. Dano: nenhum. Resistência: mente, contra Influência + Integridade dela, só para quem desconfia da imagem falsa. Limite de uso: um efeito por vez, à vontade."
    },
    {
     "nome": "Camuflagem",
-    "descricao": "Consegue se disfarçar como um manto, lençol ou objeto similar, quase indistinguível quando imóvel."
+    "descricao": "Furtividade, com a Especialidade natural (imóvel, como manto) +3."
    },
    {
-    "nome": "Imune ao Próprio Gemido",
-    "descricao": "Não é afetado pelos efeitos sônicos ou mentais de seu próprio lamento."
+    "nome": "espreita do túnel",
+    "descricao": "espera imóvel como um manto pendurado, cai sobre o último do grupo e o envolve, geme para apavorar os outros e se esconde nas próprias sombras se a luta vira."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga no escuro dos túneis."
    }
   ],
   "poderes": [],
@@ -7429,6 +7428,14 @@
    {
     "titulo": "Motivos Obscuros",
     "texto": "Suas intenções permanecem um mistério até para quem estuda a espécie; fala apenas a língua das profundezas e raramente se associa a outras criaturas."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinha."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, 43 PV, Impacto 10, Corte e Perfuração 4. Esquiva 14, Bloqueio 10. Mordida (12, 5) ou cauda (10, 5); envolve quem é Grande ou menor, cega e morde sem jogada, e metade do dano contra ela vai na vítima. Geme para apavorar, derrubar, imobilizar ou abalar; nas sombras, borra e se multiplica. Voa a 4. Defesa Mental 25."
    }
   ]
  },
@@ -8740,7 +8747,7 @@
   "categoria": "Aberração",
   "tipo": "elite",
   "conceito": "aberração Grande",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Crustáceo blindado como um caranguejo gigante, que espreita sob a água dos charcos. Agarra com as pinças, passa a presa para os tentáculos da boca, que paralisam, e a devora ou a arrasta para o fundo. Fala e guarda troféus.",
   "tags": [
    "aberracao",
    "centelha"
@@ -8750,7 +8757,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "2,7 m de comprimento",
+   "medida": "2,7 m de comprimento, 0,6 m de altura",
    "peso": "160 kg"
   },
   "ecologia": {
@@ -8766,7 +8773,7 @@
   "imagem": "bestiario/chuul_criatura.webp",
   "semImagem": false,
   "atributos": {
-   "forca": 9,
+   "forca": 7,
    "destreza": 5,
    "vigor": 6,
    "influencia": 1,
@@ -8781,25 +8788,25 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 1
+   "furtividade": 3
   },
   "vontade": 9,
   "aparencia": 1,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "combate": {
-   "pv": 54,
-   "defesa": 14,
+   "pv": 43,
+   "defesa": 19,
    "defesaSocial": 4,
    "defesaMental": 18,
    "absorcao": {
     "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
@@ -8810,31 +8817,55 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "7d6 +8",
-     "dano": "2d6 +13 perfurante",
-     "perfArma": 0,
+     "nome": "Pinça",
+     "pool": "6d6 +8",
+     "dano": "1d6 +11 impacto",
+     "perfArma": null,
      "speed": 6,
      "classe": "media"
+    },
+    {
+     "nome": "Mandíbulas",
+     "pool": "6d6 +9",
+     "dano": "1d6 +9 perfurante · perf. 0",
+     "perfArma": 0,
+     "speed": 5,
+     "classe": "leve"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Tentáculos Paralisantes",
-    "descricao": "Transfere a vítima presa das pinças para os tentáculos, que não cortam mas secretam veneno: quem fica preso deve resistir a cada instante ou fica paralisado por muito tempo."
+    "nome": "agarrar",
+    "descricao": "Pinça: o Agarrão, com a Especialidade natural Briga (Agarrão) +2."
    },
    {
-    "nome": "Mandíbulas Devoradoras",
-    "descricao": "Enquanto segura a presa nos tentáculos, crava as mandíbulas nela repetidamente, causando dano constante até que ela se solte ou morra."
+    "nome": "Tentáculos paralisantes",
+    "descricao": "Mandíbulas: Ativação: uma ação, Velocidade 6, contra quem já está Agarrado na Pinça. Duração: até o alvo se soltar ou ele soltar. Alcance: o do corpo a corpo. Área: um alvo. Efeito: passa a presa da Pinça para os tentáculos da boca, que a seguram (Agarrado) e deixam a Pinça livre; os tentáculos não ferem, mas o veneno deles entra pela pele (Veneno e doença) a cada 6 Ticks que a presa fica presa. Dano: nenhum. Resistência: corpo, pela regra do veneno; para se soltar, a jogada de Agarrar do livro contra a Força 7 + Briga 5 dele, com o Agarrão +2. Limite de uso: um alvo nos tentáculos por vez."
    },
    {
-    "nome": "Imunidade a Veneno",
-    "descricao": "Seu corpo crustáceo é completamente imune a venenos de qualquer origem."
+    "nome": "Mandíbulas devoradoras",
+    "descricao": "Mandíbulas: Ativação: a cada 6 Ticks em que segura a presa nos tentáculos. Duração: enquanto segura. Alcance: o do corpo a corpo. Área: quem está nos tentáculos. Efeito: crava as Mandíbulas sem nova jogada de ataque. Dano: o das Mandíbulas. Resistência: nenhum; quem se solta para de sofrer. Limite de uso: um por presa nos tentáculos."
+   },
+   {
+    "nome": "Imune a veneno",
+    "descricao": "veneno nenhum pega nele; a Resistência (venenos) +3 fica para o que o Mestre quiser rolar."
    },
    {
     "nome": "Anfíbio",
-    "descricao": "Nada e respira tanto na água quanto fora dela, arrastando presas capturadas para as profundezas para afogá-las."
+    "descricao": "respira na água e no ar (linha Corpo) e nada a 2."
+   },
+   {
+    "nome": "arrastar para o fundo",
+    "descricao": "Pinça: arrasta o que agarrou para dentro da água, para afogar, até o Peso erguido. O mesmo \"puxar para a água\" do caranguejo-gigante do molde."
+   },
+   {
+    "nome": "emboscada no charco",
+    "descricao": "espera submerso na água rasa, explode da margem, agarra com a Pinça, passa a presa para os tentáculos e arrasta para o fundo; leva troféus para o covil."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga na água turva."
    }
   ],
   "poderes": [],
@@ -8853,6 +8884,18 @@
    {
     "titulo": "Inteligência Inquietante",
     "texto": "Ao contrário de meras bestas, fala uma língua gutural própria e decora seu covil com troféus das presas devoradas, alimentando especulações sobre sua origem."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinho."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Curare · Potência 14 · 1 Tick (toque) · efeito único · pool 3 (Destreza) · Desgaste 1 · pelos Tentáculos paralisantes. Pelo toque em pele intacta, a Potência cai 4; a cada 6 Ticks preso, uma nova jogada. Quem perde os 3 pontos de Destreza fica Imobilizado até o fim da cena (o curare dura 1 cena)"
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, 43 PV, Impacto 10, Corte e Perfuração 4. Bloqueio 18 (19 com a pinça), Esquiva 14. Pinça de dano médio 14,5, que agarra; passa a presa para os tentáculos, que envenenam (curare, a cada 6 Ticks) e deixam as mandíbulas morderem sem jogada (12, 5). Veneno não o pega. Nada e respira na água."
    }
   ]
  },
@@ -11043,7 +11086,7 @@
   "categoria": "Aberração",
   "tipo": "chefe",
   "conceito": "aberração Pequeno",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Cérebro de quatro patas vindo de outro plano ou de um mundo distante, que se alimenta de cérebros e memórias. Devora o cérebro de uma vítima, entra no corpo dela e sustenta a fachada por dias, falando as línguas dela sem guardar as lembranças. Fica invisível, confunde e fere com a mente.",
   "tags": [
    "aberracao",
    "centelha"
@@ -11053,7 +11096,7 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "60 cm de altura",
+   "medida": "0,45 m de comprimento, 0,6 m de altura",
    "peso": "18 kg"
   },
   "ecologia": {
@@ -11068,7 +11111,7 @@
   "imagem": "bestiario/devorador-de-intelecto_criatura.webp",
   "semImagem": false,
   "atributos": {
-   "forca": 3,
+   "forca": 2,
    "destreza": 7,
    "vigor": 6,
    "influencia": 5,
@@ -11082,28 +11125,36 @@
    "prontidao": 1,
    "esquiva": 2,
    "integridade": 4,
-   "sociabilidade": 0,
-   "furtividade": 3
+   "sociabilidade": 2,
+   "furtividade": 4
   },
   "vontade": 9,
   "aparencia": 1,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 4
   },
   "combate": {
    "pv": 32,
    "defesa": 22,
-   "defesaSocial": 8,
+   "defesaSocial": 16,
    "defesaMental": 24,
    "absorcao": {
     "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "sagrado"
+   ],
+   "resistencias": [
+    "fogo",
+    "gelo",
+    "raio"
+   ],
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 4,
@@ -11112,9 +11163,9 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "4d6 +8",
-     "dano": "1d6 +7 perfurante",
+     "nome": "Garras",
+     "pool": "6d6 +9",
+     "dano": "1d6 +4 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -11124,27 +11175,47 @@
   "habilidades": [
    {
     "nome": "Ladrão de corpos",
-    "descricao": "Pode encolher, rastejar para dentro da boca de uma vítima indefesa ou morta e devorar seu cérebro, tomando o controle total do corpo como se fosse seu."
-   },
-   {
-    "nome": "Sentido cego e detecção mágica",
-    "descricao": "Percebe o ambiente sem depender da visão e sente a presença constante de magia ao redor."
-   },
-   {
-    "nome": "Resistências arcanas",
-    "descricao": "Seu corpo resiste bem a fogo e a efeitos que afetam a mente, além de amortecer frio, eletricidade e som."
-   },
-   {
-    "nome": "Vulnerabilidade sagrada",
-    "descricao": "Proteções contra o mal o afetam como se fosse uma criatura convocada, ferindo-o com mais facilidade."
+    "descricao": "encolhe, entra pela boca de uma vítima indefesa ou morta, devora o cérebro e passa a controlar o corpo como se fosse seu; fala as línguas da vítima e imita os modos dela por dias, sem as lembranças dela. O livro não tem regra de possessão."
    },
    {
     "nome": "Ataque furtivo",
-    "descricao": "Golpeia com precisão mortal quando pega o alvo desprevenido, causando dano extra."
+    "descricao": "Garras: Ativação: as Garras que ferem um alvo Surpreso. Duração: o golpe. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o golpe acha o ponto fraco. Dano: +2d6 ao das Garras. Resistência: nenhum. Limite de uso: um por golpe."
    },
    {
-    "nome": "Poderes psíquicos",
-    "descricao": "Pode confundir, atordoar, ferir a distância e se tornar invisível usando puro poder mental."
+    "nome": "Confundir",
+    "descricao": "poder natural (base Fascinação 3): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até o alvo levar dano. Alcance: 18 m. Área: um alvo. Efeito: o alvo fica Confuso. Dano: nenhum. Resistência: mente, contra Influência 5 + Integridade 4 + 2 × o menor entre Centelha 4 e Integridade 4 (8) = 17 mais a rolagem. Limite de uso: três vezes por cena."
+   },
+   {
+    "nome": "Atordoar",
+    "descricao": "poder natural (base Fascinação 3): Ativação: uma ação, Velocidade 6. Duração: a próxima ação do alvo. Alcance: 18 m. Área: um alvo. Efeito: um choque na mente faz o alvo perder a próxima ação. Dano: nenhum. Resistência: mente, contra a mesma jogada do Confundir. Limite de uso: uma vez por cena."
+   },
+   {
+    "nome": "Golpe psíquico",
+    "descricao": "poder natural (base Fascinação 3): Ativação: uma ação, Velocidade 6. Duração: instantâneo. Alcance: 18 m. Área: um alvo. Efeito: fere a mente a distância. Dano: 2d6, fenômeno (a armadura não absorve, só a Centelha; C-041). Resistência: mente, contra a mesma jogada do Confundir; quem passa leva metade. Limite de uso: três vezes por cena."
+   },
+   {
+    "nome": "Invisibilidade psíquica",
+    "descricao": "poder natural (base Ofuscação 3): Ativação: uma ação, Velocidade 5. Duração: até ele atacar ou desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Invisível. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena."
+   },
+   {
+    "nome": "Resistência mental",
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental contra efeito que mexe na mente (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "Resistência a som",
+    "descricao": "amortece o dano de som (\"som\" não está no vocabulário de elementos)."
+   },
+   {
+    "nome": "Vulnerável às proteções contra o mal",
+    "descricao": "proteção contra o mal o afeta como a uma criatura convocada. O dano sagrado vai na linha Elementos."
+   },
+   {
+    "nome": "caçador de corpos",
+    "descricao": "fica invisível, embosca o alvo sozinho, confunde ou atordoa, mata com as garras e toma o corpo; dentro dele, vive entre a gente da vítima até achar a próxima."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "sentido cego: percebe o ambiente sem depender da visão (site). · detecção mágica: sente a presença de magia em volta (site)."
    }
   ],
   "poderes": [],
@@ -11162,6 +11233,14 @@
    {
     "titulo": "Máscara perfeita",
     "texto": "Ao tomar um corpo, sustenta a fachada da vítima por dias, falando suas línguas e imitando seus modos sem guardar suas lembranças."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinho, escondido entre a gente da vítima."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Pequeno, rápido (4), 32 PV, Impacto 10, Corte e Perfuração 4. Esquiva 22, Bloqueio 14, Defesa Mental 24 (26 contra efeito na mente). Garras de dano médio 7,5 (+2d6 contra quem está Surpreso). Fica invisível uma vez por cena; confunde e fere a mente a 18 m três vezes por cena, e atordoa uma. Fogo, gelo e raio fazem metade; sagrado passa inteiro. Toma o corpo de quem mata."
    }
   ]
  },
@@ -15027,7 +15106,7 @@
   "categoria": "Aberração",
   "tipo": "elite",
   "conceito": "aberração Grande",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "O que resta de um drow punido pelos deuses aracnídeos: o tronco fundido ao corpo de uma aranha gigante. Embosca nos túneis, prende de longe com teia, morde com um veneno que tira a força e ainda apaga a luz com a feitiçaria de antes.",
   "tags": [
    "aberracao",
    "centelha"
@@ -15037,7 +15116,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "3 metros de altura",
+   "medida": "1,22 m de comprimento, 1,5 m de altura",
    "peso": "180 kg"
   },
   "ecologia": {
@@ -15067,25 +15146,25 @@
    "esquiva": 1,
    "integridade": 5,
    "sociabilidade": 0,
-   "furtividade": 1
+   "furtividade": 3
   },
   "vontade": 9,
   "aparencia": 1,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "combate": {
-   "pv": 54,
+   "pv": 43,
    "defesa": 12,
    "defesaSocial": 10,
    "defesaMental": 27,
    "absorcao": {
     "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
@@ -15096,9 +15175,9 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Mordida",
      "pool": "5d6 +8",
-     "dano": "2d6 +9 perfurante",
+     "dano": "1d6 +9 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -15107,28 +15186,32 @@
   },
   "habilidades": [
    {
-    "nome": "Visão no escuro",
-    "descricao": "Enxerga no escuro absoluto a uma distância considerável."
-   },
-   {
-    "nome": "Absorção mágica",
-    "descricao": "Uma parte da magia lançada contra ela é simplesmente absorvida sem efeito, graças a uma resistência inata."
-   },
-   {
-    "nome": "Teia",
-    "descricao": "Dispara fios de teia grudenta contra um alvo à distância, prendendo-o no lugar."
+    "nome": "teia",
+    "descricao": "fieiras: a da aranha-gigante do molde: ataque a distância, Vigor + Disparo (Vigor 6 + Disparo 3 + 2 × o menor entre Centelha 4 e Disparo 3, 6), até 6 m, 3 vezes por cena (recarga de 1 hora), Velocidade 6, tipo do ataque teia. Não causa dano. Acerto: o alvo fica Preso pela teia, como Preso pela Rede: não se desloca, mas age, com −2 na Esquiva e −2 no Bloqueio, e mais −1 em cada por grau de Margem do lançamento. Para se soltar: Força + Atletismo contra o total do lançamento, uma tentativa por ação."
    },
    {
     "nome": "Mordida venenosa",
-    "descricao": "A mordida injeta um veneno que corrói a força física da vítima ao longo de vários instantes, a menos que ela resista com um teste de Vigor."
+    "descricao": "Mordida: a regra do veneno, com o veneno da linha Veneno e doença."
    },
    {
     "nome": "Feitiçaria residual",
-    "descricao": "Ainda guarda parte da magia que possuía antes da transformação: cria luzes dançantes, escuridão e fogo féerico, entre outros efeitos menores."
+    "descricao": "poder natural (base Sombra 1): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até ela desfazer. Alcance: 18 m. Área: à escolha: trevas numa esfera de 6 m; luzes dançantes que se movem como ela quer; ou fogo feérico que contorna um alvo de luz fraca. Efeito: as trevas apagam a luz comum (ela enxerga nelas); as luzes enganam e iluminam; o alvo do fogo feérico não pode ficar Escondido nem Invisível enquanto durar. Dano: nenhum. Resistência: esquiva, contra Influência + Ocultismo dela, só para o fogo feérico. Limite de uso: cada um, uma vez por cena. A mesma feitiçaria do drow."
+   },
+   {
+    "nome": "Resistência mágica",
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
     "nome": "Imune ao sono",
-    "descricao": "Não pode ser posta para dormir por magia ou efeito algum."
+    "descricao": "Arte, poder ou veneno que faz dormir não a pega."
+   },
+   {
+    "nome": "tecelã dos túneis",
+    "descricao": "estende teia no túnel escuro, apaga a luz com as trevas, prende de longe com a teia e desce pela parede para morder quem ficou preso."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: \"Enxerga no escuro absoluto a uma distância considerável\" (site)."
    }
   ],
   "poderes": [],
@@ -15147,6 +15230,18 @@
    {
     "titulo": "Caçadora nas profundezas",
     "texto": "Emboscar viajantes nos túneis é sua forma preferida de caça, envolvendo a presa em teias antes de se aproximar."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinha, exilada dos drow."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Peçonha de drider · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pela Mordida. Os números do \"Ferrão de gigante\" dos moldes (escorpião-gigante, formiga-gigante), com a Força do site"
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, 43 PV, Impacto 10, Corte e Perfuração 4. Esquiva e Bloqueio 12. Teia a 6 m que prende (três vezes por cena); Mordida de dano médio 12,5 com veneno que tira a Força. Uma vez por cena, trevas, luzes ou fogo feérico. Sobe pela parede a 2. Defesa Mental 27, 29 contra Artes."
    }
   ]
  },
@@ -18931,7 +19026,7 @@
   "categoria": "Aberração",
   "tipo": "soldado",
   "conceito": "aberração Pequeno",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Coisa magra de braços longos de borracha que vive nas ruínas subterrâneas. Espera no escuro, enrosca a garganta de quem ficou para trás e aperta até a vítima parar. Enche o covil de anéis, broches e moedas das vítimas.",
   "tags": [
    "aberracao",
    "centelha"
@@ -18957,7 +19052,7 @@
   "imagem": "bestiario/estrangulador_criatura.webp",
   "semImagem": false,
   "atributos": {
-   "forca": 5,
+   "forca": 4,
    "destreza": 4,
    "vigor": 3,
    "influencia": 1,
@@ -18977,8 +19072,8 @@
   "vontade": 7,
   "aparencia": 1,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -18989,8 +19084,8 @@
    "defesaMental": 15,
    "absorcao": {
     "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -19001,9 +19096,9 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "4d6 +4",
-     "dano": "1d6 +7 perfurante",
+     "nome": "Garras",
+     "pool": "3d6+2 +5",
+     "dano": "1d6 +4 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -19012,20 +19107,32 @@
   },
   "habilidades": [
    {
-    "nome": "Estrangulamento",
-    "descricao": "Seus braços elásticos enroscam a garganta do alvo agarrado, impedindo que ele fale ou conjure poderes que exigem palavras de comando."
+    "nome": "agarrar",
+    "descricao": "Garras: o Agarrão, com a Especialidade natural Briga (Agarrão) +2. Contra o humano (Faixa 3), ele está uma faixa abaixo: o humano soma +3 na Defesa de agarrão (Massa nas Manobras)."
    },
    {
     "nome": "Constrição",
-    "descricao": "Enquanto mantém o agarrão, aperta a vítima com força crescente, causando dano contínuo a cada instante em que ela permanece presa."
+    "descricao": "Garras: \"Constrição é Agarrão\". O aperto que cresce é o dano do agarrão do livro: 2 × Força + Centelha = 10, de Impacto, e +1d6 por Margem da manutenção, a cada 6 Ticks."
    },
    {
-    "nome": "Rapidez Sobrenatural",
-    "descricao": "Move-se com velocidade antinatural, agindo duas vezes em sequência dentro do mesmo turno."
+    "nome": "Estrangulamento",
+    "descricao": "Garras: Ativação: o agarrão que dá certo; ele escolhe enroscar a garganta. Duração: enquanto mantém o agarrão. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo fica Agarrado e Sufocando, e não fala: não pede socorro nem usa Arte ou poder que precise de palavra. Dano: o do agarrão, e o do Sufocando. Resistência: para se soltar, a manutenção do agarrão do livro. Limite de uso: um alvo por vez."
    },
    {
-    "nome": "Visão no Escuro",
-    "descricao": "Enxerga perfeitamente na escuridão total, mesmo em túneis sem qualquer fonte de luz."
+    "nome": "Rapidez sobrenatural",
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: está sempre Acelerado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. O site dizia \"age duas vezes em sequência dentro do mesmo turno\"; o Centelha não tem turno, e o mais perto no livro é o Acelerado."
+   },
+   {
+    "nome": "braços longos",
+    "descricao": "Garras: os braços passam do dobro do corpo e alcançam mais longe que o corpo a corpo de um bicho do porte dele."
+   },
+   {
+    "nome": "caçador das ruínas",
+    "descricao": "espera agarrado ao teto ou numa parede escura, escolhe o viajante que ficou para trás, enrosca a garganta para ele não gritar e o arrasta para o covil."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: \"enxerga perfeitamente na escuridão total\" (site)."
    }
   ],
   "poderes": [],
@@ -19044,6 +19151,14 @@
    {
     "titulo": "Fascínio Doentio",
     "texto": "Apesar da inteligência quase animal, guarda um fascínio estranho por objetos da civilização: anéis, broches e moedas roubadas de suas vítimas enchem seu covil."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinho."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Pequeno, 26 PV, Impacto 5, Corte e Perfuração 2. Esquiva 12, Bloqueio 8. Sempre Acelerado. Garras de dano médio 7,5 e o agarrão (+2) que enrosca a garganta: o alvo Agarrado fica Sufocando, não fala nem conjura com palavra e leva 10 de Impacto a cada manutenção. Sobe pelas paredes e vê no escuro."
    }
   ]
  },
@@ -19054,7 +19169,7 @@
   "categoria": "Aberração",
   "tipo": "soldado",
   "conceito": "aberração Médio",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Figura quase humana de rosto de aranha e mãos em foice, que vive sozinho nas copas das florestas. Arma armadilhas de teia, prende de longe, morde com um veneno que tira a destreza e cria aranhas gigantes como sentinelas.",
   "tags": [
    "aberracao",
    "centelha"
@@ -19064,7 +19179,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "1,8 metro de altura",
+   "medida": "1,8 m de altura",
    "peso": "90 kg"
   },
   "ecologia": {
@@ -19094,25 +19209,25 @@
    "esquiva": 1,
    "integridade": 3,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 3
   },
   "vontade": 7,
   "aparencia": 1,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
   "combate": {
    "pv": 40,
-   "defesa": 14,
+   "defesa": 15,
    "defesaSocial": 6,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 7,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -19123,9 +19238,17 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "4d6 +4",
-     "dano": "1d6 +6 perfurante",
+     "nome": "Foices",
+     "pool": "4d6+2 +4",
+     "dano": "1d6 +6 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Mordida",
+     "pool": "4d6+2 +5",
+     "dano": "1d6 +4 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -19134,24 +19257,28 @@
   },
   "habilidades": [
    {
-    "nome": "Mordida venenosa",
-    "descricao": "O veneno da mordida corrói a destreza da vítima a cada rodada, exigindo dois testes de Vigor seguidos para se livrar do efeito."
+    "nome": "teia",
+    "descricao": "fieiras: a da aranha-gigante do molde: ataque a distância, Vigor + Disparo (Vigor 5 + Disparo 2 + 2 × o menor entre Centelha 2 e Disparo 2, 4), até 6 m, 3 vezes por cena (recarga de 1 hora), Velocidade 6, tipo do ataque teia. Não causa dano. Acerto: o alvo fica Preso pela teia, como Preso pela Rede: não se desloca, mas age, com −2 na Esquiva e −2 no Bloqueio, e mais −1 em cada por grau de Margem do lançamento. Para se soltar: Força + Atletismo contra o total do lançamento, uma tentativa por ação."
    },
    {
-    "nome": "Teia arremessada",
-    "descricao": "Lança fios pegajosos que prendem o alvo a distância, dificultando muito qualquer movimento."
+    "nome": "Mordida venenosa",
+    "descricao": "Mordida: a regra do veneno, com o veneno da linha Veneno e doença."
    },
    {
     "nome": "Mestre de armadilhas",
-    "descricao": "Constrói armadilhas de teia (fossos, laços, lanças ocultas) sem precisar de nada além de tempo e paciência."
+    "descricao": "arma armadilhas de teia (fossos cobertos, laços, lanças escondidas) só com tempo e paciência, sem ferramenta. O livro não tem regra de armadilha."
    },
    {
     "nome": "Empatia com aranhas",
-    "descricao": "Consegue se comunicar e comandar aranhas gigantes, usando-as como sentinelas e guardiãs de seu covil."
+    "descricao": "fala com aranhas e manda nas aranhas gigantes, que lhe servem de sentinela e de guarda do covil."
    },
    {
-    "nome": "Sentidos aguçados",
-    "descricao": "Enxerga no escuro e com pouca luz, e raramente é pego de surpresa."
+    "nome": "tecelão das copas",
+    "descricao": "espera nas copas, deixa a presa cair no fosso ou no laço, prende de longe com a teia, desce e morde; as aranhas que ele cria fecham o caminho."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro e com pouca luz: \"enxerga no escuro e com pouca luz, e raramente é pego de surpresa\" (site); a surpresa vai na Prontidão."
    }
   ],
   "poderes": [],
@@ -19170,6 +19297,18 @@
    {
     "titulo": "Tecelão solitário",
     "texto": "Vive isolado nas copas das florestas, longe até dos de sua espécie, cercado apenas pelas teias e pelas aranhas que domestica."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinho, com as aranhas que doma."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Peçonha de aranha gigante · Potência 18 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Destreza) · Desgaste 1 · pela Mordida. É o veneno do livro que tira a Destreza; os \"dois testes de Vigor seguidos\" do site viram o pool do livro."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 40 PV, Impacto 7, Corte e Perfuração 2. Esquiva 14, Bloqueio 14 (15 com as foices). Teia a 6 m que prende (três vezes por cena); Foices de dano médio 9,5 e Mordida de 7,5 com a peçonha de aranha gigante do livro, que tira a Destreza. Sobe nas árvores a 3. Arma armadilhas e cria aranhas."
    }
   ]
  },
@@ -20091,7 +20230,7 @@
   "categoria": "Aberração",
   "tipo": "elite",
   "conceito": "aberração Pequeno",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Luz que paira sobre pântanos e charcos imitando uma fogueira distante ou uma lanterna amiga. Leva o viajante perdido para longe da segurança, saboreia o pânico de quem ainda acredita estar sendo salvo e o fere com um toque elétrico. Some de vista quando quer.",
   "tags": [
    "aberracao",
    "centelha",
@@ -20102,8 +20241,8 @@
   "pendente": true,
   "porte": "Miúdo",
   "dimensoes": {
-   "medida": "diâmetro 30 cm (orbe de luz flutuante)",
-   "peso": "0,5 kg, quase sem massa"
+   "medida": "0,3 m de altura",
+   "peso": "sem massa (volume 0,0141 m³)"
   },
   "ecologia": {
    "tipo": "Aberration",
@@ -20132,13 +20271,13 @@
    "esquiva": 3,
    "integridade": 4,
    "sociabilidade": 0,
-   "furtividade": 4
+   "furtividade": 5
   },
   "vontade": 9,
-  "aparencia": 1,
+  "aparencia": 5,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -20149,10 +20288,13 @@
    "defesaMental": 26,
    "absorcao": {
     "impacto": 6,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "imunidades": [
+    "raio"
+   ],
    "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 5,
@@ -20161,10 +20303,10 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "2d6+2 +8",
-     "dano": "1d6 +4 perfurante",
-     "perfArma": 0,
+     "nome": "Toque elétrico",
+     "pool": "7d6 +9",
+     "dano": "1d6 +2 raio",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
@@ -20172,53 +20314,42 @@
   },
   "habilidades": [
    {
-    "nome": "Difícil de acertar",
-    "descricao": "Globo de matéria translúcida do tamanho de um punho: some no ar e é quase impossível de atingir (Defesa altíssima). Feitiços de mira raramente o alcançam."
-   },
-   {
     "nome": "Invisibilidade natural",
-    "descricao": "some de vista até atacar ou se revelar; +3d6 em Furtividade"
-   },
-   {
-    "nome": "Toque elétrico",
-    "descricao": "corpo a corpo; dano alto ao alvo tocado"
-   },
-   {
-    "nome": "Voo flutuante",
-    "descricao": "desloca 12m voando, passa por frestas e grades finas"
-   },
-   {
-    "nome": "Luz enganosa",
-    "descricao": "brilha como uma tocha distante para atrair vítimas ao perigo"
+    "descricao": "poder natural (base Ofuscação 3, a do site): Ativação: uma ação, Velocidade 5. Duração: até ele atacar ou desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Invisível; quem o procura vê, se tanto, uma luzinha fraca ao longe. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. O \"+3d6 em Furtividade\" do site fica dentro da condição Invisível."
    },
    {
     "nome": "Evasiva",
-    "descricao": "+2 Esquiva contra ataques à distância"
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: +2 na Esquiva contra ataque a distância (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Imune a eletricidade",
-    "descricao": "ignora dano de choques e raios"
-   }
-  ],
-  "poderes": [
+    "nome": "corpo minúsculo",
+    "descricao": "o Alvo Miúdo pesa contra quem o ataca (R8)."
+   },
    {
-    "id": "invisibilidade-natural",
-    "nome": "Invisibilidade natural",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "Invisibilidade natural",
-    "base": {
-     "arte": "ofuscacao",
-     "nivel": 3
-    },
-    "descricao": "O fogo-fátuo desaparece de vista quando quer, voltando a ser visto só como uma luzinha fraca ao longe, se tanto.",
-    "usos": {
-     "periodo": "avontade"
-    }
+    "nome": "Difícil de acertar por Arte",
+    "descricao": "Arte que mira um alvo raramente o alcança (site)."
+   },
+   {
+    "nome": "Luz enganosa",
+    "descricao": "brilha como uma tocha distante ou uma lanterna amiga e leva o viajante perdido para o atoleiro, a areia movediça ou a toca de outro predador."
+   },
+   {
+    "nome": "passa por frestas",
+    "descricao": "o corpo de 30 cm sem matéria passa por frestas e grades finas (site)."
+   },
+   {
+    "nome": "guia da morte",
+    "descricao": "espera o viajante se perder, puxa-o com a luz até o perigo, some quando ele percebe e só ataca quem já está preso ou ferido."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão: a de quem enxerga no escuro do brejo."
    }
   ],
+  "poderes": [],
   "locomocao": {
-   "voo": 5
+   "voo": 5,
+   "terra": 5
   },
   "tecnicas": [],
   "artes": [],
@@ -20226,7 +20357,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Paira sobre pântanos e charcos imitando a luz de uma fogueira distante ou lanterna amiga, guiando viajantes perdidos para longe da segurança até a morte lenta."
+    "texto": "Paira sobre pântanos e charcos imitando a luz de uma fogueira distante ou lanterna amiga, guiando viajantes perdidos para longe da segurança até a morte lenta. Social: sozinho, territorial no brejo dele."
    },
    {
     "titulo": "Ecologia",
@@ -20239,6 +20370,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Diz-se que nasce de uma Centelha corrompida, quase uma ponta avançada do horror que vaza da Fenda; em Syl e Mére contam-se histórias de luzes que levam quem as segue para nunca mais voltar."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Miúdo, voa a 5, invisível à vontade. Esquiva 30 (32 contra ataque a distância), Bloqueio 18, Defesa Mental 26, 17 PV, Impacto 6, Corte e Perfuração 4. Toque elétrico de dano médio 5,5, de raio, sem Absorção natural contra ele (a da armadura, a decidir). Raio não o fere. Atrai os viajantes com a luz e só ataca quem já está em perigo."
    }
   ]
  },
@@ -20391,7 +20526,7 @@
   "categoria": "Aberração",
   "tipo": "chefe",
   "conceito": "aberração Enorme",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Rã monstruosa de três toneladas, de tentáculos nos ombros e três olhos num talo, que passa a vida submersa nos brejos com só os olhos à mostra. Agarra com a língua e os tentáculos, esmaga e engole inteiro. Vive inquieta, e às vezes vaga para longe de qualquer charco conhecido.",
   "tags": [
    "aberracao",
    "centelha"
@@ -20401,8 +20536,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "6,7 m de altura",
-   "peso": "3000 kg"
+   "medida": "7,4 m de comprimento, 2,3 m de altura",
+   "peso": "3,0 t"
   },
   "ecologia": {
    "tipo": "Aberration",
@@ -20432,13 +20567,13 @@
    "esquiva": 1,
    "integridade": 3,
    "sociabilidade": 0,
-   "furtividade": 0
+   "furtividade": 2
   },
   "vontade": 10,
   "aparencia": 1,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 4
   },
@@ -20449,10 +20584,13 @@
    "defesaMental": 15,
    "absorcao": {
     "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "corte": 0,
+    "perfuracao": 0
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "resistencias": [
+    "raio"
+   ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 2,
@@ -20461,32 +20599,67 @@
    },
    "ataques": [
     {
-     "nome": "Tentáculos e língua",
+     "nome": "Tentáculo",
      "pool": "8d6",
-     "dano": "3d6 +11 impacto",
+     "dano": "2d6 +11 impacto",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada",
-     "notas": "agarra com os tentáculos; a língua puxa a presa para perto"
+     "classe": "pesada"
+    },
+    {
+     "nome": "Bocada",
+     "pool": "8d6",
+     "dano": "1d6 +11 impacto",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Três Olhos, Visão Total",
-    "descricao": "Enxerga em todas as direções ao mesmo tempo, sente pela água ao redor e vê no escuro absoluto: jamais pode ser pego de surpresa por flancos."
+    "nome": "Língua",
+    "descricao": "agarra, sem dano"
    },
    {
-    "nome": "Absorção contra Choques",
-    "descricao": "Absorve grande parte do dano elétrico que sofreria, mas o choque a deixa lenta e desajeitada por um instante."
+    "nome": "Tentáculos",
+    "descricao": "Tentáculo: a Rajada: até dois golpes de Tentáculo na mesma ação, o teto da classe Pesada, o segundo a −1d6, e +1 Tick de Recuperação por golpe a mais. Os golpes podem ir a alvos diferentes ao alcance."
    },
    {
-    "nome": "Tentáculos Constritores",
-    "descricao": "Os tentáculos prendem e esmagam a presa, causando dano contínuo enquanto ela luta para se libertar."
+    "nome": "agarrar",
+    "descricao": "Tentáculo: o Agarrão, com a Especialidade natural Briga (Agarrão) +2. Pela massa (Faixa 5), soma +6 contra o humano (Faixa 3), e o humano sem Centelha não o agarra, não o derruba nem o empurra (Massa nas Manobras)."
    },
    {
-    "nome": "Engole Inteiro",
-    "descricao": "Consegue tragar uma presa inteira, causando dano contínuo grave por esmagamento e digestão até que ela corte caminho para fora."
+    "nome": "Tentáculos constritores",
+    "descricao": "Tentáculo: \"Constrição é Agarrão\": o dano do agarrão do livro, 2 × Força + Centelha = 22, de Impacto, e +1d6 por Margem da manutenção, a cada 6 Ticks."
+   },
+   {
+    "nome": "língua",
+    "descricao": "Língua: a da rã-gigante do molde: o ataque é com Briga, a três vezes o alcance normal do corpo a corpo, e não fere; agarra o que acertar, mesmo se o golpe for bloqueado (fica agarrado o que bloqueou), e o agarrão segue o livro."
+   },
+   {
+    "nome": "puxão",
+    "descricao": "Língua: puxa o preso pela língua até a boca, até o Peso erguido. O mesmo puxão da rã-gigante do molde."
+   },
+   {
+    "nome": "Engole inteiro",
+    "descricao": "Bocada: traga inteira a presa agarrada que cabe na boca; dentro, ela é esmagada e digerida até morrer ou abrir caminho para fora cortando."
+   },
+   {
+    "nome": "Visão total",
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: não fica Flanqueado: os três olhos no pedúnculo veem em todas as direções. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "Absorção contra choques",
+    "descricao": "Ativação: levar dano de raio que passe da resistência (Elementos). Duração: até o fim da próxima ação dela. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Retardada: o choque a deixa lenta e desajeitada (site). Dano: nenhum além do raio. Resistência: nenhum. Limite de uso: uma vez por choque."
+   },
+   {
+    "nome": "terror do brejo",
+    "descricao": "espera submersa com os olhos à mostra, agarra com a língua ou com os tentáculos quem passa na margem, puxa até a boca e engole; com várias presas, divide os tentáculos entre elas."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão em todas as direções, pelos três olhos no pedúnculo (site). · sente pela água o movimento em volta (site). · visão no escuro absoluto (site)."
    }
   ],
   "poderes": [],
@@ -20505,6 +20678,14 @@
    {
     "titulo": "Nunca em paz",
     "texto": "Estudiosos notam que ela parece sempre inquieta, como se o pântano não fosse seu verdadeiro lar, vagando por vezes para muito longe de qualquer charco conhecido."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinha."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Enorme, 80 PV, Impacto 9, Corte e Perfuração 0. Esquiva 8, Bloqueio 6. Tentáculo de dano médio 18, até dois por ação (Rajada); agarra (+2 e +6 pela massa) e esmaga 22 a cada manutenção. Língua que agarra de longe, Bocada de 14,5, engole inteiro. Não fica Flanqueada; raio faz metade e a deixa Retardada. Nada a 3."
    }
   ]
  },
@@ -27436,7 +27617,7 @@
   "categoria": "Aberração",
   "tipo": "chefe",
   "conceito": "aberração Grande",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Imóvel como uma coluna de pedra ou gelo, aguarda entre estalagmites até a presa chegar perto. Prende com filamentos pegajosos que enfraquecem e a puxa até a boca. É uma das criaturas mais inteligentes das profundezas e discute por horas sobre a morte e as religiões sombrias.",
   "tags": [
    "aberracao",
    "centelha"
@@ -27446,8 +27627,8 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "3 metros de altura",
-   "peso": "cerca de 1.000 kg"
+   "medida": "3 m de altura",
+   "peso": "1,0 t"
   },
   "ecologia": {
    "tipo": "Aberration",
@@ -27463,7 +27644,7 @@
   "imagem": "bestiario/lacador_criatura.webp",
   "semImagem": false,
   "atributos": {
-   "forca": 11,
+   "forca": 9,
    "destreza": 3,
    "vigor": 10,
    "influencia": 3,
@@ -27477,28 +27658,34 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 4,
-   "sociabilidade": 0,
-   "furtividade": 1
+   "sociabilidade": 1,
+   "furtividade": 3
   },
   "vontade": 10,
   "aparencia": 1,
   "virtudes": {
-   "compaixao": 0,
+   "compaixao": 3,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 4
   },
   "combate": {
    "pv": 70,
    "defesa": 10,
-   "defesaSocial": 8,
+   "defesaSocial": 12,
    "defesaMental": 26,
    "absorcao": {
     "impacto": 15,
-    "corte": 12,
-    "perfuracao": 12
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "fogo"
+   ],
+   "resistencias": [
+    "gelo"
+   ],
    "imunidades": [
     "raio"
    ],
@@ -27510,9 +27697,9 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "8d6 +10",
-     "dano": "2d6 +16 perfurante",
+     "nome": "Mordida",
+     "pool": "7d6 +10",
+     "dano": "1d6 +14 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -27522,23 +27709,27 @@
   "habilidades": [
    {
     "nome": "Filamentos pegajosos",
-    "descricao": "Lança até seis fios grudentos a distância; quem é atingido testa Vigor ou sofre dano contínuo de Físico e pode ser puxado para perto."
+    "descricao": "corpo: Ativação: uma ação, Velocidade 6; ataque a distância, Vigor + Disparo (Vigor 10 + Disparo 3 + 2 × o menor entre Centelha 5 e Disparo 3, 6). Duração: até o alvo se soltar ou o filamento ser cortado. Alcance: 15 m. Área: um alvo por ação. Efeito: o filamento gruda: o alvo fica Agarrado à distância, e a fraqueza dos filamentos entra (Veneno e doença). Dano: nenhum. Resistência: esquiva, contra o ataque; corpo, pela regra do veneno; para se soltar, Força + Atletismo contra o total do ataque, ou cortar o filamento (um golpe de Corte que fira, a critério do Mestre). Limite de uso: até seis filamentos presos ao mesmo tempo, em alvos diferentes ou no mesmo."
    },
    {
-    "nome": "Camuflagem de pedra",
-    "descricao": "Assume a forma de uma estalagmite ou pilar, quase indistinguível de rocha ou gelo até o momento do ataque."
+    "nome": "puxão",
+    "descricao": "Filamentos pegajosos: a cada ação, puxa um preso 3 m para perto da boca, até o Peso erguido."
+   },
+   {
+    "nome": "seis filamentos por ação",
+    "descricao": "o site diz \"lança até seis fios\". Pelos Filamentos pegajosos acima, a ficha lança um por ação; o lançamento de vários na mesma ação fica sem regra, porque a Rajada é só corpo a corpo. Os caminhos que o livro deixa abertos ao autor são o Poder Especial (C-046) ou uma regra de disparo múltiplo."
    },
    {
     "nome": "Resistência a magia",
-    "descricao": "Uma proteção natural dificulta que feitiços o afetem."
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Frio e fogo",
-    "descricao": "Resiste ao frio intenso, mas seu corpo pétreo queima com facilidade incomum diante do fogo."
+    "nome": "estalagmite que espera",
+    "descricao": "imóvel entre as estalagmites, deixa a presa chegar, prende vários de uma vez com os filamentos, puxa o mais fraco até a boca e morde. Gosta de conversar com quem prende, se o assunto for a morte."
    },
    {
     "nome": "Sentidos",
-    "descricao": "Enxerga no escuro e na penumbra, percebendo tudo ao redor mesmo em cavernas sem luz."
+    "descricao": "visão no escuro e na penumbra (site)."
    }
   ],
   "poderes": [],
@@ -27560,6 +27751,18 @@
    {
     "titulo": "Vizinho incômodo",
     "texto": "Prefere viver em pequenos grupos isolados, mas às vezes tolera a companhia de outros horrores subterrâneos, unidos por um interesse mútuo em segredos antigos."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: em grupos pequenos e isolados."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Fraqueza dos filamentos · Potência 16 · 1 Tick (toque) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pelos Filamentos pegajosos. Os números do \"Ferrão de gigante\" dos moldes, com a Força como o \"Físico\" do site; pelo toque em pele intacta, a Potência cai 4."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, 70 PV, Impacto 15, Corte e Perfuração 5. Esquiva 10, Bloqueio 6, Defesa Mental 26 (28 contra Artes). Um filamento por ação a 15 m, até seis presos: agarra à distância e tira a Força. Puxa até a boca e morde (17, 5). Raio não o fere; o gelo faz metade; o fogo passa inteiro. Parece uma estalagmite."
    }
   ]
  },
@@ -32579,7 +32782,7 @@
   "categoria": "Aberração",
   "tipo": "soldado",
   "conceito": "aberração Médio",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Disfarça-se de baú, porta ou móvel e espera com paciência absoluta até que alguém confie o bastante para tocar; então gruda, prende e devora a vítima antes que ela perceba o engano. Vive sozinho em ruínas e cavernas, perto das rotas dos saqueadores.",
   "tags": [
    "aberracao",
    "centelha"
@@ -32589,7 +32792,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "1,2 m de altura na forma de baú",
+   "medida": "1,2 m de comprimento, 0,5 m de altura",
    "peso": "150 kg"
   },
   "ecologia": {
@@ -32620,13 +32823,13 @@
    "esquiva": 1,
    "integridade": 3,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 4
   },
   "vontade": 6,
   "aparencia": 1,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 3
   },
@@ -32637,8 +32840,8 @@
    "defesaMental": 14,
    "absorcao": {
     "impacto": 6,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -32649,9 +32852,17 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Pseudópode",
      "pool": "4d6+2 +2",
-     "dano": "1d6 +6 perfurante",
+     "dano": "1d6 +6 impacto",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Mordida",
+     "pool": "4d6+2 +3",
+     "dano": "1d6 +4 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -32660,46 +32871,27 @@
   },
   "habilidades": [
    {
-    "nome": "Disfarce de objeto",
-    "descricao": "parece um baú ou móvel comum; exige teste de Prontidão para perceber o engano"
+    "nome": "Assumir forma de objeto",
+    "descricao": "poder natural: Ativação: uma ação, Velocidade 6, com uma hora de preparo para mudar de objeto. Duração: até ele se mexer para atacar. Alcance: o próprio corpo. Área: não se aplica. Efeito: parece um baú, uma porta ou um móvel comum da massa dele; quem olha precisa vencer a Furtividade dele, com a Especialidade natural (disfarçado de objeto) +3, com Prontidão para notar o engano. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
    },
    {
     "nome": "Cola aderente",
-    "descricao": "quem toca fica Agarrado até se soltar com Atletismo"
+    "descricao": "Pseudópode: Ativação: o Pseudópode que acerta, ou alguém que toca nele com a mão ou com uma arma. Duração: até se soltar. Alcance: o corpo dele. Área: quem tocou. Efeito: fica Agarrado, colado; a arma que tocou fica presa nele. Dano: nenhum. Resistência: esquiva, contra a jogada do Pseudópode, para não grudar; para se soltar, Força ou Atletismo contra a mesma jogada, uma tentativa por ação. Limite de uso: três vezes por cena, recarga de 1 hora (site)."
    },
    {
     "nome": "Mordida de emboscada",
-    "descricao": "dano extra no primeiro ataque contra alvo desavisado"
+    "descricao": "Mordida: Ativação: o primeiro golpe contra um alvo Surpreso. Duração: o golpe. Alcance: o do corpo a corpo. Área: um alvo. Efeito: morde quem achou que abria um baú. Dano: +2d6 ao da Mordida. Resistência: nenhum. Limite de uso: uma vez por alvo."
    },
    {
-    "nome": "Imóvel e paciente",
-    "descricao": "Furtividade 4 enquanto disfarçado"
-   }
-  ],
-  "poderes": [
-   {
-    "id": "assumir-forma-de-objeto",
-    "nome": "Assumir forma de objeto",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "Assumir forma de objeto",
-    "usos": {
-     "periodo": "avontade"
-    }
+    "nome": "baú paciente",
+    "descricao": "espera imóvel na rota dos saqueadores, com o disfarce que mais atrai uma mão; quando alguém toca, gruda, morde e devora antes que o outro entenda."
    },
    {
-    "id": "cola-aderente",
-    "nome": "Cola aderente",
-    "tipo": "natural",
-    "resiste": "esquiva",
-    "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
-    "usos": {
-     "periodo": "cena",
-     "quantidade": 3,
-     "recarga": "1 hora"
-    }
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um bicho atento; observa os hábitos de quem passa (site)."
    }
   ],
+  "poderes": [],
   "locomocao": {
    "terra": 1,
    "escalada": 1
@@ -32710,7 +32902,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Disfarça-se de baú, porta ou móvel e espera com paciência absoluta até que alguém confie o bastante para tocar; então prende e devora a vítima antes que ela perceba o engano."
+    "texto": "Disfarça-se de baú, porta ou móvel e espera com paciência absoluta até que alguém confie o bastante para tocar; então prende e devora a vítima antes que ela perceba o engano. Social: sozinho."
    },
    {
     "titulo": "Ecologia",
@@ -32723,6 +32915,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "É contado entre as coisas de forma errada que o povo acredita terem origem na Fenda, e nenhuma história assusta mais um caçador de tesouros do que a certeza de que o próximo baú pode ser o último que ele abre."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 40 PV, Impacto 6, Corte e Perfuração 1. Esquiva 10, Bloqueio 6. Parece um objeto até atacar. Quem o toca ou leva o Pseudópode (9, 5) fica colado (três vezes por cena); a Mordida (7, 5) faz +2d6 no primeiro golpe contra quem está Surpreso."
    }
   ]
  },
@@ -33151,7 +33347,7 @@
   "categoria": "Aberração",
   "tipo": "soldado",
   "conceito": "aberração Médio",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Criatura de antenas sensíveis que fareja metal a distância e se lança sobre ele com fome irresistível, mais interessada em devorar espadas e armaduras do que em ferir quem as carrega. Só usa as antenas contra gente quando a cercam.",
   "tags": [
    "aberracao",
    "centelha",
@@ -33162,7 +33358,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "1,5 m de comprimento",
+   "medida": "1,5 m de comprimento, 0,7 m de altura",
    "peso": "120 kg"
   },
   "ecologia": {
@@ -33188,18 +33384,18 @@
    "raciocinio": 2
   },
   "pericias": {
-   "prontidao": 1,
+   "prontidao": 3,
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 1
   },
   "vontade": 6,
   "aparencia": 1,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
    "valor": 3
   },
   "combate": {
@@ -33209,11 +33405,11 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
+   "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 4,
     "arranque": 6,
@@ -33221,9 +33417,9 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "3d6 +2",
-     "dano": "1d6 +3 perfurante",
+     "nome": "Mordida",
+     "pool": "4d6+2 +3",
+     "dano": "1d6 +1 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -33232,55 +33428,38 @@
   },
   "habilidades": [
    {
+    "nome": "Antenas",
+    "descricao": "enferruja, sem dano"
+   },
+   {
     "nome": "Corrói metal",
-    "descricao": "toque das antenas enferruja e destrói armas e armaduras metálicas (reduz a Absorção do alvo)"
+    "descricao": "poder natural (base Matéria 2, a do site) · Antenas: Ativação: as Antenas que acertam o alvo, ou que tocam uma arma de metal que bloqueia ou que o acerta. Duração: permanente. Alcance: o do corpo a corpo. Área: um objeto de metal. Efeito: o metal enferruja: a armadura de metal perde 1 ponto de Absorção, e a arma de metal perde 1 de dano, por toque; o efeito acumula, e a peça que chega a 0 vira pó. Dano: nenhum ao portador. Resistência: nenhum para o metal comum; a peça encantada, a critério do Mestre. Limite de uso: um por golpe."
    },
    {
     "nome": "Faro por metal",
-    "descricao": "Prontidão 3; localiza objetos metálicos a distância"
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 27 m. Área: em volta. Efeito: sabe onde há metal e quanto, mesmo escondido; Prontidão (metal) +3. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Mordida fraca",
-    "descricao": "ataque secundário de pouco dano"
+    "nome": "come o metal",
+    "descricao": "corre para quem tem mais metal, enferruja a arma e a armadura e come o que cai; prefere recuar de quem já perdeu o metal e só luta quando o cercam."
    },
    {
-    "nome": "Fuga cautelosa",
-    "descricao": "prefere recuar a enfrentar quem já perdeu o metal"
+    "nome": "Sentidos",
+    "descricao": "faro de metal pelas antenas (site); visão no escuro das tocas."
    }
   ],
-  "poderes": [
-   {
-    "id": "corroi-metal",
-    "nome": "Corrói metal",
-    "tipo": "natural",
-    "resiste": "corpo",
-    "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-    "base": {
-     "arte": "materia",
-     "nivel": 2
-    },
-    "ataque": "Garras e presas",
-    "usos": {
-     "periodo": "golpe"
-    }
-   }
-  ],
+  "poderes": [],
   "locomocao": {
    "terra": 4,
    "escalada": 1
   },
   "tecnicas": [],
-  "artes": [
-   {
-    "id": "materia",
-    "nivel": 1
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Prontidão 3.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Criatura de antenas sensíveis que fareja metal a distância e se lança sobre ele com fome irresistível, mais interessada em devorar espadas e armaduras do que em ferir quem as carrega."
+    "texto": "Criatura de antenas sensíveis que fareja metal a distância e se lança sobre ele com fome irresistível, mais interessada em devorar espadas e armaduras do que em ferir quem as carrega. Social: sozinho."
    },
    {
     "titulo": "Ecologia",
@@ -33289,6 +33468,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Ferreiros e aventureiros contam histórias de covis inteiros enferrujados até o pó, e muitos juram que a praga chegou pela Fenda, arrastada de um plano onde nada de metal resiste."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, rápido (4), 34 PV, Impacto 4, Corte e Perfuração 1. Esquiva 14, Bloqueio 10. As Antenas não ferem: cada toque tira 1 de Absorção da armadura de metal, ou 1 de dano da arma de metal que bloqueia ou que o acerta. Mordida fraca (4, 5). Fareja metal e foge de quem não tem mais nada para comer."
    }
   ]
  },
@@ -34469,11 +34652,11 @@
  {
   "id": "naga-espirita",
   "nome": "Naga Espírita",
-  "nomeIngles": "Naga, Spirit",
+  "nomeIngles": "Spirit Naga",
   "categoria": "Aberração",
   "tipo": "chefe",
   "conceito": "aberração Grande",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Serpente longeva e arrogante que se enrosca sobre tesouros em templos afundados e ruínas de civilizações que ela viu cair. Encanta com o olhar, cospe veneno e conjura fogo e ilusões antes mesmo de pensar em negociar.",
   "tags": [
    "aberracao",
    "centelha",
@@ -34484,7 +34667,7 @@
   "pendente": true,
   "porte": "Grande",
   "dimensoes": {
-   "medida": "6 m de comprimento",
+   "medida": "6 m de comprimento, 0,34 m de altura",
    "peso": "320 kg"
   },
   "ecologia": {
@@ -34512,32 +34695,32 @@
    "raciocinio": 5
   },
   "pericias": {
-   "prontidao": 2,
+   "prontidao": 4,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 1
+   "sociabilidade": 2,
+   "furtividade": 2
   },
   "vontade": 10,
   "aparencia": 1,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 4
   },
   "combate": {
    "pv": 54,
    "defesa": 10,
-   "defesaSocial": 10,
+   "defesaSocial": 18,
    "defesaMental": 30,
    "absorcao": {
     "impacto": 11,
-    "corte": 10,
-    "perfuracao": 10
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 7",
+   "iniciativa": "1d6 + 9",
    "deslocamento": {
     "batalha": 4,
     "arranque": 6,
@@ -34545,9 +34728,9 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Mordida",
      "pool": "5d6+2 +10",
-     "dano": "2d6 +11 perfurante",
+     "dano": "1d6 +11 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -34556,63 +34739,35 @@
   },
   "habilidades": [
    {
-    "nome": "Olhar encantador",
-    "descricao": "quem cruza o olhar falha em Vontade: Enfeitiçado, obedece por uma cena"
+    "nome": "Mordida venenosa",
+    "descricao": "Mordida: a regra do veneno, com o veneno da linha Veneno e doença."
    },
    {
     "nome": "Cuspe venenoso",
-    "descricao": "alcance 9m; acerto injeta veneno, falha em Fortitude: dano contínuo e Abalado"
+    "descricao": "boca: Ativação: uma ação, Velocidade 6; ataque a distância, Vigor + Disparo (Vigor 6 + Disparo 3 + 2 × o menor entre Centelha 5 e Disparo 3, 6). Duração: a do veneno. Alcance: 9 m (site). Área: um alvo. Efeito: o cuspe mira os olhos e a boca; mucosa exposta conta como sangue, e o veneno da linha Veneno e doença entra. Dano: nenhum além do veneno. Resistência: esquiva, contra o ataque; corpo, pela regra do veneno. Limite de uso: três vezes por cena, recarga de 1 hora (site)."
    },
    {
-    "nome": "Feitiços arcanos",
-    "descricao": "repertório de magias de dano e controle"
+    "nome": "Olhar encantador",
+    "descricao": "poder natural (base Fascinação 3, a do site): Ativação: uma ação, Velocidade 5, contra quem cruza o olhar com ela. Duração: até o fim da cena. Alcance: 9 m, à vista. Área: um alvo. Efeito: o alvo fica Dominado e obedece a ela. Dano: nenhum. Resistência: mente, contra Influência 5 + Persuasão 3 + 2 × o menor entre Centelha 5 e Persuasão 3 (6) = 14 mais a rolagem; quem desvia o rosto não é tocado, mas ataca a −4 enquanto não olhar (site). Limite de uso: uma tentativa por alvo por cena (site)."
    },
    {
-    "nome": "Corpo serpentino",
-    "descricao": "rasteja e nada com igual facilidade, +2d6 em Furtividade em água ou vegetação"
+    "nome": "Feitiços",
+    "descricao": "Artes do livro: Fascinação até o 5 (Ilusão Plena), Fogo até o 4 (Bola de Fogo), Ofuscação até o 3 (Manto) e Cura até o 1 (Sarar), com 20 de Mana."
    },
    {
     "nome": "Imune ao próprio veneno",
-    "descricao": "o veneno da naga não a afeta"
+    "descricao": "o veneno de naga não a pega."
    },
    {
-    "nome": "Sentidos aguçados",
-    "descricao": "+2d6 em Prontidão, difícil de emboscar"
+    "nome": "rainha das ruínas",
+    "descricao": "enroscada sobre o tesouro, encanta o mais forte com o olhar, abre com a Bola de Fogo e o cuspe, e só negocia quando lhe convém."
    },
    {
-    "nome": "Presa envenenada",
-    "descricao": "mordida corpo a corpo como ataque secundário"
+    "nome": "Sentidos",
+    "descricao": "sentidos aguçados, difícil de emboscar (site); Prontidão (emboscada) +2."
    }
   ],
-  "poderes": [
-   {
-    "id": "olhar-encantador",
-    "nome": "Olhar encantador",
-    "tipo": "natural",
-    "resiste": "mente",
-    "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
-    "base": {
-     "arte": "fascinacao",
-     "nivel": 3
-    },
-    "usos": {
-     "periodo": "cena"
-    }
-   },
-   {
-    "id": "cuspe-venenoso",
-    "nome": "Cuspe venenoso",
-    "tipo": "natural",
-    "resiste": "corpo",
-    "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-    "ataque": "Garras e presas",
-    "usos": {
-     "periodo": "cena",
-     "quantidade": 3,
-     "recarga": "1 hora"
-    }
-   }
-  ],
+  "poderes": [],
   "locomocao": {
    "terra": 4
   },
@@ -34635,11 +34790,12 @@
     "nivel": 1
    }
   ],
+  "mana": 20,
   "notas": "Habilidades notáveis: Ocultismo 4, Persuasão 3, Prontidão 4.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Enrosca-se sobre tesouros e ruínas esquecidas, atacando com veneno e feitiços antes mesmo de considerar negociar, e só o faz quando lhe convém."
+    "texto": "Enrosca-se sobre tesouros e ruínas esquecidas, atacando com veneno e feitiços antes mesmo de considerar negociar, e só o faz quando lhe convém. Social: sozinha, com poucos servos ou cultistas."
    },
    {
     "titulo": "Hábitat",
@@ -34656,17 +34812,25 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Relíquia de eras anteriores à Grande Guerra, guarda segredos de magia que a Supressão tentou apagar; em Mére, onde cidades mágicas se escondem sob a selva, é temida como guardiã de um passado que devia ter ficado enterrado."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Peçonha de naga · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida e pelo Cuspe venenoso. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor como o atributo que o \"dano contínuo\" do site tira; quem está com o veneno ativo fica Abalado (site) até o pool zerar."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande erguida, 54 PV, Impacto 11, Corte e Perfuração 5. Esquiva 10, Bloqueio 6, Defesa Mental 30. Mordida de dano médio 14,5 com veneno que tira o Vigor e abala; cuspe a 9 m (três vezes por cena); olhar que domina por uma cena. Conjura com 20 de Mana: Ilusão Plena, Bola de Fogo, Manto, Sarar."
    }
   ]
  },
  {
   "id": "naga-guardia",
   "nome": "Naga Guardiã",
-  "nomeIngles": "Naga, Guardian",
+  "nomeIngles": "Guardian Naga",
   "categoria": "Aberração",
   "tipo": "chefe",
   "conceito": "aberração Grande",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Serpente de escamas radiantes e capuz de cobra que protege cachoeiras, picos e templos dignos de reverência. Um casal se instala perto do lugar e cria a ninhada ali; os filhotes partem ou assumem a guarda. Morde e cospe veneno, e conjura proteção e cura.",
   "tags": [
    "aberracao",
    "centelha"
@@ -34674,9 +34838,9 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": true,
-  "porte": "Grande",
+  "porte": "Médio",
   "dimensoes": {
-   "medida": "4,3 m de comprimento",
+   "medida": "4,3 m de comprimento, 0,28 m de altura",
    "peso": "159 kg"
   },
   "ecologia": {
@@ -34706,26 +34870,26 @@
    "prontidao": 2,
    "esquiva": 2,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 1
+   "sociabilidade": 2,
+   "furtividade": 2
   },
   "vontade": 10,
-  "aparencia": 1,
+  "aparencia": 6,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 4
   },
   "combate": {
-   "pv": 58,
+   "pv": 46,
    "defesa": 22,
-   "defesaSocial": 10,
+   "defesaSocial": 18,
    "defesaMental": 30,
    "absorcao": {
     "impacto": 12,
-    "corte": 10,
-    "perfuracao": 10
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
@@ -34736,9 +34900,9 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Mordida",
      "pool": "6d6 +10",
-     "dano": "2d6 +12 perfurante",
+     "dano": "1d6 +12 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -34747,16 +34911,24 @@
   },
   "habilidades": [
    {
-    "nome": "Veneno debilitante",
-    "descricao": "A mordida ou o cuspe injetam um veneno que corrói a vitalidade da vítima ao longo de vários instantes, a menos que ela resista em testes de Vigor sucessivos."
+    "nome": "Mordida venenosa",
+    "descricao": "Mordida: a regra do veneno, com o veneno da linha Veneno e doença."
    },
    {
     "nome": "Cuspe à distância",
-    "descricao": "Consegue cuspir seu veneno com precisão em um alvo a até 9 metros."
+    "descricao": "boca: Ativação: uma ação, Velocidade 6; ataque a distância, Vigor + Disparo (Vigor 7 + Disparo 3 + 2 × o menor entre Centelha 5 e Disparo 3, 6). Duração: a do veneno. Alcance: 9 m (site). Área: um alvo. Efeito: o cuspe mira os olhos e a boca; mucosa exposta conta como sangue, e o veneno da linha Veneno e doença entra. Dano: nenhum além do veneno. Resistência: esquiva, contra o ataque; corpo, pela regra do veneno. Limite de uso: três vezes por cena, recarga de 1 hora, os usos do cuspe da naga espírita (o site não dá)."
    },
    {
-    "nome": "Magias sagradas e arcanas",
-    "descricao": "Lança tanto feitiços arcanos quanto orações de cura e proteção, incomum entre as serpentes de sua espécie."
+    "nome": "Feitiços",
+    "descricao": "Artes do livro: Proteção até o 4 (Refúgio), Cura até o 4 (Restauração) e Forças até o 3 (Telecinese), com 20 de Mana. As Artes são escolha da ficha (Identidade)."
+   },
+   {
+    "nome": "sentinela do lugar sagrado",
+    "descricao": "avisa antes de atacar; protege o lugar com o Refúgio, cospe de longe, morde quem insiste e cura o par e a ninhada."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de uma serpente grande e atenta."
    }
   ],
   "poderes": [],
@@ -34764,7 +34936,21 @@
    "terra": 4
   },
   "tecnicas": [],
-  "artes": [],
+  "artes": [
+   {
+    "id": "protecao",
+    "nivel": 4
+   },
+   {
+    "id": "cura",
+    "nivel": 4
+   },
+   {
+    "id": "forcas",
+    "nivel": 3
+   }
+  ],
+  "mana": 20,
   "notas": "",
   "lore": [
    {
@@ -34774,17 +34960,29 @@
    {
     "titulo": "Linhagem de sentinelas",
     "texto": "Um casal costuma se instalar perto de um local que julga precisar de proteção, criando a ninhada ali; os filhotes escolhem partir ou assumir a guarda do ancestral."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: em casal, com a ninhada."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Peçonha de naga · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida e pelo Cuspe à distância. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor do site; o mesmo veneno das outras nagas do lote."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Média erguida, Pequena enrolada. 46 PV, Impacto 12, Corte e Perfuração 5. Esquiva 22, Bloqueio 14, Defesa Mental 30. Mordida de dano médio 15,5 e cuspe a 9 m, com veneno que tira o Vigor. Conjura com 20 de Mana: Refúgio, Restauração, Telecinese."
    }
   ]
  },
  {
   "id": "naga-negra",
   "nome": "Naga Negra",
-  "nomeIngles": "Naga, Dark",
+  "nomeIngles": "Dark Naga",
   "categoria": "Aberração",
   "tipo": "chefe",
   "conceito": "aberração Grande",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Serpente de escamas negras e brilhantes que desliza por ruínas atrás de tesouros e joias mórbidas. Lê os pensamentos de quem está perto, manipula com mentiras quem não consegue subjugar e destrói com veneno e raios quem resiste.",
   "tags": [
    "aberracao",
    "centelha"
@@ -34792,10 +34990,10 @@
   "ameaca": 5,
   "centelha": 4,
   "pendente": true,
-  "porte": "Grande",
+  "porte": "Médio",
   "dimensoes": {
-   "medida": "3,6 m de comprimento",
-   "peso": "mais de 136 kg"
+   "medida": "3,6 m de comprimento, 0,28 m de altura",
+   "peso": "136 kg"
   },
   "ecologia": {
    "tipo": "Aberration",
@@ -34824,26 +35022,26 @@
    "prontidao": 2,
    "esquiva": 2,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 1
+   "sociabilidade": 2,
+   "furtividade": 2
   },
   "vontade": 9,
-  "aparencia": 1,
+  "aparencia": 4,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
    "valor": 4
   },
   "combate": {
-   "pv": 54,
+   "pv": 43,
    "defesa": 20,
-   "defesaSocial": 10,
+   "defesaSocial": 18,
    "defesaMental": 27,
    "absorcao": {
     "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
@@ -34854,9 +35052,9 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "5d6 +8",
-     "dano": "2d6 +9 perfurante",
+     "nome": "Ferrão",
+     "pool": "5d6+2 +8",
+     "dano": "1d6 +9 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -34865,24 +35063,36 @@
   },
   "habilidades": [
    {
+    "nome": "Ferrão peçonhento",
+    "descricao": "Ferrão: a regra do veneno, com o veneno da linha Veneno e doença."
+   },
+   {
     "nome": "Leitura de pensamentos",
-    "descricao": "Lê constantemente os pensamentos de quem está perto, a menos que a mente esteja protegida."
+    "descricao": "poder natural (base Adivinhação 2): Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 18 m. Área: quem ela escolher ao alcance. Efeito: ouve os pensamentos de superfície do alvo: o que ele pensa agora, não as lembranças. Dano: nenhum. Resistência: mente, contra Perspicácia 5 + Empatia 3 + 2 × o menor entre Centelha 4 e Empatia 3 (6) = 14 mais a rolagem; quem passa fica fechado para ela até o fim da cena, e a mente protegida por Arte não se lê (site). Limite de uso: um alvo por vez."
    },
    {
     "nome": "Mente blindada",
-    "descricao": "É imune a qualquer leitura ou intrusão mental e resiste melhor a encantos e dominações."
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental contra encanto e domínio (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Ferrão peçonhento",
-    "descricao": "Seu ferrão injeta um veneno que corrói o corpo da vítima, causando dano contínuo de Vigor (Constituição) se ela falhar num teste de Vigor."
+    "nome": "Imune a leitura da mente",
+    "descricao": "nenhuma Arte ou poder lê os pensamentos dela nem entra na mente dela."
    },
    {
-    "nome": "Feitiçaria treinada",
-    "descricao": "Domina um repertório de magias arcanas, de mísseis mágicos a raios e relâmpagos."
+    "nome": "Imune a veneno",
+    "descricao": "nenhum veneno a afeta (site)."
    },
    {
-    "nome": "Corpo imune a peçonhas",
-    "descricao": "Nenhum veneno a afeta."
+    "nome": "Feitiços",
+    "descricao": "Artes do livro: Raio até o 4 (Corrente), Forças até o 3 (Telecinese) e Fascinação até o 3 (Encanto), com 17 de Mana. As Artes são escolha da ficha (Identidade)."
+   },
+   {
+    "nome": "língua bifurcada",
+    "descricao": "lê o que o outro pensa, mente com o que leu e encanta quem pode servir; quem resiste leva a Corrente e o ferrão. Odeia as outras nagas."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "leitura de pensamentos (Manobras); visão e audição de uma serpente grande."
    }
   ],
   "poderes": [],
@@ -34890,7 +35100,21 @@
    "terra": 4
   },
   "tecnicas": [],
-  "artes": [],
+  "artes": [
+   {
+    "id": "raio",
+    "nivel": 4
+   },
+   {
+    "id": "forcas",
+    "nivel": 3
+   },
+   {
+    "id": "fascinacao",
+    "nivel": 3
+   }
+  ],
+  "mana": 17,
   "notas": "",
   "lore": [
    {
@@ -34900,6 +35124,18 @@
    {
     "titulo": "Língua bifurcada, só mentiras",
     "texto": "Manipula quem não consegue subjugar, e destrói com veneno e magia quem resiste; odeia sobretudo as de sua própria espécie."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinha; odeia as da própria espécie."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Peçonha de naga · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pelo Ferrão. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor do site; o mesmo veneno das outras nagas do lote."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Média erguida, Pequena enrolada. 43 PV, Impacto 10, Corte e Perfuração 4. Esquiva 20, Bloqueio 12, Defesa Mental 27 (29 contra encanto). Ferrão de dano médio 12,5 com veneno que tira o Vigor. Lê pensamentos a 18 m. Conjura com 17 de Mana: Corrente, Telecinese, Encanto. Veneno não a pega."
    }
   ]
  },
@@ -39360,7 +39596,7 @@
   "habilidades": [
    {
     "nome": "Garras traiçoeiras",
-    "descricao": "Garras: Ativação: uma ação de Garras, com Velocidade 7 no lugar de 5. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo, ou dois lado a lado. Efeito: duas jogadas de Garras na mesma ação, cada uma contra a Defesa do alvo. Dano: o das Garras em cada uma que acerta. Resistência: nenhum. Limite de uso: a cada ação de Garras."
+    "descricao": "a Rajada: dois golpes de Garras na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação. Decisão do autor de 23/10: o golpe duplo é a Rajada, como o do campeão."
    },
    {
     "nome": "Mudar de forma",
@@ -39439,7 +39675,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio, 40 PV, Impacto 10, Corte e Perfuração 5, metade do dano de corte e de impacto. Esquiva e Bloqueio 14. Duas garradas por ação (dano médio 10, 5 cada). Conjura com 20 de Mana: Fascinação e Proteção até o 4, Matéria até o 3, Adivinhação até o 2. Muda de forma, lê pensamentos e cria ilusões à vontade. Defesa Mental 25, 29 contra Artes. Ferido, foge com outro rosto."
+    "texto": "Médio, 40 PV, Impacto 10, Corte e Perfuração 5, metade do dano de corte e de impacto. Esquiva e Bloqueio 14. Em Rajada, duas garradas por ação, a segunda a −1d6 (dano médio 10, 5 a primeira). Conjura com 20 de Mana: Fascinação e Proteção até o 4, Matéria até o 3, Adivinhação até o 2. Muda de forma, lê pensamentos e cria ilusões à vontade. Defesa Mental 25, 29 contra Artes. Ferido, foge com outro rosto."
    }
   ]
  },

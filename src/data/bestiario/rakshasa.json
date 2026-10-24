@@ -133,8 +133,8 @@
   "habilidades": [
     {
       "nome": "Garras traiçoeiras",
-      "descricao": "Garras: Ativação: uma ação de Garras, com Velocidade 7 no lugar de 5. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo, ou dois lado a lado. Efeito: duas jogadas de Garras na mesma ação, cada uma contra a Defesa do alvo. Dano: o das Garras em cada uma que acerta. Resistência: nenhum. Limite de uso: a cada ação de Garras.",
-      "classe": "regra da ficha"
+      "descricao": "a Rajada: dois golpes de Garras na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação. Decisão do autor de 23/10: o golpe duplo é a Rajada, como o do campeão.",
+      "classe": "livro"
     },
     {
       "nome": "Mudar de forma",
@@ -194,7 +194,7 @@
     },
     {
       "titulo": "No jogo",
-      "texto": "Médio, 40 PV, Impacto 10, Corte e Perfuração 5, metade do dano de corte e de impacto. Esquiva e Bloqueio 14. Duas garradas por ação (dano médio 10, 5 cada). Conjura com 20 de Mana: Fascinação e Proteção até o 4, Matéria até o 3, Adivinhação até o 2. Muda de forma, lê pensamentos e cria ilusões à vontade. Defesa Mental 25, 29 contra Artes. Ferido, foge com outro rosto."
+      "texto": "Médio, 40 PV, Impacto 10, Corte e Perfuração 5, metade do dano de corte e de impacto. Esquiva e Bloqueio 14. Em Rajada, duas garradas por ação, a segunda a −1d6 (dano médio 10, 5 a primeira). Conjura com 20 de Mana: Fascinação e Proteção até o 4, Matéria até o 3, Adivinhação até o 2. Muda de forma, lê pensamentos e cria ilusões à vontade. Defesa Mental 25, 29 contra Artes. Ferido, foge com outro rosto."
     }
   ],
   "ecologia": {
@@ -265,7 +265,6 @@
     "`bloqueio`: 1; o site não gravava Bloqueio **[provisório]**",
     "`aparencia`: 6; o site tinha 0 **[provisório]**",
     "`compaixao`: 1, o piso da régua; o site tinha 0",
-    "`garras traiçoeiras`: duas jogadas numa ação, com Velocidade 7 **[provisório]**",
     "`mudar de forma`, `ler pensamentos`, `ilusões`, `magia reversa`: números sugeridos pela ficha (D-197). A Magia reversa fica +4, o número do site"
   ]
 }

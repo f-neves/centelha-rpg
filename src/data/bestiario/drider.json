@@ -5,9 +5,10 @@
   "nome": "Drider",
   "nomeIngles": "Drider",
   "categoria": "Aberração",
+  "categoriaLegada": "Aberração",
   "papel": "elite",
   "conceito": "aberração Grande",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "O que resta de um drow punido pelos deuses aracnídeos: o tronco fundido ao corpo de uma aranha gigante. Embosca nos túneis, prende de longe com teia, morde com um veneno que tira a força e ainda apaga a luz com a feitiçaria de antes.",
   "tags": [
     "aberracao",
     "centelha"
@@ -15,34 +16,59 @@
   "imagem": "bestiario/drider_criatura.webp",
   "porte": "Grande",
   "dimensoes": {
-    "medida": "3 metros de altura",
-    "peso": "180 kg"
+    "medida": "1,22 m de comprimento, 1,5 m de altura",
+    "peso": "180 kg",
+    "comprimento": 1.22,
+    "largura": 0.55,
+    "altura": 1.5
   },
   "locomocao": {
     "terra": 3,
     "escalada": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 4,
   "attrs": {
     "forca": 5,
     "destreza": 4,
     "vigor": 6,
-    "influencia": 5,
-    "perspicacia": 5,
-    "compostura": 5,
     "percepcao": 5,
     "inteligencia": 4,
-    "raciocinio": 5
+    "raciocinio": 5,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5
   },
   "skills": {
     "briga": 5,
+    "bloqueio": 1,
     "esquiva": 1,
+    "atletismo": 2,
+    "furtividade": 3,
     "prontidao": 2,
-    "integridade": 5
+    "integridade": 5,
+    "ocultismo": 2
   },
+  "skills2": {
+    "escalada": 3,
+    "disparo": 3,
+    "musculatura": 1
+  },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "na teia",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 3,
+    "compaixao": 2,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
@@ -50,40 +76,60 @@
   "aparencia": 1,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 6
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Visão no escuro",
-      "descricao": "Enxerga no escuro absoluto a uma distância considerável."
-    },
-    {
-      "nome": "Absorção mágica",
-      "descricao": "Uma parte da magia lançada contra ela é simplesmente absorvida sem efeito, graças a uma resistência inata."
-    },
-    {
-      "nome": "Teia",
-      "descricao": "Dispara fios de teia grudenta contra um alvo à distância, prendendo-o no lugar."
+      "nome": "teia",
+      "descricao": "fieiras: a da aranha-gigante do molde: ataque a distância, Vigor + Disparo (Vigor 6 + Disparo 3 + 2 × o menor entre Centelha 4 e Disparo 3, 6), até 6 m, 3 vezes por cena (recarga de 1 hora), Velocidade 6, tipo do ataque teia. Não causa dano. Acerto: o alvo fica Preso pela teia, como Preso pela Rede: não se desloca, mas age, com −2 na Esquiva e −2 no Bloqueio, e mais −1 em cada por grau de Margem do lançamento. Para se soltar: Força + Atletismo contra o total do lançamento, uma tentativa por ação.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Mordida venenosa",
-      "descricao": "A mordida injeta um veneno que corrói a força física da vítima ao longo de vários instantes, a menos que ela resista com um teste de Vigor."
+      "descricao": "Mordida: a regra do veneno, com o veneno da linha Veneno e doença.",
+      "classe": "livro"
     },
     {
       "nome": "Feitiçaria residual",
-      "descricao": "Ainda guarda parte da magia que possuía antes da transformação: cria luzes dançantes, escuridão e fogo féerico, entre outros efeitos menores."
+      "descricao": "poder natural (base Sombra 1): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até ela desfazer. Alcance: 18 m. Área: à escolha: trevas numa esfera de 6 m; luzes dançantes que se movem como ela quer; ou fogo feérico que contorna um alvo de luz fraca. Efeito: as trevas apagam a luz comum (ela enxerga nelas); as luzes enganam e iluminam; o alvo do fogo feérico não pode ficar Escondido nem Invisível enquanto durar. Dano: nenhum. Resistência: esquiva, contra Influência + Ocultismo dela, só para o fogo feérico. Limite de uso: cada um, uma vez por cena. A mesma feitiçaria do drow.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Resistência mágica",
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Imune ao sono",
-      "descricao": "Não pode ser posta para dormir por magia ou efeito algum."
+      "descricao": "Arte, poder ou veneno que faz dormir não a pega.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "tecelã dos túneis",
+      "descricao": "estende teia no túnel escuro, apaga a luz com as trevas, prende de longe com a teia e desce pela parede para morder quem ficou preso.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: \"Enxerga no escuro absoluto a uma distância considerável\" (site)."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Peçonha de drider · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pela Mordida. Os números do \"Ferrão de gigante\" dos moldes (escorpião-gigante, formiga-gigante), com a Força do site"
     }
   ],
   "lore": [
@@ -94,6 +140,18 @@
     {
       "titulo": "Caçadora nas profundezas",
       "texto": "Emboscar viajantes nos túneis é sua forma preferida de caça, envolvendo a presa em teias antes de se aproximar."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: sozinha, exilada dos drow."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Peçonha de drider · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pela Mordida. Os números do \"Ferrão de gigante\" dos moldes (escorpião-gigante, formiga-gigante), com a Força do site"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande, 43 PV, Impacto 10, Corte e Perfuração 4. Esquiva e Bloqueio 12. Teia a 6 m que prende (três vezes por cena); Mordida de dano médio 12,5 com veneno que tira a Força. Uma vez por cena, trevas, luzes ou fogo feérico. Sobe pela parede a 2. Defesa Mental 27, 29 contra Artes."
     }
   ],
   "ecologia": {
@@ -129,5 +187,37 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 43,
+    "esquiva": 12,
+    "bloqueio": 12,
+    "defesa": 12,
+    "defesaMental": 27,
+    "defesaSocial": 10,
+    "absorcao": {
+      "impacto": 10,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 358.9,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    }
+  },
+  "notasObservacao": [
+    "`altura`: 1,5 m pelo corpo escalado; os \"3 metros\" do site lidos como a envergadura das patas **[conta]**",
+    "`area`: escalada da aranha-gigante do molde **[conta]**",
+    "`couraca`: nível 1 **[provisório]**",
+    "`bloqueio`: 1; o site não gravava Bloqueio **[provisório]**",
+    "`ataques`: Mordida Média no lugar das \"Garras e presas\" **[provisório]**",
+    "`veneno`: Potência 16, pool 4 de Força **[provisório]**",
+    "`compaixao`: 1, o piso da régua; o site tinha 0",
+    "`feitiçaria residual`, `resistência mágica`: números sugeridos pela ficha (D-197)"
+  ]
 }

@@ -11,7 +11,7 @@
   "arranque": 2,
   "corrida": 2,
   "ft": 10,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "nado 60; em terra 10, e o aboleth não sai da água"
  },
  "aguia-gigante": {
@@ -211,7 +211,7 @@
   "arranque": 2,
   "corrida": 2,
   "ft": 10,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "bodak": {
   "batalha": 2,
@@ -358,7 +358,7 @@
   "arranque": 2,
   "corrida": 2,
   "ft": 10,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 40; em terra 10, e o manto vive no ar"
  },
  "capitao-da-guarda": {
@@ -429,7 +429,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "ciclope": {
   "batalha": 3,
@@ -544,7 +544,7 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "diabo-barbado": {
   "batalha": 4,
@@ -706,7 +706,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "drow": {
   "batalha": 3,
@@ -908,14 +908,14 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "ettercap": {
   "batalha": 3,
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "ettin": {
   "batalha": 4,
@@ -965,7 +965,7 @@
   "arranque": 8,
   "corrida": 12,
   "ft": 50,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 50 (perfeito): o fogo-fátuo não tem corpo que pise"
  },
  "formiga-gigante": {
@@ -980,7 +980,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "fungo-violeta": {
   "batalha": 1,
@@ -1320,7 +1320,7 @@
   "arranque": 2,
   "corrida": 2,
   "ft": 10,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "lagarto-eletrico": {
   "batalha": 3,
@@ -1576,7 +1576,7 @@
   "arranque": 2,
   "corrida": 2,
   "ft": 10,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "minotauro": {
   "batalha": 3,
@@ -1604,7 +1604,7 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "montao-tropecante": {
   "batalha": 2,
@@ -1670,21 +1670,21 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "naga-guardia": {
   "batalha": 4,
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "naga-negra": {
   "batalha": 4,
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "serpente-venenosa": {
   "batalha": 1,

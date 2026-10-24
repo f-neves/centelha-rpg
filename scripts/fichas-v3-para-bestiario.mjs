@@ -547,7 +547,13 @@ function converte(arq) {
     const tipoTxt = sem(r[col('Tipo')]).trim();
     const dado = /(\d+)d6/.exec(danoTxt);
     if (!dado) {
-      if (/nenhum \(agarra\)/.test(danoTxt)) { semDano.push({ nome: nomeA, descricao: 'agarra, sem dano' }); continue; }
+      // O GOLPE SEM DANO (a Língua da rã, as Antenas do monstro da ferrugem; decisão do Arquiteto de 24/10/2026):
+      // só a forma exata, Dano "nenhum (<texto>)", Tipo "não se aplica" e Nível vazio, "0" ou "não se aplica" (o da
+      // rã-gigante publicada). Vira a habilidade "<Nome>: <texto>, sem dano", com o texto da ficha; o efeito fica
+      // nas Manobras. Qualquer outra combinação com "nenhum" para.
+      const semDanoM = /^nenhum \(([^)]+)\)$/.exec(danoTxt.trim());
+      const nivelSD = String(r[col('Nível de Perfuração', 'Nível')] || '').replace(/\*\*/g, '').trim();
+      if (semDanoM && tipoTxt === 'nao se aplica' && /^(|0|não se aplica)$/.test(nivelSD)) { semDano.push({ nome: nomeA, descricao: `${semDanoM[1]}, sem dano` }); continue; }
       aviso.push(`ataque sem dado: ${nomeA} (${danoTxt})`); continue;
     }
     const lado = danoTxt.includes('=') ? danoTxt.split('=').pop() : danoTxt;

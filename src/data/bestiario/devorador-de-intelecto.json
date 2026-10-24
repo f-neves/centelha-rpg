@@ -5,9 +5,10 @@
   "nome": "Devorador de Intelecto",
   "nomeIngles": "Intellect Devourer",
   "categoria": "Aberração",
+  "categoriaLegada": "Aberração",
   "papel": "chefe",
   "conceito": "aberração Pequeno",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Cérebro de quatro patas vindo de outro plano ou de um mundo distante, que se alimenta de cérebros e memórias. Devora o cérebro de uma vítima, entra no corpo dela e sustenta a fachada por dias, falando as línguas dela sem guardar as lembranças. Fica invisível, confunde e fere com a mente.",
   "tags": [
     "aberracao",
     "centelha"
@@ -15,33 +16,64 @@
   "imagem": "bestiario/devorador-de-intelecto_criatura.webp",
   "porte": "Pequeno",
   "dimensoes": {
-    "medida": "60 cm de altura",
-    "peso": "18 kg"
+    "medida": "0,45 m de comprimento, 0,6 m de altura",
+    "peso": "18 kg",
+    "comprimento": 0.45,
+    "largura": 0.32,
+    "altura": 0.6
   },
   "locomocao": {
     "terra": 4
   },
+  "deslocamentoDeclarado": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+  },
   "centelha": 4,
   "attrs": {
-    "forca": 3,
+    "forca": 2,
     "destreza": 7,
     "vigor": 6,
-    "influencia": 5,
-    "perspicacia": 5,
-    "compostura": 4,
     "percepcao": 2,
     "inteligencia": 5,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 4
   },
   "skills": {
     "briga": 5,
     "esquiva": 2,
+    "atletismo": 2,
+    "furtividade": 4,
     "prontidao": 1,
-    "integridade": 4
+    "integridade": 4,
+    "empatia": 2,
+    "sociabilidade": 2,
+    "ocultismo": 3
   },
+  "skills2": {
+    "labia": 3,
+    "atuacao": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "emboscada",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "atuacao",
+      "foco": "a vítima",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 3,
+    "compaixao": 2,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 4
   },
@@ -49,40 +81,82 @@
   "aparencia": 1,
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
+      "nome": "Garras",
+      "atrib": "destreza",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
+  "fraquezas": [
+    "sagrado"
+  ],
+  "resistencias": [
+    "fogo",
+    "gelo",
+    "raio"
+  ],
+  "imunidades": [],
   "habilidades": [
     {
       "nome": "Ladrão de corpos",
-      "descricao": "Pode encolher, rastejar para dentro da boca de uma vítima indefesa ou morta e devorar seu cérebro, tomando o controle total do corpo como se fosse seu."
-    },
-    {
-      "nome": "Sentido cego e detecção mágica",
-      "descricao": "Percebe o ambiente sem depender da visão e sente a presença constante de magia ao redor."
-    },
-    {
-      "nome": "Resistências arcanas",
-      "descricao": "Seu corpo resiste bem a fogo e a efeitos que afetam a mente, além de amortecer frio, eletricidade e som."
-    },
-    {
-      "nome": "Vulnerabilidade sagrada",
-      "descricao": "Proteções contra o mal o afetam como se fosse uma criatura convocada, ferindo-o com mais facilidade."
+      "descricao": "encolhe, entra pela boca de uma vítima indefesa ou morta, devora o cérebro e passa a controlar o corpo como se fosse seu; fala as línguas da vítima e imita os modos dela por dias, sem as lembranças dela. O livro não tem regra de possessão.",
+      "classe": "sem regra ainda"
     },
     {
       "nome": "Ataque furtivo",
-      "descricao": "Golpeia com precisão mortal quando pega o alvo desprevenido, causando dano extra."
+      "descricao": "Garras: Ativação: as Garras que ferem um alvo Surpreso. Duração: o golpe. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o golpe acha o ponto fraco. Dano: +2d6 ao das Garras. Resistência: nenhum. Limite de uso: um por golpe.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Poderes psíquicos",
-      "descricao": "Pode confundir, atordoar, ferir a distância e se tornar invisível usando puro poder mental."
+      "nome": "Confundir",
+      "descricao": "poder natural (base Fascinação 3): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até o alvo levar dano. Alcance: 18 m. Área: um alvo. Efeito: o alvo fica Confuso. Dano: nenhum. Resistência: mente, contra Influência 5 + Integridade 4 + 2 × o menor entre Centelha 4 e Integridade 4 (8) = 17 mais a rolagem. Limite de uso: três vezes por cena.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Atordoar",
+      "descricao": "poder natural (base Fascinação 3): Ativação: uma ação, Velocidade 6. Duração: a próxima ação do alvo. Alcance: 18 m. Área: um alvo. Efeito: um choque na mente faz o alvo perder a próxima ação. Dano: nenhum. Resistência: mente, contra a mesma jogada do Confundir. Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Golpe psíquico",
+      "descricao": "poder natural (base Fascinação 3): Ativação: uma ação, Velocidade 6. Duração: instantâneo. Alcance: 18 m. Área: um alvo. Efeito: fere a mente a distância. Dano: 2d6, fenômeno (a armadura não absorve, só a Centelha; C-041). Resistência: mente, contra a mesma jogada do Confundir; quem passa leva metade. Limite de uso: três vezes por cena.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Invisibilidade psíquica",
+      "descricao": "poder natural (base Ofuscação 3): Ativação: uma ação, Velocidade 5. Duração: até ele atacar ou desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Invisível. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Resistência mental",
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental contra efeito que mexe na mente (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Resistência a som",
+      "descricao": "amortece o dano de som (\"som\" não está no vocabulário de elementos).",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Vulnerável às proteções contra o mal",
+      "descricao": "proteção contra o mal o afeta como a uma criatura convocada. O dano sagrado vai na linha Elementos.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "caçador de corpos",
+      "descricao": "fica invisível, embosca o alvo sozinho, confunde ou atordoa, mata com as garras e toma o corpo; dentro dele, vive entre a gente da vítima até achar a próxima.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "sentido cego: percebe o ambiente sem depender da visão (site). · detecção mágica: sente a presença de magia em volta (site)."
     }
   ],
   "lore": [
@@ -93,6 +167,14 @@
     {
       "titulo": "Máscara perfeita",
       "texto": "Ao tomar um corpo, sustenta a fachada da vítima por dias, falando suas línguas e imitando seus modos sem guardar suas lembranças."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: sozinho, escondido entre a gente da vítima."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Pequeno, rápido (4), 32 PV, Impacto 10, Corte e Perfuração 4. Esquiva 22, Bloqueio 14, Defesa Mental 24 (26 contra efeito na mente). Garras de dano médio 7,5 (+2d6 contra quem está Surpreso). Fica invisível uma vez por cena; confunde e fere a mente a 18 m três vezes por cena, e atordoa uma. Fogo, gelo e raio fazem metade; sagrado passa inteiro. Toma o corpo de quem mata."
     }
   ],
   "ecologia": {
@@ -128,5 +210,34 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "v3": {
+    "pv": 32,
+    "esquiva": 22,
+    "bloqueio": 14,
+    "defesa": 22,
+    "defesaMental": 24,
+    "defesaSocial": 16,
+    "absorcao": {
+      "impacto": 10,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 58.45,
+    "deslocamento": {
+      "terra": {
+        "batalha": 4,
+        "arranque": 6,
+        "corrida": 9
+      }
+    }
+  },
+  "notasObservacao": [
+    "`forca`: 2; o site tinha 3 **[provisório]**",
+    "`area`: patas estimadas **[extrapolação]**",
+    "`elementos`: fraqueza a sagrado pela \"vulnerabilidade sagrada\" do site **[provisório]**",
+    "`compaixao`: 1, o piso da régua; o site tinha 0",
+    "`ataque furtivo`, `confundir`, `atordoar`, `golpe psíquico`, `invisibilidade psíquica`, `resistência mental`: números sugeridos pela ficha (D-197)"
+  ]
 }
