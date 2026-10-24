@@ -8,7 +8,7 @@
   "categoriaLegada": "Exterior",
   "papel": "soldado",
   "conceito": "exterior Médio",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "O mais humano dos gênios, insulto que responde na ponta da espada: guarda poços e oásis no fundo do deserto, voa, some da vista, muda o tamanho do inimigo e abre passagem para os planos elementais.",
   "tags": [
     "exterior",
     "centelha"
@@ -17,70 +17,119 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,8 m de altura",
-    "peso": "80 kg"
+    "peso": "80 kg",
+    "largura": 0.45,
+    "altura": 1.8
   },
   "locomocao": {
     "terra": 3,
     "voo": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 2,
   "attrs": {
     "forca": 5,
     "destreza": 4,
     "vigor": 3,
-    "influencia": 3,
-    "perspicacia": 4,
-    "compostura": 4,
     "percepcao": 4,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 3,
+    "perspicacia": 4,
+    "compostura": 4
   },
   "skills": {
-    "briga": 4,
+    "armas": 4,
+    "briga": 2,
+    "bloqueio": 2,
     "esquiva": 1,
+    "atletismo": 2,
     "prontidao": 2,
-    "integridade": 4
+    "integridade": 4,
+    "sobrevivencia": 3,
+    "ocultismo": 2
   },
+  "skills2": {
+    "voo": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "armas",
+      "foco": "espada",
+      "valor": 2,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "sobrevivencia",
+      "foco": "deserto",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 2,
-    "conviccao": 4,
-    "temperanca": 3,
+    "conviccao": 2,
+    "temperanca": 2,
     "valor": 4
   },
   "willpower": 7,
   "aparencia": 6,
   "ataques": [
     {
-      "nome": "Golpe planar",
+      "nome": "Espada longa",
       "atrib": "forca",
-      "pericia": "briga",
+      "pericia": "armas",
       "dado": 1,
       "mao": 1,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "ticks": 6,
+      "classe": "media"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [
+    "fogo"
+  ],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Sangue Elemental",
-      "descricao": "Absorve parte de qualquer dano de fogo e enxerga perfeitamente no escuro mais absoluto."
+      "nome": "Desaparecer",
+      "descricao": "poder natural (base Ofuscação 3): Ativação: uma ação, Velocidade 6. Duração: até ele atacar ou desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: some da vista de todos (Invisível), andando e agindo devagar; para fugir de combate perdido. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Voo e Fuga",
-      "descricao": "Voa com perfeita destreza mesmo vestindo armadura pesada, e pode desaparecer da visão de todos à vontade para escapar de combates perdidos."
+      "nome": "Mudar o tamanho",
+      "descricao": "poder natural (base Metamorfose 2): Ativação: uma ação, Velocidade 6, com um gesto. Duração: até o fim da cena. Alcance: 9 m. Área: um alvo, ou ele mesmo. Efeito: encolhe ou amplia o alvo: ampliado, um Tamanho acima, +1 na Força e −2 na Esquiva; encolhido, um Tamanho abaixo, −1 na Força e +2 na Esquiva. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dele, para quem não quer. Limite de uso: duas vezes por cena.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Mudar o Tamanho",
-      "descricao": "Duas vezes por cena, pode encolher ou ampliar o corpo de um alvo com um gesto, a menos que ele resista com um teste de Compostura."
+      "nome": "Passagem entre mundos",
+      "descricao": "Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: um plano elemental ou o mundo material. Área: ele e quem estiver disposto a atravessar, até seis. Efeito: abre a passagem e atravessa com os que vão. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Passagem entre Mundos",
-      "descricao": "Pode abrir uma passagem para os planos elementais ou para o plano material, levando consigo quem estiver disposto a atravessar."
+      "nome": "Resistência do deserto",
+      "descricao": "Ativação: nenhuma; vale nos planos elementais. Duração: até 2 dias por visita. Alcance: o próprio corpo. Área: não se aplica. Efeito: não sofre o dano do ambiente dos planos elementais enquanto o tempo durar; passado o tempo, sofre como qualquer um até voltar ao mundo material. Dano: nenhum. Resistência: nenhum. Limite de uso: uma visita por vez.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Resistência do Deserto",
-      "descricao": "Suporta longos períodos nos planos elementais sem sofrer dano, desde que retorne ao mundo material antes que o tempo se esgote."
+      "nome": "Sangue elemental",
+      "descricao": "resistência a fogo (Elementos; metade do dano, C-039).",
+      "classe": "livro"
+    },
+    {
+      "nome": "guardião do oásis",
+      "descricao": "avisa uma vez, luta de espada contra quem insiste, amplia a si mesmo ou encolhe o inimigo, e some se a luta está perdida.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: enxerga perfeitamente no escuro mais absoluto (site). · audição e olfato: os de um humano."
     }
   ],
   "lore": [
@@ -91,6 +140,14 @@
     {
       "titulo": "Guardiões do oásis",
       "texto": "Vivem isolados em desertos profundos, protegendo poços e oásis raros de saqueadores e viajantes imprudentes."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: sozinho ou em pequena família, típico 2 a 6."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, 34 PV, Impacto 5, Corte e Perfuração 2; o fogo faz metade. Bloqueio 16 (17 com a espada), Esquiva 12. A espada dá dano médio 10,5. Some à vontade, muda o tamanho de um alvo duas vezes por cena e abre passagem para os planos uma vez por dia. Voa a 2."
     }
   ],
   "ecologia": {
@@ -127,5 +184,37 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 34,
+    "esquiva": 12,
+    "bloqueio": 16,
+    "defesa": 17,
+    "defesaMental": 19,
+    "defesaSocial": 12,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 196.19,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      },
+      "voo": {
+        "batalha": 2
+      }
+    },
+    "bloqueioArma": 1
+  },
+  "notasObservacao": [
+    "`equipamento`: espada longa do livro **[provisório]**",
+    "`bloqueio`: 2; o site não gravava Bloqueio **[provisório]**",
+    "`temperança`: 2; o site tinha 3 **[provisório]**",
+    "`desaparecer`, `mudar o tamanho`, `passagem entre mundos`, `resistência do deserto`: números sugeridos pela ficha (D-197)"
+  ]
 }

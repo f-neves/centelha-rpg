@@ -8,7 +8,7 @@
   "categoriaLegada": "Exterior",
   "papel": "chefe",
   "conceito": "exterior Médio",
-  "descricao": "Nativo de outro plano, alheio às leis mortais.",
+  "descricao": "Serpente emplumada, guardiã antiga e telepata de templos esquecidos, que fala por imagens na mente de quem se aproxima com respeito. Conjura portais, barreiras e encantos, muda de forma e, quando precisa, morde com veneno e esmaga.",
   "tags": [
     "exterior",
     "centelha",
@@ -17,38 +17,115 @@
   "imagem": "bestiario/couatl_criatura.webp",
   "porte": "Grande",
   "dimensoes": {
-    "medida": "cerca de 3,7 m de comprimento",
-    "peso": "cerca de 800 kg"
+    "medida": "3,7 m de comprimento, 0,3 m de altura",
+    "peso": "270 kg",
+    "comprimento": 3.7,
+    "largura": 0.3,
+    "altura": 0.3,
+    "envergadura": 4.6
   },
   "locomocao": {
-    "voo": 6
+    "voo": 6,
+    "terra": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
   },
   "centelha": 5,
   "attrs": {
-    "forca": 4,
+    "forca": 6,
     "destreza": 6,
     "vigor": 5,
-    "influencia": 5,
-    "perspicacia": 5,
-    "compostura": 6,
     "percepcao": 6,
     "inteligencia": 5,
-    "raciocinio": 5
+    "raciocinio": 5,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 6
   },
   "skills": {
     "briga": 5,
     "esquiva": 2,
-    "prontidao": 3,
-    "integridade": 6
+    "prontidao": 4,
+    "integridade": 6,
+    "ocultismo": 4,
+    "persuasao": 3,
+    "empatia": 3,
+    "sociabilidade": 1,
+    "furtividade": 2
   },
+  "skills2": {
+    "voo": 3,
+    "acerto-arcano": 4,
+    "musculatura": 4
+  },
+  "especialidades": [
+    {
+      "habilidade": "briga",
+      "foco": "Agarrão",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "enrolada entre pedras",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "ocultismo",
+      "foco": "planos e templos",
+      "valor": 2,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "empatia",
+      "foco": "pela mente",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 5,
-    "conviccao": 5,
+    "compaixao": 4,
+    "conviccao": 4,
     "temperanca": 4,
     "valor": 5
   },
   "willpower": 10,
   "aparencia": 9,
+  "ataques": [
+    {
+      "nome": "Mordida venenosa",
+      "atrib": "destreza",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    }
+  ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
+  "transforma": {
+    "principal": "verdadeira",
+    "formas": [
+      {
+        "id": "verdadeira",
+        "nome": "forma verdadeira"
+      },
+      {
+        "id": "disfarce",
+        "nome": "disfarce"
+      }
+    ]
+  },
   "arte": {
     "conjuracao": 5,
     "ofuscacao": 3,
@@ -56,81 +133,57 @@
     "protecao": 3,
     "adivinhacao": 2
   },
-  "ataques": [
-    {
-      "nome": "Mordida venenosa e constrição",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5,
-      "notas": "veneno drena Força; pode constringir em seguida"
-    }
-  ],
-  "poderes": [
-    {
-      "id": "constricao-venenosa",
-      "nome": "Constrição venenosa",
-      "tipo": "natural",
-      "resiste": "corpo",
-      "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-      "usos": {
-        "periodo": "cena",
-        "quantidade": 3,
-        "recarga": "1 hora"
-      }
-    },
-    {
-      "id": "mudar-de-forma",
-      "nome": "Mudar de forma",
-      "tipo": "natural",
-      "base": {
-        "arte": "materia",
-        "nivel": 2
-      },
-      "resiste": "nenhum",
-      "efeito": "Mudar de forma",
-      "usos": {
-        "periodo": "avontade"
-      }
-    }
-  ],
+  "mana": 20,
   "habilidades": [
     {
+      "nome": "Agarrar",
+      "descricao": "Agarrar, com a Especialidade natural Briga (Agarrão) +3.",
+      "classe": "livro"
+    },
+    {
       "nome": "Constrição venenosa",
-      "descricao": "agarra e esmaga; vítima sofre dano contínuo e, se falhar em Resistência, fica Abalada"
+      "descricao": "Mordida venenosa: Ativação: a Mordida que fere; ela pode enrolar o alvo em seguida, pela jogada de Agarrar do livro. Duração: enquanto agarra. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a cada 6 Ticks de agarrão, aperta sem nova jogada de ataque; o veneno da mordida age (Veneno e doença), e quem é envenenado fica Abalado. Dano: 1d6 + Força, Impacto, a cada aperto. Resistência: corpo, pela regra do Agarrar para escapar e pela do veneno. Limite de uso: três vezes por cena; recupera em 1 hora.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Mudar de forma",
-      "descricao": "assume forma humanoide ou animal por cena"
+      "descricao": "poder natural (base Matéria 2): Ativação: uma ação, Velocidade 8. Duração: até o fim da cena, ou até ela desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a forma de um humanoide ou de um animal comum (a Variante \"disfarce\"); a mente, as Artes e os números ficam os dela. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Telepatia",
-      "descricao": "comunica-se mentalmente com qualquer criatura em até 18m"
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 18 m. Área: quem ela escolher ao alcance. Efeito: fala com qualquer criatura pela mente, por imagens e sensações, sem língua em comum. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Viagem planar",
-      "descricao": "1x por cena desloca-se entre planos ou realidades"
+      "descricao": "Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: outro plano ou realidade. Área: ela e quem ela toca e quer levar. Efeito: passa para outro plano e volta quando quiser. Dano: nenhum. Resistência: nenhum; quem não quer ir não é levado. Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Feitiços arcanos e divinos",
-      "descricao": "acesso amplo a magias de cura, proteção e ataque"
+      "nome": "Feitiços",
+      "descricao": "Artes do livro: Conjuração até o 5 (Portal), Proteção até o 3 (Barreira), Fascinação até o 3 (Encanto), Ofuscação até o 3 (Manto) e Adivinhação até o 2 (Vislumbre), com 20 de Mana."
     },
     {
-      "nome": "Voo",
-      "descricao": "voa com asas emplumadas"
+      "nome": "guardiã do templo",
+      "descricao": "observa antes de agir, fala pela mente; se precisa lutar, protege com a Barreira, encanta ou some com o Manto, morde e enrola o mais perigoso, e abre um Portal para levar os seus.",
+      "classe": "como luta"
     },
     {
-      "nome": "Telepatia",
-      "descricao": "Sentido passivo."
+      "nome": "Sentidos",
+      "descricao": "telepatia: sente e fala com as mentes a 18 m (Manobras). · visão: a de uma ave de rapina; enxerga no escuro dos templos."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Veneno da couatl · Potência 14 · 1 Tick (sangue) · a cada 1 minuto · pool 3 (Força) · Desgaste 1 · pela Mordida venenosa"
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Guardiã antiga e telepata, observa mais do que age, e protege o equilíbrio entre o conhecimento útil e o conhecimento perigoso."
+      "texto": "Guardiã antiga e telepata, observa mais do que age, e protege o equilíbrio entre o conhecimento útil e o conhecimento perigoso. Social: sozinha."
     },
     {
       "titulo": "Sociedade",
@@ -147,6 +200,14 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "A serpente emplumada encontra em Mère seu lar mais natural, entre as cidades mágicas escondidas atrás da fachada dita bárbara; anciãos de Mère juram que uma couatl ensinou aos primeiros sacerdotes os ritos que sobreviveram à Supressão, guardados em segredo sob as pirâmides."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Veneno da couatl · Potência 14 · 1 Tick (sangue) · a cada 1 minuto · pool 3 (Força) · Desgaste 1 · pela Mordida venenosa"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande no ar, Média enrolada, 50 PV, Impacto 10, Corte e Perfuração 5. Esquiva 20, Bloqueio 12. Mordida (12, 5) com veneno que tira Força e abala; enrola e aperta (1d6 + 6) três vezes por cena. Conjura com 20 de Mana: Portal, Barreira, Encanto, Manto, Vislumbre. Fala pela mente a 18 m. Defesa Mental 31."
     }
   ],
   "ecologia": {
@@ -194,5 +255,40 @@
     {
       "caminho": "agarrao-do-urso"
     }
+  ],
+  "v3": {
+    "pv": 50,
+    "esquiva": 20,
+    "bloqueio": 12,
+    "defesa": 20,
+    "defesaMental": 31,
+    "defesaSocial": 16,
+    "absorcao": {
+      "impacto": 10,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 844.35,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
+      },
+      "voo": {
+        "batalha": 6,
+        "arranque": 10,
+        "corrida": 14
+      }
+    }
+  },
+  "notasObservacao": [
+    "`massa`: 270 kg pelo corpo; o site dizia \"cerca de 800 kg\" **[conta]**",
+    "`envergadura`: 4,6 m, estimada; o site não dá **[extrapolação]**",
+    "`forca`: 6; o site tinha 4 **[provisório]**",
+    "`formas`: forma verdadeira e disfarce (D-201) **[provisório]**",
+    "`veneno`: Potência 14, pool 3 de Força, fora do catálogo **[provisório]**",
+    "`constrição venenosa`, `mudar de forma`, `telepatia`, `viagem planar`: números sugeridos pela ficha (D-197)"
   ]
 }

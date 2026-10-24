@@ -4,7 +4,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "aboleth": {
   "batalha": 1,
@@ -239,7 +239,7 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "braquiossauro": {
   "batalha": 3,
@@ -260,7 +260,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "bruxa-noturna": {
   "batalha": 3,
@@ -274,7 +274,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "bugbear": {
   "batalha": 3,
@@ -415,7 +415,7 @@
   "arranque": 8,
   "corrida": 12,
   "ft": 50,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "centopeia-gigante": {
   "batalha": 3,
@@ -476,11 +476,11 @@
   "nota": "voo 40; em terra 10"
  },
  "couatl": {
-  "batalha": 6,
-  "arranque": 10,
-  "corrida": 14,
+  "batalha": 2,
+  "arranque": 3,
+  "corrida": 5,
   "ft": 60,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 60; a serpente alada rasteja 20 e não é assim que ela vai"
  },
  "crocodilo-do-nilo": {
@@ -994,7 +994,7 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "gato": {
   "batalha": 3,
@@ -1198,7 +1198,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 80; em terra 20, e a harpia caça no ar"
  },
  "hezrou": {
@@ -1270,7 +1270,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "jararaca": {
   "batalha": 1,
@@ -1341,7 +1341,7 @@
   "arranque": 10,
   "corrida": 14,
   "ft": 60,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "leao": {
   "batalha": 7,
@@ -1546,7 +1546,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "megalodonte": {
   "batalha": 8,
@@ -1561,7 +1561,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "merfolk": {
   "batalha": 5,
@@ -1642,7 +1642,7 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "mosassauro": {
   "batalha": 7,
@@ -1964,7 +1964,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "salamandra": {
   "batalha": 2,
@@ -2022,7 +2022,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "solar": {
   "batalha": 5,
@@ -2301,7 +2301,7 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "zumbi-humano": {
   "batalha": 3,

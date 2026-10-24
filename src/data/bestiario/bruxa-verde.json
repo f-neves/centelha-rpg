@@ -8,7 +8,7 @@
   "categoriaLegada": "Monstro",
   "papel": "elite",
   "conceito": "humanoide monstruoso Médio",
-  "descricao": "Aberração humanoide de lendas antigas.",
+  "descricao": "Velha de pele verde dos pântanos que se disfarça de camponesa ou donzela e imita vozes para atrair vítimas. Revela as garras, enfraquece com o toque e lança feitiços de maldição e engano.",
   "tags": [
     "monstro",
     "centelha",
@@ -18,106 +18,160 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,5 m de altura",
-    "peso": "80 kg"
+    "peso": "80 kg",
+    "largura": 0.49,
+    "altura": 1.5
   },
   "locomocao": {
     "terra": 3,
     "natacao": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 4,
   "attrs": {
     "forca": 6,
     "destreza": 3,
     "vigor": 5,
-    "influencia": 4,
-    "perspicacia": 4,
-    "compostura": 4,
     "percepcao": 3,
     "inteligencia": 3,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4
   },
   "skills": {
     "briga": 5,
+    "bloqueio": 1,
     "esquiva": 1,
+    "atletismo": 2,
+    "furtividade": 2,
     "prontidao": 1,
-    "integridade": 4
+    "integridade": 4,
+    "ocultismo": 3,
+    "manha": 3
   },
+  "skills2": {
+    "natacao": 2,
+    "herbologia": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "manha",
+      "foco": "imitar uma voz já ouvida",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "prontidao",
+      "foco": "pântano e floresta",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "garras",
+      "valor": 2,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "ocultismo",
+      "foco": "maldições",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 3,
-    "conviccao": 3,
+    "compaixao": 2,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
   "willpower": 9,
-  "aparencia": 8,
-  "arte": {
-    "ofuscacao": 3,
-    "natureza": 3,
-    "morte": 2,
-    "metamorfose": 2
-  },
+  "aparencia": 2,
   "ataques": [
     {
-      "nome": "Arma",
+      "nome": "Garras",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
-  "poderes": [
-    {
-      "id": "fraqueza-mistica",
-      "nome": "Fraqueza mística",
-      "tipo": "natural",
-      "base": {
-        "arte": "morte",
-        "nivel": 2
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
+  "transforma": {
+    "principal": "verdadeira",
+    "formas": [
+      {
+        "id": "verdadeira",
+        "nome": "forma verdadeira"
       },
-      "resiste": "corpo",
-      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-      "usos": {
-        "periodo": "golpe"
+      {
+        "id": "disfarce",
+        "nome": "disfarce"
       }
-    }
-  ],
+    ]
+  },
   "habilidades": [
     {
       "nome": "Toque da fraqueza",
-      "descricao": "corpo a corpo; falha em Fortitude: força reduzida (Abalado)"
-    },
-    {
-      "nome": "Mímica de voz",
-      "descricao": "+3d6 em Manha ao imitar qualquer voz já ouvida"
+      "descricao": "poder natural (base Morte 2): Ativação: as Garras que ferem, ou um toque (a jogada de Briga). Duração: até o fim da cena; acumula. Alcance: toque. Área: um alvo. Efeito: quem falha fica com a Força um nível abaixo, com o dano e o peso que vêm dela; cada toque que pega desce mais um, até Força 1. Dano: nenhum além do golpe. Resistência: corpo, Vigor + Resistência contra a jogada do toque. Limite de uso: um por golpe.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Disfarce ilusório",
-      "descricao": "parece bela ou inofensiva até revelar a forma verdadeira"
+      "descricao": "poder natural (base Ofuscação 3): Ativação: uma ação, Velocidade 6. Duração: até ela desfazer, ou até atacar. Alcance: o próprio corpo. Área: não se aplica. Efeito: parece uma velha camponesa inofensiva ou uma donzela bela (a Variante \"disfarce\"); quem toca ou desconfia e testa vê através. Dano: nenhum. Resistência: mente, contra Influência + Manha dela, só para quem desconfia. Limite de uso: à vontade.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Feitiços arcanos",
-      "descricao": "lança magias menores de maldição e controle"
-    },
-    {
-      "nome": "Garras",
-      "descricao": "ataque corpo a corpo secundário"
+      "nome": "Feitiços de maldição",
+      "descricao": "poder natural (base Ofuscação 3): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena. Alcance: 18 m. Área: um alvo. Efeito: à escolha: uma névoa de ilusão que tira o alvo do caminho (Confuso), ou uma ordem curta que ele cumpre. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dela; quem passa fica imune a esse feitiço até o fim da cena. Limite de uso: três vezes por cena, somados.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Fôlego anfíbio",
-      "descricao": "respira e nada debaixo d'água sem penalidade"
+      "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: respira e nada debaixo d'água sem penalidade. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Garras",
+      "descricao": "as duas mãos de garra contam como par de armas leves e atacam pela empunhadura dupla, os dois golpes a −1d6.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Mímica de voz",
+      "descricao": "Manha, com a Especialidade natural (imitar uma voz já ouvida) +3.",
+      "classe": "livro"
     },
     {
       "nome": "Sentidos do pântano",
-      "descricao": "+2d6 em Prontidão em pântanos e florestas"
+      "descricao": "Prontidão, com a Especialidade natural (pântano e floresta) +2.",
+      "classe": "livro"
+    },
+    {
+      "nome": "velha do brejo",
+      "descricao": "disfarçada, chama a vítima com uma voz conhecida para dentro do pântano, revela as garras, enfraquece com o toque e foge pela água se a luta vira.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão: enxerga no escuro do pântano. · audição e olfato: os de um humano; Prontidão (pântano e floresta) +2."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Usa metamorfose para parecer uma velha camponesa ou donzela indefesa, atraindo vítimas para o pântano antes de revelar garras e magia sombria."
+      "texto": "Usa metamorfose para parecer uma velha camponesa ou donzela indefesa, atraindo vítimas para o pântano antes de revelar garras e magia sombria. Social: sozinha, às vezes em coven."
     },
     {
       "titulo": "Hábitat",
@@ -134,6 +188,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Figura do folclore rural em Syl e no Neck, confundida por camponeses supersticiosos com espírito maligno da mata; para as igrejas de Calin é prova viva de que magia sem lei corrompe quem a possui."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Média, 40 PV, Impacto 9, Corte e Perfuração 4. Esquiva e Bloqueio 10. Duas garras por ação a −1d6 (11, 5 cada), e cada uma que fere pode baixar a Força do alvo um nível. Três vezes por cena confunde ou dá uma ordem curta. Disfarçada e imitando vozes, atrai a presa. Defesa Mental 24. Respira na água."
     }
   ],
   "ecologia": {
@@ -175,5 +233,35 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 40,
+    "esquiva": 10,
+    "bloqueio": 10,
+    "defesa": 10,
+    "defesaMental": 24,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 9,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 238.85,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      },
+      "nado": 3
+    }
+  },
+  "notasObservacao": [
+    "`formas`: forma verdadeira e disfarce (D-201) **[provisório]**",
+    "`aparência`: 2 na forma verdadeira, 8 no disfarce; o site tinha 8 **[provisório]**",
+    "`compaixão`: 1; o site tinha 3 **[provisório]**",
+    "`mímica de voz`, `sentidos do pântano`: Especialidades naturais no teto; o site dava +3d6 e +2d6",
+    "`toque da fraqueza`, `disfarce ilusório`, `feitiços de maldição`, `fôlego anfíbio`: números sugeridos pela ficha (D-197)"
+  ]
 }

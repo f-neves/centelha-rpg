@@ -398,6 +398,9 @@ function converte(arq) {
   if (!porte) throw new Error(`${arq}: Tamanho desconhecido "${alvo}" (a linha | Tamanho | da ficha, D-183)`);
   // O segundo tamanho não vai para os dados; a linha só tem de existir com o nome novo (D-183, complemento 2).
   if (celula(corpoPorte, 'Segundo Tamanho') == null) throw new Error(`${arq}: sem a linha | Segundo Tamanho | (D-183, complemento 2)`);
+  // e o valor tem de ser um Tamanho da régua, "não se aplica" ou "igual ao principal" (o que mais vier, para)
+  const seg = String(celula(corpoPorte, 'Segundo Tamanho')).replace(/\*\*|◆/g, '').trim();
+  if (!/^(não se aplica|igual ao principal)\b/.test(seg) && !Object.keys(PORTE_DO_SITE).some((t) => seg.startsWith(t))) throw new Error(`${arq}: Segundo Tamanho "${seg.slice(0, 40)}" fora do que se aceita (um Tamanho, "não se aplica" ou "igual ao principal")`);
   const medida = (rot) => { const v = negrito(celula(corpoPorte, rot)); return v && v > 0 ? v : undefined; };
   const massaTxt = (/\*\*([^*]+)\*\*/.exec(celula(corpoPorte, 'Massa')) || [])[1];
   const comp = medida('Comprimento total') ?? medida('Comprimento');

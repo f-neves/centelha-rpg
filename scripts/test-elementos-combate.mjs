@@ -57,11 +57,11 @@ ok(elCubo.resistencias.length === 0, 'cubo-gelatinoso não tem resistência nenh
 
 // Criatura sem fraqueza nem resistência: as duas listas têm de vir vazias, não
 // `undefined` (os quatro pontos de leitura fazem `.length`/`.map` sem checar).
-const semNada = porId('aasimar');
+const semNada = porId('centauro'); // era o aasimar, que a ficha v3 (lotes 14 a 17) deu resistência a gelo, raio e ácido
 const elSemNada = M.elementosCombate(semNada);
-ok(Array.isArray(elSemNada.fraquezas) && elSemNada.fraquezas.length === 0, 'aasimar deveria ter fraquezas: []');
-ok(Array.isArray(elSemNada.resistencias) && elSemNada.resistencias.length === 0, 'aasimar deveria ter resistencias: []');
-ok(Array.isArray(elSemNada.imunidades) && elSemNada.imunidades.length === 0, 'aasimar deveria ter imunidades: []');
+ok(Array.isArray(elSemNada.fraquezas) && elSemNada.fraquezas.length === 0, 'centauro deveria ter fraquezas: []');
+ok(Array.isArray(elSemNada.resistencias) && elSemNada.resistencias.length === 0, 'centauro deveria ter resistencias: []');
+ok(Array.isArray(elSemNada.imunidades) && elSemNada.imunidades.length === 0, 'centauro deveria ter imunidades: []');
 
 // -------------------------------------------------- a forma exata do defeito
 //
