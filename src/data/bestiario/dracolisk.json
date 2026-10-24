@@ -5,44 +5,60 @@
   "nome": "Dracolisk",
   "nomeIngles": "Dracolisk",
   "categoria": "Dragão",
+  "categoriaLegada": "Dragão",
   "papel": "elite",
   "conceito": "dragão Médio",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Dragão menor nascido de dragões negros e basiliscos, de patas curtas e voo pesado. Sopra uma linha de ácido de longe e transforma em pedra com o olhar quem chega perto.",
   "tags": [
     "dragao",
     "centelha"
   ],
   "imagem": "bestiario/dracolisk_criatura.webp",
-  "porte": "Médio",
+  "porte": "Enorme",
   "dimensoes": {
-    "medida": "2,4 m de comprimento",
-    "peso": "180 kg"
+    "medida": "2,4 m de comprimento, 0,83 m de altura",
+    "peso": "180 kg",
+    "comprimento": 2.4,
+    "largura": 0.57,
+    "altura": 0.83,
+    "envergadura": 5.7
   },
   "locomocao": {
     "terra": 3,
     "voo": 6
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 4,
   "attrs": {
     "forca": 7,
     "destreza": 2,
     "vigor": 6,
-    "influencia": 3,
-    "perspicacia": 2,
-    "compostura": 3,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 3,
+    "perspicacia": 2,
+    "compostura": 3
   },
   "skills": {
     "briga": 5,
-    "esquiva": 0,
-    "prontidao": 1,
-    "integridade": 3
+    "atletismo": 2,
+    "furtividade": 1,
+    "integridade": 3,
+    "prontidao": 1
+  },
+  "skills2": {
+    "voo": 1,
+    "disparo": 3,
+    "musculatura": 2
   },
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 5,
+    "compaixao": 3,
+    "conviccao": 3,
     "temperanca": 3,
     "valor": 5
   },
@@ -50,36 +66,73 @@
   "aparencia": 8,
   "ataques": [
     {
-      "nome": "Garras e mordida",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "perf": 1,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Garras",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Sopro ácido",
+      "atrib": "vigor",
+      "pericia": "disparo",
+      "dado": 3,
+      "mao": 1,
+      "tipo": "acido",
+      "ticks": 7,
+      "forca": false,
+      "classe": "distancia",
+      "distancia": true
     }
+  ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [
+    "acido"
   ],
   "habilidades": [
     {
       "nome": "Sopro ácido",
-      "descricao": "Expele uma linha de ácido que castiga todos em sua trajetória; quem se esquiva a tempo sofre apenas metade do dano."
+      "descricao": "poder natural (base Água 2, sugestão da ficha, como o sopro ácido do dragão verde): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: linha de 9 m. Efeito: o ácido castiga todos na linha (site). Dano: 3d6 + Centelha, ácido. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade (site). Limite de uso: uma vez a cada 24 Ticks, como nos dragões.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "garras em sequência",
+      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
+      "classe": "livro"
     },
     {
       "nome": "Olhar petrificante",
-      "descricao": "Seu olhar de basilisco ameaça transformar em pedra quem encara seus olhos, exigindo um teste de Compostura para resistir."
+      "descricao": "poder natural (base Matéria 3, sugestão da ficha, como o da medusa): Ativação: nenhuma; vale para quem cruza o olhar dele em combate. Duração: permanente, até a pedra ser desfeita por Arte ou efeito que cure a petrificação. Alcance: 9 m, à vista dele. Área: cada um que o encara. Efeito: quem falha vira pedra: o corpo e o que veste ficam estátua, sem morrer, e o Mestre decide o que desfaz. Quem desvia o rosto para não encará-lo não testa, mas ataca a −4. Dano: nenhum. Resistência: mente, Compostura + Integridade contra Dificuldade 15 (o site pede \"teste de Compostura\"); quem passa não testa de novo até o fim da cena. Limite de uso: uma vez por cena para cada pessoa.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Sentidos aguçados",
-      "descricao": "Enxerga no escuro e com pouca luz, além de perceber o entorno com atenção incomum."
+      "nome": "Imune a sono e paralisia",
+      "descricao": "Arte, poder ou veneno que faz dormir ou paralisa não o pega (site).",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Imunidades",
-      "descricao": "Insensível a ácido, sono e paralisia."
+      "nome": "dupla ameaça",
+      "descricao": "sopra ácido de longe sobre quem vem em linha, encara quem chega perto e morde quem ainda se mexe.",
+      "classe": "como luta"
     },
     {
-      "nome": "Voo instável",
-      "descricao": "Desloca-se voando em ritmo mediano, além de caminhar sobre patas curtas."
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: vê sem luz (site). · visão na penumbra: enxerga com pouca luz (site). · atenção: percebe o entorno com atenção incomum (site; a Percepção 3)."
     }
   ],
   "lore": [
@@ -90,6 +143,14 @@
     {
       "titulo": "Predador de dupla ameaça",
       "texto": "Combina o veneno visual do basilisco com o sopro corrosivo dracônico, tornando-se perigoso tanto de longe quanto de perto."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário; a linhagem se reproduz sem outro dragão por perto."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme no ar, Médio pousado. 43 PV, Impacto 10, Corte e Perfuração 4, Couraça 5. Esquiva 4, Bloqueio 4. Sopro ácido em linha de 9 m a cada 24 Ticks. Olhar que petrifica quem o encara, uma vez por cena para cada um. Mordida e garras; garras até três por ação. Ácido não o fere."
     }
   ],
   "ecologia": {
@@ -126,5 +187,36 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 43,
+    "esquiva": 4,
+    "bloqueio": 4,
+    "defesa": 4,
+    "defesaMental": 20,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 10,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 5,
+    "pesoErguido": 647.65,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      },
+      "voo": {
+        "batalha": 6
+      }
+    }
+  },
+  "notasObservacao": [
+    "`couraca`: nível 5 **[provisório]**",
+    "`sopro`: 3d6 + Centelha, linha de 9 m, pela escada de Centelha do lote 23 (D-197) **[provisório]**",
+    "`olhar petrificante`: o da medusa, com resistência de Compostura **[provisório]**",
+    "`mordida`: N1 **[provisório]**"
+  ]
 }

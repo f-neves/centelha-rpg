@@ -622,14 +622,14 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "dragao-azul-adulto": {
   "batalha": 4,
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "dragao-branco-jovem": {
   "batalha": 4,
@@ -643,35 +643,35 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "dragao-verde-adulto": {
   "batalha": 4,
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "dragao-vermelho-adulto": {
   "batalha": 4,
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "dragao-vermelho-anciao": {
   "batalha": 4,
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "dragao-vermelho-jovem": {
   "batalha": 4,
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "varano": {
   "batalha": 2,
@@ -958,7 +958,7 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "fogo-fatuo": {
   "batalha": 5,
@@ -1170,7 +1170,7 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "grifo": {
   "batalha": 3,
@@ -1333,7 +1333,7 @@
   "batalha": 2,
   "arranque": 4,
   "corrida": 5,
-  "ft": 30,
+  "ft": 40,
   "origem": "ficha"
  },
  "lamia": {
@@ -1411,21 +1411,21 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "linnorm-dos-lagos": {
   "batalha": 4,
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "linnorm-dos-penhascos": {
   "batalha": 4,
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "lobisomem": {
   "batalha": 3,
@@ -1855,7 +1855,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 15,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 60; em terra 15"
  },
  "pteranodonte": {
@@ -2080,7 +2080,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "tengu": {
   "batalha": 3,
@@ -2279,7 +2279,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 60; em terra 20"
  },
  "xill": {

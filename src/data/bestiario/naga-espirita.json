@@ -15,7 +15,7 @@
     "mágico"
   ],
   "imagem": "bestiario/naga-espirita_criatura.webp",
-  "porte": "Grande",
+  "porte": "Médio",
   "dimensoes": {
     "medida": "6 m de comprimento, 0,34 m de altura",
     "peso": "320 kg",
@@ -180,7 +180,7 @@
     },
     {
       "titulo": "No jogo",
-      "texto": "Grande erguida, 54 PV, Impacto 11, Corte e Perfuração 5. Esquiva 10, Bloqueio 6, Defesa Mental 30. Mordida de dano médio 14,5 com veneno que tira o Vigor e abala; cuspe a 9 m (três vezes por cena); olhar que domina por uma cena. Conjura com 20 de Mana: Ilusão Plena, Bola de Fogo, Manto, Sarar."
+      "texto": "Média enroscada, Grande erguida, 54 PV, Impacto 11, Corte e Perfuração 5. Esquiva 10, Bloqueio 6, Defesa Mental 30. Mordida de dano médio 14,5 com veneno que tira o Vigor e abala; cuspe a 9 m (três vezes por cena); olhar que domina por uma cena. Conjura com 20 de Mana: Ilusão Plena, Bola de Fogo, Manto, Sarar."
     }
   ],
   "ecologia": {
@@ -247,7 +247,7 @@
     }
   },
   "notasObservacao": [
-    "`tamanho`: Grande erguida, Médio enrolada; o Tamanho principal é o da luta erguida **[provisório]**",
+    "`tamanho`: Médio enroscada, Grande erguida ou esticada; o Tamanho principal é o da postura em que luta, enroscada sobre o tesouro (D-215, que ajusta a D-213)",
     "`couraca`: nível 1 **[provisório]**",
     "`veneno`: Potência 16, pool 4 de Vigor, com Abalado **[provisório]**",
     "`ataques`: Mordida Média no lugar das \"Garras e presas\" **[provisório]**",

@@ -113,7 +113,7 @@
     },
     {
       "nome": "Rapidez sobrenatural",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: está sempre Acelerado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. O site dizia \"age duas vezes em sequência dentro do mesmo turno\"; o Centelha não tem turno, e o mais perto no livro é o Acelerado.",
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: está sempre Acelerado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. O site dizia \"age duas vezes em sequência dentro do mesmo turno\"; o Centelha não tem turno. Critério do manual: agir duas vezes vira o Acelerado do livro, e o tempo segue a fonte: quem age duas vezes sempre fica Acelerado o tempo todo.",
       "classe": "regra da ficha"
     },
     {

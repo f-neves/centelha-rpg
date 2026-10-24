@@ -134,7 +134,7 @@
     },
     {
       "titulo": "No jogo",
-      "texto": "- Miúda (enrolada ou esticada) contra um humano Médio, ganha +6 no acerto corpo a corpo. Quem atira nela leva −6. O bote acerta quase sempre; o que decide é o veneno. - Erguida, a cabeça fica na altura do peito de um adulto: o bote não precisa mirar a perna. Isso é do Mestre. - O dano do bote é o dado mais a Força 1 (2,5); o veneno ignora a Absorção. O veneno entra se o bote fere: 1 de dano ou mais depois da Absorção, e o Nível do bote (N0) tem de passar o da armadura. - Contra outra serpente ela briga com +1 (Especialidade). Com 6 PV e 1 m por Tick (provisórios), não persegue: ameaça, e foge se pode."
+      "texto": "- Miúda (erguida, enrolada ou esticada) contra um humano Médio, ganha +6 no acerto corpo a corpo. Quem atira nela leva −6. O bote acerta quase sempre; o que decide é o veneno. - Erguida, a cabeça fica na altura do peito de um adulto: o bote não precisa mirar a perna. Isso é do Mestre. - O dano do bote é o dado mais a Força 1 (2,5); o veneno ignora a Absorção. O veneno entra se o bote fere: 1 de dano ou mais depois da Absorção, e o Nível do bote (N0) tem de passar o da armadura. - Contra outra serpente ela briga com +1 (Especialidade). Com 6 PV e 1 m por Tick (provisórios), não persegue: ameaça, e foge se pode."
     }
   ],
   "ecologia": {
@@ -199,7 +199,7 @@
   "notasObservacao": [
     "area: 0,043 m² enrolada e 0,116 m² esticada, escaladas pela massa (`calc6.mjs`) a partir da medição do macho na `tamanho-fichas-v2` (0,052 e 0,14 m²); antes, 0,14 m² (largura × comprimento). O Alvo segue Miúdo, e o segundo Alvo cai de Pequeno a Miúdo por 0,004 m² abaixo do corte. Decisão provisória: usar o número do `calc6.mjs`, que é o mesmo para as 92 fichas.",
     "pv: 6 (em vigor na Etapa 2, 20/10/2026); antes: Faixa 1 nas duas versões do autor; o PV total usa 5 + Vigor = 8 (decisão 21). Com 10 + metade do Vigor seriam 11. Era 26 (Faixa 2, o macho).",
-    "`porte` (exibição): erguida, a naja tem altura de um homem; a área de quem a ataca muda. A ficha usa a postura de repouso (decisão 8). Fica para o Mestre e para a N22 (D-054, D-087)",
+    "`porte` (exibição): erguida, a naja tem altura de um homem; a área de quem a ataca muda. Desde a D-215, a ficha usa a postura em que luta, de capuz aberto (0,091 m², Miúdo), e a de repouso, enrolada, vai ao Segundo Tamanho; antes, usava a de repouso (decisão 8). O resto fica para o Mestre e para a N22 (D-054, D-087)",
     "`forca`: 1 (em vigor na Etapa 2, 20/10/2026); antes: 0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): o corpo não segura nem aperta, e quem mata é o veneno; o dano do Bote fica 1d6 − 2 (D-115)",
     "`referencia`: 3,375 kg, o adulto típico (sexta rodada): o macho de 4,5 kg medidos (média de 79 machos) e a fêmea de 2,25 kg pela razão dos máximos **[comparação]**; era o macho. Não os 6 kg sugeridos no plano; a população medida é O. kaalinga, depois da divisão de Das et al. 2024 (D-174)",
     "pesoErguido: 28,06 kg (em vigor na Etapa 2, 20/10/2026); antes: 21,58 kg pelo `calc6.mjs`, provisório (decisões 14 e 16). Era 26,4 kg (o macho) e, antes, 0,8 kg pela fórmula de FAH com o fator de corpo leve. Como ela não agarra, quase não entra em jogo.",

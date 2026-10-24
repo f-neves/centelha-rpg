@@ -13,7 +13,7 @@
     "fera"
   ],
   "imagem": "bestiario/polvo-gigante_criatura.webp",
-  "porte": "Enorme",
+  "porte": "Imenso",
   "dimensoes": {
     "medida": "8,05 m de comprimento, 1,23 m de altura",
     "peso": "1.350,6 kg",
@@ -158,7 +158,7 @@
     },
     {
       "titulo": "No jogo",
-      "texto": "Enorme: o humano Médio acerta com +6 no corpo a corpo, e ele não ganha bônus; com os braços abertos fica Imenso, e o bônus de quem o ataca sobe a +9. A Força 7 tira o Bloqueio de quem tem Força 3 ou menos. Esconde-se muito bem (Furtividade 4 e +3 natural parado). Agarra e aperta a 14 por manutenção, e a mordida faz 8,5, com a ferida que inflama e infecciona, pelo Mestre. Arrasta para o fundo quem não se solta. 46 PV, Impacto 4, Couraça nível 0 (o valor do nível fica para depois). Nada a 4 m por Tick; fora d'água não anda."
+      "texto": "Imenso de braços abertos, que é como luta: o humano Médio acerta com +9 no corpo a corpo, e ele não ganha bônus; de braços juntos fica Enorme, e o bônus de quem o ataca cai a +6. A Força 7 tira o Bloqueio de quem tem Força 3 ou menos. Esconde-se muito bem (Furtividade 4 e +3 natural parado). Agarra e aperta a 14 por manutenção, e a mordida faz 8,5, com a ferida que inflama e infecciona, pelo Mestre. Arrasta para o fundo quem não se solta. 46 PV, Impacto 4, Couraça nível 0 (o valor do nível fica para depois). Nada a 4 m por Tick; fora d'água não anda."
     }
   ],
   "ecologia": {
@@ -216,8 +216,8 @@
   },
   "notasObservacao": [
     "gigante escalado (D-105): dimensões do adulto real × 3,5 (envergadura de 14 m, braços de cerca de 6,1 m, os do site com o disco somado); a massa é a base típica de 31,5 kg × 3,5³ = 1.350,6 kg (era 31,5 × 3,0³ = 850,5, e antes 292 e 259). Massa e envergadura da base saem da mesma fonte (Seattle Aquarium). Tudo [extrapolação] (D-174).",
-    "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; com k = 3,0 o gigante ficava Grande de braços juntos, uma categoria acima da base (Média), e a 2% do corte; com k = 3,5 fica Enorme, a 33% do corte. O D&D 3.5 e o Pathfinder 1 dão Grande (D-174).",
-    "alvo: Enorme pela área de cima com os braços juntos (8,0 m²); segundo Alvo Imenso com os braços abertos (47,96 m², decisão 8). Provisório até os cortes fecharem (D-174).",
+    "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; com k = 3,0 o gigante ficava Grande de braços juntos, uma categoria acima da base (Média), e a 2% do corte; com k = 3,5 fica Enorme, a 33% do corte. O D&D 3.5 e o Pathfinder 1 dão Grande (D-174). Pela D-215 (24/10/2026), o principal passou a ser o de braços abertos (Imenso), e o Enorme de braços juntos ficou como segundo.",
+    "alvo: Imenso com os braços abertos (47,96 m²), a postura em que luta (D-215, 24/10/2026); segundo Alvo Enorme pela área de cima com os braços juntos (8,0 m², decisão 8). Provisório até os cortes fecharem (D-174).",
     "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8, era 7; pelos vizinhos de massa (tubarão-branco, boi, rinoceronte), abaixo da referência (9,15) por não ter osso [provisório] (D-158, D-169).",
     "pesoErguido: 918,96 kg (em vigor na Etapa 2, 20/10/2026); antes: provisório, 1.118,81 kg (calc6, 1.350,6 kg e Força 8; era 988,32 com 850,5 kg) pela fórmula das decisões 14 e 16; cefalópode não tem `carga` (D-160, D-175). Sem feito medido para conferir.",
     "inteligencia: 2 pela lista fechada da diretriz 1, igual ao polvo-comum; nota \"2 não é inteligência humana\".",

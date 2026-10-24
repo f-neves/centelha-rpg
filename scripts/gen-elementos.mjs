@@ -141,15 +141,15 @@ const EXCECOES = {
   'marid': { resistencias: ['fogo'] },
 
   // Dragões: o bicho resiste ao que ele mesmo cospe
-  'dragao-vermelho-adulto': { resistencias: ['fogo'] },
-  'dragao-vermelho-anciao': { resistencias: ['fogo'] },
-  'dragao-vermelho-jovem': { resistencias: ['fogo'] },
-  'filhote-de-dragao-vermelho': { resistencias: ['fogo'] },
-  'grande-wyrm-vermelho': { resistencias: ['fogo'] },
-  'dragao-dourado-adulto': { resistencias: ['fogo'] },
-  'dragao-azul-adulto': { resistencias: ['raio'] },
+  // dragao-vermelho-adulto saiu (ficha v3 desde os lotes 23 e 24: a linha Elementos da ficha vai à fonte)
+  // dragao-vermelho-anciao saiu (ficha v3 desde os lotes 23 e 24: a linha Elementos da ficha vai à fonte)
+  // dragao-vermelho-jovem saiu (ficha v3 desde os lotes 23 e 24: a linha Elementos da ficha vai à fonte)
+  // filhote-de-dragao-vermelho saiu (ficha v3 desde os lotes 23 e 24: a linha Elementos da ficha vai à fonte)
+  // grande-wyrm-vermelho saiu (ficha v3 desde os lotes 23 e 24: a linha Elementos da ficha vai à fonte)
+  // dragao-dourado-adulto saiu (ficha v3 desde os lotes 23 e 24: a linha Elementos da ficha vai à fonte)
+  // dragao-azul-adulto saiu (ficha v3 desde os lotes 23 e 24: a linha Elementos da ficha vai à fonte)
   // dragao-branco-jovem saiu (ficha v3 desde a bestiario-nao-animal: a linha Elementos da ficha vai à fonte)
-  'linnorm-do-gelo': { fraquezas: ['fogo'], resistencias: ['gelo'] },
+  // linnorm-do-gelo saiu (ficha v3 desde os lotes 23 e 24: a linha Elementos da ficha vai à fonte)
 };
 
 // --- montagem --------------------------------------------------------------

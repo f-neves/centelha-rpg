@@ -5,166 +5,208 @@
   "nome": "Dragão Dourado Adulto",
   "nomeIngles": "Dragon, Adult Gold",
   "categoria": "Dragão",
+  "categoriaLegada": "Dragão",
   "papel": "chefe",
   "conceito": "dragão Enorme (metálico)",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Dragão dourado adulto de 9,5 m, o mais nobre dos dragões. Anda entre as pessoas em forma humana, cura e protege os aliados, enfraquece com um sopro de gás quem pode ser poupado e queima com fogo quem não pode.",
   "tags": [
     "dragao",
     "centelha",
     "mágico"
   ],
   "imagem": "bestiario/dragao-dourado-adulto_criatura.webp",
-  "porte": "Enorme",
+  "porte": "Imenso",
   "dimensoes": {
-    "medida": "9,5 m de comprimento, envergadura de 15 m",
-    "peso": "9 t"
+    "medida": "9,5 m de comprimento, 3,05 m de altura",
+    "peso": "9,0 t",
+    "comprimento": 9.5,
+    "largura": 2.11,
+    "altura": 3.05,
+    "envergadura": 21
   },
   "locomocao": {
     "terra": 4,
     "voo": 25,
     "natacao": 6
   },
+  "deslocamentoDeclarado": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+  },
   "centelha": 7,
   "attrs": {
     "forca": 12,
     "destreza": 2,
     "vigor": 10,
-    "influencia": 7,
-    "perspicacia": 7,
-    "compostura": 7,
     "percepcao": 6,
     "inteligencia": 7,
-    "raciocinio": 7
+    "raciocinio": 7,
+    "influencia": 7,
+    "perspicacia": 7,
+    "compostura": 7
   },
   "skills": {
     "briga": 5,
-    "esquiva": 0,
-    "prontidao": 3,
-    "integridade": 7
+    "atletismo": 2,
+    "furtividade": 1,
+    "integridade": 7,
+    "prontidao": 5,
+    "sociabilidade": 3,
+    "ocultismo": 5,
+    "persuasao": 5,
+    "conhecimentos": 5,
+    "empatia": 3
   },
+  "skills2": {
+    "natacao": 3,
+    "intimidacao": 3,
+    "voo": 4,
+    "disparo": 4,
+    "acerto-arcano": 5,
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "empatia",
+      "foco": "mentiras",
+      "valor": 1,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "ocultismo",
+      "foco": "magia antiga",
+      "valor": 2,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 5,
+    "compaixao": 3,
+    "conviccao": 3,
     "temperanca": 3,
     "valor": 6
   },
   "willpower": 12,
   "aparencia": 9,
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 3,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Garras",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Sopro de fogo",
+      "atrib": "vigor",
+      "pericia": "disparo",
+      "dado": 9,
+      "mao": 1,
+      "tipo": "fogo",
+      "ticks": 7,
+      "forca": false,
+      "classe": "distancia",
+      "distancia": true
+    }
+  ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [
+    "fogo"
+  ],
+  "transforma": {
+    "principal": "verdadeira",
+    "formas": [
+      {
+        "id": "verdadeira",
+        "nome": "forma verdadeira"
+      },
+      {
+        "id": "humana-ou-animal-pequeno",
+        "nome": "forma humana ou de animal pequeno"
+      }
+    ]
+  },
   "arte": {
     "protecao": 3,
     "fortuna": 3,
     "cura": 2,
     "luz": 2
   },
-  "ataques": [
-    {
-      "nome": "Garras e mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 3,
-      "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 7
-    }
-  ],
-  "poderes": [
-    {
-      "id": "sopro-de-fogo",
-      "nome": "Sopro de fogo",
-      "tipo": "natural",
-      "base": {
-        "arte": "fogo",
-        "nivel": 4
-      },
-      "resiste": "esquiva",
-      "efeito": "Cone ou linha. Esquiva para metade.",
-      "usos": {
-        "periodo": "ticks",
-        "quantidade": 1,
-        "recarga": "24 ticks"
-      }
-    },
-    {
-      "id": "sopro-debilitante",
-      "nome": "Sopro debilitante",
-      "tipo": "natural",
-      "base": {
-        "arte": "fascinacao",
-        "nivel": 3
-      },
-      "resiste": "esquiva",
-      "efeito": "Cone ou linha. Esquiva para metade.",
-      "usos": {
-        "periodo": "ticks",
-        "quantidade": 1,
-        "recarga": "24 ticks"
-      }
-    },
-    {
-      "id": "mudar-de-forma",
-      "nome": "Mudar de forma",
-      "tipo": "natural",
-      "base": {
-        "arte": "materia",
-        "nivel": 3
-      },
-      "resiste": "nenhum",
-      "efeito": "Mudar de forma",
-      "usos": {
-        "periodo": "avontade"
-      }
-    }
-  ],
-  "resistencias": [
-    "fogo"
-  ],
+  "mana": 26,
   "habilidades": [
     {
       "nome": "Sopro de fogo",
-      "descricao": "cone de 12m; 9d6 de dano, metade se Esquivar"
+      "descricao": "poder natural (base Fogo 4, a do site): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: o fogo queima tudo no cone. Dano: 9d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site).",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Sopro debilitante",
-      "descricao": "cone alternativo de gás sem dano; falha em teste de Vigor deixa o alvo Enfraquecido por 1 turno"
-    },
-    {
-      "nome": "Feitiços divinos",
-      "descricao": "lança feitiços de cura e proteção (feiticaria) em si ou em aliados"
-    },
-    {
-      "nome": "Mudar de forma",
-      "descricao": "assume forma humana ou animal pequena, mantendo parte dos sentidos dracônicos"
-    },
-    {
-      "nome": "Presença",
-      "descricao": "falha no teste de Vontade = Abalado"
-    },
-    {
-      "nome": "Voo dominante",
-      "descricao": "domina os céus com grande manobra"
+      "nome": "garras em sequência",
+      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
+      "classe": "livro"
     },
     {
       "nome": "Multiataque",
-      "descricao": "garra, garra e mordida no mesmo turno"
+      "descricao": "garra, garra e mordida no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Imune a fogo",
-      "descricao": "e resistente a efeitos de medo; não fica Abalado por presenças de centelha menor"
+      "nome": "Presença",
+      "descricao": "poder natural (base Morte 3): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 18 m. Área: esfera de 18 m em volta dele. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência 7 + Intimidação 3 + 2 × o menor entre Centelha 7 e Intimidação 3 (6) = 16 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Sentidos e sabedoria dracônica",
-      "descricao": "detecta mentiras e ignora ilusões simples"
+      "nome": "Sopro debilitante",
+      "descricao": "poder natural (base Fascinação 3, a do site): Ativação: uma ação, Velocidade 7, no lugar do Sopro de fogo (o mesmo limite de uso). Duração: até o fim da próxima ação do alvo. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: gás sem dano que enfraquece: o alvo fica com Desgaste 1; o \"Enfraquecido\" do site não é condição do livro, e o Desgaste 1 é o mais perto. Dano: nenhum. Resistência: corpo, contra a jogada do sopro (site: \"teste de Vigor\"). Limite de uso: dividido com o Sopro de fogo, uma vez a cada 24 Ticks.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Escamas douradas",
-      "descricao": "Absorção +4d6 contra ataques físicos"
+      "nome": "Mudar de forma",
+      "descricao": "poder natural (base Matéria 3, a do site): Ativação: uma ação, Velocidade 8. Duração: até ele desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a forma humana ou de um animal pequeno (a Variante); a mente, as Artes e os números ficam os dele, com parte dos sentidos de dragão. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Firme contra o medo",
+      "descricao": "presença de quem tem Centelha menor não o deixa Abalado (site).",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Voo dominante",
+      "descricao": "domina os céus com grande manobra (site).",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Feitiços",
+      "descricao": "Artes do livro: Proteção até o 3 (Barreira), Fortuna até o 3, Cura até o 2 (Restaurar), Luz até o 2 (Ofuscar), com 26 de Mana."
+    },
+    {
+      "nome": "guardião nobre",
+      "descricao": "avisa antes de atacar, protege e cura os aliados, enfraquece com o sopro de gás quem pode ser poupado e queima quem não pode.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: vê sem luz. · faro: apurado. · sabedoria dracônica: detecta mentiras (Empatia (mentiras) +1) e ignora ilusões simples (sem regra ainda)."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Ao contrário dos parentes cromáticos, o dragão dourado adulto raramente impõe medo por escolha: prefere assumir forma mortal e caminhar disfarçado entre vilas e cidades, testando o caráter das pessoas antes de revelar quem realmente é."
+      "texto": "Ao contrário dos parentes cromáticos, o dragão dourado adulto raramente impõe medo por escolha: prefere assumir forma mortal e caminhar disfarçado entre vilas e cidades, testando o caráter das pessoas antes de revelar quem realmente é. Social: solitário, ou entre as pessoas em forma humana."
     },
     {
       "titulo": "Personalidade",
@@ -177,6 +219,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Mesmo sendo uma força do bem, o dragão dourado não escapa do preconceito da Supressão: para as igrejas de Calin, magia é magia, e um sábio disfarçado de mendigo ou de mercador generoso corre o risco de ser denunciado e caçado só por existir, ironia amarga com a qual aprendeu a conviver havia séculos."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Imenso no ar, Enorme pousado. 85 PV, Impacto 17, Corte e Perfuração 7. Esquiva 4, Bloqueio 4. A cada 24 Ticks, sopro de fogo em cone de 12 m (dano médio 38,5) ou sopro de gás que deixa Desgaste 1. Mordida e garras de 22,5; garras até três por ação. Muda para a forma humana à vontade. Conjura Proteção, Fortuna, Cura e Luz, com 26 de Mana. Defesa Mental 40. Fogo não o fere."
     }
   ],
   "ecologia": {
@@ -220,5 +266,41 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 6
+  "ameacaLegada": 6,
+  "v3": {
+    "pv": 85,
+    "esquiva": 4,
+    "bloqueio": 4,
+    "defesa": 4,
+    "defesaMental": 40,
+    "defesaSocial": 26,
+    "absorcao": {
+      "impacto": 17,
+      "corte": 7,
+      "perfuracao": 7
+    },
+    "couracaNivel": 9,
+    "pesoErguido": 2591.33,
+    "deslocamento": {
+      "terra": {
+        "batalha": 4,
+        "arranque": 6,
+        "corrida": 9
+      },
+      "voo": {
+        "batalha": 25
+      },
+      "nado": 6
+    }
+  },
+  "notasObservacao": [
+    "`envergadura`: 21,0 m pela conta; o site dá 15 m **[conta]**",
+    "`compaixao`: 4; o site tinha 2 **[provisório]**",
+    "`sopro debilitante`: Desgaste 1 no lugar do \"Enfraquecido\" do site **[provisório]**",
+    "`tamanho`: Imenso de asas abertas, Enorme pousado, pelo método do branco jovem; os números do autor para o dragão de 10 m (55 m² parado, 134 m² em voo, `tamanho-regras.md` 4.1) dariam mais (pergunta 1 do lote 23) **[provisório]**",
+    "`couraca`: nível 9 **[provisório]**",
+    "`sopro`: 9d6 + Centelha, cone de 12 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197) **[provisório]**",
+    "`multiataque`: sem regra ainda; garras pela Rajada",
+    "`presença` e os outros poderes: números sugeridos pela ficha (D-197)"
+  ]
 }

@@ -12980,7 +12980,7 @@
   "categoria": "Dragão",
   "tipo": "elite",
   "conceito": "dragão Médio",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Dragão menor nascido de dragões negros e basiliscos, de patas curtas e voo pesado. Sopra uma linha de ácido de longe e transforma em pedra com o olhar quem chega perto.",
   "tags": [
    "dragao",
    "centelha"
@@ -12988,9 +12988,9 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": true,
-  "porte": "Médio",
+  "porte": "Enorme",
   "dimensoes": {
-   "medida": "2,4 m de comprimento",
+   "medida": "2,4 m de comprimento, 0,83 m de altura",
    "peso": "180 kg"
   },
   "ecologia": {
@@ -13021,13 +13021,13 @@
    "esquiva": 0,
    "integridade": 3,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 1
   },
   "vontade": 9,
   "aparencia": 8,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 3,
    "valor": 5
   },
@@ -13038,10 +13038,13 @@
    "defesaMental": 20,
    "absorcao": {
     "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "imunidades": [
+    "acido"
+   ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -13050,35 +13053,55 @@
    },
    "ataques": [
     {
-     "nome": "Garras e mordida",
+     "nome": "Mordida",
      "pool": "6d6 +8",
-     "dano": "1d6 +11 perfurante",
-     "perfArma": 0,
-     "speed": 5,
-     "classe": "leve"
+     "dano": "1d6 +11 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Garras",
+     "pool": "6d6 +8",
+     "dano": "1d6 +11 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Sopro ácido",
+     "pool": "4d6+2 +6",
+     "dano": "3d6 +4 acido",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "distancia"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Sopro ácido",
-    "descricao": "Expele uma linha de ácido que castiga todos em sua trajetória; quem se esquiva a tempo sofre apenas metade do dano."
+    "descricao": "poder natural (base Água 2, sugestão da ficha, como o sopro ácido do dragão verde): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: linha de 9 m. Efeito: o ácido castiga todos na linha (site). Dano: 3d6 + Centelha, ácido. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade (site). Limite de uso: uma vez a cada 24 Ticks, como nos dragões."
+   },
+   {
+    "nome": "garras em sequência",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
    },
    {
     "nome": "Olhar petrificante",
-    "descricao": "Seu olhar de basilisco ameaça transformar em pedra quem encara seus olhos, exigindo um teste de Compostura para resistir."
+    "descricao": "poder natural (base Matéria 3, sugestão da ficha, como o da medusa): Ativação: nenhuma; vale para quem cruza o olhar dele em combate. Duração: permanente, até a pedra ser desfeita por Arte ou efeito que cure a petrificação. Alcance: 9 m, à vista dele. Área: cada um que o encara. Efeito: quem falha vira pedra: o corpo e o que veste ficam estátua, sem morrer, e o Mestre decide o que desfaz. Quem desvia o rosto para não encará-lo não testa, mas ataca a −4. Dano: nenhum. Resistência: mente, Compostura + Integridade contra Dificuldade 15 (o site pede \"teste de Compostura\"); quem passa não testa de novo até o fim da cena. Limite de uso: uma vez por cena para cada pessoa."
    },
    {
-    "nome": "Sentidos aguçados",
-    "descricao": "Enxerga no escuro e com pouca luz, além de perceber o entorno com atenção incomum."
+    "nome": "Imune a sono e paralisia",
+    "descricao": "Arte, poder ou veneno que faz dormir ou paralisa não o pega (site)."
    },
    {
-    "nome": "Imunidades",
-    "descricao": "Insensível a ácido, sono e paralisia."
+    "nome": "dupla ameaça",
+    "descricao": "sopra ácido de longe sobre quem vem em linha, encara quem chega perto e morde quem ainda se mexe."
    },
    {
-    "nome": "Voo instável",
-    "descricao": "Desloca-se voando em ritmo mediano, além de caminhar sobre patas curtas."
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: vê sem luz (site). · visão na penumbra: enxerga com pouca luz (site). · atenção: percebe o entorno com atenção incomum (site; a Percepção 3)."
    }
   ],
   "poderes": [],
@@ -13097,6 +13120,14 @@
    {
     "titulo": "Predador de dupla ameaça",
     "texto": "Combina o veneno visual do basilisco com o sopro corrosivo dracônico, tornando-se perigoso tanto de longe quanto de perto."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: solitário; a linhagem se reproduz sem outro dragão por perto."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Enorme no ar, Médio pousado. 43 PV, Impacto 10, Corte e Perfuração 4, Couraça 5. Esquiva 4, Bloqueio 4. Sopro ácido em linha de 9 m a cada 24 Ticks. Olhar que petrifica quem o encara, uma vez por cena para cada um. Mordida e garras; garras até três por ação. Ácido não o fere."
    }
   ]
  },
@@ -13107,7 +13138,7 @@
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Enorme",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Dragão azul adulto de 9,5 m, ilusionista do deserto. Espera enterrado na areia, emerge com um relâmpago em linha de 18 m e esconde onde está com miragens.",
   "tags": [
    "dragao",
    "centelha",
@@ -13116,9 +13147,9 @@
   "ameaca": 5,
   "centelha": 6,
   "pendente": true,
-  "porte": "Enorme",
+  "porte": "Imenso",
   "dimensoes": {
-   "medida": "9,5 m de comprimento, envergadura de 14 m",
+   "medida": "9,5 m de comprimento, 2,87 m de altura",
    "peso": "7,5 t"
   },
   "ecologia": {
@@ -13145,35 +13176,35 @@
    "raciocinio": 5
   },
   "pericias": {
-   "prontidao": 2,
+   "prontidao": 4,
    "esquiva": 0,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 0
+   "sociabilidade": 2,
+   "furtividade": 4
   },
   "vontade": 11,
   "aparencia": 9,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 3,
    "valor": 6
   },
   "combate": {
    "pv": 80,
    "defesa": 4,
-   "defesaSocial": 10,
+   "defesaSocial": 18,
    "defesaMental": 31,
    "absorcao": {
     "impacto": 15,
-    "corte": 14,
-    "perfuracao": 14
+    "corte": 6,
+    "perfuracao": 6
    },
-   "resistenciaPerfuracao": 1,
-   "resistencias": [
+   "resistenciaPerfuracao": 0,
+   "imunidades": [
     "raio"
    ],
-   "iniciativa": "1d6 + 7",
+   "iniciativa": "1d6 + 9",
    "deslocamento": {
     "batalha": 4,
     "arranque": 6,
@@ -13181,86 +13212,82 @@
    },
    "ataques": [
     {
-     "nome": "Garras e mordida",
+     "nome": "Mordida",
      "pool": "8d6 +10",
-     "dano": "3d6 +17 perfurante",
-     "perfArma": 0,
+     "dano": "1d6 +17 perfurante · perf. 3",
+     "perfArma": 3,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Garras",
+     "pool": "8d6 +10",
+     "dano": "1d6 +17 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Cauda",
+     "pool": "8d6 +10",
+     "dano": "2d6 +28 impacto",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
+    },
+    {
+     "nome": "Sopro elétrico",
+     "pool": "6d6+2 +8",
+     "dano": "9d6 +6 raio",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "distancia"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Sopro elétrico",
-    "descricao": "linha de 18m; 9d6 de dano, metade se Esquivar"
+    "descricao": "poder natural (base Raio 4, a do site): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Efeito: o relâmpago atravessa todos na linha. Dano: 9d6 + Centelha, raio. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site)."
    },
    {
-    "nome": "Miragem no deserto",
-    "descricao": "cria ilusão que engana a Prontidão do alvo, escondendo sua posição real por 1 turno"
+    "nome": "garras em sequência",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
    },
    {
-    "nome": "Presença",
-    "descricao": "falha no teste de Vontade = Abalado (raio de 18m)"
-   },
-   {
-    "nome": "Enterrar e emergir",
-    "descricao": "some sob a areia e ressurge para atacar de surpresa, com bônus de Iniciativa"
-   },
-   {
-    "nome": "Voo",
-    "descricao": "manobra excelente sobre dunas e terreno aberto"
+    "nome": "cauda em sequência",
+    "descricao": "Cauda: a Rajada: até dois golpes de Cauda na mesma ação, o teto da classe Pesada."
    },
    {
     "nome": "Multiataque",
-    "descricao": "garra, garra, mordida e cauda no mesmo turno"
+    "descricao": "garra, garra, mordida e cauda no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada."
    },
    {
-    "nome": "Imune a eletricidade",
-    "descricao": "ignora todo dano elétrico"
-   },
-   {
-    "nome": "Sentidos do deserto",
-    "descricao": "percebe vibrações no chão a longa distância; dificulta Furtividade contra ele"
-   },
-   {
-    "nome": "Escamas azuis",
-    "descricao": "Absorção +3d6 contra ataques físicos"
-   }
-  ],
-  "poderes": [
-   {
-    "id": "sopro-eletrico",
-    "nome": "Sopro elétrico",
-    "tipo": "natural",
-    "resiste": "esquiva",
-    "efeito": "Cone ou linha. Esquiva para metade.",
-    "base": {
-     "arte": "raio",
-     "nivel": 4
-    },
-    "usos": {
-     "periodo": "ticks",
-     "quantidade": 1,
-     "recarga": "24 ticks"
-    }
-   },
-   {
-    "id": "presenca",
     "nome": "Presença",
-    "tipo": "natural",
-    "resiste": "mente",
-    "efeito": "Área; quem resiste fica imune na cena.",
-    "base": {
-     "arte": "morte",
-     "nivel": 3
-    },
-    "usos": {
-     "periodo": "cena",
-     "quantidade": 1
-    }
+    "descricao": "poder natural (base Morte 3, a do site): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 18 m. Área: esfera de 18 m em volta dele. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência 5 + Intimidação 4 + 2 × o menor entre Centelha 6 e Intimidação 4 (8) = 17 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena."
+   },
+   {
+    "nome": "Miragem no deserto",
+    "descricao": "poder natural (base Fascinação 3): Ativação: uma ação, Velocidade 6. Duração: até o fim da próxima ação do alvo. Alcance: 36 m. Área: um alvo. Efeito: uma ilusão esconde onde ele está de verdade: para esse alvo, fica Invisível (site: \"engana a Prontidão do alvo, escondendo sua posição real por 1 turno\"). Dano: nenhum. Resistência: mente, contra Influência 5 + Manha 4 + 2 × o menor entre Centelha 6 e Manha 4 (8) = 17 mais a rolagem. Limite de uso: três vezes por cena."
+   },
+   {
+    "nome": "Enterrar e emergir",
+    "descricao": "Ativação: sair de baixo da areia para atacar. Duração: instantânea. Alcance: o da escavação. Área: um alvo. Efeito: +1d6 na Iniciativa no ataque que emerge (site: \"bônus de Iniciativa\"). Dano: o do golpe. Resistência: nenhum. Limite de uso: um a cada vez que se enterra de novo."
+   },
+   {
+    "nome": "Feitiços",
+    "descricao": "Artes do livro: Raio até o 4 (Corrente), Fascinação até o 3, Morte até o 3, com 23 de Mana."
+   },
+   {
+    "nome": "senhor das dunas",
+    "descricao": "espera enterrado, emerge com o relâmpago em linha, esconde-se com a miragem e morde quem procura o lugar errado."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: vê sem luz. · faro: apurado. · sentidos do deserto: percebe vibração no chão a longa distância; dificulta a Furtividade contra ele (sem regra ainda)."
    }
   ],
+  "poderes": [],
   "locomocao": {
    "terra": 4,
    "voo": 20,
@@ -13281,11 +13308,12 @@
     "nivel": 3
    }
   ],
+  "mana": 23,
   "notas": "Habilidades notáveis: Furtividade 4, Prontidão 4, Manha 4.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "O dragão azul adulto é caçador paciente e territorial ao extremo, capaz de se enterrar na areia por dias esperando a presa certa antes de golpear com o sopro de raios e as garras afiadas."
+    "texto": "O dragão azul adulto é caçador paciente e territorial ao extremo, capaz de se enterrar na areia por dias esperando a presa certa antes de golpear com o sopro de raios e as garras afiadas. Social: solitário."
    },
    {
     "titulo": "Hábitat",
@@ -13298,6 +13326,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Nas fronteiras áridas de Mére, tribos locais aprenderam a ler as tempestades de areia como aviso de que um dragão azul está caçando, e evitam certas rotas havia gerações, muito antes de qualquer igreja supressora inventar nome para o medo."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Imenso no ar, Enorme pousado. 80 PV, Impacto 15, Corte e Perfuração 6. Esquiva 4, Bloqueio 4. Relâmpago em linha de 18 m (dano médio 37,5) a cada 24 Ticks. Mordida e garras de 20,5, cauda de 35,0; garras até três por ação. Some na areia e emerge com +1d6 na Iniciativa; a miragem o deixa Invisível para um alvo. Conjura com 23 de Mana. Raio não o fere."
    }
   ]
  },
@@ -13416,8 +13448,12 @@
     "descricao": "poder natural (base Gelo 3): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Efeito: o frio queima a pele e cobre o chão de gelo fino, e quem atravessa esse chão no Tick seguinte testa Equilíbrio para não cair. Dano: 6d6 + Centelha, gelo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks."
    },
    {
+    "nome": "garras em sequência",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
+   },
+   {
     "nome": "Multiataque",
-    "descricao": "Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo, ou dois lado a lado. Efeito: duas garras e a mordida no mesmo turno, cada golpe com a própria jogada e −2 nela. Dano: o de cada golpe da tabela de Ataques. Resistência: nenhum; cada golpe vai contra a Defesa do alvo. Limite de uso: uma vez a cada 12 Ticks."
+    "descricao": "garra, garra e mordida no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada."
    },
    {
     "nome": "Presença",
@@ -13498,7 +13534,7 @@
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Enorme (metálico)",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Dragão dourado adulto de 9,5 m, o mais nobre dos dragões. Anda entre as pessoas em forma humana, cura e protege os aliados, enfraquece com um sopro de gás quem pode ser poupado e queima com fogo quem não pode.",
   "tags": [
    "dragao",
    "centelha",
@@ -13507,10 +13543,10 @@
   "ameaca": 6,
   "centelha": 7,
   "pendente": true,
-  "porte": "Enorme",
+  "porte": "Imenso",
   "dimensoes": {
-   "medida": "9,5 m de comprimento, envergadura de 15 m",
-   "peso": "9 t"
+   "medida": "9,5 m de comprimento, 3,05 m de altura",
+   "peso": "9,0 t"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -13537,35 +13573,35 @@
    "raciocinio": 7
   },
   "pericias": {
-   "prontidao": 3,
+   "prontidao": 5,
    "esquiva": 0,
    "integridade": 7,
-   "sociabilidade": 0,
-   "furtividade": 0
+   "sociabilidade": 3,
+   "furtividade": 1
   },
   "vontade": 12,
   "aparencia": 9,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 3,
    "valor": 6
   },
   "combate": {
    "pv": 85,
    "defesa": 4,
-   "defesaSocial": 14,
+   "defesaSocial": 26,
    "defesaMental": 40,
    "absorcao": {
     "impacto": 17,
-    "corte": 16,
-    "perfuracao": 16
+    "corte": 7,
+    "perfuracao": 7
    },
-   "resistenciaPerfuracao": 1,
-   "resistencias": [
+   "resistenciaPerfuracao": 0,
+   "imunidades": [
     "fogo"
    ],
-   "iniciativa": "1d6 + 10",
+   "iniciativa": "1d6 + 12",
    "deslocamento": {
     "batalha": 4,
     "arranque": 6,
@@ -13573,105 +13609,78 @@
    },
    "ataques": [
     {
-     "nome": "Garras e mordida",
+     "nome": "Mordida",
      "pool": "8d6+2 +10",
-     "dano": "3d6 +19 perfurante",
-     "perfArma": 0,
+     "dano": "1d6 +19 perfurante · perf. 3",
+     "perfArma": 3,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Garras",
+     "pool": "8d6+2 +10",
+     "dano": "1d6 +19 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Sopro de fogo",
+     "pool": "7d6 +8",
+     "dano": "9d6 +7 fogo",
+     "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "distancia"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Sopro de fogo",
-    "descricao": "cone de 12m; 9d6 de dano, metade se Esquivar"
+    "descricao": "poder natural (base Fogo 4, a do site): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: o fogo queima tudo no cone. Dano: 9d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site)."
    },
    {
-    "nome": "Sopro debilitante",
-    "descricao": "cone alternativo de gás sem dano; falha em teste de Vigor deixa o alvo Enfraquecido por 1 turno"
-   },
-   {
-    "nome": "Feitiços divinos",
-    "descricao": "lança feitiços de cura e proteção (feiticaria) em si ou em aliados"
-   },
-   {
-    "nome": "Mudar de forma",
-    "descricao": "assume forma humana ou animal pequena, mantendo parte dos sentidos dracônicos"
-   },
-   {
-    "nome": "Presença",
-    "descricao": "falha no teste de Vontade = Abalado"
-   },
-   {
-    "nome": "Voo dominante",
-    "descricao": "domina os céus com grande manobra"
+    "nome": "garras em sequência",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
    },
    {
     "nome": "Multiataque",
-    "descricao": "garra, garra e mordida no mesmo turno"
+    "descricao": "garra, garra e mordida no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada."
    },
    {
-    "nome": "Imune a fogo",
-    "descricao": "e resistente a efeitos de medo; não fica Abalado por presenças de centelha menor"
+    "nome": "Presença",
+    "descricao": "poder natural (base Morte 3): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 18 m. Área: esfera de 18 m em volta dele. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência 7 + Intimidação 3 + 2 × o menor entre Centelha 7 e Intimidação 3 (6) = 16 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena."
    },
    {
-    "nome": "Sentidos e sabedoria dracônica",
-    "descricao": "detecta mentiras e ignora ilusões simples"
-   },
-   {
-    "nome": "Escamas douradas",
-    "descricao": "Absorção +4d6 contra ataques físicos"
-   }
-  ],
-  "poderes": [
-   {
-    "id": "sopro-de-fogo",
-    "nome": "Sopro de fogo",
-    "tipo": "natural",
-    "resiste": "esquiva",
-    "efeito": "Cone ou linha. Esquiva para metade.",
-    "base": {
-     "arte": "fogo",
-     "nivel": 4
-    },
-    "usos": {
-     "periodo": "ticks",
-     "quantidade": 1,
-     "recarga": "24 ticks"
-    }
-   },
-   {
-    "id": "sopro-debilitante",
     "nome": "Sopro debilitante",
-    "tipo": "natural",
-    "resiste": "esquiva",
-    "efeito": "Cone ou linha. Esquiva para metade.",
-    "base": {
-     "arte": "fascinacao",
-     "nivel": 3
-    },
-    "usos": {
-     "periodo": "ticks",
-     "quantidade": 1,
-     "recarga": "24 ticks"
-    }
+    "descricao": "poder natural (base Fascinação 3, a do site): Ativação: uma ação, Velocidade 7, no lugar do Sopro de fogo (o mesmo limite de uso). Duração: até o fim da próxima ação do alvo. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: gás sem dano que enfraquece: o alvo fica com Desgaste 1; o \"Enfraquecido\" do site não é condição do livro, e o Desgaste 1 é o mais perto. Dano: nenhum. Resistência: corpo, contra a jogada do sopro (site: \"teste de Vigor\"). Limite de uso: dividido com o Sopro de fogo, uma vez a cada 24 Ticks."
    },
    {
-    "id": "mudar-de-forma",
     "nome": "Mudar de forma",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "Mudar de forma",
-    "base": {
-     "arte": "materia",
-     "nivel": 3
-    },
-    "usos": {
-     "periodo": "avontade"
-    }
+    "descricao": "poder natural (base Matéria 3, a do site): Ativação: uma ação, Velocidade 8. Duração: até ele desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a forma humana ou de um animal pequeno (a Variante); a mente, as Artes e os números ficam os dele, com parte dos sentidos de dragão. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
+   },
+   {
+    "nome": "Firme contra o medo",
+    "descricao": "presença de quem tem Centelha menor não o deixa Abalado (site)."
+   },
+   {
+    "nome": "Voo dominante",
+    "descricao": "domina os céus com grande manobra (site)."
+   },
+   {
+    "nome": "Feitiços",
+    "descricao": "Artes do livro: Proteção até o 3 (Barreira), Fortuna até o 3, Cura até o 2 (Restaurar), Luz até o 2 (Ofuscar), com 26 de Mana."
+   },
+   {
+    "nome": "guardião nobre",
+    "descricao": "avisa antes de atacar, protege e cura os aliados, enfraquece com o sopro de gás quem pode ser poupado e queima quem não pode."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: vê sem luz. · faro: apurado. · sabedoria dracônica: detecta mentiras (Empatia (mentiras) +1) e ignora ilusões simples (sem regra ainda)."
    }
   ],
+  "poderes": [],
   "locomocao": {
    "terra": 4,
    "voo": 25,
@@ -13696,11 +13705,12 @@
     "nivel": 2
    }
   ],
+  "mana": 26,
   "notas": "Habilidades notáveis: Ocultismo 5, Persuasão 5, Prontidão 5, Conhecimentos 5. Centelha acima do teto mortal (entidade).",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Ao contrário dos parentes cromáticos, o dragão dourado adulto raramente impõe medo por escolha: prefere assumir forma mortal e caminhar disfarçado entre vilas e cidades, testando o caráter das pessoas antes de revelar quem realmente é."
+    "texto": "Ao contrário dos parentes cromáticos, o dragão dourado adulto raramente impõe medo por escolha: prefere assumir forma mortal e caminhar disfarçado entre vilas e cidades, testando o caráter das pessoas antes de revelar quem realmente é. Social: solitário, ou entre as pessoas em forma humana."
    },
    {
     "titulo": "Personalidade",
@@ -13713,6 +13723,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Mesmo sendo uma força do bem, o dragão dourado não escapa do preconceito da Supressão: para as igrejas de Calin, magia é magia, e um sábio disfarçado de mendigo ou de mercador generoso corre o risco de ser denunciado e caçado só por existir, ironia amarga com a qual aprendeu a conviver havia séculos."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Imenso no ar, Enorme pousado. 85 PV, Impacto 17, Corte e Perfuração 7. Esquiva 4, Bloqueio 4. A cada 24 Ticks, sopro de fogo em cone de 12 m (dano médio 38,5) ou sopro de gás que deixa Desgaste 1. Mordida e garras de 22,5; garras até três por ação. Muda para a forma humana à vontade. Conjura Proteção, Fortuna, Cura e Luz, com 26 de Mana. Defesa Mental 40. Fogo não o fere."
    }
   ]
  },
@@ -13723,7 +13737,7 @@
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Enorme",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Dragão verde adulto de 9 m, manipulador das florestas. Engana e manobra antes de lutar; se luta, prende com vinhas, sopra ácido em cone de 12 m e morde quem ficou preso.",
   "tags": [
    "dragao",
    "centelha",
@@ -13732,10 +13746,10 @@
   "ameaca": 5,
   "centelha": 6,
   "pendente": true,
-  "porte": "Enorme",
+  "porte": "Imenso",
   "dimensoes": {
-   "medida": "9 m de comprimento, com a cauda",
-   "peso": "7 t"
+   "medida": "9 m de comprimento, 2,8 m de altura",
+   "peso": "7,0 t"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -13765,28 +13779,31 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 0
+   "sociabilidade": 2,
+   "furtividade": 3
   },
   "vontade": 11,
   "aparencia": 9,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 3,
    "valor": 6
   },
   "combate": {
    "pv": 75,
    "defesa": 10,
-   "defesaSocial": 10,
+   "defesaSocial": 18,
    "defesaMental": 31,
    "absorcao": {
     "impacto": 14,
-    "corte": 14,
-    "perfuracao": 14
+    "corte": 6,
+    "perfuracao": 6
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "imunidades": [
+    "acido"
+   ],
    "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 4,
@@ -13795,75 +13812,70 @@
    },
    "ataques": [
     {
-     "nome": "Garras e mordida",
+     "nome": "Mordida",
      "pool": "7d6+2 +10",
-     "dano": "3d6 +16 perfurante",
-     "perfArma": 0,
+     "dano": "1d6 +16 perfurante · perf. 3",
+     "perfArma": 3,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Garras",
+     "pool": "7d6+2 +10",
+     "dano": "1d6 +16 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Sopro ácido",
+     "pool": "6d6 +8",
+     "dano": "9d6 +6 acido",
+     "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "distancia"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Sopro ácido",
-    "descricao": "Cone de 12m; dano de ácido, metade se Esquivar."
+    "descricao": "poder natural (base Água 3, a do site ): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: o gás ácido corrói quem está no cone. Dano: 9d6 + Centelha, ácido. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site)."
    },
    {
-    "nome": "Enredar",
-    "descricao": "vinhas e raízes prendem todos numa área de 6m; exige teste para se soltar"
-   },
-   {
-    "nome": "Manipular",
-    "descricao": "usa Manha ou Persuasão com bônus para enganar e manobrar NPCs a seu favor"
-   },
-   {
-    "nome": "Presença",
-    "descricao": "falha no teste de Vontade = Abalado"
-   },
-   {
-    "nome": "Voo em emboscada",
-    "descricao": "mergulha por entre a copa das árvores para atacar de surpresa"
+    "nome": "garras em sequência",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
    },
    {
     "nome": "Multiataque",
-    "descricao": "garra, garra e mordida no mesmo turno"
+    "descricao": "garra, garra e mordida no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada."
    },
    {
-    "nome": "Imune a ácido",
-    "descricao": "E ao próprio sopro corrosivo que exala."
+    "nome": "Presença",
+    "descricao": "poder natural (base Morte 3): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 18 m. Área: esfera de 18 m em volta dele. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência 5 + Intimidação 4 + 2 × o menor entre Centelha 6 e Intimidação 4 (8) = 17 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena."
    },
    {
-    "nome": "Camuflagem na mata",
-    "descricao": "bônus de Furtividade em florestas e pântanos"
+    "nome": "Enredar",
+    "descricao": "poder natural (base Vida 2, a do site): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena. Alcance: 36 m. Área: círculo de 6 m (site). Efeito: vinhas e raízes prendem quem está na área: fica Preso, como Preso pela Rede (não se desloca, mas age, com −2 na Esquiva e no Bloqueio). Dano: nenhum. Resistência: esquiva, contra Influência 5 + Persuasão 4 + 2 × o menor entre Centelha 6 e Persuasão 4 (8) = 17 mais a rolagem; para se soltar, Força + Atletismo contra o mesmo total, uma tentativa por ação. Limite de uso: uma vez por cena."
    },
    {
-    "nome": "Escamas verdes",
-    "descricao": "Absorção +3d6 contra ataques físicos"
+    "nome": "Voo em emboscada",
+    "descricao": "mergulha por entre as copas para atacar de surpresa (site)."
    },
    {
-    "nome": "Manipular",
-    "descricao": "Traço social (não é poder de combate): Lore e perícias sociais altas."
+    "nome": "Feitiços",
+    "descricao": "Artes do livro: Água até o 3, Vida até o 2, com 23 de Mana."
+   },
+   {
+    "nome": "serpente das palavras",
+    "descricao": "manipula antes de lutar; se luta, prende com as vinhas, sopra ácido e morde quem ficou preso."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: vê sem luz. · faro: apurado."
    }
   ],
-  "poderes": [
-   {
-    "id": "sopro-de-gas",
-    "nome": "Sopro de gás",
-    "tipo": "natural",
-    "resiste": "esquiva",
-    "efeito": "Cone ou linha. Esquiva para metade.",
-    "base": {
-     "arte": "agua",
-     "nivel": 3
-    },
-    "usos": {
-     "periodo": "ticks",
-     "quantidade": 1,
-     "recarga": "24 ticks"
-    }
-   }
-  ],
+  "poderes": [],
   "locomocao": {
    "terra": 4,
    "voo": 20,
@@ -13880,11 +13892,12 @@
     "nivel": 2
    }
   ],
+  "mana": 23,
   "notas": "Habilidades notáveis: Manha 4, Persuasão 4, Furtividade 3.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Sutil e paciente, o dragão verde adulto prefere manipular a atacar de frente, usando conversas envenenadas, mentiras plantadas e o próprio sopro tóxico como ferramentas de um jogo de longo prazo."
+    "texto": "Sutil e paciente, o dragão verde adulto prefere manipular a atacar de frente, usando conversas envenenadas, mentiras plantadas e o próprio sopro tóxico como ferramentas de um jogo de longo prazo. Social: solitário."
    },
    {
     "titulo": "Sociedade",
@@ -13897,6 +13910,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Nas matas selvagens à beira de Syl, onde espíritos da natureza são reverenciados em cada árvore, um dragão verde que se instala numa floresta corrompe não só o solo mas a relação do povo com os próprios kami locais, um insulto que os xamãs raramente perdoam."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Imenso no ar, Enorme pousado. 75 PV, Impacto 14, Corte e Perfuração 6. Esquiva 10, Bloqueio 6. Sopro ácido em cone de 12 m (dano médio 37,5) a cada 24 Ticks. Mordida e garras de 19,5; garras até três por ação. Prende com vinhas num círculo de 6 m uma vez por cena. Conjura Água e Vida, com 23 de Mana. Ácido não o fere."
    }
   ]
  },
@@ -13907,7 +13924,7 @@
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Enorme",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Dragão vermelho adulto de 9 m, feiticeiro alado temível. Sopra fogo em cone de 12 m, queima quem o toca com a aura das escamas e conjura encantos, ilusões e barreiras. Orgulhoso e ganancioso.",
   "tags": [
    "dragao",
    "centelha",
@@ -13916,9 +13933,9 @@
   "ameaca": 6,
   "centelha": 6,
   "pendente": true,
-  "porte": "Enorme",
+  "porte": "Imenso",
   "dimensoes": {
-   "medida": "9 m de comprimento, com a cauda",
+   "medida": "9 m de comprimento, 2,84 m de altura",
    "peso": "7,3 t"
   },
   "ecologia": {
@@ -13945,35 +13962,35 @@
    "raciocinio": 5
   },
   "pericias": {
-   "prontidao": 2,
+   "prontidao": 5,
    "esquiva": 0,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 0
+   "sociabilidade": 2,
+   "furtividade": 1
   },
   "vontade": 11,
   "aparencia": 9,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 3,
    "valor": 6
   },
   "combate": {
    "pv": 80,
    "defesa": 4,
-   "defesaSocial": 10,
+   "defesaSocial": 18,
    "defesaMental": 31,
    "absorcao": {
     "impacto": 15,
-    "corte": 14,
-    "perfuracao": 14
+    "corte": 6,
+    "perfuracao": 6
    },
-   "resistenciaPerfuracao": 1,
-   "resistencias": [
+   "resistenciaPerfuracao": 0,
+   "imunidades": [
     "fogo"
    ],
-   "iniciativa": "1d6 + 7",
+   "iniciativa": "1d6 + 10",
    "deslocamento": {
     "batalha": 4,
     "arranque": 6,
@@ -13981,102 +13998,82 @@
    },
    "ataques": [
     {
-     "nome": "Garras e mordida",
+     "nome": "Mordida",
      "pool": "8d6 +10",
-     "dano": "3d6 +17 perfurante",
-     "perfArma": 0,
+     "dano": "1d6 +17 perfurante · perf. 3",
+     "perfArma": 3,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Garras",
+     "pool": "8d6 +10",
+     "dano": "1d6 +17 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Cauda",
+     "pool": "8d6 +10",
+     "dano": "2d6 +28 impacto",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
+    },
+    {
+     "nome": "Sopro de fogo",
+     "pool": "6d6+2 +8",
+     "dano": "9d6 +6 fogo",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "distancia"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Sopro de fogo",
-    "descricao": "cone de 12m; 9d6 de dano, metade se Esquivar"
+    "descricao": "poder natural (base Fogo 4, a do site): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: o fogo queima tudo no cone. Dano: 9d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site)."
    },
    {
-    "nome": "Aura de fogo",
-    "descricao": "quem o acerta em combate corpo a corpo sofre 2d6 de dano automático"
+    "nome": "garras em sequência",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
    },
    {
-    "nome": "Presença aterradora",
-    "descricao": "falha no teste de Vontade = Abalado em raio de 24m"
-   },
-   {
-    "nome": "Voo",
-    "descricao": "manobra excelente; reposiciona-se livremente antes de atacar"
+    "nome": "cauda em sequência",
+    "descricao": "Cauda: a Rajada: até dois golpes de Cauda na mesma ação, o teto da classe Pesada."
    },
    {
     "nome": "Multiataque",
-    "descricao": "garra, garra, mordida e cauda no mesmo turno"
+    "descricao": "garra, garra, mordida e cauda no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada."
    },
    {
-    "nome": "Imune a fogo",
-    "descricao": "ignora todo dano de fogo"
+    "nome": "Presença",
+    "descricao": "poder natural (base Morte 3, a do site): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 24 m. Área: esfera de 24 m em volta dele. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência 5 + Intimidação 4 + 2 × o menor entre Centelha 6 e Intimidação 4 (8) = 17 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena."
    },
    {
-    "nome": "Escamas grossas",
-    "descricao": "Absorção +3d6 contra ataques físicos"
-   },
-   {
-    "nome": "Feitiços de feiticeiro",
-    "descricao": "lança feitiços intermediários (feiticaria) durante o combate"
-   },
-   {
-    "nome": "Sentidos aguçados",
-    "descricao": "detecta invisíveis e furtivos automaticamente"
-   }
-  ],
-  "poderes": [
-   {
-    "id": "sopro-de-fogo",
-    "nome": "Sopro de fogo",
-    "tipo": "natural",
-    "resiste": "esquiva",
-    "efeito": "Cone ou linha. Esquiva para metade.",
-    "base": {
-     "arte": "fogo",
-     "nivel": 4
-    },
-    "area": "cone de 12 m",
-    "usos": {
-     "periodo": "ticks",
-     "quantidade": 1,
-     "recarga": "24 ticks"
-    }
-   },
-   {
-    "id": "aura-de-fogo",
     "nome": "Aura de fogo",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "Resiste ao entrar, 1 vez por cena.",
-    "base": {
-     "arte": "fogo",
-     "nivel": 4
-    },
-    "usos": {
-     "periodo": "passivo",
-     "recarga": "contínua"
-    }
+    "descricao": "poder natural (base Fogo 4, a do site): Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o corpo dele. Área: quem o acerta corpo a corpo. Efeito: o calor das escamas queima quem encosta. Dano: 2d6, fogo, a cada golpe corpo a corpo que acerta nele (site). Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "id": "presenca-aterradora",
-    "nome": "Presença aterradora",
-    "tipo": "natural",
-    "resiste": "mente",
-    "efeito": "Área; quem resiste fica imune na cena.",
-    "base": {
-     "arte": "morte",
-     "nivel": 3
-    },
-    "usos": {
-     "periodo": "cena",
-     "quantidade": 1
-    }
+    "nome": "Voo",
+    "descricao": "manobra excelente; reposiciona-se no ar antes de atacar (site)."
+   },
+   {
+    "nome": "Feitiços",
+    "descricao": "Artes do livro: Fascinação até o 4, Tempo até o 3, Ofuscação até o 3, Proteção até o 3, Fogo até o 2, com 23 de Mana."
+   },
+   {
+    "nome": "feiticeiro alado",
+    "descricao": "abre com o sopro, encanta ou some com a Arte, deixa a aura queimar quem chega perto e só pousa para acabar com o que resta."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: vê sem luz. · faro: apurado. · sentidos aguçados: detecta invisíveis e furtivos (sem regra ainda)."
    }
   ],
+  "poderes": [],
   "locomocao": {
    "terra": 4,
    "voo": 20
@@ -14104,11 +14101,12 @@
     "nivel": 2
    }
   ],
+  "mana": 23,
   "notas": "Habilidades notáveis: Prontidão 5, Persuasão 4, Ocultismo 3.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "O dragão vermelho adulto já não caça por necessidade: impõe tributo às comunidades ao redor de seu covil, exigindo ouro, gado ou sacrifícios simbólicos em troca de não arrasar vilas inteiras."
+    "texto": "O dragão vermelho adulto já não caça por necessidade: impõe tributo às comunidades ao redor de seu covil, exigindo ouro, gado ou sacrifícios simbólicos em troca de não arrasar vilas inteiras. Social: solitário."
    },
    {
     "titulo": "Sociedade",
@@ -14121,6 +14119,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Em Mére, onde cidades mágicas avançadas se escondem sob a fama de terra bárbara, um dragão vermelho adulto pode governar um vale inteiro como um rei não reconhecido, algo que as igrejas supressoras de Calin preferem não admitir que ainda existe."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Imenso no ar, Enorme pousado. 80 PV, Impacto 15, Corte e Perfuração 6. Esquiva 4, Bloqueio 4. Sopro de fogo em cone de 12 m (dano médio 37,5) a cada 24 Ticks. Mordida e garras de 20,5, cauda de 35,0; garras até três por ação. Quem o acerta corpo a corpo leva 2d6 de fogo. Conjura com 23 de Mana. Defesa Mental 31. Fogo não o fere."
    }
   ]
  },
@@ -14131,7 +14133,7 @@
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Imenso",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Dragão vermelho de séculos, de 16,5 m. Sopra fogo em cone de 15 m, paralisa de medo quem o vê e conjura portais, barreiras e telecinese. Ninguém o surpreende.",
   "tags": [
    "dragao",
    "centelha",
@@ -14140,10 +14142,10 @@
   "ameaca": 6,
   "centelha": 7,
   "pendente": true,
-  "porte": "Imenso",
+  "porte": "Colossal",
   "dimensoes": {
-   "medida": "16,5 m de comprimento, com a cauda",
-   "peso": "59 t"
+   "medida": "16,5 m de comprimento, 5,7 m de altura",
+   "peso": "59,0 t"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -14170,35 +14172,35 @@
    "raciocinio": 6
   },
   "pericias": {
-   "prontidao": 3,
+   "prontidao": 5,
    "esquiva": 0,
    "integridade": 6,
-   "sociabilidade": 0,
-   "furtividade": 0
+   "sociabilidade": 3,
+   "furtividade": 1
   },
   "vontade": 12,
   "aparencia": 9,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 3,
    "valor": 6
   },
   "combate": {
    "pv": 95,
    "defesa": 4,
-   "defesaSocial": 12,
+   "defesaSocial": 24,
    "defesaMental": 36,
    "absorcao": {
     "impacto": 18,
-    "corte": 19,
-    "perfuracao": 19
+    "corte": 7,
+    "perfuracao": 7
    },
-   "resistenciaPerfuracao": 2,
-   "resistencias": [
+   "resistenciaPerfuracao": 0,
+   "imunidades": [
     "fogo"
    ],
-   "iniciativa": "1d6 + 9",
+   "iniciativa": "1d6 + 11",
    "deslocamento": {
     "batalha": 4,
     "arranque": 6,
@@ -14206,93 +14208,104 @@
    },
    "ataques": [
     {
-     "nome": "Garras e mordida",
+     "nome": "Mordida",
      "pool": "9d6+2 +10",
-     "dano": "3d6 +21 perfurante",
-     "perfArma": 0,
+     "dano": "1d6 +21 perfurante · perf. 3",
+     "perfArma": 3,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Garras",
+     "pool": "9d6+2 +10",
+     "dano": "1d6 +21 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Cauda",
+     "pool": "9d6+2 +10",
+     "dano": "2d6 +35 impacto",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
+    },
+    {
+     "nome": "Sopro de fogo",
+     "pool": "8d6 +10",
+     "dano": "12d6 +7 fogo",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "distancia"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Sopro de fogo",
-    "descricao": "cone de 15m; 12d6 de dano, metade se Esquivar"
+    "descricao": "poder natural (base Fogo 5, a do site): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 15 m à frente. Área: cone de 15 m. Efeito: o fogo queima tudo no cone. Dano: 12d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site)."
    },
    {
-    "nome": "Presença que paralisa",
-    "descricao": "falha simples no teste de Vontade = Abalado; falha por 3 ou mais = Paralisado por 1 turno"
+    "nome": "garras em sequência",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
    },
    {
-    "nome": "Feitiços",
-    "descricao": "lança feitiços avançados (feiticaria) sem gastar a ação principal"
-   },
-   {
-    "nome": "Voo dominante",
-    "descricao": "manobra total no ar, ignora terreno difícil enquanto voa"
+    "nome": "cauda em sequência",
+    "descricao": "Cauda: a Rajada: até dois golpes de Cauda na mesma ação, o teto da classe Pesada."
    },
    {
     "nome": "Multiataque",
-    "descricao": "garra, garra, mordida e cauda no mesmo turno"
+    "descricao": "garra, garra, mordida e cauda no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada."
    },
    {
-    "nome": "Imune a fogo",
-    "descricao": "e resistente a feitiços de centelha menor (dificulta ser alvo)"
+    "nome": "Presença",
+    "descricao": "poder natural (base Morte 4, a do site): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 30 m. Área: esfera de 30 m em volta dele. Efeito: quem falha fica Abalado; quem falha por 3 ou mais fica Imobilizado até o fim da próxima ação (o \"Paralisado por 1 turno\" do site; o livro não tem a condição \"paralisado\"). Dano: nenhum. Resistência: mente, contra Influência 6 + Intimidação 5 + 2 × o menor entre Centelha 7 e Intimidação 5 (10) = 21 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena."
    },
    {
-    "nome": "Escamas ancestrais",
-    "descricao": "Absorção +4d6 contra ataques físicos"
-   },
-   {
-    "nome": "Sentidos onipresentes",
-    "descricao": "impossível ser surpreendido; percebe invisibilidade e ilusões comuns"
+    "nome": "Resistência a magia",
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes de quem tem Centelha menor que a dele (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
     "nome": "Autoridade dracônica",
-    "descricao": "efeitos de medo ou dominação de centelha menor falham automaticamente"
-   }
-  ],
-  "poderes": [
-   {
-    "id": "sopro-de-fogo",
-    "nome": "Sopro de fogo",
-    "tipo": "natural",
-    "resiste": "esquiva",
-    "efeito": "Cone ou linha. Esquiva para metade.",
-    "base": {
-     "arte": "fogo",
-     "nivel": 5
-    },
-    "area": "cone de 15 m",
-    "usos": {
-     "periodo": "ticks",
-     "quantidade": 1,
-     "recarga": "24 ticks"
-    }
+    "descricao": "efeito de medo ou de domínio de quem tem Centelha menor falha nele (site)."
    },
    {
-    "id": "presenca-que-paralisa",
-    "nome": "Presença que paralisa",
-    "tipo": "natural",
-    "resiste": "mente",
-    "efeito": "Área; quem resiste fica imune na cena.",
-    "base": {
-     "arte": "morte",
-     "nivel": 4
-    },
-    "usos": {
-     "periodo": "cena",
-     "quantidade": 1
-    }
+    "nome": "Feitiço sem gastar a ação",
+    "descricao": "\"lança feitiços avançados sem gastar a ação principal\" (site); a ficha conjura pela regra da Arte."
+   },
+   {
+    "nome": "Voo dominante",
+    "descricao": "manobra total no ar; ignora o terreno difícil enquanto voa (site)."
+   },
+   {
+    "nome": "Feitiços",
+    "descricao": "Artes do livro: Conjuração até o 6, Proteção até o 5, Fogo até o 4, Fascinação até o 4, Forças até o 4, com 26 de Mana."
+   },
+   {
+    "nome": "senhor da montanha",
+    "descricao": "abre com o sopro, paralisa de medo os que vêm, abre portais e barreiras com a Arte e desce para morder o mais perigoso."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: vê sem luz. · faro: apurado. · sentidos onipresentes: impossível de surpreender; percebe invisibilidade e ilusões comuns (sem regra ainda além da Prontidão (surpresa) +3)."
    }
   ],
+  "poderes": [],
   "locomocao": {
    "terra": 4,
    "voo": 25
   },
   "tecnicas": [],
   "artes": [
+   {
+    "id": "conjuracao",
+    "nivel": 6
+   },
+   {
+    "id": "protecao",
+    "nivel": 5
+   },
    {
     "id": "fogo",
     "nivel": 4
@@ -14302,23 +14315,16 @@
     "nivel": 4
    },
    {
-    "id": "protecao",
-    "nivel": 5
-   },
-   {
     "id": "forcas",
     "nivel": 4
-   },
-   {
-    "id": "conjuracao",
-    "nivel": 6
    }
   ],
+  "mana": 26,
   "notas": "Habilidades notáveis: Prontidão 5, Ocultismo 5, Persuasão 5, Conhecimentos 4. Centelha acima do teto mortal (entidade).",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Séculos de vida tornaram o dragão vermelho ancião paciente e cruel ao mesmo tempo: raramente ataca por impulso, preferindo manipular reinos inteiros à distância antes de mostrar as garras."
+    "texto": "Séculos de vida tornaram o dragão vermelho ancião paciente e cruel ao mesmo tempo: raramente ataca por impulso, preferindo manipular reinos inteiros à distância antes de mostrar as garras. Social: solitário."
    },
    {
     "titulo": "Sociedade",
@@ -14331,6 +14337,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Um dragão vermelho ancião é o tipo de relíquia que a Supressão gostaria de apagar da memória: prova viva e falante de que o mundo já foi mais mágico, sobrevivendo escondida nas montanhas mais remotas de Mére, cobrando tributo de quem ousa se aproximar."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Colossal no ar, Imenso pousado. 95 PV, Impacto 18, Corte e Perfuração 7. Esquiva 4, Bloqueio 4. Sopro de fogo em cone de 15 m (dano médio 49,0) a cada 24 Ticks. Mordida e garras de 24,5, cauda de 42,0; garras até três por ação. A presença abala a 30 m e imobiliza quem falha por 3. Conjura Conjuração até o 6, com 26 de Mana. Defesa Mental 36. Fogo não o fere."
    }
   ]
  },
@@ -14341,7 +14351,7 @@
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Grande",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Dragão vermelho jovem de 4,9 m, ainda longe do tamanho adulto. Mergulha do alto, sopra fogo em cone de 9 m e faz inimigos comuns hesitarem só com a presença.",
   "tags": [
    "dragao",
    "centelha",
@@ -14350,9 +14360,9 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": true,
-  "porte": "Grande",
+  "porte": "Enorme",
   "dimensoes": {
-   "medida": "4,9 m de comprimento, com a cauda",
+   "medida": "4,9 m de comprimento, 1,41 m de altura",
    "peso": "900 kg"
   },
   "ecologia": {
@@ -14379,35 +14389,35 @@
    "raciocinio": 3
   },
   "pericias": {
-   "prontidao": 1,
+   "prontidao": 4,
    "esquiva": 1,
    "integridade": 3,
-   "sociabilidade": 0,
+   "sociabilidade": 2,
    "furtividade": 1
   },
   "vontade": 10,
   "aparencia": 9,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 3,
    "valor": 6
   },
   "combate": {
    "pv": 54,
    "defesa": 10,
-   "defesaSocial": 6,
+   "defesaSocial": 14,
    "defesaMental": 22,
    "absorcao": {
     "impacto": 11,
-    "corte": 10,
-    "perfuracao": 10
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
-   "resistencias": [
+   "imunidades": [
     "fogo"
    ],
-   "iniciativa": "1d6 + 4",
+   "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 4,
     "arranque": 6,
@@ -14415,79 +14425,74 @@
    },
    "ataques": [
     {
-     "nome": "Garras e mordida",
+     "nome": "Mordida",
      "pool": "7d6 +10",
-     "dano": "2d6 +14 perfurante",
-     "perfArma": 0,
+     "dano": "1d6 +14 perfurante · perf. 2",
+     "perfArma": 2,
      "speed": 6,
      "classe": "media"
+    },
+    {
+     "nome": "Garras",
+     "pool": "7d6 +10",
+     "dano": "1d6 +14 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Sopro de fogo",
+     "pool": "4d6+2 +6",
+     "dano": "6d6 +5 fogo",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "distancia"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Sopro de fogo",
-    "descricao": "cone de 9m; 6d6 de dano, metade se Esquivar (recarrega após 1d6 turnos)"
+    "descricao": "poder natural (base Fogo 3, a do site): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Efeito: o fogo queima tudo no cone. Dano: 6d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site)."
    },
    {
-    "nome": "Presença aterradora",
-    "descricao": "falha no teste de Vontade = Abalado (raio de 18m)"
-   },
-   {
-    "nome": "Voo veloz",
-    "descricao": "manobra alta no ar; pode atacar em mergulho com +1d6 na Iniciativa"
+    "nome": "garras em sequência",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
    },
    {
     "nome": "Multiataque",
-    "descricao": "garra, garra e mordida no mesmo turno"
+    "descricao": "garra, garra e mordida no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada."
    },
    {
-    "nome": "Imune a fogo",
-    "descricao": "ignora todo dano de fogo"
+    "nome": "Presença",
+    "descricao": "poder natural (base Morte 3): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 18 m. Área: esfera de 18 m em volta dele. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência 3 + Intimidação 3 + 2 × o menor entre Centelha 5 e Intimidação 3 (6) = 12 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena."
    },
    {
-    "nome": "Sentidos dracônicos",
-    "descricao": "visão no escuro e faro apurado; inimigos não conseguem Furtividade contra ele"
+    "nome": "Temor Reverente",
+    "descricao": "Técnica temor-reverente, nível 3: a presença dele faz inimigos comuns hesitarem em atacá-lo. Do site; a Centelha 5 abre o nível 3. O pré-requisito do caminho não está no site."
    },
    {
-    "nome": "Escamas rígidas",
-    "descricao": "Absorção +2d6 contra ataques físicos"
+    "nome": "Voo veloz",
+    "descricao": "Ativação: descer de pelo menos 6 m de altura direto sobre o alvo. Duração: instantânea. Alcance: o do voo. Área: um alvo. Efeito: +1d6 na Iniciativa no mergulho (site). Dano: o do golpe. Resistência: nenhum. Limite de uso: um mergulho a cada vez que sobe de novo a 6 m."
    },
    {
-    "nome": "Feitiços iniciais",
-    "descricao": "lança 1 truque arcano por cena (feiticaria) sem gastar ação extra"
+    "nome": "Feitiço sem gastar ação",
+    "descricao": "\"lança 1 truque arcano por cena sem gastar ação extra\" (site); a ficha conjura pela regra da Arte."
+   },
+   {
+    "nome": "Feitiços",
+    "descricao": "Artes do livro: Proteção até o 1 (Salvaguarda), Fortuna até o 1, com 20 de Mana."
+   },
+   {
+    "nome": "caça do alto",
+    "descricao": "mergulha, sopra fogo sobre o grupo e desce para morder o que ficou de pé."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: vê sem luz. · faro: apurado. · sentidos dracônicos: quem tenta Furtividade contra ele não consegue (sem regra ainda)."
    }
   ],
-  "poderes": [
-   {
-    "id": "sopro-de-fogo",
-    "nome": "Sopro de fogo",
-    "tipo": "natural",
-    "resiste": "esquiva",
-    "efeito": "Cone ou linha. Esquiva para metade.",
-    "base": {
-     "arte": "fogo",
-     "nivel": 3
-    },
-    "area": "cone de 9 m",
-    "usos": {
-     "periodo": "ticks",
-     "quantidade": 1,
-     "recarga": "24 ticks"
-    }
-   },
-   {
-    "id": "presenca-aterradora",
-    "nome": "Presença aterradora",
-    "tipo": "natural",
-    "resiste": "mente",
-    "efeito": "Área; quem resiste fica imune na cena.",
-    "usos": {
-     "periodo": "cena",
-     "quantidade": 1
-    }
-   }
-  ],
+  "poderes": [],
   "locomocao": {
    "terra": 4,
    "voo": 20
@@ -14505,11 +14510,12 @@
     "nivel": 1
    }
   ],
+  "mana": 20,
   "notas": "Habilidades notáveis: Prontidão 4, Manha 3, Ocultismo 2.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "O dragão vermelho jovem já defende um território definido com violência calculada, atacando quem se aproxima do covil e usando o sopro de fogo tanto para caçar quanto para impor respeito às vizinhanças."
+    "texto": "O dragão vermelho jovem já defende um território definido com violência calculada, atacando quem se aproxima do covil e usando o sopro de fogo tanto para caçar quanto para impor respeito às vizinhanças. Social: solitário."
    },
    {
     "titulo": "Sociedade",
@@ -14522,6 +14528,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Nas fronteiras selvagens de Mére, onde o povo já convive com monstros mais estranhos que em Calin, um dragão jovem que reivindica uma montanha vira lenda local quase da noite para o dia, tema de canções de aviso e oferendas deixadas na entrada de covis."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Enorme no ar, Grande pousado. 54 PV, Impacto 11, Corte e Perfuração 5. Esquiva 10, Bloqueio 6. Sopro de fogo em cone de 9 m (dano médio 26,0) a cada 24 Ticks. Mordida e garras de 17,5; garras até três por ação. Presença a 18 m. Conjura Proteção e Fortuna até o 1, com 20 de Mana. Fogo não o fere."
    }
   ]
  },
@@ -19125,7 +19135,7 @@
    },
    {
     "nome": "Rapidez sobrenatural",
-    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: está sempre Acelerado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. O site dizia \"age duas vezes em sequência dentro do mesmo turno\"; o Centelha não tem turno, e o mais perto no livro é o Acelerado."
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: está sempre Acelerado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. O site dizia \"age duas vezes em sequência dentro do mesmo turno\"; o Centelha não tem turno. Critério do manual: agir duas vezes vira o Acelerado do livro, e o tempo segue a fonte: quem age duas vezes sempre fica Acelerado o tempo todo."
    },
    {
     "nome": "braços longos",
@@ -20045,7 +20055,7 @@
   "categoria": "Dragão",
   "tipo": "elite",
   "conceito": "dragão Médio",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Filhote de dragão vermelho de 2,7 m, que já nasce mágico. Sopra fogo em cone de 9 m, morde e rasga, e já guarda um pequeno tesouro com o orgulho dos adultos.",
   "tags": [
    "dragao",
    "centelha",
@@ -20054,9 +20064,9 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": true,
-  "porte": "Médio",
+  "porte": "Grande",
   "dimensoes": {
-   "medida": "2,7 m de comprimento, com a cauda",
+   "medida": "2,7 m de comprimento, 0,82 m de altura",
    "peso": "90 kg"
   },
   "ecologia": {
@@ -20083,35 +20093,35 @@
    "raciocinio": 4
   },
   "pericias": {
-   "prontidao": 2,
+   "prontidao": 3,
    "esquiva": 0,
    "integridade": 4,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "sociabilidade": 1,
+   "furtividade": 1
   },
   "vontade": 9,
   "aparencia": 8,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 3,
    "valor": 5
   },
   "combate": {
    "pv": 40,
    "defesa": 4,
-   "defesaSocial": 8,
+   "defesaSocial": 12,
    "defesaMental": 25,
    "absorcao": {
     "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
-   "resistencias": [
+   "imunidades": [
     "fogo"
    ],
-   "iniciativa": "1d6 + 6",
+   "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 4,
     "arranque": 6,
@@ -20119,79 +20129,62 @@
    },
    "ataques": [
     {
-     "nome": "Garras e mordida",
+     "nome": "Mordida",
      "pool": "5d6+2 +8",
-     "dano": "1d6 +10 perfurante",
-     "perfArma": 0,
-     "speed": 5,
-     "classe": "leve"
+     "dano": "1d6 +10 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Garras",
+     "pool": "5d6+2 +8",
+     "dano": "1d6 +10 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Sopro de fogo",
+     "pool": "3d6+2 +4",
+     "dano": "3d6 +4 fogo",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "distancia"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Sopro de fogo",
-    "descricao": "cone de 9m; dano alto, metade se Esquivar"
+    "descricao": "poder natural (base Fogo 2, a do site): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Efeito: o fogo queima tudo no cone. Dano: 3d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site)."
    },
    {
-    "nome": "Presença medonha",
-    "descricao": "quem vê o dragão falha em Vontade: Abalado"
+    "nome": "garras em sequência",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
    },
    {
-    "nome": "Voo",
-    "descricao": "desloca 12m voando"
+    "nome": "Multiataque",
+    "descricao": "garras e mordida, \"dois ataques corpo a corpo\" no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada."
    },
    {
-    "nome": "Garras e mordida",
-    "descricao": "dois ataques corpo a corpo no mesmo turno"
+    "nome": "Presença",
+    "descricao": "poder natural (base Morte 3, a do site): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 9 m. Área: esfera de 9 m em volta dele. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência 3 + Intimidação 2 + 2 × o menor entre Centelha 4 e Intimidação 2 (4) = 9 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena."
    },
    {
-    "nome": "Imune a fogo",
-    "descricao": "não sofre dano de fogo, nem do próprio sopro"
+    "nome": "Feitiços",
+    "descricao": "Artes do livro: Morte até o 3, Fogo até o 2, com 17 de Mana."
    },
    {
-    "nome": "Sentidos aguçados",
-    "descricao": "+2d6 em Prontidão, enxerga no escuro"
+    "nome": "filhote feroz",
+    "descricao": "sopra primeiro, morde o mais perto e voa para longe quando se fere."
    },
    {
-    "nome": "Orgulho e ganância",
-    "descricao": "+2d6 em Persuasão ao negociar ou intimidar em torno de seu tesouro"
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: vê sem luz. · faro: apurado."
    }
   ],
-  "poderes": [
-   {
-    "id": "sopro-de-fogo",
-    "nome": "Sopro de fogo",
-    "tipo": "natural",
-    "resiste": "esquiva",
-    "efeito": "Cone ou linha. Esquiva para metade.",
-    "base": {
-     "arte": "fogo",
-     "nivel": 2
-    },
-    "area": "cone de 9 m",
-    "usos": {
-     "periodo": "ticks",
-     "quantidade": 1,
-     "recarga": "24 ticks"
-    }
-   },
-   {
-    "id": "presenca-medonha",
-    "nome": "Presença medonha",
-    "tipo": "natural",
-    "resiste": "mente",
-    "efeito": "Área; quem resiste fica imune na cena.",
-    "base": {
-     "arte": "morte",
-     "nivel": 3
-    },
-    "usos": {
-     "periodo": "cena",
-     "quantidade": 1
-    }
-   }
-  ],
+  "poderes": [],
   "locomocao": {
    "terra": 4,
    "voo": 6,
@@ -20200,19 +20193,20 @@
   "tecnicas": [],
   "artes": [
    {
-    "id": "fogo",
-    "nivel": 2
-   },
-   {
     "id": "morte",
     "nivel": 3
+   },
+   {
+    "id": "fogo",
+    "nivel": 2
    }
   ],
+  "mana": 17,
   "notas": "Habilidades notáveis: Prontidão 3, Atletismo 2, Manha 2.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Ainda recém-saído do ovo, o filhote de dragão vermelho já nasce arrogante e impulsivo, atacando por orgulho ferido antes mesmo de entender o próprio perigo, e testando garras e sopro de fogo em presas fáceis perto do ninho."
+    "texto": "Ainda recém-saído do ovo, o filhote de dragão vermelho já nasce arrogante e impulsivo, atacando por orgulho ferido antes mesmo de entender o próprio perigo, e testando garras e sopro de fogo em presas fáceis perto do ninho. Social: solitário."
    },
    {
     "titulo": "Hábitat",
@@ -20225,6 +20219,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Quando um filhote é avistado, aldeias vizinhas já tratam o caso como presságio: dragões são lembranças vivas de uma era mais mágica que a Supressão tentou apagar, e ver um nascer é sinal, para muitos sacerdotes, de que a vigilância dos deuses está falhando."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande no ar, Médio pousado. 40 PV, Impacto 9, Corte e Perfuração 4. Esquiva 4, Bloqueio 4. Sopro de fogo em cone de 9 m (dano médio 14,5) a cada 24 Ticks. Mordida e garras de 13,5; garras até três por ação. Presença a 9 m. Conjura Morte até o 3 e Fogo até o 2, com 17 de Mana. Fogo não o fere."
    }
   ]
  },
@@ -24498,7 +24496,7 @@
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Colossal",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "O mais velho dos dragões vermelhos, uma lenda encarnada de 20 m. Sopra fogo que queima um exército, dobra o tempo quando precisa e conjura feitiços que poucos mortais já viram. Nada passa despercebido diante dele.",
   "tags": [
    "dragao",
    "centelha",
@@ -24509,8 +24507,8 @@
   "pendente": true,
   "porte": "Colossal",
   "dimensoes": {
-   "medida": "20 m de comprimento, com a cauda",
-   "peso": "88 t"
+   "medida": "20 m de comprimento, 6,51 m de altura",
+   "peso": "88,0 t"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -24537,35 +24535,35 @@
    "raciocinio": 7
   },
   "pericias": {
-   "prontidao": 4,
+   "prontidao": 5,
    "esquiva": 0,
    "integridade": 7,
-   "sociabilidade": 0,
-   "furtividade": 0
+   "sociabilidade": 3,
+   "furtividade": 1
   },
   "vontade": 12,
   "aparencia": 9,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 3,
    "valor": 6
   },
   "combate": {
-   "pv": 115,
+   "pv": 110,
    "defesa": 4,
-   "defesaSocial": 14,
+   "defesaSocial": 26,
    "defesaMental": 40,
    "absorcao": {
     "impacto": 23,
-    "corte": 26,
-    "perfuracao": 26
+    "corte": 9,
+    "perfuracao": 9
    },
-   "resistenciaPerfuracao": 3,
-   "resistencias": [
+   "resistenciaPerfuracao": 0,
+   "imunidades": [
     "fogo"
    ],
-   "iniciativa": "1d6 + 11",
+   "iniciativa": "1d6 + 12",
    "deslocamento": {
     "batalha": 4,
     "arranque": 6,
@@ -24573,90 +24571,98 @@
    },
    "ataques": [
     {
-     "nome": "Garras e mordida",
+     "nome": "Mordida",
      "pool": "10d6+2 +10",
-     "dano": "4d6 +25 perfurante",
-     "perfArma": 0,
+     "dano": "1d6 +25 perfurante · perf. 3",
+     "perfArma": 3,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Garras",
+     "pool": "10d6+2 +10",
+     "dano": "1d6 +25 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Cauda",
+     "pool": "10d6+2 +10",
+     "dano": "2d6 +41 impacto",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
+    },
+    {
+     "nome": "Asas",
+     "pool": "10d6+2 +10",
+     "dano": "1d6 +25 impacto",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Sopro cataclísmico",
+     "pool": "9d6+2 +10",
+     "dano": "15d6 +9 fogo",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "distancia"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Sopro cataclísmico",
-    "descricao": "cone de 18m; 15d6 de dano, metade se Esquivar (ainda deixa Abalado mesmo com sucesso)"
+    "descricao": "poder natural (base Fogo 5, a do site): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: cone de 18 m. Efeito: o fogo queima tudo no cone e deixa Abalado até quem escapa (site). Dano: 15d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade; mesmo quem passa fica Abalado até o fim da cena (site). Limite de uso: uma vez a cada 24 Ticks (site)."
+   },
+   {
+    "nome": "garras em sequência",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
+   },
+   {
+    "nome": "cauda em sequência",
+    "descricao": "Cauda: a Rajada: até dois golpes de Cauda na mesma ação, o teto da classe Pesada."
+   },
+   {
+    "nome": "Multiataque",
+    "descricao": "garra, garra, mordida, cauda e golpe de asas no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada."
+   },
+   {
+    "nome": "Presença",
+    "descricao": "poder natural (base Morte 5, a do site): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 36 m. Área: esfera de 36 m em volta dele. Efeito: quem falha fica Abalado; quem falha por 5 ou mais fica Imobilizado até o fim da próxima ação (o \"Paralisado de terror por 1 turno\" do site; o livro não tem a condição \"paralisado\"). Dano: nenhum. Resistência: mente, contra Influência 7 + Intimidação 5 + 2 × o menor entre Centelha 9 e Intimidação 5 (10) = 22 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena."
    },
    {
     "nome": "Dobrar o tempo",
-    "descricao": "age duas vezes na mesma rodada, uma ação extra completa (1x por cena)"
+    "descricao": "poder natural (base Tempo 6): Ativação: nenhuma ação, no começo de uma ação dele. Duração: 12 Ticks. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Acelerado. O site dizia \"age duas vezes na mesma rodada, uma ação extra completa (1x por cena)\". Critério do manual: agir duas vezes vira o Acelerado do livro, e o tempo segue a fonte: com ação extra e limite de uso, fica Acelerado pelos Ticks que rendem uma ação a mais, T = V × (V − 2) ÷ 2, com V a Velocidade do ataque mais usado (a Mordida, 6): 6 × 4 ÷ 2 = 12 Ticks. Em 12 Ticks ele faz 2 ações sem o Acelerado e 3 com ele, a ação extra do site. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena."
    },
    {
-    "nome": "Feitiços supremos",
-    "descricao": "lança feitiços de centelha altíssima, incluindo cura própria e efeitos em área"
-   },
-   {
-    "nome": "Presença divina",
-    "descricao": "falha no teste de Vontade = Abalado; falha por 5 ou mais = Paralisado de terror por 1 turno"
-   },
-   {
-    "nome": "Voo perfeito",
-    "descricao": "manobra máxima no ar, ignora qualquer obstáculo aéreo"
-   },
-   {
-    "nome": "Multiataque total",
-    "descricao": "garra, garra, mordida, cauda e golpe de asas no mesmo turno"
-   },
-   {
-    "nome": "Imune a fogo",
-    "descricao": "e resistente à maioria dos feitiços (exige sucesso duplo para afetá-lo)"
-   },
-   {
-    "nome": "Escamas lendárias",
-    "descricao": "Absorção +5d6 contra ataques físicos"
-   },
-   {
-    "nome": "Sentidos supremos",
-    "descricao": "ignora Furtividade e ilusões comuns; nada passa despercebido"
+    "nome": "Resistência a magia",
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +3 na Defesa Mental e nas resistências contra Artes (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
     "nome": "Vontade de wyrm",
-    "descricao": "nunca fica Abalado por efeitos de medo comuns; só presenças divinas o afetam"
-   }
-  ],
-  "poderes": [
-   {
-    "id": "sopro-cataclismico",
-    "nome": "Sopro cataclísmico",
-    "tipo": "natural",
-    "resiste": "esquiva",
-    "efeito": "Cone ou linha. Esquiva para metade.",
-    "base": {
-     "arte": "fogo",
-     "nivel": 5
-    },
-    "usos": {
-     "periodo": "ticks",
-     "quantidade": 1,
-     "recarga": "24 ticks"
-    }
+    "descricao": "efeito de medo comum não o deixa Abalado; só uma presença divina o afeta (site)."
    },
    {
-    "id": "presenca-divina",
-    "nome": "Presença divina",
-    "tipo": "natural",
-    "resiste": "mente",
-    "efeito": "Área; quem resiste fica imune na cena.",
-    "base": {
-     "arte": "morte",
-     "nivel": 5
-    },
-    "usos": {
-     "periodo": "cena",
-     "quantidade": 1
-    }
+    "nome": "Voo perfeito",
+    "descricao": "manobra no ar sem nenhum obstáculo (site)."
+   },
+   {
+    "nome": "Feitiços",
+    "descricao": "Artes do livro: Tempo até o 6, Proteção até o 6, Fogo até o 5, Fascinação até o 5, Adivinhação até o 5, com 30 de Mana. \"Feitiços supremos, incluindo cura própria\" (site): a cura própria não tem Arte de Cura na linha, e fica fora (perda anotada no relato)."
+   },
+   {
+    "nome": "lenda no céu",
+    "descricao": "abre com o sopro sobre o grupo inteiro, dobra o tempo quando aperta, protege-se com a Arte e só desce para morder quem ainda está de pé."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: vê sem luz. · faro: apurado. · sentidos supremos: ignora Furtividade e ilusões comuns; nada passa despercebido (sem regra ainda além da Prontidão (surpresa) +3)."
    }
   ],
+  "poderes": [],
   "locomocao": {
    "terra": 4,
    "voo": 20
@@ -24684,11 +24690,12 @@
     "nivel": 5
    }
   ],
+  "mana": 30,
   "notas": "Habilidades notáveis: Prontidão 6, Ocultismo 6, Persuasão 5, Conhecimentos 5. Centelha acima do teto mortal (entidade).",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Tão antigo que já não distingue mais súditos de brinquedos, o grande wyrm vermelho raramente se move: prefere que o mundo venha até ele, e pune com fogo e desdém qualquer intrusão em seu domínio milenar."
+    "texto": "Tão antigo que já não distingue mais súditos de brinquedos, o grande wyrm vermelho raramente se move: prefere que o mundo venha até ele, e pune com fogo e desdém qualquer intrusão em seu domínio milenar. Social: solitário."
    },
    {
     "titulo": "Ecologia",
@@ -24701,6 +24708,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Sábios sussurram que um grande wyrm vermelho guarda em sua Centelha ecos de eras anteriores à Grande Guerra, quase alcançando o patamar de semideus; para as igrejas supressoras, ele é o argumento final contra quem sonha reacender os poderes antigos."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Colossal no ar, Imenso pousado. 110 PV, Impacto 23, Corte e Perfuração 9. Esquiva 4, Bloqueio 4: fácil de acertar, difícil de ferir. Sopro de fogo em cone de 18 m (dano médio 61,5), que deixa Abalado até quem escapa, a cada 24 Ticks. Mordida, garras e asas de 28,5, cauda de 48,0; garras até três por ação. Uma vez por cena, fica Acelerado por 12 Ticks: uma ação a mais. Conjura Tempo e Proteção até o 6, com 30 de Mana. Defesa Mental 40, mais 3 contra Artes. Fogo não o fere."
    }
   ]
  },
@@ -27917,7 +27928,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": true,
-  "porte": "Pequeno",
+  "porte": "Grande",
   "dimensoes": {
    "medida": "4 m de comprimento, 0,38 m de altura",
    "peso": "66,2 kg"
@@ -28000,7 +28011,7 @@
   "habilidades": [
    {
     "nome": "exibição da gola",
-    "descricao": "ergue a gola, abre a boca, sopra e chia; com a gola aberta fica Grande (o segundo Alvo)."
+    "descricao": "ergue a gola, abre a boca, sopra e chia; com a gola aberta fica Grande, o Tamanho principal."
    },
    {
     "nome": "corrida bípede",
@@ -28042,7 +28053,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "- Pequeno contra um humano Médio: ele ganha +3 no acerto corpo a corpo, como o rato gigante. Com a gola aberta ele fica Grande, e o humano passa a ganhar +3. Força 3: não tira o Bloqueio de ninguém. - A mordida dá 6,5 de média; a chicotada, 4,5, mais rápida. Couraça nível 1 (escama fina num corpo de 66,2 kg): quanto ela tira da lâmina e da flecha fica para depois, e a maça perde ao menos 4 (o Vigor). 37 PV. - O mais provável é ele abrir a gola e chiar, e correr para a árvore se o grupo não recuar."
+    "texto": "- Grande de gola aberta, que é como ele luta: o humano Médio ganha +3 no acerto corpo a corpo. Com a gola fechada ele fica Pequeno, e passa a ser ele quem ganha +3, como o rato gigante. Força 3: não tira o Bloqueio de ninguém. - A mordida dá 6,5 de média; a chicotada, 4,5, mais rápida. Couraça nível 1 (escama fina num corpo de 66,2 kg): quanto ela tira da lâmina e da flecha fica para depois, e a maça perde ao menos 4 (o Vigor). 37 PV. - O mais provável é ele abrir a gola e chiar, e correr para a árvore se o grupo não recuar."
    }
   ]
  },
@@ -29509,7 +29520,7 @@
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Colossal",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Serpente-dragão sem asas de 24 m, senhor das geleiras e dos picos varridos pelo vento. Cospe uma geleia que endurece em gelo e prende quem atinge; as vítimas aparecem anos depois, inteiras dentro de blocos de gelo.",
   "tags": [
    "dragao",
    "centelha"
@@ -29517,10 +29528,10 @@
   "ameaca": 6,
   "centelha": 6,
   "pendente": true,
-  "porte": "Colossal",
+  "porte": "Enorme",
   "dimensoes": {
-   "medida": "24 m de comprimento",
-   "peso": "14.000 kg"
+   "medida": "24 m de comprimento, 1,11 m de altura",
+   "peso": "14,0 t"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -29534,7 +29545,7 @@
   "imagem": "bestiario/linnorm-do-gelo_criatura.webp",
   "semImagem": false,
   "atributos": {
-   "forca": 15,
+   "forca": 13,
    "destreza": 7,
    "vigor": 13,
    "influencia": 7,
@@ -29554,26 +29565,26 @@
   "vontade": 11,
   "aparencia": 9,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 3,
    "valor": 6
   },
   "combate": {
-   "pv": 110,
+   "pv": 105,
    "defesa": 22,
    "defesaSocial": 14,
    "defesaMental": 33,
    "absorcao": {
     "impacto": 19,
-    "corte": 22,
-    "perfuracao": 22
+    "corte": 6,
+    "perfuracao": 6
    },
-   "resistenciaPerfuracao": 3,
+   "resistenciaPerfuracao": 0,
    "fraquezas": [
     "fogo"
    ],
-   "resistencias": [
+   "imunidades": [
     "gelo"
    ],
    "iniciativa": "1d6 + 6",
@@ -29584,43 +29595,67 @@
    },
    "ataques": [
     {
-     "nome": "Garras e mordida",
-     "pool": "10d6 +10",
-     "dano": "4d6 +21 perfurante",
-     "perfArma": 0,
+     "nome": "Mordida",
+     "pool": "9d6 +10",
+     "dano": "1d6 +19 perfurante · perf. 3",
+     "perfArma": 3,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Garras",
+     "pool": "9d6 +10",
+     "dano": "1d6 +19 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Sopro gélido",
+     "pool": "8d6+2 +8",
+     "dano": "9d6 +6 gelo",
+     "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "distancia"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Sopro Gélido",
-    "descricao": "Expele um cone de geleia congelante que gruda na pele e, um round depois, endurece em blocos de gelo, prendendo quem foi atingido no lugar e causando dano gelado contínuo até se libertar."
+    "nome": "Sopro gélido",
+    "descricao": "poder natural (base Gelo 4, sugestão da ficha): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: o dano, instantâneo; o gelo, até o alvo se soltar. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: uma geleia congelante gruda e endurece em gelo: quem falha fica Imobilizado e leva 1d6 de gelo a cada 6 Ticks enquanto estiver preso; para se soltar, Força + Atletismo contra a jogada do sopro, uma tentativa por ação. Dano: 9d6 + Centelha, gelo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade e não fica preso. Limite de uso: uma vez a cada 24 Ticks."
    },
    {
-    "nome": "Maldição do Gelo",
-    "descricao": "Quem o mata é amaldiçoado com vulnerabilidade permanente ao frio."
+    "nome": "garras em sequência",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
    },
    {
-    "nome": "Liberdade de Movimento",
-    "descricao": "Nunca é imobilizado, agarrado ou paralisado, como se estivesse sempre livre para agir."
+    "nome": "Resistência a magia",
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes (site), como no dragão vermelho ancião. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Veneno Gélido",
-    "descricao": "A mordida injeta um frio venenoso que continua drenando o Vigor da vítima por vários rounds até duas curas seguidas."
+    "nome": "Liberdade de movimento",
+    "descricao": "nunca fica Imobilizado, Preso nem agarrado; solta-se de qualquer prisão como se ela não estivesse lá (site)."
    },
    {
     "nome": "Regeneração",
-    "descricao": "Cura feridas continuamente; apenas ferro frio interrompe essa recuperação."
+    "descricao": "fecha as feridas sem parar; só o ferimento de ferro frio não fecha (site). O vocabulário de Elementos não tem ferro frio, e o livro não tem regra de regeneração."
    },
    {
-    "nome": "Visão Verdadeira",
-    "descricao": "Enxerga através de ilusões e trevas sem esforço."
+    "nome": "Maldição da morte",
+    "descricao": "quem o mata fica vulnerável ao frio para sempre (site)."
    },
    {
-    "nome": "Imune ao Frio e Resistente a Magia",
-    "descricao": "O gelo não o afeta, feitiços hostis enfrentam grande resistência, e é imune a veneno, sono, paralisia e maldições comuns."
+    "nome": "Imune a veneno, sono, paralisia e maldições comuns",
+    "descricao": "nada disso o pega (site)."
+   },
+   {
+    "nome": "senhor das geleiras",
+    "descricao": "prende o grupo no gelo com o sopro, morde quem ficou preso e deixa o frio acabar o resto."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão verdadeira: enxerga através de ilusão, disfarce e escuridão (site; sem regra ainda). · visão no escuro: vê sem luz."
    }
   ],
   "poderes": [],
@@ -29645,6 +29680,18 @@
    {
     "titulo": "Prisão de Gelo",
     "texto": "Suas vítimas às vezes são encontradas anos depois, perfeitamente preservadas dentro de blocos de gelo que nunca derretem no lugar certo."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: solitário."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Peçonha de linnorm do gelo · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor do site."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Enorme. 105 PV, Impacto 19, Corte e Perfuração 6, Couraça 10. Esquiva 22, Bloqueio 14. Sopro gélido em cone de 12 m a cada 24 Ticks, que deixa Imobilizado no gelo. Mordida venenosa e garras até três por ação. Ninguém o prende, e as feridas fecham (sem regra ainda). +2 contra Artes. Gelo não o fere; fogo passa toda a Absorção."
    }
   ]
  },
@@ -29655,7 +29702,7 @@
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Colossal",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "O mais antigo e mortal dos linnorms, serpente-dragão de duas cabeças e 36 m dos lagos gelados. Cospe ácido, morde com as duas cabeças, prende com a cauda e fecha as próprias feridas; quem o mata nunca mais sara direito.",
   "tags": [
    "dragao",
    "centelha"
@@ -29663,10 +29710,10 @@
   "ameaca": 6,
   "centelha": 6,
   "pendente": true,
-  "porte": "Colossal",
+  "porte": "Enorme",
   "dimensoes": {
-   "medida": "cerca de 36 m de comprimento",
-   "peso": "cerca de 11.000 kg"
+   "medida": "36 m de comprimento, 0,8 m de altura",
+   "peso": "11,0 t"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -29681,7 +29728,7 @@
   "imagem": "bestiario/linnorm-dos-lagos_criatura.webp",
   "semImagem": false,
   "atributos": {
-   "forca": 16,
+   "forca": 13,
    "destreza": 8,
    "vigor": 14,
    "influencia": 8,
@@ -29701,22 +29748,25 @@
   "vontade": 11,
   "aparencia": 9,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 3,
    "valor": 6
   },
   "combate": {
-   "pv": 115,
+   "pv": 105,
    "defesa": 24,
    "defesaSocial": 16,
    "defesaMental": 36,
    "absorcao": {
     "impacto": 20,
-    "corte": 23,
-    "perfuracao": 23
+    "corte": 6,
+    "perfuracao": 6
    },
-   "resistenciaPerfuracao": 3,
+   "resistenciaPerfuracao": 0,
+   "imunidades": [
+    "acido"
+   ],
    "iniciativa": "1d6 + 9",
    "deslocamento": {
     "batalha": 4,
@@ -29725,52 +29775,95 @@
    },
    "ataques": [
     {
-     "nome": "Garras e mordida",
-     "pool": "10d6+2 +10",
-     "dano": "4d6 +22 perfurante",
-     "perfArma": 0,
+     "nome": "Mordida",
+     "pool": "9d6 +10",
+     "dano": "1d6 +19 perfurante · perf. 3",
+     "perfArma": 3,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Garras",
+     "pool": "9d6 +10",
+     "dano": "1d6 +19 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Cauda",
+     "pool": "9d6 +10",
+     "dano": "2d6 +32 impacto",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     },
     {
-     "nome": "Cauda",
-     "pool": "10d6+2 +10",
-     "dano": "2d6 +22 impacto",
+     "nome": "Sopro ácido",
+     "pool": "9d6+2 +10",
+     "dano": "9d6 +6 acido",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media",
-     "notas": "pode agarrar e constringir"
+     "speed": 7,
+     "classe": "distancia"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Duas Cabeças, Visão Total",
-    "descricao": "Com duas cabeças vigiando em todas as direções, não pode ser pego de surpresa nem cercado."
+    "nome": "Sopro ácido",
+    "descricao": "poder natural (base Água 4, sugestão da ficha, como o sopro ácido do dragão verde): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m ou cone de 12 m, à escolha (site: \"nuvem ou linha\"). Efeito: o ácido corrói tudo o que toca. Dano: 9d6 + Centelha, ácido. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks."
    },
    {
-    "nome": "Sopro Ácido",
-    "descricao": "Cospe uma nuvem ou linha de ácido corrosivo que queima tudo o que toca; a fumaça tóxica que sobe do ácido consumindo carne ainda corrói quem respira perto no round seguinte."
+    "nome": "fumaça do ácido",
+    "descricao": "a fumaça que sobe da carne corroída fere de novo quem respira perto logo depois do sopro (site)."
    },
    {
-    "nome": "Maldição da Morte",
-    "descricao": "Quem o mata é amaldiçoado a nunca mais ser curado por magia nem se recuperar descansando, definhando aos poucos pelo resto da vida."
+    "nome": "garras em sequência",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
    },
    {
-    "nome": "Liberdade de Movimento",
-    "descricao": "Jamais é imobilizado, agarrado ou paralisado."
+    "nome": "cauda em sequência",
+    "descricao": "Cauda: a Rajada: até dois golpes de Cauda na mesma ação, o teto da classe Pesada."
    },
    {
-    "nome": "Veneno Corrosivo",
-    "descricao": "A mordida injeta ácido que continua a queimar por dentro da vítima e corrói seu Vigor por vários rounds até duas curas seguidas."
+    "nome": "agarrar e constringir",
+    "descricao": "Cauda: o Agarrão, com a Especialidade natural Briga (Agarrão) +2. Pela massa (Faixa 5), soma +6 contra o humano (Faixa 3)."
    },
    {
-    "nome": "Anfíbio e Regenerativo",
-    "descricao": "Vive tanto na água quanto em terra e cura feridas continuamente, exceto as causadas por ferro frio."
+    "nome": "Duas cabeças",
+    "descricao": "as duas cabeças mordem na mesma ação, e com elas as garras e a cauda, no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada."
    },
    {
-    "nome": "Imune a Ácido e Resistente a Magia",
-    "descricao": "Seu próprio veneno não o machuca, feitiços hostis enfrentam grande resistência, e é imune a sono, paralisia, veneno e maldições comuns."
+    "nome": "Nunca cercado",
+    "descricao": "com as duas cabeças vigiando, não fica Flanqueado (site); a surpresa já está na Prontidão (surpresa) +3."
+   },
+   {
+    "nome": "Resistência a magia",
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes (site), como no dragão vermelho ancião. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "Liberdade de movimento",
+    "descricao": "nunca fica Imobilizado, Preso nem agarrado; solta-se de qualquer prisão como se ela não estivesse lá (site)."
+   },
+   {
+    "nome": "Regeneração",
+    "descricao": "fecha as feridas sem parar; só o ferimento de ferro frio não fecha (site). O vocabulário de Elementos não tem ferro frio, e o livro não tem regra de regeneração."
+   },
+   {
+    "nome": "Maldição da morte",
+    "descricao": "quem o mata nunca mais é curado por magia nem se recupera descansando, e definha aos poucos pelo resto da vida (site)."
+   },
+   {
+    "nome": "Imune a sono, paralisia, veneno e maldições comuns",
+    "descricao": "nada disso o pega (site)."
+   },
+   {
+    "nome": "fúria de duas cabeças",
+    "descricao": "emerge do lago gelado, cospe ácido sobre o barco, prende um com a cauda e morde com as duas cabeças quem ainda luta."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "duas cabeças: vigiam em todas as direções (site); Prontidão (surpresa) +3. · visão no escuro: vê sem luz."
    }
   ],
   "poderes": [],
@@ -29794,6 +29887,18 @@
    {
     "titulo": "Morte que Não Cura",
     "texto": "Sobreviventes que abateram este linorme carregam a maldição de nunca mais sarar direito, lembrete vivo do preço da vitória."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: solitário."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Peçonha de linnorm dos lagos · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor do site; o ácido que queima por dentro fica descrito, sem número (sem regra ainda)."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Enorme. 105 PV, Impacto 20, Corte e Perfuração 6, Couraça 11. Esquiva 24, Bloqueio 16. Sopro ácido em linha de 18 m ou cone de 12 m a cada 24 Ticks. Mordida venenosa, garras até três por ação, cauda que agarra. Não é surpreendido. Ninguém o prende, e as feridas fecham (sem regra ainda). +2 contra Artes. Ácido não o fere."
    }
   ]
  },
@@ -29804,7 +29909,7 @@
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Imenso",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "O menor dos linnorms, serpente-dragão sem asas de 18 m e sangue vulcânico. Cospe lava, morde com veneno que arde por dentro e fecha as próprias feridas; quem o mata carrega a maldição do fogo.",
   "tags": [
    "dragao",
    "centelha"
@@ -29812,10 +29917,10 @@
   "ameaca": 6,
   "centelha": 6,
   "pendente": true,
-  "porte": "Imenso",
+  "porte": "Enorme",
   "dimensoes": {
-   "medida": "18 m de comprimento",
-   "peso": "cerca de 5.400 kg"
+   "medida": "18 m de comprimento, 0,79 m de altura",
+   "peso": "5,4 t"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -29829,7 +29934,7 @@
   "imagem": "bestiario/linnorm-dos-penhascos_criatura.webp",
   "semImagem": false,
   "atributos": {
-   "forca": 13,
+   "forca": 11,
    "destreza": 5,
    "vigor": 11,
    "influencia": 6,
@@ -29849,22 +29954,25 @@
   "vontade": 11,
   "aparencia": 9,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 3,
    "valor": 6
   },
   "combate": {
-   "pv": 95,
+   "pv": 90,
    "defesa": 14,
    "defesaSocial": 12,
    "defesaMental": 32,
    "absorcao": {
     "impacto": 17,
-    "corte": 18,
-    "perfuracao": 18
+    "corte": 6,
+    "perfuracao": 6
    },
-   "resistenciaPerfuracao": 2,
+   "resistenciaPerfuracao": 0,
+   "imunidades": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 4,
@@ -29873,43 +29981,71 @@
    },
    "ataques": [
     {
-     "nome": "Garras e mordida",
-     "pool": "9d6 +10",
-     "dano": "3d6 +19 perfurante",
-     "perfArma": 0,
+     "nome": "Mordida",
+     "pool": "8d6 +10",
+     "dano": "1d6 +17 perfurante · perf. 3",
+     "perfArma": 3,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Garras",
+     "pool": "8d6 +10",
+     "dano": "1d6 +17 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Sopro de magma",
+     "pool": "7d6+2 +8",
+     "dano": "9d6 +6 fogo",
+     "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "distancia"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Sopro de Magma",
-    "descricao": "A cada poucos rounds, cospe uma linha de lava incandescente que queima tudo à frente; o rastro continua ardendo e fere de novo quem passar por cima no round seguinte."
+    "nome": "Sopro de magma",
+    "descricao": "poder natural (base Fogo 4, sugestão da ficha): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Efeito: a lava queima tudo na linha. Dano: 9d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site)."
    },
    {
-    "nome": "Maldição da Morte",
-    "descricao": "Quem finalmente o abate é amaldiçoado a arder por dentro, ganhando vulnerabilidade permanente a fogo."
+    "nome": "rastro de lava",
+    "descricao": "a linha do sopro continua ardendo e fere de novo quem passa por cima logo depois (site)."
    },
    {
-    "nome": "Liberdade de Movimento",
-    "descricao": "Nunca fica preso, agarrado ou paralisado, como se estivesse sob proteção constante contra restrições."
+    "nome": "garras em sequência",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
    },
    {
-    "nome": "Veneno na Mordida",
-    "descricao": "A mordida injeta uma toxina ígnea que continua a arder por dentro da vítima, causando dano contínuo de fogo e corroendo seu Vigor até duas curas seguidas."
+    "nome": "Resistência a magia",
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes (site), como no dragão vermelho ancião. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Regeneração Dracônica",
-    "descricao": "Fecha feridas rapidamente; somente ferro frio impede essa cura."
+    "nome": "Liberdade de movimento",
+    "descricao": "nunca fica Imobilizado, Preso nem agarrado; solta-se de qualquer prisão como se ela não estivesse lá (site)."
    },
    {
-    "nome": "Visão Verdadeira",
-    "descricao": "Enxerga através de ilusões, disfarces e trevas como se nada os escondesse."
+    "nome": "Regeneração",
+    "descricao": "fecha as feridas sem parar; só o ferimento de ferro frio não fecha (site). O vocabulário de Elementos não tem ferro frio, e o livro não tem regra de regeneração."
    },
    {
-    "nome": "Corpo Blindado e Resistente a Magia",
-    "descricao": "Escamas grossas absorvem grande parte do dano físico, feitiços hostis enfrentam grande resistência, e é imune a fogo, veneno, sono, paralisia e maldições comuns."
+    "nome": "Maldição da morte",
+    "descricao": "quem o mata passa a arder por dentro e fica vulnerável ao fogo para sempre (site)."
+   },
+   {
+    "nome": "Imune a veneno, sono, paralisia e maldições comuns",
+    "descricao": "nada disso o pega (site)."
+   },
+   {
+    "nome": "fera do norte",
+    "descricao": "cospe lava sobre quem se aproxima, desce sobre o mais forte com mordida e garras, e não recua: as feridas fecham sozinhas."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão verdadeira: enxerga através de ilusão, disfarce e escuridão (site; sem regra ainda). · visão no escuro: vê sem luz."
    }
   ],
   "poderes": [],
@@ -29933,6 +30069,18 @@
    {
     "titulo": "Maldição Viva",
     "texto": "Lendas dizem que quem mata um linorme carrega para sempre uma centelha de sua fúria ardente, lembrete do preço daquela morte."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: solitário."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Peçonha de linnorm dos penhascos · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor do site; o fogo que arde por dentro fica descrito, sem número (sem regra ainda)."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Enorme esticado, Grande enrolado. 90 PV, Impacto 17, Corte e Perfuração 6, Couraça 9. Esquiva 14, Bloqueio 10. Sopro de lava em linha de 18 m a cada 24 Ticks. Mordida venenosa e garras até três por ação. Ninguém o prende, e as feridas fecham (sem regra ainda). +2 contra Artes. Fogo não o fere."
    }
   ]
  },
@@ -30500,7 +30648,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": true,
-  "porte": "Grande",
+  "porte": "Médio",
   "dimensoes": {
    "medida": "3 m de comprimento, 1 m de altura",
    "peso": "15 kg"
@@ -30627,7 +30775,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Grande de asas abertas, Médio parado em espreita, que é como ele caça. A Força 4 tira o Bloqueio só de quem tem Força 0. Iniciativa 1d6 + 7, a mais alta do lote. O golpe faz 5,5 e agarra (8 por Tick). A cutícula é Couraça nível 1, e quanto ela tira do golpe fica para depois. 19 PV (Faixa 2 e Vigor 4), os de um corpo leve para o tamanho. O perigo é o golpe que sai do mato: Furtividade 2, mais 1 da camuflagem e mais 1 imóvel na folhagem."
+    "texto": "Médio parado em espreita, que é como ele caça e o Tamanho principal; Grande de asas abertas. A Força 4 tira o Bloqueio só de quem tem Força 0. Iniciativa 1d6 + 7, a mais alta do lote. O golpe faz 5,5 e agarra (8 por Tick). A cutícula é Couraça nível 1, e quanto ela tira do golpe fica para depois. 19 PV (Faixa 2 e Vigor 4), os de um corpo leve para o tamanho. O perigo é o golpe que sai do mato: Furtividade 2, mais 1 da camuflagem e mais 1 imóvel na folhagem."
    }
   ]
  },
@@ -34687,7 +34835,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": true,
-  "porte": "Grande",
+  "porte": "Médio",
   "dimensoes": {
    "medida": "6 m de comprimento, 0,34 m de altura",
    "peso": "320 kg"
@@ -34841,7 +34989,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Grande erguida, 54 PV, Impacto 11, Corte e Perfuração 5. Esquiva 10, Bloqueio 6, Defesa Mental 30. Mordida de dano médio 14,5 com veneno que tira o Vigor e abala; cuspe a 9 m (três vezes por cena); olhar que domina por uma cena. Conjura com 20 de Mana: Ilusão Plena, Bola de Fogo, Manto, Sarar."
+    "texto": "Média enroscada, Grande erguida, 54 PV, Impacto 11, Corte e Perfuração 5. Esquiva 10, Bloqueio 6, Defesa Mental 30. Mordida de dano médio 14,5 com veneno que tira o Vigor e abala; cuspe a 9 m (três vezes por cena); olhar que domina por uma cena. Conjura com 20 de Mana: Ilusão Plena, Bola de Fogo, Manto, Sarar."
    }
   ]
  },
@@ -35288,7 +35436,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "- Miúda (enrolada ou esticada) contra um humano Médio, ganha +6 no acerto corpo a corpo. Quem atira nela leva −6. O bote acerta quase sempre; o que decide é o veneno. - Erguida, a cabeça fica na altura do peito de um adulto: o bote não precisa mirar a perna. Isso é do Mestre. - O dano do bote é o dado mais a Força 1 (2,5); o veneno ignora a Absorção. O veneno entra se o bote fere: 1 de dano ou mais depois da Absorção, e o Nível do bote (N0) tem de passar o da armadura. - Contra outra serpente ela briga com +1 (Especialidade). Com 6 PV e 1 m por Tick (provisórios), não persegue: ameaça, e foge se pode."
+    "texto": "- Miúda (erguida, enrolada ou esticada) contra um humano Médio, ganha +6 no acerto corpo a corpo. Quem atira nela leva −6. O bote acerta quase sempre; o que decide é o veneno. - Erguida, a cabeça fica na altura do peito de um adulto: o bote não precisa mirar a perna. Isso é do Mestre. - O dano do bote é o dado mais a Força 1 (2,5); o veneno ignora a Absorção. O veneno entra se o bote fere: 1 de dano ou mais depois da Absorção, e o Nível do bote (N0) tem de passar o da armadura. - Contra outra serpente ela briga com +1 (Especialidade). Com 6 PV e 1 m por Tick (provisórios), não persegue: ameaça, e foge se pode."
    }
   ]
  },
@@ -35454,7 +35602,7 @@
   "imagem": "bestiario/neothelid_criatura.webp",
   "semImagem": false,
   "atributos": {
-   "forca": 12,
+   "forca": 11,
    "destreza": 1,
    "vigor": 10,
    "influencia": 6,
@@ -35499,8 +35647,8 @@
    "ataques": [
     {
      "nome": "Tentáculo",
-     "pool": "8d6+2 +10",
-     "dano": "2d6 +18 impacto",
+     "pool": "8d6 +10",
+     "dano": "2d6 +17 impacto",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
@@ -35579,7 +35727,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Enorme, 85 PV, Impacto 16, Corte e Perfuração 6. Esquiva e Bloqueio 2: fácil de acertar. Tentáculo de dano médio 25, até dois por ação; agarra (+2, e +6 pela massa) e engole. Sopro ácido em cone de 9 m (3d6 e mais dois ciclos de 1d6). Golpe mental de 3d6 três vezes por cena; uma vez por cena, deixa um alvo Inconsciente e Morrendo. Encanta, move coisas e se teleporta à vontade; levita. Defesa Mental 31, 33 contra Artes."
+    "texto": "Enorme, 85 PV, Impacto 16, Corte e Perfuração 6. Esquiva e Bloqueio 2: fácil de acertar. Tentáculo de dano médio 24, até dois por ação; agarra (+2, e +6 pela massa) e engole. Sopro ácido em cone de 9 m (3d6 e mais dois ciclos de 1d6). Golpe mental de 3d6 três vezes por cena; uma vez por cena, deixa um alvo Inconsciente e Morrendo. Encanta, move coisas e se teleporta à vontade; levita. Defesa Mental 31, 33 contra Artes."
    }
   ]
  },
@@ -37939,7 +38087,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": true,
-  "porte": "Miúdo",
+  "porte": "Médio",
   "dimensoes": {
    "medida": "0,82 m de comprimento, 0,13 m de altura",
    "peso": "2,2 kg"
@@ -38055,7 +38203,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Miúdo: +6 no acerto corpo a corpo contra um humano Médio; com os braços abertos, fica Médio e perde o bônus. Muito difícil de achar parado (Furtividade 4 e +3 natural na camuflagem). A mordida faz 2,5 em média; o que fica é a ferida que inflama por dias: a cefalotoxina, de Potência 8, pesa pelo Desgaste e não mata. Agarra e prende a mão (agarrão de 2, com a Briga (Agarrão) +2), mas não segura um adulto inteiro. Foge a jato e por fenda. 6 PV."
+    "texto": "Médio de braços abertos, que é como luta: nem ele nem o humano Médio ganham bônus de acerto. De braços juntos, parado, fica Miúdo, e ganharia +6 no corpo a corpo (+3 por categoria de diferença, só o menor ganha; são duas). Muito difícil de achar parado (Furtividade 4 e +3 natural na camuflagem). A mordida faz 2,5 em média; o que fica é a ferida que inflama por dias: a cefalotoxina, de Potência 8, pesa pelo Desgaste e não mata. Agarra e prende a mão (agarrão de 2, com a Briga (Agarrão) +2), mas não segura um adulto inteiro. Foge a jato e por fenda. 6 PV."
    }
   ]
  },
@@ -38073,7 +38221,7 @@
   "ameaca": 5,
   "centelha": 0,
   "pendente": true,
-  "porte": "Enorme",
+  "porte": "Imenso",
   "dimensoes": {
    "medida": "8,05 m de comprimento, 1,23 m de altura",
    "peso": "1.350,6 kg"
@@ -38200,7 +38348,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Enorme: o humano Médio acerta com +6 no corpo a corpo, e ele não ganha bônus; com os braços abertos fica Imenso, e o bônus de quem o ataca sobe a +9. A Força 7 tira o Bloqueio de quem tem Força 3 ou menos. Esconde-se muito bem (Furtividade 4 e +3 natural parado). Agarra e aperta a 14 por manutenção, e a mordida faz 8,5, com a ferida que inflama e infecciona, pelo Mestre. Arrasta para o fundo quem não se solta. 46 PV, Impacto 4, Couraça nível 0 (o valor do nível fica para depois). Nada a 4 m por Tick; fora d'água não anda."
+    "texto": "Imenso de braços abertos, que é como luta: o humano Médio acerta com +9 no corpo a corpo, e ele não ganha bônus; de braços juntos fica Enorme, e o bônus de quem o ataca cai a +6. A Força 7 tira o Bloqueio de quem tem Força 3 ou menos. Esconde-se muito bem (Furtividade 4 e +3 natural parado). Agarra e aperta a 14 por manutenção, e a mordida faz 8,5, com a ferida que inflama e infecciona, pelo Mestre. Arrasta para o fundo quem não se solta. 46 PV, Impacto 4, Couraça nível 0 (o valor do nível fica para depois). Nada a 4 m por Tick; fora d'água não anda."
    }
   ]
  },
@@ -38495,7 +38643,7 @@
   "categoria": "Dragão",
   "tipo": "soldado",
   "conceito": "dragão Minúsculo",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Primo pequeno dos dragões, do tamanho de um gato com asas. Tímido e brincalhão, fala pela mente e por ronronados, e segue de bom grado quem o trata como igual. Quando precisa, crava o ferrão da cauda, que faz dormir.",
   "tags": [
    "dragao",
    "centelha"
@@ -38503,9 +38651,9 @@
   "ameaca": 2,
   "centelha": 1,
   "pendente": true,
-  "porte": "Miúdo",
+  "porte": "Médio",
   "dimensoes": {
-   "medida": "corpo de cerca de 30 cm mais cauda de 60 cm",
+   "medida": "0,9 m de comprimento, 0,17 m de altura",
    "peso": "3,2 kg"
   },
   "ecologia": {
@@ -38535,25 +38683,25 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 4
+   "furtividade": 2
   },
   "vontade": 6,
   "aparencia": 8,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 3,
    "valor": 5
   },
   "combate": {
-   "pv": 18,
+   "pv": 6,
    "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -38564,9 +38712,25 @@
    },
    "ataques": [
     {
-     "nome": "Garras e mordida",
-     "pool": "2d6 +2",
-     "dano": "1d6 +2 perfurante",
+     "nome": "Mordida",
+     "pool": "3d6+2 +3",
+     "dano": "1d6 perfurante · perf. 0",
+     "perfArma": 0,
+     "speed": 5,
+     "classe": "leve"
+    },
+    {
+     "nome": "Garras",
+     "pool": "3d6+2 +3",
+     "dano": "1d6 corte",
+     "perfArma": null,
+     "speed": 5,
+     "classe": "leve"
+    },
+    {
+     "nome": "Ferrão",
+     "pool": "3d6+2 +3",
+     "dano": "1d6 perfurante · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -38575,24 +38739,32 @@
   },
   "habilidades": [
    {
-    "nome": "Sentidos de dragão em miniatura",
-    "descricao": "Enxerga no escuro, sente presença próxima mesmo sem ver e tem visão aguçada em pouca luz."
-   },
-   {
-    "nome": "Resistência a magia",
-    "descricao": "Feitiços comuns lançados contra ele muitas vezes simplesmente falham."
-   },
-   {
-    "nome": "Imune a paralisia e sono",
-    "descricao": "Nenhum efeito que paralise ou induza sono o afeta."
+    "nome": "garras em sequência",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Leve, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
    },
    {
     "nome": "Ferrão sonífero",
-    "descricao": "Seu ferrão injeta um veneno que faz a vítima adormecer por vários minutos, repetindo o efeito enquanto ela permanecer perto."
+    "descricao": "Ferrão: Ativação: o Ferrão que fere (1 de dano ou mais depois da Absorção). Duração: o sono, alguns minutos (site), ou até alguém sacudir o alvo. Alcance: o do corpo a corpo. Área: um alvo. Efeito: quem perde os dois pontos do pool do veneno (Veneno e doença) cai Inconsciente, dormindo, como no veneno do sono do drow. Dano: nenhum além do Ferrão. Resistência: corpo, Vigor + Resistência pela regra do veneno. Limite de uso: nenhum."
    },
    {
     "nome": "Telepatia",
-    "descricao": "Comunica-se diretamente com a mente de qualquer criatura inteligente próxima, sem precisar falar."
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 18 m, como a da couatl. Área: quem ele escolher ao alcance. Efeito: fala com qualquer criatura inteligente pela mente, sem língua em comum e sem abrir a boca. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "Resistência a magia",
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "Imune a paralisia e sono",
+    "descricao": "nenhum efeito que paralise ou faça dormir o pega (site)."
+   },
+   {
+    "nome": "tímido",
+    "descricao": "foge para o alto; encurralado, ou defendendo quem o trata como igual, crava o ferrão e espera o alvo dormir."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: vê sem luz (site). · visão na penumbra: enxerga com pouca luz (site). · sentido cego: sente presença próxima mesmo sem ver (site). · telepatia: sente e fala com as mentes a 18 m (Manobras)."
    }
   ],
   "poderes": [],
@@ -38611,6 +38783,18 @@
    {
     "titulo": "Amigo leal, nunca bicho de estimação",
     "texto": "Recusa ser tratado como animal domesticado, mas segue de bom grado quem o trata como igual, às vezes por uma vida inteira."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: solitário, ou ao lado de quem o trata como igual, às vezes pela vida inteira."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Veneno de pseudodragão · Potência 13 · 1 minuto (sangue) · a cada 1 minuto · pool 2 (sono) · Desgaste 1 · pelo Ferrão. Os números do veneno do sono do drow; não está em venenos.json."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio no ar, Miúdo pousado. 6 PV, Impacto 4, Corte e Perfuração 1. Esquiva 12, Bloqueio 8. Mordida, garras e Ferrão leves; o Ferrão faz dormir. Fala pela mente a 18 m. +2 contra Artes. Foge para o alto."
    }
   ]
  },
@@ -39032,13 +39216,13 @@
   "nomeIngles": "Quetzalcoatlus",
   "categoria": "Animal",
   "tipo": "fera",
-  "conceito": "animal Enorme",
+  "conceito": "animal Grande",
   "descricao": "Pterossauro do tamanho de uma girafa, que anda pela planície como uma cegonha e pega presa pequena no chão. Voa pouco, mas pode cruzar longas distâncias.",
   "tags": [],
   "ameaca": 3,
   "centelha": 0,
   "pendente": true,
-  "porte": "Enorme",
+  "porte": "Grande",
   "dimensoes": {
    "medida": "5 m de comprimento, 5 m de altura",
    "peso": "245 kg"
@@ -43070,7 +43254,7 @@
   "categoria": "Dragão",
   "tipo": "chefe",
   "conceito": "dragão Enorme",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Tartaruga-dragão de casco lendário que reivindica vastos territórios de mar. Chega sem ruído por baixo dos navios, sopra vapor fervente sobre o convés e vira o barco de quem não pagou tributo; no covil, guarda a carga de todos os navios que afundou.",
   "tags": [
    "dragao",
    "centelha"
@@ -43080,8 +43264,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "9 metros de comprimento",
-   "peso": "4 t"
+   "medida": "9 m de comprimento, 0,93 m de altura",
+   "peso": "4,0 t"
   },
   "ecologia": {
    "tipo": "Dragon",
@@ -43111,13 +43295,13 @@
    "esquiva": 0,
    "integridade": 3,
    "sociabilidade": 0,
-   "furtividade": 0
+   "furtividade": 1
   },
   "vontade": 10,
   "aparencia": 9,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 3,
    "valor": 6
   },
@@ -43128,10 +43312,13 @@
    "defesaMental": 22,
    "absorcao": {
     "impacto": 12,
-    "corte": 12,
-    "perfuracao": 12
+    "corte": 5,
+    "perfuracao": 5
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
+   "imunidades": [
+    "fogo"
+   ],
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 2,
@@ -43140,35 +43327,59 @@
    },
    "ataques": [
     {
-     "nome": "Garras e mordida",
+     "nome": "Mordida",
      "pool": "7d6+2 +10",
-     "dano": "3d6 +15 perfurante",
-     "perfArma": 0,
+     "dano": "1d6 +15 perfurante · perf. 2",
+     "perfArma": 2,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Garras",
+     "pool": "7d6+2 +10",
+     "dano": "1d6 +15 corte",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Sopro de vapor",
+     "pool": "5d6 +6",
+     "dano": "6d6 +5 fogo",
+     "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "distancia"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Sopro de vapor escaldante",
-    "descricao": "Expele uma nuvem de vapor fervente sobre uma área considerável, tanto na superfície quanto debaixo d'água; quem é atingido sofre queimaduras graves, reduzidas à metade com um teste de Vigor bem-sucedido. Não pode repetir o sopro em sequência, precisando de uma pausa antes de usá-lo de novo."
+    "descricao": "poder natural (base Fogo 3, sugestão da ficha): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m, na superfície ou debaixo d'água (site). Efeito: o vapor fervente queima quem está na nuvem. Dano: 6d6 + Centelha, fogo. Resistência: corpo, contra a jogada do sopro (site: \"teste de Vigor\"); quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site)."
    },
    {
-    "nome": "Imune a fogo e a efeitos que dominam a mente",
-    "descricao": "Não sofre dano de fogo e não pode ser posta para dormir ou paralisada."
+    "nome": "garras em sequência",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
+   },
+   {
+    "nome": "Multiataque",
+    "descricao": "a boca e as duas garras dianteiras no mesmo turno, mesmo submersa (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada."
    },
    {
     "nome": "Afunda embarcações",
-    "descricao": "Pode investir contra um barco ou navio para virá-lo, arrastando tripulação e carga para o fundo."
+    "descricao": "investe contra um barco ou navio para virá-lo, e leva tripulação e carga para o fundo (site)."
    },
    {
-    "nome": "Mordida e garras poderosas",
-    "descricao": "Ataca com a boca e as duas garras dianteiras, mesmo submersa."
+    "nome": "Firme contra o sono, a paralisia e o domínio da mente",
+    "descricao": "não pode ser posta para dormir nem paralisada, e efeito que domina a mente não a pega (site: \"Imune a fogo e a efeitos que dominam a mente\"; o fogo está nos Elementos)."
    },
    {
-    "nome": "Furtividade aquática",
-    "descricao": "Move-se pela água quase sem ruído, surpreendendo embarcações antes que percebam o perigo."
+    "nome": "senhora dos mares",
+    "descricao": "chega por baixo sem ruído, sopra vapor sobre o convés, vira o barco e morde quem cai na água."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão: enxerga debaixo d'água."
    }
   ],
   "poderes": [],
@@ -43191,6 +43402,14 @@
    {
     "titulo": "Carapaça lendária",
     "texto": "O casco varia de marrom ferrugem a verde-azulado com reflexos prateados, e a cabeça e a cauda mostram estrias douradas."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: solitária; reivindica territórios de mar."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Enorme. 70 PV, Impacto 12, Corte e Perfuração 5, Couraça 8. Esquiva 4, Bloqueio 4: fácil de acertar, difícil de ferir. Sopro de vapor em cone de 9 m a cada 24 Ticks, na superfície ou submersa. Mordida e garras; garras até três por ação. Vira barcos (sem regra ainda). Fogo não a fere."
    }
   ]
  },
@@ -47039,7 +47258,7 @@
   "categoria": "Dragão",
   "tipo": "elite",
   "conceito": "dragão Grande",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Dragão menor de duas patas e asas de couro, caçador territorial das montanhas. Mergulha do alto sobre o gado e o viajante isolado, crava o ferrão venenoso da cauda e espera o veneno agir. Orcs e goblins às vezes o domam como montaria de guerra.",
   "tags": [
    "dragao",
    "centelha"
@@ -47047,9 +47266,9 @@
   "ameaca": 4,
   "centelha": 3,
   "pendente": true,
-  "porte": "Grande",
+  "porte": "Enorme",
   "dimensoes": {
-   "medida": "5,5 m da cabeça à ponta da cauda, envergadura 6 m",
+   "medida": "5,5 m de comprimento, 1,5 m de altura",
    "peso": "250 kg"
   },
   "ecologia": {
@@ -47075,7 +47294,7 @@
    "raciocinio": 2
   },
   "pericias": {
-   "prontidao": 1,
+   "prontidao": 2,
    "esquiva": 1,
    "integridade": 3,
    "sociabilidade": 0,
@@ -47084,23 +47303,23 @@
   "vontade": 8,
   "aparencia": 8,
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 5,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 3,
    "valor": 5
   },
   "combate": {
-   "pv": 54,
+   "pv": 43,
    "defesa": 10,
    "defesaSocial": 6,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
+   "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 2,
     "arranque": 3,
@@ -47108,52 +47327,70 @@
    },
    "ataques": [
     {
-     "nome": "Garras e mordida",
+     "nome": "Mordida",
      "pool": "5d6+2 +6",
-     "dano": "2d6 +9 perfurante",
-     "perfArma": 0,
+     "dano": "1d6 +9 perfurante · perf. 1",
+     "perfArma": 1,
      "speed": 6,
      "classe": "media"
+    },
+    {
+     "nome": "Garras",
+     "pool": "5d6+2 +7",
+     "dano": "1d6 +7 corte",
+     "perfArma": null,
+     "speed": 5,
+     "classe": "leve"
+    },
+    {
+     "nome": "Garras em mergulho",
+     "pool": "5d6+2 +6",
+     "dano": "2d6 +15 corte",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "pesada"
+    },
+    {
+     "nome": "Ferrão",
+     "pool": "5d6+2 +7",
+     "dano": "1d6 +7 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 5,
+     "classe": "leve"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Voo veloz",
-    "descricao": "domina o ar, ataca em mergulho"
+    "nome": "garras em sequência",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Leve, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
+   },
+   {
+    "nome": "agarrar",
+    "descricao": "Garras: o Agarrão. Pela massa (Faixa 4), soma +3 contra o humano (Faixa 3)."
+   },
+   {
+    "nome": "voar com a presa",
+    "descricao": "agarra alvo pequeno com as patas e o leva no ar (site)."
    },
    {
     "nome": "Ferrão venenoso",
-    "descricao": "ataque de cauda; falha em Resistência causa veneno debilitante (penalidade cumulativa por rodada)"
+    "descricao": "Ferrão: Ativação: o Ferrão que fere (1 de dano ou mais depois da Absorção). Duração: a do veneno. Alcance: o do corpo a corpo. Área: um alvo. Efeito: inocula a Peçonha de wyvern (Veneno e doença). Dano: o do Ferrão. Resistência: corpo, pelo veneno. Limite de uso: três vezes por cena; recarrega em 1 hora (site)."
    },
    {
-    "nome": "Investida em mergulho",
-    "descricao": "dano extra ao atacar descendo em voo"
+    "nome": "Voo em mergulho",
+    "descricao": "Ativação: descer de pelo menos 6 m de altura direto sobre o alvo. Duração: instantânea. Alcance: o do voo. Área: um alvo. Efeito: +2 na Iniciativa do mergulho e o golpe sai com as Garras em mergulho. Dano: o das Garras em mergulho. Resistência: nenhum. Limite de uso: um mergulho a cada vez que sobe de novo a 6 m. Os números do Voo em mergulho do branco jovem."
    },
    {
-    "nome": "Garras que prendem",
-    "descricao": "agarra alvos pequenos e os carrega no ar"
+    "nome": "caçador do alto",
+    "descricao": "vem do alto em mergulho sobre o alvo isolado, crava o ferrão e sobe; volta quando a presa já está fraca do veneno."
    },
    {
-    "nome": "Predador alado",
-    "descricao": "Prontidão 2, Furtividade 1; ataca de surpresa vindo do alto"
+    "nome": "Sentidos",
+    "descricao": "visão: a de caçador do alto, que acha a presa isolada de longe (Prontidão 2, site)."
    }
   ],
-  "poderes": [
-   {
-    "id": "ferrao-venenoso",
-    "nome": "Ferrão venenoso",
-    "tipo": "natural",
-    "resiste": "corpo",
-    "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-    "ataque": "Garras e mordida",
-    "usos": {
-     "periodo": "cena",
-     "quantidade": 3,
-     "recarga": "1 hora"
-    }
-   }
-  ],
+  "poderes": [],
   "locomocao": {
    "voo": 6,
    "terra": 2
@@ -47164,7 +47401,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Caçador aéreo territorial, ataca em mergulho e finaliza a presa com o ferrão da cauda, que carrega um veneno lento e cruel. Prefere gado, cavalos e alvos isolados a combate direto com grupos armados."
+    "texto": "Caçador aéreo territorial, ataca em mergulho e finaliza a presa com o ferrão da cauda, que carrega um veneno lento e cruel. Prefere gado, cavalos e alvos isolados a combate direto com grupos armados. Social: solitário; faz ninho em falésias e torres abandonadas."
    },
    {
     "titulo": "Ecologia",
@@ -47177,6 +47414,18 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "É contado entre os dragões, e como todo dragão carrega o peso da Supressão: aldeias inteiras erguem sinos de alarme e recompensas quando um se instala por perto, lembrando que o mundo antigo era mais selvagem e mais mágico do que o de hoje."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Peçonha de wyvern · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pelo Ferrão. Os números do \"Ferrão de gigante\" dos moldes (escorpião-gigante, formiga-gigante), com a Força do debilitante, como na peçonha de drider."
+   },
+   {
+    "titulo": "Aptidões",
+    "texto": "montaria sim (de quem o doma, com carne farta; site) · carga não · tração não"
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Enorme no ar, Grande pousado. 43 PV, Impacto 9, Corte e Perfuração 3. Esquiva 10, Bloqueio 6. Mergulha com as Garras em mergulho; crava o Ferrão, que inocula um veneno que tira Força, três vezes por cena. Agarra e leva no ar o alvo pequeno. Voa 6 m por Tick e anda mal em terra."
    }
   ]
  },
