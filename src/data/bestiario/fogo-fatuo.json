@@ -7,7 +7,7 @@
   "categoria": "Aberração",
   "categoriaLegada": "Aberração",
   "papel": "elite",
-  "conceito": "aberração Pequeno",
+  "conceito": "aberração Miúdo",
   "descricao": "Luz que paira sobre pântanos e charcos imitando uma fogueira distante ou uma lanterna amiga. Leva o viajante perdido para longe da segurança, saboreia o pânico de quem ainda acredita estar sendo salvo e o fere com um toque elétrico. Some de vista quando quer.",
   "tags": [
     "aberracao",
@@ -70,8 +70,8 @@
     }
   ],
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 2,
+    "compaixao": 1,
+    "conviccao": 3,
     "temperanca": 2,
     "valor": 3
   },

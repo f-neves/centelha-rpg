@@ -7,7 +7,7 @@
   "categoria": "Dragão",
   "categoriaLegada": "Dragão",
   "papel": "chefe",
-  "conceito": "dragão Grande",
+  "conceito": "dragão Enorme",
   "descricao": "Dragão vermelho jovem de 4,9 m, ainda longe do tamanho adulto. Mergulha do alto, sopra fogo em cone de 9 m e faz inimigos comuns hesitarem só com a presença.",
   "tags": [
     "dragao",
@@ -72,8 +72,8 @@
     }
   ],
   "virtues": {
-    "compaixao": 3,
-    "conviccao": 3,
+    "compaixao": 2,
+    "conviccao": 5,
     "temperanca": 3,
     "valor": 6
   },

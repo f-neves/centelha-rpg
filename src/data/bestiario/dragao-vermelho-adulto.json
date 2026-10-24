@@ -7,7 +7,7 @@
   "categoria": "Dragão",
   "categoriaLegada": "Dragão",
   "papel": "chefe",
-  "conceito": "dragão Enorme",
+  "conceito": "dragão Imenso",
   "descricao": "Dragão vermelho adulto de 9 m, feiticeiro alado temível. Sopra fogo em cone de 12 m, queima quem o toca com a aura das escamas e conjura encantos, ilusões e barreiras. Orgulhoso e ganancioso.",
   "tags": [
     "dragao",
@@ -77,8 +77,8 @@
     }
   ],
   "virtues": {
-    "compaixao": 3,
-    "conviccao": 3,
+    "compaixao": 2,
+    "conviccao": 5,
     "temperanca": 3,
     "valor": 6
   },

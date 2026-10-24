@@ -178,9 +178,9 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
                 <span class="tr"><span class="tr-nm">Vontade</span><span class="tr-v">{i.vontade}</span></span>
                 <span class="tr"><span class="tr-nm">Aparência</span><span class="tr-v">{i.aparencia} <small class="tr-mod">({apMod(i.aparencia) >= 0 ? '+' : ''}{apMod(i.aparencia)})</small></span></span>
               </div>
-              <div class="tr-virt" title="Virtudes: Compaixão · Convicção · Temperança · Valor">
+              <div class="tr-virt" title="Virtudes: Compaixão · Convicção · Temperança · Bravura">
                 <span class="tr-nm">Virtudes</span>
-                <span class="tr-vv">Comp {i.virtudes.compaixao} · Conv {i.virtudes.conviccao} · Temp {i.virtudes.temperanca} · Val {i.virtudes.valor}</span>
+                <span class="tr-vv">Comp {i.virtudes.compaixao} · Conv {i.virtudes.conviccao} · Temp {i.virtudes.temperanca} · Brav {i.virtudes.valor}</span>
               </div>
             </div>
           )}

@@ -7,7 +7,7 @@
   "categoria": "Humanoide monstruoso",
   "categoriaLegada": "Monstro",
   "papel": "soldado",
-  "conceito": "humanoide monstruoso Médio",
+  "conceito": "humanoide monstruoso Grande",
   "descricao": "Guardiã alada de pedra viva que passa dias imóvel como estátua em templos e ruínas, e desperta em silêncio para cair do alto sobre quem profanou o lugar. Não come, não dorme e não respira.",
   "tags": [
     "monstro",
@@ -71,8 +71,8 @@
     }
   ],
   "virtues": {
-    "compaixao": 3,
-    "conviccao": 3,
+    "compaixao": 1,
+    "conviccao": 4,
     "temperanca": 3,
     "valor": 3
   },

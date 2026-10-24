@@ -7,7 +7,7 @@
   "categoria": "Aberração",
   "categoriaLegada": "Aberração",
   "papel": "chefe",
-  "conceito": "aberração Grande",
+  "conceito": "aberração Médio",
   "descricao": "Serpente de escamas negras e brilhantes que desliza por ruínas atrás de tesouros e joias mórbidas. Lê os pensamentos de quem está perto, manipula com mentiras quem não consegue subjugar e destrói com veneno e raios quem resiste.",
   "tags": [
     "aberracao",
@@ -75,7 +75,7 @@
   ],
   "virtues": {
     "compaixao": 1,
-    "conviccao": 1,
+    "conviccao": 3,
     "temperanca": 1,
     "valor": 4
   },

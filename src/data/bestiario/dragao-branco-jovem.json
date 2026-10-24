@@ -7,7 +7,7 @@
   "categoria": "Dragão",
   "categoriaLegada": "Dragão",
   "papel": "elite",
-  "conceito": "dragão Grande",
+  "conceito": "dragão Enorme",
   "descricao": "Predador alado das montanhas geladas: sopra frio de cima, desce para morder e some na neve. Orgulhoso e ganancioso, mais fera que os outros dragões.",
   "tags": [
     "dragao",
@@ -73,8 +73,8 @@
     }
   ],
   "virtues": {
-    "compaixao": 3,
-    "conviccao": 3,
+    "compaixao": 2,
+    "conviccao": 5,
     "temperanca": 3,
     "valor": 5
   },

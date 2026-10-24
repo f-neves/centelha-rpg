@@ -7,7 +7,7 @@
   "categoria": "Dragão",
   "categoriaLegada": "Dragão",
   "papel": "chefe",
-  "conceito": "dragão Enorme",
+  "conceito": "dragão Imenso",
   "descricao": "Dragão azul adulto de 9,5 m, ilusionista do deserto. Espera enterrado na areia, emerge com um relâmpago em linha de 18 m e esconde onde está com miragens.",
   "tags": [
     "dragao",
@@ -77,8 +77,8 @@
     }
   ],
   "virtues": {
-    "compaixao": 3,
-    "conviccao": 3,
+    "compaixao": 2,
+    "conviccao": 5,
     "temperanca": 3,
     "valor": 6
   },

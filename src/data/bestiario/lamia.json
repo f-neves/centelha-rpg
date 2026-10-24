@@ -7,7 +7,7 @@
   "categoria": "Humanoide monstruoso",
   "categoriaLegada": "Monstro",
   "papel": "elite",
-  "conceito": "humanoide monstruoso Grande",
+  "conceito": "humanoide monstruoso Médio",
   "descricao": "Torso de mulher sobre corpo de leão, que vive em ruínas e oásis enganosos no limite do deserto. Seduz viajantes com ilusões de beleza e drena pelo toque a sabedoria e a vontade de quem cai no encanto.",
   "tags": [
     "monstro",
@@ -78,8 +78,8 @@
     }
   ],
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 2,
+    "compaixao": 1,
+    "conviccao": 3,
     "temperanca": 2,
     "valor": 3
   },

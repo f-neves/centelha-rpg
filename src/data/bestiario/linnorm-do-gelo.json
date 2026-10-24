@@ -7,7 +7,7 @@
   "categoria": "Dragão",
   "categoriaLegada": "Dragão",
   "papel": "chefe",
-  "conceito": "dragão Colossal",
+  "conceito": "dragão Enorme",
   "descricao": "Serpente-dragão sem asas de 24 m, senhor das geleiras e dos picos varridos pelo vento. Cospe uma geleia que endurece em gelo e prende quem atinge; as vítimas aparecem anos depois, inteiras dentro de blocos de gelo.",
   "tags": [
     "dragao",
@@ -59,8 +59,8 @@
     "musculatura": 4
   },
   "virtues": {
-    "compaixao": 3,
-    "conviccao": 3,
+    "compaixao": 2,
+    "conviccao": 5,
     "temperanca": 3,
     "valor": 6
   },

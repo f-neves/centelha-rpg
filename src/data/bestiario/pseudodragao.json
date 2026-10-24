@@ -7,7 +7,7 @@
   "categoria": "Dragão",
   "categoriaLegada": "Dragão",
   "papel": "soldado",
-  "conceito": "dragão Minúsculo",
+  "conceito": "dragão Médio",
   "descricao": "Primo pequeno dos dragões, do tamanho de um gato com asas. Tímido e brincalhão, fala pela mente e por ronronados, e segue de bom grado quem o trata como igual. Quando precisa, crava o ferrão da cauda, que faz dormir.",
   "tags": [
     "dragao",
@@ -65,8 +65,8 @@
     }
   ],
   "virtues": {
-    "compaixao": 3,
-    "conviccao": 3,
+    "compaixao": 2,
+    "conviccao": 5,
     "temperanca": 3,
     "valor": 5
   },

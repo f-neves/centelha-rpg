@@ -7,7 +7,7 @@
   "categoria": "Aberração",
   "categoriaLegada": "Aberração",
   "papel": "chefe",
-  "conceito": "aberração Grande",
+  "conceito": "aberração Médio",
   "descricao": "Serpente longeva e arrogante que se enrosca sobre tesouros em templos afundados e ruínas de civilizações que ela viu cair. Encanta com o olhar, cospe veneno e conjura fogo e ilusões antes mesmo de pensar em negociar.",
   "tags": [
     "aberracao",
@@ -82,8 +82,8 @@
     }
   ],
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 2,
+    "compaixao": 1,
+    "conviccao": 3,
     "temperanca": 2,
     "valor": 4
   },

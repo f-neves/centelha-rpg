@@ -7,7 +7,7 @@
   "categoria": "Dragão",
   "categoriaLegada": "Dragão",
   "papel": "elite",
-  "conceito": "dragão Médio",
+  "conceito": "dragão Enorme",
   "descricao": "Dragão menor nascido de dragões negros e basiliscos, de patas curtas e voo pesado. Sopra uma linha de ácido de longe e transforma em pedra com o olhar quem chega perto.",
   "tags": [
     "dragao",
@@ -57,8 +57,8 @@
     "musculatura": 2
   },
   "virtues": {
-    "compaixao": 3,
-    "conviccao": 3,
+    "compaixao": 2,
+    "conviccao": 5,
     "temperanca": 3,
     "valor": 5
   },

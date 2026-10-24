@@ -22,8 +22,8 @@
    "raciocinio": 4
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 4,
    "temperanca": 3,
    "valor": 4
   },
@@ -108,8 +108,8 @@
    "raciocinio": 5
   },
   "virtudes": {
-   "compaixao": 4,
-   "conviccao": 4,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 4,
    "valor": 3
   },
@@ -1074,7 +1074,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -1176,7 +1176,7 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 3,
+   "compaixao": 1,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 3
@@ -1652,7 +1652,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 2
   },
@@ -2604,8 +2604,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -2780,7 +2780,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -2952,7 +2952,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 4,
    "temperanca": 2,
    "valor": 4
   },
@@ -3130,7 +3130,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 4
   },
@@ -3223,8 +3223,8 @@
    "raciocinio": 3
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -3390,8 +3390,8 @@
    "raciocinio": 3
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -3473,7 +3473,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -3727,7 +3727,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 4,
    "temperanca": 2,
    "valor": 4
   },
@@ -3845,8 +3845,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 4,
    "temperanca": 2,
    "valor": 4
   },
@@ -3953,7 +3953,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 1
   },
@@ -4453,8 +4453,8 @@
    "raciocinio": 4
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -4542,7 +4542,7 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 3,
+   "compaixao": 2,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 3
@@ -4995,7 +4995,7 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 3,
+   "compaixao": 2,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 4
@@ -5196,7 +5196,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -5376,8 +5376,8 @@
    "raciocinio": 3
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -5727,7 +5727,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 4
   },
@@ -6005,8 +6005,8 @@
    "raciocinio": 5
   },
   "virtudes": {
-   "compaixao": 4,
-   "conviccao": 4,
+   "compaixao": 5,
+   "conviccao": 5,
    "temperanca": 4,
    "valor": 5
   },
@@ -6355,8 +6355,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 4,
    "temperanca": 2,
    "valor": 3
   },
@@ -6622,7 +6622,7 @@
   },
   "virtudes": {
    "compaixao": 1,
-   "conviccao": 1,
+   "conviccao": 3,
    "temperanca": 1,
    "valor": 3
   },
@@ -6702,8 +6702,8 @@
    "raciocinio": 5
   },
   "virtudes": {
-   "compaixao": 4,
-   "conviccao": 4,
+   "compaixao": 5,
+   "conviccao": 5,
    "temperanca": 4,
    "valor": 5
   },
@@ -6786,8 +6786,8 @@
    "raciocinio": 3
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 4
   },
@@ -7665,7 +7665,7 @@
    "raciocinio": 4
   },
   "virtudes": {
-   "compaixao": 3,
+   "compaixao": 2,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 2
@@ -7746,8 +7746,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 5,
    "temperanca": 3,
    "valor": 5
   },
@@ -7847,8 +7847,8 @@
    "raciocinio": 5
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 5,
    "temperanca": 3,
    "valor": 6
   },
@@ -7969,8 +7969,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 5,
    "temperanca": 3,
    "valor": 5
   },
@@ -8082,8 +8082,8 @@
    "raciocinio": 7
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 4,
+   "conviccao": 5,
    "temperanca": 3,
    "valor": 6
   },
@@ -8201,8 +8201,8 @@
    "raciocinio": 5
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 5,
    "temperanca": 3,
    "valor": 6
   },
@@ -8312,8 +8312,8 @@
    "raciocinio": 5
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 5,
    "temperanca": 3,
    "valor": 6
   },
@@ -8442,8 +8442,8 @@
    "raciocinio": 6
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 5,
    "temperanca": 3,
    "valor": 6
   },
@@ -8573,8 +8573,8 @@
    "raciocinio": 3
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 5,
    "temperanca": 3,
    "valor": 6
   },
@@ -9041,8 +9041,8 @@
    "raciocinio": 5
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -9122,8 +9122,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -9204,7 +9204,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 4,
    "temperanca": 2,
    "valor": 3
   },
@@ -9318,8 +9318,8 @@
    "raciocinio": 3
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -10006,7 +10006,7 @@
   },
   "virtudes": {
    "compaixao": 1,
-   "conviccao": 1,
+   "conviccao": 3,
    "temperanca": 1,
    "valor": 3
   },
@@ -11123,8 +11123,8 @@
    "raciocinio": 4
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 4,
    "temperanca": 2,
    "valor": 3
   },
@@ -11214,7 +11214,7 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 3,
+   "compaixao": 2,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 3
@@ -11466,8 +11466,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -11548,8 +11548,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -11903,7 +11903,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -12070,8 +12070,8 @@
    "raciocinio": 4
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 5,
    "temperanca": 3,
    "valor": 5
   },
@@ -12180,8 +12180,8 @@
    "raciocinio": 5
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -12354,8 +12354,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 4
   },
@@ -12532,8 +12532,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 1,
+   "conviccao": 4,
    "temperanca": 3,
    "valor": 3
   },
@@ -13099,7 +13099,7 @@
   },
   "virtudes": {
    "compaixao": 1,
-   "conviccao": 1,
+   "conviccao": 3,
    "temperanca": 1,
    "valor": 4
   },
@@ -13896,7 +13896,7 @@
   },
   "virtudes": {
    "compaixao": 1,
-   "conviccao": 1,
+   "conviccao": 3,
    "temperanca": 1,
    "valor": 3
   },
@@ -13987,7 +13987,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 2
   },
@@ -14768,8 +14768,8 @@
    "raciocinio": 7
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 5,
    "temperanca": 3,
    "valor": 6
   },
@@ -15006,7 +15006,7 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 3,
+   "compaixao": 2,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 3
@@ -15189,8 +15189,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -15273,7 +15273,7 @@
   },
   "virtudes": {
    "compaixao": 1,
-   "conviccao": 1,
+   "conviccao": 4,
    "temperanca": 1,
    "valor": 6
   },
@@ -15697,7 +15697,7 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 3,
+   "compaixao": 2,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 3
@@ -15779,7 +15779,7 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 3,
+   "compaixao": 1,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 3
@@ -15870,7 +15870,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -16053,7 +16053,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 4,
    "temperanca": 2,
    "valor": 4
   },
@@ -16392,7 +16392,7 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 3,
+   "compaixao": 2,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 2
@@ -16646,7 +16646,7 @@
    "raciocinio": 4
   },
   "virtudes": {
-   "compaixao": 3,
+   "compaixao": 1,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 4
@@ -16911,8 +16911,8 @@
    "raciocinio": 5
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -17532,8 +17532,8 @@
    "raciocinio": 5
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 4,
    "temperanca": 2,
    "valor": 4
   },
@@ -17816,8 +17816,8 @@
    "raciocinio": 3
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 5,
    "temperanca": 3,
    "valor": 6
   },
@@ -17919,8 +17919,8 @@
    "raciocinio": 5
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 5,
    "temperanca": 3,
    "valor": 6
   },
@@ -18028,8 +18028,8 @@
    "raciocinio": 3
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 5,
    "temperanca": 3,
    "valor": 6
   },
@@ -18128,8 +18128,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 1,
-   "conviccao": 1,
+   "compaixao": 2,
+   "conviccao": 3,
    "temperanca": 1,
    "valor": 4
   },
@@ -18919,7 +18919,7 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 3,
+   "compaixao": 1,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 4
@@ -19555,7 +19555,7 @@
    "raciocinio": 3
   },
   "virtudes": {
-   "compaixao": 3,
+   "compaixao": 2,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 3
@@ -19737,7 +19737,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 4,
    "temperanca": 2,
    "valor": 2
   },
@@ -19834,7 +19834,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -19923,8 +19923,8 @@
    "raciocinio": 3
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -20013,8 +20013,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 1,
-   "conviccao": 1,
+   "compaixao": 2,
+   "conviccao": 3,
    "temperanca": 1,
    "valor": 4
   },
@@ -20275,7 +20275,7 @@
   },
   "virtudes": {
    "compaixao": 1,
-   "conviccao": 1,
+   "conviccao": 3,
    "temperanca": 1,
    "valor": 3
   },
@@ -20356,7 +20356,7 @@
   },
   "virtudes": {
    "compaixao": 1,
-   "conviccao": 1,
+   "conviccao": 2,
    "temperanca": 1,
    "valor": 2
   },
@@ -20692,7 +20692,7 @@
   },
   "virtudes": {
    "compaixao": 1,
-   "conviccao": 1,
+   "conviccao": 3,
    "temperanca": 1,
    "valor": 3
   },
@@ -21035,8 +21035,8 @@
    "raciocinio": 5
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 4
   },
@@ -21136,7 +21136,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 4,
    "temperanca": 2,
    "valor": 4
   },
@@ -21231,7 +21231,7 @@
   },
   "virtudes": {
    "compaixao": 1,
-   "conviccao": 1,
+   "conviccao": 3,
    "temperanca": 1,
    "valor": 4
   },
@@ -21494,8 +21494,8 @@
    "raciocinio": 5
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 4
   },
@@ -21685,8 +21685,8 @@
    "raciocinio": 4
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 1,
+   "conviccao": 4,
    "temperanca": 2,
    "valor": 3
   },
@@ -22038,7 +22038,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 4
   },
@@ -22202,7 +22202,7 @@
   },
   "virtudes": {
    "compaixao": 1,
-   "conviccao": 1,
+   "conviccao": 3,
    "temperanca": 1,
    "valor": 3
   },
@@ -22723,8 +22723,8 @@
    "raciocinio": 5
   },
   "virtudes": {
-   "compaixao": 2,
-   "conviccao": 2,
+   "compaixao": 3,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -23357,8 +23357,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 5,
    "temperanca": 3,
    "valor": 5
   },
@@ -24043,7 +24043,7 @@
   },
   "virtudes": {
    "compaixao": 1,
-   "conviccao": 1,
+   "conviccao": 5,
    "temperanca": 1,
    "valor": 6
   },
@@ -24146,8 +24146,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 1,
-   "conviccao": 1,
+   "compaixao": 2,
+   "conviccao": 3,
    "temperanca": 1,
    "valor": 3
   },
@@ -24664,7 +24664,7 @@
   },
   "virtudes": {
    "compaixao": 1,
-   "conviccao": 1,
+   "conviccao": 3,
    "temperanca": 1,
    "valor": 3
   },
@@ -25343,7 +25343,7 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 2,
+   "compaixao": 1,
    "conviccao": 2,
    "temperanca": 2,
    "valor": 3
@@ -25559,7 +25559,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -25947,7 +25947,7 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 3,
+   "compaixao": 2,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 3
@@ -26115,8 +26115,8 @@
    "raciocinio": 3
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 5,
    "temperanca": 3,
    "valor": 6
   },
@@ -26217,7 +26217,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -26307,7 +26307,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },
@@ -26928,8 +26928,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 1,
-   "conviccao": 1,
+   "compaixao": 2,
+   "conviccao": 3,
    "temperanca": 1,
    "valor": 3
   },
@@ -28640,8 +28640,8 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 3,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 5,
    "temperanca": 3,
    "valor": 5
   },
@@ -28926,7 +28926,7 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 2,
+   "conviccao": 3,
    "temperanca": 2,
    "valor": 3
   },

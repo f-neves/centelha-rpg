@@ -7,7 +7,7 @@
   "categoria": "Fada",
   "categoriaLegada": "Fada",
   "papel": "soldado",
-  "conceito": "fada Pequeno",
+  "conceito": "fada Miúdo",
   "descricao": "Fadinha de 30 cm, invisível quando quer, que prega peças nos viajantes: a flecha dela faz dormir ou esquecer a última hora. Raramente faz mal de verdade, mas não perdoa quem fere o bosque.",
   "tags": [
     "fada",
@@ -77,8 +77,8 @@
     }
   ],
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 2,
+    "compaixao": 3,
+    "conviccao": 3,
     "temperanca": 2,
     "valor": 3
   },

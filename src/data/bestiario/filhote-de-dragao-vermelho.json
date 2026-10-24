@@ -7,7 +7,7 @@
   "categoria": "Dragão",
   "categoriaLegada": "Dragão",
   "papel": "elite",
-  "conceito": "dragão Médio",
+  "conceito": "dragão Grande",
   "descricao": "Filhote de dragão vermelho de 2,7 m, que já nasce mágico. Sopra fogo em cone de 9 m, morde e rasga, e já guarda um pequeno tesouro com o orgulho dos adultos.",
   "tags": [
     "dragao",
@@ -78,8 +78,8 @@
     }
   ],
   "virtues": {
-    "compaixao": 3,
-    "conviccao": 3,
+    "compaixao": 2,
+    "conviccao": 5,
     "temperanca": 3,
     "valor": 5
   },

@@ -392,11 +392,24 @@ function converte(arq) {
   const willpower = parseInt(celula(vva, 'Vontade').replace(/\*/g, ''), 10);
   const aparencia = parseInt(celula(vva, 'Aparência').replace(/\*/g, ''), 10);
   const virtues = { compaixao: 0, conviccao: 0, temperanca: 0, valor: 0 };
-  for (const parte of celula(vva, 'Virtudes').replace(/\*/g, '').split(';')) {
-    const n = /(\d+)\s*$/.exec(parte.trim()); if (!n) continue;
-    // A Virtude se chama Bravura na ficha desde 22/10/2026 (decisão 40 do autor); o id no JSON continua `valor` (C-15)
-    for (const [k, rot] of [['compaixao', 'Compaixão'], ['conviccao', 'Convicção'], ['temperanca', 'Temperança'], ['valor', 'Bravura']]) if (parte.includes(rot)) virtues[k] = Number(n[1]);
+  // CADA VIRTUDE COM O PRÓPRIO NÚMERO (achado do Arquiteto de 24/10/2026): antes a linha se partia só por ";" e cada
+  // parte levava o último número dela, e "Compaixão 2, Convicção 3, Temperança 1" saía 1, 1 e 1. As duas formas
+  // das fichas: "Compaixão 2, Convicção 3, Temperança 1" (cada uma o seu) e "Compaixão, Convicção e Temperança 1"
+  // (um número para as listadas). As partes vão separadas por ";". As quatro têm de sair, cada uma uma vez; qualquer
+  // outra forma para. A Virtude se chama Bravura na ficha desde 22/10/2026 (decisão 40); o id é `valor` (C-15).
+  const VIRTUDE = { 'Compaixão': 'compaixao', 'Convicção': 'conviccao', 'Temperança': 'temperanca', 'Bravura': 'valor' };
+  const NOME_V = '(Compaixão|Convicção|Temperança|Bravura)';
+  const vistas = new Set();
+  const poe = (nome, n) => { const k = VIRTUDE[nome]; if (vistas.has(k)) aviso.push(`Virtudes: "${nome}" repetida`); vistas.add(k); virtues[k] = n; };
+  for (const seg of celula(vva, 'Virtudes').replace(/\*/g, '').split(';').map((x) => x.trim()).filter(Boolean)) {
+    const itens = seg.split(/,\s*/);
+    const cada = itens.map((it) => new RegExp(`^${NOME_V}\\s+(\\d+)$`).exec(it.trim()));
+    if (cada.every(Boolean)) { for (const m of cada) poe(m[1], Number(m[2])); continue; }
+    const junto = new RegExp(`^(${NOME_V}(?:,\\s*${NOME_V})*\\s+e\\s+${NOME_V})\\s+(\\d+)$`).exec(seg);
+    if (junto) { for (const nome of junto[1].split(/,\s*|\s+e\s+/)) poe(nome.trim(), Number(junto[junto.length - 1])); continue; }
+    aviso.push(`Virtudes: "${seg}" fora das formas que o conversor lê ("Compaixão 2, Convicção 3" ou "Compaixão, Convicção e Temperança 1")`);
   }
+  for (const [nome, k] of Object.entries(VIRTUDE)) if (!vistas.has(k)) aviso.push(`Virtudes: falta ${nome}`);
   if (/\bValor\b/.test(celula(vva, 'Virtudes'))) throw new Error(`${arq}.md: a linha Virtudes diz "Valor"; o nome é Bravura (decisão 40 do autor)`);
   // Corpo e porte
   const alvo = (/\*\*([A-Za-zÀ-ú]+)\*\*/.exec(celula(corpoPorte, 'Tamanho')) || [])[1] || (celula(corpoPorte, 'Tamanho') || '').split(/[\s(]/)[0];
@@ -731,6 +744,16 @@ function categoriaLegadaDe(f, velha) {
   if (!velha && f.categoria === 'Animal') return 'Fera';
   throw new Error(`${f.arq}: sem categoria legada (${velha ? 'a fonte base não tem categoria nem categoriaLegada' : `sem fonte base, e a categoria da ficha é "${f.categoria}", não "Animal"`})`);
 }
+// O CONCEITO NÃO DESMENTE O TAMANHO (D-180, D-213, D-215; despacho do Arquiteto de 24/10/2026). O conceito vem da
+// fonte base, com a palavra de tamanho do molde de antes ("animal Pequeno" no polvo, que é Médio); ela entra na
+// busca do bestiário e no editor. A palavra de tamanho, com ou sem acento e em qualquer caixa, vira o porte
+// publicado; o resto do texto fica. Sem palavra de tamanho ("herói inimigo"), nada muda. Duas palavras param.
+const RE_TAMANHO = /(^|[^\p{L}])(min[uú]sculo|mi[uú]do|pequeno|m[eé]dio|grande|enorme|imenso|colossal)(?=$|[^\p{L}])/giu;
+function conceitoComPorte(conceito, porte, arq) {
+  const n = [...String(conceito).matchAll(RE_TAMANHO)].length;
+  if (n > 1) throw new Error(`${arq}: o conceito da base "${conceito}" tem ${n} palavras de tamanho, e o conversor não sabe qual trocar`);
+  return n ? String(conceito).replace(RE_TAMANHO, (m, antes) => antes + porte) : conceito;
+}
 function montaFonte(f, todas) {
   const velha = f.site ? fontePorId(f.id) : null; // depois da etapa 4, a fonte de hoje já está no id definitivo
   const irma = IRMA[f.arq] ? todas.find((x) => x.arq === IRMA[f.arq]) : null;
@@ -767,7 +790,7 @@ function montaFonte(f, todas) {
     categoria: f.categoria,
     categoriaLegada: categoriaLegadaDe(f, velha),
     papel: f.papel,
-    conceito: velha?.conceito ?? `animal ${f.porte}`,
+    conceito: velha?.conceito != null ? conceitoComPorte(velha.conceito, f.porte, f.arq) : `animal ${f.porte}`,
     descricao: f.descricao,
     ...(velha?.descricaoLegada ? { descricaoLegada: velha.descricaoLegada } : {}),
     tags: velha?.tags ?? [],

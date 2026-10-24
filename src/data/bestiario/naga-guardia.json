@@ -7,7 +7,7 @@
   "categoria": "Aberração",
   "categoriaLegada": "Aberração",
   "papel": "chefe",
-  "conceito": "aberração Grande",
+  "conceito": "aberração Médio",
   "descricao": "Serpente de escamas radiantes e capuz de cobra que protege cachoeiras, picos e templos dignos de reverência. Um casal se instala perto do lugar e cria a ninhada ali; os filhotes partem ou assumem a guarda. Morde e cospe veneno, e conjura proteção e cura.",
   "tags": [
     "aberracao",
@@ -75,7 +75,7 @@
   ],
   "virtues": {
     "compaixao": 2,
-    "conviccao": 2,
+    "conviccao": 4,
     "temperanca": 2,
     "valor": 4
   },
