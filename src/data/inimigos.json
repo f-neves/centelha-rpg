@@ -4403,7 +4403,7 @@
     "ameaca": 3,
     "centelha": 1,
     "conceito": "aberração Médio",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Criatura de antenas sensíveis que fareja metal a distância e se lança sobre ele com fome irresistível, mais interessada em devorar espadas e armaduras do que em ferir quem as carrega. Só usa as antenas contra gente quando a cercam.",
     "tags": [
       "aberracao",
       "centelha",
@@ -4416,11 +4416,11 @@
     "vontade": 6,
     "soak": {
       "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 2,
       "destreza": 5,
@@ -4434,45 +4434,24 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "3d6 +2",
-        "dano": "1d6 +3 perfurante",
+        "nome": "Mordida",
+        "pool": "4d6+2 +3",
+        "dano": "1d6 +1 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "materia",
-        "nivel": 1
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Prontidão 3.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "corroi-metal",
-        "nome": "Corrói metal",
-        "tipo": "natural",
-        "base": {
-          "arte": "materia",
-          "nivel": 2
-        },
-        "resiste": "corpo",
-        "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-        "usos": {
-          "periodo": "golpe"
-        },
-        "ataque": "Garras e presas"
-      }
-    ],
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 3,
       "esquiva": 1,
       "integridade": 2,
       "sociabilidade": 0,
-      "furtividade": 2
+      "furtividade": 1
     }
   },
   {
@@ -4555,7 +4534,7 @@
     "ameaca": 3,
     "centelha": 1,
     "conceito": "aberração Médio",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Disfarça-se de baú, porta ou móvel e espera com paciência absoluta até que alguém confie o bastante para tocar; então gruda, prende e devora a vítima antes que ela perceba o engano. Vive sozinho em ruínas e cavernas, perto das rotas dos saqueadores.",
     "tags": [
       "aberracao",
       "centelha"
@@ -4567,8 +4546,8 @@
     "vontade": 6,
     "soak": {
       "impacto": 6,
-      "corte": 3,
-      "perfuracao": 3
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -4585,47 +4564,32 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Pseudópode",
         "pool": "4d6+2 +2",
-        "dano": "1d6 +6 perfurante",
+        "dano": "1d6 +6 impacto",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "4d6+2 +3",
+        "dano": "1d6 +4 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "Habilidades notáveis: Furtividade 4.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "assumir-forma-de-objeto",
-        "nome": "Assumir forma de objeto",
-        "tipo": "natural",
-        "resiste": "nenhum",
-        "efeito": "Assumir forma de objeto",
-        "usos": {
-          "periodo": "avontade"
-        }
-      },
-      {
-        "id": "cola-aderente",
-        "nome": "Cola aderente",
-        "tipo": "natural",
-        "resiste": "esquiva",
-        "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 3,
-          "recarga": "1 hora"
-        }
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
       "integridade": 3,
       "sociabilidade": 0,
-      "furtividade": 2
+      "furtividade": 4
     }
   },
   {
@@ -4886,7 +4850,7 @@
     "ameaca": 4,
     "centelha": 5,
     "conceito": "aberração Enorme",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Peixe imenso das profundezas, mais velho que a memória dos povos, que fala dentro da cabeça das vítimas. Domina mentes, engana com ilusões e transforma quem toca com o muco dos tentáculos em escravo da água.",
     "tags": [
       "aberracao",
       "centelha",
@@ -4899,11 +4863,11 @@
     "vontade": 10,
     "soak": {
       "impacto": 13,
-      "corte": 13,
-      "perfuracao": 13
+      "corte": 5,
+      "perfuracao": 5
     },
-    "resistPerf": 1,
-    "iniciativa": "1d6 + 7",
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 8",
     "atributos": {
       "forca": 10,
       "destreza": 3,
@@ -4917,69 +4881,20 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Tentáculo",
         "pool": "7d6+2 +10",
-        "dano": "3d6 +15 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "dano": "2d6 +15 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "Habilidades notáveis: Conhecimentos 4, Ocultismo 3, Percepção 3.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "muco-que-transforma-pele",
-        "nome": "Muco que transforma pele",
-        "tipo": "natural",
-        "base": {
-          "arte": "materia",
-          "nivel": 3
-        },
-        "resiste": "corpo",
-        "efeito": "toque que transforma a pele do alvo, dando respiração aquática mas exigindo umidade constante depois",
-        "usos": {
-          "periodo": "golpe"
-        },
-        "ataque": "Garras e presas",
-        "descricao": "O toque de um tentáculo do aboleth cobre a pele do alvo com um muco que muda sua respiração: passa a respirar água como se fosse ar, mas se afastar da água por muito tempo sofre com a pele ressecando."
-      },
-      {
-        "id": "dominio-psiquico",
-        "nome": "Domínio psíquico",
-        "tipo": "natural",
-        "base": {
-          "arte": "fascinacao",
-          "nivel": 4
-        },
-        "resiste": "mente",
-        "efeito": "domina a mente de quem falhar em resistir, que obedece ordens simples enquanto o aboleth mantiver o contato",
-        "usos": {
-          "periodo": "dia",
-          "quantidade": 3
-        },
-        "descricao": "O aboleth invade a mente de quem ele tocou ou encarou; falhando em resistir, a vítima obedece ordens simples do aboleth enquanto ele mantiver esse contato mental."
-      },
-      {
-        "id": "ilusoes-aboleth",
-        "nome": "Ilusões",
-        "tipo": "natural",
-        "base": {
-          "arte": "fascinacao",
-          "nivel": 5
-        },
-        "resiste": "mente",
-        "efeito": "cria uma ilusão convincente (visão, som) para confundir ou enganar, poucas vezes por dia",
-        "descricao": "O aboleth projeta diretamente na mente de quem o encara uma cena que não existe: um caminho seguro que é precipício, um aliado que é ele disfarçado, um perigo que não é real.",
-        "usos": {
-          "periodo": "dia",
-          "quantidade": 3
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 2,
+      "prontidao": 3,
       "esquiva": 1,
       "integridade": 5,
       "sociabilidade": 0,
@@ -8716,7 +8631,7 @@
     "ameaca": 4,
     "centelha": 4,
     "conceito": "aberração Pequeno",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Luz que paira sobre pântanos e charcos imitando uma fogueira distante ou uma lanterna amiga. Leva o viajante perdido para longe da segurança, saboreia o pânico de quem ainda acredita estar sendo salvo e o fere com um toque elétrico. Some de vista quando quer.",
     "tags": [
       "aberracao",
       "centelha",
@@ -8729,8 +8644,8 @@
     "vontade": 9,
     "soak": {
       "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -8747,40 +8662,24 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "2d6+2 +8",
-        "dano": "1d6 +4 perfurante",
-        "perfArma": 0,
-        "ticks": 5
+        "nome": "Toque elétrico",
+        "pool": "7d6 +9",
+        "dano": "1d6 +2 raio",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "Habilidades notáveis: Furtividade 5, Prontidão 3.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "invisibilidade-natural",
-        "nome": "Invisibilidade natural",
-        "tipo": "natural",
-        "base": {
-          "arte": "ofuscacao",
-          "nivel": 3
-        },
-        "resiste": "nenhum",
-        "efeito": "Invisibilidade natural",
-        "usos": {
-          "periodo": "avontade"
-        },
-        "descricao": "O fogo-fátuo desaparece de vista quando quer, voltando a ser visto só como uma luzinha fraca ao longe, se tanto."
-      }
-    ],
     "pericias": {
       "prontidao": 2,
       "esquiva": 3,
       "integridade": 4,
       "sociabilidade": 0,
-      "furtividade": 4
+      "furtividade": 5
     }
   },
   {
@@ -9270,7 +9169,7 @@
     "ameaca": 5,
     "centelha": 5,
     "conceito": "aberração Grande",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Serpente longeva e arrogante que se enrosca sobre tesouros em templos afundados e ruínas de civilizações que ela viu cair. Encanta com o olhar, cospe veneno e conjura fogo e ilusões antes mesmo de pensar em negociar.",
     "tags": [
       "aberracao",
       "centelha",
@@ -9278,16 +9177,16 @@
     ],
     "pv": 54,
     "defesa": 10,
-    "defesaSocial": 10,
+    "defesaSocial": 18,
     "defesaMental": 30,
     "vontade": 10,
     "soak": {
       "impacto": 11,
-      "corte": 10,
-      "perfuracao": 10
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 7",
+    "iniciativa": "1d6 + 9",
     "atributos": {
       "forca": 6,
       "destreza": 3,
@@ -9301,11 +9200,12 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Mordida",
         "pool": "5d6+2 +10",
-        "dano": "2d6 +11 perfurante",
+        "dano": "1d6 +11 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -9329,41 +9229,12 @@
     ],
     "notas": "Habilidades notáveis: Ocultismo 4, Persuasão 3, Prontidão 4.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "olhar-encantador",
-        "nome": "Olhar encantador",
-        "tipo": "natural",
-        "base": {
-          "arte": "fascinacao",
-          "nivel": 3
-        },
-        "resiste": "mente",
-        "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
-        "usos": {
-          "periodo": "cena"
-        }
-      },
-      {
-        "id": "cuspe-venenoso",
-        "nome": "Cuspe venenoso",
-        "tipo": "natural",
-        "resiste": "corpo",
-        "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 3,
-          "recarga": "1 hora"
-        },
-        "ataque": "Garras e presas"
-      }
-    ],
     "pericias": {
-      "prontidao": 2,
+      "prontidao": 4,
       "esquiva": 1,
       "integridade": 5,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "sociabilidade": 2,
+      "furtividade": 2
     }
   },
   {
@@ -12556,7 +12427,7 @@
     "ameaca": 2,
     "centelha": 2,
     "conceito": "aberração Pequeno",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Coisa magra de braços longos de borracha que vive nas ruínas subterrâneas. Espera no escuro, enrosca a garganta de quem ficou para trás e aperta até a vítima parar. Enche o covil de anéis, broches e moedas das vítimas.",
     "tags": [
       "aberracao",
       "centelha"
@@ -12568,13 +12439,13 @@
     "vontade": 7,
     "soak": {
       "impacto": 5,
-      "corte": 3,
-      "perfuracao": 3
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
-      "forca": 5,
+      "forca": 4,
       "destreza": 4,
       "vigor": 3,
       "influencia": 1,
@@ -12586,11 +12457,12 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "4d6 +4",
-        "dano": "1d6 +7 perfurante",
+        "nome": "Garras",
+        "pool": "3d6+2 +5",
+        "dano": "1d6 +4 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -12613,25 +12485,25 @@
     "ameaca": 4,
     "centelha": 4,
     "conceito": "aberração Grande",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Crustáceo blindado como um caranguejo gigante, que espreita sob a água dos charcos. Agarra com as pinças, passa a presa para os tentáculos da boca, que paralisam, e a devora ou a arrasta para o fundo. Fala e guarda troféus.",
     "tags": [
       "aberracao",
       "centelha"
     ],
-    "pv": 54,
-    "defesa": 14,
+    "pv": 43,
+    "defesa": 19,
     "defesaSocial": 4,
     "defesaMental": 18,
     "vontade": 9,
     "soak": {
       "impacto": 10,
-      "corte": 9,
-      "perfuracao": 9
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 9,
+      "forca": 7,
       "destreza": 5,
       "vigor": 6,
       "influencia": 1,
@@ -12643,11 +12515,20 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "7d6 +8",
-        "dano": "2d6 +13 perfurante",
+        "nome": "Pinça",
+        "pool": "6d6 +8",
+        "dano": "1d6 +11 impacto",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Mandíbulas",
+        "pool": "6d6 +9",
+        "dano": "1d6 +9 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -12659,7 +12540,7 @@
       "esquiva": 1,
       "integridade": 2,
       "sociabilidade": 0,
-      "furtividade": 1
+      "furtividade": 3
     }
   },
   {
@@ -12670,25 +12551,25 @@
     "ameaca": 4,
     "centelha": 4,
     "conceito": "aberração Grande",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Arraia de couro negro que desliza sem som pelos túneis e passa por manto pendurado até atacar. Envolve a vítima no próprio corpo, geme num lamento que apavora, derruba ou paralisa, e se multiplica nas sombras.",
     "tags": [
       "aberracao",
       "centelha"
     ],
-    "pv": 54,
+    "pv": 43,
     "defesa": 14,
     "defesaSocial": 8,
     "defesaMental": 25,
     "vontade": 9,
     "soak": {
       "impacto": 10,
-      "corte": 9,
-      "perfuracao": 9
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
     "atributos": {
-      "forca": 7,
+      "forca": 5,
       "destreza": 5,
       "vigor": 6,
       "influencia": 4,
@@ -12700,11 +12581,20 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "6d6 +8",
-        "dano": "2d6 +11 perfurante",
+        "nome": "Mordida",
+        "pool": "5d6 +8",
+        "dano": "1d6 +9 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Cauda",
+        "pool": "5d6 +9",
+        "dano": "1d6 +7 impacto",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -12716,7 +12606,7 @@
       "esquiva": 1,
       "integridade": 4,
       "sociabilidade": 0,
-      "furtividade": 1
+      "furtividade": 3
     }
   },
   {
@@ -14179,20 +14069,20 @@
     "ameaca": 4,
     "centelha": 4,
     "conceito": "aberração Grande",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "O que resta de um drow punido pelos deuses aracnídeos: o tronco fundido ao corpo de uma aranha gigante. Embosca nos túneis, prende de longe com teia, morde com um veneno que tira a força e ainda apaga a luz com a feitiçaria de antes.",
     "tags": [
       "aberracao",
       "centelha"
     ],
-    "pv": 54,
+    "pv": 43,
     "defesa": 12,
     "defesaSocial": 10,
     "defesaMental": 27,
     "vontade": 9,
     "soak": {
       "impacto": 10,
-      "corte": 9,
-      "perfuracao": 9
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -14209,11 +14099,12 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Mordida",
         "pool": "5d6 +8",
-        "dano": "2d6 +9 perfurante",
+        "dano": "1d6 +9 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -14225,7 +14116,7 @@
       "esquiva": 1,
       "integridade": 5,
       "sociabilidade": 0,
-      "furtividade": 1
+      "furtividade": 3
     }
   },
   {
@@ -14826,20 +14717,20 @@
     "ameaca": 3,
     "centelha": 2,
     "conceito": "aberração Médio",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Figura quase humana de rosto de aranha e mãos em foice, que vive sozinho nas copas das florestas. Arma armadilhas de teia, prende de longe, morde com um veneno que tira a destreza e cria aranhas gigantes como sentinelas.",
     "tags": [
       "aberracao",
       "centelha"
     ],
     "pv": 40,
-    "defesa": 14,
+    "defesa": 15,
     "defesaSocial": 6,
     "defesaMental": 16,
     "vontade": 7,
     "soak": {
       "impacto": 7,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -14856,11 +14747,20 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "4d6 +4",
-        "dano": "1d6 +6 perfurante",
+        "nome": "Foices",
+        "pool": "4d6+2 +4",
+        "dano": "1d6 +6 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "4d6+2 +5",
+        "dano": "1d6 +4 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -14872,7 +14772,7 @@
       "esquiva": 1,
       "integridade": 3,
       "sociabilidade": 0,
-      "furtividade": 2
+      "furtividade": 3
     }
   },
   {
@@ -15505,7 +15405,7 @@
     "ameaca": 5,
     "centelha": 0,
     "conceito": "aberração Enorme",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Rã monstruosa de três toneladas, de tentáculos nos ombros e três olhos num talo, que passa a vida submersa nos brejos com só os olhos à mostra. Agarra com a língua e os tentáculos, esmaga e engole inteiro. Vive inquieta, e às vezes vaga para longe de qualquer charco conhecido.",
     "tags": [
       "aberracao",
       "centelha"
@@ -15517,10 +15417,10 @@
     "vontade": 10,
     "soak": {
       "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "corte": 0,
+      "perfuracao": 0
     },
-    "resistPerf": 1,
+    "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
       "forca": 11,
@@ -15535,12 +15435,20 @@
     },
     "ataques": [
       {
-        "nome": "Tentáculos e língua",
+        "nome": "Tentáculo",
         "pool": "8d6",
-        "dano": "3d6 +11 impacto",
+        "dano": "2d6 +11 impacto",
         "perfArma": null,
         "ticks": 7,
-        "notas": "agarra com os tentáculos; a língua puxa a presa para perto"
+        "classe": "pesada"
+      },
+      {
+        "nome": "Bocada",
+        "pool": "8d6",
+        "dano": "1d6 +11 impacto",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -15552,7 +15460,7 @@
       "esquiva": 1,
       "integridade": 3,
       "sociabilidade": 0,
-      "furtividade": 0
+      "furtividade": 2
     }
   },
   {
@@ -15827,7 +15735,7 @@
     "ameaca": 4,
     "centelha": 4,
     "conceito": "aberração Médio",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Massa disforme de olhos e bocas que balbuciam sem parar, como se mil vozes tentassem falar ao mesmo tempo. O coro confunde quem ouve, o chão vira lama em volta dela, e as bocas prendem, sugam o sangue e engolem.",
     "tags": [
       "aberracao",
       "centelha"
@@ -15839,8 +15747,8 @@
     "vontade": 9,
     "soak": {
       "impacto": 11,
-      "corte": 7,
-      "perfuracao": 7
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -15857,11 +15765,12 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "3d6+2 +8",
-        "dano": "1d6 +6 perfurante",
+        "nome": "Bocas",
+        "pool": "5d6 +9",
+        "dano": "1d6 +4 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -15873,7 +15782,7 @@
       "esquiva": 1,
       "integridade": 3,
       "sociabilidade": 0,
-      "furtividade": 2
+      "furtividade": 1
     }
   },
   {
@@ -16876,25 +16785,25 @@
     "ameaca": 5,
     "centelha": 4,
     "conceito": "aberração Pequeno",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Cérebro de quatro patas vindo de outro plano ou de um mundo distante, que se alimenta de cérebros e memórias. Devora o cérebro de uma vítima, entra no corpo dela e sustenta a fachada por dias, falando as línguas dela sem guardar as lembranças. Fica invisível, confunde e fere com a mente.",
     "tags": [
       "aberracao",
       "centelha"
     ],
     "pv": 32,
     "defesa": 22,
-    "defesaSocial": 8,
+    "defesaSocial": 16,
     "defesaMental": 24,
     "vontade": 9,
     "soak": {
       "impacto": 10,
-      "corte": 7,
-      "perfuracao": 7
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
     "atributos": {
-      "forca": 3,
+      "forca": 2,
       "destreza": 7,
       "vigor": 6,
       "influencia": 5,
@@ -16906,11 +16815,12 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "4d6 +8",
-        "dano": "1d6 +7 perfurante",
+        "nome": "Garras",
+        "pool": "6d6 +9",
+        "dano": "1d6 +4 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -16921,8 +16831,8 @@
       "prontidao": 1,
       "esquiva": 2,
       "integridade": 4,
-      "sociabilidade": 0,
-      "furtividade": 3
+      "sociabilidade": 2,
+      "furtividade": 4
     }
   },
   {
@@ -18082,20 +17992,20 @@
     "ameaca": 5,
     "centelha": 4,
     "conceito": "aberração Grande",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Serpente de escamas negras e brilhantes que desliza por ruínas atrás de tesouros e joias mórbidas. Lê os pensamentos de quem está perto, manipula com mentiras quem não consegue subjugar e destrói com veneno e raios quem resiste.",
     "tags": [
       "aberracao",
       "centelha"
     ],
-    "pv": 54,
+    "pv": 43,
     "defesa": 20,
-    "defesaSocial": 10,
+    "defesaSocial": 18,
     "defesaMental": 27,
     "vontade": 9,
     "soak": {
       "impacto": 10,
-      "corte": 9,
-      "perfuracao": 9
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -18112,23 +18022,37 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "5d6 +8",
-        "dano": "2d6 +9 perfurante",
+        "nome": "Ferrão",
+        "pool": "5d6+2 +8",
+        "dano": "1d6 +9 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
-    "artes": [],
+    "artes": [
+      {
+        "id": "raio",
+        "nivel": 4
+      },
+      {
+        "id": "forcas",
+        "nivel": 3
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 3
+      }
+    ],
     "notas": "",
     "pendente": true,
     "pericias": {
       "prontidao": 2,
       "esquiva": 2,
       "integridade": 5,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "sociabilidade": 2,
+      "furtividade": 2
     }
   },
   {
@@ -18139,20 +18063,20 @@
     "ameaca": 5,
     "centelha": 5,
     "conceito": "aberração Grande",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Serpente de escamas radiantes e capuz de cobra que protege cachoeiras, picos e templos dignos de reverência. Um casal se instala perto do lugar e cria a ninhada ali; os filhotes partem ou assumem a guarda. Morde e cospe veneno, e conjura proteção e cura.",
     "tags": [
       "aberracao",
       "centelha"
     ],
-    "pv": 58,
+    "pv": 46,
     "defesa": 22,
-    "defesaSocial": 10,
+    "defesaSocial": 18,
     "defesaMental": 30,
     "vontade": 10,
     "soak": {
       "impacto": 12,
-      "corte": 10,
-      "perfuracao": 10
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -18169,23 +18093,37 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Mordida",
         "pool": "6d6 +10",
-        "dano": "2d6 +12 perfurante",
+        "dano": "1d6 +12 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
-    "artes": [],
+    "artes": [
+      {
+        "id": "protecao",
+        "nivel": 4
+      },
+      {
+        "id": "cura",
+        "nivel": 4
+      },
+      {
+        "id": "forcas",
+        "nivel": 3
+      }
+    ],
     "notas": "",
     "pendente": true,
     "pericias": {
       "prontidao": 2,
       "esquiva": 2,
       "integridade": 5,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "sociabilidade": 2,
+      "furtividade": 2
     }
   },
   {
@@ -19044,25 +18982,25 @@
     "ameaca": 5,
     "centelha": 5,
     "conceito": "aberração Grande",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Imóvel como uma coluna de pedra ou gelo, aguarda entre estalagmites até a presa chegar perto. Prende com filamentos pegajosos que enfraquecem e a puxa até a boca. É uma das criaturas mais inteligentes das profundezas e discute por horas sobre a morte e as religiões sombrias.",
     "tags": [
       "aberracao",
       "centelha"
     ],
     "pv": 70,
     "defesa": 10,
-    "defesaSocial": 8,
+    "defesaSocial": 12,
     "defesaMental": 26,
     "vontade": 10,
     "soak": {
       "impacto": 15,
-      "corte": 12,
-      "perfuracao": 12
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
     "atributos": {
-      "forca": 11,
+      "forca": 9,
       "destreza": 3,
       "vigor": 10,
       "influencia": 3,
@@ -19074,11 +19012,12 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
-        "pool": "8d6 +10",
-        "dano": "2d6 +16 perfurante",
+        "nome": "Mordida",
+        "pool": "7d6 +10",
+        "dano": "1d6 +14 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -19089,8 +19028,8 @@
       "prontidao": 2,
       "esquiva": 1,
       "integridade": 4,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "sociabilidade": 1,
+      "furtividade": 3
     }
   },
   {

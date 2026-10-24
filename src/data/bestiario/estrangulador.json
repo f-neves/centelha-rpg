@@ -5,9 +5,10 @@
   "nome": "Estrangulador",
   "nomeIngles": "Choker",
   "categoria": "Aberração",
+  "categoriaLegada": "Aberração",
   "papel": "soldado",
   "conceito": "aberração Pequeno",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Coisa magra de braços longos de borracha que vive nas ruínas subterrâneas. Espera no escuro, enrosca a garganta de quem ficou para trás e aperta até a vítima parar. Enche o covil de anéis, broches e moedas das vítimas.",
   "tags": [
     "aberracao",
     "centelha"
@@ -16,33 +17,61 @@
   "porte": "Pequeno",
   "dimensoes": {
     "medida": "1 m de altura",
-    "peso": "16 kg"
+    "peso": "16 kg",
+    "largura": 0.25,
+    "altura": 1
   },
   "locomocao": {
     "terra": 2,
     "escalada": 1
   },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+  },
   "centelha": 2,
   "attrs": {
-    "forca": 5,
+    "forca": 4,
     "destreza": 4,
     "vigor": 3,
-    "influencia": 1,
-    "perspicacia": 1,
-    "compostura": 2,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2
   },
   "skills": {
     "briga": 3,
     "esquiva": 1,
+    "atletismo": 1,
+    "furtividade": 3,
     "prontidao": 1,
-    "integridade": 2
+    "integridade": 2,
+    "sobrevivencia": 1
   },
+  "skills2": {
+    "escalada": 2,
+    "musculatura": 1
+  },
+  "especialidades": [
+    {
+      "habilidade": "briga",
+      "foco": "Agarrão",
+      "valor": 2,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "furtividade",
+      "foco": "no escuro",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 3,
+    "compaixao": 2,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
@@ -50,32 +79,56 @@
   "aparencia": 1,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Garras",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Estrangulamento",
-      "descricao": "Seus braços elásticos enroscam a garganta do alvo agarrado, impedindo que ele fale ou conjure poderes que exigem palavras de comando."
+      "nome": "agarrar",
+      "descricao": "Garras: o Agarrão, com a Especialidade natural Briga (Agarrão) +2. Contra o humano (Faixa 3), ele está uma faixa abaixo: o humano soma +3 na Defesa de agarrão (Massa nas Manobras).",
+      "classe": "livro"
     },
     {
       "nome": "Constrição",
-      "descricao": "Enquanto mantém o agarrão, aperta a vítima com força crescente, causando dano contínuo a cada instante em que ela permanece presa."
+      "descricao": "Garras: \"Constrição é Agarrão\". O aperto que cresce é o dano do agarrão do livro: 2 × Força + Centelha = 10, de Impacto, e +1d6 por Margem da manutenção, a cada 6 Ticks.",
+      "classe": "livro"
     },
     {
-      "nome": "Rapidez Sobrenatural",
-      "descricao": "Move-se com velocidade antinatural, agindo duas vezes em sequência dentro do mesmo turno."
+      "nome": "Estrangulamento",
+      "descricao": "Garras: Ativação: o agarrão que dá certo; ele escolhe enroscar a garganta. Duração: enquanto mantém o agarrão. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo fica Agarrado e Sufocando, e não fala: não pede socorro nem usa Arte ou poder que precise de palavra. Dano: o do agarrão, e o do Sufocando. Resistência: para se soltar, a manutenção do agarrão do livro. Limite de uso: um alvo por vez.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Visão no Escuro",
-      "descricao": "Enxerga perfeitamente na escuridão total, mesmo em túneis sem qualquer fonte de luz."
+      "nome": "Rapidez sobrenatural",
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: está sempre Acelerado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. O site dizia \"age duas vezes em sequência dentro do mesmo turno\"; o Centelha não tem turno, e o mais perto no livro é o Acelerado.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "braços longos",
+      "descricao": "Garras: os braços passam do dobro do corpo e alcançam mais longe que o corpo a corpo de um bicho do porte dele.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "caçador das ruínas",
+      "descricao": "espera agarrado ao teto ou numa parede escura, escolhe o viajante que ficou para trás, enrosca a garganta para ele não gritar e o arrasta para o covil.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: \"enxerga perfeitamente na escuridão total\" (site)."
     }
   ],
   "lore": [
@@ -86,6 +139,14 @@
     {
       "titulo": "Fascínio Doentio",
       "texto": "Apesar da inteligência quase animal, guarda um fascínio estranho por objetos da civilização: anéis, broches e moedas roubadas de suas vítimas enchem seu covil."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: sozinho."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Pequeno, 26 PV, Impacto 5, Corte e Perfuração 2. Esquiva 12, Bloqueio 8. Sempre Acelerado. Garras de dano médio 7,5 e o agarrão (+2) que enrosca a garganta: o alvo Agarrado fica Sufocando, não fala nem conjura com palavra e leva 10 de Impacto a cada manutenção. Sobe pelas paredes e vê no escuro."
     }
   ],
   "ecologia": {
@@ -122,5 +183,34 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 26,
+    "esquiva": 12,
+    "bloqueio": 8,
+    "defesa": 12,
+    "defesaMental": 15,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 2,
+      "perfuracao": 2
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 99.72,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
+      }
+    }
+  },
+  "notasObservacao": [
+    "`forca`: 4; o site tinha 5 **[provisório]**",
+    "`area`: 0,34 m², com os braços estimados **[extrapolação]**",
+    "`musculatura`: 1 **[provisório]**",
+    "`compaixao`: 1, o piso da régua; o site tinha 0",
+    "`estrangulamento`, `rapidez sobrenatural`: números sugeridos pela ficha (D-197)"
+  ]
 }

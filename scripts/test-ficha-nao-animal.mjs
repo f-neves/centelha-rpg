@@ -307,6 +307,16 @@ try {
   ok(tiro.status === 0 && arcoT?.arma === 'arco-curto' && /^1d6 \+3 perfurante/.test(danoArco || ''), `o arco curto leva o id da arma e soma a Força até +3: arma ${arcoT?.arma}, dano "${danoArco}"`);
   para('tiro que soma a Força sem arma de tiro', ARCO_DE, ARCO_PARA, /tiro que soma a Força sem a arma de tiro no Equipamento/);
 
+  // O GOLPE SEM DANO (a Língua da rã, as Antenas do monstro da ferrugem; decisão do Arquiteto de 24/10/2026): só
+  // a forma exata vira a habilidade "<Nome>: <texto>, sem dano"; qualquer outra combinação com "nenhum" para.
+  const CUSPE = '| Cuspe | boca | Leve | 1/1/3 | 5 | 1d6 − 2 + Centelha (2) | ácido | |';
+  const ANT = '| Antenas | antenas | Leve | 1/1/3 | 5 | nenhum (enferruja) | não se aplica | |';
+  const sd = roda(FICHA.replace(CUSPE, ANT), 'sem dano');
+  const hAnt = (sd.json?.habilidades || []).find((h) => h.nome === 'Antenas');
+  ok(sd.status === 0 && hAnt?.descricao === 'enferruja, sem dano' && !(sd.json?.ataques || []).some((a) => a.nome === 'Antenas'), `"nenhum (enferruja)" vira a habilidade "Antenas: enferruja, sem dano", fora dos ataques: ${JSON.stringify(hAnt)}`);
+  para('nenhum (x) com Tipo de dano', CUSPE, '| Cuspe | boca | Leve | 1/1/3 | 5 | nenhum (enferruja) | ácido | |', /ataque sem dado: Cuspe/);
+  para('nenhum sem parênteses', CUSPE, '| Cuspe | boca | Leve | 1/1/3 | 5 | nenhum | não se aplica | |', /ataque sem dado: Cuspe/);
+
   // A jogada comum, sem frase: o corpo a corpo vai pelo maior (o animal ágil, como o gato).
   const agil = roda(FICHA.replace('| Força | 4 |', '| Força | 2 |').replace('"forca":4', '"forca":2').replace('Jogada: Força 4 + Armas 3', 'Jogada: Destreza 3 + Armas 3'), 'jogada comum pelo maior');
   const toque = (agil.json?.ataques || []).find((a) => a.nome === 'Toque gelado');

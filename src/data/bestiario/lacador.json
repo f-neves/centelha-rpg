@@ -5,9 +5,10 @@
   "nome": "Laçador",
   "nomeIngles": "Roper",
   "categoria": "Aberração",
+  "categoriaLegada": "Aberração",
   "papel": "chefe",
   "conceito": "aberração Grande",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Imóvel como uma coluna de pedra ou gelo, aguarda entre estalagmites até a presa chegar perto. Prende com filamentos pegajosos que enfraquecem e a puxa até a boca. É uma das criaturas mais inteligentes das profundezas e discute por horas sobre a morte e as religiões sombrias.",
   "tags": [
     "aberracao",
     "centelha"
@@ -15,70 +16,125 @@
   "imagem": "bestiario/lacador_criatura.webp",
   "porte": "Grande",
   "dimensoes": {
-    "medida": "3 metros de altura",
-    "peso": "cerca de 1.000 kg"
+    "medida": "3 m de altura",
+    "peso": "1,0 t",
+    "largura": 1.12,
+    "altura": 3
   },
   "locomocao": {
     "terra": 1
   },
+  "deslocamentoDeclarado": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+  },
   "centelha": 5,
   "attrs": {
-    "forca": 11,
+    "forca": 9,
     "destreza": 3,
     "vigor": 10,
-    "influencia": 3,
-    "perspicacia": 3,
-    "compostura": 4,
     "percepcao": 5,
     "inteligencia": 3,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 4
   },
   "skills": {
     "briga": 5,
     "esquiva": 1,
+    "atletismo": 1,
+    "furtividade": 3,
     "prontidao": 2,
-    "integridade": 4
+    "integridade": 4,
+    "ocultismo": 3,
+    "sociabilidade": 1,
+    "resistencia": 3
   },
+  "skills2": {
+    "disparo": 3,
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "entre pedras ou gelo",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "ocultismo",
+      "foco": "religiões sombrias",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 0,
+    "compaixao": 3,
     "conviccao": 3,
-    "temperanca": 2,
+    "temperanca": 3,
     "valor": 4
   },
   "willpower": 10,
   "aparencia": 1,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 6
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
     }
+  ],
+  "fraquezas": [
+    "fogo"
+  ],
+  "resistencias": [
+    "gelo"
+  ],
+  "imunidades": [
+    "raio"
   ],
   "habilidades": [
     {
       "nome": "Filamentos pegajosos",
-      "descricao": "Lança até seis fios grudentos a distância; quem é atingido testa Vigor ou sofre dano contínuo de Físico e pode ser puxado para perto."
+      "descricao": "corpo: Ativação: uma ação, Velocidade 6; ataque a distância, Vigor + Disparo (Vigor 10 + Disparo 3 + 2 × o menor entre Centelha 5 e Disparo 3, 6). Duração: até o alvo se soltar ou o filamento ser cortado. Alcance: 15 m. Área: um alvo por ação. Efeito: o filamento gruda: o alvo fica Agarrado à distância, e a fraqueza dos filamentos entra (Veneno e doença). Dano: nenhum. Resistência: esquiva, contra o ataque; corpo, pela regra do veneno; para se soltar, Força + Atletismo contra o total do ataque, ou cortar o filamento (um golpe de Corte que fira, a critério do Mestre). Limite de uso: até seis filamentos presos ao mesmo tempo, em alvos diferentes ou no mesmo.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Camuflagem de pedra",
-      "descricao": "Assume a forma de uma estalagmite ou pilar, quase indistinguível de rocha ou gelo até o momento do ataque."
+      "nome": "puxão",
+      "descricao": "Filamentos pegajosos: a cada ação, puxa um preso 3 m para perto da boca, até o Peso erguido.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "seis filamentos por ação",
+      "descricao": "o site diz \"lança até seis fios\". Pelos Filamentos pegajosos acima, a ficha lança um por ação; o lançamento de vários na mesma ação fica sem regra, porque a Rajada é só corpo a corpo. Os caminhos que o livro deixa abertos ao autor são o Poder Especial (C-046) ou uma regra de disparo múltiplo.",
+      "classe": "sem regra ainda"
     },
     {
       "nome": "Resistência a magia",
-      "descricao": "Uma proteção natural dificulta que feitiços o afetem."
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Frio e fogo",
-      "descricao": "Resiste ao frio intenso, mas seu corpo pétreo queima com facilidade incomum diante do fogo."
+      "nome": "estalagmite que espera",
+      "descricao": "imóvel entre as estalagmites, deixa a presa chegar, prende vários de uma vez com os filamentos, puxa o mais fraco até a boca e morde. Gosta de conversar com quem prende, se o assunto for a morte.",
+      "classe": "como luta"
     },
     {
       "nome": "Sentidos",
-      "descricao": "Enxerga no escuro e na penumbra, percebendo tudo ao redor mesmo em cavernas sem luz."
+      "descricao": "visão no escuro e na penumbra (site)."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Fraqueza dos filamentos · Potência 16 · 1 Tick (toque) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pelos Filamentos pegajosos. Os números do \"Ferrão de gigante\" dos moldes, com a Força como o \"Físico\" do site; pelo toque em pele intacta, a Potência cai 4."
     }
   ],
   "lore": [
@@ -93,6 +149,18 @@
     {
       "titulo": "Vizinho incômodo",
       "texto": "Prefere viver em pequenos grupos isolados, mas às vezes tolera a companhia de outros horrores subterrâneos, unidos por um interesse mútuo em segredos antigos."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: em grupos pequenos e isolados."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Fraqueza dos filamentos · Potência 16 · 1 Tick (toque) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pelos Filamentos pegajosos. Os números do \"Ferrão de gigante\" dos moldes, com a Força como o \"Físico\" do site; pelo toque em pele intacta, a Potência cai 4."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande, 70 PV, Impacto 15, Corte e Perfuração 5. Esquiva 10, Bloqueio 6, Defesa Mental 26 (28 contra Artes). Um filamento por ação a 15 m, até seis presos: agarra à distância e tira a Força. Puxa até a boca e morde (17, 5). Raio não o fere; o gelo faz metade; o fogo passa inteiro. Parece uma estalagmite."
     }
   ],
   "ecologia": {
@@ -131,7 +199,35 @@
   },
   "variantes": [],
   "ameacaLegada": 5,
-  "imunidades": [
-    "raio"
+  "v3": {
+    "pv": 70,
+    "esquiva": 10,
+    "bloqueio": 6,
+    "defesa": 10,
+    "defesaMental": 26,
+    "defesaSocial": 12,
+    "absorcao": {
+      "impacto": 15,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "couracaNivel": 3,
+    "pesoErguido": 967.05,
+    "deslocamento": {
+      "terra": {
+        "batalha": 1,
+        "arranque": 2,
+        "corrida": 2
+      }
+    }
+  },
+  "notasObservacao": [
+    "`forca`: 9; o site tinha 11 **[provisório]**",
+    "`temperanca`: 3; o site tinha 2 **[provisório]**",
+    "`couraca`: nível 3 **[provisório]**",
+    "`veneno`: a fraqueza dos filamentos, Potência 16, pool 4 de Força **[provisório]**",
+    "`ataques`: Mordida Média no lugar das \"Garras e presas\" **[provisório]**",
+    "`compaixao`: 1, o piso da régua; o site tinha 0",
+    "`filamentos pegajosos`, `resistência a magia`: números sugeridos pela ficha (D-197)"
   ]
 }

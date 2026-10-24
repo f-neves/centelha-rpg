@@ -5,9 +5,10 @@
   "nome": "Capa Sombria",
   "nomeIngles": "Cloaker",
   "categoria": "Aberração",
+  "categoriaLegada": "Aberração",
   "papel": "elite",
   "conceito": "aberração Grande",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Arraia de couro negro que desliza sem som pelos túneis e passa por manto pendurado até atacar. Envolve a vítima no próprio corpo, geme num lamento que apavora, derruba ou paralisa, e se multiplica nas sombras.",
   "tags": [
     "aberracao",
     "centelha"
@@ -15,34 +16,56 @@
   "imagem": "bestiario/capa-sombria_criatura.webp",
   "porte": "Grande",
   "dimensoes": {
-    "medida": "2,4 m de envergadura",
-    "peso": "45 kg"
+    "medida": "1,8 m de comprimento, 0,15 m de altura",
+    "peso": "45 kg",
+    "comprimento": 1.8,
+    "largura": 2.4,
+    "altura": 0.15
   },
   "locomocao": {
     "voo": 4,
     "terra": 1
   },
+  "deslocamentoDeclarado": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+  },
   "centelha": 4,
   "attrs": {
-    "forca": 7,
+    "forca": 5,
     "destreza": 5,
     "vigor": 6,
-    "influencia": 4,
-    "perspicacia": 4,
-    "compostura": 4,
     "percepcao": 4,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4
   },
   "skills": {
     "briga": 5,
     "esquiva": 1,
+    "atletismo": 1,
+    "furtividade": 3,
     "prontidao": 2,
-    "integridade": 4
+    "integridade": 4,
+    "ocultismo": 1
   },
+  "skills2": {
+    "voo": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "imóvel, como manto",
+      "valor": 3,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 3,
+    "compaixao": 2,
+    "conviccao": 2,
     "temperanca": 2,
     "valor": 3
   },
@@ -50,36 +73,61 @@
   "aparencia": 1,
   "ataques": [
     {
-      "nome": "Garras e presas",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 6
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Cauda",
+      "atrib": "destreza",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
       "nome": "Envolver",
-      "descricao": "Lança-se sobre um oponente de tamanho igual ou menor, envolvendo-o completamente no próprio corpo; parte do dano que a vítima causaria a ele recai sobre o próprio corpo enquanto ela está presa."
+      "descricao": "Mordida: Ativação: uma ação, Velocidade 7, lançando-se sobre um alvo de Tamanho Grande ou menor. Duração: até o alvo se soltar ou ela soltar. Alcance: o do corpo a corpo. Área: um alvo. Efeito: na jogada de Agarrar do livro que acerta, envolve o alvo no próprio corpo: ele fica Agarrado e Cego, e a Mordida acerta sem jogada a cada 6 Ticks; quem ataca a capa enquanto ela envolve alguém faz metade do dano nela e metade na vítima (site). Dano: o da Mordida. Resistência: corpo, para escapar, pela jogada de Agarrar do livro. Limite de uso: um alvo envolvido por vez.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Gemido Sônico",
-      "descricao": "Emite um lamento infrassônico com efeitos variados: espalha pavor que deixa os alvos em pânico, causa náusea e queda, mergulha um único inimigo em torpor paralisante, ou impõe penalidades de combate a todos ao redor."
+      "nome": "Gemido sônico",
+      "descricao": "poder natural (base Fascinação 3): Ativação: uma ação, Velocidade 7. Duração: à escolha, abaixo. Alcance: 9 m em volta dela. Área: à escolha: pavor, todos na área ficam Em pânico até o fim da cena; náusea, todos na área ficam Caídos e passam o próximo Tick só levantando; torpor, um alvo fica Imobilizado por 12 Ticks; lamento, todos na área ficam Abalados até o fim da cena. Efeito: o lamento infrassônico não pega nela nem em outra capa sombria (site). Dano: nenhum. Resistência: mente, contra Influência + Integridade dela. Limite de uso: o pavor, uma vez por dia; os outros, um gemido a cada 12 Ticks.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Manipulação de Sombras",
-      "descricao": "Em penumbra, distorce as sombras ao seu redor para se tornar borrado, criar duplicatas ilusórias de si mesmo ou projetar imagens falsas."
+      "nome": "Manipulação de sombras",
+      "descricao": "poder natural (base Ofuscação 3): Ativação: uma ação, Velocidade 6, só em penumbra ou escuridão. Duração: até o fim da cena, ou até ela desfazer. Alcance: o próprio corpo, ou 18 m para a imagem falsa. Área: à escolha: borrada, conta como em Cobertura parcial contra quem a ataca; duplicatas, três imagens dela, e quem a ataca escolhe uma ao acaso (uma em quatro é ela, e a imagem acertada some); imagem falsa, uma cena de sombras de até 6 m. Efeito: o descrito na escolha. Dano: nenhum. Resistência: mente, contra Influência + Integridade dela, só para quem desconfia da imagem falsa. Limite de uso: um efeito por vez, à vontade.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Camuflagem",
-      "descricao": "Consegue se disfarçar como um manto, lençol ou objeto similar, quase indistinguível quando imóvel."
+      "descricao": "Furtividade, com a Especialidade natural (imóvel, como manto) +3.",
+      "classe": "livro"
     },
     {
-      "nome": "Imune ao Próprio Gemido",
-      "descricao": "Não é afetado pelos efeitos sônicos ou mentais de seu próprio lamento."
+      "nome": "espreita do túnel",
+      "descricao": "espera imóvel como um manto pendurado, cai sobre o último do grupo e o envolve, geme para apavorar os outros e se esconde nas próprias sombras se a luta vira.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: enxerga no escuro dos túneis."
     }
   ],
   "lore": [
@@ -90,6 +138,14 @@
     {
       "titulo": "Motivos Obscuros",
       "texto": "Suas intenções permanecem um mistério até para quem estuda a espécie; fala apenas a língua das profundezas e raramente se associa a outras criaturas."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: sozinha."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande, 43 PV, Impacto 10, Corte e Perfuração 4. Esquiva 14, Bloqueio 10. Mordida (12, 5) ou cauda (10, 5); envolve quem é Grande ou menor, cega e morde sem jogada, e metade do dano contra ela vai na vítima. Geme para apavorar, derrubar, imobilizar ou abalar; nas sombras, borra e se multiplica. Voa a 4. Defesa Mental 25."
     }
   ],
   "ecologia": {
@@ -126,5 +182,37 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 43,
+    "esquiva": 14,
+    "bloqueio": 10,
+    "defesa": 14,
+    "defesaMental": 25,
+    "defesaSocial": 8,
+    "absorcao": {
+      "impacto": 10,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 151.81,
+    "deslocamento": {
+      "terra": {
+        "batalha": 1,
+        "arranque": 2,
+        "corrida": 2
+      },
+      "voo": {
+        "batalha": 4
+      }
+    }
+  },
+  "notasObservacao": [
+    "`forca`: 5; o site tinha 7 **[provisório]**",
+    "`comprimento`: 1,8 m de corpo e cauda de 1,2 m, estimados; o site dá só a envergadura **[extrapolação]**",
+    "`ataques`: Mordida Média e Cauda Leve no lugar das \"Garras e presas\" **[provisório]**",
+    "`compaixao`: 1, o piso da régua; o site tinha 0",
+    "`envolver`, `gemido sônico`, `manipulação de sombras`: números sugeridos pela ficha (D-197)"
+  ]
 }
