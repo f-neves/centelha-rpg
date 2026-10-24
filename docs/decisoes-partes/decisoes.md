@@ -2765,6 +2765,18 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: mensagem do autor de 23/10/2026, sobre a lista de revisão do lote 10.
 - Estado: **no ar como está** desde o merge `ba49b828` (entrou no `main` pelo `93c2f0b4`, cujo deploy falhou; conferido no site publicado em 23/10: "conjura Fogo até o 4"). Nada a fazer.
 
+### D-213 · O Tamanho de quem muda muito de silhueta se mede pela postura em que luta, e a linha diz qual é [tags: bestiario, criatura, tamanho, segundo-tamanho, postura, serpente, jiboia, naga, dragao, lote-21, lote-23, conferidor, d-183, b20]
+- Data: 2026-10-24
+- Decisão (autor, 24/10/2026; decisão 58 na numeração do autor; o autor autoriza o registro): "O Tamanho de criatura de corpo de serpente, ou de qualquer criatura que muda muito de silhueta, se mede pela postura em que ela luta: enrolada se dá o bote enrolada (como a jiboia), erguida se luta erguida (como a naga). A linha Tamanho diz com clareza a qual postura o Tamanho se refere, e o Segundo Tamanho também. Ponha no manual e no conferidor, se der para conferir. A Bestiarista já foi avisada; vale para os dragões do lote 23."
+- Origem: mensagem do autor de 24/10/2026, sobre o Tamanho das nagas do lote 21 (principal erguida, marcado provisório, contra a jiboia do molde, principal enrolada).
+- Estado: **aplicada em 24/10/2026** no manual (Passo 4, seção 3.12 e a lista de conferência; a cópia do pacote da Bestiarista) e no conferidor (`confere_etapa2.py`: com segundo Tamanho, as duas linhas têm de dizer a postura, e a vista sozinha não conta; erro na ficha que não é animal, aviso na de animal; três casos novos no teste com defeito plantado e controle negativo). Nas 187 fichas, das 33 com segundo Tamanho, só o lagarto-de-gola-gigante (animal) não diz a postura da linha Tamanho ("vista de lado"); vai à Bestiarista pelo fluxo de ajuste. Nada muda no site: nenhuma categoria muda. Se a postura escolhida é a em que a criatura luta, só se confere lendo. Completa a decisão 8 de `tamanho-decisoes-3` (o segundo Tamanho e o voador de asas abertas).
+
+### D-214 · A mesa não precisa achar criatura salva com id antigo [tags: mesa, bestiario, criatura, id, monstro-id, renomear, campones-assustado, banco, b20]
+- Data: 2026-10-24
+- Decisão (autor, 24/10/2026; decisão 59 na numeração do autor; o autor autoriza o registro): "A mesa não precisa achar criatura salva com id antigo («camponis-assustado» ou «mon-»): esse caso não existe, porque não há mesa ativa. Nada muda no código nem no banco. Feche a pergunta."
+- Origem: pergunta do Arquiteto de 24/10/2026, depois do lote 22 (a mesa busca o verbete só pelo `monstro_id`; o id `camponis-assustado` virou `campones-assustado`).
+- Estado: **fechada em 24/10/2026.** Nada muda no código nem no banco; o levantamento dos ids renomeados não se faz.
+
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
 - Decisão (texto completo em `docs/simulacao/caixa/jogador-novo-decisoes.md`, seção "M-32"): abaixo de Força 4, o Arco Composto soma `Força×1` e parte de `+0`, os números do Arco Longo; a arma não fica proibida, fica "um arco comum caro". O campo é `forcaMin: 4` em `armas.json`, lido por `calc.ts` (`comRequisitoDeForca`), `ficha-engine.ts` e `combate-resumo.ts`.
