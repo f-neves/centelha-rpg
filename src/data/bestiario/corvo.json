@@ -136,7 +136,7 @@
     },
     {
       "titulo": "No jogo",
-      "texto": "Em voo e pousado é Pequeno contra um humano Médio: ganha +3 no acerto corpo a corpo e quem atira nele leva −3. O dano é pequeno (1, 5) e os PV também (2). O perigo do corvo não é a bicada: é o olho que acha o que foi escondido, a fala imitada no escuro, a cabeça que guarda a ferramenta para depois e o bando que segue os lobos até o ferido. No chão anda devagar (1 m por Tick); no ar faz 14 m por Tick."
+      "texto": "Em voo e pousado é Pequeno contra um humano Médio: ganha +3 no acerto corpo a corpo e quem atira nele leva −3. O dano é pequeno (1,5) e os PV também (2). O perigo do corvo não é a bicada: é o olho que acha o que foi escondido, a fala imitada no escuro, a cabeça que guarda a ferramenta para depois e o bando que segue os lobos até o ferido. No chão anda devagar (1 m por Tick); no ar faz 14 m por Tick."
     }
   ],
   "ecologia": {

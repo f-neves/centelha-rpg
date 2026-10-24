@@ -148,7 +148,7 @@
     },
     {
       "titulo": "No jogo",
-      "texto": "Em voo é Pequeno contra um humano Médio: ganha +3 no acerto corpo a corpo e quem atira nele leva −3. Pousado fica Miúdo, e aí são +6 e −6. O dano é pequeno (1, 5) e os PV são 2: o falcão não mata gente, e um golpe certo o derruba. Ele é o batedor e o caçador de aves: vê o grupo a mais de um quilômetro, cruza 12 m por Tick e desce a 49 m por Tick no mergulho. No chão, 2 m por Tick."
+      "texto": "Em voo é Pequeno contra um humano Médio: ganha +3 no acerto corpo a corpo e quem atira nele leva −3. Pousado fica Miúdo, e aí são +6 e −6. O dano é pequeno (1,5) e os PV são 2: o falcão não mata gente, e um golpe certo o derruba. Ele é o batedor e o caçador de aves: vê o grupo a mais de um quilômetro, cruza 12 m por Tick e desce a 49 m por Tick no mergulho. No chão, 2 m por Tick."
     }
   ],
   "ecologia": {

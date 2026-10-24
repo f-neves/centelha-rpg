@@ -132,7 +132,7 @@
     },
     {
       "titulo": "No jogo",
-      "texto": "Médio quando rola, Grande quando se espalha. Lenta (1 m por Tick) e fácil de acertar (Esquiva e Bloqueio 2), mas espada, lança, flecha e raio não a ferem: a dividem em duas, cada uma com metade dos PV. Maça, fogo e gelo funcionam. Bate com ácido (dano médio 9, 5), agarra e segue dissolvendo a cada 6 Ticks. O ácido não estraga metal nem osso. 62 PV, Impacto 9. Não tem mente: medo e conversa não servem."
+      "texto": "Médio quando rola, Grande quando se espalha. Lenta (1 m por Tick) e fácil de acertar (Esquiva e Bloqueio 2), mas espada, lança, flecha e raio não a ferem: a dividem em duas, cada uma com metade dos PV. Maça, fogo e gelo funcionam. Bate com ácido (dano médio 9,5), agarra e segue dissolvendo a cada 6 Ticks. O ácido não estraga metal nem osso. 62 PV, Impacto 9. Não tem mente: medo e conversa não servem."
     }
   ],
   "ecologia": {

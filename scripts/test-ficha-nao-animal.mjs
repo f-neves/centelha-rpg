@@ -317,6 +317,13 @@ try {
   para('nenhum (x) com Tipo de dano', CUSPE, '| Cuspe | boca | Leve | 1/1/3 | 5 | nenhum (enferruja) | ácido | |', /ataque sem dado: Cuspe/);
   para('nenhum sem parênteses', CUSPE, '| Cuspe | boca | Leve | 1/1/3 | 5 | nenhum | não se aplica | |', /ataque sem dado: Cuspe/);
 
+  // O DECIMAL NA LIMPEZA DA CITAÇÃO (achado da Revisora, rodada 18): "10,5" entre parênteses fica "10,5", e não
+  // "10, 5"; a citação de verdade continua saindo; a lista "6, 7" da ficha fica como está.
+  const NOJ = '## No jogo\n\nUm teste.\n';
+  const dec = roda(FICHA.replace(NOJ, '## No jogo\n\nGolpeia duas vezes (dano médio 10,5 cada). Caça de noite (ADW). Apara (Bloqueio 6, 7 com a maça).\n'), 'decimal');
+  const noJogo = (dec.json?.lore || []).find((l) => l.titulo === 'No jogo')?.texto || '';
+  ok(dec.status === 0 && noJogo.includes('(dano médio 10,5 cada)') && !noJogo.includes('ADW') && noJogo.includes('(Bloqueio 6, 7 com a maça)'), `o decimal fica, a citação sai, a lista fica: "${noJogo}"`);
+
   // A jogada comum, sem frase: o corpo a corpo vai pelo maior (o animal ágil, como o gato).
   const agil = roda(FICHA.replace('| Força | 4 |', '| Força | 2 |').replace('"forca":4', '"forca":2').replace('Jogada: Força 4 + Armas 3', 'Jogada: Destreza 3 + Armas 3'), 'jogada comum pelo maior');
   const toque = (agil.json?.ataques || []).find((a) => a.nome === 'Toque gelado');
