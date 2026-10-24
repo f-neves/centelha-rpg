@@ -5,9 +5,10 @@
   "nome": "Limo Cinzento",
   "nomeIngles": "Gray Ooze",
   "categoria": "Limo",
+  "categoriaLegada": "Limo",
   "papel": "soldado",
   "conceito": "limo Médio",
-  "descricao": "Massa informe que digere tudo que toca.",
+  "descricao": "Gosma cinzenta que desliza por pântanos gelados e masmorras úmidas e se confunde com poças d'água e lama, à espera de que algo a pise. Agarra e corrói com ácido carne, metal e madeira.",
   "tags": [
     "limo",
     "centelha"
@@ -15,37 +16,60 @@
   "imagem": "bestiario/limo-cinzento_criatura.webp",
   "porte": "Médio",
   "dimensoes": {
-    "medida": "1 m de diâmetro",
-    "peso": "150 kg"
+    "medida": "1 m de comprimento, 0,19 m de altura",
+    "peso": "150 kg",
+    "comprimento": 1,
+    "largura": 1,
+    "altura": 0.19
   },
   "locomocao": {
     "terra": 1
   },
+  "deslocamentoDeclarado": {
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 2
+  },
   "centelha": 1,
   "attrs": {
     "forca": 5,
-    "destreza": 0,
+    "destreza": 1,
     "vigor": 8,
-    "influencia": 0,
-    "perspicacia": 0,
-    "compostura": 0,
-    "percepcao": 0,
+    "percepcao": 1,
     "inteligencia": 0,
-    "raciocinio": 0
+    "raciocinio": 1,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
     "briga": 4,
-    "esquiva": 0,
-    "prontidao": 0,
-    "integridade": 2
+    "furtividade": 2
   },
+  "skills2": {
+    "musculatura": 1
+  },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "como poça d'água ou lama",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "Agarrão",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
-    "compaixao": 0,
+    "compaixao": 1,
     "conviccao": 1,
     "temperanca": 1,
-    "valor": 2
+    "valor": 6
   },
-  "willpower": 6,
+  "willpower": 3,
   "aparencia": 1,
   "ataques": [
     {
@@ -54,31 +78,46 @@
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
-      "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 5
+      "tipo": "acido",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
+  "fraquezas": [],
   "resistencias": [
     "corte",
     "perfuracao"
   ],
+  "imunidades": [
+    "fogo",
+    "gelo"
+  ],
   "habilidades": [
     {
+      "nome": "agarrar",
+      "descricao": "Pseudópode: o Agarrão, com a Especialidade natural Briga (Agarrão) +2.",
+      "classe": "livro"
+    },
+    {
       "nome": "Ácido corrosivo",
-      "descricao": "Seu toque banha metal e matéria orgânica em ácido: cada golpe causa dano contínuo adicional, e armas ou armaduras que a atingem podem se corroer no processo."
+      "descricao": "Pseudópode: Ativação: o Pseudópode que fere. Duração: 12 Ticks, ou até alguém gastar uma ação para lavar o ácido. Alcance: toque. Área: um alvo. Efeito: o ácido segue corroendo (site). Dano: 1d6, ácido, a cada 6 Ticks. Resistência: nenhum. Limite de uso: um por golpe; não acumula.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "corrói arma e armadura",
+      "descricao": "a arma ou a armadura que a toca pode se corroer (site).",
+      "classe": "sem regra ainda"
     },
     {
       "nome": "Presa transparente",
-      "descricao": "Sua coloração baça a torna quase invisível no ambiente; quem não a percebe e a pisa sofre um ataque surpresa e pode ser agarrado."
+      "descricao": "parece uma poça d'água; quem a pisa sem perceber leva o Pseudópode de surpresa e pode ser agarrado (site).",
+      "classe": "como luta"
     },
     {
-      "nome": "Sentido cego",
-      "descricao": "Percebe o mundo ao redor sem depender da visão, dispensando olhos por completo."
-    },
-    {
-      "nome": "Imunidades",
-      "descricao": "Insensível a frio e fogo."
+      "nome": "Sentidos",
+      "descricao": "sentido cego: percebe o mundo em volta sem olhos (site)."
     }
   ],
   "lore": [
@@ -89,6 +128,14 @@
     {
       "titulo": "Origem incerta",
       "texto": "Sábios discordam se ela nasce de experimentos alquímicos fracassados ou de um poço de detritos mágicos que ganhou vida própria."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, poça de 1 m. 49 PV, Impacto 9, Corte e Perfuração 1; corte e perfuração fazem metade, fogo e gelo nada. Esquiva e Bloqueio 2. Lento (1). Pseudópode ácido de dano médio 7,5, que segue corroendo 1d6 a cada 6 Ticks por 12 Ticks; agarra (+2). Parece água: quem a pisa é pego de surpresa. Sem mente."
     }
   ],
   "ecologia": {
@@ -126,5 +173,33 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 49,
+    "esquiva": 2,
+    "bloqueio": 2,
+    "defesa": 2,
+    "defesaMental": null,
+    "defesaSocial": null,
+    "absorcao": {
+      "impacto": 9,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 330.38,
+    "deslocamento": {
+      "terra": {
+        "batalha": 1,
+        "arranque": 2,
+        "corrida": 2
+      }
+    }
+  },
+  "notasObservacao": [
+    "`destreza`, `percepcao`, `raciocinio`, sociais: 1, e `vontade` 3 (D-106 b, D-186); o site tinha 0 e 6",
+    "`musculatura`: 1 **[provisório]**",
+    "`ataques`: Pseudópode Leve de ácido; o site tinha tipo impacto **[provisório]**",
+    "`ácido corrosivo`: números sugeridos pela ficha (D-197)"
+  ]
 }

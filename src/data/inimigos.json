@@ -7,19 +7,19 @@
     "ameaca": 1,
     "centelha": 0,
     "conceito": "civil sem treino",
-    "descricao": "Gente comum empurrada à briga. Foge ao primeiro sangue.",
+    "descricao": "Lavrador sem treino que não escolheu lutar: foi arrastado por um senhor, um bando ou a fome. Segura o cajado tremendo, grita mais do que golpeia e corre ao primeiro sangue.",
     "tags": [
       "humano"
     ],
     "pv": 31,
-    "defesa": 4,
-    "defesaSocial": 4,
+    "defesa": 6,
+    "defesaSocial": 6,
     "defesaMental": 10,
     "vontade": 4,
     "soak": {
       "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
+      "corte": 0,
+      "perfuracao": 0
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -36,11 +36,12 @@
     },
     "ataques": [
       {
-        "nome": "Forcado/Pancada",
-        "pool": "1d6+2",
+        "nome": "Bordão",
+        "pool": "1d6+2 +1",
         "dano": "1d6 +4 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 6,
+        "classe": "haste"
       }
     ],
     "tecnicas": [],
@@ -51,8 +52,8 @@
       "prontidao": 1,
       "esquiva": 0,
       "integridade": 4,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "sociabilidade": 1,
+      "furtividade": 0
     }
   },
   {
@@ -4462,68 +4463,53 @@
     "ameaca": 3,
     "centelha": 1,
     "conceito": "limo Grande",
-    "descricao": "Massa informe que digere tudo que toca.",
+    "descricao": "Massa transparente e quase invisível que desliza por corredores e câmaras subterrâneas, dissolvendo devagar tudo o que toca. Não persegue: avança e engole. Dentro dele ficam moedas, ossos e fivelas de todos que morreram ali.",
     "tags": [
       "limo",
       "centelha"
     ],
-    "pv": 66,
-    "defesa": 0,
+    "pv": 85,
+    "defesa": 2,
     "defesaSocial": "-",
     "defesaMental": "-",
-    "vontade": 6,
+    "vontade": 3,
     "soak": {
       "impacto": 10,
-      "corte": 7,
-      "perfuracao": 7
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 0",
+    "iniciativa": "1d6 + 1",
     "atributos": {
       "forca": 3,
-      "destreza": 0,
+      "destreza": 1,
       "vigor": 9,
-      "influencia": 0,
-      "perspicacia": 0,
-      "compostura": 0,
-      "percepcao": 0,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 1,
       "inteligencia": 0,
-      "raciocinio": 0
+      "raciocinio": 1
     },
     "ataques": [
       {
         "nome": "Pseudópode",
         "pool": "3d6+2 +2",
-        "dano": "2d6 +4 impacto",
+        "dano": "1d6 +4 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "paralisia-ao-toque",
-        "nome": "Paralisia ao toque",
-        "tipo": "natural",
-        "base": {
-          "arte": "tempo",
-          "nivel": 2
-        },
-        "resiste": "corpo",
-        "efeito": "quem é tocado e falha em resistir fica paralisado por um tempo",
-        "descricao": "O toque gelatinoso do cubo entorpece quem falha em resistir, deixando-o paralisado, incapaz de agir, por um tempo curto.",
-        "usos": {
-          "periodo": "golpe"
-        }
-      }
-    ],
     "pericias": {
       "prontidao": 0,
       "esquiva": 0,
-      "furtividade": 0
+      "integridade": 0,
+      "furtividade": 2
     }
   },
   {
@@ -16128,41 +16114,42 @@
     "ameaca": 3,
     "centelha": 1,
     "conceito": "limo Médio",
-    "descricao": "Massa informe que digere tudo que toca.",
+    "descricao": "Gosma cinzenta que desliza por pântanos gelados e masmorras úmidas e se confunde com poças d'água e lama, à espera de que algo a pise. Agarra e corrói com ácido carne, metal e madeira.",
     "tags": [
       "limo",
       "centelha"
     ],
     "pv": 49,
-    "defesa": 0,
+    "defesa": 2,
     "defesaSocial": "-",
     "defesaMental": "-",
-    "vontade": 6,
+    "vontade": 3,
     "soak": {
       "impacto": 9,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 0",
+    "iniciativa": "1d6 + 1",
     "atributos": {
       "forca": 5,
-      "destreza": 0,
+      "destreza": 1,
       "vigor": 8,
-      "influencia": 0,
-      "perspicacia": 0,
-      "compostura": 0,
-      "percepcao": 0,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
+      "percepcao": 1,
       "inteligencia": 0,
-      "raciocinio": 0
+      "raciocinio": 1
     },
     "ataques": [
       {
         "nome": "Pseudópode",
-        "pool": "4d6+2 +2",
-        "dano": "1d6 +6 impacto",
+        "pool": "4d6+2 +3",
+        "dano": "1d6 +4 acido",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -16172,7 +16159,8 @@
     "pericias": {
       "prontidao": 0,
       "esquiva": 0,
-      "furtividade": 1
+      "integridade": 0,
+      "furtividade": 2
     }
   },
   {
@@ -18134,22 +18122,22 @@
     "ameaca": 6,
     "centelha": 6,
     "conceito": "aberração Imenso",
-    "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+    "descricao": "Verme colossal que já governou impérios inteiros no fundo do mundo subterrâneo e hoje sobrevive em lendas de horror. Esmaga a mente de quem o enfrenta, cospe ácido, prende com as línguas tentaculares e engole a presa viva. Encanta, move as coisas com a mente e some por teletransporte.",
     "tags": [
       "aberracao",
       "centelha"
     ],
-    "pv": 90,
+    "pv": 85,
     "defesa": 2,
-    "defesaSocial": 10,
+    "defesaSocial": 18,
     "defesaMental": 31,
     "vontade": 11,
     "soak": {
       "impacto": 16,
-      "corte": 18,
-      "perfuracao": 18
+      "corte": 6,
+      "perfuracao": 6
     },
-    "resistPerf": 2,
+    "resistPerf": 0,
     "iniciativa": "1d6 + 7",
     "atributos": {
       "forca": 12,
@@ -18164,11 +18152,12 @@
     },
     "ataques": [
       {
-        "nome": "Garras e presas",
+        "nome": "Tentáculo",
         "pool": "8d6+2 +10",
-        "dano": "3d6 +18 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "dano": "2d6 +18 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -18179,8 +18168,8 @@
       "prontidao": 2,
       "esquiva": 0,
       "integridade": 5,
-      "sociabilidade": 0,
-      "furtividade": 0
+      "sociabilidade": 2,
+      "furtividade": 1
     }
   },
   {

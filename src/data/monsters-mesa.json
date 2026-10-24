@@ -3953,9 +3953,9 @@
   },
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
-   "valor": 3
+   "valor": 1
   },
   "vontade": 4,
   "aparencia": 4,
@@ -3963,20 +3963,20 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 4,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "sociabilidade": 1,
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 31,
-   "defesa": 4,
-   "defesaSocial": 4,
+   "defesa": 6,
+   "defesaSocial": 6,
    "defesaMental": 10,
    "absorcao": {
     "impacto": 2,
-    "corte": 1,
-    "perfuracao": 1
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -3987,11 +3987,11 @@
    },
    "ataques": [
     {
-     "nome": "Forcado/Pancada",
-     "pool": "1d6+2",
+     "nome": "Bordão",
+     "pool": "1d6+2 +1",
      "dano": "1d6 +4 impacto",
      "perfArma": null,
-     "speed": 5,
+     "speed": 6,
      "classe": "haste"
     }
    ]
@@ -6256,51 +6256,52 @@
   "ameaca": 3,
   "centelha": 1,
   "categoria": "Limo",
-  "porte": "Grande",
+  "porte": "Enorme",
   "imagem": "bestiario/cubo-gelatinoso_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
    "forca": 3,
-   "destreza": 0,
+   "destreza": 1,
    "vigor": 9,
-   "influencia": 0,
-   "perspicacia": 0,
-   "compostura": 0,
-   "percepcao": 0,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1,
+   "percepcao": 1,
    "inteligencia": 0,
-   "raciocinio": 0
+   "raciocinio": 1
   },
   "virtudes": {
-   "compaixao": 0,
+   "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
-   "valor": 2
+   "valor": 6
   },
-  "vontade": 6,
+  "vontade": 3,
   "aparencia": 1,
   "pericias": {
    "prontidao": 0,
    "esquiva": 0,
-   "furtividade": 0
+   "integridade": 0,
+   "furtividade": 2
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 66,
-   "defesa": 0,
+   "pv": 85,
+   "defesa": 2,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
     "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "imunidades": [
     "raio"
    ],
-   "iniciativa": "1d6 + 0",
+   "iniciativa": "1d6 + 1",
    "deslocamento": {
     "batalha": 2,
     "arranque": 3,
@@ -6310,7 +6311,7 @@
     {
      "nome": "Pseudópode",
      "pool": "3d6+2 +2",
-     "dano": "2d6 +4 impacto",
+     "dano": "1d6 +4 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -6327,8 +6328,8 @@
    ]
   },
   "dimensoes": {
-   "medida": "cubo de 3 m de lado",
-   "peso": "14 t (massa gelatinosa densa, bem acima do normal para o porte)"
+   "medida": "3 m de comprimento, 3 m de altura",
+   "peso": "27,3 t"
   }
  },
  {
@@ -17525,46 +17526,51 @@
   "tipo": "soldado",
   "atributos": {
    "forca": 5,
-   "destreza": 0,
+   "destreza": 1,
    "vigor": 8,
-   "influencia": 0,
-   "perspicacia": 0,
-   "compostura": 0,
-   "percepcao": 0,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1,
+   "percepcao": 1,
    "inteligencia": 0,
-   "raciocinio": 0
+   "raciocinio": 1
   },
   "virtudes": {
-   "compaixao": 0,
+   "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
-   "valor": 2
+   "valor": 6
   },
-  "vontade": 6,
+  "vontade": 3,
   "aparencia": 1,
   "pericias": {
    "prontidao": 0,
    "esquiva": 0,
-   "furtividade": 1
+   "integridade": 0,
+   "furtividade": 2
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 49,
-   "defesa": 0,
+   "defesa": 2,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
     "impacto": 9,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
     "corte",
     "perfuracao"
    ],
-   "iniciativa": "1d6 + 0",
+   "imunidades": [
+    "fogo",
+    "gelo"
+   ],
+   "iniciativa": "1d6 + 1",
    "deslocamento": {
     "batalha": 1,
     "arranque": 2,
@@ -17573,8 +17579,8 @@
    "ataques": [
     {
      "nome": "Pseudópode",
-     "pool": "4d6+2 +2",
-     "dano": "1d6 +6 impacto",
+     "pool": "4d6+2 +3",
+     "dano": "1d6 +4 acido",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -17593,7 +17599,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "1 m de diâmetro",
+   "medida": "1 m de comprimento, 0,19 m de altura",
    "peso": "150 kg"
   }
  },
@@ -21229,7 +21235,7 @@
   "ameaca": 6,
   "centelha": 6,
   "categoria": "Aberração",
-  "porte": "Imenso",
+  "porte": "Enorme",
   "imagem": "bestiario/neothelid_criatura.webp",
   "semImagem": false,
   "tipo": "chefe",
@@ -21245,8 +21251,8 @@
    "raciocinio": 5
   },
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 4
   },
@@ -21256,22 +21262,22 @@
    "prontidao": 2,
    "esquiva": 0,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 0
+   "sociabilidade": 2,
+   "furtividade": 1
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 90,
+   "pv": 85,
    "defesa": 2,
-   "defesaSocial": 10,
+   "defesaSocial": 18,
    "defesaMental": 31,
    "absorcao": {
     "impacto": 16,
-    "corte": 18,
-    "perfuracao": 18
+    "corte": 6,
+    "perfuracao": 6
    },
-   "resistenciaPerfuracao": 2,
+   "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 3,
@@ -21280,10 +21286,10 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Tentáculo",
      "pool": "8d6+2 +10",
-     "dano": "3d6 +18 perfurante",
-     "perfArma": 0,
+     "dano": "2d6 +18 impacto",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     }
@@ -21299,8 +21305,8 @@
    ]
   },
   "dimensoes": {
-   "medida": "12 m de comprimento",
-   "peso": "6.000 kg"
+   "medida": "12 m de comprimento, 0,89 m de altura",
+   "peso": "6,0 t"
   }
  },
  {

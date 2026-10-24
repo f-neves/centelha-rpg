@@ -8,7 +8,7 @@
   "categoriaLegada": "Humano",
   "papel": "capanga",
   "conceito": "civil sem treino",
-  "descricao": "Gente comum empurrada à briga. Foge ao primeiro sangue.",
+  "descricao": "Lavrador sem treino que não escolheu lutar: foi arrastado por um senhor, um bando ou a fome. Segura o cajado tremendo, grita mais do que golpeia e corre ao primeiro sangue.",
   "tags": [
     "humano"
   ],
@@ -16,70 +16,108 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,65 m de altura",
-    "peso": "65 kg"
+    "peso": "65 kg",
+    "largura": 0.41,
+    "altura": 1.65
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 0,
   "attrs": {
     "forca": 2,
     "destreza": 2,
     "vigor": 2,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 2,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
+    "armas": 1,
     "briga": 1,
-    "esquiva": 0,
+    "atletismo": 1,
     "prontidao": 1,
-    "integridade": 4
+    "integridade": 4,
+    "resistencia": 1,
+    "oficios-gerais": 2,
+    "sobrevivencia": 1,
+    "sociabilidade": 1
   },
+  "especialidades": [
+    {
+      "habilidade": "integridade",
+      "foco": "contra magia",
+      "valor": 2,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 2,
-    "conviccao": 3,
+    "conviccao": 2,
     "temperanca": 2,
-    "valor": 3
+    "valor": 1
   },
   "willpower": 4,
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Forcado/Pancada",
+      "nome": "Bordão",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 2,
       "tipo": "impacto",
-      "ticks": 5
+      "acerto": 1,
+      "ticks": 6,
+      "classe": "haste"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Sem treino",
-      "descricao": "ataques e Defesa em nível mínimo, quase sempre erra"
+      "nome": "Horda",
+      "descricao": "a Regra de Horda. O camponês é capanga Comum: na horda, 5 de PV por membro, sem o piso de 25, e a Defesa de um capanga −2. Cada ataque do esquadrão rola o pool de um camponês + Magnitude d6 no acerto e no dano.",
+      "classe": "livro"
     },
     {
-      "nome": "Testa de ferro frágil",
-      "descricao": "poucos PV, cai com um golpe qualquer"
+      "nome": "Sem treino",
+      "descricao": "as Habilidades de luta em 0 e 1 já dão o acerto e as Defesas mínimas (site: \"quase sempre erra\").",
+      "classe": "livro"
     },
     {
       "nome": "Pavor de sangue",
-      "descricao": "foge do combate assim que sofre o primeiro ferimento"
+      "descricao": "foge do combate assim que sofre o primeiro ferimento, ou quando vê sangue, seu ou alheio (site). Na horda, o Mestre pode tirar os que fogem junto com as baixas.",
+      "classe": "como luta"
     },
     {
-      "nome": "Horda",
-      "descricao": "em grupo, use a regra de Horda em vez de rolar cada um"
+      "nome": "grita mais do que golpeia",
+      "descricao": "segura o cajado tremendo, fica atrás dos outros, golpeia quando alguém cai perto e corre ao primeiro sangue.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sem inimizades naturais",
+      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão, audição, olfato: humanos."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Não escolheu lutar: foi arrastado por um senhor, um bando ou o desespero da fome. Segura a foice ou o cajado tremendo, grita mais do que golpeia, e corre ao primeiro sangue, seu ou alheio."
+      "texto": "Não escolheu lutar: foi arrastado por um senhor, um bando ou o desespero da fome. Segura a foice ou o cajado tremendo, grita mais do que golpeia, e corre ao primeiro sangue, seu ou alheio. Social: em grupo, com outros da aldeia."
     },
     {
       "titulo": "Hábitos",
@@ -88,6 +126,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "É a face mais comum do povo de Uldun: Centelha zero, sem treino, criado sob o tabu da Supressão a temer qualquer coisa que cheire a magia. Quando pega em armas, é sinal de que algo já deu muito errado na região."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Humano Médio, 31 PV, Impacto 2. Esquiva 4, Bloqueio 4 (6 com o bordão). Bordão de dano médio 7,5. Foge ao primeiro ferimento. Em grupo, use a Horda: 5 PV por camponês, e o esquadrão rola + Magnitude d6."
     }
   ],
   "ecologia": {
@@ -111,5 +153,33 @@
     "crConf": "estimado"
   },
   "variantes": [],
-  "ameacaLegada": 1
+  "ameacaLegada": 1,
+  "v3": {
+    "pv": 31,
+    "esquiva": 4,
+    "bloqueio": 4,
+    "defesa": 6,
+    "defesaMental": 10,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 2,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 96.38,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    },
+    "bloqueioArma": 2
+  },
+  "notasObservacao": [
+    "`equipamento`: o bordão do livro no lugar do forcado do site **[provisório]**",
+    "`armas`: 1; o site gravava o ataque com Briga **[provisório]**",
+    "`bravura`: 1; o site tinha 3 **[provisório]**"
+  ]
 }
