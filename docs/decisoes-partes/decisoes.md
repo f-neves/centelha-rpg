@@ -2727,13 +2727,43 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Decisão (autor, 23/10/2026; decisão 56 na numeração do autor; o autor autoriza o registro): "mostra as duas, mas normalmente se escolhe a maior. Essa é uma escolha do mestre, não nossa. Mas as Defesas são influenciadas pelos equipamentos da criatura." A aplicação, nas palavras do autor: "o card e a mesa mostram a Defesa com o equipamento e sem ele; na mesa, o Mestre escolhe qual usar; por padrão vem a maior; o número com equipamento sai da conta do livro, como na ficha do personagem: penalidade da armadura, Defesa do escudo, Defesa da arma (inclusive negativa); a escolha do Mestre não vai para o banco: fica na mesa como hoje, ou no navegador. Se precisar gravar no Supabase, pare e me avise." "Entra na branch das criaturas não animais, com teste, e no meu ok junto com a publicação."
 - Correção do autor no mesmo dia (23/10/2026): "Correção da decisão 56, item «o número com equipamento»: a Defesa da arma não entra negativa. Vale a D-065 («A ficha mostra o Bloqueio com a melhor combinação disponível») e o que o ficha-engine.ts faz (mãos ocupadas, bônus 0, nunca negativo). O resto da decisão 56 fica: o card e a mesa mostram a Defesa com e sem o equipamento, o Mestre escolhe, e por padrão vem a maior."
 - Origem: mensagens do autor de 23/10/2026, sobre a pergunta da Executora (a mesa usa a Defesa vestida?) e o machado pesado do minotauro (lote 5).
-- Estado: **no manual em 23/10/2026** (`../tmp/arquiteto/bestiario/manual-fichas-criatura.md`, seção 3, junto da D-188; a cópia do pacote da Bestiarista). **A implementar** na branch `bestiario-nao-animal` (Executora), com teste; o merge espera o ok do autor, junto com a publicação. Pela correção, o `sim (−2)` do machado do minotauro fica na ficha e a conta fica com o maior (o card de hoje, Defesa 9 pelos chifres, está certo). Completa a D-188 (que falava só do card).
+- Estado: **no manual em 23/10/2026** (`../tmp/arquiteto/bestiario/manual-fichas-criatura.md`, seção 3, junto da D-188; a cópia do pacote da Bestiarista). **No ar em 23/10/2026** (merge `2df6cdaa` da `bestiario-nao-animal`, com o ok do autor; as doze criaturas dos lotes 6 a 13 que vestem armadura ou escudo entraram no `main` pelo merge `93c2f0b4`, cujo deploy falhou, e estão no ar desde o merge `ba49b828`, que consertou o CI). No Editar do combatente da mesa, a escolha não vai ao banco (o campo vazio não grava a chave). Pela correção, o `sim (−2)` do machado do minotauro fica na ficha e a conta fica com o maior (o card de hoje, Defesa 9 pelos chifres, está certo). Completa a D-188 (que falava só do card).
 
 ### D-207 · Humanoide que é raça jogável parte da raça do livro, e o monstro do site entra por cima [tags: bestiario, criatura, humanoide, raca, goblin, hobgoblin, orc, racas, lote-6, bestiarista, b20]
 - Data: 2026-10-23
 - Decisão (autor, 23/10/2026; o autor autoriza o registro): "humanoide que é raça jogável no livro (goblin, hobgoblin, orc e os outros de racas.md e racas.json) parte da raça: faixa de massa, Vida, Atributos e o que a raça define. O monstro do site entra por cima disso (equipamento, papel, habilidades). O autor confirmou essa ordem, que foi para a Bestiarista no lote 6."
 - Origem: ordem do autor à Bestiarista no lote 6 (23/10/2026), confirmada ao Arquiteto no mesmo dia.
 - Estado: **aplicada em 23/10/2026:** no manual (seção 4.2, ao lado do gigante; a cópia do pacote da Bestiarista, que tem `livro\racas.md` e `dados\racas.json` desde a mesma data). No lote 6 (23/10/2026), só o orc é raça jogável do livro (as oito de `src/data/racas.json`: Humano, Anão, Elfo, Gnomo, Halfling, Meio-Elfo, Meio-Orc, Orc); goblin, hobgoblin e bugbear partem do monstro do site, como antes, e o autor foi informado de que o goblin e o hobgoblin do texto da decisão não estão entre as raças do livro.
+
+### D-208 · Toda criatura ataca pelo maior entre Força e Destreza e defende pela maior entre Bloqueio e Esquiva [tags: bestiario, criatura, ataque, defesa, forca, destreza, esquiva, bloqueio, mestre, combate, d-087, b20]
+- Data: 2026-10-23
+- Decisão (autor, 23/10/2026, item 1 da mensagem; o autor autoriza o registro): "toda criatura vai usar o maior atributo entre Força e Destreza para atacar e vai usar a maior defesa entre Bloqueio e Esquiva para defender. Se for diferente disso é trabalho do Mestre." A mensagem segue, fora das aspas do autor: "Vale para o corpo a corpo; tiro e arremesso seguem o livro (combate.md:156: arco pela Percepção, arremesso pela Destreza)." Item 3 da mesma mensagem, como consequência: "Os 36 ataques de 27 animais que usavam a Força com Destreza maior: aplique a Destreza na jogada, pelo fluxo de ajuste, como consequência do item 1. Não é ponto de revisão final. O dano continua pela Força."
+- Origem: mensagem do autor de 23/10/2026, sobre a jogada das fichas e dos animais (o achado da Executora: 36 ataques de 27 animais publicados pela Força com a Destreza maior).
+- Estado: **aplicada em 23/10/2026.** O card do editor e o conversor do site já faziam assim desde 23/10 (o corpo a corpo pelo maior; o conversor para na frase "Jogada:" com o menor), e os 36 ataques dos 27 animais já estão no ar pelo merge `2df6cdaa`; as fichas dos animais não têm frase "Jogada:" a corrigir. A Defesa das fichas v3 já é a maior entre Esquiva e Bloqueio (`scripts/fichas-v3-para-bestiario.mjs`). No manual (seção 5.2, item 8) e no LEIA-ME da Bestiarista. A Defesa contra tiro e a regra do projétil rápido (só Esquiva ou escudo hábil) não mudam: a decisão vale para o corpo a corpo.
+
+### D-209 · O dano de arma é sempre pela Força; "ágil" não soma Destreza [tags: bestiario, criatura, dano, forca, destreza, agil, arma, adaga, assassino, b20]
+- Data: 2026-10-23
+- Decisão (autor, 23/10/2026, item 2 da mensagem; o autor autoriza o registro): "Nenhuma arma soma Destreza no dano: o dano é sempre Força. A propriedade «ágil» não faz somar Destreza no dano. A adaga do assassino não é perda nem lacuna: no inventário (6.x), reclassifique como «correção pela regra do livro»."
+- Origem: mensagem do autor de 23/10/2026, sobre a adaga do assassino das sombras (lote 9: o site dava "Ágil: usa Destreza no dano").
+- Estado: **aplicada em 23/10/2026.** É a letra do livro: "**Ágil**: só descritiva, sem efeito mecânico próprio" (`armas-e-armaduras.md:54`); nem a ficha do personagem nem o bestiário somam Destreza no dano. No inventário das habilidades especiais, seção 6.5, a adaga passa a "correção pela regra do livro". No manual (seção 5.2, item 8) e no LEIA-ME da Bestiarista.
+
+### D-210 · Lotes de 8 fichas quando as criaturas são parecidas, de 4 quando são tipos novos [tags: bestiario, criatura, lotes, bestiarista, d-204, b20]
+- Data: 2026-10-23
+- Decisão (autor, 23/10/2026; decisão 57 na numeração do autor; o autor autoriza o registro): "8 fichas quando as criaturas forem parecidas (dragões, elementais, golens, demônios e grupos assim), 4 quando forem tipos novos."
+- Origem: mensagem do autor de 23/10/2026.
+- Estado: **aplicada em 23/10/2026:** no LEIA-ME da Bestiarista e no manual (Passo 16). O lote 18 (as primeiras Aberrações) já veio com 4.
+
+### D-211 · O golpe duplo do rakshasa é a Rajada do livro [tags: bestiario, criatura, rakshasa, rajada, ataques-multiplos, c-046, lote-5, b20]
+- Data: 2026-10-23
+- Decisão (autor, 23/10/2026, item 6 da mensagem; o autor autoriza o registro): "O golpe duplo do rakshasa passa para a regra de múltiplos ataques do livro (a Rajada), como o do campeão. Aplique pelo fluxo de ajuste."
+- Origem: mensagem do autor de 23/10/2026, sobre a lista de revisão do lote 5 (as "Garras traiçoeiras" do rakshasa como regra da ficha, perto da C-046).
+- Estado: **na ficha em 23/10/2026** (a Bestiarista; `fichas-novas\rakshasa.md`, cópia de antes em `rascunhos\rakshasa-antes-rajada-2026-10-23.md`): "livro: a Rajada (`combate.md`): dois golpes de Garras na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação". Entra em `fichas-v3` pelo fluxo de ajuste, com o lote 18, depois da Revisora. **A publicar:** o rakshasa já está no site; o ajuste vai numa branch seguinte, com o ok do autor.
+
+### D-212 · O Fogo 4 do mago de batalha fica como está [tags: bestiario, criatura, mago-de-batalha, arte, fogo, lote-10, b20]
+- Data: 2026-10-23
+- Decisão (autor, 23/10/2026, item 7 da mensagem; o autor autoriza o registro): "O Fogo 4 do mago de batalha fica como está por enquanto."
+- Origem: mensagem do autor de 23/10/2026, sobre a lista de revisão do lote 10.
+- Estado: **no ar como está** desde o merge `ba49b828` (entrou no `main` pelo `93c2f0b4`, cujo deploy falhou; conferido no site publicado em 23/10: "conjura Fogo até o 4"). Nada a fazer.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
