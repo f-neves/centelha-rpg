@@ -13,7 +13,7 @@
     "fera"
   ],
   "imagem": null,
-  "porte": "Grande",
+  "porte": "Médio",
   "dimensoes": {
     "medida": "3 m de comprimento, 1 m de altura",
     "peso": "15 kg",
@@ -160,7 +160,7 @@
     },
     {
       "titulo": "No jogo",
-      "texto": "Grande de asas abertas, Médio parado em espreita, que é como ele caça. A Força 4 tira o Bloqueio só de quem tem Força 0. Iniciativa 1d6 + 7, a mais alta do lote. O golpe faz 5,5 e agarra (8 por Tick). A cutícula é Couraça nível 1, e quanto ela tira do golpe fica para depois. 19 PV (Faixa 2 e Vigor 4), os de um corpo leve para o tamanho. O perigo é o golpe que sai do mato: Furtividade 2, mais 1 da camuflagem e mais 1 imóvel na folhagem."
+      "texto": "Médio parado em espreita, que é como ele caça e o Tamanho principal; Grande de asas abertas. A Força 4 tira o Bloqueio só de quem tem Força 0. Iniciativa 1d6 + 7, a mais alta do lote. O golpe faz 5,5 e agarra (8 por Tick). A cutícula é Couraça nível 1, e quanto ela tira do golpe fica para depois. 19 PV (Faixa 2 e Vigor 4), os de um corpo leve para o tamanho. O perigo é o golpe que sai do mato: Furtividade 2, mais 1 da camuflagem e mais 1 imóvel na folhagem."
     }
   ],
   "ecologia": {
@@ -224,11 +224,11 @@
     }
   },
   "notasObservacao": [
-    "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (D-174); os 3 m do site ficam: de asas abertas o gigante está 4 portes acima da Tenodera (Minúsculo para Grande) e de lado 3 (para Médio), e o critério pede 2. Longe dos cortes: 3,88 m² fica 168% acima do corte do Grande (1,45) e 35% abaixo do do Enorme (6); de lado, 0,81 m² fica 79% acima do corte do Médio (0,45) e 44% abaixo do do Grande",
+    "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (D-174); os 3 m do site ficam: de asas abertas o gigante está 4 portes acima da Tenodera (Minúsculo para Grande) e de lado 3 (para Médio), e o critério pede 2. Longe dos cortes: 3,88 m² fica 168% acima do corte do Grande (1,45) e 35% abaixo do do Enorme (6); de lado, 0,81 m² fica 79% acima do corte do Médio (0,45) e 44% abaixo do do Grande. Pela D-215 (24/10/2026), o principal passou a ser o Médio de espreita, e o Grande de asas abertas ficou como segundo.",
     "gigante: escalado aos 3 m de comprimento da ficha atual do Centelha (correção da sexta rodada: vale o tamanho do site); contra o adulto típico de 85,79 mm, k = 34,97 (era 3,6 m, k = 41,96, e k = 40 sobre a fêmea de 9 cm); tudo do tamanho é [extrapolação] (D-105, `pedido-lotes.md` §3)",
     "massa: 15 kg pela decisão 13 (meio em log de 9,05 kg pela regra do roc, com a base típica dos dois sexos de 2,737 g, e 24,48 kg pela reta dos voadores reais com a envergadura de 4,33 m), e não os 117,0 kg do cubo; era 23 kg com os 3,6 m. O macho (2,313 g) é pelo cubo do comprimento [comparação]; se a massa dele aparecer (Brown e Barry 2016 pesaram), a regra do roc se refaz. Se a fêmea pesada for posta nos 79,5 mm do meio da faixa, e não nos 9 cm, a conta dá 17,2 kg (D-174)",
     "faixa: Faixa 2, a mesma; PV 28 com o Vigor 4 da oitava rodada (30 na sétima; 40 na ficha de hoje)",
-    "alvo: Grande de asas abertas (3,88 m²) e Médio de lado em espreita (0,81 m²), a silhueta da `tamanho-fichas-v2` na razão (3 ÷ 3,6)² (decisão 8). O Alvo decide acerto e furtividade, e não o Vigor (oitava rodada). A fêmea quase não voa (Shim e Song 2024), e o Alvo de asas abertas vale só quando ela as abre; no jogo, o Médio de espreita é o mais comum. Se o autor quiser o principal pela postura de caça, inverte (D-174)",
+    "alvo: Grande de asas abertas (3,88 m²) e Médio de lado em espreita (0,81 m²), a silhueta da `tamanho-fichas-v2` na razão (3 ÷ 3,6)² (decisão 8). O Alvo decide acerto e furtividade, e não o Vigor (oitava rodada). A fêmea quase não voa (Shim e Song 2024), e o Alvo de asas abertas vale só quando ela as abre; no jogo, o Médio de espreita é o mais comum. O autor quis o principal pela postura de caça (D-215, 24/10/2026): inverteu, e o Médio de espreita é o principal (D-174)",
     "dimensoes: altura (3 cm), largura (1,2 cm) e envergadura (13 cm) da real estimadas; o comprimento de referência (9 cm) é escolha dentro da faixa da fêmea",
     "voo: a fêmea de referência quase não voa, e a ficha antiga diz \"voo trôpego\". A fórmula, com Voo 0 (o mínimo), dá 39 km/h, que parece alto; congelada (decisão 23). Se o autor quiser, a fêmea pode ficar sem voo e o macho com ele",
     "anatomia: artrópode alado, provisória (D-175)",

@@ -5,45 +5,60 @@
   "nome": "Linnorm dos Penhascos",
   "nomeIngles": "Crag Linnorm",
   "categoria": "Dragão",
+  "categoriaLegada": "Dragão",
   "papel": "chefe",
   "conceito": "dragão Imenso",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "O menor dos linnorms, serpente-dragão sem asas de 18 m e sangue vulcânico. Cospe lava, morde com veneno que arde por dentro e fecha as próprias feridas; quem o mata carrega a maldição do fogo.",
   "tags": [
     "dragao",
     "centelha"
   ],
   "imagem": "bestiario/linnorm-dos-penhascos_criatura.webp",
-  "porte": "Imenso",
+  "porte": "Enorme",
   "dimensoes": {
-    "medida": "18 m de comprimento",
-    "peso": "cerca de 5.400 kg"
+    "medida": "18 m de comprimento, 0,79 m de altura",
+    "peso": "5,4 t",
+    "comprimento": 18,
+    "largura": 0.79,
+    "altura": 0.79
   },
   "locomocao": {
     "terra": 4,
     "voo": 10,
     "natacao": 6
   },
+  "deslocamentoDeclarado": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+  },
   "centelha": 6,
   "attrs": {
-    "forca": 13,
+    "forca": 11,
     "destreza": 5,
     "vigor": 11,
-    "influencia": 6,
-    "perspicacia": 3,
-    "compostura": 6,
     "percepcao": 5,
     "inteligencia": 1,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 6,
+    "perspicacia": 3,
+    "compostura": 6
   },
   "skills": {
     "briga": 5,
     "esquiva": 1,
-    "prontidao": 2,
-    "integridade": 6
+    "atletismo": 2,
+    "integridade": 6,
+    "prontidao": 2
+  },
+  "skills2": {
+    "natacao": 3,
+    "disparo": 4,
+    "musculatura": 3
   },
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 5,
+    "compaixao": 3,
+    "conviccao": 3,
     "temperanca": 3,
     "valor": 6
   },
@@ -51,44 +66,99 @@
   "aparencia": 9,
   "ataques": [
     {
-      "nome": "Garras e mordida",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 3,
+      "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 7
+      "perf": 3,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Garras",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Sopro de magma",
+      "atrib": "vigor",
+      "pericia": "disparo",
+      "dado": 9,
+      "mao": 1,
+      "tipo": "fogo",
+      "ticks": 7,
+      "forca": false,
+      "classe": "distancia",
+      "distancia": true
     }
+  ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [
+    "fogo"
   ],
   "habilidades": [
     {
-      "nome": "Sopro de Magma",
-      "descricao": "A cada poucos rounds, cospe uma linha de lava incandescente que queima tudo à frente; o rastro continua ardendo e fere de novo quem passar por cima no round seguinte."
+      "nome": "Sopro de magma",
+      "descricao": "poder natural (base Fogo 4, sugestão da ficha): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Efeito: a lava queima tudo na linha. Dano: 9d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site).",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Maldição da Morte",
-      "descricao": "Quem finalmente o abate é amaldiçoado a arder por dentro, ganhando vulnerabilidade permanente a fogo."
+      "nome": "rastro de lava",
+      "descricao": "a linha do sopro continua ardendo e fere de novo quem passa por cima logo depois (site).",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Liberdade de Movimento",
-      "descricao": "Nunca fica preso, agarrado ou paralisado, como se estivesse sob proteção constante contra restrições."
+      "nome": "garras em sequência",
+      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
+      "classe": "livro"
     },
     {
-      "nome": "Veneno na Mordida",
-      "descricao": "A mordida injeta uma toxina ígnea que continua a arder por dentro da vítima, causando dano contínuo de fogo e corroendo seu Vigor até duas curas seguidas."
+      "nome": "Resistência a magia",
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes (site), como no dragão vermelho ancião. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Regeneração Dracônica",
-      "descricao": "Fecha feridas rapidamente; somente ferro frio impede essa cura."
+      "nome": "Liberdade de movimento",
+      "descricao": "nunca fica Imobilizado, Preso nem agarrado; solta-se de qualquer prisão como se ela não estivesse lá (site).",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Visão Verdadeira",
-      "descricao": "Enxerga através de ilusões, disfarces e trevas como se nada os escondesse."
+      "nome": "Regeneração",
+      "descricao": "fecha as feridas sem parar; só o ferimento de ferro frio não fecha (site). O vocabulário de Elementos não tem ferro frio, e o livro não tem regra de regeneração.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Corpo Blindado e Resistente a Magia",
-      "descricao": "Escamas grossas absorvem grande parte do dano físico, feitiços hostis enfrentam grande resistência, e é imune a fogo, veneno, sono, paralisia e maldições comuns."
+      "nome": "Maldição da morte",
+      "descricao": "quem o mata passa a arder por dentro e fica vulnerável ao fogo para sempre (site).",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Imune a veneno, sono, paralisia e maldições comuns",
+      "descricao": "nada disso o pega (site).",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "fera do norte",
+      "descricao": "cospe lava sobre quem se aproxima, desce sobre o mais forte com mordida e garras, e não recua: as feridas fecham sozinhas.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão verdadeira: enxerga através de ilusão, disfarce e escuridão (site; sem regra ainda). · visão no escuro: vê sem luz."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Peçonha de linnorm dos penhascos · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor do site; o fogo que arde por dentro fica descrito, sem número (sem regra ainda)."
     }
   ],
   "lore": [
@@ -103,6 +173,18 @@
     {
       "titulo": "Maldição Viva",
       "texto": "Lendas dizem que quem mata um linorme carrega para sempre uma centelha de sua fúria ardente, lembrete do preço daquela morte."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Peçonha de linnorm dos penhascos · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor do site; o fogo que arde por dentro fica descrito, sem número (sem regra ainda)."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme esticado, Grande enrolado. 90 PV, Impacto 17, Corte e Perfuração 6, Couraça 9. Esquiva 14, Bloqueio 10. Sopro de lava em linha de 18 m a cada 24 Ticks. Mordida venenosa e garras até três por ação. Ninguém o prende, e as feridas fecham (sem regra ainda). +2 contra Artes. Fogo não o fere."
     }
   ],
   "ecologia": {
@@ -138,5 +220,40 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 6
+  "ameacaLegada": 6,
+  "v3": {
+    "pv": 90,
+    "esquiva": 14,
+    "bloqueio": 10,
+    "defesa": 14,
+    "defesaMental": 32,
+    "defesaSocial": 12,
+    "absorcao": {
+      "impacto": 17,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "couracaNivel": 9,
+    "pesoErguido": 1507.51,
+    "deslocamento": {
+      "terra": {
+        "batalha": 4,
+        "arranque": 6,
+        "corrida": 9
+      },
+      "voo": {
+        "batalha": 10
+      },
+      "nado": 6
+    }
+  },
+  "notasObservacao": [
+    "`forca`: 11, pelo teste de ordem; o site tinha 13 (o mesmo método do neothelid, pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro)) **[provisório]**",
+    "`tamanho`: Enorme esticado, Grande enrolado, pela área do corpo de serpente; o site dizia Imenso **[provisório]**",
+    "`asas`: nenhuma, pela fonte **[provisório]**",
+    "`couraca`: nível 9 **[provisório]**",
+    "`sopro`: 9d6 + Centelha, linha de 18 m, pela escada de Centelha do lote 23 (D-197) **[provisório]**",
+    "`veneno`: pelo padrão do \"Ferrão de gigante\" **[provisório]**",
+    "`resistência a magia`: +2 contra Artes, sugestão da ficha (D-197)"
+  ]
 }

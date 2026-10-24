@@ -32,7 +32,7 @@
   },
   "centelha": 6,
   "attrs": {
-    "forca": 12,
+    "forca": 11,
     "destreza": 1,
     "vigor": 10,
     "percepcao": 4,
@@ -170,7 +170,7 @@
     },
     {
       "titulo": "No jogo",
-      "texto": "Enorme, 85 PV, Impacto 16, Corte e Perfuração 6. Esquiva e Bloqueio 2: fácil de acertar. Tentáculo de dano médio 25, até dois por ação; agarra (+2, e +6 pela massa) e engole. Sopro ácido em cone de 9 m (3d6 e mais dois ciclos de 1d6). Golpe mental de 3d6 três vezes por cena; uma vez por cena, deixa um alvo Inconsciente e Morrendo. Encanta, move coisas e se teleporta à vontade; levita. Defesa Mental 31, 33 contra Artes."
+      "texto": "Enorme, 85 PV, Impacto 16, Corte e Perfuração 6. Esquiva e Bloqueio 2: fácil de acertar. Tentáculo de dano médio 24, até dois por ação; agarra (+2, e +6 pela massa) e engole. Sopro ácido em cone de 9 m (3d6 e mais dois ciclos de 1d6). Golpe mental de 3d6 três vezes por cena; uma vez por cena, deixa um alvo Inconsciente e Morrendo. Encanta, move coisas e se teleporta à vontade; levita. Defesa Mental 31, 33 contra Artes."
     }
   ],
   "ecologia": {
@@ -220,7 +220,7 @@
       "perfuracao": 6
     },
     "couracaNivel": 3,
-    "pesoErguido": 1618.67,
+    "pesoErguido": 1329.54,
     "deslocamento": {
       "terra": {
         "batalha": 3,
@@ -230,6 +230,7 @@
     }
   },
   "notasObservacao": [
+    "`forca`: 11, pelo teste de ordem; o site tinha 12 (pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro)) **[provisório]**",
     "`tamanho`: Enorme pela área; o site dizia Imenso **[conta]**",
     "`couraca`: nível 3 **[provisório]**",
     "`voo`: pela Levitação; o site não grava voo **[provisório]**",

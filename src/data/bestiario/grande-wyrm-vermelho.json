@@ -5,9 +5,10 @@
   "nome": "Grande Wyrm Vermelho",
   "nomeIngles": "Dragon, Great Wyrm Red",
   "categoria": "Dragão",
+  "categoriaLegada": "Dragão",
   "papel": "chefe",
   "conceito": "dragão Colossal",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "O mais velho dos dragões vermelhos, uma lenda encarnada de 20 m. Sopra fogo que queima um exército, dobra o tempo quando precisa e conjura feitiços que poucos mortais já viram. Nada passa despercebido diante dele.",
   "tags": [
     "dragao",
     "centelha",
@@ -16,39 +17,140 @@
   "imagem": "bestiario/grande-wyrm-vermelho_criatura.webp",
   "porte": "Colossal",
   "dimensoes": {
-    "medida": "20 m de comprimento, com a cauda",
-    "peso": "88 t"
+    "medida": "20 m de comprimento, 6,51 m de altura",
+    "peso": "88,0 t",
+    "comprimento": 20,
+    "largura": 4.51,
+    "altura": 6.51,
+    "envergadura": 45
   },
   "locomocao": {
     "terra": 4,
     "voo": 20
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
   },
   "centelha": 9,
   "attrs": {
     "forca": 16,
     "destreza": 2,
     "vigor": 14,
-    "influencia": 7,
-    "perspicacia": 7,
-    "compostura": 7,
     "percepcao": 8,
     "inteligencia": 7,
-    "raciocinio": 7
+    "raciocinio": 7,
+    "influencia": 7,
+    "perspicacia": 7,
+    "compostura": 7
   },
   "skills": {
     "briga": 5,
-    "esquiva": 0,
-    "prontidao": 4,
-    "integridade": 7
+    "atletismo": 2,
+    "furtividade": 1,
+    "integridade": 7,
+    "prontidao": 5,
+    "sociabilidade": 3,
+    "ocultismo": 5,
+    "persuasao": 5,
+    "conhecimentos": 5
   },
+  "skills2": {
+    "intimidacao": 5,
+    "voo": 4,
+    "disparo": 5,
+    "acerto-arcano": 5,
+    "musculatura": 4
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "surpresa",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "ocultismo",
+      "foco": "magia antiga",
+      "valor": 2,
+      "origem": "livro"
+    },
+    {
+      "habilidade": "persuasao",
+      "foco": "em torno do tesouro",
+      "valor": 2,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 5,
+    "compaixao": 3,
+    "conviccao": 3,
     "temperanca": 3,
     "valor": 6
   },
   "willpower": 12,
   "aparencia": 9,
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 3,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Garras",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Cauda",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 2,
+      "mao": 2,
+      "tipo": "impacto",
+      "ticks": 7,
+      "classe": "pesada"
+    },
+    {
+      "nome": "Asas",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "impacto",
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Sopro cataclísmico",
+      "atrib": "vigor",
+      "pericia": "disparo",
+      "dado": 15,
+      "mao": 1,
+      "tipo": "fogo",
+      "ticks": 7,
+      "forca": false,
+      "classe": "distancia",
+      "distancia": true
+    }
+  ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [
+    "fogo"
+  ],
   "arte": {
     "tempo": 6,
     "protecao": 6,
@@ -56,100 +158,71 @@
     "fascinacao": 5,
     "adivinhacao": 5
   },
-  "ataques": [
-    {
-      "nome": "Garras e mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 4,
-      "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 7
-    }
-  ],
-  "poderes": [
-    {
-      "id": "sopro-cataclismico",
-      "nome": "Sopro cataclísmico",
-      "tipo": "natural",
-      "base": {
-        "arte": "fogo",
-        "nivel": 5
-      },
-      "resiste": "esquiva",
-      "efeito": "Cone ou linha. Esquiva para metade.",
-      "usos": {
-        "periodo": "ticks",
-        "quantidade": 1,
-        "recarga": "24 ticks"
-      }
-    },
-    {
-      "id": "presenca-divina",
-      "nome": "Presença divina",
-      "tipo": "natural",
-      "base": {
-        "arte": "morte",
-        "nivel": 5
-      },
-      "resiste": "mente",
-      "efeito": "Área; quem resiste fica imune na cena.",
-      "usos": {
-        "periodo": "cena",
-        "quantidade": 1
-      }
-    }
-  ],
-  "resistencias": [
-    "fogo"
-  ],
+  "mana": 30,
   "habilidades": [
     {
       "nome": "Sopro cataclísmico",
-      "descricao": "cone de 18m; 15d6 de dano, metade se Esquivar (ainda deixa Abalado mesmo com sucesso)"
+      "descricao": "poder natural (base Fogo 5, a do site): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: cone de 18 m. Efeito: o fogo queima tudo no cone e deixa Abalado até quem escapa (site). Dano: 15d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade; mesmo quem passa fica Abalado até o fim da cena (site). Limite de uso: uma vez a cada 24 Ticks (site).",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "garras em sequência",
+      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
+      "classe": "livro"
+    },
+    {
+      "nome": "cauda em sequência",
+      "descricao": "Cauda: a Rajada: até dois golpes de Cauda na mesma ação, o teto da classe Pesada.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Multiataque",
+      "descricao": "garra, garra, mordida, cauda e golpe de asas no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Presença",
+      "descricao": "poder natural (base Morte 5, a do site): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 36 m. Área: esfera de 36 m em volta dele. Efeito: quem falha fica Abalado; quem falha por 5 ou mais fica Imobilizado até o fim da próxima ação (o \"Paralisado de terror por 1 turno\" do site; o livro não tem a condição \"paralisado\"). Dano: nenhum. Resistência: mente, contra Influência 7 + Intimidação 5 + 2 × o menor entre Centelha 9 e Intimidação 5 (10) = 22 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Dobrar o tempo",
-      "descricao": "age duas vezes na mesma rodada, uma ação extra completa (1x por cena)"
+      "descricao": "poder natural (base Tempo 6): Ativação: nenhuma ação, no começo de uma ação dele. Duração: 12 Ticks. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Acelerado. O site dizia \"age duas vezes na mesma rodada, uma ação extra completa (1x por cena)\". Critério do manual: agir duas vezes vira o Acelerado do livro, e o tempo segue a fonte: com ação extra e limite de uso, fica Acelerado pelos Ticks que rendem uma ação a mais, T = V × (V − 2) ÷ 2, com V a Velocidade do ataque mais usado (a Mordida, 6): 6 × 4 ÷ 2 = 12 Ticks. Em 12 Ticks ele faz 2 ações sem o Acelerado e 3 com ele, a ação extra do site. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Feitiços supremos",
-      "descricao": "lança feitiços de centelha altíssima, incluindo cura própria e efeitos em área"
-    },
-    {
-      "nome": "Presença divina",
-      "descricao": "falha no teste de Vontade = Abalado; falha por 5 ou mais = Paralisado de terror por 1 turno"
-    },
-    {
-      "nome": "Voo perfeito",
-      "descricao": "manobra máxima no ar, ignora qualquer obstáculo aéreo"
-    },
-    {
-      "nome": "Multiataque total",
-      "descricao": "garra, garra, mordida, cauda e golpe de asas no mesmo turno"
-    },
-    {
-      "nome": "Imune a fogo",
-      "descricao": "e resistente à maioria dos feitiços (exige sucesso duplo para afetá-lo)"
-    },
-    {
-      "nome": "Escamas lendárias",
-      "descricao": "Absorção +5d6 contra ataques físicos"
-    },
-    {
-      "nome": "Sentidos supremos",
-      "descricao": "ignora Furtividade e ilusões comuns; nada passa despercebido"
+      "nome": "Resistência a magia",
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +3 na Defesa Mental e nas resistências contra Artes (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Vontade de wyrm",
-      "descricao": "nunca fica Abalado por efeitos de medo comuns; só presenças divinas o afetam"
+      "descricao": "efeito de medo comum não o deixa Abalado; só uma presença divina o afeta (site).",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Voo perfeito",
+      "descricao": "manobra no ar sem nenhum obstáculo (site).",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Feitiços",
+      "descricao": "Artes do livro: Tempo até o 6, Proteção até o 6, Fogo até o 5, Fascinação até o 5, Adivinhação até o 5, com 30 de Mana. \"Feitiços supremos, incluindo cura própria\" (site): a cura própria não tem Arte de Cura na linha, e fica fora (perda anotada no relato)."
+    },
+    {
+      "nome": "lenda no céu",
+      "descricao": "abre com o sopro sobre o grupo inteiro, dobra o tempo quando aperta, protege-se com a Arte e só desce para morder quem ainda está de pé.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: vê sem luz. · faro: apurado. · sentidos supremos: ignora Furtividade e ilusões comuns; nada passa despercebido (sem regra ainda além da Prontidão (surpresa) +3)."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Tão antigo que já não distingue mais súditos de brinquedos, o grande wyrm vermelho raramente se move: prefere que o mundo venha até ele, e pune com fogo e desdém qualquer intrusão em seu domínio milenar."
+      "texto": "Tão antigo que já não distingue mais súditos de brinquedos, o grande wyrm vermelho raramente se move: prefere que o mundo venha até ele, e pune com fogo e desdém qualquer intrusão em seu domínio milenar. Social: solitário."
     },
     {
       "titulo": "Ecologia",
@@ -162,6 +235,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Sábios sussurram que um grande wyrm vermelho guarda em sua Centelha ecos de eras anteriores à Grande Guerra, quase alcançando o patamar de semideus; para as igrejas supressoras, ele é o argumento final contra quem sonha reacender os poderes antigos."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Colossal no ar, Imenso pousado. 110 PV, Impacto 23, Corte e Perfuração 9. Esquiva 4, Bloqueio 4: fácil de acertar, difícil de ferir. Sopro de fogo em cone de 18 m (dano médio 61,5), que deixa Abalado até quem escapa, a cada 24 Ticks. Mordida, garras e asas de 28,5, cauda de 48,0; garras até três por ação. Uma vez por cena, fica Acelerado por 12 Ticks: uma ação a mais. Conjura Tempo e Proteção até o 6, com 30 de Mana. Defesa Mental 40, mais 3 contra Artes. Fogo não o fere."
     }
   ],
   "ecologia": {
@@ -205,5 +282,39 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 6
+  "ameacaLegada": 6,
+  "v3": {
+    "pv": 110,
+    "esquiva": 4,
+    "bloqueio": 4,
+    "defesa": 4,
+    "defesaMental": 40,
+    "defesaSocial": 26,
+    "absorcao": {
+      "impacto": 23,
+      "corte": 9,
+      "perfuracao": 9
+    },
+    "couracaNivel": 12,
+    "pesoErguido": 32320.78,
+    "deslocamento": {
+      "terra": {
+        "batalha": 4,
+        "arranque": 6,
+        "corrida": 9
+      },
+      "voo": {
+        "batalha": 20
+      }
+    }
+  },
+  "notasObservacao": [
+    "`prontidao`, `ocultismo`: 5; o site dava 6 nas notas **[provisório]**",
+    "`feitiços`: a cura própria do site sai (perda)",
+    "`tamanho`: Colossal de asas abertas, Imenso pousado, pelo método do branco jovem; os números do autor para o dragão de 10 m (55 m² parado, 134 m² em voo, `tamanho-regras.md` 4.1) dariam mais (pergunta 1 do lote 23) **[provisório]**",
+    "`couraca`: nível 12 **[provisório]**",
+    "`sopro`: 15d6 + Centelha, cone de 18 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197) **[provisório]**",
+    "`multiataque`: sem regra ainda; garras e cauda pela Rajada",
+    "`presença` e os outros poderes: números sugeridos pela ficha (D-197)"
+  ]
 }

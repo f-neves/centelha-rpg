@@ -54,7 +54,7 @@ const TERRENO = { 'Gélido': 'Cold', 'Deserto': 'Desert', 'Floresta': 'Forest', 
   'Planície': 'Plains', 'Pântano': 'Swamp', 'Subterrâneo': 'Underground', 'Urbano': 'Urban', 'Aquático': 'Water',
   'Litoral': 'Coast', 'Céu': 'Sky', 'Ruínas': 'Ruins', 'Qualquer': 'Any' };
 // Os sinônimos que as fichas usam no Terreno: "Cidade" é o Urbano, e "Frio" é o Gélido (o dragão branco).
-const TERRENO_SINONIMO = { 'cidade': 'Urbano', 'frio': 'Gélido' };
+const TERRENO_SINONIMO = { 'cidade': 'Urbano', 'frio': 'Gélido', 'água': 'Aquático', 'costa': 'Litoral' }; // "Água" e "Costa": o linnorm dos lagos e a tartaruga-dragão (decisão do Arquiteto, 24/10/2026)
 const terrenoDe = (x) => { const k = x.trim().toLowerCase(); const n = TERRENO_SINONIMO[k] ?? Object.keys(TERRENO).find((t) => t.toLowerCase() === k); return n ? TERRENO[n] : null; };
 // D-206: o catálogo do livro para a criatura vestida.
 const ARMAS_IDS = new Set(JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/armas.json'), 'utf8')).map((a) => a.id));
@@ -149,7 +149,7 @@ const PLANTA = {
       },
     },
     'Corpo e movimento': {
-      lidas: ['Absorção', 'Bloqueio', 'Esquiva', 'Carga', 'Defesa Mental', 'Defesa Social', 'Deslocamento em terra', 'Escalada, escavação',
+      lidas: ['Absorção', 'Bloqueio', 'Esquiva', 'Carga', 'Defesa Mental', 'Defesa Social', 'Deslocamento em terra', 'Escavação', 'Escalada, escavação',
         'Escalada', 'Nado / Voo', 'Nado, voo', 'Nado', 'Voo', 'PV total', 'Peso erguido'],
       ignoradas: {
         'PV base': 'a conta do PV; vale o PV total', 'Bônus de PV': 'já está no PV total', 'Energia': 'o card não mostra a Energia',
@@ -447,6 +447,11 @@ function converte(arq) {
   const nado3 = /^Batalha\s*\*\*(\d+)\*\*\s*·\s*Arranque\s*\*\*(\d+)\*\*\s*·\s*Corrida\s*\*\*(\d+)\*\*/.exec(nadoTxt.trim());
   const voo3 = /Arranque\s*\*\*(\d+)\*\*\s*·\s*Corrida\s*\*\*(\d+)\*\*/.exec(vooTxt);
   const escNum = /^Batalha\s*\*\*(\d+)\*\*/.exec(String(celula(mov, 'Escalada') ?? '').trim());
+  // A LINHA PRÓPRIA "Escavação" (o dragão azul, "Batalha **2** (m por Tick), na areia"; decisão do Arquiteto de
+  // 24/10/2026): só a forma "Batalha **N**", lida para a locomoção; qualquer outra forma para.
+  const cavTxt = celula(mov, 'Escavação');
+  const cavNum = cavTxt == null ? null : /^Batalha\s*\*\*(\d+)\*\*/.exec(String(cavTxt).trim());
+  if (cavTxt != null && !cavNum) aviso.push(`Escavação "${String(cavTxt).slice(0, 60)}" fora da forma que o conversor lê (Batalha **N**)`);
   // AS FORMAS DE VELOCIDADE QUE O CONVERSOR LÊ, e só elas (CORRIGE da Revisora, rodada 16, na 146d85a9): a
   // sequência dos rótulos dos números em negrito da célula tem de ser uma destas, e todo número de uma forma
   // aceita vai ao JSON. Qualquer outra combinação para: "Batalha **3** · Arranque **5**" sem a Corrida
@@ -456,7 +461,7 @@ function converte(arq) {
   const FORMAS = {
     'Nado': ['', 'Batalha', 'Batalha · Arranque · Corrida'],
     'Voo': [...opc('Batalha', 'Cruzeiro', 'Mergulho'), ...opc('Batalha · Arranque · Corrida', 'Cruzeiro', 'Mergulho')],
-    'Escalada': ['Batalha'],
+    'Escalada': ['Batalha'], 'Escavação': ['Batalha'],
     'Deslocamento em terra': ['Batalha · Arranque · Corrida'],
     'Nado / Voo': [], 'Escalada, escavação': [],
   };
@@ -465,7 +470,7 @@ function converte(arq) {
     const seq = [...t.matchAll(/(?:^|([A-Za-zÀ-ú]+))\s*\*\*\s*\d+/g)].map((m) => m[1] ?? '').join(' · ');
     if (seq !== '' || /^\*\*\s*\d/.test(t)) if (!FORMAS[rot].includes(seq)) aviso.push(`${rot} "${t.slice(0, 80)}": velocidades "${seq || 'número único'}" fora das formas que o conversor lê (${FORMAS[rot].map((f) => f || 'número único').join('; ') || 'nenhuma: esta célula não leva número'})`);
   };
-  confereNumeros('Nado', nadoTxt); confereNumeros('Voo', vooTxt); confereNumeros('Escalada', celula(mov, 'Escalada'));
+  confereNumeros('Nado', nadoTxt); confereNumeros('Escavação', cavTxt); confereNumeros('Voo', vooTxt); confereNumeros('Escalada', celula(mov, 'Escalada'));
   confereNumeros('Deslocamento em terra', terraTxt); confereNumeros('Nado / Voo', celula(mov, 'Nado / Voo') ?? celula(mov, 'Nado, voo')); confereNumeros('Escalada, escavação', celula(mov, 'Escalada, escavação'));
   const deslocamento = {
     ...(tres ? { terra: { batalha: +tres[1], arranque: +tres[2], corrida: +tres[3] } } : {}),
@@ -497,6 +502,7 @@ function converte(arq) {
   if (tres) locomocao.terra = +tres[1] >= 1 ? +tres[1] : null; else if (nega(terraTxt)) locomocao.terra = null;
   if (voo) locomocao.voo = +voo[1] >= 1 ? Math.min(30, +voo[1]) : null; else if (nega(vooTxt) || nega(comb)) locomocao.voo = null;
   if (nado) locomocao.natacao = +nado[1] >= 1 ? +nado[1] : null; else if (nega(nadoTxt) || nega(comb)) locomocao.natacao = null;
+  if (cavNum) locomocao.escavacao = +cavNum[1] >= 1 ? +cavNum[1] : null; // a linha "Escavação" (o dragão azul)
   if (escNum) locomocao.escalada = +escNum[1] >= 1 ? +escNum[1] : null; // "Batalha **1** (m por Tick), em parede e teto" (a geleia ocre)
   else if (nega(escTxt)) { locomocao.escalada = null; if (/escava/.test(String(celula(mov, 'Escalada, escavação') ?? ''))) locomocao.escavacao = null; }
   // Ataques

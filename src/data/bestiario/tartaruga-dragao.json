@@ -5,9 +5,10 @@
   "nome": "Tartaruga-Dragão",
   "nomeIngles": "Dragon Turtle",
   "categoria": "Dragão",
+  "categoriaLegada": "Dragão",
   "papel": "chefe",
   "conceito": "dragão Enorme",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Tartaruga-dragão de casco lendário que reivindica vastos territórios de mar. Chega sem ruído por baixo dos navios, sopra vapor fervente sobre o convés e vira o barco de quem não pagou tributo; no covil, guarda a carga de todos os navios que afundou.",
   "tags": [
     "dragao",
     "centelha"
@@ -15,34 +16,56 @@
   "imagem": "bestiario/tartaruga-dragao_criatura.webp",
   "porte": "Enorme",
   "dimensoes": {
-    "medida": "9 metros de comprimento",
-    "peso": "4 t"
+    "medida": "9 m de comprimento, 0,93 m de altura",
+    "peso": "4,0 t",
+    "comprimento": 9,
+    "largura": 2.33,
+    "altura": 0.93
   },
   "locomocao": {
     "terra": 2,
     "natacao": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
   },
   "centelha": 5,
   "attrs": {
     "forca": 10,
     "destreza": 2,
     "vigor": 7,
-    "influencia": 3,
-    "perspicacia": 3,
-    "compostura": 3,
     "percepcao": 3,
     "inteligencia": 3,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 3
   },
   "skills": {
     "briga": 5,
-    "esquiva": 0,
-    "prontidao": 1,
-    "integridade": 3
+    "atletismo": 2,
+    "furtividade": 1,
+    "integridade": 3,
+    "prontidao": 1
   },
+  "skills2": {
+    "natacao": 4,
+    "disparo": 3,
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "na água",
+      "valor": 3,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 5,
+    "compaixao": 3,
+    "conviccao": 3,
     "temperanca": 3,
     "valor": 6
   },
@@ -50,36 +73,78 @@
   "aparencia": 9,
   "ataques": [
     {
-      "nome": "Garras e mordida",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 3,
+      "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 7
+      "perf": 2,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Garras",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Sopro de vapor",
+      "atrib": "vigor",
+      "pericia": "disparo",
+      "dado": 6,
+      "mao": 1,
+      "tipo": "fogo",
+      "ticks": 7,
+      "forca": false,
+      "classe": "distancia",
+      "distancia": true
     }
+  ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [
+    "fogo"
   ],
   "habilidades": [
     {
       "nome": "Sopro de vapor escaldante",
-      "descricao": "Expele uma nuvem de vapor fervente sobre uma área considerável, tanto na superfície quanto debaixo d'água; quem é atingido sofre queimaduras graves, reduzidas à metade com um teste de Vigor bem-sucedido. Não pode repetir o sopro em sequência, precisando de uma pausa antes de usá-lo de novo."
+      "descricao": "poder natural (base Fogo 3, sugestão da ficha): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m, na superfície ou debaixo d'água (site). Efeito: o vapor fervente queima quem está na nuvem. Dano: 6d6 + Centelha, fogo. Resistência: corpo, contra a jogada do sopro (site: \"teste de Vigor\"); quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site).",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Imune a fogo e a efeitos que dominam a mente",
-      "descricao": "Não sofre dano de fogo e não pode ser posta para dormir ou paralisada."
+      "nome": "garras em sequência",
+      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
+      "classe": "livro"
+    },
+    {
+      "nome": "Multiataque",
+      "descricao": "a boca e as duas garras dianteiras no mesmo turno, mesmo submersa (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada.",
+      "classe": "sem regra ainda"
     },
     {
       "nome": "Afunda embarcações",
-      "descricao": "Pode investir contra um barco ou navio para virá-lo, arrastando tripulação e carga para o fundo."
+      "descricao": "investe contra um barco ou navio para virá-lo, e leva tripulação e carga para o fundo (site).",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Mordida e garras poderosas",
-      "descricao": "Ataca com a boca e as duas garras dianteiras, mesmo submersa."
+      "nome": "Firme contra o sono, a paralisia e o domínio da mente",
+      "descricao": "não pode ser posta para dormir nem paralisada, e efeito que domina a mente não a pega (site: \"Imune a fogo e a efeitos que dominam a mente\"; o fogo está nos Elementos).",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Furtividade aquática",
-      "descricao": "Move-se pela água quase sem ruído, surpreendendo embarcações antes que percebam o perigo."
+      "nome": "senhora dos mares",
+      "descricao": "chega por baixo sem ruído, sopra vapor sobre o convés, vira o barco e morde quem cai na água.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão: enxerga debaixo d'água."
     }
   ],
   "lore": [
@@ -94,6 +159,14 @@
     {
       "titulo": "Carapaça lendária",
       "texto": "O casco varia de marrom ferrugem a verde-azulado com reflexos prateados, e a cabeça e a cauda mostram estrias douradas."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitária; reivindica territórios de mar."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme. 70 PV, Impacto 12, Corte e Perfuração 5, Couraça 8. Esquiva 4, Bloqueio 4: fácil de acertar, difícil de ferir. Sopro de vapor em cone de 9 m a cada 24 Ticks, na superfície ou submersa. Mordida e garras; garras até três por ação. Vira barcos (sem regra ainda). Fogo não a fere."
     }
   ],
   "ecologia": {
@@ -130,5 +203,34 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "v3": {
+    "pv": 70,
+    "esquiva": 4,
+    "bloqueio": 4,
+    "defesa": 4,
+    "defesaMental": 22,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 12,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "couracaNivel": 8,
+    "pesoErguido": 1011.1,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
+      },
+      "nado": 3
+    }
+  },
+  "notasObservacao": [
+    "`medidas`: casco de 3,1 m pela massa do site; pescoço e cauda completam os 9 m **[extrapolação]**",
+    "`couraca`: nível 8 **[provisório]**",
+    "`sopro`: 6d6 + Centelha, cone de 9 m, pela escada de Centelha do lote 23 (D-197) **[provisório]**",
+    "`multiataque`: sem regra ainda; garras pela Rajada"
+  ]
 }

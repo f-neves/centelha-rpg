@@ -13,7 +13,7 @@
     "fera"
   ],
   "imagem": null,
-  "porte": "Miúdo",
+  "porte": "Médio",
   "dimensoes": {
     "medida": "0,82 m de comprimento, 0,13 m de altura",
     "peso": "2,2 kg",
@@ -141,7 +141,7 @@
     },
     {
       "titulo": "No jogo",
-      "texto": "Miúdo: +6 no acerto corpo a corpo contra um humano Médio; com os braços abertos, fica Médio e perde o bônus. Muito difícil de achar parado (Furtividade 4 e +3 natural na camuflagem). A mordida faz 2,5 em média; o que fica é a ferida que inflama por dias: a cefalotoxina, de Potência 8, pesa pelo Desgaste e não mata. Agarra e prende a mão (agarrão de 2, com a Briga (Agarrão) +2), mas não segura um adulto inteiro. Foge a jato e por fenda. 6 PV."
+      "texto": "Médio de braços abertos, que é como luta: nem ele nem o humano Médio ganham bônus de acerto. De braços juntos, parado, fica Miúdo, e ganharia +6 no corpo a corpo (+3 por categoria de diferença, só o menor ganha; são duas). Muito difícil de achar parado (Furtividade 4 e +3 natural na camuflagem). A mordida faz 2,5 em média; o que fica é a ferida que inflama por dias: a cefalotoxina, de Potência 8, pesa pelo Desgaste e não mata. Agarra e prende a mão (agarrão de 2, com a Briga (Agarrão) +2), mas não segura um adulto inteiro. Foge a jato e por fenda. 6 PV."
     }
   ],
   "ecologia": {
@@ -201,7 +201,7 @@
   "notasObservacao": [
     "forca: 1 ◆ na sétima rodada (item 8 da `tamanho-decisoes-5.md`): os braços puxam e prendem a mão de um humano; era 0 pela leitura automática da D-167. O bico sobe de 1,5 para 2,5 de média e o agarrão de 0 para 2 (D-115).",
     "pesoErguido: 23,14 kg (em vigor na Etapa 2, 20/10/2026); antes: provisório, 21,45 kg ◆ (17,62 com a Força 0) pela fórmula das decisões 14 e 16 (calc6, massa de 2 kg); cefalópode não tem `carga` (D-160, D-175). Os 40 N por braço (Margheri 2009, trecho de busca, não conferido) somam uns 32 kg-força nos oito, na mesma ordem: o conflito de feito contra regra da ficha de 12/10 (0,47 kg) se desfaz, mas o feito segue não conferido.",
-    "alvo: Miúdo pela área de cima com os braços juntos, 0,12 m² (0,1177), escalada pelo cubo da massa a partir dos 0,15 m² do polvo de 3 kg da tamanho-fichas-v2. Fica rente ao corte de 0,12: o de 3 kg é Pequeno. Segundo Alvo Médio com os braços abertos (0,61 m², decisão 8). Provisório até os cortes fecharem (D-174).",
+    "alvo: Miúdo pela área de cima com os braços juntos, 0,12 m² (0,1177), escalada pelo cubo da massa a partir dos 0,15 m² do polvo de 3 kg da tamanho-fichas-v2. Fica rente ao corte de 0,12: o de 3 kg é Pequeno. Segundo Alvo Médio com os braços abertos (0,61 m², decisão 8). Pela D-215 (24/10/2026), o principal passou a ser o de braços abertos (Médio, 0,65 m²), e o Miúdo ficou como segundo. Provisório até os cortes fecharem (D-174).",
     "pv: 6 (em vigor na Etapa 2, 20/10/2026); antes: faixa 1 nas duas versões do autor; o PV total usa 5 + Vigor = 7 (decisão 21, delegada). Com 10 + metade do Vigor seriam 11.",
     "inteligencia: 2 pela lista fechada da diretriz 1; nota \"2 não é inteligência humana\".",
     "compostura: desce de 3 para 1 por não ser espécie social (diretriz 1); a camuflagem, que a sustentava, passou a Especialidade natural de Furtividade.",

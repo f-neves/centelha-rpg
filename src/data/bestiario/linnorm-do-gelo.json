@@ -5,18 +5,22 @@
   "nome": "Linnorm do Gelo",
   "nomeIngles": "Ice Linnorm",
   "categoria": "Dragão",
+  "categoriaLegada": "Dragão",
   "papel": "chefe",
   "conceito": "dragão Colossal",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Serpente-dragão sem asas de 24 m, senhor das geleiras e dos picos varridos pelo vento. Cospe uma geleia que endurece em gelo e prende quem atinge; as vítimas aparecem anos depois, inteiras dentro de blocos de gelo.",
   "tags": [
     "dragao",
     "centelha"
   ],
   "imagem": "bestiario/linnorm-do-gelo_criatura.webp",
-  "porte": "Colossal",
+  "porte": "Enorme",
   "dimensoes": {
-    "medida": "24 m de comprimento",
-    "peso": "14.000 kg"
+    "medida": "24 m de comprimento, 1,11 m de altura",
+    "peso": "14,0 t",
+    "comprimento": 24,
+    "largura": 1.11,
+    "altura": 1.11
   },
   "locomocao": {
     "terra": 4,
@@ -24,27 +28,39 @@
     "natacao": 4,
     "escalada": 4
   },
+  "deslocamentoDeclarado": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+  },
   "centelha": 6,
   "attrs": {
-    "forca": 15,
+    "forca": 13,
     "destreza": 7,
     "vigor": 13,
-    "influencia": 7,
-    "perspicacia": 4,
-    "compostura": 7,
     "percepcao": 6,
     "inteligencia": 1,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 7,
+    "perspicacia": 4,
+    "compostura": 7
   },
   "skills": {
     "briga": 5,
     "esquiva": 2,
-    "prontidao": 3,
-    "integridade": 7
+    "atletismo": 2,
+    "integridade": 7,
+    "prontidao": 3
+  },
+  "skills2": {
+    "escalada": 3,
+    "natacao": 3,
+    "disparo": 4,
+    "musculatura": 4
   },
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 5,
+    "compaixao": 3,
+    "conviccao": 3,
     "temperanca": 3,
     "valor": 6
   },
@@ -52,50 +68,96 @@
   "aparencia": 9,
   "ataques": [
     {
-      "nome": "Garras e mordida",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 4,
+      "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 7
+      "perf": 3,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Garras",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Sopro gélido",
+      "atrib": "vigor",
+      "pericia": "disparo",
+      "dado": 9,
+      "mao": 1,
+      "tipo": "gelo",
+      "ticks": 7,
+      "forca": false,
+      "classe": "distancia",
+      "distancia": true
     }
   ],
   "fraquezas": [
     "fogo"
   ],
-  "resistencias": [
+  "resistencias": [],
+  "imunidades": [
     "gelo"
   ],
   "habilidades": [
     {
-      "nome": "Sopro Gélido",
-      "descricao": "Expele um cone de geleia congelante que gruda na pele e, um round depois, endurece em blocos de gelo, prendendo quem foi atingido no lugar e causando dano gelado contínuo até se libertar."
+      "nome": "Sopro gélido",
+      "descricao": "poder natural (base Gelo 4, sugestão da ficha): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: o dano, instantâneo; o gelo, até o alvo se soltar. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: uma geleia congelante gruda e endurece em gelo: quem falha fica Imobilizado e leva 1d6 de gelo a cada 6 Ticks enquanto estiver preso; para se soltar, Força + Atletismo contra a jogada do sopro, uma tentativa por ação. Dano: 9d6 + Centelha, gelo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade e não fica preso. Limite de uso: uma vez a cada 24 Ticks.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Maldição do Gelo",
-      "descricao": "Quem o mata é amaldiçoado com vulnerabilidade permanente ao frio."
+      "nome": "garras em sequência",
+      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
+      "classe": "livro"
     },
     {
-      "nome": "Liberdade de Movimento",
-      "descricao": "Nunca é imobilizado, agarrado ou paralisado, como se estivesse sempre livre para agir."
+      "nome": "Resistência a magia",
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes (site), como no dragão vermelho ancião. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Veneno Gélido",
-      "descricao": "A mordida injeta um frio venenoso que continua drenando o Vigor da vítima por vários rounds até duas curas seguidas."
+      "nome": "Liberdade de movimento",
+      "descricao": "nunca fica Imobilizado, Preso nem agarrado; solta-se de qualquer prisão como se ela não estivesse lá (site).",
+      "classe": "sem regra ainda"
     },
     {
       "nome": "Regeneração",
-      "descricao": "Cura feridas continuamente; apenas ferro frio interrompe essa recuperação."
+      "descricao": "fecha as feridas sem parar; só o ferimento de ferro frio não fecha (site). O vocabulário de Elementos não tem ferro frio, e o livro não tem regra de regeneração.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Visão Verdadeira",
-      "descricao": "Enxerga através de ilusões e trevas sem esforço."
+      "nome": "Maldição da morte",
+      "descricao": "quem o mata fica vulnerável ao frio para sempre (site).",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Imune ao Frio e Resistente a Magia",
-      "descricao": "O gelo não o afeta, feitiços hostis enfrentam grande resistência, e é imune a veneno, sono, paralisia e maldições comuns."
+      "nome": "Imune a veneno, sono, paralisia e maldições comuns",
+      "descricao": "nada disso o pega (site).",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "senhor das geleiras",
+      "descricao": "prende o grupo no gelo com o sopro, morde quem ficou preso e deixa o frio acabar o resto.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão verdadeira: enxerga através de ilusão, disfarce e escuridão (site; sem regra ainda). · visão no escuro: vê sem luz."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Peçonha de linnorm do gelo · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor do site."
     }
   ],
   "lore": [
@@ -110,6 +172,18 @@
     {
       "titulo": "Prisão de Gelo",
       "texto": "Suas vítimas às vezes são encontradas anos depois, perfeitamente preservadas dentro de blocos de gelo que nunca derretem no lugar certo."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Peçonha de linnorm do gelo · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor do site."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme. 105 PV, Impacto 19, Corte e Perfuração 6, Couraça 10. Esquiva 22, Bloqueio 14. Sopro gélido em cone de 12 m a cada 24 Ticks, que deixa Imobilizado no gelo. Mordida venenosa e garras até três por ação. Ninguém o prende, e as feridas fecham (sem regra ainda). +2 contra Artes. Gelo não o fere; fogo passa toda a Absorção."
     }
   ],
   "ecologia": {
@@ -145,5 +219,41 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 6
+  "ameacaLegada": 6,
+  "v3": {
+    "pv": 105,
+    "esquiva": 22,
+    "bloqueio": 14,
+    "defesa": 22,
+    "defesaMental": 33,
+    "defesaSocial": 14,
+    "absorcao": {
+      "impacto": 19,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "couracaNivel": 10,
+    "pesoErguido": 5176.2,
+    "deslocamento": {
+      "terra": {
+        "batalha": 4,
+        "arranque": 6,
+        "corrida": 9
+      },
+      "voo": {
+        "batalha": 10
+      },
+      "nado": 4
+    }
+  },
+  "notasObservacao": [
+    "`forca`: 13, pelo teste de ordem; o site tinha 15 (o mesmo método do neothelid, pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro)) **[provisório]**",
+    "`tamanho`: Enorme pela área do corpo de serpente; o site dizia Colossal **[provisório]**",
+    "`pv`: na zona de transição, robusto, sobe para a faixa de 14 a 110 t **[provisório]**",
+    "`asas`: nenhuma, como o linnorm dos penhascos **[provisório]**",
+    "`couraca`: nível 10 **[provisório]**",
+    "`sopro`: 9d6 + Centelha, cone de 12 m, Imobilizado no gelo, pela escada de Centelha do lote 23 (D-197) **[provisório]**",
+    "`veneno`: pelo padrão do \"Ferrão de gigante\" **[provisório]**",
+    "`resistência a magia`: +2 contra Artes, sugestão da ficha (D-197)"
+  ]
 }

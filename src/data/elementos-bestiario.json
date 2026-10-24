@@ -170,31 +170,6 @@
    "perfuracao"
   ]
  },
- "dragao-azul-adulto": {
-  "resistencias": [
-   "raio"
-  ]
- },
- "dragao-dourado-adulto": {
-  "resistencias": [
-   "fogo"
-  ]
- },
- "dragao-vermelho-adulto": {
-  "resistencias": [
-   "fogo"
-  ]
- },
- "dragao-vermelho-anciao": {
-  "resistencias": [
-   "fogo"
-  ]
- },
- "dragao-vermelho-jovem": {
-  "resistencias": [
-   "fogo"
-  ]
- },
  "dretch": {
   "fraquezas": [
    "luz",
@@ -248,11 +223,6 @@
    "corte",
    "impacto",
    "perfuracao"
-  ]
- },
- "filhote-de-dragao-vermelho": {
-  "resistencias": [
-   "fogo"
   ]
  },
  "fungo-violeta": {
@@ -331,11 +301,6 @@
    "perfuracao"
   ]
  },
- "grande-wyrm-vermelho": {
-  "resistencias": [
-   "fogo"
-  ]
- },
  "homunculus": {
   "resistencias": [
    "perfuracao"
@@ -356,14 +321,6 @@
  "lillend": {
   "fraquezas": [
    "profano"
-  ]
- },
- "linnorm-do-gelo": {
-  "fraquezas": [
-   "fogo"
-  ],
-  "resistencias": [
-   "gelo"
   ]
  },
  "marid": {

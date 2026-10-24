@@ -134,9 +134,14 @@
       "classe": "regra da ficha"
     },
     {
+      "nome": "garras em sequência",
+      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
+      "classe": "livro"
+    },
+    {
       "nome": "Multiataque",
-      "descricao": "Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo, ou dois lado a lado. Efeito: duas garras e a mordida no mesmo turno, cada golpe com a própria jogada e −2 nela. Dano: o de cada golpe da tabela de Ataques. Resistência: nenhum; cada golpe vai contra a Defesa do alvo. Limite de uso: uma vez a cada 12 Ticks.",
-      "classe": "regra da ficha"
+      "descricao": "garra, garra e mordida no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada.",
+      "classe": "sem regra ainda"
     },
     {
       "nome": "Presença",
@@ -265,6 +270,7 @@
     "`couraca`: 6, \"acima do crocodilo\", no começo da faixa, para deixar espaço às idades maiores **[provisório]**",
     "`sopro`: 6d6 + Centelha, cone de 9 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197: \"A Bestiarista sugere tudo... o autor revisa no fim\"). Os números do site ficam, porque o sopro tem de ser a arma mais forte do dragão (média 25, contra 15,5 da mordida); a base Gelo 3 (Rajada Gélida, 2d6) daria 11, abaixo da mordida. O chão de gelo é a parte da Rajada Gélida que desacelera **[provisório]**",
     "`envergadura` e `área`: escaladas do grifo pela mesma carga por área de asa; o grifo é a única criatura voadora grande com Centelha já feita **[conta]**",
+    "`multiataque`: sem regra ainda; garras pela Rajada (ajuste de 24/10/2026, no formato do lote 23)",
     "`massa`: 700 kg, a do site, conferida pelo crocodilo de mesmo comprimento (de memória, a conferir)"
   ]
 }

@@ -5,44 +5,68 @@
   "nome": "Wyvern",
   "nomeIngles": "Wyvern",
   "categoria": "Dragão",
+  "categoriaLegada": "Dragão",
   "papel": "elite",
   "conceito": "dragão Grande",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "Dragão menor de duas patas e asas de couro, caçador territorial das montanhas. Mergulha do alto sobre o gado e o viajante isolado, crava o ferrão venenoso da cauda e espera o veneno agir. Orcs e goblins às vezes o domam como montaria de guerra.",
   "tags": [
     "dragao",
     "centelha"
   ],
   "imagem": "bestiario/wyvern_criatura.webp",
-  "porte": "Grande",
+  "porte": "Enorme",
   "dimensoes": {
-    "medida": "5,5 m da cabeça à ponta da cauda, envergadura 6 m",
-    "peso": "250 kg"
+    "medida": "5,5 m de comprimento, 1,5 m de altura",
+    "peso": "250 kg",
+    "comprimento": 5.5,
+    "largura": 0.9,
+    "altura": 1.5,
+    "envergadura": 6.4
   },
   "locomocao": {
     "voo": 6,
     "terra": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
   },
   "centelha": 3,
   "attrs": {
     "forca": 6,
     "destreza": 3,
     "vigor": 6,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 3,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 3
   },
   "skills": {
     "briga": 5,
     "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 3
+    "atletismo": 2,
+    "furtividade": 1,
+    "integridade": 3,
+    "prontidao": 2
   },
+  "skills2": {
+    "voo": 3,
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "vindo do alto",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 5,
+    "compaixao": 3,
+    "conviccao": 3,
     "temperanca": 3,
     "valor": 5
   },
@@ -50,57 +74,101 @@
   "aparencia": 8,
   "ataques": [
     {
-      "nome": "Garras e mordida",
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 1,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Garras",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
+    },
+    {
+      "nome": "Garras em mergulho",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 2,
+      "mao": 2,
+      "tipo": "corte",
+      "ticks": 7,
+      "classe": "pesada"
+    },
+    {
+      "nome": "Ferrão",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 6
+      "acerto": 1,
+      "perf": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
-  "poderes": [
-    {
-      "id": "ferrao-venenoso",
-      "nome": "Ferrão venenoso",
-      "tipo": "natural",
-      "resiste": "corpo",
-      "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-      "usos": {
-        "periodo": "cena",
-        "quantidade": 3,
-        "recarga": "1 hora"
-      },
-      "ataque": "Garras e mordida"
-    }
-  ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Voo veloz",
-      "descricao": "domina o ar, ataca em mergulho"
+      "nome": "garras em sequência",
+      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Leve, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
+      "classe": "livro"
+    },
+    {
+      "nome": "agarrar",
+      "descricao": "Garras: o Agarrão. Pela massa (Faixa 4), soma +3 contra o humano (Faixa 3).",
+      "classe": "livro"
+    },
+    {
+      "nome": "voar com a presa",
+      "descricao": "agarra alvo pequeno com as patas e o leva no ar (site).",
+      "classe": "sem regra ainda"
     },
     {
       "nome": "Ferrão venenoso",
-      "descricao": "ataque de cauda; falha em Resistência causa veneno debilitante (penalidade cumulativa por rodada)"
+      "descricao": "Ferrão: Ativação: o Ferrão que fere (1 de dano ou mais depois da Absorção). Duração: a do veneno. Alcance: o do corpo a corpo. Área: um alvo. Efeito: inocula a Peçonha de wyvern (Veneno e doença). Dano: o do Ferrão. Resistência: corpo, pelo veneno. Limite de uso: três vezes por cena; recarrega em 1 hora (site).",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Investida em mergulho",
-      "descricao": "dano extra ao atacar descendo em voo"
+      "nome": "Voo em mergulho",
+      "descricao": "Ativação: descer de pelo menos 6 m de altura direto sobre o alvo. Duração: instantânea. Alcance: o do voo. Área: um alvo. Efeito: +2 na Iniciativa do mergulho e o golpe sai com as Garras em mergulho. Dano: o das Garras em mergulho. Resistência: nenhum. Limite de uso: um mergulho a cada vez que sobe de novo a 6 m. Os números do Voo em mergulho do branco jovem.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Garras que prendem",
-      "descricao": "agarra alvos pequenos e os carrega no ar"
+      "nome": "caçador do alto",
+      "descricao": "vem do alto em mergulho sobre o alvo isolado, crava o ferrão e sobe; volta quando a presa já está fraca do veneno.",
+      "classe": "como luta"
     },
     {
-      "nome": "Predador alado",
-      "descricao": "Prontidão 2, Furtividade 1; ataca de surpresa vindo do alto"
+      "nome": "Sentidos",
+      "descricao": "visão: a de caçador do alto, que acha a presa isolada de longe (Prontidão 2, site)."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Peçonha de wyvern · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pelo Ferrão. Os números do \"Ferrão de gigante\" dos moldes (escorpião-gigante, formiga-gigante), com a Força do debilitante, como na peçonha de drider."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Caçador aéreo territorial, ataca em mergulho e finaliza a presa com o ferrão da cauda, que carrega um veneno lento e cruel. Prefere gado, cavalos e alvos isolados a combate direto com grupos armados."
+      "texto": "Caçador aéreo territorial, ataca em mergulho e finaliza a presa com o ferrão da cauda, que carrega um veneno lento e cruel. Prefere gado, cavalos e alvos isolados a combate direto com grupos armados. Social: solitário; faz ninho em falésias e torres abandonadas."
     },
     {
       "titulo": "Ecologia",
@@ -113,6 +181,18 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "É contado entre os dragões, e como todo dragão carrega o peso da Supressão: aldeias inteiras erguem sinos de alarme e recompensas quando um se instala por perto, lembrando que o mundo antigo era mais selvagem e mais mágico do que o de hoje."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Peçonha de wyvern · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pelo Ferrão. Os números do \"Ferrão de gigante\" dos moldes (escorpião-gigante, formiga-gigante), com a Força do debilitante, como na peçonha de drider."
+    },
+    {
+      "titulo": "Aptidões",
+      "texto": "montaria sim (de quem o doma, com carne farta; site) · carga não · tração não"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme no ar, Grande pousado. 43 PV, Impacto 9, Corte e Perfuração 3. Esquiva 10, Bloqueio 6. Mergulha com as Garras em mergulho; crava o Ferrão, que inocula um veneno que tira Força, três vezes por cena. Agarra e leva no ar o alvo pequeno. Voa 6 m por Tick e anda mal em terra."
     }
   ],
   "ecologia": {
@@ -153,5 +233,43 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 43,
+    "esquiva": 10,
+    "bloqueio": 6,
+    "defesa": 10,
+    "defesaMental": 19,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 9,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 3,
+    "pesoErguido": 567.06,
+    "carga": {
+      "leve": 25,
+      "media": 50,
+      "pesada": 75,
+      "maxima": 100
+    },
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
+      },
+      "voo": {
+        "batalha": 6
+      }
+    }
+  },
+  "notasObservacao": [
+    "`centelha`: 3, o campo; a nota da fonte dizia 2",
+    "`segundoTamanho`: Grande pela silhueta de lado em formas simples, sem a cauda fina **[provisório]**",
+    "`couraca`: nível 3 **[provisório]**",
+    "`veneno`: Peçonha de wyvern pelo padrão do \"Ferrão de gigante\" **[provisório]**",
+    "`ferrão`, `voo em mergulho`: números sugeridos pela ficha (D-197)"
+  ]
 }

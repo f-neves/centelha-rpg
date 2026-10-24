@@ -5,11 +5,11 @@
   "categoria": "Animal",
   "categoriaLegada": "Fera",
   "papel": "fera",
-  "conceito": "animal Enorme",
+  "conceito": "animal Grande",
   "descricao": "Pterossauro do tamanho de uma girafa, que anda pela planície como uma cegonha e pega presa pequena no chão. Voa pouco, mas pode cruzar longas distâncias.",
   "tags": [],
   "imagem": "bestiario/quetzalcoatlo_criatura.webp",
-  "porte": "Enorme",
+  "porte": "Grande",
   "dimensoes": {
     "medida": "5 m de comprimento, 5 m de altura",
     "peso": "245 kg",
@@ -141,7 +141,7 @@
     }
   },
   "notasObservacao": [
-    "`alvo`: Enorme pela silhueta de asas abertas da `tamanho-fichas-v2` (13,38 m²); de asas fechadas, Grande (4,04 m²). A envergadura de Goto 2022 (9,64 m) diminui a silhueta; não foi refeita a conta (D-174)",
+    "`alvo`: Grande de asas fechadas, no chão, onde caça (4,04 m²; D-215, 24/10/2026); Enorme pela silhueta de asas abertas da `tamanho-fichas-v2` (13,38 m²). A envergadura de Goto 2022 (9,64 m) diminui a silhueta; não foi refeita a conta (D-174)",
     "`pesoErguido`: 463 kg pela fórmula nova (decisões 14 e 16), provisório: duas vezes a massa. O que ele leva em voo não tem regra e fica [sem dado] (D-162, D-169, D-174)",
     "couraca: nível 0 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois.",
     "`vigor`: 3, provisório: as aves tendem a menos e os grandes a mais; o voo em disputa saiu da conta (decisão 5, D-174)",

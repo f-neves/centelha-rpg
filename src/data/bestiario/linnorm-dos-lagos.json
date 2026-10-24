@@ -5,45 +5,74 @@
   "nome": "Linnorm dos Lagos",
   "nomeIngles": "Tarn Linnorm",
   "categoria": "Dragão",
+  "categoriaLegada": "Dragão",
   "papel": "chefe",
   "conceito": "dragão Colossal",
-  "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+  "descricao": "O mais antigo e mortal dos linnorms, serpente-dragão de duas cabeças e 36 m dos lagos gelados. Cospe ácido, morde com as duas cabeças, prende com a cauda e fecha as próprias feridas; quem o mata nunca mais sara direito.",
   "tags": [
     "dragao",
     "centelha"
   ],
   "imagem": "bestiario/linnorm-dos-lagos_criatura.webp",
-  "porte": "Colossal",
+  "porte": "Enorme",
   "dimensoes": {
-    "medida": "cerca de 36 m de comprimento",
-    "peso": "cerca de 11.000 kg"
+    "medida": "36 m de comprimento, 0,8 m de altura",
+    "peso": "11,0 t",
+    "comprimento": 36,
+    "largura": 0.8,
+    "altura": 0.8
   },
   "locomocao": {
     "terra": 4,
     "voo": 10,
     "natacao": 8
   },
+  "deslocamentoDeclarado": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
+  },
   "centelha": 6,
   "attrs": {
-    "forca": 16,
+    "forca": 13,
     "destreza": 8,
     "vigor": 14,
-    "influencia": 8,
-    "perspicacia": 5,
-    "compostura": 8,
     "percepcao": 8,
     "inteligencia": 2,
-    "raciocinio": 5
+    "raciocinio": 5,
+    "influencia": 8,
+    "perspicacia": 5,
+    "compostura": 8
   },
   "skills": {
     "briga": 5,
     "esquiva": 2,
-    "prontidao": 4,
-    "integridade": 8
+    "atletismo": 2,
+    "integridade": 8,
+    "prontidao": 4
   },
+  "skills2": {
+    "natacao": 4,
+    "disparo": 5,
+    "musculatura": 4
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "surpresa",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "Agarrão",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
-    "compaixao": 2,
-    "conviccao": 5,
+    "compaixao": 3,
+    "conviccao": 3,
     "temperanca": 3,
     "valor": 6
   },
@@ -51,55 +80,129 @@
   "aparencia": 9,
   "ataques": [
     {
-      "nome": "Garras e mordida",
+      "nome": "Mordida",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 4,
+      "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 7
+      "perf": 3,
+      "ticks": 6,
+      "classe": "media"
+    },
+    {
+      "nome": "Garras",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "corte",
+      "ticks": 6,
+      "classe": "media"
     },
     {
       "nome": "Cauda",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 2,
-      "mao": 1,
+      "mao": 2,
       "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 6,
-      "notas": "pode agarrar e constringir"
+      "ticks": 7,
+      "classe": "pesada"
+    },
+    {
+      "nome": "Sopro ácido",
+      "atrib": "vigor",
+      "pericia": "disparo",
+      "dado": 9,
+      "mao": 1,
+      "tipo": "acido",
+      "ticks": 7,
+      "forca": false,
+      "classe": "distancia",
+      "distancia": true
     }
+  ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [
+    "acido"
   ],
   "habilidades": [
     {
-      "nome": "Duas Cabeças, Visão Total",
-      "descricao": "Com duas cabeças vigiando em todas as direções, não pode ser pego de surpresa nem cercado."
+      "nome": "Sopro ácido",
+      "descricao": "poder natural (base Água 4, sugestão da ficha, como o sopro ácido do dragão verde): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m ou cone de 12 m, à escolha (site: \"nuvem ou linha\"). Efeito: o ácido corrói tudo o que toca. Dano: 9d6 + Centelha, ácido. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Sopro Ácido",
-      "descricao": "Cospe uma nuvem ou linha de ácido corrosivo que queima tudo o que toca; a fumaça tóxica que sobe do ácido consumindo carne ainda corrói quem respira perto no round seguinte."
+      "nome": "fumaça do ácido",
+      "descricao": "a fumaça que sobe da carne corroída fere de novo quem respira perto logo depois do sopro (site).",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Maldição da Morte",
-      "descricao": "Quem o mata é amaldiçoado a nunca mais ser curado por magia nem se recuperar descansando, definhando aos poucos pelo resto da vida."
+      "nome": "garras em sequência",
+      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
+      "classe": "livro"
     },
     {
-      "nome": "Liberdade de Movimento",
-      "descricao": "Jamais é imobilizado, agarrado ou paralisado."
+      "nome": "cauda em sequência",
+      "descricao": "Cauda: a Rajada: até dois golpes de Cauda na mesma ação, o teto da classe Pesada.",
+      "classe": "livro"
     },
     {
-      "nome": "Veneno Corrosivo",
-      "descricao": "A mordida injeta ácido que continua a queimar por dentro da vítima e corrói seu Vigor por vários rounds até duas curas seguidas."
+      "nome": "agarrar e constringir",
+      "descricao": "Cauda: o Agarrão, com a Especialidade natural Briga (Agarrão) +2. Pela massa (Faixa 5), soma +6 contra o humano (Faixa 3).",
+      "classe": "livro"
     },
     {
-      "nome": "Anfíbio e Regenerativo",
-      "descricao": "Vive tanto na água quanto em terra e cura feridas continuamente, exceto as causadas por ferro frio."
+      "nome": "Duas cabeças",
+      "descricao": "as duas cabeças mordem na mesma ação, e com elas as garras e a cauda, no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Imune a Ácido e Resistente a Magia",
-      "descricao": "Seu próprio veneno não o machuca, feitiços hostis enfrentam grande resistência, e é imune a sono, paralisia, veneno e maldições comuns."
+      "nome": "Nunca cercado",
+      "descricao": "com as duas cabeças vigiando, não fica Flanqueado (site); a surpresa já está na Prontidão (surpresa) +3.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Resistência a magia",
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes (site), como no dragão vermelho ancião. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Liberdade de movimento",
+      "descricao": "nunca fica Imobilizado, Preso nem agarrado; solta-se de qualquer prisão como se ela não estivesse lá (site).",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Regeneração",
+      "descricao": "fecha as feridas sem parar; só o ferimento de ferro frio não fecha (site). O vocabulário de Elementos não tem ferro frio, e o livro não tem regra de regeneração.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Maldição da morte",
+      "descricao": "quem o mata nunca mais é curado por magia nem se recupera descansando, e definha aos poucos pelo resto da vida (site).",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Imune a sono, paralisia, veneno e maldições comuns",
+      "descricao": "nada disso o pega (site).",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "fúria de duas cabeças",
+      "descricao": "emerge do lago gelado, cospe ácido sobre o barco, prende um com a cauda e morde com as duas cabeças quem ainda luta.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "duas cabeças: vigiam em todas as direções (site); Prontidão (surpresa) +3. · visão no escuro: vê sem luz."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Peçonha de linnorm dos lagos · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor do site; o ácido que queima por dentro fica descrito, sem número (sem regra ainda)."
     }
   ],
   "lore": [
@@ -114,6 +217,18 @@
     {
       "titulo": "Morte que Não Cura",
       "texto": "Sobreviventes que abateram este linorme carregam a maldição de nunca mais sarar direito, lembrete vivo do preço da vitória."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Peçonha de linnorm dos lagos · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor do site; o ácido que queima por dentro fica descrito, sem número (sem regra ainda)."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme. 105 PV, Impacto 20, Corte e Perfuração 6, Couraça 11. Esquiva 24, Bloqueio 16. Sopro ácido em linha de 18 m ou cone de 12 m a cada 24 Ticks. Mordida venenosa, garras até três por ação, cauda que agarra. Não é surpreendido. Ninguém o prende, e as feridas fecham (sem regra ainda). +2 contra Artes. Ácido não o fere."
     }
   ],
   "ecologia": {
@@ -150,5 +265,41 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 6
+  "ameacaLegada": 6,
+  "v3": {
+    "pv": 105,
+    "esquiva": 24,
+    "bloqueio": 16,
+    "defesa": 24,
+    "defesaMental": 36,
+    "defesaSocial": 16,
+    "absorcao": {
+      "impacto": 20,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "couracaNivel": 11,
+    "pesoErguido": 4398.33,
+    "deslocamento": {
+      "terra": {
+        "batalha": 4,
+        "arranque": 6,
+        "corrida": 9
+      },
+      "voo": {
+        "batalha": 10
+      },
+      "nado": 8
+    }
+  },
+  "notasObservacao": [
+    "`forca`: 13, pelo teste de ordem; o site tinha 16 (o mesmo método do neothelid, pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro)) **[provisório]**",
+    "`tamanho`: Enorme pela área do corpo de serpente; o site dizia Colossal **[provisório]**",
+    "`asas`: nenhuma, como o linnorm dos penhascos **[provisório]**",
+    "`couraca`: nível 11 **[provisório]**",
+    "`sopro`: 9d6 + Centelha, linha de 18 m ou cone de 12 m, pela escada de Centelha do lote 23 (D-197) **[provisório]**",
+    "`veneno`: pelo padrão do \"Ferrão de gigante\" **[provisório]**",
+    "`duas cabeças`: as duas mordidas na mesma ação, sem regra ainda",
+    "`resistência a magia`: +2 contra Artes, sugestão da ficha (D-197)"
+  ]
 }

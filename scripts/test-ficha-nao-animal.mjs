@@ -324,6 +324,12 @@ try {
   const noJogo = (dec.json?.lore || []).find((l) => l.titulo === 'No jogo')?.texto || '';
   ok(dec.status === 0 && noJogo.includes('(dano médio 10,5 cada)') && !noJogo.includes('ADW') && noJogo.includes('(Bloqueio 6, 7 com a maça)'), `o decimal fica, a citação sai, a lista fica: "${noJogo}"`);
 
+  // A LINHA "Escavação" e os sinônimos "Água" e "Costa" (decisão do Arquiteto de 24/10/2026, lotes 23 e 24).
+  const cav = roda(comMov('| Escavação | Batalha **2** (m por Tick), na areia | |\n').replace('| Terreno | Ruínas |', '| Terreno | Água, Costa |'), 'escavação e terreno');
+  ok(cav.status === 0 && cav.json?.locomocao?.escavacao === 2 && JSON.stringify(cav.json?.ecologia?.terreno) === JSON.stringify(['Water', 'Coast']), `a Escavação em Batalha e os terrenos "Água" e "Costa": escavação ${cav.json?.locomocao?.escavacao}, terreno ${JSON.stringify(cav.json?.ecologia?.terreno)}`);
+  para('Escavação fora da forma', TERRA, TERRA + '| Escavação | rápida | |\n', /Escavação "rápida" fora da forma que o conversor lê/);
+  para('Terreno vizinho que não é sinônimo', '| Terreno | Ruínas |', '| Terreno | Mar |', /Terreno fora do conjunto: Mar/);
+
   // A jogada comum, sem frase: o corpo a corpo vai pelo maior (o animal ágil, como o gato).
   const agil = roda(FICHA.replace('| Força | 4 |', '| Força | 2 |').replace('"forca":4', '"forca":2').replace('Jogada: Força 4 + Armas 3', 'Jogada: Destreza 3 + Armas 3'), 'jogada comum pelo maior');
   const toque = (agil.json?.ataques || []).find((a) => a.nome === 'Toque gelado');

@@ -3866,23 +3866,23 @@
     "ameaca": 4,
     "centelha": 3,
     "conceito": "dragão Grande",
-    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "descricao": "Dragão menor de duas patas e asas de couro, caçador territorial das montanhas. Mergulha do alto sobre o gado e o viajante isolado, crava o ferrão venenoso da cauda e espera o veneno agir. Orcs e goblins às vezes o domam como montaria de guerra.",
     "tags": [
       "dragao",
       "centelha"
     ],
-    "pv": 54,
+    "pv": 43,
     "defesa": 10,
     "defesaSocial": 6,
     "defesaMental": 19,
     "vontade": 8,
     "soak": {
       "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 6,
       "destreza": 3,
@@ -3896,34 +3896,44 @@
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
+        "nome": "Mordida",
         "pool": "5d6+2 +6",
-        "dano": "2d6 +9 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "dano": "1d6 +9 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "5d6+2 +7",
+        "dano": "1d6 +7 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Garras em mergulho",
+        "pool": "5d6+2 +6",
+        "dano": "2d6 +15 corte",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Ferrão",
+        "pool": "5d6+2 +7",
+        "dano": "1d6 +7 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "Habilidades notáveis: Prontidão 2, Furtividade 1.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "ferrao-venenoso",
-        "nome": "Ferrão venenoso",
-        "tipo": "natural",
-        "resiste": "corpo",
-        "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 3,
-          "recarga": "1 hora"
-        },
-        "ataque": "Garras e mordida"
-      }
-    ],
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 2,
       "esquiva": 1,
       "integridade": 3,
       "sociabilidade": 0,
@@ -9635,7 +9645,7 @@
     "ameaca": 4,
     "centelha": 4,
     "conceito": "dragão Médio",
-    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "descricao": "Filhote de dragão vermelho de 2,7 m, que já nasce mágico. Sopra fogo em cone de 9 m, morde e rasga, e já guarda um pequeno tesouro com o orgulho dos adultos.",
     "tags": [
       "dragao",
       "centelha",
@@ -9643,16 +9653,16 @@
     ],
     "pv": 40,
     "defesa": 4,
-    "defesaSocial": 8,
+    "defesaSocial": 12,
     "defesaMental": 25,
     "vontade": 9,
     "soak": {
       "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 6",
+    "iniciativa": "1d6 + 7",
     "atributos": {
       "forca": 6,
       "destreza": 2,
@@ -9666,66 +9676,49 @@
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
+        "nome": "Mordida",
         "pool": "5d6+2 +8",
-        "dano": "1d6 +10 perfurante",
-        "perfArma": 0,
-        "ticks": 5
+        "dano": "1d6 +10 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "5d6+2 +8",
+        "dano": "1d6 +10 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Sopro de fogo",
+        "pool": "3d6+2 +4",
+        "dano": "3d6 +4 fogo",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "distancia"
       }
     ],
     "tecnicas": [],
     "artes": [
       {
-        "id": "fogo",
-        "nivel": 2
-      },
-      {
         "id": "morte",
         "nivel": 3
+      },
+      {
+        "id": "fogo",
+        "nivel": 2
       }
     ],
     "notas": "Habilidades notáveis: Prontidão 3, Atletismo 2, Manha 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "sopro-de-fogo",
-        "nome": "Sopro de fogo",
-        "tipo": "natural",
-        "base": {
-          "arte": "fogo",
-          "nivel": 2
-        },
-        "resiste": "esquiva",
-        "area": "cone de 9 m",
-        "efeito": "Cone ou linha. Esquiva para metade.",
-        "usos": {
-          "periodo": "ticks",
-          "quantidade": 1,
-          "recarga": "24 ticks"
-        }
-      },
-      {
-        "id": "presenca-medonha",
-        "nome": "Presença medonha",
-        "tipo": "natural",
-        "base": {
-          "arte": "morte",
-          "nivel": 3
-        },
-        "resiste": "mente",
-        "efeito": "Área; quem resiste fica imune na cena.",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 1
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 2,
+      "prontidao": 3,
       "esquiva": 0,
       "integridade": 4,
-      "sociabilidade": 0,
-      "furtividade": 2
+      "sociabilidade": 1,
+      "furtividade": 1
     }
   },
   {
@@ -9736,7 +9729,7 @@
     "ameaca": 5,
     "centelha": 5,
     "conceito": "dragão Grande",
-    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "descricao": "Dragão vermelho jovem de 4,9 m, ainda longe do tamanho adulto. Mergulha do alto, sopra fogo em cone de 9 m e faz inimigos comuns hesitarem só com a presença.",
     "tags": [
       "dragao",
       "centelha",
@@ -9744,16 +9737,16 @@
     ],
     "pv": 54,
     "defesa": 10,
-    "defesaSocial": 6,
+    "defesaSocial": 14,
     "defesaMental": 22,
     "vontade": 10,
     "soak": {
       "impacto": 11,
-      "corte": 10,
-      "perfuracao": 10
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 4",
+    "iniciativa": "1d6 + 7",
     "atributos": {
       "forca": 9,
       "destreza": 3,
@@ -9767,11 +9760,28 @@
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
+        "nome": "Mordida",
         "pool": "7d6 +10",
-        "dano": "2d6 +14 perfurante",
-        "perfArma": 0,
-        "ticks": 6
+        "dano": "1d6 +14 perfurante · perf. 2",
+        "perfArma": 2,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "7d6 +10",
+        "dano": "1d6 +14 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Sopro de fogo",
+        "pool": "4d6+2 +6",
+        "dano": "6d6 +5 fogo",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "distancia"
       }
     ],
     "tecnicas": [
@@ -9789,41 +9799,11 @@
     ],
     "notas": "Habilidades notáveis: Prontidão 4, Manha 3, Ocultismo 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "sopro-de-fogo",
-        "nome": "Sopro de fogo",
-        "tipo": "natural",
-        "base": {
-          "arte": "fogo",
-          "nivel": 3
-        },
-        "resiste": "esquiva",
-        "area": "cone de 9 m",
-        "efeito": "Cone ou linha. Esquiva para metade.",
-        "usos": {
-          "periodo": "ticks",
-          "quantidade": 1,
-          "recarga": "24 ticks"
-        }
-      },
-      {
-        "id": "presenca-aterradora",
-        "nome": "Presença aterradora",
-        "tipo": "natural",
-        "resiste": "mente",
-        "efeito": "Área; quem resiste fica imune na cena.",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 1
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 4,
       "esquiva": 1,
       "integridade": 3,
-      "sociabilidade": 0,
+      "sociabilidade": 2,
       "furtividade": 1
     }
   },
@@ -9835,7 +9815,7 @@
     "ameaca": 6,
     "centelha": 6,
     "conceito": "dragão Enorme",
-    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "descricao": "Dragão vermelho adulto de 9 m, feiticeiro alado temível. Sopra fogo em cone de 12 m, queima quem o toca com a aura das escamas e conjura encantos, ilusões e barreiras. Orgulhoso e ganancioso.",
     "tags": [
       "dragao",
       "centelha",
@@ -9843,16 +9823,16 @@
     ],
     "pv": 80,
     "defesa": 4,
-    "defesaSocial": 10,
+    "defesaSocial": 18,
     "defesaMental": 31,
     "vontade": 11,
     "soak": {
       "impacto": 15,
-      "corte": 14,
-      "perfuracao": 14
+      "corte": 6,
+      "perfuracao": 6
     },
-    "resistPerf": 1,
-    "iniciativa": "1d6 + 7",
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 10",
     "atributos": {
       "forca": 11,
       "destreza": 2,
@@ -9866,11 +9846,36 @@
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
+        "nome": "Mordida",
         "pool": "8d6 +10",
-        "dano": "3d6 +17 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "dano": "1d6 +17 perfurante · perf. 3",
+        "perfArma": 3,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "8d6 +10",
+        "dano": "1d6 +17 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Cauda",
+        "pool": "8d6 +10",
+        "dano": "2d6 +28 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Sopro de fogo",
+        "pool": "6d6+2 +8",
+        "dano": "9d6 +6 fogo",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "distancia"
       }
     ],
     "tecnicas": [],
@@ -9898,61 +9903,12 @@
     ],
     "notas": "Habilidades notáveis: Prontidão 5, Persuasão 4, Ocultismo 3.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "sopro-de-fogo",
-        "nome": "Sopro de fogo",
-        "tipo": "natural",
-        "base": {
-          "arte": "fogo",
-          "nivel": 4
-        },
-        "resiste": "esquiva",
-        "area": "cone de 12 m",
-        "efeito": "Cone ou linha. Esquiva para metade.",
-        "usos": {
-          "periodo": "ticks",
-          "quantidade": 1,
-          "recarga": "24 ticks"
-        }
-      },
-      {
-        "id": "aura-de-fogo",
-        "nome": "Aura de fogo",
-        "tipo": "natural",
-        "base": {
-          "arte": "fogo",
-          "nivel": 4
-        },
-        "resiste": "nenhum",
-        "efeito": "Resiste ao entrar, 1 vez por cena.",
-        "usos": {
-          "periodo": "passivo",
-          "recarga": "contínua"
-        }
-      },
-      {
-        "id": "presenca-aterradora",
-        "nome": "Presença aterradora",
-        "tipo": "natural",
-        "base": {
-          "arte": "morte",
-          "nivel": 3
-        },
-        "resiste": "mente",
-        "efeito": "Área; quem resiste fica imune na cena.",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 1
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 2,
+      "prontidao": 5,
       "esquiva": 0,
       "integridade": 5,
-      "sociabilidade": 0,
-      "furtividade": 0
+      "sociabilidade": 2,
+      "furtividade": 1
     }
   },
   {
@@ -9963,7 +9919,7 @@
     "ameaca": 6,
     "centelha": 7,
     "conceito": "dragão Imenso",
-    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "descricao": "Dragão vermelho de séculos, de 16,5 m. Sopra fogo em cone de 15 m, paralisa de medo quem o vê e conjura portais, barreiras e telecinese. Ninguém o surpreende.",
     "tags": [
       "dragao",
       "centelha",
@@ -9971,16 +9927,16 @@
     ],
     "pv": 95,
     "defesa": 4,
-    "defesaSocial": 12,
+    "defesaSocial": 24,
     "defesaMental": 36,
     "vontade": 12,
     "soak": {
       "impacto": 18,
-      "corte": 19,
-      "perfuracao": 19
+      "corte": 7,
+      "perfuracao": 7
     },
-    "resistPerf": 2,
-    "iniciativa": "1d6 + 9",
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 11",
     "atributos": {
       "forca": 14,
       "destreza": 2,
@@ -9994,15 +9950,48 @@
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
+        "nome": "Mordida",
         "pool": "9d6+2 +10",
-        "dano": "3d6 +21 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "dano": "1d6 +21 perfurante · perf. 3",
+        "perfArma": 3,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "9d6+2 +10",
+        "dano": "1d6 +21 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Cauda",
+        "pool": "9d6+2 +10",
+        "dano": "2d6 +35 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Sopro de fogo",
+        "pool": "8d6 +10",
+        "dano": "12d6 +7 fogo",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "distancia"
       }
     ],
     "tecnicas": [],
     "artes": [
+      {
+        "id": "conjuracao",
+        "nivel": 6
+      },
+      {
+        "id": "protecao",
+        "nivel": 5
+      },
       {
         "id": "fogo",
         "nivel": 4
@@ -10012,60 +10001,18 @@
         "nivel": 4
       },
       {
-        "id": "protecao",
-        "nivel": 5
-      },
-      {
         "id": "forcas",
         "nivel": 4
-      },
-      {
-        "id": "conjuracao",
-        "nivel": 6
       }
     ],
     "notas": "Habilidades notáveis: Prontidão 5, Ocultismo 5, Persuasão 5, Conhecimentos 4. Centelha acima do teto mortal (entidade).",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "sopro-de-fogo",
-        "nome": "Sopro de fogo",
-        "tipo": "natural",
-        "base": {
-          "arte": "fogo",
-          "nivel": 5
-        },
-        "resiste": "esquiva",
-        "area": "cone de 15 m",
-        "efeito": "Cone ou linha. Esquiva para metade.",
-        "usos": {
-          "periodo": "ticks",
-          "quantidade": 1,
-          "recarga": "24 ticks"
-        }
-      },
-      {
-        "id": "presenca-que-paralisa",
-        "nome": "Presença que paralisa",
-        "tipo": "natural",
-        "base": {
-          "arte": "morte",
-          "nivel": 4
-        },
-        "resiste": "mente",
-        "efeito": "Área; quem resiste fica imune na cena.",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 1
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 3,
+      "prontidao": 5,
       "esquiva": 0,
       "integridade": 6,
-      "sociabilidade": 0,
-      "furtividade": 0
+      "sociabilidade": 3,
+      "furtividade": 1
     }
   },
   {
@@ -10076,24 +10023,24 @@
     "ameaca": 6,
     "centelha": 9,
     "conceito": "dragão Colossal",
-    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "descricao": "O mais velho dos dragões vermelhos, uma lenda encarnada de 20 m. Sopra fogo que queima um exército, dobra o tempo quando precisa e conjura feitiços que poucos mortais já viram. Nada passa despercebido diante dele.",
     "tags": [
       "dragao",
       "centelha",
       "mágico"
     ],
-    "pv": 115,
+    "pv": 110,
     "defesa": 4,
-    "defesaSocial": 14,
+    "defesaSocial": 26,
     "defesaMental": 40,
     "vontade": 12,
     "soak": {
       "impacto": 23,
-      "corte": 26,
-      "perfuracao": 26
+      "corte": 9,
+      "perfuracao": 9
     },
-    "resistPerf": 3,
-    "iniciativa": "1d6 + 11",
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 12",
     "atributos": {
       "forca": 16,
       "destreza": 2,
@@ -10107,11 +10054,44 @@
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
+        "nome": "Mordida",
         "pool": "10d6+2 +10",
-        "dano": "4d6 +25 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "dano": "1d6 +25 perfurante · perf. 3",
+        "perfArma": 3,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "10d6+2 +10",
+        "dano": "1d6 +25 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Cauda",
+        "pool": "10d6+2 +10",
+        "dano": "2d6 +41 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Asas",
+        "pool": "10d6+2 +10",
+        "dano": "1d6 +25 impacto",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Sopro cataclísmico",
+        "pool": "9d6+2 +10",
+        "dano": "15d6 +9 fogo",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "distancia"
       }
     ],
     "tecnicas": [],
@@ -10139,45 +10119,12 @@
     ],
     "notas": "Habilidades notáveis: Prontidão 6, Ocultismo 6, Persuasão 5, Conhecimentos 5. Centelha acima do teto mortal (entidade).",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "sopro-cataclismico",
-        "nome": "Sopro cataclísmico",
-        "tipo": "natural",
-        "base": {
-          "arte": "fogo",
-          "nivel": 5
-        },
-        "resiste": "esquiva",
-        "efeito": "Cone ou linha. Esquiva para metade.",
-        "usos": {
-          "periodo": "ticks",
-          "quantidade": 1,
-          "recarga": "24 ticks"
-        }
-      },
-      {
-        "id": "presenca-divina",
-        "nome": "Presença divina",
-        "tipo": "natural",
-        "base": {
-          "arte": "morte",
-          "nivel": 5
-        },
-        "resiste": "mente",
-        "efeito": "Área; quem resiste fica imune na cena.",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 1
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 4,
+      "prontidao": 5,
       "esquiva": 0,
       "integridade": 7,
-      "sociabilidade": 0,
-      "furtividade": 0
+      "sociabilidade": 3,
+      "furtividade": 1
     }
   },
   {
@@ -10272,7 +10219,7 @@
     "ameaca": 5,
     "centelha": 6,
     "conceito": "dragão Enorme",
-    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "descricao": "Dragão azul adulto de 9,5 m, ilusionista do deserto. Espera enterrado na areia, emerge com um relâmpago em linha de 18 m e esconde onde está com miragens.",
     "tags": [
       "dragao",
       "centelha",
@@ -10280,16 +10227,16 @@
     ],
     "pv": 80,
     "defesa": 4,
-    "defesaSocial": 10,
+    "defesaSocial": 18,
     "defesaMental": 31,
     "vontade": 11,
     "soak": {
       "impacto": 15,
-      "corte": 14,
-      "perfuracao": 14
+      "corte": 6,
+      "perfuracao": 6
     },
-    "resistPerf": 1,
-    "iniciativa": "1d6 + 7",
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 9",
     "atributos": {
       "forca": 11,
       "destreza": 2,
@@ -10303,11 +10250,36 @@
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
+        "nome": "Mordida",
         "pool": "8d6 +10",
-        "dano": "3d6 +17 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "dano": "1d6 +17 perfurante · perf. 3",
+        "perfArma": 3,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "8d6 +10",
+        "dano": "1d6 +17 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Cauda",
+        "pool": "8d6 +10",
+        "dano": "2d6 +28 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Sopro elétrico",
+        "pool": "6d6+2 +8",
+        "dano": "9d6 +6 raio",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "distancia"
       }
     ],
     "tecnicas": [],
@@ -10327,45 +10299,12 @@
     ],
     "notas": "Habilidades notáveis: Furtividade 4, Prontidão 4, Manha 4.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "sopro-eletrico",
-        "nome": "Sopro elétrico",
-        "tipo": "natural",
-        "base": {
-          "arte": "raio",
-          "nivel": 4
-        },
-        "resiste": "esquiva",
-        "efeito": "Cone ou linha. Esquiva para metade.",
-        "usos": {
-          "periodo": "ticks",
-          "quantidade": 1,
-          "recarga": "24 ticks"
-        }
-      },
-      {
-        "id": "presenca",
-        "nome": "Presença",
-        "tipo": "natural",
-        "base": {
-          "arte": "morte",
-          "nivel": 3
-        },
-        "resiste": "mente",
-        "efeito": "Área; quem resiste fica imune na cena.",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 1
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 2,
+      "prontidao": 4,
       "esquiva": 0,
       "integridade": 5,
-      "sociabilidade": 0,
-      "furtividade": 0
+      "sociabilidade": 2,
+      "furtividade": 4
     }
   },
   {
@@ -10376,7 +10315,7 @@
     "ameaca": 5,
     "centelha": 6,
     "conceito": "dragão Enorme",
-    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "descricao": "Dragão verde adulto de 9 m, manipulador das florestas. Engana e manobra antes de lutar; se luta, prende com vinhas, sopra ácido em cone de 12 m e morde quem ficou preso.",
     "tags": [
       "dragao",
       "centelha",
@@ -10384,15 +10323,15 @@
     ],
     "pv": 75,
     "defesa": 10,
-    "defesaSocial": 10,
+    "defesaSocial": 18,
     "defesaMental": 31,
     "vontade": 11,
     "soak": {
       "impacto": 14,
-      "corte": 14,
-      "perfuracao": 14
+      "corte": 6,
+      "perfuracao": 6
     },
-    "resistPerf": 1,
+    "resistPerf": 0,
     "iniciativa": "1d6 + 7",
     "atributos": {
       "forca": 10,
@@ -10407,11 +10346,28 @@
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
+        "nome": "Mordida",
         "pool": "7d6+2 +10",
-        "dano": "3d6 +16 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "dano": "1d6 +16 perfurante · perf. 3",
+        "perfArma": 3,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "7d6+2 +10",
+        "dano": "1d6 +16 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Sopro ácido",
+        "pool": "6d6 +8",
+        "dano": "9d6 +6 acido",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "distancia"
       }
     ],
     "tecnicas": [],
@@ -10427,30 +10383,12 @@
     ],
     "notas": "Habilidades notáveis: Manha 4, Persuasão 4, Furtividade 3.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "sopro-de-gas",
-        "nome": "Sopro de gás",
-        "tipo": "natural",
-        "base": {
-          "arte": "agua",
-          "nivel": 3
-        },
-        "resiste": "esquiva",
-        "efeito": "Cone ou linha. Esquiva para metade.",
-        "usos": {
-          "periodo": "ticks",
-          "quantidade": 1,
-          "recarga": "24 ticks"
-        }
-      }
-    ],
     "pericias": {
       "prontidao": 2,
       "esquiva": 1,
       "integridade": 5,
-      "sociabilidade": 0,
-      "furtividade": 0
+      "sociabilidade": 2,
+      "furtividade": 3
     }
   },
   {
@@ -10461,7 +10399,7 @@
     "ameaca": 6,
     "centelha": 7,
     "conceito": "dragão Enorme (metálico)",
-    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "descricao": "Dragão dourado adulto de 9,5 m, o mais nobre dos dragões. Anda entre as pessoas em forma humana, cura e protege os aliados, enfraquece com um sopro de gás quem pode ser poupado e queima com fogo quem não pode.",
     "tags": [
       "dragao",
       "centelha",
@@ -10469,16 +10407,16 @@
     ],
     "pv": 85,
     "defesa": 4,
-    "defesaSocial": 14,
+    "defesaSocial": 26,
     "defesaMental": 40,
     "vontade": 12,
     "soak": {
       "impacto": 17,
-      "corte": 16,
-      "perfuracao": 16
+      "corte": 7,
+      "perfuracao": 7
     },
-    "resistPerf": 1,
-    "iniciativa": "1d6 + 10",
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 12",
     "atributos": {
       "forca": 12,
       "destreza": 2,
@@ -10492,11 +10430,28 @@
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
+        "nome": "Mordida",
         "pool": "8d6+2 +10",
-        "dano": "3d6 +19 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "dano": "1d6 +19 perfurante · perf. 3",
+        "perfArma": 3,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "8d6+2 +10",
+        "dano": "1d6 +19 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Sopro de fogo",
+        "pool": "7d6 +8",
+        "dano": "9d6 +7 fogo",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "distancia"
       }
     ],
     "tecnicas": [],
@@ -10520,60 +10475,12 @@
     ],
     "notas": "Habilidades notáveis: Ocultismo 5, Persuasão 5, Prontidão 5, Conhecimentos 5. Centelha acima do teto mortal (entidade).",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "sopro-de-fogo",
-        "nome": "Sopro de fogo",
-        "tipo": "natural",
-        "base": {
-          "arte": "fogo",
-          "nivel": 4
-        },
-        "resiste": "esquiva",
-        "efeito": "Cone ou linha. Esquiva para metade.",
-        "usos": {
-          "periodo": "ticks",
-          "quantidade": 1,
-          "recarga": "24 ticks"
-        }
-      },
-      {
-        "id": "sopro-debilitante",
-        "nome": "Sopro debilitante",
-        "tipo": "natural",
-        "base": {
-          "arte": "fascinacao",
-          "nivel": 3
-        },
-        "resiste": "esquiva",
-        "efeito": "Cone ou linha. Esquiva para metade.",
-        "usos": {
-          "periodo": "ticks",
-          "quantidade": 1,
-          "recarga": "24 ticks"
-        }
-      },
-      {
-        "id": "mudar-de-forma",
-        "nome": "Mudar de forma",
-        "tipo": "natural",
-        "base": {
-          "arte": "materia",
-          "nivel": 3
-        },
-        "resiste": "nenhum",
-        "efeito": "Mudar de forma",
-        "usos": {
-          "periodo": "avontade"
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 3,
+      "prontidao": 5,
       "esquiva": 0,
       "integridade": 7,
-      "sociabilidade": 0,
-      "furtividade": 0
+      "sociabilidade": 3,
+      "furtividade": 1
     }
   },
   {
@@ -13998,7 +13905,7 @@
     "ameaca": 5,
     "centelha": 5,
     "conceito": "dragão Enorme",
-    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "descricao": "Tartaruga-dragão de casco lendário que reivindica vastos territórios de mar. Chega sem ruído por baixo dos navios, sopra vapor fervente sobre o convés e vira o barco de quem não pagou tributo; no covil, guarda a carga de todos os navios que afundou.",
     "tags": [
       "dragao",
       "centelha"
@@ -14010,10 +13917,10 @@
     "vontade": 10,
     "soak": {
       "impacto": 12,
-      "corte": 12,
-      "perfuracao": 12
+      "corte": 5,
+      "perfuracao": 5
     },
-    "resistPerf": 1,
+    "resistPerf": 0,
     "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 10,
@@ -14028,11 +13935,28 @@
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
+        "nome": "Mordida",
         "pool": "7d6+2 +10",
-        "dano": "3d6 +15 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "dano": "1d6 +15 perfurante · perf. 2",
+        "perfArma": 2,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "7d6+2 +10",
+        "dano": "1d6 +15 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Sopro de vapor",
+        "pool": "5d6 +6",
+        "dano": "6d6 +5 fogo",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "distancia"
       }
     ],
     "tecnicas": [],
@@ -14044,7 +13968,7 @@
       "esquiva": 0,
       "integridade": 3,
       "sociabilidade": 0,
-      "furtividade": 0
+      "furtividade": 1
     }
   },
   {
@@ -16171,7 +16095,7 @@
     "ameaca": 4,
     "centelha": 4,
     "conceito": "dragão Médio",
-    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "descricao": "Dragão menor nascido de dragões negros e basiliscos, de patas curtas e voo pesado. Sopra uma linha de ácido de longe e transforma em pedra com o olhar quem chega perto.",
     "tags": [
       "dragao",
       "centelha"
@@ -16183,8 +16107,8 @@
     "vontade": 9,
     "soak": {
       "impacto": 10,
-      "corte": 7,
-      "perfuracao": 7
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -16201,11 +16125,28 @@
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
+        "nome": "Mordida",
         "pool": "6d6 +8",
-        "dano": "1d6 +11 perfurante",
-        "perfArma": 0,
-        "ticks": 5
+        "dano": "1d6 +11 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "6d6 +8",
+        "dano": "1d6 +11 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Sopro ácido",
+        "pool": "4d6+2 +6",
+        "dano": "3d6 +4 acido",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "distancia"
       }
     ],
     "tecnicas": [],
@@ -16217,7 +16158,7 @@
       "esquiva": 0,
       "integridade": 3,
       "sociabilidade": 0,
-      "furtividade": 2
+      "furtividade": 1
     }
   },
   {
@@ -17113,25 +17054,25 @@
     "ameaca": 6,
     "centelha": 6,
     "conceito": "dragão Imenso",
-    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "descricao": "O menor dos linnorms, serpente-dragão sem asas de 18 m e sangue vulcânico. Cospe lava, morde com veneno que arde por dentro e fecha as próprias feridas; quem o mata carrega a maldição do fogo.",
     "tags": [
       "dragao",
       "centelha"
     ],
-    "pv": 95,
+    "pv": 90,
     "defesa": 14,
     "defesaSocial": 12,
     "defesaMental": 32,
     "vontade": 11,
     "soak": {
       "impacto": 17,
-      "corte": 18,
-      "perfuracao": 18
+      "corte": 6,
+      "perfuracao": 6
     },
-    "resistPerf": 2,
+    "resistPerf": 0,
     "iniciativa": "1d6 + 5",
     "atributos": {
-      "forca": 13,
+      "forca": 11,
       "destreza": 5,
       "vigor": 11,
       "influencia": 6,
@@ -17143,11 +17084,28 @@
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
-        "pool": "9d6 +10",
-        "dano": "3d6 +19 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "nome": "Mordida",
+        "pool": "8d6 +10",
+        "dano": "1d6 +17 perfurante · perf. 3",
+        "perfArma": 3,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "8d6 +10",
+        "dano": "1d6 +17 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Sopro de magma",
+        "pool": "7d6+2 +8",
+        "dano": "9d6 +6 fogo",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "distancia"
       }
     ],
     "tecnicas": [],
@@ -17170,25 +17128,25 @@
     "ameaca": 6,
     "centelha": 6,
     "conceito": "dragão Colossal",
-    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "descricao": "Serpente-dragão sem asas de 24 m, senhor das geleiras e dos picos varridos pelo vento. Cospe uma geleia que endurece em gelo e prende quem atinge; as vítimas aparecem anos depois, inteiras dentro de blocos de gelo.",
     "tags": [
       "dragao",
       "centelha"
     ],
-    "pv": 110,
+    "pv": 105,
     "defesa": 22,
     "defesaSocial": 14,
     "defesaMental": 33,
     "vontade": 11,
     "soak": {
       "impacto": 19,
-      "corte": 22,
-      "perfuracao": 22
+      "corte": 6,
+      "perfuracao": 6
     },
-    "resistPerf": 3,
+    "resistPerf": 0,
     "iniciativa": "1d6 + 6",
     "atributos": {
-      "forca": 15,
+      "forca": 13,
       "destreza": 7,
       "vigor": 13,
       "influencia": 7,
@@ -17200,11 +17158,28 @@
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
-        "pool": "10d6 +10",
-        "dano": "4d6 +21 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "nome": "Mordida",
+        "pool": "9d6 +10",
+        "dano": "1d6 +19 perfurante · perf. 3",
+        "perfArma": 3,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "9d6 +10",
+        "dano": "1d6 +19 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Sopro gélido",
+        "pool": "8d6+2 +8",
+        "dano": "9d6 +6 gelo",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "distancia"
       }
     ],
     "tecnicas": [],
@@ -17227,25 +17202,25 @@
     "ameaca": 6,
     "centelha": 6,
     "conceito": "dragão Colossal",
-    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "descricao": "O mais antigo e mortal dos linnorms, serpente-dragão de duas cabeças e 36 m dos lagos gelados. Cospe ácido, morde com as duas cabeças, prende com a cauda e fecha as próprias feridas; quem o mata nunca mais sara direito.",
     "tags": [
       "dragao",
       "centelha"
     ],
-    "pv": 115,
+    "pv": 105,
     "defesa": 24,
     "defesaSocial": 16,
     "defesaMental": 36,
     "vontade": 11,
     "soak": {
       "impacto": 20,
-      "corte": 23,
-      "perfuracao": 23
+      "corte": 6,
+      "perfuracao": 6
     },
-    "resistPerf": 3,
+    "resistPerf": 0,
     "iniciativa": "1d6 + 9",
     "atributos": {
-      "forca": 16,
+      "forca": 13,
       "destreza": 8,
       "vigor": 14,
       "influencia": 8,
@@ -17257,19 +17232,36 @@
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
-        "pool": "10d6+2 +10",
-        "dano": "4d6 +22 perfurante",
-        "perfArma": 0,
-        "ticks": 7
+        "nome": "Mordida",
+        "pool": "9d6 +10",
+        "dano": "1d6 +19 perfurante · perf. 3",
+        "perfArma": 3,
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Garras",
+        "pool": "9d6 +10",
+        "dano": "1d6 +19 corte",
+        "perfArma": null,
+        "ticks": 6,
+        "classe": "media"
       },
       {
         "nome": "Cauda",
-        "pool": "10d6+2 +10",
-        "dano": "2d6 +22 impacto",
+        "pool": "9d6 +10",
+        "dano": "2d6 +32 impacto",
         "perfArma": null,
-        "ticks": 6,
-        "notas": "pode agarrar e constringir"
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Sopro ácido",
+        "pool": "9d6+2 +10",
+        "dano": "9d6 +6 acido",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "distancia"
       }
     ],
     "tecnicas": [],
@@ -18140,7 +18132,7 @@
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
     "atributos": {
-      "forca": 12,
+      "forca": 11,
       "destreza": 1,
       "vigor": 10,
       "influencia": 6,
@@ -18153,8 +18145,8 @@
     "ataques": [
       {
         "nome": "Tentáculo",
-        "pool": "8d6+2 +10",
-        "dano": "2d6 +18 impacto",
+        "pool": "8d6 +10",
+        "dano": "2d6 +17 impacto",
         "perfArma": null,
         "ticks": 7,
         "classe": "pesada"
@@ -18687,20 +18679,20 @@
     "ameaca": 2,
     "centelha": 1,
     "conceito": "dragão Minúsculo",
-    "descricao": "Predador alado e mágico, orgulho e ganância feitos carne.",
+    "descricao": "Primo pequeno dos dragões, do tamanho de um gato com asas. Tímido e brincalhão, fala pela mente e por ronronados, e segue de bom grado quem o trata como igual. Quando precisa, crava o ferrão da cauda, que faz dormir.",
     "tags": [
       "dragao",
       "centelha"
     ],
-    "pv": 18,
+    "pv": 6,
     "defesa": 12,
     "defesaSocial": 4,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
       "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -18717,11 +18709,28 @@
     },
     "ataques": [
       {
-        "nome": "Garras e mordida",
-        "pool": "2d6 +2",
-        "dano": "1d6 +2 perfurante",
+        "nome": "Mordida",
+        "pool": "3d6+2 +3",
+        "dano": "1d6 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Garras",
+        "pool": "3d6+2 +3",
+        "dano": "1d6 corte",
+        "perfArma": null,
+        "ticks": 5,
+        "classe": "leve"
+      },
+      {
+        "nome": "Ferrão",
+        "pool": "3d6+2 +3",
+        "dano": "1d6 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -18733,7 +18742,7 @@
       "esquiva": 1,
       "integridade": 2,
       "sociabilidade": 0,
-      "furtividade": 4
+      "furtividade": 2
     }
   },
   {
@@ -21431,7 +21440,7 @@
     "categoria": "Fera",
     "ameaca": 3,
     "centelha": 0,
-    "conceito": "animal Enorme",
+    "conceito": "animal Grande",
     "descricao": "Pterossauro do tamanho de uma girafa, que anda pela planície como uma cegonha e pega presa pequena no chão. Voa pouco, mas pode cruzar longas distâncias.",
     "tags": [],
     "pv": 34,
