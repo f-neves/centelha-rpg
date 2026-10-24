@@ -583,7 +583,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Em voo é Média como um humano: ninguém ganha o +3 de Alvo. Pousada fica Pequena, e aí ela ganha +3 no acerto corpo a corpo e quem atira nela leva −3. O dano das garras é pequeno (3, 5); o perigo dela é a surpresa do mergulho e o olho, que vê o grupo muito antes de ser vista. Um humano de Força 6 tira o Bloqueio dela; ela não tira o de ninguém. No chão é lenta (4 m por Tick); no ar faz 11 m por Tick em cruzeiro e 46 descendo em mergulho. Com 6 PV, Impacto 2 e Couraça nível 0 (o valor do nível fica para depois), um bom golpe a derruba."
+    "texto": "Em voo é Média como um humano: ninguém ganha o +3 de Alvo. Pousada fica Pequena, e aí ela ganha +3 no acerto corpo a corpo e quem atira nela leva −3. O dano das garras é pequeno (3,5); o perigo dela é a surpresa do mergulho e o olho, que vê o grupo muito antes de ser vista. Um humano de Força 6 tira o Bloqueio dela; ela não tira o de ninguém. No chão é lenta (4 m por Tick); no ar faz 11 m por Tick em cruzeiro e 46 descendo em mergulho. Com 6 PV, Impacto 2 e Couraça nível 0 (o valor do nível fica para depois), um bom golpe a derruba."
    }
   ]
  },
@@ -5031,7 +5031,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio, 40 PV, Impacto 9, Corte e Perfuração 4; armas comuns fazem metade. Esquiva e Bloqueio 14. Golpe de vento (13, 5) ou rajada em linha de 18 m (3d6 + 4, metade a quem resiste), a cada 24 Ticks. Três vezes por cena ofusca, empurra, cria ilusão ou cura. Voa a 10. Defesa Mental 25."
+    "texto": "Médio, 40 PV, Impacto 9, Corte e Perfuração 4; armas comuns fazem metade. Esquiva e Bloqueio 14. Golpe de vento (13,5) ou rajada em linha de 18 m (3d6 + 4, metade a quem resiste), a cada 24 Ticks. Três vezes por cena ofusca, empurra, cria ilusão ou cura. Voa a 10. Defesa Mental 25."
    }
   ]
  },
@@ -5465,7 +5465,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Média, 40 PV, Impacto 7, Corte e Perfuração 2. Esquiva 14, Bloqueio 10. Duas garras por ação a −1d6 (8, 5 cada). Quem a vê de perto testa contra 10 ou fica com a Força um nível abaixo; três vezes por cena o olho maligno paralisa, e ferir o amaldiçoado o põe em coma. +2 contra Artes. Respira na água."
+    "texto": "Média, 40 PV, Impacto 7, Corte e Perfuração 2. Esquiva 14, Bloqueio 10. Duas garras por ação a −1d6 (8,5 cada). Quem a vê de perto testa contra 10 ou fica com a Força um nível abaixo; três vezes por cena o olho maligno paralisa, e ferir o amaldiçoado o põe em coma. +2 contra Artes. Respira na água."
    }
   ]
  },
@@ -5758,7 +5758,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Média, 40 PV, Impacto 9, Corte e Perfuração 4. Esquiva e Bloqueio 10. Duas garras por ação a −1d6 (11, 5 cada), e cada uma que fere pode baixar a Força do alvo um nível. Três vezes por cena confunde ou dá uma ordem curta. Disfarçada e imitando vozes, atrai a presa. Defesa Mental 24. Respira na água."
+    "texto": "Média, 40 PV, Impacto 9, Corte e Perfuração 4. Esquiva e Bloqueio 10. Duas garras por ação a −1d6 (11,5 cada), e cada uma que fere pode baixar a Força do alvo um nível. Três vezes por cena confunde ou dá uma ordem curta. Disfarçada e imitando vozes, atrai a presa. Defesa Mental 24. Respira na água."
    }
   ]
  },
@@ -7435,7 +7435,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Grande, 43 PV, Impacto 10, Corte e Perfuração 4. Esquiva 14, Bloqueio 10. Mordida (12, 5) ou cauda (10, 5); envolve quem é Grande ou menor, cega e morde sem jogada, e metade do dano contra ela vai na vítima. Geme para apavorar, derrubar, imobilizar ou abalar; nas sombras, borra e se multiplica. Voa a 4. Defesa Mental 25."
+    "texto": "Grande, 43 PV, Impacto 10, Corte e Perfuração 4. Esquiva 14, Bloqueio 10. Mordida (12,5) ou cauda (10,5); envolve quem é Grande ou menor, cega e morde sem jogada, e metade do dano contra ela vai na vítima. Geme para apavorar, derrubar, imobilizar ou abalar; nas sombras, borra e se multiplica. Voa a 4. Defesa Mental 25."
    }
   ]
  },
@@ -8609,7 +8609,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Grande, 54 PV, Impacto 8, Corte e Perfuração 2. Esquiva e Bloqueio 12 (13 com a espada). Espada (dano médio 12, 5), azagaia a 16 m (12, 5) ou coice (16); em uma ação, espada e coice juntos a −1d6. Corre a 5 · 8 · 12 e investe."
+    "texto": "Grande, 54 PV, Impacto 8, Corte e Perfuração 2. Esquiva e Bloqueio 12 (13 com a espada). Espada (dano médio 12,5), azagaia a 16 m (12,5) ou coice (16); em uma ação, espada e coice juntos a −1d6. Corre a 5 · 8 · 12 e investe."
    }
   ]
  },
@@ -8895,7 +8895,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Grande, 43 PV, Impacto 10, Corte e Perfuração 4. Bloqueio 18 (19 com a pinça), Esquiva 14. Pinça de dano médio 14,5, que agarra; passa a presa para os tentáculos, que envenenam (curare, a cada 6 Ticks) e deixam as mandíbulas morderem sem jogada (12, 5). Veneno não o pega. Nada e respira na água."
+    "texto": "Grande, 43 PV, Impacto 10, Corte e Perfuração 4. Bloqueio 18 (19 com a pinça), Esquiva 14. Pinça de dano médio 14,5, que agarra; passa a presa para os tentáculos, que envenenam (curare, a cada 6 Ticks) e deixam as mandíbulas morderem sem jogada (12,5). Veneno não o pega. Nada e respira na água."
    }
   ]
  },
@@ -9756,7 +9756,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Em voo e pousado é Pequeno contra um humano Médio: ganha +3 no acerto corpo a corpo e quem atira nele leva −3. O dano é pequeno (1, 5) e os PV também (2). O perigo do corvo não é a bicada: é o olho que acha o que foi escondido, a fala imitada no escuro, a cabeça que guarda a ferramenta para depois e o bando que segue os lobos até o ferido. No chão anda devagar (1 m por Tick); no ar faz 14 m por Tick."
+    "texto": "Em voo e pousado é Pequeno contra um humano Médio: ganha +3 no acerto corpo a corpo e quem atira nele leva −3. O dano é pequeno (1,5) e os PV também (2). O perigo do corvo não é a bicada: é o olho que acha o que foi escondido, a fala imitada no escuro, a cabeça que guarda a ferramenta para depois e o bando que segue os lobos até o ferido. No chão anda devagar (1 m por Tick); no ar faz 14 m por Tick."
    }
   ]
  },
@@ -9938,7 +9938,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Grande no ar, Média enrolada, 50 PV, Impacto 10, Corte e Perfuração 5. Esquiva 20, Bloqueio 12. Mordida (12, 5) com veneno que tira Força e abala; enrola e aperta (1d6 + 6) três vezes por cena. Conjura com 20 de Mana: Portal, Barreira, Encanto, Manto, Vislumbre. Fala pela mente a 18 m. Defesa Mental 31."
+    "texto": "Grande no ar, Média enrolada, 50 PV, Impacto 10, Corte e Perfuração 5. Esquiva 20, Bloqueio 12. Mordida (12,5) com veneno que tira Força e abala; enrola e aperta (1d6 + 6) três vezes por cena. Conjura com 20 de Mana: Portal, Barreira, Encanto, Manto, Vislumbre. Fala pela mente a 18 m. Defesa Mental 31."
    }
   ]
  },
@@ -11075,7 +11075,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Anjo Grande no ar e Médio no chão. Bate com a maça (dano médio 17, 5, mais 1d6 sagrado contra o mal), e o golpe forte deixa o alvo tonto. Bloqueio 14 (15 com a maça), Esquiva 14, 43 PV, Impacto 12, Corte e Perfuração 6. Os aliados a 6 m somam +2 nas Defesas contra o mal. Cura uma vez por cena, muda de aparência e se teleporta à vontade. Defesa Mental 34: quase nada a dobra."
+    "texto": "Anjo Grande no ar e Médio no chão. Bate com a maça (dano médio 17,5, mais 1d6 sagrado contra o mal), e o golpe forte deixa o alvo tonto. Bloqueio 14 (15 com a maça), Esquiva 14, 43 PV, Impacto 12, Corte e Perfuração 6. Os aliados a 6 m somam +2 nas Defesas contra o mal. Cura uma vez por cena, muda de aparência e se teleporta à vontade. Defesa Mental 34: quase nada a dobra."
    }
   ]
  },
@@ -16008,7 +16008,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Enorme: o humano Médio acerta com +6 e não apara pelo porte, mas a Força 9 só tira o Bloqueio de quem tem Força 4 ou menos. A mordida é fraca para o tamanho (10, 5) e não fura armadura; o perigo é o pescoço, que traz a boca de longe. 70 PV e Couraça nível 1 (pele lisa); o quanto ela tira fica para depois."
+    "texto": "Enorme: o humano Médio acerta com +6 e não apara pelo porte, mas a Força 9 só tira o Bloqueio de quem tem Força 4 ou menos. A mordida é fraca para o tamanho (10,5) e não fura armadura; o perigo é o pescoço, que traz a boca de longe. 70 PV e Couraça nível 1 (pele lisa); o quanto ela tira fica para depois."
    }
   ]
  },
@@ -18617,7 +18617,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio, voa a 8 m por Tick e atravessa paredes. Acerta o toque com facilidade e a armadura não ajuda: só a Centelha de quem é tocado absorve (dano médio 5, 5). Cada toque que fere deixa uma penalidade que se acumula e não sai sem magia. Esquiva 14, Bloqueio 10; Defesa Mental 26: quase não se assusta nem se engana. Corte, perfuração e impacto fazem metade, depois da armadura; luz e golpe sagrado passam toda a Absorção. 40 PV, Impacto 9, Corte e Perfuração 4. Quem chega perto testa a Vontade contra o terror. Quem morre pelo dreno pode voltar como espectro."
+    "texto": "Médio, voa a 8 m por Tick e atravessa paredes. Acerta o toque com facilidade e a armadura não ajuda: só a Centelha de quem é tocado absorve (dano médio 5,5). Cada toque que fere deixa uma penalidade que se acumula e não sai sem magia. Esquiva 14, Bloqueio 10; Defesa Mental 26: quase não se assusta nem se engana. Corte, perfuração e impacto fazem metade, depois da armadura; luz e golpe sagrado passam toda a Absorção. 40 PV, Impacto 9, Corte e Perfuração 4. Quem chega perto testa a Vontade contra o terror. Quem morre pelo dreno pode voltar como espectro."
    }
   ]
  },
@@ -19575,7 +19575,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Em voo é Pequeno contra um humano Médio: ganha +3 no acerto corpo a corpo e quem atira nele leva −3. Pousado fica Miúdo, e aí são +6 e −6. O dano é pequeno (1, 5) e os PV são 2: o falcão não mata gente, e um golpe certo o derruba. Ele é o batedor e o caçador de aves: vê o grupo a mais de um quilômetro, cruza 12 m por Tick e desce a 49 m por Tick no mergulho. No chão, 2 m por Tick."
+    "texto": "Em voo é Pequeno contra um humano Médio: ganha +3 no acerto corpo a corpo e quem atira nele leva −3. Pousado fica Miúdo, e aí são +6 e −6. O dano é pequeno (1,5) e os PV são 2: o falcão não mata gente, e um golpe certo o derruba. Ele é o batedor e o caçador de aves: vê o grupo a mais de um quilômetro, cruza 12 m por Tick e desce a 49 m por Tick no mergulho. No chão, 2 m por Tick."
    }
   ]
  },
@@ -20964,7 +20964,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Grande no ar, Média no chão, 40 PV, Impacto 6, Corte e Perfuração 1, Couraça de pedra (nível 9, valor a definir). Esquiva e Bloqueio 12 (13 com os chifres). Duas garras por ação a −1d6 (6, 5 cada) ou chifrada (8, 5). Imóvel, passa por estátua; voa sem barulho. Não respira nem se envenena."
+    "texto": "Grande no ar, Média no chão, 40 PV, Impacto 6, Corte e Perfuração 1, Couraça de pedra (nível 9, valor a definir). Esquiva e Bloqueio 12 (13 com os chifres). Duas garras por ação a −1d6 (6,5 cada) ou chifrada (8,5). Imóvel, passa por estátua; voa sem barulho. Não respira nem se envenena."
    }
   ]
  },
@@ -21099,7 +21099,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Força 0: o gato arranha e se pendura no braço, mas não derruba nem prende um humano; a garra e a mordida dão 1,5 de média (só o dado, com a Força 0 do autor). Miúdo, ele ganha +6 no corpo a corpo contra o humano Médio, e quem atira nele leva −6. Com Esquiva 16 e Bloqueio 12, é difícil de acertar, e corre 7 m por Tick (congelado); acertado, tem só 6 PV (4, 2 kg, na zona de transição de 3 a 5 kg, desce). A Defesa Social cai para 8 com a Compostura 1. O perigo real para quem joga não é a luta: é a infecção da mordida e a doença do arranhão, que ficam com o Mestre."
+    "texto": "Força 0: o gato arranha e se pendura no braço, mas não derruba nem prende um humano; a garra e a mordida dão 1,5 de média (só o dado, com a Força 0 do autor). Miúdo, ele ganha +6 no corpo a corpo contra o humano Médio, e quem atira nele leva −6. Com Esquiva 16 e Bloqueio 12, é difícil de acertar, e corre 7 m por Tick (congelado); acertado, tem só 6 PV (4,2 kg, na zona de transição de 3 a 5 kg, desce). A Defesa Social cai para 8 com a Compostura 1. O perigo real para quem joga não é a luta: é a infecção da mordida e a doença do arranhão, que ficam com o Mestre."
    }
   ]
  },
@@ -21242,7 +21242,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio quando rola, Grande quando se espalha. Lenta (1 m por Tick) e fácil de acertar (Esquiva e Bloqueio 2), mas espada, lança, flecha e raio não a ferem: a dividem em duas, cada uma com metade dos PV. Maça, fogo e gelo funcionam. Bate com ácido (dano médio 9, 5), agarra e segue dissolvendo a cada 6 Ticks. O ácido não estraga metal nem osso. 62 PV, Impacto 9. Não tem mente: medo e conversa não servem."
+    "texto": "Médio quando rola, Grande quando se espalha. Lenta (1 m por Tick) e fácil de acertar (Esquiva e Bloqueio 2), mas espada, lança, flecha e raio não a ferem: a dividem em duas, cada uma com metade dos PV. Maça, fogo e gelo funcionam. Bate com ácido (dano médio 9,5), agarra e segue dissolvendo a cada 6 Ticks. O ácido não estraga metal nem osso. 62 PV, Impacto 9. Não tem mente: medo e conversa não servem."
    }
   ]
  },
@@ -24054,7 +24054,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Grande: o humano ganha +3 no corpo a corpo contra ele, e à distância também. Lento (Esquiva 4), mas apara com o corpo de pedra (Bloqueio 13 com o punho). O soco dói (dano médio 16, 5) e, com Força 10, quem tem Força 5 ou menos não consegue aparar esse golpe; quem tem Centelha de 3 para cima ignora a regra de Força. Sem mente: não se assusta, não se convence, não se encanta. Lâmina e ponta fazem metade do dano depois da armadura, e a Absorção natural dele é 3 contra elas e 9 contra pancada. 54 PV, e não se cura sozinho. A maior parte da magia não o toca, e algumas vezes por cena ele deixa lento quem está por perto."
+    "texto": "Grande: o humano ganha +3 no corpo a corpo contra ele, e à distância também. Lento (Esquiva 4), mas apara com o corpo de pedra (Bloqueio 13 com o punho). O soco dói (dano médio 16,5) e, com Força 10, quem tem Força 5 ou menos não consegue aparar esse golpe; quem tem Centelha de 3 para cima ignora a regra de Força. Sem mente: não se assusta, não se convence, não se encanta. Lâmina e ponta fazem metade do dano depois da armadura, e a Absorção natural dele é 3 contra elas e 9 contra pancada. 54 PV, e não se cura sozinho. A maior parte da magia não o toca, e algumas vezes por cena ele deixa lento quem está por perto."
    }
   ]
  },
@@ -24863,7 +24863,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Em voo é Enorme: o humano ganha +6 no acerto contra ele, de perto ou de longe. Pousado, Grande (+3). O perigo é o mergulho: as garras em mergulho fazem em média 20 e, como Investida, mais 1d6; no chão, bico (10, 5) ou garras (8, 5). Agarra com as garras (dano 13). Esquiva 14, Bloqueio 12. 40 PV, Impacto 6, Corte e Perfuração 1. Na Faixa 4, o humano não o derruba nem o empurra com facilidade (+3 para ele). Ataca quem entra no território e não larga."
+    "texto": "Em voo é Enorme: o humano ganha +6 no acerto contra ele, de perto ou de longe. Pousado, Grande (+3). O perigo é o mergulho: as garras em mergulho fazem em média 20 e, como Investida, mais 1d6; no chão, bico (10,5) ou garras (8,5). Agarra com as garras (dano 13). Esquiva 14, Bloqueio 12. 40 PV, Impacto 6, Corte e Perfuração 1. Na Faixa 4, o humano não o derruba nem o empurra com facilidade (+3 para ele). Ataca quem entra no território e não larga."
    }
   ]
  },
@@ -25152,7 +25152,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Ninguém a pé alcança um guepardo, e ele alcança qualquer um: corre 26 m por Tick e arranca a 15 (congelado). Pequeno, ele ganha +3 no corpo a corpo contra o humano Médio, e à distância quem atira nele leva −3; com Esquiva 18 (Destreza 5 e Esquiva 4 do autor), ele é difícil de tocar, e ele não apara (Bloqueio 0). Um humano de Força 7 tira o Bloqueio dele; ele não tira o de ninguém. A mordida e a patada são fracas (4, 5), e com 34 PV ele não aguenta luta longa; o real foge e cede a presa, e o Mestre decide quando ele desiste. Arrasta a presa de até cerca de 111 kg."
+    "texto": "Ninguém a pé alcança um guepardo, e ele alcança qualquer um: corre 26 m por Tick e arranca a 15 (congelado). Pequeno, ele ganha +3 no corpo a corpo contra o humano Médio, e à distância quem atira nele leva −3; com Esquiva 18 (Destreza 5 e Esquiva 4 do autor), ele é difícil de tocar, e ele não apara (Bloqueio 0). Um humano de Força 7 tira o Bloqueio dele; ele não tira o de ninguém. A mordida e a patada são fracas (4,5), e com 34 PV ele não aguenta luta longa; o real foge e cede a presa, e o Mestre decide quando ele desiste. Arrasta a presa de até cerca de 111 kg."
    }
   ]
  },
@@ -25297,7 +25297,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Grande no ar, Média no chão, 31 PV, Impacto 4, Corte e Perfuração 2. Esquiva 14, Bloqueio 10. Duas garras por ação a −1d6 (6, 5 cada). Uma vez por cena canta: quem ouve e falha anda até ela sem se defender. Voa a 8."
+    "texto": "Grande no ar, Média no chão, 31 PV, Impacto 4, Corte e Perfuração 2. Esquiva 14, Bloqueio 10. Duas garras por ação a −1d6 (6,5 cada). Uma vez por cena canta: quem ouve e falha anda até ela sem se defender. Voa a 8."
    }
   ]
  },
@@ -26134,7 +26134,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio, 40 PV, Impacto 5. Bloqueio 12 (13 com a espada), Esquiva 10; em formação, +1. A espada longa dá dano médio 7,5 (10, 5 com as duas mãos). Vem em tropa e não foge sozinho."
+    "texto": "Médio, 40 PV, Impacto 5. Bloqueio 12 (13 com a espada), Esquiva 10; em formação, +1. A espada longa dá dano médio 7,5 (10,5 com as duas mãos). Vem em tropa e não foge sozinho."
    }
   ]
  },
@@ -26284,7 +26284,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio, 34 PV, Impacto 3. Defesa baixa (Bloqueio 6, 7 com a maça; Esquiva 4). Maça (dano médio 6, 5) ou cauda (9, 5). Na água, nada bem e prende o fôlego muito tempo: ataca de dentro do brejo."
+    "texto": "Médio, 34 PV, Impacto 3. Defesa baixa (Bloqueio 6, 7 com a maça; Esquiva 4). Maça (dano médio 6,5) ou cauda (9,5). Na água, nada bem e prende o fôlego muito tempo: ataca de dentro do brejo."
    }
   ]
  },
@@ -26445,7 +26445,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Homem-rato de 1,7 m: espada curta ou mordida (dano médio 6, 5 cada), +1d6 contra quem não o viu, e a mordida pode passar a maldição. 37 PV, Esquiva e Bloqueio 14. Corte, perfuração e impacto fazem metade; a prata passa. Contra área, se esquiva sai ileso. Chama os ratos e foge pelo esgoto na forma de rato."
+    "texto": "Homem-rato de 1,7 m: espada curta ou mordida (dano médio 6,5 cada), +1d6 contra quem não o viu, e a mordida pode passar a maldição. 37 PV, Esquiva e Bloqueio 14. Corte, perfuração e impacto fazem metade; a prata passa. Contra área, se esquiva sai ileso. Chama os ratos e foge pelo esgoto na forma de rato."
    }
   ]
  },
@@ -26846,7 +26846,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "- Minúscula (enrolada) contra um humano Médio, ela ganha +3 por categoria no acerto corpo a corpo, três categorias: +9; esticada, Miúda, +6. À distância vale o contrário: quem atira nela enrolada leva −9. O bote acerta quase sempre; o que decide é o veneno. - O dano do bote é só o dado (1, 5 de média). O veneno, a Peçonha de víbora do livro, ignora a Absorção e entra se o bote fere: 1 de dano ou mais depois da Absorção, e o Nível do bote (N0) tem de passar o da armadura. A bota que o bote não fura segura o veneno. - Esquiva 14 contra o golpe de um humano: ela é difícil de acertar, o que é o que se vê no mato. Ela não bloqueia nenhum atacante Pequeno ou maior, nem quem tem Força 4 ou mais; ninguém perde o Bloqueio contra ela. - Parada no folhiço, é difícil de achar (Furtividade 3, +2 de camuflagem e +1 imóvel). Com 2 PV e 1 m por Tick, não foge de quem a acha: o perigo é não vê-la antes de pisar."
+    "texto": "- Minúscula (enrolada) contra um humano Médio, ela ganha +3 por categoria no acerto corpo a corpo, três categorias: +9; esticada, Miúda, +6. À distância vale o contrário: quem atira nela enrolada leva −9. O bote acerta quase sempre; o que decide é o veneno. - O dano do bote é só o dado (1,5 de média). O veneno, a Peçonha de víbora do livro, ignora a Absorção e entra se o bote fere: 1 de dano ou mais depois da Absorção, e o Nível do bote (N0) tem de passar o da armadura. A bota que o bote não fura segura o veneno. - Esquiva 14 contra o golpe de um humano: ela é difícil de acertar, o que é o que se vê no mato. Ela não bloqueia nenhum atacante Pequeno ou maior, nem quem tem Força 4 ou mais; ninguém perde o Bloqueio contra ela. - Parada no folhiço, é difícil de achar (Furtividade 3, +2 de camuflagem e +1 imóvel). Com 2 PV e 1 m por Tick, não foge de quem a acha: o perigo é não vê-la antes de pisar."
    }
   ]
  },
@@ -27082,7 +27082,7 @@
   "habilidades": [
    {
     "nome": "constrição = agarrar",
-    "descricao": "Mordida (bote para agarrar): As voltas sobre o tórax param a circulação: em 6 s a pressão arterial cai à metade, em 60 s o coração bate a metade, e ao fim (cerca de 6, 5 min) 10 de 11 ratos tinham falha elétrica do coração. Pressão em kPa: não conferida. O humano adulto é grande demais para ser presa."
+    "descricao": "Mordida (bote para agarrar): As voltas sobre o tórax param a circulação: em 6 s a pressão arterial cai à metade, em 60 s o coração bate a metade, e ao fim (cerca de 6,5 min) 10 de 11 ratos tinham falha elétrica do coração. Pressão em kPa: não conferida. O humano adulto é grande demais para ser presa."
    },
    {
     "nome": "bote",
@@ -27124,7 +27124,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "A mordida é fraca (6, 5); o perigo é o agarrão, que aperta 10 por manutenção (2 × Força 5), com a Briga (Agarrão) +3, e o corpo de Musculatura 4 arrasta até 276,60 kg. Pequena enrolada e esticada, ela ganha +3 no acerto corpo a corpo contra um humano; à distância, quem atira nela leva −3. Ela não apara golpe (Bloqueio 0), e a Força 5 tira o Bloqueio de quem tem Força 1 ou menos. Anda 3 m por Tick na corrida: não persegue ninguém, espera. Contra um humano adulto, ela agarra e não mata: é presa grande demais. Contra cão, galinha ou criança pequena, é outra conversa, pelo Mestre. 26 PV."
+    "texto": "A mordida é fraca (6,5); o perigo é o agarrão, que aperta 10 por manutenção (2 × Força 5), com a Briga (Agarrão) +3, e o corpo de Musculatura 4 arrasta até 276,60 kg. Pequena enrolada e esticada, ela ganha +3 no acerto corpo a corpo contra um humano; à distância, quem atira nela leva −3. Ela não apara golpe (Bloqueio 0), e a Força 5 tira o Bloqueio de quem tem Força 1 ou menos. Anda 3 m por Tick na corrida: não persegue ninguém, espera. Contra um humano adulto, ela agarra e não mata: é presa grande demais. Contra cão, galinha ou criança pequena, é outra conversa, pelo Mestre. 26 PV."
    }
   ]
  },
@@ -27762,7 +27762,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Grande, 70 PV, Impacto 15, Corte e Perfuração 5. Esquiva 10, Bloqueio 6, Defesa Mental 26 (28 contra Artes). Um filamento por ação a 15 m, até seis presos: agarra à distância e tira a Força. Puxa até a boca e morde (17, 5). Raio não o fere; o gelo faz metade; o fogo passa inteiro. Parece uma estalagmite."
+    "texto": "Grande, 70 PV, Impacto 15, Corte e Perfuração 5. Esquiva 10, Bloqueio 6, Defesa Mental 26 (28 contra Artes). Um filamento por ação a 15 m, até seis presos: agarra à distância e tira a Força. Puxa até a boca e morde (17,5). Raio não o fere; o gelo faz metade; o fogo passa inteiro. Parece uma estalagmite."
    }
   ]
  },
@@ -28037,7 +28037,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "- Pequeno contra um humano Médio: ele ganha +3 no acerto corpo a corpo, como o rato gigante. Com a gola aberta ele fica Grande, e o humano passa a ganhar +3. Força 3: não tira o Bloqueio de ninguém. - A mordida dá 6,5 de média; a chicotada, 4,5, mais rápida. Couraça nível 1 (escama fina num corpo de 66, 2 kg): quanto ela tira da lâmina e da flecha fica para depois, e a maça perde ao menos 4 (o Vigor). 37 PV. - O mais provável é ele abrir a gola e chiar, e correr para a árvore se o grupo não recuar."
+    "texto": "- Pequeno contra um humano Médio: ele ganha +3 no acerto corpo a corpo, como o rato gigante. Com a gola aberta ele fica Grande, e o humano passa a ganhar +3. Força 3: não tira o Bloqueio de ninguém. - A mordida dá 6,5 de média; a chicotada, 4,5, mais rápida. Couraça nível 1 (escama fina num corpo de 66,2 kg): quanto ela tira da lâmina e da flecha fica para depois, e a maça perde ao menos 4 (o Vigor). 37 PV. - O mais provável é ele abrir a gola e chiar, e correr para a árvore se o grupo não recuar."
    }
   ]
  },
@@ -28188,7 +28188,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Média, 43 PV, Impacto 10, Corte e Perfuração 4. Esquiva 20, Bloqueio 12. Garras de leão (dano médio 13, 5); o toque que pega baixa a Percepção e a Integridade e abala, e quem chega a 0 vira servo. Cria ilusões à vontade. Defesa Mental 27. Corre a 6 · 10 · 14."
+    "texto": "Média, 43 PV, Impacto 10, Corte e Perfuração 4. Esquiva 20, Bloqueio 12. Garras de leão (dano médio 13,5); o toque que pega baixa a Percepção e a Integridade e abala, e quem chega a 0 vira servo. Cria ilusões à vontade. Defesa Mental 27. Corre a 6 · 10 · 14."
    }
   ]
  },
@@ -30068,7 +30068,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Homem-lobo de 2,1 m: morde e rasga (dano médio 11, 5 cada), derruba quem morde e pode passar a maldição. 40 PV, Esquiva 10. Corte, perfuração e impacto fazem metade, e a prata passa toda a Absorção. Chama os lobos da região. Troca de forma em uma ação; de dia anda como homem de espada curta, e na lua cheia troca sem querer e só volta de manhã."
+    "texto": "Homem-lobo de 2,1 m: morde e rasga (dano médio 11,5 cada), derruba quem morde e pode passar a maldição. 40 PV, Esquiva 10. Corte, perfuração e impacto fazem metade, e a prata passa toda a Absorção. Chama os lobos da região. Troca de forma em uma ação; de dia anda como homem de espada curta, e na lua cheia troca sem querer e só volta de manhã."
    }
   ]
  },
@@ -32158,7 +32158,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Enorme: o humano Médio acerta com +6 no corpo a corpo. Não se bloqueia pelo Alvo, e a Força 13 tira o Bloqueio de quem tem Força 6 ou menos. O couro é Couraça nível 3; quanto ele tira do golpe fica para depois. O pisão faz 33 em média e a presada 20; 90 PV. Mais pesado que o mamute e do mesmo perigo em combate; ergue um pouco mais (2.713, 57 kg)."
+    "texto": "Enorme: o humano Médio acerta com +6 no corpo a corpo. Não se bloqueia pelo Alvo, e a Força 13 tira o Bloqueio de quem tem Força 6 ou menos. O couro é Couraça nível 3; quanto ele tira do golpe fica para depois. O pisão faz 33 em média e a presada 20; 90 PV. Mais pesado que o mamute e do mesmo perigo em combate; ergue um pouco mais (2.713,57 kg)."
    }
   ]
  },
@@ -32330,7 +32330,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Média, 40 PV, Impacto 8, Corte e Perfuração 3. Esquiva e Bloqueio 12 (13 com a espada). Arco (6, 5) de longe; de perto, espada e serpentes juntas a −1d6, e a mordida envenena e abala. Descoberta, quem a encara testa o corpo contra 15 ou vira pedra; desviar o rosto dá −4 no ataque. Defesa Mental 21."
+    "texto": "Média, 40 PV, Impacto 8, Corte e Perfuração 3. Esquiva e Bloqueio 12 (13 com a espada). Arco (6,5) de longe; de perto, espada e serpentes juntas a −1d6, e a mordida envenena e abala. Descoberta, quem a encara testa o corpo contra 15 ou vira pedra; desviar o rosto dá −4 no ataque. Defesa Mental 21."
    }
   ]
  },
@@ -32625,7 +32625,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio no ar, Pequeno no chão, 18 PV, Impacto 5, Corte e Perfuração 2; armas comuns fazem metade, o fogo não o fere. Esquiva 12. Garras (6, 5) ou sopro em cone de 3 m (2d6 + 2, metade a quem se abaixa), a cada 24 Ticks. Perto de fogo, fecha ferimentos sozinho. Voa a 4."
+    "texto": "Médio no ar, Pequeno no chão, 18 PV, Impacto 5, Corte e Perfuração 2; armas comuns fazem metade, o fogo não o fere. Esquiva 12. Garras (6,5) ou sopro em cone de 3 m (2d6 + 2, metade a quem se abaixa), a cada 24 Ticks. Perto de fogo, fecha ferimentos sozinho. Voa a 4."
    }
   ]
  },
@@ -32771,7 +32771,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio, 37 PV, Impacto 5. Esquiva e Bloqueio 10 (12 com a lança). Na água nada rápido (5 · 8 · 12); em terra só se arrasta. Lança a duas mãos (dano médio 10, 5) ou besta (8, 5, a cada 12 Ticks). Respira na água e no ar."
+    "texto": "Médio, 37 PV, Impacto 5. Esquiva e Bloqueio 10 (12 com a lança). Na água nada rápido (5 · 8 · 12); em terra só se arrasta. Lança a duas mãos (dano médio 10,5) ou besta (8,5, a cada 12 Ticks). Respira na água e no ar."
    }
   ]
  },
@@ -32918,7 +32918,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio, 40 PV, Impacto 6, Corte e Perfuração 1. Esquiva 10, Bloqueio 6. Parece um objeto até atacar. Quem o toca ou leva o Pseudópode (9, 5) fica colado (três vezes por cena); a Mordida (7, 5) faz +2d6 no primeiro golpe contra quem está Surpreso."
+    "texto": "Médio, 40 PV, Impacto 6, Corte e Perfuração 1. Esquiva 10, Bloqueio 6. Parece um objeto até atacar. Quem o toca ou leva o Pseudópode (9,5) fica colado (três vezes por cena); a Mordida (7,5) faz +2d6 no primeiro golpe contra quem está Surpreso."
    }
   ]
  },
@@ -33471,7 +33471,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio, rápido (4), 34 PV, Impacto 4, Corte e Perfuração 1. Esquiva 14, Bloqueio 10. As Antenas não ferem: cada toque tira 1 de Absorção da armadura de metal, ou 1 de dano da arma de metal que bloqueia ou que o acerta. Mordida fraca (4, 5). Fareja metal e foge de quem não tem mais nada para comer."
+    "texto": "Médio, rápido (4), 34 PV, Impacto 4, Corte e Perfuração 1. Esquiva 14, Bloqueio 10. As Antenas não ferem: cada toque tira 1 de Absorção da armadura de metal, ou 1 de dano da arma de metal que bloqueia ou que o acerta. Mordida fraca (4,5). Fareja metal e foge de quem não tem mais nada para comer."
    }
   ]
  },
@@ -34166,7 +34166,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio, 37 PV, Impacto 6, Corte e Perfuração 2. Esquiva 14, Bloqueio 10 (11 com o bastão). Bastão (dano médio 7, 5), +1d6 contra quem se distrai; dois no mesmo alvo o flanqueiam. Escala parede e teto. Luz repentina o cega por 6 Ticks."
+    "texto": "Médio, 37 PV, Impacto 6, Corte e Perfuração 2. Esquiva 14, Bloqueio 10 (11 com o bastão). Bastão (dano médio 7,5), +1d6 contra quem se distrai; dois no mesmo alvo o flanqueiam. Escala parede e teto. Luz repentina o cega por 6 Ticks."
    }
   ]
  },
@@ -35266,7 +35266,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "- Miúda (enrolada ou esticada) contra um humano Médio, ganha +6 no acerto corpo a corpo. Quem atira nela leva −6. O bote acerta quase sempre; o que decide é o veneno. - Erguida, a cabeça fica na altura do peito de um adulto: o bote não precisa mirar a perna. Isso é do Mestre. - O dano do bote é o dado mais a Força 1 (2, 5); o veneno ignora a Absorção. O veneno entra se o bote fere: 1 de dano ou mais depois da Absorção, e o Nível do bote (N0) tem de passar o da armadura. - Contra outra serpente ela briga com +1 (Especialidade). Com 6 PV e 1 m por Tick (provisórios), não persegue: ameaça, e foge se pode."
+    "texto": "- Miúda (enrolada ou esticada) contra um humano Médio, ganha +6 no acerto corpo a corpo. Quem atira nela leva −6. O bote acerta quase sempre; o que decide é o veneno. - Erguida, a cabeça fica na altura do peito de um adulto: o bote não precisa mirar a perna. Isso é do Mestre. - O dano do bote é o dado mais a Força 1 (2,5); o veneno ignora a Absorção. O veneno entra se o bote fere: 1 de dano ou mais depois da Absorção, e o Nível do bote (N0) tem de passar o da armadura. - Contra outra serpente ela briga com +1 (Especialidade). Com 6 PV e 1 m por Tick (provisórios), não persegue: ameaça, e foge se pode."
    }
   ]
  },
@@ -37571,7 +37571,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Miúda no ar e Minúscula pousada, invisível à vontade. Atira com o arco (dano médio 5, 5) e escolhe: o alvo que ela fere dorme até o fim da cena ou esquece a última hora (mente). Esquiva 20, Defesa Mental 27, mas só 2 PV: qualquer golpe que passa a derruba. Ferida, fica invisível e foge. Distrai um alvo por cena com uma ilusão."
+    "texto": "Miúda no ar e Minúscula pousada, invisível à vontade. Atira com o arco (dano médio 5,5) e escolhe: o alvo que ela fere dorme até o fim da cena ou esquece a última hora (mente). Esquiva 20, Defesa Mental 27, mas só 2 PV: qualquer golpe que passa a derruba. Ferida, fica invisível e foge. Distrai um alvo por cena com uma ilusão."
    }
   ]
  },
@@ -39359,7 +39359,7 @@
    },
    {
     "nome": "Sentidos",
-    "descricao": "visão: olhos grandes (quase 2, 5 cm no real); sem número, sem Especialidade natural. · Os outros: nada achado."
+    "descricao": "visão: olhos grandes (quase 2,5 cm no real); sem número, sem Especialidade natural. · Os outros: nada achado."
    }
   ],
   "poderes": [],
@@ -39675,7 +39675,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio, 40 PV, Impacto 10, Corte e Perfuração 5, metade do dano de corte e de impacto. Esquiva e Bloqueio 14. Em Rajada, duas garradas por ação, a segunda a −1d6 (dano médio 10, 5 a primeira). Conjura com 20 de Mana: Fascinação e Proteção até o 4, Matéria até o 3, Adivinhação até o 2. Muda de forma, lê pensamentos e cria ilusões à vontade. Defesa Mental 25, 29 contra Artes. Ferido, foge com outro rosto."
+    "texto": "Médio, 40 PV, Impacto 10, Corte e Perfuração 5, metade do dano de corte e de impacto. Esquiva e Bloqueio 14. Em Rajada, duas garradas por ação, a segunda a −1d6 (dano médio 10,5 a primeira). Conjura com 20 de Mana: Fascinação e Proteção até o 4, Matéria até o 3, Adivinhação até o 2. Muda de forma, lê pensamentos e cria ilusões à vontade. Defesa Mental 25, 29 contra Artes. Ferido, foge com outro rosto."
    }
   ]
  },
@@ -40350,7 +40350,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Solitário e de vista curta, geralmente pacato se não provocado, mas carrega com violência total quando se sente ameaçado. Social: machos solitários e territoriais (0, 7 a 3 km²); fêmeas com cria."
+    "texto": "Solitário e de vista curta, geralmente pacato se não provocado, mas carrega com violência total quando se sente ameaçado. Social: machos solitários e territoriais (0,7 a 3 km²); fêmeas com cria."
    },
    {
     "titulo": "Hábitat",
@@ -40672,7 +40672,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio, 37 PV, Impacto 6, Corte e Perfuração 2. Esquiva e Bloqueio 10 (12 com a lança). Lança a duas mãos (dano médio 13, 5) ou garras (7, 5). Ferido, fica Enfurecido e mais forte. Chama e comanda tubarões; nada a 6. A luz forte o ofusca."
+    "texto": "Médio, 37 PV, Impacto 6, Corte e Perfuração 2. Esquiva e Bloqueio 10 (12 com a lança). Lança a duas mãos (dano médio 13,5) ou garras (7,5). Ferido, fica Enfurecido e mais forte. Chama e comanda tubarões; nada a 6. A luz forte o ofusca."
    }
   ]
  },
@@ -41816,7 +41816,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio, 40 PV, Impacto 7, Corte e Perfuração 2; o frio faz metade. Esquiva e Bloqueio 10 (12 com a lança). Lança (13, 5), mordida ou garras (7, 5); sem a lança, duas garras a −1d6. Respira na água; debaixo d'água vê e se esconde melhor."
+    "texto": "Médio, 40 PV, Impacto 7, Corte e Perfuração 2; o frio faz metade. Esquiva e Bloqueio 10 (12 com a lança). Lança (13,5), mordida ou garras (7,5); sem a lança, duas garras a −1d6. Respira na água; debaixo d'água vê e se esconde melhor."
    }
   ]
  },
@@ -42209,7 +42209,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Humano Médio: ninguém ganha o +3 de Tamanho contra ele, e ele não ganha contra o humano. Ataca com Destreza + Armas e a espada longa (dano médio 6, 5 com uma mão, 9, 5 com as duas). De malha, absorve bem o corte (Corte 6) e mal a pancada (Impacto 4): a maça e o martelo são o caminho. De malha, Esquiva 12 e Bloqueio 11 com a espada; Defesa Mental 14, difícil de assustar por magia. 34 PV. Prefere o inimigo isolado e recua quando a luta vira."
+    "texto": "Humano Médio: ninguém ganha o +3 de Tamanho contra ele, e ele não ganha contra o humano. Ataca com Destreza + Armas e a espada longa (dano médio 6,5 com uma mão, 9,5 com as duas). De malha, absorve bem o corte (Corte 6) e mal a pancada (Impacto 4): a maça e o martelo são o caminho. De malha, Esquiva 12 e Bloqueio 11 com a espada; Defesa Mental 14, difícil de assustar por magia. 34 PV. Prefere o inimigo isolado e recua quando a luta vira."
    }
   ]
  },
@@ -43286,7 +43286,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio, 34 PV, Impacto 4, Corte e Perfuração 1. Esquiva e Bloqueio 14 (15 com a espada). Espada (dano médio 7, 5) ou bico (5, 5); +1d6 contra quem se distrai. Vê detalhes que os outros não veem."
+    "texto": "Médio, 34 PV, Impacto 4, Corte e Perfuração 1. Esquiva e Bloqueio 14 (15 com a espada). Espada (dano médio 7,5) ou bico (5,5); +1d6 contra quem se distrai. Vê detalhes que os outros não veem."
    }
   ]
  },
@@ -44397,7 +44397,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio, 37 PV, Impacto 4. Defesa baixa (Bloqueio 6, 7 com o martelo; Esquiva 4). Martelo (dano médio 6, 5) ou garras (4, 5). Quem chega a 3 m testa contra o enjoo e pode ficar Abalado. Camuflado na pedra, quase não se vê."
+    "texto": "Médio, 37 PV, Impacto 4. Defesa baixa (Bloqueio 6, 7 com o martelo; Esquiva 4). Martelo (dano médio 6,5) ou garras (4,5). Quem chega a 3 m testa contra o enjoo e pode ficar Abalado. Camuflado na pedra, quase não se vê."
    }
   ]
  },
@@ -45476,7 +45476,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Força 7: quem tem Força 3 ou menos não apara a patada. Grande (1, 48 m², na borda), então o humano Médio ganha +3 no acerto corpo a corpo contra ele. Tem 54 PV pela massa (a principal, 50), e ergue ou arrasta até 1.035,06 kg; a pele fica no nível 2 de Couraça, e quanto ela tira do golpe fica para depois. O Vigor 6 segura o Impacto. O abraço tira 14 por manutenção. Ferido, segue atacando, e aguenta meses sem comer."
+    "texto": "Força 7: quem tem Força 3 ou menos não apara a patada. Grande (1,48 m², na borda), então o humano Médio ganha +3 no acerto corpo a corpo contra ele. Tem 54 PV pela massa (a principal, 50), e ergue ou arrasta até 1.035,06 kg; a pele fica no nível 2 de Couraça, e quanto ela tira do golpe fica para depois. O Vigor 6 segura o Impacto. O abraço tira 14 por manutenção. Ferido, segue atacando, e aguenta meses sem comer."
    }
   ]
  },
@@ -47580,7 +47580,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Grande, 50 PV, Impacto 7, Corte e Perfuração 2; o frio não o fere, o fogo o fere mais. Esquiva 10, Bloqueio 6. Garras (12, 5, mais 1d6 de gelo); as duas juntas a −1d6, e +2d6 se as duas acertam. Uma vez por dia por alvo, o olhar paralisa. Some na neve."
+    "texto": "Grande, 50 PV, Impacto 7, Corte e Perfuração 2; o frio não o fere, o fogo o fere mais. Esquiva 10, Bloqueio 6. Garras (12,5, mais 1d6 de gelo); as duas juntas a −1d6, e +2d6 se as duas acertam. Uma vez por dia por alvo, o olhar paralisa. Some na neve."
    }
   ]
  },
@@ -47736,7 +47736,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Médio como o humano. Lento: age tarde (Iniciativa 1d6 + 2) e não desvia nem apara (Esquiva 2, Bloqueio 2), então quase todo golpe acerta. Bate forte para um capanga (dano médio 8, 5) e agarra. Não adianta assustar, convencer nem encantar: não tem mente. A lança, a flecha e a estocada fazem metade do dano depois da armadura; o machado e a maça, o dano inteiro. Luz e golpe sagrado passam toda a Absorção. 34 PV, Impacto 4, Corte e Perfuração 1. Uma vez por cena, fica de pé com 1 PV no golpe que o derrubaria. O perigo é o bando."
+    "texto": "Médio como o humano. Lento: age tarde (Iniciativa 1d6 + 2) e não desvia nem apara (Esquiva 2, Bloqueio 2), então quase todo golpe acerta. Bate forte para um capanga (dano médio 8,5) e agarra. Não adianta assustar, convencer nem encantar: não tem mente. A lança, a flecha e a estocada fazem metade do dano depois da armadura; o machado e a maça, o dano inteiro. Luz e golpe sagrado passam toda a Absorção. 34 PV, Impacto 4, Corte e Perfuração 1. Uma vez por cena, fica de pé com 1 PV no golpe que o derrubaria. O perigo é o bando."
    }
   ]
  }

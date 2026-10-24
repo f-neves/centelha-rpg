@@ -221,9 +221,14 @@ const RE_FONTE = new RegExp(`^(via\\s+)?(${FONTES.map(esc).join('|')})(\\s+"[^"]
 const RE_AUTOR_ANO = /^(via\s+)?[A-ZÀ-ÚØÅ][\p{L}'’-]+(?:(?:,\s*|\s+e\s+|\s+)[A-ZÀ-ÚØÅ][\p{L}'’-]+)*(?:\s+et al\.|\s+e colegas|\s+e outros)?,?\s+(1[89]\d\d|20[0-2]\d)[a-z]?(\s+via\s+.*|\s+não conferido)?$/u;
 const QUALIFICADOR = /^(sem método|sem número|conferido|não conferido|trecho de busca|modelo óptico|divulgação|fonte infantil|marcada como fraca|mesma fonte|uso histórico|l\.\s?\d+(-\d+)?|"[^"]*")$/;
 const CITACOES = [];
+// A VÍRGULA ENTRE DÍGITOS É DECIMAL ("dano médio 10,5"), e não separa peça: antes o parêntese se partia nela e
+// voltava "10, 5" (achado da Revisora, rodada 18). E o parêntese de que nada saiu volta como estava, só aparado
+// nas pontas, e não conta como citação limpa: antes, só a remontagem com ", " já o mudava e ele contava.
+// Devolve { fica, tirou }.
 function tiraCitacao(dentro) {
+  let tirou = false;
   const segs = dentro.split(';').map((seg) => {
-    const pecas = seg.split(',').map((x) => x.trim());
+    const pecas = seg.split(/(?<!\d),|,(?!\d)/).map((x) => x.trim());
     // junta as peças de uma lista de autores ("Harley, Cienfuegos e Wagenaar 2011")
     const saida = [];
     for (let i = 0; i < pecas.length; i++) {
@@ -236,9 +241,10 @@ function tiraCitacao(dentro) {
       if (saida.length && saida[saida.length - 1] === null && /^[A-Z][a-z]+$/.test(p) && /Wikipédia/.test(pecas[i - 1] || '')) { saida.push(null); continue; }
       saida.push(p);
     }
+    if (saida.includes(null)) tirou = true;
     return saida.filter((x) => x !== null).join(', ');
   });
-  return segs.map((x) => x.trim()).filter(Boolean).join('; ');
+  return { fica: tirou ? segs.map((x) => x.trim()).filter(Boolean).join('; ') : dentro.trim(), tirou };
 }
 const TRABALHO = /\bera\b|◆|`[^`]*`|\.md\b|\bD-\d{3}\b|\bdecis[aã]o (de )?\d|\b\d{1,2}\/\d{1,2}\/\d{4}\b|\bsétima rodada\b|\bquinta rodada\b/i;
 // O NOME EM INGLÊS SEM A PROCEDÊNCIA (etapa 8a, aprovado pelo Arquiteto): a célula traz
@@ -261,8 +267,8 @@ function limpa(s) {
   for (let i = 0; i < 3; i++) t = t.replace(/\s*\(([^()]*)\)/g, (m, dentro) => (TRABALHO.test(dentro) ? '' : m));
   // a citação de fonte (decisoes-etapa-6.md §9, item 10)
   t = t.replace(/\(([^()]*)\)/g, (m, dentro) => {
-    const fica = tiraCitacao(dentro);
-    if (fica !== dentro) CITACOES.push({ antes: dentro, depois: fica });
+    const { fica, tirou } = tiraCitacao(dentro);
+    if (tirou) CITACOES.push({ antes: dentro, depois: fica });
     return fica ? `(${fica})` : '';
   });
   // rótulo que ficou sem conteúdo depois da limpeza ("Outras doenças e parasitas:.")

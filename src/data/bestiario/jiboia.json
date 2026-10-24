@@ -99,7 +99,7 @@
   "habilidades": [
     {
       "nome": "constrição = agarrar",
-      "descricao": "Mordida (bote para agarrar): As voltas sobre o tórax param a circulação: em 6 s a pressão arterial cai à metade, em 60 s o coração bate a metade, e ao fim (cerca de 6, 5 min) 10 de 11 ratos tinham falha elétrica do coração. Pressão em kPa: não conferida. O humano adulto é grande demais para ser presa.",
+      "descricao": "Mordida (bote para agarrar): As voltas sobre o tórax param a circulação: em 6 s a pressão arterial cai à metade, em 60 s o coração bate a metade, e ao fim (cerca de 6,5 min) 10 de 11 ratos tinham falha elétrica do coração. Pressão em kPa: não conferida. O humano adulto é grande demais para ser presa.",
       "classe": "livro"
     },
     {
@@ -137,7 +137,7 @@
     },
     {
       "titulo": "No jogo",
-      "texto": "A mordida é fraca (6, 5); o perigo é o agarrão, que aperta 10 por manutenção (2 × Força 5), com a Briga (Agarrão) +3, e o corpo de Musculatura 4 arrasta até 276,60 kg. Pequena enrolada e esticada, ela ganha +3 no acerto corpo a corpo contra um humano; à distância, quem atira nela leva −3. Ela não apara golpe (Bloqueio 0), e a Força 5 tira o Bloqueio de quem tem Força 1 ou menos. Anda 3 m por Tick na corrida: não persegue ninguém, espera. Contra um humano adulto, ela agarra e não mata: é presa grande demais. Contra cão, galinha ou criança pequena, é outra conversa, pelo Mestre. 26 PV."
+      "texto": "A mordida é fraca (6,5); o perigo é o agarrão, que aperta 10 por manutenção (2 × Força 5), com a Briga (Agarrão) +3, e o corpo de Musculatura 4 arrasta até 276,60 kg. Pequena enrolada e esticada, ela ganha +3 no acerto corpo a corpo contra um humano; à distância, quem atira nela leva −3. Ela não apara golpe (Bloqueio 0), e a Força 5 tira o Bloqueio de quem tem Força 1 ou menos. Anda 3 m por Tick na corrida: não persegue ninguém, espera. Contra um humano adulto, ela agarra e não mata: é presa grande demais. Contra cão, galinha ou criança pequena, é outra conversa, pelo Mestre. 26 PV."
     }
   ],
   "ecologia": {
