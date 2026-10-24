@@ -6520,7 +6520,7 @@
   "categoria": "Humanoide",
   "tipo": "capanga",
   "conceito": "civil sem treino",
-  "descricao": "Gente comum empurrada à briga. Foge ao primeiro sangue.",
+  "descricao": "Lavrador sem treino que não escolheu lutar: foi arrastado por um senhor, um bando ou a fome. Segura o cajado tremendo, grita mais do que golpeia e corre ao primeiro sangue.",
   "tags": [
    "humano"
   ],
@@ -6559,26 +6559,26 @@
    "prontidao": 1,
    "esquiva": 0,
    "integridade": 4,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "sociabilidade": 1,
+   "furtividade": 0
   },
   "vontade": 4,
   "aparencia": 4,
   "virtudes": {
    "compaixao": 2,
-   "conviccao": 3,
+   "conviccao": 2,
    "temperanca": 2,
-   "valor": 3
+   "valor": 1
   },
   "combate": {
    "pv": 31,
-   "defesa": 4,
-   "defesaSocial": 4,
+   "defesa": 6,
+   "defesaSocial": 6,
    "defesaMental": 10,
    "absorcao": {
     "impacto": 2,
-    "corte": 1,
-    "perfuracao": 1
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -6589,31 +6589,39 @@
    },
    "ataques": [
     {
-     "nome": "Forcado/Pancada",
-     "pool": "1d6+2",
+     "nome": "Bordão",
+     "pool": "1d6+2 +1",
      "dano": "1d6 +4 impacto",
      "perfArma": null,
-     "speed": 5,
+     "speed": 6,
      "classe": "haste"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Sem treino",
-    "descricao": "ataques e Defesa em nível mínimo, quase sempre erra"
+    "nome": "Horda",
+    "descricao": "a Regra de Horda. O camponês é capanga Comum: na horda, 5 de PV por membro, sem o piso de 25, e a Defesa de um capanga −2. Cada ataque do esquadrão rola o pool de um camponês + Magnitude d6 no acerto e no dano."
    },
    {
-    "nome": "Testa de ferro frágil",
-    "descricao": "poucos PV, cai com um golpe qualquer"
+    "nome": "Sem treino",
+    "descricao": "as Habilidades de luta em 0 e 1 já dão o acerto e as Defesas mínimas (site: \"quase sempre erra\")."
    },
    {
     "nome": "Pavor de sangue",
-    "descricao": "foge do combate assim que sofre o primeiro ferimento"
+    "descricao": "foge do combate assim que sofre o primeiro ferimento, ou quando vê sangue, seu ou alheio (site). Na horda, o Mestre pode tirar os que fogem junto com as baixas."
    },
    {
-    "nome": "Horda",
-    "descricao": "em grupo, use a regra de Horda em vez de rolar cada um"
+    "nome": "grita mais do que golpeia",
+    "descricao": "segura o cajado tremendo, fica atrás dos outros, golpeia quando alguém cai perto e corre ao primeiro sangue."
+   },
+   {
+    "nome": "Sem inimizades naturais",
+    "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão, audição, olfato: humanos."
    }
   ],
   "poderes": [],
@@ -6626,7 +6634,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Não escolheu lutar: foi arrastado por um senhor, um bando ou o desespero da fome. Segura a foice ou o cajado tremendo, grita mais do que golpeia, e corre ao primeiro sangue, seu ou alheio."
+    "texto": "Não escolheu lutar: foi arrastado por um senhor, um bando ou o desespero da fome. Segura a foice ou o cajado tremendo, grita mais do que golpeia, e corre ao primeiro sangue, seu ou alheio. Social: em grupo, com outros da aldeia."
    },
    {
     "titulo": "Hábitos",
@@ -6635,6 +6643,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "É a face mais comum do povo de Uldun: Centelha zero, sem treino, criado sob o tabu da Supressão a temer qualquer coisa que cheire a magia. Quando pega em armas, é sinal de que algo já deu muito errado na região."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Humano Médio, 31 PV, Impacto 2. Esquiva 4, Bloqueio 4 (6 com o bordão). Bordão de dano médio 7,5. Foge ao primeiro ferimento. Em grupo, use a Horda: 5 PV por camponês, e o esquadrão rola + Magnitude d6."
    }
   ]
  },
@@ -10207,7 +10219,7 @@
   "categoria": "Limo",
   "tipo": "soldado",
   "conceito": "limo Grande",
-  "descricao": "Massa informe que digere tudo que toca.",
+  "descricao": "Massa transparente e quase invisível que desliza por corredores e câmaras subterrâneas, dissolvendo devagar tudo o que toca. Não persegue: avança e engole. Dentro dele ficam moedas, ossos e fivelas de todos que morreram ali.",
   "tags": [
    "limo",
    "centelha"
@@ -10215,10 +10227,10 @@
   "ameaca": 3,
   "centelha": 1,
   "pendente": true,
-  "porte": "Grande",
+  "porte": "Enorme",
   "dimensoes": {
-   "medida": "cubo de 3 m de lado",
-   "peso": "14 t (massa gelatinosa densa, bem acima do normal para o porte)"
+   "medida": "3 m de comprimento, 3 m de altura",
+   "peso": "27,3 t"
   },
   "ecologia": {
    "tipo": "Ooze",
@@ -10233,43 +10245,44 @@
   "semImagem": false,
   "atributos": {
    "forca": 3,
-   "destreza": 0,
+   "destreza": 1,
    "vigor": 9,
-   "influencia": 0,
-   "perspicacia": 0,
-   "compostura": 0,
-   "percepcao": 0,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1,
+   "percepcao": 1,
    "inteligencia": 0,
-   "raciocinio": 0
+   "raciocinio": 1
   },
   "pericias": {
    "prontidao": 0,
    "esquiva": 0,
-   "furtividade": 0
+   "integridade": 0,
+   "furtividade": 2
   },
-  "vontade": 6,
+  "vontade": 3,
   "aparencia": 1,
   "virtudes": {
-   "compaixao": 0,
+   "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
-   "valor": 2
+   "valor": 6
   },
   "combate": {
-   "pv": 66,
-   "defesa": 0,
+   "pv": 85,
+   "defesa": 2,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
     "impacto": 10,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "imunidades": [
     "raio"
    ],
-   "iniciativa": "1d6 + 0",
+   "iniciativa": "1d6 + 1",
    "deslocamento": {
     "batalha": 2,
     "arranque": 3,
@@ -10279,7 +10292,7 @@
     {
      "nome": "Pseudópode",
      "pool": "3d6+2 +2",
-     "dano": "2d6 +4 impacto",
+     "dano": "1d6 +4 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -10288,43 +10301,31 @@
   },
   "habilidades": [
    {
-    "nome": "Corpo transparente",
-    "descricao": "quase invisível parado; exige Prontidão alta para notar antes do contato"
+    "nome": "Paralisia ao toque",
+    "descricao": "poder natural (base Tempo 2, a do site) · Pseudópode: Ativação: o Pseudópode que fere, ou o Engolfar que pega. Duração: 18 Ticks. Alcance: toque. Área: um alvo. Efeito: o toque entorpece: o alvo fica Imobilizado (o livro não tem a condição \"paralisado\"). Dano: nenhum além do golpe. Resistência: corpo, contra a jogada do Pseudópode; quem passa não fica Imobilizado por aquele toque. Limite de uso: um por golpe."
    },
    {
-    "nome": "Engolfa",
-    "descricao": "encosta e envolve o alvo, causando dano contínuo enquanto Agarrado"
+    "nome": "Engolfar",
+    "descricao": "Ativação: uma ação, Velocidade 6; o cubo avança sobre quem está no caminho. Duração: até o alvo sair. Alcance: o espaço que ele ocupa ao avançar. Área: todos no caminho. Efeito: quem não sai fica dentro do cubo, Agarrado, e sofre o ácido. Dano: o do Ácido corrosivo. Resistência: esquiva, contra Força 3 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2), com o Agarrão +2, para sair da frente; dentro, a manutenção do agarrão do livro para escapar. Limite de uso: uma vez a cada 6 Ticks."
    },
    {
     "nome": "Ácido corrosivo",
-    "descricao": "dano extra por rodada a quem estiver dentro do cubo; corrói equipamento exposto"
+    "descricao": "Ativação: estar dentro do cubo. Duração: enquanto estiver dentro. Alcance: dentro. Área: quem está dentro. Efeito: dissolve carne e o que for orgânico. Dano: 1d6 + Centelha, ácido, a cada 6 Ticks. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Mente vazia",
-    "descricao": "imune a efeitos mentais e a Abalado"
+    "nome": "corrói equipamento",
+    "descricao": "o ácido corrói o equipamento exposto de quem fica dentro (site)."
    },
    {
     "nome": "Preenche o corredor",
-    "descricao": "ocupa toda a passagem; difícil de contornar ou escapar"
-   }
-  ],
-  "poderes": [
+    "descricao": "ocupa a passagem inteira; não dá para contornar, só recuar ou atravessar. Não persegue: avança e engole o que está no caminho."
+   },
    {
-    "id": "paralisia-ao-toque",
-    "nome": "Paralisia ao toque",
-    "tipo": "natural",
-    "resiste": "corpo",
-    "efeito": "quem é tocado e falha em resistir fica paralisado por um tempo",
-    "base": {
-     "arte": "tempo",
-     "nivel": 2
-    },
-    "descricao": "O toque gelatinoso do cubo entorpece quem falha em resistir, deixando-o paralisado, incapaz de agir, por um tempo curto.",
-    "usos": {
-     "periodo": "golpe"
-    }
+    "nome": "Sentidos",
+    "descricao": "percebe pelo toque e pela vibração o que encosta nele ou passa perto."
    }
   ],
+  "poderes": [],
   "locomocao": {
    "terra": 2
   },
@@ -10334,7 +10335,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Massa transparente e quase invisível que desliza por corredores e câmaras subterrâneas, dissolvendo lentamente tudo que toca; não persegue, apenas avança e engole o que estiver em seu caminho."
+    "texto": "Massa transparente e quase invisível que desliza por corredores e câmaras subterrâneas, dissolvendo lentamente tudo que toca; não persegue, apenas avança e engole o que estiver em seu caminho. Social: solitário."
    },
    {
     "titulo": "Ecologia",
@@ -10343,6 +10344,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Exploradores de ruínas da Grande Guerra o temem mais pela surpresa que pelo perigo: é fácil de evitar se visto a tempo, e quase sempre fatal para quem não percebe a diferença entre corredor vazio e gelatina viva."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Enorme, enche o corredor de 3 m. 85 PV, Impacto 10, Corte e Perfuração 1. Esquiva e Bloqueio 2. Lento (2), quase invisível parado. O Pseudópode (7,5) deixa quem fere Imobilizado por 18 Ticks; avançando, engolfa quem não sai da frente, que fica preso dentro e leva 1d6 + 1 de ácido a cada 6 Ticks. Raio não o fere. Sem mente."
    }
   ]
  },
@@ -29362,7 +29367,7 @@
   "categoria": "Limo",
   "tipo": "soldado",
   "conceito": "limo Médio",
-  "descricao": "Massa informe que digere tudo que toca.",
+  "descricao": "Gosma cinzenta que desliza por pântanos gelados e masmorras úmidas e se confunde com poças d'água e lama, à espera de que algo a pise. Agarra e corrói com ácido carne, metal e madeira.",
   "tags": [
    "limo",
    "centelha"
@@ -29372,7 +29377,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "1 m de diâmetro",
+   "medida": "1 m de comprimento, 0,19 m de altura",
    "peso": "150 kg"
   },
   "ecologia": {
@@ -29390,44 +29395,49 @@
   "semImagem": false,
   "atributos": {
    "forca": 5,
-   "destreza": 0,
+   "destreza": 1,
    "vigor": 8,
-   "influencia": 0,
-   "perspicacia": 0,
-   "compostura": 0,
-   "percepcao": 0,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1,
+   "percepcao": 1,
    "inteligencia": 0,
-   "raciocinio": 0
+   "raciocinio": 1
   },
   "pericias": {
    "prontidao": 0,
    "esquiva": 0,
-   "furtividade": 1
+   "integridade": 0,
+   "furtividade": 2
   },
-  "vontade": 6,
+  "vontade": 3,
   "aparencia": 1,
   "virtudes": {
-   "compaixao": 0,
+   "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
-   "valor": 2
+   "valor": 6
   },
   "combate": {
    "pv": 49,
-   "defesa": 0,
+   "defesa": 2,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
     "impacto": 9,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
     "corte",
     "perfuracao"
    ],
-   "iniciativa": "1d6 + 0",
+   "imunidades": [
+    "fogo",
+    "gelo"
+   ],
+   "iniciativa": "1d6 + 1",
    "deslocamento": {
     "batalha": 1,
     "arranque": 2,
@@ -29436,8 +29446,8 @@
    "ataques": [
     {
      "nome": "Pseudópode",
-     "pool": "4d6+2 +2",
-     "dano": "1d6 +6 impacto",
+     "pool": "4d6+2 +3",
+     "dano": "1d6 +4 acido",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -29446,20 +29456,24 @@
   },
   "habilidades": [
    {
+    "nome": "agarrar",
+    "descricao": "Pseudópode: o Agarrão, com a Especialidade natural Briga (Agarrão) +2."
+   },
+   {
     "nome": "Ácido corrosivo",
-    "descricao": "Seu toque banha metal e matéria orgânica em ácido: cada golpe causa dano contínuo adicional, e armas ou armaduras que a atingem podem se corroer no processo."
+    "descricao": "Pseudópode: Ativação: o Pseudópode que fere. Duração: 12 Ticks, ou até alguém gastar uma ação para lavar o ácido. Alcance: toque. Área: um alvo. Efeito: o ácido segue corroendo (site). Dano: 1d6, ácido, a cada 6 Ticks. Resistência: nenhum. Limite de uso: um por golpe; não acumula."
+   },
+   {
+    "nome": "corrói arma e armadura",
+    "descricao": "a arma ou a armadura que a toca pode se corroer (site)."
    },
    {
     "nome": "Presa transparente",
-    "descricao": "Sua coloração baça a torna quase invisível no ambiente; quem não a percebe e a pisa sofre um ataque surpresa e pode ser agarrado."
+    "descricao": "parece uma poça d'água; quem a pisa sem perceber leva o Pseudópode de surpresa e pode ser agarrado (site)."
    },
    {
-    "nome": "Sentido cego",
-    "descricao": "Percebe o mundo ao redor sem depender da visão, dispensando olhos por completo."
-   },
-   {
-    "nome": "Imunidades",
-    "descricao": "Insensível a frio e fogo."
+    "nome": "Sentidos",
+    "descricao": "sentido cego: percebe o mundo em volta sem olhos (site)."
    }
   ],
   "poderes": [],
@@ -29477,6 +29491,14 @@
    {
     "titulo": "Origem incerta",
     "texto": "Sábios discordam se ela nasce de experimentos alquímicos fracassados ou de um poço de detritos mágicos que ganhou vida própria."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: solitário."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, poça de 1 m. 49 PV, Impacto 9, Corte e Perfuração 1; corte e perfuração fazem metade, fogo e gelo nada. Esquiva e Bloqueio 2. Lento (1). Pseudópode ácido de dano médio 7,5, que segue corroendo 1d6 a cada 6 Ticks por 12 Ticks; agarra (+2). Parece água: quem a pisa é pego de surpresa. Sem mente."
    }
   ]
  },
@@ -35407,7 +35429,7 @@
   "categoria": "Aberração",
   "tipo": "chefe",
   "conceito": "aberração Imenso",
-  "descricao": "Coisa de forma errada, de pesadelos e profundezas.",
+  "descricao": "Verme colossal que já governou impérios inteiros no fundo do mundo subterrâneo e hoje sobrevive em lendas de horror. Esmaga a mente de quem o enfrenta, cospe ácido, prende com as línguas tentaculares e engole a presa viva. Encanta, move as coisas com a mente e some por teletransporte.",
   "tags": [
    "aberracao",
    "centelha"
@@ -35415,10 +35437,10 @@
   "ameaca": 6,
   "centelha": 6,
   "pendente": true,
-  "porte": "Imenso",
+  "porte": "Enorme",
   "dimensoes": {
-   "medida": "12 m de comprimento",
-   "peso": "6.000 kg"
+   "medida": "12 m de comprimento, 0,89 m de altura",
+   "peso": "6,0 t"
   },
   "ecologia": {
    "tipo": "Aberration",
@@ -35446,28 +35468,28 @@
    "prontidao": 2,
    "esquiva": 0,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 0
+   "sociabilidade": 2,
+   "furtividade": 1
   },
   "vontade": 11,
   "aparencia": 1,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
+   "compaixao": 2,
+   "conviccao": 2,
    "temperanca": 2,
    "valor": 4
   },
   "combate": {
-   "pv": 90,
+   "pv": 85,
    "defesa": 2,
-   "defesaSocial": 10,
+   "defesaSocial": 18,
    "defesaMental": 31,
    "absorcao": {
     "impacto": 16,
-    "corte": 18,
-    "perfuracao": 18
+    "corte": 6,
+    "perfuracao": 6
    },
-   "resistenciaPerfuracao": 2,
+   "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 3,
@@ -35476,10 +35498,10 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Tentáculo",
      "pool": "8d6+2 +10",
-     "dano": "3d6 +18 perfurante",
-     "perfArma": 0,
+     "dano": "2d6 +18 impacto",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     }
@@ -35487,32 +35509,52 @@
   },
   "habilidades": [
    {
-    "nome": "Sentido cego e rastro planar",
-    "descricao": "Percebe tudo ao redor sem depender da visão e sente por um instante o destino de qualquer criatura que se teleporte perto dela."
+    "nome": "línguas tentaculares",
+    "descricao": "Tentáculo: a Rajada: até dois golpes de Tentáculo na mesma ação, o teto da classe Pesada, o segundo a −1d6, e +1 Tick de Recuperação. O site publicou um ataque só."
    },
    {
-    "nome": "Sopro ácido",
-    "descricao": "Expele um cone de ácido corrosivo, causando dano contínuo em quem não escapar a tempo."
-   },
-   {
-    "nome": "Golpe mental",
-    "descricao": "Concentra uma rajada de energia psíquica capaz de ferir gravemente qualquer criatura pensante à distância, algumas vezes por cena."
-   },
-   {
-    "nome": "Esmagamento da mente",
-    "descricao": "Tenta colapsar a mente de um alvo à distância; se ele falhar em um teste de Compostura, desmaia à beira da morte."
+    "nome": "agarrar",
+    "descricao": "Tentáculo: o Agarrão, com a Especialidade natural Briga (Agarrão) +2. Pela massa (Faixa 5), soma +6 contra o humano (Faixa 3)."
    },
    {
     "nome": "Engole inteiro",
-    "descricao": "Prende presas nas línguas tentaculares e as engole vivas, dilacerando-as por dentro com ácido."
+    "descricao": "Tentáculo: traga a presa agarrada; dentro, o ácido a dilacera."
    },
    {
-    "nome": "Casca resistente e mente protegida",
-    "descricao": "Sua pele absorve parte dos golpes de armas comuns, exceto ferro frio, e resiste à maioria das magias."
+    "nome": "Sopro ácido",
+    "descricao": "boca: Ativação: uma ação, Velocidade 7. Duração: o ácido segue queimando por 12 Ticks. Alcance: cone de 9 m. Área: o cone. Efeito: o ácido corrói quem não escapa. Dano: 3d6, ácido, e mais 1d6 a cada 6 Ticks por dois ciclos. Resistência: esquiva, contra Vigor 10 + Disparo 2 + 2 × o menor entre Centelha 6 e Disparo 2 (4) = 16 mais a rolagem; quem passa leva metade e não segue queimando. Limite de uso: uma vez a cada 18 Ticks."
    },
    {
-    "nome": "Poderes mentais constantes",
-    "descricao": "Voa sem esforço e usa à vontade encantos, sugestões, telecinesia e teletransporte para dominar ou escapar."
+    "nome": "Golpe mental",
+    "descricao": "poder natural (base Fascinação 4): Ativação: uma ação, Velocidade 6. Duração: instantâneo. Alcance: 18 m. Área: um alvo que pense (Inteligência 1 ou mais). Efeito: uma rajada psíquica fere a mente. Dano: 3d6, fenômeno (a armadura não absorve, só a Centelha; C-041). Resistência: mente, contra Influência 6 + Intimidação 4 + 2 × o menor entre Centelha 6 e Intimidação 4 (8) = 18 mais a rolagem; quem passa leva metade. Limite de uso: três vezes por cena (site)."
+   },
+   {
+    "nome": "Esmagamento da mente",
+    "descricao": "poder natural (base Fascinação 5): Ativação: uma ação, Velocidade 8. Duração: até alguém o estabilizar. Alcance: 18 m. Área: um alvo que pense. Efeito: a mente do alvo desmorona: fica Inconsciente e Morrendo. Dano: nenhum além do efeito. Resistência: mente, contra a mesma jogada do Golpe mental; quem passa fica Abalado até o fim da cena. Limite de uso: uma vez por cena."
+   },
+   {
+    "nome": "Poderes mentais",
+    "descricao": "poder natural (bases Fascinação 3, Forças 3, Conjuração 4): Ativação: uma ação, Velocidade 6. Duração: a do efeito. Alcance: 18 m. Área: a do efeito. Efeito: à escolha: encanto (o efeito de Fascinação 3, Encanto), telecinese (o de Forças 3, Telecinese) ou teletransporte para um lugar que ele conhece (o de Conjuração 4). Dano: nenhum. Resistência: mente, contra a jogada do Golpe mental, no encanto; nenhum nos outros. Limite de uso: à vontade (site)."
+   },
+   {
+    "nome": "Levitação",
+    "descricao": "poder natural (base Forças 3): Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: voa sem esforço, na Batalha do deslocamento em terra (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "Resistência a magia",
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "Casca contra armas comuns",
+    "descricao": "a pele absorve parte do golpe de arma comum, menos a de ferro frio."
+   },
+   {
+    "nome": "terror das profundezas",
+    "descricao": "esmaga a mente do mais perigoso, sopra ácido nos que vêm juntos, prende com as línguas e engole; quando perde, some por teletransporte."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "sentido cego: percebe tudo em volta sem visão (site). · rastro planar: sente por um instante o destino de quem se teleporta perto dele (site)."
    }
   ],
   "poderes": [],
@@ -35530,6 +35572,14 @@
    {
     "titulo": "Terror sussurrado",
     "texto": "Poucos que cruzaram seu caminho viveram para contar, e mesmo esses carregam a marca da mente esmagada pela presença da criatura."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinho."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Enorme, 85 PV, Impacto 16, Corte e Perfuração 6. Esquiva e Bloqueio 2: fácil de acertar. Tentáculo de dano médio 25, até dois por ação; agarra (+2, e +6 pela massa) e engole. Sopro ácido em cone de 9 m (3d6 e mais dois ciclos de 1d6). Golpe mental de 3d6 três vezes por cena; uma vez por cena, deixa um alvo Inconsciente e Morrendo. Encanta, move coisas e se teleporta à vontade; levita. Defesa Mental 31, 33 contra Artes."
    }
   ]
  },

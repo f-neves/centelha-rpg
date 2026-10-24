@@ -121,7 +121,7 @@ const EXCECOES = {
   // contrário do default da categoria Limo; sem nenhuma fraqueza/resistência de dano
   // físico (a imunidade a eletricidade da fonte não entra aqui, é `imunidades`, campo à
   // parte que este satélite não cobre).
-  'cubo-gelatinoso': {},
+  // cubo-gelatinoso saiu (ficha v3 desde o lote 22: a linha Elementos da ficha vai à fonte)
   // Rakshasa (B14 fase 3): a fonte não sustenta imunidade total, e sim resistência a corte e
   // impacto; perfurante passa.
   // rakshasa saiu (ficha v3 desde o lote 5 da bestiario-nao-animal: a linha Elementos da ficha vai à fonte)

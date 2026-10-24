@@ -5,87 +5,124 @@
   "nome": "Cubo Gelatinoso",
   "nomeIngles": "Gelatinous Cube",
   "categoria": "Limo",
+  "categoriaLegada": "Limo",
   "papel": "soldado",
   "conceito": "limo Grande",
-  "descricao": "Massa informe que digere tudo que toca.",
+  "descricao": "Massa transparente e quase invisível que desliza por corredores e câmaras subterrâneas, dissolvendo devagar tudo o que toca. Não persegue: avança e engole. Dentro dele ficam moedas, ossos e fivelas de todos que morreram ali.",
   "tags": [
     "limo",
     "centelha"
   ],
   "imagem": "bestiario/cubo-gelatinoso_criatura.webp",
-  "porte": "Grande",
+  "porte": "Enorme",
   "dimensoes": {
-    "medida": "cubo de 3 m de lado",
-    "peso": "14 t (massa gelatinosa densa, bem acima do normal para o porte)"
+    "medida": "3 m de comprimento, 3 m de altura",
+    "peso": "27,3 t",
+    "comprimento": 3,
+    "largura": 3,
+    "altura": 3
   },
   "locomocao": {
     "terra": 2
   },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+  },
   "centelha": 1,
   "attrs": {
     "forca": 3,
-    "destreza": 0,
+    "destreza": 1,
     "vigor": 9,
-    "influencia": 0,
-    "perspicacia": 0,
-    "compostura": 0,
-    "percepcao": 0,
+    "percepcao": 1,
     "inteligencia": 0,
-    "raciocinio": 0
+    "raciocinio": 1,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
     "briga": 4,
-    "esquiva": 0,
-    "prontidao": 0,
-    "integridade": 2
+    "furtividade": 2
   },
+  "skills2": {
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "furtividade",
+      "foco": "parado",
+      "valor": 3,
+      "origem": "natural"
+    },
+    {
+      "habilidade": "briga",
+      "foco": "Agarrão",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
-    "compaixao": 0,
+    "compaixao": 1,
     "conviccao": 1,
     "temperanca": 1,
-    "valor": 2
+    "valor": 6
   },
-  "willpower": 6,
+  "willpower": 3,
   "aparencia": 1,
   "ataques": [
     {
       "nome": "Pseudópode",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
       "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 6
+      "ticks": 6,
+      "classe": "media"
     }
   ],
+  "fraquezas": [],
   "resistencias": [],
+  "imunidades": [
+    "raio"
+  ],
   "habilidades": [
     {
-      "nome": "Corpo transparente",
-      "descricao": "quase invisível parado; exige Prontidão alta para notar antes do contato"
+      "nome": "Paralisia ao toque",
+      "descricao": "poder natural (base Tempo 2, a do site) · Pseudópode: Ativação: o Pseudópode que fere, ou o Engolfar que pega. Duração: 18 Ticks. Alcance: toque. Área: um alvo. Efeito: o toque entorpece: o alvo fica Imobilizado (o livro não tem a condição \"paralisado\"). Dano: nenhum além do golpe. Resistência: corpo, contra a jogada do Pseudópode; quem passa não fica Imobilizado por aquele toque. Limite de uso: um por golpe.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Engolfa",
-      "descricao": "encosta e envolve o alvo, causando dano contínuo enquanto Agarrado"
+      "nome": "Engolfar",
+      "descricao": "Ativação: uma ação, Velocidade 6; o cubo avança sobre quem está no caminho. Duração: até o alvo sair. Alcance: o espaço que ele ocupa ao avançar. Área: todos no caminho. Efeito: quem não sai fica dentro do cubo, Agarrado, e sofre o ácido. Dano: o do Ácido corrosivo. Resistência: esquiva, contra Força 3 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2), com o Agarrão +2, para sair da frente; dentro, a manutenção do agarrão do livro para escapar. Limite de uso: uma vez a cada 6 Ticks.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Ácido corrosivo",
-      "descricao": "dano extra por rodada a quem estiver dentro do cubo; corrói equipamento exposto"
+      "descricao": "Ativação: estar dentro do cubo. Duração: enquanto estiver dentro. Alcance: dentro. Área: quem está dentro. Efeito: dissolve carne e o que for orgânico. Dano: 1d6 + Centelha, ácido, a cada 6 Ticks. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Mente vazia",
-      "descricao": "imune a efeitos mentais e a Abalado"
+      "nome": "corrói equipamento",
+      "descricao": "o ácido corrói o equipamento exposto de quem fica dentro (site).",
+      "classe": "sem regra ainda"
     },
     {
       "nome": "Preenche o corredor",
-      "descricao": "ocupa toda a passagem; difícil de contornar ou escapar"
+      "descricao": "ocupa a passagem inteira; não dá para contornar, só recuar ou atravessar. Não persegue: avança e engole o que está no caminho.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "percebe pelo toque e pela vibração o que encosta nele ou passa perto."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Massa transparente e quase invisível que desliza por corredores e câmaras subterrâneas, dissolvendo lentamente tudo que toca; não persegue, apenas avança e engole o que estiver em seu caminho."
+      "texto": "Massa transparente e quase invisível que desliza por corredores e câmaras subterrâneas, dissolvendo lentamente tudo que toca; não persegue, apenas avança e engole o que estiver em seu caminho. Social: solitário."
     },
     {
       "titulo": "Ecologia",
@@ -94,6 +131,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Exploradores de ruínas da Grande Guerra o temem mais pela surpresa que pelo perigo: é fácil de evitar se visto a tempo, e quase sempre fatal para quem não percebe a diferença entre corredor vazio e gelatina viva."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Enorme, enche o corredor de 3 m. 85 PV, Impacto 10, Corte e Perfuração 1. Esquiva e Bloqueio 2. Lento (2), quase invisível parado. O Pseudópode (7,5) deixa quem fere Imobilizado por 18 Ticks; avançando, engolfa quem não sai da frente, que fica preso dentro e leva 1d6 + 1 de ácido a cada 6 Ticks. Raio não o fere. Sem mente."
     }
   ],
   "ecologia": {
@@ -130,24 +171,32 @@
   },
   "variantes": [],
   "ameacaLegada": 3,
-  "imunidades": [
-    "raio"
-  ],
-  "poderes": [
-    {
-      "id": "paralisia-ao-toque",
-      "nome": "Paralisia ao toque",
-      "tipo": "natural",
-      "base": {
-        "arte": "tempo",
-        "nivel": 2
-      },
-      "resiste": "corpo",
-      "efeito": "quem é tocado e falha em resistir fica paralisado por um tempo",
-      "descricao": "O toque gelatinoso do cubo entorpece quem falha em resistir, deixando-o paralisado, incapaz de agir, por um tempo curto.",
-      "usos": {
-        "periodo": "golpe"
+  "v3": {
+    "pv": 85,
+    "esquiva": 2,
+    "bloqueio": 2,
+    "defesa": 2,
+    "defesaMental": null,
+    "defesaSocial": null,
+    "absorcao": {
+      "impacto": 10,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 765.68,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
       }
     }
+  },
+  "notasObservacao": [
+    "`massa`: 27,3 t pelo cubo de 3 m; o site dava 14 t. Com 14 t, lado de 2,4 m, 5,76 m² (Grande pelo corte, ou Enorme pelos 5%) e 80 ou 85 PV **[provisório]**",
+    "`tamanho`: Enorme; o site dizia Grande **[conta]**",
+    "`destreza`, `percepcao`, `raciocinio`, sociais: 1, e `vontade` 3 (D-106 b, D-186); o site tinha 0 e 6",
+    "`paralisia ao toque`, `engolfar`, `ácido corrosivo`: números sugeridos pela ficha (D-197)"
   ]
 }

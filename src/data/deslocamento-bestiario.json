@@ -316,7 +316,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "cachorro": {
   "batalha": 7,
@@ -502,7 +502,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 15,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "cultista": {
   "batalha": 3,
@@ -1404,7 +1404,7 @@
   "arranque": 2,
   "corrida": 2,
   "ft": 10,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "linnorm-do-gelo": {
   "batalha": 4,
@@ -1705,7 +1705,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "ninfa": {
   "batalha": 3,
