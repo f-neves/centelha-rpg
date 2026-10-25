@@ -668,7 +668,7 @@ function converte(arq) {
   // tecnicas.json; a linha que começa um segmento com "Técnica" e não fecha o formato para.
   const tech = {};
   for (const it of itens(S['Manobras']).map((l) => l.replace(/\s*\*\*\[formas:[^\]]*\]\*\*\s*$/, ''))) { // a marca da forma (D-242) não é do formato da Técnica
-    const tm =/(?:^|·)\s*Técnica ([a-z0-9-]+), nível (\d+)\s*(?:·|$)/.exec(it);
+    const tm = /(?:^|·)\s*Técnica ([a-z0-9-]+), nível (\d+)\s*(?:·|$)/.exec(it);
     if (!tm) { if (/(?:^|·)\s*Técnica\s/.test(it)) aviso.push(`Técnica fora do formato "Técnica <id>, nível N": ${it.slice(0, 70)}`); continue; }
     const t = TECNICAS[tm[1]];
     if (!t) { aviso.push(`Técnica "${tm[1]}" não está no tecnicas.json`); continue; }

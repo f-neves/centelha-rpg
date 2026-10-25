@@ -21961,7 +21961,7 @@
  {
   "id": "ogro-mago-oni",
   "nome": "Ogro Mago (Oni)",
-  "nomeIngles": "Ogre Mage (Oni)",
+  "nomeIngles": "Ogre Mage",
   "ameaca": 5,
   "centelha": 5,
   "categoria": "Gigante",
@@ -21981,38 +21981,21 @@
    "raciocinio": 4
   },
   "virtudes": {
-   "compaixao": 0,
+   "compaixao": 1,
    "conviccao": 5,
    "temperanca": 1,
    "valor": 6
   },
   "vontade": 10,
-  "aparencia": 0,
+  "aparencia": 4,
   "pericias": {
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 1
+   "sociabilidade": 2,
+   "furtividade": 0
   },
-  "artes": [
-   {
-    "id": "vento",
-    "nivel": 5
-   },
-   {
-    "id": "fascinacao",
-    "nivel": 1
-   },
-   {
-    "id": "materia",
-    "nivel": 3
-   },
-   {
-    "id": "gelo",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "tecnicas": [
    {
     "id": "regeneracao",
@@ -22023,12 +22006,12 @@
   "combate": {
    "pv": 54,
    "defesa": 12,
-   "defesaSocial": 10,
+   "defesaSocial": 18,
    "defesaMental": 29,
    "absorcao": {
     "impacto": 11,
-    "corte": 10,
-    "perfuracao": 10
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
@@ -22039,12 +22022,12 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Punho de ogro",
      "pool": "6d6 +10",
-     "dano": "2d6 +12 corte",
+     "dano": "2d6 +12 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -22060,7 +22043,7 @@
   },
   "dimensoes": {
    "medida": "2,7 m de altura",
-   "peso": "290 kg"
+   "peso": "269 kg"
   }
  },
  {
@@ -27091,7 +27074,7 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 0
+   "furtividade": 1
   },
   "artes": [],
   "tecnicas": [],
@@ -27102,10 +27085,14 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 9,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "fogo",
+    "acido"
+   ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -27118,17 +27105,16 @@
      "pool": "6d6 +2",
      "dano": "2d6 +8 corte",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve",
-     "notas": "dilacera: dano extra se o alvo já sangrando"
+     "speed": 7,
+     "classe": "pesada"
     },
     {
      "nome": "Mordida",
      "pool": "6d6 +2",
-     "dano": "1d6 +8 perfurante",
+     "dano": "1d6 +8 perfurante · perf. 0",
      "perfArma": 0,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -27145,7 +27131,7 @@
   },
   "dimensoes": {
    "medida": "3 m de altura",
-   "peso": "200 kg"
+   "peso": "369 kg"
   }
  },
  {

@@ -1740,7 +1740,7 @@
     "ameaca": 4,
     "centelha": 1,
     "conceito": "humanoide Grande (gigante)",
-    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "descricao": "Gigante magro de 3 m que espera embaixo das pontes e no meio do pântano, rasga com as garras dos braços compridos e morde quem cai. Toda ferida fecha a olhos vistos; só o fogo e o ácido ficam. O povo das ilhas leva tocha acesa perto de pontes.",
     "tags": [
       "gigante",
       "centelha"
@@ -1752,8 +1752,8 @@
     "vontade": 6,
     "soak": {
       "impacto": 9,
-      "corte": 7,
-      "perfuracao": 7
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -1774,40 +1774,28 @@
         "pool": "6d6 +2",
         "dano": "2d6 +8 corte",
         "perfArma": null,
-        "ticks": 5,
-        "notas": "dilacera: dano extra se o alvo já sangrando"
+        "ticks": 7,
+        "classe": "pesada"
       },
       {
         "nome": "Mordida",
         "pool": "6d6 +2",
-        "dano": "1d6 +8 perfurante",
+        "dano": "1d6 +8 perfurante · perf. 0",
         "perfArma": 0,
-        "ticks": 5
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "Habilidades notáveis: Prontidão 1.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "regeneracao",
-        "nome": "Regeneração",
-        "tipo": "natural",
-        "resiste": "nenhum",
-        "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-        "usos": {
-          "periodo": "passivo",
-          "recarga": "contínua"
-        }
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
       "integridade": 2,
       "sociabilidade": 0,
-      "furtividade": 0
+      "furtividade": 1
     }
   },
   {
@@ -8798,13 +8786,13 @@
     ],
     "pv": 54,
     "defesa": 12,
-    "defesaSocial": 10,
+    "defesaSocial": 18,
     "defesaMental": 29,
     "vontade": 10,
     "soak": {
       "impacto": 11,
-      "corte": 10,
-      "perfuracao": 10
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -8821,55 +8809,26 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
+        "nome": "Punho de ogro",
         "pool": "6d6 +10",
-        "dano": "2d6 +12 corte",
+        "dano": "2d6 +12 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [
       "regeneracao"
     ],
-    "artes": [
-      {
-        "id": "vento",
-        "nivel": 5
-      },
-      {
-        "id": "fascinacao",
-        "nivel": 1
-      },
-      {
-        "id": "materia",
-        "nivel": 3
-      },
-      {
-        "id": "gelo",
-        "nivel": 2
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Ocultismo 3, Manha 3, Persuasão 3.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "regeneracao",
-        "nome": "Regeneração",
-        "tipo": "natural",
-        "resiste": "nenhum",
-        "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-        "usos": {
-          "periodo": "passivo",
-          "recarga": "contínua"
-        }
-      }
-    ],
     "pericias": {
       "prontidao": 2,
       "esquiva": 1,
       "integridade": 5,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "sociabilidade": 2,
+      "furtividade": 0
     }
   },
   {

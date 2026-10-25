@@ -3,12 +3,12 @@
   "id": "ogro-mago-oni",
   "idAntigo": "mon-ogro-mago-oni",
   "nome": "Ogro Mago (Oni)",
-  "nomeIngles": "Ogre Mage (Oni)",
+  "nomeIngles": "Ogre Mage",
   "categoria": "Gigante",
   "categoriaLegada": "Exterior",
   "papel": "chefe",
   "conceito": "exterior Grande",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "descricao": "Ogro de outro plano, de pele azul e chifres, que se passa por humano sedutor ou nobre elegante e engana vilas inteiras por anos. Voa, fica invisível, vira névoa, sopra frio e põe gente para dormir; as feridas fecham, a não ser as do fogo e do ácido. Despreza a força bruta, mas bate como um ogro.",
   "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
   "tags": [
     "exterior",
@@ -19,110 +19,153 @@
   "porte": "Grande",
   "dimensoes": {
     "medida": "2,7 m de altura",
-    "peso": "290 kg"
+    "peso": "269 kg",
+    "largura": 0.68,
+    "altura": 2.7
   },
   "locomocao": {
     "terra": 4,
     "voo": 6
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
   },
   "centelha": 5,
   "attrs": {
     "forca": 7,
     "destreza": 4,
     "vigor": 6,
-    "influencia": 5,
-    "perspicacia": 5,
-    "compostura": 5,
     "percepcao": 4,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5
   },
   "skills": {
     "briga": 5,
+    "arremesso": 2,
     "esquiva": 1,
+    "integridade": 5,
     "prontidao": 2,
-    "integridade": 5
+    "manha": 3,
+    "persuasao": 3,
+    "sociabilidade": 2,
+    "ocultismo": 3
+  },
+  "skills2": {
+    "labia": 3,
+    "voo": 2,
+    "musculatura": 3
   },
   "virtues": {
-    "compaixao": 0,
+    "compaixao": 1,
     "conviccao": 5,
     "temperanca": 1,
     "valor": 6
   },
   "willpower": 10,
-  "aparencia": 0,
-  "arte": {
-    "vento": 5,
-    "fascinacao": 1,
-    "materia": 3,
-    "gelo": 2
-  },
-  "tech": {
-    "regeneracao": true
-  },
+  "aparencia": 4,
   "ataques": [
     {
-      "nome": "Golpe planar",
+      "nome": "Punho de ogro",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 2,
       "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 6
+      "tipo": "impacto",
+      "ticks": 7,
+      "classe": "pesada"
     }
   ],
-  "poderes": [
-    {
-      "id": "regeneracao",
-      "nome": "Regeneração",
-      "tipo": "natural",
-      "resiste": "nenhum",
-      "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
+  "transforma": {
+    "principal": "verdadeira",
+    "formas": [
+      {
+        "id": "verdadeira",
+        "nome": "forma verdadeira"
+      },
+      {
+        "id": "disfarce",
+        "nome": "disfarce"
       }
-    }
-  ],
+    ]
+  },
   "habilidades": [
     {
+      "nome": "Força de ogro",
+      "descricao": "Punho de ogro: a Força 7, o punho Pesado e o Arremesso 2; arremessa o que o Peso erguido deixa (site: \"dano corpo a corpo elevado, arremessa objetos pesados\"). Vale em todas as formas.",
+      "classe": "livro"
+    },
+    {
       "nome": "Regeneração",
-      "descricao": "recupera PV a cada rodada; só dano de fogo ou ácido impede a regeneração"
+      "descricao": "Técnica regeneracao, nível 4: por 4 de Energia, recupera PV igual ao Vigor (6) a cada 6 Ticks. Do site; a Centelha 5 abre o nível 4. O pré-requisito do caminho (Fechar Feridas) não está no site. O site a dava passiva e contínua; a Técnica do livro é ativa e custa Energia, e a ficha fica com a do livro. Vale em todas as formas.",
+      "classe": "livro"
     },
     {
-      "nome": "Voo",
-      "descricao": "desloca 12m voando"
-    },
-    {
-      "nome": "Invisibilidade à vontade",
-      "descricao": "1x por cena, some de vista por até uma cena inteira"
+      "nome": "fogo e ácido param a regeneração",
+      "descricao": "o dano de fogo ou de ácido não se fecha pela Regeneração (site). O livro não diz como um dano fica fora da cura nem por quanto tempo. O site não dá fraqueza a fogo nem a ácido. Vale em todas as formas.",
+      "classe": "sem regra ainda"
     },
     {
       "nome": "Forma gasosa",
-      "descricao": "vira névoa por uma rodada, imune a dano físico e passa por frestas"
+      "descricao": "poder natural (base Matéria 3, a do site): Ativação: uma ação, Velocidade 6. Duração: 6 Ticks (site: \"por uma rodada\"). Alcance: o próprio corpo. Área: não se aplica. Efeito: o corpo vira névoa: Impacto, Corte e Perfuração não o ferem, passa por frestas e flutua devagar; não ataca nem usa outro poder enquanto dura. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena. Vale em todas as formas.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Invisibilidade",
+      "descricao": "poder natural (base Ofuscação 3, sugestão da ficha): Ativação: uma ação, Velocidade 6. Duração: até ele atacar ou usar um poder chamativo, e no máximo até o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Invisível. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena; o site chamava a habilidade de \"à vontade\" e descrevia \"1x por cena\", e vale a descrição. O nível 3 da Ofuscação é o que some da vista mesmo andando. Vale em todas as formas.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Cone de frio",
-      "descricao": "cone de 9m; dano alto, metade se Esquivar"
+      "descricao": "poder natural (base Gelo 2, a do site): Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Efeito: um sopro de frio que queima a pele e cobre o chão de gelo fino. Dano: 3d6 + Centelha, gelo (o site diz \"dano alto\"). Resistência: esquiva, contra Dificuldade 15 (10 + Centelha 5); quem passa leva metade. Limite de uso: uma vez por cena. Vale em todas as formas.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Sono",
-      "descricao": "alvo em alcance falha em Vontade: cai Inconsciente"
+      "descricao": "poder natural (base Fascinação 1, a do site): Ativação: uma ação, Velocidade 6, à vista do alvo. Duração: até o fim da cena, ou até o alvo levar dano ou alguém sacudi-lo. Alcance: 9 m. Área: um alvo. Efeito: o alvo cai Inconsciente, dormindo. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dele; quem passa fica acordado. Limite de uso: uma vez por cena. Vale em todas as formas.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Força de ogro",
-      "descricao": "dano corpo a corpo elevado, arremessa objetos pesados"
+      "nome": "Mudar de forma",
+      "descricao": "poder natural (base Metamorfose 3, sugestão da ficha, como no marid): Ativação: uma ação, Velocidade 6. Duração: até ele desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a forma de um humano, sedutor ou nobre elegante (a Variante \"disfarce\"), e volta à forma verdadeira quando quer; a mente e os números ficam os dele. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Vale em todas as formas.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Rosto humano",
-      "descricao": "+2d6 em Manha ao se passar por humano"
+      "descricao": "Ativação: nenhuma; vale enquanto está disfarçado. Duração: a do disfarce. Alcance: o próprio corpo. Área: não se aplica. Efeito: +2d6 em Manha para se passar por humano (o número do site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. Vale só no disfarce.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "alvo grande",
+      "descricao": "o Tamanho Grande (o humano ganha +3 contra ele) e o PV da massa. Vale só na forma verdadeira.",
+      "classe": "livro"
+    },
+    {
+      "nome": "senhor do bando",
+      "descricao": "manda os ogros e goblins na frente, voa por cima, abre com o cone de frio, põe para dormir quem é perigoso e esmaga com o punho quem sobra; ferido, fica invisível ou vira névoa e se refaz longe. Vale só na forma verdadeira.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "nobre de mentira",
+      "descricao": "evita a luta e prefere enganar; descoberto, põe para dormir quem o acusa e volta à forma verdadeira. Vale só no disfarce.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um humano. Vale em todas as formas."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Usa metamorfose e invisibilidade para se passar por humano sedutor ou nobre elegante, iludindo vilas inteiras antes de revelar sua verdadeira forma monstruosa."
+      "texto": "Usa metamorfose e invisibilidade para se passar por humano sedutor ou nobre elegante, iludindo vilas inteiras antes de revelar sua verdadeira forma monstruosa. Social: sozinho, ou senhor de um bando de ogros e goblins."
     },
     {
       "titulo": "Sociedade",
@@ -139,6 +182,14 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Nativo de um plano distante, contido em teoria pela Lei que impede os deuses de agir direto, mas ele próprio escapa a essa contenção; sussurra-se que atravessa por rasgos como a Fenda, ou por portais mais antigos e esquecidos nas selvas de Mére."
+    },
+    {
+      "titulo": "Aptidões",
+      "texto": "montaria não · carga sim · tração sim"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande, Esquiva 12, Bloqueio 8, Defesa Mental 29. Punho de dano médio 19. Uma vez por cena de cada: cone de frio de 9 m (3d6 + 5), sono num alvo a 9 m, invisibilidade, névoa por 6 Ticks. Por 4 de Energia, recupera 6 PV a cada 6 Ticks; fogo e ácido não fecham. 54 PV, Impacto 11, Corte e Perfuração 5. Anda a 4 e voa a 6. Disfarçado de humano, +2d6 em Manha para não ser descoberto."
     }
   ],
   "ecologia": {
@@ -185,5 +236,44 @@
     {
       "caminho": "cerne-vital"
     }
+  ],
+  "v3": {
+    "pv": 54,
+    "esquiva": 12,
+    "bloqueio": 8,
+    "defesa": 12,
+    "defesaMental": 29,
+    "defesaSocial": 18,
+    "absorcao": {
+      "impacto": 11,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 844.19,
+    "deslocamento": {
+      "terra": {
+        "batalha": 4,
+        "arranque": 6,
+        "corrida": 9
+      },
+      "voo": {
+        "batalha": 6
+      }
+    }
+  },
+  "tech": {
+    "regeneracao": true
+  },
+  "notasObservacao": [
+    "`massa`: 269 kg pelo cubo da altura do site, como o gigante da colina; o site dizia 290 kg (D-187) **[conta]**",
+    "`ataque`: o \"Golpe planar\" de 2 dados e corte vira o Punho de ogro Pesado, de 2 dados (D-241), e de Impacto pelo gesto **[provisório]**",
+    "`aparencia`: 4; o site tinha 0, e a Aparência mede a beleza (D-205) **[provisório]**",
+    "`compaixao`: o 0 do site vira 1, o piso da régua",
+    "`regeneração`: a Técnica do livro (Centelha 5 abre o nível 4), ativa e com custo; o site a dava passiva. As linhas do site (`tech`, `poderes` e `habilidades`) viraram uma só **[provisório]**",
+    "`formas`: forma verdadeira e disfarce (D-201), como no rakshasa e no marid; todas as Manobras e os Sentidos em todas as formas, menos o Rosto humano (só no disfarce), o alvo grande (só na forma verdadeira) e o \"como luta\", em duas linhas. Aptidões iguais e nenhuma Arte nas duas **[provisório]**",
+    "`voo`: 6, o congelado; a habilidade do site dizia 12 m **[provisório]**",
+    "`couraca`: 1, pele grossa de ogro **[provisório]**",
+    "`forma gasosa`, `invisibilidade`, `cone de frio`, `sono`, `mudar de forma`: números sugeridos pela ficha (D-197); o `rosto humano` fica com o +2d6 do site; as bases de Vento, Fascinação, Matéria e Gelo são as Artes do site, e as de Ofuscação e Metamorfose, sugestão da ficha"
   ]
 }

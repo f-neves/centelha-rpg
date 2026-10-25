@@ -1740,7 +1740,7 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "orc": {
   "batalha": 3,
@@ -2150,7 +2150,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "tubarao-branco": {
   "batalha": 6,

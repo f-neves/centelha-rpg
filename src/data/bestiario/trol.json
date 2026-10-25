@@ -5,9 +5,10 @@
   "nome": "Trol",
   "nomeIngles": "Troll",
   "categoria": "Gigante",
+  "categoriaLegada": "Gigante",
   "papel": "elite",
   "conceito": "humanoide Grande (gigante)",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "descricao": "Gigante magro de 3 m que espera embaixo das pontes e no meio do pântano, rasga com as garras dos braços compridos e morde quem cai. Toda ferida fecha a olhos vistos; só o fogo e o ácido ficam. O povo das ilhas leva tocha acesa perto de pontes.",
   "tags": [
     "gigante",
     "centelha"
@@ -16,28 +17,40 @@
   "porte": "Grande",
   "dimensoes": {
     "medida": "3 m de altura",
-    "peso": "200 kg"
+    "peso": "369 kg",
+    "largura": 0.75,
+    "altura": 3
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 1,
   "attrs": {
     "forca": 7,
     "destreza": 4,
     "vigor": 8,
-    "influencia": 1,
-    "perspicacia": 1,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2
   },
   "skills": {
     "briga": 5,
     "esquiva": 1,
+    "furtividade": 1,
+    "integridade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "sobrevivencia": 1
+  },
+  "skills2": {
+    "musculatura": 2
   },
   "virtues": {
     "compaixao": 1,
@@ -55,9 +68,8 @@
       "dado": 2,
       "mao": 1,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5,
-      "notas": "dilacera: dano extra se o alvo já sangrando"
+      "ticks": 7,
+      "classe": "pesada"
     },
     {
       "nome": "Mordida",
@@ -66,49 +78,72 @@
       "dado": 1,
       "mao": 1,
       "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "perf": 0,
+      "ticks": 6,
+      "classe": "media"
     }
   ],
-  "poderes": [
-    {
-      "id": "regeneracao",
-      "nome": "Regeneração",
-      "tipo": "natural",
-      "resiste": "nenhum",
-      "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
-      }
-    }
+  "fraquezas": [
+    "fogo",
+    "acido"
   ],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
+      "nome": "Duas garras",
+      "descricao": "Garras: a Rajada: dois golpes de Garras na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação; cada golpe pode ir num alvo diferente ao alcance, como a Rajada permite. A Pesada vai a dois golpes.",
+      "classe": "livro"
+    },
+    {
+      "nome": "garras e mordida juntas",
+      "descricao": "as duas garras e a mordida na mesma rodada (site); o livro deixa vários golpes por ação só por Rajada, empunhadura dupla, Poder Especial ou Proeza (C-046), e não junta partes diferentes do corpo numa ação. A ficha fica com a Rajada das garras, e a Mordida é outra ação, como no xorn.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Dilacerar",
+      "descricao": "Garras: Ativação: a garra que acerta um alvo que já está Sangrando. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a garra abre mais a ferida que já sangra (site: \"dano extra se o alvo já sangrando\"). Dano: +1d6 no dano da garra. Resistência: nenhum. Limite de uso: um por golpe.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "braços longos",
+      "descricao": "Garras: os braços compridos alcançam 3 m e atacam sem precisar se aproximar (site); o livro não tem alcance de corpo a corpo maior pelo comprimento do braço, como no estrangulador.",
+      "classe": "sem regra ainda"
+    },
+    {
       "nome": "Regeneração",
-      "descricao": "recupera PV todo turno mesmo ferido grave; só fogo ou ácido interrompem"
+      "descricao": "poder natural (base Cura 3, sugestão da ficha): Ativação: nenhuma; sempre ativa, também caído, inconsciente ou abaixo de 0 PV. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: a carne se fecha a olhos vistos, mesmo com ferida grave (site). O ritmo é o da Técnica Regeneração do livro, que a Centelha 1 não abre como Técnica; como poder natural (C-037), não tem portão de Centelha nem custo de Energia. Dano: nenhum; recupera 8 PV (o Vigor) a cada 6 Ticks. Resistência: nenhum. Limite de uso: nenhum; o fogo e o ácido, na linha seguinte.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Fraqueza ao fogo",
-      "descricao": "sofre dano extra e não regenera contra fogo ou ácido"
+      "nome": "fogo e ácido param a regeneração",
+      "descricao": "o dano de fogo ou de ácido não se fecha pela Regeneração, e a queimadura é o que o faz recuar (site). O livro não diz como um dano fica fora da cura nem por quanto tempo. O dano a mais do fogo e do ácido está em Elementos.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Garras e mordida",
-      "descricao": "dois ataques de garra mais mordida na mesma rodada"
+      "nome": "alvo grande",
+      "descricao": "o Tamanho Grande (o humano ganha +3 contra ele) e o PV da massa.",
+      "classe": "livro"
     },
     {
-      "nome": "Braços longos",
-      "descricao": "alcance de 3m, ataca sem precisar se aproximar"
+      "nome": "agarrar",
+      "descricao": "Garras: Agarrar.",
+      "classe": "livro"
     },
     {
-      "nome": "Faro aguçado",
-      "descricao": "detecta inimigos escondidos ou invisíveis pelo cheiro a curta distância"
+      "nome": "fome sem tática",
+      "descricao": "sai da emboscada embaixo da ponte ou no junco, rasga com as duas garras e morde quem cai; não recua de ferida nenhuma, porque ela fecha, e só foge quando o fogo entra em cena.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um humano. · faro: apurado; acha pelo cheiro, a poucos metros, quem está escondido ou invisível (site, Faro aguçado)."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Caça por fome insaciável, ataca sem tática além de rasgar e devorar, e só recua quando o fogo entra em cena."
+      "texto": "Caça por fome insaciável, ataca sem tática além de rasgar e devorar, e só recua quando o fogo entra em cena. Social: sozinho."
     },
     {
       "titulo": "Hábitos",
@@ -121,6 +156,14 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "O trol ecoa direto o folclore nórdico do The Neck, onde velhas histórias já avisavam para levar tocha acesa perto de pontes e pântanos; hoje o povo supersticioso das ilhas trata qualquer ataque de trol como prova viva de que os contos antigos nunca foram só contos."
+    },
+    {
+      "titulo": "Aptidões",
+      "texto": "montaria não · carga sim · tração sim"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande, Esquiva 12, Bloqueio 8. Duas garras por ação de dano médio 15 cada (+1d6 em quem já sangra), ou uma mordida de 11,5. 62 PV, Impacto 9, Corte e Perfuração 1, e recupera 8 PV a cada 6 Ticks, até caído. Fogo e ácido ferem mais e não fecham. Acha pelo faro quem se esconde perto. Anda a 3."
     }
   ],
   "ecologia": {
@@ -166,5 +209,34 @@
     {
       "caminho": "cerne-vital"
     }
+  ],
+  "v3": {
+    "pv": 62,
+    "esquiva": 12,
+    "bloqueio": 8,
+    "defesa": 12,
+    "defesaMental": 12,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 9,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 699.96,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    }
+  },
+  "notasObservacao": [
+    "`massa`: 369 kg pelo cubo da altura do site, como o gigante da colina; o site dizia 200 kg (D-187) **[conta]**",
+    "`ataque`: as Garras de 2 dados ficam Pesadas, o caminho da D-241, e a Rajada da Pesada (2) dá as \"dois ataques de garra\" do site **[provisório]**",
+    "`regeneração`: poder natural com o ritmo da Técnica Regeneração do livro (8 PV a cada 6 Ticks); a Centelha 1 não abre a Técnica de nível 4. As duas linhas do site (`poderes` e `habilidades`) viraram uma só **[provisório]**",
+    "`couraca`: 1, pele grossa e borrachuda **[provisório]**",
+    "`dilacerar`, `regeneração`: números sugeridos pela ficha (D-197)"
   ]
 }

@@ -36601,11 +36601,11 @@
  {
   "id": "ogro-mago-oni",
   "nome": "Ogro Mago (Oni)",
-  "nomeIngles": "Ogre Mage (Oni)",
+  "nomeIngles": "Ogre Mage",
   "categoria": "Gigante",
   "tipo": "chefe",
   "conceito": "exterior Grande",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "descricao": "Ogro de outro plano, de pele azul e chifres, que se passa por humano sedutor ou nobre elegante e engana vilas inteiras por anos. Voa, fica invisível, vira névoa, sopra frio e põe gente para dormir; as feridas fecham, a não ser as do fogo e do ácido. Despreza a força bruta, mas bate como um ogro.",
   "tags": [
    "exterior",
    "centelha",
@@ -36617,7 +36617,7 @@
   "porte": "Grande",
   "dimensoes": {
    "medida": "2,7 m de altura",
-   "peso": "290 kg"
+   "peso": "269 kg"
   },
   "ecologia": {
    "tipo": "Fiend",
@@ -36646,13 +36646,13 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 1
+   "sociabilidade": 2,
+   "furtividade": 0
   },
   "vontade": 10,
-  "aparencia": 0,
+  "aparencia": 4,
   "virtudes": {
-   "compaixao": 0,
+   "compaixao": 1,
    "conviccao": 5,
    "temperanca": 1,
    "valor": 6
@@ -36660,12 +36660,12 @@
   "combate": {
    "pv": 54,
    "defesa": 12,
-   "defesaSocial": 10,
+   "defesaSocial": 18,
    "defesaMental": 29,
    "absorcao": {
     "impacto": 11,
-    "corte": 10,
-    "perfuracao": 10
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
@@ -36676,62 +36676,70 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Punho de ogro",
      "pool": "6d6 +10",
-     "dano": "2d6 +12 corte",
+     "dano": "2d6 +12 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
   "habilidades": [
    {
+    "nome": "Força de ogro",
+    "descricao": "Punho de ogro: a Força 7, o punho Pesado e o Arremesso 2; arremessa o que o Peso erguido deixa (site: \"dano corpo a corpo elevado, arremessa objetos pesados\"). Vale em todas as formas."
+   },
+   {
     "nome": "Regeneração",
-    "descricao": "recupera PV a cada rodada; só dano de fogo ou ácido impede a regeneração"
+    "descricao": "Técnica regeneracao, nível 4: por 4 de Energia, recupera PV igual ao Vigor (6) a cada 6 Ticks. Do site; a Centelha 5 abre o nível 4. O pré-requisito do caminho (Fechar Feridas) não está no site. O site a dava passiva e contínua; a Técnica do livro é ativa e custa Energia, e a ficha fica com a do livro. Vale em todas as formas."
    },
    {
-    "nome": "Voo",
-    "descricao": "desloca 12m voando"
-   },
-   {
-    "nome": "Invisibilidade à vontade",
-    "descricao": "1x por cena, some de vista por até uma cena inteira"
+    "nome": "fogo e ácido param a regeneração",
+    "descricao": "o dano de fogo ou de ácido não se fecha pela Regeneração (site). O livro não diz como um dano fica fora da cura nem por quanto tempo. O site não dá fraqueza a fogo nem a ácido. Vale em todas as formas."
    },
    {
     "nome": "Forma gasosa",
-    "descricao": "vira névoa por uma rodada, imune a dano físico e passa por frestas"
+    "descricao": "poder natural (base Matéria 3, a do site): Ativação: uma ação, Velocidade 6. Duração: 6 Ticks (site: \"por uma rodada\"). Alcance: o próprio corpo. Área: não se aplica. Efeito: o corpo vira névoa: Impacto, Corte e Perfuração não o ferem, passa por frestas e flutua devagar; não ataca nem usa outro poder enquanto dura. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena. Vale em todas as formas."
+   },
+   {
+    "nome": "Invisibilidade",
+    "descricao": "poder natural (base Ofuscação 3, sugestão da ficha): Ativação: uma ação, Velocidade 6. Duração: até ele atacar ou usar um poder chamativo, e no máximo até o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Invisível. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena; o site chamava a habilidade de \"à vontade\" e descrevia \"1x por cena\", e vale a descrição. O nível 3 da Ofuscação é o que some da vista mesmo andando. Vale em todas as formas."
    },
    {
     "nome": "Cone de frio",
-    "descricao": "cone de 9m; dano alto, metade se Esquivar"
+    "descricao": "poder natural (base Gelo 2, a do site): Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Efeito: um sopro de frio que queima a pele e cobre o chão de gelo fino. Dano: 3d6 + Centelha, gelo (o site diz \"dano alto\"). Resistência: esquiva, contra Dificuldade 15 (10 + Centelha 5); quem passa leva metade. Limite de uso: uma vez por cena. Vale em todas as formas."
    },
    {
     "nome": "Sono",
-    "descricao": "alvo em alcance falha em Vontade: cai Inconsciente"
+    "descricao": "poder natural (base Fascinação 1, a do site): Ativação: uma ação, Velocidade 6, à vista do alvo. Duração: até o fim da cena, ou até o alvo levar dano ou alguém sacudi-lo. Alcance: 9 m. Área: um alvo. Efeito: o alvo cai Inconsciente, dormindo. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dele; quem passa fica acordado. Limite de uso: uma vez por cena. Vale em todas as formas."
    },
    {
-    "nome": "Força de ogro",
-    "descricao": "dano corpo a corpo elevado, arremessa objetos pesados"
+    "nome": "Mudar de forma",
+    "descricao": "poder natural (base Metamorfose 3, sugestão da ficha, como no marid): Ativação: uma ação, Velocidade 6. Duração: até ele desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a forma de um humano, sedutor ou nobre elegante (a Variante \"disfarce\"), e volta à forma verdadeira quando quer; a mente e os números ficam os dele. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Vale em todas as formas."
    },
    {
     "nome": "Rosto humano",
-    "descricao": "+2d6 em Manha ao se passar por humano"
-   }
-  ],
-  "poderes": [
+    "descricao": "Ativação: nenhuma; vale enquanto está disfarçado. Duração: a do disfarce. Alcance: o próprio corpo. Área: não se aplica. Efeito: +2d6 em Manha para se passar por humano (o número do site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. Vale só no disfarce."
+   },
    {
-    "id": "regeneracao",
-    "nome": "Regeneração",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-    "usos": {
-     "periodo": "passivo",
-     "recarga": "contínua"
-    }
+    "nome": "alvo grande",
+    "descricao": "o Tamanho Grande (o humano ganha +3 contra ele) e o PV da massa. Vale só na forma verdadeira."
+   },
+   {
+    "nome": "senhor do bando",
+    "descricao": "manda os ogros e goblins na frente, voa por cima, abre com o cone de frio, põe para dormir quem é perigoso e esmaga com o punho quem sobra; ferido, fica invisível ou vira névoa e se refaz longe. Vale só na forma verdadeira."
+   },
+   {
+    "nome": "nobre de mentira",
+    "descricao": "evita a luta e prefere enganar; descoberto, põe para dormir quem o acusa e volta à forma verdadeira. Vale só no disfarce."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano. Vale em todas as formas."
    }
   ],
+  "poderes": [],
   "locomocao": {
    "terra": 4,
    "voo": 6
@@ -36739,29 +36747,12 @@
   "tecnicas": [
    "regeneracao"
   ],
-  "artes": [
-   {
-    "id": "vento",
-    "nivel": 5
-   },
-   {
-    "id": "fascinacao",
-    "nivel": 1
-   },
-   {
-    "id": "materia",
-    "nivel": 3
-   },
-   {
-    "id": "gelo",
-    "nivel": 2
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Ocultismo 3, Manha 3, Persuasão 3.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Usa metamorfose e invisibilidade para se passar por humano sedutor ou nobre elegante, iludindo vilas inteiras antes de revelar sua verdadeira forma monstruosa."
+    "texto": "Usa metamorfose e invisibilidade para se passar por humano sedutor ou nobre elegante, iludindo vilas inteiras antes de revelar sua verdadeira forma monstruosa. Social: sozinho, ou senhor de um bando de ogros e goblins."
    },
    {
     "titulo": "Sociedade",
@@ -36778,6 +36769,14 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Nativo de um plano distante, contido em teoria pela Lei que impede os deuses de agir direto, mas ele próprio escapa a essa contenção; sussurra-se que atravessa por rasgos como a Fenda, ou por portais mais antigos e esquecidos nas selvas de Mére."
+   },
+   {
+    "titulo": "Aptidões",
+    "texto": "montaria não · carga sim · tração sim"
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, Esquiva 12, Bloqueio 8, Defesa Mental 29. Punho de dano médio 19. Uma vez por cena de cada: cone de frio de 9 m (3d6 + 5), sono num alvo a 9 m, invisibilidade, névoa por 6 Ticks. Por 4 de Energia, recupera 6 PV a cada 6 Ticks; fogo e ácido não fecham. 54 PV, Impacto 11, Corte e Perfuração 5. Anda a 4 e voa a 6. Disfarçado de humano, +2d6 em Manha para não ser descoberto."
    }
   ]
  },
@@ -44995,7 +44994,7 @@
   "categoria": "Gigante",
   "tipo": "elite",
   "conceito": "humanoide Grande (gigante)",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "descricao": "Gigante magro de 3 m que espera embaixo das pontes e no meio do pântano, rasga com as garras dos braços compridos e morde quem cai. Toda ferida fecha a olhos vistos; só o fogo e o ácido ficam. O povo das ilhas leva tocha acesa perto de pontes.",
   "tags": [
    "gigante",
    "centelha"
@@ -45006,7 +45005,7 @@
   "porte": "Grande",
   "dimensoes": {
    "medida": "3 m de altura",
-   "peso": "200 kg"
+   "peso": "369 kg"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -45037,7 +45036,7 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 0
+   "furtividade": 1
   },
   "vontade": 6,
   "aparencia": 4,
@@ -45054,10 +45053,14 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 9,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "fraquezas": [
+    "fogo",
+    "acido"
+   ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -45070,55 +45073,62 @@
      "pool": "6d6 +2",
      "dano": "2d6 +8 corte",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve",
-     "notas": "dilacera: dano extra se o alvo já sangrando"
+     "speed": 7,
+     "classe": "pesada"
     },
     {
      "nome": "Mordida",
      "pool": "6d6 +2",
-     "dano": "1d6 +8 perfurante",
+     "dano": "1d6 +8 perfurante · perf. 0",
      "perfArma": 0,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "habilidades": [
    {
+    "nome": "Duas garras",
+    "descricao": "Garras: a Rajada: dois golpes de Garras na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação; cada golpe pode ir num alvo diferente ao alcance, como a Rajada permite. A Pesada vai a dois golpes."
+   },
+   {
+    "nome": "garras e mordida juntas",
+    "descricao": "as duas garras e a mordida na mesma rodada (site); o livro deixa vários golpes por ação só por Rajada, empunhadura dupla, Poder Especial ou Proeza (C-046), e não junta partes diferentes do corpo numa ação. A ficha fica com a Rajada das garras, e a Mordida é outra ação, como no xorn."
+   },
+   {
+    "nome": "Dilacerar",
+    "descricao": "Garras: Ativação: a garra que acerta um alvo que já está Sangrando. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a garra abre mais a ferida que já sangra (site: \"dano extra se o alvo já sangrando\"). Dano: +1d6 no dano da garra. Resistência: nenhum. Limite de uso: um por golpe."
+   },
+   {
+    "nome": "braços longos",
+    "descricao": "Garras: os braços compridos alcançam 3 m e atacam sem precisar se aproximar (site); o livro não tem alcance de corpo a corpo maior pelo comprimento do braço, como no estrangulador."
+   },
+   {
     "nome": "Regeneração",
-    "descricao": "recupera PV todo turno mesmo ferido grave; só fogo ou ácido interrompem"
+    "descricao": "poder natural (base Cura 3, sugestão da ficha): Ativação: nenhuma; sempre ativa, também caído, inconsciente ou abaixo de 0 PV. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: a carne se fecha a olhos vistos, mesmo com ferida grave (site). O ritmo é o da Técnica Regeneração do livro, que a Centelha 1 não abre como Técnica; como poder natural (C-037), não tem portão de Centelha nem custo de Energia. Dano: nenhum; recupera 8 PV (o Vigor) a cada 6 Ticks. Resistência: nenhum. Limite de uso: nenhum; o fogo e o ácido, na linha seguinte."
    },
    {
-    "nome": "Fraqueza ao fogo",
-    "descricao": "sofre dano extra e não regenera contra fogo ou ácido"
+    "nome": "fogo e ácido param a regeneração",
+    "descricao": "o dano de fogo ou de ácido não se fecha pela Regeneração, e a queimadura é o que o faz recuar (site). O livro não diz como um dano fica fora da cura nem por quanto tempo. O dano a mais do fogo e do ácido está em Elementos."
    },
    {
-    "nome": "Garras e mordida",
-    "descricao": "dois ataques de garra mais mordida na mesma rodada"
+    "nome": "alvo grande",
+    "descricao": "o Tamanho Grande (o humano ganha +3 contra ele) e o PV da massa."
    },
    {
-    "nome": "Braços longos",
-    "descricao": "alcance de 3m, ataca sem precisar se aproximar"
+    "nome": "agarrar",
+    "descricao": "Garras: Agarrar."
    },
    {
-    "nome": "Faro aguçado",
-    "descricao": "detecta inimigos escondidos ou invisíveis pelo cheiro a curta distância"
+    "nome": "fome sem tática",
+    "descricao": "sai da emboscada embaixo da ponte ou no junco, rasga com as duas garras e morde quem cai; não recua de ferida nenhuma, porque ela fecha, e só foge quando o fogo entra em cena."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano. · faro: apurado; acha pelo cheiro, a poucos metros, quem está escondido ou invisível (site, Faro aguçado)."
    }
   ],
-  "poderes": [
-   {
-    "id": "regeneracao",
-    "nome": "Regeneração",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-    "usos": {
-     "periodo": "passivo",
-     "recarga": "contínua"
-    }
-   }
-  ],
+  "poderes": [],
   "locomocao": {
    "terra": 3
   },
@@ -45128,7 +45138,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Caça por fome insaciável, ataca sem tática além de rasgar e devorar, e só recua quando o fogo entra em cena."
+    "texto": "Caça por fome insaciável, ataca sem tática além de rasgar e devorar, e só recua quando o fogo entra em cena. Social: sozinho."
    },
    {
     "titulo": "Hábitos",
@@ -45141,6 +45151,14 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "O trol ecoa direto o folclore nórdico do The Neck, onde velhas histórias já avisavam para levar tocha acesa perto de pontes e pântanos; hoje o povo supersticioso das ilhas trata qualquer ataque de trol como prova viva de que os contos antigos nunca foram só contos."
+   },
+   {
+    "titulo": "Aptidões",
+    "texto": "montaria não · carga sim · tração sim"
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, Esquiva 12, Bloqueio 8. Duas garras por ação de dano médio 15 cada (+1d6 em quem já sangra), ou uma mordida de 11,5. 62 PV, Impacto 9, Corte e Perfuração 1, e recupera 8 PV a cada 6 Ticks, até caído. Fogo e ácido ferem mais e não fecham. Acha pelo faro quem se esconde perto. Anda a 3."
    }
   ]
  },
