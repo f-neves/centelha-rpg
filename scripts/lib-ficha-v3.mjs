@@ -132,3 +132,45 @@ export function vestidaDaFicha(texto) {
   const n = m.slice(1).map((x) => (x == null ? null : Number(x)));
   return { esquiva: n[0], bloqueio: n[1], absorcao: { impacto: n[2], corte: n[3], perfuracao: n[4] }, nivel: n[5], penalidade: n[6], ...(n[7] != null ? { contraTiro: n[7] } : {}) };
 }
+
+/**
+ * Em que forma vale uma linha de Manobras ou de Sentidos (D-230, D-242). As fichas com a linha
+ * Formas marcam cada linha no fim com `**[formas: todas]**` ou `**[formas: <nome>, <nome>]**`; até a
+ * troca de formato, o card diz isso em texto ("Até a troca de formato, o conversor escreve no card,
+ * como texto, em que forma vale cada linha das fichas com várias formas", D-242).
+ *
+ * Recebe a linha e os nomes das formas da ficha (`transforma.formas[].nome`), ou null quando a ficha
+ * não tem a linha Formas. Devolve `{ linha, onde }`: a linha sem a marca e a frase do card ("Vale em
+ * todas as formas." ou "Vale só na forma de vento." / "Vale só no disfarce."), ou `onde` null na ficha
+ * sem Formas. Lança erro dizendo o caso: marca na ficha sem Formas; linha sem marca, ou com duas, ou
+ * com a marca fora do fim; "todas" junto de nome; nome que não é forma da ficha, ou repetido; nome
+ * que não começa por "forma" nem é "disfarce" (o conversor não sabe o artigo).
+ */
+const MARCA_FORMAS = /\*\*\[formas:([^\]]*)\]\*\*/g;
+export function formaDaLinha(linha, nomes) {
+  const t = String(linha || '').trimEnd();
+  const marcas = [...t.matchAll(MARCA_FORMAS)];
+  const solta = /\[formas:/i.test(t.replace(MARCA_FORMAS, ''));
+  if (!nomes) {
+    if (marcas.length || solta) throw new Error('marca [formas: ...] numa ficha sem a linha Formas');
+    return { linha: t, onde: null };
+  }
+  if (!marcas.length || solta) throw new Error(solta ? 'marca [formas: ...] fora do formato **[formas: ...]**' : 'linha sem a marca [formas: ...]');
+  if (marcas.length > 1) throw new Error('linha com mais de uma marca [formas: ...]');
+  const m = marcas[0];
+  if (m.index + m[0].length !== t.length) throw new Error('a marca [formas: ...] não está no fim da linha');
+  const lista = m[1].split(',').map((s) => s.trim()).filter(Boolean);
+  const resto = t.slice(0, m.index).trimEnd();
+  if (lista.length === 1 && lista[0] === 'todas') return { linha: resto, onde: 'Vale em todas as formas.' };
+  if (!lista.length || lista.includes('todas')) throw new Error(`[formas: ${m[1].trim()}]: "todas" vale sozinha`);
+  for (const n of lista) if (!nomes.includes(n)) throw new Error(`[formas: ${m[1].trim()}]: "${n}" não é forma desta ficha (${nomes.join(', ')})`);
+  if (new Set(lista).size !== lista.length) throw new Error(`[formas: ${m[1].trim()}]: forma repetida`);
+  if (lista.length === nomes.length) return { linha: resto, onde: 'Vale em todas as formas.' };
+  const comArtigo = lista.map((n) => {
+    if (/^forma\b/.test(n)) return 'na ' + n;
+    if (/^disfarce\b/.test(n)) return 'no ' + n;
+    throw new Error(`[formas: ${m[1].trim()}]: "${n}" não começa por "forma" nem é "disfarce", e o conversor não sabe o artigo`);
+  });
+  const juntas = comArtigo.length > 1 ? comArtigo.slice(0, -1).join(', ') + ' e ' + comArtigo[comArtigo.length - 1] : comArtigo[0];
+  return { linha: resto, onde: `Vale só ${juntas}.` };
+}

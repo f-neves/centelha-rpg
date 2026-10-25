@@ -375,6 +375,31 @@ try {
   paraFicha('a frase sem armadura nem escudo', FICHA.replace(ABS, `Couraça **nível 0**. ${certa} |`), /tem a frase vestida e o Equipamento não tem armadura nem escudo/);
   para('armadura que não existe', 'armaduras: nenhuma', 'armaduras: cota-de-titanio', /armadura "cota-de-titanio" não está no armaduras\.json/);
   para('Equipamento fora do formato', EQ, 'espada e escudo', /Equipamento fora do formato/);
+
+  // D-242: EM QUE FORMA VALE CADA LINHA ("Até a troca de formato, o conversor escreve no card, como texto, em que
+  // forma vale cada linha das fichas com várias formas"). A ficha com a linha Formas marca o fim de cada linha de
+  // Manobras e Sentidos com **[formas: ...]**; o card leva a frase, e não a marca. O conversor de antes tirava a
+  // marca calado: contra ele, a ficha certa sai sem a frase e as paradas gravam.
+  const SEN = '- visão no escuro.\n';
+  const comFormas = (man, sen = '- visão no escuro. **[formas: forma de teste]**\n') => FICHA
+    .replace('| Mana | Centelha 2 × 2 + Vontade 6 = **10** | |', '| Mana | Centelha 2 × 2 + Vontade 6 = **10** | |\n| Formas | forma de teste (esta ficha) · disfarce | |')
+    .replace('|---|---|---|\n\n## Atributos', '|---|---|---|\n| disfarce | Anatomia: humano comum | |\n\n## Atributos')
+    .replace(MAN, man).replace(SEN, sen);
+  const MAN_F = '- corpo morto · sem regra ainda: não respira. **[formas: todas]**\n- Pisar Leve · Técnica pisar-leve, nível 1 · livro: +3 em Furtividade. **[formas: disfarce]**\n- golpe de teste · como luta: bate forte **[formas: forma de teste]**\n';
+  const fo = roda(comFormas(MAN_F), 'formas no card');
+  const hab = Object.fromEntries((fo.json?.habilidades || []).map((h) => [h.nome, h.descricao]));
+  ok(fo.status === 0 && fo.json?.transforma?.formas?.length === 2, `a ficha com Formas grava (exit ${fo.status}${fo.status ? ': ' + (fo.saida.split('\n').find((l) => /teste-nao-animal:|Error/.test(l)) || '').trim() : ''})`);
+  ok(hab['corpo morto'] === 'não respira. Vale em todas as formas.', `[formas: todas] vira "Vale em todas as formas.": "${hab['corpo morto']}"`);
+  ok(/\+3 em Furtividade\. Vale só no disfarce\.$/.test(hab['Pisar Leve'] || '') && fo.json?.tech?.['pisar-leve'] === true, `a Técnica com a marca vai ao tech e diz a forma: "${hab['Pisar Leve']}", tech ${JSON.stringify(fo.json?.tech)}`);
+  ok(hab['golpe de teste'] === 'bate forte. Vale só na forma de teste.', `a linha sem ponto final ganha o ponto antes da frase: "${hab['golpe de teste']}"`);
+  ok(hab['Sentidos'] === 'visão no escuro. Vale só na forma de teste.', `o Sentido também diz a forma: "${hab['Sentidos']}"`);
+  ok(fo.json && !JSON.stringify(fo.json).includes('[formas'), 'a marca **[formas: ...]** não chega ao JSON');
+  paraFicha('marca numa ficha sem Formas', FICHA.replace(MAN, '- corpo morto · sem regra ainda: não respira. **[formas: todas]**\n'), /numa ficha sem a linha Formas/);
+  paraFicha('forma que a ficha não tem', comFormas(MAN_F.replace('[formas: disfarce]', '[formas: forma de lobo]')), /"forma de lobo" não é forma desta ficha/);
+  paraFicha('linha sem marca numa ficha com Formas', comFormas(MAN_F.replace(' **[formas: todas]**', '')), /linha sem a marca \[formas: \.\.\.\]/);
+  paraFicha('marca no meio da linha', comFormas(MAN_F.replace('não respira. **[formas: todas]**', 'não respira **[formas: todas]** e não come.')), /não está no fim da linha/);
+  paraFicha('todas junto de um nome', comFormas(MAN_F.replace('[formas: todas]', '[formas: todas, disfarce]')), /"todas" vale sozinha/);
+  paraFicha('marca fora de Manobras e Sentidos', comFormas(MAN_F).replace(NOJ, '## No jogo\n\nUm teste. **[formas: todas]**\n'), /marca\(s\) \[formas: \.\.\.\] fora das linhas de Manobras e Sentidos/);
 } finally {
   fs.rmSync(tmp, { recursive: true, force: true });
 }

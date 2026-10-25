@@ -12,7 +12,7 @@
 // ficha diz entra como está, só sem as marcas de trabalho (manual §7.5).
 import fs from 'node:fs';
 import path from 'node:path';
-import { execFileSync } from 'node:child_process'; import { vestidaDoLivro, vestidaDaFicha, bonusDaArma, defesaComArma, formasDaFicha, jogadaDoAtaque, artesDaFicha } from './lib-ficha-v3.mjs';
+import { execFileSync } from 'node:child_process'; import { vestidaDoLivro, vestidaDaFicha, bonusDaArma, defesaComArma, formasDaFicha, formaDaLinha, jogadaDoAtaque, artesDaFicha } from './lib-ficha-v3.mjs';
 
 const arg = (n) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : null; };
 const RAIZ = arg('--raiz') || path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
@@ -666,8 +666,8 @@ function converte(arq) {
   // ao `tech` da fonte, de onde o card e a mesa tiram o bloco "Técnicas:". O id e o nível têm de bater com o
   // tecnicas.json; a linha que começa um segmento com "Técnica" e não fecha o formato para.
   const tech = {};
-  for (const it of itens(S['Manobras'])) {
-    const tm = /(?:^|·)\s*Técnica ([a-z0-9-]+), nível (\d+)\s*(?:·|$)/.exec(it);
+  for (const it of itens(S['Manobras']).map((l) => l.replace(/\s*\*\*\[formas:[^\]]*\]\*\*\s*$/, ''))) { // a marca da forma (D-242) não é do formato da Técnica
+    const tm =/(?:^|·)\s*Técnica ([a-z0-9-]+), nível (\d+)\s*(?:·|$)/.exec(it);
     if (!tm) { if (/(?:^|·)\s*Técnica\s/.test(it)) aviso.push(`Técnica fora do formato "Técnica <id>, nível N": ${it.slice(0, 70)}`); continue; }
     const t = TECNICAS[tm[1]];
     if (!t) { aviso.push(`Técnica "${tm[1]}" não está no tecnicas.json`); continue; }
@@ -675,8 +675,19 @@ function converte(arq) {
     if (tech[tm[1]]) aviso.push(`Técnica "${tm[1]}" repetida`);
     tech[tm[1]] = true;
   }
-  for (const it of itens(S['Manobras']).filter((l) => !/^nenhuma\b/i.test(l))) {
-    if (/não manobra|não entra\b/i.test(it)) continue;
+  // EM QUE FORMA VALE A LINHA (D-242: "Até a troca de formato, o conversor escreve no card, como texto, em que
+  // forma vale cada linha das fichas com várias formas"). A marca **[formas: ...]** do fim da linha sai e vira a
+  // frase "Vale em todas as formas." ou "Vale só na forma X." no fim da descrição; formaDaLinha para no que não
+  // entende, e marca que sobra fora de Manobras e Sentidos também para.
+  const nomesFormas = transforma ? transforma.formas.map((f) => f.nome) : null;
+  let marcasLidas = 0;
+  const naForma = (l) => {
+    try { const r = formaDaLinha(l, nomesFormas); if (r.onde) marcasLidas++; return r; } catch (e) { aviso.push(`${e.message}: ${l.slice(0, 60)}`); return { linha: l, onde: null }; }
+  };
+  const comForma = (texto, onde) => (!onde ? texto : !texto ? onde : `${texto}${/[.!?]$/.test(texto) ? '' : '.'} ${onde}`);
+  for (const bruta of itens(S['Manobras']).filter((l) => !/^nenhuma\b/i.test(l))) {
+    if (/não manobra|não entra\b/i.test(bruta)) continue;
+    const { linha: it, onde } = naForma(bruta);
     const m = /^([^·:]+?)\s*(?:·|:)\s*(.*)$/.exec(it);
     if (!m) { aviso.push(`manobra fora do formato: ${it.slice(0, 60)}`); continue; }
     const partes = m[2].split(' · ');
@@ -687,9 +698,11 @@ function converte(arq) {
       const texto = limpa([partes[k].replace(CLASSE_MAN, ''), ...partes.slice(k + 1)].join(' · ')).replace(/^[.;:,\s]+/, '');
       descricao = [limpa(partes.slice(0, k).join(' · ')), texto].filter(Boolean).join(': ');
     } else descricao = limpa(descricao);
-    habilidades.push({ nome: limpa(m[1]), descricao, ...(classe ? { classe } : {}) });
+    habilidades.push({ nome: limpa(m[1]), descricao: comForma(descricao, onde), ...(classe ? { classe } : {}) });
   }
-  const sentidos = itens(S['Sentidos']).map((l) => limpa(l).replace(/^[.;:,\s]+/, '')).filter(Boolean);
+  const sentidos = itens(S['Sentidos']).map((l) => { const { linha, onde } = naForma(l); return comForma(limpa(linha).replace(/^[.;:,\s]+/, ''), onde); }).filter(Boolean);
+  const marcasNaFicha = (txt.match(/\[formas:/gi) || []).length;
+  if (marcasNaFicha !== marcasLidas) aviso.push(`${marcasNaFicha - marcasLidas} marca(s) [formas: ...] fora das linhas de Manobras e Sentidos`);
   if (sentidos.length) habilidades.push({ nome: 'Sentidos', descricao: sentidos.join(' · ') });
   // Veneno, doença, enxame: só as linhas de jogo (manual §5.4), que são as que trazem
   // os números. As linhas soltas "Veneno: ..." e "Doença: ..." são pesquisa.
