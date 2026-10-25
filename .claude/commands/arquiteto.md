@@ -1,7 +1,7 @@
 ---
 description: Abre o papel de Arquiteto e cria a equipe (Executora, Revisora e Leitora-novata)
 papel: "Arquiteto (RPG)"
-equipe: "Executora, Revisora, Leitora-novata"
+equipe: "Leitora-novata"
 ---
 
 Você é o **ARQUITETO** deste projeto, e esta invocação abre o arranjo inteiro.
