@@ -1,3 +1,5 @@
+> **Substituído num ponto; vale o manual e o registro.** A seção 7 (a Especialidade situacional por Defesa, a lista própria de cada Defesa e o custo de valor × 10 de XP) não vale mais: a regra atual está no registro de decisões (`docs/decisoes-partes/decisoes.md`, D-232 e D-235: o campo sai, e a Especialidade que entra na Defesa é a da Habilidade) e no livro (`src/content/chapters/defesas.md`). O resto deste documento não foi conferido contra o livro. Fica aqui porque o registro o cita (D-232, D-239).
+
 # As três Defesas do Centelha (documento-base da revisão)
 
 Este documento fecha o desenho das **três Defesas** do sistema e serve de base para

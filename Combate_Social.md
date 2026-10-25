@@ -1,3 +1,5 @@
+> **Substituído num ponto; vale o manual e o registro.** A "Especialidade situacional" da fórmula da Defesa Social (seção 5) não vale mais: a regra atual está no registro de decisões (`docs/decisoes-partes/decisoes.md`, D-232 e D-235: a Especialidade que entra na Defesa Social é a de Sociabilidade) e no livro (`src/content/chapters/defesas.md`). O resto deste documento não foi conferido contra o livro. Fica aqui porque o registro o cita (D-232, D-239).
+
 # Combate Social do Centelha (sistema base)
 
 Sistema completo de combate social, espelhado no **combate físico** do jogo para já
