@@ -1626,7 +1626,7 @@
     "ameaca": 3,
     "centelha": 0,
     "conceito": "humanoide Grande (gigante)",
-    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "descricao": "Brutamontes de 2,9 m que resolve tudo no porrete antes de pensar, come qualquer coisa, gente inclusive, e obedece a quem for mais forte ou esperto. Derruba os menores e bate com força de gigante; fácil de enganar, perigoso quando irritado.",
     "tags": [
       "gigante"
     ],
@@ -1637,8 +1637,8 @@
     "vontade": 5,
     "soak": {
       "impacto": 5,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 0,
+      "perfuracao": 0
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -1659,7 +1659,8 @@
         "pool": "5d6",
         "dano": "2d6 +7 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -1682,22 +1683,22 @@
     "ameaca": 4,
     "centelha": 0,
     "conceito": "humanoide Grande (gigante)",
-    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "descricao": "Gigante de duas cabeças que discutem sobre tudo, de quem come primeiro a quem atacar. Bate com os dois braços na mesma ação, cada um num alvo, e as duas cabeças vigiam: nunca é pego desprevenido.",
     "tags": [
       "gigante"
     ],
     "pv": 50,
-    "defesa": 4,
+    "defesa": 6,
     "defesaSocial": 4,
     "defesaMental": 9,
     "vontade": 5,
     "soak": {
       "impacto": 5,
-      "corte": 4,
-      "perfuracao": 4
+      "corte": 0,
+      "perfuracao": 0
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 8,
       "destreza": 2,
@@ -1715,7 +1716,8 @@
         "pool": "6d6",
         "dano": "2d6 +8 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -1723,7 +1725,7 @@
     "notas": "Habilidades notáveis: Prontidão 3, Sobrevivência 2.",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 3,
       "esquiva": 0,
       "integridade": 2,
       "sociabilidade": 0,
@@ -1882,7 +1884,7 @@
     "ameaca": 5,
     "centelha": 0,
     "conceito": "humanoide Grande (gigante)",
-    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "descricao": "Gigante recluso das montanhas, de pele da cor da pedra, que esculpe as próprias cavernas e medita por longos períodos. Pacífico até ser provocado; então arremessa rochas a até 45 m com precisão mortal e anda entre as rochas sem ser notado.",
     "tags": [
       "gigante"
     ],
@@ -1893,8 +1895,8 @@
     "vontade": 5,
     "soak": {
       "impacto": 6,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 0,
+      "perfuracao": 0
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -1915,7 +1917,16 @@
         "pool": "7d6",
         "dano": "2d6 +9 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Rocha arremessada",
+        "pool": "4d6",
+        "dano": "2d6 +9 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -1927,7 +1938,7 @@
       "esquiva": 1,
       "integridade": 3,
       "sociabilidade": 0,
-      "furtividade": 0
+      "furtividade": 3
     }
   },
   {
@@ -1938,20 +1949,20 @@
     "ameaca": 5,
     "centelha": 1,
     "conceito": "humanoide Grande (gigante)",
-    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "descricao": "Gigante de 4,5 m, disciplinado e militarista, que vive em fortalezas sobre fendas vulcânicas e forja a própria armadura de placas. Comanda tropas e escravos, atira rochas e corta com o espadão; o fogo pouco o fere, e o gelo, mais.",
     "tags": [
       "gigante",
       "centelha"
     ],
     "pv": 62,
-    "defesa": 4,
+    "defesa": 8,
     "defesaSocial": 6,
     "defesaMental": 14,
     "vontade": 6,
     "soak": {
       "impacto": 9,
-      "corte": 7,
-      "perfuracao": 7
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -1972,21 +1983,35 @@
         "pool": "7d6+2 +2",
         "dano": "2d6 +11 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 7,
+        "classe": "pesada"
       },
       {
-        "nome": "Arremessar rocha",
-        "pool": "7d6+2 +2",
+        "nome": "Rocha arremessada",
+        "pool": "2d6+2 +2",
         "dano": "2d6 +11 impacto",
         "perfArma": null,
-        "ticks": 6,
-        "notas": "dado pelo porte Grande"
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "Habilidades notáveis: Ofícios 2, Prontidão 2.",
     "pendente": true,
+    "vestida": {
+      "esquiva": 1,
+      "bloqueio": 5,
+      "defesa": 5,
+      "contraTiro": 1,
+      "absorcao": {
+        "impacto": 13,
+        "corte": 8,
+        "perfuracao": 5
+      },
+      "nivel": 2,
+      "penalidade": 3
+    },
     "pericias": {
       "prontidao": 2,
       "esquiva": 0,
@@ -2003,20 +2028,20 @@
     "ameaca": 5,
     "centelha": 1,
     "conceito": "humanoide Grande (gigante)",
-    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "descricao": "Gigante de 4,3 m, violento e orgulhoso, que vive em clãs sob um jarl e saqueia as montanhas geladas. Caça com lobos adestrados, some na neve, atira rochas a 36 m e corta com um machado descomunal. O frio não o fere.",
     "tags": [
       "gigante",
       "centelha"
     ],
     "pv": 58,
-    "defesa": 4,
+    "defesa": 8,
     "defesaSocial": 6,
     "defesaMental": 13,
     "vontade": 6,
     "soak": {
       "impacto": 8,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -2037,7 +2062,16 @@
         "pool": "7d6+2 +2",
         "dano": "2d6 +11 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Rocha arremessada",
+        "pool": "2d6+2 +2",
+        "dano": "2d6 +11 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -2049,7 +2083,7 @@
       "esquiva": 0,
       "integridade": 3,
       "sociabilidade": 0,
-      "furtividade": 0
+      "furtividade": 1
     }
   },
   {
@@ -2060,7 +2094,7 @@
     "ameaca": 5,
     "centelha": 2,
     "conceito": "humanoide Enorme (gigante)",
-    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "descricao": "Nobre dos castelos que flutuam entre as nuvens, de 7 m, caprichoso e vaidoso. Levita com quem quiser levar, cobre o campo de névoa e arremessa rochas do alto; prefere enigmas e caçadas à guerra.",
     "tags": [
       "gigante",
       "centelha",
@@ -2068,16 +2102,16 @@
     ],
     "pv": 75,
     "defesa": 10,
-    "defesaSocial": 10,
+    "defesaSocial": 14,
     "defesaMental": 19,
     "vontade": 6,
     "soak": {
       "impacto": 10,
-      "corte": 10,
-      "perfuracao": 10
+      "corte": 2,
+      "perfuracao": 2
     },
-    "resistPerf": 1,
-    "iniciativa": "1d6 + 6",
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
     "atributos": {
       "forca": 12,
       "destreza": 3,
@@ -2093,62 +2127,29 @@
       {
         "nome": "Pancada descomunal",
         "pool": "8d6+2 +4",
-        "dano": "3d6 +14 impacto",
-        "perfArma": null,
-        "ticks": 7
-      },
-      {
-        "nome": "Arremessar rocha",
-        "pool": "8d6+2 +4",
-        "dano": "3d6 +14 impacto",
+        "dano": "2d6 +14 impacto",
         "perfArma": null,
         "ticks": 7,
-        "notas": "dado pelo porte Enorme"
+        "classe": "pesada"
+      },
+      {
+        "nome": "Rocha arremessada",
+        "pool": "3d6 +4",
+        "dano": "2d6 +14 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "Habilidades notáveis: Prontidão 3, Ofícios 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "levitar",
-        "nome": "Levitar",
-        "tipo": "natural",
-        "resiste": "nenhum",
-        "efeito": "Levita a si e até 900 kg, sem limite de tempo.",
-        "usos": {
-          "periodo": "avontade"
-        },
-        "base": {
-          "arte": "vento",
-          "nivel": 4
-        },
-        "descricao": "O gigante flutua à vontade, a si e a até mais 900 kg de carga ou de um companheiro, subindo e descendo devagar, sem precisar de asas."
-      },
-      {
-        "id": "nevoa",
-        "nome": "Névoa",
-        "tipo": "natural",
-        "resiste": "nenhum",
-        "area": "raio de 9 m",
-        "efeito": "Névoa espessa que cobre a visão e concede Furtividade a aliados, dificultando Ataques à distância contra eles.",
-        "usos": {
-          "periodo": "cena",
-          "quantidade": 1
-        },
-        "base": {
-          "arte": "agua",
-          "nivel": 3
-        },
-        "descricao": "O gigante cobre uma área com névoa espessa, o bastante para encobrir a visão de quem estiver lá dentro."
-      }
-    ],
     "pericias": {
-      "prontidao": 2,
+      "prontidao": 3,
       "esquiva": 1,
       "integridade": 5,
-      "sociabilidade": 0,
+      "sociabilidade": 1,
       "furtividade": 0
     }
   },
@@ -2160,7 +2161,7 @@
     "ameaca": 5,
     "centelha": 4,
     "conceito": "humanoide Enorme (gigante)",
-    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "descricao": "Gigante de 7,5 m, sábio e reservado, que vive em fortalezas sobre recifes e respira água. Prefere observar a interferir; quando age, convoca a tempestade, lança relâmpagos que saltam de alvo em alvo e esmaga com punhos que soltam raios. O raio não o fere.",
     "tags": [
       "gigante",
       "centelha",
@@ -2168,16 +2169,16 @@
     ],
     "pv": 80,
     "defesa": 12,
-    "defesaSocial": 10,
+    "defesaSocial": 18,
     "defesaMental": 26,
     "vontade": 8,
     "soak": {
       "impacto": 13,
-      "corte": 12,
-      "perfuracao": 12
+      "corte": 4,
+      "perfuracao": 4
     },
-    "resistPerf": 1,
-    "iniciativa": "1d6 + 8",
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 9",
     "atributos": {
       "forca": 13,
       "destreza": 4,
@@ -2193,70 +2194,21 @@
       {
         "nome": "Pancada descomunal",
         "pool": "9d6 +8",
-        "dano": "3d6 +17 impacto",
+        "dano": "2d6 +17 impacto",
         "perfArma": null,
-        "ticks": 7
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "Habilidades notáveis: Prontidão 4, Conhecimentos 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "comandar-o-clima",
-        "nome": "Comandar o clima",
-        "tipo": "natural",
-        "resiste": "nenhum",
-        "area": "convoca tempestade sobre uma área",
-        "efeito": "muda o tempo numa área grande ao longo de minutos (tempestade, vento forte, raios ao acaso, à escolha do Mestre); 1 vez por dia",
-        "usos": {
-          "periodo": "dia",
-          "quantidade": 1
-        },
-        "base": {
-          "arte": "vento",
-          "nivel": 5
-        },
-        "descricao": "Levando cerca de dez minutos, o gigante convoca ou dissipa uma tempestade sobre uma região inteira: nuvens carregadas, ventania, raios caindo ao acaso a critério do Mestre."
-      },
-      {
-        "id": "relampago-em-cadeia",
-        "nome": "Relâmpago em cadeia",
-        "tipo": "natural",
-        "base": {
-          "arte": "raio",
-          "nivel": 4
-        },
-        "resiste": "esquiva",
-        "efeito": "um raio salta entre vários alvos próximos, poucas vezes por dia",
-        "descricao": "Um relâmpago sai das mãos do gigante e salta de um alvo para o próximo, ferindo cada um que estiver perto o bastante do anterior.",
-        "usos": {
-          "periodo": "dia",
-          "quantidade": 3
-        }
-      },
-      {
-        "id": "respirar-agua-tempestade",
-        "nome": "Respirar água",
-        "tipo": "natural",
-        "base": {
-          "arte": "agua",
-          "nivel": 3
-        },
-        "resiste": "nenhum",
-        "efeito": "respira debaixo d'água como se fosse ar, sempre",
-        "descricao": "O gigante da tempestade vive tanto no mar quanto na terra: respira água como quem respira ar, sem esforço nem limite de tempo.",
-        "usos": {
-          "periodo": "passivo"
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 3,
+      "prontidao": 4,
       "esquiva": 1,
       "integridade": 5,
-      "sociabilidade": 0,
+      "sociabilidade": 2,
       "furtividade": 0
     }
   },
@@ -2268,24 +2220,24 @@
     "ameaca": 4,
     "centelha": 1,
     "conceito": "humanoide Grande (gigante)",
-    "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+    "descricao": "Gigante solitário de um olho só, que vive em cavernas isoladas e ruínas esquecidas. Atira rochedos, esmaga com os punhos e, às vezes, pressente o golpe que vinha certo e o evita. O olho único deixa o flanco aberto.",
     "tags": [
       "gigante",
       "centelha",
       "mágico"
     ],
     "pv": 54,
-    "defesa": 4,
+    "defesa": 8,
     "defesaSocial": 4,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
       "impacto": 7,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 4",
     "atributos": {
       "forca": 9,
       "destreza": 2,
@@ -2303,20 +2255,24 @@
         "pool": "7d6 +2",
         "dano": "2d6 +10 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 7,
+        "classe": "pesada"
+      },
+      {
+        "nome": "Rocha arremessada",
+        "pool": "2d6+2 +2",
+        "dano": "2d6 +10 impacto",
+        "perfArma": null,
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "fortuna",
-        "nivel": 1
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Ofícios 2, Prontidão 2.",
     "pendente": true,
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 2,
       "esquiva": 0,
       "integridade": 2,
       "sociabilidade": 0,
@@ -7856,21 +7812,21 @@
     "ameaca": 4,
     "centelha": 4,
     "conceito": "exterior Grande (ar)",
-    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "descricao": "Nobre do plano do ar, orgulhoso e honrado: voa, some da vista, vira redemoinho cortante, muda a própria aparência e faz brotar água e comida. Barganhar com ele exige mais cautela que qualquer contrato humano.",
     "tags": [
       "elemental",
       "centelha",
       "mágico"
     ],
-    "pv": 50,
+    "pv": 40,
     "defesa": 14,
-    "defesaSocial": 8,
+    "defesaSocial": 16,
     "defesaMental": 25,
     "vontade": 9,
     "soak": {
       "impacto": 9,
-      "corte": 8,
-      "perfuracao": 8
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -7887,70 +7843,23 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
+        "nome": "Golpe de vento",
         "pool": "5d6+2 +8",
-        "dano": "2d6 +10 corte",
+        "dano": "1d6 +10 corte",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "Habilidades notáveis: Ofícios 3, Persuasão 3, Prontidão 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "forma-de-redemoinho",
-        "nome": "Forma de redemoinho",
-        "tipo": "natural",
-        "base": {
-          "arte": "vento",
-          "nivel": 4
-        },
-        "resiste": "esquiva",
-        "efeito": "Forma de redemoinho",
-        "usos": {
-          "periodo": "avontade"
-        },
-        "descricao": "O djinn vira um redemoinho de vento cortante, arrastando quem estiver perto e ferindo com destroços levantados do chão."
-      },
-      {
-        "id": "criar-agua-e-comida",
-        "nome": "Criar água e comida",
-        "tipo": "natural",
-        "base": {
-          "arte": "materia",
-          "nivel": 2
-        },
-        "resiste": "nenhum",
-        "efeito": "convoca água limpa ou comida simples do nada, o bastante para um pequeno grupo",
-        "descricao": "Com um gesto, o djinn faz brotar água fresca ou uma refeição simples, o bastante para alimentar um punhado de pessoas por um dia.",
-        "usos": {
-          "periodo": "dia",
-          "quantidade": 1
-        }
-      },
-      {
-        "id": "invisibilidade-djinn",
-        "nome": "Invisibilidade",
-        "tipo": "natural",
-        "base": {
-          "arte": "ofuscacao",
-          "nivel": 1
-        },
-        "resiste": "nenhum",
-        "efeito": "some de vista à vontade, até agir de forma hostil",
-        "descricao": "O djinn desaparece de vista quando quer, e volta a ser visto só se atacar ou usar um poder chamativo.",
-        "usos": {
-          "periodo": "avontade"
-        }
-      }
-    ],
     "pericias": {
       "prontidao": 2,
       "esquiva": 1,
       "integridade": 4,
-      "sociabilidade": 0,
+      "sociabilidade": 2,
       "furtividade": 0
     }
   },
@@ -7962,7 +7871,7 @@
     "ameaca": 5,
     "centelha": 4,
     "conceito": "exterior Grande (fogo)",
-    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "descricao": "Tirano do plano do fogo, de 3,6 m: o corpo é fogo vivo e queima quem o acerta. Voa, ergue muralhas de chamas, some da vista e viaja entre planos. Preso ou convencido, concede um desejo, sempre pela letra e com um preço.",
     "tags": [
       "elemental",
       "centelha",
@@ -7970,16 +7879,16 @@
     ],
     "pv": 54,
     "defesa": 14,
-    "defesaSocial": 8,
+    "defesaSocial": 12,
     "defesaMental": 25,
     "vontade": 9,
     "soak": {
       "impacto": 10,
-      "corte": 9,
-      "perfuracao": 9
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 6",
+    "iniciativa": "1d6 + 7",
     "atributos": {
       "forca": 8,
       "destreza": 5,
@@ -7993,72 +7902,23 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
+        "nome": "Punho em brasa",
         "pool": "6d6+2 +8",
-        "dano": "2d6 +12 corte",
+        "dano": "1d6 +12 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
     "artes": [],
     "notas": "Habilidades notáveis: Ofícios 4, Manha 3, Prontidão 3.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "corpo-em-chamas",
-        "nome": "Corpo em chamas",
-        "tipo": "natural",
-        "base": {
-          "arte": "fogo",
-          "nivel": 4
-        },
-        "resiste": "nenhum",
-        "efeito": "Resiste ao entrar, 1 vez por cena.",
-        "usos": {
-          "periodo": "passivo",
-          "recarga": "contínua"
-        },
-        "descricao": "O corpo do efreeti é fogo vivo: quem acerta um golpe corpo a corpo nele se queima de volta, e sua pele soca e machuca como brasa."
-      },
-      {
-        "id": "muralha-de-fogo",
-        "nome": "Muralha de fogo",
-        "tipo": "natural",
-        "base": {
-          "arte": "fogo",
-          "nivel": 4
-        },
-        "resiste": "esquiva",
-        "efeito": "ergue uma parede de fogo que bloqueia passagem e fere quem atravessa",
-        "descricao": "O efreeti ergue uma cortina de chamas que bloqueia um corredor ou porta; quem tenta atravessar se queima.",
-        "usos": {
-          "periodo": "dia",
-          "quantidade": 3
-        }
-      },
-      {
-        "id": "conceder-desejos",
-        "nome": "Conceder desejos",
-        "tipo": "natural",
-        "base": {
-          "arte": "fortuna",
-          "nivel": 6
-        },
-        "resiste": "nenhum",
-        "efeito": "concede um pedido poderoso a quem o aprisiona ou barganha com ele, raramente e sempre com um preço",
-        "descricao": "Preso, subornado ou convencido, o efreeti pode realizar um pedido enorme. Ele cumpre a letra do pedido, nunca a intenção por trás dele, e cobra um preço à altura.",
-        "usos": {
-          "periodo": "dia",
-          "quantidade": 1
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 2,
+      "prontidao": 3,
       "esquiva": 1,
       "integridade": 4,
-      "sociabilidade": 0,
+      "sociabilidade": 1,
       "furtividade": 0
     }
   },
@@ -8070,21 +7930,21 @@
     "ameaca": 4,
     "centelha": 3,
     "conceito": "exterior Médio (fogo)",
-    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "descricao": "Guerreira e ferreira do plano do fogo, torso de gente sobre corpo de serpente em brasa: luta de lança, enrola e queima quem chega perto, anda na lava e foge da água.",
     "tags": [
       "elemental",
       "centelha",
       "mágico"
     ],
     "pv": 40,
-    "defesa": 10,
-    "defesaSocial": 8,
+    "defesa": 16,
+    "defesaSocial": 12,
     "defesaMental": 22,
     "vontade": 8,
     "soak": {
       "impacto": 8,
-      "corte": 5,
-      "perfuracao": 5
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -8101,11 +7961,20 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
-        "pool": "5d6 +6",
-        "dano": "1d6 +8 corte",
+        "nome": "Lança",
+        "pool": "5d6 +7",
+        "dano": "1d6 +13 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "haste"
+      },
+      {
+        "nome": "Cauda",
+        "pool": "4d6+2 +6",
+        "dano": "1d6 +13 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [
@@ -8114,30 +7983,12 @@
     "artes": [],
     "notas": "Habilidades notáveis: Ofícios 3, Armas 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "calor-corporal",
-        "nome": "Calor corporal",
-        "tipo": "natural",
-        "base": {
-          "arte": "fogo",
-          "nivel": 2
-        },
-        "resiste": "nenhum",
-        "efeito": "Resiste ao entrar, 1 vez por cena.",
-        "usos": {
-          "periodo": "passivo",
-          "recarga": "contínua"
-        },
-        "descricao": "A pele da salamandra irradia calor o tempo todo, o bastante para queimar quem a segura ou a aperta num agarrão."
-      }
-    ],
     "pericias": {
       "prontidao": 2,
       "esquiva": 1,
       "integridade": 4,
-      "sociabilidade": 0,
-      "furtividade": 1
+      "sociabilidade": 1,
+      "furtividade": 0
     }
   },
   {
@@ -8148,26 +7999,26 @@
     "ameaca": 4,
     "centelha": 3,
     "conceito": "exterior Grande (terra)",
-    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "descricao": "Bloco de pedra viva de 3 m: nada pela rocha como se fosse água, sai ao lado do alvo, bate com um braço de pedra que joga longe ou derruba e volta para dentro da montanha.",
     "tags": [
       "elemental",
       "centelha",
       "mágico"
     ],
     "pv": 58,
-    "defesa": 4,
+    "defesa": 13,
     "defesaSocial": 4,
     "defesaMental": 16,
     "vontade": 8,
     "soak": {
       "impacto": 10,
-      "corte": 8,
-      "perfuracao": 8
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
-      "forca": 9,
+      "forca": 10,
       "destreza": 2,
       "vigor": 7,
       "influencia": 2,
@@ -8179,11 +8030,12 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
-        "pool": "7d6 +6",
-        "dano": "2d6 +12 corte",
+        "nome": "Pancada de pedra",
+        "pool": "7d6+2 +6",
+        "dano": "1d6 +13 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [
@@ -8192,23 +8044,6 @@
     "artes": [],
     "notas": "Habilidades notáveis: Atletismo 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "deslizar-na-pedra-e-empurrao",
-        "nome": "Deslizar na pedra e empurrão",
-        "tipo": "natural",
-        "base": {
-          "arte": "terra",
-          "nivel": 2
-        },
-        "resiste": "nenhum",
-        "efeito": "Deslizar na pedra e empurrão",
-        "usos": {
-          "periodo": "avontade"
-        },
-        "descricao": "O elemental nada pela rocha sólida como se fosse água, sem deixar rastro nem precisar de passagem aberta; a investida de sua massa empurra quem estiver no caminho."
-      }
-    ],
     "pericias": {
       "prontidao": 1,
       "esquiva": 0,
@@ -8225,24 +8060,24 @@
     "ameaca": 4,
     "centelha": 3,
     "conceito": "exterior Médio (terra)",
-    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "descricao": "Esfera de pedra de três braços e boca enorme, que nada pela rocha como peixe na água: sente o metal a 18 m, sai da parede, come a arma ou a bolsa de quem a carrega e some de novo.",
     "tags": [
       "elemental",
       "centelha",
       "mágico"
     ],
-    "pv": 43,
+    "pv": 54,
     "defesa": 10,
     "defesaSocial": 4,
     "defesaMental": 16,
     "vontade": 8,
     "soak": {
       "impacto": 9,
-      "corte": 6,
-      "perfuracao": 6
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
-    "iniciativa": "1d6 + 3",
+    "iniciativa": "1d6 + 5",
     "atributos": {
       "forca": 6,
       "destreza": 3,
@@ -8256,44 +8091,32 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
+        "nome": "Garras",
         "pool": "5d6+2 +6",
         "dano": "1d6 +9 corte",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 6,
+        "classe": "media"
+      },
+      {
+        "nome": "Mordida",
+        "pool": "5d6+2 +6",
+        "dano": "1d6 +9 perfurante · perf. 1",
+        "perfArma": 1,
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
-    "artes": [
-      {
-        "id": "terra",
-        "nivel": 3
-      }
-    ],
+    "artes": [],
     "notas": "Habilidades notáveis: Prontidão 3, Furtividade 2.",
     "pendente": true,
-    "poderes": [
-      {
-        "id": "deslizar-pela-pedra",
-        "nome": "Deslizar pela pedra",
-        "tipo": "natural",
-        "base": {
-          "arte": "terra",
-          "nivel": 3
-        },
-        "resiste": "nenhum",
-        "efeito": "Deslizar pela pedra",
-        "usos": {
-          "periodo": "avontade"
-        }
-      }
-    ],
     "pericias": {
-      "prontidao": 1,
+      "prontidao": 3,
       "esquiva": 1,
       "integridade": 2,
       "sociabilidade": 0,
-      "furtividade": 1
+      "furtividade": 2
     }
   },
   {
@@ -10554,25 +10377,25 @@
       "monstro",
       "centelha"
     ],
-    "pv": 25,
+    "pv": 34,
     "defesa": 4,
     "defesaSocial": "-",
     "defesaMental": "-",
-    "vontade": 6,
+    "vontade": 3,
     "soak": {
-      "impacto": 2,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 4,
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 0",
     "atributos": {
       "forca": 4,
       "destreza": 2,
-      "vigor": 0,
-      "influencia": 0,
-      "perspicacia": 0,
-      "compostura": 0,
+      "vigor": 3,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1,
       "percepcao": 2,
       "inteligencia": 0,
       "raciocinio": 0
@@ -10583,7 +10406,8 @@
         "pool": "4d6 +2",
         "dano": "1d6 +5 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -10593,7 +10417,8 @@
     "pericias": {
       "prontidao": 0,
       "esquiva": 0,
-      "furtividade": 2
+      "integridade": 0,
+      "furtividade": 0
     }
   },
   {
@@ -14333,7 +14158,7 @@
     "ameaca": 2,
     "centelha": 1,
     "conceito": "exterior (ar) Pequeno",
-    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "descricao": "Redemoinho com vontade própria: voa rápido e sem errar, puxa quem é leve para dentro do tornado e desvia as flechas. Lâmina e ponta passam pelo vento.",
     "tags": [
       "elemental",
       "centelha"
@@ -14345,8 +14170,8 @@
     "vontade": 6,
     "soak": {
       "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -14364,10 +14189,11 @@
     "ataques": [
       {
         "nome": "Pancada de vento",
-        "pool": "3d6 +2",
-        "dano": "1d6 +4 impacto",
+        "pool": "4d6 +3",
+        "dano": "1d6 +2 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -14379,7 +14205,7 @@
       "esquiva": 1,
       "integridade": 2,
       "sociabilidade": 0,
-      "furtividade": 2
+      "furtividade": 0
     }
   },
   {
@@ -14390,20 +14216,20 @@
     "ameaca": 2,
     "centelha": 1,
     "conceito": "exterior (terra) Pequeno",
-    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "descricao": "Fragmento vivo da pedra de outro plano: atravessa a rocha como se fosse água, espera imóvel e derruba quem pisa a terra. Lento e pesado, bate como um bloco de pedra.",
     "tags": [
       "elemental",
       "centelha"
     ],
-    "pv": 26,
-    "defesa": 4,
+    "pv": 34,
+    "defesa": 9,
     "defesaSocial": 4,
     "defesaMental": 12,
     "vontade": 6,
     "soak": {
       "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -14420,11 +14246,12 @@
     },
     "ataques": [
       {
-        "nome": "Pancada",
-        "pool": "4d6 +2",
-        "dano": "1d6 +6 impacto",
+        "nome": "Pancada de pedra",
+        "pool": "4d6 +3",
+        "dano": "1d6 +4 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -14505,7 +14332,7 @@
     "ameaca": 2,
     "centelha": 1,
     "conceito": "exterior (água) Pequeno",
-    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "descricao": "Fragmento de um plano de água: rápido no mar e lento em terra, suga quem chega perto num vórtice, encharca o que toca e apaga o fogo.",
     "tags": [
       "elemental",
       "centelha"
@@ -14517,13 +14344,13 @@
     "vontade": 6,
     "soak": {
       "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
-      "forca": 4,
+      "forca": 3,
       "destreza": 2,
       "vigor": 3,
       "influencia": 2,
@@ -14536,10 +14363,11 @@
     "ataques": [
       {
         "nome": "Pancada de água",
-        "pool": "3d6+2 +2",
-        "dano": "1d6 +5 impacto",
+        "pool": "3d6 +3",
+        "dano": "1d6 +2 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -14551,7 +14379,7 @@
       "esquiva": 0,
       "integridade": 2,
       "sociabilidade": 0,
-      "furtividade": 2
+      "furtividade": 0
     }
   },
   {
@@ -15439,25 +15267,25 @@
     "ameaca": 5,
     "centelha": 5,
     "conceito": "exterior (água) Grande",
-    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "descricao": "O mais forte dos gênios, do plano da água: 4,9 m, dentes de pérola, a força das correntes no braço. Nada mais rápido do que anda, cega com um jato de água, vira redemoinho debaixo d'água e assume a forma de gente, de gigante ou de elemental. Muitos trocaram a guerra pela dança e pelas histórias.",
     "tags": [
       "elemental",
       "centelha"
     ],
     "pv": 54,
     "defesa": 14,
-    "defesaSocial": 10,
+    "defesaSocial": 18,
     "defesaMental": 29,
     "vontade": 10,
     "soak": {
       "impacto": 11,
-      "corte": 10,
-      "perfuracao": 10
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
     "atributos": {
-      "forca": 8,
+      "forca": 9,
       "destreza": 5,
       "vigor": 6,
       "influencia": 5,
@@ -15469,11 +15297,12 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
-        "pool": "6d6+2 +10",
-        "dano": "2d6 +13 corte",
+        "nome": "Pancada de maré",
+        "pool": "7d6 +10",
+        "dano": "1d6 +14 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -15484,7 +15313,7 @@
       "prontidao": 2,
       "esquiva": 1,
       "integridade": 5,
-      "sociabilidade": 0,
+      "sociabilidade": 2,
       "furtividade": 0
     }
   },
@@ -15496,20 +15325,20 @@
     "ameaca": 4,
     "centelha": 4,
     "conceito": "exterior (terra) Grande",
-    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "descricao": "Nobre do plano da terra, de 3,4 m e pele de metal polido, pedra ou gema. Atravessa a rocha como se fosse água, sela na pedra quem empurra contra a parede e troca um metal por outro com um toque. O raio não o fere.",
     "tags": [
       "elemental",
       "centelha"
     ],
-    "pv": 54,
+    "pv": 65,
     "defesa": 10,
-    "defesaSocial": 8,
+    "defesaSocial": 12,
     "defesaMental": 25,
     "vontade": 9,
     "soak": {
       "impacto": 10,
-      "corte": 9,
-      "perfuracao": 9
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -15526,11 +15355,12 @@
     },
     "ataques": [
       {
-        "nome": "Golpe planar",
+        "nome": "Pancada de pedra",
         "pool": "6d6 +8",
-        "dano": "2d6 +11 corte",
+        "dano": "1d6 +11 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -15541,7 +15371,7 @@
       "prontidao": 2,
       "esquiva": 1,
       "integridade": 4,
-      "sociabilidade": 0,
+      "sociabilidade": 1,
       "furtividade": 0
     }
   },
@@ -15759,30 +15589,30 @@
     "categoria": "Monstro",
     "ameaca": 5,
     "centelha": 3,
-    "conceito": "constructo Grande",
+    "conceito": "constructo Médio",
     "descricao": "Aberração humanoide de lendas antigas.",
     "tags": [
       "monstro",
       "centelha"
     ],
-    "pv": 34,
-    "defesa": 4,
+    "pv": 50,
+    "defesa": 13,
     "defesaSocial": "-",
     "defesaMental": "-",
-    "vontade": 8,
+    "vontade": 3,
     "soak": {
-      "impacto": 4,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 8,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
       "forca": 8,
       "destreza": 2,
-      "vigor": 1,
-      "influencia": 0,
-      "perspicacia": 0,
+      "vigor": 5,
+      "influencia": 1,
+      "perspicacia": 1,
       "compostura": 1,
       "percepcao": 2,
       "inteligencia": 0,
@@ -15790,11 +15620,12 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "6d6+2 +6",
-        "dano": "2d6 +11 corte",
+        "nome": "Punho de argila",
+        "pool": "6d6 +6",
+        "dano": "1d6 +11 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -15804,7 +15635,8 @@
     "pericias": {
       "prontidao": 1,
       "esquiva": 0,
-      "furtividade": 1
+      "integridade": 0,
+      "furtividade": 0
     }
   },
   {
@@ -15820,24 +15652,24 @@
       "monstro",
       "centelha"
     ],
-    "pv": 34,
+    "pv": 50,
     "defesa": 4,
     "defesaSocial": "-",
     "defesaMental": "-",
-    "vontade": 8,
+    "vontade": 3,
     "soak": {
-      "impacto": 4,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 8,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
       "forca": 7,
       "destreza": 2,
-      "vigor": 1,
-      "influencia": 0,
-      "perspicacia": 0,
+      "vigor": 5,
+      "influencia": 1,
+      "perspicacia": 1,
       "compostura": 1,
       "percepcao": 2,
       "inteligencia": 0,
@@ -15845,11 +15677,12 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "6d6 +6",
-        "dano": "2d6 +10 corte",
+        "nome": "Punho",
+        "pool": "5d6+2 +6",
+        "dano": "1d6 +10 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -15859,7 +15692,8 @@
     "pericias": {
       "prontidao": 1,
       "esquiva": 0,
-      "furtividade": 1
+      "integridade": 0,
+      "furtividade": 0
     }
   },
   {
@@ -15875,13 +15709,13 @@
       "monstro",
       "centelha"
     ],
-    "pv": 25,
+    "pv": 37,
     "defesa": 4,
     "defesaSocial": "-",
     "defesaMental": "-",
-    "vontade": 6,
+    "vontade": 3,
     "soak": {
-      "impacto": 1,
+      "impacto": 5,
       "corte": 1,
       "perfuracao": 1
     },
@@ -15890,9 +15724,9 @@
     "atributos": {
       "forca": 5,
       "destreza": 2,
-      "vigor": 0,
-      "influencia": 0,
-      "perspicacia": 0,
+      "vigor": 4,
+      "influencia": 1,
+      "perspicacia": 1,
       "compostura": 1,
       "percepcao": 2,
       "inteligencia": 0,
@@ -15900,12 +15734,12 @@
     },
     "ataques": [
       {
-        "nome": "Punhos gelados",
-        "pool": "5d6 +2",
+        "nome": "Punho gelado",
+        "pool": "4d6+2 +2",
         "dano": "1d6 +6 impacto",
         "perfArma": null,
-        "ticks": 5,
-        "notas": "cada acerto soma dano de frio"
+        "ticks": 6,
+        "classe": "media"
       }
     ],
     "tecnicas": [],
@@ -15915,7 +15749,8 @@
     "pericias": {
       "prontidao": 1,
       "esquiva": 0,
-      "furtividade": 2
+      "integridade": 0,
+      "furtividade": 0
     }
   },
   {
@@ -15931,24 +15766,24 @@
       "monstro",
       "centelha"
     ],
-    "pv": 34,
-    "defesa": 4,
+    "pv": 70,
+    "defesa": 13,
     "defesaSocial": "-",
     "defesaMental": "-",
-    "vontade": 9,
+    "vontade": 3,
     "soak": {
-      "impacto": 5,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 11,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
     "atributos": {
       "forca": 11,
       "destreza": 2,
-      "vigor": 1,
-      "influencia": 0,
-      "perspicacia": 0,
+      "vigor": 7,
+      "influencia": 1,
+      "perspicacia": 1,
       "compostura": 1,
       "percepcao": 2,
       "inteligencia": 0,
@@ -15956,11 +15791,12 @@
     },
     "ataques": [
       {
-        "nome": "Punhos",
-        "pool": "8d6 +8",
+        "nome": "Punho de ferro",
+        "pool": "7d6+2 +8",
         "dano": "2d6 +15 impacto",
         "perfArma": null,
-        "ticks": 6
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],
@@ -15970,7 +15806,8 @@
     "pericias": {
       "prontidao": 1,
       "esquiva": 0,
-      "furtividade": 1
+      "integridade": 0,
+      "furtividade": 0
     }
   },
   {
@@ -16412,13 +16249,13 @@
     "categoria": "Monstro",
     "ameaca": 2,
     "centelha": 1,
-    "conceito": "monstro Médio",
+    "conceito": "monstro Pequeno",
     "descricao": "Aberração humanoide de lendas antigas.",
     "tags": [
       "monstro",
       "centelha"
     ],
-    "pv": 16,
+    "pv": 5,
     "defesa": 12,
     "defesaSocial": 4,
     "defesaMental": 12,
@@ -16443,11 +16280,12 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "2d6+2 +2",
-        "dano": "1d6 +3 corte",
-        "perfArma": null,
-        "ticks": 5
+        "nome": "Mordida",
+        "pool": "3d6+2 +3",
+        "dano": "1d6 +1 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -16459,7 +16297,7 @@
       "esquiva": 1,
       "integridade": 2,
       "sociabilidade": 0,
-      "furtividade": 4
+      "furtividade": 2
     }
   },
   {
@@ -16772,7 +16610,7 @@
     "ameaca": 4,
     "centelha": 4,
     "conceito": "exterior (ar) Médio",
-    "descricao": "Ser de um único elemento, sem alma mortal.",
+    "descricao": "Servo invisível do plano do ar: segue a presa sem nunca perder o rastro, bate com dois socos sem jamais aparecer e cumpre a ordem ao pé da letra, de jeito que trai quem a deu.",
     "tags": [
       "elemental",
       "centelha"
@@ -16784,8 +16622,8 @@
     "vontade": 9,
     "soak": {
       "impacto": 11,
-      "corte": 7,
-      "perfuracao": 7
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -16802,11 +16640,12 @@
     },
     "ataques": [
       {
-        "nome": "Dois socos",
-        "pool": "5d6 +8",
-        "dano": "1d6 +9 impacto",
+        "nome": "Soco",
+        "pool": "5d6 +9",
+        "dano": "1d6 +7 impacto",
         "perfArma": null,
-        "ticks": 5
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -16818,7 +16657,7 @@
       "esquiva": 1,
       "integridade": 3,
       "sociabilidade": 0,
-      "furtividade": 1
+      "furtividade": 3
     }
   },
   {
@@ -16828,18 +16667,18 @@
     "categoria": "Monstro",
     "ameaca": 2,
     "centelha": 0,
-    "conceito": "constructo Pequeno",
+    "conceito": "constructo Miúdo",
     "descricao": "Aberração humanoide de lendas antigas.",
     "tags": [
       "monstro"
     ],
-    "pv": 20,
+    "pv": 28,
     "defesa": 10,
     "defesaSocial": "-",
     "defesaMental": "-",
-    "vontade": 5,
+    "vontade": 3,
     "soak": {
-      "impacto": 0,
+      "impacto": 4,
       "corte": 0,
       "perfuracao": 0
     },
@@ -16848,9 +16687,9 @@
     "atributos": {
       "forca": 3,
       "destreza": 4,
-      "vigor": 0,
-      "influencia": 0,
-      "perspicacia": 0,
+      "vigor": 4,
+      "influencia": 1,
+      "perspicacia": 1,
       "compostura": 1,
       "percepcao": 2,
       "inteligencia": 0,
@@ -16858,11 +16697,12 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
-        "pool": "2d6+2",
-        "dano": "1d6 +3 corte",
-        "perfArma": null,
-        "ticks": 5
+        "nome": "Mordida",
+        "pool": "3d6 +1",
+        "dano": "1d6 +1 perfurante · perf. 0",
+        "perfArma": 0,
+        "ticks": 5,
+        "classe": "leve"
       }
     ],
     "tecnicas": [],
@@ -16872,6 +16712,7 @@
     "pericias": {
       "prontidao": 1,
       "esquiva": 1,
+      "integridade": 0,
       "furtividade": 3
     }
   },
@@ -18928,22 +18769,22 @@
     "tags": [
       "monstro"
     ],
-    "pv": 45,
+    "pv": 75,
     "defesa": 12,
     "defesaSocial": 2,
     "defesaMental": 8,
     "vontade": 5,
     "soak": {
-      "impacto": 2,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 8,
+      "corte": 0,
+      "perfuracao": 0
     },
-    "resistPerf": 1,
+    "resistPerf": 0,
     "iniciativa": "1d6 + 2",
     "atributos": {
       "forca": 9,
       "destreza": 5,
-      "vigor": 2,
+      "vigor": 8,
       "influencia": 0,
       "perspicacia": 1,
       "compostura": 1,
@@ -18953,11 +18794,12 @@
     },
     "ataques": [
       {
-        "nome": "Arma",
+        "nome": "Patas-lâmina",
         "pool": "7d6",
-        "dano": "3d6 +9 corte",
+        "dano": "2d6 +9 corte",
         "perfArma": null,
-        "ticks": 7
+        "ticks": 7,
+        "classe": "pesada"
       }
     ],
     "tecnicas": [],

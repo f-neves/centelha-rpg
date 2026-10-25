@@ -5,9 +5,10 @@
   "nome": "Perseguidor Invisível",
   "nomeIngles": "Invisible Stalker",
   "categoria": "Elemental",
+  "categoriaLegada": "Elemental",
   "papel": "elite",
   "conceito": "exterior (ar) Médio",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Servo invisível do plano do ar: segue a presa sem nunca perder o rastro, bate com dois socos sem jamais aparecer e cumpre a ordem ao pé da letra, de jeito que trai quem a deu.",
   "tags": [
     "elemental",
     "centelha"
@@ -16,30 +17,53 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,8 m de altura",
-    "peso": "70 kg"
+    "peso": "70 kg",
+    "largura": 0.45,
+    "altura": 1.8
   },
   "locomocao": {
     "terra": 3,
     "voo": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 4,
   "attrs": {
     "forca": 5,
     "destreza": 5,
     "vigor": 7,
-    "influencia": 2,
-    "perspicacia": 3,
-    "compostura": 3,
     "percepcao": 4,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 2,
+    "perspicacia": 3,
+    "compostura": 3
   },
   "skills": {
     "briga": 5,
     "esquiva": 1,
+    "atletismo": 2,
+    "furtividade": 3,
+    "integridade": 3,
     "prontidao": 2,
-    "integridade": 3
+    "sobrevivencia": 4,
+    "ocultismo": 1
   },
+  "skills2": {
+    "voo": 3,
+    "musculatura": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "sobrevivencia",
+      "foco": "rastrear",
+      "valor": 2,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 3,
@@ -50,37 +74,50 @@
   "aparencia": 5,
   "ataques": [
     {
-      "nome": "Dois socos",
+      "nome": "Soco",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
+  "fraquezas": [],
   "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
       "nome": "Invisibilidade natural",
-      "descricao": "Permanece invisível o tempo todo, mesmo enquanto ataca, e não pode ser revelado por meios comuns de dissipação."
+      "descricao": "poder natural (base Ofuscação 3, sugestão da ficha): Ativação: nenhuma; sempre ativa. Duração: permanente, mesmo enquanto ataca. Alcance: o próprio corpo. Área: não se aplica. Efeito: está sempre Invisível; atacar não o revela, e os meios comuns de desfazer magia não o tornam visível. Quem o procura nota, se tanto, o ar que se move. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Dois socos",
+      "descricao": "Soco: a Rajada: dois golpes de Soco na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação. A Leve iria a três; a ficha fica nos dois do site.",
+      "classe": "livro"
     },
     {
       "nome": "Rastreador implacável",
-      "descricao": "Segue pistas e presas em fuga sem nunca perder o rastro, não importa a velocidade."
+      "descricao": "Ativação: nenhuma; vale quando segue a presa que lhe foi apontada. Duração: até achar a presa ou a ordem acabar. Alcance: o rastro. Área: uma presa. Efeito: não perde o rastro, não importa a velocidade da presa nem o terreno; a jogada de Sobrevivência só diz quanto tempo ele leva. Dano: nenhum. Resistência: nenhum. Limite de uso: uma presa por vez.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Voo perfeito",
-      "descricao": "Desloca-se voando com controle impecável, além de poder caminhar."
+      "nome": "feito de ar",
+      "descricao": "não sente cansaço, veneno nem doença; não respira, não come, não dorme.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Sentidos na escuridão",
-      "descricao": "Enxerga no escuro sem qualquer dificuldade."
+      "nome": "letra da lei",
+      "descricao": "cumpre a ordem ao pé da letra, e a vira contra quem a deu se ela tiver brecha; segue a presa sem descanso, bate sem nunca aparecer e foge para o alto quando a luta vira.",
+      "classe": "como luta"
     },
     {
-      "nome": "Fúria contida",
-      "descricao": "Golpeia com dois socos etéreos de força considerável."
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: enxerga no escuro sem qualquer dificuldade (site). · audição: a de um humano."
     }
   ],
   "lore": [
@@ -91,6 +128,14 @@
     {
       "titulo": "Letra da lei, não da vontade",
       "texto": "Ressentido com a servidão, busca brechas em ordens mal formuladas, cumprindo o pedido ao pé da letra de formas que traem a intenção de quem o convocou."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: sozinho, a serviço de quem o conjurou."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, sempre Invisível, mesmo quando ataca. Dois socos por ação (Rajada), dano médio 10,5 cada, o segundo a −1d6. 46 PV, Impacto 11, Corte e Perfuração 4. Esquiva 14, Bloqueio 10, Defesa Mental 22. Anda a 3 e voa a 3. Segue a presa que lhe apontam sem nunca perder o rastro."
     }
   ],
   "ecologia": {
@@ -127,5 +172,35 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 46,
+    "esquiva": 14,
+    "bloqueio": 10,
+    "defesa": 14,
+    "defesaMental": 22,
+    "defesaSocial": 6,
+    "absorcao": {
+      "impacto": 11,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 269.33,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      },
+      "voo": {
+        "batalha": 3
+      }
+    }
+  },
+  "notasObservacao": [
+    "`massa`: 70 kg, a do site; ar denso, que anda no chão e bate como punho (D-187) **[referência de jogo]**",
+    "`ataques`: os dois socos pela Rajada **[provisório]**",
+    "`invisibilidade natural`, `rastreador implacável`: números sugeridos pela ficha (D-197)"
+  ]
 }

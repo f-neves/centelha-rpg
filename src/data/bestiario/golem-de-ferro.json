@@ -6,12 +6,9 @@
   "nomeIngles": "Golem, Iron",
   "categoria": "Construto",
   "categoriaLegada": "Monstro",
-  "constructo": {
-    "semVida": true
-  },
   "papel": "chefe",
   "conceito": "constructo Grande",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricao": "Guarda de guerra forjado em ferro maciço, de 3,6 m. Não fala, não cheira e não cansa; os passos fazem o chão tremer. Bate com força redobrada e solta um gás venenoso. A maior parte da magia não o toca: o raio o deixa lento, e o fogo o cura.",
   "descricaoLegada": "Aberração humanoide de lendas antigas.",
   "tags": [
     "monstro",
@@ -21,47 +18,57 @@
   "porte": "Grande",
   "dimensoes": {
     "medida": "3,6 m de altura",
-    "peso": "2.270 kg"
+    "peso": "4.960 kg",
+    "largura": 0.9,
+    "altura": 3.6
   },
   "locomocao": {
     "terra": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
   },
   "centelha": 4,
   "attrs": {
     "forca": 11,
     "destreza": 2,
-    "vigor": 1,
-    "influencia": 0,
-    "perspicacia": 0,
-    "compostura": 1,
+    "vigor": 7,
     "percepcao": 2,
     "inteligencia": 0,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
-    "briga": 5,
-    "esquiva": 0,
-    "prontidao": 1,
-    "integridade": 2
+    "briga": 4,
+    "bloqueio": 2,
+    "atletismo": 1,
+    "prontidao": 1
+  },
+  "skills2": {
+    "musculatura": 3
   },
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 3,
-    "temperanca": 3,
-    "valor": 4
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 6
   },
-  "willpower": 9,
+  "willpower": 3,
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Punhos",
+      "nome": "Punho de ferro",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 2,
       "mao": 1,
       "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 6
+      "ticks": 7,
+      "classe": "pesada"
     }
   ],
   "fraquezas": [
@@ -69,29 +76,76 @@
   ],
   "resistencias": [
     "corte",
-    "fogo",
     "perfuracao"
+  ],
+  "imunidades": [
+    "fogo"
   ],
   "habilidades": [
     {
+      "nome": "agarrar",
+      "descricao": "Punho de ferro: Agarrar.",
+      "classe": "livro"
+    },
+    {
+      "nome": "derrubar",
+      "descricao": "Punho de ferro: Derrubar.",
+      "classe": "livro"
+    },
+    {
+      "nome": "empurrar",
+      "descricao": "Punho de ferro: Empurrar.",
+      "classe": "livro"
+    },
+    {
+      "nome": "sem vida",
+      "descricao": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto ou pelo fogo; não sofre nada que se resista com o corpo.",
+      "classe": "sem regra ainda"
+    },
+    {
       "nome": "Sopro de gás venenoso",
-      "descricao": "Uma vez a cada poucos turnos, o golem exala um cubo de gás nocivo; quem for envolvido sofre dano contínuo de veneno, com testes de Vigor repetidos até se livrar do efeito."
+      "descricao": "Ativação: uma ação, Velocidade 7. Duração: o gás fica no lugar até o fim da próxima ação dele. Alcance: à frente dele. Área: um cubo de 3 m de lado, encostado nele. Efeito: exala uma nuvem de gás nocivo; quem a respira é envenenado (Veneno e doença). Dano: o do veneno. Resistência: corpo, pelo veneno (Veneno e doença); quem prende a respiração antes de entrar, e não sai do fôlego, não é envenenado. Limite de uso: uma vez a cada 24 Ticks.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Imunidade a magia",
-      "descricao": "A maioria dos efeitos mágicos simplesmente não o afeta. Descargas elétricas o deixam lento por vários turnos sem chance de resistência, enquanto fogo cura seus ferimentos e rompe qualquer lentidão."
+      "nome": "Lento pelo raio",
+      "descricao": "Ativação: um golpe ou efeito de raio o acerta. Duração: 18 Ticks. Alcance: o próprio corpo. Área: não se aplica. Efeito: o raio o deixa Retardado, sem resistência (site); o dano é o da fraqueza (Elementos). Dano: o do raio. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Golpes poderosos",
-      "descricao": "Seus socos de ferro acertam com força redobrada e ameaçam ferimentos graves com facilidade incomum."
+      "nome": "Curado pelo fogo",
+      "descricao": "Ativação: um golpe ou efeito de fogo o acerta. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Efeito: o fogo não o fere (Elementos), devolve metade do dano que daria e acaba com o Retardado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Casco de ferro",
-      "descricao": "Absorve boa parte de golpes físicos comuns; só armas de adamantina o ferem com eficácia plena."
+      "nome": "imune à magia",
+      "descricao": "a maior parte das Artes não o afeta.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Sentidos na escuridão",
-      "descricao": "Enxerga no escuro e com pouca luz sem dificuldade alguma."
+      "nome": "golpes poderosos",
+      "descricao": "os socos de ferro ameaçam ferimento grave com uma facilidade incomum (site); o livro não tem regra de golpe que fere grave com mais facilidade.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "casco de ferro",
+      "descricao": "resistência a Corte e Perfuração (metade do dano). Sem regra ainda: só a arma de adamantina o fere por inteiro.",
+      "classe": "livro"
+    },
+    {
+      "nome": "autômato de guerra",
+      "descricao": "avança em linha reta com passos que fazem o chão tremer, solta o gás sobre o grupo e esmaga com o punho quem fica de pé; não fala nem recua.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: enxerga no escuro e na penumbra sem dificuldade (site). · audição: a de um guarda humano."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Gás do golem de ferro · Potência 18 · 1 Tick (inalado) · a cada 1 minuto · pool 24 (PV) · Desgaste 1 · pelo Sopro de gás venenoso. O \"dano contínuo de veneno, com testes de Vigor repetidos\" do site vira o pool de PV do livro, entre a peçonha de víbora (Potência 14, pool 24) e o hálito de basilisco (22, pool 48) de venenos.json."
     }
   ],
   "lore": [
@@ -102,6 +156,18 @@
     {
       "titulo": "Silêncio absoluto",
       "texto": "Não emite cheiro nem ruído além do bater metálico de seus passos, o que torna sua aproximação um aviso tardio demais para muitos."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Gás do golem de ferro · Potência 18 · 1 Tick (inalado) · a cada 1 minuto · pool 24 (PV) · Desgaste 1 · pelo Sopro de gás venenoso. O \"dano contínuo de veneno, com testes de Vigor repetidos\" do site vira o pool de PV do livro, entre a peçonha de víbora (Potência 14, pool 24) e o hálito de basilisco (22, pool 48) de venenos.json."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande, 70 PV, Impacto 11, Corte e Perfuração 4; lâmina e ponta fazem metade, fogo o cura, raio o fere mais e o deixa Retardado. Lento (Esquiva 4), mas apara com o corpo (Bloqueio 13 com o punho). Punho de ferro Pesada, de dano médio 22. A cada 24 Ticks, um cubo de gás venenoso de 3 m. Sem mente: não se assusta nem se convence. Não se cura sozinho."
     }
   ],
   "ecologia": {
@@ -139,5 +205,38 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "v3": {
+    "pv": 70,
+    "esquiva": 4,
+    "bloqueio": 12,
+    "defesa": 13,
+    "defesaMental": null,
+    "defesaSocial": null,
+    "absorcao": {
+      "impacto": 11,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 10,
+    "pesoErguido": 1423.42,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
+      }
+    },
+    "bloqueioArma": 1
+  },
+  "notasObservacao": [
+    "`massa`: 4.960 kg pelo ferro maciço (0,632 m³ × 7.850 kg/m³); o site dizia 2.270 kg, que daria 3.590 kg/m³, só numa casca oca. Com 2.270 kg, a Faixa e o PV seriam os mesmos, e o peso erguido, menor **[provisório]**",
+    "`vigor`: 7 por julgamento (ferro maciço, acima do granito); o site tinha 1 **[provisório]**",
+    "`couracaNivel`: 10, ferro maciço, um nível acima do granito **[provisório]**",
+    "`ataque`: o Punho Pesada pela \"força redobrada\", com o precedente do gigante da colina; os 2 dados do site ficam **[provisório]**",
+    "`elementos`: imune a fogo pela habilidade publicada; a fraqueza a raio, a do campo",
+    "`veneno`: os números do gás, entre a peçonha de víbora e o hálito de basilisco do livro **[provisório]**",
+    "`atributos sociais`, `vontade`, `virtudes`: decididos pelo autor para toda criatura de Inteligência 0 (D-186)",
+    "`sopro de gás venenoso`, `lento pelo raio`, `curado pelo fogo`: números sugeridos pela ficha (D-197)"
+  ]
 }

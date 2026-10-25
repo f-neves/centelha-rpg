@@ -6,85 +6,132 @@
   "nomeIngles": "Golem, Clay",
   "categoria": "Construto",
   "categoriaLegada": "Monstro",
-  "constructo": {
-    "semVida": true
-  },
   "papel": "chefe",
-  "conceito": "constructo Grande",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "conceito": "constructo Médio",
+  "descricao": "Estátua de barro de 2,4 m movida por um espírito preso à força. Guarda criptas e torres por décadas sem se mover; desperto, bate com punhos que deixam feridas que nem a magia fecha, e a cada instante de luta o espírito pode se libertar e atacar tudo à volta.",
   "descricaoLegada": "Aberração humanoide de lendas antigas.",
   "tags": [
     "monstro",
     "centelha"
   ],
   "imagem": null,
-  "porte": "Grande",
+  "porte": "Médio",
   "dimensoes": {
     "medida": "2,4 m de altura",
-    "peso": "270 kg"
+    "peso": "270 kg",
+    "largura": 0.6,
+    "altura": 2.4
   },
   "locomocao": {
     "terra": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
   },
   "centelha": 3,
   "attrs": {
     "forca": 8,
     "destreza": 2,
-    "vigor": 1,
-    "influencia": 0,
-    "perspicacia": 0,
-    "compostura": 1,
+    "vigor": 5,
     "percepcao": 2,
     "inteligencia": 0,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
-    "briga": 5,
-    "esquiva": 0,
-    "prontidao": 1,
-    "integridade": 2
+    "briga": 4,
+    "bloqueio": 2,
+    "atletismo": 1,
+    "prontidao": 1
+  },
+  "skills2": {
+    "musculatura": 2
   },
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 3,
-    "temperanca": 3,
-    "valor": 4
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 6
   },
-  "willpower": 8,
+  "willpower": 3,
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Arma",
+      "nome": "Punho de argila",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 6
+      "tipo": "impacto",
+      "ticks": 6,
+      "classe": "media"
     }
   ],
+  "fraquezas": [],
   "resistencias": [
-    "corte",
     "fogo",
+    "corte",
     "perfuracao"
   ],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Corpo de Argila Endurecida",
-      "descricao": "Absorve grande parte de qualquer dano físico comum e é imune a quase toda magia que tentar afetá-lo diretamente."
+      "nome": "agarrar",
+      "descricao": "Punho de argila: Agarrar.",
+      "classe": "livro"
     },
     {
-      "nome": "Fúria Descontrolada",
-      "descricao": "A cada instante de combate, cresce a chance de seu espírito preso se libertar e ele atacar tudo ao redor sem distinção, sem que ninguém consiga voltar a controlá-lo."
+      "nome": "derrubar",
+      "descricao": "Punho de argila: Derrubar.",
+      "classe": "livro"
     },
     {
-      "nome": "Investida Acelerada",
-      "descricao": "Uma vez por cena, pode acelerar os próprios movimentos por alguns instantes depois de já estar em combate."
+      "nome": "empurrar",
+      "descricao": "Punho de argila: Empurrar.",
+      "classe": "livro"
     },
     {
-      "nome": "Ferida Amaldiçoada",
-      "descricao": "Os golpes que desfere deixam feridas que não cicatrizam por conta própria e resistem até à cura mágica mais poderosa."
+      "nome": "sem vida",
+      "descricao": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "Fúria descontrolada",
+      "descricao": "Ativação: a cada 6 Ticks de combate, o Mestre rola 1d6; o espírito se liberta com 6 na primeira rolagem, com 5 ou 6 na segunda, e o número desce um a cada rolagem que não liberta. Duração: até ele ser destruído; ninguém volta a controlá-lo. Alcance: o próprio corpo. Área: não se aplica. Efeito: o espírito preso se liberta, e o golem ataca a criatura mais perto, amiga ou inimiga, e destrói o que encontra. Dano: nenhum além dos golpes. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Investida acelerada",
+      "descricao": "Ativação: uma ação, Velocidade 6, depois de pelo menos 6 Ticks de combate. Duração: 18 Ticks. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Acelerado. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena (site).",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Ferida amaldiçoada",
+      "descricao": "Punho de argila: Ativação: o Punho que fere. Duração: até a cura que vence a maldição. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a ferida não fecha sozinha nem com descanso; a cura por Arte só a fecha se quem cura passar numa jogada contra Dificuldade 13 (10 + Centelha 3). Dano: o do Punho. Resistência: nenhum. Limite de uso: um por golpe.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "imune à magia",
+      "descricao": "a maior parte das Artes não o afeta.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "casco de argila",
+      "descricao": "resistência a Corte, Perfuração e Fogo (metade do dano).",
+      "classe": "livro"
+    },
+    {
+      "nome": "sentinela",
+      "descricao": "fica imóvel por décadas guardando a cripta ou a torre; desperto, cumpre a última ordem até o fim, sem pressa, até a fúria libertar o espírito.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um guarda humano; nota quem entra no lugar guardado."
     }
   ],
   "lore": [
@@ -95,6 +142,14 @@
     {
       "titulo": "Guardião silencioso",
       "texto": "Muitas vezes posicionado como sentinela de cripta ou torre, permanece imóvel por décadas até que alguém desperte sua fúria."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, 50 PV, Impacto 8, Corte e Perfuração 3; lâmina, ponta e fogo fazem metade. Lento (Esquiva 4), mas apara com o corpo (Bloqueio 13 com o punho). Punho de argila de dano médio 14,5, e a ferida não fecha sozinha. Sem mente: não se assusta nem se convence. Uma vez por cena fica Acelerado. A cada 6 Ticks de luta, o espírito pode se libertar, e daí ataca qualquer um. Não se cura sozinho."
     }
   ],
   "ecologia": {
@@ -132,5 +187,38 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "v3": {
+    "pv": 50,
+    "esquiva": 4,
+    "bloqueio": 12,
+    "defesa": 13,
+    "defesaMental": null,
+    "defesaSocial": null,
+    "absorcao": {
+      "impacto": 8,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 6,
+    "pesoErguido": 844.35,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
+      }
+    },
+    "bloqueioArma": 1
+  },
+  "notasObservacao": [
+    "`massa`: 270 kg, a do site, que dá 1.442 kg/m³ no corpo de base escalado, a densidade da argila seca; com os ombros 25% mais largos do golem de pedra, daria 1.153 kg/m³, leve demais para o barro, e por isso a proporção humana **[referência de jogo]**",
+    "`tamanho`: Médio pela área (1,28 m²); o site dizia Grande **[conta]**",
+    "`vigor`: 5 por julgamento (argila endurecida, abaixo do granito); o site tinha 1 **[provisório]**",
+    "`musculatura`: 2, pelo corpo de argila na proporção humana **[provisório]**",
+    "`couracaNivel`: 6, argila endurecida **[provisório]**",
+    "`ataque`: a \"Arma\" de 2 dados e corte vira o Punho de argila Média, de 1 dado e Impacto (perda de mecânica publicada, no relato) **[provisório]**",
+    "`atributos sociais`, `vontade`, `virtudes`: decididos pelo autor para toda criatura de Inteligência 0 (D-186)",
+    "`fúria descontrolada`, `investida acelerada`, `ferida amaldiçoada`: números sugeridos pela ficha (D-197)"
+  ]
 }

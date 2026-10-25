@@ -5,9 +5,10 @@
   "nome": "Xorn",
   "nomeIngles": "Xorn",
   "categoria": "Elemental",
+  "categoriaLegada": "Elemental",
   "papel": "elite",
   "conceito": "exterior Médio (terra)",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Esfera de pedra de três braços e boca enorme, que nada pela rocha como peixe na água: sente o metal a 18 m, sai da parede, come a arma ou a bolsa de quem a carrega e some de novo.",
   "tags": [
     "elemental",
     "centelha",
@@ -16,31 +17,52 @@
   "imagem": "bestiario/xorn_criatura.webp",
   "porte": "Médio",
   "dimensoes": {
-    "medida": "1,5 m de altura, corpo esférico",
-    "peso": "450 kg"
+    "medida": "1,5 m de altura",
+    "peso": "450 kg",
+    "largura": 0.95,
+    "altura": 1.5
   },
   "locomocao": {
     "terra": 2,
     "escavacao": 2
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
   },
   "centelha": 3,
   "attrs": {
     "forca": 6,
     "destreza": 3,
     "vigor": 6,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 2,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
     "briga": 5,
     "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "furtividade": 2,
+    "integridade": 2,
+    "prontidao": 3,
+    "sobrevivencia": 2,
+    "resistencia": 2
   },
+  "skills2": {
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "prontidao",
+      "foco": "achar metal e gema",
+      "valor": 2,
+      "origem": "natural"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 3,
@@ -49,35 +71,27 @@
   },
   "willpower": 8,
   "aparencia": 5,
-  "arte": {
-    "terra": 3
-  },
   "ataques": [
     {
-      "nome": "Golpe planar",
+      "nome": "Garras",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
-    }
-  ],
-  "poderes": [
+      "ticks": 6,
+      "classe": "media"
+    },
     {
-      "id": "deslizar-pela-pedra",
-      "nome": "Deslizar pela pedra",
-      "tipo": "natural",
-      "base": {
-        "arte": "terra",
-        "nivel": 3
-      },
-      "resiste": "nenhum",
-      "efeito": "Deslizar pela pedra",
-      "usos": {
-        "periodo": "avontade"
-      }
+      "nome": "Mordida",
+      "atrib": "forca",
+      "pericia": "briga",
+      "dado": 1,
+      "mao": 1,
+      "tipo": "perfurante",
+      "perf": 1,
+      "ticks": 6,
+      "classe": "media"
     }
   ],
   "fraquezas": [
@@ -86,36 +100,42 @@
   "resistencias": [
     "fogo"
   ],
+  "imunidades": [],
   "habilidades": [
     {
       "nome": "Deslizar pela pedra",
-      "descricao": "atravessa rocha sólida como se fosse água"
+      "descricao": "poder natural (base Terra 3, a do site): Ativação: parte do movimento dele. Duração: enquanto se move. Alcance: o próprio corpo. Área: não se aplica. Efeito: atravessa a rocha sólida como um peixe na água, à velocidade da Escavação, sem abrir túnel nem deixar rastro; dentro da pedra, quem está fora não o vê nem o ataca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Garras e mordida",
-      "descricao": "Três golpes de garra e uma mordida na mesma rodada, com a boca única e enorme."
+      "nome": "Três garras",
+      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
+      "classe": "livro"
     },
     {
-      "nome": "Devorar metal e gema",
-      "descricao": "engole e destrói itens metálicos ou preciosos em um turno"
-    },
-    {
-      "nome": "Sentido sísmico",
-      "descricao": "percebe movimento através da pedra, ignora escuridão e invisibilidade"
-    },
-    {
-      "nome": "Faro para tesouro",
-      "descricao": "detecta metais e gemas a até 18m"
+      "nome": "garras e mordida juntas",
+      "descricao": "as três garras e a mordida na mesma rodada (site); o livro deixa vários golpes por ação só por Rajada, empunhadura dupla, Poder Especial ou Proeza (C-046), e não junta partes diferentes do corpo numa ação. A ficha fica com a Rajada das garras, e a Mordida é outra ação.",
+      "classe": "sem regra ainda"
     },
     {
       "nome": "Devorar metal e gema",
-      "descricao": "Manobra de combate, sem limite de uso."
+      "descricao": "Mordida: Ativação: uma ação, Velocidade 6, a Mordida contra um objeto de metal ou uma gema ao alcance, solto ou na mão, no corpo ou na bolsa de alguém. Duração: instantânea. Alcance: o da Mordida. Área: um objeto. Efeito: morde e engole o objeto (uma arma, uma peça de armadura pequena, moedas ou gemas), que some. Dano: nenhum a quem o carrega. Resistência: esquiva, contra a jogada da Mordida, para quem segura ou veste o objeto. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "eremita da pedra",
+      "descricao": "só luta por comida ou se atacado; sai da parede ao lado de quem carrega metal, morde a arma ou a bolsa, rasga com as três garras e afunda de novo na pedra.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "tremor: percebe o movimento pela pedra em volta, mesmo no escuro e contra quem está invisível (site). · faro de tesouro: sente metal e gema a até 18 m, mesmo através da pedra (site). · visão: três olhos em volta do corpo, que olham para todos os lados ao mesmo tempo."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Nada pela rocha sólida como um peixe na água, alheio a quase tudo que acontece na superfície do mundo."
+      "texto": "Nada pela rocha sólida como um peixe na água, alheio a quase tudo que acontece na superfície do mundo. Social: sozinho."
     },
     {
       "titulo": "Hábitos",
@@ -128,6 +148,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Mineiros anões do White Wall contam histórias antigas de tesouros que somem dentro da própria rocha; poucos sabem que um xorn satisfeito apenas passou por ali e comeu o que interessava, sem notar sequer que havia alguém cavando ao lado."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, lento (2), atravessa a pedra a 2. Três garras por ação (Rajada), dano médio 12,5 cada, ou uma mordida de 12,5 que pode engolir a arma, o escudo pequeno ou a bolsa de moedas. Sente quem pisa a pedra e o metal a 18 m, vê para todos os lados. 54 PV, Impacto 9, Corte e Perfuração 3; o fogo faz metade, a água passa toda a Absorção. Esquiva 10, Bloqueio 6."
     }
   ],
   "ecologia": {
@@ -168,5 +192,34 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 54,
+    "esquiva": 10,
+    "bloqueio": 6,
+    "defesa": 10,
+    "defesaMental": 16,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 9,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 7,
+    "pesoErguido": 698.64,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
+      }
+    }
+  },
+  "notasObservacao": [
+    "`artes`: a Arte Terra 3 do site sai, e fica o poder natural Deslizar pela pedra, de mesma base (C-037) **[provisório]**",
+    "`prontidao`: 3, a da nota do site; o campo tinha 1, como no wyvern do lote 24 **[provisório]**",
+    "`couraca`: nível 7, couro de pedra **[provisório]**",
+    "`mordida`: N1 pela boca que come metal **[provisório]**",
+    "`deslizar pela pedra`, `devorar metal e gema`: números sugeridos pela ficha (D-197)"
+  ]
 }

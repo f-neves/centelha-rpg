@@ -3627,7 +3627,7 @@
   "atributos": {
    "forca": 9,
    "destreza": 5,
-   "vigor": 2,
+   "vigor": 8,
    "influencia": 0,
    "perspicacia": 1,
    "compostura": 1,
@@ -3636,7 +3636,7 @@
    "raciocinio": 1
   },
   "virtudes": {
-   "compaixao": 0,
+   "compaixao": 1,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 4
@@ -3653,22 +3653,22 @@
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 45,
+   "pv": 75,
    "defesa": 12,
    "defesaSocial": 2,
    "defesaMental": 8,
    "absorcao": {
-    "impacto": 2,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 0,
+    "perfuracao": 0
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
    "fraquezas": [
     "raio"
    ],
    "resistencias": [
-    "corte",
     "fogo",
+    "corte",
     "perfuracao"
    ],
    "iniciativa": "1d6 + 2",
@@ -3679,9 +3679,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
+     "nome": "Patas-lâmina",
      "pool": "7d6",
-     "dano": "3d6 +9 corte",
+     "dano": "2d6 +9 corte",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
@@ -3699,8 +3699,8 @@
    ]
   },
   "dimensoes": {
-   "medida": "corpo do tamanho de um elefante, cerca de 4,5 metros de comprimento",
-   "peso": "várias t"
+   "medida": "4,5 m de comprimento, 2,65 m de altura",
+   "peso": "3.600 kg"
   }
  },
  {
@@ -5474,31 +5474,26 @@
   "vontade": 6,
   "aparencia": 4,
   "pericias": {
-   "prontidao": 1,
+   "prontidao": 2,
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
    "furtividade": 0
   },
-  "artes": [
-   {
-    "id": "fortuna",
-    "nivel": 1
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 54,
-   "defesa": 4,
+   "defesa": 8,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
+   "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
     "arranque": 5,
@@ -5510,8 +5505,16 @@
      "pool": "7d6 +2",
      "dano": "2d6 +10 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
+    },
+    {
+     "nome": "Rocha arremessada",
+     "pool": "2d6+2 +2",
+     "dano": "2d6 +10 impacto",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -5526,7 +5529,7 @@
   },
   "dimensoes": {
    "medida": "3,2 m de altura",
-   "peso": "400 kg"
+   "peso": "448 kg"
   }
  },
  {
@@ -5536,43 +5539,44 @@
   "ameaca": 2,
   "centelha": 0,
   "categoria": "Construto",
-  "porte": "Pequeno",
+  "porte": "Miúdo",
   "imagem": "bestiario/cobra-de-ferro_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
   "atributos": {
    "forca": 3,
    "destreza": 4,
-   "vigor": 0,
-   "influencia": 0,
-   "perspicacia": 0,
+   "vigor": 4,
+   "influencia": 1,
+   "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 3,
-   "valor": 3
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 6
   },
-  "vontade": 5,
+  "vontade": 3,
   "aparencia": 4,
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
+   "integridade": 0,
    "furtividade": 3
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 20,
+   "pv": 28,
    "defesa": 10,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 0,
+    "impacto": 4,
     "corte": 0,
     "perfuracao": 0
    },
@@ -5581,8 +5585,8 @@
     "raio"
    ],
    "resistencias": [
-    "corte",
     "fogo",
+    "corte",
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
@@ -5593,10 +5597,10 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2",
-     "dano": "1d6 +3 corte",
-     "perfArma": null,
+     "nome": "Mordida",
+     "pool": "3d6 +1",
+     "dano": "1d6 +1 perfurante · perf. 0",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -5612,7 +5616,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "1,2 m de comprimento",
+   "medida": "1,2 m de comprimento, 0,4 m de altura",
    "peso": "18 kg"
   }
  },
@@ -7497,9 +7501,9 @@
    "raciocinio": 4
   },
   "virtudes": {
-   "compaixao": 1,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 2,
+   "conviccao": 4,
+   "temperanca": 1,
    "valor": 3
   },
   "vontade": 9,
@@ -7508,20 +7512,20 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 4,
-   "sociabilidade": 0,
+   "sociabilidade": 2,
    "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 50,
+   "pv": 40,
    "defesa": 14,
-   "defesaSocial": 8,
+   "defesaSocial": 16,
    "defesaMental": 25,
    "absorcao": {
     "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -7536,9 +7540,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Golpe de vento",
      "pool": "5d6+2 +8",
-     "dano": "2d6 +10 corte",
+     "dano": "1d6 +10 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -9407,10 +9411,10 @@
   "vontade": 9,
   "aparencia": 5,
   "pericias": {
-   "prontidao": 2,
+   "prontidao": 3,
    "esquiva": 1,
    "integridade": 4,
-   "sociabilidade": 0,
+   "sociabilidade": 1,
    "furtividade": 0
   },
   "artes": [],
@@ -9418,21 +9422,22 @@
   "combate": {
    "pv": 54,
    "defesa": 14,
-   "defesaSocial": 8,
+   "defesaSocial": 12,
    "defesaMental": 25,
    "absorcao": {
     "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
-    "agua"
+    "agua",
+    "gelo"
    ],
-   "resistencias": [
+   "imunidades": [
     "fogo"
    ],
-   "iniciativa": "1d6 + 6",
+   "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 2,
     "arranque": 3,
@@ -9440,9 +9445,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Punho em brasa",
      "pool": "6d6+2 +8",
-     "dano": "2d6 +12 corte",
+     "dano": "1d6 +12 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -9646,7 +9651,7 @@
   "semImagem": true,
   "tipo": "soldado",
   "atributos": {
-   "forca": 4,
+   "forca": 3,
    "destreza": 2,
    "vigor": 3,
    "influencia": 2,
@@ -9669,7 +9674,7 @@
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
@@ -9680,8 +9685,8 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -9693,8 +9698,8 @@
    "ataques": [
     {
      "nome": "Pancada de água",
-     "pool": "3d6+2 +2",
-     "dano": "1d6 +5 impacto",
+     "pool": "3d6 +3",
+     "dano": "1d6 +2 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -9711,8 +9716,8 @@
    ]
   },
   "dimensoes": {
-   "medida": "1,2 metro de altura, corpo líquido em constante fluxo",
-   "peso": "cerca de 15 kg"
+   "medida": "1,2 m de altura",
+   "peso": "23,4 kg"
   }
  },
  {
@@ -9727,7 +9732,7 @@
   "semImagem": false,
   "tipo": "elite",
   "atributos": {
-   "forca": 9,
+   "forca": 10,
    "destreza": 2,
    "vigor": 7,
    "influencia": 2,
@@ -9762,13 +9767,13 @@
   ],
   "combate": {
    "pv": 58,
-   "defesa": 4,
+   "defesa": 13,
    "defesaSocial": 4,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 10,
-    "corte": 8,
-    "perfuracao": 8
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -9784,9 +9789,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "7d6 +6",
-     "dano": "2d6 +12 corte",
+     "nome": "Pancada de pedra",
+     "pool": "7d6+2 +6",
+     "dano": "1d6 +13 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -9805,7 +9810,7 @@
   },
   "dimensoes": {
    "medida": "3 m de altura",
-   "peso": "2 t"
+   "peso": "1.234 kg"
   }
  },
  {
@@ -9833,7 +9838,7 @@
   "virtudes": {
    "compaixao": 1,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "vontade": 6,
@@ -9848,14 +9853,14 @@
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 26,
-   "defesa": 4,
+   "pv": 34,
+   "defesa": 9,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -9872,9 +9877,9 @@
    },
    "ataques": [
     {
-     "nome": "Pancada",
-     "pool": "4d6 +2",
-     "dano": "1d6 +6 impacto",
+     "nome": "Pancada de pedra",
+     "pool": "4d6 +3",
+     "dano": "1d6 +4 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -9892,8 +9897,8 @@
    ]
   },
   "dimensoes": {
-   "medida": "1,2 metro de altura, denso e compacto",
-   "peso": "cerca de 36 kg"
+   "medida": "1,2 m de altura",
+   "peso": "79 kg"
   }
  },
  {
@@ -9931,7 +9936,7 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
@@ -9942,8 +9947,8 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -9959,8 +9964,8 @@
    "ataques": [
     {
      "nome": "Pancada de vento",
-     "pool": "3d6 +2",
-     "dano": "1d6 +4 impacto",
+     "pool": "4d6 +3",
+     "dano": "1d6 +2 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -9978,8 +9983,8 @@
    ]
   },
   "dimensoes": {
-   "medida": "1,2 metro de diâmetro, em constante redemoinho",
-   "peso": "praticamente sem peso"
+   "medida": "1,2 m de altura",
+   "peso": "sem massa (volume 0,0234 m³)"
   }
  },
  {
@@ -11645,7 +11650,7 @@
   "vontade": 5,
   "aparencia": 4,
   "pericias": {
-   "prontidao": 1,
+   "prontidao": 3,
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
@@ -11655,16 +11660,16 @@
   "tecnicas": [],
   "combate": {
    "pv": 50,
-   "defesa": 4,
+   "defesa": 6,
    "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
+   "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 4,
     "arranque": 6,
@@ -11676,8 +11681,8 @@
      "pool": "6d6",
      "dano": "2d6 +8 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -11693,7 +11698,7 @@
   },
   "dimensoes": {
    "medida": "4 m de altura",
-   "peso": "1,8 t"
+   "peso": "1.094 kg"
   }
  },
  {
@@ -13200,7 +13205,7 @@
    "esquiva": 1,
    "integridade": 3,
    "sociabilidade": 0,
-   "furtividade": 0
+   "furtividade": 3
   },
   "artes": [],
   "tecnicas": [],
@@ -13211,8 +13216,8 @@
    "defesaMental": 10,
    "absorcao": {
     "impacto": 6,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -13227,8 +13232,16 @@
      "pool": "7d6",
      "dano": "2d6 +9 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
+    },
+    {
+     "nome": "Rocha arremessada",
+     "pool": "4d6",
+     "dano": "2d6 +9 impacto",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -13244,7 +13257,7 @@
   },
   "dimensoes": {
    "medida": "3,7 m de altura",
-   "peso": "770 kg"
+   "peso": "693 kg"
   }
  },
  {
@@ -13278,10 +13291,10 @@
   "vontade": 8,
   "aparencia": 4,
   "pericias": {
-   "prontidao": 3,
+   "prontidao": 4,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0,
+   "sociabilidade": 2,
    "furtividade": 0
   },
   "artes": [],
@@ -13289,15 +13302,18 @@
   "combate": {
    "pv": 80,
    "defesa": 12,
-   "defesaSocial": 10,
+   "defesaSocial": 18,
    "defesaMental": 26,
    "absorcao": {
     "impacto": 13,
-    "corte": 12,
-    "perfuracao": 12
+    "corte": 4,
+    "perfuracao": 4
    },
-   "resistenciaPerfuracao": 1,
-   "iniciativa": "1d6 + 8",
+   "resistenciaPerfuracao": 0,
+   "imunidades": [
+    "raio"
+   ],
+   "iniciativa": "1d6 + 9",
    "deslocamento": {
     "batalha": 5,
     "arranque": 8,
@@ -13307,7 +13323,7 @@
     {
      "nome": "Pancada descomunal",
      "pool": "9d6 +8",
-     "dano": "3d6 +17 impacto",
+     "dano": "2d6 +17 impacto",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
@@ -13326,7 +13342,7 @@
   },
   "dimensoes": {
    "medida": "7,5 m de altura",
-   "peso": "11 t"
+   "peso": "5.772 kg"
   }
  },
  {
@@ -13360,10 +13376,10 @@
   "vontade": 6,
   "aparencia": 4,
   "pericias": {
-   "prontidao": 2,
+   "prontidao": 3,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0,
+   "sociabilidade": 1,
    "furtividade": 0
   },
   "artes": [],
@@ -13371,15 +13387,15 @@
   "combate": {
    "pv": 75,
    "defesa": 10,
-   "defesaSocial": 10,
+   "defesaSocial": 14,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 10,
-    "corte": 10,
-    "perfuracao": 10
+    "corte": 2,
+    "perfuracao": 2
    },
-   "resistenciaPerfuracao": 1,
-   "iniciativa": "1d6 + 6",
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 5,
     "arranque": 8,
@@ -13389,19 +13405,18 @@
     {
      "nome": "Pancada descomunal",
      "pool": "8d6+2 +4",
-     "dano": "3d6 +14 impacto",
+     "dano": "2d6 +14 impacto",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     },
     {
-     "nome": "Arremessar rocha",
-     "pool": "8d6+2 +4",
-     "dano": "3d6 +14 impacto",
+     "nome": "Rocha arremessada",
+     "pool": "3d6 +4",
+     "dano": "2d6 +14 impacto",
      "perfArma": null,
      "speed": 7,
-     "classe": "arremesso",
-     "notas": "dado pelo porte Enorme"
+     "classe": "pesada"
     }
    ]
   },
@@ -13417,7 +13432,7 @@
   },
   "dimensoes": {
    "medida": "7 m de altura",
-   "peso": "8 t"
+   "peso": "4.692 kg"
   }
  },
  {
@@ -13461,15 +13476,28 @@
   "tecnicas": [],
   "combate": {
    "pv": 62,
-   "defesa": 4,
+   "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 14,
    "absorcao": {
     "impacto": 9,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 1,
+    "bloqueio": 5,
+    "defesa": 5,
+    "contraTiro": 1,
+    "absorcao": {
+     "impacto": 13,
+     "corte": 8,
+     "perfuracao": 5
+    },
+    "nivel": 2,
+    "penalidade": 3
+   },
    "fraquezas": [
     "gelo"
    ],
@@ -13488,17 +13516,16 @@
      "pool": "7d6+2 +2",
      "dano": "2d6 +11 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     },
     {
-     "nome": "Arremessar rocha",
-     "pool": "7d6+2 +2",
+     "nome": "Rocha arremessada",
+     "pool": "2d6+2 +2",
      "dano": "2d6 +11 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "arremesso",
-     "notas": "dado pelo porte Grande"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -13514,7 +13541,7 @@
   },
   "dimensoes": {
    "medida": "4,5 m de altura",
-   "peso": "3,2 t"
+   "peso": "1.247 kg"
   }
  },
  {
@@ -13552,21 +13579,24 @@
    "esquiva": 0,
    "integridade": 3,
    "sociabilidade": 0,
-   "furtividade": 0
+   "furtividade": 1
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 58,
-   "defesa": 4,
+   "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 8,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "imunidades": [
+    "gelo"
+   ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 4,
@@ -13579,8 +13609,16 @@
      "pool": "7d6+2 +2",
      "dano": "2d6 +11 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
+    },
+    {
+     "nome": "Rocha arremessada",
+     "pool": "2d6+2 +2",
+     "dano": "2d6 +11 impacto",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -13596,7 +13634,7 @@
   },
   "dimensoes": {
    "medida": "4,3 m de altura",
-   "peso": "2,8 t"
+   "peso": "1.088 kg"
   }
  },
  {
@@ -14052,50 +14090,51 @@
   "ameaca": 5,
   "centelha": 3,
   "categoria": "Construto",
-  "porte": "Grande",
+  "porte": "Médio",
   "imagem": null,
   "semImagem": true,
   "tipo": "chefe",
   "atributos": {
    "forca": 8,
    "destreza": 2,
-   "vigor": 1,
-   "influencia": 0,
-   "perspicacia": 0,
+   "vigor": 5,
+   "influencia": 1,
+   "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 3,
-   "valor": 4
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 6
   },
-  "vontade": 8,
+  "vontade": 3,
   "aparencia": 4,
   "pericias": {
    "prontidao": 1,
    "esquiva": 0,
-   "furtividade": 1
+   "integridade": 0,
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 34,
-   "defesa": 4,
+   "pv": 50,
+   "defesa": 13,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 4,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
-    "corte",
     "fogo",
+    "corte",
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
@@ -14106,9 +14145,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "6d6+2 +6",
-     "dano": "2d6 +11 corte",
+     "nome": "Punho de argila",
+     "pool": "6d6 +6",
+     "dano": "1d6 +11 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -14145,42 +14184,46 @@
   "atributos": {
    "forca": 7,
    "destreza": 2,
-   "vigor": 1,
-   "influencia": 0,
-   "perspicacia": 0,
+   "vigor": 5,
+   "influencia": 1,
+   "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 3,
-   "valor": 3
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 6
   },
-  "vontade": 8,
-  "aparencia": 4,
+  "vontade": 3,
+  "aparencia": 2,
   "pericias": {
    "prontidao": 1,
    "esquiva": 0,
-   "furtividade": 1
+   "integridade": 0,
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 34,
+   "pv": 50,
    "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 4,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
     "perfuracao"
+   ],
+   "imunidades": [
+    "raio"
    ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
@@ -14190,9 +14233,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "6d6 +6",
-     "dano": "2d6 +10 corte",
+     "nome": "Punho",
+     "pool": "5d6+2 +6",
+     "dano": "1d6 +10 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -14228,38 +14271,39 @@
   "atributos": {
    "forca": 11,
    "destreza": 2,
-   "vigor": 1,
-   "influencia": 0,
-   "perspicacia": 0,
+   "vigor": 7,
+   "influencia": 1,
+   "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 3,
-   "valor": 4
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 6
   },
-  "vontade": 9,
+  "vontade": 3,
   "aparencia": 4,
   "pericias": {
    "prontidao": 1,
    "esquiva": 0,
-   "furtividade": 1
+   "integridade": 0,
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 34,
-   "defesa": 4,
+   "pv": 70,
+   "defesa": 13,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 5,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 11,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -14267,8 +14311,10 @@
    ],
    "resistencias": [
     "corte",
-    "fogo",
     "perfuracao"
+   ],
+   "imunidades": [
+    "fogo"
    ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
@@ -14278,12 +14324,12 @@
    },
    "ataques": [
     {
-     "nome": "Punhos",
-     "pool": "8d6 +8",
+     "nome": "Punho de ferro",
+     "pool": "7d6+2 +8",
      "dano": "2d6 +15 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -14300,7 +14346,7 @@
   },
   "dimensoes": {
    "medida": "3,6 m de altura",
-   "peso": "2.270 kg"
+   "peso": "4.960 kg"
   }
  },
  {
@@ -14317,36 +14363,37 @@
   "atributos": {
    "forca": 5,
    "destreza": 2,
-   "vigor": 0,
-   "influencia": 0,
-   "perspicacia": 0,
+   "vigor": 4,
+   "influencia": 1,
+   "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 3,
-   "valor": 3
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 6
   },
-  "vontade": 6,
+  "vontade": 3,
   "aparencia": 4,
   "pericias": {
    "prontidao": 1,
    "esquiva": 0,
-   "furtividade": 2
+   "integridade": 0,
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 25,
+   "pv": 37,
    "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 1,
+    "impacto": 5,
     "corte": 1,
     "perfuracao": 1
    },
@@ -14355,8 +14402,10 @@
     "fogo"
    ],
    "resistencias": [
-    "gelo",
     "perfuracao"
+   ],
+   "imunidades": [
+    "gelo"
    ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
@@ -14366,13 +14415,12 @@
    },
    "ataques": [
     {
-     "nome": "Punhos gelados",
-     "pool": "5d6 +2",
+     "nome": "Punho gelado",
+     "pool": "4d6+2 +2",
      "dano": "1d6 +6 impacto",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve",
-     "notas": "cada acerto soma dano de frio"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -14388,7 +14436,7 @@
   },
   "dimensoes": {
    "medida": "2,1 m de altura",
-   "peso": "225 kg"
+   "peso": "115 kg"
   }
  },
  {
@@ -15950,7 +15998,7 @@
   "ameaca": 2,
   "centelha": 1,
   "categoria": "Construto",
-  "porte": "Miúdo",
+  "porte": "Pequeno",
   "imagem": "bestiario/homunculus_criatura.webp",
   "semImagem": false,
   "tipo": "soldado",
@@ -15966,7 +16014,7 @@
    "raciocinio": 2
   },
   "virtudes": {
-   "compaixao": 0,
+   "compaixao": 1,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 3
@@ -15978,12 +16026,12 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 4
+   "furtividade": 2
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 16,
+   "pv": 5,
    "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 12,
@@ -16004,10 +16052,10 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2 +2",
-     "dano": "1d6 +3 corte",
-     "perfArma": null,
+     "nome": "Mordida",
+     "pool": "3d6+2 +3",
+     "dano": "1d6 +1 perfurante · perf. 0",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -16025,7 +16073,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "75 cm de envergadura",
+   "medida": "0,54 m de altura",
    "peso": "3 kg"
   }
  },
@@ -19261,7 +19309,7 @@
   "semImagem": false,
   "tipo": "chefe",
   "atributos": {
-   "forca": 8,
+   "forca": 9,
    "destreza": 5,
    "vigor": 6,
    "influencia": 5,
@@ -19283,7 +19331,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0,
+   "sociabilidade": 2,
    "furtividade": 0
   },
   "artes": [],
@@ -19291,12 +19339,12 @@
   "combate": {
    "pv": 54,
    "defesa": 14,
-   "defesaSocial": 10,
+   "defesaSocial": 18,
    "defesaMental": 29,
    "absorcao": {
     "impacto": 11,
-    "corte": 10,
-    "perfuracao": 10
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -19310,9 +19358,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "6d6+2 +10",
-     "dano": "2d6 +13 corte",
+     "nome": "Pancada de maré",
+     "pool": "7d6 +10",
+     "dano": "1d6 +14 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -19330,7 +19378,7 @@
   },
   "dimensoes": {
    "medida": "4,9 m de altura",
-   "peso": "1130 kg"
+   "peso": "1.130 kg"
   }
  },
  {
@@ -21757,38 +21805,39 @@
   "atributos": {
    "forca": 4,
    "destreza": 2,
-   "vigor": 0,
-   "influencia": 0,
-   "perspicacia": 0,
-   "compostura": 0,
+   "vigor": 3,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1,
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 0
   },
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 3,
-   "valor": 3
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 6
   },
-  "vontade": 6,
+  "vontade": 3,
   "aparencia": 4,
   "pericias": {
    "prontidao": 0,
    "esquiva": 0,
-   "furtividade": 2
+   "integridade": 0,
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 25,
+   "pv": 34,
    "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 2,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 4,
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -21806,8 +21855,8 @@
      "pool": "4d6 +2",
      "dano": "1d6 +5 impacto",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -21872,8 +21921,8 @@
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -21888,8 +21937,8 @@
      "pool": "5d6",
      "dano": "2d6 +7 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -21906,7 +21955,7 @@
   },
   "dimensoes": {
    "medida": "2,9 m de altura",
-   "peso": "290 kg"
+   "peso": "334 kg"
   }
  },
  {
@@ -22478,7 +22527,7 @@
    "esquiva": 1,
    "integridade": 3,
    "sociabilidade": 0,
-   "furtividade": 1
+   "furtividade": 3
   },
   "artes": [],
   "tecnicas": [],
@@ -22489,8 +22538,8 @@
    "defesaMental": 22,
    "absorcao": {
     "impacto": 11,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
@@ -22501,9 +22550,9 @@
    },
    "ataques": [
     {
-     "nome": "Dois socos",
-     "pool": "5d6 +8",
-     "dano": "1d6 +9 impacto",
+     "nome": "Soco",
+     "pool": "5d6 +9",
+     "dano": "1d6 +7 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -24756,7 +24805,7 @@
   "virtudes": {
    "compaixao": 1,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 1,
    "valor": 3
   },
   "vontade": 8,
@@ -24765,8 +24814,8 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 4,
-   "sociabilidade": 0,
-   "furtividade": 1
+   "sociabilidade": 1,
+   "furtividade": 0
   },
   "artes": [],
   "tecnicas": [
@@ -24778,19 +24827,20 @@
   ],
   "combate": {
    "pv": 40,
-   "defesa": 10,
-   "defesaSocial": 8,
+   "defesa": 16,
+   "defesaSocial": 12,
    "defesaMental": 22,
    "absorcao": {
     "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
-    "agua"
+    "agua",
+    "gelo"
    ],
-   "resistencias": [
+   "imunidades": [
     "fogo"
    ],
    "iniciativa": "1d6 + 6",
@@ -24801,12 +24851,20 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "5d6 +6",
-     "dano": "1d6 +8 corte",
+     "nome": "Lança",
+     "pool": "5d6 +7",
+     "dano": "1d6 +13 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "haste"
+    },
+    {
+     "nome": "Cauda",
+     "pool": "4d6+2 +6",
+     "dano": "1d6 +13 impacto",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -24821,7 +24879,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "2,7 m de comprimento total",
+   "medida": "2,7 m de comprimento, 0,28 m de altura",
    "peso": "100 kg"
   }
  },
@@ -25179,20 +25237,20 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 4,
-   "sociabilidade": 0,
+   "sociabilidade": 1,
    "furtividade": 0
   },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 54,
+   "pv": 65,
    "defesa": 10,
-   "defesaSocial": 8,
+   "defesaSocial": 12,
    "defesaMental": 25,
    "absorcao": {
     "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -25200,6 +25258,9 @@
    ],
    "resistencias": [
     "fogo"
+   ],
+   "imunidades": [
+    "raio"
    ],
    "iniciativa": "1d6 + 6",
    "deslocamento": {
@@ -25209,9 +25270,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Pancada de pedra",
      "pool": "6d6 +8",
-     "dano": "2d6 +11 corte",
+     "dano": "1d6 +11 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -25230,7 +25291,7 @@
   },
   "dimensoes": {
    "medida": "3,4 m de altura",
-   "peso": "2270 kg"
+   "peso": "2.270 kg"
   }
  },
  {
@@ -28840,28 +28901,23 @@
   "vontade": 8,
   "aparencia": 5,
   "pericias": {
-   "prontidao": 1,
+   "prontidao": 3,
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 1
+   "furtividade": 2
   },
-  "artes": [
-   {
-    "id": "terra",
-    "nivel": 3
-   }
-  ],
+  "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 43,
+   "pv": 54,
    "defesa": 10,
    "defesaSocial": 4,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -28870,7 +28926,7 @@
    "resistencias": [
     "fogo"
    ],
-   "iniciativa": "1d6 + 3",
+   "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 2,
     "arranque": 3,
@@ -28878,12 +28934,20 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Garras",
      "pool": "5d6+2 +6",
      "dano": "1d6 +9 corte",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Mordida",
+     "pool": "5d6+2 +6",
+     "dano": "1d6 +9 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
@@ -28898,7 +28962,7 @@
    ]
   },
   "dimensoes": {
-   "medida": "1,5 m de altura, corpo esférico",
+   "medida": "1,5 m de altura",
    "peso": "450 kg"
   }
  },

@@ -133,42 +133,42 @@
   "habilidades": [
     {
       "nome": "Garras traiçoeiras",
-      "descricao": "a Rajada: dois golpes de Garras na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação. Decisão do autor de 23/10: o golpe duplo é a Rajada, como o do campeão.",
+      "descricao": "a Rajada: dois golpes de Garras na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação. Decisão do autor de 23/10: o golpe duplo é a Rajada, como o do campeão. Vale só na forma verdadeira.",
       "classe": "livro"
     },
     {
       "nome": "Mudar de forma",
-      "descricao": "poder natural (base Matéria 3): Ativação: uma ação, Velocidade 6. Duração: até ele desfazer, ou até cair inconsciente. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume o corpo, o rosto e a voz de qualquer humanoide de Tamanho perto do dele; os números ficam os dele; sem magia, ninguém vê a troca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
+      "descricao": "poder natural (base Matéria 3): Ativação: uma ação, Velocidade 6. Duração: até ele desfazer, ou até cair inconsciente. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume o corpo, o rosto e a voz de qualquer humanoide de Tamanho perto do dele; os números ficam os dele; sem magia, ninguém vê a troca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Ler pensamentos",
-      "descricao": "poder natural (base Adivinhação 2): Ativação: uma ação, Velocidade 6, olhando o alvo. Duração: enquanto se concentra, até o fim da cena. Alcance: 18 m. Área: um alvo. Efeito: ouve os pensamentos de superfície do alvo e descobre uma intenção ou um segredo dele. Dano: nenhum. Resistência: mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem. Limite de uso: à vontade, um alvo por vez.",
+      "descricao": "poder natural (base Adivinhação 2): Ativação: uma ação, Velocidade 6, olhando o alvo. Duração: enquanto se concentra, até o fim da cena. Alcance: 18 m. Área: um alvo. Efeito: ouve os pensamentos de superfície do alvo e descobre uma intenção ou um segredo dele. Dano: nenhum. Resistência: mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem. Limite de uso: à vontade, um alvo por vez. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Ilusões",
-      "descricao": "poder natural (base Fascinação 4): Ativação: uma ação, Velocidade 8. Duração: até o fim da cena, ou enquanto ele mantiver. Alcance: 36 m. Área: uma imagem de até 6 m de lado. Efeito: uma imagem com som e cheiro, que se move como ele quer, para enganar ou distrair; quem toca ou desconfia e testa vê através dela. Dano: nenhum. Resistência: mente, contra Influência + Manha dele, só para quem desconfia. Limite de uso: uma ilusão por vez.",
+      "descricao": "poder natural (base Fascinação 4): Ativação: uma ação, Velocidade 8. Duração: até o fim da cena, ou enquanto ele mantiver. Alcance: 36 m. Área: uma imagem de até 6 m de lado. Efeito: uma imagem com som e cheiro, que se move como ele quer, para enganar ou distrair; quem toca ou desconfia e testa vê através dela. Dano: nenhum. Resistência: mente, contra Influência + Manha dele, só para quem desconfia. Limite de uso: uma ilusão por vez. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Magia reversa",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +4 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +4 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Feitiço que volta",
-      "descricao": "alguns feitiços lançados contra ele produzem o efeito oposto ao que o conjurador queria.",
+      "descricao": "alguns feitiços lançados contra ele produzem o efeito oposto ao que o conjurador queria. Vale em todas as formas.",
       "classe": "sem regra ainda"
     },
     {
       "nome": "trama de corte",
-      "descricao": "evita a luta aberta; deixa os servos e as vítimas enganadas na frente, confunde com ilusões e com Fascinação, e só entra com as garras quando a vitória é certa; ferido, muda de forma e some.",
+      "descricao": "evita a luta aberta; deixa os servos e as vítimas enganadas na frente, confunde com ilusões e com Fascinação, e só entra com as garras quando a vitória é certa; ferido, muda de forma e some. Vale em todas as formas.",
       "classe": "como luta"
     },
     {
       "nome": "Sentidos",
-      "descricao": "visão, audição e faro: os de um humano, com os olhos de tigre."
+      "descricao": "visão, audição e faro: os de um humano, com os olhos de tigre. Vale em todas as formas."
     }
   ],
   "lore": [
@@ -265,6 +265,7 @@
     "`bloqueio`: 1; o site não gravava Bloqueio **[provisório]**",
     "`aparencia`: 6; o site tinha 0 **[provisório]**",
     "`compaixao`: 1, o piso da régua; o site tinha 0",
-    "`mudar de forma`, `ler pensamentos`, `ilusões`, `magia reversa`: números sugeridos pela ficha (D-197). A Magia reversa fica +4, o número do site"
+    "`mudar de forma`, `ler pensamentos`, `ilusões`, `magia reversa`: números sugeridos pela ficha (D-197). A Magia reversa fica +4, o número do site",
+    "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos; as Garras traiçoeiras só na forma verdadeira, porque o disfarce muda as mãos; os poderes, a Magia reversa e o Feitiço que volta em todas, porque os números ficam os dele; a trama de corte em todas, porque a linha já conta a troca; a Camuflagem do disfarce na linha dela em Variantes. As Artes não mudam no disfarce, e as Aptidões ficam iguais **[provisório]**"
   ]
 }

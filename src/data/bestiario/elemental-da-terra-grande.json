@@ -5,9 +5,10 @@
   "nome": "Elemental da Terra (Grande)",
   "nomeIngles": "Elemental, Large Earth",
   "categoria": "Elemental",
+  "categoriaLegada": "Elemental",
   "papel": "elite",
   "conceito": "exterior Grande (terra)",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Bloco de pedra viva de 3 m: nada pela rocha como se fosse água, sai ao lado do alvo, bate com um braço de pedra que joga longe ou derruba e volta para dentro da montanha.",
   "tags": [
     "elemental",
     "centelha",
@@ -17,30 +18,50 @@
   "porte": "Grande",
   "dimensoes": {
     "medida": "3 m de altura",
-    "peso": "2 t"
+    "peso": "1.234 kg",
+    "largura": 0.94,
+    "altura": 3
   },
   "locomocao": {
     "terra": 3,
     "escavacao": 2
   },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
+  },
   "centelha": 3,
   "attrs": {
-    "forca": 9,
+    "forca": 10,
     "destreza": 2,
     "vigor": 7,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
     "briga": 5,
-    "esquiva": 0,
+    "bloqueio": 2,
+    "atletismo": 2,
+    "integridade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "sobrevivencia": 1
   },
+  "skills2": {
+    "musculatura": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "briga",
+      "foco": "empurrar",
+      "valor": 2,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 3,
@@ -49,66 +70,60 @@
   },
   "willpower": 8,
   "aparencia": 5,
-  "tech": {
-    "pele-de-pedra": true
-  },
   "ataques": [
     {
-      "nome": "Golpe planar",
+      "nome": "Pancada de pedra",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 6
+      "tipo": "impacto",
+      "ticks": 6,
+      "classe": "media"
     }
   ],
-  "poderes": [
-    {
-      "id": "deslizar-na-pedra-e-empurrao",
-      "nome": "Deslizar na pedra e empurrão",
-      "tipo": "natural",
-      "base": {
-        "arte": "terra",
-        "nivel": 2
-      },
-      "resiste": "nenhum",
-      "efeito": "Deslizar na pedra e empurrão",
-      "usos": {
-        "periodo": "avontade"
-      },
-      "descricao": "O elemental nada pela rocha sólida como se fosse água, sem deixar rastro nem precisar de passagem aberta; a investida de sua massa empurra quem estiver no caminho."
-    }
-  ],
-  "material": "pedra",
+  "fraquezas": [],
   "resistencias": [
     "fogo",
     "corte",
     "perfuracao"
   ],
+  "imunidades": [],
   "habilidades": [
     {
       "nome": "Deslizar na pedra",
-      "descricao": "move-se através de terra e rocha sem deixar rastro"
+      "descricao": "poder natural (base Terra 2, a do site): Ativação: parte do movimento dele. Duração: enquanto se move. Alcance: o próprio corpo. Área: não se aplica. Efeito: nada pela rocha sólida como se fosse água, à velocidade da Escavação, sem deixar rastro nem precisar de passagem aberta; dentro da pedra, quem está fora não o vê nem o ataca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Empurrão",
-      "descricao": "golpe pode derrubar ou arremessar o alvo para trás"
+      "descricao": "Pancada de pedra: Ativação: a Pancada de pedra que acerta. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo é jogado 3 m para trás ou cai (Caído), à escolha do elemental; quem está duas faixas de massa ou mais acima dele não sai do lugar. Dano: o da Pancada. Resistência: corpo, contra a jogada da Pancada; quem passa fica de pé e no lugar. Limite de uso: um por golpe.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Imunidade mental e a venenos",
-      "descricao": "sem efeito de veneno, doença ou efeitos mentais"
+      "nome": "Pele de Pedra",
+      "descricao": "Técnica pele-de-pedra, nível 3: por 3 de Energia, +4 de Absorção (todos os tipos) e reduz as penalidades de ferimento em 1.",
+      "classe": "livro"
     },
     {
-      "nome": "Não precisa respirar",
-      "descricao": "imune a afogamento e gases"
+      "nome": "feito de pedra viva",
+      "descricao": "não sente cansaço, veneno nem doença; não respira, não come, não dorme, não se afoga e não sente gás.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "força bruta da terra",
+      "descricao": "avança em linha reta esmagando o que encontra; sai da pedra ao lado do alvo, empurra e derruba, e volta para dentro da rocha.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um humano."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Força bruta da terra viva, avança em linha reta esmagando o que encontra, sem malícia nem hesitação."
+      "texto": "Força bruta da terra viva, avança em linha reta esmagando o que encontra, sem malícia nem hesitação. Social: sozinho, ou com quem o conjurou."
     },
     {
       "titulo": "Ecologia",
@@ -121,6 +136,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Raramente visto fora de rituais antigos ou minas profundas do White Wall, um elemental da terra desperto é tomado pelo povo comum como sinal de que a montanha acordou zangada, mais um argumento das igrejas supressoras contra quem ainda ousa invocar tais forças."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande e lento (3), atravessa a pedra a 2. Bate com dano médio 16,5 e joga o alvo 3 m para trás ou o derruba. 58 PV, Impacto 10, Corte e Perfuração 3; fogo, Corte e Perfuração fazem metade. Bloqueio 12 (13 com o braço de pedra), Esquiva 4. Por 3 de Energia, a Pele de Pedra soma 4 em toda a Absorção."
     }
   ],
   "ecologia": {
@@ -166,5 +185,39 @@
       "caminho": "pele-de-pedra",
       "tecnica": "carne-de-granito"
     }
+  ],
+  "v3": {
+    "pv": 58,
+    "esquiva": 4,
+    "bloqueio": 12,
+    "defesa": 13,
+    "defesaMental": 16,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 10,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 9,
+    "pesoErguido": 1385.15,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    },
+    "bloqueioArma": 1
+  },
+  "tech": {
+    "pele-de-pedra": true
+  },
+  "notasObservacao": [
+    "`massa`: 1.234 kg pelo volume em granito; o site dizia 2 t, que daria a Faixa 5 (1,8 a 14 t) e PV 35 + 5 × 7 = 70, fora da zona de transição (1,62 a 1,98 t); com a conta, Faixa 4 e PV 58 **[conta]**",
+    "`forca`: 10 pelo teste de ordem; o site tinha 9. Com 9, o dano médio seria 15,5 e o peso erguido 1.137,73 kg **[provisório]**",
+    "`ataque`: o \"Golpe planar\" de 2 dados vira a Pancada de pedra Média, de 1 dado e Impacto **[provisório]**",
+    "`bloqueio`: 2, como o golem de pedra; o site não gravava Bloqueio **[provisório]**",
+    "`couraca`: nível 9, pedra maciça, como o golem de pedra **[provisório]**",
+    "`deslizar na pedra`, `empurrão`: números sugeridos pela ficha (D-197)"
   ]
 }

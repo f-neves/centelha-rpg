@@ -118,47 +118,52 @@
   "habilidades": [
     {
       "nome": "Maça estonteante",
-      "descricao": "Maça: Ativação: o golpe da Maça que fere o alvo com 10 ou mais de dano depois da Absorção. Duração: até o fim da próxima ação do alvo. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo fica tonto e perde a próxima ação. Dano: o da Maça. Resistência: corpo, contra a jogada do golpe; quem passa só leva o dano. Limite de uso: um por golpe, sem limite por cena.",
+      "descricao": "Maça: Ativação: o golpe da Maça que fere o alvo com 10 ou mais de dano depois da Absorção. Duração: até o fim da próxima ação do alvo. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo fica tonto e perde a próxima ação. Dano: o da Maça. Resistência: corpo, contra a jogada do golpe; quem passa só leva o dano. Limite de uso: um por golpe, sem limite por cena. Vale só na forma de anjo.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Golpe sagrado",
-      "descricao": "Maça: Ativação: o golpe corpo a corpo que acerta uma criatura maligna (demônio, morto-vivo, corruptor, ou quem o Mestre disser). Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a luz do golpe queima o mal. Dano: +1d6, sagrado, somado ao do golpe. Resistência: nenhum. Limite de uso: um por golpe.",
+      "descricao": "Maça: Ativação: o golpe corpo a corpo que acerta uma criatura maligna (demônio, morto-vivo, corruptor, ou quem o Mestre disser). Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a luz do golpe queima o mal. Dano: +1d6, sagrado, somado ao do golpe. Resistência: nenhum. Limite de uso: um por golpe. Vale só na forma de anjo.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Mudar de forma",
-      "descricao": "poder natural (base Metamorfose 3): Ativação: uma ação, Velocidade 8. Duração: uma cena, ou até ela desfazer com outra ação. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a aparência de um humano ou de um animal comum, com voz e cheiro; os números ficam os do deva; a arma e o que veste não acompanham a troca; na forma de animal não fala nem usa a maça. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
+      "descricao": "poder natural (base Metamorfose 3): Ativação: uma ação, Velocidade 8. Duração: uma cena, ou até ela desfazer com outra ação. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a aparência de um humano ou de um animal comum, com voz e cheiro; os números ficam os do deva; a arma e o que veste não acompanham a troca; na forma de animal não fala nem usa a maça. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Feitiços celestiais",
-      "descricao": "poder natural (base Cura 4): Ativação: uma ação, Velocidade 8, tocando o alvo. Duração: instantânea; a bênção dura até a próxima jogada do aliado ou o fim da cena. Alcance: toque. Área: um alvo. Efeito: escolhe uma: fecha ferimentos; limpa uma doença ou uma maldição (inclusive a licantropia); ou abençoa, e o aliado soma +1d6 na próxima jogada importante. Dano: nenhum; a cura devolve 3d6 + Centelha PV. Resistência: nenhum. Limite de uso: uma vez por cena.",
+      "descricao": "poder natural (base Cura 4): Ativação: uma ação, Velocidade 8, tocando o alvo. Duração: instantânea; a bênção dura até a próxima jogada do aliado ou o fim da cena. Alcance: toque. Área: um alvo. Efeito: escolhe uma: fecha ferimentos; limpa uma doença ou uma maldição (inclusive a licantropia); ou abençoa, e o aliado soma +1d6 na próxima jogada importante. Dano: nenhum; a cura devolve 3d6 + Centelha PV. Resistência: nenhum. Limite de uso: uma vez por cena. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Aura protetora",
-      "descricao": "poder natural (base Proteção 5): Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 6 m. Área: esfera de 6 m em volta do deva. Efeito: os aliados dentro dela somam +2 nas Defesas contra golpe, Arte ou efeito de criatura maligna. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "descricao": "poder natural (base Proteção 5): Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 6 m. Área: esfera de 6 m em volta do deva. Efeito: os aliados dentro dela somam +2 nas Defesas contra golpe, Arte ou efeito de criatura maligna. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Teleporte sem erro",
-      "descricao": "poder natural (base Conjuração 5): Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: qualquer lugar que ela conheça no mesmo plano. Área: o deva e até seis companheiros que ele toca ou que tocam nele. Efeito: some e reaparece no destino, sem chance de erro. Dano: nenhum. Resistência: nenhum; quem não quer ir não é levado. Limite de uso: à vontade.",
+      "descricao": "poder natural (base Conjuração 5): Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: qualquer lugar que ela conheça no mesmo plano. Área: o deva e até seis companheiros que ele toca ou que tocam nele. Efeito: some e reaparece no destino, sem chance de erro. Dano: nenhum. Resistência: nenhum; quem não quer ir não é levado. Limite de uso: à vontade. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Imune a doença e veneno",
-      "descricao": "doença e veneno não pegam nele.",
+      "descricao": "doença e veneno não pegam nele. Vale em todas as formas.",
       "classe": "sem regra ainda"
     },
     {
       "nome": "guarda celeste",
-      "descricao": "fala antes de lutar; quando luta, protege os aliados dentro da aura, derruba com a maça quem ataca os fracos e cura entre um golpe e outro; voa por cima do combate e some pelo teleporte quando a luta está perdida.",
+      "descricao": "fala antes de lutar; quando luta, protege os aliados dentro da aura, derruba com a maça quem ataca os fracos e cura entre um golpe e outro; voa por cima do combate e some pelo teleporte quando a luta está perdida. Vale só na forma de anjo.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "conselheiro disfarçado",
+      "descricao": "evita lutar sem a maça; protege e cura os aliados, e volta à forma de anjo ou some pelo teleporte quando a luta aperta. Vale só no disfarce.",
       "classe": "como luta"
     },
     {
       "nome": "Sentidos",
-      "descricao": "visão e audição: as de um humano. O site não dá sentido especial."
+      "descricao": "visão e audição: as de um humano. O site não dá sentido especial. Vale em todas as formas."
     }
   ],
   "lore": [
@@ -255,6 +260,7 @@
     "`ataque`: a maça do livro, com Armas; o site gravava \"Golpe planar\" de corte com Briga **[provisório]**",
     "`briga`, `bloqueio`: 2 e 1; o site tinha Briga 5 e nenhum Bloqueio **[provisório]**",
     "`prontidao`: 4, a da nota do site; o campo tinha 2",
-    "`maça estonteante`, `golpe sagrado`, `mudar de forma`, `feitiços celestiais`, `aura protetora`, `teleporte sem erro`: números sugeridos pela ficha (D-197). A aura dá +2, e não \"+1 dado\" como no site: a Defesa é número fixo, e o livro troca 1d6 numa jogada por +4 numa Defesa só no ponto de Vontade, que é de uma pessoa e de uma vez; para todos os aliados e sempre, fica a metade"
+    "`maça estonteante`, `golpe sagrado`, `mudar de forma`, `feitiços celestiais`, `aura protetora`, `teleporte sem erro`: números sugeridos pela ficha (D-197). A aura dá +2, e não \"+1 dado\" como no site: a Defesa é número fixo, e o livro troca 1d6 numa jogada por +4 numa Defesa só no ponto de Vontade, que é de uma pessoa e de uma vez; para todos os aliados e sempre, fica a metade",
+    "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos; a Maça estonteante e o Golpe sagrado só na forma de anjo, porque a maça não acompanha a troca; os poderes naturais em todas, porque os números ficam os do deva; o \"como luta\" em duas linhas; a Camuflagem do disfarce na linha dele em Variantes. Aptidões iguais e nenhuma Arte **[provisório]**"
   ]
 }

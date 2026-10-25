@@ -295,7 +295,7 @@
   "arranque": 8,
   "corrida": 12,
   "ft": 50,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "campeao": {
   "batalha": 3,
@@ -436,14 +436,14 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "cobra-de-ferro": {
   "batalha": 4,
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "cocatriz": {
   "batalha": 2,
@@ -601,7 +601,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "doninha": {
   "batalha": 3,
@@ -734,7 +734,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "elasmossauro": {
   "batalha": 4,
@@ -756,28 +756,28 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "elemental-da-terra-grande": {
   "batalha": 3,
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "tabela"
+  "origem": "ficha"
  },
  "elemental-da-terra-pequeno": {
   "batalha": 2,
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "elemental-do-ar-pequeno": {
   "batalha": 10,
   "arranque": 16,
   "corrida": 23,
   "ft": 100,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 100 (perfeito): o ar não tem pé"
  },
  "elemental-do-fogo-pequeno": {
@@ -922,7 +922,7 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "falcao-peregrino": {
   "batalha": 1,
@@ -1043,35 +1043,35 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "gigante-da-tempestade": {
   "batalha": 5,
   "arranque": 8,
   "corrida": 12,
   "ft": 50,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "gigante-das-nuvens": {
   "batalha": 5,
   "arranque": 8,
   "corrida": 12,
   "ft": 50,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "gigante-do-fogo": {
   "batalha": 4,
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "gigante-do-gelo": {
   "batalha": 4,
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "gigantopiteco": {
   "batalha": 2,
@@ -1113,28 +1113,28 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "golem-de-carne": {
   "batalha": 3,
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "golem-de-ferro": {
   "batalha": 2,
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "golem-de-gelo": {
   "batalha": 3,
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "golem-de-pedra": {
   "batalha": 2,
@@ -1262,7 +1262,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "voo 50; em terra 20, e o bichinho é feito para voar"
  },
  "janni": {
@@ -1525,7 +1525,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "marilith": {
   "batalha": 4,
@@ -1726,14 +1726,14 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "ogro": {
   "batalha": 4,
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "ogro-mago-oni": {
   "batalha": 4,
@@ -1783,7 +1783,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "pesadelo": {
   "batalha": 4,
@@ -1971,7 +1971,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "sanguessuga-gigante": {
   "batalha": 1,
@@ -2008,7 +2008,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "shoggoth": {
   "batalha": 5,
@@ -2294,7 +2294,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "yeti": {
   "batalha": 4,

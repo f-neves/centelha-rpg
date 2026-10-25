@@ -5,9 +5,10 @@
   "nome": "Elemental do Ar (Pequeno)",
   "nomeIngles": "Elemental, Air",
   "categoria": "Elemental",
+  "categoriaLegada": "Elemental",
   "papel": "soldado",
   "conceito": "exterior (ar) Pequeno",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Redemoinho com vontade própria: voa rápido e sem errar, puxa quem é leve para dentro do tornado e desvia as flechas. Lâmina e ponta passam pelo vento.",
   "tags": [
     "elemental",
     "centelha"
@@ -15,8 +16,10 @@
   "imagem": null,
   "porte": "Pequeno",
   "dimensoes": {
-    "medida": "1,2 metro de diâmetro, em constante redemoinho",
-    "peso": "praticamente sem peso"
+    "medida": "1,2 m de altura",
+    "peso": "sem massa (volume 0,0234 m³)",
+    "largura": 0.3,
+    "altura": 1.2
   },
   "locomocao": {
     "voo": 10
@@ -26,18 +29,22 @@
     "forca": 3,
     "destreza": 5,
     "vigor": 3,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
     "briga": 3,
     "esquiva": 1,
+    "integridade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "sobrevivencia": 1
+  },
+  "skills2": {
+    "voo": 3
   },
   "virtues": {
     "compaixao": 1,
@@ -50,35 +57,47 @@
   "ataques": [
     {
       "nome": "Pancada de vento",
-      "atrib": "forca",
+      "atrib": "destreza",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
+  "fraquezas": [],
   "resistencias": [
     "corte",
     "perfuracao"
   ],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Voo perfeito",
-      "descricao": "Flutua e manobra no ar com controle total, sem risco de perder equilíbrio ou cair."
-    },
-    {
       "nome": "Redemoinho",
-      "descricao": "Uma vez por cena pode se transformar em um pequeno tornado, arrastando quem estiver perto para dentro dele."
+      "descricao": "poder natural (base Vento 2, sugestão da ficha): Ativação: uma ação, Velocidade 6. Duração: até 18 Ticks, ou até ele desfazer com outra ação. Alcance: o próprio corpo, que se move enquanto gira. Área: o espaço por onde ele passa, até 1,2 m de largura. Efeito: vira um pequeno tornado; quem ele atravessa é puxado para dentro e fica Agarrado, girando, até o redemoinho acabar ou até vencer a manobra para se soltar. Quem está duas faixas de massa ou mais acima dele não é puxado. Dano: o da Pancada de vento a quem está dentro, a cada 6 Ticks. Resistência: esquiva, contra Destreza + Briga dele; quem passa não é puxado. Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Domínio do ar",
-      "descricao": "Ataques feitos à distância contra ele perdem força, como se o vento desviasse os projéteis."
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: o vento em volta desvia os projéteis: +2 na Defesa contra flecha, virote, pedra e o que se arremessa. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Corpo imaterial de vento",
-      "descricao": "Não sente cansaço, veneno ou doença; é feito de puro elemento, não de carne."
+      "nome": "feito de vento",
+      "descricao": "não sente cansaço, veneno nem doença; não respira, não come, não dorme.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "sopro vivo",
+      "descricao": "gira em volta do alvo mais leve, puxa para o redemoinho e sobe; nunca para quieto. Solto do vínculo, volta furioso ao próprio plano.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um humano."
     }
   ],
   "lore": [
@@ -89,6 +108,14 @@
     {
       "titulo": "Servo relutante",
       "texto": "Obedece a quem o convocou apenas enquanto o vínculo mágico se sustenta; rompido o elo, volta furioso ao próprio plano."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: sozinho, ou com quem o conjurou."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Pequeno e muito rápido no ar (10), não anda. Bate com dano médio 5,5. Uma vez por cena vira redemoinho e puxa quem atravessa: Agarrado, girando, com o dano da pancada a cada 6 Ticks. Esquiva 14 (16 contra projétil), Bloqueio 10, 26 PV, Impacto 4, Corte e Perfuração 1; Corte e Perfuração fazem metade."
     }
   ],
   "ecologia": {
@@ -126,5 +153,34 @@
     "crConf": "conhecido"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 26,
+    "esquiva": 14,
+    "bloqueio": 10,
+    "defesa": 14,
+    "defesaMental": 12,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 80.32,
+    "deslocamento": {
+      "voo": {
+        "batalha": 10,
+        "arranque": 16,
+        "corrida": 23
+      }
+    }
+  },
+  "notasObservacao": [
+    "`massa`, `tamanho`: sem massa; o volume do núcleo (o corpo de base escalado a 1,2 m, 0,0234 m³) entra no PV e na faixa como 23,6 kg, e a área é a do núcleo. O redemoinho inteiro, um cilindro de 1,2 m de diâmetro e 1,2 m de altura, daria 1,36 m³ e uma silhueta de mais de 0,7 m², Médio, contra o Pequeno do site. Pergunta ao autor no lote 25 **[provisório]**",
+    "`forca`: 3, a do site; o vento empurra, por isso não desce como o fogo **[provisório]**",
+    "`redemoinho`: poder natural de uma vez por cena, e não forma (linha Formas): é um modo de ataque com duração, sem corpo próprio a descrever **[provisório]**",
+    "`segundo Tamanho`: Médio com o redemoinho ativo, o funil de 0,90 m², pela decisão do autor de 24/10/2026 (D-213); o Tamanho principal fica o do núcleo",
+    "`redemoinho`, `domínio do ar`: números sugeridos pela ficha (D-197)"
+  ]
 }

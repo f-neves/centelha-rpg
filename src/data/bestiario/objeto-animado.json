@@ -6,12 +6,9 @@
   "nomeIngles": "Animated Object",
   "categoria": "Construto",
   "categoriaLegada": "Monstro",
-  "constructo": {
-    "semVida": true
-  },
   "papel": "soldado",
   "conceito": "constructo Médio",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricao": "Um móvel comum despertado por magia para guardar um cômodo: parado, ninguém o nota; quando alguém cruza o posto, tomba e bate com a própria massa, sem hesitação, cansaço ou piedade. O tamanho e o material mudam tudo, do candelabro ao navio.",
   "descricaoLegada": "Aberração humanoide de lendas antigas.",
   "tags": [
     "monstro",
@@ -21,36 +18,40 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "1,5 m de altura",
-    "peso": "150 kg"
+    "peso": "150 kg",
+    "largura": 0.9,
+    "altura": 1.5
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 1,
   "attrs": {
     "forca": 4,
     "destreza": 2,
-    "vigor": 0,
-    "influencia": 0,
-    "perspicacia": 0,
-    "compostura": 0,
+    "vigor": 3,
     "percepcao": 2,
     "inteligencia": 0,
-    "raciocinio": 0
+    "raciocinio": 0,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
-    "briga": 4,
-    "esquiva": 0,
-    "prontidao": 0,
-    "integridade": 2
+    "briga": 4
   },
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 3,
-    "temperanca": 3,
-    "valor": 3
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 6
   },
-  "willpower": 6,
+  "willpower": 3,
   "aparencia": 4,
   "ataques": [
     {
@@ -60,34 +61,44 @@
       "dado": 1,
       "mao": 1,
       "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 5
+      "ticks": 6,
+      "classe": "media"
     }
   ],
-  "bonus": {
-    "absorcao_impacto": 1,
-    "absorcao_corte": 3,
-    "absorcao_perfuracao": 3
-  },
+  "fraquezas": [],
   "resistencias": [
     "perfuracao"
   ],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Corpo Inanimado",
-      "descricao": "Feito de madeira, pedra ou metal, o objeto animado não respira, não sente medo e é imune a doenças, venenos e efeitos que dependem de mente ou emoção."
+      "nome": "empurrar",
+      "descricao": "Pancada: Empurrar.",
+      "classe": "livro"
     },
     {
-      "nome": "Casco Resistente",
-      "descricao": "A superfície do objeto absorve grande parte de qualquer impacto físico, reduzindo o dano recebido."
+      "nome": "sem vida",
+      "descricao": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Golpe Bruto",
-      "descricao": "O objeto ataca com pancadas contundentes, usando a própria massa como arma."
+      "nome": "casco resistente",
+      "descricao": "resistência a Perfuração (metade do dano).",
+      "classe": "livro"
     },
     {
-      "nome": "Formas Variadas",
-      "descricao": "Alguns objetos animados ganham garras extras, capacidade de escalar, nadar ou voar, ou um golpe capaz de arremessar o oponente ao chão, dependendo do item original."
+      "nome": "formas variadas",
+      "descricao": "conforme o objeto, ganha garras a mais, sobe, nada ou voa, ou derruba com o golpe (site); a ficha do armário não tem nenhuma, e a outra forma fica com o Mestre.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "guardião do cômodo",
+      "descricao": "fica parado entre os móveis até alguém cruzar o posto; então tomba sobre o intruso e bate, sem hesitar nem cansar, até a última ordem se cumprir.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: percebe quem cruza o posto, sem olhos nem ouvidos à vista, como um guarda humano."
     }
   ],
   "lore": [
@@ -97,11 +108,15 @@
     },
     {
       "titulo": "Comportamento",
-      "texto": "Sem mente própria, o objeto apenas cumpre a última ordem recebida ou ataca qualquer intruso que cruze seu posto, sem hesitação, cansaço ou piedade."
+      "texto": "Sem mente própria, o objeto apenas cumpre a última ordem recebida ou ataca qualquer intruso que cruze seu posto, sem hesitação, cansaço ou piedade. Social: solitário."
     },
     {
       "titulo": "Tamanho e Material",
-      "texto": "Objetos animados variam enormemente: um candelabro desperto e um navio animado são a mesma criatura em escalas opostas. O tamanho e o material (madeira, pedra ou metal) alteram muito a Força, a Destreza, os PV, a Defesa e a Absorção. Os valores desta ficha são de um objeto Médio; ajuste conforme o item. Exemplos por tamanho: Minúsculo: candelabro · Pequeno: cadeira · Médio: jaula · Grande: estátua · Enorme: carroça · Imenso: catapulta · Colossal: navio."
+      "texto": "Objetos animados variam enormemente: um candelabro desperto e um navio animado são a mesma criatura em escalas opostas. O tamanho e o material (madeira, pedra ou metal) alteram muito a Força, a Destreza, os PV, a Defesa e a Absorção. Os valores desta ficha são de um objeto Médio; ajuste conforme o item. Exemplos por porte: Minúsculo: candelabro · Pequeno: cadeira · Médio: jaula · Grande: estátua · Enorme: carroça · Imenso: catapulta · Colossal: navio."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, 34 PV, Impacto 4, Corte e Perfuração 1; ponta faz metade. Esquiva 4, Bloqueio 4. Pancada de dano médio 8,5. Parado, passa por um móvel comum. Sem mente: não se assusta nem se convence. Não se cura sozinho. Para outro objeto, o Mestre parte desta ficha e muda pelo tamanho e pelo material."
     }
   ],
   "ecologia": {
@@ -138,5 +153,36 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 34,
+    "esquiva": 4,
+    "bloqueio": 4,
+    "defesa": 4,
+    "defesaMental": null,
+    "defesaSocial": null,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 3,
+    "pesoErguido": 222.9,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    }
+  },
+  "notasObservacao": [
+    "`referência`: o armário de carvalho, e não a jaula do exemplo do site, que pela área das barras ficaria abaixo do Médio **[provisório]**",
+    "`massa`: 150 kg, a do site, conferida pelas tábuas de carvalho e pelas ferragens **[referência de jogo]**",
+    "`vigor`: 3 por julgamento (tábuas que lascam); o site tinha 0 **[provisório]**",
+    "`musculatura`: 0, caixa oca de tábuas **[provisório]**",
+    "`couracaNivel`: 3, tábua de carvalho de 3 cm **[provisório]**",
+    "`variantes`: os sete exemplos de tamanho do site, só com o Tamanho e os Traços (o material); a jaula sem Tamanho, porque a área das barras não dá o Médio do site",
+    "`atributos sociais`, `vontade`, `virtudes`: decididos pelo autor para toda criatura de Inteligência 0 (D-186)"
+  ]
 }

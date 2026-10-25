@@ -6,12 +6,9 @@
   "nomeIngles": "Golem, Flesh",
   "categoria": "Construto",
   "categoriaLegada": "Monstro",
-  "constructo": {
-    "semVida": true
-  },
   "papel": "elite",
   "conceito": "constructo Grande",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricao": "Corpo de 2,4 m costurado de partes de cadáveres roubados e movido por um espírito preso. Anda travado, bate com força e não sente dor; o raio o cura, e o frio e o fogo o deixam lento. A cada instante de luta, o espírito pode se soltar, e daí só o criador talvez o acalme.",
   "descricaoLegada": "Aberração humanoide de lendas antigas.",
   "tags": [
     "monstro",
@@ -21,68 +18,114 @@
   "porte": "Grande",
   "dimensoes": {
     "medida": "2,4 m de altura",
-    "peso": "225 kg"
+    "peso": "225 kg",
+    "largura": 0.75,
+    "altura": 2.4
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 3,
   "attrs": {
     "forca": 7,
     "destreza": 2,
-    "vigor": 1,
-    "influencia": 0,
-    "perspicacia": 0,
-    "compostura": 1,
+    "vigor": 5,
     "percepcao": 2,
     "inteligencia": 0,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
-    "briga": 5,
-    "esquiva": 0,
-    "prontidao": 1,
-    "integridade": 2
+    "briga": 4,
+    "atletismo": 1,
+    "prontidao": 1
+  },
+  "skills2": {
+    "musculatura": 2
   },
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 3,
-    "temperanca": 3,
-    "valor": 3
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 6
   },
-  "willpower": 8,
-  "aparencia": 4,
+  "willpower": 3,
+  "aparencia": 2,
   "ataques": [
     {
-      "nome": "Arma",
+      "nome": "Punho",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 6
+      "tipo": "impacto",
+      "ticks": 6,
+      "classe": "media"
     }
   ],
+  "fraquezas": [],
   "resistencias": [
     "perfuracao"
   ],
+  "imunidades": [
+    "raio"
+  ],
   "habilidades": [
     {
-      "nome": "Corpo Costurado",
-      "descricao": "Absorve parte de qualquer dano físico comum e é imune a quase toda magia que tentar afetá-lo diretamente."
+      "nome": "agarrar",
+      "descricao": "Punho: Agarrar.",
+      "classe": "livro"
     },
     {
-      "nome": "Fúria Descontrolada",
-      "descricao": "A cada instante de combate, cresce a chance de seu espírito preso se libertar e ele atacar tudo ao redor sem distinção, entrando em uma fúria que só seu criador talvez consiga acalmar."
+      "nome": "derrubar",
+      "descricao": "Punho: Derrubar.",
+      "classe": "livro"
     },
     {
-      "nome": "Fraqueza ao Frio e ao Fogo",
-      "descricao": "Dano de frio ou fogo deixa seu corpo lento e desajeitado por vários instantes."
+      "nome": "sem vida",
+      "descricao": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto ou pelo raio; não sofre nada que se resista com o corpo.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Vigor pela Centelha Elétrica",
-      "descricao": "Um choque elétrico bem direcionado na verdade restaura parte de sua vitalidade em vez de feri-lo."
+      "nome": "Fúria descontrolada",
+      "descricao": "Ativação: a cada 6 Ticks de combate, o Mestre rola 1d6; o espírito se liberta com 6 na primeira rolagem, com 5 ou 6 na segunda, e o número desce um a cada rolagem que não liberta. Duração: até o fim da cena, ou até o criador o acalmar. Alcance: o próprio corpo. Área: não se aplica. Efeito: o golem ataca a criatura mais perto, amiga ou inimiga, e destrói o que encontra; só o criador pode acalmá-lo, com uma ação de fala a até 18 m e 4 ou mais em 1d6. Dano: nenhum além dos golpes. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Fraqueza ao frio e ao fogo",
+      "descricao": "Ativação: leva dano de gelo ou de fogo (1 ou mais, depois da Absorção). Duração: 18 Ticks. Alcance: o próprio corpo. Área: não se aplica. Efeito: o corpo fica lento e desajeitado: fica Retardado. Dano: nenhum além do que levou. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Vigor pela centelha elétrica",
+      "descricao": "Ativação: um golpe ou efeito de raio o acerta. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Efeito: o raio não o fere (Elementos) e devolve PV: recupera metade do dano que o raio daria. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "imune à magia",
+      "descricao": "a maior parte das Artes não o afeta.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "corpo costurado",
+      "descricao": "resistência a Perfuração (metade do dano).",
+      "classe": "livro"
+    },
+    {
+      "nome": "obedece ao criador",
+      "descricao": "avança travado sobre quem a ordem manda, bate e agarra; a cada instante de luta o espírito pode se soltar, e daí só o criador o acalma.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um humano."
     }
   ],
   "lore": [
@@ -97,6 +140,14 @@
     {
       "titulo": "Memórias que restam",
       "texto": "Raramente, rumores falam de golens de carne que guardam fragmentos da memória de quem forneceu a cabeça usada em sua criação."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande, 50 PV, Impacto 8, Corte e Perfuração 3; ponta faz metade, e o raio o cura em vez de ferir. Esquiva 4, Bloqueio 4. Punho de dano médio 13,5. Fogo ou gelo o deixam Retardado por 18 Ticks. Sem mente: não se assusta nem se convence. A cada 6 Ticks de luta, o espírito pode se soltar, e daí ataca qualquer um até o fim da cena ou até o criador o acalmar. Não se cura sozinho."
     }
   ],
   "ecologia": {
@@ -133,5 +184,37 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 50,
+    "esquiva": 4,
+    "bloqueio": 4,
+    "defesa": 4,
+    "defesaMental": null,
+    "defesaSocial": null,
+    "absorcao": {
+      "impacto": 8,
+      "corte": 3,
+      "perfuracao": 3
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 685.07,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    }
+  },
+  "notasObservacao": [
+    "`massa`: 225 kg, a do site, com o corpo 25% mais largo: 961 kg/m³, a carne com gordura; na proporção humana daria 1.201 kg/m³ **[referência de jogo]**",
+    "`pv`: 50, na zona de transição, pela faixa de cima (corpo robusto que não sente dor); pela de baixo seria 40 **[provisório]**",
+    "`vigor`: 5 por julgamento (carne morta que não sente dor); o site tinha 1 **[provisório]**",
+    "`aparencia`: 2, o corpo de cadáveres costurados; o site tinha 4 **[provisório]**",
+    "`elementos`: imune a raio pela habilidade publicada; a fraqueza ao frio e ao fogo é lentidão (Manobras), e não entra nas fraquezas",
+    "`ataque`: a \"Arma\" de 2 dados e corte vira o Punho Média, de 1 dado e Impacto (perda de mecânica publicada, no relato) **[provisório]**",
+    "`atributos sociais`, `vontade`, `virtudes`: decididos pelo autor para toda criatura de Inteligência 0 (D-186)",
+    "`fúria descontrolada`, `fraqueza ao frio e ao fogo`, `vigor pela centelha elétrica`: números sugeridos pela ficha (D-197)"
+  ]
 }

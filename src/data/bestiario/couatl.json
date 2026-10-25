@@ -137,41 +137,46 @@
   "habilidades": [
     {
       "nome": "Agarrar",
-      "descricao": "Agarrar, com a Especialidade natural Briga (Agarrão) +3.",
+      "descricao": "Agarrar, com a Especialidade natural Briga (Agarrão) +3. Vale só na forma verdadeira.",
       "classe": "livro"
     },
     {
       "nome": "Constrição venenosa",
-      "descricao": "Mordida venenosa: Ativação: a Mordida que fere; ela pode enrolar o alvo em seguida, pela jogada de Agarrar do livro. Duração: enquanto agarra. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a cada 6 Ticks de agarrão, aperta sem nova jogada de ataque; o veneno da mordida age (Veneno e doença), e quem é envenenado fica Abalado. Dano: 1d6 + Força, Impacto, a cada aperto. Resistência: corpo, pela regra do Agarrar para escapar e pela do veneno. Limite de uso: três vezes por cena; recupera em 1 hora.",
+      "descricao": "Mordida venenosa: Ativação: a Mordida que fere; ela pode enrolar o alvo em seguida, pela jogada de Agarrar do livro. Duração: enquanto agarra. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a cada 6 Ticks de agarrão, aperta sem nova jogada de ataque; o veneno da mordida age (Veneno e doença), e quem é envenenado fica Abalado. Dano: 1d6 + Força, Impacto, a cada aperto. Resistência: corpo, pela regra do Agarrar para escapar e pela do veneno. Limite de uso: três vezes por cena; recupera em 1 hora. Vale só na forma verdadeira.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Mudar de forma",
-      "descricao": "poder natural (base Matéria 2): Ativação: uma ação, Velocidade 8. Duração: até o fim da cena, ou até ela desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a forma de um humanoide ou de um animal comum (a Variante \"disfarce\"); a mente, as Artes e os números ficam os dela. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
+      "descricao": "poder natural (base Matéria 2): Ativação: uma ação, Velocidade 8. Duração: até o fim da cena, ou até ela desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a forma de um humanoide ou de um animal comum (a Variante \"disfarce\"); a mente, as Artes e os números ficam os dela. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Telepatia",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 18 m. Área: quem ela escolher ao alcance. Efeito: fala com qualquer criatura pela mente, por imagens e sensações, sem língua em comum. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 18 m. Área: quem ela escolher ao alcance. Efeito: fala com qualquer criatura pela mente, por imagens e sensações, sem língua em comum. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Viagem planar",
-      "descricao": "Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: outro plano ou realidade. Área: ela e quem ela toca e quer levar. Efeito: passa para outro plano e volta quando quiser. Dano: nenhum. Resistência: nenhum; quem não quer ir não é levado. Limite de uso: uma vez por cena.",
+      "descricao": "Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: outro plano ou realidade. Área: ela e quem ela toca e quer levar. Efeito: passa para outro plano e volta quando quiser. Dano: nenhum. Resistência: nenhum; quem não quer ir não é levado. Limite de uso: uma vez por cena. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Feitiços",
-      "descricao": "Artes do livro: Conjuração até o 5 (Portal), Proteção até o 3 (Barreira), Fascinação até o 3 (Encanto), Ofuscação até o 3 (Manto) e Adivinhação até o 2 (Vislumbre), com 20 de Mana."
+      "descricao": "Artes do livro: Conjuração até o 5 (Portal), Proteção até o 3 (Barreira), Fascinação até o 3 (Encanto), Ofuscação até o 3 (Manto) e Adivinhação até o 2 (Vislumbre), com 20 de Mana. Vale em todas as formas."
     },
     {
       "nome": "guardiã do templo",
-      "descricao": "observa antes de agir, fala pela mente; se precisa lutar, protege com a Barreira, encanta ou some com o Manto, morde e enrola o mais perigoso, e abre um Portal para levar os seus.",
+      "descricao": "observa antes de agir, fala pela mente; se precisa lutar, protege com a Barreira, encanta ou some com o Manto, morde e enrola o mais perigoso, e abre um Portal para levar os seus. Vale só na forma verdadeira.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "guardiã disfarçada",
+      "descricao": "observa antes de agir e fala pela mente; se precisa lutar, protege com a Barreira, encanta ou some com o Manto, e volta à forma verdadeira para morder e enrolar. Vale só no disfarce.",
       "classe": "como luta"
     },
     {
       "nome": "Sentidos",
-      "descricao": "telepatia: sente e fala com as mentes a 18 m (Manobras). · visão: a de uma ave de rapina; enxerga no escuro dos templos."
+      "descricao": "telepatia: sente e fala com as mentes a 18 m (Manobras). Vale em todas as formas. · visão: a de uma ave de rapina; enxerga no escuro dos templos. Vale em todas as formas."
     }
   ],
   "venenos": [
@@ -289,6 +294,7 @@
     "`forca`: 6; o site tinha 4 **[provisório]**",
     "`formas`: forma verdadeira e disfarce (D-201) **[provisório]**",
     "`veneno`: Potência 14, pool 3 de Força, fora do catálogo **[provisório]**",
-    "`constrição venenosa`, `mudar de forma`, `telepatia`, `viagem planar`: números sugeridos pela ficha (D-197)"
+    "`constrição venenosa`, `mudar de forma`, `telepatia`, `viagem planar`: números sugeridos pela ficha (D-197)",
+    "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos; o Agarrar e a Constrição só na forma verdadeira, com o corpo de serpente; a Telepatia, a Viagem planar e os Feitiços em todas (a mente e as Artes ficam as dela); os sentidos em todas, porque o disfarce não muda os números **[provisório]**; o \"como luta\" em duas linhas; a Camuflagem e o fôlego do disfarce na linha dele em Variantes. As Artes não mudam no disfarce, e as Aptidões ficam as da forma verdadeira"
   ]
 }

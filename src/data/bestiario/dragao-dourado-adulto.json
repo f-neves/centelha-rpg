@@ -151,56 +151,61 @@
   "habilidades": [
     {
       "nome": "Sopro de fogo",
-      "descricao": "poder natural (base Fogo 4, a do site): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: o fogo queima tudo no cone. Dano: 9d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site).",
+      "descricao": "poder natural (base Fogo 4, a do site): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: o fogo queima tudo no cone. Dano: 9d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site). Vale só na forma verdadeira.",
       "classe": "regra da ficha"
     },
     {
       "nome": "garras em sequência",
-      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
+      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais. Vale só na forma verdadeira.",
       "classe": "livro"
     },
     {
       "nome": "Multiataque",
-      "descricao": "garra, garra e mordida no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada.",
+      "descricao": "garra, garra e mordida no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada. Vale só na forma verdadeira.",
       "classe": "sem regra ainda"
     },
     {
       "nome": "Presença",
-      "descricao": "poder natural (base Morte 3): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 18 m. Área: esfera de 18 m em volta dele. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência 7 + Intimidação 3 + 2 × o menor entre Centelha 7 e Intimidação 3 (6) = 16 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena.",
+      "descricao": "poder natural (base Morte 3): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 18 m. Área: esfera de 18 m em volta dele. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência 7 + Intimidação 3 + 2 × o menor entre Centelha 7 e Intimidação 3 (6) = 16 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena. Vale só na forma verdadeira.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Sopro debilitante",
-      "descricao": "poder natural (base Fascinação 3, a do site): Ativação: uma ação, Velocidade 7, no lugar do Sopro de fogo (o mesmo limite de uso). Duração: até o fim da próxima ação do alvo. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: gás sem dano que enfraquece: o alvo fica com Desgaste 1; o \"Enfraquecido\" do site não é condição do livro, e o Desgaste 1 é o mais perto. Dano: nenhum. Resistência: corpo, contra a jogada do sopro (site: \"teste de Vigor\"). Limite de uso: dividido com o Sopro de fogo, uma vez a cada 24 Ticks.",
+      "descricao": "poder natural (base Fascinação 3, a do site): Ativação: uma ação, Velocidade 7, no lugar do Sopro de fogo (o mesmo limite de uso). Duração: até o fim da próxima ação do alvo. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: gás sem dano que enfraquece: o alvo fica com Desgaste 1; o \"Enfraquecido\" do site não é condição do livro, e o Desgaste 1 é o mais perto. Dano: nenhum. Resistência: corpo, contra a jogada do sopro (site: \"teste de Vigor\"). Limite de uso: dividido com o Sopro de fogo, uma vez a cada 24 Ticks. Vale só na forma verdadeira.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Mudar de forma",
-      "descricao": "poder natural (base Matéria 3, a do site): Ativação: uma ação, Velocidade 8. Duração: até ele desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a forma humana ou de um animal pequeno (a Variante); a mente, as Artes e os números ficam os dele, com parte dos sentidos de dragão. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
+      "descricao": "poder natural (base Matéria 3, a do site): Ativação: uma ação, Velocidade 8. Duração: até ele desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a forma humana ou de um animal pequeno (a Variante); a mente, as Artes e os números ficam os dele, com parte dos sentidos de dragão. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Firme contra o medo",
-      "descricao": "presença de quem tem Centelha menor não o deixa Abalado (site).",
+      "descricao": "presença de quem tem Centelha menor não o deixa Abalado (site). Vale em todas as formas.",
       "classe": "sem regra ainda"
     },
     {
       "nome": "Voo dominante",
-      "descricao": "domina os céus com grande manobra (site).",
+      "descricao": "domina os céus com grande manobra (site). Vale só na forma verdadeira.",
       "classe": "como luta"
     },
     {
       "nome": "Feitiços",
-      "descricao": "Artes do livro: Proteção até o 3 (Barreira), Fortuna até o 3, Cura até o 2 (Restaurar), Luz até o 2 (Ofuscar), com 26 de Mana."
+      "descricao": "Artes do livro: Proteção até o 3 (Barreira), Fortuna até o 3, Cura até o 2 (Restaurar), Luz até o 2 (Ofuscar), com 26 de Mana. Vale em todas as formas."
     },
     {
       "nome": "guardião nobre",
-      "descricao": "avisa antes de atacar, protege e cura os aliados, enfraquece com o sopro de gás quem pode ser poupado e queima quem não pode.",
+      "descricao": "avisa antes de atacar, protege e cura os aliados, enfraquece com o sopro de gás quem pode ser poupado e queima quem não pode. Vale só na forma verdadeira.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "viajante disfarçado",
+      "descricao": "evita lutar e observa; protege e cura com as Artes, e volta à forma verdadeira quando a luta pede. Vale só na forma humana ou de animal pequeno.",
       "classe": "como luta"
     },
     {
       "nome": "Sentidos",
-      "descricao": "visão no escuro: vê sem luz. · faro: apurado. · sabedoria dracônica: detecta mentiras (Empatia (mentiras) +1) e ignora ilusões simples (sem regra ainda)."
+      "descricao": "visão no escuro: vê sem luz. Vale em todas as formas. · faro: apurado. Vale só na forma verdadeira. · sabedoria dracônica: detecta mentiras (Empatia (mentiras) +1) e ignora ilusões simples (sem regra ainda). Vale em todas as formas."
     }
   ],
   "lore": [
@@ -301,6 +306,7 @@
     "`couraca`: nível 9 **[provisório]**",
     "`sopro`: 9d6 + Centelha, cone de 12 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197) **[provisório]**",
     "`multiataque`: sem regra ainda; garras pela Rajada",
-    "`presença` e os outros poderes: números sugeridos pela ficha (D-197)"
+    "`presença` e os outros poderes: números sugeridos pela ficha (D-197)",
+    "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos; os sopros, as garras, o Multiataque, a Presença e o Voo dominante só na forma verdadeira; o Mudar de forma, a Firme contra o medo e os Feitiços em todas (a mente e as Artes ficam as dele); a \"parte dos sentidos\" do site lida como a visão no escuro e a sabedoria dracônica em todas, e o faro só na forma verdadeira **[provisório]**; o \"como luta\" em duas linhas (o Voo dominante já era só da verdadeira); a Camuflagem e o fôlego da outra forma na linha dela em Variantes. As Artes não mudam, e as Aptidões ficam as da forma verdadeira"
   ]
 }

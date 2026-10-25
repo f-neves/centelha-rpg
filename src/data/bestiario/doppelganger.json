@@ -121,37 +121,37 @@
   "habilidades": [
     {
       "nome": "Mudar de forma",
-      "descricao": "poder natural (base Matéria 2): Ativação: uma ação, Velocidade 6. Duração: até ele desfazer, ou até cair inconsciente. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume o corpo, o rosto, a voz e o cheiro de qualquer humanoide de Tamanho perto do dele que já tenha visto; os números ficam os dele; só a magia ou a Manha de quem conviveu muito com o original percebe a troca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
+      "descricao": "poder natural (base Matéria 2): Ativação: uma ação, Velocidade 6. Duração: até ele desfazer, ou até cair inconsciente. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume o corpo, o rosto, a voz e o cheiro de qualquer humanoide de Tamanho perto do dele que já tenha visto; os números ficam os dele; só a magia ou a Manha de quem conviveu muito com o original percebe a troca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Ler pensamentos",
-      "descricao": "poder natural (base Adivinhação 1): Ativação: nenhuma; sempre ativo, e uma ação, Velocidade 6, para sondar fundo. Duração: enquanto o alvo estiver perto. Alcance: 9 m. Área: um alvo por vez. Efeito: sempre ativo, ouve os pensamentos de superfície de quem está perto; na sondagem, quem falha revela um segredo ou uma intenção. Dano: nenhum. Resistência: mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem. Limite de uso: a sondagem, uma vez por cena para cada alvo.",
+      "descricao": "poder natural (base Adivinhação 1): Ativação: nenhuma; sempre ativo, e uma ação, Velocidade 6, para sondar fundo. Duração: enquanto o alvo estiver perto. Alcance: 9 m. Área: um alvo por vez. Efeito: sempre ativo, ouve os pensamentos de superfície de quem está perto; na sondagem, quem falha revela um segredo ou uma intenção. Dano: nenhum. Resistência: mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem. Limite de uso: a sondagem, uma vez por cena para cada alvo. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Mímica perfeita",
-      "descricao": "Manha, com a Especialidade natural (passar-se pela pessoa cujo rosto usa) +3.",
+      "descricao": "Manha, com a Especialidade natural (passar-se pela pessoa cujo rosto usa) +3. Vale em todas as formas.",
       "classe": "livro"
     },
     {
       "nome": "Reflexos ágeis",
-      "descricao": "Esquiva 2.",
+      "descricao": "Esquiva 2. Vale em todas as formas.",
       "classe": "livro"
     },
     {
       "nome": "Mente protegida",
-      "descricao": "leitura de mente e controle mental simples não o pegam.",
+      "descricao": "leitura de mente e controle mental simples não o pegam. Vale em todas as formas.",
       "classe": "sem regra ainda"
     },
     {
       "nome": "rosto roubado",
-      "descricao": "evita a luta; quando é descoberto, ataca com a espada para abrir caminho e foge; mais tarde volta com outro rosto.",
+      "descricao": "evita a luta; quando é descoberto, ataca com a espada para abrir caminho e foge; mais tarde volta com outro rosto. Vale em todas as formas.",
       "classe": "como luta"
     },
     {
       "nome": "Sentidos",
-      "descricao": "visão e audição: as de um humano. · mente: ouve os pensamentos de superfície de quem está a 9 m (Ler pensamentos, nas Manobras)."
+      "descricao": "visão e audição: as de um humano. Vale em todas as formas. · mente: ouve os pensamentos de superfície de quem está a 9 m (Ler pensamentos, nas Manobras). Vale em todas as formas."
     }
   ],
   "lore": [
@@ -253,6 +253,7 @@
     "`briga`: 2; o site gravava 4, que era a Habilidade da arma **[provisório]**",
     "`virtudes`: Bravura 2 e Temperança 3; o site tinha 3 e 2 **[provisório]**",
     "`mímica perfeita`: Especialidade natural +3, no teto; o site dava +3d6",
-    "`mudar de forma`, `ler pensamentos`: números sugeridos pela ficha (D-197)"
+    "`mudar de forma`, `ler pensamentos`: números sugeridos pela ficha (D-197)",
+    "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos, todas em todas, porque o disfarce muda o corpo e deixa os números; o rosto roubado já conta as duas formas; a Camuflagem do disfarce na linha dele em Variantes. Aptidões iguais e nenhuma Arte **[provisório]**"
   ]
 }

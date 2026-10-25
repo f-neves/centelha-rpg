@@ -126,37 +126,42 @@
   "habilidades": [
     {
       "nome": "Forma de vento",
-      "descricao": "Ativação: uma ação, Velocidade 6. Duração: até ele voltar com outra ação. Alcance: o próprio corpo. Área: não se aplica. Efeito: vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
+      "descricao": "Ativação: uma ação, Velocidade 6. Duração: até ele voltar com outra ação. Alcance: o próprio corpo. Área: não se aplica. Efeito: vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Rajada cortante",
-      "descricao": "poder natural (base Vento 3) · Rajada cortante: Ativação: uma ação, Velocidade 7, a jogada da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Efeito: uma lâmina de ar corta todos na linha. Dano: 3d6 + Centelha, Corte. Resistência: corpo, Vigor + Resistência contra a jogada; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks.",
+      "descricao": "poder natural (base Vento 3) · Rajada cortante: Ativação: uma ação, Velocidade 7, a jogada da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Efeito: uma lâmina de ar corta todos na linha. Dano: 3d6 + Centelha, Corte. Resistência: corpo, Vigor + Resistência contra a jogada; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks. Vale só na forma de vento.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Ventos a serviço",
-      "descricao": "poder natural (base Vento 2): Ativação: uma ação, Velocidade 6. Duração: o ofuscar e a ilusão, até o fim da cena; o resto, instantâneo. Alcance: 18 m. Área: um alvo, ou uma imagem de até 3 m. Efeito: à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado. Dano: nenhum; a cura devolve 2d6 + Centelha PV. Resistência: corpo, Vigor + Resistência contra Dificuldade 10, para o ofuscar e a rajada. Limite de uso: três vezes por cena, somados.",
+      "descricao": "poder natural (base Vento 2): Ativação: uma ação, Velocidade 6. Duração: o ofuscar e a ilusão, até o fim da cena; o resto, instantâneo. Alcance: 18 m. Área: um alvo, ou uma imagem de até 3 m. Efeito: à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado. Dano: nenhum; a cura devolve 2d6 + Centelha PV. Resistência: corpo, Vigor + Resistência contra Dificuldade 10, para o ofuscar e a rajada. Limite de uso: três vezes por cena, somados. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Resistência mágica",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. Vale em todas as formas.",
       "classe": "regra da ficha"
     },
     {
       "nome": "Pele ao vento",
-      "descricao": "resistência a Corte, Perfuração e Impacto (Elementos; metade do dano).",
+      "descricao": "resistência a Corte, Perfuração e Impacto (Elementos; metade do dano). Vale em todas as formas.",
       "classe": "livro"
     },
     {
       "nome": "tempestade arisca",
-      "descricao": "entra na luta pelo gosto da briga, corta de longe com a rajada, ofusca o mais perigoso e cura os aliados; some no vento quando enjoa.",
+      "descricao": "entra na luta pelo gosto da briga, corta de longe com a rajada, ofusca o mais perigoso e cura os aliados; some no vento quando enjoa. Vale só na forma de vento.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "elfo de espada",
+      "descricao": "entra na luta pelo gosto da briga, com a espada longa; ofusca o mais perigoso, cura os aliados e vira vento para cortar de longe ou para sumir. Vale só na forma élfica.",
       "classe": "como luta"
     },
     {
       "nome": "Sentidos",
-      "descricao": "visão e audição: as de um elfo; sente o vento à volta."
+      "descricao": "visão e audição: as de um elfo; sente o vento à volta. Vale em todas as formas."
     }
   ],
   "lore": [
@@ -246,6 +251,7 @@
     "`massa`: 80 kg também no redemoinho **[extrapolação]**",
     "`pele ao vento`: resistência a Corte, Perfuração e Impacto **[provisório]**",
     "`temperança`: 2; o site tinha 3 **[provisório]**",
-    "`forma de vento`, `rajada cortante`, `ventos a serviço`, `resistência mágica`: números sugeridos pela ficha (D-197)"
+    "`forma de vento`, `rajada cortante`, `ventos a serviço`, `resistência mágica`: números sugeridos pela ficha (D-197)",
+    "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos; a Rajada cortante só na forma de vento, como já dizia a Forma de vento; os Ventos a serviço, a Resistência mágica e a Pele ao vento em todas (a forma élfica não muda os Elementos na Variante, e herda as resistências); o \"como luta\" em duas linhas; a Respiração, a Camuflagem e os Traços da forma élfica na linha dela em Variantes. Aptidões iguais e nenhuma Arte nas duas **[provisório]**"
   ]
 }

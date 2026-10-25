@@ -5,9 +5,10 @@
   "nome": "Djinn",
   "nomeIngles": "Djinn",
   "categoria": "Elemental",
+  "categoriaLegada": "Elemental",
   "papel": "elite",
   "conceito": "exterior Grande (ar)",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Nobre do plano do ar, orgulhoso e honrado: voa, some da vista, vira redemoinho cortante, muda a própria aparência e faz brotar água e comida. Barganhar com ele exige mais cautela que qualquer contrato humano.",
   "tags": [
     "elemental",
     "centelha",
@@ -17,132 +18,121 @@
   "porte": "Grande",
   "dimensoes": {
     "medida": "3 m de altura",
-    "peso": "200 kg"
+    "peso": "200 kg",
+    "largura": 0.75,
+    "altura": 3
   },
   "locomocao": {
     "terra": 2,
     "voo": 6
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
   },
   "centelha": 4,
   "attrs": {
     "forca": 6,
     "destreza": 5,
     "vigor": 5,
-    "influencia": 4,
-    "perspicacia": 4,
-    "compostura": 4,
     "percepcao": 4,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4
   },
   "skills": {
     "briga": 5,
     "esquiva": 1,
+    "atletismo": 2,
+    "integridade": 4,
     "prontidao": 2,
-    "integridade": 4
+    "persuasao": 3,
+    "sociabilidade": 2,
+    "ocultismo": 2,
+    "oficios-gerais": 3,
+    "sobrevivencia": 1
   },
+  "skills2": {
+    "etiqueta": 2,
+    "voo": 3
+  },
+  "especialidades": [
+    {
+      "habilidade": "persuasao",
+      "foco": "barganhar",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
-    "compaixao": 1,
-    "conviccao": 3,
-    "temperanca": 2,
+    "compaixao": 2,
+    "conviccao": 4,
+    "temperanca": 1,
     "valor": 3
   },
   "willpower": 9,
   "aparencia": 5,
   "ataques": [
     {
-      "nome": "Golpe planar",
+      "nome": "Golpe de vento",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
       "tipo": "corte",
-      "acerto": 0,
-      "ticks": 6
+      "ticks": 6,
+      "classe": "media"
     }
   ],
-  "poderes": [
-    {
-      "id": "forma-de-redemoinho",
-      "nome": "Forma de redemoinho",
-      "tipo": "natural",
-      "base": {
-        "arte": "vento",
-        "nivel": 4
-      },
-      "resiste": "esquiva",
-      "efeito": "Forma de redemoinho",
-      "usos": {
-        "periodo": "avontade"
-      },
-      "descricao": "O djinn vira um redemoinho de vento cortante, arrastando quem estiver perto e ferindo com destroços levantados do chão."
-    },
-    {
-      "id": "criar-agua-e-comida",
-      "nome": "Criar água e comida",
-      "tipo": "natural",
-      "base": {
-        "arte": "materia",
-        "nivel": 2
-      },
-      "resiste": "nenhum",
-      "efeito": "convoca água limpa ou comida simples do nada, o bastante para um pequeno grupo",
-      "descricao": "Com um gesto, o djinn faz brotar água fresca ou uma refeição simples, o bastante para alimentar um punhado de pessoas por um dia.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 1
-      }
-    },
-    {
-      "id": "invisibilidade-djinn",
-      "nome": "Invisibilidade",
-      "tipo": "natural",
-      "base": {
-        "arte": "ofuscacao",
-        "nivel": 1
-      },
-      "resiste": "nenhum",
-      "efeito": "some de vista à vontade, até agir de forma hostil",
-      "descricao": "O djinn desaparece de vista quando quer, e volta a ser visto só se atacar ou usar um poder chamativo.",
-      "usos": {
-        "periodo": "avontade"
-      }
-    }
-  ],
+  "fraquezas": [],
   "resistencias": [
     "corte",
     "perfuracao"
   ],
+  "imunidades": [],
   "habilidades": [
     {
       "nome": "Forma de redemoinho",
-      "descricao": "vira tornado que arrasta e derruba quem estiver a 3m"
-    },
-    {
-      "nome": "Voo veloz",
-      "descricao": "desloca-se pelos ares com grande velocidade"
-    },
-    {
-      "nome": "Véu",
-      "descricao": "muda a própria aparência ou a de uma área pequena"
-    },
-    {
-      "nome": "Criar água e comida",
-      "descricao": "conjura recursos do nada sem gastar ação em combate"
+      "descricao": "poder natural (base Vento 4, a do site): Ativação: uma ação, Velocidade 6. Duração: até 18 Ticks, ou até ele desfazer com outra ação. Alcance: o próprio corpo, que se move enquanto gira. Área: quem está a até 3 m dele. Efeito: vira um tornado de vento cortante que levanta destroços; quem está na área cai (Caído), e quem é mais leve que ele e não passa fica Agarrado, girando dentro, até o tornado acabar ou até vencer a manobra para se soltar. Dano: 2d6 + Centelha, Corte, a cada 6 Ticks, a quem está dentro. Resistência: esquiva, contra Destreza + Briga dele; quem passa fica de pé e de fora. Limite de uso: à vontade (site).",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Invisibilidade",
-      "descricao": "some da visão por uma cena"
+      "descricao": "poder natural (base Ofuscação 1, a do site): Ativação: uma ação, Velocidade 6. Duração: até ele atacar ou usar um poder chamativo, e no máximo até o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Invisível. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Criar água e comida",
+      "descricao": "poder natural (base Matéria 2, a do site): Ativação: um gesto, sem gastar ação de combate (site). Duração: a comida fica boa por um dia. Alcance: 3 m. Área: o bastante para seis pessoas por um dia. Efeito: faz brotar água limpa ou uma refeição simples do nada. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Véu",
+      "descricao": "poder natural (base Ofuscação 2, sugestão da ficha): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena. Alcance: o próprio corpo, ou uma área a até 9 m. Área: ele mesmo, ou um espaço de até 3 m. Efeito: muda a própria aparência (outro rosto, outra roupa, outra altura dentro do Grande) ou a de uma área pequena; é ilusão, e quem toca percebe. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dele, para quem desconfia e examina. Limite de uso: duas vezes por cena.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Domínio do vento",
-      "descricao": "ganha +1d de Esquiva contra ataques à distância"
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: o vento em volta desvia o que vem de longe: +2 na Esquiva contra ataques à distância. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "nobre do ar",
+      "descricao": "conversa e barganha antes de lutar; luta no ar, vira redemoinho contra grupos, some quando a luta vira contra ele e volta invisível para cobrar a dívida.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um humano."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Nobre do ar, orgulhoso e honrado, cumpre acordos ao pé da letra mas adora explorar as brechas na redação de um pedido."
+      "texto": "Nobre do ar, orgulhoso e honrado, cumpre acordos ao pé da letra mas adora explorar as brechas na redação de um pedido. Social: em corte, com servos e cortesãos."
     },
     {
       "titulo": "Sociedade",
@@ -155,6 +145,10 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Um djinn preso numa lamparina ou anel é lenda recorrente nos contos de Mère e nas rotas de comércio de Calin; poucos mercadores confiam nessas histórias, mas todo aventureiro que encontra um sabe que barganhar com um ser do ar exige mais cautela do que qualquer contrato humano."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande, 40 PV, Impacto 9, Corte e Perfuração 4; Corte e Perfuração fazem metade. Esquiva 14 (16 contra ataque à distância), Bloqueio 10, Defesa Mental 25. Golpe de vento de dano médio 13,5. À vontade vira redemoinho: derruba quem está a 3 m e prende os mais leves, com 2d6 + 4 de Corte a cada 6 Ticks. Some à vontade, muda a aparência e faz brotar água e comida. Anda a 2 e voa a 6."
     }
   ],
   "ecologia": {
@@ -196,5 +190,39 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 40,
+    "esquiva": 14,
+    "bloqueio": 10,
+    "defesa": 14,
+    "defesaMental": 25,
+    "defesaSocial": 16,
+    "absorcao": {
+      "impacto": 9,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 375.61,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
+      },
+      "voo": {
+        "batalha": 6
+      }
+    }
+  },
+  "notasObservacao": [
+    "`massa`: 200 kg, a do site; o corpo de base escalado a 3 m daria 370 kg (D-187) **[referência de jogo]**",
+    "`pv`: 40, na zona de transição, pela faixa de baixo (corpo leve); pela de cima seria 50 **[provisório]**",
+    "`ataque`: o \"Golpe planar\" de 2 dados vira o Golpe de vento Média, de 1 dado **[provisório]**",
+    "`forma de redemoinho`: poder natural, e não forma (linha Formas) **[provisório]**",
+    "`segundo Tamanho`: o tornado ativo dá 5,63 m², Grande, sem mudar a categoria (decisão do autor de 24/10/2026, D-213); com o cilindro, ou com o funil da largura da Área (3 m à volta), seria Enorme, e a linha passaria a `**Enorme** (..., com o redemoinho ativo)` **[provisório]**",
+    "`virtudes`: Compaixão 2, Convicção 4, Temperança 1; o site tinha 1, 3 e 2 **[provisório]**",
+    "`forma de redemoinho`, `invisibilidade`, `criar água e comida`, `véu`, `domínio do vento`: números sugeridos pela ficha (D-197)"
+  ]
 }

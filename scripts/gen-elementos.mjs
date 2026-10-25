@@ -82,15 +82,15 @@ const POR_TAG = {
 // elemental-da-terra-grande (B14 fase 3): saiu daqui, a ficha agora se descreve sozinha
 // (campo `material`), então o script pula ela (CUSTOM_IDS) e não pode mais citá-la aqui.
 const MATERIAL_DE = {
-  'golem-de-argila': 'pedra', // golem-de-pedra saiu (ficha v3 desde a bestiario-nao-animal: a linha Elementos da ficha vai à fonte)
-  'golem-de-ferro': 'metal', 'cobra-de-ferro': 'metal', 'buscador': 'metal',
-  'golem-de-gelo': 'gelo',
-  'golem-de-carne': 'carne animada', 'homunculus': 'carne animada',
-  'salamandra': 'fogo', 'efreeti': 'fogo', // elemental-do-fogo-pequeno saiu (ficha v3 desde a bestiario-nao-animal: a linha Elementos da ficha vai à fonte)
-  'elemental-da-agua-pequeno': 'agua', 'marid': 'agua',
-  'elemental-da-terra-pequeno': 'terra',
-  'shaitan': 'terra', 'xorn': 'terra',
-  'elemental-do-ar-pequeno': 'ar', 'djinn': 'ar', 'perseguidor-invisivel': 'ar',
+  // golem-de-argila saiu (ficha v3 desde os lotes 25 a 28: a linha Elementos da ficha vai à fonte); golem-de-pedra saiu (ficha v3 desde a bestiario-nao-animal: a linha Elementos da ficha vai à fonte)
+  // golem-de-ferro, cobra-de-ferro e buscador saíram (ficha v3 desde os lotes 25 a 28: a linha Elementos da ficha vai à fonte)
+  // golem-de-gelo saiu (ficha v3 desde os lotes 25 a 28: a linha Elementos da ficha vai à fonte)
+  // golem-de-carne e homunculus saíram (ficha v3 desde os lotes 25 a 28: a linha Elementos da ficha vai à fonte)
+  // salamandra e efreeti saíram (ficha v3 desde os lotes 25 a 28: a linha Elementos da ficha vai à fonte); elemental-do-fogo-pequeno saiu (ficha v3 desde a bestiario-nao-animal: a linha Elementos da ficha vai à fonte)
+  // elemental-da-agua-pequeno e marid saíram (ficha v3 desde os lotes 25 a 28: a linha Elementos da ficha vai à fonte)
+  // elemental-da-terra-pequeno saiu (ficha v3 desde os lotes 25 a 28: a linha Elementos da ficha vai à fonte)
+  // shaitan e xorn saíram (ficha v3 desde os lotes 25 a 28: a linha Elementos da ficha vai à fonte)
+  // elemental-do-ar-pequeno, djinn e perseguidor-invisivel saíram (ficha v3 desde os lotes 25 a 28: a linha Elementos da ficha vai à fonte)
 };
 
 // --- camada 3: as exceções, à mão -----------------------------------------
@@ -108,7 +108,7 @@ const EXCECOES = {
   // madeira elástica; o corte do machado é o que funciona (B14 fase 3, decisoes-fase3.md).
   'treant': { fraquezas: ['fogo'], resistencias: ['perfuracao', 'impacto'] },
   // Gigante do Fogo (B14 fase 3): forjado no calor da fornalha, sofre no gelo.
-  'gigante-do-fogo': { fraquezas: ['gelo'], resistencias: ['fogo'] },
+  // gigante-do-fogo saiu (ficha v3 desde os lotes 25 a 28: a linha Elementos da ficha vai à fonte)
   // Montão Tropeçante (B14 fase 4, achado da revisão dos graves): a fraqueza a fogo virou
   // resistência (a fonte não sustenta fraqueza aqui); "imune a raio" na fonte vira
   // resistência, e o dano que a resistência cortaria pela metade vira cura na mesma
@@ -129,16 +129,16 @@ const EXCECOES = {
   // vai direto à fonte, com resistência a impacto, corte e perfuração e imunidade a ácido.
   // As 97 de ficha v3 não passam por este satélite; ver CUSTOM_IDS acima.)
   // Perseguidor Invisível (B14 fase 4): a fonte não sustenta resistência a corte/perfuração.
-  'perseguidor-invisivel': {},
+  // perseguidor-invisivel saiu (ficha v3 desde os lotes 25 a 28: a linha Elementos da ficha vai à fonte)
   // Elemental do Fogo Pequeno (B14 fase 4): a resistência a fogo da fonte vira imunidade
   // (campo à parte); aqui fica só a fraqueza a água.
   // elemental-do-fogo-pequeno saiu (ficha v3 desde a bestiario-nao-animal: a linha Elementos da ficha vai à fonte)
   // Elemental da Água Pequeno (B14 fase 4): a fraqueza a raio e a resistência a fogo não
   // vêm da fonte.
-  'elemental-da-agua-pequeno': {},
+  // elemental-da-agua-pequeno saiu (ficha v3 desde os lotes 25 a 28: a linha Elementos da ficha vai à fonte)
   // Marid (B14 fase 4): "resiste na fonte", tira a fraqueza a raio que o Djinn tinha por
   // padrão de categoria; mantém a resistência a fogo.
-  'marid': { resistencias: ['fogo'] },
+  // marid saiu (ficha v3 desde os lotes 25 a 28: a linha Elementos da ficha vai à fonte)
 
   // Dragões: o bicho resiste ao que ele mesmo cospe
   // dragao-vermelho-adulto saiu (ficha v3 desde os lotes 23 e 24: a linha Elementos da ficha vai à fonte)

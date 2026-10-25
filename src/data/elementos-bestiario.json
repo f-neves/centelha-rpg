@@ -78,16 +78,6 @@
    "sagrado"
   ]
  },
- "buscador": {
-  "fraquezas": [
-   "raio"
-  ],
-  "resistencias": [
-   "corte",
-   "fogo",
-   "perfuracao"
-  ]
- },
  "cao-de-guerra-nessiano": {
   "fraquezas": [
    "luz",
@@ -110,16 +100,6 @@
   "fraquezas": [
    "luz",
    "sagrado"
-  ]
- },
- "cobra-de-ferro": {
-  "fraquezas": [
-   "raio"
-  ],
-  "resistencias": [
-   "corte",
-   "fogo",
-   "perfuracao"
   ]
  },
  "diabo-barbado": {
@@ -164,38 +144,10 @@
    "sagrado"
   ]
  },
- "djinn": {
-  "resistencias": [
-   "corte",
-   "perfuracao"
-  ]
- },
  "dretch": {
   "fraquezas": [
    "luz",
    "sagrado"
-  ]
- },
- "efreeti": {
-  "fraquezas": [
-   "agua"
-  ],
-  "resistencias": [
-   "fogo"
-  ]
- },
- "elemental-da-terra-pequeno": {
-  "fraquezas": [
-   "agua"
-  ],
-  "resistencias": [
-   "fogo"
-  ]
- },
- "elemental-do-ar-pequeno": {
-  "resistencias": [
-   "corte",
-   "perfuracao"
   ]
  },
  "erinia": {
@@ -256,54 +208,10 @@
    "perfuracao"
   ]
  },
- "gigante-do-fogo": {
-  "fraquezas": [
-   "gelo"
-  ],
-  "resistencias": [
-   "fogo"
-  ]
- },
  "glabrezu": {
   "fraquezas": [
    "luz",
    "sagrado"
-  ]
- },
- "golem-de-argila": {
-  "resistencias": [
-   "corte",
-   "fogo",
-   "perfuracao"
-  ]
- },
- "golem-de-carne": {
-  "resistencias": [
-   "perfuracao"
-  ]
- },
- "golem-de-ferro": {
-  "fraquezas": [
-   "raio"
-  ],
-  "resistencias": [
-   "corte",
-   "fogo",
-   "perfuracao"
-  ]
- },
- "golem-de-gelo": {
-  "fraquezas": [
-   "fogo"
-  ],
-  "resistencias": [
-   "gelo",
-   "perfuracao"
-  ]
- },
- "homunculus": {
-  "resistencias": [
-   "perfuracao"
   ]
  },
  "kyton": {
@@ -321,11 +229,6 @@
  "lillend": {
   "fraquezas": [
    "profano"
-  ]
- },
- "marid": {
-  "resistencias": [
-   "fogo"
   ]
  },
  "marilith": {
@@ -365,11 +268,6 @@
    "sagrado"
   ]
  },
- "objeto-animado": {
-  "resistencias": [
-   "perfuracao"
-  ]
- },
  "papa-moscas-gigante": {
   "fraquezas": [
    "fogo"
@@ -399,22 +297,6 @@
   "fraquezas": [
    "luz",
    "sagrado"
-  ]
- },
- "salamandra": {
-  "fraquezas": [
-   "agua"
-  ],
-  "resistencias": [
-   "fogo"
-  ]
- },
- "shaitan": {
-  "fraquezas": [
-   "agua"
-  ],
-  "resistencias": [
-   "fogo"
   ]
  },
  "shoggoth": {
@@ -507,14 +389,6 @@
   "fraquezas": [
    "luz",
    "sagrado"
-  ]
- },
- "xorn": {
-  "fraquezas": [
-   "agua"
-  ],
-  "resistencias": [
-   "fogo"
   ]
  }
 }

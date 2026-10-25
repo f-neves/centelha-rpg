@@ -5,9 +5,10 @@
   "nome": "Ogro",
   "nomeIngles": "Ogre",
   "categoria": "Gigante",
+  "categoriaLegada": "Gigante",
   "papel": "soldado",
   "conceito": "humanoide Grande (gigante)",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "descricao": "Brutamontes de 2,9 m que resolve tudo no porrete antes de pensar, come qualquer coisa, gente inclusive, e obedece a quem for mais forte ou esperto. Derruba os menores e bate com força de gigante; fácil de enganar, perigoso quando irritado.",
   "tags": [
     "gigante"
   ],
@@ -15,28 +16,41 @@
   "porte": "Grande",
   "dimensoes": {
     "medida": "2,9 m de altura",
-    "peso": "290 kg"
+    "peso": "334 kg",
+    "largura": 0.73,
+    "altura": 2.9
   },
   "locomocao": {
     "terra": 4
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
   },
   "centelha": 0,
   "attrs": {
     "forca": 7,
     "destreza": 2,
     "vigor": 5,
-    "influencia": 1,
-    "perspicacia": 1,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2
   },
   "skills": {
     "briga": 3,
-    "esquiva": 0,
+    "arremesso": 2,
+    "atletismo": 1,
+    "integridade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "sobrevivencia": 1
+  },
+  "skills2": {
+    "intimidacao": 2,
+    "musculatura": 3
   },
   "virtues": {
     "compaixao": 1,
@@ -54,32 +68,43 @@
       "dado": 2,
       "mao": 1,
       "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 6
+      "ticks": 7,
+      "classe": "pesada"
     }
   ],
+  "fraquezas": [],
+  "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Golpe brutal",
-      "descricao": "ataque corpo a corpo de dano alto com clava ou machado gigante"
-    },
-    {
       "nome": "Força de gigante",
-      "descricao": "derruba portas, arremessa objetos e desequilibra oponentes menores"
+      "descricao": "Pancada descomunal: Ativação: a Pancada descomunal que fere um alvo Médio ou menor. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo cai no chão ou é empurrado 1 m, à escolha do ogro (site: \"desequilibra oponentes menores\"); uma porta comum cede ao segundo golpe. Dano: o da Pancada. Resistência: corpo, contra a jogada da pancada; quem passa fica de pé e no lugar. Limite de uso: um por golpe.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Atlético",
-      "descricao": "Atletismo 1; escala e corre melhor do que o esperado para o tamanho"
+      "nome": "alvo grande",
+      "descricao": "o Tamanho Grande (o humano ganha +3 contra ele) e o PV da massa (site, Alvo grande).",
+      "classe": "livro"
     },
     {
-      "nome": "Alvo grande",
-      "descricao": "tamanho Grande facilita ser acertado, mas aguenta mais dano graças à massa"
+      "nome": "agarrar",
+      "descricao": "Pancada descomunal: Agarrar.",
+      "classe": "livro"
+    },
+    {
+      "nome": "porrete primeiro",
+      "descricao": "age por impulso e fome: avança reto, derruba o menor e bate até parar de mexer; foge de quem o engana ou o machuca demais.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um humano."
     }
   ],
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Age por impulso e fome, resolve qualquer problema no porrete antes de pensar; fácil de enganar, mas perigoso quando irritado."
+      "texto": "Age por impulso e fome, resolve qualquer problema no porrete antes de pensar; fácil de enganar, mas perigoso quando irritado. Social: sozinho ou em grupo familiar pequeno."
     },
     {
       "titulo": "Hábitos",
@@ -92,6 +117,14 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Relíquia bruta de um mundo mais selvagem, o ogro é hoje pesadelo comum dos caminhos isolados de Mére e das terras altas do White Wall, temido por camponeses que já não sabem dizer se é besta, gigante caído ou coisa pior escapada da Fenda."
+    },
+    {
+      "titulo": "Aptidões",
+      "texto": "montaria não · carga sim · tração sim"
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande, lento (Esquiva 4, Bloqueio 4) e fácil de acertar. Pancada de dano médio 14, que derruba ou empurra quem é do tamanho de um homem. Com a clava, Pesada com Força × 2. 50 PV, Impacto 5, Corte e Perfuração 0. Defesa Social 4: se engana fácil."
     }
   ],
   "ecologia": {
@@ -133,5 +166,32 @@
     "crConf": "conhecido"
   },
   "variantes": [],
-  "ameacaLegada": 3
+  "ameacaLegada": 3,
+  "v3": {
+    "pv": 50,
+    "esquiva": 4,
+    "bloqueio": 4,
+    "defesa": 4,
+    "defesaMental": 9,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "couracaNivel": 1,
+    "pesoErguido": 851.05,
+    "deslocamento": {
+      "terra": {
+        "batalha": 4,
+        "arranque": 6,
+        "corrida": 9
+      }
+    }
+  },
+  "notasObservacao": [
+    "`massa`: 334 kg pelo cubo da altura do site, como o gigante da colina; o site dizia 290 kg (D-187) **[conta]**",
+    "`couraca`: 1, pele grossa e suja **[provisório]**",
+    "`força de gigante`: números sugeridos pela ficha (D-197)"
+  ]
 }

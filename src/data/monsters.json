@@ -4977,31 +4977,35 @@
   "habilidades": [
    {
     "nome": "Forma de vento",
-    "descricao": "Ativação: uma ação, Velocidade 6. Duração: até ele voltar com outra ação. Alcance: o próprio corpo. Área: não se aplica. Efeito: vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
+    "descricao": "Ativação: uma ação, Velocidade 6. Duração: até ele voltar com outra ação. Alcance: o próprio corpo. Área: não se aplica. Efeito: vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Vale em todas as formas."
    },
    {
     "nome": "Rajada cortante",
-    "descricao": "poder natural (base Vento 3) · Rajada cortante: Ativação: uma ação, Velocidade 7, a jogada da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Efeito: uma lâmina de ar corta todos na linha. Dano: 3d6 + Centelha, Corte. Resistência: corpo, Vigor + Resistência contra a jogada; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks."
+    "descricao": "poder natural (base Vento 3) · Rajada cortante: Ativação: uma ação, Velocidade 7, a jogada da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Efeito: uma lâmina de ar corta todos na linha. Dano: 3d6 + Centelha, Corte. Resistência: corpo, Vigor + Resistência contra a jogada; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks. Vale só na forma de vento."
    },
    {
     "nome": "Ventos a serviço",
-    "descricao": "poder natural (base Vento 2): Ativação: uma ação, Velocidade 6. Duração: o ofuscar e a ilusão, até o fim da cena; o resto, instantâneo. Alcance: 18 m. Área: um alvo, ou uma imagem de até 3 m. Efeito: à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado. Dano: nenhum; a cura devolve 2d6 + Centelha PV. Resistência: corpo, Vigor + Resistência contra Dificuldade 10, para o ofuscar e a rajada. Limite de uso: três vezes por cena, somados."
+    "descricao": "poder natural (base Vento 2): Ativação: uma ação, Velocidade 6. Duração: o ofuscar e a ilusão, até o fim da cena; o resto, instantâneo. Alcance: 18 m. Área: um alvo, ou uma imagem de até 3 m. Efeito: à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado. Dano: nenhum; a cura devolve 2d6 + Centelha PV. Resistência: corpo, Vigor + Resistência contra Dificuldade 10, para o ofuscar e a rajada. Limite de uso: três vezes por cena, somados. Vale em todas as formas."
    },
    {
     "nome": "Resistência mágica",
-    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. Vale em todas as formas."
    },
    {
     "nome": "Pele ao vento",
-    "descricao": "resistência a Corte, Perfuração e Impacto (Elementos; metade do dano)."
+    "descricao": "resistência a Corte, Perfuração e Impacto (Elementos; metade do dano). Vale em todas as formas."
    },
    {
     "nome": "tempestade arisca",
-    "descricao": "entra na luta pelo gosto da briga, corta de longe com a rajada, ofusca o mais perigoso e cura os aliados; some no vento quando enjoa."
+    "descricao": "entra na luta pelo gosto da briga, corta de longe com a rajada, ofusca o mais perigoso e cura os aliados; some no vento quando enjoa. Vale só na forma de vento."
+   },
+   {
+    "nome": "elfo de espada",
+    "descricao": "entra na luta pelo gosto da briga, com a espada longa; ofusca o mais perigoso, cura os aliados e vira vento para cortar de longe ou para sumir. Vale só na forma élfica."
    },
    {
     "nome": "Sentidos",
-    "descricao": "visão e audição: as de um elfo; sente o vento à volta."
+    "descricao": "visão e audição: as de um elfo; sente o vento à volta. Vale em todas as formas."
    }
   ],
   "poderes": [],
@@ -5692,39 +5696,39 @@
   "habilidades": [
    {
     "nome": "Toque da fraqueza",
-    "descricao": "poder natural (base Morte 2): Ativação: as Garras que ferem, ou um toque (a jogada de Briga). Duração: até o fim da cena; acumula. Alcance: toque. Área: um alvo. Efeito: quem falha fica com a Força um nível abaixo, com o dano e o peso que vêm dela; cada toque que pega desce mais um, até Força 1. Dano: nenhum além do golpe. Resistência: corpo, Vigor + Resistência contra a jogada do toque. Limite de uso: um por golpe."
+    "descricao": "poder natural (base Morte 2): Ativação: as Garras que ferem, ou um toque (a jogada de Briga). Duração: até o fim da cena; acumula. Alcance: toque. Área: um alvo. Efeito: quem falha fica com a Força um nível abaixo, com o dano e o peso que vêm dela; cada toque que pega desce mais um, até Força 1. Dano: nenhum além do golpe. Resistência: corpo, Vigor + Resistência contra a jogada do toque. Limite de uso: um por golpe. Vale só na forma verdadeira."
    },
    {
     "nome": "Disfarce ilusório",
-    "descricao": "poder natural (base Ofuscação 3): Ativação: uma ação, Velocidade 6. Duração: até ela desfazer, ou até atacar. Alcance: o próprio corpo. Área: não se aplica. Efeito: parece uma velha camponesa inofensiva ou uma donzela bela (a Variante \"disfarce\"); quem toca ou desconfia e testa vê através. Dano: nenhum. Resistência: mente, contra Influência + Manha dela, só para quem desconfia. Limite de uso: à vontade."
+    "descricao": "poder natural (base Ofuscação 3): Ativação: uma ação, Velocidade 6. Duração: até ela desfazer, ou até atacar. Alcance: o próprio corpo. Área: não se aplica. Efeito: parece uma velha camponesa inofensiva ou uma donzela bela (a Variante \"disfarce\"); quem toca ou desconfia e testa vê através. Dano: nenhum. Resistência: mente, contra Influência + Manha dela, só para quem desconfia. Limite de uso: à vontade. Vale em todas as formas."
    },
    {
     "nome": "Feitiços de maldição",
-    "descricao": "poder natural (base Ofuscação 3): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena. Alcance: 18 m. Área: um alvo. Efeito: à escolha: uma névoa de ilusão que tira o alvo do caminho (Confuso), ou uma ordem curta que ele cumpre. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dela; quem passa fica imune a esse feitiço até o fim da cena. Limite de uso: três vezes por cena, somados."
+    "descricao": "poder natural (base Ofuscação 3): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena. Alcance: 18 m. Área: um alvo. Efeito: à escolha: uma névoa de ilusão que tira o alvo do caminho (Confuso), ou uma ordem curta que ele cumpre. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dela; quem passa fica imune a esse feitiço até o fim da cena. Limite de uso: três vezes por cena, somados. Vale em todas as formas."
    },
    {
     "nome": "Fôlego anfíbio",
-    "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: respira e nada debaixo d'água sem penalidade. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+    "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: respira e nada debaixo d'água sem penalidade. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. Vale em todas as formas."
    },
    {
     "nome": "Garras",
-    "descricao": "as duas mãos de garra contam como par de armas leves e atacam pela empunhadura dupla, os dois golpes a −1d6."
+    "descricao": "as duas mãos de garra contam como par de armas leves e atacam pela empunhadura dupla, os dois golpes a −1d6. Vale só na forma verdadeira."
    },
    {
     "nome": "Mímica de voz",
-    "descricao": "Manha, com a Especialidade natural (imitar uma voz já ouvida) +3."
+    "descricao": "Manha, com a Especialidade natural (imitar uma voz já ouvida) +3. Vale em todas as formas."
    },
    {
     "nome": "Sentidos do pântano",
-    "descricao": "Prontidão, com a Especialidade natural (pântano e floresta) +2."
+    "descricao": "Prontidão, com a Especialidade natural (pântano e floresta) +2. Vale em todas as formas."
    },
    {
     "nome": "velha do brejo",
-    "descricao": "disfarçada, chama a vítima com uma voz conhecida para dentro do pântano, revela as garras, enfraquece com o toque e foge pela água se a luta vira."
+    "descricao": "disfarçada, chama a vítima com uma voz conhecida para dentro do pântano, revela as garras, enfraquece com o toque e foge pela água se a luta vira. Vale em todas as formas."
    },
    {
     "nome": "Sentidos",
-    "descricao": "visão: enxerga no escuro do pântano. · audição e olfato: os de um humano; Prontidão (pântano e floresta) +2."
+    "descricao": "visão: enxerga no escuro do pântano. Vale em todas as formas. · audição e olfato: os de um humano; Prontidão (pântano e floresta) +2. Vale em todas as formas."
    }
   ],
   "poderes": [],
@@ -6045,7 +6049,7 @@
   "categoria": "Construto",
   "tipo": "chefe",
   "conceito": "constructo Enorme",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricao": "Caçador do tamanho de um elefante, de carne moldada no Abismo, servo perfeito dos senhores demoníacos. Sobe qualquer parede, anda sobre a água e não perde o rastro; dispara raios de fogo, frio, eletricidade e pedra pelos olhos, e corta com as patas-lâmina.",
   "tags": [
    "monstro"
   ],
@@ -6054,8 +6058,8 @@
   "pendente": true,
   "porte": "Enorme",
   "dimensoes": {
-   "medida": "corpo do tamanho de um elefante, cerca de 4,5 metros de comprimento",
-   "peso": "várias t"
+   "medida": "4,5 m de comprimento, 2,65 m de altura",
+   "peso": "3.600 kg"
   },
   "ecologia": {
    "tipo": "Construct",
@@ -6072,7 +6076,7 @@
   "atributos": {
    "forca": 9,
    "destreza": 5,
-   "vigor": 2,
+   "vigor": 8,
    "influencia": 0,
    "perspicacia": 1,
    "compostura": 1,
@@ -6090,28 +6094,28 @@
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 0,
+   "compaixao": 1,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 4
   },
   "combate": {
-   "pv": 45,
+   "pv": 75,
    "defesa": 12,
    "defesaSocial": 2,
    "defesaMental": 8,
    "absorcao": {
-    "impacto": 2,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 0,
+    "perfuracao": 0
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
    "fraquezas": [
     "raio"
    ],
    "resistencias": [
-    "corte",
     "fogo",
+    "corte",
     "perfuracao"
    ],
    "iniciativa": "1d6 + 2",
@@ -6122,9 +6126,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
+     "nome": "Patas-lâmina",
      "pool": "7d6",
-     "dano": "3d6 +9 corte",
+     "dano": "2d6 +9 corte",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
@@ -6133,24 +6137,40 @@
   },
   "habilidades": [
    {
-    "nome": "Raios oculares",
-    "descricao": "Dispara um raio diferente a cada rodada (fogo, frio, eletricidade ou petrificação), cada um recarregando por alguns turnos; o alvo testa Vigor ou Compostura conforme o efeito."
+    "nome": "Raio de fogo",
+    "descricao": "poder natural (base Fogo 3, sugestão da ficha): Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 18 m. Área: um alvo. Efeito: dispara dos olhos um raio de fogo; um raio por ação, e cada um dos quatro recarrega à parte (site). Dano: 3d6, fogo. Resistência: corpo, Vigor + Resistência contra Dificuldade 10 (site: \"o alvo testa Vigor\"); quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks."
    },
    {
-    "nome": "Corpo de construto",
-    "descricao": "Não respira, não come nem dorme, e é imune a doenças, venenos e à maioria dos efeitos que exigem Vontade."
+    "nome": "Raio de frio",
+    "descricao": "poder natural (base Gelo 3, sugestão da ficha): Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 18 m. Área: um alvo. Efeito: dispara dos olhos um raio de frio; um raio por ação, e cada um dos quatro recarrega à parte (site). Dano: 3d6, gelo. Resistência: corpo, Vigor + Resistência contra Dificuldade 10 (site: \"o alvo testa Vigor\"); quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks."
+   },
+   {
+    "nome": "Raio elétrico",
+    "descricao": "poder natural (base Raio 3, sugestão da ficha): Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 18 m. Área: um alvo. Efeito: dispara dos olhos um raio de eletricidade; um raio por ação, e cada um dos quatro recarrega à parte (site). Dano: 3d6, raio. Resistência: corpo, Vigor + Resistência contra Dificuldade 10 (site: \"o alvo testa Vigor\"); quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks."
+   },
+   {
+    "nome": "raio de pedra",
+    "descricao": "o quarto raio dos olhos transforma em pedra quem não resiste (site: petrificação); o livro não tem a condição de petrificado. Recarrega à parte, como os outros."
    },
    {
     "nome": "Escalada e travessia da água",
-    "descricao": "Efeitos permanentes que não podem ser desfeitos lhe permitem subir qualquer superfície e caminhar sobre a água como se fosse terra firme."
+    "descricao": "Ativação: nenhuma; sempre ativas. Duração: permanente; não pode ser desfeita (site). Alcance: o próprio corpo. Área: não se aplica. Efeito: sobe qualquer superfície à Batalha 5 e anda sobre a água como em terra firme. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "presa implacável",
+    "descricao": "Sobrevivência, com a Especialidade natural (rastrear o alvo designado) +3."
+   },
+   {
+    "nome": "corpo de construto",
+    "descricao": "não respira, não come e não dorme; não faz teste de Vigor, Resistência nem Virtude (C-002, C-040); é imune a doença e veneno e à maioria dos efeitos que pedem Vontade (site); não cura sozinho."
+   },
+   {
+    "nome": "caçador do senhor",
+    "descricao": "persegue o fugitivo ou o objeto sem parar nem hesitar; dispara os raios de longe, corta com as patas quem fica no caminho e leva a presa de volta ao senhor demoníaco."
    },
    {
     "nome": "Sentidos",
-    "descricao": "Enxerga no escuro e na penumbra, quase nunca perdendo o rastro de sua presa."
-   },
-   {
-    "nome": "Presa implacável",
-    "descricao": "Rastreia o alvo designado com determinação sobrenatural, sem desistir até completar sua tarefa."
+    "descricao": "visão no escuro: enxerga no escuro e na penumbra, e quase nunca perde o rastro (site)."
    }
   ],
   "poderes": [],
@@ -6172,6 +6192,14 @@
    {
     "titulo": "Símbolo de lealdade forçada",
     "texto": "A simples presença de um coletor no covil de um demônio já basta para manter súditos menores na linha, temerosos do que aguarda quem tenta desertar."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: solitário, a serviço de um demônio."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Enorme, 75 PV, Impacto 8, Corte e Perfuração 0; lâmina, ponta e fogo fazem metade, raio fere mais. Esquiva 12, Bloqueio 10, Defesa Mental 8. Patas-lâmina de dano médio 16. Cada raio dos olhos (fogo, frio, eletricidade) uma vez a cada 24 Ticks, 3d6 a até 18 m; o quarto raio petrifica (sem regra ainda). Anda a 5, sobe paredes e anda sobre a água. Não se cura sozinho."
    }
   ]
  },
@@ -8918,7 +8946,7 @@
   "categoria": "Gigante",
   "tipo": "elite",
   "conceito": "humanoide Grande (gigante)",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "descricao": "Gigante solitário de um olho só, que vive em cavernas isoladas e ruínas esquecidas. Atira rochedos, esmaga com os punhos e, às vezes, pressente o golpe que vinha certo e o evita. O olho único deixa o flanco aberto.",
   "tags": [
    "gigante",
    "centelha",
@@ -8930,7 +8958,7 @@
   "porte": "Grande",
   "dimensoes": {
    "medida": "3,2 m de altura",
-   "peso": "400 kg"
+   "peso": "448 kg"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -8955,7 +8983,7 @@
    "raciocinio": 2
   },
   "pericias": {
-   "prontidao": 1,
+   "prontidao": 2,
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
@@ -8971,16 +8999,16 @@
   },
   "combate": {
    "pv": 54,
-   "defesa": 4,
+   "defesa": 8,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 7,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
+   "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
     "arranque": 5,
@@ -8992,35 +9020,43 @@
      "pool": "7d6 +2",
      "dano": "2d6 +10 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
+    },
+    {
+     "nome": "Rocha arremessada",
+     "pool": "2d6+2 +2",
+     "dano": "2d6 +10 impacto",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
   "habilidades": [
    {
+    "nome": "Arremesso de rocha",
+    "descricao": "Rocha arremessada: Ativação: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: até 36 m; acima de 12 m, −2 na jogada. Área: um alvo. Efeito: a rocha derruba o alvo Médio ou menor que ela fere; contra uma parede fraca, uma cerca ou um telheiro, derruba a estrutura pequena (site, Força ciclópica). Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto."
+   },
+   {
     "nome": "Lampejo de premonição",
-    "descricao": "gasta Centelha para pressentir um golpe certeiro e evitá-lo por completo"
+    "descricao": "Ativação: um golpe vai acertá-lo; gasta 2 de Energia. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Efeito: pressente o golpe certeiro e o evita por completo. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena."
    },
    {
     "nome": "Olho único",
-    "descricao": "campo de visão limitado; sofre penalidade contra flanco e ataques furtivos"
+    "descricao": "Ativação: nenhuma; sempre. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: o campo de visão é estreito: quem o flanqueia ou o ataca de surpresa soma +2 a mais na jogada de ataque. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Clava colossal",
-    "descricao": "dano alto corpo a corpo"
+    "nome": "agarrar",
+    "descricao": "Pancada descomunal: Agarrar."
    },
    {
-    "nome": "Força ciclópica",
-    "descricao": "arremessa rochedos ou derruba estruturas pequenas"
+    "nome": "dono da toca",
+    "descricao": "recebe o estranho com hostilidade; atira rochedos de longe, esmaga de perto e evita, no último instante, o golpe que vinha certo."
    },
    {
-    "nome": "Couro grosso",
-    "descricao": "Absorção alta"
-   },
-   {
-    "nome": "Lampejo de premonição",
-    "descricao": "Sentido passivo."
+    "nome": "Sentidos",
+    "descricao": "visão: a de um olho só, de campo estreito (Olho único). · audição: a de um humano."
    }
   ],
   "poderes": [],
@@ -9028,17 +9064,12 @@
    "terra": 3
   },
   "tecnicas": [],
-  "artes": [
-   {
-    "id": "fortuna",
-    "nivel": 1
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Ofícios 2, Prontidão 2.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Solitário e desconfiado, vive por instinto e reage com hostilidade a qualquer estranho que se aproxime de sua toca."
+    "texto": "Solitário e desconfiado, vive por instinto e reage com hostilidade a qualquer estranho que se aproxime de sua toca. Social: solitário."
    },
    {
     "titulo": "Hábitos",
@@ -9047,6 +9078,14 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Costuma ocupar ruínas esquecidas de uma era anterior à Supressão, tomando templos e torres em decadência como sua toca. Para os pastores de Mére e Syl, é a figura por trás das velhas histórias de assombração de montanha."
+   },
+   {
+    "titulo": "Aptidões",
+    "texto": "montaria não · carga sim · tração sim"
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, lento (Esquiva 4, Bloqueio 8). Pancada e rochedo de dano médio 17; o rochedo derruba quem é do tamanho de um homem. Uma vez por cena, por 2 de Energia, evita um golpe que o acertaria. Quem o flanqueia ganha +2 a mais. 54 PV, Impacto 7, Corte e Perfuração 1."
    }
   ]
  },
@@ -9056,17 +9095,17 @@
   "nomeIngles": "Iron Cobra",
   "categoria": "Construto",
   "tipo": "soldado",
-  "conceito": "constructo Pequeno",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "conceito": "constructo Miúdo",
+  "descricao": "Serpente de ferro de 1,2 m que guarda tesouros sem ruído e sem medo. Pica com o veneno de um reservatório, três vezes antes de secar. Mandada pelo criador, rastreia e mata um alvo a quilômetros.",
   "tags": [
    "monstro"
   ],
   "ameaca": 2,
   "centelha": 0,
   "pendente": true,
-  "porte": "Pequeno",
+  "porte": "Miúdo",
   "dimensoes": {
-   "medida": "1,2 m de comprimento",
+   "medida": "1,2 m de comprimento, 0,4 m de altura",
    "peso": "18 kg"
   },
   "ecologia": {
@@ -9083,9 +9122,9 @@
   "atributos": {
    "forca": 3,
    "destreza": 4,
-   "vigor": 0,
-   "influencia": 0,
-   "perspicacia": 0,
+   "vigor": 4,
+   "influencia": 1,
+   "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
    "inteligencia": 0,
@@ -9094,23 +9133,24 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 1,
+   "integridade": 0,
    "furtividade": 3
   },
-  "vontade": 5,
+  "vontade": 3,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 3,
-   "valor": 3
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
-   "pv": 20,
+   "pv": 28,
    "defesa": 10,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 0,
+    "impacto": 4,
     "corte": 0,
     "perfuracao": 0
    },
@@ -9119,8 +9159,8 @@
     "raio"
    ],
    "resistencias": [
-    "corte",
     "fogo",
+    "corte",
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
@@ -9131,10 +9171,10 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2",
-     "dano": "1d6 +3 corte",
-     "perfArma": null,
+     "nome": "Mordida",
+     "pool": "3d6 +1",
+     "dano": "1d6 +1 perfurante · perf. 0",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -9142,28 +9182,32 @@
   },
   "habilidades": [
    {
-    "nome": "Sentidos Metálicos",
-    "descricao": "Enxerga no escuro e em penumbra como se fosse luz plena, sem perder precisão."
+    "nome": "sem vida",
+    "descricao": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo."
    },
    {
-    "nome": "Casco de Ferro",
-    "descricao": "Placas de metal absorvem grande parte dos golpes comuns, e a cobra é imune a veneno, doença e qualquer efeito que dependa de mente ou vontade, por não possuir nenhuma."
+    "nome": "Picada envenenada",
+    "descricao": "Mordida: Ativação: a Mordida que fere. Duração: a do veneno. Alcance: o do corpo a corpo. Área: um alvo. Efeito: injeta o veneno do reservatório (Veneno e doença); depois de três picadas que injetam, o reservatório se esgota e a mordida fica só com o dano. O criador pode encher o reservatório com outra peçonha, com ácido ou com alquimia (site). Dano: o da Mordida e o do veneno. Resistência: corpo, pelo veneno (Veneno e doença). Limite de uso: três doses, até o criador encher de novo."
    },
    {
-    "nome": "Resistência a Magia",
-    "descricao": "Feitiços hostis precisam vencer uma resistência natural antes de fazerem efeito sobre ela."
+    "nome": "Farejar alvo",
+    "descricao": "Ativação: uma ordem do criador, que viu o alvo ou segura um objeto dele. Duração: até achar e matar o alvo. Alcance: quilômetros. Área: um alvo. Efeito: sabe a direção e a distância do alvo e vai até ele sem parar. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia (site)."
    },
    {
-    "nome": "Farejar Alvo",
-    "descricao": "Uma vez por dia, o criador pode ordenar que a cobra localize e mate uma criatura específica a quilômetros de distância, desde que tenha visto o alvo ou segure um objeto que lhe pertenceu."
+    "nome": "Resistência a magia",
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 nas resistências contra Artes; a Defesa Mental já é imune. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Picada Envenenada",
-    "descricao": "A mordida injeta veneno de um reservatório interno; a vítima sofre dano contínuo por vários rounds a menos que resista, e após três picadas o veneno se esgota, restando apenas o dano da mordida."
+    "nome": "casco de ferro",
+    "descricao": "resistência a Corte, Perfuração e Fogo (metade do dano)."
    },
    {
-    "nome": "Deslizar Silencioso",
-    "descricao": "Move-se tão silenciosamente quanto uma cobra de verdade, ideal para vigiar tesouros sem ser notada."
+    "nome": "guardiã sem alma",
+    "descricao": "espera enrolada junto do tesouro, sem ruído; pica quem chega perto e repete até o veneno acabar; mandada matar, segue o alvo por quilômetros."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga no escuro e na penumbra como em plena luz (site, Sentidos metálicos)."
    }
   ],
   "poderes": [],
@@ -9185,6 +9229,18 @@
    {
     "titulo": "Veneno à Escolha do Dono",
     "texto": "O reservatório pode ser preenchido com peçonhas variadas, ácido ou substâncias alquímicas, tornando cada cobra uma arma talhada para um propósito específico."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: solitária."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Veneno da cobra de ferro · Potência 14 · 1 Tick (sangue) · a cada 1 minuto · pool 24 (PV) · Desgaste 1 · pela Mordida. Os números da peçonha de víbora de venenos.json, que tira PV; o \"dano contínuo por vários rounds\" do site vira o pool. Só nas três primeiras picadas que injetam."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Miúda, 28 PV, Impacto 4, Corte e Perfuração 0; lâmina, ponta e fogo fazem metade, raio fere mais. Esquiva 10, Bloqueio 8. Mordida de dano médio 4,5, com veneno nas três primeiras picadas. Sem mente: não se assusta nem se convence. Anda a 4. Mandada pelo criador, rastreia um alvo a quilômetros uma vez por dia."
    }
   ]
  },
@@ -9862,35 +9918,39 @@
   "habilidades": [
    {
     "nome": "Agarrar",
-    "descricao": "Agarrar, com a Especialidade natural Briga (Agarrão) +3."
+    "descricao": "Agarrar, com a Especialidade natural Briga (Agarrão) +3. Vale só na forma verdadeira."
    },
    {
     "nome": "Constrição venenosa",
-    "descricao": "Mordida venenosa: Ativação: a Mordida que fere; ela pode enrolar o alvo em seguida, pela jogada de Agarrar do livro. Duração: enquanto agarra. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a cada 6 Ticks de agarrão, aperta sem nova jogada de ataque; o veneno da mordida age (Veneno e doença), e quem é envenenado fica Abalado. Dano: 1d6 + Força, Impacto, a cada aperto. Resistência: corpo, pela regra do Agarrar para escapar e pela do veneno. Limite de uso: três vezes por cena; recupera em 1 hora."
+    "descricao": "Mordida venenosa: Ativação: a Mordida que fere; ela pode enrolar o alvo em seguida, pela jogada de Agarrar do livro. Duração: enquanto agarra. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a cada 6 Ticks de agarrão, aperta sem nova jogada de ataque; o veneno da mordida age (Veneno e doença), e quem é envenenado fica Abalado. Dano: 1d6 + Força, Impacto, a cada aperto. Resistência: corpo, pela regra do Agarrar para escapar e pela do veneno. Limite de uso: três vezes por cena; recupera em 1 hora. Vale só na forma verdadeira."
    },
    {
     "nome": "Mudar de forma",
-    "descricao": "poder natural (base Matéria 2): Ativação: uma ação, Velocidade 8. Duração: até o fim da cena, ou até ela desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a forma de um humanoide ou de um animal comum (a Variante \"disfarce\"); a mente, as Artes e os números ficam os dela. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
+    "descricao": "poder natural (base Matéria 2): Ativação: uma ação, Velocidade 8. Duração: até o fim da cena, ou até ela desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a forma de um humanoide ou de um animal comum (a Variante \"disfarce\"); a mente, as Artes e os números ficam os dela. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Vale em todas as formas."
    },
    {
     "nome": "Telepatia",
-    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 18 m. Área: quem ela escolher ao alcance. Efeito: fala com qualquer criatura pela mente, por imagens e sensações, sem língua em comum. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 18 m. Área: quem ela escolher ao alcance. Efeito: fala com qualquer criatura pela mente, por imagens e sensações, sem língua em comum. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. Vale em todas as formas."
    },
    {
     "nome": "Viagem planar",
-    "descricao": "Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: outro plano ou realidade. Área: ela e quem ela toca e quer levar. Efeito: passa para outro plano e volta quando quiser. Dano: nenhum. Resistência: nenhum; quem não quer ir não é levado. Limite de uso: uma vez por cena."
+    "descricao": "Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: outro plano ou realidade. Área: ela e quem ela toca e quer levar. Efeito: passa para outro plano e volta quando quiser. Dano: nenhum. Resistência: nenhum; quem não quer ir não é levado. Limite de uso: uma vez por cena. Vale em todas as formas."
    },
    {
     "nome": "Feitiços",
-    "descricao": "Artes do livro: Conjuração até o 5 (Portal), Proteção até o 3 (Barreira), Fascinação até o 3 (Encanto), Ofuscação até o 3 (Manto) e Adivinhação até o 2 (Vislumbre), com 20 de Mana."
+    "descricao": "Artes do livro: Conjuração até o 5 (Portal), Proteção até o 3 (Barreira), Fascinação até o 3 (Encanto), Ofuscação até o 3 (Manto) e Adivinhação até o 2 (Vislumbre), com 20 de Mana. Vale em todas as formas."
    },
    {
     "nome": "guardiã do templo",
-    "descricao": "observa antes de agir, fala pela mente; se precisa lutar, protege com a Barreira, encanta ou some com o Manto, morde e enrola o mais perigoso, e abre um Portal para levar os seus."
+    "descricao": "observa antes de agir, fala pela mente; se precisa lutar, protege com a Barreira, encanta ou some com o Manto, morde e enrola o mais perigoso, e abre um Portal para levar os seus. Vale só na forma verdadeira."
+   },
+   {
+    "nome": "guardiã disfarçada",
+    "descricao": "observa antes de agir e fala pela mente; se precisa lutar, protege com a Barreira, encanta ou some com o Manto, e volta à forma verdadeira para morder e enrolar. Vale só no disfarce."
    },
    {
     "nome": "Sentidos",
-    "descricao": "telepatia: sente e fala com as mentes a 18 m (Manobras). · visão: a de uma ave de rapina; enxerga no escuro dos templos."
+    "descricao": "telepatia: sente e fala com as mentes a 18 m (Manobras). Vale em todas as formas. · visão: a de uma ave de rapina; enxerga no escuro dos templos. Vale em todas as formas."
    }
   ],
   "poderes": [],
@@ -11018,39 +11078,43 @@
   "habilidades": [
    {
     "nome": "Maça estonteante",
-    "descricao": "Maça: Ativação: o golpe da Maça que fere o alvo com 10 ou mais de dano depois da Absorção. Duração: até o fim da próxima ação do alvo. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo fica tonto e perde a próxima ação. Dano: o da Maça. Resistência: corpo, contra a jogada do golpe; quem passa só leva o dano. Limite de uso: um por golpe, sem limite por cena."
+    "descricao": "Maça: Ativação: o golpe da Maça que fere o alvo com 10 ou mais de dano depois da Absorção. Duração: até o fim da próxima ação do alvo. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo fica tonto e perde a próxima ação. Dano: o da Maça. Resistência: corpo, contra a jogada do golpe; quem passa só leva o dano. Limite de uso: um por golpe, sem limite por cena. Vale só na forma de anjo."
    },
    {
     "nome": "Golpe sagrado",
-    "descricao": "Maça: Ativação: o golpe corpo a corpo que acerta uma criatura maligna (demônio, morto-vivo, corruptor, ou quem o Mestre disser). Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a luz do golpe queima o mal. Dano: +1d6, sagrado, somado ao do golpe. Resistência: nenhum. Limite de uso: um por golpe."
+    "descricao": "Maça: Ativação: o golpe corpo a corpo que acerta uma criatura maligna (demônio, morto-vivo, corruptor, ou quem o Mestre disser). Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a luz do golpe queima o mal. Dano: +1d6, sagrado, somado ao do golpe. Resistência: nenhum. Limite de uso: um por golpe. Vale só na forma de anjo."
    },
    {
     "nome": "Mudar de forma",
-    "descricao": "poder natural (base Metamorfose 3): Ativação: uma ação, Velocidade 8. Duração: uma cena, ou até ela desfazer com outra ação. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a aparência de um humano ou de um animal comum, com voz e cheiro; os números ficam os do deva; a arma e o que veste não acompanham a troca; na forma de animal não fala nem usa a maça. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
+    "descricao": "poder natural (base Metamorfose 3): Ativação: uma ação, Velocidade 8. Duração: uma cena, ou até ela desfazer com outra ação. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a aparência de um humano ou de um animal comum, com voz e cheiro; os números ficam os do deva; a arma e o que veste não acompanham a troca; na forma de animal não fala nem usa a maça. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Vale em todas as formas."
    },
    {
     "nome": "Feitiços celestiais",
-    "descricao": "poder natural (base Cura 4): Ativação: uma ação, Velocidade 8, tocando o alvo. Duração: instantânea; a bênção dura até a próxima jogada do aliado ou o fim da cena. Alcance: toque. Área: um alvo. Efeito: escolhe uma: fecha ferimentos; limpa uma doença ou uma maldição (inclusive a licantropia); ou abençoa, e o aliado soma +1d6 na próxima jogada importante. Dano: nenhum; a cura devolve 3d6 + Centelha PV. Resistência: nenhum. Limite de uso: uma vez por cena."
+    "descricao": "poder natural (base Cura 4): Ativação: uma ação, Velocidade 8, tocando o alvo. Duração: instantânea; a bênção dura até a próxima jogada do aliado ou o fim da cena. Alcance: toque. Área: um alvo. Efeito: escolhe uma: fecha ferimentos; limpa uma doença ou uma maldição (inclusive a licantropia); ou abençoa, e o aliado soma +1d6 na próxima jogada importante. Dano: nenhum; a cura devolve 3d6 + Centelha PV. Resistência: nenhum. Limite de uso: uma vez por cena. Vale em todas as formas."
    },
    {
     "nome": "Aura protetora",
-    "descricao": "poder natural (base Proteção 5): Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 6 m. Área: esfera de 6 m em volta do deva. Efeito: os aliados dentro dela somam +2 nas Defesas contra golpe, Arte ou efeito de criatura maligna. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+    "descricao": "poder natural (base Proteção 5): Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 6 m. Área: esfera de 6 m em volta do deva. Efeito: os aliados dentro dela somam +2 nas Defesas contra golpe, Arte ou efeito de criatura maligna. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. Vale em todas as formas."
    },
    {
     "nome": "Teleporte sem erro",
-    "descricao": "poder natural (base Conjuração 5): Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: qualquer lugar que ela conheça no mesmo plano. Área: o deva e até seis companheiros que ele toca ou que tocam nele. Efeito: some e reaparece no destino, sem chance de erro. Dano: nenhum. Resistência: nenhum; quem não quer ir não é levado. Limite de uso: à vontade."
+    "descricao": "poder natural (base Conjuração 5): Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: qualquer lugar que ela conheça no mesmo plano. Área: o deva e até seis companheiros que ele toca ou que tocam nele. Efeito: some e reaparece no destino, sem chance de erro. Dano: nenhum. Resistência: nenhum; quem não quer ir não é levado. Limite de uso: à vontade. Vale em todas as formas."
    },
    {
     "nome": "Imune a doença e veneno",
-    "descricao": "doença e veneno não pegam nele."
+    "descricao": "doença e veneno não pegam nele. Vale em todas as formas."
    },
    {
     "nome": "guarda celeste",
-    "descricao": "fala antes de lutar; quando luta, protege os aliados dentro da aura, derruba com a maça quem ataca os fracos e cura entre um golpe e outro; voa por cima do combate e some pelo teleporte quando a luta está perdida."
+    "descricao": "fala antes de lutar; quando luta, protege os aliados dentro da aura, derruba com a maça quem ataca os fracos e cura entre um golpe e outro; voa por cima do combate e some pelo teleporte quando a luta está perdida. Vale só na forma de anjo."
+   },
+   {
+    "nome": "conselheiro disfarçado",
+    "descricao": "evita lutar sem a maça; protege e cura os aliados, e volta à forma de anjo ou some pelo teleporte quando a luta aperta. Vale só no disfarce."
    },
    {
     "nome": "Sentidos",
-    "descricao": "visão e audição: as de um humano. O site não dá sentido especial."
+    "descricao": "visão e audição: as de um humano. O site não dá sentido especial. Vale em todas as formas."
    }
   ],
   "poderes": [],
@@ -12513,7 +12577,7 @@
   "categoria": "Elemental",
   "tipo": "elite",
   "conceito": "exterior Grande (ar)",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Nobre do plano do ar, orgulhoso e honrado: voa, some da vista, vira redemoinho cortante, muda a própria aparência e faz brotar água e comida. Barganhar com ele exige mais cautela que qualquer contrato humano.",
   "tags": [
    "elemental",
    "centelha",
@@ -12554,26 +12618,26 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 4,
-   "sociabilidade": 0,
+   "sociabilidade": 2,
    "furtividade": 0
   },
   "vontade": 9,
   "aparencia": 5,
   "virtudes": {
-   "compaixao": 1,
-   "conviccao": 3,
-   "temperanca": 2,
+   "compaixao": 2,
+   "conviccao": 4,
+   "temperanca": 1,
    "valor": 3
   },
   "combate": {
-   "pv": 50,
+   "pv": 40,
    "defesa": 14,
-   "defesaSocial": 8,
+   "defesaSocial": 16,
    "defesaMental": 25,
    "absorcao": {
     "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -12588,9 +12652,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Golpe de vento",
      "pool": "5d6+2 +8",
-     "dano": "2d6 +10 corte",
+     "dano": "1d6 +10 corte",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -12600,77 +12664,34 @@
   "habilidades": [
    {
     "nome": "Forma de redemoinho",
-    "descricao": "vira tornado que arrasta e derruba quem estiver a 3m"
+    "descricao": "poder natural (base Vento 4, a do site): Ativação: uma ação, Velocidade 6. Duração: até 18 Ticks, ou até ele desfazer com outra ação. Alcance: o próprio corpo, que se move enquanto gira. Área: quem está a até 3 m dele. Efeito: vira um tornado de vento cortante que levanta destroços; quem está na área cai (Caído), e quem é mais leve que ele e não passa fica Agarrado, girando dentro, até o tornado acabar ou até vencer a manobra para se soltar. Dano: 2d6 + Centelha, Corte, a cada 6 Ticks, a quem está dentro. Resistência: esquiva, contra Destreza + Briga dele; quem passa fica de pé e de fora. Limite de uso: à vontade (site)."
    },
    {
-    "nome": "Voo veloz",
-    "descricao": "desloca-se pelos ares com grande velocidade"
+    "nome": "Invisibilidade",
+    "descricao": "poder natural (base Ofuscação 1, a do site): Ativação: uma ação, Velocidade 6. Duração: até ele atacar ou usar um poder chamativo, e no máximo até o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Invisível. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
+   },
+   {
+    "nome": "Criar água e comida",
+    "descricao": "poder natural (base Matéria 2, a do site): Ativação: um gesto, sem gastar ação de combate (site). Duração: a comida fica boa por um dia. Alcance: 3 m. Área: o bastante para seis pessoas por um dia. Efeito: faz brotar água limpa ou uma refeição simples do nada. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia."
    },
    {
     "nome": "Véu",
-    "descricao": "muda a própria aparência ou a de uma área pequena"
-   },
-   {
-    "nome": "Criar água e comida",
-    "descricao": "conjura recursos do nada sem gastar ação em combate"
-   },
-   {
-    "nome": "Invisibilidade",
-    "descricao": "some da visão por uma cena"
+    "descricao": "poder natural (base Ofuscação 2, sugestão da ficha): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena. Alcance: o próprio corpo, ou uma área a até 9 m. Área: ele mesmo, ou um espaço de até 3 m. Efeito: muda a própria aparência (outro rosto, outra roupa, outra altura dentro do Grande) ou a de uma área pequena; é ilusão, e quem toca percebe. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dele, para quem desconfia e examina. Limite de uso: duas vezes por cena."
    },
    {
     "nome": "Domínio do vento",
-    "descricao": "ganha +1d de Esquiva contra ataques à distância"
-   }
-  ],
-  "poderes": [
-   {
-    "id": "forma-de-redemoinho",
-    "nome": "Forma de redemoinho",
-    "tipo": "natural",
-    "resiste": "esquiva",
-    "efeito": "Forma de redemoinho",
-    "base": {
-     "arte": "vento",
-     "nivel": 4
-    },
-    "descricao": "O djinn vira um redemoinho de vento cortante, arrastando quem estiver perto e ferindo com destroços levantados do chão.",
-    "usos": {
-     "periodo": "avontade"
-    }
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: o vento em volta desvia o que vem de longe: +2 na Esquiva contra ataques à distância. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "id": "criar-agua-e-comida",
-    "nome": "Criar água e comida",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "convoca água limpa ou comida simples do nada, o bastante para um pequeno grupo",
-    "base": {
-     "arte": "materia",
-     "nivel": 2
-    },
-    "descricao": "Com um gesto, o djinn faz brotar água fresca ou uma refeição simples, o bastante para alimentar um punhado de pessoas por um dia.",
-    "usos": {
-     "periodo": "dia",
-     "quantidade": 1
-    }
+    "nome": "nobre do ar",
+    "descricao": "conversa e barganha antes de lutar; luta no ar, vira redemoinho contra grupos, some quando a luta vira contra ele e volta invisível para cobrar a dívida."
    },
    {
-    "id": "invisibilidade-djinn",
-    "nome": "Invisibilidade",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "some de vista à vontade, até agir de forma hostil",
-    "base": {
-     "arte": "ofuscacao",
-     "nivel": 1
-    },
-    "descricao": "O djinn desaparece de vista quando quer, e volta a ser visto só se atacar ou usar um poder chamativo.",
-    "usos": {
-     "periodo": "avontade"
-    }
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano."
    }
   ],
+  "poderes": [],
   "locomocao": {
    "terra": 2,
    "voo": 6
@@ -12681,7 +12702,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Nobre do ar, orgulhoso e honrado, cumpre acordos ao pé da letra mas adora explorar as brechas na redação de um pedido."
+    "texto": "Nobre do ar, orgulhoso e honrado, cumpre acordos ao pé da letra mas adora explorar as brechas na redação de um pedido. Social: em corte, com servos e cortesãos."
    },
    {
     "titulo": "Sociedade",
@@ -12694,6 +12715,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Um djinn preso numa lamparina ou anel é lenda recorrente nos contos de Mère e nas rotas de comércio de Calin; poucos mercadores confiam nessas histórias, mas todo aventureiro que encontra um sabe que barganhar com um ser do ar exige mais cautela do que qualquer contrato humano."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, 40 PV, Impacto 9, Corte e Perfuração 4; Corte e Perfuração fazem metade. Esquiva 14 (16 contra ataque à distância), Bloqueio 10, Defesa Mental 25. Golpe de vento de dano médio 13,5. À vontade vira redemoinho: derruba quem está a 3 m e prende os mais leves, com 2d6 + 4 de Corte a cada 6 Ticks. Some à vontade, muda a aparência e faz brotar água e comida. Anda a 2 e voa a 6."
    }
   ]
  },
@@ -12912,31 +12937,31 @@
   "habilidades": [
    {
     "nome": "Mudar de forma",
-    "descricao": "poder natural (base Matéria 2): Ativação: uma ação, Velocidade 6. Duração: até ele desfazer, ou até cair inconsciente. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume o corpo, o rosto, a voz e o cheiro de qualquer humanoide de Tamanho perto do dele que já tenha visto; os números ficam os dele; só a magia ou a Manha de quem conviveu muito com o original percebe a troca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
+    "descricao": "poder natural (base Matéria 2): Ativação: uma ação, Velocidade 6. Duração: até ele desfazer, ou até cair inconsciente. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume o corpo, o rosto, a voz e o cheiro de qualquer humanoide de Tamanho perto do dele que já tenha visto; os números ficam os dele; só a magia ou a Manha de quem conviveu muito com o original percebe a troca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Vale em todas as formas."
    },
    {
     "nome": "Ler pensamentos",
-    "descricao": "poder natural (base Adivinhação 1): Ativação: nenhuma; sempre ativo, e uma ação, Velocidade 6, para sondar fundo. Duração: enquanto o alvo estiver perto. Alcance: 9 m. Área: um alvo por vez. Efeito: sempre ativo, ouve os pensamentos de superfície de quem está perto; na sondagem, quem falha revela um segredo ou uma intenção. Dano: nenhum. Resistência: mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem. Limite de uso: a sondagem, uma vez por cena para cada alvo."
+    "descricao": "poder natural (base Adivinhação 1): Ativação: nenhuma; sempre ativo, e uma ação, Velocidade 6, para sondar fundo. Duração: enquanto o alvo estiver perto. Alcance: 9 m. Área: um alvo por vez. Efeito: sempre ativo, ouve os pensamentos de superfície de quem está perto; na sondagem, quem falha revela um segredo ou uma intenção. Dano: nenhum. Resistência: mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem. Limite de uso: a sondagem, uma vez por cena para cada alvo. Vale em todas as formas."
    },
    {
     "nome": "Mímica perfeita",
-    "descricao": "Manha, com a Especialidade natural (passar-se pela pessoa cujo rosto usa) +3."
+    "descricao": "Manha, com a Especialidade natural (passar-se pela pessoa cujo rosto usa) +3. Vale em todas as formas."
    },
    {
     "nome": "Reflexos ágeis",
-    "descricao": "Esquiva 2."
+    "descricao": "Esquiva 2. Vale em todas as formas."
    },
    {
     "nome": "Mente protegida",
-    "descricao": "leitura de mente e controle mental simples não o pegam."
+    "descricao": "leitura de mente e controle mental simples não o pegam. Vale em todas as formas."
    },
    {
     "nome": "rosto roubado",
-    "descricao": "evita a luta; quando é descoberto, ataca com a espada para abrir caminho e foge; mais tarde volta com outro rosto."
+    "descricao": "evita a luta; quando é descoberto, ataca com a espada para abrir caminho e foge; mais tarde volta com outro rosto. Vale em todas as formas."
    },
    {
     "nome": "Sentidos",
-    "descricao": "visão e audição: as de um humano. · mente: ouve os pensamentos de superfície de quem está a 9 m (Ler pensamentos, nas Manobras)."
+    "descricao": "visão e audição: as de um humano. Vale em todas as formas. · mente: ouve os pensamentos de superfície de quem está a 9 m (Ler pensamentos, nas Manobras). Vale em todas as formas."
    }
   ],
   "poderes": [],
@@ -13637,47 +13662,51 @@
   "habilidades": [
    {
     "nome": "Sopro de fogo",
-    "descricao": "poder natural (base Fogo 4, a do site): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: o fogo queima tudo no cone. Dano: 9d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site)."
+    "descricao": "poder natural (base Fogo 4, a do site): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: o fogo queima tudo no cone. Dano: 9d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site). Vale só na forma verdadeira."
    },
    {
     "nome": "garras em sequência",
-    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais. Vale só na forma verdadeira."
    },
    {
     "nome": "Multiataque",
-    "descricao": "garra, garra e mordida no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada."
+    "descricao": "garra, garra e mordida no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada. Vale só na forma verdadeira."
    },
    {
     "nome": "Presença",
-    "descricao": "poder natural (base Morte 3): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 18 m. Área: esfera de 18 m em volta dele. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência 7 + Intimidação 3 + 2 × o menor entre Centelha 7 e Intimidação 3 (6) = 16 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena."
+    "descricao": "poder natural (base Morte 3): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 18 m. Área: esfera de 18 m em volta dele. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência 7 + Intimidação 3 + 2 × o menor entre Centelha 7 e Intimidação 3 (6) = 16 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena. Vale só na forma verdadeira."
    },
    {
     "nome": "Sopro debilitante",
-    "descricao": "poder natural (base Fascinação 3, a do site): Ativação: uma ação, Velocidade 7, no lugar do Sopro de fogo (o mesmo limite de uso). Duração: até o fim da próxima ação do alvo. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: gás sem dano que enfraquece: o alvo fica com Desgaste 1; o \"Enfraquecido\" do site não é condição do livro, e o Desgaste 1 é o mais perto. Dano: nenhum. Resistência: corpo, contra a jogada do sopro (site: \"teste de Vigor\"). Limite de uso: dividido com o Sopro de fogo, uma vez a cada 24 Ticks."
+    "descricao": "poder natural (base Fascinação 3, a do site): Ativação: uma ação, Velocidade 7, no lugar do Sopro de fogo (o mesmo limite de uso). Duração: até o fim da próxima ação do alvo. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: gás sem dano que enfraquece: o alvo fica com Desgaste 1; o \"Enfraquecido\" do site não é condição do livro, e o Desgaste 1 é o mais perto. Dano: nenhum. Resistência: corpo, contra a jogada do sopro (site: \"teste de Vigor\"). Limite de uso: dividido com o Sopro de fogo, uma vez a cada 24 Ticks. Vale só na forma verdadeira."
    },
    {
     "nome": "Mudar de forma",
-    "descricao": "poder natural (base Matéria 3, a do site): Ativação: uma ação, Velocidade 8. Duração: até ele desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a forma humana ou de um animal pequeno (a Variante); a mente, as Artes e os números ficam os dele, com parte dos sentidos de dragão. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
+    "descricao": "poder natural (base Matéria 3, a do site): Ativação: uma ação, Velocidade 8. Duração: até ele desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a forma humana ou de um animal pequeno (a Variante); a mente, as Artes e os números ficam os dele, com parte dos sentidos de dragão. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Vale em todas as formas."
    },
    {
     "nome": "Firme contra o medo",
-    "descricao": "presença de quem tem Centelha menor não o deixa Abalado (site)."
+    "descricao": "presença de quem tem Centelha menor não o deixa Abalado (site). Vale em todas as formas."
    },
    {
     "nome": "Voo dominante",
-    "descricao": "domina os céus com grande manobra (site)."
+    "descricao": "domina os céus com grande manobra (site). Vale só na forma verdadeira."
    },
    {
     "nome": "Feitiços",
-    "descricao": "Artes do livro: Proteção até o 3 (Barreira), Fortuna até o 3, Cura até o 2 (Restaurar), Luz até o 2 (Ofuscar), com 26 de Mana."
+    "descricao": "Artes do livro: Proteção até o 3 (Barreira), Fortuna até o 3, Cura até o 2 (Restaurar), Luz até o 2 (Ofuscar), com 26 de Mana. Vale em todas as formas."
    },
    {
     "nome": "guardião nobre",
-    "descricao": "avisa antes de atacar, protege e cura os aliados, enfraquece com o sopro de gás quem pode ser poupado e queima quem não pode."
+    "descricao": "avisa antes de atacar, protege e cura os aliados, enfraquece com o sopro de gás quem pode ser poupado e queima quem não pode. Vale só na forma verdadeira."
+   },
+   {
+    "nome": "viajante disfarçado",
+    "descricao": "evita lutar e observa; protege e cura com as Artes, e volta à forma verdadeira quando a luta pede. Vale só na forma humana ou de animal pequeno."
    },
    {
     "nome": "Sentidos",
-    "descricao": "visão no escuro: vê sem luz. · faro: apurado. · sabedoria dracônica: detecta mentiras (Empatia (mentiras) +1) e ignora ilusões simples (sem regra ainda)."
+    "descricao": "visão no escuro: vê sem luz. Vale em todas as formas. · faro: apurado. Vale só na forma verdadeira. · sabedoria dracônica: detecta mentiras (Empatia (mentiras) +1) e ignora ilusões simples (sem regra ainda). Vale em todas as formas."
    }
   ],
   "poderes": [],
@@ -15720,7 +15749,7 @@
   "categoria": "Elemental",
   "tipo": "chefe",
   "conceito": "exterior Grande (fogo)",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Tirano do plano do fogo, de 3,6 m: o corpo é fogo vivo e queima quem o acerta. Voa, ergue muralhas de chamas, some da vista e viaja entre planos. Preso ou convencido, concede um desejo, sempre pela letra e com um preço.",
   "tags": [
    "elemental",
    "centelha",
@@ -15757,10 +15786,10 @@
    "raciocinio": 4
   },
   "pericias": {
-   "prontidao": 2,
+   "prontidao": 3,
    "esquiva": 1,
    "integridade": 4,
-   "sociabilidade": 0,
+   "sociabilidade": 1,
    "furtividade": 0
   },
   "vontade": 9,
@@ -15774,21 +15803,22 @@
   "combate": {
    "pv": 54,
    "defesa": 14,
-   "defesaSocial": 8,
+   "defesaSocial": 12,
    "defesaMental": 25,
    "absorcao": {
     "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
-    "agua"
+    "agua",
+    "gelo"
    ],
-   "resistencias": [
+   "imunidades": [
     "fogo"
    ],
-   "iniciativa": "1d6 + 6",
+   "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 2,
     "arranque": 3,
@@ -15796,9 +15826,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Punho em brasa",
      "pool": "6d6+2 +8",
-     "dano": "2d6 +12 corte",
+     "dano": "1d6 +12 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -15808,79 +15838,34 @@
   "habilidades": [
    {
     "nome": "Corpo em chamas",
-    "descricao": "quem acertar em combate corpo a corpo sofre dano de fogo"
+    "descricao": "poder natural (base Fogo 4, a do site): Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: toque. Área: quem entra no alcance do corpo a corpo dele, quem o acerta com um golpe corpo a corpo, quem o toca, e o alvo do Punho em brasa. Efeito: o corpo é fogo vivo; o calor queima quem chega perto e quem encosta nele, e o punho bate como brasa. Dano: 1d6 + Centelha, fogo, a quem entra no alcance, a quem o acerta e a quem o toca; mais 1d6, fogo, a quem leva o Punho em brasa. Resistência: corpo, Vigor + Resistência contra Dificuldade 14 (10 + Centelha 4), só ao entrar no alcance dele (site: \"Resiste ao entrar, 1 vez por cena\"); quem passa não se queima ao entrar; quem o acerta ou o toca não resiste. Limite de uso: a queima ao entrar, uma vez por cena para cada criatura; o resto, sem limite."
    },
    {
     "nome": "Muralha de fogo",
-    "descricao": "cria parede que causa dano a quem a atravessa"
+    "descricao": "poder natural (base Fogo 4, a do site): Ativação: uma ação, Velocidade 8. Duração: até o fim da cena, ou até ele desfazer. Alcance: 18 m. Área: uma parede de até 6 m de comprimento e 3 m de altura. Efeito: ergue uma cortina de chamas que fecha um corredor ou uma porta e tira a visão do outro lado; quem a atravessa se queima. Dano: 3d6 + Centelha, fogo, a quem atravessa. Resistência: esquiva, contra Dificuldade 14 (10 + Centelha 4); quem passa leva metade. Limite de uso: três vezes por dia (site)."
    },
    {
     "nome": "Conceder desejos",
-    "descricao": "pode realizar um desejo poderoso como favor, com custo narrativo"
+    "descricao": "poder natural (base Fortuna 6, a do site): Ativação: o pedido de quem o aprisiona, o suborna ou o convence, quando ele aceita. Duração: a do pedido. Alcance: o que o pedido alcança. Área: a do pedido. Efeito: realiza um pedido enorme, sempre pela letra e nunca pela intenção, e cobra um preço à altura; o Mestre decide o que cabe e qual é o preço. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia (site), e raramente."
    },
    {
-    "nome": "Imunidade a fogo",
-    "descricao": "sem efeito de dano de fogo; vulnerável a frio (dano aumentado)"
+    "nome": "Invisibilidade",
+    "descricao": "poder natural (base Ofuscação 1, sugestão da ficha): Ativação: uma ação, Velocidade 6. Duração: até ele atacar ou usar um poder chamativo, e no máximo até o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Invisível; o calor do corpo continua. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
    },
    {
-    "nome": "Invisibilidade e viagem planar",
-    "descricao": "some de vista ou desloca-se entre planos"
+    "nome": "Viagem planar",
+    "descricao": "Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: outro plano ou realidade. Área: ele e quem ele toca e quer levar. Efeito: passa para outro plano e volta quando quiser. Dano: nenhum. Resistência: nenhum; quem não quer ir não é levado. Limite de uso: uma vez por cena."
    },
    {
-    "nome": "Voo",
-    "descricao": "desloca-se livremente pelos ares"
+    "nome": "tirano do fogo",
+    "descricao": "manda os escravos na frente, ergue a muralha para dividir o grupo, voa por cima e esmaga com o punho em brasa quem o desafia; quando perde, some invisível ou sai para o plano do fogo."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano."
    }
   ],
-  "poderes": [
-   {
-    "id": "corpo-em-chamas",
-    "nome": "Corpo em chamas",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "Resiste ao entrar, 1 vez por cena.",
-    "base": {
-     "arte": "fogo",
-     "nivel": 4
-    },
-    "descricao": "O corpo do efreeti é fogo vivo: quem acerta um golpe corpo a corpo nele se queima de volta, e sua pele soca e machuca como brasa.",
-    "usos": {
-     "periodo": "passivo",
-     "recarga": "contínua"
-    }
-   },
-   {
-    "id": "muralha-de-fogo",
-    "nome": "Muralha de fogo",
-    "tipo": "natural",
-    "resiste": "esquiva",
-    "efeito": "ergue uma parede de fogo que bloqueia passagem e fere quem atravessa",
-    "base": {
-     "arte": "fogo",
-     "nivel": 4
-    },
-    "descricao": "O efreeti ergue uma cortina de chamas que bloqueia um corredor ou porta; quem tenta atravessar se queima.",
-    "usos": {
-     "periodo": "dia",
-     "quantidade": 3
-    }
-   },
-   {
-    "id": "conceder-desejos",
-    "nome": "Conceder desejos",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "concede um pedido poderoso a quem o aprisiona ou barganha com ele, raramente e sempre com um preço",
-    "base": {
-     "arte": "fortuna",
-     "nivel": 6
-    },
-    "descricao": "Preso, subornado ou convencido, o efreeti pode realizar um pedido enorme. Ele cumpre a letra do pedido, nunca a intenção por trás dele, e cobra um preço à altura.",
-    "usos": {
-     "periodo": "dia",
-     "quantidade": 1
-    }
-   }
-  ],
+  "poderes": [],
   "locomocao": {
    "terra": 2,
    "voo": 4
@@ -15891,7 +15876,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Tirano do fogo, constrói impérios de escravos e queima quem desafia sua autoridade, cumprindo tratos com prazer sádico pela letra fria do acordo."
+    "texto": "Tirano do fogo, constrói impérios de escravos e queima quem desafia sua autoridade, cumprindo tratos com prazer sádico pela letra fria do acordo. Social: em corte, com escravos e servos."
    },
    {
     "titulo": "Sociedade",
@@ -15908,6 +15893,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Efreets povoam as lendas de Mère como senhores de fornalhas antigas, e alguns forjadores desesperados ainda arriscam pactos com um deles para acender fornos que a Supressão proibiu de reacender por meios arcanos."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, 54 PV, Impacto 10, Corte e Perfuração 4; fogo não o fere, água e gelo ferem mais. Esquiva 14, Bloqueio 10, Defesa Mental 25. Punho em brasa de dano médio 15,5, mais 1d6 de fogo; quem o acerta corpo a corpo se queima (1d6 + 4). Três vezes por dia ergue uma muralha de fogo (3d6 + 4 a quem atravessa). Some da vista, viaja entre planos e, uma vez por dia, concede um desejo com preço. Anda a 2 e voa a 4."
    }
   ]
  },
@@ -16192,7 +16181,7 @@
   "categoria": "Elemental",
   "tipo": "soldado",
   "conceito": "exterior (água) Pequeno",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Fragmento de um plano de água: rápido no mar e lento em terra, suga quem chega perto num vórtice, encharca o que toca e apaga o fogo.",
   "tags": [
    "elemental",
    "centelha"
@@ -16202,8 +16191,8 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "1,2 metro de altura, corpo líquido em constante fluxo",
-   "peso": "cerca de 15 kg"
+   "medida": "1,2 m de altura",
+   "peso": "23,4 kg"
   },
   "ecologia": {
    "tipo": "Elemental",
@@ -16217,7 +16206,7 @@
   "imagem": null,
   "semImagem": true,
   "atributos": {
-   "forca": 4,
+   "forca": 3,
    "destreza": 2,
    "vigor": 3,
    "influencia": 2,
@@ -16232,7 +16221,7 @@
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "vontade": 6,
   "aparencia": 5,
@@ -16249,8 +16238,8 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -16262,8 +16251,8 @@
    "ataques": [
     {
      "nome": "Pancada de água",
-     "pool": "3d6+2 +2",
-     "dano": "1d6 +5 impacto",
+     "pool": "3d6 +3",
+     "dano": "1d6 +2 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -16272,20 +16261,28 @@
   },
   "habilidades": [
    {
-    "nome": "Nado veloz",
-    "descricao": "Move-se pela água com grande velocidade e controle, muito mais ágil do que em terra firme."
-   },
-   {
     "nome": "Vórtice",
-    "descricao": "Uma vez por cena pode se transformar em um pequeno redemoinho, sugando e desorientando quem estiver próximo."
+    "descricao": "poder natural (base Água 2, sugestão da ficha): Ativação: uma ação, Velocidade 6, dentro da água ou sobre ela. Duração: até 18 Ticks, ou até ele desfazer com outra ação. Alcance: o próprio corpo. Área: quem está a até 1 m dele. Efeito: vira um redemoinho de água que suga quem está perto; quem é sugado fica Agarrado dentro dele e Confuso enquanto estiver lá, e sai quando o vórtice se desfaz ou quando vence a manobra para se soltar. Dano: o da Pancada de água a quem está dentro, a cada 6 Ticks. Resistência: esquiva, contra Força + Briga dele; quem passa não é sugado. Limite de uso: uma vez por cena."
    },
    {
     "nome": "Encharcar",
-    "descricao": "Seu toque encharca tochas, pergaminhos e outros itens sensíveis à água, e pode apagar fogo pequeno."
+    "descricao": "Ativação: o toque ou a Pancada de água. Duração: instantânea. Alcance: toque. Área: um objeto, ou um alvo. Efeito: encharca tochas, pergaminhos e outros itens sensíveis à água, e apaga fogo pequeno (uma tocha, uma fogueira pequena, ou a condição Em chamas de quem ele toca). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
     "nome": "Domínio da água",
-    "descricao": "Quase impossível de afogar ou arrastar, e ataques contra ele em meio líquido perdem força."
+    "descricao": "Ativação: nenhuma; vale enquanto ele está dentro da água. Duração: enquanto estiver na água. Alcance: o próprio corpo. Área: não se aplica. Efeito: não se afoga e quase não se deixa arrastar: +3 contra Agarrar, Derrubar e Empurrar, como uma faixa de massa a mais; quem o ataca de dentro da água tira 2 do dano do golpe. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "feito de água pura",
+    "descricao": "não sente cansaço, veneno nem doença; não respira, não come, não dorme."
+   },
+   {
+    "nome": "onda com vontade",
+    "descricao": "luta de dentro da água sempre que pode, suga o alvo no vórtice e apaga tochas e fogueiras; em terra é lento e só cumpre a ordem."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano."
    }
   ],
   "poderes": [],
@@ -16304,6 +16301,14 @@
    {
     "titulo": "Frieza sem malícia",
     "texto": "Não odeia nem ama; apenas cumpre a vontade de quem o trouxe até se libertar do vínculo."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinho, ou com quem o conjurou."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Pequeno, lento em terra (2) e rápido na água (9). Bate com dano médio 5,5 e apaga tochas e fogo pequeno com o toque. Uma vez por cena vira vórtice e suga quem está perto: Agarrado e Confuso, com o dano da pancada a cada 6 Ticks. Na água, quase não se deixa agarrar, derrubar nem empurrar. Esquiva e Bloqueio 4, 26 PV, Impacto 4, Corte e Perfuração 1."
    }
   ]
  },
@@ -16314,7 +16319,7 @@
   "categoria": "Elemental",
   "tipo": "elite",
   "conceito": "exterior Grande (terra)",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Bloco de pedra viva de 3 m: nada pela rocha como se fosse água, sai ao lado do alvo, bate com um braço de pedra que joga longe ou derruba e volta para dentro da montanha.",
   "tags": [
    "elemental",
    "centelha",
@@ -16326,7 +16331,7 @@
   "porte": "Grande",
   "dimensoes": {
    "medida": "3 m de altura",
-   "peso": "2 t"
+   "peso": "1.234 kg"
   },
   "ecologia": {
    "tipo": "Elemental",
@@ -16341,7 +16346,7 @@
   "imagem": "bestiario/elemental-da-terra-grande_criatura.webp",
   "semImagem": false,
   "atributos": {
-   "forca": 9,
+   "forca": 10,
    "destreza": 2,
    "vigor": 7,
    "influencia": 2,
@@ -16368,13 +16373,13 @@
   },
   "combate": {
    "pv": 58,
-   "defesa": 4,
+   "defesa": 13,
    "defesaSocial": 4,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 10,
-    "corte": 8,
-    "perfuracao": 8
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -16390,9 +16395,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "7d6 +6",
-     "dano": "2d6 +12 corte",
+     "nome": "Pancada de pedra",
+     "pool": "7d6+2 +6",
+     "dano": "1d6 +13 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -16402,38 +16407,30 @@
   "habilidades": [
    {
     "nome": "Deslizar na pedra",
-    "descricao": "move-se através de terra e rocha sem deixar rastro"
+    "descricao": "poder natural (base Terra 2, a do site): Ativação: parte do movimento dele. Duração: enquanto se move. Alcance: o próprio corpo. Área: não se aplica. Efeito: nada pela rocha sólida como se fosse água, à velocidade da Escavação, sem deixar rastro nem precisar de passagem aberta; dentro da pedra, quem está fora não o vê nem o ataca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
    },
    {
     "nome": "Empurrão",
-    "descricao": "golpe pode derrubar ou arremessar o alvo para trás"
+    "descricao": "Pancada de pedra: Ativação: a Pancada de pedra que acerta. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo é jogado 3 m para trás ou cai (Caído), à escolha do elemental; quem está duas faixas de massa ou mais acima dele não sai do lugar. Dano: o da Pancada. Resistência: corpo, contra a jogada da Pancada; quem passa fica de pé e no lugar. Limite de uso: um por golpe."
    },
    {
-    "nome": "Imunidade mental e a venenos",
-    "descricao": "sem efeito de veneno, doença ou efeitos mentais"
+    "nome": "Pele de Pedra",
+    "descricao": "Técnica pele-de-pedra, nível 3: por 3 de Energia, +4 de Absorção (todos os tipos) e reduz as penalidades de ferimento em 1."
    },
    {
-    "nome": "Não precisa respirar",
-    "descricao": "imune a afogamento e gases"
-   }
-  ],
-  "poderes": [
+    "nome": "feito de pedra viva",
+    "descricao": "não sente cansaço, veneno nem doença; não respira, não come, não dorme, não se afoga e não sente gás."
+   },
    {
-    "id": "deslizar-na-pedra-e-empurrao",
-    "nome": "Deslizar na pedra e empurrão",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "Deslizar na pedra e empurrão",
-    "base": {
-     "arte": "terra",
-     "nivel": 2
-    },
-    "descricao": "O elemental nada pela rocha sólida como se fosse água, sem deixar rastro nem precisar de passagem aberta; a investida de sua massa empurra quem estiver no caminho.",
-    "usos": {
-     "periodo": "avontade"
-    }
+    "nome": "força bruta da terra",
+    "descricao": "avança em linha reta esmagando o que encontra; sai da pedra ao lado do alvo, empurra e derruba, e volta para dentro da rocha."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano."
    }
   ],
+  "poderes": [],
   "locomocao": {
    "terra": 3,
    "escavacao": 2
@@ -16446,7 +16443,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Força bruta da terra viva, avança em linha reta esmagando o que encontra, sem malícia nem hesitação."
+    "texto": "Força bruta da terra viva, avança em linha reta esmagando o que encontra, sem malícia nem hesitação. Social: sozinho, ou com quem o conjurou."
    },
    {
     "titulo": "Ecologia",
@@ -16459,6 +16456,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Raramente visto fora de rituais antigos ou minas profundas do White Wall, um elemental da terra desperto é tomado pelo povo comum como sinal de que a montanha acordou zangada, mais um argumento das igrejas supressoras contra quem ainda ousa invocar tais forças."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande e lento (3), atravessa a pedra a 2. Bate com dano médio 16,5 e joga o alvo 3 m para trás ou o derruba. 58 PV, Impacto 10, Corte e Perfuração 3; fogo, Corte e Perfuração fazem metade. Bloqueio 12 (13 com o braço de pedra), Esquiva 4. Por 3 de Energia, a Pele de Pedra soma 4 em toda a Absorção."
    }
   ]
  },
@@ -16469,7 +16470,7 @@
   "categoria": "Elemental",
   "tipo": "soldado",
   "conceito": "exterior (terra) Pequeno",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Fragmento vivo da pedra de outro plano: atravessa a rocha como se fosse água, espera imóvel e derruba quem pisa a terra. Lento e pesado, bate como um bloco de pedra.",
   "tags": [
    "elemental",
    "centelha"
@@ -16479,8 +16480,8 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "1,2 metro de altura, denso e compacto",
-   "peso": "cerca de 36 kg"
+   "medida": "1,2 m de altura",
+   "peso": "79 kg"
   },
   "ecologia": {
    "tipo": "Elemental",
@@ -16517,18 +16518,18 @@
   "virtudes": {
    "compaixao": 1,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 3,
    "valor": 3
   },
   "combate": {
-   "pv": 26,
-   "defesa": 4,
+   "pv": 34,
+   "defesa": 9,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -16545,9 +16546,9 @@
    },
    "ataques": [
     {
-     "nome": "Pancada",
-     "pool": "4d6 +2",
-     "dano": "1d6 +6 impacto",
+     "nome": "Pancada de pedra",
+     "pool": "4d6 +3",
+     "dano": "1d6 +4 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -16556,20 +16557,24 @@
   },
   "habilidades": [
    {
-    "nome": "Escavar e fundir com a pedra",
-    "descricao": "Cava pela terra sólida como se fosse água e atravessa a rocha, deixando o caminho intacto atrás de si."
+    "nome": "Deslizar na pedra",
+    "descricao": "poder natural (base Terra 2, sugestão da ficha): Ativação: parte do movimento dele. Duração: enquanto se move. Alcance: o próprio corpo. Área: não se aplica. Efeito: cava pela terra e atravessa a rocha como se fosse água, à velocidade da Escavação, sem abrir túnel nem deixar rastro; dentro da pedra, quem está fora não o vê nem o ataca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
    },
    {
     "nome": "Domínio da terra",
-    "descricao": "Ganha vantagem para empurrar ou derrubar quem toca o chão, e dificilmente é ele mesmo derrubado."
+    "descricao": "Ativação: nenhuma; vale enquanto ele toca o chão. Duração: enquanto tocar o chão. Alcance: o próprio corpo. Área: não se aplica. Efeito: +3 para Derrubar e Empurrar quem também toca o chão, e +3 contra ser derrubado ou empurrado, como uma faixa de massa a mais. Contra quem voa ou nada, nada disso vale. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Corpo de pedra viva",
-    "descricao": "Não sente cansaço, veneno ou doença; é feito de puro elemento, não de carne."
+    "nome": "feito de pedra viva",
+    "descricao": "não sente cansaço, veneno nem doença; não respira, não come, não dorme."
    },
    {
-    "nome": "Sente tremores",
-    "descricao": "Percebe movimento através da terra e da pedra ao redor, mesmo sem enxergar."
+    "nome": "paciência de montanha",
+    "descricao": "espera imóvel como rocha, ou dentro da pedra, até o alvo chegar perto; sai do chão ao lado dele, derruba quem pisa a terra e bate com o braço de pedra."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "tremor: percebe o movimento pela terra e pela pedra em volta, a até 18 m, mesmo sem enxergar. · visão e audição: as de um humano."
    }
   ],
   "poderes": [],
@@ -16588,6 +16593,14 @@
    {
     "titulo": "Paciência de montanha",
     "texto": "Onde outros elementais agem por impulso, o da terra espera, imóvel como rocha, até o momento certo de atacar."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinho, ou com quem o conjurou."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Pequeno e lento (2), atravessa a terra e a pedra à mesma velocidade e sente quem pisa o chão a 18 m. Bate com dano médio 7,5. No chão, ganha +3 para derrubar e empurrar e contra ser derrubado. Esquiva 4, Bloqueio 8 (9 com o braço de pedra), 34 PV, Impacto 4, Corte e Perfuração 1; o fogo faz metade, e a água passa toda a Absorção."
    }
   ]
  },
@@ -16598,7 +16611,7 @@
   "categoria": "Elemental",
   "tipo": "soldado",
   "conceito": "exterior (ar) Pequeno",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Redemoinho com vontade própria: voa rápido e sem errar, puxa quem é leve para dentro do tornado e desvia as flechas. Lâmina e ponta passam pelo vento.",
   "tags": [
    "elemental",
    "centelha"
@@ -16608,8 +16621,8 @@
   "pendente": true,
   "porte": "Pequeno",
   "dimensoes": {
-   "medida": "1,2 metro de diâmetro, em constante redemoinho",
-   "peso": "praticamente sem peso"
+   "medida": "1,2 m de altura",
+   "peso": "sem massa (volume 0,0234 m³)"
   },
   "ecologia": {
    "tipo": "Elemental",
@@ -16639,7 +16652,7 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 2
+   "furtividade": 0
   },
   "vontade": 6,
   "aparencia": 5,
@@ -16656,8 +16669,8 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -16673,8 +16686,8 @@
    "ataques": [
     {
      "nome": "Pancada de vento",
-     "pool": "3d6 +2",
-     "dano": "1d6 +4 impacto",
+     "pool": "4d6 +3",
+     "dano": "1d6 +2 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -16683,20 +16696,24 @@
   },
   "habilidades": [
    {
-    "nome": "Voo perfeito",
-    "descricao": "Flutua e manobra no ar com controle total, sem risco de perder equilíbrio ou cair."
-   },
-   {
     "nome": "Redemoinho",
-    "descricao": "Uma vez por cena pode se transformar em um pequeno tornado, arrastando quem estiver perto para dentro dele."
+    "descricao": "poder natural (base Vento 2, sugestão da ficha): Ativação: uma ação, Velocidade 6. Duração: até 18 Ticks, ou até ele desfazer com outra ação. Alcance: o próprio corpo, que se move enquanto gira. Área: o espaço por onde ele passa, até 1,2 m de largura. Efeito: vira um pequeno tornado; quem ele atravessa é puxado para dentro e fica Agarrado, girando, até o redemoinho acabar ou até vencer a manobra para se soltar. Quem está duas faixas de massa ou mais acima dele não é puxado. Dano: o da Pancada de vento a quem está dentro, a cada 6 Ticks. Resistência: esquiva, contra Destreza + Briga dele; quem passa não é puxado. Limite de uso: uma vez por cena."
    },
    {
     "nome": "Domínio do ar",
-    "descricao": "Ataques feitos à distância contra ele perdem força, como se o vento desviasse os projéteis."
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: o vento em volta desvia os projéteis: +2 na Defesa contra flecha, virote, pedra e o que se arremessa. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Corpo imaterial de vento",
-    "descricao": "Não sente cansaço, veneno ou doença; é feito de puro elemento, não de carne."
+    "nome": "feito de vento",
+    "descricao": "não sente cansaço, veneno nem doença; não respira, não come, não dorme."
+   },
+   {
+    "nome": "sopro vivo",
+    "descricao": "gira em volta do alvo mais leve, puxa para o redemoinho e sobe; nunca para quieto. Solto do vínculo, volta furioso ao próprio plano."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano."
    }
   ],
   "poderes": [],
@@ -16714,6 +16731,14 @@
    {
     "titulo": "Servo relutante",
     "texto": "Obedece a quem o convocou apenas enquanto o vínculo mágico se sustenta; rompido o elo, volta furioso ao próprio plano."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinho, ou com quem o conjurou."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Pequeno e muito rápido no ar (10), não anda. Bate com dano médio 5,5. Uma vez por cena vira redemoinho e puxa quem atravessa: Agarrado, girando, com o dano da pancada a cada 6 Ticks. Esquiva 14 (16 contra projétil), Bloqueio 10, 26 PV, Impacto 4, Corte e Perfuração 1; Corte e Perfuração fazem metade."
    }
   ]
  },
@@ -19334,7 +19359,7 @@
   "categoria": "Gigante",
   "tipo": "elite",
   "conceito": "humanoide Grande (gigante)",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "descricao": "Gigante de duas cabeças que discutem sobre tudo, de quem come primeiro a quem atacar. Bate com os dois braços na mesma ação, cada um num alvo, e as duas cabeças vigiam: nunca é pego desprevenido.",
   "tags": [
    "gigante"
   ],
@@ -19344,7 +19369,7 @@
   "porte": "Grande",
   "dimensoes": {
    "medida": "4 m de altura",
-   "peso": "1,8 t"
+   "peso": "1.094 kg"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -19370,7 +19395,7 @@
    "raciocinio": 2
   },
   "pericias": {
-   "prontidao": 1,
+   "prontidao": 3,
    "esquiva": 0,
    "integridade": 2,
    "sociabilidade": 0,
@@ -19386,16 +19411,16 @@
   },
   "combate": {
    "pv": 50,
-   "defesa": 4,
+   "defesa": 6,
    "defesaSocial": 4,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
+   "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 4,
     "arranque": 6,
@@ -19407,31 +19432,31 @@
      "pool": "6d6",
      "dano": "2d6 +8 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Duas cabeças, dois ataques",
-    "descricao": "ataca com duas armas diferentes na mesma rodada, cada golpe mirando um alvo distinto"
+    "descricao": "Pancada descomunal: a Rajada: dois golpes de Pancada descomunal na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação; cada golpe pode ir num alvo diferente ao alcance, como a Rajada permite. A Pesada vai a dois golpes."
    },
    {
     "nome": "Vigilância dupla",
-    "descricao": "nunca é Surpreendido e ignora bônus de flanco ou emboscada contra si"
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: as duas cabeças vigiam: nunca fica Surpreso, e quem o flanqueia ou o embosca não ganha o bônus por isso. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Golpe brutal",
-    "descricao": "dano alto de arma grande em cada acerto"
+    "nome": "agarrar",
+    "descricao": "Pancada descomunal: Agarrar."
    },
    {
-    "nome": "Visão no escuro",
-    "descricao": "enxerga normalmente no escuro até 18m"
+    "nome": "briga a dois",
+    "descricao": "as cabeças discutem até a última hora sobre quem atacar; depois bate com os dois braços, cada um num alvo, e guarda o que caça sem dividir."
    },
    {
-    "nome": "Couro calejado",
-    "descricao": "Absorção alta contra impactos"
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga normalmente no escuro até 18 m (site). · audição: a de um humano, em dobro de atenção (Vigilância dupla)."
    }
   ],
   "poderes": [],
@@ -19444,7 +19469,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "As duas cabeças discutem entre si sobre quase tudo, da direção a seguir a quem come primeiro, o que o torna imprevisível em combate."
+    "texto": "As duas cabeças discutem entre si sobre quase tudo, da direção a seguir a quem come primeiro, o que o torna imprevisível em combate. Social: solitário."
    },
    {
     "titulo": "Hábitos",
@@ -19457,6 +19482,14 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Outra relíquia gigante que sobrou nas serras despovoadas perto do White Wall, o ettin discutindo consigo mesmo virou folclore recorrente entre caçadores e viajantes de Mére, sinal certo de perigo duplo pela frente."
+   },
+   {
+    "titulo": "Aptidões",
+    "texto": "montaria não · carga sim · tração sim"
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, lento (Esquiva 4, Bloqueio 6). Pancada de dano médio 15, e dois golpes por ação pela Rajada (o segundo a −1d6), cada um num alvo. Nunca fica Surpreso nem leva o bônus de flanco. Vê no escuro a 18 m. 50 PV, Impacto 5, Corte e Perfuração 0."
    }
   ]
  },
@@ -21919,7 +21952,7 @@
   "categoria": "Gigante",
   "tipo": "chefe",
   "conceito": "humanoide Grande (gigante)",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "descricao": "Gigante recluso das montanhas, de pele da cor da pedra, que esculpe as próprias cavernas e medita por longos períodos. Pacífico até ser provocado; então arremessa rochas a até 45 m com precisão mortal e anda entre as rochas sem ser notado.",
   "tags": [
    "gigante"
   ],
@@ -21929,7 +21962,7 @@
   "porte": "Grande",
   "dimensoes": {
    "medida": "3,7 m de altura",
-   "peso": "770 kg"
+   "peso": "693 kg"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -21959,7 +21992,7 @@
    "esquiva": 1,
    "integridade": 3,
    "sociabilidade": 0,
-   "furtividade": 0
+   "furtividade": 3
   },
   "vontade": 5,
   "aparencia": 4,
@@ -21976,8 +22009,8 @@
    "defesaMental": 10,
    "absorcao": {
     "impacto": 6,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -21992,35 +22025,43 @@
      "pool": "7d6",
      "dano": "2d6 +9 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
+    },
+    {
+     "nome": "Rocha arremessada",
+     "pool": "4d6",
+     "dano": "2d6 +9 impacto",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Arremesso certeiro",
-    "descricao": "ataque à distância de até 45m, dano alto e raramente erra"
-   },
-   {
-    "nome": "Camuflagem pétrea",
-    "descricao": "Furtividade alta parado ou movendo-se devagar em terreno rochoso"
-   },
-   {
-    "nome": "Sentir vibrações",
-    "descricao": "percebe criaturas próximas através da rocha, ignora escuridão e invisibilidade a curta distância"
-   },
-   {
-    "nome": "Couro de pedra",
-    "descricao": "Absorção muito alta"
+    "descricao": "Rocha arremessada: Ativação: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: até 45 m (site); acima de 15 m, −2 na jogada. Área: um alvo. Efeito: a rocha derruba o alvo Médio ou menor que ela fere. Dano: 2d6 + Força, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto."
    },
    {
     "nome": "Punho esmagador",
-    "descricao": "dano alto corpo a corpo, pode derrubar o alvo"
+    "descricao": "Pancada descomunal: Ativação: a Pancada descomunal que fere um alvo Médio ou menor. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo cai no chão. Dano: o da Pancada. Resistência: corpo, contra a jogada da pancada; quem passa fica de pé. Limite de uso: um por golpe."
    },
    {
-    "nome": "Passos silenciosos",
-    "descricao": "atravessa cavernas e penhascos sem disparar a Prontidão de vigias"
+    "nome": "passos silenciosos",
+    "descricao": "Furtividade 3, com a Especialidade natural (terreno de rocha) +3; atravessa cavernas e penhascos sem ser notado por quem vigia (site)."
+   },
+   {
+    "nome": "agarrar",
+    "descricao": "Pancada descomunal: Agarrar."
+   },
+   {
+    "nome": "vizinho silencioso",
+    "descricao": "evita o contato e só luta provocado; então arremessa rochas de longe, com precisão, e esmaga de perto quem chega."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "sentir vibrações: percebe pela rocha quem se move a até 9 m, sem precisar de luz e mesmo invisível (site). · visão e audição: as de um humano."
    }
   ],
   "poderes": [],
@@ -22033,7 +22074,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Reclusivo e pacífico até ser provocado, prefere evitar contato com outras raças a impor sua força."
+    "texto": "Reclusivo e pacífico até ser provocado, prefere evitar contato com outras raças a impor sua força. Social: recluso, em covis de família nas montanhas."
    },
    {
     "titulo": "Hábitos",
@@ -22046,6 +22087,14 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Recolhido nas profundezas de montanhas que os anões já chamaram de lar, o gigante da pedra é talvez o único vizinho silencioso que restou no White Wall depois da Fenda, e poucos sabem dizer se ainda há covis intactos ou se os horrores já os alcançaram também."
+   },
+   {
+    "titulo": "Aptidões",
+    "texto": "montaria não · carga sim · tração sim"
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, mais ágil que os outros gigantes (Esquiva 10, Bloqueio 10). Pancada e rocha de dano médio 16; a rocha vai a 45 m e derruba quem é do tamanho de um homem. Sente pela rocha quem se move a 9 m, mesmo invisível. Entre as rochas, quase não se vê. 54 PV, Impacto 6, Corte e Perfuração 0."
    }
   ]
  },
@@ -22056,7 +22105,7 @@
   "categoria": "Gigante",
   "tipo": "chefe",
   "conceito": "humanoide Enorme (gigante)",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "descricao": "Gigante de 7,5 m, sábio e reservado, que vive em fortalezas sobre recifes e respira água. Prefere observar a interferir; quando age, convoca a tempestade, lança relâmpagos que saltam de alvo em alvo e esmaga com punhos que soltam raios. O raio não o fere.",
   "tags": [
    "gigante",
    "centelha",
@@ -22068,7 +22117,7 @@
   "porte": "Enorme",
   "dimensoes": {
    "medida": "7,5 m de altura",
-   "peso": "11 t"
+   "peso": "5.772 kg"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -22094,10 +22143,10 @@
    "raciocinio": 5
   },
   "pericias": {
-   "prontidao": 3,
+   "prontidao": 4,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0,
+   "sociabilidade": 2,
    "furtividade": 0
   },
   "vontade": 8,
@@ -22111,15 +22160,18 @@
   "combate": {
    "pv": 80,
    "defesa": 12,
-   "defesaSocial": 10,
+   "defesaSocial": 18,
    "defesaMental": 26,
    "absorcao": {
     "impacto": 13,
-    "corte": 12,
-    "perfuracao": 12
+    "corte": 4,
+    "perfuracao": 4
    },
-   "resistenciaPerfuracao": 1,
-   "iniciativa": "1d6 + 8",
+   "resistenciaPerfuracao": 0,
+   "imunidades": [
+    "raio"
+   ],
+   "iniciativa": "1d6 + 9",
    "deslocamento": {
     "batalha": 5,
     "arranque": 8,
@@ -22129,7 +22181,7 @@
     {
      "nome": "Pancada descomunal",
      "pool": "9d6 +8",
-     "dano": "3d6 +17 impacto",
+     "dano": "2d6 +17 impacto",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
@@ -22138,72 +22190,39 @@
   },
   "habilidades": [
    {
-    "nome": "Imune a raios",
-    "descricao": "não sofre dano elétrico"
+    "nome": "Comandar o clima",
+    "descricao": "poder natural (base Vento 5, a do site): Ativação: cerca de dez minutos de concentração. Duração: até ele dissipar, ou até o fim do dia. Alcance: o céu sobre uma região inteira. Área: uma região, de quilômetros. Efeito: convoca ou dissipa uma tempestade: nuvens carregadas, ventania, raios caindo ao acaso, a critério do Mestre. Dano: o dos raios ao acaso, a critério do Mestre. Resistência: nenhum. Limite de uso: uma vez por dia (site)."
    },
    {
-    "nome": "Anfíbio",
-    "descricao": "nada e respira debaixo d'água sem penalidade"
+    "nome": "Relâmpago em cadeia",
+    "descricao": "poder natural (base Raio 4, a do site): Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 36 m até o primeiro alvo. Área: o primeiro alvo e até quatro outros, cada um a até 9 m do anterior. Efeito: um relâmpago sai das mãos dele e salta de um alvo para o próximo. Dano: 4d6 + Centelha, raio, no primeiro; 2d6 + Centelha, raio, em cada um dos outros. Resistência: esquiva, contra Dificuldade 14 (10 + Centelha 4); quem passa leva metade. Limite de uso: três vezes por dia (site)."
+   },
+   {
+    "nome": "Respirar água",
+    "descricao": "poder natural (base Água 3, a do site): Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: respira água como quem respira ar, sem esforço nem limite de tempo, e nada sem penalidade (site, Anfíbio). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
     "nome": "Fúria do raio",
-    "descricao": "golpe de arma soma dano elétrico extra"
+    "descricao": "Pancada descomunal: Ativação: a Pancada descomunal que acerta. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o punho solta uma descarga elétrica. Dano: mais 1d6, raio. Resistência: nenhum. Limite de uso: um por golpe."
    },
    {
     "nome": "Presença régia",
-    "descricao": "falha de inimigos em teste de Vontade contra ele causa Abalado"
-   }
-  ],
-  "poderes": [
-   {
-    "id": "comandar-o-clima",
-    "nome": "Comandar o clima",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "muda o tempo numa área grande ao longo de minutos (tempestade, vento forte, raios ao acaso, à escolha do Mestre); 1 vez por dia",
-    "base": {
-     "arte": "vento",
-     "nivel": 5
-    },
-    "area": "convoca tempestade sobre uma área",
-    "descricao": "Levando cerca de dez minutos, o gigante convoca ou dissipa uma tempestade sobre uma região inteira: nuvens carregadas, ventania, raios caindo ao acaso a critério do Mestre.",
-    "usos": {
-     "periodo": "dia",
-     "quantidade": 1
-    }
+    "descricao": "Ativação: a primeira vez na cena em que ele fala, ruge ou ataca. Duração: até o fim da cena. Alcance: 18 m. Área: os inimigos que o veem a até 18 m. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência 4 + Intimidação 3 + 2 × o menor entre Centelha 4 e Intimidação 3 (6) = 13 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena."
    },
    {
-    "id": "relampago-em-cadeia",
-    "nome": "Relâmpago em cadeia",
-    "tipo": "natural",
-    "resiste": "esquiva",
-    "efeito": "um raio salta entre vários alvos próximos, poucas vezes por dia",
-    "base": {
-     "arte": "raio",
-     "nivel": 4
-    },
-    "descricao": "Um relâmpago sai das mãos do gigante e salta de um alvo para o próximo, ferindo cada um que estiver perto o bastante do anterior.",
-    "usos": {
-     "periodo": "dia",
-     "quantidade": 3
-    }
+    "nome": "agarrar",
+    "descricao": "Pancada descomunal: Agarrar."
    },
    {
-    "id": "respirar-agua-tempestade",
-    "nome": "Respirar água",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "respira debaixo d'água como se fosse ar, sempre",
-    "base": {
-     "arte": "agua",
-     "nivel": 3
-    },
-    "descricao": "O gigante da tempestade vive tanto no mar quanto na terra: respira água como quem respira ar, sem esforço nem limite de tempo.",
-    "usos": {
-     "periodo": "passivo"
-    }
+    "nome": "juiz das águas",
+    "descricao": "observa antes de agir; quando age, chama o raio sobre os culpados, esmaga com o punho e volta para o mar."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano atento; vê debaixo d'água como fora dela."
    }
   ],
+  "poderes": [],
   "locomocao": {
    "terra": 5,
    "natacao": 4
@@ -22214,7 +22233,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Sábio e reservado, prefere observar a interferir, e quando age, age com justiça severa e definitiva."
+    "texto": "Sábio e reservado, prefere observar a interferir, e quando age, age com justiça severa e definitiva. Social: isolado, em fortalezas sobre recifes ou ilhas."
    },
    {
     "titulo": "Sociedade",
@@ -22227,6 +22246,14 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Diz vigiar de longe as rotas do Senhor do Mar e das Estradas, cuidando das águas sem se intrometer nos assuntos dos homens. Sua Centelha, a maior entre os gigantes, o aproxima do divino e o torna ainda mais temido pelas igrejas supressoras."
+   },
+   {
+    "titulo": "Aptidões",
+    "texto": "montaria não · carga sim · tração sim"
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Enorme, 80 PV, Impacto 13, Corte e Perfuração 4; o raio não o fere. Esquiva 12, Bloqueio 12, Defesa Mental 26. Pancada de dano médio 24, mais 1d6 de raio. Três vezes por dia, relâmpago em cadeia (4d6 + 4 no primeiro, 2d6 + 4 em até quatro outros). Na primeira vez que age na cena, quem o vê pode ficar Abalado. Respira água e nada a 4."
    }
   ]
  },
@@ -22237,7 +22264,7 @@
   "categoria": "Gigante",
   "tipo": "chefe",
   "conceito": "humanoide Enorme (gigante)",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "descricao": "Nobre dos castelos que flutuam entre as nuvens, de 7 m, caprichoso e vaidoso. Levita com quem quiser levar, cobre o campo de névoa e arremessa rochas do alto; prefere enigmas e caçadas à guerra.",
   "tags": [
    "gigante",
    "centelha",
@@ -22249,7 +22276,7 @@
   "porte": "Enorme",
   "dimensoes": {
    "medida": "7 m de altura",
-   "peso": "8 t"
+   "peso": "4.692 kg"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -22275,10 +22302,10 @@
    "raciocinio": 4
   },
   "pericias": {
-   "prontidao": 2,
+   "prontidao": 3,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0,
+   "sociabilidade": 1,
    "furtividade": 0
   },
   "vontade": 6,
@@ -22292,15 +22319,15 @@
   "combate": {
    "pv": 75,
    "defesa": 10,
-   "defesaSocial": 10,
+   "defesaSocial": 14,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 10,
-    "corte": 10,
-    "perfuracao": 10
+    "corte": 2,
+    "perfuracao": 2
    },
-   "resistenciaPerfuracao": 1,
-   "iniciativa": "1d6 + 6",
+   "resistenciaPerfuracao": 0,
+   "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 5,
     "arranque": 8,
@@ -22310,70 +22337,56 @@
     {
      "nome": "Pancada descomunal",
      "pool": "8d6+2 +4",
-     "dano": "3d6 +14 impacto",
+     "dano": "2d6 +14 impacto",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     },
     {
-     "nome": "Arremessar rocha",
-     "pool": "8d6+2 +4",
-     "dano": "3d6 +14 impacto",
+     "nome": "Rocha arremessada",
+     "pool": "3d6 +4",
+     "dano": "2d6 +14 impacto",
      "perfArma": null,
      "speed": 7,
-     "classe": "arremesso",
-     "notas": "dado pelo porte Enorme"
+     "classe": "pesada"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Telepatia",
-    "descricao": "comunica-se mentalmente com aliados a até 18m"
+    "nome": "Arremesso de rocha",
+    "descricao": "Rocha arremessada: Ativação: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: até 36 m; acima de 12 m, −2 na jogada. Área: um alvo. Efeito: a rocha derruba o alvo Grande ou menor que ela fere. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto."
    },
    {
-    "nome": "Couro nas alturas",
-    "descricao": "Absorção alta"
-   },
-   {
-    "nome": "Castelo entre nuvens",
-    "descricao": "conhece rotas aéreas e pode convocar servos alados em seu domínio"
-   }
-  ],
-  "poderes": [
-   {
-    "id": "levitar",
     "nome": "Levitar",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "Levita a si e até 900 kg, sem limite de tempo.",
-    "base": {
-     "arte": "vento",
-     "nivel": 4
-    },
-    "descricao": "O gigante flutua à vontade, a si e a até mais 900 kg de carga ou de um companheiro, subindo e descendo devagar, sem precisar de asas.",
-    "usos": {
-     "periodo": "avontade"
-    }
+    "descricao": "poder natural (base Vento 4, a do site): Ativação: uma ação, Velocidade 6. Duração: enquanto quiser, sem limite de tempo. Alcance: o próprio corpo, e quem ou o que ele leva. Área: ele e até mais 900 kg de carga ou de um companheiro (site). Efeito: flutua, subindo e descendo devagar, sem asas; a Batalha no ar é a metade da de terra. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade (site)."
    },
    {
-    "id": "nevoa",
     "nome": "Névoa",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "Névoa espessa que cobre a visão e concede Furtividade a aliados, dificultando Ataques à distância contra eles.",
-    "base": {
-     "arte": "agua",
-     "nivel": 3
-    },
-    "area": "raio de 9 m",
-    "descricao": "O gigante cobre uma área com névoa espessa, o bastante para encobrir a visão de quem estiver lá dentro.",
-    "usos": {
-     "periodo": "cena",
-     "quantidade": 1
-    }
+    "descricao": "poder natural (base Água 3, a do site): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até um vento forte dispersar. Alcance: 18 m. Área: uma esfera de 9 m de raio. Efeito: névoa espessa que tapa a visão de quem está dentro: quem está dentro fica Na escuridão para ver, os aliados dele somam +2 em Furtividade, e o ataque à distância contra quem está dentro leva −2. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena (site)."
+   },
+   {
+    "nome": "Telepatia",
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 18 m (site). Área: os aliados que ele escolher. Efeito: fala com os aliados pela mente, sem língua em comum. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "servos alados",
+    "descricao": "no próprio domínio, conhece as rotas do céu e chama os servos alados (águias gigantes) e os ogros que o servem (site, Castelo entre nuvens)."
+   },
+   {
+    "nome": "agarrar",
+    "descricao": "Pancada descomunal: Agarrar."
+   },
+   {
+    "nome": "caçada do castelo",
+    "descricao": "trata a luta como um jogo; cobre o campo de névoa, arremessa rochas do alto e só desce para esmagar quem o diverte menos."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano atento; vê longe do alto das nuvens."
    }
   ],
+  "poderes": [],
   "locomocao": {
    "terra": 5
   },
@@ -22383,7 +22396,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Caprichoso e vaidoso, trata mortais como curiosidades ou peças de um jogo, e prefere enigmas e caçadas a guerra direta."
+    "texto": "Caprichoso e vaidoso, trata mortais como curiosidades ou peças de um jogo, e prefere enigmas e caçadas a guerra direta. Social: nobreza aérea, em castelos flutuantes servidos por ogros e águias gigantes."
    },
    {
     "titulo": "Sociedade",
@@ -22396,6 +22409,14 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Seus castelos no céu são relíquia viva de um tempo em que a magia domava até o vento, prova de que o mundo já foi diferente antes da Supressão. Poucos mortais os avistam, e quem avista raramente é acreditado."
+   },
+   {
+    "titulo": "Aptidões",
+    "texto": "montaria não · carga sim · tração sim"
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Enorme, 75 PV, Impacto 10, Corte e Perfuração 2. Esquiva 10, Bloqueio 10, Defesa Mental 19. Pancada e rocha de dano médio 21; a rocha derruba quem é Grande ou menor. Levita à vontade com até 900 kg de carga; uma vez por cena, cobre 9 m de raio de névoa. Fala pela mente com os aliados."
    }
   ]
  },
@@ -22406,7 +22427,7 @@
   "categoria": "Gigante",
   "tipo": "chefe",
   "conceito": "humanoide Grande (gigante)",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "descricao": "Gigante de 4,5 m, disciplinado e militarista, que vive em fortalezas sobre fendas vulcânicas e forja a própria armadura de placas. Comanda tropas e escravos, atira rochas e corta com o espadão; o fogo pouco o fere, e o gelo, mais.",
   "tags": [
    "gigante",
    "centelha"
@@ -22417,7 +22438,7 @@
   "porte": "Grande",
   "dimensoes": {
    "medida": "4,5 m de altura",
-   "peso": "3,2 t"
+   "peso": "1.247 kg"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -22459,15 +22480,28 @@
   },
   "combate": {
    "pv": 62,
-   "defesa": 4,
+   "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 14,
    "absorcao": {
     "impacto": 9,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 1,
+    "bloqueio": 5,
+    "defesa": 5,
+    "contraTiro": 1,
+    "absorcao": {
+     "impacto": 13,
+     "corte": 8,
+     "perfuracao": 5
+    },
+    "nivel": 2,
+    "penalidade": 3
+   },
    "fraquezas": [
     "gelo"
    ],
@@ -22486,36 +22520,43 @@
      "pool": "7d6+2 +2",
      "dano": "2d6 +11 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     },
     {
-     "nome": "Arremessar rocha",
-     "pool": "7d6+2 +2",
+     "nome": "Rocha arremessada",
+     "pool": "2d6+2 +2",
      "dano": "2d6 +11 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "arremesso",
-     "notas": "dado pelo porte Grande"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Armadura da forja",
-    "descricao": "Absorção muito alta com armadura pesada forjada por eles mesmos"
-   },
-   {
-    "nome": "Golpe de espadão",
-    "descricao": "dano altíssimo corpo a corpo, mas ataque mais lento (perde a Iniciativa no turno seguinte)"
+    "nome": "Arremesso de rocha",
+    "descricao": "Rocha arremessada: Ativação: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: até 36 m; acima de 12 m, −2 na jogada. Área: um alvo. Efeito: a rocha derruba o alvo Médio ou menor que ela fere. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto."
    },
    {
     "nome": "Sangue de forja",
-    "descricao": "Vontade alta, resiste a Abalado"
+    "descricao": "Ativação: um efeito que deixaria Abalado. Duração: a do efeito. Alcance: o próprio corpo. Área: não se aplica. Efeito: a disciplina de forja resiste ao medo: +2 na Defesa Mental contra o que deixa Abalado. Dano: nenhum. Resistência: mente, com o +2. Limite de uso: nenhum."
    },
    {
     "nome": "Presença marcial",
-    "descricao": "comanda tropas próximas; aliados a até 9m ganham +1d em Ataque"
+    "descricao": "Ativação: uma ação, Velocidade 6, uma ordem gritada. Duração: até o fim da próxima ação de cada aliado. Alcance: 9 m (site). Área: os aliados que ouvem a ordem a até 9 m. Efeito: comanda as tropas: cada aliado soma +1d6 na próxima jogada de ataque (site). Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena."
+   },
+   {
+    "nome": "agarrar",
+    "descricao": "Pancada descomunal: Agarrar."
+   },
+   {
+    "nome": "comandante da forja",
+    "descricao": "luta em formação, com os escravos e os ogros na frente; grita a ordem que fortalece a tropa, atira rochas e entra de espadão onde a linha cede."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano."
    }
   ],
   "poderes": [],
@@ -22528,7 +22569,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Disciplinado e militarista, obedece a uma hierarquia rígida em que só a força bruta decide quem manda. Não questiona ordens do superior mais forte, e usa a mesma lógica para tratar todos abaixo dele."
+    "texto": "Disciplinado e militarista, obedece a uma hierarquia rígida em que só a força bruta decide quem manda. Não questiona ordens do superior mais forte, e usa a mesma lógica para tratar todos abaixo dele. Social: hierarquia militar rígida, em fortalezas, com escravos (orcs e ogros)."
    },
    {
     "titulo": "Sociedade",
@@ -22541,6 +22582,14 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Sua forja é vista como um eco grosseiro e violento da tradição sagrada do Forjador, uma cópia bárbara do ofício dos anões feita a fogo e chicote. Para o povo comum, é lenda de fornalha de uma era mais mágica que a Supressão preferiria esquecida."
+   },
+   {
+    "titulo": "Aptidões",
+    "texto": "montaria não · carga sim · tração sim"
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, 62 PV. De armadura: Esquiva 1, Bloqueio 5; Impacto 13, Corte 8, Perfuração 5 (N2), e a Penalidade −3 sai também do ataque. Fogo faz metade, gelo fere mais. Pancada e rocha de dano médio 18; com o espadão, Pesada com Força × 2, e age por último na rodada seguinte. Grita a ordem que dá +1d6 no ataque dos aliados a 9 m, uma vez por cena."
    }
   ]
  },
@@ -22551,7 +22600,7 @@
   "categoria": "Gigante",
   "tipo": "chefe",
   "conceito": "humanoide Grande (gigante)",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "descricao": "Gigante de 4,3 m, violento e orgulhoso, que vive em clãs sob um jarl e saqueia as montanhas geladas. Caça com lobos adestrados, some na neve, atira rochas a 36 m e corta com um machado descomunal. O frio não o fere.",
   "tags": [
    "gigante",
    "centelha"
@@ -22562,7 +22611,7 @@
   "porte": "Grande",
   "dimensoes": {
    "medida": "4,3 m de altura",
-   "peso": "2,8 t"
+   "peso": "1.088 kg"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -22592,7 +22641,7 @@
    "esquiva": 0,
    "integridade": 3,
    "sociabilidade": 0,
-   "furtividade": 0
+   "furtividade": 1
   },
   "vontade": 6,
   "aparencia": 4,
@@ -22604,15 +22653,18 @@
   },
   "combate": {
    "pv": 58,
-   "defesa": 4,
+   "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 13,
    "absorcao": {
     "impacto": 8,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "imunidades": [
+    "gelo"
+   ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 4,
@@ -22625,31 +22677,43 @@
      "pool": "7d6+2 +2",
      "dano": "2d6 +11 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
+    },
+    {
+     "nome": "Rocha arremessada",
+     "pool": "2d6+2 +2",
+     "dano": "2d6 +11 impacto",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Imune ao frio",
-    "descricao": "não sofre dano de frio"
-   },
-   {
     "nome": "Arremesso de rocha",
-    "descricao": "ataque à distância de até 36m, dano alto"
+    "descricao": "Rocha arremessada: Ativação: uma ação, Velocidade 7, com uma rocha ou um bloco de gelo na mão (pegar um do chão gasta outra ação). Duração: instantânea. Alcance: até 36 m (site); acima de 12 m, −2 na jogada. Área: um alvo. Efeito: a rocha derruba o alvo Médio ou menor que ela fere. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha ou gelo por perto."
    },
    {
-    "nome": "Camuflagem branca",
-    "descricao": "Furtividade alta em neve e gelo"
+    "nome": "camuflagem branca",
+    "descricao": "Furtividade 1, com a Especialidade natural (neve e gelo) +3."
    },
    {
-    "nome": "Machado descomunal",
-    "descricao": "dano alto corpo a corpo"
+    "nome": "vigor ártico",
+    "descricao": "não sofre a exaustão do frio extremo (site); o livro não tem regra de desgaste pelo frio do ambiente."
    },
    {
-    "nome": "Vigor ártico",
-    "descricao": "Absorção alta e imune a exaustão pelo frio"
+    "nome": "agarrar",
+    "descricao": "Pancada descomunal: Agarrar."
+   },
+   {
+    "nome": "saqueador do jarl",
+    "descricao": "embosca na neve com os lobos, atira rochas e gelo em quem foge e entra de machado; só respeita quem o supera em combate direto."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano."
    }
   ],
   "poderes": [],
@@ -22662,7 +22726,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Violento e orgulhoso, vive para o saque e a guerra, e só respeita quem o supera em combate direto."
+    "texto": "Violento e orgulhoso, vive para o saque e a guerra, e só respeita quem o supera em combate direto. Social: clãs sob um jarl, em salões compridos."
    },
    {
     "titulo": "Sociedade",
@@ -22675,6 +22739,14 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Disputa as montanhas geladas do White Wall tanto com os anões exilados quanto com os horrores que saíram da Fenda, e para o povo supersticioso do Neck é a lenda de inverno que rouba gado e crianças."
+   },
+   {
+    "titulo": "Aptidões",
+    "texto": "montaria não · carga sim · tração sim"
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, 58 PV, Impacto 8, Corte e Perfuração 1; o gelo não o fere. Esquiva 4, Bloqueio 8. Pancada e rocha de dano médio 18; a rocha vai a 36 m e derruba quem é do tamanho de um homem. Some na neve (Furtividade 1 + 3). Com o machado, Pesada com Força × 2."
    }
   ]
  },
@@ -23394,8 +23466,8 @@
   "nomeIngles": "Golem, Clay",
   "categoria": "Construto",
   "tipo": "chefe",
-  "conceito": "constructo Grande",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "conceito": "constructo Médio",
+  "descricao": "Estátua de barro de 2,4 m movida por um espírito preso à força. Guarda criptas e torres por décadas sem se mover; desperto, bate com punhos que deixam feridas que nem a magia fecha, e a cada instante de luta o espírito pode se libertar e atacar tudo à volta.",
   "tags": [
    "monstro",
    "centelha"
@@ -23403,7 +23475,7 @@
   "ameaca": 5,
   "centelha": 3,
   "pendente": true,
-  "porte": "Grande",
+  "porte": "Médio",
   "dimensoes": {
    "medida": "2,4 m de altura",
    "peso": "270 kg"
@@ -23424,9 +23496,9 @@
   "atributos": {
    "forca": 8,
    "destreza": 2,
-   "vigor": 1,
-   "influencia": 0,
-   "perspicacia": 0,
+   "vigor": 5,
+   "influencia": 1,
+   "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
    "inteligencia": 0,
@@ -23435,30 +23507,31 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 0,
-   "furtividade": 1
+   "integridade": 0,
+   "furtividade": 0
   },
-  "vontade": 8,
+  "vontade": 3,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 3,
-   "valor": 4
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
-   "pv": 34,
-   "defesa": 4,
+   "pv": 50,
+   "defesa": 13,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 4,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
-    "corte",
     "fogo",
+    "corte",
     "perfuracao"
    ],
    "iniciativa": "1d6 + 3",
@@ -23469,9 +23542,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "6d6+2 +6",
-     "dano": "2d6 +11 corte",
+     "nome": "Punho de argila",
+     "pool": "6d6 +6",
+     "dano": "1d6 +11 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -23480,20 +23553,48 @@
   },
   "habilidades": [
    {
-    "nome": "Corpo de Argila Endurecida",
-    "descricao": "Absorve grande parte de qualquer dano físico comum e é imune a quase toda magia que tentar afetá-lo diretamente."
+    "nome": "agarrar",
+    "descricao": "Punho de argila: Agarrar."
    },
    {
-    "nome": "Fúria Descontrolada",
-    "descricao": "A cada instante de combate, cresce a chance de seu espírito preso se libertar e ele atacar tudo ao redor sem distinção, sem que ninguém consiga voltar a controlá-lo."
+    "nome": "derrubar",
+    "descricao": "Punho de argila: Derrubar."
    },
    {
-    "nome": "Investida Acelerada",
-    "descricao": "Uma vez por cena, pode acelerar os próprios movimentos por alguns instantes depois de já estar em combate."
+    "nome": "empurrar",
+    "descricao": "Punho de argila: Empurrar."
    },
    {
-    "nome": "Ferida Amaldiçoada",
-    "descricao": "Os golpes que desfere deixam feridas que não cicatrizam por conta própria e resistem até à cura mágica mais poderosa."
+    "nome": "sem vida",
+    "descricao": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo."
+   },
+   {
+    "nome": "Fúria descontrolada",
+    "descricao": "Ativação: a cada 6 Ticks de combate, o Mestre rola 1d6; o espírito se liberta com 6 na primeira rolagem, com 5 ou 6 na segunda, e o número desce um a cada rolagem que não liberta. Duração: até ele ser destruído; ninguém volta a controlá-lo. Alcance: o próprio corpo. Área: não se aplica. Efeito: o espírito preso se liberta, e o golem ataca a criatura mais perto, amiga ou inimiga, e destrói o que encontra. Dano: nenhum além dos golpes. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "Investida acelerada",
+    "descricao": "Ativação: uma ação, Velocidade 6, depois de pelo menos 6 Ticks de combate. Duração: 18 Ticks. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Acelerado. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena (site)."
+   },
+   {
+    "nome": "Ferida amaldiçoada",
+    "descricao": "Punho de argila: Ativação: o Punho que fere. Duração: até a cura que vence a maldição. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a ferida não fecha sozinha nem com descanso; a cura por Arte só a fecha se quem cura passar numa jogada contra Dificuldade 13 (10 + Centelha 3). Dano: o do Punho. Resistência: nenhum. Limite de uso: um por golpe."
+   },
+   {
+    "nome": "imune à magia",
+    "descricao": "a maior parte das Artes não o afeta."
+   },
+   {
+    "nome": "casco de argila",
+    "descricao": "resistência a Corte, Perfuração e Fogo (metade do dano)."
+   },
+   {
+    "nome": "sentinela",
+    "descricao": "fica imóvel por décadas guardando a cripta ou a torre; desperto, cumpre a última ordem até o fim, sem pressa, até a fúria libertar o espírito."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um guarda humano; nota quem entra no lugar guardado."
    }
   ],
   "poderes": [],
@@ -23511,6 +23612,14 @@
    {
     "titulo": "Guardião silencioso",
     "texto": "Muitas vezes posicionado como sentinela de cripta ou torre, permanece imóvel por décadas até que alguém desperte sua fúria."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: solitário."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 50 PV, Impacto 8, Corte e Perfuração 3; lâmina, ponta e fogo fazem metade. Lento (Esquiva 4), mas apara com o corpo (Bloqueio 13 com o punho). Punho de argila de dano médio 14,5, e a ferida não fecha sozinha. Sem mente: não se assusta nem se convence. Uma vez por cena fica Acelerado. A cada 6 Ticks de luta, o espírito pode se libertar, e daí ataca qualquer um. Não se cura sozinho."
    }
   ]
  },
@@ -23521,7 +23630,7 @@
   "categoria": "Construto",
   "tipo": "elite",
   "conceito": "constructo Grande",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricao": "Corpo de 2,4 m costurado de partes de cadáveres roubados e movido por um espírito preso. Anda travado, bate com força e não sente dor; o raio o cura, e o frio e o fogo o deixam lento. A cada instante de luta, o espírito pode se soltar, e daí só o criador talvez o acalme.",
   "tags": [
    "monstro",
    "centelha"
@@ -23549,9 +23658,9 @@
   "atributos": {
    "forca": 7,
    "destreza": 2,
-   "vigor": 1,
-   "influencia": 0,
-   "perspicacia": 0,
+   "vigor": 5,
+   "influencia": 1,
+   "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
    "inteligencia": 0,
@@ -23560,29 +23669,33 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 0,
-   "furtividade": 1
+   "integridade": 0,
+   "furtividade": 0
   },
-  "vontade": 8,
-  "aparencia": 4,
+  "vontade": 3,
+  "aparencia": 2,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 3,
-   "valor": 3
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
-   "pv": 34,
+   "pv": 50,
    "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 4,
-    "corte": 5,
-    "perfuracao": 5
+    "impacto": 8,
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
     "perfuracao"
+   ],
+   "imunidades": [
+    "raio"
    ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
@@ -23592,9 +23705,9 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "6d6 +6",
-     "dano": "2d6 +10 corte",
+     "nome": "Punho",
+     "pool": "5d6+2 +6",
+     "dano": "1d6 +10 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -23603,20 +23716,44 @@
   },
   "habilidades": [
    {
-    "nome": "Corpo Costurado",
-    "descricao": "Absorve parte de qualquer dano físico comum e é imune a quase toda magia que tentar afetá-lo diretamente."
+    "nome": "agarrar",
+    "descricao": "Punho: Agarrar."
    },
    {
-    "nome": "Fúria Descontrolada",
-    "descricao": "A cada instante de combate, cresce a chance de seu espírito preso se libertar e ele atacar tudo ao redor sem distinção, entrando em uma fúria que só seu criador talvez consiga acalmar."
+    "nome": "derrubar",
+    "descricao": "Punho: Derrubar."
    },
    {
-    "nome": "Fraqueza ao Frio e ao Fogo",
-    "descricao": "Dano de frio ou fogo deixa seu corpo lento e desajeitado por vários instantes."
+    "nome": "sem vida",
+    "descricao": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto ou pelo raio; não sofre nada que se resista com o corpo."
    },
    {
-    "nome": "Vigor pela Centelha Elétrica",
-    "descricao": "Um choque elétrico bem direcionado na verdade restaura parte de sua vitalidade em vez de feri-lo."
+    "nome": "Fúria descontrolada",
+    "descricao": "Ativação: a cada 6 Ticks de combate, o Mestre rola 1d6; o espírito se liberta com 6 na primeira rolagem, com 5 ou 6 na segunda, e o número desce um a cada rolagem que não liberta. Duração: até o fim da cena, ou até o criador o acalmar. Alcance: o próprio corpo. Área: não se aplica. Efeito: o golem ataca a criatura mais perto, amiga ou inimiga, e destrói o que encontra; só o criador pode acalmá-lo, com uma ação de fala a até 18 m e 4 ou mais em 1d6. Dano: nenhum além dos golpes. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "Fraqueza ao frio e ao fogo",
+    "descricao": "Ativação: leva dano de gelo ou de fogo (1 ou mais, depois da Absorção). Duração: 18 Ticks. Alcance: o próprio corpo. Área: não se aplica. Efeito: o corpo fica lento e desajeitado: fica Retardado. Dano: nenhum além do que levou. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "Vigor pela centelha elétrica",
+    "descricao": "Ativação: um golpe ou efeito de raio o acerta. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Efeito: o raio não o fere (Elementos) e devolve PV: recupera metade do dano que o raio daria. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "imune à magia",
+    "descricao": "a maior parte das Artes não o afeta."
+   },
+   {
+    "nome": "corpo costurado",
+    "descricao": "resistência a Perfuração (metade do dano)."
+   },
+   {
+    "nome": "obedece ao criador",
+    "descricao": "avança travado sobre quem a ordem manda, bate e agarra; a cada instante de luta o espírito pode se soltar, e daí só o criador o acalma."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano."
    }
   ],
   "poderes": [],
@@ -23638,6 +23775,14 @@
    {
     "titulo": "Memórias que restam",
     "texto": "Raramente, rumores falam de golens de carne que guardam fragmentos da memória de quem forneceu a cabeça usada em sua criação."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: solitário."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, 50 PV, Impacto 8, Corte e Perfuração 3; ponta faz metade, e o raio o cura em vez de ferir. Esquiva 4, Bloqueio 4. Punho de dano médio 13,5. Fogo ou gelo o deixam Retardado por 18 Ticks. Sem mente: não se assusta nem se convence. A cada 6 Ticks de luta, o espírito pode se soltar, e daí ataca qualquer um até o fim da cena ou até o criador o acalmar. Não se cura sozinho."
    }
   ]
  },
@@ -23648,7 +23793,7 @@
   "categoria": "Construto",
   "tipo": "chefe",
   "conceito": "constructo Grande",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricao": "Guarda de guerra forjado em ferro maciço, de 3,6 m. Não fala, não cheira e não cansa; os passos fazem o chão tremer. Bate com força redobrada e solta um gás venenoso. A maior parte da magia não o toca: o raio o deixa lento, e o fogo o cura.",
   "tags": [
    "monstro",
    "centelha"
@@ -23659,7 +23804,7 @@
   "porte": "Grande",
   "dimensoes": {
    "medida": "3,6 m de altura",
-   "peso": "2.270 kg"
+   "peso": "4.960 kg"
   },
   "ecologia": {
    "tipo": "Construct",
@@ -23677,9 +23822,9 @@
   "atributos": {
    "forca": 11,
    "destreza": 2,
-   "vigor": 1,
-   "influencia": 0,
-   "perspicacia": 0,
+   "vigor": 7,
+   "influencia": 1,
+   "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
    "inteligencia": 0,
@@ -23688,25 +23833,26 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 0,
-   "furtividade": 1
+   "integridade": 0,
+   "furtividade": 0
   },
-  "vontade": 9,
+  "vontade": 3,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 3,
-   "valor": 4
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
-   "pv": 34,
-   "defesa": 4,
+   "pv": 70,
+   "defesa": 13,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 5,
-    "corte": 6,
-    "perfuracao": 6
+    "impacto": 11,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -23714,8 +23860,10 @@
    ],
    "resistencias": [
     "corte",
-    "fogo",
     "perfuracao"
+   ],
+   "imunidades": [
+    "fogo"
    ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
@@ -23725,35 +23873,63 @@
    },
    "ataques": [
     {
-     "nome": "Punhos",
-     "pool": "8d6 +8",
+     "nome": "Punho de ferro",
+     "pool": "7d6+2 +8",
      "dano": "2d6 +15 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
   "habilidades": [
    {
+    "nome": "agarrar",
+    "descricao": "Punho de ferro: Agarrar."
+   },
+   {
+    "nome": "derrubar",
+    "descricao": "Punho de ferro: Derrubar."
+   },
+   {
+    "nome": "empurrar",
+    "descricao": "Punho de ferro: Empurrar."
+   },
+   {
+    "nome": "sem vida",
+    "descricao": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto ou pelo fogo; não sofre nada que se resista com o corpo."
+   },
+   {
     "nome": "Sopro de gás venenoso",
-    "descricao": "Uma vez a cada poucos turnos, o golem exala um cubo de gás nocivo; quem for envolvido sofre dano contínuo de veneno, com testes de Vigor repetidos até se livrar do efeito."
+    "descricao": "Ativação: uma ação, Velocidade 7. Duração: o gás fica no lugar até o fim da próxima ação dele. Alcance: à frente dele. Área: um cubo de 3 m de lado, encostado nele. Efeito: exala uma nuvem de gás nocivo; quem a respira é envenenado (Veneno e doença). Dano: o do veneno. Resistência: corpo, pelo veneno (Veneno e doença); quem prende a respiração antes de entrar, e não sai do fôlego, não é envenenado. Limite de uso: uma vez a cada 24 Ticks."
    },
    {
-    "nome": "Imunidade a magia",
-    "descricao": "A maioria dos efeitos mágicos simplesmente não o afeta. Descargas elétricas o deixam lento por vários turnos sem chance de resistência, enquanto fogo cura seus ferimentos e rompe qualquer lentidão."
+    "nome": "Lento pelo raio",
+    "descricao": "Ativação: um golpe ou efeito de raio o acerta. Duração: 18 Ticks. Alcance: o próprio corpo. Área: não se aplica. Efeito: o raio o deixa Retardado, sem resistência (site); o dano é o da fraqueza (Elementos). Dano: o do raio. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Golpes poderosos",
-    "descricao": "Seus socos de ferro acertam com força redobrada e ameaçam ferimentos graves com facilidade incomum."
+    "nome": "Curado pelo fogo",
+    "descricao": "Ativação: um golpe ou efeito de fogo o acerta. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Efeito: o fogo não o fere (Elementos), devolve metade do dano que daria e acaba com o Retardado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Casco de ferro",
-    "descricao": "Absorve boa parte de golpes físicos comuns; só armas de adamantina o ferem com eficácia plena."
+    "nome": "imune à magia",
+    "descricao": "a maior parte das Artes não o afeta."
    },
    {
-    "nome": "Sentidos na escuridão",
-    "descricao": "Enxerga no escuro e com pouca luz sem dificuldade alguma."
+    "nome": "golpes poderosos",
+    "descricao": "os socos de ferro ameaçam ferimento grave com uma facilidade incomum (site); o livro não tem regra de golpe que fere grave com mais facilidade."
+   },
+   {
+    "nome": "casco de ferro",
+    "descricao": "resistência a Corte e Perfuração (metade do dano). Sem regra ainda: só a arma de adamantina o fere por inteiro."
+   },
+   {
+    "nome": "autômato de guerra",
+    "descricao": "avança em linha reta com passos que fazem o chão tremer, solta o gás sobre o grupo e esmaga com o punho quem fica de pé; não fala nem recua."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga no escuro e na penumbra sem dificuldade (site). · audição: a de um guarda humano."
    }
   ],
   "poderes": [],
@@ -23771,6 +23947,18 @@
    {
     "titulo": "Silêncio absoluto",
     "texto": "Não emite cheiro nem ruído além do bater metálico de seus passos, o que torna sua aproximação um aviso tardio demais para muitos."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: solitário."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Gás do golem de ferro · Potência 18 · 1 Tick (inalado) · a cada 1 minuto · pool 24 (PV) · Desgaste 1 · pelo Sopro de gás venenoso. O \"dano contínuo de veneno, com testes de Vigor repetidos\" do site vira o pool de PV do livro, entre a peçonha de víbora (Potência 14, pool 24) e o hálito de basilisco (22, pool 48) de venenos.json."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, 70 PV, Impacto 11, Corte e Perfuração 4; lâmina e ponta fazem metade, fogo o cura, raio o fere mais e o deixa Retardado. Lento (Esquiva 4), mas apara com o corpo (Bloqueio 13 com o punho). Punho de ferro Pesada, de dano médio 22. A cada 24 Ticks, um cubo de gás venenoso de 3 m. Sem mente: não se assusta nem se convence. Não se cura sozinho."
    }
   ]
  },
@@ -23781,7 +23969,7 @@
   "categoria": "Construto",
   "tipo": "elite",
   "conceito": "constructo Médio",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricao": "Estátua de 2,1 m esculpida num bloco de gelo puro, que vigia corredores congelados. Queima de frio quem a toca, sopra um cone de frio brutal e, ao ser destruída, explode em lascas cortantes. O frio não a fere; o fogo a racha.",
   "tags": [
    "monstro",
    "centelha"
@@ -23792,7 +23980,7 @@
   "porte": "Médio",
   "dimensoes": {
    "medida": "2,1 m de altura",
-   "peso": "225 kg"
+   "peso": "115 kg"
   },
   "ecologia": {
    "tipo": "Construct",
@@ -23809,9 +23997,9 @@
   "atributos": {
    "forca": 5,
    "destreza": 2,
-   "vigor": 0,
-   "influencia": 0,
-   "perspicacia": 0,
+   "vigor": 4,
+   "influencia": 1,
+   "perspicacia": 1,
    "compostura": 1,
    "percepcao": 2,
    "inteligencia": 0,
@@ -23820,23 +24008,24 @@
   "pericias": {
    "prontidao": 1,
    "esquiva": 0,
-   "furtividade": 2
+   "integridade": 0,
+   "furtividade": 0
   },
-  "vontade": 6,
+  "vontade": 3,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 3,
-   "valor": 3
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
-   "pv": 25,
+   "pv": 37,
    "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 1,
+    "impacto": 5,
     "corte": 1,
     "perfuracao": 1
    },
@@ -23845,8 +24034,10 @@
     "fogo"
    ],
    "resistencias": [
-    "gelo",
     "perfuracao"
+   ],
+   "imunidades": [
+    "gelo"
    ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
@@ -23856,32 +24047,55 @@
    },
    "ataques": [
     {
-     "nome": "Punhos gelados",
-     "pool": "5d6 +2",
+     "nome": "Punho gelado",
+     "pool": "4d6+2 +2",
      "dano": "1d6 +6 impacto",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve",
-     "notas": "cada acerto soma dano de frio"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Corpo de Gelo Vivo",
-    "descricao": "Absorve parte de qualquer dano físico comum, é imune ao frio e a quase toda magia que tentar afetá-lo diretamente, mas racha com facilidade diante do fogo."
+    "nome": "agarrar",
+    "descricao": "Punho gelado: Agarrar."
    },
    {
-    "nome": "Frio Cortante",
-    "descricao": "O simples toque de seu corpo gélido causa dano por frio, e quem golpeá-lo com as próprias mãos ou garras sofre o mesmo frio de volta."
+    "nome": "derrubar",
+    "descricao": "Punho gelado: Derrubar."
    },
    {
-    "nome": "Sopro Congelante",
-    "descricao": "Uma vez a cada poucos instantes, exala um cone de frio brutal que castiga todos à frente, a menos que resistam com um teste de Reação."
+    "nome": "sem vida",
+    "descricao": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo."
    },
    {
-    "nome": "Explosão Final",
-    "descricao": "Ao ser destruído, estilhaça-se em lascas de gelo cortante, ferindo com dano contínuo tudo que estiver por perto."
+    "nome": "Frio cortante",
+    "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: toque. Área: quem ele toca ou acerta com o Punho gelado, e quem o acerta com a mão nua, a garra ou a mordida. Efeito: o corpo de gelo queima de frio quem encosta nele. Dano: 1d6, gelo. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "Sopro congelante",
+    "descricao": "poder natural (base Gelo 2, sugestão da ficha): Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 6 m à frente. Área: cone de 6 m. Efeito: um sopro de frio brutal castiga todos à frente. Dano: 3d6 + Centelha, gelo. Resistência: esquiva, contra Dificuldade 11 (10 + Centelha 1); quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks."
+   },
+   {
+    "nome": "Explosão final",
+    "descricao": "Ativação: chega a 0 PV e é destruído. Duração: o dano é instantâneo; o Sangrando vai até alguém tratar. Alcance: o próprio corpo. Área: quem está a até 3 m. Efeito: estilhaça em lascas de gelo cortante; quem não passa fica Sangrando. Dano: 2d6 + Centelha, Corte. Resistência: esquiva, contra Dificuldade 11 (10 + Centelha 1); quem passa leva metade e não sangra. Limite de uso: uma vez, na destruição."
+   },
+   {
+    "nome": "imune à magia",
+    "descricao": "a maior parte das Artes não o afeta."
+   },
+   {
+    "nome": "corpo de gelo vivo",
+    "descricao": "resistência a Perfuração (metade do dano)."
+   },
+   {
+    "nome": "guardião das terras geladas",
+    "descricao": "vigia os corredores congelados; anda na direção do intruso com o gelo estalando, sopra o frio sobre o grupo e bate com o punho gelado; não fala nem recua."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um guarda humano."
    }
   ],
   "poderes": [],
@@ -23899,6 +24113,14 @@
    {
     "titulo": "Guardião das terras geladas",
     "texto": "Não fala nem geme, apenas o estalar constante do gelo denuncia sua aproximação nos corredores congelados que costuma vigiar."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: solitário."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 37 PV, Impacto 5, Corte e Perfuração 1; ponta faz metade, gelo não o fere, fogo fere mais. Esquiva 4, Bloqueio 4. Punho gelado de dano médio 9,5, mais 1d6 de gelo; quem o toca ou acerta de mão nua leva 1d6 de gelo. A cada 24 Ticks, um cone de frio de 6 m (3d6 + 1). Destruído, explode: 2d6 + 1 de Corte a quem está a 3 m, e Sangrando. Sem mente: não se assusta nem se convence. Não se cura sozinho."
    }
   ]
  },
@@ -26408,31 +26630,31 @@
   "habilidades": [
    {
     "nome": "Forma mutável",
-    "descricao": "Ativação: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Efeito: vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia."
+    "descricao": "Ativação: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Efeito: vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia. Vale em todas as formas."
    },
    {
     "nome": "Mordida maldita",
-    "descricao": "Mordida: Ativação: a Mordida que fere (1 de dano ou mais depois da Absorção). Duração: permanente, se pegar. Alcance: o do corpo a corpo. Área: um alvo. Efeito: quem sobrevive à mordida e não trata a ferida até o fim do dia vira homem-rato na próxima lua cheia. Dano: o da Mordida. Resistência: corpo, Vigor + Resistência contra Dificuldade 10; a maldição só não pega se a ferida for tratada a tempo. Limite de uso: um por golpe."
+    "descricao": "Mordida: Ativação: a Mordida que fere (1 de dano ou mais depois da Absorção). Duração: permanente, se pegar. Alcance: o do corpo a corpo. Área: um alvo. Efeito: quem sobrevive à mordida e não trata a ferida até o fim do dia vira homem-rato na próxima lua cheia. Dano: o da Mordida. Resistência: corpo, Vigor + Resistência contra Dificuldade 10; a maldição só não pega se a ferida for tratada a tempo. Limite de uso: um por golpe. Vale só na forma híbrida e na forma de rato."
    },
    {
     "nome": "Ataque furtivo",
-    "descricao": "Espada curta ou Mordida: Ativação: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o golpe entra onde o alvo não guarda. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe."
+    "descricao": "Espada curta ou Mordida: Ativação: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o golpe entra onde o alvo não guarda. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe. Vale em todas as formas."
    },
    {
     "nome": "Esquiva sobrenatural",
-    "descricao": "Ativação: um efeito de área que pede esquiva. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Efeito: se passa na esquiva, não leva dano nenhum, em vez de metade. Dano: nenhum. Resistência: esquiva, a do próprio efeito. Limite de uso: nenhum."
+    "descricao": "Ativação: um efeito de área que pede esquiva. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Efeito: se passa na esquiva, não leva dano nenhum, em vez de metade. Dano: nenhum. Resistência: esquiva, a do próprio efeito. Limite de uso: nenhum. Vale em todas as formas."
    },
    {
     "nome": "Afinidade com ratos",
-    "descricao": "Ativação: uma ação, Velocidade 6, um guincho ou um gesto. Duração: até o fim da cena. Alcance: onde o guincho é ouvido. Área: os ratos comuns e gigantes que o ouvem. Efeito: eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. Dano: nenhum. Resistência: nenhum. Limite de uso: um enxame ou até 6 ratos gigantes por vez."
+    "descricao": "Ativação: uma ação, Velocidade 6, um guincho ou um gesto. Duração: até o fim da cena. Alcance: onde o guincho é ouvido. Área: os ratos comuns e gigantes que o ouvem. Efeito: eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. Dano: nenhum. Resistência: nenhum. Limite de uso: um enxame ou até 6 ratos gigantes por vez. Vale em todas as formas."
    },
    {
     "nome": "ladrão da guilda",
-    "descricao": "de dia é gente comum; à noite ataca de surpresa no beco, morde para amaldiçoar e foge pelo esgoto na forma de rato."
+    "descricao": "de dia é gente comum; à noite ataca de surpresa no beco, morde para amaldiçoar e foge pelo esgoto na forma de rato. Vale em todas as formas."
    },
    {
     "nome": "Sentidos",
-    "descricao": "faro: de rato, em todas as formas; Prontidão (faro) +2. · visão e audição: apuradas."
+    "descricao": "faro: de rato; Prontidão (faro) +2. Vale em todas as formas. · visão e audição: apuradas. Vale em todas as formas."
    }
   ],
   "poderes": [],
@@ -26471,8 +26693,8 @@
   "nomeIngles": "Homunculus",
   "categoria": "Construto",
   "tipo": "soldado",
-  "conceito": "monstro Médio",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "conceito": "monstro Pequeno",
+  "descricao": "Servo alado de argila, cinzas, mandrágora e o sangue do criador, ligado à mente dele. Espia e leva recados; a mordida faz dormir. Se for destruído, o criador sente o golpe; se o criador morre, ele enlouquece e ataca quem se aproxima.",
   "tags": [
    "monstro",
    "centelha"
@@ -26480,9 +26702,9 @@
   "ameaca": 2,
   "centelha": 1,
   "pendente": true,
-  "porte": "Miúdo",
+  "porte": "Pequeno",
   "dimensoes": {
-   "medida": "75 cm de envergadura",
+   "medida": "0,54 m de altura",
    "peso": "3 kg"
   },
   "ecologia": {
@@ -26514,18 +26736,18 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 4
+   "furtividade": 2
   },
   "vontade": 6,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 0,
+   "compaixao": 1,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 3
   },
   "combate": {
-   "pv": 16,
+   "pv": 5,
    "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 12,
@@ -26546,10 +26768,10 @@
    },
    "ataques": [
     {
-     "nome": "Arma",
-     "pool": "2d6+2 +2",
-     "dano": "1d6 +3 corte",
-     "perfArma": null,
+     "nome": "Mordida",
+     "pool": "3d6+2 +3",
+     "dano": "1d6 +1 perfurante · perf. 0",
+     "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
@@ -26557,24 +26779,32 @@
   },
   "habilidades": [
    {
-    "nome": "Vínculo telepático",
-    "descricao": "Está ligado à mente de seu criador e pode compartilhar tudo o que vê e ouve a centenas de metros de distância."
+    "nome": "sem vida",
+    "descricao": "não respira, não come e não dorme; não faz teste de Vigor, Resistência nem Virtude (C-002, C-040); não cura nem regenera sozinho, só por conserto."
    },
    {
     "nome": "Ferrão sonífero",
-    "descricao": "Sua mordida injeta um veneno que induz sono profundo, repetindo o efeito por vários minutos até ser curado ou o veneno se esgotar."
+    "descricao": "Mordida: Ativação: a Mordida que fere. Duração: a do veneno. Alcance: o do corpo a corpo. Área: um alvo. Efeito: injeta o veneno do sono (Veneno e doença). Dano: o da Mordida. Resistência: corpo, pelo veneno. Limite de uso: um por golpe."
    },
    {
-    "nome": "Voo ágil",
-    "descricao": "Desloca-se voando com grande destreza, além de poder caminhar."
-   },
-   {
-    "nome": "Sentidos na escuridão",
-    "descricao": "Enxerga no escuro e com pouca luz sem dificuldade."
+    "nome": "Vínculo telepático",
+    "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente, enquanto os dois vivem. Alcance: cerca de 500 m (site). Área: ele e o criador. Efeito: o criador vê e ouve o que ele vê e ouve, e os dois falam pela mente. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
     "nome": "Eco de dano",
-    "descricao": "Um golpe que destrua o homúnculo também fere gravemente seu criador em algum lugar distante."
+    "descricao": "Ativação: o homúnculo é destruído. Duração: instantânea. Alcance: o criador, onde estiver. Área: o criador. Efeito: o criador sente o golpe que destruiu o servo e é ferido. Dano: 2d6, fenômeno, ao criador. Resistência: nenhum. Limite de uso: uma vez, na destruição."
+   },
+   {
+    "nome": "servo do criador",
+    "descricao": "espia e leva recados; luta só quando mandado: voa, morde para fazer dormir e foge."
+   },
+   {
+    "nome": "órfão",
+    "descricao": "se o criador morre, perde a razão e ataca qualquer um que chegue perto do covil (site, Loucura da orfandade)."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga no escuro e na penumbra sem dificuldade (site). · audição: a de um humano."
    }
   ],
   "poderes": [],
@@ -26593,6 +26823,18 @@
    {
     "titulo": "Loucura da orfandade",
     "texto": "Se o criador morre, o homúnculo perde a razão e passa a atacar cegamente qualquer um que se aproxime de seu covil."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: com o criador."
+   },
+   {
+    "titulo": "Veneno e doença",
+    "texto": "Veneno no jogo: Veneno do sono do homúnculo · Potência 12 · 1 Tick (sangue) · a cada 1 minuto · pool 2 (sono) · Desgaste 1 · pela Mordida. O formato do veneno do sono do drow, com a Potência um ponto abaixo pela criatura miúda; o \"repetindo o efeito por vários minutos\" do site é o intervalo."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Pequeno no ar, Miúdo pousado; 5 PV, Impacto 2, Corte e Perfuração 1; ponta faz metade. Esquiva 12, Defesa Mental 12. Mordida de dano médio 4,5, com o veneno do sono. Voa a 5. O criador vê e ouve por ele a até uns 500 m; se o servo é destruído, o criador leva 2d6. Não se cura sozinho."
    }
   ]
  },
@@ -30189,27 +30431,31 @@
   "habilidades": [
    {
     "nome": "Forma mutável",
-    "descricao": "Ativação: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Efeito: vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia."
+    "descricao": "Ativação: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Efeito: vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia. Vale em todas as formas."
    },
    {
     "nome": "Mordida que derruba e amaldiçoa",
-    "descricao": "Mordida: Ativação: a Mordida que fere. Duração: a queda é instantânea; a maldição, permanente se pegar. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo cai no chão; e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia. Dano: o da Mordida. Resistência: corpo, contra a jogada da mordida; quem passa fica de pé, e a maldição só não pega se a ferida for tratada a tempo. Limite de uso: um por golpe."
+    "descricao": "Mordida: Ativação: a Mordida que fere. Duração: a queda é instantânea; a maldição, permanente se pegar. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo cai no chão; e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia. Dano: o da Mordida. Resistência: corpo, contra a jogada da mordida; quem passa fica de pé, e a maldição só não pega se a ferida for tratada a tempo. Limite de uso: um por golpe. Vale só na forma híbrida e na forma de lobo."
    },
    {
     "nome": "Firme contra o medo",
-    "descricao": "Ativação: um efeito de medo o tem como alvo. Duração: a do efeito. Alcance: o próprio corpo. Área: não se aplica. Efeito: o pavor pega menos nele que na maioria dos guerreiros. Dano: nenhum. Resistência: mente, com +2 na Defesa Mental contra medo. Limite de uso: nenhum."
+    "descricao": "Ativação: um efeito de medo o tem como alvo. Duração: a do efeito. Alcance: o próprio corpo. Área: não se aplica. Efeito: o pavor pega menos nele que na maioria dos guerreiros. Dano: nenhum. Resistência: mente, com +2 na Defesa Mental contra medo. Limite de uso: nenhum. Vale em todas as formas."
    },
    {
     "nome": "Afinidade com lobos",
-    "descricao": "Ativação: uma ação, Velocidade 6, um uivo ou um gesto. Duração: até o fim da cena. Alcance: onde o uivo é ouvido. Área: os lobos comuns e atrozes que o ouvem. Efeito: eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. Dano: nenhum. Resistência: nenhum. Limite de uso: até 6 lobos por vez."
+    "descricao": "Ativação: uma ação, Velocidade 6, um uivo ou um gesto. Duração: até o fim da cena. Alcance: onde o uivo é ouvido. Área: os lobos comuns e atrozes que o ouvem. Efeito: eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. Dano: nenhum. Resistência: nenhum. Limite de uso: até 6 lobos por vez. Vale em todas as formas."
    },
    {
     "nome": "caça em bando",
-    "descricao": "cerca a presa com os lobos, morde para derrubar e rasga com as garras quem está no chão; de dia, volta a ser homem comum de espada."
+    "descricao": "cerca a presa com os lobos, morde para derrubar e rasga com as garras quem está no chão. Vale só na forma híbrida e na forma de lobo."
+   },
+   {
+    "nome": "homem comum de dia",
+    "descricao": "esconde o que é; de dia, volta a ser homem comum de espada. Vale só na forma humana."
    },
    {
     "nome": "Sentidos",
-    "descricao": "faro: de lobo, em todas as formas. · visão e audição: apuradas."
+    "descricao": "faro: de lobo, que segue o rastro de horas. Vale só na forma híbrida e na forma de lobo. · visão e audição: apuradas. Vale só na forma híbrida e na forma de lobo."
    }
   ],
   "poderes": [],
@@ -31899,7 +32145,7 @@
   "categoria": "Elemental",
   "tipo": "chefe",
   "conceito": "exterior (água) Grande",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "O mais forte dos gênios, do plano da água: 4,9 m, dentes de pérola, a força das correntes no braço. Nada mais rápido do que anda, cega com um jato de água, vira redemoinho debaixo d'água e assume a forma de gente, de gigante ou de elemental. Muitos trocaram a guerra pela dança e pelas histórias.",
   "tags": [
    "elemental",
    "centelha"
@@ -31910,7 +32156,7 @@
   "porte": "Grande",
   "dimensoes": {
    "medida": "4,9 m de altura",
-   "peso": "1130 kg"
+   "peso": "1.130 kg"
   },
   "ecologia": {
    "tipo": "Elemental",
@@ -31924,7 +32170,7 @@
   "imagem": "bestiario/marid_criatura.webp",
   "semImagem": false,
   "atributos": {
-   "forca": 8,
+   "forca": 9,
    "destreza": 5,
    "vigor": 6,
    "influencia": 5,
@@ -31938,7 +32184,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0,
+   "sociabilidade": 2,
    "furtividade": 0
   },
   "vontade": 10,
@@ -31952,12 +32198,12 @@
   "combate": {
    "pv": 54,
    "defesa": 14,
-   "defesaSocial": 10,
+   "defesaSocial": 18,
    "defesaMental": 29,
    "absorcao": {
     "impacto": 11,
-    "corte": 10,
-    "perfuracao": 10
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -31971,9 +32217,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "6d6+2 +10",
-     "dano": "2d6 +13 corte",
+     "nome": "Pancada de maré",
+     "pool": "7d6 +10",
+     "dano": "1d6 +14 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -31982,24 +32228,36 @@
   },
   "habilidades": [
    {
-    "nome": "Domínio das Águas",
-    "descricao": "Golpeia com mais força quando ambos, ele e o inimigo, estão em contato com água, mas luta pior em terra firme."
+    "nome": "Domínio das águas",
+    "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: golpeia com a força das correntes quando ele e o alvo estão na água ou tocando nela, e luta pior em terra firme: +2 no dano da Pancada de maré quando os dois tocam a água; −2 no ataque quando ele está em terra seca, longe da água. Dano: o +2 na Pancada. Resistência: nenhum. Limite de uso: nenhum. Vale em todas as formas."
    },
    {
-    "nome": "Fúria das Marés",
-    "descricao": "Uma vez por cena, dispara um jato de água capaz de ferir e cegar temporariamente quem for atingido, a menos que resista com um teste de Reação."
+    "nome": "Fúria das marés",
+    "descricao": "poder natural (base Água 4, sugestão da ficha): Ativação: uma ação, Velocidade 7. Duração: o dano é instantâneo; a cegueira vai até o fim da próxima ação do alvo. Alcance: 18 m. Área: um alvo. Efeito: dispara um jato de água que fere e cega; o alvo que não passa fica Cego. Dano: 3d6 + Centelha, Impacto. Resistência: esquiva, contra Dificuldade 15 (10 + Centelha 5); quem passa não leva o dano nem fica Cego. Limite de uso: uma vez por cena (site). Vale em todas as formas."
    },
    {
-    "nome": "Vórtice Aquático",
-    "descricao": "Uma vez por cena, transforma-se em um redemoinho de água turbulenta, mas só enquanto estiver submerso."
+    "nome": "Vórtice aquático",
+    "descricao": "poder natural (base Água 4, sugestão da ficha): Ativação: uma ação, Velocidade 6, só debaixo d'água (site). Duração: até 18 Ticks, ou até ele desfazer com outra ação. Alcance: o próprio corpo, que se move enquanto gira. Área: quem está a até 3 m dele. Efeito: vira um redemoinho de água turbulenta (Segundo Tamanho); quem está na área é puxado para dentro e fica Agarrado e Confuso enquanto estiver lá, até o redemoinho acabar ou até vencer a manobra para se soltar. Dano: 2d6 + Centelha, Impacto, a cada 6 Ticks, a quem está dentro. Resistência: esquiva, contra Força + Briga dele; quem passa não é puxado. Limite de uso: uma vez por cena (site). Vale em todas as formas."
    },
    {
-    "nome": "Forma Mutável",
-    "descricao": "Pode assumir a forma de um elemental de água, de um humano ou de um gigante, mudando de aparência à vontade."
+    "nome": "Forma mutável",
+    "descricao": "poder natural (base Metamorfose 3, sugestão da ficha): Ativação: uma ação, Velocidade 6. Duração: até ele desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a forma de um elemental da água, de um humano ou de um gigante (a Variante \"disfarce\"), e muda de aparência à vontade; a mente e os números ficam os dele. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade (site). Vale em todas as formas."
    },
    {
-    "nome": "Nadador Incansável",
-    "descricao": "Move-se pela água com velocidade muito maior do que a maioria das criaturas em terra."
+    "nome": "Nadador incansável",
+    "descricao": "Natação (secundária) 3, com o Nado de Batalha 6 da linha Nado. Vale em todas as formas."
+   },
+   {
+    "nome": "senhor das correntes",
+    "descricao": "puxa a luta para o mar ou para o rio, cega com o jato, vira redemoinho debaixo d'água e esmaga com a pancada quem fica preso; em terra firme, voa e luta pouco. Vale só na forma verdadeira."
+   },
+   {
+    "nome": "artista disfarçado",
+    "descricao": "entre gente, como humano ou gigante, evita a briga e conta histórias; se precisa lutar, cega com o jato e volta à forma verdadeira. Vale só no disfarce."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano; vê debaixo d'água como fora dela. Vale em todas as formas."
    }
   ],
   "poderes": [],
@@ -32019,6 +32277,14 @@
    {
     "titulo": "Almas de artista",
     "texto": "Muitos abandonam a guerra para se tornarem dançarinos, contadores de histórias e artistas, para desgosto dos gênios mais sóbrios da terra."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinho ou em corte de artistas."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, 54 PV, Impacto 11, Corte e Perfuração 5; fogo faz metade. Esquiva 14, Bloqueio 10, Defesa Mental 29. Pancada de maré de dano médio 17,5, com +2 quando os dois estão na água e −2 no ataque em terra seca. Uma vez por cena, um jato que cega (3d6 + 5); outra, debaixo d'água, um redemoinho Enorme que prende e confunde quem está a 3 m (2d6 + 5 a cada 6 Ticks). Anda a 2, nada a 6 e voa a 9. Muda de forma à vontade."
    }
   ]
  },
@@ -36057,7 +36323,7 @@
   "categoria": "Construto",
   "tipo": "soldado",
   "conceito": "constructo Médio",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricao": "Um móvel comum despertado por magia para guardar um cômodo: parado, ninguém o nota; quando alguém cruza o posto, tomba e bate com a própria massa, sem hesitação, cansaço ou piedade. O tamanho e o material mudam tudo, do candelabro ao navio.",
   "tags": [
    "monstro",
    "centelha"
@@ -36085,10 +36351,10 @@
   "atributos": {
    "forca": 4,
    "destreza": 2,
-   "vigor": 0,
-   "influencia": 0,
-   "perspicacia": 0,
-   "compostura": 0,
+   "vigor": 3,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1,
    "percepcao": 2,
    "inteligencia": 0,
    "raciocinio": 0
@@ -36096,25 +36362,26 @@
   "pericias": {
    "prontidao": 0,
    "esquiva": 0,
-   "furtividade": 2
+   "integridade": 0,
+   "furtividade": 0
   },
-  "vontade": 6,
+  "vontade": 3,
   "aparencia": 4,
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 3,
-   "temperanca": 3,
-   "valor": 3
+   "compaixao": 1,
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 6
   },
   "combate": {
-   "pv": 25,
+   "pv": 34,
    "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 2,
-    "corte": 4,
-    "perfuracao": 4
+    "impacto": 4,
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "resistencias": [
@@ -36132,27 +36399,35 @@
      "pool": "4d6 +2",
      "dano": "1d6 +5 impacto",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Corpo Inanimado",
-    "descricao": "Feito de madeira, pedra ou metal, o objeto animado não respira, não sente medo e é imune a doenças, venenos e efeitos que dependem de mente ou emoção."
+    "nome": "empurrar",
+    "descricao": "Pancada: Empurrar."
    },
    {
-    "nome": "Casco Resistente",
-    "descricao": "A superfície do objeto absorve grande parte de qualquer impacto físico, reduzindo o dano recebido."
+    "nome": "sem vida",
+    "descricao": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo."
    },
    {
-    "nome": "Golpe Bruto",
-    "descricao": "O objeto ataca com pancadas contundentes, usando a própria massa como arma."
+    "nome": "casco resistente",
+    "descricao": "resistência a Perfuração (metade do dano)."
    },
    {
-    "nome": "Formas Variadas",
-    "descricao": "Alguns objetos animados ganham garras extras, capacidade de escalar, nadar ou voar, ou um golpe capaz de arremessar o oponente ao chão, dependendo do item original."
+    "nome": "formas variadas",
+    "descricao": "conforme o objeto, ganha garras a mais, sobe, nada ou voa, ou derruba com o golpe (site); a ficha do armário não tem nenhuma, e a outra forma fica com o Mestre."
+   },
+   {
+    "nome": "guardião do cômodo",
+    "descricao": "fica parado entre os móveis até alguém cruzar o posto; então tomba sobre o intruso e bate, sem hesitar nem cansar, até a última ordem se cumprir."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: percebe quem cruza o posto, sem olhos nem ouvidos à vista, como um guarda humano."
    }
   ],
   "poderes": [],
@@ -36169,11 +36444,15 @@
    },
    {
     "titulo": "Comportamento",
-    "texto": "Sem mente própria, o objeto apenas cumpre a última ordem recebida ou ataca qualquer intruso que cruze seu posto, sem hesitação, cansaço ou piedade."
+    "texto": "Sem mente própria, o objeto apenas cumpre a última ordem recebida ou ataca qualquer intruso que cruze seu posto, sem hesitação, cansaço ou piedade. Social: solitário."
    },
    {
     "titulo": "Tamanho e Material",
-    "texto": "Objetos animados variam enormemente: um candelabro desperto e um navio animado são a mesma criatura em escalas opostas. O tamanho e o material (madeira, pedra ou metal) alteram muito a Força, a Destreza, os PV, a Defesa e a Absorção. Os valores desta ficha são de um objeto Médio; ajuste conforme o item. Exemplos por tamanho: Minúsculo: candelabro · Pequeno: cadeira · Médio: jaula · Grande: estátua · Enorme: carroça · Imenso: catapulta · Colossal: navio."
+    "texto": "Objetos animados variam enormemente: um candelabro desperto e um navio animado são a mesma criatura em escalas opostas. O tamanho e o material (madeira, pedra ou metal) alteram muito a Força, a Destreza, os PV, a Defesa e a Absorção. Os valores desta ficha são de um objeto Médio; ajuste conforme o item. Exemplos por porte: Minúsculo: candelabro · Pequeno: cadeira · Médio: jaula · Grande: estátua · Enorme: carroça · Imenso: catapulta · Colossal: navio."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, 34 PV, Impacto 4, Corte e Perfuração 1; ponta faz metade. Esquiva 4, Bloqueio 4. Pancada de dano médio 8,5. Parado, passa por um móvel comum. Sem mente: não se assusta nem se convence. Não se cura sozinho. Para outro objeto, o Mestre parte desta ficha e muda pelo tamanho e pelo material."
    }
   ]
  },
@@ -36184,7 +36463,7 @@
   "categoria": "Gigante",
   "tipo": "soldado",
   "conceito": "humanoide Grande (gigante)",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
+  "descricao": "Brutamontes de 2,9 m que resolve tudo no porrete antes de pensar, come qualquer coisa, gente inclusive, e obedece a quem for mais forte ou esperto. Derruba os menores e bate com força de gigante; fácil de enganar, perigoso quando irritado.",
   "tags": [
    "gigante"
   ],
@@ -36194,7 +36473,7 @@
   "porte": "Grande",
   "dimensoes": {
    "medida": "2,9 m de altura",
-   "peso": "290 kg"
+   "peso": "334 kg"
   },
   "ecologia": {
    "tipo": "Giant",
@@ -36242,8 +36521,8 @@
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -36258,27 +36537,31 @@
      "pool": "5d6",
      "dano": "2d6 +7 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
   "habilidades": [
    {
-    "nome": "Golpe brutal",
-    "descricao": "ataque corpo a corpo de dano alto com clava ou machado gigante"
-   },
-   {
     "nome": "Força de gigante",
-    "descricao": "derruba portas, arremessa objetos e desequilibra oponentes menores"
+    "descricao": "Pancada descomunal: Ativação: a Pancada descomunal que fere um alvo Médio ou menor. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo cai no chão ou é empurrado 1 m, à escolha do ogro (site: \"desequilibra oponentes menores\"); uma porta comum cede ao segundo golpe. Dano: o da Pancada. Resistência: corpo, contra a jogada da pancada; quem passa fica de pé e no lugar. Limite de uso: um por golpe."
    },
    {
-    "nome": "Atlético",
-    "descricao": "Atletismo 1; escala e corre melhor do que o esperado para o tamanho"
+    "nome": "alvo grande",
+    "descricao": "o Tamanho Grande (o humano ganha +3 contra ele) e o PV da massa (site, Alvo grande)."
    },
    {
-    "nome": "Alvo grande",
-    "descricao": "tamanho Grande facilita ser acertado, mas aguenta mais dano graças à massa"
+    "nome": "agarrar",
+    "descricao": "Pancada descomunal: Agarrar."
+   },
+   {
+    "nome": "porrete primeiro",
+    "descricao": "age por impulso e fome: avança reto, derruba o menor e bate até parar de mexer; foge de quem o engana ou o machuca demais."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano."
    }
   ],
   "poderes": [],
@@ -36291,7 +36574,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Age por impulso e fome, resolve qualquer problema no porrete antes de pensar; fácil de enganar, mas perigoso quando irritado."
+    "texto": "Age por impulso e fome, resolve qualquer problema no porrete antes de pensar; fácil de enganar, mas perigoso quando irritado. Social: sozinho ou em grupo familiar pequeno."
    },
    {
     "titulo": "Hábitos",
@@ -36304,6 +36587,14 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Relíquia bruta de um mundo mais selvagem, o ogro é hoje pesadelo comum dos caminhos isolados de Mére e das terras altas do White Wall, temido por camponeses que já não sabem dizer se é besta, gigante caído ou coisa pior escapada da Fenda."
+   },
+   {
+    "titulo": "Aptidões",
+    "texto": "montaria não · carga sim · tração sim"
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, lento (Esquiva 4, Bloqueio 4) e fácil de acertar. Pancada de dano médio 14, que derruba ou empurra quem é do tamanho de um homem. Com a clava, Pesada com Força × 2. 50 PV, Impacto 5, Corte e Perfuração 0. Defesa Social 4: se engana fácil."
    }
   ]
  },
@@ -37209,7 +37500,7 @@
   "categoria": "Elemental",
   "tipo": "elite",
   "conceito": "exterior (ar) Médio",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Servo invisível do plano do ar: segue a presa sem nunca perder o rastro, bate com dois socos sem jamais aparecer e cumpre a ordem ao pé da letra, de jeito que trai quem a deu.",
   "tags": [
    "elemental",
    "centelha"
@@ -37250,7 +37541,7 @@
    "esquiva": 1,
    "integridade": 3,
    "sociabilidade": 0,
-   "furtividade": 1
+   "furtividade": 3
   },
   "vontade": 9,
   "aparencia": 5,
@@ -37267,8 +37558,8 @@
    "defesaMental": 22,
    "absorcao": {
     "impacto": 11,
-    "corte": 7,
-    "perfuracao": 7
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
@@ -37279,9 +37570,9 @@
    },
    "ataques": [
     {
-     "nome": "Dois socos",
-     "pool": "5d6 +8",
-     "dano": "1d6 +9 impacto",
+     "nome": "Soco",
+     "pool": "5d6 +9",
+     "dano": "1d6 +7 impacto",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -37291,23 +37582,27 @@
   "habilidades": [
    {
     "nome": "Invisibilidade natural",
-    "descricao": "Permanece invisível o tempo todo, mesmo enquanto ataca, e não pode ser revelado por meios comuns de dissipação."
+    "descricao": "poder natural (base Ofuscação 3, sugestão da ficha): Ativação: nenhuma; sempre ativa. Duração: permanente, mesmo enquanto ataca. Alcance: o próprio corpo. Área: não se aplica. Efeito: está sempre Invisível; atacar não o revela, e os meios comuns de desfazer magia não o tornam visível. Quem o procura nota, se tanto, o ar que se move. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+   },
+   {
+    "nome": "Dois socos",
+    "descricao": "Soco: a Rajada: dois golpes de Soco na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação. A Leve iria a três; a ficha fica nos dois do site."
    },
    {
     "nome": "Rastreador implacável",
-    "descricao": "Segue pistas e presas em fuga sem nunca perder o rastro, não importa a velocidade."
+    "descricao": "Ativação: nenhuma; vale quando segue a presa que lhe foi apontada. Duração: até achar a presa ou a ordem acabar. Alcance: o rastro. Área: uma presa. Efeito: não perde o rastro, não importa a velocidade da presa nem o terreno; a jogada de Sobrevivência só diz quanto tempo ele leva. Dano: nenhum. Resistência: nenhum. Limite de uso: uma presa por vez."
    },
    {
-    "nome": "Voo perfeito",
-    "descricao": "Desloca-se voando com controle impecável, além de poder caminhar."
+    "nome": "feito de ar",
+    "descricao": "não sente cansaço, veneno nem doença; não respira, não come, não dorme."
    },
    {
-    "nome": "Sentidos na escuridão",
-    "descricao": "Enxerga no escuro sem qualquer dificuldade."
+    "nome": "letra da lei",
+    "descricao": "cumpre a ordem ao pé da letra, e a vira contra quem a deu se ela tiver brecha; segue a presa sem descanso, bate sem nunca aparecer e foge para o alto quando a luta vira."
    },
    {
-    "nome": "Fúria contida",
-    "descricao": "Golpeia com dois socos etéreos de força considerável."
+    "nome": "Sentidos",
+    "descricao": "visão no escuro: enxerga no escuro sem qualquer dificuldade (site). · audição: a de um humano."
    }
   ],
   "poderes": [],
@@ -37326,6 +37621,14 @@
    {
     "titulo": "Letra da lei, não da vontade",
     "texto": "Ressentido com a servidão, busca brechas em ordens mal formuladas, cumprindo o pedido ao pé da letra de formas que traem a intenção de quem o convocou."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: sozinho, a serviço de quem o conjurou."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, sempre Invisível, mesmo quando ataca. Dois socos por ação (Rajada), dano médio 10,5 cada, o segundo a −1d6. 46 PV, Impacto 11, Corte e Perfuração 4. Esquiva 14, Bloqueio 10, Defesa Mental 22. Anda a 3 e voa a 3. Segue a presa que lhe apontam sem nunca perder o rastro."
    }
   ]
  },
@@ -39830,35 +40133,35 @@
   "habilidades": [
    {
     "nome": "Garras traiçoeiras",
-    "descricao": "a Rajada: dois golpes de Garras na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação. Decisão do autor de 23/10: o golpe duplo é a Rajada, como o do campeão."
+    "descricao": "a Rajada: dois golpes de Garras na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação. Decisão do autor de 23/10: o golpe duplo é a Rajada, como o do campeão. Vale só na forma verdadeira."
    },
    {
     "nome": "Mudar de forma",
-    "descricao": "poder natural (base Matéria 3): Ativação: uma ação, Velocidade 6. Duração: até ele desfazer, ou até cair inconsciente. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume o corpo, o rosto e a voz de qualquer humanoide de Tamanho perto do dele; os números ficam os dele; sem magia, ninguém vê a troca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
+    "descricao": "poder natural (base Matéria 3): Ativação: uma ação, Velocidade 6. Duração: até ele desfazer, ou até cair inconsciente. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume o corpo, o rosto e a voz de qualquer humanoide de Tamanho perto do dele; os números ficam os dele; sem magia, ninguém vê a troca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Vale em todas as formas."
    },
    {
     "nome": "Ler pensamentos",
-    "descricao": "poder natural (base Adivinhação 2): Ativação: uma ação, Velocidade 6, olhando o alvo. Duração: enquanto se concentra, até o fim da cena. Alcance: 18 m. Área: um alvo. Efeito: ouve os pensamentos de superfície do alvo e descobre uma intenção ou um segredo dele. Dano: nenhum. Resistência: mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem. Limite de uso: à vontade, um alvo por vez."
+    "descricao": "poder natural (base Adivinhação 2): Ativação: uma ação, Velocidade 6, olhando o alvo. Duração: enquanto se concentra, até o fim da cena. Alcance: 18 m. Área: um alvo. Efeito: ouve os pensamentos de superfície do alvo e descobre uma intenção ou um segredo dele. Dano: nenhum. Resistência: mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem. Limite de uso: à vontade, um alvo por vez. Vale em todas as formas."
    },
    {
     "nome": "Ilusões",
-    "descricao": "poder natural (base Fascinação 4): Ativação: uma ação, Velocidade 8. Duração: até o fim da cena, ou enquanto ele mantiver. Alcance: 36 m. Área: uma imagem de até 6 m de lado. Efeito: uma imagem com som e cheiro, que se move como ele quer, para enganar ou distrair; quem toca ou desconfia e testa vê através dela. Dano: nenhum. Resistência: mente, contra Influência + Manha dele, só para quem desconfia. Limite de uso: uma ilusão por vez."
+    "descricao": "poder natural (base Fascinação 4): Ativação: uma ação, Velocidade 8. Duração: até o fim da cena, ou enquanto ele mantiver. Alcance: 36 m. Área: uma imagem de até 6 m de lado. Efeito: uma imagem com som e cheiro, que se move como ele quer, para enganar ou distrair; quem toca ou desconfia e testa vê através dela. Dano: nenhum. Resistência: mente, contra Influência + Manha dele, só para quem desconfia. Limite de uso: uma ilusão por vez. Vale em todas as formas."
    },
    {
     "nome": "Magia reversa",
-    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +4 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum."
+    "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +4 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. Vale em todas as formas."
    },
    {
     "nome": "Feitiço que volta",
-    "descricao": "alguns feitiços lançados contra ele produzem o efeito oposto ao que o conjurador queria."
+    "descricao": "alguns feitiços lançados contra ele produzem o efeito oposto ao que o conjurador queria. Vale em todas as formas."
    },
    {
     "nome": "trama de corte",
-    "descricao": "evita a luta aberta; deixa os servos e as vítimas enganadas na frente, confunde com ilusões e com Fascinação, e só entra com as garras quando a vitória é certa; ferido, muda de forma e some."
+    "descricao": "evita a luta aberta; deixa os servos e as vítimas enganadas na frente, confunde com ilusões e com Fascinação, e só entra com as garras quando a vitória é certa; ferido, muda de forma e some. Vale em todas as formas."
    },
    {
     "nome": "Sentidos",
-    "descricao": "visão, audição e faro: os de um humano, com os olhos de tigre."
+    "descricao": "visão, audição e faro: os de um humano, com os olhos de tigre. Vale em todas as formas."
    }
   ],
   "poderes": [],
@@ -40917,7 +41220,7 @@
   "categoria": "Elemental",
   "tipo": "elite",
   "conceito": "exterior Médio (fogo)",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Guerreira e ferreira do plano do fogo, torso de gente sobre corpo de serpente em brasa: luta de lança, enrola e queima quem chega perto, anda na lava e foge da água.",
   "tags": [
    "elemental",
    "centelha",
@@ -40928,7 +41231,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "2,7 m de comprimento total",
+   "medida": "2,7 m de comprimento, 0,28 m de altura",
    "peso": "100 kg"
   },
   "ecologia": {
@@ -40958,32 +41261,33 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 4,
-   "sociabilidade": 0,
-   "furtividade": 1
+   "sociabilidade": 1,
+   "furtividade": 0
   },
   "vontade": 8,
   "aparencia": 5,
   "virtudes": {
    "compaixao": 1,
    "conviccao": 3,
-   "temperanca": 2,
+   "temperanca": 1,
    "valor": 3
   },
   "combate": {
    "pv": 40,
-   "defesa": 10,
-   "defesaSocial": 8,
+   "defesa": 16,
+   "defesaSocial": 12,
    "defesaMental": 22,
    "absorcao": {
     "impacto": 8,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
-    "agua"
+    "agua",
+    "gelo"
    ],
-   "resistencias": [
+   "imunidades": [
     "fogo"
    ],
    "iniciativa": "1d6 + 6",
@@ -40994,59 +41298,54 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "5d6 +6",
-     "dano": "1d6 +8 corte",
+     "nome": "Lança",
+     "pool": "5d6 +7",
+     "dano": "1d6 +13 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "haste"
+    },
+    {
+     "nome": "Cauda",
+     "pool": "4d6+2 +6",
+     "dano": "1d6 +13 impacto",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Calor corporal",
-    "descricao": "quem lutar corpo a corpo com ela sofre dano de fogo por rodada"
+    "descricao": "poder natural (base Fogo 2, a do site): Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: toque. Área: quem a toca com a pele, a segura ou está preso na cauda dela. Efeito: a pele irradia calor o bastante para queimar. Dano: 1d6 + Centelha, fogo, a cada 6 Ticks a quem está no agarrão com ela, e uma vez a quem a toca com a pele nua. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
     "nome": "Constrição de cauda",
-    "descricao": "agarra e esmaga o alvo, causando dano contínuo"
+    "descricao": "Cauda: Agarrar, com a cauda: prende e esmaga quem está ao alcance; o Calor corporal queima quem está preso."
    },
    {
-    "nome": "Lança flamejante",
-    "descricao": "ataque corpo a corpo com alcance estendido"
+    "nome": "Imobilizar",
+    "descricao": "Técnica imobilizar, nível 1: por 1 de Energia, prende o agarrado: ele fica Imobilizado; só cobra a manutenção, a cada 6 Ticks, se o alvo tentar se libertar."
    },
    {
-    "nome": "Imunidade a fogo",
-    "descricao": "sem efeito de dano de fogo; vulnerável a frio"
+    "nome": "Lança em brasa",
+    "descricao": "Lança: Ativação: a Lança que fere. Duração: instantânea. Alcance: o da lança. Área: um alvo. Efeito: a ponta, forjada no fogo dela e aquecida pelas mãos, queima por dentro. Dano: mais 1d6, fogo. Resistência: nenhum. Limite de uso: um por golpe."
    },
    {
-    "nome": "Resistente a calor extremo",
-    "descricao": "move-se e sobrevive livremente em lava"
+    "nome": "Anda na lava",
+    "descricao": "a imunidade a fogo (Elementos; dano zero, C-039): move-se e sobrevive na lava."
    },
    {
-    "nome": "Constrição de cauda",
-    "descricao": "Depende do agarrão; engolir 1 alvo por vez."
+    "nome": "guerreira do fogo",
+    "descricao": "segura o inimigo longe com a lança, enrola na cauda em brasa quem chega perto e aperta; luta mais cruel quanto mais quente fica a ira, e sempre a serviço de um senhor maior."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano."
    }
   ],
-  "poderes": [
-   {
-    "id": "calor-corporal",
-    "nome": "Calor corporal",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "Resiste ao entrar, 1 vez por cena.",
-    "base": {
-     "arte": "fogo",
-     "nivel": 2
-    },
-    "descricao": "A pele da salamandra irradia calor o tempo todo, o bastante para queimar quem a segura ou a aperta num agarrão.",
-    "usos": {
-     "periodo": "passivo",
-     "recarga": "contínua"
-    }
-   }
-  ],
+  "poderes": [],
   "locomocao": {
    "terra": 2
   },
@@ -41058,7 +41357,7 @@
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Guerreiro e ferreiro do fogo, torso serpentino terminando em cauda que crepita como brasa, ficando mais cruel quanto mais quente fica sua ira."
+    "texto": "Guerreiro e ferreiro do fogo, torso serpentino terminando em cauda que crepita como brasa, ficando mais cruel quanto mais quente fica sua ira. Social: em grupo, a serviço de um efreeti ou de um culto."
    },
    {
     "titulo": "Sociedade",
@@ -41071,6 +41370,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Quando um culto ou um efreeti abre uma fresta para o plano do fogo, é comum que salamandras sejam as primeiras a atravessar, sempre a serviço de um senhor maior, nunca por conta própria."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Média erguida, Pequena enrolada. Lança com alcance, dano médio 16,5 mais 1d6 de fogo; a cauda bate com 16,5, agarra e imobiliza, e quem está preso queima (1d6 + 3 a cada 6 Ticks). 40 PV, Impacto 8, Corte e Perfuração 3. Bloqueio 14 (16 com a lança), Esquiva 10. Fogo não a fere; água e gelo passam toda a Absorção. Brilha como brasa."
    }
   ]
  },
@@ -41626,7 +41929,7 @@
   "categoria": "Elemental",
   "tipo": "elite",
   "conceito": "exterior (terra) Grande",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Nobre do plano da terra, de 3,4 m e pele de metal polido, pedra ou gema. Atravessa a rocha como se fosse água, sela na pedra quem empurra contra a parede e troca um metal por outro com um toque. O raio não o fere.",
   "tags": [
    "elemental",
    "centelha"
@@ -41637,7 +41940,7 @@
   "porte": "Grande",
   "dimensoes": {
    "medida": "3,4 m de altura",
-   "peso": "2270 kg"
+   "peso": "2.270 kg"
   },
   "ecologia": {
    "tipo": "Elemental",
@@ -41666,7 +41969,7 @@
    "prontidao": 2,
    "esquiva": 1,
    "integridade": 4,
-   "sociabilidade": 0,
+   "sociabilidade": 1,
    "furtividade": 0
   },
   "vontade": 9,
@@ -41678,14 +41981,14 @@
    "valor": 3
   },
   "combate": {
-   "pv": 54,
+   "pv": 65,
    "defesa": 10,
-   "defesaSocial": 8,
+   "defesaSocial": 12,
    "defesaMental": 25,
    "absorcao": {
     "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -41693,6 +41996,9 @@
    ],
    "resistencias": [
     "fogo"
+   ],
+   "imunidades": [
+    "raio"
    ],
    "iniciativa": "1d6 + 6",
    "deslocamento": {
@@ -41702,9 +42008,9 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Pancada de pedra",
      "pool": "6d6 +8",
-     "dano": "2d6 +11 corte",
+     "dano": "1d6 +11 impacto",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -41713,24 +42019,28 @@
   },
   "habilidades": [
    {
-    "nome": "Domínio da Pedra",
-    "descricao": "Golpeia com mais força quando ambos, ele e o inimigo, tocam o solo, mas luta pior contra alvos no ar ou na água."
+    "nome": "Domínio da pedra",
+    "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: golpeia com mais força quando ele e o alvo tocam o chão, e luta pior contra quem está no ar ou na água: +2 no dano da Pancada de pedra quando os dois tocam o chão; −2 no ataque contra quem voa ou está na água. Dano: o +2 na Pancada. Resistência: nenhum. Limite de uso: nenhum."
    },
    {
-    "nome": "Deslizar pela Rocha",
-    "descricao": "Atravessa pedra, terra, cristal e até metal como se fossem água, sem deixar rastro algum."
+    "nome": "Deslizar pela rocha",
+    "descricao": "poder natural (base Terra 3, sugestão da ficha): Ativação: parte do movimento dele. Duração: enquanto se move. Alcance: o próprio corpo. Área: não se aplica. Efeito: atravessa pedra, terra, cristal e até metal como se fossem água, à Batalha dele em terra (2 m por Tick), sem abrir túnel nem deixar rastro; dentro da pedra, quem está fora não o vê nem o ataca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
    },
    {
-    "nome": "Maldição da Pedra",
-    "descricao": "Ao vencer um embate de força e empurrar o inimigo contra uma parede de pedra, pode selá-lo dentro da própria rocha até que ele consiga um teste de Vigor para se libertar."
+    "nome": "Maldição da pedra",
+    "descricao": "poder natural (base Terra 4, sugestão da ficha): Ativação: vencer o Empurrar do livro contra um alvo e levá-lo até uma parede de pedra. Duração: até o alvo se soltar. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a pedra se fecha em volta do alvo e o sela dentro da parede; preso, não age nem se move. Dano: nenhum. Resistência: corpo, Vigor + Resistência contra Dificuldade 14 (10 + Centelha 4), uma tentativa a cada 6 Ticks; quem passa sai da pedra. Limite de uso: um alvo selado por vez."
    },
    {
-    "nome": "Metamorfose do Metal",
-    "descricao": "Ao tocar um objeto de metal, pode transformá-lo em outro metal por um dia inteiro."
+    "nome": "Metamorfose do metal",
+    "descricao": "poder natural (base Matéria 3, sugestão da ficha): Ativação: uma ação, Velocidade 8, tocando o objeto. Duração: um dia (site). Alcance: toque. Área: um objeto de metal. Efeito: transforma o metal em outro metal (o aço em chumbo, o ouro em cobre, o ferro em prata); a arma de aço que vira chumbo entorta no primeiro golpe. Dano: nenhum. Resistência: corpo, Vigor + Resistência de quem segura o objeto, contra Dificuldade 14 (10 + Centelha 4); o objeto solto não resiste. Limite de uso: três vezes por dia."
    },
    {
-    "nome": "Imune a Choques",
-    "descricao": "Absorve por completo qualquer dano elétrico que sofreria."
+    "nome": "nobre da pedra",
+    "descricao": "luta com os pés no chão; sai da rocha ao lado do alvo, empurra contra a parede e sela na pedra quem resiste, troca o aço das armas por chumbo e volta para dentro da rocha quando perde."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "visão e audição: as de um humano."
    }
   ],
   "poderes": [],
@@ -41748,6 +42058,14 @@
    {
     "titulo": "Nobreza subterrânea",
     "texto": "Entre eles existem os chamados pashás, shaitans nobres muito mais poderosos, capazes de conceder desejos e abalar a terra a distância."
+   },
+   {
+    "titulo": "Comportamento",
+    "texto": "Social: em corte subterrânea, sob um pashá."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Grande, 65 PV, Impacto 10, Corte e Perfuração 4; fogo faz metade, raio não o fere, água fere mais. Esquiva 10, Bloqueio 6, Defesa Mental 25. Pancada de pedra de dano médio 14,5, com +2 quando os dois tocam o chão. Atravessa a rocha à vontade, sela na parede quem ele empurra até ela (Vigor + Resistência contra 14 para sair) e troca o metal de uma arma por chumbo. Anda a 2 e afunda na água."
    }
   ]
  },
@@ -47571,7 +47889,7 @@
   "categoria": "Elemental",
   "tipo": "elite",
   "conceito": "exterior Médio (terra)",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Esfera de pedra de três braços e boca enorme, que nada pela rocha como peixe na água: sente o metal a 18 m, sai da parede, come a arma ou a bolsa de quem a carrega e some de novo.",
   "tags": [
    "elemental",
    "centelha",
@@ -47582,7 +47900,7 @@
   "pendente": true,
   "porte": "Médio",
   "dimensoes": {
-   "medida": "1,5 m de altura, corpo esférico",
+   "medida": "1,5 m de altura",
    "peso": "450 kg"
   },
   "ecologia": {
@@ -47609,11 +47927,11 @@
    "raciocinio": 2
   },
   "pericias": {
-   "prontidao": 1,
+   "prontidao": 3,
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 0,
-   "furtividade": 1
+   "furtividade": 2
   },
   "vontade": 8,
   "aparencia": 5,
@@ -47624,14 +47942,14 @@
    "valor": 3
   },
   "combate": {
-   "pv": 43,
+   "pv": 54,
    "defesa": 10,
    "defesaSocial": 4,
    "defesaMental": 16,
    "absorcao": {
     "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -47640,7 +47958,7 @@
    "resistencias": [
     "fogo"
    ],
-   "iniciativa": "1d6 + 3",
+   "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 2,
     "arranque": 3,
@@ -47648,73 +47966,61 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Garras",
      "pool": "5d6+2 +6",
      "dano": "1d6 +9 corte",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Mordida",
+     "pool": "5d6+2 +6",
+     "dano": "1d6 +9 perfurante · perf. 1",
+     "perfArma": 1,
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "habilidades": [
    {
     "nome": "Deslizar pela pedra",
-    "descricao": "atravessa rocha sólida como se fosse água"
+    "descricao": "poder natural (base Terra 3, a do site): Ativação: parte do movimento dele. Duração: enquanto se move. Alcance: o próprio corpo. Área: não se aplica. Efeito: atravessa a rocha sólida como um peixe na água, à velocidade da Escavação, sem abrir túnel nem deixar rastro; dentro da pedra, quem está fora não o vê nem o ataca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade."
    },
    {
-    "nome": "Garras e mordida",
-    "descricao": "Três golpes de garra e uma mordida na mesma rodada, com a boca única e enorme."
+    "nome": "Três garras",
+    "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais."
    },
    {
-    "nome": "Devorar metal e gema",
-    "descricao": "engole e destrói itens metálicos ou preciosos em um turno"
-   },
-   {
-    "nome": "Sentido sísmico",
-    "descricao": "percebe movimento através da pedra, ignora escuridão e invisibilidade"
-   },
-   {
-    "nome": "Faro para tesouro",
-    "descricao": "detecta metais e gemas a até 18m"
+    "nome": "garras e mordida juntas",
+    "descricao": "as três garras e a mordida na mesma rodada (site); o livro deixa vários golpes por ação só por Rajada, empunhadura dupla, Poder Especial ou Proeza (C-046), e não junta partes diferentes do corpo numa ação. A ficha fica com a Rajada das garras, e a Mordida é outra ação."
    },
    {
     "nome": "Devorar metal e gema",
-    "descricao": "Manobra de combate, sem limite de uso."
-   }
-  ],
-  "poderes": [
+    "descricao": "Mordida: Ativação: uma ação, Velocidade 6, a Mordida contra um objeto de metal ou uma gema ao alcance, solto ou na mão, no corpo ou na bolsa de alguém. Duração: instantânea. Alcance: o da Mordida. Área: um objeto. Efeito: morde e engole o objeto (uma arma, uma peça de armadura pequena, moedas ou gemas), que some. Dano: nenhum a quem o carrega. Resistência: esquiva, contra a jogada da Mordida, para quem segura ou veste o objeto. Limite de uso: nenhum."
+   },
    {
-    "id": "deslizar-pela-pedra",
-    "nome": "Deslizar pela pedra",
-    "tipo": "natural",
-    "resiste": "nenhum",
-    "efeito": "Deslizar pela pedra",
-    "base": {
-     "arte": "terra",
-     "nivel": 3
-    },
-    "usos": {
-     "periodo": "avontade"
-    }
+    "nome": "eremita da pedra",
+    "descricao": "só luta por comida ou se atacado; sai da parede ao lado de quem carrega metal, morde a arma ou a bolsa, rasga com as três garras e afunda de novo na pedra."
+   },
+   {
+    "nome": "Sentidos",
+    "descricao": "tremor: percebe o movimento pela pedra em volta, mesmo no escuro e contra quem está invisível (site). · faro de tesouro: sente metal e gema a até 18 m, mesmo através da pedra (site). · visão: três olhos em volta do corpo, que olham para todos os lados ao mesmo tempo."
    }
   ],
+  "poderes": [],
   "locomocao": {
    "terra": 2,
    "escavacao": 2
   },
   "tecnicas": [],
-  "artes": [
-   {
-    "id": "terra",
-    "nivel": 3
-   }
-  ],
+  "artes": [],
   "notas": "Habilidades notáveis: Prontidão 3, Furtividade 2.",
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Nada pela rocha sólida como um peixe na água, alheio a quase tudo que acontece na superfície do mundo."
+    "texto": "Nada pela rocha sólida como um peixe na água, alheio a quase tudo que acontece na superfície do mundo. Social: sozinho."
    },
    {
     "titulo": "Hábitos",
@@ -47727,6 +48033,10 @@
    {
     "titulo": "No mundo de Centelha",
     "texto": "Mineiros anões do White Wall contam histórias antigas de tesouros que somem dentro da própria rocha; poucos sabem que um xorn satisfeito apenas passou por ali e comeu o que interessava, sem notar sequer que havia alguém cavando ao lado."
+   },
+   {
+    "titulo": "No jogo",
+    "texto": "Médio, lento (2), atravessa a pedra a 2. Três garras por ação (Rajada), dano médio 12,5 cada, ou uma mordida de 12,5 que pode engolir a arma, o escudo pequeno ou a bolsa de moedas. Sente quem pisa a pedra e o metal a 18 m, vê para todos os lados. 54 PV, Impacto 9, Corte e Perfuração 3; o fogo faz metade, a água passa toda a Absorção. Esquiva 10, Bloqueio 6."
    }
   ]
  },

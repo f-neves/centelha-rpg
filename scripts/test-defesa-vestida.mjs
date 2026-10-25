@@ -56,7 +56,7 @@ for (const [id, sem, com] of [['campeao-esqueletico', 15, 17], ['soldado-veteran
   ok(mm?.combate?.defesa === sem && mm?.combate?.vestida?.defesa === com, `${id}: o monsters-mesa.json (mesa) traz as duas`);
 }
 const vestidas = ler('src/data/monsters.json').filter((m) => m.combate?.vestida).map((m) => m.id).sort();
-ok(J(vestidas) === J(['arqueiro', 'assassino-das-sombras', 'bandido-de-estrada', 'bruto', 'campeao', 'campeao-esqueletico', 'capitao-da-guarda', 'cavaleiro-de-elite', 'comandante', 'duelista', 'guarda-da-cidade', 'soldado-veterano']), // as 12 que vestem armadura ou escudo no Equipamento (lotes 1 a 13)
+ok(J(vestidas) === J(['arqueiro', 'assassino-das-sombras', 'bandido-de-estrada', 'bruto', 'campeao', 'campeao-esqueletico', 'capitao-da-guarda', 'cavaleiro-de-elite', 'comandante', 'duelista', 'gigante-do-fogo', 'guarda-da-cidade', 'soldado-veterano']), // as 13 que vestem armadura ou escudo no Equipamento (lotes 1 a 13, e o gigante do fogo do lote 28, com a placa de munição e sem arma)
    `só quem veste armadura ou escudo tem a vestida: ${vestidas.join(', ')}`);
 
 // O pacote da mesa: o `mesa-bestiario` arrasta o cliente do Supabase, que lê `import.meta.env`

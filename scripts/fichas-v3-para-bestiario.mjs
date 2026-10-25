@@ -552,7 +552,8 @@ function converte(arq) {
   if (!/^nenhum$/.test(equipTxt)) {
     const eq = /^armas: ([a-z0-9-]+(?:, [a-z0-9-]+)*) · armaduras: ([a-z0-9-]+) · escudos: ([a-z0-9-]+)$/.exec(equipTxt);
     if (!eq) throw new Error(`${arq}: Equipamento fora do formato "armas: <id>[, <id>] · armaduras: <id> · escudos: <id>": "${equipTxt}"`);
-    for (const a of eq[1].split(', ')) if (!ARMAS_IDS.has(a)) throw new Error(`${arq}: Equipamento: arma "${a}" não está no armas.json`); // mais de uma arma: "lanca, besta-media" (o merfolk)
+    // "armas: nenhuma" é quem veste e não tem arma, o par do "armaduras: nenhuma" (o gigante do fogo, D-188, lote 28)
+    if (eq[1] !== 'nenhuma') for (const a of eq[1].split(', ')) if (!ARMAS_IDS.has(a)) throw new Error(`${arq}: Equipamento: arma "${a}" não está no armas.json`); // mais de uma arma: "lanca, besta-media" (o merfolk)
     if (eq[2] !== 'nenhuma') { peca.armadura = ARMADURAS[eq[2]]; if (!peca.armadura) throw new Error(`${arq}: Equipamento: armadura "${eq[2]}" não está no armaduras.json`); }
     if (eq[3] !== 'nenhum') { peca.escudo = ESCUDOS[eq[3]]; if (!peca.escudo) throw new Error(`${arq}: Equipamento: escudo "${eq[3]}" não está no escudos.json`); }
   }

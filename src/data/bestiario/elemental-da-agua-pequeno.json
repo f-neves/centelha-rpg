@@ -5,9 +5,10 @@
   "nome": "Elemental da Água (Pequeno)",
   "nomeIngles": "Elemental, Water",
   "categoria": "Elemental",
+  "categoriaLegada": "Elemental",
   "papel": "soldado",
   "conceito": "exterior (água) Pequeno",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "Fragmento de um plano de água: rápido no mar e lento em terra, suga quem chega perto num vórtice, encharca o que toca e apaga o fogo.",
   "tags": [
     "elemental",
     "centelha"
@@ -15,30 +16,41 @@
   "imagem": null,
   "porte": "Pequeno",
   "dimensoes": {
-    "medida": "1,2 metro de altura, corpo líquido em constante fluxo",
-    "peso": "cerca de 15 kg"
+    "medida": "1,2 m de altura",
+    "peso": "23,4 kg",
+    "largura": 0.3,
+    "altura": 1.2
   },
   "locomocao": {
     "terra": 2,
     "natacao": 9
   },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+  },
   "centelha": 1,
   "attrs": {
-    "forca": 4,
+    "forca": 3,
     "destreza": 2,
     "vigor": 3,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
   "skills": {
     "briga": 3,
-    "esquiva": 0,
+    "integridade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "sobrevivencia": 1
+  },
+  "skills2": {
+    "natacao": 3,
+    "musculatura": 1
   },
   "virtues": {
     "compaixao": 1,
@@ -56,28 +68,44 @@
       "dado": 1,
       "mao": 1,
       "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 5
+      "acerto": 1,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
   "fraquezas": [],
   "resistencias": [],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Nado veloz",
-      "descricao": "Move-se pela água com grande velocidade e controle, muito mais ágil do que em terra firme."
-    },
-    {
       "nome": "Vórtice",
-      "descricao": "Uma vez por cena pode se transformar em um pequeno redemoinho, sugando e desorientando quem estiver próximo."
+      "descricao": "poder natural (base Água 2, sugestão da ficha): Ativação: uma ação, Velocidade 6, dentro da água ou sobre ela. Duração: até 18 Ticks, ou até ele desfazer com outra ação. Alcance: o próprio corpo. Área: quem está a até 1 m dele. Efeito: vira um redemoinho de água que suga quem está perto; quem é sugado fica Agarrado dentro dele e Confuso enquanto estiver lá, e sai quando o vórtice se desfaz ou quando vence a manobra para se soltar. Dano: o da Pancada de água a quem está dentro, a cada 6 Ticks. Resistência: esquiva, contra Força + Briga dele; quem passa não é sugado. Limite de uso: uma vez por cena.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Encharcar",
-      "descricao": "Seu toque encharca tochas, pergaminhos e outros itens sensíveis à água, e pode apagar fogo pequeno."
+      "descricao": "Ativação: o toque ou a Pancada de água. Duração: instantânea. Alcance: toque. Área: um objeto, ou um alvo. Efeito: encharca tochas, pergaminhos e outros itens sensíveis à água, e apaga fogo pequeno (uma tocha, uma fogueira pequena, ou a condição Em chamas de quem ele toca). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
       "nome": "Domínio da água",
-      "descricao": "Quase impossível de afogar ou arrastar, e ataques contra ele em meio líquido perdem força."
+      "descricao": "Ativação: nenhuma; vale enquanto ele está dentro da água. Duração: enquanto estiver na água. Alcance: o próprio corpo. Área: não se aplica. Efeito: não se afoga e quase não se deixa arrastar: +3 contra Agarrar, Derrubar e Empurrar, como uma faixa de massa a mais; quem o ataca de dentro da água tira 2 do dano do golpe. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "feito de água pura",
+      "descricao": "não sente cansaço, veneno nem doença; não respira, não come, não dorme.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "onda com vontade",
+      "descricao": "luta de dentro da água sempre que pode, suga o alvo no vórtice e apaga tochas e fogueiras; em terra é lento e só cumpre a ordem.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um humano."
     }
   ],
   "lore": [
@@ -88,6 +116,14 @@
     {
       "titulo": "Frieza sem malícia",
       "texto": "Não odeia nem ama; apenas cumpre a vontade de quem o trouxe até se libertar do vínculo."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: sozinho, ou com quem o conjurou."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Pequeno, lento em terra (2) e rápido na água (9). Bate com dano médio 5,5 e apaga tochas e fogo pequeno com o toque. Uma vez por cena vira vórtice e suga quem está perto: Agarrado e Confuso, com o dano da pancada a cada 6 Ticks. Na água, quase não se deixa agarrar, derrubar nem empurrar. Esquiva e Bloqueio 4, 26 PV, Impacto 4, Corte e Perfuração 1."
     }
   ],
   "ecologia": {
@@ -123,5 +159,35 @@
     "crConf": "conhecido"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 26,
+    "esquiva": 4,
+    "bloqueio": 4,
+    "defesa": 4,
+    "defesaMental": 12,
+    "defesaSocial": 4,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 97.43,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
+      },
+      "nado": 9
+    }
+  },
+  "notasObservacao": [
+    "`massa`: 23,4 kg pelo volume do corpo de base escalado a 1,2 m, na densidade da água; o site dizia 15 kg **[conta]**",
+    "`forca`: 3 pelo teste de ordem; o site tinha 4. Com 4, o dano médio seria 6,5 e o peso erguido 118,62 kg **[provisório]**",
+    "`vórtice`: poder natural de uma vez por cena, e não forma (linha Formas): o redemoinho é um modo de ataque com duração, sem corpo próprio a descrever **[provisório]**",
+    "`segundo Tamanho`: Médio com o vórtice ativo, o funil de 0,90 m² com a largura do redemoinho do elemental do ar; se o funil fosse da largura da Área do Vórtice (1 m à volta, 2,3 m), seriam 1,56 m², Grande, 8% acima do corte (decisão do autor de 24/10/2026, D-213) **[provisório]**",
+    "`vórtice`, `encharcar`, `domínio da água`: números sugeridos pela ficha (D-197)"
+  ]
 }

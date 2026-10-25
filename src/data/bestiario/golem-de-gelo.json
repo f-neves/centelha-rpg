@@ -6,12 +6,9 @@
   "nomeIngles": "Golem, Ice",
   "categoria": "Construto",
   "categoriaLegada": "Monstro",
-  "constructo": {
-    "semVida": true
-  },
   "papel": "elite",
   "conceito": "constructo Médio",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "descricao": "Estátua de 2,1 m esculpida num bloco de gelo puro, que vigia corredores congelados. Queima de frio quem a toca, sopra um cone de frio brutal e, ao ser destruída, explode em lascas cortantes. O frio não a fere; o fogo a racha.",
   "descricaoLegada": "Aberração humanoide de lendas antigas.",
   "tags": [
     "monstro",
@@ -21,73 +18,116 @@
   "porte": "Médio",
   "dimensoes": {
     "medida": "2,1 m de altura",
-    "peso": "225 kg"
+    "peso": "115 kg",
+    "largura": 0.53,
+    "altura": 2.1
   },
   "locomocao": {
     "terra": 3
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 3,
+    "arranque": 5,
+    "corrida": 7
   },
   "centelha": 1,
   "attrs": {
     "forca": 5,
     "destreza": 2,
-    "vigor": 0,
-    "influencia": 0,
-    "perspicacia": 0,
-    "compostura": 1,
+    "vigor": 4,
     "percepcao": 2,
     "inteligencia": 0,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
-    "briga": 5,
-    "esquiva": 0,
-    "prontidao": 1,
-    "integridade": 2
+    "briga": 4,
+    "atletismo": 1,
+    "prontidao": 1
+  },
+  "skills2": {
+    "musculatura": 2
   },
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 3,
-    "temperanca": 3,
-    "valor": 3
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 6
   },
-  "willpower": 6,
+  "willpower": 3,
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Punhos gelados",
+      "nome": "Punho gelado",
       "atrib": "forca",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
       "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 5,
-      "notas": "cada acerto soma dano de frio"
+      "ticks": 6,
+      "classe": "media"
     }
   ],
   "fraquezas": [
     "fogo"
   ],
   "resistencias": [
-    "gelo",
     "perfuracao"
+  ],
+  "imunidades": [
+    "gelo"
   ],
   "habilidades": [
     {
-      "nome": "Corpo de Gelo Vivo",
-      "descricao": "Absorve parte de qualquer dano físico comum, é imune ao frio e a quase toda magia que tentar afetá-lo diretamente, mas racha com facilidade diante do fogo."
+      "nome": "agarrar",
+      "descricao": "Punho gelado: Agarrar.",
+      "classe": "livro"
     },
     {
-      "nome": "Frio Cortante",
-      "descricao": "O simples toque de seu corpo gélido causa dano por frio, e quem golpeá-lo com as próprias mãos ou garras sofre o mesmo frio de volta."
+      "nome": "derrubar",
+      "descricao": "Punho gelado: Derrubar.",
+      "classe": "livro"
     },
     {
-      "nome": "Sopro Congelante",
-      "descricao": "Uma vez a cada poucos instantes, exala um cone de frio brutal que castiga todos à frente, a menos que resistam com um teste de Reação."
+      "nome": "sem vida",
+      "descricao": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Explosão Final",
-      "descricao": "Ao ser destruído, estilhaça-se em lascas de gelo cortante, ferindo com dano contínuo tudo que estiver por perto."
+      "nome": "Frio cortante",
+      "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: toque. Área: quem ele toca ou acerta com o Punho gelado, e quem o acerta com a mão nua, a garra ou a mordida. Efeito: o corpo de gelo queima de frio quem encosta nele. Dano: 1d6, gelo. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Sopro congelante",
+      "descricao": "poder natural (base Gelo 2, sugestão da ficha): Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 6 m à frente. Área: cone de 6 m. Efeito: um sopro de frio brutal castiga todos à frente. Dano: 3d6 + Centelha, gelo. Resistência: esquiva, contra Dificuldade 11 (10 + Centelha 1); quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "Explosão final",
+      "descricao": "Ativação: chega a 0 PV e é destruído. Duração: o dano é instantâneo; o Sangrando vai até alguém tratar. Alcance: o próprio corpo. Área: quem está a até 3 m. Efeito: estilhaça em lascas de gelo cortante; quem não passa fica Sangrando. Dano: 2d6 + Centelha, Corte. Resistência: esquiva, contra Dificuldade 11 (10 + Centelha 1); quem passa leva metade e não sangra. Limite de uso: uma vez, na destruição.",
+      "classe": "regra da ficha"
+    },
+    {
+      "nome": "imune à magia",
+      "descricao": "a maior parte das Artes não o afeta.",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "corpo de gelo vivo",
+      "descricao": "resistência a Perfuração (metade do dano).",
+      "classe": "livro"
+    },
+    {
+      "nome": "guardião das terras geladas",
+      "descricao": "vigia os corredores congelados; anda na direção do intruso com o gelo estalando, sopra o frio sobre o grupo e bate com o punho gelado; não fala nem recua.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um guarda humano."
     }
   ],
   "lore": [
@@ -98,6 +138,14 @@
     {
       "titulo": "Guardião das terras geladas",
       "texto": "Não fala nem geme, apenas o estalar constante do gelo denuncia sua aproximação nos corredores congelados que costuma vigiar."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitário."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Médio, 37 PV, Impacto 5, Corte e Perfuração 1; ponta faz metade, gelo não o fere, fogo fere mais. Esquiva 4, Bloqueio 4. Punho gelado de dano médio 9,5, mais 1d6 de gelo; quem o toca ou acerta de mão nua leva 1d6 de gelo. A cada 24 Ticks, um cone de frio de 6 m (3d6 + 1). Destruído, explode: 2d6 + 1 de Corte a quem está a 3 m, e Sangrando. Sem mente: não se assusta nem se convence. Não se cura sozinho."
     }
   ],
   "ecologia": {
@@ -134,5 +182,35 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 4
+  "ameacaLegada": 4,
+  "v3": {
+    "pv": 37,
+    "esquiva": 4,
+    "bloqueio": 4,
+    "defesa": 4,
+    "defesaMental": null,
+    "defesaSocial": null,
+    "absorcao": {
+      "impacto": 5,
+      "corte": 1,
+      "perfuracao": 1
+    },
+    "couracaNivel": 4,
+    "pesoErguido": 353.28,
+    "deslocamento": {
+      "terra": {
+        "batalha": 3,
+        "arranque": 5,
+        "corrida": 7
+      }
+    }
+  },
+  "notasObservacao": [
+    "`massa`: 115 kg pelo gelo (0,125 m³ × 917 kg/m³); o site dizia 225 kg, o dobro da densidade do gelo. Com 225 kg, Faixa 4 e PV 46 **[provisório]**",
+    "`vigor`: 4 por julgamento (gelo que racha); o site tinha 0 **[provisório]**",
+    "`couracaNivel`: 4, gelo duro e quebradiço **[provisório]**",
+    "`elementos`: imune a gelo pela habilidade publicada; o campo dizia resistência",
+    "`atributos sociais`, `vontade`, `virtudes`: decididos pelo autor para toda criatura de Inteligência 0 (D-186)",
+    "`frio cortante`, `sopro congelante`, `explosão final`: números sugeridos pela ficha (D-197)"
+  ]
 }

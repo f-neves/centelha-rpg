@@ -6,95 +6,123 @@
   "nomeIngles": "Iron Cobra",
   "categoria": "Construto",
   "categoriaLegada": "Monstro",
-  "constructo": {
-    "semVida": true
-  },
   "papel": "soldado",
-  "conceito": "constructo Pequeno",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
+  "conceito": "constructo Miúdo",
+  "descricao": "Serpente de ferro de 1,2 m que guarda tesouros sem ruído e sem medo. Pica com o veneno de um reservatório, três vezes antes de secar. Mandada pelo criador, rastreia e mata um alvo a quilômetros.",
   "descricaoLegada": "Aberração humanoide de lendas antigas.",
   "tags": [
     "monstro"
   ],
   "imagem": "bestiario/cobra-de-ferro_criatura.webp",
-  "porte": "Pequeno",
+  "porte": "Miúdo",
   "dimensoes": {
-    "medida": "1,2 m de comprimento",
-    "peso": "18 kg"
+    "medida": "1,2 m de comprimento, 0,4 m de altura",
+    "peso": "18 kg",
+    "comprimento": 1.2,
+    "largura": 0.049,
+    "altura": 0.4
   },
   "locomocao": {
     "terra": 4
+  },
+  "deslocamentoDeclarado": {
+    "batalha": 4,
+    "arranque": 6,
+    "corrida": 9
   },
   "centelha": 0,
   "attrs": {
     "forca": 3,
     "destreza": 4,
-    "vigor": 0,
-    "influencia": 0,
-    "perspicacia": 0,
-    "compostura": 1,
+    "vigor": 4,
     "percepcao": 2,
     "inteligencia": 0,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
   "skills": {
     "briga": 2,
     "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "furtividade": 3,
+    "prontidao": 1
+  },
+  "skills2": {
+    "musculatura": 2
   },
   "virtues": {
-    "compaixao": 0,
-    "conviccao": 3,
-    "temperanca": 3,
-    "valor": 3
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1,
+    "valor": 6
   },
-  "willpower": 5,
+  "willpower": 3,
   "aparencia": 4,
   "ataques": [
     {
-      "nome": "Arma",
-      "atrib": "forca",
+      "nome": "Mordida",
+      "atrib": "destreza",
       "pericia": "briga",
       "dado": 1,
       "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "tipo": "perfurante",
+      "acerto": 1,
+      "perf": 0,
+      "ticks": 5,
+      "danoBonus": -2,
+      "classe": "leve"
     }
   ],
   "fraquezas": [
     "raio"
   ],
   "resistencias": [
-    "corte",
     "fogo",
+    "corte",
     "perfuracao"
   ],
+  "imunidades": [],
   "habilidades": [
     {
-      "nome": "Sentidos Metálicos",
-      "descricao": "Enxerga no escuro e em penumbra como se fosse luz plena, sem perder precisão."
+      "nome": "sem vida",
+      "descricao": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo.",
+      "classe": "sem regra ainda"
     },
     {
-      "nome": "Casco de Ferro",
-      "descricao": "Placas de metal absorvem grande parte dos golpes comuns, e a cobra é imune a veneno, doença e qualquer efeito que dependa de mente ou vontade, por não possuir nenhuma."
+      "nome": "Picada envenenada",
+      "descricao": "Mordida: Ativação: a Mordida que fere. Duração: a do veneno. Alcance: o do corpo a corpo. Área: um alvo. Efeito: injeta o veneno do reservatório (Veneno e doença); depois de três picadas que injetam, o reservatório se esgota e a mordida fica só com o dano. O criador pode encher o reservatório com outra peçonha, com ácido ou com alquimia (site). Dano: o da Mordida e o do veneno. Resistência: corpo, pelo veneno (Veneno e doença). Limite de uso: três doses, até o criador encher de novo.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Resistência a Magia",
-      "descricao": "Feitiços hostis precisam vencer uma resistência natural antes de fazerem efeito sobre ela."
+      "nome": "Farejar alvo",
+      "descricao": "Ativação: uma ordem do criador, que viu o alvo ou segura um objeto dele. Duração: até achar e matar o alvo. Alcance: quilômetros. Área: um alvo. Efeito: sabe a direção e a distância do alvo e vai até ele sem parar. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia (site).",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Farejar Alvo",
-      "descricao": "Uma vez por dia, o criador pode ordenar que a cobra localize e mate uma criatura específica a quilômetros de distância, desde que tenha visto o alvo ou segure um objeto que lhe pertenceu."
+      "nome": "Resistência a magia",
+      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 nas resistências contra Artes; a Defesa Mental já é imune. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Picada Envenenada",
-      "descricao": "A mordida injeta veneno de um reservatório interno; a vítima sofre dano contínuo por vários rounds a menos que resista, e após três picadas o veneno se esgota, restando apenas o dano da mordida."
+      "nome": "casco de ferro",
+      "descricao": "resistência a Corte, Perfuração e Fogo (metade do dano).",
+      "classe": "livro"
     },
     {
-      "nome": "Deslizar Silencioso",
-      "descricao": "Move-se tão silenciosamente quanto uma cobra de verdade, ideal para vigiar tesouros sem ser notada."
+      "nome": "guardiã sem alma",
+      "descricao": "espera enrolada junto do tesouro, sem ruído; pica quem chega perto e repete até o veneno acabar; mandada matar, segue o alvo por quilômetros.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão no escuro: enxerga no escuro e na penumbra como em plena luz (site, Sentidos metálicos)."
+    }
+  ],
+  "venenos": [
+    {
+      "nome": "Veneno no jogo",
+      "texto": "Veneno da cobra de ferro · Potência 14 · 1 Tick (sangue) · a cada 1 minuto · pool 24 (PV) · Desgaste 1 · pela Mordida. Os números da peçonha de víbora de venenos.json, que tira PV; o \"dano contínuo por vários rounds\" do site vira o pool. Só nas três primeiras picadas que injetam."
     }
   ],
   "lore": [
@@ -109,6 +137,18 @@
     {
       "titulo": "Veneno à Escolha do Dono",
       "texto": "O reservatório pode ser preenchido com peçonhas variadas, ácido ou substâncias alquímicas, tornando cada cobra uma arma talhada para um propósito específico."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: solitária."
+    },
+    {
+      "titulo": "Veneno e doença",
+      "texto": "Veneno no jogo: Veneno da cobra de ferro · Potência 14 · 1 Tick (sangue) · a cada 1 minuto · pool 24 (PV) · Desgaste 1 · pela Mordida. Os números da peçonha de víbora de venenos.json, que tira PV; o \"dano contínuo por vários rounds\" do site vira o pool. Só nas três primeiras picadas que injetam."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Miúda, 28 PV, Impacto 4, Corte e Perfuração 0; lâmina, ponta e fogo fazem metade, raio fere mais. Esquiva 10, Bloqueio 8. Mordida de dano médio 4,5, com veneno nas três primeiras picadas. Sem mente: não se assusta nem se convence. Anda a 4. Mandada pelo criador, rastreia um alvo a quilômetros uma vez por dia."
     }
   ],
   "ecologia": {
@@ -144,5 +184,36 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 2
+  "ameacaLegada": 2,
+  "v3": {
+    "pv": 28,
+    "esquiva": 10,
+    "bloqueio": 8,
+    "defesa": 10,
+    "defesaMental": null,
+    "defesaSocial": null,
+    "absorcao": {
+      "impacto": 4,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "couracaNivel": 9,
+    "pesoErguido": 105.48,
+    "deslocamento": {
+      "terra": {
+        "batalha": 4,
+        "arranque": 6,
+        "corrida": 9
+      }
+    }
+  },
+  "notasObservacao": [
+    "`tamanho`: Miúdo pela área (0,06 m²); o site dizia Pequeno **[conta]**",
+    "`pv`: 28, na zona de transição, pela faixa de cima (corpo de ferro); pela de baixo seria 19 **[provisório]**",
+    "`vigor`: 4 por julgamento (placas de ferro num corpo pequeno); o site tinha 0 **[provisório]**",
+    "`couracaNivel`: 9, placas de ferro **[provisório]**",
+    "`veneno`: os números da peçonha de víbora do livro **[provisório]**",
+    "`atributos sociais`, `vontade`, `virtudes`: decididos pelo autor para toda criatura de Inteligência 0 (D-186)",
+    "`picada envenenada`, `farejar alvo`, `resistência a magia`: números sugeridos pela ficha (D-197)"
+  ]
 }

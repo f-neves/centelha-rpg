@@ -373,7 +373,12 @@ try {
   paraFicha('a frase vestida que não bate com o livro', comMalha(certa.replace('Esquiva **6**', 'Esquiva **7**')), /não bate com a conta do livro: esquiva 7 \(livro 6\)/);
   paraFicha('veste armadura e não tem a frase', comMalha(''), /veste armadura ou escudo e a linha Absorção não tem a frase/);
   paraFicha('a frase sem armadura nem escudo', FICHA.replace(ABS, `Couraça **nível 0**. ${certa} |`), /tem a frase vestida e o Equipamento não tem armadura nem escudo/);
-  para('armadura que não existe', 'armaduras: nenhuma', 'armaduras: cota-de-titanio', /armadura "cota-de-titanio" não está no armaduras\.json/);
+  // "armas: nenhuma" (o gigante do fogo, lote 28: veste a placa de munição e não tem arma; decisão do Arquiteto de
+  // 25/10/2026). O conversor de antes parava aqui ("arma nenhuma não está no armas.json").
+  const semArma = roda(comMalha(certa).replace('armas: espada-longa · armaduras: malha', 'armas: nenhuma · armaduras: malha'), 'vestida sem arma');
+  ok(semArma.status === 0 && J(semArma.json?.v3?.vestida) === J(v.json?.v3?.vestida), `"armas: nenhuma" com a malha grava, e a vestida é a mesma (exit ${semArma.status}${semArma.status ? ': ' + (semArma.saida.split('\n').find((l) => /teste-nao-animal:|Error/.test(l)) || '').trim() : ''})`);
+  para('arma que não existe', 'armas: espada-longa', 'armas: espada-de-luz', /arma "espada-de-luz" não está no armas\.json/);
+  para('armadura que não existe','armaduras: nenhuma', 'armaduras: cota-de-titanio', /armadura "cota-de-titanio" não está no armaduras\.json/);
   para('Equipamento fora do formato', EQ, 'espada e escudo', /Equipamento fora do formato/);
 
   // D-242: EM QUE FORMA VALE CADA LINHA ("Até a troca de formato, o conversor escreve no card, como texto, em que

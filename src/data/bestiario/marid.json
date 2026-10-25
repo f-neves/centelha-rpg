@@ -5,9 +5,10 @@
   "nome": "Marid",
   "nomeIngles": "Marid",
   "categoria": "Elemental",
+  "categoriaLegada": "Elemental",
   "papel": "chefe",
   "conceito": "exterior (água) Grande",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
+  "descricao": "O mais forte dos gênios, do plano da água: 4,9 m, dentes de pérola, a força das correntes no braço. Nada mais rápido do que anda, cega com um jato de água, vira redemoinho debaixo d'água e assume a forma de gente, de gigante ou de elemental. Muitos trocaram a guerra pela dança e pelas histórias.",
   "tags": [
     "elemental",
     "centelha"
@@ -16,31 +17,56 @@
   "porte": "Grande",
   "dimensoes": {
     "medida": "4,9 m de altura",
-    "peso": "1130 kg"
+    "peso": "1.130 kg",
+    "largura": 1.23,
+    "altura": 4.9
   },
   "locomocao": {
     "terra": 2,
     "voo": 9,
     "natacao": 6
   },
+  "deslocamentoDeclarado": {
+    "batalha": 2,
+    "arranque": 3,
+    "corrida": 5
+  },
   "centelha": 5,
   "attrs": {
-    "forca": 8,
+    "forca": 9,
     "destreza": 5,
     "vigor": 6,
-    "influencia": 5,
-    "perspicacia": 4,
-    "compostura": 5,
     "percepcao": 4,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 5,
+    "perspicacia": 4,
+    "compostura": 5
   },
   "skills": {
     "briga": 5,
     "esquiva": 1,
+    "atletismo": 2,
+    "integridade": 5,
     "prontidao": 2,
-    "integridade": 5
+    "persuasao": 2,
+    "sociabilidade": 2,
+    "ocultismo": 2
   },
+  "skills2": {
+    "natacao": 3,
+    "voo": 2,
+    "danca": 2,
+    "contacao-de-historias": 2
+  },
+  "especialidades": [
+    {
+      "habilidade": "persuasao",
+      "foco": "barganhar",
+      "valor": 1,
+      "origem": "livro"
+    }
+  ],
   "virtues": {
     "compaixao": 1,
     "conviccao": 3,
@@ -51,40 +77,73 @@
   "aparencia": 5,
   "ataques": [
     {
-      "nome": "Golpe planar",
+      "nome": "Pancada de maré",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 2,
+      "dado": 1,
       "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 6
+      "tipo": "impacto",
+      "ticks": 6,
+      "classe": "media"
     }
   ],
   "fraquezas": [],
   "resistencias": [
     "fogo"
   ],
+  "imunidades": [],
+  "transforma": {
+    "principal": "verdadeira",
+    "formas": [
+      {
+        "id": "verdadeira",
+        "nome": "forma verdadeira"
+      },
+      {
+        "id": "disfarce",
+        "nome": "disfarce"
+      }
+    ]
+  },
   "habilidades": [
     {
-      "nome": "Domínio das Águas",
-      "descricao": "Golpeia com mais força quando ambos, ele e o inimigo, estão em contato com água, mas luta pior em terra firme."
+      "nome": "Domínio das águas",
+      "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: golpeia com a força das correntes quando ele e o alvo estão na água ou tocando nela, e luta pior em terra firme: +2 no dano da Pancada de maré quando os dois tocam a água; −2 no ataque quando ele está em terra seca, longe da água. Dano: o +2 na Pancada. Resistência: nenhum. Limite de uso: nenhum. Vale em todas as formas.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Fúria das Marés",
-      "descricao": "Uma vez por cena, dispara um jato de água capaz de ferir e cegar temporariamente quem for atingido, a menos que resista com um teste de Reação."
+      "nome": "Fúria das marés",
+      "descricao": "poder natural (base Água 4, sugestão da ficha): Ativação: uma ação, Velocidade 7. Duração: o dano é instantâneo; a cegueira vai até o fim da próxima ação do alvo. Alcance: 18 m. Área: um alvo. Efeito: dispara um jato de água que fere e cega; o alvo que não passa fica Cego. Dano: 3d6 + Centelha, Impacto. Resistência: esquiva, contra Dificuldade 15 (10 + Centelha 5); quem passa não leva o dano nem fica Cego. Limite de uso: uma vez por cena (site). Vale em todas as formas.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Vórtice Aquático",
-      "descricao": "Uma vez por cena, transforma-se em um redemoinho de água turbulenta, mas só enquanto estiver submerso."
+      "nome": "Vórtice aquático",
+      "descricao": "poder natural (base Água 4, sugestão da ficha): Ativação: uma ação, Velocidade 6, só debaixo d'água (site). Duração: até 18 Ticks, ou até ele desfazer com outra ação. Alcance: o próprio corpo, que se move enquanto gira. Área: quem está a até 3 m dele. Efeito: vira um redemoinho de água turbulenta (Segundo Tamanho); quem está na área é puxado para dentro e fica Agarrado e Confuso enquanto estiver lá, até o redemoinho acabar ou até vencer a manobra para se soltar. Dano: 2d6 + Centelha, Impacto, a cada 6 Ticks, a quem está dentro. Resistência: esquiva, contra Força + Briga dele; quem passa não é puxado. Limite de uso: uma vez por cena (site). Vale em todas as formas.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Forma Mutável",
-      "descricao": "Pode assumir a forma de um elemental de água, de um humano ou de um gigante, mudando de aparência à vontade."
+      "nome": "Forma mutável",
+      "descricao": "poder natural (base Metamorfose 3, sugestão da ficha): Ativação: uma ação, Velocidade 6. Duração: até ele desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a forma de um elemental da água, de um humano ou de um gigante (a Variante \"disfarce\"), e muda de aparência à vontade; a mente e os números ficam os dele. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade (site). Vale em todas as formas.",
+      "classe": "regra da ficha"
     },
     {
-      "nome": "Nadador Incansável",
-      "descricao": "Move-se pela água com velocidade muito maior do que a maioria das criaturas em terra."
+      "nome": "Nadador incansável",
+      "descricao": "Natação (secundária) 3, com o Nado de Batalha 6 da linha Nado. Vale em todas as formas.",
+      "classe": "livro"
+    },
+    {
+      "nome": "senhor das correntes",
+      "descricao": "puxa a luta para o mar ou para o rio, cega com o jato, vira redemoinho debaixo d'água e esmaga com a pancada quem fica preso; em terra firme, voa e luta pouco. Vale só na forma verdadeira.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "artista disfarçado",
+      "descricao": "entre gente, como humano ou gigante, evita a briga e conta histórias; se precisa lutar, cega com o jato e volta à forma verdadeira. Vale só no disfarce.",
+      "classe": "como luta"
+    },
+    {
+      "nome": "Sentidos",
+      "descricao": "visão e audição: as de um humano; vê debaixo d'água como fora dela. Vale em todas as formas."
     }
   ],
   "lore": [
@@ -95,6 +154,14 @@
     {
       "titulo": "Almas de artista",
       "texto": "Muitos abandonam a guerra para se tornarem dançarinos, contadores de histórias e artistas, para desgosto dos gênios mais sóbrios da terra."
+    },
+    {
+      "titulo": "Comportamento",
+      "texto": "Social: sozinho ou em corte de artistas."
+    },
+    {
+      "titulo": "No jogo",
+      "texto": "Grande, 54 PV, Impacto 11, Corte e Perfuração 5; fogo faz metade. Esquiva 14, Bloqueio 10, Defesa Mental 29. Pancada de maré de dano médio 17,5, com +2 quando os dois estão na água e −2 no ataque em terra seca. Uma vez por cena, um jato que cega (3d6 + 5); outra, debaixo d'água, um redemoinho Enorme que prende e confunde quem está a 3 m (2d6 + 5 a cada 6 Ticks). Anda a 2, nada a 6 e voa a 9. Muda de forma à vontade."
     }
   ],
   "ecologia": {
@@ -130,5 +197,40 @@
     "crConf": "confirmado"
   },
   "variantes": [],
-  "ameacaLegada": 5
+  "ameacaLegada": 5,
+  "v3": {
+    "pv": 54,
+    "esquiva": 14,
+    "bloqueio": 10,
+    "defesa": 14,
+    "defesaMental": 29,
+    "defesaSocial": 18,
+    "absorcao": {
+      "impacto": 11,
+      "corte": 5,
+      "perfuracao": 5
+    },
+    "couracaNivel": 0,
+    "pesoErguido": 640.1,
+    "deslocamento": {
+      "terra": {
+        "batalha": 2,
+        "arranque": 3,
+        "corrida": 5
+      },
+      "voo": {
+        "batalha": 9
+      },
+      "nado": 6
+    }
+  },
+  "notasObservacao": [
+    "`massa`: 1.130 kg, a do site; o corpo de base escalado a 4,9 m daria 1.614 kg de carne ou 1.594 kg de água (D-187) **[referência de jogo]**",
+    "`forca`: 9; o site tinha 8, a mesma do efreeti, e o texto do site o faz o mais forte dos gênios. Com 8, o dano médio seria 16,5 e o peso erguido 525,77 kg **[provisório]**",
+    "`musculatura`: 0, pelo corpo de água e carne, como o djinn e o efreeti (tamanho-decisoes-3, item 12)",
+    "`ataque`: o \"Golpe planar\" de 2 dados e corte vira a Pancada de maré Média, de 1 dado e Impacto (perda de mecânica publicada, no relato) **[provisório]**",
+    "`segundo Tamanho`: Enorme com o vórtice ativo, o funil de 15,01 m², pelo método do djinn e pela decisão do autor de 24/10/2026 (D-213) **[provisório]**",
+    "`formas`: forma verdadeira e disfarce (D-201), como na couatl; todas as Manobras e os Sentidos em todas as formas, porque a mente e os números ficam os dele; o \"como luta\" em duas linhas; a Camuflagem do disfarce na linha dele em Variantes. Aptidões iguais e nenhuma Arte nas duas **[provisório]**",
+    "`domínio das águas`, `fúria das marés`, `vórtice aquático`, `forma mutável`: números sugeridos pela ficha (D-197); o site não dá poderes naturais com base (\"Poderes a mapear\"), e as bases são sugestão da ficha"
+  ]
 }
