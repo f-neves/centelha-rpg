@@ -2970,6 +2970,22 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
   - Substitui em parte a D-204 (a Revisora por lote) e a D-242 (o fluxo da branch). **Não substitui a D-210** (lotes de 8 e de 4): o plano fala em lotes "de 10 a 15", mas o tamanho do lote não estava entre as sete; vai ao autor como a pergunta 3 do `PERGUNTAS.md`, e até a resposta vale a D-210.
   - Pela decisão 5, este registro sobe ao `main` só na Fase 4, com a conferência da Revisora, junto dos outros commits de registro da fase.
 
+### D-244 · Montarias próprias de raça: o carneiro dos anões, o lobo de guerra dos orcs e o cervo dos elfos [tags: lore, racas, montaria, transporte, imagens, anao, orc, elfo]
+- Data: 2026-10-25
+- Decisão (autor, 25/10/2026, para as imagens de transporte): montarias próprias de raça, adotadas:
+  - anões: carneiro de montanha anão, cerca de 1,20 m na cernelha, robusto, com chifres enrolados;
+  - orcs: lobo de guerra orc, cerca de 1,50 m na cernelha, bem maior que o lobo e o worg do bestiário;
+  - elfos: cervo élfico de montaria, do porte de um alce, cerca de 1,80 m na cernelha, com galhada.
+  "As alturas são propostas de imagem; se forem virar ficha de bestiário, passam pelo fluxo normal das fichas."
+- Origem: mensagem do autor de 25/10/2026, sobre as imagens de transporte.
+- Estado: **registrada**, para as imagens. Nada em `src/`; nenhuma ficha de bestiário criada. Se uma delas virar ficha, segue o fluxo das fichas (D-243).
+
+### D-245 · Tecnologia dos gnomos: o balão de ar quente é comum; dirigível e barco a vapor são raros e caros [tags: lore, racas, gnomo, tecnologia, transporte, imagens]
+- Data: 2026-10-25
+- Decisão (autor, 25/10/2026, para as imagens de transporte): "balão de ar quente é comum entre os gnomos; dirigível e barco a vapor existem, mas são peças raras e caras."
+- Origem: mensagem do autor de 25/10/2026, sobre as imagens de transporte.
+- Estado: **registrada.** Resolve em parte o ponto aberto "tecnologia e supressão" do arquivo de cultura dos gnomos (o que é comum e o que é raro); o resto do ponto segue aberto. Nada em `src/`.
+
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
 - Decisão (texto completo em `docs/simulacao/caixa/jogador-novo-decisoes.md`, seção "M-32"): abaixo de Força 4, o Arco Composto soma `Força×1` e parte de `+0`, os números do Arco Longo; a arma não fica proibida, fica "um arco comum caro". O campo é `forcaMin: 4` em `armas.json`, lido por `calc.ts` (`comRequisitoDeForca`), `ficha-engine.ts` e `combate-resumo.ts`.
