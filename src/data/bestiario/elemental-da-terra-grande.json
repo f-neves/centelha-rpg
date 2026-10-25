@@ -75,11 +75,11 @@
       "nome": "Pancada de pedra",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 1,
+      "dado": 2,
       "mao": 1,
       "tipo": "impacto",
-      "ticks": 6,
-      "classe": "media"
+      "ticks": 7,
+      "classe": "pesada"
     }
   ],
   "fraquezas": [],
@@ -139,7 +139,7 @@
     },
     {
       "titulo": "No jogo",
-      "texto": "Grande e lento (3), atravessa a pedra a 2. Bate com dano médio 16,5 e joga o alvo 3 m para trás ou o derruba. 58 PV, Impacto 10, Corte e Perfuração 3; fogo, Corte e Perfuração fazem metade. Bloqueio 12 (13 com o braço de pedra), Esquiva 4. Por 3 de Energia, a Pele de Pedra soma 4 em toda a Absorção."
+      "texto": "Grande e lento (3), atravessa a pedra a 2. Bate com dano médio 20 e joga o alvo 3 m para trás ou o derruba. 58 PV, Impacto 10, Corte e Perfuração 3; fogo, Corte e Perfuração fazem metade. Bloqueio 12 (13 com o braço de pedra), Esquiva 4. Por 3 de Energia, a Pele de Pedra soma 4 em toda a Absorção."
     }
   ],
   "ecologia": {
@@ -214,8 +214,8 @@
   },
   "notasObservacao": [
     "`massa`: 1.234 kg pelo volume em granito; o site dizia 2 t, que daria a Faixa 5 (1,8 a 14 t) e PV 35 + 5 × 7 = 70, fora da zona de transição (1,62 a 1,98 t); com a conta, Faixa 4 e PV 58 **[conta]**",
-    "`forca`: 10 pelo teste de ordem; o site tinha 9. Com 9, o dano médio seria 15,5 e o peso erguido 1.137,73 kg **[provisório]**",
-    "`ataque`: o \"Golpe planar\" de 2 dados vira a Pancada de pedra Média, de 1 dado e Impacto **[provisório]**",
+    "`forca`: 10 pelo teste de ordem; o site tinha 9. Com 9, o dano médio seria 19 e o peso erguido 1.137,73 kg **[provisório]**",
+    "`ataque`: o \"Golpe planar\" de 2 dados e corte vira a Pancada de pedra Pesada, de 2 dados (D-241), e de Impacto pelo gesto **[provisório]**",
     "`bloqueio`: 2, como o golem de pedra; o site não gravava Bloqueio **[provisório]**",
     "`couraca`: nível 9, pedra maciça, como o golem de pedra **[provisório]**",
     "`deslizar na pedra`, `empurrão`: números sugeridos pela ficha (D-197)"

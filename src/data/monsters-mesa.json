@@ -7542,10 +7542,10 @@
     {
      "nome": "Golpe de vento",
      "pool": "5d6+2 +8",
-     "dano": "1d6 +10 corte",
+     "dano": "2d6 +10 corte",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -9447,10 +9447,10 @@
     {
      "nome": "Punho em brasa",
      "pool": "6d6+2 +8",
-     "dano": "1d6 +12 impacto",
+     "dano": "2d6 +12 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -9791,10 +9791,10 @@
     {
      "nome": "Pancada de pedra",
      "pool": "7d6+2 +6",
-     "dano": "1d6 +13 impacto",
+     "dano": "2d6 +13 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -19360,10 +19360,10 @@
     {
      "nome": "Pancada de maré",
      "pool": "7d6 +10",
-     "dano": "1d6 +14 impacto",
+     "dano": "2d6 +14 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -25272,10 +25272,10 @@
     {
      "nome": "Pancada de pedra",
      "pool": "6d6 +8",
-     "dano": "1d6 +11 impacto",
+     "dano": "2d6 +11 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },

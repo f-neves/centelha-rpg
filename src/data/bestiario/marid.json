@@ -80,11 +80,11 @@
       "nome": "Pancada de maré",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 1,
+      "dado": 2,
       "mao": 1,
       "tipo": "impacto",
-      "ticks": 6,
-      "classe": "media"
+      "ticks": 7,
+      "classe": "pesada"
     }
   ],
   "fraquezas": [],
@@ -161,7 +161,7 @@
     },
     {
       "titulo": "No jogo",
-      "texto": "Grande, 54 PV, Impacto 11, Corte e Perfuração 5; fogo faz metade. Esquiva 14, Bloqueio 10, Defesa Mental 29. Pancada de maré de dano médio 17,5, com +2 quando os dois estão na água e −2 no ataque em terra seca. Uma vez por cena, um jato que cega (3d6 + 5); outra, debaixo d'água, um redemoinho Enorme que prende e confunde quem está a 3 m (2d6 + 5 a cada 6 Ticks). Anda a 2, nada a 6 e voa a 9. Muda de forma à vontade."
+      "texto": "Grande, 54 PV, Impacto 11, Corte e Perfuração 5; fogo faz metade. Esquiva 14, Bloqueio 10, Defesa Mental 29. Pancada de maré de dano médio 21, com +2 quando os dois estão na água e −2 no ataque em terra seca. Uma vez por cena, um jato que cega (3d6 + 5); outra, debaixo d'água, um redemoinho Enorme que prende e confunde quem está a 3 m (2d6 + 5 a cada 6 Ticks). Anda a 2, nada a 6 e voa a 9. Muda de forma à vontade."
     }
   ],
   "ecologia": {
@@ -226,9 +226,9 @@
   },
   "notasObservacao": [
     "`massa`: 1.130 kg, a do site; o corpo de base escalado a 4,9 m daria 1.614 kg de carne ou 1.594 kg de água (D-187) **[referência de jogo]**",
-    "`forca`: 9; o site tinha 8, a mesma do efreeti, e o texto do site o faz o mais forte dos gênios. Com 8, o dano médio seria 16,5 e o peso erguido 525,77 kg **[provisório]**",
+    "`forca`: 9; o site tinha 8, a mesma do efreeti, e o texto do site o faz o mais forte dos gênios. Com 8, o dano médio seria 20 e o peso erguido 525,77 kg **[provisório]**",
     "`musculatura`: 0, pelo corpo de água e carne, como o djinn e o efreeti (tamanho-decisoes-3, item 12)",
-    "`ataque`: o \"Golpe planar\" de 2 dados e corte vira a Pancada de maré Média, de 1 dado e Impacto (perda de mecânica publicada, no relato) **[provisório]**",
+    "`ataque`: o \"Golpe planar\" de 2 dados e corte vira a Pancada de maré Pesada, de 2 dados (D-241), e de Impacto pelo gesto **[provisório]**",
     "`segundo Tamanho`: Enorme com o vórtice ativo, o funil de 15,01 m², pelo método do djinn e pela decisão do autor de 24/10/2026 (D-213) **[provisório]**",
     "`formas`: forma verdadeira e disfarce (D-201), como na couatl; todas as Manobras e os Sentidos em todas as formas, porque a mente e os números ficam os dele; o \"como luta\" em duas linhas; a Camuflagem do disfarce na linha dele em Variantes. Aptidões iguais e nenhuma Arte nas duas **[provisório]**",
     "`domínio das águas`, `fúria das marés`, `vórtice aquático`, `forma mutável`: números sugeridos pela ficha (D-197); o site não dá poderes naturais com base (\"Poderes a mapear\"), e as bases são sugestão da ficha"

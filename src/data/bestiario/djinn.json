@@ -80,11 +80,11 @@
       "nome": "Golpe de vento",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 1,
+      "dado": 2,
       "mao": 1,
       "tipo": "corte",
-      "ticks": 6,
-      "classe": "media"
+      "ticks": 7,
+      "classe": "pesada"
     }
   ],
   "fraquezas": [],
@@ -148,7 +148,7 @@
     },
     {
       "titulo": "No jogo",
-      "texto": "Grande, 40 PV, Impacto 9, Corte e Perfuração 4; Corte e Perfuração fazem metade. Esquiva 14 (16 contra ataque à distância), Bloqueio 10, Defesa Mental 25. Golpe de vento de dano médio 13,5. À vontade vira redemoinho: derruba quem está a 3 m e prende os mais leves, com 2d6 + 4 de Corte a cada 6 Ticks. Some à vontade, muda a aparência e faz brotar água e comida. Anda a 2 e voa a 6."
+      "texto": "Grande, 40 PV, Impacto 9, Corte e Perfuração 4; Corte e Perfuração fazem metade. Esquiva 14 (16 contra ataque à distância), Bloqueio 10, Defesa Mental 25. Golpe de vento de dano médio 17. À vontade vira redemoinho: derruba quem está a 3 m e prende os mais leves, com 2d6 + 4 de Corte a cada 6 Ticks. Some à vontade, muda a aparência e faz brotar água e comida. Anda a 2 e voa a 6."
     }
   ],
   "ecologia": {
@@ -219,7 +219,7 @@
   "notasObservacao": [
     "`massa`: 200 kg, a do site; o corpo de base escalado a 3 m daria 370 kg (D-187) **[referência de jogo]**",
     "`pv`: 40, na zona de transição, pela faixa de baixo (corpo leve); pela de cima seria 50 **[provisório]**",
-    "`ataque`: o \"Golpe planar\" de 2 dados vira o Golpe de vento Média, de 1 dado **[provisório]**",
+    "`ataque`: o \"Golpe planar\" de 2 dados e corte vira o Golpe de vento Pesada, de 2 dados e corte (D-241)",
     "`forma de redemoinho`: poder natural, e não forma (linha Formas) **[provisório]**",
     "`segundo Tamanho`: o tornado ativo dá 5,63 m², Grande, sem mudar a categoria (decisão do autor de 24/10/2026, D-213); com o cilindro, ou com o funil da largura da Área (3 m à volta), seria Enorme, e a linha passaria a `**Enorme** (..., com o redemoinho ativo)` **[provisório]**",
     "`virtudes`: Compaixão 2, Convicção 4, Temperança 1; o site tinha 1, 3 e 2 **[provisório]**",

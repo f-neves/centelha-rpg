@@ -77,11 +77,11 @@
       "nome": "Pancada de pedra",
       "atrib": "forca",
       "pericia": "briga",
-      "dado": 1,
+      "dado": 2,
       "mao": 1,
       "tipo": "impacto",
-      "ticks": 6,
-      "classe": "media"
+      "ticks": 7,
+      "classe": "pesada"
     }
   ],
   "fraquezas": [
@@ -139,7 +139,7 @@
     },
     {
       "titulo": "No jogo",
-      "texto": "Grande, 65 PV, Impacto 10, Corte e Perfuração 4; fogo faz metade, raio não o fere, água fere mais. Esquiva 10, Bloqueio 6, Defesa Mental 25. Pancada de pedra de dano médio 14,5, com +2 quando os dois tocam o chão. Atravessa a rocha à vontade, sela na parede quem ele empurra até ela (Vigor + Resistência contra 14 para sair) e troca o metal de uma arma por chumbo. Anda a 2 e afunda na água."
+      "texto": "Grande, 65 PV, Impacto 10, Corte e Perfuração 4; fogo faz metade, raio não o fere, água fere mais. Esquiva 10, Bloqueio 6, Defesa Mental 25. Pancada de pedra de dano médio 18, com +2 quando os dois tocam o chão. Atravessa a rocha à vontade, sela na parede quem ele empurra até ela (Vigor + Resistência contra 14 para sair) e troca o metal de uma arma por chumbo. Anda a 2 e afunda na água."
     }
   ],
   "ecologia": {
@@ -205,7 +205,7 @@
     "`forca`: 7, a do site; abaixo do rinoceronte e do elemental da terra grande, que são mais fortes pela descrição **[provisório]**",
     "`musculatura`: 3, pelo corpo de pedra atarracado, robusto, como o golem de pedra e o elemental da terra grande (tamanho-decisoes-3, item 12) **[provisório]**",
     "`couraca`: nível 2, pele dura que lembra pedra e metal **[provisório]**",
-    "`ataque`: o \"Golpe planar\" de 2 dados e corte vira a Pancada de pedra Média, de 1 dado e Impacto (perda de mecânica publicada, no relato) **[provisório]**",
+    "`ataque`: o \"Golpe planar\" de 2 dados e corte vira a Pancada de pedra Pesada, de 2 dados (D-241), e de Impacto pelo gesto **[provisório]**",
     "`domínio da pedra`, `deslizar pela rocha`, `maldição da pedra`, `metamorfose do metal`: números sugeridos pela ficha (D-197); o site não dá poderes naturais com base (\"Poderes a mapear\"), e as bases são sugestão da ficha"
   ]
 }

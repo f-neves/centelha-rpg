@@ -12654,10 +12654,10 @@
     {
      "nome": "Golpe de vento",
      "pool": "5d6+2 +8",
-     "dano": "1d6 +10 corte",
+     "dano": "2d6 +10 corte",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -12718,7 +12718,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Grande, 40 PV, Impacto 9, Corte e Perfuração 4; Corte e Perfuração fazem metade. Esquiva 14 (16 contra ataque à distância), Bloqueio 10, Defesa Mental 25. Golpe de vento de dano médio 13,5. À vontade vira redemoinho: derruba quem está a 3 m e prende os mais leves, com 2d6 + 4 de Corte a cada 6 Ticks. Some à vontade, muda a aparência e faz brotar água e comida. Anda a 2 e voa a 6."
+    "texto": "Grande, 40 PV, Impacto 9, Corte e Perfuração 4; Corte e Perfuração fazem metade. Esquiva 14 (16 contra ataque à distância), Bloqueio 10, Defesa Mental 25. Golpe de vento de dano médio 17. À vontade vira redemoinho: derruba quem está a 3 m e prende os mais leves, com 2d6 + 4 de Corte a cada 6 Ticks. Some à vontade, muda a aparência e faz brotar água e comida. Anda a 2 e voa a 6."
    }
   ]
  },
@@ -15828,10 +15828,10 @@
     {
      "nome": "Punho em brasa",
      "pool": "6d6+2 +8",
-     "dano": "1d6 +12 impacto",
+     "dano": "2d6 +12 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -15896,7 +15896,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Grande, 54 PV, Impacto 10, Corte e Perfuração 4; fogo não o fere, água e gelo ferem mais. Esquiva 14, Bloqueio 10, Defesa Mental 25. Punho em brasa de dano médio 15,5, mais 1d6 de fogo; quem o acerta corpo a corpo se queima (1d6 + 4). Três vezes por dia ergue uma muralha de fogo (3d6 + 4 a quem atravessa). Some da vista, viaja entre planos e, uma vez por dia, concede um desejo com preço. Anda a 2 e voa a 4."
+    "texto": "Grande, 54 PV, Impacto 10, Corte e Perfuração 4; fogo não o fere, água e gelo ferem mais. Esquiva 14, Bloqueio 10, Defesa Mental 25. Punho em brasa de dano médio 19, mais 1d6 de fogo; quem o acerta corpo a corpo se queima (1d6 + 4). Três vezes por dia ergue uma muralha de fogo (3d6 + 4 a quem atravessa). Some da vista, viaja entre planos e, uma vez por dia, concede um desejo com preço. Anda a 2 e voa a 4."
    }
   ]
  },
@@ -16397,10 +16397,10 @@
     {
      "nome": "Pancada de pedra",
      "pool": "7d6+2 +6",
-     "dano": "1d6 +13 impacto",
+     "dano": "2d6 +13 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -16459,7 +16459,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Grande e lento (3), atravessa a pedra a 2. Bate com dano médio 16,5 e joga o alvo 3 m para trás ou o derruba. 58 PV, Impacto 10, Corte e Perfuração 3; fogo, Corte e Perfuração fazem metade. Bloqueio 12 (13 com o braço de pedra), Esquiva 4. Por 3 de Energia, a Pele de Pedra soma 4 em toda a Absorção."
+    "texto": "Grande e lento (3), atravessa a pedra a 2. Bate com dano médio 20 e joga o alvo 3 m para trás ou o derruba. 58 PV, Impacto 10, Corte e Perfuração 3; fogo, Corte e Perfuração fazem metade. Bloqueio 12 (13 com o braço de pedra), Esquiva 4. Por 3 de Energia, a Pele de Pedra soma 4 em toda a Absorção."
    }
   ]
  },
@@ -32219,10 +32219,10 @@
     {
      "nome": "Pancada de maré",
      "pool": "7d6 +10",
-     "dano": "1d6 +14 impacto",
+     "dano": "2d6 +14 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -32284,7 +32284,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Grande, 54 PV, Impacto 11, Corte e Perfuração 5; fogo faz metade. Esquiva 14, Bloqueio 10, Defesa Mental 29. Pancada de maré de dano médio 17,5, com +2 quando os dois estão na água e −2 no ataque em terra seca. Uma vez por cena, um jato que cega (3d6 + 5); outra, debaixo d'água, um redemoinho Enorme que prende e confunde quem está a 3 m (2d6 + 5 a cada 6 Ticks). Anda a 2, nada a 6 e voa a 9. Muda de forma à vontade."
+    "texto": "Grande, 54 PV, Impacto 11, Corte e Perfuração 5; fogo faz metade. Esquiva 14, Bloqueio 10, Defesa Mental 29. Pancada de maré de dano médio 21, com +2 quando os dois estão na água e −2 no ataque em terra seca. Uma vez por cena, um jato que cega (3d6 + 5); outra, debaixo d'água, um redemoinho Enorme que prende e confunde quem está a 3 m (2d6 + 5 a cada 6 Ticks). Anda a 2, nada a 6 e voa a 9. Muda de forma à vontade."
    }
   ]
  },
@@ -42010,10 +42010,10 @@
     {
      "nome": "Pancada de pedra",
      "pool": "6d6 +8",
-     "dano": "1d6 +11 impacto",
+     "dano": "2d6 +11 impacto",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
@@ -42065,7 +42065,7 @@
    },
    {
     "titulo": "No jogo",
-    "texto": "Grande, 65 PV, Impacto 10, Corte e Perfuração 4; fogo faz metade, raio não o fere, água fere mais. Esquiva 10, Bloqueio 6, Defesa Mental 25. Pancada de pedra de dano médio 14,5, com +2 quando os dois tocam o chão. Atravessa a rocha à vontade, sela na parede quem ele empurra até ela (Vigor + Resistência contra 14 para sair) e troca o metal de uma arma por chumbo. Anda a 2 e afunda na água."
+    "texto": "Grande, 65 PV, Impacto 10, Corte e Perfuração 4; fogo faz metade, raio não o fere, água fere mais. Esquiva 10, Bloqueio 6, Defesa Mental 25. Pancada de pedra de dano médio 18, com +2 quando os dois tocam o chão. Atravessa a rocha à vontade, sela na parede quem ele empurra até ela (Vigor + Resistência contra 14 para sair) e troca o metal de uma arma por chumbo. Anda a 2 e afunda na água."
    }
   ]
  },
