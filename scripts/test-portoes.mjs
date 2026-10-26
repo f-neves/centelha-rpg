@@ -88,9 +88,7 @@ const ok = (cond, msg) => {
 // derrubou o próprio arquivo na primeira execução. Foi de propósito: uma lista
 // de exceções que não encolhe junto com o problema vira ficção em duas semanas.
 const TESTES_FORA = {
-  'test-grid.mjs': 'D-071 (05/10/2026): desligado do smoke e da matriz do CI, porque o flake "[aquece]" travava as rodadas e o Grid está congelado (D-054). Religa na passada única do Grid (N-grid-pendencias.md, N21).',
-  'test-motor.mjs': 'A1 da Fase 3 (plano-conversao.md): escrito antes do motor e vermelho até ele existir, e o validate roda em todo commit. Entra no validate no commit do A2 que o deixa verde (src/lib/motor.ts).',
-};
+  'test-grid.mjs': 'D-071 (05/10/2026): desligado do smoke e da matriz do CI, porque o flake "[aquece]" travava as rodadas e o Grid está congelado (D-054). Religa na passada única do Grid (N-grid-pendencias.md, N21).',};
 
 // OS GERADORES SEM `--check` NO BUILD, e o motivo.
 //

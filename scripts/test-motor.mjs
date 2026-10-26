@@ -31,8 +31,18 @@ const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^
 const FIX = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/fixtures/criaturas-esperado.json'), 'utf8'));
 const slug = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-');
 
-// As diferenças aceitas, uma por `id.conta`, cada uma com o motivo. Vazio, que é o estado bom.
-const ACEITAS = {};
+// As diferenças aceitas, uma por `id.conta`, cada uma com o motivo. Cada uma é defeito ou dúvida da FICHA, e não do
+// motor, e está em tmp/executora/fase3/perguntas.md para o Arquiteto; a entrada sai daqui quando a ficha se corrigir.
+// `id.tamanhoEscolhido` aceita a escolha do Tamanho fora da folga de 5%.
+const SEM_SOCIABILIDADE = 'a Defesa Social da ficha usa Sociabilidade 1, e a tabela Habilidades não tem a linha: o motor lê 0 (perguntas.md, P3)';
+const ACEITAS = {
+  'bralani.defesaSocial': SEM_SOCIABILIDADE,
+  'centauro.defesaSocial': SEM_SOCIABILIDADE,
+  'janni.defesaSocial': SEM_SOCIABILIDADE,
+  'homem-lagarto.defesaSocial': SEM_SOCIABILIDADE,
+  'grifo.defesaSocial': 'a ficha usa a Sobrevivência da fera de Inteligência 1 (a nota de regras.json, derivados.defesaSocial); o formato-criatura.md, seção 3, a dá só à categoria animal, e as 15 outras bestas mágicas fera de Inteligência 1 usam a Sociabilidade (perguntas.md, P4)',
+  'lobo-atroz.tamanhoEscolhido': 'Pequeno com 0,49 m², 9% acima do corte, pela decisão 7 ("os quadrúpedes de 50 a 75 kg ... Pequenos"), a exceção que o confere_etapa2.py também aceita; a ficha pede que o autor confira',
+};
 
 async function carregarMotor() {
   const fonte = path.join(ROOT, 'src/lib/motor.ts');
@@ -73,7 +83,11 @@ for (const [id, c] of Object.entries(FIX.criaturas)) {
   const escolha = (area, tam, rotulo) => {
     if (!tam || area === undefined) return undefined;
     const aceita = M.tamanhosDaArea(area);
-    if (!aceita.includes(slug(tam))) { falhas.push({ id, conta: `${rotulo} (a área não aceita o da ficha)`, vem: aceita.join(' ou '), deve: slug(tam) }); return undefined; }
+    if (!aceita.includes(slug(tam))) {
+      if (ACEITAS[`${id}.${rotulo}Escolhido`]) { aceitas.push(`${id}.${rotulo}Escolhido`); return slug(tam); }
+      falhas.push({ id, conta: `${rotulo} (a área não aceita o da ficha)`, vem: aceita.join(' ou '), deve: slug(tam) });
+      return undefined;
+    }
     return aceita[0] === slug(tam) ? undefined : slug(tam);
   };
   const t1 = escolha(e.corpo.area, f.tamanho, 'tamanho');

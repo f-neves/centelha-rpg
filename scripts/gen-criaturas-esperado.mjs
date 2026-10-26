@@ -22,6 +22,8 @@ const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^
 const PASTA = path.resolve(process.argv[2] || path.join(RAIZ, '..', 'tmp', 'arquiteto', 'bestiario', 'fichas-v3'));
 const SAIDA = path.join(RAIZ, 'scripts', 'fixtures', 'criaturas-esperado.json');
 const UN = { g: 0.001, kg: 1, t: 1000 };
+const TAMANHOS = 'Minúsculo|Miúdo|Pequeno|Médio|Grande|Enorme|Imenso|Colossal';
+const ARMAS = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/armas.json'), 'utf8')).filter((a) => a.arma);
 const soDeCriatura = {};
 const HAB_ATAQUE = 'Briga|Armas|Disparo|Atirador|Arremesso';
 const inteiro = (s) => { const m = String(s ?? '').match(/[−-]?\d+/); return m ? Number(m[0].replace('−', '-')) : undefined; };
@@ -64,8 +66,9 @@ function lerLinhaPV(txt, massa) {
   const m = String(txt).match(/Faixa de PV de ([\d.,]+) ?(g|kg|t)? a ([\d.,]+) ?(g|kg|t)/);
   if (!m || massa === undefined) return undefined;
   const de = numBR(m[1]) * UN[m[2] || m[4]], ate = numBR(m[3]) * UN[m[4]];
+  // na tabela, a massa do corte é da linha de baixo ("até 220 kg"): a ficha que usa a linha que começa nela subiu
   if (massa > ate) return 'abaixo';
-  if (massa < de) return 'acima';
+  if (massa <= de) return 'acima';
   return undefined;
 }
 
@@ -105,11 +108,13 @@ function lerCriatura(id, texto) {
   const ar = String(la ?? '').match(/\*\*([\d.,]+) m²\*\*/) || lt.match(/\(([\d.,]+) m²/);
   if (ar) corpo.area = numBR(ar[1]); else nao.push('Área');
   const ls = campo(C, 'Segundo Tamanho') || '';
-  const segundo = /^\s*\*\*/.test(ls) ? (ls.match(/^\s*\*\*([^*]+)\*\*/) || [])[1] : undefined;
+  const segundo = /^\s*\*\*/.test(ls) ? (ls.match(new RegExp(`^\\s*\\*\\*(${TAMANHOS})\\b`)) || [])[1] : undefined;
   if (segundo) {
     const sa = ls.match(/\(([\d.,]+) m²/);
     if (sa) corpo.segundoTamanho = { area: numBR(sa[1]) }; else nao.push('área do Segundo Tamanho');
   }
+  // quem não ergue (o incorpóreo e o fogo, sem matéria que segure; manual 5.2, item 7): "**não ergue**" na linha
+  if (/^\s*\*\*não ergue\*\*/.test(campo(M, 'Peso erguido') || '')) corpo.naoErgue = true;
   entrada.corpo = corpo;
   entrada.bonusPV = inteiro(campo(M, 'Bônus de PV')) ?? 0;
   entrada.couraca = F.bloco?.couracaNivel;
@@ -138,6 +143,11 @@ function lerCriatura(id, texto) {
     const dano = lerDano(r['Dano'] ?? '');
     const pgr = String(r['P/G/R'] ?? '').match(/(\d+)\/(\d+)\/(\d+)/);
     const a = { nome, classe: slug(semMarcas(r['Classe'] ?? '')), acerto: inteiro(r['Acerto']) ?? 0 };
+    // a arma do livro (D-220): a que a Justificativa cita (`armas.json`, `id`) ou a do mesmo nome, entre as da Identidade
+    const citada = String(r['Justificativa'] ?? '').match(/`armas\.json`, `([a-z0-9-]+)`/)?.[1];
+    const daFicha = entrada.equipamento?.armas || [];
+    const arma = daFicha.includes(citada) ? citada : ARMAS.find((w) => daFicha.includes(w.id) && w.nome.toLowerCase() === nome.toLowerCase())?.id;
+    if (arma) a.arma = arma;
     if (pgr) a.pgr = pgr.slice(1).map(Number); else nao.push(`P/G/R de "${nome}"`);
     if (dano) Object.assign(a, dano); else nao.push(`Dano de "${nome}"`);
     const bl = String(r['Bloqueia como arma'] ?? '').match(/sim\s*\(([+−-]?\d+)\)/);
@@ -162,7 +172,7 @@ function lerCriatura(id, texto) {
   }
 
   const ficha = {};
-  const tamFicha = (lt.match(/^\s*\*\*([^*]+)\*\*/) || [])[1];
+  const tamFicha = (lt.match(new RegExp(`^\\s*\\*\\*(${TAMANHOS})\\b`)) || [])[1];
   if (tamFicha) ficha.tamanho = tamFicha; else nao.push('Tamanho');
   if (segundo) ficha.segundoTamanho = segundo;
   const pvBase = campo(M, 'PV base') || '';
@@ -225,7 +235,9 @@ function lerCriatura(id, texto) {
       const mc = muda.match(/Couraça nível (\d+)/); if (mc) f.entrada.couraca = Number(mc[1]);
       const mpv = muda.match(/(?:^|;\s*)PV (\d+)/); if (mpv) f.esperado.pv = Number(mpv[1]);
       const mpe = muda.match(/(?:^|;\s*)Peso erguido: ([\d.,]+) kg/); if (mpe) f.esperado.pesoErguido = numBR(mpe[1]);
-      const mt = muda.match(/(?:^|;\s*)Tamanho: (\S+?)[\s;(]/); if (mt) f.esperado.tamanho = mt[1];
+      const mt = muda.match(new RegExp(`(?:^|;\\s*)Tamanho: (${TAMANHOS})\\b`)); if (mt) f.esperado.tamanho = mt[1];
+      // a forma que diz o Tamanho sem a área (o disfarce): o Tamanho é a escolha dela
+      if (mt && !mar) f.entrada.corpo.tamanhoEscolhido = slug(mt[1]);
       const mfx = muda.match(/\(Faixa (\d)\)/); if (mfx) f.esperado.faixa = Number(mfx[1]);
       formas[slug(nomeV.replace(/^forma (de |d[ao] )?/, ''))] = { nome: nomeV, ...f };
     }

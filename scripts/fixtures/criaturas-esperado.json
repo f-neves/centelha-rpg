@@ -66,6 +66,7 @@
       "nome": "Espada longa",
       "classe": "media",
       "acerto": 1,
+      "arma": "espada-longa",
       "pgr": [
        2,
        1,
@@ -981,6 +982,7 @@
       "nome": "Arco longo",
       "classe": "distancia",
       "acerto": 0,
+      "arma": "arco-longo",
       "pgr": [
        1,
        1,
@@ -1104,6 +1106,7 @@
       "nome": "Adaga",
       "classe": "leve",
       "acerto": 2,
+      "arma": "adaga",
       "pgr": [
        1,
        1,
@@ -1190,7 +1193,8 @@
     "corpo": {
      "semMassa": true,
      "volume": 0.079,
-     "area": 0.72
+     "area": 0.72,
+     "naoErgue": true
     },
     "bonusPV": 0,
     "couraca": 0,
@@ -1403,6 +1407,7 @@
       "nome": "Lança",
       "classe": "haste-media",
       "acerto": 1,
+      "arma": "lanca",
       "pgr": [
        2,
        1,
@@ -1542,6 +1547,7 @@
       "nome": "Espada flamejante",
       "classe": "media",
       "acerto": 1,
+      "arma": "espada-longa",
       "pgr": [
        2,
        1,
@@ -1676,6 +1682,7 @@
       "nome": "Facão",
       "classe": "leve",
       "acerto": 2,
+      "arma": "espada-curta",
       "pgr": [
        1,
        1,
@@ -2919,6 +2926,7 @@
       "nome": "Maça estrela",
       "classe": "media",
       "acerto": 1,
+      "arma": "maca-estrela",
       "pgr": [
        2,
        1,
@@ -3319,6 +3327,7 @@
       "nome": "Martelo de guerra",
       "classe": "pesada",
       "acerto": 0,
+      "arma": "martelo-de-guerra",
       "pgr": [
        3,
        1,
@@ -3723,6 +3732,7 @@
       "nome": "Machado",
       "classe": "media",
       "acerto": 1,
+      "arma": "machado",
       "pgr": [
        2,
        1,
@@ -4179,6 +4189,7 @@
       "nome": "Espada longa",
       "classe": "media",
       "acerto": 1,
+      "arma": "espada-longa",
       "pgr": [
        2,
        1,
@@ -4282,6 +4293,7 @@
       "nome": "Espada longa",
       "classe": "media",
       "acerto": 1,
+      "arma": "espada-longa",
       "pgr": [
        2,
        1,
@@ -4405,6 +4417,7 @@
       "nome": "Bordão",
       "classe": "haste",
       "acerto": 1,
+      "arma": "bordao",
       "pgr": [
        2,
        1,
@@ -4912,6 +4925,7 @@
       "nome": "Espada longa",
       "classe": "media",
       "acerto": 1,
+      "arma": "espada-longa",
       "pgr": [
        2,
        1,
@@ -5419,6 +5433,7 @@
       "nome": "Montante",
       "classe": "pesada",
       "acerto": 0,
+      "arma": "montante",
       "pgr": [
        3,
        1,
@@ -5627,6 +5642,7 @@
       "nome": "Espada longa",
       "classe": "media",
       "acerto": 1,
+      "arma": "espada-longa",
       "pgr": [
        2,
        1,
@@ -5641,6 +5657,7 @@
       "nome": "Azagaia",
       "classe": "arremesso",
       "acerto": 1,
+      "arma": "azagaia",
       "pgr": [
        1,
        1,
@@ -6230,6 +6247,7 @@
       "nome": "Espada longa",
       "classe": "media",
       "acerto": 1,
+      "arma": "espada-longa",
       "pgr": [
        2,
        1,
@@ -6585,9 +6603,7 @@
       "atributos": {},
       "corpo": {}
      },
-     "esperado": {
-      "tamanho": "o"
-     }
+     "esperado": {}
     }
    }
   },
@@ -7200,6 +7216,7 @@
       "nome": "Espada curta",
       "classe": "leve",
       "acerto": 2,
+      "arma": "espada-curta",
       "pgr": [
        1,
        1,
@@ -7300,6 +7317,7 @@
       "nome": "Maça",
       "classe": "media",
       "acerto": 1,
+      "arma": "maca",
       "pgr": [
        2,
        1,
@@ -7350,9 +7368,7 @@
       "atributos": {},
       "corpo": {}
      },
-     "esperado": {
-      "tamanho": "o"
-     }
+     "esperado": {}
     }
    }
   },
@@ -7496,6 +7512,7 @@
       "nome": "Glaive serrilhada",
       "classe": "haste-de-guerra",
       "acerto": 0,
+      "arma": "alabarda",
       "pgr": [
        3,
        1,
@@ -7745,6 +7762,7 @@
       "nome": "Lança de gelo",
       "classe": "haste-media",
       "acerto": 1,
+      "arma": "lanca",
       "pgr": [
        2,
        1,
@@ -8482,6 +8500,7 @@
       "nome": "Espada curta",
       "classe": "leve",
       "acerto": 2,
+      "arma": "espada-curta",
       "pgr": [
        1,
        1,
@@ -9107,9 +9126,7 @@
       "atributos": {},
       "corpo": {}
      },
-     "esperado": {
-      "tamanho": "o"
-     }
+     "esperado": {}
     }
    }
   },
@@ -9955,6 +9972,7 @@
       "nome": "Espada curta",
       "classe": "leve",
       "acerto": 2,
+      "arma": "espada-curta",
       "pgr": [
        1,
        1,
@@ -10046,6 +10064,7 @@
       "nome": "Lâmina leve",
       "classe": "leve",
       "acerto": 2,
+      "arma": "espada-curta",
       "pgr": [
        1,
        1,
@@ -10149,6 +10168,7 @@
       "nome": "Machado",
       "classe": "media",
       "acerto": 1,
+      "arma": "machado",
       "pgr": [
        2,
        1,
@@ -10851,7 +10871,8 @@
     "corpo": {
      "semMassa": true,
      "volume": 0.0234,
-     "area": 0.32
+     "area": 0.32,
+     "naoErgue": true
     },
     "bonusPV": 0,
     "couraca": 0,
@@ -11698,6 +11719,7 @@
       "nome": "Arco longo",
       "classe": "distancia",
       "acerto": 0,
+      "arma": "arco-longo",
       "pgr": [
        1,
        1,
@@ -11712,6 +11734,7 @@
       "nome": "Espada flamejante",
       "classe": "media",
       "acerto": 1,
+      "arma": "espada-longa",
       "pgr": [
        2,
        1,
@@ -12021,7 +12044,8 @@
     "corpo": {
      "semMassa": true,
      "volume": 0.079,
-     "area": 0.72
+     "area": 0.72,
+     "naoErgue": true
     },
     "bonusPV": 0,
     "couraca": 0,
@@ -12125,6 +12149,7 @@
       "nome": "Espada curta",
       "classe": "leve",
       "acerto": 2,
+      "arma": "espada-curta",
       "pgr": [
        1,
        1,
@@ -12215,6 +12240,7 @@
       "nome": "Espada curta",
       "classe": "leve",
       "acerto": 2,
+      "arma": "espada-curta",
       "pgr": [
        1,
        1,
@@ -12782,7 +12808,8 @@
     "corpo": {
      "semMassa": true,
      "volume": 0.0666,
-     "area": 0.64
+     "area": 0.64,
+     "naoErgue": true
     },
     "bonusPV": 0,
     "couraca": 0,
@@ -13233,7 +13260,8 @@
     "corpo": {
      "semMassa": true,
      "volume": 0.0141,
-     "area": 0.07
+     "area": 0.07,
+     "naoErgue": true
     },
     "bonusPV": 0,
     "couraca": 0,
@@ -15029,6 +15057,7 @@
       "nome": "Machado",
       "classe": "media",
       "acerto": 1,
+      "arma": "machado",
       "pgr": [
        2,
        1,
@@ -15141,6 +15170,7 @@
       "nome": "Espada curta",
       "classe": "leve",
       "acerto": 2,
+      "arma": "espada-curta",
       "pgr": [
        1,
        1,
@@ -16308,6 +16338,7 @@
       "nome": "Espada curta",
       "classe": "leve",
       "acerto": 2,
+      "arma": "espada-curta",
       "pgr": [
        1,
        1,
@@ -17113,6 +17144,7 @@
       "nome": "Espada longa",
       "classe": "media",
       "acerto": 1,
+      "arma": "espada-longa",
       "pgr": [
        2,
        1,
@@ -17207,6 +17239,7 @@
       "nome": "Maça estrela",
       "classe": "media",
       "acerto": 1,
+      "arma": "maca-estrela",
       "pgr": [
        2,
        1,
@@ -17321,6 +17354,7 @@
       "nome": "Espada curta",
       "classe": "leve",
       "acerto": 2,
+      "arma": "espada-curta",
       "pgr": [
        1,
        1,
@@ -17544,6 +17578,7 @@
       "nome": "Espada longa",
       "classe": "media",
       "acerto": 1,
+      "arma": "espada-longa",
       "pgr": [
        2,
        1,
@@ -17650,14 +17685,14 @@
    },
    "ficha": {
     "tamanho": "Minúsculo",
-    "segundoTamanho": "Miúdo (0,032 m², esticada)"
+    "segundoTamanho": "Miúdo"
    },
    "esperado": {
     "pv": 2,
     "pesoErguido": 1.94,
     "faixa": 1,
     "tamanho": "Minúsculo",
-    "segundoTamanho": "Miúdo (0,032 m², esticada)",
+    "segundoTamanho": "Miúdo",
     "esquiva": 14,
     "bloqueio": 6,
     "energia": 4,
@@ -17846,14 +17881,14 @@
    },
    "ficha": {
     "tamanho": "Pequeno",
-    "segundoTamanho": "Pequeno (0,350 m², esticada)"
+    "segundoTamanho": "Pequeno"
    },
    "esperado": {
     "pv": 26,
     "pesoErguido": 276.6,
     "faixa": 2,
     "tamanho": "Pequeno",
-    "segundoTamanho": "Pequeno (0,350 m², esticada)",
+    "segundoTamanho": "Pequeno",
     "esquiva": 10,
     "bloqueio": 4,
     "energia": 5,
@@ -17924,6 +17959,7 @@
       "nome": "Lança",
       "classe": "haste",
       "acerto": 1,
+      "arma": "lanca",
       "pgr": [
        2,
        1,
@@ -19412,7 +19448,8 @@
     ]
    },
    "ficha": {
-    "tamanho": "Enorme"
+    "tamanho": "Enorme",
+    "linhaPV": "acima"
    },
    "esperado": {
     "pv": 105,
@@ -21187,9 +21224,7 @@
       "atributos": {},
       "corpo": {}
      },
-     "esperado": {
-      "tamanho": "o"
-     }
+     "esperado": {}
     }
    }
   },
@@ -21250,6 +21285,7 @@
       "nome": "Espada longa",
       "classe": "media",
       "acerto": 1,
+      "arma": "espada-longa",
       "pgr": [
        2,
        1,
@@ -21471,6 +21507,7 @@
       "nome": "Arco curto",
       "classe": "distancia",
       "acerto": 2,
+      "arma": "arco-curto",
       "pgr": [
        1,
        1,
@@ -21485,6 +21522,7 @@
       "nome": "Espada curta",
       "classe": "leve",
       "acerto": 2,
+      "arma": "espada-curta",
       "pgr": [
        1,
        1,
@@ -21802,6 +21840,7 @@
       "nome": "Lança",
       "classe": "haste",
       "acerto": 1,
+      "arma": "lanca",
       "pgr": [
        2,
        1,
@@ -21816,6 +21855,7 @@
       "nome": "Besta média",
       "classe": "distancia",
       "acerto": 1,
+      "arma": "besta-media",
       "pgr": [
        1,
        1,
@@ -22021,6 +22061,7 @@
       "nome": "Machado pesado",
       "classe": "pesada",
       "acerto": 0,
+      "arma": "machado-pesado",
       "pgr": [
        3,
        1,
@@ -22689,6 +22730,7 @@
       "nome": "Bastão",
       "classe": "leve",
       "acerto": 2,
+      "arma": "bastao",
       "pgr": [
        1,
        1,
@@ -23558,6 +23600,7 @@
       "nome": "Espada curta",
       "classe": "leve",
       "acerto": 2,
+      "arma": "espada-curta",
       "pgr": [
        1,
        1,
@@ -23774,10 +23817,12 @@
      "nome": "disfarce",
      "entrada": {
       "atributos": {},
-      "corpo": {}
+      "corpo": {
+       "tamanhoEscolhido": "medio"
+      }
      },
      "esperado": {
-      "tamanho": "Médio,"
+      "tamanho": "Médio"
      }
     }
    }
@@ -23918,6 +23963,7 @@
       "nome": "Machado",
       "classe": "media",
       "acerto": 1,
+      "arma": "machado",
       "pgr": [
        2,
        1,
@@ -24518,6 +24564,7 @@
       "nome": "Flecha",
       "classe": "distancia",
       "acerto": 2,
+      "arma": "arco-curto",
       "pgr": [
        1,
        1,
@@ -24944,7 +24991,8 @@
     ]
    },
    "ficha": {
-    "tamanho": "Médio"
+    "tamanho": "Médio",
+    "linhaPV": "acima"
    },
    "esperado": {
     "pv": 46,
@@ -25981,6 +26029,7 @@
       "nome": "Adaga",
       "classe": "leve",
       "acerto": 2,
+      "arma": "adaga",
       "pgr": [
        1,
        1,
@@ -26564,6 +26613,7 @@
       "nome": "Lança",
       "classe": "haste",
       "acerto": 1,
+      "arma": "lanca",
       "pgr": [
        2,
        1,
@@ -26682,6 +26732,7 @@
       "nome": "Lança",
       "classe": "haste",
       "acerto": 1,
+      "arma": "lanca",
       "pgr": [
        2,
        1,
@@ -27050,14 +27101,14 @@
    },
    "ficha": {
     "tamanho": "Miúdo",
-    "segundoTamanho": "Miúdo (0,046 m², vista de cima, enrolada)"
+    "segundoTamanho": "Miúdo"
    },
    "esperado": {
     "pv": 6,
     "pesoErguido": 28.06,
     "faixa": 1,
     "tamanho": "Miúdo",
-    "segundoTamanho": "Miúdo (0,046 m², vista de cima, enrolada)",
+    "segundoTamanho": "Miúdo",
     "esquiva": 12,
     "bloqueio": 6,
     "energia": 5,
@@ -27215,6 +27266,7 @@
       "nome": "Lança",
       "classe": "haste",
       "acerto": 1,
+      "arma": "lanca",
       "pgr": [
        2,
        1,
@@ -27357,6 +27409,7 @@
       "nome": "Espada longa",
       "classe": "media",
       "acerto": 1,
+      "arma": "espada-longa",
       "pgr": [
        2,
        1,
@@ -27477,7 +27530,8 @@
     "corpo": {
      "semMassa": true,
      "volume": 0.079,
-     "area": 0.72
+     "area": 0.72,
+     "naoErgue": true
     },
     "bonusPV": 0,
     "couraca": 0,
@@ -27591,7 +27645,8 @@
    },
    "ficha": {
     "tamanho": "Miúdo",
-    "segundoTamanho": "Minúsculo"
+    "segundoTamanho": "Minúsculo",
+    "linhaPV": "acima"
    },
    "esperado": {
     "pv": 2,
@@ -27764,6 +27819,7 @@
       "nome": "Picareta de guerra",
       "classe": "media",
       "acerto": 1,
+      "arma": "picareta-de-guerra",
       "pgr": [
        2,
        1,
@@ -28108,6 +28164,7 @@
       "nome": "Espada longa",
       "classe": "media",
       "acerto": 1,
+      "arma": "espada-longa",
       "pgr": [
        2,
        1,
@@ -28221,6 +28278,7 @@
       "nome": "Sabre",
       "classe": "leve",
       "acerto": 2,
+      "arma": "sabre",
       "pgr": [
        1,
        1,
@@ -28716,6 +28774,7 @@
       "nome": "Martelo",
       "classe": "media",
       "acerto": 1,
+      "arma": "martelo",
       "pgr": [
        2,
        1,
@@ -30771,6 +30830,7 @@
       "nome": "Espada curta",
       "classe": "leve",
       "acerto": 2,
+      "arma": "espada-curta",
       "pgr": [
        1,
        1,
