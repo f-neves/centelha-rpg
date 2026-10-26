@@ -17,9 +17,10 @@ import { defesa, defesaMental as defMental, defesaSocial as defSocial, energia a
 export type Tamanho = Porte;
 type Num = Record<string, number>;
 
+/** O ataque natural guarda tudo o que não é conta; o com arma do livro, só `nome`, `arma` e `habilidade` (D-220). */
 export interface AtaqueEntrada {
-  nome: string; classe: string; pgr: [number, number, number]; dado: string | null;
-  multiplicadorForca: number; habilidade?: string; acerto?: number; bloqueiaComoArma?: number | null; arma?: string;
+  nome: string; classe?: string; pgr?: [number, number, number]; dado?: string | null;
+  multiplicadorForca?: number; habilidade?: string; acerto?: number; bloqueiaComoArma?: number | null; arma?: string;
 }
 export interface CorpoEntrada {
   massa?: number; semMassa?: boolean; volume?: number; area?: number; naoErgue?: boolean;
@@ -29,7 +30,8 @@ export interface CorpoEntrada {
 export interface EntradaCriatura {
   categoria: string; centelha: number; atributos: Num; habilidades: Num; habilidadesSec: Num; vontade: number;
   corpo: CorpoEntrada; bonusPV?: number; couraca?: number; artes?: Num;
-  equipamento?: { armas: string[]; armadura: string | null; escudo: string | null };
+  // as peças da ficha do jogador (D-231, D-238): a arma `{ref: "a:<id>"}`, o escudo `{ref: "e:<id>"}`, a armadura `{base, vestida}`
+  equipamento?: { arsenal: { ref: string }[]; armaduras: { base: string; vestida?: boolean }[] };
   ataques: AtaqueEntrada[];
 }
 
@@ -170,18 +172,19 @@ export function criatura(e: EntradaCriatura) {
       const w = a.arma ? ataqueDaArma(a.arma, at.forca ?? 0) : null;
       const acerto = w ? w.acerto : (a.acerto ?? 0);
       return {
-        nome: a.nome,
+        nome: a.nome, acerto,
         velocidade: w ? w.velocidade : a.pgr ? a.pgr[0] + a.pgr[1] + a.pgr[2] : null,
-        danoMedio: w ? danoMedio(w.dado, w.forca, w.multiplicadorForca, ce) : danoMedio(a.dado, at.forca ?? 0, a.multiplicadorForca ?? 0, ce),
+        danoMedio: w ? danoMedio(w.dado, w.forca, w.multiplicadorForca, ce) : danoMedio(a.dado ?? null, at.forca ?? 0, a.multiplicadorForca ?? 0, ce),
         jogada: h ? atributoDaJogada(h, at) + hv + centelhaNaJogada(ce, hv) + acerto : null,
       };
     }),
   };
   // o equipamento que a criatura sempre usa (D-188, D-206): a armadura soma a Absorção e tira a Penalidade da Esquiva e
   // do Bloqueio; o escudo soma a Defesa dele ao Bloqueio e tira a Penalidade dele só da Esquiva (armas-e-armaduras.md)
-  const eq = e.equipamento;
-  if (eq && (eq.armadura || eq.escudo)) {
-    const arm = eq.armadura ? ARMADURA[eq.armadura] : null, esc = eq.escudo ? ESCUDO[eq.escudo] : null;
+  const idArm = e.equipamento?.armaduras?.find((p) => p.vestida !== false)?.base;
+  const idEsc = e.equipamento?.arsenal?.find((p) => p.ref.startsWith('e:'))?.ref.slice(2);
+  if (idArm || idEsc) {
+    const arm = idArm ? ARMADURA[idArm] : null, esc = idEsc ? ESCUDO[idEsc] : null;
     const pen = arm?.penalidade ?? 0, penE = esc?.penalidade ?? 0, bl = esc?.bloqCaC ?? 0;
     const ce2: any = {
       esquiva: esquiva - pen - penE, bloqueio: bloqueio - pen + bl,

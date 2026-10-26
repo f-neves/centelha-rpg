@@ -33,7 +33,7 @@ const slug = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCa
 
 // As diferenças aceitas, uma por `id.conta`, cada uma com o motivo. Cada uma é defeito ou dúvida da FICHA, e não do
 // motor, e está em tmp/executora/fase3/perguntas.md para o Arquiteto; a entrada sai daqui quando a ficha se corrigir.
-// `id.tamanhoEscolhido` aceita a escolha do Tamanho fora da folga de 5%.
+// A lista encolhe com o problema: a entrada que não foi usada nesta execução também falha.
 const SEM_SOCIABILIDADE = 'a Defesa Social da ficha usa Sociabilidade 1, e a tabela Habilidades não tem a linha: o motor lê 0 (perguntas.md, P3)';
 const ACEITAS = {
   'bralani.defesaSocial': SEM_SOCIABILIDADE,
@@ -41,7 +41,6 @@ const ACEITAS = {
   'janni.defesaSocial': SEM_SOCIABILIDADE,
   'homem-lagarto.defesaSocial': SEM_SOCIABILIDADE,
   'grifo.defesaSocial': 'a ficha usa a Sobrevivência da fera de Inteligência 1 (a nota de regras.json, derivados.defesaSocial); o formato-criatura.md, seção 3, a dá só à categoria animal, e as 15 outras bestas mágicas fera de Inteligência 1 usam a Sociabilidade (perguntas.md, P4)',
-  'lobo-atroz.tamanhoEscolhido': 'Pequeno com 0,49 m², 9% acima do corte, pela decisão 7 ("os quadrúpedes de 50 a 75 kg ... Pequenos"), a exceção que o confere_etapa2.py também aceita; a ficha pede que o autor confira',
 };
 
 async function carregarMotor() {
@@ -77,26 +76,10 @@ const confere = (id, conta, vem, deve, tol = 0) => {
 const tolPeso = (p) => Math.max(0.02, Math.abs(p) * 0.01);
 
 for (const [id, c] of Object.entries(FIX.criaturas)) {
-  const e = structuredClone(c.entrada), x = c.esperado, f = c.ficha;
-  // as escolhas que a ficha fez (D-216): o Tamanho perto do corte e a linha de PV na zona de transição
-  // só vira escolha quando a área aceita os dois e a ficha ficou com o vizinho; senão a conta pela área é cobrada
-  const escolha = (area, tam, rotulo) => {
-    if (!tam || area === undefined) return undefined;
-    const aceita = M.tamanhosDaArea(area);
-    if (!aceita.includes(slug(tam))) {
-      if (ACEITAS[`${id}.${rotulo}Escolhido`]) { aceitas.push(`${id}.${rotulo}Escolhido`); return slug(tam); }
-      falhas.push({ id, conta: `${rotulo} (a área não aceita o da ficha)`, vem: aceita.join(' ou '), deve: slug(tam) });
-      return undefined;
-    }
-    return aceita[0] === slug(tam) ? undefined : slug(tam);
-  };
-  const t1 = escolha(e.corpo.area, f.tamanho, 'tamanho');
-  if (t1) e.corpo.tamanhoEscolhido = t1;
-  const t2 = escolha(e.corpo.segundoTamanho?.area, f.segundoTamanho, 'segundoTamanho');
-  if (t2) e.corpo.segundoTamanho.tamanhoEscolhido = t2;
-  if (f.linhaPV) e.corpo.linhaPV = f.linhaPV;
+  // a entrada é a que o conversor escreve, com as escolhas da ficha (o Tamanho perto do corte, a linha de PV na zona)
+  const e = c.entrada, x = c.esperado;
   const r = M.criatura(e);
-  if (f.enxame) aceitas.push(`${id}.pv (o enxame não tem formato: formato-criatura.md, fim da seção 4)`);
+  if (c.ficha?.enxame) aceitas.push(`${id}.pv (o enxame não tem formato: formato-criatura.md, fim da seção 4)`);
   else confere(id, 'pv', r.pv, x.pv);
   if (x.pesoErguido === null) confere(id, 'pesoErguido', r.pesoErguido, null);
   else if (x.pesoErguido !== undefined) confere(id, 'pesoErguido', r.pesoErguido, x.pesoErguido, tolPeso(x.pesoErguido));
@@ -107,12 +90,12 @@ for (const [id, c] of Object.entries(FIX.criaturas)) {
   for (const [k, v] of Object.entries(x.absorcao || {})) confere(id, `absorcao.${k}`, r.absorcao?.[k], v);
   for (const [k, v] of Object.entries(x.comEquipamento || {})) confere(id, `comEquipamento.${k}`, r.comEquipamento?.[k], v);
   for (const a of x.ataques) {
-    const ra = r.ataques.find((y) => y.nome === a.nome), ea = e.ataques.find((y) => y.nome === a.nome);
+    const ra = r.ataques.find((y) => y.nome === a.nome);
     if (!ra) { falhas.push({ id, conta: `ataque ${a.nome}`, vem: 'ausente', deve: 'presente' }); continue; }
     if (a.velocidade !== undefined) confere(id, `${a.nome}.velocidade`, ra.velocidade, a.velocidade);
     if (a.danoMedio !== undefined) confere(id, `${a.nome}.danoMedio`, ra.danoMedio, a.danoMedio);
     // a frase "Jogada:" da ficha soma o Atributo, a Habilidade e a Centelha, sem o Acerto da coluna
-    if (a.jogada !== undefined) confere(id, `${a.nome}.jogada`, ra.jogada - (ea.acerto || 0), a.jogada);
+    if (a.jogada !== undefined) confere(id, `${a.nome}.jogada`, ra.jogada - (ra.acerto || 0), a.jogada);
   }
   for (const [fid, fo] of Object.entries(c.formas || {})) {
     const rf = M.criatura(M.comForma(c.entrada, fo.entrada));
@@ -147,6 +130,7 @@ for (const [quem, ficha, conta, deve] of JOGADOR) {
 }
 
 const nC = Object.keys(FIX.criaturas).length;
+for (const k of Object.keys(ACEITAS)) if (!aceitas.includes(k)) falhas.push({ id: k, conta: 'ACEITAS sem uso (a diferença sumiu: tire a entrada)', vem: 'igual', deve: 'diferente' });
 if (falhas.length) {
   const porConta = {};
   for (const x of falhas) { const k = x.conta.replace(/^.*\.(velocidade|danoMedio|jogada)$/, 'ataque.$1').replace(/^formas\.[^.]+\./, 'formas.'); (porConta[k] ??= []).push(x); }
