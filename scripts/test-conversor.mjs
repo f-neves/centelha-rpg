@@ -137,6 +137,11 @@ for (const [nome, texto, re] of PLANTADOS) {
   const { paradas } = converterFicha(texto, { site: SITE });
   if (!paradas.some((p) => re.test(p))) falhas.push(`o defeito plantado (${nome}) não parou o conversor; paradas: ${JSON.stringify(paradas)}`);
 }
+// rodar de novo depois da troca (A5): o JSON novo no lugar do site de hoje dá a mesma saída (a cada lote se roda de novo)
+for (const id of Object.keys(DIFERENCAS)) {
+  const md = ler(`${id}.md`), a = converterFicha(md, { site: JSON.parse(ler(`${id}-site.json`)) }).criatura;
+  if (JSON.stringify(converterFicha(md, { site: a }).criatura) !== JSON.stringify(a)) falhas.push(`${id}: com o próprio JSON novo no lugar do site, o conversor dá outra saída`);
+}
 // a revisao que não aponta: o caminho é conferido pela função do conversor
 const { criatura: lobo } = converterFicha(LOBO, { site: SITE });
 if (!aponta(lobo, 'ataques.Mordida.nivelPerfuracao') || !aponta(lobo, 'formas.lobo') || !aponta(lobo, 'habilidadesEspeciais.Mordida que derruba e amaldiçoa')) falhas.push('aponta() recusou um caminho que existe');

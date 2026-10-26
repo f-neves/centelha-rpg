@@ -40,7 +40,7 @@ const ACEITAS = {
   'centauro.defesaSocial': SEM_SOCIABILIDADE,
   'janni.defesaSocial': SEM_SOCIABILIDADE,
   'homem-lagarto.defesaSocial': SEM_SOCIABILIDADE,
-  'grifo.defesaSocial': 'a ficha usa a Sobrevivência da fera de Inteligência 1 (a nota de regras.json, derivados.defesaSocial); o formato-criatura.md, seção 3, a dá só à categoria animal, e as 15 outras bestas mágicas fera de Inteligência 1 usam a Sociabilidade (perguntas.md, P4)',
+  'grifo.defesaSocial': 'a ficha usa a Sobrevivência da Inteligência 1 (C-006; defesas.md:78); o formato-criatura.md, seção 3, e o GUIA-FICHA.md, seção 9, a dão só à categoria animal, e as outras 54 fichas que não são animal e têm Inteligência 1 usam a Sociabilidade (perguntas.md, P4, ao autor)',
 };
 
 async function carregarMotor() {
@@ -129,6 +129,16 @@ for (const [quem, ficha, conta, deve] of JOGADOR) {
   confere(`jogador (${quem})`, conta, r[conta], deve, conta === 'pesoErguido' ? tolPeso(deve) : 0);
 }
 
+// a tabela de Vida mora duas vezes em regras.json: o texto que a mesa mostra (`linhas`) e os números que o motor lê
+// (`conta`); as duas têm de dizer o mesmo, linha por linha, pelo exemplo de Vigor 3 que o texto já traz
+{
+  const RG = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/regras.json'), 'utf8')).derivados.pv.massa;
+  if (RG.linhas.length !== RG.conta.length) falhas.push({ id: 'regras.json', conta: 'derivados.pv.massa: linhas e conta', vem: RG.conta.length, deve: RG.linhas.length });
+  RG.linhas.forEach((l, i) => {
+    const k = RG.conta[i];
+    if (k) confere('regras.json', `derivados.pv.massa, linha ${i + 1} (${l.massa}) com Vigor 3`, k.base + Math.floor((3 * k.vigorMult) / k.vigorDivisor), l.comVigor3);
+  });
+}
 const nC = Object.keys(FIX.criaturas).length;
 for (const k of Object.keys(ACEITAS)) if (!aceitas.includes(k)) falhas.push({ id: k, conta: 'ACEITAS sem uso (a diferença sumiu: tire a entrada)', vem: 'igual', deve: 'diferente' });
 if (falhas.length) {

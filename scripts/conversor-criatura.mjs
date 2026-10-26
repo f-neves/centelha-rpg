@@ -79,7 +79,8 @@ export function converterFicha(texto, { site = null } = {}) {
   c.nomeIngles = /^não há ficha/i.test(ing) ? null : ing.split(/ \(|;/)[0].trim();
   const cpc = (campo(I, 'Categoria · papel · Centelha') || '').split('·').map((x) => jogo(x));
   c.categoria = slug(cpc[0] || ''); c.papel = slug(cpc[1] || '');
-  c.ameaca = inteiro(campo(I, 'Ameaça')) ?? site?.ameacaLegada;
+  // o site de hoje e o JSON novo (depois da troca, A5): o conversor lê os dois, para rodar de novo a cada lote
+  c.ameaca = inteiro(campo(I, 'Ameaça')) ?? site?.ameaca ?? site?.ameacaLegada;
   if (c.ameaca === undefined) para('sem Ameaça na ficha nem no site');
   c.centelha = inteiro(cpc[2]);
   if (c.centelha === undefined) para('Centelha ilegível na linha Categoria');
@@ -450,7 +451,7 @@ export function converterFicha(texto, { site = null } = {}) {
   c.lore = (site?.lore || []).filter((x) => x.titulo !== 'No jogo' && !(x.titulo === 'Comportamento' && /^Social:/.test(x.texto)))
     .map((x) => (x.titulo === 'Comportamento' ? { ...x, texto: x.texto.replace(/\s*Social: [^.]*\.$/, '') } : x))
     .map((x) => { const a = amb.find(([t]) => t === x.titulo || t.replace(/\s*\(novo título:.*\)$/, '') === x.titulo); return a ? { titulo: (a[0].match(/\(novo título: (.*)\)$/) || [])[1] ?? x.titulo, texto: a[1] } : x; });
-  c.imagens = site?.imagem ? [site.imagem] : [];
+  c.imagens = site?.imagens ?? (site?.imagem ? [site.imagem] : []);
 
   // ----- as formas (D-217, D-230): cada linha da Variantes que a linha Formas nomeia, com o que muda
   if (nomesFormas) {
