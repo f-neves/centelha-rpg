@@ -101,6 +101,7 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 |---|:---:|
 | Adaga | 60 pc |
 | Bastão | 40 pc |
+| Chicote | 20 pc |
 | Espada Curta | 150 pc |
 | Machadinha | 80 pc |
 | Sabre | 170 pc |
@@ -116,6 +117,7 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 | Montante | 700 pc |
 | Alabarda | 280 pc |
 | Bordão | 30 pc |
+| Corrente Farpada | 180 pc |
 | Lança | 50 pc |
 | Lança Longa | 90 pc |
 | Arco Composto | 550 pc |

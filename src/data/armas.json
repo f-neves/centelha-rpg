@@ -1575,6 +1575,87 @@
     "municao": null
   },
   {
+    "id": "corrente-farpada",
+    "nome": "Corrente Farpada",
+    "tipo": "arma",
+    "preco": {
+      "pc": 180
+    },
+    "peso": 4,
+    "descricao": "Corrente com farpas, girada com as duas mãos: bate de longe e rasga a carne, mas é lenta e não guarda.",
+    "tags": [
+      "alcance",
+      "sangramento"
+    ],
+    "arma": {
+      "classe": "haste",
+      "atrib": "forca",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 0,
+      "defesaArma": 0,
+      "maos": 2,
+      "ticks": 7,
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "tipoDano": "corte",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "corte",
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
+    "id": "chicote",
+    "nome": "Chicote",
+    "tipo": "arma",
+    "preco": {
+      "pc": 20
+    },
+    "peso": 1,
+    "descricao": "Couro trançado de ponta fina: alcança longe e corta a pele, mas não guarda.",
+    "tags": [
+      "alcance"
+    ],
+    "arma": {
+      "classe": "leve",
+      "atrib": "destreza",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": -2,
+      "acerto": 1,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 5,
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "tipoDano": "corte",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "corte",
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
     "id": "desarmado",
     "nome": "Punhos",
     "tipo": "arma",

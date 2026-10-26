@@ -2724,10 +2724,10 @@
       "reforma": {
         "nota": "A reforma de P/G/R da D-082 (tiro e arremesso na rodada 4a, corpo a corpo na 4b, a Arte na 4c, 10/10/2026): Preparo = Velocidade − 1 − Recuperação, com o Golpe sempre em 1 Tick, e toda arma de tiro tem Recuperação. Fica numa chave à parte porque `preparo` (a fórmula por classe, acima) é lida pelo motor do Grid (combate-tempo.ts), congelado pela D-054: o motor passa a ler esta na passada do Grid (N22 em N-grid-pendencias.md). Os números são os da tabela 'Preparo, Golpe e Recuperação' do capítulo Combate Físico, e o test-capitulo-armas.mjs os prende nos dois lados. O corpo a corpo, a Investida, a Rajada e a dupla (rodada 4b) estão em `corpoACorpo`, `investida`, `rajada` e `dupla`, na mesma chave e com o mesmo motivo.",
         "corpoACorpo": [
-          { "id": "leve", "nome": "Leve", "velocidade": 5, "preparo": 1, "golpe": 1, "recuperacao": 3, "armas": ["adaga", "espada-curta", "machadinha", "bastao", "sabre"] },
+          { "id": "leve", "nome": "Leve", "velocidade": 5, "preparo": 1, "golpe": 1, "recuperacao": 3, "armas": ["adaga", "espada-curta", "machadinha", "bastao", "sabre", "chicote"] },
           { "id": "media", "nome": "Média", "velocidade": 6, "preparo": 2, "golpe": 1, "recuperacao": 3, "armas": ["espada-longa", "machado", "espada-serrilhada", "maca", "picareta-de-guerra", "martelo", "maca-estrela"] },
           { "id": "haste-media", "nome": "Haste média", "velocidade": 6, "preparo": 2, "golpe": 1, "recuperacao": 3, "armas": ["lanca", "bordao"] },
-          { "id": "haste-guerra", "nome": "Haste de Guerra", "velocidade": 7, "preparo": 3, "golpe": 1, "recuperacao": 3, "armas": ["alabarda", "lanca-longa"] },
+          { "id": "haste-guerra", "nome": "Haste de Guerra", "velocidade": 7, "preparo": 3, "golpe": 1, "recuperacao": 3, "armas": ["alabarda", "lanca-longa", "corrente-farpada"] },
           { "id": "pesada", "nome": "Pesada", "velocidade": 7, "preparo": 3, "golpe": 1, "recuperacao": 3, "armas": ["montante", "martelo-de-guerra", "machado-pesado"] },
           { "id": "punhos", "nome": "Punhos", "velocidade": 5, "preparo": 1, "golpe": 1, "recuperacao": 3, "armas": ["desarmado"] }
         ],

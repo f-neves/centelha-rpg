@@ -103,6 +103,8 @@ const blocoArmaEnvelope = z.object({
   classe: z.enum(['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso']),
   atrib: z.string(), pericia: z.string(), dado: z.number().int().min(1).max(3), danoBonus: z.number().int().optional(), acerto: z.number().int(),
   defesaArma: z.number().int(), maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0).optional(),
+  // Preparo, Golpe e Recuperação (formato-criatura.md, seção 6); a soma tem de ser a Velocidade, conferida abaixo.
+  pgr: z.tuple([z.number().int().min(1), z.literal(1), z.number().int().min(1)]).optional(),
   forcaMult: z.number().optional(), forcaCap: z.number().int().optional(), forcaMin: z.number().int().optional(),
   // A Rede não causa dano (D-076): a página e a ficha mostram isso; `dado` e `tipoDano` ficam, porque o Grid os lê.
   semDano: z.boolean().optional(),
@@ -113,7 +115,7 @@ const blocoArmaEnvelope = z.object({
   tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(5),
   fichaModo: z.enum(['corte', 'perfurante', 'impacto']).optional(),
   modos: z.array(z.object({ tipo: z.enum(['corte', 'perfurante', 'impacto']), perf: z.number().int().min(0).max(5).optional(), principal: z.boolean() })),
-}).nullable();
+}).refine((a) => !a.pgr || a.pgr[0] + a.pgr[1] + a.pgr[2] === a.ticks, { message: 'o pgr não soma a Velocidade (ticks)' }).nullable();
 const blocoArmaduraEnvelope = z.object({
   classe: z.enum(['nenhuma', 'leve', 'media', 'pesada']), soak: soakModos,
   resistPerf: z.number().int().min(0), penalidade: z.number().int().min(0),

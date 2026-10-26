@@ -199,7 +199,10 @@ const blocoArma = z.object({
   atrib: reference('atributos'), pericia: reference('habilidades'),
   dado: z.number().int().min(1).max(3), danoBonus: z.number().int().optional(), acerto: z.number().int(),
   defesaArma: z.number().int(),
-  maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0),
+  maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0).optional(),
+  // Preparo, Golpe e Recuperação, em Ticks (formato-criatura.md, seção 6): a soma é a Velocidade (`ticks`).
+  // Só nas armas entradas no formato do motor novo, sem Fôlego (PERGUNTAS.md, 33.2).
+  pgr: z.tuple([z.number().int().min(1), z.literal(1), z.number().int().min(1)]).optional(),
   forcaMult: z.number().optional(),
   // A Rede não causa dano (D-076): a página e a ficha mostram isso; `dado` e `tipoDano` ficam, porque o Grid os lê.
   semDano: z.boolean().optional(),
