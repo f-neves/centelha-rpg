@@ -1,0 +1,147 @@
+// test-motor.mjs · o motor único (src/lib/motor.ts) contra os números conferidos das fichas (plano-conversao.md, A1 e A2).
+//
+// O QUE ISTO GUARDA. As fichas .md de criatura escrevem os números que o conferidor da Bestiarista confere (PV, Defesas,
+// Absorção, peso erguido, Tamanho, faixa, Energia, Iniciativa, Mana e, por ataque, a jogada, o dano médio e a
+// Velocidade). O gen-criaturas-esperado.mjs os copia para scripts/fixtures/criaturas-esperado.json junto com as entradas,
+// e este teste pede cada conta ao motor e compara número por número. Acusa a criatura, a conta e os dois números.
+// Uma diferença só se aceita com o motivo escrito em ACEITAS, abaixo.
+//
+// O jogador também tem números esperados, escritos aqui com a procedência (D-234; plano-conversao.md, seção 0).
+//
+// O CONTRATO que o motor cumpre (o teste foi escrito antes dele, e começa vermelho):
+//   criatura(entrada)       → { pv, pesoErguido, faixa, tamanho, segundoTamanho, esquiva, bloqueio, defesaMental,
+//                               defesaSocial, iniciativa, energia, mana, absorcao: {impacto, corte, perfuracao},
+//                               comEquipamento, ataques: [{ nome, velocidade, danoMedio, jogada }] }
+//                             o Tamanho é o id (`medio`), a Defesa de Inteligência 0 é 'imune', a Mana de quem não tem
+//                             Arte é null, e a `jogada` inclui o `acerto` do ataque;
+//   tamanhosDaArea(area)    → os ids que a área aceita, o do corte primeiro e, a menos de 5% dele, o vizinho
+//                             (decisoes-autor §13); a entrada guarda `corpo.tamanhoEscolhido` só quando a ficha
+//                             ficou com o vizinho;
+//   comForma(entrada, muda) → a entrada da forma, montada por cima da principal (D-217);
+//   personagem(ficha)       → { pv, pesoErguido }, com a raça, os Atributos, as Habilidades e a `corpo.massa`.
+//
+//   node scripts/test-motor.mjs
+import fs from 'node:fs';
+import path from 'node:path';
+import os from 'node:os';
+import { pathToFileURL } from 'node:url';
+import { build } from 'esbuild';
+
+const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
+const FIX = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/fixtures/criaturas-esperado.json'), 'utf8'));
+const slug = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-');
+
+// As diferenças aceitas, uma por `id.conta`, cada uma com o motivo. Vazio, que é o estado bom.
+const ACEITAS = {};
+
+async function carregarMotor() {
+  const fonte = path.join(ROOT, 'src/lib/motor.ts');
+  if (!fs.existsSync(fonte)) return null;
+  const saida = path.join(os.tmpdir(), `motor-test-${process.pid}.mjs`);
+  await build({
+    entryPoints: [fonte], outfile: saida, bundle: true, format: 'esm', platform: 'node',
+    loader: { '.json': 'json' }, logLevel: 'error', define: { 'import.meta.env': 'globalThis.__ENV__' },
+  });
+  globalThis.__ENV__ = globalThis.__ENV__ || { BASE_URL: '/', MODE: 'test' };
+  try { return await import(pathToFileURL(saida).href); } finally { try { fs.unlinkSync(saida); } catch { /* o sistema limpa */ } }
+}
+
+const M = await carregarMotor();
+if (!M) {
+  console.log('✘ test-motor: src/lib/motor.ts não existe (o A2 o escreve); nenhuma das '
+    + `${Object.keys(FIX.criaturas).length} criaturas do criaturas-esperado.json foi conferida`);
+  process.exit(1);
+}
+
+const falhas = [], aceitas = [];
+let contas = 0;
+const confere = (id, conta, vem, deve, tol = 0) => {
+  contas++;
+  const igual = typeof deve === 'number' && typeof vem === 'number' ? Math.abs(vem - deve) <= tol : vem === deve;
+  if (igual) return;
+  const chave = `${id}.${conta}`;
+  if (ACEITAS[chave]) { aceitas.push(chave); return; }
+  falhas.push({ id, conta, vem, deve });
+};
+// o peso erguido da ficha vem com duas casas, e o conferidor confere a 1% (GUIA-FICHA.md, seção 7)
+const tolPeso = (p) => Math.max(0.02, Math.abs(p) * 0.01);
+
+for (const [id, c] of Object.entries(FIX.criaturas)) {
+  const e = structuredClone(c.entrada), x = c.esperado, f = c.ficha;
+  // as escolhas que a ficha fez (D-216): o Tamanho perto do corte e a linha de PV na zona de transição
+  // só vira escolha quando a área aceita os dois e a ficha ficou com o vizinho; senão a conta pela área é cobrada
+  const escolha = (area, tam, rotulo) => {
+    if (!tam || area === undefined) return undefined;
+    const aceita = M.tamanhosDaArea(area);
+    if (!aceita.includes(slug(tam))) { falhas.push({ id, conta: `${rotulo} (a área não aceita o da ficha)`, vem: aceita.join(' ou '), deve: slug(tam) }); return undefined; }
+    return aceita[0] === slug(tam) ? undefined : slug(tam);
+  };
+  const t1 = escolha(e.corpo.area, f.tamanho, 'tamanho');
+  if (t1) e.corpo.tamanhoEscolhido = t1;
+  const t2 = escolha(e.corpo.segundoTamanho?.area, f.segundoTamanho, 'segundoTamanho');
+  if (t2) e.corpo.segundoTamanho.tamanhoEscolhido = t2;
+  if (f.linhaPV) e.corpo.linhaPV = f.linhaPV;
+  const r = M.criatura(e);
+  if (f.enxame) aceitas.push(`${id}.pv (o enxame não tem formato: formato-criatura.md, fim da seção 4)`);
+  else confere(id, 'pv', r.pv, x.pv);
+  if (x.pesoErguido === null) confere(id, 'pesoErguido', r.pesoErguido, null);
+  else if (x.pesoErguido !== undefined) confere(id, 'pesoErguido', r.pesoErguido, x.pesoErguido, tolPeso(x.pesoErguido));
+  confere(id, 'faixa', r.faixa, x.faixa);
+  if (x.tamanho) confere(id, 'tamanho', r.tamanho, slug(x.tamanho));
+  if (x.segundoTamanho) confere(id, 'segundoTamanho', r.segundoTamanho, slug(x.segundoTamanho));
+  for (const k of ['esquiva', 'bloqueio', 'defesaMental', 'defesaSocial', 'iniciativa', 'energia', 'mana']) if (k in x) confere(id, k, r[k], x[k]);
+  for (const [k, v] of Object.entries(x.absorcao || {})) confere(id, `absorcao.${k}`, r.absorcao?.[k], v);
+  for (const [k, v] of Object.entries(x.comEquipamento || {})) confere(id, `comEquipamento.${k}`, r.comEquipamento?.[k], v);
+  for (const a of x.ataques) {
+    const ra = r.ataques.find((y) => y.nome === a.nome), ea = e.ataques.find((y) => y.nome === a.nome);
+    if (!ra) { falhas.push({ id, conta: `ataque ${a.nome}`, vem: 'ausente', deve: 'presente' }); continue; }
+    if (a.velocidade !== undefined) confere(id, `${a.nome}.velocidade`, ra.velocidade, a.velocidade);
+    if (a.danoMedio !== undefined) confere(id, `${a.nome}.danoMedio`, ra.danoMedio, a.danoMedio);
+    // a frase "Jogada:" da ficha soma o Atributo, a Habilidade e a Centelha, sem o Acerto da coluna
+    if (a.jogada !== undefined) confere(id, `${a.nome}.jogada`, ra.jogada - (ea.acerto || 0), a.jogada);
+  }
+  for (const [fid, fo] of Object.entries(c.formas || {})) {
+    const rf = M.criatura(M.comForma(c.entrada, fo.entrada));
+    for (const [k, v] of Object.entries(fo.esperado)) {
+      if (k === 'pesoErguido') confere(id, `formas.${fid}.${k}`, rf[k], v, tolPeso(v));
+      else confere(id, `formas.${fid}.${k}`, rf[k], k === 'tamanho' ? slug(v) : v);
+    }
+  }
+}
+
+// O jogador (D-234): o PV pelo Tamanho da raça, e não pela massa; o peso erguido pela massa (a R15, D-184).
+const pessoa = (raca, vigor, massa, extra = {}) => ({
+  raca, atributos: { forca: 3, destreza: 3, vigor, percepcao: 3, inteligencia: 3, raciocinio: 3, influencia: 3, perspicacia: 3, compostura: 3, ...extra.atributos },
+  habilidadesSec: extra.habilidadesSec || {}, corpo: { massa },
+});
+const JOGADOR = [
+  // "um elfo de 25 kg continua Médio" (D-234): a linha do Médio, 25 + Vigor × 3
+  ['elfo de 25 kg, Vigor 3', pessoa('elfo', 3, 25), 'pv', 34],
+  // "um gnomo de 50 kg continua Pequeno" (D-234): a linha do Pequeno, 20 + Vigor × 2 (racas.md:76)
+  ['gnomo de 50 kg, Vigor 3', pessoa('gnomo', 3, 50), 'pv', 26],
+  // "um orc de 500 kg continua Médio" (D-234), com a Vitalidade por cima (+ Vigor, racas.json; racas.md:113,129)
+  ['orc de 500 kg, Vigor 3', pessoa('orc', 3, 500), 'pv', 37],
+  // o peso erguido muda com a massa: humano de Força 6 e Halterofilismo 6, de 299 a 354 kg com 60 a 80 kg (plano, seção 0)
+  ['humano de 60 kg, Força 6, Halterofilismo 6', pessoa('humano', 3, 60, { atributos: { forca: 6 }, habilidadesSec: { halterofilismo: 6 } }), 'pesoErguido', 299.1],
+  ['humano de 80 kg, Força 6, Halterofilismo 6', pessoa('humano', 3, 80, { atributos: { forca: 6 }, habilidadesSec: { halterofilismo: 6 } }), 'pesoErguido', 354.03],
+  // o exemplo do guia: soldado veterano de 82 kg, Força 3, Halterofilismo 1, P = 143,31 kg (GUIA-FICHA.md, seção 7)
+  ['soldado de 82 kg, Força 3, Halterofilismo 1', pessoa('humano', 3, 82, { habilidadesSec: { halterofilismo: 1 } }), 'pesoErguido', 143.31],
+];
+for (const [quem, ficha, conta, deve] of JOGADOR) {
+  const r = M.personagem(ficha);
+  confere(`jogador (${quem})`, conta, r[conta], deve, conta === 'pesoErguido' ? tolPeso(deve) : 0);
+}
+
+const nC = Object.keys(FIX.criaturas).length;
+if (falhas.length) {
+  const porConta = {};
+  for (const x of falhas) { const k = x.conta.replace(/^.*\.(velocidade|danoMedio|jogada)$/, 'ataque.$1').replace(/^formas\.[^.]+\./, 'formas.'); (porConta[k] ??= []).push(x); }
+  console.log(`✘ test-motor: ${falhas.length} diferença(s) em ${contas} contas de ${nC} criaturas e ${JOGADOR.length} jogadores`);
+  for (const [k, l] of Object.entries(porConta).sort((a, b) => b[1].length - a[1].length)) {
+    console.log(`  · ${k}: ${l.length}`);
+    for (const x of l.slice(0, 5)) console.log(`      ${x.id}, ${x.conta}: o motor dá ${JSON.stringify(x.vem)}, a ficha diz ${JSON.stringify(x.deve)}`);
+  }
+  process.exit(1);
+}
+console.log(`✓ test-motor · ${contas} contas de ${nC} criaturas e ${JOGADOR.length} jogadores batem com as fichas`
+  + (aceitas.length ? ` · ${aceitas.length} aceitas com motivo` : ''));

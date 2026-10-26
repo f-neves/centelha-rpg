@@ -2494,7 +2494,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 - [x] **L49 · [FECHADO em 07/09/2026, commit `2fe37cd`] `test-bandeiras-mesa.mjs` entrou no
   `smoke` do `package.json` (9 scripts) e não entrou na matriz do `.github/workflows/validate.yml`
   (8 nomes fixos): a prova inteira de porte/gate na Vida nunca rodava no CI, só na máquina de
-  quem lembrasse de rodar `npm run smoke` antes de empurrar. E `test-portoes.mjs:452`
+  quem lembrasse de rodar `npm run smoke` antes de empurrar. E `test-portoes.mjs:456`
   · `roda os mesmos em matriz a cada push` afirmava
   "o CI roda os mesmos em matriz a cada push" sem nada no repositório conferir isso · o próprio
   caso que o arquivo existe para pegar.

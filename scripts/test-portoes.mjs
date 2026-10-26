@@ -89,6 +89,7 @@ const ok = (cond, msg) => {
 // de exceções que não encolhe junto com o problema vira ficção em duas semanas.
 const TESTES_FORA = {
   'test-grid.mjs': 'D-071 (05/10/2026): desligado do smoke e da matriz do CI, porque o flake "[aquece]" travava as rodadas e o Grid está congelado (D-054). Religa na passada única do Grid (N-grid-pendencias.md, N21).',
+  'test-motor.mjs': 'A1 da Fase 3 (plano-conversao.md): escrito antes do motor e vermelho até ele existir, e o validate roda em todo commit. Entra no validate no commit do A2 que o deixa verde (src/lib/motor.ts).',
 };
 
 // OS GERADORES SEM `--check` NO BUILD, e o motivo.
@@ -105,6 +106,7 @@ const GERADORES_FORA = {
   'gen-lista-equip.mjs': 'L31 · escreve em `D&D/armas&armaduras/`, inteira fora do git (`.gitignore:25`): não há arquivo commitado para divergir. Mesma família do `gen-monsters.mjs` acima, achado nesta rodada, escalado ao TechLead (a pendência original listava sete supondo `--check` cabível nos sete). Ver 21-executora.md.',
   'gen-creditos-equip.mjs': 'L31 · mesmo motivo do `gen-lista-equip.mjs`: escreve em `D&D/armas&armaduras/`, fora do git. Ver 21-executora.md.',
   'gen-prompts-folhas.mjs': 'L31 · mesmo motivo do `gen-lista-equip.mjs`: escreve em `D&D/armas&armaduras/`, fora do git. Ver 21-executora.md.',
+  'gen-criaturas-esperado.mjs': 'A1 da Fase 3 (plano-conversao.md): a ENTRADA são as fichas de `tmp/arquiteto/bestiario/fichas-v3/`, fora do git, que o CI nunca tem. O arquivo gerado guarda o sha256 de cada ficha, e quem confere a saída é o test-motor.mjs.',
 };
 
 secao('· todo teste está em algum portão');
