@@ -158,6 +158,21 @@ if (aponta(lobo, 'atributos.inexistente') || aponta(lobo, 'ataques.Coice') || ap
   if (!criaturaNovaSchema.safeParse(c).success) falhas.push('P5: semMassa sem naoErgue recusado');
 }
 
+// P7: referências estruturadas, complemento próprio e números repetidos.
+{
+  const linha = (texto) => converterFicha(LOBO.replace('## Sentidos', '- teste P7 · Mordida · livro: ' + texto + ' **[formas: todas]**\n\n## Sentidos'), { site: SITE });
+  const a = linha('Agarrar, segura a presa no chão com o pé.');
+  const h = a.criatura.habilidadesEspeciais.find((h) => h.nome === 'teste P7');
+  if (h?.regra !== 'agarrar' || h?.texto !== 'segura a presa no chão com o pé') falhas.push('P7: complemento próprio perdido ou referência repetida');
+  if (linha('Agarrar.').criatura.habilidadesEspeciais.find((h) => h.nome === 'teste P7')?.texto !== undefined) falhas.push('P7: nome da regra repetido no texto');
+  if (!linha('Furtividade 12.').paradas.some((p) => p.includes('P7'))) falhas.push('P7: resumo de Habilidade calculada passou');
+  if (!linha('Esquiva 14.').paradas.some((p) => p.includes('P7'))) falhas.push('P7: Defesa calculada passou');
+  const c = structuredClone(lobo); c.habilidadesEspeciais.push({nome: 'P7', formas: 'todas', classe: 'livro', tecnica: {id: 'passo-veloz', nivel: 1}, arte: {id: 'fogo', nivel: 1}, texto: 'só descendo'});
+  if (!criaturaNovaSchema.safeParse(c).success) falhas.push('P7: esquema recusou referencias e texto');
+  c.habilidadesEspeciais.at(-1).tecnica.nivel = '1';
+  if (criaturaNovaSchema.safeParse(c).success) falhas.push('P7: esquema aceitou nível textual');
+}
+
 if (falhas.length) {
   console.log(`✘ test-conversor: ${falhas.length} falha(s)`);
   for (const f of falhas) console.log(`  · ${f}`);

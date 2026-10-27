@@ -142,6 +142,9 @@ Cada item de `habilidadesEspeciais`:
 | `ataque` | quando a habilidade sai de um ataque (D-220) | o segundo campo da linha |
 | `base` | poder natural (D-221) | "poder natural (base Gelo 3)": `{arte, nivel}` (C-037) |
 | `regra` | classe `livro` (D-221) | o id da regra do livro (`rajada`), e o card escreve o texto da regra |
+| `tecnica` | classe `livro`, condicional | `{id, nivel}`, referência à Técnica (P7, 26/10/2026) |
+| `arte` | classe `livro`, condicional | `{id, nivel}`, referência à Arte (P7, 26/10/2026) |
+| `texto` | classe `livro`, condicional | Só o que a criatura acrescenta: detalhe próprio e limite de jogo, como "segura a presa no chão com o pé" e "só descendo". Não repete o livro, outra parte da ficha ou número calculado pelo motor (P7, 26/10/2026). |
 | `ativacao`, `duracao`, `alcance`, `area`, `efeito`, `dano`, `resistencia`, `limiteDeUso` | classe `regra da ficha`; em `sem regra ainda`, só `efeito` | os oito campos da D-197 |
 
 O "PROVISÓRIO" da linha não vira campo: a habilidade entra na `revisao` com o motivo (D-222).
@@ -233,7 +236,7 @@ A forma humana e a de lobo têm Energia, Defesas, Esquiva e Bloqueio que a ficha
 13. **Visão no escuro.** O "(sem regra ainda)" saiu da descrição e virou `classe: "sem regra ainda"` no sentido (o mesmo campo e o mesmo valor das habilidades especiais, aprovado pela D-225), com uma linha na `revisao`.
 14. **A Furtividade** (D-226). A ficha guarda a Habilidade e as Especialidades como estão (o dragão: Furtividade 3, e +1 na neve; o lobisomem: 2), sem somar nada pelo Tamanho. Os dois exemplos já eram assim, e não mudaram.
 
-Ficaram fora dos dois exemplos, e precisam de formato antes da conversão: o veneno e a doença por id do catálogo (D-101; linhas de jogo do manual 5.4), o enxame, a luz, a Técnica (Proeza) e a imunidade fora do vocabulário (`sem regra ainda`).
+Ficaram fora dos dois exemplos, e precisam de formato antes da conversão: o veneno e a doença por id do catálogo (D-101; linhas de jogo do manual 5.4), o enxame, a luz e a imunidade fora do vocabulário (`sem regra ainda`).
 
 ## 5. O lobisomem: a ficha .md contra o exemplo
 

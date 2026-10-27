@@ -95,6 +95,7 @@
    },
    "paradas": [
     "Manobras, Sangue celestial: texto de trabalho no texto de jogo (\"C-039\"; manual 7.5)",
+    "Manobras, Sangue celestial: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
     "Sentidos, visão no escuro: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)"
    ]
   },
@@ -344,7 +345,10 @@
       "jogada": 12
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Sentidos Apurados: P7, texto copia o efeito da Técnica; espera lote de ajuste"
+   ]
   },
   "aguia-real": {
    "sha256": "3897341259d15eacfc1ad5ce74491ad322107a2dab7a962124464bd0ff32eb98",
@@ -1280,7 +1284,10 @@
       "jogada": 15
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Pisar Leve: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
+   ]
   },
   "assombracao": {
    "sha256": "77aaf5dd356172b2820797a183d6ab6f9cff0e87c0d7950beb51a62c2ab19c5d",
@@ -1894,7 +1901,10 @@
       "jogada": 5
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Emboscada: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
+   ]
   },
   "barghest-maior": {
    "sha256": "55a8d2e42aaabcbc169738c58412d5b6726c0e528622f164c0aa45324ff9217a",
@@ -3589,6 +3599,7 @@
     ]
    },
    "paradas": [
+    "Manobras, Pele ao vento: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
     "Variantes, forma élfica: Voo ilegível"
    ]
   },
@@ -4199,7 +4210,10 @@
       "jogada": 8
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Furtividade surpreendente: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
+   ]
   },
   "bulette": {
    "sha256": "10e5fb7dc2a9d969a0bc66feaf7e0710bf314bbc05d6de09b5589e60f31b69f7",
@@ -5416,7 +5430,10 @@
       "jogada": 18
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Camuflagem: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
+   ]
   },
   "capitao-da-guarda": {
    "sha256": "5d441783d7e87ca04486a4e6b6ca4aa6ee8ce7ae609c63b3849de8973d0f9db5",
@@ -6093,7 +6110,11 @@
       "jogada": 10
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Pele Curtida: P7, texto copia o efeito da Técnica; espera lote de ajuste",
+    "Manobras, Aguentar o Tranco: P7, texto copia o efeito da Técnica; espera lote de ajuste"
+   ]
   },
   "cavalo": {
    "sha256": "c12ff197883405ebaf20a649d6782068dc4b7a9a897e3cdbcd23d7ae877b6997",
@@ -9439,6 +9460,7 @@
     ]
    },
    "paradas": [
+    "Manobras, Reflexos ágeis: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
     "Variantes, disfarce: campo \"Altura e Massa\" que o conversor não conhece",
     "Variantes, disfarce: Equipamento fora do formato"
    ]
@@ -11218,7 +11240,10 @@
       "jogada": 16
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Postura Fluida: P7, texto copia o efeito da Técnica; espera lote de ajuste"
+   ]
   },
   "duergar": {
    "sha256": "daebb75fa74777ad9449e3a2afd040ed53ba15280e38be4201bec517cf03c7c3",
@@ -15228,6 +15253,7 @@
     ]
    },
    "paradas": [
+    "Manobras, Imobilidade: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
     "Manobras, Pele de pedra: texto de trabalho no texto de jogo (\"autor decidir\"; manual 7.5)"
    ]
   },
@@ -15924,7 +15950,10 @@
       "jogada": 8
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, passos silenciosos: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
+   ]
   },
   "gigante-da-tempestade": {
    "sha256": "284d2b1836843501d8a551e9b6dcaf1c8402fe2c0b3ae6d14c16c707d47e81e7",
@@ -16393,7 +16422,10 @@
       "jogada": 7
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, camuflagem branca: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
+   ]
   },
   "gigantopiteco": {
    "sha256": "2d081cdd74c219997f39f55c220eed2e9a6281465dfe67fbb2b8e90bd4cbe649",
@@ -16957,7 +16989,10 @@
       "jogada": 6
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Pequeno e furtivo: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
+   ]
   },
   "golem-de-argila": {
    "sha256": "0f380e8169d8ab03b127b58edcc26ec05c93062318a455362119eec3d77bdf52",
@@ -18526,7 +18561,10 @@
       "jogada": 13
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Ninho no penhasco: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
+   ]
   },
   "hezrou": {
    "sha256": "f84bfa22f73384248ea72945f2cf99016e85d7b2cdd96e1ad86a57045080ea92",
@@ -19203,7 +19241,10 @@
       "jogada": 7
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Furtivo: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
+   ]
   },
   "homem-lagarto": {
    "sha256": "6e4b8d5c6da44cff6384dae0fbe257885d0a0d9696225e8eef92a308ff30be28",
@@ -19314,7 +19355,10 @@
       "jogada": 5
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Sobrevivente do pântano: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
+   ]
   },
   "homem-rato-forma-humana": {
    "sha256": "253141aefe71b85dcfe3f400276a8c39b4790cc11eecb19c52d4004c1c96ac41",
@@ -20040,7 +20084,10 @@
       "jogada": 5
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Furtivo: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
+   ]
   },
   "kraken": {
    "sha256": "93589f708542fdcdff76866960371fefc8f0c47b568eeeca4b8b98e160b22fa2",
@@ -20719,7 +20766,10 @@
       "jogada": 19
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Sentidos do deserto: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
+   ]
   },
   "leao-das-cavernas-tardio": {
    "sha256": "165bf6154023ef0938b5e96c3d35fce3ee1e4a8d04b4a44d5fdd310296172b16",
@@ -24415,7 +24465,8 @@
     ]
    },
    "paradas": [
-    "Manobras, Corpo semi-etéreo: texto de trabalho no texto de jogo (\"C-039\"; manual 7.5)"
+    "Manobras, Corpo semi-etéreo: texto de trabalho no texto de jogo (\"C-039\"; manual 7.5)",
+    "Manobras, Corpo semi-etéreo: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
    ]
   },
   "merfolk": {
@@ -25084,7 +25135,11 @@
       "jogada": 12
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, casca vegetal: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
+    "Manobras, emboscada no pântano: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
+   ]
   },
   "morcego-atroz": {
    "sha256": "386cdebecde8615612c3919ca7d2c423cda23121998c4ba1585819476f880eff",
@@ -27070,7 +27125,10 @@
       "jogada": 14
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Camuflagem no covil: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
+   ]
   },
   "pegaso": {
    "sha256": "3c519d11794df6ec7ad8973476e8bd69fbf8c393f6d05f0fbd04cec8d9b8c7bb",
@@ -29994,7 +30052,8 @@
     ]
    },
    "paradas": [
-    "Manobras, Anda na lava: texto de trabalho no texto de jogo (\"C-039\"; manual 7.5)"
+    "Manobras, Anda na lava: texto de trabalho no texto de jogo (\"C-039\"; manual 7.5)",
+    "Manobras, Anda na lava: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
    ]
   },
   "sanguessuga-gigante": {
@@ -30610,7 +30669,9 @@
    },
    "paradas": [
     "Manobras, Multiataque aquático: texto de trabalho no texto de jogo (\"D-097\"; manual 7.5)",
+    "Manobras, Sentidos aguçados sob a água: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
     "Manobras, Resistência ao frio: texto de trabalho no texto de jogo (\"C-039\"; manual 7.5)",
+    "Manobras, Resistência ao frio: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
     "Sentidos, visão no escuro: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)"
    ]
   },
@@ -31163,7 +31224,10 @@
       "jogada": 9
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Furtividade nas profundezas: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
+   ]
   },
   "tarrasque": {
    "sha256": "96a3de3e48acd2b1adbac21f697d98165049b2ccf4cf8ecb16ca4077738a04dc",
@@ -31661,6 +31725,7 @@
    },
    "paradas": [
     "Manobras, Sangue resistente: texto de trabalho no texto de jogo (\"C-039\"; manual 7.5)",
+    "Manobras, Sangue resistente: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
     "Sentidos, visão no escuro: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)"
    ]
   },
@@ -32260,7 +32325,10 @@
       "jogada": 5
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Pele camaleão: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
+   ]
   },
   "trol": {
    "sha256": "60e2916af3a2e9ee98a41f3a12151d9956e12a6fdc25ddc7649f18b05fb24c6b",
@@ -32478,6 +32546,7 @@
    },
    "paradas": [
     "Especialidades: a Habilidade \"A Resistência\" não está no catálogo (D-231)",
+    "Manobras, bote vertical: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
     "Aptidões: Aptidões fora do formato"
    ]
   },
@@ -34018,7 +34087,8 @@
     ]
    },
    "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"caule central enraizado, com vinhas grossas que se erguem e agarram enraizada; a\")"
+    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"caule central enraizado, com vinhas grossas que se erguem e agarram enraizada; a\")",
+    "Manobras, camuflagem: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
    ]
   },
   "vrock": {
@@ -34865,7 +34935,9 @@
     ]
    },
    "paradas": [
-    "Manobras, Imunidade ao gelo: texto de trabalho no texto de jogo (\"C-039\"; manual 7.5)"
+    "Manobras, Escalador nato e furtivo na neve: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
+    "Manobras, Imunidade ao gelo: texto de trabalho no texto de jogo (\"C-039\"; manual 7.5)",
+    "Manobras, Imunidade ao gelo: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
    ]
   },
   "zumbi-humano": {

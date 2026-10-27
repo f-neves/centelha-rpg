@@ -29,7 +29,8 @@ const ARMAS = dado('armas.json').filter((a) => a.arma);
 const ARMADURAS = new Set(dado('armaduras.json').filter((a) => a.armadura).map((a) => a.id));
 const ESCUDOS = new Set(dado('escudos.json').filter((a) => a.escudo).map((a) => a.id));
 const ARTES = new Set(dado('artes.json').map((a) => a.id));
-const TECNICAS = new Set(dado('tecnicas.json').map((t) => t.id));
+const TECNICAS_DADOS = dado('tecnicas.json');
+const TECNICAS = new Set(TECNICAS_DADOS.map((t) => t.id));
 const VOC = dado('elementos-vocab.json');
 const ORDEM_ELEM = VOC.grupos.flatMap((g) => g.palavras);
 const ID_ELEM = Object.fromEntries([...ORDEM_ELEM.map((id) => [slug(id), id]), ...Object.entries(VOC.rotulos).map(([id, r]) => [slug(r), id])]);
@@ -360,10 +361,11 @@ export function converterFicha(texto, { site = null } = {}) {
       } else if (mt) {
         if (!TECNICAS.has(mt[1])) para(`Manobras, ${nome}: a Técnica ${mt[1]} não está no tecnicas.json`);
         he.tecnica = { id: mt[1], nivel: Number(mt[2]) };
-        lacuna(`habilidadesEspeciais.tecnica: a Técnica (Proeza) não tem formato (formato-criatura.md, fim da seção 4)`);
+
       } else if (ma) {
         he.arte = { id: slug(ma[1]), nivel: Number(ma[2]) };
-        lacuna('habilidadesEspeciais.arte: a Arte numa linha das Manobras não tem formato (D-196 a manda para a linha Artes)');
+        if (!ARTES.has(he.arte.id)) para('Manobras, ' + nome + ': Arte fora do catálogo');
+
       } else if (ataqueCitado(p)) he.ataque = ataqueCitado(p);
       else if (/^poder natural$/.test(p.trim())) para(`Manobras, ${nome}: "poder natural" sem a base (GUIA-FICHA.md, seção 11: "poder natural (base Vento 2)")`);
       else para(`Manobras, ${nome}: o campo "${p}" não é ataque, poder natural nem Técnica`);
@@ -383,7 +385,16 @@ export function converterFicha(texto, { site = null } = {}) {
       const t = semPonto(jogo(corpoTxt));
       const r = REGRAS_LIVRO.find(([re]) => re.test(t));
       if (r) he.regra = r[1];
-      if (!r || r[1] !== 'rajada') { he.texto = t; lacuna('habilidadesEspeciais.texto: a linha "livro:" que não é a Rajada não tem campo de texto no formato (perguntas.md, P7)'); }
+      // A referência já está em regra; só o complemento pertence à criatura (P7).
+      const semRajada = t.replace(/^a Rajada \(`combate\.md`\): até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e \+1 Tick de Recuperação por golpe a mais\.?/, '');
+      const detalhe = semRajada !== t ? semRajada.trim() : r ? t.replace(r[0], '').replace(/^[\s,;:.]+/, '').trim() : t;
+      const copiada = he.tecnica && TECNICAS_DADOS.find((x) => x.id === he.tecnica.id);
+      const normal = (x) => jogo(String(x)).toLowerCase().replace(/[^a-zà-ú0-9]+/g, ' ').trim();
+      if (/\b(Elementos|Furtividade)\b/i.test(detalhe) || /(?:jogada|dano médio|Defesa (?:Social|Mental)|Esquiva|Bloqueio)\s*[:+]?\s*[+−-]?\d/i.test(detalhe))
+        para('Manobras, ' + nome + ': P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste');
+      else if (copiada && normal(detalhe) && normal(copiada.texto).includes(normal(detalhe)))
+        para('Manobras, ' + nome + ': P7, texto copia o efeito da Técnica; espera lote de ajuste');
+      else if (detalhe) he.texto = detalhe;
     } else he.efeito = semPonto(jogo(corpoTxt));
     c.habilidadesEspeciais.push(he);
   }
