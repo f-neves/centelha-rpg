@@ -35,12 +35,175 @@ const slug = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCa
 // motor, e está em tmp/executora/fase3/perguntas.md para o Arquiteto; a entrada sai daqui quando a ficha se corrigir.
 // A lista encolhe com o problema: a entrada que não foi usada nesta execução também falha.
 const SEM_SOCIABILIDADE = 'a Defesa Social da ficha usa Sociabilidade 1, e a tabela Habilidades não tem a linha: o motor lê 0 (perguntas.md, P3)';
+// P4, 26/10/2026: números antigos das fichas que aguardam lote de ajuste da Bestiarista.
+// Pares [ficha antiga, motor aprovado], sem alterar nenhuma ficha. A entrada sai quando o lote chega.
+const SOCIAL_P4 = {
+  "ankheg": [
+    4,
+    14
+  ],
+  "basilisco": [
+    6,
+    18
+  ],
+  "behir": [
+    6,
+    14
+  ],
+  "bulette": [
+    4,
+    12
+  ],
+  "buscador": [
+    2,
+    8
+  ],
+  "cao-de-guerra-nessiano": [
+    4,
+    16
+  ],
+  "cao-infernal": [
+    4,
+    14
+  ],
+  "cao-yeth": [
+    6,
+    16
+  ],
+  "cocatriz": [
+    4,
+    12
+  ],
+  "corujurso": [
+    4,
+    10
+  ],
+  "diabo-barbado": [
+    8,
+    4
+  ],
+  "dretch": [
+    4,
+    8
+  ],
+  "elemental-da-agua-pequeno": [
+    4,
+    8
+  ],
+  "elemental-da-terra-grande": [
+    4,
+    8
+  ],
+  "elemental-da-terra-pequeno": [
+    4,
+    8
+  ],
+  "elemental-do-ar-pequeno": [
+    4,
+    8
+  ],
+  "elemental-do-fogo-pequeno": [
+    4,
+    8
+  ],
+  "estrangulador": [
+    4,
+    8
+  ],
+  "ettercap": [
+    6,
+    16
+  ],
+  "ettin": [
+    4,
+    8
+  ],
+  "froghemoth": [
+    6,
+    10
+  ],
+  "girallon": [
+    4,
+    12
+  ],
+  "gorgona-touro-de-ferro": [
+    6,
+    18
+  ],
+  "hidra-5-cabecas": [
+    4,
+    12
+  ],
+  "hipogrifo": [
+    4,
+    12
+  ],
+  "lagarto-eletrico": [
+    4,
+    12
+  ],
+  "manto-escuro": [
+    4,
+    10
+  ],
+  "minotauro": [
+    4,
+    10
+  ],
+  "monstro-da-ferrugem": [
+    4,
+    10
+  ],
+  "morlock": [
+    4,
+    12
+  ],
+  "ogro": [
+    4,
+    6
+  ],
+  "otyugh": [
+    4,
+    12
+  ],
+  "quimera": [
+    6,
+    18
+  ],
+  "remorhaz": [
+    4,
+    16
+  ],
+  "serpente-marinha": [
+    4,
+    16
+  ],
+  "stirge": [
+    4,
+    10
+  ],
+  "tarrasque": [
+    8,
+    20
+  ],
+  "trol": [
+    4,
+    8
+  ],
+  "verme-purpura": [
+    4,
+    12
+  ],
+  "worg": [
+    6,
+    14
+  ]
+};
 const ACEITAS = {
   'bralani.defesaSocial': SEM_SOCIABILIDADE,
   'centauro.defesaSocial': SEM_SOCIABILIDADE,
   'janni.defesaSocial': SEM_SOCIABILIDADE,
   'homem-lagarto.defesaSocial': SEM_SOCIABILIDADE,
-  'grifo.defesaSocial': 'a ficha usa a Sobrevivência da Inteligência 1 (C-006; defesas.md:78); o formato-criatura.md, seção 3, e o GUIA-FICHA.md, seção 9, a dão só à categoria animal, e as outras 54 fichas que não são animal e têm Inteligência 1 usam a Sociabilidade (perguntas.md, P4, ao autor)',
 };
 
 async function carregarMotor() {
@@ -69,6 +232,7 @@ const confere = (id, conta, vem, deve, tol = 0) => {
   const igual = typeof deve === 'number' && typeof vem === 'number' ? Math.abs(vem - deve) <= tol : vem === deve;
   if (igual) return;
   const chave = `${id}.${conta}`;
+  if (conta === 'defesaSocial' && SOCIAL_P4[id]?.[0] === deve && SOCIAL_P4[id]?.[1] === vem) { aceitas.push(chave + ' (P4: espera lote de ajuste)'); return; }
   if (ACEITAS[chave]) { aceitas.push(chave); return; }
   falhas.push({ id, conta, vem, deve });
 };
@@ -103,6 +267,17 @@ for (const [id, c] of Object.entries(FIX.criaturas)) {
       if (k === 'pesoErguido') confere(id, `formas.${fid}.${k}`, rf[k], v, tolPeso(v));
       else confere(id, `formas.${fid}.${k}`, rf[k], k === 'tamanho' ? slug(v) : v);
     }
+  }
+}
+
+// P4: o critério é Inteligência, inclusive fora dos animais; Int 0 continua imune.
+for (const categoria of ['animal', 'fera-magica', 'humanoide']) {
+  const base = structuredClone(FIX.criaturas.grifo.entrada);
+  base.categoria = categoria; base.centelha = 2; base.atributos.compostura = 2;
+  base.habilidades.sobrevivencia = 3; base.habilidades.sociabilidade = 1;
+  for (const [inteligencia, esperado] of [[0, 'imune'], [1, 14], [2, categoria === 'animal' ? 14 : 8]]) {
+    base.atributos.inteligencia = inteligencia;
+    confere('P4 ' + categoria, 'Int ' + inteligencia, M.criatura(base).defesaSocial, esperado);
   }
 }
 

@@ -146,8 +146,8 @@ export function criatura(e: EntradaCriatura) {
   const semMente = (at.inteligencia ?? 0) === 0;
   const esquiva = defesa({ destreza: at.destreza ?? 0, habilidade: habDe(e, 'esquiva'), centelha: ce });
   const bloqueio = defesa({ destreza: at.destreza ?? 0, habilidade: habDe(e, 'bloqueio'), centelha: ce });
-  // a Defesa Social da fera é Compostura + Sobrevivência (D-109); a de quem não é animal, a do personagem (manual 4.2)
-  const social = e.categoria === 'animal'
+  // Inteligência 1 usa Sobrevivência em toda criatura (C-006; resposta P4 de 26/10/2026).
+  const social = e.categoria === 'animal' || at.inteligencia === 1
     ? defSocial({ compostura: at.compostura ?? 0, sociabilidade: habDe(e, 'sobrevivencia'), centelha: ce })
     : defSocial({ compostura: at.compostura ?? 0, sociabilidade: habDe(e, 'sociabilidade'), centelha: ce });
   const absorcao = { impacto: (at.vigor ?? 0) + ce, corte: ce, perfuracao: ce };

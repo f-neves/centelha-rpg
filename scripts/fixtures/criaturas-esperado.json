@@ -855,7 +855,7 @@
    ]
   },
   "aranha-das-fases": {
-   "sha256": "7c96ae83078ed351ce8f4ff2fe52f92dd4f39949260dab4a0e4af17d55d16d4b",
+   "sha256": "c7f0fae5488201b53fbd2de76a28c38d711f3e1c8e0b0808e7a6ad9b606499e9",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -934,7 +934,7 @@
     "bloqueio": 10,
     "energia": 15,
     "defesaMental": 19,
-    "defesaSocial": 6,
+    "defesaSocial": 18,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -15690,7 +15690,7 @@
    }
   },
   "gigante-da-colina": {
-   "sha256": "eab0a04905dfcd0d6b9d186a7735773162fe616d952b70ef29074820632d4ad8",
+   "sha256": "25ff64173ebbf2ccac0f433017ef176bbda8c99abec5e3f31011344e54696b03",
    "entrada": {
     "categoria": "gigante",
     "centelha": 1,
@@ -15706,7 +15706,7 @@
      "compostura": 2
     },
     "habilidades": {
-     "briga": 4,
+     "briga": 5,
      "arremesso": 3,
      "bloqueio": 1,
      "esquiva": 0,
@@ -15752,7 +15752,7 @@
       "dado": "2d6",
       "multiplicadorForca": 1,
       "tipoDano": "impacto",
-      "nivelPerfuracao": null,
+      "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null
      },
@@ -15769,7 +15769,7 @@
       "dado": "2d6",
       "multiplicadorForca": 1,
       "tipoDano": "impacto",
-      "nivelPerfuracao": null,
+      "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null
      }
@@ -15784,7 +15784,7 @@
     "bloqueio": 8,
     "energia": 10,
     "defesaMental": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 10,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -15797,7 +15797,7 @@
       "nome": "Pancada descomunal",
       "velocidade": 7,
       "danoMedio": 17,
-      "jogada": 15
+      "jogada": 16
      },
      {
       "nome": "Rocha arremessada",
@@ -16143,7 +16143,7 @@
    }
   },
   "gigante-do-fogo": {
-   "sha256": "d505ed884be80cdb2c849fe58f06f32db5fe5935955dcceb32c8c57e5cf3482b",
+   "sha256": "8b7870afbf293ce39f2169ea197198f693db48308590ef7439a1d345ef4cab9b",
    "entrada": {
     "categoria": "gigante",
     "centelha": 1,
@@ -19532,7 +19532,7 @@
    }
   },
   "janni": {
-   "sha256": "4f2cb53aff10a079377a38535fcc43d8644742e4b0b322dff4db1bf8c3069da0",
+   "sha256": "bb3fd09c77672f492d1d1d866a3c231fabdf32e5e9bf00bab2ff8ad4a1be7de1",
    "entrada": {
     "categoria": "outsider",
     "centelha": 2,
@@ -19616,11 +19616,7 @@
       "jogada": 13
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Sangue elemental: texto de trabalho no texto de jogo (\"C-039\"; manual 7.5)",
-    "Sentidos, visão no escuro: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)"
-   ]
+   }
   },
   "jararaca": {
    "sha256": "4be4311ad39654da12ac9821d150af0acce46c27d526f2a00895326a7407c4ae",
