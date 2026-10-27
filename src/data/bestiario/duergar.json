@@ -1,36 +1,24 @@
 {
-  "ordem": 199,
   "id": "duergar",
   "idAntigo": "mon-duergar",
   "nome": "Duergar",
   "nomeIngles": "Duergar",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humanoide",
+  "categoria": "humanoide",
   "papel": "capanga",
-  "conceito": "humanoide Médio",
-  "descricao": "Anão cinzento das profundezas, amargo e cruel, que vive em clãs senhores de escravos. Cresce até o dobro do tamanho ou some da vista por um instante, e não sente veneno nem paralisia, mas a luz forte o ofusca.",
-  "tags": [
-    "humanoide",
-    "centelha"
-  ],
-  "imagem": "bestiario/duergar_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,2 m de altura",
-    "peso": "55 kg",
-    "largura": 0.46,
-    "altura": 1.2
-  },
-  "locomocao": {
-    "terra": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 5
-  },
+  "ameaca": 1,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.2,
+    "largura": 0.46,
+    "profundidade": 0.23,
+    "comprimento": null,
+    "massa": 55,
+    "area": 0.49
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 2,
     "vigor": 4,
@@ -41,10 +29,11 @@
     "perspicacia": 1,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 2,
     "briga": 1,
     "bloqueio": 1,
+    "esquiva": 0,
     "atletismo": 1,
     "furtividade": 1,
     "prontidao": 1,
@@ -52,94 +41,178 @@
     "integridade": 2,
     "oficios-gerais": 2
   },
-  "skills2": {
-    "intimidacao": 1
+  "habilidadesSec": {
+    "intimidacao": 1,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "atletismo",
-      "foco": "ficar de pé em solo firme",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "armas",
-      "foco": "machado",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "oficios-gerais",
-      "foco": "mineração",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "atletismo": [
+      {
+        "foco": "ficar de pé em solo firme",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "armas": [
+      {
+        "foco": "machado",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:machado"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Machado",
-      "atrib": "forca",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 1,
-      "ticks": 6,
-      "classe": "media"
+      "arma": "machado",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Crescer",
-      "descricao": "poder natural (base Metamorfose 2): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até ele desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: o corpo e o que ele veste dobram de altura (Tamanho Grande); soma +1 na Força e perde 2 na Esquiva enquanto durar. Dano: o dos golpes, com a Força maior. Resistência: nenhum. Limite de uso: uma vez por cena, contando com o Sumir.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "metamorfose",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até o fim da cena, ou até ele desfazer",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "o corpo e o que ele veste dobram de altura (Tamanho Grande); soma +1 na Força e perde 2 na Esquiva enquanto durar",
+      "dano": "o dos golpes, com a Força maior",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena, contando com o Sumir"
     },
     {
       "nome": "Sumir",
-      "descricao": "poder natural (base Ofuscação 2): Ativação: uma ação, Velocidade 6. Duração: 12 Ticks, ou até ele atacar. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Invisível. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena, contando com o Crescer.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "ofuscacao",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "12 Ticks, ou até ele atacar",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "fica Invisível",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena, contando com o Crescer"
     },
     {
       "nome": "Sensibilidade à luz",
-      "descricao": "Ativação: luz forte (sol, Arte de Luz, lanterna de perto). Duração: enquanto estiver na luz forte. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Ofuscado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "luz forte (sol, Arte de Luz, lanterna de perto)",
+      "duracao": "enquanto estiver na luz forte",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "fica Ofuscado",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Resiste a ilusões",
-      "descricao": "Ativação: uma ilusão o tem como alvo. Duração: a da ilusão. Alcance: o próprio corpo. Área: não se aplica. Efeito: a ilusão pega menos nele. Dano: nenhum. Resistência: mente, com +2 na Defesa Mental contra ilusão. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ilusão o tem como alvo",
+      "duracao": "a da ilusão",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "a ilusão pega menos nele",
+      "dano": "nenhum",
+      "resistencia": "mente, com +2 na Defesa Mental contra ilusão",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Imune a paralisia e venenos",
-      "descricao": "veneno e paralisia não pegam nele (o Anão parente tem só +1d6 contra veneno; o duergar é imune).",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "veneno e paralisia não pegam nele (o Anão parente tem só +1d6 contra veneno; o duergar é imune)"
     },
     {
       "nome": "Firme como pedra",
-      "descricao": "Atletismo, com a Especialidade natural (ficar de pé em solo firme) +2, contra Derrubar e Empurrar.",
-      "classe": "livro"
-    },
-    {
-      "nome": "senhor de escravos",
-      "descricao": "luta em grupo, cresce para esmagar o primeiro, some para cercar o fraco e captura em vez de matar; foge da luz.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga no escuro até 36 m, em caverna sem luz nenhuma (site), como o Anão parente. · audição e olfato: os de um humano."
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "Atletismo, com a Especialidade natural (ficar de pé em solo firme) +2, contra Derrubar e Empurrar"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "senhor de escravos",
+      "formas": "todas",
+      "texto": "luta em grupo, cresce para esmagar o primeiro, some para cercar o fraco e captura em vez de matar; foge da luz."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro até 36 m, em caverna sem luz nenhuma, como o Anão parente",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humanoide; amarga e cruel",
+    "tracos": "anão de pele cinzenta, careca, barba rala e grisalha, olhos frios, machado"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em clã, típico 4 a 12",
+    "atividade": "qualquer hora, no escuro",
+    "dieta": "onívoro",
+    "caca": "captura forasteiros para o trabalho forçado",
+    "dianteDeGente": "captura; mata anões"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Anão cinzento das profundezas, amargo e cruel, que vive em clãs senhores de escravos. Cresce até o dobro do tamanho ou some da vista por um instante, e não sente veneno nem paralisia, mas a luz forte o ofusca.",
   "lore": [
     {
       "titulo": "Primos amargos",
@@ -148,77 +221,44 @@
     {
       "titulo": "Senhores de escravos",
       "texto": "Vivem em clãs que capturam forasteiros para o trabalho forçado; prisioneiros anões raramente sobrevivem ao primeiro dia de cativeiro."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: em clã, típico 4 a 12."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, 37 PV, Impacto 5, Corte e Perfuração 1. Defesa baixa (Bloqueio 8, Esquiva 4). O machado dá dano médio 7,5. Uma vez por cena cresce (Grande, +1 de Força) ou some (Invisível por 12 Ticks). Veneno e paralisia não o pegam; a luz forte o ofusca."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Underground"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/duergar_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Duergar",
-    "cr": "1/3",
-    "tipo": "humanoide Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 12,
-      "des": 9,
-      "con": 15,
-      "int": 10,
-      "sab": 13,
-      "car": 4
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Crescer",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Sumir",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 37,
-    "esquiva": 4,
-    "bloqueio": 8,
-    "defesa": 8,
-    "defesaMental": 13,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 1,
-      "perfuracao": 1
+    {
+      "campo": "habilidadesEspeciais.Sensibilidade à luz",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 109.04,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 3,
-        "corrida": 5
-      }
+    {
+      "campo": "habilidadesEspeciais.Resiste a ilusões",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Senhores de escravos)"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Firme como pedra",
+      "motivo": "Especialidade natural +2 em Atletismo"
     }
-  },
-  "notasObservacao": [
-    "`raça parente`: Anão (D-207); os números são os do site",
-    "`equipamento`: machado do livro **[provisório]**",
-    "`compaixão`: 1; o site tinha 2 **[provisório]**",
-    "`firme como pedra`: Especialidade natural +2 em Atletismo **[provisório]**",
-    "`crescer`, `sumir`, `sensibilidade à luz`, `resiste a ilusões`: números sugeridos pela ficha (D-197)"
   ]
 }

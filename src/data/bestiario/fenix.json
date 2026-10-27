@@ -1,91 +1,311 @@
 {
-  "ordem": 272,
   "id": "fenix",
   "idAntigo": "mon-phoenix",
   "nome": "Fênix",
   "nomeIngles": "Phoenix",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "chefe",
-  "conceito": "besta mágica Imenso",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha"
-  ],
-  "imagem": "bestiario/fenix_criatura.webp",
-  "porte": "Imenso",
-  "dimensoes": {
-    "medida": "envergadura de cerca de 15 m",
-    "peso": "1.000 kg"
-  },
-  "locomocao": {
-    "terra": 3,
-    "voo": 9
-  },
+  "ameaca": 6,
   "centelha": 6,
-  "attrs": {
+  "corpo": {
+    "postura": "ave; voadora",
+    "apoio": "outro",
+    "altura": 6.2,
+    "largura": 1.62,
+    "profundidade": null,
+    "comprimento": 5.8,
+    "envergadura": 15,
+    "massa": 1000,
+    "area": 47.2,
+    "posturaDoTamanho": "de baixo, asas abertas",
+    "segundoTamanho": {
+      "area": 21.4,
+      "posturaDoTamanho": "de lado, asas fechadas, pousada"
+    }
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 11,
     "destreza": 8,
     "vigor": 9,
-    "influencia": 7,
-    "perspicacia": 7,
-    "compostura": 7,
     "percepcao": 7,
     "inteligencia": 7,
-    "raciocinio": 7
+    "raciocinio": 7,
+    "influencia": 7,
+    "perspicacia": 7,
+    "compostura": 7
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 2,
+    "atletismo": 3,
+    "furtividade": 1,
+    "integridade": 7,
     "prontidao": 3,
-    "integridade": 7
+    "resistencia": 4,
+    "empatia": 4,
+    "conhecimentos": 4,
+    "ocultismo": 4,
+    "sociabilidade": 0,
+    "sobrevivencia": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "cura": 3,
+    "voo": 4,
+    "musculatura": 2
+  },
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "visão",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 11,
-  "aparencia": 5,
+  "vontade": 11,
+  "aparencia": 11,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "voo": {
+      "batalha": 9
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 3,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Garras",
+      "parte": "garra-taloes",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
+      "acerto": 1,
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Bico",
+      "parte": "bico",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
       "acerto": 0,
-      "ticks": 7
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Garras em mergulho",
+      "parte": "garra",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 2,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Sentidos apurados",
-      "descricao": "Enxerga no escuro, detecta magia e veneno à distância, tem visão em pouca luz e enxerga através de invisibilidade."
+      "nome": "garras e bico",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "na mesma ação, além das garras, ataca também com o bico"
+    },
+    {
+      "nome": "mergulho",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras em mergulho",
+      "regra": "investida",
+      "texto": "só descendo"
     },
     {
       "nome": "Manto de chamas",
-      "descricao": "Pode incendiar as próprias penas, causando dano contínuo extra em seus golpes e queimando quem chegar perto demais sem escapar a tempo."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fogo",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 6, acendendo as penas",
+      "duracao": "até o fim da cena, ou até ela apagar",
+      "alcance": "o próprio corpo",
+      "area": "o corpo e quem estiver a até 1,5 m",
+      "efeito": "as penas ardem; cada golpe dela queima também, e quem chega perto demais pega fogo",
+      "dano": "+1d6 de fogo em cada golpe; quem começa a vez a até 1,5 m dela leva 1d6 de fogo",
+      "resistencia": "esquiva, para quem chega perto; quem passa sai do alcance a tempo",
+      "limiteDeUso": "à vontade"
     },
     {
-      "nome": "Regeneração constante",
-      "descricao": "Cura seus próprios ferimentos continuamente, exceto os causados por frio ou pelo mal."
+      "nome": "Regeneração 10",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "origem mágica; fecha as feridas, exceto o dano de gelo ou mal"
     },
     {
-      "nome": "Autorressurreição",
-      "descricao": "Se morrer, seu corpo permanece destruído só por alguns instantes antes de renascer curado das próprias cinzas, uma vez por ano; renascer assim custa parte de sua força vital."
+      "nome": "frio e mal param a regeneração",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o dano de gelo ou o que vem do mal não se fecha pela Regeneração"
     },
     {
-      "nome": "Imune ao fogo, vulnerável ao frio",
-      "descricao": "Chamas não a ferem e resiste bem à maioria das magias, mas o frio a machuca com facilidade incomum."
+      "nome": "Muralha de chamas",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fogo",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "até o fim da cena",
+      "alcance": "30 m",
+      "area": "parede de 18 m de comprimento e 6 m de altura",
+      "efeito": "ergue uma parede de fogo; quem a atravessa queima",
+      "dano": "3d6 + Centelha, fogo, em quem atravessa",
+      "resistencia": "esquiva; quem passa leva metade",
+      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
-      "nome": "Poderes de cura e fogo",
-      "descricao": "Domina magias de cura poderosas e comanda paredes e tempestades de fogo à vontade."
+      "nome": "Tempestade de fogo",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fogo",
+        "nivel": 5
+      },
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "18 Ticks",
+      "alcance": "60 m",
+      "area": "esfera de 9 m",
+      "efeito": "chove fogo na área; quem está nela pega fogo",
+      "dano": "3d6 + Centelha, fogo, na primeira vez, e fica Em chamas",
+      "resistencia": "esquiva; quem passa leva metade e não fica Em chamas",
+      "limiteDeUso": "uma vez por cena"
+    },
+    {
+      "nome": "Cura da fênix",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "cura",
+        "nivel": 5
+      },
+      "ativacao": "uma ação, Velocidade 6, cobrindo o ferido com as asas",
+      "duracao": "instantânea",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "fecha ferimentos graves, recompõe o que se perdeu e tira do corpo doença e veneno",
+      "dano": "nenhum; cura 5d6 PV",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena para cada alvo"
+    },
+    {
+      "nome": "autorressurreição",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "se morre, renasce das próprias cinzas, curada, uma vez por ano; cada renascimento custa parte da força vital"
+    },
+    {
+      "nome": "resistência à magia",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "resiste bem à maioria das magias"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "ave de chama",
+      "formas": "todas",
+      "texto": "acende as penas, ergue a muralha de fogo entre ela e o inimigo, faz chover fogo do alto e cura quem está do lado dela; desce em mergulho sobre o que sobra."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão",
+      "descricao": "Prontidão (visão) +3, de ave de rapina; enxerga na penumbra",
+      "formas": "todas"
+    },
+    {
+      "nome": "sentir magia e veneno",
+      "descricao": "sente os dois à distância",
+      "formas": "todas"
+    },
+    {
+      "nome": "ver o invisível",
+      "descricao": "enxerga através da invisibilidade",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "nenhuma; brilha como fogo",
+    "mente": "inteligente; associada às forças do bem",
+    "tracos": "ave de rapina de 15 m de envergadura, de penas de fogo vivo e grito melodioso"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitária",
+    "atividade": "qualquer hora",
+    "dieta": "",
+    "caca": "",
+    "dianteDeGente": "associada às forças do bem; quase sagrada para quem a avista"
+  },
+  "ecologia": {
+    "terreno": [
+      "deserto",
+      "montanha"
+    ],
+    "clima": [
+      "tropical"
+    ]
+  },
+  "descricao": "Ave de chama viva que solta um grito melodioso ao alçar voo e é associada às forças do bem. Vive em desertos quentes e colinas isoladas, cura e comanda o fogo, e a lenda de morte e renascimento das próprias cinzas a torna quase sagrada.",
   "lore": [
     {
       "titulo": "Ave de chama viva",
@@ -96,39 +316,56 @@
       "texto": "Vive em desertos quentes e colinas isoladas, e sua lenda de morte e renascimento a torna quase sagrada entre quem a avista."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Desert",
-      "Mountain"
+  "imagens": [
+    "bestiario/fenix_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Tropical"
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Phoenix",
-    "cr": "15",
-    "tipo": "besta mágica Imenso",
-    "tamanho": "imenso",
-    "valores": {
-      "for": 27,
-      "des": 25,
-      "con": 20,
-      "int": 23,
-      "sab": 22,
-      "car": 22
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Manto de chamas",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Muralha de chamas",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 6
+    {
+      "campo": "habilidadesEspeciais.Tempestade de fogo",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Cura da fênix",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "A do site. A regra de altura e massa dos lotes 32 e 33, mantida nos lotes 34 e 35: a medida do site manda, e a massa do site fica quando um fator de forma plausível sobre o animal de base a alcança: a águia-real (4,6 kg, 2,0 m de envergadura) escalada pelo cubo da envergadura do site (× 7,5) dá 1.941 kg; a fênix \"parece feita inteiramente de fogo\" (site), e metade do corpo é chama viva, sem a massa da carne: fator 0,52, 1.000 kg; 1.000 kg, a do site, com a envergadura do site (fator 0,52 sobre os 1.941 kg da águia-real escalada: metade do corpo é chama viva). Nada muda na Faixa nem no Tamanho"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: penas de fogo sobre a pele, um acima da águia-real (0) pela chama . O nível fica fora da Absorção (decisoes-autor §16)"
+    },
+    {
+      "campo": "ataques.Bico.nivelPerfuracao",
+      "motivo": "Bico em gancho com o pescoço atrás: Média, como o bico do grifo; bico grande em N1 . Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Regeneração 10",
+      "motivo": "Antes: 9 PV/6 Ticks passivos. N 10 pela referência Phoenix (Archives of Nethys)."
+    }
+  ]
 }

@@ -1,37 +1,25 @@
 {
-  "ordem": 203,
   "id": "elemental-da-terra-pequeno",
   "idAntigo": "mon-small-earth-elemental",
   "nome": "Elemental da Terra (Pequeno)",
   "nomeIngles": "Elemental, Earth",
-  "categoria": "Elemental",
-  "categoriaLegada": "Elemental",
+  "categoria": "elemental",
   "papel": "soldado",
-  "conceito": "exterior (terra) Pequeno",
-  "descricao": "Fragmento vivo da pedra de outro plano: atravessa a rocha como se fosse água, espera imóvel e derruba quem pisa a terra. Lento e pesado, bate como um bloco de pedra.",
-  "tags": [
-    "elemental",
-    "centelha"
-  ],
-  "imagem": null,
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "1,2 m de altura",
-    "peso": "79 kg",
-    "largura": 0.38,
-    "altura": 1.2
-  },
-  "locomocao": {
-    "terra": 2,
-    "escavacao": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 5
-  },
+  "ameaca": 2,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "de pé, atarracado",
+    "apoio": "bipede",
+    "altura": 1.2,
+    "largura": 0.38,
+    "profundidade": 0.15,
+    "comprimento": null,
+    "massa": 79,
+    "area": 0.4,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 9,
+  "atributos": {
     "forca": 5,
     "destreza": 2,
     "vigor": 3,
@@ -42,86 +30,164 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
     "bloqueio": 1,
+    "esquiva": 0,
     "furtividade": 2,
     "integridade": 2,
     "prontidao": 1,
-    "sobrevivencia": 1
+    "sobrevivencia": 1,
+    "resistencia": 0
   },
-  "skills2": {
+  "habilidadesSec": {
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "sentir tremores pela pedra",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "parado como rocha",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "sentir tremores pela pedra",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "furtividade": [
+      {
+        "foco": "parado como rocha",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 3,
-    "valor": 3
+    "temperanca": 3
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 5,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "escavacao": {
+      "batalha": 2
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pancada de pedra",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
+      "parte": "braco-de-pedra",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": 1
     }
   ],
-  "fraquezas": [
-    "agua"
-  ],
-  "resistencias": [
-    "fogo"
-  ],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Deslizar na pedra",
-      "descricao": "poder natural (base Terra 2, sugestão da ficha): Ativação: parte do movimento dele. Duração: enquanto se move. Alcance: o próprio corpo. Área: não se aplica. Efeito: cava pela terra e atravessa a rocha como se fosse água, à velocidade da Escavação, sem abrir túnel nem deixar rastro; dentro da pedra, quem está fora não o vê nem o ataca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "terra",
+        "nivel": 2
+      },
+      "ativacao": "parte do movimento dele",
+      "duracao": "enquanto se move",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "cava pela terra e atravessa a rocha como se fosse água, à velocidade da Escavação, sem abrir túnel nem deixar rastro; dentro da pedra, quem está fora não o vê nem o ataca",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
     },
     {
       "nome": "Domínio da terra",
-      "descricao": "Ativação: nenhuma; vale enquanto ele toca o chão. Duração: enquanto tocar o chão. Alcance: o próprio corpo. Área: não se aplica. Efeito: +3 para Derrubar e Empurrar quem também toca o chão, e +3 contra ser derrubado ou empurrado, como uma faixa de massa a mais. Contra quem voa ou nada, nada disso vale. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; vale enquanto ele toca o chão",
+      "duracao": "enquanto tocar o chão",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "+3 para Derrubar e Empurrar quem também toca o chão, e +3 contra ser derrubado ou empurrado, como uma faixa de massa a mais. Contra quem voa ou nada, nada disso vale",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "feito de pedra viva",
-      "descricao": "não sente cansaço, veneno nem doença; não respira, não come, não dorme.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "paciência de montanha",
-      "descricao": "espera imóvel como rocha, ou dentro da pedra, até o alvo chegar perto; sai do chão ao lado dele, derruba quem pisa a terra e bate com o braço de pedra.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "tremor: percebe o movimento pela terra e pela pedra em volta, a até 18 m, mesmo sem enxergar. · visão e audição: as de um humano."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não sente cansaço, veneno nem doença; não respira, não come, não dorme"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "paciência de montanha",
+      "formas": "todas",
+      "texto": "espera imóvel como rocha, ou dentro da pedra, até o alvo chegar perto; sai do chão ao lado dele, derruba quem pisa a terra e bate com o braço de pedra."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "tremor",
+      "descricao": "percebe o movimento pela terra e pela pedra em volta, a até 18 m, mesmo sem enxergar",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "nenhuma",
+    "prendeRespiracao": "não respira",
+    "camuflagem": "parado, passa por um monte de pedras; dentro da rocha, não se vê",
+    "mente": "simples; obedece a quem o conjurou e, solto, volta ao próprio plano",
+    "tracos": "pedra cinzenta e rachada na forma de um homem baixo e largo, com terra e cascalho caindo das juntas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho, ou com quem o conjurou",
+    "atividade": "qualquer hora",
+    "dieta": "nenhuma",
+    "caca": "não caça",
+    "dianteDeGente": "cumpre a ordem de quem o trouxe; espera o momento certo"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo",
+      "montanha"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Fragmento vivo da pedra de outro plano: atravessa a rocha como se fosse água, espera imóvel e derruba quem pisa a terra. Lento e pesado, bate como um bloco de pedra.",
   "lore": [
     {
       "titulo": "Osso do mundo",
@@ -130,80 +196,52 @@
     {
       "titulo": "Paciência de montanha",
       "texto": "Onde outros elementais agem por impulso, o da terra espera, imóvel como rocha, até o momento certo de atacar."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: sozinho, ou com quem o conjurou."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Pequeno e lento (2), atravessa a terra e a pedra à mesma velocidade e sente quem pisa o chão a 18 m. Bate com dano médio 7,5. No chão, ganha +3 para derrubar e empurrar e contra ser derrubado. Esquiva 4, Bloqueio 8 (9 com o braço de pedra), 34 PV, Impacto 4, Corte e Perfuração 1; o fogo faz metade, e a água passa toda a Absorção."
     }
   ],
-  "ecologia": {
-    "tipo": "Elemental",
-    "terreno": [
-      "Underground",
-      "Mountain"
-    ],
-    "clima": [
-      "Extraplanar"
-    ]
-  },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Small Earth Elemental",
-    "cr": "1",
-    "tipo": "exterior (terra) Pequeno",
-    "tamanho": "pequeno",
-    "valores": {
-      "for": 16,
-      "des": 8,
-      "con": 13,
-      "int": 4,
-      "sab": 11,
-      "car": 11
-    },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
-    },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 34,
-    "esquiva": 4,
-    "bloqueio": 8,
-    "defesa": 9,
-    "defesaMental": 12,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 1,
-      "perfuracao": 1
-    },
-    "couracaNivel": 9,
-    "pesoErguido": 351.53,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 3,
-        "corrida": 5
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "agua",
+        "formas": "todas"
       }
-    },
-    "bloqueioArma": 1
+    ],
+    "resistencias": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`massa`: 79 kg pelo volume em granito; o site dizia 36 kg. Com 36 kg ficaria na Faixa 3 do mesmo jeito, mas na zona de transição do PV (28 a 42 kg) **[conta]**",
-    "`bloqueio`: 1, braço de pedra; o site não gravava Bloqueio **[provisório]**",
-    "`tremor`: o sentido é do site; os 18 m são sugestão da ficha **[provisório]**",
-    "`couraca`: nível 9, pedra maciça, como o golem de pedra **[provisório]**",
-    "`temperança`: 3; o site tinha 2 **[provisório]**",
-    "`deslizar na pedra`, `domínio da terra`: números sugeridos pela ficha (D-197)"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Deslizar na pedra",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Domínio da terra",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidades.bloqueio",
+      "motivo": "Apara pouco, com o braço de pedra, que bloqueia sem tomar dano (D-066); \"«Quase não bloqueia» é 1, e não 0\" (D-110)"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça: pedra maciça, como o golem de pedra (9), acima de qualquer carapaça da escala; o nível fica fora da Absorção (decisoes-autor §16). A resistência a fogo e a fraqueza a água vêm de Elementos; nível 9, pedra maciça, como o golem de pedra"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site"
+    },
+    {
+      "campo": "ataques.Pancada de pedra",
+      "motivo": "O braço de pedra (site: \"Pancada\", 1 dado, 5 Ticks, impacto). Leve, gesto rápido de membro (`regra-construcao.md` §7), como a pancada dos outros elementais pequenos. Bloqueia como arma: corpo de pedra (D-066), Defesa +1 . Jogada: Força 5 + Briga 3 + 2 × o menor entre Centelha 1 e Briga 3 (2)"
+    },
+    {
+      "campo": "sentidos.tremor",
+      "motivo": "o sentido é do site; os 18 m são sugestão da ficha"
+    }
   ]
 }

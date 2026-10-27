@@ -1,34 +1,23 @@
 {
-  "ordem": 5,
   "id": "arqueiro",
   "nome": "Arqueiro",
   "nomeIngles": "Archer",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humano",
+  "categoria": "humanoide",
   "papel": "soldado",
-  "conceito": "fogo à distância",
-  "descricao": "Arqueiro de milícia ou caçador dos ermos que escolhe a altura e a distância antes de tudo. Abre o combate com flechas e recua quando a linha inimiga o alcança.",
-  "tags": [
-    "humano"
-  ],
-  "imagem": "bestiario/arqueiro_pdm.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,73 m de altura",
-    "peso": "70 kg",
-    "largura": 0.43,
-    "altura": 1.73
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.73,
+    "largura": 0.43,
+    "profundidade": 0.22,
+    "comprimento": null,
+    "massa": 70,
+    "area": 0.67
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 2,
     "destreza": 4,
     "vigor": 2,
@@ -39,7 +28,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "atirador": 4,
     "esquiva": 2,
     "prontidao": 3,
@@ -52,93 +41,143 @@
     "sobrevivencia": 2,
     "resistencia": 1
   },
-  "especialidades": [
-    {
-      "habilidade": "atirador",
-      "foco": "arco longo",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "atirador",
-      "foco": "alvo que ainda não chegou ao corpo a corpo",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 0
+  },
+  "especialidades": {
+    "atirador": [
+      {
+        "foco": "arco longo",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 5,
+  "vontade": 5,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:arco-longo"
+      }
+    ],
+    "armaduras": [
+      {
+        "base": "couro",
+        "vestida": true
+      }
+    ]
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Arco longo",
-      "atrib": "percepcao",
-      "pericia": "atirador",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 1,
-      "ticks": 7,
-      "classe": "distancia",
-      "distancia": true,
-      "arma": "arco-longo"
+      "arma": "arco-longo",
+      "habilidade": "atirador"
     },
     {
       "nome": "Punhos",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
+      "parte": "punhos",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Mira",
-      "descricao": "Mirar (compra Preparo para o primeiro disparo).",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "Mirar (compra Preparo para o primeiro disparo)"
     },
     {
       "nome": "Domina o campo",
-      "descricao": "Atirador (alvo que ainda não chegou ao corpo a corpo) +1.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Recuo tático",
-      "descricao": "se o cercam, recua e se reposiciona longe do corpo a corpo antes de atirar de novo.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "terreno alto",
-      "descricao": "escolhe a altura e a distância antes de tudo e abre o combate com flechas.",
-      "classe": "como luta"
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "Atirador (alvo que ainda não chegou ao corpo a corpo) +1"
     },
     {
       "nome": "Sem inimizades naturais",
-      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão, audição, olfato: humanos."
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "Recuo tático",
+      "formas": "todas",
+      "texto": "se o cercam, recua e se reposiciona longe do corpo a corpo antes de atirar de novo."
+    },
+    {
+      "nome": "terreno alto",
+      "formas": "todas",
+      "texto": "escolhe a altura e a distância antes de tudo e abre o combate com flechas."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão, audição, olfato",
+      "descricao": "humanos",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humana",
+    "tracos": "dedos calejados da corda, braço do arco mais forte, couro gasto, aljava cheia"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho ou numa milícia, típico 3 a 8",
+    "atividade": "diurno",
+    "dieta": "onívoro",
+    "caca": "caça com o arco",
+    "dianteDeGente": "depende de quem paga: milícia, caçador, guarda de caravana"
+  },
+  "ecologia": {
+    "terreno": [
+      "urbano",
+      "planície"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Arqueiro de milícia ou caçador dos ermos que escolhe a altura e a distância antes de tudo. Abre o combate com flechas e recua quando a linha inimiga o alcança.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Escolhe o terreno alto ou a distância antes de qualquer coisa, abre o combate com flechas e recua se a linha inimiga o alcança, pois sabe que corpo a corpo não é seu jogo. Social: sozinho ou numa milícia, típico 3 a 8."
+      "texto": "Escolhe o terreno alto ou a distância antes de qualquer coisa, abre o combate com flechas e recua se a linha inimiga o alcança, pois sabe que corpo a corpo não é seu jogo."
     },
     {
       "titulo": "Hábitos",
@@ -147,72 +186,20 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Comum entre milícias de Calin e caçadores dos ermos de Syl e Mére, onde dominar o arco é sobrevivência tanto contra bestas quanto contra bandidos."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Humano Médio, 31 PV, de couro (Impacto 4, Corte 2, Perfuração 1). Esquiva 11, Bloqueio 9. O arco longo dá dano médio 5,5, fura couro e malha (N1) e resvala na placa. Mira quando pode; se o alcançam, recua."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Urban",
-      "Plains"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/arqueiro_pdm.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Perfurante perf. 1: fura couro e malha, mas resvala na placa (Resist. 2). Mira (+2) quando pode.",
-  "pendente": false,
-  "fonte": {
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
-    },
-    "cr": "1",
-    "crConf": "estimado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 31,
-    "esquiva": 12,
-    "bloqueio": 10,
-    "defesa": 12,
-    "defesaMental": 11,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 2,
-      "corte": 0,
-      "perfuracao": 0
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 100.69,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
-    },
-    "bloqueioArma": 1,
-    "vestida": {
-      "esquiva": 11,
-      "bloqueio": 9,
-      "defesa": 11,
-      "contraTiro": 11,
-      "absorcao": {
-        "impacto": 4,
-        "corte": 2,
-        "perfuracao": 1
-      },
-      "nivel": 1,
-      "penalidade": 1
+  "revisao": [
+    {
+      "campo": "comportamento.social",
+      "motivo": "site"
     }
-  },
-  "notasObservacao": [
-    "`equipamento`: o arco longo do livro no lugar do \"Arco\" de 2 dados e 6 Ticks; com o arco curto, Velocidade 6, Acerto +2 e dano 1d6 − 2 + Força **[provisório]**",
-    "`card e equipamento`: o couro está sempre vestido (D-188); a frase da linha Absorção dá os números com ele"
   ]
 }

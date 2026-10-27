@@ -1,93 +1,263 @@
 {
-  "ordem": 179,
   "id": "nalfeshnee",
   "idAntigo": "mon-nalfeshnee",
   "nome": "Nalfeshnee",
   "nomeIngles": "Demon, Nalfeshnee",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Demônio",
+  "categoria": "corruptor",
   "papel": "chefe",
-  "conceito": "exterior (demônio) Enorme",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
-  "tags": [
-    "demonio",
-    "centelha"
-  ],
-  "imagem": "bestiario/nalfeshnee_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "6 m de altura",
-    "peso": "3.600 kg"
-  },
-  "locomocao": {
-    "terra": 3,
-    "voo": 4
-  },
+  "ameaca": 6,
   "centelha": 6,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, curvado; voa pouco",
+    "apoio": "bipede",
+    "altura": 6,
+    "largura": 1.8,
+    "profundidade": 0.84,
+    "comprimento": null,
+    "massa": 3600,
+    "area": 9.6,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 4,
+  "atributos": {
     "forca": 12,
     "destreza": 3,
     "vigor": 11,
-    "influencia": 6,
-    "perspicacia": 7,
-    "compostura": 6,
     "percepcao": 7,
     "inteligencia": 7,
-    "raciocinio": 7
+    "raciocinio": 7,
+    "influencia": 6,
+    "perspicacia": 7,
+    "compostura": 6
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 3,
+    "furtividade": 0,
+    "integridade": 6,
     "prontidao": 3,
-    "integridade": 6
+    "resistencia": 6,
+    "empatia": 3,
+    "persuasao": 4,
+    "manha": 4,
+    "sociabilidade": 3,
+    "politica": 4,
+    "ocultismo": 6,
+    "burocracia": 4
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "voo": 1,
+    "musculatura": 3
+  },
+  "especialidades": {
+    "ocultismo": [
+      {
+        "foco": "o Abismo",
+        "valor": 3,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 6
+    "temperanca": 1
   },
-  "willpower": 11,
-  "aparencia": -1,
+  "vontade": 11,
+  "aparencia": 0,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "voo": {
+      "batalha": 4
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 3,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Garras",
+      "parte": "mao-de-garras",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 7
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Mordida",
+      "parte": "presas-de-javali",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Nimbo Profano",
-      "descricao": "Três vezes por dia, gera um brilho de luzes nauseantes ao redor do corpo que, um instante depois, explode em uma grande área; criaturas não demoníacas atingidas ficam atordoadas por visões de loucura."
+      "nome": "Duas garras",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada",
+      "texto": "Até dois golpes por ação"
     },
     {
-      "nome": "Aura Profana",
-      "descricao": "Irradia constantemente uma presença profana que enfraquece e perturba criaturas de bem próximas a ele."
+      "nome": "garras e mordida juntas",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "rasga e morde na mesma ação; por enquanto, as garras vão juntas pela Rajada, e a Mordida é outra ação"
     },
     {
-      "nome": "Visão Verdadeira",
-      "descricao": "Enxerga através de ilusões, disfarces e invisibilidade constantemente, sem qualquer esforço."
+      "nome": "Nimbo profano",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 8; as luzes brilham em volta dele e explodem 6 Ticks depois",
+      "duracao": "12 Ticks",
+      "alcance": "18 m",
+      "area": "esfera de 18 m em volta dele",
+      "efeito": "luzes nauseantes trazem visões de loucura; quem não é demônio e falha fica Confuso",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Ocultismo dele; quem passa fica imune até o fim da cena",
+      "limiteDeUso": "três vezes por dia"
     },
     {
-      "nome": "Resistências Infernais",
-      "descricao": "Resiste a fogo, frio e ácido; é imune a eletricidade e veneno, e uma proteção sobrenatural absorve boa parte de qualquer dano que não venha de arma abençoada."
+      "nome": "aura profana",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "uma presença profana em volta dele enfraquece e perturba as criaturas do bem que chegam perto"
     },
     {
-      "nome": "Poderes Arcanos",
-      "descricao": "Pode invocar relâmpagos, embotar a mente de um inimigo, anular magias, retardar movimentos ou desaparecer para outro lugar à vontade."
+      "nome": "Retardar",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "12 Ticks",
+      "alcance": "18 m, à vista",
+      "area": "um alvo",
+      "efeito": "o tempo do alvo arrasta, e ele fica Retardado",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Ocultismo dele; quem passa fica imune até o fim da cena",
+      "limiteDeUso": "uma vez por cena para cada alvo"
+    },
+    {
+      "nome": "poderes arcanos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "invoca relâmpagos, embota a mente de um inimigo e anula magias"
+    },
+    {
+      "nome": "teleporte",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "some e reaparece em outro lugar, à vontade"
+    },
+    {
+      "nome": "Ver o invisível",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "visao-verdadeira",
+        "nivel": 4
+      }
+    },
+    {
+      "nome": "visão verdadeira sempre ativa",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o nalfeshnee enxerga através de ilusão, disfarce e invisibilidade o tempo todo, sem esforço; a Técnica do livro é ativa e custa Energia"
+    },
+    {
+      "nome": "imune a veneno",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o veneno não pega no corpo de demônio"
+    },
+    {
+      "nome": "proteção profana",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "uma proteção sobrenatural absorve boa parte de qualquer dano que não venha de arma abençoada"
+    },
+    {
+      "nome": "medonho",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quem vê o nalfeshnee pela primeira vez sente a repulsa de um javali-símio de 6 m; o corpo quer recuar antes de qualquer golpe"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "administrador",
+      "formas": "todas",
+      "texto": "manda os servos à frente e enlouquece os inimigos com o nimbo; luta com garras e presas só quando precisa e some pelo teleporte quando a luta não vale a pena."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão verdadeira",
+      "descricao": "pela Técnica (Manobras)",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "inteligente, demoníaca, vasta e perturbada",
+    "tracos": "demônio de 6 m de corpo de símio obeso, cabeça de javali com presas, mãos de garras e um par de asas pequenas demais para o corpo"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "governa domínios do Abismo, com servos",
+    "atividade": "qualquer hora",
+    "dieta": "não precisa comer",
+    "caca": "trata com invocadores mortais e vigia lugares secretos",
+    "dianteDeGente": "negocia, com preço escondido"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Demônio de corpo de símio e cabeça de javali que conhece o funcionamento íntimo do Abismo como poucos e governa domínios inteiros. Invocadores o buscam pelo saber vasto e perturbado, mas todo trato com ele esconde consequências que servem ao Abismo.",
   "lore": [
     {
       "titulo": "Administrador do Caos",
@@ -98,38 +268,69 @@
       "texto": "Invocadores mortais o buscam por sua inteligência vasta e perturbada, embora todo trato com ele esconda sempre consequências ocultas que servem aos desígnios do Abismo."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/nalfeshnee_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "acido",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": [
+      {
+        "tipo": "raio",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Nalfeshnee",
-    "cr": "14",
-    "tipo": "exterior (demônio) Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 32,
-      "des": 13,
-      "con": 29,
-      "int": 23,
-      "sab": 22,
-      "car": 20
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Nimbo profano",
+      "motivo": "números sugeridos pela ficha (D-197); números da ficha (D-197); o site não dá Arte de base. O \"atordoadas por visões de loucura\" virou Confuso"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Retardar",
+      "motivo": "números sugeridos pela ficha (D-197); números da ficha (D-197); o site não dá Arte de base. O \"atordoadas por visões de loucura\" virou Confuso"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 6
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 4: a pele de demônio maior, como a do hezrou . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site, pela linha Elementos"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "ataques.Mordida.nivelPerfuracao",
+      "motivo": "A cabeça de javali com presas, a mordida com a cabeça atrás, Média. N1 pelas presas . Jogada: Força 12 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "0, e não o −1 do site, fora da régua"
+    },
+    {
+      "campo": "habilidadesEspeciais.poderes arcanos",
+      "motivo": "o site juntava relâmpago, embotar a mente, anular magia, retardar e teleporte; o retardar entrou como Retardado, a condição do livro, e o resto ficou sem regra ainda"
+    }
+  ]
 }

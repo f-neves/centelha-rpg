@@ -1,133 +1,238 @@
 {
-  "ordem": 98,
   "id": "diabo-osseo",
   "idAntigo": "mon-diabo-osseo",
   "nome": "Diabo Ósseo",
-  "nomeIngles": "Devil, Bone (Osyluth)",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Diabo",
+  "nomeIngles": "Devil, Bone",
+  "categoria": "corruptor",
   "papel": "chefe",
-  "conceito": "exterior Grande (diabo)",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Tirano leal do Inferno, calculista e cruel.",
-  "tags": [
-    "diabo",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/diabo-osseo_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,7 m de altura",
-    "peso": "230 kg"
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 6
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, curvado; voa",
+    "apoio": "bipede",
+    "altura": 2.7,
+    "largura": 0.61,
+    "profundidade": 0.33,
+    "comprimento": null,
+    "massa": 230,
+    "area": 1.71,
+    "posturaDoTamanho": "silhueta de frente, de pé, com a cauda erguida"
+  },
+  "couraca": 5,
+  "atributos": {
     "forca": 8,
     "destreza": 5,
     "vigor": 7,
-    "influencia": 5,
-    "perspicacia": 5,
-    "compostura": 5,
     "percepcao": 5,
     "inteligencia": 5,
-    "raciocinio": 5
+    "raciocinio": 5,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
-    "prontidao": 2,
-    "integridade": 5
+    "atletismo": 2,
+    "furtividade": 3,
+    "integridade": 5,
+    "prontidao": 4,
+    "resistencia": 4,
+    "empatia": 2,
+    "manha": 3,
+    "sociabilidade": 1,
+    "ocultismo": 3,
+    "burocracia": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "intimidacao": 3,
+    "voo": 2,
+    "musculatura": 2
+  },
+  "especialidades": {
+    "burocracia": [
+      {
+        "foco": "contratos infernais",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
     "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 5,
-    "valor": 5
+    "temperanca": 5
   },
-  "willpower": 10,
+  "vontade": 10,
   "aparencia": 0,
-  "arte": {
-    "morte": 2,
-    "gelo": 2,
-    "fascinacao": 1
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "voo": {
+      "batalha": 6
+    }
   },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Garras ósseas",
+      "parte": "mao-de-garras-de-osso",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Ferrão",
+      "parte": "cauda-de-escorpiao",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "ferrao-que-enfraquece",
+      "nome": "Duas garras",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras ósseas",
+      "regra": "rajada",
+      "texto": "Até dois golpes por ação"
+    },
+    {
+      "nome": "garras e ferrão juntos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "rasga com as garras e pica com a cauda na mesma ação; por enquanto, as garras vão juntas pela Rajada, e o ferrão é outra ação"
+    },
+    {
       "nome": "Ferrão que enfraquece",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "morte",
         "nivel": 2
       },
-      "resiste": "corpo",
-      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-      "usos": {
-        "periodo": "golpe"
-      }
+      "ativacao": "o golpe do Ferrão que fere",
+      "duracao": "a do veneno",
+      "alcance": "o da cauda",
+      "area": "um alvo",
+      "efeito": "o alvo fica Envenenado pelo veneno do diabo ósseo (Veneno e doença), que tira força; cada nova picada soma ao veneno",
+      "dano": "o do veneno",
+      "resistencia": "corpo, pelo veneno",
+      "limiteDeUso": "um por golpe"
     },
     {
-      "id": "invisibilidade",
+      "nome": "Parede de gelo",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "gelo",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "até o fim da cena, ou até derreter",
+      "alcance": "18 m",
+      "area": "parede de 6 m de comprimento, 3 m de altura e 0,15 m de espessura",
+      "efeito": "o gelo bloqueia a passagem e a visão",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena"
+    },
+    {
       "nome": "Invisibilidade",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
         "nivel": 1
       },
-      "resiste": "nenhum",
-      "efeito": "Invisibilidade",
-      "usos": {
-        "periodo": "avontade"
-      }
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até ele atacar, ou o fim da cena",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "fica Invisível",
+      "dano": "nenhum",
+      "resistencia": "nenhum; quem tem visão verdadeira o vê",
+      "limiteDeUso": "à vontade"
+    },
+    {
+      "nome": "imune a veneno",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o veneno não pega no corpo de diabo"
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "comoLuta": [
     {
-      "nome": "Ferrão que enfraquece",
-      "descricao": "ataque de cauda; falha em Fortitude = Enfraquecido"
-    },
-    {
-      "nome": "Garras ósseas",
-      "descricao": "dois ataques corpo a corpo na mesma ação, dano médio cada"
-    },
-    {
-      "nome": "Parede de gelo",
-      "descricao": "feitiçaria, 1x por cena; ergue parede de 6m que bloqueia passagem ou visão"
-    },
-    {
-      "nome": "Invisibilidade",
-      "descricao": "feitiçaria; fica invisível à vontade"
-    },
-    {
-      "nome": "Carapaça óssea",
-      "descricao": "Absorção alta contra ataques físicos"
-    },
-    {
-      "nome": "Sangue infernal",
-      "descricao": "imune a fogo e veneno; resistente a frio e ácido"
+      "nome": "fiscal dos pactos",
+      "formas": "todas",
+      "texto": "chega invisível, ergue a parede de gelo para cortar a fuga e pica com o ferrão até o devedor não ter força para correr; prefere a tortura lenta ao combate direto."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "invisível, pelo poder",
+    "mente": "inteligente, meticulosa, fria",
+    "tracos": "diabo de 2,7 m, esquelético, de pele seca esticada sobre uma carapaça de osso, crânio de caveira e cauda grossa de escorpião erguida sobre a cabeça"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "fiscal e mensageiro entre camadas do Inferno",
+    "atividade": "qualquer hora",
+    "dieta": "não precisa comer",
+    "caca": "caça quem tenta escapar de um pacto",
+    "dianteDeGente": "cobra o pacto; tortura devagar"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Fiscal cruel da burocracia infernal, de corpo esquelético e cauda de escorpião, que verifica contratos, pune desvios e cobra o preço de quem tenta quebrar um pacto. Meticuloso e frio, prefere a tortura lenta ao confronto direto.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -146,42 +251,69 @@
       "texto": "Os escribas heréticos que estudam a Fenda em segredo dizem que, se o Inferno tem cobradores de dívida, o diabo ósseo é quem bate à porta quando alguém tenta escapar de um pacto."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/diabo-osseo_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "acido",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "Habilidades notáveis: Prontidão 4, Furtividade 3, Ocultismo 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "MM 3.5",
-    "nome": "Diabo Ósseo",
-    "cr": "9",
-    "tipo": "exterior Grande (diabo)",
-    "tamanho": "grande",
-    "valores": {
-      "for": 23,
-      "des": 19,
-      "con": 21,
-      "int": 16,
-      "sab": 18,
-      "car": 18
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Ferrão que enfraquece",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Prontidão 4",
-      "Furtividade 3",
-      "Ocultismo 3"
-    ],
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Parede de gelo",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5
+    {
+      "campo": "habilidadesEspeciais.Invisibilidade",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 2"
+    },
+    {
+      "campo": "habilidades.burocracia",
+      "motivo": "Fiscal da burocracia infernal, verifica contratos (site)"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "A frente do corpo de base (0,72 m²) escalada pela altura ao quadrado (× 2,25) e estreitada 10%: 0,72 × 2,25 × 0,9 = 1,46, a 1% do corte de 1,45 m². A cauda de escorpião é grossa e conta (D-155): curvada sobre a cabeça, soma cerca de 0,25 m² à silhueta de frente , e o total é 1,71"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 5: a carapaça de osso, a \"Absorção alta contra ataques físicos\" do site, como o crocodilo no alto (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site (\"Sangue infernal\"), pela linha Elementos"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    }
+  ]
 }

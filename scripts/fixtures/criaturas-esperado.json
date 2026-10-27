@@ -194,10 +194,13 @@
       "jogada": 25
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Tentáculos múltiplos: P7, texto copia a regra da Rajada; espera lote de ajuste"
+   ]
   },
   "aguia-gigante": {
-   "sha256": "8a841a434c2001399d1675c1e84bb3cbc28f941ac6fd9354e94816292f68338d",
+   "sha256": "92c28aff31b99a452e6aacca21826a29da84792e6affe9794ebb230fe9046206",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -345,10 +348,7 @@
       "jogada": 12
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Sentidos Apurados: P7, texto copia o efeito da Técnica; espera lote de ajuste"
-   ]
+   }
   },
   "aguia-real": {
    "sha256": "3897341259d15eacfc1ad5ce74491ad322107a2dab7a962124464bd0ff32eb98",
@@ -632,7 +632,7 @@
    ]
   },
   "ankheg": {
-   "sha256": "24927e009a9361d5d25917498e76797698df39cc1dbd577606b5a94a5b2d9825",
+   "sha256": "0d1bc50b750d12154bfa915776244ffd09a580fdfc7ecc7d424f3534253f4f05",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 2,
@@ -727,7 +727,7 @@
     "bloqueio": 4,
     "energia": 12,
     "defesaMental": 14,
-    "defesaSocial": 4,
+    "defesaSocial": 14,
     "iniciativa": 2,
     "mana": null,
     "absorcao": {
@@ -749,10 +749,7 @@
       "jogada": 12
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Cuspe ácido: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "anquilossauro": {
    "sha256": "9a4dc1c1d2651dadcf5a09be4140eeef40d2482a22e5998b31f766cdc251f62e",
@@ -1290,7 +1287,7 @@
    ]
   },
   "assombracao": {
-   "sha256": "77aaf5dd356172b2820797a183d6ab6f9cff0e87c0d7950beb51a62c2ab19c5d",
+   "sha256": "a48c296487a57d38b85dd5194cbc8339a4d671be1006171f64d17602f8a828a5",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 3,
@@ -1385,10 +1382,7 @@
       "jogada": 16
      }
     ]
-   },
-   "paradas": [
-    "Manobras, toque que atravessa: regra da ficha sem os oito campos (falta Ativação, Duração, Alcance, Área, Efeito, Dano, Resistência, Limite de uso)"
-   ]
+   }
   },
   "auroque": {
    "sha256": "7f1b491d723d5d6d52c004289f0348a9d6b8cd2bf7d6025faee69940f5d73af6",
@@ -1519,7 +1513,7 @@
    ]
   },
   "babau": {
-   "sha256": "6a65ff2fd34bf037876daa60af3e73326a1bdb6de9abe30780c03b56a831c48a",
+   "sha256": "38cab44bf4c9e7ac6b6084e98e982a84ffadfde89a91e5bc13b17e85373ec05a",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -1655,14 +1649,10 @@
       "jogada": 19
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Limo protetor: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")",
-    "Manobras, Escuridão: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "balor": {
-   "sha256": "7a4dc68fa95b9c4b3e09332e7c6e491e663c987ad230e33acd739556409e8ac2",
+   "sha256": "3379d7c23ef04f30c0d46edcf76394fec2f062971c210462e9e73d5bba377485",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 9,
@@ -1716,6 +1706,9 @@
      "arsenal": [
       {
        "ref": "a:espada-longa"
+      },
+      {
+       "ref": "a:chicote"
       }
      ],
      "armaduras": []
@@ -1728,20 +1721,8 @@
      },
      {
       "nome": "Chicote de chamas",
-      "parte": "chicote-uma-mao",
-      "habilidade": "armas",
-      "classe": "leve",
-      "pgr": [
-       1,
-       1,
-       3
-      ],
-      "dado": "1d6-2",
-      "multiplicadorForca": 1,
-      "tipoDano": "corte",
-      "nivelPerfuracao": 0,
-      "acerto": 1,
-      "bloqueiaComoArma": null
+      "arma": "chicote",
+      "habilidade": "armas"
      },
      {
       "nome": "Garras",
@@ -1789,8 +1770,7 @@
      {
       "nome": "Chicote de chamas",
       "velocidade": 5,
-      "danoMedio": 21.5,
-      "jogada": 26
+      "danoMedio": 21.5
      },
      {
       "nome": "Garras",
@@ -1907,7 +1887,7 @@
    ]
   },
   "barghest-maior": {
-   "sha256": "55a8d2e42aaabcbc169738c58412d5b6726c0e528622f164c0aa45324ff9217a",
+   "sha256": "8bdbb5a7c7996aa59abb405c3a6d6d6d8a83cf5c1f26e777bd67608fec7f9765",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -2081,13 +2061,10 @@
       "faixa": 4
      }
     }
-   },
-   "paradas": [
-    "Manobras, Mudar de forma: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "barghest": {
-   "sha256": "4e09ad30002b90a96809e89d503d322526f4f3a48650b8ee58717a1908896d2b",
+   "sha256": "b3fb6acf0c35ac0075186269a64587064f677ab1c93097860d610e4e0470c909",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -2261,13 +2238,10 @@
       "faixa": 3
      }
     }
-   },
-   "paradas": [
-    "Manobras, Mudar de forma: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "basilisco": {
-   "sha256": "e1b683706ade5ebe57539457417237deeece8720504082668ebbb2f9b2ae6971",
+   "sha256": "661e94837e0c6517f063ef666da50b30270c2bd734b561a688559b6865ad6de8",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -2346,7 +2320,7 @@
     "bloqueio": 4,
     "energia": 14,
     "defesaMental": 19,
-    "defesaSocial": 6,
+    "defesaSocial": 18,
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
@@ -2365,7 +2339,7 @@
    }
   },
   "bebilith": {
-   "sha256": "5db33f009727ffad8be685b0db4f10222b8fc5c7bdbdb045624cceaabd812e27",
+   "sha256": "c4d50a1ca8f219f5b5636242f53c63492c5c56e722e9091fbdc24964e7dd21a3",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -2486,7 +2460,7 @@
    }
   },
   "behir": {
-   "sha256": "d975ba41bf57a7e744e51298c65eb81be31036834ef5295be411a4d7ec81fa14",
+   "sha256": "abf9eca7e3b105dc6b993b3ec6f0538b7ce78373ae4aa51381f579ba5f7e622b",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -2521,6 +2495,7 @@
     "vontade": 6,
     "corpo": {
      "postura": "doze patas, rente ao chão; enrosca-se",
+     "apoio": "outro",
      "altura": 1.17,
      "largura": 1.95,
      "profundidade": null,
@@ -2583,7 +2558,7 @@
     "bloqueio": 6,
     "energia": 11,
     "defesaMental": 13,
-    "defesaSocial": 6,
+    "defesaSocial": 14,
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
@@ -2605,10 +2580,7 @@
       "jogada": 12
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"réptil serpentino de doze patas doze patas, rente ao chão; enrosca-se\")"
-   ]
+   }
   },
   "besouro-de-fogo": {
    "sha256": "e09b1f787d2d841f9d4b99f1a9b9c9510219da57dfc79e435ebe877f4614b65b",
@@ -2823,7 +2795,7 @@
    ]
   },
   "besta-deslocadora": {
-   "sha256": "9c286f3ea8cd9f9053ae91e3f8920f9031b6a9511f3321561a45f11cd59efc84",
+   "sha256": "fc72802da1c2314b0aade4335391f49f2f230cd4628d3613af841be7441e8ab7",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 2,
@@ -3171,11 +3143,12 @@
    },
    "paradas": [
     "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"massa amorfa sem membros fixos, olhos e bocas por toda a superfície amorfa; amon\")",
+    "Manobras, muitas bocas: P7, texto copia a regra da Rajada; espera lote de ajuste",
     "Sentidos: linha fora do formato: \"visão em todas as direções e no escuro, pelos olhos espalhad\""
    ]
   },
   "bodak": {
-   "sha256": "e9b0a0d7780fc0040d7cbc181af1182a5b5bd6c3b2c6b64386fdde13592bc82a",
+   "sha256": "42675837bb269977edb71b58e82b2613dc66c1bdf942d4c67bde94e97fa1e9c7",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 4,
@@ -3904,7 +3877,7 @@
    }
   },
   "bruxa-noturna": {
-   "sha256": "63fc412ee3f58b9eeebbf39cbe5dcb6c9378a21ebe64f090a4904408f8e23ccf",
+   "sha256": "14fce263cd219ae3770f5f71a1ef9c7f456bc77ca670683e20dd9bf272accd67",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -4023,11 +3996,7 @@
       "jogada": 21
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Mudar de forma: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")",
-    "Variantes, disfarce: campo \"Altura e Massa\" que o conversor não conhece"
-   ]
+   }
   },
   "bruxa-verde": {
    "sha256": "e4ad5ed81756a04734b7dc4af0d7250708c87786d7a66242aa23f629d33c6b84",
@@ -4216,7 +4185,7 @@
    ]
   },
   "bulette": {
-   "sha256": "10e5fb7dc2a9d969a0bc66feaf7e0710bf314bbc05d6de09b5589e60f31b69f7",
+   "sha256": "7c9f433f297f3cc7cbab4b5022c93f5aca08257113ad9bed7e5d2cc328e57f9e",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -4313,7 +4282,7 @@
     "bloqueio": 6,
     "energia": 11,
     "defesaMental": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 12,
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
@@ -4870,7 +4839,10 @@
       "jogada": 16
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Golpe duplo: P7, texto copia a regra da Rajada; espera lote de ajuste"
+   ]
   },
   "campones-assustado": {
    "sha256": "674221317651b1759e2fe58321d62b3c355ab5840dfae93ac68fbd1effaea946",
@@ -4961,7 +4933,7 @@
    }
   },
   "cao-de-guerra-nessiano": {
-   "sha256": "f40169d6010e190aefbd1966c23d0e45f0063472ebf80fea2ef3fef6dc07b98d",
+   "sha256": "28cac6aab8580c4688aba4f81c27dbaaec896eb0926621ce5314c666fc1090cc",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -5058,7 +5030,7 @@
     "bloqueio": 8,
     "energia": 20,
     "defesaMental": 18,
-    "defesaSocial": 4,
+    "defesaSocial": 16,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -5083,7 +5055,7 @@
    }
   },
   "cao-infernal": {
-   "sha256": "fad583011f52808ca9b87a2d6c9f33438462a9cd9e293d3d427df39222bd3433",
+   "sha256": "e510bee06e00ca1b8be95d2394ed25c30e1f313f1886dc3cb1babcfc54c7dec4",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -5180,7 +5152,7 @@
     "bloqueio": 6,
     "energia": 11,
     "defesaMental": 15,
-    "defesaSocial": 4,
+    "defesaSocial": 14,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -5205,7 +5177,7 @@
    }
   },
   "cao-yeth": {
-   "sha256": "d316466bdbea4f4c9019b3031b5229ac813980d172c09b8c27f80a981d322ae1",
+   "sha256": "5ed27754a408d03df23000a9cd54b0dc1949a500e5282f81f58fa56738fc99ca",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -5292,7 +5264,7 @@
     "bloqueio": 8,
     "energia": 12,
     "defesaMental": 16,
-    "defesaSocial": 6,
+    "defesaSocial": 16,
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
@@ -5308,10 +5280,7 @@
       "jogada": 13
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Uivo apavorante: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "capa-sombria": {
    "sha256": "bdf5ea1011868b14b39617f1d743c7297328d91db6d7eaff2a97f80a979c3625",
@@ -5889,7 +5858,7 @@
    }
   },
   "cauchemar": {
-   "sha256": "887efea792ca81d2ab7c2017133e1880b20c6419d96fb7700d9c612b11e5a872",
+   "sha256": "43862b81ec02aa637b46c305eb8be91c375793fde84b5452a993c375de42284a",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -6007,10 +5976,7 @@
       "jogada": 26
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Fumaça sufocante: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "cavaleiro-de-elite": {
    "sha256": "586266d8b41b617cd755edca4d8e82218e8d1ba00e9a7ecc4d5a4881239f89be",
@@ -6802,7 +6768,7 @@
    }
   },
   "cocatriz": {
-   "sha256": "45e96a15a0f839cd1ac54cdfef91ac467e4e0cadfe358722500bc80a3fcee6e9",
+   "sha256": "37d3587c24ec3f9b3031638a7cfd688ccf71dc34eb6befe46987ce1fbc2b99ef",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 2,
@@ -6838,6 +6804,7 @@
      "postura": "ave; voadora",
      "apoio": "outro",
      "altura": 0.7,
+     "largura": 0.27,
      "profundidade": null,
      "comprimento": 1,
      "envergadura": 1.5,
@@ -6880,7 +6847,7 @@
     "bloqueio": 10,
     "energia": 10,
     "defesaMental": 15,
-    "defesaSocial": 4,
+    "defesaSocial": 12,
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
@@ -6896,10 +6863,7 @@
       "jogada": 13
      }
     ]
-   },
-   "paradas": [
-    "sem a linha Largura legível em \"Corpo, área e porte\""
-   ]
+   }
   },
   "comandante": {
    "sha256": "56557348bd35ada0f885edba108f4accc94f5f40e01248351b4487e63e1ef17a",
@@ -7004,7 +6968,7 @@
    }
   },
   "corujurso": {
-   "sha256": "115c1e070570d306d84aed11531cf59ce7ccb0d17d382fff67b72ead11daab52",
+   "sha256": "c8aea3df53e84492850597c1495324fe6784be6c2e383c3cb529c3e53305d7d3",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 0,
@@ -7104,7 +7068,7 @@
     "bloqueio": 10,
     "energia": 7,
     "defesaMental": 9,
-    "defesaSocial": 4,
+    "defesaSocial": 10,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -7126,10 +7090,7 @@
       "jogada": 11
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Fúria descontrolada: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "corvo": {
    "sha256": "c60430b9801735768f41b1bb2ad6620d787aab01f8d3cc5c4088e48ff6c0a8ce",
@@ -8290,7 +8251,7 @@
    ]
   },
   "diabo-barbado": {
-   "sha256": "1b358c31ca524347766c2f6bbc0a1ce84a0d6bba08d0e8381643125f654d9da8",
+   "sha256": "0bb554406d9520619e219e321e90d4fe97e05136db15c9adfea03fce41fdb510",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -8377,7 +8338,7 @@
     "bloqueio": 16,
     "energia": 17,
     "defesaMental": 17,
-    "defesaSocial": 8,
+    "defesaSocial": 4,
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
@@ -8399,14 +8360,10 @@
       "jogada": 17
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Trava a ferida: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")",
-    "Manobras, Barba viva: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "diabo-chifrudo": {
-   "sha256": "614c7af29b29651240e9960fa17d5083ee9e1791122930131119cdc41b1302ec",
+   "sha256": "ef08436a4cb950c5084259d62c6666baa704aebc226bf81adf436f0a425caa01",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 6,
@@ -8456,26 +8413,18 @@
     "couraca": 3,
     "artes": {},
     "equipamento": {
-     "arsenal": [],
+     "arsenal": [
+      {
+       "ref": "a:corrente-farpada"
+      }
+     ],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Corrente farpada",
-      "parte": "corrente-duas-maos",
-      "habilidade": "armas",
-      "classe": "haste-de-guerra",
-      "pgr": [
-       3,
-       1,
-       3
-      ],
-      "dado": "1d6+2",
-      "multiplicadorForca": 2,
-      "tipoDano": "corte",
-      "nivelPerfuracao": 0,
-      "acerto": 0,
-      "bloqueiaComoArma": 0
+      "arma": "corrente-farpada",
+      "habilidade": "armas"
      },
      {
       "nome": "Mordida",
@@ -8534,8 +8483,7 @@
      {
       "nome": "Corrente farpada",
       "velocidade": 7,
-      "danoMedio": 31.5,
-      "jogada": 25
+      "danoMedio": 29.5
      },
      {
       "nome": "Mordida",
@@ -8553,7 +8501,7 @@
    }
   },
   "diabo-de-gelo": {
-   "sha256": "824f07ef4f60745dbaa604b8078d7a61ac467c9dfe5340ccd6b4d50061e3254a",
+   "sha256": "41e018d066479b79fed95b954696da971d4cd92e67ca6e7e01f2348fbac54080",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 6,
@@ -8692,7 +8640,7 @@
    }
   },
   "diabo-do-fosso-pit-fiend": {
-   "sha256": "1c07cff018da16c95ca4221d7d154309bcf805b3add25eecde7fcd97dfad6d81",
+   "sha256": "b5584a5439790baf03fcaaa8094f2c0a20de3045a925cf1182f3c5a7df3a5a4a",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 9,
@@ -8843,7 +8791,7 @@
    }
   },
   "diabo-espinhoso": {
-   "sha256": "61c5b70ad89ddbab3f8a4ce9ee061ca3443ce55f9e1873c0ebae779f4eb35012",
+   "sha256": "3f91963dc2f9e1b91c253f4cc115da9607f75965caa46720b7602d20d6ef4c03",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -8938,13 +8886,10 @@
       "jogada": 22
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Defesa espinhosa: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "diabo-osseo": {
-   "sha256": "6ce79d583018c13791f82772e3e38fe5da8cdaf24da53da99e5a09b2df82310e",
+   "sha256": "da5ca3b620e4f481d7dddce4b1f762762abd22e723110ed7f9139f9386bb85b9",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -9068,7 +9013,7 @@
    }
   },
   "diabrete-imp": {
-   "sha256": "8d70b990b4e41ecddf9725399ab67d427a2b6174465439ecfe21a83dde9c5a5c",
+   "sha256": "440dd2defd189920de6712b3c377d1ea5e6286c0da5521eaa7fbfc75ef1264f5",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -9166,10 +9111,7 @@
       "jogada": 12
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Regeneração: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "djinn": {
    "sha256": "9193a5631d4daa0a47925a200eecabc5aa0014349c82dc3274543ec0c4aac65f",
@@ -9466,7 +9408,7 @@
    ]
   },
   "dracolisk": {
-   "sha256": "09585984e06074b5031bd7fb078141c303e371f543f9879e53ec791668ca3cf5",
+   "sha256": "b2ec9a8632f2723ba1a97843dddd5ae45d1e20d1209adae140f6e2b7bc570a5f",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
@@ -9507,11 +9449,11 @@
      "caudaGrossa": true,
      "envergadura": 5.7,
      "massa": 180,
-     "area": 6.85,
-     "posturaDoTamanho": "de baixo, asas abertas",
+     "area": 1.03,
+     "posturaDoTamanho": "de lado, pousado, asas fechadas",
      "segundoTamanho": {
-      "area": 1.03,
-      "posturaDoTamanho": "de lado, pousado, asas fechadas"
+      "area": 6.85,
+      "posturaDoTamanho": "de baixo, asas abertas"
      }
     },
     "couraca": 5,
@@ -9578,8 +9520,8 @@
     "pv": 43,
     "pesoErguido": 647.65,
     "faixa": 3,
-    "tamanho": "Enorme",
-    "segundoTamanho": "Médio",
+    "tamanho": "Médio",
+    "segundoTamanho": "Enorme",
     "esquiva": 4,
     "bloqueio": 4,
     "energia": 18,
@@ -9615,7 +9557,7 @@
    }
   },
   "dragao-azul-adulto": {
-   "sha256": "1cecec8c6b56d1f1e66a539ee5358a0199dd8fce0e419876d98d528c14b4b4b6",
+   "sha256": "71b788f36f63812e7f0b4448ad83a913c132095e207f8dd27da0ea5603f1fbe0",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -9660,11 +9602,11 @@
      "caudaGrossa": true,
      "envergadura": 19.8,
      "massa": 7500,
-     "area": 82.4,
-     "posturaDoTamanho": "de baixo, asas abertas",
+     "area": 12.34,
+     "posturaDoTamanho": "de lado, pousado, asas fechadas",
      "segundoTamanho": {
-      "area": 12.34,
-      "posturaDoTamanho": "de lado, pousado, asas fechadas"
+      "area": 82.4,
+      "posturaDoTamanho": "de baixo, asas abertas"
      }
     },
     "couraca": 9,
@@ -9752,8 +9694,8 @@
     "pv": 80,
     "pesoErguido": 1881.91,
     "faixa": 5,
-    "tamanho": "Imenso",
-    "segundoTamanho": "Enorme",
+    "tamanho": "Enorme",
+    "segundoTamanho": "Imenso",
     "esquiva": 4,
     "bloqueio": 4,
     "energia": 27,
@@ -9792,15 +9734,10 @@
       "jogada": 21
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Sopro elétrico: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Multiataque: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"Feitiços · Artes do livro: Raio até o 4 (Corrente), Fascinação até o 3, Morte at\""
-   ]
+   }
   },
   "dragao-branco-jovem": {
-   "sha256": "ee62844a5f4cc9ca65e09216c778448f954a77fd9aa9f262026cf007429fc7a5",
+   "sha256": "101584105fb9f31392dc2df743d2873889f1847bbf030160aa3dcdcc04c66570",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
@@ -9846,11 +9783,11 @@
      "caudaGrossa": true,
      "envergadura": 9,
      "massa": 700,
-     "area": 16.9,
-     "posturaDoTamanho": "de baixo, asas abertas",
+     "area": 2.5,
+     "posturaDoTamanho": "de lado, pousado, asas fechadas",
      "segundoTamanho": {
-      "area": 2.5,
-      "posturaDoTamanho": "de lado, pousado, asas fechadas"
+      "area": 16.9,
+      "posturaDoTamanho": "de baixo, asas abertas"
      }
     },
     "couraca": 6,
@@ -9920,8 +9857,8 @@
     "pv": 54,
     "pesoErguido": 1009.15,
     "faixa": 4,
-    "tamanho": "Enorme",
-    "segundoTamanho": "Grande",
+    "tamanho": "Grande",
+    "segundoTamanho": "Enorme",
     "esquiva": 4,
     "bloqueio": 4,
     "energia": 17,
@@ -9953,13 +9890,10 @@
       "jogada": 15
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Multiataque: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)"
-   ]
+   }
   },
   "dragao-dourado-adulto": {
-   "sha256": "56617b6c778d598ac2400b4fb2395b9f767e68b59a33ef9e2c4dda79277ec4b5",
+   "sha256": "9bee91fe363ffc68fc035deb457aab9e7d3a491b19dcdc0524012a6ee1868435",
    "entrada": {
     "categoria": "dragao",
     "centelha": 7,
@@ -10118,17 +10052,10 @@
       "jogada": 22
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Sopro de fogo: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Multiataque: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Firme contra o medo: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Voo dominante: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"Feitiços · Artes do livro: Proteção até o 3 (Barreira), Fortuna até o 3, Cura at\""
-   ]
+   }
   },
   "dragao-verde-adulto": {
-   "sha256": "ced44dd2a4f2d29c249de76f953f01019a05d051d911859b3bf5b4fd9fc5327c",
+   "sha256": "948ac77920470b892addf5cc55e81d4a05263362058c7e288d8b42666ec548a0",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -10176,11 +10103,11 @@
      "caudaGrossa": true,
      "envergadura": 19.4,
      "massa": 7000,
-     "area": 78.7,
-     "posturaDoTamanho": "de baixo, asas abertas",
+     "area": 11.79,
+     "posturaDoTamanho": "de lado, pousado, asas fechadas",
      "segundoTamanho": {
-      "area": 11.79,
-      "posturaDoTamanho": "de lado, pousado, asas fechadas"
+      "area": 78.7,
+      "posturaDoTamanho": "de baixo, asas abertas"
      }
     },
     "couraca": 9,
@@ -10250,8 +10177,8 @@
     "pv": 75,
     "pesoErguido": 1475.39,
     "faixa": 5,
-    "tamanho": "Imenso",
-    "segundoTamanho": "Enorme",
+    "tamanho": "Enorme",
+    "segundoTamanho": "Imenso",
     "esquiva": 10,
     "bloqueio": 6,
     "energia": 26,
@@ -10284,18 +10211,10 @@
       "jogada": 20
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Sopro ácido: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Sopro ácido: o campo \"poder natural (base Água 3, a do site (\"Sopro de gás\"))\" não é ataque, poder natural nem Técnica",
-    "Manobras, Multiataque: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Enredar: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Voo em emboscada: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"Feitiços · Artes do livro: Água até o 3, Vida até o 2, com 23 de Mana.\""
-   ]
+   }
   },
   "dragao-vermelho-adulto": {
-   "sha256": "5c2bc4601240dd36d24a2f0c7eea2eacaa520000f4ea690b3e7fef4f25e7eccb",
+   "sha256": "9c61f96e56dd375b655db86cb8f531c70022ef58a0e94d199f2dec694e104f0e",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -10475,17 +10394,10 @@
       "jogada": 21
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Sopro de fogo: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Multiataque: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Aura de fogo: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Voo: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"Feitiços · Artes do livro: Fascinação até o 4, Tempo até o 3, Ofuscação até o 3,\""
-   ]
+   }
   },
   "dragao-vermelho-anciao": {
-   "sha256": "d137ba7b316fc386fd4c242f27e58ef113eb0cbfd5ef14f7ae28c6d7bd31d6b9",
+   "sha256": "d3c49d144ac3b49f04dc0b09c333081ba3bb268cd0030cc3b52339f9371f64a8",
    "entrada": {
     "categoria": "dragao",
     "centelha": 7,
@@ -10532,11 +10444,11 @@
      "caudaGrossa": true,
      "envergadura": 39.4,
      "massa": 59000,
-     "area": 325.8,
-     "posturaDoTamanho": "de baixo, asas abertas",
+     "area": 48.83,
+     "posturaDoTamanho": "de lado, pousado, asas fechadas",
      "segundoTamanho": {
-      "area": 48.83,
-      "posturaDoTamanho": "de lado, pousado, asas fechadas"
+      "area": 325.8,
+      "posturaDoTamanho": "de baixo, asas abertas"
      }
     },
     "couraca": 11,
@@ -10626,8 +10538,8 @@
     "pv": 95,
     "pesoErguido": 16646.42,
     "faixa": 6,
-    "tamanho": "Colossal",
-    "segundoTamanho": "Imenso",
+    "tamanho": "Imenso",
+    "segundoTamanho": "Colossal",
     "esquiva": 4,
     "bloqueio": 4,
     "energia": 31,
@@ -10666,18 +10578,10 @@
       "jogada": 26
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Sopro de fogo: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Multiataque: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Autoridade dracônica: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Feitiço sem gastar a ação: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Voo dominante: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"Feitiços · Artes do livro: Conjuração até o 6, Proteção até o 5, Fogo até o 4, F\""
-   ]
+   }
   },
   "dragao-vermelho-jovem": {
-   "sha256": "5fcd6ef08785297b2358091109eb7c8e51e3587e3307325ee4a45861cc92291b",
+   "sha256": "db69c4608c5379bfbf2e1ced1d1df6169d711c18963ac0e18702fc474ef4caf2",
    "entrada": {
     "categoria": "dragao",
     "centelha": 5,
@@ -10723,11 +10627,11 @@
      "caudaGrossa": true,
      "envergadura": 9.8,
      "massa": 900,
-     "area": 20,
-     "posturaDoTamanho": "de baixo, asas abertas",
+     "area": 3,
+     "posturaDoTamanho": "de lado, pousado, asas fechadas",
      "segundoTamanho": {
-      "area": 3,
-      "posturaDoTamanho": "de lado, pousado, asas fechadas"
+      "area": 20,
+      "posturaDoTamanho": "de baixo, asas abertas"
      }
     },
     "couraca": 6,
@@ -10797,8 +10701,8 @@
     "pv": 54,
     "pesoErguido": 1194.69,
     "faixa": 4,
-    "tamanho": "Enorme",
-    "segundoTamanho": "Grande",
+    "tamanho": "Grande",
+    "segundoTamanho": "Enorme",
     "esquiva": 10,
     "bloqueio": 6,
     "energia": 21,
@@ -10831,17 +10735,10 @@
       "jogada": 15
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Sopro de fogo: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Multiataque: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Voo veloz: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Feitiço sem gastar ação: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"Feitiços · Artes do livro: Proteção até o 1 (Salvaguarda), Fortuna até o 1, com \""
-   ]
+   }
   },
   "dretch": {
-   "sha256": "0a727081cc0132b88751d4fdd3790aed6202a8319ff2a91bad1c1d8da0ae7efa",
+   "sha256": "beebafef5cb5b4d1adebc3dea8881b2084c104ce0d16219a97f46c35a0867831",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -10934,7 +10831,7 @@
     "bloqueio": 4,
     "energia": 10,
     "defesaMental": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 8,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -13027,7 +12924,7 @@
    ]
   },
   "erinia": {
-   "sha256": "4f21db528cbdae08f227cdedc43833b9b7c89b9e9f24ebec410bd825b1305c10",
+   "sha256": "039e84564ef68a3679c383b97b19ce1543d5ab335f0dc036e603efbe19622b64",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -13289,7 +13186,7 @@
    ]
   },
   "esfinge-ginosfinge": {
-   "sha256": "48e6091226e2e33b602de374e1058b3c49e0038b711be912b3ae9cccb5157c75",
+   "sha256": "4a3f8cbd1dc66099d352fea7554b6454c7ae1540c071c0e3d686c0fba810fc28",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 5,
@@ -13399,7 +13296,7 @@
    }
   },
   "espectro": {
-   "sha256": "7f639b809d11b1c8d7d3d3addf49fe5158e92de387e47c2cf977d7a0f12c3f12",
+   "sha256": "5d268191839f007f30dc76dd2c0df0e7657a5e4b32f93ef0d72ddc173821b882",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 4,
@@ -13497,10 +13394,7 @@
       "jogada": 18
      }
     ]
-   },
-   "paradas": [
-    "Manobras, toque que atravessa: regra da ficha sem os oito campos (falta Ativação, Duração, Alcance, Área, Efeito, Dano, Resistência, Limite de uso)"
-   ]
+   }
   },
   "espreitador-sombrio": {
    "sha256": "51bc612c00dce4aacf7dcdcb172a88b8dd77c49180ed6898fd8ff4ac8e33ac29",
@@ -14022,7 +13916,7 @@
    ]
   },
   "ettin": {
-   "sha256": "f1778087451350f0103b99e7ea6ed15df1d11b28af6fb21f6250d2a6bf41ff05",
+   "sha256": "66eeb09ea2914e91011b8bc75024c58a5aa36d1f260e56aa6635137d62c22f67",
    "entrada": {
     "categoria": "gigante",
     "centelha": 0,
@@ -14097,7 +13991,7 @@
     "bloqueio": 6,
     "energia": 7,
     "defesaMental": 9,
-    "defesaSocial": 4,
+    "defesaSocial": 8,
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
@@ -14249,7 +14143,7 @@
    ]
   },
   "fantasma": {
-   "sha256": "59eac050c4f4f9dc1805393592b0054fdf0a44a1c8b28767f140d1350787485e",
+   "sha256": "08da1d93c69941ab79d909e349d3a0a054d8abf128ee3c9c4a810ccf99c87d4c",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 4,
@@ -14342,10 +14236,7 @@
       "jogada": 16
      }
     ]
-   },
-   "paradas": [
-    "Manobras, toque que atravessa: regra da ficha sem os oito campos (falta Ativação, Duração, Alcance, Área, Efeito, Dano, Resistência, Limite de uso)"
-   ]
+   }
   },
   "feiticeiro-menor": {
    "sha256": "02ffc694577c47bb5af3fa455d6aaf71f46abdb0ca82bbb37b7e830bce87abb5",
@@ -14448,7 +14339,7 @@
    }
   },
   "fenix": {
-   "sha256": "06cadcfec6749fae030ffff28fdde09a25b75e07b04e7e5b03c12330835853ad",
+   "sha256": "5d4c726e8a5a55e14becf40ff60eef7840500144eda7d836b8d396f7b17ee0f8",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 6,
@@ -14479,6 +14370,7 @@
      "sobrevivencia": 3
     },
     "habilidadesSec": {
+     "cura": 3,
      "voo": 4,
      "musculatura": 2
     },
@@ -14597,13 +14489,10 @@
       "jogada": 26
      }
     ]
-   },
-   "paradas": [
-    "Habilidades: a Habilidade \"Medicina\" não está no catálogo (D-231)"
-   ]
+   }
   },
   "filhote-de-dragao-vermelho": {
-   "sha256": "27b7299a36a6b3affaaabec9e74f2dbf7b61efd15076d47da58b0ed22969f21d",
+   "sha256": "c48c2808340c180b17d88e424377d35253285bc99daf1bed84055a318b89a0f6",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
@@ -14649,11 +14538,11 @@
      "caudaGrossa": true,
      "envergadura": 4.5,
      "massa": 90,
-     "area": 4.3,
-     "posturaDoTamanho": "de baixo, asas abertas",
+     "area": 0.65,
+     "posturaDoTamanho": "de lado, pousado, asas fechadas",
      "segundoTamanho": {
-      "area": 0.65,
-      "posturaDoTamanho": "de lado, pousado, asas fechadas"
+      "area": 4.3,
+      "posturaDoTamanho": "de baixo, asas abertas"
      }
     },
     "couraca": 5,
@@ -14723,8 +14612,8 @@
     "pv": 40,
     "pesoErguido": 377.95,
     "faixa": 3,
-    "tamanho": "Grande",
-    "segundoTamanho": "Médio",
+    "tamanho": "Médio",
+    "segundoTamanho": "Grande",
     "esquiva": 4,
     "bloqueio": 4,
     "energia": 19,
@@ -14757,12 +14646,7 @@
       "jogada": 11
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Sopro de fogo: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Multiataque: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"Feitiços · Artes do livro: Morte até o 3, Fogo até o 2, com 17 de Mana.\""
-   ]
+   }
   },
   "fogo-fatuo": {
    "sha256": "fcaee7fe4b99ffe593a31fe395f8a5512eaa302b24ea498e21d898cc2b6f14f2",
@@ -15124,6 +15008,7 @@
     ]
    },
    "paradas": [
+    "Manobras, Tentáculos: P7, texto copia a regra da Rajada; espera lote de ajuste",
     "Manobras, língua: regra da ficha sem os oito campos (falta Ativação, Duração, Alcance, Área, Efeito, Dano, Resistência, Limite de uso)",
     "Sentidos: linha fora do formato: \"visão em todas as direções, pelos três olhos no pedúnculo.\"",
     "Sentidos: linha fora do formato: \"sente pela água o movimento em volta .\"",
@@ -15483,7 +15368,7 @@
    ]
   },
   "ghast": {
-   "sha256": "f4b0312cd9e15af65a340b8702761af55f91933ada1423cc2c4fe035f73edbb4",
+   "sha256": "e5809e1fece72e227c69590b921bdd10646d8f8d1e5ccf1c268f176a46e4386a",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 2,
@@ -15600,7 +15485,7 @@
    }
   },
   "ghoul": {
-   "sha256": "57d5e2b6e7de15b5ed5bfd44aff81af20cb86626539ea543447f92fcbf07356a",
+   "sha256": "a025d7229b038d420ac4d240bc2c02e6b373704f94c437df74b53889a1e863b7",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 1,
@@ -15835,7 +15720,7 @@
    }
   },
   "gigante-da-pedra": {
-   "sha256": "87ee932bf91b9eda8e1320d69d75fdea7a52a5e03575f0d00e462040dce41670",
+   "sha256": "95fa7b7c7b568711257415a7d7fcdbf32a4fdaeb55bf255677223fe06657310a",
    "entrada": {
     "categoria": "gigante",
     "centelha": 0,
@@ -15950,10 +15835,7 @@
       "jogada": 8
      }
     ]
-   },
-   "paradas": [
-    "Manobras, passos silenciosos: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "gigante-da-tempestade": {
    "sha256": "284d2b1836843501d8a551e9b6dcaf1c8402fe2c0b3ae6d14c16c707d47e81e7",
@@ -16305,7 +16187,7 @@
    }
   },
   "gigante-do-gelo": {
-   "sha256": "8009a7dbc0bea4dd84fd17d12f085f725c19f143bd7e5580f09b04cb5d92aa35",
+   "sha256": "56e295e27d7b71f1339c461c54b5cfaa07bc46617b3ca37fbec29131dc8f865c",
    "entrada": {
     "categoria": "gigante",
     "centelha": 1,
@@ -16422,10 +16304,7 @@
       "jogada": 7
      }
     ]
-   },
-   "paradas": [
-    "Manobras, camuflagem branca: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "gigantopiteco": {
    "sha256": "2d081cdd74c219997f39f55c220eed2e9a6281465dfe67fbb2b8e90bd4cbe649",
@@ -16551,7 +16430,7 @@
    ]
   },
   "girallon": {
-   "sha256": "ddb4d543d6839471538706bd9a8713b68d30c3e3c0169a9477cd263363635fa0",
+   "sha256": "ac851ae427dc19f83b9d6a9fb204ed10feeeba0523e2323500d399b6cc58844d",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -16585,6 +16464,7 @@
     "vontade": 9,
     "corpo": {
      "postura": "ereto; anda também de quatro e de seis",
+     "apoio": "bipede",
      "altura": 2.4,
      "largura": 1.2,
      "profundidade": null,
@@ -16614,7 +16494,7 @@
       "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": null,
-      "acerto": 0,
+      "acerto": -1,
       "bloqueiaComoArma": null
      },
      {
@@ -16645,7 +16525,7 @@
     "bloqueio": 14,
     "energia": 11,
     "defesaMental": 14,
-    "defesaSocial": 4,
+    "defesaSocial": 12,
     "iniciativa": 2,
     "mana": null,
     "absorcao": {
@@ -16657,8 +16537,7 @@
      {
       "nome": "Garras",
       "velocidade": 6,
-      "danoMedio": 12.5,
-      "jogada": 15
+      "danoMedio": 12.5
      },
      {
       "nome": "Mordida",
@@ -16667,13 +16546,10 @@
       "jogada": 15
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"ereto, macaco de quatro braços ereto; anda também de quatro e de seis\")"
-   ]
+   }
   },
   "glabrezu": {
-   "sha256": "a2706bdf411c1dc1e662c6450eea9116c45d99dd09669695b4bf3ae54ab542be",
+   "sha256": "cd82965cb7ac9da62e59fb8e2afbbf071b6b8f579dbd43ef4eb8b83bc0a92d64",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 6,
@@ -17592,7 +17468,7 @@
    ]
   },
   "gorgona-touro-de-ferro": {
-   "sha256": "c3b4c96d6bee3e392c9b93ef07e6b76feb1f8b08dcc8290c86371151ca180e7b",
+   "sha256": "4bf822d7b1273569c574032b5a1aec2e85e38e89af67e072614f94ec86cbddf8",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -17704,7 +17580,7 @@
     "bloqueio": 8,
     "energia": 16,
     "defesaMental": 19,
-    "defesaSocial": 6,
+    "defesaSocial": 18,
     "iniciativa": 6,
     "mana": null,
     "absorcao": {
@@ -17860,7 +17736,7 @@
    ]
   },
   "grande-wyrm-vermelho": {
-   "sha256": "59a5b68f6872bdc6d4bdb3c881d94547e256ed08dac18ba262b3f17e33e66c8e",
+   "sha256": "0ccee8fc67c30d2fb96cae51dfc6a39b42a6876a74f38e9f5ed84fc5cec7c199",
    "entrada": {
     "categoria": "dragao",
     "centelha": 9,
@@ -17907,11 +17783,11 @@
      "caudaGrossa": true,
      "envergadura": 45,
      "massa": 88000,
-     "area": 425.3,
-     "posturaDoTamanho": "de baixo, asas abertas",
+     "area": 63.74,
+     "posturaDoTamanho": "de lado, pousado, asas fechadas",
      "segundoTamanho": {
-      "area": 63.74,
-      "posturaDoTamanho": "de lado, pousado, asas fechadas"
+      "area": 425.3,
+      "posturaDoTamanho": "de baixo, asas abertas"
      }
     },
     "couraca": 12,
@@ -18018,8 +17894,8 @@
     "pv": 110,
     "pesoErguido": 32320.78,
     "faixa": 6,
-    "tamanho": "Colossal",
-    "segundoTamanho": "Imenso",
+    "tamanho": "Imenso",
+    "segundoTamanho": "Colossal",
     "esquiva": 4,
     "bloqueio": 4,
     "energia": 38,
@@ -18064,14 +17940,7 @@
       "jogada": 29
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Sopro cataclísmico: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Multiataque: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Vontade de wyrm: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Voo perfeito: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"Feitiços · Artes do livro: Tempo até o 6, Proteção até o 6, Fogo até o 5, Fascin\""
-   ]
+   }
   },
   "grifo": {
    "sha256": "9b273f8e28b75cbc6be368d8c73ea6901f6d3bf788c9615d17015838314bde7d",
@@ -18567,7 +18436,7 @@
    ]
   },
   "hezrou": {
-   "sha256": "f84bfa22f73384248ea72945f2cf99016e85d7b2cdd96e1ad86a57045080ea92",
+   "sha256": "5ed86792cac68251372ad9339ec95c0a107f16f868b5ce9af4df1cca8e34cc3a",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -18689,10 +18558,7 @@
       "danoMedio": 17.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras, agarrar: o campo \"Mordida ou Garras\" não é ataque, poder natural nem Técnica"
-   ]
+   }
   },
   "hidra-5-cabecas": {
    "sha256": "710292bbc39770ab535ee758d25e1db963857192def452ae8efdf973cfeb35a1",
@@ -18791,7 +18657,10 @@
       "jogada": 14
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Cinco mordidas: P7, texto copia a regra da Rajada; espera lote de ajuste"
+   ]
   },
   "hiena-malhada": {
    "sha256": "1e5779a13d7709a328ef83db08b957cde5bd928867e6c298c432363ea7ae2357",
@@ -20211,10 +20080,13 @@
       "jogada": 29
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Tentáculos múltiplos: P7, texto copia a regra da Rajada; espera lote de ajuste"
+   ]
   },
   "kyton": {
-   "sha256": "6a98f768d00ee534232b690d25c3c00369aca3dcb4d0404b833c0f7b6e735e48",
+   "sha256": "7774c6983c0bff3ac87767cfaf10d3fa8967f50546573bcc9a1b7f98dc8ef844",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -20310,10 +20182,7 @@
       "jogada": 18
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Olhar perturbador: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "lacador": {
    "sha256": "2dc2d594bd66cb49170dfc7325a31a8f9a2df0ce2dd73caee6aafd1cf5486b47",
@@ -21151,7 +21020,7 @@
    ]
   },
   "lemure": {
-   "sha256": "bd95360b84b93efc98e9ef92af305edd9456ae85ac041f34c9b148e3261a9d33",
+   "sha256": "4b2776b2168c03ac601dcea7585ea67981c433fe97dc6fd7323cce7a0e1ef35f",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 1,
@@ -21242,10 +21111,7 @@
       "jogada": 8
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Regeneração fraca: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "leopardo": {
    "sha256": "4adf1ccc73604484632a8dfc6fa85ab1591398b7cd92614f92184066c4026991",
@@ -21479,7 +21345,7 @@
    ]
   },
   "lich": {
-   "sha256": "f7a2d4e7843179dff449ed19f2ae328800c45dc3dd59c8244de1bd6b092e5633",
+   "sha256": "de89222021f1e04c47ff75f1919378a4e43c1f28c11be7a2fb3b22b7404c0093",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 6,
@@ -21677,7 +21543,7 @@
    ]
   },
   "linnorm-do-gelo": {
-   "sha256": "1288d053dc6e94d99c9b46aeefe57077f537520fcfd48170489c81dbe3c2485f",
+   "sha256": "4a7443351eb4fe74096807a667a29ab776218d572efeab09986edb15ef30fa26",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -21819,7 +21685,7 @@
    }
   },
   "linnorm-dos-lagos": {
-   "sha256": "9896e3a9c476344e690957fa861f7bc12ce26f1f370849b0c97021006b605dcd",
+   "sha256": "21e1010f1d235f087dd7cb2847225c432447a0e2ff988827b6940de2d18ed9ee",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -21979,21 +21845,10 @@
       "jogada": 29
      }
     ]
-   },
-   "paradas": [
-    "Manobras, fumaça do ácido: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, agarrar e constringir: texto de trabalho no texto de jogo (\"D-101\"; manual 7.5)",
-    "Manobras, Duas cabeças: texto de trabalho no texto de jogo (\"C-046\"; manual 7.5)",
-    "Manobras, Nunca cercado: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Liberdade de movimento: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Regeneração: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Maldição da morte: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Imune a sono, paralisia, veneno e maldições comuns: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Sentidos, duas cabeças: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)"
-   ]
+   }
   },
   "linnorm-dos-penhascos": {
-   "sha256": "ca19584b6bd203284b522116eaa15493a988fc6f110e4ac5aba03d788cd60727",
+   "sha256": "88d711c83e55a4a95dbabaed61fb69e73a89a17945993800b6c804bbf9b656a5",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -23867,7 +23722,7 @@
    }
   },
   "marilith": {
-   "sha256": "3e8eb5abcc1d647161051a30d39c7c0d1c3696f6d3a13c157602d3278ce06b79",
+   "sha256": "7ae197877d3efe384ed09942079efbe5b1295536bac40b31df680249d64a971b",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 7,
@@ -24806,7 +24661,7 @@
    }
   },
   "mohrg": {
-   "sha256": "9f795311267bda71875528ff324dd761d47c519a0c840cd695b5edf28459a32a",
+   "sha256": "e0bcc1c3902b4baa8dc9f543f4c1aa8f515bd2950e5b5c0a1c6fb6e7ec6fcb20",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 4,
@@ -25642,7 +25497,7 @@
    ]
   },
   "mumia": {
-   "sha256": "5c96de8dc42435fc05e6b2ce9327b34f1efc105c7a16a43e062e85bc96aca933",
+   "sha256": "3dddb0fd8bbd8b3c8d8b923751d401640045acd7b81b1be5b9158e9989142e41",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 4,
@@ -25733,7 +25588,7 @@
    }
   },
   "nabasu": {
-   "sha256": "dd54abb82d06d42ce25ca35b1107e0a5415c11451630815c3798522b3fc4e74c",
+   "sha256": "34101633c1cec14b0b00878204cbc2dc484f1dd4861f4c1a43b40ac4da9b7497",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -25852,10 +25707,7 @@
       "jogada": 20
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Olhar que rouba a morte: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "naga-espirita": {
    "sha256": "831ef1b9add8af19afe481091d1458ec1dcb9408edd718ceb9ef8c2aa33dc2a8",
@@ -26197,7 +26049,7 @@
    ]
   },
   "nalfeshnee": {
-   "sha256": "c620344088cc8826d94f63795621151a22ec54abbdd97d43ad4822b333b51866",
+   "sha256": "911fe466c44a6d8748974a958046da881132ed5cedc23d1ce4ddb631a3e493b1",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 6,
@@ -26319,11 +26171,7 @@
       "jogada": 27
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Nimbo profano: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")",
-    "Manobras, Retardar: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "neothelid": {
    "sha256": "ac43402d7d36601186b957afda88b01da527f63a378549369841f2c05f479a8e",
@@ -26422,6 +26270,7 @@
     ]
    },
    "paradas": [
+    "Manobras, línguas tentaculares: P7, texto copia a regra da Rajada; espera lote de ajuste",
     "Manobras, Sopro ácido: o campo \"boca\" não é ataque, poder natural nem Técnica",
     "Manobras, Golpe mental: texto de trabalho no texto de jogo (\"C-041\"; manual 7.5)",
     "Manobras, Poderes mentais: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
@@ -26614,7 +26463,7 @@
    }
   },
   "ogro-mago-oni": {
-   "sha256": "d59dfbada3782922610d66cc2c8fa567b7ac6d84dd1b405a728ac8d2bef14ddd",
+   "sha256": "8dfa1d3c7e264583f6bd0fbc37e4f5e0ca76c95ce69868aab8b78fce7642955c",
    "entrada": {
     "categoria": "gigante",
     "centelha": 5,
@@ -26725,7 +26574,7 @@
    }
   },
   "ogro": {
-   "sha256": "2baf31d897febca09b658b406f90ef57ef7a23eff08470b8284300aa2bc358cd",
+   "sha256": "c9068c8b021d64cd983bcb6e1e7ca84161934176d4dc23eaca53f10541a52b43",
    "entrada": {
     "categoria": "gigante",
     "centelha": 0,
@@ -26801,7 +26650,7 @@
     "bloqueio": 4,
     "energia": 7,
     "defesaMental": 9,
-    "defesaSocial": 4,
+    "defesaSocial": 6,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -27355,10 +27204,13 @@
       "jogada": 18
      }
     ]
-   }
+   },
+   "paradas": [
+    "Manobras, Dois socos: P7, texto copia a regra da Rajada; espera lote de ajuste"
+   ]
   },
   "pesadelo": {
-   "sha256": "50dbcc61ee28dedecc34df257f7d060f2363f5d13aa9343cea18f76e55df3ed7",
+   "sha256": "ac85b6d4307f54e125292c49f7e3d19cbee1a0704e235662647946fa6d78cc63",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -27476,10 +27328,7 @@
       "jogada": 20
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Fumaça sufocante: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "pixie": {
    "sha256": "466df4d9a8c7f0b505a581dab1a9f3cd17ae02497e007f7bce16ab4f81d33c69",
@@ -28198,7 +28047,7 @@
    ]
   },
   "pseudodragao": {
-   "sha256": "8e97f37f2029d27fe1bb34b8de5cf6bb178c3269de2caf0fef8da322cc0d8450",
+   "sha256": "f872c09891bd59a7be207a1d2d3f01910b4d0775f1350dc17dff9d3458d1ca26",
    "entrada": {
     "categoria": "dragao",
     "centelha": 1,
@@ -28238,11 +28087,11 @@
      "caudaGrossa": false,
      "envergadura": 1.5,
      "massa": 3.2,
-     "area": 0.47,
-     "posturaDoTamanho": "de baixo, asas abertas",
+     "area": 0.07,
+     "posturaDoTamanho": "de lado, pousado, asas fechadas",
      "segundoTamanho": {
-      "area": 0.07,
-      "posturaDoTamanho": "de lado, pousado, asas fechadas"
+      "area": 0.47,
+      "posturaDoTamanho": "de baixo, asas abertas"
      }
     },
     "couraca": 1,
@@ -28309,8 +28158,8 @@
     "pv": 6,
     "pesoErguido": 17.05,
     "faixa": 1,
-    "tamanho": "Médio",
-    "segundoTamanho": "Miúdo",
+    "tamanho": "Miúdo",
+    "segundoTamanho": "Médio",
     "esquiva": 12,
     "bloqueio": 8,
     "energia": 8,
@@ -28450,7 +28299,7 @@
    }
   },
   "quasit": {
-   "sha256": "10014e5a90f8f511eaabe37e1a48b3c48ce43d76f677893b2901949d7f0e8aef",
+   "sha256": "36d1d292c16683b3fbbfd4300120a7761781aaae2bb6c59efaaf218b2633064a",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -28570,10 +28419,7 @@
       "jogada": 12
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Regeneração: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "quetzalcoatlo": {
    "sha256": "98dd8f53738da4052e5e125edbd950abe1e75f1c774a07f7b39f592be3c0f02d",
@@ -29159,6 +29005,7 @@
     ]
    },
    "paradas": [
+    "Manobras, Garras traiçoeiras: P7, texto copia a regra da Rajada; espera lote de ajuste",
     "Variantes, disfarce: campo \"Altura e Massa\" que o conversor não conhece"
    ]
   },
@@ -30834,7 +30681,7 @@
    ]
   },
   "sombra": {
-   "sha256": "0febb3f93dd5692c51c9c6bd1452dab1c8f69599ca7f85378c91bd9c17f51346",
+   "sha256": "927f4f1877bb501fa111359e0b3a2b661e584d9aa729706c61f14fd5d6f02d5f",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 2,
@@ -30927,10 +30774,7 @@
       "jogada": 12
      }
     ]
-   },
-   "paradas": [
-    "Manobras, toque que atravessa: regra da ficha sem os oito campos (falta Ativação, Duração, Alcance, Área, Efeito, Dano, Resistência, Limite de uso)"
-   ]
+   }
   },
   "stirge": {
    "sha256": "d2aca057a81ebf082f409886ccd45cc5536a0388b9ed1171bb95006e757d1481",
@@ -31038,7 +30882,7 @@
    }
   },
   "sucubo": {
-   "sha256": "42fea4baf65615f4fd2372600620d3a99b8a01db71771d284fe91eab158b09f7",
+   "sha256": "7be499cfaf2e9c5e1948d4139d7a0ccc09e011158bb3c809d0a438729452a01d",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -31378,7 +31222,7 @@
    ]
   },
   "tartaruga-dragao": {
-   "sha256": "780f615130995ac8bb0ed883568f90744194ee840e289206a81f082c909bb109",
+   "sha256": "33d1e219190c7d1e3ce33b1fab9d83433aa2237952fda85374557a80f41bba95",
    "entrada": {
     "categoria": "dragao",
     "centelha": 5,
@@ -31518,12 +31362,7 @@
       "jogada": 16
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Sopro de vapor escaldante: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Multiataque: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Afunda embarcações: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)"
-   ]
+   }
   },
   "tengu": {
    "sha256": "f1bed3afb503ec05c60e2c7d751971f4ce5bd7b03e79509d835de242eeb711c1",
@@ -32331,7 +32170,7 @@
    ]
   },
   "trol": {
-   "sha256": "60e2916af3a2e9ee98a41f3a12151d9956e12a6fdc25ddc7649f18b05fb24c6b",
+   "sha256": "db696447f0a5c25901196da798c5defe39f3e9db1db068dba42d11af6077185a",
    "entrada": {
     "categoria": "gigante",
     "centelha": 1,
@@ -32391,7 +32230,7 @@
       "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
-      "acerto": 0,
+      "acerto": -1,
       "bloqueiaComoArma": null
      },
      {
@@ -32422,7 +32261,7 @@
     "bloqueio": 8,
     "energia": 11,
     "defesaMental": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 8,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -32434,8 +32273,7 @@
      {
       "nome": "Garras",
       "velocidade": 7,
-      "danoMedio": 15,
-      "jogada": 14
+      "danoMedio": 15
      },
      {
       "nome": "Mordida",
@@ -33323,7 +33161,7 @@
    ]
   },
   "vampiro": {
-   "sha256": "6a6a264b95afe12beca8a6b286ec4d1c402f1b385ea2314bf6b54fc9addcc41d",
+   "sha256": "64976bb9380c382c365e00068b0097a18c275ed026cbb75d3c8776ca4e9c3b3e",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 5,
@@ -33651,7 +33489,7 @@
    ]
   },
   "vargouille": {
-   "sha256": "3685f5c98b1b8d08782431adb2674249df956fa8f8345e04f99b0c32551a11d2",
+   "sha256": "d7eaacb6bd19885cf66b7bba1223ad09dc3a349c12e0d9270d1bbff41c72f654",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -34092,7 +33930,7 @@
    ]
   },
   "vrock": {
-   "sha256": "4c232d602c4baf83de79536927786bc056b815ca0520d6d4120f3fc5f8656507",
+   "sha256": "136be36856c1e4a295d02b9ac5c8d0087954c3f8912902bc43d2f86e578626bb",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -34410,7 +34248,7 @@
    ]
   },
   "wyvern": {
-   "sha256": "755cc17f2a0f74df22a42a46646a95f90c30b6749b4ffc83962fe768631da0c0",
+   "sha256": "f45649918e76b23fa4a51fceaf6908f0b1c73ec20e70525f61e8648257918c35",
    "entrada": {
     "categoria": "dragao",
     "centelha": 3,
@@ -34579,13 +34417,10 @@
       "jogada": 17
      }
     ]
-   },
-   "paradas": [
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "xill": {
-   "sha256": "6573a39b4abc751e60c529b6d35627d9c962ec9025891ba48b6aa524624e0247",
+   "sha256": "686f3ec6aee0c67d401dbeaef773816065dfad735fe095ac976f79c72b3a24b3",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,

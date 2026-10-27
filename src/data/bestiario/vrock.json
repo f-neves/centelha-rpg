@@ -1,119 +1,270 @@
 {
-  "ordem": 89,
   "id": "vrock",
   "idAntigo": "mon-vrock",
   "nome": "Vrock",
   "nomeIngles": "Demon, Vrock",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Demônio",
+  "categoria": "corruptor",
   "papel": "chefe",
-  "conceito": "exterior Grande (demônio)",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
-  "tags": [
-    "demonio",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/vrock_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,4 m de altura (envergadura 4,5 m)",
-    "peso": "230 kg"
-  },
-  "locomocao": {
-    "terra": 3,
-    "voo": 5
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, curvado; voa",
+    "apoio": "bipede",
+    "altura": 2.4,
+    "largura": 0.72,
+    "profundidade": 0.34,
+    "comprimento": null,
+    "massa": 230,
+    "area": 1.54,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 7,
     "destreza": 4,
     "vigor": 9,
-    "influencia": 5,
-    "perspicacia": 4,
-    "compostura": 5,
     "percepcao": 5,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 5,
+    "perspicacia": 4,
+    "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
-    "prontidao": 2,
-    "integridade": 5
+    "atletismo": 3,
+    "furtividade": 0,
+    "integridade": 5,
+    "prontidao": 4,
+    "resistencia": 5,
+    "empatia": 1,
+    "sociabilidade": 1,
+    "sobrevivencia": 2,
+    "ocultismo": 2
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "intimidacao": 3,
+    "danca": 3,
+    "voo": 4,
+    "musculatura": 3
+  },
+  "especialidades": {
+    "resistencia": [
+      {
+        "foco": "doença e podridão",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 6
+    "temperanca": 1
   },
-  "willpower": 10,
+  "vontade": 10,
   "aparencia": 0,
-  "arte": {
-    "morte": 3,
-    "espirito": 4
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "voo": {
+      "batalha": 5
+    }
   },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Garras",
+      "parte": "mao-de-garras",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Bico",
+      "parte": "bico-de-abutre",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "esporos-e-danca-da-ruina",
-      "nome": "Esporos e dança da ruína",
-      "tipo": "natural",
-      "resiste": "corpo",
-      "efeito": "Esporos em quem está colado; dança exige 3 vrocks.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 1
-      }
-    }
-  ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+      "nome": "Duas garras",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada",
+      "texto": "Até dois golpes por ação"
+    },
     {
-      "nome": "Esporos entorpecentes",
-      "descricao": "explosão de 6m ao ficar Agonizante; falha em Fortitude = Enfraquecido"
+      "nome": "garras e bico juntos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "três golpes na mesma ação, duas garras e o bico; por enquanto, as garras vão juntas pela Rajada, e o Bico é outra ação"
+    },
+    {
+      "nome": "Esporos",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "morte",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 6, ou sozinho, quando ele fica Morrendo",
+      "duracao": "18 Ticks",
+      "alcance": "6 m",
+      "area": "esfera de 6 m em volta dele",
+      "efeito": "esporos brotam na carne de quem está perto e enfraquecem; quem falha leva o dano e fica Abalado até o fim da cena",
+      "dano": "1d6 a cada 6 Ticks, por 18 Ticks",
+      "resistencia": "corpo, contra Influência + Briga dele; quem passa não pega os esporos",
+      "limiteDeUso": "uma vez por dia"
     },
     {
       "nome": "Dança da ruína",
-      "descricao": "se dois ou mais Vrocks dançarem 3 rodadas seguidas, liberam explosão de área grande com dano alto"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "dois ou mais vrocks dançam juntos por 18 Ticks seguidos, sem fazer outra coisa",
+      "duracao": "instantânea",
+      "alcance": "30 m",
+      "area": "esfera de 30 m em volta dos dançarinos",
+      "efeito": "a dança solta uma explosão de energia que arrasa a área",
+      "dano": "5d6 + Centelha, raio",
+      "resistencia": "esquiva; quem passa leva metade",
+      "limiteDeUso": "uma vez por dia"
     },
     {
       "nome": "Convocar demônios",
-      "descricao": "feitiçaria, 1x por cena; traz 1d4 dretches ou outro vrock para a luta"
-    },
-    {
-      "nome": "Garras e bico",
-      "descricao": "três ataques corpo a corpo na mesma ação, dano baixo cada"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "espirito",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 6, um grito",
+      "duracao": "até o fim da cena",
+      "alcance": "o lugar onde ele está",
+      "area": "não se aplica",
+      "efeito": "traz 1d4 dretches ou outro vrock (as fichas do bestiário), que chegam em 6 Ticks e lutam por ele",
+      "dano": "o dos que chegam",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Grito ensurdecedor",
-      "descricao": "cone de 6m, 1x por cena; falha em Fortitude = Atordoado por 1 rodada"
-    },
-    {
-      "nome": "Voo",
-      "descricao": "asas de abutre, deslocamento de voo alto e ágil"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "Surdo até o fim da cena",
+      "alcance": "6 m à frente",
+      "area": "cone de 6 m",
+      "efeito": "o grito ensurdece; quem falha fica Surdo",
+      "dano": "nenhum",
+      "resistencia": "corpo, contra Vigor + Intimidação dele; quem passa não ouve bem por um instante, sem efeito de jogo",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Imagem espelhada",
-      "descricao": "feitiçaria; cria duplicatas ilusórias que dão bônus de Esquiva até serem atingidas"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até o fim da cena, ou até as cópias acabarem",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "duas cópias ilusórias dele confundem quem ataca; cada golpe que o acerta desfaz uma cópia em vez de feri-lo, até as duas acabarem",
+      "dano": "nenhum",
+      "resistencia": "nenhum; quem tem visão verdadeira ignora as cópias",
+      "limiteDeUso": "uma vez por cena"
+    },
+    {
+      "nome": "medonho",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quem vê o vrock pela primeira vez sente o cheiro de carniça e o pavor do abutre do tamanho de um homem; o corpo quer recuar"
+    },
+    {
+      "nome": "atordoamento do grito",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o grito deixa a vítima zonza e incapaz de agir por um instante"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "abutres de guerra",
+      "formas": "todas",
+      "texto": "atacam em bando, gritam para chamar mais demônios e, quando cercados, dançam a ruína; mandados à frente para desgastar o inimigo antes dos demônios de comando."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão de abutre",
+      "descricao": "acha carniça e campo de batalha de longe, sem nada além do que a Percepção 5 e a Prontidão 4 dão",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "inteligente, demoníaca",
+    "tracos": "corpo de homem magro e musculoso coberto de penas sujas, cabeça e asas de abutre, pescoço comprido e garras; cheira a carniça"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "bando de vrocks, nas legiões",
+    "atividade": "qualquer hora",
+    "dieta": "carniça e carne",
+    "caca": "caça carniça em campos de batalha e ruínas",
+    "dianteDeGente": "ataca em bando"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Demônio abutre, tropa de choque descartável das legiões do Abismo, mandada à frente para desgastar o inimigo. Ataca em bando, grita para chamar mais demônios e, quando cercado, dança um ritual frenético que espalha esporos e solta uma explosão de ruína.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -132,42 +283,63 @@
       "texto": "Quando exércitos antigos entram em colapso perto da Fenda, dizem os veteranos, os corpos empilhados atraem algo com asas negras e cheiro de carniça: sinal de que os abutres do Abismo encontraram seu banquete."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/vrock_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
-    ]
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Prontidão 4, Atletismo 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Vrock",
-    "cr": "9",
-    "tipo": "exterior Grande (demônio)",
-    "tamanho": "grande",
-    "valores": {
-      "for": 21,
-      "des": 15,
-      "con": 25,
-      "int": 14,
-      "sab": 16,
-      "car": 16
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Esporos",
+      "motivo": "números sugeridos pela ficha (D-197); o site trazia duas versões (explosão de 6 m ao ficar Agonizante, e esporos em quem está colado, uma vez por dia); a ficha juntou as duas numa linha, com o \"Agonizante\" lido como Morrendo e o \"Enfraquecido\" como Abalado"
     },
-    "pericias": [
-      "Prontidão 4",
-      "Atletismo 3"
-    ],
-    "nota": "Esporos, dança da ruína: Centelha 4.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Dança da ruína",
+      "motivo": "números sugeridos pela ficha (D-197); o site dizia \"dois ou mais vrocks\" numa linha e \"exige 3 vrocks\" na outra; ficaram dois. O tipo raio é escolha da ficha, porque o site só diz \"dano alto\""
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5
+    {
+      "campo": "habilidadesEspeciais.Convocar demônios",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Grito ensurdecedor",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Imagem espelhada",
+      "motivo": "números sugeridos pela ficha (D-197); números da ficha (D-197); o \"Atordoado\" do site virou Surdo e perder a próxima ação"
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 2"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: penas duras e pele grossa de ave grande . O nível fica fora da Absorção (decisoes-autor §16)"
+    },
+    {
+      "campo": "ataques.Bico.nivelPerfuracao",
+      "motivo": "\"Garras e bico\" (site): o bico curvo de abutre, com a cabeça e o pescoço atrás, Média. N1, bico córneo que fura couro . Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "230 kg, na zona de transição; robusto, fica na linha de 220 kg a 1,8 t (66 PV), e não na de baixo (52)"
+    },
+    {
+      "campo": "habilidadesEspeciais.atordoamento do grito",
+      "motivo": "Antes perdia a próxima ação; 33.3 retirou só o atordoamento."
+    }
+  ]
 }

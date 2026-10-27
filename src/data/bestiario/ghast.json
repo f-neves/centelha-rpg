@@ -1,114 +1,209 @@
 {
-  "ordem": 77,
   "id": "ghast",
   "idAntigo": "mon-ghast",
   "nome": "Ghast",
   "nomeIngles": "Ghast",
-  "categoria": "Morto-vivo",
+  "categoria": "morto-vivo",
   "papel": "soldado",
-  "conceito": "morto-vivo Médio",
-  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
-  "tags": [
-    "morto-vivo",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/ghast_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura",
-    "peso": "65 kg"
-  },
-  "locomocao": {
-    "terra": 3
-  },
+  "ameaca": 2,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, curvado, de mãos à frente",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.45,
+    "profundidade": 0.23,
+    "comprimento": null,
+    "massa": 65,
+    "area": 0.72,
+    "posturaDoTamanho": "de pé"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 5,
     "destreza": 5,
     "vigor": 5,
-    "influencia": 5,
-    "perspicacia": 4,
-    "compostura": 4,
     "percepcao": 4,
     "inteligencia": 3,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 5,
+    "perspicacia": 4,
+    "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 1,
+    "furtividade": 3,
+    "integridade": 4,
     "prontidao": 2,
-    "integridade": 4
+    "sobrevivencia": 1
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "estrategia": 1,
+    "musculatura": 1
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
+    "compaixao": 1,
     "conviccao": 4,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 2,
-  "arte": {
-    "morte": 2
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
   },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
+      "nome": "Garras",
+      "parte": "unhas-compridas-das-maos",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 5
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Mordida",
+      "parte": "boca-de-dentes-de-comer-carne",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "paralisia-e-fedor",
-      "nome": "Paralisia e fedor",
-      "tipo": "natural",
+      "nome": "Duas garras",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada",
+      "texto": "Até dois golpes por ação"
+    },
+    {
+      "nome": "garras e mordida juntas",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "rasga com as duas garras e morde na mesma ação; por enquanto, as duas garras vão juntas pela Rajada, e a Mordida é outra ação"
+    },
+    {
+      "nome": "Toque paralisante",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a garra paralisa a vítima, impedindo-a de agir e se mover"
+    },
+    {
+      "nome": "Fedor nauseante",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "morte",
         "nivel": 2
       },
-      "resiste": "corpo",
-      "efeito": "Resiste ao entrar, 1 vez por cena.",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
-      }
+      "ativacao": "nenhuma, sempre ativo",
+      "duracao": "Abalado enquanto ficar a até 3 m dele",
+      "alcance": "3 m",
+      "area": "esfera de 3 m em volta dele",
+      "efeito": "o fedor de cova enjoa quem chega perto; quem falha fica Abalado",
+      "dano": "nenhum",
+      "resistencia": "corpo, contra Vigor + Resistência de quem entra contra a Influência + Briga dele; quem passa fica imune até o fim da cena",
+      "limiteDeUso": "uma vez por cena para cada pessoa"
+    },
+    {
+      "nome": "imune a veneno e doença",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o veneno e a doença não pegam no corpo morto"
+    },
+    {
+      "nome": "corpo morto",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não respira, não dorme e não se cansa; come carne por fome, e não para viver"
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "resistencias": [
-    "perfuracao"
-  ],
-  "habilidades": [
+  "comoLuta": [
     {
-      "nome": "Fedor nauseante",
-      "descricao": "aura de 3m; falha em Resistência deixa o alvo Enjoado (Abalado) até se afastar"
-    },
-    {
-      "nome": "Toque paralisante",
-      "descricao": "mais potente que o do ghoul comum, dificuldade maior no teste de Vontade"
-    },
-    {
-      "nome": "Garras afiadas",
-      "descricao": "dano superior ao de um ghoul comum"
-    },
-    {
-      "nome": "Constituição de morto-vivo",
-      "descricao": "imune a veneno e doença"
-    },
-    {
-      "nome": "Faro do carniçal",
-      "descricao": "localiza carne morta ou moribunda pelo cheiro"
+      "nome": "chefe de matilha",
+      "formas": "todas",
+      "texto": "espera a matilha de ghouls cercar a presa e entra na emboscada pelo lado; guarda a melhor presa para si."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "apurado; acha carne morta ou moribunda pelo cheiro",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro da cripta",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "nenhuma",
+    "prendeRespiracao": "não respira",
+    "mente": "inteira e astuta, presa à fome",
+    "tracos": "corpo humano ressecado e mais alto que o do ghoul, de unhas longas; o fedor de cova chega antes dele"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "lidera uma matilha de ghouls",
+    "atividade": "noturno",
+    "dieta": "carne, viva ou morta",
+    "caca": "emboscada com a matilha",
+    "dianteDeGente": "ataca por fome"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo",
+      "ruínas"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Ghoul que a fome envelheceu por séculos: mais forte e mais astuto, lidera matilhas em emboscada nos ossários. A garra paralisa, e o fedor enjoa quem chega perto.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -127,43 +222,48 @@
       "texto": "Um ghast é o que sobra quando a fome de um ghoul amadurece por séculos. Em regiões de Mére, onde os mortos de guerras antigas nunca foram todos recolhidos, ainda se encontram ossários inteiros liderados por um só ghast paciente."
     }
   ],
-  "ecologia": {
-    "tipo": "Undead",
-    "terreno": [
-      "Underground",
-      "Ruins"
+  "imagens": [
+    "bestiario/ghast_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Ghast",
-    "cr": "2",
-    "tipo": "morto-vivo Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 17,
-      "des": 17,
-      "con": "-",
-      "int": 13,
-      "sab": 14,
-      "car": 16
-    },
-    "pericias": [
-      "Furtividade 3",
-      "Prontidão 2"
+    "resistencias": [
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      }
     ],
-    "nota": "Fedor e paralisia: Centelha 2.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "conhecido"
+    "imunidades": []
   },
-  "variantes": [],
-  "ameacaLegada": 2
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Fedor nauseante",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesSec.estrategia",
+      "motivo": "Lidera a matilha em emboscada (site)"
+    },
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Pelo corpo: músculo seco, como o do ghoul (1)"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Comportamento)"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "site (criptas e ossários)"
+    }
+  ]
 }

@@ -1,83 +1,203 @@
 {
-  "ordem": 141,
   "id": "ankheg",
   "idAntigo": "mon-ankheg",
   "nome": "Ankheg",
   "nomeIngles": "Ankheg",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "fera",
-  "conceito": "besta mágica Grande",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha"
-  ],
-  "imagem": "bestiario/ankheg_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "3 m de comprimento",
-    "peso": "450 kg"
-  },
-  "locomocao": {
-    "terra": 3,
-    "escavacao": 2
-  },
+  "ameaca": 3,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "seis patas",
+    "apoio": "outro",
+    "altura": 0.98,
+    "largura": 0.6,
+    "profundidade": null,
+    "comprimento": 3,
+    "massa": 160,
+    "area": 1.78,
+    "posturaDoTamanho": "vista de cima"
+  },
+  "couraca": 3,
+  "atributos": {
     "forca": 6,
     "destreza": 2,
     "vigor": 6,
-    "influencia": 1,
-    "perspicacia": 1,
-    "compostura": 2,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 1
+    "raciocinio": 1,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 0,
     "esquiva": 0,
+    "atletismo": 2,
+    "furtividade": 2,
+    "integridade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "resistencia": 3,
+    "sociabilidade": 0,
+    "sobrevivencia": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "disparo": 2,
+    "musculatura": 4
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 7,
-  "aparencia": 5,
+  "vontade": 7,
+  "aparencia": 2,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "escavacao": {
+      "batalha": 2
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Mandíbulas",
+      "parte": "mandibulas",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Cuspe ácido",
+      "parte": "boca",
+      "habilidade": "disparo",
+      "classe": "distancia",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 0,
+      "tipoDano": "acido",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Escavador",
-      "descricao": "O ankheg abre túneis no solo macio com rapidez incomum e sente vibrações no chão, localizando presas mesmo sem vê-las."
+      "nome": "Mordida ácida",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Mandíbulas",
+      "ativacao": "as Mandíbulas que acertam",
+      "duracao": "instantânea",
+      "alcance": "o das mandíbulas",
+      "area": "um alvo",
+      "efeito": "as mandíbulas injetam ácido a cada mordida",
+      "dano": "+1d6 de ácido, somado ao do golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
     },
     {
-      "nome": "Cuspe Ácido",
-      "descricao": "Uma vez por cena, o ankheg cospe um jato de ácido em linha reta; quem estiver no caminho sofre dano ácido considerável, reduzido pela metade com um teste de Vigor bem-sucedido."
+      "nome": "prensa",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Mandíbulas",
+      "regra": "agarrar"
     },
     {
-      "nome": "Mordida e Prensa",
-      "descricao": "As mandíbulas do ankheg injetam ácido a cada mordida e podem prender a vítima, arrastando-a para dentro da terra."
+      "nome": "arrastar para o túnel",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "leva o que agarrou para dentro da terra, até o Peso erguido"
     },
     {
-      "nome": "Casca Endurecida",
-      "descricao": "O exoesqueleto do ankheg absorve parte de qualquer golpe físico recebido."
+      "nome": "Cuspe ácido",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Cuspe ácido",
+      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "duracao": "instantânea",
+      "alcance": "9 m à frente",
+      "area": "linha de 9 m",
+      "efeito": "um jato de ácido em linha reta",
+      "dano": "2d6 + Centelha, ácido",
+      "resistencia": "corpo, Vigor + Resistência contra a jogada do cuspe; quem passa leva metade",
+      "limiteDeUso": "uma vez por cena"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "emboscada de baixo",
+      "formas": "todas",
+      "texto": "espera sob a terra solta, sente o passo da presa, sai, prende e recua para o túnel antes que alguém a socorra."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "sentido de tremor",
+      "descricao": "sente pelo chão quem se move perto, sem ver",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão",
+      "descricao": "de inseto, sem nada além do comum",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "sob a terra",
+    "mente": "animal (fera de Inteligência 1)",
+    "tracos": "inseto de 3 m e seis patas, casca marrom, antenas longas e mandíbulas que pingam ácido"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "qualquer hora",
+    "dieta": "carnívoro; gado e viajantes",
+    "caca": "emboscada de baixo do solo",
+    "dianteDeGente": "evita cidades; ataca o viajante descuidado"
+  },
+  "ecologia": {
+    "terreno": [
+      "planície",
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "Inseto escavador que assola campos e fazendas, atraído pela terra solta. Embosca de baixo do solo, prende a presa nas mandíbulas ácidas e recua para os túneis, onde a devora antes que chegue socorro.",
   "lore": [
     {
       "titulo": "Praga Rural",
@@ -88,40 +208,22 @@
       "texto": "Prefere emboscar de baixo do solo, agarrar a presa com a mordida e recuar para seus túneis, onde a vítima é devorada antes que qualquer socorro chegue."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Plains",
-      "Underground"
-    ],
-    "clima": [
-      "Temperate",
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/ankheg_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Ankheg",
-    "cr": "3",
-    "tipo": "besta mágica Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 16,
-      "des": 10,
-      "con": 17,
-      "int": 1,
-      "sab": 13,
-      "car": 6
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Mordida ácida",
+      "motivo": "números sugeridos pela ficha (D-197); números da ficha (D-197); o site dava \"dano ácido considerável, metade com Vigor\", uma vez por cena"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3
+    {
+      "campo": "habilidadesEspeciais.Cuspe ácido",
+      "motivo": "números sugeridos pela ficha (D-197); números da ficha (D-197); o site dava \"dano ácido considerável, metade com Vigor\", uma vez por cena"
+    }
+  ]
 }

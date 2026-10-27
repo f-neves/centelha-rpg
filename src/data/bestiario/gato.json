@@ -1,37 +1,28 @@
 {
-  "ordem": 209,
   "id": "gato",
   "idAntigo": "mon-cat",
   "nome": "Gato",
   "nomeIngles": "Cat",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Miúdo",
-  "descricao": "Caçador de emboscada de presa pequena, que mata bilhões de aves e mamíferos por ano onde é solto. Diante de gente não é perigo de luta; o perigo é a doença do arranhão e da mordida.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/gato_criatura.webp",
-  "porte": "Miúdo",
-  "dimensoes": {
-    "medida": "0,84 m de comprimento, 0,27 m de altura",
-    "peso": "4,2 kg",
-    "comprimento": 0.84,
-    "largura": 0.12,
-    "altura": 0.27
-  },
-  "locomocao": {
-    "terra": 3,
-    "escalada": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 4,
-    "corrida": 7
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 0.27,
+    "largura": 0.12,
+    "profundidade": null,
+    "comprimento": 0.84,
+    "comprimentoSemCauda": 0.54,
+    "caudaGrossa": false,
+    "massa": 4.2,
+    "area": 0.063,
+    "posturaDoTamanho": "de lado",
+    "linhaPV": "abaixo"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 0,
     "destreza": 4,
     "vigor": 2,
@@ -42,7 +33,7 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 2,
     "bloqueio": 2,
     "esquiva": 4,
@@ -51,93 +42,169 @@
     "integridade": 1,
     "prontidao": 4,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 3
   },
-  "skills2": {
+  "habilidadesSec": {
     "equilibrio": 2,
     "escalada": 2,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "audição",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "penumbra",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "equilibrio",
-      "foco": "cair em pé",
-      "valor": 2,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "audição",
+        "valor": 3,
+        "origem": "natural"
+      },
+      {
+        "foco": "penumbra",
+        "valor": 2,
+        "origem": "natural"
+      },
+      {
+        "foco": "faro",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {
+    "equilibrio": [
+      {
+        "foco": "cair em pé",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "virtudes": {
+    "bravura": 1,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 1
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 7,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 4,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Garra",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "garra",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Mordida",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar com as quatro patas",
-      "descricao": "Garra: Agarrar: o gato que se pendura no braço e morde.",
-      "classe": "livro"
-    },
-    {
-      "nome": "disfarce",
-      "descricao": "esconde-se e escala com facilidade (Furtividade).",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "audição: Prontidão (audição) +3; de 48 Hz a 85 kHz; as orelhas giram 180°. · penumbra: Prontidão (penumbra) +2; cerca de 1/6 da luz que o humano precisa; tapetum lucidum. Vê mal de perto, a menos de cerca de 60 cm. · faro: Prontidão (faro) +2; cerca de 30 vezes o humano. · vibrissas: texto; números."
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garra",
+      "regra": "agarrar",
+      "texto": "o gato que se pendura no braço e morde"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "disfarce",
+      "formas": "todas",
+      "texto": "esconde-se e escala com facilidade (Furtividade)."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "audição",
+      "descricao": "Prontidão (audição) +3 (era +4); de 48 Hz a 85 kHz (Heffner e Heffner 1985); as orelhas giram 180° (ADW)",
+      "formas": "todas"
+    },
+    {
+      "nome": "penumbra",
+      "descricao": "Prontidão (penumbra) +2; cerca de 1/6 da luz que o humano precisa (Case 2003, via Wikipédia); tapetum lucidum (ADW). Vê mal de perto, a menos de cerca de 60 cm (ADW)",
+      "formas": "todas"
+    },
+    {
+      "nome": "faro",
+      "descricao": "Prontidão (faro) +2; cerca de 30 vezes o humano (ADW, sem método)",
+      "formas": "todas"
+    },
+    {
+      "nome": "vibrissas",
+      "descricao": "texto; números",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "(a cor varia com a raça)",
+    "mente": "animal",
+    "tracos": "garras retráteis; coluna que gira metade do corpo 180° e o reflexo de cair em pé (ADW); pouso de 1 m com pico de 149% do peso nas patas dianteiras (Lascelles et al. 2007)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário quando solto; vive em colônia perto de comida humana",
+    "atividade": "em fonte conferida",
+    "dieta": "carnívoro (aves e pequenos mamíferos)",
+    "caca": "emboscada",
+    "dianteDeGente": "foge ou ignora; o doméstico convive"
+  },
+  "ecologia": {
+    "terreno": [
+      "planície",
+      "urbano"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "Caçador de emboscada de presa pequena, que mata bilhões de aves e mamíferos por ano onde é solto. Diante de gente não é perigo de luta; o perigo é a doença do arranhão e da mordida.",
   "lore": [
     {
       "titulo": "Caçadora silenciosa",
@@ -146,91 +213,40 @@
     {
       "titulo": "Companhia incerta",
       "texto": "Alguns a adotam como guardiã de celeiros; outros a temem como presságio quando cruza o caminho à noite."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário quando solto; vive em colônia perto de comida humana."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Força 0: o gato arranha e se pendura no braço, mas não derruba nem prende um humano; a garra e a mordida dão 1,5 de média (só o dado, com a Força 0 do autor). Miúdo, ele ganha +6 no corpo a corpo contra o humano Médio, e quem atira nele leva −6. Com Esquiva 16 e Bloqueio 12, é difícil de acertar, e corre 7 m por Tick (congelado); acertado, tem só 6 PV (4,2 kg, na zona de transição de 3 a 5 kg, desce). A Defesa Social cai para 8 com a Compostura 1. O perigo real para quem joga não é a luta: é a infecção da mordida e a doença do arranhão, que ficam com o Mestre."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Plains",
-      "Urban"
-    ],
-    "clima": [
-      "Temperate",
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/gato_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Cat",
-    "cr": "1/4",
-    "tipo": "animal Minúsculo",
-    "tamanho": "minusculo",
-    "valores": {
-      "for": 3,
-      "des": 15,
-      "con": 8,
-      "int": 2,
-      "sab": 12,
-      "car": 7
+  "revisao": [
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Fixada em `valores.mjs` (era sem linha, 0). \"Resistência, fôlego, cura de ferida: continua sem fonte\" (`gato.md`): fica no normal da espécie ."
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesSec.escalada",
+      "motivo": "Garras retráteis nas quatro patas (ADW) e o salto de 1,6 m; o subir em árvore, muro e telhado da ficha de hoje não tem número ."
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 6,
-    "esquiva": 16,
-    "bloqueio": 12,
-    "defesa": 16,
-    "defesaMental": 7,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 2,
-      "corte": 2,
-      "perfuracao": 2
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,26 × 1,0250 = 0,267 . Antes: escalado pelo cubo da massa: 0,27 × (3,9 ÷ 4,3)^(1/3) = 0,26 m; era 0,27 m, o macho. Macho de 27,1 cm (n = 20) e fêmea de 24,7 cm (n = 17), medidos com hipômetro em gatos vivos (Poradowski et al. 2024); a média dos dois, 25,9 cm, bate. Até a ponta das orelhas, 37 cm (Pongrácz 2024, medido pelos donos)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 25.18,
-    "carga": {
-      "leve": 0.56,
-      "media": 1.12,
-      "pesada": 1.68,
-      "maxima": 2.23
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,82 × 1,0250 = 0,841 . Antes: escalado pelo cubo da massa: 0,85 × (3,9 ÷ 4,3)^(1/3) = 0,82 m; era 0,85 m. O corpo mais a cauda de cerca de 30 cm, que continua só pela Wikipédia (Sunquist e Sunquist 2002)"
     },
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 4,
-        "corrida": 7
-      }
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,53 × 1,0250 = 0,543 . Antes: escalado pelo cubo da massa: 0,55 × (3,9 ÷ 4,3)^(1/3) = 0,53 m; era 0,55 m, cabeça e corpo do macho, 551 ± 84 mm (n = 308), medidos em carcaça de gatos ferais e de rua (Fleming et al. 2020). A cauda é fina e não conta (D-155)"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,12 × 1,0250 = 0,118 . Antes: largura do peito de 11,48 ± 2,56 cm (n = 32), medida pelos donos com instrução ilustrada (Pongrácz 2024). Não se escala: a medida já é de gatos dos dois sexos"
     }
-  },
-  "notasObservacao": [
-    "`forca`: 0 (em vigor na Etapa 2, 20/10/2026); antes: 1 ◆ na sétima rodada (item 8 da `tamanho-decisoes-5.md`): arranha fundo e se segura no braço; era 0 pela leitura automática da D-167. O dano dos dois ataques sobe de 1,5 para 2,5 de média e o agarrão passa a 2 (D-115)",
-    "`pesoErguido`: 25,18 kg (em vigor na Etapa 2, 20/10/2026); antes: 29,12 kg ◆ pela fórmula nova com a Força 1 (`calc6.mjs`, decisões 14 e 16; era 23,92 com a Força 0), provisório. Fica bem acima de tudo o que a pesquisa mostra o gato levar (o filhote de 110 a 125 g, a presa pequena na boca) e é 39 vezes os 0,75 kg da conta de hoje: a curva da massa dá 32 kg de P típico para 3,9 kg. Anotado, não corrigido (D-174)",
-    "`carga`: provisória; sai da massa e da faixa (0,69 kg de Leve com 3,9 kg na Faixa 1, sem carga medida), e não da Força (D-160, D-169). A Faixa 1 tem fator 1,78, e por isso a Leve do típico passa a do macho de 4,3 kg (0,57)",
-    "`velocidade`: congelada (decisão 23). Não bate com o real: 27 km/h contra cerca de 45 km/h de divulgação sem método, −40% (D-170)",
-    "`faixa`: o adulto típico (3,9 kg, a média do macho e da fêmea) cai na Faixa 1, a 0,1 kg do corte de 4 kg, e passa a 7 PV (5 + Vigor, decisão 21), contra 24 na v3. O macho de 4,3 kg fica 0,3 kg acima do corte, na Faixa 2 (24 PV); a fêmea (3,5 kg), o gato feral (2,6 a 3,5 kg) e o AnAge (3,9 kg) ficam na Faixa 1. A diferença entre as duas faixas é de 17 PV, e o corte passa entre o típico e o macho (D-141, D-174)",
-    "fonte: a cauda de cerca de 30 cm continua só pela Wikipédia (Sunquist e Sunquist 2002); procurado em Fleming et al. 2020, Pongrácz 2024 e Poradowski 2024, que não medem cauda (D-174)",
-    "`compostura`: 1 pela diretriz 1 (não é espécie social); a imobilidade do emboscador, que dava o 3, não tem lugar entre os Atributos sociais do animal solitário. Provisória (D-174)",
-    "`empatia`: 0, porque a pesquisa não traz leitura do humano; o gato doméstico convive com gente e pode merecer 1 quando houver fonte (D-174)",
-    "`equilibrio` e `escalada`: Habilidades novas na ficha (2 e 2), com o cair em pé como Especialidade natural +2; nenhum número de altura de queda nem de escalada na pesquisa (D-174)",
-    "`mordida`: o doméstico tem estimativa pelo crânio (206 N no macho, Fleming et al. 2020), 3,7 vezes os 56 N do gato-selvagem (Wroe et al. 2005) pelo mesmo tipo de método; a causa da diferença não foi investigada. Não muda o N0 (D-174)",
-    "couraca: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois."
   ]
 }

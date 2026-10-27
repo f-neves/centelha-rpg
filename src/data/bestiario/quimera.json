@@ -1,113 +1,233 @@
 {
-  "ordem": 58,
   "id": "quimera",
   "idAntigo": "mon-quimera",
   "nome": "Quimera",
   "nomeIngles": "Chimera",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "fera",
-  "conceito": "besta mágica Grande",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/quimera_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "corpo e cauda 4,5 m, altura ao ombro 1,8 m, envergadura 6 m",
-    "peso": "600 kg"
-  },
-  "locomocao": {
-    "terra": 3,
-    "voo": 5
-  },
+  "ameaca": 4,
   "centelha": 3,
-  "attrs": {
-    "forca": 6,
+  "corpo": {
+    "postura": "quatro patas; voadora",
+    "apoio": "quadrupede",
+    "altura": 1.8,
+    "largura": 1.13,
+    "profundidade": null,
+    "comprimento": 4.5,
+    "comprimentoSemCauda": 3.6,
+    "caudaGrossa": false,
+    "envergadura": 6,
+    "massa": 600,
+    "area": 2.36,
+    "posturaDoTamanho": "silhueta vista de lado, asas fechadas, no chão",
+    "segundoTamanho": {
+      "area": 7.56,
+      "posturaDoTamanho": "de baixo, asas abertas, em voo"
+    }
+  },
+  "couraca": 2,
+  "atributos": {
+    "forca": 8,
     "destreza": 3,
     "vigor": 6,
-    "influencia": 2,
-    "perspicacia": 1,
-    "compostura": 3,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 1,
     "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 3
+    "atletismo": 2,
+    "furtividade": 1,
+    "integridade": 3,
+    "prontidao": 3,
+    "resistencia": 3,
+    "sociabilidade": 0,
+    "sobrevivencia": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "disparo": 2,
+    "voo": 2,
+    "musculatura": 3
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 8,
-  "aparencia": 5,
-  "arte": {
-    "fogo": 2
+  "vontade": 8,
+  "aparencia": 2,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "voo": {
+      "batalha": 5
+    }
   },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Mordida de leão",
+      "parte": "cabeca-de-leao",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
-    }
-  ],
-  "poderes": [
-    {
-      "id": "sopro-draconico",
-      "nome": "Sopro dracônico",
-      "tipo": "natural",
-      "base": {
-        "arte": "fogo",
-        "nivel": 2
-      },
-      "resiste": "esquiva",
-      "efeito": "Cone ou linha. Esquiva para metade.",
-      "usos": {
-        "periodo": "ticks",
-        "quantidade": 1,
-        "recarga": "24 ticks"
-      }
-    }
-  ],
-  "habilidades": [
-    {
-      "nome": "Sopro dracônico",
-      "descricao": "cone de 9m; dano alto, metade se Esquivar"
-    },
-    {
-      "nome": "Voo",
-      "descricao": "combate e persegue livremente pelo ar"
-    },
-    {
-      "nome": "Três cabeças, três mordidas",
-      "descricao": "ataca com leão, cabra e dragão no mesmo turno"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Chifrada de cabra",
-      "descricao": "pode derrubar o alvo atingido"
+      "parte": "cabeca-de-cabra",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": 1
     },
     {
-      "nome": "Sentidos triplos",
-      "descricao": "Prontidão 3; quase imune a emboscadas"
+      "nome": "Mordida de dragão",
+      "parte": "cabeca-de-dragao",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
-      "nome": "Passo leve",
-      "descricao": "Furtividade 1 apesar do porte"
+      "nome": "Sopro dracônico",
+      "parte": "cabeca-de-dragao",
+      "habilidade": "disparo",
+      "classe": "distancia",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 0,
+      "tipoDano": "fogo",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
+  "habilidadesEspeciais": [
+    {
+      "nome": "três cabeças",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "ataca com o leão, a cabra e o dragão na mesma ação; cada cabeça é uma parte diferente, e a Rajada não as junta"
+    },
+    {
+      "nome": "derrubar",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Chifrada de cabra",
+      "regra": "derrubar",
+      "texto": "como ataque próprio. Sem regra ainda: a mesma chifrada que fere pode derrubar o alvo"
+    },
+    {
+      "nome": "Sopro dracônico",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fogo",
+        "nivel": 3
+      },
+      "ataque": "Sopro dracônico",
+      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "duracao": "instantânea",
+      "alcance": "9 m à frente",
+      "area": "cone de 9 m",
+      "efeito": "a cabeça de dragão cospe um leque de fogo",
+      "dano": "2d6 + Centelha, fogo",
+      "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+      "limiteDeUso": "uma vez a cada 24 Ticks"
+    }
+  ],
+  "comoLuta": [
+    {
+      "nome": "três vontades",
+      "formas": "todas",
+      "texto": "o leão comanda o corpo, a cabra teima, o dragão cospe o sopro que decide a caçada; ruge, bale e queima quase ao mesmo tempo, e é imprevisível. Arrasta a presa para o ninho."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "sentidos triplos",
+      "descricao": "Prontidão 3; quase ninguém a embosca",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão",
+      "descricao": "três pares de olhos, sem nada além do comum",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal (fera de Inteligência 1), de três temperamentos",
+    "tracos": "corpo de leão de 4,5 m com cabeças de leão, cabra e dragão, e asas de dragão de 6 m"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitária",
+    "atividade": "qualquer hora",
+    "dieta": "carnívora",
+    "caca": "caça rebanhos e viajantes e arrasta a presa para o ninho",
+    "dianteDeGente": "ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "montanha"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Fera de três cabeças, leão, cabra e dragão, cada uma com vontade própria: o leão comanda a fúria, a cabra teima e o dragão cospe o fogo que decide a caçada. Vive em picos e desfiladeiros, disputa território com grifos e mantícoras e caça rebanhos e viajantes solitários.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -126,42 +246,26 @@
       "texto": "Para o povo comum é prova viva de que a era anterior à Supressão gerava monstros que ninguém hoje sabe explicar; camponeses erguem capelas nas encostas onde uma foi avistada, pedindo à Verdejante que mantenha a fera longe do rebanho."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Mountain"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/quimera_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Prontidão 3, Furtividade 1.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Quimera",
-    "cr": "7",
-    "tipo": "besta mágica Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 19,
-      "des": 13,
-      "con": 17,
-      "int": 4,
-      "sab": 13,
-      "car": 10
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Sopro dracônico",
+      "motivo": "números sugeridos pela ficha (D-197); poder natural com números da ficha (D-197), base Fogo 3 (a Labareda, o leque de 2d6), que é o nível do cone; o site dava a Arte Fogo 2 e a base Fogo 2 ao sopro"
     },
-    "pericias": [
-      "Prontidão 3",
-      "Furtividade 1"
-    ],
-    "nota": "Sopro dracônico: Centelha 2.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "atributos.forca",
+      "motivo": "Acima do teto humano (For 19 no Pathfinder). Teste de ordem: como o tigre-dentes-de-sabre (8, 320 kg), acima do leão-das-cavernas (7, 235 kg); com 600 kg, não fica abaixo deles. O site tinha 6; 6 para 8, pelo teste de ordem com o tigre-dentes-de-sabre (8 com 320 kg) e o leão-das-cavernas (7 com 235 kg)"
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 4
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: couro de leão na frente e escamas de dragão no flanco, um acima do leão (1) . O nível fica fora da Absorção (decisoes-autor §16)"
+    }
+  ]
 }

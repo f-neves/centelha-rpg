@@ -1,98 +1,255 @@
 {
-  "ordem": 223,
   "id": "fantasma",
   "idAntigo": "mon-ghost",
   "nome": "Fantasma",
   "nomeIngles": "Ghost",
-  "categoria": "Morto-vivo",
+  "categoria": "morto-vivo",
   "papel": "elite",
-  "conceito": "morto-vivo Médio",
-  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
-  "tags": [
-    "morto-vivo",
-    "centelha",
-    "incorpóreo"
-  ],
-  "imagem": "bestiario/fantasma_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,7 m de altura",
-    "peso": "sem peso material (incorpóreo)"
-  },
-  "locomocao": {
-    "terra": 3,
-    "voo": 3
-  },
+  "ameaca": 4,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "de pé no ar, flutuando",
+    "apoio": "bipede",
+    "altura": 1.7,
+    "largura": 0.43,
+    "profundidade": 0.22,
+    "comprimento": null,
+    "semMassa": true,
+    "volume": 0.0666,
+    "area": 0.64,
+    "posturaDoTamanho": "de frente",
+    "naoErgue": true
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 0,
     "destreza": 3,
     "vigor": 6,
-    "influencia": 6,
-    "perspicacia": 4,
-    "compostura": 5,
     "percepcao": 2,
     "inteligencia": 2,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 6,
+    "perspicacia": 4,
+    "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
+    "integridade": 5,
     "prontidao": 1,
-    "integridade": 5
+    "resistencia": 0
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "intimidacao": 2,
+    "voo": 3,
+    "musculatura": 0
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
+    "compaixao": 1,
     "conviccao": 4,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 2,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "voo": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Toque corrupto",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
-      "acerto": 0,
-      "ticks": 5,
-      "notas": "incorpóreo: o toque atravessa armadura, só a Centelha do alvo ajuda a resistir (pendência K36)"
+      "parte": "mao",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "fenomeno",
+      "nivelPerfuracao": null,
+      "acerto": 1,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "resistencias": [
-    "corte",
-    "impacto",
-    "perfuracao"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Corpo Incorpóreo",
-      "descricao": "Atravessa paredes e portas como se não existissem, e resiste a corte, impacto e perfuração (dano pela metade); arma comum ainda o fere."
+      "nome": "Corpo incorpóreo",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "espirito",
+        "nivel": 3
+      },
+      "ativacao": "nenhuma, sempre ativo",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "voa sem ruído e atravessa paredes e portas; não agarra, não empurra e não pode ser agarrado nem empurrado; a arma comum ainda o fere, pela metade (Elementos)",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
-      "nome": "Renascer da Fúria",
-      "descricao": "Mesmo destruído, sua raiva pode trazê-lo de volta à existência depois de algum tempo, a menos que a injustiça que o prende seja finalmente resolvida."
+      "nome": "Toque corruptor",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "morte",
+        "nivel": 2
+      },
+      "ativacao": "o Toque corrupto que fere",
+      "duracao": "18 Ticks",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "o frio do toque continua consumindo a vida do alvo depois do golpe",
+      "dano": "1d6 + Centelha, fenômeno, a cada 6 Ticks enquanto durar",
+      "resistencia": "corpo, contra a jogada do toque; quem passa leva metade a cada vez",
+      "limiteDeUso": "um por golpe; um novo toque recomeça a contagem"
     },
     {
-      "nome": "Toque Corruptor",
-      "descricao": "Seu toque gélido consome a vitalidade da vítima, causando dano contínuo severo que um teste de Vigor pode reduzir pela metade."
+      "nome": "Lamento aterrador",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "morte",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "Em pânico por 12 Ticks",
+      "alcance": "quem ouve, até 18 m",
+      "area": "esfera de 18 m em volta dele",
+      "efeito": "um gemido que gela o sangue; quem falha foge tomado de pavor",
+      "dano": "nenhum",
+      "resistencia": "mente, Compostura + Integridade de quem ouve contra Influência + Intimidação dele; quem passa fica Abalado até o fim da cena",
+      "limiteDeUso": "uma vez por cena"
     },
     {
-      "nome": "Lamento Aterrador",
-      "descricao": "Uma vez por cena, solta um gemido que gela o sangue, forçando quem ouvir a resistir com um teste de Compostura ou fugir tomado de pavor."
+      "nome": "Possessão",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 6, entrando no corpo de um alvo ao alcance do toque",
+      "duracao": "uma cena",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "o fantasma some dentro do alvo e o controla, agindo como se fosse ele; o alvo fica Dominado, com o novo teste que a condição manda a cada dano sofrido",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Briga dele; quem passa fica imune à possessão dele até o fim do dia",
+      "limiteDeUso": "uma vez por dia"
     },
     {
-      "nome": "Voo Silencioso",
-      "descricao": "Flutua pelo ar com perfeita destreza, sem fazer o menor ruído."
+      "nome": "o corpo do possuído",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "enquanto possui, o fantasma não pode ser atacado sem ferir o corpo do possuído; o livro não diz o que acontece com quem está dentro quando o corpo cai"
+    },
+    {
+      "nome": "Telecinese",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "forcas",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "enquanto se concentrar",
+      "alcance": "9 m",
+      "area": "um objeto",
+      "efeito": "move objetos pela sala sem tocá-los, com a força de uma pessoa comum; arremessa o que move",
+      "dano": "o do objeto arremessado, a critério do Mestre",
+      "resistencia": "esquiva, contra o objeto arremessado",
+      "limiteDeUso": "nenhum"
+    },
+    {
+      "nome": "Renascer da fúria",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "destruído, volta ao lugar da injustiça depois de alguns dias, a menos que a injustiça que o prende seja resolvida"
+    },
+    {
+      "nome": "imune a veneno e doença",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não tem corpo que se envenene ou adoeça"
+    },
+    {
+      "nome": "sem corpo",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não respira, não come, não dorme e não se cansa"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "preso ao lugar",
+      "formas": "todas",
+      "texto": "assombra o lugar onde sofreu a injustiça; começa movendo objetos e gemendo, possui um dos vivos para atacar os outros e só se mostra quando a fúria vence."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    },
+    {
+      "nome": "percepção dos vivos",
+      "descricao": "sente os vivos no lugar que assombra",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "nenhuma",
+    "prendeRespiracao": "não respira",
+    "mente": "inteira, presa à injustiça, cruel e vingativa",
+    "tracos": "sem peso e sem matéria; a figura translúcida de quem ele foi, com cópias etéreas dos pertences que mais amava, que atravessam a matéria como ele"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho",
+    "atividade": "noturno",
+    "dieta": "nenhuma",
+    "caca": "assombra um lugar",
+    "dianteDeGente": "assusta, possui ou ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "ruínas",
+      "urbano",
+      "qualquer"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Alma presa ao mundo por uma traição, um assassinato ou uma promessa quebrada. Assombra o lugar onde sofreu, move objetos sem tocá-los, possui os vivos e consome a vida com um toque gelado. Destruído, volta, até alguém resolver a injustiça.",
   "lore": [
     {
       "titulo": "Uma injustiça sem descanso",
@@ -107,74 +264,72 @@
       "texto": "Costuma manter cópias etéreas dos pertences que mais valorizava em vida, objetos que atravessam a matéria tão livremente quanto ele."
     }
   ],
-  "ecologia": {
-    "tipo": "Undead",
-    "terreno": [
-      "Ruins",
-      "Urban",
-      "Any"
+  "imagens": [
+    "bestiario/fantasma_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Ghost",
-    "cr": "7",
-    "tipo": "morto-vivo Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": "-",
-      "des": 12,
-      "con": "-",
-      "int": 10,
-      "sab": 11,
-      "car": 20
-    },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "imunidades": [],
-  "poderes": [
-    {
-      "id": "possessao",
-      "nome": "Possessão",
-      "tipo": "natural",
-      "base": {
-        "arte": "fascinacao",
-        "nivel": 4
+    "resistencias": [
+      {
+        "tipo": "corte",
+        "formas": "todas"
       },
-      "resiste": "mente",
-      "efeito": "toma o controle do corpo de quem falhar em resistir, por uma cena",
-      "descricao": "O fantasma desliza para dentro do corpo de alguém que falhou em resistir e assume o controle por uma cena, agindo como se fosse essa pessoa.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 1
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      },
+      {
+        "tipo": "impacto",
+        "formas": "todas"
       }
+    ],
+    "imunidades": []
+  },
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Corpo incorpóreo",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
-      "id": "telecinese-fantasma",
-      "nome": "Telecinese",
-      "tipo": "natural",
-      "base": {
-        "arte": "forcas",
-        "nivel": 3
-      },
-      "resiste": "nenhum",
-      "efeito": "move objetos à distância, sem tocá-los",
-      "descricao": "O fantasma move objetos pela sala com a força da própria vontade, sem precisar tocá-los.",
-      "usos": {
-        "periodo": "avontade"
-      }
+      "campo": "habilidadesEspeciais.Toque corruptor",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Lamento aterrador",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Possessão",
+      "motivo": "números sugeridos pela ficha (D-197); o livro não tem regra de possessão (manual 4.3); a ficha a monta pela condição Dominado, com a base Fascinação 4 do site, e deixa o que acontece com o corpo possuído sem regra ainda"
+    },
+    {
+      "campo": "habilidadesEspeciais.Telecinese",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "Para a alma sem corpo, o Vigor mede o quanto ela aguenta antes de se desfazer, como no espectro. Fica como no site; 6, o do site; para a alma sem corpo o Vigor mede o quanto ela aguenta antes de se desfazer"
+    },
+    {
+      "campo": "habilidadesSec.intimidacao",
+      "motivo": "O lamento e a fúria (site)"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "site (fraqueza a luz)"
     }
   ]
 }

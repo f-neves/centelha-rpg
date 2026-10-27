@@ -147,7 +147,7 @@ function build(c) {
     // agora só alimentava `passoDaPeca` por baixo dos panos.
     ...(f.locomocao && Object.keys(f.locomocao).length ? { locomocao: f.locomocao } : {}),
     tecnicas: c.tecnicas || [],
-    artes: (c.artes || []).map((a) => ({ id: a.id && a.id.id ? a.id.id : a.id, nivel: a.nivel })), ...(f.mana != null ? { mana: f.mana } : {}), // a Mana da ficha (D-196)
+    artes: (c.artes || []).map((a) => ({ id: a.id && a.id.id ? a.id.id : a.id, nivel: a.nivel })), ...((f.motor?.mana ?? f.mana) != null ? { mana: f.motor?.mana ?? f.mana } : {}), // a Mana da ficha (D-196)
     notas: c.notas || '',
     lore: (f.lore || []).map((s) => ({ titulo: s.titulo, texto: s.texto })),
   };
@@ -161,7 +161,7 @@ for (const m of monsters) {
   if (!m.atributos) problemas.push(`${m.id}: sem atributos`);
   if (m.combate.pv == null) problemas.push(`${m.id}: sem combate.pv`);
   if (!m.habilidades.length && !FICHA[m.id]?.v3) problemas.push(`${m.id}: sem habilidades`); // a ficha v3 pode não ter manobra nenhuma (o pteranodonte)
-  if (!m.lore.length) problemas.push(`${m.id}: sem lore`);
+  if (!m.lore.length && !FICHA[m.id]?.motor) problemas.push(`${m.id}: sem lore`);
   if (!m.dimensoes.medida) problemas.push(`${m.id}: sem dimensoes`);
   if (!m.ecologia.tipo) problemas.push(`${m.id}: sem ecologia.tipo`);
   // imagem opcional: criaturas sem arte ganham semImagem:true e o badge "Sem imagem"

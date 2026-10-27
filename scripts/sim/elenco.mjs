@@ -80,7 +80,7 @@ export function montarArquetipo(id, L) {
   const arma = L.armaDoCatalogo(r.arma);
   const classe = L.classeDeTempo(r.arma, null, null);
   const vel = L.velocidadeDaArma(r.arma, 5);
-  const pvMax = REGRAS.derivados.pv.base + (ficha.attrs.vigor || 0) * REGRAS.derivados.pv.vigorMult;
+  const pvMax = L.numerosPersonagem(ficha).pv;
   return {
     id, nome, arma: r.arma, classe, velocidade: vel,
     ataque: r.ataque, dano: r.dano,

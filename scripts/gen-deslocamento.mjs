@@ -63,6 +63,7 @@
 // uso: node scripts/gen-deslocamento.mjs
 import fs from 'node:fs';
 import path from 'node:path';
+import { vistaCriatura } from './lib-criatura-motor.mjs';
 import { passoDaPeca, tres as tresDoPasso } from './lib-bestiario.mjs';
 
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
@@ -465,7 +466,7 @@ for (const m of TODAS) {
   // A FICHA V3 TRAZ O DESLOCAMENTO CONGELADO (D-179; decisoes-etapa-6.md §9, itens 3 e
   // 3b): o satélite grava o mesmo que o gen-monsters.mjs usa, com a origem 'ficha'. O
   // `ft` fica como metadado da semeadura.
-  const fonteSite = JSON.parse(fs.readFileSync(p(`bestiario/${m.id}.json`), 'utf8'));
+  const fonteSite = vistaCriatura(JSON.parse(fs.readFileSync(p(`bestiario/${m.id}.json`), 'utf8')));
   const daFicha = fonteSite.v3 ? (fonteSite.deslocamentoDeclarado ?? (passoDaPeca(fonteSite.locomocao) ? tresDoPasso(passoDaPeca(fonteSite.locomocao)) : null)) : null;
   const v = daFicha ? { batalha: daFicha.batalha, arranque: daFicha.arranque, corrida: daFicha.corrida } : tres(ft);
   if (v.batalha < 1 || v.batalha > 20) throw new Error(`batalha fora da faixa em ${m.id}: ${v.batalha} (${ft} ft)`);

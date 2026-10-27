@@ -1,36 +1,29 @@
 {
-  "ordem": 255,
   "id": "lobisomem",
   "idAntigo": "mon-werewolf",
   "nome": "Lobisomem",
   "nomeIngles": "Lycanthrope, Werewolf",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humanoide",
+  "categoria": "humanoide",
   "papel": "soldado",
-  "conceito": "humanoide Médio",
-  "descricao": "Homem-lobo de pé, mais alto que um homem: morde, rasga e derruba. De dia é gente comum, e troca de forma quando quer; na lua cheia, sem querer. Só a prata o fere de verdade, e quem sobrevive à mordida pode virar lobisomem.",
-  "tags": [
-    "humanoide",
-    "centelha"
-  ],
-  "imagem": "bestiario/lobisomem_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "2,1 m de altura",
-    "peso": "105 kg",
-    "largura": 0.53,
-    "altura": 2.1
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 2,
   "centelha": 2,
-  "attrs": {
+  "formaPrincipal": {
+    "id": "hibrida",
+    "nome": "forma híbrida"
+  },
+  "corpo": {
+    "postura": "bípede, de pé, um pouco curvado",
+    "apoio": "bipede",
+    "altura": 2.1,
+    "largura": 0.53,
+    "profundidade": 0.27,
+    "comprimento": null,
+    "massa": 105,
+    "area": 0.98,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 6,
     "destreza": 3,
     "vigor": 5,
@@ -41,9 +34,10 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 2,
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 2,
     "furtividade": 2,
@@ -52,110 +46,196 @@
     "sobrevivencia": 2,
     "sociabilidade": 1
   },
-  "skills2": {
-    "labia": 1
+  "habilidadesSec": {
+    "labia": 1,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "sobrevivencia",
-      "foco": "rastrear pelo faro",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
-    "compaixao": 2,
-    "conviccao": 3,
-    "temperanca": 1,
-    "valor": 4
-  },
-  "willpower": 7,
-  "aparencia": 2,
-  "ataques": [
-    {
-      "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 0,
-      "ticks": 6,
-      "classe": "media"
-    },
-    {
-      "nome": "Garras",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "ticks": 6,
-      "classe": "media"
-    }
-  ],
-  "fraquezas": [
-    "prata"
-  ],
-  "resistencias": [
-    "corte",
-    "perfuracao",
-    "impacto"
-  ],
-  "imunidades": [],
-  "transforma": {
-    "principal": "hibrida",
-    "formas": [
+  "especialidades": {
+    "sobrevivencia": [
       {
-        "id": "hibrida",
-        "nome": "forma híbrida"
-      },
-      {
-        "id": "humana",
-        "nome": "forma humana"
-      },
-      {
-        "id": "lobo",
-        "nome": "forma de lobo"
+        "foco": "rastrear pelo faro",
+        "valor": 1,
+        "origem": "livro"
       }
     ]
   },
-  "habilidades": [
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 1
+  },
+  "vontade": 7,
+  "aparencia": 2,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "parte": "boca",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Garras",
+      "parte": "mao",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    }
+  ],
+  "habilidadesEspeciais": [
     {
       "nome": "Forma mutável",
-      "descricao": "Ativação: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Efeito: vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia. Vale em todas as formas.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce",
+      "duracao": "até ele voltar com outra ação; na lua cheia, até o sol nascer",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade fora da lua cheia"
     },
     {
       "nome": "Mordida que derruba e amaldiçoa",
-      "descricao": "Mordida: Ativação: a Mordida que fere. Duração: a queda é instantânea; a maldição, permanente se pegar. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo cai no chão; e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia. Dano: o da Mordida. Resistência: corpo, contra a jogada da mordida; quem passa fica de pé, e a maldição só não pega se a ferida for tratada a tempo. Limite de uso: um por golpe. Vale só na forma híbrida e na forma de lobo.",
-      "classe": "regra da ficha"
+      "formas": [
+        "hibrida",
+        "lobo"
+      ],
+      "classe": "regra da ficha",
+      "ataque": "Mordida",
+      "ativacao": "a Mordida que fere",
+      "duracao": "a queda é instantânea; a maldição, permanente se pegar",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "o alvo cai no chão; e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia",
+      "dano": "o da Mordida",
+      "resistencia": "corpo, contra a jogada da mordida; quem passa fica de pé, e a maldição só não pega se a ferida for tratada a tempo",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "Firme contra o medo",
-      "descricao": "Ativação: um efeito de medo o tem como alvo. Duração: a do efeito. Alcance: o próprio corpo. Área: não se aplica. Efeito: o pavor pega menos nele que na maioria dos guerreiros. Dano: nenhum. Resistência: mente, com +2 na Defesa Mental contra medo. Limite de uso: nenhum. Vale em todas as formas.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "um efeito de medo o tem como alvo",
+      "duracao": "a do efeito",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "o pavor pega menos nele que na maioria dos guerreiros",
+      "dano": "nenhum",
+      "resistencia": "mente, com +2 na Defesa Mental contra medo",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Afinidade com lobos",
-      "descricao": "Ativação: uma ação, Velocidade 6, um uivo ou um gesto. Duração: até o fim da cena. Alcance: onde o uivo é ouvido. Área: os lobos comuns e atrozes que o ouvem. Efeito: eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. Dano: nenhum. Resistência: nenhum. Limite de uso: até 6 lobos por vez. Vale em todas as formas.",
-      "classe": "regra da ficha"
-    },
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6, um uivo ou um gesto",
+      "duracao": "até o fim da cena",
+      "alcance": "onde o uivo é ouvido",
+      "area": "os lobos comuns e atrozes que o ouvem",
+      "efeito": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "até 6 lobos por vez"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "caça em bando",
-      "descricao": "cerca a presa com os lobos, morde para derrubar e rasga com as garras quem está no chão. Vale só na forma híbrida e na forma de lobo.",
-      "classe": "como luta"
+      "formas": [
+        "hibrida",
+        "lobo"
+      ],
+      "texto": "cerca a presa com os lobos, morde para derrubar e rasga com as garras quem está no chão."
     },
     {
       "nome": "homem comum de dia",
-      "descricao": "esconde o que é; de dia, volta a ser homem comum de espada. Vale só na forma humana.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "faro: de lobo, que segue o rastro de horas. Vale só na forma híbrida e na forma de lobo. · visão e audição: apuradas. Vale só na forma híbrida e na forma de lobo."
+      "formas": [
+        "humana"
+      ],
+      "texto": "esconde o que é; de dia, volta a ser homem comum de espada."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "de lobo, que segue o rastro de horas",
+      "formas": [
+        "hibrida",
+        "lobo"
+      ]
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "apuradas",
+      "formas": [
+        "hibrida",
+        "lobo"
+      ]
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "humana, com a fúria da lua por baixo",
+    "tracos": "pelo cinzento, focinho de lobo, olhos amarelos, garras nas mãos"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho ou em bando pequeno com lobos",
+    "atividade": "noturno",
+    "dieta": "onívoro; carne crua na lua cheia",
+    "caca": "caça à noite, longe da vila",
+    "dianteDeGente": "esconde o que é; ataca quem descobre"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta",
+      "planície"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Homem-lobo de pé, mais alto que um homem: morde, rasga e derruba. De dia é gente comum, e troca de forma quando quer; na lua cheia, sem querer. Só a prata o fere de verdade, e quem sobrevive à mordida pode virar lobisomem.",
   "lore": [
     {
       "titulo": "Fúria sob a Lua",
@@ -168,83 +248,186 @@
     {
       "titulo": "Caçador entre os Seus",
       "texto": "Muitos vivem escondidos em vilarejos comuns, caçando sozinhos ou em pequenos bandos nas noites sem lua."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: sozinho ou em bando pequeno com lobos."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Homem-lobo de 2,1 m: morde e rasga (dano médio 11,5 cada), derruba quem morde e pode passar a maldição. 40 PV, Esquiva 10. Corte, perfuração e impacto fazem metade, e a prata passa toda a Absorção. Chama os lobos da região. Troca de forma em uma ação; de dia anda como homem de espada curta, e na lua cheia troca sem querer e só volta de manhã."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Forest",
-      "Plains"
-    ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "WerewolF",
-    "cr": "2",
-    "tipo": "humanoide Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 17,
-      "des": 13,
-      "con": 14,
-      "int": 8,
-      "sab": 14,
-      "car": 8
+  "imagens": [
+    "bestiario/lobisomem_criatura.webp"
+  ],
+  "formas": [
+    {
+      "id": "humana",
+      "nome": "forma humana",
+      "equipamento": {
+        "arsenal": [
+          {
+            "ref": "a:espada-curta"
+          }
+        ]
+      },
+      "couraca": 0,
+      "aparencia": 4,
+      "corpo": {
+        "altura": 1.8,
+        "largura": 0.45,
+        "profundidade": 0.23,
+        "massa": 80,
+        "area": 0.72
+      },
+      "atributos": {
+        "forca": 4,
+        "vigor": 4
+      },
+      "fisiologia": {
+        "camuflagem": "passa por gente comum",
+        "tracos": "homem rústico de sobrancelhas grossas, com cicatrizes que fecham em dias"
+      },
+      "ataques": [
+        {
+          "nome": "Espada curta",
+          "arma": "espada-curta",
+          "habilidade": "armas"
+        }
+      ]
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 40,
-    "esquiva": 10,
-    "bloqueio": 6,
-    "defesa": 10,
-    "defesaMental": 16,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 7,
-      "corte": 2,
-      "perfuracao": 2
-    },
-    "couracaNivel": 1,
-    "pesoErguido": 276.88,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+    {
+      "id": "lobo",
+      "nome": "forma de lobo",
+      "deslocamento": {
+        "terra": {
+          "batalha": 7,
+          "arranque": 10,
+          "corrida": 16
+        }
+      },
+      "couraca": 0,
+      "aparencia": 6,
+      "corpo": {
+        "postura": "quadrúpede",
+        "apoio": "quadrupede",
+        "altura": 0.95,
+        "comprimento": 2.12,
+        "comprimentoSemCauda": 1.35,
+        "largura": 0.35,
+        "profundidade": null,
+        "massa": 80,
+        "area": 0.51,
+        "posturaDoTamanho": "de lado"
+      },
+      "atributos": {
+        "forca": 4,
+        "destreza": 4,
+        "vigor": 4
+      },
+      "fisiologia": {
+        "camuflagem": "passa por um lobo grande",
+        "tracos": "lobo grande de pelo cinzento e olhos amarelos"
+      },
+      "ataques": [
+        {
+          "nome": "Mordida",
+          "parte": "boca",
+          "habilidade": "briga",
+          "classe": "media",
+          "pgr": [
+            2,
+            1,
+            3
+          ],
+          "dado": "1d6",
+          "multiplicadorForca": 1,
+          "tipoDano": "perfuracao",
+          "nivelPerfuracao": 0,
+          "acerto": 0,
+          "bloqueiaComoArma": null
+        }
+      ]
     }
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "prata",
+        "formas": "todas"
+      }
+    ],
+    "resistencias": [
+      {
+        "tipo": "corte",
+        "formas": [
+          "hibrida"
+        ]
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": [
+          "hibrida"
+        ]
+      },
+      {
+        "tipo": "impacto",
+        "formas": [
+          "hibrida"
+        ]
+      }
+    ],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`forma principal`: a híbrida, pela decisão do autor de 22/10/2026 (D-201); as formas ficam na linha Formas da Identidade",
-    "`forca`: 6 na híbrida, 4 na humana; o site tinha 5 **[provisório]**",
-    "`vigor`: 5 na híbrida, 4 na humana (a do site) **[provisório]**",
-    "`altura`, `massa`: 2,1 m e 105 kg pelo corpo de base escalado, cintura fina **[extrapolação]**",
-    "`aparencia`: 2 na híbrida; o site tinha 4, que fica na humana **[provisório]**",
-    "`couraca`: nível 1 pelo couro peludo **[provisório]**",
-    "`forma de lobo`: o lobo do molde levado a 80 kg (× 1,133), área 0,51 m², Médio; Vigor 4, Couraça 0 e Aparência 6 **[provisório]**",
-    "`faro`, `visão e audição`: só na híbrida e na de lobo, como no exemplo aprovado pelo autor (formato JSON de 24/10/2026); escrito pela marca das formas (D-230)",
-    "`forma mutável`, `mordida`, `firme contra o medo`, `afinidade com lobos`: números sugeridos pela ficha (D-197)",
-    "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos; a Mordida só na híbrida e na de lobo, que têm a mordida; a Firme contra o medo e a Afinidade com lobos em todas, porque vêm da maldição, e não do corpo; o \"como luta\" em duas linhas; a Camuflagem e os Traços da humana e da de lobo na linha delas em Variantes. As três formas têm as mesmas Aptidões (não, não, não) e nenhuma Arte **[provisório]**"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Forma mutável",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Mordida que derruba e amaldiçoa",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Firme contra o medo",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Afinidade com lobos",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "atributos.forca",
+      "motivo": "Degrau 6: a forma de luta passa o homem forte (o site tinha 5, a For 17 do Pathfinder) e chega perto do lobo atroz, sem passar de 6; 6 na híbrida, 4 na humana; o site tinha 5"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "O corpo maior e a carne que fecha rápido: um degrau acima da forma humana (4, a do site); 5 na híbrida, 4 na humana (a do site)"
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "O homem de 1,8 m da ficha publicada, mais alto na forma de luta: o lobisomem de pé passa da cabeça de um homem alto; 2,1 m e 105 kg pelo corpo de base escalado, cintura fina"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "O corpo de base escalado a 2,1 m dá 80 × (2,1 ÷ 1,8)³ = 127 kg; a cintura fina e as pernas de lobo tiram uns 20%: 105 kg. Fica entre o homem (80 kg) e o lobo atroz; 2,1 m e 105 kg pelo corpo de base escalado, cintura fina"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "Degrau 2, repulsivo: focinho, presas e pelo eriçado num corpo de homem. A forma humana fica com o 4 do site (Variante); 2 na híbrida; o site tinha 4, que fica na humana"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: o couro peludo, mais grosso que a pele de gente e longe do couro do búfalo ; o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site: \"sua pele peluda absorve grande parte dos ferimentos comuns; só prata a fere de verdade\" (linha Elementos); nível 1 pelo couro peludo"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Caçador entre os Seus)"
+    },
+    {
+      "campo": "ataques.Mordida.nivelPerfuracao",
+      "motivo": "Mordida de lobo grande (`regra-construcao.md` §7). Golpe de boca: Força × 1. N0, como o lobo e o lobo atroz do molde (mordida abaixo de 4.000 N) . Jogada: Força 6 + Briga 3 + 2 × o menor entre Centelha 2 e Briga 3 (4)"
+    },
+    {
+      "campo": "formas.humana",
+      "motivo": "A forma da ficha publicada: homem de vilarejo de 1,8 m e 80 kg, o corpo de base (D-192). Força 4: a maldição deixa até a forma humana mais forte que o comum; o 5 do site (For 17 do Pathfinder) é da forma de luta, que vai a 6 . A \"Arma\" do site (corte, 1 dado, 5 Ticks) é a espada curta do livro. Pele de gente: sem resistências"
+    },
+    {
+      "campo": "formas.lobo",
+      "motivo": "Um lobo grande, com a massa do homem. Caça e foge nesta forma. Usa a ficha do lobo do molde como base, com a Centelha 2 e a mente de gente . O corpo é o do lobo do molde (55 kg) levado a 80 kg: as medidas sobem pela raiz cúbica da massa, × (80 ÷ 55)^(1/3) = 1,133, e a área pelo quadrado desse fator, 0,40 × 1,285 = 0,51 m², 14% acima do corte do Médio . Vigor 4, o da forma humana, que tem a mesma massa; o 5 da híbrida vem do corpo maior. PV pela massa: 25 + 3 × 4 = 37. Peso erguido pela R15 com 80 kg, Força 4, Halterofilismo 0 e Musculatura 0, o mesmo da humana. Couraça 0 e Aparência 6, as do lobo do molde: o couro e a cara são de lobo comum, e o couro mais grosso da híbrida não passa para esta forma; o lobo do molde levado a 80 kg (× 1,133), área 0,51 m², Médio; Vigor 4, Couraça 0 e Aparência 6"
+    }
   ]
 }

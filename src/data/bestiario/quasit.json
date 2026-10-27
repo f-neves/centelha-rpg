@@ -1,119 +1,256 @@
 {
-  "ordem": 87,
   "id": "quasit",
   "idAntigo": "mon-quasit",
   "nome": "Quasit",
   "nomeIngles": "Demon, Quasit",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Demônio",
+  "categoria": "corruptor",
   "papel": "soldado",
-  "conceito": "exterior Minúsculo (demônio)",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
-  "tags": [
-    "demonio",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/quasit_criatura.webp",
-  "porte": "Miúdo",
-  "dimensoes": {
-    "medida": "30 cm de altura",
-    "peso": "3,5 kg"
-  },
-  "locomocao": {
-    "voo": 5,
-    "terra": 2
-  },
+  "ameaca": 2,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, curvado; voa",
+    "apoio": "bipede",
+    "altura": 0.6,
+    "largura": 0.18,
+    "profundidade": 0.08,
+    "comprimento": null,
+    "massa": 3.5,
+    "area": 0.09,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 2,
     "destreza": 5,
     "vigor": 2,
-    "influencia": 4,
-    "perspicacia": 3,
-    "compostura": 3,
     "percepcao": 3,
     "inteligencia": 2,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 4,
+    "perspicacia": 3,
+    "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 1,
+    "furtividade": 4,
+    "integridade": 3,
     "prontidao": 1,
-    "integridade": 3
+    "resistencia": 1,
+    "empatia": 2,
+    "manha": 2,
+    "sociabilidade": 2,
+    "ocultismo": 2
   },
-  "virtues": {
-    "compaixao": 0,
-    "conviccao": 5,
-    "temperanca": 1,
-    "valor": 5
+  "habilidadesSec": {
+    "labia": 3,
+    "voo": 3,
+    "musculatura": 2
   },
-  "willpower": 7,
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "espiar",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
+    "compaixao": 1,
+    "conviccao": 2,
+    "temperanca": 1
+  },
+  "vontade": 4,
   "aparencia": 1,
-  "arte": {
-    "fascinacao": 1,
-    "adivinhacao": 1,
-    "materia": 2
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "voo": {
+      "batalha": 5
+    }
   },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "nome": "Garras",
+      "parte": "mao-de-garras-venenosas",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Mordida",
+      "parte": "boca-de-dentes-finos",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "forma-alternativa",
+      "nome": "Duas garras",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada",
+      "texto": "Até dois golpes por ação"
+    },
+    {
+      "nome": "garras venenosas",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Garras",
+      "ativacao": "o golpe das Garras que acerta com Margem",
+      "duracao": "a do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "o alvo fica Envenenado pelo veneno do quasit (Veneno e doença)",
+      "dano": "o do veneno",
+      "resistencia": "corpo, pelo veneno",
+      "limiteDeUso": "um por golpe"
+    },
+    {
+      "nome": "invisibilidade",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "fica invisível à vontade, como ação livre"
+    },
+    {
+      "nome": "Susto",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 1
+      },
+      "ativacao": "uma ação, Velocidade 6, uma careta ou um sussurro",
+      "duracao": "até o fim da cena",
+      "alcance": "9 m",
+      "area": "um alvo",
+      "efeito": "um terror súbito sem motivo; quem falha fica Abalado",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Briga dele; quem passa fica imune ao susto até o fim da cena",
+      "limiteDeUso": "uma vez por cena"
+    },
+    {
+      "nome": "Adivinhação",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "adivinhacao",
+        "nivel": 1
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até a próxima jogada dele, ou o fim da cena",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "vislumbra o futuro próximo",
+      "dano": "nenhum; soma +1d6 na próxima jogada",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena"
+    },
+    {
       "nome": "Forma alternativa",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "materia",
         "nivel": 2
       },
-      "resiste": "nenhum",
-      "efeito": "Forma alternativa",
-      "usos": {
-        "periodo": "avontade"
-      }
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até ele voltar, com outra ação",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "vira morcego, centopeia gigante, lobo, gato, rato ou sapo; os números ficam os do quasit, menos o deslocamento, que é o do bicho (voo do morcego, a corrida do lobo); na forma de bicho não fala",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
+    },
+    {
+      "nome": "Regeneração 2",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de prata ou arma benta"
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "comoLuta": [
     {
-      "nome": "Invisibilidade",
-      "descricao": "feitiçaria; fica invisível à vontade como ação livre"
-    },
-    {
-      "nome": "Susto",
-      "descricao": "feitiçaria, 1x por cena; falha no teste de Vontade = Abalado"
-    },
-    {
-      "nome": "Adivinhação",
-      "descricao": "feitiçaria, 1x por cena; vislumbra o futuro próximo e ganha vantagem no próximo teste"
-    },
-    {
-      "nome": "Forma alternativa",
-      "descricao": "feitiçaria; vira morcego, centopeia gigante ou lobo, ganhando voo ou deslocamento extra"
-    },
-    {
-      "nome": "Garra e ferrão venenosos",
-      "descricao": "ataque corpo a corpo; crítico = alvo Envenenado"
-    },
-    {
-      "nome": "Regeneração",
-      "descricao": "recupera PV toda rodada, exceto se ferido por arma benta ou de prata"
+      "nome": "familiar traiçoeiro",
+      "formas": "todas",
+      "texto": "espia invisível ou disfarçado de bicho, tortura os fracos, foge dos fortes e trai o dono quando vê vantagem."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um bicho pequeno, sem nada além do que a Percepção 3 dá",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "invisível ou na forma de bicho",
+    "mente": "inteligente, demoníaca, cruel",
+    "tracos": "demônio de 60 cm, de pele esverdeada, chifres pequenos, asas de morcego, garras venenosas e sorriso de deboche"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "serve a um mestre, demônio ou mago",
+    "atividade": "qualquer hora",
+    "dieta": "carne e restos",
+    "caca": "espia, sussurra e semeia desgraças pequenas",
+    "dianteDeGente": "tortura o fraco, foge do forte"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Demônio pequeno e alado que vive para servir a um mestre mais forte, seja senhor demoníaco, seja mago incauto. Cruel e covarde, fica invisível, muda de forma para espiar e trai o dono no instante em que vê vantagem.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -132,43 +269,55 @@
       "texto": "Circula disfarçado nas cidades de Calin como familiar de hereges que flertam com o tabu antimagia, sussurrando segredos e semeando pequenas desgraças no dia a dia de quem confia demais nele."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/quasit_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
-    ]
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Furtividade 4, Manha 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Quasit",
-    "cr": "2",
-    "tipo": "exterior Minúsculo (demônio)",
-    "tamanho": "minusculo",
-    "valores": {
-      "for": 8,
-      "des": 17,
-      "con": 11,
-      "int": 11,
-      "sab": 12,
-      "car": 14
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.garras venenosas",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Furtividade 4",
-      "Manha 2"
-    ],
-    "nota": "Invisibilidade, forma alternativa: Centelha 2.",
-    "deslocamento": {
-      "ft": 50,
-      "origem": "fonte",
-      "nota": "voo 50 (perfeito); em terra 20"
+    {
+      "campo": "habilidadesEspeciais.Susto",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 2
+    {
+      "campo": "habilidadesEspeciais.Adivinhação",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Forma alternativa",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "O site dizia 30 cm e 3,5 kg, que não fecham: o corpo de base a 30 cm daria 0,37 kg. A massa do site é a do Pathfinder (cerca de 60 cm); fica a altura que fecha com ela; 0,6 m, e não os 30 cm do site, que não fecham com os 3,5 kg (o corpo de base a 30 cm daria 0,37 kg, na Faixa 1 e com PV = Vigor = 2). A outra saída era manter os 30 cm e baixar a massa; fica a altura, que é a do Pathfinder, e a massa do site . É a exceção à regra de altura e massa do bestiário (a partir do lote 32: a altura do site manda, e a massa do site fica quando um fator de forma plausível a alcança; balor, glabrezu e marilith mantiveram a altura). Aqui o número errado do site era a própria altura: 30 cm fica longe da massa por um fator de quase dez, nenhum fator de forma plausível fecha a conta, e a altura contradiz a fonte (cerca de 60 cm no Pathfinder). Mantida a altura, o quasit teria 0,37 kg e PV 2; mantida a massa, fica com 3,5 kg, a altura da fonte e PV 6"
+    },
+    {
+      "campo": "vontade",
+      "motivo": "A régua do livro (D-202): abaixo do herói típico, porque o site o descreve covarde, que \"obedece apenas enquanto teme o dono\". O site tinha 7; 4, e não 7; `bravura` 2, e não 5; `conviccao` 2, e não 5: pelo texto do site (\"cruel e covarde\", \"obedece apenas enquanto teme o dono\", \"trai\")"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Regeneração 2",
+      "motivo": "Antes: 1 PV/6 Ticks passivos. N 2 pela referência Quasit (Archives of Nethys)."
+    }
+  ]
 }

@@ -1,3 +1,4 @@
+import { pvJogador } from './lib-criatura-motor.mjs';
 // cost-examples.mjs · recusteia os quatro personagens-exemplo do capítulo de
 // criação pela régua de verdade, e compara linha a linha com o que a tabela
 // publica.
@@ -201,7 +202,7 @@ for (const [nome, e] of Object.entries(EXEMPLOS)) {
   // conferia os quatro exemplos pela regra de antes da Reforma). A Defesa física entrou na
   // conferência com a Esquiva que o capítulo lista (3 nos quatro).
   const a = e.atributos;
-  const pv = D.pv.base + (a.vigor || 0) * D.pv.vigorMult;
+  const pv = pvJogador(a.vigor || 0, e.raca || 'humano');
   const defF = C.defesa({ destreza: a.destreza || 0, habilidade: e.esquiva, centelha: e.centelha });
   const defM = C.defesaMental({ raciocinio: a.raciocinio || 0, integridade: e.integridade, vontade: e.vontade, centelha: e.centelha });
   const defS = e.sociabilidade == null ? null

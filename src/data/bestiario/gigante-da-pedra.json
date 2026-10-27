@@ -1,35 +1,25 @@
 {
-  "ordem": 29,
   "id": "gigante-da-pedra",
   "idAntigo": "mon-gigante-da-pedra",
   "nome": "Gigante da Pedra",
   "nomeIngles": "Giant, Stone",
-  "categoria": "Gigante",
-  "categoriaLegada": "Gigante",
+  "categoria": "gigante",
   "papel": "chefe",
-  "conceito": "humanoide Grande (gigante)",
-  "descricao": "Gigante recluso das montanhas, de pele da cor da pedra, que esculpe as próprias cavernas e medita por longos períodos. Pacífico até ser provocado; então arremessa rochas a até 45 m com precisão mortal e anda entre as rochas sem ser notado.",
-  "tags": [
-    "gigante"
-  ],
-  "imagem": "bestiario/gigante-da-pedra_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "3,7 m de altura",
-    "peso": "693 kg",
-    "largura": 0.93,
-    "altura": 3.7
-  },
-  "locomocao": {
-    "terra": 4
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-  },
+  "ameaca": 5,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 3.7,
+    "largura": 0.93,
+    "profundidade": 0.47,
+    "comprimento": null,
+    "massa": 693,
+    "area": 3.04,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 4,
+  "atributos": {
     "forca": 9,
     "destreza": 4,
     "vigor": 6,
@@ -40,7 +30,7 @@
     "perspicacia": 2,
     "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
     "arremesso": 4,
     "bloqueio": 1,
@@ -50,92 +40,171 @@
     "integridade": 3,
     "prontidao": 1
   },
-  "skills2": {
+  "habilidadesSec": {
     "escultura": 2,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "parado ou devagar em terreno de rocha",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "arremesso",
-      "foco": "rocha",
-      "valor": 2,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "parado ou devagar em terreno de rocha",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "arremesso": [
+      {
+        "foco": "rocha",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 5
+    "temperanca": 2
   },
-  "willpower": 5,
+  "vontade": 5,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pancada descomunal",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "punho",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Rocha arremessada",
-      "atrib": "destreza",
-      "pericia": "arremesso",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "mao",
+      "habilidade": "arremesso",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Arremesso certeiro",
-      "descricao": "Rocha arremessada: Ativação: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: até 45 m (site); acima de 15 m, −2 na jogada. Área: um alvo. Efeito: a rocha derruba o alvo Médio ou menor que ela fere. Dano: 2d6 + Força, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Rocha arremessada",
+      "ativacao": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)",
+      "duracao": "instantânea",
+      "alcance": "até 45 m; acima de 15 m, −2 na jogada",
+      "area": "um alvo",
+      "efeito": "a rocha derruba o alvo Médio ou menor que ela fere",
+      "dano": "2d6 + Força, Impacto",
+      "resistencia": "corpo, contra a jogada, só para não cair; o dano vem inteiro",
+      "limiteDeUso": "enquanto houver rocha por perto"
     },
     {
       "nome": "Punho esmagador",
-      "descricao": "Pancada descomunal: Ativação: a Pancada descomunal que fere um alvo Médio ou menor. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo cai no chão. Dano: o da Pancada. Resistência: corpo, contra a jogada da pancada; quem passa fica de pé. Limite de uso: um por golpe.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "passos silenciosos",
-      "descricao": "Furtividade 3, com a Especialidade natural (terreno de rocha) +3; atravessa cavernas e penhascos sem ser notado por quem vigia (site).",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Pancada descomunal",
+      "ativacao": "a Pancada descomunal que fere um alvo Médio ou menor",
+      "duracao": "instantânea",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "o alvo cai no chão",
+      "dano": "o da Pancada",
+      "resistencia": "corpo, contra a jogada da pancada; quem passa fica de pé",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "agarrar",
-      "descricao": "Pancada descomunal: Agarrar.",
-      "classe": "livro"
-    },
-    {
-      "nome": "vizinho silencioso",
-      "descricao": "evita o contato e só luta provocado; então arremessa rochas de longe, com precisão, e esmaga de perto quem chega.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "sentir vibrações: percebe pela rocha quem se move a até 9 m, sem precisar de luz e mesmo invisível (site). · visão e audição: as de um humano."
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Pancada descomunal",
+      "regra": "agarrar"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "vizinho silencioso",
+      "formas": "todas",
+      "texto": "evita o contato e só luta provocado; então arremessa rochas de longe, com precisão, e esmaga de perto quem chega."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "sentir vibrações",
+      "descricao": "percebe pela rocha quem se move a até 9 m, sem precisar de luz e mesmo invisível",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "parado entre as rochas, passa por pedra (Especialidade natural)",
+    "mente": "humanoide, contemplativa e discreta",
+    "tracos": "gigante de 3,7 m, magro, de pele cinzenta e lisa como pedra polida"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": true,
+    "tracao": true
+  },
+  "comportamento": {
+    "social": "recluso, em covis de família nas montanhas",
+    "atividade": "qualquer hora; medita por longos períodos",
+    "dieta": "onívoro",
+    "caca": "caça e coleta nas montanhas",
+    "dianteDeGente": "evita; só luta provocado"
+  },
+  "ecologia": {
+    "terreno": [
+      "montanha",
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Gigante recluso das montanhas, de pele da cor da pedra, que esculpe as próprias cavernas e medita por longos períodos. Pacífico até ser provocado; então arremessa rochas a até 45 m com precisão mortal e anda entre as rochas sem ser notado.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Reclusivo e pacífico até ser provocado, prefere evitar contato com outras raças a impor sua força. Social: recluso, em covis de família nas montanhas."
+      "texto": "Reclusivo e pacífico até ser provocado, prefere evitar contato com outras raças a impor sua força."
     },
     {
       "titulo": "Hábitos",
@@ -152,75 +221,40 @@
     {
       "titulo": "Aptidões",
       "texto": "montaria não · carga sim · tração sim"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande, mais ágil que os outros gigantes (Esquiva 10, Bloqueio 10). Pancada e rocha de dano médio 16; a rocha vai a 45 m e derruba quem é do tamanho de um homem. Sente pela rocha quem se move a 9 m, mesmo invisível. Entre as rochas, quase não se vê. 54 PV, Impacto 6, Corte e Perfuração 0."
     }
   ],
-  "ecologia": {
-    "tipo": "Giant",
-    "terreno": [
-      "Mountain",
-      "Underground"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/gigante-da-pedra_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Furtividade 3, Atletismo 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Gigante da Pedra",
-    "cr": "8",
-    "tipo": "humanoide Grande (gigante)",
-    "tamanho": "grande",
-    "valores": {
-      "for": 27,
-      "des": 15,
-      "con": 19,
-      "int": 10,
-      "sab": 12,
-      "car": 11
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Arremesso certeiro",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Furtividade 3",
-      "Atletismo 2"
-    ],
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Punho esmagador",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "v3": {
-    "pv": 54,
-    "esquiva": 10,
-    "bloqueio": 10,
-    "defesa": 10,
-    "defesaMental": 10,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 0,
-      "perfuracao": 0
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça: o \"couro de pedra\" do site, de \"Absorção muito alta\", ao lado do crocodilo e do tatu (4 a 5) e acima do couro grosso do gigante da colina (2) . O nível fica fora da Absorção (decisoes-autor §16); 4, couro de pedra"
     },
-    "couracaNivel": 4,
-    "pesoErguido": 1229.74,
-    "deslocamento": {
-      "terra": {
-        "batalha": 4,
-        "arranque": 6,
-        "corrida": 9
-      }
+    {
+      "campo": "comportamento.social",
+      "motivo": "site"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": "site"
+    },
+    {
+      "campo": "comportamento.caca",
+      "motivo": "site"
     }
-  },
-  "notasObservacao": [
-    "`massa`: 693 kg pelo cubo da altura do site, como o gigante da colina; o site dizia 770 kg (D-187) **[conta]**",
-    "`couraca`: 4, couro de pedra **[provisório]**",
-    "`arremesso certeiro`, `punho esmagador`: números sugeridos pela ficha (D-197)"
   ]
 }

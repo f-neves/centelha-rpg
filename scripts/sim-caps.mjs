@@ -1,3 +1,4 @@
+import { pvJogador } from './lib-criatura-motor.mjs';
 // sim-caps.mjs — testa a proposta de TETO escalado por Centelha.
 // A Centelha eleva o limite de Atributo/Perícia (não sobe automático).
 // Duelista de Destreza MAXIMIZADO por tier; mede ataque/defesa/duelo entre
@@ -57,7 +58,7 @@ function maxDuelista(c, arma = 'espada-curta', armadura = 'couro', escudo = 'bro
   };
 }
 
-function pv(b) { return regras.derivados.pv.base + b.vigor * regras.derivados.pv.vigorMult; }
+function pv(b) { return pvJogador(b.vigor,b.raca || 'humano'); }
 
 // variantes do termo de Centelha na defesa
 const DEFVAR = {

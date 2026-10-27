@@ -1,92 +1,201 @@
 {
-  "ordem": 306,
   "id": "xill",
   "idAntigo": "mon-xill",
   "nome": "Xill",
   "nomeIngles": "Xill",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Exterior",
+  "categoria": "corruptor",
   "papel": "elite",
-  "conceito": "exterior Médio",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
-  "tags": [
-    "exterior",
-    "centelha"
-  ],
-  "imagem": "bestiario/xill_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura, corpo humanoide com mandíbulas alienígenas",
-    "peso": "80 kg"
-  },
-  "locomocao": {
-    "terra": 4
-  },
+  "ameaca": 4,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.45,
+    "profundidade": 0.23,
+    "comprimento": null,
+    "massa": 80,
+    "area": 0.72,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 5,
     "destreza": 5,
     "vigor": 4,
-    "influencia": 2,
-    "perspicacia": 3,
-    "compostura": 3,
     "percepcao": 3,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 2,
+    "perspicacia": 3,
+    "compostura": 3
   },
-  "skills": {
+  "habilidades": {
+    "armas": 5,
     "briga": 5,
+    "bloqueio": 2,
     "esquiva": 1,
+    "atletismo": 3,
+    "furtividade": 2,
+    "integridade": 3,
     "prontidao": 1,
-    "integridade": 3
+    "resistencia": 3,
+    "sociabilidade": 0,
+    "ocultismo": 2
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "estrategia": 2,
+    "cura": 2,
+    "musculatura": 2
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 5
+    "temperanca": 1
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 1,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-curta"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "nome": "Espada curta",
+      "arma": "espada-curta",
+      "habilidade": "armas"
+    },
+    {
+      "nome": "Garras",
+      "parte": "maos-de-baixo",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Mordida",
+      "parte": "mandibulas",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Resistência a magia",
-      "descricao": "Feitiços e efeitos mágicos hostis frequentemente falham em afetá-lo, exigindo insistência do conjurador."
+      "nome": "Duas espadas",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Espada curta",
+      "regra": "empunhadura-dupla"
     },
     {
-      "nome": "Implante de ovos",
-      "descricao": "Pode depositar dezenas de ovos dentro de uma vítima indefesa; ao eclodir, as larvas consomem o hospedeiro por dentro até a morte, a menos que sejam removidas cirurgicamente ou curadas."
+      "nome": "quatro braços juntos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "golpeia com as duas espadas e as duas garras na mesma ação, sem perder precisão; a empunhadura dupla do livro conta duas mãos"
     },
     {
-      "nome": "Ferrão paralisante",
-      "descricao": "A mordida injeta um veneno que paralisa o alvo por horas caso ele falhe em um teste de Vigor."
+      "nome": "ferrão paralisante",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a mordida injeta um veneno que paralisa por horas quem falha num teste de Vigor"
     },
     {
-      "nome": "Maestria com várias armas",
-      "descricao": "Luta com espadas curtas e garras ao mesmo tempo sem perder precisão, tratando as garras como ataques principais."
+      "nome": "implante de ovos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "põe dezenas de ovos dentro de uma vítima indefesa; ao eclodir, as larvas a comem por dentro até a morte, a menos que sejam tiradas por cirurgia ou curadas"
     },
     {
-      "nome": "Passagem entre planos",
-      "descricao": "Pode deslizar do Plano Etéreo para o Material como ação rápida; a transição inversa é lenta e o deixa parcialmente incorpóreo, dificultando ser atingido, podendo levar consigo uma vítima disposta ou indefesa."
+      "nome": "passagem entre planos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "desliza do Plano Etéreo para o mundo num instante; a volta é lenta, deixa o corpo meio incorpóreo e difícil de acertar, e pode levar junto uma vítima indefesa"
+    },
+    {
+      "nome": "resistência a magia",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a Arte hostil enfrenta uma resistência natural antes de fazer efeito"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "flagelo etéreo",
+      "formas": "todas",
+      "texto": "sai do Plano Etéreo em cima da vítima, ataca com as quatro armas, paralisa com a mordida e leva o caído de volta para pôr os ovos."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "a de um humano; enxerga o Plano Etéreo de dentro dele",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "inteligente, fria, de colmeia militar",
+    "tracos": "insetoide de 1,8 m, carapaça vermelha, quatro braços (os de cima com espadas, os de baixo com garras) e mandíbulas alienígenas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "bando, de uma sociedade totalitária e militarista; todas fêmeas",
+    "atividade": "qualquer hora",
+    "dieta": "carnívora",
+    "caca": "caça hospedeiros vivos para os ovos",
+    "dianteDeGente": "captura para incubar"
+  },
+  "ecologia": {
+    "terreno": [
+      "ruínas",
+      "subterrâneo",
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Caçadora de quatro braços e mandíbulas de inseto que vagueia pelo Plano Etéreo conquistando o que encontra. Todas são fêmeas e fertilizam os próprios ovos, mas precisam de hospedeiros vivos para os incubar, e por isso saem do Etéreo para capturá-los.",
   "lore": [
     {
       "titulo": "Raça só de fêmeas",
@@ -101,40 +210,39 @@
       "texto": "Possuem inteligência aguçada e uma sociedade totalitária e militarista completamente estranha às demais raças que encontram."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Ruins",
-      "Underground",
-      "Any"
+  "imagens": [
+    "bestiario/xill_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
-    ]
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Xill",
-    "cr": "6",
-    "tipo": "exterior Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 17,
-      "des": 18,
-      "con": 14,
-      "int": 15,
-      "sab": 12,
-      "car": 11
+  "revisao": [
+    {
+      "campo": "habilidades.armas",
+      "motivo": "\"Maestria com várias armas\" (site): as espadas curtas. O site não dava a Habilidade; leva a Briga dele"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesSec.estrategia",
+      "motivo": "Sociedade \"totalitária e militarista\" (site)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: carapaça fina de inseto, como o couro do cavalo (1) . O nível fica fora da Absorção (decisoes-autor §16)"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    }
+  ]
 }

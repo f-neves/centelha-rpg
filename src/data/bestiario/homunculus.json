@@ -1,39 +1,30 @@
 {
-  "ordem": 237,
   "id": "homunculus",
   "idAntigo": "mon-homunculus",
   "nome": "Homunculus",
   "nomeIngles": "Homunculus",
-  "categoria": "Construto",
-  "categoriaLegada": "Monstro",
+  "categoria": "construto",
   "papel": "soldado",
-  "conceito": "monstro Pequeno",
-  "descricao": "Servo alado de argila, cinzas, mandrágora e o sangue do criador, ligado à mente dele. Espia e leva recados; a mordida faz dormir. Se for destruído, o criador sente o golpe; se o criador morre, ele enlouquece e ataca quem se aproxima.",
-  "descricaoLegada": "Aberração humanoide de lendas antigas.",
-  "tags": [
-    "monstro",
-    "centelha"
-  ],
-  "imagem": "bestiario/homunculus_criatura.webp",
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "0,54 m de altura",
-    "peso": "3 kg",
-    "largura": 0.13,
-    "altura": 0.54,
-    "envergadura": 0.75
-  },
-  "locomocao": {
-    "voo": 5,
-    "terra": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 5
-  },
+  "ameaca": 2,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede pequeno; voador, luta voando",
+    "apoio": "bipede",
+    "altura": 0.54,
+    "largura": 0.13,
+    "profundidade": 0.07,
+    "comprimento": null,
+    "envergadura": 0.75,
+    "massa": 3,
+    "area": 0.14,
+    "posturaDoTamanho": "asas abertas",
+    "segundoTamanho": {
+      "area": 0.06,
+      "posturaDoTamanho": "pousado, asas fechadas"
+    }
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 2,
     "destreza": 4,
     "vigor": 1,
@@ -44,94 +35,173 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 1,
     "furtividade": 2,
     "integridade": 2,
-    "prontidao": 1
+    "prontidao": 1,
+    "resistencia": 0
   },
-  "skills2": {
-    "voo": 3
+  "habilidadesSec": {
+    "voo": 3,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "esconder-se para espiar",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "esconder-se para espiar",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 3,
-    "valor": 3
+    "temperanca": 3
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "voo": {
+      "batalha": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "boca-de-presas",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [
-    "perfuracao"
-  ],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "sem vida",
-      "descricao": "não respira, não come e não dorme; não faz teste de Vigor, Resistência nem Virtude (C-002, C-040); não cura nem regenera sozinho, só por conserto.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não respira, não come e não dorme; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto"
     },
     {
       "nome": "Ferrão sonífero",
-      "descricao": "Mordida: Ativação: a Mordida que fere. Duração: a do veneno. Alcance: o do corpo a corpo. Área: um alvo. Efeito: injeta o veneno do sono (Veneno e doença). Dano: o da Mordida. Resistência: corpo, pelo veneno. Limite de uso: um por golpe.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Mordida",
+      "ativacao": "a Mordida que fere",
+      "duracao": "a do veneno",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "injeta o veneno do sono (Veneno e doença)",
+      "dano": "o da Mordida",
+      "resistencia": "corpo, pelo veneno",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "Vínculo telepático",
-      "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente, enquanto os dois vivem. Alcance: cerca de 500 m (site). Área: ele e o criador. Efeito: o criador vê e ouve o que ele vê e ouve, e os dois falam pela mente. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativo",
+      "duracao": "permanente, enquanto os dois vivem",
+      "alcance": "cerca de 500 m (\"centenas de metros\", site)",
+      "area": "ele e o criador",
+      "efeito": "o criador vê e ouve o que ele vê e ouve, e os dois falam pela mente",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Eco de dano",
-      "descricao": "Ativação: o homúnculo é destruído. Duração: instantânea. Alcance: o criador, onde estiver. Área: o criador. Efeito: o criador sente o golpe que destruiu o servo e é ferido. Dano: 2d6, fenômeno, ao criador. Resistência: nenhum. Limite de uso: uma vez, na destruição.",
-      "classe": "regra da ficha"
-    },
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "o homúnculo é destruído",
+      "duracao": "instantânea",
+      "alcance": "o criador, onde estiver",
+      "area": "o criador",
+      "efeito": "o criador sente o golpe que destruiu o servo e é ferido",
+      "dano": "2d6, fenômeno, ao criador",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez, na destruição"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "servo do criador",
-      "descricao": "espia e leva recados; luta só quando mandado: voa, morde para fazer dormir e foge.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "espia e leva recados; luta só quando mandado: voa, morde para fazer dormir e foge."
     },
     {
       "nome": "órfão",
-      "descricao": "se o criador morre, perde a razão e ataca qualquer um que chegue perto do covil (site, Loucura da orfandade).",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "se o criador morre, perde a razão e ataca qualquer um que chegue perto do covil (site, Loucura da orfandade)."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro e na penumbra sem dificuldade",
+      "formas": "todas"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga no escuro e na penumbra sem dificuldade (site). · audição: a de um humano."
+      "nome": "audição",
+      "descricao": "a de um humano",
+      "formas": "todas"
     }
   ],
-  "venenos": [
-    {
-      "nome": "Veneno no jogo",
-      "texto": "Veneno do sono do homúnculo · Potência 12 · 1 Tick (sangue) · a cada 1 minuto · pool 2 (sono) · Desgaste 1 · pela Mordida. O formato do veneno do sono do drow, com a Potência um ponto abaixo pela criatura miúda; o \"repetindo o efeito por vários minutos\" do site é o intervalo."
-    }
-  ],
+  "fisiologia": {
+    "respiracao": "nenhuma",
+    "prendeRespiracao": "não respira",
+    "camuflagem": "pequeno, se esconde nas vigas e nos cantos escuros",
+    "mente": "um eco pequeno da mente do criador, ligada a ele; sem o criador, enlouquece",
+    "tracos": "criaturinha de 0,54 m de argila e cinzas, de asas de morcego e boca de presas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "com o criador",
+    "atividade": "qualquer hora",
+    "dieta": "nenhuma",
+    "caca": "não caça",
+    "dianteDeGente": "espia para o criador; foge, ou morde para fazer dormir"
+  },
+  "ecologia": {
+    "terreno": [
+      "urbano",
+      "ruínas",
+      "qualquer"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Servo alado de argila, cinzas, mandrágora e o sangue do criador, ligado à mente dele. Espia e leva recados; a mordida faz dormir. Se for destruído, o criador sente o golpe; se o criador morre, ele enlouquece e ataca quem se aproxima.",
   "lore": [
     {
       "titulo": "Servo de sangue",
@@ -142,85 +212,35 @@
       "texto": "Se o criador morre, o homúnculo perde a razão e passa a atacar cegamente qualquer um que se aproxime de seu covil."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: com o criador."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Veneno no jogo: Veneno do sono do homúnculo · Potência 12 · 1 Tick (sangue) · a cada 1 minuto · pool 2 (sono) · Desgaste 1 · pela Mordida. O formato do veneno do sono do drow, com a Potência um ponto abaixo pela criatura miúda; o \"repetindo o efeito por vários minutos\" do site é o intervalo."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Pequeno no ar, Miúdo pousado; 5 PV, Impacto 2, Corte e Perfuração 1; ponta faz metade. Esquiva 12, Defesa Mental 12. Mordida de dano médio 4,5, com o veneno do sono. Voa a 5. O criador vê e ouve por ele a até uns 500 m; se o servo é destruído, o criador leva 2d6. Não se cura sozinho."
     }
   ],
-  "ecologia": {
-    "tipo": "Construct",
-    "terreno": [
-      "Urban",
-      "Ruins",
-      "Any"
-    ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Homunculus",
-    "cr": "1",
-    "tipo": "monstro Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 8,
-      "des": 15,
-      "con": "-",
-      "int": 10,
-      "sab": 12,
-      "car": 7
-    },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 50,
-      "origem": "fonte",
-      "nota": "voo 50; em terra 20, e o bichinho é feito para voar"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 5,
-    "esquiva": 12,
-    "bloqueio": 8,
-    "defesa": 12,
-    "defesaMental": 12,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 2,
-      "corte": 1,
-      "perfuracao": 1
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 19.79,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 3,
-        "corrida": 5
-      },
-      "voo": {
-        "batalha": 5
+  "imagens": [
+    "bestiario/homunculus_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
       }
-    }
+    ],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`altura`: 0,54 m, tirada dos 3 kg do site e da densidade da argila do golem de argila (1.442 kg/m³) **[conta]**",
-    "`tamanho`: Pequeno de asas abertas (0,14 m², pela proporção da asa do morcego) e Miúdo pousado; o site dizia Miúdo **[provisório]**",
-    "`pv`: 5, na zona de transição, pela faixa de baixo (corpinho de argila); pela de cima seria 11 **[provisório]**",
-    "`veneno`: o formato do veneno do sono do drow, Potência 12 **[provisório]**",
-    "`ferrão sonífero`, `vínculo telepático`, `eco de dano`: números sugeridos pela ficha (D-197)"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Ferrão sonífero",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Vínculo telepático",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Eco de dano",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    }
   ]
 }

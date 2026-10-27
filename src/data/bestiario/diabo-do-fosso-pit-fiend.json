@@ -1,192 +1,352 @@
 {
-  "ordem": 101,
   "id": "diabo-do-fosso-pit-fiend",
   "idAntigo": "mon-diabo-do-fosso-pit-fiend",
   "nome": "Diabo do Fosso (Pit Fiend)",
   "nomeIngles": "Pit Fiend",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Diabo",
+  "categoria": "corruptor",
   "papel": "chefe",
-  "conceito": "exterior Grande (diabo)",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Tirano leal do Inferno, calculista e cruel.",
-  "tags": [
-    "diabo",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/diabo-do-fosso-pit-fiend_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,7 m de altura, envergadura 4 m",
-    "peso": "360 kg"
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 6
-  },
+  "ameaca": 6,
   "centelha": 9,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, ereto; voa",
+    "apoio": "bipede",
+    "altura": 2.7,
+    "largura": 0.81,
+    "profundidade": 0.38,
+    "comprimento": null,
+    "massa": 360,
+    "area": 1.94,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 4,
+  "atributos": {
     "forca": 12,
     "destreza": 9,
     "vigor": 11,
-    "influencia": 8,
-    "perspicacia": 8,
-    "compostura": 9,
     "percepcao": 9,
     "inteligencia": 8,
-    "raciocinio": 9
+    "raciocinio": 9,
+    "influencia": 8,
+    "perspicacia": 8,
+    "compostura": 9
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 3,
-    "prontidao": 4,
-    "integridade": 8
+    "atletismo": 4,
+    "furtividade": 0,
+    "integridade": 8,
+    "prontidao": 5,
+    "resistencia": 6,
+    "empatia": 4,
+    "persuasao": 5,
+    "manha": 4,
+    "sociabilidade": 3,
+    "politica": 4,
+    "ocultismo": 5
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "lideranca": 5,
+    "direito": 4,
+    "estrategia": 5,
+    "intimidacao": 5,
+    "voo": 3,
+    "musculatura": 4
+  },
+  "especialidades": {
+    "persuasao": [
+      {
+        "foco": "pacto",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {
+    "lideranca": [
+      {
+        "foco": "legiões infernais",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "virtudes": {
+    "bravura": 6,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 6
+    "temperanca": 4
   },
-  "willpower": 12,
-  "aparencia": -1,
+  "vontade": 12,
+  "aparencia": 0,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "voo": {
+      "batalha": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Garras",
+      "parte": "mao-de-garras",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Mordida",
+      "parte": "presas",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Cauda",
+      "parte": "cauda-de-ferrao",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "aura-de-medo",
+      "nome": "Duas garras",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada",
+      "texto": "Até dois golpes por ação"
+    },
+    {
+      "nome": "garras, mordida e ferrão juntos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "rasga, morde e pica na mesma ação; por enquanto, as garras vão juntas pela Rajada, e a mordida e a cauda são outras ações"
+    },
+    {
+      "nome": "Ferrão venenoso",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Cauda",
+      "ativacao": "o golpe da Cauda que fere",
+      "duracao": "a do veneno",
+      "alcance": "o da cauda",
+      "area": "um alvo",
+      "efeito": "o alvo fica Envenenado pelo veneno do diabo do fosso (Veneno e doença)",
+      "dano": "o do veneno",
+      "resistencia": "corpo, pelo veneno",
+      "limiteDeUso": "um por golpe"
+    },
+    {
+      "nome": "Doença infernal",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "morte",
+        "nivel": 3
+      },
+      "ativacao": "a Mordida que fere",
+      "duracao": "até ser tratada (Cura) ou curada por Arte",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "o alvo fica Doente e vai perdendo Vigor: a cada dia sem tratamento, um degrau de Desgaste",
+      "dano": "nenhum além da mordida",
+      "resistencia": "corpo, contra a jogada da mordida; quem passa não adoece daquele golpe",
+      "limiteDeUso": "um por golpe"
+    },
+    {
       "nome": "Aura de medo",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "morte",
         "nivel": 3
       },
-      "resiste": "mente",
-      "efeito": "Resiste ao entrar, 1 vez por cena.",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
-      },
-      "descricao": "Uma presença de puro terror cerca o diabo do fosso; quem chega a 12 metros e falha em resistir fica abalado, só de estar perto."
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "até o fim da cena para quem falha",
+      "alcance": "12 m",
+      "area": "esfera de 12 m em volta dele",
+      "efeito": "puro terror; quem entra e falha fica Abalado só de estar perto",
+      "dano": "nenhum",
+      "resistencia": "mente, uma vez por cena, ao entrar; quem passa fica imune à aura até o fim da cena",
+      "limiteDeUso": "nenhum"
     },
     {
-      "id": "convocar-diabos",
-      "nome": "Convocar diabos",
-      "tipo": "natural",
-      "base": {
-        "arte": "espirito",
-        "nivel": 4
-      },
-      "resiste": "nenhum",
-      "efeito": "Convocar diabos",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 1
-      },
-      "descricao": "Uma vez por cena, o diabo abre uma fenda para o Fosso e puxa um punhado de diabos menores para lutarem ao seu lado."
-    },
-    {
-      "id": "doenca",
-      "nome": "Doença",
-      "tipo": "natural",
-      "base": {
-        "arte": "morte",
-        "nivel": 3
-      },
-      "resiste": "corpo",
-      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-      "usos": {
-        "periodo": "golpe"
-      },
-      "descricao": "A mordida do diabo carrega uma doença infernal: quem é mordido e falha em resistir vai perdendo Vigor aos poucos, até ser tratado ou curado por magia."
-    },
-    {
-      "id": "labareda-pit-fiend",
       "nome": "Labareda",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "fogo",
         "nivel": 6
       },
-      "resiste": "esquiva",
-      "efeito": "bola de fogo numa área de 6m, dano altíssimo, metade se esquivar a tempo",
-      "descricao": "O diabo do fosso arremessa uma bola de fogo que explode numa área de 6 metros, torrando quase tudo que estiver lá dentro; quem consegue se jogar para fora a tempo sofre metade do estrago.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 3
-      }
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "instantânea",
+      "alcance": "60 m",
+      "area": "esfera de 6 m",
+      "efeito": "arremessa uma bola de fogo que explode no ponto escolhido",
+      "dano": "6d6 + Centelha, fogo",
+      "resistencia": "esquiva; quem passa leva metade",
+      "limiteDeUso": "três vezes por dia"
     },
     {
-      "id": "feiticos-supremos",
+      "nome": "Convocar diabos",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "espirito",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "até o fim da cena",
+      "alcance": "9 m",
+      "area": "os diabos chamados aparecem perto dele",
+      "efeito": "abre uma fenda para o Fosso e puxa 1d6 diabos menores (diabos barbados ou espinhosos, à escolha do Mestre) que lutam ao lado dele",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena, uma por dia"
+    },
+    {
       "nome": "Feitiços supremos",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "fortuna",
         "nivel": 6
       },
-      "resiste": "nenhum",
+      "ativacao": "uma ação, Velocidade 8, quando o Mestre diz que é possível",
+      "duracao": "a do efeito reproduzido",
+      "alcance": "o do efeito reproduzido",
+      "area": "a do efeito reproduzido",
       "efeito": "reproduz o efeito de qualquer Arte, de qualquer nível, uma única vez",
-      "descricao": "Raríssimas vezes, quase nunca dentro de uma única história, o diabo do fosso pode fazer o que quiser: reproduzir qualquer efeito de qualquer Arte, do nível que for. O Mestre decide quando isso é possível.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 1,
-        "recarga": "uma vez por história de campanha, não por dia"
+      "dano": "o do efeito reproduzido",
+      "resistencia": "a do efeito reproduzido",
+      "limiteDeUso": "uma vez por história"
+    },
+    {
+      "nome": "Regeneração 5",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de armas sagradas ou de prata"
+    },
+    {
+      "nome": "ferida que não fecha",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o que arma sagrada ou de prata faz não se regenera pela regeneração"
+    },
+    {
+      "nome": "Ver o invisível",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "visao-verdadeira",
+        "nivel": 4
       }
+    },
+    {
+      "nome": "visão verdadeira sempre ativa",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o diabo do fosso enxerga através de ilusão, disfarce e invisibilidade o tempo todo, sem esforço; a Técnica do livro é ativa e custa Energia"
+    },
+    {
+      "nome": "imune a veneno",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o veneno não pega no corpo de diabo"
+    },
+    {
+      "nome": "medonho",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o senhor do Fosso, de asas, presas e ferrão; diabos menores obedecem sem hesitar só de vê-lo"
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "comoLuta": [
     {
-      "nome": "Aura de medo",
-      "descricao": "quem entrar em 12m e falhar em Vontade fica Abalado"
-    },
-    {
-      "nome": "Labareda",
-      "descricao": "bola de fogo em área de 6m; dano alto, metade se Esquivar"
-    },
-    {
-      "nome": "Convocar diabos",
-      "descricao": "1x por cena chama 1d6 diabos menores para lutar ao seu lado"
-    },
-    {
-      "nome": "Mordida com doença infernal",
-      "descricao": "acerto injeta doença; falha em Resistência reduz Vigor até ser curado"
-    },
-    {
-      "nome": "Ferrão de cauda venenoso",
-      "descricao": "ataque extra na rodada; veneno causa dano contínuo"
-    },
-    {
-      "nome": "Feitiços supremos",
-      "descricao": "1x por história lança um feitiço de qualquer nível."
-    },
-    {
-      "nome": "Regeneração",
-      "descricao": "recupera PV toda rodada; só armas sagradas ou de prata interrompem"
-    },
-    {
-      "nome": "Imunidade a fogo e veneno",
-      "descricao": "sem efeito de dano de fogo ou venenos comuns"
-    },
-    {
-      "nome": "Visão verdadeira",
-      "descricao": "ignora ilusão e invisibilidade; voa livremente"
+      "nome": "general absoluto",
+      "formas": "todas",
+      "texto": "raramente luta primeiro; chama diabos menores, joga a labareda no grupo e só então entra com garras, presas e ferrão; usa contratos e juramentos como arma tanto quanto o fogo."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão verdadeira",
+      "descricao": "pela Técnica (Manobras)",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "inteligente, calculista, paciente",
+    "tracos": "diabo de 2,7 m, pele vermelho-escura de escamas, chifres, presas, asas de morcego de 4 m e cauda de ferrão"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "comanda legiões inteiras",
+    "atividade": "qualquer hora",
+    "dieta": "não precisa comer",
+    "caca": "corrompe almas por contrato",
+    "dianteDeGente": "oferece pactos; cruza ao mundo só quando um pacto o convoca"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "General absoluto do Inferno, logo abaixo dos Arquiduques, que comanda legiões com disciplina fria e usa contratos e juramentos como arma tanto quanto garras e fogo. Calculista e paciente, trata a corrupção de uma alma como obra de longo prazo, quase artesanal.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -209,44 +369,72 @@
       "texto": "Pactos com diabos são o pesadelo que as igrejas supressoras mais pregam contra: cada contrato assinado em desespero, seja por dívida, guerra ou fome, é uma fresta que nem a Supressão fecha. Muitos clérigos suspeitam que a própria Fenda tenha atraído a atenção de senhores do Inferno como este."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/diabo-do-fosso-pit-fiend_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "Habilidades notáveis: Ocultismo 5, Liderança 5, Prontidão 5, Persuasão 5. Centelha acima do teto mortal (entidade).",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Diabo do Fosso (Pit Fiend)",
-    "cr": "20",
-    "tipo": "exterior Grande (diabo)",
-    "tamanho": "grande",
-    "valores": {
-      "for": 37,
-      "des": 29,
-      "con": 35,
-      "int": 26,
-      "sab": 30,
-      "car": 26
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Ferrão venenoso",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Ocultismo 5",
-      "Liderança 5",
-      "Prontidão 5",
-      "Persuasão 5"
-    ],
-    "nota": "Príncipe infernal: Centelha 8. Str 37 → curva 11 +1 = Força 12; Con 35 → Vigor 11; Sab 30 → Percepção 9.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Doença infernal",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 6
+    {
+      "campo": "habilidadesEspeciais.Aura de medo",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Labareda",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Convocar diabos",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Feitiços supremos",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "A nota do site (\"Prontidão 5\"); o campo dizia 4"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 4: a pele de diabo maior, como a do balor e do hezrou . O nível fica fora da Absorção (decisoes-autor §16). A imunidade é a do site, pela linha Elementos"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "0, e não o −1 do site, fora da régua; o efeito em quem olha foi para a linha medonho (D-181)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Regeneração 5",
+      "motivo": "Antes: 11 PV/6 Ticks por 4 de Energia. N 5 pela referência Pit Fiend (Archives of Nethys)."
+    }
+  ]
 }

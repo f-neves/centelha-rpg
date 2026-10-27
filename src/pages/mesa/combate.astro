@@ -565,6 +565,7 @@ import CondDlg from '../../components/CondDlg.astro';
     type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
   import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, resumoDe, iniDeMonstro, d6, imagemDe } from '../../lib/mesa-bestiario'; import { dadosSemOsVaziosDaEscolha } from '../../lib/defesa-vestida';
+  import { numerosPersonagem } from '../../lib/motor';
   import { rolarIniciativaPC } from '../../lib/mesa-ficha';
   import { pv as pvDe, mana as manaDe, limiteDaMorte, passouDoLimite } from '../../lib/calc';
   import { armaDoSlot } from '../../lib/equip';
@@ -1685,12 +1686,12 @@ import CondDlg from '../../components/CondDlg.astro';
     const jaTem = new Set(COMBS.map((c) => c.personagem_id).filter(Boolean));
     const novos = (pcs || []).filter((p: any) => !jaTem.has(p.id)).map((p: any) => {
       const S = p.ficha || {}; const at = S.attrs || {};
-      const pvv = pvDe(at.vigor || 0);
-      const en = (Math.floor(((at.vigor || 0) + (at.compostura || 0) + (at.raciocinio || 0) + (S.willpower || 0)) / 2) + (S.centelha || 0) * 2);
+      const nums = numerosPersonagem(S);
+      const pvv = nums.pv;
+      const en = nums.energia;
       // O mortal também tem Mana (F2, Adendo 2 de 02/10/2026): a Força de Vontade,
       // pela mesma `mana` de calc.ts. Todo personagem lida com Mana.
-      const mn = manaDe({ centelha: S.centelha || 0, vontade: S.willpower || 0,
-                          manipulacao: S?.arte?.['manipulacao-mana'] || 0 });
+      const mn = nums.mana;
       return {
         encontro_id: ENC.id, tipo: 'pc', personagem_id: p.id, nome: p.nome || 'PC',
         pv_max: pvv, pv_atual: pvv, energia_max: en, energia_atual: en,

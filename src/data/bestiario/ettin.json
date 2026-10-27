@@ -1,35 +1,25 @@
 {
-  "ordem": 26,
   "id": "ettin",
   "idAntigo": "mon-ettin",
   "nome": "Ettin",
   "nomeIngles": "Ettin",
-  "categoria": "Gigante",
-  "categoriaLegada": "Gigante",
+  "categoria": "gigante",
   "papel": "elite",
-  "conceito": "humanoide Grande (gigante)",
-  "descricao": "Gigante de duas cabeças que discutem sobre tudo, de quem come primeiro a quem atacar. Bate com os dois braços na mesma ação, cada um num alvo, e as duas cabeças vigiam: nunca é pego desprevenido.",
-  "tags": [
-    "gigante"
-  ],
-  "imagem": "bestiario/ettin_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "4 m de altura",
-    "peso": "1.094 kg",
-    "largura": 1.25,
-    "altura": 4
-  },
-  "locomocao": {
-    "terra": 4
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-  },
+  "ameaca": 4,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 4,
+    "largura": 1.25,
+    "profundidade": 0.51,
+    "comprimento": null,
+    "massa": 1094,
+    "area": 4.44,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 8,
     "destreza": 2,
     "vigor": 5,
@@ -40,71 +30,139 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
     "bloqueio": 1,
+    "esquiva": 0,
     "atletismo": 1,
     "integridade": 2,
     "prontidao": 3,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "intimidacao": 2,
     "musculatura": 3
   },
-  "virtues": {
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 5,
+  "vontade": 5,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pancada descomunal",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "punho",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Duas cabeças, dois ataques",
-      "descricao": "Pancada descomunal: a Rajada: dois golpes de Pancada descomunal na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação; cada golpe pode ir num alvo diferente ao alcance, como a Rajada permite. A Pesada vai a dois golpes.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Pancada descomunal",
+      "regra": "rajada"
     },
     {
       "nome": "Vigilância dupla",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: as duas cabeças vigiam: nunca fica Surpreso, e quem o flanqueia ou o embosca não ganha o bônus por isso. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "as duas cabeças vigiam: nunca fica Surpreso, e quem o flanqueia ou o embosca não ganha o bônus por isso",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "agarrar",
-      "descricao": "Pancada descomunal: Agarrar.",
-      "classe": "livro"
-    },
-    {
-      "nome": "briga a dois",
-      "descricao": "as cabeças discutem até a última hora sobre quem atacar; depois bate com os dois braços, cada um num alvo, e guarda o que caça sem dividir.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga normalmente no escuro até 18 m (site). · audição: a de um humano, em dobro de atenção (Vigilância dupla)."
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Pancada descomunal",
+      "regra": "agarrar"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "briga a dois",
+      "formas": "todas",
+      "texto": "as cabeças discutem até a última hora sobre quem atacar; depois bate com os dois braços, cada um num alvo, e guarda o que caça sem dividir."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga normalmente no escuro até 18 m",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição",
+      "descricao": "a de um humano, em dobro de atenção (Vigilância dupla)",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "duas mentes de gigante, burras e rabugentas, que discutem sobre quase tudo",
+    "tracos": "gigante de 4 m com duas cabeças em dois pescoços, couro calejado e sujo, vestido de peles"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": true,
+    "tracao": true
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "noturno",
+    "dieta": "onívoro",
+    "caca": "ataca viajantes por fome ou irritação",
+    "dianteDeGente": "ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "montanha",
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Gigante de duas cabeças que discutem sobre tudo, de quem come primeiro a quem atacar. Bate com os dois braços na mesma ação, cada um num alvo, e as duas cabeças vigiam: nunca é pego desprevenido.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "As duas cabeças discutem entre si sobre quase tudo, da direção a seguir a quem come primeiro, o que o torna imprevisível em combate. Social: solitário."
+      "texto": "As duas cabeças discutem entre si sobre quase tudo, da direção a seguir a quem come primeiro, o que o torna imprevisível em combate."
     },
     {
       "titulo": "Hábitos",
@@ -121,77 +179,36 @@
     {
       "titulo": "Aptidões",
       "texto": "montaria não · carga sim · tração sim"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande, lento (Esquiva 4, Bloqueio 6). Pancada de dano médio 15, e dois golpes por ação pela Rajada (o segundo a −1d6), cada um num alvo. Nunca fica Surpreso nem leva o bônus de flanco. Vê no escuro a 18 m. 50 PV, Impacto 5, Corte e Perfuração 0."
     }
   ],
-  "ecologia": {
-    "tipo": "Giant",
-    "terreno": [
-      "Mountain",
-      "Underground"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/ettin_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Prontidão 3, Sobrevivência 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Ettin",
-    "cr": "6",
-    "tipo": "humanoide Grande (gigante)",
-    "tamanho": "grande",
-    "valores": {
-      "for": 23,
-      "des": 8,
-      "con": 15,
-      "int": 6,
-      "sab": 10,
-      "car": 11
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Vigilância dupla",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Prontidão 3",
-      "Sobrevivência 2"
-    ],
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "corpo.largura",
+      "motivo": "O corpo de base (D-192, manual 4.2) escalado pela altura (4,0 ÷ 1,80 = × 2,222), com os ombros 25% mais largos para os dois pescoços: 0,45 × 2,222 × 1,25 = 1,25 m; 0,23 × 2,222 = 0,51 m; 25% mais largo pelos dois pescoços, leitura da ficha"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 50,
-    "esquiva": 4,
-    "bloqueio": 6,
-    "defesa": 6,
-    "defesaMental": 9,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 0,
-      "perfuracao": 0
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça: o \"couro calejado\" do site, como o couro grosso do gigante da colina (2) . O nível fica fora da Absorção (decisoes-autor §16); 2, couro calejado"
     },
-    "couracaNivel": 2,
-    "pesoErguido": 953.8,
-    "deslocamento": {
-      "terra": {
-        "batalha": 4,
-        "arranque": 6,
-        "corrida": 9
-      }
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "site (visão no escuro)"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "1.094 kg pelo cubo da altura, com os ombros 25% mais largos para os dois pescoços; o site dizia 1,8 t (D-187). Na proporção humana, 875 kg"
     }
-  },
-  "notasObservacao": [
-    "`massa`: 1.094 kg pelo cubo da altura, com os ombros 25% mais largos para os dois pescoços; o site dizia 1,8 t (D-187). Na proporção humana, 875 kg **[provisório]**",
-    "`largura`: 25% mais largo pelos dois pescoços, leitura da ficha **[provisório]**",
-    "`prontidao`: 3, a da nota do site; o campo dizia 1 **[provisório]**",
-    "`couraca`: 2, couro calejado **[provisório]**",
-    "`vigilância dupla`: números sugeridos pela ficha (D-197)"
   ]
 }

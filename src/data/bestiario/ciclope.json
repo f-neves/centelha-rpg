@@ -1,37 +1,25 @@
 {
-  "ordem": 34,
   "id": "ciclope",
   "idAntigo": "mon-ciclope",
   "nome": "Ciclope",
   "nomeIngles": "Cyclops",
-  "categoria": "Gigante",
-  "categoriaLegada": "Gigante",
+  "categoria": "gigante",
   "papel": "elite",
-  "conceito": "humanoide Grande (gigante)",
-  "descricao": "Gigante solitário de um olho só, que vive em cavernas isoladas e ruínas esquecidas. Atira rochedos, esmaga com os punhos e, às vezes, pressente o golpe que vinha certo e o evita. O olho único deixa o flanco aberto.",
-  "tags": [
-    "gigante",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/ciclope_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "3,2 m de altura",
-    "peso": "448 kg",
-    "largura": 0.8,
-    "altura": 3.2
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 4,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 3.2,
+    "largura": 0.8,
+    "profundidade": 0.41,
+    "comprimento": null,
+    "massa": 448,
+    "area": 2.28,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 9,
     "destreza": 2,
     "vigor": 6,
@@ -42,96 +30,186 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
     "arremesso": 3,
     "bloqueio": 1,
+    "esquiva": 0,
     "atletismo": 1,
     "integridade": 2,
     "prontidao": 2,
     "oficios-gerais": 2,
-    "sobrevivencia": 2
+    "sobrevivencia": 2,
+    "sociabilidade": 0
   },
-  "skills2": {
+  "habilidadesSec": {
     "intimidacao": 2,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "arremesso",
-      "foco": "rocha",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "arremesso": [
+      {
+        "foco": "rocha",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pancada descomunal",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "punho",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Rocha arremessada",
-      "atrib": "destreza",
-      "pericia": "arremesso",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "mao",
+      "habilidade": "arremesso",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Arremesso de rocha",
-      "descricao": "Rocha arremessada: Ativação: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: até 36 m; acima de 12 m, −2 na jogada. Área: um alvo. Efeito: a rocha derruba o alvo Médio ou menor que ela fere; contra uma parede fraca, uma cerca ou um telheiro, derruba a estrutura pequena (site, Força ciclópica). Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Rocha arremessada",
+      "ativacao": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)",
+      "duracao": "instantânea",
+      "alcance": "até 36 m; acima de 12 m, −2 na jogada",
+      "area": "um alvo",
+      "efeito": "a rocha derruba o alvo Médio ou menor que ela fere; contra uma parede fraca, uma cerca ou um telheiro, derruba a estrutura pequena (site, Força ciclópica)",
+      "dano": "2d6 + Força + Centelha, Impacto",
+      "resistencia": "corpo, contra a jogada, só para não cair; o dano vem inteiro",
+      "limiteDeUso": "enquanto houver rocha por perto"
     },
     {
       "nome": "Lampejo de premonição",
-      "descricao": "Ativação: um golpe vai acertá-lo; gasta 2 de Energia. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Efeito: pressente o golpe certeiro e o evita por completo. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "um golpe vai acertá-lo; gasta 2 de Energia (o site diz que gasta Centelha; no livro, o que se gasta é a Energia, `centelha.md`)",
+      "duracao": "instantânea",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "pressente o golpe certeiro e o evita por completo",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Olho único",
-      "descricao": "Ativação: nenhuma; sempre. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: o campo de visão é estreito: quem o flanqueia ou o ataca de surpresa soma +2 a mais na jogada de ataque. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "o campo de visão é estreito: quem o flanqueia ou o ataca de surpresa soma +2 a mais na jogada de ataque",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "agarrar",
-      "descricao": "Pancada descomunal: Agarrar.",
-      "classe": "livro"
-    },
-    {
-      "nome": "dono da toca",
-      "descricao": "recebe o estranho com hostilidade; atira rochedos de longe, esmaga de perto e evita, no último instante, o golpe que vinha certo.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão: a de um olho só, de campo estreito (Olho único). · audição: a de um humano."
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Pancada descomunal",
+      "regra": "agarrar"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "dono da toca",
+      "formas": "todas",
+      "texto": "recebe o estranho com hostilidade; atira rochedos de longe, esmaga de perto e evita, no último instante, o golpe que vinha certo."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "a de um olho só, de campo estreito (Olho único)",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição",
+      "descricao": "a de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "humanoide, instintiva e desconfiada",
+    "tracos": "gigante de 3,2 m com um único olho no meio da testa, couro grosso e roupa de pele de rebanho"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": true,
+    "tracao": true
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "diurno",
+    "dieta": "onívoro",
+    "caca": "pastoreia rebanhos ou caça sozinho",
+    "dianteDeGente": "hostil com qualquer estranho que chega perto da toca"
+  },
+  "ecologia": {
+    "terreno": [
+      "montanha"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Gigante solitário de um olho só, que vive em cavernas isoladas e ruínas esquecidas. Atira rochedos, esmaga com os punhos e, às vezes, pressente o golpe que vinha certo e o evita. O olho único deixa o flanco aberto.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Solitário e desconfiado, vive por instinto e reage com hostilidade a qualquer estranho que se aproxime de sua toca. Social: solitário."
+      "texto": "Solitário e desconfiado, vive por instinto e reage com hostilidade a qualquer estranho que se aproxime de sua toca."
     },
     {
       "titulo": "Hábitos",
@@ -144,77 +222,36 @@
     {
       "titulo": "Aptidões",
       "texto": "montaria não · carga sim · tração sim"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande, lento (Esquiva 4, Bloqueio 8). Pancada e rochedo de dano médio 17; o rochedo derruba quem é do tamanho de um homem. Uma vez por cena, por 2 de Energia, evita um golpe que o acertaria. Quem o flanqueia ganha +2 a mais. 54 PV, Impacto 7, Corte e Perfuração 1."
     }
   ],
-  "ecologia": {
-    "tipo": "Giant",
-    "terreno": [
-      "Mountain"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/ciclope_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Ofícios 2, Prontidão 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Ciclope",
-    "cr": "5",
-    "tipo": "humanoide Grande (gigante)",
-    "tamanho": "grande",
-    "valores": {
-      "for": 25,
-      "des": 8,
-      "con": 18,
-      "int": 9,
-      "sab": 12,
-      "car": 9
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Arremesso de rocha",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Ofícios 2",
-      "Prontidão 2"
-    ],
-    "nota": "Lampejo de premonição (Su): Centelha 1.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Lampejo de premonição",
+      "motivo": "números sugeridos pela ficha (D-197); as duas linhas do site numa só; o custo em Energia, e não em Centelha"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 54,
-    "esquiva": 4,
-    "bloqueio": 8,
-    "defesa": 8,
-    "defesaMental": 12,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 7,
-      "corte": 1,
-      "perfuracao": 1
+    {
+      "campo": "habilidadesEspeciais.Olho único",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 2,
-    "pesoErguido": 1260.89,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça: o \"couro grosso\" do site, como o do gigante da colina (2) . O nível fica fora da Absorção (decisoes-autor §16); 2, couro grosso, como o gigante da colina"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "site (pastoreia e caça)"
     }
-  },
-  "notasObservacao": [
-    "`massa`: 448 kg pelo cubo da altura do site, como o gigante da colina; o site dizia 400 kg (D-187) **[conta]**",
-    "`prontidao`: 2, a da nota do site; o campo dizia 1 **[provisório]**",
-    "`couraca`: 2, couro grosso, como o gigante da colina **[provisório]**",
-    "`lampejo de premonição`: as duas linhas do site numa só; o custo em Energia, e não em Centelha **[provisório]**",
-    "`arremesso de rocha`, `lampejo de premonição`, `olho único`: números sugeridos pela ficha (D-197)"
   ]
 }

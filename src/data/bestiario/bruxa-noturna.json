@@ -1,96 +1,234 @@
 {
-  "ordem": 265,
   "id": "bruxa-noturna",
   "idAntigo": "mon-night-hag",
   "nome": "Bruxa Noturna",
   "nomeIngles": "Hag, Night",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Exterior",
+  "categoria": "corruptor",
   "papel": "chefe",
-  "conceito": "exterior Médio",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
-  "tags": [
-    "exterior",
-    "centelha"
-  ],
-  "imagem": "bestiario/bruxa-noturna_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "entre 1,68 m e 2,13 m de altura",
-    "peso": "70 kg"
-  },
-  "locomocao": {
-    "terra": 3
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
+  "formaPrincipal": {
+    "id": "verdadeira",
+    "nome": "forma verdadeira"
+  },
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.9,
+    "largura": 0.41,
+    "profundidade": 0.21,
+    "comprimento": null,
+    "massa": 70,
+    "area": 0.69,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 6,
     "destreza": 5,
     "vigor": 7,
-    "influencia": 5,
-    "perspicacia": 5,
-    "compostura": 5,
     "percepcao": 5,
     "inteligencia": 5,
-    "raciocinio": 5
+    "raciocinio": 5,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 1,
     "esquiva": 1,
+    "atletismo": 2,
+    "furtividade": 2,
+    "integridade": 5,
     "prontidao": 2,
-    "integridade": 5
+    "resistencia": 4,
+    "empatia": 3,
+    "sociabilidade": 0,
+    "manha": 4,
+    "ocultismo": 5
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "intimidacao": 3,
+    "musculatura": 0
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 6
+    "temperanca": 1
   },
-  "willpower": 10,
+  "vontade": 10,
   "aparencia": 0,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
-    }
-  ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
-    {
-      "nome": "Visão no escuro",
-      "descricao": "Enxerga perfeitamente na escuridão total."
+      "nome": "Garras",
+      "parte": "maos-de-garra",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
     },
     {
-      "nome": "Pele curtida e mente imune",
-      "descricao": "Sua carne absorve golpes comuns, exceto ferro frio e armas mágicas, e ela é imune a encantos, medo, sono, fogo e frio, além de resistir bem à maioria das magias."
+      "nome": "Mordida",
+      "parte": "dentes-negros",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    }
+  ],
+  "habilidadesEspeciais": [
+    {
+      "nome": "Garras",
+      "formas": [
+        "verdadeira"
+      ],
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "empunhadura-dupla"
+    },
+    {
+      "nome": "garras e mordida juntas",
+      "formas": [
+        "verdadeira"
+      ],
+      "classe": "sem regra ainda",
+      "efeito": "na mesma ação, além das duas garras, morde"
     },
     {
       "nome": "Mordida doentia",
-      "descricao": "Sua mordida transmite uma febre que drena Vigor da vítima dia após dia até ela ser curada ou sucumbir."
+      "formas": [
+        "verdadeira"
+      ],
+      "classe": "regra da ficha",
+      "ataque": "Mordida",
+      "ativacao": "a Mordida que fere",
+      "duracao": "até a cura",
+      "alcance": "o da mordida",
+      "area": "um alvo",
+      "efeito": "quem falha pega a febre demoníaca e fica Doente; a cada dia sem cura, perde um nível de Vigor, até ser curado ou sucumbir",
+      "dano": "o do golpe",
+      "resistencia": "corpo, Vigor + Resistência contra a jogada da mordida, de novo a cada dia; quem passa só leva o dano",
+      "limiteDeUso": "um por golpe"
     },
     {
-      "nome": "Assombra sonhos",
-      "descricao": "Usando sua pedra do coração, torna-se etérea e cavalga sobre um alvo adormecido a noite inteira, drenando um pouco de sua vitalidade a cada despertar."
+      "nome": "Mudar de forma",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até ela desfazer",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "assume a forma de qualquer humanoide (o disfarce, em Variantes); a mente e os números ficam os dela",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
     },
     {
-      "nome": "Rosto de empréstimo",
-      "descricao": "Pode assumir a forma de qualquer humanoide à vontade."
+      "nome": "ferro frio e arma mágica ferem inteiros",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a resistência da pele não vale contra eles"
     },
     {
-      "nome": "Pedra do coração",
-      "descricao": "Carrega uma gema mágica que cura suas doenças, reforça sua resistência a provações, e sem ela perde o poder de virar fantasma ou aprisionar almas."
+      "nome": "mente imune",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "encanto, medo e sono não a pegam"
+    },
+    {
+      "nome": "resistência a magia",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a Arte hostil enfrenta uma resistência natural antes de fazer efeito"
+    },
+    {
+      "nome": "assombrar sonhos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "com a pedra do coração, fica etérea, senta no peito de quem dorme e o cavalga a noite inteira, tirando um pouco da vitalidade dele a cada noite, até a morte; a alma de quem morre assim vai para uma gema escura"
+    },
+    {
+      "nome": "pedra do coração",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a gema que ela carrega cura as doenças dela e a fortalece contra provações; sem ela, perde o poder de ficar etérea e de prender almas"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "corretora de almas",
+      "formas": "todas",
+      "texto": "evita a luta aberta; disfarçada, escolhe a vítima no momento mais fraco, morde para deixar a febre e volta à noite pelos sonhos."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "passa por qualquer humanoide, no disfarce",
+    "mente": "inteligente, paciente, cruel",
+    "tracos": "velha alta e magra de 1,9 m, pele roxa e manchada, dentes negros, cabelo como palha seca, garras longas e uma gema escura pendurada no pescoço"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinha, às vezes num coven; com cães yeth como batedores",
+    "atividade": "noturna",
+    "dieta": "sofrimento e almas; come carne",
+    "caca": "escolhe vítimas nos momentos de maior fraqueza",
+    "dianteDeGente": "engana disfarçada; atormenta pelos sonhos"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Caça mortais nos momentos de maior fraqueza e prolonga a agonia noite após noite, cavalgando os sonhos deles, até prender a alma torturada numa gema escura para os mercados sombrios de almas. Assume a forma de qualquer humanoide à vontade.",
   "lore": [
     {
       "titulo": "Corretora de almas",
@@ -101,38 +239,74 @@
       "texto": "Sua aparência varia muito de uma para outra, mas todas compartilham o mesmo apetite por sofrimento alheio e mercados sombrios de almas."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/bruxa-noturna_criatura.webp"
+  ],
+  "formas": [
+    {
+      "id": "disfarce",
+      "nome": "disfarce",
+      "fisiologia": {
+        "camuflagem": "assume a aparência de qualquer humanoide, com a altura e a massa visuais do disfarce"
+      }
+    }
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [
+      {
+        "tipo": "corte",
+        "formas": "todas"
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      },
+      {
+        "tipo": "impacto",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Night Hag",
-    "cr": "9",
-    "tipo": "exterior Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 21,
-      "des": 19,
-      "con": 22,
-      "int": 18,
-      "sab": 16,
-      "car": 17
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Mordida doentia",
+      "motivo": "números sugeridos pela ficha (D-197); números da ficha (D-197); o Doente é a condição do livro, e a doença vai só pelo nome"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Mudar de forma",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 0: pele de gente, como a bruxa verde. O nível fica fora da Absorção (decisoes-autor §16). A \"Pele curtida\" do site (absorve golpes comuns) e a imunidade a fogo e frio, pela linha Elementos, como a pele do súcubo"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "formas.disfarce",
+      "motivo": "\"Pode assumir a forma de qualquer humanoide à vontade\" (site); a mente e os números ficam os dela, como no disfarce da bruxa verde e do doppelganger  A forma mantém os números da bruxa; o disfarce corporal é visual."
+    }
+  ]
 }

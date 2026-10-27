@@ -1,35 +1,24 @@
 {
-  "ordem": 1,
   "id": "campones-assustado",
   "idAntigo": "camponis-assustado",
   "nome": "Camponês Assustado",
   "nomeIngles": "Frightened Peasant",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humano",
+  "categoria": "humanoide",
   "papel": "capanga",
-  "conceito": "civil sem treino",
-  "descricao": "Lavrador sem treino que não escolheu lutar: foi arrastado por um senhor, um bando ou a fome. Segura o cajado tremendo, grita mais do que golpeia e corre ao primeiro sangue.",
-  "tags": [
-    "humano"
-  ],
-  "imagem": "bestiario/campones-assustado_pdm.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,65 m de altura",
-    "peso": "65 kg",
-    "largura": 0.41,
-    "altura": 1.65
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.65,
+    "largura": 0.41,
+    "profundidade": 0.21,
+    "comprimento": null,
+    "massa": 65,
+    "area": 0.61
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 2,
     "destreza": 2,
     "vigor": 2,
@@ -40,9 +29,11 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 1,
     "briga": 1,
+    "bloqueio": 0,
+    "esquiva": 0,
     "atletismo": 1,
     "prontidao": 1,
     "integridade": 4,
@@ -51,73 +42,122 @@
     "sobrevivencia": 1,
     "sociabilidade": 1
   },
-  "especialidades": [
-    {
-      "habilidade": "integridade",
-      "foco": "contra magia",
-      "valor": 2,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 0
+  },
+  "especialidades": {
+    "integridade": [
+      {
+        "foco": "contra magia",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 1,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 1
+    "temperanca": 2
   },
-  "willpower": 4,
+  "vontade": 4,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:bordao"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Bordão",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 2,
-      "tipo": "impacto",
-      "acerto": 1,
-      "ticks": 6,
-      "classe": "haste"
+      "arma": "bordao",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Horda",
-      "descricao": "a Regra de Horda. O camponês é capanga Comum: na horda, 5 de PV por membro, sem o piso de 25, e a Defesa de um capanga −2. Cada ataque do esquadrão rola o pool de um camponês + Magnitude d6 no acerto e no dano.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "horda",
+      "texto": "(`combate.md`). O camponês é capanga Comum: na horda, 5 de PV por membro, sem o piso de 25, e a Defesa de um capanga −2. Cada ataque do esquadrão rola o pool de um camponês + Magnitude d6 no acerto e no dano"
     },
     {
       "nome": "Sem treino",
-      "descricao": "as Habilidades de luta em 0 e 1 já dão o acerto e as Defesas mínimas (site: \"quase sempre erra\").",
-      "classe": "livro"
-    },
-    {
-      "nome": "Pavor de sangue",
-      "descricao": "foge do combate assim que sofre o primeiro ferimento, ou quando vê sangue, seu ou alheio (site). Na horda, o Mestre pode tirar os que fogem junto com as baixas.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "grita mais do que golpeia",
-      "descricao": "segura o cajado tremendo, fica atrás dos outros, golpeia quando alguém cai perto e corre ao primeiro sangue.",
-      "classe": "como luta"
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "as Habilidades de luta em 0 e 1 já dão o acerto e as Defesas mínimas"
     },
     {
       "nome": "Sem inimizades naturais",
-      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão, audição, olfato: humanos."
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "Pavor de sangue",
+      "formas": "todas",
+      "texto": "foge do combate assim que sofre o primeiro ferimento, ou quando vê sangue, seu ou alheio. Na horda, o Mestre pode tirar os que fogem junto com as baixas."
+    },
+    {
+      "nome": "grita mais do que golpeia",
+      "formas": "todas",
+      "texto": "segura o cajado tremendo, fica atrás dos outros, golpeia quando alguém cai perto e corre ao primeiro sangue."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão, audição, olfato",
+      "descricao": "humanos",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humana; teme tudo que vem de fora da aldeia",
+    "tracos": "roupa de roça remendada, mãos calejadas, cajado ou foice na mão, olhos arregalados"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em grupo, com outros da aldeia",
+    "atividade": "diurno",
+    "dieta": "onívoro",
+    "caca": "não se aplica",
+    "dianteDeGente": "teme soldados, bandidos, feiticeiros e monstros; luta só se arrastado"
+  },
+  "ecologia": {
+    "terreno": [
+      "planície",
+      "urbano"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Lavrador sem treino que não escolheu lutar: foi arrastado por um senhor, um bando ou a fome. Segura o cajado tremendo, grita mais do que golpeia e corre ao primeiro sangue.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Não escolheu lutar: foi arrastado por um senhor, um bando ou o desespero da fome. Segura a foice ou o cajado tremendo, grita mais do que golpeia, e corre ao primeiro sangue, seu ou alheio. Social: em grupo, com outros da aldeia."
+      "texto": "Não escolheu lutar: foi arrastado por um senhor, um bando ou o desespero da fome. Segura a foice ou o cajado tremendo, grita mais do que golpeia, e corre ao primeiro sangue, seu ou alheio."
     },
     {
       "titulo": "Hábitos",
@@ -126,60 +166,24 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "É a face mais comum do povo de Uldun: Centelha zero, sem treino, criado sob o tabu da Supressão a temer qualquer coisa que cheire a magia. Quando pega em armas, é sinal de que algo já deu muito errado na região."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Humano Médio, 31 PV, Impacto 2. Esquiva 4, Bloqueio 4 (6 com o bordão). Bordão de dano médio 7,5. Foge ao primeiro ferimento. Em grupo, use a Horda: 5 PV por camponês, e o esquadrão rola + Magnitude d6."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Plains",
-      "Urban"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/campones-assustado_pdm.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Testa de ferro frágil. Em grupo, use a regra de Horda.",
-  "pendente": false,
-  "fonte": {
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
+  "revisao": [
+    {
+      "campo": "habilidades.armas",
+      "motivo": "O cajado, sem treino (\"Sem treino\", site). O site gravava o ataque com Briga 1; a arma pede Armas (manual 3.5)"
     },
-    "cr": "1/2",
-    "crConf": "estimado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 31,
-    "esquiva": 4,
-    "bloqueio": 4,
-    "defesa": 6,
-    "defesaMental": 10,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 2,
-      "corte": 0,
-      "perfuracao": 0
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 96.38,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
-    },
-    "bloqueioArma": 2
-  },
-  "notasObservacao": [
-    "`equipamento`: o bordão do livro no lugar do forcado do site **[provisório]**",
-    "`armas`: 1; o site gravava o ataque com Briga **[provisório]**",
-    "`bravura`: 1; o site tinha 3 **[provisório]**"
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    }
   ]
 }

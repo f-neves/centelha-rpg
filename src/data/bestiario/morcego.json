@@ -1,38 +1,27 @@
 {
-  "ordem": 208,
   "id": "morcego",
   "idAntigo": "mon-bat",
   "nome": "Morcego (morcego-vampiro)",
   "nomeIngles": "Common vampire bat",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Minúsculo",
-  "descricao": "Surtos de mordidas e de raiva em comunidades da Amazônia e dos Andes.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/morcego_criatura.webp",
-  "porte": "Minúsculo",
-  "dimensoes": {
-    "medida": "0,08 m de comprimento, 0,05 m de altura",
-    "peso": "0,035 kg",
-    "comprimento": 0.08,
-    "largura": 0.035,
-    "altura": 0.05,
-    "envergadura": 0.36
-  },
-  "locomocao": {
-    "voo": 5,
-    "terra": 1
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 1,
-    "arranque": 1,
-    "corrida": 1
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "voador",
+    "apoio": "outro",
+    "altura": 0.05,
+    "largura": 0.035,
+    "profundidade": null,
+    "comprimento": 0.08,
+    "caudaGrossa": false,
+    "envergadura": 0.36,
+    "massa": 0.035,
+    "area": 0.02,
+    "posturaDoTamanho": "de baixo, asas abertas"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 0,
     "destreza": 3,
     "vigor": 2,
@@ -43,8 +32,9 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 1,
+    "bloqueio": 0,
     "esquiva": 3,
     "atletismo": 2,
     "furtividade": 3,
@@ -54,78 +44,139 @@
     "empatia": 1,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
     "escalada": 1,
-    "voo": 2
+    "natacao": 0,
+    "voo": 2,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "ecolocalização",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "calor",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "sobre quem dorme",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "ecolocalização",
+        "valor": 3,
+        "origem": "natural"
+      },
+      {
+        "foco": "calor",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "furtividade": [
+      {
+        "foco": "sobre quem dorme",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 1,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 1
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 5,
+  "deslocamento": {
+    "terra": {
+      "batalha": 1,
+      "arranque": 1,
+      "corrida": 1
+    },
+    "voo": {
+      "batalha": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida (incisivos)",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 0,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
-    {
-      "nome": "morder quem dorme",
-      "descricao": "morde sem acordar quem dorme (Furtividade, com a Especialidade sobre quem dorme, contra a Prontidão de quem dorme).",
-      "classe": "como luta"
-    },
+  "habilidadesEspeciais": [
     {
       "nome": "sangramento",
-      "descricao": "Mordida: a ferida sangra por muito tempo, porque a saliva não deixa coagular.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Mordida (incisivos)",
+      "efeito": "a ferida sangra por muito tempo, porque a saliva não deixa coagular"
+    }
+  ],
+  "comoLuta": [
+    {
+      "nome": "morder quem dorme",
+      "formas": "todas",
+      "texto": "morde sem acordar quem dorme (Furtividade, com a Especialidade sobre quem dorme, contra a Prontidão de quem dorme)."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "ecolocalização",
+      "descricao": "Prontidão (ecolocalização) +3 (Especialidade natural, era +4). Acha uma tira de metal de 1 cm a 50 cm (Schmidt e Schmidt 2007, via Wikipédia). Alcance: ; vale no escuro",
+      "formas": "todas"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "ecolocalização: Prontidão (ecolocalização) +3. Acha uma tira de metal de 1 cm a 50 cm.; vale no escuro. · calor (infravermelho): Prontidão (calor) +3. Fossetas da folha nasal acima de 29 °C; TRPV1 a 30,5 °C. · visão e olfato: sem número. Texto."
-    }
-  ],
-  "doencas": [
+      "nome": "calor (infravermelho)",
+      "descricao": "Prontidão (calor) +3 (Especialidade natural, era +4). Fossetas da folha nasal acima de 29 °C (Kürten e Schmidt 1982); TRPV1 a 30,5 °C (Gracheva et al. 2011). Alcance:",
+      "formas": "todas"
+    },
     {
-      "nome": "Variante morcego raivoso",
-      "texto": "Raiva · Virulência 14 · dia · só no animal raivoso, ao critério do Mestre, e nunca no comum · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
+      "nome": "visão e olfato",
+      "descricao": "sem número. Texto",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "nenhuma; vive no escuro",
+    "mente": "animal",
+    "tracos": "decola do chão com pico de força de 9,5 vezes o peso, pelos braços (Schutt et al. 1997); começa a urinar menos de 2 minutos depois de começar a comer (via Wikipédia)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "colônia",
+    "atividade": "noturno",
+    "dieta": "hematófago",
+    "caca": "pousa perto, anda até a presa e morde",
+    "dianteDeGente": "morde quem dorme, nos dedos dos pés, nariz e orelhas"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo",
+      "floresta"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "Surtos de mordidas e de raiva em comunidades da Amazônia e dos Andes.",
   "lore": [
     {
       "titulo": "Sombra alada",
@@ -136,95 +187,26 @@
       "texto": "Vive em colônias enormes, penduradas de cabeça para baixo em tetos de cavernas e ruínas esquecidas."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: colônia."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Variante morcego raivoso: Raiva · Virulência 14 · dia · só no animal raivoso, ao critério do Mestre, e nunca no comum · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Minúsculo contra um humano Médio, ele ganha +9 no acerto corpo a corpo; quem atira nele leva −9. O dano é 1,5, e os PV, 1: um golpe que acerta o mata. O morcego-vampiro não mata ninguém pela mordida: o perigo é chegar no escuro, morder o pé de quem dorme e deixar a raiva. Qualquer atacante de Força 4 ou mais tira o Bloqueio dele. Corre no chão a 1 m por Tick e voa a 10."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Underground",
-      "Forest"
-    ],
-    "clima": [
-      "Temperate",
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/morcego_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Bat",
-    "cr": "1/8",
-    "tipo": "animal Minúsculo",
-    "tamanho": "minusculo",
-    "valores": {
-      "for": 1,
-      "des": 15,
-      "con": 6,
-      "int": 2,
-      "sab": 14,
-      "car": 5
+  "revisao": [
+    {
+      "campo": "habilidadesSec.voo",
+      "motivo": "Etapa 2 (20/10/2026): Decisão de 20/10/2026: a Habilidade secundária de Voo vale nas jogadas (manobrar no ar), e a velocidade continua congelada. Pela pesquisa: voa todas as noites até mais de 5 km do abrigo (GPS no Peru, 2026), acha a presa no escuro pela ecolocalização e decola do chão com 20 a 30% a mais do próprio peso em sangue (Schutt e colegas 1997). Sem medida de manobra no ar, por isso 2, e não mais.  Antes: D-136. Com 0 o cruzeiro dá 10,4 m/s; o medido é bem menor (ver a velocidade). A velocidade está congelada (decisão 23)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte",
-      "nota": "voo 40; em terra o morcego se arrasta 5 ft"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 1,
-    "esquiva": 12,
-    "bloqueio": 6,
-    "defesa": 12,
-    "defesaMental": 6,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 2,
-      "corte": 2,
-      "perfuracao": 2
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 0.03,
-    "deslocamento": {
-      "terra": {
-        "batalha": 1,
-        "arranque": 1,
-        "corrida": 1
-      },
-      "voo": {
-        "batalha": 5,
-        "cruzeiro": 10
-      }
+    {
+      "campo": "aparencia",
+      "motivo": "D-107: um abaixo do comum pela cara de folha nasal e pelos dentes à mostra; a repulsa humana ao morcego não entra, a cara sim."
     }
-  },
-  "notasObservacao": [
-    "`anatomia`: morcego na anatomia ave, provisória (D-175)",
-    "`especie`: o vampiro-comum, e não um insetívoro, pela raiva, pela mordida em gente e pela corrida medida; o insetívoro fica como variante (D-174)",
-    "`forca`: 0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): a mordida corta um pedaço raso de pele e não segura nada. O feito de decolar com 20 a 30% da massa a mais em sangue (7 a 10 g, via Wikipédia, Schutt et al. 1997) fica perto do peso erguido novo (0,03 kg) (D-162)",
-    "`pv`: 1 (em vigor na Etapa 2, 20/10/2026); antes: 7 pela decisão 21 (5 + Vigor), contra 11 pela outra proposta do autor. Caiu de 17 para 7 (D-174)",
-    "`pesoErguido`: 0,03 kg pela fórmula nova (decisões 14 e 16), provisório; com Musculatura 0 e Força 0, o E fica 1,5 abaixo do de referência (D-174)",
-    "`resistencia`: 2, provisória. O levantamento o marca como frágil e candidato a 1 (morre em menos de três dias sem comer); fica no normal da espécie porque o jejum curto é o normal do hematófago, e a Resistência compara dentro da espécie (D-174)",
-    "`furtividade`: 3, a de hoje; o levantamento o marca como candidato a 4. A Especialidade (sobre quem dorme) 1 já cobre o caso de borda (D-174)",
-    "`empatia`: 1, nova, provisória: a partilha de sangue com quem voltou sem comer (D-174)",
-    "`escalada`: 1, nova, provisória: sem número de escalada; era texto (D-174)",
-    "`especialidadesNaturais`: eco e calor desceram de +4 para +3 (decisão 3); o humano não tem nenhum dos dois sentidos",
-    "fonte: a altura (0,05 m) e a largura (0,035 m) continuam só por estimativa; a envergadura de 0,36 m fica pela ADW (350 a 400 mm) contra os 18 cm da Wikipédia, talvez uma asa só, não conferido (D-174)",
-    "`doenca`: a raiva vai como texto, sem id; não há catálogo de doenças (D-112)",
-    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "jornada (nota de pesquisa, não é regra): forrageia a 5 a 8 km do abrigo (Nowak 1991, via Wikipédia); no Peru, às vezes mais de 5 km, a maior parte do tempo abaixo de 5 km (GPS, 2026) [medido]; voo médio de 13,6 km/h num corredor que simula a passagem da caverna (Sánchez-Hernández et al. 2006) [medido]; tempo de voo por noite [sem dado]."
   ]
 }

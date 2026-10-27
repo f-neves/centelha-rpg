@@ -1,93 +1,206 @@
 {
-  "ordem": 308,
   "id": "cao-yeth",
   "idAntigo": "mon-yeth-hound",
   "nome": "Cão Yeth",
   "nomeIngles": "Yeth Hound",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Exterior",
+  "categoria": "corruptor",
   "papel": "soldado",
-  "conceito": "exterior Médio",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
-  "tags": [
-    "exterior",
-    "centelha"
-  ],
-  "imagem": "bestiario/cao-yeth_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,2 m de altura na cernelha, com asas membranosas como as de um morcego",
-    "peso": "180 kg"
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 6
-  },
+  "ameaca": 3,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas; voador",
+    "apoio": "quadrupede",
+    "altura": 1.2,
+    "largura": 0.5,
+    "profundidade": null,
+    "comprimento": 2.67,
+    "comprimentoSemCauda": 1.7,
+    "caudaGrossa": false,
+    "envergadura": 3.4,
+    "massa": 180,
+    "area": 0.82,
+    "posturaDoTamanho": "silhueta vista de lado, de pé",
+    "segundoTamanho": {
+      "area": 2.8,
+      "posturaDoTamanho": "de baixo, asas abertas, em voo"
+    }
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 5,
     "destreza": 4,
     "vigor": 4,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 3,
     "percepcao": 4,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 3,
+    "furtividade": 2,
+    "integridade": 3,
     "prontidao": 2,
-    "integridade": 3
+    "resistencia": 3,
+    "sociabilidade": 0,
+    "sobrevivencia": 3
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "intimidacao": 3,
+    "voo": 3,
+    "musculatura": 2
+  },
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 5
+    "temperanca": 1
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 1,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "voo": {
+      "batalha": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Mordida",
+      "parte": "mandibula",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 5
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
-    {
-      "nome": "Sentidos noturnos",
-      "descricao": "Enxerga no escuro e fareja presas com precisão, jamais perdendo um rastro durante a caçada."
-    },
-    {
-      "nome": "Pele resistente a lâminas comuns",
-      "descricao": "Reduz muito o dano de armas convencionais; apenas prata consegue feri-lo com facilidade."
-    },
-    {
-      "nome": "Voo silencioso",
-      "descricao": "Cruza o céu noturno com asas invisíveis, podendo pousar ou alçar voo a qualquer instante sem esforço."
-    },
+  "habilidadesEspeciais": [
     {
       "nome": "Uivo apavorante",
-      "descricao": "Seu latido espalha terror numa grande área; quem falha um teste de Compostura fica em pânico por vários instantes, uma vez por cena para cada vítima."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6, um uivo",
+      "duracao": "18 Ticks",
+      "alcance": "quem ouve, até 90 m",
+      "area": "esfera de 90 m em volta dele",
+      "efeito": "quem falha fica Em pânico",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Intimidação dele; quem passa não é pego por esse uivo de novo",
+      "limiteDeUso": "uma vez por cena para cada vítima"
     },
     {
       "nome": "Mordida sinistra",
-      "descricao": "Seu ataque conta como corrompido para atravessar proteções contra o mal e pode deixar um alvo abalado ou, se já apavorado, paralisado de medo por um instante."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Mordida",
+      "ativacao": "a Mordida que fere",
+      "duracao": "até o fim da cena",
+      "alcance": "o da mordida",
+      "area": "um alvo",
+      "efeito": "quem falha fica Abalado",
+      "dano": "o do golpe",
+      "resistencia": "mente, contra a jogada da mordida; quem passa só leva o dano",
+      "limiteDeUso": "um por golpe"
+    },
+    {
+      "nome": "paralisado de medo",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quem já está apavorado e leva a mordida fica paralisado de medo por um instante"
+    },
+    {
+      "nome": "mordida corrompida",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a mordida atravessa as proteções contra o mal"
+    },
+    {
+      "nome": "prata fere inteira",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a resistência da pele não vale contra arma de prata"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "caçador da noite",
+      "formas": "todas",
+      "texto": "persegue a presa pelo céu, uiva para a fazer fugir e desce para morder quem foge; evita a luz do sol acima de tudo."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "faro",
+      "descricao": "de cão; Prontidão (faro) +3; não perde o rastro",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "no céu noturno",
+    "mente": "inteligência de cão, cruel",
+    "tracos": "cão escuro de 1,2 m de cernelha, com asas de morcego membranosas e olhos vermelhos"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "matilha, às vezes ao lado de bruxas noturnas e caçadores cruéis",
+    "atividade": "noturno; evita a luz do sol",
+    "dieta": "carnívoro",
+    "caca": "persegue presas inteligentes pelo céu por quilômetros",
+    "dianteDeGente": "caça; odeia outros caninos"
+  },
+  "ecologia": {
+    "terreno": [
+      "céu",
+      "qualquer"
+    ],
+    "clima": [
+      "temperado",
+      "extraplanar"
+    ]
+  },
+  "descricao": "Cão alado de asas de morcego que persegue presas inteligentes por quilômetros pelo céu noturno e foge da luz do sol acima de tudo. O uivo espalha terror, e ele costuma andar ao lado de bruxas noturnas como batedor alado.",
   "lore": [
     {
       "titulo": "Caçadores da noite",
@@ -102,40 +215,56 @@
       "texto": "Odeiam outras criaturas caninas, como worgs e barghests, e os atacam sempre que têm vantagem numérica."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Sky",
-      "Any"
+  "imagens": [
+    "bestiario/cao-yeth_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Temperate",
-      "Extraplanar"
-    ]
+    "resistencias": [
+      {
+        "tipo": "corte",
+        "formas": "todas"
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      },
+      {
+        "tipo": "impacto",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Yeth Hound",
-    "cr": "3",
-    "tipo": "exterior Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 17,
-      "des": 15,
-      "con": 15,
-      "int": 6,
-      "sab": 14,
-      "car": 10
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Uivo apavorante",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Mordida sinistra",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3
+    {
+      "campo": "corpo.envergadura",
+      "motivo": "Duas vezes o corpo sem a cauda: asa de morcego, larga e curta. O site não dá a envergadura; o cão voa pela Centelha, e não pela asa"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: couro de cão, um acima do lobo (0) pela pele de exterior . O nível fica fora da Absorção (decisoes-autor §16). A \"Pele resistente a lâminas comuns\" do site, pela linha Elementos, como a pele do súcubo e do kyton"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    }
+  ]
 }

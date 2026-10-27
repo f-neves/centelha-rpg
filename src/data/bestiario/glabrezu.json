@@ -1,107 +1,292 @@
 {
-  "ordem": 91,
   "id": "glabrezu",
   "idAntigo": "mon-glabrezu",
   "nome": "Glabrezu",
   "nomeIngles": "Demon, Glabrezu",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Demônio",
+  "categoria": "corruptor",
   "papel": "chefe",
-  "conceito": "exterior Enorme (demônio)",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
-  "tags": [
-    "demonio",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/glabrezu_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "3,7 m de altura",
-    "peso": "1,8 t"
-  },
-  "locomocao": {
-    "terra": 4
-  },
+  "ameaca": 5,
   "centelha": 6,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, curvado",
+    "apoio": "bipede",
+    "altura": 3.7,
+    "largura": 1.48,
+    "profundidade": 0.66,
+    "comprimento": null,
+    "massa": 1556,
+    "area": 4.87,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 4,
+  "atributos": {
     "forca": 12,
     "destreza": 4,
     "vigor": 10,
-    "influencia": 6,
-    "perspicacia": 5,
-    "compostura": 6,
     "percepcao": 6,
     "inteligencia": 5,
-    "raciocinio": 5
+    "raciocinio": 5,
+    "influencia": 6,
+    "perspicacia": 5,
+    "compostura": 6
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 2,
     "esquiva": 1,
-    "prontidao": 3,
-    "integridade": 6
+    "atletismo": 3,
+    "furtividade": 0,
+    "integridade": 6,
+    "prontidao": 4,
+    "resistencia": 5,
+    "empatia": 4,
+    "persuasao": 4,
+    "manha": 4,
+    "sociabilidade": 3,
+    "ocultismo": 4
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "negociacao": 5,
+    "musculatura": 4
+  },
+  "especialidades": {
+    "persuasao": [
+      {
+        "foco": "pactos",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 6
+    "temperanca": 4
   },
-  "willpower": 11,
+  "vontade": 11,
   "aparencia": 0,
-  "arte": {
-    "fortuna": 6,
-    "forcas": 6,
-    "fascinacao": 5,
-    "protecao": 5
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    }
   },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 3,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Pinças",
+      "parte": "pinca",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 7
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Garras",
+      "parte": "mao-menor-de-garras",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
+    {
+      "nome": "Duas pinças",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Pinças",
+      "regra": "rajada",
+      "texto": "Até dois golpes por ação"
+    },
+    {
+      "nome": "Duas garras",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada",
+      "texto": "Até dois golpes por ação"
+    },
+    {
+      "nome": "pinças e garras juntas",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quatro golpes na mesma ação, duas pinças e duas garras; por enquanto, uma Rajada por ação"
+    },
+    {
+      "nome": "agarrar",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Pinças",
+      "regra": "agarrar"
+    },
     {
       "nome": "Desejo traiçoeiro",
-      "descricao": "feitiçaria, 1x por história; concede um pedido ao alvo com uma cláusula oculta que o prejudica depois"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fortuna",
+        "nivel": 6
+      },
+      "ativacao": "uma ação, a pedido de um mortal que aceita o trato",
+      "duracao": "até o pedido se cumprir",
+      "alcance": "quem fala com ele",
+      "area": "um alvo",
+      "efeito": "realiza o pedido ao pé da letra, com uma cláusula escondida que prejudica quem pediu depois",
+      "dano": "nenhum",
+      "resistencia": "nenhum; quem aceita, aceita o preço",
+      "limiteDeUso": "uma vez por história"
     },
     {
-      "nome": "Feitiços",
-      "descricao": "feitiçaria; lança Confusão, Imagem Espelhada e efeitos de área como conjurador experiente"
+      "nome": "Confusão",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 5
+      },
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "12 Ticks",
+      "alcance": "18 m, à vista",
+      "area": "um alvo",
+      "efeito": "embaralha a mente do alvo, que fica Confuso",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Ocultismo dele; quem passa fica imune até o fim da cena",
+      "limiteDeUso": "uma vez por cena para cada alvo"
     },
     {
-      "nome": "Visão verdadeira",
-      "descricao": "enxerga através de ilusões, disfarces e invisibilidade"
+      "nome": "Imagem espelhada",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "protecao",
+        "nivel": 5
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até o fim da cena, ou até as cópias acabarem",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "três cópias ilusórias dele confundem quem ataca; cada golpe que o acerta desfaz uma cópia em vez de feri-lo, até as três acabarem",
+      "dano": "nenhum",
+      "resistencia": "nenhum; quem tem visão verdadeira ignora as cópias",
+      "limiteDeUso": "uma vez por cena"
     },
     {
-      "nome": "Pinças e garras",
-      "descricao": "quatro ataques corpo a corpo na mesma ação (duas pinças esmagam, duas garras cortam)"
+      "nome": "feitiços de área",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "lança efeitos de área como conjurador experiente"
     },
     {
-      "nome": "Teleporte",
-      "descricao": "feitiçaria, 1x por cena; desloca-se com até 6 aliados por até 300m"
+      "nome": "teleporte",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "uma vez por cena, some e reaparece a até 300 m, levando até seis aliados"
     },
     {
-      "nome": "Sangue abissal",
-      "descricao": "imune a veneno e eletricidade; resistente a fogo e frio"
+      "nome": "Ver o invisível",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "visao-verdadeira",
+        "nivel": 4
+      }
     },
     {
-      "nome": "Telepatia",
-      "descricao": "comunica-se mentalmente com qualquer criatura em até 30m"
+      "nome": "visão verdadeira sempre ativa",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o glabrezu enxerga através de ilusão, disfarce e invisibilidade o tempo todo, sem esforço; a Técnica do livro é ativa e custa Energia"
+    },
+    {
+      "nome": "telepatia",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "fala com a mente de qualquer criatura a até 30 m, sem língua em comum"
+    },
+    {
+      "nome": "imune a veneno",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o veneno não pega no corpo de demônio"
+    },
+    {
+      "nome": "medonho",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quem vê o glabrezu pela primeira vez sente o pavor das pinças e da cara de cão; o corpo quer recuar, mesmo quando a voz dele é cortês"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "tentador",
+      "formas": "todas",
+      "texto": "conversa antes de lutar e oferece um trato; luta só quando precisa, confunde o mais perigoso, esmaga com as pinças e some pelo teleporte com os aliados quando a luta não vale o preço."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão verdadeira",
+      "descricao": "pela Técnica (Manobras)",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "inteligente, demoníaca, fria e lógica",
+    "tracos": "demônio de 3,7 m, cabeça de cão com chifres, dois braços grandes com pinças e dois menores com garras no peito; fala com cortesia fria"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho; conselheiro de outros demônios",
+    "atividade": "qualquer hora",
+    "dieta": "não precisa comer",
+    "caca": "tenta mortais desesperados com pactos",
+    "dianteDeGente": "negocia; luta só quando precisa"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Demônio de pinças e cara de cão que prefere negociar a lutar: aparece a quem está desesperado e oferece poder, riqueza ou saber em troca de um preço que corrói a alma. Cumpre cada barganha à risca, sempre na letra mais cruel possível.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -120,43 +305,65 @@
       "texto": "As ortodoxias de Calin usam sua lenda para justificar a Supressão: todo pacto mágico tentador, dizem os padres, tem um glabrezu sorrindo do outro lado, esperando a assinatura."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/glabrezu_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": [
+      {
+        "tipo": "raio",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "Habilidades notáveis: Ocultismo 4, Persuasão 4, Prontidão 4.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Glabrezu",
-    "cr": "13",
-    "tipo": "exterior Enorme (demônio)",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 33,
-      "des": 14,
-      "con": 27,
-      "int": 18,
-      "sab": 20,
-      "car": 20
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Desejo traiçoeiro",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Ocultismo 4",
-      "Persuasão 4",
-      "Prontidão 4"
-    ],
-    "nota": "Realizar desejos traiçoeiros: Centelha 5.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Confusão",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5
+    {
+      "campo": "habilidadesEspeciais.Imagem espelhada",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 3"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "O corpo de base escalado pelo cubo da altura (× 8,68) dá 0,686 m³; com o tronco de quatro braços 60% mais largo e 40% mais fundo (× 2,24), 1,537 m³, e com a densidade de carne e osso (1.010 kg/m³), 1.556 kg. O site dizia 1,8 t, em cima do corte das Faixas e dentro da zona de transição do PV (1,62 a 1,98 t). Fica a calculada (D-187): ela cai fora da zona, na Faixa 4, sem pedir escolha de robusto ou frágil; os 1,8 t do site dariam a mesma Faixa e o mesmo PV, e só o Peso erguido muda; 1.556 kg pelo corpo de base alargado (60% e 40%), contra os 1,8 t do site, no corte das Faixas; a Faixa e o PV não mudam, só o Peso erguido"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 4: a pele de demônio maior, como a do hezrou . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site, pela linha Elementos"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    }
+  ]
 }

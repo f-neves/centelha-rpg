@@ -1,36 +1,23 @@
 {
-  "ordem": 14,
   "id": "cultista",
   "nome": "Cultista Sombrio",
   "nomeIngles": "Dark Cultist",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Conjurador",
+  "categoria": "humanoide",
   "papel": "elite",
-  "conceito": "feiticeiro da morte",
-  "descricao": "Servo de uma seita da morte que drena a vida das vítimas, apodrece o corpo de quem o enfrenta e ergue mortos em ritual. Frágil de perto: deixa os mortos e os seguidores na frente.",
-  "tags": [
-    "humano",
-    "centelha",
-    "arcano"
-  ],
-  "imagem": "bestiario/cultista_pdm.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,7 m de altura",
-    "peso": "62 kg",
-    "largura": 0.41,
-    "altura": 1.7
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 4,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.7,
+    "largura": 0.41,
+    "profundidade": 0.21,
+    "comprimento": null,
+    "massa": 62,
+    "area": 0.62
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 2,
     "destreza": 3,
     "vigor": 3,
@@ -41,108 +28,163 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "ocultismo": 4,
     "esquiva": 2,
     "prontidao": 2,
     "manha": 3,
     "integridade": 3,
     "persuasao": 2,
-    "furtividade": 1
+    "furtividade": 1,
+    "briga": 0,
+    "bloqueio": 0
   },
-  "skills2": {
+  "habilidadesSec": {
     "acerto-arcano": 4,
-    "ritualismo": 3
+    "ritualismo": 3,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "ocultismo",
-      "foco": "necromancia",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "ocultismo",
-      "foco": "seitas proibidas",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "manha",
-      "foco": "recrutar desesperados",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "ocultismo": [
+      {
+        "foco": "necromancia",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 4,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {
+    "morte": 2
+  },
   "ataques": [
     {
       "nome": "Soco",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
+      "parte": "mao",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "arte": {
-    "morte": 2
-  },
-  "mana": 9,
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Drenar vida",
-      "descricao": "Arte Morte 1: Dreno; toque que tira vida (dano que a armadura não para) e cura o cultista em metade do que passou; o alvo aguenta com Vigor + Resistência.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "arte": {
+        "id": "morte",
+        "nivel": 1
+      },
+      "texto": "Dreno; toque que tira vida (dano que a armadura não para) e cura o cultista em metade do que passou; o alvo aguenta com Vigor + Resistência"
     },
     {
       "nome": "Maldição do apodrecer",
-      "descricao": "Arte Morte 2: Definhar; a Força e o Vigor do alvo contam um nível abaixo por nível investido, com o dano, a carga, o PV e a Absorção que vêm deles; o alvo aguenta com Vigor + Resistência.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "arte": {
+        "id": "morte",
+        "nivel": 2
+      },
+      "texto": "Definhar; a Força e o Vigor do alvo contam um nível abaixo por nível investido, com o dano, a carga, o PV e a Absorção que vêm deles; o alvo aguenta com Vigor + Resistência"
     },
     {
       "nome": "Podridão",
-      "descricao": "Arte Morte 1: apodrece corda, couro, madeira e comida, sem ferir criatura viva.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "arte": {
+        "id": "morte",
+        "nivel": 1
+      },
+      "texto": "apodrece corda, couro, madeira e comida, sem ferir criatura viva"
     },
     {
       "nome": "Ritual da morte",
-      "descricao": "em poucos minutos de ritual ergue um morto-vivo para lutar ao lado dele. O efeito do livro que levanta cadáver (Servo de Ossos) é Morte 4, acima da Arte dele.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "frágil no corpo a corpo",
-      "descricao": "Bloqueio 6, 34 PV e Absorção baixa; mantém distância, põe os mortos-vivos e os seguidores na frente e drena quem chega perto.",
-      "classe": "como luta"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "em poucos minutos de ritual ergue um morto-vivo para lutar ao lado dele. O efeito do livro que levanta cadáver (Servo de Ossos) é Morte 4, acima da Arte dele"
     },
     {
       "nome": "Sem inimizades naturais",
-      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão, audição, olfato: humanos."
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "frágil no corpo a corpo",
+      "formas": "todas",
+      "texto": "Bloqueio 6, 34 PV e Absorção baixa; mantém distância, põe os mortos-vivos e os seguidores na frente e drena quem chega perto."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão, audição, olfato",
+      "descricao": "humanos",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humana; fanática",
+    "tracos": "vestes escuras, rosto pálido e fundo, símbolos da seita, mãos frias"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "numa seita escondida, com seguidores e mortos-vivos",
+    "atividade": "noturno",
+    "dieta": "onívoro",
+    "caca": "atrai desesperados e drena vítimas",
+    "dianteDeGente": "esconde-se das igrejas; recruta ou drena"
+  },
+  "ecologia": {
+    "terreno": [
+      "urbano",
+      "ruínas"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Servo de uma seita da morte que drena a vida das vítimas, apodrece o corpo de quem o enfrenta e ergue mortos em ritual. Frágil de perto: deixa os mortos e os seguidores na frente.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Serve poderes que a maioria teme nomear, drenando a vida de vítimas e erguendo os mortos para servir sua vontade. Social: numa seita escondida, com seguidores e mortos-vivos."
+      "texto": "Serve poderes que a maioria teme nomear, drenando a vida de vítimas e erguendo os mortos para servir sua vontade."
     },
     {
       "titulo": "Sociedade",
@@ -151,59 +193,24 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Aprendeu a colher a Centelha dos mortos em vez de deixá-la voltar à Primeira Luz, um crime que a Ceifadora e as igrejas de Calin igualmente condenam; muitos desses cultos rastreiam sua doutrina até horrores vindos da Fenda, no White Wall."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Humano Médio, 34 PV, Impacto 4, Corte e Perfuração 1. Esquiva 12, Bloqueio 6. Tem 9 de Mana e conjura Morte até o nível 2: Dreno (tira vida e se cura), Definhar (tira Força e Vigor do alvo), Podridão. Em ritual, fora do combate, ergue um morto-vivo. Defesa Mental 14. De perto, cai fácil."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Urban",
-      "Ruins"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/cultista_pdm.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Mana 9. Em ritual, ergue um morto-vivo (Morte nível 3). Frágil no corpo a corpo.",
-  "pendente": false,
-  "fonte": {
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
+  "revisao": [
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Sociedade)"
     },
-    "cr": "2",
-    "crConf": "estimado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 34,
-    "esquiva": 12,
-    "bloqueio": 6,
-    "defesa": 12,
-    "defesaMental": 14,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 1,
-      "perfuracao": 1
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 93.69,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
     }
-  },
-  "notasObservacao": [
-    "`virtudes`: Compaixão 1 e Convicção 4; o site tinha 2 e 3 **[provisório]**",
-    "`maldição do apodrecer`: o Definhar do livro; o \"Abalado\" do site sai (perda anotada no relato)",
-    "`ritual da morte`: sem regra ainda; o Servo de Ossos é Morte 4"
   ]
 }

@@ -15,6 +15,7 @@
 //
 //   node scripts/test-defesa-vestida.mjs
 import fs from 'node:fs';
+import { vistaCriatura } from './lib-criatura-motor.mjs';
 import os from 'node:os';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -48,7 +49,7 @@ ok(/fora do formato/.test(erro || ''), `a frase que começa e não fecha o forma
 
 console.log('· 2. o que saiu publicado');
 for (const [id, sem, com] of [['campeao-esqueletico', 15, 17], ['soldado-veterano', 14, 12]]) {
-  const f = ler(`src/data/bestiario/${id}.json`);
+  const f = vistaCriatura(ler(`src/data/bestiario/${id}.json`));
   ok(f.v3?.defesa === sem && f.v3?.vestida?.defesa === com, `${id}: a fonte traz as duas (sem ${f.v3?.defesa}, com ${f.v3?.vestida?.defesa})`);
   const m = ler('src/data/monsters.json').find((x) => x.id === id);
   ok(m?.combate?.defesa === sem && m?.combate?.vestida?.defesa === com, `${id}: o monsters.json (card) traz as duas`);

@@ -8,15 +8,12 @@ import {
   pv, energia, mana, defesa, defesaSocial, defesaMental, pool, poolStr, valorPassivo, regras,
   empilharArmaduras, soakNatural, type Porte,
 } from './calc';
-import RACAS_D from '../data/racas.json';
 import { armadurasDe } from './equip';
 import { resumoCombatePC } from './combate-resumo';
 import { qaDaPeca, type QACombate } from './quase-acerto';
+import { numerosPersonagem } from './motor';
 import { d6 } from './rolagem';
 
-/** O porte da raça do personagem, ou Médio quando ele não tem raça escolhida. */
-const porteDaRaca = (id?: string | null): Porte =>
-  (((RACAS_D as any[]).find((r) => r.id === (id || ''))?.porte || 'medio') as Porte);
 
 /** Um passivo do painel do mestre: o `valor` é o Valor Passivo do livro (`valorPassivo`, sem a
  *  Especialidade), e o `str` é o pool para rolar de verdade. */
@@ -40,7 +37,6 @@ export interface ResumoFicha {
   qa: QACombate;
 }
 
-const media = (dados: number, bonus: number) => Math.round(dados * 3.5 + bonus);
 // O VALOR É O DO LIVRO (decisão 3 do autor, correção da Reforma, 02/10/2026): `valorPassivo`, de
 // `calc.ts`, (Atributo + Habilidade) × 2 + 2 × mín(Centelha, Habilidade), sem a
 // Especialidade. Antes o painel mostrava a média do pool (dados × 3,5 + bônus), que ficava abaixo do
@@ -58,6 +54,7 @@ export function resumoFicha(S: any): ResumoFicha {
   const C = S?.centelha || 0;
   const W = S?.willpower || 0;
   const vig = A('vigor'), dex = A('destreza');
+  const nums = numerosPersonagem(S);
 
   const armSt = empilharArmaduras(armadurasDe(S));
   const armPen = armSt.penalidade || 0;
@@ -90,22 +87,18 @@ export function resumoFicha(S: any): ResumoFicha {
     attrs: S?.attrs || {}, skills: S?.skills || {}, skills2: S?.skills2 || {}, virtudes: S?.virtues || {},
     // O porte da raça, como na ficha (`M-29`): sem ele o Halfling ia para a
     // mesa com o PV de um Médio.
-    pv: pv(vig, porteDaRaca(S?.raca)),
-    energia: energia({ vigor: vig, compostura: A('compostura'), raciocinio: A('raciocinio'), vontade: W, centelha: C }),
-    mana: mana({ centelha: C, vontade: W, manipulacao: S?.arte?.['manipulacao-mana'] || 0 }),
-    defEsquiva: combate?.defesa ?? (defesa({ destreza: dex, habilidade: SK('esquiva'), centelha: C }) - armPen),
-    defBloqueio: defesa({ destreza: dex, habilidade: SK('bloqueio'), centelha: C }) - armPen,
-    defSocial: defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C }),
-    defMental: defesaMental({ raciocinio: A('raciocinio'), integridade: SK('integridade'), vontade: W, centelha: C }),
-    soak: combate?.soak ?? {
-      impacto: soakNatural(vig, 'impacto') + C * cs + (armSt.soak.impacto || 0),
-      corte: C * cs + (armSt.soak.corte || 0),
-      perfuracao: C * cs + (armSt.soak.perfuracao || 0),
-    },
+    pv: nums.pv,
+    energia: nums.energia,
+    mana: nums.mana,
+    defEsquiva: nums.esquiva,
+    defBloqueio: nums.bloqueio,
+    defSocial: nums.defesaSocial,
+    defMental: nums.defesaMental,
+    soak: nums.absorcao,
     resistPerf: armSt.resistPerf || 0,
     penFisica: armPen,
-    iniciativa: `${ini.dados}d6${ini.bonus ? ' +2' : ''}`,
-    iniciativaMedia: media(ini.dados, ini.bonus),
+    iniciativa: nums.iniciativa.str,
+    iniciativaMedia: 3.5 + nums.iniciativa.bonus,
     arma: combate?.arma || '', ataque: combate?.ataque || '', dano: combate?.dano || '',
     passivos: PASSIVOS,
     tecnicas: Object.keys(S?.tech || {}).filter((k) => S.tech[k]),
@@ -146,5 +139,5 @@ export function rolarIniciativaPC(S: any) {
   // O `d6` daqui é o mesmo do `rolagem.ts`, e por isso o mesmo `acaso`: sem
   // isso a iniciativa ficaria fora da semente e o espelho divergiria no
   // primeiro Tick, antes de qualquer golpe.
-  return d6() + (S?.attrs?.raciocinio || 0) + (S?.skills?.prontidao || 0);
+  return d6() + numerosPersonagem(S).iniciativa.bonus;
 }

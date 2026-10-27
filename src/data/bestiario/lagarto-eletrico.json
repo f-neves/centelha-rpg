@@ -1,88 +1,202 @@
 {
-  "ordem": 284,
   "id": "lagarto-eletrico",
   "idAntigo": "mon-shocker-lizard",
   "nome": "Lagarto Elétrico",
   "nomeIngles": "Shocker Lizard",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "fera",
-  "conceito": "besta mágica Pequeno",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha"
-  ],
-  "imagem": "bestiario/lagarto-eletrico_criatura.webp",
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "90 cm de comprimento",
-    "peso": "11 kg"
-  },
-  "locomocao": {
-    "terra": 3,
-    "natacao": 2,
-    "escalada": 2
-  },
+  "ameaca": 2,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas, rente ao chão",
+    "apoio": "quadrupede",
+    "altura": 0.21,
+    "largura": 0.18,
+    "profundidade": null,
+    "comprimento": 1.34,
+    "comprimentoSemCauda": 0.67,
+    "caudaGrossa": false,
+    "massa": 11,
+    "area": 0.15,
+    "posturaDoTamanho": "silhueta vista de lado"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 2,
     "destreza": 4,
     "vigor": 3,
-    "influencia": 1,
-    "perspicacia": 1,
-    "compostura": 2,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 1,
+    "furtividade": 2,
+    "integridade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "resistencia": 2,
+    "sociabilidade": 0,
+    "sobrevivencia": 2
   },
-  "virtues": {
+  "habilidadesSec": {
+    "disparo": 2,
+    "escalada": 2,
+    "natacao": 2,
+    "musculatura": 2
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 7,
-  "aparencia": 5,
+  "vontade": 7,
+  "aparencia": 3,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "nado": {
+      "batalha": 2
+    },
+    "escalada": {
+      "batalha": 2
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Mordida",
+      "parte": "mandibula",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Choque",
+      "parte": "corpo",
+      "habilidade": "disparo",
+      "classe": "distancia",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 0,
+      "tipoDano": "raio",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 5
+      "bloqueiaComoArma": null
     }
   ],
-  "habilidades": [
-    {
-      "nome": "Sentido elétrico",
-      "descricao": "Detecta qualquer descarga elétrica num raio considerável, incluindo a de outros lagartos-choque próximos."
-    },
+  "habilidadesEspeciais": [
     {
       "nome": "Choque elétrico",
-      "descricao": "Descarrega eletricidade em um alvo próximo, causando dano não letal; vários lagartos juntos podem gerar um choque letal em área."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "raio",
+        "nivel": 1
+      },
+      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "duracao": "instantânea",
+      "alcance": "3 m",
+      "area": "um alvo",
+      "efeito": "descarrega a eletricidade do corpo num alvo perto",
+      "dano": "1d6 + Centelha, raio",
+      "resistencia": "esquiva, contra a jogada do choque",
+      "limiteDeUso": "uma vez a cada 12 Ticks"
     },
     {
-      "nome": "Trepador e nadador",
-      "descricao": "Sobe e nada com a mesma facilidade com que caminha pelo chão."
+      "nome": "choque que não mata",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o choque de um lagarto só derruba, e não mata"
     },
     {
-      "nome": "Imune à eletricidade",
-      "descricao": "Seu próprio corpo não sofre com choques, sejam os seus ou os de outro lagarto."
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "Enxerga no escuro e na penumbra."
+      "nome": "choque da colônia",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "vários lagartos juntos descarregam um choque letal em área"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "colônia",
+      "formas": "todas",
+      "texto": "sozinho, dá um choque e foge; em colônia, cerca o intruso e descarrega junto."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão na penumbra",
+      "descricao": "enxerga com pouca luz",
+      "formas": "todas"
+    },
+    {
+      "nome": "sentido elétrico",
+      "descricao": "nota qualquer descarga elétrica num raio grande, até a de outro lagarto",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "entre pedras e água",
+    "mente": "animal (fera de Inteligência 1)",
+    "tracos": "lagarto de 1,3 m, de escamas azuladas e cabeça grande, que estala quando se carrega"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "colônia; isolado, definha",
+    "atividade": "diurno",
+    "dieta": "carnívoro",
+    "caca": "caça em colônia perto da água",
+    "dianteDeGente": "defende o território da colônia"
+  },
+  "ecologia": {
+    "terreno": [
+      "pântano"
+    ],
+    "clima": [
+      "tropical",
+      "temperado"
+    ]
+  },
+  "descricao": "Lagarto que descarrega eletricidade: sozinho é tímido e foge depois do choque, mas em colônia eletrocuta presas muito maiores. Vive sempre perto da água, defende o território com ferocidade e, isolado da colônia, definha e morre.",
   "lore": [
     {
       "titulo": "Poder que cresce em grupo",
@@ -97,39 +211,35 @@
       "texto": "Poucos conseguem manter um lagarto-choque em cativeiro, pois isolado da companhia de outros de sua espécie ele definha e morre com facilidade."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Swamp"
-    ],
-    "clima": [
-      "Tropical",
-      "Temperate"
+  "imagens": [
+    "bestiario/lagarto-eletrico_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "raio",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Shocker Lizard",
-    "cr": "2",
-    "tipo": "besta mágica Pequeno",
-    "tamanho": "pequeno",
-    "valores": {
-      "for": 10,
-      "des": 15,
-      "con": 13,
-      "int": 2,
-      "sab": 13,
-      "car": 6
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Choque elétrico",
+      "motivo": "números sugeridos pela ficha (D-197); poder natural com números da ficha (D-197), base Raio 1 (o Estalo, 1d6); o site não dava base"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: escamas finas de lagarto pequeno, abaixo do varano (4) . O nível fica fora da Absorção (decisoes-autor §16)"
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 2
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    }
+  ]
 }

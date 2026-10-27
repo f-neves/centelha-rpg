@@ -19,6 +19,9 @@
 //
 // RODA NO `validate`, e não no smoke, de propósito: não precisa de navegador,
 // então continua respondendo numa máquina onde o Astro não compila.
+import { periciasDe } from './lib-bestiario.mjs';
+import { carregarTS } from './lib-ts.mjs';
+const MOTOR = await carregarTS('src/lib/motor.ts');
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -64,8 +67,8 @@ ok(semProntidao.length === 0,
 // que sairia sem a Prontidão, em quantidade de criaturas que não dá para
 // confundir com acaso (a gêmea). Zerar a Prontidão na fonte derruba a segunda.
 // o bônus de Centelha da Reforma (28/09/2026, confirmado no Adendo 1 de 02/10/2026): 2 × mín(Centelha, Prontidão)
-const bonusC = (c, pr) => 2 * Math.min(c, pr);
-const passiva = (p, pr, c = 0) => (p == null || pr == null ? null : (p + pr) * 2 + bonusC(c, pr));
+const passiva = MOTOR.valorPassivo;
+for (const [a,h,c,esperado] of [[3,2,1,12],[3,0,3,6],[6,3,2,22]]) ok(passiva(a,h,c) === esperado, 'Passiva de referência: '+[a,h,c]+' resulta em '+esperado);
 let batem = 0;
 let mexem = 0;
 for (const m of MESA) {
@@ -73,10 +76,10 @@ for (const m of MESA) {
   const pr = m.pericias?.prontidao;
   const c = m.centelha || 0;
   const v = passiva(p, pr, c);
-  if (v === (p + pr) * 2 + bonusC(c, pr)) batem += 1;
+  if (Number.isFinite(v)) batem += 1;
   if (v !== passiva(p, 0, c)) mexem += 1;
 }
-ok(batem === MESA.length, `a Passiva sai da fórmula em todas (${batem} de ${MESA.length})`);
+ok(batem === MESA.length, `o motor calcula a Passiva em todas (${batem} de ${MESA.length})`);
 ok(mexem > MESA.length * 0.7,
   `E A PRONTIDÃO MOVE O NÚMERO em ${mexem} das ${MESA.length}:`
   + ' zerá-la mudaria a Passiva da maioria, então ela não é enfeite na fórmula');
@@ -86,38 +89,20 @@ ok(mexem > MESA.length * 0.7,
 // A segunda previsão: a fórmula devolvendo o mesmo número para portes
 // diferentes. Uma tabela que não separa nada é uma constante com cara de regra,
 // e ela passa em qualquer conferência que só olhe se o campo existe.
-const porPorte = {};
-for (const m of CHEIO) {
-  const k = m.porte || '(sem)';
-  (porPorte[k] ||= new Set()).add(m.pericias?.furtividade);
+// D-226: as fichas novas usam a Habilidade escrita, sem ajuste de Tamanho.
+let fontesNovas=0;
+for(const arquivo of fs.readdirSync(path.join(ROOT,'src/data/bestiario'))) {
+  const c=JSON.parse(fs.readFileSync(path.join(ROOT,'src/data/bestiario',arquivo),'utf8'));
+  if(!c.corpo)continue;
+  fontesNovas++;
+  const m=CHEIO.find(x=>x.id===c.id);
+  ok(m?.pericias?.furtividade===(c.habilidades.furtividade ?? c.habilidadesSec.furtividade ?? 0),c.id+': Furtividade escrita, sem ajuste por porte');
 }
-const medias = {};
-for (const m of CHEIO) {
-  const k = m.porte || '(sem)';
-  (medias[k] ||= []).push(m.pericias?.furtividade ?? 0);
+// O caminho antigo continua necessário antes das 324. Números da tabela vigente, sem fórmula no teste.
+for(const [porte,categoria,esperado] of [['miudo','Fada',6],['colossal','Fada',2],['medio','Fada',4],['medio','Construto',0],['medio','Fera',3],['medio','Humano',2]]) {
+  const p=periciasDe({id:'__teste_sem_excecao__',categoria,tags:[],atributos:{},centelha:0},porte);
+  ok(p.furtividade===esperado,'caminho antigo '+porte+' '+categoria+': '+esperado);
 }
-const media = (a) => a.reduce((x, y) => x + y, 0) / a.length;
-const miudo = medias['Miúdo'] ? media(medias['Miúdo']) : null;
-const colossal = medias['Colossal'] ? media(medias['Colossal']) : null;
-ok(miudo != null && colossal != null && miudo > colossal + 2,
-  `o porte separa: Miúdo tem Furtividade média ${miudo?.toFixed(1)} contra ${colossal?.toFixed(1)} do Colossal`);
-
-const valores = new Set(CHEIO.map((m) => m.pericias?.furtividade));
-ok(valores.size >= 4,
-  `e a tabela produz ${valores.size} valores diferentes nas ${CHEIO.length}, e não uma constante`);
-
-// A CATEGORIA também tem de mexer, senão metade da tabela é enfeite. Duas do
-// MESMO porte e categorias opostas: a Fada some, o Construto não.
-const doPorte = (porte, cat) => CHEIO.filter((m) => m.porte === porte && m.categoria === cat);
-const cmp = [['Fada', 'Construto'], ['Fera', 'Planta'], ['Fada', 'Planta']]
-  .map(([a, b]) => {
-    const A = CHEIO.filter((m) => m.categoria === a);
-    const B = CHEIO.filter((m) => m.categoria === b);
-    if (!A.length || !B.length) return null;
-    return { a, b, ma: media(A.map((m) => m.pericias?.furtividade ?? 0)), mb: media(B.map((m) => m.pericias?.furtividade ?? 0)) };
-  }).filter(Boolean);
-const catMexe = cmp.some((x) => x.ma > x.mb);
-ok(catMexe, `a categoria separa: ${cmp.map((x) => `${x.a} ${x.ma.toFixed(1)} > ${x.b} ${x.mb.toFixed(1)}`).join(' · ')}`);
 
 // ------------------------------------------------------- 4 · a exceção RODA
 //
@@ -143,10 +128,8 @@ for (const id of ids) {
     `  e a exceção VENCE a tabela em ${m.nome}: ${m.pericias?.furtividade} (a tabela daria outro)`);
   // A GÊMEA: se a exceção desse o mesmo número da tabela, a asserção acima
   // passaria sem provar nada. Esta cobra que os dois sejam diferentes.
-  const base = (FURT.porte || {})[String(m.porte || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()];
-  const daTabela = base == null ? null
-    : Math.max(0, Math.min(6, base + ((FURT.categoria || {})[m.categoria] || 0)
-      + (m.tags || []).reduce((s, t) => s + ((FURT.tags || {})[t] || 0), 0)));
+  const slug = String(m.porte || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const daTabela = periciasDe({...m,id:'__teste_sem_excecao__'},slug).furtividade;
   ok(typeof exc[id] === 'object' && String(exc[id]?.porque || '').length > 20,
     `  e o MOTIVO da exceçao esta escrito (${String(exc[id]?.porque || '').length} caracteres)`);
   ok(daTabela != null && daTabela !== valorDa(exc[id]),

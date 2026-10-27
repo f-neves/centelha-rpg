@@ -1,97 +1,246 @@
 {
-  "ordem": 182,
   "id": "diabo-chifrudo",
   "idAntigo": "mon-horned-devil-cornugon",
   "nome": "Diabo Chifrudo",
   "nomeIngles": "Devil, Horned",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Diabo",
+  "categoria": "corruptor",
   "papel": "chefe",
-  "conceito": "exterior (diabo) Grande",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Tirano leal do Inferno, calculista e cruel.",
-  "tags": [
-    "diabo",
-    "centelha"
-  ],
-  "imagem": "bestiario/diabo-chifrudo_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,7 m de altura",
-    "peso": "315 kg"
-  },
-  "locomocao": {
-    "terra": 3,
-    "voo": 5
-  },
+  "ameaca": 6,
   "centelha": 6,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, ereto; voa",
+    "apoio": "bipede",
+    "altura": 2.7,
+    "largura": 0.74,
+    "profundidade": 0.37,
+    "comprimento": null,
+    "massa": 315,
+    "area": 1.78,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 3,
+  "atributos": {
     "forca": 10,
     "destreza": 8,
     "vigor": 10,
-    "influencia": 7,
-    "perspicacia": 5,
-    "compostura": 7,
     "percepcao": 7,
     "inteligencia": 4,
-    "raciocinio": 5
+    "raciocinio": 5,
+    "influencia": 7,
+    "perspicacia": 5,
+    "compostura": 7
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "armas": 5,
+    "bloqueio": 2,
     "esquiva": 2,
+    "atletismo": 3,
+    "furtividade": 0,
+    "integridade": 7,
     "prontidao": 3,
-    "integridade": 7
+    "resistencia": 4,
+    "sociabilidade": 2,
+    "ocultismo": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "lideranca": 4,
+    "estrategia": 3,
+    "intimidacao": 4,
+    "voo": 2,
+    "musculatura": 3
+  },
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "corrente farpada",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
     "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 5,
-    "valor": 5
+    "temperanca": 5
   },
-  "willpower": 11,
-  "aparencia": -1,
+  "vontade": 11,
+  "aparencia": 0,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "voo": {
+      "batalha": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:corrente-farpada"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Corrente farpada",
+      "arma": "corrente-farpada",
+      "habilidade": "armas"
+    },
+    {
+      "nome": "Mordida",
+      "parte": "boca-de-presas",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Cauda",
+      "parte": "cauda-de-ferrao",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Ferida Infernal",
-      "descricao": "O golpe de sua cauda abre feridas que sangram continuamente, difíceis de estancar mesmo com cuidados médicos ou magia de cura comum."
+      "nome": "Atordoar com a corrente",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o golpe da corrente deixa a vítima zonza e incapaz de agir"
     },
     {
-      "nome": "Atordoar com a Corrente",
-      "descricao": "Cada acerto de sua corrente espinhosa pode deixar o alvo atordoado por vários instantes, incapaz de agir."
+      "nome": "Ferida infernal",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Cauda",
+      "ativacao": "o golpe da Cauda que fere",
+      "duracao": "até alguém estancar",
+      "alcance": "o da cauda",
+      "area": "um alvo",
+      "efeito": "a ferida sangra sem parar; o alvo fica Sangrando",
+      "dano": "o do golpe, e depois o do Sangrando",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
     },
     {
-      "nome": "Aura de Pavor",
-      "descricao": "Uma presença aterrorizante emana dele constantemente, incutindo medo em quem se aproxima."
+      "nome": "ferida difícil de estancar",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "estancar a ferida da cauda pede mais que o cuidado comum, e a cura comum não basta"
     },
     {
-      "nome": "Regeneração",
-      "descricao": "Cura ferimentos rapidamente durante o combate; apenas armas ou magias abençoadas conseguem feri-lo de forma permanente."
+      "nome": "corrente, mordida e cauda juntas",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "golpeia com as três na mesma ação; por enquanto, um ataque por ação"
     },
     {
-      "nome": "Visão nas Trevas",
-      "descricao": "Enxerga perfeitamente até em escuridão mágica absoluta."
+      "nome": "Aura de pavor",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "irradiar-temor",
+        "nivel": 1
+      }
     },
     {
-      "nome": "Poderes Infernais",
-      "descricao": "Pode anular magias de bem, lançar bolas de fogo e relâmpagos, projetar ilusões ou desaparecer para outro lugar à vontade."
+      "nome": "aura sempre ativa",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o pavor emana dele o tempo todo, sem gasto, em quem se aproxima"
+    },
+    {
+      "nome": "Regeneração 5",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "origem sobrenatural; as feridas se fecham, exceto as de arma ou Arte abençoada"
+    },
+    {
+      "nome": "ferida que não fecha",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o que arma ou Arte abençoada faz não se fecha pela regeneração"
+    },
+    {
+      "nome": "poderes infernais",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "anula magias do bem, lança bolas de fogo e relâmpagos, projeta ilusões e some para outro lugar à vontade; o site não dá Arte de base para nenhum"
+    },
+    {
+      "nome": "medonho",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "chifres imponentes, asas largas e a corrente farpada: um terror que se reconhece de longe"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "comandante das legiões",
+      "formas": "todas",
+      "texto": "comanda os diabos menores de trás da linha, entra na luta com a corrente, que alcança e tonteia, e deixa a cauda abrir feridas que não estancam."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga perfeitamente, até na escuridão mágica absoluta",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "inteligente, disciplinada, obediente",
+    "tracos": "diabo de 2,7 m, de escamas escuras, chifres grandes e curvos, asas largas de morcego e cauda de ferrão; carrega uma corrente farpada"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "comanda tropas de diabos menores",
+    "atividade": "qualquer hora",
+    "dieta": "não precisa comer",
+    "caca": "marcha e conquista",
+    "dianteDeGente": "espalha o domínio infernal"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Guerreiro dos mais letais e obedientes do Inferno, que comanda legiões de diabos menores com disciplina implacável. Luta com uma corrente farpada que tonteia, e as asas largas e os chifres imponentes o fazem reconhecível de longe.",
   "lore": [
     {
       "titulo": "Comandante das Legiões",
@@ -102,38 +251,55 @@
       "texto": "Empunha uma corrente farpada com destreza mortal, e suas asas largas e chifres imponentes o tornam um terror reconhecível mesmo à distância."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/diabo-chifrudo_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
-    ]
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Horned Devil (Cornugon)",
-    "cr": "16",
-    "tipo": "exterior (diabo) Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 31,
-      "des": 27,
-      "con": 28,
-      "int": 14,
-      "sab": 22,
-      "car": 23
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Ferida infernal",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidades.armas",
+      "motivo": "A corrente \"com destreza mortal\" (site). O site não dava a Habilidade"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 6
+    {
+      "campo": "habilidades.bloqueio",
+      "motivo": "Apara com a corrente esticada; criatura inteligente que luta de perto (decisoes-autor §1)"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: pele escamosa de diabo maior, entre o elefante (2 a 3) e o crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16)"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "0, e não o −1 do site, fora da régua; o efeito em quem olha foi para a linha medonho (D-181)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Regeneração 5",
+      "motivo": "Antes: 4 de Energia e 10 PV/6 Ticks. Depois: só classificação, sem ritmo de cura. N 5 da referência Pathfinder (Archives of Nethys, Horned Devil)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Atordoar com a corrente",
+      "motivo": "Antes perdia a próxima ação; agora sem regra, 33.2/33.3."
+    }
+  ]
 }

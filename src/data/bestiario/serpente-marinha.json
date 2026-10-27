@@ -1,87 +1,171 @@
 {
-  "ordem": 281,
   "id": "serpente-marinha",
   "idAntigo": "mon-sea-serpent",
   "nome": "Serpente Marinha",
   "nomeIngles": "Sea Serpent",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "chefe",
-  "conceito": "besta mágica Imenso",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha"
-  ],
-  "imagem": "bestiario/serpente-marinha_criatura.webp",
-  "porte": "Imenso",
-  "dimensoes": {
-    "medida": "corpo serpentino de mais de 18 metros de comprimento",
-    "peso": "dezenas de t"
-  },
-  "locomocao": {
-    "natacao": 6,
-    "terra": 2
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
+  "corpo": {
+    "postura": "nada; ergue a cabeça e o pescoço sobre a água",
+    "apoio": "outro",
+    "altura": 1.01,
+    "largura": 1.01,
+    "profundidade": null,
+    "comprimento": 18,
+    "massa": 14500,
+    "area": 16.4,
+    "posturaDoTamanho": "silhueta vista de lado"
+  },
+  "couraca": 3,
+  "atributos": {
     "forca": 13,
     "destreza": 4,
     "vigor": 11,
-    "influencia": 2,
-    "perspicacia": 1,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 1
+    "raciocinio": 1,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 3,
+    "furtividade": 3,
+    "integridade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "resistencia": 4,
+    "sociabilidade": 0,
+    "sobrevivencia": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "natacao": 4,
+    "musculatura": 3
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 10,
-  "aparencia": 5,
+  "vontade": 10,
+  "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "nado": {
+      "batalha": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 3,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Mordida",
+      "parte": "boca",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 7
+      "bloqueiaComoArma": null
     }
   ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Elusiva no mar",
-      "descricao": "Nada em alta velocidade e sem deixar rastro, o que a torna muito difícil de rastrear ou cercar."
+      "nome": "constrição",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Mordida",
+      "regra": "agarrar",
+      "texto": "agarra com a mordida ou com a cauda e aperta"
     },
     {
-      "nome": "Capotar embarcações",
-      "descricao": "Investe contra um navio para virá-lo, arremessando a tripulação na água."
+      "nome": "engolir inteiro",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "engole o alvo menor que já está agarrado; preso dentro, ele leva dano a cada rodada até sair"
     },
     {
-      "nome": "Constrição e engolir por inteiro",
-      "descricao": "Agarra a presa com a mordida ou com a cauda, esmagando-a ou tragando-a inteira para dentro do próprio corpo."
+      "nome": "capotar embarcações",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "investe contra um navio para virá-lo e jogar a tripulação na água"
     },
     {
-      "nome": "Imune ao frio",
-      "descricao": "As águas mais geladas do oceano não a afetam, e resiste bem também ao fogo."
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "Enxerga no escuro e na penumbra, percebendo presas mesmo nas profundezas mais escuras."
+      "nome": "elusiva no mar",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "nada sem deixar rastro, e é muito difícil de rastrear ou cercar"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "terror das embarcações",
+      "formas": "todas",
+      "texto": "some no mar, investe contra o casco, vira o navio e caça na água quem caiu."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão na penumbra",
+      "descricao": "enxerga com pouca luz, mesmo nas profundezas",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": ", por muito tempo",
+    "camuflagem": "no mar",
+    "mente": "animal (fera de Inteligência 1)",
+    "tracos": "serpente de 18 m, escamas verde-azuladas e crista de barbatanas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitária",
+    "atividade": "qualquer hora",
+    "dieta": "carnívora, de apetite insaciável",
+    "caca": "caça no mar aberto; vira navios",
+    "dianteDeGente": "ataca o navio"
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "Serpente gigante dos mares, lenda de todo navegador, que desliza pelas águas sem deixar rastro quando não quer ser encontrada. Vira um navio inteiro com uma única investida, e é tão temida pela força quanto pelo apetite.",
   "lore": [
     {
       "titulo": "Lenda que os marinheiros temem contar",
@@ -96,40 +180,28 @@
       "texto": "Capaz de virar um navio inteiro com uma única investida, é tão temida por sua força quanto por seu apetite insaciável."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Water"
+  "imagens": [
+    "bestiario/serpente-marinha_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Temperate",
-      "Tropical"
+    "imunidades": [
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Sea Serpent",
-    "cr": "12",
-    "tipo": "besta mágica Imenso",
-    "tamanho": "imenso",
-    "valores": {
-      "for": 34,
-      "des": 14,
-      "con": 25,
-      "int": 2,
-      "sab": 11,
-      "car": 11
-    },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 60,
-      "origem": "fonte",
-      "nota": "nado 60; em terra 20, e ela não sai do mar"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5
+  "revisao": [
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: escamas de serpente grande, um abaixo do crocodilo (5) . O nível fica fora da Absorção (decisoes-autor §16)"
+    }
+  ]
 }

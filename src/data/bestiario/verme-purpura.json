@@ -1,96 +1,192 @@
 {
-  "ordem": 71,
   "id": "verme-purpura",
   "idAntigo": "mon-verme-purpura",
   "nome": "Verme Púrpura",
   "nomeIngles": "Purple Worm",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "chefe",
-  "conceito": "besta mágica Imenso",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha"
-  ],
-  "imagem": "bestiario/verme-purpura_criatura.webp",
-  "porte": "Imenso",
-  "dimensoes": {
-    "medida": "24 m de comprimento",
-    "peso": "36 t"
-  },
-  "locomocao": {
-    "terra": 2,
-    "natacao": 1,
-    "escavacao": 2
-  },
+  "ameaca": 5,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "rasteja; ergue a frente para morder",
+    "apoio": "outro",
+    "altura": 1.37,
+    "largura": 1.37,
+    "profundidade": null,
+    "comprimento": 24,
+    "massa": 36000,
+    "area": 29.6,
+    "posturaDoTamanho": "silhueta vista de lado"
+  },
+  "couraca": 5,
+  "atributos": {
     "forca": 13,
     "destreza": 2,
     "vigor": 11,
-    "influencia": 2,
-    "perspicacia": 1,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 1
+    "raciocinio": 1,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 0,
+    "atletismo": 2,
+    "furtividade": 1,
+    "integridade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "resistencia": 4,
+    "sociabilidade": 0,
+    "sobrevivencia": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 2
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 6,
-  "aparencia": 5,
+  "vontade": 6,
+  "aparencia": 2,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "nado": {
+      "batalha": 1
+    },
+    "escavacao": {
+      "batalha": 2
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 3,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Mordida",
+      "parte": "boca",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 7
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Ferrão de cauda",
+      "parte": "ferrao",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Mordida colossal",
-      "descricao": "ataque corpo a corpo com dano muito alto, ignora parte da Absorção por ser Imenso"
+      "nome": "mordida e ferrão juntos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "morde e pica com o ferrão da cauda na mesma ação"
     },
     {
-      "nome": "Engole inteiro",
-      "descricao": "acerto crítico prende o alvo dentro do corpo; dano contínuo automático a cada rodada até escapar"
+      "nome": "agarrar",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Mordida",
+      "regra": "agarrar"
     },
     {
-      "nome": "Ferrão de cauda venenoso",
-      "descricao": "ataque secundário na mesma rodada; veneno causa Enfraquecido e dano contínuo se falhar em Resistência"
+      "nome": "engolir inteiro",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "engole o alvo menor que agarrou; preso dentro, ele leva dano a cada rodada até sair"
     },
     {
-      "nome": "Escavador implacável",
-      "descricao": "atravessa terra e rocha sem perder deslocamento, pode emergir sob um alvo com bônus de Iniciativa"
+      "nome": "mordida colossal",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a mordida passa por parte da Absorção pelo tamanho"
     },
     {
-      "nome": "Sentido de tremor",
-      "descricao": "percebe qualquer criatura em contato com o solo em 18m, ignora invisibilidade e escuridão nesse alcance"
-    },
-    {
-      "nome": "Cego além do tremor",
-      "descricao": "sem visão real; sofre penalidade contra alvos voando ou flutuando fora do alcance do tremor"
-    },
-    {
-      "nome": "Carapaça anelada",
-      "descricao": "Absorção altíssima, resistente a esmagamento e queda"
+      "nome": "emergir sob o alvo",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "escava por baixo e sai sob o alvo, agindo antes"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "desastre que escava",
+      "formas": "todas",
+      "texto": "abre túneis com a boca, engole o que encontra e pica com o ferrão o que escapa; a passagem dele desaba minas."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "sentido de tremor",
+      "descricao": "sente pelo chão quem se move a até 18 m, sem ver. Ignora invisibilidade e escuridão nesse alcance",
+      "formas": "todas"
+    },
+    {
+      "nome": "cego",
+      "descricao": "não tem visão; o que voa ou flutua fora do tremor ele não percebe bem",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal (fera de Inteligência 1)",
+    "tracos": "verme púrpura de 24 m e anéis grossos, boca redonda de dentes e ferrão na ponta da cauda; não tem olhos"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "qualquer hora",
+    "dieta": "engole o que encontra",
+    "caca": "escava novas galerias quando a comida escasseia",
+    "dianteDeGente": "um desastre: a defesa é sair da rota"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Verme titânico das profundezas que escava túneis inteiros com a boca, engole o que encontra e usa o ferrão da cauda contra o que escapa. A passagem dele desaba minas, e os mineradores a contam como desastre natural, e não como caçada.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -105,40 +201,18 @@
       "texto": "É um dos poucos monstros grandes o bastante para assustar até os anões do White Wall, e mineradores contam sua chegada como um desastre natural, não como uma caçada: quando um verme púrpura escava perto, a única defesa é fugir da rota."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Underground"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/verme-purpura_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Prontidão 1.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Verme Púrpura",
-    "cr": "12",
-    "tipo": "besta mágica Imenso",
-    "tamanho": "imenso",
-    "valores": {
-      "for": 35,
-      "des": 10,
-      "con": 25,
-      "int": 1,
-      "sab": 8,
-      "car": 8
-    },
-    "pericias": [
-      "Prontidão 1"
-    ],
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5
+  "revisao": [
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 5: a \"carapaça anelada\" do site, de anéis grossos . O nível fica fora da Absorção (decisoes-autor §16)"
+    }
+  ]
 }

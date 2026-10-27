@@ -12,11 +12,12 @@
 //
 //   node scripts/test-bloqueio-arma.mjs
 import fs from 'node:fs';
+import { vistaCriatura } from './lib-criatura-motor.mjs';
 import path from 'node:path';
 import { bonusDaArma, defesaComArma } from './lib-ficha-v3.mjs';
 
 const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
-const v3 = (id) => JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/bestiario', `${id}.json`), 'utf8')).v3;
+const v3 = (id) => vistaCriatura(JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/bestiario', `${id}.json`), 'utf8'))).v3;
 const falhas = [];
 const ok = (c, m) => { console.log((c ? '  ✓ ' : '  ✘ ') + m); if (!c) falhas.push(m); };
 

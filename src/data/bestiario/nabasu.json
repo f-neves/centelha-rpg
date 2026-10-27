@@ -1,93 +1,270 @@
 {
-  "ordem": 178,
   "id": "nabasu",
   "idAntigo": "mon-nabasu",
   "nome": "Nabasu",
   "nomeIngles": "Demon, Nabasu",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Demônio",
+  "categoria": "corruptor",
   "papel": "chefe",
-  "conceito": "exterior (demônio) Médio",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
-  "tags": [
-    "demonio",
-    "centelha"
-  ],
-  "imagem": "bestiario/nabasu_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura",
-    "peso": "90 kg"
-  },
-  "locomocao": {
-    "terra": 3,
-    "voo": 6
-  },
+  "ameaca": 5,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, curvado; voa",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.45,
+    "profundidade": 0.23,
+    "comprimento": null,
+    "massa": 90,
+    "area": 0.72,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 7,
     "destreza": 5,
     "vigor": 7,
-    "influencia": 5,
-    "perspicacia": 5,
-    "compostura": 5,
     "percepcao": 5,
     "inteligencia": 4,
-    "raciocinio": 5
+    "raciocinio": 5,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 3,
+    "furtividade": 3,
+    "integridade": 5,
     "prontidao": 2,
-    "integridade": 5
+    "resistencia": 4,
+    "empatia": 1,
+    "sociabilidade": 1,
+    "ocultismo": 3
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "intimidacao": 3,
+    "voo": 3,
+    "musculatura": 2
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 6
+    "temperanca": 1
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 0,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "voo": {
+      "batalha": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Garras",
+      "parte": "mao-de-garras",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 5
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Mordida",
+      "parte": "boca-de-presas",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Roubo de Vida",
-      "descricao": "Cada vítima transformada em morto-vivo por seu olhar o fortalece: ganha mais vigor, precisão e poder mágico a cada alma consumida, até amadurecer em algo ainda pior."
+      "nome": "Duas garras",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada",
+      "texto": "Até dois golpes por ação"
     },
     {
-      "nome": "Olhar que Rouba a Morte",
-      "descricao": "Uma vez por dia, fixa os olhos em todos ao redor; quem falha em resistir perde vitalidade permanentemente, e um humano morto dessa forma se levanta como morto-vivo sob seu comando."
+      "nome": "garras e mordida juntas",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "rasga e morde na mesma ação; por enquanto, as garras vão juntas pela Rajada, e a Mordida é outra ação"
     },
     {
-      "nome": "Ataque Furtivo",
-      "descricao": "Golpeia com precisão extra quando ataca um alvo desprevenido."
+      "nome": "Toque que envelhece",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "morte",
+        "nivel": 2
+      },
+      "ativacao": "a Garra que fere",
+      "duracao": "até o fim da cena",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "a carne do alvo envelhece e o vigor escorre; ele tem −1 nas ações até o fim da cena, e o efeito não se soma",
+      "dano": "nenhum além da garra",
+      "resistencia": "corpo, contra a jogada da garra; quem passa não envelhece por aquela garra",
+      "limiteDeUso": "um por golpe"
     },
     {
-      "nome": "Resistências Infernais",
-      "descricao": "Resiste a fogo, frio e ácido; é imune a eletricidade, veneno, paralisia e efeitos de morte."
+      "nome": "Sombras",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "sombra",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "até o fim da cena",
+      "alcance": "18 m",
+      "area": "esfera de 9 m, ou o lugar onde as sombras surgem",
+      "efeito": "escolhe: cobre a área de escuridão (quem está dentro fica Na escuridão, e ele vê nela), ou chama duas sombras (a ficha do bestiário) que lutam por ele",
+      "dano": "o das sombras",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por dia"
     },
     {
-      "nome": "Poderes Sombrios",
-      "descricao": "Pode enfraquecer inimigos à distância, imobilizar vários de uma vez, silenciar uma área ou drenar vida com um toque vampírico."
+      "nome": "Fascinar",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 6, olho no olho",
+      "duracao": "até a próxima ação do alvo",
+      "alcance": "9 m, à vista",
+      "area": "um alvo",
+      "efeito": "prende a atenção do alvo, que perde a próxima ação e fica com a Defesa −4 até ela, como Surpreso",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Ocultismo dele; quem passa fica imune até o fim da cena",
+      "limiteDeUso": "três vezes por dia"
+    },
+    {
+      "nome": "Olhar que rouba a morte",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "permanente",
+      "alcance": "9 m",
+      "area": "todos à vista a até 9 m dele",
+      "efeito": "quem falha perde vitalidade para sempre; o humano que morre disso se ergue como ghoul (a ficha do bestiário) sob o comando dele na cena seguinte",
+      "dano": "o PV máximo do alvo cai 1d6, para sempre",
+      "resistencia": "corpo, contra Influência + Ocultismo dele; quem passa não perde nada",
+      "limiteDeUso": "uma vez por dia"
+    },
+    {
+      "nome": "roubo de vida",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "cada vítima erguida pelo olhar o fortalece; ganha vigor, precisão e poder a cada alma, até amadurecer em algo pior"
+    },
+    {
+      "nome": "dano de assassino",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quando pega o alvo desprevenido, o golpe faz dano extra considerável"
+    },
+    {
+      "nome": "poderes sombrios",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "enfraquece inimigos de longe, imobiliza vários de uma vez, silencia uma área ou drena vida com um toque"
+    },
+    {
+      "nome": "imune a veneno, paralisia e efeito de morte",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o veneno não pega nele, e o que trava o corpo ou mata de uma vez não o pega"
+    },
+    {
+      "nome": "medonho",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quem vê o nabasu pela primeira vez sente a fome dele como uma ameaça ao próprio corpo; o estômago gela e o corpo quer recuar"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "fome sem fim",
+      "formas": "todas",
+      "texto": "cai do alto sobre o desprevenido, envelhece com as garras e, quando há muitos vivos por perto, usa o olhar e ergue os mortos para lutar por ele."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "de demônio, sem nada além do que a Percepção 5 já dá",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "nas sombras e no alto, com a Furtividade",
+    "mente": "inteligente, demoníaca, faminta",
+    "tracos": "demônio de pele cinzenta de gárgula, asas de morcego, boca larga de presas e olhos vazios; nasce direto no mundo dos vivos e cresce a cada alma que come"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho, com os mortos que ergueu",
+    "atividade": "qualquer hora",
+    "dieta": "a vida e a carne de inocentes",
+    "caca": "ataca o desprevenido e rouba a vida pelo olhar",
+    "dianteDeGente": "come"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Demônio nascido das almas de glutões, que surge direto no mundo dos vivos para comer até se saciar. Envelhece com o toque, rouba a vida com o olhar e ergue como mortos-vivos os que mata assim, ficando mais forte a cada alma.",
   "lore": [
     {
       "titulo": "Nascido da Gula",
@@ -98,87 +275,61 @@
       "texto": "Rumores sugerem que mesmo depois de retornar ao Abismo saciado, seu crescimento jamais cessa, e que formas ainda mais terríveis aguardam em seu futuro."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/nabasu_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "acido",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": [
+      {
+        "tipo": "raio",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Nabasu",
-    "cr": "8",
-    "tipo": "exterior (demônio) Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 22,
-      "des": 17,
-      "con": 22,
-      "int": 15,
-      "sab": 16,
-      "car": 19
-    },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "poderes": [
+  "revisao": [
     {
-      "id": "toque-de-morte-nabasu",
-      "nome": "Toque que envelhece",
-      "tipo": "natural",
-      "base": {
-        "arte": "morte",
-        "nivel": 2
-      },
-      "resiste": "corpo",
-      "efeito": "o toque do nabasu envelhece o alvo, drenando vigor aos poucos",
-      "descricao": "O toque gélido do nabasu suga a vitalidade de quem ele alcança, deixando a vítima mais fraca e mais velha a cada golpe.",
-      "usos": {
-        "periodo": "golpe"
-      }
+      "campo": "habilidadesEspeciais.Toque que envelhece",
+      "motivo": "números sugeridos pela ficha (D-197); −1 nas ações até o fim da cena, o Definhar da Arte Morte 2 do livro; \"drenando vigor aos poucos\" do site ficou nisso"
     },
     {
-      "id": "sombras-do-nabasu",
-      "nome": "Sombras",
-      "tipo": "natural",
-      "base": {
-        "arte": "sombra",
-        "nivel": 4
-      },
-      "resiste": "esquiva",
-      "efeito": "convoca sombras vivas para lutar ao seu lado ou cobrir uma área em escuridão",
-      "descricao": "O nabasu puxa sombras do chão que ganham vida própria, lutando por ele ou cobrindo uma área inteira de escuridão.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 1
-      }
+      "campo": "habilidadesEspeciais.Sombras",
+      "motivo": "números sugeridos pela ficha (D-197); números da ficha com as bases do site (D-197); \"deixando-o vulnerável\" do site virou perder a ação com a Defesa −4, como Surpreso"
     },
     {
-      "id": "fascinar-nabasu",
-      "nome": "Fascinar",
-      "tipo": "natural",
-      "base": {
-        "arte": "fascinacao",
-        "nivel": 4
-      },
-      "resiste": "mente",
-      "efeito": "prende a atenção de quem falhar em resistir, deixando-o vulnerável",
-      "descricao": "O olhar do nabasu prende quem cruza com ele; quem falha em resistir fica paralisado de atenção, fácil de golpear.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 3
-      }
+      "campo": "habilidadesEspeciais.Fascinar",
+      "motivo": "números sugeridos pela ficha (D-197); números da ficha com as bases do site (D-197); \"deixando-o vulnerável\" do site virou perder a ação com a Defesa −4, como Surpreso"
+    },
+    {
+      "campo": "habilidadesEspeciais.Olhar que rouba a morte",
+      "motivo": "números sugeridos pela ficha (D-197); PV máximo −1d6 para sempre e o ghoul são números e escolha da ficha (D-197); o site não diz que morto-vivo se ergue"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: a pele grossa de gárgula, como o elefante (2 a 3) . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site, pela linha Elementos"
     }
   ]
 }

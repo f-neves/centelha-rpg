@@ -1,40 +1,32 @@
 {
-  "ordem": 131,
   "id": "dragao-vermelho-jovem",
   "idAntigo": "mon-dragao-vermelho-jovem",
   "nome": "Dragão Vermelho Jovem",
   "nomeIngles": "Dragon, Young Red",
-  "categoria": "Dragão",
-  "categoriaLegada": "Dragão",
+  "categoria": "dragao",
   "papel": "chefe",
-  "conceito": "dragão Enorme",
-  "descricao": "Dragão vermelho jovem de 4,9 m, ainda longe do tamanho adulto. Mergulha do alto, sopra fogo em cone de 9 m e faz inimigos comuns hesitarem só com a presença.",
-  "tags": [
-    "dragao",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/dragao-vermelho-jovem_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "4,9 m de comprimento, 1,41 m de altura",
-    "peso": "900 kg",
-    "comprimento": 4.9,
-    "largura": 0.98,
-    "altura": 1.41,
-    "envergadura": 9.8
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 20
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas; voador",
+    "apoio": "quadrupede",
+    "altura": 1.41,
+    "largura": 0.98,
+    "profundidade": null,
+    "comprimento": 4.9,
+    "comprimentoSemCauda": 2.5,
+    "caudaGrossa": true,
+    "envergadura": 9.8,
+    "massa": 900,
+    "area": 3,
+    "posturaDoTamanho": "de lado, pousado, asas fechadas",
+    "segundoTamanho": {
+      "area": 20,
+      "posturaDoTamanho": "de baixo, asas abertas"
+    }
+  },
+  "couraca": 6,
+  "atributos": {
     "forca": 9,
     "destreza": 3,
     "vigor": 6,
@@ -45,8 +37,9 @@
     "perspicacia": 3,
     "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 2,
     "furtividade": 1,
@@ -56,128 +49,237 @@
     "ocultismo": 2,
     "manha": 3
   },
-  "skills2": {
+  "habilidadesSec": {
     "intimidacao": 3,
     "voo": 3,
     "disparo": 3,
     "acerto-arcano": 2,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "manha",
-      "foco": "em torno do tesouro",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "manha": [
+      {
+        "foco": "em torno do tesouro",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
     "compaixao": 2,
     "conviccao": 5,
-    "temperanca": 3,
-    "valor": 6
+    "temperanca": 3
   },
-  "willpower": 10,
+  "vontade": 10,
   "aparencia": 9,
-  "ataques": [
-    {
-      "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 2,
-      "ticks": 6,
-      "classe": "media"
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
     },
-    {
-      "nome": "Garras",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "ticks": 6,
-      "classe": "media"
-    },
-    {
-      "nome": "Sopro de fogo",
-      "atrib": "vigor",
-      "pericia": "disparo",
-      "dado": 6,
-      "mao": 1,
-      "tipo": "fogo",
-      "ticks": 7,
-      "forca": false,
-      "classe": "distancia",
-      "distancia": true
+    "voo": {
+      "batalha": 20
     }
-  ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [
-    "fogo"
-  ],
-  "arte": {
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {
     "protecao": 1,
     "fortuna": 1
   },
-  "mana": 20,
-  "habilidades": [
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "parte": "boca",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 2,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Garras",
+      "parte": "pata-dianteira",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    },
     {
       "nome": "Sopro de fogo",
-      "descricao": "poder natural (base Fogo 3, a do site): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Efeito: o fogo queima tudo no cone. Dano: 6d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site).",
-      "classe": "regra da ficha"
+      "parte": "boca",
+      "habilidade": "disparo",
+      "classe": "distancia",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "6d6",
+      "multiplicadorForca": 0,
+      "tipoDano": "fogo",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    }
+  ],
+  "habilidadesEspeciais": [
+    {
+      "nome": "Sopro de fogo",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fogo",
+        "nivel": 3
+      },
+      "ataque": "Sopro de fogo",
+      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "duracao": "instantânea",
+      "alcance": "9 m à frente",
+      "area": "cone de 9 m",
+      "efeito": "o fogo queima tudo no cone",
+      "dano": "6d6 + Centelha, fogo",
+      "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
       "nome": "garras em sequência",
-      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada"
     },
     {
       "nome": "Multiataque",
-      "descricao": "garra, garra e mordida no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "garra, garra e mordida no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
     },
     {
       "nome": "Presença",
-      "descricao": "poder natural (base Morte 3): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 18 m. Área: esfera de 18 m em volta dele. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência 3 + Intimidação 3 + 2 × o menor entre Centelha 5 e Intimidação 3 (6) = 12 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "morte",
+        "nivel": 3
+      },
+      "ativacao": "a primeira vez na cena em que ele ruge, ataca ou desce do céu",
+      "duracao": "Abalado até o fim da cena",
+      "alcance": "18 m",
+      "area": "esfera de 18 m em volta dele",
+      "efeito": "quem falha fica Abalado",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência 3 + Intimidação 3 + 2 × o menor entre Centelha 5 e Intimidação 3 (6) = 12 mais a rolagem; quem passa fica imune até o fim da cena",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Temor Reverente",
-      "descricao": "Técnica temor-reverente, nível 3: a presença dele faz inimigos comuns hesitarem em atacá-lo. Do site; a Centelha 5 abre o nível 3. O pré-requisito do caminho não está no site.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "temor-reverente",
+        "nivel": 3
+      }
     },
     {
       "nome": "Voo veloz",
-      "descricao": "Ativação: descer de pelo menos 6 m de altura direto sobre o alvo. Duração: instantânea. Alcance: o do voo. Área: um alvo. Efeito: +1d6 na Iniciativa no mergulho (site). Dano: o do golpe. Resistência: nenhum. Limite de uso: um mergulho a cada vez que sobe de novo a 6 m.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "descer de pelo menos 6 m de altura direto sobre o alvo",
+      "duracao": "instantânea",
+      "alcance": "o do voo",
+      "area": "um alvo",
+      "efeito": "+1d6 na Iniciativa no mergulho",
+      "dano": "o do golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um mergulho a cada vez que sobe de novo a 6 m"
     },
     {
       "nome": "Feitiço sem gastar ação",
-      "descricao": "\"lança 1 truque arcano por cena sem gastar ação extra\" (site); a ficha conjura pela regra da Arte.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "Feitiços",
-      "descricao": "Artes do livro: Proteção até o 1 (Salvaguarda), Fortuna até o 1, com 20 de Mana."
-    },
-    {
-      "nome": "caça do alto",
-      "descricao": "mergulha, sopra fogo sobre o grupo e desce para morder o que ficou de pé.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: vê sem luz. · faro: apurado. · sentidos dracônicos: quem tenta Furtividade contra ele não consegue (sem regra ainda)."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "\"lança 1 truque arcano por cena sem gastar ação extra\"; a ficha conjura pela regra da Arte"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "caça do alto",
+      "formas": "todas",
+      "texto": "mergulha, sopra fogo sobre o grupo e desce para morder o que ficou de pé."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "vê sem luz",
+      "formas": "todas"
+    },
+    {
+      "nome": "faro",
+      "descricao": "apurado",
+      "formas": "todas"
+    },
+    {
+      "nome": "sentidos dracônicos",
+      "descricao": "quem tenta Furtividade contra ele não consegue",
+      "formas": "todas",
+      "classe": "sem regra ainda"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "a de um bicho grande; quanto tempo, o Mestre decide",
+    "mente": "inteligente, orgulhosa e gananciosa",
+    "tracos": "escamas vermelhas, chifres curtos, asas de couro; o ar em volta esquenta"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "qualquer hora",
+    "dieta": "carnívoro",
+    "caca": "do alto, com o sopro",
+    "dianteDeGente": "ataca ou exige tributo"
+  },
+  "ecologia": {
+    "terreno": [
+      "montanha"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "Dragão vermelho jovem de 4,9 m, ainda longe do tamanho adulto. Mergulha do alto, sopra fogo em cone de 9 m e faz inimigos comuns hesitarem só com a presença.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "O dragão vermelho jovem já defende um território definido com violência calculada, atacando quem se aproxima do covil e usando o sopro de fogo tanto para caçar quanto para impor respeito às vizinhanças. Social: solitário."
+      "texto": "O dragão vermelho jovem já defende um território definido com violência calculada, atacando quem se aproxima do covil e usando o sopro de fogo tanto para caçar quanto para impor respeito às vizinhanças."
     },
     {
       "titulo": "Sociedade",
@@ -190,92 +292,65 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Nas fronteiras selvagens de Mére, onde o povo já convive com monstros mais estranhos que em Calin, um dragão jovem que reivindica uma montanha vira lenda local quase da noite para o dia, tema de canções de aviso e oferendas deixadas na entrada de covis."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Enorme no ar, Grande pousado. 54 PV, Impacto 11, Corte e Perfuração 5. Esquiva 10, Bloqueio 6. Sopro de fogo em cone de 9 m (dano médio 26,0) a cada 24 Ticks. Mordida e garras de 17,5; garras até três por ação. Presença a 18 m. Conjura Proteção e Fortuna até o 1, com 20 de Mana. Fogo não o fere."
     }
   ],
-  "ecologia": {
-    "tipo": "Dragon",
-    "terreno": [
-      "Mountain"
-    ],
-    "clima": [
-      "Temperate",
-      "Tropical"
+  "imagens": [
+    "bestiario/dragao-vermelho-jovem_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "Habilidades notáveis: Prontidão 4, Manha 3, Ocultismo 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Dragão Vermelho Jovem",
-    "cr": "10",
-    "tipo": "dragão Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 25,
-      "des": 12,
-      "con": 19,
-      "int": 12,
-      "sab": 13,
-      "car": 12
-    },
-    "pericias": [
-      "Prontidão 4",
-      "Manha 3",
-      "Ocultismo 2"
-    ],
-    "nota": "Sopro e feitiços iniciais: Centelha 4.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "lenda-viva"
-    }
-  ],
-  "v3": {
-    "pv": 54,
-    "esquiva": 10,
-    "bloqueio": 6,
-    "defesa": 10,
-    "defesaMental": 22,
-    "defesaSocial": 14,
-    "absorcao": {
-      "impacto": 11,
-      "corte": 5,
-      "perfuracao": 5
+      "campo": "habilidadesEspeciais.Sopro de fogo",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 6,
-    "pesoErguido": 1194.69,
-    "deslocamento": {
-      "terra": {
-        "batalha": 4,
-        "arranque": 6,
-        "corrida": 9
-      },
-      "voo": {
-        "batalha": 20
-      }
+    {
+      "campo": "habilidadesEspeciais.Presença",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Voo veloz",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "sentidos.sentidos dracônicos",
+      "motivo": "sem regra ainda no livro"
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "A do dragão branco jovem (1,3 m, 700 kg) escalada pela massa: × (massa ÷ 700)^(1/3) = × 1,087"
+    },
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "2,3 m do branco jovem × 1,087; a cauda tem o resto do comprimento do site, 2,40 m"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "0,9 m do branco jovem × 1,087"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Escama de dragão, \"acima do crocodilo\" (manual 4.2), como o branco jovem (6) . As \"Escamas rígidas\" do site (Absorção +2d6) são esta Couraça. O nível fica fora da Absorção (decisoes-autor §16); nível 6"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "ataques.Mordida.nivelPerfuracao",
+      "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como no branco jovem. Golpe de boca: Força × 1. N2, como o branco jovem . Jogada: Força 9 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Principal Enorme para Grande; as duas áreas mantidas, mudando a postura principal (2e-1)."
     }
-  },
-  "tech": {
-    "temor-reverente": true
-  },
-  "notasObservacao": [
-    "`proezaFutura`: o site guarda o caminho \"lenda-viva\"; fica como está",
-    "`temor reverente`: a Técnica do site, sem o pré-requisito \"discurso\"",
-    "`tamanho`: Enorme de asas abertas, Grande pousado, pelo método do branco jovem; os números do autor para o dragão de 10 m (55 m² parado, 134 m² em voo, `tamanho-regras.md` 4.1) dariam mais (pergunta 1 do lote 23) **[provisório]**",
-    "`couraca`: nível 6 **[provisório]**",
-    "`sopro`: 6d6 + Centelha, cone de 9 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197) **[provisório]**",
-    "`multiataque`: sem regra ainda; garras pela Rajada",
-    "`presença` e os outros poderes: números sugeridos pela ficha (D-197)"
   ]
 }

@@ -1,38 +1,25 @@
 {
-  "ordem": 108,
   "id": "djinn",
   "idAntigo": "mon-djinn",
   "nome": "Djinn",
   "nomeIngles": "Djinn",
-  "categoria": "Elemental",
-  "categoriaLegada": "Elemental",
+  "categoria": "elemental",
   "papel": "elite",
-  "conceito": "exterior Grande (ar)",
-  "descricao": "Nobre do plano do ar, orgulhoso e honrado: voa, some da vista, vira redemoinho cortante, muda a própria aparência e faz brotar água e comida. Barganhar com ele exige mais cautela que qualquer contrato humano.",
-  "tags": [
-    "elemental",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/djinn_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "3 m de altura",
-    "peso": "200 kg",
-    "largura": 0.75,
-    "altura": 3
-  },
-  "locomocao": {
-    "terra": 2,
-    "voo": 6
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 5
-  },
+  "ameaca": 4,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé; voador",
+    "apoio": "bipede",
+    "altura": 3,
+    "largura": 0.75,
+    "profundidade": 0.38,
+    "comprimento": null,
+    "massa": 200,
+    "area": 2,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 6,
     "destreza": 5,
     "vigor": 5,
@@ -43,8 +30,9 @@
     "perspicacia": 4,
     "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 2,
     "integridade": 4,
@@ -55,84 +43,192 @@
     "oficios-gerais": 3,
     "sobrevivencia": 1
   },
-  "skills2": {
+  "habilidadesSec": {
     "etiqueta": 2,
-    "voo": 3
+    "voo": 3,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "persuasao",
-      "foco": "barganhar",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "persuasao": [
+      {
+        "foco": "barganhar",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 2,
     "conviccao": 4,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 5,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "voo": {
+      "batalha": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Golpe de vento",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "braco-envolto-em-vento-cortante",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [
-    "corte",
-    "perfuracao"
-  ],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Forma de redemoinho",
-      "descricao": "poder natural (base Vento 4, a do site): Ativação: uma ação, Velocidade 6. Duração: até 18 Ticks, ou até ele desfazer com outra ação. Alcance: o próprio corpo, que se move enquanto gira. Área: quem está a até 3 m dele. Efeito: vira um tornado de vento cortante que levanta destroços; quem está na área cai (Caído), e quem é mais leve que ele e não passa fica Agarrado, girando dentro, até o tornado acabar ou até vencer a manobra para se soltar. Dano: 2d6 + Centelha, Corte, a cada 6 Ticks, a quem está dentro. Resistência: esquiva, contra Destreza + Briga dele; quem passa fica de pé e de fora. Limite de uso: à vontade (site).",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "vento",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até 18 Ticks, ou até ele desfazer com outra ação",
+      "alcance": "o próprio corpo, que se move enquanto gira",
+      "area": "quem está a até 3 m dele",
+      "efeito": "vira um tornado de vento cortante que levanta destroços; quem está na área cai (Caído), e quem é mais leve que ele e não passa fica Agarrado, girando dentro, até o tornado acabar ou até vencer a manobra para se soltar",
+      "dano": "2d6 + Centelha, Corte, a cada 6 Ticks, a quem está dentro",
+      "resistencia": "esquiva, contra Destreza + Briga dele; quem passa fica de pé e de fora",
+      "limiteDeUso": "à vontade"
     },
     {
       "nome": "Invisibilidade",
-      "descricao": "poder natural (base Ofuscação 1, a do site): Ativação: uma ação, Velocidade 6. Duração: até ele atacar ou usar um poder chamativo, e no máximo até o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Invisível. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "ofuscacao",
+        "nivel": 1
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até ele atacar ou usar um poder chamativo, e no máximo até o fim da cena",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "fica Invisível",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
     },
     {
       "nome": "Criar água e comida",
-      "descricao": "poder natural (base Matéria 2, a do site): Ativação: um gesto, sem gastar ação de combate (site). Duração: a comida fica boa por um dia. Alcance: 3 m. Área: o bastante para seis pessoas por um dia. Efeito: faz brotar água limpa ou uma refeição simples do nada. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "materia",
+        "nivel": 2
+      },
+      "ativacao": "um gesto, sem gastar ação de combate",
+      "duracao": "a comida fica boa por um dia",
+      "alcance": "3 m",
+      "area": "o bastante para seis pessoas por um dia",
+      "efeito": "faz brotar água limpa ou uma refeição simples do nada",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por dia"
     },
     {
       "nome": "Véu",
-      "descricao": "poder natural (base Ofuscação 2, sugestão da ficha): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena. Alcance: o próprio corpo, ou uma área a até 9 m. Área: ele mesmo, ou um espaço de até 3 m. Efeito: muda a própria aparência (outro rosto, outra roupa, outra altura dentro do Grande) ou a de uma área pequena; é ilusão, e quem toca percebe. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dele, para quem desconfia e examina. Limite de uso: duas vezes por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "ofuscacao",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até o fim da cena",
+      "alcance": "o próprio corpo, ou uma área a até 9 m",
+      "area": "ele mesmo, ou um espaço de até 3 m",
+      "efeito": "muda a própria aparência (outro rosto, outra roupa, outra altura dentro do Grande) ou a de uma área pequena; é ilusão, e quem toca percebe",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Ocultismo dele, para quem desconfia e examina",
+      "limiteDeUso": "duas vezes por cena"
     },
     {
       "nome": "Domínio do vento",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: o vento em volta desvia o que vem de longe: +2 na Esquiva contra ataques à distância. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "nobre do ar",
-      "descricao": "conversa e barganha antes de lutar; luta no ar, vira redemoinho contra grupos, some quando a luta vira contra ele e volta invisível para cobrar a dívida.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão e audição: as de um humano."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "o vento em volta desvia o que vem de longe: +2 na Esquiva contra ataques à distância",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "nobre do ar",
+      "formas": "todas",
+      "texto": "conversa e barganha antes de lutar; luta no ar, vira redemoinho contra grupos, some quando a luta vira contra ele e volta invisível para cobrar a dívida."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "a Invisibilidade e o Véu (nas Manobras)",
+    "mente": "inteligente; orgulhosa, vaidosa e honrada",
+    "tracos": "homem de 3 m, de pele azulada e roupas finas, que da cintura para baixo às vezes vira um rodamoinho de vento"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em corte, com servos e cortesãos",
+    "atividade": "qualquer hora",
+    "dieta": "onívoro; banquetes",
+    "caca": "não caça",
+    "dianteDeGente": "barganha e cumpre o acordo ao pé da letra, explorando as brechas da redação"
+  },
+  "ecologia": {
+    "terreno": [
+      "céu",
+      "deserto"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Nobre do plano do ar, orgulhoso e honrado: voa, some da vista, vira redemoinho cortante, muda a própria aparência e faz brotar água e comida. Barganhar com ele exige mais cautela que qualquer contrato humano.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Nobre do ar, orgulhoso e honrado, cumpre acordos ao pé da letra mas adora explorar as brechas na redação de um pedido. Social: em corte, com servos e cortesãos."
+      "texto": "Nobre do ar, orgulhoso e honrado, cumpre acordos ao pé da letra mas adora explorar as brechas na redação de um pedido."
     },
     {
       "titulo": "Sociedade",
@@ -145,84 +241,49 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Um djinn preso numa lamparina ou anel é lenda recorrente nos contos de Mère e nas rotas de comércio de Calin; poucos mercadores confiam nessas histórias, mas todo aventureiro que encontra um sabe que barganhar com um ser do ar exige mais cautela do que qualquer contrato humano."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande, 40 PV, Impacto 9, Corte e Perfuração 4; Corte e Perfuração fazem metade. Esquiva 14 (16 contra ataque à distância), Bloqueio 10, Defesa Mental 25. Golpe de vento de dano médio 17. À vontade vira redemoinho: derruba quem está a 3 m e prende os mais leves, com 2d6 + 4 de Corte a cada 6 Ticks. Some à vontade, muda a aparência e faz brotar água e comida. Anda a 2 e voa a 6."
     }
   ],
-  "ecologia": {
-    "tipo": "Elemental",
-    "terreno": [
-      "Sky",
-      "Desert"
-    ],
-    "clima": [
-      "Extraplanar"
-    ]
-  },
-  "notas": "Habilidades notáveis: Ofícios 3, Persuasão 3, Prontidão 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Djinn",
-    "cr": "5",
-    "tipo": "exterior Grande (ar)",
-    "tamanho": "grande",
-    "valores": {
-      "for": 18,
-      "des": 19,
-      "con": 14,
-      "int": 14,
-      "sab": 15,
-      "car": 15
-    },
-    "pericias": [
-      "Ofícios 3",
-      "Persuasão 3",
-      "Prontidão 2"
-    ],
-    "nota": "Gênio do ar, magia inata: Centelha 3.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 40,
-    "esquiva": 14,
-    "bloqueio": 10,
-    "defesa": 14,
-    "defesaMental": 25,
-    "defesaSocial": 16,
-    "absorcao": {
-      "impacto": 9,
-      "corte": 4,
-      "perfuracao": 4
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 375.61,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 3,
-        "corrida": 5
+  "imagens": [
+    "bestiario/djinn_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [
+      {
+        "tipo": "corte",
+        "formas": "todas"
       },
-      "voo": {
-        "batalha": 6
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
       }
-    }
+    ],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`massa`: 200 kg, a do site; o corpo de base escalado a 3 m daria 370 kg (D-187) **[referência de jogo]**",
-    "`pv`: 40, na zona de transição, pela faixa de baixo (corpo leve); pela de cima seria 50 **[provisório]**",
-    "`ataque`: o \"Golpe planar\" de 2 dados e corte vira o Golpe de vento Pesada, de 2 dados e corte (D-241)",
-    "`forma de redemoinho`: poder natural, e não forma (linha Formas) **[provisório]**",
-    "`segundo Tamanho`: o tornado ativo dá 5,63 m², Grande, sem mudar a categoria (decisão do autor de 24/10/2026, D-213); com o cilindro, ou com o funil da largura da Área (3 m à volta), seria Enorme, e a linha passaria a `**Enorme** (..., com o redemoinho ativo)` **[provisório]**",
-    "`virtudes`: Compaixão 2, Convicção 4, Temperança 1; o site tinha 1, 3 e 2 **[provisório]**",
-    "`forma de redemoinho`, `invisibilidade`, `criar água e comida`, `véu`, `domínio do vento`: números sugeridos pela ficha (D-197)"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Forma de redemoinho",
+      "motivo": "números sugeridos pela ficha (D-197); poder natural, e não forma (linha Formas)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Invisibilidade",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Criar água e comida",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Véu",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Domínio do vento",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site"
+    }
   ]
 }

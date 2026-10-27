@@ -1,34 +1,23 @@
 {
-  "ordem": 7,
   "id": "capitao-da-guarda",
   "nome": "Capitão da Guarda",
   "nomeIngles": "Captain of the Guard",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humano",
+  "categoria": "humanoide",
   "papel": "elite",
-  "conceito": "comandante mortal",
-  "descricao": "Comandante de placa e escudo que distribui os guardas, segura a linha sob pressão e prefere vencer pela disciplina do grupo a arriscar um duelo pessoal.",
-  "tags": [
-    "humano"
-  ],
-  "imagem": "bestiario/capitao-da-guarda_pdm.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura",
-    "peso": "85 kg",
-    "largura": 0.46,
-    "altura": 1.8
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 4,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.46,
+    "profundidade": 0.24,
+    "comprimento": null,
+    "massa": 85,
+    "area": 0.74
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 4,
     "vigor": 4,
@@ -39,7 +28,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 4,
     "esquiva": 3,
     "bloqueio": 3,
@@ -51,89 +40,138 @@
     "resistencia": 3,
     "sociabilidade": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "estrategia": 3,
-    "lideranca": 3
+    "lideranca": 3,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "espada longa",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "bloqueio",
-      "foco": "com escudo",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "integridade",
-      "foco": "medo na batalha",
-      "valor": 2,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "espada longa",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 3,
-    "valor": 3
+    "temperanca": 3
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-longa"
+      },
+      {
+        "ref": "e:heater"
+      }
+    ],
+    "armaduras": [
+      {
+        "base": "placa-completa",
+        "vestida": true
+      }
+    ]
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Espada longa",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 1,
-      "ticks": 6,
-      "classe": "media"
+      "arma": "espada-longa",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Comando de tropa",
-      "descricao": "Ativação: uma ação, Velocidade 3, dando a ordem em voz alta. Duração: até a próxima ação dele. Alcance: 18 m, onde o ouvem. Área: até seis subordinados que o ouvem. Efeito: à escolha dele, os subordinados somam +1 no ataque ou +1 na Defesa. Dano: nenhum. Resistência: nenhum. Limite de uso: uma ordem por ação dele.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 3, dando a ordem em voz alta",
+      "duracao": "até a próxima ação dele",
+      "alcance": "18 m, onde o ouvem",
+      "area": "até seis subordinados que o ouvem",
+      "efeito": "à escolha dele, os subordinados somam +1 no ataque ou +1 na Defesa",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma ordem por ação dele"
     },
     {
       "nome": "Placa e escudo",
-      "descricao": "a placa completa e o heater na frase da linha Absorção; a Penalidade −3 pesa no movimento.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "a placa completa e o heater na frase da linha Absorção; a Penalidade −3 pesa no movimento"
     },
     {
       "nome": "Pico do mortal",
-      "descricao": "os números de humano treinado no topo da régua (Integridade 6, Armas 4).",
-      "classe": "livro"
-    },
-    {
-      "nome": "segura a linha",
-      "descricao": "distribui os guardas, fecha a linha com o escudo e decide quando chamar reforço ou dar o alarme; evita o duelo pessoal.",
-      "classe": "como luta"
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "os números de humano treinado no topo da régua (Integridade 6, Armas 4)"
     },
     {
       "nome": "Sem inimizades naturais",
-      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão, audição, olfato: humanos."
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "segura a linha",
+      "formas": "todas",
+      "texto": "distribui os guardas, fecha a linha com o escudo e decide quando chamar reforço ou dar o alarme; evita o duelo pessoal."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão, audição, olfato",
+      "descricao": "humanos",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humana; disciplinada",
+    "tracos": "armadura de placas com o brasão da cidade, escudo heater, espada longa, cicatrizes de serviço"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "à frente de guardas, típico 4 a 12",
+    "atividade": "diurno e noturno, por turnos",
+    "dieta": "onívoro",
+    "caca": "não se aplica",
+    "dianteDeGente": "impõe a ordem; decide quando dar o alarme"
+  },
+  "ecologia": {
+    "terreno": [
+      "urbano"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Comandante de placa e escudo que distribui os guardas, segura a linha sob pressão e prefere vencer pela disciplina do grupo a arriscar um duelo pessoal.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Coordena subordinados, distribui posições e mantém a linha mesmo sob pressão; prefere vencer pela disciplina do grupo a arriscar um duelo pessoal. Social: à frente de guardas, típico 4 a 12."
+      "texto": "Coordena subordinados, distribui posições e mantém a linha mesmo sob pressão; prefere vencer pela disciplina do grupo a arriscar um duelo pessoal."
     },
     {
       "titulo": "Sociedade",
@@ -142,74 +180,28 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Encarna o comando mortal das cidades de Calin: sem faísca divina, apenas competência, experiência e a confiança de quem já segurou a linha antes."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Humano Médio, Centelha 1, 37 PV, de placa e escudo (Impacto 9, Corte 9, Perfuração 5, N3: só arma de N3 fura). Bloqueio 16 (17 com a espada), Esquiva 11, contra tiro 16. A espada dá dano médio 7,5. A cada ação pode dar +1 no ataque ou na Defesa de até seis guardas. Defesa Mental 17."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Urban"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/capitao-da-guarda_pdm.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Placa (Absorção +6, Esquiva −2, lento) + escudo. Pico do que um mortal alcança.",
-  "pendente": false,
-  "fonte": {
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Comando de tropa",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "cr": "4",
-    "crConf": "estimado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 37,
-    "esquiva": 16,
-    "bloqueio": 16,
-    "defesa": 17,
-    "defesaMental": 17,
-    "defesaSocial": 10,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 1,
-      "perfuracao": 1
+    {
+      "campo": "habilidadesSec.estrategia",
+      "motivo": "O site tinha `tatica` 3, que não existe no livro; a secundária mais perto é Estratégia (manual 3.5, D-190)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 136.93,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
-    },
-    "bloqueioArma": 1,
-    "vestida": {
-      "esquiva": 11,
-      "bloqueio": 16,
-      "defesa": 17,
-      "contraTiro": 16,
-      "absorcao": {
-        "impacto": 9,
-        "corte": 9,
-        "perfuracao": 5
-      },
-      "nivel": 3,
-      "penalidade": 3
+    {
+      "campo": "comportamento.social",
+      "motivo": "site"
     }
-  },
-  "notasObservacao": [
-    "`escudo`: o heater do livro, sempre carregado, para o \"bônus adicional ao Bloqueio\" do site **[provisório]**",
-    "`estrategia`: o `tatica` do site não existe no livro (manual 3.5, D-190) **[provisório]**",
-    "`temperanca`: 3; o site tinha 2 **[provisório]**",
-    "`comando de tropa`: números sugeridos pela ficha (D-197)",
-    "`card e equipamento`: a placa e o escudo estão sempre com ele (D-188)"
   ]
 }

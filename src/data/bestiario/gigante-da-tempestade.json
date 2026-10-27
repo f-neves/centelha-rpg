@@ -1,38 +1,25 @@
 {
-  "ordem": 33,
   "id": "gigante-da-tempestade",
   "idAntigo": "mon-gigante-da-tempestade",
   "nome": "Gigante da Tempestade",
   "nomeIngles": "Giant, Storm",
-  "categoria": "Gigante",
-  "categoriaLegada": "Gigante",
+  "categoria": "gigante",
   "papel": "chefe",
-  "conceito": "humanoide Enorme (gigante)",
-  "descricao": "Gigante de 7,5 m, sábio e reservado, que vive em fortalezas sobre recifes e respira água. Prefere observar a interferir; quando age, convoca a tempestade, lança relâmpagos que saltam de alvo em alvo e esmaga com punhos que soltam raios. O raio não o fere.",
-  "tags": [
-    "gigante",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/gigante-da-tempestade_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "7,5 m de altura",
-    "peso": "5.772 kg",
-    "largura": 1.88,
-    "altura": 7.5
-  },
-  "locomocao": {
-    "terra": 5,
-    "natacao": 4
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 5,
-    "arranque": 8,
-    "corrida": 12
-  },
+  "ameaca": 5,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 7.5,
+    "largura": 1.88,
+    "profundidade": 0.96,
+    "comprimento": null,
+    "massa": 5772,
+    "area": 12.5,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 13,
     "destreza": 4,
     "vigor": 9,
@@ -43,7 +30,7 @@
     "perspicacia": 5,
     "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
     "bloqueio": 1,
     "esquiva": 1,
@@ -54,81 +41,188 @@
     "ocultismo": 2,
     "sociabilidade": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "intimidacao": 3,
     "natacao": 3,
     "musculatura": 3
   },
-  "virtues": {
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 5
+    "temperanca": 2
   },
-  "willpower": 8,
+  "vontade": 8,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 5,
+      "arranque": 8,
+      "corrida": 12
+    },
+    "nado": {
+      "batalha": 4
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pancada descomunal",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "punho",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [
-    "raio"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Comandar o clima",
-      "descricao": "poder natural (base Vento 5, a do site): Ativação: cerca de dez minutos de concentração. Duração: até ele dissipar, ou até o fim do dia. Alcance: o céu sobre uma região inteira. Área: uma região, de quilômetros. Efeito: convoca ou dissipa uma tempestade: nuvens carregadas, ventania, raios caindo ao acaso, a critério do Mestre. Dano: o dos raios ao acaso, a critério do Mestre. Resistência: nenhum. Limite de uso: uma vez por dia (site).",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "vento",
+        "nivel": 5
+      },
+      "ativacao": "cerca de dez minutos de concentração",
+      "duracao": "até ele dissipar, ou até o fim do dia",
+      "alcance": "o céu sobre uma região inteira",
+      "area": "uma região, de quilômetros",
+      "efeito": "convoca ou dissipa uma tempestade: nuvens carregadas, ventania, raios caindo ao acaso, a critério do Mestre",
+      "dano": "o dos raios ao acaso, a critério do Mestre",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por dia"
     },
     {
       "nome": "Relâmpago em cadeia",
-      "descricao": "poder natural (base Raio 4, a do site): Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 36 m até o primeiro alvo. Área: o primeiro alvo e até quatro outros, cada um a até 9 m do anterior. Efeito: um relâmpago sai das mãos dele e salta de um alvo para o próximo. Dano: 4d6 + Centelha, raio, no primeiro; 2d6 + Centelha, raio, em cada um dos outros. Resistência: esquiva, contra Dificuldade 14 (10 + Centelha 4); quem passa leva metade. Limite de uso: três vezes por dia (site).",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "raio",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "instantânea",
+      "alcance": "36 m até o primeiro alvo",
+      "area": "o primeiro alvo e até quatro outros, cada um a até 9 m do anterior",
+      "efeito": "um relâmpago sai das mãos dele e salta de um alvo para o próximo",
+      "dano": "4d6 + Centelha, raio, no primeiro; 2d6 + Centelha, raio, em cada um dos outros",
+      "resistencia": "esquiva, contra Dificuldade 14 (10 + Centelha 4); quem passa leva metade",
+      "limiteDeUso": "três vezes por dia"
     },
     {
       "nome": "Respirar água",
-      "descricao": "poder natural (base Água 3, a do site): Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: respira água como quem respira ar, sem esforço nem limite de tempo, e nada sem penalidade (site, Anfíbio). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "agua",
+        "nivel": 3
+      },
+      "ativacao": "nenhuma; sempre ativo",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "respira água como quem respira ar, sem esforço nem limite de tempo, e nada sem penalidade (site, Anfíbio)",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Fúria do raio",
-      "descricao": "Pancada descomunal: Ativação: a Pancada descomunal que acerta. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o punho solta uma descarga elétrica. Dano: mais 1d6, raio. Resistência: nenhum. Limite de uso: um por golpe.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Pancada descomunal",
+      "ativacao": "a Pancada descomunal que acerta",
+      "duracao": "instantânea",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "o punho solta uma descarga elétrica",
+      "dano": "mais 1d6, raio",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "Presença régia",
-      "descricao": "Ativação: a primeira vez na cena em que ele fala, ruge ou ataca. Duração: até o fim da cena. Alcance: 18 m. Área: os inimigos que o veem a até 18 m. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência 4 + Intimidação 3 + 2 × o menor entre Centelha 4 e Intimidação 3 (6) = 13 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "a primeira vez na cena em que ele fala, ruge ou ataca",
+      "duracao": "até o fim da cena",
+      "alcance": "18 m",
+      "area": "os inimigos que o veem a até 18 m",
+      "efeito": "quem falha fica Abalado",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência 4 + Intimidação 3 + 2 × o menor entre Centelha 4 e Intimidação 3 (6) = 13 mais a rolagem; quem passa fica imune até o fim da cena",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "agarrar",
-      "descricao": "Pancada descomunal: Agarrar.",
-      "classe": "livro"
-    },
-    {
-      "nome": "juiz das águas",
-      "descricao": "observa antes de agir; quando age, chama o raio sobre os culpados, esmaga com o punho e volta para o mar.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão e audição: as de um humano atento; vê debaixo d'água como fora dela."
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Pancada descomunal",
+      "regra": "agarrar"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "juiz das águas",
+      "formas": "todas",
+      "texto": "observa antes de agir; quando age, chama o raio sobre os culpados, esmaga com o punho e volta para o mar."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano atento; vê debaixo d'água como fora dela",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar e água (Respirar água)",
+    "prendeRespiracao": "não precisa",
+    "mente": "humanoide, sábia e reservada",
+    "tracos": "gigante de 7,5 m de porte nobre, pele de tom violáceo e cabelos como nuvem de chuva"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": true,
+    "tracao": true
+  },
+  "comportamento": {
+    "social": "isolado, em fortalezas sobre recifes ou ilhas",
+    "atividade": "qualquer hora",
+    "dieta": "onívoro",
+    "caca": "pesca e caça no mar",
+    "dianteDeGente": "observa de longe; age com justiça severa"
+  },
+  "ecologia": {
+    "terreno": [
+      "litoral",
+      "aquático"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Gigante de 7,5 m, sábio e reservado, que vive em fortalezas sobre recifes e respira água. Prefere observar a interferir; quando age, convoca a tempestade, lança relâmpagos que saltam de alvo em alvo e esmaga com punhos que soltam raios. O raio não o fere.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Sábio e reservado, prefere observar a interferir, e quando age, age com justiça severa e definitiva. Social: isolado, em fortalezas sobre recifes ou ilhas."
+      "texto": "Sábio e reservado, prefere observar a interferir, e quando age, age com justiça severa e definitiva."
     },
     {
       "titulo": "Sociedade",
@@ -145,82 +239,53 @@
     {
       "titulo": "Aptidões",
       "texto": "montaria não · carga sim · tração sim"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Enorme, 80 PV, Impacto 13, Corte e Perfuração 4; o raio não o fere. Esquiva 12, Bloqueio 12, Defesa Mental 26. Pancada de dano médio 24, mais 1d6 de raio. Três vezes por dia, relâmpago em cadeia (4d6 + 4 no primeiro, 2d6 + 4 em até quatro outros). Na primeira vez que age na cena, quem o vê pode ficar Abalado. Respira água e nada a 4."
     }
   ],
-  "ecologia": {
-    "tipo": "Giant",
-    "terreno": [
-      "Coast",
-      "Water"
-    ],
-    "clima": [
-      "Temperate"
+  "imagens": [
+    "bestiario/gigante-da-tempestade_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "raio",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "Habilidades notáveis: Prontidão 4, Conhecimentos 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "MM 3.5",
-    "nome": "Gigante da Tempestade",
-    "cr": "13",
-    "tipo": "humanoide Enorme (gigante)",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 39,
-      "des": 14,
-      "con": 23,
-      "int": 16,
-      "sab": 20,
-      "car": 15
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Comandar o clima",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Prontidão 4",
-      "Conhecimentos 2"
-    ],
-    "nota": "Controle do clima e magia: Centelha 2.",
-    "deslocamento": {
-      "ft": 50,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Relâmpago em cadeia",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "v3": {
-    "pv": 80,
-    "esquiva": 12,
-    "bloqueio": 12,
-    "defesa": 12,
-    "defesaMental": 26,
-    "defesaSocial": 18,
-    "absorcao": {
-      "impacto": 13,
-      "corte": 4,
-      "perfuracao": 4
+    {
+      "campo": "habilidadesEspeciais.Respirar água",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 2,
-    "pesoErguido": 2337.29,
-    "deslocamento": {
-      "terra": {
-        "batalha": 5,
-        "arranque": 8,
-        "corrida": 12
-      },
-      "nado": 4
+    {
+      "campo": "habilidadesEspeciais.Fúria do raio",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Presença régia",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça: pele grossa de gigante, como o gigante da colina (2) ; o nível fica fora da Absorção (decisoes-autor §16). A imunidade é a da habilidade publicada (Elementos); 2, pele grossa de gigante"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": "site"
+    },
+    {
+      "campo": "comportamento.caca",
+      "motivo": "site"
     }
-  },
-  "notasObservacao": [
-    "`massa`: 5.772 kg pelo cubo da altura do site, como o gigante da colina; o site dizia 11 t (D-187) **[conta]**",
-    "`centelha`: 4, o campo do site; a nota da fonte dizia 2 (§17)",
-    "`prontidao`: 4, a da nota do site; o campo dizia 3 **[provisório]**",
-    "`ataque`: a Pancada de 3 dados vira Pesada de 2 dados (perda de mecânica publicada, no relato) **[provisório]**",
-    "`couraca`: 2, pele grossa de gigante **[provisório]**",
-    "`elementos`: imune a raio pela habilidade publicada",
-    "`traços`: a cor da pele e do cabelo é leitura da ficha; o site não a descreve **[provisório]**",
-    "`comandar o clima`, `relâmpago em cadeia`, `respirar água`, `fúria do raio`, `presença régia`: números sugeridos pela ficha (D-197)"
   ]
 }

@@ -1,96 +1,199 @@
 {
-  "ordem": 245,
   "id": "kyton",
   "idAntigo": "mon-kyton",
   "nome": "Kyton",
   "nomeIngles": "Kyton",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Exterior",
+  "categoria": "corruptor",
   "papel": "elite",
-  "conceito": "exterior Médio",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
-  "tags": [
-    "exterior",
-    "centelha"
-  ],
-  "imagem": "bestiario/kyton_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura",
-    "peso": "90 kg"
-  },
-  "locomocao": {
-    "terra": 3
-  },
+  "ameaca": 4,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, ereto",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.48,
+    "profundidade": 0.24,
+    "comprimento": null,
+    "massa": 90,
+    "area": 0.76,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 3,
+  "atributos": {
     "forca": 4,
     "destreza": 5,
     "vigor": 4,
-    "influencia": 3,
-    "perspicacia": 3,
-    "compostura": 3,
     "percepcao": 3,
     "inteligencia": 2,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 2,
     "esquiva": 1,
+    "atletismo": 3,
+    "furtividade": 2,
+    "integridade": 3,
     "prontidao": 1,
-    "integridade": 3
+    "resistencia": 4,
+    "empatia": 2,
+    "sociabilidade": 1,
+    "ocultismo": 2
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "intimidacao": 3,
+    "ferreiro": 3,
+    "musculatura": 2
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 5
+    "temperanca": 1
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 1,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Correntes",
+      "parte": "corrente-farpada",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 5
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Regeneração",
-      "descricao": "Fecha feridas continuamente; apenas armas boas ou de prata deixam cortes que não se fecham sozinhos."
+      "nome": "Três correntes",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Correntes",
+      "regra": "rajada"
     },
     {
-      "nome": "Pele Curtida",
-      "descricao": "Sua carne resiste a golpes comuns, sendo vulnerável apenas a armas prateadas ou abençoadas; também é imune ao frio."
+      "nome": "quatro correntes juntas",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "ataca com até quatro correntes na mesma ação; a Rajada do livro para em três"
     },
     {
-      "nome": "Resistência a Magia",
-      "descricao": "Feitiços hostis enfrentam uma resistência natural antes de fazer efeito."
+      "nome": "correntes dançantes",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "faz até quatro correntes atacarem sozinhas num raio de 6 m, como extensões do corpo; quem tenta arrancar uma delas precisa vencê-lo em Compostura, ou a corrente continua dele"
     },
     {
-      "nome": "Correntes Dançantes",
-      "descricao": "Controla até quatro correntes farpadas num raio de seis metros, fazendo-as atacar como extensões de si mesmo; quem tenta arrancar uma corrente de sua posse precisa vencer um teste de Compostura ou permanece sob seu controle."
+      "nome": "Olhar perturbador",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6, o rosto que muda",
+      "duracao": "até o fim do próximo intervalo de 12 Ticks",
+      "alcance": "9 m, quem olha para ele",
+      "area": "um alvo",
+      "efeito": "o rosto vira o de um ente querido morto ou de um inimigo odiado da vítima; quem falha fica Amedrontado",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Intimidação dele; quem passa fica imune ao olhar dele até o fim da cena",
+      "limiteDeUso": "uma vez por cena por alvo"
     },
     {
-      "nome": "Armadura de Correntes",
-      "descricao": "As correntes que o cobrem funcionam como uma armadura viva, sem pesar nem atrapalhar seus movimentos."
+      "nome": "Regeneração 2",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de arma abençoada ou de prata"
     },
     {
-      "nome": "Olhar Perturbador",
-      "descricao": "Transforma o próprio rosto no de um ente querido morto ou inimigo odiado da vítima; quem falha um teste de Compostura fica tomado de pavor por vários instantes."
+      "nome": "ferida que não fecha",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o que arma de prata ou do bem faz não se regenera pela regeneração"
+    },
+    {
+      "nome": "arma de prata ou abençoada fere inteira",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a resistência da pele não vale contra arma de prata ou abençoada"
+    },
+    {
+      "nome": "resistência a magia",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a Arte hostil enfrenta uma resistência natural antes de fazer efeito"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "Correntes que alcançam",
+      "formas": "todas",
+      "texto": "as correntes chegam a 3 m; ataca de longe quem tenta fechar distância."
+    },
+    {
+      "nome": "artista da dor",
+      "formas": "todas",
+      "texto": "abre a luta com o olhar, prende e rasga com as correntes de longe e saboreia cada ferida; recebe o golpe com o mesmo êxtase com que o dá."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "nas sombras",
+    "mente": "inteligente, obsessiva, sádica",
+    "tracos": "corpo humano de pele pálida inteiramente envolto em correntes farpadas que ele mesmo forjou, com ganchos e lâminas presos nas pontas; o rosto muda"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho, ou com outros da sua espécie em busca de parceiros de suplício",
+    "atividade": "qualquer hora",
+    "dieta": "não precisa comer",
+    "caca": "caça vítimas para o tormento",
+    "dianteDeGente": "tortura; não obedece a nenhuma ordem infernal"
+  },
+  "ecologia": {
+    "terreno": [
+      "ruínas",
+      "subterrâneo"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Ser dos planos sombrios, envolto em correntes farpadas que ele mesmo forjou, que cultiva o sofrimento como arte e o recebe com o mesmo êxtase com que o inflige. Confundido com um diabo por quem não sabe, não obedece a nenhuma hierarquia e faz as correntes atacarem como extensões do próprio corpo.",
   "lore": [
     {
       "titulo": "Prazer na Dor",
@@ -105,39 +208,65 @@
       "texto": "Cada corrente que veste foi forjada e afiada por ele próprio, numa devoção obsessiva ao corpo transformado em arma."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Ruins",
-      "Underground"
+  "imagens": [
+    "bestiario/kyton_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [
+      {
+        "tipo": "corte",
+        "formas": "todas"
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      },
+      {
+        "tipo": "impacto",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": [
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Kyton",
-    "cr": "6",
-    "tipo": "exterior Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 15,
-      "des": 17,
-      "con": 14,
-      "int": 11,
-      "sab": 12,
-      "car": 12
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Olhar perturbador",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidades.bloqueio",
+      "motivo": "Apara com a corrente esticada (decisoes-autor §1)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: a \"armadura de correntes\", que \"não pesa nem atrapalha\" (site), tratada como parte do corpo e não como equipamento (D-188), entre o elefante (2 a 3) e o crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16). A \"pele curtida\" do site (resiste a golpes comuns; imune ao frio), pela linha Elementos"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "ataques.Correntes",
+      "motivo": "O \"Golpe planar\" do site (1 dado, 5 Ticks, corte) e as \"correntes farpadas que atacam como extensões de si mesmo\": o chicote da corrente com o corpo atrás, Média (`regra-construcao.md` §7) . Até três por ação pela Rajada (Manobras). Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Regeneração 2",
+      "motivo": "Antes: 4 PV/6 Ticks por 4 de Energia. N 2 pela referência Kyton (Archives of Nethys)."
+    }
+  ]
 }

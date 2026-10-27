@@ -1,3 +1,4 @@
+import { pvJogador } from '../lib-criatura-motor.mjs';
 // calibrar.mjs · linha de base para a calibração das Proezas.
 //
 // Duas camadas:
@@ -73,7 +74,7 @@ const ALAVANCAS = [
   'pv+1', 'pv+5', 'preparo-1', 'recuperacao-1', 'habilidade+1',
   'atributo+1-destreza-espada',
 ];
-const BASE_PV = REGRAS.derivados.pv.base + 3 * REGRAS.derivados.pv.vigorMult;
+const BASE_PV = pvJogador(3);
 
 const L0 = await carregarLib();
 ligar(L0);

@@ -1,39 +1,25 @@
 {
-  "ordem": 90,
   "id": "hezrou",
   "idAntigo": "mon-hezrou",
   "nome": "Hezrou",
   "nomeIngles": "Demon, Hezrou",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Demônio",
+  "categoria": "corruptor",
   "papel": "chefe",
-  "conceito": "exterior Grande (demônio)",
-  "descricao": "Demônio em forma de sapo gigante, brutal e direto, envolto num fedor que derruba o estômago de quem chega perto. Serve de músculo nas hostes demoníacas: forte demais para bucha de canhão, sem cabeça para comandar.",
-  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
-  "tags": [
-    "demonio",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/hezrou_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "3 m de altura",
-    "peso": "621 kg",
-    "largura": 1.05,
-    "altura": 3
-  },
-  "locomocao": {
-    "terra": 3,
-    "natacao": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, curvado; nada",
+    "apoio": "bipede",
+    "altura": 3,
+    "largura": 1.05,
+    "profundidade": 0.46,
+    "comprimento": null,
+    "massa": 621,
+    "area": 2.8,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 4,
+  "atributos": {
     "forca": 9,
     "destreza": 3,
     "vigor": 9,
@@ -44,11 +30,12 @@
     "perspicacia": 3,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
     "bloqueio": 2,
     "esquiva": 1,
     "atletismo": 3,
+    "furtividade": 0,
     "integridade": 4,
     "prontidao": 4,
     "resistencia": 5,
@@ -57,129 +44,192 @@
     "sobrevivencia": 2,
     "ocultismo": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "natacao": 3,
     "intimidacao": 3,
+    "equilibrio": 0,
     "escalada": 1,
+    "voo": 0,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "resistencia",
-      "foco": "doença e podridão",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "agarrar",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "resistencia": [
+      {
+        "foco": "doença e podridão",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "agarrar",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ],
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
     "compaixao": 1,
     "conviccao": 4,
-    "temperanca": 1,
-    "valor": 6
+    "temperanca": 1
   },
-  "willpower": 8,
+  "vontade": 8,
   "aparencia": 0,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "nado": {
+      "batalha": 3
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 1,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "boca",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Garras",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "ticks": 6,
-      "classe": "media"
+      "parte": "garra",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "resistencias": [
-    "fogo",
-    "gelo",
-    "raio",
-    "acido"
-  ],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "Mordida ou Garras: Agarrar.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
     },
     {
       "nome": "agarra no golpe forte",
-      "descricao": "quando a mordida ou as garras acertam com folga, a presa já fica Agarrada, sem a manobra à parte.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quando a mordida ou as garras acertam com folga, a presa já fica Agarrada, sem a manobra à parte"
     },
     {
       "nome": "arrombar",
-      "descricao": "Força 9 e o Peso erguido contra portas, grades e objetos.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "Força 9 e o Peso erguido contra portas, grades e objetos"
     },
     {
       "nome": "fedor nauseante",
-      "descricao": "um fedor em volta dele, de uns 6 m. Quem entra resiste uma vez por cena com Vigor + Resistência; quem falha fica enjoado enquanto ficar perto.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "um fedor em volta dele, de uns 6 m. Quem entra resiste uma vez por cena com Vigor + Resistência; quem falha fica enjoado enquanto ficar perto"
     },
     {
       "nome": "medonho",
-      "descricao": "quem vê o hezrou pela primeira vez sente repulsa e medo; o estômago vira, e o corpo quer recuar antes de qualquer golpe.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quem vê o hezrou pela primeira vez sente repulsa e medo; o estômago vira, e o corpo quer recuar antes de qualquer golpe"
     },
     {
       "nome": "convocar",
-      "descricao": "uma vez por cena, por feitiçaria, traz outro demônio para reforçar a luta.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "uma vez por cena, por feitiçaria, traz outro demônio para reforçar a luta"
     },
     {
       "nome": "teleporte",
-      "descricao": "uma vez por cena, por feitiçaria, some e reaparece em outro lugar, e pode levar junto quem estiver agarrando.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "sangue abissal",
-      "descricao": "resistência a Fogo, Gelo, Raio e Ácido (metade do dano).",
-      "classe": "livro"
-    },
-    {
-      "nome": "brutal",
-      "descricao": "sem tática nem paciência, avança sobre o mais próximo e morde, rasga e agarra; arrasa vilarejos antes que um exército chegue.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "faro: Prontidão (faro) 1: acha presa pelo cheiro de medo e de sangue. · visão e audição: de demônio, sem nada além do que a Percepção 4 já dá."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "uma vez por cena, por feitiçaria, some e reaparece em outro lugar, e pode levar junto quem estiver agarrando"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "brutal",
+      "formas": "todas",
+      "texto": "sem tática nem paciência, avança sobre o mais próximo e morde, rasga e agarra; arrasa vilarejos antes que um exército chegue."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "Prontidão (faro) 1: acha presa pelo cheiro de medo e de sangue",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "de demônio, sem nada além do que a Percepção 4 já dá",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar; à vontade na água e no lodo",
+    "prendeRespiracao": "; nada como sapo",
+    "camuflagem": "no lodo e no pântano, a critério do Mestre (o fedor o denuncia)",
+    "mente": "inteligente, demoníaca",
+    "tracos": "sapo gigante de pé, verrugoso; banha-se em imundície e carcaça. Exala um fedor que embrulha o estômago de quem chega perto"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho ou em grupo de demônios (2 a 4), sob o comando de outro",
+    "atividade": "qualquer hora",
+    "dieta": "carne e carcaça",
+    "caca": "arrasa e devora",
+    "dianteDeGente": "ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer; pântano e imundície"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Demônio em forma de sapo gigante, brutal e direto, envolto num fedor que derruba o estômago de quem chega perto. Serve de músculo nas hostes demoníacas: forte demais para bucha de canhão, sem cabeça para comandar.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Brutal e direto, ataca com força bruta e mordidas, envolto no próprio fedor nauseante, sem tática nem paciência, apenas fome de destruição. Social: sozinho ou em grupo de demônios (2 a 4), sob o comando de outro."
+      "texto": "Brutal e direto, ataca com força bruta e mordidas, envolto no próprio fedor nauseante, sem tática nem paciência, apenas fome de destruição."
     },
     {
       "titulo": "Hábitos",
@@ -192,80 +242,66 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Onde a Fenda vaza mais fundo, sacerdotes contam de sapos gigantes fedorentos que arrasam vilarejos inteiros antes de qualquer exército conseguir reagir."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande: o humano ganha +3 no acerto contra ele. Morde ou rasga com dano médio 17,5 e agarra; com Força 9 e Centelha 5, nenhum humano de Força 4 ou menos e Centelha abaixo de 5 consegue aparar o golpe dele. Esquiva 10, Bloqueio 14, Defesa Mental 23, Defesa Social 8 (a conversa o engana mais que a magia). Absorção natural 14 contra pancada e 5 contra lâmina e ponta; fogo, frio, raio e ácido fazem metade; luz e golpe sagrado passam toda a Absorção. 66 PV. O fedor enjoa quem chega perto, e uma vez por cena ele some e reaparece em outro lugar ou traz outro demônio."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
-    ],
-    "clima": [
-      "Extraplanar"
-    ]
-  },
-  "notas": "Habilidades notáveis: Prontidão 4, Atletismo 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Hezrou",
-    "cr": "11",
-    "tipo": "exterior Grande (demônio)",
-    "tamanho": "grande",
-    "valores": {
-      "for": 27,
-      "des": 15,
-      "con": 25,
-      "int": 14,
-      "sab": 16,
-      "car": 18
-    },
-    "pericias": [
-      "Prontidão 4",
-      "Atletismo 3"
-    ],
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "v3": {
-    "pv": 66,
-    "esquiva": 10,
-    "bloqueio": 14,
-    "defesa": 14,
-    "defesaMental": 23,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 14,
-      "corte": 5,
-      "perfuracao": 5
-    },
-    "couracaNivel": 4,
-    "pesoErguido": 1240.89,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
+  "imagens": [
+    "bestiario/hezrou_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
       },
-      "nado": 3
-    }
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
+    ],
+    "resistencias": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "raio",
+        "formas": "todas"
+      },
+      {
+        "tipo": "acido",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`massa`: 621 kg pelo corpo de base da D-192 (1,80 m, 80 kg, 0,079 m³) e pela densidade do manual, escolhida contra os 320 kg do site pela D-187 (caso a caso, com justificativa na ficha): o publicado fica fora de qualquer conta pelo volume. O alargamento (40% e 20%) é julgamento; com o corpo de proporção humana daria 369 kg. Com o corpo de base de 1,75 m (D-190) eram 633 kg, e no lote 1, pelo soldado, 653 kg. O Peso erguido passou de 1.239,10 para 1.240,89 kg; a largura e o Espaço, de 1,13 × 0,61 m (o soldado escalado) para 1,05 × 0,46 m (os ombros e o tronco do boneco, sem os braços). A área (2,80 m²), a Faixa, a linha de PV e o Tamanho não mudam **[extrapolação]**",
-    "`centelha`: 5, a publicada; o texto põe o hezrou como músculo, abaixo de quem comanda. Se o autor rever, a Centelha mexe em todo o dano, nas Defesas e na Absorção **[provisório]**",
-    "`artes`: o site tinha `arte: vento 2, espirito 4` e um poder natural \"fedor nauseante\" com base Vento 2. Pela C-037 a Arte com Mana é só da lista de conjuradores (dragões, Lich, Couatl, Ninfa, Planetar, Solar, Ghaele, Rakshasa, Naga); o resto vira poder natural, \"com base e nível mantidos como parâmetro\". A ficha não tem Mana e guarda Vento 2 (fedor) e Espírito 4 (convocar e teleporte, ao que parece) só como parâmetro aqui **[provisório]**",
-    "`inteligencia` e sociais: descem pelo texto do site; o Pathfinder tem Int 14 e Car 18 **[provisório]**",
-    "`couracaNivel`: 4, como o rinoceronte; a pele de demônio não tem referência na escala **[provisório]**",
-    "`aparencia`: 0 é o piso da régua, e não \"abaixo de 0\"; a linha medonho foi acrescentada pela D-181, sem estar na ficha publicada (o LEIA-ME do lote pede o teste). O efeito em quem olha (repulsa e medo) é descrição, sem número **[provisório]**",
-    "`fedor`: a resistência por Vigor + Resistência é a do livro para o que invade o corpo (`aparencia-virtudes-vontade.md`); o enjoo não tem condição no livro (`condicoes.json` não tem \"Enjoado\")",
-    "conferidor: desde a oitava atualização do pacote (22/10/2026) o `confere_etapa2.py` confere Impacto = Vigor + Centelha e Corte e Perfuração = Centelha; a linha de Absorção (Impacto 14, Corte e Perfuração 5) passa sem mudança"
+  "revisao": [
+    {
+      "campo": "atributos.inteligencia",
+      "motivo": "Degrau 2, comum. O site diz \"sem inteligência para comandar\" e \"sem tática nem paciência\": a Inteligência 4 publicada (a Int 14 do Pathfinder) contradiz o texto, e \"a ficha é o que vale; o texto é adaptado à ficha\" vale nos dois sentidos quando o texto descreve a criatura (decisoes-autor §17)"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Sem espécie medida, a massa sai do corpo de base e da densidade (manual 4.2, D-192). O corpo de base (1,80 m, 0,079 m³) escalado pelo cubo da altura (× 4,63) = 0,366 m³, com o tronco de sapo 40% mais largo e 20% mais fundo (× 1,68) = 0,614 m³ , com a densidade de carne e osso (1.010 kg/m³) = 621 kg. O site dizia 320 kg. Por que fica a calculada (D-187: \"a Bestiarista decide caso a caso, com justificativa na ficha\"): os 320 kg ficam abaixo até do corpo de base escalado a 3 m sem alargar nada (369 kg), e o texto do site fala de \"corpo maciço\" e de sapo largo; nenhuma conta pelo volume chega a 320 kg sem uma densidade abaixo da água, e um corpo de carne, osso e lodo não fica abaixo da água. A faixa da conta vai de 369 kg (proporção humana) a 621 kg (tronco de sapo); fica o alto, pelo corpo descrito. Os dois números, e os 320 kg, ficam na Faixa 4 e na mesma linha de PV: a escolha só muda o Peso erguido; 621 kg pelo corpo de base da D-192 (1,80 m, 80 kg, 0,079 m³) e pela densidade do manual, escolhida contra os 320 kg do site pela D-187 (caso a caso, com justificativa na ficha): o publicado fica fora de qualquer conta pelo volume. O alargamento (40% e 20%) é julgamento; com o corpo de proporção humana daria 369 kg. Com o corpo de base de 1,75 m (D-190) eram 633 kg, e no lote 1, pelo soldado, 653 kg. O Peso erguido passou de 1.239,10 para 1.240,89 kg; a largura e o Espaço, de 1,13 × 0,61 m (o soldado escalado) para 1,05 × 0,46 m (os ombros e o tronco do boneco, sem os braços). A área (2,80 m²), a Faixa, a linha de PV e o Tamanho não mudam"
+    },
+    {
+      "campo": "vontade",
+      "motivo": "Régua do livro (0 a 12): reserva de demônio, acima do herói típico (5 ou mais), mas \"sem paciência\" e sob o comando de outros. O site tinha 10"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça: couro grosso e verrugoso de sapo gigante, como o rinoceronte (3 a 4); o nível fica fora da Absorção (decisoes-autor §16). As resistências são o \"sangue abissal\" da ficha publicada, pela regra do livro (Elementos); o ácido entrou no vocabulário dos elementos, com a resistência pela metade (C-039, decisão do autor desta rodada)"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Sociedade)  no número"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "0 é o piso da régua, e não \"abaixo de 0\"; a linha medonho foi acrescentada pela D-181, sem estar na ficha publicada (o LEIA-ME do lote pede o teste). O efeito em quem olha (repulsa e medo) é descrição, sem número"
+    }
   ]
 }

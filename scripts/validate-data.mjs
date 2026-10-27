@@ -1055,7 +1055,7 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
 // calados. (O deslocamento é conferido pelo test-deslocamento.mjs, que compara o
 // monsters.json com o satélite.)
 {
-  const { criaturaSchema, PERICIAS_LEGADAS, HABILIDADES_DE_CRIATURA } = await import('./criatura-schema.mjs');
+  const { criaturaSchema, criaturaNovaSchema, PERICIAS_LEGADAS, HABILIDADES_DE_CRIATURA } = await import('./criatura-schema.mjs');
   const SO_CRIATURA = new Set(HABILIDADES_DE_CRIATURA);
   const PASTA = path.join(DIR, 'bestiario');
   const SEC = new Set((data['habilidades-secundarias'] || []).map((x) => x.id));
@@ -1067,8 +1067,26 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
     const onde = `bestiario/${f}`;
     let c;
     try { c = JSON.parse(fs.readFileSync(path.join(PASTA, f), 'utf8')); } catch (e) { fail(`${onde}: JSON inválido (${e.message})`); continue; }
-    const r = criaturaSchema.safeParse(c);
+    const nova = !!c.corpo && !!c.atributos;
+    const r = (nova ? criaturaNovaSchema : criaturaSchema).safeParse(c);
     if (!r.success) { for (const i of r.error.issues) fail(`${onde}: ${i.path.join('.') || '(raiz)'} · ${i.message}`); continue; }
+    if (nova && r.success) {
+      if (c.id + '.json' !== f) fail(onde + ': id diferente do arquivo');
+      for (const k of Object.keys(c.habilidades)) if (!H.has(k) && !SO_CRIATURA.has(k)) fail(onde + ': Habilidade inexistente ' + k);
+      for (const k of Object.keys(c.habilidadesSec)) if (!SEC.has(k) && !SO_CRIATURA.has(k)) fail(onde + ': secundária inexistente ' + k);
+      for (const k of Object.keys(c.artes)) if (!ART.has(k)) fail(onde + ': Arte inexistente ' + k);
+      const armasNovas = new Set((data.armas || []).map(x=>x.id));
+      for (const a of c.ataques) {
+        if (a.arma && !armasNovas.has(a.arma)) fail(onde + ': arma inexistente ' + a.arma);
+        if (!H.has(a.habilidade) && !SEC.has(a.habilidade) && !SO_CRIATURA.has(a.habilidade)) fail(onde + ': Habilidade de ataque inexistente ' + a.habilidade);
+      }
+      for (const imagem of c.imagens) if (!fs.existsSync(path.join(DIR,'..','..','public',imagem))) fail(onde + ': imagem inexistente ' + imagem);
+      for (const h of c.habilidadesEspeciais) {
+        if (h.tecnica && !T.has(h.tecnica.id)) fail(onde + ': Técnica inexistente ' + h.tecnica.id);
+        if (h.arte && !ART.has(h.arte.id)) fail(onde + ': Arte inexistente ' + h.arte.id);
+      }
+      continue;
+    }
     if (`${c.id}.json` !== f) fail(`${onde}: o id "${c.id}" não bate com o nome do arquivo`);
     if (c.centelha > TETO_CENTELHA) fail(`${onde}: Centelha ${c.centelha} acima da escalaCentelha (${TETO_CENTELHA})`);
     if (c.ordem != null) {

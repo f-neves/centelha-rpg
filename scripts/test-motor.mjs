@@ -38,52 +38,8 @@ const SEM_SOCIABILIDADE = 'a Defesa Social da ficha usa Sociabilidade 1, e a tab
 // P4, 26/10/2026: números antigos das fichas que aguardam lote de ajuste da Bestiarista.
 // Pares [ficha antiga, motor aprovado], sem alterar nenhuma ficha. A entrada sai quando o lote chega.
 const SOCIAL_P4 = {
-  "ankheg": [
-    4,
-    14
-  ],
-  "basilisco": [
-    6,
-    18
-  ],
-  "behir": [
-    6,
-    14
-  ],
-  "bulette": [
-    4,
-    12
-  ],
   "buscador": [
     2,
-    8
-  ],
-  "cao-de-guerra-nessiano": [
-    4,
-    16
-  ],
-  "cao-infernal": [
-    4,
-    14
-  ],
-  "cao-yeth": [
-    6,
-    16
-  ],
-  "cocatriz": [
-    4,
-    12
-  ],
-  "corujurso": [
-    4,
-    10
-  ],
-  "diabo-barbado": [
-    8,
-    4
-  ],
-  "dretch": [
-    4,
     8
   ],
   "elemental-da-agua-pequeno": [
@@ -114,21 +70,9 @@ const SOCIAL_P4 = {
     6,
     16
   ],
-  "ettin": [
-    4,
-    8
-  ],
   "froghemoth": [
     6,
     10
-  ],
-  "girallon": [
-    4,
-    12
-  ],
-  "gorgona-touro-de-ferro": [
-    6,
-    18
   ],
   "hidra-5-cabecas": [
     4,
@@ -158,10 +102,6 @@ const SOCIAL_P4 = {
     4,
     12
   ],
-  "ogro": [
-    4,
-    6
-  ],
   "otyugh": [
     4,
     12
@@ -185,10 +125,6 @@ const SOCIAL_P4 = {
   "tarrasque": [
     8,
     20
-  ],
-  "trol": [
-    4,
-    8
   ],
   "verme-purpura": [
     4,
@@ -314,7 +250,29 @@ for (const [quem, ficha, conta, deve] of JOGADOR) {
     if (k) confere('regras.json', `derivados.pv.massa, linha ${i + 1} (${l.massa}) com Vigor 3`, k.base + Math.floor((3 * k.vigorMult) / k.vigorDivisor), l.comVigor3);
   });
 }
+// A5j: exemplos independentes de personagem, com números do livro e da D-234.
+for (const [raca,pv] of [['gnomo',26],['halfling',26],['humano',34],['orc',37],['meio-orc',37]]) {
+  const S = {raca,attrs:{forca:3,destreza:3,vigor:3,raciocinio:3,compostura:3},skills:{bloqueio:2,esquiva:1,prontidao:2},skills2:{},willpower:5,centelha:0,arte:{},equip:{},corpo:{massa:70},conjuntos:[{ativo:true,habil:{ref:'a:espada-longa'},inabil:{ref:'e:broquel'}}]};
+  const n = M.numerosPersonagem(S);
+  confere('A5j '+raca,'PV',n.pv,pv);
+  confere('A5j '+raca,'Iniciativa',n.iniciativa.bonus,5);
+  confere('A5j '+raca,'Bloqueio com espada e broquel',n.bloqueio,12);
+}
+// D-224: nem a vista nem os gerados públicos carregam revisao, em qualquer profundidade.
+function temRevisao(x) { return x && typeof x==='object' && (Object.hasOwn(x,'revisao') || Object.values(x).some(temRevisao)); }
+for (const arquivo of ['inimigos.json','monsters.json','monsters-mesa.json']) {
+  const pub = JSON.parse(fs.readFileSync(path.join(ROOT,'src/data',arquivo),'utf8'));
+  confere(arquivo,'sem revisao',!!temRevisao(pub),false);
+}
+for (const arquivo of fs.readdirSync(path.join(ROOT,'src/data/bestiario'))) {
+  const c = JSON.parse(fs.readFileSync(path.join(ROOT,'src/data/bestiario',arquivo),'utf8'));
+  if (!c.corpo) continue;
+  const vista = M.vistaPublicaCriatura({...c,revisao:[{campo:'nome',motivo:'__REVISAO_PRIVADA_A5__'}]});
+  confere(c.id,'vista sem revisao',JSON.stringify(vista).includes('__REVISAO_PRIVADA_A5__'),false);
+  for (const a of vista.motor.stat.ataques) if (['corte','impacto','perfuracao','perfurante'].includes(a.tipo)) confere(c.id,a.nome+' com tipo de dano legível',/\([CIP]\)/.test(a.dano),true);
+}
 const nC = Object.keys(FIX.criaturas).length;
+for (const id of Object.keys(SOCIAL_P4)) if (!aceitas.some(k=>k.startsWith(id+'.defesaSocial (P4:'))) falhas.push({id,conta:'P4 sem uso: remover após ajuste',vem:'corrigida',deve:'pendente'});
 for (const k of Object.keys(ACEITAS)) if (!aceitas.includes(k)) falhas.push({ id: k, conta: 'ACEITAS sem uso (a diferença sumiu: tire a entrada)', vem: 'igual', deve: 'diferente' });
 if (falhas.length) {
   const porConta = {};
@@ -326,5 +284,5 @@ if (falhas.length) {
   }
   process.exit(1);
 }
-console.log(`✓ test-motor · ${contas} contas de ${nC} criaturas e ${JOGADOR.length} jogadores batem com as fichas`
+console.log(`✓ test-motor · ${contas} contas de ${nC} criaturas e ${JOGADOR.length} referências de jogador e 5 casos raciais batem com as fichas`
   + (aceitas.length ? ` · ${aceitas.length} aceitas com motivo` : ''));

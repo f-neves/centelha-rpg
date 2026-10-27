@@ -20,7 +20,8 @@ import {
   type EfeitoAtivo, type Forma, type Figura, type Encaixe, type Desvio,
 } from './artes-grid';
 import { pool, regras, limiteDaMorte } from './calc';
-import { pesoMaximoErguido, alcanceArremesso } from './forca-empurrao';
+import { levantamentoDaArte } from './motor';
+import { alcanceArremesso } from './forca-empurrao';
 import {
   abrirConjuracao, abrirNPC, abrirEmpurroes, abrirMudarEfeito, escolherItem, itensDoAlvo,
   npcVazio, type Plano, type Empurrado,
@@ -1299,9 +1300,8 @@ async function deslocar(ctx: CtxGrid, c: any, plano: Plano, palco: HTMLElement):
   // conferir se a analogia valia; não valia, e o dado (`efeitos.json`,
   // parâmetro FAA do `empurrao-elemental`) está corrigido junto.
   const F = (regras as any).forca;
-  const fah = plano.nivelArte * 7 - 2;
   const faa = plano.nivelArte * 4;
-  const maxKg = pesoMaximoErguido(fah, F);
+  const maxKg = levantamentoDaArte(plano.nivelArte);
   // DOIS TETOS, e são coisas diferentes (`resultadoDoEmpurrao`, acima).
   // Acima do teto de ARREMESSO a Força ainda ERGUE o corpo, só não o lança
   // (`metros` 0, e quem esbarra cai é o que `condicoesDoEmpurrao` já aplica

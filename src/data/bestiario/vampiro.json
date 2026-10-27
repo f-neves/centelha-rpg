@@ -1,175 +1,270 @@
 {
-  "ordem": 84,
   "id": "vampiro",
   "idAntigo": "mon-vampiro",
   "nome": "Vampiro",
   "nomeIngles": "Vampire",
-  "categoria": "Morto-vivo",
+  "categoria": "morto-vivo",
   "papel": "chefe",
-  "conceito": "morto-vivo Médio",
-  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
-  "tags": [
-    "morto-vivo",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/vampiro_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,75 m de altura",
-    "peso": "75 kg"
-  },
-  "locomocao": {
-    "terra": 3,
-    "escalada": 2
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, ereto",
+    "apoio": "bipede",
+    "altura": 1.75,
+    "largura": 0.44,
+    "profundidade": 0.22,
+    "comprimento": null,
+    "massa": 75,
+    "area": 0.68,
+    "posturaDoTamanho": "de pé"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 5,
     "destreza": 5,
     "vigor": 8,
-    "influencia": 8,
-    "perspicacia": 6,
-    "compostura": 6,
     "percepcao": 5,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 8,
+    "perspicacia": 6,
+    "compostura": 6
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 3,
+    "furtividade": 3,
+    "integridade": 6,
     "prontidao": 2,
-    "integridade": 6
+    "manha": 5,
+    "persuasao": 4,
+    "sociabilidade": 3
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "escalada": 2,
+    "musculatura": 2
+  },
+  "especialidades": {
+    "persuasao": [
+      {
+        "foco": "seduzir",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
+    "compaixao": 1,
     "conviccao": 4,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 10,
-  "aparencia": 2,
-  "arte": {
-    "fascinacao": 3,
-    "vento": 3,
-    "espirito": 2,
-    "morte": 1
+  "vontade": 10,
+  "aparencia": 9,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
   },
-  "tech": {
-    "regeneracao": true
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
   },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
+      "nome": "Pancada",
+      "parte": "punho",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 5
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Mordida",
+      "parte": "presas",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "forma-gasosa",
-      "nome": "Forma gasosa",
-      "tipo": "natural",
-      "resiste": "nenhum",
-      "efeito": "Forma gasosa",
-      "usos": {
-        "periodo": "avontade"
-      }
+      "nome": "Regeneração 5",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de prata, fogo ou luz do sol"
     },
     {
-      "id": "filhos-da-noite-convoca",
-      "nome": "Filhos da noite (convoca)",
-      "tipo": "natural",
-      "base": {
-        "arte": "espirito",
-        "nivel": 2
-      },
-      "resiste": "nenhum",
-      "efeito": "Filhos da noite (convoca)",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 1
-      }
+      "nome": "prata, fogo e sol param a regeneração",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o dano de prata, de fogo ou da luz do sol não se fecha pela Regeneração"
     },
     {
-      "id": "regeneracao",
-      "nome": "Regeneração",
-      "tipo": "natural",
-      "resiste": "nenhum",
-      "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
-      }
-    },
-    {
-      "id": "dreno-de-sangue",
       "nome": "Dreno de sangue",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "morte",
         "nivel": 1
       },
-      "resiste": "corpo",
-      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-      "usos": {
-        "periodo": "golpe"
-      }
-    }
-  ],
-  "fraquezas": [
-    "fogo",
-    "luz",
-    "prata",
-    "sagrado",
-    "sol"
-  ],
-  "resistencias": [
-    "perfuracao"
-  ],
-  "habilidades": [
+      "ativacao": "a Mordida que fere",
+      "duracao": "instantânea",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "bebe o sangue de quem morde e se fecha com ele",
+      "dano": "nenhum além da mordida; ele recupera PV igual ao dano que a mordida fez depois da Absorção",
+      "resistencia": "corpo, contra a jogada da mordida; quem passa leva o dano, mas ele não se cura",
+      "limiteDeUso": "um por golpe"
+    },
     {
       "nome": "Olhar dominador",
-      "descricao": "teste de Vontade; falha torna o alvo Dominado, obedece ordens simples por cena"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 6, olho no olho a até 9 m",
+      "duracao": "uma cena",
+      "alcance": "9 m, à vista",
+      "area": "um alvo",
+      "efeito": "o alvo fica Dominado e obedece a ordens simples; a cada dano que sofre, testa de novo, como a condição manda",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Persuasão dele; quem passa fica imune ao olhar até o fim da cena",
+      "limiteDeUso": "um alvo Dominado por vez"
     },
     {
       "nome": "Forma gasosa",
-      "descricao": "transforma-se em névoa, imune a dano físico e passa por frestas"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "vento",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até ele voltar, no máximo uma cena",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "o corpo vira névoa: Impacto, Corte e Perfuração não o ferem, passa por frestas e flutua devagar; não ataca nem usa outro poder enquanto dura",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Filhos da noite",
-      "descricao": "convoca um enxame de morcegos, ratos ou um bando de lobos para auxiliar no combate"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "espirito",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até o fim da cena",
+      "alcance": "os bichos que estão por perto",
+      "area": "não se aplica",
+      "efeito": "chama um enxame de morcegos, um enxame de ratos ou um bando de lobos (as fichas do bestiário), que chega em 6 Ticks e luta por ele",
+      "dano": "o dos bichos",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por dia"
     },
     {
-      "nome": "Regeneração",
-      "descricao": "recupera PV a cada rodada; só é impedida por dano de prata, fogo ou luz solar"
+      "nome": "água corrente e estaca",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a água corrente o fere, e a estaca no coração o derruba"
     },
     {
-      "nome": "Mordida drenante",
-      "descricao": "dano corpo a corpo que cura o vampiro pelo valor causado"
+      "nome": "sem reflexo nem sombra",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não aparece em espelho nem em retrato"
     },
     {
-      "nome": "Força sobre-humana",
-      "descricao": "bônus em Atletismo e Acrobacia"
+      "nome": "imune a veneno, doença e efeito mental",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o corpo morto não sente veneno nem doença"
     },
     {
-      "nome": "Fraquezas clássicas",
-      "descricao": "sofre dano grave sob luz solar direta, água corrente e estaca no coração"
-    },
-    {
-      "nome": "Sem reflexo nem sombra",
-      "descricao": "passa despercebido em espelhos e retratos"
-    },
-    {
-      "nome": "Sedução vampírica",
-      "descricao": "bônus em Persuasão e Manha ao encantar vítimas antes de atacar"
+      "nome": "corpo morto",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não respira e não envelhece; dorme de dia e vive do sangue"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "sedutor paciente",
+      "formas": "todas",
+      "texto": "seduz e domina antes de atacar; luta com os bichos da noite à frente e vira névoa quando a luta vira contra ele."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro como de dia",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano, mais finas",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "nenhuma",
+    "prendeRespiracao": "não respira",
+    "mente": "inteira, fria e calculista; séculos de fome e solidão",
+    "tracos": "nobre pálido e belo, de pele fria, olhos que brilham no escuro e duas presas que só aparecem quando morde; não tem reflexo nem sombra"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho, entre os vivos da nobreza",
+    "atividade": "noturno",
+    "dieta": "sangue",
+    "caca": "seduz e bebe da vítima",
+    "dianteDeGente": "seduz, domina ou mata"
+  },
+  "ecologia": {
+    "terreno": [
+      "urbano",
+      "ruínas"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Nobre que recusou devolver a própria Centelha e a guarda à força, roubando um pouco da dos outros a cada mordida. Belo, paciente e calculista, domina com o olhar, vira névoa e chama os bichos da noite. Teme o sol, o fogo e a prata.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -188,49 +283,72 @@
       "texto": "Um vampiro é alguém que recusou devolver sua Centelha à Primeira Luz e a manteve à força, roubando um pouco da Centelha alheia a cada mordida. Nos salões dourados de Calin, onde a Supressão prega o medo da magia, nenhuma figura é mais temida ou mais fascinante que um nobre que nunca envelhece."
     }
   ],
-  "ecologia": {
-    "tipo": "Undead",
-    "terreno": [
-      "Urban",
-      "Ruins"
+  "imagens": [
+    "bestiario/vampiro_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      },
+      {
+        "tipo": "prata",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sol",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "Habilidades notáveis: Manha 5, Persuasão 4, Furtividade 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Vampiro",
-    "cr": "9",
-    "tipo": "morto-vivo Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 16,
-      "des": 18,
-      "con": "-",
-      "int": 14,
-      "sab": 16,
-      "car": 26
-    },
-    "pericias": [
-      "Manha 5",
-      "Persuasão 4",
-      "Furtividade 3"
+    "resistencias": [
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      }
     ],
-    "nota": "Dominar, forma gasosa, filhos da noite: Centelha 4. Car 26 → Vigor 8, Influência 8.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
+    "imunidades": []
   },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "cerne-vital"
+      "campo": "habilidadesEspeciais.Dreno de sangue",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Olhar dominador",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Forma gasosa",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Filhos da noite",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidades.atletismo",
+      "motivo": "\"Força sobre-humana: bônus em Atletismo e Acrobacia\" (site)"
+    },
+    {
+      "campo": "habilidades.sociabilidade",
+      "motivo": "Vive entre a nobreza e finge envelhecer como qualquer mortal (site)"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "Degrau 9, \"Beleza\": o nobre que seduz antes de atacar e é a figura \"mais temida ou mais fascinante\" dos salões (site). A Aparência mede a beleza, e não o medo (D-205). O site tinha 2, o número de todos os mortos-vivos dele, que não cabe em quem passa por vivo na alta sociedade; 9, a beleza do nobre que seduz; o site tinha 2 (D-205)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Regeneração 5",
+      "motivo": "Antes: 8 PV/6 Ticks por 4 de Energia. N 5 pela referência Vampire (Archives of Nethys)."
     }
   ]
 }

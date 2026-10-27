@@ -1,36 +1,25 @@
 {
-  "ordem": 28,
   "id": "gigante-da-colina",
   "idAntigo": "mon-gigante-da-colina",
   "nome": "Gigante da Colina",
   "nomeIngles": "Giant, Hill",
-  "categoria": "Gigante",
-  "categoriaLegada": "Gigante",
+  "categoria": "gigante",
   "papel": "elite",
-  "conceito": "humanoide Grande (gigante)",
-  "descricao": "Gigante guloso e mal-humorado das colinas: atira rochas, esmaga com os punhos e leva o rebanho inteiro. Não pensa muito e não para de lutar.",
-  "tags": [
-    "gigante",
-    "centelha"
-  ],
-  "imagem": "bestiario/gigante-da-colina_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "4,3 m de altura",
-    "peso": "1.305 kg",
-    "largura": 1.08,
-    "altura": 4.3
-  },
-  "locomocao": {
-    "terra": 4
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-  },
+  "ameaca": 4,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, curvado e barrigudo",
+    "apoio": "bipede",
+    "altura": 4.3,
+    "largura": 1.08,
+    "profundidade": 0.66,
+    "comprimento": null,
+    "massa": 1305,
+    "area": 4.52,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 9,
     "destreza": 2,
     "vigor": 6,
@@ -41,95 +30,187 @@
     "perspicacia": 1,
     "compostura": 2
   },
-  "skills": {
-    "briga": 4,
+  "habilidades": {
+    "briga": 5,
     "arremesso": 3,
     "bloqueio": 1,
+    "esquiva": 0,
     "atletismo": 2,
     "integridade": 2,
     "prontidao": 1,
-    "sobrevivencia": 2
+    "sobrevivencia": 2,
+    "sociabilidade": 0
   },
-  "skills2": {
+  "habilidadesSec": {
     "intimidacao": 3,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "arremesso",
-      "foco": "rocha",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "arremesso": [
+      {
+        "foco": "rocha",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 1,
-    "valor": 4
+    "temperanca": 1
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pancada descomunal",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "punho",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Rocha arremessada",
-      "atrib": "destreza",
-      "pericia": "arremesso",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "mao",
+      "habilidade": "arremesso",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Arremesso de rocha",
-      "descricao": "Rocha arremessada: Ativação: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: até 36 m; acima de 12 m, −2 na jogada. Área: um alvo. Efeito: a rocha derruba o alvo Médio ou menor que ela fere. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Rocha arremessada",
+      "ativacao": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)",
+      "duracao": "instantânea",
+      "alcance": "até 36 m; acima de 12 m, −2 na jogada",
+      "area": "um alvo",
+      "efeito": "a rocha derruba o alvo Médio ou menor que ela fere",
+      "dano": "2d6 + Força + Centelha, Impacto",
+      "resistencia": "corpo, contra a jogada, só para não cair; o dano vem inteiro",
+      "limiteDeUso": "enquanto houver rocha por perto"
     },
     {
       "nome": "Marretada",
-      "descricao": "Pancada descomunal: Ativação: a Pancada descomunal que fere um alvo Médio ou menor. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo cai no chão e é empurrado 1 m. Dano: o da Pancada. Resistência: corpo, contra a jogada da pancada; quem passa fica de pé. Limite de uso: um por golpe.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Pancada descomunal",
+      "ativacao": "a Pancada descomunal que fere um alvo Médio ou menor",
+      "duracao": "instantânea",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "o alvo cai no chão e é empurrado 1 m",
+      "dano": "o da Pancada",
+      "resistencia": "corpo, contra a jogada da pancada; quem passa fica de pé",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "Brutalidade cega",
-      "descricao": "Ativação: ficar Abalado. Duração: até o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Efeito: o Abalado não tira nada das jogadas de ataque e de dano dele; ainda conta para fugir e para as outras jogadas. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "ficar Abalado",
+      "duracao": "até o fim da cena",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "o Abalado não tira nada das jogadas de ataque e de dano dele; ainda conta para fugir e para as outras jogadas",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "agarrar",
-      "descricao": "Pancada descomunal: Agarrar.",
-      "classe": "livro"
-    },
-    {
-      "nome": "briga no braço",
-      "descricao": "avança reto, atira rocha em quem foge e esmaga quem fica; foge da batalha perdida e volta com a família.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "faro de caçador: nota a presa e a emboscada pelo cheiro, como um cão de caça. · visão e audição: as de um humano."
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Pancada descomunal",
+      "regra": "agarrar"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "briga no braço",
+      "formas": "todas",
+      "texto": "avança reto, atira rocha em quem foge e esmaga quem fica; foge da batalha perdida e volta com a família."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "faro de caçador",
+      "descricao": "nota a presa e a emboscada pelo cheiro, como um cão de caça",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "humanoide, pouco esperta",
+    "tracos": "gordo, peludo, pele grossa e suja; veste peles e carrega sacos de comida roubada"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": true,
+    "tracao": true
+  },
+  "comportamento": {
+    "social": "bando familiar (típico 2 a 6)",
+    "atividade": "diurno",
+    "dieta": "onívoro, guloso",
+    "caca": "rouba rebanhos e ataca vilarejos",
+    "dianteDeGente": "ataca ou exige comida"
+  },
+  "ecologia": {
+    "terreno": [
+      "planície",
+      "floresta"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Gigante guloso e mal-humorado das colinas: atira rochas, esmaga com os punhos e leva o rebanho inteiro. Não pensa muito e não para de lutar.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Guloso e pouco esperto, resolve tudo com força e mau humor, e ataca rebanhos e vilarejos atrás de comida fácil. Social: bando familiar (típico 2 a 6)."
+      "texto": "Guloso e pouco esperto, resolve tudo com força e mau humor, e ataca rebanhos e vilarejos atrás de comida fácil."
     },
     {
       "titulo": "Hábitos",
@@ -146,76 +227,44 @@
     {
       "titulo": "Aptidões",
       "texto": "montaria não · carga sim · tração sim"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande, lento em terra (4 m por Tick) e fácil de acertar (Esquiva 4, Bloqueio 8). Atira rocha até 36 m e esmaga de perto, dano médio 17 nos dois, e derruba quem é do tamanho de um homem. Ficar Abalado não o atrapalha. 54 PV, Impacto 7, Corte e Perfuração 1. Defesa Social 4: se engana fácil, com comida."
     }
   ],
-  "ecologia": {
-    "tipo": "Giant",
-    "terreno": [
-      "Plains",
-      "Forest"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/gigante-da-colina_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Atletismo 2, Prontidão 1.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Gigante da Colina",
-    "cr": "7",
-    "tipo": "humanoide Grande (gigante)",
-    "tamanho": "grande",
-    "valores": {
-      "for": 25,
-      "des": 8,
-      "con": 19,
-      "int": 6,
-      "sab": 10,
-      "car": 7
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Arremesso de rocha",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Atletismo 2",
-      "Prontidão 1"
-    ],
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Marretada",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 54,
-    "esquiva": 4,
-    "bloqueio": 8,
-    "defesa": 8,
-    "defesaMental": 12,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 7,
-      "corte": 1,
-      "perfuracao": 1
+    {
+      "campo": "habilidadesEspeciais.Brutalidade cega",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 2,
-    "pesoErguido": 1126.14,
-    "deslocamento": {
-      "terra": {
-        "batalha": 4,
-        "arranque": 6,
-        "corrida": 9
-      }
+    {
+      "campo": "habilidades.briga",
+      "motivo": "Ajuste-piloto: antes 4, depois 5; recupera o 5 publicado. Resolve os conflitos lutando no braço, prática constante comparável à dos gigantes da pedra, fogo e gelo (Briga 5); não havia motivo corporal ou de treino para o rebaixamento. Jogada da Pancada: 15 antes, 16 depois; dano médio permanece 17. Decisão da Bestiarista, resposta 2c"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça: o \"couro grosso\" do site, como o búfalo e o elefante (2 a 3), no baixo da faixa: pele de gente, só que grossa . O nível fica fora da Absorção (decisoes-autor §16); 2, couro grosso, no baixo da faixa do búfalo"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Sociedade)"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "site"
     }
-  },
-  "notasObservacao": [
-    "`massa`: 1.305 kg pela altura do site; os 590 kg do site ficam fora de qualquer corpo de 4,3 m (D-187) **[conta]**",
-    "`couraca`: 2, couro grosso, no baixo da faixa do búfalo **[provisório]**",
-    "`briga`: 4; o site tinha 5 **[provisório]**",
-    "`arremesso`, `marretada`, `brutalidade cega`: números sugeridos pela ficha (D-197)"
   ]
 }

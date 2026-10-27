@@ -40,7 +40,7 @@ const CUSTOM_IDS = new Set([
   })(),
   ...fs.readdirSync(p('bestiario')).filter((f) => f.endsWith('.json'))
     .map((f) => JSON.parse(fs.readFileSync(p(`bestiario/${f}`), 'utf8')))
-    .filter((c) => c.material || c.v3).map((c) => c.id), // D-195: a ficha v3 traz as três listas na fonte
+    .filter((c) => c.material || c.v3 || c.corpo).map((c) => c.id), // D-195: a ficha v3 traz as três listas na fonte
 ]);
 const M = TODAS.filter((m) => !CUSTOM_IDS.has(m.id));
 
@@ -194,7 +194,7 @@ for (const m of M) {
   }
 }
 
-const idsBons = new Set(M.map((m) => m.id));
+const idsBons = new Set(TODAS.map((m) => m.id));
 for (const [rotulo, tabela] of [['exceção', EXCECOES], ['material', MATERIAL_DE]]) {
   const orfaos = Object.keys(tabela).filter((id) => !idsBons.has(id));
   if (orfaos.length) throw new Error(`${rotulo} para id inexistente: ${orfaos.join(', ')}`);

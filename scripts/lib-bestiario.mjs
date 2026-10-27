@@ -8,6 +8,7 @@
 // ESCRITOS em cada arquivo, com o valor que tinham; `ameacaLegada` só viaja até o
 // inimigos.json e o card, para exibir, até a calibração nova.
 import fs from 'node:fs';
+import { vistaCriatura } from './lib-criatura-motor.mjs';
 import path from 'node:path';
 import { achataCatalogo } from './lib-equip.mjs';
 
@@ -48,6 +49,7 @@ const couracaDe = (b) => b.couraca || COURACA[b.porteSlug] || { couraca: 0, resi
 // build compacta → stat block calculado. Igual ao de antes do B14, com o porte e
 // a couraça vindos do próprio objeto em vez de mapas por id.
 export function stat(b) {
+  if (b.motor) return b.motor.stat;
   const at = { forca: 2, destreza: 2, vigor: 2, influencia: 2, perspicacia: 2, compostura: 2, percepcao: 2, inteligencia: 2, raciocinio: 2, ...b.attrs };
   const pe = b.pericias || {};
   const arm = ARMAD[b.armadura || 'nenhuma'] || ARMAD['nenhuma'];
@@ -210,6 +212,7 @@ function inverteComCentelha(valor, resto, mult, C) {
   return alvo / (mult + 2);
 }
 export function periciasDe(x, slug, b = null) {
+  if (arguments[2]?.motor) return { ...arguments[2].motor.pericias };
   const at = x.atributos || {};
   const C = x.centelha || 0;
   const V = x.vontade || 0;
@@ -329,7 +332,7 @@ export function lerCriaturas() {
   const da = fs.readdirSync(PASTA).filter((f) => f.endsWith('.json')).map((f) => {
     const c = JSON.parse(fs.readFileSync(path.join(PASTA, f), 'utf8'));
     if (`${c.id}.json` !== f) throw new Error(`bestiario/${f}: o id "${c.id}" não bate com o nome do arquivo`);
-    return c;
+    return vistaCriatura(c);
   });
   da.sort((a, b) => (a.ordem ?? Infinity) - (b.ordem ?? Infinity) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
   const f = path.join(ROOT, 'src/data/inimigos-custom.json');
@@ -344,6 +347,7 @@ export function lerCriaturas() {
 
 /** A ficha → o objeto que o `stat()` recebe. */
 export function paraStat(f) {
+  if (f.motor) return {motor:f.motor, pericias:f.motor.pericias};
   const pericias = { ...(f.skills || {}), ...(f.skills2 || {}) };
   const arm = f.equip?.armaduras?.[0];
   return {

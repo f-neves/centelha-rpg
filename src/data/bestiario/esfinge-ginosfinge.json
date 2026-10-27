@@ -1,146 +1,226 @@
 {
-  "ordem": 123,
   "id": "esfinge-ginosfinge",
   "idAntigo": "mon-esfinge-ginosfinge",
   "nome": "Esfinge (Ginosfinge)",
-  "nomeIngles": "Sphinx (Gynosphinx)",
-  "categoria": "Besta mágica",
+  "nomeIngles": "Sphinx",
+  "categoria": "besta-magica",
   "papel": "chefe",
-  "conceito": "besta mágica Grande",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/esfinge-ginosfinge_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "corpo 3 m, envergadura 6 m",
-    "peso": "230 kg"
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 6
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas; voadora",
+    "apoio": "quadrupede",
+    "altura": 1.47,
+    "largura": 0.77,
+    "profundidade": null,
+    "comprimento": 3.75,
+    "comprimentoSemCauda": 3,
+    "caudaGrossa": false,
+    "envergadura": 6,
+    "massa": 230,
+    "area": 1.48,
+    "posturaDoTamanho": "silhueta vista de lado, asas fechadas, no chão",
+    "segundoTamanho": {
+      "area": 7.56,
+      "posturaDoTamanho": "de baixo, asas abertas, em voo"
+    }
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 7,
     "destreza": 4,
     "vigor": 6,
-    "influencia": 5,
-    "perspicacia": 5,
-    "compostura": 5,
     "percepcao": 5,
     "inteligencia": 5,
-    "raciocinio": 5
+    "raciocinio": 5,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 1,
     "esquiva": 1,
-    "prontidao": 2,
-    "integridade": 5
+    "atletismo": 2,
+    "furtividade": 1,
+    "integridade": 5,
+    "prontidao": 4,
+    "resistencia": 3,
+    "conhecimentos": 5,
+    "ocultismo": 4,
+    "investigacao": 3,
+    "empatia": 3,
+    "oratoria": 3,
+    "sociabilidade": 0,
+    "sobrevivencia": 2
   },
-  "virtues": {
+  "habilidadesSec": {
+    "voo": 3,
+    "musculatura": 2
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 10,
-  "aparencia": 5,
+  "vontade": 10,
+  "aparencia": 7,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "voo": {
+      "batalha": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 6
+      "nome": "Garras",
+      "parte": "garra-patas-da-frente",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
+      "acerto": 1,
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "sabedoria-ancestral",
-      "nome": "Sabedoria ancestral",
-      "tipo": "natural",
-      "base": {
-        "arte": "adivinhacao",
-        "nivel": 5
-      },
-      "resiste": "nenhum",
-      "efeito": "sabe algo sobre quase qualquer lenda, história ou segredo perguntado, poucas vezes por dia",
-      "descricao": "Uma vez ao dia a esfinge recorda algo que ninguém vivo deveria saber: um fato de história, o paradeiro de algo perdido, o nome verdadeiro de alguém. O Mestre decide o quanto ela revela.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 1
-      }
+      "nome": "Garras devastadoras",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada",
+      "texto": "Até dois golpes por ação"
     },
     {
-      "id": "enigma-mortal",
       "nome": "Enigma mortal",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
         "nivel": 4
       },
-      "resiste": "mente",
-      "efeito": "propõe um enigma; quem falha em resolvê-lo sofre medo, sono, dor ou paralisia, à escolha da esfinge, cerca de uma vez por semana",
-      "descricao": "A esfinge propõe um enigma a quem a enfrenta. Recusar ou errar tem preço: ela escolhe entre amedrontar, adormecer, ferir com dor pura ou paralisar quem falhou.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 1,
-        "recarga": "cerca de uma vez por semana, não por dia"
-      }
+      "ativacao": "uma ação, Velocidade 6, propondo o enigma em voz alta",
+      "duracao": "até o fim da cena",
+      "alcance": "quem ouve, até 18 m",
+      "area": "um alvo que aceita ou recusa o enigma",
+      "efeito": "quem recusa ou erra fica Amedrontado, ou leva a dor pura do dano, à escolha dela; adormecer ou paralisar o alvo fica sem regra ainda",
+      "dano": "3d6 + Centelha, fenômeno, se ela escolher a dor",
+      "resistencia": "mente, Raciocínio + Integridade contra Influência + Oratória dela; quem passa ou responde certo não sofre nada",
+      "limiteDeUso": "uma vez por semana"
     },
     {
-      "id": "ver-o-invisivel",
+      "nome": "Sabedoria ancestral",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "adivinhacao",
+        "nivel": 5
+      },
+      "ativacao": "uma ação, Velocidade 6, recordando",
+      "duracao": "instantânea",
+      "alcance": "o próprio saber",
+      "area": "não se aplica",
+      "efeito": "lembra algo que ninguém vivo deveria saber: um fato de história, o paradeiro de algo perdido, o nome verdadeiro de alguém; o Mestre diz o quanto ela revela",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por dia"
+    },
+    {
       "nome": "Ver o invisível",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "ofuscacao",
         "nivel": 3
       },
-      "resiste": "nenhum",
-      "efeito": "enxerga o que está invisível ou oculto por ilusão, constantemente",
-      "descricao": "Nada escapa aos olhos da esfinge por estar invisível ou disfarçado por ilusão: ela vê através dos dois o tempo todo.",
-      "usos": {
-        "periodo": "passivo"
-      }
+      "ativacao": "nenhuma, está sempre ligado",
+      "duracao": "contínua",
+      "alcance": "o da visão",
+      "area": "o que ela vê",
+      "efeito": "enxerga quem está invisível e vê através de ilusões e disfarces",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
+    },
+    {
+      "nome": "feitiços arcanos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "lança magias de dano e de controle, mais de uma vez por cena; ela não conjura como classe, e o site não dava a Arte"
+    },
+    {
+      "nome": "laços com outras esfinges",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "troca saber com esfinges distantes pela mente"
     }
   ],
-  "habilidades": [
+  "comoLuta": [
     {
-      "nome": "Feitiços arcanos",
-      "descricao": "lança magias de dano e controle, mais de uma vez por cena"
-    },
-    {
-      "nome": "Ver o invisível",
-      "descricao": "enxerga criaturas ocultas ou invisíveis sem teste"
-    },
-    {
-      "nome": "Voo",
-      "descricao": "asas leoninas, desloca 12m voando"
-    },
-    {
-      "nome": "Garras devastadoras",
-      "descricao": "ataque corpo a corpo com dano alto"
-    },
-    {
-      "nome": "Sabedoria ancestral",
-      "descricao": "+3d6 em testes de Conhecimentos"
-    },
-    {
-      "nome": "Enigma mortal",
-      "descricao": "propõe um enigma; falha em Vontade causa dano ou deixa o alvo Abalado"
-    },
-    {
-      "nome": "Ver o invisível",
-      "descricao": "Sentido passivo."
+      "nome": "guardiã de enigmas",
+      "formas": "todas",
+      "texto": "desafia o intruso com um enigma antes de lutar e respeita quem responde com inteligência; quem erra, ou ataca, enfrenta garras e feitiços."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "ver o invisível",
+      "descricao": "vê através da invisibilidade e da ilusão o tempo todo (Manobras)",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão",
+      "descricao": "de felino, enxerga na penumbra",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "inteligente, paciente e orgulhosa do próprio intelecto; fala",
+    "tracos": "corpo de leoa de 3 m, asas de penas de 6 m e rosto de mulher de olhar fixo"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitária; troca saber com outras esfinges distantes",
+    "atividade": "qualquer hora",
+    "dieta": "carnívora",
+    "caca": "guarda ruínas; não caça gente por hábito",
+    "dianteDeGente": "propõe um enigma antes de cogitar o combate"
+  },
+  "ecologia": {
+    "terreno": [
+      "deserto",
+      "ruínas"
+    ],
+    "clima": [
+      "tropical"
+    ]
+  },
+  "descricao": "Leoa alada de rosto de mulher que guarda ruínas e tesouros de saber antigo, desafiando o intruso com enigmas antes de cogitar o combate. Respeita quem responde com inteligência mais do que com força; quem erra paga o preço.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -163,44 +243,30 @@
       "texto": "Guardiã de um saber anterior à Grande Guerra, do tipo que a Tecelã protege e que as igrejas supressoras temem; suas ruínas talvez escondam respostas sobre a Fenda que ninguém mais ousa procurar."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Desert",
-      "Ruins"
-    ],
-    "clima": [
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/esfinge-ginosfinge_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Conhecimentos 5, Ocultismo 4, Prontidão 4.",
-  "pendente": true,
-  "fonte": {
-    "livro": "MM 3.5",
-    "nome": "Esfinge (Ginosfinge)",
-    "cr": "8",
-    "tipo": "besta mágica Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 21,
-      "des": 14,
-      "con": 19,
-      "int": 18,
-      "sab": 19,
-      "car": 19
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Enigma mortal",
+      "motivo": "números sugeridos pela ficha (D-197); poderes naturais com as bases e os usos do site e números da ficha (D-197); o Amedrontado é a condição do livro para o medo que o site nomeia, e o sono e a paralisia ficam sem regra ainda"
     },
-    "pericias": [
-      "Conhecimentos 5",
-      "Ocultismo 4",
-      "Prontidão 4"
-    ],
-    "nota": "Guardadora de enigmas, magia arcana: Centelha 4.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Sabedoria ancestral",
+      "motivo": "números sugeridos pela ficha (D-197); poderes naturais com as bases e os usos do site e números da ficha (D-197); o Amedrontado é a condição do livro para o medo que o site nomeia, e o sono e a paralisia ficam sem regra ainda"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5
+    {
+      "campo": "habilidadesEspeciais.Ver o invisível",
+      "motivo": "números sugeridos pela ficha (D-197); poderes naturais com as bases e os usos do site e números da ficha (D-197); o Amedrontado é a condição do livro para o medo que o site nomeia, e o sono e a paralisia ficam sem regra ainda"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    }
+  ]
 }

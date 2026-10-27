@@ -1,96 +1,210 @@
 {
-  "ordem": 181,
   "id": "diabo-espinhoso",
   "idAntigo": "mon-barbed-devil-hamatula",
   "nome": "Diabo Espinhoso",
   "nomeIngles": "Devil, Barbed",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Diabo",
+  "categoria": "corruptor",
   "papel": "chefe",
-  "conceito": "exterior (diabo) Médio",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Tirano leal do Inferno, calculista e cruel.",
-  "tags": [
-    "diabo",
-    "centelha"
-  ],
-  "imagem": "bestiario/diabo-espinhoso_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "2,1 m de altura",
-    "peso": "135 kg"
-  },
-  "locomocao": {
-    "terra": 3
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, ereto",
+    "apoio": "bipede",
+    "altura": 2.1,
+    "largura": 0.54,
+    "profundidade": 0.28,
+    "comprimento": null,
+    "massa": 135,
+    "area": 1.01,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 7,
     "destreza": 7,
     "vigor": 7,
-    "influencia": 5,
-    "perspicacia": 4,
-    "compostura": 5,
     "percepcao": 4,
     "inteligencia": 3,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 5,
+    "perspicacia": 4,
+    "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 2,
+    "atletismo": 3,
+    "furtividade": 1,
+    "integridade": 5,
     "prontidao": 2,
-    "integridade": 5
+    "resistencia": 4,
+    "empatia": 1,
+    "sociabilidade": 1,
+    "ocultismo": 2
   },
-  "virtues": {
+  "habilidadesSec": {
+    "intimidacao": 4,
+    "musculatura": 3
+  },
+  "especialidades": {
+    "briga": [
+      {
+        "foco": "Agarrão",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
     "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 5,
-    "valor": 5
+    "temperanca": 5
   },
-  "willpower": 10,
+  "vontade": 10,
   "aparencia": 0,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Garras",
+      "parte": "mao-de-garras-espinhosas",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 5
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Defesa Espinhosa",
-      "descricao": "Seu corpo é coberto de espinhos afiados; quem o golpeia corpo a corpo ou desarmado sofre dano perfurante dos próprios espinhos, a menos que ataque com arma de alcance."
+      "nome": "Duas garras",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada",
+      "texto": "Até dois golpes por ação"
+    },
+    {
+      "nome": "Pavor pelo toque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Garras",
+      "ativacao": "o golpe das Garras que fere",
+      "duracao": "até o fim do próximo intervalo de 12 Ticks",
+      "alcance": "o das garras",
+      "area": "um alvo",
+      "efeito": "o terror entra com os espinhos; quem falha fica Em pânico e foge",
+      "dano": "nenhum além do golpe",
+      "resistencia": "mente, contra Influência + Intimidação dele; quem passa fica imune ao pavor dele até o fim da cena",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "Empalar",
-      "descricao": "Ao manter um inimigo agarrado, pode cravar suas garras ainda mais fundo, causando dano perfurante severo adicional."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Garras",
+      "ativacao": "uma ação, Velocidade 6, contra quem ele mantém Agarrado",
+      "duracao": "instantânea",
+      "alcance": "o próprio abraço",
+      "area": "um alvo",
+      "efeito": "crava as garras e os espinhos do peito ainda mais fundo",
+      "dano": "o das Garras, mais 1d6, Perfuração",
+      "resistencia": "nenhum; o alvo já está preso",
+      "limiteDeUso": "um por ação"
     },
     {
-      "nome": "Pavor pelo Toque",
-      "descricao": "Suas garras espalham terror; quem é ferido por elas pode fugir amedrontado por vários instantes, a menos que resista com força de vontade."
+      "nome": "Defesa espinhosa",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "os espinhos ferem quem o golpeia de perto",
+      "dano": "1d6 de Perfuração em quem o acerta com golpe desarmado, arma natural ou arma que não seja de haste",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por golpe recebido"
     },
     {
-      "nome": "Visão nas Trevas",
-      "descricao": "Enxerga perfeitamente até em escuridão mágica absoluta."
+      "nome": "imune a veneno",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o veneno não pega no corpo de diabo"
     },
     {
-      "nome": "Resistências Infernais",
-      "descricao": "Resiste a ácido e frio, é imune a fogo e veneno, e uma proteção sobrenatural absorve boa parte de qualquer dano que não venha de arma boa."
+      "nome": "proteção infernal",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "uma proteção sobrenatural absorve boa parte de qualquer dano que não venha de arma do bem"
     },
     {
-      "nome": "Poderes Ígneos",
-      "descricao": "Pode criar chamas, lançar raios ofuscantes de luz, projetar ilusões elaboradas ou desaparecer para outro lugar à vontade."
+      "nome": "poderes ígneos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "cria chamas, lança raios ofuscantes de luz, projeta ilusões elaboradas e some para outro lugar à vontade; o site não dá Arte de base para nenhum"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "carcereiro",
+      "formas": "todas",
+      "texto": "guarda a porta do calabouço, agarra quem se aproxima, crava as garras até o fundo e deixa os espinhos ferirem quem tenta se soltar; pendura o que sobra nas paredes."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga perfeitamente, até na escuridão mágica absoluta",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "inteligente, sádica, vigilante",
+    "tracos": "diabo de 2,1 m de pele avermelhada coberta de espinhos afiados, da cabeça à cauda, e garras compridas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho, de guarda",
+    "atividade": "qualquer hora",
+    "dieta": "não precisa comer",
+    "caca": "guarda presos e tesouros",
+    "dianteDeGente": "agarra, perfura e pendura como troféu"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Sentinela dos calabouços do Inferno, de corpo inteiro coberto de espinhos, que guarda os condenados e os tesouros de diabos maiores. Agarra, crava as garras até o fundo e pendura os restos das vítimas nas paredes do covil, como troféus.",
   "lore": [
     {
       "titulo": "Guardião dos Cárceres Infernais",
@@ -101,38 +215,61 @@
       "texto": "Costuma pendurar restos perfurados de suas vítimas nas paredes de seu covil, como um colecionador macabro de despojos de guerra."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/diabo-espinhoso_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "acido",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Barbed Devil (Hamatula)",
-    "cr": "11",
-    "tipo": "exterior (diabo) Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 23,
-      "des": 23,
-      "con": 22,
-      "int": 12,
-      "sab": 15,
-      "car": 18
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Pavor pelo toque",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Empalar",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5
+    {
+      "campo": "habilidadesEspeciais.Defesa espinhosa",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: o couro duro coberto de espinhos, como o do elefante (2 a 3) . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site (\"Resistências Infernais\"), pela linha Elementos"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "ataques.Garras",
+      "motivo": "O \"Golpe planar\" do site (1 dado, 5 Ticks, corte): a garra que crava com o braço e o corpo atrás, Média (`regra-construcao.md` §7). Perfuração, pelos espinhos que entram (site, \"dano perfurante\") . Duas por ação pela Rajada (Manobras). Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
+    }
+  ]
 }

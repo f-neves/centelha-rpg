@@ -167,6 +167,9 @@ if (aponta(lobo, 'atributos.inexistente') || aponta(lobo, 'ataques.Coice') || ap
   if (linha('Agarrar.').criatura.habilidadesEspeciais.find((h) => h.nome === 'teste P7')?.texto !== undefined) falhas.push('P7: nome da regra repetido no texto');
   if (!linha('Furtividade 12.').paradas.some((p) => p.includes('P7'))) falhas.push('P7: resumo de Habilidade calculada passou');
   if (!linha('Esquiva 14.').paradas.some((p) => p.includes('P7'))) falhas.push('P7: Defesa calculada passou');
+  if (!linha('a Rajada. Dois golpes, o segundo a −1d6.').paradas.some(p=>p.includes('P7'))) falhas.push('P7: cópia da penalidade da Rajada passou');
+  if (linha('a Rajada. Até três golpes por ação.').criatura.habilidadesEspeciais.find(h=>h.nome==='teste P7')?.texto !== undefined) falhas.push('P7: teto calculado da Rajada repetido no texto');
+  if (linha('a Rajada. Até dois golpes por ação.').criatura.habilidadesEspeciais.find(h=>h.nome==='teste P7')?.texto !== 'Até dois golpes por ação') falhas.push('P7: limite próprio da Rajada se perdeu');
   const c = structuredClone(lobo); c.habilidadesEspeciais.push({nome: 'P7', formas: 'todas', classe: 'livro', tecnica: {id: 'passo-veloz', nivel: 1}, arte: {id: 'fogo', nivel: 1}, texto: 'só descendo'});
   if (!criaturaNovaSchema.safeParse(c).success) falhas.push('P7: esquema recusou referencias e texto');
   c.habilidadesEspeciais.at(-1).tecnica.nivel = '1';

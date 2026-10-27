@@ -1,100 +1,217 @@
 {
-  "ordem": 267,
   "id": "cauchemar",
   "idAntigo": "mon-cauchemar",
   "nome": "Cauchemar",
   "nomeIngles": "Cauchemar",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Exterior",
+  "categoria": "corruptor",
   "papel": "chefe",
-  "conceito": "exterior Enorme",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
-  "tags": [
-    "exterior",
-    "centelha"
-  ],
-  "imagem": "bestiario/cauchemar_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "4 m de comprimento",
-    "peso": "1.600 kg"
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 9
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 3.07,
+    "largura": 1,
+    "profundidade": null,
+    "comprimento": 4,
+    "massa": 2180,
+    "area": 4.99,
+    "posturaDoTamanho": "silhueta vista de lado"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 11,
     "destreza": 4,
     "vigor": 8,
-    "influencia": 3,
-    "perspicacia": 4,
-    "compostura": 3,
     "percepcao": 3,
     "inteligencia": 3,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 3,
+    "perspicacia": 4,
+    "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 3,
+    "furtividade": 0,
+    "integridade": 3,
     "prontidao": 1,
-    "integridade": 3
+    "resistencia": 4,
+    "empatia": 2,
+    "sociabilidade": 0,
+    "ocultismo": 3
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "voo": 3,
+    "musculatura": 2
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 6
+    "temperanca": 1
   },
-  "willpower": 10,
+  "vontade": 10,
   "aparencia": 0,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "voo": {
+      "batalha": 9
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Cascos flamejantes",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 3,
-      "mao": 1,
-      "tipo": "impacto",
+      "parte": "casco",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
       "acerto": 0,
-      "ticks": 7,
-      "notas": "cada acerto soma dano de fogo"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 6
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Visão no escuro",
-      "descricao": "Enxerga perfeitamente na escuridão total."
+      "nome": "Cascos em chamas",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Cascos flamejantes",
+      "ativacao": "o golpe dos Cascos que acerta",
+      "duracao": "instantânea",
+      "alcance": "o dos cascos",
+      "area": "um alvo",
+      "efeito": "os cascos em brasa queimam o que tocam",
+      "dano": "+1d6 de fogo, somado ao do golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
     },
     {
-      "nome": "Voo veloz",
-      "descricao": "Voa com grande velocidade e destreza no ar."
+      "nome": "cascos e mordida juntos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "escoiceia e morde na mesma ação"
     },
     {
-      "nome": "Fumaça sufocante intensa",
-      "descricao": "Sua fumaça é ainda mais tóxica que a de um cavalo comum das trevas, cegando e enjoando quem não resistir em um teste de Vigor."
+      "nome": "Fumaça sufocante",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6, bufando e batendo os cascos",
+      "duracao": "a nuvem fica 12 Ticks; quem falha fica Cego enquanto estiver nela e até 6 Ticks depois de sair",
+      "alcance": "o próprio corpo",
+      "area": "esfera de 6 m em volta dele",
+      "efeito": "uma fumaça acre sai das narinas e dos cascos e arde nos olhos",
+      "dano": "nenhum",
+      "resistencia": "corpo, Vigor + Resistência contra Vigor + Resistência dele; quem passa enxerga naquela nuvem",
+      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
-      "nome": "Passeio etéreo e salto entre mundos",
-      "descricao": "Pode se tornar etéreo e cruzar planos de existência com frequência, sempre levando consigo um único cavaleiro."
+      "nome": "enjoo da fumaça",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quem respira bastante da fumaça fica enjoado, além de cego"
+    },
+    {
+      "nome": "Viagem entre planos",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 5
+      },
+      "ativacao": "uma ação, Velocidade 7, galopando pelo ar",
+      "duracao": "instantânea",
+      "alcance": "o próprio corpo e quem estiver montado nele",
+      "area": "ele e um cavaleiro",
+      "efeito": "atravessa a fronteira para outro plano, levando o cavaleiro",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "três vezes por dia"
+    },
+    {
+      "nome": "passeio etéreo",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "fica etéreo com o cavaleiro e atravessa o mundo sem tocar nele, à vontade"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "corcel da ruína",
+      "formas": "todas",
+      "texto": "atropela a linha inimiga com o cavaleiro, escoiceia com os cascos em brasa, cobre o campo de fumaça e some no Plano Etéreo se a luta vira."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "inteligente, cruel",
+    "tracos": "cavalo enorme de 4 m e pele de negrume absoluto, fogo escorrendo da crina, faíscas nos cascos e olhos onde ferve um brilho infernal"
+  },
+  "aptidoes": {
+    "montaria": true,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho, ou com o cavaleiro que escolheu",
+    "atividade": "qualquer hora",
+    "dieta": "carnívoro",
+    "caca": "caça com o cavaleiro",
+    "dianteDeGente": "só aceita os mais cruéis; com os outros, ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Versão maior e mais temível dos corcéis das trevas: cavalo enorme de negrume absoluto, fogo escorrendo da crina e faíscas nos cascos. Atravessa o Plano Etéreo com o cavaleiro e salta entre realidades.",
   "lore": [
     {
       "titulo": "Variante mais temível",
@@ -105,41 +222,48 @@
       "texto": "Enorme, com pele de negrume absoluto, fogo escorrendo da crina e faíscas nos cascos; olhos onde ferve um brilho infernal."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/cauchemar_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Cauchemar",
-    "cr": "11",
-    "tipo": "exterior Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 31,
-      "des": 15,
-      "con": 21,
-      "int": 16,
-      "sab": 12,
-      "car": 12
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Cascos em chamas",
+      "motivo": "números sugeridos pela ficha (D-197); +1d6 de fogo por golpe, como no pesadelo, pela Arte do Fogo no nível 1; o site não dava o número"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Fumaça sufocante",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "imunidades": [
-    "fogo"
+    {
+      "campo": "habilidadesEspeciais.Viagem entre planos",
+      "motivo": "números sugeridos pela ficha (D-197); a do pesadelo, com a base Conjuração 5 dele; o site não dava base para o cauchemar"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: couro de cavalo crescido a 2 t, como o elefante (2 a 3) . O nível fica fora da Absorção (decisoes-autor §16). A imunidade do site (`imunidades`: fogo), pela linha Elementos"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    }
   ]
 }

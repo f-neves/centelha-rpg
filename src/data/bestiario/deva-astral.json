@@ -1,39 +1,34 @@
 {
-  "ordem": 103,
   "id": "deva-astral",
   "idAntigo": "mon-deva-astral",
   "nome": "Deva Astral",
   "nomeIngles": "Angel, Astral Deva",
-  "categoria": "Celestial",
-  "categoriaLegada": "Celestial",
+  "categoria": "celestial",
   "papel": "chefe",
-  "conceito": "exterior Grande (anjo)",
-  "descricao": "Anjo de asas brancas que anda disfarçado de peregrina entre os mortais: cura, aconselha e protege. Quando o mal ataca primeiro, luta com a maça, e a luz do golpe queima demônios e mortos-vivos.",
-  "tags": [
-    "celestial",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/deva-astral_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2 m de altura",
-    "peso": "90 kg",
-    "largura": 0.5,
-    "altura": 2,
-    "envergadura": 3.6
-  },
-  "locomocao": {
-    "terra": 5,
-    "voo": 10
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 5,
-    "arranque": 8,
-    "corrida": 12
-  },
+  "ameaca": 6,
   "centelha": 6,
-  "attrs": {
+  "formaPrincipal": {
+    "id": "anjo",
+    "nome": "forma de anjo"
+  },
+  "corpo": {
+    "postura": "bípede, de pé; voador",
+    "apoio": "bipede",
+    "altura": 2,
+    "largura": 0.5,
+    "profundidade": 0.26,
+    "comprimento": null,
+    "envergadura": 3.6,
+    "massa": 90,
+    "area": 3.06,
+    "posturaDoTamanho": "asas abertas",
+    "segundoTamanho": {
+      "area": 0.98,
+      "posturaDoTamanho": "de pé, asas fechadas"
+    }
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 8,
     "destreza": 5,
     "vigor": 6,
@@ -44,7 +39,7 @@
     "perspicacia": 6,
     "compostura": 6
   },
-  "skills": {
+  "habilidades": {
     "armas": 4,
     "briga": 2,
     "bloqueio": 1,
@@ -58,118 +53,216 @@
     "sociabilidade": 3,
     "sobrevivencia": 1
   },
-  "skills2": {
+  "habilidadesSec": {
     "cura": 3,
-    "voo": 3
+    "voo": 3,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "ocultismo",
-      "foco": "planos e celestiais",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "persuasao",
-      "foco": "aconselhar",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
-    "compaixao": 5,
-    "conviccao": 5,
-    "temperanca": 4,
-    "valor": 5
-  },
-  "willpower": 11,
-  "aparencia": 10,
-  "ataques": [
-    {
-      "nome": "Maça",
-      "atrib": "forca",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
-      "acerto": 1,
-      "ticks": 6,
-      "classe": "media"
-    }
-  ],
-  "fraquezas": [
-    "profano"
-  ],
-  "resistencias": [],
-  "imunidades": [],
-  "transforma": {
-    "principal": "anjo",
-    "formas": [
+  "especialidades": {
+    "ocultismo": [
       {
-        "id": "anjo",
-        "nome": "forma de anjo"
-      },
-      {
-        "id": "disfarce",
-        "nome": "disfarce"
+        "foco": "planos e celestiais",
+        "valor": 1,
+        "origem": "livro"
       }
     ]
   },
-  "habilidades": [
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
+    "compaixao": 5,
+    "conviccao": 5,
+    "temperanca": 4
+  },
+  "vontade": 11,
+  "aparencia": 10,
+  "deslocamento": {
+    "terra": {
+      "batalha": 5,
+      "arranque": 8,
+      "corrida": 12
+    },
+    "voo": {
+      "batalha": 10
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:maca"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
+  "ataques": [
+    {
+      "nome": "Maça",
+      "arma": "maca",
+      "habilidade": "armas"
+    }
+  ],
+  "habilidadesEspeciais": [
     {
       "nome": "Maça estonteante",
-      "descricao": "Maça: Ativação: o golpe da Maça que fere o alvo com 10 ou mais de dano depois da Absorção. Duração: até o fim da próxima ação do alvo. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo fica tonto e perde a próxima ação. Dano: o da Maça. Resistência: corpo, contra a jogada do golpe; quem passa só leva o dano. Limite de uso: um por golpe, sem limite por cena. Vale só na forma de anjo.",
-      "classe": "regra da ficha"
+      "formas": [
+        "anjo"
+      ],
+      "classe": "regra da ficha",
+      "ataque": "Maça",
+      "ativacao": "o golpe da Maça que fere o alvo com 10 ou mais de dano depois da Absorção",
+      "duracao": "até o fim da próxima ação do alvo",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "o alvo fica tonto e perde a próxima ação",
+      "dano": "o da Maça",
+      "resistencia": "corpo, contra a jogada do golpe; quem passa só leva o dano",
+      "limiteDeUso": "um por golpe, sem limite por cena"
     },
     {
       "nome": "Golpe sagrado",
-      "descricao": "Maça: Ativação: o golpe corpo a corpo que acerta uma criatura maligna (demônio, morto-vivo, corruptor, ou quem o Mestre disser). Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a luz do golpe queima o mal. Dano: +1d6, sagrado, somado ao do golpe. Resistência: nenhum. Limite de uso: um por golpe. Vale só na forma de anjo.",
-      "classe": "regra da ficha"
+      "formas": [
+        "anjo"
+      ],
+      "classe": "regra da ficha",
+      "ataque": "Maça",
+      "ativacao": "o golpe corpo a corpo que acerta uma criatura maligna (demônio, morto-vivo, corruptor, ou quem o Mestre disser)",
+      "duracao": "instantânea",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "a luz do golpe queima o mal",
+      "dano": "+1d6, sagrado, somado ao do golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "Mudar de forma",
-      "descricao": "poder natural (base Metamorfose 3): Ativação: uma ação, Velocidade 8. Duração: uma cena, ou até ela desfazer com outra ação. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume a aparência de um humano ou de um animal comum, com voz e cheiro; os números ficam os do deva; a arma e o que veste não acompanham a troca; na forma de animal não fala nem usa a maça. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Vale em todas as formas.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "metamorfose",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "uma cena, ou até ela desfazer com outra ação",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "assume a aparência de um humano ou de um animal comum, com voz e cheiro; os números ficam os do deva; a arma e o que veste não acompanham a troca; na forma de animal não fala nem usa a maça",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
     },
     {
       "nome": "Feitiços celestiais",
-      "descricao": "poder natural (base Cura 4): Ativação: uma ação, Velocidade 8, tocando o alvo. Duração: instantânea; a bênção dura até a próxima jogada do aliado ou o fim da cena. Alcance: toque. Área: um alvo. Efeito: escolhe uma: fecha ferimentos; limpa uma doença ou uma maldição (inclusive a licantropia); ou abençoa, e o aliado soma +1d6 na próxima jogada importante. Dano: nenhum; a cura devolve 3d6 + Centelha PV. Resistência: nenhum. Limite de uso: uma vez por cena. Vale em todas as formas.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "cura",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 8, tocando o alvo",
+      "duracao": "instantânea; a bênção dura até a próxima jogada do aliado ou o fim da cena",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "escolhe uma: fecha ferimentos; limpa uma doença ou uma maldição (inclusive a licantropia); ou abençoa, e o aliado soma +1d6 na próxima jogada importante",
+      "dano": "nenhum; a cura devolve 3d6 + Centelha PV",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Aura protetora",
-      "descricao": "poder natural (base Proteção 5): Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 6 m. Área: esfera de 6 m em volta do deva. Efeito: os aliados dentro dela somam +2 nas Defesas contra golpe, Arte ou efeito de criatura maligna. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. Vale em todas as formas.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "protecao",
+        "nivel": 5
+      },
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "6 m",
+      "area": "esfera de 6 m em volta do deva",
+      "efeito": "os aliados dentro dela somam +2 nas Defesas contra golpe, Arte ou efeito de criatura maligna",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Teleporte sem erro",
-      "descricao": "poder natural (base Conjuração 5): Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: qualquer lugar que ela conheça no mesmo plano. Área: o deva e até seis companheiros que ele toca ou que tocam nele. Efeito: some e reaparece no destino, sem chance de erro. Dano: nenhum. Resistência: nenhum; quem não quer ir não é levado. Limite de uso: à vontade. Vale em todas as formas.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 5
+      },
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "instantânea",
+      "alcance": "qualquer lugar que ela conheça no mesmo plano",
+      "area": "o deva e até seis companheiros que ele toca ou que tocam nele",
+      "efeito": "some e reaparece no destino, sem chance de erro",
+      "dano": "nenhum",
+      "resistencia": "nenhum; quem não quer ir não é levado",
+      "limiteDeUso": "à vontade"
     },
     {
       "nome": "Imune a doença e veneno",
-      "descricao": "doença e veneno não pegam nele. Vale em todas as formas.",
-      "classe": "sem regra ainda"
-    },
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "doença e veneno não pegam nele"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "guarda celeste",
-      "descricao": "fala antes de lutar; quando luta, protege os aliados dentro da aura, derruba com a maça quem ataca os fracos e cura entre um golpe e outro; voa por cima do combate e some pelo teleporte quando a luta está perdida. Vale só na forma de anjo.",
-      "classe": "como luta"
+      "formas": [
+        "anjo"
+      ],
+      "texto": "fala antes de lutar; quando luta, protege os aliados dentro da aura, derruba com a maça quem ataca os fracos e cura entre um golpe e outro; voa por cima do combate e some pelo teleporte quando a luta está perdida."
     },
     {
       "nome": "conselheiro disfarçado",
-      "descricao": "evita lutar sem a maça; protege e cura os aliados, e volta à forma de anjo ou some pelo teleporte quando a luta aperta. Vale só no disfarce.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão e audição: as de um humano. O site não dá sentido especial. Vale em todas as formas."
+      "formas": [
+        "disfarce"
+      ],
+      "texto": "evita lutar sem a maça; protege e cura os aliados, e volta à forma de anjo ou some pelo teleporte quando a luta aperta."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano. O site não dá sentido especial",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "inteligente; conselheira serena",
+    "tracos": "pele luminosa, asas de penas brancas, olhos calmos; a maça presa à cintura"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinha ou em grupo pequeno",
+    "atividade": "qualquer hora",
+    "dieta": "não come",
+    "caca": "não caça",
+    "dianteDeGente": "guia, cura e esconde o que é; luta só se o mal ataca primeiro"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Anjo de asas brancas que anda disfarçado de peregrina entre os mortais: cura, aconselha e protege. Quando o mal ataca primeiro, luta com a maça, e a luz do golpe queima demônios e mortos-vivos.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Conselheira serena e guerreira paciente, prefere curar e guiar a lutar, mas não hesita quando o mal ataca primeiro. Social: sozinha ou em grupo pequeno."
+      "texto": "Conselheira serena e guerreira paciente, prefere curar e guiar a lutar, mas não hesita quando o mal ataca primeiro."
     },
     {
       "titulo": "Sociedade",
@@ -182,85 +275,82 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "A Lei impede os deuses de tocar mortais, então uma deva astral é o mais próximo que uma vila esquecida chega de ver a face do sagrado; ainda assim ela evita revelar sua natureza, pois a Supressão ensinou os povos a temer até a bondade sobrenatural."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Anjo Grande no ar e Médio no chão. Bate com a maça (dano médio 17,5, mais 1d6 sagrado contra o mal), e o golpe forte deixa o alvo tonto. Bloqueio 14 (15 com a maça), Esquiva 14, 43 PV, Impacto 12, Corte e Perfuração 6. Os aliados a 6 m somam +2 nas Defesas contra o mal. Cura uma vez por cena, muda de aparência e se teleporta à vontade. Defesa Mental 34: quase nada a dobra."
     }
   ],
-  "ecologia": {
-    "tipo": "Celestial",
-    "terreno": [
-      "Any"
-    ],
-    "clima": [
-      "Extraplanar"
-    ]
-  },
-  "notas": "Habilidades notáveis: Armas 4, Ocultismo 4, Persuasão 4, Prontidão 4.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Deva Astral",
-    "cr": "14",
-    "tipo": "exterior Médio (anjo)",
-    "tamanho": "medio",
-    "valores": {
-      "for": 26,
-      "des": 19,
-      "con": 21,
-      "int": 18,
-      "sab": 18,
-      "car": 23
-    },
-    "pericias": [
-      "Armas 4",
-      "Ocultismo 4",
-      "Persuasão 4",
-      "Prontidão 4"
-    ],
-    "nota": "Anjo mensageiro: Centelha 5.",
-    "deslocamento": {
-      "ft": 50,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 6,
-  "v3": {
-    "pv": 43,
-    "esquiva": 14,
-    "bloqueio": 14,
-    "defesa": 15,
-    "defesaMental": 34,
-    "defesaSocial": 24,
-    "absorcao": {
-      "impacto": 12,
-      "corte": 6,
-      "perfuracao": 6
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 377.95,
-    "deslocamento": {
-      "terra": {
-        "batalha": 5,
-        "arranque": 8,
-        "corrida": 12
+  "imagens": [
+    "bestiario/deva-astral_criatura.webp"
+  ],
+  "formas": [
+    {
+      "id": "disfarce",
+      "nome": "disfarce",
+      "equipamento": {
+        "arsenal": []
       },
-      "voo": {
-        "batalha": 10
+      "fisiologia": {
+        "camuflagem": "passa por um humano ou um animal comum"
+      },
+      "ataques": []
+    }
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "profano",
+        "formas": "todas"
       }
-    },
-    "bloqueioArma": 1
+    ],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`tamanho`: Grande de asas abertas (3,06 m²), Médio de pé; a largura da asa é estimada **[extrapolação]**",
-    "`formas`: forma de anjo e disfarce (D-201); o disfarce é Variante que muda só a aparência, e os números são os do deva **[provisório]**",
-    "`ataque`: a maça do livro, com Armas; o site gravava \"Golpe planar\" de corte com Briga **[provisório]**",
-    "`briga`, `bloqueio`: 2 e 1; o site tinha Briga 5 e nenhum Bloqueio **[provisório]**",
-    "`prontidao`: 4, a da nota do site; o campo tinha 2",
-    "`maça estonteante`, `golpe sagrado`, `mudar de forma`, `feitiços celestiais`, `aura protetora`, `teleporte sem erro`: números sugeridos pela ficha (D-197). A aura dá +2, e não \"+1 dado\" como no site: a Defesa é número fixo, e o livro troca 1d6 numa jogada por +4 numa Defesa só no ponto de Vontade, que é de uma pessoa e de uma vez; para todos os aliados e sempre, fica a metade",
-    "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos; a Maça estonteante e o Golpe sagrado só na forma de anjo, porque a maça não acompanha a troca; os poderes naturais em todas, porque os números ficam os do deva; o \"como luta\" em duas linhas; a Camuflagem do disfarce na linha dele em Variantes. Aptidões iguais e nenhuma Arte **[provisório]**"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Maça estonteante",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Golpe sagrado",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Mudar de forma",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Feitiços celestiais",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Aura protetora",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Teleporte sem erro",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidades.briga",
+      "motivo": "O site gravava `briga` 5 para o \"Golpe planar\", que é a maça (Armas); de mãos nuas, o anjo é guerreiro treinado, e não lutador"
+    },
+    {
+      "campo": "habilidades.bloqueio",
+      "motivo": "Apara pouco: \"prefere curar e guiar a lutar\" (site). O site não gravava Bloqueio; \"até um humano sem treino pode ter 1\" (decisoes-autor §1). Com a Centelha 6, cada ponto de Bloqueio vale perto de 4 na Defesa"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "O corpo de frente, o do corpo de base escalado pela altura ao quadrado: 0,72 × (2,0 ÷ 1,8)² = 0,89 m²; mais as duas asas abertas: 3,6 − 0,5 = 3,1 m de asa, com 0,7 m de largura média (asa larga, de planar) = 2,17 m². Total 3,06 m²  na largura da asa"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "site"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": "site"
+    },
+    {
+      "campo": "formas.disfarce",
+      "motivo": "Mudar de forma muda a aparência, a voz e o cheiro; os números ficam os do deva, e a maça e o que veste não acompanham a troca"
+    }
   ]
 }

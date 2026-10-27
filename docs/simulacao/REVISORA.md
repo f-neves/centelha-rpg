@@ -1935,7 +1935,7 @@ aviso do lote chegar. São **baseline a refazer contra a árvore do aviso**, nã
 do produto. Citar qualquer um destes como se fosse de hoje é status velho, e é meu.
 
 **1 · Superfície da ponte · 44 nomes, 14 sem consumidor.**
-`scripts/sim/lib-ponte.mjs:31-48` (`penDadosDaRegua`) expõe **44 nomes**; o harness alcança 30 e **nunca
+`scripts/sim/lib-ponte.mjs:31-49` (`penDadosDaRegua`) expõe **44 nomes**; o harness alcança 30 e **nunca
 chama 14**: `HEX_CORPO_A_CORPO`, `HEX_HASTE`, `PERFIL_CORRENTE`, `contrapeDe`,
 `defesaEfetiva`, `deslocamento`, `errouPor`, `penDadosDaRegua`, `qaDaPeca`,
 `saidaDoAtaque`, `semeado`, `somarCondicoes`, `temGesto`, `vizinhos`.

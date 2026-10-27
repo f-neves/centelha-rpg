@@ -1,36 +1,24 @@
 {
-  "ordem": 175,
   "id": "espreitador-sombrio",
   "idAntigo": "mon-dark-stalker",
   "nome": "Espreitador Sombrio",
   "nomeIngles": "Dark Stalker",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humanoide",
+  "categoria": "humanoide",
   "papel": "soldado",
-  "conceito": "humanoide Médio",
-  "descricao": "Senhor esguio dos povos das trevas, de roupa escura sempre limpa e uma espada curta em cada mão. Golpeia de surpresa no escuro, foge da luz e, ao morrer, explode numa bola de fogo branco.",
-  "tags": [
-    "humanoide",
-    "centelha"
-  ],
-  "imagem": "bestiario/espreitador-sombrio_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura",
-    "peso": "45 kg",
-    "largura": 0.34,
-    "altura": 1.8
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 3,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.34,
+    "profundidade": 0.17,
+    "comprimento": null,
+    "massa": 45,
+    "area": 0.54
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 4,
     "destreza": 5,
     "vigor": 4,
@@ -41,7 +29,7 @@
     "perspicacia": 2,
     "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "armas": 4,
     "briga": 2,
     "bloqueio": 2,
@@ -52,91 +40,154 @@
     "integridade": 3,
     "sociabilidade": 1
   },
-  "skills2": {
+  "habilidadesSec": {
     "lideranca": 2,
-    "intimidacao": 2
+    "intimidacao": 2,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "duas espadas curtas",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "armas",
-      "foco": "alvo desprevenido",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "no escuro",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "duas espadas curtas",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 3,
-    "valor": 3
+    "temperanca": 3
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-curta"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Espada curta",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 2,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "arma": "espada-curta",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Duas lâminas",
-      "descricao": "a empunhadura dupla: um golpe por mão na mesma ação, as duas a −1d6, cada uma com o próprio acerto e dano.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "empunhadura-dupla",
+      "texto": "(`combate.md`): um golpe por mão na mesma ação, as duas a −1d6, cada uma com o próprio acerto e dano"
     },
     {
       "nome": "Ataque furtivo",
-      "descricao": "Espada curta: Ativação: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a lâmina entra onde o alvo não guarda. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Espada curta",
+      "ativacao": "o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado",
+      "duracao": "instantânea",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "a lâmina entra onde o alvo não guarda",
+      "dano": "+1d6 no dano do golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "Explosão de chamas",
-      "descricao": "Ativação: ele morre. Duração: instantânea. Alcance: 3 m. Área: esfera de 3 m em volta do corpo. Efeito: o corpo estoura numa bola de fogo branco-quente. Dano: 3d6, fogo. Resistência: esquiva, contra Dificuldade 15; quem passa leva metade. Limite de uso: uma vez, ao morrer.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "ele morre",
+      "duracao": "instantânea",
+      "alcance": "3 m",
+      "area": "esfera de 3 m em volta do corpo",
+      "efeito": "o corpo estoura numa bola de fogo branco-quente",
+      "dano": "3d6, fogo",
+      "resistencia": "esquiva, contra Dificuldade 15; quem passa leva metade",
+      "limiteDeUso": "uma vez, ao morrer"
     },
     {
       "nome": "Cegueira pela luz",
-      "descricao": "Ativação: luz forte (sol, Arte de Luz, lanterna de perto). Duração: enquanto estiver na luz forte. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Ofuscado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "luz forte (sol, Arte de Luz, lanterna de perto)",
+      "duracao": "enquanto estiver na luz forte",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "fica Ofuscado",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Uso de veneno",
-      "descricao": "aplica veneno nas lâminas sem nunca se envenenar ao aplicar. O veneno é o que ele tiver (o Mestre escolhe do catálogo).",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "senhor das trevas",
-      "descricao": "deixa os rastejadores na frente, ataca de surpresa no escuro com as duas lâminas e foge da luz; ao cair, a explosão pega quem está perto.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga com clareza em qualquer escuridão, inclusive a criada por magia (site). · audição e olfato: os de um humano."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "aplica veneno nas lâminas sem nunca se envenenar ao aplicar. O veneno é o que ele tiver (o Mestre escolhe do catálogo)"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "senhor das trevas",
+      "formas": "todas",
+      "texto": "deixa os rastejadores na frente, ataca de surpresa no escuro com as duas lâminas e foge da luz; ao cair, a explosão pega quem está perto."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga com clareza em qualquer escuridão, inclusive a criada por magia",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humanoide; senhorial e fria",
+    "tracos": "corpo alto e descarnado, pele pálida, roupa escura e couro limpos, duas espadas curtas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "senhor de um bando de rastejadores, típico 1 com 4 a 12 servos",
+    "atividade": "noturno",
+    "dieta": "onívoro",
+    "caca": "manda os servos roubar; caça de surpresa no escuro",
+    "dianteDeGente": "ataca de surpresa ou manda os servos"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo",
+      "urbano"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Senhor esguio dos povos das trevas, de roupa escura sempre limpa e uma espada curta em cada mão. Golpeia de surpresa no escuro, foge da luz e, ao morrer, explode numa bola de fogo branco.",
   "lore": [
     {
       "titulo": "Senhores das Profundezas",
@@ -145,78 +196,40 @@
     {
       "titulo": "Vestes Impecáveis",
       "texto": "Ao contrário de seus servos maltrapilhos, vestem panos escuros e couro sempre limpos, carregando um par de espadas curtas que preferem a qualquer outra arma."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: senhor de um bando de rastejadores, típico 1 com 4 a 12 servos."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, 37 PV, Impacto 6, Corte e Perfuração 2. Bloqueio 18 (19 com a espada), Esquiva 14. Uma espada curta em cada mão: dois golpes por ação a −1d6, dano médio 7,5 cada, e +1d6 contra quem não o viu. Na luz forte fica Ofuscado; ao morrer, a explosão faz 3d6 de fogo a 3 m."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Underground",
-      "Urban"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/espreitador-sombrio_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Dark Stalker",
-    "cr": "4",
-    "tipo": "humanoide Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 14,
-      "des": 18,
-      "con": 14,
-      "int": 9,
-      "sab": 11,
-      "car": 13
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Ataque furtivo",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Explosão de chamas",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "v3": {
-    "pv": 37,
-    "esquiva": 14,
-    "bloqueio": 18,
-    "defesa": 19,
-    "defesaMental": 16,
-    "defesaSocial": 10,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 2,
-      "perfuracao": 2
+    {
+      "campo": "habilidadesEspeciais.Cegueira pela luz",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 124.69,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+    {
+      "campo": "habilidades.bloqueio",
+      "motivo": "Apara com as duas lâminas"
     },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "`duas lâminas`: a empunhadura dupla do livro, com −1d6 nas duas mãos; o site dizia \"com igual destreza\" (perda anotada no relato)",
-    "`bloqueio`: 2; o site não gravava Bloqueio **[provisório]**",
-    "`temperanca`: 3; o site tinha 2 **[provisório]**",
-    "`ataque furtivo`, `explosão de chamas`, `cegueira pela luz`: números sugeridos pela ficha (D-197)"
+    {
+      "campo": "comportamento.social",
+      "motivo": "site"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    }
   ]
 }

@@ -14,166 +14,11 @@
    "profano"
   ]
  },
- "assombracao": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ],
-  "resistencias": [
-   "corte",
-   "impacto",
-   "perfuracao"
-  ]
- },
- "babau": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "balor": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "barghest": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "barghest-maior": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
  "basidirond": {
   "fraquezas": [
    "fogo"
   ],
   "resistencias": [
-   "perfuracao"
-  ]
- },
- "bebilith": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "bodak": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ],
-  "resistencias": [
-   "perfuracao"
-  ]
- },
- "bruxa-noturna": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "cao-de-guerra-nessiano": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "cao-infernal": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "cao-yeth": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "cauchemar": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "diabo-barbado": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "diabo-chifrudo": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "diabo-de-gelo": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "diabo-do-fosso-pit-fiend": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "diabo-espinhoso": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "diabo-osseo": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "diabrete-imp": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "dretch": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "erinia": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "esqueleto-humano": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ],
-  "resistencias": [
-   "corte",
-   "perfuracao"
-  ]
- },
- "fantasma": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ],
-  "resistencias": [
-   "corte",
-   "impacto",
    "perfuracao"
   ]
  },
@@ -190,82 +35,9 @@
    "profano"
   ]
  },
- "ghast": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ],
-  "resistencias": [
-   "perfuracao"
-  ]
- },
- "ghoul": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ],
-  "resistencias": [
-   "perfuracao"
-  ]
- },
- "glabrezu": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "kyton": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "lemure": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
  "lillend": {
   "fraquezas": [
    "profano"
-  ]
- },
- "marilith": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "mohrg": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ],
-  "resistencias": [
-   "perfuracao"
-  ]
- },
- "mumia": {
-  "fraquezas": [
-   "fogo",
-   "luz",
-   "sagrado"
-  ],
-  "resistencias": [
-   "perfuracao"
-  ]
- },
- "nabasu": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "nalfeshnee": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
   ]
  },
  "papa-moscas-gigante": {
@@ -274,12 +46,6 @@
   ],
   "resistencias": [
    "perfuracao"
-  ]
- },
- "pesadelo": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
   ]
  },
  "planetar": {
@@ -293,12 +59,6 @@
    "perfuracao"
   ]
  },
- "quasit": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
  "shoggoth": {
   "resistencias": [
    "corte",
@@ -308,23 +68,6 @@
  "solar": {
   "fraquezas": [
    "profano"
-  ]
- },
- "sombra": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ],
-  "resistencias": [
-   "corte",
-   "impacto",
-   "perfuracao"
-  ]
- },
- "sucubo": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
   ]
  },
  "treant": {
@@ -344,51 +87,12 @@
    "perfuracao"
   ]
  },
- "vampiro": {
-  "fraquezas": [
-   "fogo",
-   "luz",
-   "prata",
-   "sagrado",
-   "sol"
-  ],
-  "resistencias": [
-   "perfuracao"
-  ]
- },
- "vargouille": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
  "vegepygmy": {
   "fraquezas": [
    "fogo"
   ],
   "resistencias": [
    "perfuracao"
-  ]
- },
- "vrock": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ]
- },
- "wight": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
-  ],
-  "resistencias": [
-   "perfuracao"
-  ]
- },
- "xill": {
-  "fraquezas": [
-   "luz",
-   "sagrado"
   ]
  }
 }

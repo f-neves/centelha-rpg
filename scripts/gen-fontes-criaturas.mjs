@@ -12,11 +12,13 @@ const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^
 const PASTA = path.join(RAIZ, 'src/data/bestiario');
 const SAIDA = path.join(RAIZ, 'docs/bestiario/fontes-criaturas.json');
 const ids = fs.readdirSync(PASTA).filter((a) => a.endsWith('.json')).map((a) => a.slice(0, -5)).sort();
+const anteriores = fs.existsSync(SAIDA) ? JSON.parse(fs.readFileSync(SAIDA, 'utf8')) : {};
 const fontes = {};
 for (const id of ids) {
   const j = JSON.parse(fs.readFileSync(path.join(PASTA, `${id}.json`), 'utf8'));
   if (j.id !== id) { console.error(`✗ ${id}.json tem o id "${j.id}"`); process.exit(1); }
   if (j.fonte) fontes[id] = j.fonte;
+  else if (j.corpo && anteriores[id]) fontes[id] = anteriores[id];
 }
 const texto = JSON.stringify(fontes, null, 2) + '\n';
 if (process.argv.includes('--check')) {

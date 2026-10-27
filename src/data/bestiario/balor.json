@@ -1,167 +1,302 @@
 {
-  "ordem": 93,
   "id": "balor",
   "idAntigo": "mon-balor",
   "nome": "Balor",
   "nomeIngles": "Demon, Balor",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Demônio",
+  "categoria": "corruptor",
   "papel": "chefe",
-  "conceito": "exterior Grande (demônio)",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
-  "tags": [
-    "demonio",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/balor_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "3,7 m de altura",
-    "peso": "3,6 t"
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 9
-  },
+  "ameaca": 6,
   "centelha": 9,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, ereto; voa",
+    "apoio": "bipede",
+    "altura": 3.7,
+    "largura": 1.39,
+    "profundidade": 0.62,
+    "comprimento": null,
+    "massa": 1355,
+    "area": 4.56,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 4,
+  "atributos": {
     "forca": 11,
     "destreza": 8,
     "vigor": 12,
-    "influencia": 8,
-    "perspicacia": 8,
-    "compostura": 8,
     "percepcao": 7,
     "inteligencia": 7,
-    "raciocinio": 7
+    "raciocinio": 7,
+    "influencia": 8,
+    "perspicacia": 8,
+    "compostura": 8
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "armas": 5,
+    "bloqueio": 3,
     "esquiva": 2,
-    "prontidao": 3,
-    "integridade": 8
+    "atletismo": 4,
+    "furtividade": 0,
+    "integridade": 8,
+    "prontidao": 5,
+    "resistencia": 6,
+    "empatia": 2,
+    "sociabilidade": 2,
+    "ocultismo": 5
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "lideranca": 5,
+    "estrategia": 4,
+    "intimidacao": 5,
+    "voo": 3,
+    "musculatura": 4
+  },
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "espada longa",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {
+    "lideranca": [
+      {
+        "foco": "legiões demoníacas",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "virtudes": {
+    "bravura": 6,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 6
+    "temperanca": 1
   },
-  "willpower": 12,
-  "aparencia": -2,
+  "vontade": 12,
+  "aparencia": 0,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "voo": {
+      "batalha": 9
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-longa"
+      },
+      {
+        "ref": "a:chicote"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Espada flamejante",
+      "arma": "espada-longa",
+      "habilidade": "armas"
+    },
+    {
+      "nome": "Chicote de chamas",
+      "arma": "chicote",
+      "habilidade": "armas"
+    },
+    {
+      "nome": "Garras",
+      "parte": "mao",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "aura-de-fogo",
+      "nome": "Lâmina em chamas",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Espada flamejante",
+      "ativacao": "o golpe da espada que acerta",
+      "duracao": "instantânea",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "a lâmina arde e queima a ferida",
+      "dano": "+1d6 de fogo, somado ao do golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
+    },
+    {
+      "nome": "Chicote que puxa",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Chicote de chamas",
+      "ativacao": "o golpe do chicote que acerta",
+      "duracao": "instantânea",
+      "alcance": "9 m",
+      "area": "um alvo",
+      "efeito": "o chicote enrola o alvo e o puxa até o balor ou o derruba (Caído), à escolha dele",
+      "dano": "o do chicote",
+      "resistencia": "corpo, contra a jogada do golpe; quem passa leva o dano e fica onde está",
+      "limiteDeUso": "um por golpe"
+    },
+    {
+      "nome": "espada e chicote juntos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "golpeia com a espada e com o chicote na mesma ação; por enquanto, um ataque por ação"
+    },
+    {
       "nome": "Aura de fogo",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "fogo",
         "nivel": 4
       },
-      "resiste": "nenhum",
-      "efeito": "quem chega a até 3m do balor sofre dano de fogo automático a cada rodada que ficar perto",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
-      },
-      "descricao": "O corpo do balor arde o tempo todo; ficar perto dele, mesmo sem lutar, já queima."
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "3 m",
+      "area": "esfera de 3 m em volta dele",
+      "efeito": "o corpo arde o tempo todo; ficar perto, mesmo sem lutar, queima",
+      "dano": "2d6 de fogo a cada 6 Ticks em quem estiver dentro",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
-      "id": "morte-explosiva",
       "nome": "Morte explosiva",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "fogo",
         "nivel": 5
       },
-      "resiste": "esquiva",
-      "efeito": "ao cair a 0 PV, o balor explode numa área de 12m; quem não escapar sofre dano alto",
-      "usos": {
-        "periodo": "avontade"
-      },
-      "descricao": "A morte do balor não é silenciosa: seu corpo estoura numa bola de fogo que alcança 12 metros, ferindo gravemente quem não conseguir sair a tempo."
+      "ativacao": "quando cai a 0 PV",
+      "duracao": "instantânea",
+      "alcance": "12 m",
+      "area": "esfera de 12 m em volta dele",
+      "efeito": "o corpo estoura numa bola de fogo",
+      "dano": "5d6 + Centelha, fogo",
+      "resistencia": "esquiva; quem passa leva metade",
+      "limiteDeUso": "uma vez, na morte"
     },
     {
-      "id": "teleporte-balor",
       "nome": "Teleporte",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "conjuracao",
         "nivel": 4
       },
-      "resiste": "nenhum",
-      "efeito": "desloca-se instantaneamente, ignorando prisões e paredes, poucas vezes por dia",
-      "descricao": "O balor desaparece numa lufada de fumaça negra e reaparece em outro ponto que conheça, atravessando paredes e prisões mágicas comuns no caminho.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 3
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "instantânea",
+      "alcance": "qualquer lugar que ele conheça no mesmo plano",
+      "area": "o próprio balor",
+      "efeito": "some numa lufada de fumaça negra e reaparece no destino, atravessando paredes e prisões mágicas comuns",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "três vezes por dia"
+    },
+    {
+      "nome": "Comandar legiões",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "coordenar",
+        "nivel": 1
       }
+    },
+    {
+      "nome": "comandar a horda inteira",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "dá ação extra ou Iniciativa a todos os demônios aliados na área, e não a um só"
+    },
+    {
+      "nome": "Ver o invisível",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "visao-verdadeira",
+        "nivel": 4
+      }
+    },
+    {
+      "nome": "visão verdadeira sempre ativa",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o balor enxerga através de ilusão, disfarce e invisibilidade o tempo todo, sem esforço; a Técnica do livro é ativa e custa Energia"
+    },
+    {
+      "nome": "medonho",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quem vê o balor pela primeira vez sente o calor e o terror de uma calamidade viva; o corpo quer fugir antes de qualquer golpe"
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "comoLuta": [
     {
-      "nome": "Espada flamejante",
-      "descricao": "ataque corpo a corpo com dano extra de fogo"
-    },
-    {
-      "nome": "Chicote de energia",
-      "descricao": "alcance 9m; acerto puxa o alvo para perto ou o derruba (Caído)"
-    },
-    {
-      "nome": "Aura de fogo",
-      "descricao": "quem chega a até 3m sofre dano de fogo automático toda rodada"
-    },
-    {
-      "nome": "Morte explosiva",
-      "descricao": "ao cair a 0 PV, explode em 12m; falha em Reflexos = dano alto"
-    },
-    {
-      "nome": "Comandar legiões",
-      "descricao": "proeza; concede ação extra ou Iniciativa a demônios aliados na área"
-    },
-    {
-      "nome": "Teleporte",
-      "descricao": "feitiçaria; desloca-se instantaneamente, ignorando prisões e paredes"
-    },
-    {
-      "nome": "Voo",
-      "descricao": "asas flamejantes, deslocamento de voo alto"
-    },
-    {
-      "nome": "Sangue abissal",
-      "descricao": "imune a fogo; vulnerável a frio (sofre dano extra)"
-    },
-    {
-      "nome": "Visão verdadeira",
-      "descricao": "enxerga através de ilusões, disfarces e invisibilidade"
-    },
-    {
-      "nome": "Espada e chicote flamejantes",
-      "descricao": "Manobra de combate, sem limite de uso."
-    },
-    {
-      "nome": "Comandar legiões",
-      "descricao": "Traço social (não é poder de combate): Lore; não é poder de combate."
+      "nome": "calamidade viva",
+      "formas": "todas",
+      "texto": "avança pelo campo com a espada numa mão e o chicote na outra, puxa para perto quem tenta fugir e deixa a aura queimar quem fica; comanda a horda enquanto luta e, se cair, leva todos junto na explosão."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão verdadeira",
+      "descricao": "pela Técnica (Manobras)",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "nenhuma; arde",
+    "mente": "inteligente, demoníaca, orgulhosa",
+    "tracos": "gigante de 3,7 m, pele escura e rachada de onde sai fogo, chifres, asas de morcego envoltas em chamas; espada flamejante numa mão e chicote de chamas na outra"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "comanda exércitos de demônios",
+    "atividade": "qualquer hora",
+    "dieta": "não precisa comer",
+    "caca": "conquista e destrói",
+    "dianteDeGente": "despreza e destrói"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Senhor demoníaco de fogo, um dos poucos fortes o bastante para comandar exércitos do Abismo. Avança como calamidade viva, com a espada flamejante numa mão e o chicote de chamas na outra, e ao morrer explode numa bola de fogo que arrasta quem estiver perto.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -184,49 +319,72 @@
       "texto": "As lendas do White Wall falam do rei de fogo da fenda, figura tão terrível que os anões exilados juram que sua chegada, séculos atrás, foi o verdadeiro motivo da queda das montanhas."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/balor_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "Habilidades notáveis: Armas 5, Ocultismo 5, Prontidão 5, Liderança 5. Centelha acima do teto mortal (entidade).",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Balor",
-    "cr": "20",
-    "tipo": "exterior Grande (demônio)",
-    "tamanho": "grande",
-    "valores": {
-      "for": 35,
-      "des": 25,
-      "con": 36,
-      "int": 24,
-      "sab": 24,
-      "car": 27
-    },
-    "pericias": [
-      "Armas 5",
-      "Ocultismo 5",
-      "Prontidão 5",
-      "Liderança 5"
-    ],
-    "nota": "Senhor demoníaco: extrapola o teto mortal, Centelha 8. Str 35 → curva 10 +1 tamanho = Força 11; Con 36 → Vigor 11.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 6,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "estandarte"
+      "campo": "habilidadesEspeciais.Lâmina em chamas",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Chicote que puxa",
+      "motivo": "números sugeridos pela ficha (D-197); Acerto pela Destreza 8, em vez da Força 11; jogada 27 para 24, pela 33.2."
+    },
+    {
+      "campo": "habilidadesEspeciais.Aura de fogo",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Morte explosiva",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Teleporte",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "A nota do site (\"Prontidão 5\"); o campo dizia 3"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Sem espécie medida, a massa sai do corpo de base e da densidade (D-192). O corpo de base escalado pelo cubo da altura (× 8,68) dá 0,686 m³ e 693 kg; com o tronco 50% mais largo e 30% mais fundo (× 1,95), 1,338 m³, e com a densidade de carne e osso (1.010 kg/m³), 1.355 kg. O site dizia 3,6 t. Por que fica a calculada (D-187): 3,6 t pediriam o corpo de base cinco vezes mais largo e fundo, ou a densidade da pedra (2.700 kg/m³), e o balor é de carne, fogo e asas. Diferente do hezrou, aqui a escolha muda o jogo: a Faixa desce de 5 para 4 e o PV de 95 para 78; 1.355 kg pelo corpo de base da D-192 alargado (50% e 30%), contra os 3,6 t do site, pela D-187. A Faixa desce de 5 para 4, o PV de 95 para 78 e o Peso erguido sobe de 1.553,04 para 2.017,70 kg (a referência de Força cresce com a massa). Com a proporção humana daria 693 kg; o alargamento é julgamento"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 4: a pele de demônio maior, como a do hezrou . O nível fica fora da Absorção (decisoes-autor §16). A imunidade e a fraqueza são as do site (\"imune a fogo; vulnerável a frio\"), pela linha Elementos"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "0, e não o −2 do site, fora da régua; o efeito em quem olha foi para a linha medonho (D-181)"
     }
   ]
 }

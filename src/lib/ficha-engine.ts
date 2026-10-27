@@ -2,8 +2,9 @@
 // Renderiza bolinhas/cards/derivados no esqueleto (FichaSkeleton.astro) e calcula XP ao vivo.
 // A persistência e o orçamento são configuráveis via opts, para servir tanto a /ficha
 // (localStorage) quanto a /personagem (Supabase, com XP definido pelo mestre).
+import { conjuntoPersonagem, numerosPersonagem, massaDoJogador, itemDoJogador } from './motor';
 import { tecnicaDisponivel } from './modulos';
-import { pesoMaximoErguido, alcanceArremesso } from './forca-empurrao';
+import { alcanceArremesso } from './forca-empurrao';
 import { custoPontos, custoTecnica, custoArte, custoEfeito, custoEspecialidade, pisoXp, pv, pvPorte, type Porte, comRequisitoDeForca, forcaFaltando, forcaNoArco, defesa, defesaMental, defesaSocial, centelhaNaJogada, energia, mana, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './calc';
 import ATTRS_D from '../data/atributos.json';
 import HAB_D from '../data/habilidades.json';
@@ -190,6 +191,7 @@ export function montarFicha(opts: FichaOpts) {
 
   // ---- estado ----
   let S: any;
+  let massaEscolhida = false;
   // Estado de tela, não de ficha: o que está aberto e o que está filtrado não é escolha
   // de personagem e não vai para o arquivo salvo.
   const OPEN = { cam: {} as Record<string, boolean>, ef: {} as Record<string, boolean> };
@@ -205,7 +207,8 @@ export function montarFicha(opts: FichaOpts) {
   const EF = { soComprados: false, tudoAberto: true };
   function fresh() {
     // Ficha nova nasce no piso de cada trilha: custo zero até o jogador comprar algo.
-    S = { id: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, ante: {}, anteNom: {}, budget: 1500, equip: { armaduras: [] }, arsenal: [], conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
+    massaEscolhida = false;
+    S = { id: {}, corpo:{massa:massaDoJogador({raca:'humano'})}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, ante: {}, anteNom: {}, budget: 1500, equip: { armaduras: [] }, arsenal: [], conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = pisoAttr(a.id)));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = pisoXp('habilidadePrimaria'); S.spec[h.id] = []; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = pisoXp('virtude')));
@@ -293,6 +296,8 @@ export function montarFicha(opts: FichaOpts) {
     return list.map((e) => ({ s: e.s, v: Math.max(0, Math.min(cap, e.v)) })).filter((e) => e.v > 0).slice(0, cap);
   }
   function normalize() {
+    massaEscolhida = typeof S.corpo?.massa === 'number' || !!S.id?.peso;
+    S.corpo ??= {massa:massaDoJogador(S)};
     S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {}; S.efeito ??= {}; S.secCol ??= {};
     S.defSpec ??= {}; for (const k of ['esquiva', 'bloqueio', 'social', 'mental']) S.defSpec[k] ??= [];
     // Migração: a Habilidade "Escudos" virou "Bloqueio" (id escudos -> bloqueio); carrega pontos e especialidade antigos.
@@ -788,13 +793,6 @@ export function montarFicha(opts: FichaOpts) {
     religarPop();
   }
   const A = (id: string) => S.attrs[id] || 0, SK = (id: string) => S.skills[id] || 0, VI = (id: string) => S.virtues[id] || 0;
-  // Atributo do ACERTO por perícia: tiro = Percepção; arremesso = Destreza; corpo a corpo (armas/punhos) = o maior entre Destreza e Força.
-  const ataqueAtrib = (w: any): number => {
-    const per = w?.pericia;
-    if (per === 'atirador') return A('percepcao');
-    if (per === 'arremesso') return A('destreza');
-    return Math.max(A('destreza'), A('forca'));
-  };
   // ===== Equipamento: conjuntos de armas (mão hábil / inábil) =====
   const IMPROV = { nome: 'Arma personalizada', dado: 1, danoBonus: 0, acerto: -2, defesaArma: 0, maos: 1, ticks: 5, folego: 0, atrib: 'forca', pericia: 'briga', tags: [] as string[], tipoDano: 'impacto', forcaMult: 1 };
   // Peça fora do catálogo, nos dois lados do arsenal. São duas porque uma arma e
@@ -805,36 +803,8 @@ export function montarFicha(opts: FichaOpts) {
   const REF_ARMA_LIVRE = 'c', REF_ESCUDO_LIVRE = 'ce';
   const refLivre = (ref: any) => ref === REF_ARMA_LIVRE || ref === REF_ESCUDO_LIVRE;
   const ehLivre = (p: any) => refLivre(p && p.ref);
-  const clampImprov = (v: any, lo: number, hi: number, dflt: number) => { const n = Number(v); return Number.isFinite(n) ? Math.max(lo, Math.min(hi, Math.round(n))) : dflt; };
-  function itemDe(slot: any) {
-    const ref = (slot && slot.ref) || 'nada';
-    if (ref === REF_ESCUDO_LIVRE) {
-      const base = { ...ESCUDO_LIVRE, nome: (slot && slot.nome) || ESCUDO_LIVRE.nome };
-      const s = escudoComMod(base, slot?.mod);
-      return { kind: 'escudo', nome: s.nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, vsProjetilRapido: s.vsProjetilRapido || { bloqueia: false, bonus: 0 }, base, s };
-    }
-    if (ref === 'c') {
-      // O item personalizado passou a usar o mesmo "ajustar" das peças de catálogo,
-      // em vez de três campos próprios. A base continua sendo o que a peça guardou
-      // (fichas antigas não perdem nada); o `mod` entra por cima, como em qualquer
-      // outra peça, e com ele vêm Velocidade e Defesa, que antes não dava para mexer.
-      const base = { ...IMPROV, nome: (slot && slot.nome) || IMPROV.nome,
-        dado: clampImprov(slot?.dado, 1, 2, IMPROV.dado),
-        danoBonus: clampImprov(slot?.danoBonus, -2, 2, IMPROV.danoBonus),
-        acerto: clampImprov(slot?.acerto, -6, 6, IMPROV.acerto) };
-      const w = armaComMod(base, slot?.mod);
-      return { kind: 'custom', nome: w.nome, def: w.defesaArma || 0, pen: 0, w, base };
-    }
-    if (ref.startsWith('e:')) {
-      const base = ESCUDO[ref.slice(2)];
-      if (base) { const s = escudoComMod(base, slot?.mod); return { kind: 'escudo', nome: base.nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, vsProjetilRapido: s.vsProjetilRapido || { bloqueia: false, bonus: 0 }, base, s }; }
-    }
-    if (ref.startsWith('a:')) {
-      const base = ARMA[ref.slice(2)];
-      if (base) { const w = armaComMod(base, slot?.mod); return { kind: 'arma', nome: base.nome, def: w.defesaArma || 0, pen: 0, w, base }; }
-    }
-    return { kind: 'nada', nome: '—', def: 0, pen: 0 };
-  }
+  const itemDe = itemDoJogador;
+
   /** Peças de armadura vestidas, já com os ajustes do jogador. */
   const pecasArmadura = () => armadurasDe(S);
 
@@ -874,78 +844,9 @@ export function montarFicha(opts: FichaOpts) {
     return escrito ? numPeso(escrito) : cargaCalculada();
   };
   const it2H = (it: any) => (it.kind === 'arma' || it.kind === 'custom') && it.w.maos === 2;
-  const itVers = (it: any) => (it.kind === 'arma' || it.kind === 'custom') && (it.w.tags || []).includes('versátil');
   function conjAtivo() { const cs = (S.conjuntos || []); return cs.find((c: any) => c.ativo) || cs[0] || { habil: { ref: 'a:desarmado' }, inabil: { ref: 'nada' } }; }
   function calcConj(cj: any) {
-    const C = S.centelha || 0, forca = A('forca');
-    const armorPen = empilharArmaduras(pecasArmadura()).penalidade || 0;
-    const habil = itemDe(cj.habil);
-    const inabil = it2H(habil) ? { kind: 'nada', nome: '—', def: 0, pen: 0 } : itemDe(cj.inabil);
-    // O requisito de Força REBAIXA a arma antes de qualquer conta (`M-32`): a
-    // arma não fica proibida, fica rendendo o patamar comum. Aplicado aqui, no
-    // topo, e não dentro de cada fórmula: assim o `db`, o `capF` e o `mult` que
-    // vêm abaixo já saem certos, e as três versões de `ap` deste bloco também.
-    const atkBruto = (habil.kind === 'arma' || habil.kind === 'custom') ? habil.w : ARMA['desarmado'];
-    const atk = comRequisitoDeForca(atkBruto, forca);
-    const habilAtk = S.skills[atk.pericia] || S.skills2[atk.pericia] || 0;
-    const soma = ataqueAtrib(atk) + habilAtk;
-    const dados = Math.floor(soma / 2), bonus = soma % 2 === 1 ? 2 : 0;
-    const flat = (atk.acerto || 0) + ataqueCentelha(C, habilAtk) - armorPen;
-    const dist = (atk.tags || []).includes('distância');
-    const fm = regras.derivados.danoForca as any;
-    const db = atk.danoBonus || 0;
-    const capF = forcaNoArco(atk, atk.forcaCap != null ? Math.min(forca, atk.forcaCap) : forca);
-    const inabilArmaOcupada = (inabil.kind === 'arma' || inabil.kind === 'custom');
-    const versoes: { rot: string; ap: number }[] = [];
-    // +1 POR PONTO DE CENTELHA DO ATACANTE, SEM LIMITE, no dano (Reforma da
-    // Centelha, 28/09/2026, item 3 da Fase 1): soma em toda versão do `ap`.
-    if (!dist && itVers(habil)) {
-      // Versátil: com a outra mão ocupada (arma OU escudo) vai a uma mão; com a outra mão
-      // livre, é empunhada com as duas e a Força entra dobrada. Antes a ficha mostrava as
-      // duas versões e deixava a escolha no ar; agora o marcador de uso já decidiu.
-      const inabilOcupada = inabil.kind !== 'nada';
-      versoes.push(inabilOcupada
-        ? { rot: '', ap: db + forca * (atk.forcaMult ?? fm.umaMao) + C }
-        : { rot: '2 mãos', ap: db + forca * fm.duasMaos + C });
-    } else {
-      const mult = dist ? (atk.forcaMult ?? 1) : (atk.maos === 2 ? (atk.forcaMult ?? fm.duasMaos) : (atk.forcaMult ?? fm.umaMao));
-      versoes.push({ rot: '', ap: db + capF * mult + C });
-    }
-    // O aviso sai da arma BRUTA: a rebaixada já não tem requisito a cobrar.
-    const reqForca = forcaFaltando(atkBruto, forca);
-    // Empunhadura dupla: se a mão inábil também é arma, ela rende um 2º ataque, as duas mãos a −1d6 (D-091: sem penalidade extra na inábil).
-    // A mão INÁBIL passa pelo mesmo freio: o Arco Composto cabe neste slot, e
-    // sem isto ele sairia freado na mão hábil e inteiro na outra, que é meia
-    // regra e pior do que nenhuma.
-    const inabilArma = (inabil.kind === 'arma' || inabil.kind === 'custom') ? comRequisitoDeForca(inabil.w, forca) : null;
-    let dupla: any = null;
-    if (inabilArma) {
-      const habilI = S.skills[inabilArma.pericia] || S.skills2[inabilArma.pericia] || 0;
-      const somaI = ataqueAtrib(inabilArma) + habilI;
-      const distI = (inabilArma.tags || []).includes('distância');
-      const capFI = forcaNoArco(inabilArma, inabilArma.forcaCap != null ? Math.min(forca, inabilArma.forcaCap) : forca);
-      const multI = distI ? (inabilArma.forcaMult ?? 1) : (inabilArma.forcaMult ?? fm.umaMao);
-      dupla = {
-        habilAp: versoes[0].ap,
-        inabilDados: Math.floor(somaI / 2), inabilBonus: somaI % 2 === 1 ? 2 : 0,
-        inabilFlat: (inabilArma.acerto || 0) + ataqueCentelha(C, habilI) - armorPen,
-        inabilDado: inabilArma.dado, inabilAp: (inabilArma.danoBonus || 0) + capFI * multI + C,
-        inabilPen: 1,
-      };
-    }
-    // O BLOQUEIO PELA MELHOR COMBINAÇÃO (D-065): as armas e os escudos das mãos somam; o corpo só
-    // defende quando nada nas mãos é usado, e não soma com eles; só os dois punhos somam entre si
-    // (+1 cada). Os Punhos, na mão hábil ou na inábil, contam como mão livre (CORRIGE 140). As
-    // pernas (−1) ficam para o Mestre, quando as mãos não podem ser usadas (D-067: o chute é regra
-    // de texto, e não arma da ficha): a ficha mostra a melhor combinação disponível.
-    const ehCorpo = (s: any) => s?.ref === 'a:desarmado';
-    const inabilCorpo = !it2H(habil) && ehCorpo(cj.inabil);
-    const maosLivres = (ehCorpo(cj.habil) ? 1 : 0) + ((inabil.kind === 'nada' || inabilCorpo) && !it2H(habil) ? 1 : 0);
-    const nasMaos = [ehCorpo(cj.habil) ? null : habil, inabilCorpo ? null : inabil].filter((it: any) => it && it.kind !== 'nada');
-    const defMaos = nasMaos.reduce((s: number, it: any) => s + (it.def || 0), 0);
-    const defCorpo = maosLivres * (ARMA['desarmado']?.defesaArma ?? 1);
-    const defSum = nasMaos.length ? Math.max(defMaos, defCorpo) : defCorpo;
-    return { habil, inabil, atk, dados, bonus, flat, dist, versoes, reqForca, dupla, defSum, penSum: (habil.pen || 0) + (inabil.pen || 0), armorPen };
+    return conjuntoPersonagem(S, cj, {habil:itemDe(cj.habil),inabil:itemDe(cj.inabil),armorPen:empilharArmaduras(pecasArmadura()).penalidade || 0,atributos:Object.fromEntries((ATTRS_D as any[]).map((a: any) => [a.id,A(a.id)]))});
   }
   const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
   // Cada arma da lista já mostra os próprios números: Velocidade / Acerto / Dano / Defesa.
@@ -1562,13 +1463,14 @@ export function montarFicha(opts: FichaOpts) {
     const pecas = pecasArmadura();
     const armSt = empilharArmaduras(pecas);
     const act = calcConj(conjAtivo());
+    const nums = numerosPersonagem(S, {act,armSt});
     const armPen = armSt.penalidade || 0, penEsc = act.penSum || 0;
     const penFisica = armPen + penEsc; // Esquiva e deslocamento sofrem armadura + escudo(s)
     const cs = (regras.dano as any)?.centelhaNoSoak ?? 0;
     const vig = A('vigor'), dex = A('destreza');
-    const defEsq = defesa({ destreza: dex, habilidade: SK('esquiva'), centelha: C }) - penFisica;
+    const defEsq = nums.esquiva;
     // Bloqueio soma a Defesa das armas/escudos do conjunto EM USO. O escudo não penaliza o próprio Bloqueio.
-    const defBlq = defesa({ destreza: dex, habilidade: SK('bloqueio'), centelha: C }) + (act.defSum || 0) - armPen;
+    const defBlq = nums.bloqueio;
     // O PORTE DA RAÇA CHEGA AO `pv()` (`M-29`). Antes ninguém passava o segundo
     // argumento, então a tabela `derivados.pv.porte` (sete linhas calibradas)
     // não era alcançada por personagem jogável nenhum e um Halfling tinha
@@ -1581,10 +1483,10 @@ export function montarFicha(opts: FichaOpts) {
     // outros nove são oferecidos, não somados, como a Especialidade.
     const vitalidade = ((RACA[S.raca] as any)?.bonusCondicional || [])
       .find((b: any) => b.campo === 'pv' && b.escopo === 'sempre');
-    const pvv = pv(vig, porteR) + (vitalidade ? vig : 0), en = energia({ vigor: vig, compostura: A('compostura'), raciocinio: A('raciocinio'), vontade: W, centelha: C }), mn = mana({ centelha: C, vontade: W, manipulacao: S.arte['manipulacao-mana'] || 0 });
-    const soc = defesaSocial({ compostura: A('compostura'), sociabilidade: SK('sociabilidade'), centelha: C });
-    const men = defesaMental({ raciocinio: A('raciocinio'), integridade: integ, vontade: W, centelha: C });
-    const soaks = SOAK_CATS.map((cat) => soakNatural(vig, cat) + C * cs + (armSt.soak[cat] || 0));
+    const pvv = nums.pv, en = nums.energia, mn = nums.mana;
+    const soc = nums.defesaSocial;
+    const men = nums.defesaMental;
+    const soaks = SOAK_CATS.map((cat) => nums.absorcao[cat]);
     // o bônus de Centelha de cada Defesa, 2 × mín(Centelha, Habilidade), escrito para a conta da explicação fechar
     const cNa = (h: number) => `Centelha ${centelhaNaJogada(C, h)} (2×mín(${C}, ${h}))`;
     const pArm = armPen ? ` − ${armPen} (Armadura)` : '';
@@ -1600,7 +1502,7 @@ export function montarFicha(opts: FichaOpts) {
       r('Absorção Imp/Cor/Perf', `${soaks.join(' / ')}${armSt.resistPerf ? ` · Nível ${armSt.resistPerf}` : ''}`, soakCalc) +
       r('Energia', en, `(Vigor ${vig} + Compostura ${A('compostura')} + Raciocínio ${A('raciocinio')} + Vontade ${W})÷2 + Centelha ${C}×2 = ${en}`, true) +
       r('Mana', mn, `Centelha ${C}×2 + Vontade ${W} = ${mn}`, true) +
-      r('Iniciativa', iniciativa({ raciocinio: A('raciocinio'), prontidao: SK('prontidao') }).str, `1d6 + Raciocínio ${A('raciocinio')} + Prontidão ${SK('prontidao')}`, true) +
+      r('Iniciativa', nums.iniciativa.str, `1d6 + Raciocínio ${A('raciocinio')} + Prontidão ${SK('prontidao')}`, true) +
       (() => {
         // A BAIXA ESTATURA VIRA CONTA. O traço era prosa dentro de `tracos`, e
         // nenhum código o lia: a ficha do anão mostrava os metros de um humano.
@@ -1675,17 +1577,19 @@ export function montarFicha(opts: FichaOpts) {
   }
   function renderForca() {
     const box = el('forca-arremesso'); if (!box) return;
+    const massaInput = document.getElementById('corpo-massa') as HTMLInputElement | null;
+    if (massaInput) { if (document.activeElement !== massaInput) massaInput.value = String(massaDoJogador(S)); massaInput.readOnly = !!opts.readOnly; }
     const F = (regras as any).forca; if (!F) { box.innerHTML = ''; return; }
     const forca = A('forca'), atl = SK('atletismo'), halt = S.skills2['halterofilismo'] || 0, arr = SK('arremesso');
     // Atletismo não entra no levantamento: erguer o máximo é contração estática, e Atletismo
     // é mobilidade e fôlego. No arremesso ele entra, porque lá é cadeia cinética de corpo
     // inteiro, com corrida de aproximação e giro de quadril.
-    const fah = Math.max(3, Math.min(40, 3 * forca + halt));
+    const massa = massaDoJogador(S);
     const faa = Math.max(2, Math.min(24, 2 * forca + atl + arr));
     // A conta de erguer/arremessar mora em `forca-empurrao.ts` (L85, rodada
     // 54): o Grid precisa da mesma régua para a Arte que entra no lugar dos
     // músculos, e uma segunda cópia à mão é o defeito do `L93` de novo.
-    const maxKg = pesoMaximoErguido(fah, F);
+    const maxKg = numerosPersonagem(S).pesoErguido;
     // O peso máximo não é um número só: quanto mais alto o peso precisa ir, menos peso vai.
     // Do chão ao quadril é o maxKg cheio; acima da cabeça, metade; arremessar, um quarto.
     const acimaKg = maxKg * (F.levantamentoAcimaCabeca as number);
@@ -1813,7 +1717,7 @@ export function montarFicha(opts: FichaOpts) {
     const linha = (rot: string, corpo: string, grupo = false) =>
       `<div class="fa-linha${grupo ? ' fa-grupo' : ''}"><b>${rot}</b> · ${corpo}</div>`;
     const head = `<div class="fa-head">`
-      + linha('Levantamento de Peso', `FAH ${fah} = Força ${forca}×3 + Halterofilismo ${halt}`)
+      + linha('Levantamento de Peso', `Massa ${massa} kg, Força ${forca}, Halterofilismo ${halt} (R15)`)
       // Só a conta. O porquê da curva (o ápice em 100 g, a saturação abaixo dele, a queda
       // perto do teto) é matéria do capítulo de Corpo e Movimento, não da ficha: aqui o
       // jogador quer o número, e os gráficos mostram a forma a um clique.
@@ -2380,8 +2284,13 @@ export function montarFicha(opts: FichaOpts) {
     e.preventDefault(); bump(dots.dataset.kind!, dots.dataset.key!, delta);
   });
 
+  document.getElementById('corpo-massa')?.addEventListener('input', (e) => {
+    if (opts.readOnly) return;
+    const massa = (e.target as HTMLInputElement).valueAsNumber;
+    if (Number.isFinite(massa) && massa > 0) { massaEscolhida = true; S.corpo ??= {}; S.corpo.massa = massa; S.id ??= {}; S.id.peso = String(massa) + ' kg'; const pesoAntigo = document.querySelector<HTMLInputElement>('.idrow .txt[data-id="peso"]'); if (pesoAntigo) pesoAntigo.value = S.id.peso; renderForca(); save(); }
+  });
   // idrow + budget
-  document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => inp.addEventListener('input', () => { if (opts.readOnly) return; S.id[inp.dataset.id!] = inp.value; save(); }));
+  document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => inp.addEventListener('input', () => { if (opts.readOnly) return; S.id[inp.dataset.id!] = inp.value; if (inp.dataset.id === 'peso') { const massa = Number(inp.value.replace(',', '.').match(/\d+(?:\.\d+)?/)?.[0]); if (massa > 0) { S.corpo ??= {}; S.corpo.massa = massa; massaEscolhida = true; renderForca(); } } save(); }));
   // Delegado, porque renderSecondary() refaz o painel a cada mudança de bolinha. Só salva:
   // re-renderizar aqui tiraria o foco do campo no meio da digitação.
   el('secondary').addEventListener('input', (e) => {
@@ -2909,6 +2818,7 @@ export function montarFicha(opts: FichaOpts) {
   el('raca-sel').addEventListener('change', (e) => {
     if (opts.readOnly) return;
     S.raca = (e.target as HTMLSelectElement).value;
+    if (!massaEscolhida) S.corpo = {...S.corpo,massa:massaDoJogador({raca:S.raca})};
     // A troca de raça mexe nos DOIS lados agora (`M-30b`): o teto pode ter
     // descido (e o que passou dele desce junto) e o PISO pode ter subido (e o que
     // ficou abaixo sobe, porque aquele ponto passou a ser de graça).

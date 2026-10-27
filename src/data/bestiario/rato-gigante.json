@@ -1,36 +1,28 @@
 {
-  "ordem": 50,
   "id": "rato-gigante",
   "idAntigo": "mon-rato-gigante",
   "nome": "Rato gigante",
   "nomeIngles": "Giant Rat",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Pequeno",
-  "descricao": "Um rato do tamanho de um cão pequeno, que vive em bando nos esgotos e porões; morde e foge pela fresta, e a mordida suja carrega doença.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/rato-gigante_criatura.webp",
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "1,4 m de comprimento, 0,28 m de altura",
-    "peso": "12,38 kg",
-    "comprimento": 1.4,
-    "largura": 0.21,
-    "altura": 0.28
-  },
-  "locomocao": {
-    "terra": 7
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 7,
-    "arranque": 9,
-    "corrida": 15
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 0.28,
+    "largura": 0.21,
+    "profundidade": null,
+    "comprimento": 1.4,
+    "comprimentoSemCauda": 0.75,
+    "caudaGrossa": false,
+    "massa": 12.38,
+    "area": 0.1475,
+    "posturaDoTamanho": "vista de lado",
+    "linhaPV": "acima"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 2,
     "destreza": 3,
     "vigor": 5,
@@ -41,8 +33,9 @@
     "perspicacia": 2,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 2,
+    "bloqueio": 0,
     "esquiva": 3,
     "atletismo": 2,
     "furtividade": 2,
@@ -52,95 +45,152 @@
     "empatia": 1,
     "sobrevivencia": 4
   },
-  "skills2": {
+  "habilidadesSec": {
     "equilibrio": 2,
     "escalada": 2,
     "natacao": 2,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "audição",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "resistencia",
-      "foco": "doenças",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "sobre quem dorme",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 2,
+        "origem": "natural"
+      },
+      {
+        "foco": "audição",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "resistencia": [
+      {
+        "foco": "doenças",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "furtividade": [
+      {
+        "foco": "sobre quem dorme",
+        "valor": 1,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 1,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 1
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 5,
+  "deslocamento": {
+    "terra": {
+      "batalha": 7,
+      "arranque": 9,
+      "corrida": 15
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "incisivos",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 0,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "forca": false,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
+    {
+      "nome": "fuga pelas frestas",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "foge por buraco e esgoto onde quase nada o segue; o tamanho do bônus fica com o Mestre"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "morder e fugir",
-      "descricao": "morde e foge pela fresta.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "morde e foge pela fresta."
     },
     {
       "nome": "em bando",
-      "descricao": "em grupo com outros ratos, cerca a presa; o flanco (−2 na Defesa do alvo) e a Pressão do livro dão o ganho do bando.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "fuga pelas frestas",
-      "descricao": "foge por buraco e esgoto onde quase nada o segue; o tamanho do bônus fica com o Mestre.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "faro: Prontidão (faro) +2; audição: Prontidão (audição) +2 (Especialidades naturais, as do rato). · vibração: percebe vibrações mínimas. Texto. · visão: fraca (a do rato). Texto."
+      "formas": "todas",
+      "texto": "em grupo com outros ratos, cerca a presa; o flanco (−2 na Defesa do alvo) e a Pressão do livro dão o ganho do bando."
     }
   ],
-  "doencas": [
+  "sentidos": [
     {
-      "nome": "Doença no jogo",
-      "texto": "Leptospirose · Virulência 10 · dia · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
+      "nome": "faro",
+      "descricao": "Prontidão (faro) +2; audição: Prontidão (audição) +2 (Especialidades naturais, as do rato)",
+      "formas": "todas"
+    },
+    {
+      "nome": "vibração",
+      "descricao": "percebe vibrações mínimas (ADW). Texto",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão",
+      "descricao": "fraca (a do rato). Texto",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "(o rato nada submerso, Wikipédia, sem tempo medido)",
+    "mente": "animal",
+    "tracos": "rói madeira e massa de vedação (os do rato, UC IPM). A fresta de 1,3 cm do rato vira cerca de 4,6 cm no gigante (1,3 × 3,5; era 2,9)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "colônia",
+    "atividade": "noturno",
+    "dieta": "onívoro oportunista",
+    "caca": "forrageio noturno",
+    "dianteDeGente": "foge de quem está acordado; morde quem não se mexe"
+  },
+  "ecologia": {
+    "terreno": [
+      "urbano",
+      "subterrâneo",
+      "pântano"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Um rato do tamanho de um cão pequeno, que vive em bando nos esgotos e porões; morde e foge pela fresta, e a mordida suja carrega doença.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Vive em bandos oportunistas, ataca em grupo quando encurralado e foge à primeira chance; morde e some, confiando em número e velocidade. Social: colônia."
+      "texto": "Vive em bandos oportunistas, ataca em grupo quando encurralado e foge à primeira chance; morde e some, confiando em número e velocidade."
     },
     {
       "titulo": "Hábitat",
@@ -153,95 +203,56 @@
     {
       "titulo": "Veneno e doença",
       "texto": "Doença no jogo: Leptospirose · Virulência 10 · dia · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Um rato do tamanho de um cão médio, que morde a 3,5 e corre a 55 km/h pela velocidade congelada. 30 PV e Absorção de Impacto 5 (Vigor 5, 1 acima do rato). Contra um humano Médio, o Pequeno ganha +3 no acerto corpo a corpo, e quem atira nele leva −3. Força 2: atacante de Força 6 ou mais tira o Bloqueio dele (o dobro e ao menos 4 a mais). Ergue 72 kg: arrasta uma pessoa caída."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Urban",
-      "Underground",
-      "Swamp"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/rato-gigante_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Furtividade 2, Atletismo 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Rato Gigante",
-    "cr": "1/3",
-    "tipo": "animal Pequeno",
-    "tamanho": "pequeno",
-    "valores": {
-      "for": 10,
-      "des": 17,
-      "con": 13,
-      "int": 2,
-      "sab": 13,
-      "car": 4
+  "revisao": [
+    {
+      "campo": "atributos.forca",
+      "motivo": "Era 0. Reanalisada na sétima rodada (D-158; item 8 da `tamanho-decisoes-5.md`: \"o rato gigante fica acima do rato de base (1 ou 2)\"). O rato de base fica em 0: a mordida de 13 N fura pelos incisivos e não segura um humano pela força. A mordida escalada pelo quadrado do tamanho dá cerca de 159 N (13 × 3,5²) , a de um cão pequeno: morde e segura uma mão ou um tornozelo. Vizinhos: o carcaju (2, 11,75 kg), o cão (2, 20 kg) e a águia-real (2, 4,35 kg); abaixo do rato atroz (3, 20 kg), que é maior. A Força de referência de 12,38 kg é 3,4 (`calc6.mjs`); o rato fica abaixo dela, como o carcaju, porque o corpo só morde (sem agarrão de corpo)"
     },
-    "pericias": [
-      "Furtividade 2",
-      "Atletismo 2"
-    ],
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "atributos.vigor",
+      "motivo": "Revisto na oitava rodada (o Vigor não sai do porte): fica, no mínimo da D-176, um acima do rato de base (Vigor 4). O rato já é duro para o tamanho (vive no esgoto e no lixo, ADW), e o gigante leva o mesmo corpo de roedor a 12,38 kg. Vizinhos de massa e de corpo: o rato-atroz (20 kg, 5), roedor da mesma linha, e o carcaju (11,75 kg, 4) e o cão (20 kg, 3), abaixo por não terem o corpo duro do rato. Nada medido no gigante"
     },
-    "crConf": "confirmado",
-    "nota": "Corrigido em 29/09/2026 (B14 fase 4): os valores gravados antes (For 2, Des 15, Con 11) eram do rato comum (Bestiary 1); o Rato Gigante de porte Pequeno é o Dire Rat (For 10, Des 17, Con 13), CR 1/3."
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 30,
-    "esquiva": 12,
-    "bloqueio": 6,
-    "defesa": 12,
-    "defesaMental": 6,
-    "defesaSocial": 10,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 5,
-      "perfuracao": 5
+    {
+      "campo": "corpo.altura",
+      "motivo": "Era 0,18 m. 0,08 × 3,5 = 0,28; a altura de 0,08 m do rato tem apoio: 6 a 9 cm na cernelha (Dimensions.com, sem método)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 71.96,
-    "carga": {
-      "leve": 1.65,
-      "media": 3.29,
-      "pesada": 4.94,
-      "maxima": 6.59
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Era 0,9 m (o do site). 0,40 × 3,5. Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; o gigante fica pelo menos 2 categorias de Alvo acima do rato (Minúsculo), e o 0,9 m do site não passava (Miúdo). O 1,4 m fica perto do tamanho da v3 (1,37 m, 12 kg), que a ficha atual pedia pela massa, e abaixo do rato atroz (1,62 m, 20 kg, `rato-atroz.md`)"
     },
-    "deslocamento": {
-      "terra": {
-        "batalha": 7,
-        "arranque": 9,
-        "corrida": 15
-      }
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Era 0,48 m. 0,215 × 3,5 = 0,7525; a cauda é fina e não conta (D-155)"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Era 0,135 m. 0,06 × 3,5 = 0,21; a largura do rato era estimativa"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Era 3,29 kg (Faixa 1). Pelo cubo do tamanho escolhido (item 7 da `tamanho-decisoes-5.md`): massa típica da base × (1,4 ÷ 0,40)³ = 0,2887 × 42,875 = 12,378 kg, de mesa 12,38, k = 3,5 . Base típica : adultos selvagens de Salvador, machos 274,8 ± 86,5 g e fêmeas 302,6 ± 63,1 g, as fêmeas com prenhez incluída (Zeppelini e colegas 2020, Urban Ecosystems 24: 801, tabela 2), média simples 288,7 g; comprimento total de quase 400 mm do focinho à ponta da cauda (ADW), de outra fonte. Faixa da ratazana: 140 a 500 g (ADW); no gigante (× 42,875), de 6,0 a 21,4 kg. Sexos: macho 11,78 kg e fêmea 12,97 kg no gigante (as médias da base diferem menos de 20%). A ficha atual dá 12 kg com 0,9 m; aqui os 12 kg voltam, agora com o tamanho que cabe neles. Para comparação, o maior rato real, o fóssil *Coryphomys buehleri*, chegava a cerca de 5 kg (BBC Wildlife). A Faixa 2 vem de `calc6.mjs` e decide o PV, e não o Alvo"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "o rato real"
+    },
+    {
+      "campo": "comportamento.dianteDeGente",
+      "motivo": "o rato real"
+    },
+    {
+      "campo": "ataques.Mordida",
+      "motivo": "O ataque é o mesmo; a Força da fórmula volta a 2 (sétima rodada), e o dano médio sobe de 1,5 para 3,5 (D-115: \"Força 4 bate como Força 4 em qualquer criatura\"). Leve, como a do lobo (seção 7). Força × 1 (golpe de boca). A mordida do rato (13 N) escalada pelo quadrado do tamanho dá cerca de 159 N : N0"
     }
-  },
-  "notasObservacao": [
-    "`gigante`: gigante da D-105 escalado da ratazana típica (0,2887 kg e 0,40 m com a cauda) pelo cubo, com 1,4 m com a cauda: fator 3,5, 12,38 kg; era 0,9 m e 3,29 kg (fator 2,25), o tamanho do site. Todas as medidas são extrapolação (D-105)",
-    "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; o 0,9 m do site dava Miúdo, um porte só acima do rato (Minúsculo), e o 1,4 m dá Pequeno, a 23% do corte do Miúdo, perto da v3 (1,37 m) e abaixo do rato atroz (1,62 m, 20 kg) (D-174)",
-    "`dimensoes`: a largura vem de estimativa do Arquiteto para o rato (D-105, D-147, D-174)",
-    "`area`: 0,1475 m² de lado (a da v3 × (1,4 ÷ 1,37)²), contra 0,20 da ficha de hoje; o Alvo volta a Pequeno (decisões 7 e 25)",
-    "`forca`: 2 pelo item 8 da `tamanho-decisoes-5.md` (era 0); a mordida escalada do rato (cerca de 159 N) é extrapolação (D-158, D-169, D-176)",
-    "`vigor`: 5, revisto na oitava rodada pelo corpo e pela massa, e fica: +1 sobre o animal de base (rato, Vigor 4), o mínimo da D-176; corpo de roedor duro de 12,38 kg, ao lado do rato-atroz (20 kg, 5) (D-174, D-176)",
-    "`velocidade`: congelada (decisão 23); 55 km/h contra 9,7 km/h do rato real, +467% (D-170)",
-    "`pesoErguido` e `carga`: provisórios (decisões 14 e 16); a carga é só registro, o rato não leva carga (D-162, D-169)",
-    "`empatia`: 1 pela colônia hierárquica do rato; nenhum dado de leitura do humano (D-174)",
-    "`furtividade`: 2, e não o 3 de que o levantamento o dá como candidato; a mordida em quem dorme vai na Especialidade (sobre quem dorme) 1, que no gigante é extrapolação (D-174)",
-    "`natacao` e `escalada`: 2 cada, pelas do rato, sem número (D-174)",
-    "`couraca`: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "jornada (nota de pesquisa, não é regra): sem dado do gigante. Do rato, [comparação]: forrageia de 30 a 150 m do ninho toda noite (UC IPM); em esteira de laboratório chega à exaustão a 1,0 a 1,1 km/h (Dellavechia-De-Carvalho 2025, teste aeróbico).",
-    "`resistencia`: 2 e Resistência (doenças) +2, os dois pelo rato, [comparação] (D-174)",
-    "fonte: a largura do rato de base (0,06 m), que a escala multiplica, continua só por estimativa do Arquiteto (D-174)"
   ]
 }

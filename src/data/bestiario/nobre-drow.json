@@ -1,36 +1,24 @@
 {
-  "ordem": 198,
   "id": "nobre-drow",
   "idAntigo": "mon-drow-noble",
   "nome": "Nobre Drow",
   "nomeIngles": "Drow Noble",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humanoide",
+  "categoria": "humanoide",
   "papel": "soldado",
-  "conceito": "humanoide Médio",
-  "descricao": "Sacerdotisa de uma casa nobre drow, servidora de deusas do caos e da morte. Abre ferida que sangra com um toque, solta uma onda de energia corruptora e abençoa os seus; treinada desde cedo para intrigar e eliminar rivais.",
-  "tags": [
-    "humanoide",
-    "centelha"
-  ],
-  "imagem": "bestiario/nobre-drow_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,6 m de altura",
-    "peso": "55 kg",
-    "largura": 0.4,
-    "altura": 1.6
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 3,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.6,
+    "largura": 0.4,
+    "profundidade": 0.2,
+    "comprimento": null,
+    "massa": 55,
+    "area": 0.57
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 5,
     "vigor": 3,
@@ -41,7 +29,7 @@
     "perspicacia": 2,
     "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "armas": 4,
     "briga": 2,
     "bloqueio": 1,
@@ -56,90 +44,180 @@
     "manha": 2,
     "sociabilidade": 1
   },
-  "skills2": {
-    "religiao": 3
+  "habilidadesSec": {
+    "religiao": 3,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "espada curta",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "ocultismo",
-      "foco": "ritos das deusas das trevas",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "politica",
-      "foco": "casas drow",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "espada curta",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 4,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-curta"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Espada curta",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 2,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "arma": "espada-curta",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Toque sangrento",
-      "descricao": "poder natural (base Morte 1): Ativação: uma ação, Velocidade 5, a jogada de Briga para tocar. Duração: até a ferida ser tratada (Estabilizar). Alcance: toque. Área: um alvo. Efeito: abre uma ferida que sangra: o alvo fica Sangrando (Sangramento 2). Dano: o do Sangramento, pela regra do livro. Resistência: corpo, Vigor + Resistência contra a jogada do toque; quem passa não sangra. Limite de uso: três vezes por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "morte",
+        "nivel": 1
+      },
+      "ativacao": "uma ação, Velocidade 5, a jogada de Briga para tocar",
+      "duracao": "até a ferida ser tratada (Estabilizar)",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "abre uma ferida que sangra: o alvo fica Sangrando (Sangramento 2)",
+      "dano": "o do Sangramento, pela regra do livro",
+      "resistencia": "corpo, Vigor + Resistência contra a jogada do toque; quem passa não sangra",
+      "limiteDeUso": "três vezes por cena"
     },
     {
       "nome": "Canalizar energia negativa",
-      "descricao": "poder natural (base Morte 2): Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 9 m. Área: esfera de 9 m em volta dela. Efeito: uma onda de energia corruptora fere os vivos em volta; ela escolhe quem fica de fora. Dano: 1d6 + Centelha, fenômeno. Resistência: corpo, Vigor + Resistência contra Dificuldade 10; quem passa leva metade. Limite de uso: duas vezes por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "morte",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "instantânea",
+      "alcance": "9 m",
+      "area": "esfera de 9 m em volta dela",
+      "efeito": "uma onda de energia corruptora fere os vivos em volta; ela escolhe quem fica de fora",
+      "dano": "1d6 + Centelha, fenômeno",
+      "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; quem passa leva metade",
+      "limiteDeUso": "duas vezes por cena"
     },
     {
       "nome": "Toque do caos",
-      "descricao": "poder natural (base Fortuna 1): Ativação: uma ação, Velocidade 5, tocando o alvo. Duração: até o próximo resultado importante do alvo, ou o fim da cena. Alcance: toque. Área: um alvo. Efeito: o próximo resultado importante do alvo é rolado de novo, e vale o segundo, para melhor ou para pior. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dela. Limite de uso: uma vez por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fortuna",
+        "nivel": 1
+      },
+      "ativacao": "uma ação, Velocidade 5, tocando o alvo",
+      "duracao": "até o próximo resultado importante do alvo, ou o fim da cena",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "o próximo resultado importante do alvo é rolado de novo, e vale o segundo, para melhor ou para pior",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Ocultismo dela",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Bênçãos sombrias",
-      "descricao": "poder natural (base Sombra 1): Ativação: uma ação, Velocidade 6. Duração: as trevas e a ilusão, até o fim da cena; o favor, até a próxima jogada do aliado. Alcance: 18 m. Área: à escolha: trevas numa esfera de 6 m; uma ilusão de som ou de imagem pequena; ou um aliado. Efeito: as trevas apagam a luz comum; a ilusão engana quem não desconfia; o favor soma +1d6 na próxima jogada importante do aliado. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dela, só para quem desconfia da ilusão. Limite de uso: três vezes por cena, somadas.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "sombra",
+        "nivel": 1
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "as trevas e a ilusão, até o fim da cena; o favor, até a próxima jogada do aliado",
+      "alcance": "18 m",
+      "area": "à escolha: trevas numa esfera de 6 m; uma ilusão de som ou de imagem pequena; ou um aliado",
+      "efeito": "as trevas apagam a luz comum; a ilusão engana quem não desconfia; o favor soma +1d6 na próxima jogada importante do aliado",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Ocultismo dela, só para quem desconfia da ilusão",
+      "limiteDeUso": "três vezes por cena, somadas"
     },
     {
       "nome": "Sensibilidade à luz",
-      "descricao": "Ativação: luz forte (sol, Arte de Luz, lanterna de perto). Duração: enquanto estiver na luz forte. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Ofuscada. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "sacerdotisa da casa",
-      "descricao": "fica atrás dos guerreiros drow, abre com as trevas, fere o grupo com a onda negativa, sangra o mais perigoso e abençoa os seus; foge da luz.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga no escuro absoluto a uma distância considerável (site). · audição e olfato: os de um humano."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "luz forte (sol, Arte de Luz, lanterna de perto)",
+      "duracao": "enquanto estiver na luz forte",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "fica Ofuscada",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "sacerdotisa da casa",
+      "formas": "todas",
+      "texto": "fica atrás dos guerreiros drow, abre com as trevas, fere o grupo com a onda negativa, sangra o mais perigoso e abençoa os seus; foge da luz."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto a uma distância considerável",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humanoide; ambiciosa e implacável",
+    "tracos": "pele escura, cabelo branco longo, orelhas pontudas, vestes de sacerdotisa com símbolos de aranha, espada curta"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "à frente de uma patrulha da casa, com guerreiros drow",
+    "atividade": "qualquer hora, no escuro",
+    "dieta": "onívoro",
+    "caca": "captura escravos e elimina rivais",
+    "dianteDeGente": "domina, captura ou elimina"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Sacerdotisa de uma casa nobre drow, servidora de deusas do caos e da morte. Abre ferida que sangra com um toque, solta uma onda de energia corruptora e abençoa os seus; treinada desde cedo para intrigar e eliminar rivais.",
   "lore": [
     {
       "titulo": "Sacerdotisa da noite eterna",
@@ -148,77 +226,48 @@
     {
       "titulo": "Nobreza implacável",
       "texto": "Nasceu em uma das grandes casas nobres, treinada desde cedo para intrigar, seduzir e eliminar rivais sem hesitar."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: à frente de uma patrulha da casa, com guerreiros drow."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Média, 34 PV, Impacto 5, Corte e Perfuração 2. Esquiva e Bloqueio 14 (15 com a espada). A espada dá dano médio 6,5. Três vezes por cena sangra um alvo pelo toque; duas, fere todos a 9 m (1d6 + 2); abençoa os seus com +1d6 e cria trevas. Defesa Mental 19. A luz forte a ofusca."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Underground"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/nobre-drow_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Drow Noble",
-    "cr": "3",
-    "tipo": "humanoide Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 12,
-      "des": 17,
-      "con": 12,
-      "int": 10,
-      "sab": 17,
-      "car": 12
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Toque sangrento",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Canalizar energia negativa",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "v3": {
-    "pv": 34,
-    "esquiva": 14,
-    "bloqueio": 14,
-    "defesa": 15,
-    "defesaMental": 19,
-    "defesaSocial": 12,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
+    {
+      "campo": "habilidadesEspeciais.Toque do caos",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 109.04,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+    {
+      "campo": "habilidadesEspeciais.Bênçãos sombrias",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "`raça parente`: Elfo (D-207); os números são os do site",
-    "`aparência`: 4, a do site **[provisório]**",
-    "`virtudes`: Compaixão 1 e Convicção 4; o site tinha 2 e 3 **[provisório]**",
-    "`toque sangrento`, `canalizar energia negativa`, `toque do caos`, `bênçãos sombrias`, `sensibilidade à luz`: números sugeridos pela ficha (D-197)"
+    {
+      "campo": "habilidadesEspeciais.Sensibilidade à luz",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "Degrau 4, \"Feio\", fica como no site. A Aparência Universal do Elfo parente não passa a ela (D-207); 4, a do site"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    }
   ]
 }

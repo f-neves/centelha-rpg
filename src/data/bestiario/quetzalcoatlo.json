@@ -2,33 +2,30 @@
   "id": "quetzalcoatlo",
   "nome": "Quetzalcoatlo",
   "nomeIngles": "Quetzalcoatlus",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Grande",
-  "descricao": "Pterossauro do tamanho de uma girafa, que anda pela planície como uma cegonha e pega presa pequena no chão. Voa pouco, mas pode cruzar longas distâncias.",
-  "tags": [],
-  "imagem": "bestiario/quetzalcoatlo_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "5 m de comprimento, 5 m de altura",
-    "peso": "245 kg",
-    "comprimento": 5,
-    "largura": 1,
-    "altura": 5,
-    "envergadura": 10.5
-  },
-  "locomocao": {
-    "terra": 2,
-    "voo": 4
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 4
-  },
+  "ameaca": 3,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "voador",
+    "apoio": "outro",
+    "altura": 5,
+    "largura": 1,
+    "profundidade": null,
+    "comprimento": 5,
+    "caudaGrossa": false,
+    "envergadura": 10.5,
+    "massa": 245,
+    "area": 4.04,
+    "posturaDoTamanho": "no chão, asas fechadas",
+    "segundoTamanho": {
+      "area": 13.38,
+      "posturaDoTamanho": "de baixo, asas abertas, em voo"
+    },
+    "linhaPV": "abaixo"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 5,
     "destreza": 2,
     "vigor": 3,
@@ -39,117 +36,167 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 2,
+    "bloqueio": 0,
     "esquiva": 2,
     "atletismo": 2,
     "furtividade": 2,
     "integridade": 2,
     "prontidao": 2,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
     "voo": 6,
     "musculatura": 2
   },
-  "virtues": {
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 4
+    },
+    "voo": {
+      "batalha": 4
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Bicada",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 0,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "bico",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "engolir presa pequena",
-      "descricao": "Bicada: engole inteira a presa pequena.",
-      "classe": "sem regra ainda"
-    },
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Bicada",
+      "efeito": "engole inteira a presa pequena"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "golpe de pescoço",
-      "descricao": "Bicada: bica de cima com o pescoço todo, como a girafa.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "bica de cima com o pescoço todo, como a girafa."
     }
   ],
-  "lore": [
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Força 5: quem tem Força 1 ou menos não apara a bicada. Pelo Alvo: no chão, Grande, dá ao humano +3 no corpo a corpo; em voo, Enorme, +6, e quem atira nele ganha o mesmo à distância. Alto e lento no chão (4 m por Tick); a bicada de 8,5 fere, mas não mata um humano armado de uma vez. No ar faz 14 m por Tick em cruzeiro e não mergulha. Com 34 PV e Couraça nível 0 (o valor do nível fica para depois), aguenta mais que um humano, mas não muito."
-    }
-  ],
+  "sentidos": [],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "ossos ocos com trabéculas, muito finos (parede do esterno de 1,5 mm no Q. lawsoni, Hone e colegas 2023); com a cabeça erguida passa de 4 m, \"como uma girafa\" (Wikipédia); picnofibras:"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "",
+    "dieta": "carnívoro",
+    "caca": "espreita",
+    "dianteDeGente": ""
+  },
   "ecologia": {
-    "tipo": "Animal",
     "terreno": [
-      "Plains",
-      "Sky"
+      "planície",
+      "céu"
     ],
     "clima": [
-      "Tropical",
-      "Temperate"
+      "tropical",
+      "temperado"
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "variantes": [],
-  "ameacaLegada": 3,
-  "v3": {
-    "pv": 34,
-    "esquiva": 8,
-    "bloqueio": 4,
-    "defesa": 8,
-    "defesaMental": 7,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 3,
-      "corte": 3,
-      "perfuracao": 3
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 465.14,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 3,
-        "corrida": 4
-      },
-      "voo": {
-        "batalha": 4,
-        "cruzeiro": 14
-      }
-    }
+  "descricao": "Pterossauro do tamanho de uma girafa, que anda pela planície como uma cegonha e pega presa pequena no chão. Voa pouco, mas pode cruzar longas distâncias.",
+  "lore": [],
+  "imagens": [
+    "bestiario/quetzalcoatlo_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`alvo`: Grande de asas fechadas, no chão, onde caça (4,04 m²; D-215, 24/10/2026); Enorme pela silhueta de asas abertas da `tamanho-fichas-v2` (13,38 m²). A envergadura de Goto 2022 (9,64 m) diminui a silhueta; não foi refeita a conta (D-174)",
-    "`pesoErguido`: 463 kg pela fórmula nova (decisões 14 e 16), provisório: duas vezes a massa. O que ele leva em voo não tem regra e fica [sem dado] (D-162, D-169, D-174)",
-    "couraca: nível 0 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "`vigor`: 3, provisório: as aves tendem a menos e os grandes a mais; o voo em disputa saiu da conta (decisão 5, D-174)",
-    "`musculatura`: 2, provisória: o salto de decolagem pelos braços (Habib 2008) e o salto de 2,4 m pelas pernas de Padian e colegas 2021 (contestado por Witton) são modelo, e não medida (D-174)",
-    "`influencia` e `compostura`: 1 pela diretriz 1 (não é espécie social); eram 2 pelo tamanho e pela espreita (D-174)",
-    "`furtividade`: 2, nova, do levantamento, **[extrapolação]** pelo modelo do caçador terrestre (D-174)",
-    "`empatia`: 0, provisória (D-174)",
-    "jornada (nota de pesquisa, não é regra): três leituras que se contradizem: até 130 km/h por 7 a 10 dias a 4.600 m, alcance de 13.000 a 19.000 km (Habib, modelo em entrevista à NPR 2010) [extrapolação]; voo só raro e curto, como a abetarda-kori, sem planar em térmica de forma útil (Goto e colegas 2022) [extrapolação]; não voava, com 544 kg (Henderson 2010). Em terra, [sem dado].",
-    "`dimensoes.largura`: 1,0 m estimada pelo Arquiteto, sem fonte; `dimensoes.comprimento`: 5,0 m é extrapolação do Q. lawsoni na escala do northropi (D-147, D-174)"
+  "revisao": [
+    {
+      "campo": "atributos.forca",
+      "motivo": "Abaixo da Força de referência da massa (6,23, `calc.mjs`) porque os ossos são ocos e de parede fina (1,5 mm no esterno do Q. lawsoni, Hone e colegas 2023) e a caça é de presa pequena no chão (Witton e Naish 2008). O úmero muito mais forte que o fêmur (Habib 2008) é o motor da decolagem de quatro, e não de agarrar. O pescoço de azdarquídeo ergueria presa de 9 a 13 kg (Williams e colegas 2021, em Alanqa) . Igual ao javali (78,75 kg), abaixo do urso-pardo (8) de massa igual. Sem feito medido de levantar"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "As aves tendem a Vigor menor, e os animais grandes a mais (decisão 10; D-143): os dois puxam em sentidos contrários, e o 3 fica. Ossos ocos de parede fina pesam para baixo; nenhum dado de resistir a ferida, fome ou frio. O voo (longo ou raro, em disputa) não decide o Vigor (diretriz 1, decisão 5) e fica na nota de pesquisa (jornada)"
+    },
+    {
+      "campo": "atributos.percepcao",
+      "motivo": "Caçador terrestre que pediria olho atento, mas sem dado de sentidos; fica no 2 dos extintos sem dado"
+    },
+    {
+      "campo": "habilidades.briga",
+      "motivo": "O predador de presa pequena: anda pelo chão pegando presa como cegonhas e calaus-terrestres (Witton e Naish 2008; Paul 1987, rãs e tartarugas)"
+    },
+    {
+      "campo": "habilidades.furtividade",
+      "motivo": "Do levantamento : \"caçador terrestre\" que anda e pega presa pequena, como a cegonha (Witton e Naish 2008). Régua: usa a cobertura e a aproximação lenta, sem emboscada habitual conhecida. O tamanho não entra. Não tinha"
+    },
+    {
+      "campo": "habilidades.integridade",
+      "motivo": "Grande demais para quase todo predador da época, exceto o tiranossauro"
+    },
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Régua: 2 é o normal da espécie no próprio meio, e o animal sem dado fica em 2 . Os 7 a 10 dias de voo do modelo de Habib (NPR 2010), contra o voo raro e curto de Goto 2022 e o não voar de Henderson 2010, são distância de voo e não sustentam Resistência (diretriz 2): ficam na nota de pesquisa (jornada). Não tinha linha (0)"
+    },
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Do Arquiteto: o Q. lawsoni (3,5 m do bico à cauda, Paul 2022) na escala do northropi (envergadura de 4,5 para 10,5 m), arredondado para baixo. A cauda é curta e não se separa."
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "D-107.  A pele e a cor não se conhecem; fica na maioria."
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "pelo local dos fósseis (canais de rio). O Q. lawsoni, outra espécie, era provavelmente social"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": "presa pequena no chão, como cegonhas e calaus-terrestres (Witton e Naish 2008); Paul 1987 compara com cegonhas que comem rãs e tartarugas"
+    }
   ]
 }

@@ -1,100 +1,217 @@
 {
-  "ordem": 266,
   "id": "pesadelo",
   "idAntigo": "mon-nightmare",
   "nome": "Pesadelo",
   "nomeIngles": "Nightmare",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Exterior",
+  "categoria": "corruptor",
   "papel": "elite",
-  "conceito": "exterior Grande",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
-  "tags": [
-    "exterior",
-    "centelha"
-  ],
-  "imagem": "bestiario/pesadelo_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,7 m de comprimento",
-    "peso": "800 kg"
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 9
-  },
+  "ameaca": 4,
   "centelha": 4,
-  "attrs": {
-    "forca": 6,
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 2.07,
+    "largura": 0.8,
+    "profundidade": null,
+    "comprimento": 2.7,
+    "massa": 800,
+    "area": 2.27,
+    "posturaDoTamanho": "silhueta vista de lado"
+  },
+  "couraca": 1,
+  "atributos": {
+    "forca": 7,
     "destreza": 4,
     "vigor": 6,
-    "influencia": 3,
-    "perspicacia": 3,
-    "compostura": 3,
     "percepcao": 3,
     "inteligencia": 3,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 3,
+    "furtividade": 1,
+    "integridade": 3,
     "prontidao": 1,
-    "integridade": 3
+    "resistencia": 3,
+    "empatia": 2,
+    "sociabilidade": 0,
+    "ocultismo": 2
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "voo": 3,
+    "musculatura": 2
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 5
+    "temperanca": 1
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 1,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "voo": {
+      "batalha": 9
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Cascos flamejantes",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "impacto",
+      "parte": "casco",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
       "acerto": 0,
-      "ticks": 6,
-      "notas": "cada acerto soma dano de fogo"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Visão no escuro",
-      "descricao": "Enxerga bem mesmo sem luz alguma."
+      "nome": "Cascos em chamas",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Cascos flamejantes",
+      "ativacao": "o golpe dos Cascos que acerta",
+      "duracao": "instantânea",
+      "alcance": "o dos cascos",
+      "area": "um alvo",
+      "efeito": "os cascos em brasa queimam o que tocam",
+      "dano": "+1d6 de fogo, somado ao do golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
     },
     {
-      "nome": "Voo veloz",
-      "descricao": "Voa com grande destreza e velocidade, superando até cavalos em terra firme."
+      "nome": "cascos e mordida juntos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "escoiceia e morde na mesma ação"
     },
     {
       "nome": "Fumaça sufocante",
-      "descricao": "Exala uma nuvem de fumaça que cega e enjoa quem respirar o bastante dela, a menos que resista em um teste de Vigor."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6, bufando e batendo os cascos",
+      "duracao": "a nuvem fica 12 Ticks; quem falha fica Cego enquanto estiver nela e até 6 Ticks depois de sair",
+      "alcance": "o próprio corpo",
+      "area": "esfera de 3 m em volta dele",
+      "efeito": "uma fumaça acre sai das narinas e dos cascos e arde nos olhos",
+      "dano": "nenhum",
+      "resistencia": "corpo, Vigor + Resistência contra Vigor + Resistência dele; quem passa enxerga naquela nuvem",
+      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
-      "nome": "Salto entre mundos",
-      "descricao": "Uma vez por dia, pode se teleportar para outro plano de existência levando consigo um único cavaleiro."
+      "nome": "enjoo da fumaça",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quem respira bastante da fumaça fica enjoado, além de cego"
+    },
+    {
+      "nome": "Viagem entre planos",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 5
+      },
+      "ativacao": "uma ação, Velocidade 7, galopando pelo ar",
+      "duracao": "instantânea",
+      "alcance": "o próprio corpo e quem estiver montado nele",
+      "area": "ele e um cavaleiro",
+      "efeito": "atravessa a fronteira para outro plano, levando o cavaleiro",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "três vezes por dia"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "corcel do mal",
+      "formas": "todas",
+      "texto": "carrega o cavaleiro cruel para o meio do inimigo, escoiceia com os cascos em brasa, cega o grupo com a fumaça e leva o cavaleiro para outro plano se a luta vira."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "pressente alma corrompida",
+      "descricao": "os olhos ardem quando há uma por perto",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "na noite, se não fosse a crina em chamas",
+    "mente": "inteligente, cruel",
+    "tracos": "cavalo negro de 2,7 m, crina e cauda em chamas, cascos em brasa que deixam fumaça e faíscas, olhos como brasa"
+  },
+  "aptidoes": {
+    "montaria": true,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho, ou com o cavaleiro que escolheu",
+    "atividade": "qualquer hora",
+    "dieta": "carnívoro",
+    "caca": "caça com o cavaleiro",
+    "dianteDeGente": "só aceita os mais cruéis; com os outros, ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Corcel de fogo e trevas que só aceita ser montado pelos mais cruéis, como parceiro na destruição, e nunca como simples montaria. Galopa pelo ar, deixa rastros de fumaça e faíscas e leva o cavaleiro de um plano a outro.",
   "lore": [
     {
       "titulo": "Corcel do mal",
@@ -105,56 +222,43 @@
       "texto": "Deixa rastros de fumaça e faíscas por onde passa, e seus olhos ardem como brasas quando pressente uma alma corrompida por perto."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
-    ],
-    "clima": [
-      "Extraplanar"
-    ]
-  },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Nightmare",
-    "cr": "5",
-    "tipo": "exterior Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 18,
-      "des": 15,
-      "con": 16,
-      "int": 13,
-      "sab": 13,
-      "car": 12
-    },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
-    },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "poderes": [
-    {
-      "id": "viagem-planar-pesadelo",
-      "nome": "Viagem entre planos",
-      "tipo": "natural",
-      "base": {
-        "arte": "conjuracao",
-        "nivel": 5
+  "imagens": [
+    "bestiario/pesadelo_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
       },
-      "resiste": "nenhum",
-      "efeito": "leva o cavaleiro e a si mesmo para outro plano, poucas vezes por dia",
-      "descricao": "O pesadelo galopa pelo ar e atravessa a fronteira entre planos, levando quem estiver montado nele junto.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 3
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
       }
+    ],
+    "resistencias": [],
+    "imunidades": []
+  },
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Cascos em chamas",
+      "motivo": "números sugeridos pela ficha (D-197); +1d6 de fogo por golpe, número da ficha (D-197) pela Arte do Fogo no nível 1 (\"fogo na lâmina por um golpe só\", 1d6); o site não dava o número"
+    },
+    {
+      "campo": "habilidadesEspeciais.Fumaça sufocante",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Viagem entre planos",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "atributos.forca",
+      "motivo": "Acima do teto humano pela Centelha (D-143): For 18 no Pathfinder. Teste de ordem: igual ao cavalo do molde (7, 500 kg), que é mais leve; abaixo do cauchemar (11). O site tinha 6, um abaixo do cavalo comum mais leve que ele; 6 para 7, pelo teste de ordem com o cavalo do molde (7 com 500 kg). O dano médio dos cascos vai de 17 a 18,0 (+1), e o peso erguido sobe com ela"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
     }
   ]
 }

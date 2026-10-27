@@ -1,36 +1,25 @@
 {
-  "ordem": 286,
   "id": "campeao-esqueletico",
   "idAntigo": "mon-skeletal-champion",
   "nome": "Campeão Esquelético",
   "nomeIngles": "Skeletal Champion",
-  "categoria": "Morto-vivo",
-  "categoriaLegada": "Morto-vivo",
+  "categoria": "morto-vivo",
   "papel": "soldado",
-  "conceito": "morto-vivo Médio",
-  "descricao": "Guerreiro morto que guardou a técnica e a disciplina de vivo: avança atrás do escudo, à frente de uma fileira de esqueletos, e não recua.",
-  "tags": [
-    "morto-vivo",
-    "centelha"
-  ],
-  "imagem": "bestiario/campeao-esqueletico_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura",
-    "peso": "12 kg",
-    "largura": 0.45,
-    "altura": 1.8
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 2,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, em guarda",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.45,
+    "profundidade": 0.23,
+    "comprimento": null,
+    "massa": 12,
+    "area": 0.72,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 4,
     "destreza": 3,
     "vigor": 3,
@@ -41,96 +30,158 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 3,
     "briga": 1,
     "bloqueio": 2,
     "esquiva": 1,
     "integridade": 2,
     "prontidao": 1,
-    "sociabilidade": 1
+    "sociabilidade": 1,
+    "resistencia": 0
   },
-  "skills2": {
+  "habilidadesSec": {
     "intimidacao": 2,
-    "estrategia": 1
+    "estrategia": 1,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "espada longa",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "bloqueio",
-      "foco": "escudo",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "espada longa",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 1,
     "conviccao": 4,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 2,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-longa"
+      },
+      {
+        "ref": "e:heater"
+      }
+    ],
+    "armaduras": [
+      {
+        "base": "peitoral",
+        "vestida": true
+      }
+    ]
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Espada longa",
-      "atrib": "forca",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 1,
-      "ticks": 6,
-      "classe": "media"
+      "arma": "espada-longa",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "resistencias": [
-    "corte",
-    "perfuracao"
-  ],
-  "imunidades": [
-    "gelo"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Resistência a rituais",
-      "descricao": "Ativação: uma Arte, Técnica ou ritual que afasta, expulsa ou comanda mortos-vivos o tem como alvo. Duração: a do efeito. Alcance: o próprio corpo. Área: não se aplica. Efeito: o campeão resiste melhor que os esqueletos comuns. Dano: nenhum. Resistência: mente, com +4 na Defesa Mental contra esse efeito. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma Arte, Técnica ou ritual que afasta, expulsa ou comanda mortos-vivos o tem como alvo",
+      "duracao": "a do efeito",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "o campeão resiste melhor que os esqueletos comuns",
+      "dano": "nenhum",
+      "resistencia": "mente, com +4 na Defesa Mental contra esse efeito",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Comanda os mortos",
-      "descricao": "Ativação: uma ação, Velocidade 6, para dar uma ordem. Duração: até a ordem se cumprir ou ele dar outra. Alcance: 18 m, onde o ouvem. Área: os esqueletos e zumbis sem mente que o ritual pôs sob ele. Efeito: eles obedecem e mantêm a fileira. Dano: nenhum. Resistência: nenhum. Limite de uso: até 12 mortos-vivos sem mente por vez.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6, para dar uma ordem",
+      "duracao": "até a ordem se cumprir ou ele dar outra",
+      "alcance": "18 m, onde o ouvem",
+      "area": "os esqueletos e zumbis sem mente que o ritual pôs sob ele",
+      "efeito": "eles obedecem e mantêm a fileira",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "até 12 mortos-vivos sem mente por vez"
     },
     {
       "nome": "imune a veneno e doença",
-      "descricao": "osso seco não se envenena nem adoece.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "osso seco não se envenena nem adoece"
     },
     {
       "nome": "corpo morto",
-      "descricao": "não respira, não come, não dorme e não se cansa.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "parede de escudo",
-      "descricao": "avança atrás do escudo, à frente dos esqueletos, apara e estoca; não recua.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga no escuro como de dia. · visão e audição: as de um humano."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não respira, não come, não dorme e não se cansa"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "parede de escudo",
+      "formas": "todas",
+      "texto": "avança atrás do escudo, à frente dos esqueletos, apara e estoca; não recua."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro como de dia",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "nenhuma",
+    "prendeRespiracao": "não respira",
+    "mente": "a disciplina de soldado, presa ao ritual que o ergueu",
+    "tracos": "ossos amarelados presos por magia, peitoral antigo, escudo marcado de batalhas; pontos de luz fria nas órbitas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "à frente de um pelotão de esqueletos (típico 6 a 12)",
+    "atividade": "qualquer hora",
+    "dieta": "nenhuma",
+    "caca": "guarda e marcha, como mandaram",
+    "dianteDeGente": "ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer",
+      "ruínas",
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Guerreiro morto que guardou a técnica e a disciplina de vivo: avança atrás do escudo, à frente de uma fileira de esqueletos, e não recua.",
   "lore": [
     {
       "titulo": "Memória que sobrevive à morte",
@@ -143,93 +194,59 @@
     {
       "titulo": "Comandante de hostes ossudas",
       "texto": "Frequentemente posto à frente de esqueletos comuns, lidera pelotões inteiros de mortos-vivos em campanhas que a maioria dos vivos prefere nem imaginar."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: à frente de um pelotão de esqueletos (típico 6 a 12)."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, de espada, peitoral e escudo: Bloqueio 16 (17 com a espada), Esquiva 7, contra tiro 16. Corta com dano médio 9,5. Corte e perfuração fazem metade; a maça e o martelo, o dano inteiro; luz e golpe sagrado passam toda a Absorção. Frio não o fere. Só 18 PV: quebra se o golpe passa a guarda. Comanda os esqueletos em volta e resiste a quem tenta afastá-los."
     }
   ],
-  "ecologia": {
-    "tipo": "Undead",
-    "terreno": [
-      "Any",
-      "Ruins",
-      "Underground"
+  "imagens": [
+    "bestiario/campeao-esqueletico_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Temperate"
+    "resistencias": [
+      {
+        "tipo": "corte",
+        "formas": "todas"
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": [
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Skeletal Champion",
-    "cr": "2",
-    "tipo": "morto-vivo Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 17,
-      "des": 13,
-      "con": "-",
-      "int": 9,
-      "sab": 10,
-      "car": 12
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Resistência a rituais",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
+    {
+      "campo": "habilidadesEspeciais.Comanda os mortos",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 18,
-    "esquiva": 10,
-    "bloqueio": 14,
-    "defesa": 15,
-    "defesaMental": 15,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
+    {
+      "campo": "atributos.forca",
+      "motivo": "Degrau 4: o guerreiro forte de quando vivia, sem dor que o freie, como o zumbi do lote 1 (4). O site tinha 5 (For 17 no Pathfinder), o pico humano, demais para osso seco; 4; o site tinha 5"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 70.79,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+    {
+      "campo": "corpo.massa",
+      "motivo": "\"O esqueleto humano pesa uma fração do humano\" (manual 4.2). O esqueleto seco de um adulto fica perto de 15% do corpo (de memória, a conferir); 15% dos 80 kg do corpo de base = 12 kg. O site dizia \"25 kg de ossos e armadura\": o peitoral (4 kg) e o escudo (3 kg) são equipamento, e não corpo; os ossos ficam com o resto, um pouco acima da conta; 12 kg, 15% do corpo de base; a fração do esqueleto é de memória, a conferir"
     },
-    "bloqueioArma": 1,
-    "vestida": {
-      "esquiva": 7,
-      "bloqueio": 16,
-      "defesa": 17,
-      "contraTiro": 16,
-      "absorcao": {
-        "impacto": 8,
-        "corte": 5,
-        "perfuracao": 3
-      },
-      "nivel": 1,
-      "penalidade": 1
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Comandante de hostes ossudas)"
     }
-  },
-  "notasObservacao": [
-    "`massa`: 12 kg, 15% do corpo de base; a fração do esqueleto é de memória, a conferir **[extrapolação]**",
-    "`pv`: 18 na zona de transição, pelo \"frágil desce\"; com \"robusto sobe\" seria 26",
-    "`forca`: 4; o site tinha 5 **[provisório]**",
-    "`equipamento`: peitoral e heater, escolha da ficha; o site só diz \"arma e armadura\" e \"escudo\" **[provisório]**",
-    "`resistência a rituais`, `comanda os mortos`: números sugeridos pela ficha (D-197)"
   ]
 }

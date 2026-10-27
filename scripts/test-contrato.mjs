@@ -147,10 +147,12 @@ eq(F.pv, 37, 'PV');
 eq(F.energia, 14, 'Energia');
 eq(F.mana, 13, 'Mana');
 eq(F.defEsquiva, 19, 'Defesa (Esquiva)');
-eq(F.defBloqueio, 7, 'Defesa (Bloqueio)');
+// A5j, D-237: soma +1 da espada e +1 do broquel ao Bloqueio 7.
+eq(F.defBloqueio, 9, 'Defesa (Bloqueio)');
 eq(F.defSocial, 4, 'Defesa Social');
 eq(F.defMental, 10, 'Defesa Mental pela ficha');
-eq(F.iniciativa, '3d6', 'Iniciativa');
+// A5j: a mesa usa a Iniciativa do livro, 1d6 + Raciocínio 3 + Prontidão 3.
+eq(F.iniciativa, '1d6 + 6', 'Iniciativa');
 eq(F.armaduras.join(', '), 'gambeson', 'armaduras vestidas no resumo');
 
 // O que vai para `personagens.resumo`, que é o que o colega de mesa enxerga.

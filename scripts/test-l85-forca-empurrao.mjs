@@ -114,6 +114,9 @@ console.log('\n· peso 0 (ou ausente) dá número finito, não Infinity: a guard
   ok(Number.isFinite(dNeg) && dNeg === 0, `peso negativo → ${dNeg} m, finito`);
 }
 
+// Os lotes corrigem o Tamanho de criaturas reais; escolhe um exemplar do porte testado.
+const criaturasAtuais = JSON.parse(fs.readFileSync(path.join(ROOT,'src/data/monsters.json'),'utf8'));
+const idDoPorte = (porte) => {const m=criaturasAtuais.find(m=>m.porte===porte);if(!m)throw Error('sem exemplar de '+porte);return m.id;};
 console.log('\n· os dois tetos, contra pesos reais de porte (Arte nível 3: FAH 19 → 360 kg erguidos, FAA 12)');
 {
   const nivelArte = 3;
@@ -126,9 +129,9 @@ console.log('\n· os dois tetos, contra pesos reais de porte (Arte nível 3: FAH
   // TRÊS PORTES DE VERDADE (`pesoDoPorte`, com criaturas reais do
   // bestiário) DENTRO DO ALCANCE DE ARREMESSO, decrescendo com o peso: a
   // régua PESA, e não é um número fixo por nível.
-  const pesoMiudo = pesoDoPorte({ monstro_id: 'pixie' });          // Miúdo (o corvo passou a Pequeno com a ficha v3)
-  const pesoPequeno = pesoDoPorte({ monstro_id: 'arconte-lanterna' }); // Pequeno
-  const pesoMedio = pesoDoPorte({ monstro_id: 'aasimar' });         // Médio
+  const pesoMiudo = pesoDoPorte({ monstro_id: idDoPorte('Miúdo') });          // Miúdo (o corvo passou a Pequeno com a ficha v3)
+  const pesoPequeno = pesoDoPorte({ monstro_id: idDoPorte('Pequeno') }); // Pequeno
+  const pesoMedio = pesoDoPorte({ monstro_id: idDoPorte('Médio') });         // Médio
   const rMiudo = resultadoDoEmpurrao(faa, pesoMiudo, maxKg, F);
   const rPequeno = resultadoDoEmpurrao(faa, pesoPequeno, maxKg, F);
   const rMedio = resultadoDoEmpurrao(faa, pesoMedio, maxKg, F);
@@ -139,7 +142,7 @@ console.log('\n· os dois tetos, contra pesos reais de porte (Arte nível 3: FAH
     `mais pesado voa menos longe (${rMiudo.metros} > ${rPequeno.metros} > ${rMedio.metros})`);
 
   // ACIMA DO TETO DE ARREMESSO, DENTRO DO DE ERGUER: DERRUBA, NÃO VOA.
-  const pesoGrande = pesoDoPorte({ monstro_id: 'aguia-gigante' }); // Grande: 250 kg, < 360 (erguido), > 90 (arremessado)
+  const pesoGrande = pesoDoPorte({ monstro_id: idDoPorte('Grande') }); // Grande: 250 kg, < 360 (erguido), > 90 (arremessado)
   const rGrande = resultadoDoEmpurrao(faa, pesoGrande, maxKg, F);
   ok(rGrande.metros === 0 && !rGrande.pesaDemais,
     `Grande (${pesoGrande} kg): 0 m, mas NÃO pesa demais (${JSON.stringify(rGrande)})`);
@@ -148,11 +151,11 @@ console.log('\n· os dois tetos, contra pesos reais de porte (Arte nível 3: FAH
     `e a condição da Arte (caido) ainda se aplica: derruba parado (${JSON.stringify(condsGrande)})`);
 
   // ACIMA DO TETO DE ERGUER: NADA ACONTECE.
-  const pesoEnorme = pesoDoPorte({ monstro_id: 'aboleth' }); // Enorme: 1200 kg, > 360
+  const pesoEnorme = pesoDoPorte({ monstro_id: idDoPorte('Enorme') }); // Enorme: 1200 kg, > 360
   const rEnorme = resultadoDoEmpurrao(faa, pesoEnorme, maxKg, F);
   ok(rEnorme.pesaDemais && rEnorme.metros === 0,
     `Enorme (${pesoEnorme} kg): pesa demais, nada acontece (${JSON.stringify(rEnorme)})`);
-  const pesoColossal = pesoDoPorte({ monstro_id: 'grande-wyrm-vermelho' }); // Colossal: 40000 kg
+  const pesoColossal = pesoDoPorte({ monstro_id: idDoPorte('Colossal') }); // Colossal: 40000 kg
   const rColossal = resultadoDoEmpurrao(faa, pesoColossal, maxKg, F);
   ok(rColossal.pesaDemais,
     `Colossal (${pesoColossal} kg) também: uma Arte de nível 3 não derruba 40 toneladas (${JSON.stringify(rColossal)})`);
@@ -165,8 +168,8 @@ console.log('\n· uma implementação só: ficha-engine.ts chama a régua, não 
   const sobrou = cadeia.filter((k) => txt.includes(k));
   ok(sobrou.length === 0,
     `nenhum resto da fórmula copiada em ficha-engine.ts (achou: ${JSON.stringify(sobrou)})`);
-  ok(txt.includes('pesoMaximoErguido') && txt.includes('alcanceArremesso'),
-    'ficha-engine.ts chama as duas funções de forca-empurrao.ts');
+  ok(txt.includes('numerosPersonagem') && txt.includes('alcanceArremesso'),
+    'ficha-engine.ts pede o levantamento ao motor e o arremesso à régua comum');
 }
 
 console.log(FALHAS.length

@@ -1,37 +1,29 @@
 {
-  "ordem": 205,
   "id": "elemental-da-agua-pequeno",
   "idAntigo": "mon-small-water-elemental",
   "nome": "Elemental da Água (Pequeno)",
   "nomeIngles": "Elemental, Water",
-  "categoria": "Elemental",
-  "categoriaLegada": "Elemental",
+  "categoria": "elemental",
   "papel": "soldado",
-  "conceito": "exterior (água) Pequeno",
-  "descricao": "Fragmento de um plano de água: rápido no mar e lento em terra, suga quem chega perto num vórtice, encharca o que toca e apaga o fogo.",
-  "tags": [
-    "elemental",
-    "centelha"
-  ],
-  "imagem": null,
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "1,2 m de altura",
-    "peso": "23,4 kg",
-    "largura": 0.3,
-    "altura": 1.2
-  },
-  "locomocao": {
-    "terra": 2,
-    "natacao": 9
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 5
-  },
+  "ameaca": 2,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "de pé, silhueta humanoide de água que escorre e se refaz",
+    "apoio": "bipede",
+    "altura": 1.2,
+    "largura": 0.3,
+    "profundidade": 0.15,
+    "comprimento": null,
+    "massa": 23.4,
+    "area": 0.32,
+    "posturaDoTamanho": "de pé, sem o vórtice",
+    "segundoTamanho": {
+      "area": 0.9,
+      "posturaDoTamanho": "com o vórtice ativo"
+    }
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 2,
     "vigor": 3,
@@ -42,72 +34,155 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
+    "esquiva": 0,
     "integridade": 2,
     "prontidao": 1,
-    "sobrevivencia": 1
+    "sobrevivencia": 1,
+    "resistencia": 0
   },
-  "skills2": {
+  "habilidadesSec": {
     "natacao": 3,
     "musculatura": 1
   },
-  "virtues": {
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 5,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "nado": {
+      "batalha": 9
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pancada de água",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
+      "parte": "braco-de-agua",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Vórtice",
-      "descricao": "poder natural (base Água 2, sugestão da ficha): Ativação: uma ação, Velocidade 6, dentro da água ou sobre ela. Duração: até 18 Ticks, ou até ele desfazer com outra ação. Alcance: o próprio corpo. Área: quem está a até 1 m dele. Efeito: vira um redemoinho de água que suga quem está perto; quem é sugado fica Agarrado dentro dele e Confuso enquanto estiver lá, e sai quando o vórtice se desfaz ou quando vence a manobra para se soltar. Dano: o da Pancada de água a quem está dentro, a cada 6 Ticks. Resistência: esquiva, contra Força + Briga dele; quem passa não é sugado. Limite de uso: uma vez por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "agua",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 6, dentro da água ou sobre ela",
+      "duracao": "até 18 Ticks, ou até ele desfazer com outra ação",
+      "alcance": "o próprio corpo",
+      "area": "quem está a até 1 m dele",
+      "efeito": "vira um redemoinho de água que suga quem está perto; quem é sugado fica Agarrado dentro dele e Confuso enquanto estiver lá, e sai quando o vórtice se desfaz ou quando vence a manobra para se soltar",
+      "dano": "o da Pancada de água a quem está dentro, a cada 6 Ticks",
+      "resistencia": "esquiva, contra Força + Briga dele; quem passa não é sugado",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Encharcar",
-      "descricao": "Ativação: o toque ou a Pancada de água. Duração: instantânea. Alcance: toque. Área: um objeto, ou um alvo. Efeito: encharca tochas, pergaminhos e outros itens sensíveis à água, e apaga fogo pequeno (uma tocha, uma fogueira pequena, ou a condição Em chamas de quem ele toca). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "o toque ou a Pancada de água",
+      "duracao": "instantânea",
+      "alcance": "toque",
+      "area": "um objeto, ou um alvo",
+      "efeito": "encharca tochas, pergaminhos e outros itens sensíveis à água, e apaga fogo pequeno (uma tocha, uma fogueira pequena, ou a condição Em chamas de quem ele toca)",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Domínio da água",
-      "descricao": "Ativação: nenhuma; vale enquanto ele está dentro da água. Duração: enquanto estiver na água. Alcance: o próprio corpo. Área: não se aplica. Efeito: não se afoga e quase não se deixa arrastar: +3 contra Agarrar, Derrubar e Empurrar, como uma faixa de massa a mais; quem o ataca de dentro da água tira 2 do dano do golpe. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; vale enquanto ele está dentro da água",
+      "duracao": "enquanto estiver na água",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "não se afoga e quase não se deixa arrastar: +3 contra Agarrar, Derrubar e Empurrar, como uma faixa de massa a mais; quem o ataca de dentro da água tira 2 do dano do golpe",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "feito de água pura",
-      "descricao": "não sente cansaço, veneno nem doença; não respira, não come, não dorme.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "onda com vontade",
-      "descricao": "luta de dentro da água sempre que pode, suga o alvo no vórtice e apaga tochas e fogueiras; em terra é lento e só cumpre a ordem.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão e audição: as de um humano."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não sente cansaço, veneno nem doença; não respira, não come, não dorme"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "onda com vontade",
+      "formas": "todas",
+      "texto": "luta de dentro da água sempre que pode, suga o alvo no vórtice e apaga tochas e fogueiras; em terra é lento e só cumpre a ordem."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "nenhuma",
+    "prendeRespiracao": "não respira",
+    "mente": "simples; obedece a quem o conjurou e, solto, volta ao próprio plano",
+    "tracos": "água limpa na forma de um homem pequeno, que escorre o tempo todo e se refaz; deixa o chão molhado por onde passa"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho, ou com quem o conjurou",
+    "atividade": "qualquer hora",
+    "dieta": "nenhuma",
+    "caca": "não caça",
+    "dianteDeGente": "cumpre a ordem de quem o trouxe; não odeia nem ama"
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Fragmento de um plano de água: rápido no mar e lento em terra, suga quem chega perto num vórtice, encharca o que toca e apaga o fogo.",
   "lore": [
     {
       "titulo": "Onda com vontade",
@@ -116,78 +191,34 @@
     {
       "titulo": "Frieza sem malícia",
       "texto": "Não odeia nem ama; apenas cumpre a vontade de quem o trouxe até se libertar do vínculo."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: sozinho, ou com quem o conjurou."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Pequeno, lento em terra (2) e rápido na água (9). Bate com dano médio 5,5 e apaga tochas e fogo pequeno com o toque. Uma vez por cena vira vórtice e suga quem está perto: Agarrado e Confuso, com o dano da pancada a cada 6 Ticks. Na água, quase não se deixa agarrar, derrubar nem empurrar. Esquiva e Bloqueio 4, 26 PV, Impacto 4, Corte e Perfuração 1."
     }
   ],
-  "ecologia": {
-    "tipo": "Elemental",
-    "terreno": [
-      "Water"
-    ],
-    "clima": [
-      "Extraplanar"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Small Water Elemental",
-    "cr": "1",
-    "tipo": "exterior (água) Pequeno",
-    "tamanho": "pequeno",
-    "valores": {
-      "for": 14,
-      "des": 10,
-      "con": 13,
-      "int": 4,
-      "sab": 11,
-      "car": 11
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Vórtice",
+      "motivo": "números sugeridos pela ficha (D-197); poder natural de uma vez por cena, e não forma (linha Formas): o redemoinho é um modo de ataque com duração, sem corpo próprio a descrever"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Encharcar",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 26,
-    "esquiva": 4,
-    "bloqueio": 4,
-    "defesa": 4,
-    "defesaMental": 12,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 1,
-      "perfuracao": 1
+    {
+      "campo": "habilidadesEspeciais.Domínio da água",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 97.43,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 3,
-        "corrida": 5
-      },
-      "nado": 9
+    {
+      "campo": "atributos.forca",
+      "motivo": "O site tinha 4 (For 14 no Pathfinder). Desce para 3 pelo teste de ordem (manual, Passo 6): com 4, os 23 kg de água ficariam acima do lobo de 55 kg do molde (3), mais pesado. Com 3, fica igual ao lobo, e o peso da onda vai na Musculatura 1; 3 pelo teste de ordem; o site tinha 4. Com 4, o dano médio seria 6,5 e o peso erguido 118,62 kg"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site"
     }
-  },
-  "notasObservacao": [
-    "`massa`: 23,4 kg pelo volume do corpo de base escalado a 1,2 m, na densidade da água; o site dizia 15 kg **[conta]**",
-    "`forca`: 3 pelo teste de ordem; o site tinha 4. Com 4, o dano médio seria 6,5 e o peso erguido 118,62 kg **[provisório]**",
-    "`vórtice`: poder natural de uma vez por cena, e não forma (linha Formas): o redemoinho é um modo de ataque com duração, sem corpo próprio a descrever **[provisório]**",
-    "`segundo Tamanho`: Médio com o vórtice ativo, o funil de 0,90 m² com a largura do redemoinho do elemental do ar; se o funil fosse da largura da Área do Vórtice (1 m à volta, 2,3 m), seriam 1,56 m², Grande, 8% acima do corte (decisão do autor de 24/10/2026, D-213) **[provisório]**",
-    "`vórtice`, `encharcar`, `domínio da água`: números sugeridos pela ficha (D-197)"
   ]
 }

@@ -74,7 +74,11 @@ export function converterFicha(texto, { site = null } = {}) {
   // ----- 2.1 Identidade
   c.id = semMarcas(campo(I, 'id') || '').replace(/`/g, '');
   const ida = semMarcas(campo(I, 'id antigo do bestiário') || '').replace(/`/g, '');
-  if (ida && !/^não|^nenhum/.test(ida)) c.idAntigo = ida;
+  if (ida && !/^não|^nenhum/.test(ida)) {
+    const antigo = ida.match(/^[a-z0-9-]+/)?.[0];
+    if (!antigo) para('ID antigo fora do formato');
+    else if (antigo !== c.id) c.idAntigo = antigo;
+  }
   c.nome = jogo(campo(I, 'Nome'));
   const ing = jogo(campo(I, 'Nome em inglês') || '');
   c.nomeIngles = /^não há ficha/i.test(ing) ? null : ing.split(/ \(|;/)[0].trim();
@@ -180,7 +184,7 @@ export function converterFicha(texto, { site = null } = {}) {
   const carga = campo(MV, 'Carga') || '';
   const cm = carga.match(/\*\*Leve ([\d.,]+) kg\*\*/);
   if (cm && /medid/.test(carga)) corpo.cargaMedida = numBR(cm[1]);
-  if (/^\s*\*\*não ergue\*\*/.test(campo(MV, 'Peso erguido') || '')) { corpo.naoErgue = true; lacuna('corpo.naoErgue: quem não ergue, chave que o formato não tem (perguntas.md, P5)'); }
+  if (/^\s*\*\*não ergue\*\*/.test(campo(MV, 'Peso erguido') || '')) { corpo.naoErgue = true; }
   for (const [k, rot] of [['altura', 'Altura'], ['largura', 'Largura']]) if (corpo[k] === undefined) para(`sem a linha ${rot} legível em "Corpo, área e porte"`);
   c.corpo = corpo;
   c.couraca = F.bloco?.couracaNivel ?? inteiro((campo(MV, 'Absorção') || '').match(/Couraça \*\*nível (\d+)/)?.[1]);
@@ -394,7 +398,16 @@ export function converterFicha(texto, { site = null } = {}) {
         para('Manobras, ' + nome + ': P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste');
       else if (copiada && normal(detalhe) && normal(copiada.texto).includes(normal(detalhe)))
         para('Manobras, ' + nome + ': P7, texto copia o efeito da Técnica; espera lote de ajuste');
-      else if (detalhe) he.texto = detalhe;
+      else if (he.regra === 'rajada' && /o segundo a|o terceiro a|Tick(?:s)? de Recuperação|teto da classe|combate\.md/i.test(detalhe))
+        para('Manobras, ' + nome + ': P7, texto copia a regra da Rajada; espera lote de ajuste');
+      else if (he.regra === 'rajada' && /^Até (dois|três|\d+) golpes por ação$/i.test(detalhe)) {
+        const n = {dois:2,'três':3}[detalhe.match(/^Até (\S+)/i)[1].toLowerCase()] ?? Number(detalhe.match(/^Até (\S+)/i)[1]);
+        const ataque = c.ataques.find(a=>a.nome === he.ataque);
+        const teto = ataque ? M.tetoDaRajadaDaCriatura(ataque) : null;
+        if (teto === null) para('Manobras, ' + nome + ': P7, teto da Rajada sem ataque de classe conhecida');
+        else if (n > teto) para('Manobras, ' + nome + ': limite da ficha acima do teto da Rajada');
+        else if (n < teto) he.texto = detalhe; // limite próprio; o teto igual ao da classe vem do motor
+      } else if (detalhe) he.texto = detalhe;
     } else he.efeito = semPonto(jogo(corpoTxt));
     c.habilidadesEspeciais.push(he);
   }

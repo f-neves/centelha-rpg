@@ -1,37 +1,27 @@
 {
-  "ordem": 215,
   "id": "doninha",
   "idAntigo": "mon-weasel",
   "nome": "Doninha",
   "nomeIngles": "Weasel",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Minúsculo",
-  "descricao": "O menor carnívoro, que caça roedores dentro das galerias deles e mata com uma mordida na nuca. Vive pouco e come o tempo todo.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/doninha_criatura.webp",
-  "porte": "Minúsculo",
-  "dimensoes": {
-    "medida": "0,23 m de comprimento, 0,05 m de altura",
-    "peso": "0,099 kg",
-    "comprimento": 0.23,
-    "largura": 0.03,
-    "altura": 0.05
-  },
-  "locomocao": {
-    "terra": 3,
-    "escalada": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 4,
-    "corrida": 6
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 0.05,
+    "largura": 0.03,
+    "profundidade": null,
+    "comprimento": 0.23,
+    "comprimentoSemCauda": 0.19,
+    "caudaGrossa": false,
+    "massa": 0.099,
+    "area": 0.011,
+    "posturaDoTamanho": "de lado"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 0,
     "destreza": 3,
     "vigor": 3,
@@ -42,75 +32,132 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 3,
     "atletismo": 2,
     "furtividade": 3,
     "integridade": 1,
     "prontidao": 2,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 3
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "em tocas",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "furtividade": [
+      {
+        "foco": "em tocas",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 4,
+      "corrida": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 0,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "morder e não largar",
-      "descricao": "Mordida: crava os dentes e não solta; com Força 0, o agarrão do livro não tira nada.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Mordida",
+      "efeito": "crava os dentes e não solta; com Força 0, o agarrão do livro não tira nada"
     },
     {
       "nome": "corpo flexível",
-      "descricao": "escorrega por frestas e escapa de agarrão e de corda.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "faro: Prontidão (faro) +2; alcance."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "escorrega por frestas e escapa de agarrão e de corda"
     }
   ],
+  "comoLuta": [],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "Prontidão (faro) +2; alcance",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "corpo comprido e fino que entra na galeria do roedor; metabolismo alto (come mais de 50% do peso por dia, ADW)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "",
+    "dieta": "carnívoro (quase só roedor quando há muitos)",
+    "caca": "caça dentro da galeria; mata coelho de 5 a 10 vezes o próprio peso",
+    "dianteDeGente": ""
+  },
+  "ecologia": {
+    "terreno": [
+      "planície",
+      "floresta"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "O menor carnívoro, que caça roedores dentro das galerias deles e mata com uma mordida na nuca. Vive pouco e come o tempo todo.",
   "lore": [
     {
       "titulo": "Praga dos galinheiros",
@@ -119,95 +166,36 @@
     {
       "titulo": "Pequena e implacável",
       "texto": "Apesar do tamanho, ataca criaturas muito maiores quando encurralada, sem hesitar diante do próprio risco."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Minúscula: ganha +9 no corpo a corpo contra um humano Médio. A mordida tira 1,5 em média, só o dado. 1 PV (99 g, na zona de transição de 70 a 130 g, desce): um golpe de humano a derruba. Pela Força 0, qualquer atacante de Força 4 ou mais tira o Bloqueio dela. O perigo dela é para o rato e o coelho, e não para a gente."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Plains",
-      "Forest"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/doninha_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Weasel",
-    "cr": "1/2",
-    "tipo": "animal Minúsculo",
-    "tamanho": "minusculo",
-    "valores": {
-      "for": 3,
-      "des": 15,
-      "con": 10,
-      "int": 2,
-      "sab": 12,
-      "car": 5
+  "revisao": [
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Era sem linha (0). O normal da espécie no próprio meio : a pesquisa não traz frio, sede, doença nem ferida. O metabolismo sem reserva (come mais de 50% do peso por dia, ADW) a deixa frágil à fome, mas sem número de quanto tempo aguenta: fica no 2, e não no 1."
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,04 × 1,0313 = 0,046 . Antes: escalado pelo cubo da massa: 0,05 × (0,09025 ÷ 0,12)^(1/3) = 0,045 m; era 0,05 m, estimativa da Bestiarista-2 para o macho (corpo baixo de mustelídeo); a cernelha não foi achada"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 1,
-    "esquiva": 12,
-    "bloqueio": 6,
-    "defesa": 12,
-    "defesaMental": 7,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 3,
-      "corte": 3,
-      "perfuracao": 3
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,23 × 1,0313 = 0,232 . Antes: escalado pelo cubo da massa: 0,247 × (0,09025 ÷ 0,12)^(1/3) = 0,225 m; era 0,247 m, o corpo mais a cauda do macho, 4,2 a 5,2 cm (Mammal Society; usada 4,7). A ADW dá 165 a 217 mm de total, da espécie inteira"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 0.32,
-    "carga": {
-      "leve": 0.02,
-      "media": 0.04,
-      "pesada": 0.05,
-      "maxima": 0.07
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,18 × 1,0313 = 0,186 . Antes: escalado pelo cubo da massa: 0,20 × (0,09025 ÷ 0,12)^(1/3) = 0,18 m; era 0,20 m, cabeça e corpo do macho, 19,4 a 21,7 cm (Mammal Society). A fêmea mede 17,3 a 18,3 cm (Mammal Society)"
     },
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 4,
-        "corrida": 6
-      }
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,03 × 1,0313 = 0,033 . Antes: escalado pelo cubo da massa: 0,035 × (0,09025 ÷ 0,12)^(1/3) = 0,032 m; era 0,035 m, estimativa da Bestiarista-2"
     }
-  },
-  "notasObservacao": [
-    "forca: 0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): a força de 90 g não fere nem segura a mão de um humano. O feito de matar coelho de 5 a 10 vezes o próprio peso é de matar, e não de levantar; o peso levado não foi achado (D-162).",
-    "pv: 1 (em vigor na Etapa 2, 20/10/2026); antes: 8 pela decisão 21 (5 + Vigor), e 11 pela outra proposta do autor (10 + metade do Vigor); eram 18 pela Faixa 1 antiga (D-169, D-174).",
-    "pesoErguido: 0,32 kg (em vigor na Etapa 2, 20/10/2026); antes: 0,28 kg pela fórmula nova (`calc6.mjs`, com 0,09025 kg), provisório; era 0,01 kg pela D-162 (decisões 14 e 16).",
-    "carga: 0,02 kg de Leve pela conta da D-122, provisória (D-169).",
-    "musculatura: 3 ◆, robusta para o tamanho, pela presa de 5 a 10 vezes o próprio peso (só pela Wikipédia; a Mammal Society confirma só coelho jovem) (D-174).",
-    "resistencia: 2 **[extrapolação]**; o levantamento a aponta como candidata a 1 pelo metabolismo sem reserva, sem tempo medido de jejum (D-174).",
-    "atributos.compostura: desce a 1 por não ser espécie social (diretriz 1); a Defesa Social cai de 10 para 8 (D-174).",
-    "escalada: 0 por falta de dado na pesquisa, e não por fato contrário; o d20 dá escalar 20 pés, sem fonte real (D-174).",
-    "velocidade: congelada (decisão 23), com o 0,4 do Miúdo no Minúsculo; sem real para conferir (D-170).",
-    "dimensoes: a altura (0,045) e a largura (0,032) saem da estimativa da Bestiarista-2 para o macho, sem fonte; o comprimento é o do macho britânico (Mammal Society); os quatro escalados pelo cubo da massa para o típico de 90,25 g (D-147, D-174).",
-    "alvo: Minúsculo, sem borda; a área está abaixo do começo do Minúsculo (D-166, D-174).",
-    "briga: 4 pela técnica de matar presa maior; com Força 0 o dano fica no dado (D-115, D-174).",
-    "raciocinio: 3 pelo bote, sem tempo de reação medido (D-174).",
-    "atletismo: 2 é escolha da Bestiarista-2, sem fonte de escalada ou salto medidos (D-174).",
-    "couraca: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "jornada (nota de pesquisa, não é regra): sem velocidade, distância por dia nem tempo de perseguição (`doninha.md`). O que há: área de vida de 0,2 a 1,0 km² (ADW)."
   ]
 }

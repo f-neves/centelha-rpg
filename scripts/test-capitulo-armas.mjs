@@ -1213,7 +1213,7 @@ function conferirNove(T) {
   if (/Ambidestria|apaga esse dado extra/.test(T.comb)) f.push('Combate (B2): sobrou a Ambidestria ou "apaga esse dado extra"');
   // a ficha: a mão inábil a −1d6 e sem ler a Técnica
   const FL = T.ficha.split('\n');
-  if (!FL.some((x) => /^\s*inabilPen: 1,$/.test(x))) f.push('ficha-engine.ts (B2): falta a linha "inabilPen: 1," (sem penalidade extra na inábil, D-091)');
+  if (!FL.some((x) => /^\s*inabilPen: 1,$/.test(x))) f.push('motor.ts (B2): falta a linha "inabilPen: 1," (sem penalidade extra na inábil, D-091)');
   if (/ambidestria/i.test(T.ficha) || /inabilPen: ambi/.test(T.ficha) || /c\.dupla\.ambi/.test(T.ficha)) f.push('ficha-engine.ts (B2): a ficha ainda lê a Ambidestria');
   // a Técnica fica na lista, com a descrição e "efeito em recalibração"
   const amb = (T.tecnicas || []).find((x) => x.id === 'ambidestria');
@@ -1235,7 +1235,7 @@ function conferirNove(T) {
   return f;
 }
 {
-  const T0 = { comb: COMB, ficha: ler('src/lib/ficha-engine.ts').replace(/\r\n/g, '\n'), tecnicas: JSON.parse(ler('src/data/tecnicas.json')), regras: REGRAS };
+  const T0 = { comb: COMB, ficha: ler('src/lib/motor.ts').replace(/\r\n/g, '\n'), tecnicas: JSON.parse(ler('src/data/tecnicas.json')), regras: REGRAS };
   const tec = Array.isArray(T0.tecnicas) ? T0.tecnicas : (T0.tecnicas.tecnicas || T0.tecnicas.itens || Object.values(T0.tecnicas).flat());
   T0.tecnicas = tec;
   const realN = conferirNove(T0);

@@ -1,3 +1,4 @@
+import { pvJogador } from './lib-criatura-motor.mjs';
 // sim-grupo.mjs — pilar dos números: um GRUPO de 3 (Centelha C) enfrenta 1
 // "chefe" de Centelha C+1, ambos maximizados (teto escalado por Centelha).
 // Alvo de design: 3×C2 vs C3 e 3×C3 vs C4 devem ser LUTAS de verdade.
@@ -45,7 +46,7 @@ export function maxDuelista(c, arma = 'espada-curta', armadura = 'couro', escudo
     espWeapon: 1, espEsquiva: 1, arma, armadura, escudo,
   };
 }
-export const pvMax = (b) => regras.derivados.pv.base + b.vigor * regras.derivados.pv.vigorMult;
+export const pvMax = (b) => pvJogador(b.vigor,b.raca || 'humano');
 
 function defesaValor(b, centTerm) {
   const arm = ARM[b.armadura], esc = ESC[b.escudo], wpn = ARMAS[b.arma];

@@ -1,104 +1,151 @@
 {
-  "ordem": 94,
   "id": "lemure",
   "idAntigo": "mon-lemure",
   "nome": "Lêmure",
-  "nomeIngles": "Lemure",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Diabo",
+  "nomeIngles": "Devil, Lemure",
+  "categoria": "corruptor",
   "papel": "soldado",
-  "conceito": "exterior Médio (diabo)",
-  "descricao": "Alma condenada derretida na forma mais baixa do Inferno, sem mente própria.",
-  "descricaoLegada": "Tirano leal do Inferno, calculista e cruel.",
-  "tags": [
-    "diabo",
-    "centelha"
-  ],
-  "imagem": "bestiario/lemure_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,5 m de altura",
-    "peso": "45 kg"
-  },
-  "locomocao": {
-    "terra": 2
-  },
+  "ameaca": 2,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "de pé, arrastando-se",
+    "apoio": "bipede",
+    "altura": 1.5,
+    "largura": 0.38,
+    "profundidade": 0.19,
+    "comprimento": null,
+    "massa": 45,
+    "area": 0.5,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 2,
     "vigor": 4,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 1,
     "inteligencia": 0,
-    "raciocinio": 1
+    "raciocinio": 1,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 0,
+    "atletismo": 0,
+    "furtividade": 0,
+    "integridade": 0,
     "prontidao": 0,
-    "integridade": 2
+    "resistencia": 2
   },
-  "virtues": {
-    "compaixao": 0,
-    "conviccao": 5,
-    "temperanca": 1,
-    "valor": 5
+  "habilidadesSec": {
+    "musculatura": 2
   },
-  "willpower": 6,
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1
+  },
+  "vontade": 3,
   "aparencia": 1,
-  "tech": {
-    "recuperacao-acelerada": true
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    }
   },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "nome": "Garras",
+      "parte": "mao-de-garras-rudimentares",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "regeneracao-fraca",
-      "nome": "Regeneração fraca",
-      "tipo": "natural",
-      "resiste": "nenhum",
-      "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
+      "nome": "Recuperação acelerada",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "recuperacao-acelerada",
+        "nivel": 1
       }
+    },
+    {
+      "nome": "Regeneração 1",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de fogo, ácido ou arma benta"
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "comoLuta": [
     {
-      "nome": "Regeneração fraca",
-      "descricao": "recupera 1 PV por rodada, exceto se ferido por arma benta ou fogo"
-    },
-    {
-      "nome": "Massa amorfa",
-      "descricao": "imune a Medo e a efeitos que dependam de mente própria"
-    },
-    {
-      "nome": "Garras rudimentares",
-      "descricao": "ataque corpo a corpo simples, dano baixo"
-    },
-    {
-      "nome": "Carne infernal",
-      "descricao": "resistente a fogo"
+      "nome": "massa de manobra",
+      "formas": "todas",
+      "texto": "vaga sem rumo, gemendo, até que um diabo lhe aponte um alvo; então avança em bando e arranha até cair, sem medo e sem recuo."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "fracas; reage ao que lhe apontam",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "sem mente própria; obedece por instinto",
+    "tracos": "massa de carne pálida e derretida, de 1,5 m, com braços moles de garras e um rosto quase humano, apagado, que geme sem parar"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "bando, massa de manobra dos diabos",
+    "atividade": "qualquer hora",
+    "dieta": "não precisa comer",
+    "caca": "ataca o que lhe apontam",
+    "dianteDeGente": "ataca, se mandado"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "O que resta de uma alma condenada, derretida na forma mais baixa do Inferno: uma massa de carne de rosto quase humano, apagado, que vaga gemendo e ataca o que lhe apontam. Os diabos maiores a usam como tropa descartável e a reformam em coisa melhor quando convém.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -113,43 +160,36 @@
       "texto": "Onde a Supressão fala em almas perdidas devoradas pela Fenda, os lêmures são a prova viva: rostos quase humanos, apagados, arrastando se sem memória do que foram."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/lemure_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
-    ]
+    "resistencias": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Lêmure",
-    "cr": "1",
-    "tipo": "exterior Médio (diabo)",
-    "tamanho": "medio",
-    "valores": {
-      "for": 12,
-      "des": 10,
-      "con": 14,
-      "int": "-",
-      "sab": 5,
-      "car": 11
-    },
-    "nota": "Massa infernal sem mente: Int/Rac 0, mas natureza extraplanar dá Centelha 1.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "cerne-vital"
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Regeneração 1",
+      "motivo": "Antes: 1 PV/6 Ticks passivos. N 1 pelo número do texto anterior, a conferir."
     }
   ]
 }

@@ -1,40 +1,32 @@
 {
-  "ordem": 132,
   "id": "dragao-vermelho-adulto",
   "idAntigo": "mon-dragao-vermelho-adulto",
   "nome": "Dragão Vermelho Adulto",
   "nomeIngles": "Dragon, Adult Red",
-  "categoria": "Dragão",
-  "categoriaLegada": "Dragão",
+  "categoria": "dragao",
   "papel": "chefe",
-  "conceito": "dragão Imenso",
-  "descricao": "Dragão vermelho adulto de 9 m, feiticeiro alado temível. Sopra fogo em cone de 12 m, queima quem o toca com a aura das escamas e conjura encantos, ilusões e barreiras. Orgulhoso e ganancioso.",
-  "tags": [
-    "dragao",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/dragao-vermelho-adulto_criatura.webp",
-  "porte": "Imenso",
-  "dimensoes": {
-    "medida": "9 m de comprimento, 2,84 m de altura",
-    "peso": "7,3 t",
-    "comprimento": 9,
-    "largura": 1.97,
-    "altura": 2.84,
-    "envergadura": 19.6
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 20
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-  },
+  "ameaca": 6,
   "centelha": 6,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas; voador",
+    "apoio": "quadrupede",
+    "altura": 2.84,
+    "largura": 1.97,
+    "profundidade": null,
+    "comprimento": 9,
+    "comprimentoSemCauda": 5.03,
+    "caudaGrossa": true,
+    "envergadura": 19.6,
+    "massa": 7300,
+    "area": 80.9,
+    "posturaDoTamanho": "de baixo, asas abertas",
+    "segundoTamanho": {
+      "area": 12.12,
+      "posturaDoTamanho": "de lado, pousado, asas fechadas"
+    }
+  },
+  "couraca": 9,
+  "atributos": {
     "forca": 11,
     "destreza": 2,
     "vigor": 9,
@@ -45,8 +37,10 @@
     "perspicacia": 5,
     "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
+    "esquiva": 0,
     "atletismo": 2,
     "furtividade": 1,
     "integridade": 5,
@@ -55,147 +49,258 @@
     "ocultismo": 3,
     "persuasao": 4
   },
-  "skills2": {
+  "habilidadesSec": {
     "intimidacao": 4,
     "voo": 3,
     "disparo": 4,
     "acerto-arcano": 4,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "persuasao",
-      "foco": "em torno do tesouro",
-      "valor": 2,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "ocultismo",
-      "foco": "feitiçaria",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "persuasao": [
+      {
+        "foco": "em torno do tesouro",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
     "compaixao": 2,
     "conviccao": 5,
-    "temperanca": 3,
-    "valor": 6
+    "temperanca": 3
   },
-  "willpower": 11,
+  "vontade": 11,
   "aparencia": 9,
-  "ataques": [
-    {
-      "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 3,
-      "ticks": 6,
-      "classe": "media"
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
     },
-    {
-      "nome": "Garras",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "ticks": 6,
-      "classe": "media"
-    },
-    {
-      "nome": "Cauda",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 2,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
-    },
-    {
-      "nome": "Sopro de fogo",
-      "atrib": "vigor",
-      "pericia": "disparo",
-      "dado": 9,
-      "mao": 1,
-      "tipo": "fogo",
-      "ticks": 7,
-      "forca": false,
-      "classe": "distancia",
-      "distancia": true
+    "voo": {
+      "batalha": 20
     }
-  ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [
-    "fogo"
-  ],
-  "arte": {
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {
     "fascinacao": 4,
     "tempo": 3,
     "ofuscacao": 3,
     "protecao": 3,
     "fogo": 2
   },
-  "mana": 23,
-  "habilidades": [
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "parte": "boca",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 3,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Garras",
+      "parte": "pata-dianteira",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Cauda",
+      "parte": "cauda",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 2,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    },
     {
       "nome": "Sopro de fogo",
-      "descricao": "poder natural (base Fogo 4, a do site): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: o fogo queima tudo no cone. Dano: 9d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site).",
-      "classe": "regra da ficha"
+      "parte": "boca",
+      "habilidade": "disparo",
+      "classe": "distancia",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "9d6",
+      "multiplicadorForca": 0,
+      "tipoDano": "fogo",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    }
+  ],
+  "habilidadesEspeciais": [
+    {
+      "nome": "Sopro de fogo",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fogo",
+        "nivel": 4
+      },
+      "ataque": "Sopro de fogo",
+      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "duracao": "instantânea",
+      "alcance": "12 m à frente",
+      "area": "cone de 12 m",
+      "efeito": "o fogo queima tudo no cone",
+      "dano": "9d6 + Centelha, fogo",
+      "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
       "nome": "garras em sequência",
-      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada"
     },
     {
       "nome": "cauda em sequência",
-      "descricao": "Cauda: a Rajada: até dois golpes de Cauda na mesma ação, o teto da classe Pesada.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Cauda",
+      "regra": "rajada"
     },
     {
       "nome": "Multiataque",
-      "descricao": "garra, garra, mordida e cauda no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "garra, garra, mordida e cauda no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
     },
     {
       "nome": "Presença",
-      "descricao": "poder natural (base Morte 3, a do site): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 24 m. Área: esfera de 24 m em volta dele. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência 5 + Intimidação 4 + 2 × o menor entre Centelha 6 e Intimidação 4 (8) = 17 mais a rolagem; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "morte",
+        "nivel": 3
+      },
+      "ativacao": "a primeira vez na cena em que ele ruge, ataca ou desce do céu",
+      "duracao": "Abalado até o fim da cena",
+      "alcance": "24 m",
+      "area": "esfera de 24 m em volta dele",
+      "efeito": "quem falha fica Abalado",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência 5 + Intimidação 4 + 2 × o menor entre Centelha 6 e Intimidação 4 (8) = 17 mais a rolagem; quem passa fica imune até o fim da cena",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Aura de fogo",
-      "descricao": "poder natural (base Fogo 4, a do site): Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o corpo dele. Área: quem o acerta corpo a corpo. Efeito: o calor das escamas queima quem encosta. Dano: 2d6, fogo, a cada golpe corpo a corpo que acerta nele (site). Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
-    },
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fogo",
+        "nivel": 4
+      },
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o corpo dele",
+      "area": "quem o acerta corpo a corpo",
+      "efeito": "o calor das escamas queima quem encosta",
+      "dano": "2d6, fogo, a cada golpe corpo a corpo que acerta nele",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "Voo",
-      "descricao": "manobra excelente; reposiciona-se no ar antes de atacar (site).",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Feitiços",
-      "descricao": "Artes do livro: Fascinação até o 4, Tempo até o 3, Ofuscação até o 3, Proteção até o 3, Fogo até o 2, com 23 de Mana."
+      "formas": "todas",
+      "texto": "manobra excelente; reposiciona-se no ar antes de atacar."
     },
     {
       "nome": "feiticeiro alado",
-      "descricao": "abre com o sopro, encanta ou some com a Arte, deixa a aura queimar quem chega perto e só pousa para acabar com o que resta.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: vê sem luz. · faro: apurado. · sentidos aguçados: detecta invisíveis e furtivos (sem regra ainda)."
+      "formas": "todas",
+      "texto": "abre com o sopro, encanta ou some com a Arte, deixa a aura queimar quem chega perto e só pousa para acabar com o que resta."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "vê sem luz",
+      "formas": "todas"
+    },
+    {
+      "nome": "faro",
+      "descricao": "apurado",
+      "formas": "todas"
+    },
+    {
+      "nome": "sentidos aguçados",
+      "descricao": "detecta invisíveis e furtivos",
+      "formas": "todas",
+      "classe": "sem regra ainda"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "a de um bicho grande; quanto tempo, o Mestre decide",
+    "mente": "inteligente, orgulhosa e gananciosa",
+    "tracos": "escamas vermelhas como brasa, chifres curvos, asas de couro; o ar em volta tremula de calor"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "qualquer hora",
+    "dieta": "carnívoro",
+    "caca": "do alto, com o sopro, e guarda tesouro",
+    "dianteDeGente": "exige tributo ou ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "montanha"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "Dragão vermelho adulto de 9 m, feiticeiro alado temível. Sopra fogo em cone de 12 m, queima quem o toca com a aura das escamas e conjura encantos, ilusões e barreiras. Orgulhoso e ganancioso.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "O dragão vermelho adulto já não caça por necessidade: impõe tributo às comunidades ao redor de seu covil, exigindo ouro, gado ou sacrifícios simbólicos em troca de não arrasar vilas inteiras. Social: solitário."
+      "texto": "O dragão vermelho adulto já não caça por necessidade: impõe tributo às comunidades ao redor de seu covil, exigindo ouro, gado ou sacrifícios simbólicos em troca de não arrasar vilas inteiras."
     },
     {
       "titulo": "Sociedade",
@@ -208,82 +313,61 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Em Mére, onde cidades mágicas avançadas se escondem sob a fama de terra bárbara, um dragão vermelho adulto pode governar um vale inteiro como um rei não reconhecido, algo que as igrejas supressoras de Calin preferem não admitir que ainda existe."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Imenso no ar, Enorme pousado. 80 PV, Impacto 15, Corte e Perfuração 6. Esquiva 4, Bloqueio 4. Sopro de fogo em cone de 12 m (dano médio 37,5) a cada 24 Ticks. Mordida e garras de 20,5, cauda de 35,0; garras até três por ação. Quem o acerta corpo a corpo leva 2d6 de fogo. Conjura com 23 de Mana. Defesa Mental 31. Fogo não o fere."
     }
   ],
-  "ecologia": {
-    "tipo": "Dragon",
-    "terreno": [
-      "Mountain"
-    ],
-    "clima": [
-      "Temperate",
-      "Tropical"
+  "imagens": [
+    "bestiario/dragao-vermelho-adulto_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "Habilidades notáveis: Prontidão 5, Persuasão 4, Ocultismo 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Dragão Vermelho Adulto",
-    "cr": "14",
-    "tipo": "dragão Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 31,
-      "des": 10,
-      "con": 23,
-      "int": 16,
-      "sab": 17,
-      "car": 16
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Sopro de fogo",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Prontidão 5",
-      "Persuasão 4",
-      "Ocultismo 3"
-    ],
-    "nota": "Feiticeiro alado temível: Centelha 5. Str 31 → curva 9 +2 = Força 11.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Presença",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 6,
-  "v3": {
-    "pv": 80,
-    "esquiva": 4,
-    "bloqueio": 4,
-    "defesa": 4,
-    "defesaMental": 31,
-    "defesaSocial": 18,
-    "absorcao": {
-      "impacto": 15,
-      "corte": 6,
-      "perfuracao": 6
+    {
+      "campo": "habilidadesEspeciais.Aura de fogo",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 9,
-    "pesoErguido": 1847.87,
-    "deslocamento": {
-      "terra": {
-        "batalha": 4,
-        "arranque": 6,
-        "corrida": 9
-      },
-      "voo": {
-        "batalha": 20
-      }
+    {
+      "campo": "sentidos.sentidos aguçados",
+      "motivo": "sem regra ainda no livro"
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "A do dragão branco jovem (1,3 m, 700 kg) escalada pela massa: × (massa ÷ 700)^(1/3) = × 2,185"
+    },
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "2,3 m do branco jovem × 2,185; a cauda tem o resto do comprimento do site, 3,97 m"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "0,9 m do branco jovem × 2,185"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Escama de dragão: os níveis 9 a 12 ficam para os adultos e anciões (o texto do branco jovem); o adulto entra no 9 . O nível fica fora da Absorção (decisoes-autor §16); nível 9"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "ataques.Mordida.nivelPerfuracao",
+      "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como no branco jovem. Golpe de boca: Força × 1. N3, um acima do branco jovem (N2), para a mordida dos adultos e anciões . Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
     }
-  },
-  "notasObservacao": [
-    "`tamanho`: Imenso de asas abertas, Enorme pousado, pelo método do branco jovem; os números do autor para o dragão de 10 m (55 m² parado, 134 m² em voo, `tamanho-regras.md` 4.1) dariam mais (pergunta 1 do lote 23) **[provisório]**",
-    "`couraca`: nível 9 **[provisório]**",
-    "`sopro`: 9d6 + Centelha, cone de 12 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197) **[provisório]**",
-    "`multiataque`: sem regra ainda; garras e cauda pela Rajada",
-    "`presença` e os outros poderes: números sugeridos pela ficha (D-197)"
   ]
 }
