@@ -1,37 +1,27 @@
 {
-  "ordem": 190,
   "id": "triceratops",
   "idAntigo": "mon-triceratops",
   "nome": "Tricerátops",
   "nomeIngles": "Triceratops",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Enorme",
-  "descricao": "Herbívoro dos mais comuns do fim do Cretáceo, presa do tiranossauro, que luta de chifre com os da própria espécie.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/triceratops_criatura.webp",
-  "imagem2": "bestiario/triceratops_criatura_2.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "8,72 m de comprimento, 3,08 m de altura",
-    "peso": "8.000 kg",
-    "comprimento": 8.72,
-    "largura": 2.05,
-    "altura": 3.08
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 6
-  },
+  "ameaca": 5,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 3.08,
+    "largura": 2.05,
+    "profundidade": null,
+    "comprimento": 8.72,
+    "comprimentoSemCauda": 6.16,
+    "caudaGrossa": true,
+    "massa": 8000,
+    "area": 11.03,
+    "posturaDoTamanho": "vista de lado"
+  },
+  "couraca": 3,
+  "atributos": {
     "forca": 11,
     "destreza": 1,
     "vigor": 10,
@@ -42,79 +32,155 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
     "bloqueio": 2,
     "esquiva": 1,
+    "atletismo": 0,
+    "furtividade": 0,
     "integridade": 3,
     "prontidao": 1,
     "resistencia": 4,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 3
   },
-  "virtues": {
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Chifrada",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 1,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "chifre",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": 1
     },
     {
       "nome": "Investida de chifre",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 2,
-      "tipo": "perfurante",
-      "perf": 1,
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "chifre",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 2,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "derrubar",
-      "descricao": "investida de chifre",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "derrubar"
     },
     {
       "nome": "empurrar",
-      "descricao": "investida de chifre",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "empurrar"
     },
     {
       "nome": "atropelar",
-      "descricao": "corpo: Investida.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "investida"
     },
     {
       "nome": "escudo de osso",
-      "descricao": "a gola protege o pescoço; difícil de derrubar ou de empurrar à força.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "faro: fraco, sem Especialidade. · audição: de baixa frequência (cóclea curta), sem Especialidade; texto. · Nada que passe do humano com número. Cabeça mantida a cerca de 45 graus do chão."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a gola protege o pescoço; difícil de derrubar ou de empurrar à força"
     }
   ],
+  "comoLuta": [],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "fraco, sem Especialidade (Sakagami e Kawabe 2020)",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição",
+      "descricao": "de baixa frequência (cóclea curta), sem Especialidade; texto (Sakagami e Kawabe 2020)",
+      "formas": "todas"
+    },
+    {
+      "nome": "sentidos",
+      "descricao": "Nada que passe do humano com número. Cabeça mantida a cerca de 45 graus do chão (Sakagami e Kawabe 2020)",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "(cor não conhecida)",
+    "mente": "animal",
+    "tracos": "gola curta e maciça, sem janelas, de osso fibrolamelar que cicatriza rápido (Horner e Lamm 2011); placa óssea sobre o sacro, da fusão das espinhas vertebrais (Dodson e colegas 2004, via Wikipédia); conchas nasais respiratórias prováveis, para resfriar o sangue do cérebro e dos olhos (Tada e colegas 2026); côndilo occipital de até 106 mm, crânio muito pesado (Dodson e colegas 2004, via Wikipédia); escamas de base de até 90 mm, as maiores conhecidas em ceratopsianos (Bell e colegas 2022)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "família",
+    "atividade": "",
+    "dieta": "herbívoro",
+    "caca": "forrageio",
+    "dianteDeGente": ""
+  },
+  "ecologia": {
+    "terreno": [
+      "planície"
+    ],
+    "clima": [
+      "tropical"
+    ]
+  },
+  "descricao": "Herbívoro dos mais comuns do fim do Cretáceo, presa do tiranossauro, que luta de chifre com os da própria espécie.",
   "lore": [
     {
       "titulo": "Fera birrenta",
@@ -123,92 +189,52 @@
     {
       "titulo": "Escudo de osso",
       "texto": "A grande gola que emoldura a cabeça protege o pescoço dos golpes que viriam de frente."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: família."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Enorme: um humano Médio acerta com +6 no corpo a corpo. Um humano Médio de Centelha 0 não bloqueia o Enorme, e a Força 11 também trava quem tem Força 5 ou menos (o dobro e ao menos 4 a mais): contra a investida, quase sempre só a Esquiva. A pele de escamas grandes é Couraça nível 3; quanto ela tira do golpe fica para depois. A investida faz 29 em média e a chifrada 14,5, as duas furando até N1. 85 PV."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Plains"
-    ],
-    "clima": [
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/triceratops_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Triceratops",
-    "cr": "8",
-    "tipo": "animal Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 26,
-      "des": 9,
-      "con": 19,
-      "int": 2,
-      "sab": 12,
-      "car": 7
+  "revisao": [
+    {
+      "campo": "atributos.perspicacia",
+      "motivo": "Era 2. Não é espécie social (diretriz 1): o leito de ossos com três jovens (Mathews e colegas 2009) e o grupo de três tamanhos são pouca evidência, e a \"família\" é leitura de Peter Larson ; ver desvios"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidades.furtividade",
+      "motivo": "Etapa 2 (20/10/2026): Decisão 8 de 19/10/2026: a Furtividade sai do comportamento, sem padrão por tamanho, e quem nunca tenta se esconder fica com 0. A penalidade do Alvo (R8) soma por cima. Nenhum fato de esconder-se no levantamento; o autor pôs o estegossauro e o braquiossauro em 0. Antes: Era sem linha (0). O levantamento: nenhum fato. Régua: 1, não se esconde"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "v3": {
-    "pv": 85,
-    "esquiva": 4,
-    "bloqueio": 6,
-    "defesa": 7,
-    "defesaMental": 7,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 10,
-      "corte": 10,
-      "perfuracao": 10
+    {
+      "campo": "habilidades.integridade",
+      "motivo": "Encara de frente: as lesões curadas do chifre e do esquamosal são de confronto que ele sobreviveu. Degrau 3"
     },
-    "couracaNivel": 3,
-    "pesoErguido": 1965.73,
-    "carga": {
-      "leve": 1200,
-      "media": 2400,
-      "pesada": 3600,
-      "maxima": 4800
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 3,00 × 1,0263 = 3,079 . Antes: \"Big John\", 8 m e 3 m de altura (BBC 2021), escolhido na v3 como o mais próximo da massa de então (Era 8 t); faixa de 2,3 (Kelsey, Black Hills Institute) a 3,0 m (`dimensoes.md`)"
     },
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 6
-      }
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 8,50 × 1,0263 = 8,724 . Antes: ponto médio de 8 a 9 m (Paul 2010 e Holtz 2011, via Wikipédia)"
     },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "forca: 11 pela comparação com o mamute (13), proposta do Arquiteto; se o mamute mudar, esta se refaz.",
-    "pesoErguido: 1.965,73 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.864,92 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com os 7.400 kg. Era 1.966 kg (8.000 kg de trabalho) e, antes, 2.284 kg pela fórmula de FAH.",
-    "carga: Leve 1.110 a Máxima 4.440 kg, provisória (era Leve 1.200 pelos 8.000 kg); sai da massa.",
-    "velocidade: congelada (decisão 23). 21 km/h, sem número real para comparar.",
-    "area: 10,47 m², vista de lado, da medição da `tamanho-fichas-v2`; era 25,5 m² (retângulo cheio). O Alvo segue Enorme. Decisão provisória: usar o número do `calc.mjs`.",
-    "couraca: nível 3 (faixa 3 a 4) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "massa: 8.000 kg (em vigor na Etapa 2, 20/10/2026); antes: 7,4 t, o *T. horridus* NSM PV 20379 pela circunferência do úmero e do fêmur (Campione e Evans 2012, tabela 6; 5,55 a 9,25 t), sem consenso entre os estudos. Para o mesmo esqueleto, os volumétricos vão de 3,9 t (Henderson 1999) a 8,5 t (Colbert 1962); o AMNH 5033, grande, dá 13,5 t pelo mesmo método (Benson 2014, Dataset S1). Paul 2010 segue sem leitura. Era 8 t. Na sexta rodada a faixa, o PV, o peso erguido e a Carga passaram aos 7,4 t (faixa e PV não mudam).",
-    "social: tratado como não social (Influência e Perspicácia 1), embora haja leito de ossos com três jovens **[extrapolação]**; ver desvios.",
-    "vigor: 10 (em vigor na Etapa 2, 20/10/2026); antes: 8 pela ferida curada (Happ 2008; Peterson e colegas 2013), pela gola que cicatriza rápido (Horner e Lamm 2011) e pela vida longa do \"Big John\" (reportagem) (D-164).",
-    "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela ferida curada; a cicatrização foi para o Vigor.",
-    "musculatura: 3 (robusto) pelo pescoço de chifrar, provisória; sem medida de força.",
-    "dimensoes.largura: 2,0 m estimada pelo Arquiteto [sem dado]; só serve ao espaço.",
-    "dimensoes.altura: os 3,0 m do \"Big John\" não dizem onde se mede (ombro, quadril ou cabeça)."
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 6,00 × 1,0263 = 6,158 . Antes: do Arquiteto: \"corpo sem cauda (cerca de 70% de 8,5 m)\"; a fonte só dá o comprimento total"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 2,00 × 1,0263 = 2,053 . Antes: estimativa do Arquiteto (`porte-area.mjs`); a pesquisa não mediu largura"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "D-107.  A pele e a cor não se conhecem; fica na maioria."
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "Leito de ossos com três jovens (Mathews e colegas 2009); grupo de três de tamanhos diferentes, \"família\" na leitura de Peter Larson. Bando: pouca evidência. A ficha trata a espécie como não social (diretriz 1)"
+    }
   ]
 }

@@ -223,7 +223,11 @@
     },
     {
       "campo": "habilidadesEspeciais.Cuspe ácido",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha (D-197); o site dava \"dano ácido considerável, metade com Vigor\", uma vez por cena"
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "ataques.Cuspe ácido",
+      "motivo": "números da ficha (D-197); o site dava \"dano ácido considerável, metade com Vigor\", uma vez por cena"
     }
   ]
 }

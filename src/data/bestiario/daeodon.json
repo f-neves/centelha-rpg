@@ -1,36 +1,27 @@
 {
-  "ordem": 161,
   "id": "daeodon",
   "idAntigo": "mon-dire-boar-daeodon",
   "nome": "Daeodon",
   "nomeIngles": "Dire Boar",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Grande",
-  "descricao": "Onívoro do tamanho de um boi, com crânio de quase um metro, que quebrava osso e brigava mordendo a cara dos rivais.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": null,
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "3 m de comprimento, 1,77 m de altura",
-    "peso": "750 kg",
-    "comprimento": 3,
-    "largura": 0.8,
-    "altura": 1.77
-  },
-  "locomocao": {
-    "terra": 7
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 7,
-    "arranque": 11,
-    "corrida": 15
-  },
+  "ameaca": 3,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 1.77,
+    "largura": 0.8,
+    "profundidade": null,
+    "comprimento": 3,
+    "comprimentoSemCauda": 2.7,
+    "caudaGrossa": false,
+    "massa": 750,
+    "area": 2.11,
+    "posturaDoTamanho": "vista de lado"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 7,
     "destreza": 2,
     "vigor": 5,
@@ -41,73 +32,132 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
     "bloqueio": 1,
     "esquiva": 2,
     "atletismo": 3,
+    "furtividade": 0,
     "integridade": 2,
     "prontidao": 2,
     "resistencia": 4,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 3
   },
-  "virtues": {
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 4,
+  "vontade": 4,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 7,
+      "arranque": 11,
+      "corrida": 15
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 0,
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "derrubar",
-      "descricao": "Mordida (pela perna)",
-      "classe": "livro"
-    },
-    {
-      "nome": "quebrar osso",
-      "descricao": "quebra o osso da carcaça para comer o tutano.",
-      "classe": "como luta"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "derrubar",
+      "texto": "pela perna"
     },
     {
       "nome": "fúria selvagem",
-      "descricao": "ignora ferimentos que abateriam outro animal e continua lutando à beira da morte.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "ignora ferimentos que abateriam outro animal e continua lutando à beira da morte"
+    }
+  ],
+  "comoLuta": [
+    {
+      "nome": "quebrar osso",
+      "formas": "todas",
+      "texto": "quebra o osso da carcaça para comer o tutano."
     },
     {
       "nome": "corrida pesada",
-      "descricao": "apesar do tamanho, avança depressa contra a ameaça.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "Nenhum número achado."
+      "formas": "todas",
+      "texto": "apesar do tamanho, avança depressa contra a ameaça."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "sentidos",
+      "descricao": "Nenhum número achado",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "crânio de cerca de 90 cm, com protuberâncias ósseas na bochecha e no queixo; dois dedos por pé, ossos do antebraço fundidos (Wikipédia)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "; machos brigavam pelo domínio",
+    "atividade": "",
+    "dieta": "onívoro (castanha, raiz, cipó, carne e osso)",
+    "caca": "forrageio e carniça; talvez caça de herbívoros grandes",
+    "dianteDeGente": "não se aplica (extinto antes dos humanos); : ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "Onívoro do tamanho de um boi, com crânio de quase um metro, que quebrava osso e brigava mordendo a cara dos rivais.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Enquanto o javali comum já é rabugento, o gigantesco daeodon (conhecido pelo povo como javali terrível) é genuinamente odioso e violento; embora onívoro, prefere carne, e suas presas afiadas o tornam um predador nato. Social: machos brigavam pelo domínio."
+      "texto": "Enquanto o javali comum já é rabugento, o gigantesco daeodon (conhecido pelo povo como javali terrível) é genuinamente odioso e violento; embora onívoro, prefere carne, e suas presas afiadas o tornam um predador nato."
     },
     {
       "titulo": "Caçada",
@@ -116,88 +166,62 @@
     {
       "titulo": "Sociedade",
       "texto": "Orcs corajosos ou habilidosos gostam de usar daeodons como montarias, e a cavalaria orc montada nesses javalis é uma força verdadeiramente temível."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Força 7: quem tem Força 3 ou menos não apara a mordida. Grande: o humano Médio ganha +3 contra ele no corpo a corpo. A mordida tira 14 em média (2d6 + Força 7, do autor). 50 PV e Couraça nível 2: quanto ela tira da espada e da flecha fica para depois, e o Impacto perde 5."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Forest"
-    ],
-    "clima": [
-      "Temperate",
-      "Tropical"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Dire Boar (Daeodon)",
-    "cr": "4",
-    "tipo": "animal Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 23,
-      "des": 10,
-      "con": 17,
-      "int": 2,
-      "sab": 13,
-      "car": 8
+  "revisao": [
+    {
+      "campo": "atributos.vigor",
+      "motivo": "Fica.  Os crânios trazem marcas de mordida de briga entre machos, curadas (Foss 2001, via Wikipédia): aguentava ferida. O corpo era de corredor, com os ossos do antebraço fundidos \"como os do bisão\" (Effinger 1998). Igual ao boi e ao cavalo; sem dado de frio, fome ou doença (extinto) que o ponha no 6 dos bovinos selvagens. A corrida não calibra o Vigor (quinta rodada, item 1); ele fica pelo corpo."
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "atributos.influencia",
+      "motivo": "Era 3. Não é espécie social (diretriz 1): social ou solitário não achado, e nada na pesquisa mostra grupo que se comunica; só a briga entre machos pelo domínio (Foss 2001), que é Briga. O 3 de hoje era  pelo tamanho."
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "v3": {
-    "pv": 50,
-    "esquiva": 8,
-    "bloqueio": 6,
-    "defesa": 8,
-    "defesaMental": 8,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 5,
-      "perfuracao": 5
+    {
+      "campo": "habilidades.bloqueio",
+      "motivo": "Etapa 2 (20/10/2026): Decisão 1 de 19/10/2026: Bloqueio só para quem tem o reflexo de aparar um ataque com alguma parte do corpo; quem só morde e foge fica com 0. As protuberâncias da bochecha e do queixo talvez protegessem nas brigas de mordida no rosto : fica 1, como o javali do autor (escudo do ombro), e não 2. Antes:  As protuberâncias da bochecha e do queixo talvez protegessem nas brigas (Foss 2001): recebe o golpe na cara. Como mão nua (D-100)."
     },
-    "couracaNivel": 2,
-    "pesoErguido": 823.34,
-    "carga": {
-      "leve": 75,
-      "media": 150,
-      "pesada": 225,
-      "maxima": 300
+    {
+      "campo": "habilidades.atletismo",
+      "motivo": "Corpo de corredor (Effinger 1998), sem número ."
     },
-    "deslocamento": {
-      "terra": {
-        "batalha": 7,
-        "arranque": 11,
-        "corrida": 15
-      }
+    {
+      "campo": "habilidades.furtividade",
+      "motivo": "Não tinha linha. A do levantamento: nenhum fato ; nem emboscador nem presa que congela, pelo javali. Régua: 1, não se esconde."
+    },
+    {
+      "campo": "habilidades.integridade",
+      "motivo": "pelo javali (4) e pela briga de mordida no rosto entre machos: não recua."
+    },
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Era 0 (sem linha). Régua: 2 é o normal da espécie no próprio meio, e o valor de quem não tem dado . As marcas de briga curadas no crânio (Foss 2001) mostram que aguentava ferida, mas sem medida que passe do normal; o corpo de corredor fala de corrida, e não de Resistência."
+    },
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "os 3 m menos uma cauda fina de cerca de 0,3 m, estimativa da ficha de hoje"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "a do urso-pardo, num corpo mais alto e estreito de corredor; estimativa da ficha de hoje"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Referência: 750 kg, o topo dos entelodontes no resumo de Joeckel 1990 (\"talvez de 150 a 750 kg\"); a Wikipédia (\"Daeodon\") cita o mesmo artigo e Peterson 1909 para \"machos grandes com pelo menos 750 kg\". É a única estimativa publicada achada; o método (osso, volume ou comparação) não está no resumo, e o artigo não foi aberto. Faixa do adulto:  (só a da família inteira, 150 a 750 kg). Os números de 431 a 1.000 kg de sites de divulgação e de loja de miniaturas não têm fonte e não foram usados. Sexos: ; a Wikipédia diz que o dimorfismo \"não pode ser descartado\" pela amostra pequena, sem número. A faixa de massa segue a D-141, com o corte de 35 kg no lugar do de 25 kg (decisão 22 da terceira rodada; `calc.mjs`)"
+    },
+    {
+      "campo": "vontade",
+      "motivo": "D-108: \"de 3 a 6, a maioria perto de 3\". \"4 ou 5 para quem continua ferido\".  pela briga entre machos; um abaixo do javali, que tem o ataque do animal ferido medido (Mayer 2013)."
+    },
+    {
+      "campo": "comportamento.dianteDeGente",
+      "motivo": ""
     }
-  },
-  "notasObservacao": [
-    "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8 pelas âncoras do autor, igual ao boi e ao bisão de massa parecida; sem feito (fóssil). A ficha de hoje tinha 10 pelo encaixe com o boi de então (D-158, D-174).",
-    "influencia: 1 pela diretriz 1 (não é espécie social); o 3 de hoje era extrapolação pelo tamanho, sem dado (D-174).",
-    "empatia: 0, sem dado social; provisória (D-174).",
-    "musculatura: 3 pelo crânio e pela mordida de quebrar osso, como o javali; sem feito (D-174).",
-    "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2, o valor de quem não tem dado; as marcas de briga curadas continuam só pela Wikipédia, citando a tese de Foss 2001 (D-174).",
-    "couraca: nível 2 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois. O nível se sustenta pelo tamanho, e não por parentesco: o entelodonte não é porco (aviso do topo).",
-    "pesoErguido: 1.002 kg pela conta das decisões 14 e 16, provisório; a fórmula está com outra frente. A carga sai da regra sem dado medido (75 kg) (D-160, D-162, D-169).",
-    "velocidade: congelada (decisão 23), 52 km/h, sem velocidade real para conferir (D-170).",
-    "fonte: o comprimento (3 m, sem cauda 2,70) e a largura (0,80) continuam só pela divulgação e pela estimativa (D-147, D-174).",
-    "massa: 750 kg é o topo da família no resumo de Joeckel 1990, sem método; falta abrir o artigo (e Peterson 1909) para saber como foi estimada, e não há estimativa por osso ou por volume achada (D-174).",
-    "vigor, integridade, vontade, bloqueio: [extrapolação] pelo javali e pela briga entre machos de Foss 2001; o daeodon não é suíno, e o javali é vizinho de comportamento, não de parentesco (D-174).",
-    "ataques.mordida: Pesada por ser \"mordida que agarra e torce\" de crânio de 90 cm; N0 sem força medida. Se aparecer força de mordida, a Perfuração se refaz (D-174).",
-    "atletismo: 1 sem fonte, pelo corpo de corredor (D-174)."
   ]
 }

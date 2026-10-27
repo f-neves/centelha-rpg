@@ -1,13 +1,13 @@
 {
  "fonte": {
   "pasta": "tmp/arquiteto/bestiario/fichas-v3",
-  "data": "2026-10-26",
+  "data": "2026-10-27",
   "fichas": 302,
   "gerador": "scripts/gen-criaturas-esperado.mjs"
  },
  "criaturas": {
   "aasimar": {
-   "sha256": "3784243eecb19fedeb839e264d60370874e3ad6e314584760ba05ecdb8a42ca9",
+   "sha256": "1feab1a576d0ec262dca91348f364446944d6e43a3f4ea59b35998e387b88e64",
    "entrada": {
     "categoria": "outsider",
     "centelha": 1,
@@ -92,15 +92,10 @@
       "jogada": 6
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Sangue celestial: texto de trabalho no texto de jogo (\"C-039\"; manual 7.5)",
-    "Manobras, Sangue celestial: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
-    "Sentidos, visão no escuro: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)"
-   ]
+   }
   },
   "aboleth": {
-   "sha256": "51ba2cb5bc04fb051481944aed60a9f49534034af84791fe474968d547601651",
+   "sha256": "51137ff979b4979bef0386e9e541f28309eb35a2b487091f0dd26d4e05677972",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 5,
@@ -194,13 +189,10 @@
       "jogada": 25
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Tentáculos múltiplos: P7, texto copia a regra da Rajada; espera lote de ajuste"
-   ]
+   }
   },
   "aguia-gigante": {
-   "sha256": "92c28aff31b99a452e6aacca21826a29da84792e6affe9794ebb230fe9046206",
+   "sha256": "ea51a88584b134c49d4b705c6597e37100bba989cd109f539812d85b16425dc5",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -351,7 +343,7 @@
    }
   },
   "aguia-real": {
-   "sha256": "3897341259d15eacfc1ad5ce74491ad322107a2dab7a962124464bd0ff32eb98",
+   "sha256": "22dcaf7c6265ccb4ef7f0fe842ccbe975003c8db31a78c6e72f3ee874e97d38a",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -475,16 +467,10 @@
       "danoMedio": 3.5
      }
     ]
-   },
-   "paradas": [
-    "Especialidades: a Habilidade \"A \"Resistência\" não está no catálogo (D-231)",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Garras (talões) · com regra no livro.\"",
-    "Sentidos: linha fora do formato: \"Gira a cabeça cerca de 270° (San Diego Zoo).\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "alce": {
-   "sha256": "2eba21d4a12006b29223944d944c77068d987ca0538be05ba9b4185250133207",
+   "sha256": "d2bd5aa532f341773221291ffa6b3c6b84774bab6d17cd44b98f08169f7a03a9",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -589,7 +575,7 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 2
      }
     ]
    },
@@ -625,14 +611,10 @@
       "danoMedio": 10.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · coice e pisão · regra do livro.\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "ankheg": {
-   "sha256": "0d1bc50b750d12154bfa915776244ffd09a580fdfc7ecc7d424f3534253f4f05",
+   "sha256": "858d9e2a8ef85f349eef07fd1fe9987c0a43bc94db4c59ad8b57ce86e1cacadb",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 2,
@@ -752,7 +734,7 @@
    }
   },
   "anquilossauro": {
-   "sha256": "9a4dc1c1d2651dadcf5a09be4140eeef40d2482a22e5998b31f766cdc251f62e",
+   "sha256": "db1d529654d99faa3973daf84df90b40d6622a867d32f8fff2b0714195a723a2",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -849,14 +831,10 @@
       "danoMedio": 29
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Clava da cauda · com regra no livro. Coombs 1979 propôs que o golpe q\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "aranha-das-fases": {
-   "sha256": "c7f0fae5488201b53fbd2de76a28c38d711f3e1c8e0b0808e7a6ad9b606499e9",
+   "sha256": "68742b926cb3e5a9636a8dae2a5b58291b8f51199ed3e0475e2eb81d03a50a7d",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -954,7 +932,7 @@
    }
   },
   "aranha-gigante": {
-   "sha256": "25a0a665c68dbb1c7443fd318bf2869818e8c193971d02d989c299fbb09bcc00",
+   "sha256": "481a1c132c970b3452dde6d7795eeeddcbe3e7e6a5177d2b0ec345c47af982ec",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -1049,15 +1027,10 @@
       "danoMedio": 6.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · patas da frente · com regra no livro.\"",
-    "Manobras, teia: o campo \"fieiras\" não é ataque, poder natural nem Técnica",
-    "Manobras, teia: regra da ficha sem os oito campos (falta Ativação, Duração, Alcance, Área, Efeito, Dano, Resistência, Limite de uso)"
-   ]
+   }
   },
   "arqueiro": {
-   "sha256": "817f7f2af261867c65f4d0b94e6f11966e520633bc3b0c103173ad1a88a62c01",
+   "sha256": "befe9b3aed02af880306d8798937ae84779522d6c1089fd69eca034584c43470",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -1135,7 +1108,7 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 1
      }
     ]
    },
@@ -1182,7 +1155,7 @@
    }
   },
   "assassino-das-sombras": {
-   "sha256": "0343c0c942254c0f206c7846107930fc927cead641df5bb8d3747ac1e63981b9",
+   "sha256": "5ad5ec4bc6f191724266b4c44c609f8ed0be98a4b7b31c997af0321d4053b3f7",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 3,
@@ -1281,10 +1254,7 @@
       "jogada": 15
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Pisar Leve: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "assombracao": {
    "sha256": "a48c296487a57d38b85dd5194cbc8339a4d671be1006171f64d17602f8a828a5",
@@ -1385,7 +1355,7 @@
    }
   },
   "auroque": {
-   "sha256": "7f1b491d723d5d6d52c004289f0348a9d6b8cd2bf7d6025faee69940f5d73af6",
+   "sha256": "3d365fa8f85431cea130d3f080f71447ff633f48407da0001bbf0441e227e6b4",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -1456,7 +1426,7 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 1
      },
      {
       "nome": "Investida (marrada)",
@@ -1504,13 +1474,7 @@
       "danoMedio": 21
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Investida · com regra no livro\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"empurrar · Investida · com regra no livro\"",
-    "Sentidos: linha fora do formato: \"nada achado . A visão de 300° fica pela Especialidade natura\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "babau": {
    "sha256": "38cab44bf4c9e7ac6b6084e98e982a84ffadfde89a91e5bc13b17e85373ec05a",
@@ -1782,7 +1746,7 @@
    }
   },
   "bandido-de-estrada": {
-   "sha256": "e1b7cd1d2258a92832492d6ea7a3e47dbe43fa065fa80572e733cb464a70aec1",
+   "sha256": "8232aab03ad340896b77275dd5cf1a1adadec0ec60c59b7baacb5fa05abde278",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -1881,10 +1845,7 @@
       "jogada": 5
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Emboscada: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "barghest-maior": {
    "sha256": "8bdbb5a7c7996aa59abb405c3a6d6d6d8a83cf5c1f26e777bd67608fec7f9765",
@@ -2241,7 +2202,7 @@
    }
   },
   "basilisco": {
-   "sha256": "661e94837e0c6517f063ef666da50b30270c2bd734b561a688559b6865ad6de8",
+   "sha256": "8490709833a3265118be9ade9f0f082ae659d28eefba7b8e92b388f9c8b7159a",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -2460,7 +2421,7 @@
    }
   },
   "behir": {
-   "sha256": "abf9eca7e3b105dc6b993b3ec6f0538b7ce78373ae4aa51381f579ba5f7e622b",
+   "sha256": "11484b1d93f9d96c6af3c36a9b42e37a1da74d24d9c076f9eed0bf2c0f37db71",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -2583,7 +2544,7 @@
    }
   },
   "besouro-de-fogo": {
-   "sha256": "e09b1f787d2d841f9d4b99f1a9b9c9510219da57dfc79e435ebe877f4614b65b",
+   "sha256": "79028cf5fadb03bd2c70840aaa5a8e83cb34cae78d94967064b62a9b45892116",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -2684,14 +2645,10 @@
       "danoMedio": 2.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"fingir-se de morto: **[sem dado]** no cucujo; não entra.\"",
-    "Sentidos: linha fora do formato: \"Antenas serreadas (Wikipédia). Nenhum sentido acima do human\""
-   ]
+   }
   },
   "besouro-veado-gigante": {
-   "sha256": "8de2c7afa008e3fa323af3a3a9cba5ce0144183e092026e9243e81586ab54984",
+   "sha256": "67437d4b78342774fd9aba04e7a3d26faecb6614bbc244e0013bb7adda7ace9a",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -2760,7 +2717,7 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 2,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 1
      }
     ]
    },
@@ -2786,16 +2743,10 @@
       "danoMedio": 7.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Mandíbulas · com regra no livro.\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Mandíbulas · com regra no livro: ergue o rival e o joga para trás (Go\"",
-    "Manobras, atropelar: o campo \"corpo\" não é ataque, poder natural nem Técnica",
-    "Sentidos: linha fora do formato: \"nada achado com número ; o acasalamento é guiado por feromôn\""
-   ]
+   }
   },
   "besta-deslocadora": {
-   "sha256": "fc72802da1c2314b0aade4335391f49f2f230cd4628d3613af841be7441e8ab7",
+   "sha256": "a11ac7a191e9fbbf9d01a385a287e21541acd219955b4b04ac0f7ba9d9422cae",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 2,
@@ -2917,7 +2868,7 @@
    }
   },
   "bisao": {
-   "sha256": "eb005242c57454651619be6f8127e498ebcf97cd6226951a33319363396d8ee9",
+   "sha256": "df865523ce8b96d85de5355068cf3ae39564c2efa030d0564e451133b7ca61b5",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -2988,7 +2939,7 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 1
      },
      {
       "nome": "Investida (marrada)",
@@ -3036,15 +2987,10 @@
       "danoMedio": 21
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Investida · com regra no livro\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"empurrar · Investida · com regra no livro\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "boca-tagarela": {
-   "sha256": "dc5ce9bf3be54202d26797a1dd9758f2c6aef650bfcd405ea70e6804c5132e79",
+   "sha256": "a7deca9c638c88214d06cb47dfe38dc0ab6ab3544b6392c098d321d8d566c707",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 4,
@@ -3076,6 +3022,7 @@
     "vontade": 9,
     "corpo": {
      "postura": "amorfa; amontoada no chão, ou espalhada para engolir",
+     "apoio": "outro",
      "altura": 0.24,
      "largura": 0.8,
      "profundidade": null,
@@ -3140,12 +3087,7 @@
       "jogada": 18
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"massa amorfa sem membros fixos, olhos e bocas por toda a superfície amorfa; amon\")",
-    "Manobras, muitas bocas: P7, texto copia a regra da Rajada; espera lote de ajuste",
-    "Sentidos: linha fora do formato: \"visão em todas as direções e no escuro, pelos olhos espalhad\""
-   ]
+   }
   },
   "bodak": {
    "sha256": "42675837bb269977edb71b58e82b2613dc66c1bdf942d4c67bde94e97fa1e9c7",
@@ -3240,7 +3182,7 @@
    }
   },
   "boggard": {
-   "sha256": "0daadc299549f70d4298a3c7e915fcf68c1b653d20aa38e3f869d28f12ee711d",
+   "sha256": "e5280beb9339aed96d628835861a85e33ce4e630159f1a4ea369b8281ab5258b",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 2,
@@ -3327,7 +3269,7 @@
    }
   },
   "boi": {
-   "sha256": "206d838f8d492c245de02ce58e5f8dd36b99cd59b0b8df012c22f62d9c70bc7c",
+   "sha256": "e116803d9c4e080aa77ddb42068753af0ede5af06ef32da936390f6388b37b30",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -3398,7 +3340,7 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 1
      },
      {
       "nome": "Investida (marrada)",
@@ -3446,15 +3388,10 @@
       "danoMedio": 21
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Investida · com regra no livro\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"empurrar · Investida · com regra no livro\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "bralani": {
-   "sha256": "ee1cb17b0fd5ae042cc194c64c854831031391f5c318afd3e7fb922154a17d12",
+   "sha256": "c30c2cd760c386e0f503ce4e7d05bc2b53c60f31ab2e3cc0309690f4cfe99113",
    "entrada": {
     "categoria": "outsider",
     "centelha": 4,
@@ -3478,7 +3415,8 @@
      "prontidao": 2,
      "integridade": 4,
      "persuasao": 2,
-     "sobrevivencia": 2
+     "sobrevivencia": 2,
+     "sociabilidade": 1
     },
     "habilidadesSec": {
      "voo": 4,
@@ -3570,14 +3508,10 @@
       "jogada": 14
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Pele ao vento: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
-    "Variantes, forma élfica: Voo ilegível"
-   ]
+   }
   },
   "braquiossauro": {
-   "sha256": "c55f89f50b9de8753787021a71caf7c04d24b63da25dfb8bbe0dd39297a5b309",
+   "sha256": "9ee70e617de78f6e6af4f3913a077fbc340d60db7b991e0704c89109a44b9f56",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -3674,16 +3608,10 @@
       "danoMedio": 35
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"empurrar · pisão · regra no livro\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"A disputa de machos em duas patas é **[extrapolação, Hallett e Wedel 2016]**, e \"",
-    "Sentidos: linha fora do formato: \"Narina na frente do focinho (Witmer 2001) ou no alto da cabe\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "bruto": {
-   "sha256": "2d7d68cc4d614b427c21ec3ec72340de70931cb9a1153ad0f884bc3f533322ae",
+   "sha256": "a1ca1a7fc51e77c9a4e62829b6c2d9623b6d27ec6af1d55d2e0a2a7b957a8d95",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -3782,7 +3710,7 @@
    }
   },
   "bruxa-do-mar": {
-   "sha256": "00e25d77fe43cc3612c44f950fc9aa5c333e683a3b1f955cefd7123bb1d40053",
+   "sha256": "c0b31fcb636c1876aa06460642339bd78518530ac0c65f09b94f95f3e54a55eb",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -3999,7 +3927,7 @@
    }
   },
   "bruxa-verde": {
-   "sha256": "e4ad5ed81756a04734b7dc4af0d7250708c87786d7a66242aa23f629d33c6b84",
+   "sha256": "b35f22cb3dc05cd9abf9a9ab8688003f3b3637ce26faf01dd2d85d561ee7cbe7",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 4,
@@ -4095,7 +4023,7 @@
    }
   },
   "bugbear": {
-   "sha256": "e082757ae9fb922ed1c3d9bf39482368707499afe7f739d2785ce7e30b83d85e",
+   "sha256": "08fd9f12e896bb3f376d48fef066e46971f53ba951768fa24cce0f7b2dd5656d",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -4179,13 +4107,10 @@
       "jogada": 8
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Furtividade surpreendente: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "bulette": {
-   "sha256": "7c9f433f297f3cc7cbab4b5022c93f5aca08257113ad9bed7e5d2cc328e57f9e",
+   "sha256": "73647850d4e9583d90256205e12074dae4a67fa14fa72f18ce6691e8c8025e27",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -4307,7 +4232,7 @@
    }
   },
   "buscador": {
-   "sha256": "1ba0d075febe17f7b39d3a4964580464a04307f12dd996647ccc6da221bc606b",
+   "sha256": "b9920d6dc1693fbece4812159e7d14a9465f595ecbcbc50fb5a496169b3941a9",
    "entrada": {
     "categoria": "construto",
     "centelha": 0,
@@ -4381,7 +4306,7 @@
     "bloqueio": 10,
     "energia": 7,
     "defesaMental": 8,
-    "defesaSocial": 2,
+    "defesaSocial": 8,
     "iniciativa": 2,
     "mana": null,
     "absorcao": {
@@ -4400,7 +4325,7 @@
    }
   },
   "cachorro-de-guarda": {
-   "sha256": "233d0c04df3202e7907bae3c5f1ad98fd95650d8d4fc201ec5777cd752e2414c",
+   "sha256": "6bfceba71874b9705c4cf704a36620c81f13f51f0f1539b3382293f3f273e639",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -4497,15 +4422,10 @@
       "danoMedio": 6.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Mordida, ou o peso do corpo em carga · regra do livro (`combate.md` l\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Mordida · regra do livro.\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "cachorro": {
-   "sha256": "793c014bad0b4db1180a0e16d836346596e5897a461676da682c06b2cff3ffce",
+   "sha256": "bb850be01de03b6031b4bb04e0a2ea3101760294d4af1efd0b40a2e82707de44",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -4602,14 +4522,7 @@
       "danoMedio": 3.5
      }
     ]
-   },
-   "paradas": [
-    "Especialidade fora do formato: \"- Sem Resistência (frio): a pelagem dupla com subpelo é do husky e do \"",
-    "Especialidades: a Habilidade \"A Resistência\" não está no catálogo (D-231)",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Mordida (segura e sacode) · regra do livro (`combate.md` l.225-251).\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Mordida (na perna, em grupo) · regra do livro. Vale para a matilha de\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "campeao-esqueletico": {
    "sha256": "648844ad9e7ab2a84260398bcff1f3439ef1436b00b38fa8b623da7c2e6ea2ee",
@@ -4718,7 +4631,7 @@
    }
   },
   "campeao": {
-   "sha256": "46c1d41c04831769567fa4e9fa56338ea75cc9a9b109fa1acf8d6487da1076f8",
+   "sha256": "fb2d7c8c1b294696f676809db6a28ba89cdb0ce81daf082165db8f47a7e54458",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 3,
@@ -4839,13 +4752,10 @@
       "jogada": 16
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Golpe duplo: P7, texto copia a regra da Rajada; espera lote de ajuste"
-   ]
+   }
   },
   "campones-assustado": {
-   "sha256": "674221317651b1759e2fe58321d62b3c355ab5840dfae93ac68fbd1effaea946",
+   "sha256": "93c9a9bcc2b4f54b726b8477bb3c971e5a8ce1ea18c1e362682b3ea67f4d0cb2",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -4933,7 +4843,7 @@
    }
   },
   "cao-de-guerra-nessiano": {
-   "sha256": "28cac6aab8580c4688aba4f81c27dbaaec896eb0926621ce5314c666fc1090cc",
+   "sha256": "cf8c350c82a97f2ca851714d631940b3e14528686627e9d3c7fd44d26fb685ff",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -5055,7 +4965,7 @@
    }
   },
   "cao-infernal": {
-   "sha256": "e510bee06e00ca1b8be95d2394ed25c30e1f313f1886dc3cb1babcfc54c7dec4",
+   "sha256": "72dfe1860f2df6ba62782dedd849bf4c11f74117f5e68e5a4f96b271f3bedf25",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -5177,7 +5087,7 @@
    }
   },
   "cao-yeth": {
-   "sha256": "5ed27754a408d03df23000a9cd54b0dc1949a500e5282f81f58fa56738fc99ca",
+   "sha256": "6438bef9e2567d8840b8b9b4fee2f858051c3ba2dc1ea4b446630d5d17687f76",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -5283,7 +5193,7 @@
    }
   },
   "capa-sombria": {
-   "sha256": "bdf5ea1011868b14b39617f1d743c7297328d91db6d7eaff2a97f80a979c3625",
+   "sha256": "26f35bb950a598225ef5e7017b39d12455c51738f598dce8d957b1f0a222ff45",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 4,
@@ -5399,13 +5309,10 @@
       "jogada": 18
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Camuflagem: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "capitao-da-guarda": {
-   "sha256": "5d441783d7e87ca04486a4e6b6ca4aa6ee8ce7ae609c63b3849de8973d0f9db5",
+   "sha256": "32719b4ccf8dc7f9ac63b79048bbe73d99996d45b58a1a3ac735b21a11c86156",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -5512,7 +5419,7 @@
    }
   },
   "caranguejo-gigante": {
-   "sha256": "4ce7e06da3ad14f5266060a578d6078ffd9eb2c27c05cfcd4d8870f82aedc034",
+   "sha256": "d1aadb4cf19c22eea37408fe2dab69caace653aaa4a2833ea6dbe1751321579a",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -5549,6 +5456,7 @@
     "vontade": 3,
     "corpo": {
      "postura": "patas dos lados, corpo baixo e largo; anda de lado",
+     "apoio": "outro",
      "altura": 0.41,
      "largura": 1.03,
      "profundidade": null,
@@ -5580,7 +5488,7 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 1
      }
     ]
    },
@@ -5606,15 +5514,10 @@
       "danoMedio": 8.5
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"artrópode (provisória, D-175) patas dos lados, corpo baixo e largo; anda de lado\")",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Pinça · com regra no livro. O \"Constrição\" da ficha atual é este Agarr\"",
-    "Sentidos: linha fora do formato: \"nada achado com número .\""
-   ]
+   }
   },
   "carcaju-atroz": {
-   "sha256": "a694966e0f23fd3ffc07eaee9b7185752a5a023f5a45058a43f2b2fc3c2ba363",
+   "sha256": "6307c63d75ca67b14a9678d671247a291e51643de91e845534167843a2a60d0e",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -5736,7 +5639,7 @@
    }
   },
   "carcaju": {
-   "sha256": "a8d34e83b3b1278833f825f2cac9fea9eea36c777acf65c21a6eecedb20f25cc",
+   "sha256": "136d1684278a184b2c5444778f767c91bac8a182536adf8ce7dd3627333cccc9",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -5979,7 +5882,7 @@
    }
   },
   "cavaleiro-de-elite": {
-   "sha256": "586266d8b41b617cd755edca4d8e82218e8d1ba00e9a7ecc4d5a4881239f89be",
+   "sha256": "20e08b6695265595af9cf9404f2320014c1593ac7bef8f4888dab3f9ffe6fd9b",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -6076,14 +5979,10 @@
       "jogada": 10
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Pele Curtida: P7, texto copia o efeito da Técnica; espera lote de ajuste",
-    "Manobras, Aguentar o Tranco: P7, texto copia o efeito da Técnica; espera lote de ajuste"
-   ]
+   }
   },
   "cavalo": {
-   "sha256": "c12ff197883405ebaf20a649d6782068dc4b7a9a897e3cdbcd23d7ae877b6997",
+   "sha256": "bf099dbd0e7dc69ce3ae56408a3e807acc6c01bd805dee3beeece7f835714cc1",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -6203,13 +6102,10 @@
       "danoMedio": 8.5
      }
     ]
-   },
-   "paradas": [
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "centauro": {
-   "sha256": "7139d2b5bb2c8de61cb47d650c1d0350ed89ebe2fda05776a67e7bd45695b235",
+   "sha256": "3b784b87058526e752d763475216c944c60b44a503e149cd023d4245cb7b8a81",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -6234,7 +6130,8 @@
      "prontidao": 2,
      "integridade": 3,
      "sobrevivencia": 3,
-     "resistencia": 3
+     "resistencia": 3,
+     "sociabilidade": 1
     },
     "habilidadesSec": {
      "musculatura": 2
@@ -6331,13 +6228,10 @@
       "jogada": 14
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Ataque duplo: o campo \"Espada longa e Coice\" não é ataque, poder natural nem Técnica"
-   ]
+   }
   },
   "centopeia-gigante": {
-   "sha256": "a33500c86dc890f6e3eb2ba3be36d3589bdd1b86b6468c22ca515c67111e1c5f",
+   "sha256": "cce4fd40945baf4a886ff775461654b9ea359ed5e16b3e1365c7b53a6a3038f8",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -6374,6 +6268,7 @@
     "vontade": 3,
     "corpo": {
      "postura": "muitas patas, corpo baixo e comprido",
+     "apoio": "outro",
      "altura": 0.11,
      "largura": 0.18,
      "profundidade": null,
@@ -6430,14 +6325,10 @@
       "danoMedio": 5.5
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"artrópode (provisória, D-175) muitas patas, corpo baixo e comprido\")",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · patas da frente e o corpo que enrola · com regra no livro. Segura com \""
-   ]
+   }
   },
   "chuul": {
-   "sha256": "8cb12d8a7dc13e58c1c88c156210d555091b385c23d42c25ba506a9373642660",
+   "sha256": "cb676c2165aa65bceea63f8824668cb80fc836efb17d33dee48f41fe3d325ab1",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 4,
@@ -6675,7 +6566,7 @@
    }
   },
   "cobra-de-ferro": {
-   "sha256": "7516b2a011302a131ebaf657ddc2428d7117b53e3d13a4fe9cc2b6526e0944da",
+   "sha256": "fab6dca2f7d0a79e25d5922e52d7fd1cab31a0da855a24a23a9a08a1edd81739",
    "entrada": {
     "categoria": "construto",
     "centelha": 0,
@@ -6768,7 +6659,7 @@
    }
   },
   "cocatriz": {
-   "sha256": "37d3587c24ec3f9b3031638a7cfd688ccf71dc34eb6befe46987ce1fbc2b99ef",
+   "sha256": "a0c3989f85339a604ada4c4759a939c8c9c010e285126960ca2445da1aabf552",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 2,
@@ -6866,7 +6757,7 @@
    }
   },
   "comandante": {
-   "sha256": "56557348bd35ada0f885edba108f4accc94f5f40e01248351b4487e63e1ef17a",
+   "sha256": "c73451ac67ae9e76195bd8479219f56423bfa5cb8ec82154cec4c28b1edb9d53",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -6968,7 +6859,7 @@
    }
   },
   "corujurso": {
-   "sha256": "c8aea3df53e84492850597c1495324fe6784be6c2e383c3cb529c3e53305d7d3",
+   "sha256": "7ed8f3d0ecafe2564eec0ac439686b0db9c9be8611c035f0aad711261263cc3f",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 0,
@@ -7093,7 +6984,7 @@
    }
   },
   "corvo": {
-   "sha256": "c60430b9801735768f41b1bb2ad6620d787aab01f8d3cc5c4088e48ff6c0a8ce",
+   "sha256": "166f4774fef6d7936f24e8f2014b7cd72ae2d1e2dba22f6eefcb87e2b988ca14",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -7191,13 +7082,10 @@
       "danoMedio": 1.5
      }
     ]
-   },
-   "paradas": [
-    "Sentidos: linha fora do formato: \"Imita sons, até a fala humana (National Zoo). Texto para o M\""
-   ]
+   }
   },
   "couatl": {
-   "sha256": "b1d0cb02a59bac6034c581405f68ebb4b1eda5bdc035453d5741d3408a70020e",
+   "sha256": "ba0c33f3e077db4e62862de3a79c644d6d2c5490b4c502a1214ebd3a9640fb15",
    "entrada": {
     "categoria": "outsider",
     "centelha": 5,
@@ -7304,13 +7192,10 @@
       "jogada": 21
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"Feitiços · Artes do livro: Conjuração até o 5 (Portal), Proteção até o 3 (Barrei\""
-   ]
+   }
   },
   "crocodilo-do-nilo-femea": {
-   "sha256": "74d4a62cd836b0dfdca88c59b9cb51d5134144796e1369792bc45ea1fc19dcda",
+   "sha256": "5378811d4d3e93fdfc11ea6c9b283300747a9c4c2fb0dad73084a2a1c3304894",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -7348,6 +7233,7 @@
     "vontade": 3,
     "corpo": {
      "postura": "corpo baixo",
+     "apoio": "quadrupede",
      "altura": 0.42,
      "largura": 0.53,
      "profundidade": null,
@@ -7406,15 +7292,10 @@
       "danoMedio": 13
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"réptil de corpo baixo corpo baixo\")",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · mordida · regra do livro: 2 × Força = **12** por manutenção (era 18).\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "crocodilo-do-nilo": {
-   "sha256": "85bf6cd8cd034af2d09daa072c8e0f978a9a5e5ecbbfd4ce7614f2beb3fc1f2b",
+   "sha256": "a3c897ccecba3b877fbdc07b3597b17f11d1f458eb92436f0dd33bf0639e6fcd",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -7452,6 +7333,7 @@
     "vontade": 3,
     "corpo": {
      "postura": "corpo baixo",
+     "apoio": "quadrupede",
      "altura": 0.5,
      "largura": 0.64,
      "profundidade": null,
@@ -7511,15 +7393,10 @@
       "danoMedio": 14
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"réptil de corpo baixo corpo baixo\")",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · mordida · regra do livro: 2 × Força = **14** ◆ por manutenção (era 18)\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "cubo-gelatinoso": {
-   "sha256": "83852de17020a924a1a15da8bdc6f0caf11ed77ea7cb552536f58d2d0ec126e5",
+   "sha256": "8abd24fa4b2d4b5886bb11ecd7f9dfbf9a74c9c547616d16fc549b0a12f8bbe1",
    "entrada": {
     "categoria": "limo",
     "centelha": 1,
@@ -7549,6 +7426,7 @@
     "vontade": 3,
     "corpo": {
      "postura": "cubo que desliza",
+     "apoio": "outro",
      "altura": 3,
      "largura": 3,
      "profundidade": null,
@@ -7607,14 +7485,10 @@
       "jogada": 9
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"massa amorfa em forma de cubo, sem órgãos à vista; ossos e moedas boiando dentro\")",
-    "Sentidos: linha fora do formato: \"percebe pelo toque e pela vibração o que encosta nele ou pas\""
-   ]
+   }
   },
   "cultista": {
-   "sha256": "afb80ee512d85f04dbdbd5759a20703391f628ea81ad630e8652d25a8d212946",
+   "sha256": "d663b914e3b3e3988c6e9c6dc157edc20d67b466849f7083a644db5dbdf9ec0d",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -7712,7 +7586,7 @@
    }
   },
   "daeodon": {
-   "sha256": "45cad657d335ed5baec880a49eb055edef0c31c5a7dbc47a694f747d02dedc73",
+   "sha256": "618af0e3b08d155dd5fed891c4b41c5f7504662b7b490a71c4eeb10c3f925fab",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -7809,14 +7683,10 @@
       "danoMedio": 14
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Mordida (pela perna) · regra do livro **[extrapolação]**.\"",
-    "Sentidos: linha fora do formato: \"Nenhum número achado .\""
-   ]
+   }
   },
   "deinonico": {
-   "sha256": "8402aae6baea6d938458524e1ffacefb13e4184868ff9f019d169c1453a1f77d",
+   "sha256": "b5b5f3b208daf1086dd32e50f2c14cb6303643bc060afe74411ea9236f1787dd",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -7956,13 +7826,10 @@
       "danoMedio": 5.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · garras da mão (puxam a presa) e garra do pé (prende no chão) · regra d\""
-   ]
+   }
   },
   "derro": {
-   "sha256": "e3439adf7362d62113a5ca542e678b32f31c9da1bc1a7d60ac98d3d2b6a6e6a2",
+   "sha256": "28751870c3303fc585acd213430173b80a8c92ab944122eed91cdc5a06f02955",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 2,
@@ -8051,7 +7918,7 @@
    }
   },
   "deva-astral": {
-   "sha256": "41834c35e4f2ed84385814d0b8673fabac8a432dcf81ef4ff4ada8a643cce73a",
+   "sha256": "b3f827314cdd05659035e26871fdf103cfc451aa3005b8065be19ea38970cf00",
    "entrada": {
     "categoria": "celestial",
     "centelha": 6,
@@ -8149,7 +8016,7 @@
    }
   },
   "devorador-de-intelecto": {
-   "sha256": "b39ef276f8ad41c125663e49c43b65b2bf3b513f976ece6bb86de2be0be30cc9",
+   "sha256": "25157c072d2d7a447ba28257829c11cc162579898aed5f812d360c972d77ccfe",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 4,
@@ -8243,15 +8110,10 @@
       "jogada": 20
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Golpe psíquico: texto de trabalho no texto de jogo (\"C-041\"; manual 7.5)",
-    "Sentidos, sentido cego: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Sentidos, detecção mágica: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)"
-   ]
+   }
   },
   "diabo-barbado": {
-   "sha256": "0bb554406d9520619e219e321e90d4fe97e05136db15c9adfea03fce41fdb510",
+   "sha256": "b2cbac7eae4b97bf901291e7073d379f1a5ba3208ef77d77b06ea9c43413d6d4",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -8299,7 +8161,7 @@
     "equipamento": {
      "arsenal": [
       {
-       "ref": "a:alabarda"
+       "ref": "a:glaive-serrilhada"
       }
      ],
      "armaduras": []
@@ -8307,7 +8169,7 @@
     "ataques": [
      {
       "nome": "Glaive serrilhada",
-      "arma": "alabarda",
+      "arma": "glaive-serrilhada",
       "habilidade": "armas"
      },
      {
@@ -8363,7 +8225,7 @@
    }
   },
   "diabo-chifrudo": {
-   "sha256": "ef08436a4cb950c5084259d62c6666baa704aebc226bf81adf436f0a425caa01",
+   "sha256": "d9bd8c9cbf55a34cfab2d2eff70cb1b65df0aac2b4b0552dab3857ba13b61789",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 6,
@@ -8640,7 +8502,7 @@
    }
   },
   "diabo-do-fosso-pit-fiend": {
-   "sha256": "b5584a5439790baf03fcaaa8094f2c0a20de3045a925cf1182f3c5a7df3a5a4a",
+   "sha256": "8f36bab5cd1cc42fe9feeecb3ef730dbe7d8251dd7cb09eba151f4069bcd3591",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 9,
@@ -9013,7 +8875,7 @@
    }
   },
   "diabrete-imp": {
-   "sha256": "440dd2defd189920de6712b3c377d1ea5e6286c0da5521eaa7fbfc75ef1264f5",
+   "sha256": "c7bdac1239ef6743e15a0d33e3b1cabf1c37899ec5a3fd539efd8ea973a31ce8",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -9213,7 +9075,7 @@
    }
   },
   "doninha": {
-   "sha256": "f7c4ee85401eaad84b6f0e9330af7816645aaf77c1e93b58b49a0a0c2c2ba4ba",
+   "sha256": "53f1085b6dcccaed44d7f43ef446e8f9514addfdaac7d60acd4f7347c69243b2",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -9313,7 +9175,7 @@
    }
   },
   "doppelganger": {
-   "sha256": "b5a0aebcf4e1f219228ae4a3370eaa92898f868c590c8cc40a35a4be3261ce69",
+   "sha256": "c9e6a525966fcdbe0076572144ea88d509ac330b4d43ae2395400a430bcbf0d7",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 2,
@@ -9400,15 +9262,10 @@
       "jogada": 10
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Reflexos ágeis: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
-    "Variantes, disfarce: campo \"Altura e Massa\" que o conversor não conhece",
-    "Variantes, disfarce: Equipamento fora do formato"
-   ]
+   }
   },
   "dracolisk": {
-   "sha256": "b2ec9a8632f2723ba1a97843dddd5ae45d1e20d1209adae140f6e2b7bc570a5f",
+   "sha256": "e143b5c4acefa5a3225edfc0f227a96b84bc70bb75cd52f385272863b577f8f7",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
@@ -9557,7 +9414,7 @@
    }
   },
   "dragao-azul-adulto": {
-   "sha256": "71b788f36f63812e7f0b4448ad83a913c132095e207f8dd27da0ea5603f1fbe0",
+   "sha256": "a380188f28e8007f2260db423a919b53b716c536835fa2505414d162bd661779",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -9737,7 +9594,7 @@
    }
   },
   "dragao-branco-jovem": {
-   "sha256": "101584105fb9f31392dc2df743d2873889f1847bbf030160aa3dcdcc04c66570",
+   "sha256": "a051c339a8338268436c513cae54663d8d100597ffcf366463efa7c47290147a",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
@@ -9893,7 +9750,7 @@
    }
   },
   "dragao-dourado-adulto": {
-   "sha256": "9bee91fe363ffc68fc035deb457aab9e7d3a491b19dcdc0524012a6ee1868435",
+   "sha256": "2fd0f8e945e844665d8c8b0ceb7c89c767ce0913023b7b75a560a89828be1545",
    "entrada": {
     "categoria": "dragao",
     "centelha": 7,
@@ -10055,7 +9912,7 @@
    }
   },
   "dragao-verde-adulto": {
-   "sha256": "948ac77920470b892addf5cc55e81d4a05263362058c7e288d8b42666ec548a0",
+   "sha256": "11befbd8fae60694f7bac71f294fa031c72fe8e74fabd225fa9021d15bcf37bf",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -10214,7 +10071,7 @@
    }
   },
   "dragao-vermelho-adulto": {
-   "sha256": "9c61f96e56dd375b655db86cb8f531c70022ef58a0e94d199f2dec694e104f0e",
+   "sha256": "f80314a1a4971664550e0fbb08a7797cfb789d6db383b6d4ca4ff2cf7d326222",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -10397,7 +10254,7 @@
    }
   },
   "dragao-vermelho-anciao": {
-   "sha256": "d3c49d144ac3b49f04dc0b09c333081ba3bb268cd0030cc3b52339f9371f64a8",
+   "sha256": "0c15fe99c8480d4175afc4361a12b9c17aaff0b28df9faa5593f54d49799b36f",
    "entrada": {
     "categoria": "dragao",
     "centelha": 7,
@@ -10581,7 +10438,7 @@
    }
   },
   "dragao-vermelho-jovem": {
-   "sha256": "db69c4608c5379bfbf2e1ced1d1df6169d711c18963ac0e18702fc474ef4caf2",
+   "sha256": "c86110db52e9e7f1307865d018710d1317ac22346855aebcb7ba240b18eb3db3",
    "entrada": {
     "categoria": "dragao",
     "centelha": 5,
@@ -10738,7 +10595,7 @@
    }
   },
   "dretch": {
-   "sha256": "beebafef5cb5b4d1adebc3dea8881b2084c104ce0d16219a97f46c35a0867831",
+   "sha256": "7b07470f7c98f5b62795f09fb0ab4b051f246ea2a098eba04f2efa816dc9349d",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -10856,7 +10713,7 @@
    }
   },
   "drider": {
-   "sha256": "64e4cf3e4023e2ab5bb706427dc9895c6931db0b99935ef8186e06288e2cbcca",
+   "sha256": "4de79e10b578ea392beadb324c3d29343b427d8013459de44518054e39bafd40",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 4,
@@ -10948,14 +10805,10 @@
       "jogada": 18
      }
     ]
-   },
-   "paradas": [
-    "Manobras, teia: o campo \"fieiras\" não é ataque, poder natural nem Técnica",
-    "Manobras, teia: regra da ficha sem os oito campos (falta Ativação, Duração, Alcance, Área, Efeito, Dano, Resistência, Limite de uso)"
-   ]
+   }
   },
   "drow": {
-   "sha256": "150b5373329bf0a280e22349d9223d2a2498f4b1b154f4d877076b4b5ed2148f",
+   "sha256": "74cebd144592d0832c57dae86fd7f3e9cb1551b77a65c07aa9cffcbeea01d6aa",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -11041,7 +10894,7 @@
    }
   },
   "duelista": {
-   "sha256": "316cd389870687bcb1c0c55259735fc2a68d554618ac77ee0abb1cfbd2cdace3",
+   "sha256": "6bd2854ed98e65c708e536f5cc4a4d5ff24bd7e36b228a5719f848adaa819a41",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 3,
@@ -11137,13 +10990,10 @@
       "jogada": 16
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Postura Fluida: P7, texto copia o efeito da Técnica; espera lote de ajuste"
-   ]
+   }
   },
   "duergar": {
-   "sha256": "daebb75fa74777ad9449e3a2afd040ed53ba15280e38be4201bec517cf03c7c3",
+   "sha256": "301b43891362652bb34135239f8f2ff9f542596242324865c0d3b433fe7a4714",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -11330,7 +11180,7 @@
    }
   },
   "elasmossauro": {
-   "sha256": "1ce7b35eb1b0aa4867735b7b7d042a944223b00b2e98ea09e7b916695c53eb90",
+   "sha256": "f3bfe33f219a2e6a86e032d108ce3f58af62baeb69716f12c0872bb9c0b712fe",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -11426,13 +11276,10 @@
       "danoMedio": 10.5
      }
     ]
-   },
-   "paradas": [
-    "Especialidades: a Habilidade \"A Resistência\" não está no catálogo (D-231)"
-   ]
+   }
   },
   "elefante": {
-   "sha256": "6718a7abbd799e9354ca35ae35cae415f4abea0e06b747d28fe598f4b76eb73c",
+   "sha256": "327d247501bf3cbea4b8f65e64794b04ef262f9cdf1baf90717611e0418e45db",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -11504,7 +11351,7 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 1
      },
      {
       "nome": "Pisão (ou investida)",
@@ -11552,17 +11399,10 @@
       "danoMedio": 27
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · tromba · com regra no livro\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"empurrar · corpo · com regra no livro (o empurrão é o modo comum de briga, Wikip\"",
-    "Manobras, arremessar o que agarrou: o campo \"tromba\" não é ataque, poder natural nem Técnica",
-    "Sentidos, faro: texto de trabalho no texto de jogo (\"D-150\"; manual 7.5)",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "elemental-da-agua-pequeno": {
-   "sha256": "0f94a60715e7ab7cfa410ebf1e7d75f76d44652c4def09dc036a45a872e59deb",
+   "sha256": "93d9d5cfb401d8bc9df8d18dedd2a40cf136ff6388f9b9bfb81f790e2d91553b",
    "entrada": {
     "categoria": "elemental",
     "centelha": 1,
@@ -11642,7 +11482,7 @@
     "bloqueio": 4,
     "energia": 8,
     "defesaMental": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 8,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -11661,7 +11501,7 @@
    }
   },
   "elemental-da-terra-grande": {
-   "sha256": "e66ccbd289e2f4a8a754838ce0a4805b12482adef0d1373e67aba7b862ca9913",
+   "sha256": "ce641fea191610fcc0b20cd3a5333c333b3c8a8526654c72295865fe622219df",
    "entrada": {
     "categoria": "elemental",
     "centelha": 3,
@@ -11736,7 +11576,7 @@
     "bloqueio": 12,
     "energia": 15,
     "defesaMental": 16,
-    "defesaSocial": 4,
+    "defesaSocial": 8,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -11755,7 +11595,7 @@
    }
   },
   "elemental-da-terra-pequeno": {
-   "sha256": "29a43e4ce8b43ce5dc678212b55ee8a86be06fb2be113802ffb10af252713fe3",
+   "sha256": "2578ceac3ec2e1e581a3244c878a499732870ec0eba8063def2bd33aad20c97e",
    "entrada": {
     "categoria": "elemental",
     "centelha": 1,
@@ -11830,7 +11670,7 @@
     "bloqueio": 8,
     "energia": 8,
     "defesaMental": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 8,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -11849,7 +11689,7 @@
    }
   },
   "elemental-do-ar-pequeno": {
-   "sha256": "d6b1085013db6446f7948facfb9fc20b2dff09c94fafb39b9a4624dd0ef686b2",
+   "sha256": "c8424ce55dab4aac2ad7892caa205d1713fe4925082df506e7cf41a5cd3470c9",
    "entrada": {
     "categoria": "elemental",
     "centelha": 1,
@@ -11930,7 +11770,7 @@
     "bloqueio": 10,
     "energia": 8,
     "defesaMental": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 8,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -11949,7 +11789,7 @@
    }
   },
   "elemental-do-fogo-pequeno": {
-   "sha256": "00c14b783d22bac03db2083d02023039137f4d33dcfc4a2b7771c2f3821d8858",
+   "sha256": "6fe764744406d156a9cfdd2ce70ff7482f2a728c9ec9a4d391975c27fc7bd3eb",
    "entrada": {
     "categoria": "elemental",
     "centelha": 1,
@@ -12026,7 +11866,7 @@
     "bloqueio": 6,
     "energia": 8,
     "defesaMental": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 8,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -12045,7 +11885,7 @@
    }
   },
   "enxame-de-aranhas": {
-   "sha256": "b3ac7a014d2dc66560a9ec000ac041db0f8e4f80390366f94660634cd506a539",
+   "sha256": "c2e5014c20d899f27702bcb7c2c980708790d4f80d49eec41ad5cc15a44751b4",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -12146,13 +11986,11 @@
     }
    },
    "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"nenhuma com regra. Prender na teia e morder em grupo o que caiu nela · Picada do\"",
-    "Sentidos, vibração da teia: texto de trabalho no texto de jogo (\"D-150\"; manual 7.5)",
-    "Aptidões: Aptidões fora do formato"
+    "enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)"
    ]
   },
   "enxame-de-caranguejos": {
-   "sha256": "f21c06c9b70babe0261b616964eb9096b03cb5b1d244ad5298d89cb5ad20b474",
+   "sha256": "d07d26d4182b6fb95e104dec1c3c9fe3716dc0cb52b6d44d6df6153498542dc2",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -12253,12 +12091,11 @@
     }
    },
    "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"nenhuma com regra. Cobrir o chão e não sair do caminho · texto para o Mestre.\"",
-    "Aptidões: Aptidões fora do formato"
+    "enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)"
    ]
   },
   "enxame-de-centopeias": {
-   "sha256": "efa98df142f73c88542f92f229ea87fe155000a20a48048f636ca55fcc0c73fd",
+   "sha256": "5319f991d66de04ca3e3ec15c7583c61aa69c62fbd23aaf074fc48799b69db68",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -12295,6 +12132,7 @@
     "vontade": 3,
     "corpo": {
      "postura": "quinze pares de patas",
+     "apoio": "outro",
      "altura": 0.005,
      "largura": 0.004,
      "profundidade": null,
@@ -12358,13 +12196,11 @@
     }
    },
    "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"artrópode quinze pares de patas\")",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"nenhuma com regra. Arrancada e agarrão da presa pequena · texto para o Mestre.\"",
-    "Aptidões: Aptidões fora do formato"
+    "enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)"
    ]
   },
   "enxame-de-formigas": {
-   "sha256": "e6e50aca5729c390f7ec7f921b22e0c2e0f9aa4f4d720fa04eb2df350bfb9ad5",
+   "sha256": "91e75af742d3fab72b2a8a3cd25b66e5e8ff7d9a326bc01442afed7904d2e5ba",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -12487,12 +12323,11 @@
     }
    },
    "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"nenhuma com regra. Cobrir e desmanchar o que não foge; equipes de carga · texto \"",
-    "Aptidões: Aptidões fora do formato"
+    "enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)"
    ]
   },
   "enxame-de-morcegos": {
-   "sha256": "cae81e19f9a439216f605d5df814b255f06cadb438d7e981737f342217064e8c",
+   "sha256": "af449386eeeb9bc2b9582ff0765e1a62808b0891323fc0e505d6d73bc96879e1",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -12596,12 +12431,11 @@
     }
    },
    "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"nenhuma com regra. A nuvem que sai da caverna e envolve quem está na boca dela ·\"",
-    "Aptidões: Aptidões fora do formato"
+    "enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)"
    ]
   },
   "enxame-de-ratos": {
-   "sha256": "47ac5e83b773b876196ce6cb11d90ab31c6960dac4e5aad5ec4f915cacf54ba5",
+   "sha256": "38b988da4f2f6204d64164dbcf9f88b92f360cc2a2ccd7a9af58f37394687fc3",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -12705,12 +12539,11 @@
     }
    },
    "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"nenhuma com regra. Cercar e morder quem não se mexe · Mordida do enxame · texto \"",
-    "Aptidões: Aptidões fora do formato"
+    "enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)"
    ]
   },
   "enxame-de-sanguessugas": {
-   "sha256": "80b303813e8976dc750c548a8dfb998d601750d65ceb94a9c4593e8a205862f7",
+   "sha256": "c2e446c49935edd9d625e3cbffa15611310abc93493d687335ae02d9621b6a43",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -12812,12 +12645,11 @@
     }
    },
    "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"nenhuma com regra. Prender-se e sugar; a ferida que sangra depois · texto para o\"",
-    "Aptidões: Aptidões fora do formato"
+    "enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)"
    ]
   },
   "enxame-de-vespas": {
-   "sha256": "41950cdd9219fa1497a5f2a683d03346de4907c667b9e178fe3cd868752a69f7",
+   "sha256": "e02e1c06ff95b63e3ef283efa8845d8ca65fbeb9a068053788cb7e5aea39637e",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -12919,8 +12751,7 @@
     }
    },
    "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"nenhuma com regra. Perseguir quem mexeu no ninho · texto para o Mestre.\"",
-    "Aptidões: Aptidões fora do formato"
+    "enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)"
    ]
   },
   "erinia": {
@@ -13062,7 +12893,7 @@
    }
   },
   "escorpiao-gigante": {
-   "sha256": "4a458e5e3accd282154a5ac2d219f9569a32bf3e534f374af179d75917571e4c",
+   "sha256": "dfec87d0fdb045cdb3948568ef4bdd0f551afc704860fbe70db114d7ee396e2b",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -13180,13 +13011,10 @@
       "danoMedio": 6.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Pinça · com regra no livro. As \"garras duplas\" da ficha antiga do best\""
-   ]
+   }
   },
   "esfinge-ginosfinge": {
-   "sha256": "4a3f8cbd1dc66099d352fea7554b6454c7ae1540c071c0e3d686c0fba810fc28",
+   "sha256": "3d850d254886e7e8e47f07dfa4a8005c9c94c18cba135e8805c0feac72e35cdd",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 5,
@@ -13397,7 +13225,7 @@
    }
   },
   "espreitador-sombrio": {
-   "sha256": "51bc612c00dce4aacf7dcdcb172a88b8dd77c49180ed6898fd8ff4ac8e33ac29",
+   "sha256": "4902e1b87a7401d081154e0280d0eeccd1c40d9b62ae1641e7948af874d43e48",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 2,
@@ -13593,7 +13421,7 @@
    }
   },
   "estegossauro": {
-   "sha256": "1f8a1e2e56835392a8b0adb9afda30a66686b81f0dfa7faca3decfdc00a5ce41",
+   "sha256": "81ae5681f6d7d4db53200ec1fabb30f2a80bd0b542a4d167a79a4c6f4ce82a1b",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -13690,16 +13518,10 @@
       "danoMedio": 29
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Cauda de espinhos · com regra no livro\"",
-    "Manobras, atropelar: o campo \"corpo\" não é ataque, poder natural nem Técnica",
-    "Sentidos: linha fora do formato: \"nada com número ; cabeça baixa, no máximo cerca de 1 m do ch\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "estrangulador": {
-   "sha256": "046e1ae640ffdc5299fb8881c7212c8a7c3049826a1d4923021512c522e48143",
+   "sha256": "0e21b57f5bf775e6d29ea68beb0658f73bd8f181cf8d352f1c430b0f47a088d4",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 2,
@@ -13774,7 +13596,7 @@
     "bloqueio": 8,
     "energia": 11,
     "defesaMental": 15,
-    "defesaSocial": 4,
+    "defesaSocial": 8,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -13793,7 +13615,7 @@
    }
   },
   "ettercap": {
-   "sha256": "4e7b381a351c5343909ede99171ae9051d14d1d4f324097938e6beb962dca56a",
+   "sha256": "e72d7a8e059b4ae232c1a5079cddc3f9b8d05d61b3e5a215437a2b9d2115cf76",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 2,
@@ -13887,7 +13709,7 @@
     "bloqueio": 14,
     "energia": 12,
     "defesaMental": 16,
-    "defesaSocial": 6,
+    "defesaSocial": 16,
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
@@ -13909,11 +13731,7 @@
       "jogada": 13
      }
     ]
-   },
-   "paradas": [
-    "Manobras, teia: o campo \"fieiras\" não é ataque, poder natural nem Técnica",
-    "Manobras, teia: regra da ficha sem os oito campos (falta Ativação, Duração, Alcance, Área, Efeito, Dano, Resistência, Limite de uso)"
-   ]
+   }
   },
   "ettin": {
    "sha256": "66eeb09ea2914e91011b8bc75024c58a5aa36d1f260e56aa6635137d62c22f67",
@@ -14010,7 +13828,7 @@
    }
   },
   "falcao-peregrino": {
-   "sha256": "db24f1e88ce8b4b4fd614dc14be0bef1340793a2fc2185ac2a9c8f8a4d99b3a6",
+   "sha256": "4e0f73b3db714b0ea2dd13385e6ebcdcd107c06b35eb7343de048156f6302dd7",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -14134,13 +13952,7 @@
       "danoMedio": 1.5
      }
     ]
-   },
-   "paradas": [
-    "Especialidades: a Habilidade \"A \"Resistência\" não está no catálogo (D-231)",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Garras · com regra no livro; o dano de Força do agarrão é 2 × 1 = 2 ◆ \"",
-    "Sentidos: linha fora do formato: \"Vira a cabeça cerca de 40 graus para ver a presa com a fóvea\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "fantasma": {
    "sha256": "08da1d93c69941ab79d909e349d3a0a054d8abf128ee3c9c4a810ccf99c87d4c",
@@ -14239,7 +14051,7 @@
    }
   },
   "feiticeiro-menor": {
-   "sha256": "02ffc694577c47bb5af3fa455d6aaf71f46abdb0ca82bbb37b7e830bce87abb5",
+   "sha256": "9f40e7b8e4783c9d91f512205bd39d4c5d2d975e4ee1497e9011b8e2fe7a27a6",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -14339,7 +14151,7 @@
    }
   },
   "fenix": {
-   "sha256": "5d4c726e8a5a55e14becf40ff60eef7840500144eda7d836b8d396f7b17ee0f8",
+   "sha256": "f719d0268ee4ef09f7fe0756d48cde89e4148229c5dd554157568cc40e7e36ac",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 6,
@@ -14649,7 +14461,7 @@
    }
   },
   "fogo-fatuo": {
-   "sha256": "fcaee7fe4b99ffe593a31fe395f8a5512eaa302b24ea498e21d898cc2b6f14f2",
+   "sha256": "e6f01e60161402e762087b005ec67071def680c272bccc826cde2dd34d8cee12",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 4,
@@ -14746,7 +14558,7 @@
    }
   },
   "formiga-gigante": {
-   "sha256": "03be772da4e72caa1e7272c9fc0d4b784693febac48c042bddcd556bea7018c3",
+   "sha256": "2a22149aca64eddb77e43d5dc965ec9042468d675833a5c7b3a76c8c1873e457",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -14862,13 +14674,10 @@
       "danoMedio": 4.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Mandíbulas · com regra no livro. A ficha antiga do bestiário prende co\""
-   ]
+   }
   },
   "froghemoth": {
-   "sha256": "7607b06cbb9d7c7de154fb31761ee72f8ef375cd7a8ce507f354827ffd87d821",
+   "sha256": "18ff9c2735f66b7c85f25327507eba3532378d328a136c32c050801129d298d6",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 0,
@@ -14978,7 +14787,7 @@
     "bloqueio": 6,
     "energia": 12,
     "defesaMental": 15,
-    "defesaSocial": 6,
+    "defesaSocial": 10,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -15006,17 +14815,10 @@
       "jogada": 16
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Tentáculos: P7, texto copia a regra da Rajada; espera lote de ajuste",
-    "Manobras, língua: regra da ficha sem os oito campos (falta Ativação, Duração, Alcance, Área, Efeito, Dano, Resistência, Limite de uso)",
-    "Sentidos: linha fora do formato: \"visão em todas as direções, pelos três olhos no pedúnculo.\"",
-    "Sentidos: linha fora do formato: \"sente pela água o movimento em volta .\"",
-    "Sentidos: linha fora do formato: \"visão no escuro absoluto.\""
-   ]
+   }
   },
   "gargula": {
-   "sha256": "cd91a99155b56583fc9076d48966446592e3d5aa2dea2493ccf8679ba06a85da",
+   "sha256": "fc842979ad4424da590d11b8c9d67e34ac930137c9f2f99eaedb4612255369ba",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 1,
@@ -15136,14 +14938,10 @@
       "jogada": 10
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Imobilidade: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
-    "Manobras, Pele de pedra: texto de trabalho no texto de jogo (\"autor decidir\"; manual 7.5)"
-   ]
+   }
   },
   "gato": {
-   "sha256": "3d987a9674f9c2ec1cca6a77519a382aa2282b9178d69f3764865d4cc0379ecd",
+   "sha256": "cca18232210487c85eb1fd119fceba825ac593056ad059fc7e79cfe9ea2051b5",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -15266,7 +15064,7 @@
    }
   },
   "geleia-ocre": {
-   "sha256": "243a968c1fdf90a8f2a4275ed7597d8c55189eb06e33dc08b8801dba8d517d0a",
+   "sha256": "c10abef7b952dec9c3c8cbc8dde863c125144cd87bc062f2d7f26b5279da2c99",
    "entrada": {
     "categoria": "limo",
     "centelha": 1,
@@ -15297,6 +15095,7 @@
     "vontade": 3,
     "corpo": {
      "postura": "ativa, enrolada numa bola trêmula que rola; em repouso, poça baixa",
+     "apoio": "outro",
      "altura": 0.76,
      "largura": 0.76,
      "profundidade": null,
@@ -15362,13 +15161,10 @@
       "jogada": 11
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"massa amorfa, sem órgãos à vista ativa, enrolada numa bola trêmula que rola; em \")"
-   ]
+   }
   },
   "ghast": {
-   "sha256": "e5809e1fece72e227c69590b921bdd10646d8f8d1e5ccf1c268f176a46e4386a",
+   "sha256": "dd3b5134ed64e991b2790557dc79b991ba8007da7d0300e17c86aebc61a0c7fa",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 2,
@@ -15485,7 +15281,7 @@
    }
   },
   "ghoul": {
-   "sha256": "a025d7229b038d420ac4d240bc2c02e6b373704f94c437df74b53889a1e863b7",
+   "sha256": "6ba0a1edadee93245d4ed5e0b02c0166b6e2f0f705cf33bfa7ed8f29964aa243",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 1,
@@ -15601,7 +15397,7 @@
    }
   },
   "gigante-da-colina": {
-   "sha256": "25ff64173ebbf2ccac0f433017ef176bbda8c99abec5e3f31011344e54696b03",
+   "sha256": "b94ac63aa63e80d9318e273783a8add34b87360a4d28beeffd1946ce42dbf47e",
    "entrada": {
     "categoria": "gigante",
     "centelha": 1,
@@ -16307,7 +16103,7 @@
    }
   },
   "gigantopiteco": {
-   "sha256": "2d081cdd74c219997f39f55c220eed2e9a6281465dfe67fbb2b8e90bd4cbe649",
+   "sha256": "f7e7bfbcf2fe1fc1646ec31d7f0fe0b5f29a66b508dc6bd3490c5f870d0bb12c",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -16344,6 +16140,7 @@
     "vontade": 3,
     "corpo": {
      "postura": "ereto (a leitura do gorila)",
+     "apoio": "bipede",
      "altura": 3,
      "largura": 1.55,
      "profundidade": null,
@@ -16422,15 +16219,10 @@
       "danoMedio": 12.5
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"primata ereto (a leitura do gorila)\")",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Pancada (a mão) · regra do livro.\"",
-    "Sentidos: linha fora do formato: \"Nada que passe do humano com número . Sem Especialidade natu\""
-   ]
+   }
   },
   "girallon": {
-   "sha256": "ac851ae427dc19f83b9d6a9fb204ed10feeeba0523e2323500d399b6cc58844d",
+   "sha256": "c80fb5ca0c4f889c1851fdc084be63dcc8b1a2aff89850d43f3cdc5c76b9e822",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -16672,7 +16464,7 @@
    }
   },
   "gnoll": {
-   "sha256": "2c0231b91a16e27514c9e36e844ebdb1b98a5e1398df7279595c3cfb75d4f09d",
+   "sha256": "91e24c8ac192ec8217a2e6b68d990c067eb7a80f664eccc211c3bfb45bca2937",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -16782,7 +16574,7 @@
    }
   },
   "goblin": {
-   "sha256": "895dd79f53ecdb82a2bdd04bc723c13208866d5b39e937d86c21f30e945a6335",
+   "sha256": "bfb72f400a5e76a55c2f5f4d403bd67ef92d0d4317ecbd83af97f2940719c630",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -16865,13 +16657,10 @@
       "jogada": 6
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Pequeno e furtivo: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "golem-de-argila": {
-   "sha256": "0f380e8169d8ab03b127b58edcc26ec05c93062318a455362119eec3d77bdf52",
+   "sha256": "2244997a4b24f5e522b47ad66fa5738ec6fa87db3367ac28cb7e1550ce38cbd7",
    "entrada": {
     "categoria": "construto",
     "centelha": 3,
@@ -16964,7 +16753,7 @@
    }
   },
   "golem-de-carne": {
-   "sha256": "07e0ff6657661c306a3e682af2507b6b1a77c5f17a127345814a682b6f008ec7",
+   "sha256": "1dfe99254541737f0808310c9284307edccd1f108cd1cdb3686b21c8e8d6040b",
    "entrada": {
     "categoria": "construto",
     "centelha": 3,
@@ -17057,7 +16846,7 @@
    }
   },
   "golem-de-ferro": {
-   "sha256": "f8ab51c1dc6e50d7a84adca4001e0ba76632423dc6029eef4d0d93bd8173856e",
+   "sha256": "1789c0c296b5e0d9313d920059b4a794b455ff9db4944dbd606f9456c4f132ed",
    "entrada": {
     "categoria": "construto",
     "centelha": 4,
@@ -17150,7 +16939,7 @@
    }
   },
   "golem-de-gelo": {
-   "sha256": "1321ce7ee61edb7ecffeb7bc7e32eed54c8a74dd5d52e2967b75896e35c61c0f",
+   "sha256": "8d6d5e08c981df75f56e0cb94e74ff1a965a66d5a9c48d7ba9645f2d434239f2",
    "entrada": {
     "categoria": "construto",
     "centelha": 1,
@@ -17243,7 +17032,7 @@
    }
   },
   "golem-de-pedra": {
-   "sha256": "9b864cbea7010780623196a9317c5b9cdfb88a21929a72533c070753c718f449",
+   "sha256": "eaf454ad80325733badf90ffaf581545f4fe0b247eefda468358e669fed20795",
    "entrada": {
     "categoria": "construto",
     "centelha": 3,
@@ -17343,7 +17132,7 @@
    }
   },
   "golfinho": {
-   "sha256": "6e977ac2b0c8572849d0a97eda938cc2d20ddbaeaace364858593f676fb5cb7f",
+   "sha256": "cdfde5db6c6421887d835b61f53cfedb4bcdadc9d7d7e3b7b5d578bb381116fd",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -17461,14 +17250,10 @@
       "danoMedio": 6.5
      }
     ]
-   },
-   "paradas": [
-    "Sentidos, ecolocalização: texto de trabalho no texto de jogo (\"D-150\"; manual 7.5)",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "gorgona-touro-de-ferro": {
-   "sha256": "4bf822d7b1273569c574032b5a1aec2e85e38e89af67e072614f94ec86cbddf8",
+   "sha256": "8f921aa5952abee69a43914b2b0971bbae065dda562f4890d70938038787e5c7",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -17611,7 +17396,7 @@
    }
   },
   "gorila": {
-   "sha256": "8b0b64ce3723c01ab77b0080c72dedc3ba3170d9d0c312486f201f4a845214a5",
+   "sha256": "e7447ed4182dba3e4d61f0e33e05538aa16fe79c692f6d6f000d42384fa1d8f5",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -17648,6 +17433,7 @@
     "vontade": 3,
     "corpo": {
      "postura": "ereto",
+     "apoio": "bipede",
      "altura": 1.72,
      "largura": 0.83,
      "profundidade": null,
@@ -17728,15 +17514,10 @@
       "danoMedio": 10.5
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"primata ereto\")",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Pancada (a mão) · regra do livro.\"",
-    "Sentidos: linha fora do formato: \"Nada que passe do humano com número. Olhos pequenos (ADW); n\""
-   ]
+   }
   },
   "grande-wyrm-vermelho": {
-   "sha256": "0ccee8fc67c30d2fb96cae51dfc6a39b42a6876a74f38e9f5ed84fc5cec7c199",
+   "sha256": "76516b165f4d22d71043f33f74c381d0c56f177422a450f90eeec62b9c44a4fb",
    "entrada": {
     "categoria": "dragao",
     "centelha": 9,
@@ -17943,7 +17724,7 @@
    }
   },
   "grifo": {
-   "sha256": "9b273f8e28b75cbc6be368d8c73ea6901f6d3bf788c9615d17015838314bde7d",
+   "sha256": "038331da5390eec8fb461a0023e2f3ae926e9bda00be5e201fc124b9fac68cb5",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -18098,7 +17879,7 @@
    }
   },
   "guarda-da-cidade": {
-   "sha256": "b978159e5e0d7067b3c4eea80280ace0f87a7abe5b44b2c054e0b5206694f18c",
+   "sha256": "269527cc74ceecc07afa52e352f2c5d6e0b3d891feed270f2c3feb85f523e35e",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -18204,7 +17985,7 @@
    }
   },
   "guepardo": {
-   "sha256": "7ef36b897e87f38a15913494d625805a4a4ac18c455759bbffff33c80a9c76e7",
+   "sha256": "c8bb2836d8baa256b8cad5e7752ef6e696f179ac9192cb074a9efbc50d347549",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -18323,15 +18104,10 @@
       "danoMedio": 4.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Patada com o ergot (a pata na perna da presa em corrida) · com regra \"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Mordida (na garganta) · com regra no livro.\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "harpia": {
-   "sha256": "0ed3b3531371b04e5f732900bb4689d74e67fed21a29ca8b1477f17def39a5dd",
+   "sha256": "49ce201824cda234093934436e4f17f009864c08ee3fd34bd89b06628f5c7c84",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -18430,13 +18206,10 @@
       "jogada": 13
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Ninho no penhasco: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "hezrou": {
-   "sha256": "5ed86792cac68251372ad9339ec95c0a107f16f868b5ce9af4df1cca8e34cc3a",
+   "sha256": "ed06cfd685371fc80305ad391b138e6e7172786a0888c197c1c0d30e67c05cf7",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -18561,7 +18334,7 @@
    }
   },
   "hidra-5-cabecas": {
-   "sha256": "710292bbc39770ab535ee758d25e1db963857192def452ae8efdf973cfeb35a1",
+   "sha256": "adcf0cdab399507301daea74c281792d8f1b89720e8bed26ba76b3da4b7bd7ec",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -18641,7 +18414,7 @@
     "bloqueio": 6,
     "energia": 10,
     "defesaMental": 11,
-    "defesaSocial": 4,
+    "defesaSocial": 12,
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
@@ -18657,13 +18430,10 @@
       "jogada": 14
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Cinco mordidas: P7, texto copia a regra da Rajada; espera lote de ajuste"
-   ]
+   }
   },
   "hiena-malhada": {
-   "sha256": "1e5779a13d7709a328ef83db08b957cde5bd928867e6c298c432363ea7ae2357",
+   "sha256": "144652f11eb02ebb1dd9373080b9cbd1dd6e2a7ca1d2e4eba27842e9f88735ae",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -18761,15 +18531,10 @@
       "danoMedio": 7.5
      }
     ]
-   },
-   "paradas": [
-    "Especialidades: a Habilidade \"Nenhuma. A Resistência\" não está no catálogo (D-231)",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Mordida (na perna da presa em fuga) · regra do livro (`combate.md` l.\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Mordida · regra do livro.\""
-   ]
+   }
   },
   "hienodonte": {
-   "sha256": "5caafe9f3a07b785a8c1f603cd7f2873cdaaeb70bb5bba3b2629c9e33569a6f8",
+   "sha256": "ec42c89214578f48993ef78cf189d19445c7841249b9535a39c7d5573603366c",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -18866,16 +18631,10 @@
       "danoMedio": 10.5
      }
     ]
-   },
-   "paradas": [
-    "Especialidade fora do formato: \"- Nenhuma. Nenhum sentido nem cobertura do corpo achados (`hienodonte.\"",
-    "Especialidade fora do formato: \"- Nenhuma. Sem comportamento conhecido que sustente um recorte.\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Mordida (na perna da presa em corrida) · regra do livro **[extrapolaç\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Mordida · regra do livro.\""
-   ]
+   }
   },
   "hipogrifo": {
-   "sha256": "0d3b809e46445eb4c41631acca7ef0f152e18550a862f8cba2cec471bc0dba0e",
+   "sha256": "e64b86b483256fc3a25c3dc2e342efb98389c6b7477050b3b95e7404449c25ab",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -18994,7 +18753,7 @@
     "bloqueio": 12,
     "energia": 10,
     "defesaMental": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 12,
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
@@ -19025,7 +18784,7 @@
    }
   },
   "hobgoblin": {
-   "sha256": "3b7bc2cabc7856f4a727f5d2d4376e5696483040ddb9de46fd9b406e8e2a7ab4",
+   "sha256": "be718dcfee453261d98ddf8d1537ef0f71cdac616218b7d3a1a912591204b74c",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -19110,13 +18869,10 @@
       "jogada": 7
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Furtivo: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "homem-lagarto": {
-   "sha256": "6e4b8d5c6da44cff6384dae0fbe257885d0a0d9696225e8eef92a308ff30be28",
+   "sha256": "20b7e38b31b543d120a25e8747664328d70d39089c8917476e018a0f7ede6968",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -19141,7 +18897,8 @@
      "prontidao": 1,
      "resistencia": 2,
      "integridade": 2,
-     "sobrevivencia": 1
+     "sobrevivencia": 1,
+     "sociabilidade": 1
     },
     "habilidadesSec": {
      "natacao": 3,
@@ -19224,13 +18981,10 @@
       "jogada": 5
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Sobrevivente do pântano: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "homem-rato-forma-humana": {
-   "sha256": "253141aefe71b85dcfe3f400276a8c39b4790cc11eecb19c52d4004c1c96ac41",
+   "sha256": "24d0990a184abcb21c4ccd738b5fa8013b64e6de2888214b52e0e4b906ef81a0",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 2,
@@ -19339,13 +19093,62 @@
      }
     ]
    },
-   "paradas": [
-    "Manobras, Ataque furtivo: o campo \"Espada curta ou Mordida\" não é ataque, poder natural nem Técnica",
-    "Variantes, forma de rato: campo \"Os números\" que o conversor não conhece"
-   ]
+   "formas": {
+    "rato": {
+     "nome": "forma de rato",
+     "entrada": {
+      "atributos": {
+       "forca": 2,
+       "destreza": 3,
+       "vigor": 5
+      },
+      "corpo": {
+       "postura": "quadrúpede",
+       "apoio": "quadrupede",
+       "altura": 0.28,
+       "comprimento": 1.4,
+       "comprimentoSemCauda": 0.75,
+       "largura": 0.21,
+       "profundidade": null,
+       "massa": 12.38,
+       "area": 0.1475,
+       "posturaDoTamanho": "de lado",
+       "linhaPV": "acima"
+      },
+      "couraca": 0,
+      "equipamento": {
+       "arsenal": []
+      },
+      "ataques": [
+       {
+        "nome": "Mordida",
+        "parte": "dentes-de-rato",
+        "habilidade": "briga",
+        "classe": "leve",
+        "pgr": [
+         1,
+         1,
+         3
+        ],
+        "dado": "1d6-2",
+        "multiplicadorForca": 1,
+        "tipoDano": "perfuracao",
+        "nivelPerfuracao": 0,
+        "acerto": 1,
+        "bloqueiaComoArma": null
+       }
+      ]
+     },
+     "esperado": {
+      "pv": 30,
+      "pesoErguido": 48.55,
+      "tamanho": "Pequeno"
+     }
+    }
+   }
   },
   "homunculus": {
-   "sha256": "c91c183aa0be665150d71702f06be50e315aebef143530f871ae2c3195c65cde",
+   "sha256": "8483c784c34364b43559ae98b5efcaa58d0d28ed7fde610ae6b4946b3ca650e9",
    "entrada": {
     "categoria": "construto",
     "centelha": 1,
@@ -19445,7 +19248,7 @@
    }
   },
   "janni": {
-   "sha256": "bb3fd09c77672f492d1d1d866a3c231fabdf32e5e9bf00bab2ff8ad4a1be7de1",
+   "sha256": "0a364f895ff27331b80ea9df9ecc89a7b9a06c73dede61e13db662f1eb2c6294",
    "entrada": {
     "categoria": "outsider",
     "centelha": 2,
@@ -19469,7 +19272,8 @@
      "prontidao": 2,
      "integridade": 4,
      "sobrevivencia": 3,
-     "ocultismo": 2
+     "ocultismo": 2,
+     "sociabilidade": 1
     },
     "habilidadesSec": {
      "voo": 2,
@@ -19532,7 +19336,7 @@
    }
   },
   "jararaca": {
-   "sha256": "4be4311ad39654da12ac9821d150af0acce46c27d526f2a00895326a7407c4ae",
+   "sha256": "d10e36981326f4602ad657a6d4d51b9648e0895a3807574675fef1407a5dd939",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -19631,14 +19435,10 @@
       "danoMedio": 1.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"nenhuma. Não constringe nem agarra. \"Imobiliza só com toxina ou paralisia\" (D-10\"",
-    "Sentidos, calor: texto de trabalho no texto de jogo (\"D-150\"; manual 7.5)"
-   ]
+   }
   },
   "javali": {
-   "sha256": "b57573f4fa5af11220b407b5ee09c7d17673e98fff745fd50791ebc70f408e15",
+   "sha256": "c30120b2e700a9d738697890e0b87e4ba3d0d767084c45af52f17efc35abbf2d",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -19757,13 +19557,10 @@
       "danoMedio": 17
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · investida (pelas pernas) · regra do livro.\""
-   ]
+   }
   },
   "jiboia": {
-   "sha256": "15ce215d3aa33ed8a7357cefa0f9292371079417c424886b61acb7c2a87272cb",
+   "sha256": "722851b87142d9f7a2357ee3ca93ed7472062a79255f933d0e211cc24375c92b",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -19862,13 +19659,10 @@
       "danoMedio": 6.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"**constrição = agarrar** · Mordida (bote para agarrar) · com regra no livro. As \""
-   ]
+   }
   },
   "kobold": {
-   "sha256": "164eb0dcb3ceb6a4b9dfb31f93eaf7bc6ee1f97691933bf2f22d51d94b59ea88",
+   "sha256": "5d0d093db6e6c6f08361e944b0c97ada93ecab0a27bd2a84db8a83abea52483d",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -19953,13 +19747,10 @@
       "jogada": 5
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Furtivo: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "kraken": {
-   "sha256": "93589f708542fdcdff76866960371fefc8f0c47b568eeeca4b8b98e160b22fa2",
+   "sha256": "0756eb7e90a42f677704c729500e55a5bbba4c0327f548a8afc3d94ce5d604d6",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 7,
@@ -20080,13 +19871,10 @@
       "jogada": 29
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Tentáculos múltiplos: P7, texto copia a regra da Rajada; espera lote de ajuste"
-   ]
+   }
   },
   "kyton": {
-   "sha256": "7774c6983c0bff3ac87767cfaf10d3fa8967f50546573bcc9a1b7f98dc8ef844",
+   "sha256": "7b2e80d74f7b1590c652f5f23ac269260fb8ec03416742bc571d05b34753c4c9",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -20185,7 +19973,7 @@
    }
   },
   "lacador": {
-   "sha256": "2dc2d594bd66cb49170dfc7325a31a8f9a2df0ce2dd73caee6aafd1cf5486b47",
+   "sha256": "72e3136d3616f031ef02365f6b1c91c01be2be7c1c14bcab2773ed73437e142e",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 5,
@@ -20278,15 +20066,10 @@
       "jogada": 24
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Filamentos pegajosos: o campo \"corpo\" não é ataque, poder natural nem Técnica",
-    "Manobras, puxão: o campo \"Filamentos pegajosos\" não é ataque, poder natural nem Técnica",
-    "Sentidos: linha fora do formato: \"visão no escuro e na penumbra.\""
-   ]
+   }
   },
   "lagarto-de-gola-gigante": {
-   "sha256": "a097864bbc121e098e6d95849518fff857084bc0290cf3045bc9cbf4c2af74e4",
+   "sha256": "6ab40ec0c974582c1f0673353a70f32127491fe21d8156ebbd4163753c63e5a7",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -20324,6 +20107,7 @@
     "vontade": 3,
     "corpo": {
      "postura": "corpo baixo",
+     "apoio": "quadrupede",
      "altura": 0.38,
      "largura": 0.28,
      "profundidade": null,
@@ -20409,16 +20193,10 @@
       "danoMedio": 4.5
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"réptil de corpo baixo corpo baixo\")",
-    "Manobras, exibição da gola: texto de trabalho no texto de jogo (\"D-215\"; manual 7.5)",
-    "Manobras, investida intimidante: o campo \"corpo\" não é ataque, poder natural nem Técnica",
-    "Comportamento, Dieta: texto de trabalho (\"D-105\")"
-   ]
+   }
   },
   "lagarto-eletrico": {
-   "sha256": "7a60b8d88f2f962ac7b3868108e034cb4af4f903510ffe14924603f9c9a02add",
+   "sha256": "4348f7b75f90706236e33843785cde03aaae7aa61a175c68522a5e150b83eea0",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 2,
@@ -20517,7 +20295,7 @@
     "bloqueio": 8,
     "energia": 11,
     "defesaMental": 15,
-    "defesaSocial": 4,
+    "defesaSocial": 12,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -20542,7 +20320,7 @@
    }
   },
   "lamia": {
-   "sha256": "881a290c76062046f024caded73fcd59b9156e8846b5ba4b4b13403262e256c0",
+   "sha256": "11236eb3e55634e73aff0dd0bc901519aed3b3ff87d38461b7368825472ceaad",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 4,
@@ -20635,13 +20413,10 @@
       "jogada": 19
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Sentidos do deserto: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "leao-das-cavernas-tardio": {
-   "sha256": "165bf6154023ef0938b5e96c3d35fce3ee1e4a8d04b4a44d5fdd310296172b16",
+   "sha256": "82a018fc9caa575889b44ba75cedbcf5adf5927af288da4c5e1c39bbad3f7ec0",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -20760,14 +20535,10 @@
       "danoMedio": 6.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Mordida (na garganta) · regra do livro.\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Patada · regra do livro.\""
-   ]
+   }
   },
   "leao-das-cavernas": {
-   "sha256": "06e2235196c91a31ac22a5dd82bd49747549c1ae7f35fba984918cfef19e301a",
+   "sha256": "03b016aba07023a615415c6825c824cece6db32280f0a0bef10f0acccb3b96b1",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -20886,14 +20657,10 @@
       "danoMedio": 8.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Mordida (na garganta) · regra do livro.\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Patada · regra do livro.\""
-   ]
+   }
   },
   "leao": {
-   "sha256": "dc48b2bf3731a2449f3e6f3ae56c686d14e68b7b7c7d930f396eefedc7d90757",
+   "sha256": "a8580353912dd272c1cc24c54363e593ab2e3bdb4899fb0d38708afdc1ce4958",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -21012,15 +20779,10 @@
       "danoMedio": 7.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · mordida · regra do livro: segura a garganta por até 13 minutos (Schall\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · patada · regra do livro.\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "lemure": {
-   "sha256": "4b2776b2168c03ac601dcea7585ea67981c433fe97dc6fd7323cce7a0e1ef35f",
+   "sha256": "864b5148d634a1dfff76135676d17db8f4c53ddc935d13d914af1b44a2d768f9",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 1,
@@ -21114,7 +20876,7 @@
    }
   },
   "leopardo": {
-   "sha256": "4adf1ccc73604484632a8dfc6fa85ab1591398b7cd92614f92184066c4026991",
+   "sha256": "7f69dfb62cd3720a11bb75f23ae2565e137a9ff89b07cfc6b5c3d994c0027d82",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -21233,14 +20995,10 @@
       "danoMedio": 6.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Mordida (na garganta ou na nuca) · regra do livro.\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Patada · regra do livro.\""
-   ]
+   }
   },
   "lesma-gigante": {
-   "sha256": "3e618e3f700cf6c1b539bc42f0890c3a2bf3ec770821690686c19f5a3e065e62",
+   "sha256": "68ab9a3f39f60fdc5cb899ae128d94742c88daed53463044e12bc03037a9760c",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -21336,16 +21094,10 @@
       "danoMedio": 10.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras, atropelar: o campo \"corpo\" não é ataque, poder natural nem Técnica",
-    "Manobras, cuspir ácido: regra da ficha sem os oito campos (falta Ativação, Duração, Alcance, Área, Efeito, Dano, Resistência, Limite de uso)",
-    "Manobras, língua ácida: regra da ficha sem os oito campos (falta Ativação, Duração, Alcance, Área, Efeito, Dano, Resistência, Limite de uso)",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "lich": {
-   "sha256": "de89222021f1e04c47ff75f1919378a4e43c1f28c11be7a2fb3b22b7404c0093",
+   "sha256": "92ea9d733a578c7968b717d673646ef66e89f52010ba612eec1012caa9a98615",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 6,
@@ -21449,7 +21201,7 @@
    }
   },
   "limo-cinzento": {
-   "sha256": "1282eccee8ce852284152b9502de2800e97a768b8c6edffd475c60faea68e624",
+   "sha256": "0d50976928ce2be3240f43314cffb9669eb8ddb66ab84a1a3bc12f2358d5bfda",
    "entrada": {
     "categoria": "limo",
     "centelha": 1,
@@ -21479,6 +21231,7 @@
     "vontade": 3,
     "corpo": {
      "postura": "poça no chão",
+     "apoio": "outro",
      "altura": 0.19,
      "largura": 1,
      "profundidade": null,
@@ -21537,10 +21290,7 @@
       "jogada": 11
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"massa amorfa espalhada, sem órgãos à vista poça no chão\")"
-   ]
+   }
   },
   "linnorm-do-gelo": {
    "sha256": "4a7443351eb4fe74096807a667a29ab776218d572efeab09986edb15ef30fa26",
@@ -22200,7 +21950,7 @@
    }
   },
   "lobo-atroz": {
-   "sha256": "0356acf836f6357370d2c6627e834aa8e3c90d7b1963102c6f34e16f3faf9322",
+   "sha256": "4b631da1b98baa157df9c663bd380bf07ac3115aca82269e3875d3b02c695669",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -22298,15 +22048,10 @@
       "danoMedio": 8.5
      }
     ]
-   },
-   "paradas": [
-    "Especialidade fora do formato: \"- Sem Resistência (frio): os fósseis são raros ao norte de 42° N (Wiki\"",
-    "Especialidades: a Habilidade \"Nenhuma. A Resistência\" não está no catálogo (D-231)",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · mordida (na perna) · regra de Derrubar do livro. **[extrapolação]** p\""
-   ]
+   }
   },
   "lobo-do-inverno": {
-   "sha256": "5b29f895c2b50c9f5ed94a12cb36ac7ea8b613eb5d6eed1a97f3321f37d05ac0",
+   "sha256": "4ede7c29ca90db904ca692e07503991df31572f2a8d988a45418bb68e9f3c39f",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 4,
@@ -22429,7 +22174,7 @@
    }
   },
   "lobo": {
-   "sha256": "42dd3506b6b8ed76b6d0f3093f6bcd028d87962fd97c79d86a7ca04af361683d",
+   "sha256": "0f2ba6c4c3d78a5fca5caa3c80dd9bb585e33c54eb5a165397e2023359336687",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -22527,14 +22272,10 @@
       "danoMedio": 6.5
      }
     ]
-   },
-   "paradas": [
-    "Especialidades: a Habilidade \"A Resistência\" não está no catálogo (D-231)",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Mordida (na perna) · regra do livro (`combate.md` l.249). A matilha d\""
-   ]
+   }
   },
   "louva-a-deus-gigante": {
-   "sha256": "43425997e6808e6e49144019075dd5dee087022ccdd77eb8946d544373d487db",
+   "sha256": "c3eda680278e70b8087f8a12a081acd413c0edb8135fd7ed3c6275c5069bced9",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -22656,13 +22397,10 @@
       "danoMedio": 5.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Patas raptoriais · com regra no livro. O golpe que agarra e a mordida \""
-   ]
+   }
   },
   "lula-de-humboldt-grande": {
-   "sha256": "7eaa01796b834d36929f760a57a9ea6c8dd1d92e27371fc92ab03fe037092007",
+   "sha256": "84a78abf8f090ec61c4efd25514309619240f043e7df2c1041b43383690cf030",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -22779,15 +22517,10 @@
       "danoMedio": 5.5
      }
     ]
-   },
-   "paradas": [
-    "Deslocamento em terra ilegível",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"**agarrar** · Braços e tentáculos · com regra no livro (`combate.md` l.225-251; \"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "lula-de-humboldt": {
-   "sha256": "2d8ceec5f138938214bf6483a4a5c6f22ad23a671491eda4edd6a65922ad15e4",
+   "sha256": "a02802abbee6639f1ee2a90dcce5e60210b3aab650d45b9d4b9ef8b39d862b10",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -22904,15 +22637,10 @@
       "danoMedio": 2.5
      }
     ]
-   },
-   "paradas": [
-    "Deslocamento em terra ilegível",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"**agarrar** · Braços e tentáculos · com regra no livro (`combate.md` l.225-251; \"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "lula-gigante": {
-   "sha256": "ef18177b90c61997539307c56ad9a31376a81aa02b9ee8c1a5253e6639a878ef",
+   "sha256": "79cee638ce09006b8a4eb136a693e3e136828b1e08ec6c7689308c98fab61ffe",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -23029,15 +22757,10 @@
       "danoMedio": 8.5
      }
     ]
-   },
-   "paradas": [
-    "Deslocamento em terra ilegível",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"**agarrar** · Tentáculos · com regra no livro (`combate.md` l.225-251; D-101). O\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "macaco": {
-   "sha256": "9cc900139771c5fd036939c6295e6415d4fc3e96450803490fa99ebdc7965362",
+   "sha256": "03a2b5b28c037e9ba56389311004dc3b3c7ab7f2de83407c72a18e13d3e15b6f",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -23069,6 +22792,7 @@
      "escalada": 2,
      "natacao": 0,
      "voo": 0,
+     "corrida": 0,
      "musculatura": 2
     },
     "vontade": 3,
@@ -23133,13 +22857,10 @@
       "danoMedio": 3.5
      }
     ]
-   },
-   "paradas": [
-    "Sentidos: linha fora do formato: \"Nada que passe do humano com número . A vigilância contra av\""
-   ]
+   }
   },
   "mago-de-batalha": {
-   "sha256": "3e9d0e9c35aebe45716c43951c278072ccd2920b73e5a5ddd6765df3a3e95690",
+   "sha256": "52010f18e46788e724836dafa213ae161f1c4a82c4ea371d066998d16e37102b",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 3,
@@ -23236,7 +22957,7 @@
    }
   },
   "mamute": {
-   "sha256": "239072d7ce690d73633f2d246d074fcddd75e3aec9f76eede211e068e1a1d002",
+   "sha256": "8de556310480f448a30a8f8bd340be9f602192f26aedadb13be65f937c0dc1e0",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -23307,7 +23028,7 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 1
      },
      {
       "nome": "Pisão (ou investida)",
@@ -23355,15 +23076,10 @@
       "danoMedio": 33
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · tromba · com regra no livro **[extrapolação pelo elefante]**\"",
-    "Sentidos: linha fora do formato: \"nada achado . Orelhas pequenas, de cerca de 38 cm de comprim\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "manticora": {
-   "sha256": "fe0ebdc5a0b06bd1caadf67301a981eab81a6904ce4118f143d63a81470537f2",
+   "sha256": "3ce3083aba072096a73f62829e226506adbf699bb25d2eabe1adea5f074d081b",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 0,
@@ -23516,7 +23232,7 @@
    }
   },
   "manto-escuro": {
-   "sha256": "977da607cfd334e2117d04d4388e298a989f69578092cfe64dacbe63d078c72f",
+   "sha256": "0979e63cec54384d085be0ce915c9710235f40ca0777aa4b0bcca104089dcabc",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -23599,7 +23315,7 @@
     "bloqueio": 8,
     "energia": 8,
     "defesaMental": 11,
-    "defesaSocial": 4,
+    "defesaSocial": 10,
     "iniciativa": 2,
     "mana": null,
     "absorcao": {
@@ -23618,7 +23334,7 @@
    }
   },
   "marid": {
-   "sha256": "fc37d71e81d930b64ce3570d268f0d00b673dda76ac45a701d759992a6a9657c",
+   "sha256": "c855fc2fb9d3490f955cce6e3a2eebe0133e03a36340447dc7dbd3026cc1ec11",
    "entrada": {
     "categoria": "elemental",
     "centelha": 5,
@@ -23722,7 +23438,7 @@
    }
   },
   "marilith": {
-   "sha256": "7ae197877d3efe384ed09942079efbe5b1295536bac40b31df680249d64a971b",
+   "sha256": "3dee3a0856088f5032421b52339d517244499e552c45adc1550f7aed23616f22",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 7,
@@ -23839,7 +23555,7 @@
    }
   },
   "mastodonte": {
-   "sha256": "b63f18d1115d299f395cb7012d84ba268105a8487fcbb8b19ed98977e47ee174",
+   "sha256": "433c8e3e7437fa56d5ef8e9944a0b6adebc335069ea6a36cedefbff9b093341f",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -23910,7 +23626,7 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 1
      },
      {
       "nome": "Pisão (ou investida)",
@@ -23958,15 +23674,10 @@
       "danoMedio": 33
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · tromba · com regra no livro **[extrapolação pelo elefante]**\"",
-    "Sentidos: linha fora do formato: \"nada achado . O faro do elefante (`elefante.md`) não foi pas\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "medusa": {
-   "sha256": "07699b2cbae99d0c2201d4572467db42bc6110e564606e52c79c11fe231cf241",
+   "sha256": "1b8236cccb0abbbd138c8cd23a289f3d5122f335d7855c94e7dbcfeb389dde76",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 3,
@@ -24092,7 +23803,7 @@
    }
   },
   "megalodonte": {
-   "sha256": "40aba3eb1825168f43d3d1245e0e7feb4a073631187d0f319d7c14f7ac6adb28",
+   "sha256": "99343589da03a77c4e8e3471d520970ea9bac4851c69251b5a070d2bd5b38edc",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -24188,14 +23899,10 @@
       "danoMedio": 20
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · mordida · regra no livro **[extrapolação]**.\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "mephit": {
-   "sha256": "f2539a8ead62b66c0efbd14794d670e60d1dd12eaae0fe580e138a48f850b05f",
+   "sha256": "30ab152a474b9d43a3f4eb12889a1566d6c9d693cbbe92c6946bf28eefe649b4",
    "entrada": {
     "categoria": "outsider",
     "centelha": 2,
@@ -24318,14 +24025,10 @@
       "jogada": 9
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Corpo semi-etéreo: texto de trabalho no texto de jogo (\"C-039\"; manual 7.5)",
-    "Manobras, Corpo semi-etéreo: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "merfolk": {
-   "sha256": "9d386cc0c0ba39c66b65eb026ff514b111bf23e45c7becacaeb5af30516aa12a",
+   "sha256": "df9efd8aafbe04fb46ab3f03e4f5d14f42aaa4e26ea303121931cfbb4113085a",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -24424,13 +24127,10 @@
       "jogada": 6
      }
     ]
-   },
-   "paradas": [
-    "Deslocamento em terra ilegível"
-   ]
+   }
   },
   "mimico": {
-   "sha256": "81431196003faeadc88a2df53a043147ddb29917c0d06f3a8ccc1d18798265c6",
+   "sha256": "b012c63025c3cf9677e72eb612b2a0d45e32d364f856600912ed7dd6a2ae0065",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 1,
@@ -24462,6 +24162,7 @@
     "vontade": 6,
     "corpo": {
      "postura": "na forma de baú: um bloco no chão",
+     "apoio": "outro",
      "altura": 0.5,
      "largura": 0.5,
      "profundidade": null,
@@ -24543,14 +24244,10 @@
       "jogada": 11
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"massa de carne que imita madeira e metal; abre uma boca de dentes onde seria a t\")",
-    "Manobras, Assumir forma de objeto: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "minotauro": {
-   "sha256": "808730829710b7ec5adfb1e7453a99c79fa4e238659b918c237d068661c9f473",
+   "sha256": "7e24520086f1d4356cfaed92eb3bbcfd844db6d44c83ac229614982c3f033f96",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 1,
@@ -24636,7 +24333,7 @@
     "bloqueio": 8,
     "energia": 9,
     "defesaMental": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 10,
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
@@ -24661,7 +24358,7 @@
    }
   },
   "mohrg": {
-   "sha256": "e0bcc1c3902b4baa8dc9f543f4c1aa8f515bd2950e5b5c0a1c6fb6e7ec6fcb20",
+   "sha256": "53901a904d4912358f285583c73091fb9efc211255effb19d58bcff57e4d564e",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 4,
@@ -24776,7 +24473,7 @@
    }
   },
   "monstro-da-ferrugem": {
-   "sha256": "1e90f5667de55fd00433b613be96bd59c1e0a4848b4ff1e17f6c9132c1aefc01",
+   "sha256": "64d7d76dc00b7b8ab6caa4beba9e3b2c0ffce842fbb8a8714d52f5b7f865ce81",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 1,
@@ -24870,7 +24567,7 @@
     "bloqueio": 10,
     "energia": 8,
     "defesaMental": 12,
-    "defesaSocial": 4,
+    "defesaSocial": 10,
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
@@ -24892,13 +24589,10 @@
       "jogada": 11
      }
     ]
-   },
-   "paradas": [
-    "Sentidos: linha fora do formato: \"faro de metal pelas antenas; visão no escuro das tocas .\""
-   ]
+   }
   },
   "montao-tropecante": {
-   "sha256": "6f9cfc94bd62157383ec82a9b13724e7c2e2627933276a5c6fa4275722c9746b",
+   "sha256": "7fc1fc45e5350c7d61a230d0cf8a372cd9d8d1de8e4f469bb3d2efa8911631b6",
    "entrada": {
     "categoria": "planta",
     "centelha": 0,
@@ -24990,14 +24684,10 @@
       "jogada": 12
      }
     ]
-   },
-   "paradas": [
-    "Manobras, casca vegetal: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
-    "Manobras, emboscada no pântano: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "morcego-atroz": {
-   "sha256": "386cdebecde8615612c3919ca7d2c423cda23121998c4ba1585819476f880eff",
+   "sha256": "cebfc832d7b95551e2d511b921233e28f3e51b41c279ebd5c170fa0a3327d6ba",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -25098,13 +24788,10 @@
       "danoMedio": 6.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Mordida · com regra no livro; dano do agarrão 2 × Força = 6 **[extrapo\""
-   ]
+   }
   },
   "morcego": {
-   "sha256": "e66f74d05b7115b05e279f66700dabd2fa8bd67f86d0dcc1542d6829676fb9bd",
+   "sha256": "0b0b7c669e2a24ccc28f92c38b2db954ebd5bfb40705da119feb32ebdf7f7c3c",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -25203,7 +24890,7 @@
    }
   },
   "moreia-gigante": {
-   "sha256": "d611480ce6ac0dfa8a69bf4815e65ffb71f0a0394e2732b06c4dabeb3a58355d",
+   "sha256": "19abdc7caf0b8c9221313fbbe4ba93379624b96d3a4be3a2b5eb9ece7b4c6796",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -25297,15 +24984,10 @@
       "danoMedio": 10.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · mordida · regra no livro.\"",
-    "Sentidos: linha fora do formato: \": nenhum sentido achado com fonte; fica só a Percepção, sem \"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "morlock": {
-   "sha256": "8e05153e49e452bbe442edc3242c82d36301e4cb1ea1bf516de78eef5d13c3c9",
+   "sha256": "555e2999aee960a543682141d3dfcf2edab389fe321b79f3a42108731cf41532",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -25338,6 +25020,7 @@
     "vontade": 7,
     "corpo": {
      "postura": "de quatro membros, curvado",
+     "apoio": "quadrupede",
      "altura": 1.5,
      "largura": 0.45,
      "profundidade": 0.23,
@@ -25372,7 +25055,7 @@
     "bloqueio": 10,
     "energia": 11,
     "defesaMental": 15,
-    "defesaSocial": 4,
+    "defesaSocial": 12,
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
@@ -25388,13 +25071,10 @@
       "jogada": 11
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"humanoide que anda de quatro, de mãos aderentes de quatro membros, curvado\")"
-   ]
+   }
   },
   "mosassauro": {
-   "sha256": "6fcc7cdd07dda540f98c0861fd06f542572ed7284bde6af44aa38323f39f16a2",
+   "sha256": "d4d78c68294ee702fd78666fe9221b05f34036f7559b147e9980f00ea1128a23",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -25490,11 +25170,7 @@
       "danoMedio": 19
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · mordida · regra no livro **[extrapolação]**.\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "mumia": {
    "sha256": "3dddb0fd8bbd8b3c8d8b923751d401640045acd7b81b1be5b9158e9989142e41",
@@ -25710,7 +25386,7 @@
    }
   },
   "naga-espirita": {
-   "sha256": "831ef1b9add8af19afe481091d1458ec1dcb9408edd718ceb9ef8c2aa33dc2a8",
+   "sha256": "11ca071a8f7e51f0973a70326d4706627b121fce07a081c3c005f8d7e3668d36",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 5,
@@ -25817,15 +25493,10 @@
       "jogada": 21
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Cuspe venenoso: o campo \"boca\" não é ataque, poder natural nem Técnica",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"Feitiços · Artes do livro: Fascinação até o 5 (Ilusão Plena), Fogo até o 4 (Bola\"",
-    "Sentidos: linha fora do formato: \"sentidos aguçados, difícil de emboscar; Prontidão (emboscada\""
-   ]
+   }
   },
   "naga-guardia": {
-   "sha256": "65a56d2f8a497e34e7be8d10321b79c60941d62a562bdd1c9afe7d14f1756192",
+   "sha256": "0840c79f6f2dc86f5a43ee38075c12f28f0eb21aca22640a1a073e9ee5ef2df9",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 5,
@@ -25930,14 +25601,10 @@
       "jogada": 22
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Cuspe à distância: o campo \"boca\" não é ataque, poder natural nem Técnica",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"Feitiços · Artes do livro: Proteção até o 4 (Refúgio), Cura até o 4 (Restauração\""
-   ]
+   }
   },
   "naga-negra": {
-   "sha256": "fbcf92f802cb0df87e606c3bb1ab0b50f39e51cce597f9607a41f1dd703aad78",
+   "sha256": "34286d4530250a637476b9b92c31ab9823d6e32770111a1bdbba77a79e6c0600",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 4,
@@ -26042,11 +25709,7 @@
       "jogada": 19
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"Feitiços · Artes do livro: Raio até o 4 (Corrente), Forças até o 3 (Telecinese) \"",
-    "Sentidos: linha fora do formato: \"leitura de pensamentos (Manobras); visão e audição de uma se\""
-   ]
+   }
   },
   "nalfeshnee": {
    "sha256": "911fe466c44a6d8748974a958046da881132ed5cedc23d1ce4ddb631a3e493b1",
@@ -26174,7 +25837,7 @@
    }
   },
   "neothelid": {
-   "sha256": "ac43402d7d36601186b957afda88b01da527f63a378549369841f2c05f479a8e",
+   "sha256": "f1eff11bb46e56ca6bcc3fde8804eb532c33eafada9b09c5a92ec1061e308b38",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 6,
@@ -26268,16 +25931,7 @@
       "jogada": 26
      }
     ]
-   },
-   "paradas": [
-    "Manobras, línguas tentaculares: P7, texto copia a regra da Rajada; espera lote de ajuste",
-    "Manobras, Sopro ácido: o campo \"boca\" não é ataque, poder natural nem Técnica",
-    "Manobras, Golpe mental: texto de trabalho no texto de jogo (\"C-041\"; manual 7.5)",
-    "Manobras, Poderes mentais: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Manobras, Poderes mentais: o campo \"poder natural (bases Fascinação 3, Forças 3, Conjuração 4)\" não é ataque, poder natural nem Técnica",
-    "Sentidos, sentido cego: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)",
-    "Sentidos, rastro planar: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)"
-   ]
+   }
   },
   "nobre-drow": {
    "sha256": "7d84e255f09bc664cba19943879489a889bd62df5c840f3d3bb0399e22315ea8",
@@ -26371,7 +26025,7 @@
    }
   },
   "objeto-animado": {
-   "sha256": "796fbeafc70aacf20e4707d066f2cc6bde38ed0aa55a37e1f987f59512a75b83",
+   "sha256": "1c3adfa8e37460ed4a8b5061641ecf231d208f412ecd5658b6d825fd61e3135e",
    "entrada": {
     "categoria": "construto",
     "centelha": 1,
@@ -26463,7 +26117,7 @@
    }
   },
   "ogro-mago-oni": {
-   "sha256": "8dfa1d3c7e264583f6bd0fbc37e4f5e0ca76c95ce69868aab8b78fce7642955c",
+   "sha256": "aad8368259ecdc3a5d4ecb302f91825beaf4f70ac7b58fd335e64e190107bc9c",
    "entrada": {
     "categoria": "gigante",
     "centelha": 5,
@@ -26574,7 +26228,7 @@
    }
   },
   "ogro": {
-   "sha256": "c9068c8b021d64cd983bcb6e1e7ca84161934176d4dc23eaca53f10541a52b43",
+   "sha256": "99ccdf4a6cc1f1e6c2aa089fd1135abf3ba1fda0c124132466b5bbaf9e102354",
    "entrada": {
     "categoria": "gigante",
     "centelha": 0,
@@ -26669,7 +26323,7 @@
    }
   },
   "orc": {
-   "sha256": "46adfacafe7e63da1a1545e0437b8769d026cb38b110fed4905d082301bd8415",
+   "sha256": "8c81ad39d960de05bb00e0dcbe8333b56f54f564194753026d7e68828caf4ca1",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -26757,7 +26411,7 @@
    }
   },
   "orca": {
-   "sha256": "7172b709bb69aef7a8a33d9999fce48631febe1f09fe1a4710f39f3120686587",
+   "sha256": "8d8da0a637f3fb2287b8f2944b20a614b9a8c8dc550ebde8d7f5f10fd0f68d70",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -26853,14 +26507,10 @@
       "danoMedio": 17
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · mordida · regra no livro.\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "otyugh": {
-   "sha256": "58247ab4d3eadf46021381c595bcb9773737eb816f53c61fda1beb8a9ea37be0",
+   "sha256": "e04776b12c8c55fd1fe7e89387525ec1caa005f2e51508aa67fa1e3584de72ab",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 2,
@@ -26952,7 +26602,7 @@
     "bloqueio": 8,
     "energia": 11,
     "defesaMental": 15,
-    "defesaSocial": 4,
+    "defesaSocial": 12,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -26974,13 +26624,10 @@
       "jogada": 14
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Camuflagem no covil: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "pegaso": {
-   "sha256": "3c519d11794df6ec7ad8973476e8bd69fbf8c393f6d05f0fbd04cec8d9b8c7bb",
+   "sha256": "858b71c8f0ddf7ac9b60404c4323e10c4cf65681f1ed72cf68d890a15d61c86d",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 4,
@@ -27104,13 +26751,10 @@
       "jogada": 18
      }
     ]
-   },
-   "paradas": [
-    "Especialidade fora do formato: \"- Prontidão +2: os \"sentidos aguçados\" do site (\"+2d6 em Prontidão, di\""
-   ]
+   }
   },
   "perseguidor-invisivel": {
-   "sha256": "8287be580d3e508c24968238b98739225ea8c94446aa9c1e40ee63e07da326fe",
+   "sha256": "14d375446bf631ee29308ff19faef006cffe4c8290cf6a94f31dab186e8b549f",
    "entrada": {
     "categoria": "elemental",
     "centelha": 4,
@@ -27204,10 +26848,7 @@
       "jogada": 18
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Dois socos: P7, texto copia a regra da Rajada; espera lote de ajuste"
-   ]
+   }
   },
   "pesadelo": {
    "sha256": "ac85b6d4307f54e125292c49f7e3d19cbee1a0704e235662647946fa6d78cc63",
@@ -27331,7 +26972,7 @@
    }
   },
   "pixie": {
-   "sha256": "466df4d9a8c7f0b505a581dab1a9f3cd17ae02497e007f7bce16ab4f81d33c69",
+   "sha256": "eca41817b22a5e67dfe38499c2b1228c6ff5bb48dd649d623b4114ae0b322e57",
    "entrada": {
     "categoria": "fada",
     "centelha": 4,
@@ -27453,7 +27094,7 @@
    }
   },
   "plesiossauro": {
-   "sha256": "461984a33d99afeba03dc978e4d0e29b486855ea6da946393f2d74693016bc61",
+   "sha256": "d78279e8cf8a8f4d2050b91f4e6a68d29326646f8935d20b7033f05cb621d502",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -27550,13 +27191,10 @@
       "danoMedio": 6.5
      }
     ]
-   },
-   "paradas": [
-    "Especialidades: a Habilidade \"A Resistência\" não está no catálogo (D-231)"
-   ]
+   }
   },
   "polvo-gigante": {
-   "sha256": "ffd2b56db11bd320f6e2a985743b921cb661236091d2730a0e24c8e48e7a9212",
+   "sha256": "fa9173ca7892efe24b14faf5f694b86f780189475dc0df000bfd2a429f92dc5c",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -27678,16 +27316,10 @@
       "danoMedio": 8.5
      }
     ]
-   },
-   "paradas": [
-    "Especialidades: a Habilidade \"A Resistência\" não está no catálogo (D-231)",
-    "Deslocamento em terra ilegível",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"**constrição = agarrar** · Braços · com regra no livro. Foi assim que a real mat\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "polvo": {
-   "sha256": "7e417a2762678da46d28274f6f77c5022c28dc955fb32b47a91eb93a7a2e0155",
+   "sha256": "deba23c93dcdb75e64bca262cb79d5230b1227ebe3c8e987d8c349051c4981cb",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -27788,15 +27420,10 @@
       "danoMedio": 2.5
      }
     ]
-   },
-   "paradas": [
-    "Deslocamento em terra ilegível",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"**agarrar** · Braços · com regra no livro (`combate.md` l.225-251; D-101). Segur\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "ponei": {
-   "sha256": "7b7f74df07bd1a45a871f1c823c41c8b9ec8e3ceae7840dfb995090094f1e229",
+   "sha256": "a8b2ea07a1d5ef118a51b70597afce55a475d3b8e52f4d7035a1697c5f56fda7",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -27916,13 +27543,10 @@
       "danoMedio": 7.5
      }
     ]
-   },
-   "paradas": [
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "poraque": {
-   "sha256": "9aa1574b0bf0dd36dd396a36a58c9e3c549625a353da731fbfbf3de35357f136",
+   "sha256": "3703228fb19d13eb75c4eea7baf203f724476ea37c4afd1f00a006c3f5a67290",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -28039,12 +27663,7 @@
       "danoMedio": 1.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras, choque na água: regra da ficha sem os oito campos (falta Ativação, Duração, Alcance, Área, Efeito, Dano, Resistência, Limite de uso)",
-    "Manobras, descarga elétrica: regra da ficha sem os oito campos (falta Ativação, Duração, Alcance, Área, Efeito, Dano, Resistência, Limite de uso)",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "pseudodragao": {
    "sha256": "f872c09891bd59a7be207a1d2d3f01910b4d0775f1350dc17dff9d3458d1ca26",
@@ -28299,7 +27918,7 @@
    }
   },
   "quasit": {
-   "sha256": "36d1d292c16683b3fbbfd4300120a7761781aaae2bb6c59efaaf218b2633064a",
+   "sha256": "3fce41b6d75356d807c27c0adc9a95e41623fca62dca7920f6cd2a89806b2cb4",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -28422,7 +28041,7 @@
    }
   },
   "quetzalcoatlo": {
-   "sha256": "98dd8f53738da4052e5e125edbd950abe1e75f1c774a07f7b39f592be3c0f02d",
+   "sha256": "7ad132bcb346ec754b001e59ab05e94ebf7666c8a117270b3c4fa94913b7fdd8",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -28527,7 +28146,7 @@
    }
   },
   "quimera": {
-   "sha256": "7fe10278fcbce95dc2f4383ebd07cc346ec8904b6f86c3c4fab39a0140da636c",
+   "sha256": "6f7aac6b0ab2b9ef8709bebfb9d5e2c7313a13788aead7ba1e13e4f3fc6baa56",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -28665,7 +28284,7 @@
     "bloqueio": 10,
     "energia": 15,
     "defesaMental": 19,
-    "defesaSocial": 6,
+    "defesaSocial": 18,
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
@@ -28702,7 +28321,7 @@
    }
   },
   "ra-gigante": {
-   "sha256": "424669898d84aee9f751ae41f0633a6cc5d247c82cb4c0efd3e3593d4694bead",
+   "sha256": "2955fb5534ae40fb4c5e7a87c4e26e7c9e76dab5cef82eb21ab852e2be3ae7d1",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -28818,14 +28437,10 @@
       "danoMedio": 0
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · bocada · regra do livro: 2 × Força = 6 por manutenção.\"",
-    "Manobras, língua: regra da ficha sem os oito campos (falta Ativação, Duração, Alcance, Área, Efeito, Dano, Resistência, Limite de uso)"
-   ]
+   }
   },
   "ra-venenosa": {
-   "sha256": "93e7497ac3d81568fab87595a45e5760e8817c2bcc73e11fb2322668dff41340",
+   "sha256": "790dad8094f33b9d95d88fa92ace2408899b4dba559338892c705ea494f12cee",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -28894,14 +28509,10 @@
      "impacto": 2
     },
     "ataques": []
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"nenhuma.\"",
-    "Sentidos: linha fora do formato: \"nada achado .\""
-   ]
+   }
   },
   "rakshasa": {
-   "sha256": "d608fa01e3f6b3d86133f9c3860d0d1bd3393bbf021e9f25a627bc3447a77872",
+   "sha256": "ea4012855f97afcb873eff1b0349e525bdd7d938668d7b7baae75f7840cc200b",
    "entrada": {
     "categoria": "outsider",
     "centelha": 5,
@@ -29003,11 +28614,7 @@
       "jogada": 20
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Garras traiçoeiras: P7, texto copia a regra da Rajada; espera lote de ajuste",
-    "Variantes, disfarce: campo \"Altura e Massa\" que o conversor não conhece"
-   ]
+   }
   },
   "rastejador-sombrio": {
    "sha256": "3cdc6fa6ee5ad8eb5e4eaf07e38279fbaab6c9694ca6aa0aa0991d10f11b1340",
@@ -29097,7 +28704,7 @@
    }
   },
   "rato-atroz": {
-   "sha256": "dcd5e5cfba7056c65cfae3e4c3890003c6886173ea93350d2cfdc71b099a7c5f",
+   "sha256": "da60197ebff84ec85b06b19c6c2f154b59b2972fa99f1701de855672609ca883",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -29197,7 +28804,7 @@
    }
   },
   "rato-gigante": {
-   "sha256": "3b439c0bec3c92fc3f45fd3366dd64286f1e2146bb4986803122bb7e3219668b",
+   "sha256": "d4f888528ef54765bd707858b0b75d80c81f3b53fda8c26c963efd0e79f466f2",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -29298,7 +28905,7 @@
    }
   },
   "remorhaz": {
-   "sha256": "2001e7bd41f13dd7a81d4f614348fe61e323c900030b076c26e7267f7584ca35",
+   "sha256": "d0b17458b585d10f2691c84edf9df635334888568903a52751b5287c59b7d9f6",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 4,
@@ -29331,6 +28938,7 @@
     "vontade": 9,
     "corpo": {
      "postura": "muitas patas; ergue a frente para morder",
+     "apoio": "outro",
      "altura": 0.6,
      "largura": 0.98,
      "profundidade": null,
@@ -29375,7 +28983,7 @@
     "bloqueio": 6,
     "energia": 18,
     "defesaMental": 17,
-    "defesaSocial": 4,
+    "defesaSocial": 16,
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
@@ -29391,13 +28999,10 @@
       "jogada": 22
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"artrópode de muitas patas muitas patas; ergue a frente para morder\")"
-   ]
+   }
   },
   "rinoceronte": {
-   "sha256": "7f320c41b5ca21ac934c2d3a6c4b43c57cc7600a92a74a209d1e0334e2f53a6e",
+   "sha256": "98e71c2ffc4602eff27ee1092203cf4ce5b39572f7e1136da0a82613e20273cf",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -29468,7 +29073,7 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 1
      },
      {
       "nome": "Investida",
@@ -29516,15 +29121,10 @@
       "danoMedio": 23
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Investida · com regra no livro\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"empurrar · Investida · com regra no livro\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "roc": {
-   "sha256": "00487353d9d3b400657a2ac73f12f77456c49cdf87689fc7337606e90dca6630",
+   "sha256": "e025f066dd0f02b596a3fc1b489365f453171e3868d66bf6e891cb93995c4a72",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -29664,15 +29264,10 @@
       "danoMedio": 21
      }
     ]
-   },
-   "paradas": [
-    "Especialidades: a Habilidade \"A \"Resistência\" não está no catálogo (D-231)",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Garras (talões) · com regra no livro.\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "sahuagin": {
-   "sha256": "0ef390b2d91e370c99d939c9a2b772df519f6e40e0984ea6ef04d22fb291bdd9",
+   "sha256": "c0be334cafcc433465af87f415f7cd38f67e3e1bae636edf6ab8418741ba0ab6",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -29782,7 +29377,7 @@
    }
   },
   "salamandra": {
-   "sha256": "20511ebb69b3dab806b933d5d850076772090f9cafef5bba8d52e28407ea92ba",
+   "sha256": "c280c40d72786a8bab0177e2b4fff21d0c56183e0ff03a2ca4715bffa62d2c6d",
    "entrada": {
     "categoria": "elemental",
     "centelha": 3,
@@ -29897,14 +29492,10 @@
       "jogada": 15
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Anda na lava: texto de trabalho no texto de jogo (\"C-039\"; manual 7.5)",
-    "Manobras, Anda na lava: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "sanguessuga-gigante": {
-   "sha256": "61e72a5141e3cc5c42e38607369fa3ca8b20587be747196de9e7f02482fb78f3",
+   "sha256": "dd538c7a5f54e9685c4dc57f8345fc3caf907d8adfef3862c72cb83bddd9c60a",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -29999,14 +29590,10 @@
       "danoMedio": 3.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"**fixar = agarrar** · Mordida · com regra no livro (`combate.md` l.225-251; D-10\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "sapo": {
-   "sha256": "7c310f714c83f9543d67b4a0db34f2c8ace6ee800b27760be500b8b64f76734d",
+   "sha256": "be62ae8253a15ad90e0fd1088e19e98d0608371f1e5d0f0c3cfddc08156fefa0",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -30076,15 +29663,10 @@
      "impacto": 3
     },
     "ataques": []
-   },
-   "paradas": [
-    "Especialidade fora do formato: \"- Os sentidos não foram achados; a cor de terra e folhiço não tem font\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"nenhuma.\"",
-    "Sentidos: linha fora do formato: \"nada achado .\""
-   ]
+   }
   },
   "serpente-marinha": {
-   "sha256": "68809a1deb333b14c3882d3de5ec29d89a01313ad2b1273a806bbe46ed2fa7f6",
+   "sha256": "a6b4e60a693bac042938ffaac6f6a8119f5646a573b77424b0c5753bbbdbd4ec",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 5,
@@ -30162,7 +29744,7 @@
     "bloqueio": 8,
     "energia": 22,
     "defesaMental": 17,
-    "defesaSocial": 4,
+    "defesaSocial": 16,
     "iniciativa": 2,
     "mana": null,
     "absorcao": {
@@ -30181,7 +29763,7 @@
    }
   },
   "serpente-venenosa": {
-   "sha256": "066b78aec4422b5ef475f20143ae5be95c3ba31ea9124d3c43fc22e9370c4546",
+   "sha256": "5028b4b88dad7968c599a7953e0cb3bc3a4e0414e0fc3b37525cb8a958b1f10d",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -30280,10 +29862,7 @@
       "danoMedio": 2.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"nenhuma com regra. Não agarra (Força 1, e o agarrão não é o ataque dela) e const\""
-   ]
+   }
   },
   "shaitan": {
    "sha256": "03e793cf6a5ac835a799b87d2c3d465c38c84609dff197aea7edae7513f22b63",
@@ -30383,7 +29962,7 @@
    }
   },
   "skum-ulat-kini": {
-   "sha256": "57db9c7c4792871f6ce0585fc9aa642216eaa497ce87c739fc0707048d5e6b0c",
+   "sha256": "08b656035a309c2712cf95482f71a27603fb726d2b9c7c1d62634568e855eb1a",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -30513,17 +30092,10 @@
       "jogada": 10
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Multiataque aquático: texto de trabalho no texto de jogo (\"D-097\"; manual 7.5)",
-    "Manobras, Sentidos aguçados sob a água: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
-    "Manobras, Resistência ao frio: texto de trabalho no texto de jogo (\"C-039\"; manual 7.5)",
-    "Manobras, Resistência ao frio: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
-    "Sentidos, visão no escuro: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)"
-   ]
+   }
   },
   "soldado-veterano": {
-   "sha256": "0f48deef7cf819e417108ea155af22726e69f51c9dd9b92404ef8cc480d1a2e1",
+   "sha256": "41a7ff50b9d8d3b3e0ed80d2a3cf7d91ae8709085a4745d9ee8c33b9a34358bb",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -30627,7 +30199,7 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 1
      }
     ]
    },
@@ -30675,10 +30247,7 @@
       "danoMedio": 4.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras, derrubar: o campo \"Espada longa ou Punhos\" não é ataque, poder natural nem Técnica"
-   ]
+   }
   },
   "sombra": {
    "sha256": "927f4f1877bb501fa111359e0b3a2b661e584d9aa729706c61f14fd5d6f02d5f",
@@ -30777,7 +30346,7 @@
    }
   },
   "stirge": {
-   "sha256": "d2aca057a81ebf082f409886ccd45cc5536a0388b9ed1171bb95006e757d1481",
+   "sha256": "1748f777bab12f4d13a62f75530af48da7c4d555188b63d743f7a99179375651",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -30863,7 +30432,7 @@
     "bloqueio": 10,
     "energia": 7,
     "defesaMental": 11,
-    "defesaSocial": 4,
+    "defesaSocial": 10,
     "iniciativa": 2,
     "mana": null,
     "absorcao": {
@@ -30882,7 +30451,7 @@
    }
   },
   "sucubo": {
-   "sha256": "7be499cfaf2e9c5e1948d4139d7a0ccc09e011158bb3c809d0a438729452a01d",
+   "sha256": "26133d24b89b2c708fb4ad384cb7f2a564a1c88e8511ee8ea069111f2514a76c",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -30985,7 +30554,7 @@
    }
   },
   "svirfneblin": {
-   "sha256": "27afd0e692735f9080134314c577544bd75cfc73ea3291cdd33a1ead38eff13d",
+   "sha256": "2d9651be689c157aba4d60e14a32b77d24c810c2582cbf85e5aef30d8aacab45",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -31068,13 +30637,10 @@
       "jogada": 9
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Furtividade nas profundezas: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "tarrasque": {
-   "sha256": "96a3de3e48acd2b1adbac21f697d98165049b2ccf4cf8ecb16ca4077738a04dc",
+   "sha256": "293a9c4c2f51baf20e7e4aca2890cb93a766613306ccfad8ac1b05d85396e70f",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 10,
@@ -31187,7 +30753,7 @@
     "bloqueio": 4,
     "energia": 36,
     "defesaMental": 26,
-    "defesaSocial": 8,
+    "defesaSocial": 20,
     "iniciativa": 6,
     "mana": null,
     "absorcao": {
@@ -31215,11 +30781,7 @@
       "jogada": 31
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Carapaça que reflete magia: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")",
-    "Sentidos: linha fora do formato: \"Prontidão 4; sente o que se move pela terra que treme sob el\""
-   ]
+   }
   },
   "tartaruga-dragao": {
    "sha256": "33d1e219190c7d1e3ce33b1fab9d83433aa2237952fda85374557a80f41bba95",
@@ -31365,7 +30927,7 @@
    }
   },
   "tengu": {
-   "sha256": "f1bed3afb503ec05c60e2c7d751971f4ce5bd7b03e79509d835de242eeb711c1",
+   "sha256": "86469d8448fc1fa5ac270eaefffb9812ba370637d4281c06c91ceb16578e0936",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -31471,13 +31033,10 @@
       "jogada": 9
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Golpe certeiro: o campo \"Espada longa ou Bico\" não é ataque, poder natural nem Técnica"
-   ]
+   }
   },
   "tiefling": {
-   "sha256": "01c6bb66a5767a0cc4d3c98d590f042ff5e96c2e48a9beec1f4e0219695bbe3f",
+   "sha256": "0d759f0181afcc38c1b5f2f21a3cbe71b677413f54ed128cd504ac44558ee934",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -31561,15 +31120,10 @@
       "jogada": 9
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Sangue resistente: texto de trabalho no texto de jogo (\"C-039\"; manual 7.5)",
-    "Manobras, Sangue resistente: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
-    "Sentidos, visão no escuro: texto de trabalho no texto de jogo (\"(site)\"; manual 7.5)"
-   ]
+   }
   },
   "tigre-dentes-de-sabre": {
-   "sha256": "f45ae5f170614c0518389df165fa1974c753c7a174b037dff68490036c07bde5",
+   "sha256": "13beea69d033c94c00ce9e2e10119090dc089c39afb983adfc448e8a116cea69",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -31688,15 +31242,10 @@
       "danoMedio": 9.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · patada (os antebraços seguram a presa) · regra do livro. Pela leitura \"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · patada · regra do livro.\"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "tigre": {
-   "sha256": "5a065e667a369a9e4148cbba72d6fe74376053a741c945cd8a694b121fe07a24",
+   "sha256": "8877ee3f76d6f5b5ee99923c8d5bdabfa456a5fb3799e5646e0ebf27264a9390",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -31817,14 +31366,10 @@
       "danoMedio": 8.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · Mordida (na garganta) · regra do livro.\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · Patada · regra do livro.\""
-   ]
+   }
   },
   "tiranossauro": {
-   "sha256": "f93eeb9d5cd021e950852641bcd99c12d07d39c1f5067fa58e9935c91653ef1d",
+   "sha256": "ca619656203cc07727a07738a15a704a889c24674c6063169c069562ba05632e",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -31920,15 +31465,10 @@
       "danoMedio": 19
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · mordida · regra no livro.\"",
-    "Sentidos, faro: texto de trabalho no texto de jogo (\"D-150\"; manual 7.5)",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "triceratops": {
-   "sha256": "f6e2a17c441b640ede2aea5b8e629ee8fb4a3a18c39527597d14bbb7fa34fa51",
+   "sha256": "54eafa26663f9e4816057f1c1c9ab47b6a6c4f5b3afba570eb82726990efb5ab",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -31999,7 +31539,7 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 1
      },
      {
       "nome": "Investida de chifre",
@@ -32047,17 +31587,10 @@
       "danoMedio": 29
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · investida de chifre · regra no livro\"",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"empurrar · investida de chifre · regra no livro\"",
-    "Manobras, atropelar: o campo \"corpo\" não é ataque, poder natural nem Técnica",
-    "Sentidos: linha fora do formato: \"Nada que passe do humano com número. Cabeça mantida a cerca \"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "trogloditas": {
-   "sha256": "818ae32b810a584d62cbed9dac020bca094e93c7a40ccc48ee9c34740024c956",
+   "sha256": "bb1781fea1721fa712536643cdbb110567ed6228b67f08b3fd6ed68a9370bcbf",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -32164,13 +31697,10 @@
       "jogada": 5
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Pele camaleão: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "trol": {
-   "sha256": "db696447f0a5c25901196da798c5defe39f3e9db1db068dba42d11af6077185a",
+   "sha256": "06a4f3589460dd405b04addf88bd8f9dc43e2ef68e3ea56cb2cd7ad39bb6abf3",
    "entrada": {
     "categoria": "gigante",
     "centelha": 1,
@@ -32285,7 +31815,7 @@
    }
   },
   "tubarao-branco": {
-   "sha256": "bd9f92c7e1d656e3d9fd1f634fac82623c80b9d9b0ee7556e3e35a7038667bc0",
+   "sha256": "8ff07625d717ca23c2ad6d78bb4747d264b343c77dbb43354f76fdd3f97b7190",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -32381,15 +31911,10 @@
       "danoMedio": 16
      }
     ]
-   },
-   "paradas": [
-    "Especialidades: a Habilidade \"A Resistência\" não está no catálogo (D-231)",
-    "Manobras, bote vertical: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "unicornio": {
-   "sha256": "80eff632ce1d57e397925e67a0a4b6a55279df6b9cbfada97648ab60b6d9ff16",
+   "sha256": "d4b01e3b8a93c5c81c83ee98dea7156e11fa7deea7ba67402e619d13e5258f69",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 4,
@@ -32418,6 +31943,7 @@
      "sobrevivencia": 4
     },
     "habilidadesSec": {
+     "cura": 2,
      "musculatura": 2
     },
     "vontade": 9,
@@ -32529,15 +32055,10 @@
       "jogada": 19
      }
     ]
-   },
-   "paradas": [
-    "Habilidades: a Habilidade \"Medicina\" não está no catálogo (D-231)",
-    "Especialidade fora do formato: \"- Prontidão +2: os \"sentidos aguçados\" do site (\"+2d6 em Prontidão\").\"",
-    "Manobras, Presença pura: \"poder natural\" sem a base (GUIA-FICHA.md, seção 11: \"poder natural (base Vento 2)\")"
-   ]
+   }
   },
   "urso-das-cavernas": {
-   "sha256": "51ced4d5a445e97d60a3510965e11cb4cfdf0c9cef0c3a6cdb6a2b411aec5e7c",
+   "sha256": "aaf9547436cdfd29eff693841ff3f3314856819e966e269dd971e129a5907380",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -32656,13 +32177,10 @@
       "danoMedio": 11.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar (o \"abraço\") · Patada · regra do livro (`combate.md` l.229-237).\""
-   ]
+   }
   },
   "urso-negro": {
-   "sha256": "9facb0153c3776ffe9abca08ce6b18bd8298e28258efe6e9cac89852f0eb0cd4",
+   "sha256": "2764bfa94af2d6f0c22b25dfcb5c78e306f869af2528484cae9f843530460451",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -32784,7 +32302,7 @@
    }
   },
   "urso-pardo-litoral": {
-   "sha256": "9caf9a121979e39d0cb194a0a3c3682504de546d240fedb1fc2c8898a71f96e0",
+   "sha256": "2e2b69a1250b36902772efe1009f0350a0cd61d530c5075675e70435b1dda49a",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -32903,13 +32421,10 @@
       "danoMedio": 10.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar (o \"abraço\") · Patada · regra do livro (`combate.md` l.229-237).\""
-   ]
+   }
   },
   "urso-pardo": {
-   "sha256": "60b415821024465e7aebb957469b45f15209bae3cbc3e64be4dbf94887ee32b3",
+   "sha256": "c48e92d10879d05aaa2717877ecf82ced339480194be2f0d67f8dc23df177a0c",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -33029,13 +32544,10 @@
       "danoMedio": 10.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar (o \"abraço\") · Patada · regra do livro (`combate.md` l.229-237).\""
-   ]
+   }
   },
   "urso-polar": {
-   "sha256": "0609423b604f303e5afd812b6515d53fac361851e287ef56f0a6c02df7e67723",
+   "sha256": "74f6d8d0fec3e151377f3dac18cc6b192fd513406ff8640d969cc810baff45f3",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -33154,14 +32666,10 @@
       "danoMedio": 11.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · patada (segura a presa com a pata) · regra do livro: 2 × Força = 16 ◆ \"",
-    "Aptidões: Aptidões fora do formato"
-   ]
+   }
   },
   "vampiro": {
-   "sha256": "64976bb9380c382c365e00068b0097a18c275ed026cbb75d3c8776ca4e9c3b3e",
+   "sha256": "27993bad40bfbae83a22cec9a5d2f90852d04e92171b6897158df8ea2902119b",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 5,
@@ -33281,7 +32789,7 @@
    }
   },
   "varano-femea": {
-   "sha256": "c2d244a514945a03f860c6889e6f8495f22e0ef841e7eb538b5e15129b23dba0",
+   "sha256": "1891859a8203292b4b6ee69c9aeae7362ca60b63f43fcd368ae30ed6228fdbbd",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -33319,6 +32827,7 @@
     "vontade": 3,
     "corpo": {
      "postura": "corpo baixo",
+     "apoio": "quadrupede",
      "altura": 0.28,
      "largura": 0.24,
      "profundidade": null,
@@ -33377,15 +32886,10 @@
       "danoMedio": 8.5
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"réptil de corpo baixo corpo baixo\")",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · corpo · regra do livro: \"joga a presa no chão\" (ADW).\"",
-    "Sentidos, faro: texto de trabalho no texto de jogo (\"D-150\"; manual 7.5)"
-   ]
+   }
   },
   "varano": {
-   "sha256": "c1a2d372aa52a09183085a1339e014a9a666a59a69ec5865f74e3b1e855bcb26",
+   "sha256": "3d75413c2ff4a4311789fe566016b319894a6a49de4310452f63f6460aefc066",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -33423,6 +32927,7 @@
     "vontade": 3,
     "corpo": {
      "postura": "corpo baixo",
+     "apoio": "quadrupede",
      "altura": 0.35,
      "largura": 0.3,
      "profundidade": null,
@@ -33481,15 +32986,10 @@
       "danoMedio": 8.5
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"réptil de corpo baixo corpo baixo\")",
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"derrubar · corpo · regra do livro: \"joga a presa no chão\" (ADW).\"",
-    "Sentidos, faro: texto de trabalho no texto de jogo (\"D-150\"; manual 7.5)"
-   ]
+   }
   },
   "vargouille": {
-   "sha256": "d7eaacb6bd19885cf66b7bba1223ad09dc3a349c12e0d9270d1bbff41c72f654",
+   "sha256": "a70c9c511da0a461052b472d96e7192b6212bc781aac25d20f403d46d2a8badb",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -33586,7 +33086,7 @@
    }
   },
   "verme-purpura": {
-   "sha256": "e19e3c25974ac44eac3ff2eb68daa217b9c77ed1e649da27977a83c28d02d183",
+   "sha256": "1fac0b3f3509e0ccf5b723fde4501b3bce8366bbfcf8fc44163b4cb08355943a",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -33680,7 +33180,7 @@
     "bloqueio": 4,
     "energia": 12,
     "defesaMental": 11,
-    "defesaSocial": 4,
+    "defesaSocial": 12,
     "iniciativa": 2,
     "mana": null,
     "absorcao": {
@@ -33705,7 +33205,7 @@
    }
   },
   "vespa-gigante": {
-   "sha256": "3e13233ff98e93ba760ab9da0108a56f4cbdd3550aee5a3090e870b569a66eef",
+   "sha256": "9f9cb3fc620fa065a06e87b2806745369558902332e3b74998d6048178d32b23",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -33827,14 +33327,10 @@
       "danoMedio": 3.5
      }
     ]
-   },
-   "paradas": [
-    "Manobras: linha fora do formato (sem \"livro:\", \"regra da ficha:\", \"sem regra ainda:\" ou \"como luta:\"): \"agarrar · patas · com regra no livro. Segura a presa para ferroar.\"",
-    "Sentidos: linha fora do formato: \"nada achado com número .\""
-   ]
+   }
   },
   "vinha-assassina": {
-   "sha256": "c05bba3e4fd2d47e36aac736e12e46f7e901ed676b0a9d67b9548247609f1d89",
+   "sha256": "aa634228d2d6cad6acd0725fd779371397c1d3747c417afe586d47def324f8ad",
    "entrada": {
     "categoria": "planta",
     "centelha": 1,
@@ -33864,6 +33360,7 @@
     "vontade": 3,
     "corpo": {
      "postura": "enraizada; a moita se ergue para atacar",
+     "apoio": "outro",
      "altura": 1.5,
      "largura": 2,
      "profundidade": 1,
@@ -33923,14 +33420,10 @@
       "jogada": 13
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"caule central enraizado, com vinhas grossas que se erguem e agarram enraizada; a\")",
-    "Manobras, camuflagem: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "vrock": {
-   "sha256": "136be36856c1e4a295d02b9ac5c8d0087954c3f8912902bc43d2f86e578626bb",
+   "sha256": "d27a9b1330ac1aea3fd09e76e243d0346d3298792f0b5db0e20a11e9f97cad72",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -34147,7 +33640,7 @@
    }
   },
   "worg": {
-   "sha256": "ca8465455f5b9e36d536b7c49fe57f77eb718c3457dd560bbf717a6fd85bc7f3",
+   "sha256": "aa45b25f80c9441462da8b523589c73f90ef6beda8a04892ff67e3a97c0438ac",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -34172,7 +33665,8 @@
      "prontidao": 2,
      "resistencia": 4,
      "sociabilidade": 0,
-     "sobrevivencia": 3
+     "sobrevivencia": 3,
+     "manha": 1
     },
     "habilidadesSec": {
      "musculatura": 2
@@ -34226,7 +33720,7 @@
     "bloqueio": 8,
     "energia": 9,
     "defesaMental": 14,
-    "defesaSocial": 6,
+    "defesaSocial": 14,
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
@@ -34242,10 +33736,7 @@
       "jogada": 10
      }
     ]
-   },
-   "paradas": [
-    "Habilidades: a Habilidade \"Enganação\" não está no catálogo (D-231)"
-   ]
+   }
   },
   "wyvern": {
    "sha256": "f45649918e76b23fa4a51fceaf6908f0b1c73ec20e70525f61e8648257918c35",
@@ -34420,7 +33911,7 @@
    }
   },
   "xill": {
-   "sha256": "686f3ec6aee0c67d401dbeaef773816065dfad735fe095ac976f79c72b3a24b3",
+   "sha256": "5edae04c8898cc75aad235b80c9e03cd6b56ec4558b234744fd17ff3ef49ab1f",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -34557,7 +34048,7 @@
    }
   },
   "xorn": {
-   "sha256": "76ce59b73762f5e8c1a3d25c1c73b0bd5b4986a46d5f34b315b12f91d3487f50",
+   "sha256": "4ad8c269e75be037ad2ba88e08370e079c47b215776aec866cb43352c27ffbb1",
    "entrada": {
     "categoria": "elemental",
     "centelha": 3,
@@ -34588,6 +34079,7 @@
     "vontade": 8,
     "corpo": {
      "postura": "esfera sobre três pernas curtas",
+     "apoio": "outro",
      "altura": 1.5,
      "largura": 0.95,
      "profundidade": null,
@@ -34670,13 +34162,10 @@
       "jogada": 17
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"esfera sobre três pernas curtas, com três braços de garra no alto esfera sobre t\")"
-   ]
+   }
   },
   "yeti": {
-   "sha256": "0d36e2810b61ac3a8ed15ac0056894d5bea235bdf6c18a9f096df67a67c36426",
+   "sha256": "2f9546b91fbb58e2ecedbe9ad82cfb7b806356e3912b59343ecc42227f077794",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -34768,15 +34257,10 @@
       "jogada": 15
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Escalador nato e furtivo na neve: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste",
-    "Manobras, Imunidade ao gelo: texto de trabalho no texto de jogo (\"C-039\"; manual 7.5)",
-    "Manobras, Imunidade ao gelo: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "zumbi-humano": {
-   "sha256": "201b61effcd5fa7695d9751f698e8013a50495d8e7eb2afb1f07b221724f06bc",
+   "sha256": "3c36ed44a88885e251ba62cf47e8bee7bd2630e0674c88a31d6b708a0eb1b096",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 1,

@@ -105,8 +105,7 @@
       "arte": {
         "id": "fogo",
         "nivel": 1
-      },
-      "texto": "Faísca, dardo flamejante de 1d6 num alvo a 1 m, por 1 Mana"
+      }
     },
     {
       "nome": "chama que gruda",
@@ -115,8 +114,7 @@
       "arte": {
         "id": "fogo",
         "nivel": 2
-      },
-      "texto": "Chama Aderente, dardo de fogo de 1d6 que gruda e queima por mais de 6 Ticks e acende à distância, por 2 Mana"
+      }
     },
     {
       "nome": "acende e apaga",
@@ -125,14 +123,13 @@
       "arte": {
         "id": "fogo",
         "nivel": 1
-      },
-      "texto": "acende ou apaga uma tocha com a mão, esquenta o corpo numa noite fria"
+      }
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação"
+      "texto": "o traço social do Humano"
     }
   ],
   "comoLuta": [

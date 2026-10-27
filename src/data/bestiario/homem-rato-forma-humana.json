@@ -1,36 +1,28 @@
 {
-  "ordem": 254,
   "id": "homem-rato-forma-humana",
   "idAntigo": "mon-wererat-human-form",
   "nome": "Homem-Rato",
   "nomeIngles": "Lycanthrope, Wererat",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humanoide",
+  "categoria": "humanoide",
   "papel": "soldado",
-  "conceito": "humanoide Médio",
-  "descricao": "Homem-rato das guildas escondidas sob a cidade: de dia vive como gente comum, à noite ataca de surpresa com espada e dentes. Só a prata o fere de verdade, e quem sobrevive à mordida pode virar homem-rato.",
-  "tags": [
-    "humanoide",
-    "centelha"
-  ],
-  "imagem": "bestiario/homem-rato-forma-humana_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,7 m de altura",
-    "peso": "65 kg",
-    "largura": 0.42,
-    "altura": 1.7
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 2,
   "centelha": 2,
-  "attrs": {
+  "formaPrincipal": {
+    "id": "hibrida",
+    "nome": "forma híbrida"
+  },
+  "corpo": {
+    "postura": "bípede, de pé, curvado",
+    "apoio": "bipede",
+    "altura": 1.7,
+    "largura": 0.42,
+    "profundidade": 0.21,
+    "comprimento": null,
+    "massa": 65,
+    "area": 0.63
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 3,
     "destreza": 5,
     "vigor": 4,
@@ -41,7 +33,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 3,
     "briga": 3,
     "bloqueio": 1,
@@ -53,126 +45,191 @@
     "integridade": 2,
     "manha": 2
   },
-  "skills2": {
-    "escalada": 2
+  "habilidadesSec": {
+    "escalada": 2,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "armas",
-      "foco": "alvo desprevenido",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "esgoto e beco",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
-    "compaixao": 2,
-    "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
-  },
-  "willpower": 7,
-  "aparencia": 3,
-  "ataques": [
-    {
-      "nome": "Espada curta",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 2,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
-    },
-    {
-      "nome": "Mordida",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
-    }
-  ],
-  "fraquezas": [
-    "prata"
-  ],
-  "resistencias": [
-    "corte",
-    "perfuracao",
-    "impacto"
-  ],
-  "imunidades": [],
-  "transforma": {
-    "principal": "hibrida",
-    "formas": [
+  "especialidades": {
+    "prontidao": [
       {
-        "id": "hibrida",
-        "nome": "forma híbrida"
-      },
+        "foco": "faro",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "armas": [
       {
-        "id": "humana",
-        "nome": "forma humana"
-      },
-      {
-        "id": "rato",
-        "nome": "forma de rato"
+        "foco": "alvo desprevenido",
+        "valor": 1,
+        "origem": "livro"
       }
     ]
   },
-  "habilidades": [
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 2
+  },
+  "vontade": 7,
+  "aparencia": 3,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-curta"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
+  "ataques": [
+    {
+      "nome": "Espada curta",
+      "arma": "espada-curta",
+      "habilidade": "armas"
+    },
+    {
+      "nome": "Mordida",
+      "parte": "dentes-de-rato",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
+    }
+  ],
+  "habilidadesEspeciais": [
     {
       "nome": "Forma mutável",
-      "descricao": "Ativação: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Efeito: vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia. Vale em todas as formas.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce",
+      "duracao": "até ele voltar com outra ação; na lua cheia, até o sol nascer",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade fora da lua cheia"
     },
     {
       "nome": "Mordida maldita",
-      "descricao": "Mordida: Ativação: a Mordida que fere (1 de dano ou mais depois da Absorção). Duração: permanente, se pegar. Alcance: o do corpo a corpo. Área: um alvo. Efeito: quem sobrevive à mordida e não trata a ferida até o fim do dia vira homem-rato na próxima lua cheia. Dano: o da Mordida. Resistência: corpo, Vigor + Resistência contra Dificuldade 10; a maldição só não pega se a ferida for tratada a tempo. Limite de uso: um por golpe. Vale só na forma híbrida e na forma de rato.",
-      "classe": "regra da ficha"
+      "formas": [
+        "hibrida",
+        "rato"
+      ],
+      "classe": "regra da ficha",
+      "ataque": "Mordida",
+      "ativacao": "a Mordida que fere (1 de dano ou mais depois da Absorção)",
+      "duracao": "permanente, se pegar",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "quem sobrevive à mordida e não trata a ferida até o fim do dia vira homem-rato na próxima lua cheia",
+      "dano": "o da Mordida",
+      "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; a maldição só não pega se a ferida for tratada a tempo",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "Ataque furtivo",
-      "descricao": "Espada curta ou Mordida: Ativação: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o golpe entra onde o alvo não guarda. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe. Vale em todas as formas.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado",
+      "duracao": "instantânea",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "o golpe entra onde o alvo não guarda",
+      "dano": "+1d6 no dano do golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "Esquiva sobrenatural",
-      "descricao": "Ativação: um efeito de área que pede esquiva. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Efeito: se passa na esquiva, não leva dano nenhum, em vez de metade. Dano: nenhum. Resistência: esquiva, a do próprio efeito. Limite de uso: nenhum. Vale em todas as formas.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "um efeito de área que pede esquiva",
+      "duracao": "instantânea",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "se passa na esquiva, não leva dano nenhum, em vez de metade",
+      "dano": "nenhum",
+      "resistencia": "esquiva, a do próprio efeito",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Afinidade com ratos",
-      "descricao": "Ativação: uma ação, Velocidade 6, um guincho ou um gesto. Duração: até o fim da cena. Alcance: onde o guincho é ouvido. Área: os ratos comuns e gigantes que o ouvem. Efeito: eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. Dano: nenhum. Resistência: nenhum. Limite de uso: um enxame ou até 6 ratos gigantes por vez. Vale em todas as formas.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "ladrão da guilda",
-      "descricao": "de dia é gente comum; à noite ataca de surpresa no beco, morde para amaldiçoar e foge pelo esgoto na forma de rato. Vale em todas as formas.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "faro: de rato; Prontidão (faro) +2. Vale em todas as formas. · visão e audição: apuradas. Vale em todas as formas."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6, um guincho ou um gesto",
+      "duracao": "até o fim da cena",
+      "alcance": "onde o guincho é ouvido",
+      "area": "os ratos comuns e gigantes que o ouvem",
+      "efeito": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um enxame ou até 6 ratos gigantes por vez"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "ladrão da guilda",
+      "formas": "todas",
+      "texto": "de dia é gente comum; à noite ataca de surpresa no beco, morde para amaldiçoar e foge pelo esgoto na forma de rato."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "de rato; Prontidão (faro) +2",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "apuradas",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "humana, com a astúcia de rato",
+    "tracos": "pelo pardo, focinho e dentes de rato, cauda nua e fina, mãos de garras curtas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "numa guilda escondida, com outros homens-rato e ratos",
+    "atividade": "noturno",
+    "dieta": "onívoro",
+    "caca": "rouba e contrabandeia",
+    "dianteDeGente": "de dia, vive como mercador, ladrão ou guarda; esconde o que é"
+  },
+  "ecologia": {
+    "terreno": [
+      "urbano"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Homem-rato das guildas escondidas sob a cidade: de dia vive como gente comum, à noite ataca de surpresa com espada e dentes. Só a prata o fere de verdade, e quem sobrevive à mordida pode virar homem-rato.",
   "lore": [
     {
       "titulo": "Sociedade nas Sombras",
@@ -185,79 +242,165 @@
     {
       "titulo": "Disfarce Perfeito",
       "texto": "Durante o dia, muitos vivem vidas comuns como mercadores, ladrões ou guardas, escondendo a fera sob a pele humana."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: numa guilda escondida, com outros homens-rato e ratos."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Homem-rato de 1,7 m: espada curta ou mordida (dano médio 6,5 cada), +1d6 contra quem não o viu, e a mordida pode passar a maldição. 37 PV, Esquiva e Bloqueio 14. Corte, perfuração e impacto fazem metade; a prata passa. Contra área, se esquiva sai ileso. Chama os ratos e foge pelo esgoto na forma de rato."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Urban"
-    ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Wererat (Human Form)",
-    "cr": "2",
-    "tipo": "humanoide Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 13,
-      "des": 15,
-      "con": 14,
-      "int": 10,
-      "sab": 16,
-      "car": 6
+  "imagens": [
+    "bestiario/homem-rato-forma-humana_criatura.webp"
+  ],
+  "formas": [
+    {
+      "id": "humana",
+      "nome": "forma humana",
+      "couraca": 0,
+      "aparencia": 4,
+      "corpo": {
+        "postura": "bípede, de pé"
+      },
+      "atributos": {
+        "destreza": 4
+      },
+      "fisiologia": {
+        "camuflagem": "passa por gente comum",
+        "tracos": "homem magro de olhos inquietos"
+      },
+      "ataques": [
+        {
+          "nome": "Espada curta",
+          "arma": "espada-curta",
+          "habilidade": "armas"
+        }
+      ]
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 37,
-    "esquiva": 14,
-    "bloqueio": 14,
-    "defesa": 15,
-    "defesaMental": 16,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 2,
-      "perfuracao": 2
-    },
-    "couracaNivel": 1,
-    "pesoErguido": 117.34,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
+    {
+      "id": "rato",
+      "nome": "forma de rato",
+      "couraca": 0,
+      "equipamento": {
+        "arsenal": []
+      },
+      "deslocamento": {
+        "terra": {
+          "batalha": 7,
+          "arranque": 9,
+          "corrida": 15
+        }
+      },
+      "corpo": {
+        "postura": "quadrúpede",
+        "apoio": "quadrupede",
+        "altura": 0.28,
+        "comprimento": 1.4,
+        "comprimentoSemCauda": 0.75,
+        "largura": 0.21,
+        "profundidade": null,
+        "massa": 12.38,
+        "area": 0.1475,
+        "posturaDoTamanho": "de lado",
+        "linhaPV": "acima"
+      },
+      "atributos": {
+        "forca": 2,
+        "destreza": 3,
+        "vigor": 5
+      },
+      "fisiologia": {
+        "camuflagem": "passa por um rato gigante comum",
+        "tracos": "rato gigante de pelo pardo e cauda nua e fina"
+      },
+      "ataques": [
+        {
+          "nome": "Mordida",
+          "parte": "dentes-de-rato",
+          "habilidade": "briga",
+          "classe": "leve",
+          "pgr": [
+            1,
+            1,
+            3
+          ],
+          "dado": "1d6-2",
+          "multiplicadorForca": 1,
+          "tipoDano": "perfuracao",
+          "nivelPerfuracao": 0,
+          "acerto": 1,
+          "bloqueiaComoArma": null
+        }
+      ]
+    }
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "prata",
+        "formas": "todas"
       }
-    },
-    "bloqueioArma": 1
+    ],
+    "resistencias": [
+      {
+        "tipo": "corte",
+        "formas": [
+          "hibrida"
+        ]
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": [
+          "hibrida"
+        ]
+      },
+      {
+        "tipo": "impacto",
+        "formas": [
+          "hibrida"
+        ]
+      }
+    ],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`forma principal`: a híbrida (D-201); o id segue `homem-rato-forma-humana` até a revisão final do autor",
-    "`destreza`: 5 na híbrida, 4 na humana (a do site) **[provisório]**",
-    "`aparencia`: 3 na híbrida; o site tinha 4, que fica na humana **[provisório]**",
-    "`couraca`: nível 1 pela pele grossa **[provisório]**",
-    "`forma mutável`, `mordida maldita`, `ataque furtivo`, `esquiva sobrenatural`, `afinidade com ratos`: números sugeridos pela ficha (D-197)",
-    "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos; a Mordida maldita só na híbrida e na de rato, porque a humana não morde; o Ataque furtivo em todas, pela Espada curta ou pela Mordida; o ladrão da guilda em todas, porque a linha já conta as três; o faro e a visão em todas, como o site dizia; a Camuflagem e os Traços da humana e da de rato na linha delas em Variantes. Aptidões iguais e nenhuma Arte **[provisório]**"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Forma mutável",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Mordida maldita",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Ataque furtivo",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Esquiva sobrenatural",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Afinidade com ratos",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "atributos.destreza",
+      "motivo": "Degrau 5, \"Pico humano\": a forma de rato é mais rápida e esquiva que a humana (4, a do site); 5 na híbrida, 4 na humana (a do site)"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "Degrau 3, \"Muito feio\": focinho, dentes e pelo de rato num corpo de homem (a Aparência mede a beleza, D-205). A forma humana fica com o 4 do site (Variante); 3 na híbrida; o site tinha 4, que fica na humana"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: a \"pele grossa\" da forma híbrida (site) . As resistências são as do site: \"absorve boa parte dos golpes comuns; apenas prata a fere por completo\" (linha Elementos), como no lobisomem; nível 1 pela pele grossa"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Sociedade nas Sombras)"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "formas.rato",
+      "motivo": "A referência genérica ao rato gigante foi explicitada. Medidas, Força, Destreza, Vigor e Couraça são os do molde; a mente, o treino e Musculatura 0 ficam os do homem, pelo mesmo critério das formas do lobisomem. Centelha 2. PV 30 pela linha superior da zona de transição, como o corpo resistente do rato gigante. Peso pela R15 com Musculatura 0, 48,55 kg, em vez dos 71,96 kg do rato de Musculatura 2; Referência antes implícita; escolhas físicas explícitas na Variante. A escolha da linha superior de PV precisa ser lida na forma, como na principal."
+    }
   ]
 }

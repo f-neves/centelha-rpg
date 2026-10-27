@@ -109,22 +109,10 @@
       "limiteDeUso": "uma ordem por ação dele"
     },
     {
-      "nome": "Placa e escudo",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "a placa completa e o heater na frase da linha Absorção; a Penalidade −3 pesa no movimento"
-    },
-    {
-      "nome": "Pico do mortal",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "os números de humano treinado no topo da régua (Integridade 6, Armas 4)"
-    },
-    {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação"
+      "texto": "o traço social do Humano"
     }
   ],
   "comoLuta": [

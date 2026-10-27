@@ -1,37 +1,28 @@
 {
-  "ordem": 148,
   "id": "bralani",
   "idAntigo": "mon-bralani",
   "nome": "Bralani",
   "nomeIngles": "Bralani",
-  "categoria": "Outsider",
-  "categoriaLegada": "Exterior",
+  "categoria": "outsider",
   "papel": "elite",
-  "conceito": "exterior Médio",
-  "descricao": "Espírito do vento, o mais selvagem dos espíritos do bem: vira um redemoinho de poeira, neve ou areia, corta com lâminas de ar e cura os aliados com o vento. Na outra forma, é um elfo alto que luta com espada.",
-  "tags": [
-    "exterior",
-    "centelha"
-  ],
-  "imagem": "bestiario/bralani_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura",
-    "peso": "80 kg",
-    "largura": 0.45,
-    "altura": 1.8
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 10
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-  },
+  "ameaca": 4,
   "centelha": 4,
-  "attrs": {
+  "formaPrincipal": {
+    "id": "vento",
+    "nome": "forma de vento"
+  },
+  "corpo": {
+    "postura": "redemoinho de pé; voador",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.45,
+    "profundidade": 0.23,
+    "comprimento": null,
+    "massa": 80,
+    "area": 0.72
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 6,
     "destreza": 5,
     "vigor": 5,
@@ -42,7 +33,7 @@
     "perspicacia": 4,
     "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "armas": 3,
     "briga": 5,
     "bloqueio": 1,
@@ -51,119 +42,200 @@
     "prontidao": 2,
     "integridade": 4,
     "persuasao": 2,
-    "sobrevivencia": 2
+    "sobrevivencia": 2,
+    "sociabilidade": 1
   },
-  "skills2": {
+  "habilidadesSec": {
     "voo": 4,
-    "disparo": 3
+    "disparo": 3,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "briga",
-      "foco": "golpe de vento",
-      "valor": 2,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "persuasao",
-      "foco": "mediar",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
-    "compaixao": 2,
-    "conviccao": 4,
-    "temperanca": 2,
-    "valor": 4
-  },
-  "willpower": 9,
-  "aparencia": 6,
-  "ataques": [
-    {
-      "nome": "Golpe de vento",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 6,
-      "classe": "media"
-    },
-    {
-      "nome": "Rajada cortante",
-      "atrib": "vigor",
-      "pericia": "disparo",
-      "dado": 3,
-      "mao": 1,
-      "tipo": "corte",
-      "ticks": 7,
-      "forca": false,
-      "classe": "distancia",
-      "distancia": true
-    }
-  ],
-  "fraquezas": [],
-  "resistencias": [
-    "corte",
-    "perfuracao",
-    "impacto"
-  ],
-  "imunidades": [],
-  "transforma": {
-    "principal": "vento",
-    "formas": [
+  "especialidades": {
+    "briga": [
       {
-        "id": "vento",
-        "nome": "forma de vento"
-      },
-      {
-        "id": "elfica",
-        "nome": "forma élfica"
+        "foco": "golpe de vento",
+        "valor": 2,
+        "origem": "livro"
       }
     ]
   },
-  "habilidades": [
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
+    "compaixao": 2,
+    "conviccao": 4,
+    "temperanca": 2
+  },
+  "vontade": 9,
+  "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "voo": {
+      "batalha": 10
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
+  "ataques": [
     {
-      "nome": "Forma de vento",
-      "descricao": "Ativação: uma ação, Velocidade 6. Duração: até ele voltar com outra ação. Alcance: o próprio corpo. Área: não se aplica. Efeito: vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Vale em todas as formas.",
-      "classe": "regra da ficha"
+      "nome": "Golpe de vento",
+      "parte": "o-proprio-redemoinho",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Rajada cortante",
-      "descricao": "poder natural (base Vento 3) · Rajada cortante: Ativação: uma ação, Velocidade 7, a jogada da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Efeito: uma lâmina de ar corta todos na linha. Dano: 3d6 + Centelha, Corte. Resistência: corpo, Vigor + Resistência contra a jogada; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks. Vale só na forma de vento.",
-      "classe": "regra da ficha"
+      "parte": "lamina-de-ar",
+      "habilidade": "disparo",
+      "classe": "distancia",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "3d6",
+      "multiplicadorForca": 0,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    }
+  ],
+  "habilidadesEspeciais": [
+    {
+      "nome": "Forma de vento",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até ele voltar com outra ação",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
+    },
+    {
+      "nome": "Rajada cortante",
+      "formas": [
+        "vento"
+      ],
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "vento",
+        "nivel": 3
+      },
+      "ataque": "Rajada cortante",
+      "ativacao": "uma ação, Velocidade 7, a jogada da tabela (Vigor + Disparo)",
+      "duracao": "instantânea",
+      "alcance": "18 m à frente",
+      "area": "linha de 18 m",
+      "efeito": "uma lâmina de ar corta todos na linha",
+      "dano": "3d6 + Centelha, Corte",
+      "resistencia": "corpo, Vigor + Resistência contra a jogada; quem passa leva metade",
+      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
       "nome": "Ventos a serviço",
-      "descricao": "poder natural (base Vento 2): Ativação: uma ação, Velocidade 6. Duração: o ofuscar e a ilusão, até o fim da cena; o resto, instantâneo. Alcance: 18 m. Área: um alvo, ou uma imagem de até 3 m. Efeito: à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado. Dano: nenhum; a cura devolve 2d6 + Centelha PV. Resistência: corpo, Vigor + Resistência contra Dificuldade 10, para o ofuscar e a rajada. Limite de uso: três vezes por cena, somados. Vale em todas as formas.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "vento",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "o ofuscar e a ilusão, até o fim da cena; o resto, instantâneo",
+      "alcance": "18 m",
+      "area": "um alvo, ou uma imagem de até 3 m",
+      "efeito": "à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado",
+      "dano": "nenhum; a cura devolve 2d6 + Centelha PV",
+      "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10, para o ofuscar e a rajada",
+      "limiteDeUso": "três vezes por cena, somados"
     },
     {
       "nome": "Resistência mágica",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. Vale em todas as formas.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Pele ao vento",
-      "descricao": "resistência a Corte, Perfuração e Impacto (Elementos; metade do dano). Vale em todas as formas.",
-      "classe": "livro"
-    },
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "soma +2 na Defesa Mental e nas resistências contra Artes",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "tempestade arisca",
-      "descricao": "entra na luta pelo gosto da briga, corta de longe com a rajada, ofusca o mais perigoso e cura os aliados; some no vento quando enjoa. Vale só na forma de vento.",
-      "classe": "como luta"
+      "formas": [
+        "vento"
+      ],
+      "texto": "entra na luta pelo gosto da briga, corta de longe com a rajada, ofusca o mais perigoso e cura os aliados; some no vento quando enjoa."
     },
     {
       "nome": "elfo de espada",
-      "descricao": "entra na luta pelo gosto da briga, com a espada longa; ofusca o mais perigoso, cura os aliados e vira vento para cortar de longe ou para sumir. Vale só na forma élfica.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão e audição: as de um elfo; sente o vento à volta. Vale em todas as formas."
+      "formas": [
+        "elfica"
+      ],
+      "texto": "entra na luta pelo gosto da briga, com a espada longa; ofusca o mais perigoso, cura os aliados e vira vento para cortar de longe ou para sumir."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um elfo; sente o vento à volta",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "não precisa",
+    "prendeRespiracao": "não precisa",
+    "camuflagem": "confundido com um redemoinho de poeira, neve ou areia (site)",
+    "mente": "inteligente; selvagem e alegre",
+    "tracos": "redemoinho de poeira, neve ou areia de 1,8 m com feições élficas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho ou em pequenos grupos",
+    "atividade": "qualquer hora; segue as tempestades",
+    "dieta": "não precisa comer; gosta de boa comida e vinho",
+    "caca": "não se aplica",
+    "dianteDeGente": "media disputas; busca uma boa luta"
+  },
+  "ecologia": {
+    "terreno": [
+      "céu",
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Espírito do vento, o mais selvagem dos espíritos do bem: vira um redemoinho de poeira, neve ou areia, corta com lâminas de ar e cura os aliados com o vento. Na outra forma, é um elfo alto que luta com espada.",
   "lore": [
     {
       "titulo": "Temperamento",
@@ -176,82 +248,103 @@
     {
       "titulo": "Sociedade",
       "texto": "Não precisam comer, mas apreciam boa comida e vinho especiado, e gostam de mediar disputas entre mortais, espíritos da natureza e seres elementais, ainda que prefiram deixar a negociação final para os próprios interessados."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: sozinho ou em pequenos grupos."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, 40 PV, Impacto 9, Corte e Perfuração 4; armas comuns fazem metade. Esquiva e Bloqueio 14. Golpe de vento (13,5) ou rajada em linha de 18 m (3d6 + 4, metade a quem resiste), a cada 24 Ticks. Três vezes por cena ofusca, empurra, cria ilusão ou cura. Voa a 10. Defesa Mental 25."
     }
   ],
-  "ecologia": {
-    "tipo": "Monitor",
-    "terreno": [
-      "Sky",
-      "Any"
-    ],
-    "clima": [
-      "Extraplanar"
-    ]
-  },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Bralani",
-    "cr": "6",
-    "tipo": "exterior Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 20,
-      "des": 18,
-      "con": 19,
-      "int": 13,
-      "sab": 14,
-      "car": 15
-    },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 40,
-    "esquiva": 14,
-    "bloqueio": 14,
-    "defesa": 14,
-    "defesaMental": 25,
-    "defesaSocial": 12,
-    "absorcao": {
-      "impacto": 9,
-      "corte": 4,
-      "perfuracao": 4
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 238.85,
-    "deslocamento": {
-      "terra": {
-        "batalha": 4,
-        "arranque": 6,
-        "corrida": 9
+  "imagens": [
+    "bestiario/bralani_criatura.webp"
+  ],
+  "formas": [
+    {
+      "id": "elfica",
+      "nome": "forma élfica",
+      "equipamento": {
+        "arsenal": [
+          {
+            "ref": "a:espada-longa"
+          }
+        ]
       },
-      "voo": {
-        "batalha": 10
-      }
+      "deslocamento": {
+        "voo": {
+          "batalha": 0
+        }
+      },
+      "fisiologia": {
+        "prendeRespiracao": "a de um elfo",
+        "camuflagem": "passa por um elfo",
+        "tracos": "elfo alto de cabelo prateado"
+      },
+      "ataques": [
+        {
+          "nome": "Espada longa",
+          "arma": "espada-longa",
+          "habilidade": "armas"
+        }
+      ]
     }
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [
+      {
+        "tipo": "corte",
+        "formas": "todas"
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      },
+      {
+        "tipo": "impacto",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`formas`: forma de vento principal e forma élfica (D-201) **[provisório]**",
-    "`massa`: 80 kg também no redemoinho **[extrapolação]**",
-    "`pele ao vento`: resistência a Corte, Perfuração e Impacto **[provisório]**",
-    "`temperança`: 2; o site tinha 3 **[provisório]**",
-    "`forma de vento`, `rajada cortante`, `ventos a serviço`, `resistência mágica`: números sugeridos pela ficha (D-197)",
-    "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos; a Rajada cortante só na forma de vento, como já dizia a Forma de vento; os Ventos a serviço, a Resistência mágica e a Pele ao vento em todas (a forma élfica não muda os Elementos na Variante, e herda as resistências); o \"como luta\" em duas linhas; a Respiração, a Camuflagem e os Traços da forma élfica na linha dela em Variantes. Aptidões iguais e nenhuma Arte nas duas **[provisório]**"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Forma de vento",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Rajada cortante",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Ventos a serviço",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência mágica",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidades.armas",
+      "motivo": "A lâmina da forma élfica (o site gravava tudo em `briga`)"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "O corpo de base (D-192, manual 4.2): o redemoinho guarda o tamanho do corpo"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Da ficha publicada ; o vento leva junto a matéria do corpo (D-187); 80 kg também no redemoinho"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Corpo de vento: nível 0. A \"Pele ao Vento\" do site (\"absorve boa parte de golpes de ferro comum\") vai em Elementos, como resistência às três armas"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": ""
+    },
+    {
+      "campo": "formas.elfica",
+      "motivo": "O corpo élfico do site: luta com a lâmina e anda; voa e corta com o vento só na forma de vento"
+    },
+    {
+      "campo": "ataques.Rajada cortante",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    }
   ]
 }

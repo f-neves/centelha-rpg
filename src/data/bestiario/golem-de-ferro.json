@@ -161,12 +161,6 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "efeito": "os socos de ferro ameaçam ferimento grave com uma facilidade incomum; o livro não tem regra de golpe que fere grave com mais facilidade"
-    },
-    {
-      "nome": "casco de ferro",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "resistência a Corte e Perfuração (metade do dano). Sem regra ainda: só a arma de adamantina o fere por inteiro"
     }
   ],
   "comoLuta": [

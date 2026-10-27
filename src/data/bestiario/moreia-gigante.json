@@ -1,31 +1,25 @@
 {
-  "ordem": 201,
   "id": "moreia-gigante",
   "idAntigo": "mon-giant-moray-eel",
   "nome": "Moreia-gigante",
   "nomeIngles": "Giant moray eel",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Grande",
-  "descricao": "Uma moreia do tamanho de um barco a remo, numa caverna submersa: espera, morde o que passa na boca da toca e puxa para dentro. Por que cresceu tanto fica na descrição.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": null,
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "5,5 m de comprimento, 0,46 m de altura",
-    "peso": "345 kg",
-    "comprimento": 5.5,
-    "largura": 0.37,
-    "altura": 0.46
-  },
-  "locomocao": {
-    "natacao": 5
-  },
+  "ameaca": 4,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "nadador",
+    "apoio": "outro",
+    "altura": 0.46,
+    "largura": 0.37,
+    "profundidade": null,
+    "comprimento": 5.5,
+    "massa": 345,
+    "area": 2.005,
+    "posturaDoTamanho": "de lado"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 7,
     "destreza": 3,
     "vigor": 4,
@@ -36,78 +30,135 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 2,
+    "atletismo": 0,
     "furtividade": 3,
     "integridade": 3,
     "prontidao": 2,
     "resistencia": 3,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
     "natacao": 2,
+    "voo": 0,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "na toca",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "na toca",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "nado": {
+      "batalha": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 0,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "mordida",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
     },
     {
       "nome": "mandíbulas da garganta",
-      "descricao": "Mordida: Agarrar: a segunda mandíbula puxa a presa agarrada para dentro; não é segundo golpe.",
-      "classe": "livro"
-    },
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Mordida",
+      "regra": "agarrar",
+      "texto": "a segunda mandíbula puxa a presa agarrada para dentro; não é segundo golpe"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "caça em dupla",
-      "descricao": "caça junto com outro predador, que aponta a presa escondida.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "caça junto com outro predador, que aponta a presa escondida."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "sentidos não medidos",
+      "descricao": "nenhum sentido achado com fonte; fica só a Percepção, sem Especialidade natural",
+      "formas": "todas"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "nenhum sentido achado com fonte; fica só a Percepção, sem Especialidade natural. · faro na água: \"Localiza presas pelo cheiro mesmo em água turva ou escura, além de enxergar bem com pouca luz\"; texto do Mestre, sem Especialidade (nenhum sentido da real achado com fonte)."
+      "nome": "faro na água (monstro publicado, de volta pela decisão de 20/10/2026)",
+      "descricao": "\"Localiza presas pelo cheiro mesmo em água turva ou escura, além de enxergar bem com pouca luz\"; texto do Mestre, sem Especialidade (nenhum sentido da real achado com fonte)",
+      "formas": "todas"
     }
   ],
-  "doencas": [
-    {
-      "nome": "Doença no jogo (ao comer)",
-      "texto": "Ciguatera · Virulência 7 · dia · quem come a carne rola uma vez"
-    }
-  ],
+  "fisiologia": {
+    "respiracao": "água",
+    "camuflagem": "; a real adulta tem manchas de leopardo atrás da cabeça e uma área preta em volta da abertura das brânquias (FishBase)",
+    "mente": "animal",
+    "tracos": "segundo par de mandíbulas na garganta (na real, Mehta e Wainwright 2007)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "",
+    "dieta": "piscívoro",
+    "caca": "emboscada",
+    "dianteDeGente": "defende"
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático",
+      "litoral"
+    ],
+    "clima": [
+      "tropical"
+    ]
+  },
+  "descricao": "Uma moreia do tamanho de um barco a remo, numa caverna submersa: espera, morde o que passa na boca da toca e puxa para dentro. Por que cresceu tanto fica na descrição.",
   "lore": [
     {
       "titulo": "Terror dos recifes",
@@ -118,88 +169,40 @@
       "texto": "Marinheiros contam histórias de morays que mastigam suas vítimas por dentro, engolindo pedaço a pedaço."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Doença no jogo (ao comer): Ciguatera · Virulência 7 · dia · quem come a carne rola uma vez"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande: o humano Médio acerta com +3 no corpo a corpo; a Força 7 tira o Bloqueio de quem tem Força 3 ou menos. A mordida faz 10,5 em média e agarra; o agarrão tira 14 por manutenção, enquanto as mandíbulas da garganta puxam. 46 PV, Impacto 4 e Couraça nível 1 (pele grossa e lisa); o quanto ela tira fica para depois. Sai da fresta sem aviso (Furtividade 3, +1 na toca). É o perigo de quem mergulha em caverna e passa perto da boca errada."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Water",
-      "Coast"
-    ],
-    "clima": [
-      "Tropical"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Giant Moray Eel",
-    "cr": "5",
-    "tipo": "animal Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 22,
-      "des": 14,
-      "con": 16,
-      "int": 1,
-      "sab": 12,
-      "car": 8
+  "revisao": [
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Etapa 2 (20/10/2026): Decisão 3 de 19/10/2026: o tamanho não decide sozinho, mas os maiores tendem a ter um pouco mais (3 ou 4). Com 345 kg, sobe do 2 genérico para 3 : a real não tem feito de ferida medido. Antes: Era 0. Régua da diretriz 2: 2 é o normal da espécie no próprio meio,  com a real: de 0 a 50 m, e os jovens em poças de maré (FishBase). Nenhum dado de fome, frio, veneno, doença ou ferida acima disso."
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte",
-      "nota": "nado 30: sem velocidade em terra"
+    {
+      "campo": "habilidadesSec.natacao",
+      "motivo": "Etapa 2 (20/10/2026): Decisão de 20/10/2026: a Habilidade secundária de Natação vale nas jogadas (manobrar na água), e a velocidade continua congelada; o nado em m por Tick não muda. A moreia está entre os nadadores da decisão. Nada por ondulação e sai da toca no bote; sem velocidade medida da real, 2 . Antes: Fica como hoje."
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 46,
-    "esquiva": 10,
-    "bloqueio": 6,
-    "defesa": 10,
-    "defesaMental": 8,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 4,
-      "perfuracao": 4
+    {
+      "campo": "corpo.altura",
+      "motivo": "Era 0,29 m. Pela razão sobre a v3, 5,5 ÷ 7 = 0,786: 0,58 × 0,786 = 0,456 (o mesmo que a altura da real típica, 0,116 m, × 3,93; a real tem altura de 0,083 do comprimento, a proporção estimada de 0,25 m em 3 m). Dimensions.com dá 15 a 22 cm de altura para 1,8 a 3 m (cerca de 0,073 do comprimento), sem método"
     },
-    "couracaNivel": 1,
-    "pesoErguido": 851.56,
-    "deslocamento": {
-      "nado": 5
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Era 3,5 m (o do site). Comprimento total, a medida do FishBase para a real; numa enguia sem nadadeira de cauda separada não há outra leitura natural. 1,4 m da real típica × 3,93. Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; entre os 16 pés do Pathfinder 1 (4,9 m, Grande) e os 7 m da v3 (Grande)"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Era 0,23 m. 0,47 × 0,786 = 0,369 (a largura da real era estimada, sem dado)"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Era 47,6 kg (Faixa 3). Pelo cubo do tamanho escolhido (D-105; item 7 da `tamanho-decisoes-5.md`): 5,6925 × (5,5 ÷ 1,4)³ = 5,6925 × 60,63 = 345,1 kg, k = 3,93. Base típica: a moreia-gigante real (Gymnothorax javanicus) adulta, 1,4 m de comprimento total : média de sete adultos da lagoa de Muri, Ilhas Cook, 120 a 165 cm (soma 981 cm, média 140,1 cm), coletados para estudo de ciguatoxina (Giant Moray Eel (Gymnothorax javanicus), a Long-Living Apex Predator That Poses a Food Safety Risk in the Pacific, 2025, PMC12472033, tabela 6; o estudo dá só o peso do filé, 1,9 a 5,3 kg). A massa sai do comprimento pela relação comprimento e peso do FishBase (a = 0,00052, b = 3,28, comprimento total em cm, estimativa bayesiana pela forma do gênero): 0,00052 × 140^3,28 = 5.692 g . Conferida com as moreias pescadas em Kiribati: mediana de 5,5 kg (n = 20, 1,1 a 13,2 kg, Marakei, Mak e colegas 2013) e média de 3,6 kg (n = 38, 0,6 a 10 kg, Tarawa, Lewis e colegas 1992), as duas citadas por Chan 2017 (Toxins 9: 201, tabela 1) . A relação do FishBase passa do máximo em 300 cm (cerca de 69 kg contra os 30 kg publicados), e em 140 cm bate com Kiribati. Máximo da espécie: 300 cm e 30 kg (FishBase). Faixa do adulto real pescado: 0,6 a 13,2 kg; no gigante (× 60,63), de 36 a 800 kg. Sexos: . O site dá 90 kg com 3,5 m, e a v3 381 kg com 7 m: os dois ficam para trás. D-141. A faixa decide o PV; não decide mais a Couraça (decisão 4 da quarta rodada)"
     }
-  },
-  "notasObservacao": [
-    "gigante escalado (D-105): tudo o que é tamanho e massa é [extrapolação]. A moreia real típica (1,4 m, 5,69 kg) foi escalada 3,93 vezes no comprimento, na altura e na largura, e pelo cubo na massa (345 kg). Era 3,5 m e 47,6 kg (o tamanho do site, sobre o máximo da real), e antes 7 m e 381 kg.",
-    "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; os 3,5 m do site davam Médio, uma categoria só acima da real típica (Pequeno), e os 5,5 m dão Grande, entre os 16 pés do Pathfinder e os 7 m da v3, a 38% do corte do Médio (21% com a altura de Dimensions.com) (D-174).",
-    "alvo: Grande pela silhueta (2,005 m², de lado); era Médio. A real típica fica Pequena (0,130 m²), a 8% do corte do Miúdo: com a altura de Dimensions.com seria Miúda (cerca de 0,114 m²), e aí o Médio já bastaria ao gigante.",
-    "dimensoes.altura e largura: as da real são estimadas (0,083 e 0,067 do comprimento, sem dado), e a escala as multiplica.",
-    "forca: 7 pelos vizinhos de massa (hienodonte 7, urso-pardo 7, crocodilo 8), com a Força de referência de 6,9 em 345 kg; a da real típica é 2 [provisório] (D-158, D-169).",
-    "vigor: 4, revisto na oitava rodada pelo corpo e pela massa, e fica: +1 sobre o animal de base (moreia real, Vigor 3), o mínimo da D-176; peixe de 345 kg, ao lado do golfinho (260 kg, 4) e do tubarão-branco (1,15 t, 4), abaixo do cavalo (470 kg, 5) (D-174, D-176).",
-    "compostura: 1 por não ser espécie social (diretriz 1); era 3 pelo emboscador. O hábito da toca foi para Furtividade (na toca) +1. Provisória (D-174).",
-    "especialidade Furtividade (na toca) +1: nova, pela real [comparação]; provisória (D-174).",
-    "variante real: agora o adulto típico (1,4 m, 5,69 kg), e não o máximo (3 m, 30 kg); Faixa 2, PV 26; o Alvo pela silhueta sai das dimensões estimadas, 0,130 m², Pequeno (sem linha própria na `tamanho-fichas-v2`); Força 2, revista pelo item 8.",
-    "pesoErguido: 851,56 kg pelo `calc6.mjs`, provisório (era 413,49 com 47,6 kg). A ficha de hoje dizia \"não se aplica (nadador)\"; na água vale para puxar.",
-    "carga: não se aplica (nadador).",
-    "velocidade: congelada (decisão 23); sem velocidade real achada.",
-    "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "doenca: a ciguatera é de quem come a carne, e não ataque; sem id no catálogo de venenos, e não precisa (D-112).",
-    "sentidos: nenhum achado com fonte; o faro e a visão da ficha atual ficaram fora, e não há Especialidade natural.",
-    "fonte: nenhuma mordida medida, nem na real; a Força 7 segue por comparação com o crocodilo-do-nilo (D-158, D-174)."
   ]
 }

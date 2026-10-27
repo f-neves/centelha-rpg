@@ -111,12 +111,12 @@
         "nivel": 1
       },
       "ativacao": "uma ação, Velocidade 6",
-      "duracao": "as trevas e os sons, até o fim da cena; o atordoamento, até o fim da próxima ação do alvo",
+      "duracao": "as trevas e os sons, até o fim da cena",
       "alcance": "18 m",
-      "area": "à escolha: trevas numa esfera de 6 m; sons ilusórios num ponto que ele vê; um alvo atordoado; ou um estrondo numa esfera de 3 m",
-      "efeito": "as trevas apagam a luz comum (ele enxerga nelas); os sons enganam quem ouve; o alvo atordoado perde a próxima ação; o estrondo atordoa quem está na esfera",
+      "area": "à escolha: trevas numa esfera de 6 m; sons ilusórios num ponto que ele vê; ou um estrondo numa esfera de 3 m",
+      "efeito": "as trevas apagam a luz comum (ele enxerga nelas); os sons enganam quem ouve",
       "dano": "o estrondo, 1d6 + Centelha, Impacto; os outros, nenhum",
-      "resistencia": "mente, contra Influência + Ocultismo dele, para o atordoamento e os sons; corpo, Vigor + Resistência contra Dificuldade 10, para o estrondo",
+      "resistencia": "mente, contra Influência + Ocultismo dele, para os sons; corpo, Vigor + Resistência contra Dificuldade 10, para o estrondo",
       "limiteDeUso": "três vezes por dia, somados"
     },
     {
@@ -156,6 +156,12 @@
       "formas": "todas",
       "classe": "livro",
       "texto": "a Peçonha de aranha gigante na espada (Veneno e doença); aplica sem risco de se envenenar"
+    },
+    {
+      "nome": "atordoamento dos poderes menores",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "os truques mentais e o estrondo deixam a vítima zonza"
     }
   ],
   "comoLuta": [

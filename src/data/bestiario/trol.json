@@ -268,10 +268,6 @@
     {
       "campo": "ataques.Garras",
       "motivo": "Garras que dilaceram, com Sangramento pela 34.1; Acerto +0 para −1. O gesto, o dano e a jogada-base seguem a ficha"
-    },
-    {
-      "campo": "habilidadesEspeciais.Regeneração 5",
-      "motivo": "Antes: 8 PV/6 Ticks passivos. N 5 pela referência Troll (Archives of Nethys)."
     }
   ]
 }

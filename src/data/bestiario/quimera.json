@@ -161,8 +161,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Chifrada de cabra",
-      "regra": "derrubar",
-      "texto": "como ataque próprio. Sem regra ainda: a mesma chifrada que fere pode derrubar o alvo"
+      "regra": "derrubar"
     },
     {
       "nome": "Sopro dracônico",
@@ -257,7 +256,7 @@
   "revisao": [
     {
       "campo": "habilidadesEspeciais.Sopro dracônico",
-      "motivo": "números sugeridos pela ficha (D-197); poder natural com números da ficha (D-197), base Fogo 3 (a Labareda, o leque de 2d6), que é o nível do cone; o site dava a Arte Fogo 2 e a base Fogo 2 ao sopro"
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
       "campo": "atributos.forca",
@@ -266,6 +265,10 @@
     {
       "campo": "couraca",
       "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: couro de leão na frente e escamas de dragão no flanco, um acima do leão (1) . O nível fica fora da Absorção (decisoes-autor §16)"
+    },
+    {
+      "campo": "ataques.Sopro dracônico",
+      "motivo": "poder natural com números da ficha (D-197), base Fogo 3 (a Labareda, o leque de 2d6), que é o nível do cone; o site dava a Arte Fogo 2 e a base Fogo 2 ao sopro"
     }
   ]
 }

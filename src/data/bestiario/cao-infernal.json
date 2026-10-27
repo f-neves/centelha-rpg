@@ -224,7 +224,7 @@
   "revisao": [
     {
       "campo": "habilidadesEspeciais.Sopro de fogo",
-      "motivo": "números sugeridos pela ficha (D-197); poder natural com números da ficha (D-197), base Fogo 3 (o leque de 2d6 da Labareda); o site não dava os números"
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
       "campo": "couraca",
@@ -233,6 +233,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "ataques.Sopro de fogo",
+      "motivo": "poder natural com números da ficha (D-197), base Fogo 3 (o leque de 2d6 da Labareda); o site não dava os números"
     }
   ]
 }

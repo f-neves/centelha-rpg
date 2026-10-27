@@ -26,14 +26,14 @@
   "batalha": 2,
   "arranque": 2,
   "corrida": 4,
-  "ft": 40,
+  "ft": 30,
   "origem": "ficha"
  },
  "alce": {
   "batalha": 7,
   "arranque": 12,
   "corrida": 16,
-  "ft": 40,
+  "ft": 30,
   "origem": "ficha"
  },
  "ankheg": {
@@ -189,7 +189,7 @@
   "batalha": 3,
   "arranque": 5,
   "corrida": 6,
-  "ft": 40,
+  "ft": 30,
   "origem": "ficha"
  },
  "besta-deslocadora": {
@@ -231,7 +231,7 @@
   "batalha": 5,
   "arranque": 10,
   "corrida": 11,
-  "ft": 40,
+  "ft": 30,
   "origem": "ficha"
  },
  "bralani": {
@@ -494,7 +494,7 @@
   "batalha": 2,
   "arranque": 4,
   "corrida": 5,
-  "ft": 40,
+  "ft": 30,
   "origem": "ficha"
  },
  "cubo-gelatinoso": {
@@ -738,8 +738,8 @@
  },
  "elasmossauro": {
   "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+  "arranque": 4,
+  "corrida": 4,
   "ft": 20,
   "origem": "ficha",
   "nota": "nado 50; em terra 20, e ele quase não sai da água"
@@ -1145,8 +1145,8 @@
  },
  "golfinho": {
   "batalha": 6,
-  "arranque": 10,
-  "corrida": 14,
+  "arranque": 6,
+  "corrida": 6,
   "ft": 80,
   "origem": "ficha",
   "nota": "nado 80: sem velocidade em terra"
@@ -1213,7 +1213,7 @@
   "arranque": 3,
   "corrida": 5,
   "ft": 20,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "hiena-malhada": {
   "batalha": 8,
@@ -1305,7 +1305,7 @@
   "arranque": 2,
   "corrida": 2,
   "ft": 10,
-  "origem": "fonte",
+  "origem": "ficha",
   "nota": "em terra o kraken se arrasta 10 ft; nada a 40 ft (locomocao.natacao)"
  },
  "kyton": {
@@ -1333,7 +1333,7 @@
   "batalha": 2,
   "arranque": 4,
   "corrida": 5,
-  "ft": 40,
+  "ft": 30,
   "origem": "ficha"
  },
  "lamia": {
@@ -1379,7 +1379,7 @@
   "origem": "ficha"
  },
  "lesma-gigante": {
-  "batalha": 1,
+  "batalha": 0,
   "arranque": 1,
   "corrida": 1,
   "ft": 20,
@@ -1462,25 +1462,25 @@
   "ft": 30,
   "origem": "ficha"
  },
+ "lula-de-humboldt": {
+  "batalha": 5,
+  "arranque": 5,
+  "corrida": 5,
+  "ft": 30,
+  "origem": "ficha"
+ },
  "lula-de-humboldt-grande": {
   "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
+  "arranque": 5,
+  "corrida": 5,
   "ft": 60,
   "origem": "ficha",
   "nota": "nado 60 (o jato de 240 é fuga, não deslocamento)"
  },
- "lula-de-humboldt": {
-  "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
-  "ft": 20,
-  "origem": "ficha"
- },
  "lula-gigante": {
   "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
+  "arranque": 5,
+  "corrida": 5,
   "ft": 60,
   "origem": "ficha",
   "nota": "nado 60 (o jato de 260 é fuga)"
@@ -1503,7 +1503,7 @@
   "batalha": 3,
   "arranque": 5,
   "corrida": 7,
-  "ft": 40,
+  "ft": 30,
   "origem": "ficha"
  },
  "manticora": {
@@ -1550,8 +1550,8 @@
  },
  "megalodonte": {
   "batalha": 8,
-  "arranque": 13,
-  "corrida": 18,
+  "arranque": 8,
+  "corrida": 8,
   "ft": 60,
   "origem": "ficha",
   "nota": "nado 60, como o tubarão comum"
@@ -1564,9 +1564,9 @@
   "origem": "ficha"
  },
  "merfolk": {
-  "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
+  "batalha": 0.5,
+  "arranque": 0.75,
+  "corrida": 1,
   "ft": 50,
   "origem": "ficha",
   "nota": "nado 50: em terra o povo do mar se arrasta 5 ft"
@@ -1631,8 +1631,8 @@
  },
  "moreia-gigante": {
   "batalha": 5,
-  "arranque": 8,
-  "corrida": 12,
+  "arranque": 5,
+  "corrida": 5,
   "ft": 30,
   "origem": "ficha",
   "nota": "nado 30: sem velocidade em terra"
@@ -1646,9 +1646,9 @@
  },
  "mosassauro": {
   "batalha": 7,
-  "arranque": 11,
-  "corrida": 16,
-  "ft": 40,
+  "arranque": 7,
+  "corrida": 7,
+  "ft": 30,
   "origem": "ficha"
  },
  "mumia": {
@@ -1751,8 +1751,8 @@
  },
  "orca": {
   "batalha": 8,
-  "arranque": 13,
-  "corrida": 18,
+  "arranque": 8,
+  "corrida": 8,
   "ft": 80,
   "origem": "ficha",
   "nota": "nado 80: sem velocidade em terra"
@@ -1776,7 +1776,7 @@
   "arranque": 10,
   "corrida": 14,
   "ft": 60,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "perseguidor-invisivel": {
   "batalha": 3,
@@ -1816,22 +1816,22 @@
  },
  "plesiossauro": {
   "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
-  "ft": 40,
+  "arranque": 4,
+  "corrida": 4,
+  "ft": 30,
   "origem": "ficha"
  },
  "polvo": {
   "batalha": 1,
-  "arranque": 2,
-  "corrida": 2,
+  "arranque": 1,
+  "corrida": 1,
   "ft": 20,
   "origem": "ficha"
  },
  "polvo-gigante": {
   "batalha": 4,
-  "arranque": 6,
-  "corrida": 9,
+  "arranque": 4,
+  "corrida": 4,
   "ft": 20,
   "origem": "ficha"
  },
@@ -1844,8 +1844,8 @@
  },
  "poraque": {
   "batalha": 3,
-  "arranque": 5,
-  "corrida": 7,
+  "arranque": 3,
+  "corrida": 3,
   "ft": 30,
   "origem": "ficha",
   "nota": "nado 30; em terra a enguia se arrasta 5 ft"
@@ -1906,7 +1906,7 @@
   "batalha": 1,
   "arranque": 1,
   "corrida": 2,
-  "ft": 20,
+  "ft": 30,
   "origem": "ficha"
  },
  "rakshasa": {
@@ -1942,7 +1942,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "rinoceronte": {
   "batalha": 3,
@@ -1974,7 +1974,7 @@
   "origem": "ficha"
  },
  "sanguessuga-gigante": {
-  "batalha": 1,
+  "batalha": 0,
   "arranque": 1,
   "corrida": 1,
   "ft": 20,
@@ -2073,7 +2073,7 @@
   "arranque": 6,
   "corrida": 9,
   "ft": 40,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "tartaruga-dragao": {
   "batalha": 2,
@@ -2107,7 +2107,7 @@
   "batalha": 6,
   "arranque": 11,
   "corrida": 14,
-  "ft": 40,
+  "ft": 30,
   "origem": "ficha"
  },
  "tiranossauro": {
@@ -2154,8 +2154,8 @@
  },
  "tubarao-branco": {
   "batalha": 6,
-  "arranque": 10,
-  "corrida": 14,
+  "arranque": 6,
+  "corrida": 6,
   "ft": 60,
   "origem": "ficha",
   "nota": "nado 60: o tubarão não tem passo em terra"
@@ -2165,7 +2165,7 @@
   "arranque": 10,
   "corrida": 14,
   "ft": 60,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "urso-cinzento": {
   "batalha": 4,
@@ -2199,14 +2199,14 @@
   "batalha": 7,
   "arranque": 12,
   "corrida": 16,
-  "ft": 40,
+  "ft": 30,
   "origem": "ficha"
  },
  "urso-polar": {
   "batalha": 7,
   "arranque": 12,
   "corrida": 15,
-  "ft": 40,
+  "ft": 30,
   "origem": "ficha"
  },
  "vampiro": {
@@ -2272,7 +2272,7 @@
   "arranque": 8,
   "corrida": 12,
   "ft": 50,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "wyvern": {
   "batalha": 2,

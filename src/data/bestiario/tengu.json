@@ -1,36 +1,24 @@
 {
-  "ordem": 295,
   "id": "tengu",
   "idAntigo": "mon-tengu",
   "nome": "Tengu",
   "nomeIngles": "Tengu",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humanoide",
+  "categoria": "humanoide",
   "papel": "capanga",
-  "conceito": "humanoide Médio",
-  "descricao": "Humanoide de cabeça de corvo, ágil e de olhos atentos, que nasce com talento para espadas e vive em ninhos nos prédios abandonados das cidades. Golpeia rápido quem se distrai, com a espada ou com o bico.",
-  "tags": [
-    "humanoide",
-    "centelha"
-  ],
-  "imagem": "bestiario/tengu_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,75 m de altura",
-    "peso": "55 kg",
-    "largura": 0.38,
-    "altura": 1.75
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 1,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.75,
+    "largura": 0.38,
+    "profundidade": 0.19,
+    "comprimento": null,
+    "massa": 55,
+    "area": 0.59
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 5,
     "vigor": 3,
@@ -41,7 +29,7 @@
     "perspicacia": 2,
     "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "armas": 3,
     "briga": 2,
     "bloqueio": 1,
@@ -52,88 +40,148 @@
     "integridade": 3,
     "prestidigitacao": 1
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "visão de corvo",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "armas",
-      "foco": "espadas",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 0
+  },
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "visão de corvo",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "armas": [
+      {
+        "foco": "espadas",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-longa"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Espada longa",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 1,
-      "ticks": 6,
-      "classe": "media"
+      "arma": "espada-longa",
+      "habilidade": "armas"
     },
     {
       "nome": "Bico",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "bico-de-corvo",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Golpe certeiro",
-      "descricao": "Espada longa ou Bico: Ativação: o golpe que acerta um alvo Surpreso, ou distraído, ou flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o golpe rápido entra antes que a vítima perceba. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Talento com espadas",
-      "descricao": "Armas 3 com a Especialidade (espadas) +1.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "o golpe que acerta um alvo Surpreso, ou distraído, ou flanqueado",
+      "duracao": "instantânea",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "o golpe rápido entra antes que a vítima perceba",
+      "dano": "+1d6 no dano do golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "Bico afiado",
-      "descricao": "o Bico da tabela, no lugar do golpe de espada (um ataque por ação).",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "o Bico da tabela, no lugar do golpe de espada (um ataque por ação)"
     },
     {
       "nome": "Dom para línguas",
-      "descricao": "aprende idiomas com facilidade extraordinária, o dobro do que outros povos aprendem no mesmo tempo.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "poleiro na cidade",
-      "descricao": "ataca do alto, golpeia rápido quem está distraído e some pelos telhados.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão de corvo: enxerga bem em pouca luz e percebe detalhes; Prontidão (visão de corvo) +2. · audição e olfato: os de um humano."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "aprende idiomas com facilidade extraordinária, o dobro do que outros povos aprendem no mesmo tempo"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "poleiro na cidade",
+      "formas": "todas",
+      "texto": "ataca do alto, golpeia rápido quem está distraído e some pelos telhados."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão de corvo",
+      "descricao": "enxerga bem em pouca luz e percebe detalhes; Prontidão (visão de corvo) +2",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humanoide; reservada",
+    "tracos": "cabeça de corvo, bico preto, penas pretas no corpo, mãos de dedos finos, espada longa"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em ninho urbano, típico 3 a 8",
+    "atividade": "diurno e noturno",
+    "dieta": "onívoro",
+    "caca": "não se aplica",
+    "dianteDeGente": "vive entre outros povos, mas guarda os seus costumes"
+  },
+  "ecologia": {
+    "terreno": [
+      "montanha",
+      "urbano"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Humanoide de cabeça de corvo, ágil e de olhos atentos, que nasce com talento para espadas e vive em ninhos nos prédios abandonados das cidades. Golpeia rápido quem se distrai, com a espada ou com o bico.",
   "lore": [
     {
       "titulo": "Sociedade fechada",
@@ -142,77 +190,28 @@
     {
       "titulo": "Ninhos urbanos",
       "texto": "Armazéns abandonados e prédios condenados viram poleiros e esconderijos, muitas vezes confundidos com covis de ladrões, e a confusão nem sempre é infundada."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: em ninho urbano, típico 3 a 8."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, 34 PV, Impacto 4, Corte e Perfuração 1. Esquiva e Bloqueio 14 (15 com a espada). Espada (dano médio 7,5) ou bico (5,5); +1d6 contra quem se distrai. Vê detalhes que os outros não veem."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Mountain",
-      "Urban"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/tengu_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Tengu",
-    "cr": "1/2",
-    "tipo": "humanoide Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 12,
-      "des": 17,
-      "con": 12,
-      "int": 10,
-      "sab": 15,
-      "car": 8
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Golpe certeiro",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidades.armas",
+      "motivo": "O site gravava `briga` 2 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5), e o \"Talento com espadas\" (site) a sobe um degrau"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 34,
-    "esquiva": 14,
-    "bloqueio": 14,
-    "defesa": 15,
-    "defesaMental": 14,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 1,
-      "perfuracao": 1
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 109.04,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
-    },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "`equipamento`: espada longa do livro **[provisório]**",
-    "`armas`: 3, um acima da Briga 2 do site, pelo \"Talento com espadas\" **[provisório]**",
-    "`golpe certeiro`: números sugeridos pela ficha (D-197)"
+    {
+      "campo": "comportamento.social",
+      "motivo": "site"
+    }
   ]
 }

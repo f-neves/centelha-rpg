@@ -175,12 +175,6 @@
       "dano": "nenhum",
       "resistencia": "nenhum",
       "limiteDeUso": "à vontade"
-    },
-    {
-      "nome": "Nadador incansável",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "Natação (secundária) 3, com o Nado de Batalha 6 da linha Nado"
     }
   ],
   "comoLuta": [

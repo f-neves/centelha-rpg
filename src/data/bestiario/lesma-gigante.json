@@ -1,34 +1,25 @@
 {
-  "ordem": 288,
   "id": "lesma-gigante",
   "idAntigo": "mon-giant-slug",
   "nome": "Lesma-gigante",
   "nomeIngles": "Giant slug",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "praga Enorme",
-  "descricao": "Sai à noite da mata úmida e raspa o que encontra no caminho; de dia, se esconde do sol e do seco.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/lesma-gigante_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "9 m de comprimento, 0,75 m de altura",
-    "peso": "3.518 kg",
-    "comprimento": 9,
-    "largura": 1.08,
-    "altura": 0.75
-  },
-  "locomocao": {},
-  "deslocamentoDeclarado": {
-    "batalha": 1,
-    "arranque": 1,
-    "corrida": 1
-  },
+  "ameaca": 5,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "serpente (corpo rastejante)",
+    "apoio": "outro",
+    "altura": 0.75,
+    "largura": 1.08,
+    "profundidade": null,
+    "comprimento": 9,
+    "massa": 3518,
+    "area": 7.63,
+    "posturaDoTamanho": "de cima"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 7,
     "destreza": 1,
     "vigor": 6,
@@ -39,90 +30,169 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 2,
+    "bloqueio": 0,
+    "esquiva": 0,
+    "atletismo": 0,
     "furtividade": 2,
+    "integridade": 0,
+    "prontidao": 0,
     "resistencia": 4,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 1,
     "disparo": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 2,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 1,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 1
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 0,
+      "arranque": 1,
+      "corrida": 1
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Rádula",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "ticks": 6,
-      "classe": "media"
+      "parte": "boca",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [
-    "corte",
-    "perfuracao",
-    "impacto"
-  ],
-  "imunidades": [
-    "acido"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "atropelar",
-      "descricao": "corpo: passa por cima de quem está no chão, com 3,5 t de corpo.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "passa por cima de quem está no chão, com 3,5 t de corpo"
     },
     {
       "nome": "muco",
-      "descricao": "gruda e pode prender quem a toca, e adormece a boca e a língua de quem a morde.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "encolher",
-      "descricao": "tocada, encolhe o corpo.",
-      "classe": "como luta"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "gruda e pode prender quem a toca, e adormece a boca e a língua de quem a morde"
     },
     {
       "nome": "cuspir ácido",
-      "descricao": "ataque a distância, Vigor + Disparo, alcance de um metro por ponto de Vigor (6 m), 3 vezes por cena (recarga de 1 hora), Velocidade 6, tipo do ataque líquido. Dano 2d6 mais o Vigor (6) de ácido; não há Absorção natural contra ácido, e a da armadura fica a decidir.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6, com Vigor + Disparo",
+      "duracao": "instantânea",
+      "alcance": "6 m, um metro por ponto de Vigor",
+      "area": "um alvo",
+      "efeito": "o líquido ácido queima onde atinge",
+      "dano": "2d6 + Vigor (6), ácido; sem Absorção natural contra ácido",
+      "resistencia": "esquiva, contra o disparo; quem evita não é atingido",
+      "limiteDeUso": "três vezes por cena, recarga de uma hora"
     },
     {
       "nome": "língua ácida",
-      "descricao": "Rádula: cada mordida que fere soma 1d6 de ácido; não há Absorção natural contra ácido, e a da armadura fica a decidir.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Rádula",
+      "ativacao": "a mordida que fere",
+      "duracao": "instantânea",
+      "alcance": "o da Rádula",
+      "area": "um alvo",
+      "efeito": "a mordida deposita ácido na ferida",
+      "dano": "+1d6 de ácido; sem Absorção natural contra ácido",
+      "resistencia": "nenhum teste adicional",
+      "limiteDeUso": "um por golpe"
+    }
+  ],
+  "comoLuta": [
+    {
+      "nome": "encolher",
+      "formas": "todas",
+      "texto": "tocada, encolhe o corpo."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "Especialidade natural Prontidão (faro) +2; tentáculos de baixo para tato e olfato (National Park Service)",
+      "formas": "todas"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "faro: Especialidade natural Prontidão (faro) +2; tentáculos de baixo para tato e olfato. · visão: olhos na ponta dos tentáculos de cima; sem Especialidade. · sentido sísmico: \"Percebe vibrações ao redor mesmo sem enxergar\" (ficha publicada). Texto do Mestre; alcance."
-    }
-  ],
-  "doencas": [
+      "nome": "visão",
+      "descricao": "olhos na ponta dos tentáculos de cima (National Park Service); sem Especialidade",
+      "formas": "todas"
+    },
     {
-      "nome": "Doença no jogo (ao comer)",
-      "texto": "Meningite do verme-do-pulmão · Virulência 10 · dia · quem come a carne crua, ou a verdura por onde ela passou, rola uma vez"
+      "nome": "sentido sísmico",
+      "descricao": "\"Percebe vibrações ao redor mesmo sem enxergar\" (ficha publicada). Texto do Mestre; alcance",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "corpo mole sem concha; espreme-se por passagens muito mais estreitas do que o tamanho sugere (Corpo maleável, da ficha publicada, de volta pela decisão de 20/10/2026); morre no sal por perda de água (Wikipédia \"Slug\"); o muco absorve até 100 vezes o próprio volume em água (Wikipédia \"Banana slug\"); estiva no calor e hiberna no frio (ADW); fica mais lenta no frio (Crozier e Pilz 1924)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "noturno",
+    "dieta": "herbívoro e detritívoro",
+    "caca": "pasta",
+    "dianteDeGente": "ignora"
+  },
+  "ecologia": {
+    "terreno": [
+      "pântano",
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "Sai à noite da mata úmida e raspa o que encontra no caminho; de dia, se esconde do sol e do seco.",
   "lore": [
     {
       "titulo": "Devoradora de pântanos",
@@ -137,95 +207,60 @@
       "texto": "Certas raças subterrâneas domesticam lesmas gigantes como bestas de guerra e carga, embora mantê-las dóceis exija cuidado e fartura constante de alimento."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Doença no jogo (ao comer): Meningite do verme-do-pulmão · Virulência 10 · dia · quem come a carne crua, ou a verdura por onde ela passou, rola uma vez"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Enorme: o humano Médio acerta com +6 no corpo a corpo, e ela não ganha bônus. A Força 7 tira o Bloqueio de quem tem Força 3 ou menos. A rádula faz 10,5 em média, e cada mordida deixa ácido; de longe, ela cospe ácido (Vigor + Disparo, ataque do tipo líquido, até 6 m, um metro por ponto de Vigor: 2d6 + 6 de ácido, e não há Absorção natural contra ácido; a da armadura fica a decidir). Golpe de impacto, corte e perfuração entram mal na carne mole (resistência, valor a definir). O perigo é o atropelo, o muco que gruda e o cuspe. Mente simples: não se deixa convencer nem intimidar pela fala, mas o medo e a magia mental pegam nela. Anda menos de 1 m por Tick: qualquer um foge dela, a pé, mas não do cuspe. 65 PV, Impacto 6, Couraça nível 0 (o valor do nível fica para depois). O sal mata lesma de verdade, e o Mestre decide quanto."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Swamp",
-      "Underground"
+  "imagens": [
+    "bestiario/lesma-gigante_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [
+      {
+        "tipo": "impacto",
+        "formas": "todas"
+      },
+      {
+        "tipo": "corte",
+        "formas": "todas"
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Temperate",
-      "Tropical"
+    "imunidades": [
+      {
+        "tipo": "acido",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Giant Slug",
-    "cr": "8",
-    "tipo": "praga Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 27,
-      "des": 2,
-      "con": 18,
-      "int": "-",
-      "sab": 10,
-      "car": 1
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.cuspir ácido",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.língua ácida",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "v3": {
-    "pv": 65,
-    "esquiva": 2,
-    "bloqueio": 2,
-    "defesa": 2,
-    "defesaMental": 4,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 6,
-      "perfuracao": 6
+    {
+      "campo": "habilidadesSec.disparo",
+      "motivo": "Resposta do autor de 20/10/2026 (seção 14): Habilidade secundária nova, Disparo, para o ataque natural a distância (teia, cuspe, jato, ácido, espinho, sopro), de criatura e de personagem; a jogada é Vigor + Disparo. O cuspe de ácido volta do monstro publicado (\"Pode cuspir um jato de ácido em um alvo a distância\"). Fica 2: é o ataque de longe dela, mas a lesma não caça de longe nem tem pontaria medida (a lesma real não cospe), e fica um abaixo da aranha-gigante (3), que vive da teia . Ataque: cuspir ácido (Manobras), tipo líquido."
     },
-    "couracaNivel": 0,
-    "pesoErguido": 394.81,
-    "deslocamento": {
-      "terra": {
-        "batalha": 0,
-        "arranque": 1,
-        "corrida": 1
-      }
+    {
+      "campo": "corpo.altura",
+      "motivo": "cerca de 2 cm na lesma-banana de 25 cm, estimados (não achados), × 36 = 0,72 m, arredondado"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "cerca de 3 cm na lesma-banana (12% do comprimento), estimados (não achados), × 36"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Gigante pelo cubo: base real de 75,4 g × 36³ (k = 36, de 25 cm a 9 m) = 3.518 kg . A base: a lesma-banana (Ariolimax columbianus) mais pesada das 150 pesadas em dois anos (Pearson, Pearson e Ralph 2006, The Veliger 48:143) ; adultos de 21 a 50 g, \"adultos grandes\" acima de 50 g, e no outono a lesma perde até 50% do peso máximo (mesma fonte). Os 115 g da Wikipédia não têm fonte primária. Faixa do gigante pela mesma conta: 980 a 3.518 kg (21 e 75,4 g × 46.656). A referência fica no topo da faixa porque os 9 m são o topo da ficha atual (6 a 9 m). Sexos: hermafrodita, sem diferença. O corte de 35 kg (decisão 22) não muda a faixa"
     }
-  },
-  "notasObservacao": [
-    "gigante escalado (D-105): massa, largura e altura são extrapolação pelo cubo a partir da lesma-banana (25 cm, 75,4 g) (D-174).",
-    "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (sétima rodada); fica o de hoje (9 m), Enorme, cinco portes acima da lesma-banana de base (Minúscula, 0,0059 m²); a área fica 27% acima do corte do Grande (6 m²) e 69% abaixo do do Imenso (25 m²). Acima do Médio porque a ficha antiga e o Pathfinder pedem Enorme, como o `pedido-v7.md` (seção 2) exige (D-174).",
-    "alvo: Enorme pela área de cima (7,63 m²) da tamanho-fichas-v2; era 9,72 m² pela conta de hoje, com o mesmo resultado. Provisório até os cortes fecharem (D-174).",
-    "pesoErguido: provisório, 394,81 kg pela fórmula das decisões 14 e 16, com a Força 7 do autor; verme não tem `carga` (D-160, D-175). Caiu de 1.445,76 kg (480,67 com a Força 8) com a Força 7 e a Musculatura 1.",
-    "forca: 7 (edição do autor, 19/10/2026), um abaixo do rinoceronte, pela falta de esqueleto; antes 8, e na ficha atual 12. Sem feito medido; [provisório] (D-158, D-174).",
-    "musculatura: 1, entre o corpo de resistência e o comum; sem medida de força do pé.",
-    "resistencia: 4 (edição do autor, 19/10/2026); antes 2 pela base, [comparação]; falta a duração da estivação e da hibernação.",
-    "furtividade: 2, nova, pela atividade noturna e pela fuga do sol (levantamento, [comparação]).",
-    "especialidades: o faro +2 passa a natural; o valor não muda.",
-    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "anatomia: verme, anatomia provisória (D-175), não calibrada em animal medido; sem nado.",
-    "velocidade: congelada (decisão 23). A Corrida de 0,86 m/s está muito acima da lesma real escalada (cerca de 0,1 m/s, +760%).",
-    "escalada: [sem dado]; o que ela sobe com 3,5 t é do Mestre (D-087).",
-    "fonte: a largura (3 cm) e a altura (2 cm) da lesma-banana continuam por estimativa; o comprimento de 25 cm vem da ADW, sem par medido com o peso de 75,4 g (D-174).",
-    "ataques: o ácido e a redução de dano voltam pela decisão de 20/10/2026 (manobras, resistências e texto); o dano do ácido e o valor da resistência ficam a definir até o valor da Couraça fechar.",
-    "mente: a imunidade a efeitos mentais do monstro publicado sai; mente simples, imune à influência social, vulnerável a medo e a magia mental (resposta do autor ao lote 1, 20/10/2026).",
-    "comportamento: a ficha atual a põe devorando gado; a lesma real é herbívora e detritívora (ADW). Vale o real (D-101).",
-    "sal: morre no sal por osmose (Wikipédia \"Slug\"); sem regra, texto do Mestre.",
-    "vigor: 6 ◆ (edição do autor, 19/10/2026; abaixo do elefante, 9, e do rinoceronte, 8, pela seção 14 das decisões); antes 5, revisto na oitava rodada pelo corpo e pela massa: dois acima da lesma-banana de base (Vigor 3), pela massa de 3,5 t (elefante 6, rinoceronte 5) e pela cura de ferida medida na base (Pearson, Pearson e Ralph 2006), abaixo do elefante pelo corpo mole sem esqueleto; um acima da lula-gigante e do polvo-gigante (4), moluscos sem dado de cura no Vigor. Era 6 (D-174)"
   ]
 }

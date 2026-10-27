@@ -1,99 +1,210 @@
 {
-  "ordem": 120,
   "id": "pegaso",
   "idAntigo": "mon-pegaso",
   "nome": "Pégaso",
   "nomeIngles": "Pegasus",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "fera",
-  "conceito": "besta mágica Grande",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/pegaso_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "corpo 2,7 m, envergadura 9 m",
-    "peso": "450 kg"
-  },
-  "locomocao": {
-    "terra": 6,
-    "voo": 12
-  },
+  "ameaca": 3,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas; voador",
+    "apoio": "quadrupede",
+    "altura": 1.81,
+    "largura": 0.59,
+    "profundidade": null,
+    "comprimento": 2.7,
+    "envergadura": 9,
+    "massa": 450,
+    "area": 1.92,
+    "posturaDoTamanho": "de lado, asas fechadas, no chão",
+    "segundoTamanho": {
+      "area": 17,
+      "posturaDoTamanho": "de baixo, asas abertas, em voo"
+    }
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 6,
     "destreza": 4,
     "vigor": 6,
-    "influencia": 3,
-    "perspicacia": 3,
-    "compostura": 3,
     "percepcao": 3,
     "inteligencia": 2,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 0,
     "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 3
+    "atletismo": 2,
+    "furtividade": 1,
+    "integridade": 3,
+    "prontidao": 3,
+    "resistencia": 3,
+    "empatia": 3,
+    "sociabilidade": 0,
+    "sobrevivencia": 2
   },
-  "virtues": {
+  "habilidadesSec": {
+    "voo": 4,
+    "musculatura": 2
+  },
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "sentidos aguçados",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 9,
-  "aparencia": 5,
-  "arte": {
-    "adivinhacao": 1
+  "vontade": 9,
+  "aparencia": 9,
+  "deslocamento": {
+    "terra": {
+      "batalha": 6,
+      "arranque": 10,
+      "corrida": 14
+    },
+    "voo": {
+      "batalha": 12
+    }
   },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Coice",
+      "parte": "casco",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Mordida",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
     }
   ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Voo majestoso",
-      "descricao": "desloca 15m voando, alta manobrabilidade mesmo em espaços apertados"
+      "nome": "coice e mordida juntos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "escoiceia e morde na mesma ação"
     },
     {
-      "nome": "Detectar o bem e o mal",
-      "descricao": "sente intenções morais num raio de 18m"
+      "nome": "Sentir o bem e o mal",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "adivinhacao",
+        "nivel": 1
+      },
+      "ativacao": "nenhuma, está sempre ligado",
+      "duracao": "contínua",
+      "alcance": "18 m",
+      "area": "esfera de 18 m em volta dele",
+      "efeito": "sente se quem está perto tem intenção boa ou má",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Percepção + Empatia dele; quem passa esconde a intenção",
+      "limiteDeUso": "à vontade"
     },
     {
-      "nome": "Coice poderoso",
-      "descricao": "ataque corpo a corpo com dano alto"
-    },
-    {
-      "nome": "Sentidos aguçados",
-      "descricao": "+2d6 em Prontidão, dificilmente é surpreendido"
-    },
-    {
-      "nome": "Coração nobre",
-      "descricao": "imune a Medo"
-    },
-    {
-      "nome": "Só o puro cavalga",
-      "descricao": "só aceita cavaleiros de intenções verdadeiramente boas"
-    },
-    {
-      "nome": "Detectar o bem e o mal",
-      "descricao": "Sentido passivo."
+      "nome": "coração nobre",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o medo não o pega"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "só o puro cavalga",
+      "formas": "todas",
+      "texto": "só aceita cavaleiro de intenção boa, provada ao longo de anos; o resto, derruba e escoiceia."
+    },
+    {
+      "nome": "manada",
+      "formas": "todas",
+      "texto": "foge pelos céus altos, mas defende o potro com ferocidade absoluta."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "sentidos aguçados",
+      "descricao": "Prontidão +2; dificilmente é pego de surpresa",
+      "formas": "todas"
+    },
+    {
+      "nome": "sentir o bem e o mal",
+      "descricao": "sente a intenção de quem está a até 18 m (Manobras)",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "não",
+    "mente": "inteligente; entende a fala, não fala",
+    "tracos": "cavalo branco de 2,7 m com asas de penas brancas de 9 m de ponta a ponta"
+  },
+  "aptidoes": {
+    "montaria": true,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "manada solta, com um garanhão ou égua mais velha à frente",
+    "atividade": "diurno",
+    "dieta": "herbívoro",
+    "caca": "pasta nos planaltos",
+    "dianteDeGente": "evita; só aceita o cavaleiro puro"
+  },
+  "ecologia": {
+    "terreno": [
+      "céu",
+      "planície",
+      "montanha"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Cavalo alado de penas brancas que voa livre em manadas pelos céus altos, longe de estradas e cidades. Só se deixa montar por quem prova, ao longo de anos, um coração puro; leal a quem conquista sua confiança e implacável com a traição.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -116,44 +227,18 @@
       "texto": "Relíquia viva de um mundo mais mágico, cultuada por alguns como sinal do Sol; camponeses que nunca viram Centelha tão alta a encaram com o mesmo temor supersticioso reservado a dragões."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Sky",
-      "Plains",
-      "Mountain"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/pegaso_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Prontidão 3, Atletismo 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Pégaso",
-    "cr": "3",
-    "tipo": "besta mágica Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 18,
-      "des": 15,
-      "con": 16,
-      "int": 10,
-      "sab": 13,
-      "car": 13
-    },
-    "pericias": [
-      "Prontidão 3",
-      "Atletismo 2"
-    ],
-    "nota": "Naturalmente mágico, detectar o bem/mal (Su): Centelha 3.",
-    "deslocamento": {
-      "ft": 60,
-      "origem": "fonte"
-    },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 3
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Sentir o bem e o mal",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    }
+  ]
 }

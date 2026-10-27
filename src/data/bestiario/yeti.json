@@ -1,37 +1,24 @@
 {
-  "ordem": 309,
   "id": "yeti",
   "idAntigo": "mon-yeti",
   "nome": "Yeti",
   "nomeIngles": "Yeti",
-  "categoria": "Humanoide monstruoso",
-  "categoriaLegada": "Monstro",
+  "categoria": "humanoide-monstruoso",
   "papel": "soldado",
-  "conceito": "humanoide monstruoso Grande",
-  "descricao": "Homem das neves de 2,7 m e pelagem branca, que vive em clãs isolados no alto das montanhas. Paralisa com o olhar, rasga com as duas garras geladas e some contra a neve; o fogo o fere fundo.",
-  "tags": [
-    "monstro",
-    "centelha"
-  ],
-  "imagem": "bestiario/yeti_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,7 m de altura",
-    "peso": "360 kg",
-    "largura": 0.78,
-    "altura": 2.7
-  },
-  "locomocao": {
-    "terra": 4,
-    "escalada": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-  },
+  "ameaca": 3,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, curvado",
+    "apoio": "bipede",
+    "altura": 2.7,
+    "largura": 0.78,
+    "profundidade": 0.4,
+    "comprimento": null,
+    "massa": 360,
+    "area": 1.87
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 7,
     "destreza": 3,
     "vigor": 5,
@@ -42,8 +29,9 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 3,
     "furtividade": 2,
@@ -52,87 +40,145 @@
     "resistencia": 3,
     "sobrevivencia": 3
   },
-  "skills2": {
+  "habilidadesSec": {
     "escalada": 3,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "na neve",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "garras",
-      "valor": 2,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "na neve",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "garras",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "escalada": {
+      "batalha": 3
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Garras",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "ticks": 6,
-      "classe": "media"
+      "parte": "maos-de-garra",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "fogo"
-  ],
-  "resistencias": [],
-  "imunidades": [
-    "gelo"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Investida das garras",
-      "descricao": "Ativação: as duas garras na mesma ação, pela empunhadura dupla do livro (as duas a −1d6). Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: se as duas garras acertam o mesmo alvo, ele é dilacerado. Dano: +2d6, Corte, além das duas garras. Resistência: nenhum. Limite de uso: uma vez por ação.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "as duas garras na mesma ação, pela empunhadura dupla do livro (as duas a −1d6)",
+      "duracao": "instantânea",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "se as duas garras acertam o mesmo alvo, ele é dilacerado",
+      "dano": "+2d6, Corte, além das duas garras",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por ação"
     },
     {
       "nome": "Corpo gélido",
-      "descricao": "Ativação: cada golpe de garra ou de mão nua que acerta. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o frio do corpo queima a carne. Dano: +1d6, gelo, somado ao golpe. Resistência: nenhum. Limite de uso: um por golpe.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "cada golpe de garra ou de mão nua que acerta",
+      "duracao": "instantânea",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "o frio do corpo queima a carne",
+      "dano": "+1d6, gelo, somado ao golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "Olhar paralisante",
-      "descricao": "poder natural (base Fascinação 1): Ativação: uma ação, Velocidade 6, encarando o alvo de perto. Duração: até o fim da próxima ação do alvo. Alcance: 9 m. Área: um alvo. Efeito: quem falha fica paralisado de terror e perde a próxima ação; quem passa fica imune a este olhar até o fim do dia. Dano: nenhum. Resistência: mente, contra Influência + Briga dele. Limite de uso: uma vez por alvo por dia.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Escalador nato e furtivo na neve",
-      "descricao": "Escalada 3 e Furtividade, com a Especialidade natural (na neve) +3.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Imunidade ao gelo",
-      "descricao": "imune a gelo e fraco contra fogo (Elementos; C-039).",
-      "classe": "livro"
-    },
-    {
-      "nome": "abominável da montanha",
-      "descricao": "espera camuflado na neve, paralisa o mais forte com o olhar e dilacera com as duas garras; leva gado e gente montanha acima.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão, audição e olfato: os de um humano; enxerga bem na neve ofuscante."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o terror do olhar paralisa a vítima"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "abominável da montanha",
+      "formas": "todas",
+      "texto": "espera camuflado na neve, paralisa o mais forte com o olhar e dilacera com as duas garras; leva gado e gente montanha acima."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão, audição e olfato",
+      "descricao": "os de um humano; enxerga bem na neve ofuscante",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "some contra a neve; Especialidade natural",
+    "mente": "humanoide; tribal, isolada",
+    "tracos": "corpo enorme coberto de pelagem branca e espessa, cara de macaco, garras negras, pés descalços enormes"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em clã pequeno, típico 2 a 6; os violentos andam sozinhos",
+    "atividade": "qualquer hora",
+    "dieta": "carnívoro",
+    "caca": "desce para roubar gado e gente",
+    "dianteDeGente": "evita; os expulsos saqueiam"
+  },
+  "ecologia": {
+    "terreno": [
+      "montanha",
+      "gélido"
+    ],
+    "clima": [
+      "frio"
+    ]
+  },
+  "descricao": "Homem das neves de 2,7 m e pelagem branca, que vive em clãs isolados no alto das montanhas. Paralisa com o olhar, rasga com as duas garras geladas e some contra a neve; o fogo o fere fundo.",
   "lore": [
     {
       "titulo": "Abomináveis das montanhas",
@@ -145,76 +191,50 @@
     {
       "titulo": "Fronteira com o alheio",
       "texto": "Suas moradas erguem-se onde o véu entre este mundo e outros se afina, e ninguém sabe dizer se os yetis vieram de lá ou apenas foram corrompidos pela proximidade."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: em clã pequeno, típico 2 a 6; os violentos andam sozinhos."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande, 50 PV, Impacto 7, Corte e Perfuração 2; o frio não o fere, o fogo o fere mais. Esquiva 10, Bloqueio 6. Garras (12,5, mais 1d6 de gelo); as duas juntas a −1d6, e +2d6 se as duas acertam. Uma vez por dia por alvo, o olhar paralisa. Some na neve."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Mountain",
-      "Cold"
+  "imagens": [
+    "bestiario/yeti_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Cold"
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Yeti",
-    "cr": "4",
-    "tipo": "humanoide monstruoso Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 19,
-      "des": 12,
-      "con": 15,
-      "int": 9,
-      "sab": 12,
-      "car": 10
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Investida das garras",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Corpo gélido",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "v3": {
-    "pv": 50,
-    "esquiva": 10,
-    "bloqueio": 6,
-    "defesa": 10,
-    "defesaMental": 15,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 7,
-      "corte": 2,
-      "perfuracao": 2
+    {
+      "campo": "atributos.forca",
+      "motivo": "Acima de 6 pela física (D-143): 360 kg de corpo de urso, acima da Força de referência da massa (6,97) e não abaixo do gorila de 180 kg (Força 7, D-117). O site tinha 6 (For 19 na fonte); 7; o site tinha 6"
     },
-    "couracaNivel": 1,
-    "pesoErguido": 852.02,
-    "deslocamento": {
-      "terra": {
-        "batalha": 4,
-        "arranque": 6,
-        "corrida": 9
-      }
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Pelagem espessa e gordura: nível 1, como o couro peludo do molde (tamanho-decisoes-5, item 6: \"Pelagem e gordura podem subir a Couraça e dar Resistência (frio) ao mesmo tempo\") . A imunidade e a fraqueza vão em Elementos; nível 1 pela pelagem e gordura"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Tribos isoladas)"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
     }
-  },
-  "notasObservacao": [
-    "`forca`: 7; o site tinha 6 **[provisório]**",
-    "`couraca`: nível 1 pela pelagem e gordura **[provisório]**",
-    "`investida das garras`, `corpo gélido`, `olhar paralisante`: números sugeridos pela ficha (D-197)"
   ]
 }

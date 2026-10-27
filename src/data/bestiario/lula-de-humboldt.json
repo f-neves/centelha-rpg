@@ -2,26 +2,23 @@
   "id": "lula-de-humboldt",
   "nome": "Lula-de-humboldt",
   "nomeIngles": "Humboldt squid",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Miúdo",
-  "descricao": "Sobe da escuridão à noite em cardume, piscando vermelho e branco, e cerca o que se move.",
-  "tags": [],
-  "imagem": null,
-  "porte": "Miúdo",
-  "dimensoes": {
-    "medida": "1,19 m de comprimento, 0,09 m de altura",
-    "peso": "2,75 kg",
-    "comprimento": 1.19,
-    "largura": 0.09,
-    "altura": 0.09
-  },
-  "locomocao": {
-    "natacao": 5
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "nadador",
+    "apoio": "outro",
+    "altura": 0.09,
+    "largura": 0.09,
+    "profundidade": null,
+    "comprimento": 1.19,
+    "massa": 2.75,
+    "area": 0.043,
+    "posturaDoTamanho": "de lado"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 1,
     "destreza": 3,
     "vigor": 2,
@@ -32,9 +29,11 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 3,
+    "atletismo": 0,
     "furtividade": 1,
     "integridade": 2,
     "prontidao": 2,
@@ -42,150 +41,177 @@
     "empatia": 1,
     "sobrevivencia": 3
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
     "natacao": 4,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "resistencia",
-      "foco": "hipóxia",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "visão na penumbra",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "Agarrão",
-      "valor": 2,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "resistencia": [
+      {
+        "foco": "hipóxia",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "prontidao": [
+      {
+        "foco": "visão na penumbra",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "Agarrão",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "nado": {
+      "batalha": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Bico",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Braços e tentáculos",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "braco",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "Braços e tentáculos: Segura o peixe pequeno e o leva ao bico; contra um humano, o Mestre decide se segura uma mão.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
     },
     {
       "nome": "arrastar para o fundo",
-      "descricao": "Braços e tentáculos: só presa pequena; a lula de 2,5 kg não arrasta gente.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "jato para trás",
-      "descricao": "foge em jato (a Esquiva e o nado).",
-      "classe": "como luta"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Braços e tentáculos",
+      "efeito": "só presa pequena; a lula de 2,5 kg não arrasta gente"
     },
     {
       "nome": "nuvem de tinta",
-      "descricao": "solta uma nuvem de tinta que esconde a fuga.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão em pouca luz: Especialidade natural Prontidão (visão na penumbra) +2; olhos grandes de predadora visual (guia da Hopkins/NOAA); alcance."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "solta uma nuvem de tinta que esconde a fuga"
     }
   ],
-  "lore": [
+  "comoLuta": [
     {
-      "titulo": "Comportamento",
-      "texto": "Social: cardume."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Miúda: ganha +6 no acerto corpo a corpo contra um humano Médio. Força 1: a mordida faz 2,5 em média e o agarrão tira 2 (com a Briga (Agarrão) +2). O perigo é o cardume: o grupo cerca quem está na água, e muitas mordidas pequenas somam. 6 PV, Impacto 2, Couraça nível 0 (o valor do nível fica para depois). Chega a 5 m por Tick; fora d'água não anda. Aguenta a água sem oxigênio do fundo (Resistência 2 e +2 natural na hipóxia), onde quem a persegue não aguenta. A tinta e o jato são a fuga, pelo Mestre."
+      "nome": "jato para trás",
+      "formas": "todas",
+      "texto": "foge em jato (a Esquiva e o nado)."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "visão em pouca luz",
+      "descricao": "Especialidade natural Prontidão (visão na penumbra) +2; olhos grandes de predadora visual (guia da Hopkins/NOAA); alcance",
+      "formas": "todas"
+    },
+    {
+      "nome": "estatocisto, quimiorrecepção",
+      "descricao": "",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "água",
+    "prendeRespiracao": "não se aplica (brânquias). A tolerância à hipóxia está na Especialidade natural",
+    "camuflagem": "cromatóforos; pisca vermelho e branco a 2 a 4 Hz (Wikipédia); fotóforos sob a pele no corpo todo, de luz amarelo-esverdeada (Rev. Biol. Mar. Oceanogr. 2008). Sem Especialidade de Furtividade: a cor serve de sinal, e não de esconderijo, na caça em grupo",
+    "mente": "animal",
+    "tracos": "sem esqueleto, só o gládio (0,7 a 1% da massa, Wikipédia); vive cerca de 1 ano, no máximo 2 (ADW); aguenta hipóxia"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "cardume",
+    "atividade": "noturno",
+    "dieta": "carnívoro",
+    "caca": "caça ativa em grupo",
+    "dianteDeGente": "ataca em cardume"
+  },
   "ecologia": {
-    "tipo": "Animal",
     "terreno": [
-      "Water",
-      "Coast"
+      "aquático",
+      "litoral"
     ],
     "clima": [
-      "Temperate",
-      "Tropical"
+      "temperado",
+      "tropical"
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 6,
-    "esquiva": 12,
-    "bloqueio": 6,
-    "defesa": 12,
-    "defesaMental": 8,
-    "defesaSocial": 10,
-    "absorcao": {
-      "impacto": 2,
-      "corte": 2,
-      "perfuracao": 2
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 22.58,
-    "deslocamento": {
-      "nado": 5
-    }
+  "descricao": "Sobe da escuridão à noite em cardume, piscando vermelho e branco, e cerca o que se move.",
+  "lore": [],
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "pesoErguido: provisório, 21 kg ◆ pela fórmula das decisões 14 e 16 (calc6, 2,5 kg, Força 1, Musculatura 2; era 17,25 kg com a Força 0); cefalópode não tem `carga` (D-160, D-175). Sem feito medido para conferir.",
-    "anatomia: cefalópode, anatomia provisória (D-175), fixada pelo Arquiteto e não calibrada em animal medido.",
-    "velocidade: congelada (decisão 23). 4,6 m/s contra 6,7 m/s sem método (−31%) e 3 m/s de subida medida (+54%). As duas medidas são de animais grandes (os 3 m/s, de adultos grandes marcados, Gilly 2012); o nado de 5 m por Tick fica congelado na lula de 2,5 kg, e nenhuma medida do adulto comum o confere.",
-    "alvo: Miúdo pela área de lado escalada da ficha grande, 0,38 × (2,5 ÷ 68)^(2/3) = 0,042 m². A ficha grande (68 kg) é Pequena. Provisório até os cortes fecharem (D-174).",
-    "dimensoes: o manto de 42,7 cm sai da relação manto e massa (Universidad de Concepción) invertida para 2,5 kg, e confere com as médias da Helgoland 2008 (376 e 388,7 mm) e com o cubo da massa (1,2 × (2,5 ÷ 68)^(1/3) = 0,40 m). Altura, largura e comprimento sem tentáculos estimados pelas proporções da ficha grande, sem fonte; o comprimento total (1,15 m) vem da proporção do máximo da FAO, e não fecha com o \"comprimento total comum de 50 a 80 cm\" da mesma FAO, que fica perto do comprimento sem os tentáculos (0,64 m). Talvez a FAO meça sem os tentáculos; não conferido (D-174). Os dois tentáculos e a nadadeira ficam fora da área.",
-    "referencia e massa: 2,5 kg, o meio do \"peso comum 2 ou 3 kg\" da FAO (sexta rodada, item 4: o adulto típico); era 68 kg, o adulto grande do sul do Chile, que passou à ficha `lula-de-humboldt-grande.md`. A relação manto e massa da Universidad de Concepción dá o manto; a própria página dá um exemplo que não fecha com a fórmula (manto de 80 cm com \"perto de 10 kg\", e a fórmula dá 18,6) (D-174).",
-    "forca: 1 ◆ na sétima rodada (item 8 da `tamanho-decisoes-5.md`), pela comparação com o polvo de 2 kg (Força 1 ◆): os braços de ventosa dentada prendem e puxam a mão; era 0 pela leitura automática da D-167 e 4 na ficha grande. Os dois ataques sobem de 1,5 para 2,5 de média e o agarrão de 0 para 2 (D-115). Vigor 2 pela mesma comparação (era 3). A D-176 fica cumprida: a ficha grande tem Força e Vigor maiores. [provisório] (D-158, D-174).",
-    "musculatura: 2 (comum), sem medida; o manto é músculo de jato, sem osso de alavanca.",
-    "resistencia: 2 pela régua da v3; o levantamento dava 3, mas com a migração e a distância, que ficam na nota de pesquisa (jornada) (decisão 5). A hipóxia fica na Especialidade natural +2.",
-    "empatia: 1, nova, pela sinalização de cor dentro do cardume; sem dado de leitura de outro bicho ou de gente. Escolha provisória (D-174).",
-    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "jornada (nota de pesquisa, não é regra): migração vertical diária de 0 a 200 m à noite e 800 a 1.000 m de dia (SeaLifeBase); deslocamento horizontal de até 100 km em 3 a 4 dias (ADW) **[medido]**; em hipóxia o jato rápido cai (Gilly 2012, trecho de busca, não conferido).",
-    "especialidades: o Fôlego +2 de hoje virou Resistência (hipóxia) +2 natural, e a penumbra +2 virou natural; os valores não mudam.",
-    "fonte: o \"até 1,2 m de manto e 65 kg\" continua só pelo resumo de busca (Aquatic Living Resources 2019; a página deu 403) (D-174)."
+  "revisao": [
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,15 × 1,0323 = 1,187 . Antes: pela proporção do máximo da FAO (4 m de total para 1,5 m de manto, cerca de 2,7 vezes o manto): 0,427 × 2,7 = 1,15. A FAO dá \"comprimento total comum de 50 a 80 cm\", que não fecha com essa proporção (ver notas). Era 3,2 m (na ficha grande)"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Etapa 2 (20/10/2026): Decisão 5 de 19/10/2026: a ficha principal usa uma versão um pouco acima da média da espécie, dentro da faixa real. 2,5 kg mais 10% = 2,75 kg , dentro da faixa real (comum de 2 a 3 kg, FAO; até 50 kg, ADW, ou 65 kg, ALR 2019). Antes: Era 68 kg (o adulto grande do sul do Chile, agora `lula-de-humboldt-grande.md`). Referência: 2,5 kg, meio da faixa do \"peso comum 2 ou 3 kg\" (FAO, Roper, Sweeney e Nauen 1984), (2 + 3) ÷ 2 = 2,5 : meio de faixa, e não média. Pela relação manto e massa da Universidad de Concepción, o manto médio de 38 cm da Helgoland 2008 dá 0,0151 × 38^3,2 = 1,7 kg, e os 42,7 cm dão os 2,5 kg. Faixa do adulto: de 2 a 3 kg, o comum (FAO), a 50 kg (ADW; Wikipédia) ou 65 kg (ALR 2019, resumo de busca); os 150 kg são resumo de busca sem fonte. Sexos: as fêmeas amadurecem maiores (Wikipédia); manto médio de 376 mm nos machos e 388,7 mm nas fêmeas (Helgoland 2008); massa por sexo"
+    }
   ]
 }

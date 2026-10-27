@@ -1,38 +1,24 @@
 {
-  "ordem": 68,
   "id": "mimico",
   "idAntigo": "mon-mimico",
   "nome": "Mímico",
   "nomeIngles": "Mimic",
-  "categoria": "Aberração",
-  "categoriaLegada": "Aberração",
+  "categoria": "aberracao",
   "papel": "soldado",
-  "conceito": "aberração Médio",
-  "descricao": "Disfarça-se de baú, porta ou móvel e espera com paciência absoluta até que alguém confie o bastante para tocar; então gruda, prende e devora a vítima antes que ela perceba o engano. Vive sozinho em ruínas e cavernas, perto das rotas dos saqueadores.",
-  "tags": [
-    "aberracao",
-    "centelha"
-  ],
-  "imagem": "bestiario/mimico_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,2 m de comprimento, 0,5 m de altura",
-    "peso": "150 kg",
-    "comprimento": 1.2,
-    "largura": 0.5,
-    "altura": 0.5
-  },
-  "locomocao": {
-    "terra": 1,
-    "escalada": 1
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 1,
-    "arranque": 2,
-    "corrida": 2
-  },
+  "ameaca": 3,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "na forma de baú: um bloco no chão",
+    "apoio": "outro",
+    "altura": 0.5,
+    "largura": 0.5,
+    "profundidade": null,
+    "comprimento": 1.2,
+    "massa": 150,
+    "area": 0.6
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 5,
     "destreza": 3,
     "vigor": 5,
@@ -43,8 +29,9 @@
     "perspicacia": 2,
     "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 1,
     "furtividade": 4,
@@ -52,84 +39,169 @@
     "integridade": 3,
     "empatia": 1
   },
-  "skills2": {
+  "habilidadesSec": {
     "escalada": 1,
     "musculatura": 1
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "disfarçado de objeto",
-      "valor": 3,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "disfarçado de objeto",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 1,
+  "deslocamento": {
+    "terra": {
+      "batalha": 1,
+      "arranque": 2,
+      "corrida": 2
+    },
+    "escalada": {
+      "batalha": 1
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pseudópode",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 6,
-      "classe": "media"
+      "parte": "braco-de-carne-grudenta",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "a-boca-no-lugar-da-tampa",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Assumir forma de objeto",
-      "descricao": "poder natural: Ativação: uma ação, Velocidade 6, com uma hora de preparo para mudar de objeto. Duração: até ele se mexer para atacar. Alcance: o próprio corpo. Área: não se aplica. Efeito: parece um baú, uma porta ou um móvel comum da massa dele; quem olha precisa vencer a Furtividade dele, com a Especialidade natural (disfarçado de objeto) +3, com Prontidão para notar o engano. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6, com uma hora de preparo para mudar de objeto",
+      "duracao": "até ele se mexer para atacar",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "parece um baú, uma porta ou um móvel comum da massa dele; quem olha precisa vencer a Furtividade dele, com a Especialidade natural (disfarçado de objeto) +3, com Prontidão para notar o engano",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
     },
     {
       "nome": "Cola aderente",
-      "descricao": "Pseudópode: Ativação: o Pseudópode que acerta, ou alguém que toca nele com a mão ou com uma arma. Duração: até se soltar. Alcance: o corpo dele. Área: quem tocou. Efeito: fica Agarrado, colado; a arma que tocou fica presa nele. Dano: nenhum. Resistência: esquiva, contra a jogada do Pseudópode, para não grudar; para se soltar, Força ou Atletismo contra a mesma jogada, uma tentativa por ação. Limite de uso: três vezes por cena, recarga de 1 hora (site).",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Pseudópode",
+      "ativacao": "o Pseudópode que acerta, ou alguém que toca nele com a mão ou com uma arma",
+      "duracao": "até se soltar",
+      "alcance": "o corpo dele",
+      "area": "quem tocou",
+      "efeito": "fica Agarrado, colado; a arma que tocou fica presa nele",
+      "dano": "nenhum",
+      "resistencia": "esquiva, contra a jogada do Pseudópode, para não grudar; para se soltar, Força ou Atletismo contra a mesma jogada, uma tentativa por ação",
+      "limiteDeUso": "três vezes por cena, recarga de 1 hora"
     },
     {
       "nome": "Mordida de emboscada",
-      "descricao": "Mordida: Ativação: o primeiro golpe contra um alvo Surpreso. Duração: o golpe. Alcance: o do corpo a corpo. Área: um alvo. Efeito: morde quem achou que abria um baú. Dano: +2d6 ao da Mordida. Resistência: nenhum. Limite de uso: uma vez por alvo.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "baú paciente",
-      "descricao": "espera imóvel na rota dos saqueadores, com o disfarce que mais atrai uma mão; quando alguém toca, gruda, morde e devora antes que o outro entenda.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão e audição: as de um bicho atento; observa os hábitos de quem passa (site)."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Mordida",
+      "ativacao": "o primeiro golpe contra um alvo Surpreso (`condicoes.json`)",
+      "duracao": "o golpe",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "morde quem achou que abria um baú",
+      "dano": "+2d6 ao da Mordida",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por alvo"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "baú paciente",
+      "formas": "todas",
+      "texto": "espera imóvel na rota dos saqueadores, com o disfarce que mais atrai uma mão; quando alguém toca, gruda, morde e devora antes que o outro entenda."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um bicho atento; observa os hábitos de quem passa",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "a de um bicho do porte dele",
+    "camuflagem": "o disfarce de objeto; Furtividade (disfarçado de objeto) +3",
+    "mente": "esperto, paciente, ajusta o disfarce ao que vê dar certo",
+    "tracos": "baú de madeira e ferro que, de perto, tem textura de pele; abre uma boca de dentes onde seria a tampa e solta uma língua comprida"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho",
+    "atividade": "qualquer hora; quase não se mexe",
+    "dieta": "carnívoro",
+    "caca": "emboscada disfarçado",
+    "dianteDeGente": "espera que toquem"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo",
+      "ruínas"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Disfarça-se de baú, porta ou móvel e espera com paciência absoluta até que alguém confie o bastante para tocar; então gruda, prende e devora a vítima antes que ela perceba o engano. Vive sozinho em ruínas e cavernas, perto das rotas dos saqueadores.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Disfarça-se de baú, porta ou móvel e espera com paciência absoluta até que alguém confie o bastante para tocar; então prende e devora a vítima antes que ela perceba o engano. Social: sozinho."
+      "texto": "Disfarça-se de baú, porta ou móvel e espera com paciência absoluta até que alguém confie o bastante para tocar; então prende e devora a vítima antes que ela perceba o engano."
     },
     {
       "titulo": "Ecologia",
@@ -142,83 +214,36 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "É contado entre as coisas de forma errada que o povo acredita terem origem na Fenda, e nenhuma história assusta mais um caçador de tesouros do que a certeza de que o próximo baú pode ser o último que ele abre."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, 40 PV, Impacto 6, Corte e Perfuração 1. Esquiva 10, Bloqueio 6. Parece um objeto até atacar. Quem o toca ou leva o Pseudópode (9,5) fica colado (três vezes por cena); a Mordida (7,5) faz +2d6 no primeiro golpe contra quem está Surpreso."
     }
   ],
-  "ecologia": {
-    "tipo": "Aberration",
-    "terreno": [
-      "Underground",
-      "Ruins"
-    ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "Habilidades notáveis: Furtividade 4.",
-  "pendente": true,
-  "fonte": {
-    "livro": "MM 3.5",
-    "nome": "Mímico",
-    "cr": "4",
-    "tipo": "aberração Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 19,
-      "des": 12,
-      "con": 17,
-      "int": 10,
-      "sab": 13,
-      "car": 10
-    },
-    "pericias": [
-      "Furtividade 4"
-    ],
-    "nota": "Mudar de forma (disfarce): Centelha 1.",
-    "deslocamento": {
-      "ft": 10,
-      "origem": "fonte"
-    },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "proezaFutura": [
-    {
-      "caminho": "camaleao"
-    }
+  "imagens": [
+    "bestiario/mimico_criatura.webp"
   ],
-  "v3": {
-    "pv": 40,
-    "esquiva": 10,
-    "bloqueio": 6,
-    "defesa": 10,
-    "defesaMental": 14,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 1,
-      "perfuracao": 1
-    },
-    "couracaNivel": 1,
-    "pesoErguido": 330.38,
-    "deslocamento": {
-      "terra": {
-        "batalha": 1,
-        "arranque": 2,
-        "corrida": 2
-      }
-    }
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`medidas`: os 1,2 m \"de altura\" do site lidos como comprimento do baú **[conta]**",
-    "`couraca`: nível 1 **[provisório]**",
-    "`ataques`: Pseudópode Médio e Mordida Leve no lugar das \"Garras e presas\" **[provisório]**",
-    "`proezaFutura`: o site guarda o caminho \"camaleao\" para uma Proeza futura; fica como está",
-    "`compaixao`: 1, o piso da régua; o site tinha 0",
-    "`assumir forma de objeto`, `cola aderente`, `mordida de emboscada`: números sugeridos pela ficha (D-197); a cola usa os 3 por cena e a recarga de 1 hora do site"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Assumir forma de objeto",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Cola aderente",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Mordida de emboscada",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": ""
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). A pele que imita madeira endurece um pouco ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 1"
+    }
   ]
 }

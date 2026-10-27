@@ -129,12 +129,6 @@
       "dano": "nenhum",
       "resistencia": "nenhum",
       "limiteDeUso": "nenhum"
-    },
-    {
-      "nome": "casco de ferro",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "resistência a Corte, Perfuração e Fogo (metade do dano)"
     }
   ],
   "comoLuta": [

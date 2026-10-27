@@ -294,12 +294,8 @@
       "motivo": "0, e não o −1 do site, fora da régua; o efeito em quem olha foi para a linha medonho (D-181)"
     },
     {
-      "campo": "habilidadesEspeciais.Regeneração 5",
-      "motivo": "Antes: 4 de Energia e 10 PV/6 Ticks. Depois: só classificação, sem ritmo de cura. N 5 da referência Pathfinder (Archives of Nethys, Horned Devil)."
-    },
-    {
-      "campo": "habilidadesEspeciais.Atordoar com a corrente",
-      "motivo": "Antes perdia a próxima ação; agora sem regra, 33.2/33.3."
+      "campo": "ataques.Corrente farpada",
+      "motivo": "Antes: dano médio 31,5."
     }
   ]
 }

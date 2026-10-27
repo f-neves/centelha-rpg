@@ -431,10 +431,6 @@
     {
       "campo": "aparencia",
       "motivo": "0, e não o −1 do site, fora da régua; o efeito em quem olha foi para a linha medonho (D-181)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Regeneração 5",
-      "motivo": "Antes: 11 PV/6 Ticks por 4 de Energia. N 5 pela referência Pit Fiend (Archives of Nethys)."
     }
   ]
 }

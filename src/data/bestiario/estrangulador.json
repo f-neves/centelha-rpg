@@ -108,15 +108,15 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
-      "regra": "agarrar",
-      "texto": "(`combate.md`), com a Especialidade natural Briga (Agarrão) +2. Contra o humano (Faixa 3), ele está uma faixa abaixo: o humano soma +3 na Defesa de agarrão (Massa nas Manobras)"
+      "regra": "agarrar"
     },
     {
       "nome": "Constrição",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
-      "texto": "\"Constrição é Agarrão\". O aperto que cresce é o dano do agarrão do livro: 2 × Força + Centelha = 10, de Impacto, e +1d6 por Margem da manutenção, a cada 6 Ticks"
+      "regra": "agarrar",
+      "texto": "aperta a presa com o corpo"
     },
     {
       "nome": "Estrangulamento",

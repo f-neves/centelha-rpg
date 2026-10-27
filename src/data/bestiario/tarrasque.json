@@ -1,136 +1,244 @@
 {
-  "ordem": 129,
   "id": "tarrasque",
   "idAntigo": "mon-tarrasque",
   "nome": "Tarrasque",
   "nomeIngles": "Tarrasque",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "chefe",
-  "conceito": "besta mágica Colossal",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/tarrasque_criatura.webp",
-  "porte": "Colossal",
-  "dimensoes": {
-    "medida": "27 m de comprimento, chegando a 15 m de altura quando se ergue",
-    "peso": "450 t"
-  },
-  "locomocao": {
-    "terra": 4
-  },
+  "ameaca": 6,
   "centelha": 10,
-  "attrs": {
+  "corpo": {
+    "postura": "de pé, erguida; anda curvada",
+    "apoio": "bipede",
+    "altura": 15,
+    "largura": 4.6,
+    "profundidade": null,
+    "comprimento": 27,
+    "massa": 450000,
+    "area": 96,
+    "posturaDoTamanho": "silhueta vista de lado, erguida",
+    "tamanhoEscolhido": "colossal"
+  },
+  "couraca": 12,
+  "atributos": {
     "forca": 16,
     "destreza": 2,
     "vigor": 14,
-    "influencia": 4,
-    "perspicacia": 2,
-    "compostura": 4,
     "percepcao": 4,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 4,
+    "perspicacia": 2,
+    "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 0,
-    "prontidao": 2,
-    "integridade": 4
+    "atletismo": 3,
+    "furtividade": 0,
+    "integridade": 4,
+    "prontidao": 4,
+    "resistencia": 6,
+    "sociabilidade": 0,
+    "sobrevivencia": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "intimidacao": 4,
+    "musculatura": 4
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 12,
-  "aparencia": 5,
-  "tech": {
-    "imortalidade-tenue": true
+  "vontade": 12,
+  "aparencia": 2,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    }
   },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 4,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Mordida",
+      "parte": "boca",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
       "acerto": 0,
-      "ticks": 7
-    }
-  ],
-  "poderes": [
-    {
-      "id": "regeneracao-implacavel",
-      "nome": "Regeneração implacável",
-      "tipo": "natural",
-      "resiste": "nenhum",
-      "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
-      },
-      "base": {
-        "arte": "protecao",
-        "nivel": 4
-      },
-      "descricao": "A carne da Tarrasca se refaz sozinha a cada instante; só fogo ou ácido de verdade atrasam essa regeneração, e mesmo assim ela some devagar."
+      "bloqueiaComoArma": null
     },
     {
-      "id": "bramido-de-panico",
+      "nome": "Garras",
+      "parte": "garra",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Cauda",
+      "parte": "cauda",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 2,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    }
+  ],
+  "habilidadesEspeciais": [
+    {
+      "nome": "múltiplos ataques",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "morde, arranha e bate com a cauda na mesma ação"
+    },
+    {
+      "nome": "fúria implacável",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "abaixo da metade dos PV, ganha mais um ataque por rodada"
+    },
+    {
+      "nome": "Regeneração 40",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de fogo ou ácido, que a atrasam"
+    },
+    {
+      "nome": "fogo e ácido atrasam a regeneração",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o dano de fogo ou de ácido se fecha mais devagar"
+    },
+    {
+      "nome": "Imortalidade Tênue",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "imortalidade-tenue",
+        "nivel": 6
+      }
+    },
+    {
       "nome": "Bramido de pânico",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "morte",
         "nivel": 3
       },
-      "resiste": "mente",
-      "efeito": "Área; quem resiste fica imune na cena.",
-      "usos": {
-        "periodo": "cena",
-        "quantidade": 1
-      },
-      "descricao": "O rugido da Tarrasca é puro terror: quem ouve e falha em resistir foge cego de pavor, sem escolher direção."
+      "ativacao": "uma ação, Velocidade 6, um rugido",
+      "duracao": "6 Ticks",
+      "alcance": "quem ouve, até 18 m",
+      "area": "esfera de 18 m em volta dela",
+      "efeito": "quem falha fica Em pânico e foge sem escolher direção",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Intimidação dela; quem passa fica imune pela cena",
+      "limiteDeUso": "uma vez por cena"
+    },
+    {
+      "nome": "Carapaça que reflete magia",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; quando uma Arte de raio, linha ou cone a mira",
+      "duracao": "instantânea",
+      "alcance": "o próprio corpo",
+      "area": "a Arte que a mira",
+      "efeito": "rola 1d6; em 1 ou 2, a Arte volta para quem a conjurou",
+      "dano": "o da Arte, em quem conjurou",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por Arte"
+    },
+    {
+      "nome": "quase imune",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "resiste a veneno, doença e à maioria dos efeitos mentais"
+    },
+    {
+      "nome": "investida destruidora",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "atropela tudo no caminho, sem ligar para terreno nem estrutura leve"
     }
   ],
-  "habilidades": [
+  "comoLuta": [
     {
-      "nome": "Carapaça reflete magia",
-      "descricao": "Arte de raio, linha ou cone que a mira: role 1d6; em 1 ou 2, o efeito volta para quem conjurou"
-    },
-    {
-      "nome": "Regeneração implacável",
-      "descricao": "recupera grande quantidade de PV a cada rodada"
-    },
-    {
-      "nome": "Bramido de pânico",
-      "descricao": "raio 18m; falha em Vontade: Abalado e foge por uma rodada"
-    },
-    {
-      "nome": "Múltiplos ataques",
-      "descricao": "morde, arranha e golpeia com a cauda no mesmo turno, cada um com dano alto"
-    },
-    {
-      "nome": "Investida destruidora",
-      "descricao": "atropela tudo em seu caminho, ignora terreno e estruturas leves"
-    },
-    {
-      "nome": "Quase imune",
-      "descricao": "resiste a veneno, doença e à maioria dos efeitos mentais"
-    },
-    {
-      "nome": "Fúria implacável",
-      "descricao": "abaixo de metade dos PV, ganha um ataque extra por rodada"
-    },
-    {
-      "nome": "Escala colossal",
-      "descricao": "alcance e Absorção muito acima do normal"
+      "nome": "fim do mundo",
+      "formas": "todas",
+      "texto": "desperta do sono milenar só para destruir e devorar, ignora dor, fogo e feitiço, e volta a dormir."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "sentidos",
+      "descricao": "Prontidão 4; sente o que se move pela terra que treme sob ela",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal (fera de Inteligência 1), fúria pura",
+    "tracos": "réptil colossal de 27 m e 15 m quando se ergue, carapaça escura, dois chifres para a frente, cauda pesada"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitária",
+    "atividade": "dorme por séculos; desperta para destruir",
+    "dieta": "devora tudo no caminho",
+    "caca": "não caça: arrasa",
+    "dianteDeGente": "destrói"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Cataclismo vivo que não caça por fome nem conquista por ambição: desperta do sono milenar só para destruir, devorar e voltar a dormir, ignorando dor, fogo e feitiço. A passagem dela deixa a terra estéril por gerações.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -149,46 +257,30 @@
       "texto": "As lendas dizem que a Tarrasca desperta quando o orgulho e o poder dos mortais crescem demais, um eco distante da Grande Guerra que quase destruiu Uldun. As igrejas supressoras de Calin usam sua história como sermão vivo: prova de que magia e tecnologia desenfreadas convocam monstros que nem os deuses sobreviventes ousam despertar de novo."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Any"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/tarrasque_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Prontidão 4. Centelha acima do teto mortal (entidade).",
-  "pendente": true,
-  "fonte": {
-    "livro": "MM 3.5",
-    "nome": "Tarrasque",
-    "cr": "25",
-    "tipo": "besta mágica Colossal",
-    "tamanho": "colossal",
-    "valores": {
-      "for": 45,
-      "des": 8,
-      "con": 35,
-      "int": 3,
-      "sab": 14,
-      "car": 14
-    },
-    "pericias": [
-      "Prontidão 4"
-    ],
-    "nota": "Cataclismo vivo, quase indestrutível: Centelha 9. Str 45 → curva 12 +4 = Força 16.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 6,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "cerne-vital"
+      "campo": "habilidadesEspeciais.Bramido de pânico",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Carapaça que reflete magia",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "A do site. A regra de altura e massa dos lotes 32 e 33, mantida nos lotes 34 a 36: a medida do site manda, e a massa do site fica quando um fator de forma plausível sobre o animal de base a alcança. A altura erguida manda, a postura em que luta: o tiranossauro (7,5 t, 3,9 m) escalado pelo cubo da altura (15 ÷ 3,9 = × 3,846) dá 427 t; a cauda mais curta tira peso e o corpo mais grosso e a carapaça põem de volta, fator 1,05: 450 t; 450 t, a do site, pela altura erguida e o tiranossauro (fator 1,05). Nada muda: Faixa, PV e Tamanho ficam os do site"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "A área do tiranossauro (11,82 m²) escalada pelo quadrado da altura (174,8 m²) e encurtada pelo comprimento do site (27 contra 49 m: × 0,549): 96,0"
     }
   ]
 }

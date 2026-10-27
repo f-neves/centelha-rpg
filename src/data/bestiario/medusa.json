@@ -116,19 +116,8 @@
     {
       "nome": "Olhar petrificante",
       "formas": "todas",
-      "classe": "regra da ficha",
-      "base": {
-        "arte": "materia",
-        "nivel": 3
-      },
-      "ativacao": "nenhuma; vale para quem cruza o olhar dela em combate, com o rosto descoberto",
-      "duracao": "permanente, até a pedra ser desfeita por Arte ou efeito que cure a petrificação",
-      "alcance": "9 m, à vista dela",
-      "area": "cada um que a encara",
-      "efeito": "quem falha vira pedra: o corpo e o que veste ficam estátua, sem morrer, e o Mestre decide o que desfaz. Quem desvia o rosto para não encará-la não testa, mas ataca a −4",
-      "dano": "nenhum",
-      "resistencia": "corpo, Vigor + Resistência contra Dificuldade 15; quem passa não testa de novo até o fim da cena",
-      "limiteDeUso": "uma vez por cena para cada pessoa"
+      "classe": "sem regra ainda",
+      "efeito": "o olhar transforma em pedra o corpo da vítima e o que veste, sem matar"
     },
     {
       "nome": "Cabelos-serpente",
@@ -162,12 +151,6 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "efeito": "o próprio olhar, o reflexo dele e o veneno das serpentes não a afetam"
-    },
-    {
-      "nome": "Tiro traiçoeiro",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "o Arco curto com a Especialidade de Atirador (alvo desprevenido) +1; o \"ignora parte da Absorção\" do site não tem regra no livro e sai (perda anotada no relato)"
     }
   ],
   "comoLuta": [
@@ -248,10 +231,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Olhar petrificante",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "habilidadesEspeciais.Cabelos-serpente",
       "motivo": "números sugeridos pela ficha (D-197)"

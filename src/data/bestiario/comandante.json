@@ -98,8 +98,7 @@
       "tecnica": {
         "id": "voz-de-lider",
         "nivel": 1
-      },
-      "texto": "os aliados que o seguem ganham +3 de moral; ordens claras"
+      }
     },
     {
       "nome": "Coordenar",
@@ -108,8 +107,7 @@
       "tecnica": {
         "id": "coordenar",
         "nivel": 1
-      },
-      "texto": "por 1 de Energia, um aliado age no melhor momento (reação ou nova posição na Iniciativa)"
+      }
     },
     {
       "nome": "Tom de Autoridade",
@@ -118,8 +116,7 @@
       "tecnica": {
         "id": "tom-de-autoridade",
         "nivel": 1
-      },
-      "texto": "quando ele dá ordens ou intimida, a Defesa Mental do alvo é −3"
+      }
     },
     {
       "nome": "Estandarte de Comando",
@@ -161,16 +158,10 @@
       "limiteDeUso": "uma vez"
     },
     {
-      "nome": "Inspira tropas",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "Voz de Líder e Oratória (diante da tropa) +2"
-    },
-    {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação"
+      "texto": "o traço social do Humano"
     }
   ],
   "comoLuta": [

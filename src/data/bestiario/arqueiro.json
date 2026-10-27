@@ -104,7 +104,7 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 1
     }
   ],
   "habilidadesEspeciais": [
@@ -112,19 +112,13 @@
       "nome": "Mira",
       "formas": "todas",
       "classe": "livro",
-      "texto": "Mirar (compra Preparo para o primeiro disparo)"
-    },
-    {
-      "nome": "Domina o campo",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "Atirador (alvo que ainda não chegou ao corpo a corpo) +1"
+      "texto": "Mirar"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação"
+      "texto": "o traço social do Humano"
     }
   ],
   "comoLuta": [

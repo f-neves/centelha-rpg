@@ -37,15 +37,27 @@ ok(semSatelite.length === 0,
 // ------------------------------------------------- as três, e na ordem certa
 // A ordem não é estética: a média dos três primeiros segundos não pode passar da
 // velocidade de topo, e o passo com a guarda de pé não pode passar do arranque.
+function problemasDoPasso(d, daFicha) {
+  const erros = [], tres = [d.batalha, d.arranque, d.corrida];
+  if (!tres.every(n => Number.isFinite(n) && n >= 0)) return ['velocidade inválida'];
+  if (!(d.batalha <= d.arranque && d.arranque <= d.corrida)) erros.push('fora de ordem');
+  if (!daFicha) {
+    if (!tres.every(Number.isInteger)) erros.push('semente não inteira');
+    if (d.batalha < 1 || d.batalha > 20 || d.corrida > 40) erros.push('semente fora da faixa');
+  }
+  return erros;
+}
 for (const m of MON) {
   const d = m.combate?.deslocamento;
   if (!d) continue;
-  const tres = [d.batalha, d.arranque, d.corrida];
-  if (!tres.every((n) => Number.isInteger(n))) { falhas.push(`${m.id}: velocidade não inteira (${tres.join('/')})`); continue; }
-  if (!(d.batalha <= d.arranque && d.arranque <= d.corrida)) falhas.push(`${m.id}: fora de ordem (${tres.join(' ≤ ')})`);
-  if (d.batalha < 1 || d.batalha > 20) falhas.push(`${m.id}: batalha absurda (${d.batalha} m/Tick)`);
-  if (d.corrida > 40) falhas.push(`${m.id}: corrida absurda (${d.corrida} m/Tick)`);
+  for (const erro of problemasDoPasso(d, DESL[m.id]?.origem === 'ficha')) falhas.push(`${m.id}: ${erro}`);
 }
+// 36.2 e A5: preservar o que a ficha declara, inclusive zero e decimal; a semente mantém suas travas.
+ok(problemasDoPasso({batalha:0, arranque:0, corrida:0}, true).length === 0, 'ficha imóvel aceita');
+ok(problemasDoPasso({batalha:0.5, arranque:0.5, corrida:0.5}, true).length === 0, 'ficha decimal aceita');
+for (const invalido of [-0.5, NaN, Infinity]) ok(problemasDoPasso({batalha:invalido, arranque:1, corrida:2}, true).length > 0, 'velocidade inválida recusada');
+ok(problemasDoPasso({batalha:0, arranque:0, corrida:0}, false).length > 0, 'semente zero recusada');
+ok(problemasDoPasso({batalha:0.5, arranque:1, corrida:2}, false).length > 0, 'semente fracionária recusada');
 
 // ------------------------------------------------ o satélite e o embutido batem
 // O gen-monsters.mjs copia batalha/arranque/corrida e larga `ft` e `origem`, que

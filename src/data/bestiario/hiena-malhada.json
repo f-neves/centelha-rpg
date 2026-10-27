@@ -1,37 +1,28 @@
 {
-  "ordem": 240,
   "id": "hiena-malhada",
   "idAntigo": "mon-hyena",
   "nome": "Hiena-malhada",
   "nomeIngles": "Hyena",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Pequeno",
-  "descricao": "Caça em clã e persegue até a presa cair; perde a carcaça para o leão e toma a do leopardo. Ataca gente sobretudo à noite, e a vítima típica é a criança sozinha.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": null,
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "1,71 m de comprimento, 0,83 m de altura",
-    "peso": "55 kg",
-    "comprimento": 1.71,
-    "largura": 0.34,
-    "altura": 0.83
-  },
-  "locomocao": {
-    "terra": 8,
-    "natacao": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 8,
-    "arranque": 12,
-    "corrida": 17
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas (o dorso desce do ombro para a anca)",
+    "apoio": "quadrupede",
+    "altura": 0.83,
+    "largura": 0.34,
+    "profundidade": null,
+    "comprimento": 1.71,
+    "comprimentoSemCauda": 1.34,
+    "caudaGrossa": false,
+    "massa": 55,
+    "area": 0.47,
+    "posturaDoTamanho": "de lado",
+    "tamanhoEscolhido": "pequeno"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 4,
     "destreza": 3,
     "vigor": 3,
@@ -42,8 +33,9 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 3,
     "atletismo": 3,
     "furtividade": 2,
@@ -53,75 +45,139 @@
     "empatia": 2,
     "sobrevivencia": 3
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
     "natacao": 2,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "resistencia",
-      "foco": "doenças",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 2,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "resistencia": [
+      {
+        "foco": "doenças",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 8,
+      "arranque": 12,
+      "corrida": 17
+    },
+    "nado": {
+      "batalha": 2
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 1,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "derrubar",
-      "descricao": "Mordida (na perna da presa em fuga): O d20 já dava a derrubada.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "derrubar",
+      "texto": "na perna da presa em fuga"
     },
     {
       "nome": "agarrar",
-      "descricao": "Mordida",
-      "classe": "livro"
-    },
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "tática de matilha",
-      "descricao": "em grupo, cerca a presa em silêncio e ataca de todos os lados; o flanco (−2 na Defesa do alvo) e a Pressão do livro dão o ganho do bando.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "em grupo, cerca a presa em silêncio e ataca de todos os lados."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "Prontidão (faro) +2; acha carniça e marca território pelo cheiro; alcance sem número",
+      "formas": "todas"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "faro: Prontidão (faro) +2; acha carniça e marca território pelo cheiro; alcance sem número. · penumbra: texto; caça sobretudo à noite. Acuidade. · audição: em número. O \"whoop\" se ouve a mais de 5 km (alcance da voz, e não da audição)."
-    }
-  ],
-  "doencas": [
+      "nome": "penumbra",
+      "descricao": "texto; caça sobretudo à noite (Kruuk 1972; Stratford e Stratford 2011, via San Diego Zoo). Acuidade",
+      "formas": "todas"
+    },
     {
-      "nome": "Variante hiena raivosa",
-      "texto": "Raiva · Virulência 14 · dia · só no animal raivoso, ao critério do Mestre, e nunca no comum · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
+      "nome": "audição",
+      "descricao": "em número. O \"whoop\" se ouve a mais de 5 km (alcance da voz, e não da audição)",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "mergulha até 12 s (Kruuk 1972, via San Diego Zoo)",
+    "mente": "animal",
+    "tracos": "pré-molares cônicos que quebram osso grande; pescoço longo, grosso e muito musculoso (IUCN 1998); o corpo para de crescer por volta dos 20 meses, e a força da mordida sobe até os 5 anos (Binder e Van Valkenburgh 2000, resumo); vive até cerca de 20 anos na natureza (ADW) e até 41 anos em cativeiro (AnAge)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "clã matriarcal de 3 a 80 (cerca de 8 onde falta comida; 55 a 75 onde sobra)",
+    "atividade": "noturna, com picos perto da meia-noite e antes do nascer do sol",
+    "dieta": "carnívoro; caça a maior parte e come carniça",
+    "caca": "perseguição em grupo (de 8 a 25 para presa grande)",
+    "dianteDeGente": "evita em geral, mas há ataques documentados: 35 mortos em 12 meses em Moçambique; na Etiópia, 12 mortos de 2010 a 2012, 58% crianças"
+  },
+  "ecologia": {
+    "terreno": [
+      "planície"
+    ],
+    "clima": [
+      "tropical"
+    ]
+  },
+  "descricao": "Caça em clã e persegue até a presa cair; perde a carcaça para o leão e toma a do leopardo. Ataca gente sobretudo à noite, e a vítima típica é a criança sozinha.",
   "lore": [
     {
       "titulo": "Risada da savana",
@@ -132,93 +188,32 @@
       "texto": "Muitos povos selvagens, sobretudo gnolls, domesticam hienas como cães de guarda, treinando-as para a ferocidade desde filhotes."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: clã matriarcal de 3 a 80 (cerca de 8 onde falta comida; 55 a 75 onde sobra)."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Variante hiena raivosa: Raiva · Virulência 14 · dia · só no animal raivoso, ao critério do Mestre, e nunca no comum · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Força 4: nenhum humano perde o Bloqueio contra ela, e só quem tem Força 8 ou mais tira o dela. Pequena, ganha +3 no corpo a corpo contra o humano Médio, e quem atira nela leva −3. A mordida N1 passa o couro e a malha, o que nenhum outro cão deste lote faz; 7,5 de média. Arrasta ou vira cerca de 240 kg. Sozinha, 34 PV e Couraça nível 0 (quanto o nível vale fica para depois); o perigo é o clã, que cerca à noite e não larga, e ela aguenta a semana sem comer e a carne podre que derruba os outros."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Plains"
-    ],
-    "clima": [
-      "Tropical"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Hyena",
-    "cr": "1",
-    "tipo": "animal Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 14,
-      "des": 15,
-      "con": 15,
-      "int": 2,
-      "sab": 13,
-      "car": 6
+  "revisao": [
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,80 × 1,0323 = 0,826 . Antes: 79,4 a 80,2 cm (San Diego Zoo, citando East e Hofer 2013); 75 a 85 cm (ADW); \"0,75 m\" (Mills e Hofer 1998, IUCN, p. 29, número redondo)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 50,
-      "origem": "fonte"
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,66 × 1,0323 = 1,714 . Antes: o corpo (1,30 m) mais a cauda de cerca de 36 cm, \"24 cm de osso e mais 12 cm só de pelo\" (Mills e Hofer 1998, IUCN, p. 29)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 34,
-    "esquiva": 12,
-    "bloqueio": 6,
-    "defesa": 12,
-    "defesaMental": 7,
-    "defesaSocial": 10,
-    "absorcao": {
-      "impacto": 3,
-      "corte": 3,
-      "perfuracao": 3
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,30 × 1,0323 = 1,342 . Antes: \"por volta de 1,3 m\" (Mills e Hofer 1998, IUCN, p. 29). A cauda é fina e não conta (D-155)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 239.55,
-    "carga": {
-      "leve": 5.5,
-      "media": 11,
-      "pesada": 16.5,
-      "maxima": 22
-    },
-    "deslocamento": {
-      "terra": {
-        "batalha": 8,
-        "arranque": 12,
-        "corrida": 17
-      },
-      "nado": 2
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,33 × 1,0323 = 0,341 . Antes: pesquisa: 30 a 35 cm no peito, por analogia com um cão grande de massa parecida; ancas mais estreitas"
     }
-  },
-  "notasObservacao": [
-    "`pesoErguido` e `carga`: 239,55 kg (em vigor na Etapa 2, 20/10/2026); antes: provisórios. A carga sai da massa e da faixa (5 kg de Leve com 50 kg, sem carga medida); o peso erguido sai de `calc6.mjs` (232,71 kg), e era 140,75 kg pela fórmula da D-162 (decisões 14 e 16)",
-    "`velocidade` e `nado`: congelados (decisão 23); 61 km/h contra \"até 60 km/h\" da ADW, e saiu do fator do Médio, quando o Alvo agora é Pequeno",
-    "`alvo`: 0,44 m², logo abaixo do corte de cerca de 0,45 m² entre Pequeno e Médio; a decisão 7 a põe Pequena. A área não se escalou na sexta rodada (as dimensões são da espécie, sem sexo); se ela for lida como a da fêmea de 65 kg, o típico de 50 kg cairia para cerca de 0,37 m². Pela área de hoje, a fêmea de 55 kg passa do corte (0,47 m², Médio na borda) e a do sul da África (mais de 70 kg) mais ainda",
-    "`referencia`: o adulto típico de 50 kg, a média simples da fêmea (55 kg) e do macho (45 kg) do Serengeti (Hofer e East, em Mills e Hofer 1998). Era a fêmea de 65 kg, acima das duas médias; o AnAge (63 kg) e Wroe et al. 2005 (69,1 kg) dão mais, sem sexo",
-    "`dimensoes.largura`: 0,33 m continua só pela estimativa",
-    "`ataques.mordida`: N1 pelos 4.500 N medidos (Binder e Van Valkenburgh 2000), valor só pelo San Diego Zoo; se não se confirmar, a mordida volta a N0",
-    "`resistencia`: 3 pela semana sem comida (IUCN 1998), sem a corrida (diretriz 2); o levantamento dava 4 com as perseguições, que ficam na nota de pesquisa (jornada)",
-    "jornada (nota de pesquisa, não é regra): perseguições de 500 a 2.500 m, às vezes mais de 20 minutos, e uma de 24 km atrás de um elande no Kalahari (Mills 1990); cerca de 27 km por noite, até 80 km (Hofer e East 1993); de 2.880 a 3.680 km por ano nas fêmeas que amamentam no Serengeti (IUCN 1998); cruzeiro de cerca de 10 km/h (Mills 1984) **[medido]**.",
-    "couraca: nível 0 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois. A pele grossa do pescoço segue **[sem dado]**.",
-    "`especialidades`: Resistência (doenças) passa de Especialidade comum 2 para natural +2, por ser do corpo; o +3 fica para quando houver taxa de morte por antraz. A Resistência (Fôlego) 2 sai",
-    "`empatia`: 2, nova, pela vida de clã com hierarquia; a pesquisa não mede leitura de humano",
-    "`musculatura`: 3, robusta, pelo pescoço \"highly muscular\" da IUCN, sem carga medida"
   ]
 }

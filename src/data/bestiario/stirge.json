@@ -111,8 +111,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Probóscide",
-      "regra": "agarrar",
-      "texto": "prende-se ao alvo, e tirá-lo pede Força ou Destreza"
+      "regra": "agarrar"
     },
     {
       "nome": "Sugar sangue",

@@ -2,26 +2,26 @@
   "id": "plesiossauro",
   "nome": "Plesiossauro",
   "nomeIngles": "Plesiosaurus",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Médio",
-  "descricao": "Réptil marinho do tamanho de um crocodilo pequeno, de pescoço longo e cabeça pequena. Caça peixe de tocaia, pela vista, e é presa de tubarões e de répteis marinhos maiores.",
-  "tags": [],
-  "imagem": "bestiario/plesiossauro_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "3,2 m de comprimento, 0,6 m de altura",
-    "peso": "143 kg",
-    "comprimento": 3.2,
-    "largura": 0.8,
-    "altura": 0.6
-  },
-  "locomocao": {
-    "natacao": 4
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "nadador",
+    "apoio": "outro",
+    "altura": 0.6,
+    "largura": 0.8,
+    "profundidade": null,
+    "comprimento": 3.2,
+    "comprimentoSemCauda": 2.4,
+    "caudaGrossa": true,
+    "massa": 143,
+    "area": 1.47,
+    "posturaDoTamanho": "de cima",
+    "tamanhoEscolhido": "medio"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 5,
     "destreza": 2,
     "vigor": 3,
@@ -32,111 +32,164 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 2,
+    "bloqueio": 0,
     "esquiva": 2,
+    "atletismo": 0,
     "furtividade": 2,
     "integridade": 1,
     "prontidao": 2,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
     "natacao": 3,
+    "voo": 0,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "visão",
-      "valor": 2,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "visão",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "nado": {
+      "batalha": 4
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [],
+  "comoLuta": [],
+  "sentidos": [
     {
-      "nome": "Sentidos",
-      "descricao": "visão: Prontidão (visão) +2, Especialidade natural; notar presa na água; alcance.: olhos grandes, voltados para cima e para os lados, com anel esclerótico de olho achatado para o mergulho, e caça visual. · faro: sem Especialidade. No Plesiosaurus, as narinas não parecem adaptadas a cheirar debaixo d'água."
-    }
-  ],
-  "lore": [
+      "nome": "visão",
+      "descricao": "Prontidão (visão) +2, Especialidade natural (era Especialidade comum, com o mesmo valor); notar presa na água; alcance . : olhos grandes, voltados para cima e para os lados, com anel esclerótico de olho achatado para o mergulho, e caça visual (Wikipédia, \"Plesiosaur\")",
+      "formas": "todas"
+    },
     {
-      "titulo": "No jogo",
-      "texto": "Médio como o humano: ninguém ganha bônus de Alvo no corpo a corpo. A Força 5 só tira o Bloqueio de quem tem Força 1 ou menos (o dobro e ao menos 4 a mais). É um predador de peixe do tamanho de um crocodilo pequeno, e não o monstro de pescoço comprido das histórias: esse é o Elasmosaurus. Nada a 14 km/h; 34 PV e Couraça nível 1 (pele lisa); o quanto ela tira fica para depois."
+      "nome": "faro",
+      "descricao": "sem Especialidade. No Plesiosaurus, as narinas não parecem adaptadas a cheirar debaixo d'água (Wikipédia, \"Plesiosaurus\")",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar (réptil marinho)",
+    "prendeRespiracao": "(apneia não achada)",
+    "mente": "animal",
+    "tracos": "não sai da água (nadadeiras rígidas demais para andar, Everhart 2005, via Wikipédia); parto vivo no grupo (um Polycotylus com um filhote dentro, O'Keefe e Chiappe 2011); talvez de sangue quente (Houssaye 2013)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "",
+    "atividade": "",
+    "dieta": "piscívoro",
+    "caca": "emboscada",
+    "dianteDeGente": "não se aplica"
+  },
   "ecologia": {
-    "tipo": "Animal",
     "terreno": [
-      "Water",
-      "Coast"
+      "aquático",
+      "litoral"
     ],
     "clima": [
-      "Temperate",
-      "Tropical"
+      "temperado",
+      "tropical"
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 34,
-    "esquiva": 8,
-    "bloqueio": 4,
-    "defesa": 8,
-    "defesaMental": 6,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 3,
-      "corte": 3,
-      "perfuracao": 3
-    },
-    "couracaNivel": 1,
-    "pesoErguido": 393.26,
-    "deslocamento": {
-      "nado": 4
-    }
+  "descricao": "Réptil marinho do tamanho de um crocodilo pequeno, de pescoço longo e cabeça pequena. Caça peixe de tocaia, pela vista, e é presa de tubarões e de répteis marinhos maiores.",
+  "lore": [],
+  "imagens": [
+    "bestiario/plesiossauro_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "forca: 5 ◆, reanalisada na sétima rodada pela massa de 130 kg (referência 6) e pelo corpo de nadador que pega peixe, com o golfinho (260 kg, 5) e o elasmossauro (1,9 t, 7); era 6, escolhida com 500 kg (D-158, D-174).",
-    "pesoErguido: 393,26 kg (em vigor na Etapa 2, 20/10/2026); antes: 375,58 kg pelo `calc6.mjs`, provisório, com os 130 kg e a Força 5. Era 457,26 kg com a Força 6 e 571,9 kg pelos 500 kg de trabalho. A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar.",
-    "carga: não se aplica (nadador).",
-    "velocidade: congelada (decisão 23). O nado de 14 km/h bate com o cruzeiro de Massare (4 m/s, −1%) e fica muito acima do recalculado por Motani 2002.",
-    "alvo: Médio (Etapa 2, 20/10/2026), pelo corpo esguio, na beira do corte (resposta do autor, fim da seção 13); antes: **na borda.** Grande pela silhueta de cima (1,47 m²), só 1,2% acima do corte de 1,45 m²; os outros dois métodos da `tamanho-fichas-v2` davam Médio. A área depende da largura (0,8 m, sem dado), estimada pelo Arquiteto quando a massa de trabalho era 500 kg. Na sexta rodada a área ficou (`--area fixa`, extinto reestimado); um corpo de 130 kg com 3,2 m pode ser mais estreito que 0,8 m, e com menos de 1,2% de folga o Alvo cairia em Médio. Fica Grande pela conta, como hoje e como o Pathfinder (D-174).",
-    "massa: 143 kg (em vigor na Etapa 2, 20/10/2026); antes: referência nova de cerca de 130 kg [comparação], pelo Seeleyosaurus de Zhao 2026 levado pelo cubo a 3,2 m; era 500 kg [sem dado], estimativa do Arquiteto pela tartaruga-de-couro. Na sexta rodada a faixa, o PV e o peso erguido passaram aos 130 kg: Faixa 3 (até 220 kg), era 4; PV 34, era 42.",
-    "dimensoes.caudaGrossa: marcada \"sim\" na conta do Arquiteto; a D-155 nomeia o crocodilo, os dinossauros e o mosassauro, e não o plesiossauro. Provisória (D-174).",
-    "resistencia: 2 pela régua [extrapolação]; a Resistência (Fôlego) +2 de hoje saiu, e o cruzeiro de modelo ficou na nota de pesquisa (jornada).",
-    "furtividade: 2, linha nova, pela tocaia que o estudo de hidrodinâmica de 2017 sugere; hipótese [extrapolação].",
-    "compostura: 1 por não ser espécie social (diretriz 1); era 2.",
-    "especialidade Prontidão (visão) +2: passou de comum a natural, com o mesmo valor; o dado é do grupo [extrapolação].",
-    "couraca: nível 1 pela escala da quinta rodada, reanalisado na sétima com os 130 kg e mantido, na faixa 0 a 1 (ao lado do golfinho); o valor em absorção fica para depois.",
-    "jornada (nota de pesquisa, não é regra): só modelos do grupo, e não do Plesiosaurus [extrapolação]: cruzeiro de 4 m/s se de sangue quente (Massare, via Wikipédia); recalculado, 1,5 m/s se de sangue quente e 0,5 m/s se de sangue frio (Motani 2002, via Wikipédia). Sangue quente possível (Houssaye 2013)."
+  "revisao": [
+    {
+      "campo": "atributos.forca",
+      "motivo": "Era 6, escolhida quando a massa era 500 kg. Reanalisada na sétima rodada pela massa nova de cerca de 130 kg  e pelo corpo (D-158): a Força de referência dos 130 kg é 6, e o corpo é de nadador que pega peixe, largo como o de uma tartaruga (Wikipédia), com cabeça pequena e dentes finos de \"armadilha de peixe\" (Storrs 1997, via Wikipédia), sem agarrão nem arrasto. Nenhuma força medida. Vizinhos nas fichas v3: o golfinho (260 kg, Força 5), outro nadador que pega peixe, com o dobro da massa; o elasmossauro (1,9 t, 7), do mesmo grupo, quase 3 abaixo da referência da massa dele (9,7); e, em terra, o urso-negro (97,5 kg, 6) e o gorila (126 kg, 7), que usam o corpo para cavar, bater e agarrar. Fica um abaixo da referência, com o golfinho."
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "Reanalisado na sétima rodada: fica, porque com os 130 kg o réptil (decisão 10) fica com o crocodilo-do-nilo (198 kg, Vigor 3) e abaixo do elasmossauro (1,9 t, 4) e do golfinho (260 kg, 4), mais pesados. Réptil (decisão 10: tendem a Vigor menor), de cerca de 130 kg . Resistência a ferimento e doença: . O nado sustentado, se de sangue quente (Houssaye 2013), não entra no Vigor (diretriz 2); fica na nota de pesquisa (jornada)."
+    },
+    {
+      "campo": "atributos.percepcao",
+      "motivo": "Seção 13: 2 para os extintos. A visão vai na Especialidade natural."
+    },
+    {
+      "campo": "habilidades.esquiva",
+      "motivo": "Degrau 2. Os plesiossauromorfos eram feitos para manobra, não para velocidade, e capazes de rolar rápido (Wikipédia, \"Plesiosaur\")."
+    },
+    {
+      "campo": "habilidades.furtividade",
+      "motivo": "Não tinha linha. O levantamento : o pescoço longo atrapalharia a aceleração, e talvez caçasse de tocaia em vez de perseguir (estudo de hidrodinâmica de 2017, notícia na ScienceDaily). Régua: 2, usa a cobertura como hábito."
+    },
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Era 0. Régua da diretriz 2: 2 é o normal da espécie no próprio meio, . Nenhum dado de frio, fome, veneno, doença ou ferida. O cruzeiro de modelo do grupo e o sangue quente possível (Houssaye 2013) não sustentam a Resistência e ficam na nota de pesquisa (jornada)."
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "do Arquiteto: \"altura do corpo e corpo sem cauda pela proporção do Plesiosaurus de 3,2 m\" (`dimensoes.md` dá \"sem dado\")"
+    },
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "do Arquiteto, pela mesma proporção"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "D-107: a maioria fica no 6.  A pele e a cor não se conhecem."
+    },
+    {
+      "campo": "comportamento.caca",
+      "motivo": "o pescoço longo atrapalharia a aceleração; talvez caçasse de tocaia em vez de perseguir (estudo de hidrodinâmica de 2017, notícia na ScienceDaily)."
+    }
   ]
 }

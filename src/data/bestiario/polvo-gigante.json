@@ -1,31 +1,29 @@
 {
-  "ordem": 270,
   "id": "polvo-gigante",
   "idAntigo": "mon-giant-octopus",
   "nome": "Polvo-gigante",
   "nomeIngles": "Giant octopus",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Imenso",
-  "descricao": "Espera na toca, com a cor da rocha; o que passa perto vai para os braços e para o bico.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/polvo-gigante_criatura.webp",
-  "porte": "Imenso",
-  "dimensoes": {
-    "medida": "8,05 m de comprimento, 1,23 m de altura",
-    "peso": "1.350,6 kg",
-    "comprimento": 8.05,
-    "largura": 1.75,
-    "altura": 1.23
-  },
-  "locomocao": {
-    "natacao": 4
-  },
+  "ameaca": 5,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "nadador (vive no fundo)",
+    "apoio": "outro",
+    "altura": 1.23,
+    "largura": 1.75,
+    "profundidade": null,
+    "comprimento": 8.05,
+    "massa": 1350.6,
+    "area": 47.96,
+    "posturaDoTamanho": "braços abertos",
+    "segundoTamanho": {
+      "area": 8,
+      "posturaDoTamanho": "de cima, braços juntos"
+    }
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 7,
     "destreza": 4,
     "vigor": 4,
@@ -36,201 +34,219 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 2,
+    "atletismo": 0,
     "furtividade": 4,
     "integridade": 2,
     "prontidao": 2,
     "resistencia": 3,
+    "empatia": 0,
     "sobrevivencia": 3
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
     "natacao": 2,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 4
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "camuflagem de cor e textura, parado",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "tato e gosto nas ventosas",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "Agarrão",
-      "valor": 3,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "camuflagem de cor e textura, parado",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "prontidao": [
+      {
+        "foco": "tato e gosto nas ventosas",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "Agarrão",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "nado": {
+      "batalha": 4
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Bico",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Braços",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
+      "parte": "braco",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "constrição = agarrar",
-      "descricao": "Braços: Foi assim que a real matou os cações do Seattle Aquarium.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
     },
     {
       "nome": "arrastar para a toca",
-      "descricao": "Braços: leva o que agarrou para a toca ou para o fundo, até o Peso erguido.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Braços",
+      "efeito": "leva o que agarrou para a toca ou para o fundo, até o Peso erguido"
     },
     {
       "nome": "nuvem de tinta",
-      "descricao": "solta uma nuvem de tinta que esconde a fuga.",
-      "classe": "sem regra ainda"
-    },
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "solta uma nuvem de tinta que esconde a fuga"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "jato para trás",
-      "descricao": "foge em jato.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "foge em jato."
     },
     {
       "nome": "espremer por fenda",
-      "descricao": "passa por fenda muito menor que o corpo.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "passa por fenda muito menor que o corpo."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "tato e gosto nas ventosas",
+      "descricao": "Especialidade natural Prontidão (tato e gosto nas ventosas) +2; \"milhares\" de receptores químicos (ADW)",
+      "formas": "todas"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "tato e gosto nas ventosas: Especialidade natural Prontidão (tato e gosto nas ventosas) +2; \"milhares\" de receptores químicos. · visão, estatocisto: sem número para a espécie; sem Especialidade."
+      "nome": "visão, estatocisto",
+      "descricao": "sem número para a espécie; sem Especialidade",
+      "formas": "todas"
     }
   ],
-  "venenos": [
-    {
-      "nome": "Veneno no jogo",
-      "texto": "Ferrão de gigante · Potência 16 · Tick (sangue) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pelo Bico"
-    }
-  ],
+  "fisiologia": {
+    "respiracao": "água",
+    "camuflagem": "muda cor e textura (geral dos polvos); Furtividade 4 e Especialidade natural +3",
+    "mente": "animal, com Inteligência 2 (lista da diretriz 1)",
+    "tracos": "sem esqueleto, só o bico; cerca de 2.240 ventosas na fêmea real (Monterey Bay Aquarium); a real vive de 3 a 5 anos (Monterey Bay Aquarium; ADW)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "",
+    "dieta": "carnívoro",
+    "caca": "emboscada",
+    "dianteDeGente": ""
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "Espera na toca, com a cor da rocha; o que passa perto vai para os braços e para o bico.",
   "lore": [
     {
       "titulo": "Monstro dos oceanos",
       "texto": "Capaz de capturar e devorar tubarões, marinheiros ou qualquer coisa que consiga agarrar com seus tentáculos gigantescos."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Veneno no jogo: Ferrão de gigante · Potência 16 · Tick (sangue) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pelo Bico"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Imenso de braços abertos, que é como luta: o humano Médio acerta com +9 no corpo a corpo, e ele não ganha bônus; de braços juntos fica Enorme, e o bônus de quem o ataca cai a +6. A Força 7 tira o Bloqueio de quem tem Força 3 ou menos. Esconde-se muito bem (Furtividade 4 e +3 natural parado). Agarra e aperta a 14 por manutenção, e a mordida faz 8,5, com a ferida que inflama e infecciona, pelo Mestre. Arrasta para o fundo quem não se solta. 46 PV, Impacto 4, Couraça nível 0 (o valor do nível fica para depois). Nada a 4 m por Tick; fora d'água não anda."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Water"
-    ],
-    "clima": [
-      "Temperate",
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/polvo-gigante_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Giant Octopus",
-    "cr": "8",
-    "tipo": "animal Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 20,
-      "des": 15,
-      "con": 17,
-      "int": 2,
-      "sab": 12,
-      "car": 3
+  "revisao": [
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Etapa 2 (20/10/2026): Decisão 3 de 19/10/2026: os maiores tendem a 3 ou 4. Com 1,35 t, sobe do 2 genérico para 3 . Antes: Fixada em `valores.mjs`, a do levantamento. A real vive de 7 a 9,5 °C, da maré a 1.500 m (ADW; Monterey Bay Aquarium): é o próprio meio, e a régua põe o normal da espécie no próprio meio em 2. Nada de fome, veneno ou ferida medido. Era 0."
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesSec.natacao",
+      "motivo": "Etapa 2 (20/10/2026): Decisão de 20/10/2026: a Habilidade secundária de Natação vale nas jogadas (manobrar na água), e a velocidade continua congelada; o nado em m por Tick não muda. A real nada a jato (Huffard 2006) e anda no fundo; 2 , sem velocidade medida. Antes: Sem velocidade medida (Huffard 2006 só diz que nada a jato com os braços abertos); o nado sai da anatomia."
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "v3": {
-    "pv": 46,
-    "esquiva": 12,
-    "bloqueio": 8,
-    "defesa": 12,
-    "defesaMental": 8,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 4,
-      "perfuracao": 4
+    {
+      "campo": "corpo.altura",
+      "motivo": "Era 1,05 m. 0,35 m da base, estimado, × 3,5 = 1,225"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 918.96,
-    "deslocamento": {
-      "nado": 4
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Era 6,9 m. 2,3 m da base (estimado a partir da envergadura real de cerca de 4 m, Seattle Aquarium, e do manto) × 3,5 = 8,05; o braço fica em cerca de 6,1 m, o do site"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Era 1,5 m. 0,5 m da base (estimado) × 3,5"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Era 850,5 kg (antes, 292 e 259). Gigante pelo cubo, com o tamanho escolhido pelo item 7: base típica de 31,5 kg × 3,5³ (k = 14 ÷ 4,0 = 3,5, envergadura com envergadura) = 31,5 × 42,875 = 1.350,56 kg . A base: o polvo-gigante-do-pacífico adulto, de 18 a 45 kg, com envergadura de 3,7 a 4,3 m relaxado, as duas pela mesma fonte (Seattle Aquarium); meio da faixa (não média) da massa, (18 + 45) ÷ 2 = 31,5 kg, e da envergadura, (3,7 + 4,3) ÷ 2 = 4,0 m ; a de 15/10 usava o meio geométrico, 28 kg. A envergadura do gigante é 14 m  (dois braços de cerca de 6,1 m e o disco de 1,75 m; era 12 m, sem o disco), e é ela a medida de comprimento da conta. Outras fontes dão menos: média de 14,1 kg na pesca comercial do Mar de Bering e maturidade entre 10 e 13 kg (NOAA 2020) ; o maior pesado vivo, 71 kg (Guinness). Sexos: 50% maduros com 12,8 kg nas fêmeas e 10,8 kg nos machos (NOAA 2020), menos de 20% de diferença; média por sexo . O corte de 35 kg no lugar do de 25 kg (decisão 22) não muda a faixa"
     }
-  },
-  "notasObservacao": [
-    "gigante escalado (D-105): dimensões do adulto real × 3,5 (envergadura de 14 m, braços de cerca de 6,1 m, os do site com o disco somado); a massa é a base típica de 31,5 kg × 3,5³ = 1.350,6 kg (era 31,5 × 3,0³ = 850,5, e antes 292 e 259). Massa e envergadura da base saem da mesma fonte (Seattle Aquarium). Tudo [extrapolação] (D-174).",
-    "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; com k = 3,0 o gigante ficava Grande de braços juntos, uma categoria acima da base (Média), e a 2% do corte; com k = 3,5 fica Enorme, a 33% do corte. O D&D 3.5 e o Pathfinder 1 dão Grande (D-174). Pela D-215 (24/10/2026), o principal passou a ser o de braços abertos (Imenso), e o Enorme de braços juntos ficou como segundo.",
-    "alvo: Imenso com os braços abertos (47,96 m²), a postura em que luta (D-215, 24/10/2026); segundo Alvo Enorme pela área de cima com os braços juntos (8,0 m², decisão 8). Provisório até os cortes fecharem (D-174).",
-    "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8, era 7; pelos vizinhos de massa (tubarão-branco, boi, rinoceronte), abaixo da referência (9,15) por não ter osso [provisório] (D-158, D-169).",
-    "pesoErguido: 918,96 kg (em vigor na Etapa 2, 20/10/2026); antes: provisório, 1.118,81 kg (calc6, 1.350,6 kg e Força 8; era 988,32 com 850,5 kg) pela fórmula das decisões 14 e 16; cefalópode não tem `carga` (D-160, D-175). Sem feito medido para conferir.",
-    "inteligencia: 2 pela lista fechada da diretriz 1, igual ao polvo-comum; nota \"2 não é inteligência humana\".",
-    "compostura: desce de 3 para 1 por não ser espécie social (diretriz 1); a camuflagem foi para a Especialidade natural.",
-    "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua (o frio de 7 a 9,5 °C é o meio dela); a Especialidade de Resistência (Frio) +2 sai pelo mesmo motivo. Se o Mestre puser o polvo em água mais fria que a do Pacífico Norte, é caso dele (D-087).",
-    "musculatura: 4 (excepcional), sem medida do corpo inteiro; os 16 kg por ventosa são cálculo.",
-    "furtividade: 4, com o levantamento apontando candidato a 5; a camuflagem como Especialidade natural +3.",
-    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "anatomia: cefalópode, anatomia provisória (D-175); sem terra, e o rastejar no fundo fica em texto.",
-    "velocidade: congelada (decisão 23); nenhuma velocidade medida da real.",
-    "vigor: 4 ◆, revisto na oitava rodada pelo corpo e pela massa: dois acima da base real (2), um acima do mínimo da D-176, pela massa de 1,35 t (tubarão-branco 4; boi e rinoceronte 5); o corpo mole sem osso o deixa no lado de baixo, ao lado da lula-gigante (4). Era 3 (D-174, D-176).",
-    "veneno: veneno sem id no catálogo (D-112); o efeito real (caso DAN) está na pesquisa e em Veneno e doença.",
-    "comportamento: a reação a gente fica [sem dado]; na escala, gente vira presa possível, pelo Mestre (D-174).",
-    "fonte: a altura, a largura e o comprimento da base (0,35, 0,5 e 2,3 m) continuam por estimativa a partir da envergadura (Seattle Aquarium) e do manto (ADW) (D-174)."
   ]
 }

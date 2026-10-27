@@ -1,36 +1,27 @@
 {
-  "ordem": 185,
   "id": "deinonico",
   "idAntigo": "mon-deinonychus",
   "nome": "Deinonico",
   "nomeIngles": "Deinonychus",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Médio",
-  "descricao": "Predador do peso de um homem grande, de garra em foice no pé, que furava e prendia. Achado junto de herbívoros de uma tonelada, sozinho ou em grupo (em disputa).",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/deinonico_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "3,35 m de comprimento, 0,87 m de altura",
-    "peso": "97 kg",
-    "comprimento": 3.35,
-    "largura": 0.4,
-    "altura": 0.87
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 3,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "ereto (bípede, de corpo horizontal)",
+    "apoio": "bipede",
+    "altura": 0.87,
+    "largura": 0.4,
+    "profundidade": null,
+    "comprimento": 3.35,
+    "comprimentoSemCauda": 1.5,
+    "caudaGrossa": true,
+    "massa": 97,
+    "area": 0.57,
+    "posturaDoTamanho": "vista de lado"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 4,
     "destreza": 3,
     "vigor": 4,
@@ -41,97 +32,171 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 3,
     "atletismo": 2,
     "furtividade": 2,
     "integridade": 2,
     "prontidao": 2,
     "resistencia": 3,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 2,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Garra em foice do pé",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 0,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "garra",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Garras da mão",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "garra",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "garras da mão (puxam a presa) e garra do pé (prende no chão)",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar",
+      "texto": "puxam a presa"
     },
     {
       "nome": "prender com o peso do corpo",
-      "descricao": "Garra em foice do pé: Agarrar: segura a presa no chão com o pé e come viva.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garra em foice do pé",
+      "regra": "agarrar",
+      "texto": "segura a presa no chão com o pé e come viva"
     },
     {
       "nome": "investida saltada",
-      "descricao": "Garra em foice do pé: Investida.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "faro: Prontidão (faro) +2, Especialidade natural; alcance. pelos bulbos olfatórios dos dromeossaurídeos. · visão: sem Especialidade; nota: visão estereoscópica melhor do que Ostrom pensava."
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garra em foice do pé",
+      "regra": "investida"
     }
   ],
+  "comoLuta": [],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "Prontidão (faro) +2, Especialidade natural (era a Especialidade +2 de hoje, que a decisão 3 passa a natural); alcance . pelos bulbos olfatórios dos dromeossaurídeos (Zelenitsky e colegas 2009)",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão",
+      "descricao": "sem Especialidade; nota: visão estereoscópica melhor do que Ostrom pensava (Maxwell e Witmer 1996, via Wikipédia)",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "penas por parentesco (Microraptor: Xu e colegas 2003; Velociraptor com nós de pena na ulna: Turner e colegas 2007); chocava os ovos com o corpo, ovo de cerca de 7 cm (Grellet-Tinner e Makovicky 2006)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário , com agrupamento na carcaça; caça em grupo em disputa",
+    "atividade": "",
+    "dieta": "carnívoro",
+    "caca": "",
+    "dianteDeGente": "não se aplica"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta"
+    ],
+    "clima": [
+      "tropical"
+    ]
+  },
+  "descricao": "Predador do peso de um homem grande, de garra em foice no pé, que furava e prendia. Achado junto de herbívoros de uma tonelada, sozinho ou em grupo (em disputa).",
   "lore": [
     {
       "titulo": "Predador da carcaça",
@@ -140,84 +205,60 @@
     {
       "titulo": "Parentes próximos",
       "texto": "Indivíduos menores e ainda mais ágeis são conhecidos como velociraptors; os maiores e mais avançados, como megaraptors."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário, com agrupamento na carcaça; caça em grupo em disputa."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Não corre muito (26 km/h, provisório, abaixo de quem foge a cavalo), e o perigo está no agarrão: as mãos puxam e a garra do pé prende, com 8 de dano no agarrão. Alvo Médio contra um humano Médio: nenhum dos dois ganha bônus de Alvo no acerto. Força 4 não tira o Bloqueio de nenhum humano, e só uma Força 8 tiraria o dele. Couraça nível 0 (penas); o que o nível vale fica para depois, e a maça perde 4 (o Vigor). Arrasta até 266 kg. 37 PV."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Forest"
-    ],
-    "clima": [
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/deinonico_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Deinonychus",
-    "cr": "3",
-    "tipo": "animal Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 15,
-      "des": 15,
-      "con": 19,
-      "int": 2,
-      "sab": 12,
-      "car": 14
+  "revisao": [
+    {
+      "campo": "atributos.vigor",
+      "motivo": "Fica (D-172; v2). Predador ágil de 97 kg , de sangue quente pelo que se estima, por isso não desce como os répteis (decisão 10). O 4 vem do corpo que aguenta a dor e a ferida da luta com presa de uma tonelada . Não sai da corrida: o índice de corredor baixo (CLP −2,2, Persons e Currie 2016) fica na nota de pesquisa (jornada)."
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 60,
-      "origem": "fonte"
+    {
+      "campo": "atributos.percepcao",
+      "motivo": "Teste de ordem: 2 para os extintos . O faro vai nas Especialidades naturais."
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "v3": {
-    "pv": 37,
-    "esquiva": 12,
-    "bloqueio": 6,
-    "defesa": 12,
-    "defesaMental": 7,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 4,
-      "perfuracao": 4
+    {
+      "campo": "habilidades.esquiva",
+      "motivo": "O ágil comum. Degrau 2. ."
     },
-    "couracaNivel": 0,
-    "pesoErguido": 265.52,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+    {
+      "campo": "habilidades.atletismo",
+      "motivo": "O salto sobre a presa é  de Fowler e colegas 2011. Degrau 2."
+    },
+    {
+      "campo": "habilidades.furtividade",
+      "motivo": "Era sem linha (0). O levantamento: modo de caça desconhecido; predador no normal, o 2 de quem usa cobertura como hábito . Vivia em planícies de inundação e pântanos de floresta (Forster 1984), terreno de cobertura."
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "Predador que caça. Degrau 2. . O faro vai na Especialidade natural."
+    },
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Era sem linha (0). O normal da espécie no próprio meio : a pesquisa não traz frio, fome, veneno nem ferida curada. Nenhuma fratura de estresse em 43 ossos da mão e 52 do pé (Rothschild e colegas 2001) mostra esqueleto sadio, e não resistência acima do normal. O índice de corredor (CLP −2,2) fica na nota de pesquisa (jornada)."
+    },
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "estimativa do Arquiteto: 3,35 m de total menos a cauda de dromeossaurídeo (cerca de 55%)"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "D-107: \"A maioria fica no 6 (comum), alguns acima ou abaixo pela pelagem, pele, penas e cuidado. A faixa vai de 4 (Feio) a 8 (Atraente)\".  A pele e a cor não se conhecem; fica na maioria. Penas:  por parentesco (Microraptor, Velociraptor), aceita pela maioria."
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "Roach e Brinkman 2007 (agrupamento na carcaça) e Frederickson e colegas 2020 (convivência tolerante, sem bando de lobo) contra Ostrom e Maxwell 1995 e Brinkman 1998 (caça em grupo). A ficha segue a leitura solitária (diretriz 1)."
+    },
+    {
+      "campo": "comportamento.caca",
+      "motivo": "o modo de caça não se conhece; prender a presa no chão com o pé e comer viva é  de Fowler e colegas 2011."
     }
-  },
-  "notasObservacao": [
-    "pesoErguido: 265,52 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com os 97 kg. Era 238,85 kg (80 kg de trabalho) e, antes, 166,45 kg pela fórmula de FAH. Não é quadrúpede, então não tem `carga` (D-160).",
-    "velocidade: congelada (decisão 23). Sem velocidade real; a única pista é a caminhada de 10,1 km/h por pegadas (Kool 1981, só o resumo).",
-    "area: 0,57 m², vista de lado, da medição da `tamanho-fichas-v2`; era 2,91 m² (altura × comprimento, um retângulo cheio). O Alvo segue Médio. Decisão provisória: usar o número do `calc.mjs`, que é o mesmo para as 92 fichas.",
-    "vigor: 4 sem dado direto de ferida ou doença **[extrapolação]**; a razão é o corpo de sangue quente estimado e a presa de uma tonelada. Se o autor ler o dinossauro como réptil (decisão 10), cai para 3.",
-    "musculatura: 2 (animal comum), provisória, sem medida de força do corpo.",
-    "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua, sem dado de fome, frio, veneno ou ferida **[extrapolação]**. O levantamento a marca como candidata a 1 pelo índice de corredor, que fica na nota de pesquisa (jornada); fica em 2.",
-    "jornada (nota de pesquisa, não é regra): índice de membros de corredor (CLP) de −2,2: não sustentava velocidade alta por muito tempo (Persons e Currie 2016, conferido); pé de corredor moderado, razão pé/canela 0,48 (Ostrom 1976). Caminhada de 10,1 km/h por pegadas de Irenichnites, talvez do Deinonychus (Kool 1981, só o resumo) **[extrapolação]**. Sem distância por dia.",
-    "massa: 97 kg **[comparação]**, o MCZ 4371 pela circunferência do fêmur (Benson e colegas 2014, Dataset S1, com a correção de bípede da equação de Campione e Evans 2012), sem consenso entre os estudos (60 a 73 kg por volume, Paul; 70 a 100 kg, Brinkman 1998). Era 80 kg. Na sexta rodada a faixa, o PV e o peso erguido passaram aos 97 kg (faixa e PV não mudam); qualquer estimativa dá Faixa 3.",
-    "furtividade: 2 **[extrapolação]**; o modo de caça é desconhecido.",
-    "compostura: desce de 2 para 1 por não ser espécie social (diretriz 1); o bando está em disputa, e se o autor ler a caça em grupo como certa, a espécie passa a social e a Compostura volta a 2.",
-    "couraca: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois. As penas são por parentesco.",
-    "dimensoes.largura: 0,40 m, estimada pelo Arquiteto, sem fonte; o comprimento sem a cauda (1,5 m) também é estimativa."
   ]
 }

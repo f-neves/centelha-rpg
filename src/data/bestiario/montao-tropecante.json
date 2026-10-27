@@ -1,37 +1,25 @@
 {
-  "ordem": 69,
   "id": "montao-tropecante",
   "idAntigo": "mon-montao-tropecante",
   "nome": "Montão Tropeçante",
   "nomeIngles": "Shambling Mound",
-  "categoria": "Planta",
-  "categoriaLegada": "Planta",
+  "categoria": "planta",
   "papel": "elite",
-  "conceito": "planta Grande",
-  "descricao": "Monte de vegetação podre e lodo que ganhou vontade própria depois de uma morte violenta: anda devagar pelo brejo, agarra e esmaga, e o raio o cura em vez de feri-lo.",
-  "tags": [
-    "planta",
-    "centelha"
-  ],
-  "imagem": "bestiario/montao-tropecante_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,7 m de altura",
-    "peso": "1.400 kg",
-    "largura": 1.6,
-    "altura": 2.7
-  },
-  "locomocao": {
-    "terra": 2,
-    "natacao": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 5
-  },
+  "ameaca": 4,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "de pé, curvado, arrastando-se",
+    "apoio": "bipede",
+    "altura": 2.7,
+    "largura": 1.6,
+    "profundidade": 1.1,
+    "comprimento": null,
+    "massa": 1400,
+    "area": 3.39,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 7,
     "destreza": 2,
     "vigor": 6,
@@ -42,98 +30,169 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
+    "esquiva": 0,
     "furtividade": 3,
     "integridade": 2,
     "prontidao": 2,
     "resistencia": 4,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "natacao": 2,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "parado, entre vegetação densa",
-      "valor": 2,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "parado, entre vegetação densa",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 2,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 3,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "nado": {
+      "batalha": 2
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Duas pancadas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "bracos-de-galhos",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [
-    "fogo",
-    "raio",
-    "perfuracao"
-  ],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Absorve raio",
-      "descricao": "Ativação: um dano de raio que o acerta. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Efeito: a resistência corta metade do dano, e a metade cortada vira cura em PV, até o PV total. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "um dano de raio que o acerta",
+      "duracao": "instantânea",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "a resistência corta metade do dano, e a metade cortada vira cura em PV, até o PV total",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Agarra no golpe",
-      "descricao": "Duas pancadas: Ativação: as Duas pancadas que acertam, se ele quiser. Duração: até o alvo se soltar ou ele soltar. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo fica Agarrado, sem jogada de Agarrar. Dano: o das Duas pancadas. Resistência: corpo, para escapar, pela jogada de Agarrar do livro contra a Força 7 + Briga 5 dele. Limite de uso: um alvo agarrado por vez.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Duas pancadas",
+      "ativacao": "as Duas pancadas que acertam, se ele quiser",
+      "duracao": "até o alvo se soltar ou ele soltar",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "o alvo fica Agarrado, sem jogada de Agarrar",
+      "dano": "o das Duas pancadas",
+      "resistencia": "corpo, para escapar, pela jogada de Agarrar do livro contra a Força 7 + Briga 5 dele",
+      "limiteDeUso": "um alvo agarrado por vez"
     },
     {
       "nome": "Constrição",
-      "descricao": "Duas pancadas: Ativação: a cada 6 Ticks em que mantém o agarrão. Duração: enquanto agarra. Alcance: o do corpo a corpo. Área: quem está agarrado. Efeito: esmaga e sufoca sem nova jogada de ataque. Dano: 1d6 + Força, Impacto. Resistência: nenhum; quem se solta para de sofrer. Limite de uso: um alvo por vez.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Duas pancadas",
+      "ativacao": "a cada 6 Ticks em que mantém o agarrão",
+      "duracao": "enquanto agarra",
+      "alcance": "o do corpo a corpo",
+      "area": "quem está agarrado",
+      "efeito": "esmaga e sufoca sem nova jogada de ataque",
+      "dano": "1d6 + Força, Impacto",
+      "resistencia": "nenhum; quem se solta para de sofrer",
+      "limiteDeUso": "um alvo por vez"
     },
     {
       "nome": "Engolir",
-      "descricao": "puxa o agarrado para dentro da massa de lodo, um por vez, onde ele sufoca.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "casca vegetal",
-      "descricao": "Couraça nível 1 e a resistência a Perfuração (Elementos).",
-      "classe": "livro"
-    },
-    {
-      "nome": "emboscada no pântano",
-      "descricao": "Furtividade, com a Especialidade natural (parado, entre vegetação densa) +2.",
-      "classe": "livro"
-    },
-    {
-      "nome": "avanço do brejo",
-      "descricao": "espera no meio do mato do brejo, agarra quem passa perto e esmaga; não foge e não para.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão e audição: as de um humano, sem olhos à vista."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "puxa o agarrado para dentro da massa de lodo, um por vez, onde ele sufoca"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "avanço do brejo",
+      "formas": "todas",
+      "texto": "espera no meio do mato do brejo, agarra quem passa perto e esmaga; não foge e não para."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano, sem olhos à vista",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar, pelas folhas",
+    "prendeRespiracao": "longa; passa horas no fundo do brejo",
+    "camuflagem": "parece um monte de mato",
+    "mente": "simples, com vontade própria",
+    "tracos": "folha podre, galho, lodo e ossos de cadáveres que arrastou; cheiro de pântano"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho",
+    "atividade": "qualquer hora; mais depois de tempestade",
+    "dieta": "come cadáveres e restos, que puxa para dentro de si",
+    "caca": "espera e agarra no brejo",
+    "dianteDeGente": "ataca o que alcança"
+  },
+  "ecologia": {
+    "terreno": [
+      "pântano",
+      "floresta"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "Monte de vegetação podre e lodo que ganhou vontade própria depois de uma morte violenta: anda devagar pelo brejo, agarra e esmaga, e o raio o cura em vez de feri-lo.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Amontoado de vegetação podre e restos que ganhou vontade própria, avança devagar mas sem cansar, esmagando e sufocando o que alcança com seus braços de galhos entrelaçados. Social: sozinho."
+      "texto": "Amontoado de vegetação podre e restos que ganhou vontade própria, avança devagar mas sem cansar, esmagando e sufocando o que alcança com seus braços de galhos entrelaçados."
     },
     {
       "titulo": "Ecologia",
@@ -142,90 +201,61 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Camponeses de Mére e Syl contam que um montão tropeçante nasce quando a terra se recusa a esquecer uma morte violenta; alguns druidas e xamãs o deixam em paz, como se fosse uma forma torta e lenta de luto da própria natureza."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande, lento (2 m por Tick em terra e na água) e fácil de acertar (Esquiva e Bloqueio 4). Bate com os dois braços (dano médio 14), agarra e esmaga a cada 6 Ticks. Fogo, raio e perfuração fazem metade, e o raio cura o que deixou de ferir. 54 PV, Impacto 6, Corte e Perfuração 0. Some no mato do brejo."
     }
   ],
-  "ecologia": {
-    "tipo": "Plant",
-    "terreno": [
-      "Swamp",
-      "Forest"
-    ],
-    "clima": [
-      "Temperate",
-      "Tropical"
-    ]
-  },
-  "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Montão Tropeçante",
-    "cr": "6",
-    "tipo": "planta Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 21,
-      "des": 10,
-      "con": 17,
-      "int": 7,
-      "sab": 10,
-      "car": 9
-    },
-    "pericias": [
-      "Furtividade 3",
-      "Prontidão 2"
-    ],
-    "nota": "Absorve raio (Su): Centelha 1.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
-    },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "proezaFutura": [
-    {
-      "caminho": "sangue-imune"
-    },
-    {
-      "caminho": "agarrao-do-urso"
-    }
+  "imagens": [
+    "bestiario/montao-tropecante_criatura.webp"
   ],
-  "v3": {
-    "pv": 54,
-    "esquiva": 4,
-    "bloqueio": 4,
-    "defesa": 4,
-    "defesaMental": 10,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 0,
-      "perfuracao": 0
-    },
-    "couracaNivel": 1,
-    "pesoErguido": 615.65,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 3,
-        "corrida": 5
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
       },
-      "nado": 2
-    }
+      {
+        "tipo": "raio",
+        "formas": "todas"
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`centelha`: 0, a do campo (§17); a nota da fonte dizia 1 pelo Absorve raio",
-    "`largura`, `profundidade`: 1,6 × 1,1 m, tiradas da massa do site **[extrapolação]**",
-    "`forca`: 7, abaixo da referência da massa (9,2), porque a massa não é músculo **[comparação]**",
-    "`couraca`: nível 1 pela casca vegetal **[provisório]**",
-    "`prontidao`: 2, a da nota do site; o campo tinha 1",
-    "`proezaFutura`: o site guarda `sangue-imune` e `agarrao-do-urso` para depois; a ficha não as usa",
-    "`absorve raio`, `agarra no golpe`, `constrição`: números sugeridos pela ficha (D-197)"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Absorve raio",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Agarra no golpe",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Constrição",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Galhos entrelaçados que apertam como o músculo de um animal comum (escala da decisão 12)"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Um monte, e não um homem: o corpo de base escalado a 2,7 m teria 0,68 × 0,35 m e só 270 kg. A largura e o fundo saem da massa do site: ver Massa; 1,6 × 1,1 m, tiradas da massa do site"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Da ficha publicada  (\"1,4 t de massa vegetal e lodo compacto\"). Conferida pelo volume: um elipsoide de 2,7 × 1,6 × 1,1 m tem 2,49 m³; 1.400 kg nesse volume dão 563 kg/m³, mais leve que a água, como folha, galho e lodo com ar entre eles . Nada no site contradiz o número (D-187)"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: a \"casca vegetal\" do site, galho e fibra por fora ; o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site (linha Elementos); nível 1 pela casca vegetal"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site"
+    }
   ]
 }

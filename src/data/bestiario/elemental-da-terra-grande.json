@@ -134,8 +134,7 @@
       "tecnica": {
         "id": "pele-de-pedra",
         "nivel": 3
-      },
-      "texto": "por 3 de Energia, +4 de Absorção (todos os tipos) e reduz as penalidades de ferimento em 1"
+      }
     },
     {
       "nome": "feito de pedra viva",

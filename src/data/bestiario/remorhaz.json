@@ -1,87 +1,185 @@
 {
-  "ordem": 276,
   "id": "remorhaz",
   "idAntigo": "mon-remorhaz",
   "nome": "Remorhaz",
   "nomeIngles": "Remorhaz",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "fera",
-  "conceito": "besta mágica Enorme",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha"
-  ],
-  "imagem": "bestiario/remorhaz_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "7,5 metros de comprimento",
-    "peso": "4500 kg"
-  },
-  "locomocao": {
-    "terra": 3,
-    "escavacao": 2
-  },
+  "ameaca": 4,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "muitas patas; ergue a frente para morder",
+    "apoio": "outro",
+    "altura": 0.6,
+    "largura": 0.98,
+    "profundidade": null,
+    "comprimento": 7.5,
+    "massa": 1650,
+    "area": 9,
+    "posturaDoTamanho": "vista de cima",
+    "linhaPV": "acima"
+  },
+  "couraca": 5,
+  "atributos": {
     "forca": 9,
     "destreza": 3,
     "vigor": 8,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 3,
+    "furtividade": 1,
+    "integridade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "resistencia": 4,
+    "sociabilidade": 0,
+    "sobrevivencia": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 3
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 9,
-  "aparencia": 5,
+  "vontade": 9,
+  "aparencia": 3,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "escavacao": {
+      "batalha": 2
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 3,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Mordida",
+      "parte": "mandibulas",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 7
+      "bloqueiaComoArma": null
     }
   ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Calor abrasador",
-      "descricao": "Seu corpo arde por dentro; quem a toca ou a golpeia sem arma sofre dano contínuo de queimadura, e até armas podem derreter no contato prolongado."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fogo",
+        "nivel": 3
+      },
+      "ativacao": "nenhuma; sempre ativo enquanto ela está desperta",
+      "duracao": "contínua",
+      "alcance": "o próprio corpo",
+      "area": "quem a toca, a golpeia sem arma ou é mordido por ela",
+      "efeito": "o corpo arde por dentro e queima o que encosta",
+      "dano": "2d6 de fogo em quem a toca ou é mordido, somado ao do golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por toque"
     },
     {
-      "nome": "Sentidos de gelo",
-      "descricao": "Enxerga no escuro e na penumbra, e sente vibrações através da neve e do gelo mesmo sem ver o que se aproxima."
+      "nome": "arma que derrete",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a arma que fica muito tempo em contato com ela começa a derreter"
     },
     {
-      "nome": "Escavação",
-      "descricao": "Abre túneis derretendo gelo e neve com o próprio calor, movendo-se sob a superfície congelada."
+      "nome": "agarrar",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Mordida",
+      "regra": "agarrar"
     },
     {
-      "nome": "Imune a fogo e frio",
-      "descricao": "Os extremos térmicos que matariam qualquer criatura comum não a afetam."
-    },
-    {
-      "nome": "Engolir por inteiro",
-      "descricao": "Pode agarrar e tragar uma presa menor, causando dano contínuo enquanto ela luta dentro de suas entranhas quentes."
+      "nome": "engolir inteiro",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "engole o alvo menor que já está agarrado; preso dentro, ele leva dano a cada rodada até sair"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "caçadora do gelo",
+      "formas": "todas",
+      "texto": "escava o gelo com o próprio calor, sai sob a presa, morde e engole o que for menor; caça sozinha."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão na penumbra",
+      "descricao": "enxerga com pouca luz",
+      "formas": "todas"
+    },
+    {
+      "nome": "sentido de tremor",
+      "descricao": "sente pelo chão quem se move perto, sem ver. Através da neve e do gelo",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "sob o gelo",
+    "mente": "animal (fera de Inteligência 1)",
+    "tracos": "centopeia gigante de 7,5 m, placas azuladas e dorso que brilha em brasa; escava túneis de gelo que ficam vermelhos quando ela passa"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitária; às vezes ao lado de gigantes do gelo",
+    "atividade": "qualquer hora",
+    "dieta": "carnívora",
+    "caca": "caça pelos labirintos de gelo",
+    "dianteDeGente": "ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "gélido",
+      "subterrâneo"
+    ],
+    "clima": [
+      "frio"
+    ]
+  },
+  "descricao": "Centopeia gigante das terras congeladas cujo corpo arde por dentro. Escava túneis no gelo com o próprio calor, caça sozinha pelos labirintos que esculpe, e quem a toca se queima.",
   "lore": [
     {
       "titulo": "Fogo sob o gelo",
@@ -96,39 +194,31 @@
       "texto": "Apesar de sua fereza, raramente se junta a outros de sua espécie, preferindo caçar sozinho pelos labirintos gelados que ela mesma esculpe."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Cold",
-      "Underground"
-    ],
-    "clima": [
-      "Cold"
+  "imagens": [
+    "bestiario/remorhaz_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Remorhaz",
-    "cr": "7",
-    "tipo": "besta mágica Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 22,
-      "des": 13,
-      "con": 21,
-      "int": 5,
-      "sab": 12,
-      "car": 10
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Calor abrasador",
+      "motivo": "números sugeridos pela ficha (D-197); poder natural com números da ficha (D-197), base Fogo 3 (2d6)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 4
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 5: placas grossas de artrópode gigante, como o crocodilo (5) . O nível fica fora da Absorção (decisoes-autor §16)"
+    }
+  ]
 }

@@ -189,19 +189,7 @@
       ],
       "classe": "livro",
       "ataque": "Garras",
-      "texto": "as duas mãos de garra contam como par de armas leves e atacam pela empunhadura dupla (`combate.md`), os dois golpes a −1d6"
-    },
-    {
-      "nome": "Mímica de voz",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "Manha, com a Especialidade natural (imitar uma voz já ouvida) +3"
-    },
-    {
-      "nome": "Sentidos do pântano",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "Prontidão, com a Especialidade natural (pântano e floresta) +2"
+      "regra": "empunhadura-dupla"
     }
   ],
   "comoLuta": [

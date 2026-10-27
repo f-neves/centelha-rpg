@@ -173,15 +173,14 @@
       "classe": "livro",
       "ataque": "Garras em mergulho",
       "regra": "investida",
-      "texto": "com a velocidade do voo, só descendo"
+      "texto": "só descendo"
     },
     {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras em mergulho",
-      "regra": "derrubar",
-      "texto": "como ataque próprio. Sem regra ainda: no mergulho, o mesmo golpe que fere pode derrubar a presa"
+      "regra": "derrubar"
     },
     {
       "nome": "garra e bico",

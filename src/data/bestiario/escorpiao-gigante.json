@@ -1,36 +1,27 @@
 {
-  "ordem": 47,
   "id": "escorpiao-gigante",
   "idAntigo": "mon-escorpiao-gigante",
   "nome": "Escorpião-gigante",
   "nomeIngles": "Giant Scorpion",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "praga Grande",
-  "descricao": "Sai da toca à noite, agarra a presa com as pinças e a esmaga; o ferrão fica para a presa que resiste.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/escorpiao-gigante_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "3 m de comprimento, 0,6 m de altura",
-    "peso": "101 kg",
-    "comprimento": 3,
-    "largura": 0.53,
-    "altura": 0.6
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 6,
-    "corrida": 7
-  },
+  "ameaca": 3,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "oito patas, corpo baixo, cauda curvada",
+    "apoio": "outro",
+    "altura": 0.6,
+    "largura": 0.53,
+    "profundidade": null,
+    "comprimento": 3,
+    "comprimentoSemCauda": 1.47,
+    "caudaGrossa": true,
+    "massa": 101,
+    "area": 1.47,
+    "posturaDoTamanho": "de cima"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 5,
     "destreza": 3,
     "vigor": 4,
@@ -41,7 +32,7 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
     "bloqueio": 3,
     "esquiva": 1,
@@ -50,93 +41,158 @@
     "integridade": 1,
     "prontidao": 3,
     "resistencia": 3,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "resistencia",
-      "foco": "fome",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "vibração",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "na toca",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "resistencia": [
+      {
+        "foco": "fome",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "prontidao": [
+      {
+        "foco": "vibração",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "furtividade": [
+      {
+        "foco": "na toca",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 6,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pinça",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 6,
-      "classe": "media"
+      "parte": "pinca",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Ferrão",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "ferrao",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
       "acerto": 1,
-      "perf": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "Pinça: As \"garras duplas\" da ficha antiga do bestiário viram um agarrão, um ataque por ação.",
-      "classe": "livro"
-    },
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "ferroar o agarrado",
-      "descricao": "Ferrão: agarra com a pinça e, na ação seguinte, crava o ferrão.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "agarra com a pinça e, na ação seguinte, crava o ferrão."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "vibração do chão",
+      "descricao": "Prontidão (vibração) +2 (Especialidade natural)",
+      "formas": "todas"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "vibração do chão: Prontidão (vibração) +2 (Especialidade natural). · pentes (pectinas): sentem o terreno, mecânico e químico; sem número. · visão: os olhos centrais estão entre os mais sensíveis à luz, sobretudo no escuro; sem número, sem bônus."
-    }
-  ],
-  "venenos": [
+      "nome": "pentes (pectinas)",
+      "descricao": "sentem o terreno, mecânico e químico (ADW); sem número",
+      "formas": "todas"
+    },
     {
-      "nome": "Veneno no jogo",
-      "texto": "Ferrão de gigante · Potência 16 · Tick (sangue) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pelo Ferrão"
+      "nome": "visão",
+      "descricao": "os olhos centrais estão entre os mais sensíveis à luz, sobretudo no escuro (Wikipédia, Scorpion); sem número, sem bônus",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "pinças negro-avermelhadas e granulosas; fluorescência azul-esverdeada sob ultravioleta (ADW; Wikipédia)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "colônias de até 15",
+    "atividade": "noturno",
+    "dieta": "insetos e outros artrópodes, sobretudo cupins; às vezes vertebrados pequenos",
+    "caca": "esmaga com a pinça; o jovem usa mais o ferrão",
+    "dianteDeGente": "dócil; raramente pica"
+  },
+  "ecologia": {
+    "terreno": [
+      "deserto"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Sai da toca à noite, agarra a presa com as pinças e a esmaga; o ferrão fica para a presa que resiste.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Ataca com as pinças para prender a presa e crava o ferrão por cima, injetando veneno que paralisa ou mata aos poucos. É territorial e reage com violência a qualquer intrusão em sua toca. Social: colônias de até 15."
+      "texto": "Ataca com as pinças para prender a presa e crava o ferrão por cima, injetando veneno que paralisa ou mata aos poucos. É territorial e reage com violência a qualquer intrusão em sua toca."
     },
     {
       "titulo": "Hábitat",
@@ -153,93 +209,48 @@
     {
       "titulo": "Veneno e doença",
       "texto": "Veneno no jogo: Ferrão de gigante · Potência 16 · Tick (sangue) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pelo Ferrão"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande contra um humano Médio: o humano ganha +3 no acerto corpo a corpo e ainda bloqueia (uma categoria). A Força 5 tira o Bloqueio de quem tem Força 1 ou menos. A pinça faz 8,5 e agarra (10 por Tick); o ferrão, 6,5 com o veneno. A cutícula é Couraça nível 2, e quanto ela tira da espada, da lança e do golpe de Impacto fica para depois. 37 PV (Faixa 3 e Vigor 4), Resistência 3, e aguenta meses sem comer (Resistência (fome) +3). Arrasta 402,11 kg."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Desert"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/escorpiao-gigante_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Furtividade 1.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Escorpião Gigante",
-    "cr": "3",
-    "tipo": "praga Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 19,
-      "des": 12,
-      "con": 16,
-      "int": "-",
-      "sab": 10,
-      "car": 2
+  "revisao": [
+    {
+      "campo": "atributos.forca",
+      "motivo": "Era 7 (e 8 na ficha de hoje), escolhida com os 320 kg (Força de referência 6,8). Reanalisada na sétima rodada com os 101 kg (D-158): a Força de referência é 6,0 (`calc6.mjs`), e o escorpião fica nela. Vizinhos de massa e de corpo: urso-negro de 97,5 kg (6), javali de 78,75 kg (5), gorila de 126 kg (7). O corpo puxa para baixo (patas finas, não é lutador) e a pinça puxa para cima, e a pinça já está na Musculatura 3: as duas coisas se compensam na referência. Acima do Pandinus de base (0, item 8: a pinça real de 12,96 N belisca um dedo sem ferir; D-176). As patas são finas e o corpo não é de lutador; o que o escorpião tem de forte é a pinça, que esmaga a presa (Wikipédia), e ela vai para a Musculatura 3. A pinça real mede 12,96 N (van der Meijden et al. 2013, transdutor de força); pelo quadrado do tamanho, 12,96 × 15² = cerca de 2.900 N na gigante . O Pathfinder dá For 19"
     },
-    "pericias": [
-      "Furtividade 1"
-    ],
-    "deslocamento": {
-      "ft": 50,
-      "origem": "fonte"
+    {
+      "campo": "corpo.altura",
+      "motivo": "Era 0,88 m. Pela razão dos comprimentos: 0,88 × (3 ÷ 4,40) = 0,60 m (4 cm da real × 15); altura não achada, estimativa da ficha de hoje, do corpo erguido, sem a cauda levantada"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "v3": {
-    "pv": 37,
-    "esquiva": 8,
-    "bloqueio": 12,
-    "defesa": 12,
-    "defesaMental": 6,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 4,
-      "perfuracao": 4
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Era 4,40 m. O comprimento da ficha atual do Centelha, que diz ser o total com a cauda, a mesma medida dos 20 cm da base (ADW, com a cauda) × 15"
     },
-    "couracaNivel": 2,
-    "pesoErguido": 402.11,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 6,
-        "corrida": 7
-      }
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Era 2,16 m. 2,16 × (3 ÷ 4,40) = 1,473 m, que é 9,8 cm × 15: 49% do total, a proporção medida no holótipo de P. imperator (prossoma 22,8 mm e mesossoma 56,4 mm num total de 160,9 mm; Holstein, Wendt e Rossi 2015, Arachnologische Mitteilungen 54)"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Era 0,77 m. 0,77 × (3 ÷ 4,40) = 0,525 m (3,5 cm × 15); largura não achada, estimativa, sem as pinças"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Era 320 kg, Faixa 4 (o corpo de 4,40 m da v3). Referência 101 kg : o tamanho da ficha atual do Centelha (3 m com a cauda) e a massa saindo dele, massa da base × (L do site ÷ L da base)³ = 0,03 × (3 ÷ 0,20)³ = 0,03 × 3.375 = 101,25 kg, 101 na mesa; k = 15. A base é a fêmea (o macho ), com o comprimento sem sexo da ADW: massa e comprimento de fontes diferentes. Os 350 kg do site não fecham com os 3 m (pediriam 4,54 m); vale o tamanho. A massa de base é : 29,96 ± 6,51 g em 5 fêmeas adultas não grávidas, pesadas em balança de laboratório (Mahsberg 1990, Acta Zool. Fennica 190: 267-272); a Wikipédia dá cerca de 30 g. Adultos de cerca de 84 a 118 kg na gigante (25 a 35 g na base: ficha do Zoológico de Kiev, divulgação, × 15³); a fêmea grávida passa de 50 g (NTNU, Scorpion Files) e o máximo citado é 60 g (Guinness, Heaviest scorpion), o que daria 203 kg. Sexos: massa do macho  (só fêmeas pesadas)"
+    },
+    {
+      "campo": "ataques.Pinça",
+      "motivo": "era 1d6 + 7, média 10,5 (1d6 + 8 na ficha de hoje); segue a Força nova (D-115). Esmaga a presa (Wikipédia), golpe que pede o corpo atrás. Pinça real de 12,96 N (van der Meijden et al. 2013); cerca de 2.900 N na gigante"
+    },
+    {
+      "campo": "ataques.Ferrão",
+      "motivo": "era 1d6 − 2 + 7, média 8,5 (1d6 − 2 + 8 na ficha de hoje); segue a Força nova (D-115). Golpe rápido de ponta por cima do corpo; a ponta da gigante fura couro . Veneno sem id no catálogo. Opção (D-097)"
     }
-  },
-  "notasObservacao": [
-    "gigante: escalado do P. imperator de 20 cm e 30 g aos 3 m com a cauda da ficha atual do Centelha (correção da sexta rodada: vale o tamanho do site), k = 15 e k³ na massa: 101 kg (era 4,40 m, k = 22 e 320 kg); tudo do tamanho é [extrapolação] (D-105, `pedido-lotes.md` §3). A base é a fêmea, porque o macho não tem massa achada",
-    "faixa: a massa nova põe o escorpião na Faixa 3; PV de 50 para 40, e 37 com o Vigor 4 da oitava rodada",
-    "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; os 3 m do site passam no critério dos dois lados do corte (o Pandinus de base é Minúsculo, cerca de 0,0066 m² de cima; Grande são quatro categorias acima, Médio seriam três) e ficam. Acima do Médio porque a ficha antiga do Centelha e as duas fontes (D&D 3.5, Monstrous Scorpion, Large; Pathfinder 1, Giant Scorpion, Grande) o dão Grande. A área de 1,474 m² fica só 1,7% acima do corte do Médio, abaixo da folga de 10% que o Arquiteto pede ao tamanho escolhido; o tamanho do site passa no item 7 (quatro categorias acima da base) e fica, com a borda anotada (D-174). Do outro lado do corte, Médio: o humano perde os +3 de acerto contra ele, e o Vigor não muda, porque não sai do porte. Para ficar 10% longe do corte, seriam cerca de 3,12 m no Grande (1,595 m², 114 kg) ou 2,82 m no Médio (1,305 m², 84 kg), pelo quadrado e pelo cubo de 3 m (D-174)",
-    "alvo: Grande pela área de cima (1,47 m², a de 3,17 m² na razão (3 ÷ 4,40)², `tamanho-fichas-v2`), com a cauda grossa, 1,7% acima do corte do Médio; a área de hoje (3,87 m²) era altura × comprimento. A categoria não muda. O Alvo decide acerto e furtividade, e não o Vigor (oitava rodada)",
-    "forca: 5 (em vigor na Etapa 2, 20/10/2026); antes: 6, reanalisada na sétima rodada na referência dos 101 kg (6,0); era 7, escolhida com os 320 kg (referência 6,8) (D-158, D-174)",
-    "caudaGrossa: o metassoma contou como cauda grossa (parte do corpo, com o tubo digestivo e o veneno), pela D-155 (D-174)",
-    "fonte: a altura (4 cm) e a largura (3,5 cm) da real continuam só por estimativa; a massa de 30 g só pela Wikipédia (D-174)",
-    "habitat: a base é de floresta úmida, e a ficha antiga do bestiário é de deserto; o deserto ficou na variante (Hadrurus). Decisão provisória (D-174)",
-    "anatomia: artrópode, provisória (D-175)",
-    "pesoErguido: 402,11 kg (em vigor na Etapa 2, 20/10/2026); antes: 489,56 kg pela fórmula das decisões 14 e 16, provisório. Não tem Carga (não é quadrúpede)",
-    "velocidade: congelada (decisão 23); 25 km/h, sem velocidade real (D-170)",
-    "forca: 5 (edição do autor; em vigor na Etapa 2, 20/10/2026); antes: 6 (D-158), com a pinça na Musculatura 3; a pinça escalada (cerca de 2.900 N) é extrapolação",
-    "musculatura: 3, robusto pela pinça; se o autor quiser a pinça como força principal, ela é candidata a 4, como a do caranguejo (D-174)",
-    "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua; o jejum longo vai na Especialidade natural (fome) +3, que é dado da ordem (Wikipédia, Scorpion), e não do Pandinus. Se aparecer o jejum medido do P. imperator, o nível se confere (D-174)",
-    "especialidades: Prontidão (vibração) +2 vem de escorpiões de areia (Brownell 1977), e não da espécie",
-    "furtividade: (na toca) 1 pela emboscada do Hadrurus, outra espécie [comparação]",
-    "atletismo: 1, novo, pela toca cavada, sem número (D-174)",
-    "influencia e compostura: 1 por não ser espécie social (diretriz 1); as colônias de até 15 (ADW) não mostram comunicação entre eles. Se o autor ler a colônia como vida social, elas voltam a 2 (D-174)",
-    "couraca: nível 2 (faixa 2 a 3), reanalisado na sétima rodada com os 101 kg (era 3, posto com 320 kg); o valor em absorção fica para depois.",
-    "bloqueio: as pinças bloqueiam como mão nua, e não como arma: a cutícula do escorpião é esclerotizada, e não a carapaça da D-100",
-    "veneno: sem id no catálogo; o veneno real da base é fraco para gente, e o de importância médica (Tityus) está na pesquisa como comparação (D-112)",
-    "vigor: 4 ◆, revisto na oitava rodada pelo corpo e pela massa: +1 sobre o animal de base (Pandinus imperator, Vigor 3, presumido), o mínimo da D-176; corpo de artrópode de 101 kg (cutícula na Couraça, juntas moles, pulmão foliáceo), entre o javali (79 kg, 5) e o gorila (126 kg, 4), no lado de baixo pelo corpo; o jejum já está na Especialidade natural. Era 5 (D-174)",
-    "base: o animal de base não tem ficha; Vigor 3 presumido; PV pela decisão 21 [provisório]"
   ]
 }

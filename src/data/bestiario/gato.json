@@ -247,6 +247,10 @@
     {
       "campo": "corpo.largura",
       "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,12 × 1,0250 = 0,118 . Antes: largura do peito de 11,48 ± 2,56 cm (n = 32), medida pelos donos com instrução ilustrada (Pongrácz 2024). Não se escala: a medida já é de gatos dos dois sexos"
+    },
+    {
+      "campo": "ataques.Mordida",
+      "motivo": "o doméstico tem estimativa pelo crânio (206 N no macho, Fleming et al. 2020), 3,7 vezes os 56 N do gato-selvagem (Wroe et al. 2005) pelo mesmo tipo de método; a causa da diferença não foi investigada. Não muda o N0 (D-174)"
     }
   ]
 }

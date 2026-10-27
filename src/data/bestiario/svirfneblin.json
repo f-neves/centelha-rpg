@@ -1,36 +1,24 @@
 {
-  "ordem": 294,
   "id": "svirfneblin",
   "idAntigo": "mon-svirfneblin",
   "nome": "Svirfneblin",
   "nomeIngles": "Svirfneblin",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humanoide",
+  "categoria": "humanoide",
   "papel": "soldado",
-  "conceito": "humanoide Pequeno",
-  "descricao": "Gnomo das profundezas, de pele cinzenta de pedra, mineiro de cidades escondidas e desconfiado de tudo. Some contra a rocha, nubla a forma ou se disfarça, e a magia custa a pegá-lo.",
-  "tags": [
-    "humanoide",
-    "centelha"
-  ],
-  "imagem": "bestiario/svirfneblin_criatura.webp",
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "0,9 m de altura",
-    "peso": "18 kg",
-    "largura": 0.3,
-    "altura": 0.9
-  },
-  "locomocao": {
-    "terra": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 5
-  },
+  "ameaca": 2,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 0.9,
+    "largura": 0.3,
+    "profundidade": 0.15,
+    "comprimento": null,
+    "massa": 18,
+    "area": 0.24
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 4,
     "vigor": 4,
@@ -41,7 +29,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 3,
     "briga": 1,
     "bloqueio": 1,
@@ -52,82 +40,142 @@
     "integridade": 2,
     "oficios-gerais": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "parado contra a rocha",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "armas",
-      "foco": "picareta",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "oficios-gerais",
-      "foco": "mineração",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 0
+  },
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "parado contra a rocha",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "armas": [
+      {
+        "foco": "picareta",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 3,
-    "valor": 3
+    "temperanca": 3
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:picareta-de-guerra"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Picareta de guerra",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 1,
-      "perf": 2,
-      "ticks": 6,
-      "classe": "media"
+      "arma": "picareta-de-guerra",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Disfarce e sombra",
-      "descricao": "poder natural (base Ofuscação 1): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até ele desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: à escolha: nubla a forma (quem o ataca tem −2 no acerto); assume a aparência de outro humanoide pequeno; ou some numa sombra instantânea (fica Escondido, se houver sombra perto). Dano: nenhum. Resistência: nenhum; quem desconfia do disfarce testa a Percepção contra a Manha dele. Limite de uso: três vezes por dia, somados.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "ofuscacao",
+        "nivel": 1
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até o fim da cena, ou até ele desfazer",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "à escolha: nubla a forma (quem o ataca tem −2 no acerto); assume a aparência de outro humanoide pequeno; ou some numa sombra instantânea (fica Escondido, se houver sombra perto)",
+      "dano": "nenhum",
+      "resistencia": "nenhum; quem desconfia do disfarce testa a Percepção contra a Manha dele",
+      "limiteDeUso": "três vezes por dia, somados"
     },
     {
       "nome": "Resistência a magia",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "soma +2 na Defesa Mental e nas resistências contra Artes",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Inconspícuo",
-      "descricao": "magia de adivinhação tem dificuldade de achá-lo.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "Furtividade nas profundezas",
-      "descricao": "Furtividade 3, com a Especialidade natural (parado contra a rocha) +3 e o Tamanho Pequeno.",
-      "classe": "livro"
-    },
-    {
-      "nome": "mineiro desconfiado",
-      "descricao": "some contra a rocha, deixa o intruso passar ou o ataca de surpresa com a picareta; nubla a forma e foge para os túneis que conhece.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro profunda: enxerga no breu total muito além do alcance comum (site), como o Gnomo parente e além dele. · audição e olfato: os de um humano."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "magia de adivinhação tem dificuldade de achá-lo"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "mineiro desconfiado",
+      "formas": "todas",
+      "texto": "some contra a rocha, deixa o intruso passar ou o ataca de surpresa com a picareta; nubla a forma e foge para os túneis que conhece."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro profunda",
+      "descricao": "enxerga no breu total muito além do alcance comum, como o Gnomo parente e além dele",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "camuflagem": "some contra a rocha; Especialidade natural",
+    "mente": "humanoide; desconfiada",
+    "tracos": "gnomo de 0,9 m, pele cinzenta de pedra, careca, nariz grande, olhos pequenos, picareta"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em grupo de mineiros, típico 3 a 8",
+    "atividade": "qualquer hora, no escuro",
+    "dieta": "onívoro",
+    "caca": "mineração",
+    "dianteDeGente": "desconfia; esconde-se ou expulsa"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Gnomo das profundezas, de pele cinzenta de pedra, mineiro de cidades escondidas e desconfiado de tudo. Some contra a rocha, nubla a forma ou se disfarça, e a magia custa a pegá-lo.",
   "lore": [
     {
       "titulo": "Cidades escondidas",
@@ -136,78 +184,32 @@
     {
       "titulo": "Sangue feérico distante",
       "texto": "O laço com o mundo feérico que corre em seu sangue os torna estranhos até para os próprios parentes gnomos da superfície."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: em grupo de mineiros, típico 3 a 8."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Pequeno, 28 PV, Impacto 5, Corte e Perfuração 1. Esquiva e Bloqueio 12 (13 com a picareta). A picareta dá dano médio 7,5 e fura N2. Três vezes por dia nubla a forma, se disfarça ou some na sombra; parado contra a rocha, quase não se vê. +2 contra Artes."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Underground"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/svirfneblin_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Svirfneblin",
-    "cr": "1",
-    "tipo": "humanoide Pequeno",
-    "tamanho": "pequeno",
-    "valores": {
-      "for": 13,
-      "des": 15,
-      "con": 14,
-      "int": 10,
-      "sab": 10,
-      "car": 8
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Disfarce e sombra",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Resistência a magia",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 28,
-    "esquiva": 12,
-    "bloqueio": 12,
-    "defesa": 13,
-    "defesaMental": 12,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 1,
-      "perfuracao": 1
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Cidades escondidas)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 71.16,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 3,
-        "corrida": 5
-      }
-    },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "`raça parente`: Gnomo (D-207); os números são os do site",
-    "`massa`: 18 kg na borda de cima da zona de transição de 12 a 18 kg; na faixa de baixo seriam 19 PV",
-    "`equipamento`: picareta de guerra do livro **[provisório]**",
-    "`temperança`: 3; o site tinha 2 **[provisório]**",
-    "`disfarce e sombra`, `resistência a magia`: números sugeridos pela ficha (D-197)"
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    }
   ]
 }

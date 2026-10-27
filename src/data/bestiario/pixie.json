@@ -194,12 +194,6 @@
       "dano": "nenhum",
       "resistencia": "nenhum",
       "limiteDeUso": "nenhum"
-    },
-    {
-      "nome": "corpo minúsculo",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "o Alvo Miúdo (no ar) e Minúsculo (pousada) pesa contra quem a ataca (R8)"
     }
   ],
   "comoLuta": [

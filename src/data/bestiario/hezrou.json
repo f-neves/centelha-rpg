@@ -149,12 +149,6 @@
       "efeito": "quando a mordida ou as garras acertam com folga, a presa já fica Agarrada, sem a manobra à parte"
     },
     {
-      "nome": "arrombar",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "Força 9 e o Peso erguido contra portas, grades e objetos"
-    },
-    {
       "nome": "fedor nauseante",
       "formas": "todas",
       "classe": "sem regra ainda",

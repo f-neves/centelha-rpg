@@ -122,7 +122,7 @@
       "nome": "Investida",
       "formas": "todas",
       "classe": "livro",
-      "texto": "corre no Preparo do golpe, com −2 a mais na Defesa e +1d6 no dano"
+      "regra": "investida"
     },
     {
       "nome": "Investida chifruda",
@@ -163,12 +163,6 @@
       "dano": "nenhum",
       "resistencia": "nenhum",
       "limiteDeUso": "nenhum"
-    },
-    {
-      "nome": "Casco firme",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "Atletismo, com a Especialidade natural (ficar de pé) +2, contra Derrubar e no terreno difícil"
     }
   ],
   "comoLuta": [
@@ -275,10 +269,6 @@
     {
       "campo": "comportamento.dieta",
       "motivo": "site"
-    },
-    {
-      "campo": "habilidadesEspeciais.Casco firme",
-      "motivo": "Especialidade natural +2 em Atletismo"
     }
   ]
 }

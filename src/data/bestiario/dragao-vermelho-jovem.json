@@ -347,10 +347,6 @@
     {
       "campo": "ataques.Mordida.nivelPerfuracao",
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como no branco jovem. Golpe de boca: Força × 1. N2, como o branco jovem . Jogada: Força 9 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
-    },
-    {
-      "campo": "corpo.area",
-      "motivo": "Principal Enorme para Grande; as duas áreas mantidas, mudando a postura principal (2e-1)."
     }
   ]
 }

@@ -186,10 +186,6 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
-    },
-    {
-      "campo": "habilidadesEspeciais.Regeneração 1",
-      "motivo": "Antes: 1 PV/6 Ticks passivos. N 1 pelo número do texto anterior, a conferir."
     }
   ]
 }

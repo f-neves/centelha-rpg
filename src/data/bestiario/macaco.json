@@ -1,37 +1,27 @@
 {
-  "ordem": 211,
   "id": "macaco",
   "idAntigo": "mon-monkey",
   "nome": "Macaco-prego",
   "nomeIngles": "Monkey",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Miúdo",
-  "descricao": "Macaco de bando do Brasil, do tamanho de um gato, que quebra coco batendo com pedras de quase metade do próprio peso.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/macaco_criatura.webp",
-  "porte": "Miúdo",
-  "dimensoes": {
-    "medida": "0,86 m de comprimento, 0,24 m de altura",
-    "peso": "3,1 kg",
-    "comprimento": 0.86,
-    "largura": 0.14,
-    "altura": 0.24
-  },
-  "locomocao": {
-    "terra": 1,
-    "escalada": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 1,
-    "arranque": 1,
-    "corrida": 2
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 0.24,
+    "largura": 0.14,
+    "profundidade": null,
+    "comprimento": 0.86,
+    "comprimentoSemCauda": 0.42,
+    "caudaGrossa": false,
+    "massa": 3.1,
+    "area": 0.075,
+    "posturaDoTamanho": "de lado"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 2,
     "destreza": 4,
     "vigor": 3,
@@ -42,7 +32,7 @@
     "perspicacia": 2,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 2,
     "bloqueio": 1,
     "esquiva": 3,
@@ -54,68 +44,120 @@
     "empatia": 1,
     "sobrevivencia": 3
   },
-  "skills2": {
+  "habilidadesSec": {
     "equilibrio": 1,
     "escalada": 2,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "equilibrio",
-      "foco": "galhos",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "sobrevivencia",
-      "foco": "quebrar coco com pedra",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "vigiar o céu",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "sobrevivencia": [
+      {
+        "foco": "quebrar coco com pedra",
+        "valor": 1,
+        "origem": "natural"
+      }
+    ],
+    "prontidao": [
+      {
+        "foco": "vigiar o céu",
+        "valor": 1,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {
+    "equilibrio": [
+      {
+        "foco": "galhos",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 1,
+      "arranque": 1,
+      "corrida": 2
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [],
+  "comoLuta": [
     {
       "nome": "bater com pedra",
-      "descricao": "quebra coco com pedra; não é arma nem arremesso.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "Nada que passe do humano com número. A vigilância contra aves de rapina vai como Especialidade comum de Prontidão (hábito), e não natural."
+      "formas": "todas",
+      "texto": "quebra coco com pedra; não é arma nem arremesso."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "sentidos",
+      "descricao": "Nada que passe do humano com número . A vigilância contra aves de rapina vai como Especialidade comum de Prontidão (hábito), e não natural",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "cauda preênsil fina, que freia na descida (Primate Info Net), o fato do Equilíbrio (galhos) +2; usa pedra como martelo e bigorna (Wikipédia; Liu 2016)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "bando (8 a 15, com macho dominante)",
+    "atividade": "diurno",
+    "dieta": "onívoro (frutas, coco, insetos, pequenos vertebrados)",
+    "caca": "forrageio; quebra coco com pedra",
+    "dianteDeGente": ""
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta",
+      "selva"
+    ],
+    "clima": [
+      "tropical"
+    ]
+  },
+  "descricao": "Macaco de bando do Brasil, do tamanho de um gato, que quebra coco batendo com pedras de quase metade do próprio peso.",
   "lore": [
     {
       "titulo": "Vida em bando",
@@ -124,85 +166,28 @@
     {
       "titulo": "Curiosidade sem limites",
       "texto": "Rouba objetos brilhantes e comida de acampamentos descuidados nas florestas quentes."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: bando (8 a 15, com macho dominante)."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Miúdo: ganha +6 no corpo a corpo contra um humano Médio. Esquiva 14, difícil de acertar, mas com 6 PV cai com um golpe bom. A mordida tira 3,5 (o dado mais a Força 2). Foge para a árvore, onde anda melhor que qualquer um (Escalada 2, Equilíbrio com a Especialidade dos galhos). Ergue pedra de quase 2 kg e quebra coco com ela."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Forest",
-      "Jungle"
-    ],
-    "clima": [
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/macaco_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Monkey",
-    "cr": "1/4",
-    "tipo": "animal Minúsculo",
-    "tamanho": "minusculo",
-    "valores": {
-      "for": 3,
-      "des": 15,
-      "con": 10,
-      "int": 2,
-      "sab": 12,
-      "car": 5
+  "revisao": [
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,23 × 1,0345 = 0,238 . Antes: Era 0,25 m, estimativa da Bestiarista-2 para o macho de 3,5 kg da massa de trabalho. Escalada pelo cubo da massa: 0,25 × (2,8 ÷ 3,5)^(1/3) = 0,232"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,83 × 1,0345 = 0,859 . Antes: Era 0,89 m: o corpo mais a cauda de 0,45 m (\"a cauda é mais ou menos do comprimento do resto do corpo\", e o corpo do macho tem 444 mm; Primate Info Net, Universidade de Wisconsin; 38 a 56 cm na Wikipédia). Escalado pelo cubo da massa: 0,89 × (2,8 ÷ 3,5)^(1/3) = 0,826"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 6,
-    "esquiva": 14,
-    "bloqueio": 10,
-    "defesa": 14,
-    "defesaMental": 7,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 3,
-      "corte": 3,
-      "perfuracao": 3
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 30.06,
-    "deslocamento": {
-      "terra": {
-        "batalha": 1,
-        "arranque": 1,
-        "corrida": 2
-      }
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,41 × 1,0345 = 0,424 . Antes: Era 0,44 m, o tronco dos machos de 3,4 a 3,6 kg: 43,5 a 44,6 cm (Liu 2016, Tabela 1). Escalado pelo cubo da massa: 0,44 × (2,8 ÷ 3,5)^(1/3) = 0,408"
     }
-  },
-  "notasObservacao": [
-    "fonte (repesquisa de 13/10/2026): a cauda vem do Primate Info Net (cauda do comprimento do corpo; corpo de 444 mm e massa de 3,65 kg no macho selvagem), que confirma o macho de 3,5 kg e 0,44 m de Liu 2016 (D-174). A ficha passou ao adulto típico de 2,8 kg, com as dimensões escaladas pelo cubo da massa.",
-    "dimensoes: a altura (0,23 m) e a largura (0,14 m) são a estimativa da Bestiarista-2 para o macho (0,25 e 0,15 m), sem fonte, escalada pelo cubo da massa. De pé, batendo a pedra, a silhueta de frente seguiria Miúdo (D-147, D-174).",
-    "especie: macaco-prego, escolhido pelo peso, pelo leitor brasileiro e pelo feito medido; a ficha genérica vira a espécie (D-174).",
-    "forca e pesoErguido: Força 1 ◆ na sétima rodada (item 8 da `tamanho-decisoes-5.md`; era 0 pela leitura automática da D-167); a mordida sobe de 1,5 para 2,5 de média (D-115). Com a fórmula das decisões 14 e 16 (`calc6.mjs`, com o adulto típico de 2,8 kg), a Força 1 e a Musculatura 2, o peso erguido sobe de 0,57 para 22,89 kg (18,8 com a Força 0) e passa a cobrir o feito medido (pedras de 1,92 kg acima da cabeça e de 3,47 kg, Liu 2016). Provisório até a fórmula fechar (D-169, D-174).",
-    "pv: 6 (em vigor na Etapa 2, 20/10/2026); antes: 8 pela decisão 21 (5 + Vigor), e 11 pela outra proposta do autor (10 + metade do Vigor); era 18. A escolha entre as duas é do autor (decisões 20 e 21, D-174).",
-    "velocidade: congelada (decisão 23), 7 km/h, a mais lenta do lote; sem real para conferir (D-170).",
-    "variantes.machoAlfa: o alfa de cerca de 4,2 kg (o maior pesado, 4,28) passa do corte de 4 kg e cai na Faixa 2 (26 PV), mais que o triplo do adulto típico (8); o salto vem do corte da faixa, e não do corpo (decisão 21, D-174).",
-    "inteligencia: 2 pela ferramenta de pedra, proposta do Arquiteto fora da lista do autor (diretriz 1), a decidir (D-174).",
-    "couraca: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "jornada (nota de pesquisa, não é regra): **[medido]** anda até 2.000 m por dia (ADW). Sem tempo de corrida ou de fuga.",
-    "habilidades.equilibrio e especialidades.equilibrio: 1 mais a Especialidade natural (galhos) +2, sem medida de salto ou de queda; leitura do \"arborícola, salta e escala\" (ADW), provisória (D-174).",
-    "habilidades.musculatura: 2, animal comum; o feito é de técnica, e o peso erguido novo já o cobre sem subir a Musculatura (decisão 12, D-174)."
   ]
 }

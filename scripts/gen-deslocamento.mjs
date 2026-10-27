@@ -469,7 +469,8 @@ for (const m of TODAS) {
   const fonteSite = vistaCriatura(JSON.parse(fs.readFileSync(p(`bestiario/${m.id}.json`), 'utf8')));
   const daFicha = fonteSite.v3 ? (fonteSite.deslocamentoDeclarado ?? (passoDaPeca(fonteSite.locomocao) ? tresDoPasso(passoDaPeca(fonteSite.locomocao)) : null)) : null;
   const v = daFicha ? { batalha: daFicha.batalha, arranque: daFicha.arranque, corrida: daFicha.corrida } : tres(ft);
-  if (v.batalha < 1 || v.batalha > 20) throw new Error(`batalha fora da faixa em ${m.id}: ${v.batalha} (${ft} ft)`);
+  if (![v.batalha, v.arranque, v.corrida].every(n => Number.isFinite(n) && n >= 0)) throw new Error(`deslocamento inválido em ${m.id}`);
+  if (!daFicha && (v.batalha < 1 || v.batalha > 20)) throw new Error(`batalha fora da faixa em ${m.id}: ${v.batalha} (${ft} ft)`);
   saida[m.id] = { ...v, ft, origem: daFicha ? 'ficha' : f ? 'fonte' : 'tabela', ...(f?.nota ? { nota: f.nota } : {}) };
   if (daFicha) nFicha++; else if (f) nFonte++; else nTabela++;
 }

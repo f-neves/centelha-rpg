@@ -1,39 +1,30 @@
 {
-  "ordem": 53,
   "id": "harpia",
   "idAntigo": "mon-harpia",
   "nome": "Harpia",
   "nomeIngles": "Harpy",
-  "categoria": "Humanoide monstruoso",
-  "categoriaLegada": "Monstro",
+  "categoria": "humanoide-monstruoso",
   "papel": "soldado",
-  "conceito": "humanoide monstruoso Grande",
-  "descricao": "Mulher-ave de asas largas que faz ninho em penhascos e ruínas à beira-mar. Atrai viajantes e marinheiros com um canto que cativa, e o bando despedaça a presa hipnotizada com garras e dentes.",
-  "tags": [
-    "monstro",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/harpia_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "1,6 m de altura",
-    "peso": "55 kg",
-    "largura": 0.4,
-    "altura": 1.6,
-    "envergadura": 4.5
-  },
-  "locomocao": {
-    "voo": 8,
-    "terra": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 5
-  },
+  "ameaca": 3,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé; voadora",
+    "apoio": "bipede",
+    "altura": 1.6,
+    "largura": 0.4,
+    "profundidade": 0.2,
+    "comprimento": null,
+    "envergadura": 4.5,
+    "massa": 55,
+    "area": 3.03,
+    "posturaDoTamanho": "asas abertas",
+    "segundoTamanho": {
+      "area": 0.57,
+      "posturaDoTamanho": "de pé, asas fechadas"
+    }
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 5,
     "vigor": 2,
@@ -44,8 +35,9 @@
     "perspicacia": 3,
     "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 1,
     "furtividade": 2,
@@ -53,84 +45,169 @@
     "integridade": 4,
     "oratoria": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "canto": 3,
-    "voo": 3
+    "voo": 3,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "penhasco e ruína",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "rasante",
-      "valor": 2,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "penhasco e ruína",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "rasante",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "voo": {
+      "batalha": 8
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Garras",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "pes-de-garra",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
+    {
+      "nome": "Canção cativante",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 6, cantando; mantém cantando a cada ação",
+      "duracao": "enquanto ela cantar, e mais 6 Ticks",
+      "alcance": "até onde o canto é ouvido, cerca de 90 m",
+      "area": "todos os que ouvem, menos as harpias",
+      "efeito": "quem falha fica cativado: anda até ela pelo caminho mais curto, ignorando perigos (não entra em fogo nem em abismo sem testar de novo), e não age contra ela; quem é atacado se solta",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Canto dela; quem passa fica imune a esta canção até o fim da cena",
+      "limiteDeUso": "uma vez por cena"
+    },
     {
       "nome": "Feitiçaria",
-      "descricao": "poder natural (base Fascinação 1): Ativação: no lugar da canção, uma ação, Velocidade 6. Duração: até o fim da próxima ação do alvo. Alcance: 18 m. Área: um alvo. Efeito: uma pequena ilusão ou um comando curto; o alvo perde a próxima ação ou obedece a uma palavra. Dano: nenhum. Resistência: mente, contra Influência + Canto dela. Limite de uso: a canção ou a feitiçaria, uma vez por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 1
+      },
+      "ativacao": "no lugar da canção, uma ação, Velocidade 6",
+      "duracao": "até o fim da próxima ação do alvo",
+      "alcance": "18 m",
+      "area": "um alvo",
+      "efeito": "uma pequena ilusão ou um comando curto (\"vem\", \"larga\", \"olha\"); o alvo perde a próxima ação ou obedece a uma palavra",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Canto dela",
+      "limiteDeUso": "a canção ou a feitiçaria, uma vez por cena"
     },
     {
       "nome": "Garras aviformes",
-      "descricao": "os dois pés de garra contam como par de armas leves e atacam pela empunhadura dupla: um golpe por pé na mesma ação, os dois a −1d6.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "empunhadura-dupla"
     },
     {
       "nome": "Voo rasante",
-      "descricao": "Voo 3, em baixa altura, com a Especialidade de Briga (rasante) +2.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Ninho no penhasco",
-      "descricao": "as Especialidades naturais de Furtividade e Prontidão (penhasco e ruína) +2.",
-      "classe": "livro"
-    },
-    {
-      "nome": "bando do penhasco",
-      "descricao": "canta para atrair a presa, as outras cercam e despedaçam o cativado com as garras; foge para o alto se o canto falha.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão: de ave, de longe. · audição e olfato: os de um humano."
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "Voo; em baixa altura"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "bando do penhasco",
+      "formas": "todas",
+      "texto": "canta para atrair a presa, as outras cercam e despedaçam o cativado com as garras; foge para o alto se o canto falha."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "de ave, de longe",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "simples, cruel e vaidosa",
+    "tracos": "torso e rosto de mulher, asas de penas sujas no lugar dos braços, pernas e garras de ave de rapina, cabelo emaranhado"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em bando, típico 3 a 8",
+    "atividade": "diurno",
+    "dieta": "carnívora",
+    "caca": "atrai com o canto e despedaça",
+    "dianteDeGente": "atrai, cerca e mata"
+  },
+  "ecologia": {
+    "terreno": [
+      "litoral",
+      "montanha",
+      "ruínas"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Mulher-ave de asas largas que faz ninho em penhascos e ruínas à beira-mar. Atrai viajantes e marinheiros com um canto que cativa, e o bando despedaça a presa hipnotizada com garras e dentes.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Caça em bandos usando o canto encantador para atrair viajantes e marinheiros para perto, então cerca e despedaça a presa hipnotizada com garras e dentes. Social: em bando, típico 3 a 8."
+      "texto": "Caça em bandos usando o canto encantador para atrair viajantes e marinheiros para perto, então cerca e despedaça a presa hipnotizada com garras e dentes."
     },
     {
       "titulo": "Hábitos",
@@ -143,86 +220,36 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Nos portos de Mére e nas costas ásperas do Neck, marinheiros confundem seu grito com os horrores de crânio de ave que se conta terem escapado da Fenda, e poucos se dão ao trabalho de corrigir o engano."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande no ar, Média no chão, 31 PV, Impacto 4, Corte e Perfuração 2. Esquiva 14, Bloqueio 10. Duas garras por ação a −1d6 (6,5 cada). Uma vez por cena canta: quem ouve e falha anda até ela sem se defender. Voa a 8."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Coast",
-      "Mountain",
-      "Ruins"
-    ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "Habilidades notáveis: Oratória 2, Furtividade 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Harpia",
-    "cr": "4",
-    "tipo": "humanoide monstruoso Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 12,
-      "des": 17,
-      "con": 10,
-      "int": 7,
-      "sab": 12,
-      "car": 17
-    },
-    "pericias": [
-      "Oratória 2",
-      "Furtividade 2"
-    ],
-    "nota": "Canção cativante (Su): Centelha 2.",
-    "deslocamento": {
-      "ft": 80,
-      "origem": "fonte",
-      "nota": "voo 80; em terra 20, e a harpia caça no ar"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "proezaFutura": [
-    {
-      "caminho": "beleza-cativante"
-    }
+  "imagens": [
+    "bestiario/harpia_criatura.webp"
   ],
-  "v3": {
-    "pv": 31,
-    "esquiva": 14,
-    "bloqueio": 10,
-    "defesa": 14,
-    "defesaMental": 17,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 2,
-      "perfuracao": 2
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 109.04,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 3,
-        "corrida": 5
-      },
-      "voo": {
-        "batalha": 8
-      }
-    }
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`tamanho`: Grande de asas abertas, Médio de pé **[extrapolação]** na largura da asa",
-    "`compaixão`: 1; o site tinha 2 **[provisório]**",
-    "`canção cativante`, `feitiçaria`: números sugeridos pela ficha (D-197)"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Canção cativante",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Feitiçaria",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "O corpo, 0,72 × 0,889² = 0,57 m²; as asas, (4,5 − 0,40) × 0,6 m de largura média = 2,46 m²  na largura da asa"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Comportamento)"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    }
   ]
 }

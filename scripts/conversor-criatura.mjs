@@ -26,6 +26,7 @@ const M = await carregarTS('src/lib/motor.ts');
 const UN = { g: 0.001, kg: 1, t: 1000 };
 const TAMANHOS = 'Minúsculo|Miúdo|Pequeno|Médio|Grande|Enorme|Imenso|Colossal';
 const ARMAS = dado('armas.json').filter((a) => a.arma);
+const IDS_ANTIGOS = dado('ids-antigos.json');
 const ARMADURAS = new Set(dado('armaduras.json').filter((a) => a.armadura).map((a) => a.id));
 const ESCUDOS = new Set(dado('escudos.json').filter((a) => a.escudo).map((a) => a.id));
 const ARTES = new Set(dado('artes.json').map((a) => a.id));
@@ -78,6 +79,7 @@ export function converterFicha(texto, { site = null } = {}) {
   if (ida && !/^não|^nenhum/.test(ida)) {
     const antigo = ida.match(/^[a-z0-9-]+/)?.[0];
     if (!antigo) para('ID antigo fora do formato');
+    else if (IDS_ANTIGOS[antigo] && IDS_ANTIGOS[antigo] !== c.id) avisos.push(`id antigo ${antigo} pertence a ${IDS_ANTIGOS[antigo]}; a referência da ficha não cria outro redirecionamento`);
     else if (antigo !== c.id) c.idAntigo = antigo;
   }
   c.nome = jogo(campo(I, 'Nome'));
@@ -181,7 +183,7 @@ export function converterFicha(texto, { site = null } = {}) {
     const de = numBR(fx[1]) * UN[fx[2] || fx[4]], ate = numBR(fx[3]) * UN[fx[4]];
     if (kg > ate) corpo.linhaPV = 'abaixo'; else if (kg <= de) corpo.linhaPV = 'acima';
   }
-  if (/^Por quadrado cheio/.test(pvb)) lacuna('enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)');
+  if (/^Por quadrado cheio/.test(pvb)) para('enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)');
   const carga = campo(MV, 'Carga') || '';
   const cm = carga.match(/\*\*Leve ([\d.,]+) kg\*\*/);
   if (cm && /medid/.test(carga)) corpo.cargaMedida = numBR(cm[1]);
@@ -327,8 +329,9 @@ export function converterFicha(texto, { site = null } = {}) {
     const np = String(r['Nível de Perfuração'] ?? r['Nível'] ?? '').match(/N(\d)/);
     a.nivelPerfuracao = np ? Number(np[1]) : null;
     a.acerto = inteiro(r['Acerto']) ?? 0;
-    const bl = String(r['Bloqueia como arma'] ?? '').match(/sim\s*\(([+−-]?\d+)\)/);
-    a.bloqueiaComoArma = bl ? inteiro(bl[1]) : null;
+    const bloqueia = String(r['Bloqueia como arma'] ?? '').trim();
+    const bl = /^sim\b/i.test(bloqueia) ? bloqueia.match(/\+\s*(\d+)/) : null;
+    a.bloqueiaComoArma = bl ? Number(bl[1]) : null;
     return a;
   };
   c.ataques = (T['Ataques'] || []).filter((r) => { const n = semMarcas(r['Nome'] ?? r['Ataque'] ?? ''); return n && n !== 'Nome' && n !== 'Ataque'; })

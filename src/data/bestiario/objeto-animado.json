@@ -97,12 +97,6 @@
       "efeito": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo"
     },
     {
-      "nome": "casco resistente",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "resistência a Perfuração (metade do dano)"
-    },
-    {
       "nome": "formas variadas",
       "formas": "todas",
       "classe": "sem regra ainda",

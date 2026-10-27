@@ -91,8 +91,7 @@
       "nome": "Duas lâminas",
       "formas": "todas",
       "classe": "livro",
-      "regra": "empunhadura-dupla",
-      "texto": "(`combate.md`): um golpe por mão na mesma ação, as duas a −1d6, cada uma com o próprio acerto e dano"
+      "regra": "empunhadura-dupla"
     },
     {
       "nome": "Ataque furtivo",

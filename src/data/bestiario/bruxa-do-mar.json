@@ -106,12 +106,12 @@
         "nivel": 2
       },
       "ativacao": "uma ação, Velocidade 6, encarando o alvo",
-      "duracao": "a paralisia, 12 Ticks; a maldição, até o fim do dia",
+      "duracao": "a maldição, até o fim do dia",
       "alcance": "9 m, à vista dela",
       "area": "um alvo",
-      "efeito": "quem falha fica paralisado de terror (não age nem se move) e amaldiçoado; se ela o fere de novo enquanto a maldição dura, ele cai em coma (Inconsciente por 1d6 dias)",
+      "efeito": "o alvo fica amaldiçoado; se ela o fere de novo enquanto a maldição dura, ele cai em coma (Inconsciente por 1d6 dias)",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Ocultismo dela; quem passa não fica paralisado, mas a maldição pega",
+      "resistencia": "mente, contra Influência + Ocultismo dela; a maldição pega também em quem passa",
       "limiteDeUso": "três vezes por cena"
     },
     {
@@ -158,7 +158,13 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
-      "texto": "as duas mãos de garra contam como par de armas leves e atacam pela empunhadura dupla (`combate.md`), os dois golpes a −1d6"
+      "regra": "empunhadura-dupla"
+    },
+    {
+      "nome": "paralisia do olho maligno",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o terror trava o corpo de quem encara o olhar"
     }
   ],
   "comoLuta": [

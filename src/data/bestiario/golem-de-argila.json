@@ -156,12 +156,6 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "efeito": "a maior parte das Artes não o afeta"
-    },
-    {
-      "nome": "casco de argila",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "resistência a Corte, Perfuração e Fogo (metade do dano)"
     }
   ],
   "comoLuta": [

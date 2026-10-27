@@ -152,12 +152,6 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "efeito": "a maior parte das Artes não o afeta"
-    },
-    {
-      "nome": "corpo de gelo vivo",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "resistência a Perfuração (metade do dano)"
     }
   ],
   "comoLuta": [

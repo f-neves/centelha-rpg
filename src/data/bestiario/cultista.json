@@ -103,8 +103,7 @@
       "arte": {
         "id": "morte",
         "nivel": 1
-      },
-      "texto": "Dreno; toque que tira vida (dano que a armadura não para) e cura o cultista em metade do que passou; o alvo aguenta com Vigor + Resistência"
+      }
     },
     {
       "nome": "Maldição do apodrecer",
@@ -113,8 +112,7 @@
       "arte": {
         "id": "morte",
         "nivel": 2
-      },
-      "texto": "Definhar; a Força e o Vigor do alvo contam um nível abaixo por nível investido, com o dano, a carga, o PV e a Absorção que vêm deles; o alvo aguenta com Vigor + Resistência"
+      }
     },
     {
       "nome": "Podridão",
@@ -123,8 +121,7 @@
       "arte": {
         "id": "morte",
         "nivel": 1
-      },
-      "texto": "apodrece corda, couro, madeira e comida, sem ferir criatura viva"
+      }
     },
     {
       "nome": "Ritual da morte",
@@ -136,7 +133,7 @@
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação"
+      "texto": "o traço social do Humano"
     }
   ],
   "comoLuta": [

@@ -128,12 +128,6 @@
       "formas": "todas",
       "classe": "livro",
       "texto": "a Mordida da tabela, no lugar do golpe de machado (um ataque por ação)"
-    },
-    {
-      "nome": "Alerta",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "Prontidão 1"
     }
   ],
   "comoLuta": [
@@ -222,6 +216,10 @@
     {
       "campo": "ataques.Mordida.nivelPerfuracao",
       "motivo": "\"Mordida selvagem\" (site). Mordida de predador grande, o golpe que pede o corpo atrás (Média; regra-construcao §7). N1 pela mordida de hiena, acima do corte de N0 . Golpe de boca: Força × 1. Jogada: Força 4 + Briga 2"
+    },
+    {
+      "campo": "ataques.Mordida",
+      "motivo": "N1 pela mordida de hiena, sem medida no pacote"
     }
   ]
 }

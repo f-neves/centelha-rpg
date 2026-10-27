@@ -92,19 +92,13 @@
       "formas": "todas",
       "classe": "livro",
       "regra": "horda",
-      "texto": "(`combate.md`). O camponês é capanga Comum: na horda, 5 de PV por membro, sem o piso de 25, e a Defesa de um capanga −2. Cada ataque do esquadrão rola o pool de um camponês + Magnitude d6 no acerto e no dano"
-    },
-    {
-      "nome": "Sem treino",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "as Habilidades de luta em 0 e 1 já dão o acerto e as Defesas mínimas"
+      "texto": "o camponês é capanga Comum"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação"
+      "texto": "o traço social do Humano"
     }
   ],
   "comoLuta": [

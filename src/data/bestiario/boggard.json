@@ -141,18 +141,6 @@
       "dano": "nenhum",
       "resistencia": "nenhum",
       "limiteDeUso": "nenhum"
-    },
-    {
-      "nome": "Fôlego longo",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "Vigor + Resistência, com a Especialidade natural (prender a respiração) +3"
-    },
-    {
-      "nome": "Nadador ágil",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "Natação 3 e o nado do site"
     }
   ],
   "comoLuta": [

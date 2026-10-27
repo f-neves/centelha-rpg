@@ -102,8 +102,7 @@
       "arte": {
         "id": "fogo",
         "nivel": 4
-      },
-      "texto": "Bola de Fogo, explosão em área de 3d6 que pega quatro inimigos juntos; quem se esquiva leva metade; por 4 de Mana"
+      }
     },
     {
       "nome": "Raio de energia",
@@ -112,8 +111,7 @@
       "arte": {
         "id": "fogo",
         "nivel": 1
-      },
-      "texto": "Faísca, dardo flamejante de 1d6 num alvo, por 1 de Mana (o \"ignora cobertura leve\" do site não tem regra no livro e sai; perda anotada no relato)"
+      }
     },
     {
       "nome": "Labareda",
@@ -122,8 +120,7 @@
       "arte": {
         "id": "fogo",
         "nivel": 3
-      },
-      "texto": "jato de fogo em leque, 2d6, por 3 de Mana"
+      }
     },
     {
       "nome": "Escudo de força",
@@ -132,26 +129,13 @@
       "arte": {
         "id": "forcas",
         "nivel": 2
-      },
-      "texto": "Anteparo, escudo invisível que soma Absorção contra tudo o que vem de fora enquanto durar; Repelir empurra e derruba quem chega perto"
-    },
-    {
-      "nome": "Concentração arcana",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "ao sofrer dano enquanto sustenta uma Arte, Compostura + Concentração contra Dificuldade 10 para segurar"
-    },
-    {
-      "nome": "Grande reserva arcana",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "Mana 14"
+      }
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação"
+      "texto": "o traço social do Humano"
     }
   ],
   "comoLuta": [

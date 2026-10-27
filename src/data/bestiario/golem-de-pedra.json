@@ -129,12 +129,6 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "efeito": "a maior parte das Artes não o afeta; a magia que molda a pedra o afeta de outro jeito, e pode deixá-lo lento ou restaurar o corpo inteiro"
-    },
-    {
-      "nome": "casco pétreo",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "resistência a Corte e Perfuração (metade do dano). Sem regra ainda: só a arma de adamantina o fere por inteiro"
     }
   ],
   "comoLuta": [

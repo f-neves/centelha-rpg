@@ -1,31 +1,27 @@
 {
-  "ordem": 193,
   "id": "orca",
   "idAntigo": "mon-orca",
   "nome": "Orca",
   "nomeIngles": "Orca",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Enorme",
-  "descricao": "Caça em grupo, com técnica própria de cada população, passada entre gerações. O tubarão-branco foge quando ela chega.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/orca_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "5,95 m de comprimento, 1,39 m de altura",
-    "peso": "3.900 kg",
-    "comprimento": 5.95,
-    "largura": 1.29,
-    "altura": 1.39
-  },
-  "locomocao": {
-    "natacao": 8
-  },
+  "ameaca": 4,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "nadador",
+    "apoio": "outro",
+    "altura": 1.39,
+    "largura": 1.29,
+    "profundidade": null,
+    "comprimento": 5.95,
+    "comprimentoSemCauda": 5.16,
+    "caudaGrossa": false,
+    "massa": 3900,
+    "area": 6.51,
+    "posturaDoTamanho": "de lado"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 10,
     "destreza": 2,
     "vigor": 6,
@@ -36,8 +32,9 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 2,
     "furtividade": 1,
@@ -47,85 +44,148 @@
     "empatia": 2,
     "sobrevivencia": 4
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
     "natacao": 3,
+    "voo": 0,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "ecolocalização",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "resistencia",
-      "foco": "frio",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "caça em grupo",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "ecolocalização",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "resistencia": [
+      {
+        "foco": "frio",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "caça em grupo",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 4,
+  "vontade": 4,
   "aparencia": 6,
+  "deslocamento": {
+    "nado": {
+      "batalha": 8
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 2,
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 2,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "mordida",
-      "classe": "livro"
-    },
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "tapa de cauda",
-      "descricao": "atordoa peixe com a cauda; não é ataque contra presa grande.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "atordoa peixe com a cauda; não é ataque contra presa grande."
     },
     {
       "nome": "virar o tubarão",
-      "descricao": "vira o tubarão de barriga para cima, e ele fica imóvel.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "vira o tubarão de barriga para cima, e ele fica imóvel."
     },
     {
       "nome": "onda em grupo",
-      "descricao": "em grupo, faz a onda que derruba a presa de uma placa de gelo.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "em grupo, faz a onda que derruba a presa de uma placa de gelo."
     },
     {
       "nome": "encalhe proposital",
-      "descricao": "encalha na praia para pegar a presa e volta à água.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "ecolocalização: Prontidão (ecolocalização) +3, Especialidade natural; alcance. · visão: boa acima e abaixo da água; sem número, sem Especialidade. · audição: \"excelente\"; sem número."
+      "formas": "todas",
+      "texto": "encalha na praia para pegar a presa e volta à água."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "ecolocalização",
+      "descricao": "Prontidão (ecolocalização) +3 , Especialidade natural (era +4, bônus fixo de sentido); alcance (Wikipédia)",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão",
+      "descricao": "boa acima e abaixo da água (Wikipédia); sem número, sem Especialidade",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição",
+      "descricao": "\"excelente\" (Wikipédia); sem número",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar (mamífero)",
+    "prendeRespiracao": "de tempo; mergulha de 20 a 60 m, até 300 m caçando (ADW)",
+    "mente": "animal",
+    "tracos": "gordura de 7,6 a 10 cm; temperatura do corpo de 36 a 38 °C (Wikipédia); a fêmea vive \"até ao menos 90\" anos (NOAA); dialetos de chamado próprios de cada grupo (Wikipédia)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "bando",
+    "atividade": "",
+    "dieta": "carnívoro",
+    "caca": "perseguição",
+    "dianteDeGente": "evita"
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático"
+    ],
+    "clima": [
+      "frio"
+    ]
+  },
+  "descricao": "Caça em grupo, com técnica própria de cada população, passada entre gerações. O tubarão-branco foge quando ela chega.",
   "lore": [
     {
       "titulo": "A maior das golfinhas",
@@ -134,85 +194,36 @@
     {
       "titulo": "Caçadora social",
       "texto": "Vive e caça em grandes manadas, coordenando ataques contra presas muito maiores que um indivíduo sozinho."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: bando."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Enorme: o humano Médio acerta com +6 e não apara os golpes dela pelo porte; a Força 10 também tira o Bloqueio de quem tem Força 5 ou menos. A mordida faz 17 em média e fura até N2; o agarrão tira 20 por manutenção. 65 PV e Couraça nível 2 (pele sobre gordura grossa); o quanto ela tira fica para depois. Aguenta a água gelada (+2 contra frio). Caça em grupo, e o grupo faz o que uma só não faz (as ondas, o cerco)."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Water"
-    ],
-    "clima": [
-      "Cold"
-    ]
+  "imagens": [
+    "bestiario/orca_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Orca",
-    "cr": "5",
-    "tipo": "animal Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 27,
-      "des": 15,
-      "con": 16,
-      "int": 2,
-      "sab": 15,
-      "car": 6
+  "revisao": [
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,34 × 1,0353 = 1,387 . Antes: Era 1,4 m, a fêmea de 6 m (da Bestiarista-5: a proporção do tubarão-branco, 1,1 ÷ 4,7; nenhuma fonte mediu). Escalado pelo cubo da massa: 1,4 × (3.514,75 ÷ 4.000)^(1/3) = 1,4 × 0,958 = 1,34 m"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 80,
-      "origem": "fonte",
-      "nota": "nado 80: sem velocidade em terra"
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 5,75 × 1,0353 = 5,953 . Antes: Era 6 m, a fêmea de 4 t (dentro de 5 a 7 m da fêmea, Wikipédia). Escalado pelo cubo da massa: 6 × 0,958 = 5,75 m. Os meios das faixas de comprimento médio de orcas selvagens da Islândia (SeaWorld, dados do tipo 1 do Atlântico Norte) são 6,25 m no macho e 5,35 m na fêmea: média 5,8 m, que confere"
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 65,
-    "esquiva": 6,
-    "bloqueio": 4,
-    "defesa": 6,
-    "defesaMental": 9,
-    "defesaSocial": 12,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 6,
-      "perfuracao": 6
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 4,98 × 1,0353 = 5,156 . Antes: Era 5,2 m (proporção do tubarão-branco, 4,0 ÷ 4,7), escalado pelo cubo da massa: 5,2 × 0,958"
     },
-    "couracaNivel": 2,
-    "pesoErguido": 1018.93,
-    "deslocamento": {
-      "nado": 8
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,25 × 1,0353 = 1,294 . Antes: Era 1,3 m (estimativa da Bestiarista-5 para a fêmea), escalado pelo cubo da massa: 1,3 × 0,958"
+    },
+    {
+      "campo": "ataques.Mordida.nivelPerfuracao",
+      "motivo": "7 + 10; era 2d6 + 14, média 21. Seção 7: a mordida que agarra e rasga, Força × 1 (boca). De 40 a 52 dentes cônicos e encaixados, de cerca de 7,6 cm (Doheny State Beach, divulgação). N2 : nenhuma força de mordida achada; mata tubarão-branco e baleia, e fica com o mosassauro (N2), acima do tubarão-branco (N1). O Nível do ataque é da arma, e não da Couraça."
     }
-  },
-  "notasObservacao": [
-    "pesoErguido: 1.018,93 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.056,36 kg pelo `calc6.mjs`, provisório (era 1.011,1 kg, a fêmea de 4 t). A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar.",
-    "carga: não se aplica (nadador).",
-    "velocidade: congelada (decisão 23). O nado de 8,3 m/s fica 8% abaixo da conta pela velocidade relativa de Fish 1998, 38% abaixo dos 48 km/h do SeaWorld e 46% abaixo dos 15,5 m/s da Wikipédia, os dois sem método.",
-    "alvo: Enorme a 1% do corte de 6 m² (6,07 m²), dentro do erro do método; depende da altura e da largura, estimadas pela Bestiarista-5 (D-174). A fêmea típica (2.494,5 kg, 4,83 m²) seria Grande.",
-    "dimensoes.altura, comprimentoSemCauda e largura: estimadas pela Bestiarista-5 para a fêmea de 6 m [extrapolação, sem dado] e escaladas pelo cubo da massa (× 0,958) para o adulto típico.",
-    "fonte: a massa de 3.514,75 kg é a média simples dos meios das faixas da fêmea e do macho na ficha de fatos do SeaWorld, que não diz se são animais selvagens; média selvagem dos dois sexos numa só fonte não foi achada. Era 4.000 kg, só pela Wikipédia (\"3 a 4 t\" da fêmea) (D-174).",
-    "forca: 10 pela comparação com o elefante da mesma massa e com o mamute (13), sem mordida medida (D-158, D-174).",
-    "inteligencia: 2 pela quinta rodada: o encalhe intencional ensinado aos filhotes (López e López 1985; Guinet 1991; Guinet e Bouvier 1995, conferidos pela bibliografia de McInnes e colegas 2020); provisória (D-174).",
-    "empatia: 2, linha nova, pela caça coordenada; sem medida de leitura de humano. Provisória (D-174).",
-    "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua; o levantamento propunha 4 pelo nado de 160 km por dia, que ficou na nota de pesquisa (jornada).",
-    "especialidade Resistência (frio) +2: toma o lugar da Absorção extra de gordura (Corte 1, Impacto 1) de hoje.",
-    "especialidade Briga (caça em grupo) +1: provisória (D-174); vale com o grupo.",
-    "ataques: o tapa de cauda ficou em Manobras, como texto. Como ataque (cauda, × 2) daria 2d6 + 20 = 27; a evidência real é só atordoar peixe. Escolha da Bestiarista-5, para os nadadores ficarem iguais (D-174).",
-    "ataques.mordida.nivel: N2 sem força de mordida medida [extrapolação], pelo mosassauro.",
-    "couraca: nível 2 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "jornada (nota de pesquisa, não é regra): nada até 160 km por dia (ADW) [medido, sem método na fonte]; caça baleias por exaustão (Wikipédia); cruzeiro ótimo de 2,6 a 3 m/s, média observada de 1,6 m/s (Williams e Noren 2009)."
   ]
 }

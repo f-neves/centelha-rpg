@@ -151,18 +151,6 @@
       "dano": "nenhum",
       "resistencia": "nenhum",
       "limiteDeUso": "nenhum"
-    },
-    {
-      "nome": "Sentidos aquáticos",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "Prontidão, com a Especialidade natural (vibração na água) +3"
-    },
-    {
-      "nome": "Nadador nato",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "Natação 3 e o nado do site"
     }
   ],
   "comoLuta": [

@@ -1,38 +1,29 @@
 {
-  "ordem": 124,
   "id": "naga-espirita",
   "idAntigo": "mon-naga-espirita",
   "nome": "Naga Espírita",
   "nomeIngles": "Spirit Naga",
-  "categoria": "Aberração",
-  "categoriaLegada": "Aberração",
+  "categoria": "aberracao",
   "papel": "chefe",
-  "conceito": "aberração Médio",
-  "descricao": "Serpente longeva e arrogante que se enrosca sobre tesouros em templos afundados e ruínas de civilizações que ela viu cair. Encanta com o olhar, cospe veneno e conjura fogo e ilusões antes mesmo de pensar em negociar.",
-  "tags": [
-    "aberracao",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/naga-espirita_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "6 m de comprimento, 0,34 m de altura",
-    "peso": "320 kg",
-    "comprimento": 6,
-    "largura": 0.34,
-    "altura": 0.34
-  },
-  "locomocao": {
-    "terra": 4
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
+  "corpo": {
+    "postura": "serpente; luta enroscada sobre o tesouro, e se ergue para o bote",
+    "apoio": "outro",
+    "altura": 0.34,
+    "largura": 0.34,
+    "profundidade": null,
+    "comprimento": 6,
+    "massa": 320,
+    "area": 0.54,
+    "posturaDoTamanho": "enroscada",
+    "segundoTamanho": {
+      "area": 1.51,
+      "posturaDoTamanho": "erguida ou esticada, de lado"
+    }
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 6,
     "destreza": 3,
     "vigor": 6,
@@ -43,8 +34,9 @@
     "perspicacia": 5,
     "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 1,
     "furtividade": 2,
@@ -55,108 +47,173 @@
     "empatia": 2,
     "sociabilidade": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "natacao": 3,
     "disparo": 3,
     "acerto-arcano": 5,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "na água ou na vegetação",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "emboscada",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "ocultismo",
-      "foco": "magia de antes da Supressão",
-      "valor": 2,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "na água ou na vegetação",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "prontidao": [
+      {
+        "foco": "emboscada",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "ocultismo": [
+      {
+        "foco": "magia de antes da Supressão",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 10,
+  "vontade": 10,
   "aparencia": 1,
-  "ataques": [
-    {
-      "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 0,
-      "ticks": 6,
-      "classe": "media"
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
     }
-  ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "arte": {
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {
     "fascinacao": 5,
     "fogo": 4,
     "ofuscacao": 3,
     "cura": 1
   },
-  "mana": 20,
-  "habilidades": [
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "parte": "presas",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    }
+  ],
+  "habilidadesEspeciais": [
     {
       "nome": "Mordida venenosa",
-      "descricao": "Mordida: a regra do veneno, com o veneno da linha Veneno e doença.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Mordida",
+      "texto": "a regra do veneno, com o veneno da linha Veneno e doença"
     },
     {
       "nome": "Cuspe venenoso",
-      "descricao": "boca: Ativação: uma ação, Velocidade 6; ataque a distância, Vigor + Disparo (Vigor 6 + Disparo 3 + 2 × o menor entre Centelha 5 e Disparo 3, 6). Duração: a do veneno. Alcance: 9 m (site). Área: um alvo. Efeito: o cuspe mira os olhos e a boca; mucosa exposta conta como sangue, e o veneno da linha Veneno e doença entra. Dano: nenhum além do veneno. Resistência: esquiva, contra o ataque; corpo, pela regra do veneno. Limite de uso: três vezes por cena, recarga de 1 hora (site).",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6; ataque a distância, Vigor + Disparo (Vigor 6 + Disparo 3 + 2 × o menor entre Centelha 5 e Disparo 3, 6)",
+      "duracao": "a do veneno",
+      "alcance": "9 m",
+      "area": "um alvo",
+      "efeito": "o cuspe mira os olhos e a boca; mucosa exposta conta como sangue (`venenos.json`), e o veneno da linha Veneno e doença entra",
+      "dano": "nenhum além do veneno",
+      "resistencia": "esquiva, contra o ataque; corpo, pela regra do veneno",
+      "limiteDeUso": "três vezes por cena, recarga de 1 hora"
     },
     {
       "nome": "Olhar encantador",
-      "descricao": "poder natural (base Fascinação 3, a do site): Ativação: uma ação, Velocidade 5, contra quem cruza o olhar com ela. Duração: até o fim da cena. Alcance: 9 m, à vista. Área: um alvo. Efeito: o alvo fica Dominado e obedece a ela. Dano: nenhum. Resistência: mente, contra Influência 5 + Persuasão 3 + 2 × o menor entre Centelha 5 e Persuasão 3 (6) = 14 mais a rolagem; quem desvia o rosto não é tocado, mas ataca a −4 enquanto não olhar (site). Limite de uso: uma tentativa por alvo por cena (site).",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Feitiços",
-      "descricao": "Artes do livro: Fascinação até o 5 (Ilusão Plena), Fogo até o 4 (Bola de Fogo), Ofuscação até o 3 (Manto) e Cura até o 1 (Sarar), com 20 de Mana."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 5, contra quem cruza o olhar com ela",
+      "duracao": "até o fim da cena",
+      "alcance": "9 m, à vista",
+      "area": "um alvo",
+      "efeito": "o alvo fica Dominado e obedece a ela",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência 5 + Persuasão 3 + 2 × o menor entre Centelha 5 e Persuasão 3 (6) = 14 mais a rolagem; quem desvia o rosto não é tocado, mas ataca a −4 enquanto não olhar",
+      "limiteDeUso": "uma tentativa por alvo por cena"
     },
     {
       "nome": "Imune ao próprio veneno",
-      "descricao": "o veneno de naga não a pega.",
-      "classe": "sem regra ainda"
-    },
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o veneno de naga não a pega"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "rainha das ruínas",
-      "descricao": "enroscada sobre o tesouro, encanta o mais forte com o olhar, abre com a Bola de Fogo e o cuspe, e só negocia quando lhe convém.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "sentidos aguçados, difícil de emboscar (site); Prontidão (emboscada) +2."
+      "formas": "todas",
+      "texto": "enroscada sobre o tesouro, encanta o mais forte com o olhar, abre com a Bola de Fogo e o cuspe, e só negocia quando lhe convém."
     }
   ],
-  "venenos": [
+  "sentidos": [
     {
-      "nome": "Veneno no jogo",
-      "texto": "Peçonha de naga · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida e pelo Cuspe venenoso. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor como o atributo que o \"dano contínuo\" do site tira; quem está com o veneno ativo fica Abalado (site) até o pool zerar."
+      "nome": "sentidos",
+      "descricao": "sentidos aguçados, difícil de emboscar; Prontidão (emboscada) +2",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "a de uma serpente grande",
+    "camuflagem": "na água e na vegetação; Furtividade (na água ou na vegetação) +2",
+    "mente": "inteligente, longeva, arrogante",
+    "tracos": "serpente de escamas escuras com cabeça de traços humanos e olhar fixo"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinha, com poucos servos ou cultistas",
+    "atividade": "qualquer hora",
+    "dieta": "carnívora",
+    "caca": "ataca com veneno e feitiço quem entra no covil",
+    "dianteDeGente": "ataca antes de negociar; negocia quando convém"
+  },
+  "ecologia": {
+    "terreno": [
+      "selva",
+      "pântano",
+      "aquático"
+    ],
+    "clima": [
+      "tropical"
+    ]
+  },
+  "descricao": "Serpente longeva e arrogante que se enrosca sobre tesouros em templos afundados e ruínas de civilizações que ela viu cair. Encanta com o olhar, cospe veneno e conjura fogo e ilusões antes mesmo de pensar em negociar.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Enrosca-se sobre tesouros e ruínas esquecidas, atacando com veneno e feitiços antes mesmo de considerar negociar, e só o faz quando lhe convém. Social: sozinha, com poucos servos ou cultistas."
+      "texto": "Enrosca-se sobre tesouros e ruínas esquecidas, atacando com veneno e feitiços antes mesmo de considerar negociar, e só o faz quando lhe convém."
     },
     {
       "titulo": "Hábitat",
@@ -177,81 +234,44 @@
     {
       "titulo": "Veneno e doença",
       "texto": "Veneno no jogo: Peçonha de naga · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida e pelo Cuspe venenoso. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor como o atributo que o \"dano contínuo\" do site tira; quem está com o veneno ativo fica Abalado (site) até o pool zerar."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Média enroscada, Grande erguida, 54 PV, Impacto 11, Corte e Perfuração 5. Esquiva 10, Bloqueio 6, Defesa Mental 30. Mordida de dano médio 14,5 com veneno que tira o Vigor e abala; cuspe a 9 m (três vezes por cena); olhar que domina por uma cena. Conjura com 20 de Mana: Ilusão Plena, Bola de Fogo, Manto, Sarar."
     }
   ],
-  "ecologia": {
-    "tipo": "Aberration",
-    "terreno": [
-      "Jungle",
-      "Swamp",
-      "Water"
-    ],
-    "clima": [
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/naga-espirita_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Ocultismo 4, Persuasão 3, Prontidão 4.",
-  "pendente": true,
-  "fonte": {
-    "livro": "MM 3.5",
-    "nome": "Naga Espírita",
-    "cr": "9",
-    "tipo": "aberração Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 17,
-      "des": 13,
-      "con": 17,
-      "int": 16,
-      "sab": 19,
-      "car": 17
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Cuspe venenoso",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Ocultismo 4",
-      "Persuasão 3",
-      "Prontidão 4"
-    ],
-    "nota": "Olhar encantador e conjuração: Centelha 4.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Olhar encantador",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "v3": {
-    "pv": 54,
-    "esquiva": 10,
-    "bloqueio": 6,
-    "defesa": 10,
-    "defesaMental": 30,
-    "defesaSocial": 18,
-    "absorcao": {
-      "impacto": 11,
-      "corte": 5,
-      "perfuracao": 5
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Animal comum na escala da decisão 12"
     },
-    "couracaNivel": 1,
-    "pesoErguido": 573.58,
-    "deslocamento": {
-      "terra": {
-        "batalha": 4,
-        "arranque": 6,
-        "corrida": 9
-      }
+    {
+      "campo": "corpo.altura",
+      "motivo": "O diâmetro que dá a massa do site (linha Massa). Erguida, levanta um terço do corpo"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Escamas de serpente ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 1"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
     }
-  },
-  "notasObservacao": [
-    "`tamanho`: Médio enroscada, Grande erguida ou esticada; o Tamanho principal é o da postura em que luta, enroscada sobre o tesouro (D-215, que ajusta a D-213)",
-    "`couraca`: nível 1 **[provisório]**",
-    "`veneno`: Potência 16, pool 4 de Vigor, com Abalado **[provisório]**",
-    "`ataques`: Mordida Média no lugar das \"Garras e presas\" **[provisório]**",
-    "`compaixao`: 1, o piso da régua; o site tinha 0",
-    "`cuspe venenoso`, `olhar encantador`: números sugeridos pela ficha (D-197), com os usos do site"
   ]
 }

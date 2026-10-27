@@ -142,8 +142,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mordida",
-      "regra": "derrubar",
-      "texto": "como ataque próprio. Sem regra ainda: a mesma mordida que fere pode derrubar o alvo"
+      "regra": "derrubar"
     },
     {
       "nome": "Sopro gélido",
@@ -255,11 +254,15 @@
     },
     {
       "campo": "habilidadesEspeciais.Sopro gélido",
-      "motivo": "números sugeridos pela ficha (D-197); poder natural com números da ficha (D-197), base Gelo 3 (a Rajada Gélida, cone de 2d6); o site dava \"dano de frio pesado, metade com um teste de Vigor\""
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
       "campo": "couraca",
       "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: pelagem densa de inverno sobre o couro, um acima do lobo atroz (0) . O nível fica fora da Absorção (decisoes-autor §16)"
+    },
+    {
+      "campo": "ataques.Sopro gélido",
+      "motivo": "poder natural com números da ficha (D-197), base Gelo 3 (a Rajada Gélida, cone de 2d6); o site dava \"dano de frio pesado, metade com um teste de Vigor\""
     }
   ]
 }

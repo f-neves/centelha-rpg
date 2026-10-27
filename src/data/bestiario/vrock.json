@@ -319,7 +319,7 @@
     },
     {
       "campo": "habilidadesEspeciais.Imagem espelhada",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha (D-197); o \"Atordoado\" do site virou Surdo e perder a próxima ação"
+      "motivo": "números sugeridos pela ficha (D-197); números da ficha (D-197)"
     },
     {
       "campo": "habilidades.prontidao",
@@ -336,10 +336,6 @@
     {
       "campo": "corpo.massa",
       "motivo": "230 kg, na zona de transição; robusto, fica na linha de 220 kg a 1,8 t (66 PV), e não na de baixo (52)"
-    },
-    {
-      "campo": "habilidadesEspeciais.atordoamento do grito",
-      "motivo": "Antes perdia a próxima ação; 33.3 retirou só o atordoamento."
     }
   ]
 }

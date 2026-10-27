@@ -262,11 +262,7 @@
     },
     {
       "campo": "ataques.Correntes",
-      "motivo": "O \"Golpe planar\" do site (1 dado, 5 Ticks, corte) e as \"correntes farpadas que atacam como extensões de si mesmo\": o chicote da corrente com o corpo atrás, Média (`regra-construcao.md` §7) . Até três por ação pela Rajada (Manobras). Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Regeneração 2",
-      "motivo": "Antes: 4 PV/6 Ticks por 4 de Energia. N 2 pela referência Kyton (Archives of Nethys)."
+      "motivo": "O \"Golpe planar\" do site (1 dado, 5 Ticks, corte) e as \"correntes farpadas que atacam como extensões de si mesmo\": o chicote da corrente com o corpo atrás, Média (`regra-construcao.md` §7) . Até três por ação pela Rajada (Manobras). Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8); ataque da ficha; o livro não tem corrente, e o alcance de 3 m é do corpo (D-180, ponto 19)"
     }
   ]
 }

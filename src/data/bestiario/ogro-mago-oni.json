@@ -351,10 +351,6 @@
     {
       "campo": "formas.disfarce",
       "motivo": "Mudar de forma (site): \"humano sedutor ou nobre elegante\". A mente e os números ficam os dele, como no disfarce do rakshasa e do marid"
-    },
-    {
-      "campo": "habilidadesEspeciais.Regeneração 5",
-      "motivo": "Antes: 6 PV/6 Ticks por 4 de Energia. N 5 pela referência Ogre Mage (Archives of Nethys)."
     }
   ]
 }

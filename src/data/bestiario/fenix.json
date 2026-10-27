@@ -362,10 +362,6 @@
     {
       "campo": "ataques.Bico.nivelPerfuracao",
       "motivo": "Bico em gancho com o pescoço atrás: Média, como o bico do grifo; bico grande em N1 . Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Regeneração 10",
-      "motivo": "Antes: 9 PV/6 Ticks passivos. N 10 pela referência Phoenix (Archives of Nethys)."
     }
   ]
 }

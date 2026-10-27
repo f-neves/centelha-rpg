@@ -91,25 +91,7 @@
       "nome": "Frenesi",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o Frenesi da raça (`racas.md`): entra ao falhar num teste de Temperança; em fúria ignora a penalidade de ferimento até Incapacitado, soma +2 nas ações físicas, perde 2 em Esquiva e Bloqueio e intimida como reflexo com +2 dados; duas fúrias por cena (metade do Vigor 5); ressaca ao sair"
-    },
-    {
-      "nome": "Vitalidade",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "+Vigor de PV, no Bônus de PV"
-    },
-    {
-      "nome": "Fúria de combate",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "a Força 5 da raça no dano do machado"
-    },
-    {
-      "nome": "Alerta",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "Prontidão 1"
+      "texto": "Frenesi da raça Orc"
     }
   ],
   "comoLuta": [
@@ -122,7 +104,7 @@
   "sentidos": [
     {
       "nome": "visão noturna",
-      "descricao": "enxerga sem penalidade na penumbra, mas não na escuridão total (`racas.md`)",
+      "descricao": "enxerga sem penalidade na penumbra, mas não na escuridão total",
       "formas": "todas"
     },
     {

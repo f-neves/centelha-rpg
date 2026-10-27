@@ -1,37 +1,31 @@
 {
-  "ordem": 253,
   "id": "lagarto-de-gola-gigante",
   "idAntigo": "mon-giant-frilled-lizard",
   "nome": "Lagarto-de-gola gigante",
   "nomeIngles": "Giant Frilled Lizard",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Grande",
-  "descricao": "Passa o dia na árvore e desce para pegar a presa. Ameaçado, abre a gola, escancara a boca, chia e chicoteia a cauda; se não adianta, corre de pé nas patas de trás para a árvore mais próxima.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/lagarto-de-gola-gigante_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "4 m de comprimento, 0,38 m de altura",
-    "peso": "66,2 kg",
-    "comprimento": 4,
-    "largura": 0.28,
-    "altura": 0.38
-  },
-  "locomocao": {
-    "terra": 2,
-    "escalada": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 4,
-    "corrida": 5
-  },
+  "ameaca": 4,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "corpo baixo",
+    "apoio": "quadrupede",
+    "altura": 0.38,
+    "largura": 0.28,
+    "profundidade": null,
+    "comprimento": 4,
+    "comprimentoSemCauda": 1.36,
+    "caudaGrossa": false,
+    "massa": 66.2,
+    "area": 1.48,
+    "posturaDoTamanho": "gola aberta",
+    "segundoTamanho": {
+      "area": 0.4,
+      "posturaDoTamanho": "de lado, gola fechada"
+    }
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 3,
     "destreza": 3,
     "vigor": 4,
@@ -42,91 +36,160 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 2,
+    "bloqueio": 0,
     "esquiva": 2,
     "atletismo": 2,
     "furtividade": 2,
     "integridade": 2,
     "prontidao": 3,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
     "escalada": 2,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "resistencia",
-      "foco": "calor",
-      "valor": 1,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "no alto",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "resistencia": [
+      {
+        "foco": "calor",
+        "valor": 1,
+        "origem": "natural"
+      }
+    ],
+    "furtividade": [
+      {
+        "foco": "no alto",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 4,
+      "corrida": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 0,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Chicotada de cauda",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
+      "parte": "cauda",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
+    {
+      "nome": "investida intimidante",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "ao avançar sibilando com a gola aberta, quem é atacado testa Compostura ou fica abalado por algum tempo; a Dificuldade e quanto dura ficam com o Mestre"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "exibição da gola",
-      "descricao": "ergue a gola, abre a boca, sopra e chia; com a gola aberta fica Grande, o Tamanho principal.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "ergue a gola, abre a boca, sopra e chia; com a gola aberta fica Grande, o Tamanho principal."
     },
     {
       "nome": "corrida bípede",
-      "descricao": "foge de pé nas patas de trás.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "investida intimidante",
-      "descricao": "corpo: ao avançar sibilando com a gola aberta, quem é atacado testa Compostura ou fica abalado por algum tempo; a Dificuldade e quanto dura ficam com o Mestre.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão: caça do alto a presa no chão; sem número, sem Especialidade. · Os outros: nada achado."
+      "formas": "todas",
+      "texto": "foge de pé nas patas de trás."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "caça do alto a presa no chão (Wikipédia); sem número, sem Especialidade",
+      "formas": "todas"
+    },
+    {
+      "nome": "Os outros",
+      "descricao": "nada achado",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "tronco de árvore (cor de casca, sem fonte de efeito)",
+    "mente": "animal",
+    "tracos": "gola de pele que se abre em leque, com cerca de 30 cm no real e cerca de 1,4 m na escala × 4,71 (era 3 m na escala × 10) ; cauda fina de dois terços do comprimento; a temperatura do corpo segue a do ar (Shine e Lambeck 1989)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "diurno (caça de dia, do alto da árvore)",
+    "dieta": "o real come insetos e invertebrados; o gigante, o que a escala lhe der, pelo Mestre",
+    "caca": "emboscada do alto da árvore",
+    "dianteDeGente": "ameaça; foge se a ameaça não basta"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta",
+      "planície",
+      "montanha"
+    ],
+    "clima": [
+      "tropical"
+    ]
+  },
+  "descricao": "Passa o dia na árvore e desce para pegar a presa. Ameaçado, abre a gola, escancara a boca, chia e chicoteia a cauda; se não adianta, corre de pé nas patas de trás para a árvore mais próxima.",
   "lore": [
     {
       "titulo": "Réptil Colossal",
@@ -139,99 +202,36 @@
     {
       "titulo": "Muitas Espécies, Muitos Perigos",
       "texto": "Outras variedades deste lagarto gigante trocam a gola intimidante por outras armas, como constrição, mordidas que prendem ou saltos surpreendentes."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "- Grande de gola aberta, que é como ele luta: o humano Médio ganha +3 no acerto corpo a corpo. Com a gola fechada ele fica Pequeno, e passa a ser ele quem ganha +3, como o rato gigante. Força 3: não tira o Bloqueio de ninguém. - A mordida dá 6,5 de média; a chicotada, 4,5, mais rápida. Couraça nível 1 (escama fina num corpo de 66,2 kg): quanto ela tira da lâmina e da flecha fica para depois, e a maça perde ao menos 4 (o Vigor). 37 PV. - O mais provável é ele abrir a gola e chiar, e correr para a árvore se o grupo não recuar."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Forest",
-      "Plains",
-      "Mountain"
-    ],
-    "clima": [
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/lagarto-de-gola-gigante_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Giant Frilled Lizard",
-    "cr": "5",
-    "tipo": "animal Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 21,
-      "des": 13,
-      "con": 19,
-      "int": 2,
-      "sab": 14,
-      "car": 10
+  "revisao": [
+    {
+      "campo": "corpo.altura",
+      "motivo": "Era 0,80 m. Escalada pela razão dos comprimentos: 0,80 × (4 ÷ 8,5) = 0,376 m (0,08 m estimados no real × 4,71)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "tabela"
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Era 8,50 m. O comprimento da ficha atual do Centelha (decisão do Arquiteto); 0,85 m do real (ADW) × 4,71"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 37,
-    "esquiva": 10,
-    "bloqueio": 6,
-    "defesa": 10,
-    "defesaMental": 8,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 4,
-      "perfuracao": 4
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Era 2,90 m. 2,90 × (4 ÷ 8,5) = 1,365 m, que é o 0,29 m rostro-cloacal do macho (ADW) × 4,71"
     },
-    "couracaNivel": 1,
-    "pesoErguido": 175.83,
-    "carga": {
-      "leve": 6.62,
-      "media": 13.24,
-      "pesada": 19.86,
-      "maxima": 26.48
+    {
+      "campo": "corpo.largura",
+      "motivo": "Era 0,60 m. 0,60 × (4 ÷ 8,5) = 0,282 m (0,06 m estimados no real × 4,71)"
     },
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 4,
-        "corrida": 5
-      }
+    {
+      "campo": "corpo.massa",
+      "motivo": "Era 870 kg. Gigante pelo cubo, com o tamanho da ficha e a massa saindo dele (sexta rodada, seção 3): massa típica da base × (L do gigante ÷ L da base)³ = 0,635 × (4 ÷ 0,85)³ = 0,635 × 104,2 = 66,175 kg, 66,2 na mesa; k = 4,71. Base típica: média simples do macho de 0,87 kg e da fêmea de 0,40 kg = 0,635 kg, com o comprimento médio de 0,85 m, tudo da mesma fonte (ADW: \"averaging 85 cm\"; macho \"at least 870 g\" com 290 mm rostro-cloacais, fêmea 400 g com 235 mm; citando Bustard 1970, Greer 1989 e Wilson e Knowles 1988). A massa do macho é um \"pelo menos\" dos maiores machos, e não média pesada; a Wikipédia dá \"pelo menos 600 g\" sem separar sexo. Faixa do adulto: 0,40 a 0,87 kg na base (fêmea a macho grande), que dá 41,7 a 90,7 kg no gigante. Sexos (mais de 20%): macho 0,87 kg na base, 90,7 kg no gigante; fêmea 0,40 kg na base, 41,7 kg no gigante (ADW). A ficha atual do Centelha diz 4 m e 900 kg: as duas medidas não fecham pela base (900 kg pediriam 9,5 m: 0,85 × (900 ÷ 0,635)^(1/3)), e vale o tamanho. Faixa 3 pela D-141, com o corte de 35 kg (decisão 22); a faixa decide só o PV"
     }
-  },
-  "notasObservacao": [
-    "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (D-174); os 4 m do site ficam: o lagarto-de-gola real é Minúsculo de lado (0,018 m²) e o gigante Pequeno (0,40 m²), 2 portes, o mínimo do critério; Pequeno, e não Médio, é um dos portes que o item 7 admite. Longe dos cortes: 0,40 m² fica 10% abaixo do corte do Médio (0,45), no limite da distância pedida, e 236% acima do do Pequeno (0,12). O segundo Alvo (gola aberta, 1,48 m²) fica só 2% acima do corte do Grande: com 3,95 m ou menos ele cai no Médio. Pela D-215 (24/10/2026), o principal passou a ser o da gola aberta (Grande), e o Pequeno de lado ficou como segundo.",
-    "`escala`: gigante da D-105, escala × 4,71 do adulto real típico (ADW), para dar os 4 m da ficha atual (decisão do Arquiteto, sexta rodada). Era × 10 do macho real. Tudo **[extrapolação]** (D-105, D-174)",
-    "`dimensoes.comprimento`: 4 m, o da ficha atual; a massa sai dele (66,2 kg) e não dos 900 kg da ficha atual, que pediriam cerca de 9,5 m. Era 8,5 m (D-105, D-174; sexta rodada, seção 3)",
-    "`dimensoes.altura` e `dimensoes.largura`: estimadas no animal real (0,08 e 0,06 m), sem fonte, e escaladas (D-147, D-174)",
-    "area: 0,40 m², vista de lado: a silhueta da `tamanho-fichas-v2` (1,82 m² com 8,5 m) × (4 ÷ 8,5)². Era 1,82 m² e, antes, 2,32 m². O Alvo passou de Grande a Pequeno; pela D-215, o principal é o da gola aberta (1,48 m², Grande), e esta área fica no segundo.",
-    "segundoAlvo: Pequeno de lado, com a gola fechada (0,40 m²), desde a D-215, que pôs a gola aberta no principal; antes, Grande com a gola aberta (1,48 m², decisão 8), pouco acima do corte de 1,45; era Enorme (6,68 m²). O efeito em jogo é que a exibição o deixa mais fácil de acertar.",
-    "forca: 3 (em vigor na Etapa 2, 20/10/2026); antes: 5 ◆, reanalisada na sétima rodada pela massa de 66,2 kg (referência 6) e pelo corpo de lagarto magro de árvore (D-158), com o varano (47,5 kg, 5), o javali (78,75 kg, 5), o lobo-terrível (60 kg, 4) e o cão-de-guarda (77 kg, 4); era 7 pelas âncoras da v2, escolhidas com 870 kg, e 9 na ficha de hoje. Sem feito medido. A base fica com Força 0 pelo item 8, e não pela D-167 automática",
-    "vigor: 4 ◆, revisto na oitava rodada pelo corpo e pela massa, e fica: um acima da base (Vigor 3), o mínimo da D-176; réptil magro de sangue frio, de 66,2 kg, um acima do varano (47,5 kg, 3) só pelo mínimo. Era 5 na sexta rodada (D-174).",
-    "musculatura: 2 (animal comum), provisória.",
-    "escalada: 2, nova linha; antes a escalada estava dentro do Atletismo 2. Decisão provisória: separar, como pede a lista de referência (diretriz 2).",
-    "influencia, compostura: descem a 1 por não ser espécie social (diretriz 1); a exibição fica em texto.",
-    "resistencia: 2 pela régua, com Resistência (calor) +1 pela temperatura do corpo perto de 40 °C no real **[comparação]**.",
-    "furtividade: 2, candidata a 3 no levantamento; a espera no alto entra como Especialidade (+1). A camuflagem de casca não tem fonte.",
-    "couraca: nível 1 pela escala da quinta rodada, reanalisado na sétima com os 66,2 kg e mantido; a faixa passa de 1 a 2 para 0 a 1 (ao lado da jiboia e do cavalo, abaixo do varano, de osteodermos). O valor em absorção fica para depois.",
-    "massa: 66,2 kg **[extrapolação]** pelo cubo (k = 4,71) sobre o adulto real típico de 0,635 kg (média simples do macho de 0,87 e da fêmea de 0,40 kg, ADW) com 0,85 m; era 870 kg (k = 10 sobre o macho). O 0,87 kg é o \"pelo menos\" dos maiores machos na ADW; a média pesada do macho adulto real não foi achada.",
-    "jornada (nota de pesquisa, não é regra): no real, deslocamento diário médio de 69 m nos machos e 23 m nas fêmeas, em área de 2,5 e 0,7 ha (Shine e Lambeck 1989, resumo lido) **[comparação]**. A corrida de duas patas é de arrancada curta, até a próxima árvore; sem tempo medido.",
-    "pesoErguido: 175,83 kg (em vigor na Etapa 2, 20/10/2026); antes: 260,62 kg pelo `calc6.mjs` com a Força 5, provisório (decisões 14 e 16). Era 386,3 kg com a Força 7, 664,9 kg com 870 kg, e 760 kg pela fórmula de FAH.",
-    "carga: 6,62 kg de Leve pela D-122 (66,2 × 0,1 × 1, Faixa 3), sem carga medida; era 87 kg com 870 kg.",
-    "velocidade: congelada (decisão 23); 18 km/h pela fórmula de hoje, sem velocidade real nem do lagarto real."
   ]
 }

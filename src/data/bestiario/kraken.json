@@ -1,159 +1,263 @@
 {
-  "ordem": 128,
   "id": "kraken",
   "idAntigo": "mon-kraken",
   "nome": "Kraken",
   "nomeIngles": "Kraken",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "chefe",
-  "conceito": "besta mágica Colossal",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/kraken_criatura.webp",
-  "porte": "Colossal",
-  "dimensoes": {
-    "medida": "35 m de comprimento total, entre corpo e tentáculos",
-    "peso": "140 t"
-  },
-  "locomocao": {
-    "natacao": 4,
-    "terra": 1,
-    "jato": 28
-  },
+  "ameaca": 6,
   "centelha": 7,
-  "attrs": {
+  "corpo": {
+    "postura": "nada; abre os tentáculos sobre a presa",
+    "apoio": "outro",
+    "altura": 5.35,
+    "largura": 9.59,
+    "profundidade": null,
+    "comprimento": 35,
+    "massa": 140000,
+    "area": 907,
+    "posturaDoTamanho": "tentáculos abertos"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 14,
     "destreza": 2,
     "vigor": 13,
-    "influencia": 6,
-    "perspicacia": 6,
-    "compostura": 6,
     "percepcao": 6,
     "inteligencia": 6,
-    "raciocinio": 6
+    "raciocinio": 6,
+    "influencia": 6,
+    "perspicacia": 6,
+    "compostura": 6
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 0,
-    "prontidao": 3,
-    "integridade": 6
+    "atletismo": 3,
+    "furtividade": 2,
+    "integridade": 6,
+    "prontidao": 5,
+    "resistencia": 5,
+    "ocultismo": 4,
+    "conhecimentos": 4,
+    "empatia": 3,
+    "sociabilidade": 0,
+    "sobrevivencia": 4
   },
-  "virtues": {
+  "habilidadesSec": {
+    "intimidacao": 4,
+    "natacao": 4,
+    "musculatura": 3
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 12,
-  "aparencia": 5,
-  "tech": {
-    "abraco-do-tita": true
+  "vontade": 12,
+  "aparencia": 3,
+  "deslocamento": {
+    "terra": {
+      "batalha": 1,
+      "arranque": 2,
+      "corrida": 2
+    },
+    "nado": {
+      "batalha": 4
+    }
   },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 4,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Tentáculo",
+      "parte": "tentaculo",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 1,
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Bico",
+      "parte": "bico",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 1,
       "acerto": 0,
-      "ticks": 7
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "tinta-e-tempestade",
-      "nome": "Tinta e tempestade",
-      "tipo": "natural",
+      "nome": "Tentáculos múltiplos",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Tentáculo",
+      "regra": "rajada"
+    },
+    {
+      "nome": "mais tentáculos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "ataca com vários tentáculos por rodada, cada um num alvo diferente; a Rajada leva só três"
+    },
+    {
+      "nome": "constrição",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Tentáculo",
+      "regra": "agarrar"
+    },
+    {
+      "nome": "Abraço do Titã",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "abraco-do-tita",
+        "nivel": 6
+      }
+    },
+    {
+      "nome": "afundar embarcações",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "aperta e arrasta um navio inteiro para o fundo, com dano alto contra a estrutura"
+    },
+    {
+      "nome": "Nuvem de tinta",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "agua",
         "nivel": 4
       },
-      "resiste": "esquiva",
-      "efeito": "Esquiva para não prender; escapar com Força ou Atletismo.",
-      "usos": {
-        "periodo": "cena",
-        "quantidade": 3,
-        "recarga": "1 hora"
-      },
-      "descricao": "O kraken cospe uma nuvem de tinta que cobre 18 metros de água, cegando quem estiver perto, e pode agitar o mar numa área grande para atrapalhar movimento e visão de quem navega ou nada por ali."
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "18 Ticks",
+      "alcance": "o próprio corpo",
+      "area": "esfera de 18 m de água em volta dele",
+      "efeito": "a tinta escura cobre a água; quem está nela fica Cego",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "três vezes por cena"
     },
     {
-      "id": "tempestade-de-raios",
+      "nome": "agitar o mar",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "agita o mar numa área grande e atrapalha o movimento e a visão de quem navega ou nada ali"
+    },
+    {
       "nome": "Tempestade de raios",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "raio",
         "nivel": 4
       },
-      "resiste": "esquiva",
-      "efeito": "três raios caem em alvos diferentes ao mesmo tempo, poucas vezes por dia",
-      "descricao": "O céu escurece sobre o kraken e três raios caem ao mesmo tempo, cada um mirando um alvo diferente, poucas vezes ao dia.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 1
-      }
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "instantânea",
+      "alcance": "o céu sobre ele, até 120 m",
+      "area": "três alvos diferentes",
+      "efeito": "o céu escurece e três raios caem ao mesmo tempo",
+      "dano": "3d6 + Centelha, raio, em cada alvo",
+      "resistencia": "esquiva; quem passa leva metade",
+      "limiteDeUso": "uma vez por dia"
     },
     {
-      "id": "dominar-bestas-do-mar",
       "nome": "Dominar bestas do mar",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
         "nivel": 5
       },
-      "resiste": "mente",
-      "efeito": "domina a mente de um animal do mar que falhar em resistir, controlando-o por uma cena; não funciona em gente",
-      "descricao": "Uma vez por dia, o kraken domina a mente de uma fera marinha (tubarões, baleias, cardumes inteiros), que passa a obedecê-lo por uma cena. Não funciona em criaturas pensantes.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 1
-      }
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até o fim da cena",
+      "alcance": "90 m",
+      "area": "um animal do mar, ou um cardume",
+      "efeito": "quem falha fica Dominado e o obedece; não pega em criatura que pensa",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Intimidação dele",
+      "limiteDeUso": "uma vez por dia"
+    },
+    {
+      "nome": "feitiços arcanos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "magias de dano e de controle em larga escala; ele não conjura como classe, e o site não dava a Arte"
     }
   ],
-  "habilidades": [
+  "comoLuta": [
     {
-      "nome": "Tentáculos múltiplos",
-      "descricao": "vários ataques por rodada, cada um pode agarrar um alvo diferente"
-    },
-    {
-      "nome": "Constrição",
-      "descricao": "alvo agarrado sofre dano alto por rodada e fica Imobilizado"
-    },
-    {
-      "nome": "Afundar embarcações",
-      "descricao": "dano automático alto contra estruturas e navios"
-    },
-    {
-      "nome": "Nuvem de tinta",
-      "descricao": "raio 18m; obscurece a visão, penalidade em ataques à distância contra ele"
-    },
-    {
-      "nome": "Convocar tempestade",
-      "descricao": "agita o mar numa grande área, dificulta movimento e visão dos inimigos"
-    },
-    {
-      "nome": "Feitiços arcanos",
-      "descricao": "repertório de magias de dano e controle em larga escala"
-    },
-    {
-      "nome": "Sentidos das profundezas",
-      "descricao": "percebe vibrações na água, não pode ser surpreendido"
-    },
-    {
-      "nome": "Escala colossal",
-      "descricao": "alcance de ataque muito maior que o normal, +2 Absorção"
-    },
-    {
-      "nome": "Constrição e afundar",
-      "descricao": "Depende do agarrão; engolir 1 alvo por vez."
+      "nome": "senhor do abismo",
+      "formas": "todas",
+      "texto": "embosca baleias e navios, abre os tentáculos sobre o casco, cega com tinta quem tenta fugir e chama raios do céu; poupa, dizem, quem lhe oferece tributo."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "sentidos das profundezas",
+      "descricao": "percebe as vibrações na água; não é pego de surpresa",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão",
+      "descricao": "enxerga no escuro do abismo",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "água",
+    "prendeRespiracao": "; fora da água, se arrasta",
+    "camuflagem": "no escuro do abismo",
+    "mente": "inteligente, antiquíssima",
+    "tracos": "cefalópode de 35 m, de manto escuro, tentáculos longos de ventosas e bico do tamanho de um bote"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário e territorial",
+    "atividade": "qualquer hora; recolhe-se às profundezas",
+    "dieta": "baleias, leviatãs menores e o que cai dos navios",
+    "caca": "emboscada em quem cruza as águas dele",
+    "dianteDeGente": "afunda o navio; dizem que barganha com quem paga tributo"
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático"
+    ],
+    "clima": [
+      "frio"
+    ]
+  },
+  "descricao": "Predador supremo dos abismos: solitário, territorial e imprevisível, embosca baleias, leviatãs e navios que cruzam suas águas antes de se recolher às profundezas. Por trás dos olhos frios há uma inteligência antiquíssima, e alguns marujos juram que ele barganha.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -172,48 +276,34 @@
       "texto": "Nas rotas marítimas de Calin, capitães fazem oferendas ao Senhor do Mar e das Estradas antes de cruzar certas águas marcadas nos mapas antigos como domínio do afogado. O kraken é tido como relíquia viva de um mundo mais mágico, anterior à Supressão, prova de que o fundo do mar guarda segredos que nem a Lei alcança."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Water"
-    ],
-    "clima": [
-      "Cold"
-    ]
+  "imagens": [
+    "bestiario/kraken_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Prontidão 5, Ocultismo 4. Centelha acima do teto mortal (entidade).",
-  "pendente": true,
-  "fonte": {
-    "livro": "MM 3.5",
-    "nome": "Kraken",
-    "cr": "18",
-    "tipo": "besta mágica Colossal",
-    "tamanho": "colossal",
-    "valores": {
-      "for": 34,
-      "des": 10,
-      "con": 28,
-      "int": 21,
-      "sab": 20,
-      "car": 21
-    },
-    "pericias": [
-      "Prontidão 5",
-      "Ocultismo 4"
-    ],
-    "nota": "Leviatã dos mares, magia: Centelha 6. Str 34 → curva 10 +4 tamanho = Força 14.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte",
-      "nota": "nado 40: em terra o kraken se arrasta 10 ft"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 6,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "agarrao-do-urso"
+      "campo": "habilidadesEspeciais.Nuvem de tinta",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Tempestade de raios",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Dominar bestas do mar",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: pele grossa de leviatã, um acima do polvo-gigante (0), pela \"escala colossal\" do site . O nível fica fora da Absorção (decisoes-autor §16)"
+    },
+    {
+      "campo": "ataques.Bico.nivelPerfuracao",
+      "motivo": "O bico de cefalópode do tamanho de um bote, com o corpo atrás, Média; bico grande em N1 . Jogada: Força 14 + Briga 5 + 2 × o menor entre Centelha 7 e Briga 5 (10)"
     }
   ]
 }

@@ -1,36 +1,27 @@
 {
-  "ordem": 235,
   "id": "auroque",
   "idAntigo": "mon-aurochs",
   "nome": "Auroque",
   "nomeIngles": "Aurochs",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Grande",
-  "descricao": "O touro selvagem de que vem o gado. Caçado desde a Antiguidade; o último rebanho, na Polônia, minguou de cerca de 50 animais para 4 em 1601, e a última vaca morreu em 1627.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/auroque_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "3,3 m de comprimento, 1,63 m de altura",
-    "peso": "800 kg",
-    "comprimento": 3.3,
-    "largura": 0.8,
-    "altura": 1.63
-  },
-  "locomocao": {
-    "terra": 7
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 7,
-    "arranque": 11,
-    "corrida": 15
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 1.63,
+    "largura": 0.8,
+    "profundidade": null,
+    "comprimento": 3.3,
+    "comprimentoSemCauda": 2.6,
+    "caudaGrossa": false,
+    "massa": 800,
+    "area": 1.77,
+    "posturaDoTamanho": "vista de lado"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 7,
     "destreza": 2,
     "vigor": 6,
@@ -41,7 +32,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
     "bloqueio": 2,
     "esquiva": 1,
@@ -53,77 +44,141 @@
     "empatia": 1,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "visão",
-      "valor": 2,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "visão",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 4,
+  "vontade": 4,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 7,
+      "arranque": 11,
+      "corrida": 15
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Chifrada",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 1,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "chifre",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": 1
     },
     {
       "nome": "Investida (marrada)",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 2,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "corpo",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 2,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "derrubar",
-      "descricao": "Investida",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "derrubar"
     },
     {
       "nome": "empurrar",
-      "descricao": "Investida",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "empurrar"
     },
     {
       "nome": "pisotear",
-      "descricao": "Investida (marrada): Investida.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Investida (marrada)",
+      "regra": "investida"
     },
     {
       "nome": "debandada",
-      "descricao": "três ou mais avançando lado a lado atropelam o que estiver no caminho, com força redobrada.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "nada achado. A visão de 300° fica pela Especialidade natural, pelo boi."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "três ou mais avançando lado a lado atropelam o que estiver no caminho, com força redobrada"
     }
   ],
+  "comoLuta": [],
+  "sentidos": [
+    {
+      "nome": "sentidos",
+      "descricao": "nada achado . A visão de 300° fica pela Especialidade natural, pelo boi",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "chifres longos nos dois sexos, curvos em três direções, a 60° do focinho; pernas longas; dianteira maior que a traseira (Wikipédia)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "rebanho pequeno no inverno; sozinho ou em grupos menores no verão",
+    "atividade": "",
+    "dieta": "herbívoro (pastador, depois alimentação mista)",
+    "caca": "pastagem",
+    "dianteDeGente": "ameaça; ataca se provocado"
+  },
+  "ecologia": {
+    "terreno": [
+      "planície"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "O touro selvagem de que vem o gado. Caçado desde a Antiguidade; o último rebanho, na Polônia, minguou de cerca de 50 animais para 4 em 1601, e a última vaca morreu em 1627.",
   "lore": [
     {
       "titulo": "Boi selvagem ancestral",
@@ -132,93 +187,40 @@
     {
       "titulo": "Fúria coletiva",
       "texto": "Quando ameaçada, a manada inteira avança em bloco, transformando dezenas de chifres e cascos numa muralha destrutiva."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: rebanho pequeno no inverno; sozinho ou em grupos menores no verão."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande: o humano Médio acerta com +3 no corpo a corpo. A Força 7 tira o Bloqueio de quem tem Força 3 ou menos. Bloqueia bem com os chifres (9), mas é fácil de acertar (Esquiva 6). 54 PV e Couraça nível 2: quanto ela tira da espada e da flecha fica para depois, e o Impacto perde 6. A investida faz 21 em média (2d6 + 2 × Força 7), e o touro não recua do humano: diferente do boi, ele vem."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Plains"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/auroque_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Aurochs",
-    "cr": "2",
-    "tipo": "animal Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 23,
-      "des": 10,
-      "con": 17,
-      "int": 2,
-      "sab": 11,
-      "car": 4
+  "revisao": [
+    {
+      "campo": "atributos.vigor",
+      "motivo": "Etapa 2 (20/10/2026): Resposta do autor às dúvidas novas (20/10/2026, fim da seção 13): o boi vai a Vigor 6, e o auroque e o bisão ficam com 6, empatados com ele (ninguém passa do elefante). O \"um acima do boi\" de antes deixou de valer. Antes: Era 3, pela D-157, que a quinta rodada (item 1) leu como observação do mundo real, e não regra. Um acima do boi (5, decisão 11), que é a versão doméstica e menor: o auroque é o touro selvagem de 800 kg (Saarinen 2016), que vivia o inverno das florestas da Europa e da Ásia em rebanhos pequenos (Wikipédia), sob leão, tigre e lobo, e que aguentava a luta do cio \"capaz de ferir de morte\" (Wikipédia). O Vigor pesa em PV, absorção de Impacto, fome, frio e ferida. Sem dado de resistência medido (extinto): ."
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "atributos.percepcao",
+      "motivo": "2 para o grande herbívoro . Sentidos do auroque: não achados."
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 54,
-    "esquiva": 6,
-    "bloqueio": 8,
-    "defesa": 9,
-    "defesaMental": 7,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 6,
-      "perfuracao": 6
+    {
+      "campo": "atributos.compostura",
+      "motivo": "Espécie social.  Selvagem que não teme o humano não é a presa que denuncia tudo (o boi tem 1). Como hoje."
     },
-    "couracaNivel": 2,
-    "pesoErguido": 817.64,
-    "carga": {
-      "leve": 160,
-      "media": 320,
-      "pesada": 480,
-      "maxima": 640
+    {
+      "campo": "habilidades.atletismo",
+      "motivo": "\"Veloz apesar do corpo\" (Wikipédia), de pernas mais longas que o gado: um acima do boi (0). Sem número ."
     },
-    "deslocamento": {
-      "terra": {
-        "batalha": 7,
-        "arranque": 11,
-        "corrida": 15
-      }
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Etapa 2 (20/10/2026): Decisão 3 de 19/10/2026: a Resistência mede o quanto a criatura aguenta veneno, doença, ferimentos, falta de fôlego e ficar muito tempo na mesma posição. Resposta do autor às dúvidas novas (20/10/2026, fim da seção 13): o auroque vai a Resistência 5, como o bisão: o selvagem de onde veio o boi (4). Antes: Era 0. Régua: 2 é o normal da espécie no próprio meio, e o valor de quem não tem dado : \"vida e resistência: não achadas\" (repesquisa de 13/10). Extinto, sem nada de frio, fome, doença ou ferida medido."
     },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8, igual ao boi e ao bisão, pelas âncoras do autor; a ficha de hoje tinha 11, um acima do boi. Com a mesma Força e Musculatura e mais massa, o peso erguido do auroque (995 kg) fica um pouco abaixo do do boi (997 kg, com 788 kg), porque a Força de referência sobe com a massa. A ordem dos bovinos se inverte por 2 kg; eu daria 9 ao touro selvagem, que é o que a ficha de hoje ordenava (ver desvios). Provisória (D-158, D-174).",
-    "vigor: 6 sem dado medido (extinto), igual ao boi (Etapa 2, 20/10/2026: o boi sobe para 6, resposta do autor, fim da seção 13); antes: um acima do boi pela vida selvagem; **[extrapolação]** (D-174).",
-    "resistencia: 5 (em vigor na Etapa 2, 20/10/2026); antes: 2, o valor de quem não tem dado (extinto) (D-174).",
-    "empatia: 1 pelo boi, do mesmo gênero; provisória (D-174).",
-    "couraca: nível 2 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "variante vaca: Força 6, um abaixo da principal (7) (Etapa 2, 20/10/2026); antes: Força 7, um abaixo do touro, como a ficha de hoje fazia (9 contra 11) (D-174).",
-    "pesoErguido: 995 kg pela conta das decisões 14 e 16, provisório; a fórmula está com outra frente (D-162, D-169).",
-    "carga: Leve 160 a Máxima 640 kg, provisória pela conta (estrutura 0,2 do bovino), sem carga medida (extinto) (D-122, D-169, D-172).",
-    "velocidade: congelada (decisão 23); 52 km/h sem número real (D-170).",
-    "massa: 800 kg é a média de Star Carr (795,9 kg, Saarinen 2016), que junta touros e vacas; com os 1.121 kg do Pleistoceno o Alvo seguiria Grande (D-174).",
-    "dimensoes.altura: 1,63 m pelos esqueletos de Soro e St. Damme, lidos só por resumo de busca (Folia Archaeologica 38) (D-174).",
-    "dimensoes.comprimento e largura: sem fonte; o corpo de 2,6 m sai da frase \"a altura de ombro quase igualava o tronco\", e a largura é a do boi (D-147, D-174).",
-    "ataque Chifrada: N1 pelo tamanho do chifre, contra N0 do boi; leitura da ficha de hoje, mantida (D-174).",
-    "especialidade Prontidão (visão): extrapolada do boi, do mesmo gênero (D-174)."
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "\"a altura de ombro quase igualava o comprimento do tronco\" (Wikipédia): tronco de cerca de 1,63 m, mais cabeça e pescoço"
+    }
   ]
 }

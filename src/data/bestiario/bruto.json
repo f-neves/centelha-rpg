@@ -89,34 +89,16 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "Golpe pesado",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "o martelo de guerra a duas mãos (2d6 + Força × 2)"
-    },
-    {
-      "nome": "Força bruta",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "o Impacto do martelo, que a armadura quase não absorve (\"Esmaga placas\", `armas.json`)"
-    },
-    {
-      "nome": "Passo lento",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "a Velocidade 7 do martelo; age menos vezes"
-    },
-    {
       "nome": "Vulnerável ao cerco",
       "formas": "todas",
       "classe": "livro",
-      "texto": "a Guarda sob pressão (cada ataque que recebe baixa a Esquiva e o Bloqueio em 2 até a próxima ação dele)"
+      "texto": "Guarda sob pressão"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação"
+      "texto": "o traço social do Humano"
     }
   ],
   "comoLuta": [

@@ -133,8 +133,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pinça",
-      "regra": "agarrar",
-      "texto": "com a Especialidade natural Briga (Agarrão) +2"
+      "regra": "agarrar"
     },
     {
       "nome": "Tentáculos paralisantes",
@@ -171,17 +170,17 @@
       "efeito": "veneno nenhum pega nele; a Resistência (venenos) +3 fica para o que o Mestre quiser rolar"
     },
     {
-      "nome": "Anfíbio",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "respira na água e no ar (linha Corpo) e nada a 2"
-    },
-    {
       "nome": "arrastar para o fundo",
       "formas": "todas",
       "classe": "sem regra ainda",
       "ataque": "Pinça",
       "efeito": "arrasta o que agarrou para dentro da água, para afogar, até o Peso erguido. O mesmo \"puxar para a água\" do caranguejo-gigante do molde"
+    },
+    {
+      "nome": "paralisia dos tentáculos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o veneno dos tentáculos paralisa a presa que segura"
     }
   ],
   "comoLuta": [

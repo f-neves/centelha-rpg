@@ -74,7 +74,7 @@
   "equipamento": {
     "arsenal": [
       {
-        "ref": "a:alabarda"
+        "ref": "a:glaive-serrilhada"
       }
     ],
     "armaduras": []
@@ -83,7 +83,7 @@
   "ataques": [
     {
       "nome": "Glaive serrilhada",
-      "arma": "alabarda",
+      "arma": "glaive-serrilhada",
       "habilidade": "armas"
     },
     {
@@ -105,13 +105,6 @@
     }
   ],
   "habilidadesEspeciais": [
-    {
-      "nome": "Serrilha que abre",
-      "formas": "todas",
-      "classe": "livro",
-      "ataque": "Glaive serrilhada",
-      "texto": "a tag Sangramento; a serrilha custa −1 de Acerto"
-    },
     {
       "nome": "Trava a ferida",
       "formas": "todas",
@@ -279,19 +272,19 @@
   "revisao": [
     {
       "campo": "habilidadesEspeciais.Trava a ferida",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha, com as bases do site quando havia (D-197). A serrilha leva para a glaive a regra da Espada Serrilhada do livro (Sangrando igual à Margem, até 3), que no `armas.json` é só dela"
+      "motivo": "números sugeridos pela ficha (D-197); números da ficha, com as bases do site quando havia (D-197)."
     },
     {
       "campo": "habilidadesEspeciais.Doença infernal",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha, com as bases do site quando havia (D-197). A serrilha leva para a glaive a regra da Espada Serrilhada do livro (Sangrando igual à Margem, até 3), que no `armas.json` é só dela"
+      "motivo": "números sugeridos pela ficha (D-197); números da ficha, com as bases do site quando havia (D-197)."
     },
     {
       "campo": "habilidadesEspeciais.Barba viva",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha, com as bases do site quando havia (D-197). A serrilha leva para a glaive a regra da Espada Serrilhada do livro (Sangrando igual à Margem, até 3), que no `armas.json` é só dela"
+      "motivo": "números sugeridos pela ficha (D-197); números da ficha, com as bases do site quando havia (D-197)."
     },
     {
       "campo": "habilidadesEspeciais.Teleporte",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha, com as bases do site quando havia (D-197). A serrilha leva para a glaive a regra da Espada Serrilhada do livro (Sangrando igual à Margem, até 3), que no `armas.json` é só dela"
+      "motivo": "números sugeridos pela ficha (D-197); números da ficha, com as bases do site quando havia (D-197)."
     },
     {
       "campo": "habilidades.prontidao",
@@ -307,15 +300,7 @@
     },
     {
       "campo": "ataques.Glaive serrilhada",
-      "motivo": "A Haste de Guerra do livro, pelos números da Alabarda (`armas.json`, `alabarda`): Velocidade 7, 1d6 + 2, Acerto −1 com a serrilha (antes 0), Defesa +0, duas mãos, alcance. Duas mãos: Força × 2 (`armas-e-armaduras.md`). A serrilha vai nas Manobras . Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 4 e Armas 3 (6)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Serrilha que abre",
-      "motivo": "números da ficha, com as bases do site quando havia (D-197). A serrilha leva para a glaive a regra da Espada Serrilhada do livro (Sangrando igual à Margem, até 3), que no `armas.json` é só dela; Acerto 0 para −1, jogada 13 para 12; tag Sangramento aprovada na 33.1."
-    },
-    {
-      "campo": "habilidadesEspeciais.Regeneração 5",
-      "motivo": "Antes: 4 de Energia e 5 PV/6 Ticks. Depois: só classificação, sem ritmo de cura. N 5 pelo texto anterior ."
+      "motivo": "antes, Alabarda com serrilha manual; depois, item glaive-serrilhada, conforme 36.1. Acerto −1 e dano médio 17,5 preservados; removida a manobra redundante."
     }
   ]
 }

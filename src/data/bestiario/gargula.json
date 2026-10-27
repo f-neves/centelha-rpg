@@ -1,38 +1,30 @@
 {
-  "ordem": 54,
   "id": "gargula",
   "idAntigo": "mon-gargula",
   "nome": "Gárgula",
   "nomeIngles": "Gargoyle",
-  "categoria": "Humanoide monstruoso",
-  "categoriaLegada": "Monstro",
+  "categoria": "humanoide-monstruoso",
   "papel": "soldado",
-  "conceito": "humanoide monstruoso Grande",
-  "descricao": "Guardiã alada de pedra viva que passa dias imóvel como estátua em templos e ruínas, e desperta em silêncio para cair do alto sobre quem profanou o lugar. Não come, não dorme e não respira.",
-  "tags": [
-    "monstro",
-    "centelha"
-  ],
-  "imagem": "bestiario/gargula_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "1,5 m de altura",
-    "peso": "180 kg",
-    "largura": 0.49,
-    "altura": 1.5,
-    "envergadura": 2.4
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 6
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-  },
+  "ameaca": 3,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, agachada; voadora",
+    "apoio": "bipede",
+    "altura": 1.5,
+    "largura": 0.49,
+    "profundidade": 0.25,
+    "comprimento": null,
+    "envergadura": 2.4,
+    "massa": 180,
+    "area": 1.61,
+    "posturaDoTamanho": "asas abertas",
+    "segundoTamanho": {
+      "area": 0.65,
+      "posturaDoTamanho": "de pé, asas fechadas"
+    }
+  },
+  "couraca": 9,
+  "atributos": {
     "forca": 4,
     "destreza": 4,
     "vigor": 5,
@@ -43,7 +35,7 @@
     "perspicacia": 1,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
     "bloqueio": 1,
     "esquiva": 1,
@@ -52,100 +44,165 @@
     "prontidao": 1,
     "integridade": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "voo": 3,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "imóvel como estátua",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "emboscada do alto",
-      "valor": 2,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "imóvel como estátua",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "emboscada do alto",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 4,
-    "temperanca": 3,
-    "valor": 3
+    "temperanca": 3
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "voo": {
+      "batalha": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Garras",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "maos-de-pedra",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Chifres",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 1,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "chifres-de-pedra",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": 1
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Garras e chifres",
-      "descricao": "as duas garras contam como par de armas leves, como os dois punhos, e atacam pela empunhadura dupla: um golpe por mão na mesma ação, os dois a −1d6.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Imobilidade",
-      "descricao": "Furtividade, com a Especialidade natural (imóvel como estátua) +3; parada, passa por estátua.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "empunhadura-dupla"
     },
     {
       "nome": "Voo silencioso",
-      "descricao": "Ativação: nenhuma; vale enquanto voa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: o voo não faz barulho: a Furtividade vale no ar, e quem está embaixo só a percebe pela vista. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Pele de pedra",
-      "descricao": "a Couraça nível 9, fora da Absorção até o autor decidir o valor dos níveis.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; vale enquanto voa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "o voo não faz barulho: a Furtividade vale no ar, e quem está embaixo só a percebe pela vista",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Corpo pétreo",
-      "descricao": "não respira, não come nem dorme, e veneno não a pega.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "guardiã paciente",
-      "descricao": "espera imóvel entre as estátuas por dias, desperta em silêncio, cai do alto sobre quem profanou o lugar e não persegue para longe dele.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga no escuro das ruínas e templos. · audição e olfato: os de um humano."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não respira, não come nem dorme, e veneno não a pega"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "guardiã paciente",
+      "formas": "todas",
+      "texto": "espera imóvel entre as estátuas por dias, desperta em silêncio, cai do alto sobre quem profanou o lugar e não persegue para longe dele."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro das ruínas e templos",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "nenhuma",
+    "prendeRespiracao": "não precisa",
+    "camuflagem": "imóvel, passa por estátua; Especialidade natural",
+    "mente": "simples; cumpre o propósito",
+    "tracos": "corpo de pedra cinzenta rachada, asas de morcego de pedra, chifres, garras, rosto em careta"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinha ou em pequeno grupo de guardiãs",
+    "atividade": "qualquer hora; espera imóvel",
+    "dieta": "não come",
+    "caca": "emboscada a quem profana o lugar",
+    "dianteDeGente": "ataca o intruso do lugar que guarda"
+  },
+  "ecologia": {
+    "terreno": [
+      "ruínas",
+      "urbano"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Guardiã alada de pedra viva que passa dias imóvel como estátua em templos e ruínas, e desperta em silêncio para cair do alto sobre quem profanou o lugar. Não come, não dorme e não respira.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Fica imóvel como estátua de pedra por dias, esperando o momento certo, e desperta em silêncio para emboscar quem profanou o local que guarda. Social: sozinha ou em pequeno grupo de guardiãs."
+      "texto": "Fica imóvel como estátua de pedra por dias, esperando o momento certo, e desperta em silêncio para emboscar quem profanou o local que guarda."
     },
     {
       "titulo": "Ecologia",
@@ -158,90 +215,40 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Muitas gárgulas ainda montam guarda em templos e bibliotecas caídas da Tecelã, de antes da Supressão; encontrar uma viva reforça no povo comum o medo antigo de que pedra também possa trair."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande no ar, Média no chão, 40 PV, Impacto 6, Corte e Perfuração 1, Couraça de pedra (nível 9, valor a definir). Esquiva e Bloqueio 12 (13 com os chifres). Duas garras por ação a −1d6 (6,5 cada) ou chifrada (8,5). Imóvel, passa por estátua; voa sem barulho. Não respira nem se envenena."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Ruins",
-      "Urban"
-    ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "Habilidades notáveis: Furtividade 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Gárgula",
-    "cr": "4",
-    "tipo": "humanoide monstruoso Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 15,
-      "des": 14,
-      "con": 18,
-      "int": 6,
-      "sab": 11,
-      "car": 7
-    },
-    "pericias": [
-      "Furtividade 3"
-    ],
-    "nota": "Congelar/RD mágica: Centelha 1.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "proezaFutura": [
-    {
-      "caminho": "pele-de-pedra"
-    },
-    {
-      "caminho": "mascara"
-    }
+  "imagens": [
+    "bestiario/gargula_criatura.webp"
   ],
-  "v3": {
-    "pv": 40,
-    "esquiva": 12,
-    "bloqueio": 12,
-    "defesa": 13,
-    "defesaMental": 12,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 1,
-      "perfuracao": 1
-    },
-    "couracaNivel": 9,
-    "pesoErguido": 358.9,
-    "deslocamento": {
-      "terra": {
-        "batalha": 4,
-        "arranque": 6,
-        "corrida": 9
-      },
-      "voo": {
-        "batalha": 6
-      }
-    },
-    "bloqueioArma": 1
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`envergadura`: 2,4 m, estimada; o site não dá **[extrapolação]**",
-    "`tamanho`: Grande de asas abertas, Médio de pé **[extrapolação]** na largura da asa",
-    "`couraca`: nível 9, como o golem de pedra **[provisório]**",
-    "`bonus de absorcao`: o +3 do site fica com o valor da Couraça, a definir (perda provisória, anotada no relato)",
-    "`virtudes`: Compaixão 1, Convicção 4, Temperança 3; o site tinha 2, 3 e 2 **[provisório]**",
-    "`voo silencioso`: números sugeridos pela ficha (D-197)"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Voo silencioso",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidades.bloqueio",
+      "motivo": "Apara com o braço de pedra, que \"quase todas podem bloquear sem tomar dano\" (D-066)"
+    },
+    {
+      "campo": "corpo.envergadura",
+      "motivo": "O site não dá : asa de morcego de pedra, 1,6 vez a altura; 2,4 m, estimada; o site não dá"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "O corpo, 0,72 × 0,833² × 1,3 = 0,65 m²; as asas, (2,4 − 0,49) × 0,5 m de largura média = 0,96 m²  na largura da asa"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 9: pedra viva, como o golem de pedra (nível 9, \"sem referência até entrarem\", tamanho-decisoes-5, item 2). O nível fica fora da Absorção até o autor dar o valor (decisoes-autor §16): a \"Pele de pedra\" e o +3 de Absorção do site dependem dele; nível 9, como o golem de pedra"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": ""
+    }
   ]
 }

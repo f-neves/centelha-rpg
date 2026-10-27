@@ -1,38 +1,29 @@
 {
-  "ordem": 110,
   "id": "salamandra",
   "idAntigo": "mon-salamandra",
   "nome": "Salamandra",
   "nomeIngles": "Salamander",
-  "categoria": "Elemental",
-  "categoriaLegada": "Elemental",
+  "categoria": "elemental",
   "papel": "elite",
-  "conceito": "exterior Médio (fogo)",
-  "descricao": "Guerreira e ferreira do plano do fogo, torso de gente sobre corpo de serpente em brasa: luta de lança, enrola e queima quem chega perto, anda na lava e foge da água.",
-  "tags": [
-    "elemental",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/salamandra_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "2,7 m de comprimento, 0,28 m de altura",
-    "peso": "100 kg",
-    "comprimento": 2.7,
-    "largura": 0.28,
-    "altura": 0.28
-  },
-  "locomocao": {
-    "terra": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 5
-  },
+  "ameaca": 4,
   "centelha": 3,
-  "attrs": {
+  "corpo": {
+    "postura": "serpente; luta erguida, de lança na mão, e enrola a cauda em quem chega perto",
+    "apoio": "outro",
+    "altura": 0.28,
+    "largura": 0.28,
+    "profundidade": null,
+    "comprimento": 2.7,
+    "massa": 100,
+    "area": 0.57,
+    "posturaDoTamanho": "erguida",
+    "segundoTamanho": {
+      "area": 0.2,
+      "posturaDoTamanho": "enrolada"
+    }
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 5,
     "destreza": 3,
     "vigor": 5,
@@ -43,7 +34,7 @@
     "perspicacia": 4,
     "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "armas": 5,
     "briga": 4,
     "bloqueio": 2,
@@ -56,104 +47,163 @@
     "sociabilidade": 1,
     "ocultismo": 1
   },
-  "skills2": {
+  "habilidadesSec": {
     "ferreiro": 3,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "lança",
-      "valor": 2,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "ferreiro",
-      "foco": "armas",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "lança",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 8,
+  "vontade": 8,
   "aparencia": 5,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:lanca"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Lança",
-      "atrib": "forca",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 2,
-      "tipo": "perfurante",
-      "acerto": 1,
-      "perf": 1,
-      "ticks": 6,
-      "classe": "haste"
+      "arma": "lanca",
+      "habilidade": "armas"
     },
     {
       "nome": "Cauda",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 2,
-      "tipo": "impacto",
-      "ticks": 6,
-      "classe": "media"
+      "parte": "cauda",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 2,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "agua",
-    "gelo"
-  ],
-  "resistencias": [],
-  "imunidades": [
-    "fogo"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Calor corporal",
-      "descricao": "poder natural (base Fogo 2, a do site): Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: toque. Área: quem a toca com a pele, a segura ou está preso na cauda dela. Efeito: a pele irradia calor o bastante para queimar. Dano: 1d6 + Centelha, fogo, a cada 6 Ticks a quem está no agarrão com ela, e uma vez a quem a toca com a pele nua. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fogo",
+        "nivel": 2
+      },
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "toque",
+      "area": "quem a toca com a pele, a segura ou está preso na cauda dela",
+      "efeito": "a pele irradia calor o bastante para queimar",
+      "dano": "1d6 + Centelha, fogo, a cada 6 Ticks a quem está no agarrão com ela, e uma vez a quem a toca com a pele nua",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Constrição de cauda",
-      "descricao": "Cauda: Agarrar, com a cauda: prende e esmaga quem está ao alcance; o Calor corporal queima quem está preso.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Cauda",
+      "regra": "agarrar",
+      "texto": "aperta a presa com o corpo"
     },
     {
       "nome": "Imobilizar",
-      "descricao": "Técnica imobilizar, nível 1: por 1 de Energia, prende o agarrado: ele fica Imobilizado; só cobra a manutenção, a cada 6 Ticks, se o alvo tentar se libertar.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "imobilizar",
+        "nivel": 1
+      }
     },
     {
       "nome": "Lança em brasa",
-      "descricao": "Lança: Ativação: a Lança que fere. Duração: instantânea. Alcance: o da lança. Área: um alvo. Efeito: a ponta, forjada no fogo dela e aquecida pelas mãos, queima por dentro. Dano: mais 1d6, fogo. Resistência: nenhum. Limite de uso: um por golpe.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Anda na lava",
-      "descricao": "a imunidade a fogo (Elementos; dano zero, C-039): move-se e sobrevive na lava.",
-      "classe": "livro"
-    },
-    {
-      "nome": "guerreira do fogo",
-      "descricao": "segura o inimigo longe com a lança, enrola na cauda em brasa quem chega perto e aperta; luta mais cruel quanto mais quente fica a ira, e sempre a serviço de um senhor maior.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão e audição: as de um humano."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Lança",
+      "ativacao": "a Lança que fere",
+      "duracao": "instantânea",
+      "alcance": "o da lança",
+      "area": "um alvo",
+      "efeito": "a ponta, forjada no fogo dela e aquecida pelas mãos, queima por dentro",
+      "dano": "mais 1d6, fogo",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "guerreira do fogo",
+      "formas": "todas",
+      "texto": "segura o inimigo longe com a lança, enrola na cauda em brasa quem chega perto e aperta; luta mais cruel quanto mais quente fica a ira, e sempre a serviço de um senhor maior."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar quente; respira dentro da fumaça e do fogo",
+    "mente": "inteligente; cruel quando irada, leal a quem serve",
+    "tracos": "torso de gente com feições de réptil, pele vermelha e laranja, cauda de serpente que crepita como brasa; lança de ferro escuro"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em grupo, a serviço de um efreeti ou de um culto",
+    "atividade": "qualquer hora",
+    "dieta": "não se sabe",
+    "caca": "não caça: serve como soldado e artesã",
+    "dianteDeGente": "chega pela fresta aberta para o plano do fogo, sempre a mando de alguém"
+  },
+  "ecologia": {
+    "terreno": [
+      "montanha",
+      "deserto"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Guerreira e ferreira do plano do fogo, torso de gente sobre corpo de serpente em brasa: luta de lança, enrola e queima quem chega perto, anda na lava e foge da água.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Guerreiro e ferreiro do fogo, torso serpentino terminando em cauda que crepita como brasa, ficando mais cruel quanto mais quente fica sua ira. Social: em grupo, a serviço de um efreeti ou de um culto."
+      "texto": "Guerreiro e ferreiro do fogo, torso serpentino terminando em cauda que crepita como brasa, ficando mais cruel quanto mais quente fica sua ira."
     },
     {
       "titulo": "Sociedade",
@@ -166,89 +216,66 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Quando um culto ou um efreeti abre uma fresta para o plano do fogo, é comum que salamandras sejam as primeiras a atravessar, sempre a serviço de um senhor maior, nunca por conta própria."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Média erguida, Pequena enrolada. Lança com alcance, dano médio 16,5 mais 1d6 de fogo; a cauda bate com 16,5, agarra e imobiliza, e quem está preso queima (1d6 + 3 a cada 6 Ticks). 40 PV, Impacto 8, Corte e Perfuração 3. Bloqueio 14 (16 com a lança), Esquiva 10. Fogo não a fere; água e gelo passam toda a Absorção. Brilha como brasa."
     }
   ],
-  "ecologia": {
-    "tipo": "Elemental",
-    "terreno": [
-      "Mountain",
-      "Desert"
+  "imagens": [
+    "bestiario/salamandra_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "agua",
+        "formas": "todas"
+      },
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "Habilidades notáveis: Ofícios 3, Armas 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Salamandra",
-    "cr": "6",
-    "tipo": "exterior Médio (fogo)",
-    "tamanho": "medio",
-    "valores": {
-      "for": 16,
-      "des": 13,
-      "con": 18,
-      "int": 14,
-      "sab": 15,
-      "car": 13
-    },
-    "pericias": [
-      "Ofícios 3",
-      "Armas 2"
-    ],
-    "nota": "Calor corporal, linhagem elemental: Centelha 2.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
-    },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "agarrao-do-urso"
+      "campo": "habilidadesEspeciais.Calor corporal",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Lança em brasa",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidades.armas",
+      "motivo": "O site gravava `briga` 5 para o golpe de arma; no livro a arma branca é Armas (manual 3.5), como no janni. A nota do site dizia \"Armas 2\"; com 2, a jogada publicada do golpe cairia"
+    },
+    {
+      "campo": "habilidades.briga",
+      "motivo": "A cauda que enrola e esmaga (site, Constrição de cauda)"
+    },
+    {
+      "campo": "habilidades.bloqueio",
+      "motivo": "Apara com a haste da lança, soldado treinado"
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "O diâmetro que dá a massa do site (linha Massa). Erguida, levanta o torso e um pouco do corpo, como a naga"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Igual ao diâmetro; os ombros do torso, uns 0,40 m, ficam por cima do corpo"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: escama grossa e quente, acima da jararaca (0, no máximo 1); o nível fica fora da Absorção (decisoes-autor §16). A imunidade a fogo e as fraquezas vêm de Elementos"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site"
     }
-  ],
-  "v3": {
-    "pv": 40,
-    "esquiva": 10,
-    "bloqueio": 14,
-    "defesa": 16,
-    "defesaMental": 22,
-    "defesaSocial": 12,
-    "absorcao": {
-      "impacto": 8,
-      "corte": 3,
-      "perfuracao": 3
-    },
-    "couracaNivel": 1,
-    "pesoErguido": 400,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 3,
-        "corrida": 5
-      }
-    },
-    "bloqueioArma": 2
-  },
-  "tech": {
-    "imobilizar": true
-  },
-  "notasObservacao": [
-    "`tamanho`: Médio erguida, Pequeno enrolada, pelo método das nagas (D-213) **[conta]**",
-    "`armas`: 5, o `briga` do golpe de arma do site; a nota dizia \"Armas 2\" **[provisório]**",
-    "`equipamento`: a lança do livro **[provisório]**",
-    "`elementos`: imunidade a fogo e fraqueza a gelo, pelas habilidades do site **[provisório]**",
-    "`temperança`: 1; o site tinha 2 **[provisório]**",
-    "`constrição de cauda`: as duas linhas do site numa só; a segunda, com o \"engolir 1 alvo por vez\", é linha duplicada do site, descartada, pela decisão do autor de 24/10/2026",
-    "`calor corporal`, `lança em brasa`: números sugeridos pela ficha (D-197)"
   ]
 }

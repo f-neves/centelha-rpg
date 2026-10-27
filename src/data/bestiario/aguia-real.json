@@ -2,33 +2,30 @@
   "id": "aguia-real",
   "nome": "Águia-real",
   "nomeIngles": "Golden eagle",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Médio",
-  "descricao": "Caça do alto: desce em mergulho sobre a lebre ou a marmota e a leva nos talões. Na época da cria, o casal guarda um território grande e expulsa outras águias.",
-  "tags": [],
-  "imagem": "bestiario/aguia-real_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "0,77 m de comprimento, 0,83 m de altura",
-    "peso": "4,6 kg",
-    "comprimento": 0.77,
-    "largura": 0.3,
-    "altura": 0.83,
-    "envergadura": 2
-  },
-  "locomocao": {
-    "terra": 2,
-    "voo": 5
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 2,
-    "corrida": 4
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "voador",
+    "apoio": "outro",
+    "altura": 0.83,
+    "largura": 0.3,
+    "profundidade": null,
+    "comprimento": 0.77,
+    "caudaGrossa": false,
+    "envergadura": 2,
+    "massa": 4.6,
+    "area": 0.84,
+    "posturaDoTamanho": "de baixo, asas abertas",
+    "segundoTamanho": {
+      "area": 0.38,
+      "posturaDoTamanho": "asas fechadas, de lado, pousada"
+    },
+    "linhaPV": "abaixo"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 2,
     "destreza": 4,
     "vigor": 2,
@@ -39,162 +36,186 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 3,
     "atletismo": 2,
     "furtividade": 3,
     "integridade": 2,
     "prontidao": 3,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 3
   },
-  "skills2": {
+  "habilidadesSec": {
     "equilibrio": 1,
+    "escalada": 0,
+    "natacao": 0,
     "voo": 3,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "visão",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "mergulho sobre a presa",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "visão",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "mergulho sobre a presa",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 7,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 2,
+      "corrida": 4
+    },
+    "voo": {
+      "batalha": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Garras (talões)",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "garra",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Bico",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "bico",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "Garras (talões)",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar",
+      "texto": "talões"
     },
     {
       "nome": "mergulho sobre a presa",
-      "descricao": "Garras (talões): Investida, com a velocidade de Mergulho do voo (só descendo).",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras (talões)",
+      "regra": "investida",
+      "texto": "só descendo"
     },
     {
       "nome": "erguer e largar",
-      "descricao": "Garras (talões): sobe com o que agarrou, até o Peso erguido, e solta do alto; a queda é a de Cair (Corpo e Movimento).",
-      "classe": "sem regra ainda"
-    },
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Garras (talões)",
+      "efeito": "sobe com o que agarrou, até o Peso erguido, e solta do alto; a queda é a de Cair (Corpo e Movimento)"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "caça em casal",
-      "descricao": "uma ave do casal cansa a presa enquanto a outra desce para matar.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão: Prontidão (visão) +3, notar e mirar de longe, com luz; com pouca luz não vale (Reymond e Wolfe). · Gira a cabeça cerca de 270°."
+      "formas": "todas",
+      "texto": "uma ave do casal cansa a presa enquanto a outra desce para matar."
     }
   ],
-  "lore": [
+  "sentidos": [
     {
-      "titulo": "Comportamento",
-      "texto": "Social: par."
+      "nome": "visão",
+      "descricao": "Prontidão (visão) +3 (Especialidade natural, era +4), notar e mirar de longe, com luz; com pouca luz não vale (Reymond e Wolfe)",
+      "formas": "todas"
     },
     {
-      "titulo": "No jogo",
-      "texto": "Em voo é Média como um humano: ninguém ganha o +3 de Alvo. Pousada fica Pequena, e aí ela ganha +3 no acerto corpo a corpo e quem atira nela leva −3. O dano das garras é pequeno (3,5); o perigo dela é a surpresa do mergulho e o olho, que vê o grupo muito antes de ser vista. Um humano de Força 6 tira o Bloqueio dela; ela não tira o de ninguém. No chão é lenta (4 m por Tick); no ar faz 11 m por Tick em cruzeiro e 46 descendo em mergulho. Com 6 PV, Impacto 2 e Couraça nível 0 (o valor do nível fica para depois), um bom golpe a derruba."
+      "nome": "sentidos",
+      "descricao": "Gira a cabeça cerca de 270° (San Diego Zoo)",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "pernas emplumadas até os dedos; enxerga pior que o humano na penumbra (Reymond e Wolfe). No mergulho, encolhe as pernas contra a cauda e fecha as asas em parte (Wikipédia)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "par",
+    "atividade": "diurno",
+    "dieta": "carnívoro",
+    "caca": "caça mergulhando",
+    "dianteDeGente": ""
+  },
   "ecologia": {
-    "tipo": "Animal",
     "terreno": [
-      "Mountain",
-      "Sky",
-      "Plains"
+      "montanha",
+      "céu",
+      "planície"
     ],
     "clima": [
-      "Temperate",
-      "Cold"
+      "temperado",
+      "frio"
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 6,
-    "esquiva": 14,
-    "bloqueio": 8,
-    "defesa": 14,
-    "defesaMental": 8,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 2,
-      "corte": 2,
-      "perfuracao": 2
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 48.35,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 2,
-        "corrida": 4
-      },
-      "voo": {
-        "batalha": 5,
-        "cruzeiro": 11,
-        "mergulho": 46
-      }
-    }
+  "descricao": "Caça do alto: desce em mergulho sobre a lebre ou a marmota e a leva nos talões. Na época da cria, o casal guarda um território grande e expulsa outras águias.",
+  "lore": [],
+  "imagens": [
+    "bestiario/aguia-real_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`forca`: 2, fixada em `valores.mjs`; provisória por feito (3,6 kg em voo, ADW, sem método). Se a fórmula do peso erguido mudar, a Força se refaz (D-162, D-167)",
-    "`pesoErguido`: 51,13 kg pela fórmula nova (decisões 14 e 16), [provisório]. Fica muito acima do que ela leva em voo (3,6 kg): o peso erguido é o que arrasta ou vira no chão, e a Musculatura 3 o puxa para cima. Conferir quando a fórmula fechar (D-174)",
-    "`alvo`: Médio pela silhueta de asas abertas da `tamanho-fichas-v2` (0,84 m², 86% acima do corte de 0,45). Fica perto do corte de baixo; uma envergadura menor (macho, subespécie japonica) a põe Pequena (D-174)",
-    "`equilibrio`: 1, nova, provisória: pousa em penhasco e árvore alta, sem dado de pouso difícil (D-174)",
-    "`empatia`: 0, provisória: não é espécie social, e o casal não basta para ler o outro (D-174)",
-    "`especialidades`: Briga (mergulho sobre a presa) 1, provisória: o hábito de caça do alto (D-174)",
-    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "jornada (nota de pesquisa, não é regra): cruzeiro de 41 km/h medido por GPS circulando (Garstang et al. 2022) [medido]; voo médio de 45 a 51 km/h (ADW, sem método); populações do Alasca e do Canadá migram para o sul no outono, sem distância nem duração (ADW). Faltam a distância de voo por dia, a da migração e as horas de voo por dia [sem dado].",
-    "`dimensoes.largura`: 0,30 m, estimada pelo Arquiteto, sem fonte",
-    "`id antigo`: nenhum. `mon-aguia-gigante` é outra criatura e não foi tratada como variante (D-174)"
+  "revisao": [
+    {
+      "campo": "atributos.forca",
+      "motivo": "Fixada em `valores.mjs` (D-158). A garra fere e segura presa do tamanho de uma raposa; leva até 3,6 kg em voo (ADW, 8 libras, sem método) e já matou um cervo-sika jovem de 40 a 45 kg, oito vezes a massa dela (Kerley e Slaght 2013, via reportagem). A Força de referência de 5 kg é 1,9 (a de 4,35 kg, 1,67 ): a águia fica nela. Abaixo do lobo (3)"
+    }
   ]
 }

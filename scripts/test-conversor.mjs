@@ -177,9 +177,32 @@ if (aponta(lobo, 'atributos.inexistente') || aponta(lobo, 'ataques.Coice') || ap
   if (criaturaNovaSchema.safeParse(c).success) falhas.push('P7: esquema aceitou nível textual');
 }
 
+// D-179: o card antigo tem um único destino; outra ficha pode só citar sua referência.
+{
+  const compartilhado = converterFicha(LOBO.replace('`mon-werewolf` |', '`mon-crocodilo` |'), {site:SITE});
+  if (compartilhado.criatura.idAntigo !== undefined || !compartilhado.avisos.some(x=>x.includes('pertence a crocodilo-do-nilo'))) falhas.push('alias de outro card foi duplicado');
+  if (converterFicha(LOBO, {site:SITE}).criatura.idAntigo !== 'mon-werewolf') falhas.push('alias canônico foi perdido');
+}
+
+// Sem modelo de Vida por quadrado, o enxame permanece na fonte legada (plano, seção 4).
+{
+  const enxame = LOBO.replace(/^(\| PV base \| )[^|]*/m, '$1Por quadrado cheio: **24** ');
+  if (!converterFicha(enxame, {site:SITE}).paradas.some(x=>x.startsWith('enxame:'))) falhas.push('enxame sem formato foi convertido');
+}
+
+// A5: as células de bloqueio já aprovadas pelo leitor da ficha continuam válidas.
+for (const [celula, esperado] of [['sim, +1',1], ['sim, Defesa +2',2], ['sim (+1; galhada)',1], ['o mesmo chifre (+1)',null], ['sim (carapaça)',null]]) {
+  const texto = LOBO.split('\n').map(l=>{
+    if (!l.startsWith('| Mordida |')) return l;
+    const colunas=l.split('|'); colunas[10]=' '+celula+' '; return colunas.join('|');
+  }).join('\n');
+  const r = converterFicha(texto, {site:SITE});
+  if (r.paradas.length || r.criatura.ataques.find(a=>a.nome==='Mordida')?.bloqueiaComoArma !== esperado) falhas.push('bloqueio da célula não preservado: '+celula);
+}
+
 if (falhas.length) {
   console.log(`✘ test-conversor: ${falhas.length} falha(s)`);
   for (const f of falhas) console.log(`  · ${f}`);
   process.exit(1);
 }
-console.log(`✓ test-conversor · os dois exemplos, ${comparados} diferenças com a classe e o motivo escritos, ${PLANTADOS.length + 1} paradas plantadas acusadas`);
+console.log(`✓ test-conversor · os dois exemplos, ${comparados} diferenças com a classe e o motivo escritos, ${PLANTADOS.length + 2} paradas plantadas acusadas`);

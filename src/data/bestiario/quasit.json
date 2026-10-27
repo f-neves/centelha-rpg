@@ -314,10 +314,6 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
-    },
-    {
-      "campo": "habilidadesEspeciais.Regeneração 2",
-      "motivo": "Antes: 1 PV/6 Ticks passivos. N 2 pela referência Quasit (Archives of Nethys)."
     }
   ]
 }

@@ -159,12 +159,6 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "efeito": "veneno e paralisia não pegam nele (o Anão parente tem só +1d6 contra veneno; o duergar é imune)"
-    },
-    {
-      "nome": "Firme como pedra",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "Atletismo, com a Especialidade natural (ficar de pé em solo firme) +2, contra Derrubar e Empurrar"
     }
   ],
   "comoLuta": [
@@ -255,10 +249,6 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
-    },
-    {
-      "campo": "habilidadesEspeciais.Firme como pedra",
-      "motivo": "Especialidade natural +2 em Atletismo"
     }
   ]
 }

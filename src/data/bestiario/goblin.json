@@ -1,36 +1,24 @@
 {
-  "ordem": 17,
   "id": "goblin",
   "idAntigo": "mon-goblin",
   "nome": "Goblin",
   "nomeIngles": "Goblin",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humanoide",
+  "categoria": "humanoide",
   "papel": "capanga",
-  "conceito": "humanoide Pequeno",
-  "descricao": "Humanoide pequeno, covarde sozinho e perigoso em bando. Some entre sombras e mato, enxerga no escuro e cerca a presa maior para atacar de vários lados.",
-  "descricaoLegada": "Povo civilizado ou selvagem, do tamanho de um homem.",
-  "tags": [
-    "humanoide"
-  ],
-  "imagem": "bestiario/goblin_criatura.webp",
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "0,95 m de altura",
-    "peso": "18 kg",
-    "largura": 0.29,
-    "altura": 0.95
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 0.95,
+    "largura": 0.29,
+    "profundidade": 0.15,
+    "comprimento": null,
+    "massa": 18,
+    "area": 0.25
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 2,
     "destreza": 4,
     "vigor": 3,
@@ -41,7 +29,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 2,
     "briga": 1,
     "bloqueio": 1,
@@ -52,75 +40,110 @@
     "integridade": 2,
     "sobrevivencia": 1
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "entre sombras e mato",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "armas",
-      "foco": "atacar em bando",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 0
+  },
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "entre sombras e mato",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "armas": [
+      {
+        "foco": "atacar em bando",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 2
+    "temperanca": 2
   },
-  "willpower": 5,
+  "vontade": 5,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-curta"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Espada curta",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 2,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "arma": "espada-curta",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
-    {
-      "nome": "Emboscada em bando",
-      "descricao": "flanquear (Flanqueado) e atacar junto; Armas (atacar em bando) +1.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Pequeno e furtivo",
-      "descricao": "Furtividade, com a Especialidade natural (entre sombras e mato) +2 e o Tamanho Pequeno.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Faro de sobrevivente",
-      "descricao": "Sobrevivência 1.",
-      "classe": "livro"
-    },
+  "habilidadesEspeciais": [],
+  "comoLuta": [
     {
       "nome": "bando covarde",
-      "descricao": "só ataca em número e de emboscada; cerca o mais fraco, foge quando metade do bando cai.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga sem luz como de dia (site). · audição e olfato: os de um humano."
+      "formas": "todas",
+      "texto": "só ataca em número e de emboscada; cerca o mais fraco, foge quando metade do bando cai."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga sem luz como de dia",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "camuflagem": "some entre sombras e mato; Especialidade natural",
+    "mente": "humanoide; covarde e esperta",
+    "tracos": "cabeça grande, orelhas largas, olhos que brilham no escuro, dentes tortos"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em bando, típico 4 a 12",
+    "atividade": "noturno",
+    "dieta": "onívoro",
+    "caca": "emboscada em bando",
+    "dianteDeGente": "foge do grupo forte, embosca o fraco"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta",
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Humanoide pequeno, covarde sozinho e perigoso em bando. Some entre sombras e mato, enxerga no escuro e cerca a presa maior para atacar de vários lados.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Covardes quando sozinhos ou em desvantagem, cruéis com qualquer coisa mais fraca, preferem emboscada e armadilha a luta franca. Social: em bando, típico 4 a 12."
+      "texto": "Covardes quando sozinhos ou em desvantagem, cruéis com qualquer coisa mais fraca, preferem emboscada e armadilha a luta franca."
     },
     {
       "titulo": "Sociedade",
@@ -133,78 +156,24 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "São um dos povos ásperos que os anões moldaram da própria rocha da montanha, usando técnicas aprendidas pela metade dos elfos; sem a lapidação que os anões deram a si mesmos, os goblins saíram numerosos, de vida curta e sempre à margem das cidades humanas."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Pequeno: mais difícil de acertar que um homem, pela regra de Tamanho. 26 PV, Impacto 3. Esquiva e Bloqueio 10 (11 com a espada). A espada curta dá dano médio 3,5. Sozinho, cai rápido; o perigo é o bando que cerca e flanqueia no escuro."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Forest",
-      "Underground"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/goblin_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Furtividade 2, Sobrevivência 1.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Goblin",
-    "cr": "1/3",
-    "tipo": "humanoide Pequeno",
-    "tamanho": "pequeno",
-    "valores": {
-      "for": 11,
-      "des": 15,
-      "con": 12,
-      "int": 10,
-      "sab": 9,
-      "car": 6
+  "revisao": [
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Emboscada em bando)"
     },
-    "pericias": [
-      "Furtividade 2",
-      "Sobrevivência 1"
-    ],
-    "nota": "Mundano, sem nada sobrenatural: Centelha 0. O +4 racial em Furtividade vira especialidade.",
-    "exemplo": true,
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 26,
-    "esquiva": 10,
-    "bloqueio": 10,
-    "defesa": 11,
-    "defesaMental": 9,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 3,
-      "corte": 0,
-      "perfuracao": 0
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 58.45,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
-    },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "`massa`: 18 kg na borda de cima da zona de transição de 12 a 18 kg; na faixa de baixo seriam 18 PV",
-    "`equipamento`: espada curta do livro, sem armadura **[provisório]**",
-    "`bravura`: 2; o site tinha 3 **[provisório]**"
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "site (visão no escuro)"
+    }
   ]
 }

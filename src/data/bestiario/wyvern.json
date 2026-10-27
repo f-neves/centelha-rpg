@@ -306,6 +306,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "ataques.Ferrão",
+      "motivo": "números sugeridos pela ficha (D-197)"
     }
   ]
 }

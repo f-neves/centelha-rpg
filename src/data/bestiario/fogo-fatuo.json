@@ -130,12 +130,6 @@
       "limiteDeUso": "nenhum"
     },
     {
-      "nome": "corpo minúsculo",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "o Alvo Miúdo pesa contra quem o ataca (R8)"
-    },
-    {
       "nome": "Difícil de acertar por Arte",
       "formas": "todas",
       "classe": "sem regra ainda",

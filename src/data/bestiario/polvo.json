@@ -1,31 +1,30 @@
 {
-  "ordem": 269,
   "id": "polvo",
   "idAntigo": "mon-octopus",
   "nome": "Polvo-comum",
   "nomeIngles": "Common octopus",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Médio",
-  "descricao": "Some no fundo mudando de cor e textura; pego, morde, e a mordida inflama por dias.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": null,
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "0,82 m de comprimento, 0,13 m de altura",
-    "peso": "2,2 kg",
-    "comprimento": 0.82,
-    "largura": 0.27,
-    "altura": 0.13
-  },
-  "locomocao": {
-    "natacao": 1
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "nadador (vive no fundo)",
+    "apoio": "outro",
+    "altura": 0.13,
+    "largura": 0.27,
+    "profundidade": null,
+    "comprimento": 0.82,
+    "massa": 2.2,
+    "area": 0.65,
+    "posturaDoTamanho": "braços abertos",
+    "segundoTamanho": {
+      "area": 0.125,
+      "posturaDoTamanho": "de cima, braços juntos",
+      "tamanhoEscolhido": "miudo"
+    }
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 1,
     "destreza": 4,
     "vigor": 2,
@@ -36,184 +35,196 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 2,
+    "bloqueio": 0,
     "esquiva": 3,
+    "atletismo": 0,
     "furtividade": 4,
     "integridade": 1,
     "prontidao": 2,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
     "natacao": 2,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "camuflagem de cor e textura, parado",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "tato e gosto nas ventosas",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "Agarrão",
-      "valor": 2,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "camuflagem de cor e textura, parado",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "prontidao": [
+      {
+        "foco": "tato e gosto nas ventosas",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "Agarrão",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 1,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 1
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "nado": {
+      "batalha": 1
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Bico",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "Braços: Segura a presa pequena; contra um humano, o Mestre decide se o braço segura uma mão (40 N por braço).",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
     },
     {
       "nome": "nuvem de tinta",
-      "descricao": "solta uma nuvem de tinta que esconde a fuga.",
-      "classe": "sem regra ainda"
-    },
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "solta uma nuvem de tinta que esconde a fuga"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "jato para trás",
-      "descricao": "foge em jato.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "foge em jato."
     },
     {
       "nome": "espremer por fenda",
-      "descricao": "passa por abertura de pouco mais de 2,5 cm.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "passa por abertura de pouco mais de 2,5 cm."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "tato e gosto nas ventosas",
+      "descricao": "Especialidade natural Prontidão (tato e gosto nas ventosas) +2; quimiorreceptores (Wikipédia \"Octopus\"; Graziadei 1964)",
+      "formas": "todas"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "tato e gosto nas ventosas: Especialidade natural Prontidão (tato e gosto nas ventosas) +2; quimiorreceptores. · visão: sem cor; distingue brilho, forma e orientação. Sem Especialidade. · equilíbrio: dois estatocistos. Sem Especialidade."
-    }
-  ],
-  "venenos": [
+      "nome": "visão",
+      "descricao": "sem cor (Wikipédia \"Octopus\"); distingue brilho, forma e orientação (Wikipédia \"Common octopus\"). Sem Especialidade",
+      "formas": "todas"
+    },
     {
-      "nome": "Veneno no jogo",
-      "texto": "Cefalotoxina · Potência 8 · minuto (sangue) · a cada 1 hora · pool 4 (PV) · Desgaste 1 · pelo Bico"
+      "nome": "equilíbrio",
+      "descricao": "dois estatocistos (Wikipédia \"Octopus\"). Sem Especialidade",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "água",
+    "prendeRespiracao": "(tempo fora d'água não achado)",
+    "camuflagem": "muda cor e textura (geral dos polvos); Furtividade 4 e Especialidade natural +3",
+    "mente": "animal, com Inteligência 2 (lista da diretriz 1)",
+    "tracos": "sem esqueleto, só o bico duro; cerca de 500 milhões de neurônios, dois terços nos braços (Wikipédia \"Common octopus\"); vive de 1 a 2 anos; a fêmea perde um terço do peso na desova (ADW)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "crepuscular",
+    "dieta": "carnívoro",
+    "caca": "emboscada e busca no fundo",
+    "dianteDeGente": "foge"
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático",
+      "litoral"
+    ],
+    "clima": [
+      "temperado",
+      "frio"
+    ]
+  },
+  "descricao": "Some no fundo mudando de cor e textura; pego, morde, e a mordida inflama por dias.",
   "lore": [
     {
       "titulo": "Caçadora astuta",
       "texto": "Usa táticas surpreendentemente complexas para emboscar e capturar suas presas nas águas costeiras."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Veneno no jogo: Cefalotoxina · Potência 8 · minuto (sangue) · a cada 1 hora · pool 4 (PV) · Desgaste 1 · pelo Bico"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio de braços abertos, que é como luta: nem ele nem o humano Médio ganham bônus de acerto. De braços juntos, parado, fica Miúdo, e ganharia +6 no corpo a corpo (+3 por categoria de diferença, só o menor ganha; são duas). Muito difícil de achar parado (Furtividade 4 e +3 natural na camuflagem). A mordida faz 2,5 em média; o que fica é a ferida que inflama por dias: a cefalotoxina, de Potência 8, pesa pelo Desgaste e não mata. Agarra e prende a mão (agarrão de 2, com a Briga (Agarrão) +2), mas não segura um adulto inteiro. Foge a jato e por fenda. 6 PV."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Water",
-      "Coast"
-    ],
-    "clima": [
-      "Temperate",
-      "Cold"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Octopus",
-    "cr": "1",
-    "tipo": "animal Pequeno",
-    "tamanho": "pequeno",
-    "valores": {
-      "for": 12,
-      "des": 17,
-      "con": 14,
-      "int": 2,
-      "sab": 13,
-      "car": 3
+  "revisao": [
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Fixada em `valores.mjs`. Régua: 2 é o normal da espécie no próprio meio. Nada medido de fome, frio, veneno ou ferida; a fêmea perde um terço do peso na desova e o animal vive 1 a 2 anos (ADW) . Era 0."
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesSec.natacao",
+      "motivo": "Etapa 2 (20/10/2026): Decisão de 20/10/2026: a Habilidade secundária de Natação vale nas jogadas (manobrar na água), e a velocidade continua congelada; o nado em m por Tick não muda. A decisão põe o polvo entre os nadadores que recebem a Habilidade pela pesquisa: velocidade da espécie não medida (Huffard 2006), mas foge a jato para trás e se espreme entre as rochas (Wikipédia \"Octopus\"). Fica 2, abaixo das lulas (4), que vivem nadando . Antes: Sem velocidade medida da espécie (Huffard 2006: nenhuma publicada); o nado sai da anatomia."
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 6,
-    "esquiva": 14,
-    "bloqueio": 8,
-    "defesa": 14,
-    "defesaMental": 7,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 2,
-      "corte": 2,
-      "perfuracao": 2
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,79 × 1,0323 = 0,816 . Antes: escalado pelo cubo da massa: 0,9 × (2 ÷ 3)^(1/3) = 0,79; os 0,9 m eram o alto de \"1 a 3 pés com os braços\", de 0,3 a 0,9 m (ADW), postos no animal de 3 kg. Braço de até 1 m no maior (Norman 2000, Wikipédia). Era 0,9 m"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 23.14,
-    "deslocamento": {
-      "nado": 1
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,26 × 1,0323 = 0,268 . Antes: não achada. Escalado pelo cubo da massa: 0,3 × (2 ÷ 3)^(1/3) = 0,26. Era 0,3 m"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Etapa 2 (20/10/2026): Decisão 5 de 19/10/2026: a ficha principal usa uma versão um pouco acima da média da espécie, dentro da faixa real. 2 kg mais 10% = 2,2 kg , dentro da faixa real (comum de 1 a 3 kg, máximo de 10 kg; FAO). Antes: Era 3 kg. Referência: 2 kg, o meio da faixa comum de 1 a 3 kg da FAO, (1 + 3) ÷ 2 = 2 : meio de faixa, e não média, porque a média por sexo não foi achada. Faixa do adulto de 1 a 10 kg: \"comum 1 a 3 kg com manto de 10 a 20 cm\", máximo de 10 kg e manto de 23 cm (FAO); \"até 9 kg\" (Norman 2000, citado na Wikipédia). Sexos: o macho chega maior (comprimento total máximo de 180 cm contra 120 cm da fêmea, SeaLifeBase, trecho de busca, não conferido); média por sexo . A faixa comum é  (pesca, FAO)"
     }
-  },
-  "notasObservacao": [
-    "forca: 1 ◆ na sétima rodada (item 8 da `tamanho-decisoes-5.md`): os braços puxam e prendem a mão de um humano; era 0 pela leitura automática da D-167. O bico sobe de 1,5 para 2,5 de média e o agarrão de 0 para 2 (D-115).",
-    "pesoErguido: 23,14 kg (em vigor na Etapa 2, 20/10/2026); antes: provisório, 21,45 kg ◆ (17,62 com a Força 0) pela fórmula das decisões 14 e 16 (calc6, massa de 2 kg); cefalópode não tem `carga` (D-160, D-175). Os 40 N por braço (Margheri 2009, trecho de busca, não conferido) somam uns 32 kg-força nos oito, na mesma ordem: o conflito de feito contra regra da ficha de 12/10 (0,47 kg) se desfaz, mas o feito segue não conferido.",
-    "alvo: Miúdo pela área de cima com os braços juntos, 0,12 m² (0,1177), escalada pelo cubo da massa a partir dos 0,15 m² do polvo de 3 kg da tamanho-fichas-v2. Fica rente ao corte de 0,12: o de 3 kg é Pequeno. Segundo Alvo Médio com os braços abertos (0,61 m², decisão 8). Pela D-215 (24/10/2026), o principal passou a ser o de braços abertos (Médio, 0,65 m²), e o Miúdo ficou como segundo. Provisório até os cortes fecharem (D-174).",
-    "pv: 6 (em vigor na Etapa 2, 20/10/2026); antes: faixa 1 nas duas versões do autor; o PV total usa 5 + Vigor = 7 (decisão 21, delegada). Com 10 + metade do Vigor seriam 11.",
-    "inteligencia: 2 pela lista fechada da diretriz 1; nota \"2 não é inteligência humana\".",
-    "compostura: desce de 3 para 1 por não ser espécie social (diretriz 1); a camuflagem, que a sustentava, passou a Especialidade natural de Furtividade.",
-    "resistencia: 2 sem dado de fome, frio, veneno ou ferida **[extrapolação]**, pela régua (2 é o normal no próprio meio).",
-    "musculatura: 3 (robusto), sem medida do corpo inteiro; só a puxada do braço (trecho de busca).",
-    "furtividade: 4, com o levantamento apontando candidato a 5; a camuflagem fica como Especialidade natural +3 (do corpo), e não como Especialidade do livro (que pela Furtividade 4 abriria só 2).",
-    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "anatomia: cefalópode, anatomia provisória (D-175), não calibrada em animal medido. Ela não tem terra: o rastejar no fundo (Huffard 2006, outra espécie: 7,3 cm/s) e a saída breve da água ficam em texto (D-174).",
-    "velocidade: congelada (decisão 23), provisória pela fórmula de hoje (D-170); nenhuma velocidade medida da espécie.",
-    "veneno: veneno sem id no catálogo (D-112); o efeito real está na pesquisa e em Veneno e doença.",
-    "fonte: os 40 N do braço continuam só pelo resumo de busca (Margheri e colegas, Scuola Sant'Anna; PubMed pediu cookies e o repositório IRIS deu 403) (D-174).",
-    "massa: 2,2 kg (em vigor na Etapa 2, 20/10/2026); antes: 2 kg, o meio da faixa comum de 1 a 3 kg da FAO (sexta rodada, item 4 da tamanho-decisoes-5.md: o adulto típico); era 3 kg, o alto do comum. Meio de faixa, não média: a média por sexo não foi achada. Dimensões, área e segundo Alvo escalados pelo cubo da massa.",
-    "dimensoes: altura e largura estimadas pela Bestiarista, sem fonte (D-174), agora escaladas pelo cubo (0,13 e 0,26 m)."
   ]
 }

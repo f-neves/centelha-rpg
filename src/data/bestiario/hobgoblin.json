@@ -1,35 +1,24 @@
 {
-  "ordem": 20,
   "id": "hobgoblin",
   "idAntigo": "mon-hobgoblin",
   "nome": "Hobgoblin",
   "nomeIngles": "Hobgoblin",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humanoide",
+  "categoria": "humanoide",
   "papel": "capanga",
-  "conceito": "humanoide Médio",
-  "descricao": "Goblinoide do tamanho de um homem, soldado nato que luta em formação, de espada longa. Coordena emboscadas em silêncio e enxerga no escuro.",
-  "tags": [
-    "humanoide"
-  ],
-  "imagem": "bestiario/hobgoblin_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,7 m de altura",
-    "peso": "73 kg",
-    "largura": 0.44,
-    "altura": 1.7
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.7,
+    "largura": 0.44,
+    "profundidade": 0.23,
+    "comprimento": null,
+    "massa": 73,
+    "area": 0.67
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 4,
     "destreza": 4,
     "vigor": 5,
@@ -40,7 +29,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 3,
     "briga": 1,
     "bloqueio": 2,
@@ -52,77 +41,117 @@
     "resistencia": 2,
     "sobrevivencia": 1
   },
-  "skills2": {
-    "estrategia": 1
+  "habilidadesSec": {
+    "estrategia": 1,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "em formação",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "bloqueio",
-      "foco": "em formação",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "em formação",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 3,
-    "valor": 3
+    "temperanca": 3
   },
-  "willpower": 5,
+  "vontade": 5,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-longa"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Espada longa",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 1,
-      "ticks": 6,
-      "classe": "media"
+      "arma": "espada-longa",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Disciplina militar",
-      "descricao": "Ativação: nenhuma; vale enquanto luta ombro a ombro com um aliado que também tem Disciplina militar. Duração: enquanto a formação se mantiver. Alcance: 1 m, o aliado ao lado. Área: ele e o aliado. Efeito: soma +1 na Defesa e não pode ser flanqueado pelo lado do aliado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Furtivo",
-      "descricao": "Furtividade 2; arma emboscadas em silêncio.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Alerta",
-      "descricao": "Prontidão 1.",
-      "classe": "livro"
-    },
-    {
-      "nome": "linha de escudos",
-      "descricao": "avança em formação, cobre o companheiro, recua em ordem; obedece ao comandante e não foge sozinho.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga sem luz (site). · audição e olfato: os de um humano."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; vale enquanto luta ombro a ombro com um aliado que também tem Disciplina militar",
+      "duracao": "enquanto a formação se mantiver",
+      "alcance": "1 m, o aliado ao lado",
+      "area": "ele e o aliado",
+      "efeito": "soma +1 na Defesa e não pode ser flanqueado pelo lado do aliado",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "linha de escudos",
+      "formas": "todas",
+      "texto": "avança em formação, cobre o companheiro, recua em ordem; obedece ao comandante e não foge sozinho."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga sem luz",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humanoide; disciplinada",
+    "tracos": "pele avermelhada ou parda, rosto achatado, presas curtas, olhos que brilham no escuro"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em tropa, típico 4 a 12",
+    "atividade": "noturno",
+    "dieta": "onívoro",
+    "caca": "saque e conquista",
+    "dianteDeGente": "combate em formação ou emboscada coordenada"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta",
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Goblinoide do tamanho de um homem, soldado nato que luta em formação, de espada longa. Coordena emboscadas em silêncio e enxerga no escuro.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Disciplinados e metódicos, lutam em formação fechada e valorizam hierarquia militar acima de tudo, ao contrário dos goblins soltos. Social: em tropa, típico 4 a 12."
+      "texto": "Disciplinados e metódicos, lutam em formação fechada e valorizam hierarquia militar acima de tudo, ao contrário dos goblins soltos."
     },
     {
       "titulo": "Sociedade",
@@ -135,77 +164,40 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Entre os filhos que os anões moldaram da rocha, os hobgoblins foram os que melhor herdaram o senso de ordem da forja; erguem acampamentos fortificados nas terras selvagens de Mére, disciplinados o bastante para preocupar até exércitos humanos."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, 40 PV, Impacto 5. Bloqueio 12 (13 com a espada), Esquiva 10; em formação, +1. A espada longa dá dano médio 7,5 (10,5 com as duas mãos). Vem em tropa e não foge sozinho."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Forest",
-      "Underground"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/hobgoblin_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Furtividade 2, Prontidão 1.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Hobgoblin",
-    "cr": "1/2",
-    "tipo": "humanoide Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 15,
-      "des": 15,
-      "con": 16,
-      "int": 10,
-      "sab": 12,
-      "car": 8
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Disciplina militar",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Furtividade 2",
-      "Prontidão 1"
-    ],
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidades.armas",
+      "motivo": "O site gravava `briga` 1 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5). Soldado de linha"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 40,
-    "esquiva": 10,
-    "bloqueio": 12,
-    "defesa": 13,
-    "defesaMental": 9,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 0,
-      "perfuracao": 0
+    {
+      "campo": "habilidades.bloqueio",
+      "motivo": "Apara com a espada, como soldado treinado em formação"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 152.93,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Disciplina militar)"
     },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "`equipamento`: espada longa do livro, sem armadura **[provisório]**",
-    "`armas`, `bloqueio`: 3 e 2; o site tinha só Briga 1 **[provisório]**",
-    "`temperanca`: 3; o site tinha 2 **[provisório]**",
-    "`disciplina militar`: números sugeridos pela ficha (D-197)"
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "site (visão no escuro)"
+    },
+    {
+      "campo": "comportamento.caca",
+      "motivo": ""
+    }
   ]
 }

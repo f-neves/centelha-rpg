@@ -241,7 +241,7 @@
       "duracao": "Abalado até o fim da cena",
       "alcance": "36 m",
       "area": "esfera de 36 m em volta dele",
-      "efeito": "quem falha fica Abalado; quem falha por 5 ou mais fica Imobilizado até o fim da próxima ação (o \"Paralisado de terror por 1 turno\" do site; o livro não tem a condição \"paralisado\")",
+      "efeito": "quem falha fica Abalado",
       "dano": "nenhum",
       "resistencia": "mente, contra Influência 7 + Intimidação 5 + 2 × o menor entre Centelha 9 e Intimidação 5 (10) = 22 mais a rolagem; quem passa fica imune até o fim da cena",
       "limiteDeUso": "uma vez por cena"
@@ -281,6 +281,12 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "efeito": "efeito de medo comum não o deixa Abalado; só uma presença divina o afeta"
+    },
+    {
+      "nome": "paralisia da presença",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o medo da presença trava o corpo da vítima"
     }
   ],
   "comoLuta": [
@@ -425,10 +431,6 @@
     {
       "campo": "ataques.Mordida.nivelPerfuracao",
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como no branco jovem. Golpe de boca: Força × 1. N3, um acima do branco jovem (N2), para a mordida dos adultos e anciões . Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
-    },
-    {
-      "campo": "corpo.area",
-      "motivo": "Principal Colossal para Imenso; as duas áreas mantidas, mudando a postura principal (2e-1)."
     }
   ]
 }

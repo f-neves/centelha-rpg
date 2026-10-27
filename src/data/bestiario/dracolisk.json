@@ -278,8 +278,8 @@
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como a dos dragões. Golpe de boca: Força × 1. N1, um abaixo do branco jovem (N2), pela massa . Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
-      "campo": "habilidadesEspeciais.Olhar petrificante",
-      "motivo": "o da medusa, com resistência de Compostura"
+      "campo": "ataques.Mordida",
+      "motivo": "N1"
     },
     {
       "campo": "corpo.area",

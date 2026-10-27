@@ -1,36 +1,28 @@
 {
-  "ordem": 239,
   "id": "ponei",
   "idAntigo": "mon-pony",
   "nome": "Pônei",
   "nomeIngles": "Pony",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Médio",
-  "descricao": "Raça pequena de uma ilha do sul do Japão, que serviu na lavoura, na carga e na guerra; hoje rara (85 animais em 2008). Leva até cerca de um terço do próprio peso a trote.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/ponei_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "2,34 m de comprimento, 1,48 m de altura",
-    "peso": "220 kg",
-    "comprimento": 2.34,
-    "largura": 0.46,
-    "altura": 1.48
-  },
-  "locomocao": {
-    "terra": 7
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 7,
-    "arranque": 11,
-    "corrida": 14
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 1.48,
+    "largura": 0.46,
+    "profundidade": null,
+    "comprimento": 2.34,
+    "comprimentoSemCauda": 1.93,
+    "caudaGrossa": false,
+    "massa": 220,
+    "area": 1.17,
+    "posturaDoTamanho": "vista de lado",
+    "linhaPV": "acima"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 6,
     "destreza": 2,
     "vigor": 4,
@@ -41,90 +33,146 @@
     "perspicacia": 2,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 1,
+    "bloqueio": 0,
     "esquiva": 2,
     "atletismo": 2,
+    "furtividade": 0,
     "integridade": 1,
     "prontidao": 3,
     "resistencia": 4,
     "empatia": 2,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "visão periférica",
-      "valor": 2,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "visão periférica",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 1,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 1
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 7,
+  "deslocamento": {
+    "terra": {
+      "batalha": 7,
+      "arranque": 11,
+      "corrida": 14
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Coice",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "casco",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "atropelar",
-      "descricao": "Coice: Investida.",
-      "classe": "livro"
-    },
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Coice",
+      "regra": "investida"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "passo resistente",
-      "descricao": "anda longas distâncias com carga moderada sem cansar.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "anda longas distâncias com carga moderada sem cansar."
     },
     {
       "nome": "dócil",
-      "descricao": "raramente entra em combate, a menos que treinado para isso.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "os do cavalo, mesma espécie: Prontidão (visão periférica) +2, natural; penumbra, audição e faro em texto."
+      "formas": "todas",
+      "texto": "raramente entra em combate, a menos que treinado para isso."
     }
   ],
-  "doencas": [
+  "sentidos": [
     {
-      "nome": "Doença no jogo (ao tratar)",
-      "texto": "Mormo · Virulência 10 · dia · pelo contato com o animal doente: quem cuida dele rola uma vez por dia contra a metade da Virulência (o Contágio do livro)"
+      "nome": "os do cavalo, mesma espécie",
+      "descricao": "Prontidão (visão periférica) +2, natural; penumbra, audição e faro em texto",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "cernelha de 1,02 a 1,22 m na raça de Yonaguni (Porter 2016)"
+  },
+  "aptidoes": {
+    "montaria": true,
+    "carga": true,
+    "tracao": true
+  },
+  "comportamento": {
+    "social": "bando",
+    "atividade": "",
+    "dieta": "herbívoro",
+    "caca": "pastagem",
+    "dianteDeGente": "doméstico; foge do que assusta"
+  },
+  "ecologia": {
+    "terreno": [
+      "planície"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Raça pequena de uma ilha do sul do Japão, que serviu na lavoura, na carga e na guerra; hoje rara (85 animais em 2008). Leva até cerca de um terço do próprio peso a trote.",
   "lore": [
     {
       "titulo": "Montaria dos pequenos povos",
@@ -135,97 +183,38 @@
       "texto": "Apesar do porte modesto, arrasta cargas surpreendentemente pesadas e cria laços afetuosos com quem o cria."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: bando."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Doença no jogo (ao tratar): Mormo · Virulência 10 · dia · pelo contato com o animal doente: quem cuida dele rola uma vez por dia contra a metade da Virulência (o Contágio do livro)"
     },
     {
       "titulo": "Aptidões",
       "texto": "montaria sim (para gente pequena ou leve: a carga Leve é 60 kg) · carga sim · tração sim (lavoura)"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio: ninguém ganha bônus de acerto pelo Alvo contra o humano. Força 6 contra o humano: quem tem Força 2 ou menos não apara o coice. 46 PV e Couraça nível 1: quanto ela tira da espada e da flecha fica para depois, e o Impacto perde 4. Leva 60 kg a trote sem perder a marcha: uma criança, um halfling, ou a bagagem de um viajante. Corre a 51 km/h."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Plains"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/ponei_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Pony",
-    "cr": "1/2",
-    "tipo": "animal Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 13,
-      "des": 13,
-      "con": 14,
-      "int": 2,
-      "sab": 11,
-      "car": 4
+  "revisao": [
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,46 × 1,0156 = 1,483 . Antes: a cernelha de 1,22 m (Matsuura) × 1,2, a mesma proporção da ficha do cavalo, cujo texto de 1843 não foi conferido"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 2,30 × 1,0156 = 2,336 . Antes: o cavalo (2,4 m) reduzido; sem medida de pônei"
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 46,
-    "esquiva": 8,
-    "bloqueio": 4,
-    "defesa": 8,
-    "defesaMental": 6,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 4,
-      "perfuracao": 4
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,90 × 1,0156 = 1,930 . Antes: o cavalo (2,5 m) × 0,8, a razão das cernelhas (122 ÷ 153); sem medida"
     },
-    "couracaNivel": 1,
-    "pesoErguido": 683.79,
-    "carga": {
-      "leve": 60,
-      "media": 120,
-      "pesada": 180,
-      "maxima": 240
-    },
-    "deslocamento": {
-      "terra": {
-        "batalha": 7,
-        "arranque": 11,
-        "corrida": 14
-      }
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,45 × 1,0156 = 0,457 . Antes: os 0,6 m do cavalo × 0,8"
     }
-  },
-  "notasObservacao": [
-    "alvo: Médio pela silhueta de lado (1,13 m², `calc.mjs`); a ficha de hoje tinha Médio por encaixe, com a conta antiga em 4,01. A nota de borda de hoje cai (D-174).",
-    "massa (13/10/2026): 220 kg (em vigor na Etapa 2, 20/10/2026); antes: 210 kg com fonte (Bukhari 2021 dá aos pôneis de Matsuura 2016 de 192 a 227 kg). Comparação: o pônei de Taishu, de 216 a 265 kg, trotou com menos de 100 kg, 43% da massa (Matsuura 2013) (D-174).",
-    "fonte: a cernelha de 1,22 m e as cargas de 10 a 70 kg continuam só pelo resumo de Matsuura 2016 (D-174).",
-    "dimensoes: comprimentos e largura são o cavalo reduzido pela razão das cernelhas, sem fonte; a altura até a nuca é a proporção do cavalo (D-147, D-174).",
-    "carga: Leve de 60 kg é a maior carga do teste abaixo dos 70 kg em que a marcha piorou; leitura minha do resumo. Provisória (D-122, D-169, D-172, D-174).",
-    "pesoErguido: 681 kg pela conta das decisões 14 e 16, provisório; a fórmula está com outra frente. Pela mesma conta o cavalo ergue 698 kg, quase o mesmo com mais que o dobro da massa: a Musculatura 3 do pônei contra a 2 do cavalo compensa a massa. Se a outra frente achar que a Musculatura pesa demais na conta, o pônei é o primeiro caso a olhar (D-162, D-169, D-174).",
-    "vigor: 4, um abaixo do cavalo, sem dado de frio, fome ou doença do pônei; provisório (D-174).",
-    "musculatura: 3 pela carga proporcional (33% contra 20% do cavalo), que mede carga no lombo e não força de empurrar; provisório (D-174).",
-    "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua, sem feito acima do normal; falta a distância por dia do pônei (D-174).",
-    "empatia: 2 pelo cavalo, mesma espécie, sem número; provisória (D-174).",
-    "velocidade: congelada (decisão 23), pela fórmula de hoje com o Alvo Médio (D-170).",
-    "forca: 6 por encaixe, um abaixo do cavalo; sem feito de arrasto medido (D-158, D-174).",
-    "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois."
   ]
 }

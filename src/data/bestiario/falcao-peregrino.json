@@ -1,38 +1,32 @@
 {
-  "ordem": 210,
   "id": "falcao-peregrino",
   "idAntigo": "mon-hawk",
   "nome": "Falcão-peregrino",
   "nomeIngles": "Peregrine falcon",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Pequeno",
-  "descricao": "Sobe alto, escolhe a ave e desce em espiral; golpeia no ar e mata pelo pescoço. Migra entre continentes.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/falcao-peregrino_criatura.webp",
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "0,47 m de comprimento, 0,36 m de altura",
-    "peso": "0,85 kg",
-    "comprimento": 0.47,
-    "largura": 0.11,
-    "altura": 0.36,
-    "envergadura": 0.98
-  },
-  "locomocao": {
-    "voo": 5,
-    "terra": 1
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 1,
-    "arranque": 1,
-    "corrida": 2
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "voador",
+    "apoio": "outro",
+    "altura": 0.36,
+    "largura": 0.11,
+    "profundidade": null,
+    "comprimento": 0.47,
+    "comprimentoSemCauda": 0.32,
+    "caudaGrossa": false,
+    "envergadura": 0.98,
+    "massa": 0.85,
+    "area": 0.146,
+    "posturaDoTamanho": "de baixo, asas abertas",
+    "segundoTamanho": {
+      "area": 0.098,
+      "posturaDoTamanho": "asas fechadas"
+    }
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 1,
     "destreza": 5,
     "vigor": 2,
@@ -43,96 +37,164 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 4,
     "atletismo": 2,
     "furtividade": 3,
     "integridade": 1,
     "prontidao": 3,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 4
   },
-  "skills2": {
+  "habilidadesSec": {
     "equilibrio": 1,
+    "escalada": 0,
+    "natacao": 0,
     "voo": 1,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "visão",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "mergulho sobre a presa",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "do alto",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "visão",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "mergulho sobre a presa",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ],
+    "furtividade": [
+      {
+        "foco": "do alto",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 7,
+  "deslocamento": {
+    "terra": {
+      "batalha": 1,
+      "arranque": 1,
+      "corrida": 2
+    },
+    "voo": {
+      "batalha": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Garras (golpe do mergulho)",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "garra",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Bico (dente tomial)",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "bico",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 0,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "forca": false,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "mergulho sobre a presa",
-      "descricao": "Garras (golpe do mergulho): Investida, com a velocidade de Mergulho do voo (só descendo).",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras (golpe do mergulho)",
+      "regra": "investida",
+      "texto": "só descendo"
     },
     {
       "nome": "agarrar",
-      "descricao": "Garras: o dano de Força do agarrão é 2 × 1 = 2.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão: Prontidão (visão) +3, notar e mirar de longe, com luz; com pouca luz não vale. Acuidade estimada de 140 ciclos por grau contra cerca de 60 no humano; fusão de cintilação de 129 Hz. · Vira a cabeça cerca de 40 graus para ver a presa com a fóvea profunda; por isso mergulha em espiral. Texto."
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
     }
   ],
+  "comoLuta": [],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "Prontidão (visão) +3 (Especialidade natural, era +4), notar e mirar de longe, com luz; com pouca luz não vale (Fox 1976). Acuidade estimada de 140 ciclos por grau (González-Martín-Moro et al. 2017) contra cerca de 60 no humano; fusão de cintilação de 129 Hz (Potier et al. 2020)",
+      "formas": "todas"
+    },
+    {
+      "nome": "sentidos",
+      "descricao": "Vira a cabeça cerca de 40 graus para ver a presa com a fóvea profunda; por isso mergulha em espiral (Tucker et al. 2000). Texto",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "na saída do mergulho, o falcão ideal de 1 kg suporta sustentação de 18 vezes o peso (Tucker 1998, modelo). Texto"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "par",
+    "atividade": "diurno, mais ao amanhecer e ao entardecer",
+    "dieta": "carnívoro",
+    "caca": "caça mergulhando",
+    "dianteDeGente": "tolera; faz ninho em catedrais e arranha-céus; ataques a pessoas não achados"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta",
+      "céu"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Sobe alto, escolhe a ave e desce em espiral; golpeia no ar e mata pelo pescoço. Migra entre continentes.",
   "lore": [
     {
       "titulo": "Olhos do céu",
@@ -141,94 +203,15 @@
     {
       "titulo": "Mensageira das alturas",
       "texto": "Alguns batedores treinam falcões para vigiar estradas e avisar de perigos antes que cheguem."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: par."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Em voo é Pequeno contra um humano Médio: ganha +3 no acerto corpo a corpo e quem atira nele leva −3. Pousado fica Miúdo, e aí são +6 e −6. O dano é pequeno (1,5) e os PV são 2: o falcão não mata gente, e um golpe certo o derruba. Ele é o batedor e o caçador de aves: vê o grupo a mais de um quilômetro, cruza 12 m por Tick e desce a 49 m por Tick no mergulho. No chão, 2 m por Tick."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Forest",
-      "Sky"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/falcao-peregrino_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Hawk",
-    "cr": "1/3",
-    "tipo": "animal Minúsculo",
-    "tamanho": "minusculo",
-    "valores": {
-      "for": 6,
-      "des": 17,
-      "con": 11,
-      "int": 2,
-      "sab": 14,
-      "car": 7
-    },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 60,
-      "origem": "fonte",
-      "nota": "voo 60; em terra 10"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 2,
-    "esquiva": 18,
-    "bloqueio": 10,
-    "defesa": 18,
-    "defesaMental": 7,
-    "defesaSocial": 10,
-    "absorcao": {
-      "impacto": 2,
-      "corte": 2,
-      "perfuracao": 2
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 6.85,
-    "deslocamento": {
-      "terra": {
-        "batalha": 1,
-        "arranque": 1,
-        "corrida": 2
-      },
-      "voo": {
-        "batalha": 5,
-        "cruzeiro": 12,
-        "mergulho": 49
-      }
-    }
-  },
-  "notasObservacao": [
-    "`id antigo`: `mon-hawk` é o \"Hawk\" genérico; a ficha nova é o falcão-peregrino, escolhido pelo plano. Se o autor quiser um gavião (Accipitridae) à parte, é ficha nova (D-174)",
-    "`forca`: 1, a da linha de Atributos e dos ataques (Etapa 2, 20/10/2026); antes: 0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): fica por razão própria, porque o pé segura pombo e não um braço humano, e pela Força de referência da massa (0). Caso de fronteira: o autor diz que \"algumas aves podem ter força 1\", e o falcão é a ave de rapina menor entre as fichas v3; sem medida de aperto da garra, o 0 é **[comparação]** com a águia (2) e o corvo (0). O feito de matar um grou de 3,1 kg é do mergulho e do bico, e não da força; vai para `pesquisa.feitos` (D-162)",
-    "`vigor`: 2, provisório: ave leve e sem feito de resistir na pesquisa; a migração fica na nota de pesquisa (jornada) (decisão 5, D-174)",
-    "`resistencia`: 2, provisória. O levantamento dava 4 pela migração, que a v3 tira da Resistência (diretriz 2); sem dado de fome, frio ou ferida, fica no normal da espécie (D-174)",
-    "`pv`: 2 (em vigor na Etapa 2, 20/10/2026); antes: 7 pela decisão 21 (5 + Vigor), contra 11 pela outra proposta do autor. Caiu de 18 para 7 (D-174)",
-    "`pesoErguido`: 6,85 kg (em vigor na Etapa 2, 20/10/2026); antes: 6,16 kg pela fórmula nova com a Força 1 (decisões 14 e 16; 6,46 kg na fêmea de 0,95 kg com a Força 0), provisório: quase oito vezes a massa e 62 vezes os 0,10 kg da conta antiga, porque o piso da curva vale para a massa pequena. Nenhuma presa levada em voo foi medida para conferir (D-174)",
-    "`musculatura`: 2, provisória: animal comum, sem feito de carga (D-174)",
-    "`alvo`: Pequeno pela silhueta de asas abertas da `tamanho-fichas-v2` (0,17 m²); a área de asa medida é de 0,1257 m² (Alerstam et al. 2007), e com o corpo a silhueta fica perto do corte entre Miúdo e Pequeno. O macho, menor, pode cair em Miúdo (D-174)",
-    "`equilibrio`: 1, nova, provisória: pousa em paredão e prédio, sem dado de pouso difícil (D-174)",
-    "`empatia`: 0, provisória: não é espécie social (D-174)",
-    "`especialidades`: Briga (mergulho sobre a presa) 1 e Furtividade (do alto) 1, provisórias: os dois hábitos de caça (D-174)",
-    "`especialidadesNaturais`: Prontidão (visão) +3. A acuidade do peregrino é estimativa (140 ciclos por grau); a medida de teste é do quiriquiri e varia de 29 a 160 conforme o método (D-174)",
-    "fonte: a cauda de 13 a 19 cm, a altura de 0,38 m e a largura de 0,12 m continuam sem medida conferida; a maior presa (grou de 3,1 kg) só pela Wikipédia (D-174)",
-    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "jornada (nota de pesquisa, não é regra): migração de 8.624 km ao sul e 8.247 km ao norte, em média, por satélite, 61 aves (Fuller, Seegar e Schueck 1998) [medido]; os 172 a 198 km por dia e os 3.900 km em menos de 12 dias de uma fêmea vêm de resumo de busca, não conferidos na fonte primária; cruzeiro de 12,1 m/s por radar (Bruderer e Boldt 2001) [medido]; tempo de perseguição [sem dado]."
-  ]
+  "revisao": []
 }

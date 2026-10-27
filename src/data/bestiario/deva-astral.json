@@ -108,16 +108,9 @@
       "formas": [
         "anjo"
       ],
-      "classe": "regra da ficha",
+      "classe": "sem regra ainda",
       "ataque": "Maça",
-      "ativacao": "o golpe da Maça que fere o alvo com 10 ou mais de dano depois da Absorção",
-      "duracao": "até o fim da próxima ação do alvo",
-      "alcance": "o do corpo a corpo",
-      "area": "um alvo",
-      "efeito": "o alvo fica tonto e perde a próxima ação",
-      "dano": "o da Maça",
-      "resistencia": "corpo, contra a jogada do golpe; quem passa só leva o dano",
-      "limiteDeUso": "um por golpe, sem limite por cena"
+      "efeito": "o golpe da maça deixa o alvo tonto, incapaz de agir por um instante"
     },
     {
       "nome": "Golpe sagrado",
@@ -304,10 +297,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Maça estonteante",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "habilidadesEspeciais.Golpe sagrado",
       "motivo": "números sugeridos pela ficha (D-197)"

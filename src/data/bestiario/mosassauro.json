@@ -2,26 +2,25 @@
   "id": "mosassauro",
   "nome": "Mosassauro",
   "nomeIngles": "Mosasaurus",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Enorme",
-  "descricao": "Réptil marinho de 11 m, predador de topo do mar aberto. Ataca de baixo, perto da superfície, come de peixes a tartarugas e outros répteis marinhos, e briga com os da própria espécie.",
-  "tags": [],
-  "imagem": "bestiario/mosassauro_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "11 m de comprimento, 1,5 m de altura",
-    "peso": "11.000 kg",
-    "comprimento": 11,
-    "largura": 1.5,
-    "altura": 1.5
-  },
-  "locomocao": {
-    "natacao": 7
-  },
+  "ameaca": 5,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "nadador",
+    "apoio": "outro",
+    "altura": 1.5,
+    "largura": 1.5,
+    "profundidade": null,
+    "comprimento": 11,
+    "comprimentoSemCauda": 6.6,
+    "caudaGrossa": true,
+    "massa": 11000,
+    "area": 12.35,
+    "posturaDoTamanho": "de cima"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 12,
     "destreza": 2,
     "vigor": 7,
@@ -32,122 +31,186 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 0,
     "furtividade": 2,
     "integridade": 1,
     "prontidao": 2,
     "resistencia": 3,
+    "empatia": 0,
     "sobrevivencia": 3
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
     "natacao": 3,
+    "voo": 0,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "visão",
-      "valor": 2,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "visão",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "nado": {
+      "batalha": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 2,
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 2,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "mordida",
-      "classe": "livro"
-    },
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "luta pelo focinho",
-      "descricao": "entre os da espécie, briga agarrando pelo focinho.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão: Prontidão (visão) +2, Especialidade natural. Órbitas grandes com anéis escleróticos grandes; olhos nos lados, campo binocular de cerca de 28,5°. · faro: fraco, sem Especialidade (bulbo olfatório e órgão vomeronasal pouco desenvolvidos). · O tímpano ficava numa depressão do osso quadrado; número não achado."
+      "formas": "todas",
+      "texto": "entre os da espécie, briga agarrando pelo focinho."
     }
   ],
-  "lore": [
+  "sentidos": [
     {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário."
+      "nome": "visão",
+      "descricao": "Prontidão (visão) +2, Especialidade natural (era Especialidade comum, com o mesmo valor). Órbitas grandes com anéis escleróticos grandes; olhos nos lados, campo binocular de cerca de 28,5° (Konishi, Caldwell e colegas 2015, via Wikipédia)",
+      "formas": "todas"
     },
     {
-      "titulo": "No jogo",
-      "texto": "Enorme: um humano Médio que o ataca corpo a corpo acerta com +6. Pelo porte, o Médio não apara a mordida, e a Força 12 também trava quem tem Força 6 ou menos (o dobro e ao menos 4 a mais). A mordida faz 19 em média e fura até N2; o agarrão tira 24 por manutenção. 70 PV e Couraça nível 2 (escama pequena num corpo de 11 t); o quanto ela tira fica para depois. Na água, pela conta de hoje, nada a 7 m por Tick, mais que o tubarão-branco (6); o número é provisório e fica acima do bote estimado."
+      "nome": "faro",
+      "descricao": "fraco, sem Especialidade (bulbo olfatório e órgão vomeronasal pouco desenvolvidos, Wikipédia)",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição",
+      "descricao": ". O tímpano ficava numa depressão do osso quadrado; número não achado",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar (réptil)",
+    "prendeRespiracao": "(apneia não achada)",
+    "camuflagem": "contrassombreado, dorso escuro e ventre claro, no mar aberto : medido em escamas de um parente, o Tylosaurus (Lindgren e colegas 2014). Fica na Furtividade, sem Especialidade natural, porque não é do próprio Mosasaurus",
+    "mente": "animal",
+    "tracos": "dependência de água (não sai dela; parto vivo, Field e colegas 2015); nadava com a cauda, estilo subcarangiforme, com nadadeira de dois lobos (tecido mole no parente Prognathodon, Lindgren e colegas 2013), e as nadadeiras manobravam"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "",
+    "dieta": "carnívoro",
+    "caca": "emboscada",
+    "dianteDeGente": ""
+  },
   "ecologia": {
-    "tipo": "Animal",
     "terreno": [
-      "Water"
+      "aquático"
     ],
     "clima": [
-      "Tropical",
-      "Temperate"
+      "tropical",
+      "temperado"
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "variantes": [],
-  "ameacaLegada": 5,
-  "v3": {
-    "pv": 70,
-    "esquiva": 6,
-    "bloqueio": 4,
-    "defesa": 6,
-    "defesaMental": 6,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 7,
-      "corte": 7,
-      "perfuracao": 7
-    },
-    "couracaNivel": 2,
-    "pesoErguido": 2967.37,
-    "deslocamento": {
-      "nado": 7
-    }
+  "descricao": "Réptil marinho de 11 m, predador de topo do mar aberto. Ataca de baixo, perto da superfície, come de peixes a tartarugas e outros répteis marinhos, e briga com os da própria espécie.",
+  "lore": [],
+  "imagens": [
+    "bestiario/mosassauro_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "pesoErguido: 2.967,37 kg (em vigor na Etapa 2, 20/10/2026); antes: 2.782,4 kg pelo `calc.mjs`, provisório. A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar.",
-    "carga: não se aplica (nadador).",
-    "velocidade: congelada (decisão 23). O nado dá 25 km/h contra o bote de 14 a 18 km/h estimado (Formoso e colegas 2026, pela notícia): de 39 a 79% acima. Com o número de hoje o mosassauro nada mais rápido que o tubarão-branco (7 contra 6 m por Tick).",
-    "alvo: Enorme pela silhueta (12,35 m², de cima), longe das bordas; altura e largura de 1,5 m continuam estimadas pelo Arquiteto [extrapolação, sem dado].",
-    "forca: 12 pela régua nova (D-158), um abaixo do mamute (13), igual ao tiranossauro. Era 16 com o mamute em 18. Se o mamute mudar, esta se refaz.",
-    "vigor: 7 pela ferida curada (Lingham-Soliar 1995) (D-164).",
-    "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela ferida curada e pelo habitat do tropical ao subpolar; o sangue quente provável é extrapolação e ficou na nota de pesquisa (jornada).",
-    "musculatura: 3 (robusto) pela cauda de nado e pelo ílio com esforço repetido; provisória, sem medida direta (D-174).",
-    "compostura: 1 por não ser espécie social (diretriz 1); era 3 pelo emboscador.",
-    "especialidade Prontidão (visão) +2: passou de comum a natural, com o mesmo valor; é do corpo (órbitas e anéis escleróticos).",
-    "couraca: nível 2 (faixa 2 a 3) pela escala da quinta rodada; o valor em absorção fica para depois. Os dados de escama são de parentes, e não do M. hoffmannii.",
-    "jornada (nota de pesquisa, não é regra): cruzeiro e distância [sem dado]. Provável sangue quente (metabolismo de repouso entre o da tartaruga-de-couro e o de ictiossauros e plesiossauros, Houssaye e colegas 2013), o que daria fôlego para forragear longe [extrapolação] para o Mosasaurus.",
-    "ataques.mordida.nivel: N2 sem força de mordida medida [extrapolação], acima do crocodilo (N1)."
+  "revisao": [
+    {
+      "campo": "atributos.raciocinio",
+      "motivo": "Seção 13: 2 para os outros predadores. Nenhum dado de reação em extinto."
+    },
+    {
+      "campo": "habilidades.briga",
+      "motivo": "Degrau 4. Predador de topo e generalista (isótopos de carbono e microdesgaste dos dentes, Holwerda e colegas 2023): peixes, tubarões, tartarugas, aves e outros mosassauros."
+    },
+    {
+      "campo": "habilidades.furtividade",
+      "motivo": "O levantamento : provável emboscada perto da superfície (Lingham-Soliar 1995); contrassombreado, dorso escuro e ventre claro, no parente Tylosaurus (Lindgren 2014). Régua: 2, usa a cobertura como hábito. Fica como hoje; um modelo de 2024 diz que talvez não caçasse só de emboscada (van der Mark e colegas 2024)."
+    },
+    {
+      "campo": "habilidades.integridade",
+      "motivo": "Etapa 2 (20/10/2026): Decisão 7 de 19/10/2026: quanto mais bestial, menor a Integridade; o autor pôs o crocodilo, a jiboia e o elasmossauro em 1, e réptil, peixe e anfíbio ficam baixos. Integridade baixa dá imunidade à influência social e deixa vulnerável a medo e a magia mental. Antes:  Degrau 3: vários fósseis com ataques de outro Mosasaurus, talvez lutando agarrados pelo focinho como crocodilos (Wikipédia); mandíbulas com fraturas curadas (Lingham-Soliar 1995). Briga e sobrevive."
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "Degrau 2. A visão vai na Especialidade natural."
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "do Arquiteto; a fonte só dá o comprimento total"
+    },
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "do Arquiteto: \"corpo sem cauda (cerca de 60% de 11 m)\""
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "D-107: a maioria fica no 6.  A pele e a cor não se conhecem."
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "Bando: nenhuma evidência (pesquisa)."
+    },
+    {
+      "campo": "comportamento.caca",
+      "motivo": "Perto da superfície, em mar aberto (Lingham-Soliar 1995); talvez não só de emboscada (van der Mark e colegas 2024)."
+    },
+    {
+      "campo": "ataques.Mordida.nivelPerfuracao",
+      "motivo": "7 + 12; era 2d6 + 16, média 23. Seção 7: a mordida que agarra e torce. Dezenas de dentes grandes e cortantes; comia por inércia, soltando e reabocanhando (Lingham-Soliar 2000, via Wikipédia). Força × 1 (boca). N2 : nenhuma força de mordida achada; o crânio rígido e os músculos enormes (Lingham-Soliar 1995) e as marcas de dente nas placas da tartaruga marinha gigante apontam para uma mordida maior que a do crocodilo (N1). O Nível do ataque é da arma, e não da Couraça."
+    }
   ]
 }

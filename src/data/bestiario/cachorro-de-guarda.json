@@ -1,37 +1,27 @@
 {
-  "ordem": 192,
   "id": "cachorro-de-guarda",
   "idAntigo": "mon-riding-dog",
   "nome": "Cão de guarda",
   "nomeIngles": "Riding Dog",
-  "categoria": "Animal",
-  "categoriaLegada": "Monstro",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "monstro Pequeno",
-  "descricao": "Cão grande de guarda e de guerra, levado às arenas de Roma e usado pelos conquistadores espanhóis; calmo em casa, derruba e segura quem invade.",
-  "descricaoLegada": "Aberração humanoide de lendas antigas.",
-  "tags": [
-    "monstro"
-  ],
-  "imagem": null,
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "1,76 m de comprimento, 0,79 m de altura",
-    "peso": "85 kg",
-    "comprimento": 1.76,
-    "largura": 0.35,
-    "altura": 0.79
-  },
-  "locomocao": {
-    "terra": 6
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 6,
-    "arranque": 9,
-    "corrida": 12
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 0.79,
+    "largura": 0.35,
+    "profundidade": null,
+    "comprimento": 1.76,
+    "comprimentoSemCauda": 1.24,
+    "caudaGrossa": false,
+    "massa": 85,
+    "area": 0.4,
+    "posturaDoTamanho": "de lado"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 3,
     "vigor": 3,
@@ -42,8 +32,9 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 3,
     "atletismo": 2,
     "furtividade": 3,
@@ -53,75 +44,134 @@
     "empatia": 2,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "audição",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "derrubar e segurar no chão",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 3,
+        "origem": "natural"
+      },
+      {
+        "foco": "audição",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "derrubar e segurar no chão",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 6,
+      "arranque": 9,
+      "corrida": 12
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 0,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "derrubar",
-      "descricao": "Mordida, ou o peso do corpo em carga: O bullmastiff derrubava a pessoa e a segurava no chão. Briga (derrubar e segurar no chão) 1 entra aqui.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "derrubar"
     },
     {
       "nome": "agarrar",
-      "descricao": "Mordida",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
+    }
+  ],
+  "comoLuta": [],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "Prontidão (faro) +3 (era +4; teto da decisão 3); o do cão (Jenkins, DeChant e Perry 2018)",
+      "formas": "todas"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "faro: Prontidão (faro) +3; o do cão. · audição: Prontidão (audição) +2 (o do cão). · penumbra: texto; tapetum lucidum, como no cão."
-    }
-  ],
-  "doencas": [
+      "nome": "audição",
+      "descricao": "Prontidão (audição) +2 (o do cão; Wikipédia)",
+      "formas": "todas"
+    },
     {
-      "nome": "Variante cão raivoso",
-      "texto": "Raiva · Virulência 14 · dia · só no animal raivoso, ao critério do Mestre, e nunca no comum · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
+      "nome": "penumbra",
+      "descricao": "texto; tapetum lucidum, como no cão (Wikipédia)",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "não",
+    "mente": "animal",
+    "tracos": "cabeça larga e focinho curto; ossatura pesada; peito largo e fundo (padrão AKC)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": true
+  },
+  "comportamento": {
+    "social": "vive com a família que cuida dele",
+    "atividade": "",
+    "dieta": "o que recebe",
+    "caca": "não caça; guarda",
+    "dianteDeGente": "indiferente a estranhos, protetor dos seus; guarda noturno de propriedade desde por volta de 1500"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Cão grande de guarda e de guerra, levado às arenas de Roma e usado pelos conquistadores espanhóis; calmo em casa, derruba e segura quem invade.",
   "lore": [
     {
       "titulo": "Raças robustas",
@@ -132,96 +182,40 @@
       "texto": "Guarda a casa da família que cuida dele e puxa a carroça pequena dos povos menores, como halflings e gnomos."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: vive com a família que cuida dele."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Variante cão raivoso: Raiva · Virulência 14 · dia · só no animal raivoso, ao critério do Mestre, e nunca no comum · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
     },
     {
       "titulo": "Aptidões",
       "texto": "montaria não (ver as notas) · carga não · tração sim (carroça de cão; ver Corpo e movimento)"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Força 3: nenhum humano perde o Bloqueio contra a mordida dele, e só quem tem Força 7 ou mais tira o dele. Pequeno, ganha +3 no corpo a corpo contra o humano Médio, e quem atira nele leva −3. Desvia pouco (Esquiva 12, com a Esquiva 3 do autor) e não apara (Bloqueio 0), mas segura: morde, derruba e prende no chão (Briga com a Especialidade de derrubar e segurar), 6 de dano por manutenção do agarrão (2 × Força 3). Arrasta ou vira cerca de 247 kg. 34 PV, e Couraça nível 0 (quanto o nível vale fica para depois)."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Any"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Riding Dog",
-    "cr": "1",
-    "tipo": "monstro Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 15,
-      "des": 15,
-      "con": 15,
-      "int": 2,
-      "sab": 12,
-      "car": 6
+  "revisao": [
+    {
+      "campo": "habilidades.empatia",
+      "motivo": "Era sem linha. Lê o outro: separa a família, com quem é afetuoso, do estranho, a quem é indiferente (FCI nº 264), e trabalha sob comando do guarda (AKC).  do temperamento do padrão; a pesquisa não mede leitura."
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,76 × 1,0335 = 0,785 . Antes: o mínimo do macho no padrão AKC (76,2 cm); a fêmea a partir de 69,9 cm"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 34,
-    "esquiva": 12,
-    "bloqueio": 6,
-    "defesa": 12,
-    "defesaMental": 8,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 3,
-      "corte": 3,
-      "perfuracao": 3
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,70 × 1,0335 = 1,757 . Antes: estimado na pesquisa (160 a 185 cm), conferido contra o recordista Zorba (2,55 m com 145 kg e 89 cm de cernelha, Guinness)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 247.09,
-    "carga": {
-      "leve": 8.5,
-      "media": 17,
-      "pesada": 25.5,
-      "maxima": 34
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,20 × 1,0335 = 1,240 . Antes: estimado na pesquisa (115 a 130 cm): corpo \"um pouco mais longo\" que a cernelha (padrão AKC), mais a cabeça grande e o pescoço curto. A cauda é fina e não conta (D-155)"
     },
-    "deslocamento": {
-      "terra": {
-        "batalha": 6,
-        "arranque": 9,
-        "corrida": 12
-      }
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,34 × 1,0335 = 0,351 . Antes: pesquisa: 30 a 38 cm no peito, pelo perímetro do peito de Zorba (1,447 m, Guinness) escalado para a metade da massa; peito \"largo, fundo e arredondado\" (padrão AKC)"
     }
-  },
-  "notasObservacao": [
-    "`pesoErguido` e `carga`: 247,09 kg (em vigor na Etapa 2, 20/10/2026); antes: provisórios. A carga sai da massa e da faixa (7,7 kg de Leve com 77 kg, sem carga medida); o peso erguido sai de `calc6.mjs` (284,56 kg), e era 157,94 kg pela fórmula da D-162 (decisões 14 e 16)",
-    "`velocidade`: congelada (decisão 23); 44 km/h contra cerca de 34 km/h do mastim mais rápido do Fast CAT, +28%, e saiu do fator do Médio, quando o Alvo agora é Pequeno",
-    "`alvo`: 0,37 m², Pequeno pela decisão 7; o mastim do extremo (Zorba, 145 kg) pode sair Médio",
-    "`dimensoes`: o comprimento total (1,70 m), o sem cauda (1,20 m) e a largura (0,34 m) são estimativas da pesquisa, sem medida de mastim típico em centímetros (só o recordista Zorba)",
-    "`aptidoes.montaria`: não. A ficha antiga era o \"Cão de Montaria\" do d20; o cão real leva 7,7 kg de Leve e 30,8 kg de Máxima (provisório), e um halfling de cerca de 30 kg é quase a Máxima inteira. Se um halfling monta um cão grande, é decisão do Mestre (D-087, D-174)",
-    "`id`: o `mon-riding-dog` aponta para um cão de guarda real, e o nome muda de \"Cão de Montaria\" para \"Cão de guarda\"; a imagem atual mostra outro animal (D-102, D-174)",
-    "`resistencia`: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2, **[comparação]**; o dado de fôlego (cão de carroça de 64 a 80 km por dia) é de blog e fica na nota de pesquisa (jornada)",
-    "jornada (nota de pesquisa, não é regra): cão de carroça na Inglaterra do século XIX, 64 a 80 km por dia em estrada dura, Brighton a Portsmouth num dia (blog de historiador, fonte fraca) **[comparação]**; o cão de carga pesado \"não acompanha os rápidos em viagem longa\" (FM 25-6, §3a). Do mastim: **[sem dado]**.",
-    "`furtividade`: 2, nova, pelo bullmastiff que seguia de noite quem caçava ilegalmente, raça vizinha e não o mastim inglês",
-    "`empatia`: 2, nova, **[extrapolação]** do temperamento do padrão FCI (família contra estranho)",
-    "`especialidades`: Prontidão (faro) desce de +4 para +3 pelo teto da decisão 3; Briga (derrubar e segurar no chão) 1, nova, pelo bullmastiff",
-    "`musculatura`: 3, robusto, sem carga medida do mastim (a carroça de 136 kg pela lei belga só aparece num blog, e não entra)"
   ]
 }

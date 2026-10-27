@@ -1,10 +1,10 @@
-# Etapa 4: A5 e A5j (26/10/2026)
+# Etapa 4: A5 e A5j, fechamento de 27/10/2026
 
-155 fontes unificadas, de 302 fichas lidas; 147 paradas. As outras 169 fontes seguem no caminho anterior (147 com parada e 22 sem ficha).
-O gerador usa o motor nas fontes unificadas; a ficha e os resumos do jogador compartilham conjunto, derivados, massa e levantamento. O PV dos simuladores passa ao motor.
-A massa em kg é escolhida pelo jogador; PV pelo Tamanho racial. A mesa corrige Vitalidade, Bloqueio, Iniciativa e teto dos arcos (D-234, D-237). A Arte de força conserva sua escala aprovada, chamada pelo motor.
-Validação: validate completo e tsc sem erros; 5969 contas, 302 criaturas, 6 referências de jogador e 5 casos raciais. Kael conserva seus números. Revisao não chega aos três gerados.
-[Relatório por criatura e chave](relatorio-a5.json), contra dd7a9cc4, reproduzido com scripts/comparar-criaturas.mjs. Só as 155 convertidas mudaram nos três gerados.
-Espera as 324: stat, periciasDe, furtividadeCriatura, régua de porte, conversor antigo e seus leitores ainda usados pelas 169 fontes restantes. Calc.ts conserva leitores do editor, tratado na A9.
-Espera ajustes da Bestiarista: 24 diferenças P4, quatro linhas de Sociabilidade, oito enxames e paradas do conversor. Fichas MD intactas. Nenhuma publicação ou acesso ao banco.
-O conversor recusa texto copiado da Rajada, omite o teto da classe já calculado e preserva só o limite próprio menor. A leitura final incorporou novos ajustes recebidos durante a validação.
+294 fontes unificadas, de 302 fichas lidas. Oito paradas: enxames cuja Vida por quadrado ainda não tem formato (plano, seção 4). As oito fontes legadas foram preservadas byte a byte; outras 22 criaturas ainda não têm ficha. Os três gerados continuam com 324 criaturas.
+O motor e a integração A5j já estavam no commit 58db84be. A retomada atualiza as fontes e a referência A1, sem editar fichas MD. Retiradas 28 exceções de P3/P4 que perderam o uso depois dos ajustes da Bestiarista; permanecem oito enxames explicitamente não conferidos no PV por falta de formato.
+A5j: massa em kg e levantamento pela R15; PV racial e Vitalidade, Bloqueio com arma, Iniciativa e teto de Força dos arcos nos resumos da mesa. O teste do Kael preserva seus números. Nenhuma gravação no banco.
+O gerador aceita zero e decimais declarados nas fichas, mantendo os limites da semeadura legada. O conversor preserva as células de bloqueio aprovadas e o destino único de cada id antigo, sem criar redirecionamentos para fichas que só compartilham a referência.
+[Comparação por criatura e chave](relatorio-a5.json), contra 252ea7bf. O teste do motor confere a ausência de revisao nos três gerados e na vista pública de cada fonte unificada.
+Validação: validate completo verde; motor com 302 criaturas, seis referências de jogador e cinco casos raciais; regressões do conversor, bloqueio, defesa vestida e deslocamento verdes. O gancho também confere os tipos antes do commit.
+Espera o formato: Vida dos oito enxames por quadrado, P10 em tmp/executora/fase3/perguntas.md. Não foi criada chave nem fórmula nova.
+Espera as 324: fontes legadas e suas contas ainda usadas por 30 criaturas (22 sem ficha e oito sem modelo de enxame). Calc.ts conserva os leitores que só passam na etapa 8 (A9).

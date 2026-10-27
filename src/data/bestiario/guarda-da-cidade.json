@@ -121,16 +121,10 @@
       "limiteDeUso": "uma vez por cena"
     },
     {
-      "nome": "Malha e escudo",
-      "formas": "todas",
-      "classe": "livro",
-      "texto": "a cota de malha e o hoplon na frase da linha Absorção"
-    },
-    {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação"
+      "texto": "o traço social do Humano"
     }
   ],
   "comoLuta": [

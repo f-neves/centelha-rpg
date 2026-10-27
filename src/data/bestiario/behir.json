@@ -227,6 +227,10 @@
     {
       "campo": "habilidadesEspeciais.Sopro elétrico",
       "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "ataques.Sopro elétrico",
+      "motivo": "poder natural com a base e os usos do site (Raio 3, a cada 24 Ticks) e números da ficha (D-197): o Relâmpago do livro dá 2d6"
     }
   ]
 }

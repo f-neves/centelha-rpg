@@ -96,8 +96,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mordida",
-      "regra": "agarrar",
-      "texto": "agarra com a mordida ou com a cauda e aperta"
+      "regra": "agarrar"
     },
     {
       "nome": "engolir inteiro",

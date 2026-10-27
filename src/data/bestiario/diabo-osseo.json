@@ -314,6 +314,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "ataques.Ferrão",
+      "motivo": "números da ficha com as bases do site (D-197). As três Artes do site viraram as bases dos três poderes"
     }
   ]
 }

@@ -31,116 +31,7 @@ const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^
 const FIX = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/fixtures/criaturas-esperado.json'), 'utf8'));
 const slug = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-');
 
-// As diferenças aceitas, uma por `id.conta`, cada uma com o motivo. Cada uma é defeito ou dúvida da FICHA, e não do
-// motor, e está em tmp/executora/fase3/perguntas.md para o Arquiteto; a entrada sai daqui quando a ficha se corrigir.
-// A lista encolhe com o problema: a entrada que não foi usada nesta execução também falha.
-const SEM_SOCIABILIDADE = 'a Defesa Social da ficha usa Sociabilidade 1, e a tabela Habilidades não tem a linha: o motor lê 0 (perguntas.md, P3)';
-// P4, 26/10/2026: números antigos das fichas que aguardam lote de ajuste da Bestiarista.
-// Pares [ficha antiga, motor aprovado], sem alterar nenhuma ficha. A entrada sai quando o lote chega.
-const SOCIAL_P4 = {
-  "buscador": [
-    2,
-    8
-  ],
-  "elemental-da-agua-pequeno": [
-    4,
-    8
-  ],
-  "elemental-da-terra-grande": [
-    4,
-    8
-  ],
-  "elemental-da-terra-pequeno": [
-    4,
-    8
-  ],
-  "elemental-do-ar-pequeno": [
-    4,
-    8
-  ],
-  "elemental-do-fogo-pequeno": [
-    4,
-    8
-  ],
-  "estrangulador": [
-    4,
-    8
-  ],
-  "ettercap": [
-    6,
-    16
-  ],
-  "froghemoth": [
-    6,
-    10
-  ],
-  "hidra-5-cabecas": [
-    4,
-    12
-  ],
-  "hipogrifo": [
-    4,
-    12
-  ],
-  "lagarto-eletrico": [
-    4,
-    12
-  ],
-  "manto-escuro": [
-    4,
-    10
-  ],
-  "minotauro": [
-    4,
-    10
-  ],
-  "monstro-da-ferrugem": [
-    4,
-    10
-  ],
-  "morlock": [
-    4,
-    12
-  ],
-  "otyugh": [
-    4,
-    12
-  ],
-  "quimera": [
-    6,
-    18
-  ],
-  "remorhaz": [
-    4,
-    16
-  ],
-  "serpente-marinha": [
-    4,
-    16
-  ],
-  "stirge": [
-    4,
-    10
-  ],
-  "tarrasque": [
-    8,
-    20
-  ],
-  "verme-purpura": [
-    4,
-    12
-  ],
-  "worg": [
-    6,
-    14
-  ]
-};
-const ACEITAS = {
-  'bralani.defesaSocial': SEM_SOCIABILIDADE,
-  'centauro.defesaSocial': SEM_SOCIABILIDADE,
-  'janni.defesaSocial': SEM_SOCIABILIDADE,
-  'homem-lagarto.defesaSocial': SEM_SOCIABILIDADE,
-};
+// As fichas corrigidas de P3/P4 são conferidas sem exceção numérica.
 
 async function carregarMotor() {
   const fonte = path.join(ROOT, 'src/lib/motor.ts');
@@ -167,9 +58,6 @@ const confere = (id, conta, vem, deve, tol = 0) => {
   contas++;
   const igual = typeof deve === 'number' && typeof vem === 'number' ? Math.abs(vem - deve) <= tol : vem === deve;
   if (igual) return;
-  const chave = `${id}.${conta}`;
-  if (conta === 'defesaSocial' && SOCIAL_P4[id]?.[0] === deve && SOCIAL_P4[id]?.[1] === vem) { aceitas.push(chave + ' (P4: espera lote de ajuste)'); return; }
-  if (ACEITAS[chave]) { aceitas.push(chave); return; }
   falhas.push({ id, conta, vem, deve });
 };
 // o peso erguido da ficha vem com duas casas, e o conferidor confere a 1% (GUIA-FICHA.md, seção 7)
@@ -272,8 +160,6 @@ for (const arquivo of fs.readdirSync(path.join(ROOT,'src/data/bestiario'))) {
   for (const a of vista.motor.stat.ataques) if (['corte','impacto','perfuracao','perfurante'].includes(a.tipo)) confere(c.id,a.nome+' com tipo de dano legível',/\([CIP]\)/.test(a.dano),true);
 }
 const nC = Object.keys(FIX.criaturas).length;
-for (const id of Object.keys(SOCIAL_P4)) if (!aceitas.some(k=>k.startsWith(id+'.defesaSocial (P4:'))) falhas.push({id,conta:'P4 sem uso: remover após ajuste',vem:'corrigida',deve:'pendente'});
-for (const k of Object.keys(ACEITAS)) if (!aceitas.includes(k)) falhas.push({ id: k, conta: 'ACEITAS sem uso (a diferença sumiu: tire a entrada)', vem: 'igual', deve: 'diferente' });
 if (falhas.length) {
   const porConta = {};
   for (const x of falhas) { const k = x.conta.replace(/^.*\.(velocidade|danoMedio|jogada)$/, 'ataque.$1').replace(/^formas\.[^.]+\./, 'formas.'); (porConta[k] ??= []).push(x); }

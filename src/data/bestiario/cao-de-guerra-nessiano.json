@@ -230,7 +230,7 @@
   "revisao": [
     {
       "campo": "habilidadesEspeciais.Sopro de fogo",
-      "motivo": "números sugeridos pela ficha (D-197); poder natural com números da ficha (D-197), base Fogo 4 (3d6, a Bola de Fogo); o site não dava os números"
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
       "campo": "couraca",
@@ -239,6 +239,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "ataques.Sopro de fogo",
+      "motivo": "poder natural com números da ficha (D-197), base Fogo 4 (3d6, a Bola de Fogo); o site não dava os números"
     },
     {
       "campo": "habilidadesEspeciais.couraça chamuscada",
