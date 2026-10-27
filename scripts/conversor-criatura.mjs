@@ -55,6 +55,7 @@ const SECOES = new Set(['Identidade', 'Corpo, área e porte', 'Corpo e porte', '
   'No jogo', 'Visual', 'Procedência', 'Notas de observação', 'Bloco de conferência']);
 
 const inteiro = (s) => { const m = String(s ?? '').match(/[−-]?\d+/); return m ? Number(m[0].replace('−', '-')) : undefined; };
+const numeroPasso = (s) => Number(s.replace(',', '.'));
 const metros = (s) => { const m = String(s ?? '').match(/\*\*([\d.,]+) m\*\*/) || String(s ?? '').match(/^([\d.,]+) m\b/); return m ? numBR(m[1]) : undefined; };
 // o texto de jogo, sem as marcas: a marca das formas, a palavra de dúvida da linha (D-197), as marcas `**[...]**`, o ◆ e o negrito
 const jogo = (s) => semMarcas(String(s ?? '').replace(/\s*\*\*\[formas:[^\]]*\]\*\*\s*$/, '').replace(/\bPROVIS[ÓO]RIO\.?\s*/g, ''))
@@ -241,18 +242,18 @@ export function converterFicha(texto, { site = null } = {}) {
   c.aparencia = inteiro(campo(VVA, 'Aparência'));
   c.deslocamento = {};
   const dt = campo(MV, 'Deslocamento em terra') || '';
-  const dtm = dt.match(/Batalha \*\*(\d+)\*\* · Arranque \*\*(\d+)\*\* · Corrida \*\*(\d+)\*\*/);
-  if (dtm) c.deslocamento.terra = { batalha: +dtm[1], arranque: +dtm[2], corrida: +dtm[3] };
+  const dtm = dt.match(/Batalha \*\*(\d+(?:[.,]\d+)?)\*\* · Arranque \*\*(\d+(?:[.,]\d+)?)\*\* · Corrida \*\*(\d+(?:[.,]\d+)?)\*\*/);
+  if (dtm) c.deslocamento.terra = { batalha: numeroPasso(dtm[1]), arranque: numeroPasso(dtm[2]), corrida: numeroPasso(dtm[3]) };
   else if (/^(não anda|não se aplica|\*\*\[sem dado\]\*\*)/.test(dt.trim())) lacuna('deslocamento.terra: obrigatório no formato, e a ficha diz que não anda em terra');
   else para('Deslocamento em terra ilegível');
   for (const [rot, k] of [['Voo', 'voo'], ['Nado', 'nado'], ['Escavação', 'escavacao'], ['Escalada', 'escalada']]) {
     const v = campo(MV, rot) || '';
-    const b = v.match(/Batalha \*\*(\d+)\*\*/) || v.match(/^\s*\*\*(\d+)\*\* m por Tick/);
+    const b = v.match(/Batalha \*\*(\d+(?:[.,]\d+)?)\*\*/) || v.match(/^\s*\*\*(\d+(?:[.,]\d+)?)\*\* m por Tick/);
     if (!b) continue;
-    c.deslocamento[k] = { batalha: +b[1] };
-    const a2 = v.match(/Arranque \*\*(\d+)\*\*/), c2 = v.match(/Corrida \*\*(\d+)\*\*/);
-    if (a2) c.deslocamento[k].arranque = +a2[1];
-    if (c2) c.deslocamento[k].corrida = +c2[1];
+    c.deslocamento[k] = { batalha: numeroPasso(b[1]) };
+    const a2 = v.match(/Arranque \*\*(\d+(?:[.,]\d+)?)\*\*/), c2 = v.match(/Corrida \*\*(\d+(?:[.,]\d+)?)\*\*/);
+    if (a2) c.deslocamento[k].arranque = numeroPasso(a2[1]);
+    if (c2) c.deslocamento[k].corrida = numeroPasso(c2[1]);
   }
 
   // ----- 2.4 Equipamento, Artes e ataques
@@ -516,12 +517,12 @@ export function converterFicha(texto, { site = null } = {}) {
         else if (k === 'Artes') f.artes = lerArtes(v, `Variantes, ${nomeF}`, true);
         else if (k === 'Aptidões') f.aptidoes = lerApt(v, `Variantes, ${nomeF}`);
         else if (k === 'Elementos') f._elementos = lerElem(v, `Variantes, ${nomeF}`);
-        else if (k === 'Deslocamento') { const q = v.match(/\((\d+) · (\d+) · (\d+)\)/); if (q) f.deslocamento = { terra: { batalha: +q[1], arranque: +q[2], corrida: +q[3] } }; else para(`Variantes, ${nomeF}: Deslocamento ilegível`); }
+        else if (k === 'Deslocamento') { const q = v.match(/\((\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?)\)/); if (q) f.deslocamento = { terra: { batalha: numeroPasso(q[1]), arranque: numeroPasso(q[2]), corrida: numeroPasso(q[3]) } }; else para(`Variantes, ${nomeF}: Deslocamento ilegível`); }
         else if (k === 'Ataques') f._ataques = v;
         else if (k === 'Prende a respiração') ff.prendeRespiracao = v;
         else if (k === 'Voo' || k === 'Nado') {
-          const q = v.match(/Batalha \**(\d+)\**/) || v.match(/^(\d+)\b/);
-          if (q) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : 'nado'] = { batalha: +q[1] };
+          const q = v.match(/Batalha \**(\d+(?:[.,]\d+)?)\**/) || v.match(/^(\d+(?:[.,]\d+)?)(?=\s|$)/);
+          if (q) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : 'nado'] = { batalha: numeroPasso(q[1]) };
           else if (!/^não (voa|nada)/.test(v)) para(`Variantes, ${nomeF}: ${k} ilegível`);
         }
         else if (['PV', 'Peso erguido', 'Espaço', 'Anatomia', 'o resto', 'Mente', 'Respiração'].includes(k) || /^PV \d/.test(t)) { /* conta do motor, ou texto que não é número */ }

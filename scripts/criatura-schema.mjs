@@ -299,7 +299,8 @@ const corpoNovo = z.object({
   tamanhoEscolhido: id.optional(), linhaPV: z.enum(['acima', 'abaixo']).optional(), cargaMedida: numero.optional(),
 }).strict();
 const especialidadesNovo = z.record(id, z.array(z.object({ foco: texto, valor: naoNeg, origem: z.enum(['natural', 'livro']) }).strict()));
-const passo = z.object({ batalha: naoNeg, arranque: naoNeg.optional(), corrida: naoNeg.optional() }).strict();
+const numeroPasso = numero.finite().nonnegative();
+const passo = z.object({ batalha: numeroPasso, arranque: numeroPasso.optional(), corrida: numeroPasso.optional() }).strict();
 const deslocamentoNovo = z.object({ terra: passo.optional(), voo: passo.optional(), nado: passo.optional(), escavacao: passo.optional(), escalada: passo.optional() }).strict();
 const equipamentoNovo = z.object({
   arsenal: z.array(z.object({ ref: z.string().regex(/^[ae]:[a-z0-9-]+$/) }).strict()),
