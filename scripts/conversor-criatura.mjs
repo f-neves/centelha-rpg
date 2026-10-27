@@ -487,11 +487,12 @@ export function converterFicha(texto, { site = null } = {}) {
       if (!r) { para(`a forma "${nomeF}" não tem linha em Variantes`); continue; }
       const f = { id: idForma(nomeF), nome: nomeF };
       const fc = {}, fa = {}, ff = {};
+      let pvForma;
       for (const p of String(Object.values(r)[1]).split(/;\s+(?![^(]*\))/)) {
         const t = p.trim().replace(/\.$/, '');
         const at = t.match(/^(Força|Destreza|Vigor|Percepção|Inteligência|Raciocínio|Influência|Perspicácia|Compostura) (\d+)$/);
         if (at) { fa[idAtributo(at[1])] = Number(at[2]); continue; }
-        if (/^PV \d+$/.test(t)) continue; // o PV da forma é conta do motor
+        if (/^PV \d+$/.test(t)) { pvForma = inteiro(t); continue; }
         const m = t.match(/^([^:]+):\s*(.*)$/) || t.match(/^(Couraça) nível (\d+)$/) || t.match(/^(Aparência) (\d+)$/);
         if (!m) { para(`Variantes, ${nomeF}: "${t.slice(0, 50)}" fora do formato`); continue; }
         const [k, v] = [m[1].trim(), m[2].trim()];
@@ -525,10 +526,24 @@ export function converterFicha(texto, { site = null } = {}) {
           if (q) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : 'nado'] = { batalha: numeroPasso(q[1]) };
           else if (!/^não (voa|nada)/.test(v)) para(`Variantes, ${nomeF}: ${k} ilegível`);
         }
-        else if (['PV', 'Peso erguido', 'Espaço', 'Anatomia', 'o resto', 'Mente', 'Respiração'].includes(k) || /^PV \d/.test(t)) { /* conta do motor, ou texto que não é número */ }
+        else if (k === 'PV') pvForma = inteiro(v);
+        else if (['Peso erguido', 'Espaço', 'Anatomia', 'o resto', 'Mente', 'Respiração'].includes(k)) { /* conta do motor, ou texto que não é número */ }
         else para(`Variantes, ${nomeF}: campo "${k}" que o conversor não conhece`);
       }
-      if (/^PV \d/.test(String(Object.values(r)[1]))) { /* o PV da forma é conta */ }
+      // O PV explícito da Variante revela a escolha entre as duas linhas da transição.
+      if (pvForma !== undefined) {
+        const kgForma = M.massaDaConta({ ...corpo, ...fc });
+        if (Number.isFinite(kgForma)) {
+          const vigorForma = fa.vigor ?? c.atributos.vigor;
+          const acima = M.pvDaMassa(kgForma, vigorForma, 'acima') + (c.bonusPV ?? 0);
+          const abaixo = M.pvDaMassa(kgForma, vigorForma, 'abaixo') + (c.bonusPV ?? 0);
+          if (acima !== abaixo) {
+            if (pvForma === acima) fc.linhaPV = 'acima';
+            else if (pvForma === abaixo) fc.linhaPV = 'abaixo';
+            else avisos.push(`Variantes, ${nomeF}: PV ${pvForma} não coincide com as linhas de PV da massa e do Vigor`);
+          }
+        }
+      }
       if (Object.keys(fc).length) f.corpo = fc;
       if (Object.keys(fa).length) f.atributos = fa;
       if (Object.keys(ff).length) f.fisiologia = ff;
@@ -573,7 +588,11 @@ export function converterFicha(texto, { site = null } = {}) {
     if (k === 'id' || k === 'nome') continue;
     if (igual(f[k], c[k])) { delete f[k]; continue; }
     if (f[k] && typeof f[k] === 'object' && !Array.isArray(f[k]) && c[k] && typeof c[k] === 'object' && !Array.isArray(c[k])) {
-      for (const s of Object.keys(f[k])) if (igual(f[k][s], c[k][s])) delete f[k][s];
+      for (const s of Object.keys(f[k])) {
+        // A massa da forma faz o motor descartar a escolha herdada; conservar a escolha explícita.
+        if (k === 'corpo' && s === 'linhaPV' && 'massa' in f[k]) continue;
+        if (igual(f[k][s], c[k][s])) delete f[k][s];
+      }
       if (!Object.keys(f[k]).length) delete f[k];
     }
   }
