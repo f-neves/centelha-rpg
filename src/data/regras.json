@@ -2741,7 +2741,7 @@
           { "id": "leve", "nome": "Leve", "velocidade": 5, "preparo": 1, "golpe": 1, "recuperacao": 3, "armas": ["adaga", "espada-curta", "machadinha", "bastao", "sabre", "chicote"] },
           { "id": "media", "nome": "Média", "velocidade": 6, "preparo": 2, "golpe": 1, "recuperacao": 3, "armas": ["espada-longa", "machado", "espada-serrilhada", "maca", "picareta-de-guerra", "martelo", "maca-estrela"] },
           { "id": "haste-media", "nome": "Haste média", "velocidade": 6, "preparo": 2, "golpe": 1, "recuperacao": 3, "armas": ["lanca", "bordao"] },
-          { "id": "haste-guerra", "nome": "Haste de Guerra", "velocidade": 7, "preparo": 3, "golpe": 1, "recuperacao": 3, "armas": ["alabarda", "lanca-longa", "corrente-farpada"] },
+          { "id": "haste-guerra", "nome": "Haste de Guerra", "velocidade": 7, "preparo": 3, "golpe": 1, "recuperacao": 3, "armas": ["alabarda", "glaive-serrilhada", "lanca-longa", "corrente-farpada"] },
           { "id": "pesada", "nome": "Pesada", "velocidade": 7, "preparo": 3, "golpe": 1, "recuperacao": 3, "armas": ["montante", "martelo-de-guerra", "machado-pesado"] },
           { "id": "punhos", "nome": "Punhos", "velocidade": 5, "preparo": 1, "golpe": 1, "recuperacao": 3, "armas": ["desarmado"] }
         ],

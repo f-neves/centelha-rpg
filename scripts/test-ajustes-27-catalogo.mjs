@@ -1,0 +1,20 @@
+// Decisão 36.1, 27/10/2026: a serrilha é item, com o custo de Acerto do livro.
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const itens = JSON.parse(fs.readFileSync(process.env.CENTELHA_ARMAS_TESTE || new URL('../src/data/armas.json', import.meta.url), 'utf8'));
+const alabarda = itens.find(x => x.id === 'alabarda');
+const glaive = itens.find(x => x.id === 'glaive-serrilhada');
+assert.ok(glaive, 'falta a Glaive Serrilhada no catálogo');
+assert.equal(itens.filter(x => x.id === glaive.id).length, 1);
+assert.equal(glaive.nome, 'Glaive Serrilhada');
+assert.deepEqual(glaive.arma, { ...alabarda.arma, acerto: -1 });
+assert.deepEqual(glaive.tags, [...alabarda.tags, 'sangramento']);
+assert.deepEqual(glaive.preco, alabarda.preco);
+assert.equal(glaive.preco.pc, 280);
+assert.equal(glaive.peso, alabarda.peso);
+assert.equal(alabarda.arma.acerto, 0);
+assert.ok(!alabarda.tags.includes('sangramento'));
+const regras = JSON.parse(fs.readFileSync(new URL('../src/data/regras.json', import.meta.url), 'utf8'));
+const classes = regras.combate.pgr.reforma.corpoACorpo;
+assert.deepEqual(classes.filter(x => x.armas.includes(glaive.id)), classes.filter(x => x.armas.includes(alabarda.id)));
+console.log('36.1: catálogo, preço, peso e custo da serrilha OK');

@@ -514,7 +514,7 @@ const LINHA_DA_ARMA = {
   'Leve': ['adaga', 'espada-curta', 'machadinha', 'bastao', 'sabre', 'chicote'],
   'Média': ['espada-longa', 'machado', 'espada-serrilhada', 'maca', 'picareta-de-guerra', 'martelo', 'maca-estrela'],
   'Haste média': ['lanca', 'bordao'],
-  'Haste de Guerra': ['alabarda', 'lanca-longa', 'corrente-farpada'],
+  'Haste de Guerra': ['alabarda', 'glaive-serrilhada', 'lanca-longa', 'corrente-farpada'],
   'Pesada': ['montante', 'martelo-de-guerra', 'machado-pesado'],
   'Punhos': ['desarmado'],
   'Arremesso leve': ['shuriken', 'mini-faca', 'kunai'],
@@ -574,7 +574,7 @@ function conferirFicha(mostra, comb, armas) {
 }
 {
   const catalogo = ARMAS.filter((x) => x.arma);
-  if (catalogo.length !== 43) falhas.push(`ficha: o catálogo tem ${catalogo.length} armas, e o teste foi escrito para 43 (acrescente a nova em LINHA_DA_ARMA)`);
+  if (catalogo.length !== 44) falhas.push(`ficha: o catálogo tem ${catalogo.length} armas, e o teste foi escrito para 44 (acrescente a nova em LINHA_DA_ARMA)`);
   const FP = await carregarTS('src/lib/ficha-pgr.ts');
   const CT = await carregarTS('src/lib/combate-tempo.ts');
   const dela = (R) => (w) => FP.anatomiaDaFicha(w, R);

@@ -118,6 +118,7 @@ Cada ponto compra um efeito. A soma dos modificadores tem de **fechar no orçame
 | Alabarda | 280 pc |
 | Bordão | 30 pc |
 | Corrente Farpada | 180 pc |
+| Glaive Serrilhada | 280 pc |
 | Lança | 50 pc |
 | Lança Longa | 90 pc |
 | Arco Composto | 550 pc |

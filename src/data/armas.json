@@ -395,6 +395,54 @@
     "municao": null
   },
   {
+    "id": "glaive-serrilhada",
+    "nome": "Glaive Serrilhada",
+    "tipo": "arma",
+    "preco": {
+      "pc": 280
+    },
+    "peso": 2.7,
+    "descricao": "Lâmina serrilhada de haste longa: alcança de longe e abre feridas que sangram.",
+    "tags": [
+      "alcance",
+      "pesada",
+      "sangramento"
+    ],
+    "arma": {
+      "classe": "haste",
+      "atrib": "forca",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": 2,
+      "acerto": -1,
+      "defesaArma": 0,
+      "maos": 2,
+      "ticks": 7,
+      "folego": 32,
+      "tipoDano": "corte",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "corte",
+          "principal": true
+        },
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": true
+        },
+        {
+          "tipo": "impacto",
+          "principal": true
+        }
+      ],
+      "fichaModo": "corte"
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
     "id": "montante",
     "nome": "Montante",
     "tipo": "arma",
