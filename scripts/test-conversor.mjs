@@ -147,6 +147,17 @@ const { criatura: lobo } = converterFicha(LOBO, { site: SITE });
 if (!aponta(lobo, 'ataques.Mordida.nivelPerfuracao') || !aponta(lobo, 'formas.lobo') || !aponta(lobo, 'habilidadesEspeciais.Mordida que derruba e amaldiçoa')) falhas.push('aponta() recusou um caminho que existe');
 if (aponta(lobo, 'atributos.inexistente') || aponta(lobo, 'ataques.Coice') || aponta(lobo, 'formas.peixe.corpo')) falhas.push('aponta() aceitou um caminho que não existe');
 
+// P5: naoErgue é condicional e aceita só true, também nos corpos das formas.
+{
+  const c = structuredClone(lobo);
+  c.corpo.naoErgue = true;
+  if (!criaturaNovaSchema.safeParse(c).success) falhas.push('P5: naoErgue true recusado');
+  c.corpo.naoErgue = false;
+  if (criaturaNovaSchema.safeParse(c).success) falhas.push('P5: naoErgue false aceito');
+  delete c.corpo.naoErgue; c.corpo.semMassa = true;
+  if (!criaturaNovaSchema.safeParse(c).success) falhas.push('P5: semMassa sem naoErgue recusado');
+}
+
 if (falhas.length) {
   console.log(`✘ test-conversor: ${falhas.length} falha(s)`);
   for (const f of falhas) console.log(`  · ${f}`);

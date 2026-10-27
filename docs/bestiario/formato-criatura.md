@@ -60,6 +60,7 @@ Todas as chaves estão aprovadas: as que o dragão pediu pela D-221, e as que er
 | `corpo.caudaGrossa` | sim ou não | cond. (quem tem cauda) | S | `Cauda grossa` (D-155) |
 | `corpo.massa` | número (kg) | sim | S | `Massa` |
 | `corpo.semMassa` e `corpo.volume` | sim ou não; número (m³) | cond. (incorpóreo) | S | `Massa`, "**sem massa** · volume" (D-190; D-225) |
+| `corpo.naoErgue` | `true` | cond., só quando a ficha escreve "não ergue" | S | Peso erguido (P5, 26/10/2026). Independente de `semMassa`: o elemental do ar não tem massa e ergue 80,32 kg. |
 | `corpo.area` | número (m²) | sim | S | `Área` |
 | `corpo.posturaDoTamanho` | texto | sim | S | `Tamanho`, o parêntese da postura (D-213) |
 | `corpo.segundoTamanho` | `{area, posturaDoTamanho}` | cond. | S | `Segundo Tamanho` (D-213, D-215) |

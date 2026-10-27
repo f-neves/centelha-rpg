@@ -292,7 +292,7 @@ const corpoNovo = z.object({
   altura: numero, largura: numero, profundidade: numero.nullable(), comprimento: numero.nullable(),
   comprimentoSemCauda: numero.optional(), envergadura: numero.optional(), caudaGrossa: z.boolean().optional(),
   massa: numero.optional(), semMassa: z.literal(true).optional(), volume: numero.optional(),
-  // quem não ergue (o incorpóreo e o fogo); chave que o formato não tem ainda (tmp/executora/fase3/perguntas.md, P5)
+  // P5, 26/10/2026: só em quem escreve "não ergue", independente de semMassa.
   naoErgue: z.literal(true).optional(),
   area: numero, posturaDoTamanho: texto.optional(),
   segundoTamanho: z.object({ area: numero, posturaDoTamanho: texto, tamanhoEscolhido: id.optional() }).strict().optional(),
