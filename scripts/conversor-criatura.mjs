@@ -605,15 +605,17 @@ export function converterFicha(texto, { site = null } = {}) {
   const NOTA = { altura: 'corpo.altura', largura: 'corpo.largura', comprimento: 'corpo.comprimento', envergadura: 'corpo.envergadura',
     massa: corpo.semMassa ? 'corpo.volume' : 'corpo.massa', volume: 'corpo.volume', area: 'corpo.area', aparencia: 'aparencia', couraca: 'couraca', vontade: 'vontade' };
   for (const l of (S['Notas de observação'] || []).filter((x) => x.startsWith('- '))) {
-    if (!MARCA.test(l) && !/a conferir/.test(l)) continue;
+    const marcada = MARCA.test(l) || /a conferir/.test(l);
     const m = l.match(/^- ((?:`[^`]+`(?:,\s*|\s+e\s+)?)+):\s*(.*)$/);
     if (!m) continue;
     for (const nm of [...m[1].matchAll(/`([^`]+)`/g)].map((x) => x[1])) {
       const s = slug(nm), aid = idAtributo(nm.charAt(0).toUpperCase() + nm.slice(1)) ?? ({ forca: 'forca' }[s]);
       const fo = (c.formas || []).find((f) => slug(f.nome) === s || f.id === s);
+      const atq = c.ataques.find((a) => slug(a.nome) === s);
+      if (!atq && !marcada) continue;
       const he = c.habilidadesEspeciais.find((h) => slug(h.nome) === s);
       const se = c.sentidos.find((x) => slug(x.nome) === s);
-      const cp = NOTA[s] ?? (aid ? `atributos.${aid}` : fo ? `formas.${fo.id}` : he ? `habilidadesEspeciais.${he.nome}` : se ? `sentidos.${se.nome}` : null);
+      const cp = NOTA[s] ?? (aid ? `atributos.${aid}` : fo ? `formas.${fo.id}` : atq ? `ataques.${atq.nome}` : he ? `habilidadesEspeciais.${he.nome}` : se ? `sentidos.${se.nome}` : null);
       if (cp) revisao.push({ campo: cp, motivo: semMarcas(m[2]).replace(/\*\*/g, '') });
       else avisos.push(`Notas de observação: "${nm}" não nomeia um campo do formato; a nota não entra na revisao`);
     }

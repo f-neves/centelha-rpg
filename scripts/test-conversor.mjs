@@ -61,6 +61,7 @@ const DIFERENCAS = {
 };
 const REVISAO = {
   lobisomem: {
+    'ataques.Mordida': 'só no conversor: o leitor de 27/10/2026 lê a nota de ataque já existente na ficha; o exemplo anterior não a traz',
     'formas.humana': 'só no conversor: a marca da Justificativa da linha da forma humana; o exemplo a pôs em formas.humana.atributos.forca',
     'formas.humana.atributos.forca': 'só no exemplo: a leitura à mão da marca da forma humana (a Força 4)',
     'formas.lobo.corpo': 'só no exemplo: a nota "forma de lobo" desdobrada à mão; o conversor a põe em formas.lobo',
