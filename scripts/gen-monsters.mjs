@@ -98,7 +98,7 @@ function build(c) {
     ameaca: c.ameaca,
     centelha: c.centelha,
     pendente: !!c.pendente,
-    porte: f.porte || null,
+    tamanho: f.porte || null,
     dimensoes: { medida: f.dimensoes?.medida || null, peso: f.dimensoes?.peso || null },
     ecologia: { tipo: e.tipo || null, terreno: e.terreno || [], clima: e.clima || [] },
     imagem: f.imagem || null, ...(f.imagem2 ? { imagem2: f.imagem2 } : {}),
@@ -240,7 +240,7 @@ const resolverTecnicas = (ids, catalogo) => (ids || []).map((t) => {
 });
 
 const CAMPOS_MESA = [
-  'id', 'nome', 'nomeIngles', 'ameaca', 'centelha', 'categoria', 'porte', 'imagem', 'imagem2',
+  'id', 'nome', 'nomeIngles', 'ameaca', 'centelha', 'categoria', 'tamanho', 'imagem', 'imagem2',
   'semImagem', 'tipo', 'atributos', 'virtudes', 'vontade', 'aparencia',
   // `pericias` ENTROU EM 04/09/2026, e a ausencia dela aqui foi um zero ambiguo
   // de verdade: o bloco `sentidos` do ResumoCombate le `MON[id].pericias`, `MON`

@@ -461,7 +461,7 @@ let nFonte = 0, nTabela = 0, nFicha = 0;
 
 for (const m of TODAS) {
   const f = FONTE[m.id];
-  const ft = f ? f.ft : daTabela(m.ecologia?.tipo, m.porte);
+  const ft = f ? f.ft : daTabela(m.ecologia?.tipo, m.tamanho);
   if (!Number.isFinite(ft) || ft < 0) throw new Error(`velocidade inválida em ${m.id}: ${ft}`);
   // A FICHA V3 TRAZ O DESLOCAMENTO CONGELADO (D-179; decisoes-etapa-6.md §9, itens 3 e
   // 3b): o satélite grava o mesmo que o gen-monsters.mjs usa, com a origem 'ficha'. O

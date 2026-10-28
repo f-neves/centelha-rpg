@@ -13,7 +13,7 @@
   "ameaca": 1,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.75 m de altura",
    "peso": "70 kg"
@@ -153,7 +153,7 @@
   "ameaca": 4,
   "centelha": 5,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "1.2 m de altura, 6.5 m de comprimento",
    "peso": "2700 kg"
@@ -305,7 +305,7 @@
   "ameaca": 3,
   "centelha": 1,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "2.82 m de altura, 2.61 m de comprimento",
    "peso": "180 kg"
@@ -471,7 +471,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.83 m de altura, 0.77 m de comprimento",
    "peso": "4.6 kg"
@@ -603,7 +603,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.8 m de altura, 2.92 m de comprimento",
    "peso": "440 kg"
@@ -735,7 +735,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "0.98 m de altura, 3 m de comprimento",
    "peso": "160 kg"
@@ -876,7 +876,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "1.59 m de altura, 7.2 m de comprimento",
    "peso": "5200 kg"
@@ -1003,7 +1003,7 @@
   "ameaca": 4,
   "centelha": 3,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "0.69 m de altura, 1.5 m de comprimento",
    "peso": "160 kg"
@@ -1136,7 +1136,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.33 m de altura, 0.6 m de comprimento",
    "peso": "17.2 kg"
@@ -1285,7 +1285,7 @@
   "ameaca": 3,
   "centelha": 4,
   "pendente": true,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1,8 m de altura",
    "peso": "100 kg"
@@ -1456,7 +1456,7 @@
   "ameaca": 2,
   "centelha": 2,
   "pendente": true,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "1 m de diâmetro",
    "peso": "desprezível"
@@ -1634,7 +1634,7 @@
   "ameaca": 6,
   "centelha": 6,
   "pendente": true,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "2 m de altura",
    "peso": "100 kg"
@@ -1773,7 +1773,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.73 m de altura",
    "peso": "70 kg"
@@ -1921,7 +1921,7 @@
   "ameaca": 4,
   "centelha": 3,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.7 m de altura",
    "peso": "65 kg"
@@ -2077,7 +2077,7 @@
   "ameaca": 4,
   "centelha": 3,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "sem massa"
@@ -2236,7 +2236,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.63 m de altura, 3.3 m de comprimento",
    "peso": "800 kg"
@@ -2378,7 +2378,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "80 kg"
@@ -2574,7 +2574,7 @@
   "ameaca": 6,
   "centelha": 9,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "3.7 m de altura",
    "peso": "1355 kg"
@@ -2777,7 +2777,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.72 m de altura",
    "peso": "70 kg"
@@ -2913,7 +2913,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "90 kg"
@@ -3072,7 +3072,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.7 m de altura",
    "peso": "350 kg"
@@ -3232,7 +3232,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": true,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "2 m de altura",
    "peso": "180 kg"
@@ -3359,7 +3359,7 @@
   "ameaca": 4,
   "centelha": 3,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.28 m de altura, 1.8 m de comprimento",
    "peso": "36 kg"
@@ -3485,7 +3485,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "1.9 m de altura, 3 m de comprimento",
    "peso": "2700 kg"
@@ -3664,7 +3664,7 @@
   "ameaca": 5,
   "centelha": 1,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "1.17 m de altura, 9 m de comprimento",
    "peso": "3600 kg"
@@ -3809,7 +3809,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.12 m de altura, 0.6 m de comprimento",
    "peso": "0.55 kg"
@@ -3927,7 +3927,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.11 m de altura, 3 m de comprimento",
    "peso": "39 kg"
@@ -4057,7 +4057,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.61 m de altura, 3.38 m de comprimento",
    "peso": "230 kg"
@@ -4213,7 +4213,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.69 m de altura, 3.24 m de comprimento",
    "peso": "610 kg"
@@ -4361,7 +4361,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.24 m de altura, 0.8 m de comprimento",
    "peso": "80 kg"
@@ -4506,7 +4506,7 @@
   "ameaca": 5,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "65 kg"
@@ -4651,7 +4651,7 @@
   "ameaca": 2,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.5 m de altura",
    "peso": "70 kg"
@@ -4783,7 +4783,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.59 m de altura, 3.49 m de comprimento",
    "peso": "830 kg"
@@ -4922,7 +4922,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "80 kg"
@@ -5073,7 +5073,7 @@
   "ameaca": 5,
   "centelha": 0,
   "pendente": false,
-  "porte": "Imenso",
+  "tamanho": "Imenso",
   "dimensoes": {
    "medida": "11.29 m de altura, 20.52 m de comprimento",
    "peso": "31000 kg"
@@ -5212,7 +5212,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.9 m de altura",
    "peso": "110 kg"
@@ -5350,7 +5350,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "68 kg"
@@ -5493,7 +5493,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.9 m de altura",
    "peso": "70 kg"
@@ -5666,7 +5666,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.5 m de altura",
    "peso": "80 kg"
@@ -5814,7 +5814,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "2.15 m de altura",
    "peso": "113 kg"
@@ -5940,7 +5940,7 @@
   "ameaca": 4,
   "centelha": 1,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "2.7 m de altura, 6 m de comprimento",
    "peso": "4800 kg"
@@ -6087,7 +6087,7 @@
   "ameaca": 5,
   "centelha": 0,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "2.65 m de altura, 4.5 m de comprimento",
    "peso": "3600 kg"
@@ -6239,7 +6239,7 @@
   "ameaca": 6,
   "centelha": 3,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.9 m de altura",
    "peso": "90 kg"
@@ -6403,7 +6403,7 @@
   "ameaca": 2,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "12 kg"
@@ -6563,7 +6563,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.65 m de altura",
    "peso": "65 kg"
@@ -6691,7 +6691,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.55 m de altura, 1.25 m de comprimento",
    "peso": "20 kg"
@@ -6826,7 +6826,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.79 m de altura, 1.76 m de comprimento",
    "peso": "85 kg"
@@ -6960,7 +6960,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.34 m de altura, 2.98 m de comprimento",
    "peso": "450 kg"
@@ -7102,7 +7102,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.83 m de altura, 1.86 m de comprimento",
    "peso": "54 kg"
@@ -7236,7 +7236,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.2 m de altura, 2.67 m de comprimento",
    "peso": "180 kg"
@@ -7387,7 +7387,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "0.15 m de altura, 1.8 m de comprimento",
    "peso": "45 kg"
@@ -7520,7 +7520,7 @@
   "ameaca": 4,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "85 kg"
@@ -7661,7 +7661,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.41 m de altura, 0.7 m de comprimento",
    "peso": "202.5 kg"
@@ -7787,7 +7787,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.4 m de altura, 1.05 m de comprimento",
    "peso": "11.75 kg"
@@ -7922,7 +7922,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.26 m de altura, 3.15 m de comprimento",
    "peso": "405 kg"
@@ -8057,7 +8057,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "3.07 m de altura, 4 m de comprimento",
    "peso": "2180 kg"
@@ -8212,7 +8212,7 @@
   "ameaca": 5,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.85 m de altura",
    "peso": "95 kg"
@@ -8363,7 +8363,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.88 m de altura, 2.45 m de comprimento",
    "peso": "500 kg"
@@ -8501,7 +8501,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.1 m de altura, 2.9 m de comprimento",
    "peso": "900 kg"
@@ -8653,7 +8653,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.11 m de altura, 1.8 m de comprimento",
    "peso": "17.5 kg"
@@ -8784,7 +8784,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "0.6 m de altura, 2.7 m de comprimento",
    "peso": "160 kg"
@@ -8935,7 +8935,7 @@
   "ameaca": 4,
   "centelha": 1,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "3.2 m de altura",
    "peso": "448 kg"
@@ -9082,7 +9082,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Miúdo",
+  "tamanho": "Miúdo",
   "dimensoes": {
    "medida": "0.4 m de altura, 1.2 m de comprimento",
    "peso": "18 kg"
@@ -9224,7 +9224,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.7 m de altura, 1 m de comprimento",
    "peso": "11 kg"
@@ -9356,7 +9356,7 @@
   "ameaca": 5,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.85 m de altura",
    "peso": "88 kg"
@@ -9521,7 +9521,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.4 m de altura, 2.12 m de comprimento",
    "peso": "300 kg"
@@ -9673,7 +9673,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.34 m de altura, 0.62 m de comprimento",
    "peso": "1.25 kg"
@@ -9790,7 +9790,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "0.3 m de altura, 3.7 m de comprimento",
    "peso": "270 kg"
@@ -9965,7 +9965,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "0.5 m de altura, 3.84 m de comprimento",
    "peso": "215 kg"
@@ -10101,7 +10101,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.42 m de altura, 3.22 m de comprimento",
    "peso": "126 kg"
@@ -10224,7 +10224,7 @@
   "ameaca": 3,
   "centelha": 1,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "3 m de altura, 3 m de comprimento",
    "peso": "27300 kg"
@@ -10357,7 +10357,7 @@
   "ameaca": 4,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.7 m de altura",
    "peso": "62 kg"
@@ -10502,7 +10502,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.77 m de altura, 3 m de comprimento",
    "peso": "750 kg"
@@ -10633,7 +10633,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.87 m de altura, 3.35 m de comprimento",
    "peso": "97 kg"
@@ -10778,7 +10778,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "1.2 m de altura",
    "peso": "36 kg"
@@ -10925,7 +10925,7 @@
   "ameaca": 6,
   "centelha": 6,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2 m de altura",
    "peso": "90 kg"
@@ -11083,7 +11083,7 @@
   "ameaca": 5,
   "centelha": 4,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.6 m de altura, 0.45 m de comprimento",
    "peso": "18 kg"
@@ -11242,7 +11242,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "2.1 m de altura",
    "peso": "90 kg"
@@ -11407,7 +11407,7 @@
   "ameaca": 6,
   "centelha": 6,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.7 m de altura",
    "peso": "315 kg"
@@ -11588,7 +11588,7 @@
   "ameaca": 5,
   "centelha": 6,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "3.3 m de altura",
    "peso": "360 kg"
@@ -11781,7 +11781,7 @@
   "ameaca": 6,
   "centelha": 9,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.7 m de altura",
    "peso": "360 kg"
@@ -11997,7 +11997,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "2.1 m de altura",
    "peso": "135 kg"
@@ -12151,7 +12151,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.7 m de altura",
    "peso": "230 kg"
@@ -12321,7 +12321,7 @@
   "ameaca": 2,
   "centelha": 2,
   "pendente": false,
-  "porte": "Miúdo",
+  "tamanho": "Miúdo",
   "dimensoes": {
    "medida": "0.6 m de altura",
    "peso": "3.6 kg"
@@ -12483,7 +12483,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "3 m de altura",
    "peso": "200 kg"
@@ -12634,7 +12634,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Minúsculo",
+  "tamanho": "Minúsculo",
   "dimensoes": {
    "medida": "0.05 m de altura, 0.23 m de comprimento",
    "peso": "0.099 kg"
@@ -12761,7 +12761,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "70 kg"
@@ -12901,7 +12901,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.83 m de altura, 2.4 m de comprimento",
    "peso": "180 kg"
@@ -13050,7 +13050,7 @@
   "ameaca": 5,
   "centelha": 6,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "2.87 m de altura, 9.5 m de comprimento",
    "peso": "7500 kg"
@@ -13246,7 +13246,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.3 m de altura, 4.3 m de comprimento",
    "peso": "700 kg"
@@ -13435,7 +13435,7 @@
   "ameaca": 6,
   "centelha": 7,
   "pendente": false,
-  "porte": "Imenso",
+  "tamanho": "Imenso",
   "dimensoes": {
    "medida": "3.05 m de altura, 9.5 m de comprimento",
    "peso": "9000 kg"
@@ -13632,7 +13632,7 @@
   "ameaca": 5,
   "centelha": 6,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "2.8 m de altura, 9 m de comprimento",
    "peso": "7000 kg"
@@ -13812,7 +13812,7 @@
   "ameaca": 6,
   "centelha": 6,
   "pendente": false,
-  "porte": "Imenso",
+  "tamanho": "Imenso",
   "dimensoes": {
    "medida": "2.84 m de altura, 9 m de comprimento",
    "peso": "7300 kg"
@@ -14012,7 +14012,7 @@
   "ameaca": 6,
   "centelha": 7,
   "pendente": false,
-  "porte": "Imenso",
+  "tamanho": "Imenso",
   "dimensoes": {
    "medida": "5.7 m de altura, 16.5 m de comprimento",
    "peso": "59000 kg"
@@ -14226,7 +14226,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.41 m de altura, 4.9 m de comprimento",
    "peso": "900 kg"
@@ -14412,7 +14412,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.35 m de altura, 2.23 m de comprimento",
    "peso": "51 kg"
@@ -14548,7 +14548,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.28 m de altura, 1.81 m de comprimento",
    "peso": "27 kg"
@@ -14672,7 +14672,7 @@
   "ameaca": 2,
   "centelha": 2,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.9 m de altura",
    "peso": "27 kg"
@@ -14831,7 +14831,7 @@
   "ameaca": 3,
   "centelha": 4,
   "pendente": true,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1,65 m de altura",
    "peso": "50 kg"
@@ -15000,7 +15000,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.5 m de altura, 1.22 m de comprimento",
    "peso": "180 kg"
@@ -15138,7 +15138,7 @@
   "ameaca": 1,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.6 m de altura",
    "peso": "55 kg"
@@ -15274,7 +15274,7 @@
   "ameaca": 4,
   "centelha": 3,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.75 m de altura",
    "peso": "70 kg"
@@ -15428,7 +15428,7 @@
   "ameaca": 1,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.2 m de altura",
    "peso": "55 kg"
@@ -15562,7 +15562,7 @@
   "ameaca": 5,
   "centelha": 4,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "3.6 m de altura",
    "peso": "320 kg"
@@ -15719,7 +15719,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "0.9 m de altura, 10.3 m de comprimento",
    "peso": "2100 kg"
@@ -15840,7 +15840,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "2.65 m de altura, 5.8 m de comprimento",
    "peso": "3600 kg"
@@ -16004,7 +16004,7 @@
   "ameaca": 2,
   "centelha": 1,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "1.2 m de altura",
    "peso": "23.4 kg"
@@ -16133,7 +16133,7 @@
   "ameaca": 4,
   "centelha": 3,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "3 m de altura",
    "peso": "1234 kg"
@@ -16278,7 +16278,7 @@
   "ameaca": 2,
   "centelha": 1,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "1.2 m de altura",
    "peso": "79 kg"
@@ -16409,7 +16409,7 @@
   "ameaca": 2,
   "centelha": 1,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "1.2 m de altura",
    "peso": "sem massa"
@@ -16538,7 +16538,7 @@
   "ameaca": 2,
   "centelha": 1,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "1.2 m de altura",
    "peso": "sem massa"
@@ -16669,7 +16669,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": true,
-  "porte": "Minúsculo",
+  "tamanho": "Minúsculo",
   "dimensoes": {
    "medida": "0,0046 m de comprimento, 0,003 m de altura",
    "peso": "0,000007 kg"
@@ -16794,7 +16794,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": true,
-  "porte": "Minúsculo",
+  "tamanho": "Minúsculo",
   "dimensoes": {
    "medida": "0,067 m de comprimento, 0,04 m de altura",
    "peso": "0,148 kg"
@@ -16916,7 +16916,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": true,
-  "porte": "Minúsculo",
+  "tamanho": "Minúsculo",
   "dimensoes": {
    "medida": "0,03 m de comprimento, 0,005 m de altura",
    "peso": "0,0001 kg"
@@ -17036,7 +17036,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": true,
-  "porte": "Minúsculo",
+  "tamanho": "Minúsculo",
   "dimensoes": {
    "medida": "0,006 m de comprimento, 0,002 m de altura",
    "peso": "0,000003 kg"
@@ -17166,7 +17166,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": true,
-  "porte": "Minúsculo",
+  "tamanho": "Minúsculo",
   "dimensoes": {
    "medida": "0,09 m de comprimento, 0,03 m de altura",
    "peso": "0,011 kg"
@@ -17295,7 +17295,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": true,
-  "porte": "Minúsculo",
+  "tamanho": "Minúsculo",
   "dimensoes": {
    "medida": "0,4 m de comprimento, 0,08 m de altura",
    "peso": "0,3 kg"
@@ -17428,7 +17428,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": true,
-  "porte": "Minúsculo",
+  "tamanho": "Minúsculo",
   "dimensoes": {
    "medida": "0,12 m de comprimento, 0,005 m de altura",
    "peso": "0,004 kg"
@@ -17556,7 +17556,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": true,
-  "porte": "Minúsculo",
+  "tamanho": "Minúsculo",
   "dimensoes": {
    "medida": "0,015 m de comprimento, 0,005 m de altura",
    "peso": "0,000084 kg"
@@ -17678,7 +17678,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "68 kg"
@@ -17855,7 +17855,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "0.6 m de altura, 3 m de comprimento",
    "peso": "101 kg"
@@ -17996,7 +17996,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.47 m de altura, 3.75 m de comprimento",
    "peso": "230 kg"
@@ -18154,7 +18154,7 @@
   "ameaca": 2,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1,8 m de altura",
    "peso": "40 kg"
@@ -18265,7 +18265,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "sem massa"
@@ -18431,7 +18431,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "45 kg"
@@ -18566,7 +18566,7 @@
   "ameaca": 1,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.7 m de altura",
    "peso": "10 kg"
@@ -18715,7 +18715,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "2.97 m de altura, 7.18 m de comprimento",
    "peso": "4100 kg"
@@ -18841,7 +18841,7 @@
   "ameaca": 2,
   "centelha": 2,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "1 m de altura",
    "peso": "16 kg"
@@ -18975,7 +18975,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "90 kg"
@@ -19118,7 +19118,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "4 m de altura",
    "peso": "1094 kg"
@@ -19255,7 +19255,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.36 m de altura, 0.47 m de comprimento",
    "peso": "0.85 kg"
@@ -19390,7 +19390,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.7 m de altura",
    "peso": "sem massa"
@@ -19554,7 +19554,7 @@
   "ameaca": 4,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.68 m de altura",
    "peso": "60 kg"
@@ -19695,7 +19695,7 @@
   "ameaca": 6,
   "centelha": 6,
   "pendente": false,
-  "porte": "Imenso",
+  "tamanho": "Imenso",
   "dimensoes": {
    "medida": "6.2 m de altura, 5.8 m de comprimento",
    "peso": "1000 kg"
@@ -19877,7 +19877,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.82 m de altura, 2.7 m de comprimento",
    "peso": "90 kg"
@@ -20050,7 +20050,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Miúdo",
+  "tamanho": "Miúdo",
   "dimensoes": {
    "medida": "0.3 m de altura",
    "peso": "sem massa"
@@ -20187,7 +20187,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.65 m de altura, 2 m de comprimento",
    "peso": "41 kg"
@@ -20329,7 +20329,7 @@
   "ameaca": 5,
   "centelha": 0,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "2.3 m de altura, 7.4 m de comprimento",
    "peso": "3000 kg"
@@ -20495,7 +20495,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": true,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1,2 metro de altura",
    "peso": "23 kg"
@@ -20620,7 +20620,7 @@
   "ameaca": 3,
   "centelha": 1,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.5 m de altura",
    "peso": "180 kg"
@@ -20761,7 +20761,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Miúdo",
+  "tamanho": "Miúdo",
   "dimensoes": {
    "medida": "0.27 m de altura, 0.84 m de comprimento",
    "peso": "4.2 kg"
@@ -20893,7 +20893,7 @@
   "ameaca": 4,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.76 m de altura, 0.76 m de comprimento",
    "peso": "230 kg"
@@ -21029,7 +21029,7 @@
   "ameaca": 5,
   "centelha": 6,
   "pendente": true,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1,8 m de altura",
    "peso": "90 kg"
@@ -21210,7 +21210,7 @@
   "ameaca": 2,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "65 kg"
@@ -21369,7 +21369,7 @@
   "ameaca": 2,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.7 m de altura",
    "peso": "60 kg"
@@ -21533,7 +21533,7 @@
   "ameaca": 4,
   "centelha": 1,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "4.3 m de altura",
    "peso": "1305 kg"
@@ -21684,7 +21684,7 @@
   "ameaca": 5,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "3.7 m de altura",
    "peso": "693 kg"
@@ -21829,7 +21829,7 @@
   "ameaca": 5,
   "centelha": 4,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "7.5 m de altura",
    "peso": "5772 kg"
@@ -21985,7 +21985,7 @@
   "ameaca": 5,
   "centelha": 2,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "7 m de altura",
    "peso": "4692 kg"
@@ -22144,7 +22144,7 @@
   "ameaca": 5,
   "centelha": 1,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "4.5 m de altura",
    "peso": "1247 kg"
@@ -22314,7 +22314,7 @@
   "ameaca": 5,
   "centelha": 1,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "4.3 m de altura",
    "peso": "1088 kg"
@@ -22464,7 +22464,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "3 m de altura, 1 m de comprimento",
    "peso": "300 kg"
@@ -22597,7 +22597,7 @@
   "ameaca": 4,
   "centelha": 1,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.4 m de altura",
    "peso": "360 kg"
@@ -22745,7 +22745,7 @@
   "ameaca": 5,
   "centelha": 6,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "3.7 m de altura",
    "peso": "1556 kg"
@@ -22947,7 +22947,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "2.15 m de altura",
    "peso": "135 kg"
@@ -23086,7 +23086,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.95 m de altura",
    "peso": "18 kg"
@@ -23206,7 +23206,7 @@
   "ameaca": 5,
   "centelha": 3,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "2.4 m de altura",
    "peso": "270 kg"
@@ -23356,7 +23356,7 @@
   "ameaca": 4,
   "centelha": 3,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.4 m de altura",
    "peso": "225 kg"
@@ -23506,7 +23506,7 @@
   "ameaca": 5,
   "centelha": 4,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "3.6 m de altura",
    "peso": "4960 kg"
@@ -23669,7 +23669,7 @@
   "ameaca": 4,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "2.1 m de altura",
    "peso": "115 kg"
@@ -23818,7 +23818,7 @@
   "ameaca": 5,
   "centelha": 3,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.7 m de altura",
    "peso": "900 kg"
@@ -23966,7 +23966,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.57 m de altura, 2.68 m de comprimento",
    "peso": "285 kg"
@@ -24100,7 +24100,7 @@
   "ameaca": 5,
   "centelha": 3,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.8 m de altura, 3.5 m de comprimento",
    "peso": "1800 kg"
@@ -24259,7 +24259,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.72 m de altura, 0.55 m de comprimento",
    "peso": "206 kg"
@@ -24397,7 +24397,7 @@
   "ameaca": 6,
   "centelha": 9,
   "pendente": false,
-  "porte": "Imenso",
+  "tamanho": "Imenso",
   "dimensoes": {
    "medida": "6.51 m de altura, 20 m de comprimento",
    "peso": "88000 kg"
@@ -24619,7 +24619,7 @@
   "ameaca": 3,
   "centelha": 1,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "1.32 m de altura, 3.2 m de comprimento",
    "peso": "230 kg"
@@ -24784,7 +24784,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.75 m de altura",
    "peso": "78 kg"
@@ -24928,7 +24928,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.79 m de altura, 2.05 m de comprimento",
    "peso": "58 kg"
@@ -25066,7 +25066,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.6 m de altura",
    "peso": "55 kg"
@@ -25206,7 +25206,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "3 m de altura",
    "peso": "621 kg"
@@ -25377,7 +25377,7 @@
   "ameaca": 3,
   "centelha": 1,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "1.17 m de altura, 9 m de comprimento",
    "peso": "4000 kg"
@@ -25521,7 +25521,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.83 m de altura, 1.71 m de comprimento",
    "peso": "55 kg"
@@ -25652,7 +25652,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.24 m de altura, 2.79 m de comprimento",
    "peso": "330 kg"
@@ -25778,7 +25778,7 @@
   "ameaca": 2,
   "centelha": 1,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "1.81 m de altura, 3 m de comprimento",
    "peso": "450 kg"
@@ -25935,7 +25935,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.7 m de altura",
    "peso": "73 kg"
@@ -26062,7 +26062,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura, 2.4 m de comprimento",
    "peso": "90 kg"
@@ -26199,7 +26199,7 @@
   "ameaca": 2,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.7 m de altura",
    "peso": "65 kg"
@@ -26353,7 +26353,7 @@
   "ameaca": 2,
   "centelha": 1,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.54 m de altura",
    "peso": "3 kg"
@@ -26490,7 +26490,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "80 kg"
@@ -26626,7 +26626,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Minúsculo",
+  "tamanho": "Minúsculo",
   "dimensoes": {
    "medida": "0.031 m de altura, 1.04 m de comprimento",
    "peso": "0.38 kg"
@@ -26749,7 +26749,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.74 m de altura, 2.04 m de comprimento",
    "peso": "87 kg"
@@ -26899,7 +26899,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.105 m de altura, 3.28 m de comprimento",
    "peso": "27 kg"
@@ -27033,7 +27033,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.75 m de altura, 1.1 m de comprimento",
    "peso": "16 kg"
@@ -27158,7 +27158,7 @@
   "ameaca": 6,
   "centelha": 7,
   "pendente": false,
-  "porte": "Colossal",
+  "tamanho": "Colossal",
   "dimensoes": {
    "medida": "5.35 m de altura, 35 m de comprimento",
    "peso": "140000 kg"
@@ -27335,7 +27335,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "90 kg"
@@ -27500,7 +27500,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "3 m de altura",
    "peso": "1000 kg"
@@ -27649,7 +27649,7 @@
   "ameaca": 2,
   "centelha": 2,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.21 m de altura, 1.34 m de comprimento",
    "peso": "11 kg"
@@ -27795,7 +27795,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "0.38 m de altura, 4 m de comprimento",
    "peso": "66.2 kg"
@@ -27931,7 +27931,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.9 m de altura, 3 m de comprimento",
    "peso": "160 kg"
@@ -28065,7 +28065,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.43 m de altura, 3 m de comprimento",
    "peso": "173 kg"
@@ -28211,7 +28211,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.17 m de altura, 2.89 m de comprimento",
    "peso": "235 kg"
@@ -28354,7 +28354,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.75 m de altura, 1.82 m de comprimento",
    "peso": "88 kg"
@@ -28489,7 +28489,7 @@
   "ameaca": 2,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.5 m de altura",
    "peso": "45 kg"
@@ -28621,7 +28621,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.62 m de altura, 2.16 m de comprimento",
    "peso": "52.5 kg"
@@ -28764,7 +28764,7 @@
   "ameaca": 5,
   "centelha": 0,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "0.75 m de altura, 9 m de comprimento",
    "peso": "3518 kg"
@@ -28917,7 +28917,7 @@
   "ameaca": 5,
   "centelha": 6,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.75 m de altura",
    "peso": "30 kg"
@@ -29103,7 +29103,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": true,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "6 m de comprimento",
    "peso": "1.700 kg"
@@ -29237,7 +29237,7 @@
   "ameaca": 3,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.19 m de altura, 1 m de comprimento",
    "peso": "150 kg"
@@ -29369,7 +29369,7 @@
   "ameaca": 6,
   "centelha": 6,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "1.11 m de altura, 24 m de comprimento",
    "peso": "14000 kg"
@@ -29543,7 +29543,7 @@
   "ameaca": 6,
   "centelha": 6,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "0.8 m de altura, 36 m de comprimento",
    "peso": "11000 kg"
@@ -29741,7 +29741,7 @@
   "ameaca": 6,
   "centelha": 6,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "0.79 m de altura, 18 m de comprimento",
    "peso": "5400 kg"
@@ -29914,7 +29914,7 @@
   "ameaca": 2,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "2.1 m de altura",
    "peso": "105 kg"
@@ -30065,7 +30065,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.84 m de altura, 1.87 m de comprimento",
    "peso": "55 kg"
@@ -30198,7 +30198,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.89 m de altura, 1.98 m de comprimento",
    "peso": "70 kg"
@@ -30326,7 +30326,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.35 m de altura, 3 m de comprimento",
    "peso": "200 kg"
@@ -30471,7 +30471,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1 m de altura, 3 m de comprimento",
    "peso": "15 kg"
@@ -30613,7 +30613,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Miúdo",
+  "tamanho": "Miúdo",
   "dimensoes": {
    "medida": "0.09 m de altura, 1.19 m de comprimento",
    "peso": "2.75 kg"
@@ -30744,7 +30744,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.25 m de altura, 3.2 m de comprimento",
    "peso": "68 kg"
@@ -30884,7 +30884,7 @@
   "ameaca": 5,
   "centelha": 0,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "1.36 m de altura, 26.4 m de comprimento",
    "peso": "3170 kg"
@@ -31031,7 +31031,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Miúdo",
+  "tamanho": "Miúdo",
   "dimensoes": {
    "medida": "0.24 m de altura, 0.86 m de comprimento",
    "peso": "3.1 kg"
@@ -31149,7 +31149,7 @@
   "ameaca": 6,
   "centelha": 3,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.75 m de altura",
    "peso": "75 kg"
@@ -31300,7 +31300,7 @@
   "ameaca": 5,
   "centelha": 0,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "2.96 m de altura, 5.65 m de comprimento",
    "peso": "5000 kg"
@@ -31431,7 +31431,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.67 m de altura, 3.5 m de comprimento",
    "peso": "320 kg"
@@ -31585,7 +31585,7 @@
   "ameaca": 2,
   "centelha": 1,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "0.26 m de altura, 1.65 m de comprimento",
    "peso": "18 kg"
@@ -31710,7 +31710,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "4.9 m de altura",
    "peso": "1130 kg"
@@ -31848,7 +31848,7 @@
   "ameaca": 6,
   "centelha": 7,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.7 m de altura, 6 m de comprimento",
    "peso": "925 kg"
@@ -32052,7 +32052,7 @@
   "ameaca": 5,
   "centelha": 0,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "2.8 m de altura, 5.8 m de comprimento",
    "peso": "7200 kg"
@@ -32188,7 +32188,7 @@
   "ameaca": 4,
   "centelha": 3,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.75 m de altura",
    "peso": "55 kg"
@@ -32353,7 +32353,7 @@
   "ameaca": 5,
   "centelha": 0,
   "pendente": false,
-  "porte": "Imenso",
+  "tamanho": "Imenso",
   "dimensoes": {
    "medida": "3.37 m de altura, 14.57 m de comprimento",
    "peso": "36000 kg"
@@ -32487,7 +32487,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1 m de altura",
    "peso": "18 kg"
@@ -32633,7 +32633,7 @@
   "ameaca": 1,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.9 m de altura, 2 m de comprimento",
    "peso": "90 kg"
@@ -32768,7 +32768,7 @@
   "ameaca": 3,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.5 m de altura, 1.2 m de comprimento",
    "peso": "150 kg"
@@ -32910,7 +32910,7 @@
   "ameaca": 3,
   "centelha": 1,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.4 m de altura",
    "peso": "250 kg"
@@ -33058,7 +33058,7 @@
   "ameaca": 1,
   "centelha": 1,
   "pendente": true,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "60 cm de altura",
    "peso": "9 kg"
@@ -33188,7 +33188,7 @@
   "ameaca": 5,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.75 m de altura",
    "peso": "70 kg"
@@ -33338,7 +33338,7 @@
   "ameaca": 3,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.7 m de altura, 1.5 m de comprimento",
    "peso": "120 kg"
@@ -33471,7 +33471,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.7 m de altura",
    "peso": "1400 kg"
@@ -33611,7 +33611,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Minúsculo",
+  "tamanho": "Minúsculo",
   "dimensoes": {
    "medida": "0.05 m de altura, 0.08 m de comprimento",
    "peso": "0.035 kg"
@@ -33739,7 +33739,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "0.75 m de altura, 1.2 m de comprimento",
    "peso": "27 kg"
@@ -33871,7 +33871,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "0.46 m de altura, 5.5 m de comprimento",
    "peso": "345 kg"
@@ -34001,7 +34001,7 @@
   "ameaca": 2,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.5 m de altura",
    "peso": "68 kg"
@@ -34136,7 +34136,7 @@
   "ameaca": 5,
   "centelha": 0,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "1.5 m de altura, 11 m de comprimento",
    "peso": "11000 kg"
@@ -34249,7 +34249,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "60 kg"
@@ -34395,7 +34395,7 @@
   "ameaca": 5,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "90 kg"
@@ -34576,7 +34576,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.34 m de altura, 6 m de comprimento",
    "peso": "320 kg"
@@ -34745,7 +34745,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.28 m de altura, 4.3 m de comprimento",
    "peso": "159 kg"
@@ -34888,7 +34888,7 @@
   "ameaca": 5,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.28 m de altura, 3.6 m de comprimento",
    "peso": "136 kg"
@@ -35043,7 +35043,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Miúdo",
+  "tamanho": "Miúdo",
   "dimensoes": {
    "medida": "0.04 m de altura, 3.28 m de comprimento",
    "peso": "3.7 kg"
@@ -35171,7 +35171,7 @@
   "ameaca": 6,
   "centelha": 6,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "6 m de altura",
    "peso": "3600 kg"
@@ -35361,7 +35361,7 @@
   "ameaca": 6,
   "centelha": 6,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "0.89 m de altura, 12 m de comprimento",
    "peso": "6000 kg"
@@ -35518,7 +35518,7 @@
   "ameaca": 4,
   "centelha": 5,
   "pendente": true,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1,7 m de altura",
    "peso": "55 kg"
@@ -35695,7 +35695,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.6 m de altura",
    "peso": "55 kg"
@@ -35832,7 +35832,7 @@
   "ameaca": 3,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.5 m de altura",
    "peso": "150 kg"
@@ -35962,7 +35962,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.9 m de altura",
    "peso": "334 kg"
@@ -36097,7 +36097,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.7 m de altura",
    "peso": "269 kg"
@@ -36263,7 +36263,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "2 m de altura",
    "peso": "110 kg"
@@ -36391,7 +36391,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "1.39 m de altura, 5.95 m de comprimento",
    "peso": "3900 kg"
@@ -36512,7 +36512,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.4 m de altura",
    "peso": "500 kg"
@@ -36654,7 +36654,7 @@
   "ameaca": 5,
   "centelha": 0,
   "pendente": true,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "4,5 m de altura",
    "peso": "1000 kg"
@@ -36780,7 +36780,7 @@
   "ameaca": 3,
   "centelha": 4,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.81 m de altura, 2.7 m de comprimento",
    "peso": "450 kg"
@@ -36930,7 +36930,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "70 kg"
@@ -37062,7 +37062,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.07 m de altura, 2.7 m de comprimento",
    "peso": "800 kg"
@@ -37210,7 +37210,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": true,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1,2 m de comprimento",
    "peso": "40 kg"
@@ -37340,7 +37340,7 @@
   "ameaca": 3,
   "centelha": 4,
   "pendente": false,
-  "porte": "Miúdo",
+  "tamanho": "Miúdo",
   "dimensoes": {
    "medida": "0.3 m de altura",
    "peso": "0.4 kg"
@@ -37501,7 +37501,7 @@
   "ameaca": 6,
   "centelha": 7,
   "pendente": true,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2,7 m de altura, envergadura 6 m",
    "peso": "225 kg"
@@ -37696,7 +37696,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.6 m de altura, 3.2 m de comprimento",
    "peso": "143 kg"
@@ -37805,7 +37805,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.13 m de altura, 0.82 m de comprimento",
    "peso": "2.2 kg"
@@ -37933,7 +37933,7 @@
   "ameaca": 5,
   "centelha": 0,
   "pendente": false,
-  "porte": "Imenso",
+  "tamanho": "Imenso",
   "dimensoes": {
    "medida": "1.23 m de altura, 8.05 m de comprimento",
    "peso": "1350.6 kg"
@@ -38072,7 +38072,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.48 m de altura, 2.34 m de comprimento",
    "peso": "220 kg"
@@ -38210,7 +38210,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Miúdo",
+  "tamanho": "Miúdo",
   "dimensoes": {
    "medida": "0.09 m de altura, 1.55 m de comprimento",
    "peso": "4.75 kg"
@@ -38348,7 +38348,7 @@
   "ameaca": 2,
   "centelha": 1,
   "pendente": false,
-  "porte": "Miúdo",
+  "tamanho": "Miúdo",
   "dimensoes": {
    "medida": "0.17 m de altura, 0.9 m de comprimento",
    "peso": "3.2 kg"
@@ -38500,7 +38500,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "0.92 m de altura, 2.1 m de comprimento",
    "peso": "25.5 kg"
@@ -38619,7 +38619,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": true,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "4,5 m de comprimento",
    "peso": "cerca de 8.000 kg"
@@ -38747,7 +38747,7 @@
   "ameaca": 2,
   "centelha": 2,
   "pendente": false,
-  "porte": "Miúdo",
+  "tamanho": "Miúdo",
   "dimensoes": {
    "medida": "0.6 m de altura",
    "peso": "3.5 kg"
@@ -38913,7 +38913,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "5 m de altura, 5 m de comprimento",
    "peso": "245 kg"
@@ -39028,7 +39028,7 @@
   "ameaca": 4,
   "centelha": 3,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.8 m de altura, 4.5 m de comprimento",
    "peso": "600 kg"
@@ -39188,7 +39188,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.31 m de altura, 1.8 m de comprimento",
    "peso": "42.7 kg"
@@ -39332,7 +39332,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Minúsculo",
+  "tamanho": "Minúsculo",
   "dimensoes": {
    "medida": "0.022 m de altura, 0.042 m de comprimento",
    "peso": "0.0085 kg"
@@ -39444,7 +39444,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "80 kg"
@@ -39622,7 +39622,7 @@
   "ameaca": 2,
   "centelha": 2,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "1.2 m de altura",
    "peso": "36 kg"
@@ -39751,7 +39751,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.32 m de altura, 1.62 m de comprimento",
    "peso": "20 kg"
@@ -39877,7 +39877,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.28 m de altura, 1.4 m de comprimento",
    "peso": "12.38 kg"
@@ -40009,7 +40009,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "0.6 m de altura, 7.5 m de comprimento",
    "peso": "1650 kg"
@@ -40148,7 +40148,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.78 m de altura, 4.66 m de comprimento",
    "peso": "2250 kg"
@@ -40299,7 +40299,7 @@
   "ameaca": 5,
   "centelha": 0,
   "pendente": false,
-  "porte": "Imenso",
+  "tamanho": "Imenso",
   "dimensoes": {
    "medida": "7.5 m de altura, 6.9 m de comprimento",
    "peso": "750 kg"
@@ -40458,7 +40458,7 @@
   "ameaca": 2,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "2.1 m de altura",
    "peso": "113 kg"
@@ -40598,7 +40598,7 @@
   "ameaca": 4,
   "centelha": 3,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.28 m de altura, 2.7 m de comprimento",
    "peso": "100 kg"
@@ -40756,7 +40756,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "0.06 m de altura, 3 m de comprimento",
    "peso": "23.1 kg"
@@ -40901,7 +40901,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": false,
-  "porte": "Minúsculo",
+  "tamanho": "Minúsculo",
   "dimensoes": {
    "medida": "0.05 m de altura, 0.125 m de comprimento",
    "peso": "0.115 kg"
@@ -41016,7 +41016,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": true,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1,5 m de altura",
    "peso": "65 kg"
@@ -41170,7 +41170,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "1.01 m de altura, 18 m de comprimento",
    "peso": "14500 kg"
@@ -41312,7 +41312,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "3.4 m de altura",
    "peso": "2270 kg"
@@ -41453,7 +41453,7 @@
   "ameaca": 6,
   "centelha": 0,
   "pendente": true,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "corpo de cerca de 4,5 metros de diâmetro, capaz de se esticar bem além disso",
    "peso": "massa disforme de várias t"
@@ -41594,7 +41594,7 @@
   "ameaca": 2,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "80 kg"
@@ -41743,7 +41743,7 @@
   "ameaca": 6,
   "centelha": 9,
   "pendente": true,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "3 m de altura, envergadura 7 m",
    "peso": "320 kg"
@@ -41953,7 +41953,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.78 m de altura",
    "peso": "82 kg"
@@ -42129,7 +42129,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "sem massa"
@@ -42282,7 +42282,7 @@
   "ameaca": 1,
   "centelha": 1,
   "pendente": false,
-  "porte": "Miúdo",
+  "tamanho": "Miúdo",
   "dimensoes": {
    "medida": "0.06 m de altura, 0.3 m de comprimento",
    "peso": "0.1 kg"
@@ -42406,7 +42406,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.75 m de altura",
    "peso": "59 kg"
@@ -42575,7 +42575,7 @@
   "ameaca": 2,
   "centelha": 1,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.9 m de altura",
    "peso": "18 kg"
@@ -42699,7 +42699,7 @@
   "ameaca": 6,
   "centelha": 10,
   "pendente": false,
-  "porte": "Colossal",
+  "tamanho": "Colossal",
   "dimensoes": {
    "medida": "15 m de altura, 27 m de comprimento",
    "peso": "450000 kg"
@@ -42875,7 +42875,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "0.93 m de altura, 9 m de comprimento",
    "peso": "4000 kg"
@@ -43032,7 +43032,7 @@
   "ameaca": 1,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.75 m de altura",
    "peso": "55 kg"
@@ -43165,7 +43165,7 @@
   "ameaca": 1,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.75 m de altura",
    "peso": "68 kg"
@@ -43293,7 +43293,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.07 m de altura, 2.91 m de comprimento",
    "peso": "192 kg"
@@ -43437,7 +43437,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.24 m de altura, 2.27 m de comprimento",
    "peso": "320 kg"
@@ -43564,7 +43564,7 @@
   "ameaca": 5,
   "centelha": 0,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "3.9 m de altura, 12.8 m de comprimento",
    "peso": "7500 kg"
@@ -43696,7 +43696,7 @@
   "ameaca": 5,
   "centelha": 3,
   "pendente": true,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "7,5 m de altura",
    "peso": "2 t"
@@ -43859,7 +43859,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": true,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "trepadeira que se estende por até 3 m ao redor do caule central",
    "peso": "100 kg de massa vegetal"
@@ -43994,7 +43994,7 @@
   "ameaca": 5,
   "centelha": 0,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "3.08 m de altura, 8.72 m de comprimento",
    "peso": "8000 kg"
@@ -44136,7 +44136,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.7 m de altura",
    "peso": "75 kg"
@@ -44274,7 +44274,7 @@
   "ameaca": 4,
   "centelha": 1,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "3 m de altura",
    "peso": "369 kg"
@@ -44442,7 +44442,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.15 m de altura, 4.91 m de comprimento",
    "peso": "1260 kg"
@@ -44564,7 +44564,7 @@
   "ameaca": 3,
   "centelha": 4,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.7 m de altura, 2.67 m de comprimento",
    "peso": "550 kg"
@@ -44733,7 +44733,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": true,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2,5 m de comprimento",
    "peso": "380 kg"
@@ -44854,7 +44854,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.41 m de altura, 2.36 m de comprimento",
    "peso": "378 kg"
@@ -44989,7 +44989,7 @@
   "ameaca": 2,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.87 m de altura, 1.62 m de comprimento",
    "peso": "107 kg"
@@ -45112,7 +45112,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.15 m de altura, 2 m de comprimento",
    "peso": "200 kg"
@@ -45256,7 +45256,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.34 m de altura, 2.35 m de comprimento",
    "peso": "320 kg"
@@ -45388,7 +45388,7 @@
   "ameaca": 4,
   "centelha": 0,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.52 m de altura, 2.36 m de comprimento",
    "peso": "380 kg"
@@ -45516,7 +45516,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.75 m de altura",
    "peso": "75 kg"
@@ -45697,7 +45697,7 @@
   "ameaca": 2,
   "centelha": 2,
   "pendente": false,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "0.3 m de altura",
    "peso": "11 kg"
@@ -45827,7 +45827,7 @@
   "ameaca": 1,
   "centelha": 0,
   "pendente": true,
-  "porte": "Pequeno",
+  "tamanho": "Pequeno",
   "dimensoes": {
    "medida": "entre 60 centímetros e 1,2 metro de altura",
    "peso": "entre 7 e 20 kg"
@@ -45954,7 +45954,7 @@
   "ameaca": 5,
   "centelha": 1,
   "pendente": false,
-  "porte": "Imenso",
+  "tamanho": "Imenso",
   "dimensoes": {
    "medida": "1.37 m de altura, 24 m de comprimento",
    "peso": "36000 kg"
@@ -46101,7 +46101,7 @@
   "ameaca": 3,
   "centelha": 0,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "0.8 m de altura, 3 m de comprimento",
    "peso": "23 kg"
@@ -46243,7 +46243,7 @@
   "ameaca": 3,
   "centelha": 1,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "1.5 m de altura, 6 m de comprimento",
    "peso": "360 kg"
@@ -46378,7 +46378,7 @@
   "ameaca": 5,
   "centelha": 5,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.4 m de altura",
    "peso": "230 kg"
@@ -46553,7 +46553,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.75 m de altura",
    "peso": "60 kg"
@@ -46695,7 +46695,7 @@
   "ameaca": 2,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "0.9 m de altura, 2 m de comprimento",
    "peso": "80 kg"
@@ -46822,7 +46822,7 @@
   "ameaca": 4,
   "centelha": 3,
   "pendente": false,
-  "porte": "Enorme",
+  "tamanho": "Enorme",
   "dimensoes": {
    "medida": "1.5 m de altura, 5.5 m de comprimento",
    "peso": "250 kg"
@@ -46994,7 +46994,7 @@
   "ameaca": 4,
   "centelha": 4,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.8 m de altura",
    "peso": "80 kg"
@@ -47160,7 +47160,7 @@
   "ameaca": 4,
   "centelha": 3,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.5 m de altura",
    "peso": "450 kg"
@@ -47311,7 +47311,7 @@
   "ameaca": 3,
   "centelha": 2,
   "pendente": false,
-  "porte": "Grande",
+  "tamanho": "Grande",
   "dimensoes": {
    "medida": "2.7 m de altura",
    "peso": "360 kg"
@@ -47448,7 +47448,7 @@
   "ameaca": 1,
   "centelha": 1,
   "pendente": false,
-  "porte": "Médio",
+  "tamanho": "Médio",
   "dimensoes": {
    "medida": "1.7 m de altura",
    "peso": "70 kg"

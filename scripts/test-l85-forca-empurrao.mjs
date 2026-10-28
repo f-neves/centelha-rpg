@@ -116,7 +116,7 @@ console.log('\n· peso 0 (ou ausente) dá número finito, não Infinity: a guard
 
 // Os lotes corrigem o Tamanho de criaturas reais; escolhe um exemplar do porte testado.
 const criaturasAtuais = JSON.parse(fs.readFileSync(path.join(ROOT,'src/data/monsters.json'),'utf8'));
-const idDoPorte = (porte) => {const m=criaturasAtuais.find(m=>m.porte===porte);if(!m)throw Error('sem exemplar de '+porte);return m.id;};
+const idDoPorte = (porte) => {const m=criaturasAtuais.find(m=>m.tamanho===porte);if(!m)throw Error('sem exemplar de '+porte);return m.id;};
 console.log('\n· os dois tetos, contra pesos reais de porte (Arte nível 3: FAH 19 → 360 kg erguidos, FAA 12)');
 {
   const nivelArte = 3;

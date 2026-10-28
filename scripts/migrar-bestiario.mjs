@@ -87,7 +87,7 @@ INIM.forEach((I, i) => {
   // O porte da conta era o do satélite de dimensões, normalizado; a do card é o
   // rótulo. Tem de dar o mesmo slug, ou o PV mudaria.
   const slugAntigo = OLD.DIMPORTE[I.id] || 'medio';
-  if (porteSlug(m.porte) !== slugAntigo) throw new Error(`${I.id}: porte "${m.porte}" dá ${porteSlug(m.porte)}, a conta usava ${slugAntigo}`);
+  if (porteSlug(m.tamanho) !== slugAntigo) throw new Error(`${I.id}: porte "${m.tamanho}" dá ${porteSlug(m.tamanho)}, a conta usava ${slugAntigo}`);
 
   // As perícias da build, com a Integridade que morava fora delas nos NPCs.
   const pe = { ...(b.pericias || {}) };
@@ -129,7 +129,7 @@ INIM.forEach((I, i) => {
     ...(I.descricao !== m.descricao ? { descricaoLegada: I.descricao } : {}),
     tags: I.tags,
     imagem: m.imagem,
-    porte: m.porte,
+    porte: m.tamanho,
     dimensoes: m.dimensoes,
     ...(cu?.material ? { material: cu.material } : {}),
     locomocao: { [modoDe(ds?.nota)]: dm.batalha },

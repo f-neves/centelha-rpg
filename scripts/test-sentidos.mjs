@@ -50,6 +50,7 @@ console.log('· os sentidos das criaturas: a Passiva, a tabela e a exceção');
 // primeiro.
 const porId = Object.fromEntries(MESA.map((m) => [m.id, m]));
 for (const m of [...CHEIO, ...MESA]) {
+  ok(typeof m.tamanho === 'string' && !('porte' in m), m.id + ': Tamanho no contrato');
   ok(!('pericias' in m), m.id + ': contrato sem pericias');
   ok(m.habilidadesSec && !Array.isArray(m.habilidadesSec), m.id + ': mapa secundário presente');
 }
@@ -137,7 +138,7 @@ for (const id of ids) {
     `  e a exceção VENCE a tabela em ${m.nome}: ${m.habilidades?.furtividade} (a tabela daria outro)`);
   // A GÊMEA: se a exceção desse o mesmo número da tabela, a asserção acima
   // passaria sem provar nada. Esta cobra que os dois sejam diferentes.
-  const slug = String(m.porte || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const slug = String(m.tamanho || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
   const daTabela = periciasDe({...m,id:'__teste_sem_excecao__'},slug).furtividade;
   ok(typeof exc[id] === 'object' && String(exc[id]?.porque || '').length > 20,
     `  e o MOTIVO da exceçao esta escrito (${String(exc[id]?.porque || '').length} caracteres)`);

@@ -1364,7 +1364,7 @@ export function pesoDoPorte(c: any): number {
     'Minúsculo': 3, 'Miúdo': 3, 'Pequeno': 20, 'Médio': 70, 'Grande': 250,
     'Enorme': 1200, 'Imenso': 8000, 'Colossal': 40000,
   };
-  return P[MON[c.monstro_id]?.porte] || 0;
+  return P[MON[c.monstro_id]?.tamanho] || 0;
 }
 
 /** O hexágono a `passos` de distância, na reta que sai de `de` passando por `ate`. */

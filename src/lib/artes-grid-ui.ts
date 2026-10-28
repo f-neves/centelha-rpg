@@ -1392,7 +1392,7 @@ async function escolherRetrato(): Promise<string | null> {
     busca: m.busca,
     grupo: m.categoria || 'Sem categoria',
     html: `<span class="ag-ret-op"><img src="${esc(u(imagemDe(m) || m.imagem))}" alt="" loading="lazy" />
-      <span><b>${esc(m.nome)}</b><small>${esc(m.categoria || '')}${m.porte ? ` · ${esc(m.porte)}` : ''}</small></span></span>`,
+      <span><b>${esc(m.nome)}</b><small>${esc(m.categoria || '')}${m.tamanho ? ` · ${esc(m.tamanho)}` : ''}</small></span></span>`,
   })), {
     filtro: 'Procurar criatura…',
     msg: 'Só o retrato: o bloco de combate continua sendo o que você digitou.',

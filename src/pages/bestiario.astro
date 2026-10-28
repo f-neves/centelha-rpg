@@ -43,7 +43,7 @@ const terrenosUsados = [...new Set(inimigos.flatMap((i) => i.ecologia?.terreno |
 const climasUsados = [...new Set(inimigos.flatMap((i) => i.ecologia?.clima || []))].map((k) => ({ k, nome: ECO_CLIMA[k] || k })).sort((a, b) => a.nome.localeCompare(b.nome));
 // Tamanho na ordem da régua (D-141), e não em ordem alfabética; porte fora da régua vai para o fim.
 const PORTES = ['Minúsculo', 'Miúdo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal'];
-const portesUsados = [...new Set(inimigos.map((i) => i.porte).filter(Boolean))].sort((a, b) => (PORTES.indexOf(a) + 1 || 99) - (PORTES.indexOf(b) + 1 || 99));
+const portesUsados = [...new Set(inimigos.map((i) => i.tamanho).filter(Boolean))].sort((a, b) => (PORTES.indexOf(a) + 1 || 99) - (PORTES.indexOf(b) + 1 || 99));
 
 // Opções do editor colhidas do bestiário e da data viva INTEIROS: o form oferece o
 // que já existe (categorias, etiquetas, tipos de ecologia, perícias, armas) em vez

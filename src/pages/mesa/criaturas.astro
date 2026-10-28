@@ -289,7 +289,7 @@ import MesaCab from '../../components/MesaCab.astro';
             ${m.centelha ? `<span class="cri-b">Cent ${m.centelha}</span>` : ''}
             <span class="cri-b">PV ${pvv ?? '—'}</span>
             <span class="cri-b">Def ${r?.defesa ?? '—'}${c.dados?.defesa == null && defesaOutraDe(c.monstro_id) != null ? ` <span class="muted" title="A outra Defesa: com ou sem o equipamento; troque no card (D-206)">(${defesaOutraDe(c.monstro_id)})</span>` : ''}</span>
-            ${m.porte ? `<span class="cri-b">${esc(m.porte)}</span>` : ''}
+            ${m.tamanho ? `<span class="cri-b">${esc(m.tamanho)}</span>` : ''}
           </div>
           ${r?.ataque ? `<div class="cri-atk">${esc(r.arma || 'Ataque')}: <b>${esc(r.ataque)}</b> · dano <b>${esc(r.dano)}</b>${r.velocidade != null ? ` · vel ${r.velocidade}` : ''}</div>` : ''}
           <div class="cri-atk">Abs <b>${r?.soak.impacto ?? 0}/${r?.soak.corte ?? 0}/${r?.soak.perfuracao ?? 0}</b>${r?.resistPerf ? ` · gate N${r.resistPerf}` : ''}</div>

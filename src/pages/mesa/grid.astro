@@ -3434,7 +3434,7 @@ const SETAS = [
   };
   /** Diâmetro do combatente em metros. PC e NPC de cena são médios. */
   const diametroM = (c: any): number =>
-    (c.tipo === 'criatura' ? PORTE_M[MON[c.monstro_id]?.porte] : null) ?? 1;
+    (c.tipo === 'criatura' ? PORTE_M[MON[c.monstro_id]?.tamanho] : null) ?? 1;
 
   /**
    * Quanto o PORTE de um alvo ESTENDE o alcance corpo a corpo, em hexágonos
@@ -10255,11 +10255,11 @@ const SETAS = [
     // O bolo de quem ataca, já com o que a situação cobra DELE.
     //
     // A DIFERENÇA DE PORTE, quando a bandeira está ligada (06/09/2026): o
-    // mesmo `c.tipo === 'criatura' ? MON[c.monstro_id]?.porte : null` que
+    // mesmo `c.tipo === 'criatura' ? MON[c.monstro_id]?.tamanho : null` que
     // `diametroM` já usa para o desenho do token, aqui para o acerto. PC sem
     // `porte` (`null`) normaliza para `medio`, que é a metade implícita do par
     // atacante/alvo em toda mesa de PCs.
-    const porteRotuloDe = (c: any) => (c?.tipo === 'criatura' ? MON[c.monstro_id]?.porte : null);
+    const porteRotuloDe = (c: any) => (c?.tipo === 'criatura' ? MON[c.monstro_id]?.tamanho : null);
     const ajAtq = (() => {
       const tf = tierDe(atacante.pv_atual, atacante.pv_max);
       const f = tf.penAcao ?? 0;
