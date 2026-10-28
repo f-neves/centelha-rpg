@@ -9,6 +9,7 @@
 //
 //   node scripts/test-formas.mjs
 import fs from 'node:fs';
+import { carregarTS } from './lib-ts.mjs';
 import { formasDaFicha, idDaForma } from './lib-ficha-v3.mjs';
 import { criaturaSchema } from './criatura-schema.mjs';
 
@@ -78,6 +79,22 @@ ok(humana.atributos.forca === 4 && humana.combate.pv === 37, 'forma humana: For�
 ok(!humana.habilidadesEspeciais.some(h=>h.nome==='Mordida que derruba e amaldiçoa'), 'Mordida fora da forma humana');
 ok(lobisomem.habilidadesEspeciais.some(h=>h.nome==='Mordida que derruba e amaldiçoa'), 'Mordida presente na forma híbrida');
 ok(formasConferidas > 0, formasConferidas + ' formas geradas conferidas');
+
+// A8: duas instâncias da mesma espécie mantêm escolhas independentes e os ajustes vencem.
+const mesa = await carregarTS('src/lib/mesa-bestiario.ts');
+const a={id:'__a8_a',tipo:'criatura',monstro_id:'lobisomem',dados:{}}, b={...a,id:'__a8_b'};
+const antes = JSON.stringify(mesa.MON.lobisomem), dadosAntes = JSON.stringify(a);
+const principal = mesa.resumoDe(b);
+mesa.escolherFormaDaPeca(a,'humana');
+ok(mesa.resumoDe(a).atributos.forca===4 && mesa.resumoDe(a).pv===37, 'instância humana recebe Força 4 e PV 37 do motor');
+ok(mesa.resumoDe(b).pv===principal.pv && mesa.formaEscolhidaDaPeca(b)===null, 'outra instância continua na principal');
+ok(JSON.stringify(mesa.MON.lobisomem)===antes && JSON.stringify(a)===dadosAntes, 'nem a espécie nem os dados da peça são regravados');
+const ajustada={...a,dados:{pv:99,defesa:77,velocidade:2,ataque:'6d6',dano:'3d6',soak:{corte:13}}};
+const ajuste=mesa.resumoDe(ajustada);
+ok(ajuste.pv===99 && ajuste.defesa===77 && ajuste.velocidade===2 && ajuste.ataque==='6d6' && ajuste.dano==='3d6' && ajuste.soak.corte===13, 'todos os ajustes do Mestre vencem a forma');
+ok(erro(()=>mesa.escolherFormaDaPeca(a,'forma-inexistente'))!==null, 'recusa forma de outra criatura');
+mesa.escolherFormaDaPeca(a,'hibrida');
+ok(mesa.resumoDe(a).pv===principal.pv, 'retorna à forma principal');
 
 if (falhas.length) { console.error(`\n✘ formas: ${falhas.length} falha(s)`); process.exit(1); }
 console.log('\n✓ formas: o campo transforma sai da linha Formas, com os quatro erros e o esquema conferidos');

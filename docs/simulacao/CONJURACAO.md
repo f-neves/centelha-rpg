@@ -168,7 +168,7 @@ Preparação, que se perdem.
 **O Abortar já existe, publicado e implementado**, e é ele que se estende: `regras.json:2497-2508`
 · só na fase de Preparo, custa 1 Tick por metro para a saída, e **perde o investido**
 (`perdeOInvestido: true`). O código é `podeAbortar`/`abrirAbortar` e o botão "✋ Abortar o gesto"
-(`grid.astro:7814` · `Abortar o gesto`).
+(`grid.astro:7815` · `Abortar o gesto`).
 
 **O que muda:** hoje o Abortar serve só a ação física, e a lista `nuncaPara: "atacar"` o proíbe
 para ataque. **A Preparação de Arte entra como fase abortável**, com a mesma regra de perder o

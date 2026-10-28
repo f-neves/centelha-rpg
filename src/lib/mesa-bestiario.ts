@@ -23,6 +23,40 @@ export { imagemDe, alternarImagem } from './imagem-escolhida'; import { escolhaD
 
 export const MONSTROS = monstersData as any[];
 export const MON: Record<string, any> = Object.fromEntries(MONSTROS.map((m) => [m.id, m]));
+// A8: escolha local por instância; os ajustes guardados pelo Mestre continuam por cima.
+const CHAVE_FORMA = 'centelha:mesa:forma-criatura';
+const FORMAS_MEMORIA: Record<string,string> = {};
+export function formaEscolhidaDaPeca(c: any): string | null {
+  if (!c?.id) return null;
+  if (Object.hasOwn(FORMAS_MEMORIA,c.id)) return FORMAS_MEMORIA[c.id];
+  try { return JSON.parse(localStorage.getItem(CHAVE_FORMA) || '{}')[c.id] || null; } catch { return null; }
+}
+export function modeloNaForma(base: any, forma?: string | null): any {
+  return base?.formas?.find((f:any)=>f.id===forma)?.criatura || base;
+}
+export function modeloDaPeca(c: any): any {
+  const base = MON[c?.monstro_id];
+  const forma = formaEscolhidaDaPeca(c);
+  return modeloNaForma(base,forma);
+}
+export function escolherFormaDaPeca(c: any, forma: string) {
+  const base = MON[c?.monstro_id];
+  if (!c?.id || !base || (forma!==base.formaPrincipal?.id && !base.formas?.some((f:any)=>f.id===forma))) throw Error('forma inexistente para esta peça');
+  FORMAS_MEMORIA[c.id] = forma;
+  try { const o=JSON.parse(localStorage.getItem(CHAVE_FORMA) || '{}'); o[c.id]=forma; localStorage.setItem(CHAVE_FORMA,JSON.stringify(o)); } catch { /* a escolha continua na memória */ }
+  if (typeof window!=='undefined') window.dispatchEvent(new CustomEvent('centelha:forma',{detail:{id:c.id,monstro:c.monstro_id}}));
+}
+export function seletorFormaDaPecaHTML(c: any): string {
+  const base=MON[c?.monstro_id];
+  if (!c?.id || c.tipo==='custom' || !base?.formas?.length) return '';
+  const escolhida=formaEscolhidaDaPeca(c) || base.formaPrincipal.id;
+  return '<label>Forma <select data-forma-peca="'+esc(c.id)+'" data-forma-monstro="'+esc(c.monstro_id)+'">'+[base.formaPrincipal,...base.formas].map((f:any)=>'<option value="'+esc(f.id)+'"'+(f.id===escolhida?' selected':'')+'>'+esc(f.nome)+'</option>').join('')+'</select></label><span class="muted"> · PV da forma '+esc(c.dados?.pv ?? modeloDaPeca(c)?.combate?.pv ?? '-')+'</span>';
+}
+if (typeof document!=='undefined') document.addEventListener('change',event=>{
+  const el=(event.target as Element)?.closest<HTMLSelectElement>('select[data-forma-peca]');
+  if (el) escolherFormaDaPeca({id:el.dataset.formaPeca,monstro_id:el.dataset.formaMonstro},el.value);
+});
+
 export const ARTE_NOME: Record<string, string> = Object.fromEntries((artesData as any[]).map((a) => [a.id, a.nome]));
 
 /** Índice leve para busca e listagens (sem arrastar o objeto inteiro). */
@@ -145,6 +179,7 @@ export interface ResumoCombate {
    * (`valorPassivo`, em `calc.ts`). Um resumo que já traz a Passiva pronta volta
    * a ser um bloco por assunto, e foi disso que esta passada saiu.
    */
+  pv?: number | null;
   atributos?: Record<string, number> | null;
   pericias?: Record<string, number> | null;
 }
@@ -203,10 +238,12 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
     } catch { return null; }
   }
   if (c.tipo === 'criatura') {
-    const cb = combateNaEscolha(MON[c.monstro_id]?.combate || {}, escolhaVestidaDe(c.monstro_id, MON[c.monstro_id]?.combate)); // D-206: com ou sem o equipamento, pela escolha do Mestre (defesa-vestida.ts)
+    const m = modeloDaPeca(c);
+    const cb = combateNaEscolha(m?.combate || {}, escolhaVestidaDe(c.monstro_id, m?.combate)); // D-206: com ou sem o equipamento, pela escolha do Mestre (defesa-vestida.ts)
     const a0 = (cb.ataques || [])[0];
     const ab = cb.absorcao;
     return {
+      pv: cb.pv ?? null,
       arma: a0?.nome || '', ataque: a0?.pool || '', dano: a0 ? fmtDano(a0.dano) : '',
       defesa: cb.defesa ?? null, defesaSocial: cb.defesaSocial ?? null, defesaMental: cb.defesaMental ?? null,
       soak: ab ? { impacto: ab.impacto || 0, corte: ab.corte || 0, perfuracao: ab.perfuracao || 0 }
@@ -223,9 +260,9 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
       // A ESPÉCIE inteira, como o verbete a publica. O `?? null` em vez de `|| {}`
       // é a regra da omissão: uma criatura sem bloco devolve nulo, e não um
       // objeto vazio que se leria como "tem atributos, todos zero".
-      atributos: MON[c.monstro_id]?.atributos ?? null,
-      pericias: MON[c.monstro_id] ? { ...MON[c.monstro_id].habilidadesSec, ...MON[c.monstro_id].habilidades } : null,
-      centelha: MON[c.monstro_id]?.centelha || 0,
+      atributos: m?.atributos ?? null,
+      pericias: m ? { ...m.habilidadesSec, ...m.habilidades } : null,
+      centelha: m?.centelha || 0,
     };
   }
   return null;
@@ -242,6 +279,7 @@ export function resumoDe(c: any, fichaPorId: Record<string, any> = {}): ResumoCo
   if (!base && !Object.keys(ov).length) return null;
   const bs = base?.soak || ({} as any); const os = ov.soak || {};
   return {
+    pv: ov.pv ?? base?.pv ?? null,
     arma: ov.arma ?? base?.arma ?? '',
     ataque: ov.ataque ?? base?.ataque ?? '',
     dano: ov.dano ?? base?.dano ?? '',
@@ -294,6 +332,8 @@ export function resumoDe(c: any, fichaPorId: Record<string, any> = {}): ResumoCo
         ...(ov.qa || {}),
       };
     })(),
+    atributos: ov.atributos ?? base?.atributos ?? null,
+    pericias: ov.pericias ?? base?.pericias ?? null,
     centelha: ov.centelha ?? base?.centelha ?? 0,
   };
 }
@@ -335,7 +375,7 @@ export function cardCriaturaHTML(m: any): string {
   const porte = m.tamanho ? `<p class="besta-porte"><span class="pt-lbl">Tamanho</span><span class="pt-cat">${esc(m.tamanho)}</span><span class="pt-sep">·</span>${esc(m.corpo?.medida || '')}<span class="pt-sep">·</span>${esc(m.corpo?.peso || '')}</p>` : '';
   const fAbs = (a: any, n: number) => `${a.impacto}/${a.corte}/${a.perfuracao}${n ? `·N${n}` : ''}`; const vEsc = escolhaVestidaDe(m.id, cb); const vMarca = (x: any, sim: boolean) => (sim ? `<b>${x}</b>` : `${x}`); const abs = cb.absorcao ? (cb.vestida ? `${vMarca(fAbs(cb.absorcao, cb.resistenciaPerfuracao), vEsc === 'sem')} · ${vMarca(fAbs(cb.vestida.absorcao, cb.vestida.nivel), vEsc === 'com')} <small>c/ equip.</small>` : fAbs(cb.absorcao, cb.resistenciaPerfuracao)) : '-'; // D-206: as duas, a da mesa em negrito
   const stat = (dt: string, dd: any) => `<div><dt>${dt}</dt><dd>${dd ?? '-'}</dd></div>`;
-  const stats = `<dl class="besta-stats">${stat(m.enxame ? 'PV por quadrado' : 'PV', cb.pv)}${stat('Defesa', cb.vestida ? `${vMarca(cb.defesa, vEsc === 'sem')} · ${vMarca(cb.vestida.defesa, vEsc === 'com')} <small>c/ equip.</small>` : cb.defesa)}${stat('Def. Social', cb.defesaSocial)}${stat('Def. Mental', cb.defesaMental)}${stat('Absorção', abs)}${stat('Iniciativa', esc(cb.iniciativa || '-'))}</dl>${cb.vestida ? `<p class="ib-ref besta-vestida"><b>Com o equipamento:</b> Esquiva ${cb.vestida.esquiva}, Bloqueio ${cb.vestida.bloqueio}, contra tiro ${cb.vestida.contraTiro}, Penalidade −${cb.vestida.penalidade}. <button type="button" class="btn-mini" data-vestida="${esc(m.id)}" title="A escolha do Mestre fica só neste aparelho (D-206)">A mesa usa: ${vEsc === 'com' ? 'com' : 'sem'} o equipamento · trocar</button></p>` : ''}`;
+  const stats = `<dl class="besta-stats">${stat(m.enxame ? 'PV por quadrado' : 'PV', cb.pv)}${stat('Defesa', cb.vestida ? `${vMarca(cb.defesa, vEsc === 'sem')} · ${vMarca(cb.vestida.defesa, vEsc === 'com')} <small>c/ equip.</small>` : cb.defesa)}${stat('Def. Social', cb.defesaSocial)}${stat('Def. Mental', cb.defesaMental)}${stat('Absorção', abs)}${stat('Iniciativa', esc(cb.iniciativa || '-'))}${cb.energia!=null ? stat('Energia',cb.energia) : ''}</dl>${cb.vestida ? `<p class="ib-ref besta-vestida"><b>Com o equipamento:</b> Esquiva ${cb.vestida.esquiva}, Bloqueio ${cb.vestida.bloqueio}, contra tiro ${cb.vestida.contraTiro}, Penalidade −${cb.vestida.penalidade}. <button type="button" class="btn-mini" data-vestida="${esc(m.id)}" title="A escolha do Mestre fica só neste aparelho (D-206)">A mesa usa: ${vEsc === 'com' ? 'com' : 'sem'} o equipamento · trocar</button></p>` : ''}`;
   const atrib = m.atributos ? `<div class="besta-atrib"><span class="atr-lbl">Atributos</span><div class="atr-grid">${ATR.map(([k, full]) => `<span class="atr"><span class="atr-nm">${full}</span><span class="atr-v">${m.atributos[k] ?? 0}</span></span>`).join('')}</div></div>` : '';
   const tracos = m.virtudes ? `<div class="besta-tracos"><div class="tr-linha"><span class="tr"><span class="tr-nm">Vontade</span><span class="tr-v">${m.vontade ?? '-'}</span></span><span class="tr"><span class="tr-nm">Aparência</span><span class="tr-v">${m.aparencia ?? '-'} <small class="tr-mod">(${apMod(m.aparencia) >= 0 ? '+' : ''}${apMod(m.aparencia)})</small></span></span></div><div class="tr-virt"><span class="tr-nm">Virtudes</span><span class="tr-vv">Comp ${m.virtudes.compaixao} · Conv ${m.virtudes.conviccao} · Temp ${m.virtudes.temperanca} · Brav ${m.virtudes.valor}</span></div></div>` : '';
   const { fraquezas: elFraq, resistencias: elRes, imunidades: elImu } = elementosCombate(m);
@@ -368,7 +408,7 @@ export function cardCriaturaHTML(m: any): string {
   return `<article class="besta cc-besta">${arte}<div class="besta-corpo">
     <header class="besta-head"><span class="besta-nome cinzel">${esc(m.nome)}${en}</span></header>
     ${badges ? `<div class="besta-badges">${badges}</div>` : ''}
-    ${porte}${m.descricao ? `<p class="besta-con muted">${esc(m.descricao)}</p>` : ''}
+    ${porte}${m.formaPrincipal ? '<p>Forma: '+esc(m.formaPrincipal.nome)+'</p>' : ''}${m.descricao ? `<p class="besta-con muted">${esc(m.descricao)}</p>` : ''}
     ${stats}${elem}${atrib}${tracos}${atk}${habs}${pods}${refs}${lore}
   </div></article>`;
 }

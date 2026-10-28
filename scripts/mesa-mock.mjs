@@ -284,7 +284,7 @@ const ENC = '00000000-0000-4000-8000-0000000000cc';
 
 // Ids reais do bestiário: o porte deles decide o tamanho da peça no tabuleiro, e
 // uma cena só de médios não exercitaria o empilhamento nem a regra de ocupação.
-const MONS = ['aasimar', 'aguia-gigante', 'aboleth'];
+const MONS = P.get('formas')==='1' ? ['lobisomem'] : ['aasimar', 'aguia-gigante', 'aboleth'];
 
 const offsetParaAxial = (col, row) => ({ q: col - Math.floor(row / 2), r: row });
 
@@ -1381,7 +1381,7 @@ const TABELAS = {
     { id: 'aq-mapa-2', mesa_id: MESA, nome: 'A torre, em pé', categoria: 'mapa',
       bucket: 'mesa', tipo: 'image/png', storage_path: `${MESA}/mapas/2-em-pe.png` },
   ],
-  mesa_criaturas: [],
+  mesa_criaturas: P.get('formas')==='1' ? ['a','b'].map((n,i)=>({id:'mc-lobo-'+n,mesa_id:MESA,monstro_id:'lobisomem',apelido:'Lobisomem '+n,grupo:'teste',ordem:i,dados:{},notas:'',visivel_jogadores:true})) : [],
   mesa_codex: [],
   mesa_notas: [],
   mesa_sessoes: [],

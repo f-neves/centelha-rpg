@@ -54,6 +54,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 11,
    "defesa": 9,
    "defesaSocial": 14,
    "defesaMental": 17,
@@ -163,6 +164,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 75,
+   "energia": 24,
    "defesa": 10,
    "defesaSocial": 10,
    "defesaMental": 30,
@@ -277,6 +279,7 @@
   ],
   "combate": {
    "pv": 40,
+   "energia": 11,
    "defesa": 12,
    "defesaSocial": 8,
    "defesaMental": 15,
@@ -408,6 +411,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 6,
+   "energia": 4,
    "defesa": 14,
    "defesaSocial": 8,
    "defesaMental": 8,
@@ -535,6 +539,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 50,
+   "energia": 5,
    "defesa": 12,
    "defesaSocial": 6,
    "defesaMental": 7,
@@ -660,6 +665,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 43,
+   "energia": 12,
    "defesa": 4,
    "defesaSocial": 14,
    "defesaMental": 14,
@@ -779,6 +785,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 85,
+   "energia": 7,
    "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 7,
@@ -888,6 +895,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 43,
+   "energia": 15,
    "defesa": 14,
    "defesaSocial": 18,
    "defesaMental": 19,
@@ -998,6 +1006,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 28,
+   "energia": 5,
    "defesa": 10,
    "defesaSocial": 6,
    "defesaMental": 8,
@@ -1104,6 +1113,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 18,
    "defesa": 17,
    "defesaSocial": 6,
    "defesaMental": 22,
@@ -1164,45 +1174,16 @@
      "id": "arconte-cao",
      "nome": "Arconte Cão",
      "nomeIngles": "Archon, Hound",
-     "categoria": "celestial",
-     "categoriaNome": "Celestial",
-     "tipo": "soldado",
-     "conceito": "Celestial Médio",
-     "descricao": "Patrulheiro de cabeça canina que combate em formação e fareja o mal. Pode correr junto da matilha na forma de cão.",
-     "tags": [
-      "celestial",
-      "centelha"
-     ],
      "ameaca": 3,
      "centelha": 4,
+     "categoria": "celestial",
+     "categoriaNome": "Celestial",
      "tamanho": "Médio",
-     "corpo": {
-      "postura": "de pé, em combate",
-      "apoio": "bipede",
-      "altura": 0.9,
-      "largura": 0.35,
-      "profundidade": 0.29,
-      "comprimento": 1.8,
-      "massa": 100,
-      "area": 0.55,
-      "posturaDoTamanho": "de pé",
-      "medida": "0.9 m de altura, 1.8 m de comprimento",
-      "peso": "100 kg"
-     },
-     "ecologia": {
-      "tipo": "celestial",
-      "terreno": [
-       "montanha",
-       "qualquer"
-      ],
-      "clima": [
-       "extraplanar"
-      ]
-     },
      "imagens": [
       "bestiario/arconte-cao_criatura.webp"
      ],
      "semImagem": false,
+     "tipo": "soldado",
      "atributos": {
       "forca": 5,
       "destreza": 4,
@@ -1214,6 +1195,15 @@
       "perspicacia": 3,
       "compostura": 3
      },
+     "virtudes": {
+      "bravura": 4,
+      "compaixao": 5,
+      "conviccao": 5,
+      "temperanca": 4,
+      "valor": 4
+     },
+     "vontade": 9,
+     "aparencia": 10,
      "habilidades": {
       "prontidao": 3,
       "furtividade": 0,
@@ -1230,17 +1220,11 @@
      "habilidadesSec": {
       "musculatura": 0
      },
-     "vontade": 9,
-     "aparencia": 10,
-     "virtudes": {
-      "bravura": 4,
-      "compaixao": 5,
-      "conviccao": 5,
-      "temperanca": 4,
-      "valor": 4
-     },
+     "artes": [],
+     "tecnicas": [],
      "combate": {
       "pv": 40,
+      "energia": 18,
       "defesa": 16,
       "defesaSocial": 6,
       "defesaMental": 22,
@@ -1261,99 +1245,35 @@
       },
       "ataques": []
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Aura de ameaça",
-       "descricao": "quem falha fica Abalado. ativacao: nenhuma; ao entrar na aura. duracao: até o fim da cena. alcance: 6 m. area: inimigos no raio. dano: nenhum. resistencia: mente, contra Influência + Integridade; quem passa ignora a aura nesta cena. limiteDeUso: uma resistência por alvo por cena",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "fascinacao",
-        "nivel": 2
-       }
-      },
-      {
-       "nome": "Teleporte",
-       "descricao": "desaparece e reaparece no destino. ativacao: uma ação, Velocidade 8. duracao: instantânea. alcance: 12 m visíveis. area: o próprio arconte. dano: nenhum. resistencia: nenhum. limiteDeUso: uma vez por cena",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "conjuracao",
-        "nivel": 3
-       }
-      },
-      {
-       "nome": "Farejar o mal",
-       "descricao": "percebe a presença de mal sobrenatural, mesmo atrás de cobertura; não lê pensamentos. ativacao: nenhuma; sempre ativo. duracao: permanente. alcance: 18 m. area: criaturas no raio. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "adivinhacao",
-        "nivel": 1
-       }
-      },
-      {
-       "nome": "Forma canina",
-       "descricao": "assume a forma canina da Variante ou retorna à forma de guardião. ativacao: uma ação, Velocidade 8. duracao: até desfazer com outra ação. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "espirito",
-        "nivel": 3
-       }
-      },
-      {
-       "nome": "Círculo protetor",
-       "descricao": "os protegidos somam +2 em Esquiva, Bloqueio e Defesa Mental contra ataques ou efeitos de criaturas malignas. ativacao: nenhuma; sempre ativo. duracao: permanente. alcance: 3 m. area: o próprio arconte e os aliados no raio. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "protecao",
-        "nivel": 2
-       }
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "combate na outra forma",
-       "texto": "morde e corre junto da matilha."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "visão e audição",
-       "descricao": "observa e ouve o campo de batalha"
-      },
-      {
-       "nome": "faro celestial",
-       "descricao": "a detecção do mal está na habilidade Farejar o mal"
-      }
-     ],
-     "segundoTamanho": null,
+     "ecologia": {
+      "tipo": "celestial",
+      "terreno": [
+       "montanha",
+       "qualquer"
+      ],
+      "clima": [
+       "extraplanar"
+      ]
+     },
+     "corpo": {
+      "postura": "de pé, em combate",
+      "apoio": "bipede",
+      "altura": 0.9,
+      "largura": 0.35,
+      "profundidade": 0.29,
+      "comprimento": 1.8,
+      "massa": 100,
+      "area": 0.55,
+      "posturaDoTamanho": "de pé",
+      "medida": "0.9 m de altura, 1.8 m de comprimento",
+      "peso": "100 kg"
+     },
+     "formas": [],
      "formaPrincipal": {
       "id": "canina",
       "nome": "forma canina"
      },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 5
-     },
-     "tecnicas": [],
-     "artes": [],
-     "lore": [
-      {
-       "titulo": "Comportamento",
-       "texto": "Guerreiro leal e disciplinado, patrulha fronteiras do bem com cabeça de cão sempre alerta e faro apurado para a mentira."
-      },
-      {
-       "titulo": "Sociedade",
-       "texto": "Serve em matilhas organizadas sob comando de arautos maiores, cumprindo sua função sem jamais questionar a ordem recebida."
-      },
-      {
-       "titulo": "Personalidade",
-       "texto": "Honesto até a rigidez, desconfia de artimanhas e de quem fala demais; prefere o combate franco a qualquer estratagema."
-      },
-      {
-       "titulo": "No mundo de Centelha",
-       "texto": "Contido pela Lei que impede os deuses de agir direto, um archon cão só cruza ao mundo mortal em raros chamados desesperados, e mesmo assim evita ser visto: para o povo da Supressão, um anjo com cara de cão seria mais um monstro a temer do que um salvador."
-      }
-     ]
+     "segundoTamanho": null
     }
    }
   ],
@@ -1415,6 +1335,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 42,
+   "energia": 11,
    "defesa": 4,
    "defesaSocial": 4,
    "defesaMental": 15,
@@ -1490,6 +1411,7 @@
    "bestiario/arconte-trombeta_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 23,
   "tipo": "chefe",
   "atributos": {
    "forca": 6,
@@ -1540,6 +1462,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 49,
+   "energia": 26,
    "defesa": 22,
    "defesaSocial": 26,
    "defesaMental": 31,
@@ -1662,6 +1585,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 31,
+   "energia": 5,
    "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 11,
@@ -1809,6 +1733,7 @@
   ],
   "combate": {
    "pv": 34,
+   "energia": 12,
    "defesa": 24,
    "defesaSocial": 8,
    "defesaMental": 18,
@@ -1923,6 +1848,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 43,
+   "energia": 17,
    "defesa": 14,
    "defesaSocial": 10,
    "defesaMental": 23,
@@ -2044,6 +1970,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 6,
    "defesa": 9,
    "defesaSocial": 8,
    "defesaMental": 7,
@@ -2169,6 +2096,7 @@
   ],
   "combate": {
    "pv": 43,
+   "energia": 19,
    "defesa": 16,
    "defesaSocial": 12,
    "defesaMental": 25,
@@ -2318,6 +2246,7 @@
   ],
   "combate": {
    "pv": 78,
+   "energia": 37,
    "defesa": 29,
    "defesaSocial": 24,
    "defesaMental": 43,
@@ -2447,6 +2376,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 6,
    "defesa": 10,
    "defesaSocial": 4,
    "defesaMental": 11,
@@ -2568,6 +2498,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 13,
    "defesa": 12,
    "defesaSocial": 8,
    "defesaMental": 19,
@@ -2642,45 +2573,16 @@
      "id": "barghest",
      "nome": "Barghest",
      "nomeIngles": "Barghest",
-     "categoria": "corruptor",
-     "categoriaNome": "Corruptor",
-     "tipo": "soldado",
-     "conceito": "Corruptor Pequeno",
-     "descricao": "Parente demoníaco dos povos goblinoides, que vem ao mundo material para devorar inocentes e cresce a cada vítima. Anda como goblin ou como lobo entre as tribos que governa e, com fome bastante, troca de pele e vira um barghest maior.",
-     "tags": [
-      "corruptor",
-      "centelha"
-     ],
      "ameaca": 3,
      "centelha": 2,
+     "categoria": "corruptor",
+     "categoriaNome": "Corruptor",
      "tamanho": "Pequeno",
-     "corpo": {
-      "postura": "bípede, de pé, curvado para a frente",
-      "apoio": "bipede",
-      "altura": 0.95,
-      "largura": 0.48,
-      "profundidade": 0.24,
-      "comprimento": null,
-      "massa": 90,
-      "area": 0.25,
-      "posturaDoTamanho": "silhueta de frente, de pé",
-      "medida": "0.95 m de altura",
-      "peso": "90 kg"
-     },
-     "ecologia": {
-      "tipo": "corruptor",
-      "terreno": [
-       "qualquer",
-       "montanha"
-      ],
-      "clima": [
-       "temperado"
-      ]
-     },
      "imagens": [
       "bestiario/barghest_criatura.webp"
      ],
      "semImagem": false,
+     "tipo": "soldado",
      "atributos": {
       "forca": 5,
       "destreza": 4,
@@ -2692,6 +2594,15 @@
       "perspicacia": 4,
       "compostura": 4
      },
+     "virtudes": {
+      "bravura": 5,
+      "compaixao": 1,
+      "conviccao": 5,
+      "temperanca": 1,
+      "valor": 5
+     },
+     "vontade": 7,
+     "aparencia": 4,
      "habilidades": {
       "prontidao": 2,
       "furtividade": 2,
@@ -2711,17 +2622,11 @@
       "intimidacao": 3,
       "musculatura": 2
      },
-     "vontade": 7,
-     "aparencia": 4,
-     "virtudes": {
-      "bravura": 5,
-      "compaixao": 1,
-      "conviccao": 5,
-      "temperanca": 1,
-      "valor": 5
-     },
+     "artes": [],
+     "tecnicas": [],
      "combate": {
       "pv": 37,
+      "energia": 13,
       "defesa": 12,
       "defesaSocial": 8,
       "defesaMental": 19,
@@ -2765,101 +2670,6 @@
        }
       ]
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Mudar de forma",
-       "descricao": "vira um goblin ou um lobo grande (as formas em Variantes), ou volta à forma verdadeira; a mente e os números ficam os dele. ativacao: uma ação, Velocidade 6. duracao: até ele voltar à forma verdadeira. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "arma enfeitiçada fere inteira",
-       "descricao": "a resistência da pele não vale contra arma encantada",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "truques sombrios",
-       "descricao": "pisca entre as sombras, levita, confunde onde está de verdade e, de vez em quando, encanta um inimigo, espalha desespero ou salta para perto como num teleporte",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "devorar almas",
-       "descricao": "uma vez por mês, ao devorar o corpo de uma vítima inocente, cresce de forma permanente; com fome bastante, troca de pele e vira um barghest maior",
-       "classe": "sem regra ainda"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "tirano dos goblins",
-       "texto": "manda a tribo na frente, entra disfarçado de goblin ou de lobo, rasga com as garras e a mordida e some nas sombras quando a luta vira."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "visão no escuro",
-       "descricao": "enxerga no escuro absoluto"
-      },
-      {
-       "nome": "faro",
-       "descricao": "de lobo; Prontidão (faro) +2"
-      }
-     ],
-     "segundoTamanho": null,
-     "formaPrincipal": {
-      "id": "goblin",
-      "nome": "forma de goblin"
-     },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 3
-     },
-     "tecnicas": [],
-     "artes": [],
-     "lore": [
-      {
-       "titulo": "Origem",
-       "texto": "Ditos parentes demoníacos dos povos goblinoides, os barghests vêm ao mundo material para se alimentar, ganhando poder a cada vítima inocente devorada."
-      },
-      {
-       "titulo": "Destino",
-       "texto": "Ao acumular crescimento suficiente, o barghest troca de pele e se torna um barghest maior, geralmente assumindo o comando de uma tribo de goblins ou criaturas semelhantes."
-      }
-     ]
-    }
-   },
-   {
-    "id": "lobo",
-    "nome": "forma de lobo",
-    "criatura": {
-     "id": "barghest",
-     "nome": "Barghest",
-     "nomeIngles": "Barghest",
-     "categoria": "corruptor",
-     "categoriaNome": "Corruptor",
-     "tipo": "soldado",
-     "conceito": "Corruptor Médio",
-     "descricao": "Parente demoníaco dos povos goblinoides, que vem ao mundo material para devorar inocentes e cresce a cada vítima. Anda como goblin ou como lobo entre as tribos que governa e, com fome bastante, troca de pele e vira um barghest maior.",
-     "tags": [
-      "corruptor",
-      "centelha"
-     ],
-     "ameaca": 3,
-     "centelha": 2,
-     "tamanho": "Médio",
-     "corpo": {
-      "postura": "quadrúpede",
-      "apoio": "quadrupede",
-      "altura": 0.99,
-      "largura": 0.37,
-      "profundidade": null,
-      "comprimento": 2.2,
-      "massa": 90,
-      "area": 0.56,
-      "posturaDoTamanho": "de lado",
-      "comprimentoSemCauda": 1.4,
-      "medida": "0.99 m de altura, 2.2 m de comprimento",
-      "peso": "90 kg"
-     },
      "ecologia": {
       "tipo": "corruptor",
       "terreno": [
@@ -2870,10 +2680,44 @@
        "temperado"
       ]
      },
+     "corpo": {
+      "postura": "bípede, de pé, curvado para a frente",
+      "apoio": "bipede",
+      "altura": 0.95,
+      "largura": 0.48,
+      "profundidade": 0.24,
+      "comprimento": null,
+      "massa": 90,
+      "area": 0.25,
+      "posturaDoTamanho": "silhueta de frente, de pé",
+      "medida": "0.95 m de altura",
+      "peso": "90 kg"
+     },
+     "formas": [],
+     "formaPrincipal": {
+      "id": "goblin",
+      "nome": "forma de goblin"
+     },
+     "segundoTamanho": null
+    }
+   },
+   {
+    "id": "lobo",
+    "nome": "forma de lobo",
+    "criatura": {
+     "id": "barghest",
+     "nome": "Barghest",
+     "nomeIngles": "Barghest",
+     "ameaca": 3,
+     "centelha": 2,
+     "categoria": "corruptor",
+     "categoriaNome": "Corruptor",
+     "tamanho": "Médio",
      "imagens": [
       "bestiario/barghest_criatura.webp"
      ],
      "semImagem": false,
+     "tipo": "soldado",
      "atributos": {
       "forca": 5,
       "destreza": 4,
@@ -2885,6 +2729,15 @@
       "perspicacia": 4,
       "compostura": 4
      },
+     "virtudes": {
+      "bravura": 5,
+      "compaixao": 1,
+      "conviccao": 5,
+      "temperanca": 1,
+      "valor": 5
+     },
+     "vontade": 7,
+     "aparencia": 6,
      "habilidades": {
       "prontidao": 2,
       "furtividade": 2,
@@ -2904,17 +2757,11 @@
       "intimidacao": 3,
       "musculatura": 2
      },
-     "vontade": 7,
-     "aparencia": 6,
-     "virtudes": {
-      "bravura": 5,
-      "compaixao": 1,
-      "conviccao": 5,
-      "temperanca": 1,
-      "valor": 5
-     },
+     "artes": [],
+     "tecnicas": [],
      "combate": {
       "pv": 37,
+      "energia": 13,
       "defesa": 12,
       "defesaSocial": 8,
       "defesaMental": 19,
@@ -2950,66 +2797,36 @@
        }
       ]
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Mudar de forma",
-       "descricao": "vira um goblin ou um lobo grande (as formas em Variantes), ou volta à forma verdadeira; a mente e os números ficam os dele. ativacao: uma ação, Velocidade 6. duracao: até ele voltar à forma verdadeira. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "arma enfeitiçada fere inteira",
-       "descricao": "a resistência da pele não vale contra arma encantada",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "truques sombrios",
-       "descricao": "pisca entre as sombras, levita, confunde onde está de verdade e, de vez em quando, encanta um inimigo, espalha desespero ou salta para perto como num teleporte",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "devorar almas",
-       "descricao": "uma vez por mês, ao devorar o corpo de uma vítima inocente, cresce de forma permanente; com fome bastante, troca de pele e vira um barghest maior",
-       "classe": "sem regra ainda"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "tirano dos goblins",
-       "texto": "manda a tribo na frente, entra disfarçado de goblin ou de lobo, rasga com as garras e a mordida e some nas sombras quando a luta vira."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "visão no escuro",
-       "descricao": "enxerga no escuro absoluto"
-      },
-      {
-       "nome": "faro",
-       "descricao": "de lobo; Prontidão (faro) +2"
-      }
-     ],
-     "segundoTamanho": null,
+     "ecologia": {
+      "tipo": "corruptor",
+      "terreno": [
+       "qualquer",
+       "montanha"
+      ],
+      "clima": [
+       "temperado"
+      ]
+     },
+     "corpo": {
+      "postura": "quadrúpede",
+      "apoio": "quadrupede",
+      "altura": 0.99,
+      "largura": 0.37,
+      "profundidade": null,
+      "comprimento": 2.2,
+      "massa": 90,
+      "area": 0.56,
+      "posturaDoTamanho": "de lado",
+      "comprimentoSemCauda": 1.4,
+      "medida": "0.99 m de altura, 2.2 m de comprimento",
+      "peso": "90 kg"
+     },
+     "formas": [],
      "formaPrincipal": {
       "id": "lobo",
       "nome": "forma de lobo"
      },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 3
-     },
-     "tecnicas": [],
-     "artes": [],
-     "lore": [
-      {
-       "titulo": "Origem",
-       "texto": "Ditos parentes demoníacos dos povos goblinoides, os barghests vêm ao mundo material para se alimentar, ganhando poder a cada vítima inocente devorada."
-      },
-      {
-       "titulo": "Destino",
-       "texto": "Ao acumular crescimento suficiente, o barghest troca de pele e se torna um barghest maior, geralmente assumindo o comando de uma tribo de goblins ou criaturas semelhantes."
-      }
-     ]
+     "segundoTamanho": null
     }
    }
   ],
@@ -3076,6 +2893,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 20,
    "defesa": 12,
    "defesaSocial": 10,
    "defesaMental": 27,
@@ -3150,45 +2968,16 @@
      "id": "barghest-maior",
      "nome": "Barghest Maior",
      "nomeIngles": "Greater Barghest",
-     "categoria": "corruptor",
-     "categoriaNome": "Corruptor",
-     "tipo": "elite",
-     "conceito": "Corruptor Pequeno",
-     "descricao": "O barghest que trocou de pele tantas vezes, depois de anos de devoração, que virou algo maior e mais terrível. Governa uma tribo de goblins como um tirano vindo de fora, pelo medo e pela força bruta, e ainda anda entre eles como goblin ou como lobo.",
-     "tags": [
-      "corruptor",
-      "centelha"
-     ],
      "ameaca": 4,
      "centelha": 4,
+     "categoria": "corruptor",
+     "categoriaNome": "Corruptor",
      "tamanho": "Pequeno",
-     "corpo": {
-      "postura": "bípede, de pé, curvado para a frente",
-      "apoio": "bipede",
-      "altura": 0.95,
-      "largura": 0.77,
-      "profundidade": 0.39,
-      "comprimento": null,
-      "massa": 350,
-      "area": 0.25,
-      "posturaDoTamanho": "silhueta de frente, de pé",
-      "medida": "0.95 m de altura",
-      "peso": "350 kg"
-     },
-     "ecologia": {
-      "tipo": "corruptor",
-      "terreno": [
-       "qualquer",
-       "montanha"
-      ],
-      "clima": [
-       "temperado"
-      ]
-     },
      "imagens": [
       "bestiario/barghest-maior_criatura.webp"
      ],
      "semImagem": false,
+     "tipo": "elite",
      "atributos": {
       "forca": 8,
       "destreza": 4,
@@ -3200,6 +2989,15 @@
       "perspicacia": 5,
       "compostura": 5
      },
+     "virtudes": {
+      "bravura": 5,
+      "compaixao": 1,
+      "conviccao": 5,
+      "temperanca": 1,
+      "valor": 5
+     },
+     "vontade": 9,
+     "aparencia": 4,
      "habilidades": {
       "prontidao": 2,
       "furtividade": 1,
@@ -3219,17 +3017,11 @@
       "intimidacao": 4,
       "musculatura": 3
      },
-     "vontade": 9,
-     "aparencia": 4,
-     "virtudes": {
-      "bravura": 5,
-      "compaixao": 1,
-      "conviccao": 5,
-      "temperanca": 1,
-      "valor": 5
-     },
+     "artes": [],
+     "tecnicas": [],
      "combate": {
       "pv": 54,
+      "energia": 20,
       "defesa": 12,
       "defesaSocial": 10,
       "defesaMental": 27,
@@ -3273,101 +3065,6 @@
        }
       ]
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Mudar de forma",
-       "descricao": "vira um goblin ou um lobo enorme (as formas em Variantes), ou volta à forma verdadeira; a mente e os números ficam os dele. ativacao: uma ação, Velocidade 6. duracao: até ele voltar à forma verdadeira. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "arma enfeitiçada fere inteira",
-       "descricao": "a resistência da pele não vale contra arma encantada",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "truques sombrios",
-       "descricao": "os do barghest (pisca entre as sombras, levita, confunde onde está, encanta, espalha desespero, salta para perto), e mais: fica invisível por um tempo e fortalece ou faz crescer os aliados por perto",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "devorar almas",
-       "descricao": "ao devorar o corpo de uma vítima inocente, cresce de forma permanente",
-       "classe": "sem regra ainda"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "tirano da tribo",
-       "texto": "deixa os goblins gastarem o inimigo, fortalece os seus, entra no fim com as garras e a mordida e some invisível se a luta vira."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "visão no escuro",
-       "descricao": "enxerga no escuro absoluto"
-      },
-      {
-       "nome": "faro",
-       "descricao": "de lobo; Prontidão (faro) +2"
-      }
-     ],
-     "segundoTamanho": null,
-     "formaPrincipal": {
-      "id": "goblin",
-      "nome": "forma de goblin"
-     },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 4
-     },
-     "tecnicas": [],
-     "artes": [],
-     "lore": [
-      {
-       "titulo": "Ascensão",
-       "texto": "O barghest maior é o resultado de fartos anos de devoração: uma criatura que trocou de pele tantas vezes que se tornou algo maior e mais terrível, perdendo o antigo corpo para sempre."
-      },
-      {
-       "titulo": "Liderança",
-       "texto": "Costuma assumir o comando de uma tribo de goblins ou criaturas afins, governando-as pelo medo e pela força bruta como um tirano vindo de fora."
-      }
-     ]
-    }
-   },
-   {
-    "id": "lobo",
-    "nome": "forma de lobo",
-    "criatura": {
-     "id": "barghest-maior",
-     "nome": "Barghest Maior",
-     "nomeIngles": "Greater Barghest",
-     "categoria": "corruptor",
-     "categoriaNome": "Corruptor",
-     "tipo": "elite",
-     "conceito": "Corruptor Médio",
-     "descricao": "O barghest que trocou de pele tantas vezes, depois de anos de devoração, que virou algo maior e mais terrível. Governa uma tribo de goblins como um tirano vindo de fora, pelo medo e pela força bruta, e ainda anda entre eles como goblin ou como lobo.",
-     "tags": [
-      "corruptor",
-      "centelha"
-     ],
-     "ameaca": 4,
-     "centelha": 4,
-     "tamanho": "Médio",
-     "corpo": {
-      "postura": "quadrúpede",
-      "apoio": "quadrupede",
-      "altura": 1.56,
-      "largura": 0.57,
-      "profundidade": null,
-      "comprimento": 3.47,
-      "massa": 350,
-      "area": 1.37,
-      "posturaDoTamanho": "de lado",
-      "comprimentoSemCauda": 2.21,
-      "medida": "1.56 m de altura, 3.47 m de comprimento",
-      "peso": "350 kg"
-     },
      "ecologia": {
       "tipo": "corruptor",
       "terreno": [
@@ -3378,10 +3075,44 @@
        "temperado"
       ]
      },
+     "corpo": {
+      "postura": "bípede, de pé, curvado para a frente",
+      "apoio": "bipede",
+      "altura": 0.95,
+      "largura": 0.77,
+      "profundidade": 0.39,
+      "comprimento": null,
+      "massa": 350,
+      "area": 0.25,
+      "posturaDoTamanho": "silhueta de frente, de pé",
+      "medida": "0.95 m de altura",
+      "peso": "350 kg"
+     },
+     "formas": [],
+     "formaPrincipal": {
+      "id": "goblin",
+      "nome": "forma de goblin"
+     },
+     "segundoTamanho": null
+    }
+   },
+   {
+    "id": "lobo",
+    "nome": "forma de lobo",
+    "criatura": {
+     "id": "barghest-maior",
+     "nome": "Barghest Maior",
+     "nomeIngles": "Greater Barghest",
+     "ameaca": 4,
+     "centelha": 4,
+     "categoria": "corruptor",
+     "categoriaNome": "Corruptor",
+     "tamanho": "Médio",
      "imagens": [
       "bestiario/barghest-maior_criatura.webp"
      ],
      "semImagem": false,
+     "tipo": "elite",
      "atributos": {
       "forca": 8,
       "destreza": 4,
@@ -3393,6 +3124,15 @@
       "perspicacia": 5,
       "compostura": 5
      },
+     "virtudes": {
+      "bravura": 5,
+      "compaixao": 1,
+      "conviccao": 5,
+      "temperanca": 1,
+      "valor": 5
+     },
+     "vontade": 9,
+     "aparencia": 4,
      "habilidades": {
       "prontidao": 2,
       "furtividade": 1,
@@ -3412,17 +3152,11 @@
       "intimidacao": 4,
       "musculatura": 3
      },
-     "vontade": 9,
-     "aparencia": 4,
-     "virtudes": {
-      "bravura": 5,
-      "compaixao": 1,
-      "conviccao": 5,
-      "temperanca": 1,
-      "valor": 5
-     },
+     "artes": [],
+     "tecnicas": [],
      "combate": {
       "pv": 54,
+      "energia": 20,
       "defesa": 12,
       "defesaSocial": 10,
       "defesaMental": 27,
@@ -3458,66 +3192,36 @@
        }
       ]
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Mudar de forma",
-       "descricao": "vira um goblin ou um lobo enorme (as formas em Variantes), ou volta à forma verdadeira; a mente e os números ficam os dele. ativacao: uma ação, Velocidade 6. duracao: até ele voltar à forma verdadeira. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "arma enfeitiçada fere inteira",
-       "descricao": "a resistência da pele não vale contra arma encantada",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "truques sombrios",
-       "descricao": "os do barghest (pisca entre as sombras, levita, confunde onde está, encanta, espalha desespero, salta para perto), e mais: fica invisível por um tempo e fortalece ou faz crescer os aliados por perto",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "devorar almas",
-       "descricao": "ao devorar o corpo de uma vítima inocente, cresce de forma permanente",
-       "classe": "sem regra ainda"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "tirano da tribo",
-       "texto": "deixa os goblins gastarem o inimigo, fortalece os seus, entra no fim com as garras e a mordida e some invisível se a luta vira."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "visão no escuro",
-       "descricao": "enxerga no escuro absoluto"
-      },
-      {
-       "nome": "faro",
-       "descricao": "de lobo; Prontidão (faro) +2"
-      }
-     ],
-     "segundoTamanho": null,
+     "ecologia": {
+      "tipo": "corruptor",
+      "terreno": [
+       "qualquer",
+       "montanha"
+      ],
+      "clima": [
+       "temperado"
+      ]
+     },
+     "corpo": {
+      "postura": "quadrúpede",
+      "apoio": "quadrupede",
+      "altura": 1.56,
+      "largura": 0.57,
+      "profundidade": null,
+      "comprimento": 3.47,
+      "massa": 350,
+      "area": 1.37,
+      "posturaDoTamanho": "de lado",
+      "comprimentoSemCauda": 2.21,
+      "medida": "1.56 m de altura, 3.47 m de comprimento",
+      "peso": "350 kg"
+     },
+     "formas": [],
      "formaPrincipal": {
       "id": "lobo",
       "nome": "forma de lobo"
      },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 4
-     },
-     "tecnicas": [],
-     "artes": [],
-     "lore": [
-      {
-       "titulo": "Ascensão",
-       "texto": "O barghest maior é o resultado de fartos anos de devoração: uma criatura que trocou de pele tantas vezes que se tornou algo maior e mais terrível, perdendo o antigo corpo para sempre."
-      },
-      {
-       "titulo": "Liderança",
-       "texto": "Costuma assumir o comando de uma tribo de goblins ou criaturas afins, governando-as pelo medo e pela força bruta como um tirano vindo de fora."
-      }
-     ]
+     "segundoTamanho": null
     }
    }
   ],
@@ -3578,6 +3282,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 5,
    "defesa": 8,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -3692,6 +3397,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 14,
    "defesa": 4,
    "defesaSocial": 18,
    "defesaMental": 19,
@@ -3812,6 +3518,7 @@
   ],
   "combate": {
    "pv": 80,
+   "energia": 22,
    "defesa": 10,
    "defesaSocial": 6,
    "defesaMental": 22,
@@ -3930,6 +3637,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 75,
+   "energia": 11,
    "defesa": 10,
    "defesaSocial": 14,
    "defesaMental": 13,
@@ -4049,6 +3757,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 4,
+   "energia": 5,
    "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 5,
@@ -4162,6 +3871,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 5,
    "defesa": 13,
    "defesaSocial": 6,
    "defesaMental": 5,
@@ -4272,6 +3982,7 @@
   ],
   "combate": {
    "pv": 54,
+   "energia": 13,
    "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 16,
@@ -4391,6 +4102,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 6,
    "defesa": 9,
    "defesaSocial": 8,
    "defesaMental": 7,
@@ -4505,6 +4217,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 46,
+   "energia": 18,
    "defesa": 14,
    "defesaSocial": 6,
    "defesaMental": 20,
@@ -4609,6 +4322,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 18,
    "defesa": 12,
    "defesaSocial": 8,
    "defesaMental": 23,
@@ -4722,6 +4436,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 11,
    "defesa": 9,
    "defesaSocial": 4,
    "defesaMental": 15,
@@ -4831,6 +4546,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 5,
    "defesa": 7,
    "defesaSocial": 6,
    "defesaMental": 5,
@@ -4949,6 +4665,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 19,
    "defesa": 14,
    "defesaSocial": 12,
    "defesaMental": 25,
@@ -5018,44 +4735,16 @@
      "id": "bralani",
      "nome": "Bralani",
      "nomeIngles": "Bralani",
-     "categoria": "outsider",
-     "categoriaNome": "Extraplanar",
-     "tipo": "elite",
-     "conceito": "Extraplanar Médio",
-     "descricao": "Espírito do vento, o mais selvagem dos espíritos do bem: vira um redemoinho de poeira, neve ou areia, corta com lâminas de ar e cura os aliados com o vento. Na outra forma, é um elfo alto que luta com espada.",
-     "tags": [
-      "outsider",
-      "centelha"
-     ],
      "ameaca": 4,
      "centelha": 4,
+     "categoria": "outsider",
+     "categoriaNome": "Extraplanar",
      "tamanho": "Médio",
-     "corpo": {
-      "postura": "redemoinho de pé; voador",
-      "apoio": "bipede",
-      "altura": 1.8,
-      "largura": 0.45,
-      "profundidade": 0.23,
-      "comprimento": null,
-      "massa": 80,
-      "area": 0.72,
-      "medida": "1.8 m de altura",
-      "peso": "80 kg"
-     },
-     "ecologia": {
-      "tipo": "outsider",
-      "terreno": [
-       "céu",
-       "qualquer"
-      ],
-      "clima": [
-       "extraplanar"
-      ]
-     },
      "imagens": [
       "bestiario/bralani_criatura.webp"
      ],
      "semImagem": false,
+     "tipo": "elite",
      "atributos": {
       "forca": 6,
       "destreza": 5,
@@ -5067,6 +4756,15 @@
       "perspicacia": 4,
       "compostura": 4
      },
+     "virtudes": {
+      "bravura": 4,
+      "compaixao": 2,
+      "conviccao": 4,
+      "temperanca": 2,
+      "valor": 4
+     },
+     "vontade": 9,
+     "aparencia": 6,
      "habilidades": {
       "prontidao": 2,
       "furtividade": 0,
@@ -5085,17 +4783,11 @@
       "disparo": 3,
       "musculatura": 0
      },
-     "vontade": 9,
-     "aparencia": 6,
-     "virtudes": {
-      "bravura": 4,
-      "compaixao": 2,
-      "conviccao": 4,
-      "temperanca": 2,
-      "valor": 4
-     },
+     "artes": [],
+     "tecnicas": [],
      "combate": {
       "pv": 40,
+      "energia": 19,
       "defesa": 15,
       "defesaSocial": 12,
       "defesaMental": 25,
@@ -5127,66 +4819,34 @@
        }
       ]
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Forma de vento",
-       "descricao": "vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada. ativacao: uma ação, Velocidade 6. duracao: até ele voltar com outra ação. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "Ventos a serviço",
-       "descricao": "à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado. ativacao: uma ação, Velocidade 6. duracao: o ofuscar e a ilusão, até o fim da cena; o resto, instantâneo. alcance: 18 m. area: um alvo, ou uma imagem de até 3 m. dano: nenhum; a cura devolve 2d6 + Centelha PV. resistencia: corpo, Vigor + Resistência contra Dificuldade 10, para o ofuscar e a rajada. limiteDeUso: três vezes por cena, somados",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "vento",
-        "nivel": 2
-       }
-      },
-      {
-       "nome": "Resistência à magia 17",
-       "descricao": "sua natureza dificulta o efeito de magia hostil",
-       "classe": "sem regra ainda"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "elfo de espada",
-       "texto": "entra na luta pelo gosto da briga, com a espada longa; ofusca o mais perigoso, cura os aliados e vira vento para cortar de longe ou para sumir."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "visão e audição",
-       "descricao": "as de um elfo; sente o vento à volta"
-      }
-     ],
-     "segundoTamanho": null,
+     "ecologia": {
+      "tipo": "outsider",
+      "terreno": [
+       "céu",
+       "qualquer"
+      ],
+      "clima": [
+       "extraplanar"
+      ]
+     },
+     "corpo": {
+      "postura": "redemoinho de pé; voador",
+      "apoio": "bipede",
+      "altura": 1.8,
+      "largura": 0.45,
+      "profundidade": 0.23,
+      "comprimento": null,
+      "massa": 80,
+      "area": 0.72,
+      "medida": "1.8 m de altura",
+      "peso": "80 kg"
+     },
+     "formas": [],
      "formaPrincipal": {
       "id": "elfica",
       "nome": "forma élfica"
      },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 4,
-      "voo": 0
-     },
-     "tecnicas": [],
-     "artes": [],
-     "lore": [
-      {
-       "titulo": "Temperamento",
-       "texto": "Entre os espíritos do bem, os bralanis são os mais selvagens e ariscos, vivendo o momento e sempre em busca de uma boa luta ou uma tempestade para atravessar."
-      },
-      {
-       "titulo": "Aparência",
-       "texto": "Assumem forma élfica ou de um redemoinho de poeira, neve ou areia, sendo às vezes confundidos com espíritos do vento."
-      },
-      {
-       "titulo": "Sociedade",
-       "texto": "Não precisam comer, mas apreciam boa comida e vinho especiado, e gostam de mediar disputas entre mortais, espíritos da natureza e seres elementais, ainda que prefiram deixar a negociação final para os próprios interessados."
-      }
-     ]
+     "segundoTamanho": null
     }
    }
   ],
@@ -5254,6 +4914,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 90,
+   "energia": 7,
    "defesa": 6,
    "defesaSocial": 6,
    "defesaMental": 6,
@@ -5361,6 +5022,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 6,
    "defesa": 6,
    "defesaSocial": 4,
    "defesaMental": 11,
@@ -5477,6 +5139,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 13,
    "defesa": 14,
    "defesaSocial": 8,
    "defesaMental": 18,
@@ -5584,6 +5247,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 46,
+   "energia": 23,
    "defesa": 14,
    "defesaSocial": 10,
    "defesaMental": 30,
@@ -5661,44 +5325,16 @@
      "id": "bruxa-noturna",
      "nome": "Bruxa Noturna",
      "nomeIngles": "Hag, Night",
-     "categoria": "corruptor",
-     "categoriaNome": "Corruptor",
-     "tipo": "chefe",
-     "conceito": "Corruptor Médio",
-     "descricao": "Caça mortais nos momentos de maior fraqueza e prolonga a agonia noite após noite, cavalgando os sonhos deles, até prender a alma torturada numa gema escura para os mercados sombrios de almas. Assume a forma de qualquer humanoide à vontade.",
-     "tags": [
-      "corruptor",
-      "centelha"
-     ],
      "ameaca": 5,
      "centelha": 5,
+     "categoria": "corruptor",
+     "categoriaNome": "Corruptor",
      "tamanho": "Médio",
-     "corpo": {
-      "postura": "bípede, de pé",
-      "apoio": "bipede",
-      "altura": 1.9,
-      "largura": 0.41,
-      "profundidade": 0.21,
-      "comprimento": null,
-      "massa": 70,
-      "area": 0.69,
-      "posturaDoTamanho": "silhueta de frente, de pé",
-      "medida": "1.9 m de altura",
-      "peso": "70 kg"
-     },
-     "ecologia": {
-      "tipo": "corruptor",
-      "terreno": [
-       "qualquer"
-      ],
-      "clima": [
-       "extraplanar"
-      ]
-     },
      "imagens": [
       "bestiario/bruxa-noturna_criatura.webp"
      ],
      "semImagem": false,
+     "tipo": "chefe",
      "atributos": {
       "forca": 6,
       "destreza": 5,
@@ -5710,6 +5346,15 @@
       "perspicacia": 5,
       "compostura": 5
      },
+     "virtudes": {
+      "bravura": 6,
+      "compaixao": 1,
+      "conviccao": 5,
+      "temperanca": 1,
+      "valor": 6
+     },
+     "vontade": 10,
+     "aparencia": 0,
      "habilidades": {
       "prontidao": 2,
       "furtividade": 2,
@@ -5728,17 +5373,11 @@
       "intimidacao": 3,
       "musculatura": 0
      },
-     "vontade": 10,
-     "aparencia": 0,
-     "virtudes": {
-      "bravura": 6,
-      "compaixao": 1,
-      "conviccao": 5,
-      "temperanca": 1,
-      "valor": 6
-     },
+     "artes": [],
+     "tecnicas": [],
      "combate": {
       "pv": 46,
+      "energia": 23,
       "defesa": 14,
       "defesaSocial": 10,
       "defesaMental": 30,
@@ -5786,72 +5425,34 @@
        }
       ]
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Mudar de forma",
-       "descricao": "assume a forma de qualquer humanoide (o disfarce, em Variantes); a mente e os números ficam os dela. ativacao: uma ação, Velocidade 6. duracao: até ela desfazer. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "ferro frio e arma mágica ferem inteiros",
-       "descricao": "a resistência da pele não vale contra eles",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "mente imune",
-       "descricao": "encanto, medo e sono não a pegam",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "Resistência à magia 24",
-       "descricao": "sua natureza dificulta o efeito de magia hostil",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "assombrar sonhos",
-       "descricao": "com a pedra do coração, fica etérea, senta no peito de quem dorme e o cavalga a noite inteira, tirando um pouco da vitalidade dele a cada noite, até a morte; a alma de quem morre assim vai para uma gema escura",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "pedra do coração",
-       "descricao": "a gema que ela carrega cura as doenças dela e a fortalece contra provações; sem ela, perde o poder de ficar etérea e de prender almas",
-       "classe": "sem regra ainda"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "corretora de almas",
-       "texto": "evita a luta aberta; disfarçada, escolhe a vítima no momento mais fraco, morde para deixar a febre e volta à noite pelos sonhos."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "visão no escuro",
-       "descricao": "enxerga no escuro absoluto"
-      }
-     ],
-     "segundoTamanho": null,
+     "ecologia": {
+      "tipo": "corruptor",
+      "terreno": [
+       "qualquer"
+      ],
+      "clima": [
+       "extraplanar"
+      ]
+     },
+     "corpo": {
+      "postura": "bípede, de pé",
+      "apoio": "bipede",
+      "altura": 1.9,
+      "largura": 0.41,
+      "profundidade": 0.21,
+      "comprimento": null,
+      "massa": 70,
+      "area": 0.69,
+      "posturaDoTamanho": "silhueta de frente, de pé",
+      "medida": "1.9 m de altura",
+      "peso": "70 kg"
+     },
+     "formas": [],
      "formaPrincipal": {
       "id": "disfarce",
       "nome": "disfarce"
      },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 3
-     },
-     "tecnicas": [],
-     "artes": [],
-     "lore": [
-      {
-       "titulo": "Corretora de almas",
-       "texto": "Caça mortais nos momentos de maior vulnerabilidade, prolongando a agonia noite após noite até prender a alma torturada em gemas escuras."
-      },
-      {
-       "titulo": "Rosto mutável, fome antiga",
-       "texto": "Sua aparência varia muito de uma para outra, mas todas compartilham o mesmo apetite por sofrimento alheio e mercados sombrios de almas."
-      }
-     ]
+     "segundoTamanho": null
     }
    }
   ],
@@ -5915,6 +5516,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 18,
    "defesa": 10,
    "defesaSocial": 8,
    "defesaMental": 24,
@@ -5971,44 +5573,16 @@
      "id": "bruxa-verde",
      "nome": "Bruxa Verde",
      "nomeIngles": "Hag, Green",
-     "categoria": "humanoide-monstruoso",
-     "categoriaNome": "Humanoide monstruoso",
-     "tipo": "elite",
-     "conceito": "Humanoide monstruoso Médio",
-     "descricao": "Velha de pele verde dos pântanos que se disfarça de camponesa ou donzela e imita vozes para atrair vítimas. Revela as garras, enfraquece com o toque e lança feitiços de maldição e engano.",
-     "tags": [
-      "humanoide-monstruoso",
-      "centelha"
-     ],
      "ameaca": 4,
      "centelha": 4,
+     "categoria": "humanoide-monstruoso",
+     "categoriaNome": "Humanoide monstruoso",
      "tamanho": "Médio",
-     "corpo": {
-      "postura": "bípede, curvada",
-      "apoio": "bipede",
-      "altura": 1.5,
-      "largura": 0.49,
-      "profundidade": 0.25,
-      "comprimento": null,
-      "massa": 80,
-      "area": 0.66,
-      "medida": "1.5 m de altura",
-      "peso": "80 kg"
-     },
-     "ecologia": {
-      "tipo": "humanoide-monstruoso",
-      "terreno": [
-       "pântano",
-       "floresta"
-      ],
-      "clima": [
-       "temperado"
-      ]
-     },
      "imagens": [
       "bestiario/bruxa-verde_criatura.webp"
      ],
      "semImagem": false,
+     "tipo": "elite",
      "atributos": {
       "forca": 6,
       "destreza": 3,
@@ -6020,6 +5594,15 @@
       "perspicacia": 4,
       "compostura": 4
      },
+     "virtudes": {
+      "bravura": 3,
+      "compaixao": 1,
+      "conviccao": 3,
+      "temperanca": 2,
+      "valor": 3
+     },
+     "vontade": 9,
+     "aparencia": 8,
      "habilidades": {
       "prontidao": 1,
       "furtividade": 2,
@@ -6036,17 +5619,11 @@
       "herbologia": 2,
       "musculatura": 0
      },
-     "vontade": 9,
-     "aparencia": 8,
-     "virtudes": {
-      "bravura": 3,
-      "compaixao": 1,
-      "conviccao": 3,
-      "temperanca": 2,
-      "valor": 3
-     },
+     "artes": [],
+     "tecnicas": [],
      "combate": {
       "pv": 40,
+      "energia": 18,
       "defesa": 10,
       "defesaSocial": 8,
       "defesaMental": 24,
@@ -6073,82 +5650,34 @@
        }
       ]
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Disfarce ilusório",
-       "descricao": "parece uma velha camponesa inofensiva ou uma donzela bela (a Variante \"disfarce\"); quem toca ou desconfia e testa vê através. ativacao: uma ação, Velocidade 6. duracao: até ela desfazer, ou até atacar. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: mente, contra Influência + Manha dela, só para quem desconfia. limiteDeUso: à vontade",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "ofuscacao",
-        "nivel": 3
-       }
-      },
-      {
-       "nome": "Feitiços de maldição",
-       "descricao": "à escolha: uma névoa de ilusão que tira o alvo do caminho (Confuso), ou uma ordem curta que ele cumpre (\"vem\", \"dorme\", \"larga\"). ativacao: uma ação, Velocidade 6. duracao: até o fim da cena. alcance: 18 m. area: um alvo. dano: nenhum. resistencia: mente, contra Influência + Ocultismo dela; quem passa fica imune a esse feitiço até o fim da cena. limiteDeUso: três vezes por cena, somados",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "ofuscacao",
-        "nivel": 3
-       }
-      },
-      {
-       "nome": "Fôlego anfíbio",
-       "descricao": "respira e nada debaixo d'água sem penalidade. ativacao: nenhuma; sempre ativo. duracao: permanente. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum",
-       "classe": "regra da ficha"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "velha do brejo",
-       "texto": "disfarçada, chama a vítima com uma voz conhecida para dentro do pântano, revela as garras, enfraquece com o toque e foge pela água se a luta vira."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "visão",
-       "descricao": "enxerga no escuro do pântano"
-      },
-      {
-       "nome": "audição e olfato",
-       "descricao": "os de um humano; Prontidão (pântano e floresta) +2"
-      }
-     ],
-     "segundoTamanho": null,
+     "ecologia": {
+      "tipo": "humanoide-monstruoso",
+      "terreno": [
+       "pântano",
+       "floresta"
+      ],
+      "clima": [
+       "temperado"
+      ]
+     },
+     "corpo": {
+      "postura": "bípede, curvada",
+      "apoio": "bipede",
+      "altura": 1.5,
+      "largura": 0.49,
+      "profundidade": 0.25,
+      "comprimento": null,
+      "massa": 80,
+      "area": 0.66,
+      "medida": "1.5 m de altura",
+      "peso": "80 kg"
+     },
+     "formas": [],
      "formaPrincipal": {
       "id": "disfarce",
       "nome": "disfarce"
      },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 3,
-      "natacao": 3
-     },
-     "tecnicas": [],
-     "artes": [],
-     "lore": [
-      {
-       "titulo": "Comportamento",
-       "texto": "Usa metamorfose para parecer uma velha camponesa ou donzela indefesa, atraindo vítimas para o pântano antes de revelar garras e magia sombria."
-      },
-      {
-       "titulo": "Hábitat",
-       "texto": "Vive em pântanos, brejos e florestas apodrecidas, longe de estradas vigiadas."
-      },
-      {
-       "titulo": "Sociedade",
-       "texto": "Prefere a solidão, mas às vezes forma covens com outras bruxas para trocar segredos e maldições."
-      },
-      {
-       "titulo": "Personalidade",
-       "texto": "Invejosa e cruel, ressente a beleza e a felicidade alheia, e as corrompe sempre que pode."
-      },
-      {
-       "titulo": "No mundo de Centelha",
-       "texto": "Figura do folclore rural em Syl e no Neck, confundida por camponeses supersticiosos com espírito maligno da mata; para as igrejas de Calin é prova viva de que magia sem lei corrompe quem a possui."
-      }
-     ]
+     "segundoTamanho": null
     }
    }
   ],
@@ -6211,6 +5740,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 6,
    "defesa": 8,
    "defesaSocial": 4,
    "defesaMental": 9,
@@ -6315,6 +5845,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 80,
+   "energia": 11,
    "defesa": 10,
    "defesaSocial": 12,
    "defesaMental": 12,
@@ -6429,6 +5960,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 75,
+   "energia": 7,
    "defesa": 12,
    "defesaSocial": 8,
    "defesaMental": 8,
@@ -6559,6 +6091,7 @@
   ],
   "combate": {
    "pv": 37,
+   "energia": 14,
    "defesa": 24,
    "defesaSocial": 4,
    "defesaMental": 22,
@@ -6685,6 +6218,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 18,
+   "energia": 11,
    "defesa": 15,
    "defesaSocial": 8,
    "defesaMental": 15,
@@ -6817,6 +6351,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 31,
+   "energia": 5,
    "defesa": 6,
    "defesaSocial": 6,
    "defesaMental": 10,
@@ -6924,6 +6459,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 26,
+   "energia": 4,
    "defesa": 10,
    "defesaSocial": 6,
    "defesaMental": 7,
@@ -7033,6 +6569,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 5,
    "defesa": 12,
    "defesaSocial": 8,
    "defesaMental": 8,
@@ -7140,6 +6677,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 58,
+   "energia": 20,
    "defesa": 12,
    "defesaSocial": 16,
    "defesaMental": 18,
@@ -7263,6 +6801,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 11,
    "defesa": 10,
    "defesaSocial": 14,
    "defesaMental": 15,
@@ -7387,6 +6926,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 12,
    "defesa": 12,
    "defesaSocial": 16,
    "defesaMental": 16,
@@ -7508,6 +7048,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 43,
+   "energia": 19,
    "defesa": 14,
    "defesaSocial": 8,
    "defesaMental": 25,
@@ -7624,6 +7165,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 9,
    "defesa": 17,
    "defesaSocial": 10,
    "defesaMental": 17,
@@ -7744,6 +7286,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 50,
+   "energia": 5,
    "defesa": 11,
    "defesaSocial": 6,
    "defesaMental": 6,
@@ -7853,6 +7396,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 19,
+   "energia": 5,
    "defesa": 10,
    "defesaSocial": 8,
    "defesaMental": 10,
@@ -7971,6 +7515,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 6,
    "defesa": 16,
    "defesaSocial": 8,
    "defesaMental": 10,
@@ -8088,6 +7633,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 75,
+   "energia": 22,
    "defesa": 12,
    "defesaSocial": 6,
    "defesaMental": 23,
@@ -8223,6 +7769,7 @@
   ],
   "combate": {
    "pv": 40,
+   "energia": 10,
    "defesa": 14,
    "defesaSocial": 4,
    "defesaMental": 17,
@@ -8345,6 +7892,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 6,
    "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 6,
@@ -8462,6 +8010,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 13,
    "defesa": 13,
    "defesaSocial": 10,
    "defesaMental": 17,
@@ -8587,6 +8136,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 28,
+   "energia": 5,
    "defesa": 14,
    "defesaSocial": 6,
    "defesaMental": 6,
@@ -8693,6 +8243,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 43,
+   "energia": 18,
    "defesa": 19,
    "defesaSocial": 4,
    "defesaMental": 18,
@@ -8807,6 +8358,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 10,
    "defesa": 8,
    "defesaSocial": 4,
    "defesaMental": 12,
@@ -8916,6 +8468,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 28,
+   "energia": 5,
    "defesa": 10,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -9029,6 +8582,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 17,
+   "energia": 10,
    "defesa": 14,
    "defesaSocial": 12,
    "defesaMental": 15,
@@ -9153,6 +8707,7 @@
   ],
   "combate": {
    "pv": 37,
+   "energia": 9,
    "defesa": 17,
    "defesaSocial": 10,
    "defesaMental": 17,
@@ -9277,6 +8832,7 @@
   ],
   "combate": {
    "pv": 54,
+   "energia": 7,
    "defesa": 10,
    "defesaSocial": 10,
    "defesaMental": 9,
@@ -9397,6 +8953,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 2,
+   "energia": 4,
    "defesa": 12,
    "defesaSocial": 12,
    "defesaMental": 8,
@@ -9465,6 +9022,7 @@
    "bestiario/couatl_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 20,
   "tipo": "chefe",
   "atributos": {
    "forca": 6,
@@ -9528,6 +9086,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 50,
+   "energia": 23,
    "defesa": 20,
    "defesaSocial": 16,
    "defesaMental": 31,
@@ -9590,52 +9149,17 @@
      "id": "couatl",
      "nome": "Couatl",
      "nomeIngles": "Couatl",
-     "categoria": "outsider",
-     "categoriaNome": "Extraplanar",
-     "tipo": "chefe",
-     "conceito": "Extraplanar Grande",
-     "descricao": "Serpente emplumada, guardiã antiga e telepata de templos esquecidos, que fala por imagens na mente de quem se aproxima com respeito. Conjura portais, barreiras e encantos, muda de forma e, quando precisa, morde com veneno e esmaga.",
-     "tags": [
-      "outsider",
-      "centelha",
-      "mágico",
-      "arcano"
-     ],
      "ameaca": 5,
      "centelha": 5,
+     "categoria": "outsider",
+     "categoriaNome": "Extraplanar",
      "tamanho": "Grande",
-     "corpo": {
-      "postura": "serpente; voadora",
-      "apoio": "outro",
-      "altura": 0.3,
-      "largura": 0.3,
-      "profundidade": null,
-      "comprimento": 3.7,
-      "envergadura": 4.6,
-      "massa": 270,
-      "area": 4.55,
-      "posturaDoTamanho": "asas abertas",
-      "segundoTamanho": {
-       "area": 1.11,
-       "posturaDoTamanho": "asas fechadas"
-      },
-      "medida": "0.3 m de altura, 3.7 m de comprimento",
-      "peso": "270 kg"
-     },
-     "ecologia": {
-      "tipo": "outsider",
-      "terreno": [
-       "selva",
-       "qualquer"
-      ],
-      "clima": [
-       "extraplanar"
-      ]
-     },
      "imagens": [
       "bestiario/couatl_criatura.webp"
      ],
      "semImagem": false,
+     "mana": 20,
+     "tipo": "chefe",
      "atributos": {
       "forca": 6,
       "destreza": 6,
@@ -9647,6 +9171,15 @@
       "perspicacia": 5,
       "compostura": 6
      },
+     "virtudes": {
+      "bravura": 5,
+      "compaixao": 5,
+      "conviccao": 5,
+      "temperanca": 4,
+      "valor": 5
+     },
+     "vontade": 10,
+     "aparencia": 9,
      "habilidades": {
       "prontidao": 4,
       "furtividade": 2,
@@ -9664,83 +9197,6 @@
       "acerto-arcano": 4,
       "musculatura": 4
      },
-     "vontade": 10,
-     "aparencia": 9,
-     "virtudes": {
-      "bravura": 5,
-      "compaixao": 5,
-      "conviccao": 5,
-      "temperanca": 4,
-      "valor": 5
-     },
-     "combate": {
-      "pv": 50,
-      "defesa": 20,
-      "defesaSocial": 16,
-      "defesaMental": 31,
-      "absorcao": {
-       "impacto": 10,
-       "corte": 5,
-       "perfuracao": 5
-      },
-      "resistenciaPerfuracao": 0,
-      "iniciativa": "1d6 + 9",
-      "deslocamento": {
-       "batalha": 2,
-       "arranque": 3,
-       "corrida": 5
-      },
-      "ataques": []
-     },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Mudar de forma",
-       "descricao": "assume a forma de um humanoide ou de um animal comum (a Variante \"disfarce\"); a mente, as Artes e os números ficam os dela. ativacao: uma ação, Velocidade 8. duracao: até o fim da cena, ou até ela desfazer. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "materia",
-        "nivel": 2
-       }
-      },
-      {
-       "nome": "Telepatia",
-       "descricao": "fala com qualquer criatura pela mente, por imagens e sensações, sem língua em comum. ativacao: nenhuma; sempre ativa. duracao: permanente. alcance: 18 m. area: quem ela escolher ao alcance. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "Viagem planar",
-       "descricao": "passa para outro plano e volta quando quiser. ativacao: uma ação, Velocidade 8. duracao: instantânea. alcance: outro plano ou realidade. area: ela e quem ela toca e quer levar. dano: nenhum. resistencia: nenhum; quem não quer ir não é levado. limiteDeUso: uma vez por cena",
-       "classe": "regra da ficha"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "guardiã disfarçada",
-       "texto": "observa antes de agir e fala pela mente; se precisa lutar, protege com a Barreira, encanta ou some com o Manto, e volta à forma verdadeira para morder e enrolar."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "telepatia",
-       "descricao": "sente e fala com as mentes a 18 m (Manobras)"
-      },
-      {
-       "nome": "visão",
-       "descricao": "a de uma ave de rapina; enxerga no escuro dos templos"
-      }
-     ],
-     "segundoTamanho": "Médio",
-     "formaPrincipal": {
-      "id": "disfarce",
-      "nome": "disfarce"
-     },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 2,
-      "voo": 6
-     },
-     "tecnicas": [],
      "artes": [
       {
        "id": "conjuracao",
@@ -9763,33 +9219,61 @@
        "nivel": 2
       }
      ],
-     "mana": 20,
-     "lore": [
-      {
-       "titulo": "Comportamento",
-       "texto": "Guardiã antiga e telepata, observa mais do que age, e protege o equilíbrio entre o conhecimento útil e o conhecimento perigoso."
+     "tecnicas": [],
+     "combate": {
+      "pv": 50,
+      "energia": 23,
+      "defesa": 20,
+      "defesaSocial": 16,
+      "defesaMental": 31,
+      "absorcao": {
+       "impacto": 10,
+       "corte": 5,
+       "perfuracao": 5
       },
-      {
-       "titulo": "Sociedade",
-       "texto": "Solitária por natureza, mas mantém pactos silenciosos com outras couatls espalhadas por templos esquecidos."
+      "resistenciaPerfuracao": 0,
+      "iniciativa": "1d6 + 9",
+      "deslocamento": {
+       "batalha": 2,
+       "arranque": 3,
+       "corrida": 5
       },
-      {
-       "titulo": "Personalidade",
-       "texto": "Sábia e paciente, comunica-se por imagens e sensações diretamente na mente de quem se aproxima com respeito."
+      "ataques": []
+     },
+     "ecologia": {
+      "tipo": "outsider",
+      "terreno": [
+       "selva",
+       "qualquer"
+      ],
+      "clima": [
+       "extraplanar"
+      ]
+     },
+     "corpo": {
+      "postura": "serpente; voadora",
+      "apoio": "outro",
+      "altura": 0.3,
+      "largura": 0.3,
+      "profundidade": null,
+      "comprimento": 3.7,
+      "envergadura": 4.6,
+      "massa": 270,
+      "area": 4.55,
+      "posturaDoTamanho": "asas abertas",
+      "segundoTamanho": {
+       "area": 1.11,
+       "posturaDoTamanho": "asas fechadas"
       },
-      {
-       "titulo": "Hábitat",
-       "texto": "Dorme enrolada em ruínas de pirâmides e templos monumentais, quase invisível entre as pedras."
-      },
-      {
-       "titulo": "No mundo de Centelha",
-       "texto": "A serpente emplumada encontra em Mère seu lar mais natural, entre as cidades mágicas escondidas atrás da fachada dita bárbara; anciãos de Mère juram que uma couatl ensinou aos primeiros sacerdotes os ritos que sobreviveram à Supressão, guardados em segredo sob as pirâmides."
-      },
-      {
-       "titulo": "Veneno e doença",
-       "texto": "Veneno no jogo: Veneno da couatl · Potência 14 · 1 Tick (sangue) · a cada 1 minuto · pool 3 (Força) · Desgaste 1 · pela Mordida venenosa"
-      }
-     ]
+      "medida": "0.3 m de altura, 3.7 m de comprimento",
+      "peso": "270 kg"
+     },
+     "formas": [],
+     "formaPrincipal": {
+      "id": "disfarce",
+      "nome": "disfarce"
+     },
+     "segundoTamanho": "Médio"
     }
    }
   ],
@@ -9857,6 +9341,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 42,
+   "energia": 4,
    "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 6,
@@ -9970,6 +9455,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 4,
    "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 6,
@@ -10074,6 +9560,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 85,
+   "energia": 9,
    "defesa": 2,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -10140,6 +9627,7 @@
    "bestiario/cultista_pdm.webp"
   ],
   "semImagem": false,
+  "mana": 9,
   "tipo": "elite",
   "atributos": {
    "forca": 2,
@@ -10186,6 +9674,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 9,
    "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 14,
@@ -10293,6 +9782,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 50,
+   "energia": 6,
    "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 8,
@@ -10404,6 +9894,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 5,
    "defesa": 12,
    "defesaSocial": 6,
    "defesaMental": 7,
@@ -10528,6 +10019,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 12,
    "defesa": 13,
    "defesaSocial": 4,
    "defesaMental": 15,
@@ -10636,6 +10128,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 43,
+   "energia": 26,
    "defesa": 15,
    "defesaSocial": 24,
    "defesaMental": 34,
@@ -10700,49 +10193,16 @@
      "id": "deva-astral",
      "nome": "Deva Astral",
      "nomeIngles": "Angel, Astral Deva",
-     "categoria": "celestial",
-     "categoriaNome": "Celestial",
-     "tipo": "chefe",
-     "conceito": "Celestial Grande",
-     "descricao": "Anjo de asas brancas que anda disfarçado de peregrina entre os mortais: cura, aconselha e protege. Quando o mal ataca primeiro, luta com a maça, e a luz do golpe queima demônios e mortos-vivos.",
-     "tags": [
-      "celestial",
-      "centelha"
-     ],
      "ameaca": 6,
      "centelha": 6,
+     "categoria": "celestial",
+     "categoriaNome": "Celestial",
      "tamanho": "Grande",
-     "corpo": {
-      "postura": "bípede, de pé; voador",
-      "apoio": "bipede",
-      "altura": 2,
-      "largura": 0.5,
-      "profundidade": 0.26,
-      "comprimento": null,
-      "envergadura": 3.6,
-      "massa": 90,
-      "area": 3.06,
-      "posturaDoTamanho": "asas abertas",
-      "segundoTamanho": {
-       "area": 0.98,
-       "posturaDoTamanho": "de pé, asas fechadas"
-      },
-      "medida": "2 m de altura",
-      "peso": "90 kg"
-     },
-     "ecologia": {
-      "tipo": "celestial",
-      "terreno": [
-       "qualquer"
-      ],
-      "clima": [
-       "extraplanar"
-      ]
-     },
      "imagens": [
       "bestiario/deva-astral_criatura.webp"
      ],
      "semImagem": false,
+     "tipo": "chefe",
      "atributos": {
       "forca": 8,
       "destreza": 5,
@@ -10754,6 +10214,15 @@
       "perspicacia": 6,
       "compostura": 6
      },
+     "virtudes": {
+      "bravura": 5,
+      "compaixao": 5,
+      "conviccao": 5,
+      "temperanca": 4,
+      "valor": 5
+     },
+     "vontade": 11,
+     "aparencia": 10,
      "habilidades": {
       "prontidao": 4,
       "furtividade": 0,
@@ -10774,17 +10243,11 @@
       "voo": 3,
       "musculatura": 0
      },
-     "vontade": 11,
-     "aparencia": 10,
-     "virtudes": {
-      "bravura": 5,
-      "compaixao": 5,
-      "conviccao": 5,
-      "temperanca": 4,
-      "valor": 5
-     },
+     "artes": [],
+     "tecnicas": [],
      "combate": {
       "pv": 43,
+      "energia": 26,
       "defesa": 14,
       "defesaSocial": 24,
       "defesaMental": 34,
@@ -10805,92 +10268,39 @@
       },
       "ataques": []
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Mudar de forma",
-       "descricao": "assume a aparência de um humano ou de um animal comum, com voz e cheiro; os números ficam os do deva; a arma e o que veste não acompanham a troca; na forma de animal não fala nem usa a maça. ativacao: uma ação, Velocidade 8. duracao: uma cena, ou até ela desfazer com outra ação. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "metamorfose",
-        "nivel": 3
-       }
+     "ecologia": {
+      "tipo": "celestial",
+      "terreno": [
+       "qualquer"
+      ],
+      "clima": [
+       "extraplanar"
+      ]
+     },
+     "corpo": {
+      "postura": "bípede, de pé; voador",
+      "apoio": "bipede",
+      "altura": 2,
+      "largura": 0.5,
+      "profundidade": 0.26,
+      "comprimento": null,
+      "envergadura": 3.6,
+      "massa": 90,
+      "area": 3.06,
+      "posturaDoTamanho": "asas abertas",
+      "segundoTamanho": {
+       "area": 0.98,
+       "posturaDoTamanho": "de pé, asas fechadas"
       },
-      {
-       "nome": "Feitiços celestiais",
-       "descricao": "escolhe uma: fecha ferimentos; limpa uma doença ou uma maldição (inclusive a licantropia); ou abençoa, e o aliado soma +1d6 na próxima jogada importante. ativacao: uma ação, Velocidade 8, tocando o alvo. duracao: instantânea; a bênção dura até a próxima jogada do aliado ou o fim da cena. alcance: toque. area: um alvo. dano: nenhum; a cura devolve 3d6 + Centelha PV. resistencia: nenhum. limiteDeUso: uma vez por cena",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "cura",
-        "nivel": 4
-       }
-      },
-      {
-       "nome": "Aura protetora",
-       "descricao": "os aliados dentro dela somam +4 em Esquiva, Bloqueio e Defesa Mental contra golpe, Arte ou efeito de criatura maligna. ativacao: nenhuma; sempre ativa. duracao: permanente. alcance: 6 m. area: esfera de 6 m em volta do deva. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "protecao",
-        "nivel": 5
-       }
-      },
-      {
-       "nome": "Teleporte sem erro",
-       "descricao": "some e reaparece no destino, sem chance de erro. ativacao: uma ação, Velocidade 8. duracao: instantânea. alcance: qualquer lugar que ela conheça no mesmo plano. area: o deva e até seis companheiros que ele toca ou que tocam nele. dano: nenhum. resistencia: nenhum; quem não quer ir não é levado. limiteDeUso: à vontade",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "conjuracao",
-        "nivel": 5
-       }
-      },
-      {
-       "nome": "Imune a doença e veneno",
-       "descricao": "doença e veneno não pegam nele",
-       "classe": "sem regra ainda"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "conselheiro disfarçado",
-       "texto": "evita lutar sem a maça; protege e cura os aliados, e volta à forma de anjo ou some pelo teleporte quando a luta aperta."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "visão e audição",
-       "descricao": "as de um humano. O site não dá sentido especial"
-      }
-     ],
-     "segundoTamanho": "Médio",
+      "medida": "2 m de altura",
+      "peso": "90 kg"
+     },
+     "formas": [],
      "formaPrincipal": {
       "id": "disfarce",
       "nome": "disfarce"
      },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 5,
-      "voo": 10
-     },
-     "tecnicas": [],
-     "artes": [],
-     "lore": [
-      {
-       "titulo": "Comportamento",
-       "texto": "Conselheira serena e guerreira paciente, prefere curar e guiar a lutar, mas não hesita quando o mal ataca primeiro."
-      },
-      {
-       "titulo": "Sociedade",
-       "texto": "Viaja sozinha ou em pequenos grupos, muitas vezes disfarçada de peregrina ou curandeira entre os mortais que protege."
-      },
-      {
-       "titulo": "Personalidade",
-       "texto": "Compassiva, quase materna, mas com um fundo inflexível de justiça que não perdoa a crueldade deliberada."
-      },
-      {
-       "titulo": "No mundo de Centelha",
-       "texto": "A Lei impede os deuses de tocar mortais, então uma deva astral é o mais próximo que uma vila esquecida chega de ver a face do sagrado; ainda assim ela evita revelar sua natureza, pois a Supressão ensinou os povos a temer até a bondade sobrenatural."
-      }
-     ]
+     "segundoTamanho": "Médio"
     }
    }
   ],
@@ -10955,6 +10365,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 32,
+   "energia": 19,
    "defesa": 22,
    "defesaSocial": 16,
    "defesaMental": 24,
@@ -11067,6 +10478,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 17,
    "defesa": 16,
    "defesaSocial": 4,
    "defesaMental": 17,
@@ -11201,6 +10613,7 @@
   ],
   "combate": {
    "pv": 70,
+   "energia": 28,
    "defesa": 24,
    "defesaSocial": 22,
    "defesaMental": 35,
@@ -11336,6 +10749,7 @@
   ],
   "combate": {
    "pv": 66,
+   "energia": 28,
    "defesa": 26,
    "defesaSocial": 20,
    "defesaMental": 35,
@@ -11483,6 +10897,7 @@
   ],
   "combate": {
    "pv": 74,
+   "energia": 38,
    "defesa": 30,
    "defesaSocial": 30,
    "defesaMental": 45,
@@ -11612,6 +11027,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 46,
+   "energia": 23,
    "defesa": 22,
    "defesaSocial": 14,
    "defesaMental": 29,
@@ -11732,6 +11148,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 58,
+   "energia": 23,
    "defesa": 14,
    "defesaSocial": 14,
    "defesaMental": 30,
@@ -11860,6 +11277,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 6,
+   "energia": 11,
    "defesa": 14,
    "defesaSocial": 14,
    "defesaMental": 17,
@@ -11979,6 +11397,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 19,
    "defesa": 14,
    "defesaSocial": 16,
    "defesaMental": 25,
@@ -12093,6 +11512,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 1,
+   "energia": 5,
    "defesa": 12,
    "defesaSocial": 8,
    "defesaMental": 7,
@@ -12203,6 +11623,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 13,
    "defesa": 14,
    "defesaSocial": 16,
    "defesaMental": 19,
@@ -12258,43 +11679,16 @@
      "id": "doppelganger",
      "nome": "Doppelganger",
      "nomeIngles": "Doppelganger",
-     "categoria": "aberracao",
-     "categoriaNome": "Aberração",
-     "tipo": "soldado",
-     "conceito": "Aberração Médio",
-     "descricao": "Coisa cinzenta de rosto liso que mata uma pessoa e vive anos com o rosto, a voz e as memórias dela. Lê o que os outros pensam e foge ao primeiro sinal de suspeita, para voltar com outro rosto.",
-     "tags": [
-      "aberracao",
-      "centelha"
-     ],
      "ameaca": 3,
      "centelha": 2,
+     "categoria": "aberracao",
+     "categoriaNome": "Aberração",
      "tamanho": "Médio",
-     "corpo": {
-      "postura": "bípede, de pé",
-      "apoio": "bipede",
-      "altura": 1.8,
-      "largura": 0.42,
-      "profundidade": 0.22,
-      "comprimento": null,
-      "massa": 70,
-      "area": 0.67,
-      "medida": "1.8 m de altura",
-      "peso": "70 kg"
-     },
-     "ecologia": {
-      "tipo": "aberracao",
-      "terreno": [
-       "urbano"
-      ],
-      "clima": [
-       "temperado"
-      ]
-     },
      "imagens": [
       "bestiario/doppelganger_criatura.webp"
      ],
      "semImagem": false,
+     "tipo": "soldado",
      "atributos": {
       "forca": 3,
       "destreza": 3,
@@ -12306,6 +11700,15 @@
       "perspicacia": 3,
       "compostura": 4
      },
+     "virtudes": {
+      "bravura": 2,
+      "compaixao": 2,
+      "conviccao": 3,
+      "temperanca": 3,
+      "valor": 2
+     },
+     "vontade": 7,
+     "aparencia": 4,
      "habilidades": {
       "prontidao": 2,
       "furtividade": 2,
@@ -12324,17 +11727,11 @@
       "atuacao": 3,
       "musculatura": 0
      },
-     "vontade": 7,
-     "aparencia": 4,
-     "virtudes": {
-      "bravura": 2,
-      "compaixao": 2,
-      "conviccao": 3,
-      "temperanca": 3,
-      "valor": 2
-     },
+     "artes": [],
+     "tecnicas": [],
      "combate": {
       "pv": 37,
+      "energia": 13,
       "defesa": 14,
       "defesaSocial": 16,
       "defesaMental": 19,
@@ -12361,81 +11758,33 @@
        }
       ]
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Mudar de forma",
-       "descricao": "assume o corpo, o rosto, a voz e o cheiro de qualquer humanoide de Tamanho perto do dele que já tenha visto; os números ficam os dele; só a magia ou a Manha de quem conviveu muito com o original percebe a troca. ativacao: uma ação, Velocidade 6. duracao: até ele desfazer, ou até cair inconsciente. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "materia",
-        "nivel": 2
-       }
-      },
-      {
-       "nome": "Ler pensamentos",
-       "descricao": "sempre ativo, ouve os pensamentos de superfície de quem está perto; na sondagem, quem falha revela um segredo ou uma intenção. ativacao: nenhuma; sempre ativo, e uma ação, Velocidade 6, para sondar fundo. duracao: enquanto o alvo estiver perto. alcance: 9 m. area: um alvo por vez. dano: nenhum. resistencia: mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem. limiteDeUso: a sondagem, uma vez por cena para cada alvo",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "adivinhacao",
-        "nivel": 1
-       }
-      },
-      {
-       "nome": "Mente protegida",
-       "descricao": "leitura de mente e controle mental simples não o pegam",
-       "classe": "sem regra ainda"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "rosto roubado",
-       "texto": "evita a luta; quando é descoberto, ataca com a espada para abrir caminho e foge; mais tarde volta com outro rosto."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "visão e audição",
-       "descricao": "as de um humano"
-      },
-      {
-       "nome": "mente",
-       "descricao": "ouve os pensamentos de superfície de quem está a 9 m (Ler pensamentos, nas Manobras)"
-      }
-     ],
-     "segundoTamanho": null,
+     "ecologia": {
+      "tipo": "aberracao",
+      "terreno": [
+       "urbano"
+      ],
+      "clima": [
+       "temperado"
+      ]
+     },
+     "corpo": {
+      "postura": "bípede, de pé",
+      "apoio": "bipede",
+      "altura": 1.8,
+      "largura": 0.42,
+      "profundidade": 0.22,
+      "comprimento": null,
+      "massa": 70,
+      "area": 0.67,
+      "medida": "1.8 m de altura",
+      "peso": "70 kg"
+     },
+     "formas": [],
      "formaPrincipal": {
       "id": "disfarce",
       "nome": "disfarce"
      },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 3
-     },
-     "tecnicas": [],
-     "artes": [],
-     "lore": [
-      {
-       "titulo": "Comportamento",
-       "texto": "Elimina ou substitui alguém e assume sua forma e memórias, infiltrando-se em vilas e cortes para viver anos a fio sem ser notado."
-      },
-      {
-       "titulo": "Sociedade",
-       "texto": "Age sozinho por segurança, evitando até os de sua própria espécie, mas negocia informações com quem paga bem e mantém segredo."
-      },
-      {
-       "titulo": "Hábitos",
-       "texto": "Estuda a vítima antes de roubar seu rosto, memoriza trejeitos e voz, e foge ao menor sinal de suspeita."
-      },
-      {
-       "titulo": "Personalidade",
-       "texto": "Pragmático e frio, sobrevivente acima de tudo, sente-se mais seguro na pele alheia do que na própria."
-      },
-      {
-       "titulo": "No mundo de Centelha",
-       "texto": "Prospera na desconfiança generalizada que a Supressão semeou, pois ninguém espera magia tão sutil e silenciosa; em Calin, onde caçam 'possuídos' com fervor, aprendeu a apontar o dedo primeiro para desviar suspeita de si."
-      }
-     ]
+     "segundoTamanho": null
     }
    }
   ],
@@ -12497,6 +11846,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 43,
+   "energia": 18,
    "defesa": 4,
    "defesaSocial": 6,
    "defesaMental": 20,
@@ -12588,6 +11938,7 @@
    "bestiario/dragao-azul-adulto_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 23,
   "tipo": "chefe",
   "atributos": {
    "forca": 11,
@@ -12644,6 +11995,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 80,
+   "energia": 27,
    "defesa": 4,
    "defesaSocial": 18,
    "defesaMental": 31,
@@ -12743,6 +12095,7 @@
    "bestiario/dragao-branco-jovem_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 17,
   "tipo": "elite",
   "atributos": {
    "forca": 8,
@@ -12796,6 +12149,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 17,
    "defesa": 4,
    "defesaSocial": 8,
    "defesaMental": 17,
@@ -12890,6 +12244,7 @@
    "bestiario/dragao-dourado-adulto_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 26,
   "tipo": "chefe",
   "atributos": {
    "forca": 12,
@@ -12954,6 +12309,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 85,
+   "energia": 32,
    "defesa": 4,
    "defesaSocial": 26,
    "defesaMental": 40,
@@ -13038,55 +12394,17 @@
      "id": "dragao-dourado-adulto",
      "nome": "Dragão Dourado Adulto",
      "nomeIngles": "Dragon, Adult Gold",
-     "categoria": "dragao",
-     "categoriaNome": "Dragão",
-     "tipo": "chefe",
-     "conceito": "Dragão Imenso",
-     "descricao": "Dragão dourado adulto de 9,5 m, o mais nobre dos dragões. Anda entre as pessoas em forma humana, cura e protege os aliados, enfraquece com um sopro de gás quem pode ser poupado e queima com fogo quem não pode.",
-     "tags": [
-      "dragao",
-      "centelha",
-      "mágico",
-      "arcano"
-     ],
      "ameaca": 6,
      "centelha": 7,
+     "categoria": "dragao",
+     "categoriaNome": "Dragão",
      "tamanho": "Imenso",
-     "corpo": {
-      "postura": "quatro patas; voador",
-      "apoio": "quadrupede",
-      "altura": 3.05,
-      "largura": 2.11,
-      "profundidade": null,
-      "comprimento": 9.5,
-      "comprimentoSemCauda": 5.39,
-      "caudaGrossa": true,
-      "envergadura": 21,
-      "massa": 9000,
-      "area": 93,
-      "posturaDoTamanho": "de baixo, asas abertas",
-      "segundoTamanho": {
-       "area": 13.94,
-       "posturaDoTamanho": "de lado, pousado, asas fechadas"
-      },
-      "medida": "3.05 m de altura, 9.5 m de comprimento",
-      "peso": "9000 kg"
-     },
-     "ecologia": {
-      "tipo": "dragao",
-      "terreno": [
-       "montanha",
-       "planície"
-      ],
-      "clima": [
-       "temperado",
-       "tropical"
-      ]
-     },
      "imagens": [
       "bestiario/dragao-dourado-adulto_criatura.webp"
      ],
      "semImagem": false,
+     "mana": 26,
+     "tipo": "chefe",
      "atributos": {
       "forca": 12,
       "destreza": 2,
@@ -13098,6 +12416,15 @@
       "perspicacia": 7,
       "compostura": 7
      },
+     "virtudes": {
+      "bravura": 6,
+      "compaixao": 4,
+      "conviccao": 5,
+      "temperanca": 3,
+      "valor": 6
+     },
+     "vontade": 12,
+     "aparencia": 9,
      "habilidades": {
       "prontidao": 5,
       "furtividade": 1,
@@ -13120,17 +12447,28 @@
       "acerto-arcano": 5,
       "musculatura": 3
      },
-     "vontade": 12,
-     "aparencia": 9,
-     "virtudes": {
-      "bravura": 6,
-      "compaixao": 4,
-      "conviccao": 5,
-      "temperanca": 3,
-      "valor": 6
-     },
+     "artes": [
+      {
+       "id": "protecao",
+       "nivel": 3
+      },
+      {
+       "id": "fortuna",
+       "nivel": 3
+      },
+      {
+       "id": "cura",
+       "nivel": 2
+      },
+      {
+       "id": "luz",
+       "nivel": 2
+      }
+     ],
+     "tecnicas": [],
      "combate": {
       "pv": 85,
+      "energia": 32,
       "defesa": 4,
       "defesaSocial": 26,
       "defesaMental": 40,
@@ -13151,89 +12489,43 @@
       },
       "ataques": []
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Mudar de forma",
-       "descricao": "assume a forma humana ou de um animal pequeno (a Variante); a mente, as Artes e os números ficam os dele, com parte dos sentidos de dragão. ativacao: uma ação, Velocidade 8. duracao: até ele desfazer. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "materia",
-        "nivel": 3
-       }
+     "ecologia": {
+      "tipo": "dragao",
+      "terreno": [
+       "montanha",
+       "planície"
+      ],
+      "clima": [
+       "temperado",
+       "tropical"
+      ]
+     },
+     "corpo": {
+      "postura": "quatro patas; voador",
+      "apoio": "quadrupede",
+      "altura": 3.05,
+      "largura": 2.11,
+      "profundidade": null,
+      "comprimento": 9.5,
+      "comprimentoSemCauda": 5.39,
+      "caudaGrossa": true,
+      "envergadura": 21,
+      "massa": 9000,
+      "area": 93,
+      "posturaDoTamanho": "de baixo, asas abertas",
+      "segundoTamanho": {
+       "area": 13.94,
+       "posturaDoTamanho": "de lado, pousado, asas fechadas"
       },
-      {
-       "nome": "Firme contra o medo",
-       "descricao": "presença de quem tem Centelha menor não o deixa Abalado",
-       "classe": "sem regra ainda"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "viajante disfarçado",
-       "texto": "evita lutar e observa; protege e cura com as Artes, e volta à forma verdadeira quando a luta pede."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "visão no escuro",
-       "descricao": "vê sem luz"
-      },
-      {
-       "nome": "sabedoria dracônica",
-       "descricao": "detecta mentiras (Empatia (mentiras) +1) e ignora ilusões simples",
-       "classe": "sem regra ainda"
-      }
-     ],
-     "segundoTamanho": "Enorme",
+      "medida": "3.05 m de altura, 9.5 m de comprimento",
+      "peso": "9000 kg"
+     },
+     "formas": [],
      "formaPrincipal": {
       "id": "humana-ou-de-animal-pequeno",
       "nome": "forma humana ou de animal pequeno"
      },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 4,
-      "voo": 25,
-      "natacao": 6
-     },
-     "tecnicas": [],
-     "artes": [
-      {
-       "id": "protecao",
-       "nivel": 3
-      },
-      {
-       "id": "fortuna",
-       "nivel": 3
-      },
-      {
-       "id": "cura",
-       "nivel": 2
-      },
-      {
-       "id": "luz",
-       "nivel": 2
-      }
-     ],
-     "mana": 26,
-     "lore": [
-      {
-       "titulo": "Comportamento",
-       "texto": "Ao contrário dos parentes cromáticos, o dragão dourado adulto raramente impõe medo por escolha: prefere assumir forma mortal e caminhar disfarçado entre vilas e cidades, testando o caráter das pessoas antes de revelar quem realmente é."
-      },
-      {
-       "titulo": "Personalidade",
-       "texto": "Sábio, paciente e movido por senso de justiça, aprecia enigmas, música e atos de bondade genuína, e não hesita em confrontar tiranos, inclusive dragões cromáticos, quando a ocasião exige."
-      },
-      {
-       "titulo": "Sociedade",
-       "texto": "Costuma agir sozinho ou em segredo, evitando reconhecimento, e prefere guiar mortais com pequenos gestos a governar abertamente qualquer território."
-      },
-      {
-       "titulo": "No mundo de Centelha",
-       "texto": "Mesmo sendo uma força do bem, o dragão dourado não escapa do preconceito da Supressão: para as igrejas de Calin, magia é magia, e um sábio disfarçado de mendigo ou de mercador generoso corre o risco de ser denunciado e caçado só por existir, ironia amarga com a qual aprendeu a conviver havia séculos."
-      }
-     ]
+     "segundoTamanho": "Enorme"
     }
    }
   ],
@@ -13256,6 +12548,7 @@
    "bestiario/dragao-verde-adulto_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 23,
   "tipo": "chefe",
   "atributos": {
    "forca": 10,
@@ -13311,6 +12604,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 75,
+   "energia": 26,
    "defesa": 10,
    "defesaSocial": 18,
    "defesaMental": 31,
@@ -13403,6 +12697,7 @@
    "bestiario/dragao-vermelho-adulto_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 23,
   "tipo": "chefe",
   "atributos": {
    "forca": 11,
@@ -13468,6 +12763,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 80,
+   "energia": 27,
    "defesa": 4,
    "defesaSocial": 18,
    "defesaMental": 31,
@@ -13567,6 +12863,7 @@
    "bestiario/dragao-vermelho-anciao_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 26,
   "tipo": "chefe",
   "atributos": {
    "forca": 14,
@@ -13633,6 +12930,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 95,
+   "energia": 31,
    "defesa": 4,
    "defesaSocial": 24,
    "defesaMental": 36,
@@ -13733,6 +13031,7 @@
    "bestiario/dragao-vermelho-jovem_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 20,
   "tipo": "chefe",
   "atributos": {
    "forca": 9,
@@ -13792,6 +13091,7 @@
   ],
   "combate": {
    "pv": 54,
+   "energia": 21,
    "defesa": 10,
    "defesaSocial": 14,
    "defesaMental": 22,
@@ -13928,6 +13228,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 5,
    "defesa": 6,
    "defesaSocial": 6,
    "defesaMental": 7,
@@ -14040,6 +13341,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 26,
+   "energia": 5,
    "defesa": 6,
    "defesaSocial": 6,
    "defesaMental": 7,
@@ -14146,6 +13448,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 28,
+   "energia": 10,
    "defesa": 4,
    "defesaSocial": 8,
    "defesaMental": 12,
@@ -14269,6 +13572,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 18,
    "defesa": 14,
    "defesaSocial": 18,
    "defesaMental": 26,
@@ -14373,6 +13677,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 43,
+   "energia": 20,
    "defesa": 12,
    "defesaSocial": 10,
    "defesaMental": 27,
@@ -14475,6 +13780,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 31,
+   "energia": 8,
    "defesa": 13,
    "defesaSocial": 4,
    "defesaMental": 12,
@@ -14598,6 +13904,7 @@
   ],
   "combate": {
    "pv": 34,
+   "energia": 12,
    "defesa": 25,
    "defesaSocial": 4,
    "defesaMental": 19,
@@ -14715,6 +14022,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 9,
    "defesa": 8,
    "defesaSocial": 4,
    "defesaMental": 13,
@@ -14822,6 +14130,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 19,
    "defesa": 14,
    "defesaSocial": 12,
    "defesaMental": 25,
@@ -14937,6 +14246,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 70,
+   "energia": 6,
    "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 6,
@@ -15046,6 +14356,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 80,
+   "energia": 8,
    "defesa": 7,
    "defesaSocial": 8,
    "defesaMental": 7,
@@ -15159,6 +14470,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 26,
+   "energia": 8,
    "defesa": 4,
    "defesaSocial": 8,
    "defesaMental": 12,
@@ -15272,6 +14584,7 @@
   ],
   "combate": {
    "pv": 58,
+   "energia": 15,
    "defesa": 13,
    "defesaSocial": 8,
    "defesaMental": 16,
@@ -15378,6 +14691,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 8,
    "defesa": 9,
    "defesaSocial": 8,
    "defesaMental": 12,
@@ -15486,6 +14800,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 26,
+   "energia": 8,
    "defesa": 14,
    "defesaSocial": 8,
    "defesaMental": 12,
@@ -15597,6 +14912,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 24,
+   "energia": 8,
    "defesa": 10,
    "defesaSocial": 8,
    "defesaMental": 12,
@@ -15714,6 +15030,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 24,
+   "energia": 4,
    "defesa": 6,
    "defesaSocial": 6,
    "defesaMental": 5,
@@ -15829,6 +15146,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 26,
+   "energia": 4,
    "defesa": 4,
    "defesaSocial": 6,
    "defesaMental": 6,
@@ -15942,6 +15260,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 24,
+   "energia": 4,
    "defesa": 6,
    "defesaSocial": 6,
    "defesaMental": 6,
@@ -16056,6 +15375,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 26,
+   "energia": 5,
    "defesa": 6,
    "defesaSocial": 6,
    "defesaMental": 6,
@@ -16176,6 +15496,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 4,
    "defesa": 6,
    "defesaSocial": 8,
    "defesaMental": 6,
@@ -16295,6 +15616,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 28,
+   "energia": 5,
    "defesa": 6,
    "defesaSocial": 10,
    "defesaMental": 6,
@@ -16412,6 +15734,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 26,
+   "energia": 4,
    "defesa": 4,
    "defesaSocial": 6,
    "defesaMental": 5,
@@ -16526,6 +15849,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 24,
+   "energia": 4,
    "defesa": 6,
    "defesaSocial": 6,
    "defesaMental": 6,
@@ -16654,6 +15978,7 @@
   ],
   "combate": {
    "pv": 43,
+   "energia": 23,
    "defesa": 23,
    "defesaSocial": 24,
    "defesaMental": 31,
@@ -16786,6 +16111,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 5,
    "defesa": 12,
    "defesaSocial": 6,
    "defesaMental": 6,
@@ -16906,6 +16232,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 23,
    "defesa": 12,
    "defesaSocial": 10,
    "defesaMental": 30,
@@ -17017,6 +16344,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 8,
    "defesa": 8,
    "defesaSocial": 4,
    "defesaMental": 12,
@@ -17128,6 +16456,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 19,
    "defesa": 14,
    "defesaSocial": 10,
    "defesaMental": 26,
@@ -17245,6 +16574,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 12,
    "defesa": 19,
    "defesaSocial": 10,
    "defesaMental": 16,
@@ -17347,6 +16677,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 17,
+   "energia": 6,
    "defesa": 12,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -17474,6 +16805,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 85,
+   "energia": 7,
    "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 5,
@@ -17579,6 +16911,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 26,
+   "energia": 11,
    "defesa": 12,
    "defesaSocial": 8,
    "defesaMental": 15,
@@ -17684,6 +17017,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 12,
    "defesa": 15,
    "defesaSocial": 16,
    "defesaMental": 16,
@@ -17794,6 +17128,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 50,
+   "energia": 7,
    "defesa": 6,
    "defesaSocial": 8,
    "defesaMental": 9,
@@ -17903,6 +17238,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 2,
+   "energia": 4,
    "defesa": 18,
    "defesaSocial": 10,
    "defesaMental": 7,
@@ -18022,6 +17358,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 43,
+   "energia": 19,
    "defesa": 10,
    "defesaSocial": 10,
    "defesaMental": 24,
@@ -18099,6 +17436,7 @@
    "bestiario/feiticeiro-menor_pdm.webp"
   ],
   "semImagem": false,
+  "mana": 8,
   "tipo": "elite",
   "atributos": {
    "forca": 2,
@@ -18146,6 +17484,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 31,
+   "energia": 8,
    "defesa": 12,
    "defesaSocial": 8,
    "defesaMental": 15,
@@ -18255,6 +17594,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 66,
+   "energia": 29,
    "defesa": 24,
    "defesaSocial": 14,
    "defesaMental": 37,
@@ -18347,6 +17687,7 @@
    "bestiario/filhote-de-dragao-vermelho_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 17,
   "tipo": "elite",
   "atributos": {
    "forca": 6,
@@ -18400,6 +17741,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 19,
    "defesa": 4,
    "defesaSocial": 12,
    "defesaMental": 25,
@@ -18531,6 +17873,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 17,
+   "energia": 18,
    "defesa": 30,
    "defesaSocial": 8,
    "defesaMental": 26,
@@ -18643,6 +17986,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 5,
    "defesa": 12,
    "defesaSocial": 6,
    "defesaMental": 5,
@@ -18756,6 +18100,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 80,
+   "energia": 12,
    "defesa": 8,
    "defesaSocial": 10,
    "defesaMental": 15,
@@ -18877,6 +18222,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 30,
+   "energia": 5,
    "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -18985,6 +18331,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 9,
    "defesa": 13,
    "defesaSocial": 4,
    "defesaMental": 12,
@@ -19108,6 +18455,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 6,
+   "energia": 4,
    "defesa": 16,
    "defesaSocial": 8,
    "defesaMental": 7,
@@ -19223,6 +18571,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 62,
+   "energia": 8,
    "defesa": 2,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -19298,6 +18647,7 @@
    "bestiario/ghaele-azata_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 23,
   "tipo": "chefe",
   "atributos": {
    "forca": 6,
@@ -19362,6 +18712,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 26,
    "defesa": 25,
    "defesaSocial": 26,
    "defesaMental": 36,
@@ -19421,50 +18772,17 @@
      "id": "ghaele-azata",
      "nome": "Ghaele (azata)",
      "nomeIngles": "Ghaele",
-     "categoria": "celestial",
-     "categoriaNome": "Celestial",
-     "tipo": "chefe",
-     "conceito": "Celestial Pequeno",
-     "descricao": "Campeã celeste que socorre causas justas e desaparece antes dos agradecimentos. Alterna entre guerreira de beleza sobrenatural e globo luminoso.",
-     "tags": [
-      "celestial",
-      "centelha",
-      "mágico",
-      "arcano"
-     ],
      "ameaca": 5,
      "centelha": 6,
+     "categoria": "celestial",
+     "categoriaNome": "Celestial",
      "tamanho": "Pequeno",
-     "corpo": {
-      "postura": "pairando",
-      "apoio": "outro",
-      "altura": 0.5542,
-      "largura": 0.5542,
-      "profundidade": 0.5542,
-      "comprimento": 0.5542,
-      "massa": 90,
-      "area": 0.2412,
-      "posturaDoTamanho": "de pé",
-      "comprimentoSemCauda": 0.5542,
-      "semMassa": true,
-      "volume": 0.089109,
-      "naoErgue": true,
-      "medida": "0.5542 m de altura, 0.5542 m de comprimento",
-      "peso": "sem massa"
-     },
-     "ecologia": {
-      "tipo": "celestial",
-      "terreno": [
-       "qualquer"
-      ],
-      "clima": [
-       "extraplanar"
-      ]
-     },
      "imagens": [
       "bestiario/ghaele-azata_criatura.webp"
      ],
      "semImagem": false,
+     "mana": 23,
+     "tipo": "chefe",
      "atributos": {
       "forca": 0,
       "destreza": 6,
@@ -19476,6 +18794,15 @@
       "perspicacia": 7,
       "compostura": 7
      },
+     "virtudes": {
+      "bravura": 5,
+      "compaixao": 5,
+      "conviccao": 5,
+      "temperanca": 4,
+      "valor": 5
+     },
+     "vontade": 11,
+     "aparencia": 12,
      "habilidades": {
       "prontidao": 4,
       "furtividade": 0,
@@ -19494,17 +18821,32 @@
       "musculatura": 0,
       "disparo": 4
      },
-     "vontade": 11,
-     "aparencia": 12,
-     "virtudes": {
-      "bravura": 5,
-      "compaixao": 5,
-      "conviccao": 5,
-      "temperanca": 4,
-      "valor": 5
-     },
+     "artes": [
+      {
+       "id": "cura",
+       "nivel": 4
+      },
+      {
+       "id": "protecao",
+       "nivel": 4
+      },
+      {
+       "id": "luz",
+       "nivel": 4
+      },
+      {
+       "id": "fascinacao",
+       "nivel": 4
+      },
+      {
+       "id": "raio",
+       "nivel": 4
+      }
+     ],
+     "tecnicas": [],
      "combate": {
       "pv": 40,
+      "energia": 26,
       "defesa": 24,
       "defesaSocial": 26,
       "defesaMental": 36,
@@ -19534,140 +18876,38 @@
        }
       ]
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Aura sagrada",
-       "descricao": "soma +4 em Esquiva, Bloqueio e Defesa Mental. ativacao: nenhuma; sempre ativa. duracao: permanente. alcance: 6 m. area: a própria ghaele e os aliados no raio. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "protecao",
-        "nivel": 4
-       }
-      },
-      {
-       "nome": "Forma de globo de luz",
-       "descricao": "vira o globo da Variante ou retorna à forma humanoide desta ficha; o equipamento só existe na forma humanoide. ativacao: uma ação, Velocidade 8. duracao: até desfazer com outra ação. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "espirito",
-        "nivel": 3
-       }
-      },
-      {
-       "nome": "Raio de luz",
-       "descricao": "o raio fere se acertar e ofusca os olhos do atingido. ativacao: uma ação, Velocidade 7, Vigor + Disparo. duracao: instantânea; a cegueira dura 12 Ticks. alcance: 9 m. area: um alvo. dano: 2d6 + Centelha, fenômeno. resistencia: corpo, Vigor + Resistência contra a jogada do raio; quem passa evita a cegueira, mas recebe o dano do acerto. limiteDeUso: à vontade",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "luz",
-        "nivel": 3
-       }
-      },
-      {
-       "nome": "Sem membros para bloquear",
-       "descricao": "não pode bloquear nem aparar ataques, por não ter membros. ativacao: passiva. duracao: enquanto estiver na forma de globo. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: contínuo",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "Corpo de luz",
-       "descricao": "na forma luminosa, o corpo incorpóreo atravessa matéria e resiste a ferimentos comuns",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "Detectar pensamentos e o mal",
-       "descricao": "sente intenção imediata e presença de mal sobrenatural, sem ler lembranças. ativacao: uma ação, Velocidade 7. duracao: até o fim da cena. alcance: 18 m. area: uma criatura por ação. dano: nenhum. resistencia: mente, contra Perspicácia + Integridade; quem passa conserva a intenção oculta. limiteDeUso: à vontade",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "adivinhacao",
-        "nivel": 2
-       }
-      },
-      {
-       "nome": "Resistência à magia 25",
-       "descricao": "sua natureza dificulta o efeito de magia hostil",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "Fascinar pela beleza",
-       "descricao": "quem contempla a ghaele pode se esquecer da luta",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "Ilusões feéricas",
-       "descricao": "cria imagens ilusórias para confundir inimigos",
-       "classe": "sem regra ainda"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "guarda celestial",
-       "texto": "luta como globo para sobrevoar o campo e cegar perseguidores; volta à forma humanoide quando precisa da espada."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "visão",
-       "descricao": "acompanha os movimentos e a luz do ambiente"
-      }
-     ],
-     "segundoTamanho": null,
+     "ecologia": {
+      "tipo": "celestial",
+      "terreno": [
+       "qualquer"
+      ],
+      "clima": [
+       "extraplanar"
+      ]
+     },
+     "corpo": {
+      "postura": "pairando",
+      "apoio": "outro",
+      "altura": 0.5542,
+      "largura": 0.5542,
+      "profundidade": 0.5542,
+      "comprimento": 0.5542,
+      "massa": 90,
+      "area": 0.2412,
+      "posturaDoTamanho": "de pé",
+      "comprimentoSemCauda": 0.5542,
+      "semMassa": true,
+      "volume": 0.089109,
+      "naoErgue": true,
+      "medida": "0.5542 m de altura, 0.5542 m de comprimento",
+      "peso": "sem massa"
+     },
+     "formas": [],
      "formaPrincipal": {
       "id": "globo-de-luz",
       "nome": "globo de luz"
      },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 0,
-      "voo": 15,
-      "natacao": 0,
-      "escalada": 0
-     },
-     "tecnicas": [],
-     "artes": [
-      {
-       "id": "cura",
-       "nivel": 4
-      },
-      {
-       "id": "protecao",
-       "nivel": 4
-      },
-      {
-       "id": "luz",
-       "nivel": 4
-      },
-      {
-       "id": "fascinacao",
-       "nivel": 4
-      },
-      {
-       "id": "raio",
-       "nivel": 4
-      }
-     ],
-     "mana": 23,
-     "lore": [
-      {
-       "titulo": "Comportamento",
-       "texto": "Campeã caótica do bem, ágil e etérea, aparece para socorrer causas justas e some antes de ser agradecida."
-      },
-      {
-       "titulo": "Sociedade",
-       "texto": "Viaja com cortejos de fadas e heróis mortais que jurou proteger, sem hierarquia fixa, movida por afinidade e capricho."
-      },
-      {
-       "titulo": "Personalidade",
-       "texto": "Apaixonada e artística, ama a beleza tanto quanto a justiça e não vê contradição nenhuma nisso."
-      },
-      {
-       "titulo": "Hábitat",
-       "texto": "Vem de um plano de liberdade selvagem, atravessando o véu de espíritos quando sente um chamado justo."
-      },
-      {
-       "titulo": "No mundo de Centelha",
-       "texto": "Por vir de um plano ligado ao véu feérico, uma ghaele às vezes é confundida com espírito da natureza pelos animistas de Syl, que a recebem com reverência sem saber que lidam com uma potência muito além dos kami locais."
-      }
-     ]
+     "segundoTamanho": null
     }
    }
   ],
@@ -19728,6 +18968,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 14,
    "defesa": 14,
    "defesaSocial": 8,
    "defesaMental": 19,
@@ -19851,6 +19092,7 @@
   ],
   "combate": {
    "pv": 37,
+   "energia": 11,
    "defesa": 12,
    "defesaSocial": 8,
    "defesaMental": 16,
@@ -19972,6 +19214,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 10,
    "defesa": 8,
    "defesaSocial": 10,
    "defesaMental": 12,
@@ -20084,6 +19327,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 8,
    "defesa": 10,
    "defesaSocial": 6,
    "defesaMental": 10,
@@ -20199,6 +19443,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 80,
+   "energia": 21,
    "defesa": 12,
    "defesaSocial": 18,
    "defesaMental": 26,
@@ -20308,6 +19553,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 75,
+   "energia": 15,
    "defesa": 10,
    "defesaSocial": 14,
    "defesaMental": 19,
@@ -20422,6 +19668,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 62,
+   "energia": 12,
    "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 14,
@@ -20555,6 +19802,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 58,
+   "energia": 11,
    "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 13,
@@ -20675,6 +19923,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 58,
+   "energia": 7,
    "defesa": 14,
    "defesaSocial": 8,
    "defesaMental": 8,
@@ -20788,6 +20037,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 11,
    "defesa": 14,
    "defesaSocial": 12,
    "defesaMental": 14,
@@ -20911,6 +20161,7 @@
   ],
   "combate": {
    "pv": 70,
+   "energia": 28,
    "defesa": 16,
    "defesaSocial": 24,
    "defesaMental": 34,
@@ -21034,6 +20285,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 6,
    "defesa": 6,
    "defesaSocial": 4,
    "defesaMental": 9,
@@ -21146,6 +20398,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 26,
+   "energia": 6,
    "defesa": 11,
    "defesaSocial": 4,
    "defesaMental": 9,
@@ -21246,6 +20499,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 50,
+   "energia": 11,
    "defesa": 13,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -21353,6 +20607,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 50,
+   "energia": 11,
    "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -21460,6 +20715,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 70,
+   "energia": 14,
    "defesa": 13,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -21574,6 +20830,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 7,
    "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -21690,6 +20947,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 12,
    "defesa": 13,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -21805,6 +21063,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 46,
+   "energia": 5,
    "defesa": 12,
    "defesaSocial": 10,
    "defesaMental": 8,
@@ -21921,6 +21180,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 62,
+   "energia": 16,
    "defesa": 9,
    "defesaSocial": 18,
    "defesaMental": 19,
@@ -22048,6 +21308,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 6,
    "defesa": 14,
    "defesaSocial": 8,
    "defesaMental": 8,
@@ -22123,6 +21384,7 @@
    "bestiario/grande-wyrm-vermelho_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 30,
   "tipo": "chefe",
   "atributos": {
    "forca": 16,
@@ -22189,6 +21451,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 110,
+   "energia": 38,
    "defesa": 4,
    "defesaSocial": 26,
    "defesaMental": 40,
@@ -22342,6 +21605,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 9,
    "defesa": 14,
    "defesaSocial": 12,
    "defesaMental": 12,
@@ -22475,6 +21739,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 6,
    "defesa": 11,
    "defesaSocial": 6,
    "defesaMental": 12,
@@ -22596,6 +21861,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 5,
    "defesa": 18,
    "defesaSocial": 6,
    "defesaMental": 7,
@@ -22710,6 +21976,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 31,
+   "energia": 11,
    "defesa": 14,
    "defesaSocial": 8,
    "defesaMental": 17,
@@ -22828,6 +22095,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 66,
+   "energia": 21,
    "defesa": 14,
    "defesaSocial": 8,
    "defesaMental": 23,
@@ -22951,6 +22219,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 75,
+   "energia": 10,
    "defesa": 10,
    "defesaSocial": 12,
    "defesaMental": 11,
@@ -23061,6 +22330,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 5,
    "defesa": 12,
    "defesaSocial": 10,
    "defesaMental": 7,
@@ -23171,6 +22441,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 46,
+   "energia": 5,
    "defesa": 14,
    "defesaSocial": 6,
    "defesaMental": 7,
@@ -23279,6 +22550,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 10,
    "defesa": 12,
    "defesaSocial": 12,
    "defesaMental": 12,
@@ -23406,6 +22678,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 7,
    "defesa": 13,
    "defesaSocial": 4,
    "defesaMental": 9,
@@ -23512,6 +22785,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 6,
    "defesa": 7,
    "defesaSocial": 6,
    "defesaMental": 9,
@@ -23625,6 +22899,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 12,
    "defesa": 15,
    "defesaSocial": 4,
    "defesaMental": 16,
@@ -23696,43 +22971,16 @@
      "id": "homem-rato-forma-humana",
      "nome": "Homem-Rato",
      "nomeIngles": "Lycanthrope, Wererat",
-     "categoria": "humanoide",
-     "categoriaNome": "Humanoide",
-     "tipo": "soldado",
-     "conceito": "Humanoide Médio",
-     "descricao": "Homem-rato das guildas escondidas sob a cidade: de dia vive como gente comum, à noite ataca de surpresa com espada e dentes. Só a prata o fere de verdade, e quem sobrevive à mordida pode virar homem-rato.",
-     "tags": [
-      "humanoide",
-      "centelha"
-     ],
      "ameaca": 2,
      "centelha": 2,
+     "categoria": "humanoide",
+     "categoriaNome": "Humanoide",
      "tamanho": "Médio",
-     "corpo": {
-      "postura": "bípede, de pé",
-      "apoio": "bipede",
-      "altura": 1.7,
-      "largura": 0.42,
-      "profundidade": 0.21,
-      "comprimento": null,
-      "massa": 65,
-      "area": 0.63,
-      "medida": "1.7 m de altura",
-      "peso": "65 kg"
-     },
-     "ecologia": {
-      "tipo": "humanoide",
-      "terreno": [
-       "urbano"
-      ],
-      "clima": [
-       "temperado"
-      ]
-     },
      "imagens": [
       "bestiario/homem-rato-forma-humana_criatura.webp"
      ],
      "semImagem": false,
+     "tipo": "soldado",
      "atributos": {
       "forca": 3,
       "destreza": 4,
@@ -23744,6 +22992,15 @@
       "perspicacia": 2,
       "compostura": 2
      },
+     "virtudes": {
+      "bravura": 3,
+      "compaixao": 2,
+      "conviccao": 3,
+      "temperanca": 2,
+      "valor": 3
+     },
+     "vontade": 7,
+     "aparencia": 4,
      "habilidades": {
       "prontidao": 2,
       "furtividade": 3,
@@ -23760,17 +23017,11 @@
       "escalada": 2,
       "musculatura": 0
      },
-     "vontade": 7,
-     "aparencia": 4,
-     "virtudes": {
-      "bravura": 3,
-      "compaixao": 2,
-      "conviccao": 3,
-      "temperanca": 2,
-      "valor": 3
-     },
+     "artes": [],
+     "tecnicas": [],
      "combate": {
       "pv": 37,
+      "energia": 12,
       "defesa": 13,
       "defesaSocial": 4,
       "defesaMental": 16,
@@ -23800,106 +23051,6 @@
        }
       ]
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Forma mutável",
-       "descricao": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. ativacao: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. duracao: até ele voltar com outra ação; na lua cheia, até o sol nascer. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade fora da lua cheia",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "Ataque furtivo",
-       "descricao": "o golpe entra onde o alvo não guarda. ativacao: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. duracao: instantânea. alcance: o do corpo a corpo. area: um alvo. dano: +1d6 no dano do golpe. resistencia: nenhum. limiteDeUso: um por golpe",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "Esquiva sobrenatural",
-       "descricao": "se passa na esquiva, não leva dano nenhum, em vez de metade. ativacao: um efeito de área que pede esquiva. duracao: instantânea. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: esquiva, a do próprio efeito. limiteDeUso: nenhum",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "Afinidade com ratos",
-       "descricao": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. ativacao: uma ação, Velocidade 6, um guincho ou um gesto. duracao: até o fim da cena. alcance: onde o guincho é ouvido. area: os ratos comuns e gigantes que o ouvem. dano: nenhum. resistencia: nenhum. limiteDeUso: um enxame ou até 6 ratos gigantes por vez",
-       "classe": "regra da ficha"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "ladrão da guilda",
-       "texto": "de dia é gente comum; à noite ataca de surpresa no beco, morde para amaldiçoar e foge pelo esgoto na forma de rato."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "faro",
-       "descricao": "de rato; Prontidão (faro) +2"
-      },
-      {
-       "nome": "visão e audição",
-       "descricao": "apuradas"
-      }
-     ],
-     "segundoTamanho": null,
-     "formaPrincipal": {
-      "id": "humana",
-      "nome": "forma humana"
-     },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 3
-     },
-     "tecnicas": [],
-     "artes": [],
-     "lore": [
-      {
-       "titulo": "Sociedade nas Sombras",
-       "texto": "Vivem em guildas escondidas sob cidades, misturados entre ladrões e contrabandistas comuns."
-      },
-      {
-       "titulo": "Maldição que se Espalha",
-       "texto": "Cada mordida não curada é uma sentença: a vítima pode em breve se tornar outra criatura como ela, sem nunca ter escolhido esse destino."
-      },
-      {
-       "titulo": "Disfarce Perfeito",
-       "texto": "Durante o dia, muitos vivem vidas comuns como mercadores, ladrões ou guardas, escondendo a fera sob a pele humana."
-      }
-     ]
-    }
-   },
-   {
-    "id": "rato",
-    "nome": "forma de rato",
-    "criatura": {
-     "id": "homem-rato-forma-humana",
-     "nome": "Homem-Rato",
-     "nomeIngles": "Lycanthrope, Wererat",
-     "categoria": "humanoide",
-     "categoriaNome": "Humanoide",
-     "tipo": "soldado",
-     "conceito": "Humanoide Pequeno",
-     "descricao": "Homem-rato das guildas escondidas sob a cidade: de dia vive como gente comum, à noite ataca de surpresa com espada e dentes. Só a prata o fere de verdade, e quem sobrevive à mordida pode virar homem-rato.",
-     "tags": [
-      "humanoide",
-      "centelha"
-     ],
-     "ameaca": 2,
-     "centelha": 2,
-     "tamanho": "Pequeno",
-     "corpo": {
-      "postura": "quadrúpede",
-      "apoio": "quadrupede",
-      "altura": 0.28,
-      "largura": 0.21,
-      "profundidade": null,
-      "comprimento": 1.4,
-      "massa": 12.38,
-      "area": 0.1475,
-      "comprimentoSemCauda": 0.75,
-      "posturaDoTamanho": "de lado",
-      "linhaPV": "acima",
-      "medida": "0.28 m de altura, 1.4 m de comprimento",
-      "peso": "12.38 kg"
-     },
      "ecologia": {
       "tipo": "humanoide",
       "terreno": [
@@ -23909,10 +23060,43 @@
        "temperado"
       ]
      },
+     "corpo": {
+      "postura": "bípede, de pé",
+      "apoio": "bipede",
+      "altura": 1.7,
+      "largura": 0.42,
+      "profundidade": 0.21,
+      "comprimento": null,
+      "massa": 65,
+      "area": 0.63,
+      "medida": "1.7 m de altura",
+      "peso": "65 kg"
+     },
+     "formas": [],
+     "formaPrincipal": {
+      "id": "humana",
+      "nome": "forma humana"
+     },
+     "segundoTamanho": null
+    }
+   },
+   {
+    "id": "rato",
+    "nome": "forma de rato",
+    "criatura": {
+     "id": "homem-rato-forma-humana",
+     "nome": "Homem-Rato",
+     "nomeIngles": "Lycanthrope, Wererat",
+     "ameaca": 2,
+     "centelha": 2,
+     "categoria": "humanoide",
+     "categoriaNome": "Humanoide",
+     "tamanho": "Pequeno",
      "imagens": [
       "bestiario/homem-rato-forma-humana_criatura.webp"
      ],
      "semImagem": false,
+     "tipo": "soldado",
      "atributos": {
       "forca": 2,
       "destreza": 3,
@@ -23924,6 +23108,15 @@
       "perspicacia": 2,
       "compostura": 2
      },
+     "virtudes": {
+      "bravura": 3,
+      "compaixao": 2,
+      "conviccao": 3,
+      "temperanca": 2,
+      "valor": 3
+     },
+     "vontade": 7,
+     "aparencia": 3,
      "habilidades": {
       "prontidao": 2,
       "furtividade": 3,
@@ -23940,17 +23133,11 @@
       "escalada": 2,
       "musculatura": 0
      },
-     "vontade": 7,
-     "aparencia": 3,
-     "virtudes": {
-      "bravura": 3,
-      "compaixao": 2,
-      "conviccao": 3,
-      "temperanca": 2,
-      "valor": 3
-     },
+     "artes": [],
+     "tecnicas": [],
      "combate": {
       "pv": 30,
+      "energia": 12,
       "defesa": 10,
       "defesaSocial": 4,
       "defesaMental": 16,
@@ -23980,75 +23167,36 @@
        }
       ]
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Forma mutável",
-       "descricao": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. ativacao: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. duracao: até ele voltar com outra ação; na lua cheia, até o sol nascer. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade fora da lua cheia",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "Mordida maldita",
-       "descricao": "quem sobrevive à mordida e não trata a ferida até o fim do dia vira homem-rato na próxima lua cheia. ativacao: a Mordida que fere (1 de dano ou mais depois da Absorção). duracao: permanente, se pegar. alcance: o do corpo a corpo. area: um alvo. dano: o da Mordida. resistencia: corpo, Vigor + Resistência contra Dificuldade 10; a maldição só não pega se a ferida for tratada a tempo. limiteDeUso: um por golpe",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "Ataque furtivo",
-       "descricao": "o golpe entra onde o alvo não guarda. ativacao: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. duracao: instantânea. alcance: o do corpo a corpo. area: um alvo. dano: +1d6 no dano do golpe. resistencia: nenhum. limiteDeUso: um por golpe",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "Esquiva sobrenatural",
-       "descricao": "se passa na esquiva, não leva dano nenhum, em vez de metade. ativacao: um efeito de área que pede esquiva. duracao: instantânea. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: esquiva, a do próprio efeito. limiteDeUso: nenhum",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "Afinidade com ratos",
-       "descricao": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. ativacao: uma ação, Velocidade 6, um guincho ou um gesto. duracao: até o fim da cena. alcance: onde o guincho é ouvido. area: os ratos comuns e gigantes que o ouvem. dano: nenhum. resistencia: nenhum. limiteDeUso: um enxame ou até 6 ratos gigantes por vez",
-       "classe": "regra da ficha"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "ladrão da guilda",
-       "texto": "de dia é gente comum; à noite ataca de surpresa no beco, morde para amaldiçoar e foge pelo esgoto na forma de rato."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "faro",
-       "descricao": "de rato; Prontidão (faro) +2"
-      },
-      {
-       "nome": "visão e audição",
-       "descricao": "apuradas"
-      }
-     ],
-     "segundoTamanho": null,
+     "ecologia": {
+      "tipo": "humanoide",
+      "terreno": [
+       "urbano"
+      ],
+      "clima": [
+       "temperado"
+      ]
+     },
+     "corpo": {
+      "postura": "quadrúpede",
+      "apoio": "quadrupede",
+      "altura": 0.28,
+      "largura": 0.21,
+      "profundidade": null,
+      "comprimento": 1.4,
+      "massa": 12.38,
+      "area": 0.1475,
+      "comprimentoSemCauda": 0.75,
+      "posturaDoTamanho": "de lado",
+      "linhaPV": "acima",
+      "medida": "0.28 m de altura, 1.4 m de comprimento",
+      "peso": "12.38 kg"
+     },
+     "formas": [],
      "formaPrincipal": {
       "id": "rato",
       "nome": "forma de rato"
      },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 7
-     },
-     "tecnicas": [],
-     "artes": [],
-     "lore": [
-      {
-       "titulo": "Sociedade nas Sombras",
-       "texto": "Vivem em guildas escondidas sob cidades, misturados entre ladrões e contrabandistas comuns."
-      },
-      {
-       "titulo": "Maldição que se Espalha",
-       "texto": "Cada mordida não curada é uma sentença: a vítima pode em breve se tornar outra criatura como ela, sem nunca ter escolhido esse destino."
-      },
-      {
-       "titulo": "Disfarce Perfeito",
-       "texto": "Durante o dia, muitos vivem vidas comuns como mercadores, ladrões ou guardas, escondendo a fera sob a pele humana."
-      }
-     ]
+     "segundoTamanho": null
     }
    }
   ],
@@ -24109,6 +23257,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 5,
+   "energia": 7,
    "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 12,
@@ -24225,6 +23374,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 13,
    "defesa": 17,
    "defesaSocial": 12,
    "defesaMental": 19,
@@ -24336,6 +23486,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 2,
+   "energia": 4,
    "defesa": 14,
    "defesaSocial": 8,
    "defesaMental": 8,
@@ -24450,6 +23601,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 6,
    "defesa": 8,
    "defesaSocial": 10,
    "defesaMental": 9,
@@ -24568,6 +23720,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 26,
+   "energia": 5,
    "defesa": 10,
    "defesaSocial": 8,
    "defesaMental": 7,
@@ -24677,6 +23830,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 17,
+   "energia": 5,
    "defesa": 10,
    "defesaSocial": 6,
    "defesaMental": 9,
@@ -24792,6 +23946,7 @@
   ],
   "combate": {
    "pv": 110,
+   "energia": 32,
    "defesa": 4,
    "defesaSocial": 12,
    "defesaMental": 36,
@@ -24907,6 +24062,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 17,
    "defesa": 18,
    "defesaSocial": 10,
    "defesaMental": 21,
@@ -25025,6 +24181,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 70,
+   "energia": 24,
    "defesa": 10,
    "defesaSocial": 12,
    "defesaMental": 26,
@@ -25142,6 +24299,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 18,
+   "energia": 11,
    "defesa": 12,
    "defesaSocial": 12,
    "defesaMental": 15,
@@ -25265,6 +24423,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 5,
    "defesa": 10,
    "defesaSocial": 6,
    "defesaMental": 8,
@@ -25385,6 +24544,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 43,
+   "energia": 20,
    "defesa": 20,
    "defesaSocial": 14,
    "defesaMental": 27,
@@ -25493,6 +24653,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 6,
    "defesa": 14,
    "defesaSocial": 10,
    "defesaMental": 9,
@@ -25610,6 +24771,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 7,
    "defesa": 14,
    "defesaSocial": 10,
    "defesaMental": 9,
@@ -25728,6 +24890,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 6,
    "defesa": 14,
    "defesaSocial": 10,
    "defesaMental": 9,
@@ -25847,6 +25010,7 @@
   ],
   "combate": {
    "pv": 37,
+   "energia": 6,
    "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -25963,6 +25127,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 5,
    "defesa": 14,
    "defesaSocial": 10,
    "defesaMental": 8,
@@ -26084,6 +25249,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 65,
+   "energia": 5,
    "defesa": 2,
    "defesaSocial": 6,
    "defesaMental": 4,
@@ -26158,6 +25324,7 @@
    "bestiario/lich_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 23,
   "tipo": "chefe",
   "atributos": {
    "forca": 2,
@@ -26218,6 +25385,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 30,
+   "energia": 24,
    "defesa": 12,
    "defesaSocial": 16,
    "defesaMental": 28,
@@ -26293,6 +25461,7 @@
    "bestiario/lillend_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 17,
   "tipo": "elite",
   "atributos": {
    "forca": 7,
@@ -26347,6 +25516,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 58,
+   "energia": 20,
    "defesa": 19,
    "defesaSocial": 22,
    "defesaMental": 26,
@@ -26468,6 +25638,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 49,
+   "energia": 8,
    "defesa": 2,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -26581,6 +25752,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 105,
+   "energia": 29,
    "defesa": 22,
    "defesaSocial": 14,
    "defesaMental": 33,
@@ -26707,6 +25879,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 105,
+   "energia": 31,
    "defesa": 24,
    "defesaSocial": 16,
    "defesaMental": 36,
@@ -26838,6 +26011,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 90,
+   "energia": 27,
    "defesa": 14,
    "defesaSocial": 12,
    "defesaMental": 32,
@@ -26966,6 +26140,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 12,
    "defesa": 10,
    "defesaSocial": 8,
    "defesaMental": 16,
@@ -27039,45 +26214,16 @@
      "id": "lobisomem",
      "nome": "Lobisomem",
      "nomeIngles": "Lycanthrope, Werewolf",
-     "categoria": "humanoide",
-     "categoriaNome": "Humanoide",
-     "tipo": "soldado",
-     "conceito": "Humanoide Médio",
-     "descricao": "Homem-lobo de pé, mais alto que um homem: morde, rasga e derruba. De dia é gente comum, e troca de forma quando quer; na lua cheia, sem querer. Só a prata o fere de verdade, e quem sobrevive à mordida pode virar lobisomem.",
-     "tags": [
-      "humanoide",
-      "centelha"
-     ],
      "ameaca": 2,
      "centelha": 2,
+     "categoria": "humanoide",
+     "categoriaNome": "Humanoide",
      "tamanho": "Médio",
-     "corpo": {
-      "postura": "bípede, de pé, um pouco curvado",
-      "apoio": "bipede",
-      "altura": 1.8,
-      "largura": 0.45,
-      "profundidade": 0.23,
-      "comprimento": null,
-      "massa": 80,
-      "area": 0.72,
-      "posturaDoTamanho": "de frente",
-      "medida": "1.8 m de altura",
-      "peso": "80 kg"
-     },
-     "ecologia": {
-      "tipo": "humanoide",
-      "terreno": [
-       "floresta",
-       "planície"
-      ],
-      "clima": [
-       "temperado"
-      ]
-     },
      "imagens": [
       "bestiario/lobisomem_criatura.webp"
      ],
      "semImagem": false,
+     "tipo": "soldado",
      "atributos": {
       "forca": 4,
       "destreza": 3,
@@ -27089,6 +26235,15 @@
       "perspicacia": 2,
       "compostura": 2
      },
+     "virtudes": {
+      "bravura": 4,
+      "compaixao": 2,
+      "conviccao": 3,
+      "temperanca": 1,
+      "valor": 4
+     },
+     "vontade": 7,
+     "aparencia": 4,
      "habilidades": {
       "prontidao": 2,
       "furtividade": 2,
@@ -27105,17 +26260,11 @@
       "labia": 1,
       "musculatura": 0
      },
-     "vontade": 7,
-     "aparencia": 4,
-     "virtudes": {
-      "bravura": 4,
-      "compaixao": 2,
-      "conviccao": 3,
-      "temperanca": 1,
-      "valor": 4
-     },
+     "artes": [],
+     "tecnicas": [],
      "combate": {
       "pv": 37,
+      "energia": 11,
       "defesa": 10,
       "defesaSocial": 8,
       "defesaMental": 16,
@@ -27145,91 +26294,6 @@
        }
       ]
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Forma mutável",
-       "descricao": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. ativacao: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. duracao: até ele voltar com outra ação; na lua cheia, até o sol nascer. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade fora da lua cheia",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "Firme contra o medo",
-       "descricao": "o pavor pega menos nele que na maioria dos guerreiros. ativacao: um efeito de medo o tem como alvo. duracao: a do efeito. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: mente, com +2 na Defesa Mental contra medo. limiteDeUso: nenhum",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "Afinidade com lobos",
-       "descricao": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. ativacao: uma ação, Velocidade 6, um uivo ou um gesto. duracao: até o fim da cena. alcance: onde o uivo é ouvido. area: os lobos comuns e atrozes que o ouvem. dano: nenhum. resistencia: nenhum. limiteDeUso: até 6 lobos por vez",
-       "classe": "regra da ficha"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "homem comum de dia",
-       "texto": "esconde o que é; de dia, volta a ser homem comum de espada."
-      }
-     ],
-     "sentidos": [],
-     "segundoTamanho": null,
-     "formaPrincipal": {
-      "id": "humana",
-      "nome": "forma humana"
-     },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 3
-     },
-     "tecnicas": [],
-     "artes": [],
-     "lore": [
-      {
-       "titulo": "Fúria sob a Lua",
-       "texto": "Mesmo controlando a transformação, carrega uma sede de sangue que aflora quando a lua cheia surge no céu."
-      },
-      {
-       "titulo": "Maldição Contagiosa",
-       "texto": "Qualquer sobrevivente mordido e não curado corre o risco de se tornar um lobisomem na próxima lua cheia."
-      },
-      {
-       "titulo": "Caçador entre os Seus",
-       "texto": "Muitos vivem escondidos em vilarejos comuns, caçando sozinhos ou em pequenos bandos nas noites sem lua."
-      }
-     ]
-    }
-   },
-   {
-    "id": "lobo",
-    "nome": "forma de lobo",
-    "criatura": {
-     "id": "lobisomem",
-     "nome": "Lobisomem",
-     "nomeIngles": "Lycanthrope, Werewolf",
-     "categoria": "humanoide",
-     "categoriaNome": "Humanoide",
-     "tipo": "soldado",
-     "conceito": "Humanoide Médio",
-     "descricao": "Homem-lobo de pé, mais alto que um homem: morde, rasga e derruba. De dia é gente comum, e troca de forma quando quer; na lua cheia, sem querer. Só a prata o fere de verdade, e quem sobrevive à mordida pode virar lobisomem.",
-     "tags": [
-      "humanoide",
-      "centelha"
-     ],
-     "ameaca": 2,
-     "centelha": 2,
-     "tamanho": "Médio",
-     "corpo": {
-      "postura": "quadrúpede",
-      "apoio": "quadrupede",
-      "altura": 0.95,
-      "largura": 0.35,
-      "profundidade": null,
-      "comprimento": 2.12,
-      "massa": 80,
-      "area": 0.51,
-      "posturaDoTamanho": "de lado",
-      "comprimentoSemCauda": 1.35,
-      "medida": "0.95 m de altura, 2.12 m de comprimento",
-      "peso": "80 kg"
-     },
      "ecologia": {
       "tipo": "humanoide",
       "terreno": [
@@ -27240,10 +26304,44 @@
        "temperado"
       ]
      },
+     "corpo": {
+      "postura": "bípede, de pé, um pouco curvado",
+      "apoio": "bipede",
+      "altura": 1.8,
+      "largura": 0.45,
+      "profundidade": 0.23,
+      "comprimento": null,
+      "massa": 80,
+      "area": 0.72,
+      "posturaDoTamanho": "de frente",
+      "medida": "1.8 m de altura",
+      "peso": "80 kg"
+     },
+     "formas": [],
+     "formaPrincipal": {
+      "id": "humana",
+      "nome": "forma humana"
+     },
+     "segundoTamanho": null
+    }
+   },
+   {
+    "id": "lobo",
+    "nome": "forma de lobo",
+    "criatura": {
+     "id": "lobisomem",
+     "nome": "Lobisomem",
+     "nomeIngles": "Lycanthrope, Werewolf",
+     "ameaca": 2,
+     "centelha": 2,
+     "categoria": "humanoide",
+     "categoriaNome": "Humanoide",
+     "tamanho": "Médio",
      "imagens": [
       "bestiario/lobisomem_criatura.webp"
      ],
      "semImagem": false,
+     "tipo": "soldado",
      "atributos": {
       "forca": 4,
       "destreza": 4,
@@ -27255,6 +26353,15 @@
       "perspicacia": 2,
       "compostura": 2
      },
+     "virtudes": {
+      "bravura": 4,
+      "compaixao": 2,
+      "conviccao": 3,
+      "temperanca": 1,
+      "valor": 4
+     },
+     "vontade": 7,
+     "aparencia": 6,
      "habilidades": {
       "prontidao": 2,
       "furtividade": 2,
@@ -27271,17 +26378,11 @@
       "labia": 1,
       "musculatura": 0
      },
-     "vontade": 7,
-     "aparencia": 6,
-     "virtudes": {
-      "bravura": 4,
-      "compaixao": 2,
-      "conviccao": 3,
-      "temperanca": 1,
-      "valor": 4
-     },
+     "artes": [],
+     "tecnicas": [],
      "combate": {
       "pv": 37,
+      "energia": 11,
       "defesa": 12,
       "defesaSocial": 8,
       "defesaMental": 16,
@@ -27311,70 +26412,36 @@
        }
       ]
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Forma mutável",
-       "descricao": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. ativacao: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. duracao: até ele voltar com outra ação; na lua cheia, até o sol nascer. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade fora da lua cheia",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "Mordida que derruba e amaldiçoa",
-       "descricao": "o alvo cai no chão; e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia. ativacao: a Mordida que fere. duracao: a queda é instantânea; a maldição, permanente se pegar. alcance: o do corpo a corpo. area: um alvo. dano: o da Mordida. resistencia: corpo, contra a jogada da mordida; quem passa fica de pé, e a maldição só não pega se a ferida for tratada a tempo. limiteDeUso: um por golpe",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "Firme contra o medo",
-       "descricao": "o pavor pega menos nele que na maioria dos guerreiros. ativacao: um efeito de medo o tem como alvo. duracao: a do efeito. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: mente, com +2 na Defesa Mental contra medo. limiteDeUso: nenhum",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "Afinidade com lobos",
-       "descricao": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. ativacao: uma ação, Velocidade 6, um uivo ou um gesto. duracao: até o fim da cena. alcance: onde o uivo é ouvido. area: os lobos comuns e atrozes que o ouvem. dano: nenhum. resistencia: nenhum. limiteDeUso: até 6 lobos por vez",
-       "classe": "regra da ficha"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "caça em bando",
-       "texto": "cerca a presa com os lobos, morde para derrubar e rasga com as garras quem está no chão."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "faro",
-       "descricao": "de lobo, que segue o rastro de horas"
-      },
-      {
-       "nome": "visão e audição",
-       "descricao": "apuradas"
-      }
-     ],
-     "segundoTamanho": null,
+     "ecologia": {
+      "tipo": "humanoide",
+      "terreno": [
+       "floresta",
+       "planície"
+      ],
+      "clima": [
+       "temperado"
+      ]
+     },
+     "corpo": {
+      "postura": "quadrúpede",
+      "apoio": "quadrupede",
+      "altura": 0.95,
+      "largura": 0.35,
+      "profundidade": null,
+      "comprimento": 2.12,
+      "massa": 80,
+      "area": 0.51,
+      "posturaDoTamanho": "de lado",
+      "comprimentoSemCauda": 1.35,
+      "medida": "0.95 m de altura, 2.12 m de comprimento",
+      "peso": "80 kg"
+     },
+     "formas": [],
      "formaPrincipal": {
       "id": "lobo",
       "nome": "forma de lobo"
      },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 7
-     },
-     "tecnicas": [],
-     "artes": [],
-     "lore": [
-      {
-       "titulo": "Fúria sob a Lua",
-       "texto": "Mesmo controlando a transformação, carrega uma sede de sangue que aflora quando a lua cheia surge no céu."
-      },
-      {
-       "titulo": "Maldição Contagiosa",
-       "texto": "Qualquer sobrevivente mordido e não curado corre o risco de se tornar um lobisomem na próxima lua cheia."
-      },
-      {
-       "titulo": "Caçador entre os Seus",
-       "texto": "Muitos vivem escondidos em vilarejos comuns, caçando sozinhos ou em pequenos bandos nas noites sem lua."
-      }
-     ]
+     "segundoTamanho": null
     }
    }
   ],
@@ -27440,6 +26507,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 5,
    "defesa": 12,
    "defesaSocial": 10,
    "defesaMental": 7,
@@ -27553,6 +26621,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 5,
    "defesa": 12,
    "defesaSocial": 8,
    "defesaMental": 6,
@@ -27664,6 +26733,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 18,
    "defesa": 10,
    "defesaSocial": 6,
    "defesaMental": 20,
@@ -27788,6 +26858,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 19,
+   "energia": 6,
    "defesa": 16,
    "defesaSocial": 6,
    "defesaMental": 7,
@@ -27908,6 +26979,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 6,
+   "energia": 5,
    "defesa": 12,
    "defesaSocial": 10,
    "defesaMental": 8,
@@ -28025,6 +27097,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 5,
    "defesa": 12,
    "defesaSocial": 10,
    "defesaMental": 8,
@@ -28144,6 +27217,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 55,
+   "energia": 5,
    "defesa": 6,
    "defesaSocial": 8,
    "defesaMental": 8,
@@ -28262,6 +27336,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 6,
+   "energia": 4,
    "defesa": 14,
    "defesaSocial": 8,
    "defesaMental": 7,
@@ -28329,6 +27404,7 @@
    "bestiario/mago-de-batalha_pdm.webp"
   ],
   "semImagem": false,
+  "mana": 14,
   "tipo": "chefe",
   "atributos": {
    "forca": 2,
@@ -28378,6 +27454,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 13,
    "defesa": 18,
    "defesaSocial": 4,
    "defesaMental": 21,
@@ -28486,6 +27563,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 90,
+   "energia": 9,
    "defesa": 9,
    "defesaSocial": 10,
    "defesaMental": 7,
@@ -28604,6 +27682,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 8,
    "defesa": 10,
    "defesaSocial": 4,
    "defesaMental": 10,
@@ -28733,6 +27812,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 28,
+   "energia": 8,
    "defesa": 12,
    "defesaSocial": 10,
    "defesaMental": 11,
@@ -28847,6 +27927,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 22,
    "defesa": 14,
    "defesaSocial": 18,
    "defesaMental": 29,
@@ -28910,48 +27991,16 @@
      "id": "marid",
      "nome": "Marid",
      "nomeIngles": "Marid",
-     "categoria": "elemental",
-     "categoriaNome": "Elemental",
-     "tipo": "chefe",
-     "conceito": "Elemental Grande",
-     "descricao": "O mais forte dos gênios, do plano da água: 4,9 m, dentes de pérola, a força das correntes no braço. Nada mais rápido do que anda, cega com um jato de água, vira redemoinho debaixo d'água e assume a forma de gente, de gigante ou de elemental. Muitos trocaram a guerra pela dança e pelas histórias.",
-     "tags": [
-      "elemental",
-      "centelha"
-     ],
      "ameaca": 5,
      "centelha": 5,
+     "categoria": "elemental",
+     "categoriaNome": "Elemental",
      "tamanho": "Grande",
-     "corpo": {
-      "postura": "bípede, de pé; voador e nadador",
-      "apoio": "bipede",
-      "altura": 4.9,
-      "largura": 1.23,
-      "profundidade": 0.63,
-      "comprimento": null,
-      "massa": 1130,
-      "area": 5.34,
-      "posturaDoTamanho": "de pé, sem o vórtice",
-      "segundoTamanho": {
-       "area": 15.01,
-       "posturaDoTamanho": "com o vórtice ativo, debaixo d'água"
-      },
-      "medida": "4.9 m de altura",
-      "peso": "1130 kg"
-     },
-     "ecologia": {
-      "tipo": "elemental",
-      "terreno": [
-       "aquático"
-      ],
-      "clima": [
-       "extraplanar"
-      ]
-     },
      "imagens": [
       "bestiario/marid_criatura.webp"
      ],
      "semImagem": false,
+     "tipo": "chefe",
      "atributos": {
       "forca": 9,
       "destreza": 5,
@@ -28963,6 +28012,15 @@
       "perspicacia": 4,
       "compostura": 5
      },
+     "virtudes": {
+      "bravura": 4,
+      "compaixao": 1,
+      "conviccao": 3,
+      "temperanca": 2,
+      "valor": 4
+     },
+     "vontade": 10,
+     "aparencia": 5,
      "habilidades": {
       "prontidao": 2,
       "furtividade": 0,
@@ -28982,17 +28040,11 @@
       "contacao-de-historias": 2,
       "musculatura": 0
      },
-     "vontade": 10,
-     "aparencia": 5,
-     "virtudes": {
-      "bravura": 4,
-      "compaixao": 1,
-      "conviccao": 3,
-      "temperanca": 2,
-      "valor": 4
-     },
+     "artes": [],
+     "tecnicas": [],
      "combate": {
       "pv": 54,
+      "energia": 22,
       "defesa": 14,
       "defesaSocial": 18,
       "defesaMental": 29,
@@ -29022,76 +28074,38 @@
        }
       ]
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Domínio das águas",
-       "descricao": "golpeia com a força das correntes quando ele e o alvo estão na água ou tocando nela, e luta pior em terra firme: +2 no dano da Pancada de maré quando os dois tocam a água; −2 no ataque quando ele está em terra seca, longe da água. ativacao: nenhuma; sempre ativo. duracao: permanente. alcance: o próprio corpo. area: não se aplica. dano: o +2 na Pancada. resistencia: nenhum. limiteDeUso: nenhum",
-       "classe": "regra da ficha"
+     "ecologia": {
+      "tipo": "elemental",
+      "terreno": [
+       "aquático"
+      ],
+      "clima": [
+       "extraplanar"
+      ]
+     },
+     "corpo": {
+      "postura": "bípede, de pé; voador e nadador",
+      "apoio": "bipede",
+      "altura": 4.9,
+      "largura": 1.23,
+      "profundidade": 0.63,
+      "comprimento": null,
+      "massa": 1130,
+      "area": 5.34,
+      "posturaDoTamanho": "de pé, sem o vórtice",
+      "segundoTamanho": {
+       "area": 15.01,
+       "posturaDoTamanho": "com o vórtice ativo, debaixo d'água"
       },
-      {
-       "nome": "Fúria das marés",
-       "descricao": "dispara um jato de água que fere e cega; o alvo que não passa fica Cego. ativacao: uma ação, Velocidade 7. duracao: o dano é instantâneo; a cegueira vai até o fim da próxima ação do alvo. alcance: 18 m. area: um alvo. dano: 3d6 + Centelha, Impacto. resistencia: esquiva, contra Dificuldade 15 (10 + Centelha 5); quem passa não leva o dano nem fica Cego. limiteDeUso: uma vez por cena",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "agua",
-        "nivel": 4
-       }
-      },
-      {
-       "nome": "Vórtice aquático",
-       "descricao": "vira um redemoinho de água turbulenta (Segundo Tamanho); quem está na área é puxado para dentro e fica Agarrado e Confuso enquanto estiver lá, até o redemoinho acabar ou até vencer a manobra para se soltar. ativacao: uma ação, Velocidade 6, só debaixo d'água. duracao: até 18 Ticks, ou até ele desfazer com outra ação. alcance: o próprio corpo, que se move enquanto gira. area: quem está a até 3 m dele. dano: 2d6 + Centelha, Impacto, a cada 6 Ticks, a quem está dentro. resistencia: esquiva, contra Força + Briga dele; quem passa não é puxado. limiteDeUso: uma vez por cena",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "agua",
-        "nivel": 4
-       }
-      },
-      {
-       "nome": "Forma mutável",
-       "descricao": "assume a forma de um elemental da água, de um humano ou de um gigante (a Variante \"disfarce\"), e muda de aparência à vontade; a mente e os números ficam os dele. ativacao: uma ação, Velocidade 6. duracao: até ele desfazer. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "metamorfose",
-        "nivel": 3
-       }
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "artista disfarçado",
-       "texto": "entre gente, como humano ou gigante, evita a briga e conta histórias; se precisa lutar, cega com o jato e volta à forma verdadeira."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "visão e audição",
-       "descricao": "as de um humano; vê debaixo d'água como fora dela"
-      }
-     ],
-     "segundoTamanho": "Enorme",
+      "medida": "4.9 m de altura",
+      "peso": "1130 kg"
+     },
+     "formas": [],
      "formaPrincipal": {
       "id": "disfarce",
       "nome": "disfarce"
      },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 2,
-      "voo": 9,
-      "natacao": 6
-     },
-     "tecnicas": [],
-     "artes": [],
-     "lore": [
-      {
-       "titulo": "Os mais poderosos gênios",
-       "texto": "Ditos possuir a força das correntes oceânicas e dentes de pérola, os marides são os mais fortes de todos os gênios conhecidos."
-      },
-      {
-       "titulo": "Almas de artista",
-       "texto": "Muitos abandonam a guerra para se tornarem dançarinos, contadores de histórias e artistas, para desgosto dos gênios mais sóbrios da terra."
-      }
-     ]
+     "segundoTamanho": "Enorme"
     }
    }
   ],
@@ -29181,6 +28195,7 @@
   ],
   "combate": {
    "pv": 66,
+   "energia": 30,
    "defesa": 33,
    "defesaSocial": 26,
    "defesaMental": 38,
@@ -29302,6 +28317,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 90,
+   "energia": 9,
    "defesa": 9,
    "defesaSocial": 8,
    "defesaMental": 7,
@@ -29420,6 +28436,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 16,
    "defesa": 13,
    "defesaSocial": 8,
    "defesaMental": 21,
@@ -29545,6 +28562,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 80,
+   "energia": 7,
    "defesa": 6,
    "defesaSocial": 8,
    "defesaMental": 6,
@@ -29652,6 +28670,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 18,
+   "energia": 11,
    "defesa": 12,
    "defesaSocial": 6,
    "defesaMental": 16,
@@ -29778,6 +28797,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 9,
    "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 12,
@@ -29891,6 +28911,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 10,
    "defesa": 10,
    "defesaSocial": 6,
    "defesaMental": 14,
@@ -30004,6 +29025,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 50,
+   "energia": 9,
    "defesa": 9,
    "defesaSocial": 10,
    "defesaMental": 12,
@@ -30118,6 +29140,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 12,
+   "energia": 8,
    "defesa": 10,
    "defesaSocial": 8,
    "defesaMental": 12,
@@ -30219,6 +29242,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 17,
    "defesa": 14,
    "defesaSocial": 6,
    "defesaMental": 20,
@@ -30339,6 +29363,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 8,
    "defesa": 14,
    "defesaSocial": 10,
    "defesaMental": 12,
@@ -30451,6 +29476,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 8,
    "defesa": 4,
    "defesaSocial": 4,
    "defesaMental": 10,
@@ -30566,6 +29592,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 1,
+   "energia": 4,
    "defesa": 12,
    "defesaSocial": 8,
    "defesaMental": 6,
@@ -30678,6 +29705,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 28,
+   "energia": 5,
    "defesa": 10,
    "defesaSocial": 8,
    "defesaMental": 7,
@@ -30792,6 +29820,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 46,
+   "energia": 5,
    "defesa": 10,
    "defesaSocial": 6,
    "defesaMental": 8,
@@ -30897,6 +29926,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 11,
    "defesa": 14,
    "defesaSocial": 12,
    "defesaMental": 15,
@@ -31005,6 +30035,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 70,
+   "energia": 6,
    "defesa": 6,
    "defesaSocial": 8,
    "defesaMental": 6,
@@ -31108,6 +30139,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 17,
    "defesa": 4,
    "defesaSocial": 8,
    "defesaMental": 23,
@@ -31224,6 +30256,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 46,
+   "energia": 21,
    "defesa": 14,
    "defesaSocial": 14,
    "defesaMental": 27,
@@ -31308,6 +30341,7 @@
    "bestiario/naga-espirita_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 20,
   "tipo": "chefe",
   "atributos": {
    "forca": 6,
@@ -31369,6 +30403,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 23,
    "defesa": 10,
    "defesaSocial": 18,
    "defesaMental": 30,
@@ -31437,6 +30472,7 @@
   "tamanho": "Médio",
   "imagens": [],
   "semImagem": true,
+  "mana": 20,
   "tipo": "chefe",
   "atributos": {
    "forca": 7,
@@ -31493,6 +30529,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 46,
+   "energia": 23,
    "defesa": 22,
    "defesaSocial": 18,
    "defesaMental": 30,
@@ -31560,6 +30597,7 @@
   "tamanho": "Médio",
   "imagens": [],
   "semImagem": true,
+  "mana": 17,
   "tipo": "chefe",
   "atributos": {
    "forca": 5,
@@ -31616,6 +30654,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 43,
+   "energia": 20,
    "defesa": 20,
    "defesaSocial": 18,
    "defesaMental": 27,
@@ -31729,6 +30768,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 6,
+   "energia": 5,
    "defesa": 12,
    "defesaSocial": 6,
    "defesaMental": 7,
@@ -31852,6 +30892,7 @@
   ],
   "combate": {
    "pv": 90,
+   "energia": 29,
    "defesa": 10,
    "defesaSocial": 24,
    "defesaMental": 36,
@@ -31978,6 +31019,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 85,
+   "energia": 27,
    "defesa": 2,
    "defesaSocial": 18,
    "defesaMental": 31,
@@ -32041,6 +31083,7 @@
    "bestiario/ninfa_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 20,
   "tipo": "elite",
   "atributos": {
    "forca": 2,
@@ -32111,6 +31154,7 @@
   ],
   "combate": {
    "pv": 34,
+   "energia": 21,
    "defesa": 20,
    "defesaSocial": 22,
    "defesaMental": 30,
@@ -32220,6 +31264,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 13,
    "defesa": 15,
    "defesaSocial": 12,
    "defesaMental": 19,
@@ -32320,6 +31365,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 5,
    "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -32428,6 +31474,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 50,
+   "energia": 7,
    "defesa": 4,
    "defesaSocial": 6,
    "defesaMental": 9,
@@ -32537,6 +31584,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 22,
    "defesa": 12,
    "defesaSocial": 18,
    "defesaMental": 29,
@@ -32594,46 +31642,16 @@
      "id": "ogro-mago-oni",
      "nome": "Ogro Mago (Oni)",
      "nomeIngles": "Ogre Mage",
-     "categoria": "gigante",
-     "categoriaNome": "Gigante",
-     "tipo": "chefe",
-     "conceito": "Gigante Médio",
-     "descricao": "Ogro de outro plano, de pele azul e chifres, que se passa por humano sedutor ou nobre elegante e engana vilas inteiras por anos. Voa, fica invisível, vira névoa, sopra frio e põe gente para dormir; as feridas fecham, a não ser as do fogo e do ácido. Despreza a força bruta, mas bate como um ogro.",
-     "tags": [
-      "gigante",
-      "centelha"
-     ],
      "ameaca": 5,
      "centelha": 5,
+     "categoria": "gigante",
+     "categoriaNome": "Gigante",
      "tamanho": "Médio",
-     "corpo": {
-      "postura": "bípede, de pé; voador",
-      "apoio": "bipede",
-      "altura": 2.7,
-      "largura": 0.68,
-      "profundidade": 0.35,
-      "comprimento": null,
-      "massa": 269,
-      "area": 1.62,
-      "posturaDoTamanho": "de frente",
-      "tamanhoEscolhido": "medio",
-      "medida": "2.7 m de altura",
-      "peso": "269 kg"
-     },
-     "ecologia": {
-      "tipo": "gigante",
-      "terreno": [
-       "montanha",
-       "subterrâneo"
-      ],
-      "clima": [
-       "temperado"
-      ]
-     },
      "imagens": [
       "bestiario/ogro-mago-oni_criatura.webp"
      ],
      "semImagem": false,
+     "tipo": "chefe",
      "atributos": {
       "forca": 7,
       "destreza": 4,
@@ -32645,6 +31663,15 @@
       "perspicacia": 5,
       "compostura": 5
      },
+     "virtudes": {
+      "bravura": 6,
+      "compaixao": 1,
+      "conviccao": 5,
+      "temperanca": 1,
+      "valor": 6
+     },
+     "vontade": 10,
+     "aparencia": 8,
      "habilidades": {
       "prontidao": 2,
       "furtividade": 0,
@@ -32663,17 +31690,11 @@
       "voo": 2,
       "musculatura": 3
      },
-     "vontade": 10,
-     "aparencia": 8,
-     "virtudes": {
-      "bravura": 6,
-      "compaixao": 1,
-      "conviccao": 5,
-      "temperanca": 1,
-      "valor": 6
-     },
+     "artes": [],
+     "tecnicas": [],
      "combate": {
       "pv": 54,
+      "energia": 22,
       "defesa": 12,
       "defesaSocial": 18,
       "defesaMental": 29,
@@ -32700,119 +31721,36 @@
        }
       ]
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Regeneração 5",
-       "descricao": "origem sobrenatural; fecha as feridas, exceto o dano de fogo ou ácido",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "fogo e ácido param a regeneração",
-       "descricao": "o dano de fogo ou de ácido não se fecha pela Regeneração. O livro não diz como um dano fica fora da cura nem por quanto tempo. O site não dá fraqueza a fogo nem a ácido",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "Forma gasosa",
-       "descricao": "o corpo vira névoa: Impacto, Corte e Perfuração não o ferem, passa por frestas e flutua devagar; não ataca nem usa outro poder enquanto dura. ativacao: uma ação, Velocidade 6. duracao: 6 Ticks. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: uma vez por cena",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "materia",
-        "nivel": 3
-       }
-      },
-      {
-       "nome": "Invisibilidade",
-       "descricao": "fica Invisível. ativacao: uma ação, Velocidade 6. duracao: até ele atacar ou usar um poder chamativo, e no máximo até o fim da cena. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: uma vez por cena; o site chamava a habilidade de \"à vontade\" e descrevia \"1x por cena\", e vale a descrição. O nível 3 da Ofuscação é o que some da vista mesmo andando",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "ofuscacao",
-        "nivel": 3
-       }
-      },
-      {
-       "nome": "Cone de frio",
-       "descricao": "um sopro de frio que queima a pele e cobre o chão de gelo fino. ativacao: uma ação, Velocidade 7. duracao: instantânea. alcance: 9 m à frente. area: cone de 9 m. dano: 3d6 + Centelha, gelo (o site diz \"dano alto\", sem número). resistencia: esquiva, contra Dificuldade 15 (10 + Centelha 5); quem passa leva metade. limiteDeUso: uma vez por cena",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "gelo",
-        "nivel": 2
-       }
-      },
-      {
-       "nome": "Sono",
-       "descricao": "o alvo cai Inconsciente, dormindo. ativacao: uma ação, Velocidade 6, à vista do alvo. duracao: até o fim da cena, ou até o alvo levar dano ou alguém sacudi-lo. alcance: 9 m. area: um alvo. dano: nenhum. resistencia: mente, contra Influência + Ocultismo dele; quem passa fica acordado. limiteDeUso: uma vez por cena",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "fascinacao",
-        "nivel": 1
-       }
-      },
-      {
-       "nome": "Mudar de forma",
-       "descricao": "assume a forma de um humano, sedutor ou nobre elegante (a Variante \"disfarce\"), e volta à forma verdadeira quando quer; a mente e os números ficam os dele. ativacao: uma ação, Velocidade 6. duracao: até ele desfazer. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "metamorfose",
-        "nivel": 3
-       }
-      },
-      {
-       "nome": "Rosto humano",
-       "descricao": "+2d6 em Manha para se passar por humano (o número do site). ativacao: nenhuma; vale enquanto está disfarçado. duracao: a do disfarce. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum",
-       "classe": "regra da ficha"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "nobre de mentira",
-       "texto": "evita a luta e prefere enganar; descoberto, põe para dormir quem o acusa e volta à forma verdadeira."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "visão e audição",
-       "descricao": "as de um humano"
-      }
-     ],
-     "segundoTamanho": null,
+     "ecologia": {
+      "tipo": "gigante",
+      "terreno": [
+       "montanha",
+       "subterrâneo"
+      ],
+      "clima": [
+       "temperado"
+      ]
+     },
+     "corpo": {
+      "postura": "bípede, de pé; voador",
+      "apoio": "bipede",
+      "altura": 2.7,
+      "largura": 0.68,
+      "profundidade": 0.35,
+      "comprimento": null,
+      "massa": 269,
+      "area": 1.62,
+      "posturaDoTamanho": "de frente",
+      "tamanhoEscolhido": "medio",
+      "medida": "2.7 m de altura",
+      "peso": "269 kg"
+     },
+     "formas": [],
      "formaPrincipal": {
       "id": "disfarce",
       "nome": "disfarce"
      },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 4,
-      "voo": 6
-     },
-     "tecnicas": [],
-     "artes": [],
-     "lore": [
-      {
-       "titulo": "Comportamento",
-       "texto": "Usa metamorfose e invisibilidade para se passar por humano sedutor ou nobre elegante, iludindo vilas inteiras antes de revelar sua verdadeira forma monstruosa."
-      },
-      {
-       "titulo": "Sociedade",
-       "texto": "Prefere agir sozinho ou como senhor de um bando de ogros e goblins menores, tratando-os como servos descartáveis."
-      },
-      {
-       "titulo": "Hábitos",
-       "texto": "Arma esquemas de engano que levam anos para florescer, acumulando riqueza e favores como quem tece uma teia paciente."
-      },
-      {
-       "titulo": "Personalidade",
-       "texto": "Cruel e orgulhoso da própria astúcia, despreza a força bruta como recurso de último caso."
-      },
-      {
-       "titulo": "No mundo de Centelha",
-       "texto": "Nativo de um plano distante, contido em teoria pela Lei que impede os deuses de agir direto, mas ele próprio escapa a essa contenção; sussurra-se que atravessa por rasgos como a Fenda, ou por portais mais antigos e esquecidos nas selvas de Mére."
-      },
-      {
-       "titulo": "Aptidões",
-       "texto": "montaria não · carga sim · tração sim"
-      }
-     ]
+     "segundoTamanho": null
     }
    }
   ],
@@ -32876,6 +31814,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 45,
+   "energia": 6,
    "defesa": 8,
    "defesaSocial": 2,
    "defesaMental": 9,
@@ -32985,6 +31924,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 65,
+   "energia": 7,
    "defesa": 6,
    "defesaSocial": 12,
    "defesaMental": 9,
@@ -33090,6 +32030,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 46,
+   "energia": 11,
    "defesa": 8,
    "defesaSocial": 12,
    "defesaMental": 15,
@@ -33201,6 +32142,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 70,
+   "energia": 7,
    "defesa": 12,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -33315,6 +32257,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 18,
    "defesa": 12,
    "defesaSocial": 6,
    "defesaMental": 21,
@@ -33435,6 +32378,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 46,
+   "energia": 19,
    "defesa": 14,
    "defesaSocial": 6,
    "defesaMental": 22,
@@ -33542,6 +32486,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 18,
    "defesa": 12,
    "defesaSocial": 6,
    "defesaMental": 21,
@@ -33658,6 +32603,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 6,
    "defesa": 8,
    "defesaSocial": 8,
    "defesaMental": 9,
@@ -33767,6 +32713,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 2,
+   "energia": 18,
    "defesa": 20,
    "defesaSocial": 18,
    "defesaMental": 27,
@@ -33844,6 +32791,7 @@
    "bestiario/planetar_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 26,
   "tipo": "chefe",
   "atributos": {
    "forca": 9,
@@ -33906,6 +32854,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 62,
+   "energia": 31,
    "defesa": 22,
    "defesaSocial": 32,
    "defesaMental": 41,
@@ -34029,6 +32978,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 4,
    "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 6,
@@ -34141,6 +33091,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 6,
+   "energia": 4,
    "defesa": 14,
    "defesaSocial": 6,
    "defesaMental": 7,
@@ -34257,6 +33208,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 46,
+   "energia": 5,
    "defesa": 12,
    "defesaSocial": 8,
    "defesaMental": 8,
@@ -34379,6 +33331,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 46,
+   "energia": 5,
    "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 6,
@@ -34499,6 +33452,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 13,
+   "energia": 4,
    "defesa": 6,
    "defesaSocial": 6,
    "defesaMental": 6,
@@ -34609,6 +33563,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 6,
+   "energia": 8,
    "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 12,
@@ -34740,6 +33695,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 24,
+   "energia": 4,
    "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 6,
@@ -34849,6 +33805,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 80,
+   "energia": 7,
    "defesa": 2,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -34961,6 +33918,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 6,
+   "energia": 10,
    "defesa": 14,
    "defesaSocial": 14,
    "defesaMental": 14,
@@ -35081,6 +34039,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 4,
    "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 7,
@@ -35196,6 +34155,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 15,
    "defesa": 11,
    "defesaSocial": 18,
    "defesaMental": 19,
@@ -35335,6 +34295,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 5,
    "defesa": 8,
    "defesaSocial": 6,
    "defesaMental": 7,
@@ -35451,6 +34412,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 1,
+   "energia": 4,
    "defesa": 10,
    "defesaSocial": 4,
    "defesaMental": 6,
@@ -35506,6 +34468,7 @@
    "bestiario/rakshasa_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 20,
   "tipo": "chefe",
   "atributos": {
    "forca": 4,
@@ -35568,6 +34531,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 21,
    "defesa": 14,
    "defesaSocial": 20,
    "defesaMental": 25,
@@ -35629,47 +34593,17 @@
      "id": "rakshasa",
      "nome": "Rakshasa",
      "nomeIngles": "Rakshasa",
-     "categoria": "outsider",
-     "categoriaNome": "Extraplanar",
-     "tipo": "chefe",
-     "conceito": "Extraplanar Médio",
-     "descricao": "Fera de cabeça de tigre que vive décadas disfarçada de nobre, mercador ou sacerdote, lendo pensamentos e tecendo intrigas. Conjura ilusões e encantos, e só mostra as garras quando a vítima já não tem saída.",
-     "tags": [
-      "outsider",
-      "centelha",
-      "mágico",
-      "arcano"
-     ],
      "ameaca": 5,
      "centelha": 5,
+     "categoria": "outsider",
+     "categoriaNome": "Extraplanar",
      "tamanho": "Médio",
-     "corpo": {
-      "postura": "bípede, de pé",
-      "apoio": "bipede",
-      "altura": 1.8,
-      "largura": 0.45,
-      "profundidade": 0.23,
-      "comprimento": null,
-      "massa": 80,
-      "area": 0.72,
-      "medida": "1.8 m de altura",
-      "peso": "80 kg"
-     },
-     "ecologia": {
-      "tipo": "outsider",
-      "terreno": [
-       "selva",
-       "urbano"
-      ],
-      "clima": [
-       "tropical",
-       "temperado"
-      ]
-     },
      "imagens": [
       "bestiario/rakshasa_criatura.webp"
      ],
      "semImagem": false,
+     "mana": 20,
+     "tipo": "chefe",
      "atributos": {
       "forca": 4,
       "destreza": 5,
@@ -35681,6 +34615,15 @@
       "perspicacia": 4,
       "compostura": 4
      },
+     "virtudes": {
+      "bravura": 6,
+      "compaixao": 1,
+      "conviccao": 5,
+      "temperanca": 1,
+      "valor": 6
+     },
+     "vontade": 10,
+     "aparencia": 6,
      "habilidades": {
       "prontidao": 1,
       "furtividade": 4,
@@ -35701,17 +34644,28 @@
       "labia": 3,
       "musculatura": 2
      },
-     "vontade": 10,
-     "aparencia": 6,
-     "virtudes": {
-      "bravura": 6,
-      "compaixao": 1,
-      "conviccao": 5,
-      "temperanca": 1,
-      "valor": 6
-     },
+     "artes": [
+      {
+       "id": "fascinacao",
+       "nivel": 4
+      },
+      {
+       "id": "adivinhacao",
+       "nivel": 2
+      },
+      {
+       "id": "materia",
+       "nivel": 3
+      },
+      {
+       "id": "protecao",
+       "nivel": 4
+      }
+     ],
+     "tecnicas": [],
      "combate": {
       "pv": 40,
+      "energia": 21,
       "defesa": 14,
       "defesaSocial": 20,
       "defesaMental": 25,
@@ -35742,109 +34696,35 @@
        }
       ]
      },
-     "habilidadesEspeciais": [
-      {
-       "nome": "Mudar de forma",
-       "descricao": "assume o corpo, o rosto e a voz de qualquer humanoide de Tamanho perto do dele; os números ficam os dele; sem magia, ninguém vê a troca. ativacao: uma ação, Velocidade 6. duracao: até ele desfazer, ou até cair inconsciente. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "materia",
-        "nivel": 3
-       }
-      },
-      {
-       "nome": "Ler pensamentos",
-       "descricao": "ouve os pensamentos de superfície do alvo e descobre uma intenção ou um segredo dele. ativacao: uma ação, Velocidade 6, olhando o alvo. duracao: enquanto se concentra, até o fim da cena. alcance: 18 m. area: um alvo. dano: nenhum. resistencia: mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem. limiteDeUso: à vontade, um alvo por vez",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "adivinhacao",
-        "nivel": 2
-       }
-      },
-      {
-       "nome": "Ilusões",
-       "descricao": "uma imagem com som e cheiro, que se move como ele quer, para enganar ou distrair; quem toca ou desconfia e testa vê através dela. ativacao: uma ação, Velocidade 8. duracao: até o fim da cena, ou enquanto ele mantiver. alcance: 36 m. area: uma imagem de até 6 m de lado. dano: nenhum. resistencia: mente, contra Influência + Manha dele, só para quem desconfia. limiteDeUso: uma ilusão por vez",
-       "classe": "regra da ficha",
-       "base": {
-        "arte": "fascinacao",
-        "nivel": 4
-       }
-      },
-      {
-       "nome": "Magia reversa",
-       "descricao": "soma +4 na Defesa Mental e nas resistências contra Artes. ativacao: nenhuma; sempre ativa. duracao: permanente. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum",
-       "classe": "regra da ficha"
-      },
-      {
-       "nome": "Feitiço que volta",
-       "descricao": "alguns feitiços lançados contra ele produzem o efeito oposto ao que o conjurador queria",
-       "classe": "sem regra ainda"
-      }
-     ],
-     "comoLuta": [
-      {
-       "nome": "trama de corte",
-       "texto": "evita a luta aberta; deixa os servos e as vítimas enganadas na frente, confunde com ilusões e com Fascinação, e só entra com as garras quando a vitória é certa; ferido, muda de forma e some."
-      }
-     ],
-     "sentidos": [
-      {
-       "nome": "visão, audição e faro",
-       "descricao": "os de um humano, com os olhos de tigre"
-      }
-     ],
-     "segundoTamanho": null,
+     "ecologia": {
+      "tipo": "outsider",
+      "terreno": [
+       "selva",
+       "urbano"
+      ],
+      "clima": [
+       "tropical",
+       "temperado"
+      ]
+     },
+     "corpo": {
+      "postura": "bípede, de pé",
+      "apoio": "bipede",
+      "altura": 1.8,
+      "largura": 0.45,
+      "profundidade": 0.23,
+      "comprimento": null,
+      "massa": 80,
+      "area": 0.72,
+      "medida": "1.8 m de altura",
+      "peso": "80 kg"
+     },
+     "formas": [],
      "formaPrincipal": {
       "id": "disfarce",
       "nome": "disfarce"
      },
-     "formas": [],
-     "poderes": [],
-     "locomocao": {
-      "terra": 4
-     },
-     "tecnicas": [],
-     "artes": [
-      {
-       "id": "fascinacao",
-       "nivel": 4
-      },
-      {
-       "id": "adivinhacao",
-       "nivel": 2
-      },
-      {
-       "id": "materia",
-       "nivel": 3
-      },
-      {
-       "id": "protecao",
-       "nivel": 4
-      }
-     ],
-     "mana": 20,
-     "lore": [
-      {
-       "titulo": "Comportamento",
-       "texto": "Predador social por excelência: disfarça-se de nobre, mercador ou sacerdote e manipula suas vítimas ao longo de anos, satisfazendo apetites cruéis sob uma máscara de refinamento impecável."
-      },
-      {
-       "titulo": "Sociedade",
-       "texto": "Raramente forma grupos; quando vários se reúnem, tecem intrigas de corte que se estendem por gerações, cada um fingindo servir ao outro enquanto trama a própria ascensão."
-      },
-      {
-       "titulo": "Personalidade",
-       "texto": "Vaidoso e epicurista, saboreia o luxo e o sofrimento alheio em doses iguais; despreza a violência bruta e prefere a ruína lenta, quase artística."
-      },
-      {
-       "titulo": "Hábitos",
-       "texto": "Veste as melhores sedas, come e bebe com refinamento obsceno, e mantém as palmas viradas ao contrário sempre escondidas sob luvas."
-      },
-      {
-       "titulo": "No mundo de Centelha",
-       "texto": "As igrejas supressoras vigiam feitiços óbvios, mas não a sedução e a mentira: um rakshasa entrincheirado numa corte de Calin ou nas cidades ocultas de Mère passa décadas sem ser descoberto. A Lei que barra os deuses de tocar mortais nunca o alcançou, pois ele jamais foi mortal."
-      }
-     ]
+     "segundoTamanho": null
     }
    }
   ],
@@ -35906,6 +34786,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 28,
+   "energia": 11,
    "defesa": 14,
    "defesaSocial": 4,
    "defesaMental": 15,
@@ -36016,6 +34897,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 30,
+   "energia": 6,
    "defesa": 12,
    "defesaSocial": 10,
    "defesaMental": 8,
@@ -36128,6 +35010,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 30,
+   "energia": 5,
    "defesa": 12,
    "defesaSocial": 10,
    "defesaMental": 6,
@@ -36237,6 +35120,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 75,
+   "energia": 18,
    "defesa": 10,
    "defesaSocial": 16,
    "defesaMental": 17,
@@ -36352,6 +35236,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 75,
+   "energia": 7,
    "defesa": 9,
    "defesaSocial": 6,
    "defesaMental": 9,
@@ -36471,6 +35356,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 46,
+   "energia": 6,
    "defesa": 8,
    "defesaSocial": 8,
    "defesaMental": 10,
@@ -36594,6 +35480,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 12,
    "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 17,
@@ -36716,6 +35603,7 @@
   ],
   "combate": {
    "pv": 40,
+   "energia": 16,
    "defesa": 16,
    "defesaSocial": 12,
    "defesaMental": 22,
@@ -36845,6 +35733,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 28,
+   "energia": 4,
    "defesa": 6,
    "defesaSocial": 6,
    "defesaMental": 4,
@@ -36953,6 +35842,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 3,
+   "energia": 4,
    "defesa": 6,
    "defesaSocial": 10,
    "defesaMental": 6,
@@ -37052,6 +35942,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 13,
    "defesa": 12,
    "defesaSocial": 22,
    "defesaMental": 19,
@@ -37157,6 +36048,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 95,
+   "energia": 22,
    "defesa": 12,
    "defesaSocial": 16,
    "defesaMental": 17,
@@ -37270,6 +36162,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 65,
+   "energia": 19,
    "defesa": 10,
    "defesaSocial": 12,
    "defesaMental": 25,
@@ -37384,6 +36277,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 90,
+   "energia": 12,
    "defesa": 16,
    "defesaSocial": 16,
    "defesaMental": 14,
@@ -37500,6 +36394,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 12,
    "defesa": 12,
    "defesaSocial": 4,
    "defesaMental": 15,
@@ -37584,6 +36479,7 @@
    "bestiario/solar_criatura.webp"
   ],
   "semImagem": false,
+  "mana": 30,
   "tipo": "chefe",
   "atributos": {
    "forca": 10,
@@ -37647,6 +36543,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 70,
+   "energia": 37,
    "defesa": 24,
    "defesaSocial": 32,
    "defesaMental": 44,
@@ -37783,6 +36680,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 7,
    "defesa": 14,
    "defesaSocial": 8,
    "defesaMental": 14,
@@ -37915,6 +36813,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 12,
    "defesa": 12,
    "defesaSocial": 8,
    "defesaMental": 17,
@@ -38032,6 +36931,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 2,
+   "energia": 7,
    "defesa": 14,
    "defesaSocial": 10,
    "defesaMental": 11,
@@ -38162,6 +37062,7 @@
   ],
   "combate": {
    "pv": 43,
+   "energia": 21,
    "defesa": 14,
    "defesaSocial": 28,
    "defesaMental": 28,
@@ -38274,6 +37175,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 28,
+   "energia": 9,
    "defesa": 13,
    "defesaSocial": 4,
    "defesaMental": 12,
@@ -38384,6 +37286,7 @@
   ],
   "combate": {
    "pv": 115,
+   "energia": 36,
    "defesa": 4,
    "defesaSocial": 20,
    "defesaMental": 26,
@@ -38504,6 +37407,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 70,
+   "energia": 21,
    "defesa": 4,
    "defesaSocial": 6,
    "defesaMental": 22,
@@ -38629,6 +37533,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 9,
    "defesa": 15,
    "defesaSocial": 6,
    "defesaMental": 14,
@@ -38741,6 +37646,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 9,
    "defesa": 15,
    "defesaSocial": 4,
    "defesaMental": 13,
@@ -38856,6 +37762,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 50,
+   "energia": 6,
    "defesa": 12,
    "defesaSocial": 8,
    "defesaMental": 9,
@@ -38978,6 +37885,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 50,
+   "energia": 6,
    "defesa": 10,
    "defesaSocial": 6,
    "defesaMental": 9,
@@ -39098,6 +38006,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 85,
+   "energia": 8,
    "defesa": 6,
    "defesaSocial": 6,
    "defesaMental": 8,
@@ -39205,6 +38114,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 75,
+   "energia": 18,
    "defesa": 4,
    "defesaSocial": 16,
    "defesaMental": 22,
@@ -39314,6 +38224,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 40,
+   "energia": 5,
    "defesa": 10,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -39431,6 +38342,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 85,
+   "energia": 7,
    "defesa": 7,
    "defesaSocial": 6,
    "defesaMental": 7,
@@ -39545,6 +38457,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 6,
    "defesa": 7,
    "defesaSocial": 4,
    "defesaMental": 9,
@@ -39654,6 +38567,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 62,
+   "energia": 11,
    "defesa": 12,
    "defesaSocial": 8,
    "defesaMental": 12,
@@ -39774,6 +38688,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 46,
+   "energia": 5,
    "defesa": 6,
    "defesaSocial": 8,
    "defesaMental": 7,
@@ -39889,6 +38804,7 @@
   ],
   "combate": {
    "pv": 54,
+   "energia": 21,
    "defesa": 15,
    "defesaSocial": 14,
    "defesaMental": 29,
@@ -40007,6 +38923,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 43,
+   "energia": 6,
    "defesa": 8,
    "defesaSocial": 10,
    "defesaMental": 7,
@@ -40128,6 +39045,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 6,
    "defesa": 10,
    "defesaSocial": 6,
    "defesaMental": 9,
@@ -40248,6 +39166,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 5,
    "defesa": 10,
    "defesaSocial": 8,
    "defesaMental": 6,
@@ -40367,6 +39286,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 50,
+   "energia": 6,
    "defesa": 10,
    "defesaSocial": 8,
    "defesaMental": 9,
@@ -40487,6 +39407,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 6,
    "defesa": 10,
    "defesaSocial": 8,
    "defesaMental": 9,
@@ -40608,6 +39529,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 50,
+   "energia": 6,
    "defesa": 10,
    "defesaSocial": 6,
    "defesaMental": 9,
@@ -40725,6 +39647,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 49,
+   "energia": 24,
    "defesa": 14,
    "defesaSocial": 24,
    "defesaMental": 30,
@@ -40848,6 +39771,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 18,
+   "energia": 11,
    "defesa": 10,
    "defesaSocial": 4,
    "defesaMental": 15,
@@ -40956,6 +39880,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 26,
+   "energia": 6,
    "defesa": 10,
    "defesaSocial": 6,
    "defesaMental": 9,
@@ -41067,6 +39992,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 95,
+   "energia": 12,
    "defesa": 4,
    "defesaSocial": 12,
    "defesaMental": 11,
@@ -41183,6 +40109,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 26,
+   "energia": 5,
    "defesa": 16,
    "defesaSocial": 8,
    "defesaMental": 6,
@@ -41297,6 +40224,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 8,
    "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
@@ -41415,6 +40343,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 66,
+   "energia": 24,
    "defesa": 12,
    "defesaSocial": 14,
    "defesaMental": 29,
@@ -41528,6 +40457,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 13,
    "defesa": 10,
    "defesaSocial": 8,
    "defesaMental": 18,
@@ -41641,6 +40571,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 9,
    "defesa": 12,
    "defesaSocial": 14,
    "defesaMental": 14,
@@ -41746,6 +40677,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 43,
+   "energia": 15,
    "defesa": 10,
    "defesaSocial": 6,
    "defesaMental": 19,
@@ -41885,6 +40817,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 37,
+   "energia": 18,
    "defesa": 19,
    "defesaSocial": 6,
    "defesaMental": 22,
@@ -42009,6 +40942,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 54,
+   "energia": 15,
    "defesa": 10,
    "defesaSocial": 4,
    "defesaMental": 16,
@@ -42128,6 +41062,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 50,
+   "energia": 12,
    "defesa": 10,
    "defesaSocial": 4,
    "defesaMental": 15,
@@ -42242,6 +41177,7 @@
   "tecnicas": [],
   "combate": {
    "pv": 34,
+   "energia": 6,
    "defesa": 2,
    "defesaSocial": "-",
    "defesaMental": "-",

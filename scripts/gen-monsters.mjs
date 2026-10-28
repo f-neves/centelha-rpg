@@ -118,7 +118,7 @@ function build(c, fonte) {
     aparencia: f.aparencia,
     virtudes: f.virtues,
     combate: {
-      pv: c.pv,
+      pv: c.pv, energia: f.motor?.energia ?? null,
       defesa: c.defesa,
       defesaSocial: c.defesaSocial,
       defesaMental: c.defesaMental,
@@ -248,7 +248,7 @@ const resolverTecnicas = (ids, catalogo) => (ids || []).map((t) => {
 
 const CAMPOS_MESA = [
   'id', 'nome', 'nomeIngles', 'ameaca', 'centelha', 'categoria', 'categoriaNome', 'tamanho', 'imagens',
-  'semImagem', 'tipo', 'atributos', 'virtudes', 'vontade', 'aparencia',
+  'semImagem', 'mana', 'tipo', 'atributos', 'virtudes', 'vontade', 'aparencia',
   // `pericias` ENTROU EM 04/09/2026, e a ausencia dela aqui foi um zero ambiguo
   // de verdade: o bloco `sentidos` do ResumoCombate le `MON[id].pericias`, `MON`
   // vem deste arquivo magro, e a Passiva de TODA criatura da mesa saia `null`
@@ -277,7 +277,7 @@ const FORA_DA_MESA = {
   habilidadesEspeciais: 'prosa do card, e é o maior pedaço dos 900 KB (27%)',
   lore: 'prosa do card (24%)',
   poderes: 'prosa do card',
-  comoLuta: 'descrição de combate', sentidos: 'descrição dos sentidos', mana: 'a Mana da ficha (D-196) só aparece no card; a mesa ainda não lê Mana de criatura, e levá-la ao Grid é decisão da frente da mesa',
+  comoLuta: 'descrição de combate', sentidos: 'descrição dos sentidos',
   tags: 'usadas no editor e na busca do bestiário, não no tabuleiro',
   // O Grid anda pelo passo único de `combate.deslocamento` (já derivado, já em
   // CAMPOS_MESA); isto é só o detalhe por modo que o card mostra (B14 fase 4,
@@ -286,12 +286,14 @@ const FORA_DA_MESA = {
 };
 
 const TEC_POR_ID = Object.fromEntries(read('tecnicas.json').map((t) => [t.id, t]));
-const mesa = monsters.map((m) => {
+function recorteMesa(m) {
   const o = {};
   for (const k of CAMPOS_MESA) if (m[k] !== undefined) o[k] = m[k];
   if (o.tecnicas) o.tecnicas = resolverTecnicas(o.tecnicas, TEC_POR_ID);
+  if (o.formas) o.formas=o.formas.map(f=>({...f,criatura:recorteMesa(f.criatura)}));
   return o;
-});
+}
+const mesa = monsters.map(recorteMesa);
 // A TRAVA: toda chave produzida tem de estar numa das duas listas.
 {
   const conhecidas = new Set([...CAMPOS_MESA, ...Object.keys(FORA_DA_MESA)]);

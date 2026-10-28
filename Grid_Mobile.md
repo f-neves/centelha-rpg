@@ -64,7 +64,7 @@ mas só 388 deles estão na tela quando a página abre. A página inteira mede *
 - **`.al-sec` quebra em 4 fileiras** ("O acerto" e "O dano"), o rótulo quebra em duas linhas, e o
   campo do motivo corta o texto no meio ("por quê (vai para o registr…").
 - **O menu da peça mede 439px de altura**, 10 itens de 36px. Em retrato passa raspando; em
-  **paisagem** (390px de altura) não cabe, e o encaixe de `grid.astro:7852` (`innerHeight - r.height - 8`)
+  **paisagem** (390px de altura) não cabe, e o encaixe de `grid.astro:7853` (`innerHeight - r.height - 8`)
   devolve um topo **negativo**: o menu sai pela borda de cima e não há rolagem
   dentro dele.
 - **`.rg-acs` (`grid.astro:1961`) nasce com `opacity: 0` e só acende no `:hover`.** No dedo não há

@@ -2424,7 +2424,7 @@ const SETAS = [
   import {
     abrirCanal, nomeParaPresenca, type Canal, type Assunto, type Motivo, type Ping,
   } from '../../lib/mesa-tempo-real';
-  import { MON, resumoDe, iniDeMonstro, d6, cardCriaturaHTML, criaturaCompleta, imagemDe } from '../../lib/mesa-bestiario';
+  import { modeloNaForma, modeloDaPeca, seletorFormaDaPecaHTML, MON, resumoDe, iniDeMonstro, d6, cardCriaturaHTML, criaturaCompleta, imagemDe } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC, resumoFicha } from '../../lib/mesa-ficha';
   import { mana as manaDaFicha, modificadorPorte, porteDeRotulo, gatePerfuracaoAbre, limiteDaMorte, passouDoLimite } from '../../lib/calc';
   import {
@@ -2468,7 +2468,7 @@ const SETAS = [
   } from '../../lib/alcance';
   import { reconciliar, esquecerCaixa } from '../../lib/reconciliar';
   import { errouPor, saidaDoAtaque } from '../../lib/quase-acerto';
-  import { quaseAcertoDoEncontro } from '../../lib/lance';
+  import { quaseAcertoDoEncontro, defesaEfetiva } from '../../lib/lance';
   import {
     abrirEscolhaDoTempo, resumoDoTempo, fitaHTML, seloFaseHTML, abrirAbortar, podeAbortar,
     abrirForaDeHora, podeForaDeHora,
@@ -3334,15 +3334,15 @@ const SETAS = [
         iniciativa: R.iniciativa, ficha: R,
       };
     }
-    const m = MON[c.monstro_id];
+    const m = modeloDaPeca(c);
     if (!m) return null;
     const nivelArte = (id: string) => (m.artes || []).find((a: any) => a.id === id)?.nivel || 0;
     const cent = m.centelha || 0, vont = m.vontade || 0;
     return {
       origem: 'bestiario', centelha: cent, vontade: vont, aparencia: m.aparencia || 0,
-      mana: cent > 0 ? manaDaFicha({ centelha: cent, vontade: vont, manipulacao: nivelArte('manipulacao-mana') }) : 0,
+      mana: m.mana ?? 0,
       energia: m.combate?.energia ?? null, pv: m.combate?.pv ?? null,
-      attrs: m.atributos || {}, skills: {}, skills2: {}, virtudes: m.virtudes || {},
+      attrs: m.atributos || {}, skills: m.habilidades || {}, skills2: m.habilidadesSec || {}, virtudes: m.virtudes || {},
       artes: m.artes || [], tecnicas: m.tecnicas || [], passivos: [],
       defesas: { esquiva: m.combate?.defesa ?? null, bloqueio: null,
         social: m.combate?.defesaSocial ?? null, mental: m.combate?.defesaMental ?? null },
@@ -3434,7 +3434,7 @@ const SETAS = [
   };
   /** Diâmetro do combatente em metros. PC e NPC de cena são médios. */
   const diametroM = (c: any): number =>
-    (c.tipo === 'criatura' ? PORTE_M[MON[c.monstro_id]?.tamanho] : null) ?? 1;
+    (c.tipo === 'criatura' ? PORTE_M[modeloDaPeca(c)?.tamanho] : null) ?? 1;
 
   /**
    * Quanto o PORTE de um alvo ESTENDE o alcance corpo a corpo, em hexágonos
@@ -3596,8 +3596,8 @@ const SETAS = [
       // O `monstro_id` vale para qualquer tipo, e não só para a criatura: o NPC
       // de cena pode emprestar o retrato de um bicho do bestiário sem herdar o
       // bloco de combate dele.
-      || (imagemDe(MON[c.monstro_id]) ? u(imagemDe(MON[c.monstro_id])!) : null);
-    const besta = MON[c.monstro_id]?.imagens?.length && !(c.imagem && IMGS[c.imagem]) ? ' av-besta' : '';
+      || (imagemDe(modeloDaPeca(c)) ? u(imagemDe(modeloDaPeca(c))!) : null);
+    const besta = modeloDaPeca(c)?.imagens?.length && !(c.imagem && IMGS[c.imagem]) ? ' av-besta' : '';
     return avatarHTML(c.nome, src, (extra + besta).trim(), pctDe100(c));
   }
 
@@ -4613,7 +4613,7 @@ const SETAS = [
    */
   const raciocinioDe = (c: any): number =>
     FICHAS[c.personagem_id]?.attrs?.raciocinio
-    ?? MON[c.monstro_id]?.atributos?.raciocinio
+    ?? modeloDaPeca(c)?.atributos?.raciocinio
     ?? -1;
 
   /** Como a peça entra no comparador da fila (`ordemDaFila`, no motor). */
@@ -5481,7 +5481,7 @@ const SETAS = [
     for (const c of fila) {
       let v: number;
       if (c.tipo === 'pc' && fichas[c.personagem_id]) v = rolarIniciativaPC(fichas[c.personagem_id]);
-      else if (c.tipo === 'criatura' && MON[c.monstro_id]) v = iniDeMonstro(MON[c.monstro_id]);
+      else if (c.tipo === 'criatura' && modeloDaPeca(c)) v = iniDeMonstro(modeloDaPeca(c));
       else v = d6();
       rolado.push({ c, v });
     }
@@ -7733,7 +7733,7 @@ const SETAS = [
     // Vale para a criatura e para o figurante que pegou o retrato emprestado de
     // uma: quem tem `monstro_id` tem card, e olhar a ficha do bicho no meio da
     // luta era trocar de aba e perder o mapa de vista.
-    const bloco = MON[c.monstro_id];
+    const bloco = modeloDaPeca(c);
     // O menu muda com quem abriu. O jogador age pela peça dele (atacar,
     // conjurar, gastar Mana) e pode lançar dano em qualquer um, porque é ele que
     // acabou de rolar o golpe. O que é da mesa (curar, adiantar o relógio,
@@ -7741,6 +7741,7 @@ const SETAS = [
     const meu = mandoNela(c);
     const sep = '<div class="tm-sep"></div>';
     const linhas = [
+      MESTRE ? seletorFormaDaPecaHTML(c) : '',
       meu ? item('ataque', '⚔ Ataque') : '',
       MESTRE ? item('curar', '✚ Recuperar Vida') : '',
       // TOLERÂNCIA · o jogador perdeu o ✖ Tirar Vida em peça que não é dele.
@@ -8647,7 +8648,7 @@ const SETAS = [
     // ela chegou. É o mesmo par de tempos do golpe perfurante, agora esticado
     // pelo tabuleiro inteiro.
     const proj = projetilDe(
-      atacante, FICHAS[atacante.personagem_id], MON[atacante.monstro_id], armaDoSlot,
+      atacante, FICHAS[atacante.personagem_id], modeloDaPeca(atacante), armaDoSlot,
     );
     const de = pontoDaPeca(atacante.id), pa = pontoDaPeca(alvo.id);
     // Devolve se ALGUMA COISA voou, e não só se terminou: quem esperou uma
@@ -8986,7 +8987,7 @@ const SETAS = [
     const dados = res.rolado ? ` (${res.rolado})` : '';
     const dadosDano = res.roladoDano ? ` · dano (${res.roladoDano})` : '';
     const proj = projetilDe(
-      atacante, FICHAS[atacante.personagem_id], MON[atacante.monstro_id], armaDoSlot,
+      atacante, FICHAS[atacante.personagem_id], modeloDaPeca(atacante), armaDoSlot,
     );
     // O PROJÉTIL VOA ATÉ QUEM LEVA O GOLPE DE VERDADE: com interposição, é o
     // interpositor que está no caminho, não o alvo original — a flecha não
@@ -10255,11 +10256,11 @@ const SETAS = [
     // O bolo de quem ataca, já com o que a situação cobra DELE.
     //
     // A DIFERENÇA DE PORTE, quando a bandeira está ligada (06/09/2026): o
-    // mesmo `c.tipo === 'criatura' ? MON[c.monstro_id]?.tamanho : null` que
+    // mesmo `c.tipo === 'criatura' ? modeloDaPeca(c)?.tamanho : null` que
     // `diametroM` já usa para o desenho do token, aqui para o acerto. PC sem
     // `porte` (`null`) normaliza para `medio`, que é a metade implícita do par
     // atacante/alvo em toda mesa de PCs.
-    const porteRotuloDe = (c: any) => (c?.tipo === 'criatura' ? MON[c.monstro_id]?.tamanho : null);
+    const porteRotuloDe = (c: any) => (c?.tipo === 'criatura' ? modeloDaPeca(c)?.tamanho : null);
     const ajAtq = (() => {
       const tf = tierDe(atacante.pv_atual, atacante.pv_max);
       const f = tf.penAcao ?? 0;
@@ -10431,9 +10432,7 @@ let roladoDano = '';
      */
     const contaDoLance = (idx = IDX) => {
       const e = entradaDoLance(idx);
-      const def2 = e.alvo.defesaBase != null
-        ? e.alvo.defesaBase + e.alvo.ferimento + e.alvo.condicoesDefesa + e.alvo.defesaPerdida
-        : null;
+      const def2 = defesaEfetiva(e.alvo);
       // O total do PRIMEIRO golpe é o que está no campo (é o que o mestre
       // corrige); o dos outros sai da linha que caiu, com a penalidade deles.
       // O total sai sempre do campo: com a folha adiada, `rolarAcerto` rola UMA
@@ -11562,7 +11561,7 @@ let roladoDano = '';
    */
   async function abrirCard(cid: string) {
     const c = COMBS.find((x: any) => x.id === cid);
-    const m = c && MON[c.monstro_id]; if (!m) return;
+    const m = c && modeloDaPeca(c); if (!m) return;
     el('card-modal-body').innerHTML = cardCriaturaHTML(m);
     (el('card-modal') as HTMLElement).hidden = false;
     document.body.style.overflow = 'hidden';
@@ -11570,7 +11569,7 @@ let roladoDano = '';
     // Fechou antes de chegar: não escreve por cima de uma janela que já não é
     // esta.
     if (cheia && !(el('card-modal') as HTMLElement).hidden) {
-      el('card-modal-body').innerHTML = cardCriaturaHTML(cheia);
+      el('card-modal-body').innerHTML = cardCriaturaHTML(modeloNaForma(cheia,modeloDaPeca(c)?.formaPrincipal?.id));
     }
   }
 
@@ -12703,5 +12702,11 @@ let roladoDano = '';
     for (const c of COMBS) if (c.tipo === 'criatura' && c.monstro_id === id) { try { RESUMO[c.id] = resumoDe(c, FICHAS); } catch { /* segue com o antigo */ } }
   });
 
+  window.addEventListener('centelha:forma', (e:Event)=>{
+    if (!MESTRE) return;
+    const c=COMBS.find((x:any)=>x.id===(e as CustomEvent).detail?.id);
+    if(c) {RESUMO[c.id]=resumoDe(c,FICHAS); PERFIL[c.id]=perfilDe(c,FICHAS);}
+    pintarTokens(); pintarLista();
+  });
   main();
 </script>

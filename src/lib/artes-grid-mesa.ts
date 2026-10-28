@@ -5,7 +5,7 @@
 // dos hexágonos. A aba entrega um contexto e chama quatro funções; tudo o mais
 // mora aqui, e é por isso que `grid.astro` quase não muda para ganhar isso.
 import { esc, novoId, somarCondicoes, danoContinuoDevido, COND, tierDe, elementosCombate } from './mesa-core';
-import { MON } from './mesa-bestiario';
+import { MON, modeloDaPeca } from './mesa-bestiario';
 import { uiErro, uiConfirmar, uiEscolher, uiPainel } from './ui-dialog';
 import {
   EFEITO, ARTE, CONDICAO, rotuloDaFigura, caminhoDaFigura,
@@ -792,7 +792,7 @@ function fonteDe(ctx: CtxGrid, c: any): { fonte: any; centelha: number; comprado
     const f = ctx.fichas[c.personagem_id] || {};
     return { fonte: f, centelha: Number(f.centelha || 0), comprados: f.efeito || {} };
   }
-  const m = MON[c.monstro_id] || {};
+  const m = modeloDaPeca(c) || {};
   return { fonte: m, centelha: Number(m.centelha || 0), comprados: null };
 }
 
@@ -1364,7 +1364,7 @@ export function pesoDoPorte(c: any): number {
     'Minúsculo': 3, 'Miúdo': 3, 'Pequeno': 20, 'Médio': 70, 'Grande': 250,
     'Enorme': 1200, 'Imenso': 8000, 'Colossal': 40000,
   };
-  return P[MON[c.monstro_id]?.tamanho] || 0;
+  return P[modeloDaPeca(c)?.tamanho] || 0;
 }
 
 /** O hexágono a `passos` de distância, na reta que sai de `de` passando por `ate`. */
@@ -1699,7 +1699,7 @@ function desEsqDe(ctx: CtxGrid, alvo: any): { soma: number; nota: string } {
     const des = Number(f.attrs?.destreza || 0), esq = Number(f.skills?.esquiva || 0);
     return { soma: des + esq, nota: `Destreza ${des} + Esquiva ${esq}` };
   }
-  const m = MON[alvo.monstro_id] || {};
+  const m = modeloDaPeca(alvo) || {};
   const soma = desEsqDaDefesa(Number(m.combate?.defesa || 0), Number(m.centelha || 0));
   return { soma, nota: `Destreza + Esquiva ${soma}, tirados da Defesa ${m.combate?.defesa ?? 0}` };
 }
@@ -1707,7 +1707,7 @@ function desEsqDe(ctx: CtxGrid, alvo: any): { soma: number; nota: string } {
 /** A Virtude sozinha de quem escolhe ficar parado: da ficha no PC, do bloco na criatura. */
 function paresDeCoragem(ctx: CtxGrid, alvo: any): { chave: string; rotulo: string; soma: number }[] {
   const f = alvo.tipo === 'pc' ? (ctx.fichas[alvo.personagem_id] || {}) : null;
-  const m = f ? null : (MON[alvo.monstro_id] || {});
+  const m = f ? null : (modeloDaPeca(alvo) || {});
   return opcoesDeFicarParado({ virtudes: (f?.virtues || m?.virtudes || {}) as Record<string, number> });
 }
 
@@ -1861,7 +1861,7 @@ async function morder(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any, verbo: string, f
   // (Reforma da Centelha, 28/09/2026, item 3 da Fase 1).
   const centelhaConjurador = ef.conjurador_id ? (ctx.resumo[ef.conjurador_id]?.centelha ?? 0) : 0;
   const bruto = Math.ceil((rolagem.total + (ef.dano_bonus || 0) + centelhaConjurador) * fator);
-  const m = MON[alvo.monstro_id] || {};
+  const m = modeloDaPeca(alvo) || {};
   const s = soakDe(ctx, alvo, ef.materia);
   const golpe = danoNoAlvo({
     bruto, elemento: ef.elemento, materia: ef.materia,
@@ -1897,7 +1897,7 @@ async function morder(ctx: CtxGrid, ef: EfeitoAtivo, alvo: any, verbo: string, f
 async function aplicarDano(ctx: CtxGrid, alvo: any, bruto: number, plano: Plano, motivo: string): Promise<void> {
   if (!alvo) return;
   const g = plano.efeito?.grid;
-  const m = MON[alvo.monstro_id] || {};
+  const m = modeloDaPeca(alvo) || {};
   const s = soakDe(ctx, alvo, g?.materia || 'impacto');
   const golpe = danoNoAlvo({
     bruto, elemento: plano.arte.grid.elemento, materia: g?.materia || 'impacto',

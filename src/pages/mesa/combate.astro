@@ -564,7 +564,7 @@ import CondDlg from '../../components/CondDlg.astro';
     classeDeTempo, velocidadeDaArma, tetoDaRajada, temGesto, FASE_ROTULO,
     type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
-  import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, resumoDe, iniDeMonstro, d6, imagemDe } from '../../lib/mesa-bestiario'; import { dadosSemOsVaziosDaEscolha } from '../../lib/defesa-vestida';
+  import { modeloNaForma, modeloDaPeca, seletorFormaDaPecaHTML, MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, resumoDe, iniDeMonstro, d6, imagemDe } from '../../lib/mesa-bestiario'; import { dadosSemOsVaziosDaEscolha } from '../../lib/defesa-vestida';
   import { numerosPersonagem } from '../../lib/motor';
   import { rolarIniciativaPC } from '../../lib/mesa-ficha';
   import { pv as pvDe, mana as manaDe, limiteDaMorte, passouDoLimite } from '../../lib/calc';
@@ -829,7 +829,7 @@ import CondDlg from '../../components/CondDlg.astro';
   const avatarDe = (c: any) => {
     const src = IMGS['own:' + c.id]
       || (c.tipo === 'pc' ? IMGS['pc:' + c.personagem_id] : null)
-      || (c.tipo === 'criatura' && imagemDe(MON[c.monstro_id]) ? u(imagemDe(MON[c.monstro_id])!) : null);
+      || (c.tipo === 'criatura' && imagemDe(modeloDaPeca(c)) ? u(imagemDe(modeloDaPeca(c))!) : null);
     const cls = c.tipo === 'criatura' && !IMGS['own:' + c.id] ? 'av-besta' : '';
     return avatarHTML(c.nome, src, cls, pctVida(c));
   };
@@ -892,7 +892,7 @@ import CondDlg from '../../components/CondDlg.astro';
    */
   const raciocinioDe = (c: any): number =>
     FICHAS[c.personagem_id]?.attrs?.raciocinio
-    ?? MON[c.monstro_id]?.atributos?.raciocinio
+    ?? modeloDaPeca(c)?.atributos?.raciocinio
     ?? -1;
 
   const ordenar = (a: any, b: any) => ordemDaFila(
@@ -1106,7 +1106,7 @@ import CondDlg from '../../components/CondDlg.astro';
     const pct = pctVida(c);
     const conds = verCond(c) ? condsDe(c) : [];
     const def = defesaAtual(c);
-    const tipoTxt = c.tipo === 'pc' ? 'PC' : c.tipo === 'criatura' ? (MON[c.monstro_id]?.nome || 'Criatura') : 'NPC';
+    const tipoTxt = c.tipo === 'pc' ? 'PC' : c.tipo === 'criatura' ? (modeloDaPeca(c)?.nome || 'Criatura') : 'NPC';
     // A ordem segue a pergunta que se faz no meio da luta: primeiro o que
     // atrapalha quem bate NESTE card (as Defesas e a Absorção), depois o que
     // ele devolve no turno dele. Antes vinha ao contrário.
@@ -1157,9 +1157,9 @@ import CondDlg from '../../components/CondDlg.astro';
     // daqui: com a arte inteira clicável, virou um nono botão redundante numa
     // fileira que já tinha oito. Só para o mestre, porque `ligarCards` não liga
     // nada para o jogador, e um alvo que não responde é pior do que nenhum.
-    const abreCard = EH_MESTRE && c.tipo === 'criatura' && !!MON[c.monstro_id];
+    const abreCard = EH_MESTRE && c.tipo === 'criatura' && !!modeloDaPeca(c);
     const cCard = abreCard ? ' ver-card' : '';
-    const aCard = abreCard ? ` data-mon="${esc(c.monstro_id)}" title="Ver o card de ${esc(MON[c.monstro_id].nome)}"` : '';
+    const aCard = abreCard ? ` data-mon="${esc(c.monstro_id)}" data-forma-card="${esc(modeloDaPeca(c)?.formaPrincipal?.id || '')}" title="Ver o card de ${esc(modeloDaPeca(c).nome)}"` : '';
     return `<article class="cbt g-${esc(c.grupo || 'inimigo')}${atual ? ' atual' : ''}${c.ativo === false ? ' fora' : ''}${c.oculto ? ' oculto' : ''}${lembr ? ' lembr' : ''}" data-c="${c.id}">
       <header class="cbt-cab">
         ${lembr
@@ -1178,6 +1178,7 @@ import CondDlg from '../../components/CondDlg.astro';
           ? `Vida da última vez${vistoHora ? `, ${esc(vistoHora)}` : ''}`
           : `ini ${c.iniciativa ?? 0}`} · ${GRUPO_LBL[c.grupo] || 'Inimigo'}</span>
       </div>
+      ${EH_MESTRE ? seletorFormaDaPecaHTML(c) : ''}
       ${barras}${stats}${fitaDoCard(c)}
       ${conds.length ? `<div class="conds">${conds.map((x) => condChipHTML(x, EH_MESTRE, c.id)).join('')}</div>` : ''}
       ${acoes}
@@ -1672,11 +1673,11 @@ import CondDlg from '../../components/CondDlg.astro';
     // janela abre com o bloco de jogo e o texto entra quando a busca voltar.
     raiz.querySelectorAll<HTMLElement>('.ver-card').forEach((b) => b.addEventListener('click', async () => {
       const id = b.dataset.mon!;
-      const m = MON[id]; if (!m) return;
+      const m = modeloNaForma(MON[id],b.dataset.formaCard); if (!m) return;
       el('card-modal-body').innerHTML = cardCriaturaHTML(m);
       el('card-modal').hidden = false; document.body.style.overflow = 'hidden';
       const cheia = await criaturaCompleta(id);
-      if (cheia && !el('card-modal').hidden) el('card-modal-body').innerHTML = cardCriaturaHTML(cheia);
+      if (cheia && !el('card-modal').hidden) el('card-modal-body').innerHTML = cardCriaturaHTML(modeloNaForma(cheia,b.dataset.formaCard));
     }));
   }
 
@@ -2173,7 +2174,7 @@ import CondDlg from '../../components/CondDlg.astro';
         for (const c of COMBS) {
           ini[c.id] = c.tipo === 'pc' && FICHAS[c.personagem_id]
             ? rolarIniciativaPC(FICHAS[c.personagem_id])
-            : c.tipo === 'criatura' && MON[c.monstro_id] ? iniDeMonstro(MON[c.monstro_id]) : d6();
+            : c.tipo === 'criatura' && modeloDaPeca(c) ? iniDeMonstro(modeloDaPeca(c)) : d6();
         }
       }
       const ordem = COMBS.map((c) => c.id);
@@ -2282,5 +2283,11 @@ import CondDlg from '../../components/CondDlg.astro';
     dlg.showModal();
   }
 
+  window.addEventListener('centelha:forma', (e:Event)=>{
+    if (!EH_MESTRE) return;
+    const c=COMBS.find((x:any)=>x.id===(e as CustomEvent).detail?.id);
+    if(c) RESUMO[c.id]=resumoDe(c,FICHAS);
+    pintar();
+  });
   main();
 </script>
