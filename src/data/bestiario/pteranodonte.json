@@ -18,10 +18,11 @@
     "caudaGrossa": false,
     "envergadura": 5.15,
     "massa": 25.5,
-    "area": 3.4,
+    "area": 0.58,
+    "posturaDoTamanho": "pousado, asas fechadas",
     "segundoTamanho": {
-      "area": 0.58,
-      "posturaDoTamanho": "asas fechadas"
+      "area": 3.4,
+      "posturaDoTamanho": "de baixo, asas abertas, em voo"
     }
   },
   "couraca": 0,

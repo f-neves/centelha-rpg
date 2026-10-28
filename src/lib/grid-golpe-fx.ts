@@ -1,3 +1,4 @@
+import { fichaParaLeitura } from './ficha-formato';
 // O golpe no tabuleiro: o que se vê quando alguém acerta alguém.
 //
 // Não é enfeite. Numa mesa em que o mestre declara "acertou, 7 de dano", a única
@@ -648,6 +649,7 @@ const BESTA = /\bbesta\b/i;
 export function projetilDe(
   comb: any, ficha: any, monstro: any, armaDoSlot: (slot: any) => any,
 ): Projetil | null {
+  ficha = fichaParaLeitura(ficha);
   // O equipamento da ficha tem DOIS formatos, e os dois continuam válidos: o
   // conjunto em uso (`conjuntos[].habil/inabil`, com slots `{ref:'a:<id>'}`) e o
   // modelo antigo (`equip.arma`, o id cru). Ler só um deles faria o arqueiro de

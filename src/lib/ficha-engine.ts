@@ -1,3 +1,4 @@
+import { fichaParaLeitura, fichaParaGravar } from './ficha-formato';
 // Motor da ficha interativa (extraído de ficha.astro para ser reaproveitado).
 // Renderiza bolinhas/cards/derivados no esqueleto (FichaSkeleton.astro) e calcula XP ao vivo.
 // A persistência e o orçamento são configuráveis via opts, para servir tanto a /ficha
@@ -296,9 +297,10 @@ export function montarFicha(opts: FichaOpts) {
     return list.map((e) => ({ s: e.s, v: Math.max(0, Math.min(cap, e.v)) })).filter((e) => e.v > 0).slice(0, cap);
   }
   function normalize() {
+    S = fichaParaLeitura(S);
     massaEscolhida = typeof S.corpo?.massa === 'number' || !!S.id?.peso;
     S.corpo ??= {massa:massaDoJogador(S)};
-    S.id ??= {}; S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {}; S.efeito ??= {}; S.secCol ??= {};
+    S.id ??= {}; if (S.virtues?.valor !== undefined && S.virtues?.bravura === undefined) { S.virtues.bravura = S.virtues.valor; delete S.virtues.valor; } S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {}; S.efeito ??= {}; S.secCol ??= {};
     S.defSpec ??= {}; for (const k of ['esquiva', 'bloqueio', 'social', 'mental']) S.defSpec[k] ??= [];
     // Migração: a Habilidade "Escudos" virou "Bloqueio" (id escudos -> bloqueio); carrega pontos e especialidade antigos.
     if (S.skills.escudos != null && S.skills.bloqueio == null) S.skills.bloqueio = S.skills.escudos;
@@ -397,7 +399,7 @@ export function montarFicha(opts: FichaOpts) {
     S.equip.armaduras = S.equip.armaduras.map((p: any) => (typeof p === 'string'
       ? { uid: novoUid(), base: p, mod: modsAntigos[p] ? { ...modsAntigos[p] } : undefined, vestida: true }
       : { uid: p?.uid || novoUid(), base: p?.base, nome: p?.nome || undefined, mod: p?.mod || undefined,
-          img: p?.img || undefined, vestida: p?.vestida !== false })
+          img: p?.img || undefined, enq: p?.enq || undefined, vestida: p?.vestida !== false })
     ).filter((p: any) => baseArmadura(p.base));
     delete S.equip.armMod;
 
@@ -426,7 +428,7 @@ export function montarFicha(opts: FichaOpts) {
     S.livreNome ??= {};
     LIVRES.forEach((k) => { S.skills2[k] ??= 0; S.spec2[k] = clampSpecs(S.spec2[k], S.skills2[k] || 0); });
   }
-  const save = () => { if (opts.readOnly) return; try { opts.salvar(S); } catch {} };
+  const save = () => { if (opts.readOnly) return; try { opts.salvar(fichaParaGravar(S)); } catch {} };
 
   // ---- builders ----
   const dotsHTML = (kind: string, key: string, value: number, max: number, floor: number) => {
@@ -2365,7 +2367,7 @@ export function montarFicha(opts: FichaOpts) {
 
   // botões
   el('f-export').addEventListener('click', () => {
-    const blob = new Blob([JSON.stringify(S, null, 2)], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify(fichaParaGravar(S), null, 2)], { type: 'application/json' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
     a.download = (S.id?.nome ? slug(S.id.nome) : 'ficha') + '.json'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
   });
@@ -2830,7 +2832,7 @@ export function montarFicha(opts: FichaOpts) {
   });
   el('f-reset').addEventListener('click', async () => { if (opts.readOnly) return; if (await uiConfirmar('Limpar a ficha? Tudo o que está preenchido se perde.', { titulo: 'Limpar ficha', ok: 'Limpar', perigo: true })) { opts.aoResetar?.(); fresh(); if (opts.budgetValor != null) S.budget = opts.budgetValor; renderAll(); } });
   el('f-link').addEventListener('click', () => {
-    const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(S))));
+    const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(fichaParaGravar(S)))));
     navigator.clipboard?.writeText(location.origin + location.pathname + '#p=' + b64);
     const b = el('f-link'); b.textContent = '✓'; setTimeout(() => (b.textContent = 'Link'), 1200);
   });

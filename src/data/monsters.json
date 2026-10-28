@@ -12558,10 +12558,17 @@
      "limiteDeUso": "à vontade"
     },
     {
-     "nome": "Resistência à magia",
+     "nome": "Resistência a ataques à distância",
      "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "resiste melhor aos feitiços dirigidos a ela"
+     "classe": "regra da ficha",
+     "ativacao": "nenhuma; sempre ativa",
+     "duracao": "permanente",
+     "alcance": "o próprio corpo",
+     "area": "não se aplica",
+     "efeito": "a imagem fora do lugar engana quem lança de longe: soma +2 na Defesa Mental contra Arte dirigida a ela à distância",
+     "dano": "nenhum",
+     "resistencia": "nenhum",
+     "limiteDeUso": "nenhum"
     }
    ],
    "comoLuta": [
@@ -12782,9 +12789,9 @@
     }
    },
    {
-    "nome": "Resistência à magia",
-    "descricao": "resiste melhor aos feitiços dirigidos a ela",
-    "classe": "sem regra ainda"
+    "nome": "Resistência a ataques à distância",
+    "descricao": "a imagem fora do lugar engana quem lança de longe: soma +2 na Defesa Mental contra Arte dirigida a ela à distância. ativacao: nenhuma; sempre ativa. duracao: permanente. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum",
+    "classe": "regra da ficha"
    }
   ],
   "comoLuta": [
@@ -22527,7 +22534,7 @@
      "ativacao": "uma ação, Velocidade 7",
      "duracao": "à escolha, abaixo",
      "alcance": "9 m em volta dela",
-     "area": "à escolha: pavor, todos na área ficam Em pânico até o fim da cena; náusea, todos na área ficam Caídos e passam o próximo Tick só levantando; torpor, um alvo fica Imobilizado por 12 Ticks; lamento, todos na área ficam Abalados até o fim da cena",
+     "area": "à escolha: pavor, todos na área ficam Em pânico até o fim da cena; náusea, todos na área ficam Caídos e passam o próximo Tick só levantando; lamento, todos na área ficam Abalados até o fim da cena",
      "efeito": "o lamento infrassônico não pega nela nem em outra capa sombria (\"Imune ao próprio gemido\", site)",
      "dano": "nenhum",
      "resistencia": "mente, contra Influência + Integridade dela",
@@ -22549,6 +22556,12 @@
      "dano": "nenhum",
      "resistencia": "mente, contra Influência + Integridade dela, só para quem desconfia da imagem falsa",
      "limiteDeUso": "um efeito por vez, à vontade"
+    },
+    {
+     "nome": "torpor do gemido",
+     "formas": "todas",
+     "classe": "sem regra ainda",
+     "efeito": "o gemido entorpece um alvo, que fica travado sem conseguir agir"
     }
    ],
    "comoLuta": [
@@ -22732,7 +22745,7 @@
    },
    {
     "nome": "Gemido sônico",
-    "descricao": "o lamento infrassônico não pega nela nem em outra capa sombria (\"Imune ao próprio gemido\", site). ativacao: uma ação, Velocidade 7. duracao: à escolha, abaixo. alcance: 9 m em volta dela. area: à escolha: pavor, todos na área ficam Em pânico até o fim da cena; náusea, todos na área ficam Caídos e passam o próximo Tick só levantando; torpor, um alvo fica Imobilizado por 12 Ticks; lamento, todos na área ficam Abalados até o fim da cena. dano: nenhum. resistencia: mente, contra Influência + Integridade dela. limiteDeUso: o pavor, uma vez por dia; os outros, um gemido a cada 12 Ticks",
+    "descricao": "o lamento infrassônico não pega nela nem em outra capa sombria (\"Imune ao próprio gemido\", site). ativacao: uma ação, Velocidade 7. duracao: à escolha, abaixo. alcance: 9 m em volta dela. area: à escolha: pavor, todos na área ficam Em pânico até o fim da cena; náusea, todos na área ficam Caídos e passam o próximo Tick só levantando; lamento, todos na área ficam Abalados até o fim da cena. dano: nenhum. resistencia: mente, contra Influência + Integridade dela. limiteDeUso: o pavor, uma vez por dia; os outros, um gemido a cada 12 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "fascinacao",
@@ -22747,6 +22760,11 @@
      "arte": "ofuscacao",
      "nivel": 3
     }
+   },
+   {
+    "nome": "torpor do gemido",
+    "descricao": "o gemido entorpece um alvo, que fica travado sem conseguir agir",
+    "classe": "sem regra ainda"
    }
   ],
   "comoLuta": [
@@ -112971,10 +112989,11 @@
     "caudaGrossa": false,
     "envergadura": 5.15,
     "massa": 25.5,
-    "area": 3.4,
+    "area": 0.58,
+    "posturaDoTamanho": "pousado, asas fechadas",
     "segundoTamanho": {
-     "area": 0.58,
-     "posturaDoTamanho": "asas fechadas"
+     "area": 3.4,
+     "posturaDoTamanho": "de baixo, asas abertas, em voo"
     }
    },
    "couraca": 0,
@@ -113107,14 +113126,14 @@
   "categoria": "animal",
   "categoriaNome": "Animal",
   "tipo": "fera",
-  "conceito": "Animal Grande",
+  "conceito": "Animal Médio",
   "descricao": "Pescador de mar aberto, que pousava na água para pegar peixe com o bico. Presa de plesiossauro e de tubarão (Brown 1904; Hone e colegas 2018).",
   "tags": [
    "animal"
   ],
   "ameaca": 3,
   "centelha": 0,
-  "tamanho": "Grande",
+  "tamanho": "Médio",
   "corpo": {
    "postura": "voador",
    "apoio": "outro",
@@ -113126,10 +113145,11 @@
    "caudaGrossa": false,
    "envergadura": 5.15,
    "massa": 25.5,
-   "area": 3.4,
+   "area": 0.58,
+   "posturaDoTamanho": "pousado, asas fechadas",
    "segundoTamanho": {
-    "area": 0.58,
-    "posturaDoTamanho": "asas fechadas"
+    "area": 3.4,
+    "posturaDoTamanho": "de baixo, asas abertas, em voo"
    },
    "medida": "0.92 m de altura, 2.1 m de comprimento",
    "peso": "25.5 kg"
@@ -113219,7 +113239,7 @@
   "habilidadesEspeciais": [],
   "comoLuta": [],
   "sentidos": [],
-  "segundoTamanho": "Médio",
+  "segundoTamanho": "Grande",
   "formas": [],
   "poderes": [],
   "locomocao": {

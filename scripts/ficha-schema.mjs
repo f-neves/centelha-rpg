@@ -17,7 +17,7 @@ import { z } from 'zod';
 
 /** Uma peça escolhida num slot de mão. `ref` é "a:<arma>", "e:<escudo>" ou "nada". */
 export const slotSchema = z.object({
-  ref: z.string().regex(/^(a:[a-z0-9-]+|e:[a-z0-9-]+|nada)$/,
+  ref: z.string().regex(/^(a:[a-z0-9-]+|e:[a-z0-9-]+|c|ce|nada)$/,
     'ref precisa ser "a:<arma>", "e:<escudo>" ou "nada"'),
   // O ajuste de qualidade: os campos de CAMPOS_ARMA / CAMPOS_ESCUDO, todos opcionais.
   mod: z.record(z.string(), z.union([z.number(), z.string(), z.null()])).optional(),
@@ -63,7 +63,7 @@ export const equipSchema = z.object({
  * ficha, e `passthrough` deixa passar sem reclamar: este esquema é um contrato de
  * leitura, não um molde do arquivo inteiro.
  */
-export const fichaSchema = z.object({
+export const fichaAntigaSchema = z.object({
   attrs: z.record(z.string(), z.number()),
   skills: z.record(z.string(), z.number()),
   skills2: z.record(z.string(), z.number()).optional(),
@@ -77,6 +77,23 @@ export const fichaSchema = z.object({
   tech: z.record(z.string(), z.boolean()).optional(),
 }).passthrough();
 
+/** A forma publicada na migração 41; aceita também a antiga durante a troca. */
+const slotNovoSchema = slotSchema.omit({ mod: true }).extend({ ajuste: z.record(z.string(), z.union([z.number(), z.string(), z.null()])).optional() });
+const conjuntoNovoSchema = z.object({ ativo: z.boolean(), maoHabil: slotNovoSchema, maoInabil: slotNovoSchema.nullable().optional() }).passthrough();
+const equipamentoNovoSchema = z.object({
+  armaduras: z.array(z.union([z.string(), z.object({ base: z.string(), vestida: z.boolean().optional(), ajuste: z.record(z.string(), z.any()).optional() }).passthrough()])).optional(),
+  arsenal: z.array(z.object({ ref: z.string() }).passthrough()).optional(),
+  conjuntos: z.array(conjuntoNovoSchema).min(1).optional(),
+}).passthrough();
+export const fichaNovaSchema = z.object({
+  atributos: z.record(z.string(), z.number()), habilidades: z.record(z.string(), z.number()),
+  habilidadesSec: z.record(z.string(), z.union([z.number(), z.object({ nome: z.string(), valor: z.number() })])).optional(),
+  virtudes: z.object({ bravura: z.number() }).passthrough(), vontade: z.number(), centelha: z.number(),
+  equipamento: equipamentoNovoSchema.optional(), proezas: z.array(z.string()).optional(),
+  artes: z.record(z.string(), z.number()).optional(), efeitos: z.array(z.string()).optional(),
+}).passthrough();
+export const fichaSchema = z.union([fichaAntigaSchema, fichaNovaSchema]);
+
 /**
  * Confere que toda `ref` de um conjunto aponta para peça que existe no catálogo.
  *
@@ -89,16 +106,16 @@ export function refsExistem(ficha, { armas, escudos, armaduras }) {
   const idsArma = new Set(armas.map((w) => w.id));
   const idsEscudo = new Set(escudos.map((s) => s.id));
   const idsArmadura = new Set(armaduras.map((a) => a.id));
-  (ficha.conjuntos || []).forEach((cj, i) => {
+  (ficha.equipamento?.conjuntos || ficha.conjuntos || []).forEach((cj, i) => {
     for (const mao of ['habil', 'inabil']) {
-      const ref = cj[mao]?.ref;
-      if (!ref || ref === 'nada') continue;
+      const ref = (cj[mao === 'habil' ? 'maoHabil' : 'maoInabil'] || cj[mao])?.ref;
+      if (!ref || ref === 'nada' || ref === 'c' || ref === 'ce') continue;
       const [tipo, id] = [ref.slice(0, 1), ref.slice(2)];
       if (tipo === 'a' && !idsArma.has(id)) erros.push(`conjunto ${i}, mão ${mao}: arma "${id}" não existe no catálogo`);
       if (tipo === 'e' && !idsEscudo.has(id)) erros.push(`conjunto ${i}, mão ${mao}: escudo "${id}" não existe no catálogo`);
     }
   });
-  for (const p of ficha.equip?.armaduras || []) {
+  for (const p of ficha.equipamento?.armaduras || ficha.equip?.armaduras || []) {
     const base = typeof p === 'string' ? p : p?.base;
     // 'c' é a peça livre (ID_ARMADURA_LIVRE), que de propósito não está no catálogo.
     if (base && base !== 'c' && !idsArmadura.has(base)) erros.push(`armadura "${base}" não existe no catálogo`);

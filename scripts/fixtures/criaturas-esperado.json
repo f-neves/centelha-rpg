@@ -3146,7 +3146,7 @@
    }
   },
   "besta-deslocadora": {
-   "sha256": "286d086f54cdaa5b3c6a81429ac3d8ea33b05d7989935bc57ddbdfc09dd6a894",
+   "sha256": "816681ef4101573124f82ee4bd65089a397dcd14e5877d354d8e689620b33678",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 2,
@@ -5593,7 +5593,7 @@
    }
   },
   "capa-sombria": {
-   "sha256": "26f35bb950a598225ef5e7017b39d12455c51738f598dce8d957b1f0a222ff45",
+   "sha256": "229d7492c737b9f08daaef2e0702c46a5e8ca36d77278f774d5f7e8e24895bf8",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 4,
@@ -29217,7 +29217,7 @@
    }
   },
   "pteranodonte": {
-   "sha256": "f7ee4bb9e37769ca51c2b6e869fc185644eb72a7dc8d608bcb7a8a4420295272",
+   "sha256": "c3e55bf746f58cc598d005226d4e0a8f09056bc844dd7362207a4a5597089584",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -29263,10 +29263,11 @@
      "caudaGrossa": false,
      "envergadura": 5.15,
      "massa": 25.5,
-     "area": 3.4,
+     "area": 0.58,
+     "posturaDoTamanho": "pousado, asas fechadas",
      "segundoTamanho": {
-      "area": 0.58,
-      "posturaDoTamanho": "asas fechadas"
+      "area": 3.4,
+      "posturaDoTamanho": "de baixo, asas abertas, em voo"
      }
     },
     "couraca": 0,
@@ -29299,8 +29300,8 @@
     "pv": 24,
     "pesoErguido": 68.15,
     "faixa": 2,
-    "tamanho": "Grande",
-    "segundoTamanho": "Médio",
+    "tamanho": "Médio",
+    "segundoTamanho": "Grande",
     "esquiva": 8,
     "bloqueio": 4,
     "energia": 4,

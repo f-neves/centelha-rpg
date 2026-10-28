@@ -155,10 +155,17 @@
       "limiteDeUso": "à vontade"
     },
     {
-      "nome": "Resistência à magia",
+      "nome": "Resistência a ataques à distância",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "resiste melhor aos feitiços dirigidos a ela"
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "a imagem fora do lugar engana quem lança de longe: soma +2 na Defesa Mental contra Arte dirigida a ela à distância",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     }
   ],
   "comoLuta": [
@@ -235,6 +242,10 @@
     {
       "campo": "habilidadesEspeciais.Deslocamento",
       "motivo": "números sugeridos pela ficha (D-197); poder natural com a base do site (Fascinação 1) e o efeito que o site descreve (\"o primeiro ataque de cada oponente contra ela erra\"); o livro não tem regra de erro automático, e o efeito fica como regra da ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência a ataques à distância",
+      "motivo": "números sugeridos pela ficha (D-197); Antes: Resistência à magia, sem regra ainda e sem número. A exceção da fonte (o toque à distância) não tem par exato no livro: a Arte mirada já se esquiva, e o +2 fica na Defesa Mental"
     },
     {
       "campo": "atributos.forca",

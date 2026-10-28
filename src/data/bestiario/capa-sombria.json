@@ -140,7 +140,7 @@
       "ativacao": "uma ação, Velocidade 7",
       "duracao": "à escolha, abaixo",
       "alcance": "9 m em volta dela",
-      "area": "à escolha: pavor, todos na área ficam Em pânico até o fim da cena; náusea, todos na área ficam Caídos e passam o próximo Tick só levantando; torpor, um alvo fica Imobilizado por 12 Ticks; lamento, todos na área ficam Abalados até o fim da cena",
+      "area": "à escolha: pavor, todos na área ficam Em pânico até o fim da cena; náusea, todos na área ficam Caídos e passam o próximo Tick só levantando; lamento, todos na área ficam Abalados até o fim da cena",
       "efeito": "o lamento infrassônico não pega nela nem em outra capa sombria (\"Imune ao próprio gemido\", site)",
       "dano": "nenhum",
       "resistencia": "mente, contra Influência + Integridade dela",
@@ -162,6 +162,12 @@
       "dano": "nenhum",
       "resistencia": "mente, contra Influência + Integridade dela, só para quem desconfia da imagem falsa",
       "limiteDeUso": "um efeito por vez, à vontade"
+    },
+    {
+      "nome": "torpor do gemido",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o gemido entorpece um alvo, que fica travado sem conseguir agir"
     }
   ],
   "comoLuta": [

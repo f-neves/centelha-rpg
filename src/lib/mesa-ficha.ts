@@ -1,3 +1,4 @@
+import { fichaParaLeitura } from './ficha-formato';
 // Leitura da ficha pelo lado do mestre.
 //
 // A ficha guarda o que o jogador comprou; o mestre precisa do que isso VIRA na
@@ -48,6 +49,7 @@ function passivo(id: string, nome: string, atributo: number, habilidade: number,
 
 /** Tudo que o mestre precisa saber de um personagem, a partir do objeto S da ficha. */
 export function resumoFicha(S: any): ResumoFicha {
+  S = fichaParaLeitura(S);
   const A = (k: string) => (S?.attrs?.[k] || 0);
   const SK = (k: string) => (S?.skills?.[k] || 0);
   const SK2 = (k: string) => (S?.skills2?.[k] || 0);

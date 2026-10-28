@@ -83,7 +83,7 @@ Todas as chaves estão aprovadas: as que o dragão pediu pela D-221, e as que er
 | `vontade` | inteiro | sim | F | `Vontade` |
 | `aparencia` | inteiro 0 a 12 | sim | S | `Aparência` |
 | `deslocamento` | objeto por meio | sim | S | Corpo e movimento: `Deslocamento em terra`, `Voo`, `Nado`, `Escavação` (D-190, congelado) |
-| `deslocamento.terra` | `{batalha, arranque, corrida}` | sim | S | `Deslocamento em terra` |
+| `deslocamento.terra` | `{batalha, arranque, corrida}` | condicional | S | `Deslocamento em terra` |
 | `deslocamento.voo`, `.nado`, `.escavacao`, `.escalada` | `{batalha}` (e `arranque`, `corrida` quando a ficha os tem) | cond. | S | as linhas de mesmo nome, só com número em m por Tick; `escavacao` aprovada pela D-221 |
 
 ### 2.4 Equipamento, Artes e ataques

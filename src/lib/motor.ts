@@ -1,3 +1,4 @@
+import { fichaParaLeitura } from './ficha-formato';
 // O motor único (D-228; plano-conversao.md, A2): as contas da criatura e do jogador, para o card, a mesa, o Grid, o
 // editor e a ficha. A criatura guarda só entrada e escolha (D-216), e tudo o que se calcula sai daqui: o Tamanho pela
 // área, a faixa e a Vida pela massa, o peso erguido pela R15, as Defesas, a Absorção, a Energia, a Mana, a Iniciativa
@@ -910,6 +911,7 @@ export function itemDoJogador(slot: any) {
     return { kind: 'nada', nome: '', def: 0, pen: 0 };
 }
 export function conjuntoAtivoPersonagem(S: any) {
+    S = fichaParaLeitura(S);
     return S.conjuntos?.find((c: any) => c.ativo) ?? S.conjuntos?.[0] ?? { habil: { ref: 'a:' + (S.equip?.arma ?? 'desarmado') }, inabil: { ref: S.equip?.escudo && S.equip.escudo !== 'nenhum' ? 'e:' + S.equip.escudo : 'nada' } };
 }
 export function massaDoJogador(S: any): number {
@@ -920,6 +922,7 @@ export function massaDoJogador(S: any): number {
     return lida > 0 ? lida : (faixa[0] + faixa[1]) / 2;
 }
 export function numerosPersonagem(S: any, entrada?: any) {
+    S = fichaParaLeitura(S);
     const at = entrada?.atributos ?? S.attrs ?? S.atributos ?? {};
     const hab = S.skills ?? S.habilidades ?? {}, sec = S.skills2 ?? S.habilidadesSec ?? {};
     const ce = S.centelha || 0, vontade = S.willpower ?? S.vontade ?? 0;

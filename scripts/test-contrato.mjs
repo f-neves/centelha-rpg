@@ -48,8 +48,10 @@ const lista = (d, k) => d[k] || d;
 const E = await carregar('src/lib/equip.ts');
 const CR = await carregar('src/lib/combate-resumo.ts');
 const MF = await carregar('src/lib/mesa-ficha.ts');
+const F41 = await carregar('src/lib/ficha-formato.ts');
 
 const S = ler('scripts/fixtures/kael.json');
+const S41 = F41.fichaParaGravar(S);
 const armas = achataCatalogo(lista(ler('src/data/armas.json'), 'armas'));
 const escudos = achataCatalogo(lista(ler('src/data/escudos.json'), 'escudos'));
 const armaduras = achataCatalogo(lista(ler('src/data/armaduras.json'), 'armaduras'));
@@ -66,6 +68,9 @@ ok(v.success, 'a ficha de fixação bate com o esquema'
 // ---------------------------------------- 2. as referências existem mesmo
 const orfas = refsExistem(S, { armas, escudos, armaduras });
 eq(orfas.join(' | ') || 'nenhuma', 'nenhuma', 'referência de equipamento sem peça no catálogo');
+eq(refsExistem(S41, { armas, escudos, armaduras }).join(' | ') || 'nenhuma', 'nenhuma', 'referência nova sem peça no catálogo');
+eq(MF.resumoFicha(S41).defBloqueio, MF.resumoFicha(S).defBloqueio, 'Bloqueio da ficha nova e antiga');
+eq(CR.resumoCombatePC(S41).ataque, CR.resumoCombatePC(S).ataque, 'ataque da ficha nova e antiga');
 
 // Vale para o catálogo INTEIRO, e não só para o que a fixação usa: toda arma e
 // todo escudo do catálogo têm de sobreviver a uma ida e volta pelo slot. É o que

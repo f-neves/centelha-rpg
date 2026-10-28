@@ -33646,7 +33646,7 @@
   "centelha": 0,
   "categoria": "animal",
   "categoriaNome": "Animal",
-  "tamanho": "Grande",
+  "tamanho": "Médio",
   "imagens": [
    "bestiario/pteranodonte_criatura.webp"
   ],
@@ -33743,16 +33743,17 @@
    "caudaGrossa": false,
    "envergadura": 5.15,
    "massa": 25.5,
-   "area": 3.4,
+   "area": 0.58,
+   "posturaDoTamanho": "pousado, asas fechadas",
    "segundoTamanho": {
-    "area": 0.58,
-    "posturaDoTamanho": "asas fechadas"
+    "area": 3.4,
+    "posturaDoTamanho": "de baixo, asas abertas, em voo"
    },
    "medida": "0.92 m de altura, 2.1 m de comprimento",
    "peso": "25.5 kg"
   },
   "formas": [],
-  "segundoTamanho": "Médio"
+  "segundoTamanho": "Grande"
  },
  {
   "id": "pudim-negro",

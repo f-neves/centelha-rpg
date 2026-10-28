@@ -1906,7 +1906,7 @@ export function aguentouFicarParado(total: number, d: Desvio): boolean {
 export function opcoesDeFicarParado(quem: { virtudes?: Record<string, number> }): { chave: 'valor' | 'temperanca'; rotulo: string; soma: number }[] {
   const v = quem.virtudes || {};
   return [
-    { chave: 'valor', rotulo: 'Bravura', soma: Number(v.valor || 0) },
+    { chave: 'valor', rotulo: 'Bravura', soma: Number(v.bravura ?? v.valor ?? 0) },
     { chave: 'temperanca', rotulo: 'Temperança', soma: Number(v.temperanca || 0) },
   ];
 }

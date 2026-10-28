@@ -1,3 +1,4 @@
+import { fichaParaLeitura } from './ficha-formato';
 // A conjuração na mesa: o assistente que transforma uma Arte num efeito no
 // tabuleiro, e os diálogos que ele precisa pelo caminho.
 //
@@ -1046,6 +1047,7 @@ export interface ItemDoAlvo { id: string; nome: string; onde: string; metal: boo
  * diferença entre não saber e impedir.
  */
 export function itensDoAlvo(ficha: any): ItemDoAlvo[] {
+  ficha = fichaParaLeitura(ficha);
   const out: ItemDoAlvo[] = [];
   const ehMetal = (nome: string) =>
     /malha|placa|escama|aço|aco|ferro|metal|lâmina|lamina|espada|machado|lança|lanca|maça|maca|elmo|broquel/i.test(nome);
@@ -1060,7 +1062,7 @@ export function itensDoAlvo(ficha: any): ItemDoAlvo[] {
       if (cj.habil?.nome || cj.habil?.ref) push(cj.habil.nome || cj.habil.ref, 'mão hábil');
       if (cj.inabil?.nome || cj.inabil?.ref) push(cj.inabil.nome || cj.inabil.ref, 'mão inábil');
     }
-    for (const a of ficha?.armaduras || []) push(a?.nome || a?.ref, 'armadura');
+    for (const a of ficha?.equip?.armaduras || []) push(a?.nome || a?.ref, 'armadura');
     if (ficha?.equip?.arma) push(ficha.equip.arma, 'arma');
     if (ficha?.equip?.escudo && ficha.equip.escudo !== 'nenhum') push(ficha.equip.escudo, 'escudo');
   } catch { /* ficha em formato antigo: cai no campo livre */ }
