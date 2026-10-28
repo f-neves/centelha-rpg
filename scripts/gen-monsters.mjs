@@ -92,6 +92,7 @@ function build(c, fonte) {
   };
   const e = f.ecologia || {};
   return {
+    ...(f.motor?.edicao ? {edicao:f.motor.edicao} : {}),
     id: c.id,
     nome: c.nome,
     nomeIngles: f.nomeIngles || null,
@@ -272,6 +273,7 @@ const CAMPOS_MESA = [
  * o dado, que é a direção certa do erro.
  */
 const FORA_DA_MESA = {
+  edicao: 'fonte do editor, sem revisão privada',
   descricao: 'prosa do card, e o card vem por arquivo separado',
   conceito: 'prosa do card',
   habilidadesEspeciais: 'prosa do card, e é o maior pedaço dos 900 KB (27%)',

@@ -18,6 +18,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
 import { lerFichaMd, campo, negritos, numBR, semMarcas, slug } from './lib-ficha-md.mjs';
 import { converterFicha } from './conversor-criatura.mjs';
 
@@ -51,7 +52,7 @@ function lerJogada(just) {
   return atr + hab + termo;
 }
 
-function lerEsperado(texto) {
+export function lerEsperado(texto) {
   const F = lerFichaMd(texto), T = F.tabelas, nao = [];
   const I = T['Identidade'], C = T['Corpo, área e porte'] ?? T['Corpo e porte'], M = T['Corpo e movimento'];
   const esperado = {}, ficha = {};
@@ -125,6 +126,7 @@ function lerEsperado(texto) {
   return { esperado, ficha, formas, nao };
 }
 
+if (path.resolve(process.argv[1] || '') === path.resolve(fileURLToPath(import.meta.url))) {
 const arquivos = fs.readdirSync(PASTA).filter((a) => a.endsWith('.md')).sort();
 const criaturas = {};
 let comParada = 0;
@@ -155,3 +157,5 @@ const C = Object.values(criaturas);
 const nAt = C.reduce((s, c) => s + c.esperado.ataques.length, 0), nJog = C.reduce((s, c) => s + c.esperado.ataques.filter((x) => x.jogada !== undefined).length, 0);
 console.log(`criaturas-esperado.json: ${arquivos.length} fichas, ${nAt} ataques (${nJog} com a jogada escrita), ${comParada} com parada do conversor, ${C.filter((c) => c.naoLido).length} com número que não se leu`);
 for (const [id, c] of Object.entries(criaturas)) if (c.naoLido) console.log(`  ${id}: ${c.naoLido.join('; ')}`);
+
+}

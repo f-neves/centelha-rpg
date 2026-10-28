@@ -9,6 +9,9 @@
 //
 //   node scripts/test-formas.mjs
 import fs from 'node:fs';
+import path from 'node:path';
+import os from 'node:os';
+import { spawnSync } from 'node:child_process';
 import { carregarTS } from './lib-ts.mjs';
 import { formasDaFicha, idDaForma } from './lib-ficha-v3.mjs';
 import { criaturaSchema } from './criatura-schema.mjs';
@@ -95,6 +98,35 @@ ok(ajuste.pv===99 && ajuste.defesa===77 && ajuste.velocidade===2 && ajuste.ataqu
 ok(erro(()=>mesa.escolherFormaDaPeca(a,'forma-inexistente'))!==null, 'recusa forma de outra criatura');
 mesa.escolherFormaDaPeca(a,'hibrida');
 ok(mesa.resumoDe(a).pv===principal.pv, 'retorna à forma principal');
+
+// A9: fonte exportada pelo editor é a mesma entrada do motor, sem derivados gravados.
+const editor = await carregarTS('src/lib/bestia-editor.ts');
+const nova = editor.novaCriatura();
+ok(editor.derivados(nova).pv===31, 'editor: corpo humano de 80 kg e Vigor 2 tem 31 PV');
+nova.atributos.vigor=4;
+ok(editor.derivados(nova).pv===37, 'editor: Vigor 4 recalcula 37 PV pelo motor');
+ok(erro(()=>editor.paraJson({...nova,pv:999}))!==null, 'editor recusa PV calculado no JSON-fonte');
+for (const m of monstros) {
+  const fonte={...m.edicao,revisao:[]};
+  const exportada=JSON.parse(editor.paraJson(fonte));
+  ok(editor.derivados(exportada).pv===m.combate.pv, m.id+': editor e card têm o mesmo PV');
+  ok(!Object.hasOwn(m.edicao,'revisao'), m.id+': fonte pública sem revisão');
+}
+
+// A10: a CLI confere o número da ficha e recusa uma divergência plantada.
+const caso=path.resolve('scripts/fixtures/conversor/ghaele-azata.md');
+const cli=(arquivo)=>spawnSync(process.execPath,['scripts/motor-criatura.mjs','--ficha',arquivo],{encoding:'utf8'});
+const bom=cli(caso);
+ok(bom.status===0 && JSON.parse(bom.stdout).numeros.pv===40,'conferidor: ficha correta e PV 40');
+const pastaCaso=fs.mkdtempSync(path.join(os.tmpdir(),'centelha-a10-'));
+const arquivoMutado=path.join(pastaCaso,'ghaele-azata.md');
+try {
+  const alterada=fs.readFileSync(caso,'utf8').replace('"pv":40','"pv":41');
+  ok(alterada!==fs.readFileSync(caso,'utf8'),'controle negativo alterou o PV declarado');
+  fs.writeFileSync(arquivoMutado,alterada);
+  const ruim=cli(arquivoMutado);
+  ok(ruim.status===1 && ruim.stderr.includes('motor 40, ficha 41'),'conferidor acusa PV divergente');
+} finally { if(fs.existsSync(arquivoMutado))fs.unlinkSync(arquivoMutado); fs.rmdirSync(pastaCaso); }
 
 if (falhas.length) { console.error(`\n✘ formas: ${falhas.length} falha(s)`); process.exit(1); }
 console.log('\n✓ formas: o campo transforma sai da linha Formas, com os quatro erros e o esquema conferidos');
