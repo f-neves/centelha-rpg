@@ -134,7 +134,7 @@ export function converterFicha(texto, { site = null } = {}) {
   const anat = `${campo(I, 'Anatomia') || ''} ${corpo.postura}`;
   corpo.apoio = /quadrúpede|quatro patas/i.test(anat) ? 'quadrupede' : /bípede|de pé|duas pernas/i.test(anat) ? 'bipede' : undefined;
   if (!corpo.apoio) {
-    if (/serpente|sem pernas|sem patas|cobra|verme|limo|enxame|tentáculo|nada|voa|flutua|asas|peixe|incorpóreo|nuvem|redemoinho|pairando|sem membros|seis pernas|vegetal ramificado|hexápode|seis patas|oito patas|aracnídeo|inseto|caranguejo|crustáceo/i.test(anat)) corpo.apoio = 'outro';
+    if (/apoio outro|serpente|sem pernas|sem patas|cobra|verme|limo|enxame|tentáculo|nada|voa|flutua|asas|peixe|incorpóreo|nuvem|redemoinho|pairando|sem membros|seis pernas|vegetal ramificado|hexápode|seis patas|oito patas|aracnídeo|inseto|caranguejo|crustáceo/i.test(anat)) corpo.apoio = 'outro';
     else para(`apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede ("${anat.trim().slice(0, 80)}")`);
   }
   corpo.altura = metros(campo(C, 'Altura'));
@@ -524,7 +524,7 @@ export function converterFicha(texto, { site = null } = {}) {
         else if (k === 'Comprimento total' || k === 'Comprimento') fc.comprimento = n(v);
         else if (k === 'Comprimento sem a cauda') fc.comprimentoSemCauda = n(v);
         else if (k === 'Envergadura') fc.envergadura = n(v);
-        else if (k === 'Massa') { const q = v.match(/([\d.,]+) (g|kg|t)\b/); if (q) fc.massa = numBR(q[1]) * UN[q[2]]; }
+        else if (k === 'Massa') { const q = v.match(/([\d.,]+) (g|kg|t)\b/); if (/^sem massa/.test(v)) { const volume=v.match(/volume ([\d.,]+) m³/); if (volume) {fc.semMassa=true; fc.volume=numBR(volume[1]);} else para('Variantes, '+nomeF+': sem massa exige volume'); } else if (q) fc.massa = numBR(q[1]) * UN[q[2]]; }
         else if (k === 'Área') fc.area = n(v);
         else if (k === 'Tamanho') {
           const q = v.match(new RegExp(`^(${TAMANHOS})(?:\\s*\\(([\\d.,]+) m²,\\s*([^)]*)\\))?`));
@@ -578,8 +578,17 @@ export function converterFicha(texto, { site = null } = {}) {
           const nomeA = m[1].trim(), det = m[2].split(',').map((x) => x.trim());
           const arma = ARMAS.find((w) => eqArmas.includes(w.id) && w.nome.toLowerCase() === nomeA.toLowerCase());
           if (arma) { f.ataques.push({ nome: nomeA, arma: arma.id, habilidade: arma.arma.pericia }); continue; }
-          const base = c.ataques.find((a) => a.nome === nomeA);
+          let base = c.ataques.find((a) => a.nome === nomeA);
           const pgr = (det[1] || '').match(/^(\d+)\/(\d+)\/(\d+)$/), dd = (det[3] || '').match(/^(\d+)d6(?:\s*([+−-])\s*(\d+))?/);
+          if (!base && pgr && dd) {
+            // A Variante pode introduzir um poder natural; a Ativação explicita a Habilidade.
+            const poder = c.habilidadesEspeciais.find(h=>h.nome===nomeA);
+            const habilidade = poder?.ativacao?.match(/(?:Força|Destreza|Vigor|Percepção) \+ (Briga|Armas|Disparo|Atirador|Arremesso)/)?.[1];
+            const acerto = det.find(x=>/^Acerto [ +−-]*\d+$/.test(x))?.match(/[+−-]?\d+/)?.[0];
+            if (habilidade && acerto !== undefined && det.some(x=>/^não bloqueia$/.test(x)) && Number(det[2])===pgr.slice(1).reduce((n,x)=>n+Number(x),0)) {
+              base = {nome:nomeA, parte:slug(nomeA), habilidade:slug(habilidade), acerto:Number(acerto.replace('−','-')), bloqueiaComoArma:null, nivelPerfuracao:null};
+            }
+          }
           if (!base || !pgr || !dd) { para(`Variantes, ${nomeF}: o ataque "${nomeA}" ilegível`); continue; }
           f.ataques.push({ ...base, classe: slug(det[0]), pgr: pgr.slice(1).map(Number),
             dado: `${dd[1]}d6${dd[3] ? `${dd[2] === '+' ? '+' : '-'}${dd[3]}` : ''}`,

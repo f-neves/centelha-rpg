@@ -1015,7 +1015,7 @@
   "arranque": 8,
   "corrida": 12,
   "ft": 50,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "ghast": {
   "batalha": 3,
@@ -1397,7 +1397,7 @@
   "arranque": 5,
   "corrida": 7,
   "ft": 30,
-  "origem": "fonte"
+  "origem": "ficha"
  },
  "limo-cinzento": {
   "batalha": 1,

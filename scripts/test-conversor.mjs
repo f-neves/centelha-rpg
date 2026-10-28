@@ -203,6 +203,16 @@ for (const [celula, esperado] of [['sim, +1',1], ['sim, Defesa +2',2], ['sim (+1
   if (r.paradas.length || r.criatura.ataques.find(a=>a.nome==='Mordida')?.bloqueiaComoArma !== esperado) falhas.push('bloqueio da célula não preservado: '+celula);
 }
 
+// Variante com ataque próprio, volume incorpóreo e Habilidades fixas, lote autorizado de 28/10.
+{
+  const texto = ler('ghaele-azata.md');
+  const r = converterFicha(texto, { site: SITE });
+  const globo = r.criatura.formas.find(f=>f.id==='globo-de-luz');
+  if (r.paradas.length || !globo?.corpo.naoErgue || !globo.corpo.semMassa || globo.corpo.volume!==0.089109 || globo.ataques[0].habilidade!=='disparo') falhas.push('ghaele: Variante completa não foi lida');
+  if (!converterFicha(texto.replace('Vigor + Disparo','Vigor'),{site:SITE}).paradas.some(p=>p.includes('Raio de luz'))) falhas.push('ghaele: leitor inferiu Habilidade ausente');
+  if (!converterFicha(texto.replace('; Força 0;', '; Força 0; Bloqueio 0;'),{site:SITE}).paradas.some(p=>p.includes('Habilidade fixa'))) falhas.push('ghaele: Habilidade da forma passou como substituível');
+}
+
 // Nomes soltos das notas viram caminhos existentes, sem alterar a ficha de entrada.
 {
   const nomes = ['ataque', 'equipamento', 'tamanho', 'pv', 'couracaNivel', 'raciocinio', 'temperanca'];

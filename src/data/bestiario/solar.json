@@ -293,6 +293,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "Comportamento"
+    },
+    {
+      "campo": "ataques.Arco longo",
+      "motivo": "dano médio 22,5 -> 20,5; a D-075 limita a Força aplicada ao arco a 8. A Força da criatura continua 10. a conferir."
     }
   ]
 }

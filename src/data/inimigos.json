@@ -1,98 +1,5 @@
 [
   {
-    "id": "ghaele-azata",
-    "nome": "Ghaele (azata)",
-    "tipo": "chefe",
-    "categoria": "Celestial",
-    "ameaca": 5,
-    "centelha": 6,
-    "conceito": "exterior Médio (celestial)",
-    "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
-    "tags": [
-      "celestial",
-      "centelha",
-      "mágico"
-    ],
-    "pv": 40,
-    "defesa": 20,
-    "defesaSocial": 14,
-    "defesaMental": 36,
-    "vontade": 11,
-    "soak": {
-      "impacto": 11,
-      "corte": 8,
-      "perfuracao": 8
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 9",
-    "atributos": {
-      "forca": 6,
-      "destreza": 6,
-      "vigor": 5,
-      "influencia": 7,
-      "perspicacia": 7,
-      "compostura": 7,
-      "percepcao": 6,
-      "inteligencia": 6,
-      "raciocinio": 6
-    },
-    "ataques": [
-      {
-        "nome": "Golpe planar",
-        "pool": "5d6+2 +10",
-        "dano": "1d6 +12 corte",
-        "perfArma": null,
-        "ticks": 5
-      }
-    ],
-    "tecnicas": [],
-    "artes": [
-      {
-        "id": "raio",
-        "nivel": 4
-      },
-      {
-        "id": "luz",
-        "nivel": 4
-      },
-      {
-        "id": "protecao",
-        "nivel": 4
-      },
-      {
-        "id": "fascinacao",
-        "nivel": 4
-      },
-      {
-        "id": "cura",
-        "nivel": 4
-      }
-    ],
-    "poderes": [
-      {
-        "id": "forma-de-globo-de-luz",
-        "nome": "Forma de globo de luz",
-        "tipo": "natural",
-        "base": {
-          "arte": "espirito",
-          "nivel": 3
-        },
-        "resiste": "nenhum",
-        "efeito": "Forma de globo de luz",
-        "usos": {
-          "periodo": "avontade"
-        }
-      }
-    ],
-    "pericias": {
-      "prontidao": 3,
-      "esquiva": 2,
-      "integridade": 7,
-      "sociabilidade": 0,
-      "furtividade": 2
-    }
-  },
-  {
     "id": "enxame-de-formigas",
     "nome": "Enxame de formigas (formigas-de-correição)",
     "tipo": "fera",
@@ -153,61 +60,6 @@
       "integridade": 0,
       "sociabilidade": 2,
       "furtividade": 0
-    }
-  },
-  {
-    "id": "lillend",
-    "nome": "Lillend",
-    "tipo": "elite",
-    "categoria": "Celestial",
-    "ameaca": 4,
-    "centelha": 4,
-    "conceito": "exterior (anjo) Grande",
-    "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
-    "tags": [
-      "celestial",
-      "centelha"
-    ],
-    "pv": 58,
-    "defesa": 14,
-    "defesaSocial": 10,
-    "defesaMental": 26,
-    "vontade": 9,
-    "soak": {
-      "impacto": 11,
-      "corte": 9,
-      "perfuracao": 9
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 6",
-    "atributos": {
-      "forca": 7,
-      "destreza": 5,
-      "vigor": 7,
-      "influencia": 5,
-      "perspicacia": 5,
-      "compostura": 5,
-      "percepcao": 5,
-      "inteligencia": 4,
-      "raciocinio": 4
-    },
-    "ataques": [
-      {
-        "nome": "Golpe planar",
-        "pool": "6d6 +8",
-        "dano": "2d6 +11 corte",
-        "perfArma": null,
-        "ticks": 6
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "pericias": {
-      "prontidao": 2,
-      "esquiva": 1,
-      "integridade": 5,
-      "sociabilidade": 0,
-      "furtividade": 1
     }
   },
   {
@@ -10988,6 +10840,96 @@
     }
   },
   {
+    "id": "ghaele-azata",
+    "nome": "Ghaele (azata)",
+    "tipo": "chefe",
+    "categoria": "celestial",
+    "ameaca": 5,
+    "centelha": 6,
+    "conceito": "",
+    "descricao": "Campeã celeste que socorre causas justas e desaparece antes dos agradecimentos. Alterna entre guerreira de beleza sobrenatural e globo luminoso.",
+    "tags": [
+      "celestial"
+    ],
+    "pv": 40,
+    "defesa": 25,
+    "defesaMental": 36,
+    "defesaSocial": 26,
+    "vontade": 11,
+    "soak": {
+      "impacto": 11,
+      "corte": 6,
+      "perfuracao": 6
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 10",
+    "atributos": {
+      "forca": 6,
+      "destreza": 6,
+      "vigor": 5,
+      "percepcao": 6,
+      "inteligencia": 6,
+      "raciocinio": 6,
+      "influencia": 7,
+      "perspicacia": 7,
+      "compostura": 7
+    },
+    "ataques": [
+      {
+        "nome": "Espada longa",
+        "atrib": "forca",
+        "pericia": "armas",
+        "dado": 1,
+        "tipo": "corte",
+        "classe": "media",
+        "ticks": 6,
+        "acerto": 1,
+        "pool": "5d6+2 +11",
+        "dano": "1d6 +12 (C)",
+        "perfArma": null
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "cura",
+        "nivel": 4
+      },
+      {
+        "id": "protecao",
+        "nivel": 4
+      },
+      {
+        "id": "luz",
+        "nivel": 4
+      },
+      {
+        "id": "fascinacao",
+        "nivel": 4
+      },
+      {
+        "id": "raio",
+        "nivel": 4
+      }
+    ],
+    "pericias": {
+      "prontidao": 4,
+      "furtividade": 0,
+      "briga": 0,
+      "bloqueio": 3,
+      "esquiva": 2,
+      "integridade": 7,
+      "sobrevivencia": 0,
+      "sociabilidade": 3,
+      "ocultismo": 4,
+      "oratoria": 0,
+      "empatia": 3,
+      "armas": 5,
+      "musculatura": 0,
+      "disparo": 4
+    }
+  },
+  {
     "id": "ghast",
     "nome": "Ghast",
     "tipo": "soldado",
@@ -15121,6 +15063,99 @@
       "acerto-arcano": 5,
       "halterofilismo": 0,
       "musculatura": 0
+    }
+  },
+  {
+    "id": "lillend",
+    "nome": "Lillend",
+    "tipo": "elite",
+    "categoria": "celestial",
+    "ameaca": 4,
+    "centelha": 4,
+    "conceito": "",
+    "descricao": "Guardiã de artistas e canções, mantém a harpa ao alcance das mãos. Enrola a cauda ao redor de quem ameaça seus protegidos.",
+    "tags": [
+      "celestial"
+    ],
+    "pv": 58,
+    "defesa": 19,
+    "defesaMental": 26,
+    "defesaSocial": 22,
+    "vontade": 9,
+    "soak": {
+      "impacto": 11,
+      "corte": 4,
+      "perfuracao": 4
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 7",
+    "atributos": {
+      "forca": 7,
+      "destreza": 5,
+      "vigor": 7,
+      "percepcao": 5,
+      "inteligencia": 4,
+      "raciocinio": 4,
+      "influencia": 5,
+      "perspicacia": 5,
+      "compostura": 5
+    },
+    "ataques": [
+      {
+        "nome": "Espada longa",
+        "atrib": "forca",
+        "pericia": "armas",
+        "dado": 1,
+        "tipo": "corte",
+        "classe": "media",
+        "ticks": 6,
+        "acerto": 1,
+        "pool": "5d6+2 +9",
+        "dano": "1d6 +11 (C)",
+        "perfArma": null
+      },
+      {
+        "nome": "Cauda",
+        "atrib": "forca",
+        "pericia": "briga",
+        "dado": 2,
+        "tipo": "impacto",
+        "classe": "pesada",
+        "ticks": 7,
+        "acerto": 0,
+        "pool": "5d6+2 +8",
+        "dano": "2d6 +11 (I)",
+        "perfArma": null
+      }
+    ],
+    "tecnicas": [],
+    "artes": [
+      {
+        "id": "fascinacao",
+        "nivel": 3
+      },
+      {
+        "id": "cura",
+        "nivel": 3
+      },
+      {
+        "id": "luz",
+        "nivel": 1
+      }
+    ],
+    "pericias": {
+      "prontidao": 3,
+      "furtividade": 0,
+      "briga": 4,
+      "bloqueio": 2,
+      "esquiva": 1,
+      "integridade": 5,
+      "sobrevivencia": 3,
+      "sociabilidade": 3,
+      "armas": 4,
+      "empatia": 3,
+      "tocar-instrumento": 4,
+      "musculatura": 2
     }
   },
   {

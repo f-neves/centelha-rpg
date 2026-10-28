@@ -1137,7 +1137,7 @@
    }
   },
   "arconte-lanterna": {
-   "sha256": "515560d35fd5483b2f3d1262b8cc7abf34e1c639483403a10755676497faa2dd",
+   "sha256": "27f0d3de8e809b81bc01a99b6aaa3134bf5019e2da1b35111dcc1d2a7c4c3f6d",
    "entrada": {
     "categoria": "celestial",
     "centelha": 2,
@@ -1167,7 +1167,7 @@
     },
     "vontade": 7,
     "corpo": {
-     "postura": "pairando em combate",
+     "postura": "pairando em combate, apoio outro",
      "apoio": "outro",
      "altura": 1,
      "largura": 1,
@@ -13621,7 +13621,7 @@
    }
   },
   "espantalho-desperto": {
-   "sha256": "10d46acb5e91ab9721e812aa97a24b055cade42ae7939669fb0ec4dbdb67853b",
+   "sha256": "bc6eca5b34a1a1aad80b6e19e2d0bfd949beace40ed82364c2e3106da439ce2c",
    "entrada": {
     "categoria": "construto",
     "centelha": 1,
@@ -15848,7 +15848,7 @@
    }
   },
   "ghaele-azata": {
-   "sha256": "12ba757f3c02c657dfc9064f235dc8c9d5c37182a884965c094f4c059e3addd4",
+   "sha256": "e086b869ae0d4dbab7ce27b8ec85592454d0fa16031dbf2689f1bb43f85acfd7",
    "entrada": {
     "categoria": "celestial",
     "centelha": 6,
@@ -15956,13 +15956,33 @@
        "comprimentoSemCauda": 0.5542,
        "largura": 0.5542,
        "profundidade": 0.5542,
+       "semMassa": true,
+       "volume": 0.089109,
        "area": 0.2412,
        "naoErgue": true
       },
       "equipamento": {
        "arsenal": []
       },
-      "ataques": []
+      "ataques": [
+       {
+        "nome": "Raio de luz",
+        "parte": "raio-de-luz",
+        "habilidade": "disparo",
+        "acerto": 0,
+        "bloqueiaComoArma": null,
+        "nivelPerfuracao": 0,
+        "classe": "distancia",
+        "pgr": [
+         3,
+         1,
+         3
+        ],
+        "dado": "2d6",
+        "multiplicadorForca": 0,
+        "tipoDano": "fenomeno"
+       }
+      ]
      },
      "esperado": {
       "pv": 40,
@@ -15970,12 +15990,7 @@
       "faixa": 3
      }
     }
-   },
-   "paradas": [
-    "Variantes, globo de luz: Bloqueio 0 altera Habilidade fixa entre formas; ajustar a ficha, formato-criatura.md, seção 1",
-    "Variantes, globo de luz: Musculatura 0 altera Habilidade fixa entre formas; ajustar a ficha, formato-criatura.md, seção 1",
-    "Variantes, globo de luz: o ataque \"Raio de luz\" ilegível"
-   ]
+   }
   },
   "ghast": {
    "sha256": "dd3b5134ed64e991b2790557dc79b991ba8007da7d0300e17c86aebc61a0c7fa",
@@ -22015,7 +22030,7 @@
    }
   },
   "lillend": {
-   "sha256": "e22ba7e55cd621fe43badc257c4dd789e4df963fe72fa43a754f89e6eeed65d0",
+   "sha256": "571ab7ffebd1d77cfe9a0867d785a1da2d7c3de1fd5d043de853b324ab6d597e",
    "entrada": {
     "categoria": "celestial",
     "centelha": 4,
@@ -22042,6 +22057,7 @@
      "empatia": 3
     },
     "habilidadesSec": {
+     "tocar-instrumento": 4,
      "musculatura": 2
     },
     "vontade": 9,
@@ -22129,10 +22145,7 @@
       "danoMedio": 18
      }
     ]
-   },
-   "paradas": [
-    "Habilidades: a Habilidade \"Música\" não está no catálogo (D-231)"
-   ]
+   }
   },
   "limo-cinzento": {
    "sha256": "0d50976928ce2be3240f43314cffb9669eb8ddb66ab84a1a3bc12f2358d5bfda",
@@ -28201,7 +28214,7 @@
    }
   },
   "pescador-das-cavernas": {
-   "sha256": "0fa3e1c2dcdb86d1755ce5e45ec76bdee9fdd27be7d8bc9015cd642dd03d24d5",
+   "sha256": "6a5bed8f3927d589c87ee9aab8a2eb19d81592b5868e0ebba576c0ec96d77994",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -28233,7 +28246,7 @@
     },
     "vontade": 5,
     "corpo": {
-     "postura": "seis pernas apoiadas na rocha",
+     "postura": "seis pernas apoiadas na rocha, apoio outro",
      "apoio": "outro",
      "altura": 0.35,
      "largura": 0.7,
@@ -31800,7 +31813,7 @@
    }
   },
   "solar": {
-   "sha256": "6e44d5f31f50a49317e7d76a94e98be409ef50621e1104becf4a37e758f627f8",
+   "sha256": "5c38a613dfe9aa54b924bb0fda51736fa468d979b9f0f708f3b360be9165bf82",
    "entrada": {
     "categoria": "celestial",
     "centelha": 9,
@@ -31906,7 +31919,7 @@
      {
       "nome": "Arco longo",
       "velocidade": 7,
-      "danoMedio": 22.5
+      "danoMedio": 20.5
      }
     ]
    }
@@ -33380,7 +33393,7 @@
    }
   },
   "trepadeira-de-almiscar-amarelo": {
-   "sha256": "8eaba2859ed32b36c3d820baf293d9c92d0456b7f2246a6ee2e475f51897c619",
+   "sha256": "9154c39f2408fdfaf68623014d5e057656514a0985bf3d65a8061a2672f831b8",
    "entrada": {
     "categoria": "planta",
     "centelha": 0,
@@ -33409,7 +33422,7 @@
     },
     "vontade": 3,
     "corpo": {
-     "postura": "ramos espalhados no chão",
+     "postura": "ramos espalhados no chão, apoio outro",
      "apoio": "outro",
      "altura": 0.6,
      "largura": 3,

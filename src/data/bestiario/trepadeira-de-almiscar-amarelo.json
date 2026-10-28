@@ -8,7 +8,7 @@
   "ameaca": 2,
   "centelha": 0,
   "corpo": {
-    "postura": "ramos espalhados no chão",
+    "postura": "ramos espalhados no chão, apoio outro",
     "apoio": "outro",
     "altura": 0.6,
     "largura": 3,
@@ -203,6 +203,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "Comportamento"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "apoio outro explicitado na Anatomia e na Postura; esfera, hexápode ou planta não usam o apoio bípede nem quadrúpede. a conferir."
     },
     {
       "campo": "ataques.Tendrilho",

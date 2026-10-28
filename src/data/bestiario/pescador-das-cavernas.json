@@ -8,7 +8,7 @@
   "ameaca": 2,
   "centelha": 0,
   "corpo": {
-    "postura": "seis pernas apoiadas na rocha",
+    "postura": "seis pernas apoiadas na rocha, apoio outro",
     "apoio": "outro",
     "altura": 0.35,
     "largura": 0.7,
@@ -196,6 +196,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "Comportamento"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "apoio outro explicitado na Anatomia e na Postura; esfera, hexápode ou planta não usam o apoio bípede nem quadrúpede. a conferir."
     },
     {
       "campo": "ataques.Pinça",

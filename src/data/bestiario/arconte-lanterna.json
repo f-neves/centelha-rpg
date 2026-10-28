@@ -8,7 +8,7 @@
   "ameaca": 2,
   "centelha": 2,
   "corpo": {
-    "postura": "pairando em combate",
+    "postura": "pairando em combate, apoio outro",
     "apoio": "outro",
     "altura": 1,
     "largura": 1,
@@ -284,6 +284,10 @@
     {
       "campo": "ataques.Raio de luz",
       "motivo": "Feixe natural (base Luz 3); jogada Vigor 3 + Disparo 3 + 2 × o menor entre Centelha 2 e Disparo 3. Só Centelha absorve fenômeno (C-041)"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "apoio outro explicitado na Anatomia e na Postura; esfera, hexápode ou planta não usam o apoio bípede nem quadrúpede. a conferir."
     }
   ]
 }

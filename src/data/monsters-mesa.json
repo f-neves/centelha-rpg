@@ -1458,7 +1458,7 @@
    ]
   },
   "corpo": {
-   "postura": "pairando em combate",
+   "postura": "pairando em combate, apoio outro",
    "apoio": "outro",
    "altura": 1,
    "largura": 1,
@@ -19095,14 +19095,15 @@
    "forca": 6,
    "destreza": 6,
    "vigor": 5,
-   "influencia": 7,
-   "perspicacia": 7,
-   "compostura": 7,
    "percepcao": 6,
    "inteligencia": 6,
-   "raciocinio": 6
+   "raciocinio": 6,
+   "influencia": 7,
+   "perspicacia": 7,
+   "compostura": 7
   },
   "virtudes": {
+   "bravura": 5,
    "compaixao": 5,
    "conviccao": 5,
    "temperanca": 4,
@@ -19111,20 +19112,26 @@
   "vontade": 11,
   "aparencia": 12,
   "habilidades": {
-   "prontidao": 3,
-   "furtividade": 2,
+   "prontidao": 4,
+   "furtividade": 0,
+   "briga": 0,
+   "bloqueio": 3,
    "esquiva": 2,
    "integridade": 7,
-   "sociabilidade": 0
+   "sobrevivencia": 0,
+   "sociabilidade": 3,
+   "ocultismo": 4,
+   "oratoria": 0,
+   "empatia": 3,
+   "armas": 5
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "musculatura": 0,
+   "disparo": 4
+  },
   "artes": [
    {
-    "id": "raio",
-    "nivel": 4
-   },
-   {
-    "id": "luz",
+    "id": "cura",
     "nivel": 4
    },
    {
@@ -19132,30 +19139,34 @@
     "nivel": 4
    },
    {
+    "id": "luz",
+    "nivel": 4
+   },
+   {
     "id": "fascinacao",
     "nivel": 4
    },
    {
-    "id": "cura",
+    "id": "raio",
     "nivel": 4
    }
   ],
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 20,
-   "defesaSocial": 14,
+   "defesa": 25,
+   "defesaSocial": 26,
    "defesaMental": 36,
    "absorcao": {
     "impacto": 11,
-    "corte": 8,
-    "perfuracao": 8
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
     "profano"
    ],
-   "iniciativa": "1d6 + 9",
+   "iniciativa": "1d6 + 10",
    "deslocamento": {
     "batalha": 5,
     "arranque": 8,
@@ -19163,29 +19174,299 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "5d6+2 +10",
-     "dano": "1d6 +12 corte",
+     "nome": "Espada longa",
+     "pool": "5d6+2 +11",
+     "dano": "1d6 +12 (C)",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "ecologia": {
-   "tipo": "Celestial",
+   "tipo": "celestial",
    "terreno": [
-    "Any"
+    "qualquer"
    ],
    "clima": [
-    "Extraplanar"
+    "extraplanar"
    ]
   },
   "corpo": {
-   "medida": "1,8 m de altura",
+   "postura": "bípede, de pé, ereto",
+   "apoio": "bipede",
+   "altura": 1.8,
+   "largura": 0.48,
+   "profundidade": 0.26,
+   "comprimento": null,
+   "massa": 90,
+   "area": 0.77,
+   "posturaDoTamanho": "de pé",
+   "medida": "1.8 m de altura",
    "peso": "90 kg"
   },
-  "formas": [],
+  "formas": [
+   {
+    "id": "globo-de-luz",
+    "nome": "globo de luz",
+    "criatura": {
+     "id": "ghaele-azata",
+     "nome": "Ghaele (azata)",
+     "nomeIngles": "Ghaele",
+     "categoria": "celestial",
+     "categoriaNome": "Celestial",
+     "tipo": "chefe",
+     "conceito": "Celestial Pequeno",
+     "descricao": "Campeã celeste que socorre causas justas e desaparece antes dos agradecimentos. Alterna entre guerreira de beleza sobrenatural e globo luminoso.",
+     "tags": [
+      "celestial",
+      "centelha",
+      "mágico",
+      "arcano"
+     ],
+     "ameaca": 5,
+     "centelha": 6,
+     "tamanho": "Pequeno",
+     "corpo": {
+      "postura": "pairando",
+      "apoio": "outro",
+      "altura": 0.5542,
+      "largura": 0.5542,
+      "profundidade": 0.5542,
+      "comprimento": 0.5542,
+      "massa": 90,
+      "area": 0.2412,
+      "posturaDoTamanho": "de pé",
+      "comprimentoSemCauda": 0.5542,
+      "semMassa": true,
+      "volume": 0.089109,
+      "naoErgue": true,
+      "medida": "0.5542 m de altura, 0.5542 m de comprimento",
+      "peso": "sem massa"
+     },
+     "ecologia": {
+      "tipo": "celestial",
+      "terreno": [
+       "qualquer"
+      ],
+      "clima": [
+       "extraplanar"
+      ]
+     },
+     "imagens": [
+      "bestiario/ghaele-azata_criatura.webp"
+     ],
+     "semImagem": false,
+     "atributos": {
+      "forca": 0,
+      "destreza": 6,
+      "vigor": 5,
+      "percepcao": 6,
+      "inteligencia": 6,
+      "raciocinio": 6,
+      "influencia": 7,
+      "perspicacia": 7,
+      "compostura": 7
+     },
+     "habilidades": {
+      "prontidao": 4,
+      "furtividade": 0,
+      "briga": 0,
+      "bloqueio": 3,
+      "esquiva": 2,
+      "integridade": 7,
+      "sobrevivencia": 0,
+      "sociabilidade": 3,
+      "ocultismo": 4,
+      "oratoria": 0,
+      "empatia": 3,
+      "armas": 5
+     },
+     "habilidadesSec": {
+      "musculatura": 0,
+      "disparo": 4
+     },
+     "vontade": 11,
+     "aparencia": 12,
+     "virtudes": {
+      "bravura": 5,
+      "compaixao": 5,
+      "conviccao": 5,
+      "temperanca": 4,
+      "valor": 5
+     },
+     "combate": {
+      "pv": 40,
+      "defesa": 24,
+      "defesaSocial": 26,
+      "defesaMental": 36,
+      "absorcao": {
+       "impacto": 11,
+       "corte": 6,
+       "perfuracao": 6
+      },
+      "resistenciaPerfuracao": 0,
+      "fraquezas": [
+       "profano"
+      ],
+      "iniciativa": "1d6 + 10",
+      "deslocamento": {
+       "batalha": 0,
+       "arranque": 0,
+       "corrida": 0
+      },
+      "ataques": [
+       {
+        "nome": "Raio de luz",
+        "pool": "4d6+2 +8",
+        "dano": "2d6 +6 (fenomeno)",
+        "perfArma": null,
+        "speed": 7,
+        "classe": "distancia"
+       }
+      ]
+     },
+     "habilidadesEspeciais": [
+      {
+       "nome": "Aura sagrada",
+       "descricao": "soma +4 em Esquiva, Bloqueio e Defesa Mental. ativacao: nenhuma; sempre ativa. duracao: permanente. alcance: 6 m. area: a própria ghaele e os aliados no raio. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum",
+       "classe": "regra da ficha",
+       "base": {
+        "arte": "protecao",
+        "nivel": 4
+       }
+      },
+      {
+       "nome": "Forma de globo de luz",
+       "descricao": "vira o globo da Variante ou retorna à forma humanoide desta ficha; o equipamento só existe na forma humanoide. ativacao: uma ação, Velocidade 8. duracao: até desfazer com outra ação. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade",
+       "classe": "regra da ficha",
+       "base": {
+        "arte": "espirito",
+        "nivel": 3
+       }
+      },
+      {
+       "nome": "Raio de luz",
+       "descricao": "o raio fere se acertar e ofusca os olhos do atingido. ativacao: uma ação, Velocidade 7, Vigor + Disparo. duracao: instantânea; a cegueira dura 12 Ticks. alcance: 9 m. area: um alvo. dano: 2d6 + Centelha, fenômeno. resistencia: corpo, Vigor + Resistência contra a jogada do raio; quem passa evita a cegueira, mas recebe o dano do acerto. limiteDeUso: à vontade",
+       "classe": "regra da ficha",
+       "base": {
+        "arte": "luz",
+        "nivel": 3
+       }
+      },
+      {
+       "nome": "Sem membros para bloquear",
+       "descricao": "não pode bloquear nem aparar ataques, por não ter membros. ativacao: passiva. duracao: enquanto estiver na forma de globo. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: contínuo",
+       "classe": "regra da ficha"
+      },
+      {
+       "nome": "Corpo de luz",
+       "descricao": "na forma luminosa, o corpo incorpóreo atravessa matéria e resiste a ferimentos comuns",
+       "classe": "sem regra ainda"
+      },
+      {
+       "nome": "Detectar pensamentos e o mal",
+       "descricao": "sente intenção imediata e presença de mal sobrenatural, sem ler lembranças. ativacao: uma ação, Velocidade 7. duracao: até o fim da cena. alcance: 18 m. area: uma criatura por ação. dano: nenhum. resistencia: mente, contra Perspicácia + Integridade; quem passa conserva a intenção oculta. limiteDeUso: à vontade",
+       "classe": "regra da ficha",
+       "base": {
+        "arte": "adivinhacao",
+        "nivel": 2
+       }
+      },
+      {
+       "nome": "Resistência à magia 25",
+       "descricao": "sua natureza dificulta o efeito de magia hostil",
+       "classe": "sem regra ainda"
+      },
+      {
+       "nome": "Fascinar pela beleza",
+       "descricao": "quem contempla a ghaele pode se esquecer da luta",
+       "classe": "sem regra ainda"
+      },
+      {
+       "nome": "Ilusões feéricas",
+       "descricao": "cria imagens ilusórias para confundir inimigos",
+       "classe": "sem regra ainda"
+      }
+     ],
+     "comoLuta": [
+      {
+       "nome": "guarda celestial",
+       "texto": "luta como globo para sobrevoar o campo e cegar perseguidores; volta à forma humanoide quando precisa da espada."
+      }
+     ],
+     "sentidos": [
+      {
+       "nome": "visão",
+       "descricao": "acompanha os movimentos e a luz do ambiente"
+      }
+     ],
+     "segundoTamanho": null,
+     "formaPrincipal": {
+      "id": "globo-de-luz",
+      "nome": "globo de luz"
+     },
+     "formas": [],
+     "poderes": [],
+     "locomocao": {
+      "terra": 0,
+      "voo": 15,
+      "natacao": 0,
+      "escalada": 0
+     },
+     "tecnicas": [],
+     "artes": [
+      {
+       "id": "cura",
+       "nivel": 4
+      },
+      {
+       "id": "protecao",
+       "nivel": 4
+      },
+      {
+       "id": "luz",
+       "nivel": 4
+      },
+      {
+       "id": "fascinacao",
+       "nivel": 4
+      },
+      {
+       "id": "raio",
+       "nivel": 4
+      }
+     ],
+     "mana": 23,
+     "lore": [
+      {
+       "titulo": "Comportamento",
+       "texto": "Campeã caótica do bem, ágil e etérea, aparece para socorrer causas justas e some antes de ser agradecida."
+      },
+      {
+       "titulo": "Sociedade",
+       "texto": "Viaja com cortejos de fadas e heróis mortais que jurou proteger, sem hierarquia fixa, movida por afinidade e capricho."
+      },
+      {
+       "titulo": "Personalidade",
+       "texto": "Apaixonada e artística, ama a beleza tanto quanto a justiça e não vê contradição nenhuma nisso."
+      },
+      {
+       "titulo": "Hábitat",
+       "texto": "Vem de um plano de liberdade selvagem, atravessando o véu de espíritos quando sente um chamado justo."
+      },
+      {
+       "titulo": "No mundo de Centelha",
+       "texto": "Por vir de um plano ligado ao véu feérico, uma ghaele às vezes é confundida com espírito da natureza pelos animistas de Syl, que a recebem com reverência sem saber que lidam com uma potência muito além dos kami locais."
+      }
+     ]
+    }
+   }
+  ],
+  "formaPrincipal": {
+   "id": "humanoide",
+   "nome": "forma humanoide"
+  },
   "segundoTamanho": null
  },
  {
@@ -25809,14 +26090,15 @@
    "forca": 7,
    "destreza": 5,
    "vigor": 7,
-   "influencia": 5,
-   "perspicacia": 5,
-   "compostura": 5,
    "percepcao": 5,
    "inteligencia": 4,
-   "raciocinio": 4
+   "raciocinio": 4,
+   "influencia": 5,
+   "perspicacia": 5,
+   "compostura": 5
   },
   "virtudes": {
+   "bravura": 4,
    "compaixao": 5,
    "conviccao": 5,
    "temperanca": 4,
@@ -25825,30 +26107,55 @@
   "vontade": 9,
   "aparencia": 10,
   "habilidades": {
-   "prontidao": 2,
-   "furtividade": 1,
+   "prontidao": 3,
+   "furtividade": 0,
+   "briga": 4,
+   "bloqueio": 2,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0
+   "sobrevivencia": 3,
+   "sociabilidade": 3,
+   "armas": 4,
+   "empatia": 3
   },
-  "habilidadesSec": {},
-  "artes": [],
+  "habilidadesSec": {
+   "tocar-instrumento": 4,
+   "musculatura": 2
+  },
+  "artes": [
+   {
+    "id": "fascinacao",
+    "nivel": 3
+   },
+   {
+    "id": "cura",
+    "nivel": 3
+   },
+   {
+    "id": "luz",
+    "nivel": 1
+   }
+  ],
   "tecnicas": [],
   "combate": {
    "pv": 58,
-   "defesa": 14,
-   "defesaSocial": 10,
+   "defesa": 19,
+   "defesaSocial": 22,
    "defesaMental": 26,
    "absorcao": {
     "impacto": 11,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
-   "fraquezas": [
-    "profano"
+   "resistencias": [
+    "fogo",
+    "gelo"
    ],
-   "iniciativa": "1d6 + 6",
+   "imunidades": [
+    "raio"
+   ],
+   "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 3,
     "arranque": 5,
@@ -25856,31 +26163,52 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "6d6 +8",
-     "dano": "2d6 +11 corte",
+     "nome": "Espada longa",
+     "pool": "5d6+2 +9",
+     "dano": "1d6 +11 (C)",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
+    },
+    {
+     "nome": "Cauda",
+     "pool": "5d6+2 +8",
+     "dano": "2d6 +11 (I)",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
   "ecologia": {
-   "tipo": "Celestial",
+   "tipo": "celestial",
    "terreno": [
-    "Forest",
-    "Any"
+    "floresta",
+    "qualquer"
    ],
    "clima": [
-    "Extraplanar"
+    "extraplanar"
    ]
   },
   "corpo": {
-   "medida": "6 m de comprimento",
-   "peso": "1.700 kg"
+   "postura": "cauda enrolada, torso erguido",
+   "apoio": "outro",
+   "altura": 2.5,
+   "largura": 2.5,
+   "profundidade": 2.5,
+   "comprimento": 6,
+   "massa": 1700,
+   "area": 4.6,
+   "posturaDoTamanho": "cauda enrolada, torso erguido",
+   "segundoTamanho": {
+    "area": 8.6,
+    "posturaDoTamanho": "asas abertas"
+   },
+   "medida": "2.5 m de altura, 6 m de comprimento",
+   "peso": "1700 kg"
   },
   "formas": [],
-  "segundoTamanho": null
+  "segundoTamanho": "Enorme"
  },
  {
   "id": "limo-cinzento",
@@ -33158,7 +33486,7 @@
    ]
   },
   "corpo": {
-   "postura": "seis pernas apoiadas na rocha",
+   "postura": "seis pernas apoiadas na rocha, apoio outro",
    "apoio": "outro",
    "altura": 0.35,
    "largura": 0.7,
@@ -38822,7 +39150,7 @@
    ]
   },
   "corpo": {
-   "postura": "ramos espalhados no chão",
+   "postura": "ramos espalhados no chão, apoio outro",
    "apoio": "outro",
    "altura": 0.6,
    "largura": 3,
