@@ -1,7 +1,7 @@
 ---
 import { url } from '../lib/site';
 import { custoTagTecnica, modProeza } from '../lib/data';
-import { custoTecnica } from '../lib/calc';
+import { custoTecnica } from '../lib/motor';
 interface Props { t: any; T: Record<string, any>; destrava?: string[]; }
 const { t, T, destrava = [] } = Astro.props;
 const prereqLink = (pid: string) => url(`caminhos/${T[pid]?.caminho?.id ?? ''}`) + '#' + pid;

@@ -37,7 +37,7 @@ const { caminho } = Astro.props;
   import { tecnicaDisponivel } from '../lib/modulos';
   import caminhos from '../data/caminhos.json';
   import regras from '../data/regras.json';
-  import { custoTecnica } from '../lib/calc';
+  import { custoTecnica } from '../lib/motor';
 
   type Tec = { id: string; nome: string; caminho: string; nivel: number; efeito: string; tipo: string; custo: any; prereq: string[]; texto: string; pendente: boolean };
   const BASE = import.meta.env.BASE_URL; // /centelha-rpg/

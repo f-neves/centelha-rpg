@@ -2,7 +2,7 @@
 // Servido estático em /centelha-rpg/ref-index.json e carregado sob demanda no cliente.
 import type { APIRoute } from 'astro';
 import { loadData, custoTagTecnica } from '../lib/data';
-import { regras } from '../lib/calc';
+import { regras } from '../lib/motor';
 import { url } from '../lib/site';
 
 const short = (s: string, n = 170) => (s.length > n ? s.slice(0, n - 1) + '…' : s);

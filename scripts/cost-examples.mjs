@@ -18,7 +18,7 @@ import { pvJogador } from './lib-criatura-motor.mjs';
 // E ELE DEIXOU DE TER RÉGUA PRÓPRIA. A versão antiga reimplementava o preço do
 // nível aqui dentro, o que a fazia uma SEGUNDA CÓPIA da regra: quando a fonte
 // mudasse, as duas divergiriam em silêncio, que foi exatamente o que aconteceu.
-// Agora ele empacota `src/lib/calc.ts` com o esbuild e chama as MESMAS funções
+// Agora ele empacota `src/lib/motor.ts` com o esbuild e chama as MESMAS funções
 // que a ficha usa. Se a régua mudar, este script muda junto ou quebra alto.
 //
 // NÃO É PORTÃO, E ISSO É DE PROPÓSITO. Ele sai com código 0 mesmo achando
@@ -37,7 +37,7 @@ const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^
 const saida = path.join(os.tmpdir(), `cost-examples-${process.pid}.mjs`);
 await build({
   stdin: {
-    contents: "export { custoPontos, custoArte, custoEspecialidade, defesa, defesaMental, defesaSocial } from './src/lib/calc';",
+    contents: "export { custoPontos, custoArte, custoEspecialidade, defesa, defesaMental, defesaSocial } from './src/lib/motor';",
     resolveDir: ROOT,
     loader: 'ts',
   },

@@ -30,7 +30,7 @@
 // m/s: 3 m/s para o soldado fechando distância, que é a faixa humana.
 //
 // --------------------------------------------------- as três velocidades
-// As mesmas três que a ficha do PC tem (`deslocamento()` em src/lib/calc.ts):
+// As mesmas três que a ficha do PC tem (`deslocamento()` em src/lib/motor.ts):
 //   batalha  = o passo com a guarda de pé, o Deslocamento de Batalha;
 //   arranque = os 3 primeiros Ticks de corrida;
 //   corrida  = o topo sustentado, do 4º Tick em diante.

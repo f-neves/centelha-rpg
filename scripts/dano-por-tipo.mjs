@@ -153,7 +153,7 @@ console.log(`  ${igual} sem diferença (as duas categorias têm a mesma Absorç�
 console.log('\n── O GATE DE PERFURAÇÃO ──');
 console.log(`  A régua tem o gate (regras.dano.gatePerfuracao, modos: ${
   (REGRAS.dano.gatePerfuracao?.modos || []).join(', ')}).`);
-console.log('  `gatePerfuracaoAbre` existe em src/lib/calc.ts e NENHUM caminho de produção');
+console.log('  `gatePerfuracaoAbre` existe em src/lib/motor.ts e NENHUM caminho de produção');
 console.log('  a chama: nem `resolverGolpe`, nem a folha do Grid, nem o harness. Hoje o');
 console.log('  Perfurante não resvala em ninguém, e a Adaga virando Perfurante NÃO zera');
 console.log('  dano nenhum. O risco é real na régua e nulo no motor, e vira real no dia');

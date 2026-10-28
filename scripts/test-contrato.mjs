@@ -186,7 +186,7 @@ eq(E.armaDoSlot({ ref: 'a:espada-lomga' }), null, 'id errado vira null, e é jus
 // `test-contrato` não pegava isto sozinho: a ficha de fixação usa espada longa e
 // arco longo, e nenhuma das duas tem `forcaMin`.
 {
-  const C = await carregar('src/lib/calc.ts');
+  const C = await carregar('src/lib/motor.ts');
   const composto = armas.find((a) => a.id === 'arco-composto');
   ok(composto, 'o Arco Composto sumiu do catálogo');
   eq(composto?.forcaMin, 4, 'o Arco Composto continua pedindo Força 4');

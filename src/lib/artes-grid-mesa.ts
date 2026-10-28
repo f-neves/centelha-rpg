@@ -19,7 +19,7 @@ import {
   A_SAIR, deveSair, planoDaSaida, SEM_NIVEL_ARTE,
   type EfeitoAtivo, type Forma, type Figura, type Encaixe, type Desvio,
 } from './artes-grid';
-import { pool, regras, limiteDaMorte } from './calc';
+import { pool, regras, limiteDaMorte } from './motor';
 import { levantamentoDaArte } from './motor';
 import { alcanceArremesso } from './forca-empurrao';
 import {

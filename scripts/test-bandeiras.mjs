@@ -25,7 +25,7 @@ await build({
   stdin: {
     contents: `
       export * from './src/lib/bandeiras';
-      export { modificadorPorte, porteDeRotulo, gatePerfuracaoAbre, limiteDaMorte, passouDoLimite } from './src/lib/calc';
+      export { modificadorPorte, porteDeRotulo, gatePerfuracaoAbre, limiteDaMorte, passouDoLimite } from './src/lib/motor';
     `,
     resolveDir: ROOT, loader: 'ts',
   },

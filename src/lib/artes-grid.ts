@@ -10,7 +10,7 @@
 import ARTES_D from '../data/artes.json';
 import EFEITOS_D from '../data/efeitos.json';
 import COND_D from '../data/condicoes.json';
-import { regras } from './calc';
+import { regras } from './motor';
 import { centroHex, distanciaHex, dentro, vizinhos, type Hex } from './hex';
 import { acaso } from './acaso';
 

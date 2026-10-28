@@ -5,7 +5,7 @@
 import { conjuntoPersonagem, numerosPersonagem, massaDoJogador, itemDoJogador } from './motor';
 import { tecnicaDisponivel } from './modulos';
 import { alcanceArremesso } from './forca-empurrao';
-import { custoPontos, custoTecnica, custoArte, custoEfeito, custoEspecialidade, pisoXp, pv, pvPorte, type Porte, comRequisitoDeForca, forcaFaltando, forcaNoArco, defesa, defesaMental, defesaSocial, centelhaNaJogada, energia, mana, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './calc';
+import { custoPontos, custoTecnica, custoArte, custoEfeito, custoEspecialidade, pisoXp, pv, pvPorte, type Porte, comRequisitoDeForca, forcaFaltando, forcaNoArco, defesa, defesaMental, defesaSocial, centelhaNaJogada, energia, mana, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './motor';
 import ATTRS_D from '../data/atributos.json';
 import HAB_D from '../data/habilidades.json';
 import SEC_D from '../data/habilidades-secundarias.json';

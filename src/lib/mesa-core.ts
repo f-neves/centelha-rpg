@@ -11,7 +11,7 @@
 // não paga esse pedágio.
 import { getSupabase } from './supabase';
 import { exigirLogin, supabaseConfigurado } from './auth';
-import { regras } from './calc';
+import { regras } from './motor';
 import { definirCrumbs } from './crumbs';
 import { uiConfirmar, uiErro, uiFormulario } from './ui-dialog';
 import CONDICOES from '../data/condicoes.json';

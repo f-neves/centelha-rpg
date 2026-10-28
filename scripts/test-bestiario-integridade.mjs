@@ -34,7 +34,7 @@ const falhas = [];
 const ok = (c, t) => { console.log(`  ${c ? '✓' : '✘'} ${t}`); if (!c) falhas.push(t); };
 const eq = (a, b, t) => ok(a === b, `${t}${a === b ? '' : ` (esperado ${b}, veio ${a})`}`);
 
-const { defesaMental } = await carregar('src/lib/calc.ts');
+const { defesaMental } = await carregar('src/lib/motor.ts');
 
 // Uma criatura mínima, SEM `skills.integridade` (o caso que a Reforma escancarou: nenhuma das
 // 309 fichas do bestiário tem esse campo hoje, achado da Fase 1).

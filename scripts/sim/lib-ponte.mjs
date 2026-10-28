@@ -38,12 +38,12 @@ export async function carregarLib() {
         export { resolverGolpe, fonteRolada, defesaEfetiva, quaseAcertoDoEncontro } from './src/lib/lance';
         export { qaDaPeca, errouPor, saidaDoAtaque } from './src/lib/quase-acerto';
         export { qaDaArma, qaDeArmaduras } from './src/lib/quase-acerto';
-        export { custoPontos, custoTecnica, custoArte, custoEspecialidade, empilharArmaduras, gatePerfuracaoAbre } from './src/lib/calc';
+        export { custoPontos, custoTecnica, custoArte, custoEspecialidade, empilharArmaduras, gatePerfuracaoAbre } from './src/lib/motor';
         export { numerosPersonagem } from './src/lib/motor';
         export { resumoCombatePC } from './src/lib/combate-resumo';
         export { velocidadeDaArma, classeDeTempo, armaDoCatalogo } from './src/lib/combate-tempo';
         export { tierDe, somarCondicoes, elementosCombate } from './src/lib/mesa-core';
-        export { deslocamento, limiteDaMorte, mana, defesa } from './src/lib/calc';
+        export { deslocamento, limiteDaMorte, mana, defesa } from './src/lib/motor';
         export { semear, semeadoDe, semeado } from './src/lib/acaso';
         export { rolarExpr } from './src/lib/rolagem';
         export { PERFIL_CORRENTE } from './src/lib/bandeiras';

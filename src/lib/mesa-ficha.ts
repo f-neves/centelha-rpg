@@ -7,7 +7,7 @@
 import {
   pv, energia, mana, defesa, defesaSocial, defesaMental, pool, poolStr, valorPassivo, regras,
   empilharArmaduras, soakNatural, type Porte,
-} from './calc';
+} from './motor';
 import { armadurasDe } from './equip';
 import { resumoCombatePC } from './combate-resumo';
 import { qaDaPeca, type QACombate } from './quase-acerto';

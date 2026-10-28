@@ -2,7 +2,7 @@
 //
 // A regra: no alcance e no dano, a Força de quem atira de arco conta no máximo 8. No alcance ela já mora na
 // tabela de Máxima por Força (`regras.json` `combate.distancia.maxima`, que acaba na Força 8); no dano ela é
-// `forcaNoArco` (src/lib/calc.ts), chamada pela ficha (`ficha-engine.ts`, nas duas mãos).
+// `forcaNoArco` (src/lib/motor.ts), chamada pela ficha (`ficha-engine.ts`, nas duas mãos).
 //
 // O QUE NÃO ESTÁ AQUI: o resumo da MESA (`combate-resumo.ts`, congelado pela D-054) faz a própria conta da Força
 // no dano e ainda NÃO chama `forcaNoArco`. Para Força 9 ou mais a ficha e a mesa divergem; está no N22 de
@@ -19,7 +19,7 @@ import os from 'node:os';
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const saida = path.join(os.tmpdir(), `calc-forca-${process.pid}.mjs`);
 await build({
-  entryPoints: [path.join(ROOT, 'src/lib/calc.ts')],
+  entryPoints: [path.join(ROOT, 'src/lib/motor.ts')],
   outfile: saida, bundle: true, format: 'esm', platform: 'node', loader: { '.json': 'json' }, logLevel: 'error',
 });
 const C = await import(pathToFileURL(saida).href);
