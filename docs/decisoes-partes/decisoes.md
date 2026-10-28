@@ -640,7 +640,7 @@ uma decisao registrada, pare e pergunte ao autor.
 - Data: 2026-09-26
 - Decisão: "Defesa Social: Int 1 passa a ter Defesa Social, com Sobrevivência no lugar de Sociabilidade (regras.json já prevê isso); "-" só para Int 0. Vale em gen-bestiario, bestia-editor.ts e onde mais calcular."
 - Origem: b14-fase2-despacho.md:37-40 (C.7)
-- Estado: no ar (não conferido)
+- Estado: no ar (não conferido). **Confirmada pelo autor em 26/10/2026** (pergunta P4 da Fase 3, em `../tmp/arquiteto/PERGUNTAS.md`, opção a, sem D nova; o autor autoriza o registro, mensagem de 28/10/2026): "vale o registro (C-006) e o livro (`defesas.md:78`): toda criatura de Inteligência 1 usa a Sobrevivência no lugar da Sociabilidade na Defesa Social, o animal também (D-109). O motor muda numa linha, e as 54 fichas não animais de Inteligência 1 passam num lote de ajuste."
 
 ### C-007 · Nenhum animal comum com Centelha [tags: centelha, bestiario]
 - Data: 2026-09-26
@@ -1867,7 +1867,7 @@ As D-107 a D-114 são a resposta do autor ao rascunho da regra de construção e
 - Data: 2026-10-10
 - Decisão (autor, 10/10/2026): "Defesa Social: o animal ganha Sobrevivência, e a fórmula da fera no livro fica como está. Um dos motivos de refazer as fichas é cobrir Habilidades que não estavam contadas."
 - Origem: questão 4 do rascunho (a Defesa Social da fera é (Compostura + Sobrevivência) × 2, `defesas.md` l.75, e a D-099 não dava Sobrevivência ao animal).
-- Estado: a implementar (B20). Acrescenta Sobrevivência à lista fixa da D-099 (Briga, Bloqueio e Esquiva, com Prontidão e Integridade ao lado, D-106 d). Não muda fórmula nenhuma do livro.
+- Estado: a implementar (B20). Pela confirmação da C-006 em 26/10/2026 (pergunta P4), a Sobrevivência na Defesa Social vale para toda criatura de Inteligência 1, e não só para o animal. Acrescenta Sobrevivência à lista fixa da D-099 (Briga, Bloqueio e Esquiva, com Prontidão e Integridade ao lado, D-106 d). Não muda fórmula nenhuma do livro.
 
 ### D-110 · Bloqueio do animal: o valor sai do quanto ele bloqueia na vida real; o efeito segue a D-100 [tags: bestiario, animal, bloqueio, d-100, b20]
 - Data: 2026-10-10
@@ -2781,7 +2781,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Data: 2026-10-24
 - Decisão (autor, 24/10/2026; decisão 60 na numeração do autor; o autor autoriza o registro): "Mudam o Tamanho principal pela postura em que lutam: lagarto-de-gola-gigante (Grande, gola aberta), polvo (Médio, braços abertos), polvo gigante (Imenso, braços abertos), louva-a-deus gigante (Médio, pousado, como caça) e quetzalcoatlo (Grande, no chão, como caça). O Segundo Tamanho passa a ser o da outra postura. A naga espírita passa a ser medida enroscada, porque a própria ficha diz que ela luta «enroscada sobre o tesouro». Vale a postura em que ela luta, e não o exemplo «como a naga». A serpente venenosa é medida de capuz aberto, a postura em que luta; a Bestiarista mede e diz se a categoria muda. A geleia ocre fica na bola. A regra antiga «Nos voadores, o Alvo principal é o de asas abertas» passa a valer só para quem luta voando."
 - Origem: resposta do autor à lista do Arquiteto de 24/10/2026 (as 202 fichas lidas pela linha "como luta"), depois da resposta "Opção 1. A D-213 vale para todas as criaturas, inclusive as aprovadas antes dela." à pergunta do lagarto-de-gola-gigante.
-- Estado: **a implementar.** As do molde o Arquiteto ajusta (lagarto, polvo, polvo gigante, louva-a-deus gigante, quetzalcoatlo e a serpente venenosa, depois da medida da Bestiarista); a naga espírita, a Bestiarista. A Revisora confere; a branch do site traz a tabela de antes e depois do Tamanho, do acerto e da Furtividade, e o merge espera o ok do autor. **Substitui as duas metades** da decisão 8 de `tamanho-decisoes-3`. A primeira, "Nos voadores, o Alvo principal é o de **asas abertas**", passa a valer só para quem luta voando (D-215). A segunda, "Nos outros, o principal é a postura de repouso e a aberta ou esticada é o segundo", cai pela D-213 (o Tamanho principal é a postura em que a criatura luta) e pela D-215, que a estende às criaturas aprovadas antes: é por ela que mudam o lagarto, o polvo, o polvo gigante e a naga espírita. Pela medida, mudam seis categorias principais: as cinco que a decisão nomeia e a naga espírita (de Grande para Médio); a serpente venenosa fica Miúda. Completa a D-213.
+- Estado: **a implementar.** As do molde o Arquiteto ajusta (lagarto, polvo, polvo gigante, louva-a-deus gigante, quetzalcoatlo e a serpente venenosa, depois da medida da Bestiarista); a naga espírita, a Bestiarista. A Revisora confere; a branch do site traz a tabela de antes e depois do Tamanho, do acerto e da Furtividade, e o merge espera o ok do autor. **Substitui as duas metades** da decisão 8 de `tamanho-decisoes-3`. A primeira, "Nos voadores, o Alvo principal é o de **asas abertas**", passa a valer só para quem luta voando (D-215). A segunda, "Nos outros, o principal é a postura de repouso e a aberta ou esticada é o segundo", cai pela D-213 (o Tamanho principal é a postura em que a criatura luta) e pela D-215, que a estende às criaturas aprovadas antes: é por ela que mudam o lagarto, o polvo, o polvo gigante e a naga espírita. Pela medida, mudam seis categorias principais: as cinco que a decisão nomeia e a naga espírita (de Grande para Médio); a serpente venenosa fica Miúda. Completa a D-213. **Completada pela D-247 (26/10/2026)** no dragão: em voo vale o de asas abertas, em terra o de asas fechadas, e no misto o principal guardado é o de terra.
 
 ### D-216 · Nenhum valor que o motor calcula fica guardado no JSON da criatura, e um motor só calcula tudo [tags: bestiario, criatura, json, formato, motor, v3, pv, defesas, absorcao, peso-erguido, deslocamento, d-190, d-213, ficha, mesa, grid, editor, b20]
 - Data: 2026-10-24
@@ -2985,6 +2985,72 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Decisão (autor, 25/10/2026, para as imagens de transporte): "balão de ar quente é comum entre os gnomos; dirigível e barco a vapor existem, mas são peças raras e caras."
 - Origem: mensagem do autor de 25/10/2026, sobre as imagens de transporte.
 - Estado: **registrada.** Resolve em parte o ponto aberto "tecnologia e supressão" do arquivo de cultura dos gnomos (o que é comum e o que é raro); o resto do ponto segue aberto. Nada em `src/`.
+
+### D-246 · A Regeneração das criaturas é classificação, ainda sem regra de jogo: "Regeneração N · sem regra ainda" [tags: bestiario, criatura, regeneracao, sem-regra-ainda, tecnica, trol, oni, vampiro, linnorm, lacunas-do-livro, b20]
+- Data: 2026-10-26
+- Decisão (autor, 26/10/2026, resposta refeita da pergunta 2b; o autor autoriza o registro, mensagem de 28/10/2026): "a regeneração ainda não é regra do livro; por ora só se classifica em níveis para comparar («Regeneração N · sem regra ainda», sem nível máximo), com a origem (natural, sobrenatural, mágica) e o que a para no texto. O N sai do número que o Pathfinder ou o texto de referência dá; revisa-se depois." Na 2b-1, no mesmo dia: "a regeneração das criaturas ainda não é regra; todas as quinze ficam «Regeneração X · sem regra ainda», quanto maior melhor, inclusive as sete que usavam a Técnica (o texto antigo vai à revisao, com o antes)." Na 2d: "os três linnorms ficam «Regeneração X · sem regra ainda», com o X pela fonte; a frase errada sai."
+- Origem: perguntas 2b, 2b-1 e 2d de `../tmp/arquiteto/PERGUNTAS.md` (a regeneração do trol, de graça, saía melhor que a do oni, pela Técnica `regeneracao`; a frase dos linnorms dizia que o livro não tinha a regra). As aspas internas do autor vão como «».
+- Estado: **a implementar** nas fichas, por lote de ajuste da Bestiarista (as quinze, as sete da Técnica incluídas). A Técnica `regeneracao` do livro (`tecnicas.json`) continua para o personagem; a criatura não a usa. Substitui a resposta 2b-0 (a duração de uma ativação, "o Mestre decide"), que perde o objeto. Lacuna em `../tmp/arquiteto/bestiario/lacunas-do-livro.md`.
+
+### D-247 · O Tamanho do dragão segue a postura: em voo o de asas abertas, em terra o de asas fechadas; no misto guarda-se o de terra [tags: bestiario, criatura, dragao, tamanho, segundo-tamanho, postura, voador, d-213, d-215, b20]
+- Data: 2026-10-26
+- Decisão (autor, 26/10/2026, pergunta 2e; o autor autoriza o registro, mensagem de 28/10/2026): "o dragão voando tem o Tamanho de voo (asas abertas); em terra, o de terra (asas fechadas). No misto, o Mestre decide qual conta. A área segue o método do branco jovem (decisão de corpo, da Bestiarista)." Na 2e-1, (b): "o principal guardado é o de asas fechadas (em terra); o de asas abertas vai como Segundo Tamanho, e na mesa o Mestre escolhe."
+- Origem: perguntas 2e e 2e-1 de `../tmp/arquiteto/PERGUNTAS.md` (os oito dragões do lote 23 davam como principal o de asas abertas pela regra antiga, e a D-215 já a restringia a quem luta voando).
+- Estado: **a implementar** nas fichas dos dragões, por lote de ajuste da Bestiarista. Completa a D-213 e a D-215 para o dragão que luta nas duas posturas.
+
+### D-248 · A tag Sangramento vale para a lâmina serrilhada e para a garra que a fonte descreve rasgando, sempre com −1 de Acerto [tags: bestiario, criatura, sangramento, garra, arma, acerto, glaive, girallon, trol, b20]
+- Data: 2026-10-26
+- Decisão (autor, 26/10/2026, perguntas 33.1 e 34.1, opção a; o autor autoriza o registro, mensagem de 28/10/2026): "a tag Sangramento vale para a lâmina serrilhada e para a garra que a fonte descreve rasgando, sempre com o preço do livro, −1 de Acerto («Troca um pouco de Acerto pelo dano contínuo», armas.json, espada-serrilhada). A garra comum de fera não ganha. Vale para a glaive do diabo barbado, as garras do girallon e as do trol."
+- Origem: perguntas 33.1 (a glaive do diabo barbado levava a regra da Espada Serrilhada) e 34.1 (a garra natural e a tag) de `../tmp/arquiteto/PERGUNTAS.md`; o livro, `vida-ferimentos-cura.md`, dá a tag a "lâminas serrilhadas, garras".
+- Estado: **a implementar** nas fichas, por lote de ajuste. O efeito do Sangramento é o do livro (igual à Margem, até 3).
+
+### D-249 · Três armas novas no catálogo: corrente farpada, chicote e glaive serrilhada [tags: bestiario, criatura, armas, catalogo, corrente, chicote, glaive, sangramento, diabo, balor, b20]
+- Data: 2026-10-26
+- Decisão (autor; o autor autoriza o registro, mensagem de 28/10/2026): na pergunta 33.2, 26/10/2026, opção b: "o livro ganha os itens (corrente farpada e chicote) no armas.json, com números do autor". Números aprovados no mesmo dia: "Corrente farpada: Haste de Guerra, duas mãos, P/G/R 3/1/3 (Velocidade 7), 1 dado +0, Corte, Acerto 0 (a Haste dá +1; a tag Sangramento custa −1, pela 33.1), Defesa da arma 0, tags alcance e sangramento, 180 pc, 4 kg." "Chicote: Leve, uma mão, Destreza, P/G/R 1/1/3 (Velocidade 5), 1 dado −2, Corte, Acerto +1, Defesa da arma 0, Penetração 0, tag alcance, 20 pc, 1 kg." Na 36.1, 27/10/2026: "o armas.json ganha o item «glaive serrilhada», com os números da Alabarda mais a tag Sangramento e Acerto −1 (de 0 para −1); preço e peso os da Alabarda (280 pc). O formato não muda."
+- Origem: perguntas 33.2 (os ataques de corrente do diabo chifrudo e do kyton e o chicote do balor) e 36.1 (a glaive do diabo barbado) de `../tmp/arquiteto/PERGUNTAS.md`.
+- Estado: **a implementar**: os três itens entram no `armas.json` pela Executora, na branch da Fase 3, e vão ao ar na publicação única. O uso de cada criatura (o balor com o chicote, os 9 m e o puxão como regra da ficha; o kyton com o ataque natural Médio, sem o item) é decisão de ficha e fica nas fichas.
+
+### D-250 · Paralisia, atordoamento e petrificação ficam "sem regra ainda" em todas as fichas, até o livro decidir [tags: bestiario, criatura, condicoes, paralisia, atordoamento, petrificacao, imobilizado, sem-regra-ainda, lacunas-do-livro, b20]
+- Data: 2026-10-26
+- Decisão (autor, 26/10/2026; o autor autoriza o registro, mensagem de 28/10/2026): na pergunta 33.3, "paralisia e atordoamento ficam «sem regra ainda» em todas as fichas (inclusive as que usavam o Imobilizado e as que escreviam o efeito na habilidade), até o livro decidir, como a Regeneração. Vai ao lacunas-do-livro.md." Na 33.2: "Atordoar do chifrudo: sai da corrente e fica «sem regra ainda», junto com a 33.3." Na 35.2: "todas «sem regra ainda», até o livro decidir, como a paralisia e o atordoamento (33.3). Vai ao lacunas-do-livro.md."
+- Origem: perguntas 33.3, 33.2 e 35.2 de `../tmp/arquiteto/PERGUNTAS.md` (o livro não tem as condições Paralisado, Atordoado nem Petrificado; as fichas aprovadas usavam o Imobilizado, regra da ficha ou o efeito escrito na habilidade).
+- Estado: **a implementar** nas fichas, por lote de ajuste; as três lacunas estão em `../tmp/arquiteto/bestiario/lacunas-do-livro.md`.
+
+### D-251 · A teia de toda criatura vai pelo Preso da Rede do livro [tags: bestiario, criatura, teia, rede, preso, aranha, b20]
+- Data: 2026-10-26
+- Decisão (autor, 26/10/2026, pergunta 35.1, opção a; o autor autoriza o registro, mensagem de 28/10/2026): "a teia de toda criatura vai pelo Preso da Rede do livro. Os números da Rede são do livro; o alcance e os usos (6 m, 3 vezes por cena na aranha-gigante) são de cada ficha."
+- Origem: pergunta 35.1 de `../tmp/arquiteto/PERGUNTAS.md` (a aranha das fases e a regra da teia da aranha-gigante); o livro, `armas-e-armaduras.md`, a Rede.
+- Estado: **a implementar** nas fichas que tecem, por lote de ajuste.
+
+### D-252 · O formato ganha `corpo.naoErgue`, independente de `semMassa` [tags: bestiario, criatura, formato, peso-erguido, sem-massa, incorporeo, b20]
+- Data: 2026-10-26
+- Decisão (autor, 26/10/2026, pergunta P5 da Executora, opção a; o autor autoriza o registro, mensagem de 28/10/2026): "entra no formato a chave que diz que a criatura não ergue (a Executora a chamou `naoErgue`), ao lado de `semMassa`, condicional, só em quem escreve «não ergue». `semMassa` sozinha não basta: o elemental do ar é sem massa e ergue 80,32 kg. Nenhuma ficha muda."
+- Origem: pergunta P5 da Fase 3 (`../tmp/executora/fase3/perguntas.md`), em `../tmp/arquiteto/PERGUNTAS.md`.
+- Estado: **no formato** (`../tmp/arquiteto/bestiario/formato-json/formato-criatura.md`, 2.2); o leitor, pela Executora, na Fase 3.
+
+### D-253 · A linha `livro:` guarda só o que a criatura acrescenta: `tecnica`, `arte` e `texto` [tags: bestiario, criatura, formato, livro, tecnica, arte, habilidades-especiais, b20]
+- Data: 2026-10-26
+- Decisão (autor, 26/10/2026, pergunta P7 da Executora, opção a refeita; o autor autoriza o registro, mensagem de 28/10/2026): "entram no formato as chaves `tecnica`, `arte` e `texto`. O `texto` guarda só o que a criatura acrescenta à regra do livro (o detalhe próprio, como «segura a presa no chão com o pé», e o limite de jogo, como «só descendo»), sem repetir o texto do livro e sem número que o motor calcula. As linhas que só resumem outra parte da ficha (Elementos, Furtividade com número) e as que copiam o efeito da Técnica ou da Arte se enxugam no lote de ajuste da Bestiarista."
+- Origem: pergunta P7 da Fase 3 (`../tmp/executora/fase3/perguntas.md`), em `../tmp/arquiteto/PERGUNTAS.md`.
+- Estado: **no formato** (2.5); as fichas, por lote de ajuste.
+
+### D-254 · O deslocamento aceita decimal [tags: bestiario, criatura, formato, deslocamento, merfolk, b20]
+- Data: 2026-10-27
+- Decisão (autor, 27/10/2026, pergunta 36.2, opção a; o autor autoriza o registro, mensagem de 28/10/2026): "nenhuma regra nem o formato (formato-criatura.md, linha 86) exige inteiro no deslocamento; o leitor e o esquema passam a aceitar decimal (0,5). O formato não muda. Os três valores do merfolk (Batalha, Arranque, Corrida) a Bestiarista decide, como decisão de número."
+- Origem: pergunta do lote ajustes-humanoide-03 ("Movimento fracionário em terra", o merfolk que se arrasta a 0,5 m por Tick), em `../tmp/arquiteto/PERGUNTAS.md`.
+- Estado: **a implementar** no leitor e no esquema, pela Executora, na Fase 3. O formato só ganha a frase que diz que o número pode ser decimal.
+
+### D-255 · Bônus da fonte: o valor da fonte na escala do autor, no alvo que a fonte dá; sem origem, o rótulo do site [tags: bestiario, criatura, bonus, defesa, jogada, deflexao, resistencia, atributo, b20]
+- Data: 2026-10-27
+- Decisão (autor; o autor autoriza o registro, mensagem de 28/10/2026): na pergunta 37.1, 27/10/2026, opção a: "a escala do autor, medida pelo valor da fonte, e não pelo rótulo do site. Bônus de +2 na fonte: +2 na jogada ou +2 na defesa. Bônus de +4 na fonte: +1d6 na jogada ou +4 na defesa. Sem origem na fonte (gigante do fogo), vale o rótulo do site («+1d» = +2; «+2d» = +1d6 ou +4). O alvo vem da fonte: deflexão vai à Defesa Física (Esquiva e Bloqueio), resistência nos testes vai à Defesa Mental, perícia vai à jogada da perícia; nunca à Absorção. As defesas do livro são três: Física (Bloqueio e Esquiva), Mental e Social." Na 37.3, 28/10/2026, opção a: "a 37.1 vale para qualquer valor. Na defesa, 1 para 1 com o valor da fonte [...]. Na jogada, o valor fixo, e cada 4 viram +1d6. O bônus que depende de atributo (a graça da ninfa, pelo Carisma) usa o número do atributo correspondente na ficha do Centelha, não o da fonte."
+- Origem: perguntas 37.1 e 37.3 de `../tmp/arquiteto/PERGUNTAS.md` (os bônus "+Nd" do site em oito criaturas, e os valores da fonte que não são +2 nem +4). Na citação, a "perícia" do autor é a Habilidade.
+- Estado: **a implementar** nas fichas, por lote de ajuste. Os casos de uma criatura (o domínio do vento do djinn, a esquiva do sátiro e o terreno difícil dele, descritivo) ficam nas fichas.
+
+### D-256 · Resistência à magia é classificação, ainda sem regra: "Resistência à magia X · sem regra ainda", com o X da fonte [tags: bestiario, criatura, resistencia-a-magia, sem-regra-ainda, defesa-mental, lacunas-do-livro, b20]
+- Data: 2026-10-27
+- Decisão (autor, 27/10/2026, pergunta 37.2, opção a; o autor autoriza o registro, mensagem de 28/10/2026): "ainda não há regra; o mesmo caminho da Regeneração (2b): «Resistência à magia X · sem regra ainda», com o X igual ao valor da fonte (SR 25 vira 25). Saem o +2 e o +3 provisórios das 21 fichas que têm o poder. Vai ao lacunas-do-livro.md."
+- Origem: pergunta 37.2 de `../tmp/arquiteto/PERGUNTAS.md`.
+- Estado: **a implementar** nas 21 fichas, por lote de ajuste; lacuna em `../tmp/arquiteto/bestiario/lacunas-do-livro.md`. Mesmo caminho da D-246.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
