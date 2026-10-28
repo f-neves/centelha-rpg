@@ -129,7 +129,7 @@ function build(c) {
       })(),
       ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: a.classe ?? classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
     },
-    habilidades: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao })),
+    habilidadesEspeciais: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao })),
     // Dois formatos de poder convivem desde o B14 fase 2 (ver criatura-schema.mjs,
     // poderSchema): o natural novo, com id/nome/resiste/usos/base/area/ataque, e o
     // legado (efeito/tipo/alvo/arte/caminho). Copiar só os campos do legado aqui
@@ -160,7 +160,7 @@ const problemas = Object.keys(CLASSE_OVERRIDE).filter((id) => !inim.some((c) => 
 for (const m of monsters) {
   if (!m.atributos) problemas.push(`${m.id}: sem atributos`);
   if (m.combate.pv == null) problemas.push(`${m.id}: sem combate.pv`);
-  if (!m.habilidades.length && !FICHA[m.id]?.v3) problemas.push(`${m.id}: sem habilidades`); // a ficha v3 pode não ter manobra nenhuma (o pteranodonte)
+  if (!m.habilidadesEspeciais.length && !FICHA[m.id]?.v3) problemas.push(`${m.id}: sem habilidades`); // a ficha v3 pode não ter manobra nenhuma (o pteranodonte)
   if (!m.lore.length && !FICHA[m.id]?.motor) problemas.push(`${m.id}: sem lore`);
   if (!m.dimensoes.medida) problemas.push(`${m.id}: sem dimensoes`);
   if (!m.ecologia.tipo) problemas.push(`${m.id}: sem ecologia.tipo`);
@@ -259,7 +259,7 @@ const CAMPOS_MESA = [
 const FORA_DA_MESA = {
   descricao: 'prosa do card, e o card vem por arquivo separado',
   conceito: 'prosa do card',
-  habilidades: 'prosa do card, e é o maior pedaço dos 900 KB (27%)',
+  habilidadesEspeciais: 'prosa do card, e é o maior pedaço dos 900 KB (27%)',
   lore: 'prosa do card (24%)',
   poderes: 'prosa do card',
   notas: 'caderno do mestre; não desce nem para a aba, quanto mais para o pacote',

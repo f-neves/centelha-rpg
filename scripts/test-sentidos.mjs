@@ -89,6 +89,11 @@ ok(mexem > MESA.length * 0.7,
 // A segunda previsão: a fórmula devolvendo o mesmo número para portes
 // diferentes. Uma tabela que não separa nada é uma constante com cara de regra,
 // e ela passa em qualquer conferência que só olhe se o campo existe.
+// A6: o vetor especial tem nome próprio; Habilidades será o mapa de níveis.
+for (const m of CHEIO) {
+  ok(Array.isArray(m.habilidadesEspeciais), m.id + ': especiais no contrato público');
+  ok(!Array.isArray(m.habilidades), m.id + ': nome antigo das especiais ausente');
+}
 // D-226: as fichas novas usam a Habilidade escrita, sem ajuste de Tamanho.
 let fontesNovas=0;
 for(const arquivo of fs.readdirSync(path.join(ROOT,'src/data/bestiario'))) {

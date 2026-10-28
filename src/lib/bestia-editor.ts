@@ -92,7 +92,7 @@ export interface CriaturaEdit {
   imunidades?: string[];
   bonus?: Bonus;
   ataques?: Ataque[];
-  habilidades?: { nome: string; descricao: string }[];
+  habilidadesEspeciais?: { nome: string; descricao: string }[];
   lore?: { titulo: string; texto: string }[];
   dimensoes?: { medida?: string; peso?: string };
   ecologia?: { tipo?: string; terreno?: string[]; clima?: string[] };
@@ -198,7 +198,7 @@ export function paraJson(c: CriaturaEdit) {
   const bn = semVazio((c.bonus || {}) as unknown as Record<string, unknown>);
   if (Object.keys(bn).length) out.bonus = bn;
   if (c.ataques?.length) out.ataques = c.ataques.filter((a) => a.nome).map((a) => semVazio(a as unknown as Record<string, unknown>));
-  if (c.habilidades?.length) out.habilidades = c.habilidades.filter((h) => h.nome);
+  if (c.habilidadesEspeciais?.length) out.habilidades = c.habilidadesEspeciais.filter((h) => h.nome);
   if (c.dimensoes?.medida || c.dimensoes?.peso) out.dimensoes = semVazio(c.dimensoes as Record<string, unknown>);
   if (c.ecologia?.tipo || c.ecologia?.terreno?.length || c.ecologia?.clima?.length) out.ecologia = semVazio(c.ecologia as Record<string, unknown>);
   if (c.imagem) out.imagem = c.imagem;

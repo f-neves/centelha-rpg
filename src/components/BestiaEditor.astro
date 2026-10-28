@@ -478,7 +478,7 @@ const PORTES = Object.keys(PORTE_LBL);
       c.tags = [...tags];
       c.pericias = Object.fromEntries(lerLinhas('pericia').filter((p) => p.nome).map((p) => [String(p.nome).trim(), Number(p.valor) || 0]));
       c.ataques = lerLinhas('ataque').filter((a) => a.nome);
-      c.habilidades = lerLinhas('habilidade').filter((h) => h.nome);
+      c.habilidadesEspeciais = lerLinhas('habilidade').filter((h) => h.nome);
       c.lore = lerLinhas('lore').filter((s) => s.titulo || s.texto);
       c.ecologia.terreno = ($$('[data-eco="terreno"]:checked') as HTMLInputElement[]).map((i) => i.value);
       c.ecologia.clima = ($$('[data-eco="clima"]:checked') as HTMLInputElement[]).map((i) => i.value);
@@ -531,7 +531,7 @@ const PORTES = Object.keys(PORTE_LBL);
       const listas: [string, Record<string, unknown>[]][] = [
         ['pericia', Object.entries(c.pericias || {}).map(([nome, valor]) => ({ nome, valor }))],
         ['ataque', (c.ataques || []) as unknown as Record<string, unknown>[]],
-        ['habilidade', (c.habilidades || []) as unknown as Record<string, unknown>[]],
+        ['habilidade', (c.habilidadesEspeciais || []) as unknown as Record<string, unknown>[]],
         ['lore', (c.lore || []) as unknown as Record<string, unknown>[]],
       ];
       for (const [tipo, itens] of listas) {
@@ -624,7 +624,7 @@ const PORTES = Object.keys(PORTE_LBL);
           atributos: Object.fromEntries(ATRIBS.map((k) => [k, 2])),
           pericias: {}, vontade: 4, integridade: 2, prontidao: 1,
           armadura: 'nenhuma', fraquezas: [], resistencias: [], imunidades: [], tags: [],
-          ataques: [], habilidades: [], lore: [], notas: '',
+          ataques: [], habilidadesEspeciais: [], lore: [], notas: '',
         } as CriaturaEdit, null, 'Nova criatura');
       }
     });

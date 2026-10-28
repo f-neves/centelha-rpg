@@ -97,7 +97,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Canalizar luz",
     "descricao": "à escolha: cura os aliados vivos na área, ou queima os mortos-vivos. ativacao: uma ação, Velocidade 7. duracao: instantânea. alcance: 9 m. area: esfera de 9 m em volta dele. dano: aos mortos-vivos, 2d6 + Centelha, sagrado; a cura devolve 2d6 + Centelha PV a cada aliado. resistencia: esquiva, só para os mortos-vivos; quem passa leva metade. limiteDeUso: uma vez por cena"
@@ -230,7 +230,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Tentáculos múltiplos",
     "descricao": "rajada"
@@ -397,7 +397,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -557,7 +557,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "talões"
@@ -695,7 +695,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "derrubar"
@@ -813,7 +813,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Mordida ácida",
     "descricao": "as mandíbulas injetam ácido a cada mordida. ativacao: as Mandíbulas que acertam. duracao: instantânea. alcance: o das mandíbulas. area: um alvo. dano: +1d6 de ácido, somado ao do golpe. resistencia: nenhum. limiteDeUso: um por golpe"
@@ -947,7 +947,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "derrubar"
@@ -1069,7 +1069,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Salto etéreo",
     "descricao": "some deste mundo e reaparece no outro ponto, sem passar pelo meio e sem dar chance de ataque a quem estava perto. ativacao: uma ação, Velocidade 5. duracao: instantânea. alcance: até 9 m. area: o próprio corpo. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade"
@@ -1203,7 +1203,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -1341,7 +1341,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Aura de ameaça",
     "descricao": "inimigos em 6m que falharem em Vontade ficam Abalados"
@@ -1512,7 +1512,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Raios de Luz",
     "descricao": "Dispara feixes de luz pura à distância que atravessam qualquer proteção sobrenatural do alvo."
@@ -1689,7 +1689,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Espadão Celestial",
     "descricao": "Empunha uma espada de duas mãos abençoada, capaz de golpes devastadores contra qualquer inimigo."
@@ -1852,7 +1852,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Mira",
     "descricao": "Mirar"
@@ -1989,7 +1989,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Pisar Leve",
     "descricao": "pisar-leve"
@@ -2139,7 +2139,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Voo e incorpóreo",
     "descricao": "voa sem ruído e atravessa paredes, portas e objetos; não agarra, não empurra e não pode ser agarrada nem empurrada; a arma comum ainda a fere, pela metade (Elementos). ativacao: nenhuma, sempre ativo. duracao: permanente. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum"
@@ -2299,7 +2299,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "derrubar"
@@ -2459,7 +2459,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
     "descricao": "Até dois golpes por ação"
@@ -2650,7 +2650,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Lâmina em chamas",
     "descricao": "a lâmina arde e queima a ferida. ativacao: o golpe da espada que acerta. duracao: instantânea. alcance: o do corpo a corpo. area: um alvo. dano: +1d6 de fogo, somado ao do golpe. resistencia: nenhum. limiteDeUso: um por golpe"
@@ -2836,7 +2836,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sem inimizades naturais",
     "descricao": "o traço social do Humano"
@@ -2977,7 +2977,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Garras",
     "descricao": "empunhadura-dupla"
@@ -3134,7 +3134,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Garras",
     "descricao": "empunhadura-dupla"
@@ -3269,7 +3269,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Nuvem de Alucinação",
     "descricao": "Uma vez por minuto, libera uma nuvem invisível de esporos numa área ao redor; quem respira esses esporos passa a sofrer visões terríveis e desorientadoras enquanto permanecer perto."
@@ -3397,7 +3397,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Olhar petrificante",
     "descricao": "o olhar transforma em pedra quem o encara"
@@ -3534,7 +3534,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
     "descricao": "Até dois golpes por ação"
@@ -3708,7 +3708,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "enroscar",
     "descricao": "agarrar"
@@ -3845,7 +3845,7 @@
     }
    ]
   },
-  "habilidades": [],
+  "habilidadesEspeciais": [],
   "poderes": [],
   "locomocao": {
    "terra": 1,
@@ -3960,7 +3960,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -4093,7 +4093,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Tentáculos gêmeos",
     "descricao": "Até dois golpes por ação"
@@ -4252,7 +4252,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "derrubar"
@@ -4383,7 +4383,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "muitas bocas",
     "descricao": "rajada"
@@ -4531,7 +4531,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Olhar mortal",
     "descricao": "o olhar apaga a vida de quem o encara; quem falha fica Abalado, e quem falha por uma Margem cai a 0 PV na hora. Quem desvia o rosto não precisa resistir, mas ataca com −4 enquanto não olha. ativacao: nenhuma, sempre ativo, contra quem cruza o olhar com ele em campo aberto. duracao: instantânea; Abalado até o fim da cena. alcance: 9 m, à vista. area: cada pessoa que o encara. dano: nenhum além do efeito. resistencia: corpo, Vigor + Resistência contra Influência + Integridade dele; quem passa fica imune até o fim da cena. limiteDeUso: uma vez por cena para cada pessoa"
@@ -4672,7 +4672,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Língua grudenta",
     "descricao": "o alvo fica Agarrado pela língua e não se afasta mais que 3 m dele; para soltar, escapa pela regra do Agarrar ou corta a língua (um golpe de arma de corte que fira 3 ou mais). ativacao: uma ação, Velocidade 5, a jogada de Agarrar do livro com a língua (Força + Briga, mais a Centelha, contra a Defesa de agarrão do alvo). duracao: até a língua ser arrancada ou cortada, ou ele soltar. alcance: 3 m. area: um alvo. dano: nenhum. resistencia: corpo, pela regra do Agarrar, com o Agarrão +2 dele. limiteDeUso: um alvo por vez"
@@ -4814,7 +4814,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "derrubar"
@@ -4954,7 +4954,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Forma de vento",
     "descricao": "vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada. ativacao: uma ação, Velocidade 6. duracao: até ele voltar com outra ação. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade"
@@ -5092,7 +5092,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "empurrar",
     "descricao": "empurrar"
@@ -5236,7 +5236,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Vulnerável ao cerco",
     "descricao": "Guarda sob pressão"
@@ -5360,7 +5360,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Olho maligno",
     "descricao": "o alvo fica amaldiçoado; se ela o fere de novo enquanto a maldição dura, ele cai em coma (Inconsciente por 1d6 dias). ativacao: uma ação, Velocidade 6, encarando o alvo. duracao: a maldição, até o fim do dia. alcance: 9 m, à vista dela. area: um alvo. dano: nenhum. resistencia: mente, contra Influência + Ocultismo dela; a maldição pega também em quem passa. limiteDeUso: três vezes por cena"
@@ -5524,7 +5524,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Garras",
     "descricao": "empunhadura-dupla"
@@ -5673,7 +5673,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Toque da fraqueza",
     "descricao": "quem falha fica com a Força um nível abaixo, com o dano e o peso que vêm dela; cada toque que pega desce mais um, até Força 1. ativacao: as Garras que ferem, ou um toque (a jogada de Briga). duracao: até o fim da cena; acumula. alcance: toque. area: um alvo. dano: nenhum além do golpe. resistencia: corpo, Vigor + Resistência contra a jogada do toque. limiteDeUso: um por golpe"
@@ -5818,7 +5818,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Golpe surpresa",
     "descricao": "o golpe entra onde o alvo não guarda. ativacao: o golpe que acerta um alvo Surpreso ou que não o viu chegar. duracao: instantânea. alcance: o do corpo a corpo. area: um alvo. dano: +1d6 no dano do golpe. resistencia: nenhum. limiteDeUso: um por golpe, só contra quem está desprevenido"
@@ -5950,7 +5950,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "salto de emboscada",
     "descricao": "só ao sair da terra"
@@ -6093,7 +6093,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Raio de fogo",
     "descricao": "dispara dos olhos um raio de fogo; um raio por ação, e cada um dos quatro recarrega à parte. ativacao: uma ação, Velocidade 7. duracao: instantânea. alcance: 18 m. area: um alvo. dano: 3d6, fogo. resistencia: corpo, Vigor + Resistência contra Dificuldade 10; quem passa leva metade. limiteDeUso: uma vez a cada 24 Ticks"
@@ -6259,7 +6259,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Golpe duplo",
     "descricao": "Até dois golpes por ação"
@@ -6425,7 +6425,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Resistência a rituais",
     "descricao": "o campeão resiste melhor que os esqueletos comuns. ativacao: uma Arte, Técnica ou ritual que afasta, expulsa ou comanda mortos-vivos o tem como alvo. duracao: a do efeito. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: mente, com +4 na Defesa Mental contra esse efeito. limiteDeUso: nenhum"
@@ -6559,7 +6559,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Horda",
     "descricao": "o camponês é capanga Comum"
@@ -6687,7 +6687,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "segura e sacode"
@@ -6820,7 +6820,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "derrubar"
@@ -6964,7 +6964,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro de fogo",
     "descricao": "o cão expele um cone de fogo devastador. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: instantânea. alcance: 6 m à frente. area: cone de 6 m. dano: 3d6 + Centelha, fogo. resistencia: esquiva, contra a jogada do sopro; quem passa leva metade. limiteDeUso: uma vez a cada 24 Ticks"
@@ -7104,7 +7104,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro de fogo",
     "descricao": "o cão cospe um leque de chamas. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: instantânea. alcance: 3 m à frente. area: cone de 3 m. dano: 2d6 + Centelha, fogo. resistencia: esquiva, contra a jogada do sopro; quem passa leva metade. limiteDeUso: uma vez a cada 24 Ticks"
@@ -7232,7 +7232,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Uivo apavorante",
     "descricao": "quem falha fica Em pânico. ativacao: uma ação, Velocidade 6, um uivo. duracao: 18 Ticks. alcance: quem ouve, até 90 m. area: esfera de 90 m em volta dele. dano: nenhum. resistencia: mente, contra Influência + Intimidação dele; quem passa não é pego por esse uivo de novo. limiteDeUso: uma vez por cena para cada vítima"
@@ -7375,7 +7375,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Envolver",
     "descricao": "na jogada de Agarrar do livro que acerta, envolve o alvo no próprio corpo: ele fica Agarrado e Cego, e a Mordida acerta sem jogada a cada 6 Ticks; quem ataca a capa enquanto ela envolve alguém faz metade do dano nela e metade na vítima. ativacao: uma ação, Velocidade 7, lançando-se sobre um alvo de Tamanho Grande ou menor. duracao: até o alvo se soltar ou ela soltar. alcance: o do corpo a corpo. area: um alvo. dano: o da Mordida. resistencia: corpo, para escapar, pela jogada de Agarrar do livro. limiteDeUso: um alvo envolvido por vez"
@@ -7515,7 +7515,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Comando de tropa",
     "descricao": "à escolha dele, os subordinados somam +1 no ataque ou +1 na Defesa. ativacao: uma ação, Velocidade 3, dando a ordem em voz alta. duracao: até a próxima ação dele. alcance: 18 m, onde o ouvem. area: até seis subordinados que o ouvem. dano: nenhum. resistencia: nenhum. limiteDeUso: uma ordem por ação dele"
@@ -7643,7 +7643,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -7776,7 +7776,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "fúria ao ferimento",
     "descricao": "ferido, entra em fúria na ação seguinte, lutando com mais força e resistência, e descuida da própria defesa até um dos lados cair"
@@ -7909,7 +7909,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "fúria ao ferimento",
     "descricao": "ferido, entra em fúria na ação seguinte, mais forte e mais resistente, e descuida da própria defesa; não sai da fúria por vontade própria"
@@ -8045,7 +8045,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Cascos em chamas",
     "descricao": "os cascos em brasa queimam o que tocam. ativacao: o golpe dos Cascos que acerta. duracao: instantânea. alcance: o dos cascos. area: um alvo. dano: +1d6 de fogo, somado ao do golpe. resistencia: nenhum. limiteDeUso: um por golpe"
@@ -8195,7 +8195,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Pele Curtida",
     "descricao": "pele-curtida"
@@ -8343,7 +8343,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "atropelar",
     "descricao": "investida"
@@ -8485,7 +8485,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Ataque duplo",
     "descricao": "um golpe de espada e um Coice na mesma ação, os dois a −1d6, cada um com o próprio acerto e dano (a conta da empunhadura dupla do livro). ativacao: uma ação, Velocidade 7. duracao: instantânea. alcance: o do corpo a corpo. area: um alvo, ou dois, um na frente e um atrás. dano: o de cada golpe. resistencia: nenhum. limiteDeUso: a cada ação"
@@ -8622,7 +8622,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -8754,7 +8754,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -8904,7 +8904,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Arremesso de rocha",
     "descricao": "a rocha derruba o alvo Médio ou menor que ela fere; contra uma parede fraca, uma cerca ou um telheiro, derruba a estrutura pequena (site, Força ciclópica). ativacao: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). duracao: instantânea. alcance: até 36 m; acima de 12 m, −2 na jogada. area: um alvo. dano: 2d6 + Força + Centelha, Impacto. resistencia: corpo, contra a jogada, só para não cair; o dano vem inteiro. limiteDeUso: enquanto houver rocha por perto"
@@ -9044,7 +9044,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "sem vida",
     "descricao": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo"
@@ -9181,7 +9181,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Bicadas rápidas",
     "descricao": "Até dois golpes por ação"
@@ -9325,7 +9325,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Voz de Líder",
     "descricao": "voz-de-lider"
@@ -9481,7 +9481,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
     "descricao": "Até dois golpes por ação"
@@ -9626,7 +9626,7 @@
     }
    ]
   },
-  "habilidades": [],
+  "habilidadesEspeciais": [],
   "poderes": [],
   "locomocao": {
    "terra": 1,
@@ -9740,7 +9740,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Agarrar",
     "descricao": "agarrar"
@@ -9916,7 +9916,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -10050,7 +10050,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -10165,7 +10165,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Paralisia ao toque",
     "descricao": "o toque entorpece e paralisa a vítima"
@@ -10298,7 +10298,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Drenar vida",
     "descricao": "morte"
@@ -10445,7 +10445,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "pela perna"
@@ -10588,7 +10588,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "puxam a presa"
@@ -10713,7 +10713,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Ataque furtivo",
     "descricao": "a lâmina entra onde o alvo não guarda. ativacao: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. duracao: instantânea. alcance: o do corpo a corpo. area: um alvo. dano: +1d6 no dano do golpe. resistencia: nenhum. limiteDeUso: um por golpe"
@@ -10864,7 +10864,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Maça estonteante",
     "descricao": "o golpe da maça deixa o alvo tonto, incapaz de agir por um instante"
@@ -11022,7 +11022,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Ladrão de corpos",
     "descricao": "encolhe, entra pela boca de uma vítima indefesa ou morta, devora o cérebro e passa a controlar o corpo como se fosse seu; fala as línguas da vítima e imita os modos dela por dias, sem as lembranças dela"
@@ -11189,7 +11189,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Trava a ferida",
     "descricao": "a ferida aberta pelo diabo não fecha sozinha: o alvo não estabiliza o Sangrando sem ajuda e recupera só metade do que uma cura lhe daria. ativacao: nenhuma; vale para quem a glaive ou a barba feriu. duracao: até o fim da cena. alcance: o alvo ferido. area: um alvo. dano: nenhum além do golpe. resistencia: nenhum. limiteDeUso: nenhum"
@@ -11357,7 +11357,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Atordoar com a corrente",
     "descricao": "o golpe da corrente deixa a vítima zonza e incapaz de agir"
@@ -11544,7 +11544,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Lança gelada",
     "descricao": "a ponta de gelo queima de frio e enrijece o corpo; quem falha fica Congelado. ativacao: o golpe da lança que fere. duracao: o frio é instantâneo; o Congelado vai até o fim do próximo intervalo de 6 Ticks. alcance: o da lança. area: um alvo. dano: +1d6 de gelo, somado ao do golpe. resistencia: corpo, contra a jogada do golpe; quem passa leva o frio e não fica Congelado. limiteDeUso: um por golpe"
@@ -11734,7 +11734,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
     "descricao": "Até dois golpes por ação"
@@ -11929,7 +11929,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
     "descricao": "Até dois golpes por ação"
@@ -12092,7 +12092,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
     "descricao": "Até dois golpes por ação"
@@ -12252,7 +12252,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Ferrão venenoso",
     "descricao": "o alvo fica Envenenado pelo veneno do diabrete (Veneno e doença), que tira força. ativacao: o golpe do Ferrão que fere. duracao: a do veneno. alcance: o da cauda. area: um alvo. dano: o do veneno. resistencia: corpo, pelo veneno. limiteDeUso: três picadas que injetam por cena; o ferrão recarrega em uma hora"
@@ -12405,7 +12405,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Forma de redemoinho",
     "descricao": "vira um tornado de vento cortante que levanta destroços; quem está na área cai (Caído), e quem é mais leve que ele e não passa fica Agarrado, girando dentro, até o tornado acabar ou até vencer a manobra para se soltar. ativacao: uma ação, Velocidade 6. duracao: até 18 Ticks, ou até ele desfazer com outra ação. alcance: o próprio corpo, que se move enquanto gira. area: quem está a até 3 m dele. dano: 2d6 + Centelha, Corte, a cada 6 Ticks, a quem está dentro. resistencia: esquiva, contra Destreza + Briga dele; quem passa fica de pé e de fora. limiteDeUso: à vontade"
@@ -12551,7 +12551,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "morder e não largar",
     "descricao": "crava os dentes e não solta; com Força 0, o agarrão do livro não tira nada"
@@ -12673,7 +12673,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Mudar de forma",
     "descricao": "assume o corpo, o rosto, a voz e o cheiro de qualquer humanoide de Tamanho perto do dele que já tenha visto; os números ficam os dele; só a magia ou a Manha de quem conviveu muito com o original percebe a troca. ativacao: uma ação, Velocidade 6. duracao: até ele desfazer, ou até cair inconsciente. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade"
@@ -12827,7 +12827,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro ácido",
     "descricao": "o ácido castiga todos na linha. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: instantânea. alcance: 9 m à frente. area: linha de 9 m. dano: 3d6 + Centelha, ácido. resistencia: esquiva, contra a jogada do sopro; quem passa leva metade. limiteDeUso: uma vez a cada 24 Ticks, como nos dragões"
@@ -12986,7 +12986,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro elétrico",
     "descricao": "o relâmpago atravessa todos na linha. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: instantânea. alcance: 18 m à frente. area: linha de 18 m. dano: 9d6 + Centelha, raio. resistencia: esquiva, contra a jogada do sopro; quem passa leva metade. limiteDeUso: uma vez a cada 24 Ticks"
@@ -13176,7 +13176,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro de frio",
     "descricao": "o frio queima a pele e cobre o chão de gelo fino, e quem atravessa esse chão no Tick seguinte testa Equilíbrio para não cair. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: instantânea. alcance: 9 m à frente. area: cone de 9 m. dano: 6d6 + Centelha, gelo. resistencia: esquiva, contra a jogada do sopro; quem passa leva metade. limiteDeUso: uma vez a cada 24 Ticks"
@@ -13364,7 +13364,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro de fogo",
     "descricao": "o fogo queima tudo no cone. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: instantânea. alcance: 12 m à frente. area: cone de 12 m. dano: 9d6 + Centelha, fogo. resistencia: esquiva, contra a jogada do sopro; quem passa leva metade. limiteDeUso: uma vez a cada 24 Ticks"
@@ -13558,7 +13558,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro ácido",
     "descricao": "o gás ácido corrói quem está no cone. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: instantânea. alcance: 12 m à frente. area: cone de 12 m. dano: 9d6 + Centelha, ácido. resistencia: esquiva, contra a jogada do sopro; quem passa leva metade. limiteDeUso: uma vez a cada 24 Ticks"
@@ -13741,7 +13741,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro de fogo",
     "descricao": "o fogo queima tudo no cone. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: instantânea. alcance: 12 m à frente. area: cone de 12 m. dano: 9d6 + Centelha, fogo. resistencia: esquiva, contra a jogada do sopro; quem passa leva metade. limiteDeUso: uma vez a cada 24 Ticks"
@@ -13941,7 +13941,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro de fogo",
     "descricao": "o fogo queima tudo no cone. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: instantânea. alcance: 15 m à frente. area: cone de 15 m. dano: 12d6 + Centelha, fogo. resistencia: esquiva, contra a jogada do sopro; quem passa leva metade. limiteDeUso: uma vez a cada 24 Ticks"
@@ -14143,7 +14143,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro de fogo",
     "descricao": "o fogo queima tudo no cone. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: instantânea. alcance: 9 m à frente. area: cone de 9 m. dano: 6d6 + Centelha, fogo. resistencia: esquiva, contra a jogada do sopro; quem passa leva metade. limiteDeUso: uma vez a cada 24 Ticks"
@@ -14309,7 +14309,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "derrubar"
@@ -14443,7 +14443,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "derrubar"
@@ -14575,7 +14575,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
     "descricao": "Até dois golpes por ação"
@@ -14709,7 +14709,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Enfeitiçar",
     "descricao": "alvo que falhar em Vontade fica Encantado e obedece ordens pacíficas"
@@ -14884,7 +14884,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "teia",
     "descricao": "o acerto deixa Preso pela Rede do livro; a teia serve para prender, não para sustentar a aranha. ativacao: uma ação, Velocidade 6; dispara pelas fieiras com Vigor + Disparo. duracao: até o alvo se soltar. alcance: 6 m. area: um alvo. dano: nenhum. resistencia: nenhum teste adicional; para sair, a regra da Rede contra o total do disparo. limiteDeUso: três vezes por cena, recarga de uma hora"
@@ -15019,7 +15019,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Feitiçaria inata",
     "descricao": "as trevas apagam a luz comum (ele enxerga nelas); as luzes enganam e iluminam; o alvo do fogo feérico não pode ficar Escondido nem Invisível enquanto durar. ativacao: uma ação, Velocidade 6. duracao: até o fim da cena, ou até ele desfazer. alcance: 18 m. area: à escolha: trevas numa esfera de 6 m; luzes dançantes que se movem como ele quer; ou fogo feérico que contorna um alvo de luz fraca. dano: nenhum. resistencia: esquiva, contra Influência + Manha dele, só para o fogo feérico. limiteDeUso: cada um, uma vez por cena"
@@ -15166,7 +15166,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Postura Fluida",
     "descricao": "postura-fluida"
@@ -15307,7 +15307,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Crescer",
     "descricao": "o corpo e o que ele veste dobram de altura (Tamanho Grande); soma +1 na Força e perde 2 na Esquiva enquanto durar. ativacao: uma ação, Velocidade 6. duracao: até o fim da cena, ou até ele desfazer. alcance: o próprio corpo. area: não se aplica. dano: o dos golpes, com a Força maior. resistencia: nenhum. limiteDeUso: uma vez por cena, contando com o Sumir"
@@ -15449,7 +15449,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Corpo em chamas",
     "descricao": "o corpo é fogo vivo; o calor queima quem chega perto e quem encosta nele, e o punho bate como brasa. ativacao: nenhuma; sempre ativo. duracao: permanente. alcance: toque. area: quem entra no alcance do corpo a corpo dele, quem o acerta com um golpe corpo a corpo, quem o toca, e o alvo do Punho em brasa. dano: 1d6 + Centelha, fogo, a quem entra no alcance, a quem o acerta e a quem o toca; mais 1d6, fogo, a quem leva o Punho em brasa. resistencia: corpo, Vigor + Resistência contra Dificuldade 14 (10 + Centelha 4), só ao entrar no alcance dele; quem passa não se queima ao entrar; quem o acerta ou o toca não resiste. limiteDeUso: a queima ao entrar, uma vez por cena para cada criatura; o resto, sem limite"
@@ -15597,7 +15597,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "bote de pescoço longo",
     "descricao": "morde de lado ou de baixo, a vários metros do corpo; a cabeça não sobe acima da água mais que ela mesma"
@@ -15726,7 +15726,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -15873,7 +15873,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Vórtice",
     "descricao": "vira um redemoinho de água que suga quem está perto; quem é sugado fica Agarrado dentro dele e Confuso enquanto estiver lá, e sai quando o vórtice se desfaz ou quando vence a manobra para se soltar. ativacao: uma ação, Velocidade 6, dentro da água ou sobre ela. duracao: até 18 Ticks, ou até ele desfazer com outra ação. alcance: o próprio corpo. area: quem está a até 1 m dele. dano: o da Pancada de água a quem está dentro, a cada 6 Ticks. resistencia: esquiva, contra Força + Briga dele; quem passa não é sugado. limiteDeUso: uma vez por cena"
@@ -16006,7 +16006,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Deslizar na pedra",
     "descricao": "nada pela rocha sólida como se fosse água, à velocidade da Escavação, sem deixar rastro nem precisar de passagem aberta; dentro da pedra, quem está fora não o vê nem o ataca. ativacao: parte do movimento dele. duracao: enquanto se move. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade"
@@ -16149,7 +16149,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Deslizar na pedra",
     "descricao": "cava pela terra e atravessa a rocha como se fosse água, à velocidade da Escavação, sem abrir túnel nem deixar rastro; dentro da pedra, quem está fora não o vê nem o ataca. ativacao: parte do movimento dele. duracao: enquanto se move. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade"
@@ -16277,7 +16277,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Redemoinho",
     "descricao": "vira um pequeno tornado; quem ele atravessa é puxado para dentro e fica Agarrado, girando, até o redemoinho acabar ou até vencer a manobra para se soltar. Quem está duas faixas de massa ou mais acima dele não é puxado. ativacao: uma ação, Velocidade 6. duracao: até 18 Ticks, ou até ele desfazer com outra ação. alcance: o próprio corpo, que se move enquanto gira. area: o espaço por onde ele passa, até 1,2 m de largura. dano: o da Pancada de vento a quem está dentro, a cada 6 Ticks. resistencia: esquiva, contra Destreza + Briga dele; quem passa não é puxado. limiteDeUso: uma vez por cena"
@@ -16406,7 +16406,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Toque em chamas",
     "descricao": "a roupa, o cabelo ou o pelo do alvo pegam fogo. ativacao: a Pancada flamejante que fere. duracao: até alguém gastar uma ação para apagar o fogo, ou 18 Ticks. alcance: toque. area: um alvo. dano: 1d6, fogo, a cada 6 Ticks enquanto queima. resistencia: corpo, contra a jogada da pancada; quem passa não pega fogo. limiteDeUso: um por golpe"
@@ -16525,7 +16525,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sentidos",
     "descricao": "vibração da teia: Prontidão (vibração da teia) +3, só sobre a teia. A colônia acha a presa pela vibração e avança em sincronia. Fora da teia, nada."
@@ -16647,7 +16647,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sentidos",
     "descricao": "orientação: anda em linha reta e parece saber a distância do litoral; desviado mais de 200 m, se perde. Texto."
@@ -16769,7 +16769,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sentidos",
     "descricao": "antenas (tato e olfato): Prontidão (antenas) +2 (Especialidade natural; o mesmo +2 de hoje, agora na lista do corpo). · visão: olhos compostos, sensíveis à luz do dia e muito ao ultravioleta. Texto."
@@ -16894,7 +16894,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sentidos",
     "descricao": "feromônio: Prontidão (feromônio) +2 (Especialidade natural; o mesmo +2 de hoje, agora na lista do corpo); a trilha química organiza o ataque. · visão: quase cega, olhos de uma faceta. Texto."
@@ -17018,7 +17018,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sentidos",
     "descricao": "ecolocalização: Prontidão (ecolocalização) +3. Chamados de 49 a 70 kHz no voo, que caem para 25 a 40 kHz ao achar o alvo. Vale no escuro. · visão e olfato: sem número."
@@ -17145,7 +17145,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sentidos",
     "descricao": "faro: Prontidão (faro) +2 (Especialidade natural) · alcance · olfato muito desenvolvido. · audição: Prontidão (audição) +2 (Especialidade natural) · alcance · ouve ultrassom. · vibração: sem Especialidade · percebe vibrações mínimas. · visão: fraca, cerca de 20/600 no rato pigmentado; dicromata, enxerga ultravioleta. Texto."
@@ -17277,7 +17277,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sentidos",
     "descricao": "onda na água: Especialidade natural Prontidão (ondas na água) +3, na água. Acha a fonte de ondas de superfície (adultas preferem 8 a 12 Hz). · calor: Especialidade natural Prontidão (calor) +2; aquecer o lábio basta para disparar a ingestão. · química e luz: o sal e a arginina disparam a mordida; cinco pares de olhos e sensilas que reagem à sombra, mais com fome. Texto."
@@ -17402,7 +17402,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sentidos",
     "descricao": "nada com número achado. Marca o agressor: texto. O alarme à entrada do ninho é a Especialidade Prontidão (à entrada do ninho) 1."
@@ -17558,7 +17558,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Lâmina em chamas",
     "descricao": "a lâmina arde e queima a ferida. ativacao: o golpe da espada que acerta. duracao: instantânea. alcance: o do corpo a corpo. area: um alvo. dano: +1d6 de fogo, somado ao do golpe. resistencia: nenhum. limiteDeUso: um por golpe"
@@ -17717,7 +17717,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -17851,7 +17851,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Garras devastadoras",
     "descricao": "Até dois golpes por ação"
@@ -17999,7 +17999,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Imóvel",
     "descricao": "Parado entre outros espantalhos, só é notado com Percepção + Prontidão contra o Valor Passivo dele."
@@ -18123,7 +18123,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Voo e incorpóreo",
     "descricao": "voa e atravessa paredes, portas e obstáculos; não agarra, não empurra e não pode ser agarrado nem empurrado; a arma comum ainda o fere, pela metade (Elementos). ativacao: nenhuma, sempre ativo. duracao: permanente. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum"
@@ -18276,7 +18276,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas lâminas",
     "descricao": "empunhadura-dupla"
@@ -18423,7 +18423,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "imune a veneno e doença",
     "descricao": "osso seco não se envenena nem adoece"
@@ -18559,7 +18559,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "derrubar"
@@ -18678,7 +18678,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -18819,7 +18819,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "teia",
     "descricao": "o acerto deixa Preso pela Rede do livro; a teia serve para prender, não para sustentar a aranha. ativacao: uma ação, Velocidade 6; dispara pelas fieiras com Vigor + Disparo. duracao: até o alvo se soltar. alcance: 6 m. area: um alvo. dano: nenhum. resistencia: nenhum teste adicional; para sair, a regra da Rede contra o total do disparo. limiteDeUso: três vezes por cena, recarga de uma hora"
@@ -18951,7 +18951,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas cabeças, dois ataques",
     "descricao": "rajada"
@@ -19099,7 +19099,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "mergulho sobre a presa",
     "descricao": "só descendo"
@@ -19229,7 +19229,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Corpo incorpóreo",
     "descricao": "voa sem ruído e atravessa paredes e portas; não agarra, não empurra e não pode ser agarrado nem empurrado; a arma comum ainda o fere, pela metade (Elementos). ativacao: nenhuma, sempre ativo. duracao: permanente. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum"
@@ -19383,7 +19383,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "dardo flamejante",
     "descricao": "fogo"
@@ -19548,7 +19548,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "garras e bico",
     "descricao": "na mesma ação, além das garras, ataca também com o bico"
@@ -19724,7 +19724,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro de fogo",
     "descricao": "o fogo queima tudo no cone. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: instantânea. alcance: 9 m à frente. area: cone de 9 m. dano: 3d6 + Centelha, fogo. resistencia: esquiva, contra a jogada do sopro; quem passa leva metade. limiteDeUso: uma vez a cada 24 Ticks"
@@ -19874,7 +19874,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Invisibilidade natural",
     "descricao": "fica Invisível; quem o procura vê, se tanto, uma luzinha fraca ao longe. ativacao: uma ação, Velocidade 5. duracao: até ele atacar ou desfazer. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade. O \"+3d6 em Furtividade\" do site fica dentro da condição Invisível"
@@ -20019,7 +20019,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -20166,7 +20166,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Tentáculos",
     "descricao": "rajada"
@@ -20307,7 +20307,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Tentáculos podres",
     "descricao": "Ataca com quatro tentáculos longos cujo toque infecta a carne com um apodrecimento rápido, corroendo Força e Vigor do alvo."
@@ -20441,7 +20441,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Garras e chifres",
     "descricao": "empunhadura-dupla"
@@ -20588,7 +20588,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar com as quatro patas",
     "descricao": "o gato que se pendura no braço e morde"
@@ -20707,7 +20707,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -20833,7 +20833,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Raio de luz",
     "descricao": "ataque a 9m que cega o alvo se falhar em Resistência"
@@ -21031,7 +21031,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
     "descricao": "Até dois golpes por ação"
@@ -21187,7 +21187,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
     "descricao": "Até dois golpes por ação"
@@ -21346,7 +21346,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Arremesso de rocha",
     "descricao": "a rocha derruba o alvo Médio ou menor que ela fere. ativacao: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). duracao: instantânea. alcance: até 36 m; acima de 12 m, −2 na jogada. area: um alvo. dano: 2d6 + Força + Centelha, Impacto. resistencia: corpo, contra a jogada, só para não cair; o dano vem inteiro. limiteDeUso: enquanto houver rocha por perto"
@@ -21493,7 +21493,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Arremesso certeiro",
     "descricao": "a rocha derruba o alvo Médio ou menor que ela fere. ativacao: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). duracao: instantânea. alcance: até 45 m; acima de 15 m, −2 na jogada. area: um alvo. dano: 2d6 + Força, Impacto. resistencia: corpo, contra a jogada, só para não cair; o dano vem inteiro. limiteDeUso: enquanto houver rocha por perto"
@@ -21634,7 +21634,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Comandar o clima",
     "descricao": "convoca ou dissipa uma tempestade: nuvens carregadas, ventania, raios caindo ao acaso, a critério do Mestre. ativacao: cerca de dez minutos de concentração. duracao: até ele dissipar, ou até o fim do dia. alcance: o céu sobre uma região inteira. area: uma região, de quilômetros. dano: o dos raios ao acaso, a critério do Mestre. resistencia: nenhum. limiteDeUso: uma vez por dia"
@@ -21792,7 +21792,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Arremesso de rocha",
     "descricao": "a rocha derruba o alvo Grande ou menor que ela fere. ativacao: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). duracao: instantânea. alcance: até 36 m; acima de 12 m, −2 na jogada. area: um alvo. dano: 2d6 + Força + Centelha, Impacto. resistencia: corpo, contra a jogada, só para não cair; o dano vem inteiro. limiteDeUso: enquanto houver rocha por perto"
@@ -21968,7 +21968,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Arremesso de rocha",
     "descricao": "a rocha derruba o alvo Médio ou menor que ela fere. ativacao: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). duracao: instantânea. alcance: até 36 m; acima de 12 m, −2 na jogada. area: um alvo. dano: 2d6 + Força + Centelha, Impacto. resistencia: corpo, contra a jogada, só para não cair; o dano vem inteiro. limiteDeUso: enquanto houver rocha por perto"
@@ -22120,7 +22120,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Arremesso de rocha",
     "descricao": "a rocha derruba o alvo Médio ou menor que ela fere. ativacao: uma ação, Velocidade 7, com uma rocha ou um bloco de gelo na mão (pegar um do chão gasta outra ação). duracao: instantânea. alcance: até 36 m; acima de 12 m, −2 na jogada. area: um alvo. dano: 2d6 + Força + Centelha, Impacto. resistencia: corpo, contra a jogada, só para não cair; o dano vem inteiro. limiteDeUso: enquanto houver rocha ou gelo por perto"
@@ -22267,7 +22267,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "a mão"
@@ -22396,7 +22396,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Quatro braços ferozes",
     "descricao": "rajada"
@@ -22555,7 +22555,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas pinças",
     "descricao": "Até dois golpes por ação"
@@ -22742,7 +22742,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Caçador em matilha",
     "descricao": "soma +1 na jogada de ataque contra esse alvo. ativacao: nenhuma; vale quando outro gnoll está em contato com o mesmo alvo. duracao: enquanto o companheiro estiver ali. alcance: o do corpo a corpo. area: um alvo. dano: nenhum além do golpe. resistencia: nenhum. limiteDeUso: nenhum"
@@ -22869,7 +22869,7 @@
     }
    ]
   },
-  "habilidades": [],
+  "habilidadesEspeciais": [],
   "poderes": [],
   "locomocao": {
    "terra": 3
@@ -22992,7 +22992,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -23140,7 +23140,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -23293,7 +23293,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -23452,7 +23452,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -23602,7 +23602,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -23750,7 +23750,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "investida de baixo",
     "descricao": "investida"
@@ -23891,7 +23891,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "investida de chifre",
     "descricao": "investida"
@@ -24039,7 +24039,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "a mão"
@@ -24204,7 +24204,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro cataclísmico",
     "descricao": "o fogo queima tudo no cone e deixa Abalado até quem escapa. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: instantânea. alcance: 18 m à frente. area: cone de 18 m. dano: 15d6 + Centelha, fogo. resistencia: esquiva, contra a jogada do sopro; quem passa leva metade; mesmo quem passa fica Abalado até o fim da cena. limiteDeUso: uma vez a cada 24 Ticks"
@@ -24405,7 +24405,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -24560,7 +24560,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Formação",
     "descricao": "soma +1 na Defesa e não pode ser flanqueado pelo lado do companheiro. ativacao: nenhuma; vale enquanto luta ombro a ombro com outro guarda de escudo. duracao: enquanto a formação se mantiver. alcance: 1 m, o companheiro ao lado. area: ele e o companheiro. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum"
@@ -24700,7 +24700,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "a pata na perna da presa em corrida"
@@ -24825,7 +24825,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Canção cativante",
     "descricao": "quem falha fica cativado: anda até ela pelo caminho mais curto, ignorando perigos (não entra em fogo nem em abismo sem testar de novo), e não age contra ela; quem é atacado se solta. ativacao: uma ação, Velocidade 6, cantando; mantém cantando a cada ação. duracao: enquanto ela cantar, e mais 6 Ticks. alcance: até onde o canto é ouvido, cerca de 90 m. area: todos os que ouvem, menos as harpias. dano: nenhum. resistencia: mente, contra Influência + Canto dela; quem passa fica imune a esta canção até o fim da cena. limiteDeUso: uma vez por cena"
@@ -24986,7 +24986,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -25132,7 +25132,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Cinco mordidas",
     "descricao": "rajada"
@@ -25277,7 +25277,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "na perna da presa em fuga"
@@ -25406,7 +25406,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "na perna da presa em corrida"
@@ -25544,7 +25544,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -25682,7 +25682,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Disciplina militar",
     "descricao": "soma +1 na Defesa e não pode ser flanqueado pelo lado do aliado. ativacao: nenhuma; vale enquanto luta ombro a ombro com um aliado que também tem Disciplina militar. duracao: enquanto a formação se mantiver. alcance: 1 m, o aliado ao lado. area: ele e o aliado. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum"
@@ -25816,7 +25816,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Rabada",
     "descricao": "a Rabada da tabela, no lugar do golpe de maça (um ataque por ação)"
@@ -25957,7 +25957,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Forma mutável",
     "descricao": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. ativacao: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. duracao: até ele voltar com outra ação; na lua cheia, até o sol nascer. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade fora da lua cheia"
@@ -26095,7 +26095,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "sem vida",
     "descricao": "não respira, não come e não dorme; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto"
@@ -26233,7 +26233,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Desaparecer",
     "descricao": "some da vista de todos (Invisível), andando e agindo devagar; para fugir de combate perdido. ativacao: uma ação, Velocidade 6. duracao: até ele atacar ou desfazer. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade"
@@ -26368,7 +26368,7 @@
     }
    ]
   },
-  "habilidades": [],
+  "habilidadesEspeciais": [],
   "poderes": [],
   "locomocao": {
    "terra": 1
@@ -26495,7 +26495,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "pelas pernas"
@@ -26635,7 +26635,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "constrição = agarrar",
     "descricao": "bote para agarrar"
@@ -26762,7 +26762,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Armadilheiro",
     "descricao": "monta armadilhas simples no túnel antes do combate; o efeito de cada uma fica com o Mestre"
@@ -26898,7 +26898,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Tentáculos múltiplos",
     "descricao": "rajada"
@@ -27076,7 +27076,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Três correntes",
     "descricao": "rajada"
@@ -27235,7 +27235,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Filamentos pegajosos",
     "descricao": "o filamento gruda: o alvo fica Agarrado à distância, e a fraqueza dos filamentos entra (Veneno e doença). ativacao: uma ação, Velocidade 6; ataque a distância, Vigor + Disparo (Vigor 10 + Disparo 3 + 2 × o menor entre Centelha 5 e Disparo 3, 6). duracao: até o alvo se soltar ou o filamento ser cortado. alcance: 15 m. area: um alvo por ação. dano: nenhum. resistencia: esquiva, contra o ataque; corpo, pela regra do veneno; para se soltar, Força + Atletismo contra o total do ataque, ou cortar o filamento (um golpe de Corte que fira, a critério do Mestre). limiteDeUso: até seis filamentos presos ao mesmo tempo, em alvos diferentes ou no mesmo"
@@ -27385,7 +27385,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Choque elétrico",
     "descricao": "descarrega a eletricidade do corpo num alvo perto. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: instantânea. alcance: 3 m. area: um alvo. dano: 1d6 + Centelha, raio. resistencia: esquiva, contra a jogada do choque. limiteDeUso: uma vez a cada 12 Ticks"
@@ -27529,7 +27529,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "investida intimidante",
     "descricao": "ao avançar sibilando com a gola aberta, quem é atacado testa Compostura ou fica abalado por algum tempo; a Dificuldade e quanto dura ficam com o Mestre"
@@ -27649,7 +27649,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Toque drenante",
     "descricao": "quem falha perde a firmeza da mente: a Percepção e a Integridade contam um nível abaixo, e fica Abalado; cada toque que pega desce mais um; quem chega a 0 vira servo dela até o efeito passar. ativacao: uma ação, Velocidade 5, a jogada de Briga para tocar, ou as Garras que ferem. duracao: até o fim do dia; acumula. alcance: toque. area: um alvo. dano: nenhum além do golpe. resistencia: mente, contra a jogada do toque. limiteDeUso: um por golpe"
@@ -27793,7 +27793,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -27938,7 +27938,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "na garganta"
@@ -28079,7 +28079,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "na garganta"
@@ -28203,7 +28203,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Recuperação acelerada",
     "descricao": "recuperacao-acelerada"
@@ -28342,7 +28342,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "na garganta ou na nuca"
@@ -28485,7 +28485,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "atropelar",
     "descricao": "passa por cima de quem está no chão, com 3,5 t de corpo"
@@ -28634,7 +28634,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Toque paralisante",
     "descricao": "o toque gélido paralisa a vítima"
@@ -28801,7 +28801,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Canto Encantado",
     "descricao": "Sua música pode inspirar coragem em aliados, prender a atenção de inimigos ou até convencê-los a agir contra a própria vontade, por um bom tempo a cada cena."
@@ -28944,7 +28944,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -29089,7 +29089,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro gélido",
     "descricao": "uma geleia congelante gruda e endurece em gelo: quem falha fica Imobilizado e leva 1d6 de gelo a cada 6 Ticks enquanto estiver preso; para se soltar, Força + Atletismo contra a jogada do sopro, uma tentativa por ação. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: o dano, instantâneo; o gelo, até o alvo se soltar. alcance: 12 m à frente. area: cone de 12 m. dano: 9d6 + Centelha, gelo. resistencia: esquiva, contra a jogada do sopro; quem passa leva metade e não fica preso. limiteDeUso: uma vez a cada 24 Ticks"
@@ -29266,7 +29266,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro ácido",
     "descricao": "o ácido corrói tudo o que toca. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: instantânea. alcance: 18 m à frente. area: linha de 18 m ou cone de 12 m, à escolha. dano: 9d6 + Centelha, ácido. resistencia: esquiva, contra a jogada do sopro; quem passa leva metade. limiteDeUso: uma vez a cada 24 Ticks"
@@ -29453,7 +29453,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro de magma",
     "descricao": "a lava queima tudo na linha. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: instantânea. alcance: 18 m à frente. area: linha de 18 m. dano: 9d6 + Centelha, fogo. resistencia: esquiva, contra a jogada do sopro; quem passa leva metade. limiteDeUso: uma vez a cada 24 Ticks (\"a cada poucos rounds\", site)"
@@ -29624,7 +29624,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Forma mutável",
     "descricao": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. ativacao: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. duracao: até ele voltar com outra ação; na lua cheia, até o sol nascer. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade fora da lua cheia"
@@ -29763,7 +29763,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "na perna"
@@ -29894,7 +29894,7 @@
     }
    ]
   },
-  "habilidades": [],
+  "habilidadesEspeciais": [],
   "poderes": [],
   "locomocao": {
    "terra": 8
@@ -30028,7 +30028,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Mordida congelante",
     "descricao": "o frio do corpo dele queima a carne mordida. ativacao: a Mordida que acerta. duracao: instantânea. alcance: o da mordida. area: um alvo. dano: +1d6 de gelo, somado ao do golpe. resistencia: nenhum. limiteDeUso: um por golpe"
@@ -30167,7 +30167,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -30310,7 +30310,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -30439,7 +30439,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -30576,7 +30576,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -30713,7 +30713,7 @@
     }
    ]
   },
-  "habilidades": [],
+  "habilidadesEspeciais": [],
   "poderes": [],
   "locomocao": {
    "terra": 1
@@ -30823,7 +30823,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Bola de fogo",
     "descricao": "fogo"
@@ -30986,7 +30986,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -31121,7 +31121,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Estoque de espinhos",
     "descricao": "a cauda guarda 24 espinhos; cada disparo gasta um, e eles voltam a crescer num dia. ativacao: cada disparo dos Espinhos de cauda. duracao: o dia. alcance: 30 m. area: um alvo por espinho. dano: o do ataque. resistencia: esquiva, contra a jogada do disparo. limiteDeUso: 24 espinhos por dia"
@@ -31256,7 +31256,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "constrição",
     "descricao": "envolve a presa, de preferência pela cabeça, e aperta"
@@ -31383,7 +31383,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Domínio das águas",
     "descricao": "golpeia com a força das correntes quando ele e o alvo estão na água ou tocando nela, e luta pior em terra firme: +2 no dano da Pancada de maré quando os dois tocam a água; −2 no ataque quando ele está em terra seca, longe da água. ativacao: nenhuma; sempre ativo. duracao: permanente. alcance: o próprio corpo. area: não se aplica. dano: o +2 na Pancada. resistencia: nenhum. limiteDeUso: nenhum"
@@ -31530,7 +31530,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Três lâminas",
     "descricao": "rajada"
@@ -31729,7 +31729,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -31868,7 +31868,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Olhar petrificante",
     "descricao": "o olhar transforma em pedra o corpo da vítima e o que veste, sem matar"
@@ -32016,7 +32016,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -32159,7 +32159,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro elemental",
     "descricao": "um jato do elemento dele queima todos no cone. ativacao: uma ação, Velocidade 7, a jogada da tabela (Vigor + Disparo). duracao: instantânea. alcance: 3 m à frente. area: cone de 3 m. dano: 2d6 + Centelha, fogo (na Variante, o tipo do elemento). resistencia: esquiva, contra a jogada; quem se abaixa a tempo leva metade. limiteDeUso: uma vez a cada 24 Ticks"
@@ -32296,7 +32296,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Anfíbio",
     "descricao": "respira na água e no ar; fora d'água só se arrasta. ativacao: nenhuma; sempre ativo. duracao: permanente. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum"
@@ -32428,7 +32428,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Assumir forma de objeto",
     "descricao": "parece um baú, uma porta ou um móvel comum da massa dele; quem olha precisa vencer a Furtividade dele, com a Especialidade natural (disfarçado de objeto) +3, com Prontidão para notar o engano. ativacao: uma ação, Velocidade 6, com uma hora de preparo para mudar de objeto. duracao: até ele se mexer para atacar. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade"
@@ -32570,7 +32570,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Investida",
     "descricao": "investida"
@@ -32699,7 +32699,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sentidos das cavernas",
     "descricao": "Enxerga no escuro a longa distância, tem visão noturna aguçada e sente cheiros como um animal faminto."
@@ -32848,7 +32848,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas mãos",
     "descricao": "Até dois golpes por ação"
@@ -32990,7 +32990,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Corrói metal",
     "descricao": "o metal enferruja: a armadura de metal perde 1 ponto de Absorção, e a arma de metal perde 1 de dano, por toque; o efeito acumula, e a peça que chega a 0 vira pó. ativacao: as Antenas que acertam o alvo, ou que tocam uma arma de metal que bloqueia ou que o acerta. duracao: permanente. alcance: o do corpo a corpo. area: um objeto de metal. dano: nenhum ao portador. resistencia: nenhum para o metal comum; a peça encantada, a critério do Mestre. limiteDeUso: um por golpe"
@@ -33120,7 +33120,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Absorve raio",
     "descricao": "a resistência corta metade do dano, e a metade cortada vira cura em PV, até o PV total. ativacao: um dano de raio que o acerta. duracao: instantânea. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum"
@@ -33258,7 +33258,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "sangramento",
     "descricao": "a ferida sangra por muito tempo, porque a saliva não deixa coagular"
@@ -33384,7 +33384,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -33513,7 +33513,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -33637,7 +33637,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Ataque furtivo",
     "descricao": "o golpe pega um ponto vital. ativacao: o golpe que acerta um alvo Surpreso, ou distraído, ou flanqueado. duracao: instantânea. alcance: o do corpo a corpo. area: um alvo. dano: +1d6 no dano do golpe. resistencia: nenhum. limiteDeUso: um por golpe"
@@ -33774,7 +33774,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -33885,7 +33885,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Podridão da múmia",
     "descricao": "a carne do alvo começa a apodrecer: ele fica Doente e não recupera PV por Arte nem por Técnica de cura enquanto a podridão durar; cada novo golpe que pega soma um degrau de Desgaste. ativacao: o Golpe esmagador que fere. duracao: até um rito de cura de nível 4 ou mais tirar a maldição. alcance: toque. area: um alvo. dano: nenhum além do golpe. resistencia: corpo, contra a jogada do golpe; quem passa não pega a podridão daquele golpe. limiteDeUso: um por golpe"
@@ -34047,7 +34047,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
     "descricao": "Até dois golpes por ação"
@@ -34209,7 +34209,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Mordida venenosa",
     "descricao": "a regra do veneno, com o veneno da linha Veneno e doença"
@@ -34374,7 +34374,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Mordida venenosa",
     "descricao": "a regra do veneno, com o veneno da linha Veneno e doença"
@@ -34515,7 +34515,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Ferrão peçonhento",
     "descricao": "a regra do veneno, com o veneno da linha Veneno e doença"
@@ -34671,7 +34671,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "sem pernas",
     "descricao": "difícil de derrubar"
@@ -34816,7 +34816,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
     "descricao": "Até dois golpes por ação"
@@ -34980,7 +34980,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "línguas tentaculares",
     "descricao": "rajada"
@@ -35128,7 +35128,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Beleza cegante",
     "descricao": "quem a encarar e falhar em Vontade fica cego ou Abalado"
@@ -35313,7 +35313,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Toque sangrento",
     "descricao": "abre uma ferida que sangra: o alvo fica Sangrando (Sangramento 2). ativacao: uma ação, Velocidade 5, a jogada de Briga para tocar. duracao: até a ferida ser tratada (Estabilizar). alcance: toque. area: um alvo. dano: o do Sangramento, pela regra do livro. resistencia: corpo, Vigor + Resistência contra a jogada do toque; quem passa não sangra. limiteDeUso: três vezes por cena"
@@ -35445,7 +35445,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "empurrar",
     "descricao": "empurrar"
@@ -35574,7 +35574,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Força de gigante",
     "descricao": "o alvo cai no chão ou é empurrado 1 m, à escolha do ogro; uma porta comum cede ao segundo golpe. ativacao: a Pancada descomunal que fere um alvo Médio ou menor. duracao: instantânea. alcance: o do corpo a corpo. area: um alvo. dano: o da Pancada. resistencia: corpo, contra a jogada da pancada; quem passa fica de pé e no lugar. limiteDeUso: um por golpe"
@@ -35709,7 +35709,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Regeneração 5",
     "descricao": "origem sobrenatural; fecha as feridas, exceto o dano de fogo ou ácido"
@@ -35872,7 +35872,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Frenesi",
     "descricao": "Frenesi da raça Orc"
@@ -35999,7 +35999,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -36123,7 +36123,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Tentáculos que agarram",
     "descricao": "o alvo fica Agarrado, sem jogada de Agarrar, e pode ser puxado até a boca. ativacao: o Tentáculo que acerta, se ele quiser. duracao: até o alvo se soltar ou ele soltar. alcance: 4,5 m. area: um alvo por tentáculo. dano: o do Tentáculo. resistencia: corpo, para escapar, pela jogada de Agarrar do livro contra a Força 6 + Briga 4 dele, com o Agarrão +2. limiteDeUso: dois alvos agarrados, um em cada tentáculo"
@@ -36252,7 +36252,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Imune à Podridão e ao Veneno",
     "descricao": "Não sofre com toxinas, doenças, sono ou paralisia, e absorve grande parte de qualquer dano ácido que sofra."
@@ -36391,7 +36391,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "coice e mordida juntos",
     "descricao": "escoiceia e morde na mesma ação"
@@ -36529,7 +36529,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Invisibilidade natural",
     "descricao": "está sempre Invisível; atacar não o revela, e os meios comuns de desfazer magia não o tornam visível. Quem o procura nota, se tanto, o ar que se move. ativacao: nenhuma; sempre ativa. duracao: permanente, mesmo enquanto ataca. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum"
@@ -36671,7 +36671,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Cascos em chamas",
     "descricao": "os cascos em brasa queimam o que tocam. ativacao: o golpe dos Cascos que acerta. duracao: instantânea. alcance: o dos cascos. area: um alvo. dano: +1d6 de fogo, somado ao do golpe. resistencia: nenhum. limiteDeUso: um por golpe"
@@ -36796,7 +36796,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Filamento Pegajoso",
     "descricao": "Dispara um fio de seda grudenta a boa distância, prendendo o alvo no lugar; a vítima pode se libertar com força bruta ou destreza, mas o fio é difícil de cortar."
@@ -36945,7 +36945,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Invisibilidade natural",
     "descricao": "fica com a condição Invisível; o que ela carrega some junto; a flecha que ela solta aparece quando sai do arco. ativacao: uma ação, Velocidade 5. duracao: até ela atacar ou desfazer. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade"
@@ -37087,7 +37087,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Espada de luz cegante",
     "descricao": "acerto forte pode cegar o alvo se falhar em Vontade"
@@ -37291,7 +37291,7 @@
     }
    ]
   },
-  "habilidades": [],
+  "habilidadesEspeciais": [],
   "poderes": [],
   "locomocao": {
    "natacao": 4
@@ -37399,7 +37399,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -37532,7 +37532,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "constrição = agarrar",
     "descricao": "agarrar"
@@ -37668,7 +37668,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "atropelar",
     "descricao": "investida"
@@ -37804,7 +37804,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "choque na água",
     "descricao": "a corrente se espalha pela água; sair da área evita. ativacao: a descarga na água. duracao: instantânea. alcance: 2 m. area: raio de 2 m. dano: 1d6 de raio; sem Absorção natural contra o elemento. resistencia: nenhum teste adicional. limiteDeUso: o da Descarga elétrica"
@@ -37941,7 +37941,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "garras em sequência",
     "descricao": "rajada"
@@ -38082,7 +38082,7 @@
     }
    ]
   },
-  "habilidades": [],
+  "habilidadesEspeciais": [],
   "poderes": [],
   "locomocao": {
    "terra": 1,
@@ -38189,7 +38189,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Ácido Devorador",
     "descricao": "Seu toque secreta um ácido que dissolve carne, tecido e metal rapidamente; quem é atingido vê suas roupas e armadura se corroerem junto com a pele, e armas que a acertam também sofrem o mesmo dano."
@@ -38337,7 +38337,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
     "descricao": "Até dois golpes por ação"
@@ -38491,7 +38491,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "engolir presa pequena",
     "descricao": "engole inteira a presa pequena"
@@ -38624,7 +38624,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "três cabeças",
     "descricao": "ataca com o leão, a cabra e o dragão na mesma ação; cada cabeça é uma parte diferente, e a Rajada não as junta"
@@ -38770,7 +38770,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -38894,7 +38894,7 @@
    },
    "ataques": []
   },
-  "habilidades": [],
+  "habilidadesEspeciais": [],
   "poderes": [],
   "locomocao": {
    "terra": 1
@@ -39019,7 +39019,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Garras traiçoeiras",
     "descricao": "Até dois golpes por ação"
@@ -39184,7 +39184,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Ataque furtivo",
     "descricao": "a adaga entra onde o alvo não guarda. ativacao: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. duracao: instantânea. alcance: o do corpo a corpo. area: um alvo. dano: +1d6 no dano do golpe. resistencia: nenhum. limiteDeUso: um por golpe"
@@ -39317,7 +39317,7 @@
     }
    ]
   },
-  "habilidades": [],
+  "habilidadesEspeciais": [],
   "poderes": [],
   "locomocao": {
    "terra": 7
@@ -39442,7 +39442,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "fuga pelas frestas",
     "descricao": "foge por buraco e esgoto onde quase nada o segue; o tamanho do bônus fica com o Mestre"
@@ -39570,7 +39570,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Calor abrasador",
     "descricao": "o corpo arde por dentro e queima o que encosta. ativacao: nenhuma; sempre ativo enquanto ela está desperta. duracao: contínua. alcance: o próprio corpo. area: quem a toca, a golpeia sem arma ou é mordido por ela. dano: 2d6 de fogo em quem a toca ou é mordido, somado ao do golpe. resistencia: nenhum. limiteDeUso: uma vez por toque"
@@ -39716,7 +39716,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "derrubar"
@@ -39872,7 +39872,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "talões"
@@ -40018,7 +40018,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Fúria sanguinária",
     "descricao": "fica Enfurecido (+2 no ataque, −2 nas Defesas; ataca o mais perto, não recua) e soma +1 na Força, com o dano que vem dela. ativacao: ao ser ferido em combate (1 de dano ou mais depois da Absorção), se quiser. duracao: até o fim da luta. alcance: o próprio corpo. area: não se aplica. dano: +1 por golpe, da Força. resistencia: nenhum. limiteDeUso: uma vez por cena"
@@ -40165,7 +40165,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Calor corporal",
     "descricao": "a pele irradia calor o bastante para queimar. ativacao: nenhuma; sempre ativa. duracao: permanente. alcance: toque. area: quem a toca com a pele, a segura ou está preso na cauda dela. dano: 1d6 + Centelha, fogo, a cada 6 Ticks a quem está no agarrão com ela, e uma vez a quem a toca com a pele nua. resistencia: nenhum. limiteDeUso: nenhum"
@@ -40309,7 +40309,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "fixar = agarrar",
     "descricao": "agarrar"
@@ -40442,7 +40442,7 @@
    },
    "ataques": []
   },
-  "habilidades": [],
+  "habilidadesEspeciais": [],
   "poderes": [],
   "locomocao": {
    "terra": 1
@@ -40551,7 +40551,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Flautas do medo",
     "descricao": "quem ouvir e falhar em Vontade fica Abalado e foge"
@@ -40719,7 +40719,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "constrição",
     "descricao": "agarrar"
@@ -40863,7 +40863,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Domínio da pedra",
     "descricao": "golpeia com mais força quando ele e o alvo tocam o chão, e luta pior contra quem está no ar ou na água: +2 no dano da Pancada de pedra quando os dois tocam o chão; −2 no ataque contra quem voa ou está na água. ativacao: nenhuma; sempre ativo. duracao: permanente. alcance: o próprio corpo. area: não se aplica. dano: o +2 na Pancada. resistencia: nenhum. limiteDeUso: nenhum"
@@ -40989,7 +40989,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Cacofonia enlouquecedora",
     "descricao": "Emite sons que a mente sã não deveria ouvir; quem falha num teste de Compostura numa área ampla fica confuso e sofre dano contínuo de Mente a cada rodada exposta."
@@ -41151,7 +41151,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Multiataque aquático",
     "descricao": "só sem a lança"
@@ -41281,7 +41281,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Espada afiada",
     "descricao": "crítico pode decepar um membro ou matar em um só golpe"
@@ -41525,7 +41525,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "derrubar"
@@ -41668,7 +41668,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Incorpórea",
     "descricao": "desliza sem ruído, atravessa paredes e portas fechadas e se achata para escoar por frestas mínimas; não agarra, não empurra e não pode ser agarrada nem empurrada; a arma comum ainda a fere, pela metade (Elementos). ativacao: nenhuma, sempre ativo. duracao: permanente. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: nenhum"
@@ -41813,7 +41813,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "fixação",
     "descricao": "agarrar"
@@ -41949,7 +41949,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Beijo dreno",
     "descricao": "bebe a vida da vítima com o beijo e se fecha com ela; deixa a vítima exausta. ativacao: uma ação, Velocidade 6, o beijo em quem está Agarrado, Dominado ou se deixa beijar. duracao: instantânea. alcance: toque. area: um alvo. dano: 1d6 + Centelha, que ela recupera em PV. resistencia: corpo, contra Influência + Sedução dela; quem passa não perde nada. limiteDeUso: um por ação"
@@ -42099,7 +42099,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Disfarce e sombra",
     "descricao": "à escolha: nubla a forma (quem o ataca tem −2 no acerto); assume a aparência de outro humanoide pequeno; ou some numa sombra instantânea (fica Escondido, se houver sombra perto). ativacao: uma ação, Velocidade 6. duracao: até o fim da cena, ou até ele desfazer. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum; quem desconfia do disfarce testa a Percepção contra a Manha dele. limiteDeUso: três vezes por dia, somados"
@@ -42239,7 +42239,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "múltiplos ataques",
     "descricao": "morde, arranha e bate com a cauda na mesma ação"
@@ -42415,7 +42415,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Sopro de vapor escaldante",
     "descricao": "o vapor fervente queima quem está na nuvem. ativacao: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). duracao: instantânea. alcance: 9 m à frente. area: cone de 9 m, na superfície ou debaixo d'água. dano: 6d6 + Centelha, fogo. resistencia: corpo, contra a jogada do sopro; quem passa leva metade. limiteDeUso: uma vez a cada 24 Ticks (\"não pode repetir o sopro em sequência\", site)"
@@ -42559,7 +42559,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Golpe certeiro",
     "descricao": "o golpe rápido entra antes que a vítima perceba. ativacao: o golpe que acerta um alvo Surpreso, ou distraído, ou flanqueado. duracao: instantânea. alcance: o do corpo a corpo. area: um alvo. dano: +1d6 no dano do golpe. resistencia: nenhum. limiteDeUso: um por golpe"
@@ -42689,7 +42689,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Manto de trevas",
     "descricao": "escuridão sobrenatural que a luz comum não atravessa; ele enxerga nela. ativacao: uma ação, Velocidade 6. duracao: até o fim da cena, ou até ele desfazer. alcance: 18 m. area: esfera de 6 m num ponto que ele vê. dano: nenhum. resistencia: nenhum. limiteDeUso: uma vez por dia"
@@ -42822,7 +42822,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "na garganta"
@@ -42965,7 +42965,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "os antebraços seguram a presa"
@@ -43080,7 +43080,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -43205,7 +43205,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Animar árvores",
     "descricao": "transforma árvores próximas em aliados temporários que lutam ao seu lado"
@@ -43366,7 +43366,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Tremorsentido",
     "descricao": "Percebe vibrações no solo ao redor, dispensando a visão para detectar presas próximas."
@@ -43514,7 +43514,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
     "descricao": "derrubar"
@@ -43650,7 +43650,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Fedor nauseante",
     "descricao": "quem entra na área pela primeira vez na cena testa contra o enjoo; na falha, fica Abalado. ativacao: nenhuma; sempre ativo, e mais forte quando ele se irrita ou luta. duracao: Abalado até sair do cheiro e passar 6 Ticks fora dele. alcance: 3 m. area: esfera de 3 m em volta dele. dano: nenhum. resistencia: corpo, Vigor + Resistência contra Dificuldade 10; quem passa fica imune ao cheiro dos trogloditas até o fim da cena. limiteDeUso: uma vez por cena para cada pessoa"
@@ -43788,7 +43788,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
     "descricao": "rajada"
@@ -43948,7 +43948,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "bote vertical",
     "descricao": "investida"
@@ -44081,7 +44081,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "chifre perfurante",
     "descricao": "só depois de correr ao menos 6 m em linha reta"
@@ -44223,7 +44223,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Garras Esmagadoras",
     "descricao": "Golpeia com as duas garras e pode prender o alvo em um abraço mortal, mantendo-o preso enquanto continua a dilacerá-lo."
@@ -44364,7 +44364,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar (o \"abraço\")",
     "descricao": "agarrar"
@@ -44498,7 +44498,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "arrastar a presa para o mato",
     "descricao": "arrasta a presa para comer escondido, até o Peso erguido"
@@ -44619,7 +44619,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar (o \"abraço\")",
     "descricao": "agarrar"
@@ -44761,7 +44761,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar (o \"abraço\")",
     "descricao": "agarrar"
@@ -44891,7 +44891,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "segura a presa com a pata"
@@ -45022,7 +45022,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Regeneração 5",
     "descricao": "origem sobrenatural; fecha as feridas, exceto o dano de prata, fogo ou luz do sol"
@@ -45186,7 +45186,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "grito paralisante",
     "descricao": "em vez de morder, solta um grito agudo; quem o ouve e o vê claramente fica paralisado, a menos que resista; quem resiste fica imune a esse grito por um dia"
@@ -45308,7 +45308,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Corpo vegetal",
     "descricao": "Não tem órgãos vitais como criaturas de carne, sendo imune a venenos, doenças e efeitos que dependem de fisiologia animal, além de resistente a eletricidade."
@@ -45443,7 +45443,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "mordida e ferrão juntos",
     "descricao": "morde e pica com o ferrão da cauda na mesma ação"
@@ -45592,7 +45592,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"
@@ -45726,7 +45726,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Vinha que agarra",
     "descricao": "o acerto já agarra, sem jogada de Agarrar; o alvo fica Agarrado e é puxado para junto do caule. ativacao: a Vinha constritora que acerta. duracao: até o alvo se soltar ou a vinha soltar. alcance: 3 m. area: um alvo. dano: o da Vinha. resistencia: corpo, para escapar, pela jogada de Agarrar do livro contra a Força 7 + Briga 4 dela. limiteDeUso: um alvo agarrado por vez"
@@ -45870,7 +45870,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
     "descricao": "Até dois golpes por ação"
@@ -46031,7 +46031,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Dreno de vida",
     "descricao": "a vida do alvo escorre para o wight; o PV máximo do alvo cai, e o efeito se acumula a cada garra que pega. ativacao: a Garra que fere. duracao: até um descanso completo. alcance: toque. area: um alvo. dano: nenhum além da garra; o PV máximo do alvo cai 1d6. resistencia: corpo, contra a jogada da garra; quem passa não perde PV máximo por aquela garra. limiteDeUso: um por golpe"
@@ -46168,7 +46168,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Mordida derrubadora",
     "descricao": "derrubar"
@@ -46313,7 +46313,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "garras em sequência",
     "descricao": "rajada"
@@ -46486,7 +46486,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Duas espadas",
     "descricao": "empunhadura-dupla"
@@ -46638,7 +46638,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Deslizar pela pedra",
     "descricao": "atravessa a rocha sólida como um peixe na água, à velocidade da Escavação, sem abrir túnel nem deixar rastro; dentro da pedra, quem está fora não o vê nem o ataca. ativacao: parte do movimento dele. duracao: enquanto se move. alcance: o próprio corpo. area: não se aplica. dano: nenhum. resistencia: nenhum. limiteDeUso: à vontade"
@@ -46781,7 +46781,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "Investida das garras",
     "descricao": "se as duas garras acertam o mesmo alvo, ele é dilacerado. ativacao: as duas garras na mesma ação, pela empunhadura dupla do livro (as duas a −1d6). duracao: instantânea. alcance: o do corpo a corpo. area: um alvo. dano: +2d6, Corte, além das duas garras. resistencia: nenhum. limiteDeUso: uma vez por ação"
@@ -46921,7 +46921,7 @@
     }
    ]
   },
-  "habilidades": [
+  "habilidadesEspeciais": [
    {
     "nome": "agarrar",
     "descricao": "agarrar"

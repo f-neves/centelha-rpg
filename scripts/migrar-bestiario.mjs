@@ -149,7 +149,7 @@ INIM.forEach((I, i) => {
     ...(I.poderes?.length ? { poderes: I.poderes } : {}),
     ...(m.combate.fraquezas ? { fraquezas: m.combate.fraquezas } : {}),
     ...(m.combate.resistencias ? { resistencias: m.combate.resistencias } : {}),
-    habilidades: m.habilidades,
+    habilidades: m.habilidadesEspeciais,
     lore: m.lore,
     ecologia: m.ecologia,
     notas: I.notas,

@@ -65,7 +65,7 @@ const usosTxt = (u: any) => {
 };
 const RESISTE: Record<string, string> = { esquiva: 'Esquiva', corpo: 'corpo', mente: 'mente', nenhum: 'nenhuma' };
 // tem conteúdo mecânico (Habilidades / Poderes / Técnicas / Artes / Notas) → botão do card flutuante
-const temMec = (x: any) => !!((x.habilidades?.length) || (x.poderes?.length) || (x.tecnicas?.length) || (x.artes?.length) || x.notas);
+const temMec = (x: any) => !!((x.habilidadesEspeciais?.length) || (x.poderes?.length) || (x.tecnicas?.length) || (x.artes?.length) || x.notas);
 // listas de poderes por criatura (ids p/ filtro)
 const caminhosDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.tipo === 'proeza' && p.caminho).map((p: any) => p.caminho))];
 const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.tipo === 'feiticaria' && p.arte).map((p: any) => p.arte))];
@@ -74,7 +74,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
         data-tipo={i.categoria || ''} data-terreno={(i.ecologia?.terreno || []).join(' ')} data-clima={(i.ecologia?.clima || []).join(' ')} data-semimg={i.semImagem ? '1' : ''} data-porte={i.porte || ''}
         data-caminhos={caminhosDe(i).join(' ')} data-artes={artesDe(i).join(' ')}
         data-nome={i.nome} data-en={i.nomeIngles || i.nome} data-pv={i.combate.pv} data-defesa={i.combate.defesa} data-centelha={i.centelha} data-ameaca={i.ameaca}
-        data-txt={(i.nome + ' ' + (i.nomeIngles || '') + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (i.habilidades || []).map((h: any) => h.nome + ' ' + h.descricao).join(' ') + ' ' + (i.poderes || []).map((p: any) => p.id ? (p.nome + ' ' + p.efeito) : (p.efeito + ' ' + p.alvo)).join(' ')).toLowerCase()}
+        data-txt={(i.nome + ' ' + (i.nomeIngles || '') + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (i.habilidadesEspeciais || []).map((h: any) => h.nome + ' ' + h.descricao).join(' ') + ' ' + (i.poderes || []).map((p: any) => p.id ? (p.nome + ' ' + p.efeito) : (p.efeito + ' ' + p.alvo)).join(' ')).toLowerCase()}
         data-besta={JSON.stringify({ id: i.id, nome: i.nome, conceito: i.conceito, ameaca: i.ameaca, centelha: i.centelha, porte: i.porte, atributos: i.atributos, vontade: i.vontade,
         /* Esquiva, Integridade, Sociabilidade e Prontidão são ENTRADA do gerador e não
            sobrevivem no monsters.json: FONTE ÚNICA da estimativa é `periciasDe()`
@@ -222,9 +222,9 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
 
               {temMec(i) && (
                 <template class="mech-tpl">
-                  {i.habilidades?.length > 0 && (<>
+                  {i.habilidadesEspeciais?.length > 0 && (<>
                     <h4>Habilidades</h4>
-                    <ul class="ib-hab">{i.habilidades.map((h: any) => (<li><b>{h.nome}</b> {h.descricao}</li>))}</ul>
+                    <ul class="ib-hab">{i.habilidadesEspeciais.map((h: any) => (<li><b>{h.nome}</b> {h.descricao}</li>))}</ul>
                   </>)}
                   {i.poderes?.length > 0 && (<>
                     <h4>Poderes <span class="ib-sub-lbl">(sistema)</span></h4>
