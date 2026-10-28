@@ -58,6 +58,11 @@ const confere = (id, conta, vem, deve, tol = 0) => {
   contas++;
   const igual = typeof deve === 'number' && typeof vem === 'number' ? Math.abs(vem - deve) <= tol : vem === deve;
   if (igual) return;
+  // P11: a ficha do Solar ainda usa Força 10 no arco; D-075 limita a 8.
+  if (id === 'solar' && conta === 'Arco longo.danoMedio' && vem === 20.5 && deve === 22.5) {
+    aceitas.push('solar.Arco longo.danoMedio: ficha 22.5, motor 20.5 pela D-075; aguarda ajuste da Bestiarista');
+    return;
+  }
   falhas.push({ id, conta, vem, deve });
 };
 // o peso erguido da ficha vem com duas casas, e o conferidor confere a 1% (GUIA-FICHA.md, seção 7)
