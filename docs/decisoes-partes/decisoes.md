@@ -3039,6 +3039,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Decisão (autor, 27/10/2026, pergunta 36.2, opção a; o autor autoriza o registro, mensagem de 28/10/2026): "nenhuma regra nem o formato (formato-criatura.md, linha 86) exige inteiro no deslocamento; o leitor e o esquema passam a aceitar decimal (0,5). O formato não muda. Os três valores do merfolk (Batalha, Arranque, Corrida) a Bestiarista decide, como decisão de número."
 - Origem: pergunta do lote ajustes-humanoide-03 ("Movimento fracionário em terra", o merfolk que se arrasta a 0,5 m por Tick), em `../tmp/arquiteto/PERGUNTAS.md`.
 - Estado: **a implementar** no leitor e no esquema, pela Executora, na Fase 3. O formato só ganha a frase que diz que o número pode ser decimal.
+- Nota (autor, 28/10/2026, pergunta P15 da Executora, opção a, em `../tmp/arquiteto/PERGUNTAS.md`): "`deslocamento.terra` passa a ser condicional no formato, como voo, nado, escavação e escalada. Ausente quer dizer «não anda», e o card escreve isso. Nenhuma regra exigia a terra; era uma suposição do formato de 24/10. As 21 fichas não mudam." Aplicada em `../tmp/arquiteto/bestiario/formato-json/formato-criatura.md` (tabela, `deslocamento.terra`); a implementar no leitor, no esquema e no card, pela Executora.
 
 ### D-255 · Bônus da fonte: o valor da fonte na escala do autor, no alvo que a fonte dá; sem origem, o rótulo do site [tags: bestiario, criatura, bonus, defesa, jogada, deflexao, resistencia, atributo, b20]
 - Data: 2026-10-27
