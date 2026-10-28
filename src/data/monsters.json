@@ -40,7 +40,7 @@
    "perspicacia": 4,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "armas": 2,
@@ -50,7 +50,9 @@
    "integridade": 5,
    "empatia": 3,
    "persuasao": 2,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "cura": 2,
    "religiao": 2,
    "musculatura": 0
@@ -179,7 +181,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 0,
    "briga": 5,
@@ -189,7 +191,9 @@
    "integridade": 5,
    "conhecimentos": 4,
    "ocultismo": 3,
-   "persuasao": 2,
+   "persuasao": 2
+  },
+  "habilidadesSec": {
    "natacao": 3,
    "musculatura": 2
   },
@@ -329,7 +333,7 @@
    "perspicacia": 3,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 1,
    "briga": 4,
@@ -340,7 +344,9 @@
    "resistencia": 3,
    "empatia": 2,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "voo": 3,
    "musculatura": 3
   },
@@ -495,7 +501,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 3,
    "briga": 3,
@@ -505,7 +511,9 @@
    "integridade": 2,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 1,
    "escalada": 0,
    "natacao": 0,
@@ -624,7 +632,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 3,
@@ -634,7 +642,9 @@
    "integridade": 2,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 2,
@@ -754,7 +764,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "briga": 4,
@@ -764,7 +774,9 @@
    "integridade": 2,
    "resistencia": 3,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "disparo": 2,
    "musculatura": 4
   },
@@ -892,7 +904,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 3,
@@ -902,7 +914,9 @@
    "integridade": 3,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -1017,7 +1031,7 @@
    "perspicacia": 2,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 3,
    "briga": 5,
@@ -1027,7 +1041,9 @@
    "integridade": 3,
    "resistencia": 3,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "disparo": 2,
    "escalada": 3,
    "musculatura": 2
@@ -1148,7 +1164,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 3,
@@ -1158,7 +1174,9 @@
    "integridade": 2,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 3,
    "natacao": 0,
@@ -1295,13 +1313,14 @@
    "inteligencia": 3,
    "raciocinio": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
+   "furtividade": 2,
    "esquiva": 1,
    "integridade": 3,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 9,
   "aparencia": 10,
   "virtudes": {
@@ -1465,13 +1484,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
+   "furtividade": 3,
    "esquiva": 0,
    "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 3
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 7,
   "aparencia": 10,
   "virtudes": {
@@ -1642,13 +1662,14 @@
    "inteligencia": 5,
    "raciocinio": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
+   "furtividade": 2,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 11,
   "aparencia": 12,
   "virtudes": {
@@ -1780,7 +1801,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 2,
    "atirador": 4,
@@ -1791,7 +1812,9 @@
    "armas": 1,
    "atletismo": 2,
    "sobrevivencia": 2,
-   "resistencia": 1,
+   "resistencia": 1
+  },
+  "habilidadesSec": {
    "musculatura": 0
   },
   "vontade": 5,
@@ -1925,7 +1948,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 5,
    "armas": 4,
@@ -1936,7 +1959,9 @@
    "briga": 2,
    "atletismo": 3,
    "investigacao": 2,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "musculatura": 0
   },
   "vontade": 6,
@@ -2080,7 +2105,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 4,
    "briga": 5,
@@ -2088,7 +2113,9 @@
    "esquiva": 1,
    "integridade": 5,
    "persuasao": 3,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "intimidacao": 3,
    "voo": 3,
    "musculatura": 0
@@ -2236,7 +2263,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 3,
@@ -2246,7 +2273,9 @@
    "integridade": 2,
    "resistencia": 5,
    "empatia": 1,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -2376,7 +2405,7 @@
    "perspicacia": 4,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 4,
    "briga": 5,
@@ -2389,7 +2418,9 @@
    "empatia": 2,
    "manha": 2,
    "sociabilidade": 1,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "intimidacao": 2,
    "escalada": 2,
    "musculatura": 2
@@ -2570,7 +2601,7 @@
    "perspicacia": 8,
    "compostura": 8
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 5,
    "furtividade": 0,
    "briga": 5,
@@ -2582,7 +2613,9 @@
    "resistencia": 6,
    "empatia": 2,
    "sociabilidade": 2,
-   "ocultismo": 5,
+   "ocultismo": 5
+  },
+  "habilidadesSec": {
    "lideranca": 5,
    "estrategia": 4,
    "intimidacao": 5,
@@ -2772,7 +2805,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "armas": 2,
@@ -2782,7 +2815,9 @@
    "briga": 2,
    "atletismo": 2,
    "sobrevivencia": 1,
-   "manha": 1,
+   "manha": 1
+  },
+  "habilidadesSec": {
    "intimidacao": 1,
    "musculatura": 0
   },
@@ -2906,7 +2941,7 @@
    "perspicacia": 4,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 4,
@@ -2919,7 +2954,9 @@
    "sociabilidade": 0,
    "manha": 2,
    "sobrevivencia": 2,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "intimidacao": 3,
    "musculatura": 2
   },
@@ -3063,7 +3100,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 5,
@@ -3076,7 +3113,9 @@
    "sociabilidade": 0,
    "manha": 3,
    "sobrevivencia": 2,
-   "ocultismo": 3,
+   "ocultismo": 3
+  },
+  "habilidadesSec": {
    "intimidacao": 4,
    "musculatura": 3
   },
@@ -3221,11 +3260,12 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
-   "esquiva": 1,
-   "furtividade": 0
+   "furtividade": 0,
+   "esquiva": 1
   },
+  "habilidadesSec": {},
   "vontade": 6,
   "aparencia": 3,
   "virtudes": {
@@ -3347,7 +3387,7 @@
    "perspicacia": 1,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 2,
    "briga": 5,
@@ -3357,7 +3397,9 @@
    "integridade": 3,
    "resistencia": 3,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "musculatura": 2
   },
   "vontade": 8,
@@ -3470,7 +3512,7 @@
    "perspicacia": 3,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "briga": 5,
@@ -3480,7 +3522,9 @@
    "integridade": 3,
    "resistencia": 5,
    "sobrevivencia": 3,
-   "ocultismo": 1,
+   "ocultismo": 1
+  },
+  "habilidadesSec": {
    "disparo": 3,
    "escalada": 5,
    "musculatura": 3
@@ -3648,7 +3692,7 @@
    "perspicacia": 2,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 3,
    "briga": 5,
@@ -3658,7 +3702,9 @@
    "integridade": 3,
    "resistencia": 4,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "disparo": 2,
    "escalada": 3,
    "musculatura": 3
@@ -3791,7 +3837,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "briga": 2,
@@ -3801,7 +3847,9 @@
    "integridade": 0,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 1,
    "natacao": 0,
@@ -3906,7 +3954,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "briga": 3,
@@ -3916,7 +3964,9 @@
    "integridade": 0,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 1,
    "natacao": 0,
@@ -4034,7 +4084,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 4,
@@ -4045,7 +4095,9 @@
    "resistencia": 3,
    "empatia": 2,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "musculatura": 3
   },
   "vontade": 7,
@@ -4189,7 +4241,7 @@
    "perspicacia": 2,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "briga": 2,
@@ -4199,7 +4251,9 @@
    "integridade": 2,
    "resistencia": 5,
    "empatia": 1,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 1,
@@ -4334,7 +4388,7 @@
    "perspicacia": 2,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "briga": 5,
@@ -4342,7 +4396,9 @@
    "esquiva": 1,
    "atletismo": 1,
    "resistencia": 3,
-   "integridade": 3,
+   "integridade": 3
+  },
+  "habilidadesSec": {
    "natacao": 2,
    "musculatura": 0
   },
@@ -4478,13 +4534,15 @@
    "perspicacia": 2,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 2,
    "briga": 5,
    "bloqueio": 0,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 4
+  },
+  "habilidadesSec": {
    "musculatura": 1
   },
   "vontade": 9,
@@ -4621,7 +4679,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "armas": 2,
@@ -4630,7 +4688,9 @@
    "esquiva": 0,
    "atletismo": 2,
    "integridade": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "natacao": 3,
    "intimidacao": 2,
    "musculatura": 0
@@ -4751,7 +4811,7 @@
    "perspicacia": 2,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "briga": 2,
@@ -4761,7 +4821,9 @@
    "integridade": 1,
    "resistencia": 4,
    "empatia": 1,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -4888,7 +4950,7 @@
    "perspicacia": 4,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "armas": 3,
@@ -4899,7 +4961,9 @@
    "integridade": 4,
    "persuasao": 2,
    "sobrevivencia": 2,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "voo": 4,
    "disparo": 3,
    "musculatura": 0
@@ -5037,7 +5101,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 0,
    "furtividade": 0,
    "briga": 2,
@@ -5047,7 +5111,9 @@
    "integridade": 2,
    "resistencia": 5,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -5173,7 +5239,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 0,
    "furtividade": 0,
    "armas": 3,
@@ -5182,7 +5248,9 @@
    "integridade": 4,
    "bloqueio": 1,
    "briga": 2,
-   "atletismo": 2,
+   "atletismo": 2
+  },
+  "habilidadesSec": {
    "intimidacao": 3,
    "musculatura": 0
   },
@@ -5310,7 +5378,7 @@
    "perspicacia": 4,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "briga": 4,
@@ -5318,7 +5386,9 @@
    "esquiva": 1,
    "atletismo": 2,
    "integridade": 4,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "natacao": 3,
    "intimidacao": 2,
    "musculatura": 0
@@ -5450,7 +5520,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 5,
@@ -5462,7 +5532,9 @@
    "empatia": 3,
    "sociabilidade": 0,
    "manha": 4,
-   "ocultismo": 5,
+   "ocultismo": 5
+  },
+  "habilidadesSec": {
    "intimidacao": 3,
    "musculatura": 0
   },
@@ -5622,7 +5694,7 @@
    "perspicacia": 4,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "briga": 5,
@@ -5631,7 +5703,9 @@
    "atletismo": 2,
    "integridade": 4,
    "ocultismo": 3,
-   "manha": 3,
+   "manha": 3
+  },
+  "habilidadesSec": {
    "natacao": 2,
    "herbologia": 2,
    "musculatura": 0
@@ -5768,7 +5842,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "armas": 3,
@@ -5777,7 +5851,9 @@
    "esquiva": 1,
    "atletismo": 2,
    "integridade": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "intimidacao": 2,
    "musculatura": 0
   },
@@ -5892,7 +5968,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 5,
@@ -5902,7 +5978,9 @@
    "integridade": 2,
    "resistencia": 4,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "musculatura": 3
   },
   "vontade": 6,
@@ -6037,7 +6115,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 5,
@@ -6045,7 +6123,9 @@
    "esquiva": 1,
    "integridade": 2,
    "sobrevivencia": 3,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "musculatura": 3
   },
   "vontade": 5,
@@ -6187,7 +6267,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 5,
    "furtividade": 0,
    "armas": 5,
@@ -6197,7 +6277,9 @@
    "integridade": 6,
    "briga": 3,
    "atletismo": 3,
-   "resistencia": 3,
+   "resistencia": 3
+  },
+  "habilidadesSec": {
    "intimidacao": 4,
    "musculatura": 0
   },
@@ -6350,7 +6432,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "armas": 3,
@@ -6359,7 +6441,9 @@
    "esquiva": 1,
    "integridade": 2,
    "sociabilidade": 1,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "intimidacao": 2,
    "estrategia": 1,
    "musculatura": 0
@@ -6507,7 +6591,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "armas": 1,
@@ -6519,7 +6603,9 @@
    "resistencia": 1,
    "oficios-gerais": 2,
    "sobrevivencia": 1,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "musculatura": 0
   },
   "vontade": 4,
@@ -6632,7 +6718,7 @@
    "perspicacia": 2,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 2,
    "briga": 2,
@@ -6642,7 +6728,9 @@
    "integridade": 2,
    "resistencia": 2,
    "empatia": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -6765,7 +6853,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 3,
    "briga": 3,
@@ -6775,7 +6863,9 @@
    "integridade": 3,
    "resistencia": 3,
    "empatia": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -6897,7 +6987,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 5,
@@ -6907,7 +6997,9 @@
    "integridade": 2,
    "resistencia": 4,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "disparo": 3,
    "musculatura": 3
   },
@@ -7037,7 +7129,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "briga": 4,
@@ -7047,7 +7139,9 @@
    "integridade": 2,
    "resistencia": 3,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "disparo": 2,
    "musculatura": 2
   },
@@ -7171,7 +7265,7 @@
    "perspicacia": 2,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 4,
@@ -7181,7 +7275,9 @@
    "integridade": 3,
    "resistencia": 3,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "intimidacao": 3,
    "voo": 3,
    "musculatura": 2
@@ -7318,7 +7414,7 @@
    "perspicacia": 4,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 5,
@@ -7326,7 +7422,9 @@
    "esquiva": 1,
    "atletismo": 1,
    "integridade": 4,
-   "ocultismo": 1,
+   "ocultismo": 1
+  },
+  "habilidadesSec": {
    "voo": 3,
    "musculatura": 0
   },
@@ -7449,7 +7547,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 0,
    "armas": 4,
@@ -7460,7 +7558,9 @@
    "briga": 2,
    "atletismo": 2,
    "resistencia": 3,
-   "sociabilidade": 2,
+   "sociabilidade": 2
+  },
+  "habilidadesSec": {
    "estrategia": 3,
    "lideranca": 3,
    "musculatura": 0
@@ -7589,7 +7689,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 3,
@@ -7599,7 +7699,9 @@
    "integridade": 1,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 1,
    "escalada": 0,
    "natacao": 2,
@@ -7713,7 +7815,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 3,
@@ -7723,7 +7825,9 @@
    "integridade": 4,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 2,
    "natacao": 0,
@@ -7846,7 +7950,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 2,
    "briga": 4,
@@ -7856,7 +7960,9 @@
    "integridade": 4,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 1,
    "natacao": 0,
@@ -7978,7 +8084,7 @@
    "perspicacia": 4,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 5,
@@ -7989,7 +8095,9 @@
    "resistencia": 4,
    "empatia": 2,
    "sociabilidade": 0,
-   "ocultismo": 3,
+   "ocultismo": 3
+  },
+  "habilidadesSec": {
    "voo": 3,
    "musculatura": 2
   },
@@ -8132,7 +8240,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 0,
    "armas": 4,
@@ -8141,7 +8249,9 @@
    "resistencia": 4,
    "integridade": 6,
    "briga": 2,
-   "atletismo": 2,
+   "atletismo": 2
+  },
+  "habilidadesSec": {
    "cavalgar": 2,
    "musculatura": 0
   },
@@ -8280,7 +8390,7 @@
    "perspicacia": 2,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 0,
    "briga": 1,
@@ -8290,7 +8400,9 @@
    "integridade": 1,
    "resistencia": 5,
    "empatia": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -8417,7 +8529,7 @@
    "perspicacia": 3,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "armas": 4,
@@ -8429,7 +8541,9 @@
    "integridade": 3,
    "sobrevivencia": 3,
    "resistencia": 3,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "musculatura": 2
   },
   "vontade": 7,
@@ -8568,7 +8682,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 4,
@@ -8578,7 +8692,9 @@
    "integridade": 0,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 2,
    "natacao": 0,
@@ -8696,7 +8812,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 5,
@@ -8705,7 +8821,9 @@
    "atletismo": 2,
    "resistencia": 3,
    "integridade": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "natacao": 2,
    "musculatura": 2
   },
@@ -8844,7 +8962,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "briga": 5,
@@ -8855,7 +8973,9 @@
    "integridade": 2,
    "oficios-gerais": 2,
    "sobrevivencia": 2,
-   "sociabilidade": 0,
+   "sociabilidade": 0
+  },
+  "habilidadesSec": {
    "intimidacao": 2,
    "musculatura": 3
   },
@@ -8989,14 +9109,16 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 3,
    "briga": 2,
    "bloqueio": 0,
    "esquiva": 1,
    "integridade": 0,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "musculatura": 2
   },
   "vontade": 3,
@@ -9130,7 +9252,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 4,
@@ -9140,7 +9262,9 @@
    "integridade": 2,
    "resistencia": 2,
    "sociabilidade": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "voo": 3,
    "musculatura": 2
   },
@@ -9260,7 +9384,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 0,
    "armas": 4,
@@ -9269,7 +9393,9 @@
    "oratoria": 4,
    "integridade": 6,
    "sociabilidade": 2,
-   "atletismo": 2,
+   "atletismo": 2
+  },
+  "habilidadesSec": {
    "estrategia": 4,
    "lideranca": 4,
    "intimidacao": 4,
@@ -9422,7 +9548,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 4,
@@ -9432,7 +9558,9 @@
    "integridade": 2,
    "resistencia": 3,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "intimidacao": 1,
    "musculatura": 4
   },
@@ -9572,7 +9700,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 3,
    "briga": 1,
@@ -9582,7 +9710,9 @@
    "integridade": 3,
    "resistencia": 2,
    "empatia": 3,
-   "sobrevivencia": 4,
+   "sobrevivencia": 4
+  },
+  "habilidadesSec": {
    "equilibrio": 1,
    "escalada": 0,
    "natacao": 0,
@@ -9688,7 +9818,7 @@
    "perspicacia": 5,
    "compostura": 6
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 2,
    "briga": 5,
@@ -9698,7 +9828,9 @@
    "ocultismo": 4,
    "persuasao": 3,
    "empatia": 3,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "voo": 3,
    "acerto-arcano": 4,
    "musculatura": 4
@@ -9861,7 +9993,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 4,
@@ -9871,7 +10003,9 @@
    "integridade": 1,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 2,
@@ -9995,7 +10129,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 4,
@@ -10005,7 +10139,9 @@
    "integridade": 1,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 2,
@@ -10115,14 +10251,16 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 0,
    "furtividade": 2,
    "briga": 4,
    "bloqueio": 0,
    "esquiva": 0,
    "integridade": 0,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "musculatura": 2
   },
   "vontade": 3,
@@ -10247,7 +10385,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "ocultismo": 4,
@@ -10256,7 +10394,9 @@
    "integridade": 3,
    "persuasao": 2,
    "briga": 0,
-   "bloqueio": 0,
+   "bloqueio": 0
+  },
+  "habilidadesSec": {
    "acerto-arcano": 4,
    "ritualismo": 3,
    "musculatura": 0
@@ -10390,7 +10530,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "briga": 3,
@@ -10400,7 +10540,9 @@
    "integridade": 2,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -10518,7 +10660,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 3,
@@ -10528,7 +10670,9 @@
    "integridade": 2,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -10661,7 +10805,7 @@
    "perspicacia": 3,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 0,
    "furtividade": 3,
    "armas": 4,
@@ -10671,7 +10815,9 @@
    "atletismo": 1,
    "integridade": 2,
    "ocultismo": 2,
-   "manha": 2,
+   "manha": 2
+  },
+  "habilidadesSec": {
    "alquimia": 2,
    "intimidacao": 2,
    "musculatura": 0
@@ -10806,7 +10952,7 @@
    "perspicacia": 6,
    "compostura": 6
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 0,
    "armas": 4,
@@ -10819,7 +10965,9 @@
    "persuasao": 4,
    "empatia": 3,
    "sociabilidade": 3,
-   "sobrevivencia": 1,
+   "sobrevivencia": 1
+  },
+  "habilidadesSec": {
    "cura": 3,
    "voo": 3,
    "musculatura": 0
@@ -10962,7 +11110,7 @@
    "perspicacia": 5,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 4,
    "briga": 5,
@@ -10972,7 +11120,9 @@
    "integridade": 4,
    "empatia": 2,
    "sociabilidade": 2,
-   "ocultismo": 3,
+   "ocultismo": 3
+  },
+  "habilidadesSec": {
    "labia": 3,
    "atuacao": 3,
    "musculatura": 0
@@ -11119,7 +11269,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 1,
    "briga": 5,
@@ -11129,7 +11279,9 @@
    "atletismo": 2,
    "integridade": 2,
    "resistencia": 3,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "intimidacao": 2,
    "musculatura": 2
   },
@@ -11282,7 +11434,7 @@
    "perspicacia": 5,
    "compostura": 7
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 0,
    "briga": 5,
@@ -11293,7 +11445,9 @@
    "integridade": 7,
    "resistencia": 4,
    "sociabilidade": 2,
-   "ocultismo": 3,
+   "ocultismo": 3
+  },
+  "habilidadesSec": {
    "lideranca": 4,
    "estrategia": 3,
    "intimidacao": 4,
@@ -11462,7 +11616,7 @@
    "perspicacia": 6,
    "compostura": 6
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 1,
    "briga": 5,
@@ -11473,7 +11627,9 @@
    "integridade": 6,
    "resistencia": 4,
    "sociabilidade": 2,
-   "ocultismo": 4,
+   "ocultismo": 4
+  },
+  "habilidadesSec": {
    "lideranca": 4,
    "estrategia": 4,
    "intimidacao": 3,
@@ -11652,7 +11808,7 @@
    "perspicacia": 8,
    "compostura": 9
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 5,
    "furtividade": 0,
    "briga": 5,
@@ -11666,7 +11822,9 @@
    "manha": 4,
    "sociabilidade": 3,
    "politica": 4,
-   "ocultismo": 5,
+   "ocultismo": 5
+  },
+  "habilidadesSec": {
    "lideranca": 5,
    "direito": 4,
    "estrategia": 5,
@@ -11866,7 +12024,7 @@
    "perspicacia": 4,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 5,
@@ -11877,7 +12035,9 @@
    "resistencia": 4,
    "empatia": 1,
    "sociabilidade": 1,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "intimidacao": 4,
    "musculatura": 3
   },
@@ -12018,7 +12178,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 3,
    "briga": 5,
@@ -12031,7 +12191,9 @@
    "manha": 3,
    "sociabilidade": 1,
    "ocultismo": 3,
-   "burocracia": 3,
+   "burocracia": 3
+  },
+  "habilidadesSec": {
    "intimidacao": 3,
    "voo": 2,
    "musculatura": 2
@@ -12186,7 +12348,7 @@
    "perspicacia": 4,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 4,
    "briga": 3,
@@ -12199,7 +12361,9 @@
    "manha": 3,
    "persuasao": 2,
    "sociabilidade": 2,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "labia": 3,
    "voo": 3,
    "musculatura": 2
@@ -12347,7 +12511,7 @@
    "perspicacia": 4,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "briga": 5,
@@ -12359,7 +12523,9 @@
    "sociabilidade": 2,
    "ocultismo": 2,
    "oficios-gerais": 3,
-   "sobrevivencia": 1,
+   "sobrevivencia": 1
+  },
+  "habilidadesSec": {
    "etiqueta": 2,
    "voo": 3,
    "musculatura": 0
@@ -12496,7 +12662,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 3,
@@ -12506,7 +12672,9 @@
    "integridade": 1,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -12620,7 +12788,7 @@
    "perspicacia": 3,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "armas": 3,
@@ -12632,7 +12800,9 @@
    "manha": 4,
    "empatia": 3,
    "sociabilidade": 2,
-   "investigacao": 2,
+   "investigacao": 2
+  },
+  "habilidadesSec": {
    "atuacao": 3,
    "musculatura": 0
   },
@@ -12759,14 +12929,16 @@
    "perspicacia": 2,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "briga": 5,
    "bloqueio": 0,
    "esquiva": 0,
    "atletismo": 2,
-   "integridade": 3,
+   "integridade": 3
+  },
+  "habilidadesSec": {
    "voo": 1,
    "disparo": 3,
    "musculatura": 2
@@ -12906,7 +13078,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 4,
    "briga": 5,
@@ -12915,7 +13087,9 @@
    "atletismo": 2,
    "integridade": 5,
    "sociabilidade": 2,
-   "manha": 4,
+   "manha": 4
+  },
+  "habilidadesSec": {
    "intimidacao": 4,
    "voo": 3,
    "disparo": 4,
@@ -13100,7 +13274,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 3,
    "briga": 5,
@@ -13109,7 +13283,9 @@
    "atletismo": 2,
    "integridade": 2,
    "sobrevivencia": 2,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "intimidacao": 3,
    "voo": 2,
    "natacao": 2,
@@ -13288,7 +13464,7 @@
    "perspicacia": 7,
    "compostura": 7
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 5,
    "furtividade": 1,
    "briga": 5,
@@ -13300,7 +13476,9 @@
    "ocultismo": 5,
    "persuasao": 5,
    "conhecimentos": 5,
-   "empatia": 3,
+   "empatia": 3
+  },
+  "habilidadesSec": {
    "natacao": 3,
    "intimidacao": 3,
    "voo": 4,
@@ -13483,7 +13661,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 5,
@@ -13494,7 +13672,9 @@
    "sociabilidade": 2,
    "persuasao": 4,
    "manha": 4,
-   "empatia": 2,
+   "empatia": 2
+  },
+  "habilidadesSec": {
    "natacao": 3,
    "intimidacao": 4,
    "voo": 3,
@@ -13660,7 +13840,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 5,
    "furtividade": 1,
    "briga": 5,
@@ -13670,7 +13850,9 @@
    "integridade": 5,
    "sociabilidade": 2,
    "ocultismo": 3,
-   "persuasao": 4,
+   "persuasao": 4
+  },
+  "habilidadesSec": {
    "intimidacao": 4,
    "voo": 3,
    "disparo": 4,
@@ -13859,7 +14041,7 @@
    "perspicacia": 6,
    "compostura": 6
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 5,
    "furtividade": 1,
    "briga": 5,
@@ -13870,7 +14052,9 @@
    "sociabilidade": 3,
    "ocultismo": 5,
    "persuasao": 5,
-   "conhecimentos": 4,
+   "conhecimentos": 4
+  },
+  "habilidadesSec": {
    "intimidacao": 5,
    "voo": 4,
    "disparo": 5,
@@ -14070,7 +14254,7 @@
    "perspicacia": 3,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 1,
    "briga": 5,
@@ -14080,7 +14264,9 @@
    "integridade": 3,
    "sociabilidade": 2,
    "ocultismo": 2,
-   "manha": 3,
+   "manha": 3
+  },
+  "habilidadesSec": {
    "intimidacao": 3,
    "voo": 3,
    "disparo": 3,
@@ -14254,7 +14440,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 4,
@@ -14264,7 +14450,9 @@
    "integridade": 1,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 1,
@@ -14388,7 +14576,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 4,
@@ -14398,7 +14586,9 @@
    "integridade": 1,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 1,
@@ -14509,7 +14699,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "briga": 3,
@@ -14518,7 +14708,9 @@
    "atletismo": 1,
    "integridade": 2,
    "resistencia": 3,
-   "sobrevivencia": 1,
+   "sobrevivencia": 1
+  },
+  "habilidadesSec": {
    "musculatura": 2
   },
   "vontade": 4,
@@ -14666,13 +14858,14 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
+   "furtividade": 4,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 4
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 9,
   "aparencia": 8,
   "virtudes": {
@@ -14834,7 +15027,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 5,
@@ -14842,7 +15035,9 @@
    "esquiva": 1,
    "atletismo": 2,
    "integridade": 5,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "escalada": 3,
    "disparo": 3,
    "musculatura": 1
@@ -14970,7 +15165,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "armas": 2,
@@ -14979,7 +15174,9 @@
    "esquiva": 1,
    "atletismo": 1,
    "integridade": 2,
-   "manha": 1,
+   "manha": 1
+  },
+  "habilidadesSec": {
    "musculatura": 0
   },
   "vontade": 6,
@@ -15104,7 +15301,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 0,
    "armas": 5,
@@ -15112,7 +15309,9 @@
    "integridade": 5,
    "bloqueio": 4,
    "briga": 1,
-   "atletismo": 3,
+   "atletismo": 3
+  },
+  "habilidadesSec": {
    "etiqueta": 2,
    "musculatura": 0
   },
@@ -15256,7 +15455,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "armas": 2,
@@ -15266,7 +15465,9 @@
    "atletismo": 1,
    "resistencia": 3,
    "integridade": 2,
-   "oficios-gerais": 2,
+   "oficios-gerais": 2
+  },
+  "habilidadesSec": {
    "intimidacao": 1,
    "musculatura": 0
   },
@@ -15388,7 +15589,7 @@
    "perspicacia": 4,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 0,
    "briga": 5,
@@ -15400,7 +15601,9 @@
    "oficios-gerais": 4,
    "persuasao": 2,
    "ocultismo": 2,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "intimidacao": 3,
    "voo": 2,
    "musculatura": 0
@@ -15543,7 +15746,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 2,
@@ -15553,7 +15756,9 @@
    "integridade": 1,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 3,
@@ -15663,7 +15868,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 3,
@@ -15673,7 +15878,9 @@
    "integridade": 2,
    "resistencia": 5,
    "empatia": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -15824,7 +16031,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 3,
@@ -15832,7 +16039,9 @@
    "esquiva": 0,
    "integridade": 2,
    "sobrevivencia": 1,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "natacao": 3,
    "musculatura": 1
   },
@@ -15952,7 +16161,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 5,
@@ -15961,7 +16170,9 @@
    "atletismo": 2,
    "integridade": 2,
    "sobrevivencia": 1,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "musculatura": 3
   },
   "vontade": 8,
@@ -16095,7 +16306,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "briga": 3,
@@ -16103,7 +16314,9 @@
    "esquiva": 0,
    "integridade": 2,
    "sobrevivencia": 1,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "musculatura": 3
   },
   "vontade": 6,
@@ -16224,7 +16437,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 3,
@@ -16232,7 +16445,9 @@
    "esquiva": 1,
    "integridade": 2,
    "sobrevivencia": 1,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "voo": 3,
    "musculatura": 0
   },
@@ -16350,7 +16565,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 3,
@@ -16359,7 +16574,9 @@
    "atletismo": 2,
    "integridade": 2,
    "sobrevivencia": 1,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "musculatura": 0
   },
   "vontade": 6,
@@ -16482,13 +16699,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
+   "furtividade": 4,
    "esquiva": 0,
    "integridade": 0,
-   "sociabilidade": 2,
-   "furtividade": 4
+   "sociabilidade": 2
   },
+  "habilidadesSec": {},
   "vontade": 3,
   "aparencia": 5,
   "virtudes": {
@@ -16604,13 +16822,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
+   "furtividade": 0,
    "esquiva": 0,
    "integridade": 1,
-   "sociabilidade": 2,
-   "furtividade": 0
+   "sociabilidade": 2
   },
+  "habilidadesSec": {},
   "vontade": 3,
   "aparencia": 6,
   "virtudes": {
@@ -16726,13 +16945,14 @@
    "inteligencia": 1,
    "raciocinio": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
+   "furtividade": 2,
    "esquiva": 0,
    "integridade": 0,
-   "sociabilidade": 2,
-   "furtividade": 2
+   "sociabilidade": 2
   },
+  "habilidadesSec": {},
   "vontade": 3,
   "aparencia": 5,
   "virtudes": {
@@ -16843,13 +17063,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
+   "furtividade": 0,
    "esquiva": 0,
    "integridade": 0,
-   "sociabilidade": 2,
-   "furtividade": 0
+   "sociabilidade": 2
   },
+  "habilidadesSec": {},
   "vontade": 4,
   "aparencia": 6,
   "virtudes": {
@@ -16975,13 +17196,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
+   "furtividade": 2,
    "esquiva": 0,
    "integridade": 1,
-   "sociabilidade": 3,
-   "furtividade": 2
+   "sociabilidade": 3
   },
+  "habilidadesSec": {},
   "vontade": 3,
   "aparencia": 6,
   "virtudes": {
@@ -17102,13 +17324,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
+   "furtividade": 2,
    "esquiva": 0,
    "integridade": 1,
-   "sociabilidade": 4,
-   "furtividade": 2
+   "sociabilidade": 4
   },
+  "habilidadesSec": {},
   "vontade": 3,
   "aparencia": 5,
   "virtudes": {
@@ -17234,13 +17457,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
+   "furtividade": 2,
    "esquiva": 0,
    "integridade": 0,
-   "sociabilidade": 2,
-   "furtividade": 2
+   "sociabilidade": 2
   },
+  "habilidadesSec": {},
   "vontade": 3,
   "aparencia": 5,
   "virtudes": {
@@ -17359,13 +17583,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
+   "furtividade": 0,
    "esquiva": 0,
    "integridade": 0,
-   "sociabilidade": 2,
-   "furtividade": 0
+   "sociabilidade": 2
   },
+  "habilidadesSec": {},
   "vontade": 4,
   "aparencia": 6,
   "virtudes": {
@@ -17480,7 +17705,7 @@
    "perspicacia": 5,
    "compostura": 6
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 2,
    "briga": 5,
@@ -17496,7 +17721,9 @@
    "persuasao": 3,
    "manha": 3,
    "sociabilidade": 3,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "seducao": 3,
    "voo": 4,
    "musculatura": 2
@@ -17655,7 +17882,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 2,
    "briga": 3,
@@ -17665,7 +17892,9 @@
    "integridade": 1,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -17795,7 +18024,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 1,
    "briga": 5,
@@ -17810,7 +18039,9 @@
    "empatia": 3,
    "oratoria": 3,
    "sociabilidade": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "voo": 3,
    "musculatura": 2
   },
@@ -17950,13 +18181,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
+   "furtividade": 0,
    "esquiva": 1,
    "integridade": 3,
-   "sociabilidade": 0,
-   "furtividade": 0
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -18061,7 +18293,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 4,
    "briga": 5,
@@ -18072,7 +18304,9 @@
    "resistencia": 0,
    "sociabilidade": 0,
    "empatia": 0,
-   "sobrevivencia": 0,
+   "sobrevivencia": 0
+  },
+  "habilidadesSec": {
    "intimidacao": 3,
    "voo": 3,
    "musculatura": 0
@@ -18225,7 +18459,7 @@
    "perspicacia": 2,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 3,
    "armas": 4,
@@ -18234,7 +18468,9 @@
    "esquiva": 1,
    "atletismo": 2,
    "integridade": 3,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "lideranca": 2,
    "intimidacao": 2,
    "musculatura": 0
@@ -18358,7 +18594,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "armas": 1,
@@ -18366,7 +18602,9 @@
    "bloqueio": 0,
    "esquiva": 1,
    "integridade": 0,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "musculatura": 0
   },
   "vontade": 3,
@@ -18504,7 +18742,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 3,
@@ -18514,7 +18752,9 @@
    "integridade": 1,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -18629,7 +18869,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 3,
    "briga": 3,
@@ -18637,7 +18877,9 @@
    "esquiva": 1,
    "atletismo": 1,
    "integridade": 2,
-   "sobrevivencia": 1,
+   "sobrevivencia": 1
+  },
+  "habilidadesSec": {
    "escalada": 2,
    "musculatura": 1
   },
@@ -18760,7 +19002,7 @@
    "perspicacia": 1,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 4,
@@ -18768,7 +19010,9 @@
    "esquiva": 1,
    "atletismo": 2,
    "integridade": 3,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "escalada": 3,
    "disparo": 2,
    "adestramento": 2,
@@ -18902,7 +19146,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 0,
    "briga": 4,
@@ -18910,7 +19154,9 @@
    "esquiva": 0,
    "atletismo": 1,
    "integridade": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "intimidacao": 2,
    "musculatura": 3
   },
@@ -19037,7 +19283,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 3,
    "briga": 3,
@@ -19047,7 +19293,9 @@
    "integridade": 1,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 4,
+   "sobrevivencia": 4
+  },
+  "habilidadesSec": {
    "equilibrio": 1,
    "escalada": 0,
    "natacao": 0,
@@ -19171,14 +19419,16 @@
    "perspicacia": 4,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 5,
    "bloqueio": 0,
    "esquiva": 1,
    "integridade": 5,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "intimidacao": 2,
    "voo": 3,
    "musculatura": 0
@@ -19331,7 +19581,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 0,
@@ -19341,7 +19591,9 @@
    "integridade": 5,
    "ocultismo": 3,
    "sociabilidade": 1,
-   "empatia": 1,
+   "empatia": 1
+  },
+  "habilidadesSec": {
    "acerto-arcano": 3,
    "halterofilismo": 0,
    "musculatura": 0
@@ -19471,7 +19723,7 @@
    "perspicacia": 7,
    "compostura": 7
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 1,
    "briga": 5,
@@ -19484,7 +19736,9 @@
    "conhecimentos": 4,
    "ocultismo": 4,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "cura": 3,
    "voo": 4,
    "musculatura": 2
@@ -19651,7 +19905,7 @@
    "perspicacia": 3,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 1,
    "briga": 5,
@@ -19660,7 +19914,9 @@
    "atletismo": 2,
    "integridade": 4,
    "sociabilidade": 1,
-   "manha": 2,
+   "manha": 2
+  },
+  "habilidadesSec": {
    "escalada": 2,
    "intimidacao": 2,
    "voo": 2,
@@ -19821,7 +20077,7 @@
    "perspicacia": 4,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 5,
    "briga": 5,
@@ -19830,7 +20086,9 @@
    "atletismo": 0,
    "integridade": 4,
    "empatia": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "voo": 4,
    "musculatura": 0
   },
@@ -19957,7 +20215,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 3,
@@ -19967,7 +20225,9 @@
    "integridade": 0,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 1,
    "natacao": 0,
@@ -20097,7 +20357,7 @@
    "perspicacia": 1,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "briga": 5,
@@ -20106,7 +20366,9 @@
    "atletismo": 2,
    "resistencia": 2,
    "integridade": 3,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "natacao": 3,
    "musculatura": 2
   },
@@ -20260,11 +20522,12 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
-   "esquiva": 0,
-   "furtividade": 0
+   "furtividade": 0,
+   "esquiva": 0
   },
+  "habilidadesSec": {},
   "vontade": 5,
   "aparencia": 3,
   "virtudes": {
@@ -20385,14 +20648,16 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 3,
    "briga": 4,
    "bloqueio": 1,
    "esquiva": 1,
    "atletismo": 2,
-   "integridade": 2,
+   "integridade": 2
+  },
+  "habilidadesSec": {
    "voo": 3,
    "musculatura": 2
   },
@@ -20525,7 +20790,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 4,
    "briga": 2,
@@ -20535,7 +20800,9 @@
    "integridade": 1,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 2,
    "escalada": 2,
    "natacao": 0,
@@ -20654,14 +20921,16 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 0,
    "furtividade": 2,
    "briga": 4,
    "bloqueio": 0,
    "esquiva": 0,
    "integridade": 0,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "escalada": 2,
    "musculatura": 2
   },
@@ -20787,13 +21056,14 @@
    "inteligencia": 6,
    "raciocinio": 6
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
+   "furtividade": 2,
    "esquiva": 2,
    "integridade": 7,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 11,
   "aparencia": 12,
   "virtudes": {
@@ -20968,14 +21238,16 @@
    "perspicacia": 4,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 3,
    "bloqueio": 0,
    "esquiva": 1,
    "integridade": 4,
-   "sobrevivencia": 1,
+   "sobrevivencia": 1
+  },
+  "habilidadesSec": {
    "estrategia": 1,
    "musculatura": 1
   },
@@ -21125,14 +21397,16 @@
    "perspicacia": 4,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 3,
    "bloqueio": 0,
    "esquiva": 1,
    "integridade": 4,
-   "sobrevivencia": 1,
+   "sobrevivencia": 1
+  },
+  "habilidadesSec": {
    "musculatura": 1
   },
   "vontade": 6,
@@ -21287,7 +21561,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 5,
@@ -21297,7 +21571,9 @@
    "atletismo": 2,
    "integridade": 2,
    "sobrevivencia": 2,
-   "sociabilidade": 0,
+   "sociabilidade": 0
+  },
+  "habilidadesSec": {
    "intimidacao": 3,
    "musculatura": 3
   },
@@ -21436,7 +21712,7 @@
    "perspicacia": 2,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 3,
    "briga": 5,
@@ -21444,7 +21720,9 @@
    "bloqueio": 1,
    "esquiva": 1,
    "atletismo": 2,
-   "integridade": 3,
+   "integridade": 3
+  },
+  "habilidadesSec": {
    "escultura": 2,
    "musculatura": 3
   },
@@ -21579,7 +21857,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 0,
    "briga": 5,
@@ -21589,7 +21867,9 @@
    "integridade": 5,
    "conhecimentos": 2,
    "ocultismo": 2,
-   "sociabilidade": 2,
+   "sociabilidade": 2
+  },
+  "habilidadesSec": {
    "intimidacao": 3,
    "natacao": 3,
    "musculatura": 3
@@ -21733,7 +22013,7 @@
    "perspicacia": 4,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 0,
    "briga": 5,
@@ -21743,7 +22023,9 @@
    "atletismo": 2,
    "integridade": 5,
    "oficios-gerais": 2,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "etiqueta": 2,
    "musculatura": 3
   },
@@ -21890,7 +22172,7 @@
    "perspicacia": 2,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "briga": 5,
@@ -21899,7 +22181,9 @@
    "esquiva": 0,
    "atletismo": 1,
    "integridade": 3,
-   "oficios-gerais": 2,
+   "oficios-gerais": 2
+  },
+  "habilidadesSec": {
    "lideranca": 2,
    "intimidacao": 3,
    "musculatura": 3
@@ -22058,7 +22342,7 @@
    "perspicacia": 2,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "briga": 5,
@@ -22067,7 +22351,9 @@
    "esquiva": 0,
    "atletismo": 2,
    "integridade": 3,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "intimidacao": 2,
    "adestramento": 2,
    "musculatura": 3
@@ -22205,7 +22491,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 1,
    "briga": 5,
@@ -22215,7 +22501,9 @@
    "integridade": 3,
    "resistencia": 4,
    "empatia": 3,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 3,
    "natacao": 0,
@@ -22337,7 +22625,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "briga": 5,
@@ -22347,7 +22635,9 @@
    "integridade": 2,
    "resistencia": 3,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "escalada": 3,
    "musculatura": 4
   },
@@ -22482,7 +22772,7 @@
    "perspicacia": 5,
    "compostura": 6
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 0,
    "briga": 5,
@@ -22495,7 +22785,9 @@
    "persuasao": 4,
    "manha": 4,
    "sociabilidade": 3,
-   "ocultismo": 4,
+   "ocultismo": 4
+  },
+  "habilidadesSec": {
    "negociacao": 5,
    "musculatura": 4
   },
@@ -22684,7 +22976,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "armas": 2,
@@ -22693,7 +22985,9 @@
    "esquiva": 0,
    "atletismo": 2,
    "integridade": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "intimidacao": 2,
    "musculatura": 0
   },
@@ -22820,7 +23114,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "armas": 2,
@@ -22829,7 +23123,9 @@
    "esquiva": 1,
    "atletismo": 1,
    "integridade": 2,
-   "sobrevivencia": 1,
+   "sobrevivencia": 1
+  },
+  "habilidadesSec": {
    "musculatura": 0
   },
   "vontade": 5,
@@ -22939,7 +23235,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 4,
@@ -22947,7 +23243,9 @@
    "esquiva": 0,
    "atletismo": 1,
    "integridade": 0,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "musculatura": 2
   },
   "vontade": 3,
@@ -23086,7 +23384,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 4,
@@ -23094,7 +23392,9 @@
    "esquiva": 0,
    "atletismo": 1,
    "integridade": 0,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "musculatura": 2
   },
   "vontade": 3,
@@ -23235,7 +23535,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 4,
@@ -23243,7 +23543,9 @@
    "esquiva": 0,
    "atletismo": 1,
    "integridade": 0,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "musculatura": 3
   },
   "vontade": 3,
@@ -23395,7 +23697,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 4,
@@ -23403,7 +23705,9 @@
    "esquiva": 0,
    "atletismo": 1,
    "integridade": 0,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "musculatura": 2
   },
   "vontade": 3,
@@ -23543,7 +23847,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "briga": 4,
@@ -23553,7 +23857,9 @@
    "integridade": 0,
    "resistencia": 0,
    "empatia": 0,
-   "sobrevivencia": 0,
+   "sobrevivencia": 0
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -23688,7 +23994,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 4,
    "briga": 3,
@@ -23698,7 +24004,9 @@
    "integridade": 3,
    "resistencia": 3,
    "empatia": 2,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 6,
@@ -23820,7 +24128,7 @@
    "perspicacia": 1,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 1,
    "briga": 5,
@@ -23830,7 +24138,9 @@
    "integridade": 3,
    "resistencia": 4,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "disparo": 2,
    "musculatura": 3
   },
@@ -23977,7 +24287,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "briga": 3,
@@ -23987,7 +24297,9 @@
    "integridade": 3,
    "resistencia": 4,
    "empatia": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 3,
    "natacao": 0,
@@ -24114,7 +24426,7 @@
    "perspicacia": 7,
    "compostura": 7
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 5,
    "furtividade": 1,
    "briga": 5,
@@ -24125,7 +24437,9 @@
    "sociabilidade": 3,
    "ocultismo": 5,
    "persuasao": 5,
-   "conhecimentos": 5,
+   "conhecimentos": 5
+  },
+  "habilidadesSec": {
    "intimidacao": 5,
    "voo": 4,
    "disparo": 5,
@@ -24334,7 +24648,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 2,
    "briga": 4,
@@ -24344,7 +24658,9 @@
    "integridade": 3,
    "resistencia": 3,
    "empatia": 2,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 1,
    "escalada": 0,
    "natacao": 0,
@@ -24495,7 +24811,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 0,
    "armas": 3,
@@ -24506,7 +24822,9 @@
    "atletismo": 2,
    "resistencia": 2,
    "investigacao": 1,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "intimidacao": 1,
    "musculatura": 0
   },
@@ -24637,7 +24955,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 3,
    "briga": 3,
@@ -24647,7 +24965,9 @@
    "integridade": 1,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 1,
    "natacao": 0,
@@ -24775,7 +25095,7 @@
    "perspicacia": 3,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "briga": 4,
@@ -24783,7 +25103,9 @@
    "esquiva": 1,
    "atletismo": 1,
    "integridade": 4,
-   "oratoria": 2,
+   "oratoria": 2
+  },
+  "habilidadesSec": {
    "canto": 3,
    "voo": 3,
    "musculatura": 0
@@ -24911,7 +25233,7 @@
    "perspicacia": 3,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 0,
    "briga": 5,
@@ -24923,7 +25245,9 @@
    "empatia": 1,
    "sociabilidade": 1,
    "sobrevivencia": 2,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "natacao": 3,
    "intimidacao": 3,
    "equilibrio": 0,
@@ -25081,7 +25405,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 1,
    "briga": 4,
@@ -25091,7 +25415,9 @@
    "integridade": 2,
    "resistencia": 4,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "natacao": 2,
    "musculatura": 2
   },
@@ -25222,7 +25548,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 2,
    "briga": 3,
@@ -25232,7 +25558,9 @@
    "integridade": 2,
    "resistencia": 3,
    "empatia": 2,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 2,
@@ -25351,7 +25679,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 4,
@@ -25361,7 +25689,9 @@
    "integridade": 2,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -25476,7 +25806,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 3,
@@ -25487,7 +25817,9 @@
    "resistencia": 3,
    "empatia": 2,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "voo": 3,
    "musculatura": 2
   },
@@ -25631,7 +25963,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "armas": 3,
@@ -25641,7 +25973,9 @@
    "atletismo": 2,
    "integridade": 2,
    "resistencia": 2,
-   "sobrevivencia": 1,
+   "sobrevivencia": 1
+  },
+  "habilidadesSec": {
    "estrategia": 1,
    "musculatura": 0
   },
@@ -25756,7 +26090,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "armas": 2,
@@ -25767,7 +26101,9 @@
    "resistencia": 2,
    "integridade": 2,
    "sobrevivencia": 1,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "natacao": 3,
    "musculatura": 0
   },
@@ -25890,7 +26226,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "armas": 3,
@@ -25900,7 +26236,9 @@
    "atletismo": 2,
    "prestidigitacao": 2,
    "integridade": 2,
-   "manha": 2,
+   "manha": 2
+  },
+  "habilidadesSec": {
    "escalada": 2,
    "musculatura": 0
   },
@@ -26044,14 +26382,16 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "briga": 3,
    "bloqueio": 0,
    "esquiva": 1,
    "integridade": 2,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "voo": 3,
    "musculatura": 0
   },
@@ -26178,7 +26518,7 @@
    "perspicacia": 4,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "armas": 4,
@@ -26189,7 +26529,9 @@
    "integridade": 4,
    "sobrevivencia": 3,
    "ocultismo": 2,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "voo": 2,
    "musculatura": 0
   },
@@ -26314,7 +26656,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 3,
    "briga": 3,
@@ -26324,7 +26666,9 @@
    "integridade": 2,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -26432,7 +26776,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "briga": 3,
@@ -26442,7 +26786,9 @@
    "integridade": 2,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 4,
+   "sobrevivencia": 4
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 2,
@@ -26581,7 +26927,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 3,
    "briga": 4,
@@ -26591,7 +26937,9 @@
    "integridade": 1,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 1,
    "natacao": 0,
@@ -26712,7 +27060,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "armas": 2,
@@ -26722,7 +27070,9 @@
    "atletismo": 1,
    "integridade": 2,
    "oficios-gerais": 1,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "musculatura": 0
   },
   "vontade": 5,
@@ -26835,7 +27185,7 @@
    "perspicacia": 6,
    "compostura": 6
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 5,
    "furtividade": 2,
    "briga": 5,
@@ -26848,7 +27198,9 @@
    "conhecimentos": 4,
    "empatia": 3,
    "sociabilidade": 0,
-   "sobrevivencia": 4,
+   "sobrevivencia": 4
+  },
+  "habilidadesSec": {
    "intimidacao": 4,
    "natacao": 4,
    "musculatura": 3
@@ -27011,7 +27363,7 @@
    "perspicacia": 3,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "briga": 5,
@@ -27022,7 +27374,9 @@
    "resistencia": 4,
    "empatia": 2,
    "sociabilidade": 1,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "intimidacao": 3,
    "ferreiro": 3,
    "musculatura": 2
@@ -27175,7 +27529,7 @@
    "perspicacia": 3,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 5,
@@ -27185,7 +27539,9 @@
    "integridade": 4,
    "ocultismo": 3,
    "sociabilidade": 1,
-   "resistencia": 3,
+   "resistencia": 3
+  },
+  "habilidadesSec": {
    "disparo": 3,
    "musculatura": 2
   },
@@ -27321,7 +27677,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "briga": 3,
@@ -27331,7 +27687,9 @@
    "integridade": 2,
    "resistencia": 2,
    "sociabilidade": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "disparo": 2,
    "escalada": 2,
    "natacao": 2,
@@ -27466,7 +27824,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 2,
    "briga": 2,
@@ -27476,7 +27834,9 @@
    "integridade": 2,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 2,
    "natacao": 0,
@@ -27599,7 +27959,7 @@
    "perspicacia": 4,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 3,
    "briga": 5,
@@ -27609,7 +27969,9 @@
    "integridade": 5,
    "manha": 4,
    "ocultismo": 2,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "musculatura": 3
   },
   "vontade": 9,
@@ -27730,7 +28092,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 4,
@@ -27740,7 +28102,9 @@
    "integridade": 3,
    "resistencia": 4,
    "empatia": 1,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -27875,7 +28239,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 4,
@@ -27885,7 +28249,9 @@
    "integridade": 3,
    "resistencia": 4,
    "empatia": 1,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -28016,7 +28382,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 3,
    "briga": 4,
@@ -28026,7 +28392,9 @@
    "integridade": 3,
    "resistencia": 4,
    "empatia": 1,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -28148,7 +28516,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 0,
    "furtividade": 0,
    "briga": 3,
@@ -28156,7 +28524,9 @@
    "esquiva": 0,
    "atletismo": 0,
    "integridade": 0,
-   "resistencia": 2,
+   "resistencia": 2
+  },
+  "habilidadesSec": {
    "musculatura": 2
   },
   "vontade": 3,
@@ -28279,7 +28649,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 4,
    "briga": 4,
@@ -28289,7 +28659,9 @@
    "integridade": 2,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 4,
+   "sobrevivencia": 4
+  },
+  "habilidadesSec": {
    "equilibrio": 2,
    "escalada": 2,
    "natacao": 0,
@@ -28421,7 +28793,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 0,
    "furtividade": 2,
    "briga": 2,
@@ -28431,7 +28803,9 @@
    "integridade": 0,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -28571,7 +28945,7 @@
    "perspicacia": 5,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 1,
    "briga": 5,
@@ -28581,7 +28955,9 @@
    "integridade": 4,
    "ocultismo": 5,
    "sociabilidade": 2,
-   "empatia": 1,
+   "empatia": 1
+  },
+  "habilidadesSec": {
    "intimidacao": 4,
    "acerto-arcano": 5,
    "halterofilismo": 0,
@@ -28755,13 +29131,14 @@
    "inteligencia": 4,
    "raciocinio": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
+   "furtividade": 1,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 1
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 9,
   "aparencia": 10,
   "virtudes": {
@@ -28889,14 +29266,16 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 0,
    "furtividade": 2,
    "briga": 4,
    "bloqueio": 0,
    "esquiva": 0,
    "integridade": 0,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "musculatura": 1
   },
   "vontade": 3,
@@ -29017,14 +29396,16 @@
    "perspicacia": 4,
    "compostura": 7
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 0,
    "briga": 5,
    "bloqueio": 0,
    "esquiva": 2,
    "atletismo": 2,
-   "integridade": 7,
+   "integridade": 7
+  },
+  "habilidadesSec": {
    "escalada": 3,
    "natacao": 3,
    "disparo": 4,
@@ -29190,14 +29571,16 @@
    "perspicacia": 5,
    "compostura": 8
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 0,
    "briga": 5,
    "bloqueio": 0,
    "esquiva": 2,
    "atletismo": 2,
-   "integridade": 8,
+   "integridade": 8
+  },
+  "habilidadesSec": {
    "natacao": 4,
    "disparo": 5,
    "musculatura": 4
@@ -29385,14 +29768,16 @@
    "perspicacia": 3,
    "compostura": 6
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "briga": 5,
    "bloqueio": 0,
    "esquiva": 1,
    "atletismo": 2,
-   "integridade": 6,
+   "integridade": 6
+  },
+  "habilidadesSec": {
    "natacao": 3,
    "disparo": 4,
    "musculatura": 3
@@ -29557,7 +29942,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "armas": 2,
@@ -29567,7 +29952,9 @@
    "atletismo": 2,
    "integridade": 3,
    "sobrevivencia": 2,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "labia": 1,
    "musculatura": 0
   },
@@ -29708,7 +30095,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 2,
    "briga": 3,
@@ -29718,7 +30105,9 @@
    "integridade": 2,
    "resistencia": 3,
    "empatia": 2,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -29839,7 +30228,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 2,
    "briga": 4,
@@ -29849,7 +30238,9 @@
    "integridade": 1,
    "resistencia": 4,
    "empatia": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -29963,7 +30354,7 @@
    "perspicacia": 2,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "briga": 5,
@@ -29973,7 +30364,9 @@
    "integridade": 3,
    "resistencia": 3,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "disparo": 2,
    "musculatura": 3
   },
@@ -30105,7 +30498,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 2,
    "briga": 4,
@@ -30115,7 +30508,9 @@
    "integridade": 0,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 1,
    "natacao": 0,
@@ -30247,7 +30642,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 3,
@@ -30257,7 +30652,9 @@
    "integridade": 2,
    "resistencia": 2,
    "empatia": 1,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 4,
@@ -30376,7 +30773,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 3,
@@ -30386,7 +30783,9 @@
    "integridade": 2,
    "resistencia": 2,
    "empatia": 1,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 4,
@@ -30513,7 +30912,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 3,
@@ -30523,7 +30922,9 @@
    "integridade": 2,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 2,
@@ -30658,7 +31059,7 @@
    "perspicacia": 2,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 2,
@@ -30668,7 +31069,9 @@
    "integridade": 2,
    "resistencia": 2,
    "empatia": 1,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 1,
    "escalada": 2,
    "natacao": 0,
@@ -30773,7 +31176,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 0,
    "ocultismo": 5,
@@ -30781,7 +31184,9 @@
    "conhecimentos": 3,
    "integridade": 5,
    "briga": 0,
-   "bloqueio": 0,
+   "bloqueio": 0
+  },
+  "habilidadesSec": {
    "acerto-arcano": 5,
    "concentracao": 3,
    "musculatura": 0
@@ -30923,7 +31328,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 3,
@@ -30933,7 +31338,9 @@
    "integridade": 2,
    "resistencia": 4,
    "empatia": 2,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -31052,7 +31459,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 5,
@@ -31062,7 +31469,9 @@
    "integridade": 2,
    "resistencia": 3,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "disparo": 3,
    "intimidacao": 2,
    "voo": 2,
@@ -31205,7 +31614,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 3,
    "briga": 3,
@@ -31215,7 +31624,9 @@
    "integridade": 2,
    "resistencia": 2,
    "sociabilidade": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "voo": 1,
    "musculatura": 3
   },
@@ -31326,7 +31737,7 @@
    "perspicacia": 4,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "briga": 5,
@@ -31336,7 +31747,9 @@
    "integridade": 5,
    "persuasao": 2,
    "sociabilidade": 2,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "natacao": 3,
    "voo": 2,
    "danca": 2,
@@ -31462,7 +31875,7 @@
    "perspicacia": 7,
    "compostura": 7
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 1,
    "briga": 5,
@@ -31475,7 +31888,9 @@
    "empatia": 3,
    "sociabilidade": 3,
    "persuasao": 3,
-   "ocultismo": 3,
+   "ocultismo": 3
+  },
+  "habilidadesSec": {
    "lideranca": 4,
    "estrategia": 5,
    "intimidacao": 4,
@@ -31666,7 +32081,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 3,
@@ -31676,7 +32091,9 @@
    "integridade": 2,
    "resistencia": 4,
    "empatia": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -31800,7 +32217,7 @@
    "perspicacia": 4,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 3,
    "armas": 3,
@@ -31811,7 +32228,9 @@
    "atletismo": 1,
    "manha": 2,
    "integridade": 4,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "disfarce": 2,
    "musculatura": 0
   },
@@ -31962,7 +32381,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 5,
@@ -31972,7 +32391,9 @@
    "integridade": 1,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 2,
@@ -32093,14 +32514,16 @@
    "perspicacia": 2,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "briga": 4,
    "bloqueio": 0,
    "esquiva": 1,
    "atletismo": 1,
-   "integridade": 3,
+   "integridade": 3
+  },
+  "habilidadesSec": {
    "labia": 2,
    "voo": 2,
    "disparo": 2,
@@ -32238,7 +32661,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "armas": 2,
@@ -32247,7 +32670,9 @@
    "bloqueio": 1,
    "esquiva": 1,
    "integridade": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "natacao": 4,
    "musculatura": 0
   },
@@ -32371,7 +32796,7 @@
    "perspicacia": 2,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 4,
    "briga": 4,
@@ -32379,7 +32804,9 @@
    "esquiva": 1,
    "atletismo": 1,
    "integridade": 3,
-   "empatia": 1,
+   "empatia": 1
+  },
+  "habilidadesSec": {
    "escalada": 1,
    "musculatura": 1
   },
@@ -32511,7 +32938,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 1,
    "armas": 4,
@@ -32521,7 +32948,9 @@
    "atletismo": 3,
    "resistencia": 3,
    "integridade": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "intimidacao": 3,
    "musculatura": 3
   },
@@ -32656,13 +33085,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
+   "furtividade": 5,
    "esquiva": 1,
    "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 5
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 6,
   "aparencia": 8,
   "virtudes": {
@@ -32787,13 +33217,15 @@
    "perspicacia": 3,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "briga": 5,
    "bloqueio": 0,
    "esquiva": 1,
-   "integridade": 3,
+   "integridade": 3
+  },
+  "habilidadesSec": {
    "musculatura": 0
   },
   "vontade": 9,
@@ -32933,7 +33365,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 1,
    "briga": 4,
@@ -32941,7 +33373,9 @@
    "esquiva": 1,
    "atletismo": 2,
    "integridade": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "escalada": 1,
    "musculatura": 1
   },
@@ -33066,7 +33500,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 5,
@@ -33074,7 +33508,9 @@
    "esquiva": 0,
    "integridade": 2,
    "resistencia": 4,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "natacao": 2,
    "musculatura": 2
   },
@@ -33204,7 +33640,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 1,
@@ -33214,7 +33650,9 @@
    "integridade": 1,
    "resistencia": 2,
    "empatia": 1,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 1,
    "natacao": 0,
@@ -33330,7 +33768,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 2,
@@ -33340,7 +33778,9 @@
    "integridade": 2,
    "resistencia": 3,
    "empatia": 1,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 1,
    "natacao": 0,
@@ -33459,7 +33899,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 3,
@@ -33469,7 +33909,9 @@
    "integridade": 3,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 2,
@@ -33587,7 +34029,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "armas": 2,
@@ -33596,7 +34038,9 @@
    "esquiva": 1,
    "atletismo": 3,
    "integridade": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "escalada": 3,
    "musculatura": 0
   },
@@ -33720,7 +34164,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 4,
@@ -33730,7 +34174,9 @@
    "integridade": 1,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 3,
@@ -33831,13 +34277,15 @@
    "perspicacia": 2,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 0,
    "briga": 5,
    "bloqueio": 0,
    "esquiva": 0,
-   "integridade": 4,
+   "integridade": 4
+  },
+  "habilidadesSec": {
    "musculatura": 1
   },
   "vontade": 9,
@@ -33974,7 +34422,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 5,
@@ -33985,7 +34433,9 @@
    "resistencia": 4,
    "empatia": 1,
    "sociabilidade": 1,
-   "ocultismo": 3,
+   "ocultismo": 3
+  },
+  "habilidadesSec": {
    "intimidacao": 3,
    "voo": 3,
    "musculatura": 2
@@ -34155,7 +34605,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 2,
    "briga": 5,
@@ -34166,7 +34616,9 @@
    "ocultismo": 4,
    "persuasao": 3,
    "empatia": 2,
-   "sociabilidade": 2,
+   "sociabilidade": 2
+  },
+  "habilidadesSec": {
    "natacao": 3,
    "disparo": 3,
    "acerto-arcano": 5,
@@ -34321,7 +34773,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 5,
@@ -34332,7 +34784,9 @@
    "ocultismo": 3,
    "empatia": 3,
    "persuasao": 2,
-   "sociabilidade": 2,
+   "sociabilidade": 2
+  },
+  "habilidadesSec": {
    "disparo": 3,
    "acerto-arcano": 4,
    "musculatura": 2
@@ -34462,7 +34916,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 5,
@@ -34473,7 +34927,9 @@
    "ocultismo": 3,
    "empatia": 3,
    "persuasao": 3,
-   "sociabilidade": 2,
+   "sociabilidade": 2
+  },
+  "habilidadesSec": {
    "labia": 3,
    "acerto-arcano": 4,
    "musculatura": 1
@@ -34617,7 +35073,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 2,
    "briga": 3,
@@ -34627,7 +35083,9 @@
    "integridade": 1,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -34740,7 +35198,7 @@
    "perspicacia": 7,
    "compostura": 6
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 0,
    "briga": 5,
@@ -34755,7 +35213,9 @@
    "sociabilidade": 3,
    "politica": 4,
    "ocultismo": 6,
-   "burocracia": 4,
+   "burocracia": 4
+  },
+  "habilidadesSec": {
    "voo": 1,
    "musculatura": 3
   },
@@ -34928,7 +35388,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 5,
@@ -34938,7 +35398,9 @@
    "integridade": 5,
    "ocultismo": 4,
    "persuasao": 3,
-   "sociabilidade": 2,
+   "sociabilidade": 2
+  },
+  "habilidadesSec": {
    "intimidacao": 4,
    "disparo": 2,
    "musculatura": 2
@@ -35085,13 +35547,14 @@
    "inteligencia": 5,
    "raciocinio": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
+   "furtividade": 4,
    "esquiva": 2,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 4
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 10,
   "aparencia": 8,
   "virtudes": {
@@ -35259,7 +35722,7 @@
    "perspicacia": 2,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "armas": 4,
@@ -35272,7 +35735,9 @@
    "persuasao": 2,
    "politica": 2,
    "manha": 2,
-   "sociabilidade": 1,
+   "sociabilidade": 1
+  },
+  "habilidadesSec": {
    "religiao": 3,
    "musculatura": 0
   },
@@ -35395,14 +35860,16 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 0,
    "furtividade": 0,
    "briga": 4,
    "bloqueio": 0,
    "esquiva": 0,
    "integridade": 0,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "musculatura": 0
   },
   "vontade": 3,
@@ -35524,7 +35991,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 3,
@@ -35533,7 +36000,9 @@
    "esquiva": 0,
    "atletismo": 1,
    "integridade": 2,
-   "sobrevivencia": 1,
+   "sobrevivencia": 1
+  },
+  "habilidadesSec": {
    "intimidacao": 2,
    "musculatura": 3
   },
@@ -35656,7 +36125,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "briga": 5,
@@ -35667,7 +36136,9 @@
    "manha": 3,
    "persuasao": 3,
    "sociabilidade": 2,
-   "ocultismo": 3,
+   "ocultismo": 3
+  },
+  "habilidadesSec": {
    "labia": 3,
    "voo": 2,
    "musculatura": 3
@@ -35821,7 +36292,7 @@
    "perspicacia": 2,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "armas": 3,
@@ -35831,7 +36302,9 @@
    "atletismo": 2,
    "resistencia": 3,
    "integridade": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "intimidacao": 2,
    "musculatura": 0
   },
@@ -35945,7 +36418,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 5,
@@ -35955,7 +36428,9 @@
    "integridade": 3,
    "resistencia": 4,
    "empatia": 2,
-   "sobrevivencia": 4,
+   "sobrevivencia": 4
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 3,
@@ -36066,7 +36541,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "briga": 4,
@@ -36075,7 +36550,9 @@
    "atletismo": 1,
    "resistencia": 4,
    "integridade": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "musculatura": 2
   },
   "vontade": 7,
@@ -36205,11 +36682,12 @@
    "inteligencia": 0,
    "raciocinio": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
-   "esquiva": 1,
-   "furtividade": 0
+   "furtividade": 0,
+   "esquiva": 1
   },
+  "habilidadesSec": {},
   "vontade": 5,
   "aparencia": 3,
   "virtudes": {
@@ -36331,7 +36809,7 @@
    "perspicacia": 3,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 1,
    "briga": 4,
@@ -36342,7 +36820,9 @@
    "resistencia": 3,
    "empatia": 3,
    "sociabilidade": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "voo": 4,
    "musculatura": 2
   },
@@ -36478,7 +36958,7 @@
    "perspicacia": 3,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 5,
@@ -36488,7 +36968,9 @@
    "integridade": 3,
    "sobrevivencia": 4,
    "ocultismo": 1,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "voo": 3,
    "musculatura": 2
   },
@@ -36607,7 +37089,7 @@
    "perspicacia": 3,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "briga": 5,
@@ -36618,7 +37100,9 @@
    "resistencia": 3,
    "empatia": 2,
    "sociabilidade": 0,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "voo": 3,
    "musculatura": 2
   },
@@ -36753,13 +37237,14 @@
    "inteligencia": 1,
    "raciocinio": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
+   "furtividade": 3,
    "esquiva": 1,
    "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 3
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -36882,7 +37367,7 @@
    "perspicacia": 5,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 5,
    "atirador": 4,
@@ -36894,7 +37379,9 @@
    "ocultismo": 2,
    "empatia": 2,
    "sociabilidade": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "labia": 3,
    "danca": 2,
    "voo": 4,
@@ -37041,13 +37528,14 @@
    "inteligencia": 7,
    "raciocinio": 7
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
+   "furtividade": 1,
    "esquiva": 1,
    "integridade": 8,
-   "sociabilidade": 0,
-   "furtividade": 1
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 12,
   "aparencia": 11,
   "virtudes": {
@@ -37237,7 +37725,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 2,
@@ -37247,7 +37735,9 @@
    "integridade": 1,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 3,
@@ -37344,7 +37834,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 4,
    "briga": 2,
@@ -37354,7 +37844,9 @@
    "integridade": 1,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 2,
@@ -37469,7 +37961,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 4,
    "briga": 3,
@@ -37479,7 +37971,9 @@
    "integridade": 2,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 2,
@@ -37605,7 +38099,7 @@
    "perspicacia": 2,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 0,
    "briga": 1,
@@ -37615,7 +38109,9 @@
    "integridade": 1,
    "resistencia": 4,
    "empatia": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -37741,7 +38237,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 2,
@@ -37751,7 +38247,9 @@
    "integridade": 1,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 1,
@@ -37877,7 +38375,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "briga": 3,
@@ -37885,7 +38383,9 @@
    "esquiva": 1,
    "atletismo": 1,
    "integridade": 2,
-   "empatia": 1,
+   "empatia": 1
+  },
+  "habilidadesSec": {
    "voo": 3
   },
   "vontade": 6,
@@ -38028,7 +38528,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "briga": 2,
@@ -38038,7 +38538,9 @@
    "integridade": 1,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 1,
@@ -38144,11 +38646,12 @@
    "inteligencia": 0,
    "raciocinio": 0
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 0,
-   "esquiva": 0,
-   "furtividade": 0
+   "furtividade": 0,
+   "esquiva": 0
   },
+  "habilidadesSec": {},
   "vontade": 6,
   "aparencia": 1,
   "virtudes": {
@@ -38271,7 +38774,7 @@
    "perspicacia": 3,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 4,
    "briga": 3,
@@ -38283,7 +38786,9 @@
    "empatia": 2,
    "manha": 2,
    "sociabilidade": 2,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "labia": 3,
    "voo": 3,
    "musculatura": 2
@@ -38437,7 +38942,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 2,
@@ -38447,7 +38952,9 @@
    "integridade": 2,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -38548,7 +39055,7 @@
    "perspicacia": 1,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 1,
    "briga": 5,
@@ -38558,7 +39065,9 @@
    "integridade": 3,
    "resistencia": 3,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "disparo": 2,
    "voo": 2,
    "musculatura": 3
@@ -38708,7 +39217,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 2,
    "briga": 2,
@@ -38718,7 +39227,9 @@
    "integridade": 1,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 1,
@@ -38849,7 +39360,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "briga": 1,
@@ -38859,7 +39370,9 @@
    "integridade": 1,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 1,
+   "sobrevivencia": 1
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -38960,7 +39473,7 @@
    "perspicacia": 4,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 4,
    "briga": 5,
@@ -38973,7 +39486,9 @@
    "empatia": 3,
    "sociabilidade": 3,
    "ocultismo": 3,
-   "politica": 3,
+   "politica": 3
+  },
+  "habilidadesSec": {
    "etiqueta": 3,
    "labia": 3,
    "musculatura": 2
@@ -39135,7 +39650,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 3,
    "armas": 3,
@@ -39144,7 +39659,9 @@
    "esquiva": 1,
    "atletismo": 1,
    "prestidigitacao": 2,
-   "integridade": 2,
+   "integridade": 2
+  },
+  "habilidadesSec": {
    "musculatura": 0
   },
   "vontade": 7,
@@ -39262,7 +39779,7 @@
    "perspicacia": 2,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 3,
@@ -39272,7 +39789,9 @@
    "integridade": 2,
    "resistencia": 2,
    "empatia": 1,
-   "sobrevivencia": 4,
+   "sobrevivencia": 4
+  },
+  "habilidadesSec": {
    "equilibrio": 2,
    "escalada": 2,
    "natacao": 2,
@@ -39387,7 +39906,7 @@
    "perspicacia": 2,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 2,
@@ -39397,7 +39916,9 @@
    "integridade": 1,
    "resistencia": 2,
    "empatia": 1,
-   "sobrevivencia": 4,
+   "sobrevivencia": 4
+  },
+  "habilidadesSec": {
    "equilibrio": 2,
    "escalada": 2,
    "natacao": 2,
@@ -39516,7 +40037,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "briga": 5,
@@ -39526,7 +40047,9 @@
    "integridade": 2,
    "resistencia": 4,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "musculatura": 3
   },
   "vontade": 9,
@@ -39653,7 +40176,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 3,
@@ -39663,7 +40186,9 @@
    "integridade": 3,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -39802,7 +40327,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 2,
    "briga": 4,
@@ -39812,7 +40337,9 @@
    "integridade": 3,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 1,
    "escalada": 0,
    "natacao": 0,
@@ -39960,7 +40487,7 @@
    "perspicacia": 3,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "armas": 3,
@@ -39969,7 +40496,9 @@
    "esquiva": 1,
    "atletismo": 2,
    "integridade": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "natacao": 3,
    "musculatura": 0
   },
@@ -40097,7 +40626,7 @@
    "perspicacia": 4,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "armas": 5,
@@ -40109,7 +40638,9 @@
    "resistencia": 2,
    "sobrevivencia": 2,
    "sociabilidade": 1,
-   "ocultismo": 1,
+   "ocultismo": 1
+  },
+  "habilidadesSec": {
    "ferreiro": 3,
    "musculatura": 3
   },
@@ -40254,7 +40785,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 2,
@@ -40264,7 +40795,9 @@
    "integridade": 0,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -40397,7 +40930,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 1,
@@ -40407,7 +40940,9 @@
    "integridade": 1,
    "resistencia": 2,
    "empatia": 0,
-   "sobrevivencia": 4,
+   "sobrevivencia": 4
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -40508,13 +41043,14 @@
    "inteligencia": 3,
    "raciocinio": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
+   "furtividade": 4,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 4
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 7,
   "aparencia": 8,
   "virtudes": {
@@ -40662,7 +41198,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 3,
    "briga": 5,
@@ -40672,7 +41208,9 @@
    "integridade": 2,
    "resistencia": 4,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "natacao": 4,
    "musculatura": 3
   },
@@ -40802,7 +41340,7 @@
    "perspicacia": 4,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "briga": 5,
@@ -40812,7 +41350,9 @@
    "integridade": 4,
    "persuasao": 2,
    "sociabilidade": 1,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "etiqueta": 2,
    "joalheria": 2,
    "musculatura": 3
@@ -40942,13 +41482,14 @@
    "inteligencia": 1,
    "raciocinio": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
+   "furtividade": 0,
    "esquiva": 2,
    "integridade": 5,
-   "sociabilidade": 0,
-   "furtividade": 0
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 5,
   "aparencia": 1,
   "virtudes": {
@@ -41082,7 +41623,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "armas": 3,
@@ -41091,7 +41632,9 @@
    "esquiva": 1,
    "atletismo": 2,
    "integridade": 2,
-   "resistencia": 3,
+   "resistencia": 3
+  },
+  "habilidadesSec": {
    "natacao": 3,
    "musculatura": 0
   },
@@ -41227,13 +41770,14 @@
    "inteligencia": 7,
    "raciocinio": 8
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
+   "furtividade": 1,
    "esquiva": 2,
    "integridade": 8,
-   "sociabilidade": 0,
-   "furtividade": 1
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 12,
   "aparencia": 12,
   "virtudes": {
@@ -41437,7 +41981,7 @@
    "perspicacia": 2,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 1,
    "armas": 4,
@@ -41451,7 +41995,9 @@
    "resistencia": 3,
    "empatia": 1,
    "sociabilidade": 1,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "estrategia": 2,
    "lideranca": 1,
    "intimidacao": 1,
@@ -41611,14 +42157,16 @@
    "perspicacia": 2,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 4,
    "briga": 4,
    "bloqueio": 0,
    "esquiva": 1,
    "integridade": 4,
-   "resistencia": 0,
+   "resistencia": 0
+  },
+  "habilidadesSec": {
    "voo": 3,
    "musculatura": 0
   },
@@ -41762,7 +42310,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "briga": 2,
@@ -41772,7 +42320,9 @@
    "integridade": 2,
    "resistencia": 1,
    "sociabilidade": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "voo": 3,
    "musculatura": 1
   },
@@ -41883,7 +42433,7 @@
    "perspicacia": 7,
    "compostura": 6
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 5,
@@ -41897,7 +42447,9 @@
    "manha": 4,
    "sociabilidade": 4,
    "politica": 2,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "seducao": 5,
    "disfarce": 4,
    "voo": 2,
@@ -42050,7 +42602,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 3,
    "armas": 3,
@@ -42059,7 +42611,9 @@
    "esquiva": 1,
    "atletismo": 2,
    "integridade": 2,
-   "oficios-gerais": 2,
+   "oficios-gerais": 2
+  },
+  "habilidadesSec": {
    "musculatura": 0
   },
   "vontade": 6,
@@ -42172,7 +42726,7 @@
    "perspicacia": 2,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 0,
    "briga": 5,
@@ -42182,7 +42736,9 @@
    "integridade": 4,
    "resistencia": 6,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "intimidacao": 4,
    "musculatura": 4
   },
@@ -42347,14 +42903,16 @@
    "perspicacia": 3,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "briga": 5,
    "bloqueio": 0,
    "esquiva": 0,
    "atletismo": 2,
-   "integridade": 3,
+   "integridade": 3
+  },
+  "habilidadesSec": {
    "natacao": 4,
    "disparo": 3,
    "musculatura": 3
@@ -42502,7 +43060,7 @@
    "perspicacia": 2,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "armas": 3,
@@ -42511,7 +43069,9 @@
    "esquiva": 1,
    "atletismo": 2,
    "integridade": 3,
-   "prestidigitacao": 1,
+   "prestidigitacao": 1
+  },
+  "habilidadesSec": {
    "musculatura": 0
   },
   "vontade": 6,
@@ -42634,7 +43194,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "armas": 2,
@@ -42643,7 +43203,9 @@
    "esquiva": 1,
    "atletismo": 2,
    "integridade": 2,
-   "manha": 2,
+   "manha": 2
+  },
+  "habilidadesSec": {
    "disfarce": 1,
    "musculatura": 0
   },
@@ -42759,7 +43321,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 4,
    "briga": 4,
@@ -42769,7 +43331,9 @@
    "integridade": 3,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 1,
    "natacao": 2,
@@ -42902,7 +43466,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 4,
@@ -42912,7 +43476,9 @@
    "integridade": 3,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -43026,7 +43592,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 4,
@@ -43036,7 +43602,9 @@
    "integridade": 3,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -43155,13 +43723,14 @@
    "inteligencia": 3,
    "raciocinio": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
+   "furtividade": 0,
    "esquiva": 0,
    "integridade": 4,
-   "sociabilidade": 0,
-   "furtividade": 0
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 8,
   "aparencia": 3,
   "virtudes": {
@@ -43319,11 +43888,12 @@
    "inteligencia": 0,
    "raciocinio": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
-   "esquiva": 1,
-   "furtividade": 0
+   "furtividade": 0,
+   "esquiva": 1
   },
+  "habilidadesSec": {},
   "vontade": 5,
   "aparencia": 3,
   "virtudes": {
@@ -43451,7 +44021,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 3,
@@ -43461,7 +44031,9 @@
    "integridade": 3,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -43592,7 +44164,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "armas": 2,
@@ -43602,7 +44174,9 @@
    "atletismo": 1,
    "resistencia": 2,
    "integridade": 2,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "musculatura": 0
   },
   "vontade": 5,
@@ -43729,14 +44303,16 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "briga": 5,
    "bloqueio": 0,
    "esquiva": 1,
    "integridade": 2,
-   "sobrevivencia": 1,
+   "sobrevivencia": 1
+  },
+  "habilidadesSec": {
    "musculatura": 2
   },
   "vontade": 6,
@@ -43894,7 +44470,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 4,
@@ -43904,7 +44480,9 @@
    "integridade": 1,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 6,
@@ -44013,7 +44591,7 @@
    "perspicacia": 5,
    "compostura": 7
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 1,
    "briga": 4,
@@ -44024,7 +44602,9 @@
    "resistencia": 3,
    "empatia": 4,
    "sociabilidade": 0,
-   "sobrevivencia": 4,
+   "sobrevivencia": 4
+  },
+  "habilidadesSec": {
    "cura": 2,
    "musculatura": 2
   },
@@ -44180,13 +44760,14 @@
    "inteligencia": 1,
    "raciocinio": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
+   "furtividade": 2,
    "esquiva": 1,
    "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 2
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 5,
   "aparencia": 4,
   "virtudes": {
@@ -44301,7 +44882,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 3,
@@ -44311,7 +44892,9 @@
    "integridade": 3,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -44435,7 +45018,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 2,
@@ -44445,7 +45028,9 @@
    "integridade": 1,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 2,
    "natacao": 0,
@@ -44556,7 +45141,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 4,
@@ -44566,7 +45151,9 @@
    "integridade": 3,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -44698,7 +45285,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 4,
@@ -44708,7 +45295,9 @@
    "integridade": 3,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -44828,7 +45417,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 4,
@@ -44838,7 +45427,9 @@
    "integridade": 3,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 2,
+   "sobrevivencia": 2
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 3,
@@ -44953,7 +45544,7 @@
    "perspicacia": 6,
    "compostura": 6
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 5,
@@ -44963,7 +45554,9 @@
    "integridade": 6,
    "manha": 5,
    "persuasao": 4,
-   "sociabilidade": 3,
+   "sociabilidade": 3
+  },
+  "habilidadesSec": {
    "escalada": 2,
    "musculatura": 2
   },
@@ -45132,7 +45725,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 3,
    "briga": 3,
@@ -45141,7 +45734,9 @@
    "atletismo": 0,
    "integridade": 2,
    "resistencia": 2,
-   "sociabilidade": 0,
+   "sociabilidade": 0
+  },
+  "habilidadesSec": {
    "voo": 3,
    "musculatura": 0
   },
@@ -45259,13 +45854,14 @@
    "inteligencia": 2,
    "raciocinio": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
+   "furtividade": 1,
    "esquiva": 1,
    "integridade": 2,
-   "sociabilidade": 0,
-   "furtividade": 1
+   "sociabilidade": 0
   },
+  "habilidadesSec": {},
   "vontade": 5,
   "aparencia": 3,
   "virtudes": {
@@ -45385,7 +45981,7 @@
    "perspicacia": 1,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 1,
    "briga": 5,
@@ -45395,7 +45991,9 @@
    "integridade": 2,
    "resistencia": 4,
    "sociabilidade": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "musculatura": 2
   },
   "vontade": 6,
@@ -45530,7 +46128,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
    "briga": 4,
@@ -45540,7 +46138,9 @@
    "integridade": 0,
    "resistencia": 3,
    "empatia": 0,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,
@@ -45671,14 +46271,16 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 3,
    "briga": 4,
    "bloqueio": 0,
    "esquiva": 0,
    "integridade": 0,
-   "resistencia": 3,
+   "resistencia": 3
+  },
+  "habilidadesSec": {
    "musculatura": 2
   },
   "vontade": 3,
@@ -45803,7 +46405,7 @@
    "perspicacia": 4,
    "compostura": 5
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 4,
    "furtividade": 0,
    "briga": 5,
@@ -45815,7 +46417,9 @@
    "empatia": 1,
    "sociabilidade": 1,
    "sobrevivencia": 2,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "intimidacao": 3,
    "danca": 3,
    "voo": 4,
@@ -45977,13 +46581,15 @@
    "perspicacia": 3,
    "compostura": 4
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 3,
    "briga": 4,
    "bloqueio": 0,
    "esquiva": 1,
-   "integridade": 4,
+   "integridade": 4
+  },
+  "habilidadesSec": {
    "intimidacao": 1,
    "musculatura": 1
   },
@@ -46117,7 +46723,7 @@
    "perspicacia": 2,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
    "briga": 3,
@@ -46128,7 +46734,9 @@
    "resistencia": 4,
    "sociabilidade": 0,
    "sobrevivencia": 3,
-   "manha": 1,
+   "manha": 1
+  },
+  "habilidadesSec": {
    "musculatura": 2
   },
   "vontade": 7,
@@ -46241,14 +46849,16 @@
    "perspicacia": 2,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 2,
    "furtividade": 1,
    "briga": 5,
    "bloqueio": 0,
    "esquiva": 1,
    "atletismo": 2,
-   "integridade": 3,
+   "integridade": 3
+  },
+  "habilidadesSec": {
    "voo": 3,
    "musculatura": 2
   },
@@ -46413,7 +47023,7 @@
    "perspicacia": 3,
    "compostura": 3
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "armas": 5,
@@ -46424,7 +47034,9 @@
    "integridade": 3,
    "resistencia": 3,
    "sociabilidade": 0,
-   "ocultismo": 2,
+   "ocultismo": 2
+  },
+  "habilidadesSec": {
    "estrategia": 2,
    "cura": 2,
    "musculatura": 2
@@ -46576,7 +47188,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 3,
    "furtividade": 2,
    "briga": 5,
@@ -46584,7 +47196,9 @@
    "esquiva": 1,
    "integridade": 2,
    "sobrevivencia": 2,
-   "resistencia": 2,
+   "resistencia": 2
+  },
+  "habilidadesSec": {
    "musculatura": 3
   },
   "vontade": 8,
@@ -46725,7 +47339,7 @@
    "perspicacia": 2,
    "compostura": 2
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 2,
    "briga": 4,
@@ -46734,7 +47348,9 @@
    "atletismo": 3,
    "integridade": 2,
    "resistencia": 3,
-   "sobrevivencia": 3,
+   "sobrevivencia": 3
+  },
+  "habilidadesSec": {
    "escalada": 3,
    "musculatura": 3
   },
@@ -46860,7 +47476,7 @@
    "perspicacia": 1,
    "compostura": 1
   },
-  "pericias": {
+  "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
    "briga": 2,
@@ -46870,7 +47486,9 @@
    "integridade": 0,
    "resistencia": 0,
    "empatia": 0,
-   "sobrevivencia": 0,
+   "sobrevivencia": 0
+  },
+  "habilidadesSec": {
    "equilibrio": 0,
    "escalada": 0,
    "natacao": 0,

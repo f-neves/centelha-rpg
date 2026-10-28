@@ -27,6 +27,14 @@ const FICHA = Object.fromEntries(lerCriaturas().map((f) => [f.id, f]));
 // pela tabela de tipo e porte, como antes do B14 (sem isto ela cairia no passo do
 // soldado e o test-deslocamento acusaria a diferença com a semente).
 const DESL = read('deslocamento-bestiario.json');
+const PRIMARIAS = new Set(read('habilidades.json').map(h => h.id));
+function habilidadesPublicas(f, c) {
+  const todas = c.pericias || {};
+  return {
+    habilidades: { prontidao: 0, furtividade: 0, ...Object.fromEntries(Object.entries(todas).filter(([k]) => PRIMARIAS.has(k))) },
+    habilidadesSec: Object.fromEntries(Object.entries(todas).filter(([k]) => !PRIMARIAS.has(k))),
+  };
+}
 
 // ------------------------------------------------- a classe de tempo do ataque
 // A régua P/G/R (e o sistema simultâneo) precisa saber COMO a criatura ataca:
@@ -101,7 +109,7 @@ function build(c) {
     // Elas nao entram em conta nenhuma daqui: o motor continua lendo `defesa`,
     // `defesaMental` e `iniciativa`. Existem para as catorze regras de oposicao
     // que pedem a PERICIA pelo nome, e sao OMITIDAS quando a conta nao fecha.
-    ...(c.pericias && Object.keys(c.pericias).length ? { pericias: c.pericias } : {}),
+    ...habilidadesPublicas(f, c),
     vontade: c.vontade ?? 5,
     aparencia: f.aparencia,
     virtudes: f.virtues,
@@ -239,7 +247,7 @@ const CAMPOS_MESA = [
   // vem deste arquivo magro, e a Passiva de TODA criatura da mesa saia `null`
   // sem nada acusar, porque `null` e um valor que o contrato permite. Quem pega
   // isso agora e o `test-sentidos.mjs`.
-  'pericias',
+  'habilidades', 'habilidadesSec',
   'artes', 'tecnicas', 'combate', 'ecologia', 'dimensoes',
 ];
 /**

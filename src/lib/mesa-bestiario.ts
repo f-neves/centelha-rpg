@@ -224,7 +224,7 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
       // é a regra da omissão: uma criatura sem bloco devolve nulo, e não um
       // objeto vazio que se leria como "tem atributos, todos zero".
       atributos: MON[c.monstro_id]?.atributos ?? null,
-      pericias: MON[c.monstro_id]?.pericias ?? null,
+      pericias: MON[c.monstro_id] ? { ...MON[c.monstro_id].habilidadesSec, ...MON[c.monstro_id].habilidades } : null,
       centelha: MON[c.monstro_id]?.centelha || 0,
     };
   }

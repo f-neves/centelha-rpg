@@ -82,9 +82,9 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
            Antes este componente reimplementava a inversão da Integridade por conta própria,
            com a fórmula antiga (flat), e foi a causa exata do `Def. Mental: card ≠ modal` que
            o `test-editor-bestiario.mjs` pegou. */
-        pericias: i.pericias || {},
-        integridade: i.pericias?.integridade ?? 0,
-        prontidao: i.pericias?.prontidao ?? 0,
+        pericias: { ...i.habilidadesSec, ...i.habilidades },
+        integridade: i.habilidades?.integridade ?? 0,
+        prontidao: i.habilidades?.prontidao ?? 0,
         fraquezas: i.combate.fraquezas || [], resistencias: i.combate.resistencias || [], imunidades: i.combate.imunidades || [], notas: i.notas || '', armadura: 'nenhuma', ataquesLivro: (i.combate.ataques || []).map((x: any) => ({ nome: x.nome, pool: x.pool, dano: x.dano, speed: x.speed })) })}>
 
         <figure class={`arte${i.imagem ? '' : ' sem-arte'}`} data-cent={i.centelha}>

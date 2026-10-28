@@ -49,11 +49,15 @@ console.log('· os sentidos das criaturas: a Passiva, a tabela e a exceção');
 // vai para o navegador tem". São dois arquivos e o segundo é um recorte do
 // primeiro.
 const porId = Object.fromEntries(MESA.map((m) => [m.id, m]));
-const semPericias = MESA.filter((m) => !m.pericias || !Object.keys(m.pericias).length);
+for (const m of [...CHEIO, ...MESA]) {
+  ok(!('pericias' in m), m.id + ': contrato sem pericias');
+  ok(m.habilidadesSec && !Array.isArray(m.habilidadesSec), m.id + ': mapa secundário presente');
+}
+const semPericias = MESA.filter((m) => !m.habilidades || !Object.keys(m.habilidades).length);
 ok(semPericias.length === 0,
   `a versão MAGRA do bestiário leva as perícias (${MESA.length - semPericias.length} de ${MESA.length})`);
 
-const semProntidao = MESA.filter((m) => m.pericias?.prontidao == null);
+const semProntidao = MESA.filter((m) => m.habilidades?.prontidao == null);
 ok(semProntidao.length === 0,
   `e a Prontidão está em todas, que é o que a Passiva precisa (${MESA.length - semProntidao.length} de ${MESA.length})`);
 
@@ -73,7 +77,7 @@ let batem = 0;
 let mexem = 0;
 for (const m of MESA) {
   const p = m.atributos?.percepcao;
-  const pr = m.pericias?.prontidao;
+  const pr = m.habilidades?.prontidao;
   const c = m.centelha || 0;
   const v = passiva(p, pr, c);
   if (Number.isFinite(v)) batem += 1;
@@ -101,7 +105,7 @@ for(const arquivo of fs.readdirSync(path.join(ROOT,'src/data/bestiario'))) {
   if(!c.corpo)continue;
   fontesNovas++;
   const m=CHEIO.find(x=>x.id===c.id);
-  ok(m?.pericias?.furtividade===(c.habilidades.furtividade ?? c.habilidadesSec.furtividade ?? 0),c.id+': Furtividade escrita, sem ajuste por porte');
+  ok((m?.habilidades?.furtividade ?? m?.habilidadesSec?.furtividade)===(c.habilidades.furtividade ?? c.habilidadesSec.furtividade ?? 0),c.id+': Furtividade escrita, sem ajuste por porte');
 }
 // O caminho antigo continua necessário antes das 324. Números da tabela vigente, sem fórmula no teste.
 for(const [porte,categoria,esperado] of [['miudo','Fada',6],['colossal','Fada',2],['medio','Fada',4],['medio','Construto',0],['medio','Fera',3],['medio','Humano',2]]) {
@@ -129,8 +133,8 @@ for (const id of ids) {
   const m = CHEIO.find((x) => x.id === id);
   ok(!!m, `  a criatura "${id}" da exceção existe no bestiário`);
   if (!m) continue;
-  ok(m.pericias?.furtividade === valorDa(exc[id]),
-    `  e a exceção VENCE a tabela em ${m.nome}: ${m.pericias?.furtividade} (a tabela daria outro)`);
+  ok(m.habilidades?.furtividade === valorDa(exc[id]),
+    `  e a exceção VENCE a tabela em ${m.nome}: ${m.habilidades?.furtividade} (a tabela daria outro)`);
   // A GÊMEA: se a exceção desse o mesmo número da tabela, a asserção acima
   // passaria sem provar nada. Esta cobra que os dois sejam diferentes.
   const slug = String(m.porte || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
