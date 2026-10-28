@@ -499,56 +499,7 @@
     "cargaCorteAgua": 0.5,
     "cargaExpoenteAgua": 2
   },
-  "furtividadeCriatura": {
-    "nota": "A Furtividade de uma criatura, por PORTE e CATEGORIA, sobre a Destreza. Existe porque o bestiário não guarda Habilidade nenhuma: das cinco que as regras de oposição pedem, quatro voltam invertendo a conta dos derivados (Prontidão de iniciativa - raciocínio, Esquiva da Defesa, Integridade da Defesa Mental, Sociabilidade da Defesa Social) e a Furtividade não volta de lugar nenhum: nada a consome. Sem ela não há comparação para o golpe vindo do escuro, e comparar contra um número fixo seria escrever a regra por omissão.",
-    "porQueTabelaEnaoUmNumeroPorCriatura": "A alternativa era escrever 309 Furtividades à mão. Trezentas e nove decisões de regra que ninguém toma com cuidado produzem números que PARECEM dado e não são, que é a forma de erro mais cara deste projeto. A tabela erra de um jeito que se vê (o assassino humano fica igual ao camponês humano) e a exceção escrita conserta esse caso quando ele aparecer na mesa, uma linha por vez. Mesma forma da couraça por porte (dano.couracaPorte), que é a forma da casa.",
-    "formula": "Furtividade = base do porte + ajuste da categoria + ajuste de tag, limitado a 0..6",
-    "porte": {
-      "nota": "Volume é o que denuncia: o que cabe atrás de um barril se esconde, e o que derruba o barril não. A base cai um degrau por passo de porte até o piso. As chaves sao as mesmas de dano.couracaPorte (minusculo..colossal; o Minusculo, oitavo porte da D-179, herda o valor do Miudo), e nao os rotulos do bestiario: escrevi \"miudo\" na primeira versao e 24 criaturas sairam SEM furtividade em vez de com a errada, porque a funcao omite quando nao acha em vez de zerar. O zero ambiguo do lado certo.",
-      "minusculo": 4,
-      "miudo": 4,
-      "pequeno": 3,
-      "medio": 2,
-      "grande": 1,
-      "enorme": 0,
-      "imenso": 0,
-      "colossal": 0
-    },
-    "categoria": {
-      "nota": "O ajuste do CORPO e do jeito de andar, e não da inteligência: a raposa se move calada por instinto, a armadura animada não tem como. Categoria não listada vale 0.",
-      "Fera": 1,
-      "Fada": 2,
-      "Aberração": 0,
-      "Besta mágica": 0,
-      "Celestial": 0,
-      "Conjurador": 0,
-      "Construto": -2,
-      "Demônio": 1,
-      "Diabo": 1,
-      "Dragão": 0,
-      "Elemental": -1,
-      "Exterior": 0,
-      "Gigante": -1,
-      "Humano": 0,
-      "Humanoide": 0,
-      "Limo": -1,
-      "Monstro": 0,
-      "Morto-vivo": -1,
-      "Planta": -2
-    },
-    "tags": {
-      "nota": "Somam sobre o resto. `incorpóreo` é o único que vira o jogo: quem atravessa a parede não tem passo para ouvir.",
-      "incorpóreo": 2
-    },
-    "excecoes": {
-      "nota": "O CAMINHO DA EXCECAO, e ele existe desde o primeiro dia de proposito: dar Furtividade propria a uma criatura e UMA LINHA aqui, no formato {\"valor\": n, \"porque\": \"...\"}. O porque e obrigatorio e nao e formalidade: sem ele, daqui a seis meses o numero e um palpite anonimo e ninguem sabe se pode mexer. O par valor/porque num objeto so, e nao duas chaves irmas, porque a segunda chave parecia um id de criatura e o portao a cobrou como tal (test-sentidos.mjs)."
-
-
-
-
-    }
-  },
-  "progressaoPorSessao": [
+"progressaoPorSessao": [
     10,
     20
   ],
@@ -1030,42 +981,7 @@
       "perfuracao": "zero"
     },
     "centelhaNoSoak": 1,
-    "couracaPorte": {
-      "nota": "CONTA ANTIGA, que o bestiário ainda aplica às criaturas sem ficha nova até o código mudar (D-179, item 19). A regra nova (D-180, ponto 4): a Couraça vem só da pele, nível de 0 a 12 na ficha; quanto cada nível vale na Absorção está sem regra ainda, e por enquanto o nível não entra na Absorção. Os valores abaixo são os da conta antiga: Couraça pelo tamanho, somada SÓ a Corte e Perfuração; 'resistPerf' = gate natural de Perfuração (ataque Perfurante com Nível de Perfuração ABAIXO dele resvala); empilha com armadura (a couraça SOMA; o resistPerf pega o MAIOR). Tamanho lido do campo porte da ficha de criatura (src/data/bestiario/<id>.json); Médio e menores = 0.",
-      "minusculo": {
-        "couraca": 0,
-        "resistPerf": 0
-      },
-      "miudo": {
-        "couraca": 0,
-        "resistPerf": 0
-      },
-      "pequeno": {
-        "couraca": 0,
-        "resistPerf": 0
-      },
-      "medio": {
-        "couraca": 0,
-        "resistPerf": 0
-      },
-      "grande": {
-        "couraca": 2,
-        "resistPerf": 0
-      },
-      "enorme": {
-        "couraca": 4,
-        "resistPerf": 1
-      },
-      "imenso": {
-        "couraca": 7,
-        "resistPerf": 2
-      },
-      "colossal": {
-        "couraca": 10,
-        "resistPerf": 3
-      }
-    },
-    "gatePerfuracao": {
+"gatePerfuracao": {
       "nota": "Só para o modo Perfurante. Se o Nível de Perfuração da arma for MENOR que a Resistência à Perfuração (Nível) da armadura, o golpe RESVALA (dano 0, nem rola). Se for IGUAL OU MAIOR, o gate abre: rola o dano e subtrai a Absorção de Perfuração. Cortante e Impacto nunca passam pelo gate.",
       "modos": [
         "perfurante"

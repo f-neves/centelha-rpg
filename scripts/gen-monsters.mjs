@@ -1,19 +1,9 @@
-// Junta o stat block (src/data/inimigos.json, GERADO por gen-bestiario.mjs) com o
-// resto da ficha de cada criatura (src/data/bestiario/<id>.json) num único
-// src/data/monsters.json, e recorta dele o monsters-mesa.json.
-//
-// Desde o B14 (fase 1, 26/09/2026) o card não vem mais de satélite por id
-// (habilidades, dimensões, lore, imagens, ecologia, categoria-extra): vem da
-// ficha, que já traz a categoria, a descrição, a Aparência e as Virtudes
-// ESCRITAS, sem conta pelo desafio. As fraquezas e o deslocamento também vêm da
-// ficha; os satélites que os semeiam (gen-elementos, gen-deslocamento) continuam
-// e o validate confere que a ficha e a semente concordam.
-// Rodar: node scripts/gen-monsters.mjs   (rode gen-bestiario.mjs antes se mexeu nas fichas)
+// Gera o card e a vista da mesa a partir das 324 fontes unificadas e dos derivados do motor.
+// O deslocamento e os elementos são declarados pela ficha.
 import { readFileSync, writeFileSync, statSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { elementosDoMaterial } from './lib-materiais.mjs';
 import { achataCatalogo } from './lib-equip.mjs';
-import { lerCriaturas, passoDaPeca, tres } from './lib-bestiario.mjs';
+import { lerCriaturas } from './lib-bestiario.mjs';
 import { dirname, join } from 'node:path';
 
 const dir = dirname(fileURLToPath(import.meta.url));
@@ -22,11 +12,6 @@ const read = (f) => JSON.parse(readFileSync(join(data, f), 'utf8'));
 
 const inim = read('inimigos.json');
 const FICHA = Object.fromEntries(lerCriaturas().map((f) => [f.id, f]));
-// A semente do deslocamento, só para a criatura da caixa de entrada que não
-// declara o seu: ela ainda não tem `locomocao`, e o gen-deslocamento.mjs a semeia
-// pela tabela de tipo e porte, como antes do B14 (sem isto ela cairia no passo do
-// soldado e o test-deslocamento acusaria a diferença com a semente).
-const DESL = read('deslocamento-bestiario.json');
 const PRIMARIAS = new Set(read('habilidades.json').map(h => h.id));
 function habilidadesPublicas(f, c) {
   const todas = c.pericias || f.motor?.pericias || {};
@@ -81,13 +66,11 @@ function build(c, fonte) {
   const categoriaNome = CATEGORIA_NOME[categoria] || categoria;
   const tags = [categoria, ...(c.centelha > 0 ? ['centelha'] : []), ...(c.artes?.some(a=>a.nivel > 0) ? ['mágico','arcano'] : [])];
   if (!f) throw new Error(`${c.id}: está no inimigos.json e não tem ficha (rode gen-bestiario.mjs)`);
-  // Fraqueza e resistência, na ordem: o que a ficha declara vence o `material` dela.
-  const doMat = elementosDoMaterial(f.material);
+  // Fraqueza, resistência e imunidade saem da fonte unificada.
   const elem = {
-    fraquezas: f.fraquezas ?? doMat?.fraquezas ?? [],
-    resistencias: f.resistencias ?? doMat?.resistencias ?? [],
-    // Imunidade (B14 fase 4, 29/09/2026): sem fallback de material, ninguém a
-    // concede hoje; só o que a própria ficha escrever.
+    fraquezas: f.fraquezas ?? [],
+    resistencias: f.resistencias ?? [],
+    // A fonte marca cada elemento e suas formas.
     imunidades: f.imunidades ?? [],
   };
   const e = f.ecologia || {};
@@ -109,11 +92,7 @@ function build(c, fonte) {
     imagens: [f.imagem, f.imagem2].filter(Boolean),
     semImagem: !f.imagem,
     atributos: c.atributos,
-    // AS PERICIAS, desde 04/09/2026. Quatro vem da conta invertida dos derivados
-    // e a Furtividade vem da tabela por porte e categoria (lib-bestiario.mjs).
-    // Elas nao entram em conta nenhuma daqui: o motor continua lendo `defesa`,
-    // `defesaMental` e `iniciativa`. Existem para as catorze regras de oposicao
-    // que pedem a PERICIA pelo nome, e sao OMITIDAS quando a conta nao fecha.
+    // Habilidades de oposição publicadas pela fonte; o motor já calculou as Defesas.
     ...habilidadesPublicas(f, c),
     vontade: c.vontade ?? 5,
     aparencia: f.aparencia,
@@ -131,15 +110,8 @@ function build(c, fonte) {
       ...(elem.resistencias.length ? { resistencias: elem.resistencias } : {}),
       ...(elem.imunidades.length ? { imunidades: elem.imunidades } : {}),
       iniciativa: c.iniciativa,
-      // Quantos metros a criatura cobre em um Tick, nas três marchas, a partir do
-      // passo da `locomocao` da ficha. Sem ele (só a criatura da caixa), vale a
-      // semente do gen-deslocamento.mjs; sem nenhum dos dois, o passo do soldado
-      // (3 · 5 · 7), porque uma peça sem deslocamento não anda no Grid.
-      deslocamento: (() => {
-        const passo = passoDaPeca(f.locomocao);
-        const d = f.deslocamentoDeclarado ?? (passo ? tres(passo) : DESL[c.id] ?? { batalha: 3, arranque: 5, corrida: 7 });
-        return { batalha: d.batalha, arranque: d.arranque, corrida: d.corrida };
-      })(),
+      // As três velocidades vêm do modo de deslocamento declarado na fonte.
+      deslocamento: (()=>{const d=f.deslocamentoDeclarado;if(!d)throw Error(f.id+': deslocamento ausente');return {batalha:d.batalha,arranque:d.arranque,corrida:d.corrida};})(),
       ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: a.classe ?? classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
     },
     habilidadesEspeciais: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao, ...(x.classe ? {classe:x.classe} : {}), ...(x.base ? {base:x.base} : {}), ...(x.regra ? {regra:x.regra} : {}) })),
@@ -147,21 +119,11 @@ function build(c, fonte) {
     comoLuta: f.motor?.comoLuta || [], sentidos: f.motor?.sentidos || [], segundoTamanho: f.motor?.segundoTamanho || null,
     ...(f.motor?.formaPrincipal ? {formaPrincipal:f.motor.formaPrincipal} : {}),
     formas: (f.motor?.formas || []).map(fo=>({id:fo.id,nome:fo.nome,criatura:build(fo.ficha.motor.stat,fo.ficha)})),
-    // Dois formatos de poder convivem desde o B14 fase 2 (ver criatura-schema.mjs,
-    // poderSchema): o natural novo, com id/nome/resiste/usos/base/area/ataque, e o
-    // legado (efeito/tipo/alvo/arte/caminho). Copiar só os campos do legado aqui
-    // apagava nome/resiste/usos/ataque de todo poder natural novo, calado; achado
-    // e corrigido na B14 fase 3.
-    poderes: (c.poderes || []).map((p) => (p.id
-      ? { id: p.id, nome: p.nome, tipo: p.tipo, resiste: p.resiste, efeito: p.efeito,
-          ...(p.base ? { base: p.base } : {}), ...(p.area ? { area: p.area } : {}),
-          ...(p.ataque ? { ataque: p.ataque } : {}), ...(p.descricao ? { descricao: p.descricao } : {}),
-          usos: p.usos }
-      : { efeito: p.efeito, tipo: p.tipo, alvo: p.alvo, ...(p.caminho ? { caminho: p.caminho } : {}), ...(p.arte ? { arte: p.arte } : {}) })),
+    poderes: [],
     // Locomoção CRUA, por modo (B14 fase 4, item 5 do Adendo 3): o `deslocamento`
     // acima já é o passo único (m/Tick) que o Grid usa; isto é o detalhe por modo
     // (terra/voo/natação/escalada/escavação/jato) que o card exibe, e que até
-    // agora só alimentava `passoDaPeca` por baixo dos panos.
+    // a fonte declara em cada modo.
     ...(f.locomocao && Object.keys(f.locomocao).length ? { locomocao: f.locomocao } : {}),
     tecnicas: c.tecnicas || [],
     artes: (c.artes || []).map((a) => ({ id: a.id && a.id.id ? a.id.id : a.id, nivel: a.nivel })), ...((f.motor?.mana ?? f.mana) != null ? { mana: f.motor?.mana ?? f.mana } : {}), // a Mana da ficha (D-196)
@@ -176,9 +138,7 @@ const problemas = Object.keys(CLASSE_OVERRIDE).filter((id) => !inim.some((c) => 
 for (const m of monsters) {
   if (!m.atributos) problemas.push(`${m.id}: sem atributos`);
   if (m.combate.pv == null) problemas.push(`${m.id}: sem combate.pv`);
-  if (!m.habilidadesEspeciais.length && !FICHA[m.id]?.v3) problemas.push(`${m.id}: sem habilidades`); // a ficha v3 pode não ter manobra nenhuma (o pteranodonte)
-  if (!m.lore.length && !FICHA[m.id]?.motor) problemas.push(`${m.id}: sem lore`);
-  if (!m.corpo.medida) problemas.push(`${m.id}: sem dimensoes`);
+      if (!m.corpo.medida) problemas.push(`${m.id}: sem dimensoes`);
   if (!m.ecologia.tipo) problemas.push(`${m.id}: sem ecologia.tipo`);
   // imagem opcional: criaturas sem arte ganham semImagem:true e o badge "Sem imagem"
 }

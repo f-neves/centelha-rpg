@@ -65,7 +65,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   pelo harness (`02` §0.7 e §0.6.1 item 11). São as 8 de regra publicada que o motor não aplica
   (Margem, gate de Perfuração, porte no acerto, Bloqueio com escudo, modo secundário, teto ±6, e as
   duas da Cura), as 6 do núcleo do Tick e o `porRodada`. **A Couraça de Porte saiu da lista**: ela já
-  é aplicada em tempo de geração (`COURACA`, `lib-bestiario.mjs:45-46`) e já está somada na `absorcao`
+  é aplicada em tempo de geração (`COURACA`, `lib-bestiario.mjs:45-46` (citação histórica)) e já está somada na `absorcao`
   criatura, então uma bandeira de tempo de execução a somaria duas vezes. **Dois testes
   congelam hoje o estado errado** e precisam ser reescritos no mesmo commit:
   `test-contrato.mjs:137` (`eq(R.defesa, 16`) trava a Defesa com o Bloqueio inútil, e L149 trava
@@ -786,7 +786,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   | perícia | de onde volta | quantas das 309 |
   |---|---|---|
-  | **Prontidão** | `iniciativa − raciocínio`, de `const ini = at.raciocinio` (`lib-bestiario.mjs:88`) | **309**, exata |
+  | **Prontidão** | `iniciativa − raciocínio`, de `const ini = at.raciocinio` (`lib-bestiario.mjs:88` (citação histórica)) | **309**, exata |
   | **Esquiva** | `defesa / 2 − destreza − centelha / 2` | **301** (8 fracionárias: armadura ou especialidade no meio) |
   | **Integridade** | `defesaMental − raciocínio − vontade − centelha` | **284** (25 sem Defesa Mental, Int 0) |
   | **Sociabilidade** | `(defesaSocial − centelha) / 2 − compostura` | **145** (164 sem Defesa Social, Int < 2) |
@@ -809,7 +809,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   (`Miúdo +2`, `Médio 0`, `Enorme −2`, com `Fera +1` e `Construto −2`, por exemplo) aplicada
   sobre a Destreza. **Custo: uma decisão de regra e nenhum dado**, e o preço é que o assassino
   humano e o camponês humano ficam iguais até alguém escrever a exceção. É a mesma forma que a
-  couraça por porte já usa em `COURACA` (`lib-bestiario.mjs:45`), então não é forma nova: é a
+  couraça por porte já usa em `COURACA` (`lib-bestiario.mjs:45` (citação histórica)), então não é forma nova: é a
   forma da casa.
 
   **Não há terceira**: sem Furtividade não há comparação, e comparar contra um número fixo
@@ -854,7 +854,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   ESPÉCIE e INSTÂNCIA: o bestiário é livro publicado, e o que a `combate_visao` esconde é a
   Vida daquele ogro agora. A peça `custom` sai com os dois NULOS, e a ausência é informação.
 
-  **4 · O `ResumoCombate` NÃO CARREGA NENHUMA DAS TRÊS.** `resumoDe` (`src/lib/mesa-bestiario.ts:276`)
+  **4 · O `ResumoCombate` NÃO CARREGA NENHUMA DAS TRÊS.** `resumoDe` (`src/lib/mesa-bestiario.ts:271`)
   devolve arma, ataque, dano, as três Defesas, absorção, resistência à perfuração, velocidade,
   classe, passo, pgr e Quase-Acerto. Não há Percepção, nem Prontidão, nem Furtividade: **o
   modelo de combate da mesa não conhece nenhuma perícia por nome**, só os derivados delas. Seja

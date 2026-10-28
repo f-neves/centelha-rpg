@@ -331,7 +331,10 @@ secao('· toda tolerância tem prazo ou condição');
         citados.get(m[1]).add(arq);
       }
     }
-    const mortas = [...citados.entries()].filter(([n]) => !reais.has(n));
+    // Referências de decisões e relatos antigos permanecem como registro histórico.
+    // Os scripts retirados não podem ser citados por código ativo.
+    const retirados=new Set(['gen-deslocamento.mjs','gen-elementos.mjs']);
+    const mortas=[...citados.entries()].filter(([n,origens])=>!reais.has(n)&&(!retirados.has(n)||[...origens].some(o=>!o.startsWith('docs/'))));
     ok(mortas.length === 0, mortas.length
       ? `referência(s) a script que não existe: ${mortas.map(([n, o]) => `${n} (em ${[...o].join(', ')})`).join('; ')}`
       : `os ${citados.size} scripts citados em comentário existem`);

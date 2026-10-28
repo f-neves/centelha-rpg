@@ -19,7 +19,6 @@
 //
 // RODA NO `validate`, e não no smoke, de propósito: não precisa de navegador,
 // então continua respondendo numa máquina onde o Astro não compila.
-import { periciasDe } from './lib-bestiario.mjs';
 import { carregarTS } from './lib-ts.mjs';
 const MOTOR = await carregarTS('src/lib/motor.ts');
 const IMAGENS = await carregarTS('src/lib/imagem-escolhida.ts');
@@ -42,10 +41,8 @@ ok(IMAGENS.alternarImagem(exemploImagens) === 2 && IMAGENS.imagemDe(exemploImage
 ok(IMAGENS.alternarImagem(exemploImagens) === 3 && IMAGENS.imagemDe(exemploImagens) === 'c.png', 'terceira imagem');
 ok(IMAGENS.alternarImagem(exemploImagens) === 1 && IMAGENS.imagemDe(exemploImagens) === 'a.png', 'lista volta à principal');
 ok(IMAGENS.imagemDe({ id: '__sem_imagem__', imagens: [] }) === null, 'lista vazia sem imagem');
-const REGRAS = ler('regras.json');
 const CHEIO = ler('monsters.json');
 const MESA = ler('monsters-mesa.json');
-const FURT = REGRAS.furtividadeCriatura || {};
 
 console.log('· os sentidos das criaturas: a Passiva, a tabela e a exceção');
 
@@ -117,48 +114,11 @@ for(const arquivo of fs.readdirSync(path.join(ROOT,'src/data/bestiario'))) {
   const m=CHEIO.find(x=>x.id===c.id);
   ok((m?.habilidades?.furtividade ?? m?.habilidadesSec?.furtividade)===(c.habilidades.furtividade ?? c.habilidadesSec.furtividade ?? 0),c.id+': Furtividade escrita, sem ajuste por porte');
 }
-// O caminho antigo continua necessário antes das 324. Números da tabela vigente, sem fórmula no teste.
-for(const [porte,categoria,esperado] of [['miudo','Fada',6],['colossal','Fada',2],['medio','Fada',4],['medio','Construto',0],['medio','Fera',3],['medio','Humano',2]]) {
-  const p=periciasDe({id:'__teste_sem_excecao__',categoria,tags:[],atributos:{},centelha:0},porte);
-  ok(p.furtividade===esperado,'caminho antigo '+porte+' '+categoria+': '+esperado);
-}
-
-// ------------------------------------------------------- 4 · a exceção RODA
-//
-// A terceira previsão: a exceção existir e nunca ser exercida. Um caminho que
-// nenhum teste percorre é um caminho que ninguém sabe se funciona, e este em
-// particular é a válvula que justifica a tabela ter sido escolhida no lugar de
-// 309 números à mão. Se ele estiver quebrado, a escolha perde o argumento.
-const exc = FURT.excecoes || {};
-// O VALOR pode vir solto ou como { valor, porque }, e o `porque` e cobrado
-// abaixo: exceçao sem motivo escrito vira palpite anonimo em seis meses.
-const valorDa = (v) => (typeof v === 'number' ? v : v?.valor);
-const ids = Object.keys(exc).filter((k) => k !== 'nota');
-// SEM EXCEÇÃO NENHUMA HOJE, e isso é certo (Arquiteto, 23/10/2026): a única, a do assassino-das-sombras (6),
-// saiu quando a ficha v3 dele entrou. A régua e a exceção só valem para quem não tem Habilidade guardada ("Existe
-// porque o bestiário não guarda Habilidade nenhuma", a nota da furtividadeCriatura), e a ficha v3 guarda a
-// Furtividade (5). Quando houver exceção, o laço abaixo cobra que ela vença a tabela; sem nenhuma, não há o que cobrar.
-ok(true, ids.length ? `a exceção por criatura é EXERCIDA, e não só declarada (${ids.length} verbete(s))` : 'nenhuma exceção declarada hoje (a do assassino saiu com a ficha v3 dele): o laço abaixo não tem o que cobrar');
-for (const id of ids) {
-  const m = CHEIO.find((x) => x.id === id);
-  ok(!!m, `  a criatura "${id}" da exceção existe no bestiário`);
-  if (!m) continue;
-  ok(m.habilidades?.furtividade === valorDa(exc[id]),
-    `  e a exceção VENCE a tabela em ${m.nome}: ${m.habilidades?.furtividade} (a tabela daria outro)`);
-  // A GÊMEA: se a exceção desse o mesmo número da tabela, a asserção acima
-  // passaria sem provar nada. Esta cobra que os dois sejam diferentes.
-  const slug = String(m.tamanho || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
-  const daTabela = periciasDe({...m,id:'__teste_sem_excecao__'},slug).furtividade;
-  ok(typeof exc[id] === 'object' && String(exc[id]?.porque || '').length > 20,
-    `  e o MOTIVO da exceçao esta escrito (${String(exc[id]?.porque || '').length} caracteres)`);
-  ok(daTabela != null && daTabela !== valorDa(exc[id]),
-    `  e o número da exceção (${valorDa(exc[id])}) É DIFERENTE do que a tabela daria (${daTabela}), senão ela não provaria nada`);
-}
+ok(fontesNovas===324,'324 fontes guardam a Habilidade Furtividade, sem tabela de semente');
 
 if (falhas.length) {
   console.error(`\n✘ Sentidos FALHOU (${falhas.length}):`);
   for (const f of falhas) console.error('  • ' + f);
   process.exit(1);
 }
-console.log('✓ Sentidos OK · a Passiva chega à mesa, a Prontidão move o número,'
-  + ' a tabela separa por porte e categoria, e ' + (ids.length ? 'a exceção vence de verdade' : 'não há exceção declarada hoje'));
+console.log('✓ Sentidos OK · Passiva e Furtividade escrita nas 324 fontes');

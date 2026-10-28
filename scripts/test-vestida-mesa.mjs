@@ -1,6 +1,6 @@
 // test-vestida-mesa.mjs · a D-206 na mesa de verdade (com o Supabase de mentira).
 //
-// O test-defesa-vestida.mjs prova o `resumoDe` empacotado. Isto prova o resto, no
+// O teste do motor de Defesa vestida prova o `resumoDe` empacotado. Isto prova o resto, no
 // navegador: o card do Grid abre com as duas Defesas e o botão; o clique troca a
 // escolha e redesenha o card; o Grid refaz o resumo da peça (o ouvinte do
 // `centelha:vestida`); e a folha do golpe contra o campeão mostra a Defesa e a

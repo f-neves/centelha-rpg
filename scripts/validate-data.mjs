@@ -5,7 +5,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { z } from 'zod';
 import ts from 'typescript';
-import { POR_MATERIAL as MATERIAIS } from './lib-materiais.mjs';
 import { semComentario, sabeTirarChave } from './lib-deteccao-remocao-jsonb.mjs';
 import { achataCatalogo } from './lib-equip.mjs';
 
@@ -213,7 +212,7 @@ for (const w of data.armas || []) {
   }
 }
 
-// Fraquezas e resistências do bestiário (satélite semeado por gen-elementos.mjs).
+// Fraquezas e resistências do bestiário (satélite semeado por gerador de elementos retirado na Fase 3).
 // Vocabulário FECHADO de propósito: palavra nova aqui é decisão de regra, não digitação.
 const ELEM_VOCAB = new Set([
   'fogo', 'agua', 'gelo', 'raio', 'vento', 'terra', 'luz', 'sombra', 'acido',
@@ -250,35 +249,15 @@ for (const e of data.efeitos || []) {
     fail(`efeito "${e.id}": grid.forma "${g.forma}" e grid.alvo "${g.alvo}" divergem (um dos dois é "nenhuma/nenhum" e o outro não)`);
 }
 
-if (fs.existsSync(path.join(DIR, 'elementos-bestiario.json'))) {
-  const ELE = read('elementos-bestiario.json');
-  const idsBesta = new Set((data.inimigos || []).map((i) => i.id));
-  for (const [id, v] of Object.entries(ELE)) {
-    if (!idsBesta.has(id)) fail(`elementos-bestiario "${id}": criatura inexistente`);
-    const f = v.fraquezas || [], r = v.resistencias || [];
-    if (!f.length && !r.length) fail(`elementos-bestiario "${id}": entrada vazia`);
-    for (const k of [...f, ...r]) if (!ELEM_VOCAB.has(k)) fail(`elementos-bestiario "${id}": palavra fora do vocabulário "${k}"`);
-    const choque = f.filter((x) => r.includes(x));
-    if (choque.length) fail(`elementos-bestiario "${id}": "${choque.join(', ')}" é fraqueza e resistência ao mesmo tempo (as duas se anulam)`);
-  }
-}
-
-// Criaturas suas: id único e material conhecido. Um material com erro de digitação
-// passaria silenciosamente como "sem fraqueza nenhuma", que é o pior tipo de bug.
-if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
-  const CUSTOM = read('inimigos-custom.json');
-  const vistos = new Set();
-  for (const c of CUSTOM) {
-    if (!c?.id) { fail('inimigos-custom: entrada sem id'); continue; }
-    if (vistos.has(c.id)) fail(`inimigos-custom "${c.id}": id repetido`);
+// A caixa de entrada usa o mesmo contrato da fonte unificada.
+if(fs.existsSync(path.join(DIR,'inimigos-custom.json'))){
+  const {criaturaNovaSchema}=await import('./criatura-schema.mjs');
+  const vistos=new Set();
+  for(const c of read('inimigos-custom.json')){
+    const r=criaturaNovaSchema.safeParse(c);
+    if(!r.success){for(const i of r.error.issues)fail('inimigos-custom: '+i.path.join('.')+' · '+i.message);continue}
+    if(vistos.has(c.id))fail('inimigos-custom: id repetido '+c.id);
     vistos.add(c.id);
-    if (!c.nome) fail(`inimigos-custom "${c.id}": sem nome`);
-    if (c.material && !MATERIAIS[String(c.material).toLowerCase()]) {
-      fail(`inimigos-custom "${c.id}": material desconhecido "${c.material}" (conhecidos: ${Object.keys(MATERIAIS).join(', ')})`);
-    }
-    for (const k of [...(c.fraquezas || []), ...(c.resistencias || [])]) {
-      if (!ELEM_VOCAB.has(k)) fail(`inimigos-custom "${c.id}": palavra fora do vocabulário "${k}"`);
-    }
   }
 }
 
@@ -1042,94 +1021,37 @@ if (fs.existsSync(path.join(DIR, 'inimigos-custom.json'))) {
 
 // ------------------------------------------- B14 · a ficha de criatura
 //
-// UMA FICHA POR CRIATURA em src/data/bestiario/<id>.json, no esquema de
-// criatura-schema.mjs (`.strict()`: chave desconhecida para o build), mais as
-// referências que o esquema sozinho não pega: perícia, Arte, Técnica, armadura e
-// material que não existem no catálogo viram zero ou nada em silêncio na conta.
-//
-// E A CONCORDÂNCIA COM AS SEMENTES. As fraquezas e o deslocamento estão escritos
-// na ficha, e os satélites que os semeavam (gen-elementos, gen-deslocamento)
-// continuam no validate. Enquanto os dois existirem, eles têm de dizer o mesmo:
-// mexer num sem o outro para aqui, em vez de o livro e a semente divergirem
-// calados. (O deslocamento é conferido pelo test-deslocamento.mjs, que compara o
-// monsters.json com o satélite.)
+// As 324 fontes usam o contrato unificado e os catálogos vigentes.
 {
-  const { criaturaSchema, criaturaNovaSchema, PERICIAS_LEGADAS, HABILIDADES_DE_CRIATURA } = await import('./criatura-schema.mjs');
-  const SO_CRIATURA = new Set(HABILIDADES_DE_CRIATURA);
-  const PASTA = path.join(DIR, 'bestiario');
-  const SEC = new Set((data['habilidades-secundarias'] || []).map((x) => x.id));
-  const ARMD = new Set((data.armaduras || []).map((x) => x.id));
-  const ELE = fs.existsSync(path.join(DIR, 'elementos-bestiario.json')) ? read('elementos-bestiario.json') : {};
-  const ordens = new Map();
-  const arqs = fs.readdirSync(PASTA).filter((f) => f.endsWith('.json'));
-  for (const f of arqs) {
-    const onde = `bestiario/${f}`;
-    let c;
-    try { c = JSON.parse(fs.readFileSync(path.join(PASTA, f), 'utf8')); } catch (e) { fail(`${onde}: JSON inválido (${e.message})`); continue; }
-    const nova = !!c.corpo && !!c.atributos;
-    const r = (nova ? criaturaNovaSchema : criaturaSchema).safeParse(c);
-    if (!r.success) { for (const i of r.error.issues) fail(`${onde}: ${i.path.join('.') || '(raiz)'} · ${i.message}`); continue; }
-    if (nova && r.success) {
-      if (c.id + '.json' !== f) fail(onde + ': id diferente do arquivo');
-      for (const k of Object.keys(c.habilidades)) if (!H.has(k) && !SO_CRIATURA.has(k)) fail(onde + ': Habilidade inexistente ' + k);
-      for (const k of Object.keys(c.habilidadesSec)) if (!SEC.has(k) && !SO_CRIATURA.has(k)) fail(onde + ': secundária inexistente ' + k);
-      for (const k of Object.keys(c.artes)) if (!ART.has(k)) fail(onde + ': Arte inexistente ' + k);
-      const armasNovas = new Set((data.armas || []).map(x=>x.id));
-      for (const a of c.ataques) {
-        if (a.arma && !armasNovas.has(a.arma)) fail(onde + ': arma inexistente ' + a.arma);
-        if (!H.has(a.habilidade) && !SEC.has(a.habilidade) && !SO_CRIATURA.has(a.habilidade)) fail(onde + ': Habilidade de ataque inexistente ' + a.habilidade);
-      }
-      for (const imagem of c.imagens) if (!fs.existsSync(path.join(DIR,'..','..','public',imagem))) fail(onde + ': imagem inexistente ' + imagem);
-      for (const h of c.habilidadesEspeciais) {
-        if (h.tecnica && !T.has(h.tecnica.id)) fail(onde + ': Técnica inexistente ' + h.tecnica.id);
-        if (h.arte && !ART.has(h.arte.id)) fail(onde + ': Arte inexistente ' + h.arte.id);
-      }
-      continue;
+  const {criaturaNovaSchema,HABILIDADES_DE_CRIATURA}=await import('./criatura-schema.mjs');
+  const PASTA=path.join(DIR,'bestiario');
+  const SEC=new Set((data['habilidades-secundarias']||[]).map(x=>x.id));
+  const ARMD=new Set((data.armaduras||[]).map(x=>x.id));
+  const ARMAS=new Set((data.armas||[]).map(x=>x.id));
+  const extras=new Set(HABILIDADES_DE_CRIATURA);
+  const arqs=fs.readdirSync(PASTA).filter(f=>f.endsWith('.json'));
+  for(const f of arqs){
+    const onde='bestiario/'+f;let c;
+    try{c=JSON.parse(fs.readFileSync(path.join(PASTA,f),'utf8'))}catch(e){fail(onde+': JSON inválido ('+e.message+')');continue}
+    const r=criaturaNovaSchema.safeParse(c);
+    if(!r.success){for(const i of r.error.issues)fail(onde+': '+(i.path.join('.')||'(raiz)')+' · '+i.message);continue}
+    if(c.id+'.json'!==f)fail(onde+': id diferente do arquivo');
+    for(const k of Object.keys(c.habilidades))if(!H.has(k)&&!extras.has(k))fail(onde+': Habilidade inexistente '+k);
+    for(const k of Object.keys(c.habilidadesSec))if(!SEC.has(k)&&!extras.has(k))fail(onde+': secundária inexistente '+k);
+    for(const k of Object.keys(c.artes))if(!ART.has(k))fail(onde+': Arte inexistente '+k);
+    for(const a of c.ataques){
+      if(a.arma&&!ARMAS.has(a.arma))fail(onde+': arma inexistente '+a.arma);
+      if(!H.has(a.habilidade)&&!SEC.has(a.habilidade)&&!extras.has(a.habilidade))fail(onde+': Habilidade de ataque inexistente '+a.habilidade);
     }
-    if (`${c.id}.json` !== f) fail(`${onde}: o id "${c.id}" não bate com o nome do arquivo`);
-    if (c.centelha > TETO_CENTELHA) fail(`${onde}: Centelha ${c.centelha} acima da escalaCentelha (${TETO_CENTELHA})`);
-    if (c.ordem != null) {
-      if (ordens.has(c.ordem)) fail(`${onde}: ordem ${c.ordem} repetida (também em ${ordens.get(c.ordem)})`);
-      ordens.set(c.ordem, f);
+    for(const imagem of c.imagens)if(!fs.existsSync(path.join(DIR,'..','..','public',imagem)))fail(onde+': imagem inexistente '+imagem);
+    for(const h of c.habilidadesEspeciais){
+      if(h.tecnica&&!T.has(h.tecnica.id))fail(onde+': Técnica inexistente '+h.tecnica.id);
+      if(h.arte&&!ART.has(h.arte.id))fail(onde+': Arte inexistente '+h.arte.id);
     }
-    for (const k of Object.keys(c.skills)) if (!H.has(k) && !PERICIAS_LEGADAS[k]) fail(`${onde}: skills.${k} não é Habilidade primária${SEC.has(k) ? ' (é secundária: vai em skills2)' : ''}`);
-    for (const k of Object.keys(c.skills2 || {})) if (!SEC.has(k) && !SO_CRIATURA.has(k)) fail(`${onde}: skills2.${k} não é Habilidade secundária`);
-    for (const a of c.ataques) {
-      if (!A.has(a.atrib)) fail(`${onde}: ataque "${a.nome}" usa o atributo inexistente "${a.atrib}"`);
-      if (!H.has(a.pericia) && !SEC.has(a.pericia) && !SO_CRIATURA.has(a.pericia) && !PERICIAS_LEGADAS[a.pericia]) fail(`${onde}: ataque "${a.nome}" usa a perícia inexistente "${a.pericia}"`);
-    }
-    for (const id of Object.keys(c.arte || {})) if (!ART.has(id)) fail(`${onde}: arte inexistente "${id}"`);
-    for (const id of Object.keys(c.tech || {})) if (!T.has(id)) fail(`${onde}: técnica inexistente "${id}"`);
-    for (const p of c.poderes || []) {
-      if (p.arte && !ART.has(p.arte)) fail(`${onde}: poder cita a arte inexistente "${p.arte}"`);
-      if (p.caminho && !C.has(p.caminho)) fail(`${onde}: poder cita o caminho inexistente "${p.caminho}"`);
-      if (p.base?.arte && !ART.has(p.base.arte)) fail(`${onde}: poder cita a arte inexistente "${p.base.arte}"`);
-    }
-    for (const pf of c.proezaFutura || []) {
-      if (pf.caminho && !C.has(pf.caminho)) fail(`${onde}: proezaFutura cita o caminho inexistente "${pf.caminho}"`);
-    }
-    for (const p of c.equip?.armaduras || []) {
-      const base = typeof p === 'string' ? p : p?.base;
-      if (base && !ARMD.has(base)) fail(`${onde}: armadura inexistente "${base}"`);
-    }
-    if (c.material && !MATERIAIS[String(c.material).toLowerCase()]) fail(`${onde}: material desconhecido "${c.material}"`);
-    const fr = c.fraquezas || [], rs = c.resistencias || [], im = c.imunidades || [];
-    for (const k of [...fr, ...rs, ...im]) if (!ELEM_VOCAB.has(k)) fail(`${onde}: palavra fora do vocabulário "${k}"`);
-    const choque = fr.filter((x) => rs.includes(x));
-    if (choque.length) fail(`${onde}: "${choque.join(', ')}" é fraqueza e resistência ao mesmo tempo`); for (const [nome, l] of [['fraquezas', fr], ['resistencias', rs], ['imunidades', im]]) { if (new Set(l).size !== l.length) fail(`${onde}: palavra repetida em ${nome}`); if (c.v3 && !Array.isArray(c[nome])) fail(`${onde}: ficha v3 sem a lista ${nome} (D-195: as três, mesmo vazias)`); } if (im.some((x) => rs.includes(x))) fail(`${onde}: "${im.filter((x) => rs.includes(x)).join(', ')}" é resistência e imunidade ao mesmo tempo`);
-    // Imunidade e fraqueza ao mesmo tipo, pelo DADO DA CRIATURA, nunca deveriam coexistir
-    // (a regra em regras.json diz que essa combinação só existe por efeito de jogo, nunca
-    // pela ficha): se a ficha grava as duas, é erro de digitação, não a exceção da regra.
-    const choqueImune = im.filter((x) => fr.includes(x));
-    if (choqueImune.length) fail(`${onde}: "${choqueImune.join(', ')}" é fraqueza e imunidade ao mesmo tempo (só um efeito de jogo faz essa combinação, nunca a própria ficha)`);
-    if (!c.material && !c.v3) { // a ficha v3 traz as três listas da linha Elementos (D-195), fora do satélite
-      const s = ELE[c.id] || {};
-      if (JSON.stringify(fr) !== JSON.stringify(s.fraquezas || []) || JSON.stringify(rs) !== JSON.stringify(s.resistencias || [])) {
-        fail(`${onde}: fraquezas/resistências diferentes das do elementos-bestiario.json (a semente do gen-elementos.mjs). Mude as duas juntas`);
-      }
-    }
+    for(const arm of c.equipamento.armaduras)if(!ARMD.has(arm.base))fail(onde+': armadura inexistente '+arm.base);
+    for(const grupo of Object.values(c.elementos))for(const item of grupo)if(!ELEM_VOCAB.has(item.tipo))fail(onde+': elemento inexistente '+item.tipo);
   }
-  if (!arqs.length) fail('src/data/bestiario/: nenhuma ficha de criatura');
+  if(arqs.length!==324)fail('bestiário: esperado 324 fontes, vieram '+arqs.length);
 }
 
 // ------------------------------------------- D-179 · a arte do bestiário existe

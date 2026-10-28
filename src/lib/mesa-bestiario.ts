@@ -110,10 +110,8 @@ export interface ResumoCombate {
    */
   classe?: string | null;
   /**
-   * As três velocidades em metros por Tick. Do PC saem da ficha (mesma régua
-   * que ela desenha); da criatura, do bloco `combate.deslocamento` que o
-   * `gen-deslocamento.mjs` semeia a partir da velocidade original dela. Sem
-   * isso o Grid oferecia 3 m/Tick para todo mundo, do caramujo ao guepardo.
+   * As três velocidades em metros por Tick. Do PC e da criatura vêm da ficha;
+   * a criatura declara cada modo no bloco deslocamento.
    */
   passo?: { batalha: number; arranque: number; corrida: number } | null;
   /**
@@ -137,11 +135,8 @@ export interface ResumoCombate {
    * das duas: **ele foi montado para o golpe**, então carrega os derivados de
    * combate e nenhuma perícia por nome.
    *
-   * OS DOIS LADOS VÊM DE LUGARES DIFERENTES e chegam aqui iguais, que é o que
-   * este contrato existe para fazer: do PC saem da ficha, que tem as perícias;
-   * da criatura saem do bloco `pericias` que o `gen-bestiario.mjs` passou a
-   * emitir (quatro pela conta invertida dos derivados e a Furtividade pela
-   * tabela `regras.furtividadeCriatura`).
+   * PC e criatura trazem as Habilidades escritas na fonte; o motor calcula
+   * os derivados que a mesa usa para os testes de oposição.
    *
    * `null` em qualquer um dos dois quer dizer "não dá para saber daqui", e não
    * "zero". Quem compara tem de tratar o nulo como recusa a responder, senão
